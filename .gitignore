@@ -1,0 +1,4 @@
+research/
+dist/
+.vercel/
+node_modules/

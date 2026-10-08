@@ -1,0 +1,1387 @@
+window.COURSES = window.COURSES || {};
+COURSES.qa = {
+  id: `qa`,
+  name: `Software Quality Assurance`,
+  short: `Quality`,
+  code: `22H211-CS-EN-T1`,
+  by: `Prof. Dr. Arabi Keshk, Prof. Mahmoud Gadallah`,
+  lectures: [
+    /* ───────────────────────── LECTURE 1 ───────────────────────── */
+    {
+      n: 1, title: `Introduction to Software Testing`,
+      notes: [
+        { h: `What is software testing?`, pts: [
+          `Software testing is an <b>incremental and iterative</b> process for detecting defects and verifying that a software system meets its specified requirements. It is an <b>integral part of the SDLC</b> and identifies defects, flaws or errors in the application.`,
+          `It ensures <b>quality, reliability and user satisfaction</b>. Finding bugs early saves time and cost and increases customer confidence.`,
+          `<b>Miller's goal of testing</b>: "The general aim of testing is to <b>affirm the quality</b> of software systems by <b>systematically exercising</b> the software in <b>carefully controlled circumstances</b>."`,
+          `<b>6 objectives of testing</b>: (1) ensure the solution meets the <b>business requirements</b>, which enhances customer confidence; (2) catch bugs, errors and defects; (3) ensure the system is <b>stable and ready</b> for use; (4) identify <b>areas of weakness</b>; (5) establish the <b>degree of quality</b>; (6) determine <b>user acceptability</b>.`,
+          `Benefits to the organization: saves time and money (defects found early), stable product with less downtime, customer satisfaction.`
+        ]},
+        { h: `Evolution of software testing (Gelperin & Hetzel)`, table: [
+          [`Period`, `Orientation`, `Meaning`],
+          [`Until 1956`, `Debugging-oriented`, `Testing meant debugging`],
+          [`1957–1978`, `Demonstration-oriented`, `Ensure the software meets its specifications`],
+          [`1979–1982`, `Destruction-oriented`, `Tests designed to find errors (Myers' era)`],
+          [`1983–1987`, `Evaluation-oriented`, `Introduced verification and validation`],
+          [`1988–2000`, `Prevention-oriented`, `Prevent defects through early test design and planning`]
+        ]},
+        { h: `What is a bug? (5 conditions)`, pts: [
+          `A <b>bug</b> is an error in a program that may produce an incorrect or undesired result or stop it from working correctly. In testing, a bug means <b>anything that affects quality</b>. Other names: defect, fault, problem, error, incident, anomaly, failure, variance, inconsistency.`,
+          `<b>1.</b> The software does <b>not do</b> what the specification says it should. <i>Calculator: the + key does not work.</i>`,
+          `<b>2.</b> The software does what the specification says it should <b>not</b> do (opposite behaviour). <i>Calculator crashes/freezes.</i>`,
+          `<b>3.</b> The software does something the specification <b>does not mention</b>. <i>Calculator has an extra "square" function not in the spec.</i>`,
+          `<b>4.</b> The software does not do something it <b>should (mandatory) do</b> although the spec may not mention it. <i>Weak battery → wrong answers.</i>`,
+          `<b>5.</b> The software is <b>difficult to understand</b>, has cumbersome steps, or is <b>slow</b> (customer's perspective). <i>Buttons too small, lights too flashy to read the answer.</i>`
+        ]},
+        { h: `Types of bugs and why they occur`, table: [
+          [`Bug type`, `Examples`],
+          [`Conceptual`, `Wrong syntax, misspelled keywords, flawed design logic`],
+          [`Math`, `Divide-by-zero, overflow, rounding errors`],
+          [`Logical`, `Infinite loops, wrong logic, incorrect conditions`],
+          [`Resource`, `Buffer overflow, access violations, uninitialized variables`],
+          [`Co-programming`, `Deadlocks, race conditions, concurrency issues`],
+          [`Team working`, `Outdated documentation, mismatched files, incorrect linking`]
+        ]},
+        { h: `Reasons for bugs and the cost of bugs`, pts: [
+          `<b>7 reasons</b>: (1) <b>Human factor</b>: mistakes in logic or syntax; (2) <b>Communication failure</b> between teams; (3) <b>Unrealistic development timeframe</b>; (4) <b>Poor design logic</b> (inadequate research, misunderstood feasibility); (5) <b>Poor coding practices</b> (inefficient methods and <b>faulty tools</b>); (6) <b>Lack of skilled testing</b>; (7) <b>Change requests</b> at the last minute.`,
+          `<b>Cost of fixing depends on when the bug is found</b>: Requirement stage = <b>low</b>; Coding = <b>moderate</b>; Integration = <b>higher</b> (developer + engineers); Testing = <b>very costly</b> (developers, engineers, managers, delays); Production = <b>extremely costly</b> (reputation, financial or legal penalties).`,
+          `Real example: the <b>Patriot missile failure (Gulf War, 1991)</b> was caused by a <b>timing bug</b> and led to the death of <b>28 soldiers</b>.`
+        ]},
+        { h: `Waterfall and Spiral models`, pts: [
+          `<b>Waterfall</b> (one of the oldest, sequential): System Engineering → Analysis → Design → Coding → Testing → Maintenance.`,
+          `Phases: <b>System engineering</b> defines both <b>software and hardware requirements</b>; <b>Analysis</b> = feasibility study, goals, performance and interface requirements; <b>Design</b> = software structure (e.g. database design); <b>Coding</b>; <b>Testing</b>; <b>Maintenance</b>.`,
+          `Waterfall advantages: simple, structured, clear documentation, early requirements, easy management. <b>Drawback</b>: errors in early phases carry over to later stages → delays and higher cost.`,
+          `<b>Spiral</b>: iterative, overcomes waterfall limits. Four phases repeated in cycles: <b>Planning → Risk analysis → Design engineering → Customer evaluation (testing & evaluation)</b>. Usually <b>2 or 3 prototypes</b> before the final product.`,
+          `Spiral advantages: manages risks early, flexible, customer feedback, prototyping, suits complex projects. <b>Drawback</b>: time-consuming and costly because of many iterations.`
+        ]},
+        { h: `V-Model`, pts: [
+          `Integrates testing into <b>every stage</b> of the SDLC, with early testing starting from the requirements phase. Development goes <b>high level → low level</b> (left side, down); testing goes <b>low level → high level</b> (right side, up).`,
+          `Test levels: <b>Unit</b> (individual modules), <b>Integration</b> (interactions between modules), <b>System</b> (whole system meets design and performance), <b>Acceptance</b> (done by the customer to confirm business requirements).`,
+          `Example (calculator): test code logic of calculations, memory per module, how modules are linked, overall efficiency.`,
+          `Advantage: early verification and validation reduce defects. <b>Drawback</b>: less effective when requirements are incomplete or badly documented; not suitable for every project.`
+        ]},
+        { h: `V-Model mapping (figure)`, table: [
+          [`Left side (development)`, `Plan produced`, `Right side (testing)`],
+          [`Requirements specifications`, `Acceptance test plan`, `Acceptance test`],
+          [`Functional specifications`, `System test plan`, `System test`],
+          [`System design`, `Integration test plan`, `Integration test`],
+          [`Unit design`, `Test cases`, `Unit test`],
+          [`Code (bottom of the V)`, `–`, `–`]
+        ]},
+        { h: `RAD and Agile`, pts: [
+          `<b>RAD</b> (Rapid Application Development): built from business, project-management and SRS requirements. A prototype is matched against requirements; if there is a gap, another prototype is built. <b>Linear sequential</b> with an <b>extremely short cycle</b> and <b>reusable components</b>.`,
+          `RAD phases: <b>Requirements planning → Design (prototype) → Construction (RAD tools until the customer is satisfied) → Testing & handover</b> (reusable components cut testing time).`,
+          `RAD advantages: fast, flexible, customer feedback, reduces risk. <b>Disadvantages</b>: a missing reusable component can make the project fail; only for <b>small, simple</b> projects.`,
+          `<b>Agile</b>: most widely used model today. <b>Incremental</b>, short cycles, small releases, constant feedback and <b>continuous collaboration</b> of customers, developers and testers. Approaches: <b>DSDM, SCRUM, XP</b> (XP most popular).`,
+          `<b>XP</b>: programmers work in <b>pairs</b> (one codes, one reviews/tests). <b>TDD</b> = write test cases <b>before</b> code: (1) create the test code → (2) write/modify the functional code → (3) create additional tests → (4) test the functional code → (5) refactor the code.`,
+          `Agile advantages: flexible, feedback, fast delivery, better quality. <b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep.`,
+          `Summary: waterfall is sequential; <b>V and Spiral</b> use testing as an integral part so they are more efficient than waterfall; Agile is the most advanced; XP uses TDD.`
+        ]}
+      ],
+      cards: [
+        [`Software testing (definition)`, `An incremental and iterative process for detecting defects and verifying that a system meets specified requirements.`],
+        [`Miller's aim of testing`, `To affirm the quality of software systems by systematically exercising the software in carefully controlled circumstances.`],
+        [`1957–1978`, `Demonstration-oriented testing: ensure software meets its specifications.`],
+        [`1979–1982`, `Destruction-oriented testing: tests designed to find errors (Myers).`],
+        [`1983–1987`, `Evaluation-oriented: introduced verification and validation.`],
+        [`1988–2000`, `Prevention-oriented: prevent defects with early test design and planning.`],
+        [`Math bugs`, `Divide-by-zero, overflow, rounding errors.`],
+        [`Co-programming bugs`, `Deadlocks, race conditions, concurrency issues.`],
+        [`Team working bugs`, `Outdated documentation, mismatched files, incorrect linking.`],
+        [`Cheapest stage to fix a bug`, `Requirement stage. Production stage is extremely costly.`],
+        [`Patriot missile (1991)`, `A timing bug caused the death of 28 soldiers.`],
+        [`Spiral phases`, `Planning, risk analysis, design engineering, customer evaluation (repeated in cycles).`],
+        [`V-model: acceptance test plan is written at`, `The requirements specifications stage.`],
+        [`RAD disadvantages`, `A missing reusable component can cause failure; only for small, simple projects.`],
+        [`TDD steps`, `Create test code, write functional code, create additional tests, test functional code, refactor.`]
+      ],
+      qa: [
+        [`List the objectives of software testing.`, `1) Ensure the solution meets business requirements (customer confidence). 2) Catch bugs, errors and defects. 3) Ensure the system is stable and ready. 4) Identify areas of weakness. 5) Establish the degree of quality. 6) Determine user acceptability.`],
+        [`State the five conditions that mean a bug exists, with the calculator example.`, `1) Does not do what the spec says (+ key does not work). 2) Does what the spec says it should not (crashes). 3) Does something the spec does not mention (extra square function). 4) Does not do something it should although not mentioned (wrong answers on weak battery). 5) Hard to understand, cumbersome or slow (buttons too small, lights too flashy).`],
+        [`Explain how the cost of a bug depends on when it is found.`, `Requirement stage: low cost. Coding: moderate. Integration: higher, needs developers and engineers. Testing: very costly, involves managers and delays the project. Production: extremely costly, damages reputation and may cause financial or legal penalties (e.g. Patriot missile 1991).`],
+        [`Compare Waterfall and Spiral.`, `Waterfall is linear and sequential, testing comes near the end, simple and well documented, but early errors carry over and are expensive. Spiral is iterative with planning, risk analysis, engineering and customer evaluation in each cycle, uses 2 to 3 prototypes, manages risk early, but is time-consuming and costly.`],
+        [`Explain how test cases are developed at every stage in the V-model.`, `Each development stage on the left produces a test plan for the matching test level on the right: requirements to acceptance test plan, functional specs to system test plan, system design to integration test plan, unit design to unit test cases. So testing is planned early and in parallel with development.`]
+      ],
+      quiz: [
+        { q: `Demonstration-oriented testing was followed during which period?`, o: [
+          [`1957–1978`, `Correct. Demonstration-oriented testing ensured the software met its specifications.`],
+          [`1979–1982`, `That is destruction-oriented testing (Myers' era).`],
+          [`1983–1987`, `That is evaluation-oriented (verification and validation).`],
+          [`1988–2000`, `That is prevention-oriented.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `Which reason for bugs covers errors caused by incorrect usage of logic or syntax?`, o: [
+          [`Communication failure`, `That is miscommunication between teams.`],
+          [`Human factor`, `Correct. Developers may make mistakes in logic or syntax.`],
+          [`Lack of skilled testing`, `That is about testers missing hidden issues.`],
+          [`Unrealistic timeframe`, `That is about tight deadlines.`]
+        ], a: 1, src: `Summary MCQ` },
+        { q: `During which stage of the V-model is the acceptance test plan developed?`, o: [
+          [`Requirements specifications`, `Correct. The top-left stage produces the acceptance test plan.`],
+          [`Functional specifications`, `This produces the system test plan.`],
+          [`System design`, `This produces the integration test plan.`],
+          [`Integration test`, `This is on the testing side, not where plans are written.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `"The year 1988–2000 followed a prevention-oriented approach."`, o: [
+          [`True`, `Correct. The lecture lists 1988–2000 as prevention-oriented. The summary key marks this False, which contradicts the slide.`],
+          [`False`, `The lecture table clearly says 1988–2000 = prevention-oriented.`]
+        ], a: 0, src: `Summary T/F` },
+        { q: `A calculator shows a "square" function that is not mentioned in the product specification. Which bug condition is this?`, o: [
+          [`Condition 1: does not do what the spec says`, `That would be a key that does not work.`],
+          [`Condition 2: does what the spec says it should not`, `That is the crash/freeze example.`],
+          [`Condition 3: does something the spec does not mention`, `Correct. Extra, unspecified behaviour is condition 3.`],
+          [`Condition 5: hard to use or slow`, `Condition 5 is the customer's usability view.`]
+        ], a: 2 },
+        { q: `Which bug type includes deadlocks and race conditions?`, o: [
+          [`Resource bugs`, `Resource bugs are buffer overflow, access violations, uninitialized variables.`],
+          [`Logical bugs`, `Logical bugs are infinite loops and wrong conditions.`],
+          [`Co-programming bugs`, `Correct. Concurrency problems are co-programming bugs.`],
+          [`Team working bugs`, `Those are outdated documentation and mismatched files.`]
+        ], a: 2 },
+        { q: `At which stage is fixing a bug EXTREMELY costly?`, o: [
+          [`Requirement`, `Cheapest stage.`],
+          [`Coding`, `Moderate cost.`],
+          [`Testing`, `Very costly, but not the worst.`],
+          [`Production`, `Correct. It damages reputation and may bring financial or legal penalties.`]
+        ], a: 3 },
+        { q: `Which waterfall phase defines BOTH software and hardware requirements?`, o: [
+          [`Analysis`, `Analysis covers feasibility, goals, performance and interface requirements.`],
+          [`System engineering`, `Correct. It defines software and hardware requirements needed for development.`],
+          [`Design`, `Design translates requirements into structure.`],
+          [`Maintenance`, `Maintenance fixes and updates after delivery.`]
+        ], a: 1 },
+        { q: `How many prototypes are typically created in the Spiral model before the final product?`, o: [
+          [`None`, `Spiral relies on prototypes.`],
+          [`Exactly one`, `The lecture says two or three.`],
+          [`Two or three`, `Correct.`],
+          [`Ten or more`, `Too many; the lecture says two or three.`]
+        ], a: 2 },
+        { q: `In Test-Driven Development (XP), what is written FIRST?`, o: [
+          [`The functional code`, `Functional code comes second, written to pass the tests.`],
+          [`The automated test code`, `Correct. Step 1 is "create the test code".`],
+          [`The user manual`, `Not part of TDD.`],
+          [`The refactored code`, `Refactoring is the last step.`]
+        ], a: 1 },
+        { q: `Which model is only suitable for small and simple projects and fails if a reusable component is missing?`, o: [
+          [`Spiral`, `Spiral suits complex projects.`],
+          [`V-model`, `The V-model's drawback is incomplete requirements.`],
+          [`RAD`, `Correct. These are exactly RAD's two disadvantages.`],
+          [`Agile`, `Agile handles complex projects with change.`]
+        ], a: 2 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 2 ───────────────────────── */
+    {
+      n: 2, title: `Black Box Testing`,
+      notes: [
+        { h: `Software testing terms`, table: [
+          [`Term`, `Meaning`, `Example`],
+          [`Bug / Defect`, `Flaw/error causing unintended results`, `Login button not working`],
+          [`Verification`, `"Are we building the product right?"`, `Code reviews, design checks`],
+          [`Validation`, `"Are we building the right product?"`, `User acceptance testing`],
+          [`Quality Assurance (QA)`, `Process-focused, preventive`, `Process audits, checklists`],
+          [`Quality Control (QC)`, `Product-focused, corrective`, `Unit and system testing`],
+          [`Test Plan`, `Document with test objectives and scope`, `Describes login testing scope`],
+          [`Test Case`, `Input, conditions and expected output`, `Invalid password → "Error" message`],
+          [`Unit Testing`, `Smallest testable component`, `Function or module test`],
+          [`Integration Testing`, `Tests interfaces between modules`, `Payment module connects to billing`],
+          [`System Testing`, `Tests complete system behaviour`, `Ensure that specifications are met`],
+          [`Acceptance Testing`, `Performed by user/customer`, `Software product meets the requirements`],
+          [`Agile Testing`, `Early customer-focused testing in agile cycles`, `Sprint-based validation`]
+        ]},
+        { h: `Black-box (functional) testing`, pts: [
+          `Also called <b>behavioral testing</b>. Focuses on functionality <b>without knowing the internal logic</b>. The tester analyses <b>inputs and expected outputs</b> and checks the software meets requirements.`,
+          `<b>Advantages</b>: no need to understand the code; quick test-case development; helps <b>expose ambiguities in specifications</b>; suitable for user-perspective (GUI) testing.`,
+          `<b>Disadvantages</b>: cannot test all possible inputs; hard to design cases if requirements are unclear; bugs in complex areas may go undetected.`,
+          `<b>ATM example</b>: the tester acts as a customer and checks functions through the GUI (display changes when the card is detected, password masking, navigating from the main menu to a function) without knowing the internal logic.`,
+          `<b>Static testing</b> = testing something that is <b>not running</b> (examining and reviewing it). <b>Dynamic testing</b> = running and using the software.`
+        ]},
+        { h: `Static vs dynamic black-box testing`, pts: [
+          `<b>Static black-box</b>: testing <b>without executing</b> the software; focuses on the <b>specification</b>. Purpose: ensure completeness and appropriateness. Key document: the specification (e.g. user manual) from early SDLC. Goal: bug-free, clear, user-focused documentation.`,
+          `<b>Dynamic black-box</b>: testing by <b>executing</b> the software with data, without knowing the inside code (customer view, also called <b>exploratory</b>/behavioral testing). You should have the specification.`,
+          `Steps to begin DBB testing: (1) have the documents/specifications, (2) define test cases. Example (Windows calculator addition): 0+0=0, 0+1=1, 254+1=255, 255+1=256, 256+1=257.`,
+          `<b>Start with test-to-pass</b> (confirm it works normally with standard input) <b>then test-to-fail</b> (push it to its limits with extreme inputs).`
+        ]},
+        { h: `Test-to-pass vs test-to-fail`, pts: [
+          `<b>Test-to-pass</b>: assure the software <b>minimally works</b> ("kindness dealing"); test in normal cases using boundaries, sub-boundaries and default data. Car example: drive it normally before crash-testing it. Don't be surprised to find bugs even in test-to-pass.`,
+          `<b>Test-to-fail</b>: find weaknesses by using <b>abnormal cases</b> (forcing an error).`,
+          `Error messages: saving to a disk with no disk inserted. The spec says it should show an error, so it looks like test-to-pass, but you are also forcing an error, so it is test-to-fail. <b>In the end it is probably both.</b>`
+        ]},
+        { h: `Equivalence partitioning (EP)`, pts: [
+          `EP groups test cases into categories and <b>reduces the number of test cases without lowering test quality</b>. An equivalence class (partition) is a set of test cases that <b>tests the same thing or reveals the same bug</b>, so testing <b>one case from each class</b> is enough.`,
+          `Classes: <b>valid</b> (satisfy the condition) and <b>invalid</b> (do not satisfy it). Example: 1+1, 1+2… are one partition; 1+999999999999999999999999999 is another (it may overflow).`,
+          `<b>Driving license example</b>: age above 18 and at most 60 is eligible. Classes: valid = 18 to 60; invalid = below 18; invalid = above 60 → <b>3 classes</b>.`,
+          `<b>Program example</b>: accepts <b>4 to 10 inputs</b>, each a <b>5-digit integer ≥ 10,000</b>. Number of inputs: less than 4 (invalid, test 3), 4–10 (valid, test 4, 7, 10), more than 10 (invalid, test 11).`,
+          `Input values 10,000–99,999 → partitions <b>&lt;10,000</b>, <b>10,000–99,999</b>, <b>&gt;99,999</b>. <b>6 test cases</b>: 00000 (invalid special value), 09999 (invalid left boundary), 10000 (valid left boundary), 50000 (valid mid), 99999 (valid right boundary), 100000 (invalid right boundary).`
+        ]},
+        { h: `Data testing and boundary conditions`, pts: [
+          `Software = <b>data</b> (keyboard input, mouse clicks, disk files, printouts…) + <b>program</b> (executable flow, transitions, logic, computations). Goal: reduce test cases using partitions based on <b>boundary conditions, sub-boundary conditions, nulls and bad data</b>.`,
+          `<b>Boundary conditions</b>: situations at the <b>edge of the planned operational limits</b>. Programming is susceptible to problems at its edges (like the edge of a cliff).`,
+          `Text field 1–255 chars: valid 1, 255 (and 254); invalid <b>0 and 256</b>. CD-R: very small file, file at the disc limit, empty file, file too large. Print multiple pages per sheet: 1, the maximum, 0 and max+1. 9-digit ZIP: 00000-0000, 99999-9999, one digit more or less.`,
+          `Testing only the edges may not be enough: use partitions to test data <b>in / out / at</b> the boundary. Test: data that works, data that does not work, data at the boundary. Floppy example: very small file, very large file that fits, empty file, file too large.`
+        ]},
+        { h: `State testing`, pts: [
+          `<b>Software state</b>: the condition or mode the software is currently in (e.g. Paint's pencil state vs airbrush state). <b>State testing</b> verifies the program's logic through its states and the <b>transitions</b> between them.`,
+          `A <b>state transition map</b> (from the spec or drawn by you with boxes, arrows, circles) shows: (1) each unique state, (2) the input/condition that moves from one state to the next, (3) conditions set and output produced when a state is entered or exited. Draw it <b>from the user's view</b>.`,
+          `<b>5 ways to reduce states/transitions to test</b>: (1) visit each state at least once; (2) test the most common state-to-state transitions; (3) test the least common paths; (4) test all error states and returning from them; (5) test random transitions.`,
+          `Check all <b>state variables</b>. Paint's startup state: window as last shown, same size as last time, blank drawing area, tool box/color box/status bar shown, pencil selected, black on white, document "untitled".`
+        ]},
+        { h: `Worked example: media player state diagram`, table: [
+          [`From state`, `Input`, `To state`],
+          [`OFF`, `play`, `PLAY`],
+          [`OFF`, `fast forward`, `FAST FORWARD`],
+          [`PLAY`, `stop`, `OFF`],
+          [`PLAY`, `fast forward`, `FAST PLAY`],
+          [`FAST FORWARD`, `stop`, `OFF`],
+          [`FAST FORWARD`, `play`, `PLAY`],
+          [`FAST PLAY`, `stop`, `PLAY`],
+          [`FAST PLAY`, `fast forward`, `FAST FORWARD`]
+        ]},
+        { h: `Media player answers`, pts: [
+          `<b>All states at least once</b> (minimum = 1 test case): &lt;Off&gt; play → fast forward → fast forward (visits OFF, PLAY, FAST PLAY, FAST FORWARD).`,
+          `<b>All 8 transitions at least once</b> (2 test cases): TC1 &lt;Off&gt; play → fast forward → fast forward → stop; TC2 &lt;Off&gt; fast forward → play → fast forward → stop → stop.`
+        ]}
+      ],
+      cards: [
+        [`Verification`, `Are we building the product right? (code reviews, design checks)`],
+        [`Validation`, `Are we building the right product? (user acceptance testing)`],
+        [`QA vs QC`, `QA: process-focused, preventive. QC: product-focused, corrective.`],
+        [`Test plan`, `Document with test objectives and scope.`],
+        [`Test case`, `Input, conditions and expected output.`],
+        [`Black-box testing is also called`, `Behavioral (functional) testing.`],
+        [`Static testing`, `Examining and reviewing something that is not running.`],
+        [`Test-to-pass`, `Assure the software minimally works using normal cases ("kindness dealing").`],
+        [`Test-to-fail`, `Find weaknesses by forcing errors with abnormal/extreme inputs.`],
+        [`Equivalence partition`, `A set of test cases that tests the same thing or reveals the same bug.`],
+        [`Boundary conditions`, `Situations at the edge of the planned operational limits of the software.`],
+        [`Text field 1 to 255 characters: invalid boundary tests`, `0 and 256 characters.`],
+        [`5-digit input 10000 to 99999: the 6 test cases`, `00000, 09999, 10000, 50000, 99999, 100000.`],
+        [`Software state`, `The condition or mode the software is currently in.`],
+        [`State transition map contains`, `Each unique state, the input that moves between states, conditions/output on entry or exit.`]
+      ],
+      qa: [
+        [`Compare test-to-pass and test-to-fail. Is an error-message test one or the other?`, `Test-to-pass checks the software minimally works using normal input, boundaries and default data. Test-to-fail tries to break it using abnormal cases. Always start with test-to-pass. An error-message test (saving with no disk) is required by the spec (test-to-pass) but forces an error (test-to-fail), so it is probably both.`],
+        [`A field accepts a 5-digit integer from 10,000 to 99,999. Give the equivalence partitions and test cases.`, `Partitions: less than 10,000 (invalid), 10,000 to 99,999 (valid), more than 99,999 (invalid). Test cases: 00000 invalid special value, 09999 invalid left boundary, 10000 valid left boundary, 50000 valid mid, 99999 valid right boundary, 100000 invalid right boundary.`],
+        [`What are the five ways to reduce the number of states and transitions to test?`, `Visit each state at least once; test the most common transitions; test the least common paths; test all error states and returning from them; test random state transitions.`],
+        [`List the advantages and disadvantages of black-box testing.`, `Advantages: no need to understand code, quick test-case development, exposes ambiguities in specs, suits GUI/user-view testing. Disadvantages: cannot test all inputs, hard if requirements are unclear, bugs in complex areas may go undetected.`],
+        [`Does equivalence partitioning reduce test cases without compromising quality? Explain.`, `Yes. Inputs in one class are processed the same way, so one test per class detects the same bugs as testing every value. This greatly reduces the number of cases and saves time while keeping good coverage.`]
+      ],
+      quiz: [
+        { q: `The process that confirms that software meets its <b>specification</b> is:`, o: [
+          [`Verification`, `Correct. Verification = "are we building the product right?", checked against the spec.`],
+          [`Validation`, `Validation checks the user's needs ("the right product").`],
+          [`Design`, `Design is a development phase, not a checking process.`],
+          [`Requirements`, `Requirements are what we check against, not the checking process.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `The process that confirms that software meets the <b>user's requirement</b> is:`, o: [
+          [`Validation`, `Correct. Validation = "are we building the right product?" (e.g. UAT).`],
+          [`Verification`, `Verification checks against the specification.`],
+          [`Design`, `Not a checking process.`],
+          [`Requirements`, `Not a checking process.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `The program shall accept an input value of integer &gt; 9000. Determine the test case.`, o: [
+          [`9000`, `A valid test (invalid boundary: must be rejected), but not the only one.`],
+          [`9001`, `A valid test (first valid value), but not the only one.`],
+          [`9999`, `A valid test (a normal valid value), but not the only one.`],
+          [`All answers`, `Correct. 9000 is the invalid boundary, 9001 the valid boundary and 9999 a valid value: all are useful BVA/EP test cases.`]
+        ], a: 3, src: `Exam 2025/26` },
+        { q: `Which type of software testing refers to testing the <b>running</b> software?`, o: [
+          [`Requirement testing`, `Not a term from the lecture.`],
+          [`Static testing`, `Static testing examines something that is NOT running.`],
+          [`Analysis testing`, `Not a term from the lecture.`],
+          [`Dynamic testing`, `Correct. Dynamic testing means running and using the software.`]
+        ], a: 3, src: `Exam 2025/26` },
+        { q: `Which testing helps expose ambiguities or inconsistencies in the specifications and is carried out from a user's perspective?`, o: [
+          [`White box testing`, `White box looks at code, not the user's view.`],
+          [`Automation testing`, `Automation is about tools, not perspective.`],
+          [`Manual testing`, `Too general.`],
+          [`Black box testing`, `Correct. Listed among black-box advantages.`]
+        ], a: 3, src: `Summary MCQ` },
+        { q: `Which dynamic technique pushes the software to its limits to find the bugs that occur under extreme conditions?`, o: [
+          [`Test to pass`, `Test-to-pass uses normal cases.`],
+          [`Test to fail`, `Correct. It forces errors using extreme or abnormal input.`],
+          [`Data testing`, `Data testing is about partitioning data.`],
+          [`State testing`, `State testing checks states and transitions.`]
+        ], a: 1, src: `Summary MCQ` },
+        { q: `Identify the boundary tests for the field <b>Day</b> in DD/MM/YYYY.`, o: [
+          [`29`, `Upper boundary for February in a leap year, but not the only one.`],
+          [`28`, `Upper boundary for February, but not the only one.`],
+          [`All the above`, `Correct. The last day depends on the month: 28, 29, 30 and 31 are all boundaries.`],
+          [`30, 31`, `Boundaries for other months, but 28 and 29 are also needed.`]
+        ], a: 2, src: `Summary MCQ` },
+        { q: `A document with test objectives and scope is called a:`, o: [
+          [`Random test`, `Not a document.`],
+          [`Test case`, `A test case is input, conditions and expected output.`],
+          [`Test plan`, `Correct (the summary spells it "test plane").`],
+          [`Dynamic test`, `A kind of testing, not a document.`]
+        ], a: 2, src: `Summary MCQ` },
+        { q: `A text entry field allows 1 to 255 characters. Which are the INVALID boundary tests?`, o: [
+          [`1 and 255`, `These are the valid boundaries.`],
+          [`0 and 256`, `Correct. One below the minimum and one above the maximum.`],
+          [`254 and 255`, `Both are valid.`],
+          [`128 only`, `A mid value, not a boundary.`]
+        ], a: 1 },
+        { q: `Driving license: an individual above 18 and at most 60 is eligible. How many equivalence classes?`, o: [
+          [`1`, `There are also invalid classes.`],
+          [`2`, `There are two invalid classes, plus one valid.`],
+          [`3`, `Correct. Between 18 and 60 (valid), below 18 (invalid), above 60 (invalid).`],
+          [`6`, `6 is the number of test cases in the 5-digit example, not classes here.`]
+        ], a: 2 },
+        { q: `In the media-player example, what is the minimum number of test cases that visits every state at least once?`, o: [
+          [`1`, `Correct. Off → play → fast forward → fast forward visits all four states.`],
+          [`2`, `Two are needed to exercise every transition, not every state.`],
+          [`4`, `One test case per state is not needed.`],
+          [`8`, `8 is the number of transitions.`]
+        ], a: 0 },
+        { q: `Static black-box testing mainly focuses on:`, o: [
+          [`Running the code with extreme data`, `That is dynamic test-to-fail.`],
+          [`The specification (e.g. user manual)`, `Correct. It tests without executing and aims for complete, clear documentation.`],
+          [`Internal data structures`, `That is white-box testing.`],
+          [`Server load`, `That is performance testing.`]
+        ], a: 1 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 3 ───────────────────────── */
+    {
+      n: 3, title: `White Box Testing`,
+      notes: [
+        { h: `What white-box testing does`, pts: [
+          `Unit outline: <b>1. Static white-box</b> (examining design and code, formal review, coding standards and guidelines, code review checklist) and <b>2. Dynamic white-box</b> (vs debugging, testing the pieces, data coverage, code coverage).`,
+          `White-box testing helps a tester: (1) test <b>independent paths</b> in a unit/module; (2) test <b>logical correctness</b> (both true and false conditions); (3) test <b>loops</b> at their boundaries; (4) test <b>internal data structures</b> for validity.`,
+          `Also called <b>glass box</b>, <b>structural</b>, <b>open box</b> or <b>clear box</b> testing, because it examines internal workings.`,
+          `<b>Static white-box</b> (examining the design and code) has 3 parts: <b>Formal Review</b> (peer review, walkthrough, inspection), <b>Coding Standards and Guidelines</b>, <b>Code Review Checklist</b>.`
+        ]},
+        { h: `Formal review`, pts: [
+          `Formal meetings between programmers and testers to inspect the software's design and code.`,
+          `<b>4 essential elements</b>: (1) <b>Identify problems</b> in design and code; (2) <b>Follow rules</b>: fixed set of rules, e.g. lines of code reviewed per day and time spent; (3) <b>Prepare</b>: every participant prepares and contributes; (4) <b>Write a report</b> summarizing results, made available to the development team.`,
+          `<b>Peer review</b>: a programmer who helped design the architecture/code, with other programmers or testers acting as reviewers.`,
+          `<b>Walkthrough</b>: the programmer who <b>wrote</b> the code presents it to a group of <b>5 or 6</b> programmers and testers, reading it line by line or function by function and answering queries.`,
+          `<b>Inspection</b>: the presenter is <b>not the real programmer</b>. Inspectors review the code from the <b>user's and tester's perspective</b>.`
+        ]},
+        { h: `Coding standards and guidelines`, pts: [
+          `<b>Standards</b> are rules that <b>must be adhered to</b> (mandatory). <b>Guidelines</b> are instructions that help a person follow the standards (<b>not really mandatory</b>).`,
+          `<b>3 reasons</b> to follow them: (1) <b>Reliability</b>: code is more reliable and secure; (2) <b>Readability / Maintainability</b>: easier to understand and maintain; (3) <b>Portability</b>: runs on different hardware and compilers.`
+        ]},
+        { h: `Generic code review checklist`, table: [
+          [`Error class`, `Meaning`, `What to check`],
+          [`Data reference`, `Variables, constants, arrays, strings, records not properly declared/initialized`, `Uninitialized variables; subscripts within bounds; off-by-one errors; a variable used where a constant is better`],
+          [`Data declaration`, `Improper declaration of variables and constants`, `Correct length/type/storage class; initialized properly and consistent with type; variables with similar names; declared but never used or used only once`],
+          [`Computation`, `Wrong calculations`, `Mixed data types (int + float); same type different size (long + short); overflow mid-calculation; divisor can be zero`],
+          [`Comparison`, `Boundary conditions: &lt;, &gt;, =, ≠, true/false`, `Using &lt; instead of &lt;=; correct Boolean operands (integer in a Boolean calculation)`],
+          [`Control flow`, `Improper behaviour of loops and control structures`, `Loops terminate, correct branching`],
+          [`Input/Output`, `Reading files, keyboard/mouse input, writing to file or screen`, `File and device handling`]
+        ]},
+        { h: `Note on the "zero is true" slide`, pts: [
+          `The Comparison Errors slide says: "In the C language, zero is considered as true and non-zero is considered as false." The summary MCQ repeats it with answer "C language".`,
+          `<b>In real C it is the opposite</b>: 0 is false and any non-zero value is true. If the exam repeats the slide sentence, choose "C language". The slide's point is that mixing integers and Booleans is a source of comparison errors.`
+        ]},
+        { h: `Dynamic white-box testing`, pts: [
+          `A <b>validation check</b>: running test cases with input values to ensure the application works according to the spec throughout execution.`,
+          `It covers: (a) testing low-level functions, procedures, subroutines or libraries directly; (b) testing the whole program at the top level, adjusting test cases based on what we know of its operation; (c) reading variables and state information to check the tests do what they were designed to do, and forcing the software to do things that are hard to test normally.`,
+          `<b>Dynamic white-box testing vs debugging</b>: testing <b>finds</b> bugs; debugging <b>fixes</b> the bugs found during testing.`,
+          `<b>Testing the pieces</b> = unit and integration testing. Integration testing strategies (figure): <b>Bottom-up</b>, <b>Top-down</b>, <b>Umbrella approach</b>.`
+        ]},
+        { h: `Data coverage and code coverage`, pts: [
+          `<b>Data coverage</b>: data tracked completely through the software (variables, constants, arrays, data structures, keyboard/mouse input, files, screen I/O, modems, networks). Code is divided into <b>data and states</b> like black-box testing, so it is easy to map white-box and black-box cases. Types: <b>Data flow</b>, <b>Sub-boundaries</b>, <b>Error forcing</b>.`,
+          `<b>Code coverage</b> has 3 types: <b>Statement coverage</b>, <b>Path coverage</b> (branch), <b>Condition coverage</b>.`,
+          `<b>Statement coverage</b>: every statement runs at least once. Example: 4 sequential PRINT lines, so one test runs all of them.`,
+          `<b>Path coverage</b>: every path (both branches of every IF). Example: IF Date$ = "25-12-2008" → PRINT "MERRY CHRISTMAS". 2 tests: Date = 25-12-2008 runs 1,2,3,4,5,6,7; any other date runs 1,2,5,6,7.`
+        ]},
+        { h: `Condition coverage worked example`, code: `1: PRINT "Good Morning"
+2: IF Date$ = "25-12-2008" AND Time$ = "00:00:00" THEN
+3:    PRINT "MERRY CHRISTMAS"
+4: END IF
+5: PRINT "The date is: "; Date$
+6: PRINT "The time is: "; Time$
+7: END` },
+        { h: `Test cases for full condition coverage`, table: [
+          [`Date$`, `Time$`, `Lines executed`],
+          [`25-12-2007`, `11:11:11`, `1, 2, 5, 6, 7`],
+          [`25-12-2007`, `00:00:00`, `1, 2, 5, 6, 7`],
+          [`25-12-2008`, `11:11:11`, `1, 2, 5, 6, 7`],
+          [`25-12-2008`, `00:00:00`, `1, 2, 3, 4, 5, 6, 7`]
+        ]},
+        { h: `Why condition coverage needs more cases`, pts: [
+          `Branch coverage needs only 2 tests (whole IF true once, false once). Condition coverage makes <b>each sub-condition</b> (Date part and Time part) true and false, so the lecture lists all <b>4 combinations</b>.`,
+          `The exercise at the end (triangle problem) is solved in Lecture 4.`
+        ]}
+      ],
+      cards: [
+        [`Other names for white-box testing`, `Glass box, structural, open box, clear box testing.`],
+        [`3 parts of static white-box testing`, `Formal review, coding standards and guidelines, code review checklist.`],
+        [`4 essential elements of a formal review`, `Identify problems, follow rules, prepare, write a report.`],
+        [`3 types of formal review`, `Peer review, walkthrough, inspection.`],
+        [`Walkthrough`, `The author presents the code line by line to a group of 5 or 6 programmers and testers.`],
+        [`Inspection`, `The presenter is not the author; inspectors review from the user's and tester's view.`],
+        [`Standards vs guidelines`, `Standards are mandatory rules; guidelines are instructions that help follow them and are not really mandatory.`],
+        [`3 reasons for standards and guidelines`, `Reliability, readability/maintainability, portability.`],
+        [`Adding long integers to short integers`, `A computation error.`],
+        [`Using < instead of <=`, `A comparison error.`],
+        [`Off-by-one indexing`, `A data reference error.`],
+        [`Dynamic white-box testing vs debugging`, `Testing finds bugs; debugging fixes them.`],
+        [`Integration testing approaches (figure)`, `Bottom-up, top-down, umbrella approach.`],
+        [`Types of data coverage`, `Data flow, sub-boundaries, error forcing.`],
+        [`Types of code coverage`, `Statement, path (branch), condition coverage.`]
+      ],
+      qa: [
+        [`Differentiate between peer review, walkthrough and inspection.`, `Peer review: a programmer involved in the design or code, with other programmers or testers as reviewers. Walkthrough: the author presents the code line by line to 5 or 6 programmers and testers and answers questions. Inspection: someone other than the author presents; inspectors review from the user's and tester's perspective. It is the most formal.`],
+        [`What are the six classes in the generic code review checklist? Give an example of each.`, `Data reference (uninitialized variable, off-by-one); data declaration (wrong type or length, unused variable); computation (int plus float, long plus short, overflow, divide by zero); comparison (< instead of <=); control flow (improper loop behaviour); input/output (file read, keyboard input, writing to screen).`],
+        [`Are debugging and dynamic white-box testing the same?`, `No. Dynamic white-box testing runs test cases with inputs to find bugs, as a validation check. Debugging fixes the bugs found during testing. Both use knowledge of the code.`],
+        [`Write test cases for full condition coverage of: IF Date$ = "25-12-2008" AND Time$ = "00:00:00" THEN PRINT "MERRY CHRISTMAS".`, `(25-12-2007, 11:11:11) runs 1,2,5,6,7; (25-12-2007, 00:00:00) runs 1,2,5,6,7; (25-12-2008, 11:11:11) runs 1,2,5,6,7; (25-12-2008, 00:00:00) runs 1,2,3,4,5,6,7.`]
+      ],
+      quiz: [
+        { q: `Which of the following stages do inspections come under?`, o: [
+          [`Formal review`, `Correct. Formal review = peer review, walkthrough and inspection.`],
+          [`Peer review`, `Peer review is a sibling of inspection, not its parent.`],
+          [`Code coverage`, `Code coverage is dynamic white-box.`],
+          [`Data coverage`, `Data coverage is dynamic white-box.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `From the following, select the choice which is appropriate to standards and guidelines.`, o: [
+          [`Scalability`, `Not among the 3 reasons.`],
+          [`Reliability`, `Correct. The reasons are reliability, readability/maintainability and portability.`],
+          [`Usability`, `Not among the 3 reasons.`],
+          [`Compatibility`, `Not among the 3 reasons (portability is, compatibility is not).`]
+        ], a: 1, src: `Exam 2025/26` },
+        { q: `What are instructions to be followed which are <b>not really mandatory</b>?`, o: [
+          [`Standards and guidelines`, `Standards are mandatory.`],
+          [`Standards`, `Standards must be adhered to.`],
+          [`Guidelines`, `Correct. Guidelines help you follow the standards but are not mandatory.`],
+          [`Not all`, `A correct choice exists.`]
+        ], a: 2, src: `Exam 2025/26` },
+        { q: `What are instructions to be followed which are <b>mandatory</b>?`, o: [
+          [`Guidelines`, `Guidelines are not really mandatory.`],
+          [`Standards`, `Correct. Standards are rules that must be adhered to.`],
+          [`Standards and guidelines`, `Only standards are mandatory.`],
+          [`Not all`, `A correct choice exists.`]
+        ], a: 1, src: `Exam 2025/26` },
+        { q: `Formal review, coding standards and guidelines, and code review are phases of:`, o: [
+          [`Static white box`, `Correct. These are the three parts of static white-box testing.`],
+          [`Dynamic white box`, `Dynamic white-box covers testing the pieces, data coverage and code coverage.`],
+          [`Static black box`, `Static black-box reviews the specification.`],
+          [`Dynamic black box`, `Dynamic black-box runs the software without code knowledge.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `if (X&gt;1) and (Y=0) then A=A/X; the statement-coverage test case is:`, o: [
+          [`All answers`, `Only one option makes the condition true.`],
+          [`X=3, y=1`, `Y=0 is false, so A=A/X never runs.`],
+          [`X=2, y=1`, `Y=0 is false, so the statement is skipped.`],
+          [`X=2, y=0`, `Correct. X&gt;1 and Y=0 are both true, so A=A/X runs and every statement executes.`]
+        ], a: 3, src: `Exam 2025/26` },
+        { q: `if (X=2) or (y&gt;1) then A=A+1; the statement-coverage test cases are:`, o: [
+          [`X=2, y=0`, `This works (X=2 true), but so do the others.`],
+          [`X=2, y=2`, `This works, but so do the others.`],
+          [`X=1, y=2`, `This works (y&gt;1 true), but so do the others.`],
+          [`All answers`, `Correct. With OR, each case makes the condition true, so A=A+1 executes in all three.`]
+        ], a: 3, src: `Exam 2025/26` },
+        { q: `if (X&gt;1) and (Y=0) then A=A/X; if (X=2) or (A&gt;1) then A=A+1; the statement-coverage test case is:`, o: [
+          [`X=3, Y=0, A=1`, `First IF true: A=1/3. Second: X≠2 and A=0.33 is not &gt;1, so A=A+1 is skipped.`],
+          [`X=0, Y=0, A=4`, `First IF false (X&gt;1 fails), so A=A/X is skipped.`],
+          [`All answers`, `Only one option executes both statements.`],
+          [`X=2, Y=0, A=4`, `Correct. First IF true: A=4/2=2. Second IF: X=2 true, so A=3. Both statements run.`]
+        ], a: 3, src: `Exam 2025/26` },
+        { q: `The process of fixing the bugs found during the testing phase is called:`, o: [
+          [`Static black box testing`, `This reviews specifications.`],
+          [`Debugging`, `Correct. Testing finds bugs; debugging fixes them.`],
+          [`Dynamic black box testing`, `This finds bugs, it does not fix them.`],
+          [`Dynamic white box testing`, `This finds bugs; debugging fixes them.`]
+        ], a: 1, src: `Summary MCQ` },
+        { q: `Adding long integers to short integers will cause:`, o: [
+          [`Control flow errors`, `Those concern loops and control structures.`],
+          [`Computation errors`, `Correct. Same type but different sizes is a computation-error check.`],
+          [`Data reference errors`, `Those concern uninitialized variables and array bounds.`],
+          [`Comparison errors`, `Those concern &lt; vs &lt;= and Boolean operands.`]
+        ], a: 1, src: `Summary MCQ` },
+        { q: `The umbrella approach is a type of:`, o: [
+          [`Integration testing`, `Correct. The figure shows bottom-up, top-down and umbrella under integration testing.`],
+          [`Top-down testing`, `Top-down is a sibling of umbrella.`],
+          [`Bottom-up testing`, `Bottom-up is a sibling of umbrella.`],
+          [`Static testing`, `Integration testing is dynamic.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `A validation check that runs test cases with input values and uses knowledge of the code is:`, o: [
+          [`Static black box testing`, `Static means not running.`],
+          [`Dynamic white box testing`, `Correct. The lecture defines dynamic white-box testing as a validation check.`],
+          [`Dynamic black box testing`, `Black-box does not use code knowledge.`],
+          [`Formal review`, `A review is static.`]
+        ], a: 1, src: `Summary MCQ` },
+        { q: `"Zero is considered as true and non-zero as false" — the slide attributes this to which language?`, o: [
+          [`Java`, `Not the slide's answer.`],
+          [`C++`, `Not the slide's answer.`],
+          [`All the above`, `Not the slide's answer.`],
+          [`C`, `This is the slide/summary answer. Careful: in real C it is the opposite (0 = false, non-zero = true). Pick "C" only if the exam repeats the slide wording.`]
+        ], a: 3, src: `Summary MCQ` },
+        { q: `In a walkthrough, who presents the code?`, o: [
+          [`An independent inspector`, `That is an inspection.`],
+          [`The programmer who developed the code`, `Correct. The author presents it to a team of 5 or 6.`],
+          [`The customer`, `Customers do not present code.`],
+          [`The project manager`, `Not the presenter in a walkthrough.`]
+        ], a: 1 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 4 ───────────────────────── */
+    {
+      n: 4, title: `Cyclomatic Complexity, Triangle Problem and OOP Testing`,
+      notes: [
+        { h: `V-model: verification and validation`, pts: [
+          `The opening figure repeats the V-model: the left side going <b>down</b> (requirements spec → functional spec → system design → unit design → code) is <b>verification</b>. The right side going <b>up</b> (unit test → integration test → system test → acceptance test) is <b>validation</b>.`,
+          `Test plans link the two sides: acceptance test plan, system test plan, integration test plan and unit test cases.`
+        ]},
+        { h: `Worked example: foo()`, code: `public float foo(int a, int b, float x) {
+1.  if (a>1 && b==0) {
+2.     x = x/a;
+    }
+3.  if (a==2 || x>1) {
+4.     x = x+1;
+    }
+    else
+5.     x = x*a;
+6.  return (a+x);
+}` },
+        { h: `Control flow graph of foo`, table: [
+          [`Edge`, `Meaning`],
+          [`1 → 2`, `True branch of (a&gt;1 && b==0)`],
+          [`1 → 3`, `False branch of the first IF`],
+          [`2 → 3`, `Sequential`],
+          [`3 → 4`, `True branch of (a==2 || x&gt;1)`],
+          [`3 → 5`, `False branch (else)`],
+          [`4 → 6`, `Sequential`],
+          [`5 → 6`, `Sequential`]
+        ]},
+        { h: `Cyclomatic complexity and basis paths`, formula: [
+          `V(G) = E − N + 2P = 7 − 6 + 2(1) = 3`,
+          `Check: V(G) = predicate nodes + 1 = 2 (nodes 1 and 3) + 1 = 3`,
+          `Check: regions of the planar graph = 2 inner regions + 1 outer = 3`,
+          `Basis path 1: 1, 2, 3, 4, 6   → a=2, b=0, x=0 (any x)`,
+          `Basis path 2: 1, 3, 4, 6      → a=2, b=1, x=0 (any x)`,
+          `Basis path 3: 1, 3, 5, 6      → a=0, b=0, x=0`
+        ]},
+        { h: `Checking the test cases`, pts: [
+          `a=2, b=0: a&gt;1 && b==0 is true → x=x/2; then a==2 is true → x=x+1. Path 1,2,3,4,6 ✔.`,
+          `a=2, b=1: b==0 is false → skip 2; a==2 true → node 4. Path 1,3,4,6 ✔.`,
+          `a=0, b=0, x=0: a&gt;1 false → skip 2; a==2 false and x&gt;1 false → else node 5. Path 1,3,5,6 ✔.`,
+          `Cyclomatic complexity = the <b>number of independent (basis) paths</b>, i.e. the minimum number of tests for full path/branch coverage of the basis set.`
+        ]},
+        { h: `Triangle problem: functional (black-box) testing`, pts: [
+          `Pseudocode: read a,b,c; type="scalene"; if (a==b or a==c or b==c) type="isosceles"; if (a==b and a==c) type="equilateral"; if (a&gt;=b+c or b&gt;=a+c or c&gt;=a+b) type="not a triangle"; if (a&lt;=0 or b&lt;=0 or c&lt;=0) type="bad inputs"; print type.`,
+          `Domain split into 3 subdomains: <b>scalene</b> (no sides equal), <b>isosceles</b> (two equal), <b>equilateral</b> (all equal), plus 2 error subdomains: <b>bad inputs</b> and <b>not a triangle</b>. Each test case must state the expected output.`
+        ]},
+        { h: `Triangle functional test cases`, table: [
+          [`Subdomain`, `Case`, `Test (a,b,c) → output`],
+          [`Scalene`, `Increasing size`, `(3,4,5) scalene`],
+          [`Scalene`, `Decreasing size`, `(5,4,3) scalene`],
+          [`Scalene`, `Largest as second`, `(4,5,3) scalene`],
+          [`Isosceles`, `a=b, other larger / smaller`, `(5,5,8) / (8,8,5) isosceles`],
+          [`Isosceles`, `a=c, other larger / smaller`, `(5,8,5) / (8,5,8) isosceles`],
+          [`Isosceles`, `b=c, other larger / smaller`, `(8,5,5) / (5,8,8) isosceles`],
+          [`Equilateral`, `All sides equal`, `(5,5,5) equilateral`],
+          [`Not a triangle`, `Largest first / second / third`, `(6,4,2) / (4,6,2) / (1,2,3) not a triangle`],
+          [`Bad inputs`, `One / two / three bad inputs`, `(1,2,4) ‡ / (3,2,5) ‡ / (0,0,0) bad inputs`]
+        ]},
+        { h: `Note on the bad-inputs row`, pts: [
+          `‡ The slide lists (1,2,4) and (3,2,5) as "bad inputs", but running the pseudocode on them gives <b>"not a triangle"</b> (4 ≥ 1+2 and 5 ≥ 3+2); no side is ≤ 0. Correct examples would be (−1,2,4) for one bad input and (0,−2,5) for two. (0,0,0) is correct: the last IF sets "bad inputs".`
+        ]},
+        { h: `Triangle: statement and branch coverage`, table: [
+          [`Node`, `Source line`, `3,4,5`, `3,5,3`, `0,1,0`, `4,4,4`],
+          [`A`, `read a,b,c`, `*`, `*`, `*`, `*`],
+          [`B`, `type = scalene`, `*`, `*`, `*`, `*`],
+          [`C`, `if (a==b || b==c || a==c)`, `*`, `*`, `*`, `*`],
+          [`D`, `type = isosceles`, ``, `*`, `*`, `*`],
+          [`E`, `if (a==b && b==c)`, `*`, `*`, `*`, `*`],
+          [`F`, `type = equilateral`, ``, ``, ``, `*`],
+          [`G`, `if (a&gt;=b+c || b&gt;=a+c || c&gt;=a+b)`, `*`, `*`, `*`, `*`],
+          [`H`, `type = not a triangle`, ``, ``, `*`, ``],
+          [`I`, `if (a&lt;=0 || b&lt;=0 || c&lt;=0)`, `*`, `*`, `*`, `*`],
+          [`J`, `type = bad inputs`, ``, ``, `*`, ``],
+          [`K`, `print type`, `*`, `*`, `*`, `*`]
+        ]},
+        { h: `Minimal coverage sets (verified)`, pts: [
+          `(0,1,0): a==c → isosceles (D); not all equal; b ≥ a+c (1 ≥ 0) → not a triangle (H); a ≤ 0 → bad inputs (J).`,
+          `(4,4,4): isosceles (D), equilateral (F), valid triangle, positive sides.`,
+          `<b>Statement coverage minimum = 2 tests</b>: (4,4,4) + (0,1,0) run every line A–K.`,
+          `<b>Branch coverage minimum = 3 tests</b>: add (3,4,5), which makes C false. (0,1,0) makes E false and G, I true; (4,4,4) makes G and I false. So every IF is both true and false.`,
+          `The flow graph (figure) is a chain of decisions C → E → G → I, each with a side branch (isosceles, equilateral, not a triangle, bad inputs) rejoining the chain.`
+        ]},
+        { h: `Functional tests: area of a triangle from 3 points`, table: [
+          [`Point 1`, `Point 2`, `Point 3`, `Expected area`],
+          [`1,1`, `1,5`, `5,1`, `8`],
+          [`1,1`, `1,5`, `1,10`, `Not a triangle (collinear, x=1)`],
+          [`10,10`, `0,10`, `10,0`, `50`],
+          [`0,0`, `0,10`, `10,10`, `50`]
+        ]},
+        { h: `OOP testing`, pts: [
+          `Functional testing of OO software is <b>no different</b> from conventional software: test cases come from the required functionality in the requirements document. <b>Structural</b> testing of OOP is very different.`,
+          `Conventional software uses coverage criteria (statement, branch, data flow). These can be applied to OO, but statement and branch coverage <b>do not seem appropriate</b> for OO complexity: the <b>interactions between methods</b> must be tested.`,
+          `<b>MM (Method-Message) testing</b>: every method call must be tested at least once. If a method calls another several times, each call is tested only once. It is the most basic criterion and <b>does not subsume statement coverage</b>.`,
+          `<b>Function Pair (FP) testing</b>: all possible sequences of method executions <b>of length two</b> must be tested, usually based on a <b>state machine diagram</b>.`
+        ]},
+        { h: `Stack example: MM and FP`, pts: [
+          `States: <b>Empty, Normal, Full</b>. new → Empty. push: Empty→Normal, Normal→Normal, Normal→Full, Full→error. pop: Empty→error, Normal→Normal, Normal→Empty, Full→Normal.`,
+          `<b>MM</b>: a simple sequence of <b>create, push and pop</b> achieves MM testing.`,
+          `<b>FP (14 pairs)</b>: 1 new-pop (empty, error); 2 new-push; 3 push(from empty)-push; 4 push(from empty)-pop; 5 push(normal→normal)-push (still normal); 6 push(normal→normal)-push (into full); 7 push(normal→normal)-pop; 8 push(normal→full)-push (error); 9 push(normal→full)-pop; 10 pop(normal→normal)-push; 11 pop(normal→normal)-pop (still normal); 12 pop(normal→normal)-pop (into empty); 13 pop(into empty)-push; 14 pop(into empty)-pop (error).`
+        ]},
+        { h: `Lecture questions (answers)`, pts: [
+          `<b>Q1</b> How is functional testing of OO software done? The same as conventional: test cases from the required functionality in the requirements document.`,
+          `<b>Q2</b> Is statement coverage useful for OO? Limited: it can be applied but does not test interactions between methods.`,
+          `<b>Q3</b> Does MM subsume statement coverage? <b>No</b> (lecture: "MM testing does not subsume every-statement coverage"). The lec-4 student summary says "Yes"; that contradicts the slide.`,
+          `<b>Q4</b> Advantage of function pair coverage? It tests sequences of two method executions, so it catches interaction faults and state-dependent bugs (e.g. push on full, pop on empty) that single-call MM testing misses.`
+        ]}
+      ],
+      cards: [
+        [`Cyclomatic complexity formula`, `V(G) = E − N + 2P (P = connected components, usually 1). Also = predicate nodes + 1 = number of regions.`],
+        [`V(G) of foo()`, `7 edges − 6 nodes + 2 = 3.`],
+        [`Basis paths of foo()`, `1,2,3,4,6; 1,3,4,6; 1,3,5,6.`],
+        [`Cyclomatic complexity determines`, `The number of independent (basis) paths.`],
+        [`V-model: left side / right side`, `Left (down) = verification; right (up) = validation.`],
+        [`Triangle subdomains`, `Scalene, isosceles, equilateral, plus the error cases bad inputs and not a triangle.`],
+        [`Minimal statement coverage for the triangle`, `(4,4,4) and (0,1,0).`],
+        [`Minimal branch coverage for the triangle`, `(3,4,5), (4,4,4) and (0,1,0).`],
+        [`MM testing`, `Every method call is tested at least once.`],
+        [`Does MM subsume statement coverage?`, `No.`],
+        [`Function pair testing`, `All sequences of method executions of length two, based on a state machine.`],
+        [`MM sequence for a stack`, `create, push, pop.`],
+        [`Stack states`, `Empty, Normal, Full.`],
+        [`Number of function pairs for the stack`, `14.`]
+      ],
+      qa: [
+        [`Find the cyclomatic complexity of foo() and its basis paths with test cases.`, `Nodes 1 to 6, edges 1-2, 1-3, 2-3, 3-4, 3-5, 4-6, 5-6 give E=7, N=6, so V(G)=7-6+2=3 (also 2 predicates + 1). Basis paths: 1,2,3,4,6 (a=2,b=0,x=0); 1,3,4,6 (a=2,b=1,x=0); 1,3,5,6 (a=0,b=0,x=0).`],
+        [`Differentiate between MM testing and function pair testing.`, `MM testing requires every method call to be tested at least once (each call once even if repeated). It is the most basic criterion and does not subsume statement coverage. Function pair testing requires every possible sequence of two method executions, usually derived from a state machine diagram, so it tests interactions and state-dependent behaviour.`],
+        [`Give the minimal test sets for statement and branch coverage of the triangle program.`, `Statement: (4,4,4) and (0,1,0), which reach isosceles, equilateral, not a triangle and bad inputs. Branch: add (3,4,5) so the first IF is also false. Then every decision is true and false at least once.`],
+        [`List the function pairs for the stack.`, `new-pop (error), new-push, push(from empty)-push, push(from empty)-pop, push(normal)-push (still normal), push(normal)-push (into full), push(normal)-pop, push(to full)-push (error), push(to full)-pop, pop(normal)-push, pop(normal)-pop (still normal), pop(normal)-pop (into empty), pop(into empty)-push, pop(into empty)-pop (error).`]
+      ],
+      quiz: [
+        { q: `A simple sequence that achieves method-message coverage in stack testing is:`, o: [
+          [`create, push &amp; pop`, `Correct. Each method call is exercised once.`],
+          [`create, insert &amp; pop`, `A stack has push, not insert.`],
+          [`create &amp; push`, `pop is never called.`],
+          [`create &amp; insert`, `Wrong method names, and pop is missing.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `For foo() with E = 7 and N = 6, the cyclomatic complexity is:`, o: [
+          [`1`, `That would be straight-line code.`],
+          [`2`, `There are two decisions, so V(G) = 2 + 1.`],
+          [`3`, `Correct. 7 − 6 + 2 = 3.`],
+          [`13`, `E + N is not the formula.`]
+        ], a: 2 },
+        { q: `Cyclomatic complexity is used to determine the number of:`, o: [
+          [`Paths`, `Correct. It gives the number of independent (basis) paths.`],
+          [`States`, `States come from a state machine.`],
+          [`Lines`, `Not what it measures.`],
+          [`Statements`, `Not what it measures.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `Method-message testing does NOT subsume:`, o: [
+          [`Statement coverage`, `Correct. Stated directly in the lecture.`],
+          [`All the above`, `The lecture only mentions statement coverage.`],
+          [`Data coverage`, `Not mentioned.`],
+          [`State coverage`, `Not mentioned.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `Which input set gives the path 1,3,5,6 of foo()?`, o: [
+          [`a=2, b=0, x=0`, `This takes 1,2,3,4,6.`],
+          [`a=2, b=1, x=0`, `This takes 1,3,4,6 because a==2.`],
+          [`a=0, b=0, x=0`, `Correct. First IF false, then a≠2 and x=0 is not &gt;1, so the else (5) runs.`],
+          [`a=3, b=0, x=9`, `First IF true, so node 2 runs.`]
+        ], a: 2 },
+        { q: `What is the minimum number of tests for STATEMENT coverage of the triangle pseudocode?`, o: [
+          [`1`, `No single triple reaches both equilateral and not-a-triangle.`],
+          [`2`, `Correct. (4,4,4) and (0,1,0) run every line.`],
+          [`4`, `The slide table uses 4 columns, but 2 are enough.`],
+          [`16`, `Far too many.`]
+        ], a: 1 },
+        { q: `The triple (0,1,0) finally prints:`, o: [
+          [`isosceles`, `It is set, then overwritten.`],
+          [`not a triangle`, `Also set (1 ≥ 0+0), then overwritten.`],
+          [`bad inputs`, `Correct. The last IF (a ≤ 0) overwrites the type.`],
+          [`scalene`, `Overwritten by the first IF (a==c).`]
+        ], a: 2 },
+        { q: `Function pair coverage requires testing:`, o: [
+          [`Every method call once`, `That is MM coverage.`],
+          [`All sequences of method executions of length two`, `Correct. Usually derived from a state machine diagram.`],
+          [`Every statement`, `That is statement coverage.`],
+          [`Only error states`, `Error pairs are included, but not only them.`]
+        ], a: 1 },
+        { q: `Functional testing of object-oriented software is:`, o: [
+          [`Very different from conventional software`, `That is true for STRUCTURAL testing, not functional.`],
+          [`No different from functional testing of conventional software`, `Correct. Test cases come from the required functionality.`],
+          [`Impossible without source code`, `Functional testing never needs code.`],
+          [`Only statement coverage`, `Statement coverage is structural.`]
+        ], a: 1 },
+        { q: `In the V-model figure, the left (downward) side is labelled:`, o: [
+          [`Validation`, `Validation is the right (upward) side.`],
+          [`Verification`, `Correct.`],
+          [`Debugging`, `Not in the figure.`],
+          [`Maintenance`, `Not in the figure.`]
+        ], a: 1 },
+        { q: `Expected area for points (1,1), (1,5), (5,1)?`, o: [
+          [`8`, `Correct. Right triangle with legs 4 and 4: ½·4·4 = 8.`],
+          [`16`, `Forgot the ½.`],
+          [`Not a triangle`, `The points are not collinear.`],
+          [`50`, `That is the area of the 10-by-10 cases.`]
+        ], a: 0 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 5 ───────────────────────── */
+    {
+      n: 5, title: `Web Site Testing`,
+      notes: [
+        { h: `Introduction and why web testing matters`, pts: [
+          `Objectives: fundamentals of web-page testing; black-box testing of web pages; white-box and gray-box testing; configuration and compatibility testing.`,
+          `A <b>web site</b> is a collection of one or more web pages (text, graphics, links, sounds…) grouped under the <b>same domain</b>. It must have a <b>domain name</b> and a <b>web host</b>.`,
+          `Importance: a site built for Internet Explorer may fail in Mozilla, Chrome or on Linux, so testing makes sure the site works on <b>every browser and platform</b>.`
+        ]},
+        { h: `Web page fundamentals`, pts: [
+          `<b>1. Home page</b>: the default page. It usually has a header at the top with the <b>source name</b> of the site (text only, or designs with graphics).`,
+          `<b>2. Links</b> connect local and remote pages to the home page. Used to: navigate to other pages; direct the user to a different location; download files; open other Internet tools such as the default e-mail client (e.g. Outlook).`,
+          `<b>3. Content</b> is the <b>most important</b> part. Forms: text documents, graphics, sounds, downloadable movie clips, fields for user data, rotating advertisements, dynamically changing text.`
+        ]},
+        { h: `13 elements of web site testing`, table: [
+          [`#`, `Element`, `What to check`],
+          [`1`, `User interface`, `The site is simple to use`],
+          [`2`, `Instructions`, `All relevant instructions are present`],
+          [`3`, `Site map / navigational map`, `Map exists and is appropriate; every link on it exists and works; navigation bar on every page`],
+          [`4`, `Content`, `Professional: no plagiarism; minimal bold, big fonts, blinking text; web references are hyperlinked`],
+          [`5`, `Colors/backgrounds`, `Content remains easy to read`],
+          [`6`, `Images`, `"A picture is worth a thousand words": use them to convey messages`],
+          [`7`, `Tables`, `Positioned so users do not keep scrolling`],
+          [`8`, `Wrap-around`, `Text wraps correctly around images`],
+          [`9`, `Functionality`, `All links, database connection and forms`],
+          [`10`, `Links`, `The vehicle that navigates from page to page`],
+          [`11`, `Forms`, `Information is accepted and the submit button works`],
+          [`12`, `Data verification`, `Input matches the defined business rules`],
+          [`13`, `Cookies`, `Cookies work; login information in cookies is encrypted`]
+        ]},
+        { h: `Black-box testing of a web page`, pts: [
+          `Example screen: the Infosys web site shows the fundamental elements: <b>text, graphics and hyperlinks</b> (plus forms).`,
+          `<b>Text</b>: target audience level, terminology, depth of content, subject matter, accuracy, spelling, punctuation, correct contact info (phones, addresses).`,
+          `<b>Hyperlinks</b>: each goes to the correct destination and opens in the same tab or a new window as specified (if no spec, check that it works). Links must be <b>obvious</b> (underlined text, mouse pointer changes). For an e-mail link, send an e-mail and verify you get a response.`,
+          `<b>Graphics</b>: all load and display properly. A missing or wrongly named graphic will not load, and the page shows an error in its place.`,
+          `<b>Forms</b> (text boxes, list boxes, fields; e.g. Google's Gmail sign-up form): are fields positioned properly? correct size? accept correct data? reject bad data?`
+        ]},
+        { h: `White-box and gray-box testing of a web site`, pts: [
+          `<b>White-box</b>: the tester knows the internal design. Elements to test:`,
+          `1. <b>Dynamic content</b>: graphics and text that vary with conditions (time of day, weather, stock tickers).`,
+          `2. <b>Database-driven pages</b>: catalogs and inventories (e-commerce).`,
+          `3. <b>Programmatically created pages</b>: the designer types entries in a database, drags and drops elements in a layout program and presses a button to generate the HTML.`,
+          `4. <b>Server performance and loading</b>: popular sites get millions of hits per day, so simulate millions of connections and downloads.`,
+          `5. <b>Security</b>: denial of service and buffer overflow attacks.`,
+          `<b>Gray-box testing</b>: a mix of black-box and white-box. Its purpose is to <b>isolate defects related to bad design or bad implementation</b> of the web. It is possible for web sites because the tester works from the user's view but can also see the page's HTML/scripts.`
+        ]},
+        { h: `Configuration and compatibility testing; tools`, pts: [
+          `<b>Hardware configurations</b>: 1 CPU types, 2 RAM, 3 graphics cards, 4 video capture cards, 5 audio cards, 6 monitors/display devices, 7 network cards.`,
+          `<b>Compatibility</b>: 1 various font sizes, 2 browsers with CSS, 3 various screen resolutions, 4 various memory sizes, 5 different network environments.`,
+          `<b>Automatic web testing tools</b> check: browser compatibility; load, stress and performance; broken hyperlinks; web functional/GUI testing; spelling; security; database; OOP; network; web applications (<b>Selenium</b> and <b>Cypress</b>).`
+        ]}
+      ],
+      cards: [
+        [`Web site (definition)`, `A collection of one or more web pages under the same domain; needs a domain name and a web host.`],
+        [`3 fundamental components of a web page`, `Home page, links, content.`],
+        [`Most important part of a web site`, `Content.`],
+        [`Site-map testing checks`, `Map appropriate, every link exists, navigation bar on every page, each link works on each page.`],
+        [`Cookies testing`, `Cookies work and stored login info is encrypted.`],
+        [`Data verification`, `User input must match the business rules defined for the system.`],
+        [`Black-box elements of a web page`, `Text, hyperlinks, graphics, forms.`],
+        [`Obvious hyperlinks`, `Underlined text and the mouse pointer changes.`],
+        [`Dynamic content`, `Graphics/text that vary with conditions: time of day, weather, stock tickers.`],
+        [`White-box web elements`, `Dynamic content, database-driven pages, programmatically created pages, server performance and loading, security.`],
+        [`Security tests for web sites`, `Denial of service and buffer overflow attacks.`],
+        [`Gray-box testing purpose`, `Isolate defects related to bad design or bad implementation of the web.`],
+        [`Web application test tools`, `Selenium and Cypress.`]
+      ],
+      qa: [
+        [`What basic elements of a web page can easily be tested with a black-box approach?`, `Text (audience, terminology, accuracy, spelling, contact info), hyperlinks (correct destination, same tab or new window, obvious, e-mail links), graphics (load and display, no missing or misnamed images) and forms (positioned, right size, accept good data, reject bad data).`],
+        [`What basic elements can easily be tested with a white-box approach?`, `Dynamic content, database-driven pages, programmatically created pages, server performance and loading, and security (denial of service, buffer overflow).`],
+        [`Why is gray-box testing possible with web site testing?`, `Web pages are built from HTML and scripts that the tester can see (view source) while still testing from the user's view, so black-box and white-box can be mixed. The aim is to isolate defects caused by bad design or bad implementation.`],
+        [`List what configuration and compatibility testing check for a web site.`, `Hardware: CPU types, RAM, graphics cards, video capture cards, audio cards, monitors, network cards. Compatibility: font sizes, browsers with CSS, screen resolutions, memory sizes, network environments.`]
+      ],
+      quiz: [
+        { q: `Which testing strategy checks that a web site works properly across different hardware and software environments?`, o: [
+          [`White box testing`, `That looks inside the code.`],
+          [`Black box testing`, `That tests elements from the user's view.`],
+          [`Gray box testing`, `That isolates design or implementation defects.`],
+          [`Compatibility testing`, `Correct. Configuration and compatibility testing covers hardware and browsers, resolutions and networks.`]
+        ], a: 3, src: `Summary MCQ` },
+        { q: `Which is the MOST important part of a web site?`, o: [
+          [`Home page`, `The home page is the default page.`],
+          [`Links`, `Links navigate between pages.`],
+          [`Content`, `Correct. The lecture calls content the most important part.`],
+          [`Cookies`, `Cookies are just one testing element.`]
+        ], a: 2 },
+        { q: `Graphics and text that vary depending on conditions (time of day, weather, stock tickers) are called:`, o: [
+          [`Database-driven pages`, `Those display catalogs or inventories.`],
+          [`Dynamic content`, `Correct.`],
+          [`Programmatically created pages`, `Those are pages generated from a layout program.`],
+          [`Wrap-around`, `That is about text around images.`]
+        ], a: 1 },
+        { q: `Security testing of a web site (white-box) includes:`, o: [
+          [`Spelling and punctuation`, `That is text testing.`],
+          [`Denial of service and buffer overflow attacks`, `Correct.`],
+          [`Font sizes`, `That is compatibility.`],
+          [`Site map`, `That is navigation.`]
+        ], a: 1 },
+        { q: `"Dynamic content is graphics and text that vary depending on some conditions."`, o: [
+          [`True`, `Correct. This is the lecture's definition.`],
+          [`False`, `It is exactly the lecture's definition.`]
+        ], a: 0, src: `Summary T/F` },
+        { q: `"A navigational map helps the user to go straight to the information they want."`, o: [
+          [`True`, `Correct. Experienced users know where they want to go and avoid long instructions.`],
+          [`False`, `The lecture supports the statement.`]
+        ], a: 0, src: `Summary T/F` },
+        { q: `The purpose of gray-box web site testing is to:`, o: [
+          [`Replace all black-box tests`, `It mixes both; it does not replace them.`],
+          [`Isolate defects related to bad design or bad implementation`, `Correct. This is the lecture's wording.`],
+          [`Only test the server load`, `Server load is a white-box element.`],
+          [`Check spelling`, `That is black-box text testing.`]
+        ], a: 1 },
+        { q: `Which is NOT in the lecture's list of hardware configuration checks?`, o: [
+          [`CPU types`, `Listed.`],
+          [`Audio cards`, `Listed.`],
+          [`Keyboard layout`, `Correct. The list is CPU, RAM, graphics, video capture, audio, monitors, network cards.`],
+          [`Network cards`, `Listed.`]
+        ], a: 2 },
+        { q: `When testing cookies used for storing login information, you must make sure that:`, o: [
+          [`They are never used`, `Cookies are allowed.`],
+          [`The cookies work and the information is encrypted`, `Correct.`],
+          [`They are stored as plain text for speed`, `The opposite of the requirement.`],
+          [`They are blinking`, `Unrelated.`]
+        ], a: 1 },
+        { q: `Which tools are named for testing web applications?`, o: [
+          [`Selenium and Cypress`, `Correct.`],
+          [`Excel and Word`, `Not testing tools.`],
+          [`Git and Docker`, `Not in the lecture.`],
+          [`Figma and Balsamiq`, `Design tools, not testing tools.`]
+        ], a: 0 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 6 ───────────────────────── */
+    {
+      n: 6, title: `Software Quality Assurance (SQA)`,
+      notes: [
+        { h: `What is quality?`, pts: [
+          `Definition: quality means <b>conformance to requirements</b>. It is the set of attributes <b>valued by end-users</b>.`,
+          `It is affected by <b>directly measurable factors</b> (e.g. defects) and <b>indirectly measurable factors</b> (e.g. maintainability, usability).`
+        ]},
+        { h: `8 software quality factors`, table: [
+          [`Factor`, `Meaning`],
+          [`Reliability`, `Performs its intended function accurately`],
+          [`Efficiency`, `Optimal use of computing resources`],
+          [`Integrity`, `Control over access and security`],
+          [`Usability`, `Effort required to learn and operate the program`],
+          [`Maintainability`, `Effort required to locate and fix errors`],
+          [`Flexibility`, `Effort required to change the program`],
+          [`Portability`, `Effort required to transfer the program to another system`],
+          [`Reusability`, `Which parts can be used in other applications`]
+        ]},
+        { h: `SQA vs SQC; testing vs QA`, table: [
+          [``, `SQA (Assurance)`, `SQC (Control)`],
+          [`Idea`, `Prevention`, `Detection`],
+          [`Focus`, `Process (proactive)`, `Product (reactive)`],
+          [`Goal`, `Ensure standards and procedures are applied correctly`, `Evaluate product quality and screen out non-compliant items`]
+        ]},
+        { h: `Testing vs QA; roles and tasks`, pts: [
+          `<b>Software testing</b>: part of SQA; detection-oriented; evaluates spec, design and coding; performed under specified (normal and abnormal) conditions; main goal: find and report bugs; done by testers.`,
+          `<b>QA</b>: broader than testing; prevents defects; ensures correct processes, standards and methodologies; uses <b>ISO / CMM</b> models.`,
+          `<b>Tasks of testing</b>: (1) choose the test implementation approach; (2) execute tests to find bugs; (3) prepare verification and validation reports; (4) attend project and design review meetings.`,
+          `<b>Role of the tester</b>: take responsibility for bugs found; track bugs through their life cycle; convince the development team to fix them.`,
+          `<b>QA responsibilities</b>: inspect the development process; find improvements that prevent bugs; scope is larger than the testing team; monitor and evaluate processes and testing activities.`,
+          `<b>QA task examples</b>: develop standard processes; create guidelines (requirements, design, coding); use checklists for each stage; define quality metrics and criteria.`
+        ]},
+        { h: `Quality management in IT and in organizations`, pts: [
+          `Quality management in IT is often called <b>ITSM (IT Service Management)</b>. Goal: deliver IT services at an <b>agreed-upon level of quality</b>.`,
+          `Categories: <b>IT Service Support</b> = processes for the <b>efficient delivery of IT operational services</b>. <b>IT Service Delivery</b> = processes for <b>long-term planning, control and management</b> of IT services.`,
+          `SQA is not just testing. It includes establishing standards and methodologies, monitoring and evaluating the development process, and correcting errors during development while preventing their recurrence. Quality metrics assess how far quality requirements are met.`
+        ]},
+        { h: `Test management and organization structures`, table: [
+          [`Structure`, `Reports to`, `Pros`, `Cons`],
+          [`1. Small team`, `Development manager (testers + programmers under them)`, `Fast communication between developers and testers`, `An inexperienced dev manager may ignore bug reports to push delivery`],
+          [`2. Independent test team`, `Project manager (test manager/lead + development manager)`, `Testing team's feedback is considered in decisions`, `Final decision lies with the project manager; may hurt quality in critical projects`],
+          [`3. Test group reporting to executive management`, `Executive manager (QA/test, development and project managers)`, `Independent quality team; quality reports reach senior management directly`, `–`]
+        ]},
+        { h: `SQA metrics and indicators`, pts: [
+          `<b>Metrics</b>: rules for measuring software attributes (code size, complexity). <b>Indicators</b>: variables reflecting process outcomes (number of detected bugs).`,
+          `<b>Product metrics</b> measure the final product (code size, number of documented pages). <b>Process metrics</b> measure the development process (time taken, methodology).`,
+          `<b>9 common metrics</b>: code coverage; bugs per line of code; cyclomatic complexity; function point analysis; number of classes and interfaces; cohesion; coupling; order of growth; source lines of code.`
+        ]},
+        { h: `Software quality indicators`, table: [
+          [`Indicator`, `Measures`],
+          [`Progress`, `Work done by the developer in each phase`],
+          [`Stability`, `Whether each phase's products are stable enough to proceed`],
+          [`Process compliance`, `Developer's obedience to the procedures approved at project start`],
+          [`Quality evaluation effort`, `Effort spent on internal quality evaluation`],
+          [`Defect detection efficiency`, `How many defects were detected in a phase`],
+          [`Defect removal rate`, `Defects detected AND resolved over a period`],
+          [`Defect age profile`, `Defects NOT resolved over a period`],
+          [`Defect density`, `Identifies defect-prone parts of the system`],
+          [`Complexity`, `Complexity of the code in a program`]
+        ]}
+      ],
+      cards: [
+        [`Quality (definition)`, `Conformance to requirements; the set of attributes valued by end-users.`],
+        [`Directly vs indirectly measurable factors`, `Direct: defects. Indirect: maintainability, usability.`],
+        [`Reliability`, `Performs its intended function accurately.`],
+        [`Integrity`, `Control over access and security.`],
+        [`Maintainability`, `Effort required to locate and fix errors.`],
+        [`Flexibility`, `Effort required to change the program.`],
+        [`Portability`, `Effort required to transfer the program to another system.`],
+        [`SQA vs SQC`, `SQA: process, prevention, proactive. SQC: product, detection, reactive.`],
+        [`ITSM`, `IT Service Management: delivering IT services at an agreed-upon level of quality.`],
+        [`IT service support vs delivery`, `Support: efficient delivery of operational services. Delivery: long-term planning, control and management.`],
+        [`Metrics vs indicators`, `Metrics: rules for measuring attributes. Indicators: variables reflecting process outcomes.`],
+        [`Product vs process metrics`, `Product: final product (code size, pages). Process: development (time, methodology).`],
+        [`Defect removal rate vs defect age profile`, `Removal rate: detected and resolved. Age profile: not resolved, over a period.`],
+        [`Defect density`, `Identifies the defect-prone parts of the system.`]
+      ],
+      qa: [
+        [`What are the most commonly used software quality metrics?`, `Code coverage, bugs per line of code, cyclomatic complexity, function point analysis, number of classes and interfaces, cohesion, coupling, order of growth, source lines of code.`],
+        [`Differentiate between software testing and QA.`, `Testing is part of SQA, detection-oriented, evaluates spec, design and code under normal and abnormal conditions, finds and reports bugs, and is done by testers. QA is broader, prevents defects, ensures correct processes, standards and methodologies, and uses ISO/CMM models.`],
+        [`Compare the three test organization structures.`, `Small team under the development manager: fast communication, but bug reports may be ignored. Independent team under the project manager: test feedback counts, but the PM decides, which is risky for critical projects. Test group reporting to executive management: independent QA team and quality reports go directly to senior management.`],
+        [`List the software quality indicators.`, `Progress, stability, process compliance, quality evaluation effort, defect detection efficiency, defect removal rate, defect age profile, defect density, complexity.`]
+      ],
+      quiz: [
+        { q: `The activity to ensure that an organization is providing the best product to the customer:`, o: [
+          [`Quality Assurance`, `Correct. QA ensures the processes, standards and methodologies that deliver quality.`],
+          [`Quality Control`, `QC inspects the product and screens out defects; QA is the broader organizational activity.`],
+          [`Code coverage`, `A white-box metric.`],
+          [`Data coverage`, `A white-box technique.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `The goal of a software tester is to find:`, o: [
+          [`Bugs`, `Incomplete. The tester must also make sure they get fixed.`],
+          [`Fix bugs`, `Developers fix; debugging is not the tester's role.`],
+          [`Bugs and make sure they get fixed`, `Correct. The role: take responsibility for bugs, track them and convince the team to fix them.`],
+          [`Write code`, `Not the tester's goal.`]
+        ], a: 2, src: `Exam 2025/26` },
+        { q: `Which guarantees that the principles, methods and procedures are suitable for the project and applied properly?`, o: [
+          [`Software quality control`, `QC checks the product.`],
+          [`Software quality assurance`, `Correct. SQA ensures standards and procedures are applied correctly.`],
+          [`Software testing`, `Testing detects bugs.`],
+          [`Software metrics`, `Metrics measure; they do not guarantee.`]
+        ], a: 1, src: `Summary MCQ` },
+        { q: `Which task is NOT performed under Software Quality Assurance?`, o: [
+          [`Developing standard processes`, `A QA task example.`],
+          [`Setting guidelines`, `A QA task example.`],
+          [`Creating checklists`, `A QA task example.`],
+          [`Choosing the implementation approach for a given test`, `Correct. That is a task of software testing.`]
+        ], a: 3, src: `Summary MCQ` },
+        { q: `SQC is described as:`, o: [
+          [`Process-focused and preventive`, `That is SQA.`],
+          [`Product-focused and detection-oriented (reactive)`, `Correct.`],
+          [`Only about standards`, `Standards belong to SQA.`],
+          [`The same as SQA`, `They are different.`]
+        ], a: 1 },
+        { q: `"Effort required to locate and fix errors" defines:`, o: [
+          [`Flexibility`, `Flexibility is the effort to change the program.`],
+          [`Maintainability`, `Correct.`],
+          [`Reliability`, `Reliability is performing the intended function accurately.`],
+          [`Portability`, `Portability is transferring to another system.`]
+        ], a: 1 },
+        { q: `"Number of detected bugs" is an example of:`, o: [
+          [`A metric`, `Metrics are rules for measuring attributes like size and complexity.`],
+          [`An indicator`, `Correct. Indicators reflect process outcomes.`],
+          [`A standard`, `Not a standard.`],
+          [`A KPA`, `KPAs belong to CMM.`]
+        ], a: 1 },
+        { q: `Which ITSM category covers long-term planning, control and management of IT services?`, o: [
+          [`IT Service Support`, `Support is the efficient delivery of operational services.`],
+          [`IT Service Delivery`, `Correct.`],
+          [`Quality Control`, `Not an ITSM category.`],
+          [`Configuration testing`, `Not an ITSM category.`]
+        ], a: 1 },
+        { q: `In which organization structure may an inexperienced development manager ignore bug reports to push the team to deliver?`, o: [
+          [`Small team structure`, `Correct. Testers report to the development manager.`],
+          [`Independent test team`, `Its con is that the project manager has the final decision.`],
+          [`Test group reporting to executive management`, `This is the most independent structure.`],
+          [`None`, `The small team structure has this con.`]
+        ], a: 0 },
+        { q: `"Quality Assurance is the same as Quality Control."`, o: [
+          [`True`, `QA is process and prevention; QC is product and detection.`],
+          [`False`, `Correct.`]
+        ], a: 1, src: `Summary T/F` },
+        { q: `Which indicator measures the total number of defects NOT resolved over a period of time?`, o: [
+          [`Defect removal rate`, `That counts defects detected and resolved.`],
+          [`Defect age profile`, `Correct.`],
+          [`Defect density`, `That identifies defect-prone parts.`],
+          [`Stability`, `That judges readiness to move to the next phase.`]
+        ], a: 1 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 7 ───────────────────────── */
+    {
+      n: 7, title: `Maturity Model (CMM) and Quality Standards (ISO 9000, SPICE)`,
+      notes: [
+        { h: `Introduction`, pts: [
+          `Unit objectives: explain CMM; describe the elements of ISO 9000; state the software engineering standards.`,
+          `Organizations want sustainable excellence in IT operations, but face poor IT application design, high costs and delayed projects. Quality assurance, through <b>maturity models</b> and systematic procedures, defines organizational structures and improves performance.`,
+          `<b>CMM</b> helps manage complex IT systems efficiently. A <b>QMS</b> (quality management system) gives a structured way to improve process capability, manage risk and ensure customer satisfaction. <b>ISO 9000</b> promotes continuous improvement, product reliability and international recognition.`
+        ]},
+        { h: `Capability Maturity Model (CMM)`, pts: [
+          `A <b>standard framework for assessing and improving the maturity</b> of a software company's development process.`,
+          `Developed by the <b>Software Engineering Institute (SEI)</b> and <b>Carnegie Mellon University</b> under the <b>U.S. Department of Defense</b>.`,
+          `A <b>five-level incremental</b> approach: organizations progress gradually <b>without skipping levels</b>.`,
+          `Designed mainly for software development organizations, but also applies to software/system engineering, project management, IT, risk management and personnel management.`,
+          `A <b>maturity model</b> gives structured levels showing how well processes achieve desired outcomes. It can be used for <b>both evaluation and improvement</b>.`
+        ]},
+        { h: `CMM structure: 6 components`, pts: [
+          `<b>1. Maturity levels</b>: define process capability; Level 1 = ad-hoc, minimal structure; Level 5 = ideal, systematically managed, optimized and continuously improved.`,
+          `<b>2. Process capability</b>: the organization's ability to meet quality expectations with its current processes; it helps <b>predict</b> future project outcomes.`,
+          `<b>3. Key Process Areas (KPA)</b>: groups of related activities that achieve goals when performed together; they define capability at each level. Example: software project delivery planning.`,
+          `<b>4. Goals</b>: evaluate essential practices in a process area to see if it has been implemented successfully.`,
+          `<b>5. Common features</b>: characteristics showing whether a KPA's implementation is successful and sustainable.`,
+          `<b>6. Key practices</b>: the actions and infrastructure needed to support a KPA. Example: a software delivery schedule follows a documented procedure.`
+        ]},
+        { h: `Five levels of CMM`, table: [
+          [`Level`, `Name (figure label)`, `Description`, `Improvements implemented (Table 1)`],
+          [`1`, `Initial (inconsistent management)`, `Unstructured, reactive, inconsistent, ad-hoc; struggle to meet goals`, `No required processes`],
+          [`2`, `Repeatable (project management)`, `Basic project management gives repeatable success: planning, requirement control, product modifications; better cost and schedule`, `Plan and track projects; manage suppliers; manage product configurations; measure projects; assure policy compliance`],
+          [`3`, `Defined (process management)`, `Standardized processes across the organization; teams tailor them`, `Enhancement infrastructure; identify required processes; organize/manage processes; collect process data; organization-wide training; manage with non-software groups`],
+          [`4`, `Quantitatively Managed (capability management)`, `Processes controlled with statistical and quantitative techniques; predict performance; minimize variation`, `Supervise processes quantitatively; create capability baselines`],
+          [`5`, `Optimizing (change management)`, `Continuous process improvement through incremental and innovative advances using quantitative goals`, `Develop change infrastructure; assess and organize improvements; remove causes of defects`]
+        ]},
+        { h: `Transitions, KPA aspects and benefits`, pts: [
+          `Figure arrows between levels: 1→2 <b>basic management control</b>; 2→3 <b>process definition</b>; 3→4 <b>process measurement</b>; 4→5 <b>process control</b>.`,
+          `Each KPA has <b>5 aspects</b>: <b>Goals</b> (objectives that help climb to the next level), <b>Commitment</b> (requirements to meet the goals), <b>Ability</b> (activities that enable meeting the commitments), <b>Measurement</b> (monitoring methods), <b>Verification</b> (methods defining verification).`,
+          `<b>Benefits of CMM</b>: (1) simple and easy to analyze; (2) many executives already know it; (3) used to explain major IT issues to senior executives; (4) helps get project funding (e.g. enterprise data asset management, metadata repository); (5) large companies and governments use it to compare themselves with others.`
+        ]},
+        { h: `ISO 9000`, pts: [
+          `A set of internationally recognized standards published by the <b>International Organization for Standardization (ISO)</b>, defining universal best practices so organizations meet quality requirements and client expectations.`,
+          `<b>Highly generic</b>: applies to <b>any organization</b> providing products or services.`,
+          `"ISO" comes from the Greek word <b>isos = "equal"</b>, reflecting a global standard for quality assurance.`,
+          `It has <b>20 key elements</b>; each must be <b>clearly and thoroughly documented</b> to show compliance.`
+        ]},
+        { h: `20 elements of ISO 9000`, table: [
+          [`#`, `Element`, `#`, `Element`],
+          [`1`, `Management responsibility (quality policy, resources)`, `11`, `Inspection/measuring equipment (calibrate)`],
+          [`2`, `Quality systems (documented quality manual)`, `12`, `Inspection & test status`],
+          [`3`, `Contract review (customer needs)`, `13`, `Control of non-conforming product (rejected items)`],
+          [`4`, `Design control`, `14`, `Corrective & preventive action (root causes)`],
+          [`5`, `Documentation & data control`, `15`, `Handling/storage/packaging/delivery`],
+          [`6`, `Purchasing (supplier requirements)`, `16`, `Quality records (audit trails)`],
+          [`7`, `Customer-supplied product control`, `17`, `Internal quality audits`],
+          [`8`, `Product identification & traceability`, `18`, `Training (records, qualifications)`],
+          [`9`, `Process control (work instructions, plans)`, `19`, `Servicing (after delivery)`],
+          [`10`, `Inspection & testing (receiving, in-process, final)`, `20`, `Statistical techniques (control charts)`]
+        ]},
+        { h: `ISO 8 principles and software engineering standards`, pts: [
+          `<b>8 quality management principles</b>: customer focus; leadership; involvement of people; process approach; system approach to management; continuous improvement; factual decision making; mutually beneficial supplier relationships.`,
+          `Software engineering standards ensure proper development, testing and maintenance. Organizations are shifting from <b>local to international</b> standards. <b>IEEE and the IEEE Computer Society</b> lead this; since <b>1976</b> IEEE has contributed the <b>IEEE Software Engineering Standard Collection</b>.`,
+          `<b>SPICE</b> = <b>Software Process Improvement for Capability Determination</b>; with <b>ISO/IEC 15504</b> it is a joint ISO and IEC initiative for a standard software process assessment methodology, introduced in <b>1993</b>.`,
+          `<b>3 objectives of SPICE</b>: (1) establish a standard framework for software process assessment; (2) conduct organizational assessments for emerging standards; (3) facilitate global adoption of software process assessment in industry.`
+        ]}
+      ],
+      cards: [
+        [`CMM`, `Capability Maturity Model: a standard framework for assessing and improving the maturity of a software company's development process.`],
+        [`Who developed CMM?`, `SEI and Carnegie Mellon University, under the U.S. Department of Defense.`],
+        [`Number of CMM maturity levels`, `Five, and levels cannot be skipped.`],
+        [`CMM levels in order`, `Initial, Repeatable, Defined, Quantitatively Managed, Optimizing.`],
+        [`CMM Level 1`, `Initial: ad-hoc, unstructured, reactive. No required processes.`],
+        [`CMM Level 4`, `Quantitatively managed: processes controlled with statistical/quantitative techniques; capability baselines.`],
+        [`CMM Level 5`, `Optimizing: continuous process improvement; remove causes of defects.`],
+        [`KPA`, `Key Process Area: related activities that achieve goals together (e.g. delivery planning).`],
+        [`5 aspects of a KPA`, `Goals, commitment, ability, measurement, verification.`],
+        [`ISO name origin`, `Greek "isos" = equal.`],
+        [`Number of ISO 9000 elements`, `20.`],
+        [`ISO element for rejected materials`, `Control of non-conforming product (element 13).`],
+        [`ISO element related to testing`, `Inspection and testing (element 10).`],
+        [`SPICE`, `Software Process Improvement for Capability Determination (ISO/IEC 15504), introduced in 1993.`],
+        [`IEEE standardization since`, `1976 (IEEE Software Engineering Standard Collection).`]
+      ],
+      qa: [
+        [`Briefly discuss the levels of CMM.`, `Level 1 Initial: ad-hoc, unstructured, reactive; goals met unreliably. Level 2 Repeatable: basic project management (planning, requirement control, change control) gives repeatable success. Level 3 Defined: standardized processes across the organization, tailored by teams. Level 4 Quantitatively Managed: statistical and quantitative control, predictable performance. Level 5 Optimizing: continuous incremental and innovative improvement with quantitative goals.`],
+        [`List the 20 elements of the ISO 9000 standard.`, `Management responsibility, quality systems, contract review, design control, documentation and data control, purchasing, customer-supplied product control, product identification and traceability, process control, inspection and testing, inspection/measuring equipment, inspection and test status, control of non-conforming product, corrective and preventive action, handling/storage/packaging/delivery, quality records, internal quality audits, training, servicing, statistical techniques.`],
+        [`What are the 8 quality management principles of ISO?`, `Customer focus, leadership, involvement of people, process approach, system approach to management, continuous improvement, factual decision making, mutually beneficial supplier relationships.`],
+        [`State the three objectives of SPICE.`, `Establish a standard framework for software process assessment; conduct organizational assessments for emerging standards; facilitate global adoption of software process assessment in industry.`],
+        [`What are the benefits of CMM?`, `Simple and easy to analyze; familiar to executives; explains IT issues to senior executives; helps get funding for key initiatives; used by large companies and governments to benchmark themselves.`]
+      ],
+      quiz: [
+        { q: `............ is the widely used and preferred software method of evaluation.`, o: [
+          [`CMM`, `Correct. The summary wording: "CMM is the widely used and preferred software method of evaluation."`],
+          [`ISO 9000`, `A generic quality standard, not the preferred evaluation method.`],
+          [`6 Sigma`, `A statistical improvement methodology.`],
+          [`SPICE`, `A process-assessment initiative, but not the answer here.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `............ are maturity levels in the CMM.`, o: [
+          [`3`, `Too few.`], [`5`, `Correct. Initial, Repeatable, Defined, Quantitatively Managed, Optimizing.`], [`4`, `Too few.`], [`6`, `Too many.`]
+        ], a: 1, src: `Exam 2025/26` },
+        { q: `There are 20 crucial elements in the ............ standard.`, o: [
+          [`CMM`, `CMM has 5 levels.`],
+          [`6 Sigma`, `Six Sigma uses DMAIC.`],
+          [`ISO 9000`, `Correct.`],
+          [`SPICE`, `SPICE has 3 objectives.`]
+        ], a: 2, src: `Exam 2025/26` },
+        { q: `SPICE stands for:`, o: [
+          [`Software Process Improvement for Capability Determination`, `Correct.`],
+          [`Capability Evaluation`, `Incomplete.`],
+          [`Software Procedure Improvement`, `Wrong words.`],
+          [`Software Procedure Improvement for Determination`, `Wrong words.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `When was the SPICE project introduced?`, o: [
+          [`1985`, `Wrong year.`], [`1995`, `Wrong year.`], [`2005`, `Wrong year.`], [`1993`, `Correct.`]
+        ], a: 3, src: `Summary MCQ` },
+        { q: `ISO stands for:`, o: [
+          [`International Organization for Standardization`, `Correct. The name comes from Greek "isos" = equal.`],
+          [`International Software Organization`, `Wrong.`],
+          [`Indian Software Operations`, `Wrong.`],
+          [`Indian Standard Operations`, `Wrong.`]
+        ], a: 0, src: `Summary MCQ` },
+        { q: `At which CMM level are processes controlled through statistical and quantitative techniques?`, o: [
+          [`Level 2 Repeatable`, `Basic project management.`],
+          [`Level 3 Defined`, `Standardized processes.`],
+          [`Level 4 Quantitatively Managed`, `Correct.`],
+          [`Level 5 Optimizing`, `Continuous improvement (uses quantitative goals, but control by statistics is level 4).`]
+        ], a: 2 },
+        { q: `Which is NOT one of the five aspects of a Key Process Area?`, o: [
+          [`Commitment`, `An aspect.`],
+          [`Ability`, `An aspect.`],
+          [`Marketing`, `Correct. The aspects are goals, commitment, ability, measurement, verification.`],
+          [`Verification`, `An aspect.`]
+        ], a: 2 },
+        { q: `"A maturity model can be utilized as a model for evaluation."`, o: [
+          [`True`, `Correct. It can be used for both evaluation and improvement.`],
+          [`False`, `The lecture says it can be used for both.`]
+        ], a: 0, src: `Summary T/F` },
+        { q: `If you must develop procedures for rejected materials, which ISO 9000 element is it?`, o: [
+          [`Purchasing`, `Supplier requirements.`],
+          [`Control of non-conforming product`, `Correct. Separate and manage rejected items.`],
+          [`Servicing`, `After-delivery support.`],
+          [`Training`, `Employee records.`]
+        ], a: 1 },
+        { q: `CMM was developed by:`, o: [
+          [`ISO and IEC`, `They made SPICE / ISO/IEC 15504.`],
+          [`SEI and Carnegie Mellon University (U.S. DoD)`, `Correct.`],
+          [`IEEE in 1976`, `IEEE made the Software Engineering Standard Collection.`],
+          [`Motorola`, `Not in the lecture.`]
+        ], a: 1 }
+      ]
+    },
+    /* ───────────────────────── LECTURE 8 ───────────────────────── */
+    {
+      n: 8, title: `Six Sigma`,
+      notes: [
+        { h: `Introduction and definitions`, pts: [
+          `Six Sigma is one of the most famous management concepts in <b>total quality management</b>. It emerged in the <b>late 1970s and early 1980s</b> and became popular as major global companies adopted it.`,
+          `It leads companies to avoid the highest possible percentage of errors and to reduce quality defects as much as possible. Quality control programs focus on correcting <b>design, industrial and commercial</b> defects.`,
+          `<b>Standard deviation (σ)</b>: a statistical indicator of deviation, variance, dispersion or asymmetry in a process with respect to the desired objectives. σ = square root of variance.`,
+          `Six Sigma is a <b>systematic method</b> that uses critically important information and statistical analysis to identify sources of errors and ways to eliminate them; it combines performance measurement with statistical analysis of errors.`,
+          `It is a <b>statistical management system</b> focusing on customer satisfaction, reducing waste, improving quality, and improving financial and time performance.`,
+          `It reduces process variation until the result is <b>3.4 defects per million</b> samples (opportunities) or less. The aim is <b>zero defects</b> ("zero default" on the slide), offering customers a zero-defect product.`
+        ]},
+        { h: `Normal distribution (figure)`, table: [
+          [`Range`, `Inside the limits`, `Out of spec (ppm)`],
+          [`±1σ`, `68.27%`, `317,300`],
+          [`±2σ`, `95.45%`, `45,500`],
+          [`±3σ`, `99.73%`, `2,700`],
+          [`±4σ`, `99.9937%`, `63`],
+          [`±5σ`, `99.999943%`, `0.57`],
+          [`±6σ`, `99.9999998%`, `0.002`]
+        ]},
+        { h: `3.4 vs 0.002 ppm`, pts: [
+          `The figure shows the centred curve: ±6σ leaves only 0.002 ppm outside. The famous <b>3.4 defects per million</b> comes from allowing the process mean to <b>drift by 1.5σ</b> in the long term (6 − 1.5 = 4.5σ on one side). This last point is general Six Sigma background, not on the slide.`,
+          `<b>Background formula</b> (not on the slides, useful if asked): DPMO = defects ÷ (units × opportunities per unit) × 1,000,000. Example: 25 defects in 500 units with 10 opportunities → 25 ÷ 5,000 × 10⁶ = <b>5,000 DPMO</b> (yield 99.5%, about 4.1σ with the 1.5σ shift). At 6σ, DPMO = 3.4.`
+        ]},
+        { h: `DMAIC methodology`, pts: [
+          `<b>D – Define</b>: identify what needs improving by precisely identifying the problems. The problem statement includes the <b>level</b> of the problem, its <b>location</b> and its <b>financial impact</b>. <b>Form a team</b> to solve it.`,
+          `<b>M – Measure</b>: plan and implement performance measurement against customer requirements and expectations, using criteria for measuring defects with statistical control tools.`,
+          `<b>A – Analyze</b>: analyze the data to find the <b>root causes</b> of all problems: analyze the chain of failure causes, rank them by impact, categorize, then control and manage them.`,
+          `<b>I – Improve</b>: change processes to eliminate defects, excess cost and waste; study failure causes, find solutions, <b>test them on a sample</b> of products, check results and correct.`,
+          `<b>C – Control</b>: keep monitoring (never stop): continuously measure performance standards, conduct measurement, correct deviations at the specified time.`,
+          `The slide also shows <b>DMADV</b> (Define, Measure, Analyze, Design, Verify), used for designing <b>new</b> processes/products; DMAIC improves <b>existing</b> ones.`
+        ]},
+        { h: `Principles and implementation phases`, pts: [
+          `<b>Principles</b>: focus on customers; decisions based on facts and accurate data; focus on internal operations and activities; effective management based on advance planning; collaborative teamwork, avoiding competition.`,
+          `<b>Implementation phases</b>: (1) identify and select important projects; (2) assign experienced employees to improvement tasks; (3) prepare a written document of the problem/project (reasons, objectives, scope); (4) train on measurement, analysis, process redesign, planning, problem-solving; (5) implement and apply practical solutions; (6) submit solutions.`
+        ]},
+        { h: `Case: failure cases in the preparatory certificate`, pts: [
+          `A table of 10 subjects (X1–X10) gives each subject's mean, standard deviation and a "Six sigma" value. The Six Sigma column is <b>6 × standard deviation</b>: e.g. X1: 6 × 1.22 = 7.32; X2: 6 × 0.98 = 5.88; overall: 6 × 1.07 = 6.42 (overall mean 2.99).`,
+          `DMAIC applied: <b>Define</b> the causes of failure → <b>Measure</b> the size of their impact → <b>Analyze</b> sources and elements → <b>Improve</b> by deriving solutions → <b>Control</b> by continuous monitoring. This reduces failure cases and raises success.`
+        ]},
+        { h: `Belts and tools`, table: [
+          [`Belt`, `Applied to`],
+          [`White Belt`, `Step 1 in the certification figure (entry level)`],
+          [`Yellow Belt`, `All employees`],
+          [`Green Belt`, `Executive employees`],
+          [`Black Belt`, `Middle and senior management`],
+          [`Master Black Belt`, `Senior management`]
+        ]},
+        { h: `Six Sigma tools and techniques`, pts: [
+          `<b>5S</b>, <b>Seven Wastes</b>, <b>Value stream mapping</b>, <b>Visual workspace</b>, <b>Voice of Customer (VOC)</b>, <b>Kaizen</b>, <b>Kanban</b>, <b>Regression analysis</b>.`
+        ]}
+      ],
+      cards: [
+        [`Six Sigma target`, `3.4 defects per million opportunities or less (aim: zero defects).`],
+        [`Sigma (σ)`, `Standard deviation = square root of variance.`],
+        [`When did Six Sigma emerge?`, `Late 1970s and early 1980s.`],
+        [`DMAIC`, `Define, Measure, Analyze, Improve, Control.`],
+        [`DMADV`, `Define, Measure, Analyze, Design, Verify (for new designs).`],
+        [`Define phase includes`, `Precise problem identification (level, location, financial impact) and forming a team.`],
+        [`Analyze phase`, `Find root causes, rank them by impact, categorize, control.`],
+        [`Improve phase`, `Change processes; test solutions on a sample of products; correct.`],
+        [`Control phase`, `Continuously measure performance, conduct measurement, correct deviations on time.`],
+        [`±3σ coverage`, `99.73% (2,700 ppm out of spec).`],
+        [`Yellow Belt`, `All employees.`],
+        [`Green Belt`, `Executive employees.`],
+        [`Black Belt`, `Middle and senior management.`],
+        [`Master Black Belt`, `Senior management.`],
+        [`DPMO formula (background)`, `Defects ÷ (units × opportunities) × 1,000,000.`]
+      ],
+      qa: [
+        [`Briefly discuss the Six Sigma methodology.`, `Six Sigma is a statistical management methodology that reduces process variation to 3.4 defects per million or less, aiming for zero defects and customer satisfaction. It uses DMAIC: Define the problem (level, location, financial impact) and form a team; Measure performance against customer requirements with statistical tools; Analyze data to find and rank root causes; Improve processes and test solutions on a sample; Control by continuously monitoring and correcting deviations.`],
+        [`What are the principles of Six Sigma?`, `Focus on customers; decisions based on facts and accurate data; focus on internal operations; effective management based on advance planning; collaborative teamwork without competition.`],
+        [`List the Six Sigma belts and who they are for.`, `Yellow: all employees. Green: executive employees. Black: middle and senior management. Master Black: senior management. (The figure also starts with a White Belt.)`],
+        [`Calculate DPMO for 25 defects found in 500 units with 10 opportunities each.`, `DPMO = 25 / (500 x 10) x 1,000,000 = 25 / 5,000 x 1,000,000 = 5,000 DPMO, about 4.1 sigma. This is background practice, not on the slides.`]
+      ],
+      quiz: [
+        { q: `............ reduce process variation to reach zero default.`, o: [
+          [`6 Sigma`, `Correct. "Six Sigma reduces process variation… The aim of six sigma is to reach zero default."`],
+          [`SPICE`, `A process-assessment standard.`],
+          [`CMM`, `A maturity framework.`],
+          [`ISO 9000`, `A quality standard.`]
+        ], a: 0, src: `Exam 2025/26` },
+        { q: `Six Sigma aims to reduce defects to:`, o: [
+          [`3.4 per thousand`, `Per million, not per thousand.`],
+          [`3.4 per million or less`, `Correct.`],
+          [`2,700 per million`, `That is ±3σ.`],
+          [`68.27%`, `That is the share inside ±1σ.`]
+        ], a: 1 },
+        { q: `What does DMAIC stand for?`, o: [
+          [`Design, Measure, Analyze, Implement, Check`, `Wrong letters' meanings.`],
+          [`Define, Measure, Analyze, Improve, Control`, `Correct.`],
+          [`Define, Manage, Audit, Inspect, Control`, `Wrong.`],
+          [`Develop, Measure, Analyze, Improve, Close`, `Wrong.`]
+        ], a: 1 },
+        { q: `Which DMAIC phase forms the team and states the problem's level, location and financial impact?`, o: [
+          [`Define`, `Correct.`],
+          [`Measure`, `Measure plans and implements performance measurement.`],
+          [`Analyze`, `Analyze finds root causes.`],
+          [`Control`, `Control keeps monitoring.`]
+        ], a: 0 },
+        { q: `In which phase are solutions tested on a sample of products?`, o: [
+          [`Measure`, `No, measure is about measuring defects.`],
+          [`Analyze`, `No, analyze finds causes.`],
+          [`Improve`, `Correct.`],
+          [`Define`, `No.`]
+        ], a: 2 },
+        { q: `What percentage of values lies within ±3σ?`, o: [
+          [`68.27%`, `That is ±1σ.`], [`95.45%`, `That is ±2σ.`], [`99.73%`, `Correct (2,700 ppm out of spec).`], [`99.9937%`, `That is ±4σ.`]
+        ], a: 2 },
+        { q: `The Green Belt is applied to:`, o: [
+          [`All employees`, `That is the Yellow Belt.`],
+          [`Executive employees`, `Correct.`],
+          [`Middle and senior management`, `That is the Black Belt.`],
+          [`Senior management only`, `That is the Master Black Belt.`]
+        ], a: 1 },
+        { q: `Which is NOT listed as a Six Sigma tool/technique?`, o: [
+          [`Kaizen`, `Listed.`],
+          [`Voice of Customer`, `Listed.`],
+          [`Cyclomatic complexity`, `Correct. That is a software metric (L6), not a Six Sigma tool.`],
+          [`Value stream mapping`, `Listed.`]
+        ], a: 2 },
+        { q: `In the preparatory-certificate table, a subject has SD = 0.98. Its "Six sigma" value is:`, o: [
+          [`0.98`, `That is σ itself.`],
+          [`5.88`, `Correct. 6 × 0.98 = 5.88.`],
+          [`6.98`, `Added, not multiplied.`],
+          [`2.94`, `That is 3σ.`]
+        ], a: 1 },
+        { q: `A process has 25 defects in 500 units, each with 10 defect opportunities. DPMO = ?`, o: [
+          [`50,000`, `You forgot the 10 opportunities per unit (25/500 × 10⁶).`],
+          [`5,000`, `Correct. 25 / 5,000 × 1,000,000 = 5,000.`],
+          [`500`, `Off by a factor of 10.`],
+          [`3.4`, `That is the 6σ target.`]
+        ], a: 1 },
+        { q: `Which is a Six Sigma principle?`, o: [
+          [`Competition between teams`, `The principle is collaborative teamwork, avoiding competition.`],
+          [`Decisions based on facts and accurate data`, `Correct.`],
+          [`Decisions based on intuition`, `The opposite of the principle.`],
+          [`Ignoring customers`, `Focus on customers is the first principle.`]
+        ], a: 1 }
+      ]
+    }
+  ],
+
+  /* ══════════════════════════ EXAMS ══════════════════════════ */
+  exams: [
+    {
+      title: `Final Exam 2025/2026`,
+      meta: `First term · 2 hours · 60 marks · 5 questions · Code 22H211-CS-EN-T1 · Prof. Arabi Keshk, Prof. Mahmoud Gadallah`,
+      note: `Transcribed from two scanned pages. There is no official key, so all answers are worked out from the lectures. Q1 #4 is ambiguous: the answer given is ISO 9000, matching the student-summary wording ("consistent processes, reduces errors, increases customer trust"). Q1 #12 follows the summary key ("All answers"). The whole paper was readable. Question 5 is printed with parts (a) and (c) only; there is no (b) on the paper.`,
+      sections: [
+        { title: `Question 1 · Select the correct answer`, marks: `20 marks · 1 each`, items: [
+          { type: `mcq`, q: `1- ............ is the widely used and preferred software method of evaluation.`, o: [`CMM`, `ISO 9000`, `6 Sigma`, `SPICE`], a: 0, why: `CMM is the standard framework for assessing process maturity; the summary states "CMM is the widely used and preferred software method of evaluation" (L7).` },
+          { type: `mcq`, q: `2- ............ are maturity levels in the CMM.`, o: [`3`, `5`, `4`, `6`], a: 1, why: `Initial, Repeatable, Defined, Quantitatively Managed, Optimizing (L7).` },
+          { type: `mcq`, q: `3- There are 20 crucial elements in ............ standard.`, o: [`CMM`, `6 Sigma`, `ISO 9000`, `SPICE`], a: 2, why: `ISO 9000 consists of 20 key elements (L7).` },
+          { type: `mcq`, q: `4- ............ improve processes, reduce errors, and boost customer trust.`, o: [`CMM`, `SPICE`, `6 Sigma`, `ISO 9000`], a: 3, why: `ISO 9000 "promotes continuous improvement, product reliability and international recognition", and the summary lists "ensures consistent processes, reduces errors and risks, increases customer trust". Six Sigma could also be argued (customer satisfaction), but it is the answer to #5, so ISO 9000 fits best here.` },
+          { type: `mcq`, q: `5- ............ reduce process variation to reach zero default.`, o: [`6 Sigma`, `SPICE`, `CMM`, `ISO 9000`], a: 0, why: `L8: Six Sigma reduces process variation to 3.4 defects per million; its aim is zero defects ("zero default").` },
+          { type: `mcq`, q: `6- The process is confirmed that software meets its specification.`, o: [`Verification`, `Validation`, `Design`, `Requirements`], a: 0, why: `Verification: "are we building the product right?", checked against the specification (L2).` },
+          { type: `mcq`, q: `7- The activity to ensure that an organization is providing the best product to customer.`, o: [`Quality Assurance`, `Quality Control`, `Code coverage`, `Data coverage`], a: 0, why: `QA is the organization-wide activity (processes, standards, prevention) that ensures quality products (L6). QC only screens the product.` },
+          { type: `mcq`, q: `8- The process is confirmed that software meets the user's requirement.`, o: [`Validation`, `Verification`, `Design`, `Requirements`], a: 0, why: `Validation: "are we building the right product?", e.g. user acceptance testing (L2).` },
+          { type: `mcq`, q: `9- Which of the following stages do inspections come under?`, o: [`Formal review`, `Peer review`, `Code coverage`, `Data coverage`], a: 0, why: `Formal review = peer review, walkthrough, inspection (L3).` },
+          { type: `mcq`, q: `10- From the following, select the choice which is appropriate to standards and guidelines.`, o: [`Scalability`, `Reliability`, `Usability`, `Compatibility`], a: 1, why: `The 3 reasons for standards and guidelines: reliability, readability/maintainability, portability (L3).` },
+          { type: `mcq`, q: `11- The goal of a software tester is to find`, o: [`Bugs`, `Fix bugs`, `Bugs and make sure they get fixed`, `Write code`], a: 2, why: `The tester's role: take responsibility for bugs, track them, and convince the developers to fix them (L6).` },
+          { type: `mcq`, q: `12- The program shall accept an input value of integer > 9000. Determine the test case.`, o: [`9000`, `9001`, `9999`, `All answers`], a: 3, why: `BVA/EP: 9000 = invalid boundary (must be rejected), 9001 = valid boundary, 9999 = valid value. All are useful test cases, which matches the summary key.` },
+          { type: `mcq`, q: `13- if (X>1) and (Y=0) then A=A/X; the statement coverage test cases are`, o: [`All answer`, `X=3, y=1`, `X=2, y=1`, `X=2, y=0`], a: 3, why: `Only X=2, Y=0 makes both parts of the AND true, so A=A/X executes.` },
+          { type: `mcq`, q: `14- if (X=2) or (y>1) then A=A+1; the statement coverage test cases are`, o: [`X=2, y=0`, `X=2, y=2`, `X=1, y=2`, `All answers`], a: 3, why: `With OR, each option makes at least one part true, so A=A+1 runs in all three.` },
+          { type: `mcq`, q: `15- if (X>1) and (Y=0) then A=A/X; if (X=2) or (A>1) then A=A+1; the statement coverage are`, o: [`X=3, Y=0, A=1`, `X=0, Y=0, A=4`, `All answers`, `X=2, Y=0, A=4`], a: 3, why: `X=2,Y=0,A=4: A=4/2=2, then X=2 is true so A=3, and both statements run. (A) gives A=1/3 and the second IF is false. (B) makes the first IF false.` },
+          { type: `mcq`, q: `16- Which type of software testing refers to testing the running software?`, o: [`Requirement testing`, `Static testing`, `Analysis testing`, `Dynamic testing`], a: 3, why: `Dynamic testing = running and using the software (L2).` },
+          { type: `mcq`, q: `17- What are instructions to be followed which are not really mandatory?`, o: [`Standards and Guidelines`, `Standards`, `Guidelines`, `Not all`], a: 2, why: `Guidelines help follow standards and are not mandatory (L3).` },
+          { type: `mcq`, q: `18- What are instructions to be followed which are mandatory?`, o: [`Guidelines`, `Standards`, `Standards and Guidelines`, `Not all`], a: 1, why: `Standards are rules that must be adhered to (L3).` },
+          { type: `mcq`, q: `19- A simple sequence to achieve method-message in Stack testing are`, o: [`create, push & pop`, `create, insert & pop`, `create & push`, `create & insert`], a: 0, why: `L4: "a simple sequence of create, push, and pop might achieve MM testing."` },
+          { type: `mcq`, q: `20- Formal review, Coding standard and guidelines, and Code review are phases of`, o: [`Static white box`, `Dynamic white box`, `Static Black box`, `Dynamic Black box`], a: 0, why: `These are the three parts of static white-box testing (L3).` }
+        ]},
+        { title: `Question 2`, marks: `10 marks`, items: [
+          { type: `written`, q: `(a) Briefly discuss the levels of Capability Maturity Model (CMM).`, ans: `<b>Level 1 – Initial</b> (inconsistent management): processes are ad-hoc, unstructured, reactive and inconsistent; project management is unstable; no required processes.<br><b>Level 2 – Repeatable</b> (project management): basic project management (planning, requirement control, product modifications) gives repeatable success; plan and track projects, manage suppliers and configurations.<br><b>Level 3 – Defined</b> (process management): standardized processes are defined and refined across the organization; teams tailor them; organization-wide training.<br><b>Level 4 – Quantitatively Managed</b> (capability management): processes are controlled with statistical and quantitative techniques; performance is predictable; capability baselines; minimal variation.<br><b>Level 5 – Optimizing</b> (change management): continuous process improvement through incremental and innovative advances with quantitative goals; remove causes of defects.<br>Levels are climbed in order and none can be skipped.`, why: `L7 "Five Levels of CMM" plus Table 1. Mention all five names in order.` },
+          { type: `written`, q: `(b) Briefly discuss 6 sigma methodology.`, ans: `Six Sigma is a statistical management methodology that reduces process variation to <b>3.4 defects per million</b> or less (aim: zero defects). It uses <b>DMAIC</b>:<br><b>Define</b>: identify the problem precisely (level, location, financial impact) and form a team.<br><b>Measure</b>: measure performance against customer requirements with statistical tools.<br><b>Analyze</b>: find the root causes, rank them by impact, categorize them.<br><b>Improve</b>: change processes to remove defects, cost and waste; test solutions on a sample.<br><b>Control</b>: continuously monitor, measure and correct deviations on time.`, why: `L8 DMAIC slides. You can add the principles or the belts for extra detail.` }
+        ]},
+        { title: `Question 3`, marks: `10 marks`, items: [
+          { type: `written`, q: `(a) List the 20 Elements of ISO 9000 Series Standards.`, ans: `1 Management responsibility · 2 Quality systems · 3 Contract review · 4 Design control · 5 Documentation & data control · 6 Purchasing · 7 Customer-supplied product control · 8 Product identification & traceability · 9 Process control · 10 Inspection & testing · 11 Inspection/measuring equipment · 12 Inspection & test status · 13 Control of non-conforming product · 14 Corrective & preventive action · 15 Handling/storage/packaging/delivery · 16 Quality records · 17 Internal quality audits · 18 Training · 19 Servicing · 20 Statistical techniques.`, why: `L7. Mnemonic by groups: management (1–3), design/docs/buying (4–7), product and process (8–13), correction and logistics (14–15), records/audits/people (16–18), after-sale and statistics (19–20).` },
+          { type: `written`, q: `(b) What are the most commonly used software quality metrics?`, ans: `1 Code coverage · 2 Bugs per line of code · 3 Cyclomatic complexity · 4 Function point analysis · 5 Number of classes and interfaces · 6 Cohesion · 7 Coupling · 8 Order of growth · 9 Source lines of code.<br>(Metrics are rules for measuring software attributes. Product metrics measure the final product; process metrics measure the development process.)`, why: `L6 "Examples of Common Metrics".` }
+        ]},
+        { title: `Question 4`, marks: `10 marks`, items: [
+          { type: `written`, q: `(a) Find method message and function pair of the Queue in the next figure. [Figure: New → Empty; insert: Empty→Normal, Normal→Normal, Normal→Full, Full→(error); delete: Empty→(error), Normal→Normal, Normal→Empty, Full→Normal.]`, ans: `<b>MM</b>: the simple sequence <b>create (new), insert, delete</b> calls every method at least once.<br><b>Function pairs</b> (same pattern as the stack, 14 pairs):<br>1. new – delete (on empty, error)<br>2. new – insert<br>3. insert (from empty) – insert<br>4. insert (from empty) – delete<br>5. insert (normal→normal) – insert (still normal)<br>6. insert (normal→normal) – insert (into full)<br>7. insert (normal→normal) – delete<br>8. insert (normal→full) – insert (error)<br>9. insert (normal→full) – delete<br>10. delete (normal→normal) – insert (still normal)<br>11. delete (normal→normal) – delete (still normal)<br>12. delete (normal→normal) – delete (into empty)<br>13. delete (into empty) – insert<br>14. delete (into empty) – delete (error)`, why: `The lecture's stack example with push→insert and pop→delete. The queue diagram has the same states (Empty, Normal, Full) and transitions.` },
+          { type: `written`, q: `(b) 1- What basic elements of a web page can easily be tested with a black-box approach? 2- Why is gray-box testing possible with website testing? 3- What basic elements of a web page can easily be tested with a white-box approach?`, ans: `<b>1. Black-box</b>: <b>text</b> (audience, terminology, accuracy, spelling, contact info), <b>hyperlinks</b> (right destination, same/new window, obvious, e-mail links), <b>graphics</b> (load and display correctly), <b>forms</b> (positioned, correct size, accept good data, reject bad data).<br><b>2. Gray-box</b> is possible because web pages are built from HTML and scripts the tester can see (view source) while still testing from the user's side, so black-box and white-box can be mixed. Its purpose is to isolate defects related to bad design or bad implementation of the web.<br><b>3. White-box</b>: <b>dynamic content</b> (time of day, weather, stock tickers), <b>database-driven pages</b> (e-commerce catalogs), <b>programmatically created pages</b>, <b>server performance and loading</b> (millions of hits), <b>security</b> (denial of service, buffer overflow).`, why: `L5 sections 2, 8.3.` }
+        ]},
+        { title: `Question 5`, marks: `10 marks`, items: [
+          { type: `written`, q: `(a) Write all test cases to achieve Branch and Condition coverage of the next code.<br><pre>1: PRINT "Hello World"
+2: IF Date$ = "01-01-2026" AND Time$ = "00:00:00" THEN
+3: PRINT "Happy New Year"
+4: END IF
+5: PRINT "The date is: "; Date$
+6: PRINT "The time is: "; Time$
+7: END</pre>`, ans: `<b>Branch coverage</b> (the IF true once, false once), 2 tests:<table><tr><th>Date$</th><th>Time$</th><th>Lines</th></tr><tr><td>01-01-2026</td><td>00:00:00</td><td>1,2,3,4,5,6,7</td></tr><tr><td>01-01-2025</td><td>11:11:11</td><td>1,2,5,6,7</td></tr></table><b>Condition coverage</b> (each condition true and false; all combinations as in the lecture), 4 tests:<table><tr><th>Date$</th><th>Time$</th><th>Lines</th></tr><tr><td>01-01-2025</td><td>11:11:11</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2025</td><td>00:00:00</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2026</td><td>11:11:11</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2026</td><td>00:00:00</td><td>1,2,3,4,5,6,7</td></tr></table>`, why: `Copy of the L3 "Test cases for a full condition coverage" table, with the new date. Only the true/true case prints "Happy New Year".` },
+          { type: `written`, q: `(c) Design test cases for function testing and statement coverage of the triangle in the next pseudocode.<br><pre>read a,b,c;
+type = "scalene";
+if (a == b or a == c or b == c) type = "isosceles";
+if (a == b and a == c) type = "equilateral";
+if (a >= b+c or b >= a+c or c >= a+b) type = "not a triangle";
+if (a &lt;= 0 or b &lt;= 0 or c &lt;= 0) type = "bad inputs";
+print type;</pre>`, ans: `<b>Function (black-box) testing</b>: subdomains scalene, isosceles, equilateral, not a triangle, bad inputs:<br>Scalene: (3,4,5), (5,4,3), (4,5,3).<br>Isosceles: (5,5,8), (5,8,5), (8,5,5), (8,8,5), (8,5,8), (5,8,8).<br>Equilateral: (5,5,5).<br>Not a triangle: (6,4,2), (4,6,2), (1,2,3).<br>Bad inputs: (−1,2,4), (0,−2,5), (0,0,0).<br><b>Statement coverage</b> (lecture table with (3,4,5), (3,5,3), (0,1,0), (4,4,4)):<br>(3,4,5) → scalene; (3,5,3) → isosceles; (4,4,4) → equilateral; (0,1,0) → not-a-triangle and bad-inputs lines both run, prints "bad inputs".<br>The minimal set is <b>(4,4,4) and (0,1,0)</b>, which together execute every statement A–K.`, why: `L4 triangle slides. The slide lists (1,2,4) and (3,2,5) as "bad inputs", but by the pseudocode they print "not a triangle" (no side ≤ 0), so negative/zero sides are used here.` }
+        ]}
+      ]
+    },
+    {
+      title: `Practice paper (from student summaries, not an official exam)`,
+      meta: `Built from the "(SQA) True or False" file and the "ليلة الفاينل – MSQ" bank · checked against the lectures`,
+      note: `Practice only. Where the summary key contradicts the lectures, the lecture answer is used and the "key" line shows the summary's answer.`,
+      sections: [
+        { title: `Part A · True or False`, marks: `practice`, items: [
+          { type: `tf`, q: `The year 1988–2000 followed a prevention-oriented approach.`, a: 0, key: `Summary key: False`, why: `L1 table: 1988–2000 = prevention-oriented. The summary key is wrong.` },
+          { type: `tf`, q: `Software testing identifies the areas of weakness in an application or product.`, a: 0, why: `One of the six objectives of testing (L1).` },
+          { type: `tf`, q: `The analysis phase defines the software and the hardware requirements relevant for the software development process.`, a: 1, why: `That is System Engineering. Analysis = feasibility, goals, performance and interface requirements (L1).` },
+          { type: `tf`, q: `While performing a software test, the tester should first begin with test-to-fail.`, a: 1, why: `Start with test-to-pass, then test-to-fail (L2).` },
+          { type: `tf`, q: `White box testing is also known as clear box testing or glass box testing.`, a: 0, why: `Also structural and open box (L3).` },
+          { type: `tf`, q: `Black box testing is also known as glass box testing because it examines the internal code structure.`, a: 1, why: `That describes white-box testing.` },
+          { type: `tf`, q: `The participants in a walkthrough are more than the participants in a peer review.`, a: 0, why: `A walkthrough uses a group of 5 or 6 programmers and testers (L3).` },
+          { type: `tf`, q: `Standards are structured and must be adhered to.`, a: 0, why: `Standards are mandatory rules (L3).` },
+          { type: `tf`, q: `Boundary value analysis can only be used for white-box testing.`, a: 1, why: `BVA is taught as a black-box technique (L2) and can also be used in white-box testing.` },
+          { type: `tf`, q: `Equivalence testing divides the input domain into classes from which test cases are derived, reducing the total number of test cases.`, a: 0, why: `The definition of equivalence partitioning (L2).` },
+          { type: `tf`, q: `Bugs found and fixed early cost more than bugs found later.`, a: 1, why: `The cost rises from requirements (low) to production (extremely costly) (L1).` },
+          { type: `tf`, q: `Quality Assurance is the same as Quality Control.`, a: 1, why: `QA is process and prevention; QC is product and detection (L2, L6).` },
+          { type: `tf`, q: `Dynamic content is graphics and text that vary depending on some conditions.`, a: 0, why: `The L5 definition.` },
+          { type: `tf`, q: `A maturity model can be utilized as a model for evaluation.`, a: 0, why: `L7: for both evaluation and improvement.` },
+          { type: `tf`, q: `Testing is the process of executing a program with the intent of finding errors (Myers).`, a: 0, why: `Destruction-oriented era, 1979–1982 (L1).` }
+        ]},
+        { title: `Part B · Multiple choice`, marks: `practice`, items: [
+          { type: `mcq`, q: `Identify the testing technique used to test how the actual code works.`, o: [`Structural testing`, `Functional testing`, `Static testing`, `Black box testing`], a: 0, why: `Structural = white-box.` },
+          { type: `mcq`, q: `What testing is carried out after integrating the units to ensure that specifications are met?`, o: [`Agile testing`, `Unit testing`, `System testing`, `Acceptance testing`], a: 2, why: `System testing tests the complete system against its specifications (L2).` },
+          { type: `mcq`, q: `Alternative name for white box testing is`, o: [`Structural analysis`, `Gray box testing`, `Glass box testing`, `Functional testing`], a: 2, why: `Glass box, clear box, open box, structural testing.` },
+          { type: `mcq`, q: `Which of the following refers to data declaration errors?`, o: [`Improper declaration of variables and constants`, `Improper initialization`, `Improper calculations`, `Loop behavior errors`], a: 0, why: `L3 definition. Calculations = computation errors; loops = control flow.` },
+          { type: `mcq`, q: `How many CMM levels are there?`, o: [`One`, `Two`, `Three`, `Five`], a: 3, why: `Five levels.` },
+          { type: `mcq`, q: `Which of the following is a strategy of integration testing (from the lecture figure)?`, o: [`Bottom-up testing`, `Static white box testing`, `Black box testing`, `Code review`], a: 0, why: `The figure shows bottom-up, top-down and umbrella approach.` },
+          { type: `mcq`, q: `Which type of software testing examines and reviews something that is not running?`, o: [`Dynamic testing`, `System testing`, `Integration testing`, `Static testing`], a: 3, why: `L2 definition of static testing.` },
+          { type: `mcq`, q: `In which testing type is the size of a collection tested (sub-boundaries)?`, o: [`Data coverage testing`, `Code coverage testing`, `Inspections`, `Walkthrough`], a: 0, why: `Data coverage includes data flow, sub-boundaries and error forcing (L3).` },
+          { type: `mcq`, q: `Main quality tools used by Six Sigma include:`, o: [`Kaizen and Kanban`, `Selenium and Cypress`, `Peer review`, `SPICE`], a: 0, why: `L8 tools: 5S, seven wastes, value stream mapping, visual workspace, VOC, Kaizen, Kanban, regression analysis.` }
+        ]}
+      ]
+    }
+  ]
+};

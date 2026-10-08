@@ -1,0 +1,6 @@
+{
+  "buildCommand": "node build.mjs && node dist.mjs",
+  "outputDirectory": "dist",
+  "installCommand": "",
+  "framework": null
+}
