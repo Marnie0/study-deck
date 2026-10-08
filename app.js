@@ -323,7 +323,7 @@ function start() {
     const modeName = { path: 'Path', read: 'Notes', cards: 'Cards', ask: 'Q&A', quiz: 'Quiz', papers: 'Past papers', progress: 'Progress', miss: 'Progress' };
     const openCourse = (k, extra) => { go(Object.assign({ view: 'course', course: k, mode: 'path', lec: lastLec(k), anchor: null, quizPreset: null, cardFocus: null, cardLec: null }, extra || {})); window.scrollTo(0, 0); };
     const dayLetter = d => 'SMTWTFS'[new Date(d * 86400000).getUTCDay()];
-    return html`<div className="page">
+    return html`<div className="page home-page">
       <${Topbar} bar=${bar} cur=${null} />
       <main className="content home">
         <div className="hello">
