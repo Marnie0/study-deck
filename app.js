@@ -27,14 +27,28 @@ function start() {
   const SPINE_H = { compiler: 318, os: 300, mm: 330, qa: 292, hci: 312, fp: 284 };
   const LET = 'ABCDEFGH';
 
-  /* ── storage (same keys as the previous version, so progress carries over) ── */
+  /* ── storage (same keys as the previous version, so progress carries over) ──
+     Parsed values are cached, so reading the same key again costs nothing; every write in this tab goes through set(),
+     and writes from another tab arrive as a 'storage' event that drops the cache. Treat returned values as read-only. */
+  const cache = new Map();
   const store = {
-    get(k, d) { try { const v = localStorage.getItem('sd:' + k); return v == null ? d : JSON.parse(v); } catch (e) { return d; } },
-    set(k, v) { try { localStorage.setItem('sd:' + k, JSON.stringify(v)); } catch (e) {} }
+    get(k, d) {
+      if (!cache.has(k)) { let v = null; try { const raw = localStorage.getItem('sd:' + k); v = raw == null ? null : JSON.parse(raw); } catch (e) {} cache.set(k, v); }
+      const v = cache.get(k); return v == null ? d : v;
+    },
+    set(k, v) { cache.set(k, v); try { localStorage.setItem('sd:' + k, JSON.stringify(v)); } catch (e) {} }
   };
+  window.addEventListener('storage', e => { if (e.key == null) cache.clear(); else if (e.key.startsWith('sd:')) cache.delete(e.key.slice(3)); window.dispatchEvent(new Event('sd-store')); });
+  // state saved under a key: written only when it changes (not on mount), and re-read if the key changes
   function usePersist(key, init) {
-    const [v, setV] = useState(() => store.get(key, init));
-    useEffect(() => { store.set(key, v); window.dispatchEvent(new Event('sd-store')); }, [key, v]);
+    const [s, setS] = useState(() => ({ key, v: store.get(key, init) }));
+    const v = s.key === key ? s.v : store.get(key, init);
+    const setV = useCallback(next => setS(o => {
+      const cur = o.key === key ? o.v : store.get(key, init), nv = typeof next === 'function' ? next(cur) : next;
+      if (nv === cur && o.key === key) return o;
+      store.set(key, nv); queueMicrotask(() => window.dispatchEvent(new Event('sd-store')));
+      return { key, v: nv };
+    }), [key]);
     return [v, setV];
   }
 
@@ -51,6 +65,7 @@ function start() {
   const Source = ({ q }) => { const o = originOf(q), [label, cls] = ORIGIN[o]; return html`<span className=${'srcbadge ' + cls} title=${o === 'extra' ? 'Written for Study Deck from this lecture, not from the professor' : q.src}>${o === 'extra' ? label : (o === 'exam' || o === 'sheet' ? q.src : label)}</span>`; };
   const quizOf = k => memo['q' + k] || (memo['q' + k] = C[k].lectures.flatMap(l => l.quiz.map((x, i) => Object.assign({ id: l.n + '-' + i, lec: l.n }, x))
     .concat((l.extra || []).map((x, i) => Object.assign({ id: 'x' + l.n + '-' + i, lec: l.n, xtra: true }, x)))));
+  const quizById = k => memo['m' + k] || (memo['m' + k] = new Map(quizOf(k).map(q => [q.id, q])));
   const lecTitle = (k, n) => (M[k].lectures.find(l => l.n === n) || {}).title || '';
   const H = ({ h, as, className }) => React.createElement(as || 'span', { className, dangerouslySetInnerHTML: { __html: h == null ? '' : String(h) } });
   const pad = n => String(n).padStart(2, '0');
@@ -90,10 +105,10 @@ function start() {
     return { due, fresh, total: due + fresh, seen: ids.length, tomorrow: ids.filter(id => srs[id].due === t + 1).length };
   }
   function recordAnswers(k, pairs) {
-    const st = store.get('stats:' + k, {});
-    pairs.forEach(([id, ok]) => { const v = st[id] || [0, 0]; v[ok ? 0 : 1] += 1; st[id] = v; });
+    const st = Object.assign({}, store.get('stats:' + k, {}));
+    pairs.forEach(([id, ok]) => { const v = (st[id] || [0, 0]).slice(); v[ok ? 0 : 1] += 1; st[id] = v; });
     store.set('stats:' + k, st);
-    const day = store.get('daily', {}), t = today(), d = day[t] || [0, 0];
+    const day = Object.assign({}, store.get('daily', {})), t = today(), d = (day[t] || [0, 0]).slice();
     pairs.forEach(([, ok]) => { d[0] += ok ? 1 : 0; d[1] += 1; });
     day[t] = d; Object.keys(day).forEach(x => { if (+x < t - 60) delete day[x]; });
     store.set('daily', day);
@@ -108,8 +123,8 @@ function start() {
   const arCard = (k, id) => { const m = /^(\d+)-(\d+)$/.exec(id || ''); const L = m && arLec(k, m[1]); return (L && L.cards && L.cards[+m[2]]) || null; };
   const Ar = ({ t, cls }) => t ? html`<span className=${'ar' + (cls ? ' ' + cls : '')} dir="rtl" lang="ar" dangerouslySetInnerHTML=${{ __html: t }}></span>` : null;
   const scriptOnce = {};
-  const loadScript = src => scriptOnce[src] || (scriptOnce[src] = new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => { delete scriptOnce[src]; s.remove(); rej(); }; document.head.appendChild(s); }));
-  const loadAr = k => (M[k] && M[k].ar && !(window.AR && window.AR[k])) ? loadScript('data/ar-' + k + '.js') : Promise.resolve();
+  const loadScript = src => scriptOnce[src] || (scriptOnce[src] = new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = () => { s.remove(); res(); }; s.onerror = () => { delete scriptOnce[src]; s.remove(); rej(); }; document.head.appendChild(s); }));
+  const loadAr = k => (M[k] && M[k].ar && !(window.AR && window.AR[k])) ? loadScript(dataUrl('ar-' + k)) : Promise.resolve();
   function arFont() {
     if (document.getElementById('ar-font')) return;
     const l = document.createElement('link'); l.id = 'ar-font'; l.rel = 'stylesheet';
@@ -131,13 +146,15 @@ function start() {
   };
 
   /* ── course data loads on demand ── */
+  // the hosted build lists a content hash per data file, so a file's URL changes only when its content does and browsers can cache it for good
+  const dataUrl = name => 'data/' + name + '.js' + (window.DATA_V && window.DATA_V[name] ? '?v=' + window.DATA_V[name] : '');
   const pending = {};
   function loadCourse(k) {
     if (C[k]) return Promise.resolve();
     return pending[k] || (pending[k] = new Promise((resolve, reject) => {
       const s = document.createElement('script');
-      s.src = 'data/' + k + '.js';
-      s.onload = () => C[k] ? resolve() : reject(new Error('empty'));
+      s.src = dataUrl(k);
+      s.onload = () => { s.remove(); if (C[k]) resolve(); else { delete pending[k]; reject(new Error('empty')); } };
       s.onerror = () => { delete pending[k]; s.remove(); reject(new Error('network')); };
       document.head.appendChild(s);
     }));
@@ -260,8 +277,6 @@ function start() {
       return () => window.removeEventListener('keydown', onKey);
     }, []);
 
-    const [, setStoreTick] = useState(0);
-    useEffect(() => { const f = () => setStoreTick(t => t + 1); window.addEventListener('sd-store', f); return () => window.removeEventListener('sd-store', f); }, []);
     const openSearch = () => setSearching(true);
     const inCourse = nav.view === 'course' && M[nav.course];
     const bar = { go, openSearch, theme, lang, setLang };
@@ -297,8 +312,11 @@ function start() {
   const lecOfId = id => { const m = /^x?(\d+)-/.exec(id); return m ? +m[1] : null; };
   function Home({ bar }) {
     const { go, openSearch, lang, setLang } = bar;
+    // the tiles read saved progress directly, so redraw when it changes (including from another tab)
+    const [, setTick] = useState(0);
+    useEffect(() => { const f = () => setTick(t => t + 1); window.addEventListener('sd-store', f); return () => window.removeEventListener('sd-store', f); }, []);
     const last = store.get('last', null);
-    const rows = ORDER.map(([k, el]) => Object.assign({ k, el }, progressOf(k)));
+    const rows = ORDER.map(([k, el]) => Object.assign({ k, el, readList: store.get('read:' + k, []) }, progressOf(k)));
     const sum = rows.reduce((a, r) => { a.due += r.due; a.read += r.read; a.lec += r.lectures; a.known += r.known; a.cards += r.cards; return a; }, { due: 0, read: 0, lec: 0, known: 0, cards: 0 });
     const h = new Date().getHours();
     const greet = h < 5 ? 'Up late' : h < 12 ? 'Good morning' : h < 18 ? 'Good afternoon' : 'Good evening';
@@ -316,8 +334,8 @@ function start() {
     const papers = ORDER.reduce((a, [k]) => a + (M[k].exams || 0), 0);
     const paperCourse = last && M[last.course] ? last.course : ORDER[0][0];
     const cont = last && M[last.course] ? last : null;
-    const contPct = !cont ? 0 : cont.mode === 'read' && typeof cont.lec === 'number' && store.get('posf:' + cont.course + ':' + cont.lec, null) != null
-      ? Math.round(store.get('posf:' + cont.course + ':' + cont.lec, 0) * 100)
+    const posf = cont && cont.mode === 'read' && typeof cont.lec === 'number' ? store.get('posf:' + cont.course + ':' + cont.lec, null) : null;
+    const contPct = !cont ? 0 : posf != null ? Math.round(posf * 100)
       : Math.round(progressOf(cont.course).read / Math.max(1, M[cont.course].lectures.length) * 100);
     const contWhat = !cont ? '' : cont.mode === 'read' && typeof cont.lec === 'number' ? 'of this lecture read' : 'of the course read';
     const modeName = { path: 'Path', read: 'Notes', cards: 'Cards', ask: 'Q&A', quiz: 'Quiz', papers: 'Past papers', progress: 'Progress', miss: 'Progress' };
@@ -357,7 +375,7 @@ function start() {
           <div className="t-courses">${rows.map(r => html`<button key=${r.k} className=${'tile t-course sp-' + r.k} onMouseEnter=${() => prefetch(r.k)} onClick=${() => openCourse(r.k)}>
             <span className="tcn"><b>${M[r.k].short}</b>${r.due ? html`<em>${r.due} due</em>` : null}</span>
             <span className="tcs">${M[r.k].code}${r.el ? ' · Elective' : ''}</span>
-            <span className="dots" aria-hidden="true">${M[r.k].lectures.map(l => html`<i key=${l.n} className=${store.get('read:' + r.k, []).includes(l.n) ? 'f' : ''}></i>`)}</span>
+            <span className="dots" aria-hidden="true">${M[r.k].lectures.map(l => html`<i key=${l.n} className=${r.readList.includes(l.n) ? 'f' : ''}></i>`)}</span>
             <span className="tcs">${r.read} of ${r.lectures} lectures read</span>
           </button>`)}</div>
           <div className="tile t-weak">
@@ -519,9 +537,12 @@ function start() {
 
   /* ════════════ NOTES ════════════ */
   const READ_SIZES = [['s', 'Smaller text', 14], ['m', 'Medium text', 16.5], ['l', 'Larger text', 19]];
+  const minutesMemo = new WeakMap();
   const minutesFor = lec => {
+    if (minutesMemo.has(lec)) return minutesMemo.get(lec);
     const words = lec.notes.reduce((a, s) => a + strip([].concat(s.pts || [], (s.table || []).flat(), s.formula || [], s.code || []).join(' ')).split(' ').length, 0);
-    return Math.max(1, Math.round(words / 180));
+    const m = Math.max(1, Math.round(words / 180));
+    minutesMemo.set(lec, m); return m;
   };
 
   function Read({ k, lecN, anchor, go, read, setRead, barRef, onSection }) {
@@ -537,16 +558,27 @@ function start() {
     const mins = useMemo(() => minutesFor(lec), [k, lec.n]);
     const isRead = read.includes(lec.n);
     const arL = arLec(k, lec.n);
+    const notesBody = useMemo(() => lec.notes.map((s, i) => { const an = arL && arL.notes && arL.notes[i]; return html`<section key=${i} className="note" id=${'sec-' + lec.n + '-' + i} data-i=${i}>
+            <h3><span className="sec">§${i + 1}</span><${H} h=${s.h} /></h3>
+            <${Ar} t=${an && an.h} cls="arh" />
+            ${s.formula && html`<div className="formula">${s.formula.join('\n')}</div>`}
+            ${s.table && html`<div className="tbl"><table>
+              <thead><tr>${s.table[0].map((x, j) => html`<th key=${j} dangerouslySetInnerHTML=${{ __html: x }}></th>`)}</tr></thead>
+              <tbody>${s.table.slice(1).map((r, ri) => html`<tr key=${ri}>${r.map((x, j) => html`<td key=${j} dangerouslySetInnerHTML=${{ __html: x }}></td>`)}</tr>`)}</tbody>
+            </table></div>`}
+            ${s.code && html`<pre className="code">${s.code}</pre>`}
+            ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
+          </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));
     const posKey = 'pos:' + k + ':' + lec.n;
     const [book, setBook] = usePersist('bookopen', false);
-    const chapter = useMemo(() => ({
+    const chapter = useMemo(() => !book ? null : ({
       id: 'L' + lec.n, kicker: 'Lecture ' + lec.n + ' · ' + c.short, title: cleanTitle(lec.title), runTitle: splitTitle(lec.title)[0], sections: titles.map((t, i) => (i + 1) + ' · ' + t),
       content: bookLecture(c, lec),
       next: idx < c.lectures.length - 1 ? () => go({ lec: c.lectures[idx + 1].n }) : null, nextId: idx < c.lectures.length - 1 ? 'L' + c.lectures[idx + 1].n : null,
       prev: idx > 0 ? () => go({ lec: c.lectures[idx - 1].n }) : null, prevId: idx > 0 ? 'L' + c.lectures[idx - 1].n : null
-    }), [k, lec.n]);
+    }), [k, lec.n, book]);
     const closeBook = sec => {
       setBook(false);
       requestAnimationFrame(() => { const el = document.getElementById('sec-' + lec.n + '-' + sec); if (el) el.scrollIntoView({ block: 'start' }); });
@@ -623,7 +655,7 @@ function start() {
 
     useEffect(() => {
       const onKey = e => {
-        if (e.target.matches && e.target.matches('input, textarea, select') || e.ctrlKey || e.metaKey || e.altKey || document.querySelector('.scrim, .bookmode')) return;
+        if (e.target.matches && e.target.matches('input, textarea, select') || e.ctrlKey || e.metaKey || e.altKey || document.querySelector('.scrim, .bookmode, .fmode')) return;
         const key = e.key;
         if (key === 'b') setBook(true);
         else if (key === 'j') jump(active + 1);
@@ -665,18 +697,8 @@ function start() {
             <h2>${lec.title}</h2>
             <p className="meta">${mins} min read · ${lec.notes.length} sections · ${lec.cards.length} cards · ${lec.quiz.length} quiz questions</p>
           </header>
-          ${lec.notes.map((s, i) => { const an = arL && arL.notes && arL.notes[i]; return html`<section key=${i} className="note" id=${'sec-' + lec.n + '-' + i} data-i=${i}>
-            <h3><span className="sec">§${i + 1}</span><${H} h=${s.h} /></h3>
-            <${Ar} t=${an && an.h} cls="arh" />
-            ${s.formula && html`<div className="formula">${s.formula.join('\n')}</div>`}
-            ${s.table && html`<div className="tbl"><table>
-              <thead><tr>${s.table[0].map((x, j) => html`<th key=${j} dangerouslySetInnerHTML=${{ __html: x }}></th>`)}</tr></thead>
-              <tbody>${s.table.slice(1).map((r, ri) => html`<tr key=${ri}>${r.map((x, j) => html`<td key=${j} dangerouslySetInnerHTML=${{ __html: x }}></td>`)}</tr>`)}</tbody>
-            </table></div>`}
-            ${s.code && html`<pre className="code">${s.code}</pre>`}
-            ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
-          </section>`; })}
-          <${ExtraQuestions} k=${k} lec=${lec} go=${go} />
+          ${notesBody}
+          <${ExtraQuestions} k=${k} lec=${lec} go=${go} ar=${arL} />
           <footer className="page-foot">
             <button className=${'btn readmark' + (isRead ? ' on' : '')} aria-pressed=${String(isRead)} onClick=${toggleRead}>${isRead ? '✓ Read' : 'Mark lecture as read'}</button>
             <button className="btn solid" onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: [lec.n], t: Date.now() } })}>Quiz me on lecture ${lec.n}</button>
@@ -703,7 +725,8 @@ function start() {
   }
 
   /* ── "Extra questions": practice written for the site from this lecture, answered in place ── */
-  function ExtraQuestions({ k, lec, go }) {
+  // memo: the notes page re-renders as you scroll (the outline follows you); this list only changes with its own answers
+  const ExtraQuestions = React.memo(function ExtraQuestions({ k, lec, go }) {
     const items = useMemo(() => quizOf(k).filter(q => q.lec === lec.n && originOf(q) === 'extra'), [k, lec.n]);
     const [picks, setPicks] = useState({});
     const [showAll, setShowAll] = useState(false);
@@ -735,7 +758,7 @@ function start() {
         <button className="btn ghost" onClick=${() => go({ mode: 'quiz', quizPreset: { ids: shuffle(items.map(q => q.id)), t: Date.now() } })}>Take them as a quiz</button>
       </div>
     </section>`;
-  }
+  });
 
   /* ════════════ INDEX CARDS ════════════ */
   function Cards(props) {
@@ -861,7 +884,7 @@ function start() {
 
     useEffect(() => {
       const onKey = e => {
-        if (e.target.matches && e.target.matches('input, textarea, select') || e.ctrlKey || e.metaKey || e.altKey) return;
+        if (e.target.matches && e.target.matches('input, textarea, select') || e.ctrlKey || e.metaKey || e.altKey || document.querySelector('.fmode, .scrim')) return;
         if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); setFlip(f => !f); }
         else if (e.key === 'ArrowRight') move(1);
         else if (e.key === 'ArrowLeft') move(-1);
@@ -953,9 +976,9 @@ function start() {
 
   /* ════════════ FOCUS MODE: one thing on screen ════════════ */
   function FocusShell({ onClose, chip, progress, children, sheet, resetKey }) {
-    const body = useRef(null);
+    const body = useRef(null), closeRef = useRef(onClose); closeRef.current = onClose;
     useEffect(() => { const r = document.documentElement, prev = r.style.overflow; r.style.overflow = 'hidden'; return () => { r.style.overflow = prev; }; }, []);
-    useEffect(() => { const f = e => { if (e.key === 'Escape') onClose(); }; window.addEventListener('keydown', f); return () => window.removeEventListener('keydown', f); }, [onClose]);
+    useEffect(() => { const f = e => { if (e.key === 'Escape' && !document.querySelector('.scrim')) closeRef.current(); }; window.addEventListener('keydown', f); return () => window.removeEventListener('keydown', f); }, []);
     useEffect(() => { if (body.current) body.current.scrollTop = 0; }, [resetKey]);
     return html`<div className="fmode" role="dialog" aria-modal="true" aria-label=${chip}>
       <div className="f-top"><button className="f-x" onClick=${onClose} aria-label="Close">✕</button><div className="f-prog">${progress}</div><span className="f-chip">${chip}</span></div>
@@ -971,7 +994,7 @@ function start() {
     const [src, setSrc] = usePersist('qsrc', 'all');
     const [count, setCount] = usePersist('qcount', '10');
     const [run, setRun] = useState(null);
-    const [mock, setMockState] = useState(() => loadMock(k));
+    const [mock, setMockState] = useState(() => { const m = loadMock(k); if (m && !m.ids.some(id => quizById(k).has(id))) { saveMock(k, null); return null; } return m; });
     const setMock = m => { saveMock(k, m); setMockState(m); window.scrollTo(0, 0); };
     const [mockLen, setMockLen] = usePersist('mocklen', 20);
     const startMock = nq => {
@@ -983,9 +1006,10 @@ function start() {
 
     const srcMode = src === 'exam' ? 'prof' : src;
     // counts on the source buttons follow the chosen lectures, so a button never promises questions the quiz can't show
+    const missSet = new Set(miss);
     const inLecs = all.filter(q => lecs === 'all' || lecs.includes(q.lec));
-    const bySrc = { all: inLecs.length, prof: inLecs.filter(isProf).length, extra: inLecs.filter(q => originOf(q) === 'extra').length, miss: inLecs.filter(q => miss.includes(q.id)).length };
-    const pool = inLecs.filter(q => srcMode === 'all' || (srcMode === 'prof' ? isProf(q) : srcMode === 'extra' ? originOf(q) === 'extra' : miss.includes(q.id)));
+    const bySrc = { all: inLecs.length, prof: inLecs.filter(isProf).length, extra: inLecs.filter(q => originOf(q) === 'extra').length, miss: inLecs.filter(q => missSet.has(q.id)).length };
+    const pool = inLecs.filter(q => srcMode === 'all' || (srcMode === 'prof' ? isProf(q) : srcMode === 'extra' ? originOf(q) === 'extra' : missSet.has(q.id)));
     // practice rounds (retrying misses, practising saved mistakes, a single question) are marked but never set the best score
     const start = (items, practice, from) => { if (items.length) setRun({ items, i: 0, picks: [], saved: false, practice: !!practice, from: from || null }); };
     const closeRun = () => { const from = run && run.from; setRun(null); if (from === 'path') go({ mode: 'path' }); else if (from === 'home') go({ view: 'shelf' }); };
@@ -994,7 +1018,7 @@ function start() {
 
     useEffect(() => {
       if (!preset) return;
-      if (preset.ids) start(all.filter(q => preset.ids.includes(q.id)), true, preset.from);
+      if (preset.ids) { const want = new Set(preset.ids); start(all.filter(q => want.has(q.id)), true, preset.from); }
       else if (preset.lecs) { setLecs(preset.lecs); start(shuffle(all.filter(q => preset.lecs.includes(q.lec))), false, preset.from); }
       go({ quizPreset: null });
     }, [preset && preset.t]);
@@ -1161,8 +1185,7 @@ function start() {
   function saveMock(k, m) { MOCKS[k] = m; try { m ? sessionStorage.setItem('sd:mock:' + k, JSON.stringify(m)) : sessionStorage.removeItem('sd:mock:' + k); } catch (e) {} }
 
   function MockExam({ k, mock, setMock, setMiss, setFixed, onNew }) {
-    const all = quizOf(k);
-    const byId = useMemo(() => new Map(all.map(q => [q.id, q])), [k]);
+    const byId = quizById(k);
     const items = mock.ids.map(id => byId.get(id)).filter(Boolean);
     const [now, setNow] = useState(Date.now());
     const [confirm, setConfirm] = useState(false);
@@ -1692,7 +1715,7 @@ function start() {
     const coverProps = id => hidden(id) ? { className: 'covered', role: 'button', tabIndex: 0, 'aria-label': 'Show answer', onClick: () => reveal(id), onKeyDown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); reveal(id); } } } : { onClick: () => reveal(id) };
     const jump = n => { const el = document.getElementById('rev-' + n); if (el) el.scrollIntoView({ behavior: calm() ? 'auto' : 'smooth', block: 'start' }); };
     const [book, setBook] = usePersist('bookopen', false);
-    const chapter = useMemo(() => ({ id: 'rev', kicker: 'Revision sheet', title: c.name, sections: c.lectures.map(l => 'Lecture ' + l.n + ' · ' + cleanTitle(l.title)), content: bookRevision(c), next: null, prev: null }), [k]);
+    const chapter = useMemo(() => !book ? null : ({ id: 'rev', kicker: 'Revision sheet', title: c.name, sections: c.lectures.map(l => 'Lecture ' + l.n + ' · ' + cleanTitle(l.title)), content: bookRevision(c), next: null, prev: null }), [k, book]);
 
     return html`<div className="read">
       <div className="readcol">
@@ -1729,8 +1752,7 @@ function start() {
 
   /* ════════════ MISTAKES ════════════ */
   function Mistakes({ k, miss, setMiss, fixed, setFixed, go }) {
-    const all = quizOf(k);
-    const items = miss.map(id => all.find(q => q.id === id)).filter(Boolean);
+    const items = miss.map(id => quizById(k).get(id)).filter(Boolean);
     const [confirm, setConfirm] = useState(false);
     return html`<article className="paper">
       
@@ -1802,8 +1824,10 @@ function start() {
     const [failed, setFailed] = useState(false);
     useEffect(() => { inputRef.current && inputRef.current.focus(); }, []);
     useEffect(() => {
-      if (ready) return;
-      Promise.all(ORDER.map(([k]) => loadCourse(k))).then(() => setReady(true), () => setFailed(true));
+      let live = true;
+      if (!ready) Promise.all(ORDER.map(([k]) => loadCourse(k))).then(() => live && setReady(true), () => live && setFailed(true));
+      // the index holds a lower-cased copy of every course; let it go when search closes (rebuilding it takes a few ms)
+      return () => { live = false; INDEX = null; };
     }, []);
     const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
     const results = useMemo(() => {
@@ -1815,7 +1839,7 @@ function start() {
     }, [q, ready]);
     const choose = r => { const to = Object.assign({}, r.to); if (to.quizPreset) to.quizPreset = Object.assign({}, to.quizPreset, { t: Date.now() }); go(to); window.scrollTo(0, 0); };
     const onKey = e => {
-      if (e.key === 'Escape') close();
+      if (e.key === 'Escape') { e.stopPropagation(); close(); }   // don't also close a quiz or book underneath
       else if (e.key === 'ArrowDown') { e.preventDefault(); setSel(s => Math.min(s + 1, results.length - 1)); }
       else if (e.key === 'ArrowUp') { e.preventDefault(); setSel(s => Math.max(s - 1, 0)); }
       else if (e.key === 'Enter' && results[sel]) choose(results[sel]);

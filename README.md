@@ -160,11 +160,13 @@ Where an official answer key disagrees with the lecture slides, both are shown a
 
 No framework build, no bundler, no `node_modules`. The whole app is static files.
 
-- **React 18 + [htm](https://github.com/developit/htm)** from a CDN, so components are written as tagged templates and run straight in the browser, with a mirror fallback if a CDN is slow.
+- **React 18 + [htm](https://github.com/developit/htm)**, served from the site itself (with CDN mirrors as a fallback), so components are written as tagged templates and run straight in the browser.
+- **Cached for good.** Every script URL carries a hash of its content, so browsers keep files for a year and a returning visitor downloads only the page itself. A changed file gets a new URL.
 - **Lazy course data.** The first load is about 4&nbsp;KB of course names and counts; each course's data (and its Arabic layer) loads only when you open it, and the last course you studied is prefetched while the browser is idle.
 - **Fast parsing.** Course data ships as `JSON.parse("…")`, which browsers parse faster than an equivalent object literal.
 - **Smooth UI.** View Transitions for page changes, a circular reveal for the theme switch, a scroll listener that paints with `transform` only, and `content-visibility` on long lists.
-- **Local-first progress.** Spaced-repetition state, answer history, mistakes, reading position and preferences live in `localStorage`.
+- **Local-first progress.** Spaced-repetition state, answer history, mistakes, reading position and preferences live in `localStorage`, behind a small in-memory cache, and are written only when they change.
+- **Light on memory.** The search index is built when search opens and released when it closes; the book view is only laid out while it's open.
 
 ```
 study-deck/
@@ -176,6 +178,7 @@ study-deck/
 ├── ar/                 # Egyptian Arabic explanations, per course
 ├── build.mjs           # merges the sources into data/ + manifest.js
 ├── dist.mjs            # packages a standalone site into dist/
+├── vendor/             # React, ReactDOM and htm, served with the site
 ├── data/  manifest.js  # generated, loaded by the app
 └── vercel.json         # Vercel runs build.mjs + dist.mjs and serves dist/
 ```
