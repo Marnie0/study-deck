@@ -53,11 +53,28 @@ const share = `<meta name="description" content="${DESC}">
 <meta name="twitter:title" content="${TITLE}">
 <meta name="twitter:description" content="${DESC}">
 <meta name="twitter:image" content="${SITE}/${OG}">`;
+const body = page.replace(/(<meta name="viewport"[^>]*>)/, '$1\n' + share).replace('</style>', '</style>\n</head>\n<body>');
+// Content Security Policy: the browser runs only this site's scripts, the CDN mirrors app.js falls back to, and the three inline
+// scripts below (allowed by their exact hash, so an injected script would not run). The parts a <meta> tag can't set
+// (frame-ancestors, the other security headers) are in vercel.json.
+const inline = [...body.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => `'sha256-${createHash('sha256').update(m[1]).digest('base64')}'`);
+const CSP = [
+  "default-src 'self'",
+  `script-src 'self' ${inline.join(' ')} https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com`,
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com",
+  "img-src 'self' data:",
+  "connect-src 'self'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'none'"
+].join('; ');
 writeFileSync('dist/index.html', `<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-${page.replace(/(<meta name="viewport"[^>]*>)/, '$1\n' + share).replace('</style>', '</style>\n</head>\n<body>')}
+<meta http-equiv="Content-Security-Policy" content="${CSP}">
+${body}
 </body>
 </html>
 `);
