@@ -678,7 +678,7 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
             [`EP 40,000`, `That is 8 × 5000 for one month.`]
           ], a: 2, src: `Exam 2023/24` },
         { q: `Embedded, 70,000 DSI, E = 3.6·(KDSI)^1.20. Effort ≈ ?`, o: [
-            [`459 MM`, `That would use the intermediate 2.8 constant.`],
+            [`458 MM`, `That would use the Intermediate embedded constant 2.8 (2.8 × 163.7 = 458.4).`],
             [`252 MM`, `That is 3.6 × 70 with no exponent.`],
             [`589 MM`, `Correct. 70^1.20 = 163.7; × 3.6 = 589.4.`],
             [`301 MM`, `That is for 40 KDSI.`]

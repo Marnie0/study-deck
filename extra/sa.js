@@ -45,7 +45,7 @@ EXTRA.sa = { 1: [
     { q: `Which management function does a strategic planning manager emphasise the most (Fig 1.13)?`, o: [
         [`Planning`, `Correct.`],
         [`Staffing`, `Staffing is a small share at every level.`],
-        [`Controlling`, `Control dominates lower levels.`],
+        [`Controlling`, `Control is only a small share at the strategic level; planning is the largest slice there.`],
         [`Directing`, `Directing is mostly done at the operational level.`]
       ], a: 0 },
     { q: `"Investigating the problem and the requirements rather than a solution" and "a conceptual solution that fulfils the requirements" describe, in order:`, o: [
@@ -247,7 +247,7 @@ EXTRA.sa = { 1: [
     { q: `Basic COCOMO, organic, 32 KDSI (E = 2.4·KDSI^1.05, TDEV = 2.5·E^0.38). Effort and schedule are about:`, o: [
         [`146 MM and 14 months`, `That is semidetached.`],
         [`230 MM and 14 months`, `That is embedded.`],
-        [`77 MM and 12 months`, `That uses 2.4 × 32 without the exponent.`],
+        [`77 MM and 13 months`, `That uses 2.4 × 32 = 76.8 without the exponent.`],
         [`91 MM and 14 months`, `Correct. 32^1.05 = 38.05; × 2.4 = 91.3. 91^0.38 = 5.55; × 2.5 = 13.9.`]
       ], a: 3 },
     { q: `Basic COCOMO, embedded, 32 KDSI: E = 3.6 × 32^1.20. Since 32^1.20 = 64, E = ?`, o: [
