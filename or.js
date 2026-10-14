@@ -3,7 +3,7 @@ COURSES.or = {
   id: `or`,
   name: `Operations Research`,
   short: `OR`,
-  code: `BS205 (CS304 for 3rd year)`,
+  code: `BS205 / CS304`,
   by: `Dr. Marwa Yahya, Dr. Abd El-Raheem`,
   lectures: [
     /* ───────────────────────── LECTURE 1 ───────────────────────── */

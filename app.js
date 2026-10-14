@@ -122,6 +122,67 @@ function start() {
   const fmtClock = ms => { const s = Math.max(0, Math.ceil(ms / 1000)); return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); };
 
   /* ── Egyptian Arabic explanations, shown under the English when the reader switches them on ── */
+  /* ── code highlighting: one small tokenizer for the languages the courses use (C++, JavaScript, PHP, HTML/CSS, 8086 assembly) ── */
+  const KW = {
+    c: 'auto break case catch class const continue default delete do else enum extern false for friend if include define inline int long new nullptr operator private protected public return short signed sizeof static struct switch template this throw true try typedef typename union unsigned using virtual void volatile while bool char double float string cin cout endl NULL namespace std',
+    js: 'async await break case catch class const continue default delete do else export extends false finally for function if import in instanceof let new null of return super switch this throw true try typeof undefined var void while with NaN Infinity document window console',
+    php: 'abstract and array as break case catch class clone const continue declare default do echo else elseif empty endfor endforeach endif endwhile extends false final for foreach function global if implements include include_once instanceof isset list new null or print private protected public require require_once return static switch throw true try unset use var while xor',
+    asm: 'mov movs movsb movsw add adc sub sbb mul imul div idiv inc dec neg cmp and or xor not test shl shr sal sar rol ror rcl rcr push pop pusha popa pushf popf lea lds les lss xchg jmp je jne jz jnz jg jge jl jle ja jae jb jbe jc jnc jo jno js jns jcxz loop loope loopne loopz loopnz call ret int iret nop hlt cld std cli sti lods lodsb lodsw lodsd stos stosb stosw stosd ins insb insw insd outs outsb outsw cmps scas rep repe repne in out org db dw dd equ proc endp end offset ptr byte word dword segment ends assume main',
+    reg: 'ax bx cx dx al ah bl bh cl ch dl dh si di bp sp ip cs ds ss es fs gs eax ebx ecx edx esi edi ebp esp eip flags eflags'
+  };
+  const kwSet = {}; Object.keys(KW).forEach(k => { kwSet[k] = new Set(KW[k].split(' ')); });
+  const escHtml = t => t.replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch]));
+  function codeLang(t) {
+    if (/^\s*(?:[a-z_]\w*:\s*)?(mov|add|sub|push|pop|inc|dec|jmp|lea|int|call|loop|cmp|org|lods\w*|stos\w*|shl|shr|rol|ror|xchg|mul|div)\s+[\w\[]/im.test(t) && !/[{};]\s*$/m.test(t.replace(/;.*$/gm, ''))) return 'asm';
+    if (/<\?php|\$[a-z_]\w*/i.test(t)) return 'php';
+    if (/<\/?[a-z][\w-]*[\s>\/]/i.test(t) || /^\s*<!DOCTYPE/i.test(t)) return 'html';
+    if (/#include|\bcout\b|\bcin\b|\bint\s+main|\bstruct\s+\w+|->|::/.test(t)) return 'c';
+    if (/^\s*[\w.#:\-\s,>*\[\]="]+\{[^}]*:[^}]*\}/m.test(t) && !/\bfunction\b|=>|\bvar\b|\blet\b/.test(t)) return 'css';
+    return 'js';
+  }
+  const TOKEN = /(\/\*[\s\S]*?\*\/|<!--[\s\S]*?-->|\/\/[^\n]*)|("(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*'|`(?:\\.|[^`\\])*`)|(<\/?[A-Za-z!][\w-]*|\/?>|<\?php|\?>)|(\$[A-Za-z_]\w*)|(\b0x[\da-fA-F]+\b|\b\d[\da-fA-F]*[hH]\b|\b\d+(?:\.\d+)?\b)|([A-Za-z_][\w-]*)/g;
+  function codeHtml(text, lang) {
+    lang = lang || codeLang(text);
+    const asm = lang === 'asm', css = lang === 'css', markup = lang === 'html' || lang === 'php';
+    const kw = kwSet[lang === 'html' ? 'js' : lang === 'css' ? 'js' : lang] || kwSet.js;
+    const span = (c, t) => '<span class="tk-' + c + '">' + escHtml(t) + '</span>';
+    let out = '', last = 0, inTag = false, m;
+    const src = text;
+    // assembly: ';' starts a comment, so pull comments out line by line first
+    const re = asm ? /(;[^\n]*)|("(?:[^"\n])*"|'(?:[^'\n])*')|([^\s\S])|([^\s\S])|(\b0x[\da-fA-F]+\b|\b\d[\da-fA-F]*[hHbB]?\b)|([A-Za-z_][\w]*)/g : TOKEN;
+    re.lastIndex = 0;
+    while ((m = re.exec(src))) {
+      out += escHtml(src.slice(last, m.index)); last = re.lastIndex;
+      const t = m[0];
+      if (m[1]) out += span('com', t);
+      else if (m[2]) out += span(inTag ? 'val' : 'str', t);
+      else if (m[3]) { out += span('tag', t); inTag = /^<[A-Za-z]/.test(t) ? true : /^\/?>$/.test(t) ? false : inTag; }
+      else if (m[4]) out += span('var', t);
+      else if (m[5]) out += span('num', t);
+      else if (m[6]) {
+        const after = src.slice(last, last + 40), low = t.toLowerCase();
+        if (inTag && markup) out += span('attr', t);
+        else if (asm && kwSet.reg.has(low)) out += span('var', t);
+        else if (asm && kwSet.asm.has(low)) out += span('kw', t);
+        else if (asm && /^\s*:/.test(after)) out += span('fn', t);
+        else if (css && /^\s*:(?!:)/.test(after) && /[{;]\s*$/.test(src.slice(0, m.index))) out += span('attr', t);
+        else if (!asm && kw.has(t)) out += span('kw', t);
+        else if (!asm && /^\s*\(/.test(after)) out += span('fn', t);
+        else out += escHtml(t);
+      }
+    }
+    return out + escHtml(src.slice(last));
+  }
+  // code blocks that arrive inside HTML strings (questions, answers, Q&A) are highlighted after they render
+  function highlightPres(root) {
+    root.querySelectorAll('pre:not([data-hl])').forEach(p => {
+      p.setAttribute('data-hl', '');
+      if (p.children.length) return;            // already marked up by hand: leave it
+      const t = p.textContent; if (!t.trim()) return;
+      p.innerHTML = codeHtml(t);
+    });
+  }
+
   let LANG = 'en';
   const arOf = k => (LANG === 'ar' && window.AR && window.AR[k]) || null;
   const arLec = (k, n) => { const A = arOf(k); return (A && A.lectures && A.lectures[n]) || null; };
@@ -580,7 +641,7 @@ function start() {
               <thead><tr>${s.table[0].map((x, j) => html`<th key=${j} dangerouslySetInnerHTML=${{ __html: x }}></th>`)}</tr></thead>
               <tbody>${s.table.slice(1).map((r, ri) => html`<tr key=${ri}>${r.map((x, j) => html`<td key=${j} dangerouslySetInnerHTML=${{ __html: x }}></td>`)}</tr>`)}</tbody>
             </table></div>`}
-            ${s.code && html`<pre className="code">${s.code}</pre>`}
+            ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
             ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
@@ -1394,7 +1455,7 @@ function start() {
         if (s.formula) blocks.push(html`<div className="formula">${s.formula.join('\n')}</div>`);
         if (s.table) blocks.push(html`<table><thead><tr>${s.table[0].map((x, j) => html`<th key=${j} dangerouslySetInnerHTML=${{ __html: x }}></th>`)}</tr></thead>
           <tbody>${s.table.slice(1).map((r, ri) => html`<tr key=${ri}>${r.map((x, j) => html`<td key=${j} dangerouslySetInnerHTML=${{ __html: x }}></td>`)}</tr>`)}</tbody></table>`);
-        if (s.code) blocks.push(html`<pre>${s.code}</pre>`);
+        if (s.code) blocks.push(html`<pre data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`);
         const pts = s.pts || [];
         const li = (p, j) => html`<li key=${j} dangerouslySetInnerHTML=${{ __html: p }}></li>`;
         const firstIsList = !blocks.length && pts.length;
@@ -1887,4 +1948,7 @@ function start() {
   const root = ReactDOM.createRoot(document.getElementById('root'));
   if (!ORDER.length) { document.getElementById('root').innerHTML = '<p class="boot">The course files did not load. Refresh the page to try again.</p>'; return; }
   root.render(html`<${App} />`);
+  const rootEl = document.getElementById('root');
+  let hlQueued = false;
+  new MutationObserver(() => { if (hlQueued) return; hlQueued = true; requestAnimationFrame(() => { hlQueued = false; highlightPres(rootEl); }); }).observe(rootEl, { childList: true, subtree: true });
 }
