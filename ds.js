@@ -537,7 +537,7 @@ int deQueue()
           `enqueue(10): front = 0, rear = 0, arr[0] = 10`,
           `enqueue(20): rear = 1 → print "Head = 0 Tail = 1"`,
           `enqueue(30): rear = 2`,
-          `cout &lt;&lt; dequeue(): returns 10, front = 1 → prints 10`,
+          `cout << dequeue(): returns 10, front = 1 → prints 10`,
           `x = dequeue(): x = 20, front = 2`,
           `print "Head = 2 Tail = 2" (one element, 30, is left)`,
           `(If the slide's deQueue/enQueue with their own cout messages are used, "Enqueued element: …" and "Dequeued element: …" lines also appear; checked with g++.)`

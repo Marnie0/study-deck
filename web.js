@@ -1580,8 +1580,8 @@ function myFunction() {
           `a + b + c = 43Test   (left to right: 33 + 10 = 43, then 43 + "Test" concatenates)`,
           `a = ++a  → a becomes 34;  then result = ++a → ++a = 35`,
           `b = --b  → b becomes 9;   then result = --b → --b = 8`,
-          `L8 Example (2) with a = 10, b = 20: (a == b) false, (a &lt; b) true, (a &gt; b) false, (a != b) true, (a &gt;= b) false, (a &lt;= b) true`,
-          `L8 Example (3) with a = true, b = false: (a &amp;&amp; b) false, (a || b) true, !(a &amp;&amp; b) true`
+          `L8 Example (2) with a = 10, b = 20: (a == b) false, (a < b) true, (a > b) false, (a != b) true, (a >= b) false, (a <= b) true`,
+          `L8 Example (3) with a = true, b = false: (a && b) false, (a || b) true, !(a && b) true`
         ]},
         { h: `Control structures and loops`, pts: [
           `<b>if / else if / else</b>: Example 4 with <code>book = "maths"</code> prints <b>Maths Book</b>.`,

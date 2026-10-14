@@ -746,7 +746,7 @@ COURSES.dm = {
           `σ² = E(X²) − μ² = 0.87 − 0.61² = 0.87 − 0.3721 = 0.4979`
         ]},
         { h: `Example 5: continuous mean and variance (water demand)`, formula: [
-          `f(x) = 2(x − 1) for 1 &lt; x &lt; 2, 0 otherwise`,
+          `f(x) = 2(x − 1) for 1 < x < 2, 0 otherwise`,
           `μ = ∫₁² x · 2(x − 1) dx = 2[x³/3 − x²/2]₁² = 2[(8/3 − 2) − (1/3 − 1/2)] = 2[2/3 + 1/6] = 2 · 5/6 = 5/3`,
           `E(X²) = ∫₁² x² · 2(x − 1) dx = 2[x⁴/4 − x³/3]₁² = 2[(4 − 8/3) − (1/4 − 1/3)] = 2[4/3 + 1/12] = 2 · 17/12 = 17/6`,
           `σ² = 17/6 − (5/3)² = 51/18 − 50/18 = 1/18`,
@@ -1181,9 +1181,9 @@ COURSES.dm = {
           `■  (Exam 2025/26 Q3a-ii)`
         ]},
         { h: `Proof: 2ⁿ &gt; n for all n ≥ 1`, formula: [
-          `Basis (n = 1): 2¹ = 2 &gt; 1 ✓`,
-          `Hypothesis: 2ᵏ &gt; k`,
-          `Step: 2ᵏ⁺¹ = 2 · 2ᵏ &gt; 2k = k + k ≥ k + 1 (since k ≥ 1) ✓  ■`
+          `Basis (n = 1): 2¹ = 2 > 1 ✓`,
+          `Hypothesis: 2ᵏ > k`,
+          `Step: 2ᵏ⁺¹ = 2 · 2ᵏ > 2k = k + k ≥ k + 1 (since k ≥ 1) ✓  ■`
         ]},
         { h: `Binary relations`, pts: [
           `The <b>Cartesian product</b> A × B = {(a, b) | a ∈ A, b ∈ B}; |A × B| = |A|·|B|.`,
@@ -1402,7 +1402,7 @@ COURSES.dm = {
           { type: `written`, q: `(b) X is a discrete random variable: x: 0, 2, 3, 4; f(x): 0.1, 0.1, a, 0.2. Find the value of a and E(x). (8 marks)`, ans: `Σ f(x) = 1 → 0.1 + 0.1 + a + 0.2 = 1 → <b>a = 0.6</b>.<br>E(X) = 0(0.1) + 2(0.1) + 3(0.6) + 4(0.2) = 0 + 0.2 + 1.8 + 0.8 = <b>2.8</b>. (This is the "try to solve" exercise of L7.)` }
         ]},
         { title: `Question 3`, marks: `10 marks`, items: [
-          { type: `written`, q: `(a) The weekly demand for a drinking-water product, in thousands of liters, is a continuous random variable X with f(x) = 2(x − 1) for 1 &lt; x &lt; 2, 0 otherwise. Find the mean and variance of X. (5 marks)`, ans: `μ = ∫₁² x·2(x − 1) dx = 2[x³/3 − x²/2]₁² = 2[(8/3 − 2) − (1/3 − 1/2)] = 2(2/3 + 1/6) = <b>5/3</b>.<br>E(X²) = ∫₁² x²·2(x − 1) dx = 2[x⁴/4 − x³/3]₁² = 2[(4 − 8/3) − (1/4 − 1/3)] = 2(4/3 + 1/12) = 17/6.<br>σ² = E(X²) − μ² = 17/6 − 25/9 = 51/18 − 50/18 = <b>1/18</b>. (Lecture 7, Example 5)` },
+          { type: `written`, q: `(a) The weekly demand for a drinking-water product, in thousands of liters, is a continuous random variable X with f(x) = 2(x − 1) for 1 < x < 2, 0 otherwise. Find the mean and variance of X. (5 marks)`, ans: `μ = ∫₁² x·2(x − 1) dx = 2[x³/3 − x²/2]₁² = 2[(8/3 − 2) − (1/3 − 1/2)] = 2(2/3 + 1/6) = <b>5/3</b>.<br>E(X²) = ∫₁² x²·2(x − 1) dx = 2[x⁴/4 − x³/3]₁² = 2[(4 − 8/3) − (1/4 − 1/3)] = 2(4/3 + 1/12) = 17/6.<br>σ² = E(X²) − μ² = 17/6 − 25/9 = 51/18 − 50/18 = <b>1/18</b>. (Lecture 7, Example 5)` },
           { type: `written`, q: `(b) Show that p ↔ q ≡ (p → q) ∧ (q → p) by using a truth table. (5 marks)`, ans: `<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>p↔q</th><th>(p→q)∧(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>The two result columns are identical, so the statements are equivalent (L5).` }
         ]},
         { title: `Question 4`, marks: `10 marks (5 + 5)`, items: [
