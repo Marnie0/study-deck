@@ -23,8 +23,14 @@ function start() {
   const html = htm.bind(React.createElement);
   const C = window.COURSES = window.COURSES || {};   // filled course by course as data/<id>.js files load
   const M = window.MANIFEST || {};                   // names and counts only, loaded up front
-  const ORDER = [['compiler', 0], ['os', 0], ['mm', 0], ['qa', 0], ['hci', 1], ['fp', 1]].filter(([k]) => M[k]);
-  const SPINE_H = { compiler: 318, os: 300, mm: 330, qa: 292, hci: 312, fp: 284 };
+  // each level lists its courses as [id, elective]; ORDER is the level on screen, set by App on every render
+  const LEVELS = [
+    { id: 'l2', name: 'Level 2', sem: 'Semester 1', order: [['dm', 0], ['or', 0], ['ds', 0], ['web', 0], ['micro', 0], ['sa', 0]] },
+    { id: 'l3', name: 'Level 3', sem: 'Semester 1', order: [['compiler', 0], ['os', 0], ['mm', 0], ['qa', 0], ['hci', 1], ['fp', 1]] }
+  ].map(v => Object.assign(v, { order: v.order.filter(([k]) => M[k]) })).filter(v => v.order.length);
+  const levelOf = k => LEVELS.find(v => v.order.some(o => o[0] === k));
+  let LEVEL = LEVELS.find(v => v.id === 'l3') || LEVELS[0];
+  let ORDER = LEVEL ? LEVEL.order : [];
   const LET = 'ABCDEFGH';
 
   /* ── storage (same keys as the previous version, so progress carries over) ──
@@ -236,6 +242,11 @@ function start() {
     const theme = useTheme();
     const [lang, setLang] = usePersist('lang', 'en');
     LANG = lang;
+    const [levelId, setLevel] = usePersist('level', 'l3');
+    // an open course shows its own level; otherwise the one picked on the home page
+    LEVEL = (nav.view === 'course' && levelOf(nav.course)) || LEVELS.find(v => v.id === levelId) || LEVELS[LEVELS.length - 1];
+    ORDER = LEVEL.order;
+    useEffect(() => { if (LEVEL.id !== levelId) setLevel(LEVEL.id); }, [LEVEL.id]);
     const [, setArTick] = useState(0);
     useEffect(() => {
       if (lang !== 'ar') return;
@@ -279,7 +290,7 @@ function start() {
 
     const openSearch = () => setSearching(true);
     const inCourse = nav.view === 'course' && M[nav.course];
-    const bar = { go, openSearch, theme, lang, setLang };
+    const bar = { go, openSearch, theme, lang, setLang, setLevel };
 
     return html`
       <div className="app">
@@ -311,11 +322,12 @@ function start() {
   /* ════════════ HOME: bento tiles ════════════ */
   const lecOfId = id => { const m = /^x?(\d+)-/.exec(id); return m ? +m[1] : null; };
   function Home({ bar }) {
-    const { go, openSearch, lang, setLang } = bar;
+    const { go, openSearch, lang, setLang, setLevel } = bar;
     // the tiles read saved progress directly, so redraw when it changes (including from another tab)
     const [, setTick] = useState(0);
     useEffect(() => { const f = () => setTick(t => t + 1); window.addEventListener('sd-store', f); return () => window.removeEventListener('sd-store', f); }, []);
-    const last = store.get('last', null);
+    const lastAny = store.get('last', null);
+    const last = lastAny && ORDER.some(o => o[0] === lastAny.course) ? lastAny : null;
     const rows = ORDER.map(([k, el]) => Object.assign({ k, el, readList: store.get('read:' + k, []) }, progressOf(k)));
     const sum = rows.reduce((a, r) => { a.due += r.due; a.read += r.read; a.lec += r.lectures; a.known += r.known; a.cards += r.cards; return a; }, { due: 0, read: 0, lec: 0, known: 0, cards: 0 });
     const h = new Date().getHours();
@@ -345,7 +357,9 @@ function start() {
       <${Topbar} bar=${bar} cur=${null} />
       <main className="content home">
         <div className="hello">
-          <div><h1>${greet}</h1><p>Level 3 · Semester 1 · ${ORDER.length} courses, ${sum.lec} lectures</p></div>
+          <div><h1>${greet}</h1>
+            ${LEVELS.length > 1 && html`<div className="lvls" role="group" aria-label="Level">${LEVELS.map(v => html`<button key=${v.id} aria-pressed=${String(v.id === LEVEL.id)} onClick=${() => setLevel(v.id)}>${v.name}</button>`)}</div>`}
+            <p>${LEVEL.name} · ${LEVEL.sem} · ${ORDER.length} courses, ${sum.lec} lectures</p></div>
           <button className="hsearch" onClick=${openSearch}>${Icon.search}<span>Search notes, cards, past papers…</span><kbd>/</kbd></button>
         </div>
         <div className="bento">
@@ -1852,8 +1866,8 @@ function start() {
         </div>
         <div className="results">
           ${failed ? html`<p className="small" style=${{ padding: '8px 18px', color: 'var(--pen)' }}>Some courses didn't load, so search is unavailable. Check your connection and reopen search.</p>`
-            : !ready ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Loading all six courses for search…</p>`
-            : q.trim().length < 2 ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Try "Belady", "FIRST set", "wireframe", "Nyquist" or "cyclomatic".</p>`
+            : !ready ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Loading all ${ORDER.length} courses for search…</p>`
+            : q.trim().length < 2 ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Try ${LEVEL.id === 'l2' ? '"simplex", "linked list", "DFD", "MOV" or "flexbox"' : '"Belady", "FIRST set", "wireframe", "Nyquist" or "cyclomatic"'}.</p>`
             : !results.length ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Nothing matches "${q}". Try a shorter word.</p>`
             : results.map((r, i) => html`<button key=${i} className=${'res sp-' + r.k + (i === sel ? ' on' : '')} onMouseEnter=${() => setSel(i)} onClick=${() => choose(r)}>
                 <span className="chipdot"></span>

@@ -1,4 +1,4 @@
-<title>Level 3 Study Deck</title>
+<title>Study Deck</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <script>try{var t=JSON.parse(localStorage.getItem('sd:theme'));if(t==='dark'||t==='light')document.documentElement.setAttribute('data-theme',t)}catch(e){}</script>
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
@@ -69,13 +69,13 @@
   --tile-bg:#232937; --tile-ink:#EEF1F6; --bk-bg:#09090B; --bk-edge:#2E3236;
   --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px -14px rgba(0,0,0,.7);
 }
-body[data-course="compiler"]{ --c:var(--k-compiler); --s:var(--s-compiler); --on-s:#FFFFFF; }
-body[data-course="os"]{ --c:var(--k-os); --s:var(--s-os); --on-s:#FFFFFF; }
-body[data-course="mm"]{ --c:var(--k-mm); --s:var(--s-mm); --on-s:#FFFFFF; }
-body[data-course="qa"]{ --c:var(--k-qa); --s:var(--s-qa); --on-s:#FFFFFF; }
-body[data-course="hci"]{ --c:var(--k-hci); --s:var(--s-hci); --on-s:#FFFFFF; }
-body[data-course="fp"]{ --c:var(--k-fp); --s:var(--s-fp); --on-s:#FFFFFF; }
-.sp-compiler{ --sp:var(--k-compiler); --spd:var(--s-compiler); } .sp-os{ --sp:var(--k-os); --spd:var(--s-os); } .sp-mm{ --sp:var(--k-mm); --spd:var(--s-mm); } .sp-qa{ --sp:var(--k-qa); --spd:var(--s-qa); } .sp-hci{ --sp:var(--k-hci); --spd:var(--s-hci); } .sp-fp{ --sp:var(--k-fp); --spd:var(--s-fp); }
+body[data-course="compiler"], body[data-course="dm"]{ --c:var(--k-compiler); --s:var(--s-compiler); --on-s:#FFFFFF; }
+body[data-course="os"], body[data-course="or"]{ --c:var(--k-os); --s:var(--s-os); --on-s:#FFFFFF; }
+body[data-course="mm"], body[data-course="ds"]{ --c:var(--k-mm); --s:var(--s-mm); --on-s:#FFFFFF; }
+body[data-course="qa"], body[data-course="web"]{ --c:var(--k-qa); --s:var(--s-qa); --on-s:#FFFFFF; }
+body[data-course="hci"], body[data-course="micro"]{ --c:var(--k-hci); --s:var(--s-hci); --on-s:#FFFFFF; }
+body[data-course="fp"], body[data-course="sa"]{ --c:var(--k-fp); --s:var(--s-fp); --on-s:#FFFFFF; }
+.sp-compiler, .sp-dm{ --sp:var(--k-compiler); --spd:var(--s-compiler); } .sp-os, .sp-or{ --sp:var(--k-os); --spd:var(--s-os); } .sp-mm, .sp-ds{ --sp:var(--k-mm); --spd:var(--s-mm); } .sp-qa, .sp-web{ --sp:var(--k-qa); --spd:var(--s-qa); } .sp-hci, .sp-micro{ --sp:var(--k-hci); --spd:var(--s-hci); } .sp-fp, .sp-sa{ --sp:var(--k-fp); --spd:var(--s-fp); }
 
 /* ───── base ───── */
 *{ box-sizing:border-box; }
@@ -133,6 +133,11 @@ kbd{ font-family:var(--mono); font-size:.75rem; border:1px solid var(--line); bo
 .hello{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin:6px 0 22px; }
 .hello h1{ font-size:clamp(2.1rem, 4.6vw, 3rem); letter-spacing:-.03em; background:var(--hello); -webkit-background-clip:text; background-clip:text; color:transparent; padding-bottom:.06em; }
 .hello p{ margin:4px 0 0; color:var(--graphite); }
+/* Level switch: Level 2 and Level 3 share one site; Level 2 courses reuse the Level 3 course colours in the same order */
+.lvls{ display:inline-flex; gap:4px; margin-top:8px; padding:4px; border-radius:12px; background:var(--glass); box-shadow:0 0 0 1px rgba(124,58,237,.22), var(--shadow-sm); }
+.lvls button{ min-height:34px; padding:0 14px; border:0; border-radius:9px; background:transparent; color:var(--graphite); font:inherit; font-size:.92rem; font-weight:600; cursor:pointer; }
+.lvls button[aria-pressed="true"]{ background:var(--g-cont); color:#FFFFFF; }
+.lvls button:focus-visible{ outline:2px solid #7C3AED; outline-offset:2px; }
 .hsearch{ display:flex; align-items:center; gap:10px; width:min(380px, 100%); height:48px; padding:0 16px; border:0; border-radius:14px; background:var(--glass); color:var(--graphite); font:inherit; font-size:.95rem; cursor:pointer; box-shadow:0 0 0 1px rgba(124,58,237,.22), var(--shadow-sm); }
 .hsearch span{ flex:1; text-align:left; }
 .bento{ display:grid; grid-template-columns:repeat(4, minmax(0, 1fr)); gap:14px; }

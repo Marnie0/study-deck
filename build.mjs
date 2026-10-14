@@ -5,7 +5,8 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import vm from 'node:vm';
 
-const SOURCES = ['compiler', 'os', 'multimedia', 'qa', 'hci', 'fp'];
+// Level 3 then Level 2
+const SOURCES = ['compiler', 'os', 'multimedia', 'qa', 'hci', 'fp', 'ds', 'micro'];
 const ctx = {};
 ctx.window = ctx; // the sources use window as the global object, like a browser
 vm.createContext(ctx);

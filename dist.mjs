@@ -5,8 +5,8 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync } f
 import { createHash } from 'node:crypto';
 
 const SITE = 'https://study-deck-five.vercel.app';
-const TITLE = 'Study Deck · Level 3 CS';
-const DESC = 'Notes, flashcards, quizzes and 31 solved past papers for six Level 3 Computer Science courses, with Egyptian Arabic explanations.';
+const TITLE = 'Study Deck · Level 2 & 3 CS';
+const DESC = 'Notes, flashcards, quizzes and solved past papers for Level 2 and Level 3 Computer Science courses, with Egyptian Arabic explanations.';
 
 rmSync('dist', { recursive: true, force: true });
 mkdirSync('dist');
@@ -48,7 +48,7 @@ const share = `<meta name="description" content="${DESC}">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Study Deck: Level 3 CS, all in one place">
+<meta property="og:image:alt" content="Study Deck: Level 2 and 3 CS, all in one place">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="${TITLE}">
 <meta name="twitter:description" content="${DESC}">
