@@ -3,7 +3,7 @@ COURSES.dm = {
   id: `dm`,
   name: `Discrete Mathematics`,
   short: `Discrete`,
-  code: `BS 113 / BS 204 · Level 2 · Sem 1`,
+  code: `BS 113 / BS 204`,
   by: `Prof. Shereen Magdy`,
   lectures: [
     /* ───────────────────────── LECTURE 1 ───────────────────────── */
