@@ -390,7 +390,7 @@ COURSES.web = {
           [`&lt;meta&gt;`, `&lt;meta&gt; gives metadata like charset.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `HTML comments start with &lt;!-- and end with --&gt;`, o: [
-          [`True`, `Correct. &lt;!-- Write your comments here --&gt; (L3).`],
+          [`True`, `Correct. &lt;!-- Write your comments here --&gt; (L2).`],
           [`False`, `This is exactly the HTML comment syntax.`]
         ], a: 0, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which tag is the first tag in an HTML document?`, o: [
@@ -1196,7 +1196,7 @@ table, th, td { border: 1px solid black; border-collapse: collapse; }
           [`Charset in both HTML and XHTML is "text/html"`, `Correct (this statement is false, so it is not a difference): XHTML is served as application/xhtml+xml.`],
           [`Tags and attributes are case-insensitive in HTML but not in XHTML`, `This is a real difference (XHTML requires lowercase).`],
           [`Special characters must be escaped using character entities in XHTML unlike HTML`, `Listed as a difference (XML is stricter about escaping).`],
-          [`Charset in HTML is "text/html" whereas in XHTML it is "application/xml+xhtml"`, `This is a real difference in MIME type.`]
+          [`Charset in HTML is "text/html" whereas in XHTML it is "application/xhtml+xml"`, `This is a real difference in MIME type.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following is not an HTML5 tag?`, o: [
           [`&lt;track&gt;`, `HTML5 tag for subtitles.`],
@@ -2412,7 +2412,7 @@ echo XXX(("10 12 3"), ("1 3 3")) . "\\n";
             { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).` },
             { type: `mcq`, q: `What is PHP?`, o: [`PHP is an open-source programming language`, `PHP is used to develop dynamic and interactive websites`, `PHP is a server-side scripting language`, `All of the mentioned`], a: 3, why: `All three statements are true: PHP is free and open source, server-side, and used to make pages dynamic (L10).` },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>var a = true + true + true * 3;
-print(a)</pre>`, o: [`3`, `0`, `Error`, `5`], a: 3, why: `In arithmetic true = 1: 1 + 1 + (1 * 3) = 5 (verified with node) (L8).` },
+print(a)</pre>`, o: [`3`, `0`, `Error`, `5`], a: 3, why: `In arithmetic true = 1: 1 + 1 + (1 * 3) = 5 (L8).` },
             { type: `mcq`, q: `Which of the following is the correct syntax to write a PHP code?`, o: [`&lt;?php ?&gt;`, `&lt; php &gt;`, `&lt; ? php ?&gt;`, `&lt;? ?&gt;`], a: 0, why: `PHP code goes between &lt;?php and ?&gt; (L10).` },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>a = [1, 2, 3, 4, 5];
 print(a.slice(2, 4));</pre>`, o: [`3, 4`, `2, 3`, `3, 4, 5`, `2, 3, 4`], a: 0, why: `slice(2,4) copies indexes 2 and 3 (end excluded) = [3, 4] (L8).` },
