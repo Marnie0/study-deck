@@ -33,7 +33,7 @@ COURSES.ds = {
           `ADTs are <b>purely theoretical entities</b>: used to simplify the description of abstract algorithms and to classify and evaluate data structures. An ADT is a collection of data and a set of operations on this data.`,
           `ADT → implementation examples: <b>List</b> → dynamic array, linked list. <b>Queue</b> → linked-list based queue, array based queue. <b>Map</b> → tree map, hash map / hash table. Analogy: <b>Vehicle</b> (ADT) → golf car, bicycle, smart car (implementations).`
         ]},
-        { h: `Arrays (lecture + Lab 1)`, pts: [
+        { h: `Arrays (lecture + Lab 1)`, viz: { type: `array`, size: 6, init: [5, 12, 9, 20, 7], ops: [`search 20`] }, pts: [
           `An <b>array</b> is a data structure used to process multiple elements with the <b>same data type</b> when the number of elements is known; a group of elements of the same type stored in <b>consecutive memory locations</b>.`,
           `An element is located with a mathematical formula: <b>location(i) = i - 1</b>, i.e. the i-th element of the list is in position i-1 of the array (index is <b>zero-based</b>: 0 to size-1).`,
           `Syntax: <code>dataType arrayName[arraySize];</code> The size must be an <b>integer constant greater than zero</b> and must be pre-specified. The subscript (index) must be an integer.`,
@@ -42,7 +42,7 @@ COURSES.ds = {
           `Size in memory = number of elements × size of type, e.g. <code>int arr[15]</code> with 4-byte int = <b>60 bytes</b>.`,
           `Advantage: easy to store elements of the same type, direct access by index. <b>Disadvantage: fixed size</b> (declared at design time, cannot grow).`
         ]},
-        { h: `Array insert and delete (professor's code)`, code: `// Delete the k'th element if it exists.
+        { h: `Array insert and delete (professor's code)`, viz: { type: `array`, size: 7, init: [12, 25, 31, 47, 58], ops: [`insert 2 40`, `delete 4`] }, code: `// Delete the k'th element if it exists.
 {
    if (Find(k, x)) {
       for (int i = k; i < length; i++)
@@ -255,7 +255,7 @@ int main()
           `Real-life examples: <b>books and clothes</b> piled on each other; <b>mobile call logs</b>; <b>browsers</b> (back button returns to the previous site); <b>text editors</b> (undo/redo).`,
           `Applications (Lab 3): <b>backtracking</b> (maze path), <b>function calls</b> (keeping information about active functions), <b>string reversal</b> (push each character, then pop).`
         ]},
-        { h: `Operations and terminology`, pts: [
+        { h: `Operations and terminology`, viz: { type: `stack`, size: 4, ops: [`push 10`, `push 20`, `push 30`, `pop`, `push 40`, `push 50`, `push 60`, `pop`] }, pts: [
           `<b>PUSH</b>: adding a new element at the top. After every push top is <b>incremented by one</b>. If the array is full it is the <b>STACK-FULL</b> condition, and pushing then gives <b>STACK OVERFLOW</b>.`,
           `<b>POP</b>: deleting the element at the top. After every pop top is <b>decremented by one</b>. Popping when there is no element gives <b>STACK UNDERFLOW</b>.`,
           `<b>MAXSIZE</b>: not a standard term; the maximum size of the stack.`,
@@ -445,7 +445,7 @@ void get()          // show top element without popping (peek)
           `<b>Front (head)</b>: position of the entry ready to be served (the first to be removed). <b>Rear (tail)</b>: position of the last entry, the one most recently added.`,
           `<b>enqueue()</b> inserts at the rear; <b>dequeue()</b> removes from the front. Initially head = tail = -1.`
         ]},
-        { h: `Linear queue: enqueue and dequeue (professor's code)`, code: `bool isFull(int tail)
+        { h: `Linear queue: enqueue and dequeue (professor's code)`, viz: { type: `queue`, size: 5, ops: [`enqueue 10`, `enqueue 20`, `enqueue 30`, `dequeue`, `dequeue`] }, code: `bool isFull(int tail)
 {
    if (tail == maxsize - 1) return true;
    else return false;
@@ -478,12 +478,12 @@ int dequeue()
    }
    return element;
 }` },
-        { h: `Problem of the linear queue`, pts: [
+        { h: `Problem of the linear queue`, viz: { type: `queue`, size: 5, ops: [`enqueue 10`, `enqueue 20`, `enqueue 30`, `enqueue 40`, `enqueue 50`, `dequeue`, `dequeue`, `enqueue 60`] }, pts: [
           `In the slide trace (array 0..7) the rear moves right on every insert and the front moves right on every delete.`,
           `When the rear reaches the last index (<b>rear == MAX-1</b>) the queue reports full, <b>even if elements were dequeued</b> and the cells at the start are empty ("NO SPACE HERE" at the end while there is "SPACE HERE" at the front).`,
           `So after some insertions and deletions there is <b>non-usable empty space</b>; dequeuing moves the front forward and reduces the usable size of the queue. This memory wastage is the <b>need for the circular queue</b>.`
         ]},
-        { h: `Circular queue`, pts: [
+        { h: `Circular queue`, viz: { type: `cqueue`, size: 5, ops: [`enqueue 10`, `enqueue 20`, `enqueue 30`, `enqueue 40`, `enqueue 50`, `dequeue`, `dequeue`, `enqueue 60`, `enqueue 70`, `enqueue 80`] }, pts: [
           `A circular queue is the extended version of a regular queue where the <b>last element is connected to the first element</b>, forming a circle-like structure. It solves the major limitation of the linear queue (unusable empty space).`,
           `Two pointers: <b>head</b> tracks the first element, <b>tail</b> tracks the last. Initially both are <b>-1</b> (queue empty).`,
           `<b>Enqueue</b>: check full with two cases: (1) <b>head == 0 &amp;&amp; tail == SIZE-1</b>; (2) <b>tail is just one less than head</b> (the slide writes <code>tail == (head-1) % (MAXSIZE-1)</code>; the standard single test is <code>(tail+1) % SIZE == head</code>). For the first element set head = 0. Circularly increase tail: <code>tail = (tail+1) % SIZE</code>. Store the element at tail.`,
@@ -773,7 +773,7 @@ int main()
     {
       n: 5, title: `Linked Lists`,
       notes: [
-        { h: `What is a linked list?`, pts: [
+        { h: `What is a linked list?`, viz: { type: `list`, init: [10, 20, 30], ops: [`begin 5`, `end 40`, `search 30`] }, pts: [
           `A <b>linear</b> data structure that stores a collection of elements <b>dynamically</b>. It is a series of connected <b>nodes</b>; each node stores the <b>data</b> and the <b>address of the next node</b>.`,
           `Each node has two fields: <b>data</b> and a <b>pointer (next)</b> to the next node. The <b>last node contains NULL</b> in its second field because it points to no node.`,
           `The list is accessed through the <b>head</b>, which points to the first node; the last node (pointing to NULL) is the <b>tail</b>. A linked list can <b>grow and shrink</b> as required.`,
@@ -838,7 +838,7 @@ void insertatend(int item)
 }
 // Note: as written, insertatend crashes on an EMPTY list (temp1 is NULL).
 // Safe version: if (isEmpty()) { head = newnode; return; } before the loop.` },
-        { h: `Insert in order (sorted list)`, pts: [
+        { h: `Insert in order (sorted list)`, viz: { type: `list`, init: [10, 20, 40], ops: [`sorted 30`, `sorted 5`, `sorted 50`] }, pts: [
           `Steps: (1) locate the node <b>preceding</b> the insertion point (current points to it); (2) make the new node point to the node after the insertion point (<code>newnode-&gt;next = current-&gt;next</code>); (3) make current point to the new node (<code>current-&gt;next = newnode</code>). The order of steps 2 and 3 matters: doing step 3 first loses the rest of the list.`,
           `The slide's <code>insertsorted</code> loop is <code>while ((temp1-&gt;data &gt; item &amp;&amp; temp1-&gt;next-&gt;data &gt; item) || (temp1-&gt;data &lt; item &amp;&amp; temp1-&gt;next-&gt;data &lt; item) &amp;&amp; temp1!=NULL)</code>. Tested with g++: it works for a value <b>between</b> two nodes (10,20,30 + 25 → 10 20 25 30) but <b>crashes</b> for a value smaller than the head or larger than the last node (temp1-&gt;next becomes NULL).`,
           `In an exam, write the safe version below: it handles the empty list, a new smallest value and a new largest value.`
@@ -862,7 +862,7 @@ void insertatend(int item)
    }
 }
 // list 10 -> 20 -> 30, insertsorted(25), (5), (40)  =>  5 10 20 25 30 40` },
-        { h: `Delete first, last and a given item (professor's code)`, code: `int deletefrombeginning()
+        { h: `Delete first, last and a given item (professor's code)`, viz: { type: `list`, init: [10, 20, 30, 40], ops: [`delfirst`, `delete 30`, `dellast`] }, code: `int deletefrombeginning()
 {
    int value;
    Node *temp = head;
@@ -1051,7 +1051,7 @@ void InsertAt(int item, int pos)  // positions start at 1
           `Figure: elements inserted in order 25, 32, 50, 99 → top → 99 → 50 → 32 → 25 → NULL. Last inserted = 99, first inserted = 25.`,
           `Only <b>one pointer (top)</b> and one list are needed; push = insert at beginning, pop = delete from beginning.`
         ]},
-        { h: `Creation, push and pop steps`, pts: [
+        { h: `Creation, push and pop steps`, viz: { type: `lstack`, ops: [`push 50`, `push 70`, `push 90`, `pop`] }, pts: [
           `<b>Creation</b>: Step 1: define a Node class with members data and next. Step 2: define a Node pointer <b>top = NULL</b>. Step 3: main displays a menu and calls the functions.`,
           `<b>Push</b>: (1) create newNode with the value; (2) check whether the stack is empty (top == NULL); (3) if empty, newNode→next = NULL; (4) if not empty, newNode→next = top; (5) finally top = newNode.`,
           `<b>Pop</b>: (1) check whether empty (top == NULL); (2) if empty, terminate; (3) if not, define Node pointer temp = top; (4) top = top→next; (5) delete temp.`,
@@ -1224,7 +1224,7 @@ void pop()                   // delete from beginning
           `Figure: inserted 10, 15, 22, 50 → front → 10 → 15 → 22 → 50 ← rear, 50 → NULL.`,
           `<b>Creation</b>: (1) define Node class with data and next; (2) define two Node pointers <b>front and rear, both NULL</b>; (3) main shows a menu and calls the functions.`
         ]},
-        { h: `Enqueue, dequeue and display steps`, pts: [
+        { h: `Enqueue, dequeue and display steps`, viz: { type: `lqueue`, ops: [`enqueue 30`, `enqueue 50`, `enqueue 70`, `dequeue`] }, pts: [
           `<b>Enqueue</b>: (1) create newNode with the value and set newNode→next = NULL; (2) check whether the queue is empty (rear == NULL); (3) if empty, set <b>front = newNode and rear = newNode</b>; (4) if not, set <b>rear→next = newNode and rear = newNode</b>.`,
           `<b>Dequeue</b>: (1) check empty (front == NULL); (2) if empty display "Queue is Empty!!! Deletion is not possible" and terminate; (3) else temp = front; (4) front = front→next and delete temp.`,
           `<b>Display</b>: if empty display "Queue is Empty"; else temp = front; display temp→data and move to the next node until temp reaches rear; finally display "temp→data ---&gt; NULL".`,
@@ -1399,7 +1399,7 @@ void dequeue()                          // remove from beginning
     {
       n: 8, title: `Doubly Linked Lists`,
       notes: [
-        { h: `Singly vs doubly linked list`, pts: [
+        { h: `Singly vs doubly linked list`, viz: { type: `dlist`, init: [20, 30], ops: [`begin 10`, `end 40`, `delete 30`] }, pts: [
           `A linked list consists of connected nodes. In a <b>singly</b> linked list each node has data and a pointer to the next node only, so we travel in <b>one direction</b> (forward).`,
           `A <b>doubly linked list</b> node has <b>data</b>, a pointer to the <b>next</b> node and a pointer to the <b>previous</b> node, so we can travel in <b>both directions</b>, forward and backward.`,
           `Node fields: <b>Data</b> (value), <b>prev</b> (pointer to the previous node), <b>next</b> (pointer to the next node). The first node's prev and the last node's next are NULL.`,
@@ -1593,7 +1593,7 @@ void deleteitem(int value)
           `<b>Binary tree</b>: each node has <b>at most 2 children</b> (left and right).`,
           `<b>Binary Search Tree (BST)</b>: a binary tree such that (1) every node has a <b>unique key</b>; (2) all keys in the <b>left subtree</b> of a node are <b>less</b> than the node's key; (3) all keys in the <b>right subtree</b> are <b>greater</b>.`
         ]},
-        { h: `Traversals`, table: [
+        { h: `Traversals`, viz: { type: `bst`, init: [50, 25, 65, 12, 33, 70, 55, 60, 53], ops: [`inorder`, `preorder`, `postorder`] }, table: [
           [`Traversal`, `Order`, `Memory aid`],
           [`Inorder`, `Left subtree → parent → right subtree`, `L P R; on a BST gives the keys in ascending (sorted) order`],
           [`Preorder`, `Parent → left subtree → right subtree`, `P L R; root printed first`],
@@ -1645,7 +1645,7 @@ void postorder(Node *temp)
    postorder(temp->right);
    cout << temp->data << "\\t";
 }` },
-        { h: `Insertion`, pts: [
+        { h: `Insertion`, viz: { type: `bst`, ops: [`insert 50,25,65,12,33,70,55,60,53`] }, pts: [
           `Steps: create a new node for the item; find the appropriate parent node; attach the new node as a <b>leaf</b> (left or right according to its key).`,
           `Recursive version: parameters are a pointer to the current node (initially the root) and the item. If the current node is NULL, create a new node and return it. Else if the item is less (greater) than the current key, recurse on the left (right) child and set the parent's left (right) link to the result.`,
           `Example: inserting 57 into tree 1: 57 &gt; 43 → right; 57 &lt; 64 → left; 57 &gt; 56 → right; 57 &lt; 59 → becomes the <b>left child of 59</b>.`,
@@ -1686,7 +1686,7 @@ Node* maximum(Node *temp)       // rightmost node
    else if (temp->right == NULL) return temp;
    else return maximum(temp->right);
 }` },
-        { h: `Searching and deletion`, pts: [
+        { h: `Searching and deletion`, viz: { type: `bst`, init: [50, 25, 65, 12, 33, 70, 55, 60, 53], ops: [`search 60`, `search 30`, `delete 12`, `delete 25`, `delete 65`] }, pts: [
           `<b>Search</b>: if the target key is less than the current key, search the left subtree; if greater, search the right subtree; if equal, found (return the node / true); if NULL is reached, not found.`,
           `Find 0.7 in the 1.0 tree: 1.0 → 0.6 → 0.8 → 0.7 found. Find 0.5: 1.0 → 0.6 → 0.3 → 0.4 → NULL, not found.`,
           `<b>Delete</b> cases: (1) leaf: just remove it; (2) one child: replace the node by its child; (3) two children: replace the key by its inorder successor (minimum of the right subtree) or predecessor (maximum of the left subtree), then delete that node.`,
@@ -1810,7 +1810,7 @@ Node* maximum(Node *temp)       // rightmost node
           `<b>Double hashing</b>: two hash functions; when the first collides the second resolves it: <b>h(k, i) = (h1(k) + i·h2(k)) mod m</b>. Lecture example: h1 = k mod 13, h2 = 1 + (k mod 11).`,
           `<b>Separate chaining</b>: an <b>array of pointers</b>; each points to a <b>linked list</b> of the keys with the same hash address. On a collision a new link is added to the chain. Handles an <b>unlimited number of collisions</b> and needs <b>no prior knowledge</b> of how many elements will be stored.`
         ]},
-        { h: `Linear probing example (keys 18, 72, 65, 34, 13; size 7)`, formula: [
+        { h: `Linear probing example (keys 18, 72, 65, 34, 13; size 7)`, viz: { type: `hash`, size: 7, method: `linear`, keys: [18, 72, 65, 34, 13] }, formula: [
           `h1(k) = k mod 7`,
           `18: h(18,0) = 4 → slot 4`,
           `72: h(72,0) = 2 → slot 2`,
@@ -1819,21 +1819,21 @@ Node* maximum(Node *temp)       // rightmost node
           `13: h(13,0) = 6 collision; h(13,1) = (6+1) mod 7 = 0 → slot 0`,
           `Table: [0]=13, [1]=–, [2]=72, [3]=65, [4]=18, [5]=–, [6]=34`
         ]},
-        { h: `Quadratic probing example (same keys, lecture formula h1 + i + i²)`, formula: [
+        { h: `Quadratic probing example (same keys, lecture formula h1 + i + i²)`, viz: { type: `hash`, size: 7, method: `quadratic`, keys: [18, 72, 65, 34, 13] }, formula: [
           `18 → 4; 72 → 2`,
           `65: i=0 → 2 collision; i=1 → (2+1+1) mod 7 = 4 collision; i=2 → (2+2+4) mod 7 = 1 → slot 1`,
           `34 → 6`,
           `13: i=0 → 6 collision; i=1 → (6+2) mod 7 = 1 collision; i=2 → (6+6) mod 7 = 5 → slot 5`,
           `Table: [0]=–, [1]=65, [2]=72, [3]=–, [4]=18, [5]=13, [6]=34`
         ]},
-        { h: `Double hashing example (69, 79, 72, 98, 14; size 13)`, formula: [
+        { h: `Double hashing example (69, 79, 72, 98, 14; size 13)`, viz: { type: `hash`, size: 13, method: `double`, h2: 11, keys: [69, 79, 72, 98, 14] }, formula: [
           `h(k,i) = (k mod 13 + i·(1 + k mod 11)) mod 13`,
           `69 → 69 mod 13 = 4; 79 → 1; 72 → 7`,
           `98: i=0 → 7 collision; h2 = 1 + 98 mod 11 = 11; i=1 → (7+11) mod 13 = 5 → slot 5`,
           `14: i=0 → 1 collision; h2 = 1 + 14 mod 11 = 4; i=1 → 5 collision; i=2 → (1+8) mod 13 = 9 → slot 9`,
           `Table: [1]=79, [4]=69, [5]=98, [7]=72, [9]=14`
         ]},
-        { h: `Separate chaining example (18, 72, 65, 34, 13; size 7)`, formula: [
+        { h: `Separate chaining example (18, 72, 65, 34, 13; size 7)`, viz: { type: `hash`, size: 7, method: `chain`, keys: [18, 72, 65, 34, 13] }, formula: [
           `h(k) = k mod n: addresses 4, 2, 2, 6, 6`,
           `[0] → NULL`,
           `[1] → NULL`,

@@ -620,6 +620,16 @@ function start() {
     minutesMemo.set(lec, m); return m;
   };
 
+  // animated diagram: the engine (viz.js, copied to data/) is fetched the first time a lecture with a diagram opens
+  function VizBlock({ spec, ar }) {
+    const [ready, setReady] = useState(() => !!window.VIZ);
+    const [failed, setFailed] = useState(false);
+    useEffect(() => { if (!ready) loadScript(dataUrl('viz')).then(() => setReady(true), () => setFailed(true)); }, []);
+    if (failed) return html`<p className="muted small">The diagram didn't load. Check your connection and refresh.</p>`;
+    if (!ready) return html`<div className="vz vz-wait" aria-hidden="true"></div>`;
+    return html`<${window.VIZ.Viz} spec=${spec} ar=${ar} />`;
+  }
+
   function Read({ k, lecN, anchor, go, read, setRead, barRef, onSection }) {
     const c = C[k];
     const idx = c.lectures.findIndex(l => l.n === lecN);
@@ -643,6 +653,7 @@ function start() {
             </table></div>`}
             ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
             ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
+            ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} />`}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));

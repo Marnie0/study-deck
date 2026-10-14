@@ -405,6 +405,41 @@ code, pre, kbd, .formula{ font-variant-ligatures:none; font-feature-settings:"li
 :root[data-theme="dark"]{ --tk-kw:#C4B5FD; --tk-str:#86EFAC; --tk-num:#FDBA74; --tk-com:#8B95A5; --tk-tag:#93C5FD; --tk-attr:#FCD34D; --tk-var:#67E8F9; --tk-fn:#93C5FD; }
 .tk-kw{ color:var(--tk-kw); font-weight:500; } .tk-str, .tk-val{ color:var(--tk-str); } .tk-num{ color:var(--tk-num); } .tk-com{ color:var(--tk-com); font-style:italic; }
 .tk-tag{ color:var(--tk-tag); } .tk-attr{ color:var(--tk-attr); } .tk-var{ color:var(--tk-var); } .tk-fn{ color:var(--tk-fn); }
+/* animated diagrams (viz.js): stage, caption, controls */
+.vz{ margin:14px 0 20px; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--paper); overflow:hidden; }
+.vz-wait{ height:240px; background:var(--paper-2); }
+.vz-stage{ padding:14px 10px 8px; background:var(--paper-2); overflow-x:auto; }
+.vz svg{ width:100%; height:auto; display:block; margin:0 auto; font-family:var(--mono); font-size:15px; font-variant-ligatures:none; }
+.vz text{ fill:var(--ink); } .vz text.muted{ fill:var(--faint); font-size:12px; }
+.vz-cell rect, .vz-slot rect, .vz-node rect, .vz-dnode rect, .vz-circ circle{ fill:var(--paper); stroke:var(--graphite); stroke-width:1.4; transition:fill .25s, stroke .25s; }
+.vz-node line, .vz-dnode line{ stroke:var(--graphite); stroke-width:1.2; } .vz .slash{ stroke:var(--faint); stroke-width:1.4; }
+.vz-node circle, .vz-dnode circle{ fill:var(--ink); stroke:none; }
+.vz .hl rect, .vz .hl > circle:first-child{ stroke:var(--c); stroke-width:2.6; fill:color-mix(in srgb, var(--c) 14%, var(--paper)); }
+.vz .new rect, .vz .new > circle:first-child, .vz .ok rect, .vz .ok > circle:first-child{ stroke:var(--ok); stroke-width:2.6; fill:color-mix(in srgb, var(--ok) 16%, var(--paper)); }
+.vz .bad rect, .vz .bad > circle:first-child{ stroke:var(--pen); stroke-width:2.6; fill:color-mix(in srgb, var(--pen) 14%, var(--paper)); }
+.vz .warn rect{ stroke:var(--warn); stroke-width:2; fill:color-mix(in srgb, var(--warn) 14%, var(--paper)); }
+.vz .gone rect, .vz .gone > circle:first-child{ stroke:var(--pen); stroke-dasharray:5 4; stroke-width:2; }
+.vz .done > circle:first-child{ fill:color-mix(in srgb, var(--c) 9%, var(--paper)); }
+.vz-val.stale text{ fill:var(--faint); }
+.vz-ptr rect{ fill:var(--paper); stroke:var(--line); stroke-width:1.2; } .vz-ptr text{ font-size:12.5px; fill:var(--graphite); }
+.vz-ptr.on rect{ fill:var(--s); stroke:none; } .vz-ptr.on text{ fill:var(--on-s); font-weight:600; }
+.vz-ptr.on2 rect{ fill:color-mix(in srgb, var(--c) 16%, var(--paper)); stroke:var(--c); } .vz-ptr.on2 text{ fill:var(--ink); font-weight:600; }
+.vz-ptr.on3 rect{ fill:var(--paper); stroke:var(--c); stroke-dasharray:3 3; } .vz-ptr.on3 text{ fill:var(--ink); }
+.vz-ptr.warn rect{ fill:color-mix(in srgb, var(--warn) 18%, var(--paper)); stroke:var(--warn); }
+.vz-edge{ fill:none; stroke:var(--graphite); stroke-width:1.6; } .vz-edge.ptrl{ stroke:var(--c); stroke-dasharray:4 3; } .vz-edge.prevl{ stroke:var(--faint); } .vz-edge.tree{ stroke:var(--faint); stroke-width:1.8; }
+.vz-head{ fill:var(--graphite); } .vz-ring circle{ fill:none; stroke:var(--line); stroke-width:10; stroke-dasharray:2 7; }
+.vz-out{ display:flex; gap:10px; align-items:baseline; padding:8px 14px; border-top:1px solid var(--rule); }
+.vz-out span{ font-size:.75rem; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); } .vz-out code{ font-size:.95rem; background:none; border:0; padding:0; white-space:pre-wrap; }
+.vz-cap{ display:flex; flex-direction:column; gap:4px; padding:10px 14px 12px; border-top:1px solid var(--rule); line-height:1.55; min-height:4.6em; }
+.vz-step{ font-family:var(--mono); font-size:.75rem; color:var(--faint); }
+.vz-ar{ display:block; margin-top:2px; }
+.vz-bar{ display:flex; align-items:center; gap:6px; padding:8px 12px; border-top:1px solid var(--rule); background:var(--paper-2); }
+.vz-bar button{ min-width:38px; height:38px; padding:0 10px; border:1px solid var(--line); background:var(--paper); border-radius:10px; display:inline-flex; align-items:center; justify-content:center; gap:6px; color:var(--ink); cursor:pointer; font:inherit; font-size:.9rem; font-weight:600; }
+.vz-bar button svg{ fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; }
+.vz-bar .vz-play{ padding:0 16px; background:var(--s); color:var(--on-s); border-color:transparent; } .vz-bar .vz-play svg{ fill:currentColor; }
+.vz-bar button:disabled{ opacity:.4; cursor:default; }
+.vz-bar button:focus-visible{ outline:2px solid var(--c); outline-offset:2px; }
+.vz-prog{ flex:1; height:4px; margin-left:6px; border-radius:4px; background:var(--rule); overflow:hidden; } .vz-prog i{ display:block; height:100%; background:var(--c); transition:width .3s; }
 .page-foot{ margin-top:28px; padding-top:18px; border-top:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
 .btn.readmark.on{ border-color:var(--ok); color:var(--ok); }
 .outline{ position:sticky; top:72px; max-height:calc(100vh - 92px); overflow:auto; display:flex; flex-direction:column; gap:10px; padding-top:46px; }

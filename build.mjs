@@ -61,5 +61,7 @@ for (const id of Object.keys(COURSES)) {
   manifest[id].ar = true;
   console.log(`data/ar-${id}.js`.padEnd(20), (json.length / 1024).toFixed(0).padStart(5), 'KB');
 }
+// the diagram engine is served from data/ so it gets the same content-hash URL and year-long caching as the course files
+if (existsSync('viz.js')) { writeFileSync('data/viz.js', readFileSync('viz.js')); console.log('data/viz.js'.padEnd(20), (readFileSync('viz.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
 writeFileSync('manifest.js', `window.MANIFEST=${JSON.stringify(manifest)};\n`);
 console.log('manifest.js'.padEnd(20), (JSON.stringify(manifest).length / 1024).toFixed(1).padStart(5), 'KB');
