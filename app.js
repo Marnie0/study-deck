@@ -418,9 +418,13 @@ function start() {
       <${Topbar} bar=${bar} cur=${null} />
       <main className="content home">
         <div className="hello">
-          <div><h1>${greet}</h1>
-            ${LEVELS.length > 1 && html`<div className="lvls" role="group" aria-label="Level">${LEVELS.map(v => html`<button key=${v.id} aria-pressed=${String(v.id === LEVEL.id)} onClick=${() => setLevel(v.id)}>${v.name}</button>`)}</div>`}
-            <p>${LEVEL.name} · ${LEVEL.sem} · ${ORDER.length} courses, ${sum.lec} lectures</p></div>
+          <div className="hello-l">
+            <p className="hello-k">${LEVEL.name} · ${LEVEL.sem}</p>
+            <h1>${greet}</h1>
+            <p>${ORDER.length} courses · ${sum.lec} lectures · ${papers} solved past papers</p>
+            ${LEVELS.length > 1 && html`<div className="lvls" role="group" aria-label="Level and semester">${LEVELS.map(v => html`<button key=${v.id} aria-pressed=${String(v.id === LEVEL.id)} onClick=${() => setLevel(v.id)}>
+              <b>${v.name}</b><span>${v.sem} · ${v.order.length} courses</span></button>`)}</div>`}
+          </div>
           <button className="hsearch" onClick=${openSearch}>${Icon.search}<span>Search notes, cards, past papers…</span><kbd>/</kbd></button>
         </div>
         <div className="bento">
@@ -438,7 +442,7 @@ function start() {
             </button>`}
           <button className="tile t-due" disabled=${!dueTop} onClick=${() => dueTop && openCourse(dueTop.k, { mode: 'cards', cardsAuto: Date.now() })}>
             <span className="tl">Cards due today</span><b className="big">${sum.due}</b>
-            <span className="tsub">${dueTop ? 'Start with ' + M[dueTop.k].short + ' (' + dueTop.due + ') →' : 'All caught up'}</span>
+            <span className="tsub">${dueTop ? 'Start with ' + M[dueTop.k].short + ' →' : 'All caught up'}</span>
             <span className="stk" aria-hidden="true"><i></i><i></i><i></i></span>
           </button>
           <div className="tile t-acc">
@@ -447,11 +451,13 @@ function start() {
             <span className="tsub">${wk.n ? wk.n + ' answers this week' : ever.n ? ever.n + ' answers so far' : 'No answers yet'}</span>
             <span className="bars" aria-label="Answers per day, last 7 days">${week.map(x => html`<span key=${x.d} title=${x.n + ' answers, ' + x.r + ' right'}><b><i style=${{ height: (x.n ? Math.max(12, x.n / maxN * 100) : 5) + '%', opacity: x.n ? 1 : .35 }}></i></b><em>${dayLetter(x.d)}</em></span>`)}</span>
           </div>
-          <div className="t-courses">${rows.map(r => html`<button key=${r.k} className=${'tile t-course sp-' + r.k} onMouseEnter=${() => prefetch(r.k)} onClick=${() => openCourse(r.k)}>
-            <span className="tcn"><b>${M[r.k].short}</b>${r.due ? html`<em>${r.due} due</em>` : null}</span>
+          <div className="t-courses">
+            <div className="t-head"><h2>${LEVEL.name}, ${LEVEL.sem} courses</h2><span>${sum.read} of ${sum.lec} lectures read</span></div>
+            ${rows.map(r => html`<button key=${r.k} className=${'tile t-course sp-' + r.k} title=${M[r.k].name} onMouseEnter=${() => prefetch(r.k)} onClick=${() => openCourse(r.k)}>
             <span className="tcs">${M[r.k].code}${r.el ? ' · Elective' : ''}</span>
+            <b className="tcn">${M[r.k].name}</b>
             <span className="dots" aria-hidden="true">${M[r.k].lectures.map(l => html`<i key=${l.n} className=${r.readList.includes(l.n) ? 'f' : ''}></i>`)}</span>
-            <span className="tcs">${r.read} of ${r.lectures} lectures read</span>
+            <span className="tcf"><span>${r.read}/${r.lectures} read</span>${r.due ? html`<em>${r.due} due</em>` : null}</span>
           </button>`)}</div>
           <div className="tile t-weak">
             <span className="tl">Weak spots, from your mistakes</span>
@@ -504,7 +510,7 @@ function start() {
         <div className="band-in">
           <div className="band-top">
             <div className="band-id">
-              <p className="band-k">${c.code} · ${ORDER.find(o => o[0] === k)[1] ? 'Elective' : 'Core course'}</p>
+              <p className="band-k">${LEVEL.name} · ${LEVEL.sem} · ${c.code} · ${ORDER.find(o => o[0] === k)[1] ? 'Elective' : 'Core course'}</p>
               <h1>${c.name}</h1>
               <p className="band-by">${c.by}</p>
             </div>
