@@ -1912,7 +1912,7 @@ SUB AX, val4` },
           [`00000101b`, `Unchanged; NOT inverts.`],
           [`10000101b`, `Only the sign bit flipped.`]
         ], a: 0 },
-        { q: `MOV AX, 5 / MOV CX, 2 / DIV CX. The result is:`, o: [
+        { q: `MOV AX, 5 / MOV DX, 0 / MOV CX, 2 / DIV CX. The result is:`, o: [
           [`AX = 2, DX = 1`, `Correct. Quotient in AX, remainder in DX.`],
           [`AX = 1, DX = 2`, `Reversed.`],
           [`AX = 2.5`, `Integer division only.`],
