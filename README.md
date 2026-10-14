@@ -4,7 +4,7 @@
 
 <h1>Study Deck</h1>
 
-<p><b>One place to study every Level 3, Semester 1 Computer Science course.</b><br>
+<p><b>One place to study every Level 2 and Level 3, Semester 1 Computer Science course.</b><br>
 Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and solved past papers, with Egyptian Arabic explanations when you need them.</p>
 
 <p>
@@ -20,16 +20,18 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 <img alt="Arabic" src="https://img.shields.io/badge/explanations-English_%2B_%D8%B9%D8%B1%D8%A8%D9%8A-C42A6C?style=flat-square">
 </p>
 
+<!-- stats:start -->
 <table>
 <tr>
-<td align="center"><h2>6</h2>courses</td>
-<td align="center"><h2>46</h2>lectures</td>
-<td align="center"><h2>628</h2>flashcards</td>
-<td align="center"><h2>1,052</h2>quiz questions</td>
-<td align="center"><h2>214</h2>Q&amp;A pairs</td>
-<td align="center"><h2>31</h2>solved past papers</td>
+<td align="center"><h2>9</h2>courses</td>
+<td align="center"><h2>76</h2>lectures</td>
+<td align="center"><h2>1,100</h2>flashcards</td>
+<td align="center"><h2>1,782</h2>quiz questions</td>
+<td align="center"><h2>379</h2>Q&amp;A pairs</td>
+<td align="center"><h2>54</h2>solved past papers</td>
 </tr>
 </table>
+<!-- stats:end -->
 
 </div>
 
@@ -37,7 +39,7 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 
 ## ✨ Why it exists
 
-Revising for six exams from scattered PDFs, slides and old papers is slow. Study Deck turns all of it into one fast site that knows what you have read, which cards are due and which questions you keep getting wrong. Then it shows you exactly what to do next.
+Revising for six exams a term from scattered PDFs, slides and old papers is slow. Study Deck turns all of it into one fast site that knows what you have read, which cards are due and which questions you keep getting wrong. Then it shows you exactly what to do next.
 
 - **Every answer is explained.** Each quiz choice says why it is right *or why it is wrong*, not just which letter is correct.
 - **Professor's questions are kept apart from practice ones.** Past-exam, sheet and lecture questions are badged separately from the extra practice questions, so you know what the professor actually asked.
@@ -143,14 +145,30 @@ Follows your system theme or your own choice. Every screen is checked at phone, 
 
 ## 📖 Courses
 
-| Course | Code | Lectures | Cards | Questions | Past papers |
-|---|---|:-:|:-:|:-:|:-:|
-| 🔵 Compiler Design | CS321 / CS309 | 8 | 112 | 225 | 8 |
-| 🟣 Operating Systems | CS332 | 8 | 138 | 174 | 6 |
-| 🔴 Multimedia | CS253 | 8 | 118 | 216 | 10 |
-| 🟢 Software Quality Assurance | 22H211-CS-EN-T1 | 8 | 116 | 171 | 2 |
-| 🟩 Human Computer Interaction *(elective)* | CS314 | 9 | 78 | 166 | 2 |
-| 🟠 File Processing *(elective)* | CS308 | 5 | 66 | 100 | 3 |
+Pick your level on the home page. Course pills, tiles, cards due, weak spots, past papers and search all follow it, and the site remembers your choice.
+
+<!-- courses:start -->
+### Level 2 · Semester 1
+
+| Course | Code | Lectures | Cards | Questions | Past papers | Arabic |
+|---|---|:-:|:-:|:-:|:-:|:-:|
+| 🔵 Discrete Mathematics | BS 113 / BS 204 | 11 | 178 | 259 | 9 | coming |
+| 🔴 Data Structures | CS201 | 10 | 144 | 191 | 7 | coming |
+| 🟩 Microprocessors & Assembly Language | CS203 | 9 | 150 | 280 | 7 | coming |
+
+*3 more courses are being added.*
+
+### Level 3 · Semester 1
+
+| Course | Code | Lectures | Cards | Questions | Past papers | Arabic |
+|---|---|:-:|:-:|:-:|:-:|:-:|
+| 🔵 Compiler Design | CS321 / CS309 | 8 | 112 | 225 | 8 | ✓ |
+| 🟣 Operating Systems | CS332 | 8 | 138 | 174 | 6 | ✓ |
+| 🔴 Multimedia | CS253 | 8 | 118 | 216 | 10 | ✓ |
+| 🟢 Software Quality Assurance | 22H211-CS-EN-T1 | 8 | 116 | 171 | 2 | ✓ |
+| 🟩 Human Computer Interaction *(elective)* | CS314 | 9 | 78 | 166 | 2 | ✓ |
+| 🟠 File Processing *(elective)* | CS308 | 5 | 66 | 100 | 3 | ✓ |
+<!-- courses:end -->
 
 Where an official answer key disagrees with the lecture slides, both are shown and the conflict is flagged.
 
@@ -172,7 +190,8 @@ No framework build, no bundler, no `node_modules`. The whole app is static files
 study-deck/
 ├── index.html          # styles + page shell
 ├── app.js              # the whole React app
-├── compiler.js … fp.js # editable course sources: notes, cards, Q&A, quiz, exams
+├── compiler.js … fp.js # Level 3 course sources: notes, cards, Q&A, quiz, exams
+├── dm.js … sa.js       # Level 2 course sources, same format
 ├── extra/              # extra practice questions, per lecture
 ├── papers/             # more solved past papers, merged into the courses
 ├── ar/                 # Egyptian Arabic explanations, per course
@@ -231,7 +250,7 @@ Every option carries its own explanation, and `src` marks where the question cam
 
 ## 🙏 Acknowledgements
 
-Course content is summarised from the lectures, revision sheets and past papers of the Level 3, Semester 1 Computer Science courses at Modern Academy, shared on the MA Platform. Thanks to the course lecturers: Dr. Lamiaa Hassaan, Dr. Ahmed Ibrahim, Dr. Abbass Rostomme, Prof. Dr. Mahmoud Gadalla, Prof. Dr. Arabi Keshk, Dr. Mona Samir Lackousha and Dr. M. AbdelFattah.
+Course content is summarised from the lectures, revision sheets and past papers of the Level 2 and Level 3, Semester 1 Computer Science courses at Modern Academy, shared on the MA Platform. Thanks to the course lecturers: Dr. Lamiaa Hassaan, Dr. Ahmed Ibrahim, Prof. Shereen Magdy, Prof. Marwa, Prof. Shreef, Dr. Abbass Rostomme, Prof. Dr. Mahmoud Gadalla, Prof. Dr. Arabi Keshk, Dr. Mona Samir Lackousha and Dr. M. AbdelFattah.
 
 This is an unofficial study aid made by a student. When in doubt, the lecture slides and your lecturers have the final word.
 
