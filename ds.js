@@ -816,7 +816,7 @@ public:
       else return false;
    }
 };` },
-        { h: `Insert at beginning and at end (professor's code)`, code: `void insertatbeginning(int item)
+        { h: `Insert at beginning and at end (professor's code)`, viz: { type: `list`, bug: true, title: `The slide's insertatend on an empty list`, ops: [`end! 10`] }, code: `void insertatbeginning(int item)
 {
    Node *newnode = new Node();
    newnode->data = item;
@@ -838,7 +838,7 @@ void insertatend(int item)
 }
 // Note: as written, insertatend crashes on an EMPTY list (temp1 is NULL).
 // Safe version: if (isEmpty()) { head = newnode; return; } before the loop.` },
-        { h: `Insert in order (sorted list)`, viz: { type: `list`, init: [10, 20, 40], ops: [`sorted 30`, `sorted 5`, `sorted 50`] }, pts: [
+        { h: `Insert in order (sorted list)`, viz: [{ type: `list`, init: [10, 20, 40], ops: [`sorted 30`, `sorted 5`, `sorted 50`] }, { type: `list`, bug: true, title: `The slide's insertsorted loop: fine in the middle, crashes at the ends`, init: [10, 20, 30], ops: [`sorted! 25`, `sorted! 5`] }], pts: [
           `Steps: (1) locate the node <b>preceding</b> the insertion point (current points to it); (2) make the new node point to the node after the insertion point (<code>newnode-&gt;next = current-&gt;next</code>); (3) make current point to the new node (<code>current-&gt;next = newnode</code>). The order of steps 2 and 3 matters: doing step 3 first loses the rest of the list.`,
           `The slide's <code>insertsorted</code> loop is <code>while ((temp1-&gt;data &gt; item &amp;&amp; temp1-&gt;next-&gt;data &gt; item) || (temp1-&gt;data &lt; item &amp;&amp; temp1-&gt;next-&gt;data &lt; item) &amp;&amp; temp1!=NULL)</code>. Tested with g++: it works for a value <b>between</b> two nodes (10,20,30 + 25 → 10 20 25 30) but <b>crashes</b> for a value smaller than the head or larger than the last node (temp1-&gt;next becomes NULL).`,
           `In an exam, write the safe version below: it handles the empty list, a new smallest value and a new largest value.`
@@ -1230,7 +1230,7 @@ void pop()                   // delete from beginning
           `<b>Display</b>: if empty display "Queue is Empty"; else temp = front; display temp→data and move to the next node until temp reaches rear; finally display "temp→data ---&gt; NULL".`,
           `Insertion is at the <b>rear (end)</b> of the list; deletion is from the <b>front (beginning)</b>.`
         ]},
-        { h: `Linked queue class (professor's code)`, code: `class Node
+        { h: `Linked queue class (professor's code)`, viz: { type: `lqueue`, bug: true, title: `The lecture's dequeue, removing the last node`, ops: [`enqueue 30`, `dequeue!`, `enqueue 50`] }, code: `class Node
 {
 public:
    int data;
@@ -1954,7 +1954,7 @@ int main()
         cout &lt;&lt; e[i].name &lt;&lt; " total salary = " &lt;&lt; e[i].total &lt;&lt; endl;
     return 0;
 }</pre>Output: Dina 1050, Mohamed 2000, Hoda 2800 (1000+100-50 = 1050; 2000+0-0 = 2000; 3000+0-200 = 2800). You may also initialize the array directly: <code>Employee e[3] = {{"Dina",1000,100,50},{"Mohamed",2000,0,0},{"Hoda",3000,0,200}};</code> (L1).` },
-          { type: `written`, q: `You have a Linked-Queue, write a program that contains: node class, linked queue class, a function to insert values 25 and 20, and main() to call the above function.`,
+          { type: `written`, viz: { type: `lqueue`, title: `Insert 25 and 20 into the linked queue`, ops: [`enqueue 25`, `enqueue 20`] }, q: `You have a Linked-Queue, write a program that contains: node class, linked queue class, a function to insert values 25 and 20, and main() to call the above function.`,
             ans: `<pre>#include &lt;iostream&gt;
 using namespace std;
 class Node
@@ -1992,7 +1992,7 @@ int main()
     q.display();      // 25 20   (front -&gt; 25 -&gt; 20 &lt;- rear)
     return 0;
 }</pre>(L7)` },
-          { type: `written`, q: `You have a Linked-Stack, write a program which contains: node class and linked stack class, a function to delete an item from the stack, and main() to call the above function.`,
+          { type: `written`, viz: { type: `lstack`, title: `Delete an item from the linked stack (example values)`, ops: [`push 50`, `push 70`, `pop`] }, q: `You have a Linked-Stack, write a program which contains: node class and linked stack class, a function to delete an item from the stack, and main() to call the above function.`,
             ans: `<pre>#include &lt;iostream&gt;
 using namespace std;
 class Node
@@ -2086,9 +2086,9 @@ int main()
     d.display();          // 5 10 20 30 40
     return 0;
 }</pre>(L8) Tested with g++; it handles empty list, new smallest, middle and new largest values.` },
-          { type: `written`, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: F is the root; B is the left child of F with children A (left) and D (right); D has children C (left) and E (right); G is the right child of F; G has a right child I; I has a left child H.`,
+          { type: `written`, viz: { type: `bst`, title: `The three traversals of this tree`, tree: `F(B(A,D(C,E)),G(,I(H,)))`, ops: [`inorder`, `preorder`, `postorder`] }, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: F is the root; B is the left child of F with children A (left) and D (right); D has children C (left) and E (right); G is the right child of F; G has a right child I; I has a left child H.`,
             ans: `<b>Inorder</b> (left, root, right): A B C D E F G H I<br><b>Preorder</b> (root, left, right): F B A D C E G I H<br><b>Postorder</b> (left, right, root): A C E D B H I G F<br>(L9; verified with g++. Tip: in postorder the root F is last, in preorder it is first.)` },
-          { type: `written`, q: `Store the values 25, 42, 96, 101, 102, 162, 197 using division method of hashing. Apply chaining in collision situations. Array size = 5.`,
+          { type: `written`, viz: { type: `hash`, title: `Chaining, array size 5`, size: 5, method: `chain`, keys: [25, 42, 96, 101, 102, 162, 197] }, q: `Store the values 25, 42, 96, 101, 102, 162, 197 using division method of hashing. Apply chaining in collision situations. Array size = 5.`,
             ans: `h(k) = k mod 5: 25→0, 42→2, 96→1, 101→1, 102→2, 162→2, 197→2.<br><table><tr><th>Index</th><th>Chain</th></tr><tr><td>0</td><td>25 → NULL</td></tr><tr><td>1</td><td>96 → 101 → NULL</td></tr><tr><td>2</td><td>42 → 102 → 162 → 197 → NULL</td></tr><tr><td>3</td><td>NULL</td></tr><tr><td>4</td><td>NULL</td></tr></table>Collisions: 101 (with 96), 102, 162, 197 (with 42). Each is appended to the linked list of its slot (L10).` }
         ]},
         { title: `Question 2 · Choose the correct answer`, marks: `15 marks (1.5 each)`, items: [
@@ -2192,7 +2192,7 @@ int main()
     d.removeAll();      // List is empty
     return 0;
 }</pre>(L8)` },
-          { type: `written`, q: `You have a Linked-Stack; check if it is empty, write a program to: insert two new nodes with values = 50 and 70; remove a node from the stack.`,
+          { type: `written`, viz: { type: `lstack`, title: `Push 50 and 70, then pop`, ops: [`push 50`, `push 70`, `pop`] }, q: `You have a Linked-Stack; check if it is empty, write a program to: insert two new nodes with values = 50 and 70; remove a node from the stack.`,
             ans: `<pre>#include &lt;iostream&gt;
 using namespace std;
 class Node
@@ -2235,7 +2235,7 @@ int main()
     cout &lt;&lt; "Removed " &lt;&lt; s.pop() &lt;&lt; endl;    // Removed 70
     return 0;
 }</pre>(L6)` },
-          { type: `written`, q: `You have a Linked-Queue; check if it is empty, write a program to: insert two new nodes with values = 30 and 50; remove all the items of the queue.`,
+          { type: `written`, viz: { type: `lqueue`, title: `Enqueue 30 and 50, then remove all`, ops: [`enqueue 30`, `enqueue 50`, `dequeue`, `dequeue`] }, q: `You have a Linked-Queue; check if it is empty, write a program to: insert two new nodes with values = 30 and 50; remove all the items of the queue.`,
             ans: `<pre>#include &lt;iostream&gt;
 using namespace std;
 class Node
@@ -2284,9 +2284,9 @@ int main()
     q.removeAll();       // Dequeued 30, Dequeued 50 (FIFO)
     return 0;
 }</pre>(L7)` },
-          { type: `written`, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: A root; B left child of A, C right child of A; D left and E right children of B; F right child of C; G left and H right children of D; I right child of E.`,
+          { type: `written`, viz: { type: `bst`, title: `The three traversals of this tree`, tree: `A(B(D(G,H),E(,I)),C(,F))`, ops: [`inorder`, `preorder`, `postorder`] }, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: A root; B left child of A, C right child of A; D left and E right children of B; F right child of C; G left and H right children of D; I right child of E.`,
             ans: `<b>Inorder</b> (L, root, R): G D H B E I A C F<br><b>Preorder</b> (root, L, R): A B D G H E I C F<br><b>Postorder</b> (L, R, root): G H D I E B F C A<br>(L9; verified with g++.)` },
-          { type: `written`, q: `Store the values 18, 72, 65, 34 and 13 using division method. Apply using linear probe and separate chaining in collision situations, where array size = 7.`,
+          { type: `written`, viz: [{ type: `hash`, title: `Linear probing, array size 7`, size: 7, method: `linear`, keys: [18, 72, 65, 34, 13] }, { type: `hash`, title: `Separate chaining, array size 7`, size: 7, method: `chain`, keys: [18, 72, 65, 34, 13] }], q: `Store the values 18, 72, 65, 34 and 13 using division method. Apply using linear probe and separate chaining in collision situations, where array size = 7.`,
             ans: `Division: h1(k) = k mod 7 → 18→4, 72→2, 65→2, 34→6, 13→6.<br><b>Linear probing</b> h(k,i) = (h1(k)+i) mod 7:<br>18: i=0 → 4. 72: i=0 → 2. 65: i=0 → 2 collision, i=1 → 3. 34: i=0 → 6. 13: i=0 → 6 collision, i=1 → (6+1) mod 7 = 0.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr><tr><td>13</td><td>–</td><td>72</td><td>65</td><td>18</td><td>–</td><td>34</td></tr></table><b>Separate chaining</b>: [0] NULL, [1] NULL, [2] 72 → 65, [3] NULL, [4] 18, [5] NULL, [6] 34 → 13. (This is exactly the lecture example, L10.)` }
         ]}
       ]
@@ -2340,7 +2340,7 @@ void removeAll()
     while (!isEmpty())
         cout &lt;&lt; "Deleted " &lt;&lt; deletefrombeginning() &lt;&lt; endl;
 }</pre>Each step moves head to the next node and frees the old first node, until head is NULL (L5).` },
-          { type: `written`, q: `You have a Linked-Stack; write a program to remove all the items of the stack.`,
+          { type: `written`, viz: { type: `lstack`, title: `Remove all the items (example values)`, ops: [`push 10`, `push 20`, `push 30`, `pop`, `pop`, `pop`] }, q: `You have a Linked-Stack; write a program to remove all the items of the stack.`,
             ans: `<pre>#include &lt;iostream&gt;
 using namespace std;
 class Node
@@ -2385,7 +2385,7 @@ int main()
     s.removeAll();      // Popped 3, Popped 2, Popped 1
     return 0;
 }</pre>(L6)` },
-          { type: `written`, q: `You have a Linked-Queue, write a program to: insert two new nodes with values = 50 and 70; remove a node from the queue.`,
+          { type: `written`, viz: { type: `lqueue`, title: `Enqueue 50 and 70, then dequeue`, ops: [`enqueue 50`, `enqueue 70`, `dequeue`] }, q: `You have a Linked-Queue, write a program to: insert two new nodes with values = 50 and 70; remove a node from the queue.`,
             ans: `<pre>// Node class as in L7 (data, next)
 class Queue
 {
@@ -2420,7 +2420,7 @@ int main()
     cout &lt;&lt; "Removed " &lt;&lt; q.dequeue() &lt;&lt; endl;   // Removed 50 (FIFO)
     return 0;
 }</pre>(L7)` },
-          { type: `written`, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: 50 root; 25 (children 12, 33); 65 (children 55, 70); 55 (children 53, 60).`,
+          { type: `written`, viz: { type: `bst`, title: `The three traversals of this tree`, init: [50, 25, 65, 12, 33, 70, 55, 60, 53], ops: [`inorder`, `preorder`, `postorder`] }, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: 50 root; 25 (children 12, 33); 65 (children 55, 70); 55 (children 53, 60).`,
             ans: `<b>Inorder</b>: 12, 25, 33, 50, 53, 55, 60, 65, 70<br><b>Preorder</b>: 50, 25, 12, 33, 65, 55, 53, 60, 70<br><b>Postorder</b>: 12, 33, 25, 53, 60, 55, 70, 65, 50<br>(Lecture 9 example; verified with g++.)` },
           { type: `written`, q: `Store the values 12, 15, 21, 31, 90 using division method. Apply linear probe in collision situations, where array size = 9.`,
             ans: `h(k,i) = ((k mod 9) + i) mod 9<br>12: i=0 → 3.<br>15: i=0 → 6.<br>21: i=0 → 3 collision (12); i=1 → 4.<br>31: i=0 → 4 collision (21); i=1 → 5.<br>90: i=0 → 0.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr><tr><td>90</td><td>–</td><td>–</td><td>12</td><td>21</td><td>31</td><td>15</td><td>–</td><td>–</td></tr></table>(L10; computed with a script.)` }
@@ -2455,7 +2455,7 @@ int main()
         temp-&gt;next = newnode;               // previous node points to new node
     }
 }</pre>Steps (L5): locate the node preceding the insertion point, make the new node point to the node after it, then make the preceding node point to the new node. The slide's loop version crashes when the value is smaller than the head or larger than the last node, so this safe version is preferred (tested with g++: 10, 20, 30 + 25, 5, 40 → 5 10 20 25 30 40).` },
-          { type: `written`, q: `You have a Linked-Stack, write a program to: insert two new nodes with values = 50 and 70; remove a node from the linked-stack.`,
+          { type: `written`, viz: { type: `lstack`, title: `Push 50 and 70, then pop`, ops: [`push 50`, `push 70`, `pop`] }, q: `You have a Linked-Stack, write a program to: insert two new nodes with values = 50 and 70; remove a node from the linked-stack.`,
             ans: `Use the linked stack class of L6 (push: newnode->next = top; top = newnode; pop: temp = top; top = top->next; delete temp).<pre>int main()
 {
     Stack s;
@@ -2464,7 +2464,7 @@ int main()
     cout &lt;&lt; "Removed " &lt;&lt; s.pop() &lt;&lt; endl;   // Removed 70
     return 0;
 }</pre>See Final 2024/25 Q3 for the full class.` },
-          { type: `written`, q: `You have a Linked-Queue, write a program to remove all the items of the queue.`,
+          { type: `written`, viz: { type: `lqueue`, title: `Remove all the items (example values)`, ops: [`enqueue 10`, `enqueue 20`, `enqueue 30`, `dequeue`, `dequeue`, `dequeue`] }, q: `You have a Linked-Queue, write a program to remove all the items of the queue.`,
             ans: `<pre>void removeAll()            // inside class Queue (front, rear)
 {
     if (front == NULL) { cout &lt;&lt; "Queue is empty" &lt;&lt; endl; return; }
@@ -2477,7 +2477,7 @@ int main()
     }
     rear = NULL;            // queue is now empty
 }</pre>Items are removed from the front in FIFO order (L7). Full class: see Final 2024/25 Q4.` },
-          { type: `written`, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: 43; 31 (20 with right child 28, 40 with left child 33); 64 (56 with children 47, 59; 89).`,
+          { type: `written`, viz: { type: `bst`, title: `The three traversals of this tree`, init: [43, 31, 64, 20, 40, 56, 89, 28, 33, 47, 59], ops: [`inorder`, `preorder`, `postorder`] }, q: `Traverse this tree using Inorder, Preorder and Postorder. Tree: 43; 31 (20 with right child 28, 40 with left child 33); 64 (56 with children 47, 59; 89).`,
             ans: `<b>Inorder</b>: 20 28 31 33 40 43 47 56 59 64 89<br><b>Preorder</b>: 43 31 20 28 40 33 64 56 47 59 89<br><b>Postorder</b>: 28 20 33 40 31 47 59 56 89 64 43<br>(Lecture 9 example; verified with g++.)` },
           { type: `written`, q: `Store the values 14, 17, 25, 37, 34, 16 using division method. Apply linear probe in collision situations, where array size = 11.`,
             ans: `h(k,i) = ((k mod 11) + i) mod 11<br>14 → 3. 17 → 6. 25 → 3 collision; i=1 → 4. 37 → 4 collision; i=1 → 5. 34 → 1. 16 → 5 collision; i=1 → 6 collision; i=2 → 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table>(L10)` }
@@ -2498,7 +2498,7 @@ int main()
           { type: `tf`, q: `A Stack, in other words, is called a LIFO list.`, a: 0, why: `Last-In-First-Out (L2).` }
         ]},
         { title: `Model A · Second Question`, marks: `15 marks (5 each)`, items: [
-          { type: `written`, q: `Write C++ code for POP and IsEmpty Stack functions.`,
+          { type: `written`, viz: { type: `stack`, title: `pop() until the stack is empty`, size: 4, ops: [`push 10`, `push 20`, `pop`, `pop`, `pop`] }, q: `Write C++ code for POP and IsEmpty Stack functions.`,
             ans: `<pre>bool isEmpty(int top)
 {
     if (top == -1) return true;
@@ -2510,7 +2510,7 @@ int pop()
     else
     { int item = stack_arr[top]; top = top - 1; return item; }
 }</pre>(Official model answer, L2.)` },
-          { type: `written`, q: `Write C++ code for Enqueue and IsFull Queue functions.`,
+          { type: `written`, viz: { type: `queue`, title: `enqueue() until isFull`, size: 3, ops: [`enqueue 10`, `enqueue 20`, `enqueue 30`, `enqueue 40`] }, q: `Write C++ code for Enqueue and IsFull Queue functions.`,
             ans: `<pre>bool isFull(int tail)
 {
     if (tail == maxsize - 1) return true;
@@ -2569,7 +2569,7 @@ int main()
           { type: `tf`, q: `A Stack is called a FIFO list.`, a: 1, why: `A stack is LIFO (the key writes FILO, which means the same); FIFO is a queue (L2).` }
         ]},
         { title: `Model B · Second Question`, marks: `15 marks (5 each)`, items: [
-          { type: `written`, q: `Write C++ code for Push and IsFull Stack functions.`,
+          { type: `written`, viz: { type: `stack`, title: `push() until isFull`, size: 4, ops: [`push 10`, `push 20`, `push 30`, `push 40`, `push 50`] }, q: `Write C++ code for Push and IsFull Stack functions.`,
             ans: `<pre>bool isFull(int top)
 {
     if (top == MAXSIZE - 1) return true;
@@ -2580,7 +2580,7 @@ void push(int item)
     if (isFull(top)) cout &lt;&lt; "Stack overflow";
     else { top = top + 1; stack_arr[top] = item; }
 }</pre>(Official model answer, L2.)` },
-          { type: `written`, q: `Write C++ code for Dequeue and IsEmpty Queue functions.`,
+          { type: `written`, viz: { type: `queue`, title: `dequeue() until isEmpty`, size: 4, ops: [`enqueue 10`, `enqueue 20`, `dequeue`, `dequeue`, `dequeue`] }, q: `Write C++ code for Dequeue and IsEmpty Queue functions.`,
             ans: `<pre>bool isEmpty(int head)
 {
     if (head == -1 || head &gt; tail) return true;
@@ -2663,7 +2663,7 @@ int main()
         cout &lt;&lt; "Total of " &lt;&lt; s[i].name &lt;&lt; " = " &lt;&lt; s[i].total &lt;&lt; endl;
     return 0;
 }</pre>Output with the table (run with g++): subject averages 62.5, 73.8333, 70, 66.6667; totals Ahmed 292, Mohamed 309, Halaa 236.5, Dina 290, Abas 240, Hoda 270.5 (L1).` },
-          { type: `written`, q: `Second Question: You have the Linked-Queue, write a program to: remove an item from the queue; insert a new item whose value = 50.`,
+          { type: `written`, viz: { type: `lqueue`, title: `Dequeue, then enqueue 50 (example starting queue)`, init: [10, 20, 30], ops: [`dequeue`, `enqueue 50`] }, q: `Second Question: You have the Linked-Queue, write a program to: remove an item from the queue; insert a new item whose value = 50.`,
             ans: `Use the Node and Queue classes of L7:<pre>void enqueue(int item)
 {
     Node *newnode = new Node();
@@ -2690,7 +2690,7 @@ int main()
     q.enqueue(50);                               // 50 joins at the rear: 20 50
     return 0;
 }</pre>` },
-          { type: `written`, q: `Third Question: You have the Linked-Stack, write a program to: insert two new nodes with values = 50 and 70; remove a node from the stack.`,
+          { type: `written`, viz: { type: `lstack`, title: `Push 50 and 70, then pop`, ops: [`push 50`, `push 70`, `pop`] }, q: `Third Question: You have the Linked-Stack, write a program to: insert two new nodes with values = 50 and 70; remove a node from the stack.`,
             ans: `Linked stack class of L6; main: <code>s.push(50); s.push(70); cout &lt;&lt; s.pop();</code> prints 70 because the last pushed node is on top (top → 70 → 50 → NULL, after pop top → 50). Full code: see Final 2024/25 Q3.` },
           { type: `written`, q: `Fourth Question: Write a program to insert a new node in its order of this linked list: head → 10 → 20 → 30 → NULL.`,
             ans: `<pre>#include &lt;iostream&gt;
@@ -2773,7 +2773,7 @@ int main()
         { title: `Question Two · Answer ONLY FIVE of the following`, marks: `40 marks (8 each)`, items: [
           { type: `written`, q: `a- Store the values 14, 17, 25, 37, 34, 16 using division method. Apply linear probe and quadratic probe in collision situations. Array size = 11.`,
             ans: `Home addresses k mod 11: 14→3, 17→6, 25→3, 37→4, 34→1, 16→5.<br><b>Linear probing</b> (h1 + i) mod 11: 14→3; 17→6; 25: 3 taken → 4; 37: 4 taken → 5; 34→1; 16: 5 taken, 6 taken → 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table><b>Quadratic probing</b> (lecture formula (h1 + i + i²) mod 11): 14→3; 17→6; 25: i=0 → 3 taken, i=1 → 3+1+1 = 5; 37: i=0 → 4 (free); 34→1; 16: i=0 → 5 taken (25), i=1 → 5+2 = 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>37</td><td>25</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table>If the textbook form (h1 + i²) is used instead: 25 → 4, 37 → 4 taken → 5, 16 → 5 taken, 6 taken, 5+4 = 9 → slot 9 (table: 1:34, 3:14, 4:25, 5:37, 6:17, 9:16). State the formula you use (L10).` },
-          { type: `written`, q: `b- Consider the tree: A root; B (left of A) with children D and K; D has right child H; K has left child L; M (right of A) with children R and X; R has left child P; X has right child Z. (i) Write the output of inorder and postorder traversals. (ii) Write C++ function of preorder traverse.`,
+          { type: `written`, viz: { type: `bst`, title: `The traversals of this tree`, tree: `A(B(D(,H),K(L,)),M(R(P,),X(,Z)))`, ops: [`inorder`, `postorder`, `preorder`] }, q: `b- Consider the tree: A root; B (left of A) with children D and K; D has right child H; K has left child L; M (right of A) with children R and X; R has left child P; X has right child Z. (i) Write the output of inorder and postorder traversals. (ii) Write C++ function of preorder traverse.`,
             ans: `(i) <b>Inorder</b>: D H B L K A P R M X Z<br><b>Postorder</b>: H D L K B P R Z X M A<br>(Preorder for reference: A B D H K L M R P X Z; verified with g++.)<br>(ii)<pre>void preorder(Node *temp)
 {
     if (temp == NULL) { return; }
@@ -2781,7 +2781,7 @@ int main()
     preorder(temp-&gt;left);           // then left subtree
     preorder(temp-&gt;right);          // then right subtree
 }</pre>(L9)` },
-          { type: `written`, q: `c- Consider a circular queue of size = 5, show the output of: enqueue(10); enqueue(20); cout&lt;&lt;"Head = "&lt;&lt;head&lt;&lt;"Tail = "&lt;&lt;tail&lt;&lt;"\\n"; enqueue(30); cout&lt;&lt;dequeue()&lt;&lt;"\\n"; int x = dequeue(); cout&lt;&lt;"Head = "&lt;&lt;head&lt;&lt;"Tail = "&lt;&lt;tail&lt;&lt;"\\n";`,
+          { type: `written`, viz: { type: `cqueue`, title: `The circular queue trace`, size: 5, names: [`head`, `tail`], ops: [`enqueue 10`, `enqueue 20`, `enqueue 30`, `dequeue`, `dequeue`] }, q: `c- Consider a circular queue of size = 5, show the output of: enqueue(10); enqueue(20); cout&lt;&lt;"Head = "&lt;&lt;head&lt;&lt;"Tail = "&lt;&lt;tail&lt;&lt;"\\n"; enqueue(30); cout&lt;&lt;dequeue()&lt;&lt;"\\n"; int x = dequeue(); cout&lt;&lt;"Head = "&lt;&lt;head&lt;&lt;"Tail = "&lt;&lt;tail&lt;&lt;"\\n";`,
             ans: `Trace: enqueue(10) → head = 0, tail = 0. enqueue(20) → tail = 1. Print <b>Head = 0Tail = 1</b>. enqueue(30) → tail = 2. dequeue() returns 10, head = 1 → prints <b>10</b>. x = dequeue() = 20, head = 2. Print <b>Head = 2Tail = 2</b>.<br>Output:<pre>Head = 0Tail = 1
 10
 Head = 2Tail = 2</pre>If the lecture's enQueue/deQueue (which print their own messages) are used, the full output is (run with g++):<pre>Enqueued element: 10
@@ -2792,7 +2792,7 @@ Dequeued element: 10
 10
 Dequeued element: 20
 Head = 2Tail = 2</pre>(L3)` },
-          { type: `written`, q: `d- You have a Linked Queue, write C++ functions to: remove an item from the queue; insert a new item which value = 50.`,
+          { type: `written`, viz: { type: `lqueue`, title: `Dequeue, then enqueue 50 (example starting queue)`, init: [10, 20], ops: [`dequeue`, `enqueue 50`] }, q: `d- You have a Linked Queue, write C++ functions to: remove an item from the queue; insert a new item which value = 50.`,
             ans: `<pre>void enqueue(int item)              // call enqueue(50)
 {
     Node *newnode = new Node();
@@ -2835,7 +2835,7 @@ int dequeue()
         temp-&gt;next = newnode;
     }
 }</pre>(L8; tested with g++.)` },
-          { type: `written`, q: `f- You have a Linked Stack, write C++ program to remove all the items from the stack.`,
+          { type: `written`, viz: { type: `lstack`, title: `Remove all the items (example values)`, init: [30, 20, 10], ops: [`pop`, `pop`, `pop`] }, q: `f- You have a Linked Stack, write C++ program to remove all the items from the stack.`,
             ans: `<pre>void removeAll()            // inside class Stack
 {
     if (top == NULL) { cout &lt;&lt; "Stack is empty" &lt;&lt; endl; return; }

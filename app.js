@@ -621,13 +621,28 @@ function start() {
   };
 
   // animated diagram: the engine (viz.js, copied to data/) is fetched the first time a lecture with a diagram opens
-  function VizBlock({ spec, ar }) {
+  // prediction results are kept per course (right, answered), for the Progress tab
+  const vzAnswer = k => ok => { const v = store.get('vzstat:' + k, [0, 0]); store.set('vzstat:' + k, [v[0] + (ok ? 1 : 0), v[1] + 1]); };
+  function VizBlock({ spec, ar, k }) {
     const [ready, setReady] = useState(() => !!window.VIZ);
     const [failed, setFailed] = useState(false);
     useEffect(() => { if (!ready) loadScript(dataUrl('viz')).then(() => setReady(true), () => setFailed(true)); }, []);
+    const onAnswer = useMemo(() => k ? vzAnswer(k) : null, [k]);
     if (failed) return html`<p className="muted small">The diagram didn't load. Check your connection and refresh.</p>`;
     if (!ready) return html`<div className="vz vz-wait" aria-hidden="true"></div>`;
-    return html`<${window.VIZ.Viz} spec=${spec} ar=${ar} />`;
+    return html`<${window.VIZ.Viz} spec=${spec} ar=${ar} onAnswer=${onAnswer} />`;
+  }
+  // past papers: a trace question can be worked through as a diagram, before or after revealing the model answer
+  function WatchSolved({ spec, ar, k }) {
+    const [open, setOpen] = useState(false);
+    const n = [].concat(spec).length;
+    return html`<div className="watch">
+      <button className=${'watchbtn' + (open ? ' on' : '')} onClick=${() => setOpen(o => !o)} aria-expanded=${String(open)}>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M7 5l12 7-12 7z" /></svg>
+        ${open ? 'Hide the step-by-step diagram' : n > 1 ? 'Work through it step by step (' + n + ' diagrams)' : 'Work through it step by step'}
+      </button>
+      ${open && html`<${VizBlock} spec=${spec} ar=${ar} k=${k} />`}
+    </div>`;
   }
 
   function Read({ k, lecN, anchor, go, read, setRead, barRef, onSection }) {
@@ -653,7 +668,7 @@ function start() {
             </table></div>`}
             ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
             ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
-            ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} />`}
+            ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} k=${k} />`}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));
@@ -1434,6 +1449,7 @@ function start() {
                     onClick=${() => set(key, { pick: oi, open: true })}>
                     <span className="bubble">${it.type === 'tf' ? o[0] : LET[oi].toLowerCase()}</span><${H} h=${o} /></button>`)}</div>`}
                 ${it.type === 'written' && !open && html`<textarea className="draft" id=${'draft-' + k + '-' + ix + '-' + key} placeholder="Draft your answer here (it is not saved)…"></textarea>`}
+                ${it.viz && html`<${WatchSolved} spec=${it.viz} ar=${!!arOf(k)} k=${k} />`}
                 ${!open && html`<div><button className="linkbtn" style=${{ marginTop: '8px' }} onClick=${() => set(key, { open: true })}>${it.type === 'written' ? 'Show the model answer' : 'Reveal the answer'}</button></div>`}
                 ${open && html`<div className="model">
                   <div className="lab">${opts ? (my.pick == null ? 'Answer' : my.pick === it.a ? '✓ Correct' : '✗ Not this one') : 'Model answer'}</div>
@@ -1731,6 +1747,8 @@ function start() {
     const att = rows.reduce((a, r) => a + r.att, 0), right = rows.reduce((a, r) => a + (r.acc || 0) * r.att, 0);
     const di = dueInfo(k, cardsOf(k).length), bestMock = store.get('mock:' + k, null);
     const LABEL = { new: 'Not started', weak: 'Weak spot', going: 'In progress', strong: 'Strong' };
+    // courses with animated diagrams also show how well the student predicts the next step
+    const vz = c.lectures.some(l => l.notes.some(n => n.viz)) ? store.get('vzstat:' + k, [0, 0]) : null;
 
     const next = [];
     if (di.total) next.push({ t: 'Review ' + di.total + ' index card' + (di.total > 1 ? 's' : ''), d: (di.due ? di.due + ' due for review' : '') + (di.due && di.fresh ? ' and ' : '') + (di.fresh ? di.fresh + ' new for today' : '') + '. About ' + Math.max(1, Math.round(di.total * 0.25)) + ' min.',
@@ -1755,6 +1773,7 @@ function start() {
         <div><b>${att ? Math.round(right / att * 100) + '%' : '–'}</b><span>${att ? 'correct over ' + att + ' answers' : 'quiz accuracy'}</span></div>
         <div><b>${best == null ? '–' : best + '%'}</b><span>best quiz</span></div>
         <div><b>${bestMock == null ? '–' : bestMock + '%'}</b><span>best mock exam</span></div>
+        ${vz && html`<div><b>${vz[1] ? Math.round(vz[0] / vz[1] * 100) + '%' : '–'}</b><span>${vz[1] ? 'diagram predictions right (' + vz[0] + ' of ' + vz[1] + ')' : 'diagram predictions'}</span></div>`}
       </section>
 
       <section className="paper pg-next">

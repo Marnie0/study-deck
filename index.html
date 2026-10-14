@@ -406,10 +406,10 @@ code, pre, kbd, .formula{ font-variant-ligatures:none; font-feature-settings:"li
 .tk-kw{ color:var(--tk-kw); font-weight:500; } .tk-str, .tk-val{ color:var(--tk-str); } .tk-num{ color:var(--tk-num); } .tk-com{ color:var(--tk-com); font-style:italic; }
 .tk-tag{ color:var(--tk-tag); } .tk-attr{ color:var(--tk-attr); } .tk-var{ color:var(--tk-var); } .tk-fn{ color:var(--tk-fn); }
 /* animated diagrams (viz.js): stage, caption, controls */
-.vz{ margin:14px 0 20px; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--paper); overflow:hidden; }
+.vz{ text-align:left; margin:14px 0 20px; border:1px solid var(--line); border-radius:var(--radius-sm); background:var(--paper); overflow:hidden; }
 .vz-wait{ height:240px; background:var(--paper-2); }
 .vz-stage{ padding:14px 10px 8px; background:var(--paper-2); overflow-x:auto; }
-.vz svg{ width:100%; height:auto; display:block; margin:0 auto; font-family:var(--mono); font-size:15px; font-variant-ligatures:none; }
+.vz-stage svg{ width:100%; height:auto; display:block; margin:0 auto; font-family:var(--mono); font-size:15px; font-variant-ligatures:none; }
 .vz text{ fill:var(--ink); } .vz text.muted{ fill:var(--faint); font-size:12px; }
 .vz-cell rect, .vz-slot rect, .vz-node rect, .vz-dnode rect, .vz-circ circle{ fill:var(--paper); stroke:var(--graphite); stroke-width:1.4; transition:fill .25s, stroke .25s; }
 .vz-node line, .vz-dnode line{ stroke:var(--graphite); stroke-width:1.2; } .vz .slash{ stroke:var(--faint); stroke-width:1.4; }
@@ -440,6 +440,58 @@ code, pre, kbd, .formula{ font-variant-ligatures:none; font-feature-settings:"li
 .vz-bar button:disabled{ opacity:.4; cursor:default; }
 .vz-bar button:focus-visible{ outline:2px solid var(--c); outline-offset:2px; }
 .vz-prog{ flex:1; height:4px; margin-left:6px; border-radius:4px; background:var(--rule); overflow:hidden; } .vz-prog i{ display:block; height:100%; background:var(--c); transition:width .3s; }
+/* diagram learning tools: code + variables, predictions, your own input, bug demos */
+.vz-title{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:10px 14px; border-bottom:1px solid var(--rule); font-size:.95rem; }
+.vz-tag{ font-size:.75rem; font-weight:700; letter-spacing:.04em; text-transform:uppercase; padding:3px 9px; border-radius:999px; background:color-mix(in srgb, var(--pen) 14%, var(--paper)); color:var(--pen); }
+.vz-tag.mine{ background:color-mix(in srgb, var(--c) 14%, var(--paper)); color:var(--c); }
+.vz.crash .vz-stage{ box-shadow:inset 0 0 0 2px var(--pen); }
+.vz .freed rect{ stroke:var(--pen); stroke-dasharray:4 4; fill:color-mix(in srgb, var(--pen) 7%, var(--paper)); } .vz .freed text{ fill:var(--faint); }
+.vz-edge.badl{ stroke:var(--pen); stroke-dasharray:4 3; }
+.vz-panels{ display:grid; grid-template-columns:minmax(0, 1.7fr) minmax(0, 1fr); border-top:1px solid var(--rule); }
+.vz-ph{ display:block; font-size:.75rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--faint); margin-bottom:6px; }
+.vz-code{ padding:10px 0 10px 14px; border-right:1px solid var(--rule); min-width:0; }
+.vz-code pre{ margin:0; padding:0 12px 0 0; border:0; background:none; border-radius:0; font-size:.8rem; line-height:1.55; max-height:13.5em; overflow:auto; scrollbar-width:thin; }
+.vz-code pre span{ display:block; padding:0 8px; margin-left:-8px; border-radius:5px; color:var(--graphite); transition:background .2s, color .2s; }
+.vz-code pre span.on{ background:color-mix(in srgb, var(--c) 18%, var(--paper)); color:var(--ink); font-weight:500; box-shadow:inset 3px 0 0 var(--c); }
+.vz-code.idle pre span{ opacity:.75; }
+.vz-code p, .vz-vars p{ margin:0; color:var(--faint); font-size:.88rem; }
+.vz-vars{ padding:10px 14px; min-width:0; }
+.vz-vars table{ border-collapse:collapse; width:100%; font-family:var(--mono); font-size:.84rem; }
+.vz-vars th, .vz-vars td{ text-align:left; padding:4px 8px; border-bottom:1px solid var(--rule); font-weight:400; }
+.vz-vars th{ color:var(--graphite); width:40%; } .vz-vars td{ color:var(--ink); word-break:break-word; }
+.vz-vars tr.chg td{ background:color-mix(in srgb, var(--warn) 18%, transparent); font-weight:600; transition:background .4s; }
+.vz-ask{ padding:12px 14px 14px; border-top:1px solid var(--rule); background:color-mix(in srgb, var(--c) 6%, var(--paper)); }
+.vz-q{ margin:0 0 4px; font-weight:600; font-size:1rem; line-height:1.5; }
+.vz-opts{ display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); gap:8px; margin:10px 0 8px; }
+.vz-opts button{ display:flex; align-items:center; gap:10px; min-height:44px; padding:8px 12px; text-align:left; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); font:inherit; font-size:.92rem; cursor:pointer; }
+.vz-opts button:hover{ border-color:var(--c); } .vz-opts button:focus-visible{ outline:2px solid var(--c); outline-offset:2px; }
+.vz-opts kbd{ flex:none; display:inline-grid; place-items:center; width:24px; height:24px; border-radius:6px; background:var(--paper-2); border:1px solid var(--line); font-family:var(--mono); font-size:.78rem; color:var(--graphite); }
+.vz-opts span{ font-family:var(--mono); font-size:.88rem; }
+.vz-link{ border:0; background:none; padding:0; color:var(--c); font:inherit; font-size:.9rem; font-weight:600; cursor:pointer; text-decoration:underline; text-underline-offset:3px; }
+.vz-res{ font-weight:600; } .vz-res.ok{ color:var(--ok); } .vz-res.no{ color:var(--pen); }
+.vz-sum{ margin-top:4px; font-weight:600; display:flex; gap:12px; flex-wrap:wrap; align-items:center; }
+.vz-tog{ display:inline-flex; align-items:center; gap:6px; font-size:.88rem; font-weight:600; color:var(--graphite); cursor:pointer; user-select:none; padding:0 4px; min-height:38px; }
+.vz-tog input{ width:18px; height:18px; accent-color:var(--c); margin:0; }
+.vz-bar .vz-try{ padding:0 12px; white-space:nowrap; } .vz-bar button svg{ flex:none; width:16px; height:16px; } .vz-bar .vz-try.on{ border-color:var(--c); color:var(--c); }
+.vz-own{ border:1px solid var(--line); border-top:0; border-radius:0 0 var(--radius-sm) var(--radius-sm); margin:-21px 0 20px; padding:12px 14px; background:var(--paper); }
+.vz-own label{ display:block; font-size:.88rem; font-weight:600; margin-bottom:6px; }
+.vz-row{ display:flex; gap:8px; flex-wrap:wrap; }
+.vz-row input{ flex:1 1 260px; min-width:0; height:40px; padding:0 12px; border:1px solid var(--line); border-radius:10px; background:var(--paper-2); color:var(--ink); font-family:var(--mono); font-size:.9rem; }
+.vz-row input:focus{ outline:2px solid var(--c); outline-offset:1px; }
+.vz-row select{ height:40px; padding:0 10px; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); font:inherit; font-size:.9rem; }
+.vz-run{ height:40px; padding:0 18px; border:0; border-radius:10px; background:var(--s); color:var(--on-s); font:inherit; font-weight:600; cursor:pointer; }
+.vz-help{ margin:8px 0 4px; font-size:.85rem; color:var(--graphite); line-height:1.5; }
+.vz-errmsg{ margin:6px 0; color:var(--pen); font-size:.9rem; font-weight:600; }
+.vz-err{ color:var(--pen); }
+.watch{ margin:10px 0 4px; }
+.watchbtn{ display:inline-flex; align-items:center; gap:8px; min-height:40px; padding:0 14px; border:1px solid var(--c); border-radius:10px; background:color-mix(in srgb, var(--c) 8%, var(--paper)); color:var(--c); font:inherit; font-size:.92rem; font-weight:600; cursor:pointer; }
+.watchbtn svg{ fill:currentColor; } .watchbtn.on{ background:var(--paper); }
+.watch .vz{ margin-top:10px; }
+@media (max-width: 720px){
+  .vz-panels{ grid-template-columns:1fr; } .vz-code{ border-right:0; border-bottom:1px solid var(--rule); }
+  .vz-code pre{ max-height:9.5em; }
+  .vz-bar{ flex-wrap:wrap; } .vz-prog{ order:9; flex-basis:100%; margin:4px 0 0; }
+}
 .page-foot{ margin-top:28px; padding-top:18px; border-top:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
 .btn.readmark.on{ border-color:var(--ok); color:var(--ok); }
 .outline{ position:sticky; top:72px; max-height:calc(100vh - 92px); overflow:auto; display:flex; flex-direction:column; gap:10px; padding-top:46px; }
