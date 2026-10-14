@@ -1,0 +1,842 @@
+window.AR = window.AR || {};
+AR.sa = { lectures: {}, exams: [] };
+
+AR.sa.lectures["1"] = {
+  notes: [
+    { h: `خطة المادة (الـ chapters اللي في خطة الدكتور)`, pts: [
+      `Ch 1: Introduction to Information Systems. Ch 2: The Systems Development Environment. Ch 3: Managing the Information Systems Project. Ch 4: Structuring System Process Requirements (الـ DFDs).`,
+      `Ch 5: Analyzing Systems Using Data Dictionaries. Ch 6: Structuring System Logical Requirements. Ch 7: Database Design Using the E/R Model. Ch 8: Designing Forms and Reports. Ch 9: Designing Interfaces and Dialogues.`,
+      `اللي اتدرّس واتسأل فيه فعلًا: من Ch 1 لـ Ch 4 ومعاهم الموضوعين الحسابيين <b>COCOMO</b> و<b>CPM/PERT</b>. كل final ليه نفس الهيكل: <b>مسألة PERT/Gantt</b>، <b>مسألة COCOMO</b>، سؤال <b>"طلّع 10 errors على الأقل في الـ DFDs دي"</b>، تعريفات/توصيل، وأسئلة essay قصيرة (مراحل الـ SDLC، الـ project management process، الـ DFD balancing، الـ CASE).`
+    ] },
+    { h: `يعني إيه information system؟`, pts: [
+      `الـ <b>Information system</b> (ملخص طالب من الكتاب): <b>conceptual system</b> بيخلّي المديرين <b>يتحكموا ويراقبوا (control and monitor)</b> الـ <b>physical systems</b> بتاعة الشركة اللي بتحوّل الـ <b>input resources</b> لـ <b>output resources</b>.`,
+      `الـ <b>essential feature</b> للـ information system هي استخدام <b>ورق أو data records عشان تمثّل حركة أو حالة أو وجود objects</b> في system تاني (physical). الـ objects دي ممكن تبقى حاجات مادية أو abstractions.`,
+      `الـ information system هو <b>model (أو representation)</b> للـ physical system، بيستخدم <b>symbols</b> (زي أسامي الحاجات والأرقام) بدل الحاجات نفسها.`,
+      `تعريف الـ lab: مجموعة <b>interrelated components</b> بت<b>جمع، وتعالج وتخزن، وتطلّع كـ output</b> المعلومات اللي محتاجينها عشان نخلص business task. أمثلة: سيستم تسجيل المواد، سيستم الطلبات أونلاين، الـ online banking.`,
+      `الـ <b>System</b> = مجموعة عناصر مرتبطة ببعض (interrelated). الـ <b>Purposive system</b> = system بيسعى لمجموعة goals مرتبطة ببعض. الـ <b>Open system</b> = system بيتفاعل مع environment (الـ user يكتب command والكمبيوتر يرد بعرض داتا).`,
+      `يبقى الـ <b>information system هو open, purposive system</b> بيطلّع information باستخدام دورة الـ <b>input / process / output</b>.`
+    ] },
+    { h: `الـ physical system مقابل الـ information system (مثال المخزن)` },
+    { h: `الـ physical والـ information systems كـ subsystems من المنظمة`, pts: [
+      `مع إن الـ information system هو <b>model</b> للـ physical system، إلا إنه كمان <b>بيتفاعل</b> معاه.`,
+      `الاتنين ينفع نعتبرهم <b>subsystems من organization system أكبر</b>.`,
+      `الـ <b>Inputs</b> اللي داخلة للـ information system من الـ physical system غالبًا بتبقى <b>observations</b> (زي العدد الفعلي للكراتين اللي على الرف).`,
+      `الـ <b>Outputs</b> اللي خارجة من الـ information system للـ physical system بتبقى <b>actions needed</b> (زي الـ shipping note، معناها أمر إن بضاعة معينة تتحمّل على عربية وتروح لمكان معين).`
+    ] },
+    { h: `الـ components ودور الكمبيوتر`, pts: [
+      `<b>Components الـ information system</b>: <b>people, procedures and data</b>. الناس بتمشي على الـ procedures عشان تتعامل مع الداتا وتطلّع information.`,
+      `<b>Components الـ Computer-Based Information System (CBIS)</b>: <b>people, procedures, data, programs and computers</b>. الـ programs هي تعليمات للكمبيوتر زي ما الـ procedures تعليمات للناس.`,
+      `<b>دور الكمبيوتر في إنتاج الـ information</b> (جه في امتحان 2024/25): (1) يبقى جهاز <b>data storage and retrieval</b>؛ (2) يوفّر <b>processing capabilities</b> لإنتاج الـ information (حساب totals و averages ...)؛ (3) يبقى <b>communication device</b> يجيب داتا أو information من كمبيوترات تانية؛ (4) <b>يعرض الـ information</b> في شكل tables و reports و charts و graphs ومستندات متنسقة.`
+    ] },
+    { h: `الأنواع الأساسية للـ information systems` },
+    { h: `الـ TPS بالتفصيل`, pts: [
+      `أمثلة: سيستمات <b>حجز التذاكر (ticket reservation)</b>، <b>order entry</b>، <b>accounts payable</b>، <b>accounts receivable</b>، <b>payroll processing</b>. كلهم بيساعدوا الشركة تمشّي شغلها وتتابع أنشطتها.`,
+      `الـ <b>event</b> ممكن يبقى طلب تذكرة حفلة، أو طلب order، أو تقديم شيك عشان يتصرف. الـ event بيتسجل بإنه يتكتب كـ <b>transaction</b>؛ يعني <b>الـ transaction هي representation للـ event</b>. وبرنامج TPS أو أكتر بيعالج الـ transaction على الـ <b>TPS data</b>.`,
+      `أمثلة TPS data: في حجز التذاكر = أماكن الكراسي الفاضية؛ في الـ order entry = لستة المنتجات المتاحة وأسعارها والداتا المرتبطة بيها؛ في الـ check processing = أرصدة الحسابات ولستة العملاء وداتا تانية.`,
+      `الـ Model بتاع الـ TPS (الرسمة): input physical resources ← transform ← output physical resources؛ الداتا بتيجي من الـ environment للـ data-processing software والـ database؛ والـ information بتروح للإدارة وترجع للـ environment.`
+    ] },
+    { h: `الـ MIS والـ DSS بالتفصيل`, pts: [
+      `<b>الـ MIS model</b> (Fig 1.9): الداتا من الـ environment بتدخل database؛ والـ <b>report-writing software</b> والـ <b>mathematical models</b> بيطلّعوا information للـ <b>organizational problem solvers</b>، اللي بيستخدموها كمساعدة في اتخاذ القرار.`,
+      `الشركات ممكن تتعامل مع الـ suppliers أو غيرهم ويعملوا <b>inter-organizational information systems (IOS)</b>، وفيها الـ MIS بيدّي information لباقي أعضاء الـ IOS بالإضافة لـ users الشركة نفسها.`,
+      `الـ <b>DSS</b>: ليه تلات مصادر information: <b>relational database</b>، <b>knowledge base</b>، و<b>multidimensional database</b>. الـ Outputs (Fig 1.10): periodic و special reports، outputs من الـ mathematical models، outputs من الـ groupware، solutions and explanations (من الـ inference engine)، و outputs من الـ OLAP.`,
+      `نوعين زيادة من الـ software المرتبط بالـ DSS: <b>Group Decision Support Systems</b> (بتساعد <b>مجموعة مديرين</b> يوصلوا لقرار مع بعض) و<b>Artificial Intelligence</b> (برنامج معمول للكمبيوتر عشان <b>يحلل مشكلة منطقيًا لوحده</b>).`
+    ] },
+    { h: `المديرين كـ users للـ information system`, pts: [
+      `المديرين موجودين في مستويات إدارية مختلفة وفي business areas مختلفة. <b>المستوى اللي الـ IS معمول له بيأثر على طريقة شغله.</b>`,
+      `<b>3 مستويات إدارة أساسية</b>: (1) مستوى الـ <b>Strategic planning</b>، (2) مستوى الـ <b>Management control</b>، (3) مستوى الـ <b>Operational control</b>.`,
+      `<b>المديرين بيعملوا إيه</b> (الـ management functions): <b>Plan</b> يخططوا هيعملوا إيه، <b>Organize</b> ينظموا عشان يحققوا الخطة، <b>Staff</b> يملوا المنظمة بالـ resources، <b>Direct</b> يوجهوهم ينفذوا الخطة، <b>Control</b> يتحكموا في الـ resources ويخلوها ماشية في الطريق الصح.`,
+      `Fig 1.11: المستوى الإداري بيأثر على <b>مصدر</b> الـ information (الـ strategic = أغلبها <b>environmental</b>، الـ operational = أغلبها <b>internal</b>) وعلى <b>شكلها</b> (الـ strategic = <b>summary</b>، الـ operational = <b>detail</b>).`,
+      `Fig 1.12: فيه مديرين في كل المستويات وفي كل الـ business areas (finance، human resources، information services، manufacturing، marketing).`,
+      `Fig 1.13: المستوى بيأثر على الأهمية النسبية لكل function: مديرين الـ strategic بيصرفوا أغلب مجهودهم في الـ <b>planning</b> (والـ organizing)؛ ومديرين الـ operational في الـ <b>directing and controlling</b>.`
+    ] },
+    { h: `Lab 1: الـ analysis مقابل الـ design، الـ analyst، وطرق الـ development`, pts: [
+      `الـ <b>System analysis</b> هو فهم goals واستراتيجيات الـ business وتحديد الـ information requirements اللي بتدعمها. <b>مالوش علاقة بالـ programming</b>. الـ Analysis = دراسة <b>المشكلة والـ requirements</b> مش الحل.`,
+      `الـ <b>System design</b> = <b>حل conceptual</b> بيحقق الـ requirements، مش الـ implementation.`,
+      `الـ <b>System analyst</b>: شخص business professional بيستخدم تقنيات الـ analysis والـ design عشان يحل مشاكل الـ business باستخدام الـ IT. دوره: investigate و analyze و design و develop و install و evaluate و maintain الـ IS بتاع الشركة؛ عنده business knowledge؛ بيحل مشاكل الـ business؛ وبيترجم الـ business requirements لـ IT projects.`,
+      `طريقتين: <b>Traditional (structured)</b> (الـ SADT، الـ information engineering) و<b>Object-oriented</b> (OOA، OOD، OOP): الـ system عبارة عن مجموعة <b>objects</b> بتتفاعل مع بعض وبترد على messages؛ يعني مفيش processes ولا programs ولا data entities ولا files من الناحية الـ conceptual، objects وبس.`,
+      `أنواع الـ UML diagrams: <b>structural</b> (building blocks مابتتغيرش مع الوقت، زي الـ class diagram)، <b>behavioral</b> (السيستم بيرد إزاي مع الوقت، زي الـ use case diagram)، <b>interaction</b> (نوع من الـ behavioral بيوضح تبادل الـ messages، زي الـ sequence والـ collaboration diagrams). وفيه تقسيمة تانية: static و dynamic و functional.`
+    ] }
+  ],
+  cards: [
+    `conceptual system بيخلّي المديرين يتحكموا ويراقبوا الـ physical systems بتاعة الشركة اللي بتحوّل الـ input resources لـ output resources.`,
+    `استخدام ورق أو data records عشان تمثّل حركة أو حالة أو وجود objects في system تاني (physical).`,
+    `system بيسعى لمجموعة goals مرتبطة ببعض.`,
+    `system بيتفاعل مع environment (مثلًا الـ user يكتب command والكمبيوتر يعرض داتا).`,
+    `open, purposive system بيطلّع information باستخدام دورة الـ input/process/output.`,
+    `People، procedures، data.`,
+    `People، procedures، data، programs، computers.`,
+    `Observations (زي العدد الفعلي للكراتين اللي على الرف).`,
+    `Actions needed (زي الـ shipping note = حمّل البضاعة على العربية).`,
+    `البضاعة اللي خارجة من المخزن.`,
+    `البضاعة اللي داخلة المخزن.`,
+    `الـ TPS، الـ MIS، الـ DSS، الـ Expert Systems، الـ Office Automation Systems.`,
+    `الشغل اليومي (day-to-day operations): الحجوزات، الـ order entry، الـ payables، الـ receivables، الـ payroll.`,
+    `representation لـ event، بتتسجل بإنها تتكتب في الـ computer system.`,
+    `Report-writing software و mathematical models بتعمل simulation لعمليات الشركة.`,
+    `Relational database، knowledge base، multidimensional database.`,
+    `بيساعد مجموعة مديرين يوصلوا لقرار مع بعض.`,
+    `Strategic planning، management control، operational control.`,
+    `Plan، organize، staff، direct، control.`,
+    `Data storage and retrieval؛ processing؛ communication؛ عرض الـ information.`
+  ],
+  qa: [
+    `الـ information system هو conceptual system بيخلّي المديرين يتحكموا ويراقبوا الـ physical systems بتاعة الشركة اللي بتحوّل الـ input resources لـ output resources. الـ essential feature بتاعته إنه بيستخدم ورق أو data records عشان يمثّل حركة أو حالة أو وجود الـ objects في الـ physical system؛ يعني هو model بيستخدم symbols (أسامي وأرقام) بدل الحاجات نفسها. مثال: في المخزن، الـ inventory بيمثّل البضاعة اللي على الرفوف، والـ bill بيمثّل البضاعة الداخلة، والـ shipping note بيمثّل البضاعة الخارجة. الاتنين subsystems من المنظمة وبيتفاعلوا: الـ inputs من الـ physical system للـ IS بتبقى observations (الكراتين الفعلية على الرف)، والـ outputs من الـ IS للـ physical system بتبقى actions needed (الـ shipping note بتقول حمّل البضاعة على العربية).`,
+    `1) يبقى جهاز data storage and retrieval. 2) يوفّر processing capabilities لإنتاج الـ information (حساب totals و averages ...). 3) يبقى communication device يجيب داتا أو information من كمبيوترات تانية. 4) يعرض الـ information في شكل tables و reports و charts و graphs ومستندات متنسقة.`,
+    `الأنواع: TPS، MIS، DSS، Expert Systems، Office Automation Systems. الـ TPS بيجمع الداتا من الـ physical system بتاع الشركة ومن الـ environment ويدخّلها في الـ database بتاعته، وبعدين يحوّل الداتا لـ information للمديرين وغيرهم. بيدعم الشغل اليومي (حجز التذاكر، الـ order entry، الـ accounts payable/receivable، الـ payroll). الـ event (طلب تذكرة، order، شيك متقدّم) بيتكتب كـ transaction، والـ transaction بتمثّل الـ event، وبرامج الـ TPS بتعالجها على الـ TPS data (الكراسي الفاضية؛ المنتجات والأسعار؛ أرصدة الحسابات ولستة العملاء).`,
+    `الـ MIS بيحوّل الداتا اللي في الـ frontline systems (الـ TPS) لـ information مفيدة للمديرين باستخدام report-writing software و mathematical models؛ والـ information دي بتساعد الـ organizational problem solvers، وممكن تتشارك في الـ inter-organizational systems. أما الـ DSS فبيساعد المديرين ياخدوا قرار في حل مشكلة معينة (specific problem)، وبيعتمد على relational database و knowledge base و multidimensional database، ومعاه software مرتبط زي الـ group DSS والـ artificial intelligence.`,
+    `الـ IS: people و procedures و data؛ الناس بتمشي على الـ procedures عشان تتعامل مع الداتا وتطلّع information. الـ CBIS بيزوّد programs و computers: يعني people و procedures و data و programs و computers؛ والـ programs تعليمات للكمبيوتر زي ما الـ procedures تعليمات للناس.`,
+    `فيه تلات مستويات: strategic planning و management control و operational control. المستوى بيأثر على مصدر الـ information (الـ strategic بيستخدم أغلبه environmental، والـ operational أغلبه internal) وعلى شكلها (الـ strategic محتاج summaries، والـ operational محتاج detail). وكمان بيغيّر التركيز على الـ functions (plan، organize، staff، direct، control): مديرين الـ strategic أغلب شغلهم planning، ومديرين الـ operational أغلبه directing و controlling.`
+  ],
+  quiz: [
+    [`ده الدور رقم 4 في اللستة.`, `ده الدور رقم 1 في اللستة.`, `صح. الـ people لسه component في الـ CBIS؛ والأدوار الأربعة هي storage/retrieval و processing و communication وعرض الـ information.`, `ده الدور رقم 3 في اللستة.`],
+    [`صح. الـ IS هو open, purposive system بيستخدم دورة الـ input/process/output.`, `الـ IS هو model للـ physical system، مش الـ physical system نفسه.`, `هو conceptual فعلًا، بس open مش closed.`, `الـ closed system مابيتفاعلش مع environment.`],
+    [`الـ purchase order نفسه مستند رايح للـ supplier.`, `ده بيمثّله الـ bill.`, `ده الـ inventory.`, `صح. الـ shipping note بتمثّل البضاعة الخارجة، ومعناها action (حمّل العربية).`],
+    [`الـ actions needed دي الـ outputs من الـ IS للـ physical system، مش الـ inputs.`, `صح. زي العدد الفعلي للكراتين اللي على الرف.`, `الـ programs ده component في الـ CBIS، مش inputs جاية من الـ physical system.`, `الـ decisions المديرين بياخدوها باستخدام الـ information، مش inputs بتتلاحظ.`],
+    [`صح.`, `ده الـ processing cycle، مش الـ components.`, `ده الـ information system العادي (من غير كمبيوتر).`, `دي لستة IT عامة، مش لستة الـ CBIS اللي في المحاضرة.`],
+    [`الـ GDSS بيساعد مجموعة مديرين ياخدوا قرار.`, `الـ DSS بيساعد في حل مشكلة معينة؛ إنما الأمثلة دي بتدعم الشغل الروتيني.`, `صح. كلهم بيدعموا الـ day-to-day operations.`, `الـ Expert systems بتقلّد الخبير باستخدام knowledge base.`],
+    [`دي أدوات office automation.`, `صح. بيعملوا simulation لعمليات الشركة ويطلّعوا reports للـ problem solvers.`, `دي أجزاء الـ expert system اللي في الـ DSS.`, `دي عناصر TPS.`],
+    [`دي records المخزن.`, `دي components الـ IS.`, `دي أنواع systems.`, `صح (Fig 1.10).`],
+    [`الـ OAS بيدعم شغل المكاتب.`, `الـ IOS بيربط الشركة بالـ suppliers أو غيرهم.`, `الـ GDSS بيدعم مجموعة مديرين.`, `صح. ده واحد من النوعين الزيادة من الـ software المرتبط بالـ DSS.`],
+    [`ده وصف مستوى الـ operational control.`, `صح (Fig 1.11).`, `الـ information الـ strategic أغلبها environmental.`, `مديرين الـ strategic محتاجين شكل summary.`],
+    [`صح. الـ functions الخمسة هي plan و organize و staff و direct و control.`, `الـ Control function فعلًا.`, `الـ Plan function فعلًا.`, `الـ Staff function فعلًا.`],
+    [`الـ lab بيأكد إن الـ analysis مالوش علاقة بالـ programming.`, `ده الـ system design.`, `صح.`, `ده الـ implementation.`]
+  ],
+  extra: [
+    [`المثال بيوصف أي IS، مش الـ DSS بالذات.`, `صح. الـ essential feature للـ IS هي استخدام records تمثّل حركة أو حالة أو وجود الـ objects.`, `الـ IS هو open system بيتفاعل مع الـ environment بتاعه.`, `الـ IS بيعمل model للـ physical system وبيتفاعل معاه؛ والاتنين subsystems من المنظمة.`],
+    [`صح. الـ inputs من الـ physical system بتبقى observations؛ والـ outputs ليه بتبقى actions needed.`, `الـ reorder note بتقول للـ physical system يعمل حاجة، يبقى ده action.`, `كلمة "Deliverable" دي مصطلح project management.`, `الترتيب معكوس.`],
+    [`الـ CBIS فيه 2 components زيادة.`, `الـ people لسه component في الـ CBIS.`, `صح.`, `بالعكس: الـ CBIS هو اللي بيزوّد الـ programs والـ computers.`],
+    [`الحجوزات الروتينية دي day-to-day operations، يبقى ده TPS مش DSS.`, `صح. ده مثال حجز التذاكر اللي في المحاضرة.`, `الـ MIS بيلخّص داتا الـ TPS للمديرين.`, `الـ Office automation مالوش علاقة بالحجوزات.`],
+    [`الـ payroll system ده TPS.`, `الـ OAS بيدعم التواصل في المكاتب.`, `الـ TPS بيتعامل مع الـ transactions الروتينية.`, `صح. الـ DSS بيساعد المديرين ياخدوا قرار في مشكلة معينة، باستخدام relational DB و knowledge base و multidimensional DB.`],
+    [`ده module في الـ MIS.`, `ده بيسجّل الـ orders.`, `الـ AI بيحلل المشكلة لوحده، مش كمجموعة.`, `صح. الـ GDSS بيساعد مجموعة مديرين يوصلوا لقرار مع بعض.`],
+    [`ده يناسب المستوى الـ strategic.`, `صح (Fig 1.11).`, `الـ information في المستوى الـ operational أغلبها internal.`, `ضيقة أوي وكمان strategic.`],
+    [`صح.`, `الـ Staffing نصيبه صغير في كل المستويات.`, `الـ Control نصيبه صغير بس في المستوى الـ strategic؛ أكبر حتة هناك هي الـ planning.`, `الـ Directing أغلبه في المستوى الـ operational.`],
+    [`ولا جملة فيهم تنفع.`, `الترتيب معكوس.`, `صح (lab 1).`, `ولا جملة فيهم بتتكلم عن planning أو implementation.`],
+    [`الـ DFD مش UML diagram.`, `الـ Structural diagrams (زي الـ class diagrams) مابتتغيرش مع الوقت.`, `صح. بيوضح السيستم بيرد إزاي على الـ requests.`, `الـ Interaction diagrams هي الـ sequence والـ collaboration diagrams.`]
+  ]
+};
+
+AR.sa.lectures["2"] = {
+  notes: [
+    { h: `تعريفات أساسية`, pts: [
+      `الـ <b>Information systems analysis and design</b>: <b>complex organizational process</b>، بيُستخدم عشان <b>نطوّر ونعمل maintain للـ computer-based information systems</b>، وبيشتغل بيه <b>team من الـ business والـ systems professionals</b>.`,
+      `الـ <b>Application software</b>: software معمول عشان <b>يدعم functions أو processes في المنظمة</b>.`,
+      `الـ <b>Systems analyst</b>: <b>الدور (role) في المنظمة اللي مسؤول أكتر حاجة عن الـ analysis والـ design</b> للـ information systems.`,
+      `الـ <b>System development methodology</b>: <b>standard process</b> المنظمة بتمشي عليه عشان تعمل كل الخطوات اللازمة لـ <b>analyze و design و implement و maintain</b> الـ information systems.`,
+      `الـ <b>SDLC</b>: الـ <b>traditional methodology</b> اللي بنستخدمها عشان نطوّر ونعمل maintain ونستبدل الـ information systems.`
+    ] },
+    { h: `الـ modern approach للـ systems analysis and design (جه في 3 finals)`, pts: [
+      `إنك تمشي على <b>systems methodology</b>، وتطبّق <b>techniques</b>، وتستخدم <b>tools</b> مناسبة:`,
+      `(1) عشان <b>تضمن الجودة وإن السيستم مناسب (quality and appropriateness)</b>؛`,
+      `(2) عشان <b>تدّي structure</b> لعملية الـ systems development، لأنها <b>اتجرّبت واتظبطت قبل كده من ناس تانية (tested and perfected by others)</b>.`
+    ] },
+    { h: `الـ analysis والـ design اتغيروا إزاي (من الخمسينات لدلوقتي)` },
+    { h: `الـ One-tier والـ two-tier والـ three-tier architecture`, pts: [
+      `الـ <b>One-tier</b>: الـ presentation والـ processing والـ database على جهاز واحد.`,
+      `الـ <b>Two-tier</b>: جهاز الـ user (presentation + processing) بيكلّم <b>database server</b>.`,
+      `الـ <b>Three-tier</b>: الـ user (presentation) ← <b>application server</b> (processing) ← <b>database server</b>. نسخة الويب: browser ← Internet ← web/app server ← DB server.`
+    ] },
+    { h: `مراحل الـ SDLC (بتيجي في كل final)` },
+    { h: `الـ traditional waterfall SDLC ومشاكله`, pts: [
+      `الـ Waterfall: كل phase بتبدأ لما اللي قبلها تخلص، و<b>رجوع ولف قليل جدًا (little backtracking and looping)</b>. الممارسة الحالية بدل كده بتدمج الـ analysis والـ design والـ implementation في process واحدة <b>iterative و parallel</b>.`,
+      `<b>المشاكل</b>: (1) الـ system requirements بتبقى <b>"locked in"</b> بعد ما تتحدد (ماينفعش تتغير)؛ (2) <b>مشاركة الـ user محدودة</b> (في مرحلة الـ requirements بس)؛ (3) <b>تركيز زيادة على الـ milestone deadlines</b>؛ (4) <b>process و documentation كتير</b>: منظمات كتير عندها staff كبير شغلته الوحيدة إنه يعمل ويحافظ على documentation الـ SDLC.`,
+      `Fig 1-3 (الـ SDLC الدايري) أقرب للواقع من Fig 1-10 (الـ waterfall) لأنك تقدر ترجع لأي phase.`
+    ] },
+    { h: `طرق تحسين الـ development: الـ Prototyping والـ JAD والـ RAD`, pts: [
+      `ست طرق: <b>Prototyping، CASE tools، JAD، RAD، Agile methodologies، eXtreme Programming</b>.`,
+      `الـ <b>Prototyping</b>: process <b>iterative</b> بيتحوّل فيها الـ requirements <b>بسرعة لـ working system</b> وبيت<b>عدّل باستمرار</b> عن طريق <b>شغل قريب بين الـ analyst والـ users</b>. مفيد في تحديد الـ requirements وممكن يبقى أساس السيستم النهائي (مثال: الـ analyst بيعمل sample interfaces بالـ Visual Basic "on the fly" قدام الـ sales representative).`,
+      `الـ <b>JAD (Joint Application Design)</b>: <b>structured process</b> فيها الـ <b>users والمديرين والـ analysts</b> بيشتغلوا مع بعض <b>كذا يوم</b> في سلسلة <b>اجتماعات مكثفة (intensive meetings)</b> عشان <b>يحددوا أو يراجعوا الـ system requirements</b>. (الـ Lab: الـ JAD ممكن يبدّل سلسلة interviews؛ بيُستخدم لما ثقافة المكان بتدعم حل المشاكل بشكل جماعي والـ analysts متوقعين أفكار أكتر من الـ JAD.)`,
+      `الـ <b>RAD (Rapid Application Development)</b>: methodology عشان <b>تقلل جدًا الوقت</b> اللي محتاجينه لـ design و implement الـ IS. فيها <b>مشاركة كبيرة من الـ users، prototyping، JAD sessions، integrated CASE tools و code generators</b>. الـ RAD life cycle (Fig 1-13): requirements planning ← <b>user design ⇄ construction</b> (iterative) ← cutover.`
+    ] },
+    { h: `الـ CASE tools`, pts: [
+      `الـ <b>CASE tools</b>: software بيدّي <b>automated support لجزء من الـ SDLC</b>. مبني حوالين <b>repository</b> فيه كل الـ <b>metadata</b> (أسامي الداتا، الـ format، الاستخدامات، المكان) والـ system specifications؛ بيعمل automate للمهام الروتينية ويسمح بـ <b>code and DDL generation</b>، فيقدر يدعم الـ SDLC كله.`,
+      `<b>الأنواع العامة</b>: (1) <b>Diagramming tools</b>: بترسم الـ processes والداتا والـ control structures بشكل graphical؛ (2) <b>Computer display and report generators</b>: بتعمل prototype لشكل السيستم وإحساسه ("look and feel")؛ (3) <b>Analysis tools</b>: بتشيك أوتوماتيك على الـ specifications الناقصة أو المتعارضة أو الغلط في الـ diagrams والـ forms والـ reports؛ (4) <b>Central repository</b>: تخزين متكامل للـ specifications والـ diagrams والـ reports ومعلومات الـ project management؛ (5) <b>Documentation generators</b>: documentation تقنية وللـ user في formats قياسية؛ (6) <b>Code generators</b>: بتطلّع كود البرنامج وتعريفات الـ database مباشرة من مستندات الـ design والـ diagrams والـ forms والـ reports.`,
+      `الـ <b>repository هو أهم component</b>: بيربط الـ tools والأنشطة ببعض، كل أعضاء الـ team بيستخدموه، وبيدّي <b>single view للمشروع</b>. مميزات تانية: security، version control، import/export، backup and recovery، user accounts، usage accounting.`
+    ] },
+    { h: `دعم الـ CASE لكل مرحلة في الـ SDLC` },
+    { h: `الـ Agile والـ XP والـ OOAD والـ RUP`, pts: [
+      `<b>الـ Agile: تلات مبادئ أساسية</b>: (1) <b>adaptive مش predictive</b>؛ (2) <b>التركيز على الناس مش الأدوار (people rather than roles)</b> (تركيز أقل على الـ process وأكتر على الأفراد)؛ (3) <b>self-adaptive processes</b> (الـ process بتتحسن عن طريق مراجعات الـ team وهما بيطوّروا الـ software).`,
+      `الـ <b>eXtreme Programming</b>: <b>دورات development قصيرة و incremental</b>، planning incremental، <b>automated tests</b> بيكتبها الـ programmers والـ customers، <b>teams من اتنين programmers</b>، والـ coding والـ testing في نفس الـ process؛ الكود بيتعمله test بعد ما يتكتب بشوية ويتعمله integrate في ساعات. كل الـ phases بتتجمع في coding و testing و listening و designing. المميزات: communication، productivity عالية، كود جودته عالية.`,
+      `الـ <b>OOAD</b>: methodologies مبنية على <b>objects</b> بتجمع <b>الداتا (attributes) والأنشطة (methods)</b> مع بعض، بدل ما الداتا تبقى منفصلة عن الـ processes. الـ <b>Object</b> = structure بيغلّف attributes و behaviors لكيان حقيقي؛ الـ <b>object class</b> = تجميع منطقي لـ objects ليها نفس الـ attributes والـ behaviors؛ الـ <b>inheritance</b> = الـ subclasses بتورث خصائص الـ superclasses.`,
+      `الـ <b>RUP (Rational Unified Process)</b>: methodology object-oriented ليها <b>أربع phases</b>: <b>inception، elaboration، construction، transition</b>؛ وكل phase متقسمة لـ <b>iterations</b> منفصلة.`
+    ] },
+    { h: `Labs 2 لـ 4: مرحلة الـ planning، الـ methodologies، وجمع الـ requirements`, pts: [
+      `تقسيم وقت الـ SDLC (الـ lab): Planning <b>15%</b> (الـ project manager)، Analysis <b>20%</b> (الـ system analyst)، Design <b>35%</b> (الـ system designer)، Implementation <b>30%</b> (الـ developer). استخدم وقت الـ planning عشان تقدّر وقت المشروع كله.`,
+      `مخرجات مرحلة الـ planning: <b>system request</b>، <b>feasibility study</b>، الـ project plan (الـ methodology، تقدير الوقت، تحديد الـ tasks، PERT chart، Gantt chart، scope management). تقنيات الـ Analysis: interview، JAD، questionnaire، use case، DFD، data dictionary، ERD، normalization.`,
+      `الـ <b>System request</b>: مستند بيوضح أسباب بناء السيستم والقيمة المتوقعة منه. خمس عناصر: <b>project sponsor، business need، business requirements، business value، special issues</b>.`,
+      `الـ <b>Feasibility study</b>: بيقرر نكمّل ولا لأ وبيحدد الـ risks. تلات أجزاء: feasibility <b>technical و economic و organizational</b>.`,
+      `الـ Methodologies (الـ lab): waterfall، parallel (المشروع بيتقسم لـ subprojects بيتعملها design و implement بالتوازي)، RAD / iterative (نسخ السيستم 1، 2، 3)، agile (تواصل وش لوش في كل phase).`,
+      `جمع الـ requirements: <b>interviews</b> (الآراء والمشاعر، الوضع الحالي، أهداف السيستم)، <b>JAD</b>، <b>questionnaires</b> (المعتقدات، السلوكيات، الخصائص؛ مفيدة لما الأعضاء متفرقين في أماكن بعيدة أو العدد كبير)، <b>use case diagrams</b> (actors، use cases، system boundary، association، generalization، &lt;&lt;include&gt;&gt;، &lt;&lt;extend&gt;&gt;).`
+    ] }
+  ],
+  cards: [
+    `complex organizational process؛ بيُستخدم لتطوير وعمل maintain للـ computer-based IS؛ بيشتغل بيه team من الـ business والـ systems professionals.`,
+    `software معمول عشان يدعم functions أو processes في المنظمة.`,
+    `الدور في المنظمة اللي مسؤول أكتر حاجة عن الـ analysis والـ design للـ information systems.`,
+    `إنك تمشي على methodology وتطبّق techniques وتستخدم tools: بيضمن الجودة وإن السيستم مناسب، وبيدّي structure (لأنها اتجرّبت واتظبطت من ناس تانية).`,
+    `standard process المنظمة بتمشي عليه عشان تعمل analyze و design و implement و maintain للـ information systems.`,
+    `الـ methodology التقليدية لتطوير الـ IS وعمل maintain ليها واستبدالها: planning، analysis، design، implementation، maintenance.`,
+    `الـ functional features بتتوصف من غير ما تعتمد على أي computer platform.`,
+    `الـ logical specifications بتتحوّل لتفاصيل technology-specific.`,
+    `الـ requirements بتبقى locked in؛ مشاركة الـ user محدودة؛ تركيز على الـ milestone deadlines؛ process و documentation كتير.`,
+    `process iterative بتحوّل الـ requirements بسرعة لـ working system، وبيتعدّل باستمرار مع الـ users.`,
+    `الـ users والمديرين والـ analysts في كذا يوم اجتماعات مكثفة عشان يحددوا أو يراجعوا الـ requirements.`,
+    `methodology بتقلل جدًا وقت الـ design والـ implementation: مشاركة الـ users، prototyping، JAD، CASE، code generators.`,
+    `software بيدّي automated support لجزء من الـ SDLC، مبني حوالين repository فيه الـ metadata.`,
+    `الـ central repository (بيربط كل حاجة ببعض وبيدّي single view للمشروع).`,
+    `Adaptive مش predictive؛ الناس مش الأدوار؛ self-adaptive processes.`,
+    `دورات incremental قصيرة، automated tests، teams من اتنين، والـ coding والـ testing مع بعض.`,
+    `Inception، elaboration، construction، transition.`,
+    `متركز على الـ processes، machine/assembly language، وكل حاجة بتتبني من الصفر.`,
+    `Project sponsor، business need، business requirements، business value، special issues.`,
+    `Technical، economic، organizational.`
+  ],
+  qa: [
+    `يعني إنك تمشي على systems methodology، وتطبّق techniques، وتستخدم tools مناسبة. ده (1) بيضمن الجودة وإن السيستم اللي بيتبني مناسب (quality and appropriateness)، و(2) بيدّي structure لعملية الـ systems development، لأن الـ methodologies والـ techniques والـ tools دي اتجرّبت واتظبطت قبل كده من ناس تانية. مصطلحات مرتبطة: الـ system development methodology هي standard process المنظمة بتمشي عليه عشان تعمل analyze و design و implement و maintain للـ IS؛ والـ analyst (الدور المسؤول أكتر حاجة عن الـ analysis والـ design) هو اللي بيطبّقها.`,
+    `الـ SDLC هو الـ methodology التقليدية لتطوير الـ IS وعمل maintain ليها واستبدالها. <b>Planning</b>: احتياجات المنظمة كلها من الـ IS بتتحدد وتتحلل وتترتب حسب الأولوية. <b>Analysis</b>: الـ requirements بتتجمع من الـ users وتتدرس وتتنظم ويتشال التكرار منها؛ والـ output هو الحل المقترح (recommended solution). <b>Design</b>: الحل المقترح بيتحوّل لـ logical specifications (مستقلة عن الـ platform) وبعدين physical specifications (تفاصيل technology-specific). <b>Implementation</b>: الـ IS بيتعمله code و test و install و support. <b>Maintenance</b>: السيستم بيتصلح ويتحسن بشكل منظم (systematically).`,
+    `1) الـ requirements بتبقى locked in أول ما تتحدد وصعب تتغير. 2) الـ users بيشاركوا في مرحلة الـ requirements بس. 3) تركيز زيادة على الـ milestone deadlines. 4) بيعمل process و documentation كتير؛ منظمات كتير عندها staff شغلتهم الوحيدة يعملوا ويحافظوا على مستندات الـ SDLC. والرجوع لورا قليل لأن كل phase مابتبدأش غير لما اللي قبلها تخلص.`,
+    `الـ CASE tools هي software بيدّي automated support لجزء من الـ SDLC. مبنية حوالين repository فيه الـ metadata (أسامي الداتا، الـ format، الاستخدامات، المكان) والـ system specifications، بتعمل automate للمهام الروتينية وتقدر تطلّع code و DDL. الأنواع: diagramming tools (رسم الـ processes والداتا والـ control بشكل graphical)؛ computer display and report generators (prototype للـ look and feel)؛ analysis tools (تشيك على الـ specifications الناقصة أو المتعارضة أو الغلط)؛ central repository (تخزين متكامل للـ diagrams والـ reports ومعلومات الـ project management)؛ documentation generators (مستندات تقنية وللـ user في formats قياسية)؛ code generators (كود البرنامج والـ database من الـ designs). والـ repository هو أهم component.`,
+    `الـ RAD هي methodology اتعملت عشان تقلل جدًا وقت الـ design والـ implementation للـ IS، باستخدام مشاركة كبيرة من الـ users عن طريق JAD sessions و prototypes، و integrated CASE tools و code generators. في Fig 1-3 كل phase بتبقى iterative؛ إنما في الـ RAD بس الـ user design والـ construction هما اللي بيلفّوا (iterate)، بعد مرحلة requirements planning قصيرة، والـ cutover بيقابل الـ implementation. ده بيوصّل فكرة السرعة، اللي بتحصل بفضل الـ prototyping والـ automation بتاع الـ CASE.`,
+    `الـ Agile methods بتبقى adaptive مش predictive، بتركز على الناس مش الأدوار (تركيز أقل على الـ process وأكتر على الأفراد)، وبتستخدم self-adaptive processes بتتحسن عن طريق مراجعات الـ team. الـ XP هي agile method فيها دورات incremental قصيرة، planning incremental، automated tests بيكتبها الـ programmers والـ customers، teams من اتنين programmers، والـ coding والـ testing في نفس الـ process؛ والكود بيتعمله integrate في ساعات. المميزات: communication و productivity عالية وكود جودته عالية.`,
+    `الـ OOAD بيجمع الداتا (attributes) والـ processes (methods) في كيانات واحدة اسمها objects، إنما الـ traditional approach بيبقى data-oriented أو process-oriented وبيفصلهم عن بعض. الـ OOAD بيستخدم object classes و inheritance (الـ subclasses بتورث خصائص الـ superclass)، وده مش موجود في الـ traditional approach. وفي الـ OOSAD (زي الـ RUP: inception، elaboration، construction، transition) الـ iterations بتحصل جوه كل phase.`
+  ],
+  quiz: [
+    [`الـ RAD هي methodology معينة هدفها السرعة.`, `الـ Waterfall هي methodology واحدة، مش تعريف الـ modern approach.`, `صح. جه كـ Q2a في 2023/24 و 2024/25 و 2025/26.`, `الـ JAD تقنية اجتماعات.`],
+    [`صح.`, `الـ Implementation فيها code و test و install.`, `الـ Prototyping بيبني working model بسرعة.`, `الـ Physical design بيحوّل الـ logical specs لتفاصيل technology-specific.`],
+    [`الـ Maintenance بتصلّح وتحسّن.`, `الـ Logical design مستقل عن الـ platform.`, `الـ Analysis بيدرس الـ requirements وينظمها.`, `صح.`],
+    [`الـ PM بيعمل initiate و plan و execute و close down للمشروع.`, `صح. ده أول row في سؤال التوصيل بتاع 2023/24.`, `الـ Programmers بيعملوا implement.`, `الـ sponsor هو اللي بيبدأ المشروع أو يموّله.`],
+    [`صح.`, `الـ Analysis بيدرس وينظم الـ requirements بتاعة مشروع اتختار خلاص.`, `الـ Design بيحوّل الحل المقترح لـ specifications.`, `الـ Maintenance بتصلّح وتحسّن.`],
+    [`دي مشكلة مذكورة في اللستة.`, `دي مشكلة مذكورة في اللستة.`, `صح. الـ Waterfall فيه رجوع ولف قليل، فالـ iteration الكتير مش مشكلته.`, `دي مشكلة مذكورة في اللستة.`],
+    [`مفيدة، بس مش الأهم.`, `صح. بيربط الـ tools والأنشطة ببعض وبيدّي single view للمشروع.`, `مفيدة، بس مش الأهم.`, `مفيدة، بس مش الأهم.`],
+    [`دي بتعمل prototype للـ look and feel.`, `دي بتطلّع كود البرنامج والـ DB.`, `دي بتطلّع manuals.`, `صح.`],
+    [`الـ XP هي programming methodology.`, `الـ RUP هي OO methodology ليها 4 phases.`, `الـ Prototyping هو بناء working system بشكل iterative.`, `صح.`],
+    [`في السبعينات الـ development بقى أشبه بالـ engineering.`, `صح.`, `التسعينات ركزت على الـ integration والـ Web.`, `الخمسينات كانت بتستخدم machine/assembly language.`],
+    [`صح. ده عيب الـ waterfall، عكس الـ agile تمامًا.`, `ده المبدأ رقم 3.`, `ده المبدأ رقم 1.`, `ده المبدأ رقم 2.`],
+    [`دي phases الـ project management.`, `دي phases الـ SDLC.`, `صح.`, `دي phases الـ RAD.`],
+    [`مش جزء من الـ architecture.`, `ده الـ tier التالت.`, `صح. presentation ثم processing ثم database.`, `ده الـ presentation.`]
+  ],
+  extra: [
+    [`صح. requirements مقفولة، مشاركة users محدودة، و documentation تقيلة.`, `الـ RAD فيه مشاركة كبيرة من الـ users.`, `الـ Prototyping بيشرك الـ users طول الوقت.`, `الـ Agile بيبقى adaptive ومركز على الناس.`],
+    [`دي function من functions الـ CASE، مش الـ process دي.`, `الـ Waterfall مابيلفّش مع الـ users.`, `الـ JAD هو كذا يوم اجتماعات جماعية structured.`, `صح. ده مثال الـ Visual Basic اللي في المحاضرة.`],
+    [`الـ Logical design مستقل عن الـ platform.`, `صح. بيحوّل الـ logical specs لتفاصيل technology-specific.`, `الـ Planning بيحدد احتياجات الـ IS ويرتبها بالأولوية.`, `الـ Analysis بيدرس الـ requirements.`],
+    [`صح. بتشيك أوتوماتيك على الـ specifications الناقصة أو المتعارضة أو الغلط.`, `دي بتطلّع كود.`, `دي بتعمل prototype للـ look and feel.`, `دي بتطلّع manuals.`],
+    [`بتُستخدم أساسًا في الـ design.`, `كل الـ tools بتُستخدم، بس فيه واحدة عليها التركيز.`, `صح. هو المرجع لأي تغيير في الـ design والكود.`, `بتُستخدم في الـ project identification and selection.`],
+    [`الـ CASE tools ظهرت في الثمانينات.`, `صح.`, `التركيز على الـ Web جه في التسعينات.`, `ده كان في الخمسينات.`],
+    [`الـ JAD تقنية اجتماعات.`, `الـ Waterfall بيعمل test قرب الآخر.`, `الـ RUP ليه أربع phases فيها iterations.`, `صح.`],
+    [`ده وصف Fig 1-3.`, `دي phases الـ RUP.`, `دول بيحصلوا مرة واحدة.`, `صح.`],
+    [`موجود.`, `صح. الخمسة هما project sponsor و business need و business requirements و business value و special issues.`, `موجود.`, `موجود.`],
+    [`صح. 3 / 0.15 = 20 أسبوع.`, `ده ضرب 3 في 15.`, `الـ 3 / 0.30 = 10 كأن الـ planning هو 30%.`, `الـ 3 / 0.20 = 15 كأن الـ planning هو 20%.`]
+  ]
+};
+
+AR.sa.lectures["3"] = {
+  notes: [
+    { h: `مصطلحات أساسية`, pts: [
+      `الـ <b>Project</b>: مجموعة أنشطة مرتبطة ببعض ومتخطط لها عشان توصل لهدف، وليها <b>بداية ونهاية</b>.`,
+      `الـ <b>Deliverable</b>: الناتج النهائي (end product) لـ phase من phases الـ SDLC.`,
+      `الـ <b>Project manager</b>: systems analyst عنده مهارات متنوعة (<b>management، leadership، technical، conflict management، customer relationship</b>) ومسؤول عن <b>initiating و planning و executing و closing down</b> للمشروع. بيئة شغل الـ PM كلها تغيير مستمر وحل مشاكل.`,
+      `الـ <b>System Service Request (SSR)</b>: <b>form قياسي (standard form) لطلب أو اقتراح شغل systems development</b> جوه المنظمة. فيه <b>الـ contact person، الـ problem statement، الـ service request statement، وبيانات الـ liaison</b>.`,
+      `الـ <b>Project management</b>: <b>controlled process للـ initiating والـ planning والـ executing والـ closing down</b> للمشروع. الـ Process: (1) initiating، (2) planning، (3) executing، (4) closing down.`,
+      `الـ Case: <b>Pine Valley Furniture (PVF)</b>، سيستم الـ purchasing fulfillment؛ الـ project managers هما <b>Juanita Lopez</b> (ممثلة الـ users) و<b>Chris Martin</b> (من جروب تطوير الـ IS، الـ liaison).`
+    ] },
+    { h: `الأنشطة والمهارات الشائعة للـ project manager (Table 3-1)` },
+    { h: `Phase 1: بداية المشروع (Initiating) (5 أنشطة)`, pts: [
+      `الـ <b>Project initiation</b>: أول phase، وفيها الأنشطة بتقيّم <b>حجم ونطاق وتعقيد (size, scope and complexity)</b> المشروع وبتحط procedures تدعم الأنشطة اللي بعد كده.`,
+      `(1) <b>Establish the initiation team</b>: نواة أولية من أعضاء الـ team (في PVF: Juanita و Chris). (2) <b>Establish a relationship with the customer</b>: بيبني شراكة وثقة؛ وبيتعيّن liaison بين الـ business unit والـ IS. (3) <b>Establish the project initiation plan</b>: أنشطة تنظيم الـ team وهما بيحددوا الـ goals والـ scope (هنتواصل إزاي، الـ deliverables، الخطوات، الـ deadlines، أجندة الاجتماعات). (4) <b>Establish management procedures</b>: procedures التواصل والـ reporting جوه الـ team. (5) <b>Establish the project management environment and project workbook</b>: تجميع وتنظيم الـ tools.`,
+      `الـ <b>Project workbook</b>: <b>repository</b> أونلاين أو ورقي <b>لكل مراسلات المشروع والـ inputs والـ outputs والـ deliverables والـ procedures والـ standards</b>. الـ workbook بتاع PVF كان فيه 9 مستندات: overview، initiation plan و SSR، scope and risks، management procedures، data descriptions، process descriptions، team correspondence، statement of work، project schedule.`,
+      `الـ <b>Project charter</b> (متأكد عليه في slide 25): <b>مستند قصير و high-level</b> معمول لـ <b>الـ stakeholders الداخليين والخارجيين الاتنين</b>؛ <b>بيعلن رسميًا إن المشروع اتعمل</b> وبيوصف باختصار <b>الـ objectives والـ key assumptions والـ stakeholders</b>.`,
+      `خطوات الـ initiation في PVF (Fig 3-3): Juanita لاحظت مشاكل ← كلّمت Chris عشان يبدأوا SSR ← الـ SSR اتراجع واتوافق عليه من الـ Systems Priority Board ← اتعيّنت steering committee ← اتعملت project plan تفصيلية واتنفذت.`
+    ] },
+    { h: `Phase 2: تخطيط المشروع (Planning) (10 أنشطة، Fig 3-8)`, pts: [
+      `الـ <b>Project planning</b>: تاني phase، بتركز على تحديد <b>أنشطة واضحة ومنفصلة (clear, discrete activities)</b> والشغل المطلوب عشان كل نشاط يخلص جوه مشروع واحد.`,
+      `(1) <b>Describe project scope, alternatives and feasibility</b>: افهم المحتوى والتعقيد؛ واتفقوا على: إيه المشاكل/الفرص، إيه النتايج اللي تتقاس، إيه اللي لازم يتعمل، النجاح هيتقاس إزاي، وهنعرف إننا خلصنا إزاي؛ وبعدين حدد البدائل وقيّم الـ feasibility بتاعتها.`,
+      `(2) <b>Divide the project into manageable tasks</b> (الـ WBS). (3) <b>Estimate resources and create a resource plan</b> (الـ COCOMO). (4) <b>Develop a preliminary schedule</b> (Gantt، network). (5) <b>Develop a communication plan</b>. (6) <b>Determine project standards and procedures</b> (الـ tools، طرق الـ SDLC، أسلوب الـ documentation، الـ status reporting). (7) <b>Identify and assess risk</b> (مصادر الـ risk ونتايجها). (8) <b>Create a preliminary budget</b> (المصاريف والإيرادات المتخطط لها؛ Fig 3-12 الـ cost-benefit بالـ NPV والـ ROI والـ break-even). (9) <b>Develop a Statement of Work / Project Scope Statement</b> (للـ customer: الشغل اللي هيتعمل، إيه اللي هيتسلّم، الحجم، المدة، النتايج). (10) <b>Set a Baseline Project Plan (BPP)</b>: تقدير للـ tasks والـ resources بيُستخدم كدليل في التنفيذ.`,
+      `الـ <b>Work Breakdown Structure (WBS)</b>: عملية <b>تقسيم المشروع لـ tasks يتحكم فيها وترتيبها منطقيًا</b> عشان الانتقال بين الـ tasks يبقى سلس. فيه tasks بتمشي بالتوازي وفيه tasks ورا بعض؛ والترتيب بيعتمد على أنهي tasks بتطلّع deliverables محتاجاها tasks تانية.`,
+      `<b>خصائص الـ task</b>: بيعملها شخص واحد أو جروب محدد كويس؛ ليها deliverable واحد واضح؛ ليها method أو technique معروفة؛ خطوات قبلها وبعدها (predecessor and successor) متفق عليها؛ وتتقاس عشان تعرف نسبة الإنجاز.`,
+      `الـ <b>COCOMO</b>: طريقة منتشرة بتستخدم parameters مأخوذة من مشاريع قديمة بدرجات تعقيد مختلفة عشان تتوقع الـ human resources المطلوبة للـ systems الـ basic والـ intermediate والمعقدة جدًا (شوف Lecture 5).`,
+      `أسئلة الـ communication plan: مين الـ stakeholders؛ كل واحد محتاج information إيه؛ إمتى وكل قد إيه؛ من أنهي مصادر؛ مين بيجمعها ويخزنها ويتأكد منها؛ مين بيجهزها؛ مين الـ contact person؛ الـ format؛ وأنهي وسيلة أكفأ.`
+    ] },
+    { h: `Phase 3: تنفيذ المشروع (Executing) (5 أنشطة)`, pts: [
+      `الـ <b>Project execution</b>: التالت phase، وفيها الخطط اللي اتعملت في الـ initiation والـ planning <b>بتتنفذ فعلًا (put into action)</b>.`,
+      `(1) <b>Executing the BPP</b>: ابدأ الأنشطة، هات الـ resources ووزّعها، عرّف ودرّب الأعضاء الجداد، امشي على الـ schedule، واضمن جودة الـ deliverables. (2) <b>Monitoring progress against the BPP</b>. (3) <b>Managing changes to the BPP</b>: معاد خلصان نشاط اتأخر، نشاط اتعمل غلط ولازم يتعاد، نشاط جديد ظهر بعدين، تغيير مش متوقع في الأفراد (مرض، استقالة، فصل). (4) <b>Maintaining the project workbook</b>. (5) <b>Communicating the project status</b>.`,
+      `طرق التواصل: meetings، status reports، minutes، seminars and workshops، bulletin boards، memos، specification documents، brown-bag lunches، hallway discussions، newsletters، project workbook.`
+    ] },
+    { h: `طرق التواصل في الـ project team (Table 3-2)` },
+    { h: `Phase 4: قفل المشروع (Closing down) (متأكد عليها)`, pts: [
+      `الـ <b>Project closedown</b>: <b>آخر phase</b>، بتركز على <b>إنهاء المشروع</b>.`,
+      `تلات أنشطة للـ closedown: (1) <b>closing down the project</b>، (2) <b>conducting post-project reviews</b>، (3) <b>closing the customer contract</b>.`
+    ] },
+    { h: `تمثيل وجدولة خطط المشروع`, pts: [
+      `الـ <b>Resources</b>: أي شخص، أو مجموعة أشخاص، أو جهاز، أو خامة بتُستخدم عشان نخلص نشاط.`,
+      `الـ <b>Critical path scheduling</b>: technique جدولة فيها ترتيب ومدة سلسلة الأنشطة بيأثروا مباشرة على معاد خلصان المشروع.`,
+      `الـ <b>Critical path</b>: <b>سلسلة أنشطة (task activities) ترتيبها ومدتها بيأثروا مباشرة على معاد خلصان</b> المشروع.`,
+      `الـ <b>Gantt chart</b>: تمثيل graphical للمشروع بيوضح كل task كـ <b>bar أفقي طوله متناسب مع وقته</b>. الـ <b>Network diagram</b>: بيوضح الـ tasks والعلاقات بينها.`,
+      `<b>الـ Gantt مقابل الـ network</b> (slide 52): الـ Gantt charts بتوضح <b>مدة الـ tasks</b>، وبتوضح <b>التداخل في الوقت (time overlap)</b>، وبتوضح <b>الـ slack time في الـ duration</b>. الـ Network diagrams بتوضح <b>الـ dependencies بين الـ tasks</b>، <b>مابتوضحش الـ time overlap بس بتوضح الـ parallelism</b>، وبتوضح <b>الـ slack time في الـ boxes</b>.`,
+      `الـ Network diagramming هو critical path scheduling technique بيُستخدم لما الـ tasks: تبقى <b>محددة كويس (well-defined)</b> ليها بداية ونهاية واضحين؛ ينفع تتعمل <b>مستقلة (independently)</b> عن الـ tasks التانية؛ <b>مترتبة (ordered)</b>؛ و<b>بتخدم هدف</b> المشروع.`,
+      `الـ <b>Slack time</b> (متأكد عليه slide 68): الوقت اللي النشاط ممكن يتأخره <b>من غير ما يأخر المشروع</b>. الـ <b>Free slack</b>: تأخير من غير ما يأخر الـ early start لأي task جاية بعده على طول. الـ <b>Total slack</b>: تأخير من غير ما يأخر خلصان المشروع.`
+    ] },
+    { h: `تقدير الـ PERT ومثال الـ PVF / SPTS` },
+    { h: `استخدام برامج الـ project management (الـ MS Project)`, pts: [
+      `بيساعد في: تحديد <b>معاد بداية أو نهاية</b> المشروع؛ <b>إدخال الـ tasks وتحديد العلاقات بينها</b>؛ و<b>اختيار طريقة scheduling</b> عشان تراجع الـ project reports.`,
+      `الـ Gantt chart: <b>الخط الأسود اللي فوق = summary activity</b> (متكوّن من subtasks)؛ <b>الـ diamond = milestone</b>.`,
+      `الـ Network diagram: <b>الـ hexagon = milestone</b>؛ <b>الـ boxes والأسهم الحمرا = الـ critical path</b> (مفيش slack).`
+    ] }
+  ],
+  cards: [
+    `مجموعة أنشطة مرتبطة ومتخطط لها عشان توصل لهدف، وليها بداية ونهاية.`,
+    `الناتج النهائي لـ phase من phases الـ SDLC.`,
+    `systems analyst عنده مهارات management و leadership و technical و conflict-management و customer-relationship، ومسؤول عن initiating و planning و executing و closing down للمشروع.`,
+    `form قياسي لطلب أو اقتراح شغل systems development جوه المنظمة.`,
+    `الـ Contact person، الـ problem statement، الـ service request statement، بيانات الـ liaison.`,
+    `controlled process للـ initiating والـ planning والـ executing والـ closing down للمشروع.`,
+    `repository أونلاين أو ورقي لكل مراسلات المشروع والـ inputs والـ outputs والـ deliverables والـ procedures والـ standards.`,
+    `مستند قصير و high-level للـ stakeholders الداخليين والخارجيين، بيعلن المشروع رسميًا ويوصف الـ objectives والـ assumptions والـ stakeholders.`,
+    `تاني phase: تحديد أنشطة واضحة ومنفصلة والشغل المطلوب لكل واحد.`,
+    `تقسيم المشروع لـ tasks يتحكم فيها وترتيبها منطقيًا عشان الانتقال بينها يبقى سلس.`,
+    `تقدير للـ tasks والـ resources المطلوبة للمشروع، بيُستخدم كدليل في التنفيذ.`,
+    `للـ customer: الشغل اللي هيتعمل وإيه اللي هيتسلّم؛ الحجم، المدة، النتايج.`,
+    `تالت phase: الخطط اللي اتعملت في الـ initiation والـ planning بتتنفذ.`,
+    `Closing down the project؛ post-project reviews؛ closing the customer contract.`,
+    `أي شخص أو مجموعة أشخاص أو جهاز أو خامة بتُستخدم عشان نخلص نشاط.`,
+    `سلسلة أنشطة ترتيبها ومدتها بيأثروا مباشرة على معاد خلصان المشروع.`,
+    `الوقت اللي النشاط ممكن يتأخره من غير ما يأخر المشروع.`,
+    `الـ Gantt بيوضح الـ slack في الـ duration؛ والـ network بيوضحه في الـ boxes.`,
+    `Diamond في الـ Gantt chart؛ hexagon في الـ network diagram.`,
+    `ET = (o + 4r + p) / 6`
+  ],
+  qa: [
+    `الـ Project management هو controlled process للـ initiating والـ planning والـ executing والـ closing down للمشروع. <b>Initiation</b>: تقييم الحجم والنطاق والتعقيد وحط procedures (الـ initiation team، العلاقة مع الـ customer، الـ initiation plan، الـ management procedures، الـ PM environment والـ workbook؛ الـ project charter). <b>Planning</b>: تحديد أنشطة واضحة ومنفصلة والشغل المطلوب لكل واحد (الـ scope والـ feasibility، الـ WBS، الـ resources (COCOMO)، الـ schedule، الـ communication plan، الـ standards، الـ risk، الـ budget، الـ statement of work، الـ baseline project plan). <b>Execution</b>: تنفيذ الخطط (تنفيذ الـ BPP، متابعة التقدم، إدارة التغييرات، الحفاظ على الـ workbook، توصيل حالة المشروع). <b>Closedown</b>: إنهاء المشروع (close down the project، post-project reviews، close the customer contract).`,
+    `الـ SSR: form قياسي لطلب أو اقتراح شغل systems development جوه المنظمة؛ فيه الـ contact person والـ problem statement والـ service request statement وبيانات الـ liaison. الـ Project charter: مستند قصير و high-level معمول للـ stakeholders الداخليين والخارجيين الاتنين؛ بيعلن رسميًا إن المشروع اتعمل وبيوصف باختصار الـ objectives والـ key assumptions والـ stakeholders.`,
+    `1) Establish the initiation team. 2) Establish a relationship with the customer (تعيين liaison). 3) Establish the initiation plan (التواصل، الـ deliverables، الخطوات، الـ deadlines). 4) Establish management procedures (التواصل والـ reporting). 5) Establish the project management environment والـ project workbook. والـ project charter هو اللي بيعلن المشروع رسميًا.`,
+    `وصف الـ scope والبدائل والـ feasibility؛ تقسيم المشروع لـ tasks يتحكم فيها (WBS)؛ تقدير الـ resources وعمل resource plan؛ عمل preliminary schedule؛ عمل communication plan؛ تحديد الـ standards والـ procedures؛ تحديد وتقييم الـ risk؛ عمل preliminary budget؛ كتابة statement of work (scope statement)؛ وتحديد baseline project plan.`,
+    `الـ Gantt charts بتوضح كل task كـ bar متناسب مع مدته، وبتوضح التداخل في الوقت بين الـ tasks، وبتوضح الـ slack time في الـ duration. الـ Network diagrams بتوضح الـ dependencies بين الـ tasks، مابتوضحش الـ time overlap بس بتوضح الـ parallelism، وبتوضح الـ slack time في الـ boxes. والـ network diagramming هو critical path scheduling technique بيُستخدم لما الـ tasks تبقى محددة كويس ليها بداية ونهاية واضحين، ينفع تتعمل مستقلة، مترتبة، وبتخدم هدف المشروع.`,
+    `الـ WBS: تقسيم المشروع لـ tasks يتحكم فيها وترتيبها منطقيًا عشان الانتقال بينها يبقى سلس. الـ Slack time: الوقت اللي النشاط ممكن يتأخره من غير ما يأخر المشروع (الـ free slack: من غير ما يأخر الـ early start للـ tasks اللي بعده؛ الـ total slack: من غير ما يأخر خلصان المشروع). الـ Critical path: سلسلة أنشطة ترتيبها ومدتها بيأثروا مباشرة على معاد خلصان المشروع (الـ slack بتاعها صفر). الـ Project workbook: repository أونلاين أو ورقي لكل مراسلات المشروع والـ inputs والـ outputs والـ deliverables والـ procedures والـ standards.`,
+    `معاد خلصان نشاط يتأخر؛ نشاط اتعمل غلط ولازم يتعاد؛ نشاط جديد يظهر بعدين؛ تغيير مش متوقع في الأفراد بسبب مرض أو استقالة أو فصل.`
+  ],
+  quiz: [
+    [`صح.`, `الـ Free slack ليه علاقة بالـ early start للـ tasks اللي بعده، مش بنهاية المشروع.`, `الـ BPP بيقدّر الـ tasks والـ resources.`, `الـ critical path الـ slack بتاعه صفر.`],
+    [`الـ deliverable هو الناتج النهائي لـ phase في الـ SDLC.`, `الـ Stakeholders هما الأطراف المهتمة بالمشروع، مش التعريف ده.`, `ضيقة أوي؛ الـ resources فيها أجهزة وخامات كمان.`, `صح.`],
+    [`الـ network diagram بيوضح الـ tasks والعلاقات بينها.`, `صح.`, `الـ Gantt chart بيوضح الـ tasks كـ bars.`, `الـ WBS بيقسم المشروع لـ tasks.`],
+    [`صح.`, `الـ BPP دليل للتنفيذ.`, `ده مصطلح الـ DFD (تقسيم وصف السيستم لتفاصيل أدق).`, `الـ charter بيعلن المشروع.`],
+    [`الـ status report بيبلّغ بالتقدم.`, `الـ workbook هو repository لكل مستندات المشروع.`, `صح.`, `الـ SSR هو form طلب.`],
+    [`الـ CASE فيه repository، بس الجملة دي تعريف الـ project workbook.`, `صح.`, `الـ BPP تقدير للـ tasks والـ resources.`, `الـ charter إعلان قصير.`],
+    [`الـ SOW بيوصف إيه اللي هيتسلّم.`, `الـ charter بيعلن المشروع.`, `ده بيقيّم نكمّل ولا لأ.`, `صح.`],
+    [`الـ DFDs بتمثّل حركة الداتا، مش tasks المشروع.`, `الـ Gantt chart بيركز على المدد كـ bars.`, `الـ WBS بيقسم الـ tasks ويرتبها.`, `صح.`],
+    [`موجود.`, `صح. الـ SSR فيه الـ contact person والـ problem statement والـ service request statement وبيانات الـ liaison.`, `موجود.`, `موجود.`],
+    [`صح.`, `خلط معاه phases الـ SDLC.`, `الـ Planning قبل الـ execution.`, `الـ Initiation هي الأول.`],
+    [`ده execution.`, `ده نشاط planning.`, `صح. الـ Closedown: close down، post-project reviews، close customer contract.`, `ده initiation.`],
+    [`ده وصف الـ network diagrams.`, `الـ Network diagrams مابتوضحش الـ time overlap؛ بتوضح الـ parallelism.`, `صح.`, `الـ network diagrams بس هي اللي بتوضح الـ slack في الـ boxes.`],
+    [`صح (مفيش slack).`, `ده الـ summary activity في الـ Gantt chart.`, `الـ Diamonds هي الـ milestones في الـ Gantt charts.`, `الـ Hexagons هي الـ milestones في الـ network diagrams.`],
+    [`دي خاصية فعلًا.`, `دي خاصية فعلًا.`, `دي خاصية فعلًا.`, `صح. الـ task ممكن يعملها شخص واحد أو جروب محدد كويس.`],
+    [`الـ Slack بتاعه 0.`, `صح. الـ Slack = 21 - 18.5 = 2.5 أسبوع.`, `الـ Slack بتاعه 0.`, `الـ Slack بتاعه 0.`],
+    [`صح. (3 + 28 + 11)/6 = 42/6 = 7.`, `راجع الحساب: 4r = 28.`, `الـ 42/6 بالظبط 7.`, `نسيت تقسم على 6 (أو جمعت o + r + p).`]
+  ],
+  extra: [
+    [`الـ SOW بيوصف الـ deliverables للـ customer.`, `الـ charter بيتكتب بعد الموافقة عشان يعلن المشروع.`, `صح.`, `الـ BPP بييجي في آخر الـ planning.`],
+    [`الـ SSR بيطلب الشغل.`, `الـ status report بيبلّغ بالتقدم.`, `صح.`, `الـ workbook بيخزن كل مستندات المشروع.`],
+    [`صح.`, `الـ risk بيتخطط له، بس التغيير الفعلي بيتدار وقت الـ execution.`, `متأخر جدًا.`, `ده بيحصل بعد كده، وقت الـ execution.`],
+    [`دي formal جدًا.`, `ده formal جدًا.`, `دي formal جدًا.`, `صح (Table 3-2).`],
+    [`المشروع فيه tasks كتير.`, `صح.`, `الـ milestone مالهوش مدة.`, `الـ deliverable ده ناتج، مش شغل.`],
+    [`صح.`, `الـ budget بيغطي المصاريف والإيرادات.`, `الـ Risk بيتكلم عن التهديدات ونتايجها.`, `الـ BPP بيقدّر الـ tasks والـ resources.`],
+    [`دي بس القيم الـ realistic.`, `المتوسط العادي هو (1+3+11)/3 = 5، مش معادلة الـ PERT.`, `صح. (1+12+11)/6 = 24/6 = 4؛ (2+16+12)/6 = 30/6 = 5.`, `راجع الحساب: 24/6 = 4.`],
+    [`الأنشطة الـ critical بيبقى فيها TE = TL.`, `صح. الـ Slack = TL - TE = 2.5.`, `الـ Slack وقت فاضي زيادة، مش تأخير.`, `الـ 21 ده آخر وقت ممكن يخلص فيه.`],
+    [`دي طريقة الـ Gantt في عرض الـ slack.`, `دي خاصية في الـ Gantt.`, `دي خاصية في الـ Gantt.`, `صح.`],
+    [`ده الخط الأسود اللي فوق في الـ Gantt chart.`, `الـ Dummy activities بتاعة الـ arrow networks، مش الـ MS Project.`, `الـ critical path بيبقى أحمر.`, `صح.`]
+  ]
+};
+
+AR.sa.lectures["4"] = {
+  notes: [
+    { h: `الـ Process modeling والـ deliverables`, pts: [
+      `الـ DFDs بتُستخدم عشان تمثّل المعلومات اللي اتجمعت في الـ <b>requirements determination</b> (في مرحلة الـ <b>analysis</b>: الـ requirements determination وبعدها الـ <b>requirements structuring</b>).`,
+      `الـ <b>Process modeling</b>: تمثيل graphical للـ processes اللي <b>بتجمع وتعالج وتخزن وتوزّع الداتا (capture, manipulate, store and distribute)</b> بين السيستم والـ environment بتاعه وبين components السيستم وبعضها. أشهر شكل ليه هو الـ DFD. وكمان بتعمل model للـ processing logic والـ timing والـ data structures.`,
+      `الـ Deliverables: <b>context DFD</b> (الـ scope: أنهي عناصر جوه السيستم وأنهي برّاه)؛ <b>DFDs للسيستم الحالي الـ physical والـ logical</b> (عشان نفهم السيستم الحالي)؛ <b>DFDs للسيستم الجديد الـ logical</b> (مستقلة عن التكنولوجيا؛ الـ data flows والـ structure والـ functional requirements)؛ و<b>وصف كامل لكل component في الـ DFD</b>.`,
+      `الـ <b>DFD</b>: صورة لـ <b>حركة الداتا بين الـ external entities والـ processes والـ data stores</b> جوه السيستم. على عكس الـ system flowcharts، الـ DFDs بتوضح الـ data flow الـ <b>logical</b> بشكل مستقل عن التكنولوجيا؛ إنما الـ flowcharts بتوضح تفاصيل الـ systems الـ <b>physical</b>.`
+    ] },
+    { h: `الأربع symbols بتوع الـ DFD` },
+    { h: `قواعد رسم الـ DFD (متأكد عليها slides 8 لـ 13: سؤال الـ "errors")`, pts: [
+      `الـ <b>Process</b>: مفيش process ينفع يبقى ليه <b>outputs بس</b> (اسمها "miracle") أو <b>inputs بس</b> (اسمها "black hole")؛ كل process لازم يبقى ليه inputs و outputs الاتنين. والـ process labels بتبقى verb phrases.`,
+      `الـ <b>Data store</b>: <b>كل الـ flows الداخلة أو الخارجة من الـ data store لازم تعدّي على process</b>؛ الداتا ماينفعش تتنقل مباشرة من store لـ store، ولا بين store و external entity.`,
+      `الـ <b>Source/sink</b>: <b>مفيش داتا بتتنقل مباشرة بين external entities</b> من غير ما تعدّي على process؛ التعاملات دي برّه السيستم ومابتترسمش.`,
+      `الـ <b>Data flow</b>: الـ flow اللي في الاتجاهين بين process و data store بيترسم <b>سهمين منفصلين</b>. الـ flow الـ <b>forked</b> (مصدر واحد، كذا destination) والـ flow الـ <b>joined</b> (كذا مصدر، destination واحد) لازم يشيروا لـ <b>نفس الـ data item بالظبط</b>. الـ data flow <b>ماينفعش يطلع من process ويرجع لنفس الـ process مباشرة</b>؛ لازم يعدّي على processes في النص. والـ flow labels بتبقى noun phrases.`,
+      `<b>الـ Update مقابل الـ retrieve</b>: الـ flow <b>من process لـ data store معناه update</b> (insert أو delete أو change)؛ والـ flow <b>من data store لـ process معناه retrieve أو use</b>.`,
+      `من الـ DFD deck: استخدم الأسهم اللي براسين (double-headed) بس لما الـ process بيقرا ويعدّل في نفس الـ table أو الـ file؛ اسم الـ process بيبقى verb-adjective-noun؛ والـ process بتاع السيستم كله رقمه 0.`
+    ] },
+    { h: `الـ Decomposition ومستويات الـ DFD`, pts: [
+      `الـ <b>Functional decomposition</b>: <b>process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق</b>؛ الـ processes الـ high-level بتتوصف بـ sub-processes في مستوى أقل؛ وبيترسم DFD لكل مستوى.`,
+      `الـ <b>Context diagram</b>: بيوضح <b>حدود السيستم (system boundaries)</b>، والـ external entities اللي بتتعامل معاه، والـ information flows الأساسية بينهم وبين السيستم. <b>process symbol واحد بس (رقمه 0)، ومفيش data stores.</b>`,
+      `الـ <b>Level-0 DFD</b> (الـ Diagram 0، تفصيل الـ process 0): <b>الـ processes والـ data flows والـ data stores الأساسية للسيستم في مستوى high-level</b>. الـ processes بتترقم <b>1.0، 2.0، ...</b>؛ المفروض يبقى فيه لحد <b>7 أو 9 processes</b>؛ وبيظهر فيه الـ data stores الأساسية وكل الـ external entities.`,
+      `الـ <b>Level-1 DFD</b>: الـ sub-processes بتوع process واحد من الـ Level-0؛ لو الـ process هو 4.0 يبقى بيترقموا <b>4.1، 4.2، ...</b>. الـ <b>Level-n</b>: الـ sub-processes بتوع process في Level n-1، زي 4.3.1، 4.3.2. رقم الـ child diagram = رقم الـ parent process.`,
+      `الـ External entities عادةً <b>مابتظهرش في الـ child diagrams اللي تحت الـ Diagram 0</b>؛ الـ child ممكن يبقى فيه data store الـ parent متوصل بيه، وممكن يبقى فيه data stores مش ظاهرة في الـ parent. والـ <b>interface data flow</b> هو input أو output للـ child diagram بيقابل flow في الـ parent.`,
+      `الـ <b>Primitive DFD</b>: <b>أقل مستوى logical للـ decomposition</b>؛ والـ processes اللي مابيتعملهاش child diagram اسمها primitive.`
+    ] },
+    { h: `الـ Balancing والـ data flow splitting (متأكد عليه slide 22)`, pts: [
+      `الـ <b>DFD balancing</b>: <b>الحفاظ على الـ inputs والـ outputs (conservation)</b> بتوع الـ process لما يتعمله decompose لمستوى أقل.`,
+      `يعني balanced: عدد (وهوية) الـ <b>inputs</b> للـ DFD اللي في المستوى الأقل بيساوي الـ inputs للـ process المرتبط بيه في المستوى الأعلى، ونفس الكلام للـ <b>outputs</b>.`,
+      `مثال unbalanced (Fig 7-10): الـ context process ليه <b>input واحد و output واحد</b> بس الـ Level-0 diagram فيه <b>2 inputs</b> (Source One A و Source Two C) و output واحد.`,
+      `أمثلة balanced: الـ context فيه input واحد / 3 outputs = الـ Level-0 فيه input واحد / 3 outputs؛ والـ Process 1.0 اللي ليه input واحد / 4 outputs = الـ Level-1 diagram بتاعه.`,
+      `الـ <b>Data flow splitting</b>: الـ flow الـ <b>composite</b> في المستوى الأعلى ممكن يتقسم لأجزاء (disaggregated flows) رايحة لـ processes مختلفة في المستوى الأقل؛ والرسمة بتفضل balanced لأن نفس الداتا هي اللي موجودة.`
+    ] },
+    { h: `الـ Guidelines وقواعد وقف الـ decomposition (متأكد عليها slides 30، 31)`, pts: [
+      `الـ <b>Completeness</b>: الـ DFD فيه كل الـ components اللازمة للسيستم، وكل component متوصف بالكامل في الـ project dictionary أو الـ CASE repository.`,
+      `الـ <b>Consistency</b>: لأي درجة المعلومات اللي في مستوى من مجموعة DFDs متداخلة (nested) موجودة كمان في المستويات التانية.`,
+      `الـ <b>Timing</b>: الوقت مابيتمثلش كويس في الـ DFDs؛ ارسمها كأن السيستم عمره ما بدأ ولا هيقف.`,
+      `الـ <b>Iterative development</b>: الـ analyst لازم يتوقع إنه <b>هيعيد رسم الـ diagram كذا مرة</b> قبل ما يوصل لأقرب تمثيل للسيستم.`,
+      `<b>قواعد وقف الـ decomposition</b>: (1) كل process اتقلل لـ <b>decision واحد أو calculation واحد أو database operation واحدة</b>؛ (2) كل data store بيمثّل داتا عن <b>entity واحد</b>؛ (3) <b>الـ user مش عايز يشوف تفاصيل أكتر</b>؛ (4) مفيش data flow محتاج يتقسم أكتر عشان يوضح إن الداتا بتتعامل بطرق مختلفة؛ (5) كل business form أو transaction، وكل online display و report بيظهر كـ <b>data flow واحد</b>؛ (6) فيه <b>process منفصل لكل اختيار</b> في كل الـ menu options اللي في أقل مستوى.`
+    ] },
+    { h: `Case study: سيستم مرتبات الموظفين (employee payroll)`, pts: [
+      `الـ <b>Context</b>: Employee ← Time Sheet ← (0 Employee Payroll System)؛ السيستم ← Employee Tax Form و Employee Payroll Check ← Employee؛ السيستم ← Payroll Report ← Accounting Department.`,
+      `الـ <b>Level 0</b>: 1.0 Create Weekly Payroll Record (الـ Time Sheet داخل، بيقرا من S1 Employee Data File، وبيكتب في S2 Payroll Data File)؛ 2.0 Compute Payroll (الـ Hours Worked داخلة، الـ Paycheck Data لـ S2، والـ Weekly Paycheck للـ Employee)؛ 3.0 Prepare Weekly Payroll Summary (الـ Payroll Record من S2 ← Payroll Report للـ Accounting)؛ 4.0 Prepare Employee Tax Form (← Employee).`,
+      `الـ <b>Level 1</b>: 2.1 Compute Gross Pay، 2.2 Compute Net Pay، 2.3 Create Payroll Check؛ 3.1 Sort Payroll Records by Employee، 3.2 Print Weekly Payroll Summary؛ 4.1 Calculate Payroll Deductions، 4.2 Print Employee Tax Form.`,
+      `الـ <b>Level 2 (functional primitives)</b>: 4.1.1 Calculate Payroll Tax Deductions، 4.1.2 Calculate Non-tax Deductions، 4.1.3 Calculate Retirement Allowance، 4.2.1 Calculate Employee Vacation Pay، 4.2.2 Print Employee Tax Form.`,
+      `Cases تانية محلولة في الـ slides: الـ Hoosier Burger food ordering (Level-0، و Level-1 للـ process 1.0)، الـ Hoosier Burger inventory logical DFD، الـ video rental (context + physical DFD)، الـ order processing، الـ PVF WebStore (6 processes high-level: browse catalog، select item، display cart، check out، add/modify profile، order status).`
+    ] },
+    { h: `إزاي تجاوب سؤال "طلّع 10 errors على الأقل في الـ DFDs دي"`, pts: [
+      `شيّك على كل diagram: أكتر من process أو أي data store في الـ <b>context</b>؛ processes ليها <b>inputs بس</b> أو <b>outputs بس</b>؛ data stores ليها inputs بس أو outputs بس، أو متوصلة مباشرة بـ entities أو stores؛ flows مباشرة بين entities؛ أرقام processes أو أسامي data stores متكررة؛ <b>نفس الـ flow label</b> مستخدم لـ flows مختلفة؛ flows forked أو joined بـ <b>labels مختلفة</b>؛ أسهم براسين بين اتنين processes؛ ترقيم child غلط (زي P1.5.1 تحت P1.4).`,
+      `وبعدين شيّك على <b>الـ balancing بين المستويات</b>: الـ inputs/outputs بتوع P1 في الـ Level 0 لازم تساوي الـ flows الخارجية في الـ Level-1 diagram، والـ flows بتوع P1.4 في الـ Level 1 لازم تساوي الـ flows الخارجية في الـ Level-2 diagram بتاعه؛ والـ data stores المستخدمة لازم تبقى consistent كمان.`,
+      `اكتب كل error كده: <i>فين</i> (المستوى، الـ symbol) + <i>أنهي rule</i> + <i>التصليح</i>. الإجابة الكاملة المحلولة موجودة في امتحانات 2023/24 و 2025/26 و 2021/22 تحت.`
+    ] }
+  ],
+  cards: [
+    `صورة لحركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم.`,
+    `شغل أو actions بتتعمل على الداتا عشان تتحوّل أو تتخزن أو تتوزّع (جوه السيستم).`,
+    `داتا ساكنة (at rest) جوه السيستم.`,
+    `external entity هو مصدر الداتا أو وجهتها (برّه السيستم).`,
+    `داتا متحركة، بتتنقل كوحدة واحدة من مكان لمكان.`,
+    `ممنوع (black hole / miracle). كل process لازم يبقى ليه الاتنين.`,
+    `لازم تعدّي على process.`,
+    `مابيترسمش: ده برّه السيستم؛ الداتا ماينفعش تتنقل مباشرة بين الـ entities.`,
+    `لازم يشير لنفس الـ data item بالظبط.`,
+    `بيترسم سهمين منفصلين.`,
+    `Update (insert أو delete أو change).`,
+    `Retrieve أو use.`,
+    `بيوضح حدود السيستم والـ external entities والـ flows الأساسية؛ process واحد (0)، ومفيش data stores.`,
+    `الـ processes والـ flows والـ stores الأساسية للسيستم في مستوى high-level؛ الـ processes بتترقم 1.0، 2.0...`,
+    `process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق.`,
+    `الحفاظ على الـ inputs والـ outputs بتوع الـ process لما يتعمله decompose لمستوى أقل.`,
+    `أقل مستوى logical للـ decomposition.`,
+    `flow composite في المستوى الأعلى بيتقسم لأجزاء رايحة لـ processes مختلفة في المستوى الأقل (ولسه balanced).`,
+    `المعلومات اللي في مستوى من الـ DFDs المتداخلة موجودة كمان في المستويات التانية.`,
+    `الـ analyst لازم يتوقع إنه هيعيد رسم الـ diagram كذا مرة قبل ما يوصل لأقرب تمثيل.`
+  ],
+  qa: [
+    `الـ DFD هو صورة لحركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم؛ بيوضح الـ data flow الـ logical بشكل مستقل عن التكنولوجيا، وبيُستخدم عشان يمثّل الـ requirements اللي اتجمعت في الـ analysis. الـ DFD balancing هو الحفاظ على الـ inputs والـ outputs بتوع الـ process لما يتعمله decompose لمستوى أقل: عدد الـ inputs والـ outputs في الـ diagram الأقل لازم يساوي اللي في الـ parent process. مثال: context process ليه input واحد و output واحد والـ Level-0 بتاعه فيه 2 inputs يبقى unbalanced.`,
+    `الـ Functional decomposition هي process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق؛ الـ processes الـ high-level بتتوصف بـ sub-processes في مستوى أقل، وبيترسم DFD لكل مستوى. بنقف لما: 1) كل process يبقى decision واحد أو calculation واحد أو database operation واحدة؛ 2) كل data store يمثّل داتا عن entity واحد؛ 3) الـ user مش عايز يشوف تفاصيل أكتر؛ 4) مفيش data flow محتاج يتقسم أكتر عشان يوضح إن الداتا بتتعامل بطرق مختلفة؛ 5) كل business form أو transaction، وكل online display و report يبقى data flow واحد؛ 6) يبقى فيه process منفصل لكل اختيار في كل الـ menu options اللي في أقل مستوى. والنتيجة هي primitive DFD.`,
+    `الـ DFD بيصوّر حركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم. بيُستخدم في مرحلة الـ analysis عشان ننظم الـ process requirements اللي اتجمعت من الـ users، ونفهم السيستم الحالي (الـ DFDs الحالية الـ physical والـ logical)، ونحدد السيستم الجديد الـ logical من غير ما نعتمد على تكنولوجيا. المستويات: الـ context diagram (حدود السيستم، الـ entities، الـ flows الأساسية، process واحد 0، مفيش data stores)؛ الـ Level-0 (الـ processes الأساسية 1.0، 2.0...، والـ flows والـ stores)؛ الـ Level-1 (decomposition لـ process واحد من الـ Level-0، زي 4.1، 4.2)؛ الـ Level-n (decomposition لـ process في Level n-1، زي 4.3.1)؛ وأقل مستوى هو الـ primitive DFD.`,
+    `الـ Process: لازم يبقى ليه inputs و outputs الاتنين؛ والـ labels بتاعته verb phrases. الـ Data store: كل الـ flows الداخلة له أو الخارجة منه بتعدّي على process؛ والـ labels بتاعته noun phrases. الـ Source/sink: مفيش داتا بتتنقل مباشرة بين الـ external entities؛ التعاملات دي برّه السيستم؛ والـ labels بتاعته noun phrases. الـ Data flow: الـ flow اللي في الاتجاهين بين process و store بيبقى سهمين؛ الـ forked والـ joined flows لازم يشيروا لنفس الداتا بالظبط؛ الـ flow ماينفعش يطلع من process ويرجع له مباشرة؛ الـ flow للـ store = update، ومن الـ store = retrieve؛ والـ labels بتاعته noun phrases.`,
+    `الـ Completeness: الـ DFD لازم يبقى فيه كل الـ components اللازمة للسيستم، وكل component لازم يبقى متوصف بالكامل في الـ project dictionary أو الـ CASE repository. الـ Consistency: لأي درجة المعلومات اللي في مستوى من مجموعة DFDs متداخلة موجودة كمان في المستويات التانية (زي إن الـ flows بتوع الـ parent process بتظهر تاني في الـ child diagram بتاعه).`,
+    `فيه process واحد بس بيمثّل السيستم كله ورقمه 0؛ كل الـ external entities بتظهر ومعاها الـ data flows الأساسية الداخلة والخارجة منها؛ مفيش data stores؛ وبيوضح حدود السيستم (system boundary).`
+  ],
+  quiz: [
+    [`صح. الـ processes والـ data stores جوه السيستم.`, `الـ sources/sinks بس هي اللي برّه.`],
+    [`الـ Update هو process ← data store.`, `صح. store ← process معناها retrieve أو use.`],
+    [`مش جزء من السيستم.`, `صح.`],
+    [`صح.`, `الـ data store ماينفعش يتوصل مباشرة بـ source/sink.`],
+    [`صح. process واحد رقمه 0.`, `بيظهر فيه كل الـ external entities، وغالبًا بيبقوا كذا واحد.`],
+    [`الـ sources/sinks مش جوه.`, `صح.`],
+    [`صح (insert أو delete أو change).`, `الـ Retrieve هو store ← process.`],
+    [`صح.`, `الـ Sinks (الـ destinations) بتظهر فعلًا في الـ context diagram.`],
+    [`صح.`, `الـ data stores جوه.`],
+    [`صح.`, `دي مش rule من قواعد الـ DFD.`],
+    [`الـ source/sink ده entity واحد.`, `الـ Level-0 بيوضح الـ processes والـ flows والـ stores الأساسية.`, `صح.`, `الـ Primitive = أقل مستوى.`],
+    [`الـ context فيه process واحد ومفيش stores.`, `صح.`, `الـ Level-n ده decomposition في مستوى أقل.`, `مش التعريف المطلوب.`],
+    [`الـ Splitting بيقسم flow composite.`, `ده عملية التكسير نفسها.`, `الـ Consistency بتتكلم عن المعلومات عبر المستويات بشكل عام.`, `صح.`],
+    [`الـ Completeness = كل الـ components موجودة ومتوصفة.`, `الـ Timing = ارسم كأن السيستم عمره ما بدأ ولا هيقف.`, `ده التكسير لتفاصيل أدق.`, `صح.`],
+    [`الـ process بيحوّل الداتا.`, `صح.`, `ده مصدر أو وجهة.`, `الـ data store داتا ساكنة.`],
+    [`صح.`, `الـ context هو أعلى مستوى.`, `مش لازم يبقى الأقل.`, `الـ Level-0 هو أعلى decomposition للـ process 0.`],
+    [`الـ Balancing بيحافظ على الـ inputs/outputs.`, `بيوضح tasks المشروع.`, `صح.`, `الـ WBS بيقسم المشروع لـ tasks.`],
+    [`الـ Gantt charts بتجدول الـ tasks.`, `الـ workbook بيخزن مستندات المشروع.`, `صح.`, `الـ Physical design بيدّي تفاصيل technology-specific.`],
+    [`صح. كل child process محتاج رقم unique (رقم الـ parent، وبعده نقطة، وبعدها رقم child unique).`, `مش ده الـ error الموصوف.`, `مش ده الـ error الموصوف.`, `مش ده الـ error الموصوف.`],
+    [`مش دي المشكلة هنا.`, `مش دي المشكلة هنا.`, `مش دي المشكلة هنا.`, `صح.`],
+    [`الـ context فيه process 0 بس.`, `صح. الـ child processes بتشيل رقم الـ parent: 1.4.1، 1.4.2، 1.4.3.`, `مفيش process 5.`, `دول الـ inputs بتوع P1.4 وهما اللي مخليين الرسمة balanced.`],
+    [`صح.`, `دي مش rule.`, `الـ Balancing مطلوب في كل مستوى بس مش rule لوقف الـ decomposition.`, `الـ 7 لـ 9 دي guide لحجم الـ Level-0، مش rule للوقف.`]
+  ],
+  extra: [
+    [`مالهاش علاقة.`, `صح.`, `مفيش fork هنا.`, `ده Level 0.`],
+    [`صح. كل الـ flows الداخلة أو الخارجة من الـ data store لازم تعدّي على process.`, `الـ entity كمان ماينفعش يتوصل مباشرة بـ store.`, `كده الداتا هتضيع.`, `برضه لسه store لـ store.`],
+    [`ده برّه السيستم في كل المستويات.`, `الداتا ماينفعش تتنقل مباشرة بين الـ external entities.`, `صح.`, `دي مش داتا ساكنة.`],
+    [`الـ Splitting بيحافظ على نفس الداتا؛ إنما input زيادة مالوش علاقة لأ.`, `عدد الـ inputs مختلف.`, `صح. الـ inputs والـ outputs لازم يتحافظ عليهم وقت الـ decomposition.`, `الـ Primitive معناها أقل مستوى.`],
+    [`صح.`, `ده flow مش store.`, `الـ Level 1 مش هو الـ context.`, `لازم يبقوا balanced مع الـ parent.`],
+    [`دي أرقام Level-0.`, `دول children بتوع الـ process 2.`, `دول children بتوع الـ process 5.`, `صح. رقم الـ parent، وبعده نقطة، وبعدها رقم child unique.`],
+    [`دي rule فعلًا.`, `صح. حجم الصفحة مش rule للوقف.`, `دي rule فعلًا.`, `دي rule فعلًا.`],
+    [`صح. والـ lab deck كمان بيسمح بسهم واحد براسين لما الـ process بيقرا ويعدّل في نفس الـ file.`, `الـ Stores ماينفعش تتوصل بـ entities.`, `الـ Retrieval ده data flow.`, `ده بيوضح الـ update بس.`],
+    [`الـ Context diagrams مافيهاش data stores.`, `process واحد بس رقمه 0.`, `صح.`, `دول في أقل مستوى.`],
+    [`الـ Consistency = نفس المعلومات في كل المستويات.`, `صح.`, `ده عن إعادة الرسم كذا مرة.`, `الـ Completeness = كل الـ components موجودة ومتوصفة.`]
+  ]
+};
+
+AR.sa.lectures["5"] = {
+  notes: [
+    { h: `يعني إيه COCOMO`, pts: [
+      `الـ <b>COCOMO</b> (Constructive Cost Model) واحد من <b>أكتر نماذج تقدير الـ software انتشارًا</b> في العالم، عمله <b>Barry Boehm سنة 1981</b>.`,
+      `بيتوقع <b>الـ effort والـ schedule</b> لمنتج software بناءً على inputs ليها علاقة بـ <b>حجم الـ software</b> وعدد من الـ <b>cost drivers</b> اللي بتأثر على الـ productivity.`,
+      `تلات models حسب درجة التعقيد: الـ <b>Basic</b> model، والـ <b>Intermediate</b> model، والـ <b>Detailed</b> model.`,
+      `<b>الـ Assumptions</b>: (1) الـ cost driver الأساسي هو عدد الـ <b>Delivered Source Instructions (DSI)</b> اللي المشروع بيطوّرها؛ (2) المشروع هيبقى عنده <b>إدارة كويسة</b> من الـ developer والـ customer الاتنين؛ (3) <b>الـ requirements specification مش هتتغير بشكل كبير</b> بعد مرحلة الـ plans and requirements.`
+    ] },
+    { h: `الـ development modes (خصائص المشروع)` },
+    { h: `معادلات الـ Basic COCOMO (الـ KDSI = آلاف الـ DSI)` },
+    { h: `الكميات المشتقة اللي بتيجي في كل مسألة امتحان` },
+    { h: `الـ Basic model: استخدامه وعيوبه`, pts: [
+      `الـ Basic COCOMO بيقدّر الـ effort باستخدام <b>predictor variable واحد بس (الحجم بالـ DSI)</b> والتلات modes.`,
+      `<b>إمتى نستخدمه</b>: كويس لتقديرات <b>سريعة وبدري وتقريبية (rough order-of-magnitude)</b> لتكلفة الـ software.`,
+      `<b>العيوب</b>: الدقة محدودة لأنه ناقصه عوامل بتأثر جامد على التكلفة؛ التقديرات بتبقى <b>في حدود factor 1.3 في 29% بس من الحالات</b> و<b>في حدود factor 2 في 60% بس من الحالات</b>.`
+    ] },
+    { h: `مثال المحاضرة المحلول: Basic، semidetached، 32,000 DSI` },
+    { h: `الـ Intermediate COCOMO`, pts: [
+      `بيستخدم <b>15 cost driver variable</b> غير الحجم. كل driver ليه <b>effort multiplier</b> حسب الـ rating (very low ... extra high)؛ وحاصل ضربهم هو الـ <b>EAF</b> (effort adjustment factor). مثال الـ CPLX: 0.70، 0.85، 1.00 (nominal)، 1.15، 1.30، 1.65.`,
+      `أربع مجالات: الـ <b>Product</b>: RELY (الـ reliability المطلوبة)، DATA (حجم الـ database)، CPLX (تعقيد المنتج). الـ <b>Computer</b>: TIME (قيد وقت التنفيذ)، STOR (قيد الـ main storage)، VIRT (تقلّب الـ virtual machine)، TURN (الـ turnaround time). الـ <b>Personnel</b>: ACAP (قدرة الـ analyst)، AEXP (خبرة في الـ applications)، PCAP (قدرة الـ programmer)، VEXP (خبرة في الـ virtual machine)، LEXP (خبرة في اللغة). الـ <b>Project</b>: MODP (الـ modern programming practices)، TOOL (الـ software tools)، SCED (الـ schedule المطلوب).`,
+      `المعادلات: Organic E = EAF × <b>3.2</b> × KDSI^1.05؛ Semidetached E = EAF × <b>3.0</b> × KDSI^1.12؛ Embedded E = EAF × <b>2.8</b> × KDSI^1.20؛ ومعادلات الـ TDEV زي الـ Basic بالظبط.`,
+      `<b>إمتى نستخدمه</b>: على المنتج كله لتقديرات بدري سهلة وتقريبية، أو على مستوى الـ component لتقديرات أدق في المراحل التفصيلية.`,
+      `<b>العيوب</b>: التقديرات بتبقى <b>في حدود 20% من الحقيقي في 68% من الحالات</b>؛ الـ effort multipliers <b>مش بتفرّق بين الـ phases (phase-insensitive)</b>؛ و<b>مُرهق جدًا</b> لمنتج فيه components كتير.`
+    ] },
+    { h: `مثال المحاضرة المحلول: Intermediate، semidetached، الـ RELY عالي` },
+    { h: `الـ Detailed COCOMO`, pts: [
+      `الفروق: <b>effort multipliers بتفرّق بين الـ phases (phase-sensitive)</b> (مختلفة لكل development phase) و<b>hierarchy من module-subsystem-system</b>.`,
+      `<b>مستوى الـ Module</b>: الـ drivers اللي بتتغير في أقل مستوى: CPLX، PCAP، VEXP، LEXP. <b>مستوى الـ Subsystem</b>: بتتغير من subsystem للتاني بس ثابتة جوه الواحد: RELY، DATA، TIME، STOR، VIRT. <b>مستوى الـ System</b>: علاقات المشروع ككل زي معادلات الـ nominal effort والـ schedule.`,
+      `بيستخدم <b>نفس معادلات الـ Intermediate model</b> بس بـ procedure معقد جدًا (DSIs للـ subsystems والـ modules، و multipliers على مستوى الـ module والـ subsystem).`,
+      `<b>إمتى نستخدمه</b>: بيقدّر الـ staffing والتكلفة والمدة لكل phase و subsystem و module؛ وبيخليك تجرّب development strategies مختلفة.`,
+      `<b>العيوب</b>: محتاج وقت ومجهود أكتر بكتير؛ التقديرات بتبقى <b>في حدود 20% من الحقيقي في 70% من الحالات</b>.`,
+      `<b>الخلاصة</b>: الـ cost models مش بديل عن تقدير تفصيلي task بـ task؛ بتعتمد على معرفة المستخدم بالمجال وقدرته على التحليل وفهمه للـ model؛ والالتزام بالتقدير مهم قد عمله بالظبط.`
+    ] },
+    { h: `مسألة المحاضرة (b): organic، 8,000 DSI، E = 3.2·KDSI^1.05، المرتب EP 5000` }
+  ],
+  cards: [
+    `Constructive Cost Model (عمله Barry Boehm سنة 1981).`,
+    `الـ Effort والـ schedule، من الحجم والـ cost drivers.`,
+    `Basic، Intermediate، Detailed.`,
+    `عدد الـ Delivered Source Instructions (DSI).`,
+    `بيئة مألوفة ومستقرة، شبه مشاريع قبل كده، صغير، ومحتاج innovation قليل.`,
+    `قيود صارمة ومش مرنة و interface requirements، ومحتاج innovation كبير.`,
+    `E = 2.4 KDSI^1.05, TDEV = 2.5 E^0.38`,
+    `E = 3.0 KDSI^1.12, TDEV = 2.5 E^0.35`,
+    `E = 3.6 KDSI^1.20, TDEV = 2.5 E^0.32`,
+    `الـ Organic 3.2، الـ semidetached 3.0، الـ embedded 2.8 (مضروبين في الـ EAF).`,
+    `الـ DSI / الـ Effort (بالـ DSI/MM).`,
+    `الـ Effort / الـ Schedule (بالـ FSP).`,
+    `في حدود factor 1.3 في 29% بس من الحالات؛ وفي حدود factor 2 في 60% بس.`,
+    `في حدود 20% من الحقيقي في 68% من الحالات.`,
+    `في حدود 20% من الحقيقي في 70% من الحالات.`,
+    `خمستاشر (15)، في أربع مجالات: product، computer، personnel، project.`,
+    `RELY، DATA، CPLX.`,
+    `ACAP، AEXP، PCAP، VEXP، LEXP.`,
+    `CPLX، PCAP، VEXP، LEXP.`,
+    `RELY، DATA، TIME، STOR، VIRT.`
+  ],
+  qa: [
+    `الـ COCOMO، اللي عمله Barry Boehm سنة 1981، واحد من أكتر نماذج تقدير الـ software انتشارًا؛ بيتوقع الـ effort (بالـ man-months) والـ schedule (بالشهور) من حجم الـ software بالـ delivered source instructions ومن الـ cost drivers. بيفترض إن الـ DSI هو الـ cost driver الأساسي، وإن فيه إدارة كويسة من الـ developer والـ customer، وإن الـ requirements ثابتة بعد الـ planning. المشاريع بتتصنف organic (مألوف، صغير، innovation قليل)، semidetached (في النص) أو embedded (قيود صارمة، innovation كبير). فيه تلات models: الـ Basic (الحجم بس؛ E = a·KDSI^b، TDEV = 2.5·E^c؛ تقديرات سريعة وتقريبية، في حدود factor 2 في 60% بس من الحالات)، الـ Intermediate (بيضيف 15 cost driver في مجالات product و computer و personnel و project عن طريق الـ EAF؛ في حدود 20% في 68% من الحالات) والـ Detailed (multipliers بتفرّق بين الـ phases و hierarchy من module-subsystem-system؛ في حدود 20% في 70% من الحالات).`,
+    `الـ Basic: predictor واحد (الحجم) وتلات modes؛ تقديرات سريعة وبدري وتقريبية؛ ودقته محدودة. الـ Intermediate: الحجم + 15 cost driver عن طريق effort multipliers (EAF)؛ بيُستخدم على المنتج كله بدري أو لكل component بعدين؛ في حدود 20% في 68% من الحالات؛ الـ multipliers مش بتفرّق بين الـ phases، ومُرهق لو فيه components كتير. الـ Detailed: نفس معادلات الـ Intermediate بس الـ multipliers بتفرّق بين الـ phases وفيه hierarchy من module/subsystem/system؛ بيقدّر الـ staffing والتكلفة والمدة لكل phase و module وبيسمح بتجربة strategies مختلفة؛ محتاج مجهود أكتر بكتير؛ في حدود 20% في 70% من الحالات.`,
+    `الـ Effort = 3.6 × 40^1.20 = 3.6 × 83.65 = 301 MM. الـ Duration = 2.5 × 301^0.32 = 2.5 × 6.211 = 15.5 ≈ 16 شهر. الـ Staffing = 301/16 = 18.8 ≈ 19 FSP. نص الـ staff = 19/2 = 9.5 ≈ 10 ← الـ duration = 301/10 = 30 شهر. الـ Staff عشان يخلص في 4 شهور = 301/4 = 75.25 ≈ 75 FSP.`,
+    `E = 3.0 × 24^1.12 = 3.0 × 35.14 = 105.4 ≈ 105 MM. TDEV = 2.5 × 105^0.35 = 2.5 × 5.098 = 12.7 ≈ 13 شهر. الـ Staff = 105/13 = 8.08 ≈ 8 FSP. الـ Productivity = 24,000/105 = 228.6 ≈ 229 DSI/MM. ¾ الـ staff = 6 FSP ← 105/6 = 17.5 ≈ 18 شهر. نص الوقت = 6.5 شهر ← 105/6.5 = 16.2 ≈ 16 FSP. التكلفة = 8 × 13 × 5000 = EP 520,000 (بالظبط E × المرتب = 105 × 5000 = EP 525,000).`,
+    `الـ Assumptions: الـ cost driver الأساسي هو عدد الـ DSI اللي اتطورت؛ المشروع عنده إدارة كويسة من الـ developer والـ customer الاتنين؛ الـ requirements specification مش هتتغير بشكل كبير بعد مرحلة الـ plans and requirements. الـ Modes: organic (بيئة مألوفة ومستقرة، شبه مشاريع قبل كده، صغير نسبيًا، innovation قليل)؛ semidetached (في النص)؛ embedded (قيود صارمة ومش مرنة و interface requirements، innovation كبير).`
+  ],
+  quiz: [
+    [`دي قيمة الـ 70 KDSI من 2024/25.`, `ده 3.6 × 40 من غير الأس.`, `صح. 40^1.20 = 83.65؛ 3.6 × 83.65 = 301.`, `دي قيمة الـ embedded لـ 32 KDSI.`],
+    [`راجع الأس 0.32.`, `صح. 301^0.32 = 6.21؛ × 2.5 = 15.5 ≈ 16.`, `الـ 19 ده الـ average staffing (301/16).`, `الـ 30 دي المدة بنص الـ staff.`],
+    [`ده نص الـ staff العادي.`, `إنت ضربت بدل ما تقسم.`, `ده الـ staffing بتاع الـ schedule اللي 16 شهر.`, `صح. 301 / 4 = 75.25 ≈ 75 FSP.`],
+    [`دي لـ 32 KDSI.`, `الـ 229 دي الـ productivity بالـ DSI/MM.`, `ده 3 × 24 من غير الأس.`, `صح. 24^1.12 = 35.14؛ × 3 = 105.4.`],
+    [`إنت قلبت النسبة.`, `صح. 24,000 / 105 = 228.6.`, `الـ 8 ده الـ average staffing.`, `ده DSI/TDEV، مش الـ productivity بتاعة المحاضرة.`],
+    [`صح. ¾ × 8 = 6 FSP؛ 105/6 = 17.5.`, `ده ¾ من الـ 13 شهر، يعني تغيير في الوقت مش في الـ staff.`, `ده لنص الـ staff (4 FSP).`, `ده الـ schedule الأصلي.`],
+    [`مش طالع من الداتا.`, `ده 13 × 5000 لشخص واحد بس.`, `صح. 8 FSP × 13 شهر × 5000 = 520,000 (بالظبط E × المرتب = 525,000).`, `ده 8 × 5000 لشهر واحد.`],
+    [`ده لو استخدمت الـ constant بتاع الـ Intermediate embedded وهو 2.8 (2.8 × 163.7 = 458.4).`, `ده 3.6 × 70 من غير الأس.`, `صح. 70^1.20 = 163.7؛ × 3.6 = 589.4.`, `دي لـ 40 KDSI.`],
+    [`صح. الـ Staff = 589/19 = 31؛ 0.8 × 31 = 24.8 ≈ 25 FSP؛ 589/25 = 23.6 ≈ 24 شهر.`, `الـ 31 ده الـ average staffing.`, `ناس أقل يعني مدة أطول.`, `80% من الـ 19 شهر ده تغيير في الوقت، مش في الـ staff.`],
+    [`ده الـ staffing العادي.`, `الـ 119 دي الـ productivity بالـ DSI/MM.`, `ده 70% من الـ staff، يعني الاتجاه الغلط.`, `صح. 0.7 × 19 = 13.3 ≈ 13 شهر؛ 589/13 = 45.3 ≈ 45 (أو 44 لو سبت الـ 13.3 من غير تقريب).`],
+    [`ده 75% من الـ staff.`, `صح. 0.75 × 13 = 9.75 شهر؛ 105/9.75 = 10.8 ≈ 11.`, `ده للـ schedule الكامل.`, `ده لنص الوقت.`],
+    [`صح. 4 FSP؛ 105/4 = 26.25 ≈ 26 شهر.`, `دي المدة الأصلية.`, `دي لـ ¾ الـ staff.`, `ده نص الـ schedule، مش نص الـ staff.`],
+    [`ده لو الـ mode كان organic.`, `ده لو الـ mode كان embedded.`, `صح.`, `ده مثال الـ Intermediate بـ RELY = 1.15.`],
+    [`ده قسمة على 1.15.`, `صح. 1.15 × 145.5 = 167.3.`, `الـ 192 دي الـ productivity بالـ DSI/MM.`, `الـ EAF بيتضرب في الـ effort.`],
+    [`الـ Semidetached ده اللي في النص.`, `الـ Embedded فيه قيود صارمة ومحتاج innovation كبير.`, `الـ Detailed ده model، مش mode.`, `صح.`],
+    [`الـ 68% (في حدود 20%) دي بتاعة الـ Intermediate model.`, `الـ 70% (في حدود 20%) دي بتاعة الـ Detailed model.`, `الـ 29% دي لـ factor 1.3.`, `صح.`],
+    [`ده assumption فعلًا.`, `صح. الـ COCOMO بيفترض إن الـ requirements مش هتتغير بشكل كبير بعد الـ planning.`, `ده assumption فعلًا.`, `ده assumption فعلًا.`],
+    [`صح.`, `الـ Detailed بيستخدم نفس معادلات الـ Intermediate.`, `بيستخدمها لكل module/subsystem.`, `ده الـ Basic model.`]
+  ],
+  extra: [
+    [`ده semidetached.`, `ده embedded.`, `ده بيستخدم 2.4 × 32 = 76.8 من غير الأس.`, `صح. 32^1.05 = 38.05؛ × 2.4 = 91.3. و 91^0.38 = 5.55؛ × 2.5 = 13.9.`],
+    [`ده لو استخدمت الـ constant اللي هو 3.0.`, `نسيت الـ 3.6.`, `ده 3.6 × 32.`, `صح. 3.6 × 64 = 230.4.`],
+    [`نص القيمة الصح.`, `صح. 240 / 17 = 14.1.`, `الـ 208 دي الـ productivity (50,000 / 240 DSI/MM).`, `إنت ضربت 240 في 17.`],
+    [`صح. 60 / 5 = 12.`, `إنت ضربت.`, `وقت أقل محتاج ناس أكتر.`, `ده لـ 10 شهور.`],
+    [`أكبر بعشر مرات.`, `ده شهر واحد لـ 6 أشخاص.`, `صح. 6 × 10 × 4000 = 240,000 (= 60 MM × 4000).`, `ده شخص واحد لمدة 10 شهور.`],
+    [`ده 1.15 - 0.85.`, `الـ multipliers بتتضرب، مش بتتجمع.`, `صح. 0.85 × 1.15 = 0.9775.`, `كده إنت تجاهلت الـ CPLX.`],
+    [`صح. ده قيد الـ main storage.`, `ده Project (استخدام الـ software tools).`, `ده Product (حجم الـ database).`, `ده Personnel (قدرة الـ analyst).`],
+    [`الـ Embedded = قيود صارمة و innovation كبير.`, `المشروع ده واضح إنه مألوف وبسيط.`, `الـ 3.6 ده coefficient الـ embedded.`, `صح.`],
+    [`الـ multipliers في الـ Intermediate مش بتفرّق بين الـ phases.`, `صح. بيقدّر كل phase و subsystem و module.`, `الـ Detailed model بيعمل كده.`, `الـ Basic بيدّي رقم إجمالي تقريبي واحد.`],
+    [`صح. ¼ × 3 = 0.75 ≈ 1 FSP؛ 28 / 1 = 28 شهر (مسألة المحاضرة b).`, `ده 4 × 9 شهور، وده بيتجاهل التقريب لـ 1 FSP.`, `ده الـ schedule الأصلي.`, `staff أقل معناه وقت أكتر.`]
+  ]
+};
+
+AR.sa.lectures["6"] = {
+  notes: [
+    { h: `الـ CPM والـ PERT`, pts: [
+      `الـ <b>CPM (Critical Path Method)</b> والـ <b>PERT (Program Evaluation and Review Technique)</b> هما <b>طرق مبنية على network</b> معمولة عشان تساعد في <b>الـ planning والـ scheduling والـ control</b> بتاع المشاريع.`,
+      `الـ <b>project</b> هو مجموعة أنشطة مرتبطة ببعض، كل نشاط بيستهلك وقت و resources. وهدف الـ CPM والـ PERT إنهم يدّوا طريقة تحليلية لجدولة الأنشطة دي.`,
+      `المراحل: (1) تحديد الـ <b>activities</b> وعلاقات الأسبقية (precedence) بينها والوقت اللي محتاجاه؛ (2) تحويل المشروع لـ <b>network</b>؛ (3) <b>حسابات الـ network</b> اللي بتبني عليها الـ <b>time schedule</b>؛ (4) وقت التنفيذ ممكن الـ schedule مايتحققش زي ما هو، فبيتحدّث: يعني فيه <b>feedback loop</b> من الـ time schedule راجع للـ network.`,
+      `الفرق: <b>الـ CPM بيفترض إن مدد الأنشطة deterministic</b> (ثابتة ومعروفة)، و<b>الـ PERT بيفترض إنها probabilistic</b> (احتمالية). والاتنين اتعملوا كل واحد لوحده.`
+    ] },
+    { h: `قواعد تمثيل الـ network والـ dummy activities`, pts: [
+      `كل activity بتتمثّل بـ <b>arc</b> (سهم) في اتجاه التقدم؛ والـ <b>nodes</b> هي اللي بتحدد علاقات الأسبقية.`,
+      `<b>Rule 1</b>: كل activity بتتمثّل بـ <b>arc واحد وبس</b>. <b>Rule 2</b>: كل activity لازم تتعرّف بـ <b>اتنين end nodes مختلفين</b>.`,
+      `الـ <b>dummy activity</b> (سهم متقطع) <b>مابتستهلكش وقت ولا resources</b>. بتدّي الـ activities اللي بتحصل في نفس الوقت (زي A و B) end nodes unique (فيه أربع طرق لرسمها)، فـ rule 2 تتحقق.`,
+      `<b>Rule 3</b>: عشان تحافظ على الأسبقية الصح، جاوب لكل activity: (أ) أنهي activities لازم <b>تسبقها على طول</b>؟ (ب) أنهي activities لازم <b>تيجي بعدها</b>؟ (ج) أنهي activities لازم تحصل <b>في نفس الوقت</b> معاها؟`,
+      `مثال: C بتبدأ بعد A و B؛ و E بتبدأ بعد B بس. لو جمعت A و B في node واحدة قبل C و E الاتنين يبقى ده <b>غلط</b> (لأنه بيجبر E تستنى A). التصليح: B تنتهي عند node لوحدها، وdummy D يطلع من الـ end node بتاعة B للـ start node بتاعة C.`
+    ] },
+    { h: `الـ Forward pass والـ backward pass (إزاي تحسب كل حاجة)` },
+    { h: `مثال المحاضرة: 13 activity (من A لـ M)، مع إجابة الدكتور` },
+    { h: `مثال الـ 13 activity: الـ critical path والـ Gantt والـ team` },
+    { h: `مسألة المحاضرة 2 (10 activities، بالأسابيع)` },
+    { h: `مسألة المحاضرة 3 (من A لـ G) ومسألة 1 (الـ expected times)` },
+    { h: `أمثلة Lab 3 (tasks مرحلة الـ planning)` },
+    { h: `برّه الـ slides: الـ PERT variance والاحتمالات (من الكتاب)` }
+  ],
+  cards: [
+    `الـ CPM بيفترض مدد deterministic؛ والـ PERT بيفترض مدد probabilistic.`,
+    `إنهم يدّوا طريقة تحليلية لجدولة أنشطة المشروع.`,
+    `مجموعة أنشطة مرتبطة ببعض، كل واحد بيستهلك وقت و resources.`,
+    `كل activity بتتمثّل بـ arc واحد وبس.`,
+    `كل activity لازم تتعرّف بـ اتنين end nodes مختلفين.`,
+    `سهم متقطع مابيستهلكش وقت ولا resources؛ بيحافظ على إن الـ end nodes تبقى unique وعلى الأسبقية الصح.`,
+    `إيه اللي لازم يسبقها على طول؟ إيه اللي لازم ييجي بعدها؟ إيه اللي لازم يحصل في نفس الوقت؟`,
+    `الـ schedule ممكن مايتحققش زي ما اتخطط؛ أنشطة بتتسرّع أو تتأخر فلازم الـ network والـ schedule يتحدّثوا.`,
+    `ET = (o + 4r + p)/6`,
+    `ES = أكبر EF للـ predecessors؛ EF = ES + duration.`,
+    `LF = أصغر LS للـ successors؛ LS = LF - duration.`,
+    `LS - ES (= LF - EF)؛ وبيبقى صفر على الـ critical path.`,
+    `التأخير المسموح من غير ما يأخر الـ early start لأي task جاية بعدها على طول.`,
+    `طول أطول path في الـ network.`,
+    `أكبر عدد activities شغالة في نفس الوقت على الـ Gantt chart بتاع الـ earliest-start.`,
+    `T = 40، الـ critical path هو B-E-F-J-L، والـ team = 4.`,
+    `23 أسبوع، الـ critical path هو 1-2-4-7-8-10؛ ولو activity 6 = 6 أسابيع يبقى 24 أسبوع (path 1-2-4-6-8-10).`,
+    `T = 21، الـ critical path هو A-C-D-F-G؛ الـ slack: B = 4، E = 3.`,
+    `((p - o)/6)²`,
+    `Z = (target - expected) / σ بتاع الـ critical path.`
+  ],
+  qa: [
+    `الـ CPM والـ PERT طرق مبنية على network بتساعد في الـ planning والـ scheduling والـ control للمشاريع؛ المشروع مجموعة أنشطة مرتبطة ببعض كل واحد بيستهلك وقت و resources، والاتنين بيدّوا طريقة تحليلية لجدولتها. الـ CPM بيفترض مدد deterministic، والـ PERT probabilistic. المراحل: تحديد الأنشطة والأسبقية والأوقات؛ تحويلها لـ network؛ عمل حسابات الـ network عشان نبني الـ time schedule؛ ووقت التنفيذ نحدّث الـ schedule (feedback loop من الـ time schedule للـ network) لأن الأنشطة ممكن تتسرّع أو تتأخر.`,
+    `Rule 1: كل activity بتتمثّل بـ arc واحد وبس. Rule 2: كل activity لازم تتعرّف بـ اتنين end nodes مختلفين. Rule 3: عشان الأسبقية تفضل صح، اسأل: أنهي activities لازم تسبقها على طول، وأنهي لازم تيجي بعدها، وأنهي لازم تحصل في نفس الوقت. الـ dummy activity سهم متقطع مابيستهلكش وقت ولا resources؛ بيدّي الأنشطة المتزامنة end nodes unique وبيصلّح الأسبقية (مثلًا C بعد A و B، و E بعد B بس: الـ end node بتاعة B تتوصل بالـ start بتاع C بـ dummy عشان E ماتستناش A).`,
+    `احسب الـ expected time لكل activity (ET = (o+4r+p)/6). الـ Forward pass: أبدر وقت خلصان لأي activity هو مجموع الأوقات على أطول path ليها (ES = أكبر EF للـ predecessors، EF = ES + t)؛ وأكبر EF هو وقت المشروع. الـ Backward pass: أتأخر وقت خلصان هو وقت المشروع ناقص الأوقات على الـ path اللي بعدها (LF = أصغر LS للـ successors، LS = LF - t). الـ Slack = LF - EF؛ والأنشطة اللي الـ slack بتاعها صفر هي الـ critical path.`,
+    `الـ Forward pass: B 0-10، E 10-20، F 20-29، J 29-36، L 36-40، D 10-18، G 18-21، K 18-22، H 10-14، I 20-25، M 29-32، A 0-5، C 0-3. المدة = 40 يوم، والـ critical path هو B-E-F-J-L. الـ Slack: A 28، C 26، D 15، G 15، H 22، I 11، K 18، M 8. على الـ Gantt chart بتاع الـ earliest-start، العدد في اليوم بيوصل أقصاه 4 (يوم 20-21: F، G، I، K)، فأقل team هو 4 أشخاص.`,
+    `في الأصل T = 23 أسبوع والـ critical path هو 1-2-4-7-8-10، والـ activity 6 (design screens) كان عندها 4 أسابيع slack (ES 12، LS 16). لما تزيد 5 أسابيع تبقى عدّت الـ slack بأسبوع: الـ path 1-2-4-6-8-10 بيبقى 2+3+7+6+4+2 = 24 أسبوع. المشروع بيتأخر أسبوع واحد ويبقى 24 أسبوع، والـ critical path بيبقى 1-2-4-6-8-10، والـ activity 7 بقى عندها أسبوع slack.`
+  ],
+  quiz: [
+    [`الـ 19 دي A-C-F.`, `الـ 22 دي path A-C-E-H، مش الأطول.`, `صح. A-D-G-H = 5+8+1+12 = 26.`, `مفيش path بالطول ده.`],
+    [`الـ A-C-F = 19 يوم بس.`, `الـ B-E-H = 20 يوم بس.`, `صح. الـ slack صفر، والمجموع 26.`, `الـ path ده 22؛ و C عندها 4 أيام slack.`],
+    [`صح. ES = 8، EF = 19، LF = 26 ← الـ slack 7.`, `F مش critical.`, `الـ 4 ده slack بتاع C أو E.`, `الـ 6 ده slack بتاع B.`],
+    [`عمرهم ما بيبقوا أربعة في نفس الوقت.`, `ده عدد الأنشطة.`, `ده ممكن بس بعد ما تزحزح B و C و E و F جوه الـ slack بتاعهم (resource levelling).`, `صح. يوم 5-6 (B، C، D) وأيام 8-10 (D، E، F).`],
+    [`ده مجموع كل المدد.`, `صح. A-B(أو C)-D-F-G-H = 5+6+2+5+3+5 = 26.`, `ده الـ path اللي بيعدّي على E.`, `دي نسخة المحاضرة اللي فيها H = 1.`],
+    [`صح. E: ES 13، EF 20، LF 21 ← أسبوع slack.`, `G critical.`, `B و C الاتنين critical (بالتوازي وبنفس الطول).`, `D critical.`],
+    [`ده عدد الأنشطة.`, `B و C بيتداخلوا، فشخص واحد مش كفاية.`, `صح. أقصى حاجة اتنين أنشطة بيتداخلوا (B و C؛ وبعدين E مع F أو G).`, `عمر تلاتة ما بيتداخلوا.`],
+    [`أقصر من أطول path بأسبوع.`, `صح.`, `ده من أقصر الـ paths.`, `مش الأطول.`],
+    [`الـ A-B-D-F-H-J طوله 19، مش الأقصر.`, `ده أطول path.`, `الـ path لازم يمشي من البداية لحد الـ activity الأخيرة J.`, `صح. 2+3+8+2 = 15 و 2+3+3+1+4+2 = 15.`],
+    [`الـ 4 ده slack بتاع F.`, `I مش على الـ critical path.`, `الـ 1 ده slack بتاع E.`, `صح. ES 5، EF 13، LF 21.`],
+    [`الـ 3 ده أحسن رقم ممكن بعد الـ levelling، مش العدد في الـ earliest-start.`, `صح. الأسابيع 5-8: C، D، E، I.`, `ده عدد الأنشطة.`, `الأسابيع 5-8 فيها أربع bars.`],
+    [`صح.`, `الاتنين ممكن توصلهم بس بالـ levelling (مش طريقة المحاضرة).`, `ده عدد الأنشطة.`, `العدد بيوصل 4 في يوم 20-21.`],
+    [`activity أطول ماينفعش تقصّر المشروع.`, `الـ 6 عندها 4 أسابيع slack بس؛ والزيادة 5.`, `صح. الـ critical path الجديد 1-2-4-6-8-10.`, `الـ slack بيمتص 4 من الـ 5 أسابيع.`],
+    [`نسيت تقسم على 6.`, `ده (4+7+9)/3.`, `صح. (4 + 28 + 9)/6 = 41/6 = 6.83.`, `قريب، بس النتيجة بالظبط 6.83.`],
+    [`صح.`, `مش شرط.`, `مابتستخدمش resources.`, `مابتاخدش وقت أصلًا.`],
+    [`الاتنين بيستخدموا الأسبقية.`, `مش ده الفرق المميز.`, `ده الـ PERT.`, `صح.`]
+  ],
+  extra: [
+    [`الـ E مطلوبة كمان.`, `ده الـ path الأقصر.`, `صح. 3+4+5+1 = 13.`, `B و C بيمشوا بالتوازي؛ ماينفعش تجمعهم الاتنين.`],
+    [`C مش critical.`, `صح. ES 3، EF 5، LF 7 ← 2.`, `الـ 4 دي مدة B.`, `الـ 7 ده الـ latest finish بتاع C.`],
+    [`S على الـ paths الاتنين.`, `T هي الـ activity الأخيرة.`, `الـ P-R-S-T = 14 وهو critical.`, `صح. Q-S-T = 13، فـ Q عندها وحدة slack واحدة.`],
+    [`راجع: الـ free slack = ES(D) - EF(B) = 5 - 5.`, `الـ 5 دي مدة B.`, `ده الـ total slack.`, `صح. B بتخلص عند 5 والـ successor بتاعها D أبدر وقت يبدأ فيه 5، فلو B اتأخرت الـ early start بتاع D هيتأخر.`],
+    [`كل activity لسه ليها arc واحد.`, `صح.`, `الـ Dummies مسموحة ومطلوبة هنا.`, `C هتفضل بعد A و B.`],
+    [`صح. (2 + 20 + 14)/6 = 6؛ ((14-2)/6)² = 2² = 4.`, `الـ 7 ده المتوسط العادي؛ والـ 2 ده σ مش σ².`, `الـ 5 ده الـ most likely time؛ والـ 12 ده p - o.`, `الـ 2 ده الـ standard deviation؛ والـ variance هو 4.`],
+    [`دايمًا فيه عدم تأكد.`, `الـ expected time هو نص التوزيع.`, `صح. Z = 0، فـ Φ(0) = 0.5.`, `ده لـ 24 أسبوع (Z = 1.25).`],
+    [`شخص واحد مايقدرش يغطي الفترات اللي فيها 3 أو 4 أنشطة.`, `فيه فترات فيها 4 أنشطة بالتوازي.`, `صح. ده أكبر عدد أنشطة بالتوازي.`, `ده مجموع الـ row.`],
+    [`صح. 5 - 3 = 2، زي مسألة 2 (الـ activity 6: زيادة 5 أسابيع، slack 4 ← تأخير أسبوع).`, `الـ slack بيمتص 3 أسابيع.`, `الـ slack مابيتجمعش على التأخير.`, `التأخير أكبر من الـ slack.`],
+    [`الاتنين مبنيين على precedence networks.`, `الـ loop بيرجع من الـ time schedule للـ network.`, `الـ PERT هو اللي بيستخدم تلات تقديرات؛ الـ CPM بيستخدم وقت واحد deterministic.`, `صح.`]
+  ]
+};
+
+AR.sa.exams = [
+  { sections: [
+    { items: [
+      { ans: `<b>a) الـ Network (activity on arrow، والـ event times بين القوسين)</b><pre>S(0) --A=5--> 1(5)
+S(0) --B=6--> 2(8)        1(5) --C=3--> 2(8)
+1(5) --D=8--> 3(13) --G=1--> 4(14)
+2(8) --E=2--> 4(14)
+4(14) --H=12--> End(26)
+2(8)  --F=11--> End(26)</pre>مش محتاجين dummy: الـ E والـ F الاتنين بيبدأوا من node 2 (بعد ما B و C يخلصوا)، والـ H بتبدأ من node 4 (بعد ما G و E يخلصوا).<br><br><b>الـ Forward/backward pass</b><table><tr><th>Task</th><th>Dur</th><th>ES</th><th>EF</th><th>LS</th><th>LF</th><th>Slack</th></tr><tr><td>A</td><td>5</td><td>0</td><td>5</td><td>0</td><td>5</td><td>0</td></tr><tr><td>B</td><td>6</td><td>0</td><td>6</td><td>6</td><td>12</td><td>6</td></tr><tr><td>C</td><td>3</td><td>5</td><td>8</td><td>9</td><td>12</td><td>4</td></tr><tr><td>D</td><td>8</td><td>5</td><td>13</td><td>5</td><td>13</td><td>0</td></tr><tr><td>E</td><td>2</td><td>8</td><td>10</td><td>12</td><td>14</td><td>4</td></tr><tr><td>F</td><td>11</td><td>8</td><td>19</td><td>15</td><td>26</td><td>7</td></tr><tr><td>G</td><td>1</td><td>13</td><td>14</td><td>13</td><td>14</td><td>0</td></tr><tr><td>H</td><td>12</td><td>14</td><td>26</td><td>14</td><td>26</td><td>0</td></tr></table>الـ Paths: A-D-G-H = 26 (critical)، A-C-E-H = 22، B-E-H = 20، A-C-F = 19، B-F = 17. <b>المشروع = 26 يوم، والـ critical path هو A → D → G → H.</b><br><br><b>b) الـ Gantt chart</b> (= critical، # non-critical، . slack)<pre>     0    5    10   15   20   25
+A    =====
+B    ######......
+C         ###....
+D         ========
+E            ##....
+F            ###########.......
+G                 =
+H                  ============
+team 22222322332222222221111111</pre><b>c) الـ Team.</b> لما كل activity تبقى عند الـ earliest start بتاعها، الـ count row بيوصل أقصاه <b>3</b> (يوم 5-6: B، C، D؛ أيام 8-10: D، E، F)، يبقى <b>الـ max team = 3</b>. وده كمان الـ "minimum team" بطريقة المحاضرة. ولو استخدمت الـ slack تقدر تنزّل الـ peak لـ <b>2</b> من غير ما تأخر الـ 26 يوم: A 0-5، B 0-6، C 6-9، D 5-13، E 9-11، F 11-22، G 13-14، H 14-26. يبقى <b>الـ min team = 2</b>. (ولو السؤال قصده أصغر رقم في الـ count row، يبقى 1، في أيام 19-26.)<br><br><b>d) الأنشطة اللي ليها slack (total slack):</b> B = 6، C = 4، E = 4، F = 7 أيام. الـ Free slack: B 2، C 0، E 4، F 7. والـ A و D و G و H مالهمش slack.` }
+    ] },
+    { items: [
+      { ans: `إنك تمشي على <b>systems methodology</b>، وتطبّق <b>techniques</b>، وتستخدم <b>tools</b> مناسبة، ودول (1) <b>بيضمنوا الجودة وإن السيستم اللي بيتبني مناسب (quality and appropriateness)</b>، و(2) <b>بيدّوا structure</b> لعملية الـ systems development، لأنهم اتجرّبوا واتظبطوا قبل كده من ناس تانية. (L2)` },
+      { ans: `KDSI = 24 (قرّب كل نتيجة لأقرب رقم صحيح، زي ما المحاضرة بتعمل).<br>a) الـ Effort = 3.0 × 24^1.12 = 3.0 × 35.14 = 105.4 ≈ <b>105 man-months</b><br>b) الـ Duration = 2.5 × 105^0.35 = 2.5 × 5.098 = 12.7 ≈ <b>13 شهر</b><br>c) الـ Average staffing = 105 / 13 = 8.08 ≈ <b>8 FSP</b><br>d) الـ Productivity = 24,000 / 105 = 228.6 ≈ <b>229 DSI/MM</b><br>e) التكلفة = 8 FSP × 13 شهر × 5000 = <b>EP 520,000</b> (بالشكل المظبوط E × المرتب = 105 × 5000 = EP 525,000)<br>f) نص الـ staff = 8/2 = 4 FSP ← الـ duration = 105 / 4 = 26.25 ≈ <b>26 شهر</b><br>g) 75% من 13 = 9.75 شهر ← الـ staffing = 105 / 9.75 = 10.8 ≈ <b>11 FSP</b>` }
+    ] },
+    { items: [
+      { ans: `الـ <b>DFD</b>: صورة لحركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم (logical، ومستقل عن التكنولوجيا). الـ <b>DFD balancing</b>: الحفاظ على الـ inputs والـ outputs بتوع الـ process لما يتعمله decompose لمستوى أقل: عدد الـ inputs والـ outputs في الـ child diagram لازم يساوي اللي في الـ parent process. مثال: context process ليه input واحد و output واحد والـ Level-0 بتاعه فيه 2 inputs يبقى unbalanced. (L4)` },
+      { ans: `الـ SDLC هو الـ methodology التقليدية لتطوير الـ IS وعمل maintain ليها واستبدالها.<br><b>Planning</b>: احتياجات المنظمة كلها من الـ IS بتتحدد وتتحلل وتترتب حسب الأولوية.<br><b>Analysis</b>: الـ requirements بتتجمع من الـ users وتتدرس وتتنظم ويتشال التكرار منها؛ والـ output = الحل المقترح (recommended solution).<br><b>Design</b>: الحل المقترح بيتحوّل لـ logical specifications (مستقلة عن الـ platform) وبعدين physical specifications (تفاصيل technology-specific).<br><b>Implementation</b>: الـ IS بيتعمله code و test و install و support.<br><b>Maintenance</b>: السيستم بيتصلح ويتحسن بشكل منظم (systematically). (L2)` }
+    ] },
+    { items: [
+      { ans: `<b>الـ Context diagram</b><br>1) فيه <b>اتنين processes</b> (Education System 1 و 2). الـ context diagram بيبقى فيه <b>process واحد بس</b> رقمه 0. والـ DF2 اللي بينهم ده internal ومايظهرش.<br>2) فيه <b>data store (DS2)</b>. الـ context diagram <b>مافيهوش data stores</b>، وكمان الـ flow الطالع من DS2 مالوش label.<br>3) <b>اتجاه الـ DF1</b>: في الـ context الـ DF1 رايح لـ E1 (output)، بس في الـ Level 0 الـ DF1 جاي من E1 لـ P1 (input). المستويات <b>مش balanced</b>.<br>4) <b>الـ flows بتوع E2 مش balanced</b>. الـ context بيبعت DF3 و DF4 لـ E2. في الـ Level 0، الـ DF3 بيروح لـ DS2 (مش لـ E2)، وفيه DF4 جاي من E2 لـ P2.<br><b>الـ Level 0</b><br>5) <b>الـ P2 ليه inputs بس</b> (DF2، DF6، DF4) ومالوش output: black hole.<br>6) <b>الـ P3 ليه outputs بس</b> (DF5، DF4) ومالوش input: miracle.<br>7) الـ label <b>DF4 مستخدم لـ flows مختلفين</b> (E2 → P2 و P3 → E2).<br>8) <b>الـ DS2 مرسوم مرتين</b>. الـ DS2 اللي تحت بيستقبل بس (DF3، DF5) ومحدش بيقرا منه. والـ DS2 اللي فوق بيدّي DF6 بس ومحدش بيكتب فيه. المفروض يبقوا store واحد فيه الاتنين، أو التاني يتغير اسمه لـ DS1.<br><b>الـ Level 1 (decomposition للـ P1)</b><br>9) <b>فيه اتنين processes رقمهم P1.1</b>. التاني المفروض يبقى <b>P1.3</b>.<br>10) الـ <b>forked flow</b> الطالع من P1.1 عليه اتنين labels (DF7 و DF2). الـ fork لازم يشيل <b>نفس الداتا بالظبط</b>.<br>11) <b>مش balanced مع P1</b>: الـ P1 بيكتب DF3 في DS2، بس الـ Level 1 بيكتب <b>DF6 في DS1</b>، وده store مش موجود في الـ Level 0. المفروض P1.2 يكتب DF3 في DS2.<br>12) الـ output بتاع P1 لـ P2 هو DF2، بس الـ Level 1 بيطلّع <b>DF3</b> من P1.4. المفروض يبقى <b>DF2</b>.<br><b>الـ Level 2 (decomposition للـ P1.4)</b><br>13) <b>الـ P1.5.1 مترقم غلط</b>: مفيش P1.5. المفروض يبقى <b>P1.4.1</b>.<br>14) <b>الـ DF11 براسين</b> بين اتنين processes. الـ flows بين الـ processes بتمشي في اتجاه واحد؛ الـ flow في الاتجاهين مسموح بس بين process و data store، وبيترسم سهمين.<br>15) <b>الـ P1.4.3 مالوش output</b> (DF11 و DF12 و DF2 كلهم داخلين). الـ DF2 لازم <b>يطلع</b> من P1.4.3 عشان يوازن الـ output بتاع P1.4.` }
+    ] },
+    { items: [
+      { ans: `الـ <b>Functional decomposition</b>: process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق. الـ processes الـ high-level بتتوصف بـ sub-processes في مستوى أقل، و DFD لكل مستوى.<br><b>نقف لما</b>: (1) كل process يتقلل لـ decision واحد أو calculation واحد أو database operation واحدة؛ (2) كل data store يمثّل داتا عن entity واحد؛ (3) الـ user مش عايز يشوف تفاصيل أكتر؛ (4) مفيش data flow محتاج يتقسم أكتر عشان يوضح إن الداتا بتتعامل بطرق مختلفة؛ (5) كل business form أو transaction، وكل online display و report يظهر كـ data flow واحد؛ (6) يبقى فيه process منفصل لكل اختيار في كل الـ menu options اللي في أقل مستوى. (L4)` },
+      { ans: `الـ Project management هو controlled process للـ <b>initiating والـ planning والـ executing والـ closing down</b> للمشروع.<br><b>1. Initiating</b>: تقييم الحجم والنطاق والتعقيد، وحط الـ procedures. الأنشطة: الـ initiation team، العلاقة مع الـ customer، الـ initiation plan، الـ management procedures، الـ PM environment والـ project workbook. والـ project charter بيعلن المشروع.<br><b>2. Planning</b>: تحديد أنشطة واضحة ومنفصلة والشغل المطلوب لكل واحد. بيغطي الـ scope والبدائل والـ feasibility، الـ WBS، الـ resource plan (COCOMO)، الـ schedule، الـ communication plan، الـ standards، الـ risk، الـ budget، الـ statement of work والـ baseline project plan.<br><b>3. Executing</b>: تنفيذ الخطط. تنفيذ الـ BPP، متابعة التقدم مقارنةً بيه، إدارة التغييرات، الحفاظ على الـ workbook وتوصيل حالة المشروع.<br><b>4. Closing down</b>: إنهاء المشروع. قفل المشروع، عمل post-project reviews وقفل عقد الـ customer. (L3)` },
+      { ans: `الـ CASE tools هي software بيدّي <b>automated support لجزء من الـ SDLC</b>. مبنية حوالين <b>repository</b> فيه كل الـ metadata (أسامي الداتا، الـ formats، الاستخدامات، الأماكن) والـ system specifications. بتعمل automate للمهام الروتينية وتقدر تطلّع code و DDL. الأنواع: diagramming tools، computer display and report generators، analysis tools، central repository، documentation generators و code generators. والـ repository هو أهم جزء لأنه بيدّي الـ team كله single view للمشروع. (L2)` }
+    ] },
+    { items: [
+      { why: `store ← process معناها retrieve أو use. (L4)` },
+      { why: `process ← store معناها update (insert أو delete أو change). (L4)` },
+      { why: `الـ DFDs بتمثّل المعلومات اللي اتجمعت كجزء من الـ requirements determination. (L4)` },
+      { why: `الـ Functional decomposition بيكسّر الـ processes الـ high-level لـ sub-processes. (L4)` },
+      { why: `ده تعريف الـ slack time. (L3)` },
+      { why: `الـ network diagram بيوضح tasks المشروع والعلاقات بينها. (L3)` },
+      { why: `ده تعريف الـ WBS. (L3)` },
+      { why: `ده تعريف الـ SSR. (L3)` },
+      { why: `الـ Logical design مستقل عن الـ platform. (L2)` },
+      { why: `الـ Physical design بيطلّع تفاصيل technology-specific. (L2)` }
+    ] }
+  ] },
+  { sections: [
+    { items: [
+      { ans: `<b>a) الـ Network (activity on arrow، والـ event times)</b><pre>S(0) --A=2--> 1(2) --B=3--> 2(5)
+2 --C=3--> 3(12)      2 --D=7--> 4(12)      2 --E=6--> 5(12)
+4 ..dummy..> 3        4 ..dummy..> 5         (D is needed by both F and G)
+3 --F=1--> 6(17)      5 --G=5--> 6(17)
+6 --H=4--> 7(21)      2 --I=8--> 7(21)
+7 --J=2--> End(23)</pre>(الـ dummy موجودة لأن الـ D مطلوبة قبل F و G الاتنين.)<table><tr><th>Act</th><th>Dur</th><th>ES</th><th>EF</th><th>LS</th><th>LF</th><th>Slack</th></tr><tr><td>A</td><td>2</td><td>0</td><td>2</td><td>0</td><td>2</td><td>0</td></tr><tr><td>B</td><td>3</td><td>2</td><td>5</td><td>2</td><td>5</td><td>0</td></tr><tr><td>C</td><td>3</td><td>5</td><td>8</td><td>13</td><td>16</td><td>8</td></tr><tr><td>D</td><td>7</td><td>5</td><td>12</td><td>5</td><td>12</td><td>0</td></tr><tr><td>E</td><td>6</td><td>5</td><td>11</td><td>6</td><td>12</td><td>1</td></tr><tr><td>F</td><td>1</td><td>12</td><td>13</td><td>16</td><td>17</td><td>4</td></tr><tr><td>G</td><td>5</td><td>12</td><td>17</td><td>12</td><td>17</td><td>0</td></tr><tr><td>H</td><td>4</td><td>17</td><td>21</td><td>17</td><td>21</td><td>0</td></tr><tr><td>I</td><td>8</td><td>5</td><td>13</td><td>13</td><td>21</td><td>8</td></tr><tr><td>J</td><td>2</td><td>21</td><td>23</td><td>21</td><td>23</td><td>0</td></tr></table><b>b) الـ Gantt chart</b><pre>     0    5    10   15   20
+A    ==
+B      ===
+C         ###........
+D         =======
+E         ######.
+F                #....
+G                =====
+H                     ====
+I         ########........
+J                         ==
+team 11111444333231111111111</pre><b>c) الـ Team</b>: بالـ earliest starts الـ count row بيوصل أقصاه <b>4</b> (الأسابيع 5-8: C، D، E، I)، يبقى <b>الـ max team = 4</b> (طريقة الـ "minimum team" بتاعة المحاضرة). وأصغر عدد هو 1 (الأسابيع 0-5 و 13-23). لو زحزحت الأنشطة جوه الـ slack بتاعها تقدر تنزّل الـ peak لـ <b>3</b>، بس مش لـ 2، لأن ده محتاج 18 أسبوع شغل non-critical (C، E، F، I) في window طوله 16 أسبوع جنب الـ critical chain.<br><b>d) الـ Paths</b>: A-B-D-G-H-J = 23 (<b>الأطول = critical</b>)؛ A-B-E-G-H-J = 22؛ A-B-D-F-H-J = 19؛ A-B-C-F-H-J = 15؛ A-B-I-J = 15. <b>الأقصر = 15 أسبوع</b> (A-B-I-J أو A-B-C-F-H-J). <b>المشروع = 23 أسبوع.</b><br><b>e) الـ Slack</b>: C = 8، E = 1، F = 4، I = 8 أسابيع. والـ A و B و D و G و H و J = 0.` }
+    ] },
+    { items: [
+      { ans: `إنك تمشي على systems methodology، وتطبّق techniques، وتستخدم tools مناسبة، ودول بيضمنوا الجودة وإن السيستم اللي بيتبني مناسب، وبيدّوا structure لعملية الـ development، لأنهم اتجرّبوا واتظبطوا قبل كده من ناس تانية. (L2)` },
+      { ans: `KDSI = 70.<br>a) الـ Effort = 3.6 × 70^1.20 = 3.6 × 163.73 = 589.4 ≈ <b>589 MM</b><br>b) الـ Duration = 2.5 × 589^0.32 = 2.5 × 7.699 = 19.2 ≈ <b>19 شهر</b><br>c) الـ Staffing = 589 / 19 = <b>31 FSP</b><br>d) الـ Productivity = 70,000 / 589 = 118.8 ≈ <b>119 DSI/MM</b><br>e) 80% × 31 = 24.8 ≈ 25 FSP ← الـ duration = 589 / 25 = 23.6 ≈ <b>24 شهر</b><br>f) 70% × 19 = 13.3 ≈ 13 شهر ← الـ staffing = 589 / 13 = 45.3 ≈ <b>45 FSP</b> (44.3 ≈ 44 لو ماقرّبتش الـ 13.3)<br>(المرتب مدّيينه بس مفيش تكلفة مطلوبة. لو احتجتها: 31 × 19 × 10,000 = EP 5,890,000.)` }
+    ] },
+    { items: [
+      { ans: `1) <b>Initiating</b>: تقييم الحجم والنطاق والتعقيد وحط الـ procedures (الـ initiation team، العلاقة مع الـ customer، الـ initiation plan، الـ management procedures، الـ PM environment والـ workbook، الـ project charter). 2) <b>Planning</b>: تحديد أنشطة واضحة ومنفصلة والشغل المطلوب لكل واحد (الـ scope والـ feasibility، الـ WBS، الـ resources، الـ schedule، الـ communication plan، الـ standards، الـ risk، الـ budget، الـ statement of work، الـ baseline project plan). 3) <b>Executing</b>: تنفيذ الخطط (تنفيذ ومتابعة الـ BPP، إدارة التغييرات، الحفاظ على الـ workbook، توصيل الحالة). 4) <b>Closing down</b>: قفل المشروع، عمل post-project reviews، قفل عقد الـ customer. (L3)` },
+      { ans: `الـ DFD صورة لحركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم. <b>بيُستخدم في</b>: تمثيل الـ requirements اللي اتجمعت في الـ analysis (الـ process modeling)، وفهم السيستم الحالي الـ physical والـ logical، وتحديد السيستم الجديد الـ logical من غير ما نعتمد على تكنولوجيا. <b>المستويات</b>: الـ <b>context</b> (حدود السيستم، الـ external entities، الـ flows الأساسية؛ process واحد 0، مفيش data stores)؛ الـ <b>Level 0</b> (الـ processes الأساسية 1.0، 2.0...، والـ flows والـ stores)؛ الـ <b>Level 1</b> (decomposition لـ process واحد من الـ Level-0، زي 4.1، 4.2)؛ الـ <b>Level n</b> (decomposition لـ process في Level n-1، زي 4.3.1). وأقل مستوى هو الـ <b>primitive DFD</b>. وكل مستوى لازم يبقى balanced مع الـ parent بتاعه. (L4)` }
+    ] },
+    { items: [
+      { ans: `الـ Planning (تحديد احتياجات الـ IS وتحليلها وترتيبها بالأولوية)؛ الـ Analysis (دراسة الـ requirements وتنظيمها؛ والحل المقترح)؛ الـ Design (logical design مستقل عن الـ platform، وبعدين physical design بتفاصيل technology-specific)؛ الـ Implementation (code، test، install، support)؛ الـ Maintenance (تصليح وتحسين بشكل منظم). (L2)` },
+      { ans: `الـ COCOMO (Barry Boehm، 1981) model منتشر بيتوقع الـ <b>effort</b> بتاع الـ software (بالـ man-months) والـ <b>schedule</b> (بالشهور) من <b>الحجم بالـ DSI</b> والـ <b>cost drivers</b>. الـ Assumptions: الـ DSI هو الـ cost driver الأساسي، الإدارة كويسة، والـ requirements ثابتة بعد الـ planning. الـ Modes: organic، semidetached، embedded. الـ <b>Basic</b>: E = a·KDSI^b، TDEV = 2.5·E^c (organic 2.4/1.05/0.38، semidetached 3.0/1.12/0.35، embedded 3.6/1.20/0.32). كويس للتقديرات السريعة التقريبية؛ في حدود factor 2 في 60% بس من الحالات. الـ <b>Intermediate</b>: بيضيف 15 cost driver (product، computer، personnel، project) عن طريق الـ EAF؛ في حدود 20% من الحقيقي في 68% من الحالات. الـ <b>Detailed</b>: multipliers بتفرّق بين الـ phases و hierarchy من module-subsystem-system؛ في حدود 20% في 70% من الحالات. (L5)` }
+    ] },
+    { items: [
+      { ans: `الـ Functional decomposition: process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق. نقف لما: كل process يبقى decision واحد أو calculation واحد أو database operation واحدة؛ كل data store يمثّل entity واحد؛ الـ user مش عايز يشوف تفاصيل أكتر؛ مفيش flow محتاج يتقسم أكتر؛ كل form و transaction و display و report يبقى data flow واحد؛ ويبقى فيه process منفصل لكل اختيار في الـ menu في أقل مستوى. (L4)` },
+      { ans: `الـ CASE tools هي software بيدّي automated support لجزء من الـ SDLC. مبنية حوالين repository فيه الـ metadata والـ specifications، بتعمل automate للمهام الروتينية، وبتطلّع code و DDL.<br><b>الأنواع</b>: diagramming tools (بترسم الـ processes والداتا والـ control بشكل graphical)؛ display and report generators (prototype للـ look and feel)؛ analysis tools (بتشيك على الـ specifications الناقصة أو المتعارضة أو الغلط)؛ central repository (تخزين متكامل للـ diagrams والـ reports ومعلومات المشروع؛ وده أهم جزء لأنه بيدّي view واحد للمشروع)؛ documentation generators (مستندات تقنية وللـ user)؛ code generators (كود البرنامج والـ DB من الـ designs).<br><b>الدعم في كل phase</b>: الـ identification and selection (diagramming و matrix tools)؛ الـ initiation and planning (الـ repository والـ documentation generators)؛ الـ analysis (process و logic و data models)؛ الـ design (form و report generators، documentation)؛ الـ implementation (code و DDL generators، documentation)؛ الـ maintenance (كل الـ tools، وأساسًا الـ repository). (L2)` },
+      { ans: `1) جهاز data storage and retrieval. 2) processing capabilities لإنتاج الـ information (totals، averages، ...). 3) communication device يجيب داتا أو information من كمبيوترات تانية. 4) عرض الـ information في شكل tables و reports و charts و graphs ومستندات متنسقة. (L1)` }
+    ] },
+    { items: [
+      { ans: `1) الـ <b>WBS</b>: تقسيم المشروع لـ tasks يتحكم فيها وترتيبها منطقيًا عشان الانتقال بينها يبقى سلس.<br>2) الـ <b>Iterative development</b>: الـ analyst لازم يتوقع إنه هيعيد رسم الـ diagram كذا مرة قبل ما يوصل لأقرب تمثيل للسيستم.<br>3) الـ <b>Primitive DFD</b>: أقل مستوى logical للـ decomposition.<br>4) الـ <b>Project workbook</b>: repository أونلاين أو ورقي لكل مراسلات المشروع والـ inputs والـ outputs والـ deliverables والـ procedures والـ standards.<br>5) الـ <b>Project charter</b>: مستند قصير و high-level للـ stakeholders الداخليين والخارجيين، بيعلن المشروع رسميًا ويوصف الـ objectives والـ key assumptions والـ stakeholders.<br>6) الـ <b>Slack time</b>: الوقت اللي النشاط ممكن يتأخره من غير ما يأخر المشروع.<br>7) الـ <b>Critical path</b>: سلسلة أنشطة ترتيبها ومدتها بيأثروا مباشرة على معاد خلصان المشروع.<br>8) الـ <b>SSR</b>: form قياسي لطلب أو اقتراح شغل systems development (الـ contact person، الـ problem statement، الـ service request statement، بيانات الـ liaison).<br>9) الـ <b>DFD balancing</b>: الحفاظ على الـ inputs والـ outputs بتوع الـ process لما يتعمله decompose لمستوى أقل.<br>10) الـ <b>Context DFD</b>: بيوضح الـ scope بتاع السيستم: الحدود، والـ external entities، والـ flows الأساسية، بـ process واحد (0) ومفيش data stores.` }
+    ] },
+    { items: [
+      { why: `الـ processes والـ data stores جوه السيستم. (L4)` },
+      { why: `store ← process = retrieve أو use.` },
+      { why: `دي برّه السيستم.` },
+      { why: `قاعدة الـ data store.` },
+      { why: `process واحد رقمه 0.` },
+      { why: `الـ sources/sinks برّه.` },
+      { why: `process ← store = update (insert أو delete أو change).` },
+      { why: `الـ context diagrams مافيهاش data stores؛ إنما الـ sinks (الـ destinations) بتظهر فعلًا.` },
+      { why: `الـ data stores جوه.` },
+      { why: `الـ forked/joined flows لازم يبقوا نفس الـ data item بالظبط.` }
+    ] }
+  ] },
+  { sections: [
+    { items: [
+      { ans: `نفس الـ network بتاع Final 2025/26 Q1.<pre>S(0) --A=5--> 1(5) --C=3--> 2(8)      S(0) --B=6--> 2(8)
+1(5) --D=8--> 3(13) --G=1--> 4(14)     2(8) --E=2--> 4(14)
+4(14) --H=12--> End(26)                2(8) --F=11--> End(26)</pre><b>المشروع = 26 يوم، والـ critical path هو A-D-G-H.</b> الـ Slack: B 6، C 4، E 4، F 7.<pre>     0    5    10   15   20   25
+A    =====
+B    ######......
+C         ###....
+D         ========
+E            ##....
+F            ###########.......
+G                 =
+H                  ============
+team 22222322332222222221111111</pre><b>c)</b> أكبر عدد هو <b>3</b> (يوم 5-6 وأيام 8-10)، يبقى الـ minimum team = <b>3</b> (طريقة المحاضرة؛ والـ Saad key برضه بيقول 3). ولسؤال الـ "min and max" بتاع امتحان May: الـ max = 3 (الـ earliest-start schedule). ولو زحزحت B و C و E و F جوه الـ slack بتاعهم الـ peak ممكن ينزل لـ 2، يبقى الـ min = 2.` }
+    ] },
+    { items: [
+      { ans: `إنك تمشي على systems methodology، وتطبّق techniques، وتستخدم tools مناسبة: (1) عشان تضمن الجودة وإن السيستم اللي بيتبني مناسب؛ (2) عشان تدّي structure لعملية الـ systems development، لأنها اتجرّبت واتظبطت قبل كده من ناس تانية. (L2)` },
+      { ans: `a) E = 3.0 × 24^1.12 = 3.0 × 35.14 = 105.4 ≈ <b>105 MM</b><br>b) TDEV = 2.5 × 105^0.35 = 2.5 × 5.098 = 12.7 ≈ <b>13 شهر</b><br>c) الـ Staff = 105 / 13 = 8.08 ≈ <b>8 FSP</b><br>d) الـ Productivity = 24,000 / 105 = 228.6 ≈ <b>229 DSI/MM</b><br>e) ¾ × 8 = 6 FSP ← 105 / 6 = <b>17.5 شهر</b> (≈ 18)<br>f) نص الوقت = 13 / 2 = 6.5 شهر ← 105 / 6.5 = 16.2 ≈ <b>16 FSP</b><br>g) التكلفة = 8 × 13 × 5000 = <b>EP 520,000</b> (بالظبط: 105 MM × 5000 = EP 525,000)` }
+    ] },
+    { items: [
+      { ans: `الـ DFD: صورة لحركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم. الـ DFD balancing: الحفاظ على الـ inputs والـ outputs بتوع الـ process لما يتعمله decompose لمستوى أقل (الـ child diagram ليه نفس الـ inputs والـ outputs بتوع الـ parent process). (L4)` },
+      { ans: `الـ slides بتعرّف الـ logical والـ physical <b>design</b> في الـ SDLC. الـ <b>Logical design</b>: كل الـ functional features بتاعة السيستم اللي اتختار بتتوصف <b>من غير ما تعتمد على أي computer platform</b>. وفي الـ database ده يبقى الـ conceptual model: الـ entities والـ attributes والـ relationships والـ keys والـ normalization، من غير ما نختار DBMS لسه. الـ <b>Physical design</b>: الـ logical specifications بتتحوّل لـ <b>تفاصيل technology-specific</b> نقدر نبرمج ونبني منها. وفي الـ database ده معناه اختيار الـ DBMS، والـ tables والـ data types، والـ file and storage structures، والـ indexes والـ partitioning (وساعات denormalizing عشان الـ performance). (L2؛ وتفاصيل الـ database دي من الكتاب.)` },
+      { ans: `الـ Planning (احتياجات الـ IS كلها بتتحدد وتتحلل وتترتب بالأولوية)؛ الـ Analysis (الـ requirements بتتدرس وتتنظم؛ والحل المقترح)؛ الـ Design (logical specifications وبعدين physical)؛ الـ Implementation (code، test، install، support)؛ الـ Maintenance (تصليح وتحسين بشكل منظم). (L2)` }
+    ] },
+    { items: [
+      { ans: `<b>الـ Context</b><br>1) فيه اتنين processes. الـ context diagram فيه process واحد بالظبط (0)، فالـ DF2 اللي بين اتنين "systems" مايظهرش.<br>2) فيه الـ data store DS2 (ممنوع data stores في الـ context diagram)، والـ flow بتاعه مالوش label.<br>3) مش balanced مع الـ Level 0: الـ context بيبعت DF3 لـ E2، بس في الـ Level 0 الـ DF3 رايح من P1 لـ DS2 ومفيش حاجة اسمها DF3 بتوصل لـ E2.<br><b>الـ Level 0</b><br>4) الـ DS2 مرسوم مرتين (المفروض يبقى store واحد، أو التاني يتسمى DS1).<br>5) الـ DS2 اللي تحت ليه inputs بس (DF3، DF5) ومحدش بيقرا منه.<br>6) الـ DS2 اللي فوق ليه output بس (DF6) ومحدش بيكتب فيه.<br>7) الـ DF4 label لـ flows مختلفين (P2 → E2 و P3 → E2).<br>8) الـ P3 ليه outputs (DF5، DF4) ومالوش input.<br><b>الـ Level 1</b><br>9) فيه اتنين processes رقمهم P1.1؛ التاني المفروض يبقى P1.3.<br>10) الـ forked flow الطالع من P1.1 عليه اتنين labels (DF7 و DF2). الـ fork لازم يشيل نفس الداتا بالظبط.<br>11) الـ P1.2 بيكتب DF6 في DS1، بس الـ parent P1 بيكتب DF3 في DS2. عشان يبقى balanced، المفروض يبقى DF3 → DS2.<br>12) الـ P1.4 بيطلّع DF3، بس الـ output بتاع P1 لـ P2 هو DF2. المفروض يبقى DF2.<br><b>الـ Level 2</b><br>13) الـ P1.5.1 المفروض يبقى P1.4.1 (مفيش P1.5).<br>14) الـ P1.4.3 ليه inputs بس (DF11، DF12، DF2) ومالوش output.<br>15) الـ DF2 داخل على P1.4.3. المفروض يطلع من P1.4.3 عشان يوازن الـ output بتاع P1.4.` }
+    ] },
+    { items: [
+      { ans: `الـ Functional decomposition: process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق. نقف لما: كل process يبقى decision واحد أو calculation واحد أو database operation واحدة؛ كل store فيه داتا عن entity واحد؛ الـ user مش عايز يشوف تفاصيل أكتر؛ مفيش flow محتاج يتقسم أكتر؛ كل business form و transaction و display و report يبقى flow واحد؛ ويبقى فيه process منفصل لكل اختيار في الـ menu في أقل مستوى. (L4)` },
+      { ans: `controlled process فيها initiating (الـ initiation team، العلاقة مع الـ customer، الـ initiation plan، الـ management procedures، الـ PM environment والـ workbook، الـ charter)، و planning (الـ scope والـ feasibility، الـ WBS، الـ resources، الـ schedule، الـ communication plan، الـ standards، الـ risk، الـ budget، الـ SOW، الـ BPP)، و executing (تنفيذ ومتابعة الـ BPP، إدارة التغييرات، الحفاظ على الـ workbook، توصيل الحالة)، و closing down (قفل المشروع، post-project reviews، قفل عقد الـ customer). (L3)` },
+      { ans: `software tools بتدّي automated support لجزء من الـ SDLC. مبنية حوالين repository فيه الـ metadata والـ specifications. الأنواع: diagramming tools، display and report generators، analysis tools، central repository، documentation generators و code generators. (L2)` }
+    ] },
+    { items: [
+      { why: `ده تعريف الـ systems analyst. (L2)` },
+      { why: `process ← store = update. (L4)` },
+      { why: `ده تعريف الـ slack time. (L3)` },
+      { why: `store ← process = retrieve. (L4)` },
+      { why: `ده تعريف الـ resources. (L3)` },
+      { why: `ده تعريف الـ critical path. (L3)` },
+      { why: `ده تعريف الـ WBS. (L3)` },
+      { why: `ده تعريف الـ project charter. (L3)` },
+      { why: `ده تعريف الـ project workbook. (L3)` },
+      { why: `ده تعريف الـ SSR. (L3)` }
+    ] }
+  ] },
+  { sections: [
+    { items: [
+      { ans: `<pre>S(0) --A=5--> 1(5) --B=6--> 2(11)
+1(5) --C=6--> 2'(11) ..dummy..> 2      (B and C need unique end nodes)
+2(11) --D=2--> 3(13) --F=5--> 4(18) --G=3--> 5(21)
+3(13) --E=7--> 5(21)
+5(21) --H=5--> End(26)</pre>(الـ dummy موجودة عشان B و C يبقى ليهم end nodes unique.)<br>الـ ES/EF: A 0-5، B 5-11، C 5-11، D 11-13، E 13-20 (LF 21، slack 1)، F 13-18، G 18-21، H 21-26.<br><b>المشروع = 26 أسبوع</b>، والـ critical paths هما A-B-D-F-G-H و A-C-D-F-G-H (الـ E بس اللي ليها slack، أسبوع واحد).<pre>     0    5    10   15   20   25
+A    =====
+B         ======
+C         ======
+D               ==
+E                 #######.
+F                 =====
+G                      ===
+H                         =====
+team 11111222222112222222111111</pre><b>c) الـ Minimum team = 2</b>: أقصى حاجة اتنين أنشطة شغالين في نفس الوقت (B و C، وبعدين E مع F أو G). وده نفس الـ student key. (نسخة المحاضرة من الجدول ده فيها H = أسبوع واحد، فالنتيجة 22 أسبوع.)` }
+    ] },
+    { items: [
+      { why: `تعريف الـ context diagram. (L4، الـ glossary بتاع lab 6)` },
+      { why: `الـ data store هو داتا ساكنة (at rest).` },
+      { why: `تعريف الـ Level-0.` },
+      { why: `تعريف الـ functional decomposition.` },
+      { why: `تعريف الـ balancing.` },
+      { why: `الـ DFD guideline اللي اسمها "iterative development".` },
+      { why: `تعريف الـ primitive DFD.` },
+      { why: `تعريف الـ data flow.` },
+      { why: `تعريف الـ process.` },
+      { why: `تعريف الـ source/sink.` }
+    ] },
+    { items: [
+      { ans: `a) E = 3.6 × 40^1.20 = 3.6 × 83.65 = 301.1 ≈ <b>301 MM</b><br>b) TDEV = 2.5 × 301^0.32 = 2.5 × 6.211 = 15.5 ≈ <b>16 شهر</b><br>c) الـ Staff = 301 / 16 = 18.8 ≈ <b>19 FSP</b><br>d) ½ × 19 = 9.5 ≈ 10 FSP ← 301 / 10 = 30.1 ≈ <b>30 شهر</b><br>e) 301 / 4 = 75.25 ≈ <b>75 FSP</b>` }
+    ] },
+    { items: [
+      { ans: `الـ <b>DFD</b>: صورة لحركة الداتا بين الـ external entities والـ processes والـ data stores جوه السيستم. الـ <b>Balancing</b>: الحفاظ على الـ inputs والـ outputs بتوع الـ process لما يتعمله decompose لمستوى أقل. الـ <b>Functional decomposition</b>: process iterative بتكسّر فيها وصف السيستم لتفاصيل أدق وأدق. <b>نقف لما</b>: كل process يبقى decision واحد أو calculation واحد أو database operation واحدة؛ كل store يمثّل entity واحد؛ الـ user مش عايز يشوف تفاصيل أكتر؛ الـ flows مش محتاجة تتقسم أكتر؛ كل form و transaction و display و report يبقى flow واحد؛ ويبقى فيه process منفصل لكل menu option في أقل مستوى. (L4)` },
+      { ans: `<b>الـ Level 0</b>: 1) الـ DS2 ظاهر مرتين (store واحد، أو التاني يتسمى DS1). 2) الـ DS2 اللي بيستقبل DF3 و DF5 مالوش output. 3) الـ DS2 اللي بيبعت DF6 مالوش input. 4) الـ DF4 label لـ flows مختلفين. 5) الـ P3 ليه outputs بس ومالوش input.<br><b>الـ Level 1</b>: 6) الـ forked flow الطالع من P1.1 عليه اتنين labels، DF2 و DF7 (الـ fork لازم يبقى نفس الداتا). 7) الـ P1.1 متكرر؛ التاني المفروض يبقى P1.3. 8) الـ P1.2 المفروض يطلّع DF3 لـ DS2 (مش DF6 لـ DS1) عشان يوازن P1. 9) الـ P1.4 المفروض يطلّع DF2 (مش DF3) عشان يوازن P1.<br><b>الـ Level 2</b>: 10) مفيش P1.5، فالـ P1.5.1 المفروض يبقى P1.4.1. 11) الـ P1.4.3 ليه inputs ومالوش output. 12) الـ DF2 لازم يبقى output من P1.4.3، مش input.<br>(نفس الـ 12 error اللي في الـ student key.)` }
+    ] },
+    { items: [
+      { ans: `الـ <b>Completeness</b>: الـ DFD لازم يبقى فيه كل الـ components اللازمة للسيستم، وكل component لازم يبقى متوصف بالكامل في الـ project dictionary أو الـ CASE repository. الـ <b>Consistency</b>: لأي درجة المعلومات اللي في مستوى من مجموعة DFDs متداخلة موجودة كمان في المستويات التانية. (الـ guidelines بتاعة L4)` },
+      { ans: `الـ Project management هو controlled process للـ initiating والـ planning والـ executing والـ closing down للمشروع. الـ <b>Initiating</b>: الـ initiation team، العلاقة مع الـ customer، الـ initiation plan، الـ management procedures، الـ PM environment والـ workbook. الـ <b>Planning</b>: الـ scope، الـ WBS، الـ resources، الـ schedule، الـ communication، الـ standards، الـ risk، الـ budget، الـ SOW، الـ BPP. الـ <b>Executing</b>: تنفيذ ومتابعة وتعديل الـ BPP، الحفاظ على الـ workbook، توصيل الحالة. الـ <b>Closing down</b>: قفل المشروع، post-project reviews، قفل عقد الـ customer. (L3)` },
+      { ans: `الـ <b>SSR</b>: form قياسي لطلب أو اقتراح شغل systems development جوه المنظمة. فيه الـ contact person والـ problem statement والـ service request statement وبيانات الـ liaison. الـ <b>Project charter</b>: مستند قصير و high-level للـ stakeholders الداخليين والخارجيين. بيعلن رسميًا إن المشروع اتعمل وبيوصف باختصار الـ objectives والـ key assumptions والـ stakeholders. (L3)` }
+    ] },
+    { items: [
+      { ans: `(مش موجود في الـ slides اللي اتدرّست؛ من chapter الكتاب "Designing forms and reports".)<table><tr><th>Form</th><th>Report</th></tr><tr><td>business document فيه داتا محددة مسبقًا وأماكن الـ users <b>بيدخّلوا أو يغيّروا</b> فيها داتا</td><td>business document فيه <b>داتا محددة مسبقًا بس</b>، بيُستخدم للقراية أو العرض</td></tr><tr><td>غالبًا بيعرض <b>record واحد</b> في المرة (زي order form)</td><td>ممكن يعرض <b>records كتير</b> (زي تقرير المبيعات الشهري)</td></tr><tr><td>أساسًا مستند <b>input</b>، متصمم للشاشة</td><td>أساسًا مستند <b>output</b>، وغالبًا بيتطبع</td></tr><tr><td>الداتا <b>ممكن تتعدّل</b> من خلاله</td><td>الداتا <b>ماينفعش تتعدّل</b> من خلاله</td></tr></table>` },
+      { ans: `الـ <b>Logical design</b>: كل الـ functional features بتاعة السيستم اللي اتختار في الـ analysis بتتوصف من غير ما تعتمد على أي computer platform. وفي الـ database ده معناه الـ entities والـ attributes والـ relationships والـ normalized relations. الـ <b>Physical design</b>: الـ logical specifications بتتحوّل للتفاصيل الـ technology-specific اللي منها بيتعمل كل الـ programming والبناء. وفي الـ database ده معناه الـ DBMS والـ tables والـ data types والـ file organization والـ indexes. (L2)` },
+      { ans: `الـ SDLC هو الـ methodology التقليدية لتطوير الـ IS وعمل maintain ليها واستبدالها. الـ Phases: <b>planning</b> (تحديد احتياجات الـ IS وتحليلها وترتيبها بالأولوية)، <b>analysis</b> (دراسة الـ requirements وتنظيمها)، <b>design</b> (logical specifications وبعدين physical)، <b>implementation</b> (code، test، install، support)، <b>maintenance</b> (تصليح وتحسين بشكل منظم). (L2)` }
+    ] }
+  ] }
+];

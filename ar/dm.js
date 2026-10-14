@@ -1,0 +1,1258 @@
+window.AR = window.AR || {};
+AR.dm = { lectures: {}, exams: [] };
+
+AR.dm.lectures["1"] = {
+  notes: [
+    { h: `يعني إيه set؟`, pts: [
+      `الـ <b>set</b> هي <b>مجموعة من الحاجات متعرّفة كويس (well defined collection of objects)</b>، والحاجات دي اسمها "<b>elements</b>" أو "<b>members</b>" بتوع الـ set.`,
+      `تقدر تعرّف الـ set <b>بطريقتين</b>: (1) <b>listing</b> (roster): تكتب الـ elements بين أقواس <code>{ }</code> وبينهم فواصل، زي {1, 2, 3, 4, 5}؛ (2) باستخدام <b>property</b> بتحدد الـ elements (set-builder)، زي {x | x is odd and 0 &lt; x &lt; 100}.`,
+      `لو x عنصر في A بنكتب <b>x ∈ A</b>؛ ولو x مش عنصر في A بنكتب <b>x ∉ A</b>.`,
+      `<b>Well defined</b> يعني دايمًا واضح الحاجة دي تنتمي للـ set ولا لأ. "The set of all even numbers less than 10" دي well defined؛ إنما "tall students" و"good teachers" و"beautiful cities" <b>مش</b> well defined لأنها رأي شخصي (Midterm 2025/26 Q7).`
+    ] },
+    { h: `الرموز والـ sets الخاصة` },
+    { h: `Example 1.1 (الـ elements)` },
+    { h: `أنواع الـ sets`, pts: [
+      `<b>Subset</b>: لو كل element في A موجود كمان في B، يبقى A هي subset من B، وبنكتبها <b>A ⊆ B</b>. مثال: A = {1,2,3,4,5,6}، B = {1,2,3,4} → B ⊆ A.`,
+      `<b>Equal sets</b>: A وB متساويين لو فيهم نفس الـ elements، يعني <b>A ⊆ B و B ⊆ A</b>، وده معناه A = B. خلي بالك الترتيب والتكرار مش فارقين: {1,3,4,5,6} = {4,1,5,6,3}.`,
+      `<b>Empty set</b> (null / void set)، رمزها ∅ أو { }: مفيهاش ولا element. أمثلة: الـ whole numbers اللي أقل من 0؛ {x : x ∈ N, 3 &lt; x &lt; 4}؛ {x : 2 &lt; x &lt; 3, x natural}؛ {x : x is a composite number less than 4}.`,
+      `<b>Finite set</b>: فيها عدد محدد من الـ elements. والـ empty set كمان finite. أمثلة: ألوان قوس قزح، {x : x ∈ N, x &lt; 7}، الـ primes لحد 97.`,
+      `<b>Infinite set</b>: الـ elements مش ممكن تتعد كلها (مالهاش آخر). أمثلة: النقط في الـ plane، {x : x ∈ N, x &gt; 1}، كل الـ prime numbers.`,
+      `<b>Universal set</b> U (أو ξ): set فيها كل الـ elements بتاعة الـ sets التانية اللي معانا. لو A = {1,2,3}، B = {2,3,4}، C = {3,5,7} يبقى U = {1,2,3,4,5,7}. ولو P = whole numbers وQ = negative numbers، يبقى U = كل الـ integers.`
+    ] },
+    { h: `الـ Power set`, pts: [
+      `الـ <b>power set</b> بتاعة S، ورمزها <b>P(S)</b>، هي الـ set اللي فيها <b>كل الـ subsets</b> بتاعة S. يعني كل element في P(S) هو نفسه set.`,
+      `P(∅) = {∅}، فـ |P(∅)| = 1 (يعني هي <b>مش</b> فاضية: جواها الـ empty set).`,
+      `P({1}) = {∅, {1}} → 2 elements. P({p, q}) = {∅, {p}, {q}, {p, q}} → 4 elements.`,
+      `P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}} → 8 elements.`,
+      `<b>القاعدة: لو |S| = n يبقى |P(S)| = 2ⁿ</b> (كل element يا إما جوه الـ subset يا إما برّه، يعني اختيارين لكل واحد). الـ slide كاتبة "n[P(A)] = 4 = 2²".`,
+      `الـ ∅ والـ S نفسها دايمًا members في P(S).`
+    ] },
+    { h: `الفرق بين ∈ و ⊆ (فخ مشهور في الامتحان)`, pts: [
+      `الـ ∈ بتربط <b>element</b> بـ set؛ إنما الـ ⊆ بتربط <b>set</b> بـ set.`,
+      `3 ∈ {1,2,3} صح. {3} ∈ {1,2,3} غلط (لأن {3} دي set، مش واحدة من الـ elements المكتوبة). {3} ⊆ {1,2,3} صح.`,
+      `{2} هي subset من {1,2,3}؛ إنما الرقم 2 نفسه element، مش subset.`,
+      `A ⊆ A دايمًا صح (أي set هي subset من نفسها). إنما A ∈ A غلط للـ sets العادية.`,
+      `مثال (Exam 2021/22): A = {0, {0}}، B = {0}. B ∈ A صح ({0} مكتوبة كـ element). B ⊆ A صح (لأن 0 ∈ A). إنما P(B) = {∅, {0}} ⊆ A <b>غلط</b> لأن ∅ مش element في A.`
+    ] },
+    { h: `مقدمة للـ operations في Lecture 1`, pts: [
+      `الـ 4 operations الأساسية: (1) <b>union</b>، (2) <b>intersection</b>، (3) <b>complement</b>، (4) <b>Cartesian product</b>. وهنشرحهم بالتفصيل في Lecture 2.`,
+      `الـ Union A ∪ B = {x | x ∈ A or x ∈ B}: أصغر set فيها كل الـ elements بتاعة الـ set الاتنين.`,
+      `الـ Intersection A ∩ B = {x | x ∈ A and x ∈ B}. لو A ∩ B = ∅ يبقى الـ sets دي <b>disjoint</b> (مفيش بينهم حاجة مشتركة).`,
+      `الـ Complement: لو U هي الـ universal set اللي فيها A، يبقى U − A هي الـ complement بتاع A.`,
+      `الـ Difference A \\ B = {x | x ∈ A, x ∉ B}، وبتتقري "A minus B" (وبتتكتب كمان A − B أو A ~ B).`,
+      `مثال: U = الطلبة، M = الولاد، F = البنات: U هي <b>disjoint union</b> لـ M وF، يعني U = M ∪ F و M ∩ F = ∅.`
+    ] },
+    { h: `مثال محلول من المحاضرة` }
+  ],
+  cards: [
+    `مجموعة حاجات متعرّفة كويس (well defined) اسمها elements أو members.`,
+    `يا إما listing للـ elements جوه { } وبينهم فواصل، يا إما property (set-builder) زي {x | x is odd and 0 &lt; x &lt; 100}.`,
+    `x عنصر في A / x مش عنصر في A.`,
+    `عدد الـ elements في A (الـ cardinality، وبتتكتب كمان |A|).`,
+    `الـ Natural numbers، الـ integers، الـ rationals، الـ reals، الـ complex numbers.`,
+    `كل element في A موجود كمان في B.`,
+    `A ⊆ B و B ⊆ A (نفس الـ elements؛ الترتيب والتكرار مش فارقين).`,
+    `Set مفيهاش ولا element، ∅ أو { } (null / void set). مثال: {x ∈ N : 3 &lt; x &lt; 4}.`,
+    `فيها عدد محدد من الـ elements. والـ ∅ تعتبر finite.`,
+    `الـ elements مش ممكن تتعد؛ مالهاش آخر (زي كل الـ primes، {x ∈ N : x &gt; 1}).`,
+    `U أو ξ: فيها كل الـ elements بتاعة الـ sets التانية اللي معانا.`,
+    `الـ set اللي فيها كل الـ subsets بتاعة S؛ كل element فيها هو set.`,
+    `2ⁿ`,
+    `{∅}، وفيها element واحد.`,
+    `{∅, {a}, {b}, {a, b}}`,
+    `A ∩ B = ∅ (مفيش elements مشتركة).`,
+    `لأ. {3} ⊆ {1,2,3} صح، بس {3} مش واحدة من الـ elements.`
+  ],
+  qa: [
+    `الـ set هي مجموعة حاجات متعرّفة كويس (well defined) اسمها elements (members). (1) Listing: تكتب الـ elements بين أقواس معقوفة وبينهم فواصل، زي {1, 2, 3, 4, 5}. (2) Property / set-builder: تكتب property بتتحقق بالظبط في الـ elements دي بس، زي {x | x is odd and 0 &lt; x &lt; 100}.`,
+    `<b>Empty</b>: مفيهاش elements، ∅ أو { }، زي {x : x is a natural number, 2 &lt; x &lt; 3}. <b>Finite</b>: عدد elements محدد، زي ألوان قوس قزح، {x ∈ N : x &lt; 7}؛ والـ ∅ تعتبر finite. <b>Infinite</b>: elements مالهاش آخر، زي {x ∈ N : x &gt; 1}، أو set الـ primes. <b>Universal</b>: فيها كل الـ elements بتاعة الـ sets اللي بنتكلم عنها، زي A = {1,2,3}، B = {2,3,4}، C = {3,5,7} → U = {1,2,3,4,5,7}.`,
+    `P(S) هي الـ set اللي فيها كل الـ subsets بتاعة S. P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}}. لو |S| = n يبقى |P(S)| = 2ⁿ، وهنا 2³ = 8.`,
+    `A = B لما A ⊆ B و B ⊆ A، يعني فيهم نفس الـ elements بالظبط. أيوه، الـ set الاتنين متساويين: الترتيب مش فارق.`,
+    `الـ ∈ معناها إن الحاجة دي واحدة من الـ elements المكتوبة؛ والـ ⊆ معناها إن كل element في set موجود في set تانية. 0 ∈ A و {0} ∈ A (الاتنين مكتوبين). {0} ⊆ A كمان صح لأن 0 ∈ A. و{{0}} ⊆ A صح. بس ∅ ∈ A غلط، فـ P({0}) = {∅, {0}} مش subset من A.`
+  ],
+  quiz: [
+    [`الـ 3 ده عدد الـ elements، مش عدد الـ subsets.`, `الـ 4 = 2²، ده عدد subsets لـ set فيها 2 elements بس.`, `مش power of 2؛ وعدد الـ subsets دايمًا 2ⁿ.`, `صح. 2³ = 8 subsets.`],
+    [`صح. نفس الـ elements؛ والترتيب مش فارق.`, `3 ≠ 4، فالـ elements مختلفة.`, `مشتركين في 3 بس.`, `الـ 2 مش موجودة في الـ set التانية.`],
+    [`صح. كل الـ 2² = 4 subsets، ومعاهم ∅ والـ set نفسها.`, `ناقصها ∅ و{a} و{b}.`, `ناقصها ∅ و{a, b}.`, `دي الـ set نفسها، مش الـ set اللي فيها الـ subsets بتاعتها.`],
+    [`ده B ⊆ A، يعني العكس.`, `صح. ده تعريف الـ subset.`, `ده وصف الـ disjoint sets.`, `∅ ⊆ B حالة من الحالات، بس مش لازم A تبقى فاضية.`],
+    [`كلمة "Tall" دي رأي شخصي، فالـ set مش well defined.`, `صح. الانتماء واضح: {2, 4, 6, 8}.`, `"Good" حاجة subjective.`, `"Beautiful" حاجة subjective.`],
+    [`صح. الأرقام الزوجية الموجبة اللي أقل من 10 (حسب اصطلاح المحاضرة).`, `دول أرقام فردية.`, `الـ 10 مش أقل من 10 (والإجابة النموذجية كمان مش بتحط 0).`, `ناقصها 8.`],
+    [`دي S نفسها.`, `الـ 0 مش subset من S.`, `صح. 2² = 4 subsets.`, `الـ power set عمرها ما تبقى فاضية؛ دايمًا فيها ∅.`],
+    [`مالهاش أي علاقة بـ S.`, `الـ 0 مش subset.`, `صح. الـ 4 subsets كلهم.`, `الـ P(S) دايمًا فيها ∅ وS.`],
+    [`دول مش الـ subsets بتاعة S.`, `الـ 0 مش subset.`, `صح.`, `دي مش power set.`],
+    [`دي الـ power set نفسها، مش عدد الـ elements بتاعها.`, `ده مش رقم أصلًا.`, `صح. 2² = 4.`, `الـ 6 مش على شكل 2ⁿ.`],
+    [`دي S نفسها.`, `ناقصها {0} و{1} و{0,1}.`, `صح.`],
+    [`دول مش subsets من S.`, `elements غلط.`, `صح.`],
+    [`الـ 4 رقم (مش set) وكمان مش موجود في الـ set أصلًا.`, `صح. الـ 3 مكتوبة كـ element.`, `{3} دي set؛ والـ elements هي الأرقام 1 و2 و3. (لو كانت {3} ⊆ {1,2,3} كانت هتبقى صح.)`, `الـ 3 مش set وجواها حاجة.`],
+    [`الـ 2 element، مش set.`, `صح. كل element في {2} موجود في {1, 2, 3}.`, `رقم، وكمان مش موجود في الـ set.`, `4 ∉ {1, 2, 3}.`],
+    [`الـ set عادةً مش بتبقى element في نفسها.`, `صح (الـ ⊂ هنا معناها "subset of"): أي set هي subset من نفسها.`, `غلط؛ A ⊆ A دايمًا صح.`, `صح بس لما A = ∅.`],
+    [`صح كعبارة: {0} مكتوبة كـ element في A.`, `صح كعبارة: الـ element الوحيد في B وهو 0 موجود في A.`, `صح (هي العبارة الغلط). P(B) = {∅, {0}} والـ ∅ مش element في A.`],
+    [`صح. C = {1, 2, 4, 8, 16} = B.`, `5 ∉ B زي ما اتوضح في المحاضرة.`, `2⁰ = 1، 2¹ = 2 … 2⁴ = 16، فهما متطابقين.`, `الـ 9 مش power of 2.`],
+    [`ده |P({1})|.`, `صح. 2⁰ = 1؛ والـ element الوحيد فيها هو ∅.`, `P(∅) = {∅} مش فاضية.`, `هي well defined عادي.`]
+  ],
+  extra: [
+    [`صح. |P(S)| = 2⁵ = 32.`, `الـ 31 ده عدد الـ subsets غير الفاضية بس.`, `10 = 2 × 5؛ القاعدة 2ⁿ مش 2n.`, `25 = 5²؛ القاعدة 2ⁿ.`],
+    [`دي فيها 1.`, `صح. مفيش natural number أقل من 1 (المحاضرة بتعتبر N = {1, 2, 3, …}).`, `فيها element واحد هو ∅، فهي مش فاضية.`, `فيها الـ element 0، فهي مش فاضية.`],
+    [`صح كعبارة: الـ empty set هي subset من أي set.`, `صح كعبارة: a وc موجودين في A.`, `صح (هي العبارة الغلط). {a} دي set؛ والـ elements بتاعة A هي a وb وc، فـ {a} ⊆ A بس {a} ∉ A.`, `صح كعبارة: أي set هي subset من نفسها.`],
+    [`الـ power set دايمًا فيها ∅، فعمرها ما تبقى فاضية.`, `ده |P(∅)|.`, `ده كان محتاج P(∅) يبقى فيها 2 elements.`, `صح. P(∅) = {∅} فيها element واحد، فـ P(P(∅)) = {∅, {∅}} فيها 2¹ = 2.`],
+    [`صح. التكرار والترتيب مش فارقين؛ الاتنين = {1, 2, 3}.`, `الـ 6 مش أقل من 6، فالـ set الأولى = {2, 4}.`, `{0} فيها element واحد؛ والـ ∅ مفيهاش ولا واحد.`, `الـ elements بتاعة الـ set التانية sets، مش أرقام.`],
+    [`Finite: {1, …, 6}.`, `صح. ده مثال المحاضرة للـ infinite set: 2، 3، 4، … مالهاش آخر.`, `Finite: بتخلص عند 97.`, `Finite (7 ألوان)، ودي مثال المحاضرة للـ finite set.`],
+    [`مفيهاش 4 ∈ B.`, `دي A ∩ B؛ مفيهاش 1 ولا 4.`, `صح. فيها كل element في A وB.`, `ناقصها 2 و3.`],
+    [`الـ 3 ده عدد الـ subsets اللي فيها element واحد بس.`, `الـ 8 ده عدد كل الـ subsets، ومعاهم {p, q, r} نفسها.`, `ده شال ∅ كمان، بس ∅ تعتبر proper subset.`, `صح. 2³ − 1 = 7.`],
+    [`صح. ده مثال المحاضرة لطريقة الـ property.`, `دي فيها الأرقام الزوجية كمان.`, `دي مش set notation.`, `دي فيها 3 elements بس.`],
+    [`C = {1, 2, 4, 8, 16}؛ والـ 9 مش power of 2.`, `صح. 8 = 2³.`, `فيه 5 powers مكتوبين، من 2⁰ لـ 2⁴.`, `2⁰ = 1، مش 0.`]
+  ]
+};
+
+AR.dm.lectures["2"] = {
+  notes: [
+    { h: `الـ 4 operations الأساسية`, pts: [
+      `<b>1. Union</b> A ∪ B = {x | x ∈ A <b>or</b> x ∈ B}: كل الـ elements اللي في أي set فيهم ("or" هنا بتشمل "الاتنين"). في الـ Venn: بنضلّل A كلها وB كلها. مثال: {4, 5} ∪ {5, 6, 7} = {4, 5, 6, 7} (ماتكتبش الـ 5 مرتين).`,
+      `<b>2. Intersection</b> A ∩ B = {x | x ∈ A <b>and</b> x ∈ B}: الـ elements المشتركة بس، يعني الجزء المتداخل. مثال: {4, 5} ∩ {5, 6, 7} = {5}. ولو A ∩ B = ∅ يبقى الـ sets دي <b>disjoint</b>.`,
+      `<b>3. Complement</b> A′ (أو Aᶜ أو Ā) = {x : x ∈ U but x ∉ A} = U − A. فكّر فيها كـ "not A". في الـ Venn: كل حاجة جوه المستطيل U بس برّه الدايرة A.`,
+      `<b>4. Cartesian product</b> A × B = {(a, b) | a ∈ A, b ∈ B}: كل الـ ordered pairs؛ و|A × B| = |A|·|B| (مثلًا |A| = 4، |B| = 3 → |A × B| = 12).`,
+      `<b>Difference</b> B − A = {x | x ∈ B and x ∉ A}: الـ elements اللي في B ومش في A (بنضلّل الجزء من B اللي برّه A).`
+    ] },
+    { h: `Ex 1 من المحاضرة (بعد التصحيح)` },
+    { h: `أمثلة زيادة`, pts: [
+      `S = {1, 0}، T = {0, 1, 2}: S ⊂ T، S ∩ T = S، S ∪ T = T، T − S = {2}.`,
+      `قاعدة: لو A ⊆ B يبقى A ∩ B = A و A ∪ B = B.`,
+      `U = {1,2,3,4,5}، A = {1,2} → A′ = {3,4,5}. U = {1,…,6}، A = {2,4,6} → A′ = {1,3,5}.`,
+      `{2,4,6,8} ∩ {4,8,10,12} = {4,8}.`
+    ] },
+    { h: `الـ Set identities (القوانين)` },
+    { h: `عمليات الـ sets شبه الـ logic بالظبط` },
+    { h: `طريقة الامتحان: إزاي تحسب Aᶜ ∩ B وأخواتها` }
+  ],
+  cards: [
+    `{x | x ∈ A or x ∈ B}: الـ elements اللي في A، أو في B، أو في الاتنين.`,
+    `{x | x ∈ A and x ∈ B}: الـ elements المشتركة بس.`,
+    `{x : x ∈ U but x ∉ A} = U − A.`,
+    `الـ elements اللي في B ومش في A.`,
+    `كل الـ ordered pairs (a, b) بحيث a ∈ A و b ∈ B؛ و|A × B| = |A|·|B|.`,
+    `كل الـ elements اللي في A أو في B أو في الاتنين.`,
+    `الـ elements اللي في A وB الاتنين في نفس الوقت.`,
+    `A ∪ ∅ = A، A ∩ U = A`,
+    `A ∪ U = U، A ∩ ∅ = ∅`,
+    `A ∪ A = A، A ∩ A = A`,
+    `(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ، (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ`,
+    `A ∪ (A ∩ B) = A، A ∩ (A ∪ B) = A`,
+    `A ∪ Aᶜ = U، A ∩ Aᶜ = ∅`,
+    `A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)؛ A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)`,
+    `A ∩ B = A و A ∪ B = B.`
+  ],
+  qa: [
+    `A ∪ B = {x | x ∈ A or x ∈ B}؛ A ∩ B = {x | x ∈ A and x ∈ B}؛ A′ = {x : x ∈ U but x ∉ A}؛ B − A = {x | x ∈ B and x ∉ A}. في الـ Venn diagrams: الـ union بيضلّل الدايرتين، الـ intersection بيضلّل الجزء المتداخل، الـ complement بيضلّل U اللي برّه A، والـ B − A بيضلّل الجزء من B اللي برّه A.`,
+    `A ∩ B = {3}؛ A ∪ B = {1,2,3,4,6}؛ A − B = {1,2}؛ A − C = {2,3}؛ (A ∩ B)ᶜ = {1,2,4,5,6,7,8,9,10}؛ (A ∪ B)ᶜ = {5,7,8,9,10}؛ Aᶜ ∩ Bᶜ = {5,7,8,9,10}؛ Aᶜ ∪ Bᶜ = {1,2,4,5,6,7,8,9,10}. آخر اتنين بيأكدوا قوانين De Morgan.`,
+    `Identity: A ∪ ∅ = A، A ∩ U = A. Domination: A ∪ U = U، A ∩ ∅ = ∅. Idempotent: A ∪ A = A، A ∩ A = A. Complementation: (Aᶜ)ᶜ = A. Commutative: A ∪ B = B ∪ A، A ∩ B = B ∩ A. Associative: A ∪ (B ∪ C) = (A ∪ B) ∪ C ونفس الكلام للـ ∩. Distributive: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)، A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C). De Morgan: (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ، (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ. Absorption: A ∪ (A ∩ B) = A، A ∩ (A ∪ B) = A. Complement: A ∪ Aᶜ = U، A ∩ Aᶜ = ∅.`,
+    `كل element في S موجود في T، يبقى S ⊂ T. وعشان كده S ∩ T = S = {0, 1}، S ∪ T = T = {0, 1, 2}، T − S = {2}.`,
+    `B − A = {x | x ∈ B and x ∉ A}. في الـ Venn diagram بتضلّل الجزء من الدايرة B اللي مش متداخل مع الدايرة A.`
+  ],
+  quiz: [
+    [`صح. U − A.`, `الـ 4 كمان برّه A.`, `1 ∈ A، فماينفعش تبقى في A′.`, `دي A نفسها.`],
+    [`الـ Commutative بيبدّل الترتيب بس: A ∪ B = B ∪ A.`, `الـ Associative بيغيّر مكان الأقواس.`, `صح. الـ complement بتاع الـ union = الـ intersection بتاع الـ complements.`, `الـ Distributive بيوزّع الـ ∩ على الـ ∪.`],
+    [`ده A − B.`, `صح. دي الـ elements المشتركة.`, `ده A ∪ B.`, `هما مشتركين في 4 و8.`],
+    [`2 ∈ A.`, `صح. U − A.`, `دي U.`, `A ≠ U، فـ A′ مش فاضية.`],
+    [`ده الـ complement بتاع الـ union.`, `مفيش complement خالص.`, `صح. (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ.`, `دي الـ set الأصلية قبل ما ناخد الـ complement.`],
+    [`ممكن يكون بينهم elements مشتركة.`, `صح. |A × B| = |A|·|B| = 4 × 3.`, `بيعتمد على التداخل؛ |A − B| ممكن يبقى من 1 لـ 4.`],
+    [`ده (A ∩ B)ᶜ.`, `ده A − B.`, `صح. U ناقص {1,2,3,4,6}.`, `ده A ∩ B.`],
+    [`الـ 1 موجودة في C، فبتتشال.`, `ده C − A.`, `ده A ∪ C.`, `صح.`],
+    [`صح.`, `ده S ∪ T.`, `ده S − T.`, `ده S ∩ T.`],
+    [`الـ Domination هو A ∪ U = U.`, `صح.`, `الـ Idempotent هو A ∪ A = A.`, `الـ Distributive فيه 3 sets مختلفة.`],
+    [`الـ Complement هو A ∩ Aᶜ = ∅.`, `الـ Identity هو A ∩ U = A.`, `صح.`, `الـ Idempotent هو A ∩ A = A.`],
+    [`ده الـ symmetric difference (exclusive or).`, `ده الـ intersection (AND).`, `ده (A ∪ B)ᶜ.`, `صح. ده الـ inclusive or.`]
+  ],
+  extra: [
+    [`ده (A ∪ B)ᶜ.`, `صح. Aᶜ = {3, 4, 6, 7, 8}؛ ولما نعمل intersection مع B يطلع {3, 7} (= B − A).`, `ده A ∩ B.`, `ده A − B.`],
+    [`الـ 4 و6 و8 مش موجودين في أي set منهم.`, `ده (A ∩ B)ᶜ.`, `صح. A ∪ B = {1, 2, 3, 5, 7}، فـ (A ∪ B)ᶜ = {4, 6, 8} (De Morgan).`, `ده Aᶜ ∩ B.`],
+    [`ده الـ Complementation law.`, `ده الـ Idempotent law.`, `ده الـ Identity law.`, `صح.`],
+    [`صح. |A × B| = 2 × 3.`, `ده 3².`, `ده 2³.`, `ده |A| + |B|.`],
+    [`بس لو الاتنين فاضيين.`, `صح. كل حاجة في A موجودة أصلًا في B.`, `مش شرط.`, `ده A ∩ B في الحالة دي.`],
+    [`الـ Associative بيغيّر تجميع نفس الـ operation.`, `الـ De Morgan فيه complements.`, `صح.`, `الـ Commutative بيبدّل الترتيب.`],
+    [`ده (A ∪ B)ᶜ.`, `ده A ∩ B نفسه.`, `ده A − B.`, `صح. U − {3}.`],
+    [`صح. ده الـ Complement law: مفيش element يبقى في A ومش في A في نفس الوقت.`, `ده A ∪ Aᶜ.`, `لأ.`, `لأ.`],
+    [`ده A ∩ B.`, `صح. الـ elements اللي في B ومش في A.`, `ده الـ symmetric difference.`, `ده A − B.`],
+    [`ده A ∩ B.`, `مفيش حاجة برّه U.`, `صح.`, `ده A.`]
+  ]
+};
+
+AR.dm.lectures["3"] = {
+  notes: [
+    { h: `القيم والعناصر الأساسية في الـ logic`, pts: [
+      `<b>القيم الأساسية</b>: T أو F، يعني true أو false. وفي الكمبيوتر الـ T والـ F ممكن يتمثلوا بـ <b>1 أو 0 bits</b>.`,
+      `<b>العناصر الأساسية</b>: الـ propositions (الـ logic والـ equivalences)، الـ truth tables، الـ predicates، الـ quantifiers، الـ rules of inference، والـ proofs.`
+    ] },
+    { h: `الـ Propositions والـ negation`, pts: [
+      `<b>Proposition</b>: جملة بتقول حقيقة يا صح يا غلط (<b>بس مش الاتنين مع بعض</b>).`,
+      `"2 + 2 = 4" دي proposition (حقيقة). إنما "x + 1 = 2" <b>مش</b> proposition إلا لو اتحددت قيمة معينة لـ x، لأن صحتها بتعتمد على x.`,
+      `الـ <b>Negation</b> بتاع p، بنكتبه <b>¬p</b> (أو ~p) وبنقراه "not p": يعني "مش صحيح إن p". والـ truth value بتاعه <b>عكس</b> p.`,
+      `أمثلة: p: Today is Thursday → ¬p: Today is not Thursday. p: At least a foot of snow falls in Boulder on Fridays → ¬p: <b>Less than a foot</b> of snow falls in Boulder on Fridays.`,
+      `خلي بالك: نفي "at least a foot" هو "less than a foot"، مش "no snow"، واليوم بيفضل Fridays زي ما هو.`
+    ] },
+    { h: `الـ Connectives` },
+    { h: `الـ Truth tables بتاعة الـ connectives` },
+    { h: `مصطلحات مهمة`, pts: [
+      `<b>Truth function</b>: الـ truth value بتاع أي compound proposition بيتحدد بس من الـ truth values بتاعة الأجزاء اللي مكوّناه.`,
+      `<b>Statement variable</b>: متغير بيمثّل proposition؛ والمتعارف عليه إننا نستخدم حروف small زي p, q, r, s.`,
+      `<b>Truth table</b>: جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition معينة.`,
+      `الـ truth table اللي فيها n variables فيها <b>2ⁿ rows</b>: variable واحد → 2 rows، 2 → 4، 3 → 8 (Midterm 2025/26 Q21).`,
+      `في p → q، الـ p هو الـ <b>hypothesis / antecedent</b> والـ q هو الـ <b>conclusion / consequent</b>.`,
+      `<b>Tautology</b> (صح منطقيًا دايمًا): كل الحالات بتطلع true، زي p ∨ ¬p.`
+    ] },
+    { h: `مثال: الـ truth table بتاع ¬P ∧ (P → Q)` },
+    { h: `مثال: (P → Q) ∨ (Q → P) هي tautology` },
+    { h: `مثال: الـ truth table بتاع (P → Q) ∧ (Q → R)` },
+    { h: `نفي جمل "all" (الـ quantifiers)`, pts: [
+      `نفي "All animals can fly" هو "<b>Some animals cannot fly</b>" (يعني فيه واحد على الأقل مابيطيرش). مش "All animals cannot fly".`,
+      `بشكل عام ¬(∀x P(x)) ≡ ∃x ¬P(x) و ¬(∃x P(x)) ≡ ∀x ¬P(x).`
+    ] }
+  ],
+  cards: [
+    `جملة بتقول حقيقة يا صح يا غلط (بس مش الاتنين).`,
+    `لأ، إلا لو اتحددت قيمة معينة لـ x.`,
+    `"مش صحيح إن p"؛ الـ truth value بالعكس.`,
+    `true بس لو p وq الاتنين true.`,
+    `true لو p أو q (أو الاتنين) true؛ وfalse بس لما الاتنين يبقوا false.`,
+    `true لو واحد بس من p وq هو اللي true.`,
+    `الـ p (الـ antecedent) تبقى true والـ q (الـ consequent) تبقى false. وفي أي حالة تانية بتبقى true.`,
+    `true لما p وq يبقى ليهم نفس الـ truth value (الاتنين T أو الاتنين F).`,
+    `الـ truth value بتاع الـ compound proposition بيتحدد بس من الـ truth values بتاعة الأجزاء بتاعته.`,
+    `متغير (p, q, r, s) بيمثّل proposition.`,
+    `جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition.`,
+    `2ⁿ (3 variables → 8 rows).`,
+    `"Less than a foot of snow falls in Boulder on Fridays."`,
+    `"Some animals cannot fly."`,
+    `1 و 0.`,
+    `⊃ (الـ material implication) و ≡ (الـ material equivalence).`
+  ],
+  qa: [
+    `الـ proposition جملة بتقول حقيقة يا صح يا غلط، بس مش الاتنين. "2 + 2 = 4" proposition (حقيقة، true). "x + 1 = 2" مش proposition إلا لو اتدّت قيمة معينة لـ x، لأن صحتها بتعتمد على x.`,
+    `p ∧ q بتبقى true لو p وq الاتنين true، وغير كده false. p ∨ q بتبقى true لو p أو q true (inclusive)، وغير كده false. p ⊕ q بتبقى true لو واحد بس من p وq هو اللي true. الجدول (p, q → ∧, ∨, ⊕): TT → T, T, F؛ TF → F, T, T؛ FT → F, T, T؛ FF → F, F, F.`,
+    `p → q بتبقى true في كل الحالات ما عدا لما الـ antecedent p يبقى true والـ consequent q يبقى false: TT T، TF F، FT T، FF T. أما p ↔ q فمعناها إن p وq equivalent: بتبقى true لو الاتنين true أو الاتنين false: TT T، TF F، FT F، FF T.`,
+    `الـ Rows (P Q R : P→Q، Q→R، النتيجة): TTT: T T T؛ TTF: T F F؛ TFT: F T F؛ TFF: F T F؛ FTT: T T T؛ FTF: T F F؛ FFT: T T T؛ FFF: T T T. النتيجة true في الـ rows 1، 5، 7، 8.`,
+    `P Q : P→Q، Q→P، OR. TT: T, T, T. TF: F, T, T. FT: T, F, T. FF: T, T, T. آخر عمود كله T، يبقى الـ formula دي tautology. (الفكرة إن كل ما implication منهم تبقى false، التانية بتبقى true.)`,
+    `Truth function: الـ truth value بتاع الـ compound proposition بيتحدد بس من الـ truth values بتاعة أجزاءه. Statement variable: متغير بيمثّل proposition (p, q, r, s). Truth table: جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition.`
+  ],
+  quiz: [
+    [`صح. الـ ∧ = and.`, `ده الـ disjunction.`, `ده مش logical connective.`, `مش مستخدم في المحاضرات.`],
+    [`صح. الـ ∨ = inclusive or.`, `ده الـ conjunction.`, `مش connective.`, `مش connective.`],
+    [`ده الـ inclusive or.`, `ده and.`, `صح.`, `ده الـ implication.`],
+    [`الـ ∧ محتاجة الاتنين يبقوا true.`, `صح. Q قيمتها false.`, `كل row في الـ truth table ليه قيمة محددة.`, `الـ proposition ماينفعش تبقى الاتنين.`],
+    [`صح. جزء واحد true كفاية.`, `الـ ∨ بتبقى false بس لما الاتنين يبقوا false.`, `مش ممكن.`, `ليها قيمة.`],
+    [`الـ T → F هي الحالة الوحيدة اللي بتبقى false.`, `صح. antecedent true وconsequent false.`, `مش ممكن.`, `ليها قيمة محددة.`],
+    [`صح. الـ antecedent لما يبقى false الـ implication بتبقى true.`, `الحالة الوحيدة الـ false هي T → F.`, `مش ممكن.`, `ليها قيمة.`],
+    [`ده لـ 2 variables.`, `مش power of 2.`, `صح. 2³ = 8.`, `مش power of 2.`],
+    [`صح. ده مثال المحاضرة: "at least" بتبقى "less than"، والـ Fridays زي ما هي.`, `غيّر جزء اليوم؛ ده مش نفي.`, `غيّر اليوم؛ ده مش نفي.`, `"In the morning" مش موجودة في الجملة الأصلية.`],
+    [`صح. آخر عمود في الـ truth table كله T.`, `عمرها ما بتبقى false.`, `الجملة ماينفعش تبقى الاتنين.`, `كلمة "Equivalent" بتوصف جملتين، مش جملة واحدة.`],
+    [`قوية زيادة؛ النفي محتاج counter-example واحد بس.`, `دي مش بتناقض الجملة الأصلية.`, `صح. ¬∀x P(x) ≡ ∃x ¬P(x).`, `متوافقة مع الجملة الأصلية، فمش نفيها.`],
+    [`صح. جملة بتقول حقيقة (true).`, `الأمر مش proposition.`, `السؤال مش proposition.`, `مش proposition إلا لو x اتحددت.`],
+    [`الـ ⊕ بتبقى false لما الاتنين يبقوا true.`, `صح.`, `بتبقى false في 2 rows.`, `ساعتها الـ ⊕ بتبقى false.`],
+    [`ساعتها ¬P بتبقى false.`, `الـ row TT بيدّي F.`, `صح. الـ rows FT وFF بيدّوا T.`, `هناك ¬P بتبقى false.`],
+    [`بتبقى false في row واحد.`, `الـ antecedent لما يبقى false بتبقى true.`, `F → F بتبقى true.`, `صح.`],
+    [`صح. الـ implication الاتنين يا إما الـ antecedent بتاعهم false يا إما الـ consequent true.`, `Q → R بتبقى F.`, `Q → R بتبقى F.`, `P → Q بتبقى F.`]
+  ],
+  extra: [
+    [`الـ r مش موجودة أصلًا في الـ formula.`, `الجزئين الاتنين true.`, `صح. p ∨ q = T و ¬q = T، يبقى T ∧ T = T.`, `كل row ليه قيمة محددة.`],
+    [`مش power of 2.`, `ده لـ 3 variables.`, `ده لـ 2 variables.`, `صح. 2⁴ = 16.`],
+    [`صح. الـ ⊕ بتبقى true بالظبط لما p وq يختلفوا.`, `الـ ↔ عكس الـ ⊕ بالظبط.`, `الـ ∨ بتبقى true كمان لما الاتنين يبقوا true.`, `الـ ∧ بتبقى true بس لما الاتنين true.`],
+    [`T → T بتبقى true.`, `صح. T → F هي الحالة الوحيدة الـ false.`, `F → F بتبقى true.`, `الـ antecedent false: الـ implication بتبقى true.`],
+    [`السؤال مش proposition.`, `صحتها بتعتمد على x.`, `صح. هي جملة غلط، بس برضه proposition.`, `الأمر مش بيبقى true أو false.`],
+    [`ده مش نفي.`, `مالهاش علاقة.`, `دي يوم واحد بس من باقي الأيام.`, `صح. ده مثال المحاضرة.`],
+    [`صح. نفس الـ truth values.`, `بتبقى true لما القيم تبقى متساوية.`, `قيم مختلفة: false.`, `قيم مختلفة: false.`],
+    [`شوف الـ rows FT وFF.`, `صح. الـ rows اللي فيها P = F (سواء Q = T أو F).`, `لما P = T، ¬P بتبقى false.`, `دي مش tautology.`],
+    [`الجملتين ممكن يبقوا true مع بعض.`, `ده مش نفي.`, `صح. ¬∃x P(x) ≡ ∀x ¬P(x).`, `ده مش نفي.`],
+    [`True.`, `True.`, `دي بتخلي p → q تبقى true.`, `صح. ده الـ row الوحيد اللي بيبقى false.`]
+  ]
+};
+
+AR.dm.lectures["4"] = {
+  notes: [
+    { h: `التعريفات`, pts: [
+      `الـ <b>tautology</b> هي statement form بتبقى <b>true دايمًا</b> مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ statement variables. والـ statement اللي الـ form بتاعها tautology اسمها <b>tautological statement</b>.`,
+      `الـ <b>contradiction</b> هي statement form بتبقى <b>false دايمًا</b> مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ statement variables. والـ statement اللي الـ form بتاعها contradiction اسمها <b>contradictory statement</b>.`,
+      `Example 1.1.13: الـ p ∨ ~p هي tautology (كلها T)؛ والـ p ∧ ~p هي contradiction (كلها F).`,
+      `الـ compound propositions اللي ليها نفس الـ truth values في كل الحالات الممكنة اسمها <b>logically equivalent</b>: يعني p ≡ q معناها إن p ↔ q هي tautology.`,
+      `<b>ملحوظة</b>: الـ ≡ مش logical connective، والـ p ≡ q مش compound proposition؛ هي مجرد عبارة بتقول إن p ↔ q هي tautology. وساعات بيستخدموا الرمز ⇔ بدل ≡.`,
+      `الـ statements الاتنين بيبقوا equivalent <b>if and only if</b> الأعمدة بتاعتهم في الـ truth table متطابقة.`
+    ] },
+    { h: `Example 1.1.13 و 1.1.14 (t = tautology، c = contradiction)` },
+    { h: `Theorem 1.1.1 الـ Logical Equivalences (t = tautology، c = contradiction)` },
+    { h: `إثبات قانون De Morgan بالـ truth table (Table 3)` },
+    { h: `p → q ≡ ¬p ∨ q (Table 4)` },
+    { h: `إثبات إن ~(~p ∧ q) ∧ (p ∨ q) ≡ p باستخدام القوانين` },
+    { h: `الـ truth tables ولا القوانين؟`, pts: [
+      `قوانين Theorem 1.1.1 تقدر <b>تثبت</b> إن 2 statement forms متساويين (equivalent)، عن طريق إنك تبدّل أجزاء بـ expressions مكافئة ليها لحد ما توصل للطرف التاني.`,
+      `بس <b>ماتقدرش</b> تستخدمها عشان تثبت إنهم <b>مش</b> equivalent؛ في الحالة دي لازم تطلّع row في الـ truth table بيختلفوا فيه.`,
+      `مهارة تبسيط الـ statement forms مفيدة في بناء <b>برامج كمبيوتر efficient منطقيًا</b> وفي <b>تصميم الـ digital logic circuits</b>.`,
+      `مثال جدول: p ∨ ~q → ~p. الـ Hypothesis هو p ∨ ~q، والـ conclusion هو ~p. الـ Rows: TT: T → F = F؛ TF: T → F = F؛ FT: F → T = T؛ FF: T → T = T.`
+    ] },
+    { h: `الـ Division into cases: p ∨ q → r ≡ (p → r) ∧ (q → r) (Example 1.2.2)` }
+  ],
+  cards: [
+    `Statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنحطها مكان الـ variables بتاعتها.`,
+    `Statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنحطها مكان الـ variables بتاعتها.`,
+    `نفس الـ truth values في كل الحالات الممكنة؛ p ≡ q معناها إن p ↔ q هي tautology.`,
+    `لأ. الـ p ≡ q مش compound proposition؛ هي بتقول إن p ↔ q هي tautology (وساعات بيستخدموا ⇔).`,
+    `p ∧ t ≡ p، p ∨ c ≡ p (p ∧ T ≡ p، p ∨ F ≡ p)`,
+    `p ∨ ~p ≡ t، p ∧ ~p ≡ c`,
+    `~(~p) ≡ p`,
+    `p ∧ p ≡ p، p ∨ p ≡ p`,
+    `p ∨ t ≡ t، p ∧ c ≡ c`,
+    `~(p ∧ q) ≡ ~p ∨ ~q؛ ~(p ∨ q) ≡ ~p ∧ ~q`,
+    `p ∨ (p ∧ q) ≡ p؛ p ∧ (p ∨ q) ≡ p`,
+    `p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)؛ p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)`,
+    `~t ≡ c، ~c ≡ t`,
+    `لأ؛ لازم تطلّع row في الـ truth table بيختلفوا فيه.`,
+    `برامج كمبيوتر efficient منطقيًا، وتصميم الـ digital logic circuits.`,
+    `¬(p₁ ∨ … ∨ pₙ) ≡ ¬p₁ ∧ … ∧ ¬pₙ؛ ¬(p₁ ∧ … ∧ pₙ) ≡ ¬p₁ ∨ … ∨ ¬pₙ`
+  ],
+  qa: [
+    `الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ variables؛ والـ contradiction بتبقى false دايمًا. الجدول: p = T: ~p = F، p ∨ ~p = T، p ∧ ~p = F. p = F: ~p = T، p ∨ ~p = T، p ∧ ~p = F. عمود p ∨ ~p كله T (tautology)؛ وعمود p ∧ ~p كله F (contradiction).`,
+    `الـ Rows: p = T، t = T: p ∧ t = T؛ c = F: p ∧ c = F. p = F، t = T: p ∧ t = F؛ p ∧ c = F. عمود p ∧ t (T, F) هو نفس عمود p، يبقى p ∧ t ≡ p. وعمود p ∧ c (F, F) هو نفس c، يبقى p ∧ c ≡ c.`,
+    `1 Commutative: p ∧ q ≡ q ∧ p، p ∨ q ≡ q ∨ p. 2 Associative: (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)، (p ∨ q) ∨ r ≡ p ∨ (q ∨ r). 3 Distributive: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)، p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r). 4 Identity: p ∧ t ≡ p، p ∨ c ≡ p. 5 Negation: p ∨ ~p ≡ t، p ∧ ~p ≡ c. 6 Double negative: ~(~p) ≡ p. 7 Idempotent: p ∧ p ≡ p، p ∨ p ≡ p. 8 Universal bound: p ∨ t ≡ t، p ∧ c ≡ c. 9 De Morgan: ~(p ∧ q) ≡ ~p ∨ ~q، ~(p ∨ q) ≡ ~p ∧ ~q. 10 Absorption: p ∨ (p ∧ q) ≡ p، p ∧ (p ∨ q) ≡ p. 11 Negations of t and c: ~t ≡ c، ~c ≡ t.`,
+    `~(~p ∧ q) ∧ (p ∨ q) ≡ (~(~p) ∨ ~q) ∧ (p ∨ q) [De Morgan] ≡ (p ∨ ~q) ∧ (p ∨ q) [double negative] ≡ p ∨ (~q ∧ q) [distributive] ≡ p ∨ (q ∧ ~q) [commutative] ≡ p ∨ c [negation] ≡ p [identity].`,
+    `p q | p ∨ q | ¬(p ∨ q) | ¬p | ¬q | ¬p ∧ ¬q: TT: T F F F F؛ TF: T F F T F؛ FT: T F T F F؛ FF: F T T T T. عمود ¬(p ∨ q) وعمود ¬p ∧ ¬q متطابقين (F, F, F, T)، يبقوا logically equivalent (قانون De Morgan).`,
+    `بص على الجدول اللي فيه 8 rows في الـ notes: p ∨ q → r بتبقى F بالظبط في الـ rows TTF، TFF، FTF (الـ hypothesis true والـ r false)، و(p → r) ∧ (q → r) بتبقى F في نفس الـ rows بالظبط. وباقي الـ rows T في الاتنين، يبقى الـ forms دي logically equivalent ("division into cases").`
+  ],
+  quiz: [
+    [`الـ tautology بتبقى true دايمًا.`, `صح.`, `ماينفعش تبقى الاتنين.`, `ده مش نوع من أنواع الـ propositions.`],
+    [`صح.`, `الـ contradiction بتبقى false دايمًا.`, `ماينفعش تبقى الاتنين.`, `الـ Identity ده قانون، مش نوع proposition.`],
+    [`دايمًا false (contradiction).`, `صح. دايمًا true.`, `بتبقى false لما p أو Q تبقى true.`, `بتبقى false لما الاتنين يبقوا true.`],
+    [`true في 3 rows.`, `صح. دايمًا false.`, `true في 3 rows.`, `true في 2 rows.`],
+    [`الـ truth tables بتاعتهم متطابقة.`, `صح. ده الـ Commutative law.`, `الـ equivalence يا كله يا مفيش.`, `متفقين في كل row.`],
+    [`صح. ده قانون De Morgan.`, `ده ¬(P ∨ Q).`, `ده الأصل من غير نفي.`, `مش equivalent.`],
+    [`الـ Commutative بيبدّل الترتيب بس.`, `صح.`, `الـ Associative بيغيّر التجميع.`, `الـ Distributive بيوزّع operator على operator تاني.`],
+    [`غلط: لما P = T و Q = F الـ expression بتبقى T.`, `صح. ده الـ Absorption law.`, `عكس الإجابة.`, `بتبقى false لما P = T و Q = F، بس الـ expression هناك T.`],
+    [`صح. Absorption.`, `مش equivalent.`, `بيختلفوا لما p = F و q = T.`],
+    [`Domination: p ∧ F ≡ F.`, `صح. ده الـ Universal bound (domination) law.`, `ليها قيمة محددة.`, `مش ممكن.`],
+    [`النفيين بيلغوا بعض.`, `صح.`, `الـ q مش موجودة أصلًا.`, `دي الـ expression نفسها، مش تبسيطها.`],
+    [`صح. Distributive law.`, `ده P ∨ (Q ∧ R).`, `ده بيساوي P ∧ Q ∧ R.`, `ده بيساوي P ∨ Q ∨ R.`],
+    [`صح. Negation law.`, `ده p ∧ ¬p.`, `الـ q مالهاش علاقة.`, `مالهاش علاقة.`],
+    [`صح.`, `ده ¬(p ∧ q).`, `ده ¬(p → q).`, `مالهاش علاقة.`],
+    [`ده ¬(p ∨ q).`, `صح.`, `ده ¬(p → q).`, `مالهاش علاقة.`],
+    [`صح.`, `الـ q مش موجودة.`, `مش equivalent.`, `ده كان هيبقى p ∨ T (domination).`],
+    [`صح.`, `ده p → q.`, `ده ¬(p → q).`, `مش equivalent.`],
+    [`اللي بيساوي T هو p ∨ ¬p، مش p ∧ ¬p.`, `صح. دي contradiction.`, `لأ.`, `لأ.`],
+    [`صح. Absorption.`, `لأ.`, `لأ.`, `لأ.`],
+    [`صح. (p ∧ q) → (p ∨ q) ≡ ¬p ∨ ¬q ∨ p ∨ q ≡ T.`, `عمرها ما بتبقى false.`, `مش ممكن.`],
+    [`صح. لما p ∧ q تبقى true، يبقى q true، فـ p → q true.`, `عمرها ما بتبقى false.`, `مش ممكن.`],
+    [`صح. Tautology.`, `ده P ∧ ¬P.`, `هي true في كل row.`, `ليها قيمة محددة.`],
+    [`عمرها ما بتبقى true.`, `صح. Contradiction.`, `هي false في كل row.`, `ليها قيمة محددة.`]
+  ],
+  extra: [
+    [`مفيش نفي لقوس حصل هنا.`, `الـ Associative بيغيّر التجميع بس.`, `الـ Absorption بيشيل term كامل.`, `صح. p ∨ (x ∧ y) ≡ (p ∨ x) ∧ (p ∨ y)، بس مقروءة من اليمين للشمال.`],
+    [`صح. الـ Absorption بيدّي p، وبعدين الـ identity p ∧ T ≡ p.`, `أكبر من اللازم.`, `الـ q اتشالت بالـ absorption.`, `مش tautology (false لما p = F).`],
+    [`Tautology.`, `صح. p ∧ ¬p لوحدها دايمًا false أصلًا.`, `دي tautology.`, `Tautology.`],
+    [`ده p ∧ ~p ≡ c.`, `ده p ∧ c ≡ c.`, `صح.`, `ده p ∨ p ≡ p.`],
+    [`مالهاش علاقة.`, `ده كان هيخليهم equivalent.`, `المحاضرة بتقول إن القوانين ماتقدرش تثبت عدم الـ equivalence.`, `صح.`],
+    [`صح. De Morgan المعمَّم.`, `ده ¬(p ∧ q ∧ r).`, `الـ p بس اللي اتنفت.`, `مفيش نفي.`],
+    [`النفي المزدوج ماتشالش.`, `صح. De Morgan وبعدين double negation.`, `الـ De Morgan بيحوّل الـ ∨ لـ ∧.`, `مش tautology.`],
+    [`مالهاش علاقة.`, `ده معناه إن الاتنين true دايمًا.`, `صح. ده تعريف المحاضرة.`, `ضعيف جدًا.`],
+    [`Commutative: equivalent.`, `Absorption: equivalent.`, `Double negative: equivalent.`, `صح. بيختلفوا لما p = T و q = F (الأولى F والتانية T).`],
+    [`صح (القانون رقم 11).`, `ده p ∧ t ≡ p، p ∨ c ≡ p.`, `ده ~(~p) ≡ p.`, `ده p ∨ t ≡ t، p ∧ c ≡ c.`]
+  ]
+};
+
+AR.dm.lectures["5"] = {
+  notes: [
+    { h: `نفي الـ conditional statement`, pts: [
+      `بالتعريف p → q بتبقى false لو وبس لو الـ hypothesis p تبقى true والـ conclusion q تبقى false. يبقى: <b>نفي "if p then q" مكافئ منطقيًا لـ "p and not q"</b>.`,
+      `بالرموز: <b>~(p → q) ≡ p ∧ ~q</b>.`,
+      `الاشتقاق من p → q ≡ ~p ∨ q: ~(p → q) ≡ ~(~p ∨ q) ≡ ~(~p) ∧ (~q) [De Morgan] ≡ p ∧ ~q [double negative].`,
+      `Example 1.2.4: (a) "If my car is in the repair shop, then I cannot get to class." النفي: "My car is in the repair shop <b>and</b> I can get to class." (b) "If Sara lives in Athens, then she lives in Greece." النفي: "Sara lives in Athens and she does not live in Greece." (ممكن تكون عايشة في Athens اللي في Georgia أو Ohio أو Wisconsin.)`,
+      `غلطة مشهورة: نفي الـ if-then <b>مش</b> if-then تانية؛ ده جملة فيها "and".`
+    ] },
+    { h: `ترتيب العمليات (order of operations) للـ logical operators` },
+    { h: `الـ Biconditional: p ↔ q ≡ (p → q) ∧ (q → p)` },
+    { h: `Table 7: الـ equivalences اللي فيها conditional statements` },
+    { h: `Table 8: الـ equivalences اللي فيها biconditionals` },
+    { h: `الـ Converse والـ contrapositive والـ inverse و"if and only if"`, pts: [
+      `لـ p → q: الـ <b>converse</b> هو q → p؛ الـ <b>contrapositive</b> هو ¬q → ¬p (مكافئ لـ p → q)؛ الـ <b>inverse</b> هو ¬p → ¬q (مكافئ للـ converse).`,
+      `الـ converse بتاع ¬p → q هو <b>q → ¬p</b> (بس بدّل الـ hypothesis والـ conclusion؛ Exam 2020/21 Q8).`,
+      `من تعريف <i>if</i> و<i>only if</i> كل واحدة لوحدها، "p if, and only if, q" معناها الاتنين: "p if q" (q → p) و"p only if q" (p → q).`,
+      `الجدول اللي فوق بيوضح إن p ↔ q و (p → q) ∧ (q → p) ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (Exam 2024/25 Q2b، Exam 2023/24 Q3b).`
+    ] },
+    { h: `الإثبات بسلسلة equivalences: ¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬q` },
+    { h: `إثبات: (p ∧ q) → (p ∨ q) هي tautology` },
+    { h: `إثبات: [¬p ∧ (p ∨ q)] → q هي tautology (بالقوانين)` },
+    { h: `تمارين من الـ slides (كلها tautologies)` }
+  ],
+  cards: [
+    `p ∧ ~q ("p and not q").`,
+    `"My car is in the repair shop and I can get to class."`,
+    `1. ~ ؛ 2. ∧، ∨ ؛ 3. →، ↔ (ممكن تحتاج أقواس لو ظهر اتنين من نفس المستوى).`,
+    `(p → q) ∧ (q → p)، وكمان (p ∧ q) ∨ (¬p ∧ ¬q) و ¬p ↔ ¬q.`,
+    `p ↔ ¬q`,
+    `¬p ∨ q و ¬q → ¬p (الـ contrapositive).`,
+    `¬p → q`,
+    `¬(p → ¬q)`,
+    `p → (q ∧ r)`,
+    `(p ∨ q) → r`,
+    `p → (q ∨ r)`,
+    `(p ∧ q) → r`,
+    `q → p`,
+    `¬q → ¬p (مكافئ لـ p → q).`,
+    `"p if q" (q → p) و "p only if q" (p → q).`,
+    `"John is not rich or he is famous"، يعني "If John is rich, then he is famous".`
+  ],
+  qa: [
+    `الـ p → q بتبقى false بس لما p تبقى true و q تبقى false، يبقى ~(p → q) ≡ p ∧ ~q. جبريًا: ~(p → q) ≡ ~(~p ∨ q) ≡ ~(~p) ∧ ~q (De Morgan) ≡ p ∧ ~q (double negative). النفي: "Sara lives in Athens and she does not live in Greece."`,
+    `p q | p→q | q→p | p↔q | (p→q)∧(q→p): TT: T T T T؛ TF: F T F F؛ FT: T F F F؛ FF: T T T T. عمود p ↔ q وعمود (p → q) ∧ (q → p) متطابقين، يبقوا logically equivalent.`,
+    `¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [2nd De Morgan] ≡ ¬p ∧ [¬(¬p) ∨ ¬q] [1st De Morgan] ≡ ¬p ∧ (p ∨ ¬q) [double negation] ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [2nd distributive] ≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F] ≡ (¬p ∧ ¬q) ∨ F [commutative] ≡ ¬p ∧ ¬q [identity].`,
+    `(p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q) ≡ (¬p ∨ ¬q) ∨ (p ∨ q) [De Morgan] ≡ (¬p ∨ p) ∨ (¬q ∨ q) [associative، commutative] ≡ T ∨ T ≡ T [domination].`,
+    `الـ Rows p q r | p→q | p→r | (p→q)∧(p→r) | q∧r | p→(q∧r): TTT: T T T T T؛ TTF: T F F F F؛ TFT: F T F F F؛ TFF: F F F F F؛ FTT: T T T T T؛ FTF: T T T F T؛ FFT: T T T F T؛ FFF: T T T F T. عمودين النتيجة متطابقين في الـ 8 rows، يبقى الـ forms دي equivalent.`,
+    `1. الـ Negation ~ الأول. 2. الـ ∧ والـ ∨ تاني (حط أقواس لو الاتنين ظهروا). 3. الـ → والـ ↔ تالت (حط أقواس لو الاتنين ظهروا). مثلًا p ∨ q → r معناها (p ∨ q) → r، و r ∨ p ∧ q محتاجة أقواس عشان ماتبقاش ملخبطة.`
+  ],
+  quiz: [
+    [`صح.`, `ناقصها ¬q.`, `لأ.`, `لأ.`],
+    [`لأ.`, `صح.`, `ده ¬(¬p ∧ q)، يعني q → p.`, `دي الجملة من غير نفي.`],
+    [`صح.`, `ده الـ converse.`, `ده ¬(q → p).`, `نفس ¬p ∧ q.`],
+    [`صح.`, `بيختلفوا في الـ row اللي فيه P = T و Q = F.`, `ده الـ converse.`, `بيختلفوا في الـ row TT.`],
+    [`مش equivalent.`, `صح.`, `مش equivalent.`, `ده مش logical operator.`],
+    [`صح.`, `اتجاه واحد بس.`, `لأ.`, `لأ.`],
+    [`صح. الاتنين true أو الاتنين false.`, `ده P ⊕ Q (واحد بس true).`, `ده Q → P بس.`, `ده ¬(P → Q).`],
+    [`صح. ده الـ Division into cases.`, `الـ r ضاعت.`, `لأ.`, `بيتجاهل p.`],
+    [`الـ r ضاعت.`, `ده الـ converse.`, `صح. a → b ≡ ¬a ∨ b.`, `مش equivalent.`],
+    [`ده مش الـ converse.`, `ده الـ inverse.`, `صح. بدّل الـ hypothesis والـ conclusion.`],
+    [`ده الـ converse.`, `مش equivalent.`, `صح. ¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q.`],
+    [`ده نفي r ∨ p ∨ q.`, `ده نفي r ∧ p ∧ q.`, `صح. De Morgan مرتين: ¬r ∧ ¬(p ∧ q). الورقة كاتباها ¬r ∧ ¬p ∨ ¬q.`],
+    [`ده ¬R ∧ ¬F.`, `ده R ∨ F.`, `ده F → R.`, `صح. ¬(R ∧ ¬F) ≡ ¬R ∨ F ≡ R → F.`],
+    [`لأ.`, `صح (Table 8).`, `ده بيساوي p ↔ q.`, `لأ.`],
+    [`ناقصة.`, `دي مكافئة للجملة الأصلية مش نفيها.`, `صح. p ∧ ¬q.`, `ده الـ inverse، مش النفي.`],
+    [`المستوى التالت.`, `المستوى التالت.`, `المستوى التاني.`, `صح. الـ negations الأول.`],
+    [`صح (Table 7).`, `ده (p → q) ∨ (p → r).`, `لأ.`, `ده (p → r) ∧ (q → r).`],
+    [`ده p ∨ q.`, `صح (Table 7).`, `لأ.`, `ده p ∧ ¬q.`]
+  ],
+  extra: [
+    [`صح. ¬(p → q) ≡ p ∧ ¬q.`, `ده الـ converse.`, `ده الـ inverse.`, `ده ¬p ∧ q.`],
+    [`ده النفي.`, `صح. مكافئ لـ p → q.`, `ده الـ inverse.`, `ده الـ converse.`],
+    [`ده p ∨ ¬q.`, `ده ¬p ∨ q.`, `صح (Table 7).`, `ده ¬q ∨ p.`],
+    [`الـ Negation على p بس.`, `لأ.`, `الـ → بتتحسب بعد الـ ∨.`, `صح. الـ ¬ الأول، بعدين ∨، بعدين →.`],
+    [`صح. p → q = F، p → r = T؛ F ∨ T = T. وكمان بتساوي p → (q ∨ r) = T → T.`, `ليها قيمة محددة.`, `الـ s مش موجودة أصلًا.`, `p → r = T، يبقى الـ disjunction بـ T.`],
+    [`جملة مختلفة.`, `صح (Table 7).`, `ده بيساوي (p ∨ q) → r.`, `ده الـ Converse.`],
+    [`القوس اللي جوه لازم يتنفي هو كمان.`, `الـ De Morgan بيحوّل الـ ∨ لـ ∧.`, `صح. تاني قانون De Morgan.`, `النفي ضاع.`],
+    [`بتبقى false لما p = F و q = T (affirming the consequent).`, `بتبقى false لما p = F و q = T.`, `بتبقى false لما p = T و q = F.`, `صح. كل ما p و p → q يبقوا true، يبقى q true.`],
+    [`صح (Table 8).`, `لأ.`, `ده بيساوي p ↔ q.`, `ده بيساوي p ↔ q.`],
+    [`ده مش نفي.`, `صح. ¬(R ∨ F) ≡ ¬R ∧ ¬F.`, `ده نفي "rich and famous".`, `ده مش نفي.`]
+  ]
+};
+
+AR.dm.lectures["6"] = {
+  notes: [
+    { h: `الـ Random variable`, pts: [
+      `لو رميت عملة 3 مرات ورا بعض هيطلعلك sample space S فيها 8 outcomes (hhh، hhT، … ، ttt). لما تسأل عن "عدد الصور" (heads) انت كده بتربط S (الـ <b>independent variable</b>) برقم حقيقي R (الـ <b>dependent variable</b>).`,
+      `العلاقة دي function بنكتبها <b>X : S → R</b>، والـ X هو الـ <b>random variable</b>.`,
+      `<b>التعريف</b>: الـ random variable هو <b>function الـ domain بتاعها هو elements الـ sample space S والـ co-domain بتاعها هو الـ real numbers R</b>.`,
+      `في حالة عدد الـ heads في 3 رميات، الـ range بتاع X هو {0, 1, 2, 3}.`,
+      `<b>Discrete sample space</b>: فيها عدد محدود (finite) من الاحتمالات، أو سلسلة مالهاش آخر بس عدد عناصرها زي عدد الـ whole numbers (يعني تتعد).`,
+      `<b>Continuous sample space</b>: فيها عدد لانهائي من الاحتمالات زي عدد النقط اللي على line segment (مش بتتعد).`
+    ] },
+    { h: `Example 1: X = عدد الـ heads − عدد الـ tails (3 رميات)` },
+    { h: `Example 2: مجموع رقمين الزهر`, pts: [
+      `بنرمي زهرة عادية مرتين؛ X = مجموع الرقمين. n(S) = 36.`,
+      `مجموع 2: (1,1). 3: (1,2),(2,1). 4: (3,1),(2,2),(1,3). 5: 4 pairs. 6: 5 pairs. 7: (4,3),(3,4),(2,5),(1,6),(6,1),(5,2)، يعني 6 pairs. 8: 5 pairs. 9: 4 pairs. 10: 3 pairs. 11: 2 pairs. 12: (6,6).`,
+      `الـ Range X = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}. والخطوط المايلة في الجدول ("lateral shape") بتطلّع نفس النتيجة.`,
+      `يبقى P(X = 7) = 6/36 = 1/6 و P(X = 2) = 1/36.`
+    ] },
+    { h: `الـ Probability distribution function`, pts: [
+      `لو X هو discrete random variable والـ range بتاعه {x₁, x₂, …, xᵣ}، يبقى الـ function f اللي متعرّفة بـ <b>f(xᵣ) = P(X = xᵣ)</b> لكل r = 1, 2, 3, … هي الـ <b>probability distribution function</b> بتاعة X.`,
+      `بنكتبها كـ set من الـ ordered pairs: X = {(x₁, f(x₁)), (x₂, f(x₂)), …, (xₙ, f(xₙ))}، أو كجدول فيه صف للـ xᵣ وصف للـ f(xᵣ).`,
+      `الـ set بتاعة الـ ordered pairs (x, f(x)) تبقى <b>probability function أو probability mass function أو probability distribution</b> لـ X لو لكل outcome ممكن x: <b>1.</b> f(x) ≥ 0؛ <b>2.</b> Σ f(x) = 1؛ <b>3.</b> P(X = x) = f(x).`
+    ] },
+    { h: `Example 3: عدد الـ heads (العملة اترمت مرتين)` },
+    { h: `حاول تحل: heads − tails لرميتين` },
+    { h: `مثال: أصغر رقم على كارتين متسحبين من غير إرجاع` },
+    { h: `حاول تحل: أكبر رقم على زهرتين` }
+  ],
+  cards: [
+    `function الـ domain بتاعها الـ sample space S والـ co-domain بتاعها الـ real numbers R؛ X : S → R.`,
+    `عدد محدود من الاحتمالات، أو سلسلة مالهاش آخر بس عدد عناصرها زي الـ whole numbers.`,
+    `عدد لانهائي من الاحتمالات زي عدد النقط اللي على line segment.`,
+    `f(xᵣ) = P(X = xᵣ) لكل قيمة xᵣ في الـ range بتاع X.`,
+    `f(x) ≥ 0؛ Σ f(x) = 1؛ P(X = x) = f(x).`,
+    `{−3, −1, 1, 3}`,
+    `{2, 3, …, 12}`,
+    `36`,
+    `f(0) = 1/4، f(1) = 2/4، f(2) = 1/4`,
+    `20 (5 × 4؛ من غير الأزواج المتكررة).`,
+    `8/20، 6/20، 4/20، 2/20`,
+    `6 (1+6، 2+5، 3+4 وعكسهم).`,
+    `الـ S هي الـ independent؛ والرقم الحقيقي R هو الـ dependent.`
+  ],
+  qa: [
+    `الـ random variable هو function الـ domain بتاعها elements الـ sample space S والـ co-domain بتاعها الـ real numbers: X : S → R. لو X هو discrete والـ range بتاعه {x₁, …, xᵣ}، يبقى الـ function f(xᵣ) = P(X = xᵣ) هي الـ probability distribution function بتاعته، وبتتكتب كـ ordered pairs {(xᵣ, f(xᵣ))} أو كجدول. ولازم تحقق f(x) ≥ 0، Σ f(x) = 1، P(X = x) = f(x).`,
+    `S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}. قيم X: HHH = 3؛ HHT، HTH، THH = 1؛ HTT، THT، TTH = −1؛ TTT = −3. الـ Range = {−3, −1, 1, 3}.`,
+    `الـ Range هو {2, 3, …, 12}. المجموع 7 بيطلع في (1,6),(2,5),(3,4),(4,3),(5,2),(6,1): يعني 6 من 36 outcome، يبقى P(X = 7) = 6/36 = 1/6.`,
+    `n(S) = 20. X = 1 في 8 outcomes، 2 في 6، 3 في 4، 4 في 2. f(1) = 8/20، f(2) = 6/20، f(3) = 4/20، f(4) = 2/20؛ والمجموع = 1.`,
+    `الـ Discrete: احتمالات محدودة، أو سلسلة مالهاش آخر بس عدد عناصرها زي الـ whole numbers (countable). الـ Continuous: عدد لانهائي من الاحتمالات زي عدد النقط على line segment (زي وقت أو حجم بيتقاس).`
+  ],
+  quiz: [
+    [`عدد الـ heads + الـ tails = 3، فالفرق دايمًا رقم فردي.`, `فيه قيم سالبة كمان.`, `صح.`, `ده الـ range بتاع عدد الـ heads.`],
+    [`ده لزهرة واحدة.`, `الـ 36 ده عدد الـ outcomes، مش مجموع.`, `المجموع 1 مستحيل.`, `صح.`],
+    [`صح.`, `لأ.`, `دي الـ co-domain.`, `الاحتمالات بتيجي من f، مش من X.`],
+    [`دي الشرط رقم 2.`, `صح (هو مش شرط). الاحتمالات عمرها ما تعدّي 1.`, `دي الشرط رقم 3.`, `دي الشرط رقم 1.`],
+    [`لأ.`, `ده f(0) أو f(2).`, `صح. HT و TH.`, `فيه 2 outcomes بس بيدّوا head واحدة.`],
+    [`ده f(2).`, `ده f(4).`, `بيعد ترتيب واحد بس.`, `صح. الـ 1 مع 2 أو 3 أو 4 أو 5 بأي ترتيب.`],
+    [`صح.`, `لأ.`, `الـ Discrete بتتعد (countable).`, `هي infinite.`]
+  ],
+  extra: [
+    [`فيه 3 outcomes فيهم 2 heads.`, `صح. HHT، HTH، THH من 8.`, `1/2 = 4/8، بس 3 بس من الـ 8 outcomes فيهم 2 heads بالظبط.`, `ده f(0) أو f(3).`],
+    [`ده P(X = 9) أو P(X = 5).`, `ده P(X = 7).`, `صح. (2,6)، (3,5)، (4,4)، (5,3)، (6,2).`, `لأ.`],
+    [`ده بيعد الـ pairs اللي أكبر رقم فيهم 3 أو أقل.`, `لأ.`, `ده f(2).`, `صح. 3² − 2² = 5 pairs: (1,3)، (2,3)، (3,3)، (3,2)، (3,1).`],
+    [`صح. كلهم ≥ 0 والمجموع 1.`, `المجموع 0.6 ≠ 1.`, `الاحتمال ماينفعش يبقى سالب.`, `المجموع 1.1 &gt; 1.`],
+    [`ده f(3).`, `صح. n(S) = 4 × 3 = 12؛ والـ pairs اللي فيها 1: 3 + 3 = 6.`, `ده f(2).`, `بيعد ترتيب واحد بس.`],
+    [`ده عدد الـ heads.`, `الـ ±1 مستحيلين في رميتين.`, `صح. HH = 2، HT/TH = 0، TT = −2.`, `الفروق هنا كلها زوجية.`],
+    [`الـ R هو الـ dependent variable.`, `الـ co-domain هي R.`, `لأ.`, `صح.`],
+    [`صح. 6 × 6.`, `ده عدد المجاميع الممكنة.`, `ده لرمية واحدة.`, `ده 6 + 6.`],
+    [`ده P(X ≥ 1).`, `صح. 3/8 + 1/8.`, `ده P(X = 2) بس.`, `ده P(X = 3).`],
+    [`الوقت ممكن ياخد أي قيمة في interval.`, `لأ.`, `صح. احتمالات لانهائية زي النقط على line segment.`, `مش countable.`]
+  ]
+};
+
+AR.dm.lectures["7"] = {
+  notes: [
+    { h: `الـ Expectation (الـ mean)`, pts: [
+      `الـ <b>Expectation</b> هي القيمة اللي أغلب قيم الـ discrete random variable بتتمركز حواليها؛ وساعات بنسميها "<b>mean</b>" ورمزها <b>μ</b> (بتتقري "Mu").`,
+      `لو X هو discrete والـ distribution بتاعه f والـ range بتاعه {x₁, …, xₙ} باحتمالات f(x₁), …, f(xₙ): <b>μ = E(X) = Σ xᵣ · f(xᵣ)</b> = x₁·f(x₁) + x₂·f(x₂) + … + xₙ·f(xₙ). يعني كل قيمة في الاحتمال بتاعها وتجمع.`,
+      `لو X هو continuous: <b>μ = E(X) = ∫ x f(x) dx</b> على (−∞, ∞).`,
+      `<b>Theorem</b>: الـ expected value بتاعة g(X) هي E[g(X)] = Σ g(x) f(x) (discrete) أو ∫ g(x) f(x) dx (continuous). ولو g(x) = x² يطلعلك E(X²).`
+    ] },
+    { h: `الـ Variance والـ standard deviation`, pts: [
+      `الـ <b>Variance</b>: σ² = E[(X − μ)²] = Σ (x − μ)² f(x) (discrete) أو ∫ (x − μ)² f(x) dx (continuous).`,
+      `<b>الطريقة المختصرة</b>: <b>σ² = E(X²) − μ²</b>، ودي اللي هتستخدمها في الامتحان غالبًا.`,
+      `الجذر التربيعي الموجب للـ variance، يعني <b>σ</b>، هو الـ <b>standard deviation</b> بتاع X.`
+    ] },
+    { h: `Example 1: عملة fair اترمت مرتين (عدد الـ heads)` },
+    { h: `Example 2: هات a، وبعدين الـ expectation` },
+    { h: `حاول تحل (وجه كمان في Exam 2023/24 Q2b)` },
+    { h: `Example 3: expectation لـ continuous variable (عمر جهاز)` },
+    { h: `Example 4: الـ variance لعدد القطع البايظة (defective parts)` },
+    { h: `Example 5: mean وvariance لـ continuous variable (الطلب على المية)` }
+  ],
+  cards: [
+    `القيمة اللي أغلب قيم الـ random variable بتتمركز حواليها؛ μ = E(X).`,
+    `Σ xᵣ · f(xᵣ)`,
+    `∫ x f(x) dx على الـ real line كله.`,
+    `Σ g(x) f(x) (discrete) أو ∫ g(x) f(x) dx (continuous).`,
+    `σ² = E[(X − μ)²]`,
+    `σ² = E(X²) − μ²`,
+    `σ = الجذر التربيعي الموجب للـ variance.`,
+    `1 (في المتوسط head واحدة في كل رمية للعملتين).`,
+    `استخدم Σ f(x) = 1.`,
+    `μ = 0.61، E(X²) = 0.87، σ² = 0.4979.`,
+    `200 ساعة.`,
+    `μ = 5/3، σ² = 1/18.`,
+    `"Mu"`
+  ],
+  qa: [
+    `E(X) = μ = Σ xᵣ f(xᵣ)، وهي القيمة اللي أغلب القيم بتتمركز حواليها. في رميتين: f(0) = 1/4، f(1) = 1/2، f(2) = 1/4، يبقى μ = 0(1/4) + 1(1/2) + 2(1/4) = 1.`,
+    `a = 1 − 0.6 = 0.4. E(X) = 0.2 + 0.2 + 1.2 + 1.2 = 2.8. E(X²) = 1(0.2) + 4(0.1) + 9(0.4) + 16(0.3) = 0.2 + 0.4 + 3.6 + 4.8 = 9.0. V(X) = 9.0 − 2.8² = 9.0 − 7.84 = 1.16.`,
+    `σ² = E[(X − μ)²] = Σ (x − μ)² f(x) (discrete) أو ∫ (x − μ)² f(x) dx (continuous). الطريقة المختصرة: σ² = E(X²) − μ². والـ standard deviation σ هو الجذر التربيعي الموجب لـ σ².`,
+    `μ = 2∫₁² (x² − x) dx = 2[x³/3 − x²/2]₁² = 5/3. E(X²) = 2∫₁² (x³ − x²) dx = 2[x⁴/4 − x³/3]₁² = 17/6. σ² = 17/6 − 25/9 = 1/18.`,
+    `μ = 0.38 + 0.20 + 0.03 = 0.61. E(X²) = 0.38 + 0.40 + 0.09 = 0.87. σ² = 0.87 − 0.3721 = 0.4979.`
+  ],
+  quiz: [
+    [`صح. μ = Σ xᵣ f(xᵣ).`, `بيتجاهل الاحتمالات.`, `ده مش مقدار متعرّف.`, `ده دايمًا بيساوي 1.`],
+    [`المجموع هيبقى 0.9.`, `صح. 1 − 0.7.`, `المجموع هيبقى 1.1.`, `المجموع هيبقى 0.8.`],
+    [`نسيت الإشارة السالبة بتاعة −1.`, `غلطة في الحساب.`, `صح. −0.3 + 0 + 0.1 + 0.6 + 0.6.`, `ده الـ variance.`],
+    [`ده بيساوي 1.`, `ده μ².`, `ده بيساوي 0.`, `صح.`],
+    [`صح. 0.87 − 0.3721.`, `ده E(X²).`, `ده μ².`, `ده μ.`],
+    [`ده الـ constant.`, `صح.`, `الـ integral بيتقارب (converges).`, `ده أقل عمر ممكن.`],
+    [`غلطة في الحساب.`, `ده الـ mean.`, `صح.`, `ده E(X²).`],
+    [`لأ.`, `هو الجذر التربيعي، مش التربيع.`, `لأ.`, `صح.`]
+  ],
+  extra: [
+    [`غلطة في الحساب.`, `لأ.`, `صح. (0 + 3 + 6 + 3)/8 = 12/8 = 1.5.`, `ده أكبر قيمة.`],
+    [`ده E(X²).`, `ده μ².`, `ده μ.`, `صح. E(X²) = (0 + 3 + 12 + 9)/8 = 3؛ 3 − 1.5² = 0.75.`],
+    [`صح. 0.5 + 0.6 + 0.6.`, `ده كان هيبقى المتوسط العادي من غير أوزان.`, `ده E(X²).`, `لأ.`],
+    [`ده μ².`, `صح. E(X²) = 0.5 + 1.2 + 1.8 = 3.5؛ 3.5 − 1.7² = 0.61.`, `ده E(X²).`, `ده μ.`],
+    [`لأ.`, `لأ.`, `صح. E(X²) = 1، μ² = 0.`, `القيم متوزعة حوالين الـ 0.`],
+    [`نسيت تضرب 2 × 0.3.`, `المجموع هيعدّي 1.`, `المجموع هيبقى 0.9.`, `صح. a = 1 − 0.7؛ E = 0.5 + 0.6.`],
+    [`صح. √0.49.`, `ده الـ variance.`, `غلطة في العلامة العشرية.`, `ده σ⁴.`],
+    [`ده الـ variance.`, `صح. ∫₀¹ x dx = 1/2.`, `ده ∫ f dx.`, `ده E(X²).`],
+    [`لأ.`, `لأ.`, `صح (E[g(X)] مع g(x) = x²).`, `ده μ².`],
+    [`ده الـ variance.`, `لأ.`, `لأ.`, `صح. ده تعريف المحاضرة.`]
+  ]
+};
+
+AR.dm.lectures["8"] = {
+  notes: [
+    { h: `الـ Integers والـ binary operations والقسمة`, pts: [
+      `الـ set بتاعة الـ integers <b>Z</b> فيها كل الأرقام الصحيحة (من غير كسور) من سالب ما لا نهاية لموجب ما لا نهاية: {…, −2, −1, 0, 1, 2, …}.`,
+      `الـ <b>binary operation</b> بتاخد 2 inputs وبتطلّع output واحد. في الـ cryptography بيهمنا 3: <b>addition، subtraction، multiplication</b>.`,
+      `Example 2.1: 5 + 9 = 14، (−5) + 9 = 4، 5 + (−9) = −4، (−5) + (−9) = −14؛ 5 − 9 = −4، (−5) − 9 = −14، 5 − (−9) = 14، (−5) − (−9) = 4؛ 5 × 9 = 45، (−5) × 9 = −45، 5 × (−9) = −45، (−5) × (−9) = 45.`,
+      `الـ <b>Division relation</b>: <b>a = q × n + r</b>، حيث n موجب و r مش سالب (0 ≤ r &lt; n). a = الـ dividend (المقسوم)، n = الـ divisor (المقسوم عليه)، q = الـ quotient (خارج القسمة)، r = الـ remainder (الباقي).`,
+      `Example 2.2: a = 255، n = 11 → q = 23، r = 2 (255 = 23 × 11 + 2).`,
+      `Example 2.3: الكمبيوتر بيطلّع r سالب لما a تبقى سالبة. عشان تخلي r موجب: <b>نقّص q بواحد وزوّد n على r</b>. مثلًا −255 ÷ 11: q = −23، r = −2 → q = −24، r = 9.`
+    ] },
+    { h: `الـ Divisibility (القابلية للقسمة)`, pts: [
+      `لو a ≠ 0 و r = 0 في الـ division relation، يبقى a = q × n. لو الباقي صفر بنكتب <b>n | a</b> (n بتقسم a)؛ ولو مش صفر بنكتب n ∤ a. (الـ slide كاتبة a | n وقصدها "الـ divisor بيقسم".)`,
+      `Example 2.4: 4 | 32 لأن 32 = 8 × 4؛ و 8 ∤ 42 لأن 42 = 5 × 8 + 2.`,
+      `Example 2.5: 13 | 78، 7 | 98، −6 | 24، 4 | 44، 11 | (−33)؛ 13 ∤ 27، 7 ∤ 50، −6 ∤ 23، 4 ∤ 41، 11 ∤ (−32).`,
+      `<b>Property 1</b>: لو a | 1، يبقى a = ±1. <b>Property 2</b>: لو a | b و b | a، يبقى a = ±b. <b>Property 3</b>: لو a | b و b | c، يبقى a | c. <b>Property 4</b>: لو a | b و a | c، يبقى a | (m × b + n × c) لأي integers m و n.`,
+      `<b>Fact 1</b>: الـ integer 1 ليه divisor واحد بس، هو نفسه. <b>Fact 2</b>: أي positive integer ليه على الأقل 2 divisors، الـ 1 والرقم نفسه (وممكن يبقى ليه أكتر).`
+    ] },
+    { h: `الـ GCD والـ Euclidean algorithm`, pts: [
+      `الـ <b>greatest common divisor</b> لـ 2 positive integers هو أكبر integer يقدر يقسم الاتنين.`,
+      `الـ <b>Euclidean algorithm</b>: Fact 1: gcd(a, 0) = a. Fact 2: gcd(a, b) = gcd(b, r)، حيث r هو باقي قسمة a على b.`,
+      `لما gcd(a, b) = 1، بنقول إن a و b <b>relatively prime</b> (أوليين فيما بينهم).`,
+      `الـ Algorithm: r₁ ← a، r₂ ← b؛ طول ما r₂ &gt; 0: q ← r₁ / r₂؛ r ← r₁ − q × r₂؛ r₁ ← r₂؛ r₂ ← r. وفي الآخر gcd(a, b) = r₁.`,
+      `Example 2.8: gcd(25, 60): 60 = 2 × 25 + 10؛ 25 = 2 × 10 + 5؛ 10 = 2 × 5 + 0 → gcd = 5 (الـ slide كاتبة "gcd(25, 65) = 5"، وده typo؛ الاتنين بيطلعوا 5).`,
+      `في الامتحان: gcd(63, 110): 110 = 1 × 63 + 47؛ 63 = 1 × 47 + 16؛ 47 = 2 × 16 + 15؛ 16 = 1 × 15 + 1؛ 15 = 15 × 1 + 0 → gcd = 1 (relatively prime).`
+    ] },
+    { h: `Example 2.7: gcd(2740, 1760)` },
+    { h: `الـ Extended Euclidean algorithm`, pts: [
+      `لو معاك a و b، عايز تلاقي s و t بحيث <b>s × a + t × b = gcd(a, b)</b>. الـ extended algorithm بيحسب gcd(a, b) و s و t في نفس الوقت.`,
+      `الـ Initialization: r₁ ← a، r₂ ← b؛ s₁ ← 1، s₂ ← 0؛ t₁ ← 0، t₂ ← 1.`,
+      `الـ Loop طول ما r₂ &gt; 0: q ← r₁ / r₂؛ r ← r₁ − q × r₂، r₁ ← r₂، r₂ ← r؛ s ← s₁ − q × s₂، s₁ ← s₂، s₂ ← s؛ t ← t₁ − q × t₂، t₁ ← t₂، t₂ ← t.`,
+      `النتيجة: gcd(a, b) ← r₁؛ s ← s₁؛ t ← t₁.`,
+      `Example 2.10: a = 17، b = 0 → gcd = 17، s = 1، t = 0. Example 2.11: a = 0، b = 45 → gcd = 45، s = 0، t = 1.`
+    ] },
+    { h: `Example 2.9: a = 161، b = 28` },
+    { h: `الـ Modular arithmetic`, pts: [
+      `في الـ modular arithmetic بناخد الباقي r بس من a = q × n + r. الـ operator اسمه <b>mod</b>؛ والـ input التاني n اسمه <b>modulus</b>؛ والـ output r اسمه <b>residue</b>. a mod n = r حيث 0 ≤ r ≤ n − 1.`,
+      `Example 2.14: 27 mod 5 = 2؛ 36 mod 12 = 0؛ −18 mod 14: r = −4، نزوّد الـ modulus → 10؛ −7 mod 10: r = −7 → 3.`,
+      `الـ <b>Set of residues Zn</b> = {0, 1, 2, …, n − 1}: الـ set بتاعة أصغر residues modulo n (زي Z₂ = {0,1}، Z₆ = {0,…,5}، Z₁₁ = {0,…,10}).`,
+      `الـ <b>Congruence</b>: في الـ cryptography بنستخدم ≡ بدل علامة اليساوي، ونزوّد (mod n): 2 ≡ 12 (mod 10)، 13 ≡ 23 (mod 10)، 3 ≡ 8 (mod 5)، 8 ≡ 13 (mod 5). يعني a ≡ b (mod n) معناها a mod n = b mod n.`,
+      `Example 2.15: الساعة بتستخدم modulo 12 arithmetic، بس بتكتب 12 بدل 0.`
+    ] },
+    { h: `العمليات في Zn وخصائصها`, pts: [
+      `الجمع والطرح والضرب متعرّفين في Zn: (a + b) mod n، (a − b) mod n، (a × b) mod n؛ والنتيجة بنرجّعها لـ Zn بالـ mod.`,
+      `<b>الخاصية الأولى</b>: (a + b) mod n = [(a mod n) + (b mod n)] mod n. <b>التانية</b>: (a − b) mod n = [(a mod n) − (b mod n)] mod n. <b>التالتة</b>: (a × b) mod n = [(a mod n) × (b mod n)] mod n. الفايدة إنك تصغّر الأرقام الأول قبل ما تحسب.`,
+      `Example 2.18: 1,723,345 mod 11 = 8 و 2,124,945 mod 11 = 9، يبقى (المجموع) mod 11 = (8 + 9) mod 11 = 6؛ (الفرق) mod 11 = (8 − 9) mod 11 = 10؛ (حاصل الضرب) mod 11 = (8 × 9) mod 11 = 72 mod 11 = 6. (الـ slide كاتبة "mod 16" على الشمال في السطر التاني والتالت؛ والصح mod 11.)`,
+      `Example 2.19: 10ⁿ mod x = (10 mod x)ⁿ (الخاصية التالتة n مرة): 10ⁿ mod 3 = 1، 10ⁿ mod 9 = 1، 10ⁿ mod 7 = 3ⁿ mod 7.`,
+      `Example 2.20: أي integer ومجموع أرقامه العشرية ليهم نفس الباقي mod 3 (لأن 10ⁿ mod 3 = 1).`,
+      `Example 2.16: (14 + 7) mod 15 = 6؛ (7 − 11) mod 13 = −4 mod 13 = 9؛ (7 × 11) mod 20 = 77 mod 20 = 17.`,
+      `Example 2.17: (17 + 27) mod 14 = 44 mod 14 = 2؛ (12 − 43) mod 13 = −31 mod 13 = −31 + 39 = 8؛ (123 × (−10)) mod 19 = −1230 mod 19 = −1230 + 1235 = 5. (الـ slide مكررة حلول 2.16 تحت 2.17؛ والإجابات الصح لـ 2.17 هي 2، 8، 5.)`
+    ] },
+    { h: `الـ Inverses`, pts: [
+      `الـ <b>Additive inverse</b>: a و b يبقوا additive inverses في Zn لو a + b ≡ 0 (mod n). أي integer ليه واحد؛ والـ inverse بتاع a هو n − a. أزواج Z₁₀: (0,0)، (1,9)، (2,8)، (3,7)، (4,6)، (5,5).`,
+      `الـ <b>Multiplicative inverse</b>: a و b يبقوا multiplicative inverses في Zn لو a × b ≡ 1 (mod n). الـ integer ممكن يبقى ليه أو مايبقاش ليه؛ <b>b ليه inverse في Zn لو وبس لو gcd(n, b) = 1</b>.`,
+      `Example 2.22: الـ 8 مالوش inverse في Z₁₀ لأن gcd(10, 8) = 2 ≠ 1. Example 2.23: أزواج Z₁₀: (1,1)، (3,7)، (9,9)؛ والـ 0، 2، 4، 5، 6، 8 مالهمش inverse.`,
+      `Example 2.24، في Z₁₁: (1,1)، (2,6)، (3,4)، (5,9)، (7,8)، (10,10). الـ slide بتقول "seven pairs" وكاتبة (9,9)، بس 9 × 9 = 81 ≡ 4 (mod 11)، يبقى (9,9) غلط: هما <b>ستة</b> أزواج بس (كل element مش صفر بيظهر مرة واحدة).`,
+      `الـ <b>extended Euclidean algorithm</b> بيجيب الـ multiplicative inverse بتاع b في Zn لما gcd(n, b) = 1: شغّله على (n, b)؛ والـ inverse هو قيمة <b>t بعد ما ترجّعها لـ Zn</b>.`,
+      `Example 2.25: الـ inverse بتاع 11 في Z₂₆ هو <b>19</b> (11 × 19 = 209 = 8 × 26 + 1). الـ slide كاتبة "7 or 19" والمفروض "−7 or 19" (−7 ≡ 19).`,
+      `Example 2.26: الـ inverse بتاع 23 في Z₁₀₀ هو <b>87</b> (23 × 87 = 2001). الـ slide كاتبة "13 or 87" والمفروض "−13 or 87". Example 2.27: الـ 12 مالوش inverse في Z₂₆ (gcd = 2).`
+    ] },
+    { h: `Example 2.25 بالـ extended Euclidean algorithm (n = 26، b = 11)` }
+  ],
+  cards: [
+    `a = q × n + r، الـ n موجب، و 0 ≤ r &lt; n.`,
+    `نقّص q بواحد وزوّد n على r.`,
+    `q = 23، r = 2`,
+    `لو a | b و b | c، يبقى a | c.`,
+    `لو a | b و a | c، يبقى a | (m × b + n × c).`,
+    `ليه divisor واحد بس، هو نفسه.`,
+    `أكبر integer بيقسم الـ positive integers الاتنين.`,
+    `gcd(a, 0) = a؛ gcd(a, b) = gcd(b, r)، حيث r = a mod b.`,
+    `gcd(a, b) = 1`,
+    `gcd(a, b) و s و t بحيث s × a + t × b = gcd(a, b).`,
+    `الـ n = modulus، والـ output r = residue.`,
+    `الـ set بتاعة أصغر residues modulo n: {0, 1, …, n − 1}.`,
+    `10`,
+    `3`,
+    `a + b ≡ 0 (mod n)`,
+    `gcd(n, b) = 1`,
+    `(1,1)، (3,7)، (9,9)`,
+    `19 (الـ t = −7 بعد ما نرجّعها لـ Z₂₆).`,
+    `20`,
+    `7، s = −1، t = 6`
+  ],
+  qa: [
+    `a = q × n + r حيث n &gt; 0 و 0 ≤ r &lt; n. 101 = 9 × 11 + 2 → q = 9، r = 2. −18: الكمبيوتر بيدّي q = −1، r = −4؛ نقّص q وزوّد n: q = −2، r = 10 (−18 = −2 × 14 + 10).`,
+    `1. لو a | 1 يبقى a = ±1. 2. لو a | b و b | a يبقى a = ±b. 3. لو a | b و b | c يبقى a | c. 4. لو a | b و a | c يبقى a | (m × b + n × c) لأي integers m و n.`,
+    `2740 = 1 × 1760 + 980؛ 1760 = 1 × 980 + 780؛ 980 = 1 × 780 + 200؛ 780 = 3 × 200 + 180؛ 200 = 1 × 180 + 20؛ 180 = 9 × 20 + 0. gcd = 20.`,
+    `q = 5: r = 21، s = 1، t = −5. q = 1: r = 7، s = −1، t = 6. q = 3: r = 0، s = 4، t = −23. وقف: gcd = 7، s = −1، t = 6. للتأكد: (−1)(161) + 6(28) = −161 + 168 = 7.`,
+    `27 = 5 × 5 + 2 → 2. 36 = 3 × 12 + 0 → 0. −18 → r = −4، نزوّد 14 → 10. −7 → r = −7، نزوّد 10 → 3.`,
+    `a و b يبقوا additive inverses لو a + b ≡ 0 (mod n) (دايمًا موجود: n − a). ويبقوا multiplicative inverses لو a × b ≡ 1 (mod n)، وده موجود بس لما gcd(n, b) = 1. للـ 11 في Z₂₆: gcd = 1؛ الـ extended Euclid بيدّي t = −7، ولما نرجّعها لـ Z₂₆ = 19. للتأكد 11 × 19 = 209 = 8 × 26 + 1.`,
+    `(17 + 27) mod 14 = 44 mod 14 = 2. (12 − 43) mod 13 = −31 mod 13 = 8. (123 × −10) mod 19 = −1230 mod 19 = 5 (لأن 19 × 65 = 1235).`
+  ],
+  quiz: [
+    [`صح. 27 = 5 × 5 + 2.`, `لأ.`, `لأ.`, `لأ.`],
+    [`صح. 36 = 3 × 12.`, `لأ.`, `لأ.`, `لأ.`],
+    [`صح.`, `الـ n ناقصة.`, `الـ a مش صفر.`, `بس لو q = 1.`],
+    [`صح كرقم، بس صياغة المحاضرة هي "itself" (Fact 1). وفي 2024/25 الاختيار a مكتوب 2.`, `صح. Fact 1: الـ integer 1 ليه divisor واحد بس، هو نفسه.`, `الـ 4 مابتقسمش 1.`, `الـ 5 مابتقسمش 1.`],
+    [`معكوسة.`, `صح. Property 3 (الـ transitivity).`, `لأ.`, `لأ.`],
+    [`الـ 9 مابتقسمش 110.`, `الـ 6 مابتقسمش 63.`, `صح. هما relatively prime.`, `الـ 2 مابتقسمش 63.`],
+    [`9 × 18 + 4 = 166.`, `متبدّلين/غلط.`, `8 × 18 + 4 = 148.`, `صح. 9 × 18 = 162، و 165 − 162 = 3.`],
+    [`صح. −32 = (−6)(6) + 4، والباقي لازم يبقى مش سالب.`, `6 × 6 + 3 = 39.`, `4 × 6 + 5 = 29.`],
+    [`الـ residues لازم تبقى في Z₁₄؛ زوّد 14.`, `غلطة في الإشارة.`, `صح. −4 + 14.`, `مش في Z₁₄.`],
+    [`صح. −7 + 10.`, `غلطة في الإشارة.`, `الـ residue السالب مش مسموح.`, `لأ.`],
+    [`صح.`, `بتقسم الاتنين بس مش الأكبر.`, `ده أول باقي.`, `الـ 40 مابتقسمش 2740.`],
+    [`1 × 1 = 1.`, `صح. gcd(10, 8) = 2.`, `3 × 7 = 21 ≡ 1.`, `9 × 9 = 81 ≡ 1.`],
+    [`gcd(26, 11) = 1، يبقى موجود.`, `11 × 15 = 165 ≡ 9.`, `صح. 11 × 19 = 209 ≡ 1 (mod 26).`, `11 × 7 = 77 ≡ 25. الـ "7" اللي في الـ slide ضاعت منها علامة السالب.`],
+    [`لأ.`, `غلطة في الإشارة.`, `رجّعها لـ Z₁₃.`, `صح. −4 + 13.`],
+    [`صح.`, `الـ a هو الـ dividend.`, `الـ q هو الـ quotient.`, `الـ r هو الـ residue.`],
+    [`مش في Z₁₀ (بتساوي 6).`, `صح. 4 + 6 = 10 ≡ 0.`, `أي integer ليه additive inverse.`, `4 + 4 = 8.`]
+  ],
+  extra: [
+    [`لأ.`, `الـ residues لازم تبقى في Z₇.`, `غلطة في الإشارة.`, `صح. −25 = (−4)(7) + 3.`],
+    [`صح. 84 = 2·36 + 12؛ 36 = 3·12 + 0؛ 84 − 2·36 = 12.`, `لأ.`, `−168 + 36 ≠ 12.`, `84 − 72 = 12، مش 6.`],
+    [`7 × 11 = 77 ≡ 25.`, `صح. 7 × 15 = 105 = 4 × 26 + 1.`, `gcd(26, 7) = 1، يبقى موجود.`, `7 × 19 = 133 ≡ 3.`],
+    [`ده 15 mod 13.`, `لأ.`, `صح. 255 = 19 × 13 + 8 (أو (2 × 4) mod 13 = 8).`, `ده 17 mod 13.`],
+    [`7 × 7 = 49 ≡ 1.`, `5 × 5 = 25 ≡ 1.`, `11 × 11 = 121 ≡ 1.`, `صح. gcd(12, 9) = 3 ≠ 1.`],
+    [`صح. (10 mod 9)⁵ = 1⁵ = 1.`, `لأ.`, `لأ.`, `مش في Z₉.`],
+    [`5 mod 3 = 2.`, `صح. الاتنين باقيهم 3 (مثال المحاضرة).`, `7 mod 3 = 1.`, `13 mod 10 = 3، و 24 mod 10 = 4.`],
+    [`لأ.`, `لازم تتكتب في Z₁₀.`, `صح. 3 + 7 = 10 ≡ 0.`, `3 + 3 = 6.`],
+    [`(−5)(8) + 3 = −37.`, `الـ r لازم يبقى مش سالب.`, `الإشارات غلط.`, `صح. −45 = (−6)(8) + 3.`],
+    [`صح. 1071 = 2·462 + 147؛ 462 = 3·147 + 21؛ 147 = 7·21 + 0.`, `الـ 147 مابتقسمش 462.`, `بتقسم الاتنين بس مش الأكبر.`, `الـ 42 مابتقسمش 1071.`]
+  ]
+};
+
+AR.dm.lectures["9"] = {
+  notes: [
+    { h: `الـ Graphs والـ edges والـ degree`, pts: [
+      `الـ <b>graph</b> G = (V, E) هو زوج: set من الـ <b>vertices</b> (nodes) V وset من الـ <b>edges</b> E، وبنفترض إنهم finite: |V| = n و |E| = m.`,
+      `الـ edge e_k = (v_i, v_j) بنقول إنه <b>incident</b> مع الـ vertices v_i و v_j (يعني متوصل بيهم).`,
+      `الـ <b>simple</b> graph <b>مفيهوش self-loops ولا multiple edges</b>. إنما الـ <b>multigraph</b> فيه أكتر من edge بين نفس الـ 2 vertices.`,
+      `الـ <b>degree</b> d(v) بتاع vertex هو عدد الـ edges الـ incident عليه. خلي بالك: <b>الـ self-loop بيتحسب 2</b>. والـ vertex الـ <b>isolated</b> الـ degree بتاعه 0.`,
+      `<b>Proposition</b> (الـ handshake): مجموع الـ degrees في G بيساوي <b>2|E| = 2m</b> (لأن كل edge بيتعد مرتين). <b>Corollary</b>: عدد الـ vertices اللي الـ degree بتاعها odd دايمًا زوجي.`,
+      `الـ <b>null graph</b> N_n فيه n vertices و<b>مفيهوش ولا edge</b> (كل الـ vertices isolated).`,
+      `رسمة كباري Königsberg (A، B، C، D و 7 كباري) هي اللي بتوضح فكرة الـ degrees.`
+    ] },
+    { h: `Graphs خاصة`, pts: [
+      `الـ <b>complete graph</b> K_n هو simple graph فيه كل الـ B(n, 2) = n(n − 1)/2 edges الممكنة (مرسوم K₂، K₃، K₄، K₅). يعني K_n فيه n(n − 1)/2 edges: K₄ = 6، K₅ = 10.`,
+      `الـ <b>k-regular</b> graph هو simple graph كل الـ vertices بتاعته ليها نفس الـ degree k (زي الـ Petersen graph اللي هو 3-regular). <b>Corollary</b>: الـ K_n هو (n − 1)-regular.`,
+      `الـ <b>bipartite</b> graph: V = V₁ ∪ V₂ ومفيش edges جوه V₁ ولا جوه V₂ (كل edge بيوصّل V₁ بـ V₂). الاختبار: دوّر على <b>لونين يفصلوا الـ edges</b> (كل edge يوصّل بين لونين مختلفين).`,
+      `أي graph فيه <b>triangle</b> (odd cycle) يبقى <b>مش bipartite</b>.`,
+      `الـ <b>complete bipartite</b> graph K_{n₁,n₂} فيه كل الـ edges الممكنة بين V₁ و V₂: |E| = |V₁|·|V₂|. ويبقى regular بالظبط لما n₁ = n₂.`
+    ] },
+    { h: `الـ Walks والـ trails والـ paths والـ cycles`, pts: [
+      `الـ <b>walk of length k</b> من v₀ لـ v_k: V = {v₀, …, v_k}، E = {(v₀, v₁), …, (v_{k−1}, v_k)}، حيث الـ edge رقم j بيوصّل الـ node رقم j − 1 بالـ node رقم j (|V| = |E| + 1).`,
+      `الـ <b>trail</b> هو walk كل الـ <b>edges</b> فيه مختلفة. الـ <b>path</b> هو walk كل الـ <b>nodes</b> فيه مختلفة (وبالتالي الـ edges كمان).`,
+      `الـ walk أو الـ trail بيبقى <b>closed</b> لما v₀ = v_k. والـ <b>cycle</b> هو walk الـ nodes فيه مختلفة ما عدا v₀ = v_k.`,
+      `Lemmas: أي walk من u لـ v ≠ u جواه path من u لـ v (بتشيل الـ subcycles)؛ وأي closed walk طوله odd جواه cycle طوله odd.`
+    ] },
+    { h: `الـ Directed graphs`, pts: [
+      `في الـ <b>directed graph</b> (digraph) كل edge ليه اتجاه. لـ e = (v_s, v_t)، الـ v_s هو الـ <b>source</b> node والـ v_t هو الـ <b>terminal</b> node.`,
+      `كل node ليه <b>in-degree</b> d_in(v) (الداخل) و<b>out-degree</b> d_out(v) (الخارج). والـ graph يبقى <b>balanced</b> لو d_in(v) = d_out(v) لكل الـ nodes.`,
+      `الـ graph اللي الـ edge set بتاعه مكوّن من أزواج vertices <b>ordered</b> يبقى directed graph (Exam 2023/24 Q9).`
+    ] },
+    { h: `الـ Topological order والـ acyclic graphs`, pts: [
+      `الـ bijection f_ord : V → {1, …, n} يبقى <b>topological order</b> لو وبس لو f_ord(i) &lt; f_ord(j) لكل edge (i, j) ∈ E. والـ graph ده لازم يبقى <b>مفيهوش cycles</b>.`,
+      `الـ <b>acyclic</b> graph هو graph من غير cycles. <b>Proposition</b>: أي acyclic graph فيه على الأقل node واحد الـ in-degree بتاعه صفر. <b>Proof by contradiction</b>: لو كل node ليه predecessor p(i)، ولو مشيت ورا الـ predecessors من v₀ لازم في الآخر هترجع لـ node زرته قبل كده (لأن |V| محدود)، وده يدّيك cycle.`,
+      `<b>Algorithm FindTopOrd(G)</b>: t := 0؛ G⁰ := G؛ طول ما فيه v ∈ Gᵗ بحيث d_in(v) = 0: Gᵗ⁺¹ := Gᵗ \\ {v}؛ order(v) := t + 1؛ t := t + 1. لو t = n يبقى G هو acyclic؛ ولو t &lt; n يبقى G فيه cycle.`,
+      `مثال: v₄ بس اللي الـ in-degree بتاعه 0 → شيله؛ بعدين v₁ و v₃ الـ in-degree بتاعهم بقى 0؛ اختار v₃، وهكذا. الترتيب النهائي {v₄, v₃, v₁, v₂, v₅, v₆}. الـ Complexity: linear في حجم الـ graph، O(n + m)، باستخدام counter للـ in-degree وqueue.`
+    ] },
+    { h: `الـ Isomorphism`, pts: [
+      `الـ G₁ و G₂ يبقوا <b>isomorphic</b> لو وبس لو فيه bijection بين الـ nodes بتاعتهم بيخلّي كل edge في G₁ يقابله edge واحد بالظبط في G₂، والعكس.`,
+      `لازم تلاقي ترقيم للـ labels يخلّي الـ graphs متطابقين؛ والـ slide بتقول إن المشكلة دي في العموم معروف إنها صعبة ("NP hard").`
+    ] },
+    { h: `طرق التمثيل: الـ adjacency matrix، الـ incidence matrix، والـ edge list`, pts: [
+      `الـ <b>Adjacency matrix</b>: matrix A حجمها n × n فيها A(i, j) = 1 لو وبس لو (i, j) ∈ E. وبتبقى symmetric في الـ undirected graphs.`,
+      `الـ <b>Incidence matrix</b> T (n × m): في الـ undirected: T(i, k) = T(j, k) = 1 لو وبس لو e_k = (v_i, v_j). في الـ directed: T(i, k) = −1 و T(j, k) = 1 لو وبس لو e_k = (v_i, v_j) (−1 عند الـ source، و +1 عند الـ terminal).`,
+      `الـ <b>Sparse representation / list of edges</b> متنظمة حسب الـ nodes، زي V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.`,
+      `حجم التمثيل ده <b>linear</b> في m = |E|؛ ولو عدّينا الـ bits: <b>L = (n + m) log n</b>، لأن الـ vertex pointer محتاج log n bits.`
+    ] },
+    { h: `مثال المحاضرة: undirected graph (vertices 1..5، edges a..f)` },
+    { h: `مثال المحاضرة: digraph (vertices 1..4، edges e1..e5)` }
+  ],
+  cards: [
+    `زوج: set محدودة من الـ vertices V (|V| = n) وset من الـ edges E (|E| = m).`,
+    `الـ edge e_k = (v_i, v_j) بيبقى incident مع v_i و v_j.`,
+    `مفيهوش self-loops ولا multiple edges.`,
+    `فيه أكتر من edge بين نفس الـ 2 vertices.`,
+    `n vertices ومفيش ولا edge.`,
+    `عدد الـ edges الـ incident عليه؛ والـ self-loop بيتحسب 2.`,
+    `الـ degree بتاعه 0.`,
+    `Σ d(v) = 2|E| = 2m؛ وعدد الـ vertices اللي الـ degree بتاعها odd بيبقى زوجي.`,
+    `Simple graph فيه كل الـ n(n − 1)/2 edges؛ وهو (n − 1)-regular.`,
+    `Simple graph كل الـ vertices بتاعته الـ degree بتاعها k.`,
+    `V = V₁ ∪ V₂ والـ edges بس بين V₁ و V₂؛ لونين بيفصلوا الـ edges. ولو فيه triangle يبقى مش bipartite.`,
+    `كل الـ edges بين V₁ و V₂؛ |E| = n₁·n₂؛ ويبقى regular لو وبس لو n₁ = n₂.`,
+    `Walk: سلسلة edges؛ trail: edges مختلفة؛ path: nodes مختلفة؛ cycle: nodes مختلفة ما عدا v₀ = v_k.`,
+    `لـ e = (v_s, v_t): الـ v_s هو الـ source، والـ v_t هو الـ terminal.`,
+    `d_in(v) = d_out(v) لكل node.`,
+    `Bijection f_ord بحيث f_ord(i) &lt; f_ord(j) لكل edge (i, j)؛ وموجود بس لو الـ graph acyclic.`,
+    `على الأقل node واحد الـ in-degree بتاعه صفر.`,
+    `Bijection للـ nodes بيخلّي كل edge في G₁ يقابل edge واحد بالظبط في G₂ والعكس.`,
+    `n × n، و A(i, j) = 1 لو وبس لو (i, j) ∈ E.`,
+    `T(i, k) = −1 عند الـ source، و T(j, k) = 1 عند الـ terminal بتاع e_k.`
+  ],
+  qa: [
+    `G = (V, E): set محدودة من الـ vertices وset من الـ edges، |V| = n، |E| = m. الـ edge (v_i, v_j) بيبقى incident مع v_i و v_j. الـ simple graph مفيهوش self-loops ولا multiple edges. الـ degree d(v) هو عدد الـ edges الـ incident (والـ self-loop بيتحسب 2)؛ والـ isolated vertex الـ degree بتاعه 0. Σ d(v) = 2|E| = 2m؛ والـ corollary: عدد الـ vertices اللي الـ degree بتاعها odd بيبقى زوجي.`,
+    `K_n: simple graph فيه كل الـ n(n − 1)/2 edges (وهو (n − 1)-regular). k-regular: simple graph كل vertex فيه الـ degree بتاعه k. Bipartite: V = V₁ ∪ V₂ ومفيش edges جوه V₁ ولا V₂. Complete bipartite K_{n₁,n₂}: كل الـ edges بين V₁ و V₂، |E| = |V₁|·|V₂|. الـ vertices اللي في V₁ الـ degree بتاعها n₂ واللي في V₂ الـ degree بتاعها n₁، يبقى regular لو وبس لو n₁ = n₂.`,
+    `الـ walk of length k من v₀ لـ v_k هو سلسلة nodes v₀, …, v_k بالـ edges (v_{j−1}, v_j). الـ trail هو walk كل الـ edges فيه مختلفة. الـ path هو walk كل الـ nodes فيه مختلفة. الـ walk/trail بيبقى closed لو v₀ = v_k. والـ cycle هو walk الـ nodes فيه مختلفة ما عدا v₀ = v_k.`,
+    `بالتناقض (contradiction): لو d_in(v) &gt; 0 لكل v، يبقى كل node i ليه predecessor p(i). ابدأ من v₀ وكوّن v₁ = p(v₀)، v₂ = p(v₁)، …؛ وبما إن |V| محدودة لازم node يتكرر، وده بيدّي cycle، وده بيناقض إن الـ graph acyclic. الـ FindTopOrd بيشيل كل مرة node الـ in-degree بتاعه 0 ويدّيله رقم الترتيب الجاي t + 1؛ لو كل الـ n nodes اتشالوا (t = n) يبقى G هو acyclic وترتيب الشيل هو topological order؛ ولو وقف و t &lt; n يبقى G فيه cycle.`,
+    `الـ Adjacency (rows 1..5): 1: 0 1 1 0 0؛ 2: 0 0 1 0 0؛ 3: 0 0 0 1 0؛ 4: 0 0 0 0 0؛ 5: 1 0 1 1 0. الـ List: V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.`,
+    `الـ Adjacency: n × n، A(i, j) = 1 لو وبس لو (i, j) ∈ E. الـ Incidence: n × m؛ في الـ undirected T(i, k) = T(j, k) = 1 لو وبس لو e_k = (v_i, v_j)؛ وفي الـ directed T(i, k) = −1 و T(j, k) = 1. الـ Sparse: لكل node، list بالـ out-neighbours بتوعه؛ وحجمه linear في m، تقريبًا L = (n + m) log n bits.`
+  ],
+  quiz: [
+    [`صح.`, `الـ null graph مفيهوش ولا edge.`, `لأ.`, `لأ.`],
+    [`صح.`, `الـ simple graph ممكن يبقى فيه edges.`, `الـ multigraph فيه multiple edges.`, `الـ cycle فيه n edges.`],
+    [`صح.`, `ده الـ null graph.`, `دي مش الخاصية اللي بتعرّفه.`, `لأ.`],
+    [`صح.`, `الـ edges في الـ undirected مش ordered.`, `مفيهوش edges.`, `ده عن الـ edges المتكررة.`],
+    [`هو incident مرتين.`, `دايمًا 2.`, `صح.`, `لأ.`],
+    [`لأ.`, `لأ.`, `كل edge بيتعد مرتين.`, `صح.`],
+    [`صح. 5 × 4 / 2.`, `ده cycle على 5 vertices.`, `نسيت تقسم على 2.`, `لأ.`],
+    [`بس الـ K₃.`, `صح.`, `الـ vertex مش adjacent لنفسه.`, `كل الـ degrees متساوية.`],
+    [`الـ Trees مفيهاش cycles.`, `الـ triangle محتاج 3 ألوان.`, `صح.`, `مش شرط.`],
+    [`ده الـ trail.`, `ده بيخليه closed.`, `لأ.`, `صح.`],
+    [`صح.`, `ده الـ regular.`, `ده الـ acyclic.`, `ده محتاج acyclicity.`],
+    [`ده لما t = n.`, `صح.`, `مالهاش علاقة.`, `مالهاش علاقة.`],
+    [`ده الـ adjacency matrix.`, `لأ.`, `صح.`, `ده الـ incidence matrix.`],
+    [`الـ 0 معناه مش incident.`, `الـ terminal هو اللي بياخد 1.`, `لأ.`, `صح (اصطلاح المحاضرة).`]
+  ],
+  extra: [
+    [`صح. Σ d(v) = 2|E|.`, `كل edge بيساهم بـ 2.`, `قاعدة الـ handshake محتاجة |E| بس.`, `لأ.`],
+    [`الـ corollary بينطبق على أي graph.`, `صح (corollary من الـ handshake proposition).`, `لأ.`, `الـ Loops بتزوّد 2، فالزوجية مابتتغيرش.`],
+    [`لأ.`, `نسيت تقسم على 2.`, `صح. 6 × 5 / 2.`, `لأ.`],
+    [`|E| = n₁n₂ = 9.`, `كل vertex بيقابل 3 تانيين.`, `ده complete bipartite.`, `صح. |E| = 3 × 3؛ و n₁ = n₂ فهو regular.`],
+    [`صح.`, `الـ path مفيهوش vertices متكررة.`, `الـ loop ده edge.`, `الـ cycle بيبقى closed والـ vertices فيه مختلفة.`],
+    [`لأ.`, `صح.`, `الـ edges 1→2 و 3→2 الاتنين داخلين على 2.`, `الـ 2→4 خارج من 2؛ ده out-degree.`],
+    [`معكوس.`, `الـ 3→2 لازم 3 تيجي قبل 2.`, `صح. كل edge ماشي لقدّام في الترتيب ده.`, `الـ 1→2 لازم 1 تيجي الأول.`],
+    [`لأ.`, `بس للـ K_n برّه الـ diagonal.`, `ده الـ incidence matrix.`, `صح. الـ edges مش ordered ومفيش loops.`],
+    [`صح. الـ source −1، والـ terminal +1 (اصطلاح المحاضرة).`, `الإشارات معكوسة.`, `ده الـ undirected.`, `الطرفين بيدّوا 2 entries.`],
+    [`الـ cycles الزوجية تتلوّن بلونين.`, `صح. الـ odd cycle ماينفعش يتلوّن بلونين.`, `الألوان المتبادلة شغالة.`, `ده complete bipartite.`]
+  ]
+};
+
+AR.dm.lectures["10"] = {
+  notes: [
+    { h: `ليه بنستخدم matrices؟`, pts: [
+      `الـ graph بيتحدد بالكامل من الـ <b>adjacency</b> structure بتاعته أو الـ <b>incidence</b> structure بتاعته. والتوصيف ده أكفأ بكتير من الرسمة لما الـ graph يبقى كبير، والكمبيوتر بيتعامل مع الأرقام أحسن من الصور، فعشان كده بندّي الـ graphs للكمبيوتر في <b>شكل matrix</b>.`,
+      `الـ Matrices اللي هنشوفها: الـ incidence matrix A(G)، الـ modified (oriented) incidence matrix F، الـ cycle matrix B(G)، الـ cut-set matrix C(G)، الـ fundamental cut-set matrix C_f، الـ path matrix P(u, v)، الـ adjacency matrix X، والـ degree matrix H.`
+    ] },
+    { h: `10.1 الـ Incidence matrix A(G)`, pts: [
+      `لـ G فيه n vertices و m edges و<b>مفيهوش self-loops</b>: A = [a_ij] حجمها <b>n × m</b>؛ الـ rows هي الـ vertices والـ columns هي الـ edges؛ a_ij = 1 لو الـ edge رقم j incident على الـ vertex رقم i، وغير كده 0. واسمها كمان <b>vertex-edge incidence matrix</b>. وهي binary (0, 1)-matrix.`,
+      `<b>ملاحظات</b>: (1) كل edge incident على 2 vertices بالظبط، فـ <b>كل column فيه 1 مرتين بالظبط</b>؛ (2) عدد الـ 1 في الـ row = الـ <b>degree</b> بتاع الـ vertex ده؛ (3) row كله أصفار = <b>isolated vertex</b>؛ (4) الـ <b>parallel edges</b> بتدّي columns متطابقة؛ (5) الـ disconnected graph اللي ليه components G₁ و G₂ بيبقى على شكل <b>block diagonal</b> [A(G₁) 0; 0 A(G₂)]؛ (6) تبديل الـ rows أو الـ columns = إعادة تسمية الـ vertices والـ edges.`,
+      `الـ A متعرّفة على <b>GF(2)</b>: يعني {0, 1} مع الجمع mod 2 (1 + 1 = 0) والضرب mod 2.`,
+      `<b>Theorem 10.1</b>: الـ G₁ و G₂ يبقوا isomorphic لو وبس لو A(G₁) و A(G₂) مختلفين بس في ترتيب الـ rows والـ columns.`
+    ] },
+    { h: `نتايج الـ rank بتاعة A(G)`, pts: [
+      `مجموع كل الـ rows بالـ modulo-2 بيساوي 0 (لأن كل column فيه 2 وحايد)، فالـ rows دي dependent و rank A ≤ n − 1.`,
+      `<b>Theorem 10.2</b>: لو G هو connected وفيه n vertices، يبقى <b>rank A(G) = n − 1</b>. <b>ملحوظة</b>: لو فيه k components، rank A(G) = n − k.`,
+      `لو مسحت أي row واحد بيطلعلك الـ <b>reduced incidence matrix A_f</b> ((n − 1) × m)؛ والـ vertex اللي اتمسح اسمه <b>reference vertex</b>. الـ n − 1 rows دول بيحددوا الـ graph بالكامل لأن الـ row الناقص ممكن يتبني تاني (كل column فيه 2 وحايد).`,
+      `<b>Theorem 10.3</b>: الـ reduced incidence matrix بتاعة <b>tree</b> بتبقى non-singular (مربعة من الـ order n − 1 والـ rank بتاعها n − 1). والـ reduced incidence matrix اللي حجمها (n − 1) × (n − 1) بتبقى non-singular لو وبس لو الـ graph ده tree.`,
+      `<b>Theorem 10.4</b>: أي submatrix حجمها (n − 1) × (n − 1) من A(G) (والـ G connected) بتبقى non-singular لو وبس لو الـ n − 1 edges بتوعها بيكوّنوا <b>spanning tree</b>.`
+    ] },
+    { h: `الـ Modified incidence matrix F (edges ليها اتجاه)`, pts: [
+      `ادّي كل edge e_j = (v_i, v_k) اتجاه بشكل عشوائي: f_ij = 1 لو v_i هو الطرف الموجب، −1 لو الطرف السالب، 0 لو مش incident. يعني F بتطلع من A لما تغيّر واحد من الـ 1 اللي في كل column لـ −1.`,
+      `<b>Theorem 10.5</b>: G connected → rank F = n − 1. <b>Theorem 10.6</b>: k components → rank F = n − k.`,
+      `<b>Theorem 10.7</b>: الـ determinant بتاع أي square submatrix من F بيبقى 1 أو −1 أو 0.`,
+      `مثال (Fig. 10.2): الـ rows بتاعة A: v1: 1 0 0 1 0، v2: 1 1 0 0 1، v3: 0 1 1 0 0، v4: 0 0 1 1 1 → الـ rows بتاعة F: v1: 1 0 0 1 0، v2: −1 1 0 0 1، v3: 0 −1 1 0 0، v4: 0 0 −1 −1 −1.`
+    ] },
+    { h: `10.3 الـ Cycle matrix B(G)`, pts: [
+      `لـ G فيه m edges و q cycles مختلفة: B = [b_ij] حجمها <b>q × m</b>، و b_ij = 1 لو الـ cycle رقم i فيه الـ edge رقم j، وغير كده 0.`,
+      `مثال G₁: الـ cycles هي Z1 = {e1, e2}، Z2 = {e3, e5, e7}، Z3 = {e4, e6, e7}، Z4 = {e3, e4, e6, e5}.`,
+      `<b>ملاحظات</b>: (1) column كله أصفار = edge مش موجود في أي cycle (non-cycle edge)؛ (2) كل row هو cycle vector؛ (3) الـ self-loop بيدّي row فيه 1 واحد بس؛ (4) عدد الـ 1 في الـ row = عدد الـ edges في الـ cycle ده؛ (5) الـ separable/disconnected graph → شكل block diagonal؛ (6) تبديل الـ rows/columns بيعيد تسمية الـ cycles/edges؛ (7) 2 graphs ليهم نفس الـ cycle matrix لو وبس لو كانوا <b>2-isomorphic</b>، فالـ B مش بتحدد الـ graph بالكامل.`,
+      `<b>Theorem 10.9</b>: لو مفيش self-loops ونفس ترتيب الـ edges، كل row في B بيبقى orthogonal على كل row في A: <b>A Bᵀ = B Aᵀ ≡ 0 (mod 2)</b>.`,
+      `<b>Theorem 10.10</b>: لو G connected → <b>rank B = m − n + 1</b>. <b>Theorem 10.11</b>: لو فيه k components → rank B = m − n + k.`
+    ] },
+    { h: `10.4 – 10.6 الـ Cut-set matrices`, pts: [
+      `لـ G فيه m edges و q cut-sets: C = [c_ij] حجمها q × m، و c_ij = 1 لو الـ cut-set رقم i فيه الـ edge رقم j.`,
+      `في الـ non-separable graph، الـ C(G) جواها rows الـ A(G)، فـ rank C ≥ n − 1.`,
+      `الـ cut-set والـ cycle دايمًا مشتركين في عدد زوجي من الـ edges، فـ <b>B Cᵀ = C Bᵀ ≡ 0 (mod 2)</b>.`,
+      `<b>Theorem 10.14</b>: لـ G connected، rank C(G) = rank A(G) = n − 1 (ده الـ rank بتاع الـ graph).`,
+      `الـ <b>Fundamental cut-set matrix</b> C_f: حجمها (n − 1) × m، والـ rows هي الـ fundamental cut-sets بالنسبة لـ spanning tree؛ C_f = [C_c : I_{n−1}] (identity على الـ n − 1 branches، و C_c على الـ m − n + 1 chords).`
+    ] },
+    { h: `10.7 الـ Path matrix P(u, v)`, pts: [
+      `لـ vertices u و v بينهم q paths مختلفة: P(u, v) = [p_ij] حجمها q × m، و p_ij = 1 لو الـ edge رقم j موجود في الـ path رقم i.`,
+      `مثال: الـ paths بين v3 و v4: p1 = {e8, e5}، p2 = {e8, e7, e3}، p3 = {e8, e6, e4, e3}.`,
+      `<b>ملاحظات</b>: (1) column كله أصفار = edge مش موجود في أي u–v path؛ (2) column كله وحايد = edge موجود في كل الـ u–v paths؛ (3) مفيش row كله أصفار؛ (4) الـ ring sum بتاع أي 2 rows بيبقى cycle أو اتحاد cycles مالهمش edges مشتركة (edge-disjoint).`,
+      `<b>Theorem 10.15</b>: A Pᵀ(u, v) = M (mod 2)، حيث M فيها وحايد بس في الـ rows بتوع u و v.`
+    ] },
+    { h: `10.8 الـ Adjacency matrix X`, pts: [
+      `لـ G مفيهوش parallel edges: X = [x_ij] حجمها <b>n × n symmetric binary</b>، و x_ij = 1 لو v_i v_j ∈ E، وغير كده 0.`,
+      `الـ <b>edge sequence</b>: كل edge (ما عدا الأول والأخير) بيشارك vertex مع الـ edge اللي قبله وvertex مع اللي بعده؛ والـ edges ممكن تتكرر. الـ Walks والـ paths هما edge sequences.`,
+      `<b>Theorem 10.16</b>: [Xᵏ]_ij = عدد الـ edge sequences المختلفة اللي طولها k بين v_i و v_j.`,
+      `<b>Theorem 10.17</b>: الـ G يبقى connected لو وبس لو Y = X + X² + … + Xⁿ⁻¹ مفيهاش ولا entry بصفر برّه الـ main diagonal.`,
+      `<b>Theorem 10.18</b>: في الـ connected graph، d(v_i, v_j) = k لو وبس لو k هو أصغر integer بحيث [Xᵏ]_ij ≠ 0.`,
+      `الـ <b>Degree matrix</b> H: diagonal فيها h_ii = d_i. <b>Theorem 10.19</b>: <b>F Fᵀ = H − X</b> (ومش بتعتمد على الاتجاهات اللي اخترناها).`,
+      `الـ <b>Matrix-tree theorem (10.21)</b>: لو Q = F Fᵀ = H − X، يبقى كل cofactor في Q بيساوي τ(G)، يعني عدد الـ spanning trees (الـ complexity). <b>Corollary</b>: τ(K_n) = nⁿ⁻² (مثلًا K₄ فيه 16 spanning tree).`
+    ] },
+    { h: `مثال محلول: الـ incidence والـ adjacency لـ graph صغير` }
+  ],
+  cards: [
+    `(0,1)-matrix حجمها n × m؛ a_ij = 1 لو الـ edge j incident على الـ vertex i.`,
+    `اتنين بالظبط.`,
+    `الـ degree بتاع الـ vertex ده.`,
+    `Isolated vertex.`,
+    `Parallel edges.`,
+    `n − 1 (و n − k لو فيه k components).`,
+    `الـ A بعد ما نمسح row واحد (الـ reference vertex): حجمها (n − 1) × m.`,
+    `Non-singular.`,
+    `الـ edges بتوعها بيكوّنوا spanning tree.`,
+    `q × m؛ b_ij = 1 لو الـ cycle i فيه الـ edge j.`,
+    `m − n + 1 (و m − n + k لو فيه k components).`,
+    `0 (mod 2)`,
+    `الـ graphs دول 2-isomorphic.`,
+    `n − 1 (نفس rank A).`,
+    `q × m؛ p_ij = 1 لو الـ edge j موجود في الـ u–v path رقم i.`,
+    `عدد الـ edge sequences اللي طولها k بين v_i و v_j.`,
+    `Y = X + … + Xⁿ⁻¹ مفيهاش entries بصفر برّه الـ diagonal.`,
+    `H − X (الـ degree ناقص الـ adjacency).`,
+    `كل cofactor في Q = H − X بيساوي τ(G)، يعني عدد الـ spanning trees.`,
+    `nⁿ⁻²`
+  ],
+  qa: [
+    `لـ G فيه n vertices و m edges ومفيهوش self-loops، A = [a_ij] حجمها n × m و a_ij = 1 لو الـ edge j incident على الـ vertex i، وغير كده 0. (1) كل column فيه 2 وحايد بالظبط. (2) مجموع الـ row = الـ degree. (3) الـ row اللي كله أصفار = isolated vertex. (4) الـ parallel edges بتدّي columns متطابقة. (5) الـ disconnected graph بيدّي matrix على شكل block-diagonal. (6) تبديل الـ rows/columns بيعيد تسمية الـ vertices/edges.`,
+    `rank A(G) = n − 1. على GF(2) مجموع كل الـ rows بيساوي صفر (كل column فيه 2 وحايد)، فـ rank ≤ n − 1. وبما إن G connected، مفيش subset حقيقية من الـ rows مجموعها صفر (الـ A ماينفعش تتقسم blocks)، فأي n − 1 rows يبقوا independent: rank = n − 1. ولو فيه k components الـ rank بيبقى n − k.`,
+    `B = [b_ij] حجمها q × m، و b_ij = 1 لو الـ cycle رقم i فيه الـ edge j. لـ graph مفيهوش self-loops وبنفس ترتيب الـ edges، A Bᵀ ≡ 0 (mod 2). لـ G connected، rank B = m − n + 1 (و m − n + k لو فيه k components). والـ graphs اللي ليها نفس الـ cycle matrix بيبقوا 2-isomorphic.`,
+    `الـ [Xᵏ]_ij بيعد الـ edge sequences اللي طولها k من v_i لـ v_j. الـ G يبقى connected لو وبس لو Y = X + X² + … + Xⁿ⁻¹ مفيهاش entries بصفر برّه الـ diagonal. والـ distance d(v_i, v_j) هي أصغر k بحيث [Xᵏ]_ij ≠ 0.`,
+    `لو X و F و H هما الـ adjacency والـ modified incidence والـ degree matrices لـ G connected، و Q = F Fᵀ = H − X، يبقى adj Q = τ(G)·J، يعني كل cofactor في Q بيساوي عدد الـ spanning trees τ(G). في الـ K_n: Q = nI − J و τ(K_n) = nⁿ⁻².`
+  ],
+  quiz: [
+    [`صح.`, `كل edge ليه 2 vertices على أطرافه.`, `ده وصف الـ rows.`, `بس لـ edge مش موجود أصلًا.`],
+    [`ده الـ rank بتاع الـ cycle matrix.`, `صح.`, `مجموع الـ rows بيساوي صفر mod 2.`, `لأ.`],
+    [`لأ.`, `ده rank A.`, `صح.`, `ده لـ k components.`],
+    [`ده الـ isolated vertex.`, `لأ.`, `بس في F.`, `صح.`],
+    [`صح.`, `الـ self-loops مستبعدة.`, `لأ.`, `لأ.`],
+    [`ده 4³.`, `صح. 4⁴⁻² = 16.`, `لأ.`, `لأ.`],
+    [`الـ distance هي أصغر k يدّي entry مش صفر.`, `ده [X²]_ii.`, `صح (Theorem 10.16).`, `ده بيعد sequences، فممكن يبقى أكبر من 1.`],
+    [`ده بيساوي صفر mod 2.`, `لأ.`, `غلطة في الإشارة.`, `صح (Theorem 10.19).`],
+    [`صح.`, `لأ.`, `ساعتها الـ rank هيبقى أقل من n − 1.`, `لأ.`],
+    [`لأ.`, `صح.`, `لأ.`, `الـ Isomorphism شرط أقوى.`]
+  ],
+  extra: [
+    [`m − n + 1 = 4.`, `صح. n − 1 = 5؛ m − n + 1 = 9 − 6 + 1 = 4.`, `لأ.`, `الـ rank A هو n − 1، مش n.`],
+    [`لأ.`, `لأ.`, `صح. n − k = 8 − 3.`, `ده لـ connected graph.`],
+    [`لأ.`, `ده مجموع كل column.`, `لأ.`, `صح.`],
+    [`صح. 5⁵⁻² = 125.`, `لأ.`, `ده عدد الـ edges.`, `ده 5².`],
+    [`ده كان هيبقى column كله وحايد.`, `صح.`, `الـ loop بيدّي row فيه 1 واحد بس.`, `لأ.`],
+    [`لأ.`, `لأ.`, `صح. det[2 −1; −1 2] = 3 = τ(K₃).`, `لأ.`],
+    [`فيه path طوله 3.`, `ساعتها الـ distance كانت هتبقى 2 بالكتير.`, `ساعتها كانوا هيبقوا adjacent.`, `صح (Theorem 10.18).`],
+    [`صح. Theorem 10.9.`, `بيساوي H − X.`, `بيدّي الـ degrees والـ adjacencies.`, `بيعد الـ edge sequences.`],
+    [`لأ.`, `صح.`, `بيمسح row مش column.`, `الـ A أصلًا binary.`],
+    [`لأ.`, `ده column كله أصفار.`, `صح.`, `الـ Edges مابتبقاش isolated.`]
+  ]
+};
+
+AR.dm.lectures["11"] = {
+  notes: [
+    { h: `ليه المحاضرة دي؟`, pts: [
+      `الـ Mathematical induction (إثبات صيغ المجاميع) والـ binary relations جم في امتحانات الـ final بتاعة 2024/25 و 2025/26 وفي الـ midterm بتاع 2025/26، بس مكانش فيه ملف محاضرة بيشرحهم في فولدر المادة. الـ notes دي بتستخدم التعريفات القياسية من الكتاب (Rosen) بنفس صياغة الدكتورة في الامتحانات.`
+    ] },
+    { h: `مبدأ الـ mathematical induction`, pts: [
+      `عشان تثبت إن P(n) صح لكل n ≥ n₀:`,
+      `<b>1. Basis step</b>: اثبت إن P(n₀) صح (غالبًا <b>n = 1</b>؛ وإجابة الامتحانات لـ "1 + 2 + … + n" ولـ "2ⁿ &gt; n for n ≥ 1" الاتنين هي n = 1).`,
+      `<b>2. Inductive hypothesis</b>: <b>افترض إن P(k) صح</b> لأي k ≥ n₀ (افترضها صح عند n = k).`,
+      `<b>3. Inductive step</b>: باستخدام الفرض ده، <b>اثبت P(k + 1)</b> (اثبتها عند n = k + 1).`,
+      `النتيجة: P(n) صح لكل n ≥ n₀ (زي قطع الدومينو لما توقع ورا بعض).`
+    ] },
+    { h: `إثبات: 1 + 2 + 3 + … + n = n(n + 1)/2` },
+    { h: `إثبات: 2 + 4 + … + 2n = n(n + 1)` },
+    { h: `إثبات: 1 + 4 + 7 + … + (3n − 2) = n(3n − 1)/2` },
+    { h: `إثبات: 2ⁿ &gt; n لكل n ≥ 1` },
+    { h: `الـ Binary relations`, pts: [
+      `الـ <b>Cartesian product</b> A × B = {(a, b) | a ∈ A, b ∈ B}؛ و |A × B| = |A|·|B|.`,
+      `الـ <b>binary relation R from A to B</b> هي subset من A × B (ومكتوبة R: A → B في امتحان 2024/25).`,
+      `<b>aRb</b> معناها <b>(a, b) ∈ R</b>؛ و a R̸ b معناها (a, b) ∉ R.`,
+      `الـ relation <b>on a set A</b> هي relation من A لـ A (يعني subset من A × A).`,
+      `الـ <b>identity relation</b> I_A على A هي الـ set <b>{(a, a) | a ∈ A}</b>.`,
+      `مثال: A = {1, 2}، B = {x, y}: A × B = {(1,x), (1,y), (2,x), (2,y)}؛ R = {(1,x), (2,y)} هي relation من A لـ B؛ و I_A = {(1,1), (2,2)}.`
+    ] },
+    { h: `خصائص الـ relations على A (التعريفات القياسية)` }
+  ],
+  cards: [
+    `Basis step (اثبت P(1))؛ inductive hypothesis (افترض P(k))؛ inductive step (اثبت P(k + 1)).`,
+    `n = k + 1`,
+    `n = 1`,
+    `n = 1`,
+    `k(k + 1)/2 + (k + 1) = (k + 1)(k + 2)/2`,
+    `{(a, b) | a ∈ A, b ∈ B}؛ وحجمها |A|·|B|.`,
+    `Subset من A × B.`,
+    `(a, b) ∈ R`,
+    `{(a, a) | a ∈ A}`,
+    `Subset من A × A.`,
+    `(a, a) ∈ R لكل a ∈ A.`,
+    `Reflexive و symmetric و transitive.`
+  ],
+  qa: [
+    `عشان تثبت P(n) لكل n ≥ n₀: (1) Basis step: اتأكد من P(n₀) (غالبًا n = 1). (2) Inductive hypothesis: افترض إن P(k) صح لأي k ≥ n₀. (3) Inductive step: اثبت إن P(k) → P(k + 1). ساعتها P(n) بتبقى صح لكل n ≥ n₀.`,
+    `الـ Basis عند n = 1: 1 = 1·2/2. افترض 1 + … + k = k(k + 1)/2. يبقى 1 + … + k + (k + 1) = k(k + 1)/2 + (k + 1) = (k + 1)(k + 2)/2، ودي نفس الصيغة عند n = k + 1. يبقى صح لكل n ≥ 1.`,
+    `الـ Basis عند n = 1: 2 = 1·2. افترض 2 + … + 2k = k(k + 1). نزوّد 2(k + 1): k(k + 1) + 2(k + 1) = (k + 1)(k + 2) = (k + 1)((k + 1) + 1). يبقى صح لكل n ≥ 1.`,
+    `الـ Basis عند n = 1: 1 = 1·2/2. افترضها صح عند k. نزوّد 3(k + 1) − 2 = 3k + 1: k(3k − 1)/2 + 3k + 1 = (3k² + 5k + 2)/2 = (k + 1)(3k + 2)/2 = (k + 1)(3(k + 1) − 1)/2. يبقى صح لكل n ≥ 1.`,
+    `الـ binary relation R من A لـ B هي subset من A × B. الـ aRb معناها (a, b) ∈ R. والـ relation on A هي subset من A × A. والـ identity relation على A هي I_A = {(a, a) | a ∈ A}.`
+  ],
+  quiz: [
+    [`ده الفرض نفسه.`, `صح.`, `بالعكس.`, `بتنط قيمة.`],
+    [`الجملة بتبدأ من n ≥ 1.`, `صح. ابدأ من أول قيمة في الجملة.`, `كده n = 1 مش متثبتة.`, `كده 1 و 2 مش متثبتين.`],
+    [`المجموع بيبدأ من 1؛ والإجابة النموذجية بتستخدم n = 1.`, `صح (الاختيار b في final 2025/26، والاختيار C في الـ midterm).`, `كده n = 1 مش متثبتة.`, `كده 1 و 2 مش متثبتين.`],
+    [`الاتجاه معكوس.`, `صح (R ⊆ A × B).`, `ده set difference.`, `مش مستخدمة.`],
+    [`صح.`, `دي مش set notation.`, `الـ pair ده element، مش subset.`, `الـ R هي set من الـ pairs.`],
+    [`ناقصها "لكل a ∈ A".`, `صح.`, `شرط مالوش معنى.`, `مالهاش معنى.`],
+    [`ده |A| + |B|.`, `صح.`, `ده 4³.`, `لأ.`]
+  ],
+  extra: [
+    [`لأ.`, `الـ term الجاي غلط.`, `صح. الرقم الفردي رقم (k + 1) هو 2(k + 1) − 1 = 2k + 1.`, `ده الـ basis step.`],
+    [`لأ.`, `لأ.`, `غلطة في الجبر.`, `صح.`],
+    [`صح.`, `ده الاستنتاج النهائي.`, `ده الـ inductive step.`, `بيبدأ من أول قيمة في الجملة، مش دايمًا 0.`],
+    [`لأ.`, `صح. 3(k + 1) − 2.`, `ده الـ term رقم k.`, `لأ.`],
+    [`لأ.`, `لأ.`, `صح. أي subset من A × B هي relation: 2⁶.`, `ده |A × B|.`],
+    [`ده الـ universal relation.`, `دي A نفسها، مش set من الـ pairs.`, `لأ.`, `صح.`],
+    [`صح. (1,2) و (2,1) الاتنين موجودين.`, `لأ.`, `فيه (1,2) و (2,1) مع إن 1 ≠ 2.`, `الـ (2,2) ناقصة.`],
+    [`الترتيب (a, b).`, `صح.`, `لأ.`, `الـ Relations فيها ordered pairs.`],
+    [`3 ≡ 8 و 8 ≡ 3 (mod 5) مع إن 3 ≠ 8.`, `لأ.`, `صح. Reflexive و symmetric و transitive.`, `لأ.`],
+    [`جبر غلط.`, `بيناقض الفرض.`, `ده الـ basis.`, `صح. بيستخدم الفرض 2ᵏ &gt; k و k ≥ 1.`]
+  ]
+};
+
+AR.dm.exams = [
+  /* ───────── FINAL 2025/2026 ───────── */
+  { sections: [
+    { items: [
+      { why: `قانون De Morgan (L4).` },
+      { why: `تعريف الـ contradiction (L4).` },
+      { why: `الـ p ∨ ¬p دايمًا true (الـ negation law، L4).` },
+      { why: `الـ Commutative law (L4).` },
+      { why: `Table 8 (L5).` },
+      { why: `Table 7: p → q ≡ ¬p ∨ q (L5).` },
+      { why: `μ = Σ xᵣ f(xᵣ) (L7).` },
+      { why: `الـ Absorption law (L4).` },
+      { why: `الـ null graph مفيهوش ولا edge (L9).` },
+      { why: `Fact 1 (L8): "the integer 1 has only one divisor, itself". (الاختيار a وهو 1 نفس المعنى كرقم، بس صياغة المحاضرة هي "itself".)` },
+      { why: `الـ Inductive step (L11).` },
+      { why: `الـ P ∧ ¬P دايمًا false (L4).` },
+      { why: `ابدأ من أول قيمة في الجملة، n = 1 (L11).` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `الـ ∧ محتاجة الاتنين true (L3).` },
+      { why: `الـ T → F هو الـ row الوحيد اللي بيبقى false (L3).` },
+      { why: `L4.` },
+      { why: `كل الـ 2² = 4 subsets (L1).` },
+      { why: `L9.` },
+      { why: `الـ Domination / universal bound law: p ∧ c ≡ c (L4).` },
+      { why: `27 = 5 × 5 + 2 (L8).` },
+      { why: `L4.` },
+      { why: `الـ Distributive law (L4).` },
+      { why: `الـ 3 مكتوبة كـ element. إنما {3} دي subset، مش element (L1).` },
+      { why: `L5.` },
+      { why: `الـ subset لازم تبقى set والـ elements بتاعتها موجودة في {1,2,3} (L1).` },
+      { why: `أي set هي subset من نفسها (الـ ⊂ هنا بمعنى ⊆) (L1).` },
+      { why: `L11.` },
+      { why: `a → b ≡ ¬a ∨ b لما a = p ∧ q (L5).` }
+    ] },
+    { items: [
+      { ans: `<b>(i)</b> A(i, j) = 1 لو وبس لو فيه edge i → j (الـ rows/columns من 1 لـ 5):<br><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>5</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></table><b>(ii)</b> الـ List of edges متنظمة حسب الـ nodes: V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.<br>(أو بشكل مكافئ E = {(5,1), (1,2), (2,3), (1,3), (5,3), (5,4), (3,4)}.) وده نفس مثال الـ sparse representation بتاع المحاضرة (L9).` },
+      { ans: `<table><tr><th>p</th><th>q</th><th>r</th><th>p→q</th><th>p→r</th><th>(p→q)∧(p→r)</th><th>q∧r</th><th>p→(q∧r)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr></table>عمود (p→q)∧(p→r) وعمود p→(q∧r) متطابقين في الـ 8 rows كلهم، يبقى الـ statements دي logically equivalent (Table 7، L5).` }
+    ] },
+    { items: [
+      { ans: `<b>(i)</b> الـ Basis عند n = 1: الطرف الشمال = 2، الطرف اليمين = 1·2 = 2 ✓.<br>الـ Hypothesis: 2 + 4 + … + 2k = k(k + 1).<br>الـ Step: 2 + … + 2k + 2(k + 1) = k(k + 1) + 2(k + 1) = (k + 1)(k + 2) = (k + 1)((k + 1) + 1) ✓. يبقى صح لكل n ≥ 1.<br><br><b>(ii)</b> الـ Basis عند n = 1: الطرف الشمال = 1، الطرف اليمين = 1(3 − 1)/2 = 1 ✓.<br>الـ Hypothesis: 1 + 4 + … + (3k − 2) = k(3k − 1)/2.<br>الـ Step: الـ term رقم (k + 1) هو 3(k + 1) − 2 = 3k + 1. المجموع = k(3k − 1)/2 + (3k + 1) = (3k² − k + 6k + 2)/2 = (3k² + 5k + 2)/2 = (k + 1)(3k + 2)/2 = (k + 1)(3(k + 1) − 1)/2 ✓. يبقى صح لكل n ≥ 1. (L11)` },
+      { ans: `¬(¬p ∧ q) ∧ (p ∨ q)<br>≡ (¬(¬p) ∨ ¬q) ∧ (p ∨ q) &nbsp; بقوانين De Morgan<br>≡ (p ∨ ¬q) ∧ (p ∨ q) &nbsp; بالـ double negative law<br>≡ p ∨ (¬q ∧ q) &nbsp; بالـ distributive law<br>≡ p ∨ (q ∧ ¬q) &nbsp; بالـ commutative law للـ ∧<br>≡ p ∨ c &nbsp; بالـ negation law<br>≡ p &nbsp; بالـ identity law ■ (L4)` }
+    ] }
+  ] },
+
+  /* ───────── MIDTERM 2025/2026 ───────── */
+  { sections: [
+    { items: [
+      { why: `2³ = 8 (L1).` },
+      { why: `U − A (L2).` },
+      { why: `الترتيب مش فارق (L1).` },
+      { why: `L1.` },
+      { why: `تعريف الـ subset (L1).` },
+      { why: `L2.` },
+      { why: `الاختيار (B) بس هو اللي ليه قاعدة انتماء واضحة (L1).` },
+      { why: `L2.` },
+      { why: `L2.` },
+      { why: `L1 (الإجابة النموذجية بتعتبر الأرقام الزوجية موجبة).` },
+      { why: `De Morgan (L4).` },
+      { why: `L4.` },
+      { why: `L3.` },
+      { why: `L3.` },
+      { why: `L3.` },
+      { why: `الـ antecedent لما يبقى false النتيجة بتبقى true (L3).` },
+      { why: `Contradiction (L4).` },
+      { why: `Tautology (L4).` },
+      { why: `L4.` },
+      { why: `L4.` },
+      { why: `2³ (L3).` },
+      { why: `الـ Commutative law (L4).` },
+      { why: `L4.` },
+      { why: `L5.` },
+      { why: `Table 8 (L5).` },
+      { why: `Absorption (L4).` },
+      { why: `Distributive (L4).` },
+      { why: `L11.` },
+      { why: `L11.` },
+      { why: `L11.` }
+    ] }
+  ] },
+
+  /* ───────── FINAL 2024/2025 ───────── */
+  { sections: [
+    { items: [
+      { why: `الـ Negation law (L4).` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `L4.` },
+      { why: `L4.` },
+      { why: `L1.` },
+      { why: `الـ Division into cases، Example 1.2.2 (L4/L5).` },
+      { why: `الـ divisibility في L8.` },
+      { why: `L8.` },
+      { why: `Fact 1 (L8).` },
+      { why: `L9.` },
+      { why: `L9.` },
+      { why: `L7.` },
+      { why: `L3.` },
+      { why: `L5.` },
+      { why: `L5.` },
+      { why: `R ⊆ A × B، وبتتكتب R : A → B (L11).` },
+      { why: `L11.` },
+      { why: `L11.` },
+      { why: `L4.` }
+    ] },
+    { items: [
+      { ans: `<b>(i)</b> Σ f(x) = 1 → 0.2 + 0.1 + a + 0.3 = 1 → <b>a = 0.4</b>.<br><b>(ii)</b> E(X) = 1(0.2) + 2(0.1) + 3(0.4) + 4(0.3) = 0.2 + 0.2 + 1.2 + 1.2 = <b>2.8</b>.<br>E(X²) = 1(0.2) + 4(0.1) + 9(0.4) + 16(0.3) = 0.2 + 0.4 + 3.6 + 4.8 = 9.0.<br>V(X) = E(X²) − μ² = 9.0 − 2.8² = 9.0 − 7.84 = <b>1.16</b> (σ ≈ 1.077). (L6، L7)` },
+      { ans: `<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>p↔q</th><th>(p→q)∧(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>عمود p ↔ q وعمود (p → q) ∧ (q → p) ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (L5).` }
+    ] },
+    { items: [
+      { ans: `الـ Basis عند n = 1: الطرف الشمال = 1، الطرف اليمين = 1·2/2 = 1 ✓.<br>الـ Hypothesis: افترض إن 1 + 2 + … + k = k(k + 1)/2.<br>الـ Step: 1 + 2 + … + k + (k + 1) = k(k + 1)/2 + (k + 1) = [k(k + 1) + 2(k + 1)]/2 = (k + 1)(k + 2)/2، ودي نفس الصيغة لما n = k + 1 ✓.<br>يبقى الصيغة صح لكل n ≥ 1 (L11).` },
+      { ans: `<b>(i)</b><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><th>1</th><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>2</th><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>4</th><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>(دي نفس الـ matrix A₂ بتاعة المحاضرة.)<br><b>(ii)</b> V(1) = {3}، V(2) = {1}، V(3) = {2}، V(4) = {2, 3}؛ يعني E = {e1 = (1,3), e2 = (4,2), e3 = (4,3), e4 = (3,2), e5 = (2,1)}. (L9)` }
+    ] },
+    { items: [
+      { ans: `101 = 9 × 11 + 2 (9 × 11 = 99، و 101 − 99 = 2)، يبقى <b>q = 9، r = 2</b> (a = q × n + r حيث 0 ≤ r &lt; 11). (L8)` },
+      { ans: `¬(¬p ∧ q) ∧ (p ∨ q) ≡ (¬(¬p) ∨ ¬q) ∧ (p ∨ q) [De Morgan] ≡ (p ∨ ¬q) ∧ (p ∨ q) [double negative] ≡ p ∨ (¬q ∧ q) [distributive] ≡ p ∨ (q ∧ ¬q) [commutative] ≡ p ∨ c [negation] ≡ p [identity] ■ (L4)` }
+    ] }
+  ] },
+
+  /* ───────── FINAL 2023/2024 ───────── */
+  { sections: [
+    { items: [
+      { why: `L4.` },
+      { why: `L1.` },
+      { why: `L5.` },
+      { why: `L4.` },
+      { why: `L5.` },
+      { why: `L4.` },
+      { why: `L5.` },
+      { why: `L9.` },
+      { why: `L9.` },
+      { why: `الـ truth table كله T (L3).` },
+      { why: `الخاصية رقم 3 من خصائص الـ divisibility (L8).` },
+      { why: `L8.` },
+      { why: `L3.` },
+      { why: `مثال Lecture 3.` },
+      { why: `L8.` },
+      { why: `L2.` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `2² = 4 (L1).` },
+      { why: `Absorption (L4).` }
+    ] },
+    { items: [
+      { ans: `Aᶜ = U − A = {3,6,7,8,9,10}؛ Bᶜ = {2,4,5,6,10}.<br><b>(i)</b> Aᶜ ∩ B = {3,7,8,9} (= B − A).<br><b>(ii)</b> Aᶜ ∩ Bᶜ = {6,10} (= (A ∪ B)ᶜ، لأن A ∪ B = {1,2,3,4,5,7,8,9}).<br><b>(iii)</b> A ∪ Bᶜ = {1,2,4,5} ∪ {2,4,5,6,10} = {1,2,4,5,6,10}.<br><b>(iv)</b> |A| = 4 → 2⁴ = 16 subsets: P(A) = {∅, {1}, {2}, {4}, {5}, {1,2}, {1,4}, {1,5}, {2,4}, {2,5}, {4,5}, {1,2,4}, {1,2,5}, {1,4,5}, {2,4,5}, {1,2,4,5}}. (الـ C مش مستخدمة.) (L1، L2)` },
+      { ans: `Σ f(x) = 1 → 0.1 + 0.1 + a + 0.2 = 1 → <b>a = 0.6</b>.<br>E(X) = 0(0.1) + 2(0.1) + 3(0.6) + 4(0.2) = 0 + 0.2 + 1.8 + 0.8 = <b>2.8</b>. (ده تمرين "try to solve" بتاع L7.)` }
+    ] },
+    { items: [
+      { ans: `μ = ∫₁² x·2(x − 1) dx = 2[x³/3 − x²/2]₁² = 2[(8/3 − 2) − (1/3 − 1/2)] = 2(2/3 + 1/6) = <b>5/3</b>.<br>E(X²) = ∫₁² x²·2(x − 1) dx = 2[x⁴/4 − x³/3]₁² = 2[(4 − 8/3) − (1/4 − 1/3)] = 2(4/3 + 1/12) = 17/6.<br>σ² = E(X²) − μ² = 17/6 − 25/9 = 51/18 − 50/18 = <b>1/18</b>. (Lecture 7، Example 5)` },
+      { ans: `<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>p↔q</th><th>(p→q)∧(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>عمودين النتيجة متطابقين، يبقى الـ statements دي equivalent (L5).` }
+    ] },
+    { items: [
+      { ans: `باستخدام اتجاهات المحاضرة 5→1، 1→2، 2→3، 1→3، 5→3، 5→4، 3→4:<br><b>(i)</b><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>5</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></table><b>(ii)</b> V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.<br>ولو قريت الـ graph على إنه <b>undirected</b>، الـ adjacency matrix بتبقى symmetric: 1: 0 1 1 0 1؛ 2: 1 0 1 0 0؛ 3: 1 1 0 1 1؛ 4: 0 0 1 0 1؛ 5: 1 0 1 1 0، والـ edge list هي {5,1}، {1,2}، {2,3}، {1,3}، {5,3}، {5,4}، {4,3}. (L9)` }
+    ] }
+  ] },
+
+  /* ───────── SUMMER 2023/2024 ───────── */
+  { sections: [
+    { items: [
+      { ans: `الـ U = N، يبقى Aᶜ = {5, 6, 7, 8, …}.<br><b>(i)</b> Aᶜ ∩ B = {5, 6, 7} (= B − A).<br><b>(ii)</b> A ∪ B = {1,…,7}، يبقى Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {8, 9, 10, …}.<br><b>(iii)</b> A ∪ B = {1, 2, 3, 4, 5, 6, 7}.<br><b>(iv)</b> 2⁴ = 16 subsets: {∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}. (L1، L2؛ نفس الـ sets بتاعة مثال المحاضرة)` },
+      { ans: `<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>(p→q)∨(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr></table>آخر عمود كله T، يبقى tautology. وبالقوانين: (¬p ∨ q) ∨ (¬q ∨ p) ≡ (¬p ∨ p) ∨ (q ∨ ¬q) ≡ T ∨ T ≡ T. (L3)` }
+    ] },
+    { items: [
+      { ans: `<b>(i)</b> deg(a) = 2 (الـ loop بيتحسب مرتين) + 1 (a–b) + 1 (a–c) = <b>4</b>.<br><b>(ii)</b> بالترتيب a، b، c، d:<table><tr><th></th><th>a</th><th>b</th><th>c</th><th>d</th></tr><tr><th>a</th><td>1</td><td>1</td><td>1</td><td>0</td></tr><tr><th>b</th><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><th>c</th><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><th>d</th><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>الـ matrix دي symmetric (لأن الـ graph undirected). للتأكد: الـ degrees هي a = 4، b = 2، c = 2، d = 2، والمجموع 10 = 2 × 5 edges (الـ handshake). (L9)` }
+    ] },
+    { items: [
+      { ans: `¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [second De Morgan]<br>≡ ¬p ∧ [¬(¬p) ∨ ¬q] [first De Morgan]<br>≡ ¬p ∧ (p ∨ ¬q) [double negation]<br>≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [second distributive]<br>≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F]<br>≡ (¬p ∧ ¬q) ∨ F [commutative]<br>≡ ¬p ∧ ¬q [identity law for F] ■ (L5)` }
+    ] }
+  ] },
+
+  /* ───────── PHOTO DATED AUG 2024 (partial) ───────── */
+  { sections: [
+    { items: [
+      { ans: `<table><tr><th>p</th><th>q</th><th>r</th><th>q∨r</th><th>p∧(q∨r)</th><th>p∧q</th><th>p∧r</th><th>(p∧q)∨(p∧r)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr></table>العمود الخامس والعمود التامن متطابقين، يبقى الـ distributive law صح. (L4)` },
+      { ans: `(i) 27 = 5 × 5 + 2 → <b>2</b>. (ii) 36 = 3 × 12 + 0 → <b>0</b>. (L8)` }
+    ] },
+    { items: [
+      { ans: `Aᶜ = {5,6,7,8,9}.<br><b>(i)</b> Aᶜ ∩ B = {5, 6, 8}.<br><b>(ii)</b> A ∪ B = {1,2,3,4,5,6,8} → Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {7, 9}.<br><b>(iii)</b> A ∪ B = {1, 2, 3, 4, 5, 6, 8}.<br><b>(iv)</b> 16 subset: {∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}. (L1، L2)` },
+      { ans: `[¬p ∧ (p ∨ q)] → q<br>≡ ¬[¬p ∧ (p ∨ q)] ∨ q [p → q ≡ ¬p ∨ q]<br>≡ [p ∨ ¬(p ∨ q)] ∨ q [De Morgan، double negation]<br>≡ [p ∨ (¬p ∧ ¬q)] ∨ q [De Morgan]<br>≡ [(p ∨ ¬p) ∧ (p ∨ ¬q)] ∨ q [distributive]<br>≡ [T ∧ (p ∨ ¬q)] ∨ q ≡ (p ∨ ¬q) ∨ q [negation، identity]<br>≡ p ∨ (¬q ∨ q) ≡ p ∨ T ≡ T [associative، negation، domination] ■<br>(طريقة أقصر: ¬p ∧ (p ∨ q) ≡ (¬p ∧ p) ∨ (¬p ∧ q) ≡ ¬p ∧ q، و (¬p ∧ q) → q ≡ p ∨ ¬q ∨ q ≡ T.) (L5)` }
+    ] }
+  ] },
+
+  /* ───────── FINAL 2021/2022 ───────── */
+  { sections: [
+    { items: [
+      { why: `L1.` },
+      { why: `Absorption (L4).` },
+      { why: `نفي r ∨ (p ∧ q) هو ¬r ∧ ¬(p ∧ q) = ¬r ∧ (¬p ∨ ¬q)، ومكتوب في الورقة كاختيار c (L4، L5).` },
+      { why: `الـ Identity law (L4).` },
+      { why: `|A × B| = |A||B| (L2).` },
+      { why: `¬(R ∧ ¬F) ≡ ¬R ∨ F ≡ R → F (L5).` },
+      { why: `L5.` },
+      { why: `L3.` },
+      { why: `متثبتة بالقوانين في L5.` },
+      { why: `L3.` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `تمرين من الـ slides (L5).` },
+      { why: `¬(¬p) ∨ q (L5).` },
+      { why: `P(B) = {∅, {0}} و ∅ ∉ A (L1).` },
+      { why: `L4.` },
+      { why: `−32 = (−6)(6) + 4 حيث 0 ≤ r &lt; 6 (L8).` },
+      { why: `L4.` },
+      { why: `بالـ Euclid: 110 = 63 + 47، 63 = 47 + 16، 47 = 2·16 + 15، 16 = 15 + 1، 15 = 15·1 + 0 (L8).` },
+      { why: `165 = 9 × 18 + 3 (L8).` }
+    ] },
+    { items: [
+      { ans: `الـ Rows (p q r → p∧(q∨r) | (p∧q)∨(p∧r)): TTT T|T؛ TTF T|T؛ TFT T|T؛ TFF F|F؛ FTT F|F؛ FTF F|F؛ FFT F|F؛ FFF F|F. العمودين متفقين في الـ 8 rows كلهم، يبقى الـ distributive law صح. (الجدول كامل موجود في ورقة Aug 2024، Q1a.) (L4)` },
+      { ans: `(i) 27 = 5·5 + 2 → <b>2</b>.<br>(ii) 36 = 3·12 + 0 → <b>0</b>.<br>(iii) −18 ÷ 14 بيدّي r = −4؛ زوّد الـ modulus: −4 + 14 = <b>10</b> (−18 = (−2)(14) + 10).<br>(iv) −7 ÷ 10 بيدّي r = −7؛ زوّد الـ modulus: <b>3</b> (−7 = (−1)(10) + 3). (Lecture 8، Example 2.14)` }
+    ] },
+    { items: [
+      { ans: `Aᶜ = {4,5,6,7,9}.<br><b>(i)</b> Aᶜ ∩ B = {4, 5, 6, 9}.<br><b>(ii)</b> A ∪ B = {1,2,3,4,5,6,8,9} → Aᶜ ∩ Bᶜ = {7}.<br><b>(iii)</b> A ∪ B = {1, 2, 3, 4, 5, 6, 8, 9}.<br><b>(iv)</b> 16 subset: {∅, {1}, {2}, {3}, {8}, {1,2}, {1,3}, {1,8}, {2,3}, {2,8}, {3,8}, {1,2,3}, {1,2,8}, {1,3,8}, {2,3,8}, {1,2,3,8}}. (L1، L2)` },
+      { ans: `¬p ∧ (p ∨ q) ≡ (¬p ∧ p) ∨ (¬p ∧ q) [distributive] ≡ F ∨ (¬p ∧ q) ≡ ¬p ∧ q [negation، identity].<br>وبعدين (¬p ∧ q) → q ≡ ¬(¬p ∧ q) ∨ q [p → q ≡ ¬p ∨ q] ≡ (p ∨ ¬q) ∨ q [De Morgan، double negation] ≡ p ∨ (¬q ∨ q) [associative] ≡ p ∨ T ≡ T [negation، domination] ■ (L5)` }
+    ] },
+    { items: [
+      { ans: `<b>(I)</b><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><th>3</th><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><th>4</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><th>5</th><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table>(دي الـ matrix A₁ بتاعة المحاضرة؛ وهي symmetric.)<br><b>(II)</b> V(1) = {4}، V(2) = {3, 5}، V(3) = {2, 4, 5}، V(4) = {1, 3, 5}، V(5) = {2, 3, 4}؛ أو E = {a(1,4), b(2,5), c(2,3), d(3,5), e(3,4), f(4,5)}. (L9)` },
+      { ans: `¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) ≡ ¬p ∧ (p ∨ ¬q) ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) ≡ F ∨ (¬p ∧ ¬q) ≡ ¬p ∧ ¬q (De Morgan، De Morgan + double negation، distributive، negation، identity). وممكن كمان بالـ truth table: العمودين الاتنين F, F, F, T لـ pq = TT، TF، FT، FF. (L5)` }
+    ] }
+  ] },
+
+  /* ───────── MIDTERM 2021/2022 ───────── */
+  { sections: [
+    { items: [
+      { ans: `<table><tr><th>P</th><th>Q</th><th>P→Q</th><th>Q→P</th><th>(P→Q)∨(Q→P)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr></table>كل الـ rows في آخر عمود T، يبقى الـ statement دي tautology. (L3)` }
+    ] },
+    { items: [
+      { ans: `¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [2nd De Morgan] ≡ ¬p ∧ [¬(¬p) ∨ ¬q] [1st De Morgan] ≡ ¬p ∧ (p ∨ ¬q) [double negation] ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [2nd distributive] ≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F] ≡ (¬p ∧ ¬q) ∨ F [commutative] ≡ ¬p ∧ ¬q [identity] ■ (L5)` }
+    ] }
+  ] },
+
+  /* ───────── FINAL 2020/2021 ───────── */
+  { sections: [
+    { items: [
+      { why: `L3.` },
+      { why: `L3.` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `L5.` },
+      { why: `L5.` },
+      { why: `L4.` },
+      { why: `بدّل الـ hypothesis والـ conclusion (L5).` },
+      { why: `L2.` },
+      { why: `L1.` },
+      { why: `L5.` },
+      { why: `L5.` },
+      { why: `¬(r ∨ (p ∧ q)) ≡ ¬r ∧ (¬p ∨ ¬q).` },
+      { why: `L8.` },
+      { why: `L5.` },
+      { why: `L8.` },
+      { why: `¬∀ = ∃¬ (L3)، يعني نفي "الكل" هو "فيه واحد على الأقل مش كده".` },
+      { why: `L4.` },
+      { why: `L5.` },
+      { why: `L5.` }
+    ] },
+    { items: [
+      { ans: `(i) Aᶜ ∩ B = {5, 6, 7}. (ii) Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {8, 9, 10, …}. (iii) A ∪ B = {1, 2, 3, 4, 5, 6, 7}. (iv) الـ P(A) فيها 2⁴ = 16 subset: ∅، {1}، {2}، {3}، {4}، {1,2}، {1,3}، {1,4}، {2,3}، {2,4}، {3,4}، {1,2,3}، {1,2,4}، {1,3,4}، {2,3,4}، {1,2,3,4}. (نفس Summer 2023/24 Q1a.)` },
+      { ans: `الـ Truth table: P→Q = T, F, T, T و Q→P = T, T, F, T لـ PQ = TT، TF، FT، FF؛ والـ disjunction بتاعهم T في كل row، يبقى tautology. (L3)` }
+    ] },
+    { items: [
+      { ans: `¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [De Morgan] ≡ ¬p ∧ (p ∨ ¬q) [De Morgan، double negation] ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [distributive] ≡ F ∨ (¬p ∧ ¬q) [negation] ≡ ¬p ∧ ¬q [identity] ■ (L5)` },
+      { ans: `(i) 2 (ii) 0 (iii) −18 = (−2)(14) + 10 → 10 (iv) −7 = (−1)(10) + 3 → 3. لما a تبقى سالبة: الباقي اللي بتطلّعه الآلة الحاسبة بيبقى سالب، فزوّد الـ modulus (ونقّص q بواحد). (L8)` }
+    ] },
+    { items: [
+      { ans: `(i) الـ Rows من 1 لـ 4: 1: 0 0 1 0؛ 2: 1 0 0 0؛ 3: 0 1 0 0؛ 4: 0 1 1 0.<br>(ii) V(1) = {3}، V(2) = {1}، V(3) = {2}، V(4) = {2, 3}. (الـ matrix A₂ بتاعة Lecture 9؛ ونفس الـ graph بتاع 2024/25 Q3b.)` },
+      { ans: `<table><tr><th>p</th><th>q</th><th>r</th><th>p∨q</th><th>p→r</th><th>q→r</th><th>p∨q→r</th><th>(p→r)∧(q→r)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>آخر عمودين متطابقين، يبقى الـ forms دي equivalent. (الورقة فيها غلطة مطبعية وكاتبة الطرف الشمال "p ∨ q" بس؛ والـ p ∨ q لوحدها مش equivalent، مثلًا الـ row اللي فيه p = q = r = F بيدّي F قصاد T.) (L4، Example 1.2.2)` }
+    ] }
+  ] }
+];

@@ -152,12 +152,12 @@ Pick your level on the home page. Course pills, tiles, cards due, weak spots, pa
 
 | Course | Code | Lectures | Cards | Questions | Past papers | Arabic |
 |---|---|:-:|:-:|:-:|:-:|:-:|
-| 🔵 Discrete Mathematics | BS 113 / BS 204 | 11 | 178 | 259 | 9 | coming |
-| 🟣 Operations Research | BS205 (CS304 for 3rd year) | 9 | 138 | 270 | 9 | coming |
-| 🔴 Data Structures | CS201 | 10 | 144 | 191 | 7 | coming |
-| 🟢 Web Programming | CS206 | 10 | 188 | 298 | 6 | coming |
-| 🟩 Microprocessors & Assembly Language | CS203 | 9 | 150 | 280 | 7 | coming |
-| 🟠 Systems Analysis and Design | CS 210 | 6 | 120 | 157 | 4 | coming |
+| 🔵 Discrete Mathematics | BS 113 / BS 204 | 11 | 178 | 259 | 9 | ✓ |
+| 🟣 Operations Research | BS205 / CS304 | 9 | 138 | 270 | 9 | ✓ |
+| 🔴 Data Structures | CS201 | 10 | 144 | 191 | 7 | ✓ |
+| 🟢 Web Programming | CS206 | 10 | 188 | 298 | 6 | ✓ |
+| 🟩 Microprocessors & Assembly Language | CS203 | 9 | 150 | 280 | 7 | ✓ |
+| 🟠 Systems Analysis and Design | CS 210 | 6 | 120 | 157 | 4 | ✓ |
 
 ### Level 3 · Semester 1
 
