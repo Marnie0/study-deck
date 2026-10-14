@@ -23,12 +23,12 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 <!-- stats:start -->
 <table>
 <tr>
-<td align="center"><h2>10</h2>courses</td>
-<td align="center"><h2>82</h2>lectures</td>
-<td align="center"><h2>1,220</h2>flashcards</td>
-<td align="center"><h2>1,939</h2>quiz questions</td>
-<td align="center"><h2>415</h2>Q&amp;A pairs</td>
-<td align="center"><h2>58</h2>solved past papers</td>
+<td align="center"><h2>12</h2>courses</td>
+<td align="center"><h2>101</h2>lectures</td>
+<td align="center"><h2>1,546</h2>flashcards</td>
+<td align="center"><h2>2,507</h2>quiz questions</td>
+<td align="center"><h2>513</h2>Q&amp;A pairs</td>
+<td align="center"><h2>73</h2>solved past papers</td>
 </tr>
 </table>
 <!-- stats:end -->
@@ -153,11 +153,11 @@ Pick your level on the home page. Course pills, tiles, cards due, weak spots, pa
 | Course | Code | Lectures | Cards | Questions | Past papers | Arabic |
 |---|---|:-:|:-:|:-:|:-:|:-:|
 | 🔵 Discrete Mathematics | BS 113 / BS 204 | 11 | 178 | 259 | 9 | coming |
+| 🟣 Operations Research | BS205 (CS304 for 3rd year) | 9 | 138 | 270 | 9 | coming |
 | 🔴 Data Structures | CS201 | 10 | 144 | 191 | 7 | coming |
+| 🟢 Web Programming | CS206 | 10 | 188 | 298 | 6 | coming |
 | 🟩 Microprocessors & Assembly Language | CS203 | 9 | 150 | 280 | 7 | coming |
 | 🟠 Systems Analysis and Design | CS 210 | 6 | 120 | 157 | 4 | coming |
-
-*2 more courses are being added.*
 
 ### Level 3 · Semester 1
 
