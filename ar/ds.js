@@ -1,0 +1,1598 @@
+window.AR = window.AR || {};
+AR.ds = { lectures: {}, exams: [] };
+
+AR.ds.lectures["1"] = {
+  notes: [
+    { h: `الـ data والـ data types والـ data structures`, pts: [
+      `الـ <b>Data</b>: مجموعة حقائق (facts) نقدر نطلع منها باستنتاج. <i>الداتا: الحرارة 35°C؛ الاستنتاج: الجو حر.</i> أنواع الداتا: <b>textual</b> (اسمك)، <b>numeric</b> (الـ ID بتاعك)، <b>audio</b> (صوتك)، <b>video</b> (صوتك وصورتك).`,
+      `البرامج بت<b>قرا</b> الداتا، وب<b>تخزنها</b> مؤقتًا، وب<b>تعالجها</b> (process)، وفي الآخر بت<b>طلّع</b> النتايج (output).`,
+      `الـ <b>Data types</b> (اسمها كمان <b>atomic</b> data types) <b>مالهاش أجزاء جواها</b>، زي <code>int</code> و<code>char</code> و<code>float</code>. الـ data type عبارة عن حاجتين: <b>(i) domain من القيم المسموحة</b> و<b>(ii) set of operations</b> على القيم دي. الـ compiler بيطلّع error لو عملت operation غلط، يعني <code>char x,y,z; z=x*y;</code> مش مسموح.`,
+      `أمثلة: <b>boolean</b>: الـ domain هو 0,1، والـ operations هي and, or, =. <b>char</b>: الـ domain هو ASCII، والـ operations هي =, &lt;&gt;, &lt;. <b>integer</b>: الـ domain من -maxint لـ +maxint، والـ operations هي +, -, =, ==, &lt;&gt;, &lt;.`,
+      `الـ <b>Data structure</b>: طريقة معينة لـ <b>تخزين وتنظيم الداتا</b> في الكمبيوتر عشان نستخدمها <b>بكفاءة وفاعلية (efficiently and effectively)</b>. هو الـ <b>logical أو mathematical model</b> لتنظيم معين للداتا، يعني مجموعة data elements متجمعة تحت اسم واحد (زي الـ array). الـ data structures بتخلي الكود أنضف وأسهل في الفهم.`,
+      `<b>ليه محتاجين data structures؟</b> الهدف (Goal): تنظيم الداتا. المعايير (Criteria): تسهيل <b>التخزين (storage)</b> و<b>الاسترجاع (retrieval)</b> و<b>التعديل (manipulation)</b> للداتا بكفاءة. مسألة التصميم (Design issue): إنك تختار وتصمم الـ data types المناسبة (وده أهم سبب بنذاكر عشانه data structures).`
+    ] },
+    { h: `تقسيم الـ data structures (المحاضرة + Lab 1)` },
+    { h: `الـ operations والـ Abstract Data Types (ADT)`, pts: [
+      `الـ <b>Navigating</b> (traversing): إنك توصل لكل data element <b>مرة واحدة بالظبط</b> عشان تعالج عناصر معينة.`,
+      `الـ <b>Searching</b>: إنك تلاقي مكان الـ data element (الـ <b>key</b>) جوه الـ structure. الـ <b>Insertion</b>: إضافة عنصر جديد. الـ <b>Deletion</b>: مسح عنصر.`,
+      `الـ <b>Sorting</b>: ترتيب العناصر ترتيب منطقي (تصاعدي/تنازلي). الـ <b>Merging</b>: دمج عناصر من two or more data structures في structure واحد.`,
+      `الـ <b>ADT</b>: <b>تجريد (abstraction) للـ data structure</b> بيدّيك <b>الـ interface بس</b> اللي الـ data structure لازم يلتزم بيه. الـ interface مش بيقول أي تفاصيل عن الـ implementation ولا بأنهي programming language (يعني بيخليك تفكر في الداتا بشكل مجرد).`,
+      `الـ ADTs <b>حاجات نظرية بحتة (purely theoretical)</b>: بنستخدمها عشان نبسّط وصف الـ abstract algorithms ونصنّف ونقيّم الـ data structures. الـ ADT هو مجموعة داتا + set of operations على الداتا دي.`,
+      `أمثلة ADT ← implementation: <b>List</b> ← dynamic array، linked list. <b>Queue</b> ← queue مبني على linked list، queue مبني على array. <b>Map</b> ← tree map، hash map / hash table. التشبيه: الـ <b>Vehicle</b> (ADT) ← golf car، bicycle، smart car (implementations).`
+    ] },
+    { h: `الـ Arrays (المحاضرة + Lab 1)`, pts: [
+      `الـ <b>array</b> هو data structure بنستخدمه عشان نعالج عناصر كتير <b>من نفس الـ data type</b> لما عددهم يبقى معروف؛ يعني مجموعة عناصر من نفس النوع متخزنة في <b>أماكن متتالية في الـ memory (consecutive)</b>.`,
+      `مكان العنصر بيتحدد بمعادلة: <b>location(i) = i - 1</b>، يعني العنصر رقم i في الـ list موجود في position i-1 في الـ array (الـ index بيبدأ من <b>صفر (zero-based)</b>: من 0 لـ size-1).`,
+      `الـ Syntax: <code>dataType arrayName[arraySize];</code> الـ size لازم يبقى <b>integer constant أكبر من صفر</b> ولازم يتحدد مسبقًا. والـ subscript (الـ index) لازم يبقى integer.`,
+      `طرق إدخال الداتا: <code>int arr[5]={10,20,30,40,50};</code> (كله)، <code>char arr[5]={'a','b','c'};</code> (أول 3 بس)، <code>arr[0]=10;</code> (index معين)، <code>cin&gt;&gt;arr[2];</code> (وقت الـ run time).`,
+      `الـ C++ بتبعت <b>الـ array كله by reference</b> للـ functions، بس <b>العنصر الواحد بيتبعت by value</b> زي أي variable عادي.`,
+      `الحجم في الـ memory = عدد العناصر × حجم الـ type، مثلًا <code>int arr[15]</code> والـ int بـ 4 bytes = <b>60 bytes</b>.`,
+      `الميزة: سهل تخزن عناصر من نفس النوع، والـ access مباشر بالـ index. <b>العيب: الحجم ثابت (fixed size)</b> (بيتحدد وقت الـ design ومايكبرش).`
+    ] },
+    { h: `الـ insert والـ delete في الـ array (كود الدكتورة)` },
+    { h: `عمليات على الـ array: الـ sum والـ average والـ sort` },
+    { h: `الـ 2D arrays والـ matrices`, pts: [
+      `الداتا اللي على شكل جدول (زي الـ <b>matrix</b>) بنمثلها بـ 2-dimensional array: <code>int a[3][4];</code> فيه 3 rows (0..2) و4 columns (0..3)، والعناصر من a[0][0] لـ a[2][3].`,
+      `الـ Matrices عادةً الـ index بتاعها بيبدأ من <b>1</b>، وبتدعم الجمع والضرب والـ transpose، ودول <b>مش</b> مدعومين مباشرة في الـ 2D array بتاع C++.`,
+      `<b>إزاي نلاقي x[i][j]</b> (row-major): لو x فيه r rows وc columns، كل row فيه c عناصر، وقبل row رقم i فيه i rows، يعني فيه <b>i·c</b> عنصر قبل x[i][0]؛ فـ x[i][j] بيتحط في position <b>i·c + j</b> في الـ 1D array.`,
+      `الـ <b>Transpose</b>: الـ matrix اللي m×n بتبقى n×m و M<sup>T</sup>(j,i) = M(i,j).`,
+      `الـ <b>Addition</b>: بس للـ matrices اللي <b>ليها نفس الأبعاد</b>: C(i,j) = A(i,j) + B(i,j).`,
+      `الـ <b>Multiplication</b>: بيتعمل بس لما <b>عدد columns بتاع A = عدد rows بتاع B</b>. A (m×n) × B (n×q) = C (m×q) و C(i,j) = Σ<sub>k=1..n</sub> A(i,k)·B(k,j).`
+    ] },
+    { h: `ضرب الـ matrices (كود الدكتورة، الجزء الأساسي)` },
+    { h: `الـ Structs`, pts: [
+      `الـ <b>struct</b> هو data structure فيه مجموعة data elements متجمعة تحت اسم واحد. العناصر دي اسمها <b>members</b>، وممكن يبقوا <b>أنواع مختلفة وأطوال مختلفة</b>. الـ structs اسمها كمان <b>records</b> والـ members اسمها <b>fields</b>.`,
+      `على عكس الـ arrays (نفس النوع)، الـ structs هي types <b>بيعرّفها الـ user (user-defined)</b> وبتخزن عناصر من data types <b>مختلفة (non-similar)</b>.`,
+      `فيه طريقتين تعمل بيهم objects: (1) بعد القوس اللي بيقفل على طول: <code>struct product { int weight; float price; } apple, banana, melon;</code> (2) لوحدهم: <code>product apple; product banana, melon;</code>. والـ members بنوصلها بالـ dot: <code>apple.weight</code>، <code>apple.price</code>.`,
+      `الـ <b>Array of structs</b>: <code>struct StudentRec { string name; int mark; } Student[2];</code> وبعدين <code>Student[i].name</code>، <code>Student[i].mark</code>.`,
+      `<b>إنك تبعت struct لـ function</b>: <code>void printInfo(Employee emp) { cout&lt;&lt;emp.id; cout&lt;&lt;emp.salary; }</code> وبتتنادي كده <code>Employee e1 = {1, 1000}; printInfo(e1);</code> (بيتبعت by value، يعني نسخة).`,
+      `خلي بالك ده سؤال بيحبوه جدًا في الـ final: "باستخدام <b>array of struct</b> اكتب برنامج ياخد جدول من الـ user ويحسب الـ totals/averages" (شوف الامتحانات القديمة).`
+    ] },
+    { h: `مثال array of struct (شكل سؤال الامتحان)` }
+  ],
+  cards: [
+    `مجموعة حقائق (facts) نقدر نطلع منها باستنتاج.`,
+    `(i) domain من القيم المسموحة و(ii) set of operations على القيم دي.`,
+    `data types مالهاش أجزاء جواها، زي int وchar وfloat.`,
+    `طريقة معينة لتخزين وتنظيم الداتا في الكمبيوتر عشان نستخدمها efficiently and effectively.`,
+    `تسهيل الـ storage والـ retrieval والـ manipulation للداتا بكفاءة.`,
+    `الـ Array (static)؛ الـ stack والـ queue والـ linked list (dynamic).`,
+    `الـ Trees والـ graphs.`,
+    `إنك توصل لكل data element مرة واحدة بالظبط عشان تعالج عناصر معينة.`,
+    `دمج data elements من two or more data structures في structure واحد.`,
+    `تجريد (abstraction) للـ data structure بيدّيك الـ interface بس، من غير تفاصيل implementation ولا لغة.`,
+    `i - 1: العنصر رقم i موجود عند index i-1 (zero-based).`,
+    `i·c + j (row-major).`,
+    `عدد columns بتاع A = عدد rows بتاع B؛ m×n في n×q يطلع m×q.`,
+    `نفس الأبعاد.`,
+    `60 bytes.`,
+    `مجموعة data elements (members) ممكن تبقى أنواع مختلفة متجمعة تحت اسم واحد. اسمه كمان record؛ والـ members اسمها fields.`,
+    `الـ array كله by reference؛ والعنصر الواحد by value.`,
+    `الحجم ثابت (fixed size).`
+  ],
+  qa: [
+    `الـ data structure هو طريقة معينة لتخزين وتنظيم الداتا في الكمبيوتر عشان نستخدمها efficiently and effectively؛ يعني الـ logical أو mathematical model لتنظيم معين للداتا. الهدف (goal) هو تنظيم الداتا. والمعايير (criteria) إنه يسهّل الـ storage والـ retrieval والـ manipulation للداتا بكفاءة. ومسألة التصميم (design issue) هي إنك تختار وتصمم الـ data types المناسبة.`,
+    `الـ Navigating: توصل لكل عنصر مرة واحدة بالظبط. الـ Searching: تلاقي مكان key. الـ Insertion: تضيف عنصر جديد. الـ Deletion: تمسح عنصر. الـ Sorting: ترتب العناصر تصاعدي/تنازلي. الـ Merging: تدمج عناصر من two or more structures في واحد.`,
+    `الـ abstract data type هو abstraction للـ data structure بيدّي الـ interface بس اللي الـ structure لازم يلتزم بيه، من غير ما يقول اتعمل إزاي ولا بأنهي لغة. هو مجموعة داتا + set of operations. أمثلة: List ← dynamic array أو linked list؛ Queue ← queue مبني على array أو على linked list؛ Map ← tree map أو hash map.`,
+    `الـ Primitive: int وfloat وchar (والـ pointers). الـ Non-primitive: يا linear (static: arrays؛ dynamic: stack وqueue وlinked list) يا non-linear (trees وgraphs).`,
+    `بالـ Row-major order: كل row فيه c عناصر، وقبل row رقم i فيه i rows كاملين، يعني فيه i·c عنصر قبل x[i][0]. عشان كده x[i][j] بيبقى في position i·c + j في الـ 1D array المكافئ. مثال: int a[3][4]، a[2][1] ← 2·4+1 = 9.`,
+    `الـ array بيجمع عناصر من نفس الـ data type وبنوصلها بـ integer index؛ الـ struct بيجمع members من أنواع وأطوال مختلفة وبنوصلها بالاسم عن طريق الـ dot operator. الاتنين بيجمعوا داتا تحت اسم واحد؛ والـ array of structs بيجمع الاتنين (زي array من employee records).`
+  ],
+  quiz: [
+    [`الـ 15 ده عدد العناصر، مش عدد الـ bytes.`, `ده جمع 15 + 4 بدل ما يضرب.`, `ده طرح 4 من 15، وده مالوش أي معنى.`, `صح. 15 عنصر × 4 bytes = 60 bytes.`],
+    [`الـ Matrices في الرياضة بتبدأ من 1، بس الـ arrays في C++ بتبدأ من صفر (zero-based).`, `صح. الـ arrays في C++ zero-based: الـ indices من 0 لـ size-1.`, `مفيش array بيبدأ من index 2.`, `الـ -1 بنستخدمه كقيمة "فاضي" للـ TOP/front، مش index في array.`],
+    [`الـ Graphs دي non-linear.`, `الـ Trees دي non-linear (hierarchical).`, `الـ Trees دي non-linear.`, `صح. الـ linked list بيخزن العناصر ورا بعض في sequence، فهو linear.`],
+    [`الـ Arrays دي linear.`, `الـ stack ده linear.`, `صح. الـ Trees (والـ graphs) دي non-linear.`, `الـ queue ده linear.`],
+    [`الـ linked list ده linear.`, `الـ stack ده linear.`, `صح. الـ tree بيبقى hierarchical، فهو non-linear.`, `الـ circular queue لسه linear structure (اللي بيلف هو الـ indexing بس).`],
+    [`صح. الـ Arrays بتشيل عناصر كتير من نوع واحد تحت اسم واحد والـ access بالـ index.`, `غلط: الـ arrays ينفع تتعملها sort (المحاضرة فيها مثال sort)، وده أصلًا مش هيبقى ميزة.`, `غلط: الـ arrays في C++ بتبدأ من index 0.`, `غلط: ده وصف الـ struct، مش الـ array.`],
+    [`صح. الـ Linear search بيشيك على العناصر واحد واحد من الأول (Lab 1/Lab 2).`, `الـ Binary search بيقسم list مترتبة نصين كل مرة؛ مش بيشيك على كل عنصر.`, `الـ Hash search بيحسب المكان على طول بـ hash function.`, `الـ BST search بيمشي شمال أو يمين من الـ root، مش بيعدّي على كل العناصر.`],
+    [`غلط. عناصر الـ array كلها من نفس النوع؛ "أنواع مختلفة" ده وصف الـ struct.`, `صح. ده تعريف الـ struct. الـ array بيشيل عناصر من نفس الـ data type.`],
+    [`صح (الإجابة النموذجية الرسمية). الحجم لازم يتحدد وقت الـ design ومايتغيرش.`, `الـ access بالـ index في الـ array مباشر وسريع.`, `ده عيب الـ linked lists.`, `الـ Arrays تقدر تشيل أي data type (بس نوع واحد).`],
+    [`الـ Searching بيلاقي مكان key.`, `صح. ده تعريف الـ navigating في المحاضرة.`, `الـ Merging بيدمج عناصر من two or more structures.`, `الـ Sorting بيرتب العناصر.`],
+    [`ده استخدم i·r + j = 2·3 + 1؛ بس المعادلة بتستخدم عدد الـ columns اللي هو c.`, `صح. i·c + j = 2·4 + 1 = 9.`, `ده نسي يجمع j.`, `ده آخر عنصر a[2][3].`],
+    [`هو defined: عدد columns بتاع A (3) = عدد rows بتاع B (3).`, `الناتج بياخد rows بتاع A وcolumns بتاع B.`, `صح. m×n في n×q يطلع m×q = 2×4.`, `ده حجم الـ transpose بتاع (A×B).`]
+  ],
+  extra: [
+    [`ده وصف الـ array، اللي هو data structure.`, `صح. ده تعريف المحاضرة اللي من جزئين.`, `ده تعريف الـ data structure.`, `ده الـ ADT.`],
+    [`القيم اللي مش initialized بتطلّع warning بالكتير، ومش هي دي فكرة المثال.`, `إنك تعرّف كذا variable في سطر واحد ده legal عادي.`, `صح. الـ data type بيشمل الـ operations المسموحة؛ والـ compiler بيطلّع error لو عملت operation غلط.`, `فكرة المحاضرة هي الـ operation نفسها، مش نوع الناتج.`],
+    [`ده ترتيب تصاعدي؛ والشرط &lt; بيجيب القيمة الأكبر لقدام.`, `الـ array بيتعمله sort، مش بيتطبع زي ما هو.`, `مش مترتب كله؛ الـ nested loops بتكمّل الـ sort للآخر.`, `صح. لما تعمل swap كل ما billy[n] &lt; billy[m] بيطلع ترتيب تنازلي.`],
+    [`صح. العناصر من index 2 بتتزق يمين والـ 9 بيتحط في element[2] (بعد العنصر التاني). اتجرب بـ g++.`, `ده بيضيف بعد العنصر الأول.`, `ده بيضيف في الأول خالص.`, `ده بيضيف بعد العنصر التالت.`],
+    [`ده بيمسح العنصر التالت.`, `صح. element[i-1] = element[i] لـ i = 2..4 بيزق 4 و8 و1 شمال فوق الـ 2؛ والـ length يبقى 4.`, `ده بيمسح العنصر الأول.`, `ده بيمسح آخر عنصر.`],
+    [`ده استخدم 3·4 + 2 (عدد الـ rows بدل الـ columns).`, `ده استخدم 3 + 2·4.`, `صح. i·c + j = 3·5 + 2 = 17.`, `الـ 20 ده العدد الكلي للعناصر.`],
+    [`صح. المحاضرة بتذكر tree map وhash map / hash table كـ implementations للـ Map.`, `الـ Queues بتتعمل بـ arrays أو linked lists.`, `الـ Lists بتتعمل كـ dynamic arrays أو linked lists.`, `في التشبيه، الـ implementations بتاعة الـ vehicle هي golf car وbicycle وsmart car.`],
+    [`الـ array كله بيتبعت by reference.`, `صح (Lab 1).`, `العكس هو الصح.`, `Lab 2 بيبعت array لـ LinearSearch عادي.`],
+    [`الـ Sorting بيرتب العناصر.`, `الـ Navigating بيزور كل عنصر مرة.`, `الـ Insertion بيضيف عنصر جديد واحد.`, `صح.`],
+    [`صح. أسماء الـ objects بتيجي بعد القوس اللي بيقفل.`, `ناقصها الكلمة struct.`, `الـ members لازم تيجي قبل أسماء الـ objects.`, `ده مش syntax صح للـ struct.`]
+  ]
+};
+
+AR.ds.lectures["2"] = {
+  notes: [
+    { h: `يعني إيه stack؟`, pts: [
+      `الـ stack هو data structure من نوع <b>non-primitive linear</b>: يعني <b>ordered list</b> الإضافة والمسح فيها بيحصلوا من <b>طرف واحد بس</b>، اسمه الـ <b>top</b> (TOP).`,
+      `بما إن كل الإضافة والمسح بيحصلوا عند الـ top، فـ <b>آخر عنصر دخل هو أول عنصر يطلع</b>: ده الـ <b>LIFO</b> (Last-In-First-Out)، وبيتكتب كمان <b>FILO</b> (First-In-Last-Out).`,
+      `الفكرة: الـ <b>base بتاع الـ stack ثابت</b>؛ لما تضيف عنصر الـ top <b>بيزيد</b>، ولما تشيل العنصر اللي فوق الـ top <b>بيقل</b>.`,
+      `أمثلة من الحياة: <b>الكتب والهدوم</b> اللي متكومة فوق بعض؛ الـ <b>call logs في الموبايل</b>؛ الـ <b>browsers</b> (زرار الـ back بيرجعك للموقع اللي قبله)؛ الـ <b>text editors</b> (undo/redo).`,
+      `التطبيقات (Lab 3): الـ <b>backtracking</b> (طريق في متاهة maze)، الـ <b>function calls</b> (بيحتفظ بمعلومات الـ functions الشغالة)، و<b>عكس الـ string</b> (تعمل push لكل حرف وبعدين pop).`
+    ] },
+    { h: `الـ operations والمصطلحات`, pts: [
+      `الـ <b>PUSH</b>: إضافة عنصر جديد عند الـ top. بعد كل push الـ top <b>بيزيد واحد</b>. لو الـ array مليان دي حالة <b>STACK-FULL</b>، ولو عملت push ساعتها يحصل <b>STACK OVERFLOW</b>.`,
+      `الـ <b>POP</b>: مسح العنصر اللي عند الـ top. بعد كل pop الـ top <b>بيقل واحد</b>. لو عملت pop ومفيش عناصر يحصل <b>STACK UNDERFLOW</b>.`,
+      `الـ <b>MAXSIZE</b>: مش مصطلح standard؛ هو أقصى حجم للـ stack.`,
+      `الـ <b>TOP</b>: بيشاور على أعلى الـ stack؛ بنستخدمه عشان نشيك على الـ overflow/underflow. <b>في الأول TOP = -1</b>، فلما تعمل push الـ top <b>بيزيد الأول</b> وبعدين العنصر يتخزن في <code>stack[top]</code>.`,
+      `الـ <b>Underflow</b>: الـ stack مفيهوش ولا عنصر (الـ top تحت خالص، top == -1). الـ <b>Overflow</b>: الـ stack مليان (top == MAXSIZE-1، الـ top في أعلى مكان).`
+    ] },
+    { h: `الـ implementation الـ static مقابل الـ dynamic` },
+    { h: `الـ isEmpty والـ isFull والـ push والـ pop (كود الدكتورة)` },
+    { h: `الـ display والـ count والـ search والـ get (كود الدكتورة)` },
+    { h: `Lab 3: stack باستخدام dynamic array`, pts: [
+      `في الـ lab الـ size بيتقري وقت الـ run time: <code>cin&gt;&gt;size; stack_arr = new int[size];</code> و<code>isFull()</code> بتشيك على <code>top == size-1</code>.`,
+      `الـ menu فيها (i) push، (o) pop، (t) traverse (بيعرض من الـ top نازل لحد index 0)، (e) exit.`,
+      `الـ Assignments: اعكس string باستخدام stack؛ الـ sum والـ average لـ stack مليان؛ والـ bonus <code>Stack_Copy()</code> من s1 لـ s2 الفاضي (اعمل pop في temp stack، وبعدين pop من الـ temp لـ s2 عشان الترتيب يفضل زي ما هو).`,
+      `شكل سؤال الامتحان عن جمل الـ push: <code>top++; stack[top] = item;</code> (زوّد الأول وبعدين خزّن) لأن الـ top بيبدأ من -1.`
+    ] }
+  ],
+  cards: [
+    `structure من نوع non-primitive linear الإضافة والمسح فيه بيحصلوا من طرف واحد (الـ top). LIFO.`,
+    `Last-In-First-Out (هو نفسه FILO): آخر عنصر اتعمله push هو أول واحد يتعمله pop.`,
+    `إضافة عنصر عند الـ top؛ والـ top بيزيد واحد.`,
+    `مسح العنصر اللي عند الـ top؛ والـ top بيقل واحد.`,
+    `-1`,
+    `top == -1`,
+    `top == MAXSIZE - 1`,
+    `إنك تعمل push والـ stack مليان.`,
+    `إنك تعمل pop والـ stack فاضي.`,
+    `top++; stack[top] = item;`,
+    `item = stack[top]; top--;`,
+    `بيستخدم array؛ الحجم ثابت من وقت الـ design؛ ومش efficient في الـ memory.`,
+    `تمثيل بـ linked list باستخدام pointers.`,
+    `الكتب/الهدوم المتكومة، الـ call logs، زرار الـ back في الـ browser، الـ undo/redo.`,
+    `الـ Backtracking، الـ function calls، عكس الـ string.`,
+    `top + 1 (بنعدّ من الـ top نازلين لحد 0).`
+  ],
+  qa: [
+    `الـ stack هو data structure من نوع non-primitive linear، يعني ordered list الإضافة والمسح فيها بيحصلوا من طرف واحد بس اسمه الـ top. وبما إن كل الإضافة والمسح بيحصلوا عند الـ top، فآخر عنصر اتضاف هو أول عنصر يتشال، عشان كده اسمه Last-In-First-Out list.`,
+    `الـ Overflow بيحصل لما الـ stack يبقى مليان (top == MAXSIZE-1) وتحاول تعمل push: مفيش مكان لعنصر جديد. الـ Underflow بيحصل لما الـ stack مفيهوش ولا عنصر (top == -1) وتحاول تعمل pop.`,
+    `bool isEmpty(int top){ if (top == -1) return true; else return false; }<br>int pop(){ if (isEmpty(top)) { cout&lt;&lt;"Stack underflow"; return -1; } else { int item = stack_arr[top]; top = top-1; return item; } }<br>الفكرة: لو الـ stack فاضي اطبع underflow، غير كده خد العنصر اللي فوق وقلّل الـ top.`,
+    `bool isFull(int top){ if (top == MAXSIZE-1) return true; else return false; }<br>void push(int item){ if (isFull(top)) cout&lt;&lt;"Stack overflow"; else { top = top+1; stack_arr[top] = item; } }<br>الفكرة: لو الـ stack مليان اطبع overflow، غير كده زوّد الـ top الأول وبعدين خزّن العنصر.`,
+    `الـ Static بيستخدم array: بسيط جدًا بس مش flexible لأن الحجم بيتحدد وقت تصميم البرنامج ومايتغيرش، ومش efficient في استخدام الـ memory. الـ Dynamic بيستخدم linked list بالـ pointers: بيشتغل مع عدد قيم مش محدود (متغير) ومش محتاج حجم ثابت.`,
+    `أمثلة: الكتب/الهدوم المتكومة فوق بعض، الـ call logs في الموبايل، الـ history في الـ browser (زرار الـ back)، الـ undo/redo في الـ text editors. تطبيقات: الـ backtracking (المتاهة)، الـ function calls، عكس الـ string.`
+  ],
+  quiz: [
+    [`ده مش مصطلح stack.`, `صح. إنك تعمل push على stack مليان (top == MAXSIZE-1) ده stack overflow.`, `الـ Underflow هو إنك تعمل pop من stack فاضي.`, `ده مش مصطلح stack.`],
+    [`صح (دي الجملة الغلط). الـ stack بيمشي بـ LIFO؛ الـ FIFO ده الـ queue.`, `جملة صح: الـ static implementation بيستخدم array.`, `جملة صح: الـ stack هو linear ordered list.`, `جملة صح: وده بالظبط معنى الـ LIFO.`],
+    [`صح. الـ top بيبدأ من -1، فبيزيد الأول وبعدين العنصر يتخزن مكانه.`, `ده الـ pop، مش الـ push.`, `ده بيستخدم الـ item كـ index؛ مالوش معنى.`, `والـ top بادئ من -1 ده هيكتب في stack[-1] الأول.`],
+    [`الـ Create بيبني الـ stack.`, `الـ Push بيضيف.`, `ده مش اسم operation في الـ stack.`, `صح. الـ Pop بيمسح العنصر اللي فوق.`],
+    [`الـ Create بيبني الـ stack.`, `صح. الـ Push بيضيف عنصر جديد عند الـ top.`, `ده مش اسم operation في الـ stack.`, `الـ Pop بيشيل.`],
+    [`غلط. الـ FIFO ده قاعدة الـ queue.`, `صح. الـ stack بيمشي بـ LIFO (FILO).`],
+    [`غلط. الـ push بيضيف.`, `صح. الـ push() بتضيف؛ والـ pop() بتمسح.`],
+    [`صح. الـ First-In-Last-Out هي نفس قاعدة الـ LIFO.`, `غلط. الـ FILO والـ LIFO بيوصفوا نفس الترتيب.`],
+    [`الـ pop بتشيل عنصر.`, `صح (الإجابة النموذجية الرسمية).`, `الـ get بتعرض الـ top من غير ما تغير الـ stack.`, `الـ count بترجع عدد العناصر.`],
+    [`الـ push بتضيف.`, `الـ search بتدوّر على عنصر بس.`, `صح (الإجابة النموذجية الرسمية B).`, `الـ display بتطبع بس.`],
+    [`صح (الإجابة النموذجية A): آخر واحد يدخل أول واحد يطلع.`, `غلط. الـ LIFO هي بالظبط قاعدة الـ stack.`],
+    [`غلط. الـ FIFO ده الـ queue.`, `صح. الإجابة النموذجية بتصححها لـ FILO (= LIFO).`],
+    [`صح (الإجابة النموذجية B). الاتنين بيحصلوا عند الـ top.`, `غلط. الـ operations الاتنين بيحصلوا عند نفس الطرف، اللي هو الـ top.`],
+    [`عدّ تاني: بعد العمليات دي فيه أربع عناصر متخزنة.`, `صح. العناصر 1,3,4,5 قاعدين في indices من 0 لـ 3، فـ top = 3 (والـ stack بقى مليان).`, `الـ top عمره ما يعدّي MAXSIZE-1 = 3.`, `الـ stack مش فاضي.`]
+  ],
+  extra: [
+    [`الـ top عمره ما يعدّي MAXSIZE-1 = 3.`, `بعد الـ pop فيه 3 عناصر (10, 20, 40)، فالـ 50 بيدخل كعنصر رابع عادي.`, `صح. بعد الـ 50 الـ stack بيتملي (top = 3)، فالـ 60 بيعمل overflow.`, `الـ stack فيه 3 عناصر وقت ما الـ pop اتنادت.`],
+    [`الـ display بتلف من الـ top نازلة لـ 0، يعني بالعكس.`, `صح. for (j = top; j &gt;= 0; j--) بتطبع بترتيب الـ LIFO.`, `ده ترتيب مش ممكن.`, `ده الـ get()، اللي بتعرض الـ top بس.`],
+    [`ده كان هيبقى FIFO.`, `صح. الـ LIFO بيعكس الـ string (اتجرب بـ g++).`, `ترتيب الـ pop هو عكس ترتيب الـ push.`, `ترتيب الـ pop هو عكس ترتيب الـ push.`],
+    [`الـ indices من 0 لـ 6 يبقوا 7 عناصر.`, `الـ indices من 0 لـ 6 يبقوا 7 عناصر.`, `الـ -1 معناه إن الـ stack فاضي.`, `صح. count() = top + 1.`],
+    [`صح. ده السبب اللي في المحاضرة.`, `الـ Arrays بتبدأ من index 0.`, `الـ full هو top == MAXSIZE-1.`, `الـ pop بترجع -1 في حالة الـ underflow، بس ده مش سبب إن الـ top بيبدأ من -1.`],
+    [`ده مثال stack.`, `ده مثال stack.`, `صح. طابور التذاكر ده FIFO، يعني queue.`, `ده مثال stack.`],
+    [`صح.`, `ده الـ dynamic (linked) implementation.`, `الـ stack بيستخدم الـ top بس.`, `الـ array stack بيعمل overflow لما top == MAXSIZE-1.`],
+    [`الـ 2 اتعمله pop الأول.`, `الـ 9 اتعمله pop تاني.`, `الـ 4 دلوقتي تحت الـ 6.`, `صح. بعد اتنين pop فاضل 4 بس؛ ولما تعمل push لـ 6 يبقى هو الـ top.`],
+    [`الـ search بيمشي من الـ top نازل لـ 0، فالـ temp لازم يقل.`, `صح. temp = temp--; مش بتقلل الـ temp بشكل مضمون، فممكن تلف للأبد (infinite loop).`, `الـ search مينفعش يغيّر الـ top.`, `ده بيبدأ الـ search من الأول كل مرة.`],
+    [`الـ Backtracking بيستخدم stack عشان يرجع في طريق المتاهة.`, `عكس الـ string بيعمل push وpop للحروف.`, `صح.`, `الـ Hashing مش تطبيق للـ stack.`]
+  ]
+};
+
+AR.ds.lectures["3"] = {
+  notes: [
+    { h: `يعني إيه queue؟`, pts: [
+      `الـ queue هو data structure من نوع <b>non-primitive linear</b>، <b>مفتوح من الطرفين</b>، والـ operations فيه بتمشي بترتيب <b>FIFO</b> (First In First Out).`,
+      `كل الـ <b>insertions</b> بتحصل عند طرف واحد، اسمه الـ <b>tail أو rear</b>، وكل الـ <b>deletions</b> بتحصل عند الطرف التاني، اسمه الـ <b>head أو front</b>.`,
+      `زي طابور التذاكر بالظبط: أول واحد في الطابور هو اللي بيخلص الأول.`,
+      `الـ <b>Front (head)</b>: مكان العنصر اللي جاهز يتخدم (أول واحد هيتشال). الـ <b>Rear (tail)</b>: مكان آخر عنصر، يعني أحدث واحد اتضاف.`,
+      `الـ <b>enqueue()</b> بتضيف عند الـ rear؛ والـ <b>dequeue()</b> بتشيل من الـ front. في الأول head = tail = -1.`
+    ] },
+    { h: `الـ linear queue: الـ enqueue والـ dequeue (كود الدكتورة)` },
+    { h: `مشكلة الـ linear queue`, pts: [
+      `في الـ trace اللي في الـ slide (array من 0 لـ 7) الـ rear بيتحرك يمين مع كل insert، والـ front بيتحرك يمين مع كل delete.`,
+      `لما الـ rear يوصل لآخر index (<b>rear == MAX-1</b>) الـ queue بيقول إنه full، <b>حتى لو فيه عناصر اتعملها dequeue</b> والخانات اللي في الأول فاضية ("NO SPACE HERE" في الآخر وفي نفس الوقت فيه "SPACE HERE" في الأول).`,
+      `يعني بعد شوية insertions وdeletions بيبقى فيه <b>مساحة فاضية مش قادر تستخدمها (non-usable)</b>؛ الـ dequeue بيزق الـ front لقدام وبيقلل الحجم اللي ينفع تستخدمه في الـ queue. ضياع الـ memory ده هو <b>السبب اللي محتاجين عشانه الـ circular queue</b>.`
+    ] },
+    { h: `الـ Circular queue`, pts: [
+      `الـ circular queue هو نسخة متطورة من الـ queue العادي، فيها <b>آخر عنصر متوصل بأول عنصر</b>، فبيبقى شكلها زي الدايرة. بيحل أكبر مشكلة في الـ linear queue (المساحة الفاضية اللي مش بتتستخدم).`,
+      `فيه اتنين pointers: الـ <b>head</b> بيتابع أول عنصر، والـ <b>tail</b> بيتابع آخر عنصر. في الأول الاتنين بـ <b>-1</b> (الـ queue فاضي).`,
+      `الـ <b>Enqueue</b>: شيك على الـ full في حالتين: (1) <b>head == 0 &amp;&amp; tail == SIZE-1</b>؛ (2) <b>الـ tail أقل من الـ head بواحد بالظبط</b> (الـ slide كاتبة <code>tail == (head-1) % (MAXSIZE-1)</code>؛ والـ test الـ standard الواحد هو <code>(tail+1) % SIZE == head</code>). لأول عنصر خلي head = 0. زوّد الـ tail بشكل دايري: <code>tail = (tail+1) % SIZE</code>. وخزّن العنصر عند الـ tail.`,
+      `الـ <b>Dequeue</b>: شيك على الـ empty (head == -1). رجّع القيمة اللي عند الـ head. زوّد الـ head بشكل دايري: <code>head = (head+1) % SIZE</code>. ولو ده <b>آخر عنصر</b> (head == tail) رجّع الـ head والـ tail لـ -1.`,
+      `مثال الـ slide: بعد 2 dequeue الـ queues الاتنين الـ front عندهم عند 72 والـ rear عند 24؛ إضافة 100 <b>مش ممكنة في الـ linear queue</b> (الـ rear في الآخر) بس <b>ممكنة في الـ circular queue</b> (الـ rear بيلف لـ index 0).`
+    ] },
+    { h: `الـ linear queue مقابل الـ circular queue` },
+    { h: `الـ enQueue / deQueue في الـ circular queue (كود الدكتورة)` },
+    { h: `trace محلول (امتحان 2022/23، size 5)` }
+  ],
+  cards: [
+    `structure من نوع non-primitive linear مفتوح من الطرفين؛ FIFO.`,
+    `First In First Out: أول عنصر يدخل هو أول عنصر يطلع.`,
+    `عند الـ rear (tail).`,
+    `من الـ front (head).`,
+    `rear == MAX - 1`,
+    `head == -1 || head > tail`,
+    `-1 و -1`,
+    `الخانات اللي فضيت بالـ dequeue مش بتتستخدم تاني؛ الـ rear بيفضل في الآخر فالـ queue يبان كأنه full (ضياع memory).`,
+    `queue آخر مكان فيه متوصل بأول مكان، فبيرجع يستخدم الخانات اللي فضيت.`,
+    `rear = (rear + 1) % MAX_SIZE`,
+    `front == rear == -1`,
+    `front == 0 && rear == MAX-1، أو الـ rear أقل من الـ front بواحد.`,
+    `رجّع الـ front والـ rear لـ -1.`,
+    `عشان نتجنب ضياع الـ memory.`
+  ],
+  qa: [
+    `الـ queue هو data structure من نوع non-primitive linear مفتوح من الطرفين، وبيشتغل بترتيب FIFO. كل الـ insertions بتحصل عند طرف واحد (tail/rear) وكل الـ deletions عند الطرف التاني (head/front). الـ front هو مكان العنصر الجاهز يتخدم؛ والـ rear هو مكان أحدث عنصر اتضاف.`,
+    `في الـ linear queue، الـ dequeue بيزق الـ front لقدام، ولما الـ rear يوصل MAX-1 مش هتقدر تعمل enqueue لأي عنصر حتى لو الخانات اللي في الأول فاضية، فالمساحة بتضيع. الـ circular queue بيوصّل آخر مكان بأول مكان: rear = (rear+1) % MAX بيلف لـ index 0 ويرجع يستخدم الخانات اللي فضيت.`,
+    `bool isFull(int tail){ if (tail == maxsize-1) return true; else return false; }<br>void enqueue(int item){ if (isFull(tail)) { cout&lt;&lt;"Queue is full"; return; } else { if (head == -1) head = 0; tail = tail+1; queue[tail] = item; } }<br>الفكرة: لو مليان اطبع رسالة، غير كده لو ده أول عنصر خلي head = 0، وزوّد الـ tail وخزّن.`,
+    `bool isEmpty(int head){ if (head == -1 || head &gt; tail) return true; else return false; }<br>int dequeue(){ int element; if (isEmpty(head)) { cout&lt;&lt;"Queue Underflow"; return -1; } else { element = queue[head]; head++; } return element; }<br>الفكرة: لو فاضي اطبع underflow، غير كده خد العنصر اللي عند الـ head وزوّد الـ head.`,
+    `الـ Enqueue: شيك على الـ full (head == 0 وtail == SIZE-1، أو الـ tail أقل من الـ head بواحد)؛ لأول عنصر خلي head = 0؛ زوّد الـ tail بواحد بشكل دايري (لو وصل للآخر يرجع 0)؛ وخزّن العنصر عند الـ tail. الـ Dequeue: شيك على الـ empty (head == -1)؛ خد القيمة اللي عند الـ head؛ لو كان آخر عنصر (head == tail) رجّع الـ head والـ tail لـ -1، غير كده زوّد الـ head بواحد بشكل دايري.`,
+    `الـ Linear: خط مستقيم، بيبقى full لما rear == MAX-1، الخانات اللي فضيت بتضيع، وrear = rear+1. الـ Circular: آخر خانة متوصلة بأول خانة، بيبقى full لما front == 0 وrear == MAX-1 أو الـ rear ورا الـ front بواحد، الخانات اللي فضيت بترجع تتستخدم، وrear = (rear+1) % MAX، وبيرجع لـ -1 لما آخر عنصر يتشال.`
+  ],
+  quiz: [
+    [`ده test الـ full بتاع الـ circular queue.`, `في كود المحاضرة front > rear معناها empty، مش full.`, `صح. الـ isFull بتشيك على tail == maxsize-1.`, `ده معناه إن فيه عنصر واحد بالظبط.`],
+    [`صح. الـ linear queue مش بيقدر يرجع يستخدم الخانات اللي فضيت بالـ dequeue.`, `ده الـ priority queue.`, `الـ linear والـ circular الاتنين بيمشوا بـ FIFO، فده مش السبب.`, `الاختيار a هو السبب.`],
+    [`front = rear = 0 معناها فيه عنصر واحد عند index 0.`, `ده مش الـ test بتاع المحاضرة.`, `صح. المحاضرة بتبدأ الاتنين وبترجعهم لـ -1؛ والـ isEmpty بتشيك على front == -1.`, `الاختيار c هو الصح.`],
+    [`غلط. ناقصها حالة اللفّة (wrapped).`, `صح. الـ queue بيبقى full كمان لما الـ rear يبقى أقل من الـ front بواحد (الـ rear لف).`],
+    [`صح. الـ enqueue بتعمل tail = tail + 1 (بشكل دايري في الـ circular queue).`, `غلط. الإضافة بتزق الـ rear لقدام.`],
+    [`الـ stack بيضيف ويمسح من طرف واحد بس.`, `صح (الإجابة المتوقعة). المحاضرة بتقول إن الـ queue "open at both ends": إضافة عند الـ rear ومسح عند الـ front. بالدقة، الإضافة والمسح من الطرفين الاتنين ده الـ deque، وهو مش موجود في الاختيارات.`, `الـ linked list يقدر يضيف/يمسح في أي مكان، بس السؤال قاصد تعريف الـ queue "both ends".`, `الـ array مالوش أطراف للـ insert/delete.`],
+    [`غلط. بيختلفوا في طريقة تقدّم الـ indices وإعادة استخدام المساحة.`, `صح. الـ circular queue بيوصّل آخر مكان بأول مكان وبيرجع يستخدم الخانات اللي فضيت.`],
+    [`صح.`, `غلط. الإضافة دايمًا عند الـ rear.`],
+    [`صح.`, `غلط. المسح دايمًا من الـ front.`],
+    [`الإضافة هي اللي بتحصل عند الـ rear.`, `صح (الإجابة النموذجية الرسمية).`, `الـ Queues مش بتمسح من النص.`, `الـ Top ده بتاع الـ stacks.`],
+    [`الـ Front هو المكان اللي العناصر بتخرج منه.`, `الـ Top ده مصطلح stack.`, `صح (الإجابة النموذجية الرسمية B).`, `الـ Head = front.`],
+    [`غلط. ده وصف الـ stack.`, `صح. الإجابة النموذجية: الإضافة عند الـ rear والمسح عند الـ front.`],
+    [`اتنين dequeue بيزقوا الـ head لقدام مرتين.`, `صح. فاضل 30 بس عند index 2.`, `الـ queue لسه مش فاضي.`, `ده بعد dequeue واحدة بس.`]
+  ],
+  extra: [
+    [`الـ linear queue عمره ما بيلف.`, `index 5 برة الـ range لـ size 5.`, `صح. "Queue is full" لأن tail == maxsize-1 رغم إن indices 0 و1 فاضيين. ودي بالظبط مشكلة الـ linear queue.`, `الـ Underflow ده للـ dequeue من queue فاضي.`],
+    [`صح. rear = (4 + 1) % 5 = 0، خانة فضيت بالـ dequeue.`, `الـ indices من 0 لـ 4.`, `خانتين فضيوا، فالـ circular queue مش full.`, `الـ front عند 2؛ والـ rear بيلف لـ 0.`],
+    [`head == tail معناها عنصر واحد بالظبط.`, `صح (الـ isEmpty بتاعة المحاضرة).`, `ده الـ full.`, `الـ variables غلط.`],
+    [`ده لباقي العناصر.`, `العنصر بيتشال عادي.`, `دي مش قاعدة المحاضرة.`, `صح. آخر عنصر اتشال، فالـ queue بقى فاضي.`],
+    [`index 4 مش موجود؛ بيلف.`, `صح. (3 + 1) % 4 = 0.`, `الـ rear لازم يتقدم.`, `بياخد خطوة واحدة بس.`],
+    [`ده queue، والـ queue مش full بجد أصلًا.`, `فيه عناصر في الـ queue.`, `صح. الـ circular queue بيحلها.`, `الـ Collision ده مصطلح hashing.`],
+    [`صح. الـ head اتحرك من 0 لـ 1 بعد dequeue واحدة؛ والـ tail راح 0، 1، 2، 3.`, `الـ dequeue حرّكت الـ head لـ 1.`, `آخر enqueue حرّكت الـ tail لـ 3.`, `حصل 4 enqueues بس (tail من 0 لـ 3).`],
+    [`ده لوحده شرط الـ linear queue.`, `ده معناه empty.`, `ده معناه عنصر واحد.`, `صح. بيغطي حالتين المحاضرة (front 0 / rear MAX-1، والـ rear ورا الـ front على طول).`],
+    [`الـ rear بتاع الـ linear queue في الآخر.`, `صح.`, `العكس هو الصح.`, `الـ circular queue بيلف.`],
+    [`الـ 8 اتشال بأول dequeue؛ والـ 8 اللي اتضاف تاني موجود عند الـ rear.`, `الـ 5 لسه ورا الـ 3.`, `صح. FIFO: الأول 8 بيخرج، وبعدين الـ 3 يبقى عند الـ front.`, `فيه عناصر لسه موجودة.`]
+  ]
+};
+
+AR.ds.lectures["4"] = {
+  notes: [
+    { h: `يعني إيه pointer؟`, pts: [
+      `الـ <b>pointer هو data type</b>؛ تقدر تعمل variables من النوع ده زي أي type تاني. الـ pointer variable <b>جواه memory address</b> و<b>بيشاور على data type معين</b>.`,
+      `تعريف الـ Lab: الـ <b>pointer variable</b> هو variable المحتوى بتاعه <b>address</b> (عنوان في الـ memory).`,
+      `مثال: <code>int x; int *pointer1 = &amp;x;</code> الـ pointer1 شايل الـ address بتاع x (مثلًا 0x2000)، مش القيمة بتاعته.`
+    ] },
+    { h: `الـ operations على الـ pointers` },
+    { h: `الـ pointers كـ function arguments: الـ fakeSwap مقابل الـ trueSwap` },
+    { h: `ليه الـ fakeSwap مش بتشتغل (memory trace من الـ slides)` },
+    { h: `Lab: برنامج pointers` },
+    { h: `الـ dynamic arrays والـ memory segments (Lab)`, pts: [
+      `الـ array العادي لازم الـ size بتاعه يبقى <b>constant expression</b> متحدد وقت الـ design. الـ <code>new</code> بتحجز memory <b>وقت الـ run time</b> وتقدر تستخدم أي قيمة variable كـ size: <code>int *arr; cin&gt;&gt;size; arr = new int[size]; ... delete[] arr;</code>`,
+      `الـ <code>new</code> بتحجز الـ memory اللي الـ object/array محتاجها، والـ pointer بيخزن الـ address بتاع الـ block ده.`,
+      `كل برنامج ليه تلات memory segments: الـ <b>code segment</b> (الـ machine code بعد الـ compile)، الـ <b>stack segment</b> (الـ local/temporary variables)، والـ <b>heap segment</b> (الـ dynamic memory allocation بالـ new).`,
+      `الـ linked lists والـ linked stacks والـ linked queues بيستخدموا <b>dynamic</b> memory allocation: كل node بتتعمل بـ <code>new</code> وقت الـ run time.`
+    ] }
+  ],
+  cards: [
+    `data type الـ variables بتاعته جواها memory address وبتشاور على data type معين.`,
+    `الـ address بتاع x.`,
+    `القيمة المتخزنة عند الـ address اللي في p (dereference).`,
+    `هي هي (*p).member.`,
+    `x وy مش بيتغيروا (الـ pass by value بيبدّل النسخ بس).`,
+    `x وy بيتبدلوا (الـ pointers بتخلي الـ function تغيّر الأصل).`,
+    `بتحجز memory وقت الـ run time (في الـ heap) وبترجع الـ address بتاعها.`,
+    `بتفضّي dynamic array اتحجز بـ new[].`,
+    `الـ Code segment، الـ stack segment (الـ local variables)، الـ heap segment (الـ dynamic allocation).`,
+    `العادي: constant وقت الـ design. الـ Dynamic: أي قيمة وقت الـ run time.`,
+    `24`,
+    `في الـ stack segment.`
+  ],
+  qa: [
+    `الـ pointer هو data type الـ variables بتاعته شايلة memory address لـ variable من type معين. &amp;x بتدّيك الـ address بتاع x؛ و*p بتوصلك للقيمة اللي عند الـ address اللي في p. مثال: int x = 5, *ptr; ptr = &amp;x; *ptr = 24; دلوقتي x بقت 24 لأن ptr بيشاور على x.`,
+    `الـ fakeSwap(int a, int b) بتاخد نسخ (copies) من x وy في أماكن جديدة في الـ memory؛ فلما تبدّل a وb مش بتلمس x وy خالص. الـ trueSwap(int* a, int* b) بتاخد الـ addresses بتاعة x وy، فـ *a و*b هما x وy نفسهم؛ tmp = *a; *a = *b; *b = tmp; بتبدّل الأصل (x = 2، y = 1).`,
+    `الـ array العادي لازم الـ size بتاعه يبقى constant expression بيتحدد وقت الـ design، وبيتخزن في الـ stack segment (لو local). الـ dynamic array بيتحجز بـ new وقت الـ run time بأي size من variable (في الـ heap segment)، وبنوصله عن طريق pointer، ولازم يتفضّى بـ delete[].`,
+    `الـ Code segment: الـ machine code بعد الـ compile. الـ Stack segment: الـ local/temporary variables. الـ Heap segment: الـ memory اللي بتتحجز dynamic (new/delete).`
+  ],
+  quiz: [
+    [`الـ Static allocation بيثبّت الحجم وقت الـ compile (زي الـ arrays).`, `صح. كل node بتتعمل بـ new وقت الـ run time.`, `الـ allocation وقت الـ compile ده static.`, `الـ nodes فعلًا بتتخزن في الـ heap، بس نوع الـ allocation المطلوب هو dynamic.`],
+    [`الـ *ptr = 24 بتكتب في x عن طريق الـ pointer.`, `صح. ptr بيشاور على x، فـ *ptr = 24 بتغيّر x.`, `الـ ptr هو اللي شايل الـ address؛ إنما x شايل قيمة.`, `مفيش أي جمع حصل.`],
+    [`ده ناتج trueSwap(&x, &y).`, `صح. الـ pass by value بيبدّل النسخ a وb بس.`, `مفيش أي assignment حصل لـ x أو y.`, `الكود صح ومفيهوش errors.`],
+    [`من غير أقواس الـ . بتتنفذ الأول: *(p.price)، وده غلط.`, `صح. الـ arrow operator بيعمل dereference وبعدين يختار الـ member.`, `الـ & بتجيب address.`, `الـ p ده pointer؛ والـ dot محتاجة object.`],
+    [`ده فيه الـ machine code.`, `ده فيه الـ local/temporary variables.`, `صح. الـ dynamic memory بتيجي من الـ heap.`, `ده مش واحد من الـ segments اللي في الـ lab.`],
+    [`الـ arrays اللي اتحجزت بـ new[] بنستخدم معاها delete[].`, `ده مش syntax صح في C++.`, `صح (زي Lab 3).`, `ده بيضيّع الـ address من غير ما يفضّي الـ memory (memory leak).`]
+  ],
+  extra: [
+    [`بعد q = p، الـ q بقى بيشاور على a، مش b.`, `صح. *p = 7 + 1 بتخلي a = 8؛ والـ q دلوقتي بيشاور على a؛ *q = 2 · 8 = 16. والـ b ماتغيرش (اتجرب بـ g++).`, `الـ a بيتغير عن طريق p.`, `آخر جملة بتضاعف a.`],
+    [`الـ * بتعمل dereference لـ pointer.`, `ده مش expression صح.`, `صح.`, `الـ -> بتوصل لـ member عن طريق pointer.`],
+    [`صح. الـ pass by value بيدّي الـ function variables خاصة بيها.`, `الـ tmp بياخد قيمة قبل ما يتستخدم.`, `حتى لو رجّعت قيمة مش هتغيّر x وy برضه.`, `دول ints عادية.`],
+    [`محتاجة addresses، مش values.`, `الـ x وy مش pointers.`, `الاتنين arguments لازم يبقوا addresses.`, `صح.`],
+    [`ده *ptr.`, `صح. الـ ptr شايل &x.`, `ده &ptr.`, `الـ 24 بيتحط بعدين عن طريق *ptr.`],
+    [`الاتنين بيتعملهم index بنفس الطريقة.`, `الاتنين بيخزنوا ints.`, `صح (Lab 3).`, `بيتفضّى بـ delete[].`],
+    [`صح.`, `الـ heap فيه الـ dynamic allocations.`, `الـ code segment فيه الـ machine code.`, `ده مش واحد من التلات segments.`],
+    [`الـ ptr ده pointer؛ والـ dot محتاجة object.`, `دي بتتفهم كـ *(ptr.w).`, `الـ & بتجيب address؛ ومينفعش تعمله assign.`, `صح. هي هي (*ptr).w = 5.`],
+    [`صح (تعريف الـ lab).`, `هو شايل address لأي type.`, `هو variable، مش function.`, `الـ pointer الواحد بيشيل address واحد.`],
+    [`الـ 1 دي قيمة x، اللي هي *a.`, `الـ 0x2038 ده المكان اللي a نفسه متخزن فيه.`, `صح.`, `ده الـ address بتاع y، واللي شايله هو b.`]
+  ]
+};
+
+AR.ds.lectures["5"] = {
+  notes: [
+    { h: `يعني إيه linked list؟`, pts: [
+      `data structure من نوع <b>linear</b> بيخزن مجموعة عناصر بشكل <b>dynamic</b>. هو سلسلة <b>nodes</b> متوصلة ببعض؛ كل node بتخزن الـ <b>data</b> والـ <b>address بتاع الـ node اللي بعدها</b>.`,
+      `كل node فيها field-ين: الـ <b>data</b> والـ <b>pointer (next)</b> اللي بيشاور على الـ node اللي بعدها. <b>آخر node فيها NULL</b> في الـ field التاني لأنها مش بتشاور على أي node.`,
+      `بنوصل للـ list عن طريق الـ <b>head</b>، اللي بيشاور على أول node؛ وآخر node (اللي بتشاور على NULL) اسمها الـ <b>tail</b>. الـ linked list تقدر <b>تكبر وتصغر</b> حسب الحاجة.`,
+      `العناصر <b>متفرقة عشوائي في الـ memory</b> (مش ورا بعض contiguous). وسهل تضيف أو تمسح عنصر: بس غيّر الـ links.`
+    ] },
+    { h: `أنواع الـ linked lists` },
+    { h: `المميزات والعيوب`, pts: [
+      `<b>المميزات</b>: (1) <b>Dynamic size</b>: بتكبر/تصغر لأن الـ memory بتتحجز وقت الـ run time. (2) الـ <b>Insertion والـ deletion</b> efficient، خصوصًا في الـ lists الكبيرة. (3) <b>Flexibility</b>: سهل تعيد ترتيبها من غير ما تحتاج block متصل من الـ memory.`,
+      `<b>العيوب</b>: (1) <b>Linear access</b>: مفيش access مباشر بالـ index؛ لازم تعمل traversal عشان توصل لـ node. (2) <b>memory زيادة</b> عشان تخزن الـ pointers.`,
+      `الـ Operations: <b>insertion</b> (في الأول، في الآخر، في أي مكان)، <b>deletion</b> (من الأول، من الآخر، من أي مكان)، <b>searching</b> (تمشي من الـ head لحد ما تلاقيه أو توصل للآخر).`
+    ] },
+    { h: `الـ classes بتاعة Node وLinkedlist، والـ isEmpty والـ isFull` },
+    { h: `الإضافة في الأول وفي الآخر (كود الدكتورة)` },
+    { h: `الإضافة بالترتيب (sorted list)`, pts: [
+      `الخطوات: (1) حدد الـ node اللي <b>قبل</b> مكان الإضافة (current بيشاور عليها)؛ (2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة (<code>newnode-&gt;next = current-&gt;next</code>)؛ (3) خلي current تشاور على الـ new node (<code>current-&gt;next = newnode</code>). خلي بالك ترتيب خطوة 2 و3 مهم: لو عملت 3 الأول هتضيّع باقي الـ list.`,
+      `الـ loop بتاع <code>insertsorted</code> في الـ slide هو <code>while ((temp1-&gt;data &gt; item &amp;&amp; temp1-&gt;next-&gt;data &gt; item) || (temp1-&gt;data &lt; item &amp;&amp; temp1-&gt;next-&gt;data &lt; item) &amp;&amp; temp1!=NULL)</code>. اتجرب بـ g++: بيشتغل مع قيمة <b>بين</b> اتنين nodes (10,20,30 + 25 ← 10 20 25 30) بس <b>بيعمل crash</b> مع قيمة أصغر من الـ head أو أكبر من آخر node (الـ temp1-&gt;next بيبقى NULL).`,
+      `في الامتحان اكتب النسخة الآمنة اللي تحت: بتتعامل مع الـ list الفاضية، ومع قيمة جديدة أصغر من الكل، ومع قيمة جديدة أكبر من الكل.`
+    ] },
+    { h: `الـ insertsorted الآمنة (اتجربت بـ g++)` },
+    { h: `مسح أول node، وآخر node، وعنصر معين (كود الدكتورة)` },
+    { h: `الـ search والـ count والـ get والـ update (كود الدكتورة)` },
+    { h: `Lab 5: list مبنية على struct والإضافة في position معين` }
+  ],
+  cards: [
+    `structure من نوع linear مكوّن من nodes متخزنة dynamic؛ كل node شايلة data والـ address بتاع الـ node اللي بعدها.`,
+    `الـ data والـ next (pointer للـ node اللي بعدها).`,
+    `NULL، لأنها مش بتشاور على أي node.`,
+    `pointer بيشاور على أول node في الـ list.`,
+    `لقدام بس (forward).`,
+    `الـ nodes فيها next وprev؛ تمشي في الاتجاهين؛ وفيه memory زيادة للـ prev.`,
+    `آخر node بتشاور تاني على الـ head node.`,
+    `Dynamic size، insertion/deletion efficient، flexibility (مش محتاجة memory متصلة).`,
+    `Linear access (مفيش index) وmemory زيادة للـ pointers.`,
+    `newnode->next = head; head = newnode;`,
+    `روح لآخر node؛ last->next = newnode؛ newnode->next = NULL.`,
+    `temp = head; head = head->next; delete temp;`,
+    `previous->next = current->next; delete current;`,
+    `بترجع true بس لو الـ new فشلت تحجز memory (رجعت NULL).`,
+    `امشي من الـ head لحد NULL وزوّد counter.`,
+    `الأول newnode->next = current->next، وبعدين current->next = newnode.`
+  ],
+  qa: [
+    `الـ linked list هو data structure من نوع linear بيخزن مجموعة data elements بشكل dynamic كسلسلة nodes متوصلة ببعض. كل node فيها data field (القيمة) وnext pointer بيخزن الـ address بتاع الـ node اللي بعدها. الـ head بيشاور على أول node؛ وآخر node (الـ tail) فيها NULL في الـ next. وتقدر تكبر وتصغر حسب الحاجة.`,
+    `الـ Singly linked list: كل node بتشاور على اللي بعدها؛ تمشي لقدام بس. الـ Doubly linked list: كل node بتشاور على next وprevious؛ تمشي في الاتجاهين بس بـ memory زيادة. الـ Circular linked list: آخر node بتشاور تاني على الـ head؛ وممكن تبقى singly أو doubly.`,
+    `المميزات: dynamic size (الحجز وقت الـ run time)، insertion وdeletion efficient، وflexibility من غير ما تحتاج memory متصلة. العيوب: linear access (لازم تعمل traverse، مفيش index) وmemory زيادة للـ pointers.`,
+    `1) حدد الـ node اللي قبل مكان الإضافة (current). 2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة: newnode->next = current->next. 3) خلي current تشاور على الـ new node: current->next = newnode. حالات خاصة: الـ list فاضية أو القيمة أصغر من الـ head، وساعتها الـ new node بتبقى هي الـ head.`,
+    `امشي في الـ list لحد ما current يشاور على الـ node اللي عايز تمسحها وprevious يشاور على اللي قبلها؛ هات الـ node اللي بعد current (current->next)؛ خلي previous يشاور عليها (previous->next = current->next)؛ وبعدين اعمل delete لـ current.`,
+    `class Node{ public: int data; Node *next; Node(){ data=0; next=NULL; } };<br>class Linkedlist{ public: Node *head; Linkedlist(){ head=NULL; } bool isEmpty(){ return head==NULL; }<br>void insertatend(int item){ Node *newnode=new Node(); newnode->data=item; newnode->next=NULL; if(isEmpty()){ head=newnode; return; } Node *temp1=head; while(temp1->next!=NULL) temp1=temp1->next; temp1->next=newnode; } };<br>main: Linkedlist list; list.insertatend(7); list.insertatend(5);<br>الفكرة: الـ insertatend لو الـ list فاضية بتخلي الـ head هو الـ node الجديدة، غير كده بتمشي لآخر node وتوصّل الجديدة بعدها، فيطلع head ← 7 ← 5 ← NULL.`
+  ],
+  quiz: [
+    [`صح. دي جملة المحاضرة بالظبط.`, `غلط. الـ next بتاع آخر node بيبقى NULL.`],
+    [`صح. كل node عارفة الـ node اللي بعدها بس.`, `غلط. إنك ترجع لورا محتاج prev pointers (doubly linked list).`],
+    [`صح.`, `غلط. ده تعريف الـ circular linked list بالظبط.`],
+    [`غلط. شوف الأسباب في اختيار False.`, `صح. الـ next لازم يبقى pointer (Node *next;)، والـ members لازم يتفصلوا بـ ;، والـ class محتاج ; في الآخر (ومحتاج public: عشان تستخدمه من برة).`],
+    [`ده عيب الـ array.`, `صح (الإجابة النموذجية الرسمية B).`, `الإضافة في الأول سريعة.`, `الـ Linked lists بتكبر dynamic.`],
+    [`ترتيب غلط: الـ newnode->next هيشاور على نفسه والـ list هتضيع.`, `صح. اربط بأول node القديمة، وبعدين حرّك الـ head.`, `ده بيرمي الـ list القديمة.`, `ده بيحط الـ new node تانية ويضيّع الـ node اللي كانت تانية.`],
+    [`صح. 10 ← 10,30 ← 5,10,30 ← إضافة 20 في position 2 ← 5,20,10,30.`, `الـ InsertAt مش بترتب؛ بتضيف في position 2.`, `الـ InsertB(5) بتحط 5 في الأول.`, `الـ position 2 هو بعد أول node.`],
+    [`ده آخر قيمة، مش العدد.`, `صح. تلات nodes قبل الـ NULL.`, `الـ NULL مش node.`, `ده المجموع.`],
+    [`ده constant time في الـ linked list.`, `صح. الـ Linked lists فيها linear access؛ لازم تعمل traverse.`, `ده constant time في الـ linked list.`, `الـ Linked lists بتكبر بسهولة.`]
+  ],
+  extra: [
+    [`الـ 9 اتضاف في الآخر والـ 7 اتمسح من الأول.`, `صح. 3 ← 7,3 ← 7,3,9 ← امسح 7 ← 3,9.`, `الـ deletefrombeginning بتشيل الـ 7.`, `الـ insertatbeginning(7) بتحط 7 قبل 3.`],
+    [`temp1 = head بيبقى NULL، فـ temp1->next بتعمل crash.`, `دي void function.`, `صح. ضيف check بـ isEmpty() يخلي head = newnode.`, `مفيش branch زي ده.`],
+    [`الـ newnode->next هيشاور على نفسه وباقي الـ list هيضيع.`, `ده بيعمل loop بين الاتنين nodes.`, `صح. اربط الـ new node بالـ node اللي بعدها الأول.`, `ده مش إضافة بعد current.`],
+    [`صح.`, `الـ count() هي اللي بتعمل كده.`, `هي مش بتتضاف.`, `الـ Linked lists مالهاش حجم ثابت.`],
+    [`دول pointers بيتحركوا.`, `صح. الـ temp2 ماشي ورا الـ temp1 بـ node واحدة عشان نقدر نعيد الربط.`, `ده الـ update().`, `هي list واحدة.`],
+    [`الـ update بترجع true بعد أول match.`, `بتغير أول match، مش آخر واحد.`, `الـ 2 مش بيساوي 4.`, `صح. أول node فيها 4 بس هي اللي بتتعدل.`],
+    [`دي ميزة.`, `صح. الـ Linked lists فيها linear access؛ ودي ميزة الـ array.`, `دي ميزة.`, `دي ميزة الـ flexibility.`],
+    [`بس لو الـ list فيها اتنين nodes.`, `الـ temp1 هو اللي بيشاور على آخر node.`, `بيبقى NULL بس لو الـ list فيها node واحدة.`, `صح. وبعدين temp2->next = NULL بيخليها آخر node الجديدة.`],
+    [`صح. الـ p بيتحرك لـ position 2 (node الـ 10)، وبعدين الـ 20 بيتربط بعدها.`, `ده InsertAt(20, 2).`, `ده position 1.`, `ده position 4.`],
+    [`الـ loop بيشيك على temp != NULL.`, `بترجع false.`, `صح.`, `بترجع bool.`]
+  ]
+};
+
+AR.ds.lectures["6"] = {
+  notes: [
+    { h: `مراجعة الـ stack والـ linked stack`, pts: [
+      `الـ stack هو data structure من نوع linear بيمشي بـ <b>Last In First Out</b> عند نقطة واحدة (الـ <b>top</b>). ليه implementation-ين: <b>static</b> (array) و<b>dynamic</b> (linked list).`,
+      `أكبر مشكلة في الـ array stack: بيشتغل مع <b>عدد ثابت</b> من القيم بس، ولازم يتحدد من الأول.`,
+      `الـ linked stack بيشتغل مع <b>عدد مش محدود</b> من القيم (size متغير)؛ ومش محتاج تحدد الحجم من الأول.`,
+      `كل عنصر جديد بيتضاف كـ <b>top</b> (الـ top بيشاور عليه). وعشان تشيل، امسح الـ node اللي الـ top بيشاور عليها و<b>حرّك الـ top للـ node اللي بعدها</b>.`,
+      `الرسمة: العناصر اتضافت بالترتيب 25، 32، 50، 99 ← top ← 99 ← 50 ← 32 ← 25 ← NULL. آخر واحد اتضاف = 99، وأول واحد اتضاف = 25.`,
+      `محتاج <b>pointer واحد بس (top)</b> وlist واحدة؛ الـ push = إضافة في الأول، والـ pop = مسح من الأول.`
+    ] },
+    { h: `خطوات الـ creation والـ push والـ pop`, pts: [
+      `الـ <b>Creation</b>: Step 1: عرّف Node class فيها الـ members دول data وnext. Step 2: عرّف Node pointer <b>top = NULL</b>. Step 3: الـ main بتعرض menu وبتنادي الـ functions.`,
+      `الـ <b>Push</b>: (1) اعمل newNode بالقيمة؛ (2) شيك الـ stack فاضي ولا لأ (top == NULL)؛ (3) لو فاضي، newNode→next = NULL؛ (4) لو مش فاضي، newNode→next = top؛ (5) وفي الآخر top = newNode.`,
+      `الـ <b>Pop</b>: (1) شيك فاضي ولا لأ (top == NULL)؛ (2) لو فاضي، اخرج من الـ function؛ (3) لو لأ، عرّف Node pointer temp = top؛ (4) top = top→next؛ (5) delete temp.`,
+      `الـ <b>Display</b>: لو فاضي اطبع "Stack is Empty"؛ غير كده temp = top، اطبع temp→data واتحرك للـ next لحد أول node اتضافت؛ وفي الآخر اطبع "--->NULL".`
+    ] },
+    { h: `الـ class بتاع الـ linked stack (كود الدكتورة)` },
+    { h: `الـ display والـ get والـ count والـ search (كود الدكتورة)` },
+    { h: `شكل سؤال الامتحان: push لـ 50 و70، pop لواحد، وشيل الكل (اتجرب)` },
+    { h: `Lab 7: linked stack مبني على struct` }
+  ],
+  cards: [
+    `stack معمول بـ linked list؛ كل node جديدة بتبقى هي الـ top.`,
+    `الـ array stack بيشتغل مع عدد ثابت من القيم بس.`,
+    `top = NULL`,
+    `top == NULL`,
+    `newnode->next = top; top = newnode;`,
+    `temp = top; top = top->next; delete temp;`,
+    `الإضافة في الأول (insert at beginning).`,
+    `المسح من الأول (delete from beginning).`,
+    `واحد بس: top.`,
+    `99 50 32 25`,
+    `بس لو الـ new فشلت تحجز memory (isFull).`,
+    `عرّف Node (data, next)؛ عرّف top = NULL؛ والـ main menu تنادي الـ functions.`
+  ],
+  qa: [
+    `الـ array stack بيشتغل مع عدد ثابت من القيم بس، ولازم يتحدد من الأول. الـ linked stack بيشتغل مع عدد مش محدود ومتغير من القيم، فمش محتاج تثبّت الحجم؛ والـ memory بتتحجز لكل node وقت الـ run time.`,
+    `1) اعمل newNode بالقيمة المطلوبة. 2) شيك الـ stack فاضي ولا لأ (top == NULL). 3) لو فاضي، خلي newNode->next = NULL. 4) لو مش فاضي، خلي newNode->next = top. 5) خلي top = newNode.`,
+    `1) شيك الـ stack فاضي ولا لأ (top == NULL). 2) لو فاضي، اخرج من الـ function. 3) لو لأ، عرّف Node pointer اسمه temp وخليه = top. 4) خلي top = top->next. 5) اعمل delete لـ temp.`,
+    `class Node{ public: int data; Node *next; Node(){ data=0; next=NULL; } };<br>class Stack{ Node *top; public: Stack(){ top=NULL; } bool isEmpty(){ return top==NULL; } void push(int item){ Node *n=new Node(); n->data=item; n->next=top; top=n; } int pop(){ if(isEmpty()){ cout&lt;&lt;"Empty"; return 0; } Node *temp=top; int value=top->data; top=top->next; delete temp; return value; } };<br>int main(){ Stack s; s.push(10); s.push(20); cout&lt;&lt;s.pop(); }  // prints 20<br>الفكرة: الـ pop بتشيك الأول لو فاضي، وبعدين تحفظ قيمة الـ top وتحرّك الـ top للي بعده وتعمل delete للقديمة؛ فالـ main بتطبع 20 لأنه آخر واحد اتعمله push.`,
+    `void removeAll(){ while(top != NULL){ Node *temp = top; top = top->next; delete temp; } }  (أو: while(!isEmpty()) pop();)<br>يعني طول ما الـ stack مش فاضي، شيل الـ top وفضّي الـ memory بتاعته.`
+  ],
+  quiz: [
+    [`غلط. list واحدة بـ pointer واحد (top) كفاية.`, `صح. الـ linked stack هو singly linked list واحدة والـ push/pop بيحصلوا عند الـ top (أول الـ list).`],
+    [`الـ front ده بتاع الـ queue.`, `الـ rear ده بتاع الـ queue.`, `صح. top = newnode بعد ما تربط newnode->next = top.`, `الـ Stacks في المحاضرة singly linked.`],
+    [`ده ترتيب الإضافة (الـ queue هو اللي هيطبع كده).`, `صح. الـ Display بيبدأ من الـ top، اللي هو آخر node اتعملها push.`, `ترتيب متلخبط زي ده مش ممكن.`, `ترتيب متلخبط زي ده مش ممكن.`],
+    [`ده بتاع الـ array stack.`, `صح.`, `ده معناه عنصر واحد.`, `ده شرط queue.`],
+    [`الـ Array stacks ينفع تتعرض عادي.`, `صح (lecture 6).`, `الـ Stacks بتمشي بـ LIFO في الاتنين implementations.`, `هو محتاج top بس.`],
+    [`الـ top هيقرا من memory اتمسحت.`, `صح. حرّك الـ top الأول، وبعدين فضّي الـ top القديم عن طريق temp.`, `ده بيضيّع باقي الـ stack.`, `الـ top هيشاور على memory اتفضّت.`]
+  ],
+  extra: [
+    [`الـ display بيبدأ من الـ top.`, `صح. الـ 3 اتعملها pop؛ والـ 4 هي الـ top الجديدة.`, `الـ 3 اتشالت.`, `الـ 4 اتعملها push في الآخر، فهي اللي فوق.`],
+    [`الـ array stack هو اللي بيرجع -1؛ الـ linked stack بيرجع 0.`, `هي بترجع int.`, `صح.`, `مفيش قيمة بتتحفظ.`],
+    [`صح. وبعدين top = newNode.`, `الـ top بيبقى NULL؛ ده هيعمل crash.`, `الـ top بيبقى NULL.`, `الـ top بيبقى newNode.`],
+    [`node واحدة اتشالت.`, `فاضل اتنين nodes.`, `فاضل اتنين nodes.`, `صح.`],
+    [`الـ 25 هي الـ node اللي تحت خالص.`, `صح. بيبدأ من الـ top (99) ويلاقي الـ 25 عند الـ node الرابعة.`, `الـ 25 هي الـ node الرابعة.`, `فيه أربع nodes بس.`],
+    [`مالوش حجم ثابت.`, `بتتضاف عند الـ top (أول الـ list).`, `صح.`, `دول بتوع الـ queue.`],
+    [`ده بيضيّع الـ nodes من غير ما يفضّيها (memory leak).`, `صح.`, `بيفضّي node واحدة بس والـ top بيفضل بيشاور على memory مش موجودة (dangling).`, `بيعدّي على الـ nodes بس عمره ما بيفضّيها.`],
+    [`ده الـ pop().`, `بترجع الـ top.`, `ده الـ count().`, `صح.`],
+    [`صح. الـ new node بتبقى أول node (الـ top).`, `ده الـ enqueue بتاع الـ queue.`, `الـ stack مش بيرتب.`, `الـ Push دايمًا بيضيف عند الـ top.`],
+    [`الـ 99 هي الـ top؛ بتشاور على 50.`, `الـ 50 بتشاور على 32.`, `صح. أول node اتعملها push بتبقى تحت خالص وبتشاور على NULL.`, `الـ 32 بتشاور على 25.`]
+  ]
+};
+
+AR.ds.lectures["7"] = {
+  notes: [
+    { h: `مراجعة الـ queue والـ linked queue`, pts: [
+      `الـ queue بيمشي بـ <b>First In First Out</b> عند <b>نقطتين</b>: الـ <b>tail (rear) للإضافة</b>، والـ <b>head (front) للسحب</b>. ليه implementation-ين: static (array) وdynamic (linked list).`,
+      `الـ array queue بيشتغل مع <b>عدد ثابت</b> من القيم بس. الـ linked queue بيشتغل مع عدد <b>مش محدود (متغير)</b>؛ ومفيش حجم ثابت.`,
+      `<b>آخر node اتضافت الـ rear دايمًا بيشاور عليها</b> و<b>أول node الـ front بيشاور عليها</b>.`,
+      `الرسمة: اتضاف 10، 15، 22، 50 ← front ← 10 ← 15 ← 22 ← 50 والـ rear عند 50، و50 ← NULL.`,
+      `الـ <b>Creation</b>: (1) عرّف Node class فيها data وnext؛ (2) عرّف اتنين Node pointers هما <b>front وrear، الاتنين بـ NULL</b>؛ (3) الـ main بتعرض menu وبتنادي الـ functions.`
+    ] },
+    { h: `خطوات الـ enqueue والـ dequeue والـ display`, pts: [
+      `الـ <b>Enqueue</b>: (1) اعمل newNode بالقيمة وخلي newNode→next = NULL؛ (2) شيك الـ queue فاضي ولا لأ (rear == NULL)؛ (3) لو فاضي، خلي <b>front = newNode وrear = newNode</b>؛ (4) لو لأ، خلي <b>rear→next = newNode وrear = newNode</b>.`,
+      `الـ <b>Dequeue</b>: (1) شيك على الـ empty (front == NULL)؛ (2) لو فاضي اعرض "Queue is Empty!!! Deletion is not possible" واخرج؛ (3) غير كده temp = front؛ (4) front = front→next واعمل delete لـ temp.`,
+      `الـ <b>Display</b>: لو فاضي اعرض "Queue is Empty"؛ غير كده temp = front؛ اعرض temp→data واتحرك للـ node اللي بعدها لحد ما temp يوصل للـ rear؛ وفي الآخر اعرض "temp→data ---&gt; NULL".`,
+      `الإضافة بتبقى عند الـ <b>rear (آخر الـ list)</b>؛ والمسح من الـ <b>front (أول الـ list)</b>.`
+    ] },
+    { h: `الـ class بتاع الـ linked queue (كود الدكتورة)` },
+    { h: `الـ display والـ get والـ count والـ search (كود الدكتورة)` },
+    { h: `شكل سؤال الامتحان: إضافة 30 و50، وشيل كل العناصر (اتجرب)` },
+    { h: `Lab 7: الـ dequeue في linked queue مبني على struct` }
+  ],
+  cards: [
+    `queue معمول بـ linked list؛ الإضافة عند الـ rear والمسح عند الـ front.`,
+    `الـ front (head) والـ rear (tail)، والاتنين بـ NULL في الأول.`,
+    `rear->next = newnode; rear = newnode;`,
+    `front = newnode; rear = newnode;`,
+    `temp = front; front = front->next; delete temp;`,
+    `front == NULL (في المحاضرة: front == NULL && rear == NULL)`,
+    `الـ 10 (والـ rear بيشاور على 50).`,
+    `عند الـ rear (آخر الـ list).`,
+    `لازم تخلي rear = NULL كمان (front = rear = NULL).`,
+    `مفيش حجم ثابت؛ بيشتغل مع عدد مش محدود من القيم.`,
+    `من الـ front للـ rear (بترتيب الإضافة).`,
+    `NULL، لأن الـ new node بتبقى آخر node.`
+  ],
+  qa: [
+    `1) اعمل newNode بالقيمة وخلي newNode->next = NULL. 2) شيك الـ queue فاضي ولا لأ (rear == NULL). 3) لو فاضي، خلي front = newNode وrear = newNode. 4) لو مش فاضي، خلي rear->next = newNode وrear = newNode.`,
+    `1) شيك الـ queue فاضي ولا لأ (front == NULL). 2) لو فاضي، اعرض "Queue is Empty!!! Deletion is not possible" واخرج. 3) لو لأ، عرّف temp = front. 4) خلي front = front->next واعمل delete لـ temp (ولو الـ front بقى NULL، خلي rear = NULL).`,
+    `class Node{ public: int data; Node *next; Node(){ data=0; next=NULL; } };<br>class Queue{ Node *front, *rear; public: Queue(){ front=rear=NULL; } bool isEmpty(){ return front==NULL; } void enqueue(int item){ Node *n=new Node(); n->data=item; n->next=NULL; if(isEmpty()){ front=rear=n; } else { rear->next=n; rear=n; } } };<br>int main(){ Queue q; q.enqueue(25); q.enqueue(20); }  // front -> 25 -> 20 &lt;- rear<br>الفكرة: أول enqueue الـ queue فاضي فالـ front والـ rear الاتنين بيشاوروا على 25، والتانية بتتربط بعد الـ rear وتبقى هي الـ rear الجديد.`,
+    `الـ Linked stack: pointer واحد (top)؛ الـ push والـ pop الاتنين في الأول؛ LIFO. الـ Linked queue: اتنين pointers (front وrear)؛ الـ enqueue عند الـ rear (الآخر)، والـ dequeue عند الـ front (الأول)؛ FIFO. والاتنين مالهمش حجم ثابت.`
+  ],
+  quiz: [
+    [`غلط. الإضافة بتبقى عند الـ rear.`, `صح. الـ Enqueue بتضيف عند الـ rear؛ والمسح عند الـ front.`],
+    [`الـ front بيشاور على أول node اتضافت.`, `الـ top ده بتاع الـ stack.`, `صح.`, `الـ head = front.`],
+    [`ده بيضيف عند الـ front (زي push في stack).`, `صح.`, `ترتيب غلط: آخر node القديمة عمرها ما بتتربط والـ newnode بتشاور على نفسها.`, `ده بيحطها تانية ويضيّع nodes.`],
+    [`صح. الـ 10 والـ 15 بيخرجوا الأول (FIFO)، والـ 7 بيدخل عند الـ rear.`, `الـ 7 بيتضاف عند الـ rear، مش الـ front.`, `الـ Dequeue بتشيل من الـ front، يعني 10 و15.`, `الـ queue بيحافظ على ترتيب الإضافة.`],
+    [`ده الـ linked stack.`, `صح.`, `مفيش top.`, `محتاج pointers عشان يوصل للـ nodes.`],
+    [`الـ rear ماتغيرش، فلسه بيشاور على الـ node اللي اتمسحت.`, `صح. خلي rear = NULL لما الـ front يبقى NULL (Lab 7 بيعمل front = rear = NULL).`, `الـ isEmpty بتقارن pointers بس.`, `front = front->next بتخليه NULL.`]
+  ],
+  extra: [
+    [`صح. الـ queue بقى 6، 7، 8؛ والـ front هو 6.`, `الـ 5 اتعملها dequeue.`, `الـ get() بترجع الـ front، مش الـ rear.`, `فاضل تلات nodes.`],
+    [`هي بتبقى آخر node، مش أول واحدة.`, `صح.`, `مفيش حاجة بتتمسح.`, `من غيرها الـ list ممكن يبقى فيها link فيه garbage.`],
+    [`الـ rear بيبقى NULL.`, `الـ front لازم يشاور على الـ new node هو كمان.`, `صح.`, `مفيش top في الـ queue.`],
+    [`ده ترتيب الـ stack.`, `ترتيب مش ممكن.`, `ترتيب مش ممكن.`, `صح. الـ Display بيمشي من الـ front للـ rear.`],
+    [`المسح بيبقى من الـ front.`, `صح (خطوات المحاضرة).`, `الـ Dequeue بتشيك على الـ empty، والـ front لازم يتحرك الأول.`, `الـ front->next هيتقري من memory اتفضّت.`],
+    [`صح.`, `الاتنين FIFO.`, `محتاج front وrear.`, `الـ Linked structures فيها linear access.`],
+    [`لازم الاتنين pointers يرجعوا NULL.`, `الـ singly linked list مينفعش ترجع لورا.`, `صح.`, `مالوش علاقة.`],
+    [`الـ 1 والـ 2 اتعملهم dequeue.`, `الـ 2 اتعملها dequeue هي كمان.`, `الـ 3 اتعملها enqueue بعد كده.`, `صح. بعد اتنين dequeue الـ queue بيبقى فاضي (front = rear = NULL)؛ والـ 3 بتبقى الـ node الوحيدة.`],
+    [`صح.`, `ده الـ linked stack.`, `ده كان هيفضل FIFO بس مش تصميم المحاضرة (المسح من الآخر محتاج traversal).`, `ده الـ sorted list.`],
+    [`الـ 22 مش هي الـ front.`, `بيقف أول ما يلاقي الـ 22.`, `صح. 10، 15، وبعدين 22.`, `الـ 22 هي الـ node التالتة.`]
+  ]
+};
+
+AR.ds.lectures["8"] = {
+  notes: [
+    { h: `الـ singly مقابل الـ doubly linked list`, pts: [
+      `الـ linked list مكوّن من nodes متوصلة ببعض. في الـ <b>singly</b> linked list كل node فيها data وpointer للـ node اللي بعدها بس، فبنمشي في <b>اتجاه واحد</b> (لقدام).`,
+      `الـ node في الـ <b>doubly linked list</b> فيها <b>data</b>، وpointer للـ node اللي <b>بعدها (next)</b>، وpointer للـ node اللي <b>قبلها (previous)</b>، فنقدر نمشي في <b>الاتجاهين</b>، لقدام ولورا.`,
+      `الـ fields بتاعة الـ node: الـ <b>Data</b> (القيمة)، الـ <b>prev</b> (pointer للـ node اللي قبلها)، الـ <b>next</b> (pointer للـ node اللي بعدها). الـ prev بتاع أول node والـ next بتاع آخر node بيبقوا NULL.`,
+      `التمن: memory زيادة للـ prev pointer، وكل insert/delete لازم يعدّل الـ links <b>الاتنين</b> next وprev.`
+    ] },
+    { h: `الـ classes بتاعة الـ Node والـ list (كود الدكتورة)` },
+    { h: `الـ Insertion: في الأول وفي الآخر (كود الدكتورة)` },
+    { h: `الإضافة بالترتيب (نسخة آمنة، اتجربت بـ g++)` },
+    { h: `الـ Deletion (كود الدكتورة)` },
+    { h: `شيل كل العناصر (شكل سؤال الامتحان، اتجرب)` },
+    { h: `Lab 8: list فيها head وtail`, pts: [
+      `الـ lab بيحتفظ بـ <b>اتنين pointers، head وtail</b>، فالـ <code>insertLast</code> مش محتاجة loop: <code>newnode-&gt;prev = tail; tail-&gt;next = newnode; tail = newnode;</code>`,
+      `الـ <code>removeLast</code>: <code>delnode = tail; tail-&gt;prev-&gt;next = NULL; tail = tail-&gt;prev; delete delnode;</code>`,
+      `الـ <code>displayBackward</code> بتبدأ من الـ tail وبتمشي ورا الـ prev؛ وده ممكن بس عشان فيه prev pointers.`,
+      `الـ main بتاع الـ lab: insertFirst(10)، insertLast(20)، insertLast(30)، insertFirst(100)، insertFirst(200) ← 200 100 10 20 30؛ removeFirst ← 100 10 20 30؛ removeLast ← 100 10 20؛ insertAtPosition(1000,2) ← 100 1000 10 20؛ insertAtPosition(2000,4) ← 100 1000 10 2000 20؛ insertAtPosition(5,1) ← 5 100 1000 10 2000 20 (على فرض إن <code>current</code> بيبدأ من 1؛ كود الـ lab ناسي يعمله initialize).`
+    ] }
+  ],
+  cards: [
+    `الـ data والـ prev والـ next.`,
+    `تقدر تمشي في الاتجاهين (لقدام ولورا).`,
+    `memory زيادة للـ prev pointer؛ وlinks أكتر لازم تتعدل.`,
+    `newnode->next = head; newnode->prev = NULL; head->prev = newnode; head = newnode;`,
+    `last->next = newnode; newnode->prev = last; newnode->next = NULL;`,
+    `newnode->next = temp->next; newnode->prev = temp; temp->next->prev = newnode; temp->next = newnode;`,
+    `head = head->next; head->prev = NULL; واعمل delete للـ head القديم.`,
+    `temp2->next = temp1->next; temp1->next->prev = temp1->prev; delete temp1;`,
+    `NULL`,
+    `في الأول، في الآخر، في position جوه الـ list.`,
+    `من الأول، من الآخر، node معينة.`,
+    `عشان تضيف/تشيل من الآخر وتعرض بالعكس من غير traversal.`
+  ],
+  qa: [
+    `الـ doubly linked list مكوّن من nodes كل واحدة فيها data وpointer للـ node اللي بعدها وpointer للـ node اللي قبلها، فتقدر تمشي فيه لقدام ولورا. الـ node في الـ singly linked list فيها data وnext بس، فبتمشي لقدام بس. الـ doubly بياخد memory زيادة للـ prev ومحتاج تعديلات pointers أكتر في الـ insert/delete.`,
+    `void insertatbeginning(int item){ Node *newnode=new Node(); newnode->data=item; if(isEmpty()){ newnode->next=NULL; newnode->prev=NULL; head=newnode; } else { newnode->next=head; newnode->prev=NULL; head->prev=newnode; head=newnode; } }<br>الفكرة: لو الـ list فاضية الـ node الجديدة بتبقى الـ head والـ next والـ prev بتوعها NULL؛ غير كده بتربطها قبل الـ head القديم في الاتجاهين وتحرّك الـ head.`,
+    `لو فاضية: head = newnode. ولو item &lt; head->data: newnode->next = head; head->prev = newnode; head = newnode. غير كده: temp = head; while(temp->next != NULL &amp;&amp; temp->next->data &lt; item) temp = temp->next; newnode->next = temp->next; newnode->prev = temp; if(temp->next != NULL) temp->next->prev = newnode; temp->next = newnode;`,
+    `امشي لحد ما temp1 يبقى الـ node اللي عايز تمسحها وtemp2 الـ node اللي قبلها. اربط حواليها في الاتجاهين: temp2->next = temp1->next و temp1->next->prev = temp1->prev (= temp2). وبعدين اعمل delete لـ temp1. لو temp1 هي آخر node، محتاج temp2->next = NULL بس.`,
+    `void removeAll(){ if(isEmpty()){ cout&lt;&lt;"List is empty"; return; } while(head != NULL){ Node *temp = head; head = head->next; if(head != NULL) head->prev = NULL; delete temp; } }<br>الفكرة: لو الـ list فاضية اطبع رسالة، غير كده امسح من الأول node node لحد ما الـ head يبقى NULL، وظبّط الـ prev بتاع الـ head الجديد لـ NULL.`
+  ],
+  quiz: [
+    [`غلط. بس لما N تبقى آخر node.`, `صح. لما تضيف في الأول أو في النص، الـ N->next بيشاور على الـ node اللي بعدها؛ وبيبقى NULL بس لما تضيف في الآخر (أو في list فاضية).`],
+    [`ده node بتاعة singly linked list.`, `صح.`, `محتاجة next كمان.`, `لازم تشيل data.`],
+    [`ده هيخلي الـ head القديم يشاور لقدام على الـ node الجديدة.`, `صح. أول node القديمة لازم تشاور لورا على الـ node الجديدة.`, `ده هيقطع الـ list.`, `ده بيضيّع الـ list.`],
+    [`الاتنين بيدعموا المشي لقدام.`, `صح. الـ prev pointers هي اللي بتخلي ده ممكن.`, `الاتنين يقدروا يعدّوا.`, `الاتنين يقدروا يدوّروا.`],
+    [`صح (كود الدكتورة).`, `ده مش بيعدّي temp1 (مش بيشيلها من الطريق).`, `ده بيقطع الـ list.`, `ده بس لمسح أول node.`]
+  ],
+  extra: [
+    [`الـ removeFirst شالت الـ 200.`, `صح. 200 100 10 20 30 ← شيل الأول ← 100 10 20 30 ← شيل الآخر ← 100 10 20.`, `الـ removeLast شالت الـ 30.`, `الـ 100 لسه في الـ list.`],
+    [`ده الـ displayForward.`, `الـ 2000 بعد الـ 10 في الـ list لقدام.`, `صح. لقدام بتبقى 5 100 1000 10 2000 20 (اتشغلت بـ g++، والـ current معموله initialize بـ 1).`, `الـ 1000 بيجي بعد الـ 100 على طول.`],
+    [`ده هيقطع الـ list.`, `الـ tail مش بيتغير.`, `الـ prev بتاع أول node لازم يبقى NULL.`, `صح. أول node الجديدة مينفعش تشاور لورا على الـ node اللي اتمسحت.`],
+    [`صح. شيك إن head != NULL قبل ما تظبّط الـ prev.`, `الـ head->prev بيتقري عن طريق NULL pointer.`, `فيه node واحدة بس أصلًا.`, `القيمة بتتقري قبل الـ crash.`],
+    [`الداتا بتتخزن مرة واحدة.`, `صح.`, `الـ Nodes بتتحجز واحدة واحدة.`, `بيتخزن next وprev بس.`],
+    [`الـ prev لازم يبقى temp (10).`, `الـ prev بتاع 10 مش بيتغير.`, `صح. الـ 20 لازم تشاور لورا على 15.`, `الـ next لازم يبقى 20.`],
+    [`أول node بس هي اللي الـ prev بتاعها NULL.`, `بس لو الـ list كان فيها node واحدة.`, `الـ node مش بتشاور على نفسها.`, `صح. newnode->prev = temp1.`],
+    [`صح.`, `ده بيضيّع آخر الـ list.`, `ده بتاع أول node.`, `الـ tail->next هو أصلًا NULL؛ الـ node اللي قبله هي اللي لازم تتعدل.`],
+    [`الـ head->next هي 6، والـ prev بتاعها 3.`, `صح. لما تروح لقدام وترجع لورا بترجع للـ head (3).`, `الـ 9 هي آخر node.`, `الـ 6 ليها node قبلها.`],
+    [`فيه links أكتر.`, `دي حالة الـ singly list.`, `صح. newnode->next وnewnode->prev وprevious->next وfollowing->prev.`, `أربع links بس هي اللي بتتغير.`]
+  ]
+};
+
+AR.ds.lectures["9"] = {
+  notes: [
+    { h: `أجزاء الـ tree`, pts: [
+      `الـ tree هو data structure من نوع <b>non-linear (hierarchical)</b> مكوّن من <b>nodes</b>.`,
+      `الـ <b>Root node</b>: الـ node اللي فوق خالص ومالهاش parent. الـ <b>Parent</b> node والـ <b>child</b> nodes بتوعها. الـ <b>Leaf (terminal) nodes</b>: nodes مالهاش children. الـ <b>Internal node</b>: node ليها child واحد على الأقل. الـ <b>Sub-tree</b>: node ومعاها كل الـ descendants بتوعها.`,
+      `الـ <b>Binary tree</b>: كل node ليها <b>2 children بالكتير</b> (left وright).`,
+      `الـ <b>Binary Search Tree (BST)</b>: binary tree فيه (1) كل node ليها <b>key مش متكرر (unique)</b>؛ (2) كل الـ keys اللي في الـ <b>left subtree</b> بتاع أي node <b>أصغر</b> من الـ key بتاعها؛ (3) كل الـ keys اللي في الـ <b>right subtree</b> <b>أكبر</b>.`
+    ] },
+    { h: `الـ Traversals` },
+    { h: `الـ trees اللي في أمثلة المحاضرة (اتجربت بـ g++)` },
+    { h: `كود الـ Node والـ Tree والـ traversals (كود الدكتورة)` },
+    { h: `الـ Insertion`, pts: [
+      `الخطوات: اعمل node جديدة للعنصر؛ دوّر على الـ parent المناسب؛ واربط الـ node الجديدة كـ <b>leaf</b> (left أو right حسب الـ key بتاعها).`,
+      `النسخة الـ recursive: الـ parameters هي pointer للـ node الحالية (في الأول الـ root) والعنصر. لو الـ node الحالية NULL، اعمل node جديدة ورجّعها. غير كده لو العنصر أصغر (أكبر) من الـ key الحالي، اعمل recursion على الـ left (right) child وخلي الـ left (right) link بتاع الـ parent يساوي الناتج.`,
+      `مثال: إضافة 57 في tree 1: 57 &gt; 43 ← يمين؛ 57 &lt; 64 ← شمال؛ 57 &gt; 56 ← يمين؛ 57 &lt; 59 ← بتبقى <b>الـ left child بتاع 59</b>.`,
+      `مثال: إضافة 0.9 في الـ tree اللي الـ root بتاعه 1.0: 0.9 &lt; 1.0 ← شمال (0.6)؛ 0.9 &gt; 0.6 ← يمين (0.8)؛ 0.9 &gt; 0.8 ← الـ right child بتاع 0.8.`,
+      `<b>شكل</b> الـ tree بيعتمد على ترتيب الإضافة؛ لو ضفت keys مترتبة أصلًا هيطلع degenerate tree (شبه الـ linked list).`
+    ] },
+    { h: `الـ insert والـ search والـ minimum والـ maximum (كود الدكتورة)` },
+    { h: `الـ Searching والـ deletion`, pts: [
+      `الـ <b>Search</b>: لو الـ key اللي بتدور عليه أصغر من الـ key الحالي، دوّر في الـ left subtree؛ لو أكبر، دوّر في الـ right subtree؛ لو مساوي، لقيته (رجّع الـ node / true)؛ ولو وصلت NULL، يبقى مش موجود.`,
+      `دوّر على 0.7 في tree الـ 1.0: 1.0 ← 0.6 ← 0.8 ← 0.7 لقيناه. دوّر على 0.5: 1.0 ← 0.6 ← 0.3 ← 0.4 ← NULL، مش موجود.`,
+      `حالات الـ <b>Delete</b>: (1) leaf: شيلها على طول؛ (2) ليها child واحد: حط الـ child مكانها؛ (3) ليها اتنين children: حط مكان الـ key بتاعها الـ inorder successor (أصغر قيمة في الـ right subtree) أو الـ predecessor (أكبر قيمة في الـ left subtree)، وبعدين امسح الـ node دي.`,
+      `الـ <code>deleteitem</code> اللي في الـ slide بتتعامل مع الـ leaf ومع الـ node اللي ليها child واحد إنها تنسخ داتا الـ child وتمسح الـ child (وده صح بس لو الـ child ده leaf)؛ ومش بتتعامل مع حالة الاتنين children. في الامتحان، اشرح التلات حالات الـ standard.`
+    ] }
+  ],
+  cards: [
+    `أعلى node في الـ tree، ومالهاش parent.`,
+    `node مالهاش children (terminal node).`,
+    `كل node ليها 2 children بالكتير.`,
+    `الـ keys في الـ left subtree &lt; key الـ node &lt; الـ keys في الـ right subtree؛ والـ keys مش بتتكرر.`,
+    `Left، parent، right.`,
+    `Parent، left، right.`,
+    `Left، right، parent.`,
+    `الـ keys مترتبة تصاعدي (sorted).`,
+    `ترتيب تنازلي.`,
+    `لما الـ tree يبقى فيه node واحدة بس.`,
+    `كـ leaf، بتوصل لمكانها إنك تمشي شمال (لو أصغر) أو يمين (لو أكبر) من الـ root.`,
+    `أبعد node على الشمال (leftmost).`,
+    `أبعد node على اليمين (rightmost).`,
+    `الـ data والـ left والـ right.`,
+    `1.0 ← 0.6 ← 0.3 ← 0.4 ← NULL (مش موجود).`,
+    `حط مكانها الـ inorder successor (أصغر قيمة في الـ right subtree) أو الـ predecessor، وبعدين امسح الـ node دي.`
+  ],
+  qa: [
+    `binary tree (كل node ليها اتنين children بالكتير) كل node فيه ليها key مش متكرر، وكل الـ keys في الـ left subtree بتاع أي node أصغر من الـ key بتاعها، وكل الـ keys في الـ right subtree أكبر.`,
+    `الـ Inorder: left، parent، right ← 12 25 33 50 53 55 60 65 70. الـ Preorder: parent، left، right ← 50 25 12 33 65 55 53 60 70. الـ Postorder: left، right، parent ← 12 33 25 53 60 55 70 65 50. الاسم بيتحدد حسب إمتى بنزور الـ parent.`,
+    `اعمل node جديدة للعنصر، ودوّر على الـ parent المناسب بإنك تقارن بالـ keys من الـ root (روح شمال لو أصغر، ويمين لو أكبر)، واربط الـ node الجديدة كـ leaf. بالـ recursion: لو current بـ NULL اعمل node جديدة ورجّعها؛ غير كده خلي current->left = insert(current->left, item) أو current->right = insert(current->right, item) ورجّع current.`,
+    `void preorder(Node *t){ if(t==NULL) return; cout&lt;&lt;t->data; preorder(t->left); preorder(t->right); }<br>void inorder(Node *t){ if(t==NULL) return; inorder(t->left); cout&lt;&lt;t->data; inorder(t->right); }<br>void postorder(Node *t){ if(t==NULL) return; postorder(t->left); postorder(t->right); cout&lt;&lt;t->data; }<br>خلي بالك الفرق الوحيد بينهم هو مكان الـ cout: قبل الـ recursion (preorder)، في النص (inorder)، أو في الآخر (postorder).`,
+    `قارن الـ key بالـ node الحالية: مساوي ← لقيته؛ أصغر ← دوّر في الـ left subtree؛ أكبر ← دوّر في الـ right subtree؛ NULL ← مش موجود. الـ Minimum: فضل امشي شمال لحد ما الـ left يبقى NULL. الـ Maximum: فضل امشي يمين لحد ما الـ right يبقى NULL.`,
+    `الـ Leaf: شيلها وخلي الـ link بتاع الـ parent بـ NULL. child واحد: اربط الـ parent بالـ child ده على طول. اتنين children: انسخ الـ inorder successor (أصغر key في الـ right subtree) في الـ node وامسح الـ successor (اللي ليه child واحد بالكتير).`
+  ],
+  quiz: [
+    [`التصاعدي هو left، root، right (inorder).`, `صح. الـ keys الأكبر على اليمين، فلما تزور اليمين الأول بيطلع ترتيب تنازلي.`, `خاصية الـ BST بتضمن ترتيب.`, `ينفع عادي؛ ده الـ reverse inorder.`],
+    [`مع اتنين nodes الـ root بيبقى الأول في الـ preorder والأخير في الـ postorder، فبيختلفوا.`, `صح. الـ node الوحيدة بس هي اللي ممكن تبقى الأولى والأخيرة في نفس الوقت.`, `مكان الـ root بيختلف.`, `ده صح بس لـ node واحدة (أو tree فاضي).`],
+    [`عدّ الـ keys اللي أصغر من 45: هما 7.`, `الأعداد معكوسة.`, `صح. أصغر من 45: 15، 8، 5، 12، 18، 10، 16 (7). أكبر: 56، 65، 47، 73، 50، 61 (6). اتجرب بـ g++.`, `عدّ تاني: 7 و6.`],
+    [`غلط. الـ Postorder مش بيطلّع ترتيب sorted.`, `صح. الـ inorder بس هو اللي بيطلّع ترتيب تصاعدي.`],
+    [`صح. الـ Postorder بيزور الـ parent في الآخر.`, `غلط. الـ L R P هو بالظبط الـ postorder.`],
+    [`صح (مثال المحاضرة).`, `ده الـ inorder.`, `ده الـ postorder.`, `ده الـ level order، ومش هو الـ preorder اللي اتشرح.`],
+    [`ده الـ inorder.`, `ده الـ preorder.`, `صح. left، right، وبعدين الـ parent؛ والـ root 50 في الآخر.`, `الـ root لازم ييجي في الآخر في الـ postorder.`],
+    [`ده الـ inorder.`, `ده الـ preorder.`, `صح. اتجرب بـ g++.`, `الـ D لازم تيجي بعد الـ children بتوعها الاتنين C وE.`],
+    [`الـ 56 عندها right child أصلًا (59)، فبنكمل ننزل لـ 59.`, `صح. 57 &gt; 43 ← 64؛ 57 &lt; 64 ← 56؛ 57 &gt; 56 ← 59؛ 57 &lt; 59 ← شمال 59.`, `57 &lt; 64، فعمرها ما توصل لـ 89.`, `الـ keys الجديدة دايمًا بتتربط كـ leaves.`],
+    [`الـ root بيبقى الـ minimum بس لو مالوش left child.`, `صح. الـ minimum() بتفضل تمشي شمال لحد ما الـ left يبقى NULL.`, `ده الـ maximum.`, `مش كل leaf هي الـ minimum.`],
+    [`الـ Leaves مالهاش children؛ وفيه nodes ليها child واحد.`, `صح.`, `الـ Leaves مالهاش children.`, `ده الـ general tree.`]
+  ],
+  extra: [
+    [`ده الـ inorder.`, `صح. الـ root، وبعدين الـ left subtree (20، 10، 25)، وبعدين الـ right subtree (40، 35، 50).`, `ده الـ postorder.`, `ده الـ level order.`],
+    [`صح. left، right، وبعدين الـ root؛ والـ 30 في الآخر.`, `ده شكل معكوس من الـ preorder.`, `ده الـ inorder.`, `جوه أي subtree الـ left child بييجي قبل الـ right.`],
+    [`الـ root هو أول key اتضاف، يعني 1.`, `كل node بياخد right child بس.`, `الإضافة المترتبة مسموحة عادي.`, `صح.`],
+    [`الـ 64 ليها right child، اللي هو 89.`, `الـ 59 في الـ left subtree بتاع 64.`, `صح. أبعد node على اليمين.`, `الـ 43 هو الـ root.`],
+    [`الـ root هو 1.0.`, `صح (مثال المحاضرة).`, `0.5 &lt; 1.0، فبيروح شمال.`, `0.5 &lt; 0.6، فبيروح شمال لـ 0.3.`],
+    [`صح. اللي نادى الـ function بيربطها كـ left أو right child.`, `الـ insert بترجع Node pointer.`, `الـ NULL هو المكان اللي الـ leaf الجديدة بتتحط فيه.`, `مفيش حاجة بتتمسح.`],
+    [`الموضوع موضوع صحة الناتج، مش سرعة.`, `الـ recursion بتشتغل، بس الناتج بيضيع.`, `صح.`, `الـ return مش بتطبع.`],
+    [`الـ Inorder بيزور الـ left subtree الأول.`, `الـ Postorder بيزور الـ root في الآخر.`, `ده بيزور الـ right subtree الأول.`, `صح. Parent، left، right.`],
+    [`ده هيضيّع keys تانية.`, `صح.`, `ده بيشتغل مع الـ leaf بس.`, `ده بيبوّظ خاصية الـ BST.`],
+    [`عدّ تاني: 12، 33، 53، 60، 70.`, `الـ 70 كمان leaf.`, `صح. 12 و33 و53 و60 و70 مالهمش children.`, `الـ 9 ده العدد الكلي للـ nodes.`]
+  ]
+};
+
+AR.ds.lectures["10"] = {
+  notes: [
+    { h: `يعني إيه hashing؟`, pts: [
+      `الـ <b>hash table</b> هو data structure نقدر نعتبره <b>array حجمه ثابت</b>؛ كل عنصر ليه index من 0 لـ (table size - 1). أحيانًا اسمه <b>scatter table</b>، لأن الداتا بتبقى متبعترة (scattered) في الـ table كله.`,
+      `كل key بيتحوّل لـ hash number في الـ range من 0 لـ (table size - 1) وبيتحط في الخانة دي. الـ mapping ده هو الـ <b>hash function H</b>؛ والمفروض يدّي keys مختلفة خانات مختلفة و<b>يوزّع العناصر بالتساوي</b>.`,
+      `الـ hash function H بتاخد <b>key كـ input</b> وبتحوّله لـ <b>index</b> في الـ hash table. ونفس الـ hash value بتتستخدم في <b>التخزين والاسترجاع</b> الاتنين.`,
+      `الـ <b>Collision</b>: لما الـ hash function تودّي اتنين keys مختلفين k وj على <b>نفس الخانة</b>.`,
+      `الـ Hash tables <b>مش</b> بتحافظ على الـ keys مترتبة: الأماكن بتعتمد على الـ hash function (عنوان Lecture 10 هو "Searching Techniques: Hashing").`
+    ] },
+    { h: `أنواع الـ hash function` },
+    { h: `طرق حل الـ collision (collision resolution)`, pts: [
+      `خمس طرق: <b>linear probing</b>، <b>quadratic probing</b>، <b>double hashing</b>، <b>rehashing</b>، <b>extendible hashing</b> (أول تلاتة هما اللي بنذاكرهم)، وكمان الـ <b>separate chaining</b>.`,
+      `الـ <b>Linear probing</b>: حط الـ record اللي عمل collision في <b>أول خانة فاضية بعده</b>، وبتدور بالترتيب: <b>h(k, i) = (h1(k) + i) mod m</b>، i = 0, 1, 2, … حيث m = حجم الـ table وh1 = الـ primary hash function. وعشان تدوّر، ابدأ من الـ hash address وكمّل بالترتيب.`,
+      `الـ <b>Quadratic probing</b>: في أول collision بص على h+1، والتاني h+4، والتالت h+9 … (h + i²). المعادلة والمثال المحلول في المحاضرة بيستخدموا <b>h(k, i) = (h1(k) + i + i²) mod m</b> (i = 1 ← +2، i = 2 ← +6). خلي بالك: في الامتحان استخدم معادلة المحاضرة واكتبها.`,
+      `الـ <b>Double hashing</b>: اتنين hash functions؛ لما الأولى تعمل collision التانية بتحلها: <b>h(k, i) = (h1(k) + i·h2(k)) mod m</b>. مثال المحاضرة: h1 = k mod 13، h2 = 1 + (k mod 11).`,
+      `الـ <b>Separate chaining</b>: <b>array of pointers</b>؛ كل pointer بيشاور على <b>linked list</b> فيها الـ keys اللي ليها نفس الـ hash address. لما يحصل collision بنضيف link جديد في الـ chain. بيتعامل مع <b>عدد مش محدود من الـ collisions</b> ومش محتاج <b>تعرف مسبقًا</b> هتخزن كام عنصر.`
+    ] },
+    { h: `مثال linear probing (الـ keys 18، 72، 65، 34، 13؛ size 7)` },
+    { h: `مثال quadratic probing (نفس الـ keys، بمعادلة المحاضرة h1 + i + i²)` },
+    { h: `مثال double hashing (69، 79، 72، 98، 14؛ size 13)` },
+    { h: `مثال separate chaining (18، 72، 65، 34، 13؛ size 7)` }
+  ],
+  cards: [
+    `array حجمه ثابت كل key بيتخزن فيه عند الـ index اللي الـ hash function بتحسبه (اسمه كمان scatter table).`,
+    `function H بتحوّل الـ key لـ index في الـ table من 0 لـ size-1.`,
+    `لما الـ hash function تودّي اتنين keys مختلفين على نفس الخانة.`,
+    `Truncation، folding، mid square، division.`,
+    `استخدم جزء من الـ key بس (زي آخر 3 أرقام). بيعمل collisions أكتر.`,
+    `قسّم الـ key لمجموعات أرقام واجمعهم: 143765980 ← 1888.`,
+    `ربّع الـ key وخد الأرقام اللي في النص: 456 ← 207936 ← 79.`,
+    `الـ Address = key mod table size؛ ودي من أحسن الطرق.`,
+    `h(k,i) = (h1(k) + i) mod m`,
+    `h(k,i) = (h1(k) + i + i²) mod m`,
+    `h(k,i) = (h1(k) + i·h2(k)) mod m`,
+    `Linear probing، quadratic probing، double hashing، rehashing، extendible hashing.`,
+    `array of pointers بيشاوروا على linked lists؛ الـ keys اللي ليها نفس الـ address بتتربط في chain.`,
+    `عدد collisions مش محدود لكل address؛ ومش محتاج تعرف عدد العناصر مسبقًا.`,
+    `بيوزّع الـ keys بالتساوي أكتر مع الـ mod.`,
+    `لأ؛ الأماكن بتعتمد على الـ hash function.`
+  ],
+  qa: [
+    `الـ Hashing بيخزن العناصر في array حجمه ثابت (hash table، scatter table) عند index بيتحسب من الـ key. الـ hash function H بتاخد key وتحوّله لـ index من 0 لـ table size - 1، والمثالي إنها توزّع الـ keys بالتساوي؛ ونفس الـ function بتتستخدم في التخزين والاسترجاع. الـ collision بيحصل لما الـ hash function تودّي اتنين keys مختلفين على نفس الخانة.`,
+    `الـ Truncation: خد جزء من الـ key (987456 ← 456 لـ size 1000)، بسيطة بس collisions كتير. الـ Folding: قسّم لمجموعات واجمع (143765980 ← 143+765+980 = 1888). الـ Mid square: ربّع وخد الأرقام اللي في النص (456² = 207936 ← 79). الـ Division: key mod table size (17 mod 9 = 8)، ودي من أحسن الطرق.`,
+    `Linear probing، quadratic probing، double hashing، rehashing، extendible hashing (وكمان separate chaining). الـ Linear probing بيحط الـ key اللي عمل collision في أول خانة فاضية بعده بالترتيب: h(k,i) = (h1(k)+i) mod m، i = 0,1,2,…؛ والـ search برضه بيبدأ من الـ hash address ويكمّل بالترتيب.`,
+    `التلاتة open addressing. الـ Linear probing بيتحرك 1، 2، 3 … خانات لقدام ((h1+i) mod m)، وده بيعمل clustering (تكتّل). الـ Quadratic probing بينط أبعد كل مرة (المحاضرة: (h1+i+i²) mod m)، فبيقلل الـ clustering. الـ Double hashing بيستخدم hash function تانية لحجم الخطوة ((h1 + i·h2) mod m)، فالـ keys المختلفة بتاخد probe sequences مختلفة.`,
+    `الـ table عبارة عن array of pointers، كل واحد بيشاور على linked list فيها كل الـ keys اللي ليها الـ hash address ده. لما يحصل collision الـ key بيتضاف للـ chain دي. بيتعامل مع عدد مش محدود من الـ collisions عند نفس الـ address ومش محتاج تعرف مسبقًا هتخزن كام عنصر.`,
+    `5 mod 9 = 5، 17 mod 9 = 8، 37 mod 9 = 1، 20 mod 9 = 2، 42 mod 9 = 6، 3 mod 9 = 3. الـ Table: [1]=37، [2]=20، [3]=3، [5]=5، [6]=42، [8]=17. 11 mod 9 = 2 والخانة دي فيها 20: يبقى collision، ولازم يتحل (مثلًا الـ linear probing يحط 11 في slot 4؛ والـ chaining يربطه بعد 20).`
+  ],
+  quiz: [
+    [`غلط. الـ Hashing بيبعتر الـ keys.`, `صح. الـ keys بتتبعتر حسب الـ hash function، مش مترتبة (وعشان كده اسمه "scatter table").`],
+    [`صح. ده تعريف الـ collision.`, `غلط. نفس المكان لـ keys مختلفة ده collision.`],
+    [`25 mod 11 = 3، مش 2.`, `صح. 25 = 2·11 + 3.`, `الـ indices بتوصل لـ 10 بس.`, `ده الـ key نفسه.`],
+    [`16 mod 11 = 5، بس slot 5 فيها 37 أصلًا.`, `slot 6 فيها 17.`, `صح. 5 (37) و6 (17) مشغولين، فـ i = 2 بتدّي slot 7.`, `ده كان هيبقى الـ quadratic probing الـ standard (5 + 4).`],
+    [`31 mod 9 = 4، بس الـ 21 خد slot 4 قبله.`, `صح. 12←3، 15←6، 21←3 collision ← 4، 31←4 collision ← 5.`, `slot 3 فيها 12.`, `slot 0 خدها 90 (90 mod 9 = 0).`],
+    [`فيه keys كتير آخرها 2 أو 7.`, `عدّ: 42، 102، 162، 197.`, `صح. 42 و102 و162 و197 كلهم الباقي بتاعهم 2.`, `197 mod 5 = 2 هي كمان.`],
+    [`الـ 6 فيها 34.`, `صح. 13 mod 7 = 6 فيه collision، و(6+1) mod 7 = 0.`, `ده ناتج الـ quadratic probing.`, `الـ Linear probing بيجرب 0 قبل 1.`],
+    [`الـ Truncation بتاخد جزء من الـ key على طول.`, `الـ Folding بتجمع مجموعات أرقام.`, `صح. 456² = 207936 ← 79.`, `الـ Division بتستخدم key mod size.`],
+    [`الـ Linear probing بيخزن الـ keys في الـ array نفسه.`, `صح.`, `الـ Double hashing بيستخدم hash function تانية في نفس الـ array.`, `الـ Truncation دي hash function، مش طريقة لحل الـ collision.`]
+  ],
+  extra: [
+    [`ده استخدم الأرقام اللي على الشمال.`, `صح. size 100 محتاج رقمين: آخر رقمين هما 56.`, `تلات أرقام دول لـ table حجمه 1000.`, `دول الأرقام اللي في النص.`],
+    [`صح. 123 + 456 + 789 = 1368.`, `ده ناتج المحاضرة لـ 143765980.`, `ده جمع مجموعتين بس.`, `ده جمع آخر الأرقام بس.`],
+    [`دول أول رقمين.`, `دول آخر رقمين.`, `ده مش النص بتاع 119025.`, `صح. 11|90|25: الرقمين اللي في النص هما 90.`],
+    [`الـ 3 فيها 10.`, `الـ 5 فيها 17 (3 + 1 + 1).`, `صح. i=0 ← 3 مشغولة، i=1 ← 5 مشغولة، i=2 ← (3 + 2 + 4) mod 7 = 2.`, `دي تاني محاولة للـ 17 في الـ linear probing.`],
+    [`40 mod 13 = 1 ودي مشغولة.`, `ده الـ linear probing.`, `الـ 8 ده حجم الخطوة h2، مش الـ slot.`, `صح. h2 = 1 + 40 mod 11 = 8؛ (1 + 1·8) mod 13 = 9.`],
+    [`صح. الـ Chains بتكبر من غير حدود.`, `الـ table ممكن يتملي.`, `الـ table ممكن يتملي.`, `الـ table ممكن يتملي.`],
+    [`ده الـ mid square.`, `صح (المحاضرة).`, `الـ Primes بتقلل الـ collisions.`, `ده الـ folding.`],
+    [`صح. كلهم بيروحوا لـ 0؛ الـ 14 بيتحرك لـ 1، والـ 21 بيتحرك لـ 2.`, `الـ Open addressing بيخزن key واحد في كل خانة.`, `الـ indices بتوصل لـ 6 بس.`, `الـ Linear probing بيتحرك خطوة واحدة.`],
+    [`الـ key ممكن يكون اتنقل بسبب collision.`, `انت بتبدأ من الـ hash address.`, `صح.`, `ده الـ double hashing.`],
+    [`مذكورة.`, `مذكورة.`, `مذكورة.`, `صح. الـ Mid square دي hash function، مش طريقة لحل الـ collision.`]
+  ]
+};
+
+AR.ds.exams = [
+  // Final Exam 2025/2026
+  { sections: [
+    { items: [
+      { ans: `<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+struct Employee {
+    string name;
+    float salary, bonus, deduction, total;
+};
+int main()
+{
+    const int N = 3;
+    Employee e[N];
+    for (int i = 0; i &lt; N; i++)
+    {
+        cout &lt;&lt; "Enter name, salary, bonus, deduction: ";
+        cin &gt;&gt; e[i].name &gt;&gt; e[i].salary &gt;&gt; e[i].bonus &gt;&gt; e[i].deduction;
+        e[i].total = e[i].salary + e[i].bonus - e[i].deduction;
+    }
+    for (int i = 0; i &lt; N; i++)
+        cout &lt;&lt; e[i].name &lt;&lt; " total salary = " &lt;&lt; e[i].total &lt;&lt; endl;
+    return 0;
+}</pre>الناتج: Dina 1050، Mohamed 2000، Hoda 2800 (1000+100-50 = 1050؛ 2000+0-0 = 2000؛ 3000+0-200 = 2800). وممكن كمان تدّي الـ array قيمه على طول من غير cin: <code>Employee e[3] = {{"Dina",1000,100,50},{"Mohamed",2000,0,0},{"Hoda",3000,0,200}};</code> (L1).` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Queue
+{
+    Node *front, *rear;
+public:
+    Queue() { front = NULL; rear = NULL; }
+    bool isEmpty() { return (front == NULL &amp;&amp; rear == NULL); }
+    void enqueue(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = NULL;
+        if (isEmpty()) { front = newnode; rear = newnode; }
+        else { rear-&gt;next = newnode; rear = newnode; }
+    }
+    void display()
+    {
+        for (Node *t = front; t != NULL; t = t-&gt;next) cout &lt;&lt; t-&gt;data &lt;&lt; " ";
+        cout &lt;&lt; endl;
+    }
+};
+int main()
+{
+    Queue q;
+    q.enqueue(25);
+    q.enqueue(20);
+    q.display();      // 25 20   (front -&gt; 25 -&gt; 20 &lt;- rear)
+    return 0;
+}</pre>(L7) الفكرة: أول enqueue الـ queue فاضي فالـ front والـ rear الاتنين بيشاوروا على 25؛ والتانية بتتربط بعد الـ rear وتبقى هي الـ rear الجديد، فالـ display بتطبع 25 20 (FIFO).` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Stack
+{
+    Node *top;
+public:
+    Stack() { top = NULL; }
+    bool isEmpty() { return top == NULL; }
+    void push(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = top;
+        top = newnode;
+    }
+    int pop()                       // delete an item
+    {
+        if (isEmpty()) { cout &lt;&lt; "Stack is empty" &lt;&lt; endl; return 0; }
+        Node *temp = top;
+        int value = top-&gt;data;
+        top = top-&gt;next;
+        delete temp;
+        return value;
+    }
+};
+int main()
+{
+    Stack s;
+    s.push(10);
+    s.push(20);
+    cout &lt;&lt; "Deleted " &lt;&lt; s.pop() &lt;&lt; endl;   // Deleted 20
+    return 0;
+}</pre>(L6) الـ Pop بتشيل الـ node اللي عند الـ top (آخر واحدة اتعملها push): LIFO، عشان كده بيطبع Deleted 20.` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next, *prev;
+    Node() { data = 0; next = NULL; prev = NULL; }
+};
+class DList
+{
+public:
+    Node *head;
+    DList() { head = NULL; }
+    bool isEmpty() { return head == NULL; }
+    void insertsorted(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        if (isEmpty())
+            head = newnode;
+        else if (item &lt; head-&gt;data)           // new first node
+        {
+            newnode-&gt;next = head;
+            head-&gt;prev = newnode;
+            head = newnode;
+        }
+        else
+        {
+            Node *temp = head;
+            while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)
+                temp = temp-&gt;next;
+            newnode-&gt;next = temp-&gt;next;
+            newnode-&gt;prev = temp;
+            if (temp-&gt;next != NULL) temp-&gt;next-&gt;prev = newnode;
+            temp-&gt;next = newnode;
+        }
+    }
+    void display()
+    {
+        for (Node *t = head; t != NULL; t = t-&gt;next) cout &lt;&lt; t-&gt;data &lt;&lt; " ";
+        cout &lt;&lt; endl;
+    }
+};
+int main()
+{
+    DList d;
+    d.insertsorted(30); d.insertsorted(10); d.insertsorted(20);
+    d.insertsorted(5);  d.insertsorted(40);
+    d.display();          // 5 10 20 30 40
+    return 0;
+}</pre>(L8) اتجرب بـ g++؛ بيتعامل مع الـ list الفاضية، ومع قيمة جديدة أصغر من الكل، وقيمة في النص، وقيمة جديدة أكبر من الكل. خلي بالك في الـ doubly لازم تظبط الـ prev كمان مع الـ next.` },
+      { ans: `<b>Inorder</b> (left, root, right): A B C D E F G H I<br><b>Preorder</b> (root, left, right): F B A D C E G I H<br><b>Postorder</b> (left, right, root): A C E D B H I G F<br>(L9؛ اتجرب بـ g++. نصيحة: في الـ postorder الـ root اللي هو F بييجي في الآخر، وفي الـ preorder بييجي في الأول.)` },
+      { ans: `h(k) = k mod 5: 25→0, 42→2, 96→1, 101→1, 102→2, 162→2, 197→2.<br><table><tr><th>Index</th><th>Chain</th></tr><tr><td>0</td><td>25 → NULL</td></tr><tr><td>1</td><td>96 → 101 → NULL</td></tr><tr><td>2</td><td>42 → 102 → 162 → 197 → NULL</td></tr><tr><td>3</td><td>NULL</td></tr><tr><td>4</td><td>NULL</td></tr></table>الـ Collisions: الـ 101 (مع 96)، والـ 102 والـ 162 والـ 197 (مع 42). كل واحد بيتضاف في آخر الـ linked list بتاعة الخانة بتاعته (L10).` },
+    ] },
+    { items: [
+      { why: `الإجابة المتوقعة: Queue، اللي المحاضرة بتوصفه إنه "open at both ends" (إضافة عند الـ rear ومسح عند الـ front) (L3). بالدقة، الإضافة والمسح من الطرفين الاتنين ده الـ deque، وهو مش من الاختيارات.` },
+      { why: `15 × 4 = 60 bytes (L1).` },
+      { why: `الـ arrays في C++ بتبدأ من صفر (zero-based) (L1).` },
+      { why: `الـ Graphs والـ trees دي non-linear؛ إنما الـ linked list فهو linear (L1).` },
+      { why: `الـ Pop بتمسح العنصر اللي فوق (الـ top) (L2).` },
+      { why: `الـ Trees دي hierarchical، يعني non-linear (L1، L9).` },
+      { why: `الاختيار B غلط (الـ arrays ينفع تترتب)، والـ C غلط (الـ index بيبدأ من 0)، والـ D ده وصف الـ structs (L1).` },
+      { why: `الـ Push بتضيف عنصر عند الـ top (L2).` },
+      { why: `الـ Linear (sequential) search بيشيك على العناصر واحد واحد من الأول (Lab 1، Lab 2).` },
+      { why: `الـ Nodes بتتعمل بـ new وقت الـ run time: يعني dynamic allocation (L4، L5).` },
+    ] },
+    { items: [
+      { why: `الـ stack بيمشي بـ LIFO؛ الـ FIFO ده الـ queue (L2).` },
+      { why: `الـ circular queue بيوصّل آخر مكان بأول مكان وبيرجع يستخدم الخانات اللي فضيت (L3).` },
+      { why: `الإضافة بتبقى عند الـ rear (L3).` },
+      { why: `ده تعريف الـ struct؛ عناصر الـ array كلها من نفس النوع (L1).` },
+      { why: `المسح بيبقى من الـ front (L3).` },
+      { why: `دي جملة Lecture 5 بالظبط.` },
+      { why: `الـ push بتضيف؛ والـ pop هي اللي بتمسح (L2).` },
+      { why: `كل node فيها next pointer بس (L5).` },
+      { why: `ده تعريف الـ circular linked list (L5).` },
+      { why: `الـ First-In-Last-Out هو نفسه الـ LIFO (L2).` },
+    ] },
+  ] },
+  // Final Exam 2024/2025
+  { sections: [
+    { items: [
+      { ans: `<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+struct Employee {
+    string name;
+    float salary, bonus, deduction, total;
+};
+int main()
+{
+    const int N = 4;
+    Employee e[N];
+    for (int i = 0; i &lt; N; i++)
+    {
+        cout &lt;&lt; "Enter name, salary, bonus, deduction: ";
+        cin &gt;&gt; e[i].name &gt;&gt; e[i].salary &gt;&gt; e[i].bonus &gt;&gt; e[i].deduction;
+        e[i].total = e[i].salary + e[i].bonus - e[i].deduction;
+    }
+    for (int i = 0; i &lt; N; i++)
+        cout &lt;&lt; e[i].name &lt;&lt; " total salary = " &lt;&lt; e[i].total &lt;&lt; endl;
+    return 0;
+}</pre>بقيم الجدول: Dina 1000+50-30 = <b>1020</b>، Mohamed 2000+70-0 = <b>2070</b>، Abas 2000+40-20 = <b>2020</b>، Hoda 3000+0-300 = <b>2700</b> (اتشغل بـ g++) (L1).` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next, *prev;
+    Node() { data = 0; next = NULL; prev = NULL; }
+};
+class DList
+{
+public:
+    Node *head;
+    DList() { head = NULL; }
+    bool isEmpty() { return head == NULL; }
+    void insertatbeginning(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = head;
+        newnode-&gt;prev = NULL;
+        if (!isEmpty()) head-&gt;prev = newnode;
+        head = newnode;
+    }
+    void removeAll()
+    {
+        if (isEmpty()) { cout &lt;&lt; "List is empty" &lt;&lt; endl; return; }
+        while (head != NULL)
+        {
+            Node *temp = head;
+            head = head-&gt;next;
+            if (head != NULL) head-&gt;prev = NULL;
+            cout &lt;&lt; "Deleted " &lt;&lt; temp-&gt;data &lt;&lt; endl;
+            delete temp;
+        }
+    }
+};
+int main()
+{
+    DList d;
+    d.insertatbeginning(10); d.insertatbeginning(20); d.insertatbeginning(30);
+    d.removeAll();      // Deleted 30, Deleted 20, Deleted 10
+    d.removeAll();      // List is empty
+    return 0;
+}</pre>(L8) الفكرة: لو الـ list فاضية اطبع رسالة واخرج؛ غير كده امسح من الأول node node، وبعد كل خطوة خلي الـ prev بتاع الـ head الجديد NULL، لحد ما الـ head يبقى NULL.` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Stack
+{
+    Node *top;
+public:
+    Stack() { top = NULL; }
+    bool isEmpty() { return top == NULL; }
+    void push(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        if (isEmpty()) newnode-&gt;next = NULL;
+        else newnode-&gt;next = top;
+        top = newnode;
+    }
+    int pop()
+    {
+        if (isEmpty()) { cout &lt;&lt; "Stack is empty" &lt;&lt; endl; return 0; }
+        Node *temp = top;
+        int value = top-&gt;data;
+        top = top-&gt;next;
+        delete temp;
+        return value;
+    }
+};
+int main()
+{
+    Stack s;
+    if (s.isEmpty()) cout &lt;&lt; "Stack is empty" &lt;&lt; endl;
+    s.push(50);
+    s.push(70);                                // top -&gt; 70 -&gt; 50 -&gt; NULL
+    cout &lt;&lt; "Removed " &lt;&lt; s.pop() &lt;&lt; endl;    // Removed 70
+    return 0;
+}</pre>(L6) الفكرة: بنشيك الأول إن الـ stack فاضي، وبعدين push لـ 50 و70 فالـ top بيبقى 70، والـ pop بتشيل 70 (LIFO).` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Queue
+{
+    Node *front, *rear;
+public:
+    Queue() { front = rear = NULL; }
+    bool isEmpty() { return front == NULL; }
+    void enqueue(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = NULL;
+        if (isEmpty()) { front = newnode; rear = newnode; }
+        else { rear-&gt;next = newnode; rear = newnode; }
+    }
+    int dequeue()
+    {
+        if (isEmpty()) { cout &lt;&lt; "Queue is empty" &lt;&lt; endl; return 0; }
+        Node *temp = front;
+        int value = front-&gt;data;
+        front = front-&gt;next;
+        if (front == NULL) rear = NULL;      // queue became empty
+        delete temp;
+        return value;
+    }
+    void removeAll()
+    {
+        while (!isEmpty())
+            cout &lt;&lt; "Dequeued " &lt;&lt; dequeue() &lt;&lt; endl;
+    }
+};
+int main()
+{
+    Queue q;
+    if (q.isEmpty()) cout &lt;&lt; "Queue is empty" &lt;&lt; endl;
+    q.enqueue(30);
+    q.enqueue(50);
+    q.removeAll();       // Dequeued 30, Dequeued 50 (FIFO)
+    return 0;
+}</pre>(L7) الفكرة: الـ removeAll بتعمل dequeue لحد ما الـ queue يفضى، فبيطلع 30 الأول وبعدين 50 (FIFO). وخلي بالك لما آخر node تتشال لازم rear = NULL.` },
+      { ans: `<b>Inorder</b> (L, root, R): G D H B E I A C F<br><b>Preorder</b> (root, L, R): A B D G H E I C F<br><b>Postorder</b> (L, R, root): G H D I E B F C A<br>(L9؛ اتجرب بـ g++.)` },
+      { ans: `الـ Division: h1(k) = k mod 7 ← 18→4, 72→2, 65→2, 34→6, 13→6.<br><b>Linear probing</b> h(k,i) = (h1(k)+i) mod 7:<br>18: i=0 ← 4. 72: i=0 ← 2. 65: i=0 ← 2 فيه collision، i=1 ← 3. 34: i=0 ← 6. 13: i=0 ← 6 فيه collision، i=1 ← (6+1) mod 7 = 0.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr><tr><td>13</td><td>–</td><td>72</td><td>65</td><td>18</td><td>–</td><td>34</td></tr></table><b>Separate chaining</b>: [0] NULL, [1] NULL, [2] 72 → 65, [3] NULL, [4] 18, [5] NULL, [6] 34 → 13. (ده مثال المحاضرة بالظبط، L10.)` },
+    ] },
+  ] },
+  // Summer Exam 2023/2024 (60 marks)
+  { sections: [
+    { items: [
+      { ans: `<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+struct Student {
+    string name;
+    float sub1, sub2;
+};
+int main()
+{
+    const int N = 4;
+    Student s[N];
+    float sum1 = 0, sum2 = 0;
+    for (int i = 0; i &lt; N; i++)
+    {
+        cout &lt;&lt; "Enter name, sub1, sub2: ";
+        cin &gt;&gt; s[i].name &gt;&gt; s[i].sub1 &gt;&gt; s[i].sub2;
+        sum1 += s[i].sub1;
+        sum2 += s[i].sub2;
+        cout &lt;&lt; s[i].name &lt;&lt; " average = " &lt;&lt; (s[i].sub1 + s[i].sub2) / 2 &lt;&lt; endl;
+    }
+    cout &lt;&lt; "Average of sub1 = " &lt;&lt; sum1 / N &lt;&lt; endl;
+    cout &lt;&lt; "Average of sub2 = " &lt;&lt; sum2 / N &lt;&lt; endl;
+    return 0;
+}</pre>متوسط كل مادة: sub1 = (60+80+50+70.5)/4 = 260.5/4 = <b>65.125</b>; sub2 = (70+60+40.5+75)/4 = 245.5/4 = <b>61.375</b>. وبما إن السؤال ممكن يتفهم كمان إنه متوسط كل طالب، البرنامج بيطبع كمان Ahmed 65، Mohamed 70، Abas 45.25، Hoda 72.75 (L1).` },
+      { ans: `<pre>// inside class Linkedlist (Node has data and next)
+int deletefrombeginning()
+{
+    if (isEmpty()) { cout &lt;&lt; "Empty" &lt;&lt; endl; return 0; }
+    Node *temp = head;
+    int value = head-&gt;data;
+    head = head-&gt;next;
+    delete temp;
+    return value;
+}
+void removeAll()
+{
+    if (isEmpty()) { cout &lt;&lt; "List is empty" &lt;&lt; endl; return; }
+    while (!isEmpty())
+        cout &lt;&lt; "Deleted " &lt;&lt; deletefrombeginning() &lt;&lt; endl;
+}</pre>كل خطوة بتحرّك الـ head للـ node اللي بعدها وبتفضّي أول node القديمة، لحد ما الـ head يبقى NULL (L5).` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Stack
+{
+    Node *top;
+public:
+    Stack() { top = NULL; }
+    bool isEmpty() { return top == NULL; }
+    void push(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = top;
+        top = newnode;
+    }
+    int pop()
+    {
+        if (isEmpty()) { cout &lt;&lt; "Empty" &lt;&lt; endl; return 0; }
+        Node *temp = top;
+        int value = top-&gt;data;
+        top = top-&gt;next;
+        delete temp;
+        return value;
+    }
+    void removeAll()
+    {
+        while (!isEmpty())
+            cout &lt;&lt; "Popped " &lt;&lt; pop() &lt;&lt; endl;
+    }
+};
+int main()
+{
+    Stack s;
+    s.push(1); s.push(2); s.push(3);
+    s.removeAll();      // Popped 3, Popped 2, Popped 1
+    return 0;
+}</pre>(L6) الفكرة: الـ removeAll بتعمل pop لحد ما الـ stack يفضى، فبيطلع 3 ثم 2 ثم 1 (LIFO).` },
+      { ans: `<pre>// Node class as in L7 (data, next)
+class Queue
+{
+    Node *front, *rear;
+public:
+    Queue() { front = rear = NULL; }
+    bool isEmpty() { return front == NULL; }
+    void enqueue(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = NULL;
+        if (isEmpty()) { front = newnode; rear = newnode; }
+        else { rear-&gt;next = newnode; rear = newnode; }
+    }
+    int dequeue()
+    {
+        if (isEmpty()) { cout &lt;&lt; "Empty" &lt;&lt; endl; return 0; }
+        Node *temp = front;
+        int value = front-&gt;data;
+        front = front-&gt;next;
+        if (front == NULL) rear = NULL;
+        delete temp;
+        return value;
+    }
+};
+int main()
+{
+    Queue q;
+    q.enqueue(50);
+    q.enqueue(70);
+    cout &lt;&lt; "Removed " &lt;&lt; q.dequeue() &lt;&lt; endl;   // Removed 50 (FIFO)
+    return 0;
+}</pre>(L7) الفكرة: enqueue لـ 50 و70، والـ dequeue بتشيل 50 لأنه أول واحد دخل (FIFO).` },
+      { ans: `<b>Inorder</b>: 12, 25, 33, 50, 53, 55, 60, 65, 70<br><b>Preorder</b>: 50, 25, 12, 33, 65, 55, 53, 60, 70<br><b>Postorder</b>: 12, 33, 25, 53, 60, 55, 70, 65, 50<br>(مثال Lecture 9؛ اتجرب بـ g++.)` },
+      { ans: `h(k,i) = ((k mod 9) + i) mod 9<br>12: i=0 ← 3.<br>15: i=0 ← 6.<br>21: i=0 ← 3 فيه collision (مع 12)؛ i=1 ← 4.<br>31: i=0 ← 4 فيه collision (مع 21)؛ i=1 ← 5.<br>90: i=0 ← 0.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr><tr><td>90</td><td>–</td><td>–</td><td>12</td><td>21</td><td>31</td><td>15</td><td>–</td><td>–</td></tr></table>(L10؛ اتحسب بـ script.)` },
+    ] },
+  ] },
+  // Summer Exam 2023/2024 (50 marks)
+  { sections: [
+    { items: [
+      { ans: `نفس برنامج Final 2024/25 Q1 (struct Employee {name, salary, bonus, deduction, total}؛ loop بيقرا N = 4 records؛ total = salary + bonus - deduction؛ واطبع).<br>النتايج: Dina 1000+100-50 = <b>1050</b>؛ Mohamed <b>2000</b>؛ Abas 2000+100-0 = <b>2100</b>؛ Hoda 3000-200 = <b>2800</b> (اتشغل بـ g++) (L1).` },
+      { ans: `<pre>void insertsorted(int item)             // ascending order
+{
+    Node *newnode = new Node();
+    newnode-&gt;data = item;
+    if (isEmpty() || item &lt; head-&gt;data)   // empty list or new smallest
+    {
+        newnode-&gt;next = head;
+        head = newnode;
+    }
+    else
+    {
+        Node *temp = head;                  // find node before insertion point
+        while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)
+            temp = temp-&gt;next;
+        newnode-&gt;next = temp-&gt;next;         // new node points to the following node
+        temp-&gt;next = newnode;               // previous node points to new node
+    }
+}</pre>الخطوات (L5): حدد الـ node اللي قبل مكان الإضافة، خلي الـ new node تشاور على الـ node اللي بعده، وبعدين خلي الـ node اللي قبله تشاور على الـ new node. نسخة الـ loop اللي في الـ slide بتعمل crash لما القيمة تبقى أصغر من الـ head أو أكبر من آخر node، فالنسخة الآمنة دي أحسن (اتجربت بـ g++: 10، 20، 30 + 25، 5، 40 ← 5 10 20 25 30 40).` },
+      { ans: `استخدم الـ linked stack class بتاع L6 (الـ push: newnode->next = top; top = newnode; الـ pop: temp = top; top = top->next; delete temp).<pre>int main()
+{
+    Stack s;
+    s.push(50);
+    s.push(70);                               // top -&gt; 70 -&gt; 50
+    cout &lt;&lt; "Removed " &lt;&lt; s.pop() &lt;&lt; endl;   // Removed 70
+    return 0;
+}</pre>الـ class كامل موجود في Final 2024/25 Q3. الـ pop بتطلّع 70 لأنه آخر واحد اتعمله push (LIFO).` },
+      { ans: `<pre>void removeAll()            // inside class Queue (front, rear)
+{
+    if (front == NULL) { cout &lt;&lt; "Queue is empty" &lt;&lt; endl; return; }
+    while (front != NULL)
+    {
+        Node *temp = front;
+        cout &lt;&lt; "Deleted " &lt;&lt; temp-&gt;data &lt;&lt; endl;
+        front = front-&gt;next;
+        delete temp;
+    }
+    rear = NULL;            // queue is now empty
+}</pre>العناصر بتتشال من الـ front بترتيب FIFO (L7). وفي الآخر rear = NULL لأن الـ queue فضي. الـ class كامل: شوف Final 2024/25 Q4.` },
+      { ans: `<b>Inorder</b>: 20 28 31 33 40 43 47 56 59 64 89<br><b>Preorder</b>: 43 31 20 28 40 33 64 56 47 59 89<br><b>Postorder</b>: 28 20 33 40 31 47 59 56 89 64 43<br>(مثال Lecture 9؛ اتجرب بـ g++.)` },
+      { ans: `h(k,i) = ((k mod 11) + i) mod 11<br>14 ← 3. 17 ← 6. 25 ← 3 فيه collision؛ i=1 ← 4. 37 ← 4 فيه collision؛ i=1 ← 5. 34 ← 1. 16 ← 5 فيه collision؛ i=1 ← 6 فيه collision؛ i=2 ← 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table>(L10)` },
+    ] },
+  ] },
+  // Midterm 2023/2024 (Models A and B)
+  { sections: [
+    { items: [
+      { why: `الـ Dequeue بتشيل من الـ front (head) (L3).` },
+      { why: `الإجابة النموذجية: fixed size. أما الـ linear access والـ extra memory فدول عيوب الـ linked list (L1، L5).` },
+      { why: `الـ push() بتضيف عند الـ top (L2).` },
+      { why: `الإجابة النموذجية: False؛ الإضافة عند الـ rear والمسح عند الـ front (L3).` },
+      { why: `Last-In-First-Out (L2).` },
+    ] },
+    { items: [
+      { ans: `<pre>bool isEmpty(int top)
+{
+    if (top == -1) return true;
+    else return false;
+}
+int pop()
+{
+    if (isEmpty(top)) { cout &lt;&lt; "Stack underflow"; return -1; }
+    else
+    { int item = stack_arr[top]; top = top - 1; return item; }
+}</pre>(الإجابة النموذجية الرسمية، L2.) الفكرة: لو top == -1 يبقى فاضي (underflow)، غير كده خد stack_arr[top] وقلّل الـ top.` },
+      { ans: `<pre>bool isFull(int tail)
+{
+    if (tail == maxsize - 1) return true;
+    else return false;
+}
+void enqueue(int item)
+{
+    if (isFull(tail)) { cout &lt;&lt; "\\nQueue is full"; return; }
+    else
+    {
+        if (head == -1) head = 0;
+        tail = tail + 1;
+        queue[tail] = item;
+    }
+}</pre>(الإجابة النموذجية الرسمية، L3.) الفكرة: لو tail == maxsize - 1 يبقى full، غير كده لو ده أول عنصر خلي head = 0، وزوّد الـ tail وخزّن.` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Linkedlist
+{
+public:
+    Node *head;
+    Linkedlist() { head = NULL; }
+    bool isEmpty() { return head == NULL; }
+    void insertatend(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        newnode-&gt;next = NULL;
+        if (isEmpty()) { head = newnode; return; }   // first node
+        Node *temp1 = head;
+        while (temp1-&gt;next != NULL) temp1 = temp1-&gt;next;
+        temp1-&gt;next = newnode;
+    }
+};
+int main()
+{
+    Linkedlist list;
+    list.insertatend(7);
+    list.insertatend(5);       // head -&gt; 7 -&gt; 5 -&gt; NULL
+    return 0;
+}</pre>ملحوظة: الإجابة الرسمية بتنادي insertatbeginning في الـ main (مش متطابقة مع السؤال) ومفيهاش check للـ list الفاضية في insertatend (L5).` },
+    ] },
+    { items: [
+      { why: `الإضافة بتبقى عند الـ rear (tail) (L3).` },
+      { why: `الإجابة النموذجية: linear access and extra memory (L5).` },
+      { why: `الـ pop() بتشيل العنصر اللي فوق (L2).` },
+      { why: `الاتنين بيحصلوا عند الـ top (L2).` },
+      { why: `الـ stack هو LIFO (الإجابة الرسمية كاتبة FILO، ونفس المعنى)؛ الـ FIFO ده الـ queue (L2).` },
+    ] },
+    { items: [
+      { ans: `<pre>bool isFull(int top)
+{
+    if (top == MAXSIZE - 1) return true;
+    else return false;
+}
+void push(int item)
+{
+    if (isFull(top)) cout &lt;&lt; "Stack overflow";
+    else { top = top + 1; stack_arr[top] = item; }
+}</pre>(الإجابة النموذجية الرسمية، L2.) الفكرة: لو top == MAXSIZE - 1 يبقى overflow، غير كده زوّد الـ top الأول وبعدين خزّن.` },
+      { ans: `<pre>bool isEmpty(int head)
+{
+    if (head == -1 || head &gt; tail) return true;
+    else return false;
+}
+int dequeue()
+{
+    int element;
+    if (isEmpty(head)) { cout &lt;&lt; "Queue Underflow "; return -1; }
+    else { element = queue[head]; head++; }
+    return element;
+}</pre>(الإجابة النموذجية الرسمية، L3.) الفكرة: لو head == -1 أو head &gt; tail يبقى فاضي (underflow)، غير كده خد queue[head] وزوّد الـ head.` },
+      { ans: `<pre>class Node
+{
+public:
+    float data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Linkedlist
+{
+public:
+    Node *head;
+    Linkedlist() { head = NULL; }
+    bool isEmpty() { return head == NULL; }
+    void insertatbeginning(float item)      // float, not int
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        if (isEmpty()) { newnode-&gt;next = NULL; head = newnode; }
+        else { newnode-&gt;next = head; head = newnode; }
+    }
+};
+int main()
+{
+    Linkedlist list;
+    list.insertatbeginning(8.5);
+    list.insertatbeginning(5.3);   // head -&gt; 5.3 -&gt; 8.5 -&gt; NULL
+    return 0;
+}</pre>الإجابة الرسمية بتستخدم <code>insertatbeginning(int item)</code> (وده كان هيخزن 8 و5) وبتنادي insertatend في الـ main؛ والاتنين اتصلحوا هنا (L5). خلي بالك: بنضيف 8.5 الأول وبعدين 5.3 في الأول، فالـ 5.3 بتبقى الـ head.` },
+    ] },
+  ] },
+  // Summer Exam 2022/2023
+  { sections: [
+    { items: [
+      { ans: `<pre>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+struct Student {
+    string name;
+    float degree[4];
+    float total;
+};
+int main()
+{
+    Student s[6];
+    float avg[4] = {0, 0, 0, 0};
+    for (int i = 0; i &lt; 6; i++)
+    {
+        cout &lt;&lt; "Enter name and 4 degrees of student " &lt;&lt; i + 1 &lt;&lt; ": ";
+        cin &gt;&gt; s[i].name;
+        s[i].total = 0;
+        for (int j = 0; j &lt; 4; j++)
+        {
+            cin &gt;&gt; s[i].degree[j];
+            s[i].total += s[i].degree[j];   // total of each student
+            avg[j] += s[i].degree[j];       // sum of each subject
+        }
+    }
+    for (int j = 0; j &lt; 4; j++)
+        cout &lt;&lt; "Average of subject " &lt;&lt; j + 1 &lt;&lt; " = " &lt;&lt; avg[j] / 6 &lt;&lt; endl;
+    for (int i = 0; i &lt; 6; i++)
+        cout &lt;&lt; "Total of " &lt;&lt; s[i].name &lt;&lt; " = " &lt;&lt; s[i].total &lt;&lt; endl;
+    return 0;
+}</pre>الناتج بقيم الجدول (اتشغل بـ g++): متوسطات المواد 62.5، 73.8333، 70، 66.6667؛ والمجاميع Ahmed 292، Mohamed 309، Halaa 236.5، Dina 290، Abas 240، Hoda 270.5 (L1).` },
+      { ans: `استخدم الـ classes بتوع Node وQueue من L7 (الـ dequeue بتشيل من الـ front، والـ enqueue(50) بتضيف عند الـ rear):<pre>void enqueue(int item)
+{
+    Node *newnode = new Node();
+    newnode-&gt;data = item;
+    newnode-&gt;next = NULL;
+    if (front == NULL) { front = newnode; rear = newnode; }
+    else { rear-&gt;next = newnode; rear = newnode; }
+}
+int dequeue()
+{
+    if (front == NULL) { cout &lt;&lt; "Queue is empty" &lt;&lt; endl; return 0; }
+    Node *temp = front;
+    int value = front-&gt;data;
+    front = front-&gt;next;
+    if (front == NULL) rear = NULL;
+    delete temp;
+    return value;
+}
+int main()
+{
+    Queue q;
+    q.enqueue(10); q.enqueue(20);                // some existing items
+    cout &lt;&lt; "Removed " &lt;&lt; q.dequeue() &lt;&lt; endl;  // removes 10 (front)
+    q.enqueue(50);                               // 50 joins at the rear: 20 50
+    return 0;
+}</pre>` },
+      { ans: `الـ linked stack class بتاع L6؛ والـ main: <code>s.push(50); s.push(70); cout &lt;&lt; s.pop();</code> بتطبع 70 لأن آخر node اتعملها push هي اللي فوق (top ← 70 ← 50 ← NULL، وبعد الـ pop الـ top ← 50). الكود كامل: شوف Final 2024/25 Q3.` },
+      { ans: `<pre>#include &lt;iostream&gt;
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+    Node() { data = 0; next = NULL; }
+};
+class Linkedlist
+{
+public:
+    Node *head;
+    Linkedlist() { head = NULL; }
+    bool isEmpty() { return head == NULL; }
+    void insertsorted(int item)
+    {
+        Node *newnode = new Node();
+        newnode-&gt;data = item;
+        if (isEmpty() || item &lt; head-&gt;data)
+        { newnode-&gt;next = head; head = newnode; }
+        else
+        {
+            Node *temp = head;
+            while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)
+                temp = temp-&gt;next;
+            newnode-&gt;next = temp-&gt;next;
+            temp-&gt;next = newnode;
+        }
+    }
+    void display()
+    {
+        for (Node *t = head; t != NULL; t = t-&gt;next) cout &lt;&lt; t-&gt;data &lt;&lt; " ";
+        cout &lt;&lt; endl;
+    }
+};
+int main()
+{
+    Linkedlist list;
+    list.insertsorted(10); list.insertsorted(20); list.insertsorted(30);
+    list.insertsorted(25);
+    list.display();          // 10 20 25 30
+    return 0;
+}</pre>(L5؛ اتجرب بـ g++.) الفكرة: لو الـ list فاضية أو القيمة أصغر من الـ head ضيفها في الأول، غير كده امشي لحد الـ node اللي قبل مكانها واربطها؛ فإضافة 25 بتدّي 10 20 25 30.` },
+    ] },
+  ] },
+  // Final Exam 2022/2023
+  { sections: [
+    { items: [
+      { why: `إنك تعمل push على stack مليان ده stack overflow (L2).` },
+      { why: `الـ isFull بتشيك على tail == maxsize - 1 (L3).` },
+      { why: `الـ stack بيمشي بـ LIFO (L2).` },
+      { why: `الـ Trees دي non-linear (L1، L9).` },
+      { why: `الـ linear queue مش بيقدر يرجع يستخدم الخانات اللي فضيت بالـ dequeue (L3).` },
+      { why: `الـ Reverse inorder بيزور الـ keys الأكبر الأول (L9).` },
+      { why: `المحاضرة بتبدأ الـ front والـ rear بـ -1 وبترجعهم لـ -1 (L3).` },
+      { why: `الـ root بيبقى الأول في الـ preorder والأخير في الـ postorder؛ وبيتطابقوا بس لو فيه node واحدة (L9).` },
+      { why: `الـ Top بيبدأ من -1، فزوّد الأول وبعدين خزّن (L2).` },
+      { why: `الـ Keys اللي &lt; 45: 15، 8، 5، 12، 18، 10، 16 (7). والـ Keys اللي &gt; 45: 56، 65، 47، 73، 50، 61 (6). اتجرب بـ g++ (L9).` },
+    ] },
+    { items: [
+      { why: `بيبقى full كمان لما الـ rear يبقى ورا الـ front بواحد على طول (حالة اللفّة) (L3).` },
+      { why: `الـ Keys بتتبعتر حسب الـ hash function (scatter table) (L10).` },
+      { why: `الـ enqueue بتقدّم الـ rear (L3).` },
+      { why: `الـ next لازم يبقى pointer (Node *next;)، والـ members محتاجة ; بينهم، والـ class محتاج ; في الآخر (وpublic:) (L5).` },
+      { why: `ده تعريف الـ collision (L10).` },
+      { why: `الـ inorder بس هو اللي بيطلّع ترتيب تصاعدي (L9).` },
+      { why: `list واحدة بـ top pointer كفاية (L6).` },
+      { why: `بس لما N تبقى آخر node (L8).` },
+      { why: `الـ Postorder = left، right، parent (L9).` },
+      { why: `الإضافة عند الـ rear؛ والمسح عند الـ front (L7).` },
+    ] },
+    { items: [
+      { ans: `الـ Home addresses بـ k mod 11: 14→3, 17→6, 25→3, 37→4, 34→1, 16→5.<br><b>Linear probing</b> (h1 + i) mod 11: 14→3؛ 17→6؛ 25: الـ 3 مشغولة ← 4؛ 37: الـ 4 مشغولة ← 5؛ 34→1؛ 16: الـ 5 مشغولة، والـ 6 مشغولة ← 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table><b>Quadratic probing</b> (معادلة المحاضرة (h1 + i + i²) mod 11): 14→3؛ 17→6؛ 25: i=0 ← 3 مشغولة، i=1 ← 3+1+1 = 5؛ 37: i=0 ← 4 (فاضية)؛ 34→1؛ 16: i=0 ← 5 مشغولة (بـ 25)، i=1 ← 5+2 = 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>37</td><td>25</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table>لو استخدمت شكل الكتاب (h1 + i²) بدلها: 25 ← 4، 37 ← 4 مشغولة ← 5، 16 ← 5 مشغولة، 6 مشغولة، 5+4 = 9 ← slot 9 (الـ table: 1:34، 3:14، 4:25، 5:37، 6:17، 9:16). خلي بالك: اكتب المعادلة اللي انت مستخدمها (L10).` },
+      { ans: `(i) <b>Inorder</b>: D H B L K A P R M X Z<br><b>Postorder</b>: H D L K B P R Z X M A<br>(الـ Preorder للمراجعة: A B D H K L M R P X Z؛ اتجرب بـ g++.)<br>(ii)<pre>void preorder(Node *temp)
+{
+    if (temp == NULL) { return; }
+    cout &lt;&lt; temp-&gt;data &lt;&lt; "\\t";   // visit parent
+    preorder(temp-&gt;left);           // then left subtree
+    preorder(temp-&gt;right);          // then right subtree
+}</pre>(L9) الفكرة: زور الـ parent الأول (اطبعه)، وبعدين الـ left subtree، وبعدين الـ right subtree.` },
+      { ans: `الـ Trace: enqueue(10) ← head = 0، tail = 0. enqueue(20) ← tail = 1. بيطبع <b>Head = 0Tail = 1</b>. enqueue(30) ← tail = 2. الـ dequeue() بترجع 10، وhead = 1 ← بيطبع <b>10</b>. x = dequeue() = 20، وhead = 2. بيطبع <b>Head = 2Tail = 2</b>.<br>الـ Output:<pre>Head = 0Tail = 1
+10
+Head = 2Tail = 2</pre>لو استخدمت الـ enQueue/deQueue بتوع المحاضرة (اللي بيطبعوا رسايل خاصة بيهم)، الـ output كامل هيبقى (اتشغل بـ g++):<pre>Enqueued element: 10
+Enqueued element: 20
+Head = 0Tail = 1
+Enqueued element: 30
+Dequeued element: 10
+10
+Dequeued element: 20
+Head = 2Tail = 2</pre>(L3)` },
+      { ans: `<pre>void enqueue(int item)              // call enqueue(50)
+{
+    Node *newnode = new Node();
+    newnode-&gt;data = item;
+    newnode-&gt;next = NULL;
+    if (front == NULL &amp;&amp; rear == NULL) { front = newnode; rear = newnode; }
+    else { rear-&gt;next = newnode; rear = newnode; }
+}
+int dequeue()
+{
+    if (front == NULL) { cout &lt;&lt; "Queue is empty" &lt;&lt; endl; return 0; }
+    Node *temp = front;
+    int value = front-&gt;data;
+    front = front-&gt;next;
+    if (front == NULL) rear = NULL;
+    delete temp;
+    return value;
+}</pre>(L7) الفكرة: الـ dequeue بتشيل من الـ front ولو الـ queue فضي بتخلي rear = NULL؛ والـ enqueue(50) بتضيف عند الـ rear.` },
+      { ans: `<pre>void insertsorted(int item)
+{
+    Node *newnode = new Node();     // Node has data, next, prev
+    newnode-&gt;data = item;
+    if (head == NULL)
+        head = newnode;
+    else if (item &lt; head-&gt;data)
+    {
+        newnode-&gt;next = head;
+        head-&gt;prev = newnode;
+        head = newnode;
+    }
+    else
+    {
+        Node *temp = head;
+        while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)
+            temp = temp-&gt;next;
+        newnode-&gt;next = temp-&gt;next;
+        newnode-&gt;prev = temp;
+        if (temp-&gt;next != NULL) temp-&gt;next-&gt;prev = newnode;
+        temp-&gt;next = newnode;
+    }
+}</pre>(L8؛ اتجربت بـ g++.) الفكرة: نفس الـ singly بس لازم تظبط الـ prev: الـ newnode->prev = temp، والـ node اللي بعدها (لو موجودة) الـ prev بتاعها يشاور على الـ newnode.` },
+      { ans: `<pre>void removeAll()            // inside class Stack
+{
+    if (top == NULL) { cout &lt;&lt; "Stack is empty" &lt;&lt; endl; return; }
+    while (top != NULL)
+    {
+        Node *temp = top;
+        cout &lt;&lt; "Popped " &lt;&lt; temp-&gt;data &lt;&lt; endl;
+        top = top-&gt;next;
+        delete temp;
+    }
+}</pre>الـ class كامل بالـ push والـ main: شوف Summer 2023/24 (60 marks) Q3 (L6). الفكرة: لو فاضي اطبع رسالة، غير كده فضل اعمل pop للـ top وفضّي الـ memory لحد ما الـ top يبقى NULL.` },
+    ] },
+  ] },
+];

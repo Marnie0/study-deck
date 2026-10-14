@@ -1,0 +1,1086 @@
+window.AR = window.AR || {};
+AR.micro = { lectures: {}, exams: [] };
+
+AR.micro.lectures["1"] = {
+  notes: [
+    { h: `الـ hardware والـ software والـ compiler`, pts: [
+      `الـ <b>Computer hardware</b> عشان هو جزء من machine، مابيفهمش غير حاجتين بس: <b>on و off</b>. الفكرة دي (on/off) اسمها <b>binary</b>.`,
+      `الـ <b>Computer software</b> بيترجم الأفكار والأوامر اللي البني آدم بيفهمها لحاجة الـ hardware يقدر ينفذها فعلًا. بيقول للكمبيوتر <b>يعمل إيه ويعمله فين</b>. الأوامر دي اسمها <b>source code</b>.`,
+      `الـ <b>compiler</b> برنامج تاني بيشتغل على الـ source code ويحوّل الأوامر للغة الكمبيوتر بيفهمها. والناتج اسمه <b>executable program</b> (اسم تاني للـ software).`,
+      `<b>تلات أنواع software</b>: الـ <b>System software</b> (برامج بتخلي الـ hardware يشتغل صح)، الـ <b>Application software</b> (برامج بتخلي الـ user يعمل حاجة غير مجرد تشغيل الـ hardware)، والـ <b>Programming software</b> (بتخلي المبرمجين يبنوا software).`
+    ] },
+    { h: `تلات أنواع programming languages` },
+    { h: `الـ Assembly language والـ assembler`, pts: [
+      `الـ Assembly language <b>hardware dependent</b>: كل نوع CPU ليه الـ machine language والـ assembly language بتوعه، فالبرنامج اللي مكتوب لنوع CPU مش هيشتغل على نوع تاني. وعشان كده الشركات المختلفة محتاجة <b>assemblers مختلفة</b>.`,
+      `الـ Assembly ليها <b>نفس الـ structure ونفس الأوامر بتاعة الـ machine language</b>، بس بتخلي المبرمج يستخدم <b>أسامي بدل الأرقام</b> (mnemonics زي MOV و ADD).`,
+      `عشان برنامج الـ assembly يشتغل، لازم يتترجم لـ machine code عن طريق <b>assembler</b>: برنامج بيترجم البرنامج المكتوب بـ low-level language (<b>"source code"</b>) لكود executable (<b>"object code"</b>). الرسمة: Source code (.ASM) → ASSEMBLER → Object code (.OBJ) → Hardware.`,
+      `الـ File extensions (من الـ revision sheet): أي برنامج assembly بيتحفظ <b>.ASM</b>؛ والـ coded object modules بتبقى في ملف <b>.OBJ</b>؛ وبعدين الـ linker بيطلّع الـ <b>.EXE</b>.`,
+      `الـ <b>debugger</b> بيخلي المبرمج يشغّل البرنامج <b>step by step</b> عشان يلاقي المكان بالظبط اللي فيه الـ error.`
+    ] },
+    { h: `الـ Debugger مقابل الـ Assembler (سؤال بييجي كتير جدًا في الامتحان)` },
+    { h: `الـ block diagram بتاع الـ microcomputer`, pts: [
+      `الـ <b>Computer hardware</b> هو مجموعة الـ components الفيزيائية اللي بتكوّن الكمبيوتر.`,
+      `الرسمة المطلوبة: مربع <b>CPU</b> (جواه <b>registers</b>، و<b>ALU | CU | clock</b>)، و<b>Memory Storage Unit</b>، و<b>I/O Device #1</b> و<b>I/O Device #2</b>، وكلهم متوصلين بتلات buses أفقية: الـ <b>data bus</b> (فوق)، الـ <b>control bus</b> (متقطع)، والـ <b>address bus</b> (تحت).`,
+      `الـ <b>CPU</b>: المكان اللي كل الحسابات والـ logic operations بتحصل فيه. جواه عدد محدود من أماكن التخزين اسمها <b>registers</b>، و<b>clock</b> بتردد عالي، و<b>control unit</b>، و<b>arithmetic logic unit</b>.`,
+      `الـ <b>ALU</b>: بيعمل العمليات الحسابية (جمع، طرح) والعمليات المنطقية (AND, OR, NOT).`,
+      `الـ <b>CU</b>: بينظّم ترتيب الخطوات اللي محتاجينها عشان ننفذ الـ machine instructions.`,
+      `الـ <b>Clock</b>: بيعمل synchronize للعمليات الداخلية للـ CPU مع باقي أجزاء السيستم (بيدّي التوقيت الأساسي لشغل الـ processor ولنشاط التحكم في الـ bus).`,
+      `الـ <b>Memory storage unit</b>: المكان اللي الـ instructions والداتا بتفضل فيه وهو البرنامج شغال. بيستقبل طلبات الداتا من الـ CPU، وبينقل الداتا من الـ RAM للـ CPU، ومن الـ CPU للـ memory.`
+    ] },
+    { h: `الـ Buses`, pts: [
+      `الـ <b>bus</b> هو مجموعة <b>أسلاك متوازية (parallel wires)</b> بتنقل الداتا من جزء في الكمبيوتر لجزء تاني.`,
+      `الـ <b>Data bus</b>: بينقل <b>الـ instructions والداتا</b> بين الـ CPU والـ memory.`,
+      `الـ <b>Control bus</b>: بيستخدم <b>binary signals</b> عشان يعمل synchronize لتصرفات كل الأجهزة المتوصلة بالـ system bus.`,
+      `الـ <b>Address bus</b>: شايل <b>الـ addresses</b> بتاعة الـ instructions والداتا لما الـ instruction اللي شغالة دلوقتي تنقل داتا بين الـ CPU والـ memory.`
+    ] },
+    { h: `أنواع الـ memory` },
+    { h: `الـ Registers (مقدمة) والـ Lab 1`, pts: [
+      `الـ <b>register</b> هو <b>مكان تخزين مؤقت سريع جدًا جوه الـ CPU</b>. (في الـ Lab: "a high-speed memory"؛ وكل register ليه طول معين.)`,
+      `Lab 1: الـ assembly language هي low-level language بتشتغل على الـ memory بتاعة الـ processor. إحنا شغالين على موديل الـ processor <b>Intel 8086</b>، باستخدام الـ emulator <b>emu8086</b> (New → empty workspace → تكتب الكود → <b>emulate</b>؛ الـ <b>single step</b> بيشغّل سطر سطر، والـ <b>run</b> بيشغّل البرنامج كله).`,
+      `أنواع الـ registers في الـ Lab: <b>1. General purpose</b> (AX, BX, CX, DX, SI, DI, SP, BP)، <b>2. Special purpose</b> (IP, FLAGS)، <b>3. Segment</b> (CS, DS, ES, SS). التفاصيل في Lecture 2.`
+    ] }
+  ],
+  cards: [
+    `فكرة الـ on/off اللي الـ hardware بيفهمها.`,
+    `أوامر بيكتبها البني آدم بتقول للكمبيوتر يعمل إيه ويعمله فين.`,
+    `بيحوّل الـ source code لـ executable program.`,
+    `System software، programming software، application software.`,
+    `Machine language، assembly language، high-level language.`,
+    `اللغة الأصلية للكمبيوتر: سلسلة من 0's و 1's.`,
+    `Low-level language على بعد خطوة واحدة من الـ machine language؛ بتستخدم أسامي بدل الأرقام؛ وhardware dependent.`,
+    `بيترجم الـ low-level source code لـ executable object code.`,
+    `بيشغّل البرنامج step by step عشان يلاقي مكان الـ error بالظبط؛ سهل في التشغيل وكويس مع البرامج القصيرة.`,
+    `الـ Assembler: صعب التشغيل، overhead أكتر، معزول عن الـ machine، كويس مع البرامج الطويلة. الـ Debugger: العكس بالظبط.`,
+    `Registers، و clock بتردد عالي، و control unit (CU)، و ALU.`,
+    `بينظّم ترتيب الخطوات في تنفيذ الـ machine instructions.`,
+    `بيعمل synchronize لعمليات الـ CPU الداخلية مع باقي أجزاء السيستم.`,
+    `مجموعة أسلاك متوازية بتنقل الداتا من جزء في الكمبيوتر لجزء تاني.`,
+    `بيستخدم binary signals عشان يعمل synchronize لكل الأجهزة المتوصلة بالـ system bus.`,
+    `شايل الـ addresses بتاعة الـ instructions والداتا وقت النقل بين الـ CPU والـ memory.`,
+    `بالـ ultraviolet light من خلال شباك شفاف، بعد ما تشيل الـ chip من البورد.`,
+    `بيتكتب عليه تاني كهربائيًا وهو على البورد، بس ببطء؛ وفيه الـ firmware زي الـ BIOS.`,
+    `بيتكتب مرة واحدة بس، قبل ما يتركّب، باستخدام PROM programmer.`,
+    `الـ .ASM للـ source، والـ .OBJ للـ object modules، والـ .EXE للـ executable.`
+  ],
+  qa: [
+    `<table><tr><th>Debugger</th><th>Assembler</th></tr><tr><td>سهل في التشغيل (Easy to run)</td><td>صعب في التشغيل (Hard to run)</td></tr><tr><td>برامج الـ overhead بتاعها قليل</td><td>الـ program overhead أكتر</td></tr><tr><td>قريب من الـ machine</td><td>معزول عن الـ machine</td></tr><tr><td>كويس مع البرامج القصيرة</td><td>كويس مع البرامج الطويلة</td></tr></table>`,
+    `الـ bus هو مجموعة أسلاك متوازية بتنقل الداتا من جزء في الكمبيوتر لجزء تاني.<br><b>Data bus</b>: بينقل الـ instructions والداتا بين الـ CPU والـ memory.<br><b>Control bus</b>: بيستخدم binary signals عشان يعمل synchronize لتصرفات كل الأجهزة المتوصلة بالـ system bus.<br><b>Address bus</b>: شايل الـ addresses بتاعة الـ instructions والداتا لما الـ instruction اللي بتتنفذ تنقل داتا بين الـ CPU والـ memory.`,
+    `الرسمة: مربع CPU (الـ registers فوق؛ والـ ALU والـ CU والـ clock تحت)، و Memory Storage Unit، و I/O Device #1 و I/O Device #2، وكلهم متعلقين في <b>data bus</b> فوق، ومتوصلين من تحت بـ <b>control bus</b> متقطع والـ <b>address bus</b>.<br>الـ CPU: بيعمل كل الحسابات والـ logic؛ جواه registers و clock و CU و ALU. الـ ALU: العمليات الحسابية والمنطقية. الـ CU: بيرتّب خطوات تنفيذ الـ instructions. الـ Clock: بيعمل synchronize لعمليات الـ CPU مع باقي الأجزاء. الـ Memory storage unit: شايلة الـ instructions والداتا وهو البرنامج شغال، وبتنقل الداتا بين الـ RAM والـ CPU.`,
+    `<b>PROM</b>: الداتا بتتكتب في الـ chip قبل ما تتركّب في الـ circuit، بس بتتكتب <b>مرة واحدة بس</b> باستخدام PROM programmer.<br><b>EPROM</b>: الداتا ممكن <b>تتكتب تاني</b> بإنك تشيل الـ chip من البورد، وتعرّضها لـ ultraviolet light عشان تتمسح، وبعدين تحطها في PROM programmer. فيها شباك صغير شفاف عشان يدخّل الـ UV light، وبتستخدم في الـ prototypes والإنتاج الصغير.`,
+    `<b>EPROM</b>: بتتمسح بإنك تشيل الـ chip وتعرّضها لـ <b>ultraviolet light</b> (من الشباك الشفاف)، وبعدين تتبرمج تاني في PROM programmer؛ بتستخدم في الـ prototypes والإنتاج الصغير.<br><b>EEPROM</b>: بتتكتب تاني <b>كهربائيًا والـ chip لسه على الـ circuit board</b>، بس الكتابة بطيئة؛ بتستخدم عشان تشيل firmware زي الـ BIOS عشان يتعمله update.`,
+    `لأن كل نوع CPU ليه الـ machine language والـ assembly language بتوعه، فبرنامج الـ assembly المكتوب لنوع CPU مش هيشتغل على نوع تاني. وعشان كده الكمبيوترات من شركات مختلفة محتاجة assemblers و assembly languages مختلفة.`,
+    `الـ Software: الـ system software (بيخلي الـ hardware يشتغل صح)، الـ application software (بيخلي الـ users يعملوا tasks)، الـ programming software (بيخلي المبرمجين يبنوا software).<br>الـ Languages: الـ machine language (0s و 1s)، الـ assembly language (low level، أسامي بدل أرقام)، الـ high-level language (machine independent، زي C و FORTRAN و Java).`
+  ],
+  quiz: [
+    [`نوع واحد بس من التلاتة.`, `نوع واحد بس من التلاتة.`, `نوع واحد بس من التلاتة.`, `صح. الـ software بيتقسم لـ system و programming و application software.`],
+    [`نوع واحد بس من التلاتة.`, `نوع واحد بس من التلاتة.`, `نوع واحد بس من التلاتة.`, `صح. Machine و assembly و high-level languages.`],
+    [`صح. الـ Debugger: سهل التشغيل، overhead قليل، قريب من الـ machine، كويس مع البرامج القصيرة.`, `الـ debugger سهل في التشغيل مش صعب.`, `البرامج الطويلة دي بتاعة الـ assembler.`, `ده وصف الـ assembler.`],
+    [`ده الـ debugger.`, `الـ Assemblers كويسة مع البرامج الطويلة مش القصيرة.`, `الـ Assemblers صعبة في التشغيل.`, `صح. صعب التشغيل، overhead أكتر، معزول عن الـ machine، كويس مع البرامج الطويلة.`],
+    [`الـ RAM بتقرا وتكتب بأي ترتيب وبتضيّع الداتا لو الكهربا اتقطعت.`, `صح. ده تعريف الـ ROM في المحاضرة.`, `الـ CPU مش نوع memory.`, `الـ ROM بالظبط هي اللي بتنطبق.`],
+    [`الـ data bus بينقل الـ instructions والداتا.`, `صح. ده تعريف الـ control bus في المحاضرة.`, `الـ address bus شايل addresses.`, `الـ control bus هو اللي بينطبق.`],
+    [`صح. الـ EPROM بتتمسح بالـ UV light من الشباك بتاعها.`, `الـ ROM بتتكتب مرة ومابتتغيرش أبدًا.`, `الـ PROM بتتكتب مرة واحدة بس.`, `الـ RAM بتتكتب كهربائيًا في التشغيل العادي، مش بالـ UV.`],
+    [`مش نوع memory موجود في المحاضرة.`, `الـ PROM بتتكتب مرة واحدة بس.`, `صح. Electrically erasable، وهي على البورد، والكتابة بطيئة.`, `الـ EEPROM بالظبط هي اللي بتنطبق.`],
+    [`صح.`, `الـ PROM هي read only، مش read write.`, `الـ P معناها Programmable مش Portable.`, `الاختيار a صح.`],
+    [`الـ E معناها Erasable (الـ EEPROM هي اللي electrically erasable). الـ key بتاع 2022/23 حط خط تحت الاختيار ده، بس هو غلط.`, `هي read ONLY memory، مش read write.`, `الـ P معناها Programmable، مش portable.`, `صح. EPROM = Erasable Programmable Read Only Memory، ودي مش مكتوبة بالظبط في الاختيارات.`],
+    [`صح.`, `فك الاختصار غلط.`, `الـ E معناها Erasable.`, `الاختيار a صح.`],
+    [`ملف الـ .ASM فيه الـ source code.`, `صح. الـ assembler بيطلّع الـ object code في ملف الـ .OBJ.`, `الـ .EXE ده الـ executable بعد الـ linking.`, `مفيش extension standard بالاسم ده.`],
+    [`صح، بس مش الميزة الوحيدة المذكورة.`, `مذكورة، بس مش لوحدها.`, `مذكورة، بس مش لوحدها.`, `صح حسب الـ revision key.`],
+    [`ده extension بتاع صفحات web.`, `مش الـ extension الـ standard.`, `صح. ملفات الـ assembly source بتستخدم .ASM.`, `مش بيستخدم للـ assembly source.`],
+    [`الـ compiler بيترجم الكود.`, `الـ editor لكتابة الكود.`, `صح.`, `الـ debugger هو اللي بيعمل كده.`],
+    [`صح.`, `الـ digital buses بتستخدم binary signals.`, `binary signals بس.`, `الـ Binary signals هي الصح.`],
+    [`وكمان ليها contents.`, `وكمان ليها address.`, `صح. كل location ليها address و contents.`, `الاتنين بينطبقوا.`],
+    [`عامة أوي.`, `الـ Connectors دي الفيش (plugs).`, `صح. الـ bus هو مجموعة أسلاك متوازية.`, `اختيار ملوش معنى للتمويه.`],
+    [`ده شغل الـ compiler.`, `صح.`, `الـ assembly language بس.`, `الـ Assembly level هي الصح.`],
+    [`الـ Application software هو اللي بيخدم tasks معينة؛ الـ system software بيخلي الـ hardware يشتغل.`, `صح. الـ System software بيخلي الـ hardware يشتغل صح.`],
+    [`صح.`, `ده تعريف المحاضرة بالظبط.`],
+    [`صح. الـ clock بيعمل synchronize لعمليات الـ CPU مع باقي الأجزاء.`, `ده بالظبط دور الـ clock.`],
+    [`صح. تعريف الـ RAM في المحاضرة.`, `ده التعريف بالظبط.`],
+    [`الكتابة بطيئة مش سريعة.`, `صح. الكتابة بطيئة.`],
+    [`بتتكتب <b>قبل</b> ما تتركّب مش بعد.`, `صح. بتتكتب قبل التركيب.`],
+    [`صح.`, `ده مطابق للتعريف.`],
+    [`صح. كل نوع CPU ليه الـ assembly language بتاعته.`, `المحاضرة حاطة خط تحت "hardware dependent".`],
+    [`صح.`, `ده تعريف المحاضرة.`]
+  ],
+  extra: [
+    [`الـ Assembly بيترجمها assembler، مش compiler.`, `صح. الـ Assembly language هي hardware dependent.`, `مكان التخزين ملوش دعوة بإن البرنامج يشتغل على CPU تاني.`, `الـ High-level languages هي اللي machine independent.`],
+    [`الـ ALU بيعمل العمليات الحسابية والمنطقية.`, `الـ clock بيعمل synchronize للعمليات؛ مش بيرتّب خطوات الـ instruction.`, `الـ Registers بتخزن داتا مؤقتًا بس.`, `صح. ده تعريف الـ CU في المحاضرة.`],
+    [`الـ PROM بتتكتب مرة واحدة بس.`, `الـ EPROM لازم تتشال وتتمسح بالـ UV light.`, `صح. بتتكتب تاني كهربائيًا وهي على البورد (ببطء) وبتستخدم للـ BIOS.`, `الـ ROM بتتكتب مرة ومابتتغيرش أبدًا.`],
+    [`صح.`, `الـ data bus بينقل الداتا نفسها.`, `الـ control bus بينقل إشارات الـ synchronization.`, `مش bus من اللي في المحاضرة.`],
+    [`ده صح في جدول المحاضرة.`, `ده صح.`, `ده الاختيار المطلوب (الغلط). الـ debugger كويس مع البرامج <b>القصيرة</b>؛ الـ assembler هو اللي كويس مع الطويلة.`, `ده صح.`],
+    [`هو بيترجم لتحت (لغة أقرب للـ machine)، مش لفوق.`, `صح. الـ Source code بيتترجم لـ object code.`, `مش ناتج أي translator.`, `ملوش علاقة.`],
+    [`ده بيخلي الـ hardware يشتغل صح.`, `ده بيخلي الـ users يعملوا tasks.`, `مش من التلات أنواع اللي في المحاضرة.`, `صح.`],
+    [`صح. الشباك ده بيدخّل الـ UV light اللي بتمسح الـ chip.`, `مش مذكور للـ EPROM.`, `كل الـ chips ليها pins.`, `ملوش علاقة.`],
+    [`حسابات و logic بس.`, `صح.`, `الـ MAR شايل address.`, `الـ data bus بينقل داتا.`],
+    [`أبعد عن الـ machine.`, `بتستخدم 0s و 1s بس.`, `صح.`, `مش نوع programming language هنا.`]
+  ]
+};
+
+AR.micro.lectures["2"] = {
+  notes: [
+    { h: `تقسيم الـ Registers`, pts: [
+      `الـ <b>register</b> هو مكان تخزين مؤقت سريع جدًا جوه الـ CPU.`,
+      `الـ processor فيه registers <b>user-visible</b> (المبرمج يشوفها) و registers <b>user-invisible</b> (control/status).`,
+      `الـ User-visible: <b>General purpose</b>، <b>Special purpose</b>، <b>Segment registers</b>. الـ User-invisible: <b>Program Counter (PC)</b>، <b>MAR</b>، <b>MBR</b>، <b>Instruction Register (IR)</b>.`,
+      `الـ User-visible registers ممكن تبقى general purpose أو ليها استخدام خاص (أرقام fixed/floating-point، addresses، indexes، segment pointers). أما الـ User-invisible registers فبتستخدم عشان <b>تتحكم في شغل الـ CPU</b>.`,
+      `الـ <b>user-visible register</b> هو اللي الـ machine language اللي الـ CPU بينفذها تقدر تشاور عليه (reference). فايدتها إنها بتخلي المبرمج <b>يقلل الرجوع للـ main memory</b> بإنه يستخدم الـ registers صح.`
+    ] },
+    { h: `الـ General purpose registers`, pts: [
+      `أساسًا بتستخدم في <b>الحسابات ونقل الداتا</b>. فيه <b>تمانية</b> في الـ 80x86: <b>EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI</b>. وفيه instructions كتير بتشتغل أحسن مع register معين، أو لازم تستخدمه هو بالذات.`,
+      `كل واحد ممكن تتعامل معاه كقيمة <b>32-bit</b> أو كقيمة <b>16-bit</b>؛ وبعضهم كمان كأجزاء <b>8-bit</b>. الـ EAX حجمه 32 bits؛ والـ 16 bit اللي تحت منه هما <b>AX</b>؛ والـ 8 bits العليا من AX هما <b>AH</b>، والـ 8 bits اللي تحت هما <b>AL</b>.`,
+      `خلي بالك: <b>AX, BX, CX, DX</b> بس هما اللي ليهم أنصاص 8-bit (AH/AL, BH/BL, CH/CL, DH/DL). أما <b>SI, DI, SP, BP</b> <b>مالهمش</b> أنصاص 8-bit: مفيش حاجة اسمها SH/SL، فالـ ESP أو الـ ESI تستخدمهم 16 أو 32 bits بس.`,
+      `مثال الـ Lab: لو AX = 0011000000111001b يبقى AH = 00110000b و AL = 00111001b. ولو غيّرت نص الـ 8-bit، الـ register الـ 16-bit بيتغير معاه.`
+    ] },
+    { h: `دور كل register (Lab 1 + الـ programming model)` },
+    { h: `الـ Segment registers`, pts: [
+      `الـ Segment registers بتستخدم كـ <b>base locations</b> (نقطة بداية) لمناطق في الـ memory متحددة مسبقًا اسمها <b>segments</b>: الـ code segment (instructions البرنامج)، الـ data segment (المتغيرات)، الـ stack segment (المتغيرات المحلية بتاعة الـ functions والـ parameters).`,
+      `الـ <b>CS</b> (Code Segment): بيشاور على الـ segment اللي البرنامج الـ executable (الـ instructions) متخزن فيه.`,
+      `الـ <b>DS</b> (Data Segment): بيشاور على الـ segment اللي الداتا متخزنة فيه.`,
+      `الـ <b>ES</b> (Extra Segment): data segment تاني إضافي.`,
+      `الـ <b>SS</b> (Stack Segment): شايل عنوان البداية بتاع الـ stack segment الشغال دلوقتي. (وفيه كمان FS و GS في الـ 80386 وبعده.)`,
+      `الـ Segment registers هي registers <b>16-bit user-visible</b>. خلي بالك إن DI و SI <b>مش</b> segment registers. والـ Segment registers ماينفعش تستخدمها كـ operands في الـ arithmetic والـ logical instructions.`
+    ] },
+    { h: `الـ Special purpose registers (EIP, EFLAGS)`, pts: [
+      `فيه اتنين special purpose registers: <b>EIP</b> و <b>EFLAGS</b> (32-bit). مابتتعاملش معاهم بنفس طريقة باقي الـ registers؛ الـ CPU هو اللي بيعدّل فيهم مباشرة.`,
+      `الـ <b>EIP (Instruction Pointer)</b>: فيه <b>عنوان الـ instruction الجاية اللي هتتنفذ</b>. فيه instructions معينة (الـ jumps) بتغيّره عشان البرنامج يتفرّع (branch).`,
+      `الـ <b>EFLAGS</b>: bits منفصلة كل واحد فيهم يا إما <b>بيتحكم في شغل الـ CPU</b> يا إما <b>بيعكس نتيجة</b> عملية عملها الـ CPU (حالة نتيجة عملية الـ ALU). بيتابع حالة البيئة اللي البرنامج شغال فيها. والـ instructions تقدر تختبر الـ flags وتغيّرها.`
+    ] },
+    { h: `الـ bits بتاعة الـ EFLAGS` },
+    { h: `الـ User-invisible registers` },
+    { h: `الـ MOV instruction`, pts: [
+      `الـ MOV بتنسخ محتوى register أو memory location (أو immediate data) لـ register أو memory location تاني. الـ Syntax: <code>MOV destination, source</code>.`,
+      `<code>MOV EAX, 100</code> بتنسخ 100 decimal في EAX. <code>MOV BL, 10H</code> بتنسخ 10 hexadecimal في BL. <code>MOV DX, CX</code> بتنسخ محتوى CX في DX.`,
+      `الـ <b>word</b> = <b>2 bytes</b> (16 bits)؛ والـ double word = 4 bytes.`
+    ] }
+  ],
+  cards: [
+    `مكان تخزين مؤقت سريع جدًا جوه الـ CPU.`,
+    `register الـ machine language اللي الـ CPU بينفذها تقدر تشاور عليه؛ بيخلي المبرمج يقلل الرجوع للـ memory.`,
+    `General purpose، special purpose، segment registers.`,
+    `PC، IR، MAR، MBR.`,
+    `EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI.`,
+    `الـ 8 bits العليا / السفلى من AX (اللي هو الـ 16 bit السفلى من EAX).`,
+    `مالهمش. مفيش SL/SH؛ استخدمهم 16 أو 32 bits بس.`,
+    `EIP و EFLAGS (32-bit).`,
+    `عنوان الـ instruction الجاية اللي هتتنفذ.`,
+    `bits بتتحكم في الـ CPU أو بتعكس نتيجة العمليات.`,
+    `عنوان الـ instruction اللي هتتجاب (fetch).`,
+    `آخر instruction اتجابت (fetched).`,
+    `عنوان location في الـ memory.`,
+    `الـ word اللي هيتكتب في الـ memory أو آخر word اتقرا.`,
+    `الـ Code segment: شايل الـ instructions اللي الـ microprocessor بينفذها.`,
+    `الـ Stack segment: عنوان الـ stack segment.`,
+    `عدّاد (counter) للـ LOOP والـ shifts والـ rotates.`,
+    `امتداد لـ AX في الـ MUL/DIV؛ وفيه الباقي (remainder) بعد الـ DIV.`,
+    `Sign، Overflow، Carry، Zero.`,
+    `2 bytes.`
+  ],
+  qa: [
+    `الـ user-visible register هو register الـ machine language اللي الـ CPU بينفذها تقدر تشاور عليه. بيخلي المبرمج يقلل الرجوع للـ main memory بإنه يستخدم الـ registers بكفاءة. الأنواع: general purpose (EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI)، special purpose (EIP, EFLAGS)، و segment registers (CS, DS, ES, SS).`,
+    `دي control و status registers بتستخدم عشان تتحكم في شغل الـ CPU، ومبرمج الـ assembly مايقدرش يشاور عليها.<br><b>PC</b>: فيه عنوان الـ instruction اللي هتتجاب.<br><b>IR</b>: فيه آخر instruction اتجابت.<br><b>MAR</b>: فيه عنوان location في الـ memory.<br><b>MBR</b>: فيه word داتا هتتكتب في الـ memory أو آخر word اتقرا.`,
+    `الـ <b>EIP</b> (instruction pointer) فيه عنوان الـ instruction الجاية اللي هتتنفذ؛ والـ jump instructions بتغيّره عشان البرنامج يتفرّع. الـ <b>EFLAGS</b> عبارة عن bits منفصلة كل واحد يا إما بيتحكم في شغل الـ CPU يا إما بيعكس نتيجة عملية عملها الـ CPU.`,
+    `<b>ZF</b>: بيتعمله set لو نتيجة العملية الحسابية = صفر. <b>CF</b>: بيتعمله set لو نتيجة عملية <b>unsigned</b> أكبر من إنها تدخل في الـ destination. <b>SF</b>: بيتعمله set لو النتيجة سالبة. <b>OF</b>: بيتعمله set لو النتيجة (signed) أكبر أو أصغر من إنها تدخل في الـ destination.`,
+    `الـ EAX حجمه 32 bits؛ الـ 16 bit السفلى منه هي AX؛ والـ AX بيتقسم لـ AH (الـ 8 bits العليا) و AL (الـ 8 bits السفلى). ونفس الكلام لـ EBX/BX/BH/BL و ECX/CX/CH/CL و EDX/DX/DH/DL. أما ESP و EBP و ESI و EDI فليهم أجزاء 16-bit بس (SP, BP, SI, DI)؛ مفيش جزء 8-bit زي SL أو SH.`,
+    `الـ CS: الـ code segment، شايل instructions البرنامج. الـ DS: الـ data segment، شايل المتغيرات. الـ ES: الـ extra segment، data segment تاني. الـ SS: الـ stack segment، شايل عنوان البداية بتاع الـ stack الشغال (المتغيرات المحلية، الـ parameters، الـ return addresses).`
+  ],
+  quiz: [
+    [`الـ processor هو الـ CPU كله.`, `الـ ALU بيعمل عمليات، مش بيخزّن.`, `الـ bus بينقل داتا.`, `صح. ده تعريف المحاضرة.`],
+    [`مفيش flag بالاسم ده.`, `الـ C مش معناها "control".`, `صح. CF = carry flag.`, `الـ Carry موجود في الاختيارات.`],
+    [`الـ S مش معناها "status".`, `صح. الـ SF بيتعمله set لما النتيجة تبقى سالبة.`, `مفيش flag بالاسم ده.`, `الـ Sign موجود في الاختيارات.`],
+    [`صح.`, `مفيش flag بالاسم ده.`, `الـ Segment override ده prefix، مش flag.`, `الـ Overflow موجود في الاختيارات.`],
+    [`صح. الـ Program Counter.`, `الـ MAR فيه عنوان memory location (داتا).`, `الـ IR فيه آخر instruction اتجابت.`, `الـ MBR فيه word داتا.`],
+    [`الـ PC فيه عنوان الـ instruction الجاية.`, `الـ MAR فيه memory address.`, `صح. الـ Instruction Register.`, `الـ MBR فيه داتا.`],
+    [`الـ PC بتاع عناوين الـ instructions.`, `الـ MAR فيه العنوان، مش الداتا.`, `الـ IR فيه الـ instruction.`, `صح. الـ Memory Buffer Register.`],
+    [`الـ PC فيه عنوان الـ instruction الجاية بالتحديد.`, `الـ MBR فيه الـ data word.`, `الـ IR فيه الـ instruction.`, `صح. الـ Memory Address Register.`],
+    [`الـ General purpose registers هي EAX, EBX ...`, `صح. الـ PC و IR و MAR و MBR كلهم user invisible.`, `الـ MBR المبرمج مايقدرش يشاور عليه.`, `الـ Special purpose registers هي EIP و EFLAGS.`],
+    [`لأ.`, `الـ PC متصنف تحت الـ user-invisible.`, `صح.`, `في شجرة المحاضرة، الـ PC هو user-invisible.`],
+    [`صح. كلهم general purpose و user-visible.`, `الـ MAR والـ IR دول user-invisible.`, `الـ MBR ده user-invisible.`, `الاختيار a صح.`],
+    [`دول segment registers.`, `صح. EIP و EFLAGS.`, `دول general purpose.`, `الاختيار b صح.`],
+    [`دول Segment registers.`, `الـ EFLAGS ده special purpose.`, `صح.`, `الاختيار c صح.`],
+    [`دول Segment registers.`, `صح.`, `الـ EFLAGS ده special purpose. (الـ key بتاع 2022/23 حط خط تحت b و c الاتنين؛ بس b بس هو الصح.)`, `الاختيار b صح.`],
+    [`دول Segment registers.`, `صح.`, `الـ ES ده segment register.`, `دول special purpose.`],
+    [`صح.`, `الـ FLAGS مش segment ولا general register.`, `دول general purpose.`, `الاختيار a صح.`],
+    [`الـ DS شايل داتا.`, `صح. الـ Code segment.`, `الـ SS ده الـ stack.`, `الـ ES ده extra data segment.`],
+    [`دول بيشيلوا داتا.`, `مش نوع register هنا.`, `دول بيشيلوا الـ segment bases.`, `صح.`],
+    [`الـ Flags بتوصف النتايج، مش الـ memory.`, `صح.`, `ضيقة أوي (مش الجمع بس).`, `ضيقة أوي (مش الطرح بس).`],
+    [`مش register.`, `صح.`, `الـ IR بس.`, `الـ IR هو الصح.`],
+    [`ده وصف الـ accumulator.`, `الـ instructions اللي بتتجاب بتروح الـ IR.`, `ده شغل الـ control unit / الـ clock.`, `صح.`],
+    [`صح.`, `الـ PC أصلًا بيشاور على الـ instruction الجاية مش الحالية.`, `الـ PC مش عدّاد للـ instructions اللي اتنفذت.`, `الاختيار a صح.`],
+    [`الـ SP ده register.`, `لأ.`, `لأ.`, `صح. الـ Registers جوه الـ CPU.`],
+    [`وكمان segment.`, `وكمان general purpose.`, `مش نوع من أنواع المحاضرة.`, `صح.`],
+    [`لأ.`, `لأ.`, `صح (حسب الـ key).`, `لأ.`],
+    [`الـ byte = 8 bits.`, `ده quad word.`, `صح. 16 bits.`, `لأ.`],
+    [`صح.`, `<code>ADD DS, 5</code> مش مسموحة؛ الـ segment registers بتتحمّل بس بـ MOV/POP/LDS وهكذا.`],
+    [`صح.`, `ZF = 1 معناها إن النتيجة كانت صفر.`],
+    [`بيتعمله set لـ <b>واحد</b> لما النتيجة تبقى صفر.`, `صح.`],
+    [`الـ DI والـ SI دول index (general purpose) registers.`, `صح.`],
+    [`صح. الـ AX و BX و CX و DX بس اللي ليهم أنصاص 8-bit.`, `مفيش SPL/SPH في موديل الـ 8086.`],
+    [`الـ SH/SL مش موجودين.`, `صح.`],
+    [`صح. دي شجرة الـ registers في المحاضرة. (فيه طالب علّم False على ورقة 2024/25.)`, `المحاضرة حاطة التلاتة تحت الـ user-visible.`],
+    [`ده الـ IR.`, `صح. الـ MAR فيه memory address.`],
+    [`الـ EX والـ FX مش موجودين.`, `صح.`],
+    [`صح. (نسخة الـ revision اللي بتقول "hold the offset of the stack" تبقى False: الـ offset في الـ SP.)`, `الـ SS شايل الـ stack segment.`],
+    [`الـ PC فيه عنوان الـ instruction الجاية.`, `صح.`],
+    [`صح.`, `SF = 1 لما النتيجة تبقى سالبة.`],
+    [`صح.`, `لأ.`, `لأ.`, `الـ Carry flag هو الصح.`]
+  ],
+  extra: [
+    [`معكوسة: الـ AH هو الـ byte العالي.`, `صح. الـ 8 bits العليا = 30h، والـ 8 bits السفلى = 39h (اللي هي 0011000000111001b بتاعة الـ lab).`, `الـ AH حجمه 8 bits بس.`, `كل نص شايل byte كامل، مش digit واحدة.`],
+    [`الـ AX هو الـ accumulator.`, `الـ BX هو الـ base register.`, `الـ DX امتداد لـ AX في الـ MUL/DIV.`, `صح. الـ CX هو الـ count register.`],
+    [`صح.`, `الـ PC فيه عنوان الـ instruction الجاية.`, `الـ MAR فيه memory address.`, `الـ MBR فيه data word.`],
+    [`الـ Direction flag ده control flag.`, `الـ Trap flag ده system flag.`, `صح. الـ Zero ده status flag.`, `الـ Interrupt flag ده system flag.`],
+    [`الـ byte العالي من BX.`, `صح. الـ SI مالوش أنصاص 8-bit.`, `الـ byte الواطي من DX.`, `الـ Stack pointer.`],
+    [`الـ SF بيبلّغ إن النتيجة سالبة.`, `الـ ZF بيبلّغ إن النتيجة صفر.`, `الـ OF للـ signed overflow.`, `صح. نتيجة unsigned أكبر من الـ destination.`],
+    [`صح. الـ stack segment.`, `ده الـ Code.`, `ده للمتغيرات العامة / الداتا.`, `ده extra data segment.`],
+    [`ده وصف الـ user-invisible registers.`, `صح.`, `الـ Registers جوه الـ CPU، مالهاش علاقة بحجم الـ RAM.`, `مش مذكور.`],
+    [`ده الـ Source index.`, `ده الـ Base pointer.`, `صح.`, `ده الـ Data register.`],
+    [`ده الـ 16 bit العليا.`, `ده الـ AL.`, `ده الـ EAX.`, `صح. الـ AX هو الـ 16 bit السفلى.`]
+  ]
+};
+
+AR.micro.lectures["3"] = {
+  notes: [
+    { h: `يعني إيه addressing mode؟`, pts: [
+      `الـ addressing mode هو <b>الطريقة اللي بنوصل بيها للداتا في الـ memory</b>. الأنواع: register و immediate و direct و displacement addressing (المحاضرة دي)، وبعدها register indirect و indexed و base plus index و base plus index plus displacement (Lecture 4).`,
+      `بنستخدم الـ MOV instruction عشان نوضّح الفرق بين الـ modes دي.`
+    ] },
+    { h: `الـ Register addressing وقيوده`, pts: [
+      `ده <b>أشهر</b> شكل لعنونة الداتا: الـ operands الاتنين registers، زي <code>MOV AX, BX</code> و <code>MOV BL, CL</code>.`,
+      `<b>1. الـ operands الاتنين لازم يبقوا نفس الحجم.</b> <code>MOV EAX, BL</code> و <code>MOV SI, BL</code> غلط؛ و <code>MOV EBX, AX</code> و <code>MOV ECX, AX</code> غلط (32 مقابل 16 bits).`,
+      `<b>2. ماينفعش تنقل داتا من segment register لـ segment register تاني</b> في instruction واحدة: <code>MOV DS, CS</code> و <code>MOV DS, ES</code> و <code>MOV SS, CS</code> كلهم غلط. الحل إنك تعدّي على general register: <code>MOV AX, CS</code> وبعدين <code>MOV DS, AX</code>.`,
+      `<b>3. ماينفعش تغيّر قيمة الـ CS</b>: <code>MOV CS, AX</code> غلط. (بس إنك تقرا منه عادي: <code>MOV AX, CS</code> و <code>MOV AX, DS</code> صح.)`,
+      `<b>4. النقل من memory لـ memory مش مسموح</b> (إلا في الـ string instructions): <code>MOV [DI], [SI]</code> و <code>MOV [AX], [5000H]</code> غلط.`,
+      `<b>5. الـ destination ماينفعش يبقى immediate data</b>: <code>MOV 55H, BL</code> و <code>MOV 100, [DI]</code> مستحيلين. الـ destination يا register يا memory location.`,
+      `النسخ بين أي general registers من نفس الحجم مسموح: <code>MOV EAX, ESP</code> بتنسخ ESP في EAX (والـ source بيفضل بقيمته؛ الـ MOV عمرها ما بتمسح الـ source).`
+    ] },
+    { h: `الـ Immediate addressing`, pts: [
+      `الـ MOV بتنقل نسخة من الـ <b>immediate data</b> (رقم ثابت مكتوب جوه الـ instruction نفسها) لـ register أو memory location. في الـ 8086 بتشتغل على byte أو word.`,
+      `<code>MOV BL, 44</code> (8 bits)، <code>MOV AX, 44H</code> (16 bits)، <code>MOV CH, 100</code> (8 bits)، <code>MOV EAX, 12</code> (32 bits)، <code>MOV EBX, 100B</code> (32 bits، يعني 100 binary).`,
+      `<code>MOV AX, 0005H</code> تبع الـ <b>immediate</b> addressing؛ و <code>MOV AX, BX</code> تبع الـ <b>register</b> addressing.`,
+      `اللواحق بتاعة الأرقام: H = hexadecimal، B = binary (زي <code>MOV AX, 1001b</code>)، ومن غير لاحقة = decimal.`
+    ] },
+    { h: `الـ Direct والـ displacement addressing`, pts: [
+      `الـ <b>Direct addressing</b>: الـ MOV بتنقل داتا بين memory location في الـ data segment وبين <b>AL أو AX أو EAX</b>. <code>MOV AL, [123H]</code> (الـ segment الـ default هو DS)؛ <code>MOV EAX, ES:[123H]</code> (الـ segment اتغيّر غصب لـ ES).`,
+      `الـ <b>Displacement addressing</b>: نفس الفكرة بس بين الـ memory و<b>كل الـ registers التانية</b>. <code>MOV CL, [123H]</code> (DS)؛ <code>MOV EBX, ES:[123H]</code> (ES).`,
+      `(الامتحانات ساعات بتسمّي <code>MOV EAX, [DI]</code> "direct addressing environment"؛ هي في الحقيقة register indirect، شوف Lecture 4، بس حساب العنوان هو هو: DS×10 + DI.)`
+    ] },
+    { h: `الـ Segment:offset والـ physical address` },
+    { h: `أمثلة المحاضرة (DS=1000, ES=1400, DI=150, EAX=1234)` },
+    { h: `الـ Segment overriding`, pts: [
+      `الـ <b>Segment overriding</b>: لما الـ offset register مايتستخدمش مع الـ segment register الـ default بتاعه، وتستخدم segment تاني بإنك تكتبه قبل الـ offset. أمثلة: <code>MOV BL, ES:[1234H]</code>، <code>MOV AL, CS:[BX]</code>، <code>MOV AX, DS:[BP]</code>.`,
+      `الـ default segment <b>ينفع</b> يتعمله override. بس <code>MOV ES:SI, CX</code> <b>غلط (illegal)</b> (الأقواس ناقصة: SI هنا register مش memory operand)؛ الصح <code>MOV ES:[SI], CX</code>.`
+    ] },
+    { h: `Lab 3: أول برامج على الـ emu8086` }
+  ],
+  cards: [
+    `الطريقة اللي بنوصل بيها للداتا في الـ memory.`,
+    `الـ Register addressing.`,
+    `الـ operands الاتنين لازم يبقوا نفس الحجم (MOV EAX, BL غلط).`,
+    `مش مسموح. استخدم MOV AX, CS وبعدين MOV DS, AX.`,
+    `غلط: ماينفعش تغيّر الـ CS.`,
+    `غلط: النقل من memory لـ memory مش مسموح.`,
+    `مستحيلة: الـ destination ماينفعش يبقى immediate data.`,
+    `الـ Immediate addressing.`,
+    `memory في الـ DS مع AL أو AX أو EAX، زي MOV AL, [123H].`,
+    `memory في الـ DS مع كل الـ registers التانية، زي MOV CL, [123H].`,
+    `Segment × 10H + offset.`,
+    `العنوان 11234.`,
+    `العنوان 15234، والـ segment هو ES.`,
+    `إنك تستخدم segment غير الـ default بإنك تكتبه قبل الـ offset، زي ES:[1234H].`,
+    `الـ DS.`,
+    `بيبدّل محتوى AX و BX.`
+  ],
+  qa: [
+    `1) الـ operands الاتنين لازم يبقوا نفس الحجم: MOV EAX, BL و MOV SI, BL غلط.<br>2) ماينفعش تنقل داتا من segment register لـ segment register تاني في instruction واحدة: MOV DS, CS غلط؛ استخدم MOV AX, CS وبعدين MOV DS, AX.<br>3) ماينفعش تغيّر قيمة الـ CS: MOV CS, AX غلط.<br>(وكمان: مفيش نقل من memory لـ memory، والـ destination ماينفعش يبقى immediate data.)`,
+    `MOV AX, 100: مفيش error.<br>MOV EBX, AX: فيها error، الـ EBX (32 bits) والـ AX (16 bits) مختلفين في الحجم.<br>MOV AX, DS: مفيش error (القراية من segment register مسموحة).<br>MOV CS, DS: فيها error، النقل من segment لـ segment مش مسموح، والـ CS ماينفعش يتغير.`,
+    `لما الـ offset register مايتستخدمش مع الـ segment register الـ default بتاعه، ويتستخدم مع segment تاني مكتوب قبل الـ offset. مثال: MOV BL, ES:[1234H] بتستخدم ES بدل الـ DS الـ default: العنوان = ES×10 + 1234.`,
+    `MOV AL, [1234H]: العنوان = DS×10 + 1234 = 10000 + 1234 = <b>11234</b>؛ والـ byte اللي عند 11234 بيتنسخ في AL.<br>MOV BL, ES:[1234H]: العنوان = ES×10 + 1234 = 14000 + 1234 = <b>15234</b>؛ والـ byte اللي عند 15234 بيتنسخ في BL.<br>الرسمة: مربع الـ segment register ×10 والـ offset داخلين على adder (+)، وسهم بيشاور على الـ memory location، وسهم من خانة الـ memory رايح للـ destination register.`,
+    `الاتنين بينقلوا داتا بين memory location في الـ data segment (الـ default هو DS، وينفع يتعمله override) وبين register، باستخدام عنوان ثابت. الـ Direct addressing بيستخدم AL أو AX أو EAX (MOV AL, [123H])؛ والـ displacement addressing بيستخدم كل الـ registers التانية (MOV CL, [123H]).`
+  ],
+  quiz: [
+    [`الـ source رقم ثابت، مش register.`, `مفيش أي access للـ memory.`, `صح. الـ 0005H دي immediate data.`, `مفيش memory operand بـ register-relative.`],
+    [`مفيش memory operand.`, `صح.`, `مفيش index register مستخدم كـ pointer.`, `مفيش رقم ثابت.`],
+    [`register move سليمة.`, `سليمة: تحميل segment register من general register.`, `صح. ده نقل من memory لـ memory (وكمان AX ماينفعش يبقى pointer).`, `سليمة.`],
+    [`مسموح.`, `صح. من memory لـ memory مش مسموح.`, `مسموح.`, `مسموح كـ source (بس الـ immediate عمره ما يبقى destination).`],
+    [`صح. النقل من segment لـ segment مش مسموح.`, `<code>MOV AX, CS</code> مسموحة.`, `مسموحة، نفس الحجم.`, `مسموحة.`],
+    [`مش مسموح في instruction واحدة.`, `الاتجاه غلط، وأصلًا مش مسموحة.`, `الـ MOV عمرها ما بتمسح.`, `صح. ده نقل من segment لـ segment.`],
+    [`صح. نفس الحجم، فهي سليمة.`, `هي بتنسخ الـ 32 bit كلهم.`, `الـ MOV مابتمسحش الـ source.`, `هي سليمة.`],
+    [`صح. الـ CS ماينفعش يتغير بالـ MOV.`, `سليمة.`, `register indirect سليمة.`, `سليمة.`],
+    [`ممكنة.`, `ممكنة.`, `صح. الـ immediate data ماينفعش تبقى destination.`, `ممكنة.`],
+    [`ممكنة.`, `ممكنة.`, `ممكنة.`, `صح. من memory لـ memory.`],
+    [`ممكنة.`, `ممكنة.`, `دي كمان غلط على الـ 8086 الحقيقي (الـ 16-bit)، لأن AX ماينفعش يتستخدم كـ pointer، فالاختيار ده ممكن يتدافع عنه هو كمان.`, `صح (الإجابة المقصودة). الـ immediate value عمرها ما تبقى destination.`],
+    [`مش مسموحة.`, `مش مسموحة.`, `مش مسموحة.`, `صح. من memory لـ memory.`],
+    [`وكمان register.`, `وكمان memory.`, `عمرها ما تبقى destination.`, `صح.`],
+    [`الأرقام متبدلة.`, `صح. 14000 + 1234 = 15234.`, `الـ ES ماتضربش في 10.`, `غلط.`],
+    [`صح. ده segment override.`, `الـ DS هو الـ default، بس هنا اتعمله override.`, `مفيش BP ولا stack.`, `لأ.`],
+    [`مفيش override مكتوب.`, `صح. ده الـ default للـ MOV.`, `بس مع BP/SP.`, `لأ.`],
+    [`كده النتيجة هتتخزن في val3.`, `صح. الـ destination الأول.`, `مفيش mnemonic بالاسم ده.`, `مفيش mnemonic بالاسم ده.`],
+    [`صح. نقل من segment لـ segment.`, `هي غلط فعلًا.`],
+    [`النقل من memory لـ memory غلط.`, `صح.`],
+    [`صح.`, `الـ Segment overriding موجود، زي ES:[1234H].`],
+    [`ينفع يتعمله override.`, `صح.`],
+    [`الـ SI من غير أقواس يبقى register، فـ ES:SI ملهاش معنى.`, `صح. (نفس الفكرة: "MOV ES:SI,CX is incorrect" تبقى True.)`],
+    [`صح.`, `هي غلط فعلًا.`],
+    [`صح. الـ CS ماينفعش يبقى destination للـ MOV (و [CS] مش pointer سليم).`, `هي غلط فعلًا.`],
+    [`الـ CS هنا مستخدم كـ segment override بس؛ الـ CS نفسه مش بيتغير.`, `صح (بمنطق المحاضرة). الـ override بالـ CS مسموح (MOV AL, CS:[BX]). بالظبط كده الـ assembler كان هيحتاج BYTE PTR/WORD PTR عشان يعرف الحجم.`]
+  ],
+  extra: [
+    [`صح. 25000 + 0120.`, `الـ DS ماتضربش في 10H.`, `الـ 0120 اتزحت هي كمان.`, `مكان الرقم غلط.`],
+    [`أرقام زيادة: اضرب في 10H وبعدين اجمع.`, `صح. 3A000 + 0FF0.`, `الـ segment ماتزحش.`, `غلطة في الحساب.`],
+    [`من segment لـ segment.`, `الـ CS ماينفعش يتغير.`, `صح. الـ general register يقدر يحمّل الـ DS.`, `الحجم مش متساوي.`],
+    [`مش مسموحة.`, `ودي كمان مش مسموحة.`, `بتغيّر الـ CS: مش مسموح.`, `صح، زي المحاضرة بالظبط.`],
+    [`صح. الـ Direct addressing للـ AL/AX/EAX؛ أي register تاني = displacement.`, `الـ 123H هنا address جوه أقواس، مش داتا.`, `فيه memory operand.`, `مفيش base ولا index register.`],
+    [`الاتنين 16-bit.`, `صح. 16-bit مقابل 8-bit.`, `الاتنين 32-bit.`, `register 8-bit مع رقم ثابت byte.`],
+    [`الـ XCHG بتبدّلهم.`, `ده كان هيبقى MOV AX, BX.`, `صح.`, `الـ XCHG مابتجمعش.`],
+    [`5 + 3 + 2 غلط: الـ 2 بتتطرح.`, `نسيت تطرح 2.`, `الـ CX بياخد قيمة الـ AX بعد الحساب.`, `صح. 5 + 3 - 2 = 6.`],
+    [`صح. 0FFF0 + 0010 = 10000 (hex).`, `الإزاحة غلط.`, `غلطة في الحساب.`, `الجمع كأنه decimal غلط.`],
+    [`الـ ESP ده general purpose register.`, `صح. الـ MOV بتنسخ؛ عمرها ما بتمسح.`, `الـ 32 bit كلهم بيتنسخوا.`, `الـ MOV مابتغيّرش الـ source.`]
+  ]
+};
+
+AR.micro.lectures["4"] = {
+  notes: [
+    { h: `الـ Register indirect addressing`, pts: [
+      `الداتا بنوصلها في أي memory location عن طريق <b>offset متخزن في واحد من BP, BX, DI, SI</b> (الأربعة دول بس اللي ينفع يبقوا pointers في الـ 16-bit mode؛ <code>[AX]</code> و <code>[CX]</code> و <code>[DX]</code> غلط).`,
+      `<b>الـ default segment لـ BX و DI و SI هو DS</b>: <code>MOV AL, [BX]</code>، <code>MOV BL, [DI]</code>، <code>MOV EAX, [SI]</code>.`,
+      `<b>الـ default segment لـ BP هو SS</b>: <code>MOV AL, [BP]</code> بتستخدم SS.`,
+      `النقل من memory لـ memory مش مسموح إلا في الـ string instructions: <code>MOV [DI], [SI]</code> غلط.`,
+      `الـ Segment overriding بيخليك توصل لـ segments تانية: <code>MOV AL, CS:[BX]</code>، <code>MOV AX, DS:[BP]</code>.`
+    ] },
+    { h: `قاعدة الـ default segment (احفظها)` },
+    { h: `الـ Indexed addressing (register + displacement)`, pts: [
+      `الـ offset هنا = <b>مجموع displacement ثابت + الـ register المحدد</b>. بيستخدم BX و SI و DI (الـ default هو DS) و BP (الـ default هو SS).`,
+      `<code>MOV AL, 20[BX]</code> (DS)، <code>MOV AX, 1000[BP]</code> (SS)، <code>MOV AX, AB[SI]</code>، <code>MOV EAX, ES:100[DI]</code> (override لـ ES).`,
+      `<code>20[BX]</code> هي هي <code>[BX+20]</code>؛ و <code>[BP-2]</code> و <code>[BP+200H]</code> سليمين.`
+    ] },
+    { h: `الـ Base plus index والـ base plus index plus displacement`, pts: [
+      `الـ <b>Base plus index</b>: register <b>base</b> واحد (BP أو BX) + register <b>index</b> واحد (DI أو SI). الـ base غالبًا شايل بداية الـ array، والـ index شايل مكان العنصر بالنسبة للبداية.`,
+      `الـ Offset = base + index؛ وبعدين تجمع segment×10. <code>MOV AL, [BX][SI]</code> (DS)؛ <code>MOV EAX, ES:[BX][SI]</code> (ES).`,
+      `الـ <b>Base indexed plus displacement</b>: <code>MOV AL, disp[BX][SI]</code>، زي <code>100[BX][DI]</code> (DS).`,
+      `خلي بالك: اتنين base (<code>[BX][BP]</code>) أو اتنين index (<code>[SI][DI]</code>) ماينفعش يتجمعوا على الـ 8086 الحقيقي. بس لما الامتحان يسأل عن الـ segment بتاع <code>MOV [BX][BP], AX</code>، الإجابة المقصودة SS (عشان فيه BP).`
+    ] },
+    { h: `أمثلة المحاضرة` },
+    { h: `حل Sheet 1 (DS=1100H, BX=0200H, SI=0500H)` },
+    { h: `سؤال Q14 من الـ Revision sheet (SS=2000H, DS=2200H, SI=1200H, BP=0101H)` },
+    { h: `إزاي ترسم رسمة الـ "memory state"`, pts: [
+      `على الشمال: مربعات الـ registers (EAX, EBX, ECX, EDI/ESI, DS) وقيمها. قيمة الـ segment بتعدّي على "×10" وتدخل دايرة فيها <b>+</b>؛ والـ offset register (والـ displacement) بيدخلوا الـ adder هما كمان.`,
+      `سهم خارج من الـ adder بيشاور على العنوان اللي اتحسب في عمود memory على اليمين (اكتب العنوان، زي 1CE51).`,
+      `وسهم من خانة (أو خانات) الـ memory راجع للـ destination register (AL لـ byte واحد، AX لـ 2 bytes، EAX لـ 4 bytes). لو word، الـ byte اللي في العنوان الأصغر بيروح للنص الواطي (little-endian).`
+    ] }
+  ],
+  cards: [
+    `BP و BX و DI و SI.`,
+    `الـ DS.`,
+    `الـ SS.`,
+    `Segment override: CS×10 + BX.`,
+    `Displacement + register (BX و SI و DI → DS؛ BP → SS).`,
+    `BX و BP.`,
+    `SI و DI.`,
+    `Base + index، وبعدين + segment×10.`,
+    `1CE51.`,
+    `1CF51.`,
+    `10250.`,
+    `(DS×10) + DI + 100.`,
+    `الـ SS.`,
+    `الـ DS.`,
+    `سليمة: BP + displacement سالب، والـ segment هو SS.`
+  ],
+  qa: [
+    `الـ offset بتاع الـ memory operand بيبقى متخزن في BP أو BX أو DI أو SI. الـ BX و DI و SI الـ default بتاعهم DS (MOV AL, [BX])؛ والـ BP الـ default بتاعه SS (MOV AL, [BP]). النقل من memory لـ memory مش مسموح إلا في الـ string instructions (MOV [DI], [SI] غلط). والـ Segment overriding بيخليك توصل لـ segments تانية: MOV AL, CS:[BX]، MOV AX, DS:[BP].`,
+    `الـ Memory location = DS×10 + disp + base + index = 10000 + 100 + CD01 + 150 = 10000 + 100 + CE51 = <b>1CF51</b>.<br>الرسمة: EBX = CD01، EDI = 150، DS = 1000 (×10) و Disp. 100 داخلين على الـ adder؛ والسهم بيشاور على 1CF51؛ والـ byte اللي هناك بيروح AL.`,
+    `الـ Memory location = DS×10 + base + index = 10000 + CD01 + 150 = 10000 + CE51 = <b>1CE51</b>. والـ byte اللي عند 1CE51 بيتنسخ في AL.`,
+    `a) 11000 + 120 + 500 = <b>11620</b> (الـ EDX بيتخزن في 4 bytes من 11620 لـ 11623).<br>b) 11000 + 100 + 200 + 500 = <b>11800</b>.<br>c) 11000 + 200 + 500 = <b>11700</b>.`,
+    `كلهم فيهم BP، فالـ segment هو SS (14000).<br>a) 14000 + 1500 + 200 = <b>15700</b><br>b) 14000 + 1500 + 100 - 200 = <b>15400</b><br>c) 14000 + 1500 + 100 = <b>15600</b>`,
+    `بيستخدم register base واحد (BX أو BP) و register index واحد (SI أو DI). الـ base غالبًا شايل عنوان بداية الـ array والـ index شايل مكان العنصر بالنسبة للبداية، فلما تزوّد الـ index بتمشي على عناصر الـ array. الـ Offset = base + index؛ والـ default segment هو DS (و SS لو فيه BP).`
+  ],
+  quiz: [
+    [`صح. الـ BP الـ default بتاعه SS.`, `الـ CS للـ code.`, `وجود BP بيغيّر الـ default لـ SS؛ والـ 50 ده displacement.`, `مفيش override مكتوب.`],
+    [`مفيش override.`, `صح. BP → SS.`, `الـ BP مش بيستخدم DS.`, `هي سليمة (من register لـ memory).`],
+    [`ملهاش معنى.`, `ملهاش معنى.`, `الـ DS مش "شايل" الـ displacement.`, `صح. الـ SI الـ default بتاعه DS.`],
+    [`مفيش override.`, `وجود BP في الـ expression بيخليه SS.`, `صح. الـ base هو BP → SS.`, `لأ.`],
+    [`مفيش override.`, `BX لوحده كان هيبقى DS، بس فيه BP.`, `صح (الإجابة المقصودة). BP → SS. خلي بالك: على الـ 8086 الحقيقي ماينفعش تجمع اتنين base registers زي BX+BP.`, `لأ.`],
+    [`مفيش override.`, `فيه BP.`, `صح (الإجابة المقصودة، ونفس الملحوظة اللي فوق).`, `لأ.`],
+    [`الـ DS لازم يتضرب في 10H.`, `صح.`, `الـ default هو DS مش ES.`, `اضرب، ماتجمعش.`],
+    [`صح. 10000 + 100 + CD01 + 150.`, `نسيت الـ segment base اللي هو 10000.`, `الأرقام غلط.`, `الأرقام غلط.`],
+    [`صح. Indexed addressing بـ displacement سالب، والـ segment هو SS.`, `هي سليمة.`],
+    [`هي سليمة.`, `صح.`],
+    [`هي سليمة.`, `صح.`],
+    [`الـ override للـ SS الـ default بتاع BP بـ DS مسموح (MOV AX, DS:[BP] مثال من المحاضرة).`, `صح.`],
+    [`الـ displacement اللي هو 10 ناقص من المعادلة.`, `صح. المفروض تبقى DS×10 + 10 + SI + BC.`]
+  ],
+  extra: [
+    [`صح. 20000 + 300 + 50.`, `الـ DS ماتزحش.`, `الـ SI اتجمع في الخانة الغلط.`, `الـ BX اتزاح بالغلط.`],
+    [`الـ BP بيستخدم SS، مش DS.`, `صح. 30000 + 200 + 10.`, `الـ SS ماتزحش.`, `الـ displacement اتحط غلط.`],
+    [`BX → DS.`, `SI → DS.`, `صح. وجود BP في الـ expression → SS.`, `رقم ثابت بس → DS.`],
+    [`صح. العنوان 12000 + 20 + 100 = 12120؛ والـ byte الواطي الأول.`, `Little-endian: الـ byte الواطي في العنوان الأصغر.`, `الـ DS ماتزحش.`, `الـ displacement 20 اتجمع في المكان الغلط.`],
+    [`مسموح.`, `مسموح.`, `مسموح.`, `صح. BX و BP و SI و DI بس اللي ينفع يبقوا pointers.`],
+    [`صح. 10000 + 50 + F00 + 200 = 11150.`, `الـ DI اتنسي (10000 + F00 + 50).`, `الـ displacement 50 اتنسي.`, `الـ BX اتزاح.`],
+    [`اتنين index registers.`, `اتنين base registers.`, `صح.`, `الـ AX مش base register.`],
+    [`نسيت الـ -200.`, `حساب الـ segment غلط.`, `جمعت 200 بدل ما تطرحها.`, `صح. 14000 + 1500 + 100 - 200 = 15400 (Sheet 1).`],
+    [`الـ Overriding مسموح.`, `صح.`, `هي بتقرا من الـ memory، مش بتحط المجموع.`, `segment واحد بس هو اللي بيتستخدم.`],
+    [`نسيت الـ +1.`, `صح. 40000 + FFF + 1 = 41000.`, `اللزق جنب بعض مش جمع.`, `الـ DS ماتزحش.`]
+  ]
+};
+
+AR.micro.lectures["5"] = {
+  notes: [
+    { h: `الـ stack`, pts: [
+      `الـ PUSH والـ POP بيخزنوا ويرجّعوا داتا من الـ stack memory اللي شغالة بنظام <b>LIFO</b> (Last-In, First-Out): آخر حاجة تدخل هي أول حاجة تطلع. يعني الـ register اللي اتعمله push الأخير لازم يتعمله pop الأول.`,
+      `العنوان الـ default للـ stack instructions هو <b>SS:[SP]</b>. الـ SS شايل الـ stack segment؛ والـ <b>SP شايل الـ offset بتاع قمة الـ stack (top)</b> (آخر قيمة اتعملها push).`,
+      `الوصول للـ stack بيبقى بـ <b>SS و SP مع بعض</b>. والـ stack بيكبر <b>لتحت</b>: من العناوين العالية للعناوين الأقل.`,
+      `الـ Stack instructions بتنقل <b>2 أو 4 bytes</b> حسب حجم الـ register: <code>PUSH AX</code> (2 bytes)، <code>PUSH EAX</code> (4 bytes)، <code>POP BX</code> (2 bytes من الـ stack لـ BX).`,
+      `في البرنامج (الـ lab): <code>.stack 100h</code> بتعرّف stack حجمه 100h. والـ stack كمان بيخزن الـ return addresses بتاعة الـ subroutines، فعدد الـ PUSH والـ POP جوه الـ subroutine لازم يبقى متساوي.`
+    ] },
+    { h: `الـ PUSH`, pts: [
+      `الـ PUSH <b>الأول بتقلل SP</b> بحجم الـ operand، وبعدين تخزن الـ operand عند [SP]. الـ target ممكن يبقى register أو memory operand أو immediate value.`,
+      `الـ push الـ 16-bit: الـ <b>most-significant byte</b> بيروح SS:[SP-1]، والـ <b>least-significant byte</b> بيروح SS:[SP-2]، وبعدين SP = SP - 2. يعني <code>PUSH AX</code>: SS:[SP-1] = AH، SS:[SP-2] = AL، SP = SP - 2.`,
+      `الـ push الـ 32-bit: بيتخزن أربع bytes (الـ MSB الأول، من SP-1 لحد SP-4)، وبعدين SP = SP - 4. مثال: ESP = 00FFFFE8، <code>PUSH EAX</code> بتخلي ESP = 00FFFFE4 وتخزن EAX عند 00FFFFE4.`,
+      `الـ <b>PUSHA</b> بتعمل push للـ registers الـ 16-bit بالترتيب <b>AX, CX, DX, BX, SP, BP, SI, DI</b> (8 words = 16 bytes، فالـ SP بيقل 16). والـ <b>PUSHAD</b> بتعمل push لـ EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI (8 double words = 32 bytes).`,
+      `الـ <b>PUSHF</b> بتعمل push للـ FLAGS register الـ 16-bit؛ والـ <b>POPF</b> بتعمل pop من الـ stack للـ FLAGS.`
+    ] },
+    { h: `الـ POP`, pts: [
+      `الـ POP بتنسخ الداتا اللي عند SS:[SP] للـ register أو الـ memory operand، <b>وبعدين تزوّد SP</b> بـ 2 أو 4. الـ Target: register أو memory (مش immediate؛ و POP CS مش مسموحة).`,
+      `مثال: ESP = 00FFFFE4، <code>POP EAX</code> بتخلي ESP = 00FFFFE8 وتنسخ 4 bytes من الـ stack لـ EAX.`,
+      `الـ <b>POPA</b> بتعمل pop بالترتيب العكسي <b>DI, SI, BP, SP, BX, DX, CX, AX</b>، فبترجّع اللي الـ PUSHA حفظته؛ والـ SP بيزيد 16. والـ <b>POPAD</b> بتعمل pop لـ 8 double words (32 bytes).`,
+      `الـ PUSH أو الـ POP عمرهم ما بيغيّروا SS؛ الـ SP بس هو اللي بيتغير.`
+    ] },
+    { h: `مثال المحاضرة: PUSH AX` },
+    { h: `مثال الـ Revision: POP EAX` },
+    { h: `Sheet 1 Q5: PUSH EAX (EAX=ABCD, SP=0100H, SS=0200H)` },
+    { h: `أمثلة كود Lab 6` }
+  ],
+  cards: [
+    `LIFO: آخر حاجة تدخل أول حاجة تطلع.`,
+    `SS:[SP].`,
+    `الـ offset بتاع قمة الـ stack (عنوان الـ top of stack).`,
+    `عنوان الـ stack segment.`,
+    `SS:[SP-1]=AH، SS:[SP-2]=AL، SP=SP-2.`,
+    `الـ SP بيقل 4.`,
+    `بيزيد 2 (لـ 16-bit) أو 4 (لـ 32-bit).`,
+    `AX, CX, DX, BX, SP, BP, SI, DI.`,
+    `DI, SI, BP, SP, BX, DX, CX, AX.`,
+    `-16 / +16 bytes.`,
+    `8 double words = 32 bytes.`,
+    `push / pop للـ FLAGS register الـ 16-bit.`,
+    `بيكبر لتحت، من العناوين العالية للواطية.`,
+    `العنوان 37FE؛ [37FD]=5A، [37FC]=B3؛ SP=07FC.`,
+    `العنوان 4234، EAX=44332211، SP=1238.`,
+    `الـ stack.`
+  ],
+  qa: [
+    `الـ PUSH بتقلل SP بحجم الـ operand (2 أو 4) وتخزن الـ operand عند SS:[SP]؛ في حالة الـ word، الـ most-significant byte بيروح SP-1 والـ least-significant بيروح SP-2. الـ POP بتنسخ الداتا اللي عند SS:[SP] للـ operand وبعدين تزوّد SP بـ 2 أو 4. الـ stack شغال LIFO وبيكبر من العناوين العالية للأقل.`,
+    `الـ Memory location = SS×10 + SP = 3000 + 07FE = <b>37FE</b>.<br>[37FD] = 5A (AH)، [37FC] = B3 (AL)، SP = <b>07FC</b>.<br>الرسمة: SS (300)×10 مع SP داخلين على الـ adder اللي بيشاور على 37FE؛ وأسهم AH و AL رايحة لـ 37FD و 37FC؛ والـ SP القديم 07FE متشطب عليه ومكتوب 07FC.`,
+    `الـ Memory location = SS×10 + SP = 3000 + 1234 = <b>4234</b>.<br>الـ bytes من 4234 لـ 4237 = 11, 22, 33, 44 → EAX = <b>44332211</b> (AL=11، AH=22).<br>SP = 1234 + 4 = <b>1238</b>.`,
+    `العنوان = 2000 + 0100 = 2100. الـ EAX = 0000ABCD: [20FF]=00، [20FE]=00، [20FD]=AB (AH)، [20FC]=CD (AL). والـ SP بيبقى 00FC.`,
+    `الـ PUSHA بتنسخ الـ registers الـ 16-bit AX, CX, DX, BX, SP, BP, SI, DI على الـ stack (الـ SP بيقل 16). والـ POPA بتعمل pop بالترتيب العكسي DI, SI, BP, SP, BX, DX, CX, AX عشان كل register يرجعله قيمته هو بالظبط (LIFO). والـ PUSHAD/POPAD بيعملوا نفس الكلام مع الـ registers الـ 32-bit (32 bytes).`
+  ],
+  quiz: [
+    [`الـ PUSH بتقلل مش بتزوّد.`, `الـ EAX حجمه 4 bytes.`, `الـ PUSH بتقلل مش بتزوّد.`, `صح.`],
+    [`لأ.`, `الـ word حجمه 2 bytes.`, `الـ PUSH بتقلل مش بتزوّد.`, `صح.`],
+    [`الـ POP عمرها ما بتغيّر SS.`, `الـ POP بتزوّد SP.`, `الـ SS مابيتغيرش.`, `صح. الـ ECX حجمه 4 bytes: 100 + 4 = 104.`],
+    [`الـ SS مابيتغيرش.`, `صح (الإجابة المقصودة). الـ SP بيقل 2. خلي بالك: في الـ hex، 100H - 2 = 0FEH؛ الامتحان اتعامل مع 100 على إنها decimal.`, `الـ SS مابيتغيرش.`, `الـ PUSH بتقلل.`],
+    [`الـ SS مابيتغيرش.`, `الـ POP بتزوّد.`, `الـ SS مابيتغيرش.`, `صح. 160 + 2.`],
+    [`الـ PUSH instructions بتقلل SP.`, `بتقلل مش بتزوّد.`, `كتير جدًا.`, `أحسن إجابة موجودة، بس هي مظبوطة بالظبط للـ PUSHAD بس (8 × 4 bytes). الـ PUSHA (8 × 2 bytes) بتقلل SP بـ 16 byte، والاختيار ده مش موجود.`],
+    [`الـ 32 دي عدد الـ bytes.`, `صح. EDI, ESI, EBP, ESP, EBX, EDX, ECX, EAX.`, `لأ.`, `لأ.`],
+    [`صح. 8 registers × 2 bytes.`, `الـ POP بتزوّد.`, `8 registers بس 16 byte.`, `لأ.`],
+    [`بتعمل push للـ flags بس.`, `بتعمل pop للـ flags.`, `صح.`, `بتشيل داتا.`],
+    [`الـ BX حجمه 16 bit، والـ POP بتقرا من الـ stack.`, `صح.`, `هي بتنسخ من الـ stack لـ BX.`, `الاختيار b صح.`],
+    [`محتاج كمان SS.`, `محتاج كمان SP.`, `صح. SS:[SP].`, `الاختيار c صح.`],
+    [`لأ.`, `الـ word حجمه 2 bytes.`, `الـ stack بيكبر لتحت.`, `صح.`],
+    [`ده الـ SS.`, `مبهمة، ومش إجابة الـ key.`, `صح.`, `الـ SP شايل offset، مش داتا.`],
+    [`الـ PUSH هي اللي بتقلل.`, `صح.`, `الـ SS مابيتغيرش.`, `الـ SS مابيتغيرش.`],
+    [`LIFO: آخر واحد يدخل أول واحد يطلع.`, `ملهاش معنى.`, `صح.`, `ملهاش معنى.`],
+    [`الـ return address هيبقى غلط.`, `هتعمل pop للـ return address.`, `صح.`, `لازم يبقوا متوازنين.`],
+    [`ده الـ DS.`, `صح.`, `الـ offset في الـ SP.`, `لأ.`],
+    [`لأ.`, `صح (POP الـ 16-bit).`, `لأ.`, `ده الـ PUSH.`],
+    [`معكوسة.`, `الـ BP مش الـ stack pointer.`, `صح.`, `لأ.`],
+    [`صح.`, `الـ high byte بيروح الأول لـ SP-1.`, `الـ SP بيقل.`, `الاتجاه غلط.`],
+    [`هو بيشاور على الـ top مش الـ bottom.`, `ده مرتبط بالـ IP/PC.`, `ده الـ IP/PC.`, `صح.`],
+    [`الـ calls بترجع بترتيب LIFO، مش زي الـ queue.`, `صح. الـ CALL بتعمل push للـ return address.`, `لأ.`, `الـ Stack هو الصح.`],
+    [`هي SS:[SP] (الـ segment الأول).`, `صح.`],
+    [`الـ PUSH/POP بيغيّروا SP مش SS، والـ PUSH بتقلل.`, `صح.`]
+  ],
+  extra: [
+    [`الـ high byte (AH = 12) هو اللي بيروح SP-1.`, `صح. العنوان 05000 + 0100 = 05100؛ الـ AH عند 050FF، والـ AL عند 050FE.`, `الـ stack بيكبر لتحت.`, `الـ SP لازم يقل 2.`],
+    [`صح. 200 - 2 - 2 + 2 = 1FE.`, `نسيت الـ POP.`, `اتنين push وواحد pop مش متوازنين.`, `الـ PUSH بتقلل SP.`],
+    [`الـ LIFO بيعكسهم.`, `الـ BX بياخد أول قيمة اتعملها push.`, `الـ AX بياخد آخر قيمة اتعملها push.`, `صح. القيم اتبدلت (LIFO).`],
+    [`الـ CX والـ DX بييجوا قبل BX.`, `ده ترتيب الـ POPA.`, `صح.`, `الـ SP والـ BP بييجوا قبل SI و DI.`],
+    [`صح. E8 - 4 = E4، وبعدين E4 - 2 = E2.`, `حسبت أول push بس.`, `اتعاملت مع الاتنين كأنهم 4 bytes.`, `الـ PUSH بتقلل ESP.`],
+    [`الـ POP بتزوّد SP، وأول byte هو الـ low byte.`, `صح. DL = 78، DH = 56؛ و SP + 2.`, `ترتيب الـ bytes غلط.`, `الـ SP لازم يتغير.`],
+    [`صح. لو الـ stack مش متوازن، الـ RET هتنط على عنوان غلط.`, `السرعة ملهاش علاقة.`, `الـ SS مابيتغيرش.`, `ملوش علاقة.`],
+    [`الـ POPF بترجّع الـ flags القديمة.`, `مش شرط؛ هو بيرجع لقيمته القديمة.`, `ملهاش معنى.`, `صح.`],
+    [`الـ lab بيسمح بـ immediate كـ target للـ PUSH.`, `صح. الـ POP محتاجة destination يا register يا memory.`, `الـ memory operand مسموح.`, `مسموحة.`],
+    [`ده 8 bytes بس.`, `الـ PUSHA بتقلل SP.`, `صح. 8 words = 16 bytes = 10H: 100 - 10 = F0.`, `ده كان هيبقى 32 byte (PUSHAD).`]
+  ]
+};
+
+AR.micro.lectures["6"] = {
+  notes: [
+    { h: `الـ LEA (Load Effective Address)`, pts: [
+      `الـ LEA بتحسب الـ source operand بتاعها <b>بنفس طريقة الـ MOV بالظبط</b>، بس بدل ما تحمّل <b>المحتوى</b> اللي في العنوان ده في الـ destination، بتحمّل <b>العنوان نفسه (الـ offset)</b>.`,
+      `<code>LEA BX, [DI]</code> بتحط الـ offset address اللي [DI] بيشاور عليه (يعني قيمة DI نفسها) في BX.`,
+      `أما <code>MOV BX, [DI]</code> فبتحط <b>الداتا المتخزنة</b> في الـ memory location اللي [DI] بيشاور عليه في BX.`
+    ] },
+    { h: `الـ LEA مقابل الـ OFFSET` },
+    { h: `الـ LDS والـ LES والـ LSS`, pts: [
+      `الـ LDS والـ LES والـ LSS بيحمّلوا أي register 16-bit أو 32-bit بـ <b>offset address</b>، وبيحمّلوا الـ segment register <b>DS أو ES أو SS</b> بـ <b>segment address</b>.`,
+      `بيقروا <b>4 bytes</b> من الـ memory بادئين من العنوان اللي اتحسب (الـ default هو DS×10 + offset): <b>أول اتنين bytes</b> (العناوين الأصغر) بيروحوا للـ register (الـ offset)، و<b>الاتنين اللي بعدهم</b> بيروحوا للـ segment register.`,
+      `يعني <code>LES AX, [DI]</code> بتنسخ [DI] و [DI+1] في AX، و [DI+2] و [DI+3] في ES. و <code>LDS AX, [DI]</code> بتغيّر <b>AX و DS الاتنين</b> (مش AX بس).`,
+      `مفيش حاجة اسمها "LCS" (الـ CS ماينفعش يتحمّل بالطريقة دي).`
+    ] },
+    { h: `مثال المحاضرة: LES BX, [DI]` },
+    { h: `مثال المحاضرة: LDS BX, [DI]` },
+    { h: `الـ Revision / Final 2023/24: LDS BX, [DI] (DS=1000H, BX=6F2AH, DI=1000H)` },
+    { h: `Final 2024/25 (e) و 2023/24 (e): LSS / LES وبعدها stack أو string instruction` }
+  ],
+  cards: [
+    `بتحمّل العنوان (الـ offset) بتاع الـ operand، مش محتواه.`,
+    `الـ LEA بتحط الـ offset (قيمة DI) في BX؛ والـ MOV بتحط الداتا اللي عند [DI] في BX.`,
+    `نفس نتيجة LEA BX, LIST بس أسرع: الـ assembler هو اللي بيحسب الـ offset.`,
+    `لأن الـ microprocessor هو اللي بيحسب العنوان وقت التشغيل (run time).`,
+    `الـ operands البسيطة زي LIST.`,
+    `الـ operands المعقدة زي [DI] و LIST[SI].`,
+    `بيحمّلوا register بـ offset و DS / ES / SS بـ segment، من 4 bytes ورا بعض.`,
+    `AX ← [DI],[DI+1]؛ ES ← [DI+2],[DI+3].`,
+    `الـ AX والـ DS.`,
+    `BX = 1AB2، ES = 3C00.`,
+    `BX = 127A، DS = 3000.`,
+    `register بـ offset address، و SS بـ segment address.`
+  ],
+  qa: [
+    `الـ LEA بتحسب الـ effective address بتاع الـ source زي الـ MOV بس بتحمّل العنوان نفسه. <code>LEA BX, [DI]</code> بتحط الـ offset اللي في DI في BX. أما <code>MOV BX, [DI]</code> فبتحمّل الداتا المتخزنة في الـ memory location اللي DI بيشاور عليه في BX.`,
+    `<code>MOV BX, OFFSET LIST</code> و <code>LEA BX, LIST</code> الاتنين بيحمّلوا الـ offset بتاع LIST في BX. الـ OFFSET بيشتغل مع الـ operands البسيطة بس وأسرع، لأن الـ assembler هو اللي بيحسب الـ offset. الـ LEA بيشتغل مع operands معقدة زي [DI] أو LIST[SI] وأبطأ، لأن الـ microprocessor هو اللي بيحسب العنوان وقت تنفيذ الـ instruction.`,
+    `الـ Memory address = DS×10 + DI = A0000 + 200 = <b>A0200</b>.<br>[A0200]=B2، [A0201]=1A، [A0202]=00، [A0203]=3C.<br>BX = <b>1AB2</b>، ES = <b>3C00</b> (الـ ES القديم 200 متشطب).<br>الرسمة: DS×10 + EDI داخلين على الـ adder → A0200؛ وسهم من أول اتنين bytes لـ EBX، ومن آخر اتنين bytes لـ ES.`,
+    `العنوان = 10000 + 1000 = <b>11000</b>. [11000]=7A، [11001]=12، [11002]=00، [11003]=30.<br>BX = <b>127A</b> (كان 6F2A)، DS = <b>3000</b> (كان 1000).`,
+    `بيحمّلوا أي register 16-bit أو 32-bit بـ offset address، والـ segment register (DS أو ES أو SS) بـ segment address، والاتنين جايين من أربع bytes ورا بعض في الـ memory: أول word بيروح للـ register، وتاني word بيروح للـ segment register.`
+  ],
+  quiz: [
+    [`الـ register بياخد offset.`, `معكوسة.`, `صح.`, `الـ SS بياخد segment.`],
+    [`الـ DX بياخد الـ offset.`, `ملهاش معنى.`, `صح. الـ Offset في DX، والـ segment في SS.`, `الـ segment بيروح SS، مش DS.`],
+    [`الـ LDS بتحمّل DS، مش SS.`, `صح.`],
+    [`هي كمان بتغيّر DS.`, `صح.`],
+    [`صح. الـ DS بياخد الـ segment من [DI+2],[DI+3].`, `الـ DS بيتحمّل فعلًا.`],
+    [`صح.`, `ده بالظبط اللي الـ LES بتعمله.`],
+    [`مفيش LCS أصلًا، والوصف ده بتاع الـ LSS.`, `صح.`],
+    [`الـ bytes little-endian: الـ low byte الأول.`, `صح.`, `الـ LES بتحمّل ES.`, `أول word بيروح BX.`],
+    [`صح. A0000 + 200.`, `الـ DS ماتضربش في 10.`, `استخدمت ES.`, `الخانات مش مظبوطة.`],
+    [`الـ LEA الـ microprocessor بيحسبها وقت التشغيل.`, `صح.`, `المحاضرة بتقول إن الـ OFFSET أسرع.`, `ولا واحدة فيهم بتقرا داتا من الـ memory؛ ومع ذلك الـ OFFSET أسرع.`],
+    [`ده الـ MOV BX, [DI].`, `صح. الـ LEA بتحمّل العنوان نفسه.`, `الـ LEA بتحمّل الـ offset بس.`, `الـ LEA بتكتب في BX.`],
+    [`صح.`, `Little-endian: أول byte هو الـ low byte.`, `الـ LDS بتحمّل DS.`, `الـ BX بيتكتب عليه.`]
+  ],
+  extra: [
+    [`ده الـ MOV BX, [DI].`, `لأ.`, `صح. الـ LEA بتحمّل الـ offset نفسه.`, `لأ.`],
+    [`صح. أول word → AX، وتاني word → ES (little-endian).`, `الـ bytes معكوسة.`, `الـ LES بتحمّل ES.`, `أول word بيروح AX.`],
+    [`بتغيّر ES.`, `بتغيّر SS.`, `مفيش segment register.`, `صح.`],
+    [`صح.`, `هي مابتقراش من الـ memory أصلًا.`, `لأ.`, `لأ.`],
+    [`بسيطة: الـ OFFSET ينفع.`, `صح. الـ operands المعقدة محتاجة LEA.`, `بسيطة.`, `بسيطة.`],
+    [`صح. DS×10 + DI بالـ DS <b>القديم</b>.`, `الـ DS ماتزحش.`, `الـ segment ناقص.`, `العنوان بيتحسب بالـ DS قبل ما يتغير.`],
+    [`الـ SS اتحمّل هو كمان.`, `الـ stack بيستخدم SS.`, `لأ.`, `صح. الـ SS والـ SP الاتنين اتحمّلوا، وبعدين الـ PUSH بتقلل SP.`],
+    [`لأ.`, `ده كان هيملا الـ register بس.`, `صح: 2 للـ offset register، و 2 للـ DS (في حالة الـ 16-bit).`, `لأ.`],
+    [`بس لو الـ memory بالصدفة فيها نفس قيمة DI.`, `صح.`, `معكوسة.`, `ولا واحدة فيهم بتغيّر DS.`],
+    [`مفيش LCS.`, `الـ destination لازم يبقى register.`, `صح.`, `الـ operands معكوسة؛ والـ destination لازم يبقى register.`]
+  ]
+};
+
+AR.micro.lectures["7"] = {
+  notes: [
+    { h: `ملخص الـ String instructions` },
+    { h: `القواعد الأساسية`, pts: [
+      `الـ strings الـ <b>Source</b> بتتقري من <b>DS:[SI]</b> (LODS, OUTS). والـ strings الـ <b>Destination</b> بتتكتب في <b>ES:[DI]</b> (STOS, INS).`,
+      `الـ <b>direction flag D</b> (في EFLAGS) هو اللي بيحدد الاتجاه: <b>D=0 positive</b> (الـ SI/DI بيزيدوا)، <b>D=1 negative</b> (بيقلوا). الـ String instructions <b>بتستخدم</b> D بس <b>مابتغيّرهوش</b> (الـ CLD/STD هما اللي بيغيّروه).`,
+      `الـ LODS/STOS <b>مابيأثروش على الـ flags</b> (الـ LODSW مابتأثرش على ZF).`,
+      `الـ String manipulation instructions هي LODS و STOS و INS و OUTS (وكمان MOVS و CMPS و SCAS). خلي بالك: الـ <b>MOV</b> العادية <b>مش</b> string instruction.`,
+      `القراية من input port والكتابة على output port بيستخدموا <b>IN</b> و <b>OUT</b>.`
+    ] },
+    { h: `مثال: LODSW` },
+    { h: `مثال: STOSD (وملحوظة الـ hex)` },
+    { h: `مثال: OUTSB` },
+    { h: `مثال: INSD (بييجي تقريبًا في كل final)` },
+    { h: `Revision: الـ STOSW بعد الـ LES (Final 2023/24)` }
+  ],
+  cards: [
+    `من DS:[SI] لـ AL/AX/EAX.`,
+    `في ES:[DI] من AL/AX/EAX.`,
+    `بتبعت byte/word/dword من DS:[SI] لـ output device.`,
+    `بتخزن داتا جاية من input device في ES:[DI].`,
+    `اتجاه موجب: الـ SI/DI بيزيدوا.`,
+    `اتجاه سالب: الـ SI/DI بيقلوا.`,
+    `AL = DS:[SI]؛ SI = SI ± 1.`,
+    `AX = DS:[SI]؛ SI = SI ± 2.`,
+    `ES:[DI] = EAX؛ DI = DI ± 4.`,
+    `DI = DI - 2.`,
+    `SI = SI - 4.`,
+    `لأ، هي بتستخدمه بس.`,
+    `AX = CDAB.`,
+    `العنوان 2100؛ DI = 0FCH (الـ slide كاتبة 96).`,
+    `الـ IN والـ OUT.`
+  ],
+  qa: [
+    `الـ Memory location = DS×10 + SI = 10000 + 1000 = <b>11000</b>.<br>AL = AB، AH = CD → <b>AX = CDAB</b>.<br>D = 0 يبقى <b>SI = 1002</b>.<br>الرسمة: DS×10 + ESI داخلين على الـ adder → 11000؛ والـ bytes اللي هي AB و CD رايحين لـ EAX؛ والـ ESI القديم 1000 متشطب ومكتوب 1002.`,
+    `الـ INS بتخزن في ES:[DI]. الـ Memory location = ES×10 + DI = 2000 + 100 = <b>2100</b>.<br>الـ 4 bytes اللي هي AB و CD و 12 و 34 الجايين من الـ input device بيتخزنوا بادئين من 2100 (زي رسمة المحاضرة).<br>D = 1 يبقى DI = DI - 4: الـ slide كاتبة <b>96</b>؛ بس في الـ hex 100H - 4 = <b>0FCH</b>.`,
+    `العنوان = ES×10 + DI = 2000 + 100 = <b>2100</b>؛ الـ EAX (4 bytes) بيتخزن هناك؛ DI = DI - 4 = 0FCH (الـ slide: 96). ترتيب الـ bytes على الـ 8086 الحقيقي: [2100]=34، [2101]=12، [2102]=CD، [2103]=AB (الـ slide راسمة AB, CD, 12, 34).`,
+    `الـ D (في EFLAGS) بيحدد الاتجاه اللي الداتا بتتقري أو تتخزن بيه. D = 0: اتجاه موجب، الـ SI/DI بيزيدوا 1 أو 2 أو 4 بعد كل instruction. D = 1: اتجاه سالب، بيقلوا. الـ String instructions بتتأثر بالـ D بس مابتغيّرهوش.`,
+    `الـ LODS بتحمّل AL/AX/EAX من DS:[SI] (SI ± 1/2/4). الـ STOS بتخزن AL/AX/EAX في ES:[DI] (DI ± 1/2/4). الـ OUTS بتبعت داتا من DS:[SI] لـ output device (الـ SI بيتغير). الـ INS بتاخد داتا من input device وتحطها في ES:[DI] (الـ DI بيتغير).`
+  ],
+  quiz: [
+    [`الـ ES:[DI] ده ناحية الـ destination.`, `صح.`, `الـ LODSW بتحمّل word في AX.`, `لأ.`],
+    [`الـ segment غلط.`, `ده الـ destination بتاع STOS.`, `صح.`, `الـ pointer غلط.`],
+    [`الـ key بيقول strings.`, `صح (حسب الـ key).`, `الـ key: strings.`, `الـ Strings موجودة في الاختيارات.`],
+    [`صح.`, `بتحمّل word في AX.`, `بتخزن AL في الـ memory.`, `بتخزن AX.`],
+    [`دول مش port instructions.`, `صح.`, `الـ MOV مابتكتبش على ports.`, `لأ.`],
+    [`الـ OUTS بتستخدم SI.`, `الـ double word حجمه 4 bytes.`, `صح.`, `الـ register والاتجاه الاتنين غلط.`],
+    [`D=1 معناها DI = DI - 2.`, `صح.`],
+    [`صح.`, `LODSW = load string word.`],
+    [`الـ LODS مابتغيّرش الـ flags.`, `صح.`],
+    [`هي بتقرا الـ D بس.`, `صح.`],
+    [`الـ D هو اللي بيحدد هتزوّد ولا تقلل.`, `صح.`],
+    [`الـ MOV مش string instruction (الـ MOVS هي اللي string).`, `صح.`],
+    [`الـ MOV مش string instruction.`, `صح.`],
+    [`الـ LODS بتستخدم DS:[SI].`, `صح.`],
+    [`أول byte بيروح AL.`, `صح.`, `D=0 بيزوّد.`, `ده الـ LODSB.`],
+    [`الـ INS بتستخدم ES، مش DS.`, `صح. 2000 + 100.`, `الـ segment غلط.`, `الـ ES لازم يتضرب في 10.`]
+  ],
+  extra: [
+    [`صح.`, `D = 0 بيزوّد.`, `الـ LODSB بتحمّل byte وبتزوّد 1.`, `ده الـ STOSB.`],
+    [`الـ low byte (34) بيروح للعنوان الأصغر.`, `صح.`, `D = 0 بيزوّد.`, `الـ STOS بتكتب في ES:[DI].`],
+    [`D = 1 بيقلل.`, `طرح decimal؛ في الـ hex يبقى 100 - 4 = FC.`, `دي خطوة byte.`, `صح.`],
+    [`الـ INS بتاخد من device لـ ES:[DI].`, `الـ STOS بتكتب في الـ memory من AL/AX/EAX.`, `صح.`, `الـ LODS بتحمّل register.`],
+    [`صح. Set direction flag (D = 1).`, `بتصفّر D (يبقى increment).`, `بتعمل set للـ carry.`, `بتستخدم D بس مابتغيّرهوش.`],
+    [`الـ INS بتكتب في ES، مش DS.`, `صح. ES×10 + DI.`, `الـ segment ماتزحش.`, `الـ segments مابتتجمعش.`],
+    [`ده ناحية الـ source.`, `مش string pointer.`, `ده الـ Stack.`, `صح.`],
+    [`صح. AL = 55، AH = 66، و SI - 2.`, `ترتيب الـ bytes معكوس.`, `D = 1 بيقلل.`, `ده الـ LODSB.`],
+    [`الـ LODS مابتغيّرش الـ flags.`, `لأ.`, `صح.`, `الـ D بيتقري بس.`],
+    [`دي خطوة الـ byte.`, `صح. 4 bytes لقدام.`, `D = 0 بيزوّد.`, `دي خطوة الـ word.`]
+  ]
+};
+
+AR.micro.lectures["8"] = {
+  notes: [
+    { h: `الـ Unconditional jumps (JMP)`, pts: [
+      `الـ Unconditional transfer instructions بتخلي المبرمج <b>يتخطى أجزاء</b> من البرنامج وينط لأي حتة في الـ memory عشان ياخد الـ instruction الجاية منها.`,
+      `تلات أنواع: <b>short</b> و <b>near</b> و <b>far</b>. افتكر: الـ <b>IP</b> شايل عنوان الـ instruction الجاية؛ والـ <b>CS</b> شايل الـ segment بتاع الكود.`,
+      `الـ Short والـ near jumps بيغيّروا <b>IP بس</b> (نفس الـ code segment). الـ far jump بس هو اللي بيغيّر <b>CS و IP الاتنين</b>.`
+    ] },
+    { h: `أنواع الـ jump التلاتة` },
+    { h: `أمثلة المحاضرة (CS=1000, IP=0002, والـ JMP عند 10000)` },
+    { h: `Revision Q12 / Final 2023/24 (CS=1000, IP=300; الـ bytes: JMP, 04, 02, 30, A4)` },
+    { h: `Revision Q13 / Final 2024/25 (CS=2000, IP=300; الـ bytes: JMP, 1C, 20, A0, 2D)` },
+    { h: `Final 2023/24 (CS=3000H, IP=400H; الـ bytes: JMP, 10, 43, 1C, 20)` },
+    { h: `الـ Interrupts`, pts: [
+      `الـ <b>interrupt</b> هو الـ mechanism اللي الـ processor بينقل بيه التحكم من البرنامج الحالي لبرنامج تاني <b>الـ priority بتاعه أعلى</b>. بيكسر الترتيب العادي لتنفيذ الـ instructions.`,
+      `الـ routine اللي بيتنفذ لما يحصل interrupt (أو كذا interrupt) اسمه <b>Interrupt Service Routine (ISR)</b>. وبعد الـ ISR الـ processor لازم يرجع للبرنامج اللي اتقاطع.`,
+      `<b>خطوات التعامل مع الـ interrupt</b>: (1) تحفظ محتوى الـ PC والحالة الحالية (flags, registers) <b>في الـ stack</b>؛ (2) تحمّل الـ PC بعنوان بداية الـ ISR وتنفذه؛ (3) الـ ISR بيخلص لما الـ return instruction تتنفذ؛ (4) ترجع للنقطة اللي التنفيذ اتقطع عندها.`,
+      `الـ <b>Vectored</b> interrupts ليها vector address ثابت (بداية الـ subroutine)؛ أما الـ <b>non-vectored</b> فالـ vector address بتاعها مش متحدد مسبقًا.`,
+      `الـ <b>Maskable</b> interrupts ينفع تتمنع (تتعطل بـ interrupt mask bit). الـ <b>Non-maskable</b> (NMI) ماينفعش تتعمل mask ولا تتجاهل؛ بتستخدم للحاجات المهمة جدًا زي الـ memory parity أو الـ bus faults؛ وليها priority مطلقة: الـ CPU بيخلص الـ memory cycle الحالية وبعدين ينط على الـ handler.`,
+      `الـ <b>Software</b> interrupts هي instructions خاصة (INT) بتنقل التحكم لـ ISR متحدد مسبقًا. والـ <b>Hardware</b> interrupts هي signals بتتبعت للـ processor.`
+    ] },
+    { h: `الـ LOOP (Lab 7)`, pts: [
+      `الـ LOOP بتكرر block عدد مرات معين. الـ <b>CX</b> بيبقى العدّاد أوتوماتيك: (1) CX = CX - 1؛ (2) لو CX ≠ 0 ينط على الـ label، غير كده يكمّل على الـ instruction اللي بعدها.`,
+      `الـ <b>LOOPE/LOOPZ</b>: تقلل CX، وتنط لو CX ≠ 0 <b>و ZF = 1</b>. الـ <b>LOOPNE/LOOPNZ</b>: تنط لو CX ≠ 0 <b>و ZF = 0</b>.`,
+      `في الـ nested loop: احفظ الـ CX بتاع الـ loop الخارجي في variable (أو على الـ stack) قبل ما تحط العدد بتاع الـ loop الداخلي، ورجّعه قبل الـ LOOP الخارجية.`
+    ] },
+    { h: `برامج الـ LOOP (Lab 7)` },
+    { h: `الـ Procedures: الـ CALL والـ RET (Lab 8)`, pts: [
+      `الـ <b>subroutine (procedure)</b> جزء خاص من البرنامج ينفع تناديه من أي مكان؛ بيعمل وظيفة محتاجينها كتير. هو المقابل في الـ ASM للـ function في Java/C++. الـ Syntax: <code>name PROC ... RET ... name ENDP</code>.`,
+      `الـ <b>CALL</b> بتعمل push للـ offset بتاع الـ instruction الجاية على الـ stack، وبتنسخ عنوان الـ procedure المطلوب في (E)IP.`,
+      `الـ <b>RET</b> بتعمل pop لقمة الـ stack في (E)IP، فترجع للبرنامج الرئيسي. وأي procedure لازم يخلص بـ RET.`,
+      `الـ Directives: الـ <b>END</b> بتعلّم نهاية البرنامج؛ الـ <b>ENDS</b> بتعلّم نهاية logical segment؛ والـ <b>ENDP</b> بتقفل الـ procedure.`
+    ] },
+    { h: `أمثلة الـ Procedures (Lab 8)` }
+  ],
+  cards: [
+    `2 bytes، المدى من +127 لـ -128؛ IPnew = IP + [CS+1].`,
+    `3 bytes، المدى ±32K؛ IPnew = IP + [CS+2][CS+1].`,
+    `5 bytes، أي مكان في الـ real memory؛ الـ bytes 2-3 هما الـ offset، و 4-5 هما الـ segment.`,
+    `الـ IP بس.`,
+    `الـ CS والـ IP.`,
+    `بينقل التحكم من البرنامج الحالي لبرنامج الـ priority بتاعه أعلى.`,
+    `الـ Interrupt service routine: الـ routine اللي بيتنفذ لما يحصل interrupt (أو أكتر).`,
+    `تحفظ الـ PC والحالة الحالية (flags, registers) في الـ stack.`,
+    `ماينفعش يتمنع؛ الـ priority عالية (memory parity، bus faults).`,
+    `الـ vector address بتاعه مش متحدد مسبقًا.`,
+    `بيحصل لما interrupt instruction تتنفذ.`,
+    `Vectored/non-vectored، maskable/non-maskable، software/hardware.`,
+    `الـ CX (تقلله، وتنط لو مش صفر).`,
+    `محتاجين كمان ZF=1 / ZF=0.`,
+    `بتعمل push للـ offset بتاع الـ instruction الجاية، وبتحمّل عنوان الـ procedure في IP.`,
+    `بتعمل pop لقمة الـ stack في IP.`,
+    `الـ END بتقفل البرنامج؛ الـ ENDS بتقفل segment.`,
+    `A4504.`
+  ],
+  qa: [
+    `عنوان البداية = CS×10 = 10000.<br><b>Short</b> (2-byte، +127/-128): IP = 300 + 04 = 304 → <b>10304</b>.<br><b>Near</b> (3-byte، ±32K؛ الـ bytes 2 و 3 هما الـ displacement): IP = 300 + 0204 = 504 → <b>10504</b>.<br><b>Far</b> (5-byte؛ الـ bytes 2-3 offset، و 4-5 segment): offset = 0204، segment = A430 → A4300 + 0204 = <b>A4504</b>.`,
+    `Short: 20000 + 300 + 1C = <b>2031C</b>.<br>Near: 20000 + 300 + 201C = <b>2231C</b>.<br>Far: الـ segment 2DA0 ×10 = 2DA00، والـ offset 201C → <b>2FA1C</b>.`,
+    `1) تحفظ محتوى الـ PC ومعلومات الحالة الحالية (flags, registers) في الـ stack. 2) تحمّل الـ PC بعنوان بداية الـ ISR وتنفذه. 3) الـ ISR بيخلص لما الـ return instruction تتنفذ. 4) ترجع للنقطة في البرنامج اللي اتقاطع اللي التنفيذ وقف عندها.`,
+    `<b>Vectored مقابل non-vectored</b>: الـ vectored ليها vector address ثابت (بداية الـ ISR)؛ والـ non-vectored مالهاش vector address متحدد مسبقًا.<br><b>Maskable مقابل non-maskable</b>: الـ maskable ينفع تتمنع باستخدام interrupt mask bit؛ والـ non-maskable (NMI) ماينفعش تتجاهل، وبتستخدم للأحداث المهمة جدًا زي الـ memory parity أو الـ bus faults، وليها priority مطلقة.<br><b>Software مقابل hardware</b>: الـ software interrupts هي instructions بتنقل التحكم لـ ISR متحدد مسبقًا؛ والـ hardware interrupts هي signals بتتبعت للـ processor.`,
+    `الـ LOOP الأول بتطرح 1 من CX، وبعدين تقارن CX بالصفر؛ لو CX ≠ 0 تنط على الـ label، غير كده التنفيذ يكمّل بعد الـ LOOP.<br><pre>MOV AX, 0\nMOV CX, 10\nL: ADD AX, CX\n   LOOP L      ; AX = 55</pre>`,
+    `الـ CALL بتعمل push للـ offset بتاع الـ instruction الجاية (الـ return address) على الـ stack، وبتنسخ عنوان الـ procedure المطلوب في EIP. والـ RET بتعمل pop لقمة الـ stack في EIP، فالتنفيذ يرجع للـ instruction اللي بعد الـ CALL.`
+  ],
+  quiz: [
+    [`صح.`, `الـ External معناها hardware signals.`, `الـ Hardware interrupts عبارة عن signals.`, `الـ Software هو الصح.`],
+    [`صح.`, `لأ.`, `لأ.`, `لأ.`],
+    [`هو بينقل التحكم للـ ISR.`, `لأ.`, `صح.`, `هو بيرجع بعد الـ ISR.`],
+    [`الـ Maskable ينفع تتمنع.`, `صح.`, `لأ.`, `الـ NMI هو الصح.`],
+    [`تقسيمة واحدة بس.`, `تقسيمة واحدة بس.`, `تقسيمة واحدة بس.`, `صح.`],
+    [`الـ Jumps بتنقل التحكم، بس الـ key بيقول Loop.`, `صح.`, `لأ.`, `لأ.`],
+    [`صح.`, `ده التعريف.`],
+    [`الـ Short والـ near jumps بيغيّروا IP بس. (فيه طالب علّم True على ورقة 2024/25.)`, `صح. الـ far jump بس هو اللي بيغيّر CS.`],
+    [`الـ CS بيتغير في الـ far jumps بس.`, `صح.`],
+    [`هي خمس bytes.`, `صح.`],
+    [`الـ near jump فيها 3 bytes بس؛ الكلام ده وصف الـ far jump.`, `صح.`],
+    [`الـ jump نفسها هي اللي بتحمّل الـ IP الجديد لما تتنفذ.`, `غالبًا دي الإجابة المقصودة: الـ IP بياخد قيمته الجديدة كنتيجة لتنفيذ الـ jump. (السؤال فيه شك: الـ CPU فعلًا بيزوّد IP بعد الـ instruction وقت الـ fetch.)`],
+    [`صح.`, `هو الـ routine اللي بيتنفذ لما يحصل interrupt (أو أكتر).`],
+    [`بتتحفظ في الـ <b>STACK</b> مش الـ heap.`, `صح.`],
+    [`صح.`, `ده التعريف.`],
+    [`الـ LOOP بتستخدم CX.`, `صح.`],
+    [`بتقفل segment.`, `صح.`, `الـ END بس.`, `الـ END هو الصح.`],
+    [`صح.`, `بتقفل البرنامج.`, `الـ ENDS بس.`, `الـ ENDS هو الصح.`],
+    [`ده الـ short jump (displacement 1 byte).`, `صح. 20000 + 300 + 201C.`, `ده الـ far jump.`, `الـ IP ماتجمعش.`],
+    [`صح. 2DA00 + 201C.`, `الـ offset ناقص.`, `الـ bytes بتاعة الـ segment معكوسة.`, `ده الـ near jump.`]
+  ],
+  extra: [
+    [`صح. 40000 + 100 + 20.`, `الـ displacement اتنسي.`, `الـ CS ماتزحش.`, `الـ displacement اتحط في الخانة الغلط.`],
+    [`الـ bytes اتقرت بالترتيب الغلط (3412 بدل 1234).`, `الـ IP ماتجمعش.`, `صح. IP = 100 + 1234 = 1334 → 40000 + 1334.`, `غلطة في الحساب.`],
+    [`الـ segment والـ offset اتلخبطوا.`, `صح. Offset = 0500، segment = 6000 → 60000 + 0500.`, `القراية غلط.`, `الـ offset اتاخد على إنه 5000.`],
+    [`ده الـ near jump.`, `ده الـ far jump.`, `الـ displacement بيبقى signed.`, `صح.`],
+    [`صح. الـ body بيتنفذ 5 مرات: 5 × 2.`, `الـ LOOP بتكرر طول ما CX ≠ 0 بعد ما يقل: يعني 5 لفات.`, `لفة زيادة.`, `هي بتتكرر.`],
+    [`هي بتتكرر 4 مرات.`, `الـ CX بيتغير كل مرة.`, `صح. 4 + 3 + 2 + 1.`, `ناقصة أول لفة.`],
+    [`ده الـ PUSHA.`, `ده الـ PUSHF (أو الـ interrupt).`, `ده بيتحمّل في IP، مش بيتعمله push.`, `صح.`],
+    [`صح.`, `ينفع تتمنع.`, `بتحصل بـ instruction.`, `ده تقسيم على حسب الـ vector address.`],
+    [`لازم CX ≠ 0.`, `صح.`, `ده الـ LOOPNE.`, `الـ CX كمان بيقل وبيتختبر.`],
+    [`دي الخطوة 2.`, `دي بتنهي الـ ISR.`, `صح.`, `الحالة لازم تتحفظ، مش تتمسح.`]
+  ]
+};
+
+AR.micro.lectures["9"] = {
+  notes: [
+    { h: `الـ Arithmetic instructions (Labs 3 و 4)` },
+    { h: `قواعد الـ MUL والـ DIV`, pts: [
+      `<b>لازم تستخدم AX</b> في الضرب والقسمة: الـ MUL والـ DIV بياخدوا operand واحد بس (register أو memory، عمره ما يبقى immediate)؛ والـ operand التاني دايمًا هو AX.`,
+      `يعني كود زي "MOV CX,5 / MUL 3" غلط: لازم <code>MOV AX, 5</code> وبعدين <code>MOV BX, 3</code> و <code>MUL BX</code> → AX = 15.`,
+      `<code>MOV AX, 5 / MOV CX, 2 / DIV CX</code> → AX = 2، DX = 1. و <code>MOV AX, 10 / MOV BX, 2 / DIV BX</code> → AX = 5، DX = 0 (الـ lab بيشرح القسمة كطرح متكرر: 10-2-2-2-2-2 = 0 في 5 خطوات).`,
+      `قبل الـ DIV بـ word، الـ DX لازم يبقى فيه الجزء العالي من المقسوم (عادةً 0).`,
+      `الضرب مقابل الجمع (trade-off): <code>C = 5x + 7</code> بالـ MUL بتستخدم 2 registers و 5 instructions؛ وبالـ ADD المتكرر بتستخدم register واحد و 7 instructions. و <code>C = (3x + 4y) - 14</code>: نسخة الـ MUL فيها 3 registers و 10 instructions؛ ونسخة الـ ADD فيها register واحد و 9 instructions. يعني مش كل مرة الـ MUL أحسن.`
+    ] },
+    { h: `برامج المعادلات في الـ Lab` },
+    { h: `الـ Logical instructions (Labs 4 و 5)` },
+    { h: `الـ NOT والـ NEG والـ TEST`, pts: [
+      `الـ <b>NOT</b> بتقلب الـ 1 لـ 0 والـ 0 لـ 1 (1's complement): <code>MOV AL, 5 / NOT AL</code>: 00000101 → <b>11111010</b> (FAh).`,
+      `الـ <b>NEG</b> بتجيب الـ <b>2's complement</b>: تقلب الـ bits وبعدين تزوّد 1: <code>MOV AL, 5 / NEG AL</code> → 11111011 (FBh = -5).`,
+      `الـ <b>TEST</b> ليها نفس الـ truth table بتاعة الـ AND بس <b>بتأثر على الـ flags بس (ZF)</b>؛ النتيجة مابتتخزنش. لو النتيجة = 0 → ZF = 1؛ ولو النتيجة ≠ 0 → ZF = 0. <code>MOV AX,1 / MOV BX,0 / TEST AX,BX</code> → ZF = 1، والـ AX مابيتغيرش.`,
+      `الأرقام الـ binary لازم تخلص بـ <b>b</b>: <code>MOV AX, 1001b</code>. والـ hex بيخلص بـ h؛ ولو رقم الـ hex بيبدأ بحرف لازم تحط 0 قبله (0FFh).`
+    ] },
+    { h: `الـ Variables (الـ define directives)` },
+    { h: `الـ Shift instructions`, pts: [
+      `الـ Shifting بيحرّك الـ bits شمال أو يمين جوه الـ operand. الـ Syntax: <code>SHL destination, count</code>؛ الـ destination = register أو memory؛ والـ count = immediate أو <b>CL</b>. الـ Shifts والـ rotates بيأثروا على الـ Carry (والـ Overflow) flags.`,
+      `الـ <b>Logical shift</b> بيملا الخانة الجديدة بـ <b>0</b>. الـ <b>Arithmetic shift</b> بيملاها بنسخة من الـ <b>sign bit</b>.`,
+      `الـ <b>SHL</b> (= <b>SAL</b>): shift لليسار، أقل bit بيتملا بـ 0، وأعلى bit بيروح الـ CF. الـ shift لليسار n bits = ضرب في 2ⁿ: <code>MOV DL,5 / SHL DL,1</code> → 10؛ <code>SHL DL,2</code> → 20.`,
+      `الـ <b>SHR</b>: shift لليمين، أعلى bit بيتملا بـ 0، وأقل bit بيروح الـ CF. بيقسم الرقم الـ unsigned على 2ⁿ: DL = 80 (01010000b) → SHR 1 = 40 → SHR 2 = 10.`,
+      `الـ <b>SAR</b>: shift لليمين مع الحفاظ على الإشارة: DL = -80 (10110000b) → SAR 1 = 11011000b = -40 → SAR 2 = 11110110b = -10، و CF = 0.`,
+      `عشان تعمل sign-extend لـ AL في AX: <code>MOV AL,80h / SHL AX,8</code> (AX = 8000h) <code>/ SAR AX,8</code> → AX = FF80h.`
+    ] },
+    { h: `الـ Rotate instructions`, pts: [
+      `الـ <b>ROL</b>: كل bit بيتحرك شمال؛ وأعلى bit بيروح <b>الـ CF وكمان bit 0</b>. مفيش bits بتضيع. <code>AL=11110000b, ROL AL,1</code> → 11100001b، CF = 1.`,
+      `الـ <b>ROR</b>: كل bit بيتحرك يمين؛ وأقل bit بيروح <b>الـ CF وكمان أعلى bit</b>. <code>AL=11110000b, ROR AL,1</code> → 01111000b، CF = 0.`,
+      `تبديل النص العالي (bits 4-7) بالنص الواطي (bits 0-3) في الـ byte: <code>DL=3Fh, ROL DL,4</code> (أو ROR DL,4) → F3h، CF = 1.`,
+      `الـ <b>RCL</b>: shift شمال، <b>الـ CF بيدخل الـ LSB</b>، والـ MSB بيروح الـ CF. <code>CLC / MOV BL,88h / RCL BL,1</code> → BL = 00010000b، CF = 1؛ و <code>RCL BL,1</code> تاني → BL = 00100001b، CF = 0.`,
+      `الـ <b>RCR</b>: shift يمين، الـ CF بيدخل الـ MSB، والـ LSB بيروح الـ CF. <code>STC / MOV AH,10h / RCR AH,1</code> → AH = 10001000b، CF = 0.`,
+      `الـ <b>CLC</b> بتصفّر الـ CF؛ والـ <b>STC</b> بتخليه 1. والـ ROL/ROR/RCL/RCR مش arithmetic instructions.`
+    ] }
+  ],
+  cards: [
+    `جمع بالـ carry: dest + src + CF.`,
+    `طرح بالـ borrow: dest - src - CF (الـ CF هو الـ borrow flag).`,
+    `operand واحد register/memory؛ والـ AX هو الـ operand الضمني وفيه النتيجة.`,
+    `AX = خارج القسمة (quotient)، DX = الباقي (remainder).`,
+    `AX = 2، DX = 1.`,
+    `11111010 (FAh).`,
+    `11111011 = FBh = -5 (2's complement).`,
+    `AND بتغيّر الـ flags بس؛ لو النتيجة 0 → ZF = 1.`,
+    `1 / 2 / 4 / 8 / 10 bytes.`,
+    `الـ Logical بيملا بـ 0؛ والـ arithmetic بيملا بالـ sign bit.`,
+    `ضرب في 2ⁿ.`,
+    `قسمة unsigned على 2ⁿ.`,
+    `هي هي الـ SHL.`,
+    `الـ MSB → الـ CF والـ LSB؛ مفيش bits بتضيع.`,
+    `الـ CF → الـ LSB، والـ MSB → الـ CF.`,
+    `DL = F3h (بيبدّل الـ nibbles)، CF = 1.`,
+    `تصفير / set للـ carry flag.`,
+    `immediate value أو CL.`
+  ],
+  qa: [
+    `<pre>; using MUL          ; using ADD\nMOV AX, 3            MOV AX, x\nMOV BX, x            ADD AX, x\nMUL BX               ADD AX, x\nMOV BX, AX           ADD AX, y\nMOV CX, 4            ADD AX, y\nMOV AX, y            ADD AX, y\nMUL CX               ADD AX, y\nADD BX, AX           SUB AX, 14\nSUB BX, 14           MOV C, AX\nMOV C, BX</pre>نسخة الـ MUL بتستخدم 3 registers و 10 instructions؛ ونسخة الـ ADD بتستخدم register واحد و 9 instructions. الاتنين صح؛ ومش كل مرة الضرب يبقى أحسن، الموضوع trade-off.`,
+    `الـ Logical shift بيملا الخانة الجديدة بـ 0؛ أما الـ arithmetic shift فبيملاها بنسخة من الـ sign bit، فالإشارة بتفضل زي ما هي. الـ SHR على 80 (01010000b) بـ 1 بيدّي 40؛ والـ SAR على -80 (10110000b) بـ 1 بيدّي 11011000b = -40، وبـ 2 كمان بيدّي 11110110b = -10.`,
+    `الـ ROL: الـ bits بتتحرك شمال، والـ MSB بيروح الـ CF والـ LSB. الـ ROR: الـ bits بتتحرك يمين، والـ LSB بيروح الـ CF والـ MSB. الـ RCL: الـ bits بتتحرك شمال من خلال الـ carry: الـ CF بيدخل الـ LSB والـ MSB بيدخل الـ CF. الـ RCR: الـ bits بتتحرك يمين من خلال الـ carry: الـ CF بيدخل الـ MSB والـ LSB بيدخل الـ CF. ومفيش bits بتضيع في أي rotate.`,
+    `الاتنين بيستخدموا AX ضمنيًا. الـ MUL src: AX × src، والنتيجة في AX (أو DX:AX لو الـ operands 16-bit). الـ DIV src: الـ AX (والـ DX كـ high word) ÷ src: AX = خارج القسمة الصحيح، DX = الباقي. والـ operand لازم يبقى register أو memory، فالبرنامج لازم يحمّل AX الأول.`,
+    `الـ NOT بتقلب كل bit (1's complement): 5 = 00000101 تبقى 11111010. أما الـ NEG فبتجيب الـ 2's complement (تقلب وبعدين تزوّد 1)، يعني سالب الرقم: 5 تبقى 11111011 = -5.`
+  ],
+  quiz: [
+    [`الـ MOV بتنسخ داتا.`, `الـ PUSH بتنسخ داتا للـ stack.`, `صح. الـ DAS (decimal adjust after subtraction) دي arithmetic.`, `الـ POP بتنسخ داتا من الـ stack.`],
+    [`صح.`, `بتستخدم val3 بدل val2.`, `الـ val4 لازم تتطرح.`, `ناقصة الـ NEG (و "add ax" ناقصة operand).`],
+    [`Arithmetic.`, `Arithmetic (طرح عشان الـ flags).`, `Arithmetic.`, `صح. الـ ROL دي rotate (bit) instruction.`],
+    [`ينفع يبقى operand.`, `صح. الـ assembler ده برنامج.`, `operand.`, `operand.`],
+    [`صح.`, `لأ.`, `لأ.`, `لأ.`],
+    [`بتتجاهل الـ carry الجاي.`, `صح.`, `الـ ADC بس هي اللي بتجمع الـ CF.`, `الـ ADC هي الصح.`],
+    [`بتطرح 1.`, `مفيش borrow داخل فيها.`, `صح.`, `الـ SBB هي الصح.`],
+    [`بيستخدمه الـ string instructions.`, `صح.`, `لأ.`, `لأ.`],
+    [`صح.`, `الـ CF هو الـ borrow flag في الـ SBB.`],
+    [`صح. كل bit اتقلب.`, `ده الـ NEG (2's complement).`, `زي ما هو؛ بس الـ NOT بتقلب.`, `الـ sign bit بس هو اللي اتقلب.`],
+    [`صح. خارج القسمة في AX، والباقي في DX.`, `معكوسة.`, `القسمة هنا integer بس.`, `الـ DIV بتغيّر AX و DX.`],
+    [`صح.`, `ده الـ SHL (الـ bit 0 اتملا بـ 0).`, `ده الـ ROR.`, `الـ CF بياخد الـ MSB القديم (1).`],
+    [`صح. الـ nibbles اتبدلوا.`, `ده الـ SHL بـ 4.`, `ده الـ SHR بـ 4.`, `الـ rotate بـ 4 بيغيّر القيمة الـ 8-bit إلا لو النصين زي بعض.`]
+  ],
+  extra: [
+    [`صح. 10110100 → 01011010 (CF 0) → 00101101 (CF 0).`, `ده كان هيبقى SAR (بيملا بالإشارة).`, `الـ bitين اللي طلعوا كانوا 0.`, `ده shift لليسار.`],
+    [`ده الـ SHR (بيملا بـ 0).`, `ده shift لليسار.`, `صح. 10010110 → 11001011، والـ sign bit اتنسخ.`, `هي بتتغير.`],
+    [`ده الـ SHL: الـ MSB بيضيع.`, `صح. 10000001 → 00000011؛ الـ MSB بيروح الـ CF والـ bit 0.`, `ده الـ ROR.`, `الـ CF بياخد الـ MSB القديم (1).`],
+    [`الـ CF بيدخل الـ MSB.`, `الـ LSB القديم (1) بيروح الـ CF.`, `الـ CF = 1 دخل الـ MSB.`, `صح. الـ CF القديم (1) → الـ MSB؛ والـ LSB القديم (1) → الـ CF.`],
+    [`صح. 255 + 1 = 256 مش هتدخل في 8 bits.`, `الـ AL حجمه 8 bits.`, `الـ carry الطالع من bit 7 بيعمل set للـ CF.`, `الـ AL بيتغير.`],
+    [`مفيش unsigned carry: 127 + 1 = 128 بتدخل في 8 bits.`, `النتيجة 80h مش صفر.`, `صح. +127 + 1 = -128 في الـ signed: overflow، والنتيجة سالبة.`, `الـ OF والـ SF بيتعملهم set.`],
+    [`معكوسة.`, `صح. 17 = 5 × 3 + 2.`, `الباقي في DX.`, `القسمة integer.`],
+    [`الـ TEST مابتخزنش النتيجة.`, `1 AND 0 = 0، يبقى ZF = 1.`, `الـ AX مابيتغيرش و ZF = 1.`, `صح. الـ flag بس هو اللي بيتغير.`],
+    [`صح. 5 × 2² = 20 (14h).`, `ده shift بـ 1.`, `الـ shift مش جمع.`, `ده shift لليمين.`],
+    [`الـ MUL ماينفعش تاخد immediate، والـ AX لازم يبقى فيه العامل الأول.`, `الـ immediate operands مش مسموحة مع الـ MUL.`, `صح. AX = 28 (1Ch)، DX = 0.`, `الـ AX عمره ما اتحمّل بـ 7.`]
+  ]
+};
+
+AR.micro.exams = [
+  /* Final 2024/25 */
+  { sections: [
+    { items: [
+      { why: `الـ PC شايل عنوان الـ instruction اللي هتتجاب (L2).` },
+      { why: `الـ CF هو الـ carry flag (L2).` },
+      { why: `ده تعريف الـ control bus في المحاضرة (L1).` },
+      { why: `تعريف الـ register (L1, L2).` },
+      { why: `النقل من memory لـ memory مش مسموح (L3).` },
+      { why: `الـ EAX حجمه 4 bytes والـ PUSH بتقلل SP (L5).` },
+      { why: `الـ LODS بتقرا من DS:[SI]؛ ونسخة الـ W بتحمّل AX (L7).` },
+      { why: `الـ POP بتزوّد SP بـ 4 للـ register الـ 32-bit؛ والـ SS عمره ما بيتغير (L5).` },
+      { why: `الـ Software interrupts هي instructions (L8).` },
+      { why: `الـ BP مستخدم كـ base، فالـ default segment هو SS (L4).` }
+    ] },
+    { items: [
+      { why: `شجرة الـ registers في المحاضرة حاطة التلاتة دول تحت الـ user-visible (L2).` },
+      { why: `الـ CS ماينفعش يبقى destination للـ MOV، و [CS] مش memory operand سليم (L3).` },
+      { why: `ده الـ IR؛ الـ MAR فيه عنوان location في الـ memory (L2).` },
+      { why: `تعريف المحاضرة (L1).` },
+      { why: `مع D=1 الـ DI بيقل: DI = DI - 2 (L7).` },
+      { why: `L8.` },
+      { why: `هي كمان بتحمّل DS (L6).` },
+      { why: `الـ SI من غير أقواس يبقى register، فالـ segment prefix ملوش معنى؛ الصح ES:[SI] (L3).` },
+      { why: `الـ displacement اللي هو 10 ناقص: DS×10 + 10 + SI + BC (L4).` },
+      { why: `الـ Short والـ near jumps بيغيّروا IP بس؛ الـ far jump بس هو اللي بيغيّر CS (L8).` }
+    ] },
+    { items: [
+      { ans: `<table><tr><th>Debugger</th><th>Assembler</th></tr><tr><td>سهل في التشغيل (Easy to run)</td><td>صعب في التشغيل (Hard to run)</td></tr><tr><td>برامج الـ overhead بتاعها قليل</td><td>الـ program overhead أكتر</td></tr><tr><td>قريب من الـ machine</td><td>معزول عن الـ machine</td></tr><tr><td>كويس مع البرامج القصيرة</td><td>كويس مع البرامج الطويلة</td></tr></table>` },
+      { ans: `الـ Memory location = SS×10 + SP = 3000 + 07FE = <b>37FE</b>.<br>SS:[SP-1] = [37FD] = <b>5A</b> (BH)<br>SS:[SP-2] = [37FC] = <b>B3</b> (BL)<br>SP = 07FE - 2 = <b>07FC</b>.<br>الرسمة: SS (300) ×10 و ESP (07FE) داخلين على الـ adder اللي بيشاور على 37FE؛ وأسهم BH و BL رايحة لـ 37FD و 37FC؛ والـ SP القديم متشطب ومكتوب 07FC. الـ DS مش مستخدم.` },
+      { ans: `الـ INS بتكتب في ES:[DI]. الـ Memory location = ES×10 + DI = 2000 + 100 = <b>2100</b>.<br>الـ bytes الجاية من الـ input اللي هي AB و CD و 12 و 34 بتتخزن بادئة من 2100 (زي رسمة المحاضرة).<br>D = 1 → DI = DI - 4: المحاضرة/الـ key كاتبين <b>96</b>؛ وفي الـ hex 100H - 4 = <b>0FCH</b>.<br>الرسمة: مربع الـ input device مكتوب فيه "AB CD 12 34" وسهم داخل الـ memory عند 2100؛ و ES (200)×10 + EDI (100) داخلين على الـ adder؛ والـ EDI القديم 100 متشطب ومكتوب القيمة الجديدة.` },
+      { ans: `عنوان البداية = CS×10 = 20000.<br><b>Near jump</b> (3 bytes؛ الـ bytes 2 و 3 = 201C): IP = 300 + 201C = 231C → عنوان الـ jump = 20000 + 231C = <b>2231C</b>.<br><b>Far jump</b> (5 bytes): الـ offset = الـ bytes 2,3 = 201C؛ والـ segment = الـ bytes 4,5 = 2DA0 → 2DA00 + 201C = <b>2FA1C</b>.<br>ارسم عمود الـ memory والـ JMP عند 20000 وسهم رايح لعنوان الـ jump.` },
+      { ans: `<b>1) LSS AX, [SI]</b>: العنوان = DS×10 + SI = 20000 + 300 = <b>20300</b>.<br>AX ← [20301][20300] = <b>ABCD</b>؛ SS ← [20303][20302] = <b>1234</b>.<br><b>2) POP AX</b> بتستخدم الـ SS الجديد: العنوان = SS×10 + SP = 12340 + 200 = <b>12540</b>.<br>AL = [SP] = E0، AH = [SP+1] = F1 → <b>AX = F1E0</b> (الـ ABCD اتكتب عليها)؛ SP = 200 + 2 = <b>202</b>.<br>الـ [SP-1] = 44 تحت قمة الـ stack ومش بتتقري؛ والـ D والـ AX القديم مجرد تمويه.` }
+    ] }
+  ] },
+  /* Final 2023/24 second term */
+  { sections: [
+    { items: [
+      { why: `L1/L2.` },
+      { why: `OF = overflow flag (L2).` },
+      { why: `الـ POP بتزوّد SP (L5).` },
+      { why: `النقل من segment لـ segment مش مسموح (L3).` },
+      { why: `Segment override (L3).` },
+      { why: `L7.` },
+      { why: `وجود BP → SS (L4). بالظبط كده، BX+BP ماينفعش يتجمعوا على الـ 8086.` },
+      { why: `الـ LSS بتحمّل الـ offset في الـ register والـ segment في SS (L6).` },
+      { why: `L2.` },
+      { why: `الـ PUSH بتقلل SP بـ 2 ومابتلمسش SS (L5). الإجابة المقصودة 98؛ بس في الـ hex هتبقى 0FE.` }
+    ] },
+    { items: [
+      { why: `الـ ES:SI مش operand سليم (L3).` },
+      { why: `خمس bytes (L8).` },
+      { why: `الـ LODS مابتغيّرش الـ flags (L7).` },
+      { why: `L1.` },
+      { why: `الـ far jump بس هو اللي بيغيّر CS (L8).` },
+      { why: `L2.` },
+      { why: `الـ DS بيتغير هو كمان (L6).` },
+      { why: `L1.` },
+      { why: `L2.` },
+      { why: `الـ MOV مش string instruction (L7).` }
+    ] },
+    { items: [
+      { ans: `دي control/status registers بتستخدم عشان تتحكم في شغل الـ CPU؛ ومبرمج الـ assembly مايقدرش يشاور عليها.<br><b>PC</b>: عنوان الـ instruction اللي هتتجاب. <b>IR</b>: آخر instruction اتجابت. <b>MAR</b>: عنوان location في الـ memory. <b>MBR</b>: word داتا هتتكتب في الـ memory أو آخر word اتقرا.` },
+      { ans: `(i) DS×10 + DI - 100 = 2000 + 10 - 100 = <b>1F10</b> (الـ DS segment).<br>(ii) BP → SS: 15000 + 111 + 110 + 50 = <b>15271</b>.<br>(iii) DS×10 + SI + AD = 2000 + 110 + AD = <b>21BD</b>.<br>(ملحوظة على (i): الـ offset اللي هو 10 - 100 سالب؛ والكورس بيطرح عادي. الـ 8086 الحقيقي كان هيلف الـ offset لـ FF10، فالعنوان يبقى 11F10.)` },
+      { ans: `العنوان = ES×10 + DI = 2000 + 100 = <b>2100</b>؛ والـ bytes اللي هي AB و CD و 12 و 34 الجاية من الـ input device بتتخزن من 2100؛ و DI = DI - 4 = <b>0FCH</b> (المحاضرة كاتبة 96). الـ DS مش مستخدم.` },
+      { ans: `عنوان البداية = 10000.<br>Short: IP = 300 + 04 = 304 → <b>10304</b>.<br>Near: IP = 300 + 0204 = 504 → <b>10504</b>.` },
+      { ans: `العنوان = DS×10 + DI = 10000 + 1000 = <b>11000</b>.<br>[11000]=7A، [11001]=12 → <b>BX = 127A</b> (الـ 6F2A متشطب).<br>[11002]=00، [11003]=30 → <b>DS = 3000</b> (الـ 1000 متشطب).` }
+    ] }
+  ] },
+  /* Final 2023/24 first term */
+  { sections: [
+    { items: [
+      { why: `L2.` },
+      { why: `L2.` },
+      { why: `8 registers (32 bytes) (L5).` },
+      { why: `L2.` },
+      { why: `الـ immediate value ماينفعش تبقى destination (L3). والـ MOV [AX], SI كمان غلط على الـ 8086 الـ 16-bit.` },
+      { why: `L2.` },
+      { why: `BP → SS (L4).` },
+      { why: `SP - 2 (L5).` },
+      { why: `L8.` },
+      { why: `L6.` }
+    ] },
+    { items: [
+      { why: `L1.` },
+      { why: `هي بتستخدم الـ D بس (L7).` },
+      { why: `هي SS:[SP] (L5).` },
+      { why: `الـ SBB بتستخدم الـ CF كـ borrow (Lab, L9).` },
+      { why: `الـ MOV مش string instruction (L7).` },
+      { why: `L1.` },
+      { why: `والـ DS كمان (L6).` },
+      { why: `الـ CS هنا مجرد segment override للـ memory اللي هي الـ destination؛ الـ CS نفسه مش بيتغير، والـ override بالـ CS مسموح (L3/L4). (الـ assembler كمان كان هيحتاج BYTE/WORD PTR.)` },
+      { why: `L7.` },
+      { why: `L8.` }
+    ] },
+    { items: [
+      { ans: `الرسمة: CPU (registers؛ ALU و CU و clock)، و Memory Storage Unit، و I/O Device #1، و I/O Device #2، ومتوصلين بالـ data bus (فوق)، والـ control bus (متقطع)، والـ address bus.<br>الـ bus هو مجموعة أسلاك متوازية بتنقل الداتا من جزء في الكمبيوتر لجزء تاني. <b>Data bus</b>: بينقل الـ instructions والداتا بين الـ CPU والـ memory. <b>Control bus</b>: بيستخدم binary signals عشان يعمل synchronize لكل الأجهزة المتوصلة بالـ system bus. <b>Address bus</b>: شايل الـ addresses بتاعة الـ instructions والداتا وقت النقل بين الـ CPU والـ memory.` },
+      { ans: `(i) DS: 2000 + 10 + 100 = <b>2110</b><br>(ii) SS (عشان BP): 15000 + 111 + 110 - 10 = <b>15211</b><br>(iii) DS: 2000 + 110 + BC = <b>21CC</b>` },
+      { ans: `العنوان = SS×10 + SP = 3000 + 1234 = <b>4234</b>.<br>الـ bytes من 4234 لـ 4237 = 11, 22, 33, 44 → <b>EAX = 44332211</b>.<br>SP = 1234 + 4 = <b>1238</b>.` },
+      { ans: `عنوان البداية = CS×10 = 30000.<br><b>Near</b>: IP = 400 + 4310 = 4710 → 30000 + 4710 = <b>34710</b>.<br><b>Far</b>: offset = 4310، segment = 201C → 201C0 + 4310 = <b>244D0</b>.` },
+      { ans: `<b>1) LES AX, [SI]</b>: العنوان = DS×10 + SI = 20000 + 300 = <b>20300</b>؛ AX = <b>ABCD</b>، ES = <b>1234</b>.<br><b>2) STOSW</b> بتستخدم الـ ES الجديد: العنوان = ES×10 + DI = 12340 + 200 = <b>12540</b>. الـ AX بيتخزن: [12540] = CD (AL)، [12541] = AB (AH)، وبيكتب فوق E0 و F1 (القيم دي مجرد تمويه، زيها زي [DI-1] والـ AX القديم). D = 0 → DI = 200 + 2 = <b>202</b>.` }
+    ] }
+  ] },
+  /* Midterm 2023/24 */
+  { sections: [
+    { items: [
+      { why: `SI → DS (L4).` },
+      { why: `EIP و EFLAGS (L2).` },
+      { why: `L3.` },
+      { why: `L1.` },
+      { why: `L2.` }
+    ] },
+    { items: [
+      { why: `L2.` },
+      { why: `سليمة (L4).` },
+      { why: `L3.` },
+      { why: `L2.` },
+      { why: `L3.` }
+    ] },
+    { items: [
+      { ans: `الـ PROM: الداتا بتتكتب في الـ chip قبل ما تتركّب في الـ circuit، مرة واحدة بس، باستخدام PROM programmer.<br>الـ EPROM: الداتا ممكن تتكتب تاني بإنك تشيل الـ chip، وتمسحها بالـ ultraviolet light من خلال شباك شفاف، وتبرمجها تاني في PROM programmer؛ بتستخدم في الـ prototypes والإنتاج الصغير.` },
+      { ans: `العنوان = DS×10 + DI = 20A00 + 2000 = <b>22A00</b>. الـ EAX بياخد الـ 4 bytes من 22A00 لـ 22A03. الـ SS والـ BP مش مستخدمين.` }
+    ] },
+    { items: [
+      { why: `L1.` },
+      { why: `L2.` },
+      { why: `من segment لـ segment (L3).` },
+      { why: `BP → SS (L4).` },
+      { why: `L2.` }
+    ] },
+    { items: [
+      { why: `L4.` },
+      { why: `فيها كمان EAX و EBX وغيرهم، و EIP و EFLAGS (L2).` },
+      { why: `L2.` },
+      { why: `L3.` },
+      { why: `من memory لـ memory (L3).` }
+    ] },
+    { items: [
+      { ans: `الـ EPROM: بتتمسح بإنك تشيل الـ chip وتعرّضها لـ UV light (من الشباك الشفاف)، وتتبرمج تاني بـ PROM programmer؛ للـ prototypes والإنتاج الصغير.<br>الـ EEPROM: بتتكتب تاني كهربائيًا والـ chip على الـ circuit board، بس الكتابة بطيئة؛ وفيها الـ firmware زي الـ BIOS عشان يتعمله update.` },
+      { ans: `العنوان = DS×10 + DI = 21B00 + 1000 = <b>22B00</b>؛ والـ BX بياخد الـ word اللي عند 22B00 (BL) و 22B01 (BH).` }
+    ] }
+  ] },
+  /* Final 2022/23 summer */
+  { sections: [
+    { items: [
+      { ans: `الـ Debugger: سهل في التشغيل، برامج الـ overhead بتاعها قليل، قريب من الـ machine، كويس مع البرامج القصيرة. الـ Assembler: صعب في التشغيل، الـ program overhead أكتر، معزول عن الـ machine، كويس مع البرامج الطويلة.` },
+      { ans: `(i) BP → SS: 10000 + 111 + 1100 - 80 = <b>11191</b>؛ والـ AL بياخد الـ byte اللي عند 11191.<br>(ii) DS: 20000 + 100 + 100 = <b>20200</b>؛ والـ AX بياخد الـ word اللي عند 20200 (AL) و 20201 (AH).` },
+      { ans: `العنوان = SS×10 + SP = 11000 + 200 = <b>11200</b>.<br>الـ POP AX بتنسخ 2 bytes من قمة الـ stack: AL = [SP] = <b>9C</b>، و AH = [SP+1] (الـ byte اللي عند 11201، ومش مدّيينه في السؤال). SP = 200 + 2 = <b>202</b>.<br>الـ [SP-1] والـ [SP-2] تحت قمة الـ stack ومش بيتقروا؛ والـ DS والـ SI والـ EBX والـ D والـ AX القديم كلهم تمويه.` },
+      { ans: `العنوان = ES×10 + DI = 2000 + 100 = <b>2100</b>؛ والـ AB و CD و 12 و 34 بيتخزنوا من 2100؛ DI = 0FCH (الـ slide: 96).` },
+      { ans: `العنوان = 10000 + 1000 = <b>11000</b>؛ BX = <b>127A</b>؛ DS = <b>3000</b>.` },
+      { ans: `MOV AX, 5: صح.<br>LDS AX, [DI]: صح.<br><b>MOV DS, CS</b>: غلط، النقل من segment لـ segment مش مسموح.<br><b>MOV AL, SL</b>: غلط، مفيش register اسمه SL (الـ SI مالوش أنصاص 8-bit).<br>STOSD: صح (بتخزن EAX في ES:[DI]).<br><b>MOV ECX, AX</b>: غلط، الـ operands مختلفين في الحجم (32 و 16 bits).` }
+    ] },
+    { items: [
+      { why: `L1.` },
+      { why: `L2.` },
+      { why: `L2.` },
+      { why: `الـ EBX والـ EDX general purpose؛ والـ EIP والـ EFLAGS special purpose (L2).` },
+      { why: `الـ CS ماينفعش يتغير بالـ MOV (L3).` },
+      { why: `الـ POP بتزوّد SP بـ 2 (L5).` },
+      { why: `L7.` },
+      { why: `من memory لـ memory (L3).` },
+      { why: `أحسن اختيار موجود. الـ PUSHA في الحقيقة بتقلل SP بـ 16 byte (8 words)؛ الـ 32 byte دي بتاعة الـ PUSHAD (L5).` },
+      { why: `الـ OUTS بتستخدم SI؛ والـ double word = 4 (L7).` }
+    ] },
+    { items: [
+      { why: `الـ ZF بيبقى 1 لما النتيجة تبقى صفر (L2).` },
+      { why: `L6.` },
+      { why: `الـ PC شايل عنوان الـ instruction الجاية (L2).` },
+      { why: `L2.` },
+      { why: `الـ IP بياخد القيمة الجديدة كنتيجة لتنفيذ الـ jump (L8). السؤال فيه شك: الجملة مبهمة.` },
+      { why: `الـ override للـ SS الـ default بتاع BP بـ DS مسموح (L4).` },
+      { why: `ده الـ far jump؛ الـ near jumps 3 bytes بس (L8).` },
+      { why: `مفيش LCS؛ والوصف ده بتاع الـ LSS (L6).` },
+      { why: `L1.` },
+      { why: `L6.` }
+    ] }
+  ] },
+  /* Midterm 2022/23 summer */
+  { sections: [
+    { items: [
+      { ans: `الرسمة: CPU (registers و ALU و CU و clock)، و memory storage unit، و اتنين I/O devices، ومتوصلين بالـ data و control و address buses.<br><b>IR</b>: فيه آخر instruction اتجابت.<br><b>MAR</b>: فيه عنوان location في الـ memory. (الـ key الرسمي نقل تعريف الـ MBR هنا بالغلط.)` },
+      { ans: `العنوان = DS×10 + DI = 20A00 + 3000 = <b>23A00</b>.` }
+    ] },
+    { items: [
+      { why: `L1.` },
+      { why: `L2.` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `L1.` }
+    ] },
+    { items: [
+      { why: `L2.` },
+      { why: `L2.` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `L3.` }
+    ] },
+    { items: [
+      { ans: `الرسمة زي Lecture 1.<br><b>PC</b>: فيه عنوان الـ instruction اللي هتتجاب.<br><b>MBR</b>: فيه word داتا هتتكتب في الـ memory أو آخر word اتقرا.` },
+      { ans: `العنوان = DS×10 + DI = 21B00 + 2000 = <b>23B00</b>.` }
+    ] },
+    { items: [
+      { why: `L1.` },
+      { why: `الـ EFLAGS ده special purpose (L2).` },
+      { why: `L3.` },
+      { why: `L4.` },
+      { why: `EPROM = Erasable Programmable Read Only Memory؛ ومفيش اختيار مطابق بالظبط (L1).` }
+    ] },
+    { items: [
+      { why: `L4.` },
+      { why: `L2.` },
+      { why: `L3.` },
+      { why: `L2.` },
+      { why: `L3.` }
+    ] }
+  ] },
+  /* Revision sheet + Sheet 1 */
+  { sections: [
+    { items: [
+      { ans: `الـ Debugger: سهل في التشغيل، overhead قليل، قريب من الـ machine، كويس مع البرامج القصيرة. الـ Assembler: صعب في التشغيل، overhead أكتر، معزول عن الـ machine، كويس مع البرامج الطويلة.` },
+      { ans: `مجموعة أسلاك متوازية بتنقل الداتا بين أجزاء الكمبيوتر. الـ Data bus: الـ instructions والداتا بين الـ CPU والـ memory. الـ Control bus: binary signals بتعمل synchronize لكل الأجهزة اللي على الـ system bus. الـ Address bus: الـ addresses بتاعة الـ instructions والداتا.` },
+      { ans: `registers مبرمج الـ assembly مايقدرش يكتب فيها: الـ PC (عنوان الـ instruction اللي هتتجاب)، الـ IR (آخر instruction اتجابت)، الـ MAR (عنوان memory location)، الـ MBR (word هيتكتب في الـ memory أو آخر word اتقرا).` },
+      { ans: `100[BX][DI]: 10000 + 100 + CD01 + 150 = <b>1CF51</b>.<br>[BX][DI]: 10000 + CD01 + 150 = <b>1CE51</b>.` },
+      { ans: `العنوان 3000 + 1234 = <b>4234</b>؛ EAX = <b>44332211</b>؛ SP = <b>1238</b>.` },
+      { ans: `العنوان A0000 + 200 = <b>A0200</b>؛ BX = <b>1AB2</b>؛ ES = <b>3C00</b>.` },
+      { ans: `العنوان 10000 + 1000 = <b>11000</b>؛ AX = <b>CDAB</b>؛ SI = <b>1002</b>.` },
+      { ans: `العنوان 2000 + 100 = <b>2100</b>؛ الـ bytes اللي هي AB CD 12 34 بتتخزن من 2100؛ DI = 100H - 4 = <b>0FCH</b> (الـ key: 96).` },
+      { ans: `العنوان <b>11000</b>؛ BX = <b>127A</b>؛ DS = <b>3000</b>.` },
+      { ans: `Short: 10000 + 300 + 04 = <b>10304</b>. Near: 10000 + 300 + 0204 = <b>10504</b>. Far: A4300 + 0204 = <b>A4504</b>.` },
+      { ans: `Short: <b>2031C</b>. Near: <b>2231C</b>. Far: 2DA00 + 201C = <b>2FA1C</b>.` },
+      { ans: `(i) 20000 + 101 + 120 = <b>20221</b> (ii) 20000 + 101 + 1200 - 100 = <b>21201</b> (iii) 22000 + 1200 + BC = <b>232BC</b>.` }
+    ] },
+    { items: [
+      { ans: `الـ Register: مكان تخزين مؤقت سريع جدًا جوه الـ CPU. الـ Bus: أسلاك متوازية (data و control و address). الـ User visible: registers الـ machine language تقدر تشاور عليها، بتستخدم عشان تقلل الرجوع للـ memory. الـ EIP: عنوان الـ instruction الجاية. الـ EFLAGS: bits بتتحكم في الـ CPU أو بتعكس النتايج. الـ ZF: النتيجة صفر؛ الـ CF: نتيجة unsigned أكبر من الـ destination؛ الـ SF: النتيجة سالبة؛ الـ OF: النتيجة أكبر أو أصغر من الـ destination. الـ PC و IR و MAR و MBR زي Lecture 2. الـ Segment overriding: إنك تستخدم segment غير الـ default، زي MOV BL, ES:[1234H].` },
+      { ans: `a) <b>11620</b> b) <b>11800</b> c) <b>11700</b>.` },
+      { ans: `كلهم SS: a) <b>15700</b> b) <b>15400</b> c) <b>15600</b>.` },
+      { ans: `العنوان 2000 + 0100 = 2100. [20FF]=00، [20FE]=00، <b>[20FD]=AB (AH)</b>، <b>[20FC]=CD (AL)</b>؛ SP = <b>00FC</b>.` },
+      { ans: `MOV EBX, AX: الحجم مش متساوي. MOV CS, DS: ماينفعش تغيّر CS (وكمان من segment لـ segment). والاتنين التانيين صح.` }
+    ] }
+  ] }
+];

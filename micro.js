@@ -1736,8 +1736,8 @@ END` }
           [`NEG dest`, `2's complement (dest = 0 - dest)`],
           [`CMP a, b`, `Computes a - b only to set the flags (result not stored)`],
           [`XCHG a, b`, `Swaps the two operands`],
-          [`MUL src`, `AX = AX × src (16-bit result in AX; for word operands DX:AX)`],
-          [`DIV src`, `AX ÷ src: <b>AX = quotient (integer part), DX = remainder</b> (word divisor uses DX:AX as dividend)`]
+          [`MUL src`, `Byte src: <b>AX = AL × src</b>. Word src: <b>DX:AX = AX × src</b> (high word in DX)`],
+          [`DIV src`, `Word src (e.g. CX): DX:AX ÷ src → <b>AX = quotient (integer part), DX = remainder</b>. Byte src: AX ÷ src → AL = quotient, AH = remainder`]
         ]},
         { h: `MUL and DIV rules`, pts: [
           `<b>AX must be used</b> in multiplication and division: MUL and DIV take only one operand (register or memory, never immediate); the other operand is always AX.`,
