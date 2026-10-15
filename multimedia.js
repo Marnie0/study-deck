@@ -96,76 +96,76 @@ COURSES.mm = {
       ],
       quiz: [
         { q: `Which is NOT one of the four basic characteristics of a multimedia system?`, o: [
-          [`Computer controlled`, `This is characteristic 1.`],
-          [`Integrated`, `This is characteristic 2.`],
+          [`Computer controlled`, `Being computer controlled is characteristic 1 of a multimedia system, so it IS one of the four. The odd one out is analog representation (L1, Multimedia systems).`],
+          [`Integrated`, `Being integrated (text, images, audio, video combined) is characteristic 2, so it is one of the four. Characteristic 3 says the information must be digital, not analog.`],
           [`Information represented in analog form`, `Correct. Multimedia information must be represented digitally, not in analog form.`],
-          [`Usually interactive interface to the final presentation`, `This is characteristic 4.`]
+          [`Usually interactive interface to the final presentation`, `An interactive interface to the final presentation is characteristic 4, so it belongs to the list. The option that breaks the list is analog representation (L1, Multimedia systems).`]
         ], a: 2 },
         { q: `The term "hypertext" was invented by:`, o: [
-          [`Tim Berners-Lee around 1990`, `He created the WWW, not the term hypertext.`],
-          [`Ted Nelson around 1965`, `Correct.`],
-          [`Harry Nyquist around 1928`, `Nyquist is known for the sampling theorem.`],
-          [`Alan Kay around 1970`, `Not mentioned in the lecture.`]
+          [`Tim Berners-Lee around 1990`, `Tim Berners-Lee built the World Wide Web around 1990, a hypermedia application that uses hypertext; the term itself came 25 years earlier from Ted Nelson.`],
+          [`Ted Nelson around 1965`, `Correct. The lecture defines hypertext as text containing links to other texts and says the term was invented by Ted Nelson around 1965 (L1, Hypertext and hypermedia).`],
+          [`Harry Nyquist around 1928`, `Harry Nyquist is the name behind the sampling theorem (fs ≥ 2·fmax, L4), not hypertext. The lecture credits Ted Nelson, around 1965.`],
+          [`Alan Kay around 1970`, `Alan Kay is not linked to hypertext in the lecture (he is known for Smalltalk and the Dynabook idea). The slide credits Ted Nelson around 1965.`]
         ], a: 1 },
         { q: `Which is described as "a clear example of a hypermedia application"?`, o: [
-          [`A plain text editor`, `Plain text is not hypermedia.`],
+          [`A plain text editor`, `A plain text editor handles only unlinked text: it is not even hypertext, let alone hypermedia, which adds images, sound and video to links (L1, Hypertext and hypermedia).`],
           [`The World Wide Web`, `Correct. The WWW links text, images, sound and video.`],
-          [`A compiler`, `Not a hypermedia application.`],
+          [`A compiler`, `A compiler translates program source into machine code; it does not link media together, so it is not hypermedia. The slide's clear example is the WWW.`],
           [`A RAID array`, `RAID is storage hardware for multimedia file systems.`]
         ], a: 1 },
         { q: `Lip synchronisation is an example of which multimedia challenge?`, o: [
-          [`Synchronisation — inter-media scheduling`, `Correct. Video and audio must stay in step.`],
-          [`Large data requirements`, `That concerns bandwidth and storage.`],
-          [`Distributed networks`, `A separate challenge.`],
-          [`Data representation`, `A desirable feature, not this challenge.`]
+          [`Synchronisation — inter-media scheduling`, `Correct. The slide lists synchronisation (inter-media scheduling) as a challenge and gives lip sync as its example: video frames and audio must stay in step (L1, Challenges).`],
+          [`Large data requirements`, `Large data requirements is a key issue about bandwidth and storage (why compression is mandatory); it is about size, not keeping audio and video in step.`],
+          [`Distributed networks`, `Distributed networks is a separate challenge (data spread over machines); lip sync is the lecture's example of inter-media synchronisation.`],
+          [`Data representation`, `Data representation (file formats allowing real-time compression) is listed among desirable features, not challenges; lip sync illustrates synchronisation.`]
         ], a: 0 },
         { q: `An uncompressed 512 × 512 grey-scale (8-bit) image needs about:`, o: [
-          [`1/8 MB`, `Too small; that would be 4 bits per pixel.`],
+          [`1/8 MB`, `1/8 MB = 131,072 B would mean only 4 bits per pixel. An 8-bit grey image uses 1 byte per pixel: 512 × 512 × 1 B = 262,144 B = 1/4 MB.`],
           [`1/4 MB`, `Correct. 512 × 512 × 1 byte = 262,144 B = 0.25 MB.`],
-          [`3/4 MB`, `That is the 24-bit colour version.`],
-          [`2 MB`, `Far too large.`]
+          [`3/4 MB`, `3/4 MB is the 24-bit (true colour) version: 512 × 512 × 3 B = 786,432 B. A grey-scale image uses 1 byte per pixel, giving 1/4 MB.`],
+          [`2 MB`, `2 MB is 8 times too big; it would need 64 bits per pixel. At 8 bits: 512 × 512 × 1 B = 262,144 B = 0.25 MB (L1, Multimedia data).`]
         ], a: 1 },
         { q: `True colour images are stored at:`, o: [
-          [`1 bit per pixel`, `That is black and white.`],
-          [`8 bits per pixel`, `That is grey scale or a colour map.`],
-          [`16 bits per pixel`, `Not listed in the lecture.`],
-          [`24 bits per pixel`, `Correct. 8 bits each for R, G and B.`]
+          [`1 bit per pixel`, `1 bit per pixel only stores black or white. The slide lists true colour as 24 bits per pixel (L1, Multimedia data).`],
+          [`8 bits per pixel`, `8 bits per pixel is grey scale or a colour map (palette of 256 entries), not true colour. True colour needs 24 bits.`],
+          [`16 bits per pixel`, `16 bits per pixel is not one of the depths on the slide (1, 8 and 24 bits); 16 bits cannot give a full 8 bits to each of R, G and B.`],
+          [`24 bits per pixel`, `Correct. True colour uses 24 bits per pixel: 8 bits each for red, green and blue, so 2<sup>24</sup> ≈ 16.7 million colours (L1, Multimedia data).`]
         ], a: 3 },
         { q: `One minute of uncompressed stereo CD-quality audio requires about:`, o: [
-          [`5 MB`, `That is mono.`],
+          [`5 MB`, `5 MB is one minute of MONO CD audio (44,100 × 2 B × 60 ≈ 5.05 MB). Stereo has 2 channels, so it doubles to about 10 MB.`],
           [`10 MB`, `Correct. 44,100 × 2 bytes × 2 channels × 60 s = 10,584,000 B ≈ 10 MB.`],
-          [`1.4 MB`, `Too small.`],
-          [`155 MB`, `That is one second of HD video.`]
+          [`1.4 MB`, `1.4 MB is far too small: stereo CD audio is 176,400 B per second, so 10 s alone is already about 1.7 MB. (1.41 is the CD bit rate in Mbit/s, not MB per minute.)`],
+          [`155 MB`, `155 MB is about one second of uncompressed HD video (1920 × 1080 × 3 B × 25), not a minute of audio; stereo CD audio is about 10 MB/min.`]
         ], a: 1 },
         { q: `Typical PAL digital video (720 × 576, colour, 25 fps) needs about how much per second uncompressed?`, o: [
-          [`6.25 MB`, `That is 512 × 512 monochrome video.`],
+          [`6.25 MB`, `6.25 MB/s is 512 × 512 monochrome video (0.25 MB × 25). PAL is larger and in colour: 720 × 576 × 3 B × 25 ≈ 31 MB/s.`],
           [`31 MB`, `Correct. 720 × 576 × 3 B ≈ 1.24 MB per frame × 25 ≈ 31 MB.`],
-          [`155 MB`, `That is HD 1920 × 1080.`],
-          [`1.24 MB`, `That is one frame only.`]
+          [`155 MB`, `155 MB/s is HD 1920 × 1080 colour video (≈ 6.2 MB per frame × 25), not PAL 720 × 576, which is about 31 MB/s.`],
+          [`1.24 MB`, `1.24 MB is the size of ONE PAL frame (720 × 576 × 3 B); per second you multiply by 25 frames, giving about 31 MB.`]
         ], a: 1 },
         { q: `Why is lossless compression (e.g. zip) described as "not good enough" for multimedia data?`, o: [
-          [`It loses too much quality`, `Lossless loses nothing.`],
+          [`It loses too much quality`, `Lossless compression keeps every bit and loses no quality at all; losing quality describes lossy methods (MP3, JPEG). Its weakness is too little size reduction.`],
           [`It does not reduce the size of MM data enough`, `Correct. MM data is huge, so lossy methods that drop perceptually less relevant data are needed.`],
-          [`It is illegal for audio`, `Nonsense.`],
-          [`It only works on video`, `Zip works on any file.`]
+          [`It is illegal for audio`, `Nothing in the lecture makes lossless compression illegal for audio (FLAC is even a lossless audio format). The problem is that it does not shrink MM data enough.`],
+          [`It only works on video`, `Zip and unix compress work on any file, not only video. The lecture's point is that on MM data they do not reduce size enough (L1, Summary).`]
         ], a: 1 },
         { q: `Which is an example of "compression via synthesis"?`, o: [
           [`MIDI`, `Correct. MIDI sends instructions to synthesise the sound, not the sound itself.`],
-          [`Zip`, `Zip is general lossless compression.`],
-          [`WAV`, `WAV stores raw samples.`],
-          [`Bitmap image`, `A bitmap stores every pixel.`]
+          [`Zip`, `Zip is general-purpose lossless compression: it stores the data itself more compactly. Synthesis sends instructions for making the data, as MIDI does.`],
+          [`WAV`, `WAV stores the raw sampled audio (PCM samples), i.e. the sound itself, so it is not compression via synthesis. MIDI is the slide's example.`],
+          [`Bitmap image`, `A bitmap stores every pixel value; the synthesis counterpart is vector graphics (Flash), which stores how to draw the picture (L1, Summary).`]
         ], a: 0 },
         { q: `Graphics (unlike images) are:`, o: [
-          [`Stored as a grid of pixels`, `That describes images.`],
-          [`Built from primitives and usually editable, with low storage overhead`, `Correct.`],
-          [`Always larger than images`, `Graphics files are usually small.`],
-          [`Captured with a microphone`, `Microphones capture audio.`]
+          [`Stored as a grid of pixels`, `A grid of pixels is a bitmap image. Graphics are stored as primitives (lines, polygons, circles, arcs) assembled into a picture (L1, Multimedia data).`],
+          [`Built from primitives and usually editable, with low storage overhead`, `Correct. Graphics are built from primitive objects (lines, polygons, curves, arcs), are editable unlike images, and files store only the primitive assembly, so storage is small (L1, Multimedia data).`],
+          [`Always larger than images`, `The opposite: graphics files store only the primitives, so they are usually much smaller than pixel images of the same picture.`],
+          [`Captured with a microphone`, `A microphone captures audio. Graphics are made in editors (Illustrator) or by programs (PostScript), input with keyboard, mouse or tablet.`]
         ], a: 1 },
         { q: `A "multimedia-capable file system" typically needs special hardware/software such as:`, o: [
           [`RAID technology`, `Correct. The slide gives RAID as the example.`],
-          [`OCR`, `OCR is a text input method.`],
-          [`OpenGL`, `A graphics standard.`],
-          [`MIDI`, `A music protocol.`]
+          [`OCR`, `OCR (optical character recognition) is a text input method listed under text data, not file-system hardware. The slide's example is RAID.`],
+          [`OpenGL`, `OpenGL is a graphics standard (with PHIGS, GKS), not a storage technology for real-time streaming; the slide gives RAID.`],
+          [`MIDI`, `MIDI is a music protocol that sends instructions to synthesise sound, not file-system hardware. The multimedia-capable file system example is RAID.`]
         ], a: 0 }
       ]
     }
@@ -288,70 +288,70 @@ end;` },
       ],
       quiz: [
         { q: `In y = A·sin(2π·n·F<sub>w</sub>/F<sub>s</sub>), what is F<sub>s</sub>?`, o: [
-          [`The frequency of the wave`, `That is F<sub>w</sub>.`],
+          [`The frequency of the wave`, `The frequency of the wave is F<sub>w</sub>. F<sub>s</sub> is the sample frequency, so F<sub>w</sub>/F<sub>s</sub> gives the fraction of a cycle per sample (L2, Sine waves).`],
           [`The sample frequency`, `Correct. F<sub>s</sub> is the sampling frequency; n is the sample index.`],
-          [`The amplitude`, `That is A.`],
+          [`The amplitude`, `The amplitude is A, the factor in front of sin(). F<sub>s</sub> in the denominator is the sample frequency (L2, Sine waves).`],
           [`The phase`, `Phase is not a separate term in this form of the formula.`]
         ], a: 1 },
         { q: `A sound has 1000 times the power of the reference level. Its level is:`, o: [
-          [`3 dB`, `3 dB is a power ratio of 2.`],
-          [`30 dB`, `Correct. 10·log<sub>10</sub>(1000) = 10 × 3 = 30 dB.`],
+          [`3 dB`, `3 dB is a power ratio of only 2 (10·log<sub>10</sub>2 ≈ 3.01). A ratio of 1000 = 10<sup>3</sup> gives 10 × 3 = 30 dB.`],
+          [`30 dB`, `Correct. For power, X<sub>dB</sub> = 10·log<sub>10</sub>(X/X<sub>0</sub>) = 10·log<sub>10</sub>(1000) = 10 × 3 = 30 dB (L2, The decibel).`],
           [`60 dB`, `That would be 20·log<sub>10</sub>(1000), the amplitude formula, but this is a power ratio.`],
-          [`1000 dB`, `dB is logarithmic, not the raw ratio.`]
+          [`1000 dB`, `1000 is the raw ratio, not decibels. dB is logarithmic: 10·log<sub>10</sub>(1000) = 30 dB.`]
         ], a: 1 },
         { q: `Using "6 dB per bit", the dynamic range of 16-bit linear PCM audio is:`, o: [
           [`96 dB`, `That is 16 × 6. The lecture counts only the 15 bits beyond the first (the LSB only gives quantisation noise).`],
-          [`90 dB`, `Correct. 15 × 6 = 90 dB.`],
-          [`42 dB`, `That is 8-bit audio (7 × 6).`],
+          [`90 dB`, `Correct. The lecture counts 6 dB per bit, but the first bit (LSB) only gives quantisation noise, so 16-bit gives 15 × 6 = 90 dB (L2, The decibel).`],
+          [`42 dB`, `42 dB is the 8-bit figure (7 × 6). For 16 bits the lecture's rule gives 15 × 6 = 90 dB.`],
           [`48 dB`, `That is the difference between 16-bit and 8-bit.`]
         ], a: 1 },
         { q: `The quoted threshold of pain for humans is about:`, o: [
           [`12 dB`, `The log of 10<sup>12</sup> is 12, but dB multiplies by 10.`],
-          [`60 dB`, `Too low.`],
+          [`60 dB`, `60 dB is a power ratio of only 10<sup>6</sup>. The ear's range is above 10<sup>12</sup>, so the pain threshold is 10 × 12 = 120 dB.`],
           [`120 dB`, `Correct. A power ratio above 10<sup>12</sup> → 10 × 12 = 120 dB.`],
-          [`1200 dB`, `Too high.`]
+          [`1200 dB`, `1200 dB multiplies by 10 twice. 10·log<sub>10</sub>(10<sup>12</sup>) = 10 × 12 = 120 dB, the quoted threshold of pain.`]
         ], a: 2 },
         { q: `For the filter y(n) = ½x(n) + ⅓x(n − 1) + ¼x(n − 2) with input x = 2, 4, 6, what is y(2)?`, o: [
           [`3`, `That is only ½·6; the delayed terms are missing.`],
           [`4.833`, `Correct. ½·6 + ⅓·4 + ¼·2 = 3 + 1.333 + 0.5 = 4.833.`],
-          [`2.667`, `That is y(1).`],
+          [`2.667`, `2.667 is y(1) = ½·4 + ⅓·2. y(2) uses the current input 6 and both delayed inputs: ½·6 + ⅓·4 + ¼·2 = 4.833.`],
           [`6`, `The filter weights the inputs, it does not copy them.`]
         ], a: 1 },
         { q: `Which filter has a feedback loop (recursive system)?`, o: [
           [`FIR`, `FIR has no feedback; it only uses delayed inputs.`],
           [`IIR`, `Correct. The output y(n − k) is fed back through weighted delays.`],
-          [`Both`, `Only IIR feeds the output back.`],
-          [`Neither`, `IIR is recursive.`]
+          [`Both`, `Only IIR is recursive. FIR passes the input through delays and a weighted sum with no feedback loop (L2, IIR and FIR).`],
+          [`Neither`, `IIR is a feedback (recursive) system: y(n) = x(n) − Σ a<sub>k</sub>·y(n − k) feeds past outputs back into the new output.`]
         ], a: 1 },
         { q: `The impulse response of y(n) = x(n) + 0.5y(n − 1) is:`, o: [
           [`1, 0.5, 0, 0, …`, `The feedback keeps producing non-zero values.`],
           [`1, 0.5, 0.25, 0.125, … (never ends)`, `Correct. Each output is half the previous one: an infinite impulse response (IIR).`],
-          [`1, 1, 1, …`, `That would need a coefficient of 1.`],
-          [`0.5, 0.25, 0.125, …`, `y(0) = x(0) = 1.`]
+          [`1, 1, 1, …`, `1, 1, 1, … would need a feedback coefficient of 1 (y(n) = x(n) + y(n − 1)). With 0.5 each output halves the previous one.`],
+          [`0.5, 0.25, 0.125, …`, `This skips the first output: y(0) = x(0) + 0.5·y(−1) = 1 + 0 = 1, so the response starts 1, 0.5, 0.25, …`]
         ], a: 1 },
         { q: `With f<sub>s</sub> = 8000 Hz and an N = 256 point DFT, which frequency does sample point k = 32 represent?`, o: [
-          [`32 Hz`, `k is an index, not a frequency.`],
-          [`250 Hz`, `Check: 32 × 8000 / 256.`],
+          [`32 Hz`, `k = 32 is the sample-point index, not a frequency. Convert with f<sub>k</sub> = k·f<sub>s</sub>/N = 32 × 8000 / 256 = 1000 Hz.`],
+          [`250 Hz`, `250 Hz is f<sub>s</sub>/k = 8000/32, the wrong formula. The rule is f<sub>k</sub> = k·f<sub>s</sub>/N = 32 × 8000 / 256 = 1000 Hz.`],
           [`1000 Hz`, `Correct. f<sub>k</sub> = k·f<sub>s</sub>/N = 32 × 8000 / 256 = 1000 Hz (steps of 31.25 Hz).`],
-          [`8000 Hz`, `That is the sampling frequency itself.`]
+          [`8000 Hz`, `8000 Hz is the sampling frequency itself; the DFT points step through 0 to (N − 1)f<sub>s</sub>/N in steps of 31.25 Hz, so k = 32 is 1000 Hz.`]
         ], a: 2 },
         { q: `The Fourier transform of a top hat function is:`, o: [
           [`Another top hat`, `No; the ideal low-pass filter is a top hat in frequency space, but the FT of a top hat is a sinc.`],
           [`The sinc function sin(2πu)/(πu)`, `Correct. It is purely real because the top hat is even.`],
           [`A single spike`, `A single spike is the spectrum of a pure sine.`],
-          [`A square wave`, `Not correct.`]
+          [`A square wave`, `A square wave is a sum of odd harmonics (e.g. 200, 600, 1000 Hz), so its spectrum is a set of spikes. The top hat transforms to the sinc sin(2πu)/(πu).`]
         ], a: 1 },
         { q: `Why does an ideal low-pass filter with a low cut-off blur an image?`, o: [
-          [`Because it amplifies noise`, `A low-pass filter reduces noise.`],
+          [`Because it amplifies noise`, `A low-pass filter removes high-frequency noise rather than amplifying it; the blur comes from also discarding edge frequencies (L2, Filtering in the frequency domain).`],
           [`Because edges also contribute high frequencies, which are discarded`, `Correct. Edges are rapid transitions, so removing high frequencies blurs them (and muffles audio).`],
-          [`Because it changes the image colours`, `Not related.`],
-          [`Because it removes low frequencies`, `A low-pass filter keeps low frequencies.`]
+          [`Because it changes the image colours`, `The filter acts on spatial frequencies, not colour values; it blurs because edges (rapid transitions) are high-frequency data that gets cut.`],
+          [`Because it removes low frequencies`, `A low-pass filter KEEPS the low frequencies and removes those above the cut-off; removing low frequencies is a high-pass filter.`]
         ], a: 1 },
         { q: `A high-pass filter is usually defined from a low-pass filter H as:`, o: [
-          [`H<sup>2</sup>`, `Squaring does not invert the pass band.`],
+          [`H<sup>2</sup>`, `H<sup>2</sup> is still a low-pass filter (1 in the pass band, 0 above the cut-off), so it does not swap the bands. High pass = 1 − H.`],
           [`1/H`, `Dividing by H is used for deconvolution, not the standard high-pass definition.`],
-          [`1 − H`, `Correct. High pass = 1 − low pass.`],
-          [`H − 1`, `That gives negative values.`]
+          [`1 − H`, `Correct. The lecture defines the high-pass filter as 1 − low pass: where H keeps a frequency (1) it removes it (0), and vice versa (L2, Filtering in the frequency domain).`],
+          [`H − 1`, `H − 1 runs from −1 to 0, the negative of the high-pass filter, which would flip the sign of the kept frequencies. The definition is 1 − H.`]
         ], a: 2 },
         { q: `The convolution theorem states that the Fourier transform of f(x) * g(x) equals:`, o: [
           [`F(u) + G(u)`, `Addition in time is addition in frequency, not convolution.`],
@@ -360,9 +360,9 @@ end;` },
           [`F(u) * G(u)`, `Convolving the transforms would correspond to multiplying f and g in the original domain, not convolving them.`]
         ], a: 1 },
         { q: `Which window is NOT one of the windows named for the Short-Time Fourier Transform?`, o: [
-          [`Blackman`, `Named in the lecture.`],
-          [`Hamming`, `Named in the lecture.`],
-          [`Hanning`, `Named in the lecture.`],
+          [`Blackman`, `Blackman IS one of the windows the lecture names for the STFT (Blackman, Hamming, Hanning) to reduce leakage; Butterworth is a filter.`],
+          [`Hamming`, `Hamming is one of the three STFT windows named (Blackman, Hamming, Hanning) to reduce the leakage effect, so it is not the odd one out.`],
+          [`Hanning`, `Hanning is one of the three STFT windows named on the spectrogram slide; the odd one out is Butterworth, a low-pass filter design.`],
           [`Butterworth`, `Correct. Butterworth is a filter, not an STFT window.`]
         ], a: 3 }
       ]
@@ -443,64 +443,64 @@ end;` },
       ],
       quiz: [
         { q: `Which of these is a continuous (time-dependent) medium?`, o: [
-          [`Text`, `Text is static.`],
-          [`A single image`, `Static.`],
+          [`Text`, `Text is static (discrete) media: time independent, so its meaning does not depend on playback timing. Continuous media are audio, video and animation (L3, Static vs continuous media).`],
+          [`A single image`, `A single image is static media, listed with text and graphics as time independent; only audio, video and animation are continuous.`],
           [`Audio`, `Correct. Audio, video and animation are time dependent.`],
-          [`Graphics`, `Static.`]
+          [`Graphics`, `Graphics are static media (time independent). They become continuous only when sequenced as animation (L3, Static vs continuous media).`]
         ], a: 2 },
         { q: `Which device converts a digital signal back into an analog signal for a loudspeaker?`, o: [
-          [`ADC`, `The ADC does the opposite direction.`],
-          [`DAC`, `Correct. Digital-to-Analog Converter.`],
-          [`OCR`, `OCR converts printed text to characters.`],
-          [`RAID`, `RAID is storage.`]
+          [`ADC`, `The ADC works in the other direction: it samples an analog signal (e.g. from a microphone) into digital form. Playback needs the DAC.`],
+          [`DAC`, `Correct. The DAC (Digital-to-Analog Converter) takes a digital signal, possibly modified, and outputs an analog signal for an analog device such as a loudspeaker (L3, ADC and DAC).`],
+          [`OCR`, `OCR scans printed text into characters, an input method for text; it has nothing to do with driving a loudspeaker.`],
+          [`RAID`, `RAID is storage hardware for a multimedia-capable file system (L1); it does not convert digital signals to analog.`]
         ], a: 1 },
         { q: `Where are anti-aliasing filters placed in the A-D-A pipeline?`, o: [
           [`Only after the DAC`, `A low-pass filter is also needed there, but the anti-aliasing filter is needed at the input.`],
           [`At the input, before the ADC`, `Correct. They remove frequencies above the sampling limit before sampling.`],
-          [`Inside the digital processing block only`, `The filter is part of analog conditioning.`],
-          [`They are not needed`, `Without them, aliasing occurs.`]
+          [`Inside the digital processing block only`, `Anti-aliasing must act on the analog signal before sampling: once frequencies above the limit are sampled, the aliases are already in the digital data and cannot be separated.`],
+          [`They are not needed`, `They are needed: without removing frequencies above the sampling limit at the input, those frequencies appear as false lower frequencies (aliasing) (L3, A-D-A pipeline).`]
         ], a: 1 },
         { q: `In the pipeline, which component quantises the continuous input into discrete levels?`, o: [
-          [`Anti-aliasing filter`, `It only removes high frequencies.`],
-          [`ADC`, `Correct.`],
+          [`Anti-aliasing filter`, `The anti-aliasing filter only removes frequencies above the sampling limit; it leaves the signal analog and continuous. The ADC does the quantising.`],
+          [`ADC`, `Correct. After the anti-aliasing filter, the ADC quantises the continuous input into discrete levels (sampling + quantisation) (L3, A-D-A pipeline).`],
           [`DAC`, `The DAC converts discrete levels back to continuous.`],
-          [`Loudspeaker`, `An output device.`]
+          [`Loudspeaker`, `The loudspeaker is the analog output device at the end of the pipeline, fed by the DAC; it does no quantising.`]
         ], a: 1 },
         { q: `Which data type usually does NOT require digitising?`, o: [
-          [`Sound from a microphone`, `Analog, must be digitised.`],
-          [`Video from an analog camera`, `Must be digitised.`],
+          [`Sound from a microphone`, `A microphone produces a continuous analog signal, so sound must be digitised (sampled and quantised by an ADC, e.g. a sound card).`],
+          [`Video from an analog camera`, `An analog camera gives a continuous analog video signal, which must be digitised before the computer can store or process it.`],
           [`Graphics created in a drawing program`, `Correct. It is generated directly in a binary format.`],
-          [`A printed photograph`, `Must be scanned.`]
+          [`A printed photograph`, `A printed photograph exists only on paper, so it must be digitised with a flatbed scanner (L3, Capturing and storing each medium).`]
         ], a: 2 },
         { q: `2D animation in Flash uses key-frame interpolation called:`, o: [
-          [`Dithering`, `Dithering is an image technique.`],
-          [`Tweening`, `Correct. Tweening of motion and shape.`],
-          [`Sampling`, `Sampling digitises signals.`],
-          [`Aliasing`, `Aliasing is an artefact.`]
+          [`Dithering`, `Dithering is an image technique for simulating more colours/greys with patterns of pixels; it is not key-frame interpolation.`],
+          [`Tweening`, `Correct. 2D animation in Flash uses key-frame interpolation called tweening of motion and shape: the in-between frames are generated from the key frames (L3, Capturing and storing each medium).`],
+          [`Sampling`, `Sampling measures an analog signal at regular intervals to digitise it; it does not generate in-between animation frames.`],
+          [`Aliasing`, `Aliasing is a sampling artefact (false lower frequencies from undersampling), not an animation technique.`]
         ], a: 1 },
         { q: `How much storage does 1 minute of uncompressed HD video (1920×1080, 25 fps) need according to the lecture?`, o: [
-          [`About 150 MB`, `That is per second.`],
-          [`About 9 GB`, `Correct. 150 MB/s × 60 s ≈ 9 GB.`],
-          [`About 31 MB`, `That is PAL per second.`],
-          [`About 600 MB`, `Wrong.`]
+          [`About 150 MB`, `About 150 MB is the rate for ONE second of HD video (≈ 6 MB per frame × 25). One minute is 60 times that.`],
+          [`About 9 GB`, `Correct. HD frame ≈ 6 MB (1920 × 1080 × 3 B), × 25 fps ≈ 150 MB/s, × 60 s ≈ 9 GB per minute (L3, Images, audio and video data sizes).`],
+          [`About 31 MB`, `About 31 MB is one second of PAL 720 × 576 colour video, a smaller format and only one second, not a minute of HD.`],
+          [`About 600 MB`, `600 MB is only about 4 seconds of HD video at 150 MB/s; a full minute is 150 × 60 = 9000 MB ≈ 9 GB.`]
         ], a: 1 },
         { q: `A 512×512 monochrome video at 25 fps needs per second (uncompressed):`, o: [
-          [`0.25 MB`, `That is one frame.`],
-          [`6.25 MB`, `Correct. 25 × 0.25 MB.`],
-          [`25 MB`, `Wrong.`],
-          [`62.5 MB`, `Ten times too big.`]
+          [`0.25 MB`, `0.25 MB is the size of ONE 512 × 512 8-bit frame; per second multiply by 25 frames: 6.25 MB.`],
+          [`6.25 MB`, `Correct. One monochrome frame = 512 × 512 × 1 B = 0.25 MB; data rate = frame size × fps = 0.25 × 25 = 6.25 MB/s (L3, Images, audio and video data sizes).`],
+          [`25 MB`, `25 MB treats each frame as 1 MB (4 bytes per pixel). A monochrome frame is 1 byte per pixel, 0.25 MB, so 25 frames = 6.25 MB.`],
+          [`62.5 MB`, `62.5 MB is ten times too big (as if each frame were 2.5 MB). 0.25 MB × 25 fps = 6.25 MB per second.`]
         ], a: 1 },
         { q: `Which statement about general-purpose compressors (zip, RAR, 7-zip) is from the lecture?`, o: [
-          [`They are the best choice for video`, `The lecture says the opposite.`],
-          [`They are convenient for archiving but may not work well for audio, image or video`, `Correct.`],
-          [`They are lossy`, `They are lossless.`],
-          [`They are only used for graphics`, `They are used for any file.`]
+          [`They are the best choice for video`, `The lecture says the opposite: general-purpose compressors may not work well for audio, images or video, which need specialised (lossy) methods.`],
+          [`They are convenient for archiving but may not work well for audio, image or video`, `Correct. The text slide says zip, RAR and 7-zip are convenient for archiving, but general-purpose compressors may not work well for audio, images or video (L3, Capturing and storing each medium).`],
+          [`They are lossy`, `Zip, RAR and 7-zip are lossless: decompression gives back every bit. That is why they cannot shrink MM data enough (L1, Summary).`],
+          [`They are only used for graphics`, `They are general-purpose and work on any file; the slide mentions them under text, for archiving.`]
         ], a: 1 },
         { q: `Graphics standard described as "a cross-language, cross-platform API for 2D/3D graphics":`, o: [
           [`PostScript`, `A page description language that can generate graphics.`],
-          [`OpenGL`, `Correct.`],
-          [`HTML`, `A text markup format.`],
-          [`MIDI`, `A music protocol.`]
+          [`OpenGL`, `Correct. The slide names OpenGL as the graphics standard: a cross-language, cross-platform API for 2D and 3D graphics (L3, Capturing and storing each medium).`],
+          [`HTML`, `HTML is a formatted-text (markup) format listed under text data, not a 2D/3D graphics API.`],
+          [`MIDI`, `MIDI is a protocol for sending music/instrument instructions, not a graphics API; the slide's graphics standard is OpenGL.`]
         ], a: 1 }
       ]
     }
@@ -592,88 +592,88 @@ end;` },
       ],
       quiz: [
         { q: `Sampling frequency refers to:`, o: [
-          [`Number of samples taken per hour`, `The unit is per second (Hz), not per hour.`],
-          [`Number of samples taken per second`, `Correct. That is why it is measured in Hz.`],
-          [`Total duration of the signal`, `Duration is time, not rate.`],
-          [`Amplitude of the signal`, `Amplitude is the height of the wave.`]
+          [`Number of samples taken per hour`, `Sampling frequency counts samples per SECOND, which is why its unit is Hz; per hour is not how the rate is defined (L4, Sample rate).`],
+          [`Number of samples taken per second`, `Correct. Sampling frequency (sample rate) is the number of samples taken per second, fs = 1/T where T is the sampling interval, measured in Hz (L4, Sample rate).`],
+          [`Total duration of the signal`, `The total duration is a time in seconds; the sampling frequency is a rate. File size multiplies the two, but they are different quantities.`],
+          [`Amplitude of the signal`, `Amplitude is the height of the wave, stored by quantisation (bit size); the sampling frequency is how often the wave is measured.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `The standard unit of sampling frequency is:`, o: [
-          [`Hertz (Hz)`, `Correct. 1 Hz = 1 sample per second.`],
-          [`Joule (J)`, `Unit of energy.`],
-          [`Newton (N)`, `Unit of force.`],
-          [`Ampere (A)`, `Unit of current.`]
+          [`Hertz (Hz)`, `Correct. Sampling frequency is measured in Hertz: 1 Hz = 1 sample per second, so 44.1 kHz = 44,100 samples per second (L4, Sample rate).`],
+          [`Joule (J)`, `The joule is the SI unit of energy, not of a rate. Samples per second are measured in Hertz (Hz).`],
+          [`Newton (N)`, `The newton is the SI unit of force. A sampling rate counts samples per second, so its unit is Hz.`],
+          [`Ampere (A)`, `The ampere is the SI unit of electric current. Sampling frequency is in Hz (samples per second).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `According to the Nyquist theorem, the sampling frequency should be at least:`, o: [
           [`Equal to the lowest frequency in the signal`, `It depends on the highest frequency, and must be double it.`],
           [`Half the highest frequency in the signal`, `Half of fs is the Nyquist frequency; fs itself must be twice fmax.`],
-          [`Twice the highest frequency in the signal`, `Correct. fs ≥ 2 fmax.`],
-          [`Ten times the highest frequency in the signal`, `More than needed; the minimum is twice.`]
+          [`Twice the highest frequency in the signal`, `Correct. Nyquist's theorem: the sampling frequency must be at least twice the highest frequency component in the signal, fs ≥ 2·fmax (L4, Nyquist).`],
+          [`Ten times the highest frequency in the signal`, `Ten times fmax also avoids aliasing (oversampling), but the theorem's minimum is only twice fmax; extra samples just cost data.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `If a signal contains components up to 5 kHz, the minimum sampling frequency should be:`, o: [
-          [`2.5 kHz`, `That is half, which would alias.`],
+          [`2.5 kHz`, `2.5 kHz is half of fmax, below even fmax, so components up to 5 kHz would alias. Nyquist needs fs ≥ 2 × 5 = 10 kHz.`],
           [`5 kHz`, `Equal to fmax: one sample per cycle, the tone is lost.`],
-          [`10 kHz`, `Correct. 2 × 5 kHz = 10 kHz.`],
-          [`20 kHz`, `Works, but is not the minimum.`]
+          [`10 kHz`, `Correct. By Nyquist, fs ≥ 2·fmax = 2 × 5 kHz = 10 kHz (L4, Nyquist).`],
+          [`20 kHz`, `20 kHz is four times fmax: it works (oversampling) but is not the minimum, which is 2 × 5 kHz = 10 kHz.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `Undersampling a signal generally results in:`, o: [
           [`Aliasing`, `Correct. Frequencies above fs/2 fold back as false low frequencies.`],
-          [`Overshoot`, `Overshoot is a filter/step-response effect.`],
+          [`Overshoot`, `Overshoot is a filter/step-response effect (ringing past a target value), not the result of sampling too slowly; undersampling gives aliasing.`],
           [`Quantization noise`, `That comes from the bit size (amplitude rounding), not from the sample rate.`],
           [`Increased signal bandwidth`, `Undersampling reduces the bandwidth that can be represented.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Increasing the sampling frequency generally:`, o: [
-          [`Decreases data size`, `More samples per second means more data.`],
+          [`Decreases data size`, `More samples per second means more data: size = time × fs × bits × channels, so raising fs increases the file size.`],
           [`Reduces aliasing`, `Correct. A higher fs raises the Nyquist limit fs/2.`],
           [`Makes reconstruction impossible`, `The opposite: it makes reconstruction easier.`],
-          [`Eliminates quantization error`, `Quantisation error depends on the bit size.`]
+          [`Eliminates quantization error`, `Quantisation error comes from rounding amplitudes to 2<sup>bits</sup> levels, so it depends on bit size, not on how often samples are taken.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `Oversampling refers to sampling:`, o: [
-          [`Below the Nyquist rate`, `That is undersampling.`],
-          [`Exactly at the Nyquist rate`, `That is critical sampling.`],
-          [`Above the Nyquist rate`, `Correct.`],
-          [`Only at integer multiples of the signal`, `Not a definition used in the course.`]
+          [`Below the Nyquist rate`, `Sampling below the Nyquist rate is undersampling, which causes aliasing; oversampling is the opposite.`],
+          [`Exactly at the Nyquist rate`, `Sampling exactly at the Nyquist rate (2·fmax) is the minimum that just captures the wave, not oversampling, which means going above it.`],
+          [`Above the Nyquist rate`, `Correct. Oversampling means sampling above the Nyquist rate (fs > 2·fmax); it reduces aliasing but costs more data (L4, Nyquist).`],
+          [`Only at integer multiples of the signal`, `The course defines oversampling only relative to the Nyquist rate (above 2·fmax), not as sampling at integer multiples of the signal.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `In digital audio, the common sampling frequency for CDs is:`, o: [
           [`22.05 kHz`, `Low-grade audio (WWW, AM radio); also the CD's Nyquist frequency.`],
-          [`44.1 kHz`, `Correct.`],
-          [`48 kHz`, `Used in professional video/DAT, not CD.`],
-          [`96 kHz`, `An audiophile rate.`]
+          [`44.1 kHz`, `Correct. Hearing reaches about 20–22 kHz, so by Nyquist CDs use 2 × 22.05 kHz = 44.1 kHz (L4, Why are CD sample rates 44.1 kHz?).`],
+          [`48 kHz`, `48 kHz is a common professional/video rate, but it is not the CD rate; the slides give 44.1 kHz for CD quality.`],
+          [`96 kHz`, `96 kHz is the audiophile rate (24-bit, 96 kHz) quoted in the lecture, higher than the CD standard of 44.1 kHz.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `If the sampling frequency is lower than the Nyquist rate, the reconstructed signal will:`, o: [
-          [`Be perfectly accurate`, `Not possible below the Nyquist rate.`],
-          [`Contain aliasing distortion`, `Correct.`],
-          [`Have increased amplitude`, `Sampling rate does not change amplitude.`],
+          [`Be perfectly accurate`, `Below the Nyquist rate, frequencies above fs/2 cannot be represented and show up as false lower frequencies, so perfect reconstruction is impossible.`],
+          [`Contain aliasing distortion`, `Correct. Sampling below the Nyquist rate (undersampling) creates digital artefacts called aliasing: a false lower frequency appears in the reconstruction (L4, Nyquist).`],
+          [`Have increased amplitude`, `The sampling rate affects which frequencies are captured, not the signal's amplitude; the error is aliasing, not extra loudness.`],
           [`Be band-limited`, `Band-limiting is done before sampling by the anti-aliasing filter; it does not describe the undersampled result.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `A higher sampling frequency allows:`, o: [
           [`Accurate capturing of high-frequency components`, `Correct. The highest representable frequency is fs/2.`],
-          [`Less memory usage`, `It uses more memory.`],
-          [`Lower power consumption`, `More samples mean more processing.`],
-          [`No change in signal resolution`, `Time resolution improves.`]
+          [`Less memory usage`, `A higher fs stores more samples per second, so it uses MORE memory (size = time × fs × bits × channels).`],
+          [`Lower power consumption`, `More samples per second mean more conversion and processing work, so power use does not drop; the gain is capturing higher frequencies.`],
+          [`No change in signal resolution`, `A higher fs does change resolution: samples are closer in time and higher frequencies (up to fs/2) can be represented.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `An audio signal is sampled every 0.000125 s with 16-bit samples for 4.5 minutes in stereo. The file size is:`, o: [
           [`8437.5 KB`, `Correct. 8000 × 16 × 270 × 2 = 69,120,000 bits = 8,640,000 B = 8437.5 KB.`],
-          [`4218.75 KB`, `This is the mono size (one channel).`],
-          [`140.625 KB`, `This forgets to convert minutes to seconds.`],
-          [`67,500 KB`, `This forgets to divide by 8 (bits → bytes).`]
+          [`4218.75 KB`, `4218.75 KB is the mono size (8000 × 16 × 270 × 1 bits ÷ 8 ÷ 1024). Stereo has 2 channels, so the size doubles to 8437.5 KB.`],
+          [`140.625 KB`, `140.625 KB uses 4.5 instead of 270 seconds: 8000 × 16 × 4.5 × 2 = 1,152,000 bits = 144,000 B. Convert 4.5 min × 60 = 270 s first.`],
+          [`67,500 KB`, `67,500 KB is 69,120,000 bits ÷ 1024, i.e. the bits were never divided by 8 to get bytes. 8,640,000 B ÷ 1024 = 8437.5 KB.`]
         ], a: 0 },
         { q: `x(t) = 2A cos(200πt + π/3) + 3A sin(100πt − π/6). The largest allowed sampling interval is:`, o: [
           [`0.01 s`, `That samples at 100 Hz, only fmax, not 2·fmax.`],
           [`0.005 s`, `Correct. f1 = 100 Hz, f2 = 50 Hz, fs ≥ 200 Hz, T ≤ 1/200 = 0.005 s.`],
-          [`0.02 s`, `That is 50 Hz sampling, far too slow.`],
+          [`0.02 s`, `0.02 s means fs = 50 Hz, which only matches the lower component f2 = 50 Hz and is half of fmax = 100 Hz; Nyquist needs 200 Hz.`],
           [`0.0025 s`, `Allowed but not the largest (that is 400 Hz).`]
         ], a: 1 },
         { q: `According to the slides, the signal-to-noise ratio of 16-bit audio is about:`, o: [
-          [`50 dB`, `That is 8-bit.`],
-          [`98 dB`, `Correct.`],
-          [`6 dB`, `6 dB = twice as loud.`],
-          [`120 dB`, `That is the threshold of pain range.`]
+          [`50 dB`, `50 dB is the SNR the slides give for 8-bit audio. 16-bit is quoted at 98 dB, so 8-bit is "roughly 8 times as noisy".`],
+          [`98 dB`, `Correct. The slides give 16-bit audio a signal-to-noise ratio of 98 dB (noise virtually inaudible), versus 50 dB for 8-bit (L4, Effect of sample rate and bit size).`],
+          [`6 dB`, `6 dB is not an SNR figure here: the slide says a 6 dB increment is twice as loud (about one bit's worth). 16-bit SNR is 98 dB.`],
+          [`120 dB`, `120 dB is the human threshold of pain (power ratio 10<sup>12</sup>, L2), not the SNR of 16-bit audio, which is 98 dB.`]
         ], a: 1 },
         { q: `ADPCM compresses audio by:`, o: [
-          [`Deleting silence`, `That is silence deletion (.voc).`],
-          [`Predicting the next sample from past samples and encoding the difference`, `Correct.`],
-          [`Sending only MIDI parameters`, `That is synthesis.`],
-          [`Removing all frequencies above 4 kHz`, `That is filtering.`]
+          [`Deleting silence`, `Silence deletion is a different trick, mentioned for Sound Blaster .voc files. ADPCM predicts each sample and stores the difference.`],
+          [`Predicting the next sample from past samples and encoding the difference`, `Correct. ADPCM (Adaptive Delta Pulse Code Modulation) predicts the next sample from past samples and encodes only the difference between the actual and predicted value (L4, Audio file formats).`],
+          [`Sending only MIDI parameters`, `Sending only parameters is the synthetic-sound approach (MIDI/MP4), where the client synthesises the sound; ADPCM still codes the sampled waveform.`],
+          [`Removing all frequencies above 4 kHz`, `Removing frequencies above a limit is low-pass filtering, not ADPCM. ADPCM keeps the waveform and codes the prediction differences.`]
         ], a: 1 }
       ]
     }
@@ -815,33 +815,33 @@ end;` },
           [`Release`, `Release is a time: how quickly the sound fades after key release.`]
         ], a: 2 },
         { q: `In the FM equation e = A sin(αt + I sin βt), I is:`, o: [
-          [`The carrier frequency`, `The carrier frequency is α.`],
+          [`The carrier frequency`, `The carrier frequency is α in e = A sin(αt + I sin βt). I multiplies the modulator term sin βt and sets how strongly the carrier is modulated.`],
           [`The modulation index: peak deviation / modulator frequency`, `Correct. It controls how many sidebands have significant energy.`],
-          [`The peak amplitude`, `The peak amplitude is A.`],
-          [`The instantaneous amplitude`, `That is e.`]
+          [`The peak amplitude`, `The peak amplitude is A, the factor outside the sine. I sits inside the sine and scales the modulator term, so it controls the frequency deviation, not loudness.`],
+          [`The instantaneous amplitude`, `The instantaneous amplitude is e, the output of the whole equation. I is the modulation index (peak deviation / modulator frequency) inside the sine.`]
         ], a: 1 },
         { q: `A 440 Hz carrier is frequency-modulated by a 30 Hz modulator. Where are the second-order sidebands?`, o: [
           [`410 Hz and 470 Hz`, `These are the first-order sidebands (440 ± 30).`],
           [`380 Hz and 500 Hz`, `Correct. 440 ± 2×30 = 380 and 500 Hz, with amplitude J2(I).`],
-          [`350 Hz and 530 Hz`, `These are third-order sidebands (440 ± 90).`],
+          [`350 Hz and 530 Hz`, `Those are the third-order sidebands: 440 ± 3 × 30 = 350 and 530 Hz (amplitude J3). Second order uses n = 2: 440 ± 60 = 380 and 500 Hz.`],
           [`880 Hz and 1320 Hz`, `These are harmonics of 440, not FM sidebands.`]
         ], a: 1 },
         { q: `FM synthesis was discovered by:`, o: [
-          [`Robert Moog`, `Moog popularised subtractive synthesisers.`],
+          [`Robert Moog`, `Robert Moog's synthesisers (1960–70s) popularised subtractive synthesis. FM was discovered by John Chowning at Stanford in 1967–68 (L5, FM synthesis).`],
           [`John Chowning at Stanford`, `Correct. 1967-68, patented 1975 and licensed to Yamaha.`],
-          [`Iannis Xenakis`, `Xenakis is linked to granular synthesis.`],
+          [`Iannis Xenakis`, `Xenakis (1971) is linked to granular synthesis ("all sound is an integration of grains"). FM was discovered by John Chowning at Stanford (L5, FM synthesis).`],
           [`Denis Gabor`, `Gabor proposed the grain as the quantum of sound.`]
         ], a: 1 },
         { q: `To create bell-like, dissonant FM sounds, the modulator frequency should be:`, o: [
           [`An integer multiple of the carrier`, `Integer (harmonic) ratios give harmonic sounds.`],
           [`A non-integer multiple of the carrier`, `Correct. Non-harmonic ratios make inharmonic, bell-like and percussive sounds.`],
-          [`Zero`, `No modulation leaves a plain carrier.`],
-          [`Exactly equal to the sampling rate`, `Unrelated to timbre design.`]
+          [`Zero`, `A zero-frequency modulator gives no modulation at all, so only the plain carrier sine remains. Bell-like sounds need a non-integer carrier:modulator ratio.`],
+          [`Exactly equal to the sampling rate`, `The sampling rate plays no role in FM timbre design. What matters is the carrier:modulator ratio: integer ratios give harmonic sounds, non-integer ratios bell-like ones.`]
         ], a: 1 },
         { q: `The main disadvantage of additive synthesis is:`, o: [
-          [`It cannot recreate natural sounds`, `It can; that is its advantage.`],
+          [`It cannot recreate natural sounds`, `The opposite: its advantage is that it can recreate the micro-variations in frequency and amplitude of each partial that make natural sounds rich (L5, Additive synthesis).`],
           [`It is inefficient: a great deal of data must be specified`, `Correct. Every partial needs its own frequency/amplitude data.`],
-          [`It needs sampled instruments`, `It adds simple waveforms, typically sines.`],
+          [`It needs sampled instruments`, `Additive synthesis builds tones by summing simpler waveforms (typically sines, per Fourier theory); needing sampled sounds describes sample-based synthesis.`],
           [`It reduces polyphony because of multi-samples`, `That is the disadvantage of sample-based synthesis.`]
         ], a: 1 },
         { q: `Which is an advantage of wavetable synthesis?`, o: [
@@ -852,33 +852,33 @@ end;` },
         ], a: 1 },
         { q: `Grains in granular synthesis are typically about:`, o: [
           [`1 to 50 ms`, `Correct. Grains are small pieces, usually 10-50 ms.`],
-          [`1 to 5 s`, `Far too long; those are ordinary samples.`],
-          [`1 to 50 µs`, `Too short to carry audible content.`],
-          [`One full song`, `Not a grain.`]
+          [`1 to 5 s`, `1–5 s is the length of ordinary samples or notes. Granular synthesis splits samples into tiny grains of about 1–50 ms on the microsound time scale.`],
+          [`1 to 50 µs`, `Microseconds are a thousand times too short: 50 µs is only about 2 samples at 44.1 kHz. Grains are about 1–50 ms (usually 10–50 ms).`],
+          [`One full song`, `A whole song is the opposite of a grain. Granular synthesis cuts audio into small pieces of about 1–50 ms and layers many of them.`]
         ], a: 0 },
         { q: `In PSOLA, moving the overlapping segments further apart:`, o: [
-          [`Raises the pitch`, `Closer segments raise the pitch.`],
+          [`Raises the pitch`, `Raising the pitch is done by moving the segments closer together (shorter period). Moving them further apart lengthens the period and lowers the pitch (L5, PSOLA).`],
           [`Lowers the pitch`, `Correct. Wider spacing means a longer period, so lower pitch.`],
           [`Shortens the duration only`, `Duration is changed by repeating or removing segments.`],
           [`Requires an STFT`, `PSOLA uses no STFT; that is the phase vocoder.`]
         ], a: 1 },
         { q: `A Karplus-Strong string uses Fs = 44100 Hz and a delay line of D = 200 samples. The fundamental is about:`, o: [
-          [`200 Hz`, `That confuses D with frequency.`],
+          [`200 Hz`, `200 is the delay length D in samples, not a frequency. The fundamental is F1 = Fs / D = 44100 / 200 = 220.5 Hz.`],
           [`220.5 Hz`, `Correct. F1 = Fs / D = 44100 / 200 = 220.5 Hz.`],
-          [`441 Hz`, `That needs D = 100.`],
-          [`8820 Hz`, `Wrong: 44100 × 0.2.`]
+          [`441 Hz`, `441 Hz would need D = 44100 / 441 = 100 samples, half the given delay. With D = 200, F1 = 44100 / 200 = 220.5 Hz.`],
+          [`8820 Hz`, `8820 Hz comes from multiplying 44100 × 0.2 instead of dividing. The rule is F1 = Fs / D = 44100 / 200 = 220.5 Hz.`]
         ], a: 1 },
         { q: `In simple sound-energy beat detection, a beat is detected when:`, o: [
           [`The instant energy (~0.05 s) is larger than the local average energy (~1 s)`, `Correct. The ear hears a beat when energy is much larger than its recent history.`],
           [`The signal crosses zero`, `Zero crossings are used for loop points, not beats.`],
-          [`The average energy is larger than the instant energy`, `That is the reverse condition.`],
+          [`The average energy is larger than the instant energy`, `That is the reverse condition. A beat is heard when the instant energy (~0.05 s) is larger than the local average energy (~1 s), not smaller.`],
           [`All 32 sub-bands are silent`, `In the sub-band method, a beat is one or more bands above their average.`]
         ], a: 0 },
         { q: `When a beat-sliced drum loop is played at a FASTER tempo, the artefact is:`, o: [
-          [`Silent gaps between slices`, `Gaps appear when the tempo is slower.`],
+          [`Silent gaps between slices`, `Silent gaps appear when the loop is played SLOWER, because slices end before the next one starts. Faster tempo makes slice tails overlap.`],
           [`Tail overlap between slices`, `Correct. Slices start before the previous tail finishes.`],
-          [`Aliasing of the attacks`, `Attacks remain artefact-free.`],
-          [`Loss of velocity layers`, `Unrelated.`]
+          [`Aliasing of the attacks`, `The lecture says the attacks stay artefact-free whatever the tempo, which is why slicing suits percussion. The faster-tempo artefact is tail overlap.`],
+          [`Loss of velocity layers`, `Velocity layers belong to sample-based synthesis (sound chosen by key velocity) and are not affected by tempo. Faster tempo causes tail overlap between slices.`]
         ], a: 1 }
       ]
     }
@@ -998,13 +998,13 @@ Example 9C 50 7F:
       ],
       quiz: [
         { q: `In a MIDI status byte, the four low-order bits identify:`, o: [
-          [`The channel`, `Correct. 4 bits give 16 possible channels.`],
+          [`The channel`, `Correct. The status byte is 1 mmm cccc: the 4 low-order bits hold the channel (0–15, shown to musicians as 1–16), so one cable carries 16 channels (L6, MIDI messages).`],
           [`The message type`, `The message type is the 3 bits after the MSB.`],
-          [`The velocity`, `Velocity is carried in a data byte.`],
+          [`The velocity`, `Velocity is not in the status byte; in Note On/Off it is the second data byte (0–127). The status byte's low 4 bits are the channel.`],
           [`The key number`, `The key number is the first data byte of a note message.`]
         ], a: 0 },
         { q: `The most significant bit of a MIDI data byte is:`, o: [
-          [`1`, `That is the status byte.`],
+          [`1`, `An MSB of 1 marks a status byte (hex 80–FF). Data bytes always start with 0, which is why their values run 0–127.`],
           [`Either, depending on the channel`, `It is fixed so receivers can tell status from data.`],
           [`0`, `Correct. That is why data values run 0 to 127.`],
           [`The parity bit`, `MIDI bytes carry no parity bit in the message.`]
@@ -1012,67 +1012,67 @@ Example 9C 50 7F:
         { q: `What does the message <code>9C 50 7F</code> mean?`, o: [
           [`Note Off, channel 12, key 50, velocity 7`, `9x is Note On, and the values must be read as hex.`],
           [`Program change 80 on channel 9`, `Program change is Cx and has only one data byte.`],
-          [`Control change on channel 13`, `Control change is Bx.`],
+          [`Control change on channel 13`, `Control Change has status Bx, not 9x. The first nibble 9 means Note On, and C codes channel 13, so 9C 50 7F is Note On, key 80, velocity 127.`],
           [`Note On, channel 13, key 80, velocity 127`, `Correct. 9 = Note On, C codes channel 13, 50h = 80, 7Fh = 127.`]
         ], a: 3 },
         { q: `Which status byte sends Note On on MIDI channel 10?`, o: [
           [`9A`, `A = 10 codes channel 11, because channels 1–16 are coded 0–15.`],
           [`99`, `Correct. Channel 10 → nibble 9, Note On → 9, so 99.`],
-          [`8A`, `8x is Note Off.`],
-          [`C9`, `Cx is Program Change.`]
+          [`8A`, `8x is Note Off, not Note On, and nibble A would be channel 11. Note On on channel 10 is 9 followed by 10 − 1 = 9, giving 99.`],
+          [`C9`, `Cx is Program Change (first nibble C), here on channel 10. Note On needs first nibble 9, so the byte is 99.`]
         ], a: 1 },
         { q: `How many bytes does a Program Change message occupy?`, o: [
           [`2`, `Correct. Status Cx plus one data byte (program number).`],
-          [`1`, `It needs a status byte and a program number.`],
-          [`3`, `Program change has no second data byte.`],
-          [`4`, `No channel message is 4 bytes.`]
+          [`1`, `One byte would be just the status byte Cx. Program Change also needs one data byte holding the program number, so it is 2 bytes.`],
+          [`3`, `3 bytes is the size of Note On/Off, Control Change and Pitch Bend. Program Change has only one data byte (data byte 2 = none), so 2 bytes.`],
+          [`4`, `A MIDI message is one status byte plus up to two data bytes, so at most 3 bytes. Program Change uses 2 (status Cx + program number).`]
         ], a: 0 },
         { q: `Channel mode messages are a special case of which message?`, o: [
-          [`Program Change (Cx)`, `Wrong message.`],
+          [`Program Change (Cx)`, `Program Change (Cx) selects an instrument and has a single data byte. Mode messages are Control Change (Bx) with first data byte 121–127 (L6, Channel mode messages).`],
           [`System Exclusive (F0)`, `Sysex is a system message, not a channel message.`],
-          [`Pitch Bend (Ex)`, `Pitch bend carries MSB/LSB values.`],
+          [`Pitch Bend (Ex)`, `Pitch Bend (Ex) carries an MSB/LSB bend value and has no reserved numbers. Mode messages are Control Change (Bx) with first data byte 121–127.`],
           [`Control Change (Bx) with first data byte 121–127`, `Correct. Those controller numbers are reserved for mode messages.`]
         ], a: 3 },
         { q: `Which MIDI port echoes the data received at MIDI IN?`, o: [
-          [`MIDI OUT`, `OUT sends data the device generates itself.`],
-          [`MIDI IN`, `IN receives data.`],
-          [`MIDI THROUGH`, `Correct.`],
+          [`MIDI OUT`, `MIDI OUT transmits only the data the device generates itself. Echoing what arrives at MIDI IN is the job of MIDI THROUGH (L6, Connectors).`],
+          [`MIDI IN`, `MIDI IN is where data is received, not repeated. The port that echoes the data received at IN is MIDI THROUGH.`],
+          [`MIDI THROUGH`, `Correct. Of the three 5-pin ports, IN receives data, OUT sends the device's own data, and THROUGH echoes the data received at MIDI IN so devices can be chained (L6, Connectors).`],
           [`USB`, `USB is a modern connection, not the echo port.`]
         ], a: 2 },
         { q: `System exclusive messages are bracketed by:`, o: [
           [`F8 and FC`, `These are Timing Clock and Stop Sequence (real-time).`],
-          [`F0 and F7`, `Correct. F0 = Sysex Start, F7 = Sysex End.`],
-          [`FA and FB`, `Start and Continue Sequence.`],
-          [`80 and 90`, `These are Note Off/On on channel 1.`]
+          [`F0 and F7`, `Correct. A Sysex message is a stream of data bytes (high bit 0) bracketed by F0 (Sysex Start) and F7 (Sysex End); its format is system dependent (L6, System messages).`],
+          [`FA and FB`, `FA (Start Sequence) and FB (Continue) are system real-time messages for sequence control. Sysex is bracketed by F0 and F7.`],
+          [`80 and 90`, `80 and 90 are status bytes for Note Off and Note On on channel 1, channel voice messages. Sysex is bracketed by F0 and F7.`]
         ], a: 1 },
         { q: `In General MIDI, key-based percussion is transmitted by default on channel:`, o: [
-          [`1`, `Not the GM drum channel.`],
-          [`16`, `Not the GM drum channel.`],
+          [`1`, `Channel 1 is an ordinary melodic channel. General MIDI sends key-based percussion on channel 10 by default (L6, General MIDI).`],
+          [`16`, `Channel 16 is just the last of the 16 channels, not the drum channel. GM key-based percussion defaults to channel 10.`],
           [`Any; there is no default`, `The default is channel 10 (other channels are possible).`],
-          [`10`, `Correct.`]
+          [`10`, `Correct. In General MIDI the percussion key map (47 sounds on keys 35–81) is played on channel 10 by default, though other channels are possible (L6, General MIDI).`]
         ], a: 3 },
         { q: `The GM instrument patch map contains how many instruments?`, o: [
-          [`128`, `Correct. 16 families of 8.`],
-          [`47`, `47 is the number of percussion sounds.`],
-          [`16`, `16 is the number of channels.`],
-          [`24`, `24 is the minimum number of voices.`]
+          [`128`, `Correct. The GM patch map is a standard list of 128 instruments in 16 families of 8 (e.g. 1 Acoustic Grand, 41 Violin, 128 Gunshot) (L6, General MIDI).`],
+          [`47`, `47 is the size of the GM percussion key map (keys 35–81). The instrument patch map has 128 instruments in 16 families of 8.`],
+          [`16`, `16 is the number of MIDI channels (and of patch-map families). The patch map itself has 16 × 8 = 128 instruments.`],
+          [`24`, `24 is the minimum number of dynamically allocated voices for GM. The patch map has 128 instruments.`]
         ], a: 0 },
         { q: `The minimum number of dynamically allocated voices required for GM compatibility is:`, o: [
-          [`16`, `That is the number of channels.`],
-          [`47`, `That is the percussion map size.`],
-          [`24`, `Correct (usually 64/128 in practice).`],
-          [`128`, `That is the patch map size.`]
+          [`16`, `16 is the number of channels a GM device must support. The voice requirement is at least 24 dynamically allocated voices.`],
+          [`47`, `47 is the number of sounds in the GM percussion key map. The minimum voice count is 24.`],
+          [`24`, `Correct. GM requires at least 24 fully dynamically allocated voices shared across all 16 channels; real devices usually have 64 or 128 (L6, GM requirements).`],
+          [`128`, `128 is the number of instruments in the GM patch map. The minimum voice count for GM is 24 (usually 64/128 in practice).`]
         ], a: 2 },
         { q: `Which MPEG-4 Structured Audio tool is the language that describes synthesisers (instruments)?`, o: [
           [`SASL`, `SASL is the score language that tells instruments what to play.`],
-          [`SASBF`, `SASBF transmits sample banks.`],
+          [`SASBF`, `SASBF (Sample Bank Format) efficiently transmits banks of samples for wavetable/sample-based synthesis. The language that describes instruments is SAOL.`],
           [`AudioBIFS`, `AudioBIFS describes mixing/post-production of audio scenes.`],
           [`SAOL`, `Correct. The Structured Audio Orchestra Language, pronounced "sail".`]
         ], a: 3 },
         { q: `A 3-byte MIDI message on a 31.25 kbaud link (10 bits per byte) takes about:`, o: [
           [`0.96 ms`, `Correct. 3 × 10 = 30 bits; 30 / 31,250 = 0.00096 s.`],
-          [`0.096 ms`, `Off by 10: 30 / 31250 = 0.00096 s.`],
-          [`9.6 ms`, `Too large by 10.`],
+          [`0.096 ms`, `This is ten times too small: 30 bits / 31,250 bit/s = 0.00096 s = 0.96 ms, not 0.096 ms. The slip is moving the decimal point when converting to ms.`],
+          [`9.6 ms`, `This is ten times too large: 30 / 31,250 = 0.00096 s = 0.96 ms. 9.6 ms would need 300 bits, i.e. 30 bytes.`],
           [`0.77 ms`, `That would be 3 × 8 = 24 bits, ignoring start/stop bits.`]
         ], a: 0 }
       ]
@@ -1212,31 +1212,31 @@ Example 9C 50 7F:
         { q: `Which effect has a delay range of <b>10–25 ms</b> with <b>random</b> modulation?`, o: [
           [`Flanger`, `Flanger is 0–15 ms with sinusoidal (about 1 Hz) modulation.`],
           [`Chorus`, `Correct. Chorus: multiple copies delayed by small random delays in the 10–25 ms range.`],
-          [`Slapback`, `Slapback is 25–50 ms with no modulation.`],
-          [`Echo`, `Echo is above 50 ms with no modulation.`]
+          [`Slapback`, `Slapback (a quick repetition, doubling) uses a 25–50 ms delay with no modulation. 10–25 ms with random modulation is chorus (L7, delay ranges table).`],
+          [`Echo`, `Echo uses delays above 50 ms with no modulation, long enough to hear a distinct copy. 10–25 ms with random modulation is chorus.`]
         ], a: 1 },
         { q: `An echo of 100 ms is implemented with an FIR comb at f<sub>s</sub> = 44.1 kHz. The delay M in samples is:`, o: [
-          [`441`, `That is 10 ms worth of samples.`],
+          [`441`, `441 samples is only 0.01 × 44100, a 10 ms delay. For 100 ms: M = τ × fs = 0.1 × 44100 = 4410 samples.`],
           [`4410`, `Correct. M = τ × fs = 0.1 × 44100 = 4410 samples.`],
-          [`44100`, `That is a full second of delay.`],
+          [`44100`, `44100 samples is a full second at 44.1 kHz (1 × 44100). A 100 ms echo needs 0.1 × 44100 = 4410 samples.`],
           [`0.0000023`, `Dividing τ by fs literally gives a meaningless tiny number; the delay in samples is τ × fs.`]
         ], a: 1 },
         { q: `The FIR comb filter difference equation is:`, o: [
           [`y(n) = x(n) + g·x(n − M)`, `Correct. A single delayed copy of the input added with gain g; H(z) = 1 + g z<sup>−M</sup>.`],
           [`y(n) = c·x(n) + g·y(n − M)`, `That is the IIR comb (feedback of the output).`],
-          [`y(n) = x(n)·m(n)`, `That is ring modulation.`],
-          [`y(n) = (1 + α m(n))·x(n)`, `That is amplitude modulation.`]
+          [`y(n) = x(n)·m(n)`, `y(n) = x(n)·m(n) multiplies the audio by a sine carrier: that is ring modulation, giving sum and difference frequencies. The FIR comb adds a delayed copy: x(n) + g·x(n − M).`],
+          [`y(n) = (1 + α m(n))·x(n)`, `(1 + α m(n))·x(n) is amplitude modulation (tremolo when m is below 20 Hz). The FIR comb is y(n) = x(n) + g·x(n − M), a single delayed copy.`]
         ], a: 0 },
         { q: `An IIR comb with c = 1, g = 0.5, M = 10 is fed a unit impulse. What is y(30)?`, o: [
           [`0`, `That would be the FIR comb, which has only one echo at n = 10.`],
-          [`0.5`, `That is y(10).`],
+          [`0.5`, `0.5 is y(10), the first echo after one pass through the loop. Each further pass multiplies by g again, so y(30) = 0.5³ = 0.125.`],
           [`0.125`, `Correct. Each pass through the loop multiplies by g: 1, 0.5, 0.25, 0.125 at n = 0, 10, 20, 30.`],
           [`1.5`, `The echoes decay; they do not accumulate at a single sample.`]
         ], a: 2 },
         { q: `In the Universal Comb Filter, which parameter set (BL, FB, FF) gives a pure <b>delay</b>?`, o: [
-          [`1, 0, g`, `That is the FIR comb.`],
-          [`1, g, 0`, `That is the IIR comb.`],
-          [`a, −a, 1`, `That is the allpass.`],
+          [`1, 0, g`, `BL = 1, FB = 0, FF = g is the FIR comb: direct signal plus one delayed copy. A pure delay removes the direct signal: BL = 0, FB = 0, FF = 1.`],
+          [`1, g, 0`, `BL = 1, FB = g, FF = 0 is the IIR comb: feedback produces endless decaying echoes. A pure delay is BL = 0, FB = 0, FF = 1.`],
+          [`a, −a, 1`, `BL = a, FB = −a, FF = 1 is the allpass filter, which passes all frequencies and changes only phase. A pure delay is 0, 0, 1.`],
           [`0, 0, 1`, `Correct. No blend of the direct signal, no feedback, feed-forward 1: only the delayed signal comes out.`]
         ], a: 3 },
         { q: `Ring modulating a 440 Hz carrier with a 200 Hz sine produces which frequencies?`, o: [
@@ -1246,25 +1246,25 @@ Example 9C 50 7F:
           [`880 Hz only`, `Doubling the carrier is not how ring modulation works.`]
         ], a: 1 },
         { q: `Tremolo is:`, o: [
-          [`Frequency modulation of the pitch using an LFO`, `Pitch modulation via delay is vibrato.`],
+          [`Frequency modulation of the pitch using an LFO`, `Periodically modulating the pitch with an LFO-driven delay is vibrato (Doppler-like). Tremolo modulates the amplitude, not the pitch.`],
           [`Amplitude modulation with a modulation frequency below 20 Hz`, `Correct. y(n) = (1 + α m(n)) x(n) with a slow sine (demo: 5 Hz, α = 0.5); it can also be made by ring modulation with a triangular wave.`],
-          [`A comb filter with 25–50 ms delay`, `That is slapback.`],
-          [`Convolution with a room impulse response`, `That is convolution reverb.`]
+          [`A comb filter with 25–50 ms delay`, `A comb filter with a 25–50 ms delay is slapback, a delay effect. Tremolo is amplitude modulation: y(n) = (1 + α m(n)) x(n) with m below 20 Hz.`],
+          [`Convolution with a room impulse response`, `Convolving with a room impulse response is convolution reverb, a spatial effect. Tremolo is AM with a modulation frequency below 20 Hz.`]
         ], a: 1 },
         { q: `Which statement about <b>vibrato</b> is correct?`, o: [
           [`The delayed signal is mixed with the direct signal`, `For vibrato you only listen to the delayed signal, with no forward or backward feed.`],
           [`Typical delay 5–10 ms and LFO rate 5–14 Hz`, `Correct. Varying the delay periodically changes pitch, like the Doppler effect.`],
-          [`It uses a notch filter`, `Notch filters are used in phasers.`],
-          [`It needs a delay above 50 ms`, `That is the echo range.`]
+          [`It uses a notch filter`, `A notch filter mixed with the direct signal is the phaser (a time-varying filter). Vibrato is a delay line modulated by an LFO, with only the delayed signal heard.`],
+          [`It needs a delay above 50 ms`, `Delays above 50 ms give echo. Vibrato uses a short delay of 5–10 ms modulated by a 5–14 Hz LFO.`]
         ], a: 1 },
         { q: `Which filter gives simultaneous lowpass, bandpass and highpass outputs with independent control of cut-off and damping?`, o: [
           [`FIR comb filter`, `A comb filter is a delay structure, not a tunable LP/BP/HP filter.`],
           [`State variable filter`, `Correct. F1 = 2 sin(π fc/fs), Q1 = 2d; it is used to implement the wah-wah.`],
-          [`First-order allpass filter`, `An allpass only changes phase.`],
+          [`First-order allpass filter`, `A first-order allpass passes all frequencies and only changes phase; it is the building block of shelving EQs, not a multi-output filter. The state variable filter gives LP, BP and HP at once.`],
           [`Schroeder reverberator`, `That is a reverb structure of combs and allpasses.`]
         ], a: 1 },
         { q: `An EQ band is set to G = 20 dB. Using V<sub>0</sub> = 10<sup>G/20</sup> and H<sub>0</sub> = V<sub>0</sub> − 1, H<sub>0</sub> equals:`, o: [
-          [`1`, `That would need V0 = 2 (about 6 dB).`],
+          [`1`, `H0 = 1 would need V0 = 2, i.e. G ≈ 6 dB. For 20 dB: V0 = 10^(20/20) = 10, so H0 = 10 − 1 = 9.`],
           [`9`, `Correct. V0 = 10^(20/20) = 10, so H0 = 10 − 1 = 9.`],
           [`19`, `You subtracted from 20 dB directly instead of converting to linear first.`],
           [`100`, `10^(20/10) = 100 is the power ratio; amplitude uses /20.`]
@@ -1272,14 +1272,14 @@ Example 9C 50 7F:
         { q: `Why can a simple delay with feedback NOT fully reproduce room reverberation?`, o: [
           [`It cannot attenuate the reflections`, `A feedback gain g below 1 does attenuate them.`],
           [`It produces reflections at a fixed interval, while in a real room the rate of arriving reflections increases over time`, `Correct. Real reverb has early reflections followed by dense diffuse reverberation.`],
-          [`It only works on stereo signals`, `Delays work on mono signals too.`],
-          [`It needs the FFT`, `Only convolution reverb uses the FFT.`]
+          [`It only works on stereo signals`, `A feedback delay works fine on mono signals; stereo is not the issue. The problem is its fixed reflection interval, while real reflections grow denser over time.`],
+          [`It needs the FFT`, `A feedback delay needs no FFT; only convolution reverb uses the FFT to convolve with a long impulse response. The real limitation is the fixed reflection interval.`]
         ], a: 1 },
         { q: `Moorer's reverberator improves on Schroeder's mainly by:`, o: [
-          [`Removing all comb filters`, `Moorer still uses parallel comb filters.`],
+          [`Removing all comb filters`, `Moorer keeps Schroeder's parallel comb filters (with different delay lengths) and adds lowpass filters in their feedback loops plus tapped delay lines for early reflections.`],
           [`Adding tapped delay lines for early reflections and lowpass filters in the comb feedback loops`, `Correct. Lowpass feedback gives shorter reverb at high frequencies (air absorption, wall reflectivity).`],
-          [`Using ring modulation`, `Ring modulation is not part of reverb.`],
-          [`Replacing filters by a recorded impulse response`, `That is convolution reverb.`]
+          [`Using ring modulation`, `Ring modulation (multiplying by a carrier) is a modulation effect and plays no part in reverb. Moorer adds tapped delay lines and lowpass filters in the comb feedback loops.`],
+          [`Replacing filters by a recorded impulse response`, `Using a recorded impulse response is convolution reverb, the other class of reverb simulation. Moorer is still a filter/delay-line design, improving Schroeder's combs and allpasses.`]
         ], a: 1 }
       ]
     }
@@ -1444,22 +1444,22 @@ Example 9C 50 7F:
           [`Because printing is additive, like a monitor`, `Wrong: monitors are additive (RGB). Printing is subtractive.`],
           [`Because inks absorb (subtract) light, and K gives a true black that mixing CMY cannot`, `Correct. CMY are the subtractive primaries; mixed CMY is never really black, so black ink is added.`],
           [`Because CMYK has more colours than RGB`, `Not the reason; the CMYK gamut is actually smaller and more muted.`],
-          [`Because JPEG files are stored in CMYK`, `JPEG uses YCbCr, not CMYK.`]
+          [`Because JPEG files are stored in CMYK`, `JPEG stores colour as YCrCb (luminance + chrominance) so it can subsample the chroma; CMYK is a printing model. The real reason is that inks subtract light.`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `Which colour model is used by JPEG?`, o: [
-          [`CMYK`, `CMYK is for printing.`],
-          [`YIQ`, `YIQ is used in NTSC TV broadcasting.`],
+          [`CMYK`, `CMYK is the subtractive model for printing with inks. JPEG converts RGB to YCrCb (luminance + chroma) so it can subsample the chroma (L8, YCrCb).`],
+          [`YIQ`, `YIQ is the model of NTSC colour TV broadcasting (4 / 1.5 / 0.6 MHz for Y, I, Q). JPEG (and MPEG) use YCrCb.`],
           [`YCrCb (YCbCr)`, `Correct. JPEG converts RGB to YCbCr so it can subsample the chroma.`],
-          [`CIE Lab`, `Lab is used by Photoshop.`]
+          [`CIE Lab`, `CIE L*a*b* is the refined 1976 CIE model, used by Photoshop, not by JPEG. JPEG uses YCrCb (CCIR 601).`]
         ], a: 2, src: `Exam 2023/24` },
         { q: `A 640×480 24-bit colour image (uncompressed) takes about:`, o: [
-          [`37.5 KB`, `That is the 1-bit bitmap size.`],
-          [`307.2 KB`, `That is the 8-bit (1 byte/pixel) size.`],
-          [`921.6 KB`, `Correct. 640 × 480 × 3 = 921,600 bytes.`],
-          [`1.2 MB`, `That would be 32-bit (4 bytes/pixel).`]
+          [`37.5 KB`, `37.5 KB is the 1-bit bitmap: 640 × 480 = 307,200 bits ÷ 8 = 38,400 B. 24-bit colour needs 3 bytes per pixel.`],
+          [`307.2 KB`, `307.2 KB is 1 byte per pixel (8-bit colour or greyscale): 640 × 480 = 307,200 B. 24-bit colour is three times that.`],
+          [`921.6 KB`, `Correct. 24-bit colour stores 3 bytes (R, G, B) per pixel: 640 × 480 × 3 = 921,600 B = 921.6 KB (L8, Image data structures).`],
+          [`1.2 MB`, `About 1.2 MB (1,228,800 B) is the 32-bit size, with a fourth alpha byte per pixel. 24-bit uses 3 bytes: 921.6 KB.`]
         ], a: 2 },
         { q: `Convert the RGB pixel (60, 210, 130) to CMYK (values 0-1).`, o: [
-          [`(0.7647, 0.1765, 0.4902, 0)`, `This is CMY; K has not been extracted.`],
+          [`(0.7647, 0.1765, 0.4902, 0)`, `This is only the CMY step (1 − RGB/255). For CMYK you still take K = min(C, M, Y) = 0.1765 and subtract it from C, M and Y.`],
           [`(0.5882, 0, 0.3137, 0.1765)`, `Correct. CMY = (0.7647, 0.1765, 0.4902), K = min = 0.1765, then subtract K.`],
           [`(0.2353, 0.8235, 0.5098, 0.2353)`, `These are the normalized RGB values, not CMY.`],
           [`(0.5882, 0.1765, 0.3137, 0)`, `K must be the minimum of CMY and subtracted from all three.`]
@@ -1467,62 +1467,62 @@ Example 9C 50 7F:
         { q: `The luminance Y of pixel (R,G,B) = (110, 110, 255) is:`, o: [
           [`126.53`, `Correct. 0.299×110 + 0.587×110 + 0.114×255 = 32.89 + 64.57 + 29.07 = 126.53.`],
           [`158.33`, `That is the simple average (110+110+255)/3, not the weighted formula.`],
-          [`-46.545`, `That is the I component.`],
-          [`44.545`, `That is the Q component.`]
+          [`-46.545`, `−46.545 is the I component of YIQ: 0.596×110 − 0.275×110 − 0.321×255. Luminance uses Y = 0.299R + 0.587G + 0.114B = 126.53.`],
+          [`44.545`, `44.545 is the Q component of YIQ: 0.212×110 − 0.528×110 + 0.311×255. Luminance is Y = 0.299R + 0.587G + 0.114B = 126.53.`]
         ], a: 0 },
         { q: `In the YUV model, U and V are:`, o: [
-          [`U = R - Y, V = B - Y`, `Swapped.`],
-          [`U = B - Y, V = R - Y`, `Correct, straight from the slide.`],
-          [`U = (B - Y)/1.772, V = (R - Y)/1.402`, `Those are Cb and Cr of YCrCb (scaled YUV).`],
-          [`U = 1 - G, V = 1 - B`, `Those are CMY conversions.`]
+          [`U = R - Y, V = B - Y`, `This swaps the two: U is the blue difference and V the red difference. The slide gives U = B − Y and V = R − Y.`],
+          [`U = B - Y, V = R - Y`, `Correct. YUV keeps luminance Y = 0.299R + 0.587G + 0.114B and two colour differences: U = B − Y and V = R − Y (L8, YUV).`],
+          [`U = (B - Y)/1.772, V = (R - Y)/1.402`, `Those scaled versions are Cb = (B − Y)/1.772 and Cr = (R − Y)/1.402 of YCrCb (CCIR 601). Plain YUV is unscaled: U = B − Y, V = R − Y.`],
+          [`U = 1 - G, V = 1 - B`, `Subtracting from 1 is the RGB → CMY conversion (M = 1 − G, Y = 1 − B). YUV uses colour differences: U = B − Y, V = R − Y.`]
         ], a: 1 },
         { q: `NTSC allocates bandwidth to Y, I and Q as:`, o: [
           [`4 MHz, 1.5 MHz, 0.6 MHz`, `Correct. The eye is most sensitive to Y, then I, then Q.`],
-          [`5.5 MHz, 1.8 MHz, 1.8 MHz`, `That is PAL (Y, U, V).`],
-          [`1.5 MHz, 4 MHz, 0.6 MHz`, `Y must get the most bandwidth.`],
+          [`5.5 MHz, 1.8 MHz, 1.8 MHz`, `5.5 / 1.8 / 1.8 MHz is the PAL allocation for Y, U and V. NTSC gives Y 4 MHz, I 1.5 MHz and Q 0.6 MHz.`],
+          [`1.5 MHz, 4 MHz, 0.6 MHz`, `This gives I more than Y. The eye is most sensitive to luminance, so Y gets the most (4 MHz), then I (1.5 MHz), then Q (0.6 MHz).`],
           [`Equal bandwidth to all`, `The whole point is to give less to chrominance.`]
         ], a: 0 },
         { q: `Which image format is lossless, uses LZW and is limited to 256 colours?`, o: [
-          [`JPEG`, `JPEG is lossy and supports 24-bit colour.`],
+          [`JPEG`, `JPEG is lossy (it exploits limits of human vision) and handles 24-bit photographic colour. The lossless LZW, 256-colour format is GIF.`],
           [`GIF`, `Correct. LZW, lossless, 8-bit colour, interlacing; GIF89a adds animation.`],
-          [`PNG`, `PNG supports up to 48 bits per pixel.`],
-          [`PostScript`, `PostScript provides no compression.`]
+          [`PNG`, `PNG was designed to replace GIF and supports up to 48 bits per pixel plus an alpha channel, so it is not limited to 256 colours.`],
+          [`PostScript`, `PostScript/EPS is a typesetting language with no compression, so files are large. The LZW-based 8-bit format is GIF.`]
         ], a: 1 },
         { q: `In 4:2:0 chroma subsampling:`, o: [
-          [`No chroma is removed`, `That is 4:4:4.`],
-          [`Chroma is halved horizontally only`, `That is 4:2:2.`],
-          [`Chroma is subsampled by 2 horizontally and vertically (average of each 2×2 block)`, `Correct.`],
+          [`No chroma is removed`, `Keeping all chroma samples is 4:4:4 (no subsampling). 4:2:0 halves chroma both horizontally and vertically.`],
+          [`Chroma is halved horizontally only`, `Halving chroma horizontally only is 4:2:2. In 4:2:0 the 0 means chroma is also subsampled 2:1 vertically (2×2 block averages).`],
+          [`Chroma is subsampled by 2 horizontally and vertically (average of each 2×2 block)`, `Correct. The 0 means both chroma channels are subsampled 2:1 vertically as well as horizontally: each 2×2 block stores one averaged Cb and Cr (L8, Chroma subsampling).`],
           [`The Cb channel is deleted`, `The 0 does not mean Cb is dropped; it means 2:1 vertical subsampling.`]
         ], a: 2 },
         { q: `A 5×5 greyscale image (25 bytes) is compressed to 0.01 KB. Using the course convention CR = compressed/original × 100 and 1 KB = 1024 B, CR =`, o: [
-          [`0.04 %`, `Forgot to convert KB to bytes (0.01/25).`],
-          [`40 %`, `Used 1 KB = 1000 B; the course uses 1024.`],
+          [`0.04 %`, `0.04 % comes from 0.01 / 25 × 100 without converting 0.01 KB into bytes. First 0.01 × 1024 = 10.24 B, then 10.24 / 25 × 100 = 40.96 %.`],
+          [`40 %`, `40 % uses 1 KB = 1000 B (10 B / 25 B). The course uses 1 KB = 1024 B, so 10.24 / 25 × 100 = 40.96 %.`],
           [`40.96 %`, `Correct. 0.01 × 1024 = 10.24 B; 10.24/25 × 100 = 40.96 %.`],
           [`244 %`, `Inverted ratio multiplied by 100; the course puts compressed on top.`]
         ], a: 2 },
         { q: `For a lossless compression scheme, the MSE between original and reconstructed image is:`, o: [
           [`0`, `Correct. Lossless means I''' = I, so every difference is 0 (MAE is 0 too).`],
-          [`1`, `No error is introduced at all.`],
-          [`Equal to the compression ratio`, `CR and MSE are unrelated quantities.`],
-          [`Undefined`, `It is defined and equals 0.`]
+          [`1`, `An MSE of 1 would mean some pixels changed. Lossless reconstruction gives I''' = I exactly, so every difference and the MSE are 0.`],
+          [`Equal to the compression ratio`, `CR measures size (compressed / original × 100) while MSE measures pixel error; they are unrelated. For lossless, MSE = 0 whatever the CR.`],
+          [`Undefined`, `MSE is defined for any reconstruction: 1/(MN) · Σ(I − I''')². For lossless every difference is 0, so MSE = 0.`]
         ], a: 0 },
         { q: `The wagon-wheel effect (spokes appear to rotate backwards) is an example of:`, o: [
-          [`Raster scan aliasing`, `That is twinkling on sharp horizontal lines.`],
+          [`Raster scan aliasing`, `Raster scan aliasing is the twinkling/strobing seen on sharp horizontal lines. Backward-rotating wheels come from a frame rate below the Nyquist rate: temporal aliasing.`],
           [`Temporal aliasing`, `Correct. The frame rate is below the Nyquist rate for the motion (strobing).`],
-          [`Chroma subsampling error`, `That is a colour resolution/rounding issue.`],
-          [`Stair-stepping`, `That is spatial aliasing on slanted edges.`]
+          [`Chroma subsampling error`, `Chroma subsampling errors are reduced colour resolution and integer-rounding errors in RGB↔YUV conversion, not motion effects. The wagon wheel is temporal aliasing.`],
+          [`Stair-stepping`, `Stair-stepping is spatial aliasing: jagged edges on slanted lines. Spokes turning backwards are temporal aliasing (frame rate below Nyquist).`]
         ], a: 1 },
         { q: `PAL video uses:`, o: [
-          [`525 lines, 29.97 fps, YIQ`, `That is NTSC.`],
+          [`525 lines, 29.97 fps, YIQ`, `525 lines, 29.97 fps and YIQ describe NTSC. PAL uses 625 lines, 25 fps and YUV.`],
           [`625 lines, 25 fps, YUV`, `Correct. 40 ms per frame, 312.5 lines per field.`],
-          [`625 lines, 30 fps, CMYK`, `CMYK is a printing model.`],
-          [`1080 lines, 60 fps, RGB`, `Not PAL.`]
+          [`625 lines, 30 fps, CMYK`, `PAL does use 625 lines but at 25 fps, not 30, and its colour model is YUV; CMYK is a printing model, never used in video.`],
+          [`1080 lines, 60 fps, RGB`, `1080 lines is a modern HD format, and analog TV does not send RGB. PAL is 625 lines, 25 fps, YUV.`]
         ], a: 1 },
         { q: `In the CIE L*a*b* model, the "a" axis ranges from:`, o: [
-          [`Blue to yellow`, `That is b.`],
-          [`Green to red`, `Correct.`],
-          [`Black to white`, `That is L (luminance).`],
-          [`Cyan to magenta`, `Not a Lab axis.`]
+          [`Blue to yellow`, `Blue to yellow is the b axis. In L*a*b*, a runs green to red and L is luminance (L8, CIE Lab).`],
+          [`Green to red`, `Correct. CIE L*a*b* (1976) has L = luminance and two chrominance axes: a from green to red and b from blue to yellow (L8, CIE Lab).`],
+          [`Black to white`, `Black to white is the L (luminance) axis. The a axis is chrominance from green to red.`],
+          [`Cyan to magenta`, `Cyan and magenta are CMY printing primaries, not a Lab axis. Lab's axes are L (luminance), a (green–red) and b (blue–yellow).`]
         ], a: 1 }
       ]
     }
@@ -1535,28 +1535,28 @@ Example 9C 50 7F:
       note: `No official answer key; answers are worked out from the lectures and the course summary. The same paper was given to 4th IT (IT404, "Multimedia", 50 marks: Q3 = 10, Q4 = 5 + 5 + 10) — the WhatsApp images IMG-20260106-WA0009/0010 are that copy with a student's pencil marks. Those marks agree with the answers here (T/F 3, 6, 8 False; 1, 2, 4, 7, 9, 10 True); the mark on T/F 5 is unclear.`,
       sections: [
           { title: `Question One · MCQ`, marks: `10 × 1 points`, items: [
-            { type: `mcq`, q: `1. Sampling frequency refers to:`, o: [`Number of samples taken per hour`, `Number of samples taken per second`, `Total duration of the signal`, `Amplitude of the signal`], a: 1, why: `Samples per second, measured in Hz (L4).` },
-            { type: `mcq`, q: `2. The standard unit of sampling frequency is:`, o: [`Hertz (Hz)`, `Joule (J)`, `Newton (N)`, `Ampere (A)`], a: 0, why: `1 Hz = 1 sample per second.` },
-            { type: `mcq`, q: `3. According to the Nyquist theorem, the sampling frequency should be at least:`, o: [`Equal to the lowest frequency in the signal`, `Half the highest frequency in the signal`, `Twice the highest frequency in the signal`, `Ten times the highest frequency in the signal`], a: 2, why: `fs ≥ 2·fmax (L4).` },
-            { type: `mcq`, q: `4. If a signal contains components up to 5 kHz, the minimum sampling frequency should be:`, o: [`2.5 kHz`, `5 kHz`, `10 kHz`, `20 kHz`], a: 2, why: `2 × 5 kHz = 10 kHz. 20 kHz also works but is not the minimum.` },
-            { type: `mcq`, q: `5. Undersampling a signal generally results in:`, o: [`Aliasing`, `Overshoot`, `Quantization noise`, `Increased signal bandwidth`], a: 0, why: `Sampling below the Nyquist rate folds high frequencies into false low ones = aliasing. Quantisation noise comes from the bit depth.` },
-            { type: `mcq`, q: `6. Increasing the sampling frequency generally:`, o: [`Decreases data size`, `Reduces aliasing`, `Makes reconstruction impossible`, `Eliminates quantization error`], a: 1, why: `Higher fs raises the Nyquist limit fs/2, so fewer components alias. It increases (not decreases) data size, and quantisation error depends on bits, not rate.` },
-            { type: `mcq`, q: `7. Oversampling refers to sampling:`, o: [`Below the Nyquist rate`, `Exactly at the Nyquist rate`, `Above the Nyquist rate`, `Only at integer multiples of the signal`], a: 2, why: `Over = above the Nyquist rate 2·fmax.` },
-            { type: `mcq`, q: `8. In digital audio, the common sampling frequency for CDs is:`, o: [`22.05 kHz`, `44.1 kHz`, `48 kHz`, `96 kHz`], a: 1, why: `CD = 44.1 kHz, 16 bit (L1, L4). 22.05 kHz is low-grade audio.` },
-            { type: `mcq`, q: `9. If the sampling frequency is lower than the Nyquist rate, the reconstructed signal will be:`, o: [`perfectly accurate`, `Contain aliasing distortion`, `Have increased amplitude`, `Band-limited`], a: 1, why: `Undersampling → aliasing distortion.` },
-            { type: `mcq`, q: `10. A higher sampling frequency allows:`, o: [`Accurate capturing of high-frequency components`, `Less memory usage`, `Lower power consumption`, `No change in signal resolution`], a: 0, why: `The highest representable frequency is fs/2, so a higher fs captures higher frequencies. It costs more memory and processing.` }
+            { type: `mcq`, q: `1. Sampling frequency refers to:`, o: [`Number of samples taken per hour`, `Number of samples taken per second`, `Total duration of the signal`, `Amplitude of the signal`], a: 1, why: `Sampling frequency (sample rate) is how many samples are taken <b>per second</b>, measured in Hz; it equals 1 / sampling interval T (L4, Sample rate).`, ow: [`Sample rate is counted per second, not per hour: 44.1 kHz means 44,100 samples every second (L4).`, null, `The total duration is the length of the recording in seconds; it multiplies with the sample rate to give the file size, but it is not the rate itself (L4).`, `Amplitude is the height (loudness) of the wave; each sample measures it, and how finely is set by the bit size (quantisation), not by the sampling frequency (L2, L4).`] },
+            { type: `mcq`, q: `2. The standard unit of sampling frequency is:`, o: [`Hertz (Hz)`, `Joule (J)`, `Newton (N)`, `Ampere (A)`], a: 0, why: `Sampling frequency is samples per second = 1 / T, and its unit is the <b>Hertz (Hz)</b>: 1 Hz = 1 sample per second, e.g. 44.1 kHz for CD (L4, Sample rate).`, ow: [null, `The joule is the unit of energy, not of a rate; sample rate is counted per second, in Hz (L4).`, `The newton is the unit of force; sampling frequency is measured in Hertz (samples per second) (L4).`, `The ampere is the unit of electric current; sampling frequency is measured in Hertz (L4).`] },
+            { type: `mcq`, q: `3. According to the Nyquist theorem, the sampling frequency should be at least:`, o: [`Equal to the lowest frequency in the signal`, `Half the highest frequency in the signal`, `Twice the highest frequency in the signal`, `Ten times the highest frequency in the signal`], a: 2, why: `Nyquist's theorem: the sampling frequency must be <b>at least twice the highest frequency component</b> in the signal, fs ≥ 2·fmax (L4, Nyquist).`, ow: [`Nyquist depends on the highest frequency, not the lowest, and needs twice it; sampling at the signal frequency gives one sample per cycle and the sine is lost (L4).`, `Half fmax is far too low and causes aliasing. You may be thinking of the Nyquist frequency, which is half of fs (fs/2), not of fmax (L4).`, null, `Ten times fmax is oversampling: it works but is not the minimum the theorem requires, which is 2·fmax (L4).`] },
+            { type: `mcq`, q: `4. If a signal contains components up to 5 kHz, the minimum sampling frequency should be:`, o: [`2.5 kHz`, `5 kHz`, `10 kHz`, `20 kHz`], a: 2, why: `Nyquist: fs ≥ 2·fmax = 2 × 5 kHz = <b>10 kHz</b> (L4, Nyquist). Higher rates also work but 10 kHz is the minimum.`, ow: [`2.5 kHz is fmax ÷ 2: the formula was inverted. Sampling below 10 kHz undersamples a 5 kHz signal and causes aliasing (L4).`, `5 kHz equals fmax, i.e. one sample per cycle, so every sample has the same value and the sine is lost; the minimum is 2 × 5 = 10 kHz (L4).`, null, `20 kHz (4·fmax) is oversampling: it captures the signal, but the question asks for the minimum, 2 × 5 = 10 kHz (L4).`] },
+            { type: `mcq`, q: `5. Undersampling a signal generally results in:`, o: [`Aliasing`, `Overshoot`, `Quantization noise`, `Increased signal bandwidth`], a: 0, why: `Sampling below the Nyquist rate folds high frequencies into false low ones = aliasing. Quantisation noise comes from the bit depth.`, ow: [null, `Overshoot is ringing around sharp edges in filtering, not a sampling artefact; sampling below the Nyquist rate gives aliasing (L4).`, `Quantisation noise comes from the bit size (about 6 dB per bit), not from the sampling rate; undersampling causes aliasing (L2, L4).`, `Sampling cannot add bandwidth; undersampling actually lowers the highest frequency that can be represented (fs/2) and folds higher ones into false low frequencies (L4).`] },
+            { type: `mcq`, q: `6. Increasing the sampling frequency generally:`, o: [`Decreases data size`, `Reduces aliasing`, `Makes reconstruction impossible`, `Eliminates quantization error`], a: 1, why: `Higher fs raises the Nyquist limit fs/2, so fewer components alias. It increases (not decreases) data size, and quantisation error depends on bits, not rate.`, ow: [`More samples per second means more data: file size = rate × bits × seconds × channels, so a higher fs increases the size (L4).`, null, `A higher rate makes reconstruction easier, not impossible: it captures the waveform better (oversampling) (L4).`, `Quantisation error depends on the bit size (number of levels 2<sup>bits</sup>), not on how often you sample (L4).`] },
+            { type: `mcq`, q: `7. Oversampling refers to sampling:`, o: [`Below the Nyquist rate`, `Exactly at the Nyquist rate`, `Above the Nyquist rate`, `Only at integer multiples of the signal`], a: 2, why: `<b>Oversampling</b> = sampling above the Nyquist rate 2·fmax. It reduces aliasing but costs more data (L4, Nyquist and aliasing).`, ow: [`Sampling below the Nyquist rate is undersampling, which causes aliasing (L4).`, `Exactly 2·fmax is the Nyquist rate itself, the minimum rate; oversampling means going above it (L4).`, null, `Oversampling is defined relative to the Nyquist rate (above 2·fmax), not as integer multiples of the signal (L4).`] },
+            { type: `mcq`, q: `8. In digital audio, the common sampling frequency for CDs is:`, o: [`22.05 kHz`, `44.1 kHz`, `48 kHz`, `96 kHz`], a: 1, why: `CD = 44.1 kHz, 16 bit (L1, L4). 22.05 kHz is low-grade audio.`, ow: [`22.05 kHz is low-grade audio (WWW audio, AM radio); it is also the Nyquist frequency of a 44.1 kHz CD (L4).`, null, `48 kHz is a common professional/video rate, but the slides give CD quality as 16-bit at 44.1 kHz (L1, L4).`, `96 kHz is the audiophile example (24-bit, 96 kHz), not the CD rate of 44.1 kHz (L1, L4).`] },
+            { type: `mcq`, q: `9. If the sampling frequency is lower than the Nyquist rate, the reconstructed signal will be:`, o: [`perfectly accurate`, `Contain aliasing distortion`, `Have increased amplitude`, `Band-limited`], a: 1, why: `Sampling below the Nyquist rate (2·fmax) is undersampling, which creates the digital artefact called <b>aliasing</b>: frequencies above fs/2 appear as false lower frequencies (L4, Nyquist and aliasing).`, ow: [`Perfect reconstruction needs fs ≥ 2·fmax; below it, high frequencies fold into false low ones, so the result is distorted (L4).`, null, `Undersampling changes which frequencies appear, not the amplitude; the artefact is aliasing (L4).`, `Band-limiting is done by the low-pass (anti-aliasing) filter before sampling; sampling too slowly does not band-limit, it aliases (L3, L4).`] },
+            { type: `mcq`, q: `10. A higher sampling frequency allows:`, o: [`Accurate capturing of high-frequency components`, `Less memory usage`, `Lower power consumption`, `No change in signal resolution`], a: 0, why: `The highest representable frequency is fs/2, so a higher fs captures higher frequencies. It costs more memory and processing.`, ow: [null, `More samples per second need more memory: size = rate × bits × seconds × channels (L4).`, `Processing more samples per second takes more work and power, not less (L4).`, `A higher rate raises the highest representable frequency fs/2, so it does change (improve) the time/frequency resolution (L4).`] }
           ]},
           { title: `Question Two · True (A) / False (B)`, marks: `10 × 1 points`, items: [
-            { type: `tf`, q: `1. Sampling frequency is the number of samples taken per second.`, a: 0, why: `Definition (L4).` },
-            { type: `tf`, q: `2. Nyquist frequency is half of the sampling frequency.`, a: 0, why: `Nyquist frequency = fs/2, the highest frequency a sample rate can represent (e.g. 44.1 kHz → 22.05 kHz).` },
-            { type: `tf`, q: `3. Aliasing occurs when the sampling frequency is too high.`, a: 1, why: `Aliasing occurs when fs is too LOW (below 2·fmax).` },
-            { type: `tf`, q: `4. A signal with maximum frequency 1 kHz must be sampled at 2 kHz or higher.`, a: 0, why: `fs ≥ 2 × 1 kHz = 2 kHz.` },
-            { type: `tf`, q: `5. Sampling at exactly the Nyquist rate guarantees perfect reconstruction.`, a: 1, why: `"Guarantees" is too strong. At exactly 2·fmax the samples of the top frequency can all fall on zero crossings, so that component can be lost; in practice fs is chosen above 2·fmax (44.1 kHz for a 20 kHz limit). The lecture wording "at least twice" means 2·fmax is the lower bound, not a guarantee. If your lecturer treats the lower bound as sufficient he may accept True, but the intended answer is False.` },
-            { type: `tf`, q: `6. Increasing the sampling frequency always improves sound quality.`, a: 1, why: `"Always" is false: once fs exceeds twice the highest (audible) frequency, higher rates only increase file size without an audible improvement; quality is also limited by bit depth.` },
-            { type: `tf`, q: `7. Oversampling helps reduce aliasing.`, a: 0, why: `Sampling above the Nyquist rate leaves margin above the signal bandwidth, reducing aliasing.` },
-            { type: `tf`, q: `8. Digital signals do not require sampling.`, a: 1, why: `Intended answer False: a digital signal is produced BY sampling (plus quantisation) of the analog signal — Digital = Sampling + Quantisation (course summary). (Pedantically, an already-digital signal is already sampled; the examiner is testing that digitisation needs sampling.)` },
-            { type: `tf`, q: `9. Sampling frequency determines the highest frequency that can be accurately represented.`, a: 0, why: `The highest representable frequency is fs/2 (Nyquist frequency).` },
-            { type: `tf`, q: `10. 44.1 kHz is a common sampling frequency used in music CDs.`, a: 0, why: `CD quality = 16-bit, 44.1 kHz.` }
+            { type: `tf`, q: `1. Sampling frequency is the number of samples taken per second.`, a: 0, why: `L4 defines sampling frequency (sample rate) as how many samples are taken per second, = 1 / sampling interval, in Hz (L4, Sample rate).`, ow: [null, `This is exactly the L4 definition: sample rate = samples per second (Hz) = 1 / T, so the statement is true.`] },
+            { type: `tf`, q: `2. Nyquist frequency is half of the sampling frequency.`, a: 0, why: `Nyquist frequency = fs/2, the highest frequency a sample rate can represent (e.g. 44.1 kHz → 22.05 kHz).`, ow: [null, `L4 defines the Nyquist frequency as fs/2 (e.g. 44.1 kHz → 22.05 kHz). Do not confuse it with the Nyquist rate, 2·fmax.`] },
+            { type: `tf`, q: `3. Aliasing occurs when the sampling frequency is too high.`, a: 1, why: `Aliasing comes from <b>undersampling</b>: fs below 2·fmax makes high frequencies appear as false lower ones. A high fs (oversampling) reduces aliasing (L4, Nyquist and aliasing).`, ow: [`Too high a rate only costs data; aliasing happens when fs is too low (below 2·fmax) (L4).`, null] },
+            { type: `tf`, q: `4. A signal with maximum frequency 1 kHz must be sampled at 2 kHz or higher.`, a: 0, why: `Nyquist: fs ≥ 2·fmax = 2 × 1 kHz = <b>2 kHz</b>, so 2 kHz or more is required (L4, Nyquist).`, ow: [null, `It is true: Nyquist requires fs ≥ 2 × 1 kHz = 2 kHz; anything lower undersamples and aliases (L4).`] },
+            { type: `tf`, q: `5. Sampling at exactly the Nyquist rate guarantees perfect reconstruction.`, a: 1, why: `"Guarantees" is too strong. At exactly 2·fmax the samples of the top frequency can all fall on zero crossings, so that component can be lost; in practice fs is chosen above 2·fmax (44.1 kHz for a 20 kHz limit). The lecture wording "at least twice" means 2·fmax is the lower bound, not a guarantee. If your lecturer treats the lower bound as sufficient he may accept True, but the intended answer is False.`, ow: [`2·fmax is only the lower bound; at exactly that rate the samples can land on the zero crossings and lose the top frequency (L4 demo: at 2f it just captures it), so it is not guaranteed.`, null] },
+            { type: `tf`, q: `6. Increasing the sampling frequency always improves sound quality.`, a: 1, why: `"Always" is false: once fs exceeds twice the highest (audible) frequency, higher rates only increase file size without an audible improvement; quality is also limited by bit depth.`, ow: [`Not always: above 2·fmax extra samples add size but no audible detail, and quality is also limited by bit size (L4).`, null] },
+            { type: `tf`, q: `7. Oversampling helps reduce aliasing.`, a: 0, why: `Sampling above the Nyquist rate leaves margin above the signal bandwidth, reducing aliasing.`, ow: [null, `L4 states oversampling (above the Nyquist rate) reduces aliasing, at the cost of more data, so the statement is true.`] },
+            { type: `tf`, q: `8. Digital signals do not require sampling.`, a: 1, why: `Intended answer False: a digital signal is produced BY sampling (plus quantisation) of the analog signal — Digital = Sampling + Quantisation (course summary). (Pedantically, an already-digital signal is already sampled; the examiner is testing that digitisation needs sampling.)`, ow: [`Digitising an analog signal means sampling it at regular intervals and then quantising the values, so sampling is required (L4).`, null] },
+            { type: `tf`, q: `9. Sampling frequency determines the highest frequency that can be accurately represented.`, a: 0, why: `The highest frequency a sample rate can represent is the Nyquist frequency <b>fs/2</b>, so fs sets that limit, e.g. 44.1 kHz → 22.05 kHz (L4, Nyquist).`, ow: [null, `It is true: the Nyquist frequency fs/2 is the highest frequency a sample rate can represent (L4).`] },
+            { type: `tf`, q: `10. 44.1 kHz is a common sampling frequency used in music CDs.`, a: 0, why: `The slides give CD quality as <b>16-bit samples at 44.1 kHz</b>, chosen as 2 × 22.05 kHz to cover human hearing (L1, L4).`, ow: [null, `It is true: CD audio is 16-bit at 44.1 kHz, twice the ~22 kHz upper limit of hearing (L4).`] }
           ]},
           { title: `Question Three`, marks: `16 points (10 in the IT version)`, items: [
             { type: `written`, q: `Convert the RGB image to CMYK.<b>RED</b><table><tr><td>10</td><td>110</td><td>60</td><td>160</td></tr><tr><td>20</td><td>120</td><td>70</td><td>170</td></tr><tr><td>30</td><td>130</td><td>80</td><td>180</td></tr><tr><td>40</td><td>140</td><td>90</td><td>190</td></tr><tr><td>50</td><td>150</td><td>100</td><td>200</td></tr></table><b>GREEN</b><table><tr><td>10</td><td>110</td><td>110</td><td>210</td></tr><tr><td>20</td><td>120</td><td>120</td><td>220</td></tr><tr><td>30</td><td>130</td><td>130</td><td>230</td></tr><tr><td>40</td><td>140</td><td>255</td><td>240</td></tr><tr><td>50</td><td>150</td><td>150</td><td>250</td></tr></table><b>BLUE</b><table><tr><td>210</td><td>60</td><td>160</td><td>10</td></tr><tr><td>220</td><td>70</td><td>170</td><td>20</td></tr><tr><td>230</td><td>180</td><td>180</td><td>30</td></tr><tr><td>240</td><td>90</td><td>190</td><td>40</td></tr><tr><td>250</td><td>100</td><td>250</td><td>50</td></tr></table>`, ans: `<b>Step 1 · normalise</b>: divide every value by 255 (so values lie in 0–1).<br><b>Step 2 · CMY</b> = 1 − RGB/255:<br>C (from Red):<table><tr><td>0.9608</td><td>0.5686</td><td>0.7647</td><td>0.3725</td></tr><tr><td>0.9216</td><td>0.5294</td><td>0.7255</td><td>0.3333</td></tr><tr><td>0.8824</td><td>0.4902</td><td>0.6863</td><td>0.2941</td></tr><tr><td>0.8431</td><td>0.4510</td><td>0.6471</td><td>0.2549</td></tr><tr><td>0.8039</td><td>0.4118</td><td>0.6078</td><td>0.2157</td></tr></table>M (from Green):<table><tr><td>0.9608</td><td>0.5686</td><td>0.5686</td><td>0.1765</td></tr><tr><td>0.9216</td><td>0.5294</td><td>0.5294</td><td>0.1373</td></tr><tr><td>0.8824</td><td>0.4902</td><td>0.4902</td><td>0.0980</td></tr><tr><td>0.8431</td><td>0.4510</td><td>0.0000</td><td>0.0588</td></tr><tr><td>0.8039</td><td>0.4118</td><td>0.4118</td><td>0.0196</td></tr></table>Y (from Blue):<table><tr><td>0.1765</td><td>0.7647</td><td>0.3725</td><td>0.9608</td></tr><tr><td>0.1373</td><td>0.7255</td><td>0.3333</td><td>0.9216</td></tr><tr><td>0.0980</td><td>0.2941</td><td>0.2941</td><td>0.8824</td></tr><tr><td>0.0588</td><td>0.6471</td><td>0.2549</td><td>0.8431</td></tr><tr><td>0.0196</td><td>0.6078</td><td>0.0196</td><td>0.8039</td></tr></table><b>Step 3 · K</b> = min(C, M, Y) per pixel:<table><tr><td>0.1765</td><td>0.5686</td><td>0.3725</td><td>0.1765</td></tr><tr><td>0.1373</td><td>0.5294</td><td>0.3333</td><td>0.1373</td></tr><tr><td>0.0980</td><td>0.2941</td><td>0.2941</td><td>0.0980</td></tr><tr><td>0.0588</td><td>0.4510</td><td>0.0000</td><td>0.0588</td></tr><tr><td>0.0196</td><td>0.4118</td><td>0.0196</td><td>0.0196</td></tr></table><b>Step 4 · CMYK</b>: C<sub>CMYK</sub> = C − K, M<sub>CMYK</sub> = M − K, Y<sub>CMYK</sub> = Y − K, K as above.<br>C:<table><tr><td>0.7843</td><td>0.0000</td><td>0.3922</td><td>0.1961</td></tr><tr><td>0.7843</td><td>0.0000</td><td>0.3922</td><td>0.1961</td></tr><tr><td>0.7843</td><td>0.1961</td><td>0.3922</td><td>0.1961</td></tr><tr><td>0.7843</td><td>0.0000</td><td>0.6471</td><td>0.1961</td></tr><tr><td>0.7843</td><td>0.0000</td><td>0.5882</td><td>0.1961</td></tr></table>M:<table><tr><td>0.7843</td><td>0.0000</td><td>0.1961</td><td>0.0000</td></tr><tr><td>0.7843</td><td>0.0000</td><td>0.1961</td><td>0.0000</td></tr><tr><td>0.7843</td><td>0.1961</td><td>0.1961</td><td>0.0000</td></tr><tr><td>0.7843</td><td>0.0000</td><td>0.0000</td><td>0.0000</td></tr><tr><td>0.7843</td><td>0.0000</td><td>0.3922</td><td>0.0000</td></tr></table>Y:<table><tr><td>0.0000</td><td>0.1961</td><td>0.0000</td><td>0.7843</td></tr><tr><td>0.0000</td><td>0.1961</td><td>0.0000</td><td>0.7843</td></tr><tr><td>0.0000</td><td>0.0000</td><td>0.0000</td><td>0.7843</td></tr><tr><td>0.0000</td><td>0.1961</td><td>0.2549</td><td>0.7843</td></tr><tr><td>0.0000</td><td>0.1961</td><td>0.0000</td><td>0.7843</td></tr></table>K: same as step 3.`, why: `Final Rules: values must be in 0–1, so normalise (÷255) first, then CMY = 1 − RGB, K = min(C, M, Y), and subtract K from C, M and Y. Example pixel (1,1): R,G,B = 10,10,210 → C = M = 0.9608, Y = 0.1765 → K = 0.1765 → CMYK = (0.7843, 0.7843, 0, 0.1765). Values rounded to 4 decimals and checked by script.` }

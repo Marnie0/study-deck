@@ -83,8 +83,8 @@ EXTRA.mm = {
       o: [
         [`250 s`, `That confuses period with frequency; the period is the reciprocal 1/f.`],
         [`0.025 s`, `That is 1/40, a decimal-place slip; 1/250 = 0.004.`],
-        [`0.0004 s`, `Off by a factor of 10; 1/250 = 0.004 s.`],
-        [`0.004 s`, `T = 1/f = 1/250 = 0.004 s (4 ms).`]
+        [`0.0004 s`, `0.0004 s is 1/2500, ten times too small (a decimal slip). The period is T = 1/f = 1/250 = 0.004 s.`],
+        [`0.004 s`, `Correct. The period is the reciprocal of frequency: T = 1/f = 1/250 = 0.004 s = 4 ms (L2, Sine waves).`]
       ],
       a: 3 },
     { q: `Using y = A·sin(2π·n·F<sub>w</sub>/F<sub>s</sub>) with F<sub>w</sub> = 500 Hz and F<sub>s</sub> = 4000 Hz, what is y at sample <b>n = 6</b>?`,
@@ -114,7 +114,7 @@ EXTRA.mm = {
     { q: `A DFT coefficient is F(k) = 5 − 12i. What is its magnitude |F(k)|?`,
       o: [
         [`17`, `That adds the parts (5 + 12); the magnitude is √(F<sub>R</sub>² + F<sub>I</sub>²).`],
-        [`13`, `|F| = √(5² + 12²) = √169 = 13.`],
+        [`13`, `Correct. |F(k)| = √(F<sub>R</sub>² + F<sub>I</sub>²) = √(5² + (−12)²) = √(25 + 144) = √169 = 13 (L2, Magnitude spectrum).`],
         [`169`, `That is |F|² (power); the square root was forgotten.`],
         [`−7`, `Magnitude is never negative; 5 − 12 is not the formula.`]
       ],
@@ -129,10 +129,10 @@ EXTRA.mm = {
       a: 2 },
     { q: `An ideal 2D low-pass filter keeps (u,v) if √(u² + v²) ≤ w<sub>0</sub>. With <b>w<sub>0</sub> = 25</b>, which point is KEPT?`,
       o: [
-        [`(20, 20)`, `√800 ≈ 28.3 > 25, so it is discarded.`],
+        [`(20, 20)`, `√(20² + 20²) = √800 ≈ 28.3, which is greater than w<sub>0</sub> = 25, so this point lies outside the circle and is discarded.`],
         [`(24, 8)`, `√640 ≈ 25.3 > 25, just outside the circle, so it is discarded.`],
         [`(15, 20)`, `√(225 + 400) = √625 = 25 ≤ 25, so it is inside the circle and kept.`],
-        [`(5, 25)`, `√650 ≈ 25.5 > 25, so it is discarded.`]
+        [`(5, 25)`, `√(5² + 25²) = √650 ≈ 25.5 > 25: just outside the circle, so it is discarded even though v alone equals 25.`]
       ],
       a: 2 },
     { q: `By sinusoidal decomposition, a <b>150 Hz</b> square(ish) wave is built from sinusoids at:`,
@@ -171,7 +171,7 @@ EXTRA.mm = {
       o: [
         [`≈ 8.79 MB/s`, `That uses 1 byte per pixel; 24-bit colour is 3 bytes per pixel.`],
         [`≈ 26.37 MB/s`, `Frame = 640 × 480 × 3 = 921,600 B; × 30 = 27,648,000 B/s ÷ 1,048,576 ≈ 26.37 MB/s (data rate = frame size × fps).`],
-        [`≈ 21.97 MB/s`, `That uses 25 fps instead of 30 fps.`],
+        [`≈ 21.97 MB/s`, `21.97 MB/s comes from using 25 fps: 921,600 × 25 = 23,040,000 B ÷ 1,048,576. The question says 30 fps, giving ≈ 26.37 MB/s.`],
         [`≈ 210.94 MB/s`, `That is megabits per second (24 bits not divided by 8).`]
       ],
       a: 1 },
@@ -201,8 +201,8 @@ EXTRA.mm = {
       a: 3 },
     { q: `According to the course summary, which pair correctly describes the two steps of analog-to-digital conversion?`,
       o: [
-        [`Sampling makes the signal discrete in time; quantisation turns the samples into discrete digital values`, `Correct — digital = sampling + quantisation.`],
-        [`Sampling turns values into binary codes; quantisation picks the time instants`, `Wrong — the two roles are swapped.`],
+        [`Sampling makes the signal discrete in time; quantisation turns the samples into discrete digital values`, `Correct. Sampling makes the signal discrete in time (values at regular instants), and quantisation maps each sample to a discrete digital value: digital = sampling + quantisation (L3, ADC and DAC).`],
+        [`Sampling turns values into binary codes; quantisation picks the time instants`, `The two roles are swapped: sampling picks the time instants, and quantisation turns each sampled value into a discrete level (binary code).`],
         [`Sampling and quantisation both mean compressing the signal`, `Wrong — they digitise the signal; compression is a later, separate step.`],
         [`Quantisation happens in the DAC; sampling happens in the ADC`, `Wrong — both sampling and quantisation are done by the ADC.`]
       ],
@@ -239,10 +239,10 @@ EXTRA.mm = {
   4: [
     { q: `How many quantisation levels does a <b>12-bit</b> sample have?`,
       o: [
-        [`2048`, `That is 2<sup>11</sup> — one bit short.`],
+        [`2048`, `2048 is 2<sup>11</sup>, one bit short. A 12-bit sample has 2<sup>12</sup> = 4096 levels.`],
         [`24`, `That is 12 × 2; levels grow exponentially, as 2<sup>bits</sup>.`],
         [`144`, `That is 12²; the number of levels is 2<sup>12</sup>, not 12².`],
-        [`4096`, `Levels = 2<sup>bits</sup> = 2<sup>12</sup> = 4096 (8-bit gives 256, 16-bit 65,536).`]
+        [`4096`, `Correct. Levels = 2<sup>bits</sup> = 2<sup>12</sup> = 4096 (8-bit gives 256, 16-bit 65,536) (L4, Sample rate and bit size).`]
       ],
       a: 3 },
     { q: `What is the <b>Nyquist frequency</b> for a sample rate of <b>48 kHz</b>?`,
@@ -273,7 +273,7 @@ EXTRA.mm = {
       o: [
         [`≈ 22.68 µs`, `That is 1/44,100 (CD rate), the music interval from the summary.`],
         [`≈ 45.35 µs`, `T = 1/fs = 1/22,050 ≈ 0.00004535 s ≈ 45.35 µs.`],
-        [`125 µs`, `That is 1/8000, the speech interval.`],
+        [`125 µs`, `125 µs is 1/8000 s, the speech (telephone) interval. For 22.05 kHz, T = 1/22,050 ≈ 45.35 µs.`],
         [`22,050 s`, `The interval is the reciprocal of the rate, not the rate itself.`]
       ],
       a: 1 },
@@ -297,7 +297,7 @@ EXTRA.mm = {
       o: [
         [`Low-grade audio such as WWW audio and AM radio`, `Correct — 22.05 kHz is listed as low-grade audio.`],
         [`Speech`, `Wrong — speech is listed at 11.025 kHz (telephone 8 kHz).`],
-        [`CD quality`, `Wrong — CD quality is 44.1 kHz.`],
+        [`CD quality`, `CD quality is 44.1 kHz (16-bit), twice 22.05 kHz; 22.05 kHz is the CD's Nyquist frequency, not its sample rate.`],
         [`Audiophile recording`, `Wrong — audiophile audio is quoted as 24-bit at 96 kHz.`]
       ],
       a: 0 },
@@ -320,16 +320,16 @@ EXTRA.mm = {
     { q: `A Karplus-Strong string must sound at <b>294 Hz</b> with Fs = 44,100 Hz. What delay-line length D is needed?`,
       o: [
         [`294 samples`, `That just reuses the frequency; the delay length is Fs ÷ F1.`],
-        [`150 samples`, `D = Fs / F1 = 44,100 / 294 = 150 samples.`],
+        [`150 samples`, `Correct. Karplus-Strong tuning: D = Fs / F1 = 44,100 / 294 = 150 samples, since the period is the delay length (L5, Karplus-Strong).`],
         [`300 samples`, `That would give 44,100/300 = 147 Hz, an octave too low.`],
         [`0.0034 samples`, `That is 1/294 s, the period in seconds, not in samples (forgot × Fs).`]
       ],
       a: 1 },
     { q: `A <b>1000 Hz</b> carrier is FM-modulated by a <b>150 Hz</b> modulator. Where are the <b>third-order</b> sidebands?`,
       o: [
-        [`850 Hz and 1150 Hz`, `Those are the first-order sidebands (n = 1).`],
+        [`850 Hz and 1150 Hz`, `850 and 1150 Hz are the first-order sidebands: 1000 ± 1 × 150. Third order uses n = 3: 1000 ± 450 = 550 and 1450 Hz.`],
         [`700 Hz and 1300 Hz`, `Those are the second-order sidebands (n = 2).`],
-        [`550 Hz and 1450 Hz`, `Sidebands sit at fc ± n·fm: 1000 ± 3 × 150 = 1000 ± 450.`],
+        [`550 Hz and 1450 Hz`, `Correct. FM sidebands sit at fc ± n·fm; for n = 3: 1000 ± 3 × 150 = 1000 ± 450 = 550 and 1450 Hz, with amplitude J3(I) (L5, FM synthesis).`],
         [`2850 Hz and 3150 Hz`, `That multiplies the carrier by 3; n multiplies the MODULATOR frequency, not the carrier.`]
       ],
       a: 2 },
@@ -352,7 +352,7 @@ EXTRA.mm = {
     { q: `Which instrument does the lecture give as having a <b>very short release</b>?`,
       o: [
         [`A pipe organ`, `Correct — the organ plays at constant volume and dies quickly when the key is released.`],
-        [`A bell`, `Wrong — a bell has a long release.`],
+        [`A bell`, `The lecture gives the bell (and the piano with sustain pedal) as an example of a LONG release; the sound rings on after it is struck. The organ has the short release.`],
         [`A piano with the sustain pedal held`, `Wrong — this is the lecture's example of a long release.`],
         [`A guitar`, `Wrong — the guitar is the example of a sound that is loudest just after plucking and then fades; it is not given as a short-release example.`]
       ],
@@ -383,8 +383,8 @@ EXTRA.mm = {
       a: 0 },
     { q: `In the Karplus-Strong drum variant, which blend factor b gives the best <b>snare</b> sound?`,
       o: [
-        [`b near 0`, `Wrong — b near 0 gives a string-like sound.`],
-        [`b = ½`, `Correct — b = ½ gives the best snare.`],
+        [`b near 0`, `b near 0 makes the drum variant behave like the plain string algorithm, giving a string-like sound. The best snare is at b = ½ (L5, Karplus-Strong drum).`],
+        [`b = ½`, `Correct. In the drum variant each sample is +½ or −½ of the averaged pair with probability b; the lecture says b = ½ gives the best snare (L5, Karplus-Strong).`],
         [`b near 1`, `Wrong — b near 1 gives a weird electric crash-cymbal sound.`],
         [`b = 2`, `Wrong — b is a probability/blend factor between 0 and 1.`]
       ],
@@ -402,14 +402,14 @@ EXTRA.mm = {
         [`Control Change, channel 3, controller 7, value 100`, `The nibble 3 is channel − 1, so the musician's channel number is 4.`],
         [`Program Change, channel 4, program 7, value 100`, `Program Change is Cx and has only one data byte; Bx is Control Change.`],
         [`Control Change, channel 4, controller 7, value 100`, `B = Control Change; low nibble 3 → channel 3 + 1 = 4; 07 = 7; 64 hex = 6×16 + 4 = 100.`],
-        [`Control Change, channel 4, controller 7, value 64`, `64 is hexadecimal; in decimal it is 100.`]
+        [`Control Change, channel 4, controller 7, value 64`, `64 here is hexadecimal: 6 × 16 + 4 = 100 in decimal. Data bytes are written in hex, so the controller value is 100, not 64.`]
       ],
       a: 2 },
     { q: `Which hex bytes send <b>Note Off</b>, <b>channel 6</b>, key <b>64</b>, velocity 0?`,
       o: [
         [`85 40 00`, `Note Off = 8x; channel 6 → nibble 5 → 85; key 64 = 4×16 = 40 hex; velocity 00.`],
         [`86 40 00`, `The channel nibble is channel − 1, so channel 6 is 5, not 6.`],
-        [`95 40 00`, `9x is Note On, not Note Off.`],
+        [`95 40 00`, `9x is Note On, not Note Off. Note Off is 8x, and channel 6 → nibble 5, so the status byte is 85.`],
         [`85 64 00`, `64 is the decimal key number; in hex it must be written 40.`]
       ],
       a: 0 },
@@ -417,24 +417,24 @@ EXTRA.mm = {
       o: [
         [`3012 bytes`, `That counts Program Change as 3 bytes; it has only one data byte (2 bytes total).`],
         [`3008 bytes`, `1000 note messages × 3 B = 3000 B, plus 4 Program Changes × 2 B = 8 B → 3008 B.`],
-        [`1508 bytes`, `That forgets the 500 Note Off messages.`],
+        [`1508 bytes`, `1508 counts only 500 note messages (500 × 3 + 8). Each note needs a Note On AND a Note Off: 1000 × 3 + 4 × 2 = 3008 bytes.`],
         [`2008 bytes`, `That counts note messages as 2 bytes; Note On/Off are 3 bytes (status + key + velocity).`]
       ],
       a: 1 },
     { q: `What does the status byte <b>E2</b> mean?`,
       o: [
         [`Pitch Bend on channel 2`, `The nibble is channel − 1, so 2 means channel 3.`],
-        [`Channel Pressure on channel 3`, `Channel Pressure is Dx, not Ex.`],
-        [`Program Change on channel 3`, `Program Change is Cx, not Ex.`],
+        [`Channel Pressure on channel 3`, `Channel Pressure has status Dx. E is Pitch Bend, and the nibble 2 means channel 3, so E2 = Pitch Bend on channel 3.`],
+        [`Program Change on channel 3`, `Program Change has status Cx. E is Pitch Bend, so E2 = Pitch Bend on channel 2 + 1 = 3.`],
         [`Pitch Bend on channel 3`, `E = Pitch Bend; nibble 2 → channel 2 + 1 = 3.`]
       ],
       a: 3 },
     { q: `In the General MIDI patch map, instrument number <b>30</b> belongs to which family?`,
       o: [
-        [`Organ`, `Organ is 17–24.`],
-        [`Guitar`, `Families are groups of 8: 25–32 is Guitar.`],
-        [`Bass`, `Bass is 33–40.`],
-        [`Chromatic Percussion`, `Chromatic Percussion is 9–16.`]
+        [`Organ`, `Organ covers patches 17–24 in the GM map. Number 30 falls in the next family of 8, 25–32, which is Guitar.`],
+        [`Guitar`, `Correct. The 128 GM patches form 16 families of 8: 1–8 Piano, 9–16 Chromatic Percussion, 17–24 Organ, 25–32 Guitar, so 30 is a Guitar (L6, General MIDI).`],
+        [`Bass`, `Bass covers patches 33–40, the family after Guitar. Number 30 lies in 25–32, the Guitar family.`],
+        [`Chromatic Percussion`, `Chromatic Percussion covers patches 9–16. Number 30 lies in 25–32, the Guitar family.`]
       ],
       a: 1 },
     { q: `The General MIDI percussion key map contains:`,
@@ -447,8 +447,8 @@ EXTRA.mm = {
       a: 2 },
     { q: `Which system real-time message <b>stops</b> a sequence?`,
       o: [
-        [`FA`, `Wrong — FA is Start Sequence.`],
-        [`F8`, `Wrong — F8 is the Timing Clock.`],
+        [`FA`, `FA is Start Sequence, which begins playback. The system real-time message that stops a sequence is FC.`],
+        [`F8`, `F8 is the Timing Clock, sent repeatedly for synchronisation; it does not stop anything. Stop is FC.`],
         [`F7`, `Wrong — F7 is Sysex End, not a real-time message.`],
         [`FC`, `Correct — FC = Stop (FA = Start, FB = Continue, F8 = Timing Clock).`]
       ],
@@ -481,7 +481,7 @@ EXTRA.mm = {
       o: [
         [`192`, `A factor-of-10 slip: 40 ms is 0.04 s, not 0.004 s.`],
         [`0.00000083`, `That is τ ÷ f<sub>s</sub> taken literally from the slide's M = τ/f<sub>s</sub>; numerically the delay is τ × f<sub>s</sub>.`],
-        [`1920`, `M = τ × f<sub>s</sub> = 0.04 × 48,000 = 1920 samples.`],
+        [`1920`, `Correct. The delay in samples is the time times the sample rate: M = τ × fs = 0.04 × 48,000 = 1920 samples (L7, Comb filters).`],
         [`1200`, `That would be 25 ms at 48 kHz; 40 ms gives 1920.`]
       ],
       a: 2 },
@@ -495,8 +495,8 @@ EXTRA.mm = {
       a: 3 },
     { q: `An equaliser band is set to <b>G = 12 dB</b>. Using V<sub>0</sub> = 10<sup>G/20</sup> and H<sub>0</sub> = V<sub>0</sub> − 1, H<sub>0</sub> ≈`,
       o: [
-        [`3.98`, `That is V<sub>0</sub>; the −1 was forgotten.`],
-        [`2.98`, `V<sub>0</sub> = 10<sup>12/20</sup> = 10<sup>0.6</sup> ≈ 3.98, so H<sub>0</sub> ≈ 2.98.`],
+        [`3.98`, `3.98 is V0 = 10^(12/20) = 10^0.6, the linear gain. The formula then subtracts 1: H0 = V0 − 1 ≈ 2.98.`],
+        [`2.98`, `Correct. Convert dB to linear first: V0 = 10^(12/20) = 10^0.6 ≈ 3.98, then H0 = V0 − 1 ≈ 2.98 (L7, Equalisers).`],
         [`14.85`, `That uses 10<sup>G/10</sup> (power form); the lecture's formula uses G/20.`],
         [`11`, `H<sub>0</sub> is not G − 1; the dB gain must first be converted to linear.`]
       ],
@@ -506,21 +506,21 @@ EXTRA.mm = {
         [`≈ 0.5176`, `That uses 2π·f<sub>c</sub>/f<sub>s</sub> inside the sine; the formula uses π·f<sub>c</sub>/f<sub>s</sub>.`],
         [`≈ 0.1305`, `That is sin(π·f<sub>c</sub>/f<sub>s</sub>) — the factor 2 was forgotten.`],
         [`≈ 0.2611`, `π × 2000/48,000 ≈ 0.1309 rad; sin ≈ 0.1305; × 2 ≈ 0.2611.`],
-        [`≈ 0.0833`, `That is 2·f<sub>c</sub>/f<sub>s</sub> with no π and no sine.`]
+        [`≈ 0.0833`, `0.0833 is just 2 × 2000/48,000 with no π and no sine. The formula gives 2·sin(π × 2000/48,000) = 2·sin(0.1309) ≈ 0.2611.`]
       ],
       a: 2 },
     { q: `Using the overdrive soft-clipping curve, what is f(x) for input <b>x = 0.6</b>?`,
       o: [
         [`1.2`, `That uses the linear part 2x, which only applies for x &lt; 1/3.`],
         [`≈ 0.987`, `0.6 is in the 1/3 ≤ x &lt; 2/3 region: (3 − (2 − 1.8)²)/3 = (3 − 0.04)/3 ≈ 0.987.`],
-        [`1`, `Saturation at 1 only applies for x ≥ 2/3.`],
+        [`1`, `The output saturates at 1 only for x ≥ 2/3 (about 0.667). x = 0.6 is in the quadratic region: (3 − (2 − 1.8)²)/3 ≈ 0.987.`],
         [`≈ 2.96`, `That is 3 − (2 − 1.8)² without the final ÷ 3; the quadratic region is (3 − (2 − 3x)²)/3.`]
       ],
       a: 1 },
     { q: `A mono source x is panned with θ = 30° using g<sub>L</sub> = (cos θ + sin θ)x and g<sub>R</sub> = (cos θ − sin θ)x. What are the gains?`,
       o: [
         [`g<sub>L</sub> ≈ 1.366x, g<sub>R</sub> ≈ 0.366x`, `cos 30° ≈ 0.866, sin 30° = 0.5 → 1.366 and 0.366.`],
-        [`g<sub>L</sub> ≈ 0.366x, g<sub>R</sub> ≈ 1.366x`, `The left and right formulas were swapped.`],
+        [`g<sub>L</sub> ≈ 0.366x, g<sub>R</sub> ≈ 1.366x`, `This swaps the formulas: gL uses the plus sign, (cos 30° + sin 30°)x ≈ 1.366x, and gR the minus sign, (cos 30° − sin 30°)x ≈ 0.366x.`],
         [`g<sub>L</sub> ≈ 0.866x, g<sub>R</sub> ≈ 0.5x`, `Those are just cos θ and sin θ; the gains are their sum and difference.`],
         [`g<sub>L</sub> = g<sub>R</sub> = x`, `Equal gains correspond to θ = 0 (centre), not 30°.`]
       ],
@@ -600,7 +600,7 @@ EXTRA.mm = {
     { q: `How large is an uncompressed <b>800 × 600</b>, <b>32-bit</b> (RGB + alpha) image? (1 KB = 1024 B)`,
       o: [
         [`1406.25 KB`, `That is the 24-bit size; 32-bit adds a fourth (alpha) byte.`],
-        [`468.75 KB`, `That is 1 byte per pixel (8-bit).`],
+        [`468.75 KB`, `468.75 KB is 800 × 600 × 1 B ÷ 1024, the 8-bit size. 32-bit stores 4 bytes per pixel: 1,920,000 B ÷ 1024 = 1875 KB.`],
         [`1875 KB`, `800 × 600 × 4 B = 1,920,000 B ÷ 1024 = 1875 KB.`],
         [`15,000 KB`, `That divides bits by 1024 without converting to bytes.`]
       ],
@@ -608,14 +608,14 @@ EXTRA.mm = {
     { q: `Compared with 4:4:4, what fraction of the samples (Y + Cb + Cr) does <b>4:2:2</b> chroma subsampling keep?`,
       o: [
         [`2/3`, `Per 4 pixels: 4 Y + 2 Cb + 2 Cr = 8 samples instead of 12 → 2/3.`],
-        [`1/2`, `That is 4:1:1 or 4:2:0 (6 of 12 samples).`],
+        [`1/2`, `Keeping 1/2 (6 of 12 samples) is 4:1:1 or 4:2:0. 4:2:2 keeps 4 Y + 2 Cb + 2 Cr = 8 of 12 samples = 2/3.`],
         [`1/3`, `That would keep only the luma; 4:2:2 keeps half of each chroma component.`],
         [`3/4`, `Not a ratio from the lecture; 8 of 12 samples is 2/3.`]
       ],
       a: 0 },
     { q: `Which image format was designed to <b>replace GIF</b> and supports up to 48 bits per pixel, gamma correction and an alpha channel?`,
       o: [
-        [`PNG`, `Correct — Portable Network Graphics.`],
+        [`PNG`, `Correct. PNG (Portable Network Graphics) was meant to replace GIF: up to 48 bits per pixel, gamma correction, alpha channel and progressive display (L8, Image file formats).`],
         [`TIFF`, `Wrong — TIFF uses tags to store many image types and is declining in popularity.`],
         [`BMP`, `Wrong — BMP is the Windows raster format (can store 24-bit bitmaps).`],
         [`JPEG`, `Wrong — JPEG is a lossy format for photographic images, not a GIF replacement with alpha.`]
@@ -624,8 +624,8 @@ EXTRA.mm = {
     { q: `How does <b>S-Video</b> carry the picture?`,
       o: [
         [`On 2 lines: one for luminance and one for composite chrominance`, `Correct — S-Video is the compromise between component and composite video.`],
-        [`On 3 separate lines, one per colour primary`, `Wrong — that is component video.`],
-        [`On 1 line with luminance and chrominance mixed into one carrier`, `Wrong — that is composite video.`],
+        [`On 3 separate lines, one per colour primary`, `Three separate signals, one per primary (RGB, YIQ or YUV), is component video, the best colour but most bandwidth. S-Video uses 2 lines.`],
+        [`On 1 line with luminance and chrominance mixed into one carrier`, `Mixing luminance and chrominance into one carrier is composite video, where some interference is inevitable. S-Video keeps luminance on its own line.`],
         [`As a digital stream with 4:2:0 subsampling`, `Wrong — S-Video is an analog signal format; chroma subsampling is a different topic.`]
       ],
       a: 0 },
