@@ -75,9 +75,9 @@ COURSES.hci = {
       ],
       quiz: [
         { q: `HCI terms used interchangeably are:`, o: [
-          [`Human Computer Interaction`, `This is one of them, but not the only one.`],
-          [`Human Machine Interaction`, `This is one of them, but not the only one.`],
-          [`Man Machine Interaction`, `This is one of them, but not the only one.`],
+          [`Human Computer Interaction`, `Human Computer Interaction is the full name of HCI itself, but the lecture lists HMI and MMI as equally valid terms, so picking only this option misses two of them (L1, What is HCI?).`],
+          [`Human Machine Interaction`, `HMI is one interchangeable term, but HCI and MMI are used for the same field too, so "All the above" is the complete answer (L1, What is HCI?).`],
+          [`Man Machine Interaction`, `MMI is one of the interchangeable terms, but so are HCI and HMI; the question asks for all of them, which is "All the above" (L1, What is HCI?).`],
           [`All the above`, `Correct. HCI, HMI and MMI are all used for the same field.`]
         ], a: 3, src: `Exam 2024/25` },
         { q: `Which one refers to the interactivity, look and feel of a product screen or web page?`, o: [
@@ -93,27 +93,27 @@ COURSES.hci = {
           [`The interface only uses voice`, `Modality is unrelated; any interface can aim to be invisible.`]
         ], a: 1 },
         { q: `Humans can distinguish millions of colors but only about ___ shades of gray.`, o: [
-          [`3`, `Far too low.`], [`30`, `Correct. The lecture's human-limitation example is about 30 shades of gray.`], [`300`, `Too high; that was the point of the example.`], [`3000`, `Too high.`]
+          [`3`, `Far too low: humans can tell apart about 30 shades of gray, ten times this number, which is still tiny next to millions of colors (L1, HCI hierarchy).`], [`30`, `Correct. The lecture's human-limitation example is about 30 shades of gray.`], [`300`, `Too high by a factor of ten. The lecture's human-limit example contrasts millions of colors with only about 30 shades of gray (L1, HCI hierarchy).`], [`3000`, `Far too high. The point of the example is how few grays we can distinguish: only about 30, against millions of colors (L1, HCI hierarchy).`]
         ], a: 1 },
         { q: `What is the FIRST component of the UI design process?`, o: [
           [`User research`, `Correct. The order is user research → design and prototyping → evaluation.`],
-          [`Evaluation and improvement`, `Evaluation is the third component.`],
-          [`Design and prototyping`, `This is the second component.`],
+          [`Evaluation and improvement`, `Evaluation (improvement) is the third and last component: you can only evaluate an interface after researching users and designing it (L1, UI design process).`],
+          [`Design and prototyping`, `Design and prototyping is the second component; it comes after user research, because you must learn the users and their tasks before designing (L1, UI design process).`],
           [`Implementation`, `Implementation is not one of the three listed components.`]
         ], a: 0 },
         { q: `In the International Children's Digital Library, visual search was used in about what share of searches?`, o: [
-          [`17%`, `Wrong figure.`], [`50%`, `Wrong figure.`], [`71%`, `Correct. 71% of searches used the visual search.`], [`91%`, `Wrong figure.`]
+          [`17%`, `17% reverses the digits of the real figure: visual search was used in 71% of searches, showing users preferred it (L1, Case studies).`], [`50%`, `50% would mean no clear preference, but the lecture reports visual search was used in 71% of searches, a clear majority (L1, Case studies).`], [`71%`, `Correct. 71% of searches used the visual search.`], [`91%`, `Too high. The International Children's Digital Library reported visual search in 71% of searches, not 91% (L1, Case studies).`]
         ], a: 2 },
         { q: `Which statement about early computer systems is true?`, o: [
-          [`They were designed with strong focus on usability`, `The opposite: usability was not thought of.`],
+          [`They were designed with strong focus on usability`, `The opposite: early machines were expensive, so engineers optimised the software for the machine and ignored usability (L1, UI vs UX vs HCI).`],
           [`They focused on efficient software because machines were expensive`, `Correct. Engineers optimised the expensive machine, not the user's experience.`],
-          [`They were user-centric`, `User-centric design is the modern approach.`],
-          [`They used invisible interfaces`, `Invisible interfaces are a modern ideal.`]
+          [`They were user-centric`, `User-centric design describes today's systems, where success depends on usability. Early systems were machine-centric, focused on efficient software (L1, UI vs UX vs HCI).`],
+          [`They used invisible interfaces`, `The invisible interface is a modern ideal where users focus on the task. Early systems ignored usability altogether, so they were far from it (L1, Invisible interface).`]
         ], a: 1 },
         { q: `Human Factors Engineering is formed from which two fields?`, o: [
           [`Engineering and Psychology`, `Correct. Both feed into human factors engineering in the hierarchy figure.`],
           [`HCI and UX`, `These are below human factors engineering, not above it.`],
-          [`Art and Marketing`, `Not in the hierarchy.`],
+          [`Art and Marketing`, `Art and Marketing do not appear in the hierarchy figure. Human factors engineering comes from Engineering + Psychology (L1, HCI hierarchy).`],
           [`Industrial and Product design`, `These are branches of human factors engineering, not its sources.`]
         ], a: 0 },
         { q: `"S/W development is not just a process of creating software, it is also a process of learning how to create the S/W best suited for its purpose."`, o: [
@@ -121,7 +121,7 @@ COURSES.hci = {
           [`False`, `The statement is taken directly from the lecture, so it is true.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `"UI Design covers a user's overall experience with the product or website."`, o: [
-          [`True`, `This is the definition of UX, not UI.`],
+          [`True`, `The overall experience with a product or website is the definition of UX design. UI design is only the interactivity, look and feel of a screen or page (L1, UI vs UX vs HCI).`],
           [`False`, `Correct. UI is look, feel and interactivity; UX is the overall experience.`]
         ], a: 1, src: `Exam 2024/25` }
       ]
@@ -177,37 +177,37 @@ COURSES.hci = {
           [`They preferred small keypads`, `Small buttons were the problem, not a preference.`],
           [`They disliked touch screens`, `The better design actually used a large touch screen.`],
           [`They often have big hands and wear gloves`, `Correct. This is why the small buttons failed.`],
-          [`They preferred voice-only systems`, `Voice was not part of the case.`]
+          [`They preferred voice-only systems`, `Voice systems are not part of the Qualcomm case. Research found truckers have big hands and wear gloves, so the fix was a large touch screen with a stylus (L2, Qualcomm device).`]
         ], a: 2 },
         { q: `The early version of the Qualcomm device for truckers had:`, o: [
-          [`Voice command input`, `Not mentioned.`],
-          [`Small buttons that were hard to use`, `Correct.`],
-          [`A large touch screen`, `That was the improved design.`],
-          [`No display at all`, `Not mentioned.`]
+          [`Voice command input`, `The trucker case never mentions voice input. The early device's problem was small buttons that big, gloved hands could not press (L2, Qualcomm device).`],
+          [`Small buttons that were hard to use`, `Correct. The early Qualcomm device had small buttons, which failed because user research showed truckers often have big hands and wear gloves (L2, Qualcomm device).`],
+          [`A large touch screen`, `The large touch screen with a stylus pen was the improved design that came after user research, not the early version (L2, Qualcomm device).`],
+          [`No display at all`, `The device did have an interface; its problem was small buttons. The fix kept a screen and made it a large touch screen (L2, Qualcomm device).`]
         ], a: 1 },
         { q: `In adaptive menus, what expands the menu to show its full contents?`, o: [
-          [`A chevron at the end of the menu`, `Correct.`],
-          [`A double right-click`, `Not the mechanism described.`],
+          [`A chevron at the end of the menu`, `Correct. An adaptive menu first shows a short list of the most likely used commands; clicking the chevron at its end expands the full menu (L2, Office 2000 mechanisms).`],
+          [`A double right-click`, `A double right-click is not part of adaptive menus. The lecture says a chevron at the end of the short menu expands it (L2, Office 2000 mechanisms).`],
           [`The overflow area`, `The overflow area belongs to rafted toolbars.`],
-          [`Holding the mouse for 5 seconds`, `Not the mechanism described.`]
+          [`Holding the mouse for 5 seconds`, `There is no hold-to-expand timer in the lecture. The full adaptive menu is opened by clicking the chevron at its end (L2, Office 2000 mechanisms).`]
         ], a: 0 },
         { q: `Why did auto-customization in Office 2000 make scanning menus slower?`, o: [
-          [`Menus had no icons`, `Icons were not the issue.`],
-          [`A wrong short menu forced users to scan the full menu again`, `Correct. Scanning took about twice as long.`],
-          [`The CEIP program slowed the computer`, `CEIP came later (Office 2003).`],
-          [`Toolbars were removed`, `Toolbars were rafted, not removed.`]
+          [`Menus had no icons`, `Icons were never the issue. The problem was that a wrong short menu forced users to scan the full menu as well (L2, Office 2000 mechanisms).`],
+          [`A wrong short menu forced users to scan the full menu again`, `Correct. When the predicted short menu lacked the command, users scanned it, expanded it and scanned the full menu again, so scanning took about twice as long (L2, Office 2000 mechanisms).`],
+          [`The CEIP program slowed the computer`, `CEIP has nothing to do with Office 2000: it was introduced later, in Office 2003, to collect usage data, and it did not slow menu scanning (L2, From guesswork to data).`],
+          [`Toolbars were removed`, `Toolbars were not removed: rafted toolbars shared one line and moved predicted least-used buttons to an overflow area (L2, Office 2000 mechanisms).`]
         ], a: 1 },
         { q: `How much Office 2007 usage data did the design team have?`, o: [
-          [`1.3 million sessions`, `Too small by a factor of 1000.`],
-          [`13 million sessions`, `Wrong figure.`],
-          [`More than 1.3 billion sessions`, `Correct.`],
-          [`Exactly 70 sessions`, `70% is the share of data thrown away.`]
+          [`1.3 million sessions`, `Too small by a factor of 1000: the team had more than 1.3 billion sessions, not million (L2, From guesswork to data).`],
+          [`13 million sessions`, `13 million is far below the real figure. For Office 2007 the team had more than 1.3 billion sessions of usage data (L2, From guesswork to data).`],
+          [`More than 1.3 billion sessions`, `Correct. CEIP gave the Office 2007 team more than 1.3 billion sessions; there was so much Word and Outlook data that 70% was thrown away (L2, From guesswork to data).`],
+          [`Exactly 70 sessions`, `70 comes from a different fact: 70% of the Word and Outlook data was thrown away. The total was more than 1.3 billion sessions (L2, From guesswork to data).`]
         ], a: 2 },
         { q: `Before 2003, most Office design decisions were based on:`, o: [
-          [`Usage data`, `Usage data came with CEIP in 2003.`],
-          [`Guesswork, feel and estimation`, `Correct. The team admitted this directly.`],
-          [`Usability labs only`, `Not what the lecture says.`],
-          [`Competitor analysis`, `Not what the lecture says.`]
+          [`Usage data`, `Usage data only became available with the CEIP in Office 2003. Before that, the team had no real data to base decisions on (L2, From guesswork to data).`],
+          [`Guesswork, feel and estimation`, `Correct. The Office team admitted decisions before 2003 were "based on feel, estimation, and guess work", until CEIP brought real usage data (L2, From guesswork to data).`],
+          [`Usability labs only`, `The lecture does not say decisions came from usability labs. It says they were based on feel, estimation and guesswork (L2, From guesswork to data).`],
+          [`Competitor analysis`, `Competitor analysis is not mentioned. Pre-2003 decisions were based on feel, estimation and guesswork, which CEIP data later replaced (L2, From guesswork to data).`]
         ], a: 1 }
       ]
     },
@@ -270,8 +270,8 @@ COURSES.hci = {
       quiz: [
         { q: `When does foundational (strategic/generative) research take place?`, o: [
           [`Only during usability testing`, `Usability tests belong to tactical or post-launch work.`],
-          [`After a product is fully designed`, `That is post-launch research.`],
-          [`During marketing campaigns`, `Not a user research type.`],
+          [`After a product is fully designed`, `Research after the product is designed and released is post-launch research (did we succeed?). Foundational research happens before anything is designed (L3, Types by WHEN).`],
+          [`During marketing campaigns`, `Marketing campaigns are not one of the research timings. The three are foundational (before design), tactical (during design) and post-launch (L3, Types by WHEN).`],
           [`Before anything is designed`, `Correct. It identifies problems and what to build.`]
         ], a: 3 },
         { q: `"Tactical research takes place after the design phase."`, o: [
@@ -280,19 +280,19 @@ COURSES.hci = {
         ], a: 1, src: `Exam 2025/26 (also 2024/25)` },
         { q: `Joyner's design life cycle has which four phases?`, o: [
           [`Understand, Specify, Design, Evaluate`, `That is Google's user-centered design process.`],
-          [`Need finding, Design alternatives, Prototyping, Evaluation`, `Correct.`],
-          [`Plan, Build, Test, Deploy`, `A generic software cycle, not Joyner's.`],
-          [`Research, Wireframe, Code, Launch`, `Not Joyner's cycle.`]
+          [`Need finding, Design alternatives, Prototyping, Evaluation`, `Correct. Joyner's iterative design life cycle is Need finding → Design alternatives → Prototyping → Evaluation, then back to need finding (L3, Design life cycle).`],
+          [`Plan, Build, Test, Deploy`, `Plan, Build, Test, Deploy is a generic software development cycle. Joyner's cycle is Need finding, Design alternatives, Prototyping, Evaluation (L3, Design life cycle).`],
+          [`Research, Wireframe, Code, Launch`, `These are not Joyner's phases; Joyner has no coding or launch phase. His cycle is Need finding, Design alternatives, Prototyping, Evaluation (L3, Design life cycle).`]
         ], a: 1 },
         { q: `"Primary research is done by someone else."`, o: [
-          [`True`, `Research by someone else is secondary.`],
+          [`True`, `Research done by someone else (books, journals) is secondary research. Primary research is research you conduct yourself, such as interviews or surveys (L3, Types by WHO).`],
           [`False`, `Correct. Primary research is research you conduct yourself.`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `Which is NOT a method of primary research?`, o: [
           [`Literature reviews`, `Correct. Reading existing literature is secondary research.`],
-          [`Focus groups`, `A primary method.`],
-          [`Interviews`, `A primary method.`],
-          [`Surveys`, `A primary method.`]
+          [`Focus groups`, `Focus groups are primary research: you run them yourself with users. The lecture lists them with interviews, surveys, usability studies and observations (L3, Types by WHO).`],
+          [`Interviews`, `Interviews are a primary method, since you conduct them yourself. Only the literature review relies on research done by someone else (L3, Types by WHO).`],
+          [`Surveys`, `Surveys are a primary method: you design and run them yourself. Reading existing literature is the secondary method here (L3, Types by WHO).`]
         ], a: 0 },
         { q: `"Focus groups and interviews are examples of primary research methods."`, o: [
           [`True`, `Correct. Both are listed as common primary methods.`],
@@ -307,10 +307,10 @@ COURSES.hci = {
           [`False`, `Surveys are one of the listed primary methods.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `According to Google, user research takes place:`, o: [
-          [`Only before design`, `That is too narrow.`],
-          [`Only after launch`, `That is too narrow.`],
+          [`Only before design`, `Too narrow: "before design" is only foundational research. Google says user research is continuous: before, during and after design (L3, Where is user research?).`],
+          [`Only after launch`, `Too narrow: after launch is only post-launch research. Google says user research happens before, during and after the design phase (L3, Where is user research?).`],
           [`Before, during and after the design phase`, `Correct. Google calls it a continuous part of the life cycle.`],
-          [`Only when there is budget`, `Not the lecture's point.`]
+          [`Only when there is budget`, `The lecture never ties research to budget. Google treats it as a continuous part of the life cycle, before, during and after design (L3, Where is user research?).`]
         ], a: 2 }
       ]
     },
@@ -370,48 +370,48 @@ COURSES.hci = {
       ],
       quiz: [
         { q: `Sensitive Personally Identifiable Information (SPII) includes:`, o: [
-          [`Names`, `Names are PII, not SPII.`],
-          [`Home address`, `Home address is PII.`],
-          [`Email address`, `Email is PII.`],
+          [`Names`, `Names are ordinary PII: they identify a user but are not in the sensitive list. SPII is data whose loss could cause financial harm, embarrassment or discrimination (L4, Privacy and security).`],
+          [`Home address`, `Home address is listed as PII, together with names, email and phone. It is not among the SPII examples like SSN or financial account numbers (L4, Privacy and security).`],
+          [`Email address`, `Email address is plain PII in the lecture's list. SPII covers SSN, driver's license, passport, financial account numbers and date of birth (L4, Privacy and security).`],
           [`Financial account numbers`, `Correct. Losing these could cause financial harm.`]
         ], a: 3, src: `Exam 2024/25` },
         { q: `"PII is specific details that could be used to identify a user such as names, phone number."`, o: [
-          [`True`, `Correct. That is the lecture's definition.`],
-          [`False`, `This matches the definition of PII exactly.`]
+          [`True`, `Correct. PII is details that could identify a user, and the lecture's examples are names, home address, email address and phone number (L4, Privacy and security).`],
+          [`False`, `The statement is true: it matches the lecture's PII definition, and names and phone number are both in its PII examples (L4, Privacy and security).`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `"Qualitative research involves data of numeric nature."`, o: [
-          [`True`, `Numeric data is quantitative.`],
+          [`True`, `Numeric data (measures, counts) defines quantitative research. Qualitative research is observations about why and how things happen (L4, Types by WHAT).`],
           [`False`, `Correct. Qualitative research is about why and how, not numbers.`]
         ], a: 1, src: `Exam 2024/25 & 2025/26` },
         { q: `Data that includes descriptions from interviewees is:`, o: [
-          [`Quantitative data`, `Quantitative is numeric.`],
+          [`Quantitative data`, `Quantitative data is numeric: measures and counts. Interviewees' descriptions explain why and how, which makes them qualitative (L4, Types by WHAT).`],
           [`Qualitative data`, `Correct. Descriptions and explanations are qualitative.`],
-          [`Average data`, `Not a research data type.`],
-          [`Gathering data`, `Not a research data type.`]
+          [`Average data`, `"Average data" is not a type of research data. By WHAT, research is only quantitative (numeric) or qualitative (why and how) (L4, Types by WHAT).`],
+          [`Gathering data`, `"Gathering data" is not a data type; gathering is just collecting. Descriptions from interviews are qualitative data (L4, Types by WHAT).`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `Quantitative research is often easier for:`, o: [
-          [`Designers only`, `The lecture does not say this.`],
-          [`Engineers and technical people`, `Correct.`],
-          [`Marketing teams only`, `The lecture does not say this.`],
-          [`Children`, `Not relevant.`]
+          [`Designers only`, `The lecture does not single out designers. It says quantitative (numeric) research is easier for engineers and technical people (L4, Types by WHAT).`],
+          [`Engineers and technical people`, `Correct. Quantitative research is numeric (measures, counts), so the lecture says it is easier for engineers and technical people; qualitative is harder for them (L4, Types by WHAT).`],
+          [`Marketing teams only`, `Marketing teams are not mentioned. The lecture says quantitative research is easier for engineers and technical people (L4, Types by WHAT).`],
+          [`Children`, `Children are not part of this point at all. Quantitative research is said to be easier for engineers and technical people (L4, Types by WHAT).`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `Why is privacy and security important in user research?`, o: [
-          [`It ensures compliance and protects user data`, `Correct.`],
+          [`It ensures compliance and protects user data`, `Correct. Privacy and security of user data are essential: collect only what you need, avoid linking it to PII/SPII and delete it when no longer needed (L4, General tips).`],
           [`It makes research faster`, `Privacy adds care; it does not speed things up.`],
-          [`It allows sharing all data publicly`, `The opposite of privacy.`],
-          [`It reduces the need for interviews`, `Unrelated.`]
+          [`It allows sharing all data publicly`, `The opposite: the privacy guidelines limit what you collect, keep it apart from PII/SPII, and delete it after use, so nothing is shared publicly (L4, Privacy and security).`],
+          [`It reduces the need for interviews`, `Privacy does not replace any method; interviews are still used. Privacy matters because it protects user data (L4, Privacy and security).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Which statement reflects good practice in user research?`, o: [
           [`Prepare questions ahead but adapt as needed during the session`, `Correct. Plan ahead, but the script is not a bible.`],
-          [`Never change the script under any circumstance`, `The lecture explicitly asks for flexibility.`],
+          [`Never change the script under any circumstance`, `The lecture says planning is not strictness: "the script is not a bible", so you should stay flexible during the session (L4, General tips).`],
           [`Use only quantitative methods`, `Combine methods; qualitative is needed for real understanding.`],
-          [`Focus on convenience over privacy`, `Privacy is essential.`]
+          [`Focus on convenience over privacy`, `Privacy and security of user data are listed as essential, so they must never be traded for convenience (L4, General tips).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Before a user interview, what should researchers do?`, o: [
-          [`Ask random questions without preparation`, `The lecture warns against this.`],
-          [`Write a script of questions to guide the interview`, `Correct.`],
-          [`Ignore the interviewee's context`, `Context matters.`],
-          [`Focus only on technical details`, `Not the goal.`]
+          [`Ask random questions without preparation`, `The lecture says to plan ahead and write a script of questions instead of asking random questions (L4, General tips).`],
+          [`Write a script of questions to guide the interview`, `Correct. User research should be planned ahead: for an interview, write a script of questions beforehand, while staying flexible since the script is not a bible (L4, General tips).`],
+          [`Ignore the interviewee's context`, `Ignoring context is not a preparation step. The lecture's advice is to plan ahead with a script of questions (L4, General tips).`],
+          [`Focus only on technical details`, `User research is about the user's needs and pain points, not only technical details. The preparation step is writing a question script (L4, General tips).`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `"Survey is more expensive than interview."`, o: [
           [`True`, `Surveys are one of the cheapest methods; interviews are more expensive.`],
@@ -419,13 +419,13 @@ COURSES.hci = {
         ], a: 1, src: `Exam 2024/25` },
         { q: `"A well-designed survey should take a long time to complete to ensure detailed responses."`, o: [
           [`True`, `Long surveys hurt response rate and reliability.`],
-          [`False`, `Correct. Keep it as small as possible.`]
+          [`False`, `Correct. The survey tip is to keep it as small as possible, because too many questions reduce the response rate and the reliability of the data (L4, Surveys).`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `Asking too many questions in a survey can:`, o: [
-          [`Make analysis faster`, `More questions means more to analyse.`],
-          [`Make it more accurate automatically`, `It lowers reliability.`],
-          [`Improve user engagement`, `It tires respondents.`],
-          [`Reduce the response rate and affect reliability of data`, `Correct.`]
+          [`Make analysis faster`, `More questions give more data to process, so analysis becomes slower. The real effect is a lower response rate and less reliable data (L4, Surveys).`],
+          [`Make it more accurate automatically`, `More questions do not add accuracy: tired respondents answer worse, which lowers reliability. That is why surveys should be as small as possible (L4, Surveys).`],
+          [`Improve user engagement`, `Long surveys tire respondents, so fewer people finish them. The lecture says too many questions reduce the response rate (L4, Surveys).`],
+          [`Reduce the response rate and affect reliability of data`, `Correct. The lecture warns that too many questions reduce the response rate and affect reliability, so keep the survey as small as possible (L4, Surveys).`]
         ], a: 3 }
       ]
     },
@@ -491,52 +491,52 @@ COURSES.hci = {
       ],
       quiz: [
         { q: `"How satisfied are you with the speed and availability of your mobile connection?" violates which rule?`, o: [
-          [`Avoid overlapping ranges`, `There are no ranges here.`],
+          [`Avoid overlapping ranges`, `Overlapping ranges (like 0-2, 2-5) is a Be Clear rule about numeric answer options. This question has no ranges; it combines speed and availability in one question (L5, Be Specific).`],
           [`Avoid double-barrel questions`, `Correct. It asks about two things at once, so split it.`],
-          [`Allow multiple selections`, `Not the issue.`],
+          [`Allow multiple selections`, `Allowing multiple selections (checkboxes) is a Be Expressive tip about answer controls. The flaw here is asking about two things, speed and availability, at once (L5, Be Specific).`],
           [`Provide a progress bar`, `That is about survey usability, not this question.`]
         ], a: 1 },
         { q: `"How much time have you WASTED on social media?" is an example of:`, o: [
           [`A loaded question`, `Correct. "Wasted" carries a judgment. Use "spent".`],
-          [`A double-barrel question`, `It asks one thing only.`],
-          [`An open-ended question`, `Openness is not the problem.`],
+          [`A double-barrel question`, `A double-barrel question asks about two things at once. This asks about one thing, time on social media; the problem is the judgment word "wasted" (L5, Be Unbiased).`],
+          [`An open-ended question`, `Being open-ended is not the issue; the lecture even says to leave open-ended questions open. The flaw is the loaded word "wasted" (L5, Be Unbiased).`],
           [`A timeboxed question`, `Timeboxing is good practice; the issue is the word choice.`]
         ], a: 0 },
         { q: `Which option set avoids overlapping ranges?`, o: [
-          [`0-2, 2-5, 5-10, 10-20, 20+`, `2, 5, 10 and 20 each appear in two ranges.`],
+          [`0-2, 2-5, 5-10, 10-20, 20+`, `These ranges share their boundaries: 2, 5, 10 and 20 each fall in two ranges, so a respondent with exactly 5 has two valid answers (L5, Be Clear).`],
           [`0-2, 3-5, 6-10, 11-19, 20+`, `Correct. Every value belongs to exactly one range.`],
-          [`0-5, 5-10, 10+`, `5 and 10 overlap.`],
-          [`Some, Many, A lot`, `These are vague labels, not ranges.`]
+          [`0-5, 5-10, 10+`, `5 and 10 each appear in two ranges (0-5 and 5-10, 5-10 and 10+), so these ranges overlap, which Be Clear says to avoid (L5, Be Clear).`],
+          [`Some, Many, A lot`, `Some / Many / A lot are vague words with no numbers, so they are not ranges at all and different people read them differently (L5, Be Clear).`]
         ], a: 1 },
         { q: `Adding "Other: ____" to a list of social media platforms follows which principle?`, o: [
           [`Be Concise`, `It is about fairness to all answers, not brevity.`],
           [`Be Unbiased`, `Correct. It allows users to add nominal categories.`],
           [`Be Usable`, `Usable covers progress bars, ordering and similar.`],
-          [`Be Clear`, `Clear covers labels, ranges and details.`]
+          [`Be Clear`, `Be Clear covers labeling scales, non-overlapping ranges, extra detail and timeboxing. Adding "Other: ____" lets users add nominal categories, a Be Unbiased rule (L5, Be Unbiased).`]
         ], a: 1 },
         { q: `"Why do you like to exercise?" is a problem because it is:`, o: [
-          [`A yes/no question`, `It is open-ended.`],
+          [`A yes/no question`, `It is not yes/no: "why" invites an open answer. The flaw is that it assumes you like exercising, which makes it leading (L5, Exercise).`],
           [`A leading question`, `Correct. It assumes the person likes exercising.`],
-          [`An overlapping range`, `No ranges here.`],
-          [`Too concise`, `Brevity is not the issue.`]
+          [`An overlapping range`, `Overlapping ranges only apply to numeric answer options, and this question has none. Its flaw is assuming the person likes exercise (L5, Exercise).`],
+          [`Too concise`, `Being short is good (Be Concise). The problem is that it assumes the respondent likes exercising, so it leads them (L5, Exercise).`]
         ], a: 1, src: `Exam 2024/25 Q2B` },
         { q: `Which is part of "Be Usable"?`, o: [
           [`Provide a progress bar`, `Correct. Also consistent page lengths, logical order, alerts for unanswered questions, and previewing.`],
-          [`Avoid double-barrel questions`, `That is Be Specific.`],
-          [`Use plain language`, `That is Be Concise.`],
-          [`Avoid loaded questions`, `That is Be Unbiased.`]
+          [`Avoid double-barrel questions`, `Avoiding double-barrel questions belongs to Be Specific (split questions that ask two things), not to Be Usable (L5, Be Specific).`],
+          [`Use plain language`, `Plain language is the Be Concise rule ("How clean was the car?"). Be Usable is about the survey itself: progress bar, page length, ordering, alerts, preview (L5, Be Concise).`],
+          [`Avoid loaded questions`, `Avoiding loaded words like "wasted" is a Be Unbiased rule, not a Be Usable one (L5, Be Unbiased).`]
         ], a: 0 },
         { q: `"How often do you exercise? Never / Rarely / Occasionally / Frequently / Always" should be replaced with:`, o: [
-          [`"Do you exercise? Yes / No"`, `Even less informative.`],
-          [`"In the past seven days, how many times have you exercised? 0 / 1-2 / 3-4 / 5-7 / 7 or more"`, `Correct. Timebox frequency-based questions.`],
-          [`"Why do you exercise?"`, `A different question and it is leading.`],
-          [`"Rate exercise 1-5"`, `An unlabeled scale.`]
+          [`"Do you exercise? Yes / No"`, `A yes/no question gives even less information; Be Expressive says to use ranges instead of yes/no (L5, Be Expressive).`],
+          [`"In the past seven days, how many times have you exercised? 0 / 1-2 / 3-4 / 5-7 / 7 or more"`, `Correct. Be Clear says to timebox frequency questions: words like Rarely or Often mean different things to different people, while "in the past seven days" with counts is exact (L5, Be Clear).`],
+          [`"Why do you exercise?"`, `This asks something else (reasons, not frequency), and "Why do you…" assumes the person exercises, making it leading (L5, Be Unbiased).`],
+          [`"Rate exercise 1-5"`, `An unlabeled 1-5 scale breaks Be Clear's "label numeric scales" rule, and it still does not measure how often someone exercises (L5, Be Clear).`]
         ], a: 1 },
         { q: `Which best summarizes a good survey design principle?`, o: [
-          [`Long surveys with complex questions`, `The opposite of the tips.`],
-          [`Short, clear, unbiased surveys with participant feedback considered`, `Correct.`],
-          [`Surveys without planning`, `Research must be planned ahead.`],
-          [`Focus only on quantitative questions`, `Open-ended questions are also valuable.`]
+          [`Long surveys with complex questions`, `The opposite of the tips: surveys should be as small as possible and questions concise and clear, since long surveys hurt response rate and reliability (L4, Surveys; L5).`],
+          [`Short, clear, unbiased surveys with participant feedback considered`, `Correct. Keep the survey as small as possible, word questions clearly, avoid bias, and get feedback from participants about the survey (L4, Surveys; L5, six principles).`],
+          [`Surveys without planning`, `User research must be planned ahead; a survey without planning breaks the general tips and the six question principles (L4, General tips).`],
+          [`Focus only on quantitative questions`, `Methods should be combined, and the lecture says to leave open-ended questions open, so quantitative-only questions are not the principle (L5, Be Unbiased).`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `"Be biased" is an important point for a good survey.`, o: [
           [`True`, `The principle is "Be UNbiased". (The 2024/25 answer sheet marks this True, which looks like a typo in the question. Answer from the lecture.)`],
@@ -599,13 +599,13 @@ COURSES.hci = {
       ],
       quiz: [
         { q: `"Interview is the most common research technique."`, o: [
-          [`True`, `Correct. The lecture states this.`],
+          [`True`, `Correct. The lecture opens its interviews section by calling the interview the most common research technique, valued for deeper understanding through open "why" questions (L6, Interviews).`],
           [`False`, `The lecture calls interviews the most common technique.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `Tips for a good interview:`, o: [
-          [`Listen well`, `Correct, but not the only correct choice.`],
-          [`Don't leave some time between interviews`, `The tip is to LEAVE time between interviews.`],
-          [`Take notes`, `Correct, but not the only correct choice.`],
+          [`Listen well`, `Listen well is one of the two keys during an interview, but take notes is the other, so the complete answer is "a & c" (L6, Tips for a good interview).`],
+          [`Don't leave some time between interviews`, `This reverses the real tip: the lecture says to leave some time between interviews (L6, Tips for a good interview).`],
+          [`Take notes`, `Take notes is one of the two keys, but listening well is the other, so choosing it alone is incomplete; the answer is "a & c" (L6, Tips for a good interview).`],
           [`a & c`, `Correct. Listen well AND take notes are the two keys.`]
         ], a: 3, src: `Exam 2024/25` },
         { q: `"Individual interviews are easier to coordinate than group interviews."`, o: [
@@ -613,27 +613,27 @@ COURSES.hci = {
           [`False`, `The comparison table lists easier logistics for individuals.`]
         ], a: 0, src: `Exam 2024/25 & 2025/26` },
         { q: `Why are interviews more expensive than surveys?`, o: [
-          [`They need special software`, `Not the reason given.`],
-          [`They are synchronous and interviewees often expect incentives`, `Correct.`],
-          [`They must be done online`, `They need not be online.`],
-          [`They collect only numbers`, `They collect mostly qualitative data.`]
+          [`They need special software`, `Special software is not mentioned. Interviews cost more because they are synchronous (time per interviewee) and interviewees often expect incentives (L6, Interviews).`],
+          [`They are synchronous and interviewees often expect incentives`, `Correct. Interviews are synchronous, so the interviewer devotes time to each person, and interviewees often expect compensation (incentives) (L6, Interviews).`],
+          [`They must be done online`, `Interviews do not have to be online, and that is not the cost reason. It is the synchronous time per interviewee plus incentives (L6, Interviews).`],
+          [`They collect only numbers`, `Interviews collect mostly qualitative data (open-ended "why" answers), not numbers, and that has nothing to do with their cost (L6, Interviews).`]
         ], a: 1 },
         { q: `People giving answers that are more ideal than reality is called:`, o: [
           [`Recall bias`, `Recall bias is inaccurate memory of past events.`],
-          [`Reporting bias`, `Correct.`],
-          [`Selection bias`, `Not discussed in the lecture.`],
-          [`Confirmation bias`, `Not discussed in the lecture.`]
+          [`Reporting bias`, `Correct. Reporting bias is when people give answers more ideal than reality; recall bias is inaccurate answers about past events (L6, Challenges of asking questions).`],
+          [`Selection bias`, `Selection bias is not one of the lecture's biases. People reporting an idealised version of reality is reporting bias (L6, Challenges of asking questions).`],
+          [`Confirmation bias`, `Confirmation bias is not covered here. The lecture names two biases, recall and reporting; answers more ideal than reality are reporting bias (L6, Challenges).`]
         ], a: 1 },
         { q: `Which is an advantage of GROUP interviews?`, o: [
           [`More privacy for participants`, `That is an advantage of individual interviews.`],
-          [`Participants' discussion can highlight assumptions`, `Correct.`],
+          [`Participants' discussion can highlight assumptions`, `Correct. In group interviews participants' discussion can highlight assumptions, and it is easier to get more feedback (L6, Individuals vs groups).`],
           [`Easier logistics`, `Individual interviews are easier to coordinate.`],
-          [`No confounding personalities`, `Groups may HAVE confounding personalities.`]
+          [`No confounding personalities`, `The reverse: with groups you may need to deal with confounding personalities, which is listed as a group drawback (L6, Individuals vs groups).`]
         ], a: 1 },
         { q: `Which type of research gives a deeper understanding of user motivations and behaviors?`, o: [
-          [`Quantitative research`, `Numbers show what, not why.`],
-          [`Secondary research only`, `It may not be specific to your users.`],
-          [`Experimental research only`, `Not the lecture's categories.`],
+          [`Quantitative research`, `Quantitative research gives numbers (measures, counts) that show what happens, not why. Motivations need qualitative research (L4, Types by WHAT).`],
+          [`Secondary research only`, `Secondary research is someone else's data, which may be too old or not specific enough to your users, so it cannot give deep insight on its own (L4, Primary vs secondary).`],
+          [`Experimental research only`, `Experiments are just one primary method, not one of the WHAT categories. Understanding why and how users behave is qualitative research (L4, Types by WHAT).`],
           [`Qualitative research`, `Correct. It covers why and how things happen.`]
         ], a: 3 }
       ]
@@ -678,41 +678,41 @@ COURSES.hci = {
       ],
       quiz: [
         { q: `According to Joyner, the biggest mistake a designer can make is:`, o: [
-          [`Not using enough prototypes`, `Not the one named.`],
-          [`Jumping straight to designing an interface without understanding the users`, `Correct.`],
-          [`Focusing too much on user feedback`, `Feedback is encouraged.`],
+          [`Not using enough prototypes`, `Too few prototypes is not one of Joyner's two named mistakes. The biggest is jumping to design without understanding the users or the task (L7, Biggest mistakes).`],
+          [`Jumping straight to designing an interface without understanding the users`, `Correct. Joyner's biggest mistake is jumping straight to designing an interface without understanding the users or the task; the second is settling on one idea too early (L7, Biggest mistakes).`],
+          [`Focusing too much on user feedback`, `User feedback is encouraged throughout: prototypes exist to get feedback and iterate. Joyner's biggest mistake is designing without understanding the users (L7, Prototyping).`],
           [`Settling on a single design idea too late`, `The second mistake is settling on one idea too EARLY.`]
         ], a: 1 },
         { q: `A common mistake when enhancing an existing system is:`, o: [
-          [`Exploring too many design alternatives`, `More alternatives are encouraged.`],
+          [`Exploring too many design alternatives`, `Exploring many alternatives is the advice, not the mistake: aim for as many as you can. The mistake is being captured by the current interface (L7, Design alternatives).`],
           [`Being captured by the current interface`, `Correct. Distance yourself from existing solutions.`],
-          [`Ignoring user feedback`, `Bad, but not the mistake named here.`],
-          [`Spending too much time on prototypes`, `Not the mistake named.`]
+          [`Ignoring user feedback`, `Ignoring feedback is bad, but the mistake tied to enhancing an existing system is being captured by its current interface (L7, Design alternatives).`],
+          [`Spending too much time on prototypes`, `Time on prototypes is not the named mistake; prototypes are encouraged. Enhancing a system tempts you to stay captured by its current interface (L7, Design alternatives).`]
         ], a: 1 },
         { q: `How many prototypes were produced for the first Microsoft mouse?`, o: [
-          [`10`, `Too few.`], [`50`, `Too few.`], [`100`, `Close, but the lecture says MORE than 100.`], [`More than 100`, `Correct.`]
+          [`10`, `Far too few. The lecture's example of exploring alternatives is the first Microsoft mouse, with more than 100 prototypes (L7, Design alternatives).`], [`50`, `Too few: the first Microsoft mouse went through more than 100 prototypes, used to show you should explore as many alternatives as you can (L7, Design alternatives).`], [`100`, `Close, but the lecture says more than 100, not exactly 100, so "More than 100" is the precise answer (L7, Design alternatives).`], [`More than 100`, `Correct. The first Microsoft mouse had more than 100 prototypes, the lecture's example of exploring as many design alternatives as you can (L7, Design alternatives).`]
         ], a: 3 },
         { q: `According to Klemmer, prototypes should be considered as:`, o: [
-          [`Final products`, `They are approximations.`],
+          [`Final products`, `Prototypes are the opposite of final products: rapidly made approximations of a design for quick feedback (L7, Prototyping).`],
           [`Questions that need to be answered`, `Correct. "Prototypes are questions, ask a lot of them."`],
-          [`Artifacts to showcase`, `"Not about the artifact".`],
-          [`Simple mock-ups`, `Misses the feedback purpose.`]
+          [`Artifacts to showcase`, `Klemmer says "a prototype is not about the artifact, it's about feedback and iteration", so they are not things to show off (L7, Prototyping).`],
+          [`Simple mock-ups`, `Seeing a prototype as just a simple mock-up misses its purpose. Klemmer treats prototypes as questions that gather feedback (L7, Prototyping).`]
         ], a: 1 },
         { q: `"A prototype is one that enables you to get useful feedback and iterate on your design."`, o: [
-          [`True`, `Correct.`],
+          [`True`, `Correct. The lecture defines a good prototype as one that enables useful (constructive) feedback and lets you iterate on the design (L7, Prototyping).`],
           [`False`, `This is the lecture's definition of a good prototype.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `A good prototype is characterized by:`, o: [
           [`Resembling the final product closely`, `The lecture says it need not resemble the final product.`],
-          [`Enabling useful feedback and iteration`, `Correct.`],
-          [`Being a quick version of the final design`, `The "not useful" understanding.`],
-          [`Having a polished appearance`, `Polish can reduce feedback (see lo-fi).`]
+          [`Enabling useful feedback and iteration`, `Correct. A good prototype enables useful, constructive feedback and iteration; it does not need to resemble the final product (L7, Prototyping).`],
+          [`Being a quick version of the final design`, `"A quick or small version of the real thing" is the common view the lecture calls not useful. A prototype is an approximation made to get feedback (L7, Prototyping).`],
+          [`Having a polished appearance`, `Polish is not the goal: a prototype need not resemble the final product, and finished-looking ones get less constructive feedback than sketches (L7; L8, Lo-fi).`]
         ], a: 1 },
         { q: `How many design alternatives should you aim for early on?`, o: [
           [`One`, `Settling on one is the second biggest mistake.`],
-          [`As many as possible`, `Correct.`],
-          [`Exactly three`, `No fixed number.`],
-          [`None`, `Alternatives are a separate phase.`]
+          [`As many as possible`, `Correct. Explore a wide range rather than one idea from the start: aim for as many alternatives as you can, like the 100+ prototypes of the first Microsoft mouse (L7, Design alternatives).`],
+          [`Exactly three`, `The lecture sets no fixed number like three. Its answer is "as many as you can" (L7, Design alternatives).`],
+          [`None`, `Design alternatives is a whole phase of Joyner's cycle, and skipping it means settling on one idea early, the second biggest mistake (L7, Design alternatives).`]
         ], a: 1 }
       ]
     },
@@ -791,61 +791,61 @@ COURSES.hci = {
       quiz: [
         { q: `"High fidelity prototypes are faster, easier and cheaper to generate than low fidelity."`, o: [
           [`True`, `Reversed: LOW-fidelity prototypes are faster, easier and cheaper.`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. The statement is reversed: it is low-fidelity prototypes that are faster, easier and cheaper to make, which is why you start lo-fi and move to hi-fi later (L8, Power of lo-fi).`]
         ], a: 1, src: `Exam 2024/25 & 2025/26` },
         { q: `A key advantage of low-fidelity prototypes is:`, o: [
-          [`They are expensive and slow, which ensures quality`, `Lo-fi is cheap and fast.`],
-          [`They provide detailed animations and realistic UI`, `That describes hi-fi.`],
-          [`They allow quick feedback and rapid iteration`, `Correct.`],
-          [`They eliminate the need for high-fidelity prototypes`, `Hi-fi is still produced later.`]
+          [`They are expensive and slow, which ensures quality`, `The opposite: lo-fi prototypes are faster, easier and cheaper to make, and that is their power (L8, Power of lo-fi).`],
+          [`They provide detailed animations and realistic UI`, `Detailed, realistic UI is high fidelity, a close match to the final look and feel. Lo-fi prototypes are rough sketches (L8, Prototypes and fidelity).`],
+          [`They allow quick feedback and rapid iteration`, `Correct. Lo-fi prototypes are fast and cheap, and people talk more freely about a sketch, giving constructive feedback you can quickly iterate on (L8, Power of lo-fi).`],
+          [`They eliminate the need for high-fidelity prototypes`, `Lo-fi does not replace hi-fi: you start with lo-fi and move to hi-fi as the design proceeds (L8, Prototypes and fidelity).`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `What is the primary purpose of a wireframe?`, o: [
-          [`To showcase the final design with colors and images`, `Wireframes intentionally have no colors.`],
-          [`To test backend functionality`, `Wireframes are about screen structure.`],
-          [`To outline the structure and layout of a page or app without detailed design`, `Correct.`],
-          [`To write the code for the user interface`, `Wireframes come before code.`]
+          [`To showcase the final design with colors and images`, `Wireframes intentionally have no colors or font styles. Showing the final visual design is the job of hi-fi prototypes, not wireframes (L8, Wireframes).`],
+          [`To test backend functionality`, `Wireframes say nothing about backend code; they are a schematic of a screen's outline, used to decide page structure (L8, Wireframes).`],
+          [`To outline the structure and layout of a page or app without detailed design`, `Correct. A wireframe is a schematic for the basic outline of a screen, a skeleton with placeholders, with no colors or fonts so that it focuses on structure (L8, Wireframes).`],
+          [`To write the code for the user interface`, `Wireframes are drawn, not coded: pen and paper first, then tools like Figma or Balsamiq. They decide structure before any visual design or code (L8, Wireframes).`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `Which tools are commonly used to create wireframes?`, o: [
-          [`Visual Studio and Eclipse`, `These are IDEs.`],
-          [`Microsoft Word and Excel`, `Office tools.`],
+          [`Visual Studio and Eclipse`, `Visual Studio and Eclipse are IDEs for writing code. The lecture's wireframing tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil (L8, Wireframing process).`],
+          [`Microsoft Word and Excel`, `Word and Excel are office tools, not in the lecture's list. Wireframing tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil (L8, Wireframing process).`],
           [`Balsamiq, Figma and Sketch`, `Correct. All three are in the lecture's list (with Adobe XD and Pencil).`],
-          [`Final Cut Pro and Adobe Premiere`, `Video editors.`]
+          [`Final Cut Pro and Adobe Premiere`, `Final Cut Pro and Premiere are video editors. The listed wireframing tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil (L8, Wireframing process).`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `When should wireframes be created?`, o: [
-          [`Before any user research`, `Wireframes come after foundational research.`],
-          [`After foundational user research and an initial site map`, `Correct.`],
-          [`Only after hi-fi prototypes`, `Wireframes are lo-fi and come first.`],
-          [`At the end of the design process`, `They come early.`]
+          [`Before any user research`, `Too early: wireframes are made after foundational user research, once you have an initial site map (L8, Wireframes).`],
+          [`After foundational user research and an initial site map`, `Correct. Wireframes come after foundational user research, as soon as there is an initial site map (content hierarchy) to lay out (L8, Wireframes).`],
+          [`Only after hi-fi prototypes`, `Wireframes are lo-fi skeletons, and the lecture says start lo-fi and move to hi-fi, so they come before hi-fi prototypes (L8, Prototypes and fidelity).`],
+          [`At the end of the design process`, `Wireframes come early: their purpose is to fix structure and catch forgotten elements before colors and images, after foundational research (L8, Wireframes).`]
         ], a: 1 },
         { q: `Which is NOT a wireframing industry standard?`, o: [
-          [`Text as horizontal lines or placeholder text`, `A standard.`],
-          [`Images as rectangles or circles with an X`, `A standard.`],
+          [`Text as horizontal lines or placeholder text`, `Showing text as horizontal lines or placeholder text is one of the wireframing standards, so it is not the answer (L8, Wireframing standards).`],
+          [`Images as rectangles or circles with an X`, `Images drawn as rectangles or circles with an X is a listed wireframing standard, so it is not the answer (L8, Wireframing standards).`],
           [`Detailed color schemes and typography`, `Correct. Wireframes intentionally avoid colors and font styles.`],
-          [`Calls to action as rectangles or circles`, `A standard.`]
+          [`Calls to action as rectangles or circles`, `Calls to action drawn as rectangles or circles is a listed standard. The odd one out is detailed colors and typography (L8, Wireframing standards).`]
         ], a: 2 },
         { q: `According to Joyner, brainstorming should start:`, o: [
           [`As a group, so ideas merge early`, `Groups coalesce ideas too early, which is the problem.`],
           [`Individually`, `Correct. Each member first builds their own set of ideas.`],
-          [`With evaluation of each idea`, `Do not evaluate during brainstorming.`],
-          [`With the final design`, `Brainstorming is for generating ideas.`]
+          [`With evaluation of each idea`, `Brainstorming tips say not to evaluate or exclude any idea; the aim is to generate as many as possible, about 20 (L8, Brainstorming).`],
+          [`With the final design`, `Starting with a final design defeats the point of brainstorming, which is to generate many ideas, beginning individually (L8, Brainstorming).`]
         ], a: 1 },
         { q: `Where should an error message be displayed in a form?`, o: [
           [`In a popup after submitting`, `The guideline is to show it next to the field.`],
-          [`Next to the input field where the error occurred`, `Correct. A red field border is preferred.`],
-          [`At the bottom of the page`, `Too far from the problem.`],
-          [`In the page title`, `Not a form guideline.`]
+          [`Next to the input field where the error occurred`, `Correct. Error messages sit next to the field where the error occurred, so the user sees exactly what to fix; changing the field border color (e.g. red) is preferred (L8, Form design).`],
+          [`At the bottom of the page`, `The bottom of the page is far from the field that caused the error. The guideline puts the message next to that field (L8, Form design).`],
+          [`In the page title`, `The page title is not where form errors go; the user would have to find the field. Errors belong next to the faulty input (L8, Form design).`]
         ], a: 1 },
         { q: `Which shows where users are AND what is left to do, on a predefined path?`, o: [
           [`Breadcrumbs`, `Breadcrumbs show only where users are, when there are multiple choices.`],
-          [`Progress bar`, `Correct.`],
-          [`Tabs`, `Navigation tabs do not show remaining steps.`],
-          [`Links`, `Not a position indicator.`]
+          [`Progress bar`, `Correct. A progress bar shows where users are and what is left, on a predefined unique path; breadcrumbs only show where they are (L8, Form design).`],
+          [`Tabs`, `Tabs switch between sections but do not show steps left on a fixed path; that is a progress bar's job (L8, Form design).`],
+          [`Links`, `Links are for navigating, not for showing position. The guideline also says important commands should be buttons, not links (L8, Form design).`]
         ], a: 1 },
         { q: `The prototype audience list includes:`, o: [
-          [`Colleagues, clients, users and yourself`, `Correct.`],
-          [`Only users`, `Too narrow.`],
-          [`Only managers`, `Not the list.`],
-          [`Competitors`, `Not an audience.`]
+          [`Colleagues, clients, users and yourself`, `Correct. Prototypes communicate with stakeholders, and the lecture names four audiences: colleagues, clients, users and yourself (L8, Prototypes and fidelity).`],
+          [`Only users`, `Too narrow: users are one audience, but prototypes also serve colleagues, clients and yourself (L8, Prototypes and fidelity).`],
+          [`Only managers`, `Managers are not in the list. The four audiences are colleagues, clients, users and yourself (L8, Prototypes and fidelity).`],
+          [`Competitors`, `Competitors are not stakeholders you prototype for. The audiences are colleagues, clients, users and yourself (L8, Prototypes and fidelity).`]
         ], a: 0 }
       ]
     },
@@ -898,45 +898,45 @@ COURSES.hci = {
       quiz: [
         { q: `If a dialog has only ONE button to dismiss it, the button should say:`, o: [
           [`Cancel`, `Cancel is used when there is also an action button.`],
-          [`Close`, `Correct.`],
-          [`Exit`, `Not the guideline's term.`],
-          [`Abort`, `Not the guideline's term.`]
+          [`Close`, `Correct. When a dialog has only one button, it should say "Close". "Cancel" is used only when there are two buttons, an action button and one to dismiss (L9, Close vs Cancel).`],
+          [`Exit`, `"Exit" is not a label in the guideline. The rule is "Close" for a single dismiss button and "Cancel" next to an action button (L9, Close vs Cancel).`],
+          [`Abort`, `"Abort" is not a label the guideline uses; it sounds harsh and technical. A lone dismiss button should say "Close" (L9, Close vs Cancel).`]
         ], a: 1 },
         { q: `How many primary colors should a form or page use?`, o: [
-          [`A simple 3-color palette`, `Correct. More than 3 confuses users.`],
-          [`As many as possible`, `Too many colors confuse users.`],
-          [`Only 1`, `Not the guideline.`],
-          [`7`, `Too many.`]
+          [`A simple 3-color palette`, `Correct. The form guideline is to stick to a simple 3-color palette, because more than 3 primary colors is difficult and confuses users (L9, Forms).`],
+          [`As many as possible`, `Many colors break the guideline: more than 3 primary colors is difficult and confuses users, so keep a simple 3-color palette (L9, Forms).`],
+          [`Only 1`, `One color is not the rule. The guideline is a simple 3-color palette; the limit is not going above 3 (L9, Forms).`],
+          [`7`, `7 is more than double the limit. Over 3 primary colors confuses users, so the guideline says a simple 3-color palette (L9, Forms).`]
         ], a: 0 },
         { q: `"Above the fold" means:`, o: [
-          [`The page header only`, `Too narrow.`],
+          [`The page header only`, `Too narrow: "above the fold" is everything visible without scrolling, not just the header. The most important information goes there (L9, Layout).`],
           [`The part of the page visible without scrolling`, `Correct. Put the most important information there.`],
-          [`The footer area`, `The opposite.`],
-          [`A folded menu`, `Not the meaning.`]
+          [`The footer area`, `The opposite: the footer is usually below the fold, out of view until you scroll. Above the fold is the part visible without scrolling (L9, Layout).`],
+          [`A folded menu`, `Nothing is folded: "the fold" is the bottom edge of the first screen, and above it is what users see without scrolling (L9, Layout).`]
         ], a: 1 },
         { q: `"Red Routes" are:`, o: [
-          [`Error pages`, `Not related to errors.`],
-          [`The series of pages or actions customers most often use to complete tasks`, `Correct.`],
-          [`Links colored red`, `A literal misreading.`],
-          [`Forbidden navigation paths`, `Not the meaning.`]
+          [`Error pages`, `Red Routes have nothing to do with errors. They are the series of pages or actions customers most often use to complete tasks (L9, Navigation).`],
+          [`The series of pages or actions customers most often use to complete tasks`, `Correct. Mapping out "Red Routes" means identifying the series of pages or actions customers most often use to complete tasks, so navigation supports them (L9, Navigation).`],
+          [`Links colored red`, `"Red" is not about link color: Red Routes are the most common paths of pages or actions customers use to complete tasks (L9, Navigation).`],
+          [`Forbidden navigation paths`, `Red Routes are the paths customers use most, not paths they are blocked from (L9, Navigation).`]
         ], a: 1 },
         { q: `Which is a navigation guideline?`, o: [
-          [`The company logo links to the homepage`, `Correct.`],
-          [`Tabs are placed at the bottom of the page`, `Tabs go at the top.`],
-          [`Clickable items look the same on hover`, `There should be an obvious change on hover.`],
+          [`The company logo links to the homepage`, `Correct. One of the navigation guidelines is that the company logo links to the homepage (and the layout rule keeps it in the same place on every page) (L9, Navigation).`],
+          [`Tabs are placed at the bottom of the page`, `Navigation tabs belong at the top of the page, not the bottom (L9, Navigation).`],
+          [`Clickable items look the same on hover`, `The guideline is the reverse: there should be an obvious change on hover over anything clickable, so users know it can be clicked (L9, Navigation).`],
           [`Home links appear only on the home page`, `Home and category links belong on every page.`]
         ], a: 0 },
         { q: `A good error message should FIRST:`, o: [
-          [`State the encountered problem in the title`, `Correct.`],
-          [`Show a long technical stack trace`, `Messages should be brief and helpful.`],
-          [`Apologize repeatedly`, `Not in the guidelines.`],
-          [`Close the application`, `Harmful.`]
+          [`State the encountered problem in the title`, `Correct. The first error-message guideline is to state the problem in the title, then briefly say why it happened, link to complete or return, and recommend a next action (L9, Forms).`],
+          [`Show a long technical stack trace`, `A long stack trace is not a brief explanation. The guideline says to state the problem in the title, then describe briefly why it happened (L9, Forms).`],
+          [`Apologize repeatedly`, `Apologies are not among the error-message guidelines. The first step is stating the problem in the title (L9, Forms).`],
+          [`Close the application`, `Closing the app loses the user's work. The guidelines want a link to complete the task or return to the previous state, plus a next action (L9, Forms).`]
         ], a: 0 },
         { q: `Where is the "Cancel" button most commonly placed?`, o: [
           [`To the left, eye-catching`, `The guideline says right and not eye-catching.`],
-          [`To the right, not eye-catching`, `Correct.`],
-          [`At the top of the page`, `Not the guideline.`],
-          [`Hidden`, `It must be visible.`]
+          [`To the right, not eye-catching`, `Correct. Cancel is most commonly placed to the right and is not eye-catching, so the action button gets the user's attention (L9, Close vs Cancel).`],
+          [`At the top of the page`, `The top of the page is not where dialog buttons go. Cancel is most commonly placed to the right and is not eye-catching (L9, Close vs Cancel).`],
+          [`Hidden`, `Cancel must still be visible, just not eye-catching, and is usually on the right; hiding it would leave users unable to dismiss (L9, Close vs Cancel).`]
         ], a: 1 }
       ]
     }
@@ -950,28 +950,28 @@ COURSES.hci = {
       note: `This paper was scanned without an answer key. The answers below are worked out from the lectures.`,
       sections: [
         { title: `Q1-A · True or False`, marks: `10 marks · 1 each`, items: [
-          { type: `tf`, q: `Analyzing academic papers and previous research studies is an example of secondary research.`, a: 0, why: `Papers and studies were produced by someone else, so this is secondary research (L3).` },
-          { type: `tf`, q: `Tactical research takes place after the design phase.`, a: 1, why: `Tactical (design) research takes place DURING design. The research that follows launch is post-launch research (L3).` },
-          { type: `tf`, q: `High fidelity prototypes are faster, easier and cheaper to generate than low fidelity.`, a: 1, why: `Reversed. Low-fidelity prototypes are the faster, easier and cheaper ones (L8).` },
-          { type: `tf`, q: `Individuals interview easier to coordinate than groups' interview.`, a: 0, why: `The comparison lists "easier to coordinate the logistics" under individuals (L6).` },
-          { type: `tf`, q: `A well-designed survey should take a long time to complete to ensure detailed responses.`, a: 1, why: `Keep surveys as small as possible. Too many questions reduce the response rate and reliability (L4).` },
-          { type: `tf`, q: `UX Design refers to interactivity, look and feel of product screen or web page.`, a: 1, why: `That is UI design. UX is the overall experience (L1).` },
-          { type: `tf`, q: `Survey is common method used in primary research.`, a: 0, why: `Surveys are listed among the common primary methods (L3).` },
-          { type: `tf`, q: `User feedback is not necessary when designing a user interface.`, a: 1, why: `The whole course is about user-centered design: involve users early and often, and prototypes exist to get feedback (L3, L7).` },
-          { type: `tf`, q: `Focus groups and interviews are examples of primary research methods.`, a: 0, why: `Both are listed as primary methods (L3).` },
-          { type: `tf`, q: `Qualitative research involves data of numeric nature.`, a: 1, why: `Numeric data is quantitative. Qualitative is about why and how (L4).` }
+          { type: `tf`, q: `Analyzing academic papers and previous research studies is an example of secondary research.`, a: 0, why: `Papers and studies were produced by someone else, so this is secondary research (L3).`, ow: [null, `Papers and previous studies were done by someone else, which is exactly the lecture's definition of secondary research (books, journals). Primary is research you conduct yourself (L3).`] },
+          { type: `tf`, q: `Tactical research takes place after the design phase.`, a: 1, why: `Tactical (design) research takes place DURING design. The research that follows launch is post-launch research (L3).`, ow: [`Tactical (design) research happens during the design phase, using feedback on prototypes. Research after launch is post-launch research (L3, Types by WHEN).`, null] },
+          { type: `tf`, q: `High fidelity prototypes are faster, easier and cheaper to generate than low fidelity.`, a: 1, why: `Reversed. Low-fidelity prototypes are the faster, easier and cheaper ones (L8).`, ow: [`Reversed: low-fidelity prototypes are the faster, easier and cheaper ones, which is why you start lo-fi and move to hi-fi later (L8, Power of lo-fi).`, null] },
+          { type: `tf`, q: `Individuals interview easier to coordinate than groups' interview.`, a: 0, why: `The comparison lists "easier to coordinate the logistics" under individuals (L6).`, ow: [null, `The individuals vs groups table lists "easier to coordinate the logistics" as an advantage of individual interviews, so the statement is true (L6).`] },
+          { type: `tf`, q: `A well-designed survey should take a long time to complete to ensure detailed responses.`, a: 1, why: `Keep surveys as small as possible. Too many questions reduce the response rate and reliability (L4).`, ow: [`Long surveys hurt: the tip is to keep a survey as small as possible, because too many questions reduce the response rate and reliability (L4, Surveys).`, null] },
+          { type: `tf`, q: `UX Design refers to interactivity, look and feel of product screen or web page.`, a: 1, why: `That is UI design. UX is the overall experience (L1).`, ow: [`Interactivity, look and feel of a screen or page is UI design. UX design is the user's overall experience with the product or website (L1, UI vs UX vs HCI).`, null] },
+          { type: `tf`, q: `Survey is common method used in primary research.`, a: 0, why: `Surveys are listed among the common primary methods (L3).`, ow: [null, `Surveys are one of the lecture's primary research methods, with interviews, focus groups, usability studies and observations, since you run them yourself (L3).`] },
+          { type: `tf`, q: `User feedback is not necessary when designing a user interface.`, a: 1, why: `The whole course is about user-centered design: involve users early and often, and prototypes exist to get feedback (L3, L7).`, ow: [`User-centered design needs users at every step: "you need users early and often", and prototypes exist to get feedback and iterate (L3; L7).`, null] },
+          { type: `tf`, q: `Focus groups and interviews are examples of primary research methods.`, a: 0, why: `Focus groups and interviews are both in the lecture's list of primary methods (with surveys, usability studies and observations), because you conduct them yourself (L3, Types by WHO).`, ow: [null, `Focus groups and interviews are both in the lecture's list of primary methods, because you conduct them yourself (L3, Types by WHO).`] },
+          { type: `tf`, q: `Qualitative research involves data of numeric nature.`, a: 1, why: `Numeric data is quantitative. Qualitative is about why and how (L4).`, ow: [`Numeric data (measures, counts) is quantitative. Qualitative research is observations about why and how things happen, often from interviews (L4, Types by WHAT).`, null] }
         ]},
         { title: `Q1-B · Multiple choice`, marks: `10 marks · 1 each`, items: [
-          { type: `mcq`, q: `Why is privacy and security important in user research?`, o: [`It ensures compliance and protects user data`, `It makes research faster`, `It allows sharing all data publicly`, `It reduces the need for interviews`], a: 0, why: `Privacy protects users' PII and SPII. The other options are unrelated or the opposite of privacy.` },
-          { type: `mcq`, q: `Which statement reflects good practice in user research?`, o: [`Prepare questions ahead but adapt as needed during the session`, `Never change the script under any circumstance`, `Use only quantitative methods`, `Focus on convenience over privacy`], a: 0, why: `Plan ahead, but "the script is not a bible". Combine methods and keep privacy essential.` },
-          { type: `mcq`, q: `Quantitative research is often easier for:`, o: [`Designers only`, `Engineers and technical people`, `Marketing teams only`, `Children`], a: 1, why: `L4: quantitative (numeric) data is "easier for engineers and technical people to handle".` },
-          { type: `mcq`, q: `Which of the following best summarizes a good survey design principle?`, o: [`Long surveys with complex questions`, `Short, clear, unbiased surveys with participant feedback considered`, `Surveys without planning`, `Focus only on quantitative questions`], a: 1, why: `Keep it small, be clear, be aware of bias, and get feedback from participants.` },
-          { type: `mcq`, q: `Why is privacy and security important in user research? (repeated on page 2)`, o: [`It ensures compliance and protects user data`, `It makes research faster`, `It allows sharing all data publicly`, `It reduces the need for interviews`], a: 0, why: `Same question as #1, printed twice on the paper.` },
-          { type: `mcq`, q: `What is the primary purpose of a wireframe?`, o: [`To showcase the final design with colors and images`, `To test backend functionality`, `To outline the structure and layout of a webpage or app without detailed design`, `To write the code for the user interface`], a: 2, why: `A wireframe is a skeleton with placeholders and intentionally has no colors or fonts.` },
-          { type: `mcq`, q: `What kind of tools is commonly used to create wireframes?`, o: [`Visual Studio and Eclipse`, `Microsoft Word and Excel`, `Balsamiq, Figma, and Sketch`, `Final Cut Pro and Adobe Premiere`], a: 2, why: `The lecture lists Figma, Adobe XD, Sketch, Balsamiq and Pencil.` },
-          { type: `mcq`, q: `Which of the following is a key advantage of using low-fidelity prototypes?`, o: [`They are expensive and take time to build, which ensures quality`, `They provide detailed animations and realistic UI`, `They allow for quick feedback and rapid iteration`, `They eliminate the need for high-fidelity prototypes`], a: 2, why: `Lo-fi is fast and cheap and gets more constructive feedback.` },
-          { type: `mcq`, q: `What is an example of a qualitative primary research method in HCI?`, o: [`Statistical analysis of survey data`, `Collecting data of numeric nature`, `Observing users interacting with a prototype`, `Analyzing existing system logs`], a: 2, why: `Observation is primary (you do it) and qualitative (how and why). Statistics and numbers are quantitative, and existing logs are not newly collected.` },
-          { type: `mcq`, q: `Before a user interview, what should researchers do?`, o: [`Ask random questions without preparation`, `Write a script of questions to guide the interview`, `Ignore the interviewee's context`, `Focus only on technical details`], a: 1, why: `L4: "effort should be done before the interview to write a script of the questions".` }
+          { type: `mcq`, q: `Why is privacy and security important in user research?`, o: [`It ensures compliance and protects user data`, `It makes research faster`, `It allows sharing all data publicly`, `It reduces the need for interviews`], a: 0, why: `Privacy protects users' PII and SPII. The other options are unrelated or the opposite of privacy.`, ow: [null, `Privacy does not speed research up: the guidelines add care (collect only what you need, avoid linking to PII/SPII, delete after use) (L4).`, `The opposite of privacy: you should collect only the data you need, keep it apart from PII/SPII and delete it when no longer needed (L4).`, `Privacy does not replace any research method; interviews are still needed. It matters because it protects user data (L4).`] },
+          { type: `mcq`, q: `Which statement reflects good practice in user research?`, o: [`Prepare questions ahead but adapt as needed during the session`, `Never change the script under any circumstance`, `Use only quantitative methods`, `Focus on convenience over privacy`], a: 0, why: `Plan ahead, but "the script is not a bible". Combine methods and keep privacy essential.`, ow: [null, `The lecture says planning is not strictness: "the script is not a bible", so adapt during the session (L4, General tips).`, `Methods should be combined in a relevant order, and qualitative research is what gives real understanding, so quantitative-only is wrong (L4).`, `Privacy and security of user data are listed as essential, so they must never be traded for convenience (L4, General tips).`] },
+          { type: `mcq`, q: `Quantitative research is often easier for:`, o: [`Designers only`, `Engineers and technical people`, `Marketing teams only`, `Children`], a: 1, why: `L4: quantitative (numeric) data is "easier for engineers and technical people to handle".`, ow: [`The lecture does not single out designers; it says quantitative (numeric) research is easier for engineers and technical people (L4).`, null, `Marketing teams are not mentioned. Quantitative research is easier for engineers and technical people (L4, Types by WHAT).`, `Children have nothing to do with this point. Quantitative research is said to be easier for engineers and technical people (L4).`] },
+          { type: `mcq`, q: `Which of the following best summarizes a good survey design principle?`, o: [`Long surveys with complex questions`, `Short, clear, unbiased surveys with participant feedback considered`, `Surveys without planning`, `Focus only on quantitative questions`], a: 1, why: `Keep it small, be clear, be aware of bias, and get feedback from participants.`, ow: [`The opposite of the tips: keep surveys as small as possible and questions concise, since long surveys hurt response rate and reliability (L4; L5).`, null, `Research must be planned ahead; a survey without planning breaks the general research tips (L4, General tips).`, `The lecture says to leave open-ended questions open and to combine methods, so quantitative-only questions are not the principle (L5, Be Unbiased).`] },
+          { type: `mcq`, q: `Why is privacy and security important in user research? (repeated on page 2)`, o: [`It ensures compliance and protects user data`, `It makes research faster`, `It allows sharing all data publicly`, `It reduces the need for interviews`], a: 0, why: `Same question as #1, printed twice on the paper.`, ow: [null, `Privacy does not speed research up: the guidelines add care (collect only what you need, avoid linking to PII/SPII, delete after use) (L4).`, `The opposite of privacy: you should collect only the data you need, keep it apart from PII/SPII and delete it when no longer needed (L4).`, `Privacy does not replace any research method; interviews are still needed. It matters because it protects user data (L4).`] },
+          { type: `mcq`, q: `What is the primary purpose of a wireframe?`, o: [`To showcase the final design with colors and images`, `To test backend functionality`, `To outline the structure and layout of a webpage or app without detailed design`, `To write the code for the user interface`], a: 2, why: `A wireframe is a skeleton with placeholders and intentionally has no colors or fonts.`, ow: [`Wireframes intentionally have no colors or font styles; showing the final visual design is what hi-fi prototypes do (L8, Wireframes).`, `Wireframes say nothing about the backend; they are a schematic of a screen's basic outline (L8, Wireframes).`, null, `Wireframes are drawn (pen and paper, then Figma, Balsamiq…), not coded, and they come before visual design and code (L8).`] },
+          { type: `mcq`, q: `What kind of tools is commonly used to create wireframes?`, o: [`Visual Studio and Eclipse`, `Microsoft Word and Excel`, `Balsamiq, Figma, and Sketch`, `Final Cut Pro and Adobe Premiere`], a: 2, why: `The lecture lists Figma, Adobe XD, Sketch, Balsamiq and Pencil.`, ow: [`Visual Studio and Eclipse are IDEs for code. The lecture's wireframing tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil (L8).`, `Word and Excel are office tools, not in the list. Wireframing tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil (L8).`, null, `Final Cut Pro and Premiere are video editors. Wireframing tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil (L8).`] },
+          { type: `mcq`, q: `Which of the following is a key advantage of using low-fidelity prototypes?`, o: [`They are expensive and take time to build, which ensures quality`, `They provide detailed animations and realistic UI`, `They allow for quick feedback and rapid iteration`, `They eliminate the need for high-fidelity prototypes`], a: 2, why: `Lo-fi is fast and cheap and gets more constructive feedback.`, ow: [`The opposite: lo-fi prototypes are faster, easier and cheaper to make, and that is their power (L8, Power of lo-fi).`, `Detailed, realistic UI is high fidelity, a close match to the final look and feel; lo-fi prototypes are rough sketches (L8).`, null, `Lo-fi does not replace hi-fi: you start with lo-fi and move to hi-fi as the design proceeds (L8, Prototypes and fidelity).`] },
+          { type: `mcq`, q: `What is an example of a qualitative primary research method in HCI?`, o: [`Statistical analysis of survey data`, `Collecting data of numeric nature`, `Observing users interacting with a prototype`, `Analyzing existing system logs`], a: 2, why: `Observation is primary (you do it) and qualitative (how and why). Statistics and numbers are quantitative, and existing logs are not newly collected.`, ow: [`Statistical analysis works on numbers, so it is quantitative, not qualitative, even if the survey was primary (L4, Types by WHAT).`, `Data of numeric nature is the definition of quantitative research, the opposite of what the question asks (L4, Types by WHAT).`, null, `Existing system logs are data already there, not collected by you through a study, and logs are mostly counts (quantitative), not why/how (L4).`] },
+          { type: `mcq`, q: `Before a user interview, what should researchers do?`, o: [`Ask random questions without preparation`, `Write a script of questions to guide the interview`, `Ignore the interviewee's context`, `Focus only on technical details`], a: 1, why: `L4: "effort should be done before the interview to write a script of the questions".`, ow: [`The lecture says to plan ahead and write a script of questions instead of asking random questions (L4, General tips).`, null, `Ignoring context is not a preparation step. Researchers should plan ahead with a script of questions (L4, General tips).`, `User research is about users' needs and pain points, not only technical details. The preparation step is writing a question script (L4).`] }
         ]},
         { title: `Question 2`, marks: `20 marks`, items: [
           { type: `written`, q: `A. Compare between primary research and secondary research. (5 marks)`, ans: `<table><tr><th></th><th>Primary</th><th>Secondary</th></tr><tr><td>Collected by</td><td>You (or someone you hire)</td><td>Someone else</td></tr><tr><td>Examples</td><td>Surveys, focus groups, interviews, observations, experiments</td><td>Looking at existing data: books, journals, reports</td></tr><tr><td>Qual. or quant.?</td><td>Either</td><td>Either</td></tr><tr><td>Benefit</td><td>Specific to your needs; you control the quality</td><td>Usually cheap and quick</td></tr><tr><td>Drawback</td><td>Costs more and takes longer</td><td>Can be too old or not specific enough</td></tr></table>`, why: `The table in L4 slide 6 is exactly what's being asked. Draw it.` },
@@ -990,28 +990,28 @@ COURSES.hci = {
       note: `The official solved paper marks T/F #2 and #7 as True and MCQ #3 as "Survey". These conflict with the lectures. Both the key and the lecture-based answer are shown for those questions.`,
       sections: [
         { title: `Q1-A · True or False`, marks: `15 marks · 1 each`, items: [
-          { type: `tf`, q: `It is important to understand the tasks that the user requires to do.`, a: 0, why: `User research covers the users AND their tasks (L1).` },
-          { type: `tf`, q: `Tactical research takes place after the design phase.`, a: 1, key: `Official key: True (√)`, why: `L3 says tactical research "takes place during the design phase". After the design phase would be post-launch research. The key likely reads "after" loosely; answer from the lecture unless your doctor says otherwise.` },
-          { type: `tf`, q: `High fidelity prototypes are faster, easier and cheaper to generate than Low fidelity.`, a: 1, why: `Low-fidelity is faster, easier and cheaper.` },
-          { type: `tf`, q: `Interview is most common research technique.`, a: 0, why: `L6: "Most common research technique".` },
-          { type: `tf`, q: `Individuals interview easier to coordinate than groups interview.`, a: 0, why: `Individuals are easier to coordinate logistically.` },
-          { type: `tf`, q: `Primary research done by someone else.`, a: 1, why: `Research by someone else is secondary. Primary is research you conduct yourself.` },
-          { type: `tf`, q: `"Be biased" is important point for a good survey.`, a: 1, key: `Official key: True (√)`, why: `The principle is "Be UNbiased". The key probably treats this as a typo for "Be unbiased". As written, the statement is false.` },
-          { type: `tf`, q: `UX Design refers to interactivity, look and feel of product screen or web page.`, a: 1, why: `That is UI design.` },
-          { type: `tf`, q: `PII is specific details that could be used to identify a user such as names, phone number.`, a: 0, why: `The definition of PII from L4.` },
-          { type: `tf`, q: `Survey is more expensive than interview.`, a: 1, why: `Surveys are among the cheapest methods; interviews need time per person and incentives.` },
-          { type: `tf`, q: `HCI is interaction between user and computer OR relationship between users and computer systems.`, a: 0, why: `The L1 definition.` },
-          { type: `tf`, q: `UI Design covers a user's overall experience with the product or website.`, a: 1, why: `That is UX.` },
-          { type: `tf`, q: `S/W development is not just a process of creating software, it is also a process of learning how to create the S/W best suited for its purpose.`, a: 0, why: `"Software development is research" (L1).` },
-          { type: `tf`, q: `Prototype is one that enables you to get useful feedback and iterate on your design.`, a: 0, why: `The definition of a good prototype (L7).` },
-          { type: `tf`, q: `Qualitative research involves data of numeric nature.`, a: 1, why: `Numeric data is quantitative.` }
+          { type: `tf`, q: `It is important to understand the tasks that the user requires to do.`, a: 0, why: `User research covers the users AND their tasks (L1).`, ow: [null, `User research means learning about the users AND the tasks they try to complete, and the user really interacts with the task, not the system (L1).`] },
+          { type: `tf`, q: `Tactical research takes place after the design phase.`, a: 1, key: `Official key: True (√)`, why: `L3 says tactical research "takes place during the design phase". After the design phase would be post-launch research. The key likely reads "after" loosely; answer from the lecture unless your doctor says otherwise.`, ow: [`Tactical (design) research happens during the design phase, using feedback on prototypes. Research after it is post-launch research (L3, Types by WHEN).`, null] },
+          { type: `tf`, q: `High fidelity prototypes are faster, easier and cheaper to generate than Low fidelity.`, a: 1, why: `Reversed. Low-fidelity prototypes are the faster, easier and cheaper ones; hi-fi is not even possible early because details are undecided (L8, Power of lo-fi).`, ow: [`Reversed: low-fidelity prototypes are the faster, easier and cheaper ones, which is why you start lo-fi and move to hi-fi later (L8, Power of lo-fi).`, null] },
+          { type: `tf`, q: `Interview is most common research technique.`, a: 0, why: `The lecture describes the interview as the most common research technique, valued for deeper understanding through open "why" questions and follow-ups (L6, Interviews).`, ow: [null, `The lecture opens its interviews section by calling the interview the most common research technique, so the statement is true (L6, Interviews).`] },
+          { type: `tf`, q: `Individuals interview easier to coordinate than groups interview.`, a: 0, why: `Individuals are easier to coordinate logistically.`, ow: [null, `The individuals vs groups table lists "easier to coordinate the logistics" as an advantage of individual interviews, so the statement is true (L6).`] },
+          { type: `tf`, q: `Primary research done by someone else.`, a: 1, why: `Research by someone else is secondary. Primary is research you conduct yourself.`, ow: [`Research done by someone else (books, journals) is secondary research. Primary research is research you conduct yourself, like interviews and surveys (L3).`, null] },
+          { type: `tf`, q: `"Be biased" is important point for a good survey.`, a: 1, key: `Official key: True (√)`, why: `The principle is "Be UNbiased". The key probably treats this as a typo for "Be unbiased". As written, the statement is false.`, ow: [`One of the six principles is "Be Unbiased" (avoid leading and loaded questions, allow "Other"), so being biased is never good for a survey (L5).`, null] },
+          { type: `tf`, q: `UX Design refers to interactivity, look and feel of product screen or web page.`, a: 1, why: `Interactivity, look and feel of a screen or page is the definition of UI design. UX design is the user's overall experience with the product or website (L1, UI vs UX vs HCI).`, ow: [`Interactivity, look and feel of a screen or page is UI design. UX design is the user's overall experience with the product or website (L1, UI vs UX vs HCI).`, null] },
+          { type: `tf`, q: `PII is specific details that could be used to identify a user such as names, phone number.`, a: 0, why: `This is the lecture's PII definition: details that could identify a user, with examples names, home address, email address and phone number (L4, Privacy and security).`, ow: [null, `The statement matches the lecture's PII definition: details that could identify a user, such as names, home address, email and phone number (L4).`] },
+          { type: `tf`, q: `Survey is more expensive than interview.`, a: 1, why: `Surveys are among the cheapest methods; interviews need time per person and incentives.`, ow: [`Reversed: surveys are one of the cheapest methods, while interviews cost more because they are synchronous and interviewees expect incentives (L4; L6).`, null] },
+          { type: `tf`, q: `HCI is interaction between user and computer OR relationship between users and computer systems.`, a: 0, why: `This is the L1 definition word for word: HCI is the interaction between user and computer, or the relationship between users and computer systems (L1, What is HCI?).`, ow: [null, `This is word for word the lecture's definition: HCI is the interaction between user and computer, or the relationship between users and computer systems (L1).`] },
+          { type: `tf`, q: `UI Design covers a user's overall experience with the product or website.`, a: 1, why: `A user's overall experience with the product or website is UX design. UI design is only the interactivity, look and feel of a screen or page (L1, UI vs UX vs HCI).`, ow: [`The overall experience with a product or website is UX design. UI design is the interactivity, look and feel of a screen or page (L1, UI vs UX vs HCI).`, null] },
+          { type: `tf`, q: `S/W development is not just a process of creating software, it is also a process of learning how to create the S/W best suited for its purpose.`, a: 0, why: `L1 says "software development is research": it is not just creating software but also learning how to create the software best suited for its purpose (L1, UI design process).`, ow: [null, `The statement is taken from the lecture's point that "software development is research": learning how to build the software best suited to its purpose (L1).`] },
+          { type: `tf`, q: `Prototype is one that enables you to get useful feedback and iterate on your design.`, a: 0, why: `This is the lecture's definition of a good prototype: it enables useful (constructive) feedback and iteration, and need not resemble the final product (L7, Prototyping).`, ow: [null, `This is the lecture's definition of a good prototype: one that enables useful, constructive feedback and iteration on the design (L7, Prototyping).`] },
+          { type: `tf`, q: `Qualitative research involves data of numeric nature.`, a: 1, why: `Numeric data (measures, counts) is quantitative research. Qualitative research is observations about why and how things happen, often from interviews (L4, Types by WHAT).`, ow: [`Numeric data (measures, counts) is quantitative. Qualitative research is observations about why and how things happen (L4, Types by WHAT).`, null] }
         ]},
         { title: `Q1-B · Multiple choice`, marks: `5 marks · 1 each`, items: [
-          { type: `mcq`, q: `HCI Terms interchangeably used:`, o: [`Human Computer Interaction`, `Human Machine Interaction`, `Man Machine Interaction`, `All the above`], a: 3, why: `HCI, HMI and MMI all name the same field.` },
-          { type: `mcq`, q: `Sensitive Personally Identifiable Information (SPII) such as:`, o: [`names`, `home address`, `email address`, `Financial account numbers`], a: 3, why: `Names, address and email are regular PII. Financial account numbers are SPII.` },
-          { type: `mcq`, q: `Plan ahead and prepare your questions before……..`, o: [`Interview`, `Survey`, `Observation`, `none of the above`], a: 0, key: `Official key: (b) Survey`, why: `L6's "Tips for good interview" begins "Plan ahead and prepare your questions before the interview time", and L4 says to write an interview script. The lecture wording matches "Interview". The key marks Survey, so mention the lecture sentence if asked.` },
-          { type: `mcq`, q: `Tips for good interview:`, o: [`Listen Well`, `don't Leave sometime between interviews`, `Take notes`, `a & c`], a: 3, why: `Listen well and take notes are the two keys. (b) is the opposite of the real tip.` },
-          { type: `mcq`, q: `Data that includes descriptions from interviewees:`, o: [`Quantitative data`, `Qualitative data`, `average data`, `gathering data`], a: 1, why: `Descriptions of why and how are qualitative.` }
+          { type: `mcq`, q: `HCI Terms interchangeably used:`, o: [`Human Computer Interaction`, `Human Machine Interaction`, `Man Machine Interaction`, `All the above`], a: 3, why: `HCI (Human Computer Interaction), HMI (Human Machine Interaction) and MMI (Man Machine Interaction) are used interchangeably for the same field, so all three are correct (L1, What is HCI?).`, ow: [`Human Computer Interaction is HCI itself, but HMI and MMI are equally valid terms, so choosing only this one is incomplete (L1).`, `HMI is one interchangeable term, but HCI and MMI are too, so the complete answer is "All the above" (L1).`, `MMI is one interchangeable term, but HCI and HMI are too, so the complete answer is "All the above" (L1).`, null] },
+          { type: `mcq`, q: `Sensitive Personally Identifiable Information (SPII) such as:`, o: [`names`, `home address`, `email address`, `Financial account numbers`], a: 3, why: `Names, address and email are regular PII. Financial account numbers are SPII.`, ow: [`Names are ordinary PII: they identify a user but are not in the sensitive list (SSN, license, passport, financial accounts, date of birth) (L4).`, `Home address is listed as PII with names, email and phone; it is not one of the SPII examples (L4, Privacy and security).`, `Email address is plain PII in the lecture's list. SPII is data whose loss could cause financial harm, embarrassment or discrimination (L4).`, null] },
+          { type: `mcq`, q: `Plan ahead and prepare your questions before……..`, o: [`Interview`, `Survey`, `Observation`, `none of the above`], a: 0, key: `Official key: (b) Survey`, why: `L6's "Tips for good interview" begins "Plan ahead and prepare your questions before the interview time", and L4 says to write an interview script. The lecture wording matches "Interview". The key marks Survey, so mention the lecture sentence if asked.`, ow: [null, `Surveys must be planned too, but this sentence is the interview tip: "Plan ahead and prepare your questions before the interview" (L6). The official key reportedly marks this option.`, `Observation is not what this sentence is about. The tip quoted is from the interview tips: prepare your questions before the interview (L6).`, `An answer is in the lecture: the interview tips start with "Plan ahead and prepare your questions before the interview" (L6).`] },
+          { type: `mcq`, q: `Tips for good interview:`, o: [`Listen Well`, `don't Leave sometime between interviews`, `Take notes`, `a & c`], a: 3, why: `Listen well and take notes are the two keys. (b) is the opposite of the real tip.`, ow: [`Listen well is one of the two keys during an interview, but take notes is the other, so the full answer is "a & c" (L6).`, `This reverses the real tip: the lecture says to leave some time between interviews (L6, Tips for a good interview).`, `Take notes is one of the two keys, but listening well is the other, so the full answer is "a & c" (L6).`, null] },
+          { type: `mcq`, q: `Data that includes descriptions from interviewees:`, o: [`Quantitative data`, `Qualitative data`, `average data`, `gathering data`], a: 1, why: `Interviewees' descriptions explain why and how things happen, which is the lecture's definition of qualitative data; quantitative data is numeric (measures, counts) (L4, Types by WHAT).`, ow: [`Quantitative data is numeric (measures, counts). Descriptions from interviewees explain why and how, so they are qualitative (L4).`, null, `"Average data" is not a research data type. By WHAT, data is only quantitative (numeric) or qualitative (why and how) (L4).`, `"Gathering data" is just collecting data, not a data type. Descriptions from interviews are qualitative data (L4).`] }
         ]},
         { title: `Question 2`, marks: `20 marks`, items: [
           { type: `written`, q: `A. What is the difference between primary research and secondary research? (5 marks)`, ans: `Primary: collected by you (surveys, focus groups, interviews, observations, experiments); specific to your needs and you control the quality; costs more and takes longer.<br>Secondary: collected by someone else (existing data, books, journals); cheap and quick; can be too old or not specific enough.<br>Both can be qualitative or quantitative.`, why: `L4 comparison table.` },
