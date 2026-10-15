@@ -214,7 +214,7 @@ int main()
           [`Binary tree search`, `BST search moves left or right from the root, not through every element.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "The array is a group of data elements grouped together under one name with different types."`, o: [
-          [`True`, `Wrong. Elements of an array all have the same type; different types describes a struct.`],
+          [`True`, `Elements of an array all have the same type; different types describes a struct.`],
           [`False`, `Correct. That is the definition of a struct. An array holds elements of the same data type.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `The disadvantage of an array is ______.`, o: [
@@ -399,7 +399,7 @@ void get()          // show top element without popping (peek)
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "Insertions and deletions in a stack follow FILO."`, o: [
           [`True`, `Correct. First-In-Last-Out is the same rule as LIFO.`],
-          [`False`, `Wrong. FILO and LIFO describe the same order.`]
+          [`False`, `FILO and LIFO describe the same order.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Function ______ in a stack is used to insert an item.`, o: [
           [`pop()`, `pop() deletes the top item and decrements top; it does not insert.`],
@@ -423,7 +423,7 @@ void get()          // show top element without popping (peek)
         ], a: 1, src: `Midterm 2023/24` },
         { q: `True or False: "A stack is a data structure in which insertions and deletions are restricted to one end."`, o: [
           [`True`, `Correct (model answer B). Both happen at the top.`],
-          [`False`, `Wrong. Both operations happen at the same end, the top.`]
+          [`False`, `Both operations happen at the same end, the top.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `With MAXSIZE = 4 and top initially -1, after push(1), push(2), pop(), push(3), push(4), push(5) what is top?`, o: [
           [`2`, `Count again: after these operations four elements are stored.`],
@@ -601,7 +601,7 @@ int deQueue()
           [`Array`, `A plain array has no defined insertion or deletion ends; stacks and queues are built on top of it with TOP or front/rear indices.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "The circular queue is the same as the regular queue."`, o: [
-          [`True`, `Wrong. They differ in how indices advance and reuse space.`],
+          [`True`, `They differ in how indices advance and reuse space.`],
           [`False`, `Correct. A circular queue connects the last position to the first and reuses freed cells.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "Enqueue() inserts an element at the rear of the queue."`, o: [
@@ -996,11 +996,11 @@ void InsertAt(int item, int pos)  // positions start at 1
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "Traversing a singly linked list is done in a forward direction only."`, o: [
           [`True`, `Correct. In a singly linked list each node holds a reference only to the next node, so traversal goes forward from head; going backward needs the prev pointer of a doubly linked list (L5, Singly linked list).`],
-          [`False`, `Wrong. Backward traversal needs prev pointers (doubly linked list).`]
+          [`False`, `Backward traversal needs prev pointers (doubly linked list).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "In a circular linked list, the last node points back to the head node."`, o: [
           [`True`, `Correct. In a circular linked list the last node points back to the head node instead of NULL, forming a circle; it can be singly or doubly linked (L5, Circular linked list).`],
-          [`False`, `Wrong. That is the definition of a circular linked list.`]
+          [`False`, `That is the definition of a circular linked list.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "The following is a valid code of class Node of a singly linked list: class Node {int data, Node next;}"`, o: [
           [`True`, `The code is not valid: next must be a pointer (Node *next;), members are separated by ; not a comma, and the class needs a closing ; (and public:).`],
@@ -1177,7 +1177,7 @@ void pop()                   // delete from beginning
       ],
       quiz: [
         { q: `True or False: "Two linked lists are needed in order to implement a linked stack."`, o: [
-          [`True`, `Wrong. One list with one pointer (top) is enough.`],
+          [`True`, `One list with one pointer (top) is enough.`],
           [`False`, `Correct. A linked stack is one singly linked list where push/pop happen at the top (the beginning).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `In a linked stack, which pointer is changed by push?`, o: [
@@ -1739,7 +1739,7 @@ Node* maximum(Node *temp)       // rightmost node
           [`5 left and 8 right`, `5 and 8 miscounts. All keys less than the root 45 go left (7 of them) and all greater keys go right (6).`]
         ], a: 2, src: `Exam 2022/23` },
         { q: `True or False: "To print the keys of a binary search tree in ascending order, you may apply inorder or postorder traversals."`, o: [
-          [`True`, `Wrong. Postorder does not give sorted output.`],
+          [`True`, `Postorder does not give sorted output.`],
           [`False`, `Correct. The lecture says inorder traversal of a BST always gives the sorted (ascending) order of the keys; postorder visits the parent after both subtrees, so it is not sorted (L9, Inorder traverse code).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `True or False: "Left-Right-Parent represents the postorder traversal of a binary tree."`, o: [
@@ -1877,7 +1877,7 @@ Node* maximum(Node *temp)       // rightmost node
         ], a: 1, src: `Exam 2022/23` },
         { q: `True or False: "When a hash function computes the same location for two or more keys, this is a collision situation."`, o: [
           [`True`, `Correct. This is the definition of collision.`],
-          [`False`, `Wrong. Same location for different keys is a collision.`]
+          [`False`, `Same location for different keys is a collision.`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `Using the division method with table size 11, key 25 hashes to:`, o: [
           [`2`, `2 is the quotient, not the remainder: 25 = 2 × 11 + 3, so 25 mod 11 = 3.`],

@@ -291,13 +291,13 @@ Target code`, pts: [
           [`Packets`, `Packets are a networking term (data units sent over a network), not something a compiler produces.`]
         ], a: 0, src: `Exam 2023/24 Summer` },
         { q: `The expression aε = εa = ?`, o: [
-          [`ε`, `Wrong. This is the exam trap: ε is the neutral element, not a "zero".`],
+          [`ε`, `This is the exam trap: ε is the neutral element, not a "zero".`],
           [`a`, `Correct. ε is the neutral element for concatenation: sε = s = εs, so aε = εa = a (L2, Algebraic properties).`],
           [`aa`, `aa would need a second a; concatenating with ε adds nothing, so the result is just a.`],
           [`Φ (empty set)`, `Φ is the empty set, not the empty string ε; concatenating a with ε leaves a unchanged, it does not give Φ.`]
         ], a: 1, src: `Exam 2024/25 (50) T/F` },
         { q: `Is (X|Y)* equivalent to X*|Y*?`, o: [
-          [`Yes, always`, `Wrong. (X|Y)* contains XY, which X*|Y* cannot produce.`],
+          [`Yes, always`, `(X|Y)* contains XY, which X*|Y* cannot produce.`],
           [`No`, `Correct. X*|Y* only gives strings made of X's alone or Y's alone.`],
           [`Only if X = ε`, `If X = ε then (X|Y)* = Y* and X*|Y* = ε|Y* = Y*, so they would match; but in general they differ, so the answer is No.`],
           [`Only for DFAs`, `Equivalence of regular expressions is about the languages they denote; it does not depend on DFAs.`]
@@ -1102,7 +1102,7 @@ y  ->  [scope 0 | init YES | NULL]`}
           [`the data type`, `The data type is stored as information in the entry, not used as the key. Solution 1's key is "identifier,scope_id".`]
         ], a: 1 },
         { q: `"The structure of a symbol table is time consuming when an identifier returns a linked list of usages of itself."`, o: [
-          [`True`, `Wrong. The front item is always the right one, so lookup is fast.`],
+          [`True`, `The front item is always the right one, so lookup is fast.`],
           [`False`, `Correct (official key). In Solution 2 new declarations are inserted at the front of the list, so the front item is always the right one for the current scope: no long search (L8, Solutions).`],
           [`True for multi-pass compilers only`, `The slides describe Solution 2 for a single-pass compiler and do not tie the claim to multi-pass compilers; lookup is fast because the front item is the right one.`],
           [`Cannot be determined`, `It can be determined: the slides say the front item of the list is always the appropriate one, so the structure is not time consuming (key: False).`]

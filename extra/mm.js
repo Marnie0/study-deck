@@ -27,54 +27,54 @@ EXTRA.mm = {
       a: 3 },
     { q: `What distinguishes <b>hypermedia</b> from hypertext?`,
       o: [
-        [`Hypermedia pages are always read in a linear order`, `Wrong — traversal of hypertext/hypermedia is usually non-linear.`],
-        [`Hypermedia was the term Ted Nelson invented in 1965 for linked text`, `Wrong — Ted Nelson's 1965 term was hypertext (text with links to other texts).`],
+        [`Hypermedia pages are always read in a linear order`, `Traversal of hypertext/hypermedia is usually non-linear.`],
+        [`Hypermedia was the term Ted Nelson invented in 1965 for linked text`, `Ted Nelson's 1965 term was hypertext (text with links to other texts).`],
         [`Hypermedia is not limited to text: it can link graphics, images and especially continuous media such as sound and video`, `Correct — the lecture defines hypermedia as hypertext that is not constrained to be text-based.`],
-        [`Hypermedia contains no links; it simply stores several media in one file`, `Wrong — like hypertext, hypermedia is built on links; the difference is the kinds of media linked.`]
+        [`Hypermedia contains no links; it simply stores several media in one file`, `Like hypertext, hypermedia is built on links; the difference is the kinds of media linked.`]
       ],
       a: 2 },
     { q: `Direct transfers to disk, real-time scheduling, fast interrupt processing and I/O streaming are requirements of which desirable multimedia-system feature?`,
       o: [
-        [`A multimedia-capable file system`, `Wrong — that feature is about delivering real-time media streams, e.g. with RAID.`],
-        [`Network support`, `Wrong — network support refers to client-server and distributed systems.`],
+        [`A multimedia-capable file system`, `That feature is about delivering real-time media streams, e.g. with RAID.`],
+        [`Network support`, `Network support refers to client-server and distributed systems.`],
         [`A special operating system`, `Correct — the lecture lists exactly these four under "Special operating system".`],
-        [`Data representations`, `Wrong — that feature concerns file formats that allow real-time compression/decompression.`]
+        [`Data representations`, `That feature concerns file formats that allow real-time compression/decompression.`]
       ],
       a: 2 },
     { q: `In the list of multimedia system components, HDTV, CD-quality speakers, SVGA/hi-res monitors and colour printers are:`,
       o: [
-        [`Capture devices`, `Wrong — capture devices are inputs such as cameras, microphones, tablets and digitising hardware.`],
-        [`Storage devices`, `Wrong — storage devices are hard disks, CD-ROMs, DVD-ROMs, etc.`],
-        [`Communication networks`, `Wrong — those are LANs, intranets, the Internet and special high-speed networks.`],
+        [`Capture devices`, `Capture devices are inputs such as cameras, microphones, tablets and digitising hardware.`],
+        [`Storage devices`, `Storage devices are hard disks, CD-ROMs, DVD-ROMs, etc.`],
+        [`Communication networks`, `Those are LANs, intranets, the Internet and special high-speed networks.`],
         [`Display devices`, `Correct — these are the output/display devices of a multimedia system.`]
       ],
       a: 3 },
     { q: `Making sure the frames of <b>one video</b> are played in the correct order and time frame is which multimedia challenge?`,
       o: [
-        [`Synchronisation (inter-media scheduling)`, `Wrong — synchronisation is between different media, e.g. lip-sync of video and audio; here only one medium is involved.`],
+        [`Synchronisation (inter-media scheduling)`, `Synchronisation is between different media, e.g. lip-sync of video and audio; here only one medium is involved.`],
         [`Sequencing within the media`, `Correct — the lecture's example of sequencing within the media is playing video frames in the correct order/time frame.`],
-        [`Distributed networks`, `Wrong — that challenge is about data spread over networks, not frame ordering.`],
-        [`Analog-to-digital conversion`, `Wrong — that is a key issue about representing data digitally (sampling), not playback order.`]
+        [`Distributed networks`, `That challenge is about data spread over networks, not frame ordering.`],
+        [`Analog-to-digital conversion`, `That is a key issue about representing data digitally (sampling), not playback order.`]
       ],
       a: 1 },
     { q: `According to the lecture's key issues, why is data compression "usually mandatory" in multimedia?`,
       o: [
         [`Because multimedia data has very large bandwidth and storage requirements`, `Correct — large data requirements (bandwidth, storage) make compression usually mandatory.`],
-        [`Because analog data cannot be stored without compression`, `Wrong — analog data must be digitised (sampled), which is a separate issue from compression.`],
-        [`Because compression is needed to keep temporal relationships`, `Wrong — temporal relationships are maintained by synchronisation/scheduling, not by compression.`],
-        [`Because lossless compression gives multimedia files zero error`, `Wrong — zero error is a property of lossless coding, but it is not why compression is needed; lossless alone does not shrink MM data enough.`]
+        [`Because analog data cannot be stored without compression`, `Analog data must be digitised (sampled), which is a separate issue from compression.`],
+        [`Because compression is needed to keep temporal relationships`, `Temporal relationships are maintained by synchronisation/scheduling, not by compression.`],
+        [`Because lossless compression gives multimedia files zero error`, `Zero error is a property of lossless coding, but it is not why compression is needed; lossless alone does not shrink MM data enough.`]
       ],
       a: 0 },
     { q: `True or False: according to the course summary, <b>lossless</b> compression gives zero error and a <b>high</b> compression ratio.`,
       o: [
-        [`True`, `Wrong — lossless does give zero error and high quality, but its compression is low.`],
+        [`True`, `Lossless does give zero error and high quality, but its compression is low.`],
         [`False`, `Correct — the summary says lossless = zero error, high quality, LOW compression; lossy gives higher compression with some error.`]
       ],
       a: 1 },
     { q: `True or False: raw video is a series of single images, typically at 25, 30 or 50 frames per second.`,
       o: [
         [`True`, `Correct — the lecture describes video this way and says it must usually be compressed.`],
-        [`False`, `Wrong — this is exactly how the lecture describes video data.`]
+        [`False`, `This is exactly how the lecture describes video data.`]
       ],
       a: 0 },
   ],
@@ -145,15 +145,15 @@ EXTRA.mm = {
       a: 2 },
     { q: `An image was blurred by a known filter H. Using the convolution theorem, how do you <b>remove</b> (compensate for) the blur in the frequency domain?`,
       o: [
-        [`Multiply the image's FT by H, then take the inverse FT`, `Wrong — multiplying by H applies the blur again (that is how an effect such as reverb is added).`],
+        [`Multiply the image's FT by H, then take the inverse FT`, `Multiplying by H applies the blur again (that is how an effect such as reverb is added).`],
         [`Divide the image's FT by H, then take the inverse FT (deconvolution)`, `Correct — multiplying applies an effect, dividing removes it (G./H), followed by the inverse FT.`],
-        [`Add H to the image's FT`, `Wrong — convolution corresponds to multiplication of FTs, so addition does not undo it.`],
-        [`Apply an ideal low-pass filter to the blurred image`, `Wrong — a low-pass removes high frequencies and would blur further; deconvolution acts more like a high-pass.`]
+        [`Add H to the image's FT`, `Convolution corresponds to multiplication of FTs, so addition does not undo it.`],
+        [`Apply an ideal low-pass filter to the blurred image`, `A low-pass removes high frequencies and would blur further; deconvolution acts more like a high-pass.`]
       ],
       a: 1 },
     { q: `True or False: in MATLAB, applying <code>fft(X)</code> to a matrix X computes its 2D Fourier transform.`,
       o: [
-        [`True`, `Wrong — fft on a matrix works column by column (1D per column).`],
+        [`True`, `Fft on a matrix works column by column (1D per column).`],
         [`False`, `Correct — fft(X) on a matrix computes a 1D FT per column, NOT the 2D FT; fft2(X) is used for 2D.`]
       ],
       a: 1 },
@@ -186,16 +186,16 @@ EXTRA.mm = {
     { q: `A thermocouple, a microphone and a camera are all examples of:`,
       o: [
         [`Transducers — sensors that convert what they sense into electrical signals`, `Correct — temperature, acoustic and light sensors respectively.`],
-        [`Analog-to-digital converters`, `Wrong — an ADC is separate hardware (e.g. a sound card) that samples the sensor's analog signal.`],
-        [`Digital-to-analog converters`, `Wrong — a DAC produces an analog signal for playback devices such as loudspeakers.`],
-        [`Anti-aliasing filters`, `Wrong — those are analog conditioning filters at the ADC input, not sensors.`]
+        [`Analog-to-digital converters`, `An ADC is separate hardware (e.g. a sound card) that samples the sensor's analog signal.`],
+        [`Digital-to-analog converters`, `A DAC produces an analog signal for playback devices such as loudspeakers.`],
+        [`Anti-aliasing filters`, `Those are analog conditioning filters at the ADC input, not sensors.`]
       ],
       a: 0 },
     { q: `In the analog → digital → analog pipeline, why is the DAC output passed through a <b>low-pass filter</b>?`,
       o: [
-        [`To quantise the signal into discrete levels`, `Wrong — quantisation happens in the ADC, at the input side.`],
-        [`To prevent aliasing before the signal is sampled`, `Wrong — that is the job of the anti-aliasing filter at the INPUT, before the ADC.`],
-        [`To compress the signal for storage`, `Wrong — low-pass filtering here reconstructs a smooth analog signal; it is not storage compression.`],
+        [`To quantise the signal into discrete levels`, `Quantisation happens in the ADC, at the input side.`],
+        [`To prevent aliasing before the signal is sampled`, `That is the job of the anti-aliasing filter at the INPUT, before the ADC.`],
+        [`To compress the signal for storage`, `Low-pass filtering here reconstructs a smooth analog signal; it is not storage compression.`],
         [`To remove the aliases (images) created by sampling`, `Correct — the lecture says the output must be low-pass filtered to remove the aliases from the sampling.`]
       ],
       a: 3 },
@@ -203,35 +203,35 @@ EXTRA.mm = {
       o: [
         [`Sampling makes the signal discrete in time; quantisation turns the samples into discrete digital values`, `Correct. Sampling makes the signal discrete in time (values at regular instants), and quantisation maps each sample to a discrete digital value: digital = sampling + quantisation (L3, ADC and DAC).`],
         [`Sampling turns values into binary codes; quantisation picks the time instants`, `The two roles are swapped: sampling picks the time instants, and quantisation turns each sampled value into a discrete level (binary code).`],
-        [`Sampling and quantisation both mean compressing the signal`, `Wrong — they digitise the signal; compression is a later, separate step.`],
-        [`Quantisation happens in the DAC; sampling happens in the ADC`, `Wrong — both sampling and quantisation are done by the ADC.`]
+        [`Sampling and quantisation both mean compressing the signal`, `They digitise the signal; compression is a later, separate step.`],
+        [`Quantisation happens in the DAC; sampling happens in the ADC`, `Both sampling and quantisation are done by the ADC.`]
       ],
       a: 0 },
     { q: `Why do the different media in a multimedia application often need <b>synchronisation</b>?`,
       o: [
-        [`Because all multimedia data is static (time independent)`, `Wrong — continuous media (audio, video, animation) are time dependent; static data would not need timing.`],
-        [`Because text is stored at 1 byte per character`, `Wrong — character size has nothing to do with synchronisation.`],
+        [`Because all multimedia data is static (time independent)`, `Continuous media (audio, video, animation) are time dependent; static data would not need timing.`],
+        [`Because text is stored at 1 byte per character`, `Character size has nothing to do with synchronisation.`],
         [`Because the data usually has temporal relationships as an integral property`, `Correct — the lecture states that multimedia data usually has temporal relationships, so the media may need synchronisation.`],
-        [`Because graphics must be digitised before display`, `Wrong — computer-made graphics do not need digitising at all.`]
+        [`Because graphics must be digitised before display`, `Computer-made graphics do not need digitising at all.`]
       ],
       a: 2 },
     { q: `How is printed text usually turned into digital text?`,
       o: [
-        [`Key-frame interpolation (tweening)`, `Wrong — tweening is a 2D animation technique.`],
-        [`An anti-aliasing filter followed by a DAC`, `Wrong — a DAC converts digital to analog, the opposite direction.`],
-        [`Recording it with a microphone at 44.1 kHz`, `Wrong — that captures audio, not printed text.`],
+        [`Key-frame interpolation (tweening)`, `Tweening is a 2D animation technique.`],
+        [`An anti-aliasing filter followed by a DAC`, `A DAC converts digital to analog, the opposite direction.`],
+        [`Recording it with a microphone at 44.1 kHz`, `That captures audio, not printed text.`],
         [`Scanning with OCR (optical character recognition)`, `Correct — printed (and some handwritten) text can be scanned via OCR.`]
       ],
       a: 3 },
     { q: `True or False: graphics animation is compact, which makes it suitable for network transmission.`,
       o: [
         [`True`, `Correct — the lecture notes that graphics animation (a sequence of slightly changed graphics) is compact, so it suits network transmission.`],
-        [`False`, `Wrong — the lecture says exactly this: animation built from graphics is compact and suitable for networks.`]
+        [`False`, `The lecture says exactly this: animation built from graphics is compact and suitable for networks.`]
       ],
       a: 0 },
     { q: `True or False: spreadsheets are always stored as binary files.`,
       o: [
-        [`True`, `Wrong — the lecture says spreadsheets may be text (CSV) or binary.`],
+        [`True`, `The lecture says spreadsheets may be text (CSV) or binary.`],
         [`False`, `Correct — spreadsheets may be stored as text (CSV) or in a binary format.`]
       ],
       a: 1 },
@@ -287,31 +287,31 @@ EXTRA.mm = {
       a: 0 },
     { q: `On the slides, what happens when a sine wave is sampled at <b>exactly its own frequency</b>?`,
       o: [
-        [`The waveform is captured perfectly`, `Wrong — only sampling above the Nyquist rate captures it well.`],
-        [`The sine is just captured, like sampling at twice its frequency`, `Wrong — "just captured" is the demo for sampling at twice the frequency.`],
+        [`The waveform is captured perfectly`, `Only sampling above the Nyquist rate captures it well.`],
+        [`The sine is just captured, like sampling at twice its frequency`, `"just captured" is the demo for sampling at twice the frequency.`],
         [`There is one sample per cycle, every sample has the same value, and the sine is lost`, `Correct — that is the slide demo; you need at least twice the frequency.`],
-        [`The result is oversampling`, `Wrong — oversampling means sampling ABOVE the Nyquist rate; this is far below it.`]
+        [`The result is oversampling`, `Oversampling means sampling ABOVE the Nyquist rate; this is far below it.`]
       ],
       a: 2 },
     { q: `Which use does the lecture give for a <b>22.05 kHz</b> sample rate?`,
       o: [
         [`Low-grade audio such as WWW audio and AM radio`, `Correct — 22.05 kHz is listed as low-grade audio.`],
-        [`Speech`, `Wrong — speech is listed at 11.025 kHz (telephone 8 kHz).`],
+        [`Speech`, `Speech is listed at 11.025 kHz (telephone 8 kHz).`],
         [`CD quality`, `CD quality is 44.1 kHz (16-bit), twice 22.05 kHz; 22.05 kHz is the CD's Nyquist frequency, not its sample rate.`],
-        [`Audiophile recording`, `Wrong — audiophile audio is quoted as 24-bit at 96 kHz.`]
+        [`Audiophile recording`, `Audiophile audio is quoted as 24-bit at 96 kHz.`]
       ],
       a: 0 },
     { q: `In the analogy between sounds and images, synthetic sound (e.g. MIDI) is most like:`,
       o: [
-        [`A bitmap image — regularly sampled, large and hard to modify`, `Wrong — that is the analogy for RECORDED (sampled) sound.`],
-        [`A JPEG photo — lossy compressed samples`, `Wrong — the slides compare synthetic sound to vector graphics, not to compressed photos.`],
-        [`A colour look-up table`, `Wrong — no such analogy is made; synthetic sound sends parameters, not palette indices.`],
+        [`A bitmap image — regularly sampled, large and hard to modify`, `That is the analogy for RECORDED (sampled) sound.`],
+        [`A JPEG photo — lossy compressed samples`, `The slides compare synthetic sound to vector graphics, not to compressed photos.`],
+        [`A colour look-up table`, `No such analogy is made; synthetic sound sends parameters, not palette indices.`],
         [`Vector graphics — a small, easily edited high-level description that must be converted before playback`, `Correct — synthesis is to sound what rasterisation is to vector graphics.`]
       ],
       a: 3 },
     { q: `True or False: the .au, .aiff and .wav formats always require compression.`,
       o: [
-        [`True`, `Wrong — the lecture says compression can be used with these formats but is not mandatory.`],
+        [`True`, `The lecture says compression can be used with these formats but is not mandatory.`],
         [`False`, `Correct — for .au (Unix), .aiff (Mac) and .wav (PC), compression can be used but is not mandatory.`]
       ],
       a: 1 },
@@ -353,45 +353,45 @@ EXTRA.mm = {
       o: [
         [`A pipe organ`, `Correct — the organ plays at constant volume and dies quickly when the key is released.`],
         [`A bell`, `The lecture gives the bell (and the piano with sustain pedal) as an example of a LONG release; the sound rings on after it is struck. The organ has the short release.`],
-        [`A piano with the sustain pedal held`, `Wrong — this is the lecture's example of a long release.`],
-        [`A guitar`, `Wrong — the guitar is the example of a sound that is loudest just after plucking and then fades; it is not given as a short-release example.`]
+        [`A piano with the sustain pedal held`, `This is the lecture's example of a long release.`],
+        [`A guitar`, `The guitar is the example of a sound that is loudest just after plucking and then fades; it is not given as a short-release example.`]
       ],
       a: 0 },
     { q: `In FM synthesis, which preset routing ("algorithm") is described as an oscillator's output modulating <b>itself</b>?`,
       o: [
-        [`Multiple carriers`, `Wrong — that is one oscillator modulating two or more carriers.`],
+        [`Multiple carriers`, `That is one oscillator modulating two or more carriers.`],
         [`Feedback`, `Correct — feedback: an oscillator modulates itself.`],
-        [`Multiple modulators`, `Wrong — that is two or more oscillators modulating one carrier.`],
-        [`Linear crossfading`, `Wrong — that is a wavetable technique, not an FM algorithm.`]
+        [`Multiple modulators`, `That is two or more oscillators modulating one carrier.`],
+        [`Linear crossfading`, `That is a wavetable technique, not an FM algorithm.`]
       ],
       a: 1 },
     { q: `What is the main <b>disadvantage</b> of sample-based synthesis named in the lecture?`,
       o: [
-        [`It needs much more processing power than physical modelling`, `Wrong — its ADVANTAGE is much lower processing power, since nuances are pre-recorded.`],
-        [`It cannot reproduce real instruments`, `Wrong — it uses recordings of real instruments as its seed waveforms.`],
-        [`A great deal of data must be specified for each partial`, `Wrong — that is the disadvantage of additive synthesis.`],
+        [`It needs much more processing power than physical modelling`, `Its ADVANTAGE is much lower processing power, since nuances are pre-recorded.`],
+        [`It cannot reproduce real instruments`, `It uses recordings of real instruments as its seed waveforms.`],
+        [`A great deal of data must be specified for each partial`, `That is the disadvantage of additive synthesis.`],
         [`Detailed sounds need several samples played at once, which reduces polyphony`, `Correct — e.g. a trumpet needs breath noise, growl and a looping wave together.`]
       ],
       a: 3 },
     { q: `In a sampler, using low keys outside the instrument's range to switch between playing styles (e.g. muted/open trumpet) is called:`,
       o: [
         [`Keyswitching`, `Correct — keyswitches select the playing style from banks of key-mapped, velocity-layered samples.`],
-        [`Velocity layering`, `Wrong — velocity layers change the sound depending on how hard the key is hit.`],
-        [`Multisampling`, `Wrong — multisampling records the instrument at intervals (splits) across the keyboard.`],
-        [`Looping`, `Wrong — looping repeats part of a sample to save memory.`]
+        [`Velocity layering`, `Velocity layers change the sound depending on how hard the key is hit.`],
+        [`Multisampling`, `Multisampling records the instrument at intervals (splits) across the keyboard.`],
+        [`Looping`, `Looping repeats part of a sample to save memory.`]
       ],
       a: 0 },
     { q: `In the Karplus-Strong drum variant, which blend factor b gives the best <b>snare</b> sound?`,
       o: [
         [`b near 0`, `b near 0 makes the drum variant behave like the plain string algorithm, giving a string-like sound. The best snare is at b = ½ (L5, Karplus-Strong drum).`],
         [`b = ½`, `Correct. In the drum variant each sample is +½ or −½ of the averaged pair with probability b; the lecture says b = ½ gives the best snare (L5, Karplus-Strong).`],
-        [`b near 1`, `Wrong — b near 1 gives a weird electric crash-cymbal sound.`],
-        [`b = 2`, `Wrong — b is a probability/blend factor between 0 and 1.`]
+        [`b near 1`, `B near 1 gives a weird electric crash-cymbal sound.`],
+        [`b = 2`, `B is a probability/blend factor between 0 and 1.`]
       ],
       a: 1 },
     { q: `True or False: PSOLA uses a Short-Time Fourier Transform (STFT), like the phase vocoder.`,
       o: [
-        [`True`, `Wrong — the lecture states there is no STFT in PSOLA; it works on overlapping time-domain segments.`],
+        [`True`, `The lecture states there is no STFT in PSOLA; it works on overlapping time-domain segments.`],
         [`False`, `Correct — PSOLA has no STFT (it predates the phase vocoder); it moves, repeats or drops overlapping segments and overlap-adds them.`]
       ],
       a: 1 },
@@ -439,39 +439,39 @@ EXTRA.mm = {
       a: 1 },
     { q: `The General MIDI percussion key map contains:`,
       o: [
-        [`128 percussion sounds on keys 0–127`, `Wrong — 128 is the size of the instrument patch map.`],
-        [`16 percussion sounds, one per channel`, `Wrong — percussion goes on channel 10 by default, and there are 47 sounds.`],
+        [`128 percussion sounds on keys 0–127`, `128 is the size of the instrument patch map.`],
+        [`16 percussion sounds, one per channel`, `Percussion goes on channel 10 by default, and there are 47 sounds.`],
         [`47 percussion sounds on keys 35–81`, `Correct — e.g. 35 Acoustic Bass Drum up to 81 Open Triangle.`],
-        [`47 percussion sounds on keys 1–47`, `Wrong — the count is right but the keys run from 35 to 81.`]
+        [`47 percussion sounds on keys 1–47`, `The count is right but the keys run from 35 to 81.`]
       ],
       a: 2 },
     { q: `Which system real-time message <b>stops</b> a sequence?`,
       o: [
         [`FA`, `FA is Start Sequence, which begins playback. The system real-time message that stops a sequence is FC.`],
         [`F8`, `F8 is the Timing Clock, sent repeatedly for synchronisation; it does not stop anything. Stop is FC.`],
-        [`F7`, `Wrong — F7 is Sysex End, not a real-time message.`],
+        [`F7`, `F7 is Sysex End, not a real-time message.`],
         [`FC`, `Correct — FC = Stop (FA = Start, FB = Continue, F8 = Timing Clock).`]
       ],
       a: 3 },
     { q: `In MIDI terminology, the <b>control settings that define a particular timbre</b> are called a:`,
       o: [
         [`Patch`, `Correct — a patch is the set of control settings defining a timbre.`],
-        [`Voice`, `Wrong — a voice is the portion of the synthesiser that produces a sound.`],
-        [`Track`, `Wrong — a track organises recordings in a sequencer.`],
-        [`Channel`, `Wrong — a channel separates information in a MIDI system (16 per cable).`]
+        [`Voice`, `A voice is the portion of the synthesiser that produces a sound.`],
+        [`Track`, `A track organises recordings in a sequencer.`],
+        [`Channel`, `A channel separates information in a MIDI system (16 per cable).`]
       ],
       a: 0 },
     { q: `Which MPEG-4 Structured Audio tool specifies the <b>mixing and post-production</b> of audio scenes at playback (e.g. fading music, adding reverb)?`,
       o: [
-        [`SASL`, `Wrong — SASL is the score language that controls SAOL instruments (notes, loudness, tempo).`],
-        [`SASBF`, `Wrong — SASBF transmits banks of samples for wavetable/sample-based synthesis.`],
+        [`SASL`, `SASL is the score language that controls SAOL instruments (notes, loudness, tempo).`],
+        [`SASBF`, `SASBF transmits banks of samples for wavetable/sample-based synthesis.`],
         [`AudioBIFS`, `Correct — AudioBIFS (part of the Binary Format for Scene Description) handles mixing/post-production.`],
-        [`Scheduler`, `Wrong — the scheduler defines how SAOL creates sound when driven by MIDI or SASL.`]
+        [`Scheduler`, `The scheduler defines how SAOL creates sound when driven by MIDI or SASL.`]
       ],
       a: 2 },
     { q: `True or False: MIDI system messages are channel specific.`,
       o: [
-        [`True`, `Wrong — system messages carry information that is NOT channel specific.`],
+        [`True`, `System messages carry information that is NOT channel specific.`],
         [`False`, `Correct — system messages (common, real-time, exclusive) are not channel specific: timing, song position, device setup.`]
       ],
       a: 1 },
@@ -527,31 +527,31 @@ EXTRA.mm = {
       a: 0 },
     { q: `In the lecture's classification of effects, the <b>phaser</b> belongs to which group?`,
       o: [
-        [`Delays`, `Wrong — delays are vibrato, flanger, chorus and echo.`],
-        [`Non-linear processing`, `Wrong — that group is compression, limiters, distortion, exciters/enhancers.`],
-        [`Spatial effects`, `Wrong — spatial effects are panning, reverb and surround sound.`],
+        [`Delays`, `Delays are vibrato, flanger, chorus and echo.`],
+        [`Non-linear processing`, `That group is compression, limiters, distortion, exciters/enhancers.`],
+        [`Spatial effects`, `Spatial effects are panning, reverb and surround sound.`],
         [`Time-varying filters`, `Correct — wah-wah and phaser are listed as time-varying filters.`]
       ],
       a: 3 },
     { q: `Which dynamic processor operates on <b>low</b> signal levels and <b>boosts</b> their dynamics for a more lively sound?`,
       o: [
-        [`Limiter`, `Wrong — a limiter reacts quickly to control HIGH peaks above a threshold.`],
-        [`Compressor`, `Wrong — a compressor reduces the dynamics (loud parts reduced).`],
-        [`Exciter`, `Wrong — an exciter changes timbre/brightness by adding subtle high-frequency content, not low-level dynamics.`],
+        [`Limiter`, `A limiter reacts quickly to control HIGH peaks above a threshold.`],
+        [`Compressor`, `A compressor reduces the dynamics (loud parts reduced).`],
+        [`Exciter`, `An exciter changes timbre/brightness by adding subtle high-frequency content, not low-level dynamics.`],
         [`Expander`, `Correct — the expander works on low levels and boosts their dynamics.`]
       ],
       a: 3 },
     { q: `What is the structure of the classic <b>Schroeder</b> reverberator?`,
       o: [
         [`4 IIR comb filters in parallel followed by 2 allpass filters in series`, `Correct — parallel comb banks then series allpass filters.`],
-        [`2 comb filters in series followed by 4 allpass filters in parallel`, `Wrong — the counts and arrangements are swapped.`],
-        [`Tapped delay lines plus lowpass filters inside the comb feedback loops`, `Wrong — those are Moorer's (1976) additions, not Schroeder's original design.`],
-        [`Convolution of the input with a recorded room impulse response`, `Wrong — that is convolution reverb, the other class of reverb simulation.`]
+        [`2 comb filters in series followed by 4 allpass filters in parallel`, `The counts and arrangements are swapped.`],
+        [`Tapped delay lines plus lowpass filters inside the comb feedback loops`, `Those are Moorer's (1976) additions, not Schroeder's original design.`],
+        [`Convolution of the input with a recorded room impulse response`, `That is convolution reverb, the other class of reverb simulation.`]
       ],
       a: 0 },
     { q: `True or False: there is an absolute rule for the order in which effects must be chained.`,
       o: [
-        [`True`, `Wrong — the lecture says there is no absolute rule; it depends on the sound you want.`],
+        [`True`, `The lecture says there is no absolute rule; it depends on the sound you want.`],
         [`False`, `Correct — order matters (it can drastically change the output), but there is no absolute rule; a standard order is only a guide.`]
       ],
       a: 1 },
@@ -616,9 +616,9 @@ EXTRA.mm = {
     { q: `Which image format was designed to <b>replace GIF</b> and supports up to 48 bits per pixel, gamma correction and an alpha channel?`,
       o: [
         [`PNG`, `Correct. PNG (Portable Network Graphics) was meant to replace GIF: up to 48 bits per pixel, gamma correction, alpha channel and progressive display (L8, Image file formats).`],
-        [`TIFF`, `Wrong — TIFF uses tags to store many image types and is declining in popularity.`],
-        [`BMP`, `Wrong — BMP is the Windows raster format (can store 24-bit bitmaps).`],
-        [`JPEG`, `Wrong — JPEG is a lossy format for photographic images, not a GIF replacement with alpha.`]
+        [`TIFF`, `TIFF uses tags to store many image types and is declining in popularity.`],
+        [`BMP`, `BMP is the Windows raster format (can store 24-bit bitmaps).`],
+        [`JPEG`, `JPEG is a lossy format for photographic images, not a GIF replacement with alpha.`]
       ],
       a: 0 },
     { q: `How does <b>S-Video</b> carry the picture?`,
@@ -626,12 +626,12 @@ EXTRA.mm = {
         [`On 2 lines: one for luminance and one for composite chrominance`, `Correct — S-Video is the compromise between component and composite video.`],
         [`On 3 separate lines, one per colour primary`, `Three separate signals, one per primary (RGB, YIQ or YUV), is component video, the best colour but most bandwidth. S-Video uses 2 lines.`],
         [`On 1 line with luminance and chrominance mixed into one carrier`, `Mixing luminance and chrominance into one carrier is composite video, where some interference is inevitable. S-Video keeps luminance on its own line.`],
-        [`As a digital stream with 4:2:0 subsampling`, `Wrong — S-Video is an analog signal format; chroma subsampling is a different topic.`]
+        [`As a digital stream with 4:2:0 subsampling`, `S-Video is an analog signal format; chroma subsampling is a different topic.`]
       ],
       a: 0 },
     { q: `True or False: interlacing effectively <b>doubles</b> the sampling frequency of video.`,
       o: [
-        [`True`, `Wrong — the lecture says interlacing effectively HALVES the sampling frequency, which causes interlacing aliasing.`],
+        [`True`, `The lecture says interlacing effectively HALVES the sampling frequency, which causes interlacing aliasing.`],
         [`False`, `Correct — interlacing effectively halves the sampling frequency (one field holds only half the lines).`]
       ],
       a: 1 },

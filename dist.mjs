@@ -6,7 +6,7 @@ import { createHash } from 'node:crypto';
 
 const SITE = 'https://study-deck-five.vercel.app';
 const TITLE = 'Study Deck · Level 2 & 3 CS';
-const DESC = 'Notes, flashcards, quizzes and solved past papers for Level 2 and Level 3 Computer Science courses, with Egyptian Arabic explanations.';
+const DESC = 'Notes, flashcards, quizzes and solved past papers for 12 Level 2 and Level 3 Computer Science courses. Every answer choice explained, with Egyptian Arabic explanations.';
 
 rmSync('dist', { recursive: true, force: true });
 mkdirSync('dist');

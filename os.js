@@ -145,7 +145,7 @@ COURSES.os = {
           [`False`, `The slides say the OS is interrupt driven by both hardware and software.`]
         ], a: 0, src: `Exam 2026` },
         { q: `True or False: "The operating system kernel consists of all system and application programs in a computer."`, o: [
-          [`True`, `No. The kernel is the one program running at all times. System and application programs are everything else.`],
+          [`True`, `The kernel is the one program running at all times. System and application programs are everything else.`],
           [`False`, `Correct. Everything other than the kernel is a system program or an application program.`]
         ], a: 1, src: `Exam 2026` },
         { q: `True or False: "An initial bootstrap program is in the form of random-access memory (RAM)."`, o: [

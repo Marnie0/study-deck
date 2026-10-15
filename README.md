@@ -41,7 +41,8 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 
 Revising for six exams a term from scattered PDFs, slides and old papers is slow. Study Deck turns all of it into one fast site that knows what you have read, which cards are due and which questions you keep getting wrong. Then it shows you exactly what to do next.
 
-- **Every answer is explained.** Each quiz choice says why it is right *or why it is wrong*, not just which letter is correct.
+- **Every answer is explained.** Each quiz choice says why it is right *or why it is wrong*, based on the course's own slides, not just which letter is correct. Past-paper questions explain every wrong choice too.
+- **Diagrams you can step through.** Data Structures notes run the lecture's own code as animated diagrams, with the running line lit, live variables and "what happens next?" questions.
 - **Professor's questions are kept apart from practice ones.** Past-exam, sheet and lecture questions are badged separately from the extra practice questions, so you know what the professor actually asked.
 - **Arabic on demand.** One tap adds an Egyptian Arabic explanation under every note, card and answer. Technical terms stay in English, the way they are taught.
 - **Your progress stays yours.** Everything is saved in your browser, with no account and no sign-up.
@@ -50,9 +51,9 @@ Revising for six exams a term from scattered PDFs, slides and old papers is slow
 
 ## 🏠 Home: everything at a glance
 
-<img src="docs/screenshots/home-light.png" alt="Home dashboard with continue reading, cards due, quiz accuracy, course tiles, weak spots, past papers and the Arabic switch">
+<img src="docs/screenshots/home-light.png" alt="Home dashboard with the level and semester picker, continue reading, cards due, quiz accuracy, course tiles, weak spots, past papers and the Arabic switch">
 
-A bento dashboard that answers *"what should I study now?"*
+A bento dashboard that answers *"what should I study now?"* Pick **Level 2** or **Level 3** at the top (each shows its semester), and every tile follows.
 
 | Tile | What it does |
 |---|---|
@@ -67,7 +68,7 @@ A bento dashboard that answers *"what should I study now?"*
 
 ## 🗺️ Each course is a path
 
-<img src="docs/screenshots/path.png" alt="Operating Systems course page with lectures as stops on a path and three steps for the selected lecture">
+<img src="docs/screenshots/path.png" alt="Data Structures course page with lectures as stops on a path and three steps for the selected lecture">
 
 Lectures are stops on a route, ending in a **revision sheet** for the night before the exam. Pick a stop and follow three steps:
 
@@ -109,6 +110,14 @@ There's also a **timed mock exam**: past-exam questions first, 1.5 minutes per q
 
 ---
 
+## 📝 Solved past papers
+
+<img src="docs/screenshots/papers.png" alt="A past-paper question answered wrong, with the model answer, why it is right, and why each of the other choices is wrong">
+
+Every past paper is transcribed and solved. Pick an answer and you see the right one, why it is right, and **why each of the other choices is wrong**, with your own pick marked. Where an official key disagrees with the lectures, both are shown.
+
+---
+
 ## 🃏 Flashcards with spaced repetition
 
 <img src="docs/screenshots/cards.png" alt="A flipped flashcard in full-screen review with Again, Hard and Good buttons">
@@ -125,6 +134,17 @@ Rate each card **Again**, **Hard** or **Good**. A small SM-2-style scheduler bri
 - Highlighted key terms, three text sizes and a distraction-free focus mode
 - **Book view**: read a lecture as a two-page book with a real page-turn animation and pinch-to-zoom
 - Instant search across every course with <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd>
+
+### Animated diagrams
+
+<img src="docs/screenshots/diagram.png" alt="A linked-list diagram stepping through the lecture's insertatend code, with the running line highlighted, a variables panel and a prediction question">
+
+In Data Structures, stacks, queues, linked lists, binary search trees and hash tables are drawn as diagrams that run the professor's own code step by step:
+
+- **Code and variables:** the line that is running is lit, and every variable is shown as it changes
+- **Predict, then see:** at key moments the diagram asks what happens next before it shows you, and keeps score
+- **Try your own:** type operations like `push 5, push 8, pop` and watch them run
+- **Past papers:** tree, hashing, stack and queue questions have a "work through it step by step" button that ends on the official answer
 
 ---
 

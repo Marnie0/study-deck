@@ -1441,7 +1441,7 @@ Example 9C 50 7F:
       ],
       quiz: [
         { q: `Why is CMYK commonly used in colour printing?`, o: [
-          [`Because printing is additive, like a monitor`, `Wrong: monitors are additive (RGB). Printing is subtractive.`],
+          [`Because printing is additive, like a monitor`, `Monitors are additive (RGB). Printing is subtractive.`],
           [`Because inks absorb (subtract) light, and K gives a true black that mixing CMY cannot`, `Correct. CMY are the subtractive primaries; mixed CMY is never really black, so black ink is added.`],
           [`Because CMYK has more colours than RGB`, `Not the reason; the CMYK gamut is actually smaller and more muted.`],
           [`Because JPEG files are stored in CMYK`, `JPEG stores colour as YCrCb (luminance + chrominance) so it can subsample the chroma; CMYK is a printing model. The real reason is that inks subtract light.`]
