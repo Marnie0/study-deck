@@ -129,7 +129,7 @@ COURSES.web = {
           [`Improving website aesthetics`, `SQL injection is an attack, not a design improvement.`],
           [`Injecting malicious scripts into web pages`, `That describes Cross Site Scripting (XSS), which injects client-side script.`],
           [`Gaining unauthorized access to a database by manipulating SQL queries`, `Correct. Hackers insert rogue code into a query to change tables, get information or delete data (L1 security considerations).`],
-          [`Enhancing server performance`, `An attack does not improve performance.`]
+          [`Enhancing server performance`, `SQL injection does nothing for performance; it is an attack in which rogue code is inserted into a query to change tables, steal information or delete data.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `What is the purpose of encrypting data in transit?`, o: [
           [`Improving website aesthetics`, `Encryption has nothing to do with appearance.`],
@@ -138,70 +138,70 @@ COURSES.web = {
           [`Enhancing user interfaces`, `Encryption is invisible to the user interface.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `URL is ___________`, o: [
-          [`user's address`, `A URL addresses a resource, not a user.`],
+          [`user's address`, `A URL locates a resource (a web page or file) on a server, not a person; it is the complete address of a web page (L1, URL).`],
           [`an attribute`, `href and src are attributes that hold URLs, but a URL itself is an address.`],
           [`source code`, `The URL points to the document; it is not the code.`],
           [`web address`, `Correct. The URL is the complete address of a web page.`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following is used to read an HTML page and render it?`, o: [
           [`Web server`, `The server stores and sends the page; it does not render it.`],
-          [`Web network`, `Not a real component that renders pages.`],
+          [`Web network`, `"Web network" is not a component in the lecture; the network only carries the request, and it is the browser that interprets and displays the page.`],
           [`Web browser`, `Correct. The browser interprets the HTML and displays it (step 5 of how the web works).`],
-          [`Web matrix`, `Not the component that renders pages.`]
+          [`Web matrix`, `"Web matrix" is not a component in the lecture; reading and rendering HTML is the job of the web browser (step 5 of how the web works).`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `What is the correct general syntax of a web address?`, o: [
-          [`port://domain.filename:path/scheme/prefix`, `The parts are in the wrong order.`],
-          [`prefix://scheme.port:domain/filename/path`, `The scheme (protocol) must come first.`],
-          [`path://prefix.port:domain/filename/scheme`, `The path comes after the domain, not first.`],
+          [`port://domain.filename:path/scheme/prefix`, `This puts the port first and the scheme last. A web address starts with the scheme (protocol) and ends with the path and file name.`],
+          [`prefix://scheme.port:domain/filename/path`, `The prefix cannot come before "://"; the scheme (protocol, e.g. http) must come first, then prefix.domain, then :port.`],
+          [`path://prefix.port:domain/filename/scheme`, `The path belongs after the domain and port, not at the start; the start of a URL is the scheme (protocol), e.g. http://.`],
           [`scheme://prefix.domain:port/path/filename`, `Correct. Protocol first, then host prefix and domain, optional port, then path and file name.`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `A 404 HTTP error is generated due to ____________`, o: [
-          [`removing the newline character`, `Formatting characters do not cause a 404.`],
-          [`a missing JavaScript file only`, `Too narrow: any missing resource gives 404.`],
+          [`removing the newline character`, `A newline character is only formatting inside a file; a 404 is sent by the server when the requested resource is not found.`],
+          [`a missing JavaScript file only`, `Too narrow: 404 Not Found is returned for any missing resource (page, image, stylesheet or script), not only JavaScript files.`],
           [`any missing file`, `Correct. 404 Not Found means the server could not find the requested resource.`],
-          [`slow loading of the web page`, `Slowness gives timeouts, not 404.`]
+          [`slow loading of the web page`, `A slow page still arrives, or times out; 404 Not Found means the server could not find the requested file at all.`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `In <code>http://www.icci.org/studies/ips.html</code>, "org" is the:`, o: [
-          [`Host computer name`, `The host name is "www".`],
-          [`Second-level domain name`, `That is "icci".`],
+          [`Host computer name`, `The host computer name is "www", the part before the domain; "org" is the last part of the domain name, the top-level domain.`],
+          [`Second-level domain name`, `The second-level domain is "icci", just left of "org"; "org" itself is the top-level domain (organizations, usually nonprofit).`],
           [`Top-level domain name`, `Correct. "org" (organizations, usually nonprofit) is the top-level domain.`],
-          [`Directory name`, `The directory is "studies".`]
+          [`Directory name`, `The directory is "studies", the part after the domain and before the file name ips.html; "org" is the top-level domain.`]
         ], a: 2 },
         { q: `When you use a search engine, you search:`, o: [
           [`The entire Internet in real time`, `The lecture stresses that you do NOT search the entire Internet.`],
           [`The search engine's indexed database`, `Correct. Results come from the engine's database organized by an index, which is why different engines give different results.`],
           [`Only the web hosting company's servers`, `Hosting stores sites; it is not what a search engine queries.`],
-          [`The DNS server`, `DNS translates domain names to IP addresses.`]
+          [`The DNS server`, `DNS only translates a domain name into an IP address (step 2 of how the web works); search queries go to the engine's indexed database.`]
         ], a: 1 },
         { q: `Which protocol is responsible for uploading and downloading files between client and server?`, o: [
           [`HTTP`, `HTTP exchanges web resources such as pages; the lecture assigns file transfer to FTP.`],
           [`FTP`, `Correct. File Transfer Protocol loads (uploads) or retrieves (downloads) files.`],
           [`TCP/IP`, `TCP/IP is the general communication protocol of the Internet.`],
-          [`SSL`, `SSL is for secure (encrypted) communication.`]
+          [`SSL`, `SSL (Secure Socket Layer) is an Internet security protocol for encrypted communication, not the protocol for uploading and downloading files.`]
         ], a: 1 },
         { q: `Which of the following is a server-side technology?`, o: [
-          [`CSS`, `CSS is client-side (presentation).`],
+          [`CSS`, `CSS is a client-side technology (with HTML/XHTML and JavaScript); it styles pages in the browser, it does not run on the server.`],
           [`JavaScript`, `In this course JavaScript is listed as client-side scripting.`],
           [`PHP`, `Correct. PHP, JSP, ASP, ASP.NET and Python are server-side.`],
-          [`XHTML`, `XHTML is client-side markup.`]
+          [`XHTML`, `XHTML is client-side markup, listed with HTML, CSS and JavaScript; server-side technologies are JSP, ASP, ASP.NET, PHP and Python.`]
         ], a: 2 },
         { q: `According to the design issue "Colors", visited links should be shown in:`, o: [
-          [`Blue`, `Blue is for unvisited links.`],
+          [`Blue`, `Blue is the standard color for ordinary (unvisited) links; visited links are violet and active links are red (L1, Colors).`],
           [`Violet`, `Correct. Blue for links, violet for visited links, red for active links.`],
-          [`Red`, `Red is for active links.`],
-          [`Green`, `Not a standard link color.`]
+          [`Red`, `Red is the standard color for active links; visited links should be violet so visitors are not confused (L1, Colors).`],
+          [`Green`, `Green is not one of the standard link colors; the lecture uses blue for links, violet for visited and red for active links.`]
         ], a: 1 },
         { q: `A login error message should:`, o: [
-          [`Tell the user exactly which field (username or password) is wrong`, `That leaks information to attackers.`],
+          [`Tell the user exactly which field (username or password) is wrong`, `Saying which field is wrong tells an attacker that the username (or password) is valid; the lecture says not to reveal which one failed.`],
           [`Not reveal which field is incorrect`, `Correct. "Error messages" consideration: be careful how much information you give.`],
-          [`Show the database query that failed`, `That helps attackers perform SQL injection.`],
+          [`Show the database query that failed`, `Showing the failed query gives attackers the database structure they need for SQL injection; error messages should reveal as little as possible.`],
           [`Never be shown`, `The user still needs to know the login failed.`]
         ], a: 1 },
         { q: `A web site whose page content changes based on user input is:`, o: [
           [`A static website`, `Static pages are stored in the same form the user views them.`],
           [`A dynamic website`, `Correct. Content varies based on pre-defined rules or variable user input.`],
           [`A web portal`, `A portal is a site type (gateway), not a static/dynamic category.`],
-          [`A web host`, `A host stores sites.`]
+          [`A web host`, `A web host is a company or server that stores sites so they are always available; it is not a kind of website whose content changes.`]
         ], a: 1 }
       ]
     },
@@ -304,172 +304,172 @@ COURSES.web = {
       quiz: [
         { q: `What does HTML stand for?`, o: [
           [`Hyper Text Markup Language`, `Correct. HTML is the markup language used to create web pages.`],
-          [`Home Tool Markup Language`, `Not the real expansion.`],
+          [`Home Tool Markup Language`, `"Home Tool Markup Language" is a made-up expansion; HTML stands for Hyper Text Markup Language, the language used to create web pages.`],
           [`Hyperlinks and Text Markup Language`, `Hyperlinks are a feature of HTML, not part of its name.`]
         ], a: 0, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `HTML is what type of language?`, o: [
           [`Scripting Language`, `JavaScript and PHP are scripting languages; HTML only marks up structure.`],
-          [`Markup Language`, `Correct. HTML = Hyper Text <b>Markup</b> Language.`],
-          [`Programming Language`, `HTML has no logic, variables or loops.`],
-          [`Network Protocol`, `HTTP is a protocol; HTML is a language.`]
+          [`Markup Language`, `Correct. HTML is Hyper Text <b>Markup</b> Language: it marks up the structure of a page with tags and is not a programming or scripting language (L2, What is HTML?).`],
+          [`Programming Language`, `HTML has no variables, conditions or loops; it only describes the structure of a page, so it is a markup language, not a programming language.`],
+          [`Network Protocol`, `A network protocol is a set of communication rules like HTTP or FTP; HTML is the markup language of the pages that HTTP carries.`]
         ], a: 1, src: `Midterm 2023/24 (Form B)` },
         { q: `Choose the correct HTML element for the largest heading:`, o: [
-          [`&lt;head&gt;`, `&lt;head&gt; holds meta information, not a heading.`],
+          [`&lt;head&gt;`, `&lt;head&gt; is the section that holds meta information (title, meta, link, style), not a heading; the largest heading is &lt;h1&gt;.`],
           [`&lt;h1&gt;`, `Correct. &lt;h1&gt; defines the most important (largest) heading.`],
-          [`&lt;heading&gt;`, `There is no &lt;heading&gt; element.`],
+          [`&lt;heading&gt;`, `There is no &lt;heading&gt; element in HTML; headings are &lt;h1&gt; (most important, largest) to &lt;h6&gt; (least important).`],
           [`&lt;h6&gt;`, `&lt;h6&gt; is the least important (smallest) heading.`]
         ], a: 1, src: `Midterm 2023/24 (Form C)` },
         { q: `Which doctype is correct for HTML5?`, o: [
           [`&lt;!DOCTYPE HTML5&gt;`, `There is no version number in the HTML5 doctype.`],
-          [`&lt;!DOCTYPE html&gt;`, `Correct. This is the HTML5 declaration (L2).`],
-          [`&lt;!DOCTYPE&gt;`, `Incomplete: the document type must be named.`],
-          [`None`, `B is correct.`]
+          [`&lt;!DOCTYPE html&gt;`, `Correct. The HTML5 document type declaration is &lt;!DOCTYPE html&gt;, written once at the very top before any HTML tag, and it is not case sensitive (L2, Document rules).`],
+          [`&lt;!DOCTYPE&gt;`, `Incomplete: the declaration must name the document type; for HTML5 it is &lt;!DOCTYPE html&gt;.`],
+          [`None`, `There is a correct choice: &lt;!DOCTYPE html&gt; is the HTML5 declaration, so "None" is wrong.`]
         ], a: 1, src: `Exam 2024/25, 2023/24 (May), Midterm 2023/24` },
         { q: `What is the correct HTML for inserting an image?`, o: [
           [`&lt;img alt="MyImage"&gt;image.gif&lt;/img&gt;`, `&lt;img&gt; is an empty element; the file goes in src, not as content.`],
-          [`&lt;image src="image.gif" alt="MyImage"&gt;`, `The element is &lt;img&gt;, not &lt;image&gt;.`],
+          [`&lt;image src="image.gif" alt="MyImage"&gt;`, `There is no &lt;image&gt; element in HTML; the image element is &lt;img&gt;, with the path in src and alternate text in alt.`],
           [`&lt;img src="image.gif" alt="MyImage"&gt;`, `Correct. src gives the path and alt the alternate text.`],
-          [`&lt;img href="image.gif" alt="MyImage"&gt;`, `href is for links; images use src.`]
+          [`&lt;img href="image.gif" alt="MyImage"&gt;`, `href is the destination attribute of a link (&lt;a&gt;); an image's path goes in the src attribute: &lt;img src="image.gif"&gt;.`]
         ], a: 2, src: `Exam 2024/25, 2023/24 (May), Midterm 2023/24` },
         { q: `Relative URLs are used to`, o: [
           [`link other pages within the same site`, `Correct. A relative URL does not include the domain, so it stays within the same site.`],
           [`link the same page with other sites`, `Linking to other sites needs an absolute URL.`],
-          [`link other pages with other sites`, `That needs absolute URLs.`],
-          [`does not link`, `Relative URLs do link.`]
+          [`link other pages with other sites`, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL has no domain and stays within the same site.`],
+          [`does not link`, `Relative URLs do link, in href and src; they simply leave out the domain, so they point to files within the same site.`]
         ], a: 0, src: `Exam 2024/25, 2023/24, Midterm 2023/24` },
         { q: `The visible part of an HTML document lies in`, o: [
           [`Paragraph tag`, `Paragraphs are only one kind of visible content.`],
           [`Body tag`, `Correct. The visible part is between &lt;body&gt; and &lt;/body&gt;.`],
-          [`Links tag`, `Links are inside the body.`],
-          [`Image tag`, `Images are inside the body.`]
+          [`Links tag`, `A link (&lt;a&gt;) is just one kind of visible content inside the body; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`],
+          [`Image tag`, `An image (&lt;img&gt;) is just one kind of visible content inside the body; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`]
         ], a: 1, src: `Exam 2023/24, Midterm 2023/24 (Form C)` },
         { q: `The tags in HTML are`, o: [
-          [`case-sensitive`, `HTML is not case sensitive (XHTML is).`],
-          [`in upper case`, `They may be written in either case.`],
+          [`case-sensitive`, `HTML is not case sensitive: &lt;P&gt; means the same as &lt;p&gt;. It is XHTML that requires lowercase tags.`],
+          [`in upper case`, `Uppercase is not required; HTML tags may be written in either case, and W3C actually recommends lowercase.`],
           [`not case sensitive`, `Correct. &lt;P&gt; and &lt;p&gt; mean the same in HTML (L2).`],
           [`in lowercase`, `Lowercase is recommended, not required, in HTML.`]
         ], a: 2, src: `Exam 2023/24` },
         { q: `Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?`, o: [
-          [`src`, `src gives the image path.`],
+          [`src`, `src gives the path of the image file to display; if that image cannot be displayed, the text shown instead comes from alt.`],
           [`longdesc`, `longdesc pointed to a long description page; it is not the alternate text.`],
           [`alt`, `Correct. alt is the required alternate text attribute.`],
-          [`title`, `title shows a tooltip.`]
+          [`title`, `title gives extra information shown as a tooltip when the mouse is over the element; it is not the replacement text for a missing image.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `In HTML, which attribute is used to create a link that opens in a new window tab?`, o: [
           [`src="_blank"`, `src is for embedded resources, not link targets.`],
-          [`alt="_blank"`, `alt is alternate text.`],
-          [`target="_self"`, `_self opens in the same tab (default).`],
+          [`alt="_blank"`, `alt is the alternate text shown when an image cannot be displayed; where a link opens is set by the target attribute.`],
+          [`target="_self"`, `target="_self" is the default and opens the link in the same frame/tab; a new window or tab needs target="_blank".`],
           [`target="_blank"`, `Correct. target="_blank" opens a new window/tab.`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `What is the correct HTML for creating a hyperlink?`, o: [
-          [`&lt;a&gt;http://www.google.com&lt;/a&gt;`, `Without href this is not a working link.`],
+          [`&lt;a&gt;http://www.google.com&lt;/a&gt;`, `Without an href attribute the anchor has no destination, so the text is not a working link; the URL must go in href.`],
           [`&lt;a name="http://www.Google.com"&gt;Google.com&lt;/a&gt;`, `name defines a bookmark name, not a destination.`],
-          [`&lt;a href="http://www.Google.com"&gt;Google&lt;/a&gt;`, `Correct. href holds the destination URL.`],
-          [`&lt;a url="http://www.Google.com"&gt;Google.com&lt;/a&gt;`, `There is no url attribute.`]
+          [`&lt;a href="http://www.Google.com"&gt;Google&lt;/a&gt;`, `Correct. A link uses the &lt;a&gt; (anchor) tag, the href attribute holds the destination URL, and the text between the tags (Google) is what the user clicks (L2, Links).`],
+          [`&lt;a url="http://www.Google.com"&gt;Google.com&lt;/a&gt;`, `There is no url attribute on &lt;a&gt;; the destination of a link is given in the href attribute.`]
         ], a: 2, src: `Midterm 2023/24 (Form B)` },
         { q: `&lt;a&gt; and &lt;/a&gt; are the tags used for`, o: [
-          [`Adding image`, `Images use &lt;img&gt;.`],
-          [`Aligning text`, `Alignment is done with CSS text-align.`],
-          [`Audio-voiced text`, `Audio uses &lt;audio&gt;.`],
+          [`Adding image`, `Images are added with the empty &lt;img src="..."&gt; element; &lt;a&gt; can only wrap an image to make it a link.`],
+          [`Aligning text`, `Text alignment is set with CSS (text-align), not with &lt;a&gt;; the anchor tag creates hyperlinks.`],
+          [`Audio-voiced text`, `Sound is added with the &lt;audio&gt; element; &lt;a&gt; is the anchor tag used for hyperlinks.`],
           [`Adding links to your page`, `Correct. &lt;a&gt; is the anchor (hyperlink) element.`]
         ], a: 3, src: `Midterm 2023/24 (Form C)` },
         { q: `Which character is used to indicate an end tag?`, o: [
           [`/`, `Correct. The closing tag repeats the name with a forward slash: &lt;/p&gt;.`],
-          [`*`, `Not used in tags.`],
-          [`&lt;`, `This starts every tag, opening or closing.`],
-          [`^`, `Not used in tags.`]
+          [`*`, `The asterisk is not part of HTML tag syntax; a closing tag is the same name with a forward slash added, e.g. &lt;/b&gt;.`],
+          [`&lt;`, `&lt; begins every tag, opening and closing alike, so it does not mark an end tag; the slash in &lt;/p&gt; does.`],
+          [`^`, `The caret is not part of HTML tag syntax; a closing tag is the same name with a forward slash added, e.g. &lt;/p&gt;.`]
         ], a: 0, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `How can you open a link in a new tab/browser window?`, o: [
-          [`&lt;a href="url" target="new"&gt;`, `"new" is not the standard keyword.`],
-          [`&lt;a href="url" new&gt;`, `There is no new attribute.`],
-          [`&lt;a href="url" target="_blank"&gt;`, `Correct.`]
+          [`&lt;a href="url" target="new"&gt;`, `"new" is not one of the target keywords (_blank, _self, _parent, _top); a new tab or window is opened with target="_blank".`],
+          [`&lt;a href="url" new&gt;`, `There is no attribute called new; where a link opens is controlled by the target attribute, with _blank for a new tab.`],
+          [`&lt;a href="url" target="_blank"&gt;`, `Correct. target="_blank" opens the linked document in a new window or tab; the default _self opens it in the same frame (L2, Links).`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which HTML element defines the title of a document?`, o: [
           [`&lt;head&gt;`, `&lt;head&gt; contains the title but is not the title.`],
-          [`&lt;title&gt;`, `Correct. Placed inside &lt;head&gt;.`],
-          [`&lt;meta&gt;`, `&lt;meta&gt; gives metadata like charset.`]
+          [`&lt;title&gt;`, `Correct. &lt;title&gt;, placed inside &lt;head&gt;, defines the document title shown in the browser tab and in favorites, history and bookmarks (L2, Document rules).`],
+          [`&lt;meta&gt;`, `&lt;meta&gt; gives metadata such as the character set or a description; the document title is defined by &lt;title&gt;.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `HTML comments start with &lt;!-- and end with --&gt;`, o: [
           [`True`, `Correct. &lt;!-- Write your comments here --&gt; (L2).`],
-          [`False`, `This is exactly the HTML comment syntax.`]
+          [`False`, `This is exactly HTML's comment syntax: &lt;!-- Write your comments here --&gt;. Browsers do not display comments.`]
         ], a: 0, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which tag is the first tag in an HTML document?`, o: [
-          [`&lt;head&gt;`, `&lt;head&gt; comes inside &lt;html&gt;.`],
+          [`&lt;head&gt;`, `&lt;head&gt; is inside &lt;html&gt;, after the opening &lt;html&gt; tag; the document begins with &lt;html&gt;.`],
           [`&lt;html&gt;`, `Correct. The document begins with &lt;html&gt; (the DOCTYPE is a declaration, not a tag).`],
-          [`&lt;title&gt;`, `It is inside &lt;head&gt;.`],
-          [`&lt;body&gt;`, `It comes after &lt;head&gt;.`]
+          [`&lt;title&gt;`, `&lt;title&gt; is nested inside &lt;head&gt;, which itself is inside &lt;html&gt;, so it cannot be the first tag.`],
+          [`&lt;body&gt;`, `&lt;body&gt; comes after &lt;head&gt;, inside &lt;html&gt;; the first tag after the DOCTYPE is &lt;html&gt;.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `What tag is used to display a picture in an HTML page?`, o: [
           [`picture`, `&lt;picture&gt; is a wrapper for responsive sources; the basic image tag is img.`],
-          [`img`, `Correct.`],
-          [`image`, `There is no &lt;image&gt; tag in HTML.`],
-          [`src`, `src is an attribute.`]
+          [`img`, `Correct. The empty &lt;img&gt; element displays a picture, with the file path in src and alternate text in alt (L2, Attributes).`],
+          [`image`, `There is no &lt;image&gt; tag in HTML; pictures are displayed with &lt;img src="..."&gt;.`],
+          [`src`, `src is an attribute of &lt;img&gt; that holds the image path, not a tag; the tag is &lt;img&gt;.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which of the following will NOT be found in the &lt;head&gt; section?`, o: [
-          [`&lt;meta&gt; tags`, `Meta tags belong in the head.`],
+          [`&lt;meta&gt; tags`, `&lt;meta&gt; tags are metadata and belong in the head, so they ARE found there; the question asks for what is not.`],
           [`&lt;table&gt;`, `Correct. A table is visible content and belongs in the body.`],
-          [`&lt;title&gt;`, `The title belongs in the head.`],
-          [`None of the above`, `B is not found in the head.`]
+          [`&lt;title&gt;`, `&lt;title&gt; belongs in the head (it names the page in the browser tab), so it is found there.`],
+          [`None of the above`, `Wrong because &lt;table&gt; is visible content that belongs in the body, so one option is indeed not found in the head.`]
         ], a: 1, src: `Midterm 2023/24 (Form C)` },
         { q: `How do we write comments in HTML?`, o: [
-          [`&lt;/.......&gt;`, `That is a closing tag shape.`],
+          [`&lt;/.......&gt;`, `&lt;/ ... &gt; is the shape of a closing tag, not a comment; comments start with &lt;! (in full &lt;!-- ... --&gt;).`],
           [`&lt;!.......&gt;`, `Correct (Sanfoundry's shorthand for &lt;!-- ... --&gt;).`],
-          [`&lt;/....../&gt;`, `Not valid.`],
-          [`&lt;.......!&gt;`, `Not valid.`]
+          [`&lt;/....../&gt;`, `&lt;/ ... /&gt; is not valid HTML syntax for anything; comments start with &lt;! (in full &lt;!-- ... --&gt;).`],
+          [`&lt;.......!&gt;`, `The exclamation mark goes right after &lt; at the start, not before the closing &gt;; comments are &lt;!-- ... --&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `HTML comment should be enclosed between`, o: [
-          [`&lt;!- and --&gt;`, `The start needs two dashes.`],
-          [`&lt;! and !&gt;`, `Not the comment syntax.`],
+          [`&lt;!- and --&gt;`, `The opening needs two dashes: a comment starts with &lt;!-- and ends with --&gt;.`],
+          [`&lt;! and !&gt;`, `&lt;! ... !&gt; is not HTML comment syntax; a comment is written &lt;!-- comment --&gt;.`],
           [`&lt;!-- and --&gt;`, `Correct. (Option smudged in the photo; this is the intended answer.)`],
-          [`&lt;! -- and --&gt; (with a space)`, `There must be no space between &lt;! and --.`]
+          [`&lt;! -- and --&gt; (with a space)`, `The space breaks the syntax: &lt;! must be followed immediately by --, as in &lt;!-- comment --&gt;.`]
         ], a: 2, src: `Exam 2022/23 Summer` },
         { q: `Which of the following extensions is used to save an HTML file?`, o: [
-          [`.hl`, `Not an HTML extension.`],
-          [`.h`, `C header extension.`],
-          [`.htl`, `Not valid.`],
-          [`.html`, `Correct. Pages end with .htm or .html.`]
+          [`.hl`, `.hl is not an HTML file extension; HTML pages are saved with .htm or .html.`],
+          [`.h`, `.h is the extension of C/C++ header files; HTML pages are saved with .htm or .html.`],
+          [`.htl`, `.htl is not a valid extension; HTML pages are saved with .htm or .html.`],
+          [`.html`, `Correct. HTML pages end with .htm or .html and can be written in a simple text editor such as Notepad or TextEdit (L2, What is HTML?).`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `In which part of the HTML is metadata contained?`, o: [
           [`head tag`, `Correct. Metadata (title, meta, link, style) goes in &lt;head&gt;.`],
           [`title tag`, `The title is one piece of metadata inside head.`],
-          [`html tag`, `Too general.`],
-          [`body tag`, `The body holds visible content.`]
+          [`html tag`, `&lt;html&gt; wraps the whole document, head and body; metadata is placed specifically in the &lt;head&gt; section.`],
+          [`body tag`, `The body holds the visible content of the page; metadata (title, meta, link, style) goes in the head.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Who is the father of HTML?`, o: [
-          [`Rasmus Lerdorf`, `He created PHP.`],
-          [`Tim Berners-Lee`, `Correct. He invented the Web and HTML.`],
-          [`Brendan Eich`, `He created JavaScript.`],
-          [`Sergey Brin`, `Co-founder of Google.`]
+          [`Rasmus Lerdorf`, `Rasmus Lerdorf created PHP, the server-side language of L10; HTML was created by Tim Berners-Lee.`],
+          [`Tim Berners-Lee`, `Correct. Tim Berners-Lee invented the World Wide Web and HTML, its markup language (Sheet 1).`],
+          [`Brendan Eich`, `Brendan Eich created JavaScript, the client-side scripting language; HTML was created by Tim Berners-Lee.`],
+          [`Sergey Brin`, `Sergey Brin co-founded Google, a search engine; HTML was created by Tim Berners-Lee.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `HTML is a subset of ___________`, o: [
-          [`SGMT`, `Not a real language.`],
+          [`SGMT`, `SGMT is not a real language; HTML was defined as an application of SGML (Standard Generalized Markup Language).`],
           [`SGML`, `Correct. HTML was defined as an application of SGML (Standard Generalized Markup Language).`],
-          [`SGME`, `Not a real language.`],
-          [`XHTML`, `XHTML came after HTML and is XML-based.`]
+          [`SGME`, `SGME is not a real language; HTML was defined as an application of SGML (Standard Generalized Markup Language).`],
+          [`XHTML`, `XHTML came after HTML as HTML rewritten under XML rules, so HTML cannot be a subset of it; HTML comes from SGML.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following HTML code will make an image clickable?`, o: [
-          [`&lt;a href="url"&gt;Home Page&lt;/a&gt;`, `This is a text link only.`],
-          [`&lt;img src="logo"&gt;&lt;a href="url"&gt;Home&lt;/a&gt;&lt;/img&gt;`, `&lt;img&gt; is empty and cannot wrap a link.`],
-          [`&lt;a href="url"&gt;Home&lt;/a&gt; &lt;img src="logo" /&gt;`, `The image is outside the link.`],
+          [`&lt;a href="url"&gt;Home Page&lt;/a&gt;`, `This link contains only the text "Home Page", so the text is clickable but no image is; the &lt;img&gt; must be inside &lt;a&gt;.`],
+          [`&lt;img src="logo"&gt;&lt;a href="url"&gt;Home&lt;/a&gt;&lt;/img&gt;`, `&lt;img&gt; is an empty element with no end tag, so it cannot wrap a link; the &lt;a&gt; must wrap the &lt;img&gt;.`],
+          [`&lt;a href="url"&gt;Home&lt;/a&gt; &lt;img src="logo" /&gt;`, `The image is placed after the closing &lt;/a&gt;, outside the link, so only the text is clickable.`],
           [`&lt;a href="url"&gt;&lt;img src="logo" /&gt;&lt;/a&gt;`, `Correct. Putting the image inside &lt;a&gt; makes an image hyperlink.`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `What is the path for an image located in the same folder as the current page?`, o: [
           [`&lt;img src="pic.jpg"&gt;`, `Correct. No leading slash means relative to the current page.`],
-          [`&lt;img src="../pic.jpg"&gt;`, `../ goes one folder up.`],
-          [`&lt;img src="images/pic.jpg"&gt;`, `That is in a subfolder "images".`],
-          [`&lt;img src="/images/pic.jpg"&gt;`, `Leading slash: relative to the domain root.`]
+          [`&lt;img src="../pic.jpg"&gt;`, `../ goes one folder up, to the parent of the current folder; a file in the same folder is just src="pic.jpg".`],
+          [`&lt;img src="images/pic.jpg"&gt;`, `images/pic.jpg points to a subfolder named images under the current folder, not the current folder itself.`],
+          [`&lt;img src="/images/pic.jpg"&gt;`, `A leading slash makes the path relative to the domain root, so this loads /images/pic.jpg from the root, not from the current folder.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `What is the color of an unvisited link (default)?`, o: [
-          [`red`, `Red is for active links.`],
+          [`red`, `Red is the standard color of an active link (being clicked); unvisited links are blue.`],
           [`blue`, `Correct. Unvisited links are blue (L1 colors design issue).`],
-          [`purple`, `Purple/violet is for visited links.`],
-          [`green`, `Not a default link color.`]
+          [`purple`, `Purple (violet) is the standard color of a visited link; an unvisited link is blue.`],
+          [`green`, `Green is not one of the standard link colors (blue, violet, red); unvisited links are blue.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which one of the following is NOT a value of the target attribute?`, o: [
-          [`_blank`, `Valid: new tab.`],
-          [`_top`, `Valid: full body of the window.`],
-          [`_self`, `Valid: same frame (default).`],
-          [`_empty`, `Correct. _empty is not a target keyword.`]
+          [`_blank`, `_blank is a valid target value: it opens the link in a new window or tab.`],
+          [`_top`, `_top is a valid target value: it opens the link in the full body of the window, replacing all frames.`],
+          [`_self`, `_self is a valid target value and the default: it opens the link in the same frame.`],
+          [`_empty`, `Correct. The target values in the lecture are _blank, _self, _parent and _top; _empty is not one of them (L2, Links).`]
         ], a: 3, src: `Sheet 1 (2025/26)` }
       ]
     },
@@ -558,127 +558,127 @@ COURSES.web = {
       ],
       quiz: [
         { q: `Choose the correct HTML element to define important text`, o: [
-          [`&lt;i&gt;`, `&lt;i&gt; is italic text.`],
-          [`&lt;strong&gt;`, `Correct. &lt;strong&gt; = important text.`],
-          [`&lt;b&gt;`, `&lt;b&gt; is bold only, with no extra importance.`],
-          [`&lt;important&gt;`, `No such element.`]
+          [`&lt;i&gt;`, `&lt;i&gt; only displays italic text, with no extra meaning; important text is defined by &lt;strong&gt;.`],
+          [`&lt;strong&gt;`, `Correct. In the text formatting list &lt;strong&gt; means important text; it is displayed bold but also carries semantic importance (L3, Text formatting).`],
+          [`&lt;b&gt;`, `&lt;b&gt; makes text bold for appearance only, with no extra importance; important text is &lt;strong&gt;.`],
+          [`&lt;important&gt;`, `There is no &lt;important&gt; element in HTML; important text is marked with &lt;strong&gt;.`]
         ], a: 1, src: `Exam 2024/25, 2023/24, Midterm 2023/24` },
         { q: `Which HTML tag is used to display the power in an expression?`, o: [
-          [`&lt;p&gt;`, `&lt;p&gt; is a paragraph.`],
+          [`&lt;p&gt;`, `&lt;p&gt; defines a paragraph; a power (exponent) is raised above the line with &lt;sup&gt;, e.g. x&lt;sup&gt;2&lt;/sup&gt;.`],
           [`&lt;sub&gt;`, `&lt;sub&gt; is subscript (below the line), used for H<sub>2</sub>O.`],
           [`&lt;sup&gt;`, `Correct. Superscript appears half a character above the line.`],
-          [`None of the above`, `C is correct.`]
+          [`None of the above`, `Wrong because &lt;sup&gt; (superscript) is listed and is exactly the tag for powers such as x<sup>2</sup>.`]
         ], a: 2, src: `Exam 2024/25, 2023/24 (May), Midterm 2023/24` },
         { q: `Which property is used to change the background color?`, o: [
-          [`background-color`, `Correct. The CSS background-color property.`],
-          [`color`, `color changes the text color.`],
+          [`background-color`, `Correct. The CSS property background-color sets an element's background, e.g. &lt;body style="background-color:powderblue;"&gt; (L3, Style attribute).`],
+          [`color`, `The color property changes the text (foreground) color, e.g. color:blue; the background uses background-color.`],
           [`bgcolor`, `bgcolor is an obsolete HTML attribute, not a CSS property.`],
-          [`None`, `A is correct.`]
+          [`None`, `Wrong because background-color is listed and is the CSS property that changes the background color.`]
         ], a: 0, src: `Exam 2024/25, Midterm 2023/24` },
         { q: `What is the correct HTML for adding a background color?`, o: [
           [`&lt;body style="background-color:yellow;"&gt;`, `Correct. Uses the style attribute with background-color.`],
-          [`&lt;background&gt;yellow&lt;/background&gt;`, `No &lt;background&gt; element exists.`],
-          [`&lt;body bg="yellow"&gt;`, `bg is not an attribute.`],
-          [`None of the above`, `A is correct.`]
+          [`&lt;background&gt;yellow&lt;/background&gt;`, `There is no &lt;background&gt; element in HTML; the background is styled with the style attribute and background-color.`],
+          [`&lt;body bg="yellow"&gt;`, `bg is not an HTML attribute; the background is set with style="background-color:yellow;".`],
+          [`None of the above`, `Wrong because &lt;body style="background-color:yellow;"&gt; is listed and is the correct way.`]
         ], a: 0, src: `Exam 2023/24, Midterm 2023/24 (Form B)` },
         { q: `Which property is used to change the font of an element?`, o: [
-          [`font-family`, `Correct. e.g. font-family: verdana;`],
-          [`font-weight`, `Sets boldness.`],
-          [`font-style`, `Sets italic/normal.`],
-          [`font-property`, `Not a CSS property.`]
+          [`font-family`, `Correct. font-family chooses the font of an element, e.g. style="font-family:verdana;" or courier (L3, Style attribute).`],
+          [`font-weight`, `font-weight sets how bold the text is (normal, bold); it does not change which font is used, that is font-family.`],
+          [`font-style`, `font-style sets normal, italic or oblique text; the font itself is chosen with font-family.`],
+          [`font-property`, `font-property is not a CSS property; the font of an element is set with font-family.`]
         ], a: 0, src: `Exam 2024/25, 2023/24, Midterm 2023/24 (Form C)` },
         { q: `Colors are defined in HTML using?`, o: [
-          [`RGB values`, `True, but not the only way.`],
-          [`HEX values`, `True, but not the only way.`],
-          [`RGBA values`, `True, but not the only way.`],
+          [`RGB values`, `RGB values are one valid way, but so are HEX and RGBA (and names, HSL, HSLA), so "All of the above" is the full answer.`],
+          [`HEX values`, `HEX values such as #ff6347 are one valid way, but RGB and RGBA also work, so "All of the above" is the full answer.`],
+          [`RGBA values`, `RGBA values are one valid way, but RGB and HEX also work, so "All of the above" is the full answer.`],
           [`All of the above`, `Correct. Names, RGB, HEX, HSL, RGBA and HSLA all work (L3).`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `Choose the correct HTML element to define emphasized text`, o: [
-          [`&lt;italic&gt;`, `No such element.`],
-          [`&lt;i&gt;`, `&lt;i&gt; is italic without emphasis meaning.`],
-          [`&lt;em&gt;`, `Correct. &lt;em&gt; = emphasized text.`]
+          [`&lt;italic&gt;`, `There is no &lt;italic&gt; element; italic text is &lt;i&gt; and emphasized text is &lt;em&gt;.`],
+          [`&lt;i&gt;`, `&lt;i&gt; displays italic text for appearance only; emphasized text, with semantic emphasis, is &lt;em&gt;.`],
+          [`&lt;em&gt;`, `Correct. &lt;em&gt; defines emphasized text; it is displayed in italic and carries semantic emphasis, unlike &lt;i&gt; (L3, Text formatting).`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `What is the correct HTML element for inserting a line break?`, o: [
-          [`&lt;break&gt;`, `No such element.`],
-          [`&lt;lb&gt;`, `No such element.`],
-          [`&lt;br&gt;`, `Correct. Empty element, no end tag.`]
+          [`&lt;break&gt;`, `There is no &lt;break&gt; element in HTML; a line break is the empty element &lt;br&gt;.`],
+          [`&lt;lb&gt;`, `There is no &lt;lb&gt; element in HTML; a line break is the empty element &lt;br&gt;.`],
+          [`&lt;br&gt;`, `Correct. &lt;br&gt; inserts a line break (a new line without a new paragraph); it is an empty tag with no end tag (L3, Line breaks).`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `What is the correct HTML for inserting a background image?`, o: [
-          [`&lt;body style="background-image:url(background.gif)"&gt;`, `Correct. CSS background-image with url().`],
-          [`&lt;background img="background.gif"&gt;`, `No such element.`],
-          [`&lt;body bg="background.gif"&gt;`, `bg is not valid.`]
+          [`&lt;body style="background-image:url(background.gif)"&gt;`, `Correct. A background image is set with the CSS background-image property and url(), here through the body's style attribute (Lab 4, CSS backgrounds).`],
+          [`&lt;background img="background.gif"&gt;`, `There is no &lt;background&gt; element in HTML; a background image is a CSS property: background-image:url(...).`],
+          [`&lt;body bg="background.gif"&gt;`, `bg is not a valid attribute; a background image is set with style="background-image:url(background.gif)".`]
         ], a: 0, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `If the background image is smaller than the screen, what will happen?`, o: [
-          [`It will be stretched`, `Stretching requires background-size.`],
-          [`It will leave a blank space at the bottom of your page`, `By default it is not left blank.`],
+          [`It will be stretched`, `The image is not stretched by default; stretching it would need the background-size property.`],
+          [`It will leave a blank space at the bottom of your page`, `No space is left blank, because by default the background image repeats horizontally and vertically to fill the element.`],
           [`It will be repeated`, `Correct. By default the image is repeated to cover the element (background-repeat).`],
-          [`None of the above`, `C is correct.`]
+          [`None of the above`, `Wrong because "It will be repeated" is listed and is the default behavior (background-repeat: repeat).`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which element is used to get highlighted text in HTML5?`, o: [
-          [`&lt;u&gt;`, `Underline.`],
-          [`&lt;mark&gt;`, `Correct. Marked/highlighted text.`],
-          [`&lt;highlight&gt;`, `No such element.`],
-          [`&lt;b&gt;`, `Bold.`]
+          [`&lt;u&gt;`, `&lt;u&gt; underlines text; it does not highlight it. Highlighted (marked) text is &lt;mark&gt;.`],
+          [`&lt;mark&gt;`, `Correct. &lt;mark&gt; defines marked or highlighted text, e.g. Do not forget to buy &lt;mark&gt;milk&lt;/mark&gt; (L3, Text formatting).`],
+          [`&lt;highlight&gt;`, `There is no &lt;highlight&gt; element in HTML; highlighted text uses &lt;mark&gt;.`],
+          [`&lt;b&gt;`, `&lt;b&gt; makes text bold, not highlighted; highlighted text uses &lt;mark&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which HTML tag is used for making character appearance bold?`, o: [
-          [`&lt;u&gt;content&lt;/u&gt;`, `Underline.`],
-          [`&lt;b&gt;content&lt;/b&gt;`, `Correct.`],
-          [`&lt;br&gt;content&lt;/br&gt;`, `&lt;br&gt; is an empty line-break element.`],
-          [`&lt;i&gt;content&lt;/i&gt;`, `Italic.`]
+          [`&lt;u&gt;content&lt;/u&gt;`, `&lt;u&gt; underlines text instead of making it bold; bold text is &lt;b&gt;.`],
+          [`&lt;b&gt;content&lt;/b&gt;`, `Correct. &lt;b&gt; displays its content in bold, for appearance only (&lt;strong&gt; is also bold but marks importance) (L3, Text formatting).`],
+          [`&lt;br&gt;content&lt;/br&gt;`, `&lt;br&gt; is an empty line-break element with no end tag, so it cannot wrap content or make it bold.`],
+          [`&lt;i&gt;content&lt;/i&gt;`, `&lt;i&gt; displays its content in italic, not bold; bold text is &lt;b&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `To show deleted text, which HTML element is used?`, o: [
-          [`&lt;del&gt;`, `Correct. Browsers strike a line through it.`],
-          [`&lt;em&gt;`, `Emphasis.`],
-          [`&lt;strong&gt;`, `Importance.`],
-          [`&lt;ins&gt;`, `Inserted text (underlined).`]
+          [`&lt;del&gt;`, `Correct. &lt;del&gt; defines deleted text, and browsers strike a line through it, e.g. &lt;del&gt;blue&lt;/del&gt; (L3, Text formatting).`],
+          [`&lt;em&gt;`, `&lt;em&gt; defines emphasized text shown in italic; deleted text is &lt;del&gt;.`],
+          [`&lt;strong&gt;`, `&lt;strong&gt; defines important text shown in bold; deleted text is &lt;del&gt;.`],
+          [`&lt;ins&gt;`, `&lt;ins&gt; is the opposite: inserted text, usually underlined. Deleted text is &lt;del&gt;.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `What is the use of the &lt;hr&gt; tag in HTML?`, o: [
-          [`For making content appear in italics`, `That is &lt;i&gt;.`],
-          [`To create a vertical rule between sections`, `It is horizontal.`],
-          [`To create a line break`, `That is &lt;br&gt;.`],
+          [`For making content appear in italics`, `Italic text is made with &lt;i&gt; or &lt;em&gt;; &lt;hr&gt; draws a horizontal rule as a thematic break.`],
+          [`To create a vertical rule between sections`, `The rule &lt;hr&gt; draws is horizontal, not vertical; it is a thematic break that separates content.`],
+          [`To create a line break`, `A line break (new line) is &lt;br&gt;; &lt;hr&gt; draws a horizontal rule between sections.`],
           [`To create a horizontal rule between sections`, `Correct. A thematic break shown as a horizontal rule.`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `For writing the chemical formula of water, which HTML tag will be used?`, o: [
-          [`&lt;ul&gt;`, `Unordered list.`],
-          [`&lt;br/&gt;`, `Line break.`],
-          [`&lt;sub&gt;`, `Correct. H&lt;sub&gt;2&lt;/sub&gt;O.`],
-          [`&lt;sup&gt;`, `Superscript is above the line.`]
+          [`&lt;ul&gt;`, `&lt;ul&gt; starts an unordered (bulleted) list; the 2 in H<sub>2</sub>O needs subscript, &lt;sub&gt;.`],
+          [`&lt;br/&gt;`, `&lt;br/&gt; only starts a new line; the 2 in H<sub>2</sub>O must sit below the line with &lt;sub&gt;.`],
+          [`&lt;sub&gt;`, `Correct. Subscript text appears half a character below the line, as in H&lt;sub&gt;2&lt;/sub&gt;O for H<sub>2</sub>O (L3, Text formatting).`],
+          [`&lt;sup&gt;`, `&lt;sup&gt; raises text above the line, used for powers like x<sup>2</sup>; the 2 in water goes below, with &lt;sub&gt;.`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `Which tag is used to underline the text in HTML?`, o: [
-          [`&lt;p&gt;`, `Paragraph.`],
-          [`&lt;u&gt;`, `Correct.`],
-          [`&lt;i&gt;`, `Italic.`],
-          [`&lt;ul&gt;`, `Unordered list.`]
+          [`&lt;p&gt;`, `&lt;p&gt; defines a paragraph and adds no underline; underlined text is &lt;u&gt;.`],
+          [`&lt;u&gt;`, `Correct. &lt;u&gt; underlines text; it is listed with &lt;b&gt;, &lt;i&gt;, &lt;p&gt; and &lt;br&gt; (L3, Text formatting).`],
+          [`&lt;i&gt;`, `&lt;i&gt; makes text italic, not underlined; underlined text is &lt;u&gt;.`],
+          [`&lt;ul&gt;`, `&lt;ul&gt; is an unordered list, not underline (the letters only look similar); underlined text is &lt;u&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which element works similar to the &lt;b&gt; element?`, o: [
-          [`&lt;blockquote&gt;`, `A block quotation.`],
+          [`&lt;blockquote&gt;`, `&lt;blockquote&gt; defines a quoted block, usually indented, not bold text; the element that looks like &lt;b&gt; is &lt;strong&gt;.`],
           [`&lt;strong&gt;`, `Correct. Also displayed bold (with importance).`],
-          [`&lt;em&gt;`, `Displayed italic.`],
-          [`&lt;i&gt;`, `Italic.`]
+          [`&lt;em&gt;`, `&lt;em&gt; is displayed in italic, so it works like &lt;i&gt;, not like &lt;b&gt;.`],
+          [`&lt;i&gt;`, `&lt;i&gt; is displayed in italic, not bold, so it does not work like &lt;b&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which element defines preformatted text?`, o: [
-          [`&lt;p&gt;`, `Collapses spaces and line breaks.`],
+          [`&lt;p&gt;`, `&lt;p&gt; collapses extra spaces and line breaks (the poem problem), so it does not preserve preformatted text.`],
           [`&lt;pre&gt;`, `Correct. Fixed-width font, keeps spaces and line breaks.`],
-          [`&lt;hr&gt;`, `Horizontal rule.`],
-          [`&lt;ins&gt;`, `Inserted text.`]
+          [`&lt;hr&gt;`, `&lt;hr&gt; draws a horizontal rule (thematic break); preformatted text is &lt;pre&gt;.`],
+          [`&lt;ins&gt;`, `&lt;ins&gt; marks inserted text, usually underlined; preformatted text is &lt;pre&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `In HTML5, which element defines a thematic change in the content?`, o: [
-          [`&lt;hr&gt;`, `Correct. &lt;hr&gt; defines a thematic break.`],
-          [`&lt;h1&gt;`, `A heading.`],
-          [`&lt;head&gt;`, `Metadata container.`],
-          [`&lt;p&gt;`, `A paragraph.`]
+          [`&lt;hr&gt;`, `Correct. &lt;hr&gt; defines a thematic break (a change in the content), usually displayed as a horizontal rule (L3, Horizontal rules).`],
+          [`&lt;h1&gt;`, `&lt;h1&gt; is the largest heading, a title for content, not a thematic break; that is &lt;hr&gt;.`],
+          [`&lt;head&gt;`, `&lt;head&gt; is the container for metadata and is not visible, so it cannot mark a change in the content.`],
+          [`&lt;p&gt;`, `&lt;p&gt; defines a paragraph of content; a thematic change between content is marked with &lt;hr&gt;.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which tag is used to create a blank line (new line) in HTML?`, o: [
-          [`&lt;b&gt;`, `Bold.`],
-          [`&lt;br&gt;`, `Correct. Line break.`],
-          [`&lt;em&gt;`, `Emphasis.`],
-          [`&lt;a&gt;`, `Link.`]
+          [`&lt;b&gt;`, `&lt;b&gt; makes text bold and does not start a new line; a line break is &lt;br&gt;.`],
+          [`&lt;br&gt;`, `Correct. &lt;br&gt; is the empty line-break tag: it starts a new line without starting a new paragraph (L3, Line breaks).`],
+          [`&lt;em&gt;`, `&lt;em&gt; emphasizes text in italic and does not start a new line; a line break is &lt;br&gt;.`],
+          [`&lt;a&gt;`, `&lt;a&gt; creates a hyperlink and does not start a new line; a line break is &lt;br&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `<code>rgba(255, 99, 71, 0.5)</code> is:`, o: [
           [`Tomato, 50% transparent`, `Correct. The 4th value is the alpha (opacity) from 0 to 1.`],
-          [`Tomato, 50% darker`, `Alpha changes transparency, not darkness.`],
-          [`A shade of gray`, `Gray needs equal R, G and B.`],
-          [`Invalid CSS`, `rgba() is valid.`]
+          [`Tomato, 50% darker`, `The 4th value is alpha (opacity), so 0.5 makes Tomato 50% transparent; it does not darken the color.`],
+          [`A shade of gray`, `A shade of gray needs equal R, G and B values, e.g. rgb(60,60,60); 255, 99, 71 are unequal and give Tomato.`],
+          [`Invalid CSS`, `rgba() is valid CSS: three RGB values plus an alpha from 0 to 1, as in the lecture's 50% transparent Tomato.`]
         ], a: 0, src: `Lecture 3 example` }
       ]
     },
@@ -786,115 +786,115 @@ body { background-image: url("paper.gif"); }
       ],
       quiz: [
         { q: `What does CSS stand for?`, o: [
-          [`Computer Style Sheets`, `Not the real expansion.`],
-          [`Creative Style Sheets`, `Not the real expansion.`],
-          [`Cascading Style Sheets`, `Correct.`],
-          [`Colorful Style Sheets`, `Not the real expansion.`]
+          [`Computer Style Sheets`, `"Computer Style Sheets" is a made-up expansion; CSS stands for Cascading Style Sheets, the language that formats a page's layout.`],
+          [`Creative Style Sheets`, `"Creative Style Sheets" is a made-up expansion; CSS stands for Cascading Style Sheets.`],
+          [`Cascading Style Sheets`, `Correct. CSS stands for Cascading Style Sheets; it is used to format the layout of a web page: colors, fonts, spacing and positioning (L4, What is CSS?).`],
+          [`Colorful Style Sheets`, `"Colorful Style Sheets" is a made-up expansion; CSS stands for Cascading Style Sheets.`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `What is the correct HTML for referring to an external style sheet?`, o: [
           [`&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;`, `Correct. &lt;link&gt; in the head with rel="stylesheet" and href.`],
-          [`&lt;stylesheet&gt;mystyle.css&lt;/stylesheet&gt;`, `No such element.`],
-          [`&lt;style src="mystyle.css"&gt;`, `&lt;style&gt; holds internal CSS; it has no src.`],
-          [`Not Found`, `A is correct.`]
+          [`&lt;stylesheet&gt;mystyle.css&lt;/stylesheet&gt;`, `There is no &lt;stylesheet&gt; element in HTML; an external sheet is attached with &lt;link rel="stylesheet" href="..."&gt; in the head.`],
+          [`&lt;style src="mystyle.css"&gt;`, `&lt;style&gt; holds internal CSS written inside the page and has no src attribute; an external file is referred to with &lt;link&gt;.`],
+          [`Not Found`, `Wrong because the &lt;link rel="stylesheet" ... href="mystyle.css"&gt; option is listed and is the correct way.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Which CSS property controls the text size?`, o: [
-          [`text-style`, `Not a CSS property.`],
-          [`text-size`, `Not a CSS property.`],
-          [`font-style`, `font-style sets italic/normal.`],
-          [`font-size`, `Correct.`]
+          [`text-style`, `text-style is not a CSS property; text size is set with font-size, e.g. font-size:300% or 16px.`],
+          [`text-size`, `text-size is not a CSS property, even though the name sounds right; text size is set with font-size.`],
+          [`font-style`, `font-style sets normal, italic or oblique text, not its size; the size is font-size.`],
+          [`font-size`, `Correct. font-size controls the text size, e.g. h1 {font-size: 300%;} or p {font-size: 16px;} (L4, Colors, fonts and sizes).`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `Which of the following properties is used to specify table borders in CSS?`, o: [
-          [`table`, `table is a selector, not a property.`],
+          [`table`, `table is an element selector that picks which elements to style, not a property; the property that draws the borders is border.`],
           [`border`, `Correct. table, th, td {border: 1px solid black;} (L5).`],
-          [`table:border`, `Not valid CSS.`],
-          [`none of the mentioned`, `B is correct.`]
+          [`table:border`, `table:border is not valid CSS; the selector and property are written as table {border: 1px solid black;}.`],
+          [`none of the mentioned`, `Wrong because border is listed and is the property used: table, th, td {border: 1px solid black;}.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `Which property is used to control the space between the border and content in a table?`, o: [
-          [`border`, `Draws the border.`],
-          [`margin`, `Space outside the border.`],
+          [`border`, `border draws the line around the element itself; the space between that border and the content is padding.`],
+          [`margin`, `margin is the space outside the border, between the element and its neighbors, not between border and content.`],
           [`padding`, `Correct. Padding is the space between the content and the border.`],
-          [`resize`, `Unrelated.`]
+          [`resize`, `resize controls whether the user can resize an element; it has nothing to do with spacing in the box model.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [
-          [`h1.all {background-color:#FFFFFF;}`, `This selects &lt;h1 class="all"&gt; only.`],
-          [`all.h1 {background-color:#FFFFFF;}`, `This selects &lt;all class="h1"&gt;.`],
+          [`h1.all {background-color:#FFFFFF;}`, `h1.all selects only &lt;h1&gt; elements with class="all", not every &lt;h1&gt;; the plain element selector h1 does that.`],
+          [`all.h1 {background-color:#FFFFFF;}`, `all.h1 selects elements named &lt;all&gt; with class="h1", which do not exist; all &lt;h1&gt; are selected by h1.`],
           [`h1 {background-color:#FFFFFF;}`, `Correct. The element selector h1 targets all &lt;h1&gt;.`],
-          [`None of the above`, `C is correct.`]
+          [`None of the above`, `Wrong because h1 {background-color:#FFFFFF;} is listed and correctly targets every &lt;h1&gt;.`]
         ], a: 2, src: `Exam 2024/25, 2023/24 (May), Midterm 2023/24` },
         { q: `Which is the correct CSS syntax?`, o: [
-          [`{body;color:black;}`, `The selector must be outside the braces.`],
-          [`body:color=black;`, `CSS uses braces and colons, not =.`],
-          [`body {color: black;}`, `Correct. selector {property: value;}`],
-          [`{body:color=black;}`, `Invalid.`]
+          [`{body;color:black;}`, `The selector must come before the braces, not inside them with a semicolon; the form is selector {property: value;}.`],
+          [`body:color=black;`, `There are no braces, and CSS separates property and value with a colon, not =; the form is body {color: black;}.`],
+          [`body {color: black;}`, `Correct. A rule is a selector followed by a declaration block in curly braces, each declaration written property: value; (L4, CSS syntax).`],
+          [`{body:color=black;}`, `The selector is inside the braces and = is used instead of a colon; the correct form is body {color: black;}.`]
         ], a: 2, src: `Exam 2023/24, Midterm 2023/24 (Form B)` },
         { q: `Which of the following HTML tags is used to define an internal style sheet?`, o: [
-          [`&lt;script&gt;`, `For JavaScript.`],
-          [`&lt;link&gt;`, `For external style sheets.`],
-          [`&lt;class&gt;`, `Not an element.`],
-          [`&lt;style&gt;`, `Correct. Placed in the &lt;head&gt;.`]
+          [`&lt;script&gt;`, `&lt;script&gt; holds JavaScript code, not CSS; an internal style sheet is written in a &lt;style&gt; element in the head.`],
+          [`&lt;link&gt;`, `&lt;link&gt; attaches an external .css file; an internal (embedded) sheet is written inside &lt;style&gt; in the head.`],
+          [`&lt;class&gt;`, `&lt;class&gt; is not an HTML element; class is an attribute used by CSS class selectors. Internal CSS goes in &lt;style&gt;.`],
+          [`&lt;style&gt;`, `Correct. Internal (embedded) CSS is written in a &lt;style&gt; element inside &lt;head&gt; and styles a single HTML page (L4, Three ways to add CSS).`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `Which of the following CSS properties is used to set the color of the text?`, o: [
-          [`text-decoration`, `Underline/overline/line-through.`],
-          [`pallet`, `Not a property.`],
-          [`text-style`, `Not a property.`],
-          [`color`, `Correct.`]
+          [`text-decoration`, `text-decoration adds or removes underline, overline or line-through; it does not set the color of the text.`],
+          [`pallet`, `pallet is not a CSS property; the text color is set with the color property.`],
+          [`text-style`, `text-style is not a CSS property; the text color is set with the color property.`],
+          [`color`, `Correct. The color property sets the text color, e.g. h1 {color: blue;}; background-color sets the background (L4, Colors, fonts and sizes).`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `Which of the following CSS properties controls how an element is positioned?`, o: [
           [`static`, `static is a value of position, not a property.`],
           [`position`, `Correct. Values: static, relative, absolute, fixed, sticky.`],
-          [`fix`, `Not a property.`],
-          [`set`, `Not a property.`]
+          [`fix`, `fix is not a CSS property (fixed is one value of position); positioning is controlled by the position property.`],
+          [`set`, `set is not a CSS property; how an element is positioned is controlled by the position property.`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `How do you insert a comment in a CSS file?`, o: [
           [`// this is a comment`, `JavaScript single-line syntax; not valid in CSS.`],
-          [`' this is a comment`, `VBScript style.`],
-          [`// this is a comment //`, `Not CSS.`],
-          [`/* this is a comment */`, `Correct.`]
+          [`' this is a comment`, `A leading apostrophe is a VBScript comment, not CSS; CSS comments are written /* this is a comment */.`],
+          [`// this is a comment //`, `// is not a CSS comment marker at either end; CSS only uses /* ... */ comments.`],
+          [`/* this is a comment */`, `Correct. CSS comments are written between /* and */, and can span several lines (L4, CSS syntax).`]
         ], a: 3, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which CSS property is used to change the text color of an element?`, o: [
-          [`text-color`, `Not a property.`],
-          [`color`, `Correct.`],
-          [`fgcolor`, `Not a property.`]
+          [`text-color`, `text-color is not a CSS property, even though it sounds right; the text color is set with color.`],
+          [`color`, `Correct. The color property sets an element's text color, e.g. p {color: red;} (L4, Colors, fonts and sizes).`],
+          [`fgcolor`, `fgcolor is not a CSS property; the text (foreground) color is set with color.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `What is the correct CSS syntax for making all the &lt;p&gt; elements bold?`, o: [
           [`&lt;p style="text-size:bold;"&gt;`, `text-size does not exist, and this styles one p only.`],
-          [`&lt;p style="font-size:bold;"&gt;`, `font-size takes a size, not bold.`],
-          [`p {font-weight:bold;}`, `Correct.`],
-          [`p {text-size:bold;}`, `Not a property.`]
+          [`&lt;p style="font-size:bold;"&gt;`, `font-size takes a size such as 16px or 300%, not bold, and this inline style affects only one &lt;p&gt;; use p {font-weight:bold;}.`],
+          [`p {font-weight:bold;}`, `Correct. The element selector p targets all &lt;p&gt; elements and font-weight:bold makes their text bold (L4, Colors, fonts and sizes).`],
+          [`p {text-size:bold;}`, `text-size is not a CSS property; boldness is set with font-weight:bold.`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `How do you make the text bold?`, o: [
-          [`style:bold;`, `Invalid.`],
+          [`style:bold;`, `style is an HTML attribute, not a CSS property, so style:bold is invalid; boldness is font-weight:bold.`],
           [`font:bold;`, `The font shorthand needs size and family too.`],
-          [`font-weight:bold;`, `Correct.`]
+          [`font-weight:bold;`, `Correct. font-weight:bold makes text bold; font-style:italic makes it italic (L4, Colors, fonts and sizes).`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `How do you display a border like this: top = 10px, bottom = 5px, left = 20px, right = 1px?`, o: [
-          [`border-width:10px 20px 5px 1px;`, `This gives right 20 and left 1.`],
-          [`border-width:10px 5px 20px 1px;`, `Order is wrong.`],
-          [`border-width:10px 1px 5px 20px;`, `Correct. Order is top, right, bottom, left.`],
-          [`border-width:5px 20px 10px 1px;`, `Starts with bottom.`]
+          [`border-width:10px 20px 5px 1px;`, `Four values go top, right, bottom, left; here right = 20px and left = 1px, the reverse of what is asked.`],
+          [`border-width:10px 5px 20px 1px;`, `This reads as top 10, right 5, bottom 20, left 1, because the order is top, right, bottom, left (clockwise).`],
+          [`border-width:10px 1px 5px 20px;`, `Correct. With four values the order is top, right, bottom, left (clockwise): 10px top, 1px right, 5px bottom, 20px left (L4, shorthand table).`],
+          [`border-width:5px 20px 10px 1px;`, `The first value is the top, so this gives top 5px and bottom 10px; the order is top, right, bottom, left.`]
         ], a: 2, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which property is used to change the left margin of an element?`, o: [
           [`indent`, `Not a property (text-indent indents the first line).`],
-          [`margin-left`, `Correct.`],
-          [`padding-left`, `That is inside the border.`]
+          [`margin-left`, `Correct. margin-left sets the margin on the left side only; margin sets all sides at once (L4, shorthand table).`],
+          [`padding-left`, `padding-left is the space inside the border on the left; the left margin, outside the border, is margin-left.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which element is used for styling HTML5 layout?`, o: [
-          [`CSS`, `Correct. CSS is the presentation layer.`],
-          [`jQuery`, `A JavaScript library.`],
-          [`JavaScript`, `Behavior layer.`],
-          [`PHP`, `Server-side language.`]
+          [`CSS`, `Correct. CSS is the presentation layer that styles and lays out pages; HTML is content and JavaScript is behavior (L4, What is CSS?).`],
+          [`jQuery`, `jQuery is a JavaScript library for behavior and DOM scripting; page styling and layout are done with CSS.`],
+          [`JavaScript`, `JavaScript is the behavior layer that makes pages interactive; styling and layout belong to CSS, the presentation layer.`],
+          [`PHP`, `PHP is a server-side language that generates pages; styling the layout in the browser is done with CSS.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `<code>p {margin: 25px 50px 75px;}</code> gives a left margin of:`, o: [
-          [`25px`, `25px is the top.`],
-          [`50px`, `Correct. Three values: top, left and right, bottom.`],
-          [`75px`, `75px is the bottom.`],
-          [`0`, `The middle value sets both left and right.`]
+          [`25px`, `With three values the first is the top only, so 25px is the top margin, not the left one.`],
+          [`50px`, `Correct. Three values mean top, then right and left, then bottom: top 25px, left and right 50px, bottom 75px (L4, shorthand table).`],
+          [`75px`, `With three values the last one is the bottom only, so 75px is the bottom margin.`],
+          [`0`, `The left side is not left at 0: the middle of three values sets both right and left, giving 50px.`]
         ], a: 1, src: `Lecture 4 example` },
         { q: `In the CSS box model, the space between the text and the border is the:`, o: [
-          [`margin`, `Margin is outside the border.`],
-          [`padding`, `Correct.`],
-          [`outline`, `An outline is drawn outside the border.`],
-          [`content`, `Content is the text itself.`]
+          [`margin`, `margin is the space outside the border, separating the element from others; inside the border is padding.`],
+          [`padding`, `Correct. In the box model (content, padding, border, margin), padding is the space between the text and the border (L4, Box model).`],
+          [`outline`, `An outline is a line drawn outside the border and is not one of the box model layers; the inner space is padding.`],
+          [`content`, `The content is the text itself, the innermost box; the space between it and the border is padding.`]
         ], a: 1, src: `Lecture 4 example` }
       ]
     },
@@ -1004,69 +1004,69 @@ table, th, td { border: 1px solid black; border-collapse: collapse; }
       quiz: [
         { q: `Which of these elements are all &lt;table&gt; elements?`, o: [
           [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;head&gt; is the document head, not a table element.`],
-          [`&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;tt&gt; is (obsolete) teletype text.`],
-          [`&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `Correct. Table, row and data cell.`],
-          [`&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`, `&lt;body&gt; is not a table element (&lt;tbody&gt; is).`]
+          [`&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;tt&gt; is an old (obsolete) teletype-text formatting tag, not a table element; the table set is &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;.`],
+          [`&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `Correct. &lt;table&gt; creates the table, &lt;tr&gt; defines a row and &lt;td&gt; a data cell, so all three are table elements (L5, Tables).`],
+          [`&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`, `&lt;body&gt; is the visible part of the document, not a table element; the table body group is &lt;tbody&gt;.`]
         ], a: 2, src: `Exam 2024/25, 2023/24, Midterm 2023/24` },
         { q: `How can you make a bulleted list?`, o: [
-          [`&lt;list&gt;`, `No such element.`],
-          [`&lt;ol&gt;`, `Ordered (numbered) list.`],
-          [`&lt;ul&gt;`, `Correct. Unordered list with bullets.`],
-          [`&lt;dl&gt;`, `Description list.`]
+          [`&lt;list&gt;`, `There is no &lt;list&gt; element in HTML; a bulleted list is an unordered list, &lt;ul&gt;.`],
+          [`&lt;ol&gt;`, `&lt;ol&gt; is an ordered list whose items are numbered, not bulleted; bullets come from &lt;ul&gt;.`],
+          [`&lt;ul&gt;`, `Correct. &lt;ul&gt; is the unordered list; each &lt;li&gt; item is marked with a bullet (small black circle) by default (L5, Lists).`],
+          [`&lt;dl&gt;`, `&lt;dl&gt; is a description list of terms (&lt;dt&gt;) and descriptions (&lt;dd&gt;), with no bullets; bulleted lists use &lt;ul&gt;.`]
         ], a: 2, src: `Exam 2024/25, 2023/24, Midterm 2023/24` },
         { q: `How can you make a numbered list?`, o: [
-          [`&lt;list&gt;`, `No such element.`],
-          [`&lt;ol&gt;`, `Correct. Ordered list.`],
-          [`&lt;ul&gt;`, `Bulleted.`],
-          [`&lt;dl&gt;`, `Description list.`]
+          [`&lt;list&gt;`, `There is no &lt;list&gt; element in HTML; a numbered list is an ordered list, &lt;ol&gt;.`],
+          [`&lt;ol&gt;`, `Correct. &lt;ol&gt; is the ordered list; its &lt;li&gt; items are marked with numbers by default (type="1") (L5, Lists).`],
+          [`&lt;ul&gt;`, `&lt;ul&gt; is the unordered list, marked with bullets, not numbers; numbered lists use &lt;ol&gt;.`],
+          [`&lt;dl&gt;`, `&lt;dl&gt; is a description list of terms and descriptions, not numbered; numbered lists use &lt;ol&gt;.`]
         ], a: 1, src: `Midterm 2023/24 (Form B)` },
         { q: `How do you make a list that lists its items with squares?`, o: [
-          [`list: square;`, `Not a property.`],
-          [`list-type: square;`, `Not a property.`],
-          [`list-style-type: square;`, `Correct.`],
-          [`None of the above`, `C is correct.`]
+          [`list: square;`, `list is not a CSS property; the marker of list items is set with list-style-type.`],
+          [`list-type: square;`, `list-type is not a CSS property; the full name is list-style-type, e.g. list-style-type: square;.`],
+          [`list-style-type: square;`, `Correct. list-style-type sets the item marker; its values are disc (default), circle, square and none (L5, list-style-type).`],
+          [`None of the above`, `Wrong because list-style-type: square; is listed and is the correct declaration.`]
         ], a: 2, src: `Exam 2023/24, Midterm 2023/24 (Form C)` },
         { q: `To start a list at the count of 3, use:`, o: [
-          [`&lt;ol begin="3"&gt;`, `No begin attribute.`],
-          [`&lt;ol list="3"&gt;`, `No list attribute.`],
-          [`&lt;ol start="3"&gt;`, `Correct. The start attribute.`],
-          [`&lt;ol num="3"&gt;`, `No num attribute.`]
+          [`&lt;ol begin="3"&gt;`, `&lt;ol&gt; has no begin attribute; the number to start counting from is given by start.`],
+          [`&lt;ol list="3"&gt;`, `&lt;ol&gt; has no list attribute; the first number is set with start, e.g. start="3".`],
+          [`&lt;ol start="3"&gt;`, `Correct. The start attribute of &lt;ol&gt; sets the first number, e.g. start="50" counts from 50 instead of 1 (L5, Ordered list).`],
+          [`&lt;ol num="3"&gt;`, `&lt;ol&gt; has no num attribute; the first number is set with start.`]
         ], a: 2, src: `Midterm 2023/24 (Form C)` },
         { q: `Which of the following HTML tags is used to create an unordered list?`, o: [
-          [`&lt;ol&gt;`, `Ordered.`],
-          [`&lt;ul&gt;`, `Correct.`],
-          [`&lt;li&gt;`, `A list item.`],
-          [`&lt;ll&gt;`, `No such tag.`]
+          [`&lt;ol&gt;`, `&lt;ol&gt; creates an ordered (numbered) list; the unordered (bulleted) list is &lt;ul&gt;.`],
+          [`&lt;ul&gt;`, `Correct. &lt;ul&gt; creates an unordered list whose &lt;li&gt; items are marked with bullets (L5, Lists).`],
+          [`&lt;li&gt;`, `&lt;li&gt; is a single list item used inside &lt;ul&gt; or &lt;ol&gt;; it does not create the list itself.`],
+          [`&lt;ll&gt;`, `There is no &lt;ll&gt; tag in HTML; an unordered list is &lt;ul&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following HTML tags is used to add a row in a table?`, o: [
-          [`&lt;th&gt;`, `Header cell.`],
-          [`&lt;td&gt;`, `Data cell.`],
-          [`&lt;tr&gt;`, `Correct. Table row.`],
-          [`&lt;tt&gt;`, `Not a table tag.`]
+          [`&lt;th&gt;`, `&lt;th&gt; is a header cell placed inside a row; the row itself is &lt;tr&gt;.`],
+          [`&lt;td&gt;`, `&lt;td&gt; is a data cell placed inside a row; the row itself is &lt;tr&gt;.`],
+          [`&lt;tr&gt;`, `Correct. &lt;tr&gt; (table row) defines a row, and the &lt;td&gt; or &lt;th&gt; cells go inside it (L5, Tables).`],
+          [`&lt;tt&gt;`, `&lt;tt&gt; is an obsolete teletype text tag, not a table tag; rows are &lt;tr&gt;.`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `Each cell of the table can be represented by using __________`, o: [
-          [`&lt;tr&gt;`, `A row, not a cell.`],
-          [`&lt;td&gt;`, `Correct. Table data cell.`],
-          [`&lt;th&gt;`, `Only header cells.`],
-          [`&lt;thead&gt;`, `Header group.`]
+          [`&lt;tr&gt;`, `&lt;tr&gt; defines a whole row that contains the cells, not a single cell; a data cell is &lt;td&gt;.`],
+          [`&lt;td&gt;`, `Correct. &lt;td&gt; (table data) defines a data cell; every ordinary cell of a row is a &lt;td&gt; (L5, Tables).`],
+          [`&lt;th&gt;`, `&lt;th&gt; is used only for header cells, not for every cell; ordinary data cells are &lt;td&gt;.`],
+          [`&lt;thead&gt;`, `&lt;thead&gt; groups the header rows of a table; it is not a cell. Cells are &lt;td&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `For heading cells of a table we can use ____________`, o: [
-          [`&lt;td&gt;`, `Data cell.`],
-          [`&lt;tr&gt;`, `Row.`],
-          [`&lt;thead&gt;`, `A group of header rows, not a cell.`],
-          [`&lt;th&gt;`, `Correct. Header cell.`]
+          [`&lt;td&gt;`, `&lt;td&gt; defines an ordinary data cell; heading cells are &lt;th&gt;, which are bold and centered by default.`],
+          [`&lt;tr&gt;`, `&lt;tr&gt; defines a row, not a cell; heading cells inside a row are &lt;th&gt;.`],
+          [`&lt;thead&gt;`, `&lt;thead&gt; groups the header rows but is not a cell; the heading cells themselves are &lt;th&gt;.`],
+          [`&lt;th&gt;`, `Correct. &lt;th&gt; defines a header cell, displayed bold and centered by default (L5, Tables).`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `For adding a caption to the table we use ____________`, o: [
-          [`&lt;caption&gt;`, `Correct.`],
-          [`&lt;thead&gt;`, `Header group.`],
-          [`&lt;th&gt;`, `Header cell.`],
-          [`&lt;tr&gt;`, `Row.`]
+          [`&lt;caption&gt;`, `Correct. &lt;caption&gt; adds a caption (title) to the table, displayed above it by default (L5, Tables).`],
+          [`&lt;thead&gt;`, `&lt;thead&gt; groups the header rows of a table; a title for the table is &lt;caption&gt;.`],
+          [`&lt;th&gt;`, `&lt;th&gt; is a header cell inside a row; a caption for the whole table is &lt;caption&gt;.`],
+          [`&lt;tr&gt;`, `&lt;tr&gt; is a table row; a caption for the whole table is &lt;caption&gt;.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which tag is used to create a numbered list in HTML?`, o: [
-          [`&lt;ol&gt;`, `Correct.`],
-          [`&lt;ul&gt;`, `Bulleted.`],
-          [`&lt;li&gt;`, `List item.`],
-          [`&lt;ll&gt;`, `No such tag.`]
+          [`&lt;ol&gt;`, `Correct. &lt;ol&gt; creates an ordered list whose items are numbered (1, 2, 3 by default) (L5, Lists).`],
+          [`&lt;ul&gt;`, `&lt;ul&gt; creates a bulleted (unordered) list, not a numbered one; numbered lists use &lt;ol&gt;.`],
+          [`&lt;li&gt;`, `&lt;li&gt; is a single list item, not the list; a numbered list is created with &lt;ol&gt;.`],
+          [`&lt;ll&gt;`, `There is no &lt;ll&gt; tag in HTML; numbered lists use &lt;ol&gt;.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `border-spacing is given in _____________`, o: [
           [`pixels`, `Correct. Usually in px (e.g. border-spacing: 0).`],
@@ -1075,16 +1075,16 @@ table, th, td { border: 1px solid black; border-collapse: collapse; }
           [`inch`, `Possible CSS unit but not the expected answer.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which CSS property removes the double borders of a table?`, o: [
-          [`border-radius: collapse;`, `border-radius rounds corners.`],
+          [`border-radius: collapse;`, `border-radius rounds the corners and takes a length like 10px, not collapse; double borders are merged with border-collapse.`],
           [`border-collapse: collapse;`, `Correct. Collapses borders into a single border.`],
-          [`border-style: single;`, `single is not a border-style value.`],
-          [`border: none;`, `This removes all borders.`]
+          [`border-style: single;`, `single is not a border-style value (values are dotted, dashed, solid, double...); merging double borders is border-collapse: collapse.`],
+          [`border: none;`, `border: none removes every border, while the aim is to keep one single border; that is border-collapse: collapse.`]
         ], a: 1, src: `Lecture 5 example` },
         { q: `<code>&lt;ol type="i"&gt;</code> numbers items with:`, o: [
-          [`Lowercase letters`, `That is type="a".`],
-          [`Uppercase roman numbers`, `That is type="I".`],
-          [`Lowercase roman numbers`, `Correct. i, ii, iii...`],
-          [`Numbers`, `That is type="1" (default).`]
+          [`Lowercase letters`, `Lowercase letters (a, b, c) come from type="a"; type="i" gives lowercase roman numbers.`],
+          [`Uppercase roman numbers`, `Uppercase roman numbers (I, II, III) come from type="I"; the lowercase i gives i, ii, iii.`],
+          [`Lowercase roman numbers`, `Correct. type="i" numbers the items with lowercase roman numbers: i, ii, iii, iv... (L5, Ordered list type).`],
+          [`Numbers`, `Plain numbers are type="1", the default; type="i" gives lowercase roman numbers.`]
         ], a: 2, src: `Lecture 5 example` }
       ]
     },
@@ -1183,134 +1183,134 @@ table, th, td { border: 1px solid black; border-collapse: collapse; }
       ],
       quiz: [
         { q: `How to create a checkbox in an HTML form?`, o: [
-          [`&lt;input type="text"&gt;`, `A single-line text field.`],
+          [`&lt;input type="text"&gt;`, `type="text" (the default) gives a single-line text field; a box the user can tick is type="checkbox".`],
           [`&lt;input type="textarea"&gt;`, `textarea is a separate element, not an input type.`],
           [`&lt;input type="checkbox"&gt;`, `Correct. Lets the user select zero or more options.`],
-          [`&lt;input type="button"&gt;`, `A clickable button.`]
+          [`&lt;input type="button"&gt;`, `type="button" gives a clickable push button that does nothing by itself; a tick box is type="checkbox".`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `Block elements are normally displayed without starting a new line.`, o: [
-          [`True`, `Block elements always start on a new line.`],
+          [`True`, `False: block-level elements always start on a new line and take the full width; it is inline elements that do not.`],
           [`False`, `Correct. It is inline elements that do not start on a new line.`]
         ], a: 1, src: `Revision Sheet 1 (HTML/CSS)` },
         { q: `Which of the following is NOT a difference between HTML and XHTML?`, o: [
           [`Charset in both HTML and XHTML is "text/html"`, `Correct (this statement is false, so it is not a difference): XHTML is served as application/xhtml+xml.`],
           [`Tags and attributes are case-insensitive in HTML but not in XHTML`, `This is a real difference (XHTML requires lowercase).`],
           [`Special characters must be escaped using character entities in XHTML unlike HTML`, `Listed as a difference (XML is stricter about escaping).`],
-          [`Charset in HTML is "text/html" whereas in XHTML it is "application/xhtml+xml"`, `This is a real difference in MIME type.`]
+          [`Charset in HTML is "text/html" whereas in XHTML it is "application/xhtml+xml"`, `This is a real difference (HTML is served as text/html, XHTML as application/xhtml+xml), so it cannot be the "NOT a difference" answer.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following is not an HTML5 tag?`, o: [
-          [`&lt;track&gt;`, `HTML5 tag for subtitles.`],
-          [`&lt;video&gt;`, `HTML5 tag.`],
+          [`&lt;track&gt;`, `&lt;track&gt; is an HTML5 tag that adds subtitles to a video (kind="subtitles"), so it is a real tag.`],
+          [`&lt;video&gt;`, `&lt;video&gt; is an HTML5 tag for playing video files with controls, so it is a real tag.`],
           [`&lt;slider&gt;`, `Correct. There is no &lt;slider&gt; (use input type="range").`],
-          [`&lt;source&gt;`, `HTML5 tag.`]
+          [`&lt;source&gt;`, `&lt;source&gt; is an HTML5 tag that lists alternative media files inside &lt;video&gt; or &lt;audio&gt;, so it is a real tag.`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following elements in HTML5 defines video or movie content?`, o: [
-          [`&lt;video&gt;`, `Correct.`],
-          [`&lt;movie&gt;`, `No such element.`],
-          [`&lt;audio&gt;`, `Sound only.`],
-          [`&lt;media&gt;`, `No such element.`]
+          [`&lt;video&gt;`, `Correct. &lt;video&gt; embeds video content, e.g. &lt;video width="320" height="240" controls&gt; with &lt;source&gt; files (L6, Multimedia).`],
+          [`&lt;movie&gt;`, `There is no &lt;movie&gt; element in HTML; video or movie content is embedded with &lt;video&gt;.`],
+          [`&lt;audio&gt;`, `&lt;audio&gt; plays sound only (MP3, WAV, Ogg); video content uses &lt;video&gt;.`],
+          [`&lt;media&gt;`, `There is no &lt;media&gt; element in HTML; video content is embedded with &lt;video&gt;.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following tags is used to create a text area in an HTML form?`, o: [
-          [`&lt;textarea&gt; &lt;/textarea&gt;`, `Correct. Multi-line text input.`],
-          [`&lt;text&gt;&lt;/text&gt;`, `No such element.`],
-          [`&lt;input type="text" /&gt;`, `Single-line only.`],
-          [`&lt;input type="textarea" /&gt;`, `Not an input type.`]
+          [`&lt;textarea&gt; &lt;/textarea&gt;`, `Correct. &lt;textarea&gt;&lt;/textarea&gt; is a separate form element that defines a multi-line text input (L6, Forms).`],
+          [`&lt;text&gt;&lt;/text&gt;`, `There is no &lt;text&gt; element in HTML; a multi-line text area is &lt;textarea&gt;&lt;/textarea&gt;.`],
+          [`&lt;input type="text" /&gt;`, `&lt;input type="text"&gt; gives only a single-line text field; a multi-line area needs &lt;textarea&gt;.`],
+          [`&lt;input type="textarea" /&gt;`, `textarea is not a value of input's type attribute; it is its own element, &lt;textarea&gt;&lt;/textarea&gt;.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which tag is used to create a dropdown in an HTML form?`, o: [
-          [`&lt;input&gt;`, `Not a dropdown.`],
-          [`&lt;select&gt;`, `Correct. With &lt;option&gt; children.`],
-          [`&lt;text&gt;`, `No such element.`],
-          [`&lt;textarea&gt;`, `Multi-line text.`]
+          [`&lt;input&gt;`, `&lt;input&gt; makes fields, boxes and buttons depending on its type, but not a drop-down list; that is &lt;select&gt;.`],
+          [`&lt;select&gt;`, `Correct. &lt;select&gt; with &lt;option&gt; children defines a drop-down list; multiple allows several choices (L6, Forms).`],
+          [`&lt;text&gt;`, `There is no &lt;text&gt; element in HTML; a drop-down list is &lt;select&gt; with &lt;option&gt; items.`],
+          [`&lt;textarea&gt;`, `&lt;textarea&gt; is a multi-line text input, not a list of choices; a drop-down is &lt;select&gt;.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which HTML element is used for YouTube videos?`, o: [
-          [`&lt;samp&gt;`, `Sample output text.`],
-          [`&lt;small&gt;`, `Smaller text.`],
-          [`&lt;frame&gt;`, `Obsolete frameset element.`],
-          [`&lt;iframe&gt;`, `Correct. YouTube embeds use an inline frame.`]
+          [`&lt;samp&gt;`, `&lt;samp&gt; marks sample output from a computer program; embedding a YouTube video uses &lt;iframe&gt;.`],
+          [`&lt;small&gt;`, `&lt;small&gt; only makes text smaller; YouTube videos are embedded with an &lt;iframe&gt;.`],
+          [`&lt;frame&gt;`, `&lt;frame&gt; belongs to the old, obsolete frameset layout; embedding a YouTube video uses &lt;iframe&gt;.`],
+          [`&lt;iframe&gt;`, `Correct. An &lt;iframe&gt; (inline frame) embeds another document in the page, which is how YouTube videos and maps are embedded (L6, Iframes).`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `Which attribute is not essential under &lt;iframe&gt;?`, o: [
           [`frameborder`, `Correct. Border is optional (and obsolete; use CSS border).`],
-          [`width`, `Commonly set to size the frame.`],
-          [`height`, `Commonly set to size the frame.`],
-          [`src`, `Needed to load the document.`]
+          [`width`, `width sets the frame's size (pixels by default) and is normally given, so it is not the unneeded one; frameborder is.`],
+          [`height`, `height sets the frame's size (pixels by default) and is normally given, so it is not the unneeded one; frameborder is.`],
+          [`src`, `src is essential: it is the address of the document the iframe displays; without it the frame is empty.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `In HTML, the copyright symbol can be included by _________`, o: [
-          [`&amp;gt`, `Greater-than sign.`],
-          [`&amp;amp`, `Ampersand.`],
-          [`&amp;lt`, `Less-than sign.`],
-          [`&amp;copy`, `Correct. &amp;copy; gives &copy;.`]
+          [`&amp;gt`, `&amp;gt; is the entity for the greater-than sign &gt;; the copyright symbol is &amp;copy;.`],
+          [`&amp;amp`, `&amp;amp; is the entity for the ampersand &amp;; the copyright symbol is &amp;copy;.`],
+          [`&amp;lt`, `&amp;lt; is the entity for the less-than sign &lt;; the copyright symbol is &amp;copy;.`],
+          [`&amp;copy`, `Correct. The entity name &amp;copy; displays the copyright symbol &copy;, a symbol not found on the keyboard (L6, HTML symbols).`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `Which of the following HTML elements is used for canvas graphics?`, o: [
-          [`&lt;css&gt;`, `No such element.`],
-          [`&lt;paint&gt;`, `No such element.`],
-          [`&lt;canvas&gt;`, `Correct (a block-level element).`],
-          [`&lt;graphic&gt;`, `No such element.`]
+          [`&lt;css&gt;`, `There is no &lt;css&gt; element; CSS is written in &lt;style&gt; or a .css file. Drawing graphics uses &lt;canvas&gt;.`],
+          [`&lt;paint&gt;`, `There is no &lt;paint&gt; element in HTML; graphics are drawn on a &lt;canvas&gt; element with JavaScript.`],
+          [`&lt;canvas&gt;`, `Correct. &lt;canvas&gt; is a drawing area for graphics (drawn with JavaScript); the lecture lists it among block-level elements (L6).`],
+          [`&lt;graphic&gt;`, `There is no &lt;graphic&gt; element in HTML; canvas graphics use &lt;canvas&gt;.`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `What is the work of the &lt;address&gt; element in HTML5?`, o: [
-          [`contains IP address`, `Not its purpose.`],
-          [`contains home address`, `Too narrow.`],
-          [`contains url`, `Not its purpose.`],
-          [`contains contact details for author`, `Correct.`]
+          [`contains IP address`, `&lt;address&gt; has nothing to do with network IP addresses; it holds contact information for the author or owner.`],
+          [`contains home address`, `Too narrow: &lt;address&gt; holds the author's contact details in general (e-mail, phone, URL or postal address), not just a home address.`],
+          [`contains url`, `A URL alone is not its purpose; &lt;address&gt; is for the contact details of the author or owner of the content.`],
+          [`contains contact details for author`, `Correct. &lt;address&gt; defines contact information for the author or owner of a document or article; it is a block-level element (L6, Sheet 1).`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `Which attribute specifies a unique alphanumeric identifier to be associated with an element?`, o: [
-          [`type`, `Sets the kind of input.`],
-          [`article`, `An element, not an attribute.`],
-          [`id`, `Correct. ids are unique in the page.`],
-          [`class`, `Can be shared by many elements.`]
+          [`type`, `type sets what kind of input an &lt;input&gt; is (text, radio...); it does not identify the element uniquely.`],
+          [`article`, `&lt;article&gt; is an HTML element (a block-level content section), not an attribute.`],
+          [`id`, `Correct. The id attribute gives an element a unique identifier, used by the CSS #id selector, label for and JavaScript getElementById (L4, L6).`],
+          [`class`, `A class can be shared by many elements (selected with .c1), so it is not a unique identifier; id is.`]
         ], a: 2, src: `Sheet 1 (2025/26)` },
         { q: `What is the default type of the 'type' attribute of the &lt;input&gt; element?`, o: [
-          [`Text`, `Correct.`],
-          [`Password`, `Must be set explicitly.`],
-          [`Numerals`, `Not the default.`],
-          [`Special Characters`, `Not a type.`]
+          [`Text`, `Correct. If type is not given, &lt;input&gt; is a single-line text field, because the default type is text (L6, Forms).`],
+          [`Password`, `type="password" (masked text) must be set explicitly; when type is omitted, the input is text.`],
+          [`Numerals`, `"Numerals" is not the default (type="number" exists but must be set); the default type is text.`],
+          [`Special Characters`, `"Special Characters" is not an input type at all; the default type of &lt;input&gt; is text.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `Which input type defines the file-select field?`, o: [
-          [`file`, `Correct. &lt;input type="file"&gt;.`],
-          [`checkbox`, `Multiple choice.`],
-          [`button`, `Clickable button.`],
-          [`text`, `Text field.`]
+          [`file`, `Correct. &lt;input type="file"&gt; shows a file-select field with a Browse button, used for file uploads (L6, Forms).`],
+          [`checkbox`, `type="checkbox" lets the user tick zero or more options; it does not select a file.`],
+          [`button`, `type="button" is a plain clickable button; a file-select field is type="file".`],
+          [`text`, `type="text" is a single-line text field; a file-select field is type="file".`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `How does the image input type work?`, o: [
-          [`Sets an image background`, `That is CSS background-image.`],
+          [`Sets an image background`, `A page or element background image is set with the CSS background-image property, not with an input.`],
           [`Sets an image as a submit button`, `Correct. &lt;input type="image" src="..."&gt; submits the form.`],
-          [`Sets an image anywhere on the page`, `That is &lt;img&gt;.`],
-          [`Brings a default image to the page`, `Not its function.`]
+          [`Sets an image anywhere on the page`, `Showing an image anywhere on the page is the job of &lt;img&gt;; input type="image" acts as a submit button.`],
+          [`Brings a default image to the page`, `input type="image" shows the image you give in src, not a default one, and clicking it submits the form.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `The month input type defines ___________`, o: [
-          [`only the month`, `It also includes the year.`],
-          [`month and year`, `Correct.`],
-          [`date`, `That is type="date".`],
-          [`date and time`, `That is datetime-local.`]
+          [`only the month`, `type="month" lets the user pick a month together with its year (e.g. 2025-05), not a month alone.`],
+          [`month and year`, `Correct. &lt;input type="month"&gt; lets the user select a month and year, sent as YYYY-MM (Sheet 1, input types).`],
+          [`date`, `A full date (day, month, year) is type="date"; type="month" selects only month and year.`],
+          [`date and time`, `A date with a time is type="datetime-local"; type="month" selects only month and year.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which element is used to create multi-line text input?`, o: [
-          [`text`, `Single line.`],
-          [`textarea`, `Correct.`],
-          [`submit`, `A button.`],
-          [`radio button`, `A choice.`]
+          [`text`, `An input of type text is a single-line field, so it cannot take multi-line input; that is &lt;textarea&gt;.`],
+          [`textarea`, `Correct. &lt;textarea&gt; defines a multi-line text input control, unlike the single-line &lt;input type="text"&gt; (L6, Forms).`],
+          [`submit`, `type="submit" is a button that sends the form data to the form-handler; it is not a text input.`],
+          [`radio button`, `A radio button selects one of a limited number of choices; it does not take typed text.`]
         ], a: 1, src: `Sheet 1 (2025/26)` },
         { q: `Which attribute is NOT used with the radio input type?`, o: [
-          [`name`, `Groups radio buttons.`],
-          [`value`, `The value sent.`],
-          [`checked`, `Pre-selects a radio.`],
+          [`name`, `name IS used with radio buttons: radios sharing the same name form one group where only one can be chosen.`],
+          [`value`, `value IS used with radio buttons: it is the data sent to the server for the chosen option.`],
+          [`checked`, `checked IS used with radio buttons: it pre-selects one of them when the page loads.`],
           [`selected`, `Correct. selected belongs to &lt;option&gt; in a &lt;select&gt;.`]
         ], a: 3, src: `Sheet 1 (2025/26)` },
         { q: `Which attribute lets a &lt;select&gt; element accept several choices?`, o: [
-          [`multiple`, `Correct.`],
-          [`selected`, `Pre-selects one option.`],
-          [`name`, `Names the field.`],
-          [`value`, `Value of an option.`]
+          [`multiple`, `Correct. Adding the multiple attribute to &lt;select&gt; lets the user choose more than one option (L6, Forms).`],
+          [`selected`, `selected belongs to an &lt;option&gt; and pre-selects it; it does not allow several choices.`],
+          [`name`, `name gives the field the name sent to the server; it does not allow several choices.`],
+          [`value`, `value is the data sent for an &lt;option&gt;; it does not let the &lt;select&gt; accept several choices.`]
         ], a: 0, src: `Sheet 1 (2025/26)` },
         { q: `To make a link open inside an iframe, the link's target must equal the iframe's:`, o: [
-          [`src`, `src is the initial page.`],
-          [`id`, `The lecture uses the name attribute.`],
+          [`src`, `src is the page the iframe shows first; the link's target must match the iframe's name, e.g. name="iframe_a".`],
+          [`id`, `The lecture's rule is that target refers to the iframe's name attribute, not its id: target="iframe_a" with name="iframe_a".`],
           [`name`, `Correct. target="iframe_a" with &lt;iframe name="iframe_a"&gt;.`],
-          [`title`, `title is for accessibility.`]
+          [`title`, `title describes the iframe for screen readers; links are aimed at the iframe through its name attribute.`]
         ], a: 2, src: `Lecture 6 example` },
         { q: `Which statement about XHTML is correct?`, o: [
-          [`&lt;br&gt; is valid XHTML`, `Empty elements must be closed: &lt;br /&gt;.`],
-          [`Attribute values must always be quoted`, `Correct. One of the 8 differences in L6.`],
-          [`&lt;BODY&gt; in uppercase is allowed`, `Elements must be lowercase.`],
-          [`The DOCTYPE is optional`, `It is mandatory in XHTML.`]
+          [`&lt;br&gt; is valid XHTML`, `In XHTML every element must be closed, empty ones included, so it must be written &lt;br /&gt;.`],
+          [`Attribute values must always be quoted`, `Correct. XHTML is stricter than HTML: attribute values must always be quoted, as one of its eight key differences (with lowercase names, closed and properly nested elements) (L6, XHTML).`],
+          [`&lt;BODY&gt; in uppercase is allowed`, `XHTML requires element names in lowercase, so &lt;BODY&gt; is not allowed; it must be &lt;body&gt;.`],
+          [`The DOCTYPE is optional`, `In XHTML the &lt;!DOCTYPE&gt; is mandatory, the first of the differences from HTML in the lecture.`]
         ], a: 1, src: `Lecture 6 example` }
       ]
     },
@@ -1422,115 +1422,115 @@ function myFunction() {
           [`Object-Oriented`, `Correct per the professor's MCQ sheet and student keys: JavaScript is an object-oriented (prototype-based) language.`],
           [`Object-Based`, `Some books call it object-based, but the course sheet's answer is Object-Oriented.`],
           [`Procedural`, `JS supports procedural style but is not classed as a procedural language.`],
-          [`None of the above`, `A is the expected answer.`]
+          [`None of the above`, `Wrong because the course's MCQ sheet and keys give a listed answer: JavaScript is an object-oriented (prototype-based) language.`]
         ], a: 0, src: `Exam 2024/25, 2023/24 (May); JavaScript MCQ Sheet` },
         { q: `Which of the following methods can be used to display data in some form using JavaScript?`, o: [
-          [`document.write()`, `Valid, but not the only one.`],
-          [`console.log()`, `Valid, but not the only one.`],
-          [`window.alert()`, `Valid, but not the only one.`],
+          [`document.write()`, `document.write() is one output method, but console.log() and window.alert() are too, so "All of the above" is the full answer.`],
+          [`console.log()`, `console.log() is one output method (to the console), but document.write() and window.alert() are too, so the answer is "All of the above".`],
+          [`window.alert()`, `window.alert() is one output method (an alert box), but document.write() and console.log() are too, so the answer is "All of the above".`],
           [`All of the above`, `Correct. All are JS output methods (plus innerHTML).`]
         ], a: 3, src: `Exam 2025/26, 2024/25, 2023/24` },
         { q: `Which of the following methods is used to access HTML elements using JavaScript?`, o: [
-          [`getElementById()`, `Valid, but B is valid too.`],
-          [`getElementsByClassName()`, `Valid, but A is valid too.`],
-          [`Both A and B`, `Correct.`],
-          [`None of the above`, `Both are DOM access methods.`]
+          [`getElementById()`, `getElementById() does access elements, but getElementsByClassName() does as well, so the full answer is "Both A and B".`],
+          [`getElementsByClassName()`, `getElementsByClassName() does access elements, but getElementById() does as well, so the full answer is "Both A and B".`],
+          [`Both A and B`, `Correct. Both are HTML DOM access methods: getElementById("id") returns one element and getElementsByClassName("c") returns all elements with that class (L7, Accessing elements).`],
+          [`None of the above`, `Wrong because both getElementById() and getElementsByClassName() are DOM methods for accessing HTML elements.`]
         ], a: 2, src: `Exam 2024/25, 2023/24` },
         { q: `How can a datatype be declared to be a constant type?`, o: [
           [`const`, `Correct. Its value cannot be reassigned later.`],
-          [`var`, `Declares a normal variable.`],
+          [`var`, `var declares an ordinary variable (function or global scope) whose value can be changed; a constant needs const.`],
           [`let`, `Declares a block-scoped variable that can change.`],
-          [`constant`, `Not a keyword.`]
+          [`constant`, `constant is not a JavaScript keyword; constants are declared with const.`]
         ], a: 0, src: `Exam 2024/25, 2023/24` },
         { q: `How do we write a comment in JavaScript?`, o: [
           [`/* */`, `Also valid in JS (multi-line), but the key's expected answer is the single-line form.`],
-          [`//`, `Correct per the key: // single-line comment.`],
-          [`#`, `PHP/Python style, not JS.`],
-          [`$ $`, `Not a comment.`]
+          [`//`, `Correct per the key. // starts a single-line comment in JavaScript, as in Java; /* */ is the multi-line form (L7, Comments).`],
+          [`#`, `# is a comment marker in PHP (and Python), not in JavaScript, where comments are // and /* */.`],
+          [`$ $`, `Dollar signs do not make comments; $ is just a character allowed in variable names. JS comments are // and /* */.`]
         ], a: 1, src: `Exam 2025/26, 2023/24; JavaScript MCQ Sheet` },
         { q: `Which of the following keywords is used to define a variable in JavaScript?`, o: [
-          [`var`, `Valid, but let is too.`],
-          [`let`, `Valid, but var is too.`],
-          [`Both A and B`, `Correct.`],
-          [`None of the above`, `Both work.`]
+          [`var`, `var is valid, but let (and const) also declare variables, so the full answer is "Both A and B".`],
+          [`let`, `let is valid, but var also declares variables, so the full answer is "Both A and B".`],
+          [`Both A and B`, `Correct. Variables are declared with var (function/global scope) or let (block scope); const declares constants (L7, Variables).`],
+          [`None of the above`, `Wrong because both var and let are keywords for declaring JavaScript variables.`]
         ], a: 2, src: `JavaScript MCQ Sheet` },
         { q: `Upon encountering empty statements, what does the JavaScript interpreter do?`, o: [
-          [`Throws an error`, `An empty statement ( ; ) is legal.`],
-          [`Ignores the statements`, `Correct.`],
-          [`Gives a warning`, `No warning is given.`],
-          [`None of the above`, `B is correct.`]
+          [`Throws an error`, `An empty statement (a lone ;) is legal JavaScript, so no error is thrown; the interpreter simply skips it.`],
+          [`Ignores the statements`, `Correct. An empty statement, a lone semicolon, does nothing, so the interpreter just ignores it and continues (JavaScript MCQ Sheet).`],
+          [`Gives a warning`, `No warning is produced for a lone semicolon; it is valid code that the interpreter just ignores.`],
+          [`None of the above`, `Wrong because "Ignores the statements" is listed and is what the interpreter does.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `What is the use of the &lt;noscript&gt; tag in JavaScript?`, o: [
-          [`The contents are displayed by non-JS-based browsers.`, `Correct.`],
-          [`Clears all the cookies and cache.`, `Not its function.`],
-          [`Both A and B.`, `B is false.`],
-          [`None of the above.`, `A is correct.`]
+          [`The contents are displayed by non-JS-based browsers.`, `Correct. Content inside &lt;noscript&gt; is displayed only by browsers that do not support or run JavaScript (L7, Embedding JS).`],
+          [`Clears all the cookies and cache.`, `&lt;noscript&gt; has nothing to do with cookies or the cache; it only shows content when JavaScript does not run.`],
+          [`Both A and B.`, `"Both" is wrong because B is false: &lt;noscript&gt; does not clear cookies or cache.`],
+          [`None of the above.`, `Wrong because A is true: &lt;noscript&gt; content is shown by browsers that do not run JavaScript.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `When an operand's value is NULL, the typeof returned by the unary operator is:`, o: [
-          [`Boolean`, `No.`],
+          [`Boolean`, `typeof returns "boolean" only for true and false; for null it returns "object".`],
           [`Undefined`, `typeof undefined is "undefined", but typeof null is not.`],
           [`Object`, `Correct. typeof null === "object" (a historic quirk).`],
-          [`Integer`, `JS has no integer type name.`]
+          [`Integer`, `typeof never returns "integer", since JavaScript has one number type ("number"); typeof null is "object".`]
         ], a: 2, src: `JavaScript MCQ Sheet` },
         { q: `What does the JavaScript "debugger" statement do?`, o: [
-          [`It will debug all the errors in the program at runtime.`, `It does not fix errors.`],
+          [`It will debug all the errors in the program at runtime.`, `debugger does not find or fix errors by itself; it only pauses execution at that line so you can inspect it.`],
           [`It acts as a breakpoint in a program.`, `Correct. Execution pauses there when dev tools are open.`],
-          [`It will debug the error in the current statement if any.`, `No automatic debugging.`],
-          [`All of the above.`, `Only B is true.`]
+          [`It will debug the error in the current statement if any.`, `debugger does not repair the current statement; it only stops execution there, like a breakpoint, when dev tools are open.`],
+          [`All of the above.`, `Only B is true: debugger acts as a breakpoint and does no automatic debugging, so "All of the above" is wrong.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `Which of the following is not a JavaScript framework?`, o: [
-          [`Node`, `Node.js is a JS runtime.`],
-          [`Vue`, `JS framework.`],
-          [`React`, `JS library/framework.`],
-          [`Cassandra`, `Correct. Cassandra is a NoSQL database.`]
+          [`Node`, `Node (Node.js) is a JavaScript runtime used to run JS outside the browser, so it belongs to the JS world; Cassandra does not.`],
+          [`Vue`, `Vue is a JavaScript framework for building user interfaces, so it is not the answer.`],
+          [`React`, `React is a JavaScript library/framework for building user interfaces, so it is not the answer.`],
+          [`Cassandra`, `Correct. Apache Cassandra is a NoSQL database, not a JavaScript framework; Node, Vue and React all belong to the JavaScript ecosystem (JavaScript MCQ Sheet).`]
         ], a: 3, src: `JavaScript MCQ Sheet` },
         { q: `Which of the following is a valid JavaScript variable name?`, o: [
-          [`123variable`, `Cannot start with a digit.`],
-          [`_myVariable`, `Correct. May start with a letter, $ or _.`],
-          [`var`, `Reserved word.`],
-          [`break`, `Reserved word.`]
+          [`123variable`, `A variable name cannot start with a digit; it must start with a letter, $ or _.`],
+          [`_myVariable`, `Correct. A name may start with a letter, $ or _, followed by letters, digits, $ or _, and must not be a reserved word (L7, Variables).`],
+          [`var`, `var is a reserved word (it declares variables), so it cannot be used as a variable name.`],
+          [`break`, `break is a reserved word (it exits loops and switch), so it cannot be used as a variable name.`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `What is the data type of null in JavaScript?`, o: [
           [`Object`, `Correct as expected answer: typeof null returns "object" (the language spec calls the type Null).`],
           [`Null`, `The spec type is Null, but typeof reports "object", which is what this MCQ tests.`],
-          [`Undefined`, `undefined is a different value/type.`],
-          [`Null is not a valid data type in JavaScript`, `Null is a valid primitive.`]
+          [`Undefined`, `undefined is a different value: a variable declared but not initialized; typeof undefined is "undefined", while typeof null is "object".`],
+          [`Null is not a valid data type in JavaScript`, `Null is a valid data type a variable can hold (it is in the lecture's list of types); typeof null returns "object".`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `What is the result of typeof [1, 2, 3] in JavaScript?`, o: [
           [`Array`, `typeof never returns "array" (use Array.isArray).`],
-          [`Object`, `Correct. Arrays are objects.`],
-          [`List`, `No such type.`],
-          [`Undefined`, `It is defined.`]
+          [`Object`, `Correct. Arrays are objects in JavaScript, so typeof [1, 2, 3] returns "object" (L7, typeof results).`],
+          [`List`, `JavaScript has no "list" type and typeof never returns it; arrays are objects, so the result is "object".`],
+          [`Undefined`, `"undefined" is the result only for values never assigned; an array literal is a defined object.`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `What is the result of typeof true in JavaScript?`, o: [
-          [`True`, `That is the value, not its type.`],
-          [`Boolean`, `Correct ("boolean").`],
-          [`Object`, `Primitives are not objects.`],
-          [`Undefined`, `No.`]
+          [`True`, `true is the value itself; typeof returns the name of its type, "boolean".`],
+          [`Boolean`, `Correct. true and false are Boolean values, so typeof true returns "boolean" (L7, typeof results).`],
+          [`Object`, `true is a primitive Boolean value, not an object, so typeof gives "boolean" rather than "object".`],
+          [`Undefined`, `"undefined" is for values never assigned; true is a defined Boolean, so typeof gives "boolean".`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `The output of <code>console.log(typeof NaN);</code> is`, o: [
-          [`NaN`, `typeof returns a type name.`],
-          [`number`, `Correct. NaN is of type number.`],
-          [`null`, `No.`],
-          [`undefined`, `No.`]
+          [`NaN`, `typeof always returns a type name, never the value; NaN (Not a Number) is still of type "number".`],
+          [`number`, `Correct. NaN is a special value of the number type, so typeof NaN returns "number" (L7, typeof results).`],
+          [`null`, `typeof never returns "null" (even typeof null gives "object"); typeof NaN is "number".`],
+          [`undefined`, `"undefined" is for values never assigned; NaN is a defined number value, so typeof gives "number".`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `The output of <code>console.log(typeof typeof 1);</code> is`, o: [
           [`String`, `Correct. typeof 1 is "number", a string, so typeof "number" is "string".`],
-          [`Number`, `That is typeof 1 only.`],
-          [`1`, `No.`],
-          [`True`, `No.`]
+          [`Number`, `"number" is the result of the inner typeof 1 only; applying typeof again to that string gives "string".`],
+          [`1`, `typeof never returns the value itself; it always returns a type name, and here that name is "string".`],
+          [`True`, `typeof returns a type name as a string, never true; typeof (typeof 1) is typeof "number", which is "string".`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `Using document.write() after an HTML document is fully loaded will:`, o: [
-          [`Append text at the end of the page`, `It does not append after loading.`],
+          [`Append text at the end of the page`, `Once the page has loaded, document.write() does not append; it calls document.open() and replaces the whole document.`],
           [`Delete all existing HTML`, `Correct. document.open() is called automatically on the closed document (Example 4).`],
-          [`Write to the console`, `That is console.log().`],
-          [`Throw an error`, `No error is thrown.`]
+          [`Write to the console`, `Writing to the console is console.log(); document.write() writes into the HTML document itself.`],
+          [`Throw an error`, `No error is thrown; the browser opens a new document automatically and the old HTML is wiped out.`]
         ], a: 1, src: `Lecture 7 example` },
         { q: `In Example 5, the user types 15 and clicks Submit. What is shown in #demo?`, o: [
-          [`Input OK`, `15 &gt; 10, so the condition is true.`],
-          [`Input not valid`, `Correct. x &gt; 10 makes the if-condition true.`],
-          [`15`, `The paragraph shows text, not the number.`],
-          [`Nothing`, `innerHTML is always set.`]
+          [`Input OK`, `"Input OK" is shown only for numbers from 1 to 10; 15 &gt; 10 makes the if-condition true, so the else is skipped.`],
+          [`Input not valid`, `Correct. The condition isNaN(x) || x &lt; 1 || x &gt; 10 is true because 15 &gt; 10, so text = "Input not valid" is written to #demo (L7, Example 5).`],
+          [`15`, `The code never writes x itself; it writes the variable text, which is either "Input OK" or "Input not valid".`],
+          [`Nothing`, `Both branches assign text, and innerHTML = text always runs, so #demo is never left empty.`]
         ], a: 1, src: `Lecture 7 example` }
       ]
     },
@@ -1674,16 +1674,16 @@ document.write(out.join(", ")); // N=10: 0, 1, 1, 2, 3, 5, 8, 13, 21, 34</pre>`]
         { q: `What will be the output of the following code snippet?<pre>var a = true + true + true * 3;
 print(a)</pre>`, o: [
           [`3`, `true*3 is 3, but the two other trues are added too.`],
-          [`0`, `true converts to 1, not 0.`],
+          [`0`, `In arithmetic true converts to 1, not 0, so the sum is 1 + 1 + 1×3 = 5; 0 would need every true to count as 0.`],
           [`Error`, `Booleans convert to numbers in arithmetic; no error.`],
           [`5`, `Correct. 1 + 1 + (1*3) = 5 (verified with node).`]
         ], a: 3, src: `Exam 2025/26; JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>a = [1, 2, 3, 4, 5];
 print(a.slice(2, 4));</pre>`, o: [
           [`3, 4`, `Correct. Indexes 2 and 3; the end index 4 is excluded.`],
-          [`2, 3`, `Those are values at indexes 1 and 2.`],
-          [`3, 4, 5`, `The end index is not included.`],
-          [`2, 3, 4`, `Wrong start and end.`]
+          [`2, 3`, `2, 3 are the values at indexes 1 and 2; slice(2, 4) starts at index 2 (value 3) and stops before index 4.`],
+          [`3, 4, 5`, `slice excludes its end index, so index 4 (value 5) is not included; the result is indexes 2 and 3: 3, 4.`],
+          [`2, 3, 4`, `2, 3, 4 treats the arguments as 1-based positions; indexes start at 0, so slice(2, 4) gives indexes 2 and 3: 3, 4.`]
         ], a: 0, src: `Exam 2025/26, 2023/24` },
         { q: `What will be the output of the following code snippet?<pre>function solve(arr, rotations) {
   if (rotations == 0) return arr;
@@ -1695,22 +1695,22 @@ print(a.slice(2, 4));</pre>`, o: [
 }
 // solve([44, 1, 22, 111], 5);</pre>`, o: [
           [`[111, 44, 1, 22]`, `Correct. 5 right-rotations of 4 elements = 1 rotation. (Options A and C are printed identically on the paper; the call is also commented out, so strictly nothing prints.)`],
-          [`[44, 1, 22, 111]`, `That would be 4 (or 0) rotations.`],
-          [`[111, 44, 1, 22] (duplicate)`, `Same as A on the paper; pick A.`],
-          [`[1, 22, 111, 44]`, `That is a left rotation.`]
+          [`[44, 1, 22, 111]`, `This is the original array, which you would get after 0 or 4 rotations; 5 rotations of 4 elements equal 1 rotation.`],
+          [`[111, 44, 1, 22] (duplicate)`, `This repeats option A word for word on the paper; the key gives A, [111, 44, 1, 22], so choose A rather than its duplicate.`],
+          [`[1, 22, 111, 44]`, `This is a left rotation (first element moved to the end); the loop pops the last element and unshifts it to the front, rotating right.`]
         ], a: 0, src: `Exam 2023/24; JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>a = 5 + "9";
 document.write(a);</pre>`, o: [
-          [`Compilation Error`, `JS is interpreted and this is valid.`],
-          [`14`, `+ with a string concatenates.`],
-          [`Runtime Error`, `No error.`],
+          [`Compilation Error`, `JavaScript is interpreted, not compiled, and 5 + "9" is valid code, so there is no compilation error.`],
+          [`14`, `14 would be numeric addition, but when one operand of + is a string, + concatenates: 5 + "9" = "59".`],
+          [`Runtime Error`, `Adding a number and a string is legal: the number is converted to a string, so no runtime error occurs.`],
           [`59`, `Correct. 5 is converted to "5" and joined with "9".`]
         ], a: 3, src: `JavaScript MCQ Sheet` },
         { q: `When the switch statement matches the expression with the given labels, how is the comparison done?`, o: [
           [`Both the datatype and the result of the expression are compared.`, `Correct. switch uses === (strict comparison).`],
-          [`Only the datatype of the expression is compared.`, `Values are compared too.`],
-          [`Only the value of the expression is compared.`, `That would be ==.`],
-          [`None of the above.`, `A is correct.`]
+          [`Only the datatype of the expression is compared.`, `switch compares the value as well as the type (strict ===), not the type alone.`],
+          [`Only the value of the expression is compared.`, `Comparing only the value would be loose equality (==); switch uses strict equality (===), checking type as well.`],
+          [`None of the above.`, `Wrong because A is listed and correct: switch compares both type and value with ===.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>var a = 1;
 var b = 0;
@@ -1720,9 +1720,9 @@ while (a &lt;= 3) {
   print(b);
 }</pre>`, o: [
           [`4 10 18`, `Correct. a=2: b=4; a=3: b=4+6=10; a=4: b=10+8=18 (then a&lt;=3 fails).`],
-          [`1 2 3`, `Those are not the values of b.`],
-          [`1 4 7`, `Wrong arithmetic.`],
-          [`None of the above`, `A is correct.`]
+          [`1 2 3`, `1 2 3 are not values of b (a itself goes 2, 3, 4); b grows by a × 2 each pass: 4, 10, 18.`],
+          [`1 4 7`, `1 4 7 does not come from the code: a is incremented before b += a * 2, so b is 2×2 = 4, then 4 + 6 = 10, then 10 + 8 = 18.`],
+          [`None of the above`, `Wrong because "4 10 18" is listed and is exactly what the loop prints.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>let sum = 0;
 const a = [1, 2, 3];
@@ -1730,9 +1730,9 @@ a.forEach(getSum);
 print(sum);
 function getSum(ele) { sum += ele; }</pre>`, o: [
           [`6`, `Correct. forEach adds 1+2+3 (the function is hoisted, so it exists before use).`],
-          [`1`, `All elements are added.`],
-          [`2`, `All elements are added.`],
-          [`None of the above`, `A is correct.`]
+          [`1`, `1 is only the first element; forEach calls getSum for every element, so sum = 1 + 2 + 3 = 6.`],
+          [`2`, `2 is only one element; forEach visits all three elements, so sum = 1 + 2 + 3 = 6.`],
+          [`None of the above`, `Wrong because 6 is listed and is the result: getSum adds 1, 2 and 3 to sum.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output of this binary search?<pre>let a = [1, 2, 3, 4, 5, 6];
 var left = 0, right = 5, found = false, target = 5;
@@ -1744,9 +1744,9 @@ while (left &lt;= right) {
 }
 print(found ? "YES" : "NO");</pre>`, o: [
           [`YES`, `Correct. mid=2 (3&lt;5) → left=3; mid=4 → a[4]=5 found.`],
-          [`NO`, `5 is in the array.`],
-          [`Syntax Error`, `The code is valid.`],
-          [`None of the above`, `A is correct.`]
+          [`NO`, `5 is in the array (at index 4) and the search finds it on the second step, so found becomes true and YES prints.`],
+          [`Syntax Error`, `The code is valid JavaScript (the ternary operator and break are legal), so there is no syntax error.`],
+          [`None of the above`, `Wrong because YES is listed and is the output: the search finds 5 at mid = 4.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>let s = "00000001111111";
 let l = 0, r = s.length - 1, ans = -1;
@@ -1756,10 +1756,10 @@ while (l &lt;= r) {
   else { l = mid + 1; }
 }
 print(ans);</pre>`, o: [
-          [`8`, `Index 7 is already '1'.`],
+          [`8`, `Index 8 is a '1', but so is index 7 before it; the search keeps moving left (r = mid − 1) to find the first '1', at 7.`],
           [`7`, `Correct. Binary search for the first '1' (seven zeros at indexes 0-6).`],
-          [`0`, `Index 0 is '0'.`],
-          [`1`, `Index 1 is '0'.`]
+          [`0`, `Index 0 holds '0' (the string starts with seven zeros), so ans is never set to 0.`],
+          [`1`, `Index 1 holds '0', so it cannot be the answer; the first '1' comes after seven zeros, at index 7.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>let n = 24;
 let l = 0, r = 100, ans = n;
@@ -1769,66 +1769,66 @@ while (l &lt;= r) {
   else { r = mid - 1; }
 }
 print(ans);</pre>`, o: [
-          [`5`, `25 &gt; 24.`],
-          [`4`, `Correct. Floor of the square root of 24.`],
-          [`6`, `36 &gt; 24.`],
-          [`3`, `4*4 = 16 &lt;= 24, so a larger answer exists.`]
+          [`5`, `5 × 5 = 25 &gt; 24, so mid = 5 fails the test mid*mid &lt;= n and is never stored in ans.`],
+          [`4`, `Correct. The search keeps the largest mid with mid × mid &lt;= 24: 4 × 4 = 16 &lt;= 24 but 5 × 5 = 25 &gt; 24, so ans = 4 (floor of √24).`],
+          [`6`, `6 × 6 = 36 &gt; 24, so 6 fails the test and is never stored in ans.`],
+          [`3`, `3 × 3 = 9 &lt;= 24 but 4 × 4 = 16 &lt;= 24 too, so the search moves on and the answer is the larger 4.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `Which of the following is a valid way to concatenate two strings in JavaScript?`, o: [
-          [`str1 + str2`, `Valid, but B is valid too.`],
-          [`str1.concat(str2)`, `Valid, but A is valid too.`],
-          [`Both a) and b)`, `Correct.`],
-          [`Neither a) nor b)`, `Both work.`]
+          [`str1 + str2`, `str1 + str2 works, but str1.concat(str2) does too, so the full answer is "Both a) and b)".`],
+          [`str1.concat(str2)`, `str1.concat(str2) works, but str1 + str2 does too, so the full answer is "Both a) and b)".`],
+          [`Both a) and b)`, `Correct. Strings can be joined with the + operator (concatenation, L7) or with the string method concat() (L9), so both are valid.`],
+          [`Neither a) nor b)`, `Wrong because both + and concat() join two strings in JavaScript.`]
         ], a: 2, src: `Exam 2022/23 Summer` },
         { q: `The output of <code>console.log(1 + "2" + "2");</code> is?`, o: [
           [`122`, `Correct. 1 + "2" = "12", then "12" + "2" = "122".`],
-          [`5`, `+ with strings concatenates.`],
-          [`NaN`, `No subtraction is involved.`],
-          [`Error`, `Valid code.`]
+          [`5`, `5 would be numeric addition, but once a string is involved + concatenates: 1 + "2" = "12", then + "2" = "122".`],
+          [`NaN`, `NaN appears when a non-numeric value is used in maths like - or *; + with strings simply concatenates.`],
+          [`Error`, `Mixing numbers and strings with + is legal; JS converts the number to a string, so there is no error.`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `What is the output of this code?<pre>const numbers = [33, 2, 8];
 numbers.sort();
 console.log(numbers[1]);</pre>`, o: [
           [`33`, `Correct. sort() compares as strings: "2" &lt; "33" &lt; "8", so the array is [2, 33, 8] (verified with node).`],
-          [`2`, `2 is at index 0.`],
-          [`8`, `8 is last in string order.`],
-          [`1`, `Not in the array.`]
+          [`2`, `After the string-order sort the array is [2, 33, 8], so 2 is at index 0, not index 1.`],
+          [`8`, `As strings, "8" sorts after "33", so 8 is last (index 2), not at index 1.`],
+          [`1`, `1 is not even in the array; numbers[1] is the element at index 1, which is 33 after sorting.`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `What is the data type of the result of a mathematical operation between a number and a string in JavaScript?`, o: [
           [`Number`, `Only for -, *, / (e.g. "6" - 2 = 4); the expected answer follows the + case.`],
           [`String`, `Correct (expected). With + the number is converted and concatenated, e.g. 5 + "9" = "59".`],
-          [`NaN`, `NaN is a value of type number, not a type.`],
-          [`Error`, `JS converts types instead of failing.`]
+          [`NaN`, `NaN is a value of type number, not a data type itself; with + a number and a string give a string.`],
+          [`Error`, `JavaScript does not fail when mixing types; it converts them, so with + the result is a string such as "59".`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `y = 4. What is x after <code>x = "Four" + y + "4"</code>?`, o: [
           [`"Four8"`, `Evaluation is left to right; "Four" + 4 is already a string.`],
-          [`"Four44"`, `Correct (L8 table).`],
-          [`12`, `"Four" is not numeric.`],
-          [`NaN`, `+ concatenates, it does not produce NaN.`]
+          [`"Four44"`, `Correct. Left to right: "Four" + 4 = "Four4" (a string), then + "4" = "Four44" (L8, Arithmetic operators table).`],
+          [`12`, `12 would need numeric addition, but "Four" is a string, so every + after it concatenates.`],
+          [`NaN`, `+ with a string concatenates rather than computing, so no NaN appears; x = "Four44".`]
         ], a: 1, src: `Lecture 8 example` },
         { q: `With a = 33, b = 10, c = "Test", what does <code>document.write(a + b + c)</code> print?`, o: [
-          [`3310Test`, `a + b is computed first as numbers.`],
-          [`43Test`, `Correct. 33 + 10 = 43, then 43 + "Test".`],
-          [`Test43`, `Order is left to right.`],
-          [`NaN`, `No NaN here.`]
+          [`3310Test`, `Evaluation is left to right and a + b are both numbers, so they are added first (43) before "Test" is met.`],
+          [`43Test`, `Correct. Left to right: 33 + 10 = 43 as numbers, then 43 + "Test" concatenates to 43Test (L8, Example 1).`],
+          [`Test43`, `+ does not reorder operands; the numbers come first, so the result begins with 43: 43Test.`],
+          [`NaN`, `+ with a string concatenates, so no NaN is produced; 33 + 10 = 43, then "43Test".`]
         ], a: 1, src: `Lecture 8 example` },
         { q: `In L8 Example (1), after <code>a = ++a;</code> (a was 33) the code runs <code>result = ++a;</code>. What is printed for "++a = "?`, o: [
-          [`33`, `a was incremented twice.`],
-          [`34`, `That is after the first increment only.`],
+          [`33`, `33 is the starting value; a = ++a already raises it to 34, and result = ++a raises it again to 35.`],
+          [`34`, `34 is the value after the first statement only; result = ++a increments once more before using a, giving 35.`],
           [`35`, `Correct. a = ++a makes 34, then ++a gives 35 (verified with node).`],
-          [`36`, `Only two increments happen.`]
+          [`36`, `Only two pre-increments run (a = ++a and result = ++a), so a goes 33 → 34 → 35, not 36.`]
         ], a: 2, src: `Lecture 8 example` },
         { q: `x = [22,66,11,77,33,55,44]. What is <code>x.indexOf(33, 2)</code>?`, o: [
-          [`2`, `2 is the start position, not the result.`],
-          [`3`, `Index 3 holds 77.`],
-          [`4`, `Correct. 33 is at index 4.`],
-          [`-1`, `33 is present after index 2.`]
+          [`2`, `2 is the start position argument, not the result; indexOf returns where 33 is found, index 4.`],
+          [`3`, `Index 3 holds 77, not 33; searching from index 2, the first 33 is at index 4.`],
+          [`4`, `Correct. indexOf(33, 2) searches from index 2: x[2]=11, x[3]=77, x[4]=33, so it returns 4 (L8, Array methods).`],
+          [`-1`, `-1 means not found, but 33 is in the array at index 4, after the start position 2.`]
         ], a: 2, src: `Lecture 8 example` },
         { q: `nums = [111, 222, 5, 3]. What does <code>nums.splice(0, 2, 7, 8)</code> return?`, o: [
-          [`[7, 8, 5, 3]`, `That is the array after the call.`],
+          [`[7, 8, 5, 3]`, `[7, 8, 5, 3] is what nums contains after the call; splice's return value is the array of removed elements.`],
           [`[111, 222]`, `Correct. splice returns the removed elements.`],
-          [`2`, `It returns an array, not a count.`],
-          [`[5, 3]`, `Those remain in the array.`]
+          [`2`, `2 is the delete count argument; splice returns an array of the removed elements, [111, 222].`],
+          [`[5, 3]`, `5 and 3 are the elements that stay in the array; splice returns the removed ones, [111, 222].`]
         ], a: 1, src: `Lecture 8 example` }
       ]
     },
@@ -1951,15 +1951,15 @@ document.getElementById("in").addEventListener("keydown", function(e) {
   })()
 })(21);</pre>`, o: [
           [`6`, `a is set to 6 only after it has been printed.`],
-          [`NaN`, `a is a valid number.`],
+          [`NaN`, `NaN would need a failed numeric operation, but a simply holds the number 21 passed to the outer function and is printed as is.`],
           [`21`, `Correct. By closure, the inner function reads the outer a = 21 before changing it (verified with node).`],
-          [`None of the above`, `C is correct.`]
+          [`None of the above`, `Wrong because 21 is listed and is the output: the inner function logs a (21) before assigning 6.`]
         ], a: 2, src: `Exam 2024/25, 2023/24 (May); JavaScript MCQ Sheet` },
         { q: `Which function is used to serialize an object into a JSON string in JavaScript?`, o: [
           [`stringify()`, `Correct. JSON.stringify() converts an object to a JSON string.`],
-          [`parse()`, `JSON.parse() does the reverse.`],
-          [`convert()`, `Not a JSON method.`],
-          [`None of the above`, `A is correct.`]
+          [`parse()`, `JSON.parse() does the reverse: it turns a JSON string back into the original object; serializing is stringify().`],
+          [`convert()`, `convert() is not a method of the JSON object; an object is serialized with JSON.stringify().`],
+          [`None of the above`, `Wrong because stringify() is listed and is the method that serializes an object to a JSON string.`]
         ], a: 0, src: `Exam 2025/26, 2024/25, 2023/24` },
         { q: `What will be the output of the following code snippet?<pre>const example = ({ a, b, c }) =&gt; {
   console.log(a, b, c);
@@ -1968,54 +1968,54 @@ example(0, 1, 2);</pre>`, o: [
           [`0 1 2`, `The function destructures ONE object parameter; 0 is not an object with a, b, c.`],
           [`0 undefined undefined`, `a is read from the number 0's properties, not the number itself.`],
           [`undefined undefined undefined`, `Correct. Destructuring the number 0 finds no a, b, c properties (verified with node). The 2025/26 photo shows A ticked, which is wrong.`],
-          [`None of the above`, `C is correct.`]
+          [`None of the above`, `Wrong because "undefined undefined undefined" is listed and is what runs: destructuring 0 finds no a, b or c properties.`]
         ], a: 2, src: `Exam 2025/26; JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>var a = "Scaler";
 var result = a.substring(2, 4);
 document.write(result);</pre>`, o: [
           [`al`, `Correct. Characters at indexes 2 and 3 (end excluded).`],
-          [`ale`, `Index 4 is excluded.`],
-          [`cal`, `Index 1 is not included.`],
-          [`caler`, `That is substring(1).`]
+          [`ale`, `"ale" would include index 4; substring(2, 4) stops before the end index, taking only indexes 2 and 3: "al".`],
+          [`cal`, `"cal" starts at index 1 (S=0, c=1); substring(2, 4) starts at index 2, the 'a'.`],
+          [`caler`, `"caler" is substring(1), from index 1 to the end; substring(2, 4) takes only indexes 2 and 3: "al".`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>var x = 12;
 var y = 8;
 var res = eval("x+y");
 document.write(res);</pre>`, o: [
-          [`20`, `Correct. eval executes the string as code.`],
+          [`20`, `Correct. eval parses and executes the string "x+y" as JavaScript code, so it returns 12 + 8 = 20 (L9, Built-in functions).`],
           [`x+y`, `eval evaluates the string instead of printing it.`],
-          [`128`, `The values are numbers, so + adds.`],
-          [`None of the above`, `A is correct.`]
+          [`128`, `"128" would be string concatenation, but x and y hold the numbers 12 and 8, so + adds them: 20.`],
+          [`None of the above`, `Wrong because 20 is listed and is the value eval("x+y") returns.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output of the following code snippet?<pre>var a = Math.max();
 var b = Math.min();
 print(a);
 print(b);</pre>`, o: [
           [`-Infinity Infinity`, `Correct. With no arguments max() returns -Infinity and min() returns Infinity.`],
-          [`Infinity -Infinity`, `Reversed.`],
-          [`Infinity Infinity`, `max() is -Infinity.`],
-          [`-Infinity -Infinity`, `min() is Infinity.`]
+          [`Infinity -Infinity`, `This is reversed: with no arguments Math.max() returns -Infinity and Math.min() returns Infinity.`],
+          [`Infinity Infinity`, `Math.min() is Infinity, but Math.max() with no arguments is -Infinity, not Infinity.`],
+          [`-Infinity -Infinity`, `Math.max() is -Infinity, but Math.min() with no arguments is Infinity, not -Infinity.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>var a = Math.max() &lt; Math.min();
 var b = Math.max() &gt; Math.min();
 print(a);
 print(b);</pre>`, o: [
-          [`true false`, `Correct. -Infinity &lt; Infinity.`],
-          [`false true`, `Reversed.`],
-          [`true true`, `Both cannot be true.`],
-          [`false false`, `One of them is true.`]
+          [`true false`, `Correct. Math.max() is -Infinity and Math.min() is Infinity, so -Infinity &lt; Infinity is true and -Infinity &gt; Infinity is false (L9, Math object).`],
+          [`false true`, `This is reversed: Math.max() (-Infinity) is less than Math.min() (Infinity), so a is true and b is false.`],
+          [`true true`, `&lt; and &gt; between two different values cannot both be true; -Infinity &lt; Infinity makes a true and b false.`],
+          [`false false`, `The two values differ (-Infinity and Infinity), so one comparison must be true: a = true, b = false.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What is the output of <code>print(NaN === NaN);</code>?`, o: [
           [`true`, `NaN is never equal to anything, including itself.`],
           [`false`, `Correct. Use isNaN() or Number.isNaN() to test for NaN.`],
-          [`undefined`, `The comparison returns a boolean.`],
-          [`Error`, `Valid code.`]
+          [`undefined`, `=== always returns a boolean (true or false), never undefined; NaN === NaN is false.`],
+          [`Error`, `Comparing NaN with NaN is valid code and throws nothing; it just evaluates to false.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output of <code>print(parseInt("123Hello")); print(parseInt("Hello123"));</code>?`, o: [
           [`123 NaN`, `Correct. parseInt reads leading digits; a string starting with letters gives NaN.`],
-          [`123Hello Hello123`, `parseInt returns numbers.`],
-          [`NaN NaN`, `The first string starts with digits.`],
-          [`123 123`, `The second starts with letters.`]
+          [`123Hello Hello123`, `parseInt returns a number (or NaN), never the original text; it reads leading digits only: 123, then NaN.`],
+          [`NaN NaN`, `"123Hello" starts with digits, so parseInt reads 123 and stops at the letters; only the second gives NaN.`],
+          [`123 123`, `"Hello123" starts with letters, so parseInt finds no leading number and returns NaN, not 123.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>var a = "hello";
 var sum = 0;
@@ -2025,14 +2025,14 @@ for (var i = 0; i &lt; a.length; i++) {
 print(sum);</pre>`, o: [
           [`47`, `Characters are not converted to their codes by -.`],
           [`NaN`, `Correct. "h" - "a" is NaN, and NaN poisons the sum (verified with node).`],
-          [`0`, `No.`],
-          [`None of the above`, `B is correct.`]
+          [`0`, `0 would need every a[i] − 'a' to be 0, but subtracting two letters gives NaN, and NaN + anything is NaN.`],
+          [`None of the above`, `Wrong because NaN is listed and is the result: 'h' − 'a' is NaN, and the sum stays NaN.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `The process in which an object or data structure is translated into a format suitable for transferral over a network, or storage, is called?`, o: [
-          [`Object Serialization`, `Correct (e.g. JSON.stringify).`],
-          [`Object Encapsulation`, `Hiding internal state.`],
-          [`Object Inheritance`, `Reusing a parent's members.`],
-          [`None of the above`, `A is correct.`]
+          [`Object Serialization`, `Correct. Serialization turns an object into a format (such as a JSON string) that can be stored or sent over a network, e.g. JSON.stringify(x) (L9, Data type conversions).`],
+          [`Object Encapsulation`, `Encapsulation means hiding an object's internal state behind its methods; it does not convert the object for transfer.`],
+          [`Object Inheritance`, `Inheritance means an object reusing a parent's members (as with Object.create); it does not convert data for transfer.`],
+          [`None of the above`, `Wrong because Object Serialization is listed and is exactly this process.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>(function () {
   setTimeout(() =&gt; console.log(1), 2000);
@@ -2043,7 +2043,7 @@ print(sum);</pre>`, o: [
           [`1 2 3 4`, `Timers never run before the current code finishes.`],
           [`2 3 4 1`, `Even a 0 ms timer waits until the function ends.`],
           [`2 4 3 1`, `Correct. Synchronous logs first (2, 4), then the 0 ms timer (3), then after 2 s (1).`],
-          [`4 3 2 1`, `2 is logged before 4.`]
+          [`4 3 2 1`, `Synchronous code runs in order, so 2 is logged before 4; the timers then give 3 and, after 2 s, 1: 2 4 3 1.`]
         ], a: 2, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>const set = new Set();
 set.add(5);
@@ -2051,76 +2051,76 @@ set.add('Hello');
 set.add({ name: 'Scaler' });
 for (let item of set) { console.log(item + 6); }</pre>`, o: [
           [`11 NaN NaN`, `+ with a string concatenates rather than giving NaN.`],
-          [`11 NaN [object Object]`, `"Hello" + 6 = "Hello6".`],
-          [`11 Hello6 [object Object]6`, `Correct (verified with node).`],
-          [`None of the above`, `C is correct.`]
+          [`11 NaN [object Object]`, `"Hello" + 6 concatenates to "Hello6" instead of giving NaN, and the object becomes "[object Object]6".`],
+          [`11 Hello6 [object Object]6`, `Correct. 5 + 6 = 11; "Hello" + 6 concatenates to "Hello6"; the object is converted to the string "[object Object]" and then joined with 6 (JavaScript MCQ Sheet; checked with node).`],
+          [`None of the above`, `Wrong because "11 Hello6 [object Object]6" is listed and is exactly what the loop prints.`]
         ], a: 2, src: `JavaScript MCQ Sheet` },
         { q: `How are objects compared when they are checked with the strict equality operator?`, o: [
-          [`The contents of the objects are compared`, `Contents are ignored.`],
+          [`The contents of the objects are compared`, `=== does not look inside objects; two different objects with identical contents are still not equal.`],
           [`Their references are compared`, `Correct. Two distinct objects are never ===, even with equal contents.`],
-          [`Both A and B`, `Only references.`],
-          [`None of the above`, `B is correct.`]
+          [`Both A and B`, `Only references are compared, not contents, so "Both" is wrong.`],
+          [`None of the above`, `Wrong because "Their references are compared" is listed and is the correct answer.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>function test(...args) {
   console.log(typeof args);
 }
 test(12);</pre>`, o: [
-          [`NaN`, `typeof returns a type name.`],
-          [`Number`, `args is the array of arguments, not 12.`],
+          [`NaN`, `typeof always returns a type name, never NaN; args is an array, so it returns "object".`],
+          [`Number`, `The rest parameter ...args collects the arguments into an array [12], so args is not the number 12 itself.`],
           [`Object`, `Correct. Rest parameters form an array, and typeof an array is "object".`],
-          [`Array`, `typeof never returns "array".`]
+          [`Array`, `typeof never returns "array"; arrays are objects, so typeof args is "object".`]
         ], a: 2, src: `JavaScript MCQ Sheet` },
         { q: `What will be the output?<pre>const obj1 = { first: 20, second: 30, first: 50 };
 console.log(obj1);</pre>`, o: [
-          [`{first: 20, second: 30}`, `The later duplicate overwrites.`],
+          [`{first: 20, second: 30}`, `With duplicate keys in a literal the last value wins, so first ends up as 50, not 20.`],
           [`{first: 50, second: 30}`, `Correct. The last value of a duplicate key wins, keeping the first position.`],
-          [`{first: 20, second: 30, first: 50}`, `Keys are unique.`],
-          [`Syntax Error`, `Duplicate keys are allowed.`]
+          [`{first: 20, second: 30, first: 50}`, `An object cannot hold the same key twice; the second first: 50 overwrites the first one.`],
+          [`Syntax Error`, `Duplicate keys in an object literal are allowed in JavaScript; the last value simply wins.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `What happens when we run this code?<pre>function dog() {
   print("I am a dog.");
 }
 dog.sound = "Bark";</pre>`, o: [
-          [`Syntax Error`, `Valid code.`],
-          [`"I am a dog" gets printed`, `dog is never called.`],
-          [`ReferenceError`, `dog is defined.`],
+          [`Syntax Error`, `The code is valid: functions are objects, so adding a property like dog.sound is legal.`],
+          [`"I am a dog" gets printed`, `dog is only defined, never called (no dog()), so its print statement never runs.`],
+          [`ReferenceError`, `dog is declared as a function before dog.sound is set, so there is no ReferenceError.`],
           [`Nothing happens`, `Correct. Functions are objects, so adding a property is fine; nothing is printed.`]
         ], a: 3, src: `JavaScript MCQ Sheet` },
         { q: `What keyword is used to check whether a given property is valid or not?`, o: [
-          [`in`, `Correct. "name" in obj.`],
-          [`is in`, `Not a keyword.`],
-          [`exists`, `Not a keyword.`],
-          [`lies`, `Not a keyword.`]
+          [`in`, `Correct. The in keyword checks whether an object has a property, e.g. "name" in S1 returns true or false (L9, Objects).`],
+          [`is in`, `"is in" is not a JavaScript keyword; a property check uses in alone: "name" in obj.`],
+          [`exists`, `exists is not a JavaScript keyword; a property check uses in: "name" in obj.`],
+          [`lies`, `lies is not a JavaScript keyword; a property check uses in: "name" in obj.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What does the … operator do in JS?`, o: [
-          [`It is used to spread iterables to individual elements`, `Correct. The spread (and rest) operator.`],
-          [`It is used to describe a datatype of undefined size`, `No.`],
-          [`No such operator exists`, `It exists since ES6.`],
-          [`None of the above`, `A is correct.`]
+          [`It is used to spread iterables to individual elements`, `Correct. The ... (spread) operator expands an iterable such as an array into individual elements; in a parameter list the same syntax is the rest parameter (L9, Functions).`],
+          [`It is used to describe a datatype of undefined size`, `... does not describe any data type; it spreads an iterable into elements (or collects arguments as a rest parameter).`],
+          [`No such operator exists`, `The operator exists since ES6: spread (and rest, as in function calc(...A) in L9).`],
+          [`None of the above`, `Wrong because A is listed and correct: ... spreads iterables into individual elements.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `Which of the following are closures in JavaScript?`, o: [
-          [`Variables`, `A closure is a function with its scope.`],
+          [`Variables`, `A variable is just a stored value; a closure is a function that keeps access to the variables of its outer scope.`],
           [`Functions`, `Correct. Every function in JS creates a closure over its scope.`],
-          [`Objects`, `No.`],
-          [`All of the above`, `Only functions.`]
+          [`Objects`, `Plain objects are not closures; a closure is a function together with the outer variables it can still access.`],
+          [`All of the above`, `Only functions form closures, not variables or objects, so "All of the above" is wrong.`]
         ], a: 1, src: `JavaScript MCQ Sheet` },
         { q: `How to stop an interval timer in JavaScript?`, o: [
-          [`clearInterval`, `Correct.`],
-          [`clearTimer`, `Not a function.`],
-          [`intervalOver`, `Not a function.`],
-          [`None of the above`, `A is correct.`]
+          [`clearInterval`, `Correct. setInterval returns an id, and clearInterval(id) stops that repeating timer (clearTimeout stops a setTimeout) (JavaScript MCQ Sheet).`],
+          [`clearTimer`, `clearTimer does not exist in JavaScript; an interval is stopped with clearInterval.`],
+          [`intervalOver`, `intervalOver does not exist in JavaScript; an interval is stopped with clearInterval.`],
+          [`None of the above`, `Wrong because clearInterval is listed and is the function that stops an interval timer.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What keyword is used to declare an asynchronous function in JavaScript?`, o: [
-          [`async`, `Correct.`],
-          [`await`, `Used inside async functions.`],
-          [`setTimeout`, `A timer function.`],
-          [`None of the above`, `A is correct.`]
+          [`async`, `Correct. Writing async before function declares an asynchronous function that returns a Promise; await can then be used inside it (JavaScript MCQ Sheet).`],
+          [`await`, `await is used inside an async function to wait for a Promise; it does not declare the function.`],
+          [`setTimeout`, `setTimeout is a function that schedules code after a delay, not a keyword for declaring functions.`],
+          [`None of the above`, `Wrong because async is listed and is the keyword that declares an asynchronous function.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `What does the toLocaleString() method do in JS?`, o: [
-          [`Returns a localized object representation.`, `It returns a string.`],
-          [`Returns a parsed string.`, `No parsing.`],
+          [`Returns a localized object representation.`, `toLocaleString() returns a string, not an object; it formats the value for the user's locale.`],
+          [`Returns a parsed string.`, `toLocaleString() does not parse anything; it formats a value (number, date) as a locale-aware string.`],
           [`Returns a localized string representation of an object.`, `Correct (the sheet misspells it "toLocateString").`],
-          [`None of the above.`, `C is correct.`]
+          [`None of the above.`, `Wrong because C is listed and correct: it returns a localized string representation.`]
         ], a: 2, src: `JavaScript MCQ Sheet` },
         { q: `What will be shown in #example?<pre>&lt;p id="example"&gt;&lt;/p&gt;
 &lt;script&gt;
@@ -2129,21 +2129,21 @@ function Func() {
 }
 &lt;/script&gt;</pre>`, o: [
           [`9`, `Sheet's answer: what Func would write. Strictly, Func is never called, so the paragraph stays empty.`],
-          [`81`, `sqrt(81) is 9.`],
-          [`Error`, `No error.`],
-          [`0`, `No.`]
+          [`81`, `81 is the argument; Math.sqrt(81) returns its square root, 9, which is what Func would write.`],
+          [`Error`, `Defining a function that is never called is not an error, and Math.sqrt(81) is valid; nothing fails.`],
+          [`0`, `0 is not the square root of 81; Math.sqrt(81) is 9, which is what Func would write.`]
         ], a: 0, src: `JavaScript MCQ Sheet` },
         { q: `Which of the following is a valid way to convert a string to a number in JavaScript?`, o: [
-          [`parseInt("42")`, `Valid, but not the only one.`],
-          [`Number("42")`, `Valid, but not the only one.`],
-          [`parseFloat("42")`, `Valid, but not the only one.`],
-          [`All of them`, `Correct.`]
+          [`parseInt("42")`, `parseInt("42") works, but Number("42") and parseFloat("42") do too, so the answer is "All of them".`],
+          [`Number("42")`, `Number("42") works, but parseInt("42") and parseFloat("42") do too, so the answer is "All of them".`],
+          [`parseFloat("42")`, `parseFloat("42") works, but parseInt("42") and Number("42") do too, so the answer is "All of them".`],
+          [`All of them`, `Correct. The lecture lists unary +, Number(x), parseInt(x) and parseFloat(x) as ways to turn a string into a number; all three give 42 (L9, Data type conversions).`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `What is the result of <code>"Apple, Banana, Kiwi".substring(6, 13)</code>?`, o: [
           [`"Banana"`, `The slide says Banana, but index 6 is the space after the comma.`],
           [`" Banana"`, `Correct. Characters 6 to 12, starting with a space (verified with node).`],
-          [`"Banana,"`, `Index 13 is excluded.`],
-          [`" Banana, Kiwi"`, `That is substring(6).`]
+          [`"Banana,"`, `"Banana," would include index 13, but substring excludes its end index; it also misses the leading space at index 6.`],
+          [`" Banana, Kiwi"`, `" Banana, Kiwi" is substring(6), which runs to the end; substring(6, 13) stops before index 13.`]
         ], a: 1, src: `Lecture 9 example` }
       ]
     },
@@ -2288,27 +2288,27 @@ echo "</table>";
       ],
       quiz: [
         { q: `What is PHP?`, o: [
-          [`PHP is an open-source programming language`, `True, but not the only correct statement.`],
-          [`PHP is used to develop dynamic and interactive websites`, `True, but not the only correct statement.`],
-          [`PHP is a server-side scripting language`, `True, but not the only correct statement.`],
+          [`PHP is an open-source programming language`, `True (PHP is free and open source), but the other two statements are true as well, so "All of the mentioned" is the answer.`],
+          [`PHP is used to develop dynamic and interactive websites`, `True (PHP makes pages dynamic), but the other two statements are true as well, so "All of the mentioned" is the answer.`],
+          [`PHP is a server-side scripting language`, `True (PHP runs on the server), but the other two statements are true as well, so "All of the mentioned" is the answer.`],
           [`All of the mentioned`, `Correct. All three statements describe PHP (L10).`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `Which of the following is the correct syntax to write PHP code?`, o: [
           [`&lt;?php ?&gt;`, `Correct. Code between &lt;?php and ?&gt; is executed as PHP.`],
-          [`&lt; php &gt;`, `Not a PHP delimiter.`],
-          [`&lt; ? php ?&gt;`, `No spaces are allowed inside &lt;?php.`],
+          [`&lt; php &gt;`, `&lt; php &gt; is not a PHP delimiter; PHP code is written between &lt;?php and ?&gt;.`],
+          [`&lt; ? php ?&gt;`, `The opening tag must be written &lt;?php with no spaces; with spaces PHP does not recognize it.`],
           [`&lt;? ?&gt;`, `Short tags exist but are often disabled; the standard form is A.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Which is the right way of declaring a variable in PHP?`, o: [
-          [`$3hello`, `A name cannot start with a digit after $.`],
+          [`$3hello`, `After the $ the name cannot start with a digit, so $3hello is invalid; it must start with a letter or underscore.`],
           [`$_hello`, `Correct. Starts with $ followed by an underscore.`],
-          [`$this`, `$this is reserved for the current object.`],
-          [`$5_Hello`, `Starts with a digit.`]
+          [`$this`, `$this is reserved (it refers to the current object), so it cannot be used as an ordinary variable name.`],
+          [`$5_Hello`, `After the $ the name cannot start with a digit, so $5_Hello is invalid.`]
         ], a: 1, src: `Exam 2025/26, 2024/25, 2023/24` },
         { q: `How to define a function in PHP?`, o: [
-          [`functionName(parameters) {function body}`, `The keyword "function" is missing.`],
-          [`function {function body}`, `The name and parameters are missing.`],
-          [`function functionName(parameters) {function body}`, `Correct.`],
+          [`functionName(parameters) {function body}`, `The keyword function is missing; without it PHP reads this as a call to functionName, not a definition.`],
+          [`function {function body}`, `The function name and parameter list are missing; a PHP function is function name($param) { ... }.`],
+          [`function functionName(parameters) {function body}`, `Correct. A PHP function starts with the keyword function, then the name and parameters, with no return type: function name($param) { ... return $value; } (L10).`],
           [`data type functionName(parameters) {function body}`, `That is C/Java style; PHP has no leading return type.`]
         ], a: 2, src: `Exam 2024/25, 2023/24` },
         { q: `What will be the output of the following PHP code?<pre>&lt;?php
@@ -2317,14 +2317,14 @@ echo $GREETING;
 ?&gt;</pre>`, o: [
           [`$GREETING`, `echo prints the value of the variable, not its name.`],
           [`no output`, `Correct (key answer). $GREETING is an undefined variable (constants are used without $), so nothing is echoed; PHP 8 also emits an "Undefined variable" warning if errors are displayed.`],
-          [`PHP is a scripting language`, `That needs echo GREETING; (no $).`],
-          [`GREETING`, `Not printed.`]
+          [`PHP is a scripting language`, `The text prints only with echo GREETING; (constants are used without $); $GREETING is an undefined variable.`],
+          [`GREETING`, `echo never prints the constant's name; and $GREETING is a different, undefined variable, so nothing is printed.`]
         ], a: 1, src: `Exam 2024/25, 2023/24` },
         { q: `What will be the output of the following PHP code?<pre>&lt;?php $a = "$winner"; $b = "/$looser"; echo $a,$b; ?&gt;</pre>`, o: [
           [`/`, `Correct. Inside double quotes the undefined variables $winner and $looser are replaced by empty strings, so $a = "" and $b = "/".`],
           [`$looser`, `Double quotes interpolate, they do not print the name.`],
-          [`/$looser`, `$looser is interpolated (as empty).`],
-          [`$winner/$looser`, `That would need single quotes.`]
+          [`/$looser`, `Double quotes interpolate $looser, which is undefined and becomes an empty string, so $b is just "/".`],
+          [`$winner/$looser`, `Printing the names literally would need single quotes; in double quotes both undefined variables become empty, leaving "/".`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `What will be the output?<pre>&lt;?php
 function MXX($m, $n) {
@@ -2336,8 +2336,8 @@ echo MXX(81,3) . "\\n";
 ?&gt;</pre>`, o: [
           [`6 and 27`, `Those are the integer quotients, not the returned values.`],
           [`1 and 0`, `Correct. MXX computes the remainder without %: 13 - 2*6 = 1; 81 - 3*27 = 0.`],
-          [`1.5 and 0`, `(int) truncates 6.5 to 6, giving 1.`],
-          [`0 and 1`, `Order reversed.`]
+          [`1.5 and 0`, `(int) truncates 13 / 2 = 6.5 to 6, so the function returns 13 − 2×6 = 1, a whole number; 1.5 never appears.`],
+          [`0 and 1`, `The order is reversed: MXX(13,2) is echoed first and gives 1, then MXX(81,3) gives 0.`]
         ], a: 1, src: `Exam 2023/24; Sheet 3 (PHP)` },
         { q: `What will be the output?<pre>&lt;?php
 function XXX($x, $y) {
@@ -2350,58 +2350,58 @@ function XXX($x, $y) {
 }
 echo XXX(("10 12 3"), ("1 3 3")) . "\\n";
 ?&gt;</pre>`, o: [
-          [`11 15 6`, `Elements are multiplied, not added.`],
-          [`10 36 9`, `Correct. 10*1, 12*3, 3*3 joined with spaces.`],
+          [`11 15 6`, `11 15 6 adds the pairs (10+1, 12+3, 3+3), but the loop multiplies them: $a[$key] * $b[$key].`],
+          [`10 36 9`, `Correct. explode splits both strings into arrays, the loop multiplies matching elements (10×1, 12×3, 3×3), and implode joins them with spaces: 10 36 9 (Sheet 3).`],
           [`360`, `implode joins; it does not multiply everything.`],
-          [`10 12 3 1 3 3`, `That would be concatenation.`]
+          [`10 12 3 1 3 3`, `Joining both inputs would be concatenation; the function multiplies element by element and returns only the 3 products.`]
         ], a: 1, src: `Exam 2023/24 (May); Sheet 3 (PHP)` },
         { q: `With <code>$d = 'A00';</code>, what does <code>for ($n=0; $n&lt;5; $n++) echo ++$d . "\\n";</code> print first and last?`, o: [
           [`A01 ... A05`, `Correct. PHP increments alphanumeric strings like a counter (Sheet 3 answer).`],
-          [`1 ... 5`, `The string is not converted to a number.`],
+          [`1 ... 5`, `PHP does not turn 'A00' into a number; ++ on such a string increments it like a counter: A01, A02...`],
           [`B00 ... F00`, `The rightmost character is incremented first.`],
-          [`Error`, `Incrementing strings is allowed.`]
+          [`Error`, `Incrementing an alphanumeric string is allowed in PHP; 'A00' becomes 'A01' and so on, with no error.`]
         ], a: 0, src: `Sheet 3 (PHP)` },
         { q: `What does <code>echo 5 + "7";</code> print in PHP?`, o: [
-          [`57`, `PHP concatenation uses ".", not "+".`],
+          [`57`, `57 would be concatenation, which in PHP uses the period (.), not +; with + the string is converted to a number.`],
           [`12`, `Correct. The string is converted to a number on +.`],
-          [`Error`, `PHP converts automatically.`],
-          [`5`, `"7" is numeric.`]
+          [`Error`, `PHP converts a numeric string automatically on +, so there is no error: 5 + "7" is 12.`],
+          [`5`, `"7" is a numeric string, so it is converted to 7 and added, giving 12, not ignored.`]
         ], a: 1, src: `Lecture 10 example` },
         { q: `What does <code>5 . "2 turtle doves"</code> give in PHP?`, o: [
-          [`7`, `That is 5 + "2 turtle doves".`],
-          [`"52 turtle doves"`, `Correct. "." concatenates.`],
-          [`"5 2 turtle doves"`, `No space is added.`],
-          [`Error`, `Valid.`]
+          [`7`, `7 is what 5 + "2 turtle doves" gives (numeric addition); the period operator concatenates instead.`],
+          [`"52 turtle doves"`, `Correct. The period (.) is PHP's string concatenation operator, so 5 is joined with the text: "52 turtle doves" (L10, Operators).`],
+          [`"5 2 turtle doves"`, `Concatenation joins the strings exactly as they are, so no space is inserted between 5 and 2.`],
+          [`Error`, `5 . "2 turtle doves" is valid; the number 5 is converted to a string and joined.`]
         ], a: 1, src: `Lecture 10 example` },
         { q: `<code>$favorite_food = "Ethiopian"; print $favorite_food[2];</code> prints:`, o: [
-          [`t`, `t is at index 1.`],
-          [`h`, `Correct. Zero-based: E=0, t=1, h=2.`],
-          [`i`, `i is at index 3.`],
-          [`Ethiopian`, `Brackets select one character.`]
+          [`t`, `t is at index 1; strings are zero-based (E=0, t=1, h=2), so [2] is h.`],
+          [`h`, `Correct. String indexing is zero-based: E=0, t=1, h=2, so $favorite_food[2] is "h" (L10, Strings).`],
+          [`i`, `i is at index 3; index 2 is h (E=0, t=1, h=2).`],
+          [`Ethiopian`, `The [2] after the variable selects a single character, not the whole string.`]
         ], a: 1, src: `Lecture 10 example` },
         { q: `With <code>$age = 16;</code>, what does <code>print 'You are $age years old.';</code> print?`, o: [
-          [`You are 16 years old.`, `That needs double quotes.`],
+          [`You are 16 years old.`, `Replacing $age with 16 happens only in double-quoted strings; single-quoted strings are printed literally.`],
           [`You are $age years old.`, `Correct. Single-quoted strings are not interpreted.`],
-          [`You are  years old.`, `The variable is not looked up at all.`],
-          [`Error`, `Valid code.`]
+          [`You are  years old.`, `Single quotes do not look up the variable at all, so $age is printed as text rather than as an empty value.`],
+          [`Error`, `Single-quoted strings are valid PHP; they are simply not interpreted, so the text prints as written.`]
         ], a: 1, src: `Lecture 10 example` },
         { q: `Which value is TRUE in PHP?`, o: [
-          [`"0"`, `The string "0" is FALSE.`],
-          [`""`, `The empty string is FALSE.`],
-          [`array()`, `An array with 0 elements is FALSE.`],
+          [`"0"`, `The string "0" is in the lecture's FALSE list (with ""), so it is not TRUE.`],
+          [`""`, `The empty string "" is in the lecture's FALSE list, so it is not TRUE.`],
+          [`array()`, `An array with 0 elements is in the lecture's FALSE list, so array() is not TRUE.`],
           [`"0.00"`, `Correct. Per the lecture, "0.00" is not in the FALSE list, so it is TRUE.`]
         ], a: 3, src: `Lecture 10 example` },
         { q: `<code>$a = 7 / 2; $b = (int) $a; $c = round($a);</code> gives:`, o: [
-          [`$a = 3, $b = 3, $c = 3`, `int / int can produce a float.`],
+          [`$a = 3, $b = 3, $c = 3`, `Dividing two ints in PHP can give a float, so 7 / 2 is 3.5, not 3; and round(3.5) is 4.`],
           [`$a = 3.5, $b = 3, $c = 4`, `Correct. (int) truncates; round gives 4.0 (float).`],
-          [`$a = 3.5, $b = 4, $c = 4`, `(int) truncates, it does not round.`],
-          [`$a = 3.5, $b = 3.5, $c = 3`, `No.`]
+          [`$a = 3.5, $b = 4, $c = 4`, `(int) cuts off the fraction instead of rounding, so (int) 3.5 is 3, not 4.`],
+          [`$a = 3.5, $b = 3.5, $c = 3`, `(int) converts 3.5 to the integer 3, and round(3.5) is 4, so $b = 3.5 and $c = 3 are both wrong.`]
         ], a: 1, src: `Lecture 10 example` },
         { q: `<code>echo trim("Hello World!", "Hed!");</code> prints:`, o: [
           [`Hello World!`, `trim removes the listed characters from both ends.`],
           [`llo Worl`, `Correct. Leading H, e and trailing !, d are removed; stops at l on both sides.`],
-          [`llo World`, `d is also in the list.`],
-          [`lo Wor`, `l is not in the list.`]
+          [`llo World`, `d is in the character list "Hed!", so after ! is removed the trailing d is removed too, leaving "llo Worl".`],
+          [`lo Wor`, `l is not in the list "Hed!", so trim stops at the first l on each side: "llo Worl".`]
         ], a: 1, src: `Lecture 10 example` }
       ]
     }
@@ -2409,36 +2409,36 @@ echo XXX(("10 12 3"), ("1 3 3")) . "\\n";
   exams: [
     { title: `Final Exam 2025/2026`, meta: `January 2026 · CS206 · 2nd CS (New Cr) · 2 hours · 60 marks · Dr. M. AbdelFattah, Dr. M. Awad`, note: `Transcribed from four phone photos (and the identical scan in the student PDF). No official key; answers are worked from the lectures and every code output was run with node (JS) or traced by hand (PHP). Some options carry pencil marks from a student: Q7 is ticked as "0 1 2", which is wrong (the correct output is undefined undefined undefined). Q3 and Q5 use print(), which is not standard browser JS; read print as console.log.`, sections: [
         { title: `Question 1 · Choose the correct answer`, marks: `30 marks`, items: [
-            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).` },
-            { type: `mcq`, q: `What is PHP?`, o: [`PHP is an open-source programming language`, `PHP is used to develop dynamic and interactive websites`, `PHP is a server-side scripting language`, `All of the mentioned`], a: 3, why: `All three statements are true: PHP is free and open source, server-side, and used to make pages dynamic (L10).` },
+            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).`, ow: [`document.write() is one output method, but console.log() and window.alert() are too, so "All of the above" is the full answer.`, `console.log() is one output method (to the console), but document.write() and window.alert() are too, so the answer is "All of the above".`, `window.alert() is one output method (an alert box), but document.write() and console.log() are too, so the answer is "All of the above".`, null] },
+            { type: `mcq`, q: `What is PHP?`, o: [`PHP is an open-source programming language`, `PHP is used to develop dynamic and interactive websites`, `PHP is a server-side scripting language`, `All of the mentioned`], a: 3, why: `All three statements are true: PHP is free and open source, server-side, and used to make pages dynamic (L10).`, ow: [`True (PHP is free and open source), but the other two statements are true as well, so "All of the mentioned" is the answer.`, `True (PHP makes pages dynamic), but the other two statements are true as well, so "All of the mentioned" is the answer.`, `True (PHP runs on the server), but the other two statements are true as well, so "All of the mentioned" is the answer.`, null] },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>var a = true + true + true * 3;
-print(a)</pre>`, o: [`3`, `0`, `Error`, `5`], a: 3, why: `In arithmetic true = 1: 1 + 1 + (1 * 3) = 5 (L8).` },
-            { type: `mcq`, q: `Which of the following is the correct syntax to write a PHP code?`, o: [`&lt;?php ?&gt;`, `&lt; php &gt;`, `&lt; ? php ?&gt;`, `&lt;? ?&gt;`], a: 0, why: `PHP code goes between &lt;?php and ?&gt; (L10).` },
+print(a)</pre>`, o: [`3`, `0`, `Error`, `5`], a: 3, why: `In arithmetic true = 1: 1 + 1 + (1 * 3) = 5 (L8).`, ow: [`true*3 is 3, but the two other trues are added too.`, `In arithmetic true converts to 1, not 0, so the sum is 1 + 1 + 1×3 = 5; 0 would need every true to count as 0.`, `Booleans convert to numbers in arithmetic; no error.`, null] },
+            { type: `mcq`, q: `Which of the following is the correct syntax to write a PHP code?`, o: [`&lt;?php ?&gt;`, `&lt; php &gt;`, `&lt; ? php ?&gt;`, `&lt;? ?&gt;`], a: 0, why: `PHP code is written between the opening tag &lt;?php and the closing tag ?&gt;; everything outside them is sent as plain HTML (L10, Basic syntax).`, ow: [null, `&lt; php &gt; is not a PHP delimiter; PHP code is written between &lt;?php and ?&gt;.`, `The opening tag must be written &lt;?php with no spaces; with spaces PHP does not recognize it.`, `Short tags exist but are often disabled; the standard form is A.`] },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>a = [1, 2, 3, 4, 5];
-print(a.slice(2, 4));</pre>`, o: [`3, 4`, `2, 3`, `3, 4, 5`, `2, 3, 4`], a: 0, why: `slice(2,4) copies indexes 2 and 3 (end excluded) = [3, 4] (L8).` },
-            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).` },
+print(a.slice(2, 4));</pre>`, o: [`3, 4`, `2, 3`, `3, 4, 5`, `2, 3, 4`], a: 0, why: `slice(2,4) copies indexes 2 and 3 (end excluded) = [3, 4] (L8).`, ow: [null, `2, 3 are the values at indexes 1 and 2; slice(2, 4) starts at index 2 (value 3) and stops before index 4.`, `slice excludes its end index, so index 4 (value 5) is not included; the result is indexes 2 and 3: 3, 4.`, `2, 3, 4 treats the arguments as 1-based positions; indexes start at 0, so slice(2, 4) gives indexes 2 and 3: 3, 4.`] },
+            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).`, ow: [`After the $ the name cannot start with a digit, so $3hello is invalid; it must start with a letter or underscore.`, null, `$this is reserved (it refers to the current object), so it cannot be used as an ordinary variable name.`, `After the $ the name cannot start with a digit, so $5_Hello is invalid.`] },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>const example = ({ a, b, c }) =&gt; {
   console.log(a, b, c);
 };
-example(0, 1, 2);</pre>`, o: [`0 1 2`, `0 Undefined Undefined`, `Undefined Undefined Undefined`, `None of the above`], a: 2, why: `The function destructures one object argument; 0 has no a, b or c properties, so all three are undefined (verified with node) (L9).`, key: `The photo has a pencil tick on A (0 1 2); that is wrong.` },
-            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php $a = "$winner"; $b = "/$looser"; echo $a,$b; ?&gt;</pre>`, o: [`/`, `$looser`, `/$looser`, `$winner/$looser`], a: 0, why: `Double-quoted strings are interpolated: $winner and $looser are undefined (empty), so $a = "" and $b = "/"; echo prints "/" (with "Undefined variable" warnings if errors are displayed) (L10).` },
-            { type: `mcq`, q: `How do we write a comment in javascript?`, o: [`\\*comment *\\`, `// comment`, `# comment`, `$ comment`], a: 1, why: `// starts a single-line JS comment (/* */ is the multi-line form; the backslash version in A is wrong) (L7).` },
-            { type: `mcq`, q: `Which of the following property is used to specify table borders in CSS?`, o: [`table`, `border`, `table:border`, `none of the mentioned`], a: 1, why: `table, th, td { border: 1px solid black; } (L5).` },
-            { type: `mcq`, q: `Which of the following property is used to control the space between the border and content in a table?`, o: [`border`, `margin`, `padding`, `resize`], a: 2, why: `Padding is the space between content and border; margin is outside the border (L4).` },
-            { type: `mcq`, q: `Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?`, o: [`Src`, `Longdesc`, `alt`, `title`], a: 2, why: `alt is the required alternate text attribute (L2).` },
-            { type: `mcq`, q: `What is the correct HTML for referring to an external style sheet?`, o: [`&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;`, `&lt;stylesheet&gt;mystyle.css&lt;/stylesheet&gt;`, `&lt;style src="mystyle.css"&gt;`, `Not Found`], a: 0, why: `External CSS is linked with &lt;link rel="stylesheet" href="..."&gt; in the head (L4).` },
-            { type: `mcq`, q: `Which CSS property controls the text size?`, o: [`text-style`, `text-size`, `font-style`, `font-size`], a: 3, why: `font-size (L3/L4).` },
-            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).` },
-            { type: `mcq`, q: `Colors are defined in HTML using?`, o: [`RGB Values`, `Hex Values`, `RGBA Values`, `All of the above`], a: 3, why: `Colors can be names, RGB, HEX, HSL, RGBA or HSLA (L3).` },
+example(0, 1, 2);</pre>`, o: [`0 1 2`, `0 Undefined Undefined`, `Undefined Undefined Undefined`, `None of the above`], a: 2, why: `The function destructures one object argument; 0 has no a, b or c properties, so all three are undefined (verified with node) (L9).`, ow: [`The function destructures ONE object parameter; 0 is not an object with a, b, c.`, `a is read from the number 0's properties, not the number itself.`, null, `Wrong because "undefined undefined undefined" is listed and is what runs: destructuring 0 finds no a, b or c properties.`], key: `The photo has a pencil tick on A (0 1 2); that is wrong.` },
+            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php $a = "$winner"; $b = "/$looser"; echo $a,$b; ?&gt;</pre>`, o: [`/`, `$looser`, `/$looser`, `$winner/$looser`], a: 0, why: `Double-quoted strings are interpolated: $winner and $looser are undefined (empty), so $a = "" and $b = "/"; echo prints "/" (with "Undefined variable" warnings if errors are displayed) (L10).`, ow: [null, `Double quotes interpolate, they do not print the name.`, `Double quotes interpolate $looser, which is undefined and becomes an empty string, so $b is just "/".`, `Printing the names literally would need single quotes; in double quotes both undefined variables become empty, leaving "/".`] },
+            { type: `mcq`, q: `How do we write a comment in javascript?`, o: [`\\*comment *\\`, `// comment`, `# comment`, `$ comment`], a: 1, why: `// starts a single-line JS comment (/* */ is the multi-line form; the backslash version in A is wrong) (L7).`, ow: [`\\* ... *\\ uses backslashes, which do not form a comment in JavaScript; the multi-line form is /* ... */ with forward slashes.`, null, `# starts a comment in PHP (and Python), not in JavaScript, where comments are // and /* */.`, `$ does not start a comment; it is just a character allowed in variable names. JS comments are // and /* */.`] },
+            { type: `mcq`, q: `Which of the following property is used to specify table borders in CSS?`, o: [`table`, `border`, `table:border`, `none of the mentioned`], a: 1, why: `table, th, td { border: 1px solid black; } (L5).`, ow: [`table is an element selector that picks which elements to style, not a property; the property that draws the borders is border.`, null, `table:border is not valid CSS; the selector and property are written as table {border: 1px solid black;}.`, `Wrong because border is listed and is the property used: table, th, td {border: 1px solid black;}.`] },
+            { type: `mcq`, q: `Which of the following property is used to control the space between the border and content in a table?`, o: [`border`, `margin`, `padding`, `resize`], a: 2, why: `Padding is the space between content and border; margin is outside the border (L4).`, ow: [`border draws the line around the element itself; the space between that border and the content is padding.`, `margin is the space outside the border, between the element and its neighbors, not between border and content.`, null, `resize controls whether the user can resize an element; it has nothing to do with spacing in the box model.`] },
+            { type: `mcq`, q: `Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?`, o: [`Src`, `Longdesc`, `alt`, `title`], a: 2, why: `alt is the required alternate text attribute (L2).`, ow: [`src gives the path of the image file to display; if that image cannot be displayed, the text shown instead comes from alt.`, `longdesc pointed to a long description page; it is not the alternate text.`, null, `title gives extra information shown as a tooltip when the mouse is over the element; it is not the replacement text for a missing image.`] },
+            { type: `mcq`, q: `What is the correct HTML for referring to an external style sheet?`, o: [`&lt;link rel="stylesheet" type="text/css" href="mystyle.css"&gt;`, `&lt;stylesheet&gt;mystyle.css&lt;/stylesheet&gt;`, `&lt;style src="mystyle.css"&gt;`, `Not Found`], a: 0, why: `External CSS is linked with &lt;link rel="stylesheet" href="..."&gt; in the head (L4).`, ow: [null, `There is no &lt;stylesheet&gt; element in HTML; an external sheet is attached with &lt;link rel="stylesheet" href="..."&gt; in the head.`, `&lt;style&gt; holds internal CSS written inside the page and has no src attribute; an external file is referred to with &lt;link&gt;.`, `Wrong because the &lt;link rel="stylesheet" ... href="mystyle.css"&gt; option is listed and is the correct way.`] },
+            { type: `mcq`, q: `Which CSS property controls the text size?`, o: [`text-style`, `text-size`, `font-style`, `font-size`], a: 3, why: `font-size sets the size of text, e.g. h1 {font-size: 300%;} or 16px; font-style only sets italic/normal (L3/L4).`, ow: [`text-style is not a CSS property; text size is set with font-size, e.g. font-size:300% or 16px.`, `text-size is not a CSS property, even though the name sounds right; text size is set with font-size.`, `font-style sets normal, italic or oblique text, not its size; the size is font-size.`, null] },
+            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).`, ow: [null, `JSON.parse() does the reverse: it turns a JSON string back into the original object; serializing is stringify().`, `convert() is not a method of the JSON object; an object is serialized with JSON.stringify().`, `Wrong because stringify() is listed and is the method that serializes an object to a JSON string.`] },
+            { type: `mcq`, q: `Colors are defined in HTML using?`, o: [`RGB Values`, `Hex Values`, `RGBA Values`, `All of the above`], a: 3, why: `Colors can be names, RGB, HEX, HSL, RGBA or HSLA (L3).`, ow: [`RGB values are one valid way, but so are HEX and RGBA (and names, HSL, HSLA), so "All of the above" is the full answer.`, `HEX values such as #ff6347 are one valid way, but RGB and RGBA also work, so "All of the above" is the full answer.`, `RGBA values are one valid way, but RGB and HEX also work, so "All of the above" is the full answer.`, null] },
             { type: `mcq`, q: `What is the purpose of a SQL injection attack?`, o: [
                 `Improving website aesthetics`,
                 `Injecting malicious scripts into web pages`,
                 `Gaining unauthorized access to a database by manipulating SQL queries`,
                 `Enhancing server performance`
-              ], a: 2, why: `SQL injection inserts rogue code into queries to change tables, get information or delete data (L1). B describes XSS.` },
-            { type: `mcq`, q: `What is the purpose of encrypting data in transit?`, o: [`Improving website aesthetics`, `Optimizing server processing speed`, `Protecting data from interception during transmission`, `Enhancing user interfaces`], a: 2, why: `Encryption (SSL/HTTPS) protects data while it travels (L1).` },
-            { type: `mcq`, q: `In HTML, which attribute is used to create a link that opens in a new window tab?`, o: [`src="_blank"`, `alt="_blank"`, `target="_self"`, `target="_blank"`], a: 3, why: `target="_blank" opens a new tab; _self is the same tab (L2).` },
-            { type: `mcq`, q: `How to create a checkbox in HTML Form?`, o: [`&lt;input type="text"&gt;`, `&lt;input type="textarea"&gt;`, `&lt;input type="checkbox"&gt;`, `&lt;input type="button"&gt;`], a: 2, why: `type="checkbox" lets the user select zero or more options (L6).` }
+              ], a: 2, why: `SQL injection inserts rogue code into queries to change tables, get information or delete data (L1). B describes XSS.`, ow: [`SQL injection is an attack, not a design improvement.`, `That describes Cross Site Scripting (XSS), which injects client-side script.`, null, `SQL injection does nothing for performance; it is an attack in which rogue code is inserted into a query to change tables, steal information or delete data.`] },
+            { type: `mcq`, q: `What is the purpose of encrypting data in transit?`, o: [`Improving website aesthetics`, `Optimizing server processing speed`, `Protecting data from interception during transmission`, `Enhancing user interfaces`], a: 2, why: `Encryption (SSL/HTTPS) protects data while it travels (L1).`, ow: [`Encryption has nothing to do with appearance; it scrambles data so that someone intercepting it in transit cannot read it.`, `Encryption adds work; it does not speed up processing.`, null, `Encryption is invisible to the user interface; its purpose is to protect data from interception while it travels (SSL/HTTPS).`] },
+            { type: `mcq`, q: `In HTML, which attribute is used to create a link that opens in a new window tab?`, o: [`src="_blank"`, `alt="_blank"`, `target="_self"`, `target="_blank"`], a: 3, why: `target="_blank" opens a new tab; _self is the same tab (L2).`, ow: [`src gives the address of an embedded resource such as an image; where a link opens is set by target, e.g. target="_blank".`, `alt is the alternate text shown when an image cannot be displayed; where a link opens is set by the target attribute.`, `target="_self" is the default and opens the link in the same frame/tab; a new window or tab needs target="_blank".`, null] },
+            { type: `mcq`, q: `How to create a checkbox in HTML Form?`, o: [`&lt;input type="text"&gt;`, `&lt;input type="textarea"&gt;`, `&lt;input type="checkbox"&gt;`, `&lt;input type="button"&gt;`], a: 2, why: `type="checkbox" lets the user select zero or more options (L6).`, ow: [`type="text" (the default) gives a single-line text field; a box the user can tick is type="checkbox".`, `textarea is a separate element, not an input type.`, null, `type="button" gives a clickable push button that does nothing by itself; a tick box is type="checkbox".`] }
           ] },
         { title: `Question 2 · Theory and code output`, marks: `15 marks`, items: [
             { type: `written`, q: `(a)(i) [3 marks] Explain different design issues at the time of designing an effective website.`, ans: `<b>1) Information availability</b>: include all information that helps visitors decide; a good site provides 80-90% of what the visitor looks for.<br><b>2) Page layout</b>: content arranged so visitors find relevant content quickly, otherwise they lose interest and leave; keep the page simple.<br><b>3) Colors</b>: use standard colors (blue links, violet visited links, red active links) to avoid confusing visitors.<br><b>4) Web accessibility</b>: usable and contributable by everyone, including people with visual, audio, physical or speech disabilities.<br><b>5) User-friendly site</b>: built on what the audience requires (UI/UX).<br><b>6) Download speed</b>: cannot be determined by the designer, but optimize graphics (images not larger than 10 KB), make smaller pages and avoid nested tables. (L1)` },
@@ -2566,39 +2566,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ] },
     { title: `Final Exam 2024/2025`, meta: `January 2025 · CS206 · 2nd CS (New Cr) · 2 hours · 60 marks · Dr. M. AbdelFattah and a second examiner`, note: `Transcribed from two phone photos (also included in the student solution PDF). The student key (Abdullah Elwan) for Q1 is 1-C, 2-A, 3-A, 4-D, 5-C, 6-B, 7-C, 8-A, 9-A, 10-C, 11-A, 12-C, 13-B, 14-C, 15-C, 16-A, 17-C, 18-B, 19-B, 20-B and agrees with the answers here. In Q2(b)(ii) the student explains array_slice as taking a start and END index; it actually takes an offset and a LENGTH (the result is the same here by coincidence). All JS outputs verified with node; PHP traced by hand.`, sections: [
         { title: `Question 1 · Choose the correct answer`, marks: `20 marks`, items: [
-            { type: `mcq`, q: `What will be the output of the following code snippet?<pre>(function (a) { return (function () { console.log(a); a = 6; })() })(21);</pre>`, o: [`6`, `NaN`, `21`, `None of the above`], a: 2, why: `The inner function prints the outer a (21) through closure before assigning 6. Verified with node (L9).` },
-            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).` },
-            { type: `mcq`, q: `How can a datatype be declared to be a constant type?`, o: [`const`, `var`, `let`, `constant`], a: 0, why: `const declares a constant that cannot be reassigned (L7).` },
-            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).` },
-            { type: `mcq`, q: `Which of the following methods is used to access HTML elements using Javascript?`, o: [`getElementbyId()`, `getElementsByClassName()`, `Both A and B`, `None of the above`], a: 2, why: `Both are DOM methods for accessing elements (L7).` },
-            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).` },
+            { type: `mcq`, q: `What will be the output of the following code snippet?<pre>(function (a) { return (function () { console.log(a); a = 6; })() })(21);</pre>`, o: [`6`, `NaN`, `21`, `None of the above`], a: 2, why: `The inner function prints the outer a (21) through closure before assigning 6. Verified with node (L9).`, ow: [`a is set to 6 only after console.log(a) has already printed it, so the printed value is still 21.`, `NaN would need a failed numeric operation, but a simply holds the number 21 passed to the outer function and is printed as is.`, null, `Wrong because 21 is listed and is the output: the inner function logs a (21) before assigning 6.`] },
+            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).`, ow: [null, `JSON.parse() does the reverse: it turns a JSON string back into the original object; serializing is stringify().`, `convert() is not a method of the JSON object; an object is serialized with JSON.stringify().`, `Wrong because stringify() is listed and is the method that serializes an object to a JSON string.`] },
+            { type: `mcq`, q: `How can a datatype be declared to be a constant type?`, o: [`const`, `var`, `let`, `constant`], a: 0, why: `const declares a constant that cannot be reassigned (L7).`, ow: [null, `var declares an ordinary variable (function or global scope) whose value can be changed; a constant needs const.`, `let declares a block-scoped variable whose value can still be changed later; a constant needs const.`, `constant is not a JavaScript keyword; a constant is declared with const and cannot be reassigned.`] },
+            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).`, ow: [`document.write() is one output method, but console.log() and window.alert() are too, so "All of the above" is the full answer.`, `console.log() is one output method (to the console), but document.write() and window.alert() are too, so the answer is "All of the above".`, `window.alert() is one output method (an alert box), but document.write() and console.log() are too, so the answer is "All of the above".`, null] },
+            { type: `mcq`, q: `Which of the following methods is used to access HTML elements using Javascript?`, o: [`getElementbyId()`, `getElementsByClassName()`, `Both A and B`, `None of the above`], a: 2, why: `Both are DOM methods for accessing elements (L7).`, ow: [`getElementById() does access elements, but getElementsByClassName() does as well, so the full answer is "Both A and B".`, `getElementsByClassName() does access elements, but getElementById() does as well, so the full answer is "Both A and B".`, null, `Wrong because both getElementById() and getElementsByClassName() are DOM methods for accessing HTML elements.`] },
+            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).`, ow: [`&lt;i&gt; only displays italic text, with no extra meaning; important text is defined by &lt;strong&gt;.`, null, `&lt;b&gt; makes text bold for appearance only, with no extra importance; important text is &lt;strong&gt;.`, `There is no &lt;important&gt; element in HTML; important text is marked with &lt;strong&gt;.`] },
             { type: `mcq`, q: `What is the correct HTML for inserting an image?`, o: [
                 `&lt;img alt="MyImage"&gt;image.gif&lt;/img&gt;`,
                 `&lt;image src="image.gif" alt="MyImage"&gt;`,
                 `&lt;img src="image.gif" alt="MyImage"&gt;`,
                 `&lt;img href="image.gif" alt="MyImage"&gt;`
-              ], a: 2, why: `&lt;img&gt; is an empty element with src (path) and alt (alternate text) (L2).` },
-            { type: `mcq`, q: `Which property is used to change the background color?`, o: [`background-color`, `Color`, `bgcolor`, `None`], a: 0, why: `background-color is the CSS property; color is the text color; bgcolor is an obsolete attribute (L3).` },
-            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).` },
-            { type: `mcq`, q: `Which HTML tag is used to display the power in expression`, o: [`&lt;p&gt;`, `&lt;sub&gt;`, `&lt;sup&gt;`, `None of the above`], a: 2, why: `&lt;sup&gt; (superscript) raises text half a character; &lt;sub&gt; is for H2O (L3).` },
-            { type: `mcq`, q: `Javascript is an _______ language?`, o: [`Object-Oriented`, `Object-Based`, `Procedural`, `None of the above`], a: 0, why: `The course MCQ sheet (Sanfoundry) gives Object-Oriented: JS is a prototype-based object-oriented language. Some books say object-based; answer A as the key does.` },
+              ], a: 2, why: `&lt;img&gt; is an empty element with src (path) and alt (alternate text) (L2).`, ow: [`&lt;img&gt; is an empty element; the file goes in src, not as content.`, `There is no &lt;image&gt; element in HTML; the image element is &lt;img&gt;, with the path in src and alternate text in alt.`, null, `href is the destination attribute of a link (&lt;a&gt;); an image's path goes in the src attribute: &lt;img src="image.gif"&gt;.`] },
+            { type: `mcq`, q: `Which property is used to change the background color?`, o: [`background-color`, `Color`, `bgcolor`, `None`], a: 0, why: `background-color is the CSS property; color is the text color; bgcolor is an obsolete attribute (L3).`, ow: [null, `The color property changes the text (foreground) color, e.g. color:blue; the background uses background-color.`, `bgcolor is an obsolete HTML attribute, not a CSS property.`, `Wrong because background-color is listed and is the CSS property that changes the background color.`] },
+            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).`, ow: [null, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL stays within the same site.`, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL has no domain and stays within the same site.`, `Relative URLs do link, in href and src; they simply leave out the domain, so they point to files within the same site.`] },
+            { type: `mcq`, q: `Which HTML tag is used to display the power in expression`, o: [`&lt;p&gt;`, `&lt;sub&gt;`, `&lt;sup&gt;`, `None of the above`], a: 2, why: `&lt;sup&gt; (superscript) raises text half a character; &lt;sub&gt; is for H2O (L3).`, ow: [`&lt;p&gt; defines a paragraph; a power (exponent) is raised above the line with &lt;sup&gt;, e.g. x&lt;sup&gt;2&lt;/sup&gt;.`, `&lt;sub&gt; is subscript (below the line), used for H<sub>2</sub>O.`, null, `Wrong because &lt;sup&gt; (superscript) is listed and is exactly the tag for powers such as x<sup>2</sup>.`] },
+            { type: `mcq`, q: `Javascript is an _______ language?`, o: [`Object-Oriented`, `Object-Based`, `Procedural`, `None of the above`], a: 0, why: `The course MCQ sheet (Sanfoundry) gives Object-Oriented: JS is a prototype-based object-oriented language. Some books say object-based; answer A as the key does.`, ow: [null, `Some books call it object-based, but the course sheet's answer is Object-Oriented.`, `JS supports procedural style but is not classed as a procedural language.`, `Wrong because the course's MCQ sheet and keys give one of the listed answers: JavaScript is an object-oriented (prototype-based) language.`] },
             { type: `mcq`, q: `How to define a function in PHP?`, o: [
                 `functionName(parameters) {function body}`,
                 `function {function body}`,
                 `function functionName(parameters) {function body}`,
                 `data type functionName(parameters) {function body}`
-              ], a: 2, why: `PHP functions start with the keyword function, then the name and parameters (L10).` },
-            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).` },
-            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).` },
-            { type: `mcq`, q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [`h1.all {background-color:#FFFFFF;}`, `all.h1 {background-color:#FFFFFF;}`, `h1 {background-color:#FFFFFF;}`, `None of the above`], a: 2, why: `The element selector h1 targets every &lt;h1&gt;; h1.all would need class="all" (L4).` },
-            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).` },
-            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).` },
-            { type: `mcq`, q: `Which doctype is correct for HTML5?`, o: [`&lt;!DOCTYPE HTML5&gt;`, `&lt;!DOCTYPE html&gt;`, `&lt;!DOCTYPE&gt;`, `None`], a: 1, why: `The HTML5 declaration is &lt;!DOCTYPE html&gt; (L2).` },
-            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php define("GREETING", "PHP is a scripting language"); echo $GREETING; ?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Constants are used without $: echo GREETING; would print the text. $GREETING is an undefined variable, so nothing is echoed (PHP 8 also raises an "Undefined variable" warning if errors are displayed) (L10).` },
+              ], a: 2, why: `PHP functions start with the keyword function, then the name and parameters (L10).`, ow: [`The keyword function is missing; without it PHP reads this as a call to functionName, not a definition.`, `The function name and parameter list are missing; a PHP function is function name($param) { ... }.`, null, `That is C/Java style; PHP has no leading return type.`] },
+            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).`, ow: [`After the $ the name cannot start with a digit, so $3hello is invalid; it must start with a letter or underscore.`, null, `$this is reserved (it refers to the current object), so it cannot be used as an ordinary variable name.`, `After the $ the name cannot start with a digit, so $5_Hello is invalid.`] },
+            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).`, ow: [`&lt;head&gt; is the document head, not a table element.`, `&lt;tt&gt; is an old (obsolete) teletype-text formatting tag, not a table element; the table set is &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;.`, null, `&lt;body&gt; is the visible part of the document, not a table element; the table body group is &lt;tbody&gt;.`] },
+            { type: `mcq`, q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [`h1.all {background-color:#FFFFFF;}`, `all.h1 {background-color:#FFFFFF;}`, `h1 {background-color:#FFFFFF;}`, `None of the above`], a: 2, why: `The element selector h1 targets every &lt;h1&gt;; h1.all would need class="all" (L4).`, ow: [`h1.all selects only &lt;h1&gt; elements with class="all", not every &lt;h1&gt;; the plain element selector h1 does that.`, `all.h1 selects elements named &lt;all&gt; with class="h1", which do not exist; all &lt;h1&gt; are selected by h1.`, null, `Wrong because h1 {background-color:#FFFFFF;} is listed and correctly targets every &lt;h1&gt;.`] },
+            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).`, ow: [null, `font-weight sets how bold the text is (normal, bold); it does not change which font is used, that is font-family.`, `font-style sets normal, italic or oblique text; the font itself is chosen with font-family.`, `font-property is not a CSS property; the font of an element is set with font-family.`] },
+            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).`, ow: [`There is no &lt;list&gt; element in HTML; a bulleted list is an unordered list, &lt;ul&gt;.`, `&lt;ol&gt; is an ordered list whose items are numbered, not bulleted; bullets come from &lt;ul&gt;.`, null, `&lt;dl&gt; is a description list of terms (&lt;dt&gt;) and descriptions (&lt;dd&gt;), with no bullets; bulleted lists use &lt;ul&gt;.`] },
+            { type: `mcq`, q: `Which doctype is correct for HTML5?`, o: [`&lt;!DOCTYPE HTML5&gt;`, `&lt;!DOCTYPE html&gt;`, `&lt;!DOCTYPE&gt;`, `None`], a: 1, why: `The HTML5 declaration is &lt;!DOCTYPE html&gt; (L2).`, ow: [`The HTML5 declaration contains no version number; it is simply &lt;!DOCTYPE html&gt;.`, null, `Incomplete: the declaration must name the document type; for HTML5 it is &lt;!DOCTYPE html&gt;.`, `There is a correct choice: &lt;!DOCTYPE html&gt; is the HTML5 declaration, so "None" is wrong.`] },
+            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php define("GREETING", "PHP is a scripting language"); echo $GREETING; ?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Constants are used without $: echo GREETING; would print the text. $GREETING is an undefined variable, so nothing is echoed (PHP 8 also raises an "Undefined variable" warning if errors are displayed) (L10).`, ow: [`echo prints the value of the variable, not its name.`, null, `The text prints only with echo GREETING; (constants are used without $); $GREETING is an undefined variable.`, `echo never prints the constant's name; and $GREETING is a different, undefined variable, so nothing is printed.`] },
             { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php
 define("GREETING", "PHP is a scripting language");
 echo $GREETING;
-?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Same as the previous question written on several lines: $GREETING is an undefined variable, so there is no output (L10).` }
+?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Same as the previous question written on several lines: $GREETING is an undefined variable, so there is no output (L10).`, ow: [`echo prints the value of the variable, not its name.`, null, `The text prints only with echo GREETING; (constants are used without $); $GREETING is an undefined variable.`, `echo never prints the constant's name; and $GREETING is a different, undefined variable, so nothing is printed.`] }
           ] },
         { title: `Question 2 · Theory and code output`, marks: `20 marks`, items: [
             { type: `written`, q: `(a)(i) [4 marks] What is CSS? Explain the different types of CSS.`, ans: `CSS (Cascading Style Sheets) is used to format the layout of a web page: color, font, text size, spacing between elements, positioning, background images/colors, and different displays for different devices and screen sizes. CSS is added in 3 ways:<br><b>1) Inline</b>: the style attribute inside an element; applies a unique style to a single element: <code>&lt;h1 style="color:blue;"&gt;A Blue Heading&lt;/h1&gt;</code>.<br><b>2) Internal</b>: a &lt;style&gt; element in the &lt;head&gt;; defines styles for a single page: <code>&lt;style&gt; body {background-color: powderblue;} h1 {color: blue;} &lt;/style&gt;</code>.<br><b>3) External</b>: a &lt;link&gt; element in the head of each page; one .css file (no HTML inside) styles many pages: <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code> (full URL, /html/styles.css, or same-folder path). (L4)` },
@@ -2765,39 +2765,39 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ] },
     { title: `Final Exam 2023/2024 (May, second term sitting)`, meta: `May 2024 · CS206 · 2nd CS (New Cr) · 2 hours · 60 marks · Dr. M. AbdelFattah, Dr. M. Awad`, note: `Transcribed from two rotated phone photos (code boxes were enlarged to read them). The Q1 MCQs are the same bank as 2024/25 in a different order. Student key (Abdullah Elwan): 1 strong, 2 C, 3 C, 4 C, 5 A, 6 C, 7 B, 8 A, 9 A, 10 C, 11 C, 12 A, 13 A, 14 D, 15 C, 16 A, 17 C, 18 B, 19 B, 20 B, which agrees with the answers here. Disagreements in Q2(b): in (i) the paper writes function LSS{ without parentheses (a syntax error, so as printed nothing runs); the student gives the intended sum 20 for inputs 15 and 5. In (iii) the 6th log line on the paper uses "-" instead of "+", which prints NaN; the student assumed "+". The tax question is solved with the flat rate of the bracket applied to the whole income, as the question states.`, sections: [
         { title: `Question 1 · Choose the correct answer`, marks: `20 marks`, items: [
-            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).` },
+            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).`, ow: [`&lt;i&gt; only displays italic text, with no extra meaning; important text is defined by &lt;strong&gt;.`, null, `&lt;b&gt; makes text bold for appearance only, with no extra importance; important text is &lt;strong&gt;.`, `There is no &lt;important&gt; element in HTML; important text is marked with &lt;strong&gt;.`] },
             { type: `mcq`, q: `What is the correct HTML for inserting an image?`, o: [
                 `&lt;img alt="MyImage"&gt;image.gif&lt;/img&gt;`,
                 `&lt;image src="image.gif" alt="MyImage"&gt;`,
                 `&lt;img src="image.gif" alt="MyImage"&gt;`,
                 `&lt;img href="image.gif" alt="MyImage"&gt;`
-              ], a: 2, why: `&lt;img&gt; is an empty element with src (path) and alt (alternate text) (L2).` },
-            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).` },
-            { type: `mcq`, q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [`h1.all {background-color:#FFFFFF;}`, `all.h1 {background-color:#FFFFFF;}`, `h1 {background-color:#FFFFFF;}`, `None of the above`], a: 2, why: `The element selector h1 targets every &lt;h1&gt;; h1.all would need class="all" (L4).` },
-            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).` },
-            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).` },
-            { type: `mcq`, q: `Which doctype is correct for HTML5?`, o: [`&lt;!DOCTYPE HTML5&gt;`, `&lt;!DOCTYPE html&gt;`, `&lt;!DOCTYPE&gt;`, `None`], a: 1, why: `The HTML5 declaration is &lt;!DOCTYPE html&gt; (L2).` },
-            { type: `mcq`, q: `Which property is used to change the background color?`, o: [`background-color`, `Color`, `bgcolor`, `None`], a: 0, why: `background-color is the CSS property; color is the text color; bgcolor is an obsolete attribute (L3).` },
-            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).` },
-            { type: `mcq`, q: `Which HTML tag is used to display the power in expression`, o: [`&lt;p&gt;`, `&lt;sub&gt;`, `&lt;sup&gt;`, `None of the above`], a: 2, why: `&lt;sup&gt; (superscript) raises text half a character; &lt;sub&gt; is for H2O (L3).` },
-            { type: `mcq`, q: `What will be the output of the following code snippet?<pre>(function (a) { return (function () { console.log(a); a = 6; })() })(21);</pre>`, o: [`6`, `NaN`, `21`, `None of the above`], a: 2, why: `The inner function prints the outer a (21) through closure before assigning 6. Verified with node (L9).` },
-            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).` },
-            { type: `mcq`, q: `How can a datatype be declared to be a constant type?`, o: [`const`, `var`, `let`, `constant`], a: 0, why: `const declares a constant that cannot be reassigned (L7).` },
-            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).` },
-            { type: `mcq`, q: `Which of the following methods is used to access HTML elements using Javascript?`, o: [`getElementbyId()`, `getElementsByClassName()`, `Both A and B`, `None of the above`], a: 2, why: `Both are DOM methods for accessing elements (L7).` },
-            { type: `mcq`, q: `Javascript is an _______ language?`, o: [`Object-Oriented`, `Object-Based`, `Procedural`, `None of the above`], a: 0, why: `The course MCQ sheet (Sanfoundry) gives Object-Oriented: JS is a prototype-based object-oriented language. Some books say object-based; answer A as the key does.` },
+              ], a: 2, why: `&lt;img&gt; is an empty element with src (path) and alt (alternate text) (L2).`, ow: [`&lt;img&gt; is an empty element; the file goes in src, not as content.`, `There is no &lt;image&gt; element in HTML; the image element is &lt;img&gt;, with the path in src and alternate text in alt.`, null, `href is the destination attribute of a link (&lt;a&gt;); an image's path goes in the src attribute: &lt;img src="image.gif"&gt;.`] },
+            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).`, ow: [`&lt;head&gt; is the document head, not a table element.`, `&lt;tt&gt; is an old (obsolete) teletype-text formatting tag, not a table element; the table set is &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;.`, null, `&lt;body&gt; is the visible part of the document, not a table element; the table body group is &lt;tbody&gt;.`] },
+            { type: `mcq`, q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [`h1.all {background-color:#FFFFFF;}`, `all.h1 {background-color:#FFFFFF;}`, `h1 {background-color:#FFFFFF;}`, `None of the above`], a: 2, why: `The element selector h1 targets every &lt;h1&gt;; h1.all would need class="all" (L4).`, ow: [`h1.all selects only &lt;h1&gt; elements with class="all", not every &lt;h1&gt;; the plain element selector h1 does that.`, `all.h1 selects elements named &lt;all&gt; with class="h1", which do not exist; all &lt;h1&gt; are selected by h1.`, null, `Wrong because h1 {background-color:#FFFFFF;} is listed and correctly targets every &lt;h1&gt;.`] },
+            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).`, ow: [null, `font-weight sets how bold the text is (normal, bold); it does not change which font is used, that is font-family.`, `font-style sets normal, italic or oblique text; the font itself is chosen with font-family.`, `font-property is not a CSS property; the font of an element is set with font-family.`] },
+            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).`, ow: [`There is no &lt;list&gt; element in HTML; a bulleted list is an unordered list, &lt;ul&gt;.`, `&lt;ol&gt; is an ordered list whose items are numbered, not bulleted; bullets come from &lt;ul&gt;.`, null, `&lt;dl&gt; is a description list of terms (&lt;dt&gt;) and descriptions (&lt;dd&gt;), with no bullets; bulleted lists use &lt;ul&gt;.`] },
+            { type: `mcq`, q: `Which doctype is correct for HTML5?`, o: [`&lt;!DOCTYPE HTML5&gt;`, `&lt;!DOCTYPE html&gt;`, `&lt;!DOCTYPE&gt;`, `None`], a: 1, why: `The HTML5 declaration is &lt;!DOCTYPE html&gt; (L2).`, ow: [`The HTML5 declaration contains no version number; it is simply &lt;!DOCTYPE html&gt;.`, null, `Incomplete: the declaration must name the document type; for HTML5 it is &lt;!DOCTYPE html&gt;.`, `There is a correct choice: &lt;!DOCTYPE html&gt; is the HTML5 declaration, so "None" is wrong.`] },
+            { type: `mcq`, q: `Which property is used to change the background color?`, o: [`background-color`, `Color`, `bgcolor`, `None`], a: 0, why: `background-color is the CSS property; color is the text color; bgcolor is an obsolete attribute (L3).`, ow: [null, `The color property changes the text (foreground) color, e.g. color:blue; the background uses background-color.`, `bgcolor is an obsolete HTML attribute, not a CSS property.`, `Wrong because background-color is listed and is the CSS property that changes the background color.`] },
+            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).`, ow: [null, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL stays within the same site.`, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL has no domain and stays within the same site.`, `Relative URLs do link, in href and src; they simply leave out the domain, so they point to files within the same site.`] },
+            { type: `mcq`, q: `Which HTML tag is used to display the power in expression`, o: [`&lt;p&gt;`, `&lt;sub&gt;`, `&lt;sup&gt;`, `None of the above`], a: 2, why: `&lt;sup&gt; (superscript) raises text half a character; &lt;sub&gt; is for H2O (L3).`, ow: [`&lt;p&gt; defines a paragraph; a power (exponent) is raised above the line with &lt;sup&gt;, e.g. x&lt;sup&gt;2&lt;/sup&gt;.`, `&lt;sub&gt; is subscript (below the line), used for H<sub>2</sub>O.`, null, `Wrong because &lt;sup&gt; (superscript) is listed and is exactly the tag for powers such as x<sup>2</sup>.`] },
+            { type: `mcq`, q: `What will be the output of the following code snippet?<pre>(function (a) { return (function () { console.log(a); a = 6; })() })(21);</pre>`, o: [`6`, `NaN`, `21`, `None of the above`], a: 2, why: `The inner function prints the outer a (21) through closure before assigning 6. Verified with node (L9).`, ow: [`a is set to 6 only after console.log(a) has already printed it, so the printed value is still 21.`, `NaN would need a failed numeric operation, but a simply holds the number 21 passed to the outer function and is printed as is.`, null, `Wrong because 21 is listed and is the output: the inner function logs a (21) before assigning 6.`] },
+            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).`, ow: [null, `JSON.parse() does the reverse: it turns a JSON string back into the original object; serializing is stringify().`, `convert() is not a method of the JSON object; an object is serialized with JSON.stringify().`, `Wrong because stringify() is listed and is the method that serializes an object to a JSON string.`] },
+            { type: `mcq`, q: `How can a datatype be declared to be a constant type?`, o: [`const`, `var`, `let`, `constant`], a: 0, why: `const declares a constant that cannot be reassigned (L7).`, ow: [null, `var declares an ordinary variable (function or global scope) whose value can be changed; a constant needs const.`, `let declares a block-scoped variable whose value can still be changed later; a constant needs const.`, `constant is not a JavaScript keyword; a constant is declared with const and cannot be reassigned.`] },
+            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).`, ow: [`document.write() is one output method, but console.log() and window.alert() are too, so "All of the above" is the full answer.`, `console.log() is one output method (to the console), but document.write() and window.alert() are too, so the answer is "All of the above".`, `window.alert() is one output method (an alert box), but document.write() and console.log() are too, so the answer is "All of the above".`, null] },
+            { type: `mcq`, q: `Which of the following methods is used to access HTML elements using Javascript?`, o: [`getElementbyId()`, `getElementsByClassName()`, `Both A and B`, `None of the above`], a: 2, why: `Both are DOM methods for accessing elements (L7).`, ow: [`getElementById() does access elements, but getElementsByClassName() does as well, so the full answer is "Both A and B".`, `getElementsByClassName() does access elements, but getElementById() does as well, so the full answer is "Both A and B".`, null, `Wrong because both getElementById() and getElementsByClassName() are DOM methods for accessing HTML elements.`] },
+            { type: `mcq`, q: `Javascript is an _______ language?`, o: [`Object-Oriented`, `Object-Based`, `Procedural`, `None of the above`], a: 0, why: `The course MCQ sheet (Sanfoundry) gives Object-Oriented: JS is a prototype-based object-oriented language. Some books say object-based; answer A as the key does.`, ow: [null, `Some books call it object-based, but the course sheet's answer is Object-Oriented.`, `JS supports procedural style but is not classed as a procedural language.`, `Wrong because the course's MCQ sheet and keys give one of the listed answers: JavaScript is an object-oriented (prototype-based) language.`] },
             { type: `mcq`, q: `How to define a function in PHP?`, o: [
                 `functionName(parameters) {function body}`,
                 `function {function body}`,
                 `function functionName(parameters) {function body}`,
                 `data type functionName(parameters) {function body}`
-              ], a: 2, why: `PHP functions start with the keyword function, then the name and parameters (L10).` },
-            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).` },
-            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php define("GREETING", "PHP is a scripting language"); echo $GREETING; ?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Constants are used without $: echo GREETING; would print the text. $GREETING is an undefined variable, so nothing is echoed (PHP 8 also raises an "Undefined variable" warning if errors are displayed) (L10).` },
+              ], a: 2, why: `PHP functions start with the keyword function, then the name and parameters (L10).`, ow: [`The keyword function is missing; without it PHP reads this as a call to functionName, not a definition.`, `The function name and parameter list are missing; a PHP function is function name($param) { ... }.`, null, `That is C/Java style; PHP has no leading return type.`] },
+            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).`, ow: [`After the $ the name cannot start with a digit, so $3hello is invalid; it must start with a letter or underscore.`, null, `$this is reserved (it refers to the current object), so it cannot be used as an ordinary variable name.`, `After the $ the name cannot start with a digit, so $5_Hello is invalid.`] },
+            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php define("GREETING", "PHP is a scripting language"); echo $GREETING; ?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Constants are used without $: echo GREETING; would print the text. $GREETING is an undefined variable, so nothing is echoed (PHP 8 also raises an "Undefined variable" warning if errors are displayed) (L10).`, ow: [`echo prints the value of the variable, not its name.`, null, `The text prints only with echo GREETING; (constants are used without $); $GREETING is an undefined variable.`, `echo never prints the constant's name; and $GREETING is a different, undefined variable, so nothing is printed.`] },
             { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php
 define("GREETING", "PHP is a scripting language");
 echo $GREETING;
-?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Same as the previous question written on several lines: $GREETING is an undefined variable, so there is no output (L10).` }
+?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Same as the previous question written on several lines: $GREETING is an undefined variable, so there is no output (L10).`, ow: [`echo prints the value of the variable, not its name.`, null, `The text prints only with echo GREETING; (constants are used without $); $GREETING is an undefined variable.`, `echo never prints the constant's name; and $GREETING is a different, undefined variable, so nothing is printed.`] }
           ] },
         { title: `Question 2 · Theory and code output`, marks: `20 marks`, items: [
             { type: `written`, q: `(a)(i) [4 marks] The main differences between inline and block elements. Give an example for each.`, ans: `<table><tr><th>Block-level</th><th>Inline</th></tr><tr><td>Always starts on a new line</td><td>Does not start on a new line</td></tr><tr><td>Takes the full width available (100% of the parent)</td><td>Takes only as much width as necessary</td></tr><tr><td>Width/height can be set</td><td>Width/height not allowed</td></tr><tr><td>Has top and bottom margins</td><td>No top/bottom margin</td></tr><tr><td>Example: &lt;div&gt; (also p, h1-h6, ul, table, form)</td><td>Example: &lt;span&gt; (also a, b, img, input)</td></tr></table>Example: <code>&lt;div style="border:1px solid black"&gt;Hello World&lt;/div&gt;</code> draws a box across the whole line, while <code>&lt;p&gt;This is an inline &lt;span style="border:1px solid black"&gt;Hello World&lt;/span&gt; element&lt;/p&gt;</code> boxes only the words. (L6)` },
@@ -2911,28 +2911,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ] },
     { title: `Final Exam 2023/2024`, meta: `January 2024 · CS206 · 2nd CS (New Cr) · 2 hours · 60 marks · Dr. M. AbdelFattah, Dr. M. Awad`, note: `Transcribed from two photos; the "summer 2023/2024" photos in the folder are the same January paper (same header and questions), so it is listed once. A handwritten answer sheet exists (3 pages, Q1, Q2(a) and Q2(b)(i)-(iii)) and its MCQ answers agree with this key. Where the key and a strict run differ: Q2(b)(ii) uses nums, which is not declared in that script, so a real run stops with a ReferenceError at the concat line (the key ignores nums and prints x joined with y); Q2(b)(iii) defines pr but never calls it, so strictly there is no output (the key traces it as if called: Y, XY, YXY, XYXY, YXYXY). Q1-17: the call is commented out and options A and C are identical; the intended answer is [111, 44, 1, 22]. Q1-16 accepts // (the key), although /* */ is also valid JavaScript. The student JS.txt and php.txt solutions for Q3 are in the folder; php.txt divides by 2*$a without brackets (/2*$a), which multiplies by a instead of dividing; the model answer below fixes it.`, sections: [
         { title: `Question 1 · Choose the correct answer`, marks: `20 marks`, items: [
-            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).` },
-            { type: `mcq`, q: `How do you make a list that lists its items with squares?`, o: [`list: square;`, `list-type: square;`, `list-style-type: square;`, `None of the above`], a: 2, why: `list-style-type sets the list marker (disc, circle, square, none) (L5).` },
-            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).` },
-            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).` },
-            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).` },
-            { type: `mcq`, q: `Which is the correct CSS syntax?`, o: [`{body;color:black;}`, `body:color=black;`, `body {color: black;}`, `{body:color=black;}`], a: 2, why: `selector {property: value;} (L4).` },
-            { type: `mcq`, q: `What is the correct HTML for adding a background color?`, o: [`&lt;body style="background-color:yellow;"&gt;`, `&lt;background&gt;yellow&lt;/background&gt;`, `&lt;body bg="yellow"&gt;`, `None of the above`], a: 0, why: `Use the style attribute with background-color (L3).` },
-            { type: `mcq`, q: `The tags in HTML are`, o: [`case-sensitive`, `in upper case`, `not case sensitive`, `in lowercase`], a: 2, why: `HTML is not case sensitive; only XHTML requires lowercase (L2/L6).` },
-            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php define("GREETING", "PHP is a scripting language"); echo $GREETING; ?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Constants are used without $: echo GREETING; would print the text. $GREETING is an undefined variable, so nothing is echoed (PHP 8 also raises an "Undefined variable" warning if errors are displayed) (L10).` },
-            { type: `mcq`, q: `The visible part of HTML document lies in`, o: [`Paragraph tag`, `Body tag`, `Links tag`, `Image tag`], a: 1, why: `The visible content is between &lt;body&gt; and &lt;/body&gt; (L2).` },
-            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).` },
-            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).` },
+            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).`, ow: [null, `font-weight sets how bold the text is (normal, bold); it does not change which font is used, that is font-family.`, `font-style sets normal, italic or oblique text; the font itself is chosen with font-family.`, `font-property is not a CSS property; the font of an element is set with font-family.`] },
+            { type: `mcq`, q: `How do you make a list that lists its items with squares?`, o: [`list: square;`, `list-type: square;`, `list-style-type: square;`, `None of the above`], a: 2, why: `list-style-type sets the list marker (disc, circle, square, none) (L5).`, ow: [`list is not a CSS property; the marker of list items is set with list-style-type.`, `list-type is not a CSS property; the full name is list-style-type, e.g. list-style-type: square;.`, null, `Wrong because list-style-type: square; is listed and is the correct declaration.`] },
+            { type: `mcq`, q: `Which is the right way of declaring a variable in PHP?`, o: [`$3hello`, `$_hello`, `$this`, `$5_Hello`], a: 1, why: `After $ a name must start with a letter or underscore; $this is reserved (L10).`, ow: [`After the $ the name cannot start with a digit, so $3hello is invalid; it must start with a letter or underscore.`, null, `$this is reserved (it refers to the current object), so it cannot be used as an ordinary variable name.`, `After the $ the name cannot start with a digit, so $5_Hello is invalid.`] },
+            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).`, ow: [`There is no &lt;list&gt; element in HTML; a bulleted list is an unordered list, &lt;ul&gt;.`, `&lt;ol&gt; is an ordered list whose items are numbered, not bulleted; bullets come from &lt;ul&gt;.`, null, `&lt;dl&gt; is a description list of terms (&lt;dt&gt;) and descriptions (&lt;dd&gt;), with no bullets; bulleted lists use &lt;ul&gt;.`] },
+            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).`, ow: [`&lt;i&gt; only displays italic text, with no extra meaning; important text is defined by &lt;strong&gt;.`, null, `&lt;b&gt; makes text bold for appearance only, with no extra importance; important text is &lt;strong&gt;.`, `There is no &lt;important&gt; element in HTML; important text is marked with &lt;strong&gt;.`] },
+            { type: `mcq`, q: `Which is the correct CSS syntax?`, o: [`{body;color:black;}`, `body:color=black;`, `body {color: black;}`, `{body:color=black;}`], a: 2, why: `A CSS rule is a selector followed by a declaration block in braces, each declaration written property: value;, so body {color: black;} (L4, CSS syntax).`, ow: [`The selector must come before the braces, not inside them with a semicolon; the form is selector {property: value;}.`, `There are no braces, and CSS separates property and value with a colon, not =; the form is body {color: black;}.`, null, `The selector is inside the braces and = is used instead of a colon; the correct form is body {color: black;}.`] },
+            { type: `mcq`, q: `What is the correct HTML for adding a background color?`, o: [`&lt;body style="background-color:yellow;"&gt;`, `&lt;background&gt;yellow&lt;/background&gt;`, `&lt;body bg="yellow"&gt;`, `None of the above`], a: 0, why: `Use the style attribute with background-color (L3).`, ow: [null, `There is no &lt;background&gt; element in HTML; the background is styled with the style attribute and background-color.`, `bg is not an HTML attribute; the background is set with style="background-color:yellow;".`, `Wrong because &lt;body style="background-color:yellow;"&gt; is listed and is the correct way.`] },
+            { type: `mcq`, q: `The tags in HTML are`, o: [`case-sensitive`, `in upper case`, `not case sensitive`, `in lowercase`], a: 2, why: `HTML is not case sensitive; only XHTML requires lowercase (L2/L6).`, ow: [`HTML is not case sensitive: &lt;P&gt; means the same as &lt;p&gt;. It is XHTML that requires lowercase tags.`, `Uppercase is not required; HTML tags may be written in either case, and W3C actually recommends lowercase.`, null, `Lowercase is only recommended by W3C, not required, because HTML is not case sensitive (XHTML is the one that requires it).`] },
+            { type: `mcq`, q: `What will be the output of the following PHP code?<pre>&lt;?php define("GREETING", "PHP is a scripting language"); echo $GREETING; ?&gt;</pre>`, o: [`$GREETING`, `no output`, `PHP is a scripting language`, `GREETING`], a: 1, why: `Constants are used without $: echo GREETING; would print the text. $GREETING is an undefined variable, so nothing is echoed (PHP 8 also raises an "Undefined variable" warning if errors are displayed) (L10).`, ow: [`echo prints the value of the variable, not its name.`, null, `The text prints only with echo GREETING; (constants are used without $); $GREETING is an undefined variable.`, `echo never prints the constant's name; and $GREETING is a different, undefined variable, so nothing is printed.`] },
+            { type: `mcq`, q: `The visible part of HTML document lies in`, o: [`Paragraph tag`, `Body tag`, `Links tag`, `Image tag`], a: 1, why: `The visible content is between &lt;body&gt; and &lt;/body&gt; (L2).`, ow: [`A paragraph is only one kind of visible content; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`, null, `A link (&lt;a&gt;) is just one kind of visible content inside the body; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`, `An image (&lt;img&gt;) is just one kind of visible content inside the body; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`] },
+            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).`, ow: [null, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL stays within the same site.`, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL has no domain and stays within the same site.`, `Relative URLs do link, in href and src; they simply leave out the domain, so they point to files within the same site.`] },
+            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).`, ow: [`&lt;head&gt; is the document head, not a table element.`, `&lt;tt&gt; is an old (obsolete) teletype-text formatting tag, not a table element; the table set is &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;.`, null, `&lt;body&gt; is the visible part of the document, not a table element; the table body group is &lt;tbody&gt;.`] },
             { type: `mcq`, q: `How to define a function in PHP?`, o: [
                 `functionName(parameters) {function body}`,
                 `function {function body}`,
                 `function functionName(parameters) {function body}`,
                 `data type functionName(parameters) {function body}`
-              ], a: 2, why: `PHP functions start with the keyword function, then the name and parameters (L10).` },
-            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).` },
+              ], a: 2, why: `PHP functions start with the keyword function, then the name and parameters (L10).`, ow: [`The keyword function is missing; without it PHP reads this as a call to functionName, not a definition.`, `The function name and parameter list are missing; a PHP function is function name($param) { ... }.`, null, `That is C/Java style; PHP has no leading return type.`] },
+            { type: `mcq`, q: `Which function is used to serialize an object into a JSON string in Javascript?`, o: [`stringify()`, `parse()`, `convert()`, `None of the above`], a: 0, why: `JSON.stringify() converts an object to a JSON string; JSON.parse() does the reverse (L9).`, ow: [null, `JSON.parse() does the reverse: it turns a JSON string back into the original object; serializing is stringify().`, `convert() is not a method of the JSON object; an object is serialized with JSON.stringify().`, `Wrong because stringify() is listed and is the method that serializes an object to a JSON string.`] },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>a = [1, 2, 3, 4, 5];
-print(a.slice(2, 4));</pre>`, o: [`3, 4`, `2, 3`, `3, 4, 5`, `2, 3, 4`], a: 0, why: `slice(2, 4) returns indexes 2 and 3 = [3, 4] (L8).` },
-            { type: `mcq`, q: `How do we write a comment in javascript?`, o: [`/* */`, `//`, `#`, `$ $`], a: 1, why: `// is the key answer (single-line comment). Note /* */ is also a valid JS comment (multi-line), so A is not really wrong; choose B as the key does (L7).` },
+print(a.slice(2, 4));</pre>`, o: [`3, 4`, `2, 3`, `3, 4, 5`, `2, 3, 4`], a: 0, why: `slice(2, 4) returns indexes 2 and 3 = [3, 4] (L8).`, ow: [null, `2, 3 are the values at indexes 1 and 2; slice(2, 4) starts at index 2 (value 3) and stops before index 4.`, `slice excludes its end index, so index 4 (value 5) is not included; the result is indexes 2 and 3: 3, 4.`, `2, 3, 4 treats the arguments as 1-based positions; indexes start at 0, so slice(2, 4) gives indexes 2 and 3: 3, 4.`] },
+            { type: `mcq`, q: `How do we write a comment in javascript?`, o: [`/* */`, `//`, `#`, `$ $`], a: 1, why: `// is the key answer (single-line comment). Note /* */ is also a valid JS comment (multi-line), so A is not really wrong; choose B as the key does (L7).`, ow: [`/* */ is also a valid JavaScript comment (the multi-line form), but the key's expected answer is the single-line //.`, null, `# is a comment marker in PHP (and Python), not in JavaScript, where comments are // and /* */.`, `Dollar signs do not make comments; $ is just a character allowed in variable names. JS comments are // and /* */.`] },
             { type: `mcq`, q: `What will be the output of the following code snippet?<pre>function solve(arr, rotations) {
   if (rotations == 0) return arr;
   for (let i = 0; i &lt; rotations; i++) {
@@ -2941,10 +2941,10 @@ print(a.slice(2, 4));</pre>`, o: [`3, 4`, `2, 3`, `3, 4, 5`, `2, 3, 4`], a: 0, w
   }
   return arr;
 }
-// solve([44, 1, 22, 111], 5);</pre>`, o: [`[111, 44, 1, 22]`, `[44, 1, 22, 111]`, `[111, 44, 1, 22]`, `[1, 22, 111, 44]`], a: 0, why: `5 right-rotations on 4 elements equal 1 rotation: pop 111 and unshift it &rarr; [111, 44, 1, 22] (verified with node). A and C are printed identically; the key gives A. Strictly, the call is commented out so nothing would print.` },
-            { type: `mcq`, q: `How can a datatype be declared to be a constant type?`, o: [`const`, `var`, `let`, `constant`], a: 0, why: `const declares a constant that cannot be reassigned (L7).` },
-            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).` },
-            { type: `mcq`, q: `Which of the following methods is used to access HTML elements using Javascript?`, o: [`getElementbyId()`, `getElementsByClassName()`, `Both A and B`, `None of the above`], a: 2, why: `Both are DOM methods for accessing elements (L7).` }
+// solve([44, 1, 22, 111], 5);</pre>`, o: [`[111, 44, 1, 22]`, `[44, 1, 22, 111]`, `[111, 44, 1, 22]`, `[1, 22, 111, 44]`], a: 0, why: `5 right-rotations on 4 elements equal 1 rotation: pop 111 and unshift it &rarr; [111, 44, 1, 22] (verified with node). A and C are printed identically; the key gives A. Strictly, the call is commented out so nothing would print.`, ow: [null, `This is the original array, which you would get after 0 or 4 rotations; 5 rotations of 4 elements equal 1 rotation.`, `Printed identically to A on the paper; the key marks A, so pick A rather than its duplicate even though the value is the same.`, `This is a left rotation (first element moved to the end); the loop pops the last element and unshifts it to the front, rotating right.`] },
+            { type: `mcq`, q: `How can a datatype be declared to be a constant type?`, o: [`const`, `var`, `let`, `constant`], a: 0, why: `const declares a constant that cannot be reassigned (L7).`, ow: [null, `var declares an ordinary variable (function or global scope) whose value can be changed; a constant needs const.`, `let declares a block-scoped variable whose value can still be changed later; a constant needs const.`, `constant is not a JavaScript keyword; a constant is declared with const and cannot be reassigned.`] },
+            { type: `mcq`, q: `Which of the following methods can be used to display data in some form using Javascript?`, o: [`document.write()`, `console.log()`, `window.alert()`, `All of the above`], a: 3, why: `All are JS output methods (with innerHTML) (L7).`, ow: [`document.write() is one output method, but console.log() and window.alert() are too, so "All of the above" is the full answer.`, `console.log() is one output method (to the console), but document.write() and window.alert() are too, so the answer is "All of the above".`, `window.alert() is one output method (an alert box), but document.write() and console.log() are too, so the answer is "All of the above".`, null] },
+            { type: `mcq`, q: `Which of the following methods is used to access HTML elements using Javascript?`, o: [`getElementbyId()`, `getElementsByClassName()`, `Both A and B`, `None of the above`], a: 2, why: `Both are DOM methods for accessing elements (L7).`, ow: [`getElementById() does access elements, but getElementsByClassName() does as well, so the full answer is "Both A and B".`, `getElementsByClassName() does access elements, but getElementById() does as well, so the full answer is "Both A and B".`, null, `Wrong because both getElementById() and getElementsByClassName() are DOM methods for accessing HTML elements.`] }
           ] },
         { title: `Question 2 · Theory and code output`, marks: `20 marks`, items: [
             { type: `written`, q: `(a)(i) [4 marks] The main differences between HTML and XHTML.`, ans: `XHTML (EXtensible HyperText Markup Language) is a stricter, XML-based version of HTML (HTML defined as an XML application) with strict error handling; browsers tolerate errors in HTML. The most important differences: (1) &lt;!DOCTYPE&gt; is mandatory; (2) the xmlns attribute in &lt;html&gt; is mandatory; (3) &lt;html&gt;, &lt;head&gt;, &lt;title&gt; and &lt;body&gt; are mandatory; (4) elements must always be properly nested (&lt;b&gt;&lt;i&gt;text&lt;/i&gt;&lt;/b&gt;); (5) elements must always be closed, including empty ones (&lt;br /&gt;, &lt;img ... /&gt;); (6) elements must be in lowercase; (7) attribute names must be in lowercase; (8) attribute values must always be quoted. (L6)` },
@@ -3073,13 +3073,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ] },
     { title: `Midterm 2023/2024 (Forms A, B, C)`, meta: `First term (January) · CS 206 · one hour · 20 marks · Dr. M. AbdelFattah`, note: `Three versions of the midterm (photos A, B, C). Form C is partly cut off at the bottom of the photo (the last radio buttons). The file "2023_2024 midterm Answers.pdf" contains a student's HTML/CSS code for the Q3 pages (same file as "sheet-2"); the model answers below are written from the lectures. Pencil marks on Form B (Q2-C, Q3-B, Q4-C, Q5-D, Q7-B) match the key except Q5, where the marked option D {body:color=black;} is wrong; the correct syntax is C.`, sections: [
         { title: `Form A · Question 1 · Choose the correct answer`, marks: `7 marks`, items: [
-            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).` },
-            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).` },
-            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).` },
-            { type: `mcq`, q: `Which doctype is correct for HTML5?`, o: [`&lt;!DOCTYPE HTML5&gt;`, `&lt;!DOCTYPE html&gt;`, `&lt;!DOCTYPE&gt;`, `None`], a: 1, why: `The HTML5 declaration is &lt;!DOCTYPE html&gt; (L2).` },
-            { type: `mcq`, q: `Which property is used to change the background color?`, o: [`background-color`, `Color`, `bgcolor`, `None`], a: 0, why: `background-color is the CSS property; color is the text color; bgcolor is an obsolete attribute (L3).` },
-            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).` },
-            { type: `mcq`, q: `Which HTML tag is used to display the power in expression`, o: [`&lt;p&gt;`, `&lt;sub&gt;`, `&lt;sup&gt;`, `None of the above`], a: 2, why: `&lt;sup&gt; (superscript) raises text half a character; &lt;sub&gt; is for H2O (L3).` }
+            { type: `mcq`, q: `Choose the correct HTML element to define important text`, o: [`&lt;i&gt;`, `&lt;strong&gt;`, `&lt;b&gt;`, `&lt;important&gt;`], a: 1, why: `&lt;strong&gt; defines important text; &lt;b&gt; is only visual bold (L3).`, ow: [`&lt;i&gt; only displays italic text, with no extra meaning; important text is defined by &lt;strong&gt;.`, null, `&lt;b&gt; makes text bold for appearance only, with no extra importance; important text is &lt;strong&gt;.`, `There is no &lt;important&gt; element in HTML; important text is marked with &lt;strong&gt;.`] },
+            { type: `mcq`, q: `Which of these elements are all &lt;table&gt; elements?`, o: [`&lt;table&gt;&lt;head&gt;&lt;tfoot&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;tt&gt;`, `&lt;table&gt;&lt;tr&gt;&lt;td&gt;`, `&lt;thead&gt;&lt;body&gt;&lt;tr&gt;`], a: 2, why: `table, tr (row) and td (cell) are all table elements; &lt;head&gt;, &lt;tt&gt;, &lt;body&gt; are not (L5).`, ow: [`&lt;head&gt; is the document head, not a table element.`, `&lt;tt&gt; is an old (obsolete) teletype-text formatting tag, not a table element; the table set is &lt;table&gt;, &lt;tr&gt;, &lt;td&gt;.`, null, `&lt;body&gt; is the visible part of the document, not a table element; the table body group is &lt;tbody&gt;.`] },
+            { type: `mcq`, q: `How can you make a bulleted list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 2, why: `&lt;ul&gt; is the unordered (bulleted) list; &lt;ol&gt; is numbered (L5).`, ow: [`There is no &lt;list&gt; element in HTML; a bulleted list is an unordered list, &lt;ul&gt;.`, `&lt;ol&gt; is an ordered list whose items are numbered, not bulleted; bullets come from &lt;ul&gt;.`, null, `&lt;dl&gt; is a description list of terms (&lt;dt&gt;) and descriptions (&lt;dd&gt;), with no bullets; bulleted lists use &lt;ul&gt;.`] },
+            { type: `mcq`, q: `Which doctype is correct for HTML5?`, o: [`&lt;!DOCTYPE HTML5&gt;`, `&lt;!DOCTYPE html&gt;`, `&lt;!DOCTYPE&gt;`, `None`], a: 1, why: `The HTML5 declaration is &lt;!DOCTYPE html&gt; (L2).`, ow: [`The HTML5 declaration contains no version number; it is simply &lt;!DOCTYPE html&gt;.`, null, `Incomplete: the declaration must name the document type; for HTML5 it is &lt;!DOCTYPE html&gt;.`, `There is a correct choice: &lt;!DOCTYPE html&gt; is the HTML5 declaration, so "None" is wrong.`] },
+            { type: `mcq`, q: `Which property is used to change the background color?`, o: [`background-color`, `Color`, `bgcolor`, `None`], a: 0, why: `background-color is the CSS property; color is the text color; bgcolor is an obsolete attribute (L3).`, ow: [null, `The color property changes the text (foreground) color, e.g. color:blue; the background uses background-color.`, `bgcolor is an obsolete HTML attribute, not a CSS property.`, `Wrong because background-color is listed and is the CSS property that changes the background color.`] },
+            { type: `mcq`, q: `Relative URLs are used to`, o: [`link other pages within the same site`, `link the same page with other sites`, `link other pages with other sites`, `does not link`], a: 0, why: `A relative URL has no domain, so it points inside the same site (L2).`, ow: [null, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL stays within the same site.`, `Linking to pages on other sites needs an absolute URL that includes the domain; a relative URL has no domain and stays within the same site.`, `Relative URLs do link, in href and src; they simply leave out the domain, so they point to files within the same site.`] },
+            { type: `mcq`, q: `Which HTML tag is used to display the power in expression`, o: [`&lt;p&gt;`, `&lt;sub&gt;`, `&lt;sup&gt;`, `None of the above`], a: 2, why: `&lt;sup&gt; (superscript) raises text half a character; &lt;sub&gt; is for H2O (L3).`, ow: [`&lt;p&gt; defines a paragraph; a power (exponent) is raised above the line with &lt;sup&gt;, e.g. x&lt;sup&gt;2&lt;/sup&gt;.`, `&lt;sub&gt; is subscript (below the line), used for H<sub>2</sub>O.`, null, `Wrong because &lt;sup&gt; (superscript) is listed and is exactly the tag for powers such as x<sup>2</sup>.`] }
           ] },
         { title: `Form A · Questions 2 and 3`, marks: `13 marks`, items: [
             { type: `written`, q: `Q2 [5 marks] "There are many types of Web sites, each catering to a particular type of content or use." Mention and explain the types of Web Sites and the Internet protocols.`, ans: `<b>Types of web sites</b>: (1) Blog (web log): online diaries, may include discussion forums; (2) Social networking site: users communicate and share pictures, videos, music, blogs; may include games and web apps; (3) Wiki site: collaboratively edited (Wikipedia, WikiHow); (4) Web portal: a starting point or gateway to other resources; (5) Search engine site: gateway/lookup for other sites (Google, Yahoo, Bing); (6) Education site: teachers, students or administrators post school information.<br><b>Internet protocols</b>: TCP/IP: main protocol, the rules computers follow to communicate over a network; HTTP: exchanges almost all web resources, the browser's language to send requests (HTTPS is the secure, encrypted version); FTP: uploads/downloads files between client and server; (ISP: organization giving access to the Internet and services like e-mail). (L1)` },
@@ -3125,23 +3125,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 &lt;/html&gt;</pre>Table check (5 columns): every row adds up to 5 when cells still covered by rowspan from above are counted (method in L5). "Single border" = border-collapse: collapse; "gray with level 200" = rgb(200, 200, 200).` }
           ] },
         { title: `Form B · Question 1 · Choose the correct answer`, marks: `7 marks`, items: [
-            { type: `mcq`, q: `What is the correct HTML for adding a background color?`, o: [`&lt;body style="background-color:yellow;"&gt;`, `&lt;background&gt;yellow&lt;/background&gt;`, `&lt;body bg="yellow"&gt;`, `None of the above`], a: 0, why: `style attribute with background-color (L3).` },
+            { type: `mcq`, q: `What is the correct HTML for adding a background color?`, o: [`&lt;body style="background-color:yellow;"&gt;`, `&lt;background&gt;yellow&lt;/background&gt;`, `&lt;body bg="yellow"&gt;`, `None of the above`], a: 0, why: `A background color is set with the style attribute and the CSS property background-color: &lt;body style="background-color:yellow;"&gt; (L3).`, ow: [null, `There is no &lt;background&gt; element in HTML; the background is styled with the style attribute and background-color.`, `bg is not an HTML attribute; the background is set with style="background-color:yellow;".`, `Wrong because &lt;body style="background-color:yellow;"&gt; is listed and is the correct way.`] },
             { type: `mcq`, q: `What is the correct HTML for creating a hyperlink?`, o: [
                 `&lt;a&gt;http://www.google.com&lt;/a&gt;`,
                 `&lt;a name="http://www.Google.com"&gt;Google.com&lt;/a&gt;`,
                 `&lt;a href="http://www.Google.com"&gt;Google&lt;/a&gt;`,
                 `&lt;a url="http://www.Google.com"&gt;Google.com&lt;/a&gt;`
-              ], a: 2, why: `href holds the destination (L2).` },
-            { type: `mcq`, q: `How can you make a numbered list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 1, why: `&lt;ol&gt; = ordered (numbered) list (L5).` },
+              ], a: 2, why: `A link is the &lt;a&gt; element with the destination URL in href; the text between the tags is what the user clicks (L2).`, ow: [`Without an href attribute the anchor has no destination, so the text is not a working link; the URL must go in href.`, `The name attribute names an anchor (a bookmark target) and does not give a destination; the URL must go in href.`, null, `There is no url attribute on &lt;a&gt;; the destination of a link is given in the href attribute.`] },
+            { type: `mcq`, q: `How can you make a numbered list?`, o: [`&lt;list&gt;`, `&lt;ol&gt;`, `&lt;ul&gt;`, `&lt;dl&gt;`], a: 1, why: `&lt;ol&gt; is the ordered list; its &lt;li&gt; items are numbered by default (type="1"), while &lt;ul&gt; gives bullets (L5).`, ow: [`There is no &lt;list&gt; element in HTML; a numbered list is an ordered list, &lt;ol&gt;.`, null, `&lt;ul&gt; is the unordered list, marked with bullets, not numbers; numbered lists use &lt;ol&gt;.`, `&lt;dl&gt; is a description list of terms and descriptions, not numbered; numbered lists use &lt;ol&gt;.`] },
             { type: `mcq`, q: `What is the correct HTML for inserting an image?`, o: [
                 `&lt;img alt="MyImage"&gt;image.gif&lt;/img&gt;`,
                 `&lt;image src="image.gif" alt="MyImage"&gt;`,
                 `&lt;img src="image.gif" alt="MyImage"&gt;`,
                 `&lt;img href="image.gif" alt="MyImage"&gt;`
-              ], a: 2, why: `&lt;img&gt; is an empty element with src (path) and alt (alternate text) (L2).` },
-            { type: `mcq`, q: `Which is the correct CSS syntax?`, o: [`{body;color:black;}`, `body:color=black;`, `body {color: black;}`, `{body:color=black;}`], a: 2, why: `selector {property: value;} (L4).`, key: `Pencil mark on the photo is on D, which is wrong.` },
-            { type: `mcq`, q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [`h1.all {background-color:#FFFFFF;}`, `all.h1 {background-color:#FFFFFF;}`, `h1 {background-color:#FFFFFF;}`, `None of the above`], a: 2, why: `The element selector h1 targets every &lt;h1&gt;; h1.all would need class="all" (L4).` },
-            { type: `mcq`, q: `HTML is what type of language?`, o: [`Scripting Language`, `Markup Language`, `Programming Language`, `Network Protocol`], a: 1, why: `HyperText Markup Language (L2).` }
+              ], a: 2, why: `&lt;img&gt; is an empty element with src (path) and alt (alternate text) (L2).`, ow: [`&lt;img&gt; is an empty element; the file goes in src, not as content.`, `There is no &lt;image&gt; element in HTML; the image element is &lt;img&gt;, with the path in src and alternate text in alt.`, null, `href is the destination attribute of a link (&lt;a&gt;); an image's path goes in the src attribute: &lt;img src="image.gif"&gt;.`] },
+            { type: `mcq`, q: `Which is the correct CSS syntax?`, o: [`{body;color:black;}`, `body:color=black;`, `body {color: black;}`, `{body:color=black;}`], a: 2, why: `A CSS rule is a selector followed by a declaration block in braces, each declaration written property: value;, so body {color: black;} (L4, CSS syntax).`, ow: [`The selector must come before the braces, not inside them with a semicolon; the form is selector {property: value;}.`, `There are no braces, and CSS separates property and value with a colon, not =; the form is body {color: black;}.`, null, `The selector is inside the braces and = is used instead of a colon; the correct form is body {color: black;}.`], key: `Pencil mark on the photo is on D, which is wrong.` },
+            { type: `mcq`, q: `How do you add a background color for all &lt;h1&gt; elements?`, o: [`h1.all {background-color:#FFFFFF;}`, `all.h1 {background-color:#FFFFFF;}`, `h1 {background-color:#FFFFFF;}`, `None of the above`], a: 2, why: `The element selector h1 targets every &lt;h1&gt;; h1.all would need class="all" (L4).`, ow: [`h1.all selects only &lt;h1&gt; elements with class="all", not every &lt;h1&gt;; the plain element selector h1 does that.`, `all.h1 selects elements named &lt;all&gt; with class="h1", which do not exist; all &lt;h1&gt; are selected by h1.`, null, `Wrong because h1 {background-color:#FFFFFF;} is listed and correctly targets every &lt;h1&gt;.`] },
+            { type: `mcq`, q: `HTML is what type of language?`, o: [`Scripting Language`, `Markup Language`, `Programming Language`, `Network Protocol`], a: 1, why: `HTML is HyperText Markup Language: it marks up the structure of a page with tags and has no programming logic (L2).`, ow: [`JavaScript and PHP are scripting languages; HTML only marks up structure.`, null, `HTML has no variables, conditions or loops; it only describes the structure of a page, so it is a markup language, not a programming language.`, `A network protocol is a set of communication rules like HTTP or FTP; HTML is the markup language of the pages that HTTP carries.`] }
           ] },
         { title: `Form B · Questions 2 and 3`, marks: `13 marks`, items: [
             { type: `written`, q: `Q2 [5 marks] "There are many points one should keep in mind while designing a Web site. These points make a site usable and easily accessible to the users." Mention and explain the web-site designing issues.`, ans: `(1) <b>Information availability</b>: provide 80-90% of what the visitor is looking for. (2) <b>Page layout</b>: relevant content found quickly; simple pages. (3) <b>Colors</b>: standard colors, blue links, violet visited, red active. (4) <b>Web accessibility</b>: usable by people with visual, audio, physical or speech disabilities. (5) <b>User-friendly site</b>: built on audience needs (UI/UX). (6) <b>Download speed</b>: optimize graphics (images not larger than 10 KB), smaller pages, avoid nested tables. (L1)` },
@@ -3184,13 +3184,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 &lt;/html&gt;</pre>Check (4 columns): "Year work" spans 4 rows in column 1 while Quiz/Researches/Assignments/Participation fill column 2; Marks 10 and 10% each span the same 4 rows. The subscripts use &lt;sub&gt; (L3).` }
           ] },
         { title: `Form C · Question 1 · Choose the correct answer`, marks: `7 marks`, items: [
-            { type: `mcq`, q: `Choose the correct HTML element for the largest heading:`, o: [`&lt;head&gt;`, `&lt;h1&gt;`, `&lt;heading&gt;`, `&lt;h6&gt;`], a: 1, why: `&lt;h1&gt; is the most important/largest heading (L2).` },
-            { type: `mcq`, q: `&lt;a&gt; and &lt;/a&gt; are the tags used for:`, o: [`Adding image`, `Aligning text`, `Audio-voiced text`, `Adding links to your page`], a: 3, why: `The anchor element creates hyperlinks (L2).` },
-            { type: `mcq`, q: `To start a list at the count of 3, use:`, o: [`&lt;ol begin="3"&gt;`, `&lt;ol list="3"&gt;`, `&lt;ol start="3"&gt;`, `&lt;ol num="3"&gt;`], a: 2, why: `The start attribute sets the first number (L5).` },
-            { type: `mcq`, q: `The visible part of HTML document lies in:`, o: [`Paragraph tag`, `Body tag`, `Links tag`, `Image tag`], a: 1, why: `Visible content is inside &lt;body&gt; (L2).` },
-            { type: `mcq`, q: `Which of the following will NOT be found in the section?`, o: [`&lt;Metatags&gt;`, `&lt;Table&gt;`, `&lt;Title&gt;`, `None of the above`], a: 1, why: `The question means the &lt;head&gt; section (the tag name was swallowed when printing). A table is body content; meta tags and title belong in the head (L2).` },
-            { type: `mcq`, q: `How do you make a list that lists its items with squares?`, o: [`list: square;`, `list-type: square;`, `list-style-type: square;`, `None of the above`], a: 2, why: `list-style-type (L5).` },
-            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).` }
+            { type: `mcq`, q: `Choose the correct HTML element for the largest heading:`, o: [`&lt;head&gt;`, `&lt;h1&gt;`, `&lt;heading&gt;`, `&lt;h6&gt;`], a: 1, why: `&lt;h1&gt; is the most important/largest heading (L2).`, ow: [`&lt;head&gt; is the section that holds meta information (title, meta, link, style), not a heading; the largest heading is &lt;h1&gt;.`, null, `There is no &lt;heading&gt; element in HTML; headings are &lt;h1&gt; (most important, largest) to &lt;h6&gt; (least important).`, `&lt;h6&gt; is the least important (smallest) heading.`] },
+            { type: `mcq`, q: `&lt;a&gt; and &lt;/a&gt; are the tags used for:`, o: [`Adding image`, `Aligning text`, `Audio-voiced text`, `Adding links to your page`], a: 3, why: `&lt;a&gt; is the anchor element; with an href attribute it creates a hyperlink to another page or resource (L2).`, ow: [`Images are added with the empty &lt;img src="..."&gt; element; &lt;a&gt; can only wrap an image to make it a link.`, `Text alignment is set with CSS (text-align), not with &lt;a&gt;; the anchor tag creates hyperlinks.`, `Sound is added with the &lt;audio&gt; element; &lt;a&gt; is the anchor tag used for hyperlinks.`, null] },
+            { type: `mcq`, q: `To start a list at the count of 3, use:`, o: [`&lt;ol begin="3"&gt;`, `&lt;ol list="3"&gt;`, `&lt;ol start="3"&gt;`, `&lt;ol num="3"&gt;`], a: 2, why: `The start attribute sets the first number (L5).`, ow: [`&lt;ol&gt; has no begin attribute; the number to start counting from is given by start.`, `&lt;ol&gt; has no list attribute; the first number is set with start, e.g. start="3".`, null, `&lt;ol&gt; has no num attribute; the first number is set with start.`] },
+            { type: `mcq`, q: `The visible part of HTML document lies in:`, o: [`Paragraph tag`, `Body tag`, `Links tag`, `Image tag`], a: 1, why: `The visible part of the document is everything between &lt;body&gt; and &lt;/body&gt;; the head holds only metadata (L2).`, ow: [`A paragraph is only one kind of visible content; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`, null, `A link (&lt;a&gt;) is just one kind of visible content inside the body; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`, `An image (&lt;img&gt;) is just one kind of visible content inside the body; the whole visible part lies between &lt;body&gt; and &lt;/body&gt;.`] },
+            { type: `mcq`, q: `Which of the following will NOT be found in the section?`, o: [`&lt;Metatags&gt;`, `&lt;Table&gt;`, `&lt;Title&gt;`, `None of the above`], a: 1, why: `The question means the &lt;head&gt; section (the tag name was swallowed when printing). A table is body content; meta tags and title belong in the head (L2).`, ow: [`&lt;meta&gt; tags are metadata and belong in the head, so they ARE found there; the question asks for what is not.`, null, `&lt;title&gt; belongs in the head (it names the page in the browser tab), so it is found there.`, `Wrong because &lt;table&gt; is visible content that belongs in the body, so one option is indeed not found in the head.`] },
+            { type: `mcq`, q: `How do you make a list that lists its items with squares?`, o: [`list: square;`, `list-type: square;`, `list-style-type: square;`, `None of the above`], a: 2, why: `list-style-type sets the list item marker; its values are disc (default), circle, square and none (L5).`, ow: [`list is not a CSS property; the marker of list items is set with list-style-type.`, `list-type is not a CSS property; the full name is list-style-type, e.g. list-style-type: square;.`, null, `Wrong because list-style-type: square; is listed and is the correct declaration.`] },
+            { type: `mcq`, q: `Which property is used to change the font of an element?`, o: [`font-family`, `font-weight`, `font-style`, `font-property`], a: 0, why: `font-family sets the font; font-weight = boldness, font-style = italic (L3/L4).`, ow: [null, `font-weight sets how bold the text is (normal, bold); it does not change which font is used, that is font-family.`, `font-style sets normal, italic or oblique text; the font itself is chosen with font-family.`, `font-property is not a CSS property; the font of an element is set with font-family.`] }
           ] },
         { title: `Form C · Questions 2 and 3`, marks: `13 marks`, items: [
             { type: `written`, q: `Q2 [5 marks] "Hyperlinks are the primary method used to navigate between pages and Web sites." Mention and explain the types of hyperlinks and illustrate the differences between web-page and web-site.`, ans: `<b>Types of hyperlinks</b>: Text hyperlink (a word or phrase takes visitors to another page, file or document); Image hyperlink (an image does the same); Bookmark hyperlink (text or an image takes visitors to another part of the same page); E-mail hyperlink (lets visitors send an e-mail to the displayed address).<br><b>Web page vs web site</b>: a web page is a single document, a space of information about a person, business, organization or cause, containing links to resources; a web site is a collection of web pages grouped together and connected in various ways, usually in one root folder with index.html as the home page. (L1)` },
@@ -3236,23 +3236,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       ] },
     { title: `Final Exam 2022/2023 (May / summer)`, meta: `May 2023 · CS206 · 2 hours · 60 marks · Dr. M. AbdelFattah, Dr. M. ElGamml`, note: `Transcribed from two phone photos. A fold crosses Q1(a) items 2 and 10: Q2 reads "What is the data type of null in JavaScript?" and Q10 reads console.log(1 + "2" + "2") (the middle "+" is hidden by the fold; the options 122/5/NaN/Error confirm it). In Q4 option (c) is smudged; it is the standard &lt;!-- and --&gt;. No key available; outputs were verified with node.`, sections: [
         { title: `Question 1 (a) · Choose the correct answer`, marks: `15 marks`, items: [
-            { type: `mcq`, q: `Which of the following is a valid JavaScript variable name?`, o: [`123variable`, `_myVariable`, `var`, `break`], a: 1, why: `Names start with a letter, $ or _; var and break are reserved words (L7).` },
-            { type: `mcq`, q: `What is the data type of null in JavaScript?`, o: [`Object`, `Null`, `Undefined`, `Null is not a valid data type in JavaScript`], a: 0, why: `typeof null returns "object" (a historic quirk), which is what this MCQ expects. Strictly, the language spec names the type Null, so B can be argued, but A is the usual exam answer.` },
-            { type: `mcq`, q: `What is the result of typeof [1, 2, 3] in JavaScript?`, o: [`Array`, `Object`, `List`, `Undefined`], a: 1, why: `Arrays are objects: typeof gives "object" (L7).` },
-            { type: `mcq`, q: `HTML comment should be enclosed between`, o: [`&lt;!- and --&gt;`, `&lt;! And !&gt;`, `&lt;!-- and --&gt;`, `&lt;! -- and --&gt;`], a: 2, why: `HTML comments are &lt;!-- ... --&gt; with no space after &lt;! (L3).` },
-            { type: `mcq`, q: `Which of the following type of HTML tag is used to define an internal style sheet?`, o: [`&lt;script&gt;`, `&lt;link&gt;`, `&lt;class&gt;`, `&lt;style&gt;`], a: 3, why: `&lt;style&gt; in the head = internal CSS; &lt;link&gt; = external (L4).` },
-            { type: `mcq`, q: `Which of the following CSS property is used to set the color of the text?`, o: [`text-decoration`, `pallet`, `text-style`, `color`], a: 3, why: `color sets the text color (L3).` },
-            { type: `mcq`, q: `Which of the following CSS Property controls how an element is positioned?`, o: [`static`, `position`, `fix`, `set`], a: 1, why: `position (values static, relative, absolute, fixed, sticky) (L4).` },
-            { type: `mcq`, q: `Which of the following is a valid way to concatenate two strings in JavaScript?`, o: [`str1 + str2`, `str1.concat(str2)`, `Both a) and b)`, `Neither a) nor b)`], a: 2, why: `Both + and concat() join strings (L9).` },
-            { type: `mcq`, q: `What is the result of typeof true in JavaScript?`, o: [`True`, `Boolean`, `Object`, `Undefined`], a: 1, why: `"boolean" (L7).` },
-            { type: `mcq`, q: `The output of console.log(1 + "2" + "2"); is?`, o: [`122`, `5`, `NaN`, `Error`], a: 0, why: `1 + "2" = "12", then "12" + "2" = "122" (verified with node) (L8).` },
+            { type: `mcq`, q: `Which of the following is a valid JavaScript variable name?`, o: [`123variable`, `_myVariable`, `var`, `break`], a: 1, why: `Names start with a letter, $ or _; var and break are reserved words (L7).`, ow: [`A variable name cannot start with a digit; it must start with a letter, $ or _.`, null, `var is a reserved word (it declares variables), so it cannot be used as a variable name.`, `break is a reserved word (it exits loops and switch), so it cannot be used as a variable name.`] },
+            { type: `mcq`, q: `What is the data type of null in JavaScript?`, o: [`Object`, `Null`, `Undefined`, `Null is not a valid data type in JavaScript`], a: 0, why: `typeof null returns "object" (a historic quirk), which is what this MCQ expects. Strictly, the language spec names the type Null, so B can be argued, but A is the usual exam answer.`, ow: [null, `The spec type is Null, but typeof reports "object", which is what this MCQ tests.`, `undefined is a different value: a variable declared but not initialized; typeof undefined is "undefined", while typeof null is "object".`, `Null is a valid data type a variable can hold (it is in the lecture's list of types); typeof null returns "object".`] },
+            { type: `mcq`, q: `What is the result of typeof [1, 2, 3] in JavaScript?`, o: [`Array`, `Object`, `List`, `Undefined`], a: 1, why: `Arrays are objects: typeof gives "object" (L7).`, ow: [`typeof never returns "array"; arrays are objects, so it gives "object" (Array.isArray() tests for arrays).`, null, `JavaScript has no "list" type and typeof never returns it; arrays are objects, so the result is "object".`, `"undefined" is the result only for values never assigned; an array literal is a defined object.`] },
+            { type: `mcq`, q: `HTML comment should be enclosed between`, o: [`&lt;!- and --&gt;`, `&lt;! And !&gt;`, `&lt;!-- and --&gt;`, `&lt;! -- and --&gt;`], a: 2, why: `HTML comments are &lt;!-- ... --&gt; with no space after &lt;! (L3).`, ow: [`The opening needs two dashes: a comment starts with &lt;!-- and ends with --&gt;.`, `&lt;! ... !&gt; is not HTML comment syntax; a comment is written &lt;!-- comment --&gt;.`, null, `The space breaks the syntax: &lt;! must be followed immediately by --, as in &lt;!-- comment --&gt;.`] },
+            { type: `mcq`, q: `Which of the following type of HTML tag is used to define an internal style sheet?`, o: [`&lt;script&gt;`, `&lt;link&gt;`, `&lt;class&gt;`, `&lt;style&gt;`], a: 3, why: `&lt;style&gt; in the head = internal CSS; &lt;link&gt; = external (L4).`, ow: [`&lt;script&gt; holds JavaScript code, not CSS; an internal style sheet is written in a &lt;style&gt; element in the head.`, `&lt;link&gt; attaches an external .css file; an internal (embedded) sheet is written inside &lt;style&gt; in the head.`, `&lt;class&gt; is not an HTML element; class is an attribute used by CSS class selectors. Internal CSS goes in &lt;style&gt;.`, null] },
+            { type: `mcq`, q: `Which of the following CSS property is used to set the color of the text?`, o: [`text-decoration`, `pallet`, `text-style`, `color`], a: 3, why: `The color property sets the text color, e.g. h1 {color: blue;}; background-color sets the background (L4).`, ow: [`text-decoration adds or removes underline, overline or line-through; it does not set the color of the text.`, `pallet is not a CSS property; the text color is set with the color property.`, `text-style is not a CSS property; the text color is set with the color property.`, null] },
+            { type: `mcq`, q: `Which of the following CSS Property controls how an element is positioned?`, o: [`static`, `position`, `fix`, `set`], a: 1, why: `position (values static, relative, absolute, fixed, sticky) (L4).`, ow: [`static is one value of the position property (the default, normal flow), not a property itself.`, null, `fix is not a CSS property (fixed is one value of position); positioning is controlled by the position property.`, `set is not a CSS property; how an element is positioned is controlled by the position property.`] },
+            { type: `mcq`, q: `Which of the following is a valid way to concatenate two strings in JavaScript?`, o: [`str1 + str2`, `str1.concat(str2)`, `Both a) and b)`, `Neither a) nor b)`], a: 2, why: `Strings can be joined with the + operator or with the concat() method, so both forms are valid (L7, L9).`, ow: [`str1 + str2 works, but str1.concat(str2) does too, so the full answer is "Both a) and b)".`, `str1.concat(str2) works, but str1 + str2 does too, so the full answer is "Both a) and b)".`, null, `Wrong because both + and concat() join two strings in JavaScript.`] },
+            { type: `mcq`, q: `What is the result of typeof true in JavaScript?`, o: [`True`, `Boolean`, `Object`, `Undefined`], a: 1, why: `true and false are Boolean values, so typeof true returns "boolean" (L7, typeof).`, ow: [`true is the value itself; typeof returns the name of its type, "boolean".`, null, `true is a primitive Boolean value, not an object, so typeof gives "boolean" rather than "object".`, `"undefined" is for values never assigned; true is a defined Boolean, so typeof gives "boolean".`] },
+            { type: `mcq`, q: `The output of console.log(1 + "2" + "2"); is?`, o: [`122`, `5`, `NaN`, `Error`], a: 0, why: `1 + "2" = "12", then "12" + "2" = "122" (verified with node) (L8).`, ow: [null, `5 would be numeric addition, but once a string is involved + concatenates: 1 + "2" = "12", then + "2" = "122".`, `NaN appears when a non-numeric value is used in maths like - or *; + with strings simply concatenates.`, `Mixing numbers and strings with + is legal; JS converts the number to a string, so there is no error.`] },
             { type: `mcq`, q: `What is the output of this code?<pre>const numbers = [33, 2, 8];
 numbers.sort();
-console.log(numbers[1])</pre>`, o: [`33`, `2`, `8`, `1`], a: 0, why: `sort() compares as strings by default: "2" &lt; "33" &lt; "8", giving [2, 33, 8]; numbers[1] = 33 (verified with node) (L8).` },
-            { type: `mcq`, q: `Which of the following is a valid way to convert a string to a number in JavaScript?`, o: [`parseInt("42")`, `Number("42")`, `parseFloat("42")`, `All of them`], a: 3, why: `All three convert (L9).` },
-            { type: `mcq`, q: `The output of console.log(typeof NaN); is`, o: [`NaN`, `number`, `null`, `undefined`], a: 1, why: `NaN is of type number (L7).` },
-            { type: `mcq`, q: `The output of console.log(typeof typeof 1); is`, o: [`String`, `Number`, `!`, `True`], a: 0, why: `typeof 1 = "number", a string, so typeof "number" = "string" (L7).` },
-            { type: `mcq`, q: `What is the data type of the result of a mathematical operation between a number and a string in JavaScript?`, o: [`Number`, `String`, `NaN`, `Error`], a: 1, why: `With + the number is converted and concatenated (5 + "9" = "59"), giving a String; this is the expected answer. (With -, * or / the result would be a number, e.g. "6" - 2 = 4.)` }
+console.log(numbers[1])</pre>`, o: [`33`, `2`, `8`, `1`], a: 0, why: `sort() compares as strings by default: "2" &lt; "33" &lt; "8", giving [2, 33, 8]; numbers[1] = 33 (verified with node) (L8).`, ow: [null, `After the string-order sort the array is [2, 33, 8], so 2 is at index 0, not index 1.`, `As strings, "8" sorts after "33", so 8 is last (index 2), not at index 1.`, `1 is not even in the array; numbers[1] is the element at index 1, which is 33 after sorting.`] },
+            { type: `mcq`, q: `Which of the following is a valid way to convert a string to a number in JavaScript?`, o: [`parseInt("42")`, `Number("42")`, `parseFloat("42")`, `All of them`], a: 3, why: `parseInt("42"), Number("42") and parseFloat("42") all convert the string to the number 42 (L9, Data type conversions).`, ow: [`parseInt("42") works, but Number("42") and parseFloat("42") do too, so the answer is "All of them".`, `Number("42") works, but parseInt("42") and parseFloat("42") do too, so the answer is "All of them".`, `parseFloat("42") works, but parseInt("42") and Number("42") do too, so the answer is "All of them".`, null] },
+            { type: `mcq`, q: `The output of console.log(typeof NaN); is`, o: [`NaN`, `number`, `null`, `undefined`], a: 1, why: `NaN (Not a Number) is a special value of the number type, so typeof NaN returns "number" (L7, typeof).`, ow: [`typeof always returns a type name, never the value; NaN (Not a Number) is still of type "number".`, null, `typeof never returns "null" (even typeof null gives "object"); typeof NaN is "number".`, `"undefined" is for values never assigned; NaN is a defined number value, so typeof gives "number".`] },
+            { type: `mcq`, q: `The output of console.log(typeof typeof 1); is`, o: [`String`, `Number`, `!`, `True`], a: 0, why: `typeof 1 = "number", a string, so typeof "number" = "string" (L7).`, ow: [null, `"number" is the result of the inner typeof 1 only; applying typeof again to that string gives "string".`, `typeof always returns a type name such as "string"; it never returns a symbol like !.`, `typeof returns a type name as a string, never true; typeof (typeof 1) is typeof "number", which is "string".`] },
+            { type: `mcq`, q: `What is the data type of the result of a mathematical operation between a number and a string in JavaScript?`, o: [`Number`, `String`, `NaN`, `Error`], a: 1, why: `With + the number is converted and concatenated (5 + "9" = "59"), giving a String; this is the expected answer. (With -, * or / the result would be a number, e.g. "6" - 2 = 4.)`, ow: [`Only for -, *, / (e.g. "6" - 2 = 4); the expected answer follows the + case.`, null, `NaN is a value of type number, not a data type itself; with + a number and a string give a string.`, `JavaScript does not fail when mixing types; it converts them, so with + the result is a string such as "59".`] }
           ] },
         { title: `Question 1 (b) and Question 2 · Written`, marks: `25 marks`, items: [
             { type: `written`, q: `Q1(b) [5 marks] What are the similarities and differences between JavaScript and PHP?`, ans: `<b>Similarities</b>: both are interpreted, loosely typed scripting languages with C/Java-like syntax (if/else, for, while, functions, arrays), both are embedded in HTML and used to build dynamic web pages, and both convert types automatically.<br><b>Differences</b>: JavaScript is client-side (runs in the browser), PHP is server-side (runs on the web server and sends only its output); JS source is visible to the user, PHP code is not (security); PHP can access databases and the server's files, client-side JS cannot read/write files; JS reacts to events without reloading the page, PHP builds the page per request (forms via $_GET/$_POST); PHP variables start with $ and strings are joined with "." while JS uses var/let/const and "+".` },
