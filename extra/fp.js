@@ -6,13 +6,13 @@ EXTRA.fp = {
       [`The original 500 bytes followed by the new 20 bytes (520 bytes)`, `Correct. "a" opens an existing file (or creates a new one) for output and appends at the end.`],
       [`Only the new 20 bytes`, `That is what "w" does: it truncates the existing file before writing.`],
       [`The first 20 bytes are overwritten; the file stays 500 bytes`, `That would be "r+" with writing at the start. "a" never overwrites existing data.`],
-      [`Nothing changes, because "a" opens the file for reading only`, `Reading only is "r". "a" is an output mode.`]
+      [`Nothing changes, because "a" opens the file for reading only`, `"a" is an output mode (create or append), so the 20 bytes are written at the end. Read-only access is mode "r" (L1, C modes).`]
     ], a: 0 },
     { q: `Which C++ flag combination is equivalent to the C mode <code>"r+"</code>?`, o: [
-      [`ios::in`, `That is plain "r" (input only).`],
+      [`ios::in`, `ios::in alone is input only, the equivalent of "r". "r+" needs both input and output: ios::out | ios::in (L1, C mode ↔ C++ flags).`],
       [`ios::out | ios::in`, `Correct. "r+" opens an existing file for input and output.`],
       [`ios::out | ios::in | ios::trunc`, `Adding trunc gives "w+", which destroys the existing contents.`],
-      [`ios::out | ios::app`, `That is "a" (output only, appending).`]
+      [`ios::out | ios::app`, `ios::out | ios::app is the C++ form of "a" (output only, appending), with no input; "r+" is ios::out | ios::in (L1, C mode ↔ C++ flags).`]
     ], a: 1 },
     { q: `You must open an EXISTING binary file of employee records so you can both read records and overwrite some of them, without destroying the current contents. Which <code>fopen</code> mode fits?`, o: [
       [`"wb+"`, `w+ creates or truncates the file, so all existing records would be lost.`],
@@ -34,13 +34,13 @@ EXTRA.fp = {
       [`<code>outfile</code> is the logical name and <code>"myfile.txt"</code> is the physical name`, `Correct. The logical file is the program variable (the channel); the physical file is the name on disk.`],
       [`<code>"myfile.txt"</code> is the logical name and <code>outfile</code> is the physical name`, `Reversed. The physical name is the name stored on disk.`],
       [`Both names are physical names`, `outfile is a program variable, so it is a logical name.`],
-      [`<code>ios::out</code> is the logical name`, `ios::out is the opening mode, not a name.`]
+      [`<code>ios::out</code> is the logical name`, `ios::out is the opening mode (output), not a name; the logical name is outfile and the physical name is "myfile.txt" (L1, Opening files).`]
     ], a: 0 },
     { q: `Which of the following is a PHYSICAL file organization method?`, o: [
-      [`Heap`, `Heap is a logical organization method.`],
+      [`Heap`, `Heap is a LOGICAL organization method (with indexing and hashing); physical methods organize tracks by sectors or by blocks (L1).`],
       [`Organizing tracks by sectors`, `Correct. Physical methods organize tracks by sectors or by blocks.`],
-      [`Indexing`, `Indexing is a logical organization method.`],
-      [`Hashing`, `Hashing is a logical organization method.`]
+      [`Indexing`, `Indexing is a LOGICAL organization method; physical organization is about tracks organized by sectors or blocks (L1).`],
+      [`Hashing`, `Hashing is a LOGICAL organization method (with heap and indexing); physical methods organize tracks by sectors or blocks (L1).`]
     ], a: 1 },
     { q: `A file holds exactly 3 employee records. This loop runs over it:<pre>while (!feof(fp)) {
     fread(&amp;emp, sizeof(emp), 1, fp);
@@ -49,15 +49,15 @@ EXTRA.fp = {
       [`The first record is skipped`, `The first fread reads record 1 normally; nothing is skipped.`],
       [`The loop never ends`, `feof does become true once a read hits the end, so the loop ends.`],
       [`The last record may be printed twice`, `Correct. feof only becomes true AFTER a read fails, so one extra iteration prints the old contents of emp again. Checking fread(...) == 1 is safer.`],
-      [`fread returns 1 at end of file`, `At end of file fread returns 0, not 1.`]
+      [`fread returns 1 at end of file`, `At end of file fread returns 0 (the number of elements read), not 1. That 0 is the reliable EOF check in C (L1, Reading and writing).`]
     ], a: 2 },
     { q: `When a program writes to a file, each byte is sent to the disk individually at the moment it is written.`, o: [
       [`True`, `The slides say bytes are not sent one by one.`],
       [`False`, `Correct. Bytes are collected in a buffer and sent as a block, which is why an abnormal termination before closing may lose data.`]
     ], a: 1 },
     { q: `In C++, which logical name is connected by default to the keyboard?`, o: [
-      [`cout`, `cout is standard output (the screen).`],
-      [`cerr`, `cerr is standard error (the screen).`],
+      [`cout`, `cout is C++ standard output, connected to the console/screen, not the keyboard (L1, Standard I/O names).`],
+      [`cerr`, `cerr is C++ standard error, also connected to the console/screen; the keyboard is standard input, cin (L1, Standard I/O names).`],
       [`stdin`, `stdin is the C name for standard input, not the C++ one.`],
       [`cin`, `Correct. Standard input (keyboard) is stdin in C and cin in C++.`]
     ], a: 3 }
@@ -106,9 +106,9 @@ EXTRA.fp = {
       [`False`, `Correct. The slides say block organization has MORE non-data overhead than sector addressing.`]
     ], a: 1 },
     { q: `Tracks are organized by 512-byte sectors, and each 300-byte record is stored in its own sector. The unused 212 bytes in each sector are an example of:`, o: [
-      [`Seeking`, `Seeking is moving the arm.`],
+      [`Seeking`, `Seeking is moving the arm to the correct cylinder; it has nothing to do with unused space inside a sector (L2).`],
       [`Blocking factor`, `The blocking factor is the number of records per block, used in block organization.`],
-      [`Disk striping`, `Striping spreads a file over several drives.`],
+      [`Disk striping`, `Disk striping spreads a file's blocks over several drives for parallelism; it does not describe wasted bytes in a sector (L2).`],
       [`Fragmentation`, `Correct. Fragmentation is the loss of space within a sector when records do not fit exactly.`]
     ], a: 3 },
     { q: `The number of cylinders on a disk equals the number of tracks per surface.`, o: [
@@ -127,7 +127,7 @@ EXTRA.fp = {
   3: [
     { q: `A book record has ISBN = <code>52814</code>, author = <code>KNUTH</code>, title = <code>SORTING</code>. Which is the correct encoding using a 2-digit <b>length indicator</b> at the start of each field?`, o: [
       [`<code>52814|KNUTH|SORTING|</code>`, `That is the delimiter method, not length indicators.`],
-      [`<code>ISBN=52814 AU=KNUTH TI=SORTING</code>`, `That is the keyword = value method.`],
+      [`<code>ISBN=52814 AU=KNUTH TI=SORTING</code>`, `ISBN=… AU=… TI=… is the keyword = value method; length indicators put the field length before each field (05 52814…) (L3).`],
       [`<code>055281405KNUTH07SORTING</code>`, `Correct. Each field is preceded by its length: 05 + 52814, 05 + KNUTH, 07 + SORTING.`],
       [`<code>055281405KNUTH06SORTING</code>`, `SORTING has 7 characters, not 6. The length was miscounted.`]
     ], a: 2 },
@@ -141,7 +141,7 @@ EXTRA.fp = {
       [`384`, `Correct. Record size = 24 + 4 + 4 = 32 B; offset = RRN × record size = 12 × 32 = 384.`],
       [`416`, `That is 13 × 32, which treats RRNs as starting at 1. The first record has RRN 0.`],
       [`352`, `That is 11 × 32, an off-by-one in the other direction.`],
-      [`12`, `That is the RRN itself, not the byte offset.`]
+      [`12`, `12 is the RRN, not the byte offset; the offset is RRN × record size = 12 × 32 = 384 (L3, Direct access).`]
     ], a: 0 },
     { q: `An <code>fstream file</code> holds fixed-length 50-byte records. Which call positions the file so that the next <code>write</code> overwrites the record with RRN 7?`, o: [
       [`<code>file.seekg(350, ios::beg);</code>`, `seekg moves the GET (read) pointer. Writing uses the put pointer.`],
@@ -153,10 +153,10 @@ EXTRA.fp = {
       [`The record with RRN 3`, `Origin 2 means the END of the file, not the beginning.`],
       [`The last record`, `The last record starts 20 bytes before the end, not 60.`],
       [`The third record from the end`, `Correct. Origin 2 = end; moving back 60 bytes = 3 records of 20 bytes, so the read starts at the third-last record.`],
-      [`The second record from the end`, `That would need an offset of -40L.`]
+      [`The second record from the end`, `The second record from the end starts 2 × 20 = 40 bytes before the end, i.e. fseek(fp, -40L, 2); −60L reaches the third-last (L3).`]
     ], a: 2 },
     { q: `A secondary key uniquely identifies a record and does not change.`, o: [
-      [`True`, `This describes a PRIMARY key.`],
+      [`True`, `That is the definition of a PRIMARY key; a secondary key is used for searching and does not typically identify a record uniquely (L3).`],
       [`False`, `Correct. A secondary key is used for searching but does not typically identify a record uniquely.`]
     ], a: 1 },
     { q: `What is the main ADVANTAGE of fixed-length records?`, o: [
@@ -169,7 +169,7 @@ EXTRA.fp = {
       [`Length indicator`, `Correct. The length stored at the start tells you exactly how many bytes to skip.`],
       [`Delimited`, `With delimiters you must check every byte until you hit the delimiter.`],
       [`Keyword = value`, `Its advantage is being self-describing and allowing missing fields.`],
-      [`Stream`, `A stream file has no field structure at all.`]
+      [`Stream`, `A stream file adds no information at all, so there are no field boundaries to jump to; the length indicator gives that (L3, Stream files).`]
     ], a: 0 },
     { q: `A music file is best described as:`, o: [
       [`A text file, because it is a sequence of characters`, `Text files (like C source code) can be viewed in a text editor; music cannot.`],
@@ -186,7 +186,7 @@ EXTRA.fp = {
   /* ───────── Lecture 4: Heap and Sorted Files ───────── */
   4: [
     { q: `A heap file has B = 400 pages, R = 20 records/page, D = 12 ms, C = 0.5 ms. What is the cost of inserting one record?`, o: [
-      [`8800 ms`, `That is the scan cost B(D + RC).`],
+      [`8800 ms`, `8800 ms = 400 × (12 + 20 × 0.5) is the SCAN cost B(D + RC); an insert only reads and rewrites the last page (L4).`],
       [`4400 ms`, `That is the equality-search cost 0.5B(D + RC).`],
       [`12.5 ms`, `This counted only one D. The last page must be read AND written back.`],
       [`24.5 ms`, `Correct. Insert = 2D + C = 2 × 12 + 0.5 = 24.5 ms.`]
@@ -207,7 +207,7 @@ EXTRA.fp = {
       [`3328 ms`, `This is only the search cost. You forgot + C + D.`],
       [`6667 ms`, `This used the full scan (6656) as the search. On average only half the file is scanned.`],
       [`3339 ms`, `Correct. Search = 0.5 × 256 × (10 + 16) = 3328; delete = 3328 + 1 + 10 = 3339 ms.`],
-      [`21 ms`, `That is 2D + C, the insert cost.`]
+      [`21 ms`, `21 ms = 2 × 10 + 1 is the heap INSERT cost 2D + C; a delete must first search half the file, then add C + D (L4).`]
     ], a: 2 },
     { q: `A sorted file holds keys 1, 2, 4, 6, 7 in 20-byte records starting at offset 0. A record with key 3 is inserted. How many existing records must be moved?`, o: [
       [`0`, `That is a heap file, where the record is appended at the end and order is ignored.`],
@@ -217,8 +217,8 @@ EXTRA.fp = {
     ], a: 3 },
     { q: `A file organization method defines:`, o: [
       [`The record placement strategy and the relationship between a record's key value and its relative address`, `Correct. This is the definition from the slides.`],
-      [`How to prepare and format the storage media`, `That is file management, not organization.`],
-      [`The number of sectors per cluster`, `That is a physical disk setting.`],
+      [`How to prepare and format the storage media`, `Preparing and formatting the storage media is a file MANAGEMENT task (L1); an organization method defines record placement and key-to-address relation (L4).`],
+      [`The number of sectors per cluster`, `Sectors per cluster is a physical disk setting from L2; a file organization method defines record placement and the key–address relationship (L4).`],
       [`Which system software (OS or DBMS) manages the file`, `That is about file managers, not organization methods.`]
     ], a: 0 },
     { q: `The efficiency of a file organization is measured by:`, o: [
@@ -232,7 +232,7 @@ EXTRA.fp = {
       [`False`, `The heap file has no order to exploit, so range search = B(D + RC), the same as the scan.`]
     ], a: 0 },
     { q: `Another name for an unordered (heap) file is:`, o: [
-      [`Indexed file`, `Indexing is a separate organization method.`],
+      [`Indexed file`, `Indexing is a separate organization method (with heap, sequential and hashing); the heap file's other name is pile file (L4).`],
       [`Sorted file`, `A sorted file is the ORDERED (sequential) file.`],
       [`Pile file`, `Correct. The heap file is also called an unordered sequential file or pile file.`],
       [`Hashed file`, `A hashed file computes each record's address with a hash function.`]
@@ -251,7 +251,7 @@ return sum % maxAddress;</pre>With ASCII A = 65, B = 66, C = 67, D = 68, what is
       [`46`, `Correct. 65 × 66 = 4290; 67 × 68 = 4556; sum = 8846; 8846 % 19937 = 8846; 8846 % 100 = 46.`],
       [`8846`, `This skipped the final % maxAddress. The address must be in 0..99.`],
       [`66`, `This added the four codes (266) instead of multiplying pairs.`],
-      [`90`, `This used only the first pair (4290 % 100).`]
+      [`90`, `90 = 4290 % 100 uses only the first pair (65 × 66); the second pair 67 × 68 = 4556 must be added: 8846 % 100 = 46 (L5).`]
     ], a: 0 },
     { q: `With h(k) = k mod 13, which pair of keys are synonyms?`, o: [
       [`30 and 44`, `30 mod 13 = 4 and 44 mod 13 = 5: different addresses.`],
@@ -272,7 +272,7 @@ return sum % maxAddress;</pre>With ASCII A = 65, B = 66, C = 67, D = 68, what is
       [`16 ms`, `Correct. 1 + 10 + 0.5 × 20 × 0.5 = 1 + 10 + 5 = 16 ms.`]
     ], a: 3 },
     { q: `With hashing, there is an obvious connection between a record's key and its location in the file.`, o: [
-      [`True`, `The slides say the opposite.`],
+      [`True`, `The lecture says the opposite: with hashing there is NO obvious connection between the key and the location; h(k) computes it (L5, What is hashing?).`],
       [`False`, `Correct. The hash function computes the address, and there is no obvious connection between the key and the location.`]
     ], a: 1 },
     { q: `Why does a range search on a hashed file cost 1.25B(D + RC)?`, o: [
@@ -282,14 +282,14 @@ return sum % maxAddress;</pre>With ASCII A = 65, B = 66, C = 67, D = 68, what is
       [`Records are found by binary search over the buckets`, `Binary search needs sorted records, which a hashed file does not have.`]
     ], a: 0 },
     { q: `In the hashed-file equality-search cost H + D + 0.5RC, what does H represent?`, o: [
-      [`The number of buckets`, `The number of pages is B, not H.`],
+      [`The number of buckets`, `The number of data pages is B in the cost model; H is the time to compute the hash function (L4–L5, Cost model).`],
       [`The time to compute the hash function`, `Correct. Compute h(k) (H), read the one page (D), and check half its records on average (0.5RC).`],
       [`The height of the cylinder`, `Cylinder height is a disk-geometry term from Lecture 2.`],
-      [`The number of collisions`, `Collisions are not a term in this formula.`]
+      [`The number of collisions`, `Collisions do not appear in the formula; H is the time to compute h(k), D reads one page and 0.5RC checks half its records (L5).`]
     ], a: 1 },
     { q: `In the course hash function, what is the purpose of the final line <code>return sum % maxAddress;</code>?`, o: [
       [`To prevent integer overflow while folding`, `That is the job of sum % 19937 (the prime divisor).`],
-      [`To combine pairs of characters into a number`, `That is the folding step key[j] * key[j+1].`],
+      [`To combine pairs of characters into a number`, `Combining pairs of characters is the folding line sum += key[j] * key[j+1]; the final line maps the sum into the address space (L5).`],
       [`To map the sum into the address space 0..maxAddress-1, giving the home address`, `Correct. The remainder of dividing by the address-space size is the home address.`],
       [`To detect synonyms`, `The function only computes an address; it does not detect collisions.`]
     ], a: 2 },
@@ -299,8 +299,8 @@ return sum % maxAddress;</pre>With ASCII A = 65, B = 66, C = 67, D = 68, what is
     ], a: 0 },
     { q: `Why does scanning a hashed file cost 1.25B(D + RC) instead of B(D + RC)?`, o: [
       [`Each record is read 1.25 times because of collisions`, `Each page is read once; the extra cost comes from having more pages.`],
-      [`The hash must be computed for every page`, `A scan does not compute any hash.`],
-      [`The file is sorted after hashing`, `Hashing does not sort the file.`],
+      [`The hash must be computed for every page`, `A scan reads every page in turn and never computes h(k); the extra 0.25 comes from pages being only ~80% full (L5).`],
+      [`The file is sorted after hashing`, `Hashing does not sort the file; it scatters records by h(k). The 1.25 factor comes from buckets being ~80% full (L5).`],
       [`Buckets are kept about 80% full, so the same data occupies 1.25 times as many pages`, `Correct. 1 / 0.8 = 1.25, so there are 1.25B pages to read.`]
     ], a: 3 }
   ]

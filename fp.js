@@ -111,76 +111,76 @@ fclose(my_file);`, pts: [
       ],
       quiz: [
         { q: `Files are managed by system software:`, o: [
-          [`OS`, `Correct, but only half the answer.`],
-          [`DBMS`, `Correct, but only half the answer.`],
+          [`OS`, `Only half the answer: the OS is one file manager, but the DBMS also manages files, so the full answer is "Both a and b" (L1, File managers).`],
+          [`DBMS`, `Only half the answer: the DBMS is one file manager, but the OS also manages files, so the full answer is "Both a and b" (L1, File managers).`],
           [`MIS`, `MIS is an information system, not a file manager.`],
           [`Both a and b`, `Correct. Files are managed by the OS and the DBMS.`]
         ], a: 3, src: `Midterm Model C` },
         { q: `File organization methods must provide:`, o: [
-          [`Fast access time and good space utilization`, `Correct.`],
-          [`Preparing/formatting storage media`, `This is a file MANAGEMENT technique.`],
-          [`Allocating storage space and addressing`, `File management, not organization.`],
-          [`Managing free spaces`, `File management, not organization.`]
+          [`Fast access time and good space utilization`, `Correct. The lecture states that file organization methods must provide fast access time and good space utilization, i.e. few disk accesses and little wasted space (L1, File organization).`],
+          [`Preparing/formatting storage media`, `Preparing/formatting storage media is listed under file MANAGEMENT, not under what an organization method must provide (fast access, good space use) (L1, File management).`],
+          [`Allocating storage space and addressing`, `Allocating storage space and addressing is a file MANAGEMENT task; organization methods must provide fast access time and good space utilization (L1).`],
+          [`Managing free spaces`, `Managing free space is the third file MANAGEMENT task; organization methods are judged by fast access time and good space utilization (L1).`]
         ], a: 0, src: `Midterm Model B` },
         { q: `A logical file is:`, o: [
-          [`A collection of bytes stored on a disk`, `That is the physical file.`],
+          [`A collection of bytes stored on a disk`, `A collection of bytes stored on a disk is the definition of the PHYSICAL file; the logical file is the program's channel to it (L1, Physical vs logical file).`],
           [`A channel connecting the program to the physical file`, `Correct. It is named by a program variable such as fp or infile.`],
-          [`The file's name on disk, e.g. A.txt`, `That is the physical name.`],
-          [`A backup of the physical file`, `Not a definition from the course.`]
+          [`The file's name on disk, e.g. A.txt`, `A name on disk like A.txt is the physical name of the physical file; the logical name is a program variable such as fp or infile (L1).`],
+          [`A backup of the physical file`, `The course never defines a logical file as a backup; it is the channel (a program variable) that connects the program to the physical file (L1).`]
         ], a: 1 },
         { q: `Which is the correct syntax for opening a file in C?`, o: [
           [`FILE *fopen(const char *filename, const char *mode)`, `Correct. fopen takes the file name and the mode and returns FILE*.`],
-          [`FILE *fopen(const char *filename)`, `The mode argument is missing.`],
-          [`FILE *open(const char *filename, const char *mode)`, `The function is fopen, not open.`],
-          [`FILE open(const char *filename)`, `Wrong name, return type and arguments.`]
+          [`FILE *fopen(const char *filename)`, `fopen needs two arguments: the file name AND the mode string ("r", "w", "a"…); without the mode the file cannot be opened (L1, Opening files).`],
+          [`FILE *open(const char *filename, const char *mode)`, `The C library function is fopen, not open; the course writes outFile = fopen("A.txt", "w"), which returns a FILE* (L1, Opening files).`],
+          [`FILE open(const char *filename)`, `Wrong on every part: the function is fopen, it returns a pointer FILE*, and it takes both a file name and a mode (L1, Opening files).`]
         ], a: 0, src: `Summary MCQ` },
         { q: `What does the mode "w+" do?`, o: [
-          [`Creates a text file for writing, discards previous contents if any`, `That is "w" (output only).`],
+          [`Creates a text file for writing, discards previous contents if any`, `That is mode "w": create/truncate for OUTPUT only. The + adds input, so "w+" allows both reading and writing (L1, C modes).`],
           [`Creates a text file for update (read and write), discards previous contents if any`, `Correct. w+ = create or truncate, for input and output.`],
-          [`Creates a text file for writing, keeps previous contents`, `Keeping contents describes "a".`],
-          [`Creates a text file for update, keeps previous contents`, `That is "a+".`]
+          [`Creates a text file for writing, keeps previous contents`, `Keeping previous contents while writing is "a" (append). "w+" truncates an existing file, discarding its contents (L1, C modes).`],
+          [`Creates a text file for update, keeps previous contents`, `Update while keeping contents is "a+" (create/append for input and output). "w+" truncates, so old contents are lost (L1, C modes).`]
         ], a: 1, src: `Summary MCQ` },
         { q: `If a mode includes "b" after the initial letter (e.g. "rb"), it indicates:`, o: [
-          [`Text file`, `Without b the file is in text mode.`],
-          [`Big text file`, `No such mode.`],
-          [`Binary file`, `Correct.`],
-          [`Blueprint text`, `No such mode.`]
+          [`Text file`, `Text mode is the default when there is NO b; adding b (rb, wb, ab, r+b) switches to binary mode (L1, C modes).`],
+          [`Big text file`, `There is no "big text" mode; the only meaning of the letter b in a mode string is binary (L1, C modes).`],
+          [`Binary file`, `Correct. Adding b after the mode letter (rb, wb, ab, r+b…) opens the file in binary mode; the C++ equivalent is | ios::binary (L1, C modes).`],
+          [`Blueprint text`, `"Blueprint" is not a file mode; b in a mode string such as "rb" means binary mode (L1, C modes).`]
         ], a: 2, src: `Summary MCQ` },
         { q: `Which C++ class creates a stream for BOTH input and output?`, o: [
-          [`ofstream`, `Output only.`],
-          [`ifstream`, `Input only.`],
-          [`iostream`, `Console I/O, not a file stream class.`],
-          [`fstream`, `Correct.`]
+          [`ofstream`, `ofstream is an OUTPUT-only file stream (default ios::out), so it cannot be used for both input and output (L1, C++ file streams).`],
+          [`ifstream`, `ifstream is an INPUT-only file stream (default ios::in), so it cannot write; fstream handles both (L1, C++ file streams).`],
+          [`iostream`, `iostream is the header/class for console I/O (cin, cout); file streams for both input and output come from fstream (L1, C++ file streams).`],
+          [`fstream`, `Correct. fstream can be opened for both input and output, e.g. open("f.txt", ios::in | ios::out); ifstream is input only and ofstream output only (L1, Opening files).`]
         ], a: 3, src: `Summary MCQ` },
         { q: `The default opening mode of an ifstream is:`, o: [
-          [`ios::in`, `Correct. ifstream is for input.`],
-          [`ios::out`, `That is ofstream's default.`],
-          [`ios::app`, `Not a default.`],
-          [`ios::trunc`, `Not a default for input.`]
+          [`ios::in`, `Correct. ifstream is the input file stream, so when no mode is given it opens with ios::in (read) (L1, C++ file streams).`],
+          [`ios::out`, `ios::out is the default of ofstream (output stream); an ifstream is for input, so its default is ios::in (L1).`],
+          [`ios::app`, `ios::app (seek to end before each write) is an output flag you must request explicitly; it is no stream's default, and ifstream defaults to ios::in (L1).`],
+          [`ios::trunc`, `ios::trunc (always create a new, empty file) is an output flag; it makes no sense for reading, and ifstream's default is ios::in (L1).`]
         ], a: 0, src: `Summary MCQ` },
         { q: `Which is NOT used to seek the file pointer?`, o: [
           [`ios::set`, `Correct. The origins are ios::beg, ios::cur and ios::end. ios::set does not exist.`],
-          [`ios::end`, `A valid origin.`],
-          [`ios::cur`, `A valid origin.`],
-          [`ios::beg`, `A valid origin.`]
+          [`ios::end`, `ios::end is a valid seek origin: the offset is counted from the end of the file. The non-existent one is ios::set (L1, Summary MCQ).`],
+          [`ios::cur`, `ios::cur is a valid seek origin: the offset is counted from the current position. The invalid one is ios::set (L1, Summary MCQ).`],
+          [`ios::beg`, `ios::beg is a valid seek origin: the offset is counted from the start of the file. ios::set does not exist (L1, Summary MCQ).`]
         ], a: 0, src: `Summary MCQ` },
         { q: `How do you detect end of file in C++ after an attempted read?`, o: [
-          [`fread returns 0`, `That is the C way.`],
-          [`infile.fail() returns true (or infile.eof())`, `Correct.`],
-          [`infile.close() returns false`, `close does not signal EOF.`],
-          [`cout prints EOF`, `Not how EOF is detected.`]
+          [`fread returns 0`, `fread returning 0 is how end of file is detected in C, not C++; in C++ infile.fail() or infile.eof() returns true (L1, Reading and writing).`],
+          [`infile.fail() returns true (or infile.eof())`, `Correct. The lecture says that in C++ end of file is detected when infile.fail() returns true, or infile.eof() returns true; in C, fread returns 0 (L1, Reading and writing).`],
+          [`infile.close() returns false`, `close() just releases the logical name and flushes the buffer; it does not report end of file. Use infile.fail() or infile.eof() (L1).`],
+          [`cout prints EOF`, `cout only writes to the screen; it does not detect anything. EOF in C++ is detected with infile.fail() or infile.eof() (L1).`]
         ], a: 1 },
         { q: `The ___ function reads at most one less than the number of characters specified by size.`, o: [
-          [`fget()`, `Not a standard function.`],
+          [`fget()`, `fget() is not a C library function; the string-reading function is fgets(str, n, fp), and fgetc reads one character (L1, Reading).`],
           [`fgets()`, `Correct. fgets(str, n, fp) reads up to n-1 characters and adds '\\0'.`],
-          [`fput()`, `Not a read function.`],
-          [`fputs()`, `Writes a string.`]
+          [`fput()`, `fput() is not a standard function, and anything named put writes rather than reads; the reader is fgets() (L1).`],
+          [`fputs()`, `fputs() WRITES a string to a file; the question asks about reading at most n−1 characters, which is fgets() (L1).`]
         ], a: 1, src: `Summary MCQ` },
         { q: `In C, the logical name for the standard error device is:`, o: [
-          [`stdout`, `Standard output.`],
-          [`stdin`, `Standard input.`],
-          [`stderr`, `Correct. (cerr in C++)`],
-          [`cerr`, `That is the C++ name.`]
+          [`stdout`, `stdout is the C logical name for standard output (the screen), not standard error (L1, Standard I/O names).`],
+          [`stdin`, `stdin is the C logical name for standard input (the keyboard), not standard error (L1, Standard I/O names).`],
+          [`stderr`, `Correct. In the standard I/O table, standard error (console/screen) is stderr in C and cerr in C++ (L1, Standard I/O names).`],
+          [`cerr`, `cerr is standard error, but it is the C++ logical name; the question asks for C, which is stderr (L1, Standard I/O names).`]
         ], a: 2 }
       ]
     },
@@ -290,64 +290,64 @@ fclose(my_file);`, pts: [
       ],
       quiz: [
         { q: `___ are used to carry, guide and move the read/write head.`, o: [
-          [`Arms`, `Correct. Moving the arms is called seeking.`],
+          [`Arms`, `Correct. The arms carry, guide and move the read/write heads; moving them is called seeking, usually the slowest part of an access (L2, Disk components).`],
           [`Arm assembly`, `The arm assembly is the whole internal set that contains the arms.`],
-          [`Platters`, `Platters store the data.`],
-          [`Spindle`, `The spindle rotates the platters.`]
+          [`Platters`, `Platters are the circular disks that STORE the magnetic data on both surfaces; they do not move the heads (L2, Disk components).`],
+          [`Spindle`, `The spindle holds the platters in place and ROTATES them to bring a sector under the head; the arms move the heads (L2, Disk components).`]
         ], a: 0, src: `Midterm Model A` },
         { q: `___ is the time needed to move the read/write arm to the correct sector (cylinder).`, o: [
-          [`Transfer time`, `Transfer happens after positioning.`],
-          [`Latency`, `Latency is waiting for rotation.`],
-          [`Rotational time`, `Rotation is not arm movement.`],
-          [`Seek time`, `Correct.`]
+          [`Transfer time`, `Transfer time is the time for the head to pass over the data once it is positioned, not the time to move the arm (L2, Cost of a disk access).`],
+          [`Latency`, `Latency (rotational delay) is the wait for the disk to rotate the sector under the head, after the arm is already in place (L2).`],
+          [`Rotational time`, `Rotation is done by the spindle and gives rotational delay; moving the arm to the right cylinder is seek time (L2).`],
+          [`Seek time`, `Correct. Seek time is the time to move the read/write arm to the correct cylinder; it is the largest part of the access cost (typical average 30 ms) (L2, Cost of a disk access).`]
         ], a: 3, src: `Midterm Model A` },
         { q: `All the information on a single cylinder can be accessed without:`, o: [
-          [`Moving the spindle`, `The spindle keeps rotating in any case.`],
+          [`Moving the spindle`, `The spindle never needs to "move": it only rotates the platters all the time. What stays still on one cylinder is the arm assembly (L2, Cylinder).`],
           [`Moving the arm assembly`, `Correct. A cylinder is all tracks under the heads at one arm position.`],
           [`Rotation`, `Rotation is still needed to bring sectors under the head.`],
           [`Seeking`, `Seeking means moving the arm, which is the same idea, but the model answer is (b).`]
         ], a: 1, src: `Midterm Model B` },
         { q: `Sector size = 512 B, 4 sectors per cluster, 64 sectors per track. Cluster size =`, o: [
-          [`32,768 bytes`, `That is 64 × 512, the TRACK size.`],
+          [`32,768 bytes`, `32,768 = 64 × 512 is the TRACK capacity (sectors per track × bytes per sector); a cluster is only 4 sectors (L2, Capacity formulas).`],
           [`2048 bytes`, `Correct. 4 × 512 = 2048. Sectors per track is a distractor.`],
-          [`128 bytes`, `512/4 is the wrong operation.`],
-          [`8 bytes`, `Meaningless.`]
+          [`128 bytes`, `128 = 512 / 4 comes from dividing instead of multiplying; cluster capacity = sectors per cluster × bytes per sector (L2).`],
+          [`8 bytes`, `8 bytes matches no formula (it is not 4 × 512 or 64 × 512); a cluster of 4 sectors holds 4 × 512 = 2048 B (L2).`]
         ], a: 1, src: `Midterm Model A` },
         { q: `Average latency for a disk spinning at 5000 rpm is:`, o: [
-          [`12 ms`, `That is one FULL revolution.`],
-          [`6 ms`, `Correct. ½ × 60,000/5000 = 6 ms.`],
-          [`3 ms`, `A quarter revolution.`],
-          [`0.012 ms`, `A unit error.`]
+          [`12 ms`, `12 ms = 60,000 / 5000 is one FULL revolution; average latency is half a revolution, 6 ms (L2, Cost of a disk access).`],
+          [`6 ms`, `Correct. Revolution = 60 × 1000 / 5000 = 12 ms, and average latency = ½ × 12 = 6 ms (L2, Cost of a disk access).`],
+          [`3 ms`, `3 ms is a quarter revolution (12 / 4); the average wait is half a revolution, ½ × 12 = 6 ms (L2).`],
+          [`0.012 ms`, `0.012 is one revolution in SECONDS (60 / 5000), wrongly labelled ms and not halved; the answer is ½ × 12 ms = 6 ms (L2).`]
         ], a: 1, src: `Midterm Model A` },
         { q: `Track = 20,000 B, overhead = 300 B/block, record = 100 B, blocking factor = 60. Records per track?`, o: [
-          [`200`, `Ignores the overhead: 20,000/100.`],
+          [`200`, `200 = 20,000 / 100 ignores the 300 B overhead per block and the rule that only whole blocks fit; the right count is 3 blocks × 60 = 180 (L2, Non-data overhead).`],
           [`180`, `Correct. Block = 6300 B, ⌊20,000/6300⌋ = 3 blocks × 60 = 180.`],
-          [`190`, `Partial blocks are not allowed.`],
-          [`150`, `That is the answer for blocking factor 10.`]
+          [`190`, `190 ≈ 3.17 blocks × 60 counts a partial block; only ⌊20,000 / 6300⌋ = 3 whole blocks fit, giving 180 (L2).`],
+          [`150`, `150 is the slide answer for blocking factor 10 (block 1300 B, 15 blocks × 10); with BF = 60 it is 180 (L2, Non-data overhead).`]
         ], a: 1 },
         { q: `Which unit is the smallest addressable portion of a disk?`, o: [
-          [`Track`, `Tracks are made of sectors.`],
-          [`Cluster`, `A cluster groups several sectors.`],
-          [`Sector`, `Correct.`],
-          [`Cylinder`, `A cylinder groups tracks.`]
+          [`Track`, `A track is a whole ring on the surface, divided into many sectors, so it is not the smallest addressable unit (L2, Disk components).`],
+          [`Cluster`, `A cluster is a fixed number of contiguous sectors (the OS view), so it is bigger than a sector (L2, Disk components).`],
+          [`Sector`, `Correct. A sector is the smallest addressable portion of a disk, usually 512 bytes; tracks, clusters and cylinders are all made of sectors (L2, Disk components).`],
+          [`Cylinder`, `A cylinder is the set of tracks above/below each other on all surfaces, the largest of these units (L2, Disk components).`]
         ], a: 2 },
         { q: `Which is a Serial Access Storage Device?`, o: [
-          [`Hard disk`, `DASD.`], [`CD-ROM`, `DASD (optical).`], [`Magnetic tape`, `Correct.`], [`DVD`, `DASD (optical).`]
+          [`Hard disk`, `A hard disk is a magnetic disk, which the lecture lists under DASD (direct access), not serial access (L2, Secondary storage devices).`], [`CD-ROM`, `A CD-ROM is an optical disk, listed under DASD (direct access); the only SASD example is magnetic tape (L2).`], [`Magnetic tape`, `Correct. The lecture lists magnetic tape as the Serial Access Storage Device (SASD); magnetic and optical disks are DASD (L2, Secondary storage devices).`], [`DVD`, `A DVD is an optical disk and therefore a DASD (direct access); the SASD example is magnetic tape (L2).`]
         ], a: 2 },
         { q: `The key sub-block contains:`, o: [
-          [`The number of bytes in the block`, `That is the count sub-block.`],
+          [`The number of bytes in the block`, `The number of bytes in the block is held in the COUNT sub-block; the key sub-block holds the key of the last record (L2, Sub-blocks).`],
           [`The key of the last record in the data sub-block`, `Correct. It lets the controller search without loading the block into memory.`],
-          [`All the records`, `That is the data sub-block.`],
-          [`The sector address`, `That is sector overhead.`]
+          [`All the records`, `The records themselves are in the DATA sub-block; the key sub-block holds only the last record's key (L2, Sub-blocks).`],
+          [`The sector address`, `The sector address is non-data overhead of sector-organized tracks; it is not one of the block's sub-blocks (L2, Non-data overhead).`]
         ], a: 1 },
         { q: `A disk has cylinder height 14. How many platters does it have?`, o: [
-          [`14`, `14 is the number of surfaces (sides).`], [`7`, `Correct. 14 / 2.`], [`28`, `Double counting.`], [`5000`, `That is the number of cylinders in the slide example.`]
+          [`14`, `Cylinder height 14 means 14 tracks per cylinder, i.e. 14 surfaces (sides). Each platter has 2 surfaces, so there are 7 platters (L2).`], [`7`, `Correct. Cylinder height = number of surfaces = 14, and each platter has two surfaces, so platters = 14 / 2 = 7 (L2, Worked problem).`], [`28`, `28 = 14 × 2 multiplies instead of dividing; platters = cylinder height / 2 = 7 (L2, Capacity formulas).`], [`5000`, `That is the number of cylinders in the slide example.`]
         ], a: 1 },
         { q: `Which technique puts different blocks of a file on different drives?`, o: [
-          [`RAM disk`, `Memory simulating a disk.`], [`Disk cache`, `Memory holding disk pages.`], [`Disk striping`, `Correct.`], [`Multiprocessing`, `CPU works on other jobs.`]
+          [`RAM disk`, `A RAM disk is part of main memory simulating a disk; it does not spread a file's blocks over several drives (L2, Disk bottleneck).`], [`Disk cache`, `A disk cache is a large block of memory holding pages from the disk, checked before the disk; it uses one drive (L2, Disk bottleneck).`], [`Disk striping`, `Correct. Disk striping puts different blocks of a file on different drives, so independent processes can work in parallel without interfering (L2, Disk bottleneck).`], [`Multiprocessing`, `Multiprocessing lets the CPU work on other jobs while waiting for the disk; it does not place blocks on drives (L2, Disk bottleneck).`]
         ], a: 2 },
         { q: `7200 rpm, 170 sectors/track. Transfer time for one sector ≈`, o: [
-          [`8.33 ms`, `That is one revolution.`], [`4.16 ms`, `That is the average latency.`], [`0.05 ms`, `Correct. 8.33 / 170 ≈ 0.049 ms.`], [`170 ms`, `Nonsense.`]
+          [`8.33 ms`, `8.33 ms = 60,000 / 7200 is one full revolution, i.e. the time to transfer a whole track, not one sector (L2, Example 2).`], [`4.16 ms`, `4.16 ms is half a revolution, the average latency in Example 2, not the transfer time (L2).`], [`0.05 ms`, `Correct. Revolution = 60,000 / 7200 = 8.33 ms; one sector = 8.33 / 170 ≈ 0.049 ≈ 0.05 ms (L2, Example 2).`], [`170 ms`, `170 is the number of sectors per track, not a time; transfer for one sector = revolution / 170 ≈ 0.05 ms (L2).`]
         ], a: 2 }
       ]
     },
@@ -452,46 +452,46 @@ void UpdateRecord(fstream &file, Item &newItem, int RRN) {
           [`No added information`, `Correct. That is why records can't be recovered.`],
           [`No space`, `Spaces may exist inside data; that is not the definition.`],
           [`Added information`, `Added information (delimiters, lengths) is what field structures add.`],
-          [`Space`, `Not the definition.`]
+          [`Space`, `"Space" is not part of the definition; a stream file is a stream of bytes with NO added information, which is why records cannot be recovered (L3, Stream files).`]
         ], a: 0, src: `Midterm Model C` },
         { q: `Which field structure is "self-describing and allows missing fields"?`, o: [
           [`Fixed length`, `Position defines the field; missing fields leave padding.`],
-          [`Length indicator`, `Not self-describing.`],
-          [`Delimited`, `Not self-describing.`],
+          [`Length indicator`, `A length indicator only says how many bytes the field has; it does not name the field, so it is not self-describing (L3, Field structures).`],
+          [`Delimited`, `Delimited fields are separated by a symbol such as |, but nothing names each field and a missing field still needs its delimiter (L3, Field structures).`],
           [`Keyword = value`, `Correct. Each field names itself (ISBN=…, AU=…).`]
         ], a: 3 },
         { q: `The main disadvantage of delimited fields is:`, o: [
-          [`Waste space with padding`, `That is fixed-length fields.`],
-          [`Have to check every byte of the field against the delimiter`, `Correct.`],
-          [`Waste space with keywords`, `That is keyword fields.`],
-          [`Long fields need more than 1 byte for length`, `That is length-indicator fields.`]
+          [`Waste space with padding`, `Wasting space with padding is the disadvantage of FIXED-length fields; delimiters cost a byte-by-byte check instead (L3, Field structures table).`],
+          [`Have to check every byte of the field against the delimiter`, `Correct. With a delimiter at the end of each field, the program must compare every byte of the field with the delimiter to find where it ends (L3, Field structures table).`],
+          [`Waste space with keywords`, `Wasting space with keywords is the disadvantage of KEYWORD = VALUE fields, whose advantage is being self-describing (L3, Field structures table).`],
+          [`Long fields need more than 1 byte for length`, `Needing more than one byte for long lengths is the disadvantage of LENGTH-INDICATOR fields (max size > 256), not delimited ones (L3).`]
         ], a: 1 },
         { q: `A disadvantage of variable-length records is:`, o: [
-          [`Wasted space with padding`, `That is fixed-length records.`],
-          [`You cannot jump to the i-th record unless through an index file`, `Correct.`],
-          [`They cannot store text`, `False.`],
-          [`They require fixed-length fields`, `False.`]
+          [`Wasted space with padding`, `Wasted padding is the disadvantage of FIXED-length records; variable-length records actually save space when sizes are diverse (L3, Record structures table).`],
+          [`You cannot jump to the i-th record unless through an index file`, `Correct. Because records have different sizes, you cannot compute where record i starts, so you cannot jump to it without an index file (L3, Record structures table).`],
+          [`They cannot store text`, `Variable-length records can hold any data including text (e.g. 87359|CARROLL|ALICE…); their weakness is no direct jump to record i (L3).`],
+          [`They require fixed-length fields`, `Variable-length records usually use variable fields (delimiters or length indicators); fixed fields are not a requirement (L3, Record structures).`]
         ], a: 1 },
         { q: `Direct access has the complexity:`, o: [
-          [`O(n)`, `That is sequential access.`], [`O(1)`, `Correct.`], [`Log(n)`, `That is binary search.`], [`All answers correct`, `Only O(1) is right.`]
+          [`O(n)`, `O(n) is SEQUENTIAL search, reading records in order until a match; direct access seeks straight to the record (L3, Managing files of records).`], [`O(1)`, `Correct. Direct access seeks straight to the start of the record (offset known from its RRN), so the cost does not depend on n: O(1) (L3, Managing files of records).`], [`Log(n)`, `log n is the cost of BINARY search on a sorted file; direct access needs one seek, O(1) (L3–L4).`], [`All answers correct`, `The three costs belong to different methods: O(n) sequential, log n binary search, O(1) direct access, so they cannot all be right (L3).`]
         ], a: 1, src: `Midterm Model B` },
         { q: `Sequential access has the complexity:`, o: [
-          [`O(n)`, `Correct. You may read n records to find one.`], [`O(1)`, `That is direct access.`], [`Log(n)`, `That is binary search on a sorted file.`], [`All answers correct`, `Only O(n).`]
+          [`O(n)`, `Correct. Sequential search reads records in order until it finds a match, so in the worst case it reads all n records: O(n) (L3, Managing files of records).`], [`O(1)`, `O(1) is DIRECT access by RRN (one seek); sequential access may have to read every record (L3).`], [`Log(n)`, `log n is BINARY search on a file sorted by key; sequential search is O(n) (L3–L4).`], [`All answers correct`, `Only O(n) describes sequential access; O(1) is direct access and log n is binary search (L3).`]
         ], a: 0, src: `Midterm Model A` },
         { q: `A binary search has the complexity:`, o: [
-          [`O(n)`, `Linear search.`], [`O(1)`, `Direct access.`], [`O(log₂ n)`, `Correct. It halves the range every step.`], [`O(n²)`, `Too slow.`]
+          [`O(n)`, `O(n) is linear (sequential) search, which reads records one by one; binary search halves the range each step (L4, Ordered files).`], [`O(1)`, `O(1) is direct access by RRN with a single seek; binary search needs about log₂ n probes (L3).`], [`O(log₂ n)`, `Correct. Binary search compares the key with the middle record and discards half the remaining range each step, so it needs about log₂ n accesses (L4, Ordered files).`], [`O(n²)`, `O(n²) would be slower than even sequential search; binary search on a sorted file is O(log₂ n) (L4).`]
         ], a: 2, src: `Midterm Model C` },
         { q: `fseek(infile, -10L, 1) does what?`, o: [
           [`Moves to byte 10 from the beginning`, `Origin 1 is CURRENT, and the offset is negative.`],
-          [`Moves back 10 bytes from the current position`, `Correct.`],
-          [`Moves 10 bytes before the end`, `That would be origin 2.`],
-          [`Closes the file`, `No.`]
+          [`Moves back 10 bytes from the current position`, `Correct. In fseek(stream, offset, origin), origin 1 = current position, and offset −10L moves 10 bytes backwards from there (L3, Seeking).`],
+          [`Moves 10 bytes before the end`, `10 bytes before the end would be fseek(infile, -10L, 2); origin 2 is the end, but this call uses origin 1 (current) (L3, Seeking).`],
+          [`Closes the file`, `fseek only moves the file pointer; closing the file is done with fclose (L3, Seeking).`]
         ], a: 1 },
         { q: `In C++, which function moves the PUT (write) pointer?`, o: [
-          [`seekg`, `seekg moves the get (read) pointer.`], [`seekp`, `Correct.`], [`tellg`, `tellg reports the get position.`], [`fseek`, `The C function.`]
+          [`seekg`, `seekg moves the GET (read) pointer; the put (write) pointer is moved with seekp (L3, Seeking).`], [`seekp`, `Correct. An fstream has two pointers: seekg moves the get (read) pointer and seekp moves the put (write) pointer (L3, Seeking).`], [`tellg`, `tellg only REPORTS the current get (read) position, e.g. to find the file size; it moves nothing (L3, Quiz 3).`], [`fseek`, `fseek is the C function for moving the file pointer; the question asks for the C++ put-pointer function, seekp (L3).`]
         ], a: 1 },
         { q: `Fixed-length records of 40 bytes. Byte offset of the record with RRN 5?`, o: [
-          [`5`, `That is the RRN, not the offset.`], [`200`, `Correct. 5 × 40 (RRNs start at 0).`], [`240`, `That treats RRN as 1-based.`], [`45`, `Adds instead of multiplying.`]
+          [`5`, `5 is the RRN itself; the byte offset is RRN × record size = 5 × 40 = 200 (L3, Direct access).`], [`200`, `Correct. RRNs start at 0, so byte offset = RRN × record size = 5 × 40 = 200 (L3, Direct access).`], [`240`, `240 = 6 × 40 treats RRN as 1-based; the first record has RRN 0, so the offset is 5 × 40 = 200 (L3).`], [`45`, `45 = 5 + 40 adds instead of multiplying; offset = RRN × record size = 200 (L3).`]
         ], a: 1 }
       ]
     },
@@ -581,61 +581,61 @@ void UpdateRecord(fstream &file, Item &newItem, int RRN) {
       ],
       quiz: [
         { q: `The average cost for the INSERT process of the heap file is:`, o: [
-          [`Dlog₂B + Clog₂R + B(D + RC)`, `That is the sorted-file insert/delete.`],
-          [`Dlog₂B + Clog₂R + 2D + C`, `A mix; not a formula from the table.`],
-          [`1.25B(D + RC)`, `That is the hashed scan.`],
+          [`Dlog₂B + Clog₂R + B(D + RC)`, `That is the SORTED-file insert/delete: binary search (Dlog₂B + Clog₂R) plus rewriting half the file twice, B(D + RC). A heap insert just appends (L4, Cost table).`],
+          [`Dlog₂B + Clog₂R + 2D + C`, `This glues the sorted-file search cost onto the heap insert 2D + C; no operation in the cost table has this formula. A heap insert needs no search (L4).`],
+          [`1.25B(D + RC)`, `1.25B(D + RC) is the HASHED-file scan (buckets ~80% full); a heap insert only touches the last page: 2D + C (L4, Cost table).`],
           [`2D + C`, `Correct. Read the last page, add the record, write it back.`]
         ], a: 3, src: `Midterm Model A` },
         { q: `The average cost for the SCAN process of the hashed file is:`, o: [
-          [`Dlog₂B + Clog₂R + B(D + RC)`, `Sorted insert/delete.`],
-          [`Dlog₂B + Clog₂R + 2D + C`, `Not a table formula.`],
+          [`Dlog₂B + Clog₂R + B(D + RC)`, `That is the SORTED-file insert/delete cost (binary search + shifting half the file); a hashed scan reads all bucket pages (L4, Cost table).`],
+          [`Dlog₂B + Clog₂R + 2D + C`, `This mixes the sorted search with the heap insert 2D + C; it is not in the cost table, where the hashed scan is 1.25B(D + RC) (L4).`],
           [`1.25B(D + RC)`, `Correct. Buckets are ~80% full, so 1.25× the pages.`],
-          [`B(D + RC)`, `That is the heap/sorted scan.`]
+          [`B(D + RC)`, `B(D + RC) is the scan cost of the HEAP and SORTED files; hashed pages are only ~80% full, so the hashed scan is 1.25 × that (L4, Cost table).`]
         ], a: 2, src: `Midterm Models A & B` },
         { q: `The average cost for the DELETE process of the sorted file is:`, o: [
-          [`2D + C`, `Heap insert.`],
+          [`2D + C`, `2D + C is the HEAP-file insert (read last page, add, write back); a sorted delete must search and shift records (L4, Cost table).`],
           [`B(D + RC)`, `The scan cost only; the search part is missing.`],
-          [`1.25B(D + RC)`, `Hashed scan.`],
+          [`1.25B(D + RC)`, `1.25B(D + RC) is the HASHED-file scan; the sorted delete is binary search + B(D + RC) (L4, Cost table).`],
           [`Dlog₂B + Clog₂R + B(D + RC)`, `Correct. Search (binary) + shift half the file (read and write).`]
         ], a: 3, src: `Midterm Model B` },
         { q: `The average cost for EQUALITY SEARCH in the heap file is:`, o: [
-          [`2D + C`, `Heap insert.`],
-          [`0.5B(D + RC)`, `Correct. Half the file on average.`],
-          [`1.25B(D + RC) + C + D`, `Hashed delete in the model answer.`],
-          [`Dlog₂B + Clog₂R`, `Sorted-file equality search.`]
+          [`2D + C`, `2D + C is the heap INSERT cost; an equality search must scan pages until the match is found (L4, Heap file costs).`],
+          [`0.5B(D + RC)`, `Correct. A heap file has no order, so it is scanned linearly; on average the match is found after half the file: 0.5B(D + RC) (L4, Heap file costs).`],
+          [`1.25B(D + RC) + C + D`, `1.25B(D + RC) + C + D is the HASHED-file delete in the model answer, not a heap search (L4, Reading the exam choices).`],
+          [`Dlog₂B + Clog₂R`, `Dlog₂B + Clog₂R is binary search, the SORTED-file equality search; a heap file has no order, so it cannot use it (L4, Cost table).`]
         ], a: 1, src: `Midterm Model C` },
         { q: `The average cost for the SCAN process of the sorted file is:`, o: [
-          [`Dlog₂B + Clog₂R`, `Sorted equality search.`],
-          [`B(D + RC)`, `Correct. All B pages must be read.`],
-          [`1.25B(D + RC)`, `Hashed scan.`],
-          [`0.5B(D + RC)`, `Heap equality search.`]
+          [`Dlog₂B + Clog₂R`, `Dlog₂B + Clog₂R is the sorted-file EQUALITY search; a scan must fetch every record, which reads all B pages (L4, Sorted file costs).`],
+          [`B(D + RC)`, `Correct. A scan fetches every record, so all B pages are read (D each) and R records processed on each (RC): B(D + RC), the same as the heap scan (L4, Sorted file costs).`],
+          [`1.25B(D + RC)`, `1.25B(D + RC) is the HASHED-file scan (pages ~80% full); a sorted file has B full pages, so B(D + RC) (L4).`],
+          [`0.5B(D + RC)`, `0.5B(D + RC) is the HEAP-file equality search (half the file on average); a scan reads the whole file (L4).`]
         ], a: 1, src: `Midterm Model C` },
         { q: `The average cost for the DELETE process of the hash file is (model answer):`, o: [
-          [`Dlog₂B + Clog₂R`, `Sorted search.`],
-          [`B(D + RC)`, `Scan.`],
+          [`Dlog₂B + Clog₂R`, `Dlog₂B + Clog₂R is the SORTED-file equality search, not a hashed delete (L4, Cost table).`],
+          [`B(D + RC)`, `B(D + RC) is the heap/sorted SCAN cost; the hashed delete in the model answer is 1.25B(D + RC) + C + D (L4, Reading the exam choices).`],
           [`1.25B(D + RC) + C + D`, `Correct per the model answer: search + C + D.`],
-          [`0.5B(D + RC)`, `Heap equality search.`]
+          [`0.5B(D + RC)`, `0.5B(D + RC) is the HEAP-file equality search; the hashed delete is search + C + D, written 1.25B(D + RC) + C + D in the model answer (L4).`]
         ], a: 2, src: `Midterm Model C` },
         { q: `In a heap file, searching can be done using:`, o: [
-          [`Binary search`, `Needs sorted records.`], [`Linear search only`, `Correct.`], [`Hashing`, `Needs a hashed file.`], [`B-tree index`, `Needs an index.`]
+          [`Binary search`, `Binary search needs records sorted by key, but a heap file stores them in order of entry, so it cannot be used (L4, Heap file).`], [`Linear search only`, `Correct. Records are stored in order of entry regardless of key, so the lecture says retrieval in a heap file is by linear search only (L4, Heap file).`], [`Hashing`, `Hashing needs a hashed file whose addresses are computed from the key; a heap file just stores records in entry order (L4).`], [`B-tree index`, `A B-tree index is a separate indexing structure; a plain heap file has none, so only linear search is possible (L4).`]
         ], a: 1 },
         { q: `Main disadvantage of inserting at the end of a heap file:`, o: [
-          [`It is slow`, `It is actually 2D + C, which is fast.`],
-          [`It allows duplicate records`, `Correct.`],
-          [`It requires shifting records`, `That is the sorted file.`],
-          [`It needs a hash function`, `No.`]
+          [`It is slow`, `Appending is fast: one read of the last page and one write back, 2D + C. Its serious disadvantage is allowing duplicates (L4, Heap file).`],
+          [`It allows duplicate records`, `Correct. Appending never checks existing keys, so the same key can be inserted twice (e.g. a second record 4, Ali, CS at offset 80) (L4, Heap file).`],
+          [`It requires shifting records`, `Shifting records with greater keys towards the end is needed in the SORTED (sequential) file, not the heap file (L4, Ordered file).`],
+          [`It needs a hash function`, `A hash function belongs to hashed files; a heap file simply appends at the end without computing any address (L4).`]
         ], a: 1 },
         { q: `Inserting into a sequential (sorted) file requires:`, o: [
-          [`Appending at the end`, `That breaks the order.`],
-          [`Moving all records with a greater key one location towards the end`, `Correct.`],
-          [`Rebuilding the hash table`, `Not a hashed file.`],
-          [`Nothing special`, `Order must be maintained.`]
+          [`Appending at the end`, `Appending at the end is the heap-file insert; in a sorted file it would break key order, so records must be shifted (L4, Ordered file).`],
+          [`Moving all records with a greater key one location towards the end`, `Correct. The new record goes to its exact key position, so all records with a greater key move one location towards the end (e.g. 4 goes to offset 60 and 5 shifts to 80) (L4, Ordered file).`],
+          [`Rebuilding the hash table`, `A hash table belongs to hashed files; a sequential file keeps records in key order and shifts them on insert (L4).`],
+          [`Nothing special`, `Key order must be kept, so the record goes into an exact position and all greater keys shift towards the end (L4, Ordered file).`]
         ], a: 1 },
         { q: `B = 200 pages, R = 10, D = 10 ms, C = 1 ms. Heap equality search cost?`, o: [
-          [`4000 ms`, `That is the full scan B(D+RC).`],
-          [`2000 ms`, `Correct. 0.5 × 200 × (10 + 10×1) = 2000 ms.`],
-          [`21 ms`, `That is 2D + C.`],
-          [`1000 ms`, `Arithmetic slip.`]
+          [`4000 ms`, `4000 ms = 200 × (10 + 10) is the full SCAN B(D + RC); equality search scans half the file on average (L4, Heap file costs).`],
+          [`2000 ms`, `Correct. Equality search = 0.5B(D + RC) = 0.5 × 200 × (10 + 10 × 1) = 100 × 20 = 2000 ms (L4, Heap file costs).`],
+          [`21 ms`, `21 ms = 2 × 10 + 1 is the heap INSERT cost 2D + C, not the equality search (L4).`],
+          [`1000 ms`, `1000 ms = 0.5 × 200 × 10 drops the RC term (10 records × 1 ms per page); the right value is 0.5 × 200 × 20 = 2000 ms (L4).`]
         ], a: 1 }
       ]
     },
@@ -695,34 +695,34 @@ void UpdateRecord(fstream &file, Item &newItem, int RRN) {
       ],
       quiz: [
         { q: `The address of each record of a file is determined by a mathematical algorithm known as:`, o: [
-          [`Sequential`, `Sequential files place records by key order.`],
-          [`Indexed`, `Indexes use a lookup structure.`],
-          [`Hashed`, `Correct.`],
-          [`None`, `Hashed is the answer.`]
+          [`Sequential`, `A sequential (ordered) file places records in order of key value; no algorithm computes each record's address (L4, Ordered file).`],
+          [`Indexed`, `An indexed file finds records through a separate index (lookup) structure, not by computing the address with a formula (L5, Why hashing?).`],
+          [`Hashed`, `Correct. In hashed file organization a hash function h(k), a mathematical algorithm, computes each record's address from its key (L5, What is hashing?).`],
+          [`None`, `"None" is wrong because the lecture names this exact organization: hashed, where h(k) computes the address (L5).`]
         ], a: 2, src: `Midterm Model B` },
         { q: `A unit of storage that can store one or more records in a hash file organization is:`, o: [
-          [`Buckets`, `Correct.`],
+          [`Buckets`, `Correct. The lecture defines a bucket as a unit of storage that can hold one or more records in a hash file (L5, What is hashing?).`],
           [`Disk pages`, `A general storage term, not the hashing term.`],
-          [`Blocks`, `A physical organization term.`],
-          [`Nodes`, `Tree/list term.`]
+          [`Blocks`, `Blocks are how the DBMS physically organizes tracks (L2); in a hash file the storage unit is called a bucket (L5).`],
+          [`Nodes`, `Nodes belong to trees and linked lists (e.g. B-trees); the hash-file storage unit is the bucket (L5).`]
         ], a: 0, src: `Midterm Model C` },
         { q: `When two different keys produce the same address, this is called:`, o: [
-          [`Overflow`, `Related, but the event itself is a collision.`], [`A collision`, `Correct.`], [`A synonym`, `Synonyms are the KEYS involved.`], [`Fragmentation`, `A disk-space term.`]
+          [`Overflow`, `Related, but the event itself is a collision.`], [`A collision`, `Correct. When two different keys are transformed by h(k) into the same address, that event is a collision; the keys themselves are called synonyms (L5, Collisions).`], [`A synonym`, `Synonyms are the KEYS that collide (hash to the same address); the event itself is called a collision (L5, Collisions).`], [`Fragmentation`, `Fragmentation is wasted space inside a sector when records do not fit exactly (L2); it is unrelated to two keys sharing an address (L5).`]
         ], a: 1 },
         { q: `Search time with hashing is typically:`, o: [
-          [`O(n)`, `Sequential search.`], [`O(log N)`, `A simple index with binary search.`], [`O(log_k N)`, `B-trees.`], [`O(1)`, `Correct.`]
+          [`O(n)`, `O(n) is sequential search, reading records one by one; hashing computes the address directly (L3, L5).`], [`O(log N)`, `O(log N) is a simple index searched with binary search; hashing is faster at O(1) (L5, Why hashing?).`], [`O(log_k N)`, `O(log_k N) is the search time of B-trees; hashing goes straight to the address, O(1) (L5, Why hashing?).`], [`O(1)`, `Correct. h(k) computes the record's address directly from the key, so search time does not grow with N: O(1), versus O(log N) for an index and O(log_k N) for a B-tree (L5, Why hashing?).`]
         ], a: 3 },
         { q: `In the model hash function, why is sum % 19937 applied before % maxAddress?`, o: [
-          [`To sort the keys`, `Hashing does not sort.`],
-          [`To keep the sum bounded (a prime divisor) and avoid overflow`, `Correct.`],
-          [`To find synonyms`, `Not its purpose.`],
+          [`To sort the keys`, `Hashing does not sort anything; in fact it destroys key order (that is why hashed range search scans the whole file) (L5).`],
+          [`To keep the sum bounded (a prime divisor) and avoid overflow`, `Correct. Dividing by the prime 19937 keeps the folded sum bounded so it does not overflow; the final % maxAddress then maps it to the home address (L5, Simple hash function).`],
+          [`To find synonyms`, `The function only computes an address; synonyms are just keys that happen to get the same address, and % 19937 does not find them (L5).`],
           [`To encrypt the key`, `Hashing here is for addressing, not security.`]
         ], a: 1 },
         { q: `Hashed file equality-search cost is:`, o: [
           [`H + D + 0.5RC`, `Correct. Compute the hash (H), read one page (D), scan half the page on average.`],
-          [`0.5B(D + RC)`, `Heap equality search.`],
-          [`D·log₂B + C·log₂R`, `Sorted file.`],
-          [`2D + C`, `Heap insert.`]
+          [`0.5B(D + RC)`, `0.5B(D + RC) is the HEAP-file equality search (scan half the file); hashing reads only one page (L4, Cost table).`],
+          [`D·log₂B + C·log₂R`, `D·log₂B + C·log₂R is binary search, the SORTED-file equality search; hashing computes the page directly (L4, Cost table).`],
+          [`2D + C`, `2D + C is the HEAP-file insert (read last page, write it back), not a search (L4, Cost table).`]
         ], a: 0 }
       ]
     }
@@ -735,12 +735,12 @@ void UpdateRecord(fstream &file, Item &newItem, int RRN) {
       meta: `CS308 File Organization · 1 hour · 20 marks · Dr. M. AbdelFattah`,
       sections: [
         { title: `Q1-a · Choose the correct answer`, marks: `7 marks`, items: [
-          { type: `mcq`, q: `……… are used to carry, guide and move the read/write head.`, o: [`Arms`, `Arm Assembly`, `Platters`, `Spindle`], a: 0, why: `Arms carry, guide and move the heads (moving them = seeking). The arm assembly is the whole set; platters store data; the spindle rotates.` },
-          { type: `mcq`, q: `……… is the time needed to move the read/write arm to the correct sector.`, o: [`Transfer time`, `Latency`, `Rotational time`, `Seek time`], a: 3, why: `Seek = arm movement. Latency/rotation = waiting for the platter to spin. Transfer = reading the bytes.` },
-          { type: `mcq`, q: `Sequential access has the complexity ………`, o: [`O(n)`, `O(1)`, `Log(n)`, `All answer correct`], a: 0, why: `You may read up to n records.` },
-          { type: `mcq`, q: `If sector size = 512 B, sectors per cluster = 4 and sectors per track = 64, the cluster size = ………`, o: [`32768 byte`, `2048 byte`, `128 byte`, `8 byte`], a: 1, why: `Cluster = 4 × 512 = 2048 B. 32768 = 64 × 512 is the track size (a distractor).` },
-          { type: `mcq`, q: `The average cost for the insert process of the heap file is ………`, o: [`Dlog2B + Clog2R + B(D + RC)`, `Dlog2B + Clog2R + 2D + C`, `1.25B(D + RC)`, `2D + C`], a: 3, why: `Read the last page (D), add the record (C), write it back (D).` },
-          { type: `mcq`, q: `The average cost for the scan process of the hashed file is ………`, o: [`Dlog2B + Clog2R + B(D + RC)`, `Dlog2B + Clog2R + 2D + C`, `1.25B(D + RC)`, `B(D+RC)`], a: 2, why: `Hashed pages are ~80% full, so 1.25B pages to scan.` }
+          { type: `mcq`, q: `……… are used to carry, guide and move the read/write head.`, o: [`Arms`, `Arm Assembly`, `Platters`, `Spindle`], a: 0, why: `Arms carry, guide and move the heads (moving them = seeking). The arm assembly is the whole set; platters store data; the spindle rotates.`, ow: [null, `The arm assembly is the whole internal set that holds the arms and heads; the part that carries and moves the heads is the arms (L2, Disk components).`, `Platters are the circular disks that store data on both surfaces; they do not carry the heads (L2).`, `The spindle holds the platters and rotates them under the heads; it does not move the heads (L2).`] },
+          { type: `mcq`, q: `……… is the time needed to move the read/write arm to the correct sector.`, o: [`Transfer time`, `Latency`, `Rotational time`, `Seek time`], a: 3, why: `Seek = arm movement. Latency/rotation = waiting for the platter to spin. Transfer = reading the bytes.`, ow: [`Transfer time is the time for the head to pass over the data once positioned, not the arm movement (L2, Cost of a disk access).`, `Latency (rotational delay) is the wait for the sector to rotate under the head, after the arm is already in place (L2).`, `Rotation is done by the spindle and causes rotational delay; moving the arm is seeking (L2).`, null] },
+          { type: `mcq`, q: `Sequential access has the complexity ………`, o: [`O(n)`, `O(1)`, `Log(n)`, `All answer correct`], a: 0, why: `Sequential search reads records in order until it finds a match, so in the worst case it reads all n records: O(n) (L3, Managing files of records).`, ow: [null, `O(1) is direct access by RRN (one seek), not sequential access (L3).`, `log n is binary search on a file sorted by key, not sequential access (L3–L4).`, `The three belong to different methods (sequential O(n), binary log n, direct O(1)), so not all are correct (L3).`] },
+          { type: `mcq`, q: `If sector size = 512 B, sectors per cluster = 4 and sectors per track = 64, the cluster size = ………`, o: [`32768 byte`, `2048 byte`, `128 byte`, `8 byte`], a: 1, why: `Cluster = 4 × 512 = 2048 B. 32768 = 64 × 512 is the track size (a distractor).`, ow: [`32768 = 64 × 512 is the TRACK capacity; a cluster is only 4 sectors: 4 × 512 (L2, Capacity formulas).`, null, `128 = 512 / 4 divides instead of multiplying; cluster = sectors per cluster × bytes per sector (L2).`, `8 bytes fits no formula; a 4-sector cluster holds 4 × 512 = 2048 B (L2).`] },
+          { type: `mcq`, q: `The average cost for the insert process of the heap file is ………`, o: [`Dlog2B + Clog2R + B(D + RC)`, `Dlog2B + Clog2R + 2D + C`, `1.25B(D + RC)`, `2D + C`], a: 3, why: `Read the last page (D), add the record (C), write it back (D).`, ow: [`That is the sorted-file insert/delete: binary search plus shifting half the file, B(D + RC) (L4, Cost table).`, `Sorted search added to 2D + C matches no entry in the cost table; a heap insert needs no search (L4).`, `1.25B(D + RC) is the hashed-file scan (pages ~80% full), not a heap insert (L4).`, null] },
+          { type: `mcq`, q: `The average cost for the scan process of the hashed file is ………`, o: [`Dlog2B + Clog2R + B(D + RC)`, `Dlog2B + Clog2R + 2D + C`, `1.25B(D + RC)`, `B(D+RC)`], a: 2, why: `Hashed pages are ~80% full, so 1.25B pages to scan.`, ow: [`That is the sorted-file insert/delete cost (binary search + shifting half the file), not a scan (L4).`, `Sorted search plus the heap insert 2D + C is not a table formula; the hashed scan is 1.25B(D + RC) (L4).`, null, `B(D + RC) is the heap/sorted scan; hashed pages are ~80% full, so 1.25 times as many pages are read (L4).`] }
         ]},
         { title: `Q1-b`, marks: `2 marks`, items: [
           { type: `written`, q: `Write a C++ function to implement a simple hashing algorithm.`, ans: `<pre>int Hash(char key[12], int maxAddress)
@@ -766,12 +766,12 @@ void UpdateRecord(fstream &file, Item &newItem, int RRN) {
       meta: `CS308 File Organization · 1 hour · 20 marks · Dr. M. AbdelFattah`,
       sections: [
         { title: `Q1-a · Choose the correct answer`, marks: `6 marks`, items: [
-          { type: `mcq`, q: `All the information on a single cylinder can be accessed without …………`, o: [`moving the Spindle`, `moving the arm assembly`, `Rotation`, `Seeking`], a: 1, why: `A cylinder is all tracks under the heads at one arm position, so no arm movement is needed. Rotation is still required.` },
-          { type: `mcq`, q: `Direct access has the complexity ………`, o: [`O(n)`, `O(1)`, `Log(n)`, `All answer correct`], a: 1, why: `One seek to RRN × record size.` },
-          { type: `mcq`, q: `File Organization methods must provide ………`, o: [`Fast Access Time and good space Utilization`, `Preparing/formatting storage media to store data`, `Allocating storage space and addressing`, `Managing free spaces`], a: 0, why: `The other three are File MANAGEMENT techniques.` },
-          { type: `mcq`, q: `The address of each record of a file is determined by a mathematical algorithm known as ………`, o: [`Sequential`, `Indexed`, `Hashed`, `None`], a: 2, why: `h(k) computes the address.` },
-          { type: `mcq`, q: `The average cost for the delete process of the sorted file is ………`, o: [`2D + C`, `B(D + RC)`, `1.25B(D + RC)`, `Dlog2B + Clog2R + B(D + RC)`], a: 3, why: `Binary search to find it (Dlog₂B + Clog₂R), then shift half the file: 2 × 0.5B(D+RC) = B(D+RC).` },
-          { type: `mcq`, q: `The average cost for the scan process of the hashed file is ………`, o: [`Dlog2B + Clog2R + D + C`, `B(D + RC)`, `1.25B(D + RC)`, `1.25B(D+RC) + D + C`], a: 2, why: `1.25B(D+RC).` }
+          { type: `mcq`, q: `All the information on a single cylinder can be accessed without …………`, o: [`moving the Spindle`, `moving the arm assembly`, `Rotation`, `Seeking`], a: 1, why: `A cylinder is all tracks under the heads at one arm position, so no arm movement is needed. Rotation is still required.`, ow: [`The spindle never stops rotating the platters; what stays still while reading one cylinder is the arm assembly (L2).`, null, `Rotation is still needed to bring each sector under the head; only arm movement is avoided (L2).`, `Seeking (moving the arm) is the same idea, but the model answer is (b), the arm assembly, matching the slide wording "without moving the arm" (L2).`] },
+          { type: `mcq`, q: `Direct access has the complexity ………`, o: [`O(n)`, `O(1)`, `Log(n)`, `All answer correct`], a: 1, why: `Direct access seeks straight to the record's byte offset (RRN × record size) in one access, so the cost does not depend on n: O(1) (L3, Managing files of records).`, ow: [`O(n) is sequential search, which reads records in order until a match (L3).`, null, `log n is binary search on a sorted file; direct access needs a single seek (L3–L4).`, `Only O(1) describes direct access; O(n) is sequential and log n is binary search (L3).`] },
+          { type: `mcq`, q: `File Organization methods must provide ………`, o: [`Fast Access Time and good space Utilization`, `Preparing/formatting storage media to store data`, `Allocating storage space and addressing`, `Managing free spaces`], a: 0, why: `The other three are File MANAGEMENT techniques.`, ow: [null, `Preparing/formatting storage media is a file MANAGEMENT task, not what organization methods must provide (L1).`, `Allocating storage space and addressing is a file MANAGEMENT task (L1).`, `Managing free space is a file MANAGEMENT task; organization must give fast access and good space use (L1).`] },
+          { type: `mcq`, q: `The address of each record of a file is determined by a mathematical algorithm known as ………`, o: [`Sequential`, `Indexed`, `Hashed`, `None`], a: 2, why: `In hashed file organization a hash function h(k), a mathematical algorithm, transforms each record's key into its address (L5, What is hashing?).`, ow: [`A sequential file stores records in key order; no algorithm computes each address (L4).`, `An indexed file locates records through a separate index structure, not a formula (L5).`, null, `Wrong because the lecture names this organization: hashed, where h(k) computes the address (L5).`] },
+          { type: `mcq`, q: `The average cost for the delete process of the sorted file is ………`, o: [`2D + C`, `B(D + RC)`, `1.25B(D + RC)`, `Dlog2B + Clog2R + B(D + RC)`], a: 3, why: `Binary search to find it (Dlog₂B + Clog₂R), then shift half the file: 2 × 0.5B(D+RC) = B(D+RC).`, ow: [`2D + C is the heap-file insert (read last page, add, write back), not a sorted delete (L4).`, `B(D + RC) is only the shifting part (or a scan); the search term Dlog₂B + Clog₂R is missing (L4).`, `1.25B(D + RC) is the hashed-file scan, not a sorted delete (L4).`, null] },
+          { type: `mcq`, q: `The average cost for the scan process of the hashed file is ………`, o: [`Dlog2B + Clog2R + D + C`, `B(D + RC)`, `1.25B(D + RC)`, `1.25B(D+RC) + D + C`], a: 2, why: `A hashed scan reads every bucket page; buckets are kept about 80% full, so the data occupies 1/0.8 = 1.25 times as many pages: 1.25B(D + RC) (L4, Cost table).`, ow: [`This is a binary-search term plus D + C, matching no scan formula; a scan must read all pages (L4).`, `B(D + RC) is the heap/sorted scan; hashed pages are only ~80% full, so it is 1.25 times larger (L4).`, null, `1.25B(D + RC) + D + C is the hashed DELETE in the model answer (search + C + D), not the scan (L4).`] }
         ]},
         { title: `Q1-b`, marks: `3 marks`, items: [
           { type: `written`, q: `Write a C++ program, with no loops, to copy the contents of d:\\src.txt to d:\\dest.txt (destination is empty).`, ans: `<pre>#include &lt;iostream&gt;
@@ -805,13 +805,13 @@ int main() {
       meta: `CS308 File Organization · 1 hour · 20 marks · Dr. M. AbdelFattah`,
       sections: [
         { title: `Q1-a · Choose the correct answer`, marks: `7 marks`, items: [
-          { type: `mcq`, q: `In stream file structure the information is written as a stream of bytes containing …………`, o: [`no added information`, `no space`, `added information`, `space`], a: 0, why: `That is why records can't be recovered from a stream file.` },
-          { type: `mcq`, q: `A binary search has the complexity ………`, o: [`O(n)`, `O(1)`, `O(log₂ n)`, `O(n²)`], a: 2, why: `It halves the search range each step.` },
-          { type: `mcq`, q: `Files are managed by system software: ………`, o: [`OS`, `DBMS`, `MIS`, `Both a and b`], a: 3, why: `File managers are the OS and DBMS.` },
-          { type: `mcq`, q: `A unit of storage that can store one or more records in a hash file organization is ………`, o: [`Buckets`, `Disk pages`, `Blocks`, `Nodes`], a: 0, why: `Hash files store records in buckets.` },
-          { type: `mcq`, q: `The average cost for the search with equality selection of the heap file is ………`, o: [`2D + C`, `0.5B(D + RC)`, `1.25B(D + RC) + C + D`, `Dlog2B + Clog2R`], a: 1, why: `Half the file is scanned on average.` },
-          { type: `mcq`, q: `The average cost for the delete process of the hash file is ………`, o: [`Dlog2B + Clog2R`, `B(D + RC)`, `1.25B(D + RC) + C + D`, `0.5B(D + RC)`], a: 2, why: `Model answer: search + C + D, with 1.25B(D+RC) used as the search term.` },
-          { type: `mcq`, q: `The average cost for the scan process of the sorted file is ………`, o: [`Dlog2B + Clog2R`, `B(D + RC)`, `1.25B(D + RC)`, `0.5B(D + RC)`], a: 1, why: `All B pages must be read.` }
+          { type: `mcq`, q: `In stream file structure the information is written as a stream of bytes containing …………`, o: [`no added information`, `no space`, `added information`, `space`], a: 0, why: `That is why records can't be recovered from a stream file.`, ow: [null, `"No space" is not the definition; the point is that no added information (delimiters, lengths) is written (L3, Stream files).`, `Added information (delimiters, length indicators, keywords) is what field structures add; a stream has none (L3).`, `"Space" is not the definition; a stream file contains no added information (L3).`] },
+          { type: `mcq`, q: `A binary search has the complexity ………`, o: [`O(n)`, `O(1)`, `O(log₂ n)`, `O(n²)`], a: 2, why: `Binary search on a sorted file compares the key with the middle record and discards half of the remaining range each step, so it needs about log₂ n accesses (L4, Sorted file).`, ow: [`O(n) is linear (sequential) search, which reads records one by one (L3).`, `O(1) is direct access by RRN with one seek (L3).`, null, `O(n²) would be slower than even sequential search; binary search is O(log₂ n) (L4).`] },
+          { type: `mcq`, q: `Files are managed by system software: ………`, o: [`OS`, `DBMS`, `MIS`, `Both a and b`], a: 3, why: `The lecture names two file managers (system software): the operating system and the DBMS, so both a and b are correct (L1, File managers).`, ow: [`The OS is a file manager, but so is the DBMS, so this is only half the answer (L1).`, `The DBMS is a file manager, but so is the OS, so this is only half the answer (L1).`, `MIS is a management information system, not one of the file managers (OS, DBMS) named in the lecture (L1).`, null] },
+          { type: `mcq`, q: `A unit of storage that can store one or more records in a hash file organization is ………`, o: [`Buckets`, `Disk pages`, `Blocks`, `Nodes`], a: 0, why: `The lecture defines a bucket as the unit of storage that can hold one or more records in a hash file organization (L5, What is hashing?).`, ow: [null, `Disk page is a general storage term (page = block in the cost model); the hashing term is bucket (L5).`, `Blocks are how the DBMS physically organizes tracks (L2); in hashing the unit is the bucket (L5).`, `Nodes belong to trees and linked lists, not to hash file organization (L5).`] },
+          { type: `mcq`, q: `The average cost for the search with equality selection of the heap file is ………`, o: [`2D + C`, `0.5B(D + RC)`, `1.25B(D + RC) + C + D`, `Dlog2B + Clog2R`], a: 1, why: `A heap file is unordered, so equality search is linear; on average the match is found after scanning half the file: 0.5B(D + RC) (L4, Heap file costs).`, ow: [`2D + C is the heap INSERT cost (read last page, write it back), not a search (L4).`, null, `1.25B(D + RC) + C + D is the hashed-file delete in the model answer (L4).`, `Dlog₂B + Clog₂R is binary search, the SORTED-file equality search; a heap file is unordered (L4).`] },
+          { type: `mcq`, q: `The average cost for the delete process of the hash file is ………`, o: [`Dlog2B + Clog2R`, `B(D + RC)`, `1.25B(D + RC) + C + D`, `0.5B(D + RC)`], a: 2, why: `Model answer: search + C + D, with 1.25B(D+RC) used as the search term.`, ow: [`Dlog₂B + Clog₂R is the sorted-file equality search, not a hashed delete (L4).`, `B(D + RC) is the heap/sorted scan cost (L4).`, null, `0.5B(D + RC) is the heap-file equality search (L4).`] },
+          { type: `mcq`, q: `The average cost for the scan process of the sorted file is ………`, o: [`Dlog2B + Clog2R`, `B(D + RC)`, `1.25B(D + RC)`, `0.5B(D + RC)`], a: 1, why: `A scan fetches every record, so all B pages are read (D each) and the R records on each processed (RC): B(D + RC), the same as the heap scan (L4, Sorted file costs).`, ow: [`Dlog₂B + Clog₂R is the sorted-file equality search (binary search), not a full scan (L4).`, null, `1.25B(D + RC) is the hashed-file scan, where pages are only ~80% full (L4).`, `0.5B(D + RC) is the heap-file equality search (half the file on average) (L4).`] }
         ]},
         { title: `Q1-b`, marks: `3 marks`, items: [
           { type: `written`, q: `Consider a (fixed-length field, fixed-length record) file. Write the full body of UpdateRecord given the Relative Record Number (RRN).`, ans: `<pre>struct Item {
