@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/screenshots/hero.png" alt="Study Deck: the home dashboard on desktop, a course path and a quiz on phones" width="100%">
+<img src="docs/screenshots/hero-l2-l3.png" alt="Study Deck: the home dashboard on desktop, a course path and a quiz on phones" width="100%">
 
 <h1>Study Deck</h1>
 
