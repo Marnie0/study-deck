@@ -12,9 +12,9 @@ EXTRA.qa = {
     { q: `Which of the following is NOT one of the six objectives of testing listed in the lecture?`,
       o: [
         [`Write the functional code of the system`, `Correct. Writing code is development, not a testing objective.`],
-        [`Identify areas of weakness`, `This is objective 4 in the lecture's list.`],
-        [`Establish the degree of quality`, `This is objective 5 in the lecture's list.`],
-        [`Determine user acceptability`, `This is objective 6 in the lecture's list.`]
+        [`Identify areas of weakness`, `Identifying areas of weakness is objective 4 of the six objectives of testing, so it IS on the lecture's list (L1, Objectives of testing).`],
+        [`Establish the degree of quality`, `Establishing the degree of quality is objective 5 of the six objectives of testing, so it IS on the list (L1, Objectives of testing).`],
+        [`Determine user acceptability`, `Determining user acceptability is objective 6, the last of the six objectives of testing, so it IS on the list (L1, Objectives of testing).`]
       ],
       a: 0 },
     { q: `A file manager's specification says files must <b>never</b> be deleted without asking for confirmation. During testing, the app deletes a file immediately with no confirmation. Which bug condition is this?`,
@@ -54,7 +54,7 @@ EXTRA.qa = {
         [`Integration test plan`, `Correct. System design ↔ integration test plan ↔ integration test.`],
         [`Acceptance test plan`, `That comes from the requirements specifications stage.`],
         [`System test plan`, `That comes from the functional specifications stage.`],
-        [`Unit test cases`, `Those come from the unit design stage.`]
+        [`Unit test cases`, `Unit test cases come from the unit design stage at the bottom of the left side, not from system design (L1, V-model mapping).`]
       ],
       a: 0 },
     { q: `"In the V-model, development on the left side goes from low level to high level, and testing on the right side goes from high level to low level."`,
@@ -66,7 +66,7 @@ EXTRA.qa = {
     { q: `In XP's Test-Driven Development, which step comes immediately AFTER "write/modify the functional code"?`,
       o: [
         [`Create the test code`, `That is step 1, before the functional code is written.`],
-        [`Refactor the code`, `Refactoring is the last step (step 5).`],
+        [`Refactor the code`, `Refactoring is step 5, the last step; after writing the functional code you first create additional tests and run them (L1, TDD).`],
         [`Create additional tests`, `Correct. The order is: create test code → write/modify functional code → create additional tests → test the functional code → refactor.`],
         [`Test the functional code`, `That is step 4; additional tests are created first (step 3).`]
       ],
@@ -97,10 +97,10 @@ EXTRA.qa = {
       a: 1 },
     { q: `A program accepts integers from <b>100 to 999</b>. Following the lecture's 10,000–99,999 example, which value is the <b>invalid left boundary</b> test?`,
       o: [
-        [`100`, `100 is the valid left boundary.`],
+        [`100`, `100 is the lowest value the program accepts, so it is the VALID left boundary (like 10000 in the lecture); the invalid one is just below it.`],
         [`1000`, `1000 is the invalid RIGHT boundary (just above 999).`],
         [`99`, `Correct. It is just below the lowest valid value, like 09999 in the lecture's example.`],
-        [`550`, `550 is a valid middle value.`]
+        [`550`, `550 is a valid middle value (like 50000 in the lecture's example), not a boundary; the invalid left boundary is 99.`]
       ],
       a: 2 },
     { q: `When starting dynamic black-box testing, which approach should be applied FIRST?`,
@@ -120,17 +120,17 @@ EXTRA.qa = {
     { q: `Which is NOT one of the lecture's 5 ways to reduce the number of states and transitions to test?`,
       o: [
         [`Test every possible sequence of transitions exhaustively`, `Correct. The point is to REDUCE the number of tests; exhaustive testing is not one of the 5 ways.`],
-        [`Visit each state at least once`, `This is way 1.`],
-        [`Test all error states and returning from them`, `This is way 4.`],
-        [`Test the least common paths`, `This is way 3.`]
+        [`Visit each state at least once`, `Visiting each state at least once is way 1 of the lecture's 5 ways to reduce states and transitions, so it IS on the list.`],
+        [`Test all error states and returning from them`, `Testing all error states and returning from them is way 4 of the 5 ways, so it IS on the list.`],
+        [`Test the least common paths`, `Testing the least common paths is way 3 of the 5 ways (after each state once and the most common transitions), so it IS on the list.`]
       ],
       a: 0 },
     { q: `Which of these does a state transition map NOT need to show?`,
       o: [
-        [`Each unique state the software can be in`, `This is item 1 of the map.`],
-        [`The input or condition that moves the software from one state to the next`, `This is item 2 of the map.`],
+        [`Each unique state the software can be in`, `Each unique state the software can be in is item 1 of what a state transition map shows, so the map does need it.`],
+        [`The input or condition that moves the software from one state to the next`, `The input or condition that moves the software from one state to the next is item 2 of the map (the arrows), so the map needs it.`],
         [`The source code line that implements each transition`, `Correct. The map is drawn from the user's view; code lines belong to white-box testing.`],
-        [`Conditions set and output produced when a state is entered or exited`, `This is item 3 of the map.`]
+        [`Conditions set and output produced when a state is entered or exited`, `The conditions set and output produced when a state is entered or exited is item 3 of the map, so the map needs it.`]
       ],
       a: 2 },
     { q: `In the lecture's media player, you start in OFF and press: <b>fast forward → play → fast forward → stop</b>. Which state are you in at the end?`,
@@ -169,9 +169,9 @@ EXTRA.qa = {
       a: 0 },
     { q: `Which is NOT one of the 4 essential elements of a formal review?`,
       o: [
-        [`Identify problems in the design and code`, `This is element 1.`],
-        [`Follow rules, e.g. lines of code reviewed per day`, `This is element 2.`],
-        [`Write a report summarizing the results`, `This is element 4.`],
+        [`Identify problems in the design and code`, `Identifying problems in the design and code is element 1 of the 4 essential elements of a formal review, so it IS one of them.`],
+        [`Follow rules, e.g. lines of code reviewed per day`, `Following rules (e.g. lines of code reviewed per day, time spent) is element 2 of a formal review, so it IS one of them.`],
+        [`Write a report summarizing the results`, `Writing a report summarizing the results for the development team is element 4 of a formal review, so it IS one of them.`],
         [`Rewrite the faulty code during the meeting`, `Correct. The elements are identify problems, follow rules, prepare, and write a report; fixing code is not one of them.`]
       ],
       a: 3 },
@@ -202,9 +202,9 @@ EXTRA.qa = {
     { q: `Which is NOT one of the types of data coverage listed in the lecture?`,
       o: [
         [`Statement coverage`, `Correct. Statement coverage is a type of CODE coverage.`],
-        [`Data flow`, `Listed under data coverage.`],
-        [`Sub-boundaries`, `Listed under data coverage.`],
-        [`Error forcing`, `Listed under data coverage.`]
+        [`Data flow`, `Data flow is one of the three types of data coverage (data flow, sub-boundaries, error forcing), so it IS listed (L3).`],
+        [`Sub-boundaries`, `Sub-boundaries is one of the three types of data coverage, so it IS listed; statement coverage is code coverage.`],
+        [`Error forcing`, `Error forcing is one of the three types of data coverage, so it IS listed; statement coverage belongs to code coverage.`]
       ],
       a: 0 },
     { q: `<pre>1: READ X
@@ -225,7 +225,7 @@ EXTRA.qa = {
       o: [
         [`1`, `One case cannot make each sub-condition both true and false.`],
         [`2`, `2 is enough for branch coverage (whole IF true once, false once), not the lecture's condition coverage table.`],
-        [`8`, `8 would need three sub-conditions (2×2×2).`],
+        [`8`, `8 = 2×2×2 would need three sub-conditions; this IF has only two (Age and Member$), giving 2×2 = 4 combinations.`],
         [`4`, `Correct. Two sub-conditions × (true, false) = 4 combinations, as in the Date$/Time$ table.`]
       ],
       a: 3 },
@@ -240,17 +240,17 @@ EXTRA.qa = {
         [`Reliability`, `Reliability means the code is more reliable and secure.`],
         [`Readability / Maintainability`, `This means the code is easier to understand and maintain.`],
         [`Portability`, `Correct. Portability means the code runs on different hardware and compilers.`],
-        [`Usability`, `Usability is not one of the three reasons.`]
+        [`Usability`, `Usability is not one of the 3 reasons for standards (reliability, readability/maintainability, portability); running on other hardware is portability.`]
       ],
       a: 2 },
   ],
   4: [
     { q: `A control flow graph has <b>8 edges</b>, <b>7 nodes</b> and is one connected component (P = 1). What is its cyclomatic complexity?`,
       o: [
-        [`1`, `This forgets the +2P term (8 − 7 = 1).`],
-        [`3`, `Correct. V(G) = E − N + 2P = 8 − 7 + 2 = 3.`],
+        [`1`, `1 = 8 − 7 forgets the +2P term; V(G) = E − N + 2P = 8 − 7 + 2(1) = 3.`],
+        [`3`, `Correct. V(G) = E − N + 2P = 8 − 7 + 2(1) = 3, so the graph has 3 independent paths (L4, Cyclomatic complexity).`],
         [`5`, `This uses P = 2 (8 − 7 + 4); the graph is one component.`],
-        [`15`, `E + N is not the formula.`]
+        [`15`, `15 = E + N = 8 + 7; the nodes are subtracted, not added: V(G) = 8 − 7 + 2 = 3.`]
       ],
       a: 1 },
     { q: `<pre>read(x, y, z);
@@ -261,7 +261,7 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       o: [
         [`4`, `Correct. There are 3 simple decisions (predicate nodes), so V(G) = 3 + 1 = 4.`],
         [`3`, `3 is the number of predicates; you must add 1.`],
-        [`5`, `There are only 3 predicate nodes, not 4.`],
+        [`5`, `5 would need 4 predicate nodes; the code has only 3 IFs (x&gt;0, z&gt;0, y&gt;10), so V(G) = 3 + 1 = 4.`],
         [`8`, `V(G) is not 2^3; it grows by one per decision.`]
       ],
       a: 0 },
@@ -293,7 +293,7 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       o: [
         [`Three times`, `The lecture says each call is tested only once even if it happens several times.`],
         [`Once`, `Correct. Each method call is tested at least once; repeated calls are tested only once.`],
-        [`Twice`, `No rule in MM requires two tests.`],
+        [`Twice`, `MM has no two-test rule: each call is tested at least once, and repeated calls of the same method are tested only once.`],
         [`It does not need testing`, `MM requires every method call to be tested at least once.`]
       ],
       a: 1 },
@@ -302,15 +302,15 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
         [`The stack moves to Normal`, `A push never moves Full to Normal; pop does that.`],
         [`The stack stays Full with no error`, `Push from Full is an error state in the diagram.`],
         [`Error, because the stack is full`, `Correct. This is pair 8: push on a full stack gives an error.`],
-        [`The stack moves to Empty`, `Only pop from Normal can lead to Empty.`]
+        [`The stack moves to Empty`, `Push never empties a stack; Empty is reached only by pop from Normal. Push on a Full stack is an error (pair 8).`]
       ],
       a: 2 },
     { q: `Following the lecture's "area of a triangle from 3 points" functional tests, which input should have the expected output <b>"Not a triangle"</b>?`,
       o: [
         [`(2,2), (4,4), (6,6)`, `Correct. The three points lie on the same line (y = x), so they are collinear, like (1,1), (1,5), (1,10).`],
-        [`(0,0), (4,0), (0,6)`, `These form a right triangle with area 12.`],
-        [`(1,1), (5,1), (1,4)`, `These form a right triangle with area 6.`],
-        [`(0,0), (3,0), (3,3)`, `These form a right triangle with area 4.5.`]
+        [`(0,0), (4,0), (0,6)`, `(0,0), (4,0), (0,6) are not on one line; they form a right triangle with legs 4 and 6, area ½ × 4 × 6 = 12.`],
+        [`(1,1), (5,1), (1,4)`, `(1,1), (5,1), (1,4) are not collinear; they form a right triangle with legs 4 and 3, area ½ × 4 × 3 = 6.`],
+        [`(0,0), (3,0), (3,3)`, `(0,0), (3,0), (3,3) are not collinear; they form a right triangle with legs 3 and 3, area ½ × 3 × 3 = 4.5.`]
       ],
       a: 0 },
     { q: `"Statement and branch coverage are fully appropriate for object-oriented software because they test the interactions between methods."`,
@@ -321,9 +321,9 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 1 },
     { q: `A planar flow graph divides the plane into <b>3 inner regions</b> plus the outer region. What is V(G)?`,
       o: [
-        [`3`, `This forgets to count the outer region.`],
+        [`3`, `3 counts only the inner regions; the outer region also counts, so V(G) = 3 + 1 = 4 (foo: 2 inner + 1 outer = 3).`],
         [`2`, `This subtracts instead of adding the outer region.`],
-        [`5`, `Only the outer region is added, not 2.`],
+        [`5`, `5 adds two outer regions; a planar graph has exactly one outer region, so V(G) = 3 + 1 = 4.`],
         [`4`, `Correct. V(G) = number of regions = 3 inner + 1 outer = 4 (foo had 2 + 1 = 3).`]
       ],
       a: 3 },
@@ -339,10 +339,10 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 1 },
     { q: `Which is NOT one of the uses of links listed in the lecture?`,
       o: [
-        [`Downloading files`, `Listed as a use of links.`],
+        [`Downloading files`, `Downloading files IS one of the lecture's uses of links, alongside navigating, redirecting and opening Internet tools.`],
         [`Encrypting the user's login information`, `Correct. Encrypting login data is checked under cookies, not a use of links.`],
         [`Opening the default e-mail client`, `Listed: links can open other Internet tools such as Outlook.`],
-        [`Directing the user to a different location`, `Listed as a use of links.`]
+        [`Directing the user to a different location`, `Directing the user to a different location IS one of the lecture's listed uses of links.`]
       ],
       a: 1 },
     { q: `A tester checks that paragraphs flow correctly around a product photo instead of overlapping it. Which of the 13 web-testing elements is this?`,
@@ -385,7 +385,7 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 3 },
     { q: `Which white-box web element requires simulating millions of connections and downloads?`,
       o: [
-        [`Dynamic content`, `That is content that varies with conditions.`],
+        [`Dynamic content`, `Dynamic content is graphics and text that vary with conditions (time, weather, stock tickers); it does not need millions of simulated connections.`],
         [`Server performance and loading`, `Correct. Popular sites get millions of hits per day, so the load must be simulated.`],
         [`Programmatically created pages`, `That is about how pages are generated, not about load.`],
         [`Gray-box testing`, `Gray-box is a mix of black- and white-box aimed at design/implementation defects.`]
@@ -393,10 +393,10 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 1 },
     { q: `Which is NOT in the lecture's compatibility testing list?`,
       o: [
-        [`Various screen resolutions`, `Listed.`],
-        [`Various font sizes`, `Listed.`],
+        [`Various screen resolutions`, `Various screen resolutions is item 3 of the compatibility list, so it IS listed.`],
+        [`Various font sizes`, `Various font sizes is item 1 of the compatibility list, so it IS listed.`],
         [`Different printer models`, `Correct. The list is font sizes, browsers with CSS, screen resolutions, memory sizes and network environments.`],
-        [`Different network environments`, `Listed.`]
+        [`Different network environments`, `Different network environments is item 5 of the compatibility list, so it IS listed.`]
       ],
       a: 2 },
     { q: `A designer types entries into a database, drags and drops elements in a layout program, then presses a button to generate the HTML. These are:`,
@@ -404,7 +404,7 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
         [`Programmatically created pages`, `Correct. This is the lecture's description of programmatically created pages.`],
         [`Database-driven pages`, `Those display catalogs and inventories from a database.`],
         [`Dynamic content`, `Dynamic content changes with conditions like weather or time.`],
-        [`Home page`, `The home page is the site's default page.`]
+        [`Home page`, `The home page is the site's default page with a header and source name; generating HTML from a layout program describes programmatically created pages.`]
       ],
       a: 0 },
   ],
@@ -441,10 +441,10 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 1 },
     { q: `Which of these is listed as a task of <b>software testing</b> (not of QA)?`,
       o: [
-        [`Develop standard processes`, `This is a QA task example.`],
-        [`Define quality metrics and criteria`, `This is a QA task example.`],
-        [`Create guidelines for requirements, design and coding`, `This is a QA task example.`],
-        [`Attend project and design review meetings`, `Correct. This is task 4 of testing.`]
+        [`Develop standard processes`, `Developing standard processes is a QA task example, not one of the four tasks of software testing.`],
+        [`Define quality metrics and criteria`, `Defining quality metrics and criteria is a QA task example; testing tasks are choosing the approach, executing tests, reports and review meetings.`],
+        [`Create guidelines for requirements, design and coding`, `Creating guidelines for requirements, design and coding is a QA task example, not a task of software testing.`],
+        [`Attend project and design review meetings`, `Correct. The four testing tasks are choose the test approach, execute tests, prepare V&amp;V reports and attend project and design review meetings, task 4 (L6, Tasks of testing).`]
       ],
       a: 3 },
     { q: `In a company, the test lead and the development manager both report to the project manager, who makes the final decision on releases. Which organization structure is this?`,
@@ -460,20 +460,20 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
         [`Process metrics`, `Correct. Process metrics measure the development process.`],
         [`Product metrics`, `Product metrics measure the final product, e.g. code size or number of documented pages.`],
         [`Quality factors`, `Quality factors are attributes like reliability and usability.`],
-        [`Defect indicators`, `Defect indicators count or locate defects.`]
+        [`Defect indicators`, `Defect indicators (removal rate, age profile, density) count or locate defects; development time and methodology are process metrics.`]
       ],
       a: 0 },
     { q: `Which is NOT one of the 9 common SQA metrics listed in the lecture?`,
       o: [
-        [`Coupling`, `Listed among the 9 metrics.`],
-        [`Function point analysis`, `Listed among the 9 metrics.`],
-        [`Order of growth`, `Listed among the 9 metrics.`],
-        [`Number of team meetings held`, `Correct. It is not in the list.`]
+        [`Coupling`, `Coupling IS one of the 9 common SQA metrics, alongside cohesion, so it is in the list.`],
+        [`Function point analysis`, `Function point analysis IS one of the 9 common SQA metrics listed in the lecture.`],
+        [`Order of growth`, `Order of growth IS one of the 9 common SQA metrics, listed just before source lines of code.`],
+        [`Number of team meetings held`, `Correct. The 9 metrics are code coverage, bugs per line, cyclomatic complexity, function points, classes and interfaces, cohesion, coupling, order of growth and SLOC; meetings held is not one (L6).`]
       ],
       a: 3 },
     { q: `A manager wants to know whether developers are following the procedures approved at the start of the project. Which quality indicator measures this?`,
       o: [
-        [`Progress`, `Progress measures work done in each phase.`],
+        [`Progress`, `Progress measures the work done by the developer in each phase, not whether approved procedures are being followed.`],
         [`Stability`, `Stability judges whether a phase's products are stable enough to proceed.`],
         [`Process compliance`, `Correct. It measures the developer's obedience to the approved procedures.`],
         [`Defect density`, `Defect density identifies defect-prone parts of the system.`]
@@ -481,8 +481,8 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 2 },
     { q: `What is the goal of quality management in IT (ITSM)?`,
       o: [
-        [`To replace all testers with automated tools`, `Not in the lecture.`],
-        [`To certify the company at CMM Level 5`, `CMM is a different topic (Lecture 7).`],
+        [`To replace all testers with automated tools`, `Replacing testers with tools is not in the lecture; ITSM's goal is delivering IT services at an agreed-upon level of quality.`],
+        [`To certify the company at CMM Level 5`, `CMM levels belong to Lecture 7's maturity model; ITSM's goal is delivering IT services at an agreed-upon level of quality.`],
         [`To deliver IT services at an agreed-upon level of quality`, `Correct. This is the lecture's stated ITSM goal.`],
         [`To write the source code of IT services`, `ITSM is about managing service quality, not writing code.`]
       ],
@@ -515,9 +515,9 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 1 },
     { q: `In the CMM figure, which label is on the arrow from Level 2 to Level 3?`,
       o: [
-        [`Basic management control`, `That is the arrow from Level 1 to Level 2.`],
-        [`Process measurement`, `That is the arrow from Level 3 to Level 4.`],
-        [`Process control`, `That is the arrow from Level 4 to Level 5.`],
+        [`Basic management control`, `Basic management control is the label on the arrow from Level 1 to Level 2, not from Level 2 to Level 3.`],
+        [`Process measurement`, `Process measurement labels the arrow from Level 3 to Level 4, one step further up.`],
+        [`Process control`, `Process control labels the last arrow, from Level 4 to Level 5.`],
         [`Process definition`, `Correct. 1→2 basic management control, 2→3 process definition, 3→4 process measurement, 4→5 process control.`]
       ],
       a: 3 },
@@ -545,18 +545,18 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       a: 1 },
     { q: `A quality team investigates the root cause of a recurring defect so that it does not happen again. Which ISO 9000 element is this?`,
       o: [
-        [`Corrective & preventive action`, `Correct. Element 14 deals with root causes.`],
-        [`Control of non-conforming product`, `That is about handling rejected items.`],
+        [`Corrective & preventive action`, `Correct. Element 14, corrective &amp; preventive action, deals with finding root causes of problems so they do not recur (L7, 20 elements of ISO 9000).`],
+        [`Control of non-conforming product`, `Control of non-conforming product (element 13) handles rejected items already found, not the root cause that prevents recurrence.`],
         [`Internal quality audits`, `Audits check the quality system; root-cause action is element 14.`],
-        [`Statistical techniques`, `That is about control charts.`]
+        [`Statistical techniques`, `Statistical techniques (element 20) means using tools such as control charts, not acting on a defect's root cause.`]
       ],
       a: 0 },
     { q: `Which is NOT one of ISO's 8 quality management principles?`,
       o: [
-        [`Maximizing short-term profit`, `Correct. It is not in the list.`],
-        [`Customer focus`, `This is one of the 8 principles.`],
-        [`Factual decision making`, `This is one of the 8 principles.`],
-        [`Mutually beneficial supplier relationships`, `This is one of the 8 principles.`]
+        [`Maximizing short-term profit`, `Correct. ISO's 8 principles are customer focus, leadership, involvement of people, process approach, system approach, continuous improvement, factual decisions and supplier relations; profit is not one (L7).`],
+        [`Customer focus`, `Customer focus IS one of ISO's 8 quality management principles (the first in the list).`],
+        [`Factual decision making`, `Factual decision making IS one of ISO's 8 quality management principles.`],
+        [`Mutually beneficial supplier relationships`, `Mutually beneficial supplier relationships IS one of ISO's 8 principles (the last in the list).`]
       ],
       a: 0 },
     { q: `SPICE is linked with which standard as a joint ISO and IEC initiative for software process assessment?`,
@@ -571,18 +571,18 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
   8: [
     { q: `According to the normal distribution figure, how many parts per million (ppm) fall OUTSIDE the ±2σ limits?`,
       o: [
-        [`317,300`, `That is outside ±1σ.`],
-        [`2,700`, `That is outside ±3σ.`],
+        [`317,300`, `317,300 ppm fall outside ±1σ (68.27% inside), not ±2σ.`],
+        [`2,700`, `2,700 ppm fall outside ±3σ (99.73% inside), not ±2σ.`],
         [`45,500`, `Correct. ±2σ covers 95.45%, leaving 45,500 ppm outside.`],
-        [`63`, `That is outside ±4σ.`]
+        [`63`, `63 ppm fall outside ±4σ (99.9937% inside), not ±2σ.`]
       ],
       a: 2 },
     { q: `A process has a variance of <b>0.25</b>. Using σ = √variance and the case study's "Six sigma = 6 × standard deviation", what is its Six Sigma value?`,
       o: [
         [`1.5`, `This multiplies the variance by 6 instead of σ.`],
-        [`3`, `Correct. σ = √0.25 = 0.5, and 6 × 0.5 = 3.`],
-        [`0.5`, `0.5 is σ itself, not 6σ.`],
-        [`6.25`, `This adds 6 to the variance.`]
+        [`3`, `Correct. σ = √variance = √0.25 = 0.5, and the case study's Six Sigma value is 6 × σ = 6 × 0.5 = 3 (L8, Case study).`],
+        [`0.5`, `0.5 = √0.25 is σ itself; the Six Sigma value is 6 × 0.5 = 3.`],
+        [`6.25`, `6.25 = 6 + 0.25 adds 6 to the variance; take σ = √0.25 = 0.5, then 6 × 0.5 = 3.`]
       ],
       a: 1 },
     { q: `A Six Sigma team analyzes the chain of failure causes, ranks the causes by their impact and categorizes them. Which DMAIC phase is this?`,
@@ -597,13 +597,13 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
       o: [
         [`Control`, `Correct. Control means continuous monitoring and correcting deviations.`],
         [`Measure`, `Measure plans and implements performance measurement against customer requirements before improvement.`],
-        [`Analyze`, `Analyze looks for root causes.`],
+        [`Analyze`, `Analyze finds and ranks the root causes of problems before improvement; continuous monitoring after improvement is Control.`],
         [`Define`, `Define states the problem and forms the team.`]
       ],
       a: 0 },
     { q: `A company wants to design a completely NEW product process using Six Sigma. Which approach shown on the slide fits?`,
       o: [
-        [`DMAIC`, `DMAIC improves EXISTING processes.`],
+        [`DMAIC`, `DMAIC (Define, Measure, Analyze, Improve, Control) improves EXISTING processes; a new design uses DMADV.`],
         [`ISO 9000`, `ISO 9000 is a quality standard, not a Six Sigma approach.`],
         [`CMM`, `CMM is a maturity model, not a Six Sigma approach.`],
         [`DMADV (Define, Measure, Analyze, Design, Verify)`, `Correct. DMADV is for designing new processes/products.`]
@@ -612,25 +612,25 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
     { q: `When did Six Sigma emerge, according to the lecture?`,
       o: [
         [`Early 1950s`, `Too early; the lecture says late 1970s and early 1980s.`],
-        [`Late 1970s and early 1980s`, `Correct.`],
-        [`1993`, `1993 is when SPICE was introduced.`],
+        [`Late 1970s and early 1980s`, `Correct. The lecture says Six Sigma emerged in the late 1970s and early 1980s and became popular as major global companies adopted it (L8, Introduction).`],
+        [`1993`, `1993 is the year SPICE was introduced (L7); Six Sigma emerged in the late 1970s and early 1980s.`],
         [`After 2010`, `Too late; it was already popular with major global companies long before.`]
       ],
       a: 1 },
     { q: `Which belt is applied to <b>middle and senior management</b>?`,
       o: [
-        [`Yellow Belt`, `The Yellow Belt is for all employees.`],
-        [`Black Belt`, `Correct.`],
-        [`Green Belt`, `The Green Belt is for executive employees.`],
-        [`White Belt`, `The White Belt is the entry level (step 1).`]
+        [`Yellow Belt`, `The Yellow Belt is for all employees, not specifically middle and senior management.`],
+        [`Black Belt`, `Correct. In the belts table the Black Belt is applied to middle and senior management; Master Black Belt is for senior management only (L8, Belts).`],
+        [`Green Belt`, `The Green Belt is for executive employees, one level below the Black Belt.`],
+        [`White Belt`, `The White Belt is step 1, the entry level in the certification figure, not for middle and senior management.`]
       ],
       a: 1 },
     { q: `What is the FIRST phase of implementing Six Sigma?`,
       o: [
-        [`Train on measurement, analysis and process redesign`, `That is phase 4.`],
-        [`Implement and apply practical solutions`, `That is phase 5.`],
-        [`Prepare a written document of the problem`, `That is phase 3.`],
-        [`Identify and select important projects`, `Correct. This is phase 1.`]
+        [`Train on measurement, analysis and process redesign`, `Training on measurement, analysis and process redesign is phase 4, after projects are selected, staff assigned and the problem documented.`],
+        [`Implement and apply practical solutions`, `Implementing practical solutions is phase 5, near the end, just before submitting solutions (phase 6).`],
+        [`Prepare a written document of the problem`, `Preparing a written problem document (reasons, objectives, scope) is phase 3, after selecting projects and assigning employees.`],
+        [`Identify and select important projects`, `Correct. The implementation phases are (1) identify and select important projects, (2) assign experienced employees, (3) document the problem, (4) train, (5) implement, (6) submit (L8).`]
       ],
       a: 3 },
     { q: `"In the centred normal distribution figure, only 0.002 ppm fall outside the ±6σ limits."`,
@@ -642,9 +642,9 @@ print(y);</pre>Using V(G) = predicate nodes + 1, what is the cyclomatic complexi
     { q: `In the preparatory-certificate case study, which DMAIC step "measures the size of the impact" of the failure causes?`,
       o: [
         [`Measure`, `Correct. Define the causes → Measure their impact → Analyze sources → Improve → Control.`],
-        [`Define`, `Define identifies the causes of failure.`],
-        [`Improve`, `Improve derives solutions.`],
-        [`Control`, `Control is continuous monitoring.`]
+        [`Define`, `In the case study, Define identifies the causes of failure; measuring the size of their impact is the next step, Measure.`],
+        [`Improve`, `Improve derives solutions to the failure causes; it comes after their impact is measured and their sources analyzed.`],
+        [`Control`, `Control is the last step, continuous monitoring after solutions are applied, not measuring the causes' impact.`]
       ],
       a: 0 },
   ],
