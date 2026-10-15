@@ -192,22 +192,28 @@ function start() {
   const scriptOnce = {};
   const loadScript = src => scriptOnce[src] || (scriptOnce[src] = new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = () => { s.remove(); res(); }; s.onerror = () => { delete scriptOnce[src]; s.remove(); rej(); }; document.head.appendChild(s); }));
   const loadAr = k => (M[k] && M[k].ar && !(window.AR && window.AR[k])) ? loadScript(dataUrl('ar-' + k)) : Promise.resolve();
-  function arFont() {
-    if (document.getElementById('ar-font')) return;
-    const l = document.createElement('link'); l.id = 'ar-font'; l.rel = 'stylesheet';
-    l.href = 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap';
-    document.head.appendChild(l);
+  // Fonts used only sometimes (Arabic, the Book view's serif) are added when first needed. The site build (dist.mjs) serves them
+  // locally and passes their @font-face rules in window.FONT_CSS; the plain page falls back to Google Fonts.
+  function lazyFont(name, google) {
+    if (document.getElementById('font-' + name)) return;
+    const css = window.FONT_CSS && window.FONT_CSS[name];
+    const el = document.createElement(css ? 'style' : 'link'); el.id = 'font-' + name;
+    if (css) el.textContent = css; else { el.rel = 'stylesheet'; el.href = google; }
+    document.head.appendChild(el);
   }
-  function LangButton({ lang, setLang }) {
+  const arFont = () => lazyFont('ar', 'https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap');
+  function LangButton({ lang, setLang, k }) {
     const on = lang === 'ar';
-    return html`<button className=${'langbtn' + (on ? ' on' : '')} aria-pressed=${String(on)} onClick=${() => setLang(on ? 'en' : 'ar')}
+    // on touch, start the Arabic font and this course's Arabic file before the click lands
+    const warm = () => { if (on) return; arFont(); if (k) loadAr(k).catch(() => {}); };
+    return html`<button className=${'langbtn' + (on ? ' on' : '')} aria-pressed=${String(on)} onPointerDown=${warm} onMouseEnter=${warm} onClick=${() => setLang(on ? 'en' : 'ar')}
       title=${on ? 'Hide the Arabic explanations' : 'Show Egyptian Arabic explanations under the English'}><span lang="ar">عربي</span></button>`;
   }
 
   /* ── tiny icons ── */
   const Icon = {
-    search: html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>`,
-    back: html`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>`,
+    search: html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>`,
+    back: html`<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6"/></svg>`,
     tick: html`<svg className="mark" viewBox="0 0 34 34" aria-label="correct"><path d="M6 18 L14 26 L29 6"/></svg>`,
     cross: html`<svg className="mark" viewBox="0 0 34 34" aria-label="your wrong answer"><path d="M8 8 L26 26 M26 8 L8 26"/></svg>`
   };
@@ -227,6 +233,12 @@ function start() {
     }));
   }
   const prefetch = k => { loadCourse(k).catch(() => {}); };
+  // Memory: course data stays loaded while you use a level. When you switch level, the other level's courses (and their Arabic
+  // and derived lists) are let go; going back re-reads them from the browser cache. So memory holds one level at most, not all 12.
+  function releaseExcept(keep) {
+    for (const k of Object.keys(C)) if (!keep.has(k)) { delete C[k]; delete pending[k]; ['c', 'q', 'm'].forEach(p => delete memo[p + k]); }
+    if (window.AR) for (const k of Object.keys(window.AR)) if (!keep.has(k)) { delete window.AR[k]; delete scriptOnce[dataUrl('ar-' + k)]; }
+  }
   function useCourse(k) {
     const [state, setState] = useState(C[k] ? 'ready' : 'loading');
     const [attempt, setAttempt] = useState(0);
@@ -308,6 +320,7 @@ function start() {
     LEVEL = (nav.view === 'course' && levelOf(nav.course)) || LEVELS.find(v => v.id === levelId) || LEVELS[LEVELS.length - 1];
     ORDER = LEVEL.order;
     useEffect(() => { if (LEVEL.id !== levelId) setLevel(LEVEL.id); }, [LEVEL.id]);
+    useEffect(() => { releaseExcept(new Set(LEVEL.order.map(o => o[0]).concat(nav.course ? [nav.course] : []))); }, [LEVEL.id]);
     const [, setArTick] = useState(0);
     useEffect(() => {
       if (lang !== 'ar') return;
@@ -327,9 +340,11 @@ function start() {
     useEffect(() => {
       // warm up the course you were last studying while the browser is idle
       const last = store.get('last', null);
-      if (!last || !M[last.course] || C[last.course]) return;
+      if (!last || !M[last.course] || C[last.course] || !ORDER.some(o => o[0] === last.course)) return;
+      const net = navigator.connection || {};
+      if (net.saveData || /2g/.test(net.effectiveType || '')) return;
       const idle = window.requestIdleCallback || (f => setTimeout(f, 1200));
-      idle(() => prefetch(last.course));
+      (document.fonts ? document.fonts.ready : Promise.resolve()).then(() => idle(() => prefetch(last.course)));
     }, []);
 
     useEffect(() => {
@@ -354,12 +369,12 @@ function start() {
     const bar = { go, openSearch, theme, lang, setLang, setLevel };
 
     return html`
-      <div className="app">
+      <div className="app" key="app">
         ${inCourse
           ? html`<${CourseView} key=${nav.course} nav=${nav} bar=${bar} />`
           : html`<${Home} bar=${bar} />`}
       </div>
-      ${searching && html`<${Search} close=${() => setSearching(false)} go=${p => { setSearching(false); navigate(p); }} />`}
+      ${searching && html`<${Search} key="search" close=${() => setSearching(false)} go=${p => { setSearching(false); navigate(p); }} />`}
     `;
   }
 
@@ -370,10 +385,10 @@ function start() {
     const open = k => k === cur ? go({ mode: 'path' }) : go({ view: 'course', course: k, mode: 'path', lec: lastLec(k), anchor: null, quizPreset: null, cardFocus: null, cardLec: null });
     return html`<header className="topbar">
       <button className="brand" onClick=${() => go({ view: 'shelf' })} aria-label="Study Deck home"><span className="logo" aria-hidden="true">S</span><b>Study Deck</b></button>
-      <nav className="cpills" aria-label="Courses">${ORDER.map(([k]) => html`<button key=${k} className=${'cpill sp-' + k} aria-current=${String(k === cur)} onMouseEnter=${() => prefetch(k)} onClick=${() => open(k)}><i aria-hidden="true"></i>${M[k].short}</button>`)}</nav>
+      <nav className="cpills" aria-label="Courses">${ORDER.map(([k]) => html`<button key=${k} className=${'cpill sp-' + k} aria-current=${String(k === cur)} onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => open(k)}><i aria-hidden="true"></i>${M[k].short}</button>`)}</nav>
       <div className="tb-tools">
         <button className="tb-search" onClick=${openSearch} aria-label="Search">${Icon.search}<span>Search</span><kbd>/</kbd></button>
-        <${LangButton} lang=${lang} setLang=${setLang} />
+        <${LangButton} lang=${lang} setLang=${setLang} k=${cur} />
         <${LampButton} theme=${theme} compact=${true} />
       </div>
       ${children}
@@ -428,7 +443,7 @@ function start() {
           <button className="hsearch" onClick=${openSearch}>${Icon.search}<span>Search notes, cards, past papers…</span><kbd>/</kbd></button>
         </div>
         <div className="bento">
-          ${cont ? html`<button className=${'tile t-cont sp-' + cont.course} onMouseEnter=${() => prefetch(cont.course)} onClick=${() => go(Object.assign({}, cont, { view: 'course' }))}>
+          ${cont ? html`<button className=${'tile t-cont sp-' + cont.course} onMouseEnter=${() => prefetch(cont.course)} onPointerDown=${() => prefetch(cont.course)} onClick=${() => go(Object.assign({}, cont, { view: 'course' }))}>
               <span className="ring" style=${{ '--p': contPct }} aria-hidden="true"><i>${contPct}%</i></span>
               <span className="tc-text"><span className="tl">Continue · ${modeName[cont.mode] || 'Notes'}</span>
                 <b className="tc-title">${typeof cont.lec === 'number' ? lecTitle(cont.course, cont.lec) : cont.lec === 'rev' ? 'Revision sheet' : M[cont.course].name}</b>
@@ -453,7 +468,7 @@ function start() {
           </div>
           <div className="t-courses">
             <div className="t-head"><h2>${LEVEL.name}, ${LEVEL.sem} courses</h2><span>${sum.read} of ${sum.lec} lectures read</span></div>
-            ${rows.map(r => html`<button key=${r.k} className=${'tile t-course sp-' + r.k} title=${M[r.k].name} onMouseEnter=${() => prefetch(r.k)} onClick=${() => openCourse(r.k)}>
+            ${rows.map(r => html`<button key=${r.k} className=${'tile t-course sp-' + r.k} title=${M[r.k].name} onMouseEnter=${() => prefetch(r.k)} onPointerDown=${() => prefetch(r.k)} onClick=${() => openCourse(r.k)}>
             <span className="tcs">${M[r.k].code}${r.el ? ' · Elective' : ''}</span>
             <b className="tcn">${M[r.k].name}</b>
             <span className="dots" aria-hidden="true">${M[r.k].lectures.map(l => html`<i key=${l.n} className=${r.readList.includes(l.n) ? 'f' : ''}></i>`)}</span>
@@ -589,14 +604,14 @@ function start() {
 
   function CourseBody({ k, mode, nav, go, lecN, known, setKnown, miss, setMiss, fixed, setFixed, best, setBest, read, setRead, barRef, onSection }) {
     return html`
-        ${mode === 'path' && html`<${PathView} k=${k} lecN=${lecN} go=${go} read=${read} known=${known} />`}
-        ${mode === 'read' && lecN === 'rev' && html`<${RevisionSheet} k=${k} go=${go} read=${read} onSection=${onSection} />`}
-        ${mode === 'read' && lecN !== 'rev' && html`<${Read} k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
-        ${mode === 'cards' && html`<${Cards} k=${k} focus=${nav.cardFocus} startLec=${nav.cardLec} auto=${nav.cardsAuto} go=${go} known=${known} setKnown=${setKnown} />`}
-        ${mode === 'ask' && html`<${Ask} k=${k} startLec=${nav.askLec} />`}
-        ${mode === 'quiz' && html`<${Quiz} k=${k} preset=${nav.quizPreset} go=${go} miss=${miss} setMiss=${setMiss} setFixed=${setFixed} best=${best} setBest=${setBest} />`}
-        ${mode === 'papers' && html`<${Papers} k=${k} />`}
-        ${mode === 'progress' && html`<${Progress} k=${k} miss=${miss} setMiss=${setMiss} fixed=${fixed} setFixed=${setFixed} read=${read} known=${known} best=${best} go=${go} />`}
+        ${mode === 'path' && html`<${PathView} key="path" k=${k} lecN=${lecN} go=${go} read=${read} known=${known} />`}
+        ${mode === 'read' && lecN === 'rev' && html`<${RevisionSheet} key="rev" k=${k} go=${go} read=${read} onSection=${onSection} />`}
+        ${mode === 'read' && lecN !== 'rev' && html`<${Read} key="read" k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
+        ${mode === 'cards' && html`<${Cards} key="cards" k=${k} focus=${nav.cardFocus} startLec=${nav.cardLec} auto=${nav.cardsAuto} go=${go} known=${known} setKnown=${setKnown} />`}
+        ${mode === 'ask' && html`<${Ask} key="ask" k=${k} startLec=${nav.askLec} />`}
+        ${mode === 'quiz' && html`<${Quiz} key="quiz" k=${k} preset=${nav.quizPreset} go=${go} miss=${miss} setMiss=${setMiss} setFixed=${setFixed} best=${best} setBest=${setBest} />`}
+        ${mode === 'papers' && html`<${Papers} key="papers" k=${k} />`}
+        ${mode === 'progress' && html`<${Progress} key="progress" k=${k} miss=${miss} setMiss=${setMiss} fixed=${fixed} setFixed=${setFixed} read=${read} known=${known} best=${best} go=${go} />`}
     `;
   }
 
@@ -793,7 +808,7 @@ function start() {
           </span>
           <button className="tbtn" aria-pressed=${String(!!prefs.hl)} onClick=${() => setPref({ hl: !prefs.hl })} title="Show or hide highlighted key terms"><span className="hlswatch"></span>Highlights</button>
           <button className="tbtn" aria-pressed=${String(!!prefs.focus)} onClick=${() => setPref({ focus: !prefs.focus })} title="Focus mode (F)">${prefs.focus ? 'Exit focus' : 'Focus'}</button>
-          <button className="tbtn bookbtn" onClick=${() => setBook(true)} title="Read as a book (B)"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 5.5C5.5 4.5 9 4.5 12 6.5c3-2 6.5-2 9-1v13c-2.5-1-6-1-9 1-3-2-6.5-2-9-1z M12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Book view</button>
+          <button className="tbtn bookbtn" onClick=${() => setBook(true)} title="Read as a book (B)"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 5.5C5.5 4.5 9 4.5 12 6.5c3-2 6.5-2 9-1v13c-2.5-1-6-1-9 1-3-2-6.5-2-9-1z M12 6.5v13" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/></svg>Book view</button>
         </div>
         ${resumed && html`<div className="resume"><span>Picked up where you stopped.</span><button className="linkbtn" onClick=${() => { window.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' }); setResumed(false); }}>Start from the top</button><button className="linkbtn muted" aria-label="Dismiss" onClick=${() => setResumed(false)}>✕</button></div>`}
 
@@ -949,7 +964,7 @@ function start() {
           </span>
         </button>
       </div>
-      ${!flip ? html`<div className="f-acts"><button className="f-go" onClick=${() => setFlip(true)}>Show answer</button></div><p className="f-keys"><kbd>Space</kbd> flip, then rate with <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></p>`
+      ${!flip ? html`<div key="acts" className="f-acts"><button className="f-go" onClick=${() => setFlip(true)}>Show answer</button></div><p key="keys" className="f-keys"><kbd>Space</kbd> flip, then rate with <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd></p>`
         : html`<p className="f-keys">How well did you know it? <kbd>1</kbd> again · <kbd>2</kbd> hard · <kbd>3</kbd> good</p>`}
     </${FocusShell}>`;
   }
@@ -1020,8 +1035,8 @@ function start() {
           You marked every card in this set as known.
           <div style=${{ marginTop: '14px' }}><button className="btn" onClick=${() => setHideKnown(false)}>Show them again</button></div>
         </div>` : html`
-          <div className="thin"><i style=${{ width: ((at + 1) / n * 100) + '%' }}></i></div>
-          <div className="stack">
+          <div key="thin" className="thin"><i style=${{ width: ((at + 1) / n * 100) + '%' }}></i></div>
+          <div key="stack" className="stack">
             ${knownSet.has(card.id) && html`<span className="known-stamp">known</span>`}
             <button className=${'icard' + (flip ? ' flipped' : '')} onClick=${() => setFlip(f => !f)} aria-label=${flip ? 'Show the question side' : 'Show the answer side'}>
               <span className="in">
@@ -1037,13 +1052,13 @@ function start() {
               </span>
             </button>
           </div>
-          <div className="cardctl">
+          <div key="ctl" className="cardctl">
             <button className="btn" onClick=${() => move(-1)} aria-label="Previous card">←</button>
             <span className="count">${at + 1} / ${n}</span>
             <button className="btn" onClick=${() => move(1)} aria-label="Next card">→</button>
             <button className="btn knew" aria-pressed=${String(knownSet.has(card.id))} onClick=${toggleKnown}>${knownSet.has(card.id) ? '✓ Known' : 'I know this'}</button>
           </div>
-          <p className="muted small" style=${{ margin: 0 }}><kbd>Space</kbd> flip · <kbd>←</kbd> <kbd>→</kbd> move · <kbd>K</kbd> mark known</p>
+          <p key="keys" className="muted small" style=${{ margin: 0 }}><kbd>Space</kbd> flip · <kbd>←</kbd> <kbd>→</kbd> move · <kbd>K</kbd> mark known</p>
         `}
       </div>
     </div>`;
@@ -1537,10 +1552,7 @@ function start() {
     useEffect(() => { const r = document.documentElement, prev = r.style.overflow; r.style.overflow = 'hidden'; return () => { r.style.overflow = prev; }; }, []);
     useEffect(() => {
       // the book is typeset in a serif; load it only when a book is opened
-      if (document.getElementById('book-font')) return;
-      const l = document.createElement('link'); l.id = 'book-font'; l.rel = 'stylesheet';
-      l.href = 'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,36,400;0,36,500;1,36,400&display=swap';
-      document.head.appendChild(l);
+      lazyFont('book', 'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,36,400;0,36,500;1,36,400&display=swap');
     }, []);
 
     // page geometry, in book units; the whole book is then scaled to fit the screen
@@ -1838,7 +1850,7 @@ function start() {
           <span className="rt-meta">${terms} terms · ${formulas} formula lines · ${exam} past-paper answers</span>
           <span className="grow"></span>
           <button className="tbtn" aria-pressed=${String(!!cover)} onClick=${() => { setCover(!cover); setShown({}); }}>${cover ? 'Show all answers' : 'Cover the answers'}</button>
-          <button className="tbtn bookbtn" onClick=${() => setBook(true)}><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 5.5C5.5 4.5 9 4.5 12 6.5c3-2 6.5-2 9-1v13c-2.5-1-6-1-9 1-3-2-6.5-2-9-1z M12 6.5v13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Book view</button>
+          <button className="tbtn bookbtn" onClick=${() => setBook(true)}><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 5.5C5.5 4.5 9 4.5 12 6.5c3-2 6.5-2 9-1v13c-2.5-1-6-1-9 1-3-2-6.5-2-9-1z M12 6.5v13" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/></svg>Book view</button>
         </div>
         ${book && html`<${Book} k=${k} chapter=${chapter} onClose=${i => { setBook(false); requestAnimationFrame(() => jump(c.lectures[i] ? c.lectures[i].n : c.lectures[0].n)); }} />`}
         <article className="paper revsheet">
@@ -1898,25 +1910,23 @@ function start() {
   }
 
   /* ════════════ SEARCH ════════════ */
-  let INDEX = null;
-  function buildIndex() {
-    if (INDEX) return INDEX;
-    const out = [];
-    ORDER.forEach(([k]) => {
-      const c = C[k];
-      c.lectures.forEach(l => {
-        l.notes.forEach((s, i) => {
-          const body = [].concat(s.pts || [], s.formula || [], (s.table || []).flat(), s.code || []).map(strip).join(' ');
-          out.push({ k, kind: 'Notes', lec: l.n, title: strip(s.h), text: body, to: { view: 'course', course: k, mode: 'read', lec: l.n, anchor: 'sec-' + l.n + '-' + i } });
-        });
-        l.cards.forEach((x, i) => out.push({ k, kind: 'Card', lec: l.n, title: x[0], text: x[1], to: { view: 'course', course: k, mode: 'cards', lec: l.n, cardFocus: l.n + '-' + i } }));
-        l.qa.forEach(x => out.push({ k, kind: 'Q&A', lec: l.n, title: x[0], text: x[1], to: { view: 'course', course: k, mode: 'ask', lec: l.n, askLec: l.n } }));
-        l.quiz.forEach((x, i) => out.push({ k, kind: originOf(x) === 'extra' ? 'Extra question' : 'Quiz', lec: l.n, title: strip(x.q), text: x.o.map(o => strip(o[0])).join(' · '), to: { view: 'course', course: k, mode: 'quiz', lec: l.n, quizPreset: { ids: [l.n + '-' + i], t: 0 } } }));
-        (l.extra || []).forEach((x, i) => out.push({ k, kind: 'Extra question', lec: l.n, title: strip(x.q), text: x.o.map(o => strip(o[0])).join(' · '), to: { view: 'course', course: k, mode: 'quiz', lec: l.n, quizPreset: { ids: ['x' + l.n + '-' + i], t: 0 } } }));
+  let INDEX = new Map();                       // course id → its search entries; emptied when search closes
+  function indexOf(k) {
+    if (INDEX.has(k)) return INDEX.get(k);
+    const out = [], c = C[k];
+    c.lectures.forEach(l => {
+      l.notes.forEach((s, i) => {
+        const body = [].concat(s.pts || [], s.formula || [], (s.table || []).flat(), s.code || []).map(strip).join(' ');
+        out.push({ k, kind: 'Notes', lec: l.n, title: strip(s.h), text: body, to: { view: 'course', course: k, mode: 'read', lec: l.n, anchor: 'sec-' + l.n + '-' + i } });
       });
+      l.cards.forEach((x, i) => out.push({ k, kind: 'Card', lec: l.n, title: x[0], text: x[1], to: { view: 'course', course: k, mode: 'cards', lec: l.n, cardFocus: l.n + '-' + i } }));
+      l.qa.forEach(x => out.push({ k, kind: 'Q&A', lec: l.n, title: x[0], text: x[1], to: { view: 'course', course: k, mode: 'ask', lec: l.n, askLec: l.n } }));
+      l.quiz.forEach((x, i) => out.push({ k, kind: originOf(x) === 'extra' ? 'Extra question' : 'Quiz', lec: l.n, title: strip(x.q), text: x.o.map(o => strip(o[0])).join(' · '), to: { view: 'course', course: k, mode: 'quiz', lec: l.n, quizPreset: { ids: [l.n + '-' + i], t: 0 } } }));
+      (l.extra || []).forEach((x, i) => out.push({ k, kind: 'Extra question', lec: l.n, title: strip(x.q), text: x.o.map(o => strip(o[0])).join(' · '), to: { view: 'course', course: k, mode: 'quiz', lec: l.n, quizPreset: { ids: ['x' + l.n + '-' + i], t: 0 } } }));
     });
     out.forEach(e => { e.low = (e.title + ' ' + e.text).toLowerCase(); });
-    return (INDEX = out);
+    INDEX.set(k, out);
+    return out;
   }
   const esc = s => s.replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
   function highlight(s, terms) {
@@ -1935,23 +1945,25 @@ function start() {
     const [q, setQ] = useState('');
     const [sel, setSel] = useState(0);
     const inputRef = useRef(null);
-    const [ready, setReady] = useState(() => ORDER.every(([k]) => C[k]));
+    // courses download one by one; results come from the ones already here, and grow as the rest arrive
+    const [loaded, setLoaded] = useState(() => ORDER.filter(([k]) => C[k]).length);
     const [failed, setFailed] = useState(false);
+    const ready = loaded === ORDER.length;
     useEffect(() => { inputRef.current && inputRef.current.focus(); }, []);
     useEffect(() => {
       let live = true;
-      if (!ready) Promise.all(ORDER.map(([k]) => loadCourse(k))).then(() => live && setReady(true), () => live && setFailed(true));
+      ORDER.forEach(([k]) => { if (!C[k]) loadCourse(k).then(() => live && setLoaded(ORDER.filter(([x]) => C[x]).length), () => live && setFailed(true)); });
       // the index holds a lower-cased copy of every course; let it go when search closes (rebuilding it takes a few ms)
-      return () => { live = false; INDEX = null; };
+      return () => { live = false; INDEX = new Map(); };
     }, []);
     const terms = q.toLowerCase().split(/\s+/).filter(Boolean);
     const results = useMemo(() => {
-      if (q.trim().length < 2 || !ready) return [];
-      const idx = buildIndex();
+      if (q.trim().length < 2 || !loaded) return [];
+      const idx = ORDER.filter(([k]) => C[k]).flatMap(([k]) => indexOf(k));
       const hits = idx.filter(e => terms.every(t => e.low.includes(t)));
       const score = e => terms.reduce((a, t) => a + (e.title.toLowerCase().includes(t) ? 3 : 0), 0) + (e.kind === 'Notes' ? 1 : 0);
       return hits.sort((a, b) => score(b) - score(a)).slice(0, 40);
-    }, [q, ready]);
+    }, [q, loaded]);
     const choose = r => { const to = Object.assign({}, r.to); if (to.quizPreset) to.quizPreset = Object.assign({}, to.quizPreset, { t: Date.now() }); go(to); window.scrollTo(0, 0); };
     const onKey = e => {
       if (e.key === 'Escape') { e.stopPropagation(); close(); }   // don't also close a quiz or book underneath
@@ -1966,10 +1978,11 @@ function start() {
           <kbd>Esc</kbd>
         </div>
         <div className="results">
-          ${failed ? html`<p className="small" style=${{ padding: '8px 18px', color: 'var(--pen)' }}>Some courses didn't load, so search is unavailable. Check your connection and reopen search.</p>`
-            : !ready ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Loading all ${ORDER.length} courses for search…</p>`
+          ${failed && html`<p className="small" style=${{ padding: '8px 18px', color: 'var(--pen)' }}>Some courses didn't load, so their results are missing. Check your connection and reopen search.</p>`}
+          ${!ready && !failed && html`<p className="muted small" style=${{ padding: '8px 18px' }}>${loaded ? 'Searching ' + loaded + ' of ' + ORDER.length + ' courses, the rest are still loading…' : 'Loading the courses for search…'}</p>`}
+          ${!loaded ? null
             : q.trim().length < 2 ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Try ${LEVEL.id === 'l2' ? '"simplex", "linked list", "DFD", "MOV" or "flexbox"' : '"Belady", "FIRST set", "wireframe", "Nyquist" or "cyclomatic"'}.</p>`
-            : !results.length ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>Nothing matches "${q}". Try a shorter word.</p>`
+            : !results.length ? html`<p className="muted small" style=${{ padding: '8px 18px' }}>${ready ? 'Nothing matches "' + q + '". Try a shorter word.' : 'Nothing yet for "' + q + '".'}</p>`
             : results.map((r, i) => html`<button key=${i} className=${'res sp-' + r.k + (i === sel ? ' on' : '')} onMouseEnter=${() => setSel(i)} onClick=${() => choose(r)}>
                 <span className="chipdot"></span>
                 <span style=${{ minWidth: 0 }}>

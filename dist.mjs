@@ -27,9 +27,20 @@ for (const [cdn, local] of Object.entries(VENDOR)) {
   if (!page.includes(`src="${cdn}"`)) throw new Error('index.html no longer loads ' + cdn + '; update VENDOR in dist.mjs');
   page = page.replace(`src="${cdn}"`, `src="${local}"`);
 }
+// Fonts are served from this site too (vendor/fonts, the same Google Fonts files): no trip to fonts.googleapis.com for the CSS and then
+// fonts.gstatic.com for the files. The @font-face rules are inlined, and the main text face is preloaded so it arrives with the scripts.
+// unicode-range means each page downloads only the subsets it uses; the Arabic face loads only when Arabic is turned on (app.js arFont).
+const GOOGLE_FONTS = /<link rel="preconnect" href="https:\/\/fonts\.(googleapis|gstatic)\.com"( crossorigin)?>\n|<!-- fonts load[^\n]*-->\n|<script>\(function\(\)\{var l=document\.createElement\("link"\);[^\n]*fonts\.googleapis[^\n]*<\/script>\n|<noscript><link rel="stylesheet" href="https:\/\/fonts\.googleapis[^\n]*<\/noscript>\n/g;
+if ((page.match(GOOGLE_FONTS) || []).length !== 5) throw new Error('index.html font loading changed; update GOOGLE_FONTS in dist.mjs');
+const fontCss = readFileSync('vendor/fonts/main.css', 'utf8').replaceAll('__BASE__', 'vendor/fonts/').trim();
+// the Arabic and Book-view faces load only when needed, so their rules go to app.js as text (window.FONT_CSS), not into the page
+const lazyFont = f => readFileSync('vendor/fonts/' + f, 'utf8').replaceAll('url(', 'url(vendor/fonts/').replace(/\n+/g, '');
+const FONT_CSS = { ar: lazyFont('ar.css'), book: lazyFont('book.css') };
 page = page
+  .replace(GOOGLE_FONTS, '')
+  .replace('<style>', `<link rel="preload" href="vendor/fonts/outfit-400-latin-v15.woff2" as="font" type="font/woff2" crossorigin>\n<style>\n${fontCss}\n</style>\n<style>`)
   .replace(/<link rel="preconnect" href="https:\/\/(cdnjs\.cloudflare\.com|cdn\.jsdelivr\.net)" crossorigin>\n/g, '')
-  .replace('<script defer src="manifest.js"></script>', `<script>window.DATA_V=${JSON.stringify(dataV)}</script>\n<script defer src="${ver('manifest.js')}"></script>`)
+  .replace('<script defer src="manifest.js"></script>', `<script>window.DATA_V=${JSON.stringify(dataV)};window.FONT_CSS=${JSON.stringify(FONT_CSS)}</script>\n<script defer src="${ver('manifest.js')}"></script>`)
   .replace('<script defer src="app.js"></script>', `<script defer src="${ver('app.js')}"></script>`);
 // chat apps cache a preview image by its URL, so the file name carries a hash of its content: a new image gets a new URL
 const og = readFileSync('public/og.jpg');
@@ -61,8 +72,8 @@ const inline = [...body.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => `'sh
 const CSP = [
   "default-src 'self'",
   `script-src 'self' ${inline.join(' ')} https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://unpkg.com`,
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
+  "style-src 'self' 'unsafe-inline'",
+  "font-src 'self'",
   "img-src 'self' data:",
   "connect-src 'self'",
   "object-src 'none'",
@@ -81,6 +92,7 @@ ${body}
 for (const f of ['app.js', 'manifest.js', 'data']) cpSync(f, 'dist/' + f, { recursive: true });
 mkdirSync('dist/vendor');
 for (const [local, file] of [['react-18.3.1.production.min.js', 'react.production.min.js'], ['react-dom-18.3.1.production.min.js', 'react-dom.production.min.js'], ['htm-3.1.1.umd.js', 'htm.umd.js']]) cpSync('vendor/' + file, 'dist/vendor/' + local);
+cpSync('vendor/fonts', 'dist/vendor/fonts', { recursive: true });
 cpSync('public', 'dist', { recursive: true });
 writeFileSync('dist/' + OG, og);
 console.log('dist/ ready');

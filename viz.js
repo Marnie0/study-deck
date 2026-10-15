@@ -1301,7 +1301,7 @@ append k to the end of list[index];`
       <div className="vz-bar">
         <button onClick=${() => go(0)} disabled=${i === 0 && !q} aria-label="Back to the start" title="Start">${icon('M6 5v14M19 5l-9 7 9 7z')}</button>
         <button onClick=${() => go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step" title="Previous step (←)">${icon('M15 5l-7 7 7 7')}</button>
-        <button className="vz-play" onClick=${() => { if (end) { go(0); setPlaying(true); } else setPlaying(p => !p); }} disabled=${!!q} aria-label=${playing ? 'Pause' : 'Play'}>${playing ? html`${icon('M8 5v14M16 5v14')}<span>Pause</span>` : html`${icon('M7 5l12 7-12 7z')}<span>${end ? 'Replay' : 'Play'}</span>`}</button>
+        <button className="vz-play" onClick=${() => { if (end) { go(0); setPlaying(true); } else setPlaying(p => !p); }} disabled=${!!q} aria-label=${playing ? 'Pause' : 'Play'}>${icon(playing ? 'M8 5v14M16 5v14' : 'M7 5l12 7-12 7z')}<span>${playing ? 'Pause' : end ? 'Replay' : 'Play'}</span></button>
         <button onClick=${() => { setPlaying(false); forward(); }} disabled=${end || !!q} aria-label="Next step" title="Next step (→)">${icon('M9 5l7 7-7 7')}</button>
         <span className="vz-prog" aria-hidden="true"><i style=${{ width: (frames.length > 1 ? i / (frames.length - 1) * 100 : 100) + '%' }}></i></span>
         ${total ? html`<label className="vz-tog" title="Stop at key steps and ask what happens next"><input type="checkbox" checked=${predict} onChange=${e => { setPredict(e.target.checked); setAsking(null); }} /><span>Predict</span></label>` : null}
