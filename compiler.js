@@ -108,27 +108,27 @@ Target code`, pts: [
       ],
       quiz: [
         { q: `……… is not a phase of a compiler.`, o: [
-          [`Scanner`, `The scanner is phase 1 (lexical analysis).`],
+          [`Scanner`, `The scanner is phase 1 (lexical analysis): it turns the source code into tokens, so it is a real phase.`],
           [`Symbol table`, `Correct. The symbol table is a data structure used BY all phases, not a phase.`],
-          [`Parser`, `The parser is phase 2 (syntax analysis).`],
+          [`Parser`, `The parser is phase 2 (syntax analysis): it turns tokens into the syntax tree, so it is a real phase.`],
           [`Code optimizer`, `Source and target code optimizers are phases.`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `The following is not a phase of a compiler:`, o: [
-          [`syntax analysis`, `A phase.`],
-          [`semantic analysis`, `A phase.`],
+          [`syntax analysis`, `Syntax analysis (the parser) is phase 2 in the lecture figure: tokens in, syntax tree out.`],
+          [`semantic analysis`, `Semantic analysis is phase 3: it type-checks the syntax tree and outputs the annotated tree.`],
           [`testing`, `Correct. Testing is a software-engineering activity, not a compiler phase.`],
-          [`optimization`, `A phase (source and target code optimizers).`]
+          [`optimization`, `Optimization is a phase, done twice in the figure: the source code optimizer (phase 4) and the target code optimizer (phase 6).`]
         ], a: 2, src: `Exam Summer 2025` },
         { q: `Which of the following is NOT a characteristic of the compiler?`, o: [
           [`More execution time`, `Correct. Compiled programs execute FASTER; interpreters have more execution time.`],
           [`Debugging process is slow`, `True of compilers: errors appear only after the whole program is analyzed.`],
-          [`Execution takes place after removal of all syntax errors`, `True of compilers.`],
-          [`It scans the entire program then transforms it into machine code`, `That is the definition of a compiler.`]
+          [`Execution takes place after removal of all syntax errors`, `This is true of compilers: the whole program is analyzed first, and it can only run once it compiles without syntax errors.`],
+          [`It scans the entire program then transforms it into machine code`, `This is true: the lecture table says a compiler scans the entire program and translates it as a whole into machine code.`]
         ], a: 0, src: `Final revision sheet` },
         { q: `Compiler translates the source code to:`, o: [
-          [`Machine code`, `Part of the answer.`],
-          [`Executable code`, `Not the key's answer.`],
-          [`Binary code`, `Part of the answer.`],
+          [`Machine code`, `Machine code is right, but so is binary code (machine code is binary), so the full answer is "both a and c".`],
+          [`Executable code`, `The lecture says the compiler produces low-level machine language; it outputs object code that still needs linking to become executable.`],
+          [`Binary code`, `Binary code is right, but machine code is the same thing in the lecture's definition, so the full answer is "both a and c".`],
           [`Both a and c`, `Correct (official key). Machine code is binary code.`]
         ], a: 3, src: `Exam 2024/25 (50)` },
         { q: `A compiler indicates the ……… error.`, o: [
@@ -140,43 +140,43 @@ Target code`, pts: [
         { q: `The following is a major difference between the phases of compilers and interpreters:`, o: [
           [`code optimization`, `Not the distinguishing point in the lecture table.`],
           [`intermediate code generation`, `Correct. Compilers generate intermediate object code; interpreters do not.`],
-          [`semantic analysis`, `Both need semantic checking.`],
-          [`none of the mentioned`, `(b) is the difference.`]
+          [`semantic analysis`, `Both compilers and interpreters must check meaning and types, so semantic analysis does not separate them.`],
+          [`none of the mentioned`, `There is a difference: the lecture table says compilers generate intermediate object code and interpreters do not.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `Annotated syntax tree is the input to the ……… phase.`, o: [
-          [`syntax analysis`, `Syntax analysis takes tokens.`],
+          [`syntax analysis`, `Syntax analysis takes tokens from the scanner and produces the plain syntax tree, not the annotated one.`],
           [`code optimization`, `Correct. The semantic analyzer outputs the annotated tree, and the source code optimizer takes it.`],
           [`semantic analysis`, `Semantic analysis PRODUCES the annotated tree; its input is the syntax tree.`],
-          [`derivation`, `Not a phase.`]
+          [`derivation`, `Derivation is a parsing idea (rewriting with grammar rules), not one of the six compiler phases.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `……… is the input to the semantic analysis phase.`, o: [
-          [`stream of tokens`, `Input to syntax analysis.`],
-          [`syntax tree`, `Correct.`],
-          [`annotated syntax tree`, `Output of semantic analysis.`],
-          [`assembly code`, `Output of the code generator.`]
+          [`stream of tokens`, `The stream of tokens is the scanner's output and the parser's (syntax analysis) input.`],
+          [`syntax tree`, `Correct. The parser outputs the syntax tree, and the semantic analyzer takes it and adds attributes such as types (L1, Phases of a compiler).`],
+          [`annotated syntax tree`, `The annotated syntax tree is the semantic analyzer's output; it then goes to the source code optimizer.`],
+          [`assembly code`, `Assembly (target) code comes out of the code generator near the end, long after semantic analysis.`]
         ], a: 1, src: `Exam 2023/24 (60)` },
         { q: `A phase of the compiler that aims at minimizing memory usage and maximizing speed of processing is:`, o: [
-          [`code optimization`, `Correct.`],
-          [`syntax analysis`, `It checks structure.`],
-          [`semantic analysis`, `It checks meaning and types.`],
-          [`none of the mentioned`, `(a) is right.`]
+          [`code optimization`, `Correct. The optimizers (source code and target code) improve the code so it runs faster and uses less memory, e.g. constant folding 4+2 → 6 and MUL → SHL (L1, Source/Target code optimizer).`],
+          [`syntax analysis`, `Syntax analysis only determines the program's structure (parse tree or syntax tree); it does not improve the code.`],
+          [`semantic analysis`, `Semantic analysis checks meaning (declarations and type checking); it does not make the code faster or smaller.`],
+          [`none of the mentioned`, `Code optimization is exactly the phase that aims at speed and memory, so "none" is wrong.`]
         ], a: 0, src: `Exam 2023/24 (60)` },
         { q: `Code optimization is done twice, on ……… code and ……… code within the phases of a compiler.`, o: [
           [`source, machine`, `The second optimizer works on the generated target (assembly) code in the lecture example.`],
           [`source, assembly`, `Correct. Source code optimizer + target code optimizer (the target code is assembly: MOV, MUL...).`],
           [`assembly, machine`, `The first optimizer works on source/intermediate code.`],
-          [`source, binary`, `Not the lecture's wording.`]
+          [`source, binary`, `The lecture's second optimizer works on the target code shown as assembly (MOV, MUL, SHL), not on binary code.`]
         ], a: 1, src: `Exam 2023/24 (50)` },
         { q: `In the target code optimizer example, MUL R0,2 is replaced with:`, o: [
-          [`ADD R0,R0`, `Not what the slide shows.`],
+          [`ADD R0,R0`, `ADD R0,R0 would also double R0, but the slide's optimized code uses SHL R0 (shift left), not ADD.`],
           [`SHL R0`, `Correct. Multiplying by 2 = shift left by one bit (instruction replacement).`],
-          [`MOV R0,2`, `Changes the meaning.`],
-          [`Nothing, it is removed`, `The index still needs scaling.`]
+          [`MOV R0,2`, `MOV R0,2 would overwrite the index with 2 instead of doubling it, so it changes the program's meaning.`],
+          [`Nothing, it is removed`, `The index still has to be multiplied by 2 (integer size) to get the address, so the instruction is replaced by SHL, not dropped.`]
         ], a: 1 },
         { q: `Which data structure needs constant-time access and is usually implemented with hash tables?`, o: [
           [`Literal table`, `Needs quick insert/lookup too, but the slide names hashing for the symbol table.`],
-          [`Symbol table`, `Correct.`],
-          [`Syntax tree`, `A pointer-based tree.`],
+          [`Symbol table`, `Correct. The symbol table's access operations need to be constant-time, so one or several hash tables are often used (L1, Principal data structures).`],
+          [`Syntax tree`, `The syntax tree is a standard pointer-based structure built by the parser, not a hash table.`],
           [`Temporary files`, `Used for intermediate products and back-patching.`]
         ], a: 1 }
       ]
@@ -268,75 +268,75 @@ Target code`, pts: [
       quiz: [
         { q: `The lexical analyzer takes ……… as input and produces a list of ……… as output.`, o: [
           [`machine code, tokens`, `Machine code is the final output of the compiler, not the scanner's input.`],
-          [`tokens, source code`, `Reversed.`],
-          [`source code, tokens`, `Correct.`],
-          [`a and b`, `Only (c) is right.`]
+          [`tokens, source code`, `This is reversed: the scanner reads source characters and outputs tokens, which the parser then uses.`],
+          [`source code, tokens`, `Correct. The lexical analyzer reads the input characters of the source program and produces a sequence of tokens for the parser (L2, What is lexical analysis).`],
+          [`a and b`, `Option b is reversed (tokens are the output, not the input), so "a and b" cannot be right; only c is.`]
         ], a: 2, src: `Exam 2024/25 (60)` },
         { q: `The process of generating (searching for matched) tokens is typically described using:`, o: [
-          [`finite automata`, `Correct, but only half of the answer.`],
-          [`regular expressions`, `Correct, but only half of the answer.`],
-          [`syntax directed translation`, `SDT belongs to semantic analysis.`],
+          [`finite automata`, `Finite automata recognize tokens, but tokens are specified by regular expressions, so the full answer is "a and b".`],
+          [`regular expressions`, `Regular expressions specify tokens, but finite automata are what recognize (match) them, so the full answer is "a and b".`],
+          [`syntax directed translation`, `Syntax-directed translation belongs to semantic analysis, which works on the parse tree, not on matching tokens.`],
           [`a and b`, `Correct. Regular expressions specify tokens and finite automata recognize them.`]
         ], a: 3, src: `Exam 2024/25 (60)` },
         { q: `Keywords are recognized in a compiler during:`, o: [
-          [`code generation`, `Too late.`],
-          [`data flow analysis`, `Not a lecture phase.`],
-          [`lexical analysis`, `Correct. Keywords are tokens.`],
+          [`code generation`, `Code generation is phase 5; by then keywords have long been turned into tokens by the scanner.`],
+          [`data flow analysis`, `Data flow analysis is an optimization technique, not where keywords are recognized; that happens in scanning.`],
+          [`lexical analysis`, `Correct. Keywords such as if, then and for are tokens, and the scanner recognizes them while grouping characters into tokens (L2, What is lexical analysis).`],
           [`program parsing`, `The parser receives keywords already recognized as tokens.`]
         ], a: 2, src: `Exam Summer 2025` },
         { q: `Lexical analysis is about breaking a sequence of characters into:`, o: [
-          [`Tokens`, `Correct.`],
-          [`Lines`, `No.`],
-          [`Groups`, `Too vague.`],
-          [`Packets`, `Networking term.`]
+          [`Tokens`, `Correct. Lexical analysis collects sequences of characters into meaningful units called tokens, e.g. a[index]=4+2 → id [ id ] = number + number (L1/L2, Lexical analysis).`],
+          [`Lines`, `The scanner does not split the program into lines; it removes newlines as white space and groups characters into tokens.`],
+          [`Groups`, `"Groups" is too vague; the lecture's term for the meaningful units the scanner produces is tokens.`],
+          [`Packets`, `Packets are a networking term (data units sent over a network), not something a compiler produces.`]
         ], a: 0, src: `Exam 2023/24 Summer` },
         { q: `The expression aε = εa = ?`, o: [
           [`ε`, `Wrong. This is the exam trap: ε is the neutral element, not a "zero".`],
-          [`a`, `Correct. sε = s = εs.`],
-          [`aa`, `No.`],
-          [`Φ (empty set)`, `No.`]
+          [`a`, `Correct. ε is the neutral element for concatenation: sε = s = εs, so aε = εa = a (L2, Algebraic properties).`],
+          [`aa`, `aa would need a second a; concatenating with ε adds nothing, so the result is just a.`],
+          [`Φ (empty set)`, `Φ is the empty set, not the empty string ε; concatenating a with ε leaves a unchanged, it does not give Φ.`]
         ], a: 1, src: `Exam 2024/25 (50) T/F` },
         { q: `Is (X|Y)* equivalent to X*|Y*?`, o: [
           [`Yes, always`, `Wrong. (X|Y)* contains XY, which X*|Y* cannot produce.`],
           [`No`, `Correct. X*|Y* only gives strings made of X's alone or Y's alone.`],
-          [`Only if X = ε`, `Not the point of the question.`],
-          [`Only for DFAs`, `Meaningless.`]
+          [`Only if X = ε`, `If X = ε then (X|Y)* = Y* and X*|Y* = ε|Y* = Y*, so they would match; but in general they differ, so the answer is No.`],
+          [`Only for DFAs`, `Equivalence of regular expressions is about the languages they denote; it does not depend on DFAs.`]
         ], a: 1, src: `Exam 2024/25 (60) T/F` },
         { q: `L1 = {a,b}, L2 = {0,11}. L2L1 = ?`, o: [
-          [`{a0, a11, b0, b11}`, `That is L1L2.`],
+          [`{a0, a11, b0, b11}`, `{a0, a11, b0, b11} is L1L2 (L1 strings first). L2L1 puts the L2 string first: {0a, 0b, 11a, 11b}.`],
           [`{0a, 0b, 11a, 11b}`, `Correct. Each string of L2 followed by each string of L1.`],
-          [`{a, b, 0, 11}`, `That is the union.`],
-          [`{0a, 11b}`, `Missing combinations.`]
+          [`{a, b, 0, 11}`, `{a, b, 0, 11} is the union L1 ∪ L2, not the concatenation.`],
+          [`{0a, 11b}`, `Concatenation pairs EVERY string of L2 with EVERY string of L1, giving 2 × 2 = 4 strings; 0b and 11a are missing here.`]
         ], a: 1 },
         { q: `Are the regular expressions (a)|((b)*(c)) and b*c|a equivalent?`, o: [
           [`Yes`, `Correct. The parentheses are redundant (* binds tighter than concatenation) and | is commutative.`],
-          [`No, the order of | matters`, `| is commutative: s|t = t|s.`],
-          [`No, (b)*(c) means (bc)*`, `(b)*(c) is b*c.`],
-          [`Only over {a,b}`, `Irrelevant.`]
+          [`No, the order of | matters`, `| is commutative (s|t = t|s), so swapping the two alternatives does not change the language.`],
+          [`No, (b)*(c) means (bc)*`, `* binds tighter than concatenation, so (b)*(c) is b*c: any number of b's then one c, not (bc)*.`],
+          [`Only over {a,b}`, `The two expressions are equal by the algebraic laws, whatever the alphabet; restricting it changes nothing.`]
         ], a: 0, src: `Exam Summer 2025 T/F` },
         { q: `Which regular expression gives strings over {a,b} with EXACTLY two a's?`, o: [
-          [`(a|b)*a(a|b)*a(a|b)*`, `That is AT LEAST two a's.`],
+          [`(a|b)*a(a|b)*a(a|b)*`, `(a|b)* parts can contain more a's, so this gives AT LEAST two a's, e.g. aaa is accepted.`],
           [`b*ab*ab*`, `Correct. Only b's are allowed around the two a's.`],
-          [`aab*`, `Forces the a's to be first and adjacent.`],
-          [`(ab)*`, `Any number of a's.`]
+          [`aab*`, `aab* forces both a's to come first and side by side, so strings like abab or baba are missed.`],
+          [`(ab)*`, `(ab)* gives any number of a's (0, 1, 2, 3…) and only in the pattern abab…, not exactly two.`]
         ], a: 1, src: `Sheet One` },
         { q: `Which state machine accepts a+?`, o: [
-          [`One start/final state with an a-loop`, `That accepts a* (including ε).`],
+          [`One start/final state with an a-loop`, `A single start/final state with an a-loop accepts ε too, so it is the lecture's FA for a*, not a+.`],
           [`q0 (a-loop) --a--> final q1`, `Correct. At least one a must be read before reaching the final state.`],
-          [`q0 --a--> q1 with no loops`, `Accepts only "a".`],
-          [`q0 with a,b loop`, `That is (a|b)*.`]
+          [`q0 --a--> q1 with no loops`, `q0 –a→ q1 with no loop accepts only the single string "a", not aa, aaa, …`],
+          [`q0 with a,b loop`, `One start/final state with an a,b loop accepts every string over {a,b}, i.e. (a|b)*.`]
         ], a: 1 },
         { q: `Regular expression a|b denotes:`, o: [
-          [`{ab}`, `That is concatenation.`],
-          [`{a, b}`, `Correct.`],
-          [`{ε, a, b}`, `ε is not included.`],
-          [`{a, b, ab, ba}`, `No.`]
+          [`{ab}`, `{ab} is the concatenation ab; | means "or", giving a or b as separate strings.`],
+          [`{a, b}`, `Correct. The or operator gives either alternative: a|b = {a, b}, just as a|b|c = {a, b, c} (L2, Operations on languages).`],
+          [`{ε, a, b}`, `ε would only be included with a? or (a|b|ε); a|b has no empty alternative.`],
+          [`{a, b, ab, ba}`, `ab and ba need concatenation, as in (a|b)(a|b); a|b alone gives only single symbols.`]
         ], a: 1, src: `Exam Summer 2025 T/F` },
         { q: `"In concatenation of two alphabets/languages, order is not important." This is:`, o: [
-          [`True`, `Wrong. L1L2 ≠ L2L1.`],
+          [`True`, `False statement: the slide shows L1L2 = {a0, a11, b0, b11} but L2L1 = {0a, 0b, 11a, 11b}, so L1L2 ≠ L2L1.`],
           [`False`, `Correct. Order matters for concatenation (it matters NOT for union).`],
-          [`True only for finite languages`, `No.`],
-          [`True only with ε`, `No.`]
+          [`True only for finite languages`, `The lecture's counterexample uses finite languages ({a,b} and {0,11}) and order still matters.`],
+          [`True only with ε`, `Concatenating with ε gives the same result either way (sε = εs), but that is a special case; in general order matters.`]
         ], a: 1, src: `Exam 2024/25 (50) T/F` }
       ]
     },
@@ -414,64 +414,64 @@ Target code`, pts: [
       ],
       quiz: [
         { q: `The following condition will cause any automaton to be an NFA:`, o: [
-          [`having an ε`, `Correct. ε transitions exist only in NFAs.`],
-          [`having more than one accept state`, `DFAs may have several accept states.`],
+          [`having an ε`, `Correct. The first NFA sign on the slides is "contains ε": a DFA is not capable of using an empty-string transition, so any ε edge makes the automaton an NFA (L3, What is NFA?).`],
+          [`having more than one accept state`, `The number of accept states has nothing to do with determinism. A DFA may have several final states; it only needs exactly one next state per (state, symbol).`],
           [`having loops`, `DFAs can have loops. Only a loop followed by a transition on the SAME symbol causes non-determinism.`],
-          [`all of the mentioned`, `Only (a) always causes it.`]
+          [`all of the mentioned`, `Not all of them: accept states and loops are allowed in a DFA. Only ε always forces an NFA; a loop matters only when another edge leaves on the same symbol.`]
         ], a: 0, src: `Exam 2024/25 (60)` },
         { q: `The automaton with ε symbol is said to be:`, o: [
-          [`DFA`, `A DFA cannot use ε.`],
-          [`NFA`, `Correct.`],
-          [`FFA`, `Not a term.`],
-          [`none`, `(b) is right.`]
+          [`DFA`, `A DFA is not capable of using an empty-string transition (L3 comparison table), so an automaton with ε cannot be a DFA.`],
+          [`NFA`, `Correct. The NFA vs DFA table says an NFA can use an empty-string (ε) transition, while a DFA cannot (L3, NFA vs. DFA).`],
+          [`FFA`, `"FFA" is not a type of automaton in the course; the lecture only compares DFA and NFA, and ε belongs to the NFA.`],
+          [`none`, `There is a right answer: an automaton with ε transitions is an NFA, per the lecture's first NFA characteristic.`]
         ], a: 1, src: `Exam Summer 2025` },
         { q: `"A DFA may contain a loop or more."`, o: [
           [`True`, `Correct. E.g. the DFA for 1*01(0|1)* has loops on q0 and q2.`],
           [`False`, `Loops are fine as long as each (state, symbol) has exactly one next state.`],
-          [`Only self-loops`, `Any loop is fine.`],
-          [`Only if it has ε`, `A DFA never has ε.`]
+          [`Only self-loops`, `The rule is not limited to self-loops: any cycle is allowed in a DFA as long as each (state, symbol) pair has exactly one next state.`],
+          [`Only if it has ε`, `A DFA can never have ε ("DFA is not capable of using an empty string transition"); loops are allowed without any ε.`]
         ], a: 0, src: `Exam 2023/24 (60) T/F` },
         { q: `In the NFA 1 --0--> 3, 3 --0--> 1, 3 --1--> 3, 3 --1--> 2, 2 --0--> 3, what is the DFA transition from {3} on input 1?`, o: [
-          [`{3}`, `Misses the edge 3 --1--> 2.`],
-          [`{2}`, `Misses the self-loop.`],
-          [`{2,3}`, `Correct. Both 3 and 2 are reachable on 1.`],
-          [`∅`, `There are transitions on 1.`]
+          [`{3}`, `This keeps only the self-loop 3 –1→ 3 and misses the edge 3 –1→ 2. In the DFA, a cell collects every state reachable on that symbol.`],
+          [`{2}`, `This keeps only 3 –1→ 2 and drops the self-loop 3 –1→ 3; state 3 also stays in 3 on input 1.`],
+          [`{2,3}`, `Correct. From 3 on input 1 there are two edges: the loop 3 –1→ 3 and 3 –1→ 2, so the DFA cell is the set {2,3} (L3, subset construction).`],
+          [`∅`, `∅ would mean no state has a move on 1, but state 3 has two: the loop to 3 and the edge to 2.`]
         ], a: 2, src: `Exam 2024/25 (50)` },
         { q: `Same NFA: DFA transition from {2,3} on input 0?`, o: [
-          [`{1,3}`, `Correct. 2 --0--> 3 and 3 --0--> 1.`],
-          [`{3}`, `Misses 3 --0--> 1.`],
-          [`{1}`, `Misses 2 --0--> 3.`],
-          [`{2,3}`, `That is the transition on 1.`]
+          [`{1,3}`, `Correct. Take the union of each member's 0-moves: 2 –0→ 3 and 3 –0→ 1, giving {1,3}, a new DFA row (L3, subset construction).`],
+          [`{3}`, `This includes only 2 –0→ 3 and forgets that state 3 also moves on 0, to state 1.`],
+          [`{1}`, `This includes only 3 –0→ 1 and forgets that state 2 also moves on 0, to state 3.`],
+          [`{2,3}`, `{2,3} is the result of {2,3} on input 1 (3 –1→ 3 and 3 –1→ 2), not on input 0.`]
         ], a: 0, src: `Exam 2024/25 (50)` },
         { q: `NFA with 1 --ε--> 3 (1 is the start). The DFA start state is:`, o: [
-          [`{1}`, `You must take the ε-closure.`],
-          [`{1,3}`, `Correct. E(1) = {1,3}.`],
-          [`{3}`, `1 itself is also in the closure.`],
-          [`{1,2,3}`, `2 is not reachable by ε.`]
+          [`{1}`, `{1} forgets the ε edge: the DFA starts at the ε-closure of the start state, and 1 reaches 3 without reading input.`],
+          [`{1,3}`, `Correct. The DFA start state is the ε-closure of the NFA start: 1 itself plus 3 via 1 –ε→ 3, so E(1) = {1,3} (L3, NFA → DFA with ε).`],
+          [`{3}`, `The ε-closure always contains the state itself (every state reaches itself by ε, step 1), so 1 must be in the set too.`],
+          [`{1,2,3}`, `State 2 cannot be reached from 1 by ε moves alone; only the edge 1 –ε→ 3 is free, so E(1) = {1,3}.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `In the ε-NFA (1 --b--> 2, 1 --ε--> 3, 2 --a--> 2, 2 --a,b--> 3, 3 --a--> 1), DFA transition from {2,3} on a:`, o: [
-          [`{2,3}`, `Forgets 3 --a--> 1 and the closure of 1.`],
-          [`{1,3}`, `Forgets 2 --a--> 2 and 2 --a--> 3.`],
+          [`{2,3}`, `This keeps only state 2's a-moves (to 2 and 3) and forgets 3 –a→ 1, whose ε-closure {1,3} adds state 1.`],
+          [`{1,3}`, `This keeps only state 3's move (3 –a→ 1, closure {1,3}) and forgets that 2 –a→ 2 and 2 –a→ 3 add state 2.`],
           [`{1,2,3}`, `Correct. 2 gives {2,3}; 3 gives 1, whose ε-closure is {1,3}. Union = {1,2,3}.`],
-          [`∅`, `There are a-transitions.`]
+          [`∅`, `∅ is wrong because both members move on a: 2 goes to 2 and 3, and 3 goes to 1.`]
         ], a: 2, src: `Exam 2024/25 (60)` },
         { q: `Why is the NFA "A (loop 0,1) --0--> B" non-deterministic?`, o: [
-          [`It has a final state`, `Every automaton has final states.`],
-          [`It has a loop on 0 and another transition on the same symbol 0`, `Correct. (A,0) has two next states: A and B.`],
-          [`It has an ε edge`, `There is no ε edge in the drawing.`],
-          [`It has two states`, `Irrelevant.`]
+          [`It has a final state`, `Having a final state is normal for both DFAs and NFAs, so it says nothing about determinism.`],
+          [`It has a loop on 0 and another transition on the same symbol 0`, `Correct. This is the lecture's second NFA sign: a loop on a symbol followed by a transition on the same symbol, so (A,0) has two next states, A and B (L3, What is NFA?).`],
+          [`It has an ε edge`, `The drawing has no ε edge; the non-determinism here comes from A having two moves on 0.`],
+          [`It has two states`, `The number of states does not decide determinism; a two-state DFA is possible. What matters is that A has two next states on 0.`]
         ], a: 1 },
         { q: `Which statement about the NFA → DFA conversion is correct?`, o: [
-          [`It is impossible for NFAs with ε`, `ε-closures handle ε.`],
-          [`It is always possible`, `Correct (subset construction).`],
-          [`The DFA always has fewer states`, `It can have more (up to 2^n).`],
-          [`It changes the accepted language`, `The language stays the same.`]
+          [`It is impossible for NFAs with ε`, `ε is handled by step 1 of the lecture method (the table with an ε column) and the ε-closure of each set, so ε-NFAs convert too.`],
+          [`It is always possible`, `Correct. Every NFA, with or without ε, can be converted to an equivalent DFA by the subset construction: each reachable set of NFA states becomes one DFA state (L3, NFA into DFA).`],
+          [`The DFA always has fewer states`, `The DFA can have more states, because each DFA state is a set of NFA states (up to 2^n sets for n NFA states).`],
+          [`It changes the accepted language`, `The DFA is equivalent to the NFA: it accepts exactly the same strings, only without non-determinism.`]
         ], a: 1, src: `Exam Summer 2025 T/F` },
         { q: `"Epsilon transition causes a change of the regular expression accepted by an automaton."`, o: [
           [`True`, `ε consumes no input; concatenating with ε changes nothing (sε = s).`],
           [`False`, `Correct (our answer; no official key). An ε move changes state without reading input, so the language is expressed the same way.`],
-          [`True only for DFA`, `DFAs have no ε.`],
-          [`Depends on the start state`, `No.`]
+          [`True only for DFA`, `A DFA cannot contain ε at all (L3 comparison table), so there is no DFA case where ε could change anything.`],
+          [`Depends on the start state`, `ε means reading the empty string wherever it appears, so the start state does not matter: the language stays the same.`]
         ], a: 1, src: `Exam Summer 2025 T/F` }
       ]
     },
@@ -587,76 +587,76 @@ E ⇒ E+T ⇒ T+T ⇒ F+T ⇒ id+T ⇒ id+T*F ⇒ id+F*F ⇒ id+id*F ⇒ id+id*i
       ],
       quiz: [
         { q: `……… is a process of finding a parse tree for a string of tokens.`, o: [
-          [`Analysis`, `Too general.`],
-          [`Recognition`, `A recognizer only says yes/no.`],
-          [`Parsing`, `Correct.`],
-          [`Tokenization`, `That is lexical analysis.`]
+          [`Analysis`, `"Analysis" is too general: the front end has lexical, syntax and semantic analysis. Finding the parse tree is specifically parsing.`],
+          [`Recognition`, `A recognizer only answers yes or no for a string; the lecture defines finding the parse tree itself as parsing.`],
+          [`Parsing`, `Correct. Syntax analysis, or parsing, takes the token stream and outputs a parse tree, so parsing is the process of finding a parse tree for a string of tokens (L4, Syntax Analysis).`],
+          [`Tokenization`, `Tokenization is lexical analysis: it produces the tokens. Building a tree from those tokens is the parser's job.`]
         ], a: 2, src: `Exam 2024/25 (60)` },
         { q: `Leaf nodes of a parsing tree indicate ……… of a context-free grammar.`, o: [
-          [`terminals`, `Correct.`],
-          [`non-terminals`, `Those are interior nodes.`],
-          [`start symbol`, `That is the root.`],
+          [`terminals`, `Correct. In a parse tree all leaf nodes are terminals, all interior nodes are non-terminals, and an in-order traversal of the leaves gives the input string (L4, Parse Tree).`],
+          [`non-terminals`, `Non-terminals are the interior (non-leaf) nodes of a parse tree; the leaves are terminals.`],
+          [`start symbol`, `The start symbol is the root of the parse tree, not its leaves.`],
           [`production rules`, `Productions are the parent-to-children links.`]
         ], a: 0, src: `Exam 2024/25 (60)` },
         { q: `The following is not a part of a context-free grammar:`, o: [
-          [`start symbol`, `Part of a CFG.`],
-          [`non-terminal symbols`, `Part of a CFG.`],
-          [`end symbol`, `Correct. A CFG has V, Σ, P and S only.`],
-          [`terminal symbols`, `Part of a CFG.`]
+          [`start symbol`, `The start symbol S is one of the four CFG components: derivation begins from it.`],
+          [`non-terminal symbols`, `Non-terminals (V), the syntactic variables, are one of the four components of a CFG.`],
+          [`end symbol`, `Correct. A CFG has four components: non-terminals (V), terminals (Σ), productions (P) and a start symbol (S). There is no "end symbol" (L4, Context-Free Grammar).`],
+          [`terminal symbols`, `Terminals (Σ), the tokens strings are made of, are one of the four components of a CFG.`]
         ], a: 2, src: `Exam 2024/25 (60)` },
         { q: `When only one rightmost or only one leftmost parsing tree is produced for a sentence, the grammar is:`, o: [
-          [`ambiguous`, `Ambiguous means more than one tree.`],
-          [`unambiguous`, `Correct.`],
-          [`static`, `Not a grammar property.`],
-          [`dynamic`, `Not a grammar property.`]
+          [`ambiguous`, `Ambiguous means more than one parse tree (more than one leftmost or rightmost derivation) for at least one string, which is the opposite case.`],
+          [`unambiguous`, `Correct. A grammar is ambiguous if some string has more than one parse tree; when every sentence has only one leftmost (or rightmost) tree, it is unambiguous (L4, Ambiguity).`],
+          [`static`, `"Static" is not a property of grammars in the course; grammars are classed as ambiguous or unambiguous.`],
+          [`dynamic`, `"Dynamic" is not a grammar property in the course; the property about the number of parse trees is (un)ambiguity.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `The rule A → Ab | c will cause the grammar to be:`, o: [
           [`ambiguous`, `This rule alone gives one tree per string (c, cb, cbb…).`],
           [`left recursive`, `Correct. A appears as the left-most symbol of its own right side.`],
-          [`dynamic`, `Not a grammar property.`],
-          [`all of the mentioned`, `Only (b).`]
+          [`dynamic`, `"Dynamic" is not a grammar property; A → Ab | c is left recursive because A is the left-most symbol of its own right side.`],
+          [`all of the mentioned`, `Only left recursion applies: "dynamic" is not a grammar property, and this rule gives just one tree per string, so it is not ambiguous.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `……… is the input to the syntax analysis phase.`, o: [
-          [`stream of tokens`, `Correct. Produced by the scanner.`],
-          [`syntax tree`, `The output of syntax analysis.`],
-          [`annotated syntax tree`, `The output of semantic analysis.`],
-          [`assembly code`, `The output of code generation.`]
+          [`stream of tokens`, `Correct. The parser takes its input from the lexical analyzer as a stream of tokens and checks it against the production rules (L4, Syntax Analysis).`],
+          [`syntax tree`, `The syntax (parse) tree is the OUTPUT of syntax analysis, not its input.`],
+          [`annotated syntax tree`, `The annotated syntax tree is produced by semantic analysis, which comes after the parser.`],
+          [`assembly code`, `Assembly or target code is produced at the end of the compiler, by code generation.`]
         ], a: 0, src: `Exam 2024/25 (60)` },
         { q: `The phase Syntax Analysis is modeled on the basis of:`, o: [
-          [`high level language`, `No.`],
-          [`low level language`, `No.`],
-          [`context free grammar`, `Correct.`],
+          [`high level language`, `The source program is written in a high-level language, but the parser checks it using a context-free grammar.`],
+          [`low level language`, `Low-level language is the target of code generation, not the model of syntax analysis.`],
+          [`context free grammar`, `Correct. Regular expressions cannot check balancing tokens such as parentheses, so syntax analysis uses a context-free grammar (L4, Syntax Analysis).`],
           [`regular grammar`, `Regular grammars/expressions model lexical analysis.`]
         ], a: 2, src: `Exam 2024/25 (50)` },
         { q: `A leftmost parsing tree grows from the ……… side.`, o: [
-          [`left`, `Not the official key.`],
-          [`equal sides`, `No.`],
+          [`left`, `The official revision-sheet key (Q52) and the 2023/24 exam say "right", so answer right, even though a leftmost derivation expands the left-most non-terminal first.`],
+          [`equal sides`, `A leftmost tree does not grow evenly on both sides; the official key for this question is "right".`],
           [`right`, `Correct per the official revision-sheet key (Q52) and the 2023/24 exam.`],
-          [`the side cannot be determined`, `No.`]
+          [`the side cannot be determined`, `The side can be stated: the official revision-sheet key (Q52) says a leftmost parsing tree grows from the right side.`]
         ], a: 2, src: `Exam 2023/24 (60)` },
         { q: `A context-free grammar is said to be ambiguous when:`, o: [
           [`it has a leftmost and a rightmost derivation for the same string`, `Every unambiguous grammar also has both. That proves nothing.`],
-          [`it can't accept a specific string`, `That is about the language, not ambiguity.`],
-          [`it achieves the same string following more than one path using either leftmost or rightmost derivation`, `Correct.`],
-          [`None`, `(c) is right.`]
+          [`it can't accept a specific string`, `Failing to derive a string means it is not in the language; ambiguity is about strings that ARE derived in more than one way.`],
+          [`it achieves the same string following more than one path using either leftmost or rightmost derivation`, `Correct. A grammar is ambiguous if at least one string has more than one parse tree, i.e. two different leftmost (or two different rightmost) derivations (L4, Ambiguity).`],
+          [`None`, `There is a right answer: option (c), the same string reached by more than one leftmost or rightmost derivation, is the definition of ambiguity.`]
         ], a: 2, src: `Final revision sheet` },
         { q: `For S → Ab | aaB, A → a | Aa, B → b, which is a valid leftmost derivation of aab?`, o: [
           [`S ⇒ Ab ⇒ Aab ⇒ aab`, `Correct (one of the two; the other is S ⇒ aaB ⇒ aab), so the grammar is ambiguous.`],
-          [`S ⇒ Ab ⇒ ab`, `That derives ab, not aab.`],
-          [`S ⇒ aaB ⇒ aaBb`, `B → b only.`],
-          [`S ⇒ AaB ⇒ aab`, `No production S → AaB.`]
+          [`S ⇒ Ab ⇒ ab`, `S ⇒ Ab ⇒ ab uses A → a and derives ab, which has only one a; the target string is aab.`],
+          [`S ⇒ aaB ⇒ aaBb`, `The step aaB ⇒ aaBb is impossible: the only rule for B is B → b, which replaces B and adds nothing after it.`],
+          [`S ⇒ AaB ⇒ aab`, `S has only S → Ab and S → aaB; there is no production S → AaB, so the first step is invalid.`]
         ], a: 0, src: `Final revision sheet` },
         { q: `Removing left recursion from A → aB | Ad gives:`, o: [
-          [`A → dA', A' → aBA' | ε`, `β is aB (the non-recursive option), not d.`],
-          [`A → aBA', A' → dA' | ε`, `Correct. A → Aα | β with α = d, β = aB.`],
-          [`A → aB | dA`, `That changes the language.`],
-          [`A → aBd*`, `Not a CFG production.`]
+          [`A → dA', A' → aBA' | ε`, `This swaps the roles: d follows the recursive A, so α = d goes in A', and the non-recursive option β = aB starts A.`],
+          [`A → aBA', A' → dA' | ε`, `Correct. A → Aα | β becomes A → βA', A' → αA' | ε. Here α = d and β = aB, giving A → aBA', A' → dA' | ε (L4, Removing left recursion).`],
+          [`A → aB | dA`, `A → aB | dA is right-recursive and generates strings like daB with d first, while the original language is aB followed by any number of d's.`],
+          [`A → aBd*`, `d* is regular-expression notation, not a CFG production; the lecture rewrites the repetition with a new non-terminal A'.`]
         ], a: 1, src: `Lecture 6 example` },
         { q: `"LL(1) can be applied on a left-recursive context-free grammar."`, o: [
           [`True`, `A top-down parser would loop forever on A → Aα.`],
-          [`False`, `Correct. Remove the left recursion first.`],
-          [`True if it is unambiguous`, `Still loops.`],
-          [`True with backtracking`, `LL(1) is predictive and has no backtracking.`]
+          [`False`, `Correct. A top-down parser keeps expanding the same left non-terminal, cannot judge when to stop and loops forever, so left recursion must be removed before LL(1) (L4, Left Recursion).`],
+          [`True if it is unambiguous`, `Ambiguity is separate: E → E+T | T is unambiguous but still left-recursive, and the top-down parser still loops on it.`],
+          [`True with backtracking`, `LL(1) is a predictive parser that chooses with one lookahead and never backtracks; left recursion must be removed instead.`]
         ], a: 1, src: `Exam 2023/24 (60) T/F` }
       ]
     },
@@ -761,70 +761,70 @@ E ⇒ E+T ⇒ T+T ⇒ F+T ⇒ id+T ⇒ id+T*F ⇒ id+F*F ⇒ id+id*F ⇒ id+id*i
       ],
       quiz: [
         { q: `In LL(1), the two L's and the 1 stand for:`, o: [
-          [`Left-to-right scan, Leftmost derivation, 1 lookahead symbol`, `Correct.`],
-          [`Left recursion, Leftmost derivation, 1 state`, `Left recursion is forbidden in LL(1).`],
-          [`Lexical, Logical, 1 pass`, `No.`],
-          [`Left-to-right scan, Rightmost derivation, 1 lookahead`, `That would be LR.`]
+          [`Left-to-right scan, Leftmost derivation, 1 lookahead symbol`, `Correct. The first L means the input is scanned Left to right, the second L means a Leftmost derivation is built, and 1 means one input symbol of lookahead (L6, LL(1) grammars).`],
+          [`Left recursion, Leftmost derivation, 1 state`, `The first L is the left-to-right scan, not left recursion; LL(1) grammars must actually be free of left recursion. And 1 counts lookahead symbols, not states.`],
+          [`Lexical, Logical, 1 pass`, `LL(1) has nothing to do with lexical or logical phases or passes: L = Left-to-right scan, L = Leftmost derivation, 1 = one lookahead symbol.`],
+          [`Left-to-right scan, Rightmost derivation, 1 lookahead`, `A rightmost derivation (in reverse) is what bottom-up LR parsers build. LL(1) is top-down, so its second L is a Leftmost derivation.`]
         ], a: 0 },
         { q: `For E → TE', E' → +TE' | ε, T → FT', T' → *FT' | ε, F → (E) | id, FOLLOW(T) is:`, o: [
           [`{+, ), $}`, `Correct. FIRST(E') − ε = {+}, and E' is nullable so FOLLOW(E) = {), $} is added.`],
-          [`{*, +, ), $}`, `That is FOLLOW(F).`],
-          [`{), $}`, `That is FOLLOW(E) and FOLLOW(E').`],
-          [`{(, id}`, `That is FIRST(T).`]
+          [`{*, +, ), $}`, `That is FOLLOW(F): the * comes from T' → *FT', which puts FIRST(T') after F. Nothing in the grammar puts * right after T.`],
+          [`{), $}`, `That is FOLLOW(E) = FOLLOW(E'). It misses the + that T gets from E' → +TE' (FIRST(E') − ε = {+} follows T).`],
+          [`{(, id}`, `That is FIRST(T) = FIRST(F) = {(, id}: the terminals that begin T, not the ones that can appear after it. FOLLOW(T) = {+, ), $}.`]
         ], a: 0, src: `Lecture 6 example` },
         { q: `Same grammar: M[T', )] = ?`, o: [
-          [`T' → *FT'`, `That goes under *.`],
+          [`T' → *FT'`, `T' → *FT' goes only in M[T', *], because FIRST(*FT') = {*}. Under ) the parser must let T' vanish.`],
           [`T' → ε`, `Correct. ")" ∈ FOLLOW(T') and T' has an ε production.`],
-          [`error`, `")" is in FOLLOW(T').`],
-          [`T → FT'`, `Wrong row.`]
+          [`error`, `The cell is filled: T' is nullable and ) ∈ FOLLOW(T') = {+, ), $}, so table rule 2 puts T' → ε in M[T', )].`],
+          [`T → FT'`, `T → FT' is a production of T, so it can only appear in row T (under id and ( ). Row T' holds only T' productions.`]
         ], a: 1, src: `Lecture 6 example` },
         { q: `Same grammar: M[F, (] = ?`, o: [
-          [`F → id`, `That goes under id.`],
-          [`F → (E)`, `Correct. FIRST((E)) = {(}.`],
-          [`E → TE'`, `Wrong row.`],
-          [`error`, `There is an entry.`]
+          [`F → id`, `F → id goes in M[F, id], since FIRST(id) = {id}. Under ( the parser must choose F → (E).`],
+          [`F → (E)`, `Correct. Table rule 1: FIRST((E)) = {(}, so F → (E) is placed in M[F, (] (L6, Building the predictive parsing table).`],
+          [`E → TE'`, `E → TE' belongs in row E (it is in M[E, (] and M[E, id]). Row F can only contain productions of F.`],
+          [`error`, `The cell is not empty: FIRST((E)) = {(}, so M[F, (] = F → (E). F's empty cells are +, *, ) and $.`]
         ], a: 1 },
         { q: `For S → A, A → aBA', A' → dA' | ε, B → b, what is FOLLOW(B)?`, o: [
-          [`{$}`, `Misses FIRST(A').`],
+          [`{$}`, `{$} is FOLLOW(A) and FOLLOW(A'). B is followed by A' in A → aBA', so FIRST(A') − ε = {d} must be added to FOLLOW(B).`],
           [`{d, $}`, `Correct. FIRST(A') − ε = {d}; A' is nullable, so FOLLOW(A) = {$} is added.`],
-          [`{b}`, `That is FIRST(B).`],
-          [`{d, ε}`, `That is FIRST(A'). FOLLOW never contains ε.`]
+          [`{b}`, `{b} is FIRST(B), the terminal B begins with. FOLLOW(B) lists what can come after B: {d, $}.`],
+          [`{d, ε}`, `{d, ε} is FIRST(A'). FOLLOW sets never contain ε; since A' can vanish, $ from FOLLOW(A) is added instead, giving {d, $}.`]
         ], a: 1, src: `Final revision sheet` },
         { q: `For S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε, FOLLOW(S) is:`, o: [
-          [`{$}`, `S also appears inside U → (S) and U → aSb.`],
-          [`{$, ), b}`, `Correct. $ (start), ) from (S), b from aSb.`],
-          [`{a, c, $}`, `That mixes in FOLLOW(U).`],
-          [`{(, a, d}`, `That is FIRST(S).`]
+          [`{$}`, `$ alone ignores the inner uses of S: U → (S) puts ) after S and U → aSb puts b after S, so FOLLOW(S) = {$, ), b}.`],
+          [`{$, ), b}`, `Correct. $ because S is the start symbol, ) from U → (S) and b from U → aSb, using FOLLOW rules 1 and 2 (L6, Exam grammar).`],
+          [`{a, c, $}`, `{a, c} come from FIRST(VW), which belongs in FOLLOW(U), not FOLLOW(S). Nothing puts a or c directly after S.`],
+          [`{(, a, d}`, `{(, a, d} is FIRST(S) = FIRST(U): the terminals S can begin with. FOLLOW(S) is {$, ), b}.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `Same grammar: FOLLOW(U) is:`, o: [
           [`{a, c}`, `V and W are nullable, so FOLLOW(S) must be added too.`],
-          [`{a, c, $, ), b}`, `Correct. FIRST(VW) − ε plus FOLLOW(S).`],
-          [`{$, ), b}`, `Misses FIRST(V) and FIRST(W).`],
-          [`{a}`, `Misses a lot.`]
+          [`{a, c, $, ), b}`, `Correct. In S → UVW, FIRST(VW) − ε = {a, c} goes into FOLLOW(U); VW can derive ε, so FOLLOW(S) = {$, ), b} is added too (L6, Rules for FOLLOW).`],
+          [`{$, ), b}`, `{$, ), b} is only the FOLLOW(S) part. It misses FIRST(VW) − ε = {a, c}, the terminals that directly follow U in S → UVW.`],
+          [`{a}`, `{a} only takes FIRST(V). Since V is nullable, c from FIRST(W) is added, and since VW is nullable, FOLLOW(S) = {$, ), b} too.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `Same grammar: which entry is M[V, )]?`, o: [
-          [`V → aV`, `Only under a.`],
-          [`V → ε`, `Correct. ")" ∈ FOLLOW(V) = {c, $, ), b}.`],
-          [`error`, `")" is in FOLLOW(V).`],
-          [`W → ε`, `Wrong row.`]
+          [`V → aV`, `V → aV goes only in M[V, a], because FIRST(aV) = {a}. On ) the parser must let V vanish.`],
+          [`V → ε`, `Correct. V is nullable and ) ∈ FOLLOW(V) = {c} ∪ FOLLOW(S) = {c, $, ), b}, so table rule 2 puts V → ε in M[V, )] (L6, Exam grammar).`],
+          [`error`, `The cell is filled: ) ∈ FOLLOW(V) (it comes from FOLLOW(S) because W is nullable), so V → ε goes there.`],
+          [`W → ε`, `W → ε is a production of W, so it sits in row W (under b, ), $). Row V only holds V productions.`]
         ], a: 1, src: `Exam 2024/25 (60)` },
         { q: `During LL(1) parsing the stack top is a terminal equal to the current input symbol. The action is:`, o: [
-          [`Expand`, `Expansion is for non-terminals.`],
-          [`Match (pop and advance the input)`, `Correct.`],
-          [`Reduce`, `Reduce is a bottom-up (LR) action.`],
-          [`Error`, `Only on a mismatch.`]
+          [`Expand`, `Expansion (replacing the top with the right side of M[A, a]) is only done when the top of the stack is a non-terminal A.`],
+          [`Match (pop and advance the input)`, `Correct. When the top terminal equals the input symbol, the parser matches: it pops the stack and advances the input, e.g. aBA'$ / abd$ → BA'$ / bd$ (L6, parsing abd).`],
+          [`Reduce`, `Reduce belongs to bottom-up shift-reduce (LR) parsing. An LL(1) parser only expands, matches, accepts or reports an error.`],
+          [`Error`, `An error is reported only if the top terminal differs from the input symbol, or a non-terminal meets an empty table cell. Here they are equal.`]
         ], a: 1 },
         { q: `A top-down parser generates:`, o: [
-          [`left-most derivation in reverse`, `No.`],
-          [`left-most derivation`, `Correct.`],
-          [`right-most derivation in reverse`, `That is bottom-up (LR / shift-reduce).`],
-          [`right-most derivation`, `No.`]
+          [`left-most derivation in reverse`, `Nothing builds a leftmost derivation in reverse. A top-down parser builds the leftmost derivation forward, from the start symbol to the input.`],
+          [`left-most derivation`, `Correct. A top-down parser starts at the start symbol and always expands the leftmost non-terminal, so it produces a leftmost derivation; LL means Leftmost derivation (L6, LL(1) grammars).`],
+          [`right-most derivation in reverse`, `A rightmost derivation in reverse is what a bottom-up (shift-reduce, LR) parser produces, reducing the input back to the start symbol.`],
+          [`right-most derivation`, `A top-down parser always expands the leftmost non-terminal first, so its derivation is leftmost, not rightmost.`]
         ], a: 1, src: `Final revision sheet` },
         { q: `S → aABe, A → Abc | b, B → d. After removing left recursion, which is correct?`, o: [
-          [`A → bA', A' → bcA' | ε`, `Correct. α = bc, β = b.`],
-          [`A → bcA', A' → bA' | ε`, `α and β are swapped.`],
-          [`A → Abc', A' → b`, `Still left-recursive.`],
-          [`A → b | bc`, `Changes the language.`]
+          [`A → bA', A' → bcA' | ε`, `Correct. A → Abc | b has the form A → Aα | β with α = bc and β = b, so it becomes A → βA' = bA', A' → αA' | ε = bcA' | ε (L4-5, Removing left recursion).`],
+          [`A → bcA', A' → bA' | ε`, `This swaps α and β: β = b (the non-recursive option) must start A, and α = bc (what followed A) goes into A'. Here A would start with bc.`],
+          [`A → Abc', A' → b`, `A → Abc' still begins with A, so the grammar is still left-recursive. The rule is A → βA', A' → αA' | ε.`],
+          [`A → b | bc`, `A → Abc | b derives b, bbc, bbcbc, … (b followed by any number of bc). A → b | bc loses most of these strings and changes the language.`]
         ], a: 0, src: `Exam 2023/24 (50)` }
       ]
     },
@@ -911,70 +911,70 @@ E.val = E.val + T.val = 2 + 12 = 14`, pts: [
       ],
       quiz: [
         { q: `Attributes that get their values from their child nodes of the syntax tree are called ……… attributes.`, o: [
-          [`static`, `Not an attribute category.`],
-          [`dynamic`, `Not an attribute category.`],
-          [`synthesized`, `Correct.`],
+          [`static`, `"Static" is not one of the lecture's attribute categories. Attributes are divided only into synthesized (from children) and inherited (from parent/siblings).`],
+          [`dynamic`, `"Dynamic" is not an attribute category in the lecture. The two categories are synthesized and inherited attributes.`],
+          [`synthesized`, `Correct. Synthesized attributes get their values from the attribute values of their child nodes, e.g. in E → E + T the parent E gets its value from its children (L7, Synthesized vs inherited attributes).`],
           [`inherited`, `Inherited attributes come from the parent/siblings.`]
         ], a: 2, src: `Exam 2024/25 (60)` },
         { q: `Inherited attributes get their attribute values from:`, o: [
-          [`child nodes`, `That is synthesized.`],
-          [`leaves nodes`, `No.`],
+          [`child nodes`, `Getting values from child nodes is the definition of synthesized attributes. Inherited ones come from the parent and/or siblings.`],
+          [`leaves nodes`, `Leaf nodes hold lexical values (like 2, 3, 4) that synthesized attributes are built from; inherited attributes come from the parent and/or siblings.`],
           [`parent nodes`, `Correct (official key; the lecture adds "and/or siblings").`],
-          [`semantic nodes`, `Not a term.`]
+          [`semantic nodes`, `"Semantic nodes" is not a term used in the lecture. Inherited attributes take values from the parent and/or sibling nodes.`]
         ], a: 2, src: `Exam 2024/25 (50)` },
         { q: `Attaching attributes to each non-terminal of the CFG will produce:`, o: [
           [`annotated syntax tree`, `The annotated tree is produced by EVALUATING an attribute grammar on a syntax tree.`],
-          [`unambiguous CFG`, `Attributes do not change ambiguity.`],
-          [`ambiguous CFG`, `No.`],
+          [`unambiguous CFG`, `Adding attributes gives the CFG semantics; it does not change its productions or how many parse trees a sentence has, so it does not make it unambiguous.`],
+          [`ambiguous CFG`, `Attributes do not make a grammar ambiguous; ambiguity depends only on the productions. Attaching attributes gives an attribute grammar.`],
           [`attribute grammar`, `Correct. Official sheet Q53: "Attribute grammar is generated by attaching attributes to each nonterminal of the CFG".`]
         ], a: 3, src: `Exam 2024/25 (60)` },
         { q: `SDT is an abbreviation of:`, o: [
-          [`Semantic Directed Translation`, `Common trap.`],
-          [`Syntax Directed Translation`, `Correct.`],
-          [`Syntax Double Translation`, `No.`],
-          [`Semantic Directed Table`, `No.`]
+          [`Semantic Directed Translation`, `A common trap: the S stands for Syntax, not Semantic. The translation is directed by the grammar's syntax (rules attached to productions).`],
+          [`Syntax Directed Translation`, `Correct. SDT = Syntax Directed Translation: augmented rules added to the grammar that facilitate semantic analysis (L7, Syntax Directed Translation).`],
+          [`Syntax Double Translation`, `There is no "Syntax Double Translation". SDT stands for Syntax Directed Translation: translation rules attached to the grammar's productions.`],
+          [`Semantic Directed Table`, `SDT is not a table. It stands for Syntax Directed Translation, a set of translation rules attached to the grammar's productions.`]
         ], a: 1, src: `Exam 2023/24 (60)` },
         { q: `Semantic analysis uses ……… grammar in order to transform ……… tree into ……… tree.`, o: [
-          [`context free, syntax, annotated syntax`, `The grammar is the ATTRIBUTE grammar.`],
-          [`attribute, semantic, syntax`, `Wrong direction.`],
-          [`attribute, syntax, annotated syntax`, `Correct.`],
-          [`context free, syntax, semantic`, `No "semantic tree" in the course.`]
+          [`context free, syntax, annotated syntax`, `The plain CFG is what the parser uses. Semantic analysis uses the attribute grammar (a CFG with attributes) to annotate the syntax tree.`],
+          [`attribute, semantic, syntax`, `This reverses the flow: the input of semantic analysis is the syntax tree and its output is the annotated syntax tree, not a syntax tree.`],
+          [`attribute, syntax, annotated syntax`, `Correct. Semantic analysis uses the attribute grammar to transform the syntax tree (from the parser) into the annotated syntax tree (L7, Attribute grammar).`],
+          [`context free, syntax, semantic`, `The grammar is the attribute grammar, and the output is the annotated syntax tree. The course has no "semantic tree".`]
         ], a: 2, src: `Exam 2023/24 (50)` },
         { q: `Type checking is normally done during:`, o: [
-          [`code optimization`, `Too late.`],
-          [`syntax directed translation`, `Correct (official key).`],
-          [`lexical analysis`, `The lexer has no type information.`],
-          [`syntax analysis`, `Syntax analysis checks structure only.`]
+          [`code optimization`, `Code optimization works on intermediate code after semantic analysis; by then type errors must already have been found.`],
+          [`syntax directed translation`, `Correct. Type checking is part of semantic analysis, which is carried out by syntax directed translation over the syntax tree (official key; L7, Semantic analysis).`],
+          [`lexical analysis`, `The lexer only groups characters into tokens; it has no type information. Types are gathered during semantic analysis.`],
+          [`syntax analysis`, `Syntax analysis only checks the structure against the CFG and builds the syntax tree. Types are checked afterwards, in semantic analysis.`]
         ], a: 1, src: `Final revision sheet` },
         { q: `A parse tree showing the value of attributes at each node is a(n):`, o: [
-          [`Annotated parse tree`, `Correct.`],
-          [`Syntax tree`, `No attribute values.`],
-          [`Semantic tree`, `Not a course term.`],
-          [`None of the mentioned`, `(a) is right.`]
+          [`Annotated parse tree`, `Correct. The annotated parse (syntax) tree shows the attribute values at each node; it is the output of semantic analysis (L7, Semantic analysis).`],
+          [`Syntax tree`, `The syntax tree is the parser's output before the attributes are evaluated; it shows structure but no attribute values.`],
+          [`Semantic tree`, `"Semantic tree" is not a course term. A tree showing attribute values at each node is the annotated parse tree.`],
+          [`None of the mentioned`, `Not true: option (a), the annotated parse tree, is exactly the tree that shows the attribute values at each node.`]
         ], a: 0, src: `Final revision sheet` },
         { q: `With the SDT rules for E → E+T | T, T → T*F | F, F → INT, what is E.val at the root for 2+3*4?`, o: [
           [`20`, `That is (2+3)*4. The grammar gives * higher precedence (deeper in the tree).`],
           [`14`, `Correct. T.val = 3*4 = 12, then E.val = 2 + 12.`],
-          [`24`, `No.`],
-          [`9`, `Adds everything.`]
+          [`24`, `24 is 2*3*4, multiplying all the lexical values. The + in 2+3*4 is never turned into a multiplication.`],
+          [`9`, `9 is 2+3+4, which treats the * as a +. PR#3 computes T.val = 3 * 4 = 12 before E adds 2.`]
         ], a: 1, src: `Lecture 7 example` },
         { q: `In the SDT example, the values 2, 3 and 4 at the leaves are called:`, o: [
           [`synthesized attributes`, `They are the source of synthesis, but the lecture names them differently.`],
-          [`lexical values`, `Correct (INT.lexval).`],
-          [`constants`, `A separate category in SDT rules.`],
-          [`inherited attributes`, `No.`]
+          [`lexical values`, `Correct. The lecture calls the values at the leaves (2, 3, 4) lexical values; PR#5 copies them up with F.val = INT.lexval (L7, SDT example).`],
+          [`constants`, `Constants are a separate kind of value written inside SDT rules. The token values 2, 3, 4 at the leaves are lexical values.`],
+          [`inherited attributes`, `Inherited attributes get values from a node's parent and/or siblings. The leaf values 2, 3, 4 come from the tokens: lexical values.`]
         ], a: 1 },
         { q: `When a variable may or may not be assigned, its definite-assignment state is:`, o: [
-          [`definitely unassigned`, `That is certainty of NOT assigned.`],
-          [`unknown`, `Correct.`],
-          [`definitely assigned`, `That is certainty of assigned.`],
-          [`none of the mentioned`, `(b) is right.`]
+          [`definitely unassigned`, `Definitely unassigned means it is known with certainty that the variable is NOT assigned; here it may or may not be.`],
+          [`unknown`, `Correct. Definite assignment analysis has three states; a variable that may or may not be assigned is "unknown" (L7, Definite assignment analysis).`],
+          [`definitely assigned`, `Definitely assigned means it is known with certainty that the variable IS assigned; here it may or may not be.`],
+          [`none of the mentioned`, `Not true: option (b), "unknown", is the state for a variable that may or may not be assigned.`]
         ], a: 1, src: `Final revision sheet` },
         { q: `"SDT is the process of using the context-free grammar along the syntax tree to get the annotated syntax tree."`, o: [
           [`True`, `Correct. SDT evaluates rules attached to CFG productions over the tree, producing the annotated syntax tree.`],
           [`False`, `The revision sheet says attribute grammar/SDT on the syntax tree generates the annotated syntax tree.`],
-          [`True only for inherited attributes`, `No.`],
-          [`True only bottom-up`, `SDT can go both ways.`]
+          [`True only for inherited attributes`, `SDT gives the annotated syntax tree whatever the attribute kind; it can pass information bottom-up (synthesized) and/or top-down (inherited).`],
+          [`True only bottom-up`, `The lecture says SDT passes information bottom-up and/or top-down, so the statement is not limited to bottom-up.`]
         ], a: 0, src: `Exam 2024/25 (60) T/F` }
       ]
     },
@@ -1066,70 +1066,70 @@ y  ->  [scope 0 | init YES | NULL]`}
       ],
       quiz: [
         { q: `……… is a major problem when creating a symbol table per scope.`, o: [
-          [`Redundant code`, `Not related.`],
-          [`Peephole optimization`, `An optimization technique, not a problem.`],
-          [`Ambiguity`, `A grammar problem.`],
+          [`Redundant code`, `Redundant code is what optimization removes; it is not a cost of symbol tables. The slide's problem with a table per scope is memory overhead (plus searching several tables).`],
+          [`Peephole optimization`, `Peephole optimization is a code-optimization technique from L9, not a problem of symbol tables. One table per scope costs memory overhead.`],
+          [`Ambiguity`, `Ambiguity is a grammar problem (one string, two parse trees, L4), not a symbol-table one. A table per scope wastes memory on each hash table.`],
           [`Memory overhead`, `Correct. Each hash table costs memory, and several tables may need searching.`]
         ], a: 3, src: `Exam 2024/25 (60)` },
         { q: `……… is done based on the structure of the parsing tree, such as braces.`, o: [
-          [`Static binding`, `Correct.`],
+          [`Static binding`, `Correct. Static binding is scoping based on the structure of the syntax tree (blocks and braces); it depends only on the program text (L8, Static vs dynamic binding).`],
           [`Dynamic binding`, `Dynamic binding follows execution order, not structure.`],
-          [`All types of binding`, `No.`],
-          [`None of the mentioned`, `(a) is right.`]
+          [`All types of binding`, `Only static binding follows the tree's structure. Dynamic binding uses the declaration most recently met during execution, so not all types qualify.`],
+          [`None of the mentioned`, `Static binding fits the description exactly: scoping based on the structure of the syntax tree, i.e. braces.`]
         ], a: 0, src: `Exam 2023/24 (60)` },
         { q: `"Dynamic object binding is done based on the structure of the parsing tree such as braces."`, o: [
-          [`True`, `That describes STATIC binding.`],
+          [`True`, `Following the structure of the parse tree (braces) is the definition of STATIC binding. Dynamic binding depends on the order of execution.`],
           [`False`, `Correct. Dynamic binding uses the most recently encountered declaration at run time.`],
-          [`True for C only`, `C is statically scoped.`],
-          [`True for Lisp only`, `Lisp's dynamic scope depends on execution.`]
+          [`True for C only`, `C is statically scoped (the slides name C and Java), and the statement mixes up the definitions anyway: the braces rule is static binding.`],
+          [`True for Lisp only`, `Lisp is dynamically scoped, but its binding depends on the execution order, not on braces, so the statement is false for Lisp too.`]
         ], a: 1, src: `Exam 2024/25 (60) T/F` },
         { q: `The data structure responsible for managing information about variables and their attributes is:`, o: [
-          [`semantic stack`, `No.`],
-          [`symbol table`, `Correct.`],
-          [`parser table`, `The LL(1) table holds productions.`],
-          [`abstract syntax tree`, `Holds program structure.`]
+          [`semantic stack`, `A semantic stack holds attribute values during syntax-directed translation; it does not keep a record of each identifier's attributes.`],
+          [`symbol table`, `Correct. The symbol table associates each identifier with information about its declaration: type, scope level and sometimes location (L8, Symbol tables).`],
+          [`parser table`, `The LL(1) parsing table (L6) tells the parser which production to apply; it stores nothing about variables.`],
+          [`abstract syntax tree`, `The (abstract) syntax tree represents the program's structure; identifiers' types and scopes are kept in the symbol table.`]
         ], a: 1, src: `Final revision sheet` },
         { q: `The most common way to implement symbol tables is:`, o: [
-          [`Unordered list`, `Possible, but slow.`],
-          [`Ordered list`, `Possible.`],
-          [`Binary search tree`, `Possible.`],
+          [`Unordered list`, `An unordered list is one of the listed mechanisms, but searching it is linear and slow; the slides name the hash table as the most common.`],
+          [`Ordered list`, `An ordered list is a possible mechanism (binary-searchable but costly to insert into); the slides name the hash table as the most common.`],
+          [`Binary search tree`, `A binary search tree is a listed mechanism, but the slides call the hash table the most common means of implementing symbol tables.`],
           [`Hash table`, `Correct. The slides call it the most common means.`]
         ], a: 3 },
         { q: `In the single-table "Solution 1", the key used to enter an identifier is:`, o: [
-          [`the identifier only`, `That is Solution 2.`],
-          [`"identifier,scope_id"`, `Correct.`],
-          [`the scope_id only`, `No.`],
-          [`the data type`, `No.`]
+          [`the identifier only`, `Keying by the identifier alone is Solution 2, where the value is a linked list of records. Solution 1 appends the scope number to the key.`],
+          [`"identifier,scope_id"`, `Correct. Each scope gets a unique scope_id (0 for global, incremented per new scope), and an identifier is entered with the key "identifier,scope_id" (L8, Solution 1).`],
+          [`the scope_id only`, `The scope_id alone would put every name of a scope under one key. Solution 1 combines both: "identifier,scope_id".`],
+          [`the data type`, `The data type is stored as information in the entry, not used as the key. Solution 1's key is "identifier,scope_id".`]
         ], a: 1 },
         { q: `"The structure of a symbol table is time consuming when an identifier returns a linked list of usages of itself."`, o: [
           [`True`, `Wrong. The front item is always the right one, so lookup is fast.`],
-          [`False`, `Correct (official key).`],
-          [`True for multi-pass compilers only`, `No.`],
-          [`Cannot be determined`, `The key says False.`]
+          [`False`, `Correct (official key). In Solution 2 new declarations are inserted at the front of the list, so the front item is always the right one for the current scope: no long search (L8, Solutions).`],
+          [`True for multi-pass compilers only`, `The slides describe Solution 2 for a single-pass compiler and do not tie the claim to multi-pass compilers; lookup is fast because the front item is the right one.`],
+          [`Cannot be determined`, `It can be determined: the slides say the front item of the list is always the appropriate one, so the structure is not time consuming (key: False).`]
         ], a: 1, src: `Final revision sheet` },
         { q: `{ int x=1; int y=2; { int x=3; y+=x; } y+=x; } Final y with STATIC binding?`, o: [
-          [`5`, `That is y after the inner block only.`],
+          [`5`, `5 is y after the inner block only (2 + 3). The statement after the block adds the outer x = 1 again, giving 6.`],
           [`6`, `Correct. 2+3 = 5, then the outer x = 1 gives 6.`],
-          [`8`, `That is the dynamic answer.`],
-          [`4`, `No.`]
+          [`8`, `8 is the dynamic-binding answer, where the inner x = 3 is still used after the block. With static binding the outer x = 1 is restored.`],
+          [`4`, `4 comes from ignoring the inner x and adding the outer x = 1 twice (2 + 1 + 1). Inside the block the inner x = 3 hides the outer one.`]
         ], a: 1, src: `Lecture 8 example` },
         { q: `Same code, DYNAMIC binding (course convention):`, o: [
-          [`6`, `Static answer.`],
-          [`5`, `Stops too early.`],
+          [`6`, `6 is the static answer: the outer x = 1 is restored after the block. Under the course's dynamic convention the latest x = 3 is still used.`],
+          [`5`, `5 is y after the inner block only (2 + 3); it misses the second y += x that runs after the block.`],
           [`8`, `Correct. The most recently encountered x (3) is used again: 5 + 3.`],
-          [`7`, `No.`]
+          [`7`, `7 fits neither rule: static gives 5 + 1 = 6 and dynamic (course convention) gives 5 + 3 = 8.`]
         ], a: 2, src: `Lecture 8 example` },
         { q: `"There is only one approach to implement symbol tables."`, o: [
-          [`True`, `Wrong.`],
+          [`True`, `The slides list two approaches (one table per scope, one table for all scopes) and four mechanisms (lists, BSTs, hash tables).`],
           [`False`, `Correct. One table per scope or one table for all scopes, with lists, BSTs or hash tables.`],
-          [`True for C`, `No.`],
-          [`True for static binding`, `No.`]
+          [`True for C`, `The approaches are not language-specific; any compiler, C included, can use a table per scope or a single table for all scopes.`],
+          [`True for static binding`, `Static binding does not limit the choice: the lecture's symbol-table walkthroughs are statically scoped and still show more than one approach.`]
         ], a: 1, src: `Final revision sheet` },
         { q: `"The problem of using a single hash table as a symbol table is memory overhead."`, o: [
           [`True`, `Memory overhead is the problem of one table PER SCOPE; the single table is the solution.`],
-          [`False`, `Correct.`],
-          [`True only for dynamic binding`, `No.`],
-          [`Cannot be determined`, `It can.`]
+          [`False`, `Correct. Memory overhead is the problem of one hash table PER SCOPE; a single hash table for all scopes is the slides' solution, with less overhead and one search (L8, Problems of one table per scope).`],
+          [`True only for dynamic binding`, `The memory problem belongs to keeping a table per scope, whatever the binding; the single table reduces overhead in both cases.`],
+          [`Cannot be determined`, `The slides settle it: the single hash table is the solution that causes less memory overhead, so the statement is False.`]
         ], a: 1, src: `Exam 2023/24 Summer T/F` }
       ]
     },
@@ -1247,76 +1247,76 @@ for(int i=0;i<size;i++)
       ],
       quiz: [
         { q: `A compiler needs ……… types of storage.`, o: [
-          [`two`, `No.`],
-          [`three`, `Correct. Static, stack, heap.`],
-          [`four`, `No.`],
+          [`two`, `Two is the split into fixed-size and dynamic-size storage. The lecture lists three types of storage allocation: static, stack and heap.`],
+          [`three`, `Correct. The lecture's three types of storage allocation are static (fixed locations), stack (procedure calls, LIFO) and heap (dynamic variables) (L9, Types of storage allocation).`],
+          [`four`, `The lecture names exactly three types: static, stack and heap. There is no fourth storage type.`],
           [`five`, `The C layout has five segments, but the lecture's storage types are three.`]
         ], a: 1, src: `Exam 2024/25 (50)` },
         { q: `A compiler uses stack memory allocation for:`, o: [
-          [`static allocation of objects`, `That is static storage.`],
-          [`procedures & functions calling`, `Correct.`],
-          [`allocation of the code itself`, `Code is static (text).`],
-          [`a & b`, `Only (b).`]
+          [`static allocation of objects`, `Objects with fixed locations known in advance use static allocation, not the stack.`],
+          [`procedures & functions calling`, `Correct. Procedure calls and their activations are managed with stack allocation (LIFO), which is very useful for recursive calls (L9, Types of storage allocation).`],
+          [`allocation of the code itself`, `The code (text part) does not change at runtime and its size is known at compile time, so it gets fixed (static) memory.`],
+          [`a & b`, `Option a is static allocation, not stack, so only b (procedure and function calls) is right.`]
         ], a: 1, src: `Exam 2023/24 (50)` },
         { q: `The following type of storage used by a compiler is dynamically allocated:`, o: [
-          [`heap`, `Correct.`],
-          [`queue`, `Not a compiler storage type.`],
-          [`array`, `Arrays can be static.`],
-          [`text`, `Fixed size.`]
+          [`heap`, `Correct. Heap allocation dynamically allocates memory to variables at runtime and claims it back when they are no longer needed (L9, Types of storage allocation).`],
+          [`queue`, `A queue is a data structure, not one of the compiler's storage types (static, stack, heap).`],
+          [`array`, `An array is a data structure that can live in static, stack or heap storage; it is not itself a storage type.`],
+          [`text`, `The text (code) part is fixed: its size is known at compile time and it does not change at runtime.`]
         ], a: 0, src: `Exam 2023/24 Summer` },
         { q: `Storage used by a compiler can be classified into:`, o: [
-          [`static, stack and heap`, `Correct.`],
-          [`dynamic, stack and heap`, `"Dynamic" is not a separate class.`],
-          [`static, queue and heap`, `No queue.`],
-          [`None`, `(a) is right.`]
+          [`static, stack and heap`, `Correct. The lecture's storage allocation types are static, stack and heap (L9, Types of storage allocation).`],
+          [`dynamic, stack and heap`, `"Dynamic" describes stack and heap (both grow and shrink); it is not a third class. The missing class is static.`],
+          [`static, queue and heap`, `There is no queue storage. Procedure calls use a stack (LIFO), so the classes are static, stack and heap.`],
+          [`None`, `Option a lists the lecture's three classes exactly: static, stack and heap.`]
         ], a: 0, src: `Final revision sheet` },
         { q: `Languages that need heap allocation in the runtime environment are:`, o: [
-          [`those that use global variables`, `Globals are static.`],
-          [`those that use dynamic scoping`, `Not the reason.`],
-          [`those that support recursion`, `Recursion needs the stack.`],
-          [`those that allow dynamic data structures`, `Correct.`]
+          [`those that use global variables`, `Global variables have fixed locations known in advance, so static allocation serves them; no heap is needed.`],
+          [`those that use dynamic scoping`, `Dynamic scoping is about which declaration a name refers to (L8), not about allocating memory at runtime.`],
+          [`those that support recursion`, `Recursion is served by stack allocation: each call pushes an activation, LIFO.`],
+          [`those that allow dynamic data structures`, `Correct. Dynamic data structures are created and freed at runtime, which is what heap allocation does: allocate on demand and reclaim memory no longer needed (L9, Heap allocation).`]
         ], a: 3, src: `Final revision sheet` },
         { q: `The following is NOT a method of optimization:`, o: [
-          [`constant folding`, `A peephole technique.`],
-          [`combine operations`, `A peephole technique.`],
-          [`a and b`, `Both are methods.`],
+          [`constant folding`, `Constant folding is a peephole optimization technique (x = 2 * 3 becomes x = 6).`],
+          [`combine operations`, `Combine operations is a peephole technique: several operations are replaced by one equivalent operation.`],
+          [`a and b`, `Both a and b ARE optimization methods, so "a and b" cannot be the one that is not.`],
           [`annotated syntax tree`, `Correct. It is a data structure, not an optimization.`]
         ], a: 3, src: `Exam Summer 2025` },
         { q: `……… and ……… are considered mechanisms of code optimization.`, o: [
-          [`constant folding, variable folding`, `"Variable folding" is not in the course.`],
-          [`constant folding, definite assignment`, `Definite assignment is an analysis.`],
-          [`constant folding, combine operations`, `Correct.`],
-          [`a and b`, `No.`]
+          [`constant folding, variable folding`, `There is no "variable folding": folding only works on constants, whose values are known at compile time.`],
+          [`constant folding, definite assignment`, `Definite assignment is a semantic analysis (L7) that checks variables are assigned before use; it is not an optimization.`],
+          [`constant folding, combine operations`, `Correct. Constant folding and combine operations are both peephole optimization techniques, with redundant load and store elimination (L9, Peephole optimization).`],
+          [`a and b`, `Options a and b each contain a non-optimization (variable folding, definite assignment), so "a and b" is wrong.`]
         ], a: 2, src: `Final revision sheet` },
         { q: `Peephole optimization is:`, o: [
-          [`machine independent and applied to the whole program`, `Opposite.`],
-          [`machine dependent and applied to a small window of code`, `Correct.`],
-          [`part of lexical analysis`, `No.`],
-          [`only constant folding`, `It has three techniques.`]
+          [`machine independent and applied to the whole program`, `This is the opposite of the slides: peephole optimization is machine dependent and works on a small window, not the whole program.`],
+          [`machine dependent and applied to a small window of code`, `Correct. It works on a small part of the code called the peephole or window, replacing it with shorter, faster code, and it is machine dependent (L9, Peephole optimization).`],
+          [`part of lexical analysis`, `Lexical analysis is the first phase (tokens); peephole optimization works on code in the optimization phase.`],
+          [`only constant folding`, `Constant folding is only one of its three techniques, with redundant load and store elimination and combine operations.`]
         ], a: 1 },
         { q: `Lecture example with pass-by-RESULT: what does the main program print after the call?`, o: [
-          [`2 1 0 3`, `That is pass by value.`],
+          [`2 1 0 3`, `2 1 0 3 is pass by value: nothing is copied back, so i stays 2 and a[2] keeps the 0. By result copies j = 1 and x = 3 back.`],
           [`1 1 3 3`, `Correct. j ends at 1 and x at 3 (they start at 0) and are copied back to i and a[2].`],
-          [`3 1 5 3`, `That is value-result.`],
-          [`3 1 0 3`, `That is by reference.`]
+          [`3 1 5 3`, `3 1 5 3 is value-result: the initial values (2 and 2) are copied in. By result the formals start at 0, so j = 1 and x = 3.`],
+          [`3 1 0 3`, `3 1 0 3 is pass by reference: x is a[2], so a[2] := 0 leaves 0. By result copies x = 0 + 3 = 3 back into a[2].`]
         ], a: 1, src: `Lecture 9 example` },
         { q: `Lecture example with pass-by-VALUE-RESULT: output after the call?`, o: [
           [`3 1 5 3`, `Correct. j=3 is copied to i and x=5 to a[2], overwriting the a[2]:=0.`],
-          [`2 1 0 3`, `By value.`],
-          [`1 1 3 3`, `By result.`],
-          [`3 1 0 3`, `By reference.`]
+          [`2 1 0 3`, `2 1 0 3 is pass by value: nothing is copied back. Value-result copies j = 3 to i and x = 5 to a[2] at return.`],
+          [`1 1 3 3`, `1 1 3 3 is pass by result, where formals start at 0. Value-result copies the initial values in, so j = 2+1 = 3 and x = 2+3 = 5.`],
+          [`3 1 0 3`, `3 1 0 3 is pass by reference: x aliases a[2], so a[2] := 0 is final. Value-result copies x = 5 back over that 0.`]
         ], a: 0, src: `Lecture 9 example` },
         { q: `y = x + 5; i = y; z = i; w = z * 3; → y = x + 5; i = y; w = y * 3; is an example of:`, o: [
-          [`constant folding`, `No constants are folded.`],
-          [`redundant load and store elimination`, `Correct.`],
-          [`loop optimization`, `No loop.`],
-          [`combine operations`, `Not the slide's label.`]
+          [`constant folding`, `Constant folding computes constant expressions (x = 2 * 3 → x = 6); here no constant is computed, a copy is removed.`],
+          [`redundant load and store elimination`, `Correct. z = i only copies y's value again, so it is dropped and w uses y directly. This is the slide's example of redundant load and store elimination (L9, Peephole techniques).`],
+          [`loop optimization`, `There is no loop in this code; loop optimization moves work out of loops, like computing arr.length once.`],
+          [`combine operations`, `Combine operations merges several operations into one equivalent, e.g. (2*3)+5 → 11. Here a redundant copy is removed.`]
         ], a: 1 },
         { q: `"Loop optimization is necessary to improve cache performance and reduce overheads."`, o: [
-          [`True`, `Correct (lecture wording).`],
-          [`False`, `The slide says exactly this.`],
-          [`True only for Java`, `No.`],
-          [`Only for recursion`, `No.`]
+          [`True`, `Correct. The slide says loop optimization plays an important role in improving cache performance and reducing the overheads of executing loops (L9, Loop optimization).`],
+          [`False`, `The statement repeats the slide: loop optimization improves cache performance and reduces loop overheads.`],
+          [`True only for Java`, `The slide's example is Java, but the idea applies to loops in any language; nothing limits it to Java.`],
+          [`Only for recursion`, `Loop optimization targets loops (e.g. computing arr.length once before the loop), not recursion.`]
         ], a: 0, src: `Final revision sheet` }
       ]
     }
@@ -1377,28 +1377,28 @@ void main()
           { type: `written`, q: `Given S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε. Construct its LL(1) predictive parser, then give the parsing actions for the input string (dc)ac.`, ans: `No left recursion, so no transformation is needed.<table><tr><th>NT</th><th>FIRST</th><th>FOLLOW</th></tr><tr><td>S</td><td>{ (, a, d }</td><td>{ $, ), b }</td></tr><tr><td>U</td><td>{ (, a, d }</td><td>{ a, c, $, ), b }</td></tr><tr><td>V</td><td>{ a, ε }</td><td>{ c, $, ), b }</td></tr><tr><td>W</td><td>{ c, ε }</td><td>{ $, ), b }</td></tr></table>Parsing table:<table><tr><th></th><th>(</th><th>a</th><th>d</th><th>c</th><th>b</th><th>)</th><th>$</th></tr><tr><td>S</td><td>S→UVW</td><td>S→UVW</td><td>S→UVW</td><td></td><td></td><td></td><td></td></tr><tr><td>U</td><td>U→(S)</td><td>U→aSb</td><td>U→d</td><td></td><td></td><td></td><td></td></tr><tr><td>V</td><td></td><td>V→aV</td><td></td><td>V→ε</td><td>V→ε</td><td>V→ε</td><td>V→ε</td></tr><tr><td>W</td><td></td><td></td><td></td><td>W→cW</td><td>W→ε</td><td>W→ε</td><td>W→ε</td></tr></table>Parsing (dc)ac:<table><tr><th>Stack</th><th>Input</th><th>Action</th></tr><tr><td>S$</td><td>(dc)ac$</td><td>S→UVW</td></tr><tr><td>UVW$</td><td>(dc)ac$</td><td>U→(S)</td></tr><tr><td>(S)VW$</td><td>(dc)ac$</td><td>match (</td></tr><tr><td>S)VW$</td><td>dc)ac$</td><td>S→UVW</td></tr><tr><td>UVW)VW$</td><td>dc)ac$</td><td>U→d</td></tr><tr><td>dVW)VW$</td><td>dc)ac$</td><td>match d</td></tr><tr><td>VW)VW$</td><td>c)ac$</td><td>V→ε</td></tr><tr><td>W)VW$</td><td>c)ac$</td><td>W→cW</td></tr><tr><td>cW)VW$</td><td>c)ac$</td><td>match c</td></tr><tr><td>W)VW$</td><td>)ac$</td><td>W→ε</td></tr><tr><td>)VW$</td><td>)ac$</td><td>match )</td></tr><tr><td>VW$</td><td>ac$</td><td>V→aV</td></tr><tr><td>aVW$</td><td>ac$</td><td>match a</td></tr><tr><td>VW$</td><td>c$</td><td>V→ε</td></tr><tr><td>W$</td><td>c$</td><td>W→cW</td></tr><tr><td>cW$</td><td>c$</td><td>match c</td></tr><tr><td>W$</td><td>$</td><td>W→ε</td></tr><tr><td>$</td><td>$</td><td>accept</td></tr></table>`, why: `FOLLOW(S) gets $ (start), ) from U → (S) and b from U → aSb. FOLLOW(U) = FIRST(VW) − ε ∪ FOLLOW(S) because V and W are nullable. FOLLOW(V) = {c} ∪ FOLLOW(S). FOLLOW(W) = FOLLOW(S). ε-productions go under the FOLLOW symbols. No cell has two entries, so the grammar is LL(1) and the string is accepted.` }
         ]},
         { title: `Q2-I · Choose the correct answer`, marks: `15 marks`, items: [
-          { type: `mcq`, q: `……… is a process of finding a parse tree for a string of tokens.`, o: [`Analysis`, `Recognition`, `Parsing`, `Tokenization`], a: 2, why: `Parsing = finding a parse tree (L4).` },
-          { type: `mcq`, q: `All of the following are phases of a compiler except:`, o: [`syntax analysis`, `symbol table`, `scanner`, `code optimization`], a: 1, why: `The symbol table is a data structure shared by the phases (L1).` },
-          { type: `mcq`, q: `Leaf nodes of a parsing tree indicate ……… of a context free grammar.`, o: [`terminals`, `non-terminals`, `start symbol`, `production rules`], a: 0, why: `Leaves = terminals; interior nodes = non-terminals (L4).` },
-          { type: `mcq`, q: `……… is a major problem when creating a symbol table per scope.`, o: [`Redundant code`, `Peephole optimization`, `Ambiguity`, `Memory overhead`], a: 3, why: `Each hash table costs memory (L8). The pencil mark on (b) is wrong.` },
-          { type: `mcq`, q: `Annotated syntax tree is the input to ……… phase.`, o: [`syntax analysis`, `code optimization`, `semantic analysis`, `derivation`], a: 1, why: `Semantic analysis outputs the annotated tree and the source code optimizer takes it (L1; revision sheet Q37).` },
-          { type: `mcq`, q: `The following is not a part of a context free grammar:`, o: [`start symbol`, `non-terminal symbols`, `end symbol`, `terminal symbols`], a: 2, why: `A CFG has V, Σ, P, S only (L4).` },
-          { type: `mcq`, q: `When only one rightmost or only one leftmost parsing tree is produced for a sentence, the grammar is…`, o: [`ambiguous`, `unambiguous`, `static`, `dynamic`], a: 1, why: `Ambiguous means more than one tree (L4).` },
-          { type: `mcq`, q: `Attributes that get their values from their child nodes of the syntax tree are called ……… attributes.`, o: [`static`, `dynamic`, `synthesized`, `inherited`], a: 2, why: `L7.` },
-          { type: `mcq`, q: `……… is the input to syntax analysis phase.`, o: [`stream of tokens`, `syntax tree`, `annotated syntax tree`, `assembly code`], a: 0, why: `The scanner's tokens (L1, L4).` },
-          { type: `mcq`, q: `The rule A→Ab | c will cause the grammar to be…`, o: [`ambiguous`, `left recursive`, `dynamic`, `all of the mentioned`], a: 1, why: `A appears as the left-most symbol of its own production (L5).` },
-          { type: `mcq`, q: `Attaching attributes to each nonterminal of the CFG will produce:`, o: [`annotated syntax tree`, `unambiguous CFG`, `ambiguous CFG`, `attribute grammar`], a: 3, why: `Revision sheet Q53: attribute grammar is generated by attaching attributes to each non-terminal of the CFG. The pencil mark on (a) is wrong: the annotated tree comes from evaluating the attributes on a tree.` },
-          { type: `mcq`, q: `The following is a major difference between phases of compilers and interpreters:`, o: [`code optimization`, `intermediate code generation`, `semantic analysis`, `none of the mentioned`], a: 1, why: `Compilers generate intermediate object code; interpreters do not (L1 table).` },
-          { type: `mcq`, q: `The process of generating tokens is typically described using………`, o: [`finite automata`, `regular expressions`, `syntax directed translation`, `a and b`], a: 3, why: `Regular expressions specify tokens; finite automata recognize them (L2).` },
-          { type: `mcq`, q: `The following condition will cause any automaton to be NFA:`, o: [`having an ε`, `having more than one accept state`, `having loops`, `all of the mentioned`], a: 0, why: `Loops and several accept states are allowed in DFAs (L3).` },
-          { type: `mcq`, q: `The lexical analyzer takes …… as input and produces a list of ……. as output`, o: [`machine code, tokens`, `tokens, source code`, `source code, tokens`, `a and b`], a: 2, why: `L2.` }
+          { type: `mcq`, q: `……… is a process of finding a parse tree for a string of tokens.`, o: [`Analysis`, `Recognition`, `Parsing`, `Tokenization`], a: 2, why: `Parsing (syntax analysis) is the process of finding a parse tree for the string of tokens produced by the scanner (L4).`, ow: [`Analysis is the whole front end (lexical, syntax and semantic analysis); it is too general to name tree-building in particular.`, `A recognizer only answers yes or no (string accepted or not); it does not have to build a parse tree.`, null, `Tokenization is lexical analysis: it groups characters into tokens, before any parse tree exists.`] },
+          { type: `mcq`, q: `All of the following are phases of a compiler except:`, o: [`syntax analysis`, `symbol table`, `scanner`, `code optimization`], a: 1, why: `The symbol table is a data structure shared by the phases (L1).`, ow: [`Syntax analysis (the parser) is phase 2 of the compiler, after lexical analysis.`, null, `The scanner is the lexical analyzer, phase 1 of the compiler.`, `Code optimization is a phase: the source code optimizer (and the target code optimizer) are in the phase list of L1.`] },
+          { type: `mcq`, q: `Leaf nodes of a parsing tree indicate ……… of a context free grammar.`, o: [`terminals`, `non-terminals`, `start symbol`, `production rules`], a: 0, why: `Leaves = terminals; interior nodes = non-terminals (L4).`, ow: [null, `Non-terminals label the interior nodes of a parse tree, since each one is expanded by a production.`, `The start symbol labels the root of the parse tree, not the leaves.`, `Productions are not node labels; each interior node with its children shows one production being applied.`] },
+          { type: `mcq`, q: `……… is a major problem when creating a symbol table per scope.`, o: [`Redundant code`, `Peephole optimization`, `Ambiguity`, `Memory overhead`], a: 3, why: `Each hash table costs memory (L8). The pencil mark on (b) is wrong.`, ow: [`Redundant code is something the optimizer removes; it has nothing to do with how symbol tables are organized.`, `Peephole optimization is a code optimization technique (L9), not a problem of symbol tables.`, `Ambiguity is a property of grammars (more than one parse tree, L4), not of symbol tables.`, null] },
+          { type: `mcq`, q: `Annotated syntax tree is the input to ……… phase.`, o: [`syntax analysis`, `code optimization`, `semantic analysis`, `derivation`], a: 1, why: `Semantic analysis outputs the annotated tree and the source code optimizer takes it (L1; revision sheet Q37).`, ow: [`Syntax analysis takes tokens and produces the (plain) syntax tree; the annotated tree comes later.`, null, `Semantic analysis produces the annotated syntax tree; its input is the syntax tree from the parser.`, `Derivation is not a compiler phase; it is the sequence of production steps that generates a string from a CFG (L4).`] },
+          { type: `mcq`, q: `The following is not a part of a context free grammar:`, o: [`start symbol`, `non-terminal symbols`, `end symbol`, `terminal symbols`], a: 2, why: `A CFG is the 4-tuple (V, Σ, P, S): non-terminals, terminals, productions and a start symbol. There is no "end symbol" (L4).`, ow: [`The start symbol S is one of the four parts of a CFG (V, Σ, P, S).`, `The non-terminals V are one of the four parts of a CFG (V, Σ, P, S).`, null, `The terminals Σ are one of the four parts of a CFG (V, Σ, P, S).`] },
+          { type: `mcq`, q: `When only one rightmost or only one leftmost parsing tree is produced for a sentence, the grammar is…`, o: [`ambiguous`, `unambiguous`, `static`, `dynamic`], a: 1, why: `A grammar is unambiguous when every sentence has exactly one leftmost (or one rightmost) derivation, i.e. one parse tree; ambiguous means more than one (L4).`, ow: [`Ambiguous is the opposite case: some sentence has MORE than one leftmost (or rightmost) derivation/parse tree (L4).`, null, `Static is a binding/scoping term (L8), not a property of grammars.`, `Dynamic is a binding/scoping term (L8), not a property of grammars.`] },
+          { type: `mcq`, q: `Attributes that get their values from their child nodes of the syntax tree are called ……… attributes.`, o: [`static`, `dynamic`, `synthesized`, `inherited`], a: 2, why: `Synthesized attributes are computed from the attribute values of the node's children, so values flow up the tree (L7, attribute grammars).`, ow: [`"Static" describes binding/scoping fixed by the program text (L8), not a kind of attribute.`, `"Dynamic" describes binding resolved at run time (L8), not a kind of attribute.`, null, `Inherited attributes take their values from the parent and/or siblings, so values flow down or across the tree (L7).`] },
+          { type: `mcq`, q: `……… is the input to syntax analysis phase.`, o: [`stream of tokens`, `syntax tree`, `annotated syntax tree`, `assembly code`], a: 0, why: `The parser's input is the stream of tokens produced by the scanner (lexical analyzer); its output is the syntax tree (L1, L4).`, ow: [null, `The syntax tree is the OUTPUT of syntax analysis and the input of semantic analysis.`, `The annotated syntax tree is the output of semantic analysis, two steps later.`, `Assembly code is produced at the end by the code generator (target code).`] },
+          { type: `mcq`, q: `The rule A→Ab | c will cause the grammar to be…`, o: [`ambiguous`, `left recursive`, `dynamic`, `all of the mentioned`], a: 1, why: `A appears as the left-most symbol of its own production (L5).`, ow: [`Ambiguity needs some string with two parse trees; A → Ab | c generates c b* with exactly one tree each.`, null, `"Dynamic" is a binding term (L8), not a grammar property.`, `Only left recursion applies; the grammar is not ambiguous and "dynamic" is not a grammar property.`] },
+          { type: `mcq`, q: `Attaching attributes to each nonterminal of the CFG will produce:`, o: [`annotated syntax tree`, `unambiguous CFG`, `ambiguous CFG`, `attribute grammar`], a: 3, why: `Revision sheet Q53: attribute grammar is generated by attaching attributes to each non-terminal of the CFG. The pencil mark on (a) is wrong: the annotated tree comes from evaluating the attributes on a tree.`, ow: [`The annotated syntax tree is obtained later by evaluating the attributes on a parse tree, not by attaching them to the grammar.`, `Attaching attributes does not change the grammar's productions, so it does not make the CFG unambiguous.`, `Attaching attributes does not change the grammar's productions, so it does not make the CFG ambiguous.`, null] },
+          { type: `mcq`, q: `The following is a major difference between phases of compilers and interpreters:`, o: [`code optimization`, `intermediate code generation`, `semantic analysis`, `none of the mentioned`], a: 1, why: `Compilers generate intermediate object code; interpreters do not (L1 table).`, ow: [`Both compilers and interpreters can optimize code; the L1 table does not use this as the difference.`, null, `Both compilers and interpreters must do semantic checking, so it is not a difference.`, `There is a difference in the L1 table: compilers generate intermediate object code, interpreters do not.`] },
+          { type: `mcq`, q: `The process of generating tokens is typically described using………`, o: [`finite automata`, `regular expressions`, `syntax directed translation`, `a and b`], a: 3, why: `Regular expressions specify tokens; finite automata recognize them (L2).`, ow: [`Finite automata are only half: they recognize tokens, while regular expressions specify the token patterns (L2).`, `Regular expressions are only half: they specify the patterns, while finite automata implement the recognizer (L2).`, `Syntax-directed translation attaches semantic rules to CFG productions (L7); it is not used for tokens.`, null] },
+          { type: `mcq`, q: `The following condition will cause any automaton to be NFA:`, o: [`having an ε`, `having more than one accept state`, `having loops`, `all of the mentioned`], a: 0, why: `Loops and several accept states are allowed in DFAs (L3).`, ow: [null, `A DFA may have several accept states; that alone does not make it nondeterministic (L3).`, `A DFA may have loops (e.g. a self-loop on a state); loops do not make it an NFA (L3).`, `Only ε-transitions force an NFA; several accept states and loops are allowed in DFAs.`] },
+          { type: `mcq`, q: `The lexical analyzer takes …… as input and produces a list of ……. as output`, o: [`machine code, tokens`, `tokens, source code`, `source code, tokens`, `a and b`], a: 2, why: `The lexical analyzer (scanner) reads the source program's characters and groups them into lexemes, producing a stream of tokens for the parser (L2).`, ow: [`Machine code is the final output of the whole compiler, not the input of the lexical analyzer.`, `Reversed: tokens are the scanner's output, and source code is its input.`, null, `(b) is reversed, so "a and b" cannot be right; only source code → tokens is correct.`] }
         ]},
         { title: `Q2-II · True or False`, marks: `5 marks`, items: [
-          { type: `tf`, q: `Dynamic object binding is done based on the structure of the parsing tree such as braces.`, a: 1, why: `That is STATIC binding. Dynamic binding uses the most recently executed declaration (L8).` },
-          { type: `tf`, q: `(X | Y)* is equivalent to X* | Y*.`, a: 1, why: `(X|Y)* contains XY; X*|Y* does not (L2).` },
-          { type: `tf`, q: `A leftmost parsing tree grows from the left side.`, a: 1, why: `The doctor's revision-sheet key (Q52) says a leftmost parsing tree grows from the RIGHT side, so answer False. (The lectures don't state this rule directly.)` },
-          { type: `tf`, q: `Combine operations is one of the techniques of code optimization.`, a: 0, why: `It is one of the three peephole techniques (L9). The pencil ✗ on the scan is wrong.` },
-          { type: `tf`, q: `SDT is the process of using context free grammar along the syntax tree to get annotated syntax tree.`, a: 0, why: `SDT attaches rules to CFG productions and evaluates them on the tree, giving the annotated syntax tree (L7; revision sheet T/F 13).` }
+          { type: `tf`, q: `Dynamic object binding is done based on the structure of the parsing tree such as braces.`, a: 1, why: `That is STATIC binding. Dynamic binding uses the most recently executed declaration (L8).`, ow: [`Scoping by the structure of the tree (braces) is STATIC binding; dynamic binding uses the most recently executed declaration at run time (L8).`, null] },
+          { type: `tf`, q: `(X | Y)* is equivalent to X* | Y*.`, a: 1, why: `(X|Y)* contains mixed strings such as XY, while X*|Y* contains only strings of all X's or all Y's, so they differ (L2).`, ow: [`(X|Y)* includes mixed strings such as XY, but X*|Y* contains only all-X or all-Y strings, so they are not equal (L2).`, null] },
+          { type: `tf`, q: `A leftmost parsing tree grows from the left side.`, a: 1, why: `The doctor's revision-sheet key (Q52) says a leftmost parsing tree grows from the RIGHT side, so answer False. (The lectures don't state this rule directly.)`, ow: [`The revision-sheet key (Q52) used by the professor says a leftmost parsing tree grows from the RIGHT side, so this statement is False.`, null] },
+          { type: `tf`, q: `Combine operations is one of the techniques of code optimization.`, a: 0, why: `It is one of the three peephole techniques (L9). The pencil ✗ on the scan is wrong.`, ow: [null, `Combine operations is one of the three peephole techniques in L9 (with redundant load/store elimination and constant folding).`] },
+          { type: `tf`, q: `SDT is the process of using context free grammar along the syntax tree to get annotated syntax tree.`, a: 0, why: `SDT attaches rules to CFG productions and evaluates them on the tree, giving the annotated syntax tree (L7; revision sheet T/F 13).`, ow: [null, `SDT does produce the annotated syntax tree: semantic rules attached to CFG productions are evaluated on the tree (L7).`] }
         ]}
       ]
     },
@@ -1408,28 +1408,28 @@ void main()
       note: `No official answer key was published. The answers are worked out from the lectures and the doctor's final revision sheet (which contains most of these MCQs with answers).`,
       sections: [
         { title: `Q1-I · Choose the correct answer`, marks: `10 marks · 1 each`, items: [
-          { type: `mcq`, q: `Inherited attributes get their attribute values from`, o: [`child nodes`, `leaves nodes`, `parent nodes`, `semantic nodes`], a: 2, why: `Parent (and/or siblings) (L7; sheet Q42).` },
-          { type: `mcq`, q: `The phase Syntax Analysis is modeled on the basis of……….`, o: [`high level language`, `low level language`, `context free grammar`, `Regular grammar`], a: 2, why: `L4.` },
-          { type: `mcq`, q: `Parsing is also called………analysis`, o: [`semantic`, `lexical`, `syntax`, `none of the mentioned`], a: 2, why: `L4.` },
-          { type: `mcq`, q: `Compiler translates the source code to……….`, o: [`machine code`, `executable code`, `binary code`, `both a and c`], a: 3, why: `Revision sheet Q12 key: both A and C.` },
-          { type: `mcq`, q: `The lexical analyzer takes ……. as input and produces a list of …….as output`, o: [`machine code, tokens`, `tokens, source code`, `source code, tokens`, `both a and b`], a: 2, why: `L2.` },
-          { type: `mcq`, q: `………… is not a phase of a compiler`, o: [`Scanner`, `Symbol table`, `Parser`, `Code optimizer`], a: 1, why: `L1.` },
-          { type: `mcq`, q: `What does a syntax analyzer do?`, o: [`maintain symbol table`, `collect data types`, `create parsing tree`, `none of the mentioned`], a: 2, why: `L4; sheet Q27.` },
-          { type: `mcq`, q: `One or more parse tree for some sentence, that is ………grammar.`, o: [`unambiguous`, `ambiguous`, `a or b`, `none of the mentioned`], a: 1, why: `Revision sheet Q28 key: ambiguous (the intended meaning is "more than one").` },
-          { type: `mcq`, q: `A compiler needs …….. types of storage`, o: [`two`, `three`, `four`, `five`], a: 1, why: `Static, stack, heap (L9).` },
-          { type: `mcq`, q: `Grammar of the programming is checked at ……… phase of compiler.`, o: [`Syntax analysis`, `Semantic analysis`, `Code generation`, `Code optimization`], a: 0, why: `L4.` }
+          { type: `mcq`, q: `Inherited attributes get their attribute values from`, o: [`child nodes`, `leaves nodes`, `parent nodes`, `semantic nodes`], a: 2, why: `Inherited attributes take their values from the parent node and/or sibling nodes, so values flow down the tree (L7; sheet Q42).`, ow: [`Getting values from child nodes describes SYNTHESIZED attributes, not inherited ones (L7).`, `Leaves hold terminals whose attributes usually come from the lexer; inherited attributes come from the parent/siblings.`, null, `"Semantic nodes" is not a term in the course; inherited values come from the parent and/or siblings (L7).`] },
+          { type: `mcq`, q: `The phase Syntax Analysis is modeled on the basis of……….`, o: [`high level language`, `low level language`, `context free grammar`, `Regular grammar`], a: 2, why: `Syntax analysis is based on a context-free grammar: the parser checks the token stream against the CFG productions and builds the parse tree (L4).`, ow: [`The high-level language is the source being analyzed, not the formal model the parser is built on.`, `Low-level (machine) language is the target of the compiler, not the model of syntax analysis.`, null, `Regular grammars/expressions model lexical analysis (tokens, L2); they cannot describe nested syntax such as balanced parentheses.`] },
+          { type: `mcq`, q: `Parsing is also called………analysis`, o: [`semantic`, `lexical`, `syntax`, `none of the mentioned`], a: 2, why: `Parsing is another name for syntax analysis, phase 2: it checks the token stream against the grammar and builds the parse tree (L4).`, ow: [`Semantic analysis is phase 3: it checks meaning (types, declarations) on the syntax tree after parsing.`, `Lexical analysis is scanning (phase 1), which produces the tokens that the parser then reads.`, null, `Parsing has a name in the list: it is syntax analysis (L4).`] },
+          { type: `mcq`, q: `Compiler translates the source code to……….`, o: [`machine code`, `executable code`, `binary code`, `both a and c`], a: 3, why: `Revision sheet Q12 key: both A and C. The compiler translates source code into machine code, and machine code is binary code (L1).`, ow: [`Machine code alone is only half of the key; the revision-sheet key (Q12) is "both a and c" since machine code is binary code.`, `The revision-sheet key (Q12) does not choose executable code; the compiler output named there is machine (binary) code.`, `Binary code alone is only half of the key; machine code and binary code are the same thing, so the key is "both a and c".`, null] },
+          { type: `mcq`, q: `The lexical analyzer takes ……. as input and produces a list of …….as output`, o: [`machine code, tokens`, `tokens, source code`, `source code, tokens`, `both a and b`], a: 2, why: `The lexical analyzer (scanner) reads the source program's characters and groups them into lexemes, producing a stream of tokens for the parser (L2).`, ow: [`Machine code is the final output of the whole compiler, not the input of the lexical analyzer.`, `Reversed: tokens are the scanner's output, and source code is its input.`, null, `(b) is reversed, so "both a and b" cannot be right; only source code → tokens is correct.`] },
+          { type: `mcq`, q: `………… is not a phase of a compiler`, o: [`Scanner`, `Symbol table`, `Parser`, `Code optimizer`], a: 1, why: `The symbol table is a data structure shared by all the phases, not a phase itself; scanner, parser and code optimizer are phases (L1).`, ow: [`The scanner is the lexical analyzer, phase 1 of the compiler.`, null, `The parser is the syntax analyzer, phase 2 of the compiler.`, `The code optimizer is a phase (source code optimizer and target code optimizer, L1).`] },
+          { type: `mcq`, q: `What does a syntax analyzer do?`, o: [`maintain symbol table`, `collect data types`, `create parsing tree`, `none of the mentioned`], a: 2, why: `The syntax analyzer (parser) checks the tokens against the grammar and creates the parse (syntax) tree (L4; sheet Q27).`, ow: [`The symbol table is maintained by all the phases together; it is not the job that defines the syntax analyzer.`, `Collecting type information is done during semantic analysis (type checking), not syntax analysis.`, null, `The syntax analyzer does have a defining job: creating the parse tree.`] },
+          { type: `mcq`, q: `One or more parse tree for some sentence, that is ………grammar.`, o: [`unambiguous`, `ambiguous`, `a or b`, `none of the mentioned`], a: 1, why: `Revision sheet Q28 key: ambiguous (the intended meaning is "more than one").`, ow: [`Unambiguous means exactly one parse tree for every sentence, not more than one.`, null, `The two are opposites, so "a or b" cannot be the definition; more than one tree means ambiguous.`, `One of the options fits: more than one parse tree for a sentence means the grammar is ambiguous (L4).`] },
+          { type: `mcq`, q: `A compiler needs …….. types of storage`, o: [`two`, `three`, `four`, `five`], a: 1, why: `The compiler uses three types of storage allocation: static (globals, fixed at compile time), stack (activation records) and heap (dynamic data) (L9).`, ow: [`Two misses one of the three: static, stack and heap allocation (L9).`, null, `There are only three: static, stack and heap (L9).`, `There are only three: static, stack and heap (L9).`] },
+          { type: `mcq`, q: `Grammar of the programming is checked at ……… phase of compiler.`, o: [`Syntax analysis`, `Semantic analysis`, `Code generation`, `Code optimization`], a: 0, why: `Syntax analysis checks that the token stream follows the grammar (CFG) of the programming language and builds the parse tree (L4).`, ow: [null, `Semantic analysis checks meaning (types, declarations, scope) after the grammar has already been checked.`, `Code generation produces target code from intermediate code; it does not check the grammar.`, `Code optimization improves the code's speed/size; it assumes the program is already grammatically correct.`] }
         ]},
         { title: `Q1-II · True or False`, marks: `10 marks · 1 each`, items: [
-          { type: `tf`, q: `Derivation can only be started with the start symbol of the context free grammar.`, a: 0, why: `Strings are derived from the start symbol (L4).` },
-          { type: `tf`, q: `Any loop causes the automaton to be nondeterministic.`, a: 1, why: `Only a loop followed by a transition on the SAME symbol does; DFAs can have loops (L3).` },
-          { type: `tf`, q: `Testing is not a phase of compilers.`, a: 0, why: `L1.` },
-          { type: `tf`, q: `The expression aε = εa = ε.`, a: 1, why: `aε = εa = a; ε is the neutral element for concatenation (L2).` },
-          { type: `tf`, q: `A leftmost parsing tree grows from the right hand side.`, a: 0, why: `Matches the doctor's revision-sheet key (Q52: right).` },
-          { type: `tf`, q: `Interpreters generate intermediate code.`, a: 1, why: `Interpreters generate no intermediate object code (L1).` },
-          { type: `tf`, q: `Synthesized attributes are attributes that get values from the attribute values of their child.`, a: 0, why: `L7.` },
-          { type: `tf`, q: `A compiler indicates the syntax and runtime errors.`, a: 1, why: `A compiler reports syntax errors; runtime errors appear only during execution (revision sheet Q29 key: syntax only).` },
-          { type: `tf`, q: `Compilers take long time to execute source code.`, a: 1, why: `Compilers take long to ANALYZE, but execution is faster (L1; sheet T/F 2 = False).` },
-          { type: `tf`, q: `Order is not important in concatenation operation of two alphabets.`, a: 1, why: `L1L2 ≠ L2L1 (L2).` }
+          { type: `tf`, q: `Derivation can only be started with the start symbol of the context free grammar.`, a: 0, why: `Strings are derived from the start symbol (L4).`, ow: [null, `Every derivation starts from the start symbol S; the language of the grammar is the set of strings derived from S (L4).`] },
+          { type: `tf`, q: `Any loop causes the automaton to be nondeterministic.`, a: 1, why: `Only a loop followed by a transition on the SAME symbol does; DFAs can have loops (L3).`, ow: [`A DFA may contain loops; only a loop on a symbol followed by another transition on the SAME symbol makes it nondeterministic (L3).`, null] },
+          { type: `tf`, q: `Testing is not a phase of compilers.`, a: 0, why: `The compiler phases are lexical, syntax and semantic analysis, intermediate code generation, optimization and code generation; testing is a software-engineering activity (L1).`, ow: [null, `Testing is not in the L1 phase list (lexical, syntax, semantic analysis, intermediate code, optimization, code generation).`] },
+          { type: `tf`, q: `The expression aε = εa = ε.`, a: 1, why: `aε = εa = a; ε is the neutral element for concatenation (L2).`, ow: [`ε is the identity for concatenation: aε = εa = a, not ε (L2 algebraic properties).`, null] },
+          { type: `tf`, q: `A leftmost parsing tree grows from the right hand side.`, a: 0, why: `Matches the professor's revision-sheet key (Q52), which says a leftmost parsing tree grows from the right side. The lectures do not state this rule directly.`, ow: [null, `The revision-sheet key (Q52) used by the professor says a leftmost parsing tree grows from the RIGHT side, so the statement is True.`] },
+          { type: `tf`, q: `Interpreters generate intermediate code.`, a: 1, why: `Interpreters generate no intermediate object code (L1).`, ow: [`In the L1 comparison table, compilers generate intermediate object code and interpreters do not.`, null] },
+          { type: `tf`, q: `Synthesized attributes are attributes that get values from the attribute values of their child.`, a: 0, why: `Synthesized attributes are computed from the attribute values of the node's children, so values flow up the tree (L7).`, ow: [null, `That is exactly the L7 definition of synthesized attributes; values from the parent/siblings would be inherited.`] },
+          { type: `tf`, q: `A compiler indicates the syntax and runtime errors.`, a: 1, why: `A compiler reports syntax errors; runtime errors appear only during execution (revision sheet Q29 key: syntax only).`, ow: [`A compiler reports syntax errors at compile time, but runtime errors only appear while the program executes (sheet Q29 key: syntax only).`, null] },
+          { type: `tf`, q: `Compilers take long time to execute source code.`, a: 1, why: `Compilers take long to ANALYZE, but execution is faster (L1; sheet T/F 2 = False).`, ow: [`Compilers take a long time to ANALYZE the source, but the compiled program executes faster than with an interpreter (L1).`, null] },
+          { type: `tf`, q: `Order is not important in concatenation operation of two alphabets.`, a: 1, why: `Concatenation is not commutative: L1L2 puts strings of L1 first, so in general L1L2 ≠ L2L1 (e.g. ab ≠ ba) (L2).`, ow: [`Concatenation is not commutative: in general L1L2 ≠ L2L1, e.g. {a}{b} = {ab} but {b}{a} = {ba} (L2).`, null] }
         ]},
         { title: `Q2 · Written`, marks: `30 marks · 6 each`, items: [
           { type: `written`, q: `a) Show by figure the phases of the compiler.`, ans: `<pre>Source code
@@ -1472,28 +1472,28 @@ Tree 1:       E                Tree 2:     E
       note: `No official answer key. Solved from the lectures and the revision sheet. The Q2-b NFA is the same as in the 2024/25 (50) paper (the small scan was checked against it).`,
       sections: [
         { title: `Q1-I · Choose the correct answer`, marks: `10 marks · 1 each`, items: [
-          { type: `mcq`, q: `A compiler indicates the ………error.`, o: [`syntax`, `logic`, `runtime`, `all of the mentioned`], a: 0, why: `Revision sheet Q29 key: syntax.` },
-          { type: `mcq`, q: `Parsing is also called………analysis`, o: [`semantic`, `lexical`, `syntax`, `none of the mentioned`], a: 2, why: `L4.` },
-          { type: `mcq`, q: `Keywords are recognized in a compiler during…………`, o: [`code generation`, `data flow analysis`, `lexical analysis`, `program parsing`], a: 2, why: `Keywords are tokens (L2).` },
-          { type: `mcq`, q: `Symbol table can be used for……………`, o: [`storage allocation`, `code execution`, `context free grammar`, `none`], a: 0, why: `Revision sheet Q10: storage allocation, type checking, suppressing duplicate errors. Only storage allocation appears here.` },
-          { type: `mcq`, q: `Grammar of the programming is checked at ………… phase of compiler.`, o: [`syntax analysis`, `semantic analysis`, `code generation`, `code optimization`], a: 0, why: `L4.` },
-          { type: `mcq`, q: `The following is not a phase of a compiler`, o: [`syntax analysis`, `semantic analysis`, `testing`, `optimization`], a: 2, why: `L1.` },
-          { type: `mcq`, q: `Non-leaf nodes of a syntax tree represent…….`, o: [`nonterminal symbols`, `terminal symbols`, `start symbols`, `none`], a: 0, why: `Interior nodes are non-terminals (L4).` },
-          { type: `mcq`, q: `The automaton with ε symbol is said to be……`, o: [`DFA`, `NFA`, `FFA`, `none`], a: 1, why: `L3.` },
-          { type: `mcq`, q: `A compiler needs …….. types of storage`, o: [`two`, `three`, `four`, `five`], a: 1, why: `Static, stack, heap (L9).` },
-          { type: `mcq`, q: `The following is not a method of optimization`, o: [`constant folding`, `combine operations`, `a and b`, `annotated syntax tree`], a: 3, why: `Constant folding and combine operations are peephole techniques (L9).` }
+          { type: `mcq`, q: `A compiler indicates the ………error.`, o: [`syntax`, `logic`, `runtime`, `all of the mentioned`], a: 0, why: `A compiler detects and reports syntax errors while analyzing the program; logic and runtime errors are not caught at compile time (revision sheet Q29 key: syntax).`, ow: [null, `Logic errors give wrong results from valid code; the compiler cannot know what the programmer meant, so it cannot report them.`, `Runtime errors (e.g. division by zero) appear only while the program executes, after compilation.`, `Only syntax errors are reported by the compiler in the revision-sheet key (Q29); logic and runtime errors are not.`] },
+          { type: `mcq`, q: `Parsing is also called………analysis`, o: [`semantic`, `lexical`, `syntax`, `none of the mentioned`], a: 2, why: `Parsing is another name for syntax analysis, phase 2: it checks the token stream against the grammar and builds the parse tree (L4).`, ow: [`Semantic analysis is phase 3: it checks meaning (types, declarations) on the syntax tree after parsing.`, `Lexical analysis is scanning (phase 1), which produces the tokens that the parser then reads.`, null, `Parsing has a name in the list: it is syntax analysis (L4).`] },
+          { type: `mcq`, q: `Keywords are recognized in a compiler during…………`, o: [`code generation`, `data flow analysis`, `lexical analysis`, `program parsing`], a: 2, why: `Keywords such as if, while and int are tokens; the lexical analyzer recognizes them while grouping characters into lexemes (L2).`, ow: [`Code generation is the last phase; by then keywords were recognized long ago, as tokens in lexical analysis.`, `Data-flow analysis is part of optimization; it works on intermediate code, not on keywords in the source text.`, null, `The parser receives keywords already recognized as tokens by the scanner; it checks their order against the grammar.`] },
+          { type: `mcq`, q: `Symbol table can be used for……………`, o: [`storage allocation`, `code execution`, `context free grammar`, `none`], a: 0, why: `Revision sheet Q10: storage allocation, type checking, suppressing duplicate errors. Only storage allocation appears here.`, ow: [null, `The symbol table is a compile-time structure; executing the code is not one of its uses (sheet Q10: storage allocation, type checking, suppressing duplicate errors).`, `A context-free grammar specifies the syntax (L4); the symbol table stores names and their attributes, not grammar rules.`, `One option is a listed use: storage allocation (revision sheet Q10).`] },
+          { type: `mcq`, q: `Grammar of the programming is checked at ………… phase of compiler.`, o: [`syntax analysis`, `semantic analysis`, `code generation`, `code optimization`], a: 0, why: `Syntax analysis checks that the token stream follows the grammar (CFG) of the programming language and builds the parse tree (L4).`, ow: [null, `Semantic analysis checks meaning (types, declarations, scope) after the grammar has already been checked.`, `Code generation produces target code from intermediate code; it does not check the grammar.`, `Code optimization improves the code's speed/size; it assumes the program is already grammatically correct.`] },
+          { type: `mcq`, q: `The following is not a phase of a compiler`, o: [`syntax analysis`, `semantic analysis`, `testing`, `optimization`], a: 2, why: `Testing is a software-engineering activity, not a compiler phase; syntax analysis, semantic analysis and optimization are all phases (L1).`, ow: [`Syntax analysis (parsing) is phase 2 of the compiler.`, `Semantic analysis is phase 3 of the compiler, producing the annotated syntax tree.`, null, `Optimization is a phase: the source code optimizer and the target code optimizer (L1).`] },
+          { type: `mcq`, q: `Non-leaf nodes of a syntax tree represent…….`, o: [`nonterminal symbols`, `terminal symbols`, `start symbols`, `none`], a: 0, why: `Interior (non-leaf) nodes of a syntax/parse tree are non-terminals, each expanded by a production; leaves are terminals (L4).`, ow: [null, `Terminal symbols are the LEAVES of the tree; they are never expanded.`, `The start symbol is only the root, one non-leaf node; all non-leaf nodes are non-terminals.`, `One option fits: every interior (non-leaf) node is a non-terminal expanded by a production (L4).`] },
+          { type: `mcq`, q: `The automaton with ε symbol is said to be……`, o: [`DFA`, `NFA`, `FFA`, `none`], a: 1, why: `An ε-transition lets the automaton move without reading input, which is nondeterministic, so an automaton with ε is an NFA (L3).`, ow: [`A DFA has exactly one move per state and input symbol and no ε-moves (L3).`, null, `"FFA" is not a type of automaton in the course; the two types are DFA and NFA (L3).`, `One option fits: an ε-transition makes the automaton an NFA (L3).`] },
+          { type: `mcq`, q: `A compiler needs …….. types of storage`, o: [`two`, `three`, `four`, `five`], a: 1, why: `The compiler uses three types of storage allocation: static (globals, fixed at compile time), stack (activation records) and heap (dynamic data) (L9).`, ow: [`Two misses one of the three: static, stack and heap allocation (L9).`, null, `There are only three: static, stack and heap (L9).`, `There are only three: static, stack and heap (L9).`] },
+          { type: `mcq`, q: `The following is not a method of optimization`, o: [`constant folding`, `combine operations`, `a and b`, `annotated syntax tree`], a: 3, why: `Constant folding and combine operations are peephole techniques (L9).`, ow: [`Constant folding (e.g. replacing 2*3 by 6 at compile time) is a peephole optimization technique (L9).`, `Combine operations is one of the three peephole techniques (L9).`, `Both constant folding and combine operations ARE optimization methods, so they are not the answer.`, null] }
         ]},
         { title: `Q1-II · True or False`, marks: `10 marks · 1 each`, items: [
-          { type: `tf`, q: `The expression Yε ≠ εY.`, a: 1, why: `Yε = εY = Y (L2 algebraic properties).` },
-          { type: `tf`, q: `Leftmost derivation is the inverse of rightmost derivation.`, a: 1, why: `They differ only in which non-terminal is replaced first; neither is the inverse of the other. Bottom-up parsers produce a rightmost derivation IN REVERSE (L4).` },
-          { type: `tf`, q: `The problem of using a symbol table per scope is memory overhead.`, a: 0, why: `L8.` },
-          { type: `tf`, q: `The regular expressions (a)|((b)*(c)) and b*c | a are equivalent.`, a: 0, why: `The parentheses are redundant and | is commutative (L2).` },
-          { type: `tf`, q: `Conversion of NFA into DFA is possible.`, a: 0, why: `Subset construction (L3).` },
-          { type: `tf`, q: `Derivation must be started by the start symbol of the context free grammar.`, a: 0, why: `L4.` },
-          { type: `tf`, q: `Interpreters generate intermediate code.`, a: 1, why: `L1.` },
-          { type: `tf`, q: `Inherited attributes get their attribute values from parent nodes.`, a: 0, why: `Parent and/or siblings (L7; sheet Q42).` },
-          { type: `tf`, q: `Epsilon transition causes a change of the regular expression accepted by an automaton.`, a: 1, why: `ε is the empty string; it consumes no input and sε = s, so it does not change the accepted expression. (Our answer; no key.)` },
-          { type: `tf`, q: `Regular expression a|b denotes the set {a, b}.`, a: 0, why: `L2.` }
+          { type: `tf`, q: `The expression Yε ≠ εY.`, a: 1, why: `ε is the identity element for concatenation, so Yε = εY = Y and the two sides are equal (L2 algebraic properties).`, ow: [`ε is the identity for concatenation: Yε = εY = Y, so the two sides are equal (L2).`, null] },
+          { type: `tf`, q: `Leftmost derivation is the inverse of rightmost derivation.`, a: 1, why: `They differ only in which non-terminal is replaced first; neither is the inverse of the other. Bottom-up parsers produce a rightmost derivation IN REVERSE (L4).`, ow: [`Leftmost and rightmost derivations differ only in which non-terminal is replaced first; neither reverses the other (L4).`, null] },
+          { type: `tf`, q: `The problem of using a symbol table per scope is memory overhead.`, a: 0, why: `Each hash table has memory overhead, so one table per scope is memory-inefficient (and several tables may need searching); a single table is the fix (L8).`, ow: [null, `L8 names memory overhead (plus several searches) as exactly the problem of one symbol table per scope.`] },
+          { type: `tf`, q: `The regular expressions (a)|((b)*(c)) and b*c | a are equivalent.`, a: 0, why: `The parentheses are redundant and | is commutative (L2).`, ow: [null, `The parentheses add nothing and | is commutative, so (a)|((b)*(c)) = a | b*c = b*c | a (L2).`] },
+          { type: `tf`, q: `Conversion of NFA into DFA is possible.`, a: 0, why: `Every NFA can be converted into an equivalent DFA by the subset construction, using ε-closures and move sets (L3).`, ow: [null, `L3 converts NFAs to DFAs with the subset construction; every NFA has an equivalent DFA.`] },
+          { type: `tf`, q: `Derivation must be started by the start symbol of the context free grammar.`, a: 0, why: `Every derivation begins from the start symbol S; the language of a CFG is the set of terminal strings derivable from S (L4).`, ow: [null, `A derivation of a sentence always starts at the start symbol S; that is how the language of the grammar is defined (L4).`] },
+          { type: `tf`, q: `Interpreters generate intermediate code.`, a: 1, why: `In the L1 comparison table, compilers generate intermediate object code while interpreters generate none, so the statement is False (L1).`, ow: [`In the L1 table, interpreters generate no intermediate object code; compilers do.`, null] },
+          { type: `tf`, q: `Inherited attributes get their attribute values from parent nodes.`, a: 0, why: `Inherited attributes take their values from the parent and/or sibling nodes (L7; sheet Q42).`, ow: [null, `That is the L7 definition: inherited attributes come from the parent (and/or siblings); values from children would be synthesized.`] },
+          { type: `tf`, q: `Epsilon transition causes a change of the regular expression accepted by an automaton.`, a: 1, why: `ε is the empty string; it consumes no input and sε = s, so it does not change the accepted expression. (Our answer; no key.)`, ow: [`ε is the empty string and consumes no input; since sε = s, an ε-move does not change the language accepted.`, null] },
+          { type: `tf`, q: `Regular expression a|b denotes the set {a, b}.`, a: 0, why: `The alternation a|b denotes the union of the languages {a} and {b}, i.e. the set {a, b} (L2).`, ow: [null, `a|b means a OR b: the union {a} ∪ {b} = {a, b} (L2).`] }
         ]},
         { title: `Q2 · Written`, marks: `40 marks · 8 each`, items: [
           { type: `written`, q: `a) Show by figure only the phases of a compiler.`, ans: `Source code → <b>Scanner</b> → tokens → <b>Parser</b> → syntax tree → <b>Semantic analyzer</b> → annotated tree → <b>Source code optimizer</b> → intermediate code → <b>Code generator</b> → target code → <b>Target code optimizer</b> → target code. All phases connect to the literal table, the symbol table and the error handler.`, why: `L1 figure (see the 2024/25 (50) paper for the drawing).` },
@@ -1524,28 +1524,28 @@ for (i=0; i &lt; x ; i++)
       note: `No official key. The student marks on the scan are mostly consistent with the revision sheet, but Q1-I-8 is marked "Dynamic binding", which is wrong (static).`,
       sections: [
         { title: `Q1-I · Choose the correct answer`, marks: `10 marks`, items: [
-          { type: `mcq`, q: `……… is the input to semantic analysis phase`, o: [`stream of tokens`, `syntax tree`, `annotated syntax tree`, `assembly code`], a: 1, why: `L1 phase chain.` },
-          { type: `mcq`, q: `The lexical analyzer takes …… as input and produces a list of …… as output`, o: [`Machine code, tokens`, `Tokens, source code`, `Source code, tokens`, `Both a and b`], a: 2, why: `L2.` },
-          { type: `mcq`, q: `When only one rightmost parsing tree is produced for some sentence, that is ………grammar.`, o: [`ambiguous`, `unambiguous`, `a or b`, `None of the mentioned`], a: 1, why: `L4.` },
-          { type: `mcq`, q: `Which part of the compiler highly used the grammar concept?`, o: [`Code optimization`, `Code generation`, `Lexical analysis`, `Parser`], a: 3, why: `The parser works from the CFG (sheet Q17).` },
-          { type: `mcq`, q: `Interior nodes of a parsing tree indicate ………. of a context free grammar`, o: [`non-terminal symbols`, `terminal symbols`, `start symbol`, `production rules`], a: 0, why: `L4.` },
-          { type: `mcq`, q: `A compiler indicates the ……… error.`, o: [`logic`, `runtime`, `syntax`, `b & c`], a: 2, why: `Sheet Q29.` },
-          { type: `mcq`, q: `A leftmost parsing tree grows from the ……. side`, o: [`left`, `equal sides`, `right`, `the side cannot be determined`], a: 2, why: `Revision sheet Q52 key.` },
-          { type: `mcq`, q: `…… is done based on the structure of the parsing tree such as braces`, o: [`Static binding`, `Dynamic binding`, `All types of binding`, `none of the mentioned`], a: 0, why: `Static binding follows the syntax-tree structure (L8; sheet Q45). The pencil mark on (b) is wrong.` },
-          { type: `mcq`, q: `SDT is an abbreviation of ………`, o: [`Semantic Directed Translation`, `Syntax Directed Translation`, `Syntax Double Translation`, `Semantic Directed Table`], a: 1, why: `L7.` },
-          { type: `mcq`, q: `A phase of the compiler that aims at minimizing memory usage and maximizing speed of processing is…`, o: [`code optimization`, `syntax analysis`, `semantic analysis`, `none of the mentioned`], a: 0, why: `L1, L9.` }
+          { type: `mcq`, q: `……… is the input to semantic analysis phase`, o: [`stream of tokens`, `syntax tree`, `annotated syntax tree`, `assembly code`], a: 1, why: `In the L1 phase chain, the parser outputs the syntax tree and semantic analysis takes it as input, producing the annotated syntax tree.`, ow: [`The stream of tokens is the input of syntax analysis, one phase earlier.`, null, `The annotated syntax tree is the OUTPUT of semantic analysis (input of the code optimizer/intermediate code).`, `Assembly code is produced at the very end by the code generator.`] },
+          { type: `mcq`, q: `The lexical analyzer takes …… as input and produces a list of …… as output`, o: [`Machine code, tokens`, `Tokens, source code`, `Source code, tokens`, `Both a and b`], a: 2, why: `The lexical analyzer (scanner) reads the source program's characters and groups them into lexemes, producing a stream of tokens for the parser (L2).`, ow: [`Machine code is the final output of the whole compiler, not the input of the lexical analyzer.`, `Reversed: tokens are the scanner's output, and source code is its input.`, null, `(b) is reversed, so "both a and b" cannot be right; only source code → tokens is correct.`] },
+          { type: `mcq`, q: `When only one rightmost parsing tree is produced for some sentence, that is ………grammar.`, o: [`ambiguous`, `unambiguous`, `a or b`, `None of the mentioned`], a: 1, why: `A grammar is unambiguous when every sentence has exactly one rightmost (or one leftmost) derivation, i.e. one parse tree (L4).`, ow: [`Ambiguous means some sentence has MORE than one rightmost (or leftmost) derivation/parse tree (L4).`, null, `Ambiguous and unambiguous are opposites; exactly one tree can only mean unambiguous.`, `One option fits: a single rightmost tree per sentence means the grammar is unambiguous.`] },
+          { type: `mcq`, q: `Which part of the compiler highly used the grammar concept?`, o: [`Code optimization`, `Code generation`, `Lexical analysis`, `Parser`], a: 3, why: `The parser (syntax analyzer) is built from the context-free grammar: it checks the tokens against the CFG productions and builds the parse tree (L4; sheet Q17).`, ow: [`Code optimization works on intermediate or target code to improve speed/size; it does not use the grammar.`, `Code generation maps intermediate code to target code; grammar rules are not its basis.`, `Lexical analysis uses regular expressions and finite automata (L2), not the context-free grammar.`, null] },
+          { type: `mcq`, q: `Interior nodes of a parsing tree indicate ………. of a context free grammar`, o: [`non-terminal symbols`, `terminal symbols`, `start symbol`, `production rules`], a: 0, why: `Interior nodes of a parse tree are non-terminals, each expanded by a production into its children; the leaves are terminals (L4).`, ow: [null, `Terminals are the LEAVES of the parse tree, not the interior nodes.`, `The start symbol is only the root; the other interior nodes are other non-terminals.`, `Productions are not node labels; an interior node with its children shows one production being applied.`] },
+          { type: `mcq`, q: `A compiler indicates the ……… error.`, o: [`logic`, `runtime`, `syntax`, `b & c`], a: 2, why: `The compiler detects syntax errors while analyzing the program; logic and runtime errors show up only when the program runs (sheet Q29 key: syntax).`, ow: [`Logic errors give wrong results from valid code; the compiler cannot know the intended meaning, so it does not report them.`, `Runtime errors (e.g. division by zero) appear only during execution, after compilation.`, null, `Runtime errors are not compiler-detected, so "b & c" fails; only syntax errors are (sheet Q29).`] },
+          { type: `mcq`, q: `A leftmost parsing tree grows from the ……. side`, o: [`left`, `equal sides`, `right`, `the side cannot be determined`], a: 2, why: `The professor's revision-sheet key (Q52) says a leftmost parsing tree grows from the right side. The lectures do not state this rule directly.`, ow: [`The revision-sheet key (Q52) says right, not left.`, `The revision-sheet key (Q52) names one side, the right.`, null, `The revision-sheet key (Q52) does give a side: the right.`] },
+          { type: `mcq`, q: `…… is done based on the structure of the parsing tree such as braces`, o: [`Static binding`, `Dynamic binding`, `All types of binding`, `none of the mentioned`], a: 0, why: `Static binding follows the syntax-tree structure (L8; sheet Q45). The pencil mark on (b) is wrong.`, ow: [null, `Dynamic binding uses the most recently executed declaration at run time, not the structure of the tree (L8).`, `Only static binding follows the tree structure; dynamic binding follows execution order (L8).`, `One option fits: static binding is based on the syntax-tree structure such as braces (L8).`] },
+          { type: `mcq`, q: `SDT is an abbreviation of ………`, o: [`Semantic Directed Translation`, `Syntax Directed Translation`, `Syntax Double Translation`, `Semantic Directed Table`], a: 1, why: `SDT stands for Syntax Directed Translation: semantic rules attached to the CFG productions drive the translation (L7).`, ow: [`The first word is Syntax: translation is directed by the grammar's syntax (productions), not by "semantics".`, null, `"Double" is wrong: SDT is Syntax DIRECTED Translation (L7).`, `Both words are wrong: SDT is Syntax Directed Translation, not a table (L7).`] },
+          { type: `mcq`, q: `A phase of the compiler that aims at minimizing memory usage and maximizing speed of processing is…`, o: [`code optimization`, `syntax analysis`, `semantic analysis`, `none of the mentioned`], a: 0, why: `Code optimization improves the intermediate/target code so the program runs faster and uses less memory, without changing its output (L1, L9).`, ow: [null, `Syntax analysis checks the grammar and builds the parse tree; it does not improve speed or memory use.`, `Semantic analysis checks meaning (types, declarations); it does not improve speed or memory use.`, `One option fits: code optimization has exactly this goal (L1, L9).`] }
         ]},
         { title: `Q1-II · True or False`, marks: `10 marks`, items: [
-          { type: `tf`, q: `Derivation can only be started with the start symbol of the context free grammar.`, a: 0, why: `L4.` },
-          { type: `tf`, q: `(X | Y)* is equivalent to X* | Y*.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `Symbol table is a phase of a compiler.`, a: 1, why: `It is a data structure used by the phases (L1).` },
-          { type: `tf`, q: `A DFA may contain a loop or more.`, a: 0, why: `L2/L3 (e.g. the DFA for 1*01(0|1)*).` },
-          { type: `tf`, q: `Code optimization is applied on assembly code and source code.`, a: 0, why: `Source code optimizer + target code optimizer (L1).` },
-          { type: `tf`, q: `LL(1) can be applied on left recursive context free grammar.`, a: 1, why: `Left recursion causes an infinite loop in top-down parsers; remove it first (L5–6).` },
-          { type: `tf`, q: `Tokens are generated by syntax analysis.`, a: 1, why: `By lexical analysis (L2).` },
-          { type: `tf`, q: `Peephole optimization is a type of code optimization performed on a small part of the code called "window".`, a: 0, why: `L9.` },
-          { type: `tf`, q: `Semantic analysis produces semantic table.`, a: 1, why: `It produces the annotated syntax tree (L1, L7).` },
-          { type: `tf`, q: `Attributes that get their values from parent nodes are called synthesized attributes.`, a: 1, why: `Those are inherited; synthesized come from the children (L7).` }
+          { type: `tf`, q: `Derivation can only be started with the start symbol of the context free grammar.`, a: 0, why: `Every derivation begins from the start symbol S; the language of a CFG is the set of terminal strings derivable from S (L4).`, ow: [null, `A derivation of a sentence always starts at the start symbol S; that is how the language of the grammar is defined (L4).`] },
+          { type: `tf`, q: `(X | Y)* is equivalent to X* | Y*.`, a: 1, why: `(X|Y)* contains mixed strings such as XY, while X*|Y* contains only strings of all X's or all Y's, so they differ (L2).`, ow: [`(X|Y)* includes mixed strings such as XY, but X*|Y* contains only all-X or all-Y strings, so they are not equal (L2).`, null] },
+          { type: `tf`, q: `Symbol table is a phase of a compiler.`, a: 1, why: `It is a data structure used by the phases (L1).`, ow: [`The symbol table is a data structure shared by all the phases, not a phase of the compiler (L1).`, null] },
+          { type: `tf`, q: `A DFA may contain a loop or more.`, a: 0, why: `A DFA may contain loops; e.g. the DFA for 1*01(0|1)* has a 1-loop on q0 and a 0,1-loop on the final state (L2/L3).`, ow: [null, `Loops do not make an automaton nondeterministic; the DFA for 1*01(0|1)* has two loops (L2/L3).`] },
+          { type: `tf`, q: `Code optimization is applied on assembly code and source code.`, a: 0, why: `Source code optimizer + target code optimizer (L1).`, ow: [null, `L1 lists both a source code optimizer (on intermediate code) and a target code optimizer (on assembly/target code).`] },
+          { type: `tf`, q: `LL(1) can be applied on left recursive context free grammar.`, a: 1, why: `Left recursion causes an infinite loop in top-down parsers; remove it first (L5–6).`, ow: [`A left-recursive production makes a top-down (LL(1)) parser loop forever; left recursion must be removed first (L5–6).`, null] },
+          { type: `tf`, q: `Tokens are generated by syntax analysis.`, a: 1, why: `Tokens are produced by lexical analysis (the scanner); syntax analysis consumes them to build the parse tree (L2).`, ow: [`Syntax analysis consumes tokens; they are produced earlier by lexical analysis (the scanner) (L2).`, null] },
+          { type: `tf`, q: `Peephole optimization is a type of code optimization performed on a small part of the code called "window".`, a: 0, why: `Peephole optimization works on a small set of instructions called the peephole or window, replacing it with shorter/faster code (L9).`, ow: [null, `That is the L9 definition: optimization on a small part of the code, the peephole or "window".`] },
+          { type: `tf`, q: `Semantic analysis produces semantic table.`, a: 1, why: `It produces the annotated syntax tree (L1, L7).`, ow: [`Semantic analysis produces the annotated syntax tree; there is no "semantic table" output (L1, L7).`, null] },
+          { type: `tf`, q: `Attributes that get their values from parent nodes are called synthesized attributes.`, a: 1, why: `Those are inherited; synthesized come from the children (L7).`, ow: [`Values from parent nodes define INHERITED attributes; synthesized attributes get their values from the children (L7).`, null] }
         ]},
         { title: `Q2 · Written`, marks: `40 marks`, items: [
           { type: `written`, q: `a) What is the purpose of the (SDT) process? (4 marks)`, ans: `SDT adds augmented (translation) rules to the grammar to facilitate semantic analysis. It passes information bottom-up and/or top-down the parse tree as attributes attached to the nodes, using lexical values, constants and attributes. It builds the parse/syntax tree and computes the attribute values at the nodes by visiting them in some order, producing the annotated syntax tree. In general, SDT associates a set of attributes with every grammar node and a set of translation rules with every production.`, why: `L7; revision sheet Q13.` },
@@ -1572,28 +1572,28 @@ for (i=0; i &lt; x ; i++)
       note: `No official key. Solved from the lectures. T/F 6 ("a rightmost parsing tree grows from the left side") is not covered directly by the lectures; the answer follows the revision-sheet convention (leftmost grows from the right).`,
       sections: [
         { title: `Q1-I · Choose the correct answer`, marks: `10 marks`, items: [
-          { type: `mcq`, q: `Code optimization is done twice on …… code and ……. code within the phases of a compiler.`, o: [`source, machine`, `source, assembly`, `assembly, machine`, `source, binary`], a: 1, why: `Source code optimizer and target code optimizer; the lecture's target code is assembly (MOV, MUL…) (L1).` },
-          { type: `mcq`, q: `The following is not a part of a context free grammar:`, o: [`start symbol`, `non-terminal symbols`, `end symbol`, `terminal symbols`], a: 2, why: `L4.` },
-          { type: `mcq`, q: `Keywords are recognized in a compiler during……….`, o: [`code generation`, `lexical analysis`, `semantic analysis`, `derivation`], a: 1, why: `L2.` },
-          { type: `mcq`, q: `The following is not one of the phases of the compiler:`, o: [`Syntax analysis`, `Semantic analysis`, `Symbol Table`, `Lexical analysis`], a: 2, why: `L1.` },
-          { type: `mcq`, q: `Leaf nodes of a parsing tree indicate………. of a context free grammar`, o: [`non-terminal symbols`, `terminal symbols`, `start symbol`, `production rules`], a: 1, why: `L4.` },
-          { type: `mcq`, q: `A compiler does not indicate the ………error.`, o: [`syntax`, `logic`, `runtime`, `b & c`], a: 3, why: `A compiler indicates syntax errors only; logic and runtime errors show up at execution.` },
-          { type: `mcq`, q: `When only one leftmost parsing tree is produced for some sentence, that is ………grammar.`, o: [`ambiguous`, `unambiguous`, `a or b`, `None of the mentioned`], a: 1, why: `L4.` },
-          { type: `mcq`, q: `Semantic analysis uses …….. grammar in order to transform …….. tree into ……… tree`, o: [`context free, syntax, annotated syntax`, `attribute, semantic, syntax`, `attribute, syntax, annotated syntax`, `context free, syntax, semantic`], a: 2, why: `L7.` },
-          { type: `mcq`, q: `……………. is the input to syntax analysis phase`, o: [`stream of tokens`, `syntax tree`, `annotated syntax tree`, `assembly code`], a: 0, why: `L1.` },
-          { type: `mcq`, q: `A compiler uses stack memory allocation for the following:`, o: [`static allocation of objects`, `procedures & functions calling`, `allocation of the code itself`, `a & b`], a: 1, why: `L9.` }
+          { type: `mcq`, q: `Code optimization is done twice on …… code and ……. code within the phases of a compiler.`, o: [`source, machine`, `source, assembly`, `assembly, machine`, `source, binary`], a: 1, why: `Source code optimizer and target code optimizer; the lecture's target code is assembly (MOV, MUL…) (L1).`, ow: [`The second optimization is done on the target code, which in the lecture is assembly (MOV, MUL …), not raw machine code.`, null, `The first optimization is on the source side (intermediate code from the source optimizer), not on assembly; the second is on assembly.`, `The second optimization is on the target (assembly) code; binary/machine code is not where the lecture's target optimizer works.`] },
+          { type: `mcq`, q: `The following is not a part of a context free grammar:`, o: [`start symbol`, `non-terminal symbols`, `end symbol`, `terminal symbols`], a: 2, why: `A CFG is the 4-tuple (V, Σ, P, S): non-terminals, terminals, productions and a start symbol. There is no "end symbol" (L4).`, ow: [`The start symbol S is one of the four parts of a CFG (V, Σ, P, S).`, `The non-terminals V are one of the four parts of a CFG (V, Σ, P, S).`, null, `The terminals Σ are one of the four parts of a CFG (V, Σ, P, S).`] },
+          { type: `mcq`, q: `Keywords are recognized in a compiler during……….`, o: [`code generation`, `lexical analysis`, `semantic analysis`, `derivation`], a: 1, why: `Keywords such as if, while and int are tokens; the lexical analyzer recognizes them while grouping characters into lexemes (L2).`, ow: [`Code generation is the last phase; keywords were recognized long before, as tokens in lexical analysis.`, null, `Semantic analysis checks meaning (types, declarations) on the syntax tree; keywords already arrived as tokens.`, `Derivation is a grammar notion (rewriting with productions, L4), not the step that recognizes keywords.`] },
+          { type: `mcq`, q: `The following is not one of the phases of the compiler:`, o: [`Syntax analysis`, `Semantic analysis`, `Symbol Table`, `Lexical analysis`], a: 2, why: `The symbol table is a data structure shared by all the phases, not a phase itself; lexical, syntax and semantic analysis are phases (L1).`, ow: [`Syntax analysis (parsing) is phase 2 of the compiler.`, `Semantic analysis is phase 3 of the compiler.`, null, `Lexical analysis (scanning) is phase 1 of the compiler.`] },
+          { type: `mcq`, q: `Leaf nodes of a parsing tree indicate………. of a context free grammar`, o: [`non-terminal symbols`, `terminal symbols`, `start symbol`, `production rules`], a: 1, why: `The leaves of a parse tree are terminals; reading them left to right gives the derived sentence. Interior nodes are non-terminals (L4).`, ow: [`Non-terminals are the INTERIOR nodes, each expanded by a production; they are never leaves of a complete tree.`, null, `The start symbol labels the root of the parse tree, not the leaves.`, `Productions are not node labels; an interior node with its children shows one production being applied.`] },
+          { type: `mcq`, q: `A compiler does not indicate the ………error.`, o: [`syntax`, `logic`, `runtime`, `b & c`], a: 3, why: `A compiler indicates syntax errors only; logic and runtime errors show up at execution.`, ow: [`Syntax errors ARE indicated by the compiler (sheet Q29), so they are not the answer.`, `Logic errors are indeed not indicated, but runtime errors are not either, so the full answer is "b & c".`, `Runtime errors are indeed not indicated, but logic errors are not either, so the full answer is "b & c".`, null] },
+          { type: `mcq`, q: `When only one leftmost parsing tree is produced for some sentence, that is ………grammar.`, o: [`ambiguous`, `unambiguous`, `a or b`, `None of the mentioned`], a: 1, why: `A grammar is unambiguous when every sentence has exactly one leftmost (or one rightmost) derivation, i.e. one parse tree (L4).`, ow: [`Ambiguous means some sentence has MORE than one leftmost (or rightmost) derivation/parse tree (L4).`, null, `Ambiguous and unambiguous are opposites; exactly one tree can only mean unambiguous.`, `One option fits: a single leftmost tree per sentence means the grammar is unambiguous.`] },
+          { type: `mcq`, q: `Semantic analysis uses …….. grammar in order to transform …….. tree into ……… tree`, o: [`context free, syntax, annotated syntax`, `attribute, semantic, syntax`, `attribute, syntax, annotated syntax`, `context free, syntax, semantic`], a: 2, why: `Semantic analysis uses an attribute grammar (CFG + attributes + semantic rules) to turn the syntax tree into the annotated syntax tree (L7).`, ow: [`A plain CFG has no attributes or semantic rules, so it cannot annotate the tree; semantic analysis needs an attribute grammar.`, `The order is wrong: the input is the syntax tree and the output is the annotated syntax tree, not a "semantic" tree.`, null, `A plain CFG cannot annotate, and the output is called the annotated syntax tree, not a "semantic tree" (L7).`] },
+          { type: `mcq`, q: `……………. is the input to syntax analysis phase`, o: [`stream of tokens`, `syntax tree`, `annotated syntax tree`, `assembly code`], a: 0, why: `The parser's input is the stream of tokens produced by the scanner; its output is the syntax tree (L1 phase chain).`, ow: [null, `The syntax tree is the OUTPUT of syntax analysis and the input of semantic analysis.`, `The annotated syntax tree is the output of semantic analysis, two steps later.`, `Assembly code is produced at the end by the code generator (target code).`] },
+          { type: `mcq`, q: `A compiler uses stack memory allocation for the following:`, o: [`static allocation of objects`, `procedures & functions calling`, `allocation of the code itself`, `a & b`], a: 1, why: `Stack allocation holds activation records (locals, parameters, return addresses) created on procedure/function calls and freed on return (L9).`, ow: [`Objects with a fixed size and lifetime use STATIC allocation, decided at compile time, not the stack.`, null, `The code itself is placed in the static (text) area, not on the stack.`, `(a) is static allocation, not stack, so "a & b" fails; only procedure/function calls use the stack.`] }
         ]},
         { title: `Q1-II · True or False`, marks: `10 marks`, items: [
-          { type: `tf`, q: `Static object binding is done based on the structure of the parsing tree such as braces.`, a: 0, why: `L8.` },
-          { type: `tf`, q: `Any NFA must contain a loop.`, a: 1, why: `An ε transition alone makes an NFA (L3).` },
-          { type: `tf`, q: `Union operation is one of the operations done on alphabets where order of the produced elements is important.`, a: 1, why: `Union is commutative: L1 ∪ L2 = L2 ∪ L1 (L2).` },
-          { type: `tf`, q: `Any automaton must have only one accept state.`, a: 1, why: `Automata may have several accept states (e.g. the DFA from the NFA conversions).` },
-          { type: `tf`, q: `Code optimization is applied immediately after semantic analysis.`, a: 0, why: `"The earliest point of most optimization steps is just after semantic analysis" (L1).` },
-          { type: `tf`, q: `A rightmost parsing tree grows from the left side.`, a: 0, why: `This is the mirror of the revision-sheet key "a leftmost parsing tree grows from the right side". Not stated directly in the lectures.` },
-          { type: `tf`, q: `Constant folding is the only technique of code optimization.`, a: 1, why: `Also redundant load/store elimination, combine operations and loop optimization (L9).` },
-          { type: `tf`, q: `Compiler uses fixed size and dynamic size storages as a part of its runtime environment.`, a: 0, why: `Static (fixed) plus stack and heap (grow and shrink) (L9).` },
-          { type: `tf`, q: `SDT is an abbreviation of Semantic Directed Translation.`, a: 1, why: `Syntax Directed Translation (L7).` },
-          { type: `tf`, q: `Attributes that get their values from child nodes are called synthesized attributes.`, a: 0, why: `L7.` }
+          { type: `tf`, q: `Static object binding is done based on the structure of the parsing tree such as braces.`, a: 0, why: `Static binding resolves names using the structure of the syntax tree (braces/blocks), from the program text alone, at compile time (L8).`, ow: [null, `That is the L8 definition of static binding: scoping follows the tree structure such as braces.`] },
+          { type: `tf`, q: `Any NFA must contain a loop.`, a: 1, why: `An NFA need not contain a loop: an ε-transition alone (or two moves on the same symbol) already makes it nondeterministic (L3).`, ow: [`An NFA need not have a loop; an ε-transition or two moves on the same symbol is enough to make it nondeterministic (L3).`, null] },
+          { type: `tf`, q: `Union operation is one of the operations done on alphabets where order of the produced elements is important.`, a: 1, why: `Union is commutative: L1 ∪ L2 = L2 ∪ L1 (L2).`, ow: [`Union is commutative: L1 ∪ L2 = L2 ∪ L1, so order does not matter (concatenation is the order-sensitive operation) (L2).`, null] },
+          { type: `tf`, q: `Any automaton must have only one accept state.`, a: 1, why: `An automaton may have several accept states; e.g. the DFAs built from NFAs in L3 often have more than one final state.`, ow: [`Several accept states are allowed; the DFA from the L3 NFA conversion has 3 final states out of 4.`, null] },
+          { type: `tf`, q: `Code optimization is applied immediately after semantic analysis.`, a: 0, why: `"The earliest point of most optimization steps is just after semantic analysis" (L1).`, ow: [null, `L1 says the earliest point of most optimization steps is just after semantic analysis, on the annotated tree/intermediate code.`] },
+          { type: `tf`, q: `A rightmost parsing tree grows from the left side.`, a: 0, why: `This is the mirror of the revision-sheet key "a leftmost parsing tree grows from the right side". Not stated directly in the lectures.`, ow: [null, `The course follows the revision-sheet convention (Q52: leftmost grows from the right), so a rightmost tree grows from the left: True.`] },
+          { type: `tf`, q: `Constant folding is the only technique of code optimization.`, a: 1, why: `Also redundant load/store elimination, combine operations and loop optimization (L9).`, ow: [`L9 lists more techniques: redundant load/store elimination and combine operations (plus loop optimization), so constant folding is not the only one.`, null] },
+          { type: `tf`, q: `Compiler uses fixed size and dynamic size storages as a part of its runtime environment.`, a: 0, why: `Static (fixed) plus stack and heap (grow and shrink) (L9).`, ow: [null, `The runtime environment does use both: static storage (fixed size) plus stack and heap, which grow and shrink at run time (L9).`] },
+          { type: `tf`, q: `SDT is an abbreviation of Semantic Directed Translation.`, a: 1, why: `SDT stands for Syntax Directed Translation, not Semantic Directed Translation: semantic rules attached to CFG productions drive it (L7).`, ow: [`SDT stands for Syntax Directed Translation: rules attached to the grammar's productions drive it (L7).`, null] },
+          { type: `tf`, q: `Attributes that get their values from child nodes are called synthesized attributes.`, a: 0, why: `Synthesized attributes are computed from the attribute values of the node's children, so values flow up the tree (L7).`, ow: [null, `That is exactly the L7 definition of synthesized attributes; values from the parent/siblings would be inherited.`] }
         ]},
         { title: `Q2 · Written`, marks: `30 marks · 6 each`, items: [
           { type: `written`, q: `a) Differentiate between compilers and interpreters.`, ans: `<table><tr><th>Interpreter</th><th>Compiler</th></tr><tr><td>Translates one statement at a time</td><td>Scans the entire program and translates it as a whole</td></tr><tr><td>Less analysis time, slower overall execution</td><td>More analysis time, faster overall execution</td></tr><tr><td>No intermediate object code, so memory efficient</td><td>Generates intermediate object code that needs linking, so more memory</td></tr><tr><td>JavaScript, Python, Ruby</td><td>C, C++, Java</td></tr></table>`, why: `L1 table.` },
