@@ -173,38 +173,38 @@ int main()
       quiz: [
         { q: `Assuming int is 4 bytes, what is the size of <code>int arr[15];</code>?`, o: [
           [`15`, `15 is the number of elements, not the number of bytes.`],
-          [`19`, `This adds 15 + 4 instead of multiplying.`],
+          [`19`, `19 comes from adding the element count and the element size (15 + 4). Array size in bytes is count × size of one element.`],
           [`11`, `This subtracts 4 from 15, which has no meaning.`],
-          [`60`, `Correct. 15 elements × 4 bytes = 60 bytes.`]
+          [`60`, `Correct. An array occupies number of elements × size of each element: 15 × 4 bytes = 60 bytes (L1, Array-based representation).`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `In general, the index of the first element in an array is:`, o: [
           [`1`, `Matrices are indexed from 1 in math, but C++ arrays are zero-based.`],
           [`0`, `Correct. C++ arrays are zero-based: indices run from 0 to size-1.`],
-          [`2`, `No array starts at index 2.`],
+          [`2`, `No C++ array starts at index 2. The ith element is at position i − 1, so the first element is at index 0 (L1, location(i) = i − 1).`],
           [`-1`, `-1 is used as the empty value of TOP/front, not an array index.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `Which of the following data structures is a linear type?`, o: [
-          [`Graph`, `Graphs are non-linear.`],
-          [`Binary tree`, `Trees are non-linear (hierarchical).`],
-          [`Tree`, `Trees are non-linear.`],
+          [`Graph`, `A graph is non-linear: its elements form a network, not a single sequence. The lecture's linear examples are array, stack, queue and linked list.`],
+          [`Binary tree`, `A binary tree is still a tree: its nodes form a hierarchy (parent and children), so it is non-linear, not a single sequence.`],
+          [`Tree`, `A tree arranges elements in a hierarchy, not one after another, so the lecture classifies it as non-linear together with graphs.`],
           [`Linked list`, `Correct. A linked list stores elements in a sequence, so it is linear.`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `Which of the following data structures is a non-linear type?`, o: [
-          [`Array`, `Arrays are linear.`],
-          [`Stack`, `A stack is linear.`],
-          [`Tree`, `Correct. Trees (and graphs) are non-linear.`],
-          [`Queue`, `A queue is linear.`]
+          [`Array`, `An array is linear (and static): its elements sit in one sequence with a size fixed at design time.`],
+          [`Stack`, `A stack is a linear dynamic structure: its elements form one sequence, accessed only at the top.`],
+          [`Tree`, `Correct. In a tree the elements are not in a single sequence but in a hierarchy, so it is non-linear, like a graph; arrays, stacks and queues are linear (L1, Types of data structures).`],
+          [`Queue`, `A queue is a linear dynamic structure: elements form one sequence, added at the rear and removed at the front.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `Which of the following data structures is a non-linear type?`, o: [
-          [`Linked list`, `A linked list is linear.`],
-          [`Stack`, `A stack is linear.`],
+          [`Linked list`, `A linked list is linear: each node points to the next one, so the elements form a single sequence.`],
+          [`Stack`, `A stack is linear: its elements form one sequence, with insertion and deletion at the top only.`],
           [`Tree`, `Correct. A tree is hierarchical, so it is non-linear.`],
           [`Circular queue`, `A circular queue is still a linear structure (only the indexing wraps around).`]
         ], a: 2, src: `Exam 2022/23` },
         { q: `What are the advantages of arrays?`, o: [
           [`Easier to store elements of the same data type`, `Correct. Arrays hold many elements of one type under one name with index access.`],
           [`Elements in an array cannot be sorted`, `False: arrays can be sorted (the lecture has a sort example), and this would not be an advantage anyway.`],
-          [`Index of first element of an array is 1`, `False: C++ arrays start at index 0.`],
+          [`Index of first element of an array is 1`, `False: C++ arrays are zero-based, so the first element is at index 0 (location(i) = i − 1). Matrices in math start at 1, arrays do not.`],
           [`Objects of mixed data types can be stored`, `False: that describes a struct, not an array.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `When a search starts at the beginning of a list and checks every element in that list, it is:`, o: [
@@ -219,27 +219,27 @@ int main()
         ], a: 1, src: `Exam 2025/26` },
         { q: `The disadvantage of an array is ______.`, o: [
           [`Fixed size`, `Correct (official model answer). The size must be declared at design time and cannot change.`],
-          [`Slow access by index`, `Index access in an array is direct and fast.`],
-          [`It needs extra memory for pointers`, `That is a disadvantage of linked lists.`],
-          [`It can only hold characters`, `Arrays can hold any one data type.`]
+          [`Slow access by index`, `Index access is an array's strength: any element is reached directly by its index (computed by a formula), with no walking through other elements.`],
+          [`It needs extra memory for pointers`, `Extra memory for pointers is the cost of a linked list, where every node stores a next pointer. An array stores only the data.`],
+          [`It can only hold characters`, `An array can hold elements of any one data type (int, float, char, structs…); the only rule is that all elements share the same type.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `Which operation means "accessing each data element exactly once so that certain items may be processed"?`, o: [
-          [`Searching`, `Searching finds the location of a key.`],
+          [`Searching`, `Searching means finding the location of one data element (key) in the structure, not visiting every element once.`],
           [`Navigating (traversing)`, `Correct. This is the lecture's definition of navigating.`],
           [`Merging`, `Merging combines elements from two or more structures.`],
-          [`Sorting`, `Sorting arranges elements in order.`]
+          [`Sorting`, `Sorting means arranging the elements in a logical order (ascending or descending), not visiting each one once.`]
         ], a: 1 },
         { q: `For <code>int a[3][4]</code> stored row by row, element a[2][1] is at which position of the equivalent 1D array?`, o: [
           [`7`, `This uses i·r + j = 2·3 + 1; the formula uses the number of columns c.`],
-          [`9`, `Correct. i·c + j = 2·4 + 1 = 9.`],
-          [`6`, `This forgets to add j.`],
-          [`11`, `This is the last element a[2][3].`]
+          [`9`, `Correct. Row-major storage puts i·c elements before row i, so x[i][j] is at i·c + j. With c = 4 columns: 2·4 + 1 = 9 (L1, Locating element x[i][j]).`],
+          [`6`, `6 swaps i and j: j·c + i = 1·4 + 2. The row index multiplies the column count: 2·4 + 1 = 9.`],
+          [`11`, `11 is the position of the last element a[2][3] (2·4 + 3). a[2][1] is two places earlier: 2·4 + 1 = 9.`]
         ], a: 1 },
         { q: `Matrix A is 2×3 and B is 3×4. What is A×B?`, o: [
           [`Not defined`, `It is defined: columns of A (3) equal rows of B (3).`],
-          [`3×3`, `The result takes rows of A and columns of B.`],
-          [`2×4`, `Correct. m×n times n×q gives m×q = 2×4.`],
-          [`4×2`, `That is the size of (A×B) transposed.`]
+          [`3×3`, `3×3 uses the inner dimension (3), which only has to match. The product takes the rows of A and the columns of B: 2×4.`],
+          [`2×4`, `Correct. A×B is defined because columns of A (3) = rows of B (3), and an m×n times n×q product is m×q, so 2×3 · 3×4 = 2×4 (L1, Matrix multiplication).`],
+          [`4×2`, `4×2 reverses the order: it is the size of the transpose of A×B. A×B takes rows of A (2) and columns of B (4), so it is 2×4.`]
         ], a: 2 }
       ]
     },
@@ -360,65 +360,65 @@ void get()          // show top element without popping (peek)
       ],
       quiz: [
         { q: `Pushing an element into a stack already having five elements when the stack size is 5 is called:`, o: [
-          [`Crash`, `Not a stack term.`],
+          [`Crash`, `"Crash" is not a stack condition. Pushing when top == MAXSIZE − 1 is the STACK-FULL condition, which the lecture calls stack overflow.`],
           [`Overflow`, `Correct. Pushing onto a full stack (top == MAXSIZE-1) is stack overflow.`],
-          [`Underflow`, `Underflow is popping from an empty stack.`],
-          [`User flow`, `Not a stack term.`]
+          [`Underflow`, `Underflow is the opposite case: performing pop on an empty stack (top == −1). Here the stack is full, so the push overflows.`],
+          [`User flow`, `"User flow" is not a stack term. A push onto a full stack (5 of 5 elements) is called stack overflow.`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `Which of the following is NOT a correct statement for a stack data structure?`, o: [
           [`Stack follows FIFO`, `Correct (this is the wrong statement). A stack follows LIFO; FIFO is a queue.`],
-          [`Arrays can be used to implement the stack`, `True: static implementation uses an array.`],
-          [`Elements are stored in a sequential manner`, `True: a stack is a linear ordered list.`],
-          [`Top of the stack has the last inserted element`, `True: that is what LIFO means.`]
+          [`Arrays can be used to implement the stack`, `This statement is true: the static implementation of a stack uses an array, with TOP holding the index of the top element.`],
+          [`Elements are stored in a sequential manner`, `This statement is true: a stack is a non-primitive linear data structure, an ordered list whose elements are stored one after another.`],
+          [`Top of the stack has the last inserted element`, `This statement is true: all insertions happen at the top, so the last inserted element sits at the top and is the first removed (LIFO).`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `To insert an item into a stack, identify the correct set of statements:`, o: [
           [`top++; stack[top] = item;`, `Correct. Top starts at -1, so it is incremented first, then the item is stored there.`],
-          [`item = stack[top]; top--;`, `That is pop, not push.`],
-          [`stack[item] = top; item++;`, `This uses the item as an index; meaningless.`],
+          [`item = stack[top]; top--;`, `Reading stack[top] and then decrementing top is the pop operation; it removes an item instead of inserting one.`],
+          [`stack[item] = top; item++;`, `This uses the item as an array index and stores top in it, so the value is never placed at the top. Push is top = top + 1; stack[top] = item.`],
           [`stack[top] = item; top++;`, `With top starting at -1 this writes to stack[-1] first.`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `The process of removing an element from a stack is called:`, o: [
-          [`Create`, `Create builds the stack.`],
-          [`Push`, `Push inserts.`],
-          [`Evaluation`, `Not a stack operation name.`],
-          [`Pop`, `Correct. Pop deletes the top element.`]
+          [`Create`, `Create sets up a new empty stack (top = −1); it does not remove anything. Removing the top element is pop.`],
+          [`Push`, `Push is the opposite: it adds a new element at the top and increments top. Removing is pop.`],
+          [`Evaluation`, `Evaluation is not one of the stack's operations. The lecture's basic operations are push (insert) and pop (delete).`],
+          [`Pop`, `Correct. Pop is the process of deleting the element at the top of the stack; after each pop, top is decremented by one (L2, Operations on stack).`]
         ], a: 3, src: `Exam 2025/26` },
         { q: `The process of inserting an element in a stack is called:`, o: [
-          [`Create`, `Create builds the stack.`],
-          [`Push`, `Correct. Push adds a new element at the top.`],
-          [`Evaluation`, `Not a stack operation name.`],
-          [`Pop`, `Pop removes.`]
+          [`Create`, `Create only sets up an empty stack with top = −1; adding an element to the top is push.`],
+          [`Push`, `Correct. Push is the process of adding a new element to the top of the stack: top is first incremented, then the item is stored at stack[top] (L2, Operations on stack).`],
+          [`Evaluation`, `Evaluation is not one of the stack's operations. The lecture's basic operations are push (insert) and pop (delete).`],
+          [`Pop`, `Pop is the opposite operation: it deletes the top element and decrements top. Inserting is push.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "Insertions and deletions in the stack follow FIFO."`, o: [
-          [`True`, `Wrong. FIFO is the queue rule.`],
-          [`False`, `Correct. A stack follows LIFO (FILO).`]
+          [`True`, `FIFO (first in, first out) is the queue rule. In a stack both insertion and deletion happen at the top, so it is LIFO.`],
+          [`False`, `Correct. Insertions and deletions in a stack both happen at the top, so the last element added is the first removed: LIFO, not FIFO (L2, What is a stack?).`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "Function push() in a stack is used to delete an item."`, o: [
-          [`True`, `Wrong. push inserts.`],
-          [`False`, `Correct. push() inserts; pop() deletes.`]
+          [`True`, `push() adds an item at the top (top = top + 1; stack[top] = item). Deleting the top item is pop().`],
+          [`False`, `Correct. push() inserts a new item at the top of the stack; deleting the top item is done by pop() (L2, Push and Pop functions).`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "Insertions and deletions in a stack follow FILO."`, o: [
           [`True`, `Correct. First-In-Last-Out is the same rule as LIFO.`],
           [`False`, `Wrong. FILO and LIFO describe the same order.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Function ______ in a stack is used to insert an item.`, o: [
-          [`pop()`, `pop removes an item.`],
-          [`push()`, `Correct (official model answer).`],
+          [`pop()`, `pop() deletes the top item and decrements top; it does not insert.`],
+          [`push()`, `Correct (official model answer). push() inserts a new item at the top: it checks isFull, then does top = top + 1; stack_arr[top] = item (L2, Push function).`],
           [`get()`, `get shows the top without changing the stack.`],
-          [`count()`, `count returns the number of items.`]
+          [`count()`, `count() only returns how many items are stored (top + 1); it does not change the stack.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `Function ______ in a stack is used to delete an item.`, o: [
-          [`push()`, `push inserts.`],
-          [`search()`, `search only looks for an item.`],
-          [`pop()`, `Correct (official model answer B).`],
-          [`display()`, `display only prints.`]
+          [`push()`, `push() inserts an item at the top; it does not delete anything.`],
+          [`search()`, `search() walks from top down to 0 looking for an item and reports its location; it does not remove it.`],
+          [`pop()`, `Correct (official model answer B). pop() deletes the top item: it checks isEmpty, then reads stack_arr[top] and does top = top − 1 (L2, Pop function).`],
+          [`display()`, `display() only prints the items from top to 0 in LIFO order; the stack is unchanged.`]
         ], a: 2, src: `Midterm 2023/24` },
         { q: `True or False: "A stack, in other words, is called a LIFO list."`, o: [
           [`True`, `Correct (model answer A): last in, first out.`],
-          [`False`, `Wrong. LIFO is exactly the stack rule.`]
+          [`False`, `The statement is true: since all insertions and deletions are at the top, the last added element is the first removed, so a stack is a LIFO list.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `True or False: "A stack is called a FIFO list."`, o: [
-          [`True`, `Wrong. FIFO is a queue.`],
+          [`True`, `FIFO is the rule of a queue (insert at rear, delete at front). A stack inserts and deletes at the top, so it is LIFO/FILO.`],
           [`False`, `Correct. The model answer corrects it to FILO (= LIFO).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `True or False: "A stack is a data structure in which insertions and deletions are restricted to one end."`, o: [
@@ -428,8 +428,8 @@ void get()          // show top element without popping (peek)
         { q: `With MAXSIZE = 4 and top initially -1, after push(1), push(2), pop(), push(3), push(4), push(5) what is top?`, o: [
           [`2`, `Count again: after these operations four elements are stored.`],
           [`3`, `Correct. Elements 1,3,4,5 occupy indices 0..3, so top = 3 (the stack is now full).`],
-          [`4`, `top can never exceed MAXSIZE-1 = 3.`],
-          [`-1`, `The stack is not empty.`]
+          [`4`, `top is the index of the top element and can never exceed MAXSIZE − 1 = 3; four stored elements give top = 3, not 4.`],
+          [`-1`, `−1 means an empty stack. After these operations four elements (1, 3, 4, 5) are stored, so top = 3.`]
         ], a: 1 }
       ]
     },
@@ -569,70 +569,70 @@ int deQueue()
       ],
       quiz: [
         { q: `In a linear queue implemented using an array of size MAX, the queue gets full when:`, o: [
-          [`Front = (rear + 1) mod MAX`, `That is a circular queue full test.`],
+          [`Front = (rear + 1) mod MAX`, `front == (rear + 1) mod MAX is the full test of a circular queue, where rear wraps around. A linear queue never wraps; it is full when rear reaches MAX − 1.`],
           [`Front = rear + 1`, `In the lecture code front > rear means empty, not full.`],
-          [`Rear = MAX - 1`, `Correct. isFull checks tail == maxsize-1.`],
-          [`Rear = front`, `That means exactly one element.`]
+          [`Rear = MAX - 1`, `Correct. The lecture's isFull returns true when tail == maxsize − 1: the rear is at the last cell and a linear queue cannot move past it (L3, C++ enqueue function).`],
+          [`Rear = front`, `rear == front means the head and tail are on the same cell, i.e. exactly one element is stored, not a full queue.`]
         ], a: 2, src: `Exam 2022/23` },
         { q: `Which of the following determines the need for the circular queue?`, o: [
           [`Avoid memory wastage`, `Correct. The linear queue cannot reuse cells freed by dequeue.`],
-          [`Access the queue using priority`, `That is a priority queue.`],
+          [`Access the queue using priority`, `Serving elements by priority is what a priority queue does; the circular queue still serves in FIFO order.`],
           [`Follows the FIFO principle`, `Both linear and circular queues follow FIFO, so this is not the reason.`],
-          [`None`, `Option a is the reason.`]
+          [`None`, `There is a reason: the circular queue exists to reuse the cells a linear queue wastes after dequeues (option a).`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `If a circular queue is implemented using an array of size MAX_SIZE, which condition specifies that the circular queue is empty?`, o: [
           [`front = rear = 0`, `front = rear = 0 means one element at index 0.`],
-          [`front = rear + 1`, `This is not the lecture's test.`],
+          [`front = rear + 1`, `front == rear + 1 is not the circular queue's empty test; the lecture's isEmpty checks front == −1, after both are reset to −1.`],
           [`front = rear = -1`, `Correct. The lecture initializes and resets both to -1; isEmpty checks front == -1.`],
-          [`None`, `Option c is correct.`]
+          [`None`, `One of the options is right: the lecture starts with front = rear = −1 and resets both to −1 when the last element leaves (option c).`]
         ], a: 2, src: `Exam 2022/23` },
         { q: `True or False: "The condition if (front == 0 && rear == MAX_SIZE - 1) is enough to check the fullness of a circular queue."`, o: [
-          [`True`, `Wrong. It misses the wrapped case.`],
+          [`True`, `That condition only covers Case 1 (front 0, rear at the end). It misses Case 2: rear wrapped around and sits just one behind front.`],
           [`False`, `Correct. The queue is also full when rear is just one less than front (rear wrapped around).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `True or False: "The value of REAR is increased by 1 when an element is inserted in the queue."`, o: [
           [`True`, `Correct. enqueue does tail = tail + 1 (circularly in a circular queue).`],
-          [`False`, `Wrong. Insertion advances the rear.`]
+          [`False`, `The statement is true: enqueue does tail = tail + 1 (or (rear + 1) % MAX_SIZE in a circular queue) before storing the item.`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `Which of the following data structures allows insertion and deletion from both ends?`, o: [
-          [`Stack`, `A stack inserts and deletes at one end only.`],
+          [`Stack`, `A stack inserts and deletes at one end only, the top; it is not open at both ends.`],
           [`Queue`, `Correct (expected answer). The lecture says a queue is "open at both ends": insert at the rear, delete at the front. Strictly, insertion AND deletion at both ends is a deque, which is not offered.`],
           [`Linked list`, `A linked list can insert/delete anywhere, but the question targets the queue's "both ends" definition.`],
-          [`Array`, `An array has no insert/delete ends.`]
+          [`Array`, `A plain array has no defined insertion or deletion ends; stacks and queues are built on top of it with TOP or front/rear indices.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "The circular queue is the same as the regular queue."`, o: [
           [`True`, `Wrong. They differ in how indices advance and reuse space.`],
           [`False`, `Correct. A circular queue connects the last position to the first and reuses freed cells.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `True or False: "Enqueue() inserts an element at the rear of the queue."`, o: [
-          [`True`, `Correct.`],
-          [`False`, `Wrong. Insertion is always at the rear.`]
+          [`True`, `Correct. All insertions are made at one end, the tail (rear): enqueue does tail = tail + 1 and stores the item at queue[tail] (L3, What is a queue?).`],
+          [`False`, `The statement is true: a queue inserts only at the rear (tail) and deletes only at the front (head).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "Dequeue(): removes the element at the front of the queue."`, o: [
-          [`True`, `Correct.`],
-          [`False`, `Wrong. Deletion is always from the front.`]
+          [`True`, `Correct. All deletions are made at the head (front): dequeue reads queue[head] and then moves head forward (L3, C++ dequeue function).`],
+          [`False`, `The statement is true: dequeue always removes the element at the front (head) of the queue, the oldest one (FIFO).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `Removing an element occurs at the ______ of the queue.`, o: [
-          [`Rear`, `Insertion happens at the rear.`],
-          [`Front`, `Correct (official model answer).`],
-          [`Middle`, `Queues do not delete from the middle.`],
-          [`Top`, `Top belongs to stacks.`]
+          [`Rear`, `The rear (tail) is where enqueue adds new elements; elements are removed from the other end, the front.`],
+          [`Front`, `Correct (official model answer). A queue deletes at the front (head): the first entry ready to be served, which is the one that came in first (L3, What is a queue?).`],
+          [`Middle`, `A queue never removes from the middle; it only deletes at the front, keeping FIFO order.`],
+          [`Top`, `Top is a stack term (stacks add and remove at the top). Queues remove at the front.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `enqueue() inserts an element at the ______ of the queue.`, o: [
-          [`Front`, `Front is where elements leave.`],
-          [`Top`, `Top is a stack term.`],
-          [`Rear`, `Correct (official model answer B).`],
-          [`Head`, `Head = front.`]
+          [`Front`, `The front (head) is where elements leave the queue through dequeue, not where they are inserted.`],
+          [`Top`, `Top is the single end of a stack. A queue has two ends: rear for insertion and front for deletion.`],
+          [`Rear`, `Correct (official model answer B). enqueue adds the new element at the rear (tail): tail = tail + 1; queue[tail] = item (L3, C++ enqueue function).`],
+          [`Head`, `Head is another name for the front, where elements are removed. Insertion happens at the tail (rear).`]
         ], a: 2, src: `Midterm 2023/24` },
         { q: `True or False: "A queue is a data structure in which insertions and deletions are restricted to one end."`, o: [
-          [`True`, `Wrong. That describes a stack.`],
+          [`True`, `Restricting both insertion and deletion to one end describes a stack. A queue is open at both ends: insert at the rear, delete at the front.`],
           [`False`, `Correct. Model answer: insertions at the rear and deletions at the front.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `A circular queue of size 5: enqueue 10, 20, 30, then dequeue twice. What are head and tail?`, o: [
-          [`head = 0, tail = 2`, `Two dequeues move head forward twice.`],
-          [`head = 2, tail = 2`, `Correct. Only 30 remains at index 2.`],
-          [`head = -1, tail = -1`, `The queue is not empty yet.`],
-          [`head = 1, tail = 2`, `That is after only one dequeue.`]
+          [`head = 0, tail = 2`, `head = 0 ignores the dequeues. Each dequeue moves head one step forward, so two dequeues move it from 0 to 2.`],
+          [`head = 2, tail = 2`, `Correct. The enqueues fill indices 0, 1, 2 (head = 0, tail = 2). Each dequeue does head = (head + 1) % 5, so head = 2; only 30 remains, at head = tail = 2 (L3, Circular queue deQueue).`],
+          [`head = -1, tail = -1`, `Both are reset to −1 only when the last element is removed. One element (30) is still in the queue.`],
+          [`head = 1, tail = 2`, `head = 1 is the state after only one dequeue. The second dequeue removes 20 and moves head to 2.`]
         ], a: 1, src: `Exam 2022/23` }
       ]
     },
@@ -733,37 +733,37 @@ int main()
         { q: `Linked list is considered as an example of ______ type of memory allocation.`, o: [
           [`Static`, `Static allocation fixes the size at compile time (arrays).`],
           [`Dynamic`, `Correct. Each node is created with new at run time.`],
-          [`Compile time`, `Compile-time allocation is static.`],
+          [`Compile time`, `Compile-time allocation is static allocation: the size is fixed before the program runs, as with an array. Linked list nodes are created with new at run time.`],
           [`Heap`, `Nodes do live on the heap, but the allocation type asked for is dynamic.`]
         ], a: 1, src: `Exam 2025/26` },
         { q: `After <code>int x = 5, *ptr; ptr = &x; *ptr = 24;</code> what is x?`, o: [
-          [`5`, `*ptr = 24 writes through the pointer into x.`],
+          [`5`, `5 was x's value before the last statement. ptr holds &x, so *ptr = 24 writes 24 into x itself.`],
           [`24`, `Correct. ptr points to x, so *ptr = 24 changes x.`],
-          [`The address of x`, `ptr holds the address; x holds a value.`],
-          [`29`, `Nothing is added.`]
+          [`The address of x`, `The address of x is what ptr holds (ptr = &x). x itself holds a value, and *ptr = 24 changed it to 24.`],
+          [`29`, `29 would mean 24 was added to 5. *ptr = 24 is an assignment through the pointer: it replaces x's value with 24.`]
         ], a: 1, src: `Lecture 4 example` },
         { q: `With <code>int x = 1, y = 2; fakeSwap(x, y);</code> the program prints:`, o: [
-          [`x= 2 y= 1`, `That is the result of trueSwap(&x, &y).`],
+          [`x= 2 y= 1`, `x= 2 y= 1 is the output of trueSwap(&x, &y), which swaps through pointers. fakeSwap gets copies, so x and y stay 1 and 2.`],
           [`x= 1 y= 2`, `Correct. Pass by value swaps only the copies a and b.`],
-          [`x= 1 y= 1`, `No assignment to x or y happens.`],
-          [`Compile error`, `The code is valid.`]
+          [`x= 1 y= 1`, `fakeSwap never assigns to x or y; it only changes its own copies a and b. Both keep their values: x = 1, y = 2.`],
+          [`Compile error`, `The code compiles: fakeSwap(int a, int b) is called with two ints. It just has no effect on x and y.`]
         ], a: 1, src: `Lecture 4 example` },
         { q: `If p points to a struct, <code>p->price</code> is equivalent to:`, o: [
           [`*p.price`, `Without brackets . binds first: *(p.price), which is wrong.`],
           [`(*p).price`, `Correct. The arrow operator dereferences then selects the member.`],
-          [`&p.price`, `& takes an address.`],
-          [`p.price`, `p is a pointer; the dot needs an object.`]
+          [`&p.price`, `&p.price tries to take the address of p.price; it neither dereferences p nor reads the member's value. p->price is (*p).price.`],
+          [`p.price`, `p is a pointer, not a struct object, so the dot cannot be applied to it directly. You must dereference first: (*p).price.`]
         ], a: 1 },
         { q: `Which memory segment is used by new?`, o: [
-          [`Code segment`, `Holds machine code.`],
-          [`Stack segment`, `Holds local/temporary variables.`],
-          [`Heap segment`, `Correct. Dynamic memory comes from the heap.`],
-          [`Data register`, `Not one of the segments in the lab.`]
+          [`Code segment`, `The code segment holds the compiled (machine) code of the program, not data allocated with new.`],
+          [`Stack segment`, `The stack segment holds local and temporary variables. Memory requested with new comes from the heap.`],
+          [`Heap segment`, `Correct. Every program has three segments: code (machine code), stack (local/temporary variables) and heap, which is used for dynamic memory allocation with new (Lab 3, Dynamic array).`],
+          [`Data register`, `A data register is a CPU register, not one of the program's three memory segments (code, stack, heap).`]
         ], a: 2 },
         { q: `Which statement correctly frees <code>arr = new int[size];</code>?`, o: [
           [`delete arr;`, `For arrays allocated with new[] use delete[].`],
-          [`free arr;`, `Not valid C++ syntax.`],
-          [`delete[] arr;`, `Correct (as in Lab 3).`],
+          [`free arr;`, `free arr; is not valid C++ syntax (free is a C function). Memory from new[] must be released with delete[].`],
+          [`delete[] arr;`, `Correct. A block allocated with new int[size] is released with delete[] arr;, exactly as the Lab 3 dynamic array program does at the end (Lab 3, Dynamic array).`],
           [`arr = NULL;`, `This loses the address without freeing (memory leak).`]
         ], a: 2 }
       ]
@@ -991,50 +991,50 @@ void InsertAt(int item, int pos)  // positions start at 1
       ],
       quiz: [
         { q: `True or False: "The last node in a linked list contains null in its second field because it will point to no node."`, o: [
-          [`True`, `Correct. This is the lecture's sentence.`],
-          [`False`, `Wrong. The last node's next is NULL.`]
+          [`True`, `Correct. Each node has two fields, data and next; the last node has no node after it, so its next field holds NULL, which marks the end of the list (the tail) (L5, What is a linked list?).`],
+          [`False`, `The statement is true: the last (tail) node has nothing to point to, so its next pointer is NULL; traversals stop when they reach it.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "Traversing a singly linked list is done in a forward direction only."`, o: [
-          [`True`, `Correct. Each node only knows the next node.`],
+          [`True`, `Correct. In a singly linked list each node holds a reference only to the next node, so traversal goes forward from head; going backward needs the prev pointer of a doubly linked list (L5, Singly linked list).`],
           [`False`, `Wrong. Backward traversal needs prev pointers (doubly linked list).`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "In a circular linked list, the last node points back to the head node."`, o: [
-          [`True`, `Correct.`],
+          [`True`, `Correct. In a circular linked list the last node points back to the head node instead of NULL, forming a circle; it can be singly or doubly linked (L5, Circular linked list).`],
           [`False`, `Wrong. That is the definition of a circular linked list.`]
         ], a: 0, src: `Exam 2025/26` },
         { q: `True or False: "The following is a valid code of class Node of a singly linked list: class Node {int data, Node next;}"`, o: [
-          [`True`, `Wrong. See the reasons in False.`],
+          [`True`, `The code is not valid: next must be a pointer (Node *next;), members are separated by ; not a comma, and the class needs a closing ; (and public:).`],
           [`False`, `Correct. next must be a pointer (Node *next;), the members must be separated by ; and the class needs a closing ; (and public: to be used outside).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `The disadvantage of a linked list is ______.`, o: [
-          [`Fixed size`, `That is the array's disadvantage.`],
-          [`Linear access and extra memory`, `Correct (official model answer B).`],
-          [`Slow insertion at the beginning`, `Insertion at the beginning is fast.`],
-          [`It cannot grow`, `Linked lists grow dynamically.`]
+          [`Fixed size`, `A fixed size is the array's disadvantage. A linked list grows and shrinks at run time.`],
+          [`Linear access and extra memory`, `Correct (official model answer B). The lecture lists two disadvantages: linear access (no direct access by index, traversal is needed) and extra memory for storing the pointers (L5, Advantages and disadvantages).`],
+          [`Slow insertion at the beginning`, `Inserting at the beginning is fast: newnode->next = head; head = newnode; no traversal or shifting is needed.`],
+          [`It cannot grow`, `A linked list can grow and shrink as required, since nodes are allocated at run time with new. Dynamic size is its first advantage.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `Which statement pair inserts newnode at the beginning of a non-empty list?`, o: [
           [`head = newnode; newnode->next = head;`, `Wrong order: newnode->next would point to itself and the list is lost.`],
           [`newnode->next = head; head = newnode;`, `Correct. Link to the old first node, then move head.`],
-          [`newnode->next = NULL; head = newnode;`, `This discards the old list.`],
+          [`newnode->next = NULL; head = newnode;`, `Setting newnode->next = NULL cuts the new node off from the old nodes, so after head = newnode the rest of the list is lost. That is only right for an empty list.`],
           [`head->next = newnode;`, `This puts the new node second and loses the old second node.`]
         ], a: 1 },
         { q: `After Lab 5's main: InsertB(10); InsertE(30); InsertB(5); InsertAt(20,2); the list is:`, o: [
           [`5 20 10 30`, `Correct. 10 → 10,30 → 5,10,30 → insert 20 at position 2 → 5,20,10,30.`],
           [`5 10 20 30`, `InsertAt does not sort; it inserts at position 2.`],
-          [`10 20 30 5`, `InsertB(5) puts 5 at the beginning.`],
-          [`20 5 10 30`, `Position 2 is after the first node.`]
+          [`10 20 30 5`, `InsertB(5) inserts at the beginning, so 5 becomes the first node, not the last. Then InsertAt(20, 2) puts 20 second: 5 20 10 30.`],
+          [`20 5 10 30`, `20 first would be InsertAt(20, 1). With pos = 2 the loop stops at node 1 (5) and links 20 after it: 5 20 10 30.`]
         ], a: 0, src: `Lecture 5 example` },
         { q: `What does count() return for the list head → 4 → 9 → 2 → NULL?`, o: [
-          [`2`, `That is the last value, not the count.`],
-          [`3`, `Correct. Three nodes before NULL.`],
-          [`4`, `NULL is not a node.`],
-          [`15`, `That is the sum.`]
+          [`2`, `2 is the data of the last node, not the number of nodes. count() increments c once per node: 3.`],
+          [`3`, `Correct. count() starts temp at head and does c++ for each node until temp becomes NULL: 4, 9, 2 gives c = 3 (L5, Find the size of the list).`],
+          [`4`, `4 counts NULL as a node. The loop stops when temp == NULL, so only the three real nodes are counted.`],
+          [`15`, `15 = 4 + 9 + 2 is the sum of the data. count() adds 1 per node, not the node's value.`]
         ], a: 1 },
         { q: `Which operation is NOT efficient in a singly linked list compared with an array?`, o: [
-          [`Inserting at the beginning`, `Constant time in a linked list.`],
+          [`Inserting at the beginning`, `Inserting at the beginning is cheap in a linked list (two pointer changes), while an array would have to shift every element.`],
           [`Accessing the 500th element directly`, `Correct. Linked lists have linear access; they must traverse.`],
-          [`Deleting the first node`, `Constant time in a linked list.`],
-          [`Growing beyond the initial size`, `Linked lists grow easily.`]
+          [`Deleting the first node`, `Deleting the first node is cheap: head = head->next; delete temp. An array would have to shift all remaining elements left.`],
+          [`Growing beyond the initial size`, `Growing is a linked list strength: memory is allocated at run time, while an array's size is fixed when it is declared.`]
         ], a: 1 }
       ]
     },
@@ -1181,34 +1181,34 @@ void pop()                   // delete from beginning
           [`False`, `Correct. A linked stack is one singly linked list where push/pop happen at the top (the beginning).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `In a linked stack, which pointer is changed by push?`, o: [
-          [`front`, `front belongs to a queue.`],
-          [`rear`, `rear belongs to a queue.`],
+          [`front`, `front is a queue pointer (deletions happen there). A linked stack has only one pointer, top, and push moves it.`],
+          [`rear`, `rear is the queue's insertion pointer. A linked stack inserts at the top: newnode->next = top; top = newnode.`],
           [`top`, `Correct. top = newnode after linking newnode->next = top.`],
-          [`head->prev`, `Stacks in the lecture are singly linked.`]
+          [`head->prev`, `The lecture's linked stack is singly linked (Node has only data and next); there is no prev pointer to change.`]
         ], a: 2 },
         { q: `Elements 25, 32, 50, 99 are pushed into a linked stack in this order. display() prints:`, o: [
           [`25 32 50 99`, `That is insertion order (a queue would print this).`],
           [`99 50 32 25`, `Correct. Display starts at top, the last pushed node.`],
-          [`99 25 32 50`, `Mixed order is not possible.`],
-          [`25 99 50 32`, `Mixed order is not possible.`]
+          [`99 25 32 50`, `display() walks temp = temp->next from top without jumping, so the order is strictly reverse of pushing: 99 50 32 25.`],
+          [`25 99 50 32`, `Nodes are linked top to bottom in reverse push order, and display() follows next one by one, so 25 can only come last.`]
         ], a: 1, src: `Lecture 6 example` },
         { q: `What is the linked stack empty condition?`, o: [
-          [`top == -1`, `That is for the array stack.`],
-          [`top == NULL`, `Correct.`],
-          [`top->next == NULL`, `That means one element.`],
-          [`front == rear`, `That is a queue condition.`]
+          [`top == -1`, `top == −1 is the array stack's test, where top is an index. In a linked stack top is a pointer, so empty means top == NULL.`],
+          [`top == NULL`, `Correct. The linked stack sets top = NULL at creation and isEmpty() returns true when top == NULL: there is no node to point to (L6, Pop from linked stack).`],
+          [`top->next == NULL`, `top->next == NULL means the top node is the only node: exactly one element, not an empty stack.`],
+          [`front == rear`, `front and rear belong to a queue. A linked stack has just top, and it is empty when top == NULL.`]
         ], a: 1 },
         { q: `The major problem of the stack implemented using an array is:`, o: [
-          [`It cannot be traversed`, `Array stacks can be displayed.`],
-          [`It works only for a fixed number of data values`, `Correct (lecture 6).`],
-          [`It follows FIFO`, `Stacks follow LIFO in both implementations.`],
-          [`It needs two pointers`, `It needs only top.`]
+          [`It cannot be traversed`, `An array stack can be traversed: display() loops j = top down to 0. Its problem is the fixed size.`],
+          [`It works only for a fixed number of data values`, `Correct. The lecture says the major problem of the array stack is that it works only for a fixed number of values, set at the start; the linked stack works for an unlimited number (L6, Stack revised).`],
+          [`It follows FIFO`, `Both stack implementations follow LIFO; FIFO is the queue rule, so this is not a problem of the array stack.`],
+          [`It needs two pointers`, `The array stack needs only one index, top. Two pointers (front and rear) belong to a queue.`]
         ], a: 1 },
         { q: `In the linked stack pop, what is the correct order of statements after temp = top?`, o: [
-          [`delete temp; top = top->next;`, `top would read deleted memory.`],
+          [`delete temp; top = top->next;`, `Deleting temp first frees the node top still points to, so top->next would then read freed memory.`],
           [`top = top->next; delete temp;`, `Correct. Move top first, then free the old top through temp.`],
-          [`top = NULL; delete temp;`, `This loses the rest of the stack.`],
-          [`temp = temp->next; delete top;`, `top would point to freed memory.`]
+          [`top = NULL; delete temp;`, `top = NULL drops every node below the old top, so the rest of the stack is lost (and leaks). top must move to top->next.`],
+          [`temp = temp->next; delete top;`, `This frees the node top still points to and leaves top dangling; the lecture moves top = top->next and then deletes temp.`]
         ], a: 1 }
       ]
     },
@@ -1359,38 +1359,38 @@ void dequeue()                          // remove from beginning
       ],
       quiz: [
         { q: `True or False: "Insertion is done at the front of a linked queue."`, o: [
-          [`True`, `Wrong. Insertion is at the rear.`],
+          [`True`, `The statement is false: enqueue links the new node after rear (rear->next = newnode; rear = newnode). The front is where dequeue deletes.`],
           [`False`, `Correct. Enqueue inserts at the rear; deletion is at the front.`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `In a linked queue the last inserted node is always pointed to by:`, o: [
-          [`front`, `front points to the first inserted node.`],
-          [`top`, `top belongs to a stack.`],
-          [`rear`, `Correct.`],
-          [`head`, `head = front.`]
+          [`front`, `front (head) points to the first inserted node, the next one to be dequeued, not the last inserted.`],
+          [`top`, `top is the only pointer of a linked stack. A linked queue has front and rear, and the newest node is at rear.`],
+          [`rear`, `Correct. The lecture says the last inserted node is always pointed to by tail or rear, and the first node by head or front (L7, Linked queue).`],
+          [`head`, `head is another name for front, which points to the first inserted node; the last inserted is at rear (tail).`]
         ], a: 2 },
         { q: `Which statements enqueue newnode into a NON-empty linked queue?`, o: [
-          [`newnode->next = front; front = newnode;`, `That inserts at the front (stack push).`],
-          [`rear->next = newnode; rear = newnode;`, `Correct.`],
+          [`newnode->next = front; front = newnode;`, `Linking the new node before front and moving front inserts at the beginning, which is a stack push, not enqueue.`],
+          [`rear->next = newnode; rear = newnode;`, `Correct. Step 4 of enqueue: if the queue is not empty, link the old last node to the new one (rear->next = newnode) and then move rear to it (rear = newnode) (L7, Enqueue).`],
           [`rear = newnode; rear->next = newnode;`, `Wrong order: the old last node is never linked and newnode points to itself.`],
-          [`front->next = newnode;`, `This puts it second and loses nodes.`]
+          [`front->next = newnode;`, `This links the new node right after the first node and drops the link to the old second node, so nodes are lost; rear is never updated.`]
         ], a: 1 },
         { q: `Enqueue 10, 15, 22, 50; dequeue twice; enqueue 7. Display prints:`, o: [
           [`22 50 7`, `Correct. 10 and 15 leave first (FIFO), 7 joins at the rear.`],
-          [`7 22 50`, `7 is added at the rear, not the front.`],
+          [`7 22 50`, `enqueue adds at the rear, so 7 comes after 22 and 50, not before them.`],
           [`10 15 7`, `Dequeue removes from the front, i.e. 10 and 15.`],
-          [`50 22 7`, `A queue keeps insertion order.`]
+          [`50 22 7`, `A queue keeps insertion order from front to rear: 22 then 50 then 7. Reversed order is how a stack displays.`]
         ], a: 0 },
         { q: `How many pointers does a linked queue keep?`, o: [
-          [`One (top)`, `That is a linked stack.`],
-          [`Two (front and rear)`, `Correct.`],
-          [`Three (front, rear, top)`, `There is no top.`],
-          [`None`, `It needs pointers to reach the nodes.`]
+          [`One (top)`, `A single top pointer is the linked stack. A queue works at two ends, so it needs front and rear.`],
+          [`Two (front and rear)`, `Correct. Step 2 of creating a linked queue defines two Node pointers, front and rear, both set to NULL: front for dequeue and rear for enqueue (L7, Linked queue creation).`],
+          [`Three (front, rear, top)`, `There is no top in a queue; top belongs to a stack. The linked queue has only front and rear.`],
+          [`None`, `A linked structure is reached only through pointers; the queue keeps two, front and rear (both NULL when empty).`]
         ], a: 1 },
         { q: `In the lecture's dequeue, after the only node is deleted, what goes wrong with isEmpty() (front==NULL && rear==NULL)?`, o: [
           [`Nothing, it returns true`, `rear was not changed, so it still points to the deleted node.`],
           [`It returns false because rear still points to the deleted node`, `Correct. Set rear = NULL when front becomes NULL (Lab 7 does front = rear = NULL).`],
-          [`It crashes immediately`, `isEmpty only compares pointers.`],
-          [`front is not NULL`, `front = front->next makes it NULL.`]
+          [`It crashes immediately`, `isEmpty() only compares front and rear with NULL; it does not dereference anything, so it does not crash. It just returns the wrong answer.`],
+          [`front is not NULL`, `front does become NULL: front = front->next copies the deleted node's next, which was NULL. The problem is rear.`]
         ], a: 1 }
       ]
     },
@@ -1553,32 +1553,32 @@ void deleteitem(int value)
       ],
       quiz: [
         { q: `True or False: "On inserting a new node N in a doubly linked list, N->next = NULL is a must."`, o: [
-          [`True`, `Wrong. Only when N becomes the last node.`],
+          [`True`, `N->next = NULL is needed only when N becomes the last node (insert at end or into an empty list). At the beginning, N->next = head.`],
           [`False`, `Correct. When inserting at the beginning or in the middle, N->next points to the following node; it is NULL only when inserting at the end (or into an empty list).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `A doubly linked list node contains:`, o: [
-          [`data and next`, `That is a singly linked node.`],
-          [`data, next and prev`, `Correct.`],
-          [`data and prev only`, `It also needs next.`],
-          [`next and prev only`, `It must hold data.`]
+          [`data and next`, `data and next only is a singly linked node, which can be traversed forward only. A doubly linked node adds prev.`],
+          [`data, next and prev`, `Correct. Each doubly linked node holds the data, prev (pointer to the previous node) and next (pointer to the next node), so the list can be traveled both ways (L8, Representation).`],
+          [`data and prev only`, `Without next the list could not be traversed forward. A doubly linked node has both prev and next, plus the data.`],
+          [`next and prev only`, `A node must hold the data value; next and prev are only the links. The node class has int data, Node *next and Node *prev.`]
         ], a: 1 },
         { q: `Which statement is missing when inserting at the beginning of a non-empty doubly list? <code>newnode->next = head; newnode->prev = NULL; ____; head = newnode;</code>`, o: [
           [`head->next = newnode;`, `That would make the old head point forward to the new node.`],
           [`head->prev = newnode;`, `Correct. The old first node must point back to the new node.`],
-          [`newnode->next->next = NULL;`, `This would cut the list.`],
-          [`head = NULL;`, `This loses the list.`]
+          [`newnode->next->next = NULL;`, `newnode->next is the old head; setting its next to NULL cuts off every node after it. The missing step links the old head back: head->prev = newnode.`],
+          [`head = NULL;`, `head = NULL achieves nothing (head = newnode overwrites it), and the old first node's prev stays NULL. The missing link is head->prev = newnode.`]
         ], a: 1 },
         { q: `Which traversal is possible in a doubly linked list but not in a singly linked list?`, o: [
-          [`Forward from head`, `Both support forward traversal.`],
-          [`Backward from the last node`, `Correct. The prev pointers allow it.`],
-          [`Counting nodes`, `Both can count.`],
-          [`Searching for a value`, `Both can search.`]
+          [`Forward from head`, `Forward traversal from head works in both lists, since both have next pointers.`],
+          [`Backward from the last node`, `Correct. A singly linked node has only next, so it can travel forward only; the doubly linked node's prev pointer lets you travel backward from the last node too (L8, Doubly linked list).`],
+          [`Counting nodes`, `Counting is a forward traversal with c++ per node, which both lists support.`],
+          [`Searching for a value`, `Searching walks forward comparing data, which works in both singly and doubly linked lists.`]
         ], a: 1 },
         { q: `In deleteitem for an interior node temp1 (temp2 is before it), which pair of statements relinks the list?`, o: [
-          [`temp2->next = temp1->next; temp1->next->prev = temp1->prev;`, `Correct (professor's code).`],
-          [`temp2->prev = temp1; temp1->prev = temp2;`, `This does not bypass temp1.`],
-          [`temp1->next = temp2; temp2->next = NULL;`, `This cuts the list.`],
-          [`head = temp1->next;`, `Only for deleting the first node.`]
+          [`temp2->next = temp1->next; temp1->next->prev = temp1->prev;`, `Correct. temp2->next = temp1->next makes the previous node skip temp1 forward, and temp1->next->prev = temp1->prev makes the following node point back to temp2; then temp1 is deleted (L8, Deleting within a doubly linked list).`],
+          [`temp2->prev = temp1; temp1->prev = temp2;`, `These lines point temp2 back to temp1 and temp1 back to temp2, so temp1 is still in the chain and nothing is bypassed.`],
+          [`temp1->next = temp2; temp2->next = NULL;`, `temp2->next = NULL ends the list at temp2, losing every node after temp1 instead of skipping just temp1.`],
+          [`head = temp1->next;`, `Moving head is used only when the node to delete is the first one (head->data == value); temp1 here is an interior node.`]
         ], a: 0 }
       ]
     },
@@ -1721,66 +1721,66 @@ Node* maximum(Node *temp)       // rightmost node
       ],
       quiz: [
         { q: `If a Binary Search Tree is traversed in the order right, root, left recursively, the output sequence will be in:`, o: [
-          [`Ascending order`, `Ascending is left, root, right (inorder).`],
+          [`Ascending order`, `Ascending order comes from inorder (left, root, right), because smaller keys are in the left subtree. Visiting right first reverses it.`],
           [`Descending order`, `Correct. Larger keys are on the right, so visiting right first gives descending order.`],
-          [`No specific order`, `The BST property guarantees an order.`],
-          [`Right, root, left cannot be done`, `It can be done; it is reverse inorder.`]
+          [`No specific order`, `The BST property (left keys smaller, right keys larger) fixes the order: right, root, left always lists keys from largest to smallest.`],
+          [`Right, root, left cannot be done`, `Any visiting order can be coded recursively; right, root, left is just inorder with the two recursive calls swapped (reverse inorder).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `When the pre-order and post-order traversals of a binary tree generate the same output, the tree has:`, o: [
           [`Two nodes`, `With two nodes the root is first in preorder and last in postorder, so they differ.`],
           [`Only one node`, `Correct. Only a single node is both first and last.`],
-          [`Three nodes`, `The root position differs.`],
-          [`Any number of nodes`, `Only true for one node (or an empty tree).`]
+          [`Three nodes`, `With three nodes the root is printed first in preorder and last in postorder, so the two outputs differ.`],
+          [`Any number of nodes`, `With two or more nodes the root is first in preorder but last in postorder, so the outputs differ; only a single node (or empty tree) gives the same output.`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `What are the numbers of nodes in the left and right subtrees of the BST if the data is inserted in the order: 45, 15, 8, 56, 5, 65, 47, 12, 18, 10, 73, 50, 16, 61?`, o: [
-          [`8 left and 5 right`, `Count keys less than 45: there are 7.`],
-          [`6 left and 7 right`, `Reversed counts.`],
+          [`8 left and 5 right`, `8 and 5 miscounts. Keys less than 45 (left subtree): 15, 8, 5, 12, 18, 10, 16 = 7; greater (right): 56, 65, 47, 73, 50, 61 = 6.`],
+          [`6 left and 7 right`, `6 and 7 swaps the two counts: 7 keys are less than 45 (left subtree) and 6 are greater (right subtree).`],
           [`7 left and 6 right`, `Correct. Less than 45: 15, 8, 5, 12, 18, 10, 16 (7). Greater: 56, 65, 47, 73, 50, 61 (6). Verified with g++.`],
-          [`5 left and 8 right`, `Count again: 7 and 6.`]
+          [`5 left and 8 right`, `5 and 8 miscounts. All keys less than the root 45 go left (7 of them) and all greater keys go right (6).`]
         ], a: 2, src: `Exam 2022/23` },
         { q: `True or False: "To print the keys of a binary search tree in ascending order, you may apply inorder or postorder traversals."`, o: [
           [`True`, `Wrong. Postorder does not give sorted output.`],
-          [`False`, `Correct. Only inorder gives ascending order.`]
+          [`False`, `Correct. The lecture says inorder traversal of a BST always gives the sorted (ascending) order of the keys; postorder visits the parent after both subtrees, so it is not sorted (L9, Inorder traverse code).`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `True or False: "Left-Right-Parent represents the postorder traversal of a binary tree."`, o: [
-          [`True`, `Correct. Postorder visits the parent last.`],
-          [`False`, `Wrong. L R P is exactly postorder.`]
+          [`True`, `Correct. The traversal is named by when the parent is visited: postorder traverses the left subtree, then the right subtree, and visits the parent last (L9, Postorder traversal).`],
+          [`False`, `The statement is true: postorder = traverse left subtree, traverse right subtree, then visit the parent (L R P).`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `For the tree 43; 31(20(-,28), 40(33,-)); 64(56(47,59), 89), the preorder traversal is:`, o: [
-          [`43 31 20 28 40 33 64 56 47 59 89`, `Correct (lecture example).`],
-          [`20 28 31 33 40 43 47 56 59 64 89`, `That is inorder.`],
-          [`28 20 33 40 31 47 59 56 89 64 43`, `That is postorder.`],
-          [`43 31 64 20 40 56 89 28 33 47 59`, `That is level order, not taught as preorder.`]
+          [`43 31 20 28 40 33 64 56 47 59 89`, `Correct. Preorder visits the parent first, then the left subtree, then the right: 43, then 31 20 28 40 33, then 64 56 47 59 89 — the lecture's own example (L9, Preorder).`],
+          [`20 28 31 33 40 43 47 56 59 64 89`, `That is the inorder output (left, parent, right), which comes out sorted for a BST. Preorder starts with the root 43.`],
+          [`28 20 33 40 31 47 59 56 89 64 43`, `That is the postorder output (left, right, parent), ending with the root 43. Preorder starts with 43.`],
+          [`43 31 64 20 40 56 89 28 33 47 59`, `That lists the tree level by level (level order), which the lecture does not teach. Preorder goes deep into the left subtree first: 43 31 20 28 …`]
         ], a: 0, src: `Exam 2023/24 Summer` },
         { q: `For the tree 50; 25(12,33); 65(55(53,60),70), the postorder traversal is:`, o: [
-          [`12 25 33 50 53 55 60 65 70`, `That is inorder.`],
-          [`50 25 12 33 65 55 53 60 70`, `That is preorder.`],
+          [`12 25 33 50 53 55 60 65 70`, `That is inorder (left, parent, right), which is sorted for a BST. Postorder ends with the root 50.`],
+          [`50 25 12 33 65 55 53 60 70`, `That is preorder (parent first, root 50 at the start). Postorder visits the parent last.`],
           [`12 33 25 53 60 55 70 65 50`, `Correct. Left, right, then parent; the root 50 is last.`],
-          [`12 33 25 50 53 60 55 70 65`, `The root must come last in postorder.`]
+          [`12 33 25 50 53 60 55 70 65`, `Here 50 appears in the middle, as in inorder. In postorder the root is printed after both subtrees, so 50 must be last.`]
         ], a: 2, src: `Exam 2023/24 Summer` },
         { q: `For the tree F; B(A, D(C, E)); G(-, I(H, -)), the postorder traversal is:`, o: [
-          [`A B C D E F G H I`, `That is inorder.`],
-          [`F B A D C E G I H`, `That is preorder.`],
-          [`A C E D B H I G F`, `Correct. Checked with g++.`],
-          [`A C D E B H I G F`, `D must come after both its children C and E.`]
+          [`A B C D E F G H I`, `A B C … I is the inorder output (left, parent, right), which here is alphabetical. Postorder ends with the root F.`],
+          [`F B A D C E G I H`, `That is preorder (parent, left, right), starting with the root F. Postorder prints F last.`],
+          [`A C E D B H I G F`, `Correct. Left subtree of F: A, then D's children C, E, then D, then B. Right subtree: G has only a right child I, whose left is H: H, I, G. Finally the root: A C E D B H I G F (L9, Postorder).`],
+          [`A C D E B H I G F`, `This prints D before its right child E. In postorder a parent comes after both children: C, E, then D.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `Inserting 57 into the BST 43; 31(…); 64(56(47,59), 89) makes 57:`, o: [
           [`The right child of 56`, `56 already has a right child (59), so we continue down to 59.`],
           [`The left child of 59`, `Correct. 57 &gt; 43 → 64; 57 &lt; 64 → 56; 57 &gt; 56 → 59; 57 &lt; 59 → left of 59.`],
-          [`The left child of 89`, `57 &lt; 64, so it never reaches 89.`],
-          [`The new root`, `New keys are always attached as leaves.`]
+          [`The left child of 89`, `89 is in 64's right subtree; since 57 is less than 64, the search goes left to 56 and never reaches 89.`],
+          [`The new root`, `Inserting into a non-empty tree never changes the root: the new node is attached as a leaf where the search reaches NULL (L9, Insertion). Only the first insert into an empty tree creates the root.`]
         ], a: 1, src: `Lecture 9 example` },
         { q: `Which node holds the minimum key of a BST?`, o: [
           [`The root`, `The root is only the minimum if it has no left child.`],
           [`The leftmost node`, `Correct. minimum() keeps moving left until left is NULL.`],
-          [`The rightmost node`, `That is the maximum.`],
-          [`Any leaf`, `Not every leaf is the minimum.`]
+          [`The rightmost node`, `The rightmost node holds the maximum key, since larger keys are on the right; maximum() follows right links.`],
+          [`Any leaf`, `Leaves can hold any key (in the lecture tree 28, 33, 47, 59 and 89 are all leaves); only the leftmost node is guaranteed to be the minimum.`]
         ], a: 1 },
         { q: `In a binary tree, each node has:`, o: [
-          [`Exactly 2 children`, `Leaves have none; some nodes have one.`],
-          [`At most 2 children`, `Correct.`],
-          [`At least 2 children`, `Leaves have no children.`],
-          [`Any number of children`, `That is a general tree.`]
+          [`Exactly 2 children`, `Exactly 2 is too strict: leaves have no children and some nodes have only one. The rule is at most two.`],
+          [`At most 2 children`, `Correct. The lecture defines a binary tree as a tree where each node has at most 2 children (a left and a right child, either may be NULL) (L9, Binary tree).`],
+          [`At least 2 children`, `Leaves have no children at all, so "at least 2" cannot hold for any finite tree.`],
+          [`Any number of children`, `Any number of children describes a general tree; a binary tree limits each node to at most two.`]
         ], a: 1 }
       ]
     },
@@ -1872,7 +1872,7 @@ Node* maximum(Node *temp)       // rightmost node
       ],
       quiz: [
         { q: `True or False: "Hash tables store keys in ordered locations."`, o: [
-          [`True`, `Wrong. Hashing scatters keys.`],
+          [`True`, `The statement is false: the hash function scatters keys over the table (it is also called a scatter table), so cells are not in key order.`],
           [`False`, `Correct. Keys are scattered according to the hash function, not sorted (hence "scatter table").`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `True or False: "When a hash function computes the same location for two or more keys, this is a collision situation."`, o: [
@@ -1880,44 +1880,44 @@ Node* maximum(Node *temp)       // rightmost node
           [`False`, `Wrong. Same location for different keys is a collision.`]
         ], a: 0, src: `Exam 2022/23` },
         { q: `Using the division method with table size 11, key 25 hashes to:`, o: [
-          [`2`, `25 mod 11 = 3, not 2.`],
-          [`3`, `Correct. 25 = 2·11 + 3.`],
-          [`11`, `Indices only go up to 10.`],
-          [`25`, `That is the key itself.`]
+          [`2`, `2 is the quotient, not the remainder: 25 = 2 × 11 + 3, so 25 mod 11 = 3.`],
+          [`3`, `Correct. The division method takes key mod table size: 25 mod 11 = 25 − 2 × 11 = 3, so 25 goes to index 3 (L10, Division method).`],
+          [`11`, `11 is the table size; valid indices are 0 to 10, and key mod 11 can never equal 11.`],
+          [`25`, `25 is the key itself, which is outside the table (indices 0..10). The address is 25 mod 11 = 3.`]
         ], a: 1, src: `Exam 2022/23` },
         { q: `Keys 14, 17, 25, 37, 34, 16 are stored in a table of size 11 with division and linear probing. Where is 16 stored?`, o: [
-          [`5`, `16 mod 11 = 5, but slot 5 already holds 37.`],
-          [`6`, `Slot 6 holds 17.`],
+          [`5`, `16 mod 11 = 5 is only the first try: 37 already sits in slot 5 (37 → 4 taken by 25 → 5), so 16 must probe on.`],
+          [`6`, `Slot 6 is the second try, but it holds 17 (17 mod 11 = 6). Linear probing moves on to slot 7, which is free.`],
           [`7`, `Correct. 5 (37) and 6 (17) are taken, so i = 2 gives slot 7.`],
           [`9`, `That would be standard quadratic probing (5 + 4).`]
         ], a: 2, src: `Exam 2023/24 Summer` },
         { q: `Keys 12, 15, 21, 31, 90, table size 9, division + linear probing. Where does 31 go?`, o: [
-          [`4`, `31 mod 9 = 4, but 21 already took slot 4.`],
+          [`4`, `31 mod 9 = 4 is the first try, but 21 is already there (21 → 3 collided with 12 → moved to 4). Probe on to 5.`],
           [`5`, `Correct. 12→3, 15→6, 21→3 collides → 4, 31→4 collides → 5.`],
-          [`3`, `Slot 3 holds 12.`],
-          [`0`, `Slot 0 is taken by 90 (90 mod 9 = 0).`]
+          [`3`, `Slot 3 holds 12 (12 mod 9 = 3), and 31 hashes to 4 anyway; linear probing only moves forward from there.`],
+          [`0`, `Linear probing for 31 starts at 4 and moves forward, finding 5 free; slot 0 is later taken by 90 (90 mod 9 = 0).`]
         ], a: 1, src: `Exam 2023/24 Summer` },
         { q: `Keys 25, 42, 96, 101, 102, 162, 197 hashed by division with size 5 and separate chaining. How long is the chain at index 2?`, o: [
-          [`1`, `Several keys end in 2 or 7.`],
-          [`2`, `Count: 42, 102, 162, 197.`],
+          [`1`, `Only one key would mean a single key with remainder 2, but 42, 102, 162 and 197 all give 2 mod 5.`],
+          [`2`, `2 counts only 42 and 102. 162 mod 5 = 2 and 197 mod 5 = 2 too, so the chain has 4 nodes.`],
           [`4`, `Correct. 42, 102, 162 and 197 all give remainder 2.`],
-          [`3`, `197 mod 5 = 2 as well.`]
+          [`3`, `3 misses one key: 197 = 39 × 5 + 2, so it also joins index 2 with 42, 102 and 162.`]
         ], a: 2, src: `Exam 2025/26` },
         { q: `Keys 18, 72, 65, 34, 13 in a table of size 7 with linear probing. Where is 13 stored?`, o: [
-          [`6`, `6 holds 34.`],
+          [`6`, `Slot 6 is 13's home address (13 mod 7 = 6), but 34 is already there (34 mod 7 = 6), so 13 must probe.`],
           [`0`, `Correct. 13 mod 7 = 6 collides, (6+1) mod 7 = 0.`],
-          [`5`, `That is the quadratic probing result.`],
-          [`1`, `Linear probing tries 0 before 1.`]
+          [`5`, `5 is where the lecture's quadratic probing puts 13 (6 + 1 + 1 = 8 → 1 taken, then 6 + 2 + 4 = 12 → 5). Linear probing tries (6 + 1) mod 7 = 0.`],
+          [`1`, `Linear probing tries h + 1 first: (6 + 1) mod 7 = 0, and slot 0 is empty, so it stops there before reaching 1.`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `Which hash function squares the key and takes the middle digits?`, o: [
-          [`Truncation`, `Truncation takes part of the key directly.`],
-          [`Folding`, `Folding adds groups of digits.`],
-          [`Mid square`, `Correct. 456² = 207936 → 79.`],
-          [`Division`, `Division uses key mod size.`]
+          [`Truncation`, `Truncation takes the rightmost (or leftmost) digits of the key directly, with no squaring.`],
+          [`Folding`, `Folding breaks the key into groups of digits and adds them (e.g. 143 + 765 + 980 = 1888); it does not square.`],
+          [`Mid square`, `Correct. The mid square method squares the key and uses the middle 2 or 3 digits as the address: 456² = 207936 → middle digits 79 (L10, Mid square method).`],
+          [`Division`, `The division method uses the remainder key mod table size; it does not square the key.`]
         ], a: 2 },
         { q: `Which collision technique uses an array of pointers to linked lists?`, o: [
           [`Linear probing`, `Linear probing stores keys in the array itself.`],
-          [`Separate chaining`, `Correct.`],
+          [`Separate chaining`, `Correct. In separate chaining the hash table is an array of pointers, each pointing to a linked list that holds all keys with that hash address (L10, Separate chaining).`],
           [`Double hashing`, `Double hashing uses a second hash function in the same array.`],
           [`Truncation`, `Truncation is a hash function, not a collision technique.`]
         ], a: 1 }
@@ -2092,28 +2092,28 @@ int main()
             ans: `h(k) = k mod 5: 25→0, 42→2, 96→1, 101→1, 102→2, 162→2, 197→2.<br><table><tr><th>Index</th><th>Chain</th></tr><tr><td>0</td><td>25 → NULL</td></tr><tr><td>1</td><td>96 → 101 → NULL</td></tr><tr><td>2</td><td>42 → 102 → 162 → 197 → NULL</td></tr><tr><td>3</td><td>NULL</td></tr><tr><td>4</td><td>NULL</td></tr></table>Collisions: 101 (with 96), 102, 162, 197 (with 42). Each is appended to the linked list of its slot (L10).` }
         ]},
         { title: `Question 2 · Choose the correct answer`, marks: `15 marks (1.5 each)`, items: [
-          { type: `mcq`, q: `Which of the following data structures allows insertion and deletion from both ends?`, o: [`Stack`, `Queue`, `Linked list`, `Array`], a: 1, why: `Expected answer: Queue, which the lecture describes as "open at both ends" (insert at the rear, delete at the front) (L3). Strictly, insertion and deletion at both ends is a deque, which is not among the options.` },
-          { type: `mcq`, q: `Assuming int is of 4 bytes, what is the size of int arr[15];?`, o: [`15`, `19`, `11`, `60`], a: 3, why: `15 × 4 = 60 bytes (L1).` },
-          { type: `mcq`, q: `In general, the index of the first element in an array is ____`, o: [`1`, `0`, `2`, `-1`], a: 1, why: `C++ arrays are zero-based (L1).` },
-          { type: `mcq`, q: `Which of the following data structures is a linear type?`, o: [`Graph`, `Binary Tree`, `Tree`, `Linked list`], a: 3, why: `Graphs and trees are non-linear; a linked list is linear (L1).` },
-          { type: `mcq`, q: `Process of removing an element from stack is called ____`, o: [`Create`, `Push`, `Evaluation`, `Pop`], a: 3, why: `Pop deletes the top element (L2).` },
-          { type: `mcq`, q: `Which of the following data structures is a non-linear type?`, o: [`Array`, `Stack`, `Tree`, `Queue`], a: 2, why: `Trees are hierarchical, non-linear (L1, L9).` },
-          { type: `mcq`, q: `What are the advantages of arrays?`, o: [`Easier to store elements of same data type`, `Elements in an array cannot be sorted`, `Index of first element of an array is 1`, `Objects of mixed data types can be stored`], a: 0, why: `B is false (arrays can be sorted), C is false (index starts at 0), D describes structs (L1).` },
-          { type: `mcq`, q: `Process of inserting an element in stack is called ____`, o: [`Create`, `Push`, `Evaluation`, `Pop`], a: 1, why: `Push adds an element at the top (L2).` },
-          { type: `mcq`, q: `When search starts at the beginning of a list to check every element in that list, it is ……`, o: [`linear search`, `binary search`, `hash search`, `binary tree search`], a: 0, why: `Linear (sequential) search checks elements one by one from the start (Lab 1, Lab 2).` },
-          { type: `mcq`, q: `Linked list is considered as an example of ____ type of memory allocation.`, o: [`Static`, `Dynamic`, `Compile time`, `Heap`], a: 1, why: `Nodes are created with new at run time: dynamic allocation (L4, L5).` }
+          { type: `mcq`, q: `Which of the following data structures allows insertion and deletion from both ends?`, o: [`Stack`, `Queue`, `Linked list`, `Array`], a: 1, why: `Expected answer: Queue, which the lecture describes as "open at both ends" (insert at the rear, delete at the front) (L3). Strictly, insertion and deletion at both ends is a deque, which is not among the options.`, ow: [`A stack inserts and deletes at one end only, the top (L2), so it is not open at both ends.`, null, `A linked list can insert and delete at any position, but the expected answer is the queue, which the lecture calls "open at both ends".`, `A plain array has no insertion or deletion ends; stacks and queues are built on it with TOP or front/rear indices.`] },
+          { type: `mcq`, q: `Assuming int is of 4 bytes, what is the size of int arr[15];?`, o: [`15`, `19`, `11`, `60`], a: 3, why: `An array occupies number of elements × size of one element: 15 × 4 bytes = 60 bytes (L1, Array-based representation).`, ow: [`15 is the number of elements, not the number of bytes; each int takes 4 bytes.`, `19 adds the count and the element size (15 + 4); the size is count × element size.`, `11 subtracts the element size from the count (15 − 4), which has no meaning; the size is 15 × 4.`, null] },
+          { type: `mcq`, q: `In general, the index of the first element in an array is ____`, o: [`1`, `0`, `2`, `-1`], a: 1, why: `C++ arrays are zero-based: the ith element is at position i − 1, so indices run from 0 to size − 1 and the first element is at index 0 (L1, Array-based representation).`, ow: [`Matrices in math are indexed from 1, but C++ arrays are zero-based: location(i) = i − 1.`, null, `No C++ array starts at index 2; the first element is at index 0.`, `−1 is the "empty" value of TOP or front/rear in stacks and queues, not a valid array index.`] },
+          { type: `mcq`, q: `Which of the following data structures is a linear type?`, o: [`Graph`, `Binary Tree`, `Tree`, `Linked list`], a: 3, why: `Graphs and trees are non-linear; a linked list is linear (L1).`, ow: [`A graph is non-linear: its elements form a network, not a single sequence.`, `A binary tree is a tree, so its nodes form a hierarchy (non-linear).`, `A tree arranges elements hierarchically (parent and children), so it is non-linear.`, null] },
+          { type: `mcq`, q: `Process of removing an element from stack is called ____`, o: [`Create`, `Push`, `Evaluation`, `Pop`], a: 3, why: `Pop is the process of deleting the element at the top of the stack; after each pop, top is decremented by one (L2, Operations on stack).`, ow: [`Create sets up a new empty stack (top = −1); it does not remove anything.`, `Push is the opposite: it adds a new element at the top and increments top.`, `Evaluation is not one of the stack operations; the basic operations are push and pop.`, null] },
+          { type: `mcq`, q: `Which of the following data structures is a non-linear type?`, o: [`Array`, `Stack`, `Tree`, `Queue`], a: 2, why: `In a tree the elements are not in a single sequence but in a hierarchy (root, children, subtrees), so it is non-linear like a graph; arrays, stacks and queues are linear (L1, L9).`, ow: [`An array is linear (and static): its elements sit in one sequence.`, `A stack is a linear dynamic structure: one sequence, accessed at the top.`, null, `A queue is a linear dynamic structure: one sequence with a front and a rear.`] },
+          { type: `mcq`, q: `What are the advantages of arrays?`, o: [`Easier to store elements of same data type`, `Elements in an array cannot be sorted`, `Index of first element of an array is 1`, `Objects of mixed data types can be stored`], a: 0, why: `B is false (arrays can be sorted), C is false (index starts at 0), D describes structs (L1).`, ow: [null, `False: arrays can be sorted (L1 has a sort example), and this would not be an advantage anyway.`, `False: C++ arrays start at index 0, not 1.`, `False: storing mixed data types under one name describes a struct, not an array.`] },
+          { type: `mcq`, q: `Process of inserting an element in stack is called ____`, o: [`Create`, `Push`, `Evaluation`, `Pop`], a: 1, why: `Push is the process of adding a new element to the top of the stack: top is first incremented, then the item is stored at stack[top] (L2, Operations on stack).`, ow: [`Create only sets up an empty stack with top = −1; it does not insert.`, null, `Evaluation is not one of the stack operations; insertion is push.`, `Pop is the opposite: it deletes the top element and decrements top.`] },
+          { type: `mcq`, q: `When search starts at the beginning of a list to check every element in that list, it is ……`, o: [`linear search`, `binary search`, `hash search`, `binary tree search`], a: 0, why: `Linear (sequential) search checks elements one by one from the start (Lab 1, Lab 2).`, ow: [null, `Binary search does not check every element from the start; it repeatedly halves a sorted list by comparing with the middle element.`, `Hash search computes the key's address with a hash function and goes there directly (L10), instead of scanning from the start.`, `Binary tree search follows one path from the root, going left or right by comparison (L9); it does not check every element.`] },
+          { type: `mcq`, q: `Linked list is considered as an example of ____ type of memory allocation.`, o: [`Static`, `Dynamic`, `Compile time`, `Heap`], a: 1, why: `Nodes are created with new at run time: dynamic allocation (L4, L5).`, ow: [`Static allocation fixes the size before the program runs, as with arrays; linked list nodes are created at run time.`, null, `Compile-time allocation is static allocation; linked list nodes are allocated with new at run time.`, `Nodes do live on the heap, but the type of allocation asked for is dynamic (run-time) allocation.`] }
         ]},
         { title: `Question 2 · Choose true or false`, marks: `15 marks (1.5 each)`, items: [
-          { type: `tf`, q: `Insertions and deletions in the Stack follow FIFO.`, a: 1, why: `A stack follows LIFO; FIFO is a queue (L2).` },
-          { type: `tf`, q: `The circular queue is the same as the regular queue.`, a: 1, why: `A circular queue connects the last position to the first and reuses freed cells (L3).` },
-          { type: `tf`, q: `Enqueue() inserts an element at the rear of the Queue.`, a: 0, why: `Insertion is at the rear (L3).` },
-          { type: `tf`, q: `The array is a group of data elements grouped together under one name with different types.`, a: 1, why: `That defines a struct; array elements have the same type (L1).` },
-          { type: `tf`, q: `Dequeue(): removes the element at the front of the Queue.`, a: 0, why: `Deletion is from the front (L3).` },
-          { type: `tf`, q: `The last node in linked-list contains null in its second field because it will point to no node.`, a: 0, why: `Lecture 5's exact sentence.` },
-          { type: `tf`, q: `Function push() in Stack used to delete item.`, a: 1, why: `push inserts; pop deletes (L2).` },
-          { type: `tf`, q: `Traversing a singly linked list is done in a forward direction only.`, a: 0, why: `Each node only has a next pointer (L5).` },
-          { type: `tf`, q: `In a circular linked list, the last node points back to the head node.`, a: 0, why: `Definition of a circular linked list (L5).` },
-          { type: `tf`, q: `Insertions and deletions in Stack follow FILO.`, a: 0, why: `First-In-Last-Out is the same as LIFO (L2).` }
+          { type: `tf`, q: `Insertions and deletions in the Stack follow FIFO.`, a: 1, why: `Insertions and deletions in a stack both happen at the top, so the last element added is the first removed: LIFO, not FIFO (FIFO is the queue rule) (L2).`, ow: [`FIFO is the queue rule. In a stack both insertion and deletion happen at the top, so it is LIFO.`, null] },
+          { type: `tf`, q: `The circular queue is the same as the regular queue.`, a: 1, why: `A circular queue connects the last position to the first and reuses freed cells (L3).`, ow: [`A circular queue is not the same: its last position connects to the first, so cells freed by dequeue can be reused, unlike the regular (linear) queue.`, null] },
+          { type: `tf`, q: `Enqueue() inserts an element at the rear of the Queue.`, a: 0, why: `All insertions to a queue are made at one end, the tail (rear): enqueue increments tail and stores the item at queue[tail] (L3, What is a queue?).`, ow: [null, `The statement is true: a queue inserts only at the rear (tail): tail = tail + 1; queue[tail] = item.`] },
+          { type: `tf`, q: `The array is a group of data elements grouped together under one name with different types.`, a: 1, why: `That defines a struct; array elements have the same type (L1).`, ow: [`A group of elements under one name with different types is a struct. Array elements must all have the same type.`, null] },
+          { type: `tf`, q: `Dequeue(): removes the element at the front of the Queue.`, a: 0, why: `All deletions from a queue are made at the head (front): dequeue reads queue[head] and moves head forward, so the first element in is the first out (L3).`, ow: [null, `The statement is true: dequeue always removes the element at the front (head), the oldest one (FIFO).`] },
+          { type: `tf`, q: `The last node in linked-list contains null in its second field because it will point to no node.`, a: 0, why: `This is Lecture 5's own sentence: each node has two fields (data and next), and the last node holds NULL in its next field because it points to no node; it marks the end of the list (L5).`, ow: [null, `The statement is true: each node has data and next; the last node has no next node, so its next field is NULL.`] },
+          { type: `tf`, q: `Function push() in Stack used to delete item.`, a: 1, why: `push() inserts a new item at the top of the stack; deleting the top item is done by pop(), so the statement is false (L2, Push and Pop functions).`, ow: [`push() adds an item at the top (top = top + 1; stack[top] = item). Deleting is pop().`, null] },
+          { type: `tf`, q: `Traversing a singly linked list is done in a forward direction only.`, a: 0, why: `In a singly linked list each node holds a reference only to the next node, so traversal goes forward from head; backward travel needs a doubly linked list's prev pointer (L5).`, ow: [null, `The statement is true: a singly linked node has only a next pointer, so you can only move forward; backward needs the prev pointer of a doubly linked list.`] },
+          { type: `tf`, q: `In a circular linked list, the last node points back to the head node.`, a: 0, why: `The lecture defines a circular linked list as one where the last node points back to the head node instead of NULL, forming a circle; it can be singly or doubly linked (L5).`, ow: [null, `The statement is true: that is exactly the lecture's definition; the last node points back to the head instead of NULL.`] },
+          { type: `tf`, q: `Insertions and deletions in Stack follow FILO.`, a: 0, why: `A stack inserts and deletes only at the top, so the first element pushed sits at the bottom and is the last to be popped: First-In-Last-Out, the same as LIFO (L2).`, ow: [null, `The statement is true: First-In-Last-Out means the first element pushed is the last popped, which is the same as LIFO.`] }
         ]}
       ]
     },
@@ -2491,11 +2491,11 @@ int main()
       note: `Transcribed from the official model answer PDF (text). Fill-in-the-blank items are shown as MCQs with the model answer as the correct option. Problems we found in the official key: (1) Model A Q2c defines insertatend but main calls list.insertatbeginning(7) and (5), which would not compile, and calling insertatbeginning(7) then (5) would give 5 → 7, not the required 7 → 5. Also insertatend as written crashes on an empty list. Our answer uses insertatend with an empty-list check. (2) Model B Q2c makes Node::data a float but insertatbeginning(int item) truncates 8.5 and 5.3 to 8 and 5, and main calls insertatend, which is not defined; inserting at the front 8.5 then 5.3 gives head → 5.3 → 8.5 as required. (3) Model B writes "FILO" for the stack; FILO and LIFO mean the same.`,
       sections: [
         { title: `Model A · First Question`, marks: `5 marks`, items: [
-          { type: `mcq`, q: `Removing an element occurs at the ______ of the Queue.`, o: [`front`, `rear`, `top`, `middle`], a: 0, why: `Dequeue removes from the front (head) (L3).` },
-          { type: `mcq`, q: `The disadvantage of array is ______.`, o: [`fixed size`, `linear access`, `extra memory for pointers`, `slow index access`], a: 0, why: `Model answer: fixed size. Linear access and extra memory are linked list disadvantages (L1, L5).` },
-          { type: `mcq`, q: `Function ______ in Stack is used to insert item.`, o: [`pop()`, `push()`, `get()`, `count()`], a: 1, why: `push() inserts at the top (L2).` },
-          { type: `tf`, q: `Queue is a data structure in which insertions and deletions are restricted to one end.`, a: 1, why: `Model answer: False; insertions at the rear and deletions at the front (L3).` },
-          { type: `tf`, q: `A Stack, in other words, is called a LIFO list.`, a: 0, why: `Last-In-First-Out (L2).` }
+          { type: `mcq`, q: `Removing an element occurs at the ______ of the Queue.`, o: [`front`, `rear`, `top`, `middle`], a: 0, why: `A queue deletes at the head (front): the first entry ready to be served, which is the one that came in first (FIFO); dequeue reads queue[head] and moves head forward (L3).`, ow: [null, `The rear (tail) is where enqueue adds new elements; removal happens at the other end, the front.`, `Top is a stack term (stacks add and remove at the top); a queue removes at the front.`, `A queue never removes from the middle; it deletes only at the front to keep FIFO order.`] },
+          { type: `mcq`, q: `The disadvantage of array is ______.`, o: [`fixed size`, `linear access`, `extra memory for pointers`, `slow index access`], a: 0, why: `Model answer: fixed size. Linear access and extra memory are linked list disadvantages (L1, L5).`, ow: [null, `Linear access (no direct index access) is a linked list disadvantage; arrays reach any element directly by index.`, `Extra memory for pointers is a linked list disadvantage; an array stores only the data.`, `Index access in an array is direct and fast; it is one of the array's strengths.`] },
+          { type: `mcq`, q: `Function ______ in Stack is used to insert item.`, o: [`pop()`, `push()`, `get()`, `count()`], a: 1, why: `push() inserts a new item at the top of the stack: it checks isFull, then does top = top + 1; stack_arr[top] = item (L2, Push function).`, ow: [`pop() deletes the top item and decrements top; it does not insert.`, null, `get() only shows the top element without changing the stack.`, `count() only returns how many items are stored (top + 1).`] },
+          { type: `tf`, q: `Queue is a data structure in which insertions and deletions are restricted to one end.`, a: 1, why: `Model answer: False; insertions at the rear and deletions at the front (L3).`, ow: [`Restricting both insertion and deletion to one end describes a stack. A queue inserts at the rear and deletes at the front.`, null] },
+          { type: `tf`, q: `A Stack, in other words, is called a LIFO list.`, a: 0, why: `All insertions and deletions happen at the top, so the last element added is the first one removed; that is why the lecture calls a stack a Last-In-First-Out (LIFO) list (L2).`, ow: [null, `The statement is true: since insertion and deletion are both at the top, the last element added is the first removed (LIFO).`] }
         ]},
         { title: `Model A · Second Question`, marks: `15 marks (5 each)`, items: [
           { type: `written`, viz: { type: `stack`, title: `pop() until the stack is empty`, size: 4, ops: [`push 10`, `push 20`, `pop`, `pop`, `pop`] }, q: `Write C++ code for POP and IsEmpty Stack functions.`,
@@ -2562,11 +2562,11 @@ int main()
 }</pre>Note: the official key calls insertatbeginning in main (a mismatch) and has no empty-list check in insertatend (L5).` }
         ]},
         { title: `Model B · First Question`, marks: `5 marks`, items: [
-          { type: `mcq`, q: `enqueue(): inserts an element at the ______ of the Queue.`, o: [`front`, `rear`, `top`, `head`], a: 1, why: `Insertion is at the rear (tail) (L3).` },
-          { type: `mcq`, q: `The disadvantage of Linked List is ______.`, o: [`fixed size`, `linear access and extra memory`, `cannot grow`, `cannot delete`], a: 1, why: `Model answer: linear access and extra memory (L5).` },
-          { type: `mcq`, q: `Function ______ in Stack is used to delete item.`, o: [`push()`, `pop()`, `enqueue()`, `search()`], a: 1, why: `pop() removes the top element (L2).` },
-          { type: `tf`, q: `Stack is a data structure in which insertions and deletions are restricted to one end.`, a: 0, why: `Both happen at the top (L2).` },
-          { type: `tf`, q: `A Stack is called a FIFO list.`, a: 1, why: `A stack is LIFO (the key writes FILO, which means the same); FIFO is a queue (L2).` }
+          { type: `mcq`, q: `enqueue(): inserts an element at the ______ of the Queue.`, o: [`front`, `rear`, `top`, `head`], a: 1, why: `All insertions to a queue are made at the tail (rear): enqueue does tail = tail + 1 and stores the item at queue[tail]; deletions happen at the front (L3).`, ow: [`The front (head) is where dequeue removes elements, not where they are inserted.`, null, `Top is the single end of a stack; a queue inserts at the rear.`, `Head is another name for the front, where elements are removed.`] },
+          { type: `mcq`, q: `The disadvantage of Linked List is ______.`, o: [`fixed size`, `linear access and extra memory`, `cannot grow`, `cannot delete`], a: 1, why: `Model answer: linear access and extra memory (L5).`, ow: [`A fixed size is the array's disadvantage; a linked list grows and shrinks at run time.`, null, `A linked list can grow as needed, since nodes are created with new at run time (dynamic size is its advantage).`, `Deletion is easy in a linked list: only the neighbouring pointers change (deletion at the beginning, end or middle).`] },
+          { type: `mcq`, q: `Function ______ in Stack is used to delete item.`, o: [`push()`, `pop()`, `enqueue()`, `search()`], a: 1, why: `pop() deletes the top item of the stack: it checks isEmpty, then reads stack_arr[top] and does top = top − 1, returning the item (L2, Pop function).`, ow: [`push() inserts an item at the top; it does not delete.`, null, `enqueue() is a queue operation that inserts at the rear; a stack has no enqueue.`, `search() only looks for an item from top to bottom; it does not remove it.`] },
+          { type: `tf`, q: `Stack is a data structure in which insertions and deletions are restricted to one end.`, a: 0, why: `In a stack, addition of new items and deletion of existing items are both done from only one end, the top; this is what makes it LIFO (L2, What is a stack?).`, ow: [null, `The statement is true: a stack adds and removes elements only at one end, the top.`] },
+          { type: `tf`, q: `A Stack is called a FIFO list.`, a: 1, why: `A stack is LIFO (the key writes FILO, which means the same); FIFO is a queue (L2).`, ow: [`FIFO is the queue rule (insert at rear, delete at front). A stack inserts and deletes at the top, so it is LIFO/FILO.`, null] }
         ]},
         { title: `Model B · Second Question`, marks: `15 marks (5 each)`, items: [
           { type: `written`, viz: { type: `stack`, title: `push() until isFull`, size: 4, ops: [`push 10`, `push 20`, `push 30`, `push 40`, `push 50`] }, q: `Write C++ code for Push and IsFull Stack functions.`,
@@ -2747,28 +2747,28 @@ int main()
       note: `Transcribed from a two-page scan (clear). No answer key. Tree in Q2b read from the drawing: H is the right child of D, L is the left child of K, P is the left child of R, Z is the right child of X. For Q2a the lecture's quadratic formula h(k,i) = (h1(k) + i + i²) mod m is used; the textbook form (h1 + i²) is also shown. All traces were checked with g++/node.`,
       sections: [
         { title: `Question One · I. Choose the correct answer`, marks: `10 marks (1 each)`, items: [
-          { type: `mcq`, q: `Pushing an element into stack already having five elements and stack size is 5, this condition is called ……`, o: [`Crash`, `Overflow`, `Underflow`, `User flow`], a: 1, why: `Pushing onto a full stack is stack overflow (L2).` },
-          { type: `mcq`, q: `In a linear queue, if implemented using an array of size MAX, gets full when?`, o: [`Front = (rear + 1) mod MAX`, `Front = rear + 1`, `Rear = MAX - 1`, `Rear = front`], a: 2, why: `isFull checks tail == maxsize - 1 (L3).` },
-          { type: `mcq`, q: `Which of the following is not a correct statement for a stack data structure?`, o: [`Stack follows FIFO`, `Arrays can be used to implement the stack`, `Elements are stored in a sequential manner`, `Top of the stack has the last inserted element`], a: 0, why: `A stack follows LIFO (L2).` },
-          { type: `mcq`, q: `Which of the following data structure is non-linear type?`, o: [`Linked List`, `Stack`, `Tree`, `Circular queue`], a: 2, why: `Trees are non-linear (L1, L9).` },
-          { type: `mcq`, q: `Which of the following determines the need for the circular queue?`, o: [`Avoid memory wastage`, `Access queue using priority`, `Follows the FIFO principle`, `None`], a: 0, why: `The linear queue cannot reuse cells freed by dequeue (L3).` },
-          { type: `mcq`, q: `If a Binary Search Tree is traversed in the order right, root, left recursively, the output sequence will be in:`, o: [`ascending order`, `descending order`, `no specific order`, `right, root, left cannot be done`], a: 1, why: `Reverse inorder visits larger keys first (L9).` },
-          { type: `mcq`, q: `If circular queue is implemented using array having size MAX_SIZE, which of the following conditions used to specify that the circular queue is empty?`, o: [`front = rear = 0`, `front = rear + 1`, `front = rear = -1`, `none`], a: 2, why: `The lecture initializes and resets front and rear to -1 (L3).` },
-          { type: `mcq`, q: `When the pre-order and post-order traversal of a Binary Tree generates the same output, then the tree has:`, o: [`two nodes`, `only one node`, `three nodes`, `any number of nodes`], a: 1, why: `The root is first in preorder and last in postorder; they coincide only with one node (L9).` },
-          { type: `mcq`, q: `To insert an item into a stack, identify the correct set of statements:`, o: [`top++; stack[top]=item;`, `item = stack[top]; top--;`, `stack[item] = top; item++;`, `stack[top] = item; top++;`], a: 0, why: `Top starts at -1, so increment then store (L2).` },
-          { type: `mcq`, q: `What are the number of nodes of left and right subtree of the binary tree if the data is inserted in the following order: 45, 15, 8, 56, 5, 65, 47, 12, 18, 10, 73, 50, 16, 61`, o: [`8 nodes to the left and 5 nodes to the right`, `6 nodes to the left and 7 nodes to the right`, `7 nodes to the left and 6 nodes to the right`, `5 nodes to the left and 8 nodes to the right`], a: 2, why: `Keys &lt; 45: 15, 8, 5, 12, 18, 10, 16 (7). Keys &gt; 45: 56, 65, 47, 73, 50, 61 (6). Verified with g++ (L9).` }
+          { type: `mcq`, q: `Pushing an element into stack already having five elements and stack size is 5, this condition is called ……`, o: [`Crash`, `Overflow`, `Underflow`, `User flow`], a: 1, why: `Pushing onto a full stack is stack overflow (L2).`, ow: [`"Crash" is not a stack condition; pushing onto a full stack is called stack overflow.`, null, `Underflow is popping from an empty stack (top == −1); here the stack is full.`, `"User flow" is not a stack term; a push onto a full stack is overflow.`] },
+          { type: `mcq`, q: `In a linear queue, if implemented using an array of size MAX, gets full when?`, o: [`Front = (rear + 1) mod MAX`, `Front = rear + 1`, `Rear = MAX - 1`, `Rear = front`], a: 2, why: `The lecture's isFull returns true when tail == maxsize − 1: the rear is at the last cell and a linear queue cannot move past it, even if cells at the front are free (L3).`, ow: [`front == (rear + 1) mod MAX is the circular queue's full test, where rear wraps around; a linear queue never wraps.`, `In the lecture's linear queue, head having passed tail (head &gt; tail) means empty, not full.`, null, `rear == front means head and tail are on the same cell: exactly one element, not full.`] },
+          { type: `mcq`, q: `Which of the following is not a correct statement for a stack data structure?`, o: [`Stack follows FIFO`, `Arrays can be used to implement the stack`, `Elements are stored in a sequential manner`, `Top of the stack has the last inserted element`], a: 0, why: `"Stack follows FIFO" is the wrong statement: a stack inserts and deletes only at the top, so it is LIFO; FIFO is the queue rule (L2).`, ow: [null, `This is a correct statement: the static implementation of a stack uses an array.`, `This is a correct statement: a stack is a linear ordered list, so elements are stored in sequence.`, `This is a correct statement: all insertions are at the top, so the top holds the last inserted element (LIFO).`] },
+          { type: `mcq`, q: `Which of the following data structure is non-linear type?`, o: [`Linked List`, `Stack`, `Tree`, `Circular queue`], a: 2, why: `A tree stores its elements in a hierarchy (root, children, subtrees), not one sequence, so it is non-linear like a graph; linked lists, stacks and queues are linear (L1, L9).`, ow: [`A linked list is linear: each node points to the next, forming a single sequence.`, `A stack is linear: its elements form one sequence, accessed at the top.`, null, `A circular queue is still linear; only its indexing wraps around from the last cell to the first.`] },
+          { type: `mcq`, q: `Which of the following determines the need for the circular queue?`, o: [`Avoid memory wastage`, `Access queue using priority`, `Follows the FIFO principle`, `None`], a: 0, why: `The linear queue cannot reuse cells freed by dequeue (L3).`, ow: [null, `Serving elements by priority is what a priority queue does; a circular queue is still FIFO.`, `Both linear and circular queues follow FIFO, so FIFO cannot be the reason a circular queue is needed.`, `There is a reason: the circular queue exists to reuse cells the linear queue wastes (option a).`] },
+          { type: `mcq`, q: `If a Binary Search Tree is traversed in the order right, root, left recursively, the output sequence will be in:`, o: [`ascending order`, `descending order`, `no specific order`, `right, root, left cannot be done`], a: 1, why: `Reverse inorder visits larger keys first (L9).`, ow: [`Ascending order comes from inorder (left, root, right); visiting right first reverses it.`, null, `The BST property (left smaller, right larger) fixes the order, so right, root, left always gives descending keys.`, `It can be done: it is inorder with the two recursive calls swapped (reverse inorder).`] },
+          { type: `mcq`, q: `If circular queue is implemented using array having size MAX_SIZE, which of the following conditions used to specify that the circular queue is empty?`, o: [`front = rear = 0`, `front = rear + 1`, `front = rear = -1`, `none`], a: 2, why: `The lecture initializes and resets front and rear to -1 (L3).`, ow: [`front = rear = 0 means one element is stored at index 0, not an empty queue.`, `front = rear + 1 is not the lecture's circular test; its isEmpty checks front == −1.`, null, `One of the options is right: the lecture starts with and resets to front = rear = −1.`] },
+          { type: `mcq`, q: `When the pre-order and post-order traversal of a Binary Tree generates the same output, then the tree has:`, o: [`two nodes`, `only one node`, `three nodes`, `any number of nodes`], a: 1, why: `The root is first in preorder and last in postorder; they coincide only with one node (L9).`, ow: [`With two nodes the root is first in preorder but last in postorder, so the outputs differ.`, null, `With three nodes the root is first in preorder and last in postorder, so the outputs differ.`, `Only a single node (or empty tree) gives the same output; with more nodes the root's position differs.`] },
+          { type: `mcq`, q: `To insert an item into a stack, identify the correct set of statements:`, o: [`top++; stack[top]=item;`, `item = stack[top]; top--;`, `stack[item] = top; item++;`, `stack[top] = item; top++;`], a: 0, why: `Top starts at -1, so increment then store (L2).`, ow: [null, `Reading stack[top] then decrementing top is the pop operation, not insertion.`, `This uses the item as an index and stores top in it, so the item is never placed in the stack.`, `With top starting at −1, this writes to stack[−1] first; top must be incremented before storing.`] },
+          { type: `mcq`, q: `What are the number of nodes of left and right subtree of the binary tree if the data is inserted in the following order: 45, 15, 8, 56, 5, 65, 47, 12, 18, 10, 73, 50, 16, 61`, o: [`8 nodes to the left and 5 nodes to the right`, `6 nodes to the left and 7 nodes to the right`, `7 nodes to the left and 6 nodes to the right`, `5 nodes to the left and 8 nodes to the right`], a: 2, why: `Keys &lt; 45: 15, 8, 5, 12, 18, 10, 16 (7). Keys &gt; 45: 56, 65, 47, 73, 50, 61 (6). Verified with g++ (L9).`, ow: [`8 and 5 is a miscount: 7 keys are less than 45 and 6 are greater.`, `6 and 7 swaps the two counts: 7 keys go left (less than 45) and 6 go right.`, null, `5 and 8 is a miscount: all keys smaller than 45 go left (7), larger ones right (6).`] }
         ]},
         { title: `Question One · II. Select True or False`, marks: `10 marks (1 each)`, items: [
-          { type: `tf`, q: `The condition if (front == 0 && rear == MAX_SIZE - 1) is enough to check the fullness of a circular queue.`, a: 1, why: `It is also full when rear is just one behind front (wrapped case) (L3).` },
-          { type: `tf`, q: `Hash tables store keys in ordered locations.`, a: 1, why: `Keys are scattered by the hash function (scatter table) (L10).` },
-          { type: `tf`, q: `The value of REAR is increased by 1 when an element is inserted in the queue.`, a: 0, why: `enqueue advances the rear (L3).` },
-          { type: `tf`, q: `The following is a valid code of class Node of a singly linked list: class Node {int data, Node next;}`, a: 1, why: `next must be a pointer (Node *next;), members need ; separators, and the class needs a closing ; (and public:) (L5).` },
-          { type: `tf`, q: `When a hash function computes the same location for two or more keys, this is a collision situation.`, a: 0, why: `Definition of collision (L10).` },
-          { type: `tf`, q: `To print the keys of a binary search tree in an ascending order, you may apply inorder or postorder traversals.`, a: 1, why: `Only inorder gives ascending order (L9).` },
-          { type: `tf`, q: `Two linked lists are needed in order to implement a linked stack.`, a: 1, why: `One list with a top pointer is enough (L6).` },
-          { type: `tf`, q: `On inserting a new node N in a doubly linked list, N->next = Null is a must.`, a: 1, why: `Only when N becomes the last node (L8).` },
-          { type: `tf`, q: `Left-Right-Parent represents the Postorder Traversal of a Binary Tree.`, a: 0, why: `Postorder = left, right, parent (L9).` },
-          { type: `tf`, q: `Insertion is done at the front of a linked queue.`, a: 1, why: `Insertion is at the rear; deletion at the front (L7).` }
+          { type: `tf`, q: `The condition if (front == 0 && rear == MAX_SIZE - 1) is enough to check the fullness of a circular queue.`, a: 1, why: `It is also full when rear is just one behind front (wrapped case) (L3).`, ow: [`That condition covers only Case 1 (front 0, rear at the end); it misses Case 2, where rear has wrapped and is just one behind front.`, null] },
+          { type: `tf`, q: `Hash tables store keys in ordered locations.`, a: 1, why: `Keys are scattered by the hash function (scatter table) (L10).`, ow: [`The hash function scatters keys over the table (it is also called a scatter table), so cells are not in key order.`, null] },
+          { type: `tf`, q: `The value of REAR is increased by 1 when an element is inserted in the queue.`, a: 0, why: `Every insertion is made at the rear: enqueue increments it (tail = tail + 1, or (rear + 1) % MAX_SIZE in a circular queue) and stores the item there (L3).`, ow: [null, `The statement is true: enqueue does tail = tail + 1 (circularly in a circular queue) before storing the item.`] },
+          { type: `tf`, q: `The following is a valid code of class Node of a singly linked list: class Node {int data, Node next;}`, a: 1, why: `next must be a pointer (Node *next;), members need ; separators, and the class needs a closing ; (and public:) (L5).`, ow: [`The code is not valid: next must be a pointer (Node *next;), members are separated by ; not a comma, and the class needs a closing ;.`, null] },
+          { type: `tf`, q: `When a hash function computes the same location for two or more keys, this is a collision situation.`, a: 0, why: `The lecture defines a collision as the situation where the hash function maps two different keys k and j to the same cell, e.g. 20 and 11 both give 2 mod 9 (L10, Collision).`, ow: [null, `The statement is true: the lecture defines collision as the hash function mapping two different keys to the same cell.`] },
+          { type: `tf`, q: `To print the keys of a binary search tree in an ascending order, you may apply inorder or postorder traversals.`, a: 1, why: `Inorder traversal of a BST always gives the sorted (ascending) order of the keys; postorder visits the parent last, after both subtrees, so its output is not sorted (L9).`, ow: [`Only inorder (left, parent, right) gives ascending order in a BST; postorder visits each parent after both subtrees, so it is not sorted.`, null] },
+          { type: `tf`, q: `Two linked lists are needed in order to implement a linked stack.`, a: 1, why: `A linked stack is one linked list: every new node is inserted as the top (newnode->next = top; top = newnode) and pop removes the node top points to, so one list and one pointer suffice (L6).`, ow: [`A linked stack is one singly linked list with a single pointer, top; push and pop both work at the top.`, null] },
+          { type: `tf`, q: `On inserting a new node N in a doubly linked list, N->next = Null is a must.`, a: 1, why: `N->next is NULL only when N becomes the last node (insert at the end or into an empty list). Inserting at the beginning sets N->next = head, and in the middle it points to the following node (L8).`, ow: [`N->next = NULL is needed only when N becomes the last node (insert at the end or into an empty list); at the beginning N->next = head.`, null] },
+          { type: `tf`, q: `Left-Right-Parent represents the Postorder Traversal of a Binary Tree.`, a: 0, why: `Traversals are named by when the parent is visited: postorder traverses the left subtree, then the right subtree, and visits the parent last (L9, Postorder traversal).`, ow: [null, `The statement is true: postorder traverses the left subtree, then the right subtree, and visits the parent last.`] },
+          { type: `tf`, q: `Insertion is done at the front of a linked queue.`, a: 1, why: `Insertion is at the rear; deletion at the front (L7).`, ow: [`Enqueue links the new node after rear (rear->next = newnode; rear = newnode); the front is where dequeue deletes.`, null] }
         ]},
         { title: `Question Two · Answer ONLY FIVE of the following`, marks: `40 marks (8 each)`, items: [
           { type: `written`, q: `a- Store the values 14, 17, 25, 37, 34, 16 using division method. Apply linear probe and quadratic probe in collision situations. Array size = 11.`,
