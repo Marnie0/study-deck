@@ -1464,6 +1464,10 @@ function start() {
                   <${Ar} t=${arEx(si, ii).ans} cls="arblock" />
                   ${opts && html`<p style=${{ margin: '0 0 6px' }}><b>${it.type === 'mcq' ? LET[it.a].toLowerCase() + ') ' : ''}<${H} h=${opts[it.a]} /></b></p>`}
                   <p className="expl" style=${{ margin: 0 }}><b>Why: </b><${H} h=${it.why} /><${Ar} t=${arEx(si, ii).why} /></p>
+                  ${opts && it.ow && html`<div className="owhy"><div className="lab">Why the other choices are wrong</div>
+                    <ul>${opts.map((o, oi) => oi !== it.a && it.ow[oi] && html`<li key=${oi} className=${my.pick === oi ? 'mine' : ''}>
+                      <b>${it.type === 'mcq' ? LET[oi].toLowerCase() + ') ' : ''}<${H} h=${o} />${my.pick === oi ? html` <em>your choice</em>` : null}</b>
+                      <span><${H} h=${it.ow[oi]} /></span><${Ar} t=${(arEx(si, ii).ow || [])[oi]} /></li>`)}</ul></div>`}
                 </div>`}
               </div>
             </div>`;

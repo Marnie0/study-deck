@@ -98,154 +98,154 @@ COURSES.micro = {
       ],
       quiz: [
         { q: `Computer software is:`, o: [
-          [`System software`, `Only one of the three categories.`],
-          [`Application software`, `Only one of the three categories.`],
-          [`Programming software`, `Only one of the three categories.`],
+          [`System software`, `System software (programs that let the hardware run properly) is only one of the three categories; application and programming software are also software, so "All" is the answer.`],
+          [`Application software`, `Application software (programs that let users do tasks) is only one of the three categories; system and programming software are software too.`],
+          [`Programming software`, `Programming software (tools for building software) is only one of the three categories; system and application software are also listed in the lecture.`],
           [`All of the mentioned`, `Correct. Software falls into system, programming and application software.`]
         ], a: 3, src: `Revision sheet` },
         { q: `Programming languages of a microcomputer are:`, o: [
-          [`Machine language`, `Only one of the three categories.`],
-          [`Assembly language`, `Only one of the three categories.`],
-          [`High level languages`, `Only one of the three categories.`],
+          [`Machine language`, `Machine language (0s and 1s) is only one of the three categories; assembly and high-level languages are also microcomputer languages.`],
+          [`Assembly language`, `Assembly language (low level, one step from machine code) is only one of the three categories; machine and high-level languages are the other two.`],
+          [`High level languages`, `High-level languages (machine independent, e.g. C, Java) are only one category; the lecture also lists machine and assembly language.`],
           [`All of the mentioned`, `Correct. Machine, assembly and high-level languages.`]
         ], a: 3, src: `Revision sheet` },
         { q: `A debugger is:`, o: [
           [`Easy to run and good with small programs`, `Correct. Debugger: easy to run, low overhead, close to the machine, good on short programs.`],
-          [`Difficult to run but good with small programs`, `A debugger is easy to run.`],
-          [`Easy to run and good with long programs`, `Long programs suit the assembler.`],
-          [`Difficult to run and good with long programs`, `That describes the assembler.`]
+          [`Difficult to run but good with small programs`, `A debugger is EASY to run, not difficult. "Hard to run" is the assembler's column in the lecture table, while "good on short programs" is right.`],
+          [`Easy to run and good with long programs`, `"Good on long programs" belongs to the assembler; the debugger is good on SHORT programs (L1, Debugger vs. Assembler).`],
+          [`Difficult to run and good with long programs`, `Hard to run and good on long programs is the assembler's row of the table; the debugger is the opposite: easy to run, good on short programs.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `An assembler is:`, o: [
-          [`Easy to run and good with small programs`, `That is the debugger.`],
-          [`Difficult to run but good with small programs`, `Assemblers are good with long programs.`],
-          [`Easy to run and good with long programs`, `Assemblers are hard to run.`],
+          [`Easy to run and good with small programs`, `Easy to run and good on small programs describes the debugger; the assembler is hard to run and good on long programs.`],
+          [`Difficult to run but good with small programs`, `"Difficult to run" fits the assembler, but it is good on LONG programs; short programs are the debugger's strength.`],
+          [`Easy to run and good with long programs`, `The assembler is good with long programs, but it is HARD to run (with more program overhead); "easy to run" is the debugger.`],
           [`Difficult to run and good with long programs`, `Correct. Hard to run, more overhead, isolated from the machine, good on long programs.`]
         ], a: 3, src: `Midterm 2023/24` },
         { q: `………. is a form of semiconductor memory where the data is written once and then not changed; it is stored permanently even when the power is removed.`, o: [
           [`RAM`, `RAM is read/write in any order and loses data without power.`],
           [`ROM`, `Correct. That is the lecture definition of ROM.`],
-          [`CPU`, `The CPU is not memory technology.`],
-          [`None`, `ROM matches exactly.`]
+          [`CPU`, `The CPU is the processor where calculations and logic happen, not a type of semiconductor memory. The "written once, kept without power" memory is ROM.`],
+          [`None`, `Not "None": the wording is exactly the lecture's definition of ROM, written once, never changed, kept when power is removed.`]
         ], a: 1, src: `Revision sheet` },
         { q: `……… uses binary signals to synchronize the actions of all devices attached to the system bus.`, o: [
-          [`Data bus`, `The data bus carries instructions and data.`],
+          [`Data bus`, `The data bus transfers instructions and data between the CPU and memory; it does not synchronize devices. Synchronizing with binary signals is the control bus.`],
           [`Control bus`, `Correct. Lecture definition of the control bus.`],
-          [`Address bus`, `The address bus holds addresses.`],
-          [`None of the mentioned`, `The control bus matches.`]
+          [`Address bus`, `The address bus holds the addresses of instructions and data during CPU-memory transfers; synchronizing devices with binary signals is the control bus's job.`],
+          [`None of the mentioned`, `Not "None": the lecture defines the control bus as the bus that uses binary signals to synchronize all devices on the system bus.`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `……. is a form of semiconductor memory where data can be rewritten by removing the chip from the circuit board and exposing it to ultraviolet light.`, o: [
           [`EPROM`, `Correct. EPROM is erased with UV light through its window.`],
-          [`ROM`, `ROM is written once and never changed.`],
-          [`PROM`, `PROM can only be written once.`],
+          [`ROM`, `ROM is written once and never changed, so it cannot be erased and rewritten at all. Erasing with UV light after removing the chip is EPROM.`],
+          [`PROM`, `PROM is written once with a PROM programmer and cannot be erased. Only EPROM is erased by UV light through its transparent window.`],
           [`RAM`, `RAM is rewritten electrically in normal operation.`]
         ], a: 0, src: `Revision sheet` },
         { q: `A chip on which data can be rewritten electrically while the chip is on the circuit board, but the writing process is slow:`, o: [
-          [`EROM`, `Not a memory type in the lecture.`],
-          [`PROM`, `PROM is written only once.`],
+          [`EROM`, `"EROM" is not one of the lecture's memory types (RAM, ROM, PROM, EPROM, EEPROM). Electrical rewriting on the board with slow writing is EEPROM.`],
+          [`PROM`, `PROM can be written only once, before installation, so it cannot be rewritten on the board. That description is EEPROM.`],
           [`EEPROM`, `Correct. Electrically erasable, on the board, slow writing.`],
-          [`None of the mentioned`, `EEPROM matches exactly.`]
+          [`None of the mentioned`, `Not "None": rewritten electrically on the board, with a slow writing process, is the lecture's exact definition of EEPROM.`]
         ], a: 2, src: `Exam 2022/23 Summer` },
         { q: `PROM stands for:`, o: [
-          [`Programmable read only memory`, `Correct.`],
-          [`Programmable read write memory`, `PROM is read only.`],
-          [`Portable read only memory`, `P is for Programmable.`],
-          [`None of the mentioned`, `Option a is correct.`]
+          [`Programmable read only memory`, `Correct. PROM = Programmable Read Only Memory: written once, before installation, with a PROM programmer (L1, Types of memory).`],
+          [`Programmable read write memory`, `PROM is read ONLY memory once programmed; it is not read/write. Reading and writing in any order describes RAM.`],
+          [`Portable read only memory`, `The P stands for Programmable (it is programmed with a PROM programmer), not Portable.`],
+          [`None of the mentioned`, `Not "None": option a, Programmable Read Only Memory, is the exact expansion of PROM.`]
         ], a: 0, src: `Midterm 2022/23` },
         { q: `EPROM stands for (midterm form B options):`, o: [
           [`Electrically programmable read only memory`, `E stands for Erasable (EEPROM is the electrically erasable one). The 2022/23 key underlined this option, but it is wrong.`],
-          [`Erasable programmable read write memory`, `It is read ONLY memory, not read write.`],
-          [`Erasable portable read only memory`, `P is Programmable, not portable.`],
+          [`Erasable programmable read write memory`, `EPROM is read ONLY memory, so "read write" is wrong; the exact expansion (Erasable Programmable Read Only Memory) is not listed, hence "None".`],
+          [`Erasable portable read only memory`, `The P stands for Programmable, not Portable, so this expansion is wrong; the correct one is not among the options.`],
           [`None of the mentioned`, `Correct. EPROM = Erasable Programmable Read Only Memory, which is not listed exactly.`]
         ], a: 3, src: `Midterm 2022/23` },
         { q: `EPROM stands for:`, o: [
-          [`Erasable programmable read only memory`, `Correct.`],
-          [`Electrically programmable read write memory`, `Wrong expansion.`],
-          [`Electrically programmable read only memory`, `E stands for Erasable.`],
-          [`None`, `Option a is correct.`]
+          [`Erasable programmable read only memory`, `Correct. EPROM = Erasable Programmable Read Only Memory: erased by UV light after removing the chip, then reprogrammed (L1, Types of memory).`],
+          [`Electrically programmable read write memory`, `Two errors: the E is Erasable (not Electrically) and the chip is read ONLY memory, not read/write.`],
+          [`Electrically programmable read only memory`, `The E in EPROM stands for Erasable (by UV light). "Electrically" belongs to EEPROM, Electrically Erasable PROM.`],
+          [`None`, `Not "None": option a, Erasable Programmable Read Only Memory, is the exact expansion.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The coded object modules of the program to be assembled are present in:`, o: [
-          [`.ASM file`, `The .ASM file holds the source code.`],
+          [`.ASM file`, `The .ASM file holds the assembly source code written by the programmer; the assembler turns it into the object modules stored in the .OBJ file.`],
           [`.OBJ file`, `Correct. The assembler produces object code in the .OBJ file.`],
-          [`.EXE file`, `The .EXE is the linked executable.`],
-          [`.OBJECT file`, `No such standard extension.`]
+          [`.EXE file`, `The .EXE is the final executable produced by the linker from the .OBJ modules, not the coded object modules themselves.`],
+          [`.OBJECT file`, `There is no standard ".OBJECT" extension; object code produced by the assembler is stored in the .OBJ file.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The advantages of assembly level programming are:`, o: [
-          [`Flexibility of programming is more`, `True, but not the only advantage listed.`],
-          [`Chances of error are less`, `Listed, but not alone.`],
-          [`Debugging is easy`, `Listed, but not alone.`],
-          [`All of the mentioned`, `Correct according to the revision key.`]
+          [`Flexibility of programming is more`, `More flexibility is one of the advantages in the revision key, but it is not the only one, so the full answer is "All of the mentioned".`],
+          [`Chances of error are less`, `Fewer chances of error is listed in the revision key, but together with flexibility and easy debugging, so "All" is the answer.`],
+          [`Debugging is easy`, `Easy debugging is listed in the revision key, but together with flexibility and fewer errors, so the answer is "All of the mentioned".`],
+          [`All of the mentioned`, `Correct. The revision sheet key lists all three as advantages of assembly programming: more flexibility, fewer chances of error and easy debugging.`]
         ], a: 3, src: `Revision sheet` },
         { q: `The extension that is essential for every assembly level program is:`, o: [
-          [`.ASP`, `That is a web page extension.`],
-          [`.ALP`, `Not the standard extension.`],
-          [`.ASM`, `Correct. Assembly source files use .ASM.`],
-          [`.PGM`, `Not used for assembly source.`]
+          [`.ASP`, `.ASP is a web (Active Server Pages) extension, not an assembly file. Every assembly program is saved as .ASM.`],
+          [`.ALP`, `.ALP is not the extension used by assemblers such as emu8086 or MASM; assembly source files are saved as .ASM.`],
+          [`.ASM`, `Correct. Every assembly source program is saved with the .ASM extension; the assembler turns it into .OBJ and the linker into .EXE (L1, Assembly language and the assembler).`],
+          [`.PGM`, `.PGM is not an assembly extension; the essential extension for an assembly source program is .ASM.`]
         ], a: 2, src: `Revision sheet` },
         { q: `……… enables the programmer to run the program step by step to find the exact location of an error.`, o: [
-          [`Compiler`, `A compiler translates code.`],
-          [`Editor`, `An editor is for writing code.`],
-          [`Debugger`, `Correct.`],
-          [`None`, `The debugger does this.`]
+          [`Compiler`, `A compiler translates source code into an executable program; it does not run the program step by step to locate errors.`],
+          [`Editor`, `An editor is only used to write and change the source code; stepping through the program to find an error is the debugger's job.`],
+          [`Debugger`, `Correct. A debugger lets the programmer run the program step by step to find the exact location of an error, like single step in emu8086 (L1, Assembly language and the assembler).`],
+          [`None`, `Not "None": running a program step by step to find an error is exactly what a debugger does.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The control bus uses ……… to synchronize the actions of all devices attached to the system bus.`, o: [
-          [`Binary signals`, `Correct.`],
-          [`Continuous signals`, `Digital buses use binary signals.`],
-          [`a and b`, `Only binary signals.`],
-          [`None`, `Binary signals is correct.`]
+          [`Binary signals`, `Correct. The lecture defines the control bus as using binary signals to synchronize the actions of all devices attached to the system bus (L1, Buses).`],
+          [`Continuous signals`, `Buses carry digital on/off values; the lecture says the control bus uses BINARY signals, not continuous (analog) ones.`],
+          [`a and b`, `Only binary signals are used; continuous signals are not part of the control bus definition, so "a and b" is wrong.`],
+          [`None`, `Not "None": the lecture definition says the control bus uses binary signals.`]
         ], a: 0, src: `Revision sheet` },
         { q: `Each memory location has:`, o: [
-          [`An address`, `It also has contents.`],
-          [`Contents`, `It also has an address.`],
+          [`An address`, `An address alone is incomplete: every memory location also has contents (the value stored there), so the answer is "a and b".`],
+          [`Contents`, `Contents alone is incomplete: each location is also identified by its address, so the answer is "a and b".`],
           [`a and b`, `Correct. Every location has an address and contents.`],
-          [`None`, `Both apply.`]
+          [`None`, `Not "None": every memory location has both an address and contents.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The set of parallel electrical conducting lines connecting the components of the motherboard is called:`, o: [
-          [`Conductors`, `Too general.`],
-          [`Connectors`, `Connectors are plugs.`],
-          [`Busses`, `Correct. A bus is a group of parallel wires.`],
-          [`Consecutives`, `Meaningless distractor.`]
+          [`Conductors`, `"Conductors" is just a general word for anything that carries current; the lecture's name for a group of parallel wires between components is a bus.`],
+          [`Connectors`, `Connectors are the plugs and sockets that join parts, not the parallel conducting lines themselves, which are the buses.`],
+          [`Busses`, `Correct. A bus is a group of parallel wires that transfer data from one part of the computer to another: data, address and control buses (L1, Buses).`],
+          [`Consecutives`, `"Consecutives" is not a hardware term; the parallel lines connecting motherboard components are called buses.`]
         ], a: 2, src: `Revision sheet` },
         { q: `Assembler is a type of translator that translates …… language into machine level language.`, o: [
-          [`High level`, `That is a compiler.`],
-          [`Assembly level`, `Correct.`],
-          [`Both A and B`, `Only assembly language.`],
-          [`None of the above`, `Assembly level is correct.`]
+          [`High level`, `Translating high-level language into machine code is done by a compiler; the assembler translates assembly (low-level) source code.`],
+          [`Assembly level`, `Correct. The assembler translates a program written in low-level assembly language (source code) into executable machine code (object code) (L1, Assembly language and the assembler).`],
+          [`Both A and B`, `The assembler handles only assembly language; high-level languages need a compiler, so "Both" is wrong.`],
+          [`None of the above`, `Not "None": the assembler translates assembly-level language into machine language.`]
         ], a: 1, src: `Revision sheet` },
         { q: `System software is suited for specific applications.`, o: [
           [`True`, `Application software serves specific tasks; system software lets the hardware run.`],
           [`False`, `Correct. System software allows the hardware to run properly.`]
         ], a: 1, src: `Revision sheet` },
         { q: `Machine language can be directly understood and executed by a machine, and it is the language of 0s and 1s.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `This is exactly the lecture definition.`]
+          [`True`, `Correct. Machine language is the native language of computers, a string of 0s and 1s, directly understood and executed by the machine (L1, Programming languages).`],
+          [`False`, `The statement is true: the lecture defines machine language as the native language of the computer, made of 0s and 1s and run directly.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The clock input provides the basic timing for processor operation and bus control activity.`, o: [
           [`True`, `Correct. The clock synchronizes CPU operations with other components.`],
-          [`False`, `This is the clock's role.`]
+          [`False`, `The statement is true: the clock provides the basic timing and synchronizes the CPU's internal operations with the other system components.`]
         ], a: 0, src: `Revision sheet` },
         { q: `Random Access Memory is a form of semiconductor memory technology used for reading and writing data in any order.`, o: [
-          [`True`, `Correct. Lecture definition of RAM.`],
-          [`False`, `This is the exact definition.`]
+          [`True`, `Correct. RAM is semiconductor memory used for reading and writing data in any order, as required by the processor (L1, Types of memory).`],
+          [`False`, `The statement is true: it is word for word the lecture's definition of RAM, read and write in any order.`]
         ], a: 0, src: `Exam 2023/24 Second term` },
         { q: `In EEPROM, data can be rewritten electrically while the chip is on the circuit board, and the writing process is fast.`, o: [
-          [`True`, `The writing process is slow.`],
-          [`False`, `Correct. Writing is slow.`]
+          [`True`, `EEPROM is rewritten electrically on the board, but the lecture stresses the writing process is SLOW, not fast, so the statement is false.`],
+          [`False`, `Correct. EEPROM is rewritten electrically while on the circuit board, but the writing process is slow; "fast" makes the statement false (L1, Types of memory).`]
         ], a: 1, src: `Revision sheet` },
         { q: `In PROM, data is written into the chip after it is installed in the circuit, but it can only be written once.`, o: [
-          [`True`, `It is written BEFORE installation.`],
-          [`False`, `Correct. Written before installation.`]
+          [`True`, `PROM data is written BEFORE the chip is installed in the circuit (with a PROM programmer), not after, so the statement is false.`],
+          [`False`, `Correct. PROM is written once, before installation, by plugging it into a PROM programmer; "after it is installed" makes it false (L1, Types of memory).`]
         ], a: 1, src: `Revision sheet` },
         { q: `In PROM, data is written into the chip before being installed in the circuit, but it can only be written once.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `This matches the definition.`]
+          [`True`, `Correct. PROM data is written into the chip before it is installed, using a PROM programmer, and only once (L1, Types of memory).`],
+          [`False`, `The statement is true: it matches the lecture definition of PROM exactly (written before installation, only once).`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `Assembly language is hardware (machine) dependent.`, o: [
           [`True`, `Correct. Each CPU type has its own assembly language.`],
-          [`False`, `The lecture underlines "hardware dependent".`]
+          [`False`, `The statement is true: each CPU type has its own machine and assembly language, so assembly programs are not portable between CPUs.`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `The data bus transfers instructions and data between the CPU and memory.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `This is the lecture definition.`]
+          [`True`, `Correct. The lecture defines the data bus as the bus that transfers instructions and data between the CPU and memory (L1, Buses).`],
+          [`False`, `The statement is true: it is the lecture's definition of the data bus. Addresses go on the address bus, sync signals on the control bus.`]
         ], a: 0, src: `Exam 2024/25` }
       ]
     },
@@ -347,214 +347,214 @@ COURSES.micro = {
       ],
       quiz: [
         { q: `……. is a high speed temporary storage area built into the CPU.`, o: [
-          [`A processor`, `The processor is the whole CPU.`],
+          [`A processor`, `The processor is the whole CPU, not a storage area inside it; the high-speed temporary storage built into the CPU is a register.`],
           [`ALU`, `The ALU performs operations, it does not store.`],
-          [`A bus`, `A bus transfers data.`],
-          [`A register`, `Correct. Lecture definition.`]
+          [`A bus`, `A bus is a group of parallel wires that transfers data between parts of the computer; it does not store anything inside the CPU.`],
+          [`A register`, `Correct. The lecture defines a register as a high speed temporary storage area built into a CPU (L2, Register classification).`]
         ], a: 3, src: `Exam 2024/25` },
         { q: `The C bit in the EFLAGS register refers to:`, o: [
-          [`Compute bit`, `No such flag.`],
-          [`Control bit`, `C is not "control".`],
-          [`Carry bit`, `Correct. CF = carry flag.`],
-          [`None of the mentioned`, `Carry is listed.`]
+          [`Compute bit`, `There is no "compute" flag in EFLAGS; the C bit is the carry flag CF, set when an unsigned result is too large for the destination.`],
+          [`Control bit`, `C does not mean control; the only control flag is DF (direction). C is the carry flag, a status flag.`],
+          [`Carry bit`, `Correct. C is the carry flag (CF), set when the result of an unsigned operation is too large to fit in the destination (L2, EFLAGS bits).`],
+          [`None of the mentioned`, `Not "None": the carry bit is listed as option c, and CF is one of the six status flags.`]
         ], a: 2, src: `Exam 2024/25` },
         { q: `The S bit in the EFLAGS register refers to:`, o: [
-          [`Status bit`, `S is not "status".`],
+          [`Status bit`, `S does not mean status; "status flags" is the group name (CF, PF, AF, ZF, SF, OF). S is the sign flag, set for a negative result.`],
           [`Sign bit`, `Correct. SF is set when the result is negative.`],
-          [`Sign extension bit`, `No such flag.`],
-          [`None of the mentioned`, `Sign is listed.`]
+          [`Sign extension bit`, `There is no "sign extension" flag; S is simply the sign flag, set when the result's most significant bit is 1 (negative).`],
+          [`None of the mentioned`, `Not "None": the sign bit is listed as option b; SF = 1 when the result is negative.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The O bit in the EFLAGS register refers to:`, o: [
-          [`Overflow bit`, `Correct.`],
-          [`Overload bit`, `No such flag.`],
-          [`Override segment bit`, `Segment override is a prefix, not a flag.`],
-          [`None of the mentioned`, `Overflow is listed.`]
+          [`Overflow bit`, `Correct. O is the overflow flag (OF), set when a signed result is too large or too small to fit into the destination (L2, EFLAGS bits).`],
+          [`Overload bit`, `There is no "overload" flag in EFLAGS; O is the overflow flag for signed results that do not fit the destination.`],
+          [`Override segment bit`, `A segment override is an instruction prefix (e.g. ES:), not an EFLAGS bit; O is the overflow flag.`],
+          [`None of the mentioned`, `Not "None": the overflow bit is listed as option a and is one of the EFLAGS status flags.`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `……. contains the address of an instruction to be fetched.`, o: [
-          [`PC`, `Correct. Program Counter.`],
+          [`PC`, `Correct. The Program Counter (PC) contains the address of an instruction to be fetched, i.e. the next instruction (L2, User-invisible registers).`],
           [`MAR`, `MAR holds the address of a memory location (data).`],
           [`IR`, `IR holds the instruction most recently fetched.`],
-          [`MBR`, `MBR holds a data word.`]
+          [`MBR`, `The MBR holds a word of data to be written to memory or the word most recently read, not the address of the next instruction.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `……. contains the instruction most recently fetched.`, o: [
           [`PC`, `PC holds the address of the next instruction.`],
-          [`MAR`, `MAR holds a memory address.`],
-          [`IR`, `Correct. Instruction Register.`],
-          [`MBR`, `MBR holds data.`]
+          [`MAR`, `The MAR contains the address of a location in memory, not the instruction itself; the most recently fetched instruction is in the IR.`],
+          [`IR`, `Correct. The Instruction Register (IR) contains the instruction most recently fetched (L2, User-invisible registers).`],
+          [`MBR`, `The MBR holds a data word being written to or read from memory, not the fetched instruction, which sits in the IR.`]
         ], a: 2, src: `Exam 2023/24` },
         { q: `……. contains a word of data to be written to memory or the word most recently read.`, o: [
-          [`PC`, `PC is about instruction addresses.`],
-          [`MAR`, `MAR holds the address, not the data.`],
-          [`IR`, `IR holds the instruction.`],
-          [`MBR`, `Correct. Memory Buffer Register.`]
+          [`PC`, `The PC contains the address of the next instruction to be fetched, not a data word going to or from memory.`],
+          [`MAR`, `The MAR holds the ADDRESS of the memory location; the data word written there or read from it is held in the MBR.`],
+          [`IR`, `The IR holds the instruction most recently fetched, not a data word to be written to memory.`],
+          [`MBR`, `Correct. The Memory Buffer Register (MBR) contains a word of data to be written to memory or the word most recently read (L2, User-invisible registers).`]
         ], a: 3, src: `Revision sheet` },
         { q: `……. contains the address of a location in memory.`, o: [
           [`PC`, `PC holds the address of the next instruction specifically.`],
-          [`MBR`, `MBR holds the data word.`],
-          [`IR`, `IR holds the instruction.`],
-          [`MAR`, `Correct. Memory Address Register.`]
+          [`MBR`, `The MBR holds the data word read from or written to memory; the address of that location is in the MAR.`],
+          [`IR`, `The IR holds the instruction most recently fetched, not a memory address.`],
+          [`MAR`, `Correct. The Memory Address Register (MAR) contains the address of a location in memory (L2, User-invisible registers).`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `MBR is a …….. register.`, o: [
-          [`General purpose`, `General purpose registers are EAX, EBX ...`],
+          [`General purpose`, `General purpose registers (EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI) are user visible; the MBR is a user-invisible control register.`],
           [`User invisible`, `Correct. PC, IR, MAR and MBR are user invisible.`],
-          [`User visible`, `MBR cannot be referenced by the programmer.`],
+          [`User visible`, `User-visible registers can be referenced by the machine language; the MBR cannot. The lecture tree places it under user-invisible with PC, IR and MAR.`],
           [`Special purpose`, `Special purpose registers are EIP and EFLAGS.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `PC is a ……….. register.`, o: [
-          [`General purpose`, `No.`],
-          [`User visible`, `PC is listed under user-invisible.`],
-          [`User invisible`, `Correct.`],
-          [`Special purpose`, `In the lecture tree, PC is user-invisible.`]
+          [`General purpose`, `General purpose registers are EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI; the PC is not one of them but a user-invisible register.`],
+          [`User visible`, `The lecture's register tree lists PC under user-INVISIBLE registers (with MAR, MBR, IR), not user-visible.`],
+          [`User invisible`, `Correct. In the lecture's register tree the Program Counter is a user-invisible (control/status) register, with MAR, MBR and IR (L2, Register classification).`],
+          [`Special purpose`, `Special purpose registers are a user-visible group (EIP, EFLAGS); in the lecture tree PC is under user-invisible registers.`]
         ], a: 2, src: `Midterm 2023/24` },
         { q: `Examples of user visible registers:`, o: [
           [`EAX, AX, ESP, BP`, `Correct. All are general purpose, user-visible.`],
-          [`EAX, AX, MAR, IR`, `MAR and IR are user-invisible.`],
-          [`ECX, MBR, DX, SS`, `MBR is user-invisible.`],
-          [`None`, `Option a is correct.`]
+          [`EAX, AX, MAR, IR`, `EAX and AX are user visible, but MAR and IR are user-invisible control registers, so this set is wrong.`],
+          [`ECX, MBR, DX, SS`, `ECX, DX and SS are user visible, but the MBR is user-invisible, so the set as a whole is wrong.`],
+          [`None`, `Not "None": option a (EAX, AX, ESP, BP) contains only user-visible general purpose registers.`]
         ], a: 0, src: `Revision sheet` },
         { q: `Special purpose registers are:`, o: [
-          [`16-bit registers such as CS, DS`, `Those are segment registers.`],
-          [`32-bit registers such as EFLAGS`, `Correct. EIP and EFLAGS.`],
-          [`32-bit registers such as ECX, EDX`, `Those are general purpose.`],
-          [`None`, `Option b is correct.`]
+          [`16-bit registers such as CS, DS`, `CS and DS are 16-bit SEGMENT registers; the special purpose registers are the 32-bit EIP and EFLAGS.`],
+          [`32-bit registers such as EFLAGS`, `Correct. The lecture names two special purpose registers, EIP and EFLAGS, both 32-bit and manipulated directly by the CPU (L2, Special purpose registers).`],
+          [`32-bit registers such as ECX, EDX`, `ECX and EDX are 32-bit GENERAL purpose registers used for arithmetic and data movement, not special purpose.`],
+          [`None`, `Not "None": option b is right, since EFLAGS (with EIP) is a 32-bit special purpose register.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `General purpose registers are:`, o: [
-          [`16-bit registers such as CS, DS`, `Segment registers.`],
-          [`32-bit registers such as EFLAGS`, `EFLAGS is special purpose.`],
-          [`32-bit registers such as ECX, EDX`, `Correct.`],
-          [`None`, `Option c is correct.`]
+          [`16-bit registers such as CS, DS`, `CS and DS are 16-bit segment registers, not general purpose ones.`],
+          [`32-bit registers such as EFLAGS`, `EFLAGS is a special purpose register (with EIP), not general purpose.`],
+          [`32-bit registers such as ECX, EDX`, `Correct. The eight 32-bit general purpose registers are EAX, EBX, ECX, EDX, EBP, ESP, EDI and ESI, so ECX and EDX qualify (L2, General purpose registers).`],
+          [`None`, `Not "None": option c is right, since ECX and EDX are 32-bit general purpose registers.`]
         ], a: 2, src: `Midterm 2022/23` },
         { q: `General purpose registers are (form B):`, o: [
-          [`16-bit registers such as CS, DS`, `Segment registers.`],
-          [`32-bit registers such as EAX, EBX`, `Correct.`],
+          [`16-bit registers such as CS, DS`, `CS and DS are 16-bit segment registers, not general purpose ones.`],
+          [`32-bit registers such as EAX, EBX`, `Correct. EAX and EBX are among the eight 32-bit general purpose registers used for arithmetic and data movement (L2, General purpose registers).`],
           [`32-bit registers such as EFLAGS`, `EFLAGS is special purpose. (The 2022/23 key underlined both b and c; only b is correct.)`],
-          [`None`, `Option b is correct.`]
+          [`None`, `Not "None": option b is right, since EAX and EBX are 32-bit general purpose registers.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `General purpose registers are (2022/23 Summer options):`, o: [
-          [`16-bit registers such as CS, DS`, `Segment registers.`],
-          [`32-bit registers such as EBX and EDX`, `Correct.`],
-          [`16-bit registers such as ES, BX`, `ES is a segment register.`],
-          [`32-bit registers such as EIP, EFLAGS`, `These are special purpose.`]
+          [`16-bit registers such as CS, DS`, `CS and DS are 16-bit segment registers, not general purpose ones.`],
+          [`32-bit registers such as EBX and EDX`, `Correct. EBX and EDX are among the eight 32-bit general purpose registers (EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI) (L2, General purpose registers).`],
+          [`16-bit registers such as ES, BX`, `BX is general purpose, but ES is the extra SEGMENT register, so this pair is not a set of general purpose registers.`],
+          [`32-bit registers such as EIP, EFLAGS`, `EIP and EFLAGS are the two 32-bit special purpose registers, not general purpose ones.`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `Segment registers are ………`, o: [
-          [`16-bit user visible registers such as CS, DS`, `Correct.`],
-          [`16-bit general purpose registers such as FLAGS`, `FLAGS is not a segment or general register.`],
-          [`32-bit registers such as ECX, EDX`, `Those are general purpose.`],
-          [`None`, `Option a is correct.`]
+          [`16-bit user visible registers such as CS, DS`, `Correct. Segment registers (CS, DS, ES, SS) are 16-bit user-visible registers used as base locations of segments (L2, Segment registers).`],
+          [`16-bit general purpose registers such as FLAGS`, `FLAGS is a special purpose (status/control) register, neither general purpose nor a segment register.`],
+          [`32-bit registers such as ECX, EDX`, `ECX and EDX are 32-bit general purpose registers; segment registers are 16-bit (CS, DS, ES, SS).`],
+          [`None`, `Not "None": option a is right, since CS and DS are 16-bit user-visible segment registers.`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `……. is a segment register that holds the assembly language instructions executed by the microprocessor.`, o: [
-          [`DS`, `DS holds data.`],
-          [`CS`, `Correct. Code segment.`],
-          [`SS`, `SS is the stack.`],
-          [`ES`, `ES is an extra data segment.`]
+          [`DS`, `DS (data segment) points to the segment where data and variables are stored, not program instructions.`],
+          [`CS`, `Correct. CS (code segment) addresses the segment where the executable program's instructions are stored (L2, Segment registers).`],
+          [`SS`, `SS (stack segment) holds the base of the active stack (local variables, parameters), not the program's instructions.`],
+          [`ES`, `ES (extra segment) is an additional data segment, used e.g. as the destination of string instructions, not for code.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The register which keeps track of the status of the running environment:`, o: [
-          [`General purpose`, `They hold data.`],
-          [`Condition`, `Not a register class here.`],
-          [`Segment`, `They hold segment bases.`],
-          [`Flags`, `Correct.`]
+          [`General purpose`, `General purpose registers hold data for arithmetic and data movement; they do not track the status of the running environment.`],
+          [`Condition`, `"Condition" is not one of the lecture's register classes; the status bits (condition of results) live in the flags register.`],
+          [`Segment`, `Segment registers hold the base locations of the code, data and stack segments, not status information.`],
+          [`Flags`, `Correct. The flags register (EFLAGS) keeps track of the status of the running environment: its bits reflect outcomes or control the CPU (L2, Special purpose registers).`]
         ], a: 3, src: `Exam 2023/24` },
         { q: `The Flag register is responsible to indicate the ……….`, o: [
-          [`Condition of memory`, `Flags describe results, not memory.`],
-          [`The condition of the result of an ALU operation`, `Correct.`],
-          [`Result of addition`, `Too narrow.`],
-          [`Result of subtraction`, `Too narrow.`]
+          [`Condition of memory`, `Flags do not describe the state of memory; they reflect the outcome of CPU (ALU) operations or control the CPU.`],
+          [`The condition of the result of an ALU operation`, `Correct. Flag bits such as ZF, SF, CF and OF report the condition of the result of an ALU operation (zero, negative, carry, overflow) (L2, Special purpose registers).`],
+          [`Result of addition`, `Too narrow: flags report the condition of ANY ALU operation (subtraction, logic, shifts too), not only addition.`],
+          [`Result of subtraction`, `Too narrow: flags report the condition of any ALU operation's result, not only subtraction.`]
         ], a: 1, src: `Revision sheet` },
         { q: `…… stores the instruction currently being executed.`, o: [
-          [`Instruction segment`, `Not a register.`],
-          [`Instruction register`, `Correct.`],
-          [`Both a and b`, `Only IR.`],
-          [`None`, `IR is correct.`]
+          [`Instruction segment`, `"Instruction segment" is not a register; instructions are stored in the code segment, and the current one is held in the IR.`],
+          [`Instruction register`, `Correct. The instruction register (IR) holds the instruction most recently fetched, i.e. the one being executed (L2, User-invisible registers).`],
+          [`Both a and b`, `Only the instruction register does this; "instruction segment" is not a register, so "both" is wrong.`],
+          [`None`, `Not "None": the instruction register stores the instruction currently being executed.`]
         ], a: 1, src: `Revision sheet` },
         { q: `What is true about the program counter?`, o: [
-          [`It is an 8-bit register holding temporary data of arithmetic and logic operations`, `That describes an accumulator.`],
-          [`When an instruction is fetched it is stored in the program counter`, `Fetched instructions go to the IR.`],
-          [`It provides timing and control signals`, `That is the control unit / clock.`],
-          [`It is a 16-bit register storing the memory address of the next instruction to be executed`, `Correct.`]
+          [`It is an 8-bit register holding temporary data of arithmetic and logic operations`, `Holding temporary results of arithmetic and logic describes the accumulator (AX), not the program counter.`],
+          [`When an instruction is fetched it is stored in the program counter`, `A fetched instruction is stored in the instruction register (IR); the PC only holds the address of the next instruction.`],
+          [`It provides timing and control signals`, `Timing and control signals come from the clock and control unit, not from the program counter.`],
+          [`It is a 16-bit register storing the memory address of the next instruction to be executed`, `Correct. The PC (IP in the 8086, 16-bit) holds the memory address of the next instruction to be fetched and executed (L2, User-invisible registers).`]
         ], a: 3, src: `Revision sheet` },
         { q: `The Program Counter (PC) is used to:`, o: [
-          [`Specify the address of the instruction to be executed (next)`, `Correct.`],
-          [`Specify the address of the instruction currently executing`, `PC already points to the next one.`],
+          [`Specify the address of the instruction to be executed (next)`, `Correct. The PC contains the address of the instruction to be fetched next; EIP likewise holds the address of the next instruction (L2, User-invisible registers).`],
+          [`Specify the address of the instruction currently executing`, `Once an instruction is fetched the PC already points to the NEXT instruction; the current instruction itself sits in the IR.`],
           [`Specify the number of instructions executed`, `PC is not a counter of instructions executed.`],
-          [`None`, `Option a is correct.`]
+          [`None`, `Not "None": option a is right, since the PC holds the address of the next instruction to be executed.`]
         ], a: 0, src: `Revision sheet` },
         { q: `Stack pointer is stored in …..`, o: [
-          [`RAM`, `SP is a register.`],
-          [`ROM`, `No.`],
-          [`RAM or ROM`, `No.`],
-          [`Microprocessor`, `Correct. Registers are inside the CPU.`]
+          [`RAM`, `SP is a register, and registers are built into the CPU; RAM holds the stack data itself, not the stack pointer.`],
+          [`ROM`, `ROM is permanent read-only memory; the stack pointer changes constantly and is a register inside the CPU.`],
+          [`RAM or ROM`, `SP lives in neither RAM nor ROM: it is a register, a storage area built into the microprocessor.`],
+          [`Microprocessor`, `Correct. SP is a register, and registers are high-speed temporary storage built into the CPU, i.e. the microprocessor (L2, Register classification).`]
         ], a: 3, src: `Revision sheet` },
         { q: `Which of the following belongs to the categories of registers?`, o: [
-          [`General purpose`, `Also segment.`],
-          [`Segment`, `Also general purpose.`],
-          [`Pointer`, `Not a lecture category.`],
-          [`a and b`, `Correct.`]
+          [`General purpose`, `General purpose is one register category, but so is segment, so the complete answer is "a and b".`],
+          [`Segment`, `Segment is one register category, but general purpose is too, so the complete answer is "a and b".`],
+          [`Pointer`, `"Pointer" is not a category in the lecture tree (general purpose, special purpose, segment); SP and BP are general purpose registers.`],
+          [`a and b`, `Correct. The lecture's user-visible categories are general purpose, special purpose and segment registers, so both a and b are categories (L2, Register classification).`]
         ], a: 3, src: `Revision sheet` },
         { q: `The CS register stores ……. in the code segment.`, o: [
-          [`Pointer instructions`, `No.`],
-          [`Path instructions`, `No.`],
-          [`Code instructions`, `Correct (key).`],
-          [`Stream line`, `No.`]
+          [`Pointer instructions`, `"Pointer instructions" is not what CS addresses; CS points to the segment holding the program's code instructions.`],
+          [`Path instructions`, `"Path instructions" is not a lecture term; the code segment, addressed by CS, holds the program's code instructions.`],
+          [`Code instructions`, `Correct (revision key). CS addresses the code segment, where the program's code instructions executed by the processor are stored (L2, Segment registers).`],
+          [`Stream line`, `"Stream line" is a meaningless distractor; the code segment addressed by CS holds the code instructions.`]
         ], a: 2, src: `Revision sheet` },
         { q: `A word is:`, o: [
-          [`One byte`, `A byte is 8 bits.`],
-          [`8 bytes`, `That is a quad word.`],
-          [`2 bytes`, `Correct. 16 bits.`],
-          [`2 bits`, `No.`]
+          [`One byte`, `One byte is 8 bits; a word is twice that, 2 bytes (16 bits), the size of AX.`],
+          [`8 bytes`, `8 bytes (64 bits) is a quad word; a word is 2 bytes and a double word 4 bytes.`],
+          [`2 bytes`, `Correct. A word is 2 bytes = 16 bits, the size of 16-bit registers such as AX; a double word is 4 bytes (L2, MOV instruction).`],
+          [`2 bits`, `2 bits is far too small; a byte alone is 8 bits, and a word is 2 bytes (16 bits).`]
         ], a: 2, src: `Revision sheet` },
         { q: `Segment registers cannot be used as operands for arithmetic and logical instructions.`, o: [
-          [`True`, `Correct.`],
+          [`True`, `Correct. Segment registers hold segment base locations and cannot be operands of arithmetic or logic instructions (L2, Segment registers).`],
           [`False`, `ADD DS, 5 is illegal; segment registers are loaded only by MOV/POP/LDS etc.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The Z flag is set to 1 when an ALU operation results in a 0 output.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `ZF = 1 means the result was zero.`]
+          [`True`, `Correct. The zero flag Z is set to 1 when an arithmetic/ALU result is zero (L2, EFLAGS bits).`],
+          [`False`, `The statement is true: ZF = 1 exactly when the result of the operation is zero.`]
         ], a: 0, src: `Exam 2023/24 Second term` },
         { q: `The Z bit of the EFLAGS register is set to zero if a calculation result = zero.`, o: [
-          [`True`, `It is set to ONE when the result is zero.`],
-          [`False`, `Correct.`]
+          [`True`, `It is the reverse: ZF is set to ONE when the result is zero and cleared to 0 when the result is non-zero.`],
+          [`False`, `Correct. ZF becomes 1 (not 0) when the result is zero, so the statement is false (L2, EFLAGS bits).`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `The segment registers include SS, CS, DS, ES, DI and SI.`, o: [
           [`True`, `DI and SI are index (general purpose) registers.`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. The segment registers are CS, DS, ES, SS (plus FS, GS); DI and SI are index (general purpose) registers (L2, Segment registers).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `You cannot use 1 byte (high or low bits) of the ESP register; you can use either 16 or 32 bits.`, o: [
           [`True`, `Correct. Only AX, BX, CX, DX have 8-bit halves.`],
-          [`False`, `There is no SPL/SPH in the 8086 model.`]
+          [`False`, `The statement is true: only AX, BX, CX and DX have 8-bit halves; SP/ESP has no SPL or SPH, so it is used as 16 or 32 bits.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `You can use 1 byte of the ESI register by using SH, SL.`, o: [
-          [`True`, `SH/SL do not exist.`],
-          [`False`, `Correct.`]
+          [`True`, `SH and SL do not exist: SI, DI, SP and BP have no 8-bit halves, only AX, BX, CX and DX do.`],
+          [`False`, `Correct. ESI can be used only as SI (16 bits) or ESI (32 bits); there is no SH/SL, since only AX, BX, CX, DX have 8-bit halves (L2, General purpose registers).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `User visible registers include general purpose, special purpose and segment registers.`, o: [
           [`True`, `Correct. That is the lecture's register tree. (A student's mark on the 2024/25 paper said False.)`],
           [`False`, `The lecture lists all three under user-visible.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `Memory Address Register (MAR) contains the instruction most recently fetched.`, o: [
-          [`True`, `That is the IR.`],
-          [`False`, `Correct. MAR holds a memory address.`]
+          [`True`, `The instruction most recently fetched is held in the IR; the MAR holds the address of a location in memory.`],
+          [`False`, `Correct. The MAR contains the address of a memory location; the instruction most recently fetched is in the IR (L2, User-invisible registers).`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `The general-purpose registers include AX, BX, CX, DX, EX and FX.`, o: [
-          [`True`, `EX and FX do not exist.`],
-          [`False`, `Correct.`]
+          [`True`, `EX and FX do not exist; the 16-bit general registers are AX, BX, CX, DX, SP, BP, SI and DI.`],
+          [`False`, `Correct. There are no EX or FX registers; the 16-bit general purpose registers are AX, BX, CX, DX, SP, BP, SI, DI (L2, General purpose registers).`]
         ], a: 1, src: `Revision sheet` },
         { q: `SS is the segment register used to hold the segment of the stack.`, o: [
           [`True`, `Correct. (The revision version "hold the offset of the stack" is False: the offset is in SP.)`],
-          [`False`, `SS holds the stack segment.`]
+          [`False`, `The statement is true: SS holds the starting address of the active stack segment (the offset of the top is in SP).`]
         ], a: 0, src: `Exam 2023/24 Second term` },
         { q: `The Program Counter (PC) is used to save the number of executed instructions.`, o: [
           [`True`, `PC holds the address of the next instruction.`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. The PC holds the address of the next instruction to be fetched; it does not count how many instructions were executed (L2, User-invisible registers).`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `The Sign flag is set when the contents of the accumulator become negative after an ALU operation.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `SF = 1 for a negative result.`]
+          [`True`, `Correct. The sign flag is set when the result is negative, i.e. its most significant bit is 1 (L2, EFLAGS bits).`],
+          [`False`, `The statement is true: SF = 1 whenever an ALU result (e.g. in the accumulator) is negative.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The CF is known as:`, o: [
-          [`Carry flag`, `Correct.`],
-          [`Condition flag`, `No.`],
-          [`Common flag`, `No.`],
-          [`None`, `Carry flag is correct.`]
+          [`Carry flag`, `Correct. CF is the carry flag, set when an unsigned result is too large for the destination; it is also the borrow flag for SBB (L2, EFLAGS bits).`],
+          [`Condition flag`, `There is no "condition flag"; CF is the carry flag, one of the six status flags.`],
+          [`Common flag`, `There is no "common flag" in EFLAGS; the C in CF stands for carry.`],
+          [`None`, `Not "None": option a, carry flag, is the correct name of CF.`]
         ], a: 0, src: `Revision sheet` }
       ]
     },
@@ -658,134 +658,134 @@ DEC AX                 ; AX = 2` }
       ],
       quiz: [
         { q: `The instruction MOV AX, 0005H belongs to the addressing mode:`, o: [
-          [`Register`, `The source is a constant, not a register.`],
-          [`Direct`, `There is no memory access.`],
-          [`Immediate`, `Correct. 0005H is immediate data.`],
-          [`Register relative`, `No register-relative memory operand.`]
+          [`Register`, `Register addressing needs a register as the source (e.g. MOV AX, BX); here the source 0005H is a constant written in the instruction.`],
+          [`Direct`, `Direct addressing reads a memory location, written in brackets like [0005H]; 0005H without brackets is data, not an address.`],
+          [`Immediate`, `Correct. The source 0005H is a constant written inside the instruction, so MOV copies immediate data into AX (L3, Immediate addressing).`],
+          [`Register relative`, `Register relative needs a memory operand like [BX+4]; there are no brackets here, only the constant 0005H.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The instruction MOV AX, BX belongs to the addressing mode:`, o: [
-          [`Direct addressing`, `No memory operand.`],
-          [`Register addressing`, `Correct.`],
-          [`Indexed addressing`, `No index register used as a pointer.`],
-          [`Immediate addressing`, `No constant.`]
+          [`Direct addressing`, `Direct addressing moves data between AL/AX/EAX and a memory location like [1234H]; here both operands are registers.`],
+          [`Register addressing`, `Correct. Both operands, AX and BX, are registers of the same size, which is register addressing, the most common mode (L3, Register addressing).`],
+          [`Indexed addressing`, `Indexed addressing uses SI or DI in brackets as a memory pointer (e.g. [SI]); MOV AX, BX accesses no memory.`],
+          [`Immediate addressing`, `Immediate addressing needs a constant as the source (e.g. MOV AX, 5); BX is a register.`]
         ], a: 1, src: `Revision sheet` },
         { q: `Which of the following instructions is not valid?`, o: [
-          [`MOV AX, BX`, `Valid register move.`],
+          [`MOV AX, BX`, `MOV AX, BX is valid register addressing: two 16-bit general registers of the same size.`],
           [`MOV DS, AX`, `Valid: loading a segment register from a general register.`],
           [`MOV [AX], [5000H]`, `Correct. Memory-to-memory move (and AX cannot be a pointer).`],
-          [`PUSH AX`, `Valid.`]
+          [`PUSH AX`, `PUSH AX is valid: it decrements SP by 2 and stores the 16-bit AX on the stack (L5).`]
         ], a: 2, src: `Exam 2024/25` },
         { q: `The operands in a MOV instruction (source and destination) cannot be:`, o: [
-          [`Register, register`, `Allowed.`],
-          [`Memory location, memory location`, `Correct. Memory-to-memory is not allowed.`],
-          [`Memory location, register`, `Allowed.`],
+          [`Register, register`, `Register to register is allowed (and is the most common mode), as long as both are the same size, e.g. MOV AX, BX.`],
+          [`Memory location, memory location`, `Correct. Memory to memory moves are not allowed with MOV (only string instructions can do it), e.g. MOV [DI], [SI] is incorrect (L3, Register addressing and its restrictions).`],
+          [`Memory location, register`, `A memory location and a register is allowed in either order, e.g. MOV [BX], AX or MOV AX, [BX].`],
           [`Immediate data, register`, `Allowed as source (but immediate can never be the destination).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `The operands in a MOV instruction cannot be (form B):`, o: [
           [`DS, ES`, `Correct. Segment to segment moves are not allowed.`],
-          [`AX, CS`, `MOV AX, CS is allowed.`],
-          [`EAX, ESP`, `Allowed, same size.`],
-          [`BX, DX`, `Allowed.`]
+          [`AX, CS`, `MOV AX, CS is allowed: CS may be READ into a general register; only changing CS (MOV CS, AX) is forbidden.`],
+          [`EAX, ESP`, `MOV EAX, ESP is allowed: both are 32-bit general purpose registers, and MOV simply copies ESP into EAX.`],
+          [`BX, DX`, `MOV BX, DX is allowed: two 16-bit general registers of the same size.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `The instruction MOV DS, ES:`, o: [
-          [`Copies the contents of ES into DS`, `Not allowed in one instruction.`],
-          [`Copies the contents of DS into ES`, `Wrong direction, and not allowed anyway.`],
-          [`Copies and deletes the contents of ES into DS`, `MOV never deletes.`],
-          [`Causes an error`, `Correct. Segment to segment move.`]
+          [`Copies the contents of ES into DS`, `That is what it tries to do, but moving one segment register into another in a single instruction is not allowed; use MOV AX, ES then MOV DS, AX.`],
+          [`Copies the contents of DS into ES`, `MOV copies source (ES) into destination (DS), so this has the direction reversed, and the segment-to-segment move is illegal anyway.`],
+          [`Copies and deletes the contents of ES into DS`, `MOV never deletes its source, and in any case a segment-to-segment move like MOV DS, ES is not allowed.`],
+          [`Causes an error`, `Correct. Data cannot be moved from one segment register to another with one instruction, so MOV DS, ES is an error (L3, Register addressing and its restrictions).`]
         ], a: 3, src: `Exam 2023/24 Second term` },
         { q: `The instruction MOV EAX, ESP:`, o: [
-          [`Copies the contents of ESP into EAX`, `Correct. Same size, valid.`],
-          [`Copies the contents of SP into AX`, `It copies all 32 bits.`],
-          [`Copies and deletes the contents of ESP into EAX`, `MOV does not delete the source.`],
-          [`Causes an error`, `It is valid.`]
+          [`Copies the contents of ESP into EAX`, `Correct. EAX and ESP are both 32-bit general purpose registers, so MOV copies ESP into EAX and ESP keeps its value (L3, Register addressing).`],
+          [`Copies the contents of SP into AX`, `The operands are the 32-bit EAX and ESP, so all 32 bits are copied, not just the 16-bit SP into AX.`],
+          [`Copies and deletes the contents of ESP into EAX`, `MOV only copies; the source ESP keeps its value. Nothing is deleted.`],
+          [`Causes an error`, `No error: EAX and ESP are same-size general purpose registers, so the move is valid.`]
         ], a: 0, src: `Revision sheet` },
         { q: `Which of the following instructions causes errors?`, o: [
-          [`MOV CS, AX`, `Correct. CS cannot be changed by MOV.`],
-          [`MOV EAX, EBP`, `Valid.`],
-          [`MOV CX, [SI]`, `Valid register indirect.`],
-          [`PUSHA / POP AX`, `Valid.`]
+          [`MOV CS, AX`, `Correct. Changing the value of CS is not allowed, so MOV CS, AX causes an error (reading it, MOV AX, CS, is fine) (L3, Register addressing and its restrictions).`],
+          [`MOV EAX, EBP`, `MOV EAX, EBP is valid: both are 32-bit general purpose registers.`],
+          [`MOV CX, [SI]`, `MOV CX, [SI] is valid register indirect addressing: SI points to a word in the data segment (DS×10 + SI).`],
+          [`PUSHA / POP AX`, `Both are valid: PUSHA pushes all 16-bit general registers and POP AX pops one word into AX (L5).`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `The instruction that is not possible among the following:`, o: [
-          [`MOV AX, BX`, `Possible.`],
-          [`MOV AX, [BX]`, `Possible.`],
+          [`MOV AX, BX`, `MOV AX, BX is possible: register addressing with two 16-bit registers.`],
+          [`MOV AX, [BX]`, `MOV AX, [BX] is possible: register indirect, reading the word at DS×10 + BX into AX.`],
           [`MOV 55H, BL`, `Correct. Immediate data cannot be a destination.`],
-          [`MOV AL, 55H`, `Possible.`]
+          [`MOV AL, 55H`, `MOV AL, 55H is possible: immediate addressing copies the byte constant 55H into the 8-bit AL.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The instruction that is not possible among the following:`, o: [
-          [`MOV AX, [BX]`, `Possible.`],
-          [`MOV AX, 5555H`, `Possible.`],
-          [`MOV AX, [SI]`, `Possible.`],
-          [`MOV [SI], [DI]`, `Correct. Memory to memory.`]
+          [`MOV AX, [BX]`, `MOV AX, [BX] is possible: memory to register using BX as a pointer.`],
+          [`MOV AX, 5555H`, `MOV AX, 5555H is possible: immediate addressing with a 16-bit constant into a 16-bit register.`],
+          [`MOV AX, [SI]`, `MOV AX, [SI] is possible: memory to register with SI as the pointer.`],
+          [`MOV [SI], [DI]`, `Correct. Both operands are memory locations, and memory to memory moves are not allowed with MOV (L3, Register addressing and its restrictions).`]
         ], a: 3, src: `Revision sheet` },
         { q: `The instruction that is not possible among the following (2023/24 options):`, o: [
-          [`MOV AX, [BX]`, `Possible.`],
-          [`MOV AX, 5555H`, `Possible.`],
+          [`MOV AX, [BX]`, `MOV AX, [BX] is possible: memory to register with BX as a pointer into the data segment.`],
+          [`MOV AX, 5555H`, `MOV AX, 5555H is possible: a 16-bit immediate constant into a 16-bit register.`],
           [`MOV [AX], SI`, `Also invalid on the real 16-bit 8086 (AX cannot be used as a pointer), so this option can be defended too.`],
           [`MOV 100, [DI]`, `Correct (intended answer). An immediate value can never be a destination.`]
         ], a: 3, src: `Exam 2023/24` },
         { q: `The instruction MOV [DI], [SI]:`, o: [
-          [`Copies the contents of SI into DI`, `Not allowed.`],
-          [`Copies the contents of DI into SI`, `Not allowed.`],
-          [`Copies and deletes the contents of SI into DI`, `Not allowed.`],
-          [`Causes an error`, `Correct. Memory-to-memory move.`]
+          [`Copies the contents of SI into DI`, `MOV [DI], [SI] would copy memory to memory, which MOV cannot do; it also refers to the memory pointed to, not the registers themselves.`],
+          [`Copies the contents of DI into SI`, `Wrong direction (the destination is [DI]), and in any case memory to memory moves are not allowed with MOV.`],
+          [`Copies and deletes the contents of SI into DI`, `MOV never deletes its source, and this memory-to-memory form is illegal in the first place.`],
+          [`Causes an error`, `Correct. Both operands are memory locations; memory to memory moves are not allowed (except with string instructions such as MOVS) (L3, Register addressing and its restrictions).`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `In general, the destination operand of an instruction can be:`, o: [
-          [`Memory location`, `Also a register.`],
-          [`Register`, `Also memory.`],
-          [`Immediate data`, `Never a destination.`],
-          [`Memory location and register`, `Correct.`]
+          [`Memory location`, `Memory is a valid destination, but so is a register, so the complete answer is "memory location and register".`],
+          [`Register`, `A register is a valid destination, but so is a memory location, so the complete answer includes both.`],
+          [`Immediate data`, `Immediate data can never be a destination: MOV 55H, BL is impossible because a constant cannot receive a value.`],
+          [`Memory location and register`, `Correct. The destination can be a register or a memory location, never immediate data (L3, Register addressing and its restrictions).`]
         ], a: 3, src: `Revision sheet` },
         { q: `If DS=1000, ES=1400, DI=150, EAX=1234, the memory address for MOV BL, ES:[1234H] is:`, o: [
-          [`15243`, `Digits swapped.`],
-          [`15234`, `Correct. 14000 + 1234 = 15234.`],
-          [`1634`, `ES was not multiplied by 10.`],
-          [`1643`, `Wrong.`]
+          [`15243`, `15243 swaps the last two digits; the correct sum is 14000 + 1234 = 15234.`],
+          [`15234`, `Correct. The override uses ES: ES×10H + 1234H = 14000 + 1234 = 15234 (L3, Lecture examples).`],
+          [`1634`, `1634 does not come from ES×10H + 1234; with ES = 1400 the base alone is 14000, so the address must be 15234.`],
+          [`1643`, `1643 skips the ×10H shift of ES and the correct addition; the address is ES×10 + 1234 = 15234.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The segment register of the instruction MOV BL, ES:[1234H] will be:`, o: [
-          [`ES`, `Correct. Segment override.`],
-          [`DS`, `DS is the default, but it is overridden.`],
-          [`SS`, `No BP or stack.`],
-          [`CS`, `No.`]
+          [`ES`, `Correct. The ES: prefix is a segment override, so ES replaces the default DS for this memory access (L3, Segment overriding).`],
+          [`DS`, `DS is the default segment for MOV, but the written ES: prefix overrides it.`],
+          [`SS`, `SS is the default only for BP/SP-based addresses; here ES is written explicitly as an override.`],
+          [`CS`, `CS is used for fetching instructions (CS:IP); here ES is written explicitly, so ES is the segment.`]
         ], a: 0, src: `Exam 2023/24 Second term` },
         { q: `The segment register of the instruction MOV BL, [1234H] will be:`, o: [
-          [`ES`, `No override written.`],
-          [`DS`, `Correct. Default for MOV.`],
-          [`SS`, `Only with BP/SP.`],
-          [`CS`, `No.`]
+          [`ES`, `ES is used only when written as an override (ES:[1234H]); with no prefix the default segment applies.`],
+          [`DS`, `Correct. No segment is written, so the default segment for MOV, DS, is used: address = DS×10 + 1234 (L3, Segment:offset and the physical address).`],
+          [`SS`, `SS is the default only when BP or SP forms the address; [1234H] uses the default DS.`],
+          [`CS`, `CS is the segment for instruction fetches (CS:IP), not for data operands like [1234H], which default to DS.`]
         ], a: 1, src: `Revision sheet` },
         { q: `An instruction that subtracts val3 from EAX:`, o: [
-          [`sub val3, eax`, `This would store into val3.`],
-          [`sub eax, val3`, `Correct. Destination first.`],
-          [`subtract val3, eax`, `No such mnemonic.`],
-          [`subtract eax, val3`, `No such mnemonic.`]
+          [`sub val3, eax`, `The first operand is the destination, so sub val3, eax computes val3 − eax and stores it in val3, not in EAX.`],
+          [`sub eax, val3`, `Correct. Syntax is instruction destination, source: sub eax, val3 computes EAX − val3 and leaves the result in EAX.`],
+          [`subtract val3, eax`, `"subtract" is not an 8086 mnemonic; the subtraction instruction is SUB.`],
+          [`subtract eax, val3`, `The operand order is right, but the mnemonic is SUB, not "subtract", so this would not assemble.`]
         ], a: 1, src: `Revision sheet` },
         { q: `MOV SS, CS is an incorrect instruction.`, o: [
-          [`True`, `Correct. Segment to segment move.`],
-          [`False`, `It is incorrect.`]
+          [`True`, `Correct. Moving one segment register into another in a single instruction is not allowed, and it would also change CS (L3, Register addressing and its restrictions).`],
+          [`False`, `The statement is true: MOV SS, CS is a segment-to-segment move, which is not allowed; go through a general register.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `MOV [AX], [150H] is a correct instruction.`, o: [
-          [`True`, `Memory to memory is illegal.`],
-          [`False`, `Correct.`]
+          [`True`, `Both operands are memory, and memory to memory moves are not allowed (AX is also not a valid 8086 pointer), so it is not correct.`],
+          [`False`, `Correct. MOV [AX], [150H] is a memory-to-memory move, which the lecture lists as incorrect (L3, Register addressing and its restrictions).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `A default segment can be overridden (by writing the required segment before the offset).`, o: [
-          [`True`, `Correct.`],
-          [`False`, `Segment overriding exists, e.g. ES:[1234H].`]
+          [`True`, `Correct. Writing a segment before the offset overrides the default, e.g. MOV BL, ES:[1234H] uses ES instead of DS (L3, Segment overriding).`],
+          [`False`, `The statement is true: segment overriding exists, e.g. MOV BL, ES:[1234H] or MOV AL, CS:[BX].`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `Default segment can never be overridden.`, o: [
-          [`True`, `It can be overridden.`],
-          [`False`, `Correct.`]
+          [`True`, `Default segments can be overridden by writing a segment prefix, e.g. ES:[1234H] or DS:[BP], so the statement is false.`],
+          [`False`, `Correct. A default segment CAN be overridden by writing the segment before the offset, e.g. MOV BL, ES:[1234H] (L3, Segment overriding).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `The statement MOV ES:SI, CX is legal.`, o: [
           [`True`, `SI without brackets is a register, so ES:SI is meaningless.`],
           [`False`, `Correct. (Same idea: "MOV ES:SI,CX is incorrect" is True.)`]
         ], a: 1, src: `Exam 2023/24 Second term` },
         { q: `The statement MOV ES:SI, CX is incorrect.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `It is incorrect.`]
+          [`True`, `Correct. ES:SI is not a memory operand because the brackets are missing; the correct form is MOV ES:[SI], CX (L3, Segment overriding).`],
+          [`False`, `The statement is true: without brackets SI is a register, so ES:SI is illegal; MOV ES:[SI], CX would be correct.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `Register CS cannot be modified, so the instruction MOV [CS], AX is incorrect.`, o: [
           [`True`, `Correct. CS cannot be a MOV destination (and [CS] is not a valid pointer).`],
-          [`False`, `It is incorrect.`]
+          [`False`, `The statement is true: changing CS is not allowed, so CS can never be a MOV destination (and [CS] is not a valid pointer).`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `The instruction MOV CS:[SI], 100 is incorrect.`, o: [
           [`True`, `CS is only used as a segment override here; CS itself is not changed.`],
@@ -882,72 +882,72 @@ DEC AX                 ; AX = 2` }
       ],
       quiz: [
         { q: `The segment register of the instruction MOV BX, 50[BP] will be:`, o: [
-          [`SS`, `Correct. BP defaults to SS.`],
-          [`CS`, `CS is for code.`],
+          [`SS`, `Correct. BP is the only pointer whose default segment is SS, so 50[BP] reads SS×10 + 50 + BP; no override is written (L4, Register indirect addressing).`],
+          [`CS`, `CS is used for fetching instructions (with IP), never as the default for a data pointer. BP's default segment is SS.`],
           [`DS which contains 50`, `BP changes the default to SS; 50 is a displacement.`],
-          [`ES`, `No override written.`]
+          [`ES`, `ES is used only when written as an override (e.g. ES:50[BP]) or by string destinations; with no override, BP defaults to SS.`]
         ], a: 0, src: `Midterm 2022/23` },
         { q: `The segment register of the instruction MOV 30[BP], BX will be:`, o: [
-          [`ES`, `No override.`],
-          [`SS`, `Correct. BP → SS.`],
-          [`DS`, `BP is not DS-based.`],
-          [`The instruction is incorrect`, `It is valid (register to memory).`]
+          [`ES`, `ES would need an explicit override such as ES:30[BP]; none is written, so BP's default segment SS is used.`],
+          [`SS`, `Correct. The memory operand uses BP, and BP's default segment is SS, so the address is SS×10 + 30 + BP (L4, Default segment rule).`],
+          [`DS`, `DS is the default only for BX, SI, DI and plain constants; a BP-based operand like 30[BP] defaults to SS.`],
+          [`The instruction is incorrect`, `The instruction is valid: it moves register BX into memory (register to memory), and BP with a displacement is legal indexed addressing.`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `The segment register of the instruction MOV BX, 50[SI-10] will be:`, o: [
-          [`SS-10`, `Meaningless.`],
-          [`DS*50`, `Meaningless.`],
-          [`DS which contains 50`, `DS does not "contain" the displacement.`],
-          [`DS`, `Correct. SI defaults to DS.`]
+          [`SS-10`, `A segment register is a register, not an expression: "SS-10" is meaningless. The -10 is part of the offset, and SI defaults to DS.`],
+          [`DS*50`, `"DS*50" mixes up the formula: DS is multiplied by 10H, and 50 is a displacement added to the offset, not to the segment.`],
+          [`DS which contains 50`, `DS does not "contain" 50: 50 and -10 are displacements added to SI to form the offset. The segment is simply DS.`],
+          [`DS`, `Correct. The pointer register is SI, whose default segment is DS; 50 and -10 only change the offset: DS×10 + 50 + SI - 10 (L4, Indexed addressing).`]
         ], a: 3, src: `Midterm 2023/24` },
         { q: `The segment register of the instruction MOV [SI][BP], BX will be:`, o: [
-          [`ES`, `No override.`],
-          [`DS`, `BP in the expression makes it SS.`],
-          [`SS`, `Correct. BP base → SS.`],
-          [`CS`, `No.`]
+          [`ES`, `ES needs an explicit override (ES:[SI][BP]); without one, the presence of BP makes the default segment SS.`],
+          [`DS`, `SI alone would use DS, but whenever BP is part of the address the default segment becomes SS (Sheet 1: [SI][BP] uses SS).`],
+          [`SS`, `Correct. BP is the base register and BP defaults to SS, so the address is SS×10 + BP + SI, as in Sheet 1's MOV AL, [SI][BP] (L4, Base plus index).`],
+          [`CS`, `CS is the code segment used with IP to fetch instructions; data operands default to DS, or SS when BP is used.`]
         ], a: 2, src: `Exam 2024/25` },
         { q: `The segment register of the instruction MOV [BX][BP], BX will be:`, o: [
-          [`ES`, `No override.`],
-          [`DS`, `BX alone would be DS, but BP is present.`],
+          [`ES`, `No ES: override is written, so ES is not used; the intended answer follows the BP rule and gives SS.`],
+          [`DS`, `BX alone would use DS, but the exam's rule is that BP in the address makes the segment SS.`],
           [`SS`, `Correct (intended). BP → SS. Note: on a real 8086, two base registers BX+BP cannot be combined.`],
-          [`CS`, `No.`]
+          [`CS`, `CS holds code and is used with IP for instruction fetch; it is never the default segment for a data operand.`]
         ], a: 2, src: `Exam 2023/24 Second term` },
         { q: `The segment register of the instruction MOV [BX][BP], AX will be:`, o: [
-          [`ES`, `No override.`],
-          [`DS`, `BP present.`],
+          [`ES`, `No ES: override is written, so ES is not used; the intended answer is SS because BP appears in the address.`],
+          [`DS`, `BX on its own would give DS, but BP is also in the address, and the course rule gives SS whenever BP is used.`],
           [`SS`, `Correct (intended answer, same note as above).`],
-          [`CS`, `No.`]
+          [`CS`, `CS is the code segment for instruction fetch; data operands use DS by default, or SS when BP is involved.`]
         ], a: 2, src: `Exam 2023/24` },
         { q: `The memory address when executing MOV AX, 100[DI] will be:`, o: [
-          [`DS + DI + 100`, `DS must be multiplied by 10H.`],
-          [`(DS*10) + DI + 100`, `Correct.`],
-          [`(ES*10) + DI + 100`, `Default is DS, not ES.`],
-          [`(DS+10) + DI + 100`, `Multiply, not add.`]
+          [`DS + DI + 100`, `The segment must be shifted one hex digit (DS×10) before adding the offset; adding DS directly gives a wrong physical address.`],
+          [`(DS*10) + DI + 100`, `Correct. Memory location = segment×10 + displacement + offset; DI defaults to DS, so (DS×10) + 100 + DI (L4, Indexed addressing).`],
+          [`(ES*10) + DI + 100`, `ES is only used with an override such as ES:100[DI]; DI's default segment for MOV is DS.`],
+          [`(DS+10) + DI + 100`, `The segment is multiplied by 10H (shifted one hex digit), not increased by 10; (DS+10) is a wrong formula.`]
         ], a: 1, src: `Revision sheet` },
         { q: `If DS=1000, ES=1400, DI=150, BX=CD01, the memory location for MOV AL, 100[BX][DI] is:`, o: [
-          [`1CF51`, `Correct. 10000 + 100 + CD01 + 150.`],
-          [`CF51`, `Forgot the segment base 10000.`],
-          [`FC51`, `Wrong digits.`],
-          [`1FC50`, `Wrong digits.`]
+          [`1CF51`, `Correct. BX and DI default to DS: DS×10 + 100 + BX + DI = 10000 + 100 + CD01 + 150 = 1CF51 (L4, Lecture examples).`],
+          [`CF51`, `CF51 is only the offset 100 + CD01 + 150; the segment base DS×10 = 10000 must be added to give 1CF51.`],
+          [`FC51`, `FC51 swaps the C and F of the offset CF51 and also drops the segment base 10000; the right sum is 1CF51.`],
+          [`1FC50`, `1FC50 has the offset digits scrambled (FC50 instead of CF51); 10000 + 100 + CD01 + 150 = 1CF51.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The statement MOV AX, [BP - 2] is correct.`, o: [
           [`True`, `Correct. Indexed addressing with a negative displacement, SS segment.`],
-          [`False`, `It is legal.`]
+          [`False`, `The statement is true: [BP-2] is indexed addressing with a negative displacement, which is legal; the lecture lists [BP-2] as valid.`]
         ], a: 0, src: `Midterm 2023/24` },
         { q: `The statement MOV AX, [BP - 50] is incorrect.`, o: [
-          [`True`, `It is legal.`],
-          [`False`, `Correct.`]
+          [`True`, `MOV AX, [BP-50] is legal indexed addressing (BP minus a displacement, segment SS), so calling it incorrect is false.`],
+          [`False`, `Correct. A negative displacement with BP is legal indexed addressing: address = SS×10 + BP - 50, so the statement "incorrect" is false (L4, Indexed addressing).`]
         ], a: 1, src: `Midterm 2023/24` },
         { q: `The statement MOV AX, [BP - 2] is illegal.`, o: [
-          [`True`, `It is legal.`],
-          [`False`, `Correct.`]
+          [`True`, `[BP-2] is legal: BP is a valid pointer and a negative displacement is allowed, so the statement "illegal" is false.`],
+          [`False`, `Correct. The lecture lists [BP-2] as legal indexed addressing: BP plus a (negative) displacement, segment SS (L4, Indexed addressing).`]
         ], a: 1, src: `Revision sheet` },
         { q: `The statement MOV AX, DS:[BP - 2] is incorrect.`, o: [
           [`True`, `Overriding BP's default SS with DS is allowed (MOV AX, DS:[BP] is a lecture example).`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. Segment override is allowed: DS: replaces BP's default SS, so the address is DS×10 + BP - 2, like the lecture's MOV AX, DS:[BP] (L4, Register indirect addressing).`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `The memory address of MOV AX, 10[SI+BC] = DS*10 + SI + BC.`, o: [
           [`True`, `The displacement 10 is missing from the formula.`],
-          [`False`, `Correct. It should be DS×10 + 10 + SI + BC.`]
+          [`False`, `Correct. The displacement 10 is missing: the address of 10[SI+BC] is DS×10 + 10 + SI + BC (SI defaults to DS) (L4, Revision sheet Q14).`]
         ], a: 1, src: `Exam 2024/25` }
       ]
     },
@@ -1041,144 +1041,144 @@ POPA           ; all registers restored` }
       ],
       quiz: [
         { q: `After each execution of the instruction PUSH EAX, the stack pointer is:`, o: [
-          [`Incremented by 2`, `PUSH decrements.`],
-          [`Decremented by 2`, `EAX is 4 bytes.`],
-          [`Incremented by 4`, `PUSH decrements.`],
-          [`Decremented by 4`, `Correct.`]
+          [`Incremented by 2`, `PUSH never increments SP: the stack grows down, so SP is decremented, and by 4 (not 2) because EAX is a 32-bit register.`],
+          [`Decremented by 2`, `The direction is right but the size is wrong: EAX is 4 bytes, so SP decreases by 4. Decrement by 2 is for a 16-bit PUSH such as PUSH AX.`],
+          [`Incremented by 4`, `The size 4 is right, but PUSH decrements SP (the stack grows toward lower addresses); incrementing is what POP does.`],
+          [`Decremented by 4`, `Correct. PUSH first decrements SP by the operand size, then stores it; EAX is 4 bytes, so SP = SP - 4 (L5, PUSH).`]
         ], a: 3, src: `Exam 2024/25` },
         { q: `After each execution of the instruction PUSH AX, the stack pointer is:`, o: [
-          [`Incremented by 1`, `No.`],
-          [`Decremented by 1`, `A word is 2 bytes.`],
-          [`Incremented by 2`, `PUSH decrements.`],
-          [`Decremented by 2`, `Correct.`]
+          [`Incremented by 1`, `PUSH decrements SP, and a 16-bit register moves 2 bytes, so incrementing by 1 is wrong on both counts.`],
+          [`Decremented by 1`, `Stack instructions move 2 or 4 bytes, never 1; AX is a word (2 bytes), so SP decreases by 2.`],
+          [`Incremented by 2`, `The size is right but the direction is not: PUSH decrements SP; SP + 2 is what POP AX does.`],
+          [`Decremented by 2`, `Correct. PUSH AX stores AH at SS:[SP-1] and AL at SS:[SP-2], then SP = SP - 2 (L5, PUSH).`]
         ], a: 3, src: `Revision sheet` },
         { q: `If SS=1300, SP=100, CX=CD01, then after executing POP ECX the following is correct:`, o: [
-          [`SS = 1304`, `POP never changes SS.`],
-          [`SP = 98`, `POP increments SP.`],
-          [`SS = 1298`, `SS does not change.`],
-          [`SP = 104`, `Correct. ECX is 4 bytes: 100 + 4 = 104.`]
+          [`SS = 1304`, `PUSH and POP never change SS; only SP changes. SS stays 1300 and SP goes from 100 to 104.`],
+          [`SP = 98`, `SP = 98 would be a decrement, which is PUSH. POP increments SP, and ECX is 4 bytes: 100 + 4 = 104.`],
+          [`SS = 1298`, `SS is never changed by POP (or PUSH); only the stack pointer moves, SP = 100 + 4 = 104.`],
+          [`SP = 104`, `Correct. POP copies 4 bytes from SS:[SP] into ECX, then increments SP by 4: 100 + 4 = 104; SS is unchanged (L5, POP).`]
         ], a: 3, src: `Exam 2024/25` },
         { q: `If SS=1300, SP=100, CX=CD01, then after executing PUSH CX the following is correct:`, o: [
-          [`SS = 1302`, `SS does not change.`],
+          [`SS = 1302`, `PUSH never changes SS; it only decrements SP, here by 2 because CX is 16 bits.`],
           [`SP = 98`, `Correct (intended). SP decreases by 2. Note: in hex 100H - 2 = 0FEH; the exam treated 100 as decimal.`],
-          [`SS = 1298`, `SS does not change.`],
-          [`SP = 102`, `PUSH decrements.`]
+          [`SS = 1298`, `SS is the stack segment base and is not changed by PUSH; only SP decreases, by 2 for CX.`],
+          [`SP = 102`, `SP = 102 is an increment, which is what POP does; PUSH decrements SP by 2 for the 16-bit CX.`]
         ], a: 1, src: `Exam 2023/24` },
         { q: `If SS=1400, SP=160, BX=CD01, then after executing POP AX the following is correct:`, o: [
-          [`SS = 1402`, `SS does not change.`],
-          [`SP = 158`, `POP increments.`],
-          [`SS = 1398`, `SS does not change.`],
-          [`SP = 162`, `Correct. 160 + 2.`]
+          [`SS = 1402`, `POP never changes SS; it increments SP by 2 because AX is 16 bits, so SP = 162.`],
+          [`SP = 158`, `SP = 158 is a decrement, which is PUSH. POP increments SP: 160 + 2 = 162.`],
+          [`SS = 1398`, `SS is not modified by stack operations; only SP changes, from 160 to 162.`],
+          [`SP = 162`, `Correct. POP AX copies 2 bytes from SS:[SP] into AX, then SP = SP + 2 = 160 + 2 = 162; SS stays 1400 (L5, POP).`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `The instruction PUSHA (exam options):`, o: [
-          [`Increments SP by 32 words`, `PUSH instructions decrement SP.`],
-          [`Increments SP by 16 bytes`, `Decrements, not increments.`],
-          [`Decrements SP by 32 words`, `Far too much.`],
+          [`Increments SP by 32 words`, `PUSHA pushes, so SP decreases, not increases; and 32 words (64 bytes) is far more than the 8 registers it saves.`],
+          [`Increments SP by 16 bytes`, `16 bytes is the true size of PUSHA (8 words), but PUSH instructions decrement SP; incrementing by 16 is what POPA does.`],
+          [`Decrements SP by 32 words`, `Decrement is right, but 32 words = 64 bytes; PUSHA saves 8 registers (16 bytes) and PUSHAD 8 double words (32 bytes), never 32 words.`],
           [`Decrements SP by 32 bytes`, `Best available answer, but exactly right only for PUSHAD (8 × 4 bytes). PUSHA (8 × 2 bytes) decrements SP by 16 bytes, which is not offered.`]
         ], a: 3, src: `Exam 2022/23 Summer` },
         { q: `The instruction POPAD will pop ……… double words from the stack.`, o: [
-          [`32`, `32 is the number of bytes.`],
+          [`32`, `32 is the number of BYTES popped by POPAD (8 × 4); the question asks for double words, which is 8.`],
           [`8`, `Correct. EDI, ESI, EBP, ESP, EBX, EDX, ECX, EAX.`],
-          [`16`, `No.`],
-          [`4`, `No.`]
+          [`16`, `16 is the number of bytes POPA pops (8 words × 2); POPAD pops 8 double words.`],
+          [`4`, `4 is the size of one double word in bytes, not the count; POPAD pops 8 double words (EDI ... EAX).`]
         ], a: 1, src: `Exam 2023/24` },
         { q: `After each execution of the instruction POPA, the stack pointer is:`, o: [
-          [`Incremented by 16`, `Correct. 8 registers × 2 bytes.`],
-          [`Decremented by 16`, `POP increments.`],
-          [`Incremented by 8`, `8 registers but 16 bytes.`],
-          [`Decremented by 8`, `No.`]
+          [`Incremented by 16`, `Correct. POPA pops 8 16-bit registers (DI, SI, BP, SP, BX, DX, CX, AX), so SP = SP + 8 × 2 = SP + 16 (L5, POP).`],
+          [`Decremented by 16`, `POPA pops data off the stack, so SP increases; decrementing by 16 is what PUSHA does.`],
+          [`Incremented by 8`, `POPA pops 8 registers, but each is 2 bytes and SP counts bytes: 8 × 2 = 16, not 8.`],
+          [`Decremented by 8`, `Wrong direction and wrong size: POP operations increment SP, and POPA moves 16 bytes, not 8.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The instruction that pushes the contents of the specified register/memory location onto the stack is:`, o: [
-          [`PUSHF`, `Pushes only the flags.`],
-          [`POPF`, `Pops flags.`],
-          [`PUSH`, `Correct.`],
-          [`POP`, `Removes data.`]
+          [`PUSHF`, `PUSHF pushes only the 16-bit FLAGS register, not a specified register or memory location.`],
+          [`POPF`, `POPF pops the top of the stack INTO the FLAGS register; it does not store anything onto the stack.`],
+          [`PUSH`, `Correct. PUSH decrements SP and stores the given register, memory operand (or immediate) at SS:[SP] (L5, PUSH).`],
+          [`POP`, `POP does the opposite: it copies data from the top of the stack into a register or memory, then increments SP.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The instruction POP BX:`, o: [
-          [`Copies the 32-bit contents of BX to the stack`, `BX is 16 bits and POP reads from the stack.`],
-          [`Copies 16 bits contents of the stack into BX`, `Correct.`],
-          [`Copies the contents of SS:[SP] to the stack`, `It copies from the stack into BX.`],
-          [`None`, `b is correct.`]
+          [`Copies the 32-bit contents of BX to the stack`, `BX is a 16-bit register, and POP copies FROM the stack into BX; copying a register to the stack is PUSH.`],
+          [`Copies 16 bits contents of the stack into BX`, `Correct. POP BX copies 2 bytes from SS:[SP] into BX, then increments SP by 2 (L5, The stack).`],
+          [`Copies the contents of SS:[SP] to the stack`, `SS:[SP] already is the stack; POP copies that data from the stack into BX, not to the stack.`],
+          [`None`, `Not "None": option b, copies 16 bits of the stack into BX, is exactly what POP BX does.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The stack is accessed using:`, o: [
-          [`SP register`, `Also needs SS.`],
-          [`SS register`, `Also needs SP.`],
-          [`SP and SS registers`, `Correct. SS:[SP].`],
-          [`None of the mentioned`, `c is correct.`]
+          [`SP register`, `SP alone is only the offset of the top of stack; it must be combined with the segment SS to form SS:[SP].`],
+          [`SS register`, `SS alone is only the segment base; the offset of the top of stack comes from SP, giving SS:[SP].`],
+          [`SP and SS registers`, `Correct. Stack instructions use the address SS:[SP]: SS gives the stack segment, SP the offset of the top (L5, The stack).`],
+          [`None of the mentioned`, `Not "None": the stack is accessed with both SS (segment) and SP (offset), option c.`]
         ], a: 2, src: `Revision sheet` },
         { q: `As data words are stored onto the stack, the stack pointer is:`, o: [
-          [`Incremented by 1`, `No.`],
-          [`Decremented by 1`, `A word is 2 bytes.`],
-          [`Incremented by 2`, `The stack grows down.`],
-          [`Decremented by 2`, `Correct.`]
+          [`Incremented by 1`, `Storing data on the stack (PUSH) decrements SP, and a word is 2 bytes, so incrementing by 1 is wrong twice.`],
+          [`Decremented by 1`, `Direction is right, but a data word is 2 bytes, so SP decreases by 2, not 1.`],
+          [`Incremented by 2`, `The stack grows down from high to low addresses, so storing a word decrements SP by 2; +2 is retrieving (POP).`],
+          [`Decremented by 2`, `Correct. The stack grows down: storing a 2-byte word (PUSH) decrements SP by 2 (L5, PUSH).`]
         ], a: 3, src: `Revision sheet` },
         { q: `The stack pointer register contains:`, o: [
-          [`Address of the stack segment`, `That is SS.`],
-          [`Pointer address of the stack segment`, `Vague, not the key.`],
-          [`Offset of address of stack segment`, `Correct.`],
-          [`Data present in the stack segment`, `SP holds an offset, not data.`]
+          [`Address of the stack segment`, `The address (base) of the stack segment is held in SS, not SP; SP holds the offset of the top within it.`],
+          [`Pointer address of the stack segment`, `"Pointer address of the segment" is vague and is not the key; SP holds the offset of the top of stack inside the stack segment.`],
+          [`Offset of address of stack segment`, `Correct. SP holds the offset (within the stack segment) of the top of the stack; the full address is SS:[SP] (L5, The stack).`],
+          [`Data present in the stack segment`, `SP holds an offset address, not the data; the data is in memory at SS:[SP].`]
         ], a: 2, src: `Revision sheet` },
         { q: `POP operation:`, o: [
-          [`Decrements SP`, `PUSH decrements.`],
-          [`Increments SP`, `Correct.`],
-          [`Decrements SS`, `SS is unchanged.`],
-          [`Increments SS`, `SS is unchanged.`]
+          [`Decrements SP`, `Decrementing SP is what PUSH does; POP reads SS:[SP] and then increments SP.`],
+          [`Increments SP`, `Correct. POP copies the data at SS:[SP] into the operand, then increments SP by 2 or 4 (L5, POP).`],
+          [`Decrements SS`, `POP never changes SS; only SP changes, and it is incremented.`],
+          [`Increments SS`, `SS is not modified by POP; it is the stack pointer SP that is incremented.`]
         ], a: 1, src: `Exam 2023/24 Second term` },
         { q: `The register or memory location that is pushed onto the stack at the end must be:`, o: [
-          [`Popped off last`, `LIFO: last in, first out.`],
-          [`Pushed off first`, `Meaningless.`],
-          [`Popped off first`, `Correct.`],
-          [`Pushed off last`, `Meaningless.`]
+          [`Popped off last`, `The stack is LIFO: the item pushed last sits on top, so it is popped FIRST, not last.`],
+          [`Pushed off first`, `"Pushed off" is not an operation; data is removed from the stack by POP, and the last pushed item is popped first.`],
+          [`Popped off first`, `Correct. The stack is LIFO (last in, first out): the register pushed last must be popped first (L5, The stack).`],
+          [`Pushed off last`, `"Pushed off" is meaningless; removal is by POP, and by LIFO the last pushed item comes off first.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The number of PUSH and POP instructions in a subroutine must be:`, o: [
-          [`PUSH greater than POP`, `The return address would be wrong.`],
-          [`POP greater than PUSH`, `Would pop the return address.`],
-          [`Both equal`, `Correct.`],
-          [`Any kind`, `They must balance.`]
+          [`PUSH greater than POP`, `Extra PUSHes leave data on top of the return address, so RET would pop that data and jump to a wrong address.`],
+          [`POP greater than PUSH`, `Extra POPs would remove the return address (or caller data) pushed by CALL, so RET would return to a wrong place.`],
+          [`Both equal`, `Correct. The stack also holds the subroutine's return address, so PUSH and POP counts must be equal for RET to find it on top (L5, The stack).`],
+          [`Any kind`, `They cannot be any number: unbalanced PUSH/POP corrupts the stack, and RET would pop a wrong return address.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The SS register contains:`, o: [
-          [`Address of the data segment`, `That is DS.`],
-          [`Address of the stack segment`, `Correct.`],
-          [`Pointer address of the stack offset`, `The offset is in SP.`],
-          [`Data in the stack segment`, `No.`]
+          [`Address of the data segment`, `The data segment address is in DS; SS holds the stack segment.`],
+          [`Address of the stack segment`, `Correct. SS holds the (base) address of the stack segment; SP holds the offset of the top within it (L5, The stack).`],
+          [`Pointer address of the stack offset`, `The offset of the top of stack is in SP, not SS; SS holds the segment address.`],
+          [`Data in the stack segment`, `SS is a segment register holding an address, not the data stored in the stack.`]
         ], a: 1, src: `Revision sheet` },
         { q: `While retrieving data from the stack, the stack pointer is:`, o: [
-          [`Incremented by 1`, `No.`],
-          [`Incremented by 2`, `Correct (16-bit POP).`],
-          [`Decremented by 1`, `No.`],
-          [`Decremented by 2`, `That is PUSH.`]
+          [`Incremented by 1`, `Retrieving (POP) a 16-bit value moves 2 bytes, so SP increases by 2, not 1.`],
+          [`Incremented by 2`, `Correct. Retrieving a word with POP copies 2 bytes from SS:[SP] and then increments SP by 2 (L5, POP).`],
+          [`Decremented by 1`, `POP increments SP; decrementing (by 2, not 1) is what happens when storing with PUSH.`],
+          [`Decremented by 2`, `Decrementing by 2 is PUSH (storing a word); retrieving with POP increments SP by 2.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The address of the instruction POPA will be:`, o: [
-          [`SP:[SS]`, `Reversed.`],
-          [`SS:[BP]`, `BP is not the stack pointer.`],
-          [`SS:[SP]`, `Correct.`],
-          [`SS:[SI]`, `No.`]
+          [`SP:[SS]`, `SP:[SS] reverses the pair: the segment is written first and the offset in brackets, SS:[SP].`],
+          [`SS:[BP]`, `SS:[BP] is used for BP-based data access (e.g. MOV AX, [BP]); stack instructions use the stack pointer, SS:[SP].`],
+          [`SS:[SP]`, `Correct. The default memory address of all stack instructions, including POPA, is SS:[SP] (L5, The stack).`],
+          [`SS:[SI]`, `SI is an index register with default segment DS; stack instructions use SS:[SP].`]
         ], a: 2, src: `Revision sheet` },
         { q: `PUSH AX copies the contents of AX onto the stack where:`, o: [
-          [`SS:[SP-1]=AH, SS:[SP-2]=AL, SP=SP-2`, `Correct.`],
-          [`SS:[SP-1]=AL, SS:[SP-2]=AH, SP=SP-2`, `High byte goes first to SP-1.`],
-          [`SS:[SP-1]=AH, SS:[SP-2]=AL, SP=SP+2`, `SP decreases.`],
-          [`SS:[SP+1]=AH, SS:[SP+2]=AL, SP=SP+2`, `Wrong direction.`]
+          [`SS:[SP-1]=AH, SS:[SP-2]=AL, SP=SP-2`, `Correct. PUSH AX stores the high byte AH at SS:[SP-1], the low byte AL at SS:[SP-2], then SP = SP - 2 (L5, PUSH).`],
+          [`SS:[SP-1]=AL, SS:[SP-2]=AH, SP=SP-2`, `The bytes are swapped: the most-significant byte AH goes to SP-1 and the least-significant AL to SP-2.`],
+          [`SS:[SP-1]=AH, SS:[SP-2]=AL, SP=SP+2`, `The byte placement is right, but PUSH decrements SP: SP = SP - 2, not SP + 2.`],
+          [`SS:[SP+1]=AH, SS:[SP+2]=AL, SP=SP+2`, `Wrong direction: PUSH writes below SP (SP-1, SP-2) and decrements SP; SP+1/SP+2 and SP+2 describe moving upward.`]
         ], a: 0, src: `Revision sheet` },
         { q: `A stack pointer stores the ……..`, o: [
-          [`Address of the bottom of the stack`, `It points to the top.`],
-          [`Address of instruction being executed`, `That is IP/PC related.`],
-          [`Address of instruction to be executed`, `That is IP/PC.`],
-          [`Address of top of stack`, `Correct.`]
+          [`Address of the bottom of the stack`, `SP points to the TOP of the stack (the most recently pushed value), not the bottom.`],
+          [`Address of instruction being executed`, `The address of the instruction being executed relates to IP (CS:IP), not to the stack pointer.`],
+          [`Address of instruction to be executed`, `The address of the next instruction to execute is held in IP; SP holds the address of the top of stack.`],
+          [`Address of top of stack`, `Correct. SP holds the offset of the top of the stack, the most recently pushed value (L5, The stack).`]
         ], a: 3, src: `Revision sheet` },
         { q: `Which of the following is used to store subroutine calls?`, o: [
-          [`Queue`, `Calls return in LIFO order.`],
-          [`Stack`, `Correct. CALL pushes the return address.`],
-          [`Data register`, `No.`],
-          [`None`, `Stack is correct.`]
+          [`Queue`, `A queue is FIFO, but nested calls must return in reverse order (LIFO), so return addresses are kept on the stack.`],
+          [`Stack`, `Correct. CALL pushes the return address on the stack and RET pops it; LIFO order handles nested calls (L5, The stack; L8).`],
+          [`Data register`, `A single data register cannot hold nested return addresses; the stack stores subroutine calls.`],
+          [`None`, `Not "None": subroutine return addresses are stored on the stack.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The address of the instruction PUSH EBX will be SP:[SS].`, o: [
-          [`True`, `It is SS:[SP] (segment first).`],
-          [`False`, `Correct.`]
+          [`True`, `The address is written segment first, offset in brackets: SS:[SP]. "SP:[SS]" reverses them, so the statement is false.`],
+          [`False`, `Correct. The default address of PUSH (and all stack instructions) is SS:[SP], not SP:[SS] (L5, The stack).`]
         ], a: 1, src: `Exam 2023/24` },
         { q: `A PUSH increments the SS register, and a POP decrements it.`, o: [
           [`True`, `PUSH/POP change SP, not SS, and PUSH decrements.`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. PUSH and POP never change SS; PUSH decrements SP and POP increments SP (L5, POP).`]
         ], a: 1, src: `Revision sheet` }
       ]
     },
@@ -1255,66 +1255,66 @@ POPA           ; all registers restored` }
       ],
       quiz: [
         { q: `LSS instruction loads any 16-bit or 32-bit register with an …… address, and SS with a ……. address.`, o: [
-          [`Segment, segment`, `The register gets an offset.`],
-          [`Segment, offset`, `Reversed.`],
-          [`Offset, segment`, `Correct.`],
-          [`Offset, offset`, `SS gets a segment.`]
+          [`Segment, segment`, `The 16/32-bit register receives an OFFSET address (the first word read, or doubleword for a 32-bit register), not a segment; only SS receives the segment address.`],
+          [`Segment, offset`, `This is reversed: the register gets the offset (read first from memory) and SS gets the segment (the word read after it).`],
+          [`Offset, segment`, `Correct. LDS, LES and LSS load a 16- or 32-bit register with an offset address and DS, ES or SS with a segment address; for LSS that is SS (L6, LDS, LES, LSS).`],
+          [`Offset, offset`, `SS is a segment register, so it receives a SEGMENT address (the second word read), not an offset.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The instruction LSS DX, [SI] copies ….. into DX and ……into ……….`, o: [
-          [`Segment, [SI], SS`, `DX gets the offset.`],
-          [`[SI], DS, SS`, `Meaningless.`],
-          [`Offset, segment, SS`, `Correct. Offset into DX, segment into SS.`],
-          [`Offset, DS, SS`, `The segment goes to SS, not DS.`]
+          [`Segment, [SI], SS`, `DX receives the OFFSET (bytes [SI], [SI+1]), not a segment; the segment word from [SI+2], [SI+3] goes into SS.`],
+          [`[SI], DS, SS`, `DX does not get the value [SI] as an address and DS is not involved as a destination; LSS puts the offset in DX and the segment in SS.`],
+          [`Offset, segment, SS`, `Correct. LSS DX, [SI] reads 4 bytes from DS×10 + SI: the first word (offset) goes into DX and the second word (segment) into SS (L6, LDS, LES, LSS).`],
+          [`Offset, DS, SS`, `DS is only used to compute the source address; LSS copies the second word (the segment) into SS, not "DS" into SS.`]
         ], a: 2, src: `Exam 2023/24 Second term` },
         { q: `LDS AX, [DI] loads AX with an offset address, and SS with a segment address.`, o: [
-          [`True`, `LDS loads DS, not SS.`],
-          [`False`, `Correct.`]
+          [`True`, `LDS loads its segment word into DS, not SS. Loading SS is LSS, so the statement is false.`],
+          [`False`, `Correct. LDS AX, [DI] loads AX with the offset and DS (not SS) with the segment address; SS is loaded only by LSS (L6, LDS, LES, LSS).`]
         ], a: 1, src: `Revision sheet` },
         { q: `LDS AX, [DI] will change the content of AX only.`, o: [
-          [`True`, `It also changes DS.`],
-          [`False`, `Correct.`]
+          [`True`, `LDS writes two registers: AX gets the first word and DS gets the second word, so AX is not the only one changed.`],
+          [`False`, `Correct. LDS AX, [DI] changes both AX (offset from [DI], [DI+1]) and DS (segment from [DI+2], [DI+3]), not AX only (L6, LDS, LES, LSS).`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `LDS AX, [DI] will change the content of DS.`, o: [
           [`True`, `Correct. DS gets the segment from [DI+2],[DI+3].`],
-          [`False`, `DS is loaded.`]
+          [`False`, `The statement is true: LDS copies the second word read ([DI+2], [DI+3]) into DS, so DS does change.`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `LES AX, [DI] copies [DI] and [DI+1] into AX and [DI+2] and [DI+3] into ES.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `This is exactly how LES works.`]
+          [`True`, `Correct. LES AX, [DI] copies the first two bytes [DI], [DI+1] into AX (offset) and the next two [DI+2], [DI+3] into ES (segment) (L6, LDS, LES, LSS).`],
+          [`False`, `The statement is true: this is exactly how LES works, first word into the register, second word into ES.`]
         ], a: 0, src: `Exam 2022/23 Summer` },
         { q: `LCS instruction loads any 16-bit or 32-bit register with an offset address, and SS with a segment address.`, o: [
           [`True`, `There is no LCS, and the description is of LSS.`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. There is no LCS instruction (CS cannot be loaded this way), and the description given belongs to LSS (L6, LDS, LES, LSS).`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `DS=A000H, DI=200H and the bytes at the address are B2, 1A, 00, 3C. After LES BX, [DI]:`, o: [
-          [`BX = B21A, ES = 003C`, `Bytes are little-endian: low byte first.`],
-          [`BX = 1AB2, ES = 3C00`, `Correct.`],
-          [`BX = 1AB2, DS = 3C00`, `LES loads ES.`],
-          [`BX = 3C00, ES = 1AB2`, `The first word goes to BX.`]
+          [`BX = B21A, ES = 003C`, `This reads the bytes high-first. Memory is little-endian: [A0200]=B2 is the LOW byte, so BX = 1AB2 and ES = 3C00.`],
+          [`BX = 1AB2, ES = 3C00`, `Correct. Address = A0000 + 200 = A0200. [A0200]=B2, [A0201]=1A → BX = 1AB2; [A0202]=00, [A0203]=3C → ES = 3C00 (L6, Lecture example LES BX, [DI]).`],
+          [`BX = 1AB2, DS = 3C00`, `The BX value is right, but LES loads the segment word into ES, not DS; DS stays A000H.`],
+          [`BX = 3C00, ES = 1AB2`, `The words are swapped: the first word (lower addresses) goes into BX and the second word into ES, so BX = 1AB2, ES = 3C00.`]
         ], a: 1, src: `Lecture 6 example` },
         { q: `The memory address used by LES BX, [DI] with DS=A000H and DI=200H is:`, o: [
-          [`A0200`, `Correct. A0000 + 200.`],
-          [`A200`, `DS not multiplied by 10.`],
-          [`2200`, `ES was used.`],
-          [`A2000`, `Wrong alignment.`]
+          [`A0200`, `Correct. The source address uses DS: DS×10 + DI = A0000 + 200 = A0200 (L6, Lecture example LES BX, [DI]).`],
+          [`A200`, `A200 comes from adding DS + DI without multiplying DS by 10H. The physical address is A0000 + 200 = A0200.`],
+          [`2200`, `2200 is ES×10 + DI = 2000 + 200. The source of LES is in the data segment, so DS is used: A0000 + 200 = A0200.`],
+          [`A2000`, `A2000 comes from shifting DI instead of only DS (A0000 + 2000). Only the segment is multiplied by 10H: A0000 + 200 = A0200.`]
         ], a: 0, src: `Lecture 6 example` },
         { q: `Which is faster: MOV BX, OFFSET LIST or LEA BX, LIST?`, o: [
           [`LEA, because it is a dedicated instruction`, `LEA is computed by the microprocessor at run time.`],
-          [`MOV BX, OFFSET LIST, because the assembler calculates the offset`, `Correct.`],
-          [`They take exactly the same time`, `The lecture says OFFSET is faster.`],
+          [`MOV BX, OFFSET LIST, because the assembler calculates the offset`, `Correct. MOV BX, OFFSET LIST is faster because the assembler calculates the offset of LIST beforehand, while LEA's address is calculated by the microprocessor (L6, LEA vs OFFSET).`],
+          [`They take exactly the same time`, `They do not take the same time: the lecture says the microprocessor takes longer to execute LEA BX, LIST than MOV BX, OFFSET LIST.`],
           [`LEA, because it does not access memory`, `Neither reads memory data; OFFSET is still faster.`]
         ], a: 1 },
         { q: `LEA BX, [DI] with DI = 0300H and the word at DS:0300 = 1234H gives:`, o: [
-          [`BX = 1234H`, `That is MOV BX, [DI].`],
-          [`BX = 0300H`, `Correct. LEA loads the address itself.`],
-          [`BX = DS×10 + 300`, `LEA loads only the offset.`],
-          [`BX unchanged`, `LEA writes BX.`]
+          [`BX = 1234H`, `1234H is the DATA stored at DS:0300, which is what MOV BX, [DI] loads. LEA loads the address (offset) itself, 0300H.`],
+          [`BX = 0300H`, `Correct. LEA computes the source operand like MOV but loads the offset address itself, so BX = DI = 0300H, not the data 1234H (L6, LEA).`],
+          [`BX = DS×10 + 300`, `DS×10 + 300 is the physical address; LEA loads only the 16-bit offset (0300H) into BX, not the segment-based address.`],
+          [`BX unchanged`, `LEA always writes its destination: BX receives the offset 0300H.`]
         ], a: 1 },
         { q: `With DS=1000H, DI=1000H and bytes 7A, 12, 00, 30, LDS BX, [DI] gives:`, o: [
-          [`BX = 127A, DS = 3000`, `Correct.`],
+          [`BX = 127A, DS = 3000`, `Correct. Address = DS×10 + DI = 10000 + 1000 = 11000. [11000]=7A, [11001]=12 → BX = 127A; [11002]=00, [11003]=30 → DS = 3000 (L6, Revision LDS BX, [DI]).`],
           [`BX = 7A12, DS = 0030`, `Little-endian: the first byte is the low byte.`],
-          [`BX = 127A, ES = 3000`, `LDS loads DS.`],
-          [`BX = 6F2A, DS = 3000`, `BX is overwritten.`]
+          [`BX = 127A, ES = 3000`, `BX = 127A is right, but LDS puts the segment word into DS, not ES; ES is loaded by LES.`],
+          [`BX = 6F2A, DS = 3000`, `6F2A is BX's old value. LDS overwrites BX with the first word read from memory, 127A.`]
         ], a: 0, src: `Exam 2023/24 Second term` }
       ]
     },
@@ -1397,84 +1397,84 @@ POPA           ; all registers restored` }
       ],
       quiz: [
         { q: `LODSW instruction copies strings from …… into register ……`, o: [
-          [`ES:[DI], AX`, `ES:[DI] is the destination side.`],
-          [`DS:[SI], AX`, `Correct.`],
-          [`DS:[SI], AL`, `LODSW loads a word into AX.`],
-          [`ES:[DI], BX`, `No.`]
+          [`ES:[DI], AX`, `ES:[DI] is the destination side used by STOS and INS. LODS always reads its source from DS:[SI].`],
+          [`DS:[SI], AX`, `Correct. LODSW loads a string word from DS:[SI] into AX (AL from [SI], AH from [SI+1]), then SI changes by 2 (L7, String instruction summary).`],
+          [`DS:[SI], AL`, `DS:[SI] is the right source, but AL is the LODSB destination; LODSW loads a word, so the register is AX.`],
+          [`ES:[DI], BX`, `LODS never uses ES:[DI] or BX: it reads DS:[SI] into the accumulator (AL, AX or EAX).`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `LODS instruction copies strings from memory location ……. into AL, AX, EAX.`, o: [
-          [`ES:[SI]`, `Wrong segment.`],
-          [`ES:[DI]`, `That is STOS's destination.`],
-          [`DS:[SI]`, `Correct.`],
-          [`DS:[DI]`, `Wrong pointer.`]
+          [`ES:[SI]`, `SI is the right pointer but the wrong segment: source strings are in the data segment, DS:[SI], not ES.`],
+          [`ES:[DI]`, `ES:[DI] is the destination used by STOS and INS; LODS reads from DS:[SI].`],
+          [`DS:[SI]`, `Correct. LODS copies a byte, word or double word from DS:[SI] into AL, AX or EAX (L7, Key rules).`],
+          [`DS:[DI]`, `DS is the right segment but DI is the destination pointer; LODS uses SI, so the source is DS:[SI].`]
         ], a: 2, src: `Exam 2023/24 Second term` },
         { q: `STOS instruction copies …….. from AL, AX and EAX into a memory location.`, o: [
-          [`Numeric values`, `Key says strings.`],
-          [`Strings`, `Correct (key).`],
-          [`Both a and b`, `Key: strings.`],
-          [`None`, `Strings is listed.`]
+          [`Numeric values`, `The revision key says STOS copies STRINGS from AL/AX/EAX into memory; "numeric values" is not the lecture wording.`],
+          [`Strings`, `Correct. STOS is a string instruction: it stores string data from AL, AX or EAX into ES:[DI] (revision key; L7, String instruction summary).`],
+          [`Both a and b`, `The key gives only "strings": STOS is defined as storing strings from the accumulator, so "both" is not accepted.`],
+          [`None`, `Not "None": STOS stores strings from AL, AX or EAX into ES:[DI], and "Strings" is listed.`]
         ], a: 1, src: `Revision sheet` },
         { q: `………… loads a byte of a string in memory into AL.`, o: [
-          [`LODSB`, `Correct.`],
-          [`LODSW`, `Loads a word into AX.`],
-          [`STOSB`, `Stores AL into memory.`],
-          [`STOSW`, `Stores AX.`]
+          [`LODSB`, `Correct. LODSB (load string byte) copies one byte from DS:[SI] into AL and changes SI by 1 (L7, String instruction summary).`],
+          [`LODSW`, `LODSW loads a WORD (two bytes) into AX, not a single byte into AL.`],
+          [`STOSB`, `STOSB goes the other way: it stores AL into memory at ES:[DI], it does not load AL.`],
+          [`STOSW`, `STOSW stores AX into ES:[DI]; it writes memory rather than loading a byte into AL.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The instructions used for reading an input port and writing an output port respectively are:`, o: [
-          [`MOV, XCHG`, `Not port instructions.`],
-          [`IN, OUT`, `Correct.`],
-          [`IN, MOV`, `MOV does not write ports.`],
-          [`MOV, IN`, `No.`]
+          [`MOV, XCHG`, `MOV copies between registers and memory and XCHG swaps values; neither accesses I/O ports. Ports use IN and OUT.`],
+          [`IN, OUT`, `Correct. IN reads data from an input port and OUT writes data to an output port (L7, Key rules).`],
+          [`IN, MOV`, `IN is right for reading, but MOV cannot write to an I/O port; writing an output port is OUT.`],
+          [`MOV, IN`, `MOV cannot read a port and IN is for reading, not writing; the correct order is IN then OUT.`]
         ], a: 1, src: `Revision sheet` },
         { q: `After running the instruction OUTSD with D=1:`, o: [
-          [`DI = DI - 2`, `OUTS uses SI.`],
-          [`SI = SI - 2`, `A double word is 4 bytes.`],
-          [`SI = SI - 4`, `Correct.`],
-          [`DI = DI + 2`, `Wrong register and direction.`]
+          [`DI = DI - 2`, `OUTS reads its source from DS:[SI], so SI changes, not DI; and a double word step is 4, not 2.`],
+          [`SI = SI - 2`, `SI and the minus sign are right, but OUTSD moves a double word (4 bytes), so SI = SI - 4. Minus 2 is OUTSW.`],
+          [`SI = SI - 4`, `Correct. OUTSD sends 4 bytes from DS:[SI]; with D=1 the pointer decrements, so SI = SI - 4 (L7, String instruction summary).`],
+          [`DI = DI + 2`, `Two mistakes: OUTS uses SI (not DI), and D=1 decrements by 4 (not increments by 2).`]
         ], a: 2, src: `Exam 2022/23 Summer` },
         { q: `The instruction STOSW, D=1: store string word where ES:[DI] = AX; DI = DI + 2.`, o: [
-          [`True`, `D=1 means DI = DI - 2.`],
-          [`False`, `Correct.`]
+          [`True`, `ES:[DI] = AX is right, but D=1 means the negative direction, so DI = DI - 2, not + 2.`],
+          [`False`, `Correct. STOSW stores AX at ES:[DI], but D=1 decrements the pointer: DI = DI - 2. The +2 would need D=0 (L7, Key rules).`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `LODSW loads two bytes of a string from memory into AX.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `LODSW = load string word.`]
+          [`True`, `Correct. LODSW = load string word: two bytes from DS:[SI] go into AX (low byte into AL, high into AH) (L7, String instruction summary).`],
+          [`False`, `The statement is true: LODSW loads a word, i.e. two bytes, from DS:[SI] into AX.`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `LODSW affects the zero flag.`, o: [
-          [`True`, `LODS does not change flags.`],
-          [`False`, `Correct.`]
+          [`True`, `LODS only copies data into the accumulator and updates SI; it does not affect any flags, ZF included.`],
+          [`False`, `Correct. LODS/STOS do not affect the flags, so LODSW leaves ZF unchanged (L7, Key rules).`]
         ], a: 1, src: `Exam 2023/24 Second term` },
         { q: `String instructions change the value of the direction flag D.`, o: [
-          [`True`, `They only read D.`],
-          [`False`, `Correct.`]
+          [`True`, `String instructions only READ D to decide whether SI/DI go up or down; D is changed by CLD and STD.`],
+          [`False`, `Correct. String instructions use D but do not change it; only CLD (D=0) and STD (D=1) change it (L7, Key rules).`]
         ], a: 1, src: `Exam 2023/24` },
         { q: `String manipulation instructions are not affected by the direction flag D.`, o: [
-          [`True`, `D decides increment or decrement.`],
-          [`False`, `Correct.`]
+          [`True`, `They ARE affected: D decides the direction, D=0 increments SI/DI and D=1 decrements them.`],
+          [`False`, `Correct. The direction flag decides the direction of string instructions: D=0 positive (SI/DI incremented), D=1 negative (decremented) (L7, Key rules).`]
         ], a: 1, src: `Revision sheet` },
         { q: `String manipulation instructions include LODS, MOV and STOS.`, o: [
-          [`True`, `MOV is not a string instruction (MOVS is).`],
-          [`False`, `Correct.`]
+          [`True`, `Plain MOV is not a string instruction (MOVS is). The string instructions in the lecture are LODS, STOS, INS and OUTS.`],
+          [`False`, `Correct. LODS and STOS are string instructions, but plain MOV is not (MOVS is), so the list is wrong (L7, Key rules).`]
         ], a: 1, src: `Exam 2023/24` },
         { q: `String manipulation instructions include LODS, MOV, INS and STOS.`, o: [
-          [`True`, `MOV is not a string instruction.`],
-          [`False`, `Correct.`]
+          [`True`, `LODS, INS and STOS are string instructions, but MOV is not (only MOVS is), so the statement is false.`],
+          [`False`, `Correct. MOV is an ordinary data transfer instruction, not a string instruction; the list would need MOVS instead (L7, Key rules).`]
         ], a: 1, src: `Revision sheet` },
         { q: `LODS loads AL, AX, EAX with a byte, two bytes or four bytes of data stored at DS:[DI].`, o: [
-          [`True`, `LODS uses DS:[SI].`],
-          [`False`, `Correct.`]
+          [`True`, `LODS reads from DS:[SI], not DS:[DI]; DI is the destination pointer used with ES by STOS and INS.`],
+          [`False`, `Correct. LODS loads AL, AX or EAX from DS:[SI]; the statement says DS:[DI], which is wrong (L7, String instruction summary).`]
         ], a: 1, src: `Revision sheet` },
         { q: `DS=1000, SI=1000, D=0, [SI]=AB, [SI+1]=CD. After LODSW:`, o: [
-          [`AX = ABCD, SI = 1002`, `The first byte goes to AL.`],
-          [`AX = CDAB, SI = 1002`, `Correct.`],
-          [`AX = CDAB, SI = 0FFE`, `D=0 increments.`],
-          [`AL = AB, SI = 1001`, `That is LODSB.`]
+          [`AX = ABCD, SI = 1002`, `ABCD reads the bytes in the wrong order: the first byte [SI]=AB goes into AL (low), CD into AH, so AX = CDAB.`],
+          [`AX = CDAB, SI = 1002`, `Correct. Address = 10000 + 1000 = 11000. AL = [11000] = AB, AH = [11001] = CD → AX = CDAB; D=0 so SI = 1000 + 2 = 1002 (L7, Example LODSW).`],
+          [`AX = CDAB, SI = 0FFE`, `AX = CDAB is right, but D=0 is the positive direction, so SI is incremented to 1002, not decremented to 0FFE.`],
+          [`AL = AB, SI = 1001`, `Loading one byte and stepping SI by 1 is LODSB; LODSW loads a word into AX and adds 2 to SI.`]
         ], a: 1, src: `Lecture 7 example` },
         { q: `DS=1000, DI=100, D=1, ES=200. The memory address for INSD is:`, o: [
-          [`11000`, `INS uses ES, not DS.`],
-          [`2100`, `Correct. 2000 + 100.`],
-          [`10100`, `Wrong segment.`],
-          [`300`, `ES must be multiplied by 10.`]
+          [`11000`, `11000 would be DS×10 + 1000, but INS writes to ES:[DI] and DI is 100: ES×10 + DI = 2000 + 100 = 2100.`],
+          [`2100`, `Correct. INS writes the input to ES:[DI]: ES×10 + DI = 2000 + 100 = 2100; DS is not used (L7, Example INSD).`],
+          [`10100`, `10100 is DS×10 + DI. INS always writes to the extra segment, so ES is used: 2000 + 100 = 2100.`],
+          [`300`, `300 comes from ES + DI = 200 + 100 without multiplying ES by 10H; the address is 2000 + 100 = 2100.`]
         ], a: 1, src: `Lecture 7 example` }
       ]
     },
@@ -1621,104 +1621,104 @@ END` }
       ],
       quiz: [
         { q: `If an interrupt is generated by the execution of an interrupt instruction, it is a:`, o: [
-          [`Software interrupt`, `Correct.`],
-          [`External interrupt`, `External means hardware signals.`],
-          [`Hardware interrupt`, `Hardware interrupts are signals.`],
-          [`None of the mentioned`, `Software is correct.`]
+          [`Software interrupt`, `Correct. Software interrupts are special instructions (INT) that transfer control to a predefined ISR, so an interrupt caused by executing an instruction is a software interrupt (L8, Interrupts).`],
+          [`External interrupt`, `An external interrupt comes from a signal outside the CPU (a device on an interrupt pin), not from executing an instruction in the program.`],
+          [`Hardware interrupt`, `Hardware interrupts are signals given to the processor by devices; an interrupt produced by an INT instruction is a software interrupt.`],
+          [`None of the mentioned`, `Not "None": the lecture says interrupts produced by special instructions (INT) are software interrupts.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `An interrupt breaks the execution of instructions and diverts its execution to:`, o: [
-          [`Interrupt service routine`, `Correct.`],
-          [`Counter word register`, `No.`],
-          [`Execution unit`, `No.`],
-          [`Control unit`, `No.`]
+          [`Interrupt service routine`, `Correct. An interrupt breaks the normal sequence and transfers control to the Interrupt Service Routine (ISR); afterwards the CPU returns to the interrupted program (L8, Interrupts).`],
+          [`Counter word register`, `A counter word register is not where an interrupt sends execution; control is transferred to a routine, the Interrupt Service Routine.`],
+          [`Execution unit`, `The execution unit is the part of the CPU that executes instructions; it is not a destination. The interrupt diverts execution to the ISR.`],
+          [`Control unit`, `The control unit sequences instruction steps all the time; an interrupt transfers control to a program, the Interrupt Service Routine.`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `While the CPU is executing a program, if an interrupt occurs it:`, o: [
-          [`Follows the next instruction in the program`, `It transfers control to the ISR.`],
-          [`Jumps to instruction in other registers`, `No.`],
-          [`Breaks the normal sequence of execution of instructions`, `Correct.`],
-          [`Stops executing the program`, `It returns after the ISR.`]
+          [`Follows the next instruction in the program`, `The CPU does not just continue with the next instruction: it saves its state on the stack and jumps to the ISR first.`],
+          [`Jumps to instruction in other registers`, `Instructions are not stored in registers; the CPU loads PC with the ISR's start address and executes the routine.`],
+          [`Breaks the normal sequence of execution of instructions`, `Correct. The lecture defines an interrupt as transferring control to a higher-priority program (the ISR), which breaks the normal sequence of execution (L8, Interrupts).`],
+          [`Stops executing the program`, `The program is not stopped: after the ISR's return instruction, the CPU goes back to the point where it was interrupted.`]
         ], a: 2, src: `Revision sheet` },
         { q: `If an interrupt request given to an input pin cannot be disabled by any means, the pin is called:`, o: [
-          [`Maskable interrupt`, `Maskable can be blocked.`],
-          [`Non-maskable interrupt`, `Correct.`],
-          [`Both`, `No.`],
-          [`None`, `NMI is correct.`]
+          [`Maskable interrupt`, `A maskable interrupt CAN be blocked by an interrupt mask bit, so it is the opposite of a request that cannot be disabled.`],
+          [`Non-maskable interrupt`, `Correct. A non-maskable interrupt (NMI) cannot be masked or ignored by any means; it is used for high-priority events like memory parity errors (L8, Interrupts).`],
+          [`Both`, `An interrupt cannot be both: maskable ones can be blocked, and a request that can never be disabled is only the non-maskable type.`],
+          [`None`, `Not "None": an interrupt input that can never be disabled is by definition a non-maskable interrupt (NMI).`]
         ], a: 1, src: `Revision sheet` },
         { q: `Interrupts can be classified into:`, o: [
-          [`Software and hardware`, `Only one classification.`],
-          [`Maskable and non-maskable`, `Only one classification.`],
-          [`Vectored and non-vectored`, `Only one classification.`],
-          [`All of the mentioned`, `Correct.`]
+          [`Software and hardware`, `Software/hardware is one valid classification, but the lecture also classifies interrupts as maskable/non-maskable and vectored/non-vectored.`],
+          [`Maskable and non-maskable`, `Maskable/non-maskable is one classification, but software/hardware and vectored/non-vectored are also given, so "All" is right.`],
+          [`Vectored and non-vectored`, `Vectored/non-vectored is one classification, but the lecture also gives software/hardware and maskable/non-maskable.`],
+          [`All of the mentioned`, `Correct. The lecture classifies interrupts three ways: software vs hardware, maskable vs non-maskable, and vectored vs non-vectored (L8, Interrupts).`]
         ], a: 3, src: `Revision sheet` },
         { q: `…… instructions are used when some instructions must be executed a number of times.`, o: [
-          [`Jump`, `Jumps transfer control but the key is Loop.`],
-          [`Loop`, `Correct.`],
-          [`Shift`, `No.`],
-          [`Rotate`, `No.`]
+          [`Jump`, `A jump transfers control once to another place; repeating a block a set number of times, with CX as counter, is what LOOP does.`],
+          [`Loop`, `Correct. LOOP repeats a block a specific number of times: it decrements CX and jumps back to the label while CX ≠ 0 (L8, LOOP).`],
+          [`Shift`, `Shift instructions move bits left or right inside an operand (SHL, SHR, SAR); they do not repeat instructions.`],
+          [`Rotate`, `Rotate instructions (ROL, ROR, RCL, RCR) move bits around inside an operand; they do not repeat a block of code.`]
         ], a: 1, src: `Revision sheet` },
         { q: `Non-maskable interrupts are those that cannot be blocked.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `This is the definition.`]
+          [`True`, `Correct. Non-maskable interrupts (NMI) cannot be masked, blocked or ignored; they have absolute priority (L8, Interrupts).`],
+          [`False`, `The statement is true: it is the lecture's definition. It is the maskable interrupts that can be blocked by a mask bit.`]
         ], a: 0, src: `Exam 2024/25` },
         { q: `Registers IP and CS are modified after short and near JMP instructions.`, o: [
           [`True`, `Short and near jumps change IP only. (A student's mark on the 2024/25 paper said True.)`],
-          [`False`, `Correct. Only the far jump changes CS.`]
+          [`False`, `Correct. Short and near jumps stay in the same code segment and change IP only; only the far jump loads both CS and IP (L8, Unconditional jumps).`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `Registers IP and CS are modified after any JMP instruction (short, near or far).`, o: [
-          [`True`, `CS changes only in far jumps.`],
-          [`False`, `Correct.`]
+          [`True`, `Short and near jumps change only IP; CS changes only in a far jump, so "any JMP" makes the statement false.`],
+          [`False`, `Correct. Only the far jump changes CS and IP; short and near jumps stay in the same segment and change IP only (L8, Unconditional jumps).`]
         ], a: 1, src: `Exam 2023/24` },
         { q: `The far jump is a six bytes instruction.`, o: [
-          [`True`, `It is five bytes.`],
-          [`False`, `Correct.`]
+          [`True`, `The far jump is FIVE bytes: opcode + 2-byte offset + 2-byte segment. Short is 2 bytes and near is 3.`],
+          [`False`, `Correct. A far jump is 5 bytes: the opcode, then the offset (bytes 2 and 3) and the segment (bytes 4 and 5) (L8, The three jump types).`]
         ], a: 1, src: `Exam 2023/24 Second term` },
         { q: `The fourth and fifth bytes of the near jump define the segment of the jump address.`, o: [
           [`True`, `A near jump has only 3 bytes; that describes the far jump.`],
-          [`False`, `Correct.`]
+          [`False`, `Correct. A near jump is only 3 bytes (opcode + 2-byte displacement); bytes 4 and 5 giving the segment belong to the far jump (L8, The three jump types).`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `In short and far jumps, IP is modified before executing the jump instruction.`, o: [
           [`True`, `The jump itself loads the new IP when it executes.`],
           [`False`, `Most likely intended answer: IP gets its new value as the result of executing the jump. (Doubtful item: the CPU does advance IP past the instruction during fetch.)`]
         ], a: 1, src: `Exam 2022/23 Summer` },
         { q: `ISR is a program responsible for handling (multiple) interrupts.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `It is the routine executed on interrupt(s).`]
+          [`True`, `Correct. The Interrupt Service Routine is the routine executed when an interrupt (or multiple interrupts) occurs (L8, Interrupts).`],
+          [`False`, `The statement is true: the lecture defines the ISR as the routine executed on an interrupt or multiple interrupts.`]
         ], a: 0, src: `Revision sheet` },
         { q: `The first step of interrupt handling is to save the PC content and current state in the heap.`, o: [
-          [`True`, `It is saved in the STACK.`],
-          [`False`, `Correct.`]
+          [`True`, `The PC and current state are saved in the STACK, not the heap; RET then gets them back from the stack.`],
+          [`False`, `Correct. Step 1 saves the PC content and the current state (flags, registers) in the STACK, not the heap (L8, Interrupts).`]
         ], a: 1, src: `Revision sheet` },
         { q: `Non-vectored interrupts are those in which the vector address is not predefined.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `This is the definition.`]
+          [`True`, `Correct. Non-vectored interrupts have a vector address that is not predefined; vectored ones have a fixed vector address (L8, Interrupts).`],
+          [`False`, `The statement is true: it is the lecture definition. Vectored interrupts are the ones with a fixed, predefined vector address.`]
         ], a: 0, src: `Revision sheet` },
         { q: `LOOP is an instruction based on the AX (or AL) register.`, o: [
-          [`True`, `LOOP uses CX.`],
-          [`False`, `Correct.`]
+          [`True`, `LOOP uses CX automatically as its counter (CX = CX − 1, jump if CX ≠ 0); AX and AL play no part in it.`],
+          [`False`, `Correct. LOOP is based on CX: it decrements CX and jumps to the label while CX ≠ 0; AX/AL is not involved (L8, LOOP).`]
         ], a: 1, src: `Revision sheet` },
         { q: `The directive that marks the end of an assembly language program is:`, o: [
-          [`ENDS`, `Ends a segment.`],
-          [`END`, `Correct.`],
-          [`ENDS & END`, `Only END.`],
-          [`None`, `END is correct.`]
+          [`ENDS`, `ENDS marks the end of a logical segment, not of the whole program; the program ends with END.`],
+          [`END`, `Correct. END marks the end of the assembly program; ENDS ends a segment and ENDP ends a procedure (L8, Procedures).`],
+          [`ENDS & END`, `Only END ends the program; ENDS closes a logical segment, so naming both is wrong.`],
+          [`None`, `Not "None": the END directive marks the end of an assembly language program.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The directive that marks the end of a logical segment is:`, o: [
-          [`ENDS`, `Correct.`],
-          [`END`, `Ends the program.`],
-          [`ENDS & END`, `Only ENDS.`],
-          [`None`, `ENDS is correct.`]
+          [`ENDS`, `Correct. ENDS (end segment) marks the end of a logical segment; END ends the whole program (L8, Procedures).`],
+          [`END`, `END marks the end of the whole program, not of one logical segment; segments close with ENDS.`],
+          [`ENDS & END`, `Only ENDS closes a logical segment; END ends the program, so "ENDS & END" is wrong.`],
+          [`None`, `Not "None": the ENDS directive marks the end of a logical segment.`]
         ], a: 0, src: `Revision sheet` },
         { q: `CS=2000, IP=300, bytes after JMP: 1C, 20, A0, 2D. The near jump address is:`, o: [
           [`2031C`, `That is the short jump (1 byte displacement).`],
-          [`2231C`, `Correct. 20000 + 300 + 201C.`],
-          [`2FA1C`, `That is the far jump.`],
-          [`2201C`, `IP was not added.`]
+          [`2231C`, `Correct. Near jump: IP = 300 + 201C (bytes [CS+2][CS+1]) = 231C, so address = 20000 + 231C = 2231C (L8, Revision Q13).`],
+          [`2FA1C`, `2FA1C is the FAR jump (segment 2DA0 → 2DA00 + offset 201C). A near jump stays in CS = 2000.`],
+          [`2201C`, `2201C comes from 20000 + 201C, forgetting to add IP = 300: the course formula is IPnew = IP + displacement = 231C.`]
         ], a: 1, src: `Exam 2024/25` },
         { q: `CS=2000, IP=300, bytes after JMP: 1C, 20, A0, 2D. The far jump address is:`, o: [
-          [`2FA1C`, `Correct. 2DA00 + 201C.`],
-          [`2DA00`, `Offset missing.`],
-          [`A2D1C`, `Segment bytes reversed.`],
-          [`2231C`, `That is the near jump.`]
+          [`2FA1C`, `Correct. Far jump: offset = bytes 2,3 = 201C, segment = bytes 4,5 = 2DA0 → 2DA00 + 201C = 2FA1C (L8, Revision Q13).`],
+          [`2DA00`, `2DA00 is only the segment 2DA0 × 10; the offset 201C (bytes 2 and 3) must be added: 2DA00 + 201C = 2FA1C.`],
+          [`A2D1C`, `A2D1C does not follow the rule: the bytes are little-endian, so the segment from bytes A0, 2D is 2DA0 (not A02D) and the offset from 1C, 20 is 201C; 2DA00 + 201C = 2FA1C.`],
+          [`2231C`, `2231C is the NEAR jump (20000 + 300 + 201C). A far jump takes its segment from bytes 4 and 5.`]
         ], a: 0, src: `Exam 2024/25` }
       ]
     },
@@ -1855,79 +1855,79 @@ SUB AX, val4` },
       ],
       quiz: [
         { q: `Which of the following is not a data copy/transfer instruction?`, o: [
-          [`MOV`, `MOV copies data.`],
-          [`PUSH`, `PUSH copies data to the stack.`],
+          [`MOV`, `MOV is the basic data transfer instruction: it copies the source into the destination, so it is a copy/transfer instruction.`],
+          [`PUSH`, `PUSH is a data transfer instruction: it copies a register or memory word onto the top of the stack.`],
           [`DAS`, `Correct. DAS (decimal adjust after subtraction) is arithmetic.`],
-          [`POP`, `POP copies data from the stack.`]
+          [`POP`, `POP is a data transfer instruction: it copies the word on top of the stack into a register or memory.`]
         ], a: 2, src: `Revision sheet` },
         { q: `Which of the following is the implementation of AX = (-val2 + BX) - val4?`, o: [
-          [`mov ax, val2 / neg ax / add ax, bx / sub ax, val4`, `Correct.`],
-          [`mov ax, val3 / neg ax / add ax, bx / sub ax, val4`, `Uses val3 instead of val2.`],
-          [`mov ax, val2 / neg ax / add ax, bx / add ax, val4`, `val4 must be subtracted.`],
-          [`mov ax, val2 / add ax / add ax, bx / sub ax, val4`, `Missing NEG (and "add ax" is incomplete).`]
+          [`mov ax, val2 / neg ax / add ax, bx / sub ax, val4`, `Correct. MOV AX, val2 then NEG AX gives −val2, ADD AX, BX gives −val2 + BX, and SUB AX, val4 subtracts val4 (L9, Lab formula programs).`],
+          [`mov ax, val3 / neg ax / add ax, bx / sub ax, val4`, `It loads val3 instead of val2, so it computes (−val3 + BX) − val4, not the required expression.`],
+          [`mov ax, val2 / neg ax / add ax, bx / add ax, val4`, `The last step ADDs val4, giving (−val2 + BX) + val4; the formula needs SUB AX, val4.`],
+          [`mov ax, val2 / add ax / add ax, bx / sub ax, val4`, `"add ax" with no source is not a valid instruction, and without NEG AX val2 is never negated.`]
         ], a: 0, src: `Revision sheet` },
         { q: `Which of the following is not an arithmetic instruction?`, o: [
-          [`INC`, `Arithmetic.`],
-          [`CMP`, `Arithmetic (subtraction for flags).`],
-          [`DEC`, `Arithmetic.`],
-          [`ROL`, `Correct. ROL is a rotate (bit) instruction.`]
+          [`INC`, `INC adds 1 to its operand (dest + 1), so it is an arithmetic instruction.`],
+          [`CMP`, `CMP is arithmetic: it computes a − b only to set the flags, without storing the result.`],
+          [`DEC`, `DEC subtracts 1 from its operand (dest − 1), so it is an arithmetic instruction.`],
+          [`ROL`, `Correct. ROL is a rotate instruction: it moves bits left with the MSB going to CF and bit 0; the lab notes say rotates are not arithmetic (L9, Rotate instructions).`]
         ], a: 3, src: `Revision sheet` },
         { q: `Which is not an operand?`, o: [
-          [`Variable`, `Can be an operand.`],
-          [`Assembler`, `Correct. The assembler is a program.`],
-          [`Register`, `Operand.`],
-          [`Memory location`, `Operand.`]
+          [`Variable`, `A variable (defined with DB, DW, …) names a memory location, so it can be used as an operand, e.g. MOV AX, val2.`],
+          [`Assembler`, `Correct. Operands are registers, memory locations (variables) or immediates; the assembler is the program that translates the code, not part of an instruction (L1, Assembly language and the assembler).`],
+          [`Register`, `Registers such as AX or BX are the most common operands, e.g. ADD AX, BX.`],
+          [`Memory location`, `A memory location is a valid operand, e.g. MOV AX, [BX] or ADD AX, val4.`]
         ], a: 1, src: `Revision sheet` },
         { q: `INC destination increments the content of the destination by:`, o: [
-          [`1`, `Correct.`],
-          [`2`, `No.`],
-          [`8`, `No.`],
-          [`1024`, `No.`]
+          [`1`, `Correct. INC dest adds exactly 1 to the destination (dest = dest + 1) (L9, Arithmetic instructions).`],
+          [`2`, `INC always adds 1, whatever the operand size; adding 2 would need ADD dest, 2 (or INC twice).`],
+          [`8`, `INC adds 1, not 8; 8 is the number of bits in a byte, unrelated to the increment.`],
+          [`1024`, `INC adds 1; 1024 has nothing to do with it (that would need ADD dest, 1024).`]
         ], a: 0, src: `Revision sheet` },
         { q: `The instruction that supports addition when a carry exists is:`, o: [
-          [`ADD`, `Ignores the incoming carry.`],
-          [`ADC`, `Correct.`],
-          [`ADD & ADC`, `Only ADC adds CF.`],
-          [`None`, `ADC is correct.`]
+          [`ADD`, `ADD computes dest + src and ignores the incoming CF; adding the carry from a previous addition needs ADC.`],
+          [`ADC`, `Correct. ADC computes dest + src + CF, so it supports addition when a carry exists (L9, Arithmetic instructions).`],
+          [`ADD & ADC`, `Only ADC adds the carry flag (dest + src + CF); plain ADD ignores it.`],
+          [`None`, `Not "None": ADC (add with carry) is exactly the instruction for addition with a carry.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The instruction that enables subtraction with borrow is:`, o: [
-          [`DEC`, `Subtracts 1.`],
-          [`SUB`, `No borrow input.`],
-          [`SBB`, `Correct.`],
-          [`None`, `SBB is correct.`]
+          [`DEC`, `DEC just subtracts 1 from its operand; it does not use a borrow from a previous subtraction.`],
+          [`SUB`, `SUB computes dest − src without the borrow; subtraction with borrow (− CF) is SBB.`],
+          [`SBB`, `Correct. SBB computes dest − src − CF, subtraction with borrow (L9, Arithmetic instructions).`],
+          [`None`, `Not "None": SBB (subtract with borrow) does exactly this.`]
         ], a: 2, src: `Revision sheet` },
         { q: `The flag that acts as the borrow flag in SBB is the:`, o: [
-          [`Direction flag`, `Used by string instructions.`],
-          [`Carry flag`, `Correct.`],
-          [`Parity flag`, `No.`],
-          [`Trap flag`, `No.`]
+          [`Direction flag`, `The direction flag controls whether string instructions increment or decrement SI/DI; it is not a borrow.`],
+          [`Carry flag`, `Correct. SBB computes dest − src − CF: the carry flag acts as the borrow flag (L9, Arithmetic instructions).`],
+          [`Parity flag`, `The parity flag reports whether the result has an even number of 1 bits; it is not used as a borrow.`],
+          [`Trap flag`, `The trap flag enables single-step mode for debugging; SBB uses the carry flag as the borrow.`]
         ], a: 1, src: `Revision sheet` },
         { q: `The flag that acts as borrow flag in the subtraction-with-borrow instruction is the carry flag CF.`, o: [
-          [`True`, `Correct.`],
-          [`False`, `CF is the borrow flag in SBB.`]
+          [`True`, `Correct. SBB = dest − src − CF, so the carry flag CF is the borrow flag (L9, Arithmetic instructions).`],
+          [`False`, `The statement is true: in SBB the carry flag acts as the borrow flag (dest − src − CF).`]
         ], a: 0, src: `Exam 2023/24` },
         { q: `MOV AL, 5 then NOT AL gives AL =`, o: [
-          [`11111010b (FAh)`, `Correct. Every bit inverted.`],
-          [`11111011b (FBh)`, `That is NEG (2's complement).`],
-          [`00000101b`, `Unchanged; NOT inverts.`],
-          [`10000101b`, `Only the sign bit flipped.`]
+          [`11111010b (FAh)`, `Correct. NOT is the 1's complement: every bit is inverted, 00000101 → 11111010 = FAh (L9, NOT, NEG, TEST).`],
+          [`11111011b (FBh)`, `FBh is NEG AL (2's complement: invert then add 1 = −5); NOT only inverts, giving FAh.`],
+          [`00000101b`, `00000101 is AL unchanged; NOT inverts every bit, giving 11111010.`],
+          [`10000101b`, `10000101 flips only the sign bit; NOT inverts ALL eight bits: 11111010.`]
         ], a: 0 },
         { q: `MOV AX, 5 / MOV DX, 0 / MOV CX, 2 / DIV CX. The result is:`, o: [
-          [`AX = 2, DX = 1`, `Correct. Quotient in AX, remainder in DX.`],
-          [`AX = 1, DX = 2`, `Reversed.`],
-          [`AX = 2.5`, `Integer division only.`],
-          [`CX = 2, AX = 5`, `DIV changes AX and DX.`]
+          [`AX = 2, DX = 1`, `Correct. DIV CX divides DX:AX = 5 by 2: quotient 2 goes to AX, remainder 1 to DX (L9, MUL and DIV rules).`],
+          [`AX = 1, DX = 2`, `Quotient and remainder are swapped: 5 ÷ 2 = 2 remainder 1, and DIV puts the quotient in AX and the remainder in DX.`],
+          [`AX = 2.5`, `DIV is integer division: registers hold whole numbers, so 5 ÷ 2 gives quotient 2 in AX and remainder 1 in DX.`],
+          [`CX = 2, AX = 5`, `DIV CX leaves CX unchanged but overwrites AX with the quotient (2) and DX with the remainder (1).`]
         ], a: 0 },
         { q: `MOV AL, 11110000b / ROL AL, 1 gives:`, o: [
-          [`AL = 11100001b, CF = 1`, `Correct.`],
-          [`AL = 11100000b, CF = 1`, `That is SHL (bit 0 filled with 0).`],
-          [`AL = 01111000b, CF = 0`, `That is ROR.`],
-          [`AL = 11100001b, CF = 0`, `CF receives the old MSB (1).`]
+          [`AL = 11100001b, CF = 1`, `Correct. ROL shifts every bit left; the old MSB (1) goes to both CF and bit 0: 11110000 → 11100001, CF = 1 (L9, Rotate instructions).`],
+          [`AL = 11100000b, CF = 1`, `11100000 is SHL: bit 0 filled with 0 and the MSB lost to CF. ROL copies the MSB into bit 0 as well.`],
+          [`AL = 01111000b, CF = 0`, `01111000, CF = 0 is ROR (the lowest bit goes to CF and the MSB). ROL rotates to the left.`],
+          [`AL = 11100001b, CF = 0`, `The AL value is right, but CF receives the old MSB, which is 1, so CF = 1.`]
         ], a: 0 },
         { q: `MOV DL, 3Fh / ROL DL, 4 gives:`, o: [
-          [`DL = F3h, CF = 1`, `Correct. The nibbles are exchanged.`],
-          [`DL = F0h, CF = 1`, `That is SHL by 4.`],
-          [`DL = 03h, CF = 1`, `That is SHR by 4.`],
+          [`DL = F3h, CF = 1`, `Correct. ROL by 4 exchanges the two nibbles: 0011 1111 → 1111 0011 = F3h; CF = the last bit rotated, 1 (L9, Rotate instructions).`],
+          [`DL = F0h, CF = 1`, `F0h is SHL DL, 4: the low nibble is filled with 0s and the 3 is lost. ROL brings those bits back into the low end.`],
+          [`DL = 03h, CF = 1`, `03h is SHR DL, 4: the low nibble F is shifted out and lost. A rotate keeps all bits.`],
           [`DL = 3Fh, CF = 0`, `A rotate by 4 changes an 8-bit value unless the halves are equal.`]
         ], a: 0 }
       ]
@@ -1940,28 +1940,28 @@ SUB AX, val4` },
       note: `Transcribed from two phone photos. The paper has a student's pencil ticks on the true/false part and pencil working on part d (2231C and 2FA1C, which agree with our answers). The student's marks disagree with the lectures on T/F 1 (student: False; lecture register tree: True) and T/F 10 (student: True; short and near jumps change IP only: False).`,
       sections: [
         { title: `Question One I · Choose the correct answer`, marks: `10 marks`, items: [
-          { type: `mcq`, q: `……. contains the address of an instruction to be fetched.`, o: [`PC`, `MAR`, `IR`, `MBR`], a: 0, why: `PC holds the address of the instruction to be fetched (L2).` },
-          { type: `mcq`, q: `The C bit in the EFLAGS register refers to:`, o: [`compute bit`, `control bit`, `carry bit`, `none of the mentioned`], a: 2, why: `CF is the carry flag (L2).` },
-          { type: `mcq`, q: `……uses binary signals to synchronize the actions of all devices attached to the system bus.`, o: [`Data bus`, `Control bus`, `Address bus`, `none of the mentioned`], a: 1, why: `Lecture definition of the control bus (L1).` },
-          { type: `mcq`, q: `…… is high speed temporary storage area built into the CPU.`, o: [`A processor`, `ALU`, `A bus`, `A Register`], a: 3, why: `Definition of a register (L1, L2).` },
-          { type: `mcq`, q: `Which of the following instructions is not valid?`, o: [`MOV AX, BX`, `MOV DS, AX`, `MOV [AX], [5000H]`, `PUSH AX`], a: 2, why: `Memory-to-memory moves are not allowed (L3).` },
-          { type: `mcq`, q: `After each execution of the instruction PUSH EAX, the stack pointer is:`, o: [`incremented by 2`, `decremented by 2`, `incremented by 4`, `decremented by 4`], a: 3, why: `EAX is 4 bytes and PUSH decrements SP (L5).` },
-          { type: `mcq`, q: `LODSW instruction copies strings from ……into register……`, o: [`ES:[DI], AX`, `DS:[SI], AX`, `DS:[SI], AL`, `ES:[DI], BX`], a: 1, why: `LODS reads DS:[SI]; the W form loads AX (L7).` },
-          { type: `mcq`, q: `If SS=1300, SP=100, CX=CD01 then after executing the instruction POP ECX the following is correct:`, o: [`SS = 1304`, `SP = 98`, `SS = 1298`, `SP = 104`], a: 3, why: `POP increments SP by 4 for a 32-bit register; SS never changes (L5).` },
-          { type: `mcq`, q: `If the interrupt is generated by the execution of an interrupt instruction then it is ……`, o: [`software interrupt`, `external interrupt`, `hardware interrupt`, `none of the mentioned`], a: 0, why: `Software interrupts are instructions (L8).` },
-          { type: `mcq`, q: `The segment register of the instruction MOV [SI][BP], BX will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 2, why: `BP is used as the base, so the default segment is SS (L4).` }
+          { type: `mcq`, q: `……. contains the address of an instruction to be fetched.`, o: [`PC`, `MAR`, `IR`, `MBR`], a: 0, why: `PC holds the address of the instruction to be fetched (L2).`, ow: [null, `MAR holds the address of a memory location (data being read or written), not specifically the address of the next instruction to fetch; that is the PC.`, `IR holds the instruction most recently fetched (the instruction itself), not the address of the next one to fetch.`, `MBR holds a word of data to be written to memory or the word most recently read, not an instruction address.`] },
+          { type: `mcq`, q: `The C bit in the EFLAGS register refers to:`, o: [`compute bit`, `control bit`, `carry bit`, `none of the mentioned`], a: 2, why: `In EFLAGS the C bit is the carry flag CF, set when the result of an unsigned operation is too large to fit in the destination (L2, EFLAGS bits).`, ow: [`There is no "compute bit" in EFLAGS; the C bit is the carry flag, set when an unsigned result is too large for the destination.`, `The control flags of EFLAGS are bits such as DF (direction); the letter C itself names the carry flag, a status flag.`, null, `Not "None": the carry bit is listed, and CF is exactly what the C bit of EFLAGS means.`] },
+          { type: `mcq`, q: `……uses binary signals to synchronize the actions of all devices attached to the system bus.`, o: [`Data bus`, `Control bus`, `Address bus`, `none of the mentioned`], a: 1, why: `The lecture defines the control bus as the bus that uses binary signals to synchronize the actions of all devices attached to the system bus (L1, Buses).`, ow: [`The data bus transfers instructions and data between the CPU and memory; it does not synchronize the devices.`, null, `The address bus holds the addresses of instructions and data during CPU-memory transfers; synchronizing with binary signals is the control bus.`, `Not "None": the control bus matches the lecture definition word for word.`] },
+          { type: `mcq`, q: `…… is high speed temporary storage area built into the CPU.`, o: [`A processor`, `ALU`, `A bus`, `A Register`], a: 3, why: `A register is a high speed temporary storage area built into the CPU; the CPU has a limited number of them (L1, Registers; L2).`, ow: [`The processor (CPU) is the whole unit that contains the registers, ALU, CU and clock; it is not itself a storage area.`, `The ALU performs arithmetic and logic operations (ADD, AND, OR, NOT); it does not store data.`, `A bus is a group of parallel wires transferring data between parts of the computer, outside the CPU; it is not storage.`, null] },
+          { type: `mcq`, q: `Which of the following instructions is not valid?`, o: [`MOV AX, BX`, `MOV DS, AX`, `MOV [AX], [5000H]`, `PUSH AX`], a: 2, why: `MOV [AX], [5000H] moves memory to memory, which is not allowed except for string instructions; [AX] is also not a valid 16-bit pointer (L3, Register addressing restrictions).`, ow: [`MOV AX, BX is valid register addressing: both operands are 16-bit general registers.`, `MOV DS, AX is valid: a segment register can be loaded from a general register (only CS cannot be changed, and segment-to-segment moves are banned).`, null, `PUSH AX is valid: it decrements SP by 2 and stores AX at SS:[SP].`] },
+          { type: `mcq`, q: `After each execution of the instruction PUSH EAX, the stack pointer is:`, o: [`incremented by 2`, `decremented by 2`, `incremented by 4`, `decremented by 4`], a: 3, why: `PUSH first decrements SP by the operand size, then stores the operand; EAX is 32 bits = 4 bytes, so SP = SP - 4 (L5, PUSH).`, ow: [`PUSH never increments SP (the stack grows down), and 2 is the size of a 16-bit register like AX, not EAX.`, `Decrementing by 2 is PUSH AX (16 bits); EAX is 32 bits, so SP drops by 4.`, `Incrementing SP by 4 is what POP EAX does; PUSH decrements it.`, null] },
+          { type: `mcq`, q: `LODSW instruction copies strings from ……into register……`, o: [`ES:[DI], AX`, `DS:[SI], AX`, `DS:[SI], AL`, `ES:[DI], BX`], a: 1, why: `LODS reads DS:[SI]; the W form loads AX (L7).`, ow: [`ES:[DI] is the destination used by STOS and INS; LODS reads its source from DS:[SI].`, null, `DS:[SI] is right, but the W (word) form loads 16 bits into AX; AL is used by LODSB.`, `LODS never loads BX and never reads ES:[DI]; LODSW copies DS:[SI] into AX.`] },
+          { type: `mcq`, q: `If SS=1300, SP=100, CX=CD01 then after executing the instruction POP ECX the following is correct:`, o: [`SS = 1304`, `SP = 98`, `SS = 1298`, `SP = 104`], a: 3, why: `POP increments SP by 4 for a 32-bit register; SS never changes (L5).`, ow: [`PUSH and POP never change SS; only SP changes. Adding 4 to SS confuses the segment with the stack pointer.`, `SP = 98 would be the result of a 16-bit PUSH (SP - 2 in decimal); POP increments SP, and ECX is 4 bytes.`, `SS = 1298 changes the segment and moves down; POP never touches SS and moves SP up by 4 (SP = 100 + 4 = 104).`, null] },
+          { type: `mcq`, q: `If the interrupt is generated by the execution of an interrupt instruction then it is ……`, o: [`software interrupt`, `external interrupt`, `hardware interrupt`, `none of the mentioned`], a: 0, why: `Software interrupts are special instructions (INT) that transfer control to a predefined ISR, so an interrupt caused by executing an instruction is a software interrupt (L8, Interrupts).`, ow: [null, `External interrupts come from devices outside the CPU as signals, not from executing an interrupt instruction.`, `Hardware interrupts are signals given to the processor by devices; an interrupt caused by an INT instruction is a software interrupt.`, `Not "None": the lecture names this case directly, a software interrupt.`] },
+          { type: `mcq`, q: `The segment register of the instruction MOV [SI][BP], BX will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 2, why: `BP is used as the base, so the default segment is SS (L4).`, ow: [`ES is used only when written as an override (ES:[...]) or for string destinations; nothing here selects ES.`, `DS is the default for BX, SI, DI or a constant, but once BP appears in the address the default becomes SS.`, null, `CS is the segment for instruction fetch (with IP), not for data operands addressed through BP.`] }
         ]},
         { title: `Question One II · True or false`, marks: `10 marks`, items: [
-          { type: `tf`, q: `User visible registers include general purpose, special purpose and segment registers.`, a: 0, why: `The lecture register tree puts these three under user-visible (L2).`, key: `Student mark on the paper: False.` },
-          { type: `tf`, q: `Register CS cannot be modified, so the instruction MOV [CS], AX is incorrect.`, a: 0, why: `CS cannot be a MOV destination, and [CS] is not a valid memory operand (L3).` },
-          { type: `tf`, q: `Memory Address Register (MAR) contains the instruction most recently fetched.`, a: 1, why: `That is the IR; MAR contains the address of a memory location (L2).` },
-          { type: `tf`, q: `The data bus transfers instructions and data between the CPU and memory.`, a: 0, why: `Lecture definition (L1).` },
-          { type: `tf`, q: `The instruction STOSW, D=1: Store String Word where ES:[DI] = AX; DI = DI + 2.`, a: 1, why: `With D=1 DI is decremented: DI = DI - 2 (L7).` },
-          { type: `tf`, q: `Non-maskable interrupts are those that cannot be blocked.`, a: 0, why: `L8.` },
-          { type: `tf`, q: `LDS AX, [DI] will change the content of AX only.`, a: 1, why: `It also loads DS (L6).` },
-          { type: `tf`, q: `The statement MOV ES:SI, CX is incorrect.`, a: 0, why: `SI without brackets is a register, so a segment prefix makes no sense; ES:[SI] would be correct (L3).` },
-          { type: `tf`, q: `The memory address of the instruction MOV AX, 10[SI+BC] = DS*10 + SI + BC.`, a: 1, why: `The displacement 10 is missing: DS×10 + 10 + SI + BC (L4).` },
-          { type: `tf`, q: `Registers IP and CS are modified after short and near JMP instructions.`, a: 1, why: `Short and near jumps change IP only; only the far jump changes CS (L8).`, key: `Student mark on the paper: True.` }
+          { type: `tf`, q: `User visible registers include general purpose, special purpose and segment registers.`, a: 0, why: `The lecture register tree puts these three under user-visible (L2).`, ow: [null, `The statement is true: the lecture register tree lists general purpose, special purpose and segment registers as the user-visible ones; PC, IR, MAR, MBR are user-invisible.`], key: `Student mark on the paper: False.` },
+          { type: `tf`, q: `Register CS cannot be modified, so the instruction MOV [CS], AX is incorrect.`, a: 0, why: `CS cannot be a MOV destination, and [CS] is not a valid memory operand (L3).`, ow: [null, `The statement is true: changing CS by MOV is not allowed, and [CS] is not a valid memory pointer (only BX, BP, SI, DI).`] },
+          { type: `tf`, q: `Memory Address Register (MAR) contains the instruction most recently fetched.`, a: 1, why: `That is the IR; MAR contains the address of a memory location (L2).`, ow: [`The instruction most recently fetched is held by the IR; the MAR holds the address of a location in memory.`, null] },
+          { type: `tf`, q: `The data bus transfers instructions and data between the CPU and memory.`, a: 0, why: `The lecture defines the data bus as the bus that transfers instructions and data between the CPU and memory (L1, Buses).`, ow: [null, `The statement is true: it is the lecture definition of the data bus. Addresses use the address bus and timing the control bus.`] },
+          { type: `tf`, q: `The instruction STOSW, D=1: Store String Word where ES:[DI] = AX; DI = DI + 2.`, a: 1, why: `With D=1 DI is decremented: DI = DI - 2 (L7).`, ow: [`ES:[DI] = AX is right, but with D=1 the direction is negative, so DI is decremented: DI = DI - 2, not + 2.`, null] },
+          { type: `tf`, q: `Non-maskable interrupts are those that cannot be blocked.`, a: 0, why: `Non-maskable interrupts (NMI) cannot be masked, blocked or ignored; they have absolute priority, e.g. memory parity or bus faults (L8, Interrupts).`, ow: [null, `The statement is true: maskable interrupts can be blocked by a mask bit, but non-maskable ones cannot be blocked or ignored.`] },
+          { type: `tf`, q: `LDS AX, [DI] will change the content of AX only.`, a: 1, why: `LDS reads 4 bytes: the first two go into AX (offset) and the next two into DS (segment), so both AX and DS change (L6, LDS, LES, LSS).`, ow: [`LDS loads a full pointer: the first two bytes into AX and the next two into DS, so DS changes as well as AX.`, null] },
+          { type: `tf`, q: `The statement MOV ES:SI, CX is incorrect.`, a: 0, why: `SI without brackets is a register, so a segment prefix makes no sense; ES:[SI] would be correct (L3).`, ow: [null, `The statement is true: SI without brackets is a register, not a memory operand, so the ES: prefix is meaningless. ES:[SI] would be valid.`] },
+          { type: `tf`, q: `The memory address of the instruction MOV AX, 10[SI+BC] = DS*10 + SI + BC.`, a: 1, why: `The displacement 10 is missing: DS×10 + 10 + SI + BC (L4).`, ow: [`The given formula drops the displacement 10; indexed addressing adds it: DS×10 + 10 + SI + BC.`, null] },
+          { type: `tf`, q: `Registers IP and CS are modified after short and near JMP instructions.`, a: 1, why: `Short and near jumps change IP only; only the far jump changes CS (L8).`, ow: [`Only the far jump changes both CS and IP; short and near jumps stay in the same code segment and change IP only.`, null], key: `Student mark on the paper: True.` }
         ]},
         { title: `Question Two`, marks: `40 marks`, items: [
           { type: `written`, q: `a- Compare between a debugger and an assembler. (6 marks)`, ans: `<table><tr><th>Debugger</th><th>Assembler</th></tr><tr><td>Easy to run</td><td>Hard to run</td></tr><tr><td>Low overhead programs</td><td>More program overhead</td></tr><tr><td>Close to the machine</td><td>Isolated from the machine</td></tr><tr><td>Good on short programs</td><td>Good on long programs</td></tr></table>` },
@@ -1978,28 +1978,28 @@ SUB AX, val4` },
       note: `Transcribed from a scanned photo (2 pages, May 2024). A student wrote T/F letters next to some statements; they disagree with the lectures on T/F 7 (student T; LDS also changes DS so False) and T/F 10 (student T; MOV is not a string instruction so False). MCQ 7 uses [BX][BP], which a real 8086 cannot encode; the intended answer is SS. MCQ 10 expects SP = 98 although 100H - 2 = 0FEH in hex.`,
       sections: [
         { title: `Question One a · Choose the correct answer`, marks: `10 marks`, items: [
-          { type: `mcq`, q: `…… is high speed temporary storage area built into the CPU.`, o: [`A processor`, `ALU`, `A bus`, `A Register`], a: 3, why: `L1/L2.` },
-          { type: `mcq`, q: `The O bit in the EFLAGS register refers to:`, o: [`overflow bit`, `overload bit`, `override segment bit`, `none of the mentioned`], a: 0, why: `OF = overflow flag (L2).` },
-          { type: `mcq`, q: `POP operation:`, o: [`decrements SP`, `increments SP`, `decrements SS`, `increments SS`], a: 1, why: `POP increments SP (L5).` },
-          { type: `mcq`, q: `The instruction MOV DS, ES:`, o: [`copies the contents of ES into DS`, `copies the contents of DS into ES`, `copies and deletes the contents of ES into DS`, `causes an error`], a: 3, why: `Segment-to-segment moves are not allowed (L3).` },
-          { type: `mcq`, q: `The segment register of the instruction MOV BL, ES:[1234H] will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 0, why: `Segment override (L3).` },
-          { type: `mcq`, q: `LODS instruction copies strings memory location ……. into AL, AX, EAX.`, o: [`ES:[SI]`, `ES:[DI]`, `DS:[SI]`, `DS:[DI]`], a: 2, why: `L7.` },
-          { type: `mcq`, q: `The segment register of the instruction MOV [BX][BP], BX will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 2, why: `BP present → SS (L4). Strictly, BX+BP cannot be combined on an 8086.` },
-          { type: `mcq`, q: `The LSS DX, [SI] copies ….. into DX and ……into ……….`, o: [`segment, [SI], SS`, `[SI], DS, SS`, `offset, segment, SS`, `offset, DS, SS`], a: 2, why: `LSS loads the offset into the register and the segment into SS (L6).` },
-          { type: `mcq`, q: `……. contains the instruction most recently fetched.`, o: [`PC`, `MAR`, `IR`, `MBR`], a: 2, why: `L2.` },
-          { type: `mcq`, q: `If SS=1300, SP=100, CX=CD01 then after executing the instruction PUSH CX the following is correct:`, o: [`SS = 1302`, `SP = 98`, `SS = 1298`, `SP = 102`], a: 1, why: `PUSH decreases SP by 2 and leaves SS (L5). Intended answer 98; in hex it would be 0FE.` }
+          { type: `mcq`, q: `…… is high speed temporary storage area built into the CPU.`, o: [`A processor`, `ALU`, `A bus`, `A Register`], a: 3, why: `A register is a high speed temporary storage area built into the CPU; the CPU has a limited number of them (L1, Registers; L2).`, ow: [`The processor (CPU) is the whole unit that contains the registers, ALU, CU and clock; it is not itself a storage area.`, `The ALU performs arithmetic and logic operations (ADD, AND, OR, NOT); it does not store data.`, `A bus is a group of parallel wires transferring data between parts of the computer, outside the CPU; it is not storage.`, null] },
+          { type: `mcq`, q: `The O bit in the EFLAGS register refers to:`, o: [`overflow bit`, `overload bit`, `override segment bit`, `none of the mentioned`], a: 0, why: `The O bit of EFLAGS is the overflow flag OF, set when a signed result is too large or too small to fit into the destination (L2, EFLAGS bits).`, ow: [null, `There is no "overload" flag in EFLAGS; O names the overflow flag, which reports a signed result that does not fit.`, `Segment override is a prefix written in the instruction (e.g. ES:[...]), not a flag bit; O is the overflow flag.`, `Not "None": overflow bit is listed and is exactly what the O bit means.`] },
+          { type: `mcq`, q: `POP operation:`, o: [`decrements SP`, `increments SP`, `decrements SS`, `increments SS`], a: 1, why: `POP copies the data at SS:[SP] into the operand and then increments SP by 2 or 4; SS never changes (L5, POP).`, ow: [`Decrementing SP is what PUSH does (the stack grows down); POP moves SP back up.`, null, `PUSH and POP never change SS, which only holds the stack segment; POP changes SP.`, `SS is not changed by stack instructions; the register that POP increments is SP.`] },
+          { type: `mcq`, q: `The instruction MOV DS, ES:`, o: [`copies the contents of ES into DS`, `copies the contents of DS into ES`, `copies and deletes the contents of ES into DS`, `causes an error`], a: 3, why: `You cannot move data from one segment register to another with a single MOV; use a general register: MOV AX, ES then MOV DS, AX (L3, Register addressing restrictions).`, ow: [`That would be the intended effect, but segment-to-segment MOV is not allowed on the 8086, so the instruction is an error.`, `MOV copies source (right) into destination (left), so this reads the operands backwards; and segment-to-segment MOV is illegal anyway.`, `MOV never deletes its source, and segment-to-segment MOV is not allowed at all, so the instruction causes an error.`, null] },
+          { type: `mcq`, q: `The segment register of the instruction MOV BL, ES:[1234H] will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 0, why: `The ES: prefix is a segment override, so the memory address is ES×10 + 1234H instead of the default DS (L3, Direct and displacement addressing).`, ow: [null, `DS is the default for a constant offset, but the written ES: prefix overrides it.`, `SS is the default only when BP or SP is used; here the segment is written explicitly as ES.`, `CS is used for instruction fetch with IP; a data operand with an ES: override uses ES.`] },
+          { type: `mcq`, q: `LODS instruction copies strings memory location ……. into AL, AX, EAX.`, o: [`ES:[SI]`, `ES:[DI]`, `DS:[SI]`, `DS:[DI]`], a: 2, why: `LODS reads its source string from DS:[SI] into AL, AX or EAX (LODSB/W/D) and then steps SI by the D flag (L7, String instruction summary).`, ow: [`SI is the right pointer, but LODS reads from the data segment DS; ES is used for destination strings.`, `ES:[DI] is the destination used by STOS and INS, not the source read by LODS.`, null, `DS is right but DI is the destination pointer; LODS uses SI as its source pointer.`] },
+          { type: `mcq`, q: `The segment register of the instruction MOV [BX][BP], BX will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 2, why: `BP present → SS (L4). Strictly, BX+BP cannot be combined on an 8086.`, ow: [`ES is used only with an explicit ES: override or for string destinations; nothing here selects ES.`, `DS is the default for BX, SI, DI or a constant, but when BP appears in the address the default becomes SS.`, null, `CS is the segment for instruction fetch with IP, not for data addressed through BP.`] },
+          { type: `mcq`, q: `The LSS DX, [SI] copies ….. into DX and ……into ……….`, o: [`segment, [SI], SS`, `[SI], DS, SS`, `offset, segment, SS`, `offset, DS, SS`], a: 2, why: `LSS loads the offset into the register and the segment into SS (L6).`, ow: [`The order is reversed: the first two bytes (the offset) go into DX and the next two (the segment) go into SS.`, `DX receives the offset read from memory at [SI], and SS (not DS) receives the segment; DS is only used to form the address.`, null, `DX does get the offset, but SS receives a segment address read from memory, not the contents of DS.`] },
+          { type: `mcq`, q: `……. contains the instruction most recently fetched.`, o: [`PC`, `MAR`, `IR`, `MBR`], a: 2, why: `The IR (Instruction Register) contains the instruction most recently fetched, i.e. the one being executed; it is a user-invisible register (L2).`, ow: [`The PC contains the address of the next instruction to be fetched, not the instruction itself.`, `The MAR contains the address of a location in memory, not a fetched instruction.`, null, `The MBR holds a data word to be written to memory or the word most recently read, not the fetched instruction.`] },
+          { type: `mcq`, q: `If SS=1300, SP=100, CX=CD01 then after executing the instruction PUSH CX the following is correct:`, o: [`SS = 1302`, `SP = 98`, `SS = 1298`, `SP = 102`], a: 1, why: `PUSH decreases SP by 2 and leaves SS (L5). Intended answer 98; in hex it would be 0FE.`, ow: [`PUSH never changes SS; it only changes SP. Adding 2 to SS confuses the segment with the stack pointer.`, null, `SS is not changed by PUSH; the 2 is subtracted from SP, giving 98 (in the exam's decimal intent).`, `SP = 102 adds 2, which is what POP CX would do; PUSH first decrements SP by 2.`] }
         ]},
         { title: `Question One b · True or false`, marks: `10 marks`, items: [
-          { type: `tf`, q: `The statement MOV ES:SI, CX is correct.`, a: 1, why: `ES:SI is not a valid operand (L3).` },
-          { type: `tf`, q: `The far jump is a six bytes instruction.`, a: 1, why: `Five bytes (L8).` },
-          { type: `tf`, q: `LODSW affects the zero flag.`, a: 1, why: `LODS does not change flags (L7).` },
-          { type: `tf`, q: `RAM is a form of semiconductor memory technology used for reading and writing data in any order.`, a: 0, why: `L1.` },
-          { type: `tf`, q: `Registers IP and CS are modified after any JMP instruction (short, near or far).`, a: 1, why: `Only the far jump changes CS (L8).` },
-          { type: `tf`, q: `The Z flag is set to 1 when an ALU operation results in a 0 output.`, a: 0, why: `L2.` },
-          { type: `tf`, q: `LDS AX, [DI] will change the content of AX only.`, a: 1, why: `DS changes too (L6).`, key: `Student wrote T.` },
-          { type: `tf`, q: `Assembly language is hardware dependent.`, a: 0, why: `L1.` },
-          { type: `tf`, q: `SS is the segment register used to hold the segment of the stack.`, a: 0, why: `L2.` },
-          { type: `tf`, q: `String manipulation instructions include LODS, MOV, and STOS.`, a: 1, why: `MOV is not a string instruction (L7).`, key: `Student wrote T.` }
+          { type: `tf`, q: `The statement MOV ES:SI, CX is correct.`, a: 1, why: `ES:SI is not a valid operand: SI without brackets is a register, so the ES: prefix makes no sense; ES:[SI] would be correct (L3).`, ow: [`A segment prefix applies only to a memory operand in brackets; plain SI is a register, so ES:SI is invalid. ES:[SI] would work.`, null] },
+          { type: `tf`, q: `The far jump is a six bytes instruction.`, a: 1, why: `The far jump is 5 bytes: 1 opcode byte, 2 offset bytes and 2 segment bytes (short = 2, near = 3) (L8, The three jump types).`, ow: [`A far jump has 1 opcode + 2 offset + 2 segment bytes = 5 bytes, not 6.`, null] },
+          { type: `tf`, q: `LODSW affects the zero flag.`, a: 1, why: `LODS and STOS do not affect the flags, so LODSW just copies DS:[SI] into AX and leaves ZF unchanged (L7, Key rules).`, ow: [`LODS only copies data into AX and steps SI; the lecture says LODS/STOS do not affect the flags, ZF included.`, null] },
+          { type: `tf`, q: `RAM is a form of semiconductor memory technology used for reading and writing data in any order.`, a: 0, why: `RAM is semiconductor memory used for reading and writing data in any order, as required by the processor (L1, Types of memory).`, ow: [null, `The statement is true: it is the lecture's exact definition of RAM (read and write in any order).`] },
+          { type: `tf`, q: `Registers IP and CS are modified after any JMP instruction (short, near or far).`, a: 1, why: `Short and near jumps change IP only (same code segment); only the far jump changes both CS and IP (L8, Unconditional jumps).`, ow: [`Not any JMP: short and near jumps change only IP; CS changes only with a far jump.`, null] },
+          { type: `tf`, q: `The Z flag is set to 1 when an ALU operation results in a 0 output.`, a: 0, why: `ZF (zero flag) is set to 1 when the result of an arithmetic or logic operation is zero (L2, EFLAGS bits).`, ow: [null, `The statement is true: ZF = 1 means the ALU result was zero; ZF = 0 means a non-zero result.`] },
+          { type: `tf`, q: `LDS AX, [DI] will change the content of AX only.`, a: 1, why: `LDS reads 4 bytes: the first two go into AX (offset) and the next two into DS (segment), so DS changes too (L6, LDS, LES, LSS).`, ow: [`LDS loads a full pointer: the first two bytes into AX and the next two into DS, so DS changes as well as AX.`, null], key: `Student wrote T.` },
+          { type: `tf`, q: `Assembly language is hardware dependent.`, a: 0, why: `Assembly is hardware dependent: each CPU type has its own machine and assembly language, so a program for one CPU won't run on another (L1).`, ow: [null, `The statement is true: different CPUs need different assemblers and assembly languages; high-level languages are the machine-independent ones.`] },
+          { type: `tf`, q: `SS is the segment register used to hold the segment of the stack.`, a: 0, why: `SS (Stack Segment) holds the starting address of the currently active stack segment, used with SP for PUSH and POP (L2, Segment registers).`, ow: [null, `The statement is true: SS is the stack segment register; CS holds code, DS data and ES the extra segment.`] },
+          { type: `tf`, q: `String manipulation instructions include LODS, MOV, and STOS.`, a: 1, why: `String instructions are LODS, STOS, INS, OUTS (also MOVS, CMPS, SCAS); plain MOV is not a string instruction, so the list is wrong (L7, Key rules).`, ow: [`LODS and STOS are string instructions, but plain MOV is not (MOVS is); so the list is wrong.`, null], key: `Student wrote T.` }
         ]},
         { title: `Question Two (8 marks each)`, marks: `40 marks`, items: [
           { type: `written`, q: `a- What are user invisible registers? State and describe four of them.`, ans: `Control/status registers used to control the operation of the CPU; they cannot be referenced by the assembly programmer.<br><b>PC</b>: address of an instruction to be fetched. <b>IR</b>: instruction most recently fetched. <b>MAR</b>: address of a location in memory. <b>MBR</b>: word of data to be written to memory or the word most recently read.` },
@@ -2016,28 +2016,28 @@ SUB AX, val4` },
       note: `Transcribed from a two-page scan plus a second photo of page 2 (identical). No key. MCQ 5 has two invalid options: MOV 100, [DI] (immediate destination, intended) and MOV [AX], SI (AX cannot be a pointer on the 8086). MCQ 8 expects SP = 98 (decimal subtraction; hex gives 0FE). Q2-b(ii) has no source operand; only the address is needed.`,
       sections: [
         { title: `Question One a · Choose the correct answer`, marks: `10 marks`, items: [
-          { type: `mcq`, q: `……. contains the instruction most recently fetched.`, o: [`PC`, `MAR`, `IR`, `MBR`], a: 2, why: `L2.` },
-          { type: `mcq`, q: `Segment registers are ……`, o: [`16 bit user visible registers such as CS, DS`, `16 bit general purpose registers such as FLAGS`, `32 bit registers such as ECX, EDX`, `none`], a: 0, why: `L2.` },
-          { type: `mcq`, q: `The instruction POPAD will pop ……… double words from the stack.`, o: [`32`, `8`, `16`, `4`], a: 1, why: `8 registers (32 bytes) (L5).` },
-          { type: `mcq`, q: `The O bit in the EFLAGS register refers to:`, o: [`overflow bit`, `overload bit`, `override segment bit`, `none of the mentioned`], a: 0, why: `L2.` },
-          { type: `mcq`, q: `The instruction that is not possible among the following is:`, o: [`MOV AX, [BX]`, `MOV AX, 5555H`, `MOV [AX], SI`, `MOV 100, [DI]`], a: 3, why: `An immediate value cannot be a destination (L3). MOV [AX], SI is also invalid on a 16-bit 8086.` },
-          { type: `mcq`, q: `The register which keeps track of the status of the running environment:`, o: [`General purpose`, `Condition`, `Segment`, `Flags`], a: 3, why: `L2.` },
-          { type: `mcq`, q: `The segment register of the instruction MOV [BX][BP], AX will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 2, why: `BP → SS (L4).` },
-          { type: `mcq`, q: `If SS=1300, SP=100, CX=CD01 then after executing PUSH CX the following is correct:`, o: [`SS = 1302`, `SP = 98`, `SS = 1298`, `SP = 102`], a: 1, why: `SP - 2 (L5).` },
-          { type: `mcq`, q: `An interrupt breaks the execution of instructions and diverts its execution to ……`, o: [`Interrupt service routine`, `Counter word register`, `Execution unit`, `control unit`], a: 0, why: `L8.` },
-          { type: `mcq`, q: `The LSS DX, [SI] copies ….. into DX and ……into ……….`, o: [`segment, [SI], SS`, `[SI], DS, SS`, `offset, segment, SS`, `offset, DS, SS`], a: 2, why: `L6.` }
+          { type: `mcq`, q: `……. contains the instruction most recently fetched.`, o: [`PC`, `MAR`, `IR`, `MBR`], a: 2, why: `The IR (Instruction Register) contains the instruction most recently fetched, i.e. the one being executed; it is a user-invisible register (L2).`, ow: [`The PC contains the address of the next instruction to be fetched, not the instruction itself.`, `The MAR contains the address of a location in memory, not a fetched instruction.`, null, `The MBR holds a data word to be written to memory or the word most recently read, not the fetched instruction.`] },
+          { type: `mcq`, q: `Segment registers are ……`, o: [`16 bit user visible registers such as CS, DS`, `16 bit general purpose registers such as FLAGS`, `32 bit registers such as ECX, EDX`, `none`], a: 0, why: `Segment registers (CS, DS, ES, SS) are 16-bit user-visible registers; they cannot be used in arithmetic or logic instructions (L2, Segment registers).`, ow: [null, `FLAGS is a special purpose register, not a general purpose or segment register.`, `ECX and EDX are 32-bit general purpose registers; segment registers are 16-bit, like CS and DS.`, `Not "None": option a, 16-bit user-visible registers such as CS and DS, is the lecture description.`] },
+          { type: `mcq`, q: `The instruction POPAD will pop ……… double words from the stack.`, o: [`32`, `8`, `16`, `4`], a: 1, why: `POPAD pops the 8 32-bit registers EDI, ESI, EBP, ESP, EBX, EDX, ECX, EAX: 8 double words = 32 bytes (L5, POP).`, ow: [`32 is the number of BYTES popped (8 double words × 4); the question asks for double words, which is 8.`, null, `16 is the byte count of POPA (8 words × 2), not the number of double words in POPAD.`, `4 is the size of one double word in bytes; POPAD pops 8 of them.`] },
+          { type: `mcq`, q: `The O bit in the EFLAGS register refers to:`, o: [`overflow bit`, `overload bit`, `override segment bit`, `none of the mentioned`], a: 0, why: `The O bit of EFLAGS is the overflow flag OF, set when a signed result is too large or too small to fit into the destination (L2, EFLAGS bits).`, ow: [null, `There is no "overload" flag in EFLAGS; O names the overflow flag, which reports a signed result that does not fit.`, `Segment override is a prefix written in the instruction (e.g. ES:[...]), not a flag bit; O is the overflow flag.`, `Not "None": overflow bit is listed and is exactly what the O bit means.`] },
+          { type: `mcq`, q: `The instruction that is not possible among the following is:`, o: [`MOV AX, [BX]`, `MOV AX, 5555H`, `MOV [AX], SI`, `MOV 100, [DI]`], a: 3, why: `An immediate value cannot be a destination (L3). MOV [AX], SI is also invalid on a 16-bit 8086.`, ow: [`MOV AX, [BX] is valid register indirect addressing: BX is a legal pointer with default segment DS.`, `MOV AX, 5555H is valid immediate addressing: a 16-bit constant into a 16-bit register.`, `The intended key treats this as possible (register to memory), though strictly [AX] is not a valid 16-bit pointer; the key's answer is the immediate destination.`, null] },
+          { type: `mcq`, q: `The register which keeps track of the status of the running environment:`, o: [`General purpose`, `Condition`, `Segment`, `Flags`], a: 3, why: `The FLAGS (EFLAGS) register keeps track of the status of the running environment: its bits control the CPU or reflect the outcome of operations (L2).`, ow: [`General purpose registers (AX, BX, CX, DX ...) hold data and addresses, not the processor's status.`, `"Condition" is not a register name in the lecture; the condition bits live in the FLAGS register.`, `Segment registers hold segment starting addresses (CS, DS, ES, SS), not the status of the environment.`, null] },
+          { type: `mcq`, q: `The segment register of the instruction MOV [BX][BP], AX will be:`, o: [`ES`, `DS`, `SS`, `CS`], a: 2, why: `When BP is used in the address, the default segment is SS (BX, SI, DI default to DS), so [BX][BP] uses SS. Strictly, BX+BP cannot be combined on an 8086 (L4).`, ow: [`ES is used only with an explicit ES: override or for string destinations; nothing here selects ES.`, `DS is the default for BX, SI, DI or a constant, but when BP appears in the address the default becomes SS.`, null, `CS is the segment for instruction fetch with IP, not for data addressed through BP.`] },
+          { type: `mcq`, q: `If SS=1300, SP=100, CX=CD01 then after executing PUSH CX the following is correct:`, o: [`SS = 1302`, `SP = 98`, `SS = 1298`, `SP = 102`], a: 1, why: `PUSH CX first decrements SP by 2 (CX is 16 bits) and leaves SS unchanged: SP = 100 - 2 = 98 as intended (in hex it would be 0FE) (L5).`, ow: [`PUSH never changes SS; it only changes SP. Adding 2 to SS confuses the segment with the stack pointer.`, null, `SS is not changed by PUSH; the 2 is subtracted from SP, giving 98 (in the exam's decimal intent).`, `SP = 102 adds 2, which is what POP CX would do; PUSH first decrements SP by 2.`] },
+          { type: `mcq`, q: `An interrupt breaks the execution of instructions and diverts its execution to ……`, o: [`Interrupt service routine`, `Counter word register`, `Execution unit`, `control unit`], a: 0, why: `An interrupt transfers control to the Interrupt Service Routine (ISR); after the ISR's return instruction the processor resumes the interrupted program (L8, Interrupts).`, ow: [null, `No "counter word register" is involved; the PC is loaded with the start address of the ISR, and control goes to that routine.`, `The execution unit carries out instructions in every case; an interrupt diverts execution to a different program, the ISR.`, `The control unit sequences instruction steps; an interrupt changes WHICH program runs, the interrupt service routine.`] },
+          { type: `mcq`, q: `The LSS DX, [SI] copies ….. into DX and ……into ……….`, o: [`segment, [SI], SS`, `[SI], DS, SS`, `offset, segment, SS`, `offset, DS, SS`], a: 2, why: `LSS reads 4 bytes from the computed address: the first two (offset) go into DX and the next two (segment) into SS (L6, LDS, LES, LSS).`, ow: [`The order is reversed: the first two bytes (the offset) go into DX and the next two (the segment) go into SS.`, `DX receives the offset read from memory at [SI], and SS (not DS) receives the segment; DS is only used to form the address.`, null, `DX does get the offset, but SS receives a segment address read from memory, not the contents of DS.`] }
         ]},
         { title: `Question One b · True or false`, marks: `10 marks`, items: [
-          { type: `tf`, q: `Assembly language is hardware dependent.`, a: 0, why: `L1.` },
-          { type: `tf`, q: `String instructions change the value of the direction flag D.`, a: 1, why: `They only use D (L7).` },
-          { type: `tf`, q: `The address of the instruction PUSH EBX will be SP:[SS].`, a: 1, why: `It is SS:[SP] (L5).` },
-          { type: `tf`, q: `The flag that acts as borrow flag in the subtraction with borrow instruction is the carry flag CF.`, a: 0, why: `SBB uses CF as borrow (Lab, L9).` },
-          { type: `tf`, q: `String manipulation instructions include LODS, MOV, and STOS.`, a: 1, why: `MOV is not a string instruction (L7).` },
-          { type: `tf`, q: `In PROM, data is written into the chip before being installed in the circuit, but it can only be written once.`, a: 0, why: `L1.` },
-          { type: `tf`, q: `LDS AX, [DI] will change the content of AX only.`, a: 1, why: `DS too (L6).` },
-          { type: `tf`, q: `The instruction MOV CS:[SI], 100 is incorrect.`, a: 1, why: `CS is only a segment override for the destination memory; CS itself is not changed, and overriding with CS is allowed (L3/L4). (An assembler would also need BYTE/WORD PTR.)` },
-          { type: `tf`, q: `LODSW loads two bytes of a string from memory into AX.`, a: 0, why: `L7.` },
-          { type: `tf`, q: `Registers IP and CS are modified after any JMP instruction (short, near or far).`, a: 1, why: `L8.` }
+          { type: `tf`, q: `Assembly language is hardware dependent.`, a: 0, why: `Assembly is hardware dependent: each CPU type has its own machine and assembly language, so a program for one CPU won't run on another (L1).`, ow: [null, `The statement is true: different CPUs need different assemblers and assembly languages; high-level languages are the machine-independent ones.`] },
+          { type: `tf`, q: `String instructions change the value of the direction flag D.`, a: 1, why: `String instructions only USE the direction flag D to decide whether SI/DI increase or decrease; D is changed by CLD/STD (L7, Key rules).`, ow: [`String instructions read D to choose the direction but never change it; only CLD (D=0) and STD (D=1) set it.`, null] },
+          { type: `tf`, q: `The address of the instruction PUSH EBX will be SP:[SS].`, a: 1, why: `Stack instructions use SS:[SP]: SS is the segment and SP the offset, so PUSH EBX stores at SS×10 + SP after SP = SP - 4 (L5, The stack).`, ow: [`The order is reversed: the segment register comes first, so the address is SS:[SP], not SP:[SS].`, null] },
+          { type: `tf`, q: `The flag that acts as borrow flag in the subtraction with borrow instruction is the carry flag CF.`, a: 0, why: `In SBB (subtract with borrow) the carry flag CF acts as the borrow flag: SBB computes dest - src - CF (Lab, L9).`, ow: [null, `The statement is true: CF doubles as the borrow flag in subtraction, and SBB subtracts it along with the source.`] },
+          { type: `tf`, q: `String manipulation instructions include LODS, MOV, and STOS.`, a: 1, why: `String instructions are LODS, STOS, INS, OUTS (also MOVS, CMPS, SCAS); plain MOV is not a string instruction, so the list is wrong (L7, Key rules).`, ow: [`LODS and STOS are string instructions, but plain MOV is not (MOVS is); so the list is wrong.`, null] },
+          { type: `tf`, q: `In PROM, data is written into the chip before being installed in the circuit, but it can only be written once.`, a: 0, why: `PROM data is written into the chip before it is installed, using a PROM programmer, and it can be written only once (L1, Types of memory).`, ow: [null, `The statement is true: it matches the lecture definition of PROM exactly (written before installation, only once).`] },
+          { type: `tf`, q: `LDS AX, [DI] will change the content of AX only.`, a: 1, why: `LDS reads 4 bytes: the first two go into AX (offset) and the next two into DS (segment), so DS changes too (L6, LDS, LES, LSS).`, ow: [`LDS loads a full pointer: the first two bytes into AX and the next two into DS, so DS changes as well as AX.`, null] },
+          { type: `tf`, q: `The instruction MOV CS:[SI], 100 is incorrect.`, a: 1, why: `CS is only a segment override for the destination memory; CS itself is not changed, and overriding with CS is allowed (L3/L4). (An assembler would also need BYTE/WORD PTR.)`, ow: [`Only changing CS is forbidden; here CS: is just a segment override on the memory destination, which is allowed, so the statement "incorrect" is false.`, null] },
+          { type: `tf`, q: `LODSW loads two bytes of a string from memory into AX.`, a: 0, why: `LODSW (the word form) copies two bytes from DS:[SI] into AX, AL from [SI] and AH from [SI+1], then steps SI by 2 (L7).`, ow: [null, `The statement is true: W means word = 2 bytes, loaded from DS:[SI] into AX (LODSB loads 1 byte, LODSD 4).`] },
+          { type: `tf`, q: `Registers IP and CS are modified after any JMP instruction (short, near or far).`, a: 1, why: `Short and near jumps change IP only (same code segment); only the far jump changes both CS and IP (L8, Unconditional jumps).`, ow: [`Not any JMP: short and near jumps change only IP; CS changes only with a far jump.`, null] }
         ]},
         { title: `Question Two (8 marks each)`, marks: `40 marks`, items: [
           { type: `written`, q: `a- Draw a block diagram of a microcomputer. Also, describe types of busses.`, ans: `Diagram: CPU (registers; ALU, CU, clock), Memory Storage Unit, I/O Device #1, I/O Device #2 connected by the data bus (top), control bus (dashed) and address bus.<br>A bus is a group of parallel wires that transfer data from one part of the computer to another. <b>Data bus</b>: transfers instructions and data between CPU and memory. <b>Control bus</b>: uses binary signals to synchronize all devices attached to the system bus. <b>Address bus</b>: holds the addresses of instructions and data during CPU-memory transfers.` },
@@ -2054,36 +2054,36 @@ SUB AX, val4` },
       note: `Transcribed from the official "Answers of Midterm Exam" PDF (underlined answers). All key answers agree with the lectures.`,
       sections: [
         { title: `Form A · Question 1 I · Choose`, marks: `5 marks`, items: [
-          { type: `mcq`, q: `The segment register of the instruction MOV BX, 50[SI-10] will be:`, o: [`SS-10`, `DS*50`, `DS which contains 50`, `DS`], a: 3, why: `SI → DS (L4).` },
-          { type: `mcq`, q: `Special purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EFLAGS`, `32 bit registers such as ECX, EDX`, `None`], a: 1, why: `EIP and EFLAGS (L2).` },
-          { type: `mcq`, q: `The operands in MOV instruction, source and destination, cannot be:`, o: [`register, register`, `memory location, register`, `memory location, memory location`, `register, data`], a: 2, why: `L3.` },
-          { type: `mcq`, q: `An assembler is:`, o: [`easy to run, good with small programs`, `difficult to run but good with small programs`, `easy to run, good with long programs`, `difficult to run, good with long programs`], a: 3, why: `L1.` },
-          { type: `mcq`, q: `MBR is a …….. register.`, o: [`general purpose`, `user invisible`, `user visible`, `special purpose`], a: 1, why: `L2.` }
+          { type: `mcq`, q: `The segment register of the instruction MOV BX, 50[SI-10] will be:`, o: [`SS-10`, `DS*50`, `DS which contains 50`, `DS`], a: 3, why: `The offset uses SI (plus displacement 50 − 10), and SI's default segment is DS, so the segment register is DS (L4, Default segment rule).`, ow: [`SS is only the default when BP (or SP) is used; this offset uses SI, so the segment is DS. A segment register is also never written as "SS-10".`, `The displacement 50 is added to the offset, not multiplied by the segment; the segment register itself is simply DS.`, `DS does not contain 50: 50 is the displacement added to SI to form the offset. The segment register is just DS.`, null] },
+          { type: `mcq`, q: `Special purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EFLAGS`, `32 bit registers such as ECX, EDX`, `None`], a: 1, why: `The two special purpose registers are EIP and EFLAGS, both 32-bit and manipulated directly by the CPU (L2, Special purpose registers).`, ow: [`CS and DS are the 16-bit segment registers, a separate group of user-visible registers, not the special purpose ones.`, null, `ECX and EDX are 32-bit general purpose registers; the special purpose registers are EIP and EFLAGS.`, `Not "None": option b is right, EFLAGS (with EIP) is a 32-bit special purpose register.`] },
+          { type: `mcq`, q: `The operands in MOV instruction, source and destination, cannot be:`, o: [`register, register`, `memory location, register`, `memory location, memory location`, `register, data`], a: 2, why: `Memory to memory moves are not allowed with MOV (only string instructions can do that); one operand must be a register or immediate (L3, Register addressing and its restrictions).`, ow: [`Register to register is register addressing, the most common legal form, e.g. MOV AX, BX (same size).`, `Memory to register is legal (direct/displacement addressing), e.g. MOV CL, [123H].`, null, `Moving immediate data into a register is immediate addressing, e.g. MOV AX, 44H; only an immediate DESTINATION is forbidden.`] },
+          { type: `mcq`, q: `An assembler is:`, o: [`easy to run, good with small programs`, `difficult to run but good with small programs`, `easy to run, good with long programs`, `difficult to run, good with long programs`], a: 3, why: `Lecture table: the assembler is hard to run, has more program overhead, is isolated from the machine and is good on long programs (L1, Debugger vs. Assembler).`, ow: [`Easy to run and good on small programs is the debugger's column, the opposite of the assembler.`, `The assembler is hard to run, but it is good on LONG programs; short programs are the debugger's strength.`, `The assembler is good on long programs but is HARD to run; "easy to run" describes the debugger.`, null] },
+          { type: `mcq`, q: `MBR is a …….. register.`, o: [`general purpose`, `user invisible`, `user visible`, `special purpose`], a: 1, why: `MBR (Memory Buffer Register) holds the word to be written to memory or the word most recently read; it is a user-invisible control/status register with PC, IR and MAR (L2).`, ow: [`General purpose registers are EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI; the programmer cannot reference MBR at all.`, null, `User-visible registers are the ones the machine language can reference (general, special, segment); MBR is user-invisible.`, `Special purpose means EIP and EFLAGS (a user-visible group); MBR belongs to the user-invisible registers.`] }
         ]},
         { title: `Form A · Question 1 II · True or false`, marks: `5 marks`, items: [
-          { type: `tf`, q: `You cannot use 1 byte (high or low bits) of ESP register; you can use either 16 or 32 bits.`, a: 0, why: `L2.` },
-          { type: `tf`, q: `The statement MOV AX, [BP - 50] is incorrect.`, a: 1, why: `Legal (L4).` },
-          { type: `tf`, q: `MOV SS, CS is an incorrect instruction.`, a: 0, why: `L3.` },
-          { type: `tf`, q: `The segment registers include SS, CS, DS, ES, DI, and SI.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `Default segment can never be overridden.`, a: 1, why: `L3.` }
+          { type: `tf`, q: `You cannot use 1 byte (high or low bits) of ESP register; you can use either 16 or 32 bits.`, a: 0, why: `Only AX, BX, CX, DX have 8-bit halves; ESP has only SP (16 bits) and ESP (32 bits), with no SPH/SPL byte (L2, General purpose registers).`, ow: [null, `The statement is true: SI, DI, SP and BP have no 8-bit halves, so ESP can be used only as 16 or 32 bits.`] },
+          { type: `tf`, q: `The statement MOV AX, [BP - 50] is incorrect.`, a: 1, why: `[BP − 50] is legal indexed addressing: BP plus a (negative) displacement, with default segment SS; the lecture lists [BP−2] as legal (L4, Indexed addressing).`, ow: [`It is not incorrect: BP is one of the four pointer registers (BP, BX, SI, DI) and a displacement may be subtracted, so the move is legal (segment SS).`, null] },
+          { type: `tf`, q: `MOV SS, CS is an incorrect instruction.`, a: 0, why: `You cannot move data directly from one segment register to another; MOV SS, CS is the lecture's own example of an incorrect instruction (L3, rule 2).`, ow: [null, `It really is incorrect: segment to segment moves need a general register in between, e.g. MOV AX, CS then MOV SS, AX.`] },
+          { type: `tf`, q: `The segment registers include SS, CS, DS, ES, DI, and SI.`, a: 1, why: `The segment registers are CS, DS, ES and SS (FS, GS on 80386+); DI and SI are index (general purpose) registers, not segment registers (L2).`, ow: [`False because DI and SI are general purpose index registers; only SS, CS, DS and ES in this list are segment registers.`, null] },
+          { type: `tf`, q: `Default segment can never be overridden.`, a: 1, why: `A default segment can be overridden by writing another segment before the offset, e.g. MOV BL, ES:[1234H] or MOV AX, DS:[BP] (L3, Segment overriding).`, ow: [`Segment overriding exists precisely to replace the default segment, e.g. MOV AL, CS:[BX] uses CS instead of DS.`, null] }
         ]},
         { title: `Form A · Questions 2 and 3`, marks: `9 marks`, items: [
           { type: `written`, q: `Q2: Differentiate between PROM and EPROM. (4 marks)`, ans: `PROM: data is written into the chip before it is installed in the circuit, only once, using a PROM programmer.<br>EPROM: data can be rewritten by removing the chip, erasing it with ultraviolet light through a transparent window, and reprogramming it in a PROM programmer; used for prototypes and small production runs.` },
           { type: `written`, q: `Q3: Given SS=10C0H, DS=20A0H, DI=2000H, BP=0100H. Calculate and show by figure the memory address accessed by MOV EAX, [DI]. (5 marks)`, ans: `Address = DS×10 + DI = 20A00 + 2000 = <b>22A00</b>. EAX gets the 4 bytes 22A00 to 22A03. SS and BP are not used.` }
         ]},
         { title: `Form B · Question 1 I · Choose`, marks: `5 marks`, items: [
-          { type: `mcq`, q: `A debugger is:`, o: [`easy to run, good with small programs`, `difficult to run but good with small programs`, `easy to run and good with long programs`, `difficult to run and good with long programs`], a: 0, why: `L1.` },
-          { type: `mcq`, q: `PC is a ……….. register.`, o: [`general purpose`, `user visible`, `user invisible`, `special purpose`], a: 2, why: `L2.` },
-          { type: `mcq`, q: `The operands in MOV instruction cannot be:`, o: [`DS, ES`, `AX, CS`, `EAX, ESP`, `BX, DX`], a: 0, why: `Segment to segment (L3).` },
-          { type: `mcq`, q: `The segment register of the instruction MOV 30[BP], BX will be:`, o: [`ES`, `SS`, `DS`, `the instruction is incorrect`], a: 1, why: `BP → SS (L4).` },
-          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EAX, EBX`, `32 bit registers such as EFLAGS`, `None`], a: 1, why: `L2.` }
+          { type: `mcq`, q: `A debugger is:`, o: [`easy to run, good with small programs`, `difficult to run but good with small programs`, `easy to run and good with long programs`, `difficult to run and good with long programs`], a: 0, why: `Lecture table: the debugger is easy to run, has low overhead, is close to the machine and is good on short programs (L1, Debugger vs. Assembler).`, ow: [null, `A debugger is EASY to run; "difficult to run" is the assembler's column.`, `"Good on long programs" is the assembler; the debugger is good on short (small) programs.`, `Difficult to run and good on long programs is the assembler's description, the opposite of the debugger.`] },
+          { type: `mcq`, q: `PC is a ……….. register.`, o: [`general purpose`, `user visible`, `user invisible`, `special purpose`], a: 2, why: `The PC (program counter) holds the address of the next instruction to fetch; it is a user-invisible control register with IR, MAR and MBR (L2).`, ow: [`General purpose registers are EAX…ESI used for arithmetic and data movement; the PC cannot be referenced by the programmer.`, `User-visible registers are general, special purpose and segment registers; the PC is listed among the user-invisible ones.`, null, `Special purpose registers are EIP and EFLAGS (user visible); the PC belongs to the user-invisible group.`] },
+          { type: `mcq`, q: `The operands in MOV instruction cannot be:`, o: [`DS, ES`, `AX, CS`, `EAX, ESP`, `BX, DX`], a: 0, why: `MOV DS, ES is segment register to segment register, which is not allowed in one instruction; go through a general register (L3, rule 2).`, ow: [null, `MOV AX, CS is legal: reading CS into a general register is allowed; only changing CS or segment-to-segment moves are forbidden.`, `MOV EAX, ESP is legal: two 32-bit general registers of the same size.`, `MOV BX, DX is legal register addressing between two 16-bit general registers.`] },
+          { type: `mcq`, q: `The segment register of the instruction MOV 30[BP], BX will be:`, o: [`ES`, `SS`, `DS`, `the instruction is incorrect`], a: 1, why: `The offset 30 + BP uses BP, whose default segment is SS, so the memory operand is in the stack segment (L4, Default segment rule).`, ow: [`ES is only used when written as an override (or for string destinations); with BP the default is SS.`, null, `DS is the default for BX, SI, DI or a constant; BP defaults to SS.`, `The instruction is legal: memory destination 30[BP] with register source BX is indexed addressing, same size (16 bits).`] },
+          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EAX, EBX`, `32 bit registers such as EFLAGS`, `None`], a: 1, why: `The eight general purpose registers are the 32-bit EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI, used mainly for arithmetic and data movement (L2).`, ow: [`CS and DS are 16-bit segment registers, not general purpose registers.`, null, `EFLAGS is a 32-bit special purpose register (with EIP), not a general purpose one.`, `Not "None": option b is right, EAX and EBX are 32-bit general purpose registers.`] }
         ]},
         { title: `Form B · Question 1 II · True or false`, marks: `5 marks`, items: [
-          { type: `tf`, q: `The statement MOV AX, [BP - 2] is correct.`, a: 0, why: `L4.` },
-          { type: `tf`, q: `The user visible registers include SS, CS, DS, ES, DI, and SI only.`, a: 1, why: `They also include EAX, EBX, etc. and EIP, EFLAGS (L2).` },
-          { type: `tf`, q: `You can use 1 byte (high or low bits) of ESI register by using SH, SL.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `A default segment can be overridden.`, a: 0, why: `L3.` },
-          { type: `tf`, q: `MOV [AX], [150H] is a correct instruction.`, a: 1, why: `Memory to memory (L3).` }
+          { type: `tf`, q: `The statement MOV AX, [BP - 2] is correct.`, a: 0, why: `[BP − 2] is legal indexed addressing (BP with a displacement, default segment SS) and AX is 16 bits; the lecture lists [BP-2] as legal (L4).`, ow: [null, `It is correct: BP may hold an offset and a displacement may be subtracted; the word at SS×10 + BP − 2 is copied into AX.`] },
+          { type: `tf`, q: `The user visible registers include SS, CS, DS, ES, DI, and SI only.`, a: 1, why: `They also include EAX, EBX, etc. and EIP, EFLAGS (L2).`, ow: [`False: DI and SI are general purpose, not the only extras; user-visible also covers EAX, EBX… and the special purpose EIP and EFLAGS.`, null] },
+          { type: `tf`, q: `You can use 1 byte (high or low bits) of ESI register by using SH, SL.`, a: 1, why: `Only AX, BX, CX, DX have 8-bit halves (AH/AL…); ESI has no byte parts, there is no SH or SL, so it is used as SI (16) or ESI (32) only (L2).`, ow: [`SH and SL do not exist: SI, DI, SP and BP have no 8-bit halves, unlike AX/BX/CX/DX.`, null] },
+          { type: `tf`, q: `A default segment can be overridden.`, a: 0, why: `A default segment can be overridden by writing a segment prefix, e.g. MOV BL, ES:[1234H] uses ES instead of DS (L3, Segment overriding).`, ow: [null, `Overriding is allowed and is a lecture topic: MOV AL, CS:[BX] and MOV AX, DS:[BP] replace the default segment.`] },
+          { type: `tf`, q: `MOV [AX], [150H] is a correct instruction.`, a: 1, why: `Two errors: MOV cannot move memory to memory, and AX cannot be used as a pointer (only BX, BP, SI, DI); the lecture lists MOV [AX], [5000H] as incorrect (L3).`, ow: [`It is incorrect: both operands are memory locations (not allowed except in string instructions), and [AX] is not a valid pointer.`, null] }
         ]},
         { title: `Form B · Questions 2 and 3`, marks: `9 marks`, items: [
           { type: `written`, q: `Q2: Differentiate between EPROM and EEPROM. (4 marks)`, ans: `EPROM: erased by removing the chip and exposing it to UV light (transparent window), reprogrammed with a PROM programmer; for prototypes and small runs.<br>EEPROM: rewritten electrically while the chip is on the circuit board, but writing is slow; holds firmware such as the BIOS so it can be updated.` },
@@ -2105,28 +2105,28 @@ SUB AX, val4` },
           { type: `written`, q: `g- Find the errors in: MOV AX, 5 / LDS AX, [DI] / MOV DS, CS / MOV AL, SL / STOSD / MOV ECX, AX. (4 marks)`, ans: `MOV AX, 5: correct.<br>LDS AX, [DI]: correct.<br><b>MOV DS, CS</b>: error, segment-to-segment move is not allowed.<br><b>MOV AL, SL</b>: error, there is no SL register (SI has no 8-bit halves).<br>STOSD: correct (stores EAX at ES:[DI]).<br><b>MOV ECX, AX</b>: error, operands of different sizes (32 and 16 bits).` }
         ]},
         { title: `Question Two Part 1 · Choose the correct answer`, marks: `10 marks`, items: [
-          { type: `mcq`, q: `A chip on which data can be rewritten electrically while the chip is on the circuit board, but the writing process is slow:`, o: [`EROM`, `PROM`, `EEPROM`, `none of the mentioned`], a: 2, why: `L1.` },
-          { type: `mcq`, q: `……… contains the address of a location in memory.`, o: [`PC`, `MBR`, `IR`, `MAR`], a: 3, why: `L2.` },
-          { type: `mcq`, q: `The C bit in the EFLAGS register refers to:`, o: [`carry bit`, `control bit`, `code segment bit`, `none of the mentioned`], a: 0, why: `L2.` },
-          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EBX and EDX`, `16 bit registers such as ES, BX`, `32 bit registers such as EIP, EFLAGS`], a: 1, why: `EBX and EDX are general purpose; EIP and EFLAGS are special purpose (L2).`, key: `Student chose d.` },
-          { type: `mcq`, q: `Which of the following instructions causes errors?`, o: [`MOV CS, AX`, `MOV EAX, EBP`, `MOV CX, [SI]`, `POP AX`], a: 0, why: `CS cannot be changed by MOV (L3).` },
-          { type: `mcq`, q: `If SS=1400, SP=160, BX=CD01 then after executing POP AX the following is correct:`, o: [`SS = 1402`, `SP = 158`, `SS = 1398`, `SP = 162`], a: 3, why: `POP increments SP by 2 (L5).`, key: `Student chose a.` },
-          { type: `mcq`, q: `LODS instruction copies strings memory location ……. into AL, AX, EAX.`, o: [`ES:[SI]`, `ES:[DI]`, `DS:[SI]`, `DS:[DI]`], a: 2, why: `L7.` },
-          { type: `mcq`, q: `The instruction MOV [DI], [SI]:`, o: [`copies the contents of SI into DI`, `copies the contents of DI into SI`, `copies and deletes the contents of SI into DI`, `causes an error`], a: 3, why: `Memory to memory (L3).` },
-          { type: `mcq`, q: `The instruction PUSHA:`, o: [`increments SP by 32 words`, `increments SP by 16 byte`, `decrements SP by 32 words`, `decrements SP by 32 bytes`], a: 3, why: `Best available option. PUSHA actually decrements SP by 16 bytes (8 words); 32 bytes is PUSHAD (L5).` },
-          { type: `mcq`, q: `After running the instruction OUTSD with D=1:`, o: [`DI = DI-2`, `SI = SI-2`, `SI = SI-4`, `DI = DI+2`], a: 2, why: `OUTS uses SI; double word = 4 (L7).` }
+          { type: `mcq`, q: `A chip on which data can be rewritten electrically while the chip is on the circuit board, but the writing process is slow:`, o: [`EROM`, `PROM`, `EEPROM`, `none of the mentioned`], a: 2, why: `EEPROM (Electrically Erasable PROM) is rewritten electrically while the chip stays on the circuit board, but the writing process is slow; it holds firmware such as the BIOS (L1).`, ow: [`"EROM" is not one of the lecture's memory types (RAM, ROM, PROM, EPROM, EEPROM).`, `PROM is written only once, before it is installed, with a PROM programmer, so it cannot be rewritten on the board.`, null, `Not "None": the description is exactly the lecture definition of EEPROM.`] },
+          { type: `mcq`, q: `……… contains the address of a location in memory.`, o: [`PC`, `MBR`, `IR`, `MAR`], a: 3, why: `The MAR (Memory Address Register) contains the address of a location in memory; it is one of the user-invisible registers (L2, User-invisible registers).`, ow: [`The PC contains the address of the next INSTRUCTION to be fetched, not of a general memory location used for data.`, `The MBR holds the data word to be written to memory or most recently read, not the address.`, `The IR holds the instruction most recently fetched, not a memory address.`, null] },
+          { type: `mcq`, q: `The C bit in the EFLAGS register refers to:`, o: [`carry bit`, `control bit`, `code segment bit`, `none of the mentioned`], a: 0, why: `C is the carry flag (CF): set when the result of an unsigned operation is too large to fit in the destination (L2, EFLAGS bits).`, ow: [null, `There is no "control bit" C; the control flag of EFLAGS is DF (direction). C is the status flag Carry.`, `EFLAGS bits describe results and CPU control; there is no code segment bit. CS is a separate segment register.`, `Not "None": C in EFLAGS stands for the carry bit.`] },
+          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EBX and EDX`, `16 bit registers such as ES, BX`, `32 bit registers such as EIP, EFLAGS`], a: 1, why: `EBX and EDX are general purpose; EIP and EFLAGS are special purpose (L2).`, ow: [`CS and DS are 16-bit segment registers, not general purpose ones.`, null, `ES is a segment register, so this pair is not all general purpose (BX is, but as the 16-bit part of EBX).`, `EIP and EFLAGS are the 32-bit special purpose registers, a different group from the general purpose ones.`], key: `Student chose d.` },
+          { type: `mcq`, q: `Which of the following instructions causes errors?`, o: [`MOV CS, AX`, `MOV EAX, EBP`, `MOV CX, [SI]`, `POP AX`], a: 0, why: `Changing the value of CS with MOV is not allowed, so MOV CS, AX causes an error; reading CS (MOV AX, CS) is fine (L3, rule 3).`, ow: [null, `MOV EAX, EBP is legal: two 32-bit general purpose registers of the same size.`, `MOV CX, [SI] is legal register indirect addressing: the word at DS×10 + SI goes into CX.`, `POP AX is legal: it copies the word at SS:[SP] into AX, then adds 2 to SP.`] },
+          { type: `mcq`, q: `If SS=1400, SP=160, BX=CD01 then after executing POP AX the following is correct:`, o: [`SS = 1402`, `SP = 158`, `SS = 1398`, `SP = 162`], a: 3, why: `POP AX copies the word at SS:[SP] into AX, then increments SP by 2: SP = 160 + 2 = 162. SS never changes (BX is a distractor) (L5, POP).`, ow: [`PUSH and POP never change SS; only SP moves. Adding 2 to SS instead of SP gives 1402.`, `SP − 2 = 158 is what PUSH AX would give; POP increments SP.`, `SS is not changed by POP, and nothing is subtracted from it; 1398 mixes up SS with SP and the direction.`, null], key: `Student chose a.` },
+          { type: `mcq`, q: `LODS instruction copies strings memory location ……. into AL, AX, EAX.`, o: [`ES:[SI]`, `ES:[DI]`, `DS:[SI]`, `DS:[DI]`], a: 2, why: `LODS reads the source string from DS:[SI] into AL, AX or EAX, then moves SI by 1, 2 or 4 according to D (L7, Key rules).`, ow: [`SI is the source pointer, but its segment is DS; ES pairs with DI for destinations (STOS, INS).`, `ES:[DI] is the DESTINATION used by STOS and INS, not the source that LODS reads.`, null, `DI is the destination pointer and goes with ES; LODS uses SI with DS.`] },
+          { type: `mcq`, q: `The instruction MOV [DI], [SI]:`, o: [`copies the contents of SI into DI`, `copies the contents of DI into SI`, `copies and deletes the contents of SI into DI`, `causes an error`], a: 3, why: `Both operands are memory locations and memory to memory moves are not allowed with MOV (only string instructions), so MOV [DI], [SI] is an error (L3, L4).`, ow: [`It would not copy anything: memory to memory MOV is illegal, so the assembler rejects it.`, `Besides MOV going source→destination (into [DI]), the instruction is illegal because both operands are memory.`, `MOV never deletes its source, and this instruction is illegal anyway (memory to memory).`, null] },
+          { type: `mcq`, q: `The instruction PUSHA:`, o: [`increments SP by 32 words`, `increments SP by 16 byte`, `decrements SP by 32 words`, `decrements SP by 32 bytes`], a: 3, why: `Best available option. PUSHA actually decrements SP by 16 bytes (8 words); 32 bytes is PUSHAD (L5).`, ow: [`PUSHA stores data on the stack, which grows down, so SP is DECREMENTED, never incremented; and it moves 8 words, not 32.`, `PUSH-type instructions decrement SP; 16 bytes is the right amount for PUSHA but the direction is wrong.`, `PUSHA pushes 8 words (16 bytes); 32 WORDS would be 64 bytes, far more than any PUSHA/PUSHAD.`, null] },
+          { type: `mcq`, q: `After running the instruction OUTSD with D=1:`, o: [`DI = DI-2`, `SI = SI-2`, `SI = SI-4`, `DI = DI+2`], a: 2, why: `OUTS reads from DS:[SI], so SI changes; OUTSD moves a double word (4 bytes) and D=1 means decrement: SI = SI − 4 (L7, String instruction summary).`, ow: [`OUTS uses SI (source), not DI; DI changes only for STOS and INS. Also a D-suffix moves 4, not 2.`, `SI is the right register and D=1 does decrement, but OUTSD transfers 4 bytes; −2 would be OUTSW.`, null, `DI is not used by OUTS, and D=1 decrements rather than increments; +2 would fit INSW with D=0.`] }
         ]},
         { title: `Question Two Part 2 · True or false`, marks: `10 marks`, items: [
-          { type: `tf`, q: `The Z bit of the EFLAGS register is set to zero if a calculation result = zero.`, a: 1, why: `ZF is set to 1 for a zero result (L2).` },
-          { type: `tf`, q: `LES AX, [DI] copies [DI] and [DI+1] into AX and [DI+2] and [DI+3] into ES.`, a: 0, why: `L6.` },
-          { type: `tf`, q: `The Program Counter (PC) is used to save the number of executed instructions.`, a: 1, why: `PC holds the address of the next instruction (L2).`, key: `Student wrote T.` },
-          { type: `tf`, q: `The segment registers include SS, CS, DS, ES, DI and SI.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `In short and far jumps, IP is modified before executing the jump instruction.`, a: 1, why: `IP receives the new value as the result of executing the jump (L8). Doubtful item: the statement is ambiguous.`, key: `Student wrote T.` },
-          { type: `tf`, q: `The statement MOV AX, DS:[BP-2] is incorrect.`, a: 1, why: `Segment override of BP's default SS with DS is allowed (L4).` },
-          { type: `tf`, q: `The fourth and fifth bytes of the near jump define the segment of the jump address.`, a: 1, why: `That is the far jump; near jumps are 3 bytes (L8).` },
-          { type: `tf`, q: `LCS instructions loads any 16-bit or 32-bit register with an offset address, and the SS with a segment address.`, a: 1, why: `There is no LCS; the description is of LSS (L6).` },
-          { type: `tf`, q: `Assembly language is machine dependent.`, a: 0, why: `L1.` },
-          { type: `tf`, q: `LDS AX, [DI] will change the content of DS.`, a: 0, why: `L6.` }
+          { type: `tf`, q: `The Z bit of the EFLAGS register is set to zero if a calculation result = zero.`, a: 1, why: `False. The zero flag ZF is SET to 1 when the result of an operation is zero, and cleared to 0 when the result is not zero (L2, Flags).`, ow: [`False statement: ZF is set to 1 when the result is zero, and cleared to 0 when the result is not zero.`, null] },
+          { type: `tf`, q: `LES AX, [DI] copies [DI] and [DI+1] into AX and [DI+2] and [DI+3] into ES.`, a: 0, why: `LES reads 4 bytes from DS×10 + DI: the first two ([DI], [DI+1]) go into the register (offset) and the next two ([DI+2], [DI+3]) into ES (L6, LDS, LES, LSS).`, ow: [null, `The statement is true: the lecture's LES BX, [DI] example loads BX from the first two bytes and ES from the next two.`] },
+          { type: `tf`, q: `The Program Counter (PC) is used to save the number of executed instructions.`, a: 1, why: `PC holds the address of the next instruction (L2).`, ow: [`False: the PC holds the address of the next instruction to be fetched; it does not count executed instructions.`, null], key: `Student wrote T.` },
+          { type: `tf`, q: `The segment registers include SS, CS, DS, ES, DI and SI.`, a: 1, why: `The segment registers are CS, DS, ES and SS (FS, GS on 80386+); DI and SI are general purpose index registers, not segment registers (L2).`, ow: [`False because DI and SI are general purpose index registers; only CS, DS, ES and SS here are segment registers.`, null] },
+          { type: `tf`, q: `In short and far jumps, IP is modified before executing the jump instruction.`, a: 1, why: `IP receives the new value as the result of executing the jump (L8). Doubtful item: the statement is ambiguous.`, ow: [`Per the lecture, IP gets its new value (IP + displacement) as the result of executing the jump, not before; the slides give IPnew = IP + [CS+1].`, null], key: `Student wrote T.` },
+          { type: `tf`, q: `The statement MOV AX, DS:[BP-2] is incorrect.`, a: 1, why: `Segment override of BP's default SS with DS is allowed (L4).`, ow: [`It is not incorrect: overriding BP's default segment SS with DS is allowed, and the lecture gives MOV AX, DS:[BP] as an example.`, null] },
+          { type: `tf`, q: `The fourth and fifth bytes of the near jump define the segment of the jump address.`, a: 1, why: `That is the far jump; near jumps are 3 bytes (L8).`, ow: [`Near jumps are only 3 bytes (opcode + 2-byte displacement) and stay in the same segment; bytes 4 and 5 holding the segment belong to the far jump.`, null] },
+          { type: `tf`, q: `LCS instructions loads any 16-bit or 32-bit register with an offset address, and the SS with a segment address.`, a: 1, why: `There is no LCS; the description is of LSS (L6).`, ow: [`There is no LCS instruction (CS cannot be loaded this way); loading a register and SS with offset and segment is the LSS instruction.`, null] },
+          { type: `tf`, q: `Assembly language is machine dependent.`, a: 0, why: `Assembly is hardware dependent: each CPU type has its own machine and assembly language, so a program for one CPU type won't run on another (L1).`, ow: [null, `The statement is true: different manufacturers' CPUs need different assemblers and assembly languages.`] },
+          { type: `tf`, q: `LDS AX, [DI] will change the content of DS.`, a: 0, why: `LDS AX, [DI] loads AX with the first two bytes at DS×10 + DI and DS with the next two, so DS is changed (L6, LDS, LES, LSS).`, ow: [null, `LDS changes BOTH the register and DS; in the lecture example LDS BX, [DI] sets DS = 3C00.`] }
         ]}
       ]
     },
@@ -2140,36 +2140,36 @@ SUB AX, val4` },
           { type: `written`, q: `2- Given SS=10C0H, DS=20A0H, DI=3000H, BP=0100H. Calculate and show by figure the memory address accessed by MOV EAX, [DI]. (6 marks)`, ans: `Address = DS×10 + DI = 20A00 + 3000 = <b>23A00</b>.` }
         ]},
         { title: `Form A · Choose`, marks: `5 marks`, items: [
-          { type: `mcq`, q: `An assembler is:`, o: [`easy to run and good with small programs`, `difficult to run but good with small programs`, `easy to run and good with long programs`, `difficult to run and good with long programs`], a: 3, why: `L1.` },
-          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EFLAGS`, `32 bit registers such as ECX, EDX`, `None`], a: 2, why: `L2.` },
-          { type: `mcq`, q: `The operands in MOV instruction cannot be:`, o: [`register, register`, `memory location, memory location`, `memory location, register`, `immediate data, register`], a: 1, why: `L3.` },
-          { type: `mcq`, q: `The segment register of the instruction MOV BX, 50[BP] will be:`, o: [`SS`, `CS`, `DS which contains 50`, `ES`], a: 0, why: `L4.` },
-          { type: `mcq`, q: `PROM stands for:`, o: [`programmable read only memory`, `programmable read write memory`, `portable read only memory`, `None of the mentioned`], a: 0, why: `L1.` }
+          { type: `mcq`, q: `An assembler is:`, o: [`easy to run and good with small programs`, `difficult to run but good with small programs`, `easy to run and good with long programs`, `difficult to run and good with long programs`], a: 3, why: `Lecture table: the assembler is hard to run, has more program overhead, is isolated from the machine and is good on long programs (L1, Debugger vs. Assembler).`, ow: [`Easy to run and good on small programs is the debugger's column, the opposite of the assembler.`, `The assembler is hard to run, but it is good on LONG programs; short programs are the debugger's strength.`, `The assembler is good on long programs but is HARD to run; "easy to run" describes the debugger.`, null] },
+          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EFLAGS`, `32 bit registers such as ECX, EDX`, `None`], a: 2, why: `The eight 32-bit general purpose registers are EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI, used mainly for arithmetic and data movement (L2).`, ow: [`CS and DS are 16-bit segment registers, not general purpose ones.`, `EFLAGS is a 32-bit special purpose register (with EIP), not a general purpose one.`, null, `Not "None": option c is right, ECX and EDX are 32-bit general purpose registers.`] },
+          { type: `mcq`, q: `The operands in MOV instruction cannot be:`, o: [`register, register`, `memory location, memory location`, `memory location, register`, `immediate data, register`], a: 1, why: `Memory to memory moves are not allowed with MOV (only string instructions can do that), so both operands cannot be memory locations (L3, Register addressing and its restrictions).`, ow: [`Register to register is register addressing, the most common legal form, e.g. MOV AX, BX (same size).`, null, `Memory with a register is legal (direct/displacement addressing), e.g. MOV CL, [123H] or MOV [DI], AX.`, `Immediate data as the SOURCE with a register destination is legal immediate addressing, e.g. MOV AX, 44H (only an immediate destination is forbidden).`] },
+          { type: `mcq`, q: `The segment register of the instruction MOV BX, 50[BP] will be:`, o: [`SS`, `CS`, `DS which contains 50`, `ES`], a: 0, why: `The offset 50 + BP uses BP, whose default segment is SS, so the operand is read from the stack segment (L4, Default segment rule).`, ow: [null, `CS is used only for instruction fetches (with IP) or when written as an override; BP defaults to SS.`, `DS is the default for BX, SI, DI or a constant, not BP; and 50 is a displacement added to BP, not DS's content.`, `ES is used only as an override or for string destinations (STOS, INS); with BP the default is SS.`] },
+          { type: `mcq`, q: `PROM stands for:`, o: [`programmable read only memory`, `programmable read write memory`, `portable read only memory`, `None of the mentioned`], a: 0, why: `PROM = Programmable Read Only Memory: data is written once, before the chip is installed, using a PROM programmer (L1, Types of memory).`, ow: [null, `PROM is read ONLY memory once programmed; reading and writing in any order describes RAM.`, `The P stands for Programmable (it is written with a PROM programmer), not Portable.`, `Not "None": option a is the exact expansion of PROM.`] }
         ]},
         { title: `Form A · True or false`, marks: `5 marks`, items: [
-          { type: `tf`, q: `You cannot use 1 byte (high or low bits) of ESP register, you can use either 16 or 32 bits.`, a: 0, why: `L2.` },
-          { type: `tf`, q: `The segment registers include SS, CS, DS, ES, DI, and SI.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `Default segment cannot be overridden at all.`, a: 1, why: `L3.` },
-          { type: `tf`, q: `The statement MOV AX, [BP - 2] is incorrect.`, a: 1, why: `L4.` },
-          { type: `tf`, q: `MOV SS, CS is an incorrect instruction.`, a: 0, why: `L3.` }
+          { type: `tf`, q: `You cannot use 1 byte (high or low bits) of ESP register, you can use either 16 or 32 bits.`, a: 0, why: `Only AX, BX, CX, DX have 8-bit halves; ESP has only SP (16 bits) and ESP (32 bits), with no byte parts (L2, General purpose registers).`, ow: [null, `The statement is true: SI, DI, SP and BP have no 8-bit halves, so ESP can be used only as 16 or 32 bits.`] },
+          { type: `tf`, q: `The segment registers include SS, CS, DS, ES, DI, and SI.`, a: 1, why: `The segment registers are CS, DS, ES and SS (FS, GS on 80386+); DI and SI are general purpose index registers, not segment registers (L2).`, ow: [`False because DI and SI are general purpose index registers; only SS, CS, DS and ES in this list are segment registers.`, null] },
+          { type: `tf`, q: `Default segment cannot be overridden at all.`, a: 1, why: `A default segment can be overridden by writing another segment before the offset, e.g. MOV BL, ES:[1234H] or MOV AX, DS:[BP] (L3, Segment overriding).`, ow: [`Segment overriding exists precisely to replace the default segment, e.g. MOV AL, CS:[BX] uses CS instead of DS.`, null] },
+          { type: `tf`, q: `The statement MOV AX, [BP - 2] is incorrect.`, a: 1, why: `[BP − 2] is legal indexed addressing: BP with a displacement subtracted, default segment SS; the lecture lists [BP-2] as legal (L4, Indexed addressing).`, ow: [`It is not incorrect: BP is one of the four pointer registers (BP, BX, SI, DI) and a displacement may be subtracted, so the move is legal.`, null] },
+          { type: `tf`, q: `MOV SS, CS is an incorrect instruction.`, a: 0, why: `You cannot move data directly from one segment register to another; MOV SS, CS is the lecture's own example of an incorrect instruction (L3, rule 2).`, ow: [null, `It really is incorrect: segment to segment moves need a general register in between, e.g. MOV AX, CS then MOV SS, AX.`] }
         ]},
         { title: `Form B · Written`, marks: `12 marks`, items: [
           { type: `written`, q: `1- Draw a block diagram of a microcomputer, and describe the functions of PC and MBR. (6 marks)`, ans: `Diagram as in Lecture 1.<br><b>PC</b>: contains the address of an instruction to be fetched.<br><b>MBR</b>: contains a word of data to be written to memory or the word most recently read.` },
           { type: `written`, q: `2- Given SS=10D0H, DS=21B0H, DI=2000H, BP=0100H. Calculate and show by figure the memory address accessed by MOV BX, [DI]. (6 marks)`, ans: `Address = DS×10 + DI = 21B00 + 2000 = <b>23B00</b>.` }
         ]},
         { title: `Form B · Choose`, marks: `5 marks`, items: [
-          { type: `mcq`, q: `A debugger is:`, o: [`easy to run and good with small programs`, `difficult to run but good with small programs`, `easy to run and good with long programs`, `difficult to run and good with long programs`], a: 0, why: `L1.` },
-          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EAX, EBX`, `32 bit registers such as EFLAGS`, `None`], a: 1, why: `EFLAGS is special purpose (L2).`, key: `The key underlined both b and c.` },
-          { type: `mcq`, q: `The operands in MOV instruction cannot be:`, o: [`DS, ES`, `AX, CS`, `EAX, ESP`, `BX, DX`], a: 0, why: `L3.` },
-          { type: `mcq`, q: `The segment register of the instruction MOV 30[BP], BX will be:`, o: [`ES`, `CS`, `SS`, `DS which contains 30`], a: 2, why: `L4.` },
-          { type: `mcq`, q: `EPROM stands for:`, o: [`Electrically programmable read only memory`, `Erasable programmable read write memory`, `Erasable portable read only memory`, `None of the mentioned`], a: 3, why: `EPROM = Erasable Programmable Read Only Memory; no option matches exactly (L1).`, key: `The key underlined a (Electrically programmable read only memory).` }
+          { type: `mcq`, q: `A debugger is:`, o: [`easy to run and good with small programs`, `difficult to run but good with small programs`, `easy to run and good with long programs`, `difficult to run and good with long programs`], a: 0, why: `Lecture table: the debugger is easy to run, has low overhead, is close to the machine and is good on short programs (L1, Debugger vs. Assembler).`, ow: [null, `A debugger is EASY to run; "difficult to run" is the assembler's column.`, `"Good on long programs" is the assembler; the debugger is good on short (small) programs.`, `Difficult to run and good on long programs is the assembler's description, the opposite of the debugger.`] },
+          { type: `mcq`, q: `General purpose registers are:`, o: [`16 bit registers such as CS, DS`, `32 bit registers such as EAX, EBX`, `32 bit registers such as EFLAGS`, `None`], a: 1, why: `The eight general purpose registers are the 32-bit EAX, EBX, ECX, EDX, EBP, ESP, EDI, ESI; EFLAGS is special purpose (L2).`, ow: [`CS and DS are 16-bit segment registers, not general purpose registers.`, null, `EFLAGS is a 32-bit special purpose register (with EIP), not a general purpose one.`, `Not "None": option b is right, EAX and EBX are 32-bit general purpose registers.`], key: `The key underlined both b and c.` },
+          { type: `mcq`, q: `The operands in MOV instruction cannot be:`, o: [`DS, ES`, `AX, CS`, `EAX, ESP`, `BX, DX`], a: 0, why: `MOV DS, ES moves one segment register into another, which is not allowed in a single instruction; go through a general register (L3, rule 2).`, ow: [null, `MOV AX, CS is legal: reading CS into a general register is allowed; only changing CS or segment-to-segment moves are forbidden.`, `MOV EAX, ESP is legal: two 32-bit general registers of the same size.`, `MOV BX, DX is legal register addressing between two 16-bit general registers.`] },
+          { type: `mcq`, q: `The segment register of the instruction MOV 30[BP], BX will be:`, o: [`ES`, `CS`, `SS`, `DS which contains 30`], a: 2, why: `The offset 30 + BP uses BP, whose default segment is SS, so the memory destination is in the stack segment (L4, Default segment rule).`, ow: [`ES is only used when written as an override (or for string destinations); with BP the default is SS.`, `CS is used for instruction fetches with IP, not for data addressed through BP.`, null, `DS is the default for BX, SI, DI or a constant, not BP; and 30 is a displacement added to BP, not DS's content.`] },
+          { type: `mcq`, q: `EPROM stands for:`, o: [`Electrically programmable read only memory`, `Erasable programmable read write memory`, `Erasable portable read only memory`, `None of the mentioned`], a: 3, why: `EPROM = Erasable Programmable Read Only Memory; no option matches exactly (L1).`, ow: [`E stands for Erasable (by UV light), not Electrically; "electrically" belongs to EEPROM.`, `EPROM is read ONLY memory, so "read write" makes this expansion wrong.`, `The P stands for Programmable, not Portable, so this expansion is wrong.`, null], key: `The key underlined a (Electrically programmable read only memory).` }
         ]},
         { title: `Form B · True or false`, marks: `5 marks`, items: [
-          { type: `tf`, q: `The statement MOV AX, [BP - 2] is correct.`, a: 0, why: `L4.` },
-          { type: `tf`, q: `The user visible registers include SS, CS, DS, ES, DI, and SI only.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `A default segment can be overridden by writing the required segment before the offset.`, a: 0, why: `L3.` },
-          { type: `tf`, q: `You can use 1 byte (high or low bits) of ESI register by using SH, SL.`, a: 1, why: `L2.` },
-          { type: `tf`, q: `MOV [AX], [150H] is a correct instruction.`, a: 1, why: `L3.` }
+          { type: `tf`, q: `The statement MOV AX, [BP - 2] is correct.`, a: 0, why: `[BP − 2] is legal indexed addressing (BP with a displacement, default segment SS) and AX is 16 bits; the lecture lists [BP-2] as legal (L4).`, ow: [null, `It is correct: the word at SS×10 + BP − 2 is copied into AX; BP may hold an offset and a displacement may be subtracted.`] },
+          { type: `tf`, q: `The user visible registers include SS, CS, DS, ES, DI, and SI only.`, a: 1, why: `User-visible registers are general purpose (EAX…ESI), special purpose (EIP, EFLAGS) and segment registers (CS, DS, ES, SS), not just this list (L2).`, ow: [`False: user-visible registers also include EAX, EBX, ECX, EDX, EBP, ESP and the special purpose EIP and EFLAGS, so "only" is wrong.`, null] },
+          { type: `tf`, q: `A default segment can be overridden by writing the required segment before the offset.`, a: 0, why: `Segment overriding: writing a segment before the offset replaces the default one, e.g. MOV BL, ES:[1234H] uses ES instead of DS (L3, Segment overriding).`, ow: [null, `The statement is true: it is the lecture's definition of segment overriding, e.g. MOV AL, CS:[BX].`] },
+          { type: `tf`, q: `You can use 1 byte (high or low bits) of ESI register by using SH, SL.`, a: 1, why: `Only AX, BX, CX, DX have 8-bit halves; ESI has no byte parts (there is no SH or SL), so it is used as SI (16) or ESI (32) only (L2).`, ow: [`SH and SL do not exist: SI, DI, SP and BP have no 8-bit halves, unlike AX/BX/CX/DX.`, null] },
+          { type: `tf`, q: `MOV [AX], [150H] is a correct instruction.`, a: 1, why: `Two errors: MOV cannot move memory to memory, and AX cannot be used as a pointer (only BX, BP, SI, DI); the lecture lists MOV [AX], [5000H] as incorrect (L3).`, ow: [`It is incorrect: both operands are memory locations (not allowed except in string instructions), and [AX] is not a valid pointer.`, null] }
         ]}
       ]
     },

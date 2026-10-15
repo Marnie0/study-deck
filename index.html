@@ -691,6 +691,12 @@ code, pre, kbd, .formula{ font-variant-ligatures:none; font-feature-settings:"li
 .eopt.picked{ border-color:var(--pen); }
 .eopt.picked .bubble{ background:var(--pen); border-color:var(--pen); color:#fff; }
 .eopt.answer{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 7%, var(--paper)); font-weight:500; }
+.owhy{ margin-top:10px; padding-top:8px; border-top:1px dashed var(--line); }
+.owhy ul{ list-style:none; margin:4px 0 0; padding:0; display:grid; gap:6px; }
+.owhy li{ font-size:.88rem; color:var(--graphite); border-left:3px solid var(--line); padding:2px 0 2px 10px; }
+.owhy li b{ display:block; color:var(--ink); font-weight:600; }
+.owhy li.mine{ border-left-color:var(--pen); }
+.owhy li em{ font-style:normal; font-size:.72rem; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--pen); margin-left:6px; }
 .eopt.answer .bubble{ background:var(--ok); border-color:var(--ok); color:#fff; }
 .draft{ width:100%; min-height:84px; margin-top:10px; border:1px solid var(--line); background:var(--paper-2); border-radius:var(--radius-sm); padding:10px 12px; font:inherit; font-size:.92rem; color:var(--ink); resize:vertical; }
 .model{ margin-top:12px; padding:12px 14px; background:var(--paper-2); border:1px solid var(--rule); border-radius:var(--radius-sm); }
