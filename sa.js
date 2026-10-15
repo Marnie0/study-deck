@@ -53,10 +53,10 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
         [`How does the management level influence the information system?`, `There are three levels: strategic planning, management control and operational control. The level affects the source of information (strategic uses mostly environmental information, operational mostly internal) and its form (strategic needs summaries, operational needs detail). It also changes the emphasis on the functions plan, organize, staff, direct and control: strategic managers mostly plan, operational managers mostly direct and control.`]
       ], quiz: [
         { q: `Which of the following is NOT a role of the computer in information production?`, o: [
-            [`Presenting information as tables, reports, charts and graphs`, `This is role 4 in the list.`],
-            [`Serving as a data storage and retrieval device`, `This is role 1 in the list.`],
+            [`Presenting information as tables, reports, charts and graphs`, `Presenting information (tables, reports, charts, graphs, formatted documents) is role 4 of the computer in information production, so it IS a role (L1, Role of the computer).`],
+            [`Serving as a data storage and retrieval device`, `Data storage and retrieval is role 1 of the computer in information production, so it IS a role; the odd one out is replacing people, who stay a CBIS component.`],
             [`Replacing the people component of a CBIS`, `Correct. People remain a component of a CBIS; the four roles are storage/retrieval, processing, communication and presenting information.`],
-            [`Serving as a communication device to obtain data from other computers`, `This is role 3 in the list.`]
+            [`Serving as a communication device to obtain data from other computers`, `Acting as a communication device to obtain data or information from other computers is role 3 in the lecture's list, so it IS a role of the computer.`]
           ], a: 2, src: `Exam 2024/25` },
         { q: `An information system that interacts with an environment and seeks a set of related goals is described as:`, o: [
             [`Open and purposive`, `Correct. An IS is an open, purposive system using the input/process/output cycle.`],
@@ -66,8 +66,8 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
           ], a: 0 },
         { q: `In the warehouse example, the <b>shipping note</b> in the information system represents:`, o: [
             [`The purchase order sent to the supplier`, `The purchase order is itself a document going to the supplier.`],
-            [`Goods coming in from the supplier`, `That is represented by the bill.`],
-            [`The goods currently on the shelves`, `That is the inventory.`],
+            [`Goods coming in from the supplier`, `Goods coming in from the supplier are represented by the bill (and the purchase order), not the shipping note (L1, warehouse example).`],
+            [`The goods currently on the shelves`, `The goods currently on the shelves are represented by the inventory record; the shipping note represents goods leaving to the customer.`],
             [`Goods leaving to the customer`, `Correct. The shipping note represents goods leaving and implies an action (load the truck).`]
           ], a: 3 },
         { q: `The inputs to the information system from the physical system are usually:`, o: [
@@ -77,52 +77,52 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
             [`Decisions`, `Decisions are made by managers using information, not observed inputs.`]
           ], a: 1 },
         { q: `Which set lists the components of a Computer-Based Information System (CBIS)?`, o: [
-            [`People, procedures, data, programs and computers`, `Correct.`],
+            [`People, procedures, data, programs and computers`, `Correct. A CBIS has five components: people, procedures, data, programs and computers. Programs are instructions for computers just as procedures are for people (L1, Components).`],
             [`Input, process, output and feedback`, `That is the processing cycle, not the components.`],
-            [`People, procedures and data`, `That is a (non-computer) information system.`],
+            [`People, procedures and data`, `People, procedures and data are the components of a plain information system; a CBIS adds programs and computers to make five components.`],
             [`Hardware, software and networks`, `This is a generic IT list, not the lecture's CBIS list.`]
           ], a: 0 },
         { q: `Ticket reservation, order entry, accounts payable and payroll systems are examples of:`, o: [
             [`Group Decision Support Systems`, `GDSS helps a group of managers work out decisions.`],
             [`Decision Support Systems`, `A DSS helps solve a specific problem; these support routine operations.`],
-            [`Transaction Processing Systems`, `Correct. They support day-to-day operations.`],
+            [`Transaction Processing Systems`, `Correct. A TPS supports day-to-day operations; the lecture's TPS examples are exactly ticket reservation, order entry, accounts payable/receivable and payroll (L1, TPS in detail).`],
             [`Expert Systems`, `Expert systems emulate an expert using a knowledge base.`]
           ], a: 2 },
         { q: `Typical MIS modules are:`, o: [
-            [`Word processors and e-mail`, `These are office automation tools.`],
+            [`Word processors and e-mail`, `Word processors and e-mail are office automation (OAS) tools; the lecture names MIS modules as report-writing software and mathematical models.`],
             [`Report-writing software and mathematical models`, `Correct. They simulate firm operations and produce reports for problem solvers.`],
             [`Inference engines and knowledge bases`, `These belong to expert-system parts of a DSS.`],
-            [`Ticket booking screens and payroll files`, `These are TPS elements.`]
+            [`Ticket booking screens and payroll files`, `Ticket booking screens and payroll files belong to transaction processing systems (TPS); an MIS works on TPS data with report writers and mathematical models.`]
           ], a: 1 },
         { q: `The three sources of information in a DSS are:`, o: [
-            [`Inventory file, bill file, shipping file`, `These are warehouse records.`],
-            [`People, procedures, data`, `These are IS components.`],
-            [`TPS, MIS, OAS`, `These are system types.`],
-            [`Relational database, knowledge base, multidimensional database`, `Correct (Fig 1.10).`]
+            [`Inventory file, bill file, shipping file`, `Inventory, bill and shipping records are the warehouse example of an IS modelling a physical system, not the DSS information sources.`],
+            [`People, procedures, data`, `People, procedures and data are the components of an information system; a DSS draws on a relational DB, a knowledge base and a multidimensional DB.`],
+            [`TPS, MIS, OAS`, `TPS, MIS and OAS are types of information systems, not the sources a DSS draws its information from (relational DB, knowledge base, multidimensional DB).`],
+            [`Relational database, knowledge base, multidimensional database`, `Correct. Fig 1.10 shows a DSS drawing on three information sources: a relational database, a knowledge base and a multidimensional database (L1, MIS and DSS).`]
           ], a: 3 },
         { q: `A program created for a computer to logically analyze a problem on its own is called:`, o: [
-            [`Office automation`, `OAS supports office work.`],
-            [`Inter-organizational system`, `IOS links the firm with suppliers or others.`],
-            [`Group Decision Support System`, `GDSS supports a group of managers.`],
+            [`Office automation`, `Office automation supports office communication and productivity (word processing, e-mail); it does not analyze a problem logically on its own.`],
+            [`Inter-organizational system`, `An inter-organizational system (IOS) links the firm's MIS with suppliers or others to share information; it is not a self-reasoning program.`],
+            [`Group Decision Support System`, `A GDSS aids a group of managers in working out decisions together; the program that analyzes a problem on its own is artificial intelligence.`],
             [`Artificial Intelligence`, `Correct. One of the two additional DSS-related software types.`]
           ], a: 3 },
         { q: `Information for the <b>strategic planning level</b> is mostly:`, o: [
             [`Internal and detailed`, `That describes the operational control level.`],
-            [`Environmental and summarized`, `Correct (Fig 1.11).`],
+            [`Environmental and summarized`, `Correct. Fig 1.11: strategic planners draw mostly on environmental (external) information and need it in summary form; the operational level uses internal, detailed data (L1).`],
             [`Internal and summarized`, `Strategic information is mostly environmental.`],
-            [`Environmental and detailed`, `Strategic managers need summary form.`]
+            [`Environmental and detailed`, `Strategic information is environmental but it is needed in summary form; detailed information is what the operational control level uses (Fig 1.11).`]
           ], a: 1 },
         { q: `Which of the following is NOT one of the management functions?`, o: [
             [`Program`, `Correct. The five functions are plan, organize, staff, direct and control.`],
-            [`Control`, `Control is a function.`],
-            [`Plan`, `Plan is a function.`],
-            [`Staff`, `Staff is a function.`]
+            [`Control`, `Control (keeping resources on course) is one of the five management functions: plan, organize, staff, direct, control. Program is not one of them.`],
+            [`Plan`, `Plan (deciding what they are to do) is the first of the five management functions: plan, organize, staff, direct, control.`],
+            [`Staff`, `Staff (staffing the organization with resources) is one of the five management functions: plan, organize, staff, direct, control.`]
           ], a: 0 },
         { q: `According to the lab, system <b>analysis</b> is:`, o: [
             [`Writing the program code`, `The lab stresses analysis is not about programming.`],
-            [`A conceptual solution that fulfills the requirements`, `That is system design.`],
-            [`Investigation of the problem and requirements rather than a solution`, `Correct.`],
-            [`Installing and testing the new system`, `That is implementation.`]
+            [`A conceptual solution that fulfills the requirements`, `"A conceptual solution that fulfills the requirements" is the lab's definition of system design, which comes after analysis.`],
+            [`Investigation of the problem and requirements rather than a solution`, `Correct. Lab 1 defines analysis as the investigation of the problem and requirements rather than a solution; it is about understanding business needs, not programming.`],
+            [`Installing and testing the new system`, `Installing and testing the new system is implementation; analysis only investigates the problem and the requirements.`]
           ], a: 2 }
       ] },
     { n: 2, title: `The Systems Development Environment`, notes: [
@@ -191,82 +191,82 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
         [`Compare OOAD with the traditional approach.`, `OOAD combines data (attributes) and processes (methods) in single entities called objects, while the traditional approach is data-oriented or process-oriented and keeps them separate. OOAD uses object classes and inheritance (subclasses inherit superclass properties), which the traditional approach lacks. In OOSAD (e.g. RUP: inception, elaboration, construction, transition) the iterations happen within each phase.`]
       ], quiz: [
         { q: `"Following a systems methodology, applying techniques and using appropriate tools to ensure quality and provide structure" describes:`, o: [
-            [`Rapid Application Development`, `RAD is a specific methodology for speed.`],
+            [`Rapid Application Development`, `RAD is one specific methodology for radically cutting design and implementation time; the quoted definition (methodology + techniques + tools) is the modern approach in general.`],
             [`The waterfall SDLC`, `Waterfall is one methodology, not the definition of the modern approach.`],
             [`A modern approach to systems analysis and design`, `Correct. Asked as Q2a in 2023/24, 2024/25 and 2025/26.`],
-            [`Joint Application Design`, `JAD is a meeting technique.`]
+            [`Joint Application Design`, `JAD is a single technique (several days of intensive user/manager/analyst meetings); the definition quoted is the modern approach to systems analysis and design.`]
           ], a: 2, src: `Exam 2024/25` },
         { q: `"All functional features of the system chosen for development in analysis are described independently of any computer platform." This defines:`, o: [
-            [`Logical design`, `Correct.`],
-            [`Implementation`, `Implementation codes, tests and installs.`],
-            [`Prototyping`, `Prototyping builds a working model quickly.`],
+            [`Logical design`, `Correct. In the design phase, logical design describes all functional features independently of any computer platform; physical design then adds the technology details (L2, SDLC phases).`],
+            [`Implementation`, `Implementation is the phase where the system is coded, tested, installed and supported; it is not a platform-independent description of features.`],
+            [`Prototyping`, `Prototyping quickly converts requirements into a working system revised with users; it is an improvement approach, not the platform-independent design step.`],
             [`Physical design`, `Physical design transforms logical specs into technology-specific details.`]
           ], a: 0, src: `Exam 2025/26` },
         { q: `"The specifications of the system are transformed into the technology-specific details." This defines:`, o: [
-            [`Maintenance`, `Maintenance repairs and improves.`],
-            [`Logical design`, `Logical design is platform independent.`],
+            [`Maintenance`, `Maintenance is where the system is systematically repaired and improved after it is running, not where specs become technology-specific details.`],
+            [`Logical design`, `Logical design describes functional features independently of any computer platform; turning those specs into technology-specific details is physical design.`],
             [`Analysis`, `Analysis studies and structures requirements.`],
-            [`Physical design`, `Correct.`]
+            [`Physical design`, `Correct. Physical design transforms the logical specifications into technology-specific details from which programming and construction can be done (L2, SDLC phases).`]
           ], a: 3, src: `Exam 2025/26` },
         { q: `Which term means "organizational role most responsible for analysis and design of information systems"?`, o: [
             [`Project manager`, `The PM initiates, plans, executes and closes down a project.`],
             [`Systems analyst`, `Correct. First row of the 2023/24 matching question.`],
-            [`Programmer`, `Programmers implement.`],
-            [`Project sponsor`, `The sponsor initiates/funds the project.`]
+            [`Programmer`, `Programmers write the code during implementation; the role most responsible for analysis and design is the systems analyst.`],
+            [`Project sponsor`, `The project sponsor is the person who requests and backs the project (named in the system request); the analysis and design role is the systems analyst.`]
           ], a: 1, src: `Exam 2023/24` },
         { q: `In which SDLC phase is the organization's total IS needs identified, analyzed, prioritized and arranged?`, o: [
-            [`Planning`, `Correct.`],
+            [`Planning`, `Correct. In planning, the organization's total information system needs are identified, analyzed, prioritized and arranged before a project is chosen (L2, SDLC phases).`],
             [`Analysis`, `Analysis studies and structures requirements of a chosen project.`],
             [`Design`, `Design converts the recommended solution into specifications.`],
-            [`Maintenance`, `Maintenance repairs and improves.`]
+            [`Maintenance`, `Maintenance systematically repairs and improves an existing system; identifying and prioritizing all IS needs happens in planning.`]
           ], a: 0, src: `Exam 2021/22` },
         { q: `Which is NOT a problem of the traditional waterfall SDLC?`, o: [
-            [`Requirements locked in after being determined`, `This is a listed problem.`],
-            [`Limited user involvement`, `This is a listed problem.`],
+            [`Requirements locked in after being determined`, `Locked-in requirements are problem 1 in the lecture's list of waterfall problems, so this IS a problem of the waterfall SDLC.`],
+            [`Limited user involvement`, `Limited user involvement (users only in the requirements phase) is a listed waterfall problem, so it cannot be the answer.`],
             [`Extensive iteration between all phases`, `Correct. Waterfall has little backtracking and looping, so excessive iteration is not its problem.`],
-            [`Too much focus on milestone deadlines`, `This is a listed problem.`]
+            [`Too much focus on milestone deadlines`, `Too much focus on milestone deadlines is problem 3 in the lecture's list of waterfall problems, so it IS a problem.`]
           ], a: 2 },
         { q: `Which CASE component is considered the most important?`, o: [
-            [`Diagramming tools`, `Useful, but not the most important.`],
+            [`Diagramming tools`, `Diagramming tools draw processes, data and control structures, but the lecture names the central repository as the most important CASE component.`],
             [`The central repository`, `Correct. It integrates tools and activities and gives a single view of the project.`],
-            [`Documentation generators`, `Useful, but not the most important.`],
-            [`Code generators`, `Useful, but not the most important.`]
+            [`Documentation generators`, `Documentation generators produce technical and user documents; the most important component is the repository that integrates all the tools.`],
+            [`Code generators`, `Code generators produce program and DB code from designs, but they depend on the repository, which the lecture calls the most important component.`]
           ], a: 1 },
         { q: `CASE tools that automatically check for incomplete, inconsistent or incorrect specifications are:`, o: [
-            [`Report generators`, `They prototype look and feel.`],
-            [`Code generators`, `They produce program and DB code.`],
-            [`Documentation generators`, `They produce manuals.`],
-            [`Analysis tools`, `Correct.`]
+            [`Report generators`, `Display and report generators prototype how a system will look and feel; checking specifications for errors is the job of analysis tools.`],
+            [`Code generators`, `Code generators produce program and database definition code from design documents; they do not check specifications for errors.`],
+            [`Documentation generators`, `Documentation generators produce technical and user documentation in standard formats; they do not validate specifications.`],
+            [`Analysis tools`, `Correct. Analysis tools automatically check for incomplete, inconsistent or incorrect specifications in diagrams, forms and reports (L2, CASE types).`]
           ], a: 3 },
         { q: `Several days of intensive meetings in which users, managers and analysts specify or review requirements is:`, o: [
-            [`XP`, `XP is a programming methodology.`],
-            [`RUP`, `RUP is an OO methodology with 4 phases.`],
+            [`XP`, `XP is an agile method of short cycles, two-person programming teams and automated tests, not a series of requirements meetings.`],
+            [`RUP`, `RUP is an object-oriented methodology with four phases (inception, elaboration, construction, transition), not a meeting technique.`],
             [`Prototyping`, `Prototyping is building a working system iteratively.`],
-            [`JAD`, `Correct.`]
+            [`JAD`, `Correct. JAD is a structured process in which users, managers and analysts work together for several days in intensive meetings to specify or review requirements (L2).`]
           ], a: 3 },
         { q: `In which decade did microcomputers become key tools, 4GLs grow and CASE tools appear?`, o: [
             [`1970s`, `1970s made development more like engineering.`],
-            [`1980s`, `Correct.`],
-            [`1990s`, `1990s focused on integration and the Web.`],
-            [`1950s`, `1950s used machine/assembly language.`]
+            [`1980s`, `Correct. The 1980s saw microcomputers become key tools, wider use of 4GLs and the development of CASE tools (L2, How analysis and design changed).`],
+            [`1990s`, `The 1990s focused on system integration, visual programming, servers and the Web; microcomputers, 4GLs and CASE belong to the 1980s.`],
+            [`1950s`, `In the 1950s everything was written from scratch in machine or assembly language; there were no 4GLs or CASE tools yet.`]
           ], a: 1 },
         { q: `Which is NOT one of the three key principles of Agile methodologies?`, o: [
             [`Lock requirements early to avoid change`, `Correct. That is the waterfall weakness, the opposite of agile.`],
-            [`Self-adaptive processes`, `This is principle 3.`],
-            [`Adaptive rather than predictive`, `This is principle 1.`],
-            [`Emphasize people rather than roles`, `This is principle 2.`]
+            [`Self-adaptive processes`, `Self-adaptive processes (refined through team reviews) is agile principle 3, so it IS one of the three principles.`],
+            [`Adaptive rather than predictive`, `Adaptive rather than predictive is agile principle 1, so it IS one of the three principles.`],
+            [`Emphasize people rather than roles`, `Emphasize people rather than roles is agile principle 2, so it IS one of the three principles.`]
           ], a: 0 },
         { q: `The four phases of the Rational Unified Process are:`, o: [
-            [`Initiation, planning, execution, closedown`, `These are project management phases.`],
-            [`Planning, analysis, design, implementation`, `These are SDLC phases.`],
-            [`Inception, elaboration, construction, transition`, `Correct.`],
-            [`Requirements planning, user design, construction, cutover`, `These are RAD phases.`]
+            [`Initiation, planning, execution, closedown`, `Initiation, planning, execution and closedown are the project management phases (L3), not the RUP phases.`],
+            [`Planning, analysis, design, implementation`, `Planning, analysis, design, implementation (and maintenance) are the SDLC phases, not the RUP phases.`],
+            [`Inception, elaboration, construction, transition`, `Correct. RUP is an object-oriented methodology with four phases: inception, elaboration, construction and transition, each split into iterations (L2, RUP).`],
+            [`Requirements planning, user design, construction, cutover`, `Requirements planning, user design, construction and cutover are the RAD life-cycle phases (Fig 1-13), not RUP.`]
           ], a: 2 },
         { q: `In a three-tier architecture, the middle tier is:`, o: [
-            [`The CASE repository`, `Not part of the architecture.`],
-            [`The database server`, `That is the third tier.`],
-            [`The application server (processing)`, `Correct. Presentation, processing, database.`],
-            [`The user's browser`, `That is presentation.`]
+            [`The CASE repository`, `The CASE repository stores project metadata for CASE tools; it is not a tier of a system's architecture.`],
+            [`The database server`, `The database server is the third (back) tier; the middle tier is the application server that does the processing.`],
+            [`The application server (processing)`, `Correct. Three-tier: user machine (presentation) then application server (processing) then database server; on the Web, browser to web/app server to DB server (L2).`],
+            [`The user's browser`, `The user's browser is the presentation tier at the front; processing sits in the middle on the application server.`]
           ], a: 2 }
       ] },
     { n: 3, title: `Managing the Information Systems Project`, notes: [
@@ -333,99 +333,99 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
         [`What changes to the baseline project plan must be managed during execution?`, `A slipped completion date for an activity; a bungled activity that must be redone; a new activity that becomes evident later; an unforeseen change in personnel due to sickness, resignation or termination.`]
       ], quiz: [
         { q: `"The amount of time that an activity can be delayed without delaying the project" is:`, o: [
-            [`Slack time`, `Correct.`],
+            [`Slack time`, `Correct. Slack time is the amount of time an activity can be delayed without delaying the project; on a network it is TL − TE (L3, emphasised slide 68).`],
             [`Free slack only`, `Free slack is about the early start of following tasks, not the project end.`],
-            [`Baseline project plan`, `BPP estimates tasks and resources.`],
-            [`Critical path`, `The critical path has zero slack.`]
+            [`Baseline project plan`, `The baseline project plan is the estimate of tasks and resources set at the end of planning to guide execution; it is not a measure of spare time.`],
+            [`Critical path`, `The critical path is the chain of activities that have zero slack, so any delay on it delays the project; it is not the spare time itself.`]
           ], a: 0, src: `Exam 2023/24` },
         { q: `"Any person, group of people, piece of equipment, or material used in accomplishing an activity" defines:`, o: [
             [`Deliverables`, `A deliverable is an end product of an SDLC phase.`],
             [`Stakeholders`, `Stakeholders are interested parties, not this definition.`],
             [`Project team`, `Too narrow; resources include equipment and material.`],
-            [`Resources`, `Correct.`]
+            [`Resources`, `Correct. The lecture defines resources as any person, group of people, piece of equipment or material used in accomplishing an activity (L3, Representing project plans).`]
           ], a: 3, src: `Exam 2023/24` },
         { q: `"A sequence of task activities whose order and durations directly affect the completion date of a project" defines:`, o: [
             [`Network diagram`, `A network diagram shows tasks and relationships.`],
-            [`Critical path`, `Correct.`],
-            [`Gantt chart`, `A Gantt chart shows tasks as bars.`],
-            [`Work breakdown structure`, `WBS divides the project into tasks.`]
+            [`Critical path`, `Correct. The critical path is the sequence of task activities whose order and durations directly affect the project completion date; its activities have zero slack (L3).`],
+            [`Gantt chart`, `A Gantt chart draws each task as a horizontal bar proportional to its time; it is a chart, not the sequence that fixes the completion date.`],
+            [`Work breakdown structure`, `The WBS divides the project into manageable, logically ordered tasks; the duration-critical sequence through them is the critical path.`]
           ], a: 1, src: `Exam 2023/24` },
         { q: `"The process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks" is:`, o: [
-            [`Work Breakdown Structure`, `Correct.`],
-            [`Baseline project plan`, `BPP guides execution.`],
+            [`Work Breakdown Structure`, `Correct. The WBS is the process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks (L3, Planning activity 2).`],
+            [`Baseline project plan`, `The baseline project plan is the estimate of tasks and resources used to guide execution, the last planning activity, not the act of dividing the work.`],
             [`Functional decomposition`, `That is the DFD term (breaking a system description into finer detail).`],
-            [`Project charter`, `The charter announces the project.`]
+            [`Project charter`, `The project charter is a short, high-level document that formally announces the project to stakeholders; it does not break down the tasks.`]
           ], a: 0, src: `Exam 2025/26` },
         { q: `"A short, high-level document prepared for both internal and external stakeholders" is the:`, o: [
-            [`Status report`, `A status report informs on progress.`],
+            [`Status report`, `A status report informs the team and stakeholders of progress during execution (high formality); it is not the short document announcing the project.`],
             [`Project workbook`, `The workbook is a repository of all project documents.`],
-            [`Project charter`, `Correct.`],
-            [`System service request`, `The SSR is a request form.`]
+            [`Project charter`, `Correct. The project charter is a short, high-level document for internal and external stakeholders that formally announces the project and its objectives, assumptions and stakeholders (L3, slide 25).`],
+            [`System service request`, `The SSR is the standard form used to request or propose development work, filled in before the project exists, not a document for external stakeholders.`]
           ], a: 2, src: `Exam 2023/24` },
         { q: `"A repository for all project correspondence, inputs, outputs, deliverables, procedures, and standards" is the:`, o: [
             [`CASE tool`, `CASE has a repository, but this phrase defines the project workbook.`],
-            [`Project workbook`, `Correct.`],
-            [`Baseline project plan`, `BPP is an estimate of tasks and resources.`],
-            [`Project charter`, `The charter is a short announcement.`]
+            [`Project workbook`, `Correct. The project workbook is an online or hard-copy repository for all project correspondence, inputs, outputs, deliverables, procedures and standards (L3, Initiation).`],
+            [`Baseline project plan`, `The BPP is an estimate of tasks and resources set at the end of planning; the store of all project documents is the project workbook.`],
+            [`Project charter`, `The project charter is a short high-level announcement of the project, not a repository of all its correspondence and deliverables.`]
           ], a: 1, src: `Exam 2023/24` },
         { q: `"A standard form for requesting or proposing systems development work within an organization" is:`, o: [
-            [`Statement of work`, `The SOW describes what will be delivered.`],
-            [`Project charter`, `The charter announces the project.`],
-            [`Feasibility study`, `That assesses whether to proceed.`],
-            [`System Service Request`, `Correct.`]
+            [`Statement of work`, `The statement of work is written for the customer during planning and describes the work, deliverables, size and duration; it is not the request form.`],
+            [`Project charter`, `The project charter formally announces an approved project; requesting or proposing work in the first place is done with an SSR.`],
+            [`Feasibility study`, `A feasibility study assesses whether to proceed and identifies risks; the standard request form is the System Service Request.`],
+            [`System Service Request`, `Correct. The SSR is a standard form for requesting or proposing systems development work; it holds contact person, problem statement, service request statement and liaison contact (L3).`]
           ], a: 3, src: `Exam 2025/26` },
         { q: `"Represent project tasks and their interrelationships" describes:`, o: [
             [`Data flow diagram`, `DFDs represent data movement, not project tasks.`],
-            [`Gantt chart`, `A Gantt chart emphasises durations as bars.`],
-            [`WBS`, `WBS divides and orders tasks.`],
-            [`Network diagram`, `Correct.`]
+            [`Gantt chart`, `A Gantt chart shows each task as a bar proportional to its duration and shows time overlap, but it does not depict task interrelationships.`],
+            [`WBS`, `The WBS divides and orders the tasks; the diagram that depicts tasks and their interrelationships is the network diagram.`],
+            [`Network diagram`, `Correct. The lecture defines a network diagram as a diagram that depicts project tasks and their interrelationships (dependencies), with slack shown in boxes (L3).`]
           ], a: 3, src: `Exam 2025/26` },
         { q: `Which is NOT included in a System Service Request?`, o: [
-            [`Problem statement`, `Included.`],
+            [`Problem statement`, `The problem statement is one of the four SSR parts (contact person, problem statement, service request statement, liaison contact), so it is included.`],
             [`Gantt chart of the project`, `Correct. The SSR has contact person, problem statement, service request statement and liaison contact information.`],
-            [`Liaison contact information`, `Included.`],
-            [`Contact person`, `Included.`]
+            [`Liaison contact information`, `Liaison contact information is one of the four SSR parts, so it is included; a Gantt chart is only produced later in planning.`],
+            [`Contact person`, `The contact person is the first of the four SSR parts, so it is included in the request form.`]
           ], a: 1, src: `Exam 2021/22` },
         { q: `The project management process phases in order are:`, o: [
-            [`Initiating, planning, executing, closing down`, `Correct.`],
-            [`Initiating, analysis, design, implementation`, `Mixes in SDLC phases.`],
-            [`Initiating, executing, planning, closing down`, `Planning comes before execution.`],
-            [`Planning, initiating, executing, closing down`, `Initiation comes first.`]
+            [`Initiating, planning, executing, closing down`, `Correct. Project management is a controlled process of initiating, planning, executing and closing down a project, in that order (L3, Basic terms).`],
+            [`Initiating, analysis, design, implementation`, `Analysis, design and implementation are SDLC phases; the project management phases are initiating, planning, executing and closing down.`],
+            [`Initiating, executing, planning, closing down`, `Planning must come before executing: execution puts into action the plans created in initiation and planning.`],
+            [`Planning, initiating, executing, closing down`, `Initiation is the first phase (it assesses size, scope and complexity); planning follows it.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `Which is a project closedown activity?`, o: [
-            [`Monitoring progress against the BPP`, `That is execution.`],
-            [`Setting the baseline project plan`, `That is a planning activity.`],
+            [`Monitoring progress against the BPP`, `Monitoring progress against the BPP is activity 2 of execution, not closedown.`],
+            [`Setting the baseline project plan`, `Setting the baseline project plan is the last activity of planning (activity 10), not closedown.`],
             [`Conducting post-project reviews`, `Correct. Closedown: close down, post-project reviews, close customer contract.`],
-            [`Establishing the initiation team`, `That is initiation.`]
+            [`Establishing the initiation team`, `Establishing the initiation team is the first activity of initiation, at the very start of the project.`]
           ], a: 2 },
         { q: `Which statement about Gantt charts vs network diagrams is correct (slide 52)?`, o: [
-            [`Gantt charts show task dependencies and slack in boxes`, `Those describe network diagrams.`],
+            [`Gantt charts show task dependencies and slack in boxes`, `Task dependencies and slack in boxes are the network-diagram features in slide 52; Gantt charts show slack as duration.`],
             [`Network diagrams show time overlap`, `Network diagrams do not show time overlap; they show parallelism.`],
-            [`Gantt charts show durations, time overlap and slack time in duration`, `Correct.`],
-            [`Both show slack time in boxes`, `Only network diagrams show slack in boxes.`]
+            [`Gantt charts show durations, time overlap and slack time in duration`, `Correct. Slide 52: Gantt charts show task durations, show time overlap and show slack time in duration, while network diagrams show dependencies and slack in boxes (L3).`],
+            [`Both show slack time in boxes`, `Only network diagrams show slack in boxes; Gantt charts show slack time as a duration on the bar.`]
           ], a: 2 },
         { q: `In Microsoft Project network diagrams, the critical path is shown as:`, o: [
-            [`Red boxes and arrows`, `Correct (no slack).`],
-            [`A black line at top`, `That is a summary activity on a Gantt chart.`],
-            [`Diamonds`, `Diamonds are milestones on Gantt charts.`],
-            [`Hexagons`, `Hexagons are milestones on network diagrams.`]
+            [`Red boxes and arrows`, `Correct. In MS Project's network diagram, red boxes and arrows mark the critical path, the activities with no slack (L3, Project management software).`],
+            [`A black line at top`, `The black line at the top of an MS Project Gantt chart is a summary activity made of subtasks, not the critical path.`],
+            [`Diamonds`, `A diamond is a milestone on an MS Project Gantt chart, not the critical path.`],
+            [`Hexagons`, `A hexagon is a milestone on an MS Project network diagram; the critical path is red.`]
           ], a: 0 },
         { q: `Which is NOT a characteristic of a task?`, o: [
-            [`Has well-accepted predecessor and successor steps`, `This is a characteristic.`],
-            [`Has a single and identifiable deliverable`, `This is a characteristic.`],
-            [`Is measurable so percent completed can be determined`, `This is a characteristic.`],
+            [`Has well-accepted predecessor and successor steps`, `Well-accepted predecessor and successor steps is one of the five listed task characteristics, so it cannot be the answer.`],
+            [`Has a single and identifiable deliverable`, `A single, identifiable deliverable is one of the five listed task characteristics, so it cannot be the answer.`],
+            [`Is measurable so percent completed can be determined`, `Being measurable so percent completed can be found is one of the five task characteristics, so it cannot be the answer.`],
             [`Must be done by the whole project team together`, `Correct. A task can be done by one person or a well-defined group.`]
           ], a: 3 },
         { q: `In the SPTS example, which activity is NOT on the critical path?`, o: [
-            [`4 Database design`, `Slack 0.`],
-            [`5 User documentation`, `Correct. Slack = 21 - 18.5 = 2.5 weeks.`],
-            [`6 Programming`, `Slack 0.`],
-            [`7 Testing`, `Slack 0.`]
+            [`4 Database design`, `Database design (4) is on both critical paths 1-2-4-6-7-8 and 1-3-4-6-7-8, with TE = TL = 13, so its slack is 0.`],
+            [`5 User documentation`, `Correct. Activity 5 has TE = 18.5 but TL = 21, so slack = 21 − 18.5 = 2.5 weeks; every other activity has zero slack (L3, SPTS). (With ET5 = 34/6 ≈ 5.67 the slack is ≈ 2.33.)`],
+            [`6 Programming`, `Programming (6) lies on the critical paths 1-2-4-6-7-8 and 1-3-4-6-7-8 with TE = TL = 18, so its slack is 0.`],
+            [`7 Testing`, `Testing (7) lies on the critical paths with TE = TL = 21, so its slack is 0; only activity 5 has slack.`]
           ], a: 1, src: `Lecture 3 example` },
         { q: `Using ET = (o + 4r + p)/6, activity A in Problem 1 has o = 3, r = 7, p = 11. ET = ?`, o: [
-            [`7`, `Correct. (3 + 28 + 11)/6 = 42/6 = 7.`],
-            [`6`, `Recheck: 4r = 28.`],
-            [`7.5`, `42/6 is exactly 7.`],
+            [`7`, `Correct. ET = (o + 4r + p)/6 = (3 + 4×7 + 11)/6 = 42/6 = 7 (L3, PERT estimate).`],
+            [`6`, `6 would need a numerator of 36; the realistic value has weight 4, so the sum is 3 + 28 + 11 = 42 and ET = 42/6 = 7.`],
+            [`7.5`, `7.5 would need a numerator of 45; the correct sum is 3 + 4×7 + 11 = 42, and 42/6 is exactly 7.`],
             [`21`, `You forgot to divide by 6 (or used o + r + p).`]
           ], a: 0, src: `Lecture 3 example` }
       ] },
@@ -475,113 +475,113 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
       ], quiz: [
         { q: `Process: work or actions performed on data ______ the system.`, o: [
             [`inside`, `Correct. Processes and data stores are inside the system.`],
-            [`outside`, `Only sources/sinks are outside.`]
+            [`outside`, `Only sources/sinks (external entities) are outside the system; a process is work performed on data inside the system, like data stores.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `Data flow from a data store to a process means:`, o: [
-            [`Update`, `Update is process → data store.`],
+            [`Update`, `Update is the opposite direction: a flow from a process into a data store means update (insert, delete or change).`],
             [`Retrieve`, `Correct. Store → process means retrieve or use.`]
           ], a: 1, src: `Exam 2024/25` },
         { q: `Interactions between external entities without intervening processes are ______ the system and therefore not represented in the DFD.`, o: [
-            [`inside`, `They are not part of the system.`],
-            [`outside`, `Correct.`]
+            [`inside`, `Entity-to-entity interactions involve no process of the system, so they are not part of it; the rule says they are outside and not drawn.`],
+            [`outside`, `Correct. No data moves directly between external entities; interactions between them without a process are outside the system and are not shown in the DFD (L4, Source/sink rule).`]
           ], a: 1, src: `Exam 2024/25` },
         { q: `All flows to or from a data store must move through a:`, o: [
-            [`process`, `Correct.`],
+            [`process`, `Correct. All flows to or from a data store must move through a process: data cannot go directly store to store or between a store and an external entity (L4, Data store rule).`],
             [`source`, `A data store cannot connect directly to a source/sink.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `The context diagram contains only one ______ symbol.`, o: [
-            [`process`, `Correct. One process numbered 0.`],
+            [`process`, `Correct. The context diagram has only one process symbol, numbered 0, representing the whole system, plus all external entities and the major flows (L4, Decomposition).`],
             [`source`, `It shows all external entities, often several.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `Source/sink: external entity that is the origin or destination of data ______ the system.`, o: [
-            [`inside`, `Sources/sinks are not inside.`],
-            [`outside`, `Correct.`]
+            [`inside`, `Processes and data stores are inside the system; a source/sink is an external entity, so it is the origin or destination of data outside the system.`],
+            [`outside`, `Correct. A source/sink is an external entity (person, organization, department, another system) that is the origin and/or destination of data outside the system (L4, symbols).`]
           ], a: 1, src: `Exam 2024/25` },
         { q: `Data flow from a process to a data store means:`, o: [
-            [`Update`, `Correct (insert, delete or change).`],
-            [`Retrieve`, `Retrieve is store → process.`]
+            [`Update`, `Correct. A flow from a process to a data store means update: insert, delete or change data in the store (L4, Update vs retrieve).`],
+            [`Retrieve`, `Retrieve is the reverse direction: a flow from a data store to a process means retrieve or use the data.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `The context diagram contains no ______ symbol.`, o: [
-            [`data stores`, `Correct.`],
+            [`data stores`, `Correct. The context diagram has one process (0), the external entities and the major flows, and no data stores; stores first appear on Level 0 (L4).`],
             [`destination`, `Sinks (destinations) do appear on the context diagram.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `Data store: data at rest ______ the system.`, o: [
-            [`inside`, `Correct.`],
-            [`outside`, `Data stores are inside.`]
+            [`inside`, `Correct. A data store is data at rest inside the system: a file, database, transaction file or set of tables, labelled D1, D2... (L4, symbols).`],
+            [`outside`, `Only sources/sinks are outside the system; a data store holds the system's own data at rest, so it is inside.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `Joined or forked data flow must refer to:`, o: [
-            [`exact same data`, `Correct.`],
-            [`feedback flow`, `Not a DFD rule.`]
+            [`exact same data`, `Correct. A forked flow (one source, many destinations) and a joined flow (many sources, one destination) must refer to the exact same data item (L4, Data flow rules).`],
+            [`feedback flow`, `Feedback flow is not part of the lecture's DFD rules; the rule says joined or forked flows must carry the exact same data.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `Which term matches "the scope of an organizational system that shows the system boundaries, external entities that interact with the system and the major information flows"?`, o: [
-            [`Source/sink`, `A source/sink is one entity.`],
+            [`Source/sink`, `A source/sink is one external entity, the origin or destination of data; the diagram showing the boundary, all entities and major flows is the context diagram.`],
             [`Level-0 diagram`, `Level-0 shows major processes, flows and stores.`],
-            [`Context diagram`, `Correct.`],
-            [`Primitive DFD`, `Primitive = lowest level.`]
+            [`Context diagram`, `Correct. The context diagram shows the scope of the system: its boundary, the external entities that interact with it, and the major information flows, with one process 0 (L4).`],
+            [`Primitive DFD`, `A primitive DFD is the lowest logical level of decomposition, the opposite end from the context diagram that shows the system's scope.`]
           ], a: 2, src: `Exam 2021/22` },
         { q: `Which term matches "a data-flow diagram that represents a system's major processes, data flows, and data stores at a higher level"?`, o: [
-            [`Context diagram`, `The context has one process and no stores.`],
-            [`Level-0 diagram`, `Correct.`],
-            [`Level-n diagram`, `Level-n is a lower-level decomposition.`],
-            [`Physical DFD`, `Not the definition asked.`]
+            [`Context diagram`, `The context diagram has only one process and no data stores, so it cannot show the major processes and stores; that is Level 0.`],
+            [`Level-0 diagram`, `Correct. The Level-0 diagram represents the system's major processes (1.0, 2.0...), data flows and data stores at a high level of abstraction (L4).`],
+            [`Level-n diagram`, `A Level-n diagram decomposes one Level n−1 process into sub-processes (e.g. 4.3.1), so it is lower-level detail, not the high-level view.`],
+            [`Physical DFD`, `A physical DFD shows the current system with its technology details; the definition given (major processes, flows and stores at a high level) is the Level-0 diagram.`]
           ], a: 1, src: `Exam 2021/22` },
         { q: `Which term matches "the conservation of inputs and outputs to a data flow process when that process is decomposed to a lower level"?`, o: [
-            [`Data flow splitting`, `Splitting divides a composite flow.`],
-            [`Functional decomposition`, `That is the breaking-down process itself.`],
+            [`Data flow splitting`, `Data flow splitting divides a composite flow into parts on the lower level; it is allowed because balancing holds, but it is not the definition of balancing.`],
+            [`Functional decomposition`, `Functional decomposition is the breaking-down of processes into sub-processes; balancing is the rule that inputs/outputs are conserved when you do it.`],
             [`Consistency`, `Consistency is about information across levels in general.`],
-            [`DFD balancing`, `Correct.`]
+            [`DFD balancing`, `Correct. DFD balancing is the conservation of inputs and outputs to a process when it is decomposed: the child diagram must have the same inputs and outputs as the parent (L4, slide 22).`]
           ], a: 3, src: `Exam 2021/22` },
         { q: `Which term matches "analyst should expect to redraw diagram several times before reaching the closest approximation to the system being modelled"?`, o: [
             [`Completeness`, `Completeness = all components included and described.`],
             [`Timing`, `Timing = draw as if the system never starts or stops.`],
-            [`Functional decomposition`, `That is breaking into finer detail.`],
-            [`Iterative development`, `Correct.`]
+            [`Functional decomposition`, `Functional decomposition is breaking a system description into finer and finer detail; expecting to redraw several times is the iterative development guideline.`],
+            [`Iterative development`, `Correct. Iterative development is the guideline that the analyst should expect to redraw a diagram several times before reaching the closest approximation of the system (L4, slide 30).`]
           ], a: 3, src: `Exam 2021/22` },
         { q: `Which term matches "depicts data that are in motion and moving as a unit from one place to another in the system"?`, o: [
-            [`Process`, `A process transforms data.`],
-            [`Data flow`, `Correct.`],
-            [`Source/sink`, `An origin or destination.`],
-            [`Data store`, `A data store is data at rest.`]
+            [`Process`, `A process is work or actions performed on data (transforming, storing, distributing it), not the data moving between places.`],
+            [`Data flow`, `Correct. A data flow depicts data in motion, moving as a unit from one place to another in the system; it is drawn as an arrow with a noun-phrase label (L4).`],
+            [`Source/sink`, `A source/sink is an external entity that is the origin or destination of data, not the data in motion itself.`],
+            [`Data store`, `A data store is data at rest inside the system; data in motion is a data flow.`]
           ], a: 1, src: `Exam 2021/22` },
         { q: `"Lowest logical level of decomposition" is:`, o: [
-            [`Primitive DFD`, `Correct.`],
-            [`Context diagram`, `The context is the top level.`],
-            [`Level-1 diagram`, `Not necessarily the lowest.`],
+            [`Primitive DFD`, `Correct. A primitive DFD is the lowest logical level of decomposition; processes that are not exploded into a child diagram are primitive (L4).`],
+            [`Context diagram`, `The context diagram is the top level (one process 0), the opposite of the lowest level of decomposition.`],
+            [`Level-1 diagram`, `Level 1 is only the decomposition of one Level-0 process; it may be decomposed further (Level 2, ...), so it is not necessarily the lowest level.`],
             [`Level-0 diagram`, `Level-0 is the highest decomposition of process 0.`]
           ], a: 0, src: `Exam 2021/22` },
         { q: `"High-level processes described in terms of lower-level sub-processes" matches:`, o: [
-            [`DFD balancing`, `Balancing conserves inputs/outputs.`],
-            [`Network diagram`, `Shows project tasks.`],
-            [`Functional decomposition`, `Correct.`],
-            [`Work breakdown structure`, `WBS divides a project into tasks.`]
+            [`DFD balancing`, `Balancing is the conservation of inputs and outputs when a process is decomposed, not the describing of processes by sub-processes.`],
+            [`Network diagram`, `A network diagram depicts project tasks and their interrelationships (L3), not processes broken into sub-processes.`],
+            [`Functional decomposition`, `Correct. Functional decomposition is an iterative process of breaking a system description into finer detail: high-level processes are described in terms of lower-level sub-processes (L4).`],
+            [`Work breakdown structure`, `The WBS divides a project into manageable tasks (L3, project management), not system processes into sub-processes.`]
           ], a: 2, src: `Exam 2025/26` },
         { q: `"Represent information gathered during requirements determination" matches:`, o: [
-            [`Gantt charts`, `Gantt charts schedule tasks.`],
-            [`Project workbook`, `The workbook stores project documents.`],
-            [`Data flow diagrams`, `Correct.`],
+            [`Gantt charts`, `Gantt charts show project tasks as bars proportional to their time (L3); they do not represent requirements.`],
+            [`Project workbook`, `The project workbook is the repository of project correspondence and deliverables (L3), not the model of the gathered requirements.`],
+            [`Data flow diagrams`, `Correct. DFDs are used to represent the information gathered during requirements determination, in the requirements-structuring step of analysis (L4, Process modeling).`],
             [`Physical design`, `Physical design gives technology-specific details.`]
           ], a: 2, src: `Exam 2025/26` },
         { q: `In the 2023/24 DFD, the Level-1 diagram contains two processes both numbered P1.1. What is the error?`, o: [
             [`Duplicate process number; the second should be P1.3`, `Correct. Each child process needs a unique number (parent number, a period, a unique child number).`],
-            [`A data store connected to an entity`, `Not the issue described.`],
-            [`An unbalanced context diagram`, `Not the issue described.`],
-            [`A process with only inputs`, `Not the issue described.`]
+            [`A data store connected to an entity`, `The issue described is two processes with the same number, not a store linked to an entity; the second P1.1 should be P1.3.`],
+            [`An unbalanced context diagram`, `The problem is inside the Level-1 diagram (a duplicate process number), not balancing of the context diagram.`],
+            [`A process with only inputs`, `Neither P1.1 is described as having only inputs; the error is that the number is used twice, so the second should be P1.3.`]
           ], a: 0, src: `Exam 2023/24` },
         { q: `In the 2023/24 Level-0 DFD, P3 sends DF5 and DF4 but receives nothing. Which rule is broken?`, o: [
-            [`Forked flows must carry the same data`, `Not the issue here.`],
-            [`Context has only one process`, `Not the issue here.`],
-            [`Data stores must be noun phrases`, `Not the issue here.`],
-            [`A process must have both inputs and outputs (P3 is a "miracle")`, `Correct.`]
+            [`Forked flows must carry the same data`, `There is no forked flow in the description; P3 only sends flows and receives none, which is a miracle.`],
+            [`Context has only one process`, `The one-process rule applies to the context diagram; P3 is on Level 0, and its error is having outputs with no inputs.`],
+            [`Data stores must be noun phrases`, `Naming of data stores is not involved; P3 breaks the process rule because it has outputs (DF5, DF4) but no inputs.`],
+            [`A process must have both inputs and outputs (P3 is a "miracle")`, `Correct. Every process must have both inputs and outputs; a process with only outputs is a "miracle" (only inputs = "black hole"), so P3 needs an input (L4, slides 8–13).`]
           ], a: 3, src: `Exam 2023/24` },
         { q: `In the 2023/24 Level-2 DFD, the first process is labelled P1.5.1 although it decomposes P1.4. Fix?`, o: [
-            [`Move it to the context diagram`, `The context has only process 0.`],
+            [`Move it to the context diagram`, `The context diagram may contain only process 0; a sub-process of P1.4 belongs on the Level-2 diagram of P1.4.`],
             [`Rename it P1.4.1`, `Correct. Child processes carry the parent number: 1.4.1, 1.4.2, 1.4.3.`],
-            [`Rename it P5.1`, `There is no process 5.`],
+            [`Rename it P5.1`, `There is no process 5 on Level 0, and a child of P1.4 must carry its parent's number (1.4.x), not 5.1.`],
             [`Delete DF8 and DF9`, `They are the inputs of P1.4 and keep the diagram balanced.`]
           ], a: 1, src: `Exam 2023/24` },
         { q: `Which of these is a valid rule for stopping decomposition?`, o: [
-            [`When each process has been reduced to a single decision, calculation or database operation`, `Correct.`],
-            [`When every data store has at least two inputs`, `Not a rule.`],
+            [`When each process has been reduced to a single decision, calculation or database operation`, `Correct. Rule 1 for stopping decomposition: each process has been reduced to a single decision, calculation or database operation (L4, slide 31).`],
+            [`When every data store has at least two inputs`, `No stopping rule counts data store inputs; the store rule is that each store represents data about a single entity.`],
             [`When the context diagram is balanced`, `Balancing is required at every level but is not a stopping rule.`],
             [`When the diagram has exactly 7 processes`, `7 to 9 is a guide for Level-0 size, not a stopping rule.`]
           ], a: 0 }
@@ -636,112 +636,112 @@ COURSES.sa = { id: `sa`, name: `Systems Analysis and Design`, short: `Systems`, 
         [`What are the COCOMO assumptions and the development modes?`, `Assumptions: the primary cost driver is the number of DSI developed; the project enjoys good management by both developer and customer; the requirements specification is not substantially changed after the plans and requirements phase. Modes: organic (familiar stable environment, similar to previous projects, relatively small, little innovation); semidetached (intermediate); embedded (tight, inflexible constraints and interface requirements, great innovation).`]
       ], quiz: [
         { q: `Embedded mode, 40,000 DSI, Effort = 3.6·(KDSI)^1.20. The effort is about:`, o: [
-            [`589 MM`, `That is the 70 KDSI value from 2024/25.`],
-            [`144 MM`, `That is 3.6 × 40 with no exponent.`],
-            [`301 MM`, `Correct. 40^1.20 = 83.65; 3.6 × 83.65 = 301.`],
-            [`230 MM`, `That is the 32 KDSI embedded value.`]
+            [`589 MM`, `589 MM is the embedded effort for 70 KDSI (Exam 2024/25: 3.6 × 70^1.20); here KDSI = 40, giving 3.6 × 83.65 ≈ 301 MM.`],
+            [`144 MM`, `144 = 3.6 × 40 drops the exponent; Basic COCOMO raises size to 1.20 first: 40^1.20 = 83.65, so E ≈ 301 MM.`],
+            [`301 MM`, `Correct. E = 3.6 × 40^1.20 = 3.6 × 83.65 = 301.1 ≈ 301 MM (L5, Basic embedded equation).`],
+            [`230 MM`, `230 MM is the embedded effort for 32 KDSI (3.6 × 64); with 40 KDSI, E = 3.6 × 83.65 ≈ 301 MM.`]
           ], a: 2, src: `Exam 2021/22` },
         { q: `For E = 301 MM (embedded), Schedule = 2.5·E^0.32 is about:`, o: [
-            [`12 months`, `Recheck the exponent 0.32.`],
-            [`16 months`, `Correct. 301^0.32 = 6.21; × 2.5 = 15.5 ≈ 16.`],
-            [`19 months`, `19 is the average staffing (301/16).`],
-            [`30 months`, `30 is the duration with half the staff.`]
+            [`12 months`, `12 months is too short: the embedded schedule is 2.5 × 301^0.32 = 2.5 × 6.21 = 15.5, which rounds to 16 months.`],
+            [`16 months`, `Correct. TDEV = 2.5 × E^0.32 = 2.5 × 301^0.32 = 2.5 × 6.21 = 15.5 ≈ 16 months (L5, Basic embedded schedule).`],
+            [`19 months`, `19 is the average staffing E / TDEV = 301 / 16 = 18.8 ≈ 19 FSP, not the schedule in months.`],
+            [`30 months`, `30 months is the duration at half the staff (19/2 ≈ 10 FSP, 301 / 10 = 30); the normal schedule is 2.5 × 301^0.32 ≈ 16.`]
           ], a: 1, src: `Exam 2021/22` },
         { q: `E = 301 MM. How many FSP are needed to finish in 4 months?`, o: [
-            [`10`, `That is half the normal staff.`],
-            [`1204`, `You multiplied instead of dividing.`],
+            [`10`, `10 FSP is half the normal staff (19/2 ≈ 10), used for the half-staff duration; to finish in 4 months you need 301 / 4 ≈ 75.`],
+            [`1204`, `1204 = 301 × 4 multiplies effort by time; staff needed for a given time is E / T = 301 / 4 ≈ 75 FSP.`],
             [`19`, `That is the staffing for the 16-month schedule.`],
-            [`75`, `Correct. 301 / 4 = 75.25 ≈ 75 FSP.`]
+            [`75`, `Correct. Staff needed for a time T is E / T = 301 / 4 = 75.25 ≈ 75 FSP (L5, Derived quantities).`]
           ], a: 3, src: `Exam 2021/22` },
         { q: `Semidetached, 24,000 DSI, Effort = 3.0·(KDSI)^1.12. Effort ≈ ?`, o: [
-            [`146 MM`, `That is for 32 KDSI.`],
-            [`229 MM`, `229 is the productivity in DSI/MM.`],
-            [`72 MM`, `That is 3 × 24 with no exponent.`],
-            [`105 MM`, `Correct. 24^1.12 = 35.14; × 3 = 105.4.`]
+            [`146 MM`, `146 MM is the lecture example for 32 KDSI semidetached (3.0 × 48.5); with 24 KDSI, E = 3.0 × 35.14 ≈ 105 MM.`],
+            [`229 MM`, `229 is the productivity 24,000 / 105 DSI/MM, a later step; the effort itself is 3.0 × 24^1.12 ≈ 105 MM.`],
+            [`72 MM`, `72 = 3 × 24 ignores the exponent 1.12; 24^1.12 = 35.14, so E = 3.0 × 35.14 ≈ 105 MM.`],
+            [`105 MM`, `Correct. E = 3.0 × 24^1.12 = 3.0 × 35.14 = 105.4 ≈ 105 MM (L5, Basic semidetached equation).`]
           ], a: 3, src: `Exam 2023/24` },
         { q: `E = 105 MM, TDEV = 13 months, DSI = 24,000. Productivity ≈ ?`, o: [
-            [`0.0044`, `You inverted the ratio.`],
-            [`229 DSI/MM`, `Correct. 24,000 / 105 = 228.6.`],
-            [`8 DSI/MM`, `8 is the average staffing.`],
+            [`0.0044`, `0.0044 = 105 / 24,000 inverts the ratio; productivity is DSI / E = 24,000 / 105 ≈ 229 DSI/MM.`],
+            [`229 DSI/MM`, `Correct. Productivity = DSI / E = 24,000 / 105 = 228.6 ≈ 229 DSI/MM (L5, Derived quantities).`],
+            [`8 DSI/MM`, `8 is the average staffing E / TDEV = 105 / 13 ≈ 8 FSP; productivity is DSI / E = 24,000 / 105 ≈ 229 DSI/MM.`],
             [`1846 DSI/month`, `That is DSI/TDEV, not the lecture's productivity.`]
           ], a: 1, src: `Exam 2023/24` },
         { q: `E = 105 MM and the average staff is 8 FSP. If staff decreases to ¾ of that, the duration is about:`, o: [
-            [`17.5 months (≈18)`, `Correct. ¾ × 8 = 6 FSP; 105/6 = 17.5.`],
+            [`17.5 months (≈18)`, `Correct. New staff = ¾ × 8 = 6 FSP; duration = E / S = 105 / 6 = 17.5 ≈ 18 months (L5, Derived quantities).`],
             [`9.75 months`, `That is ¾ of 13 months, a time change, not a staff change.`],
-            [`26 months`, `That is for half the staff (4 FSP).`],
-            [`13 months`, `That is the original schedule.`]
+            [`26 months`, `26 months is the duration at half the staff (4 FSP: 105 / 4 = 26.25); ¾ staff is 6 FSP, so 105 / 6 = 17.5 months.`],
+            [`13 months`, `13 months is the original schedule with 8 FSP; with fewer people (6 FSP) the same 105 MM takes longer: 105 / 6 = 17.5.`]
           ], a: 0, src: `Exam 2023/24` },
         { q: `Semidetached project, E = 105 MM, TDEV = 13 months, salary EP 5000. Using the course convention (staff × months × salary), total programmer cost = ?`, o: [
-            [`EP 1,145,000`, `Not derived from the data.`],
-            [`EP 65,000`, `That is 13 × 5000 for one person only.`],
+            [`EP 1,145,000`, `1,145,000 = 229 × 5000 multiplies the productivity (DSI/MM) by the salary; cost is staff × months × salary = 8 × 13 × 5000.`],
+            [`EP 65,000`, `65,000 = 13 × 5000 is one programmer's pay; all 8 FSP must be paid: 8 × 13 × 5000 = EP 520,000.`],
             [`EP 520,000`, `Correct. 8 FSP × 13 months × 5000 = 520,000 (exact E × salary = 525,000).`],
-            [`EP 40,000`, `That is 8 × 5000 for one month.`]
+            [`EP 40,000`, `40,000 = 8 × 5000 is the team's pay for a single month; over 13 months it is 8 × 13 × 5000 = EP 520,000.`]
           ], a: 2, src: `Exam 2023/24` },
         { q: `Embedded, 70,000 DSI, E = 3.6·(KDSI)^1.20. Effort ≈ ?`, o: [
             [`458 MM`, `That would use the Intermediate embedded constant 2.8 (2.8 × 163.7 = 458.4).`],
-            [`252 MM`, `That is 3.6 × 70 with no exponent.`],
-            [`589 MM`, `Correct. 70^1.20 = 163.7; × 3.6 = 589.4.`],
-            [`301 MM`, `That is for 40 KDSI.`]
+            [`252 MM`, `252 = 3.6 × 70 omits the exponent; 70^1.20 = 163.7, so E = 3.6 × 163.7 ≈ 589 MM.`],
+            [`589 MM`, `Correct. E = 3.6 × 70^1.20 = 3.6 × 163.7 = 589.4 ≈ 589 MM (L5, Basic embedded equation).`],
+            [`301 MM`, `301 MM is the embedded effort for 40 KDSI (Exam 2021/22); with 70 KDSI, E = 3.6 × 163.7 ≈ 589 MM.`]
           ], a: 2, src: `Exam 2024/25` },
         { q: `E = 589 MM, TDEV = 19 months. If staff is decreased to 80% of the estimate, the duration is about:`, o: [
             [`24 months`, `Correct. Staff = 589/19 = 31; 0.8 × 31 = 24.8 ≈ 25 FSP; 589/25 = 23.6 ≈ 24 months.`],
-            [`31 months`, `31 is the average staffing.`],
-            [`19 months`, `Fewer people means a longer duration.`],
+            [`31 months`, `31 is the normal average staffing 589 / 19; the question asks for months at 80% staff: 589 / 25 ≈ 24.`],
+            [`19 months`, `19 months is the original schedule; with only 25 FSP the same 589 MM takes longer: 589 / 25 = 23.6 ≈ 24 months.`],
             [`15 months`, `80% of 19 months is a time change, not a staff change.`]
           ], a: 0, src: `Exam 2024/25` },
         { q: `E = 589 MM, TDEV = 19 months. Average staffing to finish in 70% of the estimated time ≈ ?`, o: [
-            [`31 FSP`, `That is the normal staffing.`],
-            [`119 FSP`, `119 is the productivity in DSI/MM.`],
+            [`31 FSP`, `31 FSP is the staffing for the normal 19 months (589 / 19); a shorter time of 13 months needs 589 / 13 ≈ 45 FSP.`],
+            [`119 FSP`, `119 is the productivity 70,000 / 589 DSI/MM; staff for 70% time is 589 / 13 ≈ 45 FSP.`],
             [`22 FSP`, `That is 70% of the staff, the wrong direction.`],
             [`45 FSP`, `Correct. 0.7 × 19 = 13.3 ≈ 13 months; 589/13 = 45.3 ≈ 45 (44 if 13.3 is kept).`]
           ], a: 3, src: `Exam 2024/25` },
         { q: `E = 105 MM, staff 8 FSP, TDEV 13 months. Staff to finish in 75% of the estimated time ≈ ?`, o: [
-            [`6 FSP`, `That is 75% of the staff.`],
+            [`6 FSP`, `6 FSP is 75% of the staff, which applies when staff (not time) is reduced; less time needs more people: 105 / 9.75 ≈ 11.`],
             [`11 FSP`, `Correct. 0.75 × 13 = 9.75 months; 105/9.75 = 10.8 ≈ 11.`],
-            [`8 FSP`, `That is for the full schedule.`],
-            [`16 FSP`, `That is for half the time.`]
+            [`8 FSP`, `8 FSP is the staffing for the full 13-month schedule; finishing in 9.75 months needs 105 / 9.75 ≈ 11 FSP.`],
+            [`16 FSP`, `16 FSP is the staff for half the time (105 / 6.5 = 16.2); 75% of the time is 9.75 months, so 105 / 9.75 ≈ 11.`]
           ], a: 1, src: `Exam 2025/26` },
         { q: `E = 105 MM, staff 8 FSP. Duration if the staff decreases to half the estimated staffing:`, o: [
-            [`26 months`, `Correct. 4 FSP; 105/4 = 26.25 ≈ 26 months.`],
-            [`13 months`, `That is the original duration.`],
-            [`17.5 months`, `That is for ¾ staff.`],
+            [`26 months`, `Correct. Half the staff = 8 / 2 = 4 FSP; duration = E / S = 105 / 4 = 26.25 ≈ 26 months (L5, Derived quantities).`],
+            [`13 months`, `13 months is the original duration with 8 FSP; halving the staff to 4 doubles the time: 105 / 4 ≈ 26 months.`],
+            [`17.5 months`, `17.5 months is the duration at ¾ staff (105 / 6); half staff is 4 FSP, giving 105 / 4 ≈ 26 months.`],
             [`6.5 months`, `That is half the schedule, not half the staff.`]
           ], a: 0, src: `Exam 2025/26` },
         { q: `Lecture example: semidetached, 32,000 DSI (Basic). Effort, schedule and staff are:`, o: [
-            [`91 MM, 14 months, 7 FSP`, `That would be organic mode.`],
-            [`230 MM, 14 months, 16 FSP`, `That would be embedded mode.`],
-            [`146 MM, 14 months, 10 FSP`, `Correct.`],
+            [`91 MM, 14 months, 7 FSP`, `91 MM, 14 months, 7 FSP is what the organic equation (2.4 × 32^1.05) gives; the example is semidetached (3.0 × 32^1.12 ≈ 146).`],
+            [`230 MM, 14 months, 16 FSP`, `230 MM, 14 months, 16 FSP comes from the embedded equation (3.6 × 32^1.20); semidetached gives 3.0 × 48.5 ≈ 146 MM.`],
+            [`146 MM, 14 months, 10 FSP`, `Correct. E = 3.0 × 32^1.12 = 145.5 ≈ 146 MM; TDEV = 2.5 × 146^0.35 = 14.3 ≈ 14 months; staff = 146 / 14 ≈ 10 FSP (L5, worked example).`],
             [`167 MM, 15 months, 11 FSP`, `That is the Intermediate example with RELY = 1.15.`]
           ], a: 2, src: `Lecture 5 example` },
         { q: `In the Intermediate example, RELY = high = 1.15 changes the effort from 146 MM to about:`, o: [
-            [`127 MM`, `That divides by 1.15.`],
-            [`167 MM`, `Correct. 1.15 × 145.5 = 167.3.`],
-            [`192 MM`, `192 is the productivity in DSI/MM.`],
-            [`146 MM`, `The EAF multiplies the effort.`]
+            [`127 MM`, `127 = 146 / 1.15 divides by the multiplier; the EAF multiplies the nominal effort: 1.15 × 145.5 ≈ 167 MM.`],
+            [`167 MM`, `Correct. E = EAF × 3.0 × 32^1.12 = 1.15 × 145.5 = 167.3 ≈ 167 MM (L5, Intermediate example).`],
+            [`192 MM`, `192 is the productivity of the Intermediate example (32,000 / 167 DSI/MM), not the effort.`],
+            [`146 MM`, `146 MM is the nominal effort (EAF = 1); RELY = 1.15 multiplies it: 1.15 × 145.5 ≈ 167 MM.`]
           ], a: 1, src: `Lecture 5 example` },
         { q: `Which COCOMO mode describes a project "developed in a familiar, stable environment, similar to previous projects, relatively small, little innovation"?`, o: [
-            [`Semidetached`, `Semidetached is intermediate.`],
+            [`Semidetached`, `Semidetached is the intermediate mode between organic and embedded; the familiar, small, low-innovation description is organic.`],
             [`Embedded`, `Embedded has tight constraints and needs great innovation.`],
-            [`Detailed`, `Detailed is a model, not a mode.`],
-            [`Organic`, `Correct.`]
+            [`Detailed`, `Detailed is one of the three COCOMO models (Basic, Intermediate, Detailed), not a development mode.`],
+            [`Organic`, `Correct. Organic mode: developed in a familiar, stable environment, similar to previous projects, relatively small and requiring little innovation (L5, Modes).`]
           ], a: 3 },
         { q: `Basic COCOMO estimates are within a factor of 2 of the actual cost:`, o: [
-            [`68% of the time`, `68% (within 20%) is the Intermediate model.`],
-            [`70% of the time`, `70% (within 20%) is the Detailed model.`],
-            [`29% of the time`, `29% is for a factor of 1.3.`],
-            [`60% of the time`, `Correct.`]
+            [`68% of the time`, `68% is the Intermediate model's figure (within 20% of actuals 68% of the time), not Basic within a factor of 2.`],
+            [`70% of the time`, `70% is the Detailed model's figure (within 20% of actuals 70% of the time), not Basic within a factor of 2.`],
+            [`29% of the time`, `29% is Basic COCOMO within a factor of 1.3; within a factor of 2 it is 60% of the time.`],
+            [`60% of the time`, `Correct. Basic COCOMO lacks cost-driver factors, so its estimates are within a factor of 1.3 only 29% and within a factor of 2 only 60% of the time (L5, Basic limitations).`]
           ], a: 3 },
         { q: `Which is NOT a COCOMO assumption?`, o: [
-            [`Good management by developer and customer`, `This is an assumption.`],
+            [`Good management by developer and customer`, `Good management by both developer and customer is assumption 2 of COCOMO, so it IS an assumption.`],
             [`Requirements will change frequently during development`, `Correct. COCOMO assumes requirements are NOT substantially changed after planning.`],
-            [`Requirements are stable after the plans and requirements phase`, `This is an assumption.`],
-            [`DSI is the primary cost driver`, `This is an assumption.`]
+            [`Requirements are stable after the plans and requirements phase`, `Requirements not substantially changed after the plans and requirements phase is assumption 3, so it IS an assumption.`],
+            [`DSI is the primary cost driver`, `DSI as the primary cost driver is assumption 1 of COCOMO, so it IS an assumption.`]
           ], a: 1 },
         { q: `The Detailed model differs from the Intermediate model mainly by:`, o: [
-            [`Phase-sensitive effort multipliers and a module-subsystem-system hierarchy`, `Correct.`],
+            [`Phase-sensitive effort multipliers and a module-subsystem-system hierarchy`, `Correct. The Detailed model adds phase-sensitive effort multipliers and a module-subsystem-system hierarchy, using the same equations as Intermediate (L5, Detailed COCOMO).`],
             [`Using different equations`, `Detailed uses the same equations as Intermediate.`],
-            [`Ignoring cost drivers`, `It uses them per module/subsystem.`],
-            [`Using size only`, `That is the Basic model.`]
+            [`Ignoring cost drivers`, `The Detailed model does not ignore cost drivers; it applies them at module level (CPLX, PCAP, VEXP, LEXP) and subsystem level (RELY, DATA, TIME, STOR, VIRT).`],
+            [`Using size only`, `Using size alone is the Basic model; Detailed uses size plus phase-sensitive cost drivers per module and subsystem.`]
           ], a: 0 }
       ] },
     { n: 6, title: `CPM and PERT: Network Scheduling, Gantt Charts and Team Size`, notes: [
@@ -818,100 +818,100 @@ Largest number of parallel activities = 4 (time 20-21: F, G, I, K)
         [`What would happen in Problem 2 if activity 6 took six weeks instead of one?`, `Originally T = 23 weeks with critical path 1-2-4-7-8-10, and activity 6 (design screens) had 4 weeks of slack (ES 12, LS 16). Increasing it by 5 weeks exceeds its slack by 1: path 1-2-4-6-8-10 becomes 2+3+7+6+4+2 = 24 weeks. The project is delayed by one week to 24 weeks, the critical path becomes 1-2-4-6-8-10, and activity 7 now has 1 week of slack.`]
       ], quiz: [
         { q: `Tasks (days): A5(-), B6(-), C3(A), D8(A), E2(B,C), F11(B,C), G1(D), H12(G,E). The project duration is:`, o: [
-            [`19 days`, `19 is A-C-F.`],
-            [`22 days`, `22 is path A-C-E-H, not the longest.`],
-            [`26 days`, `Correct. A-D-G-H = 5+8+1+12 = 26.`],
-            [`30 days`, `No path is that long.`]
+            [`19 days`, `19 days is only path A-C-F (5+3+11); the project duration is the longest path, A-D-G-H = 5+8+1+12 = 26 days.`],
+            [`22 days`, `22 days is path A-C-E-H (5+3+2+12), but the project lasts as long as the longest path, A-D-G-H = 26 days.`],
+            [`26 days`, `Correct. Project duration = length of the longest path: A-D-G-H = 5 + 8 + 1 + 12 = 26 days (others: A-C-E-H 22, B-E-H 20, A-C-F 19) (L6, Forward pass).`],
+            [`30 days`, `No path reaches 30: the longest is A-D-G-H = 26 days, which is the project duration.`]
           ], a: 2, src: `Exam 2023/24` },
         { q: `In the same network (A5, B6, C3←A, D8←A, E2←B,C, F11←B,C, G1←D, H12←G,E), which activities are critical?`, o: [
-            [`A, C, F`, `A-C-F = 19 days only.`],
-            [`B, E, H`, `B-E-H = 20 days only.`],
-            [`A, D, G, H`, `Correct. Zero slack, total 26.`],
-            [`A, C, E, H`, `That path is 22; C has 4 days slack.`]
+            [`A, C, F`, `A-C-F is only 19 days; C has 4 days and F 7 days of slack, so they are not critical.`],
+            [`B, E, H`, `B-E-H is only 6+2+12 = 20 days; B has 6 days and E 4 days of slack, so they are not critical.`],
+            [`A, D, G, H`, `Correct. A, D, G and H have zero slack (ES = LS) and form the longest path, 5 + 8 + 1 + 12 = 26 days (L6, critical activities have slack 0).`],
+            [`A, C, E, H`, `A-C-E-H is 22 days, 4 less than 26; C and E each have 4 days of slack, so this is not the critical path.`]
           ], a: 2, src: `Exam 2025/26` },
         { q: `Same network: what is the slack of activity F (11 days, after B and C)?`, o: [
-            [`7`, `Correct. ES = 8, EF = 19, LF = 26 → slack 7.`],
-            [`0`, `F is not critical.`],
-            [`4`, `4 is the slack of C or E.`],
-            [`6`, `6 is the slack of B.`]
+            [`7`, `Correct. F: ES = max(EF B 6, EF C 8) = 8, EF = 19; it ends the project, so LF = 26 and slack = 26 − 19 = 7 (L6, Total slack = LF − EF).`],
+            [`0`, `Zero slack is for critical activities (A, D, G, H); F finishes at 19 but may finish as late as 26, so it has 7.`],
+            [`4`, `4 is the slack of C (or E), whose paths are 22 days; F has LF 26 − EF 19 = 7.`],
+            [`6`, `6 is the slack of B (LF 12 − EF 6); F's slack is LF 26 − EF 19 = 7.`]
           ], a: 0, src: `Exam 2025/26` },
         { q: `Same network: drawing all activities at their earliest start, the largest number of activities in progress at once (minimum team) is:`, o: [
-            [`4`, `Never four at once.`],
-            [`8`, `That is the number of activities.`],
+            [`4`, `On the earliest-start chart at most three bars ever overlap (B, C, D on day 5; D, E, F on days 8–9), never four.`],
+            [`8`, `8 is just the number of activities; the team size is the largest count of bars running at the same time, which is 3.`],
             [`2`, `Only possible after shifting B, C, E and F within their slack (resource levelling).`],
             [`3`, `Correct. Day 5-6 (B, C, D) and days 8-10 (D, E, F).`]
           ], a: 3, src: `Exam 2023/24` },
         { q: `2021/22 network (weeks): A5, B6←A, C6←A, D2←B,C, E7←D, F5←D, G3←F, H5←E,G. Project time?`, o: [
-            [`39 weeks`, `That is the sum of all durations.`],
+            [`39 weeks`, `39 adds every activity, but B and C run in parallel and E runs beside F-G; the duration is the longest path, 26 weeks.`],
             [`26 weeks`, `Correct. A-B(or C)-D-F-G-H = 5+6+2+5+3+5 = 26.`],
-            [`25 weeks`, `That is the path through E.`],
-            [`22 weeks`, `That is the lecture version where H = 1.`]
+            [`25 weeks`, `25 is the path through E (A-B-D-E-H = 5+6+2+7+5); the longest path goes through F and G: 26 weeks.`],
+            [`22 weeks`, `22 would be the result if H were 1 week (the lecture version); this paper has H = 5, giving 26 weeks.`]
           ], a: 1, src: `Exam 2021/22` },
         { q: `In that 2021/22 network, which activity is NOT critical?`, o: [
             [`E`, `Correct. E: ES 13, EF 20, LF 21 → 1 week slack.`],
-            [`G`, `G is critical.`],
+            [`G`, `G is on the longest path A-B/C-D-F-G-H (26 weeks) with ES = LS = 18, so it is critical.`],
             [`B`, `B and C are both critical (parallel, equal length).`],
-            [`D`, `D is critical.`]
+            [`D`, `D lies on every path (it follows B and C and precedes E and F), with ES = LS = 11, so it is critical.`]
           ], a: 0, src: `Exam 2021/22` },
         { q: `2021/22 network: minimum team (no one does 2 activities at the same time)?`, o: [
-            [`8`, `That is the number of activities.`],
+            [`8`, `8 is the number of activities; the lecture method takes the largest number of bars running at once, which is 2.`],
             [`1`, `B and C overlap, so one person is not enough.`],
             [`2`, `Correct. At most two activities overlap (B and C; then E with F or G).`],
-            [`3`, `Three never overlap.`]
+            [`3`, `On the earliest-start Gantt chart no three activities ever overlap (B‖C, then E‖F and E‖G), so 2 people suffice.`]
           ], a: 2, src: `Exam 2021/22` },
         { q: `2024/25 network: A2, B3←A, C3←B, D7←B, E6←B, F1←C,D, G5←D,E, H4←F,G, I8←B, J2←H,I. Longest (critical) path?`, o: [
-            [`A-B-E-G-H-J = 22`, `One week shorter than the longest path.`],
-            [`A-B-D-G-H-J = 23`, `Correct.`],
-            [`A-B-I-J = 15`, `That is a shortest path.`],
-            [`A-B-D-F-H-J = 19`, `Not the longest.`]
+            [`A-B-E-G-H-J = 22`, `A-B-E-G-H-J = 2+3+6+5+4+2 = 22 is a week shorter than A-B-D-G-H-J (D = 7 vs E = 6), so E has 1 week slack.`],
+            [`A-B-D-G-H-J = 23`, `Correct. The longest path is A-B-D-G-H-J = 2 + 3 + 7 + 5 + 4 + 2 = 23 weeks; those activities have zero slack (L6, Forward pass).`],
+            [`A-B-I-J = 15`, `A-B-I-J = 2+3+8+2 = 15 is one of the shortest paths; the critical path is the longest, 23 weeks.`],
+            [`A-B-D-F-H-J = 19`, `A-B-D-F-H-J = 2+3+7+1+4+2 = 19 is shorter than A-B-D-G-H-J = 23 (F = 1 vs G = 5), so it is not critical.`]
           ], a: 1, src: `Exam 2024/25` },
         { q: `2024/25 network: the shortest path from start to finish is:`, o: [
-            [`19 weeks`, `A-B-D-F-H-J is 19, not the shortest.`],
-            [`23 weeks`, `That is the longest path.`],
+            [`19 weeks`, `A-B-D-F-H-J = 19 weeks, but two paths are shorter: A-B-I-J and A-B-C-F-H-J are both 15.`],
+            [`23 weeks`, `23 weeks is the longest (critical) path A-B-D-G-H-J, the opposite of what is asked.`],
             [`5 weeks`, `A path must go from start to the end activity J.`],
-            [`15 weeks (A-B-I-J, and also A-B-C-F-H-J)`, `Correct. 2+3+8+2 = 15 and 2+3+3+1+4+2 = 15.`]
+            [`15 weeks (A-B-I-J, and also A-B-C-F-H-J)`, `Correct. A-B-I-J = 2+3+8+2 = 15 and A-B-C-F-H-J = 2+3+3+1+4+2 = 15; every other start-to-end path is longer (L6, network paths).`]
           ], a: 3, src: `Exam 2024/25` },
         { q: `2024/25 network: the slack of I (test and document, 8 weeks after B) is:`, o: [
-            [`4`, `4 is the slack of F.`],
-            [`0`, `I is not on the critical path.`],
-            [`1`, `1 is the slack of E.`],
-            [`8`, `Correct. ES 5, EF 13, LF 21.`]
+            [`4`, `4 is the slack of F (LF 17 − EF 13); I has ES 5, EF 13 and LF 21, so its slack is 8.`],
+            [`0`, `I is not on the critical path A-B-D-G-H-J; it can finish as late as week 21 but finishes by 13, so it has slack.`],
+            [`1`, `1 is the slack of E (LF 12 − EF 11); I's slack is LF 21 − EF 13 = 8.`],
+            [`8`, `Correct. I: ES = EF(B) = 5, EF = 13; its successor J has LS = 21, so LF = 21 and slack = 21 − 13 = 8 weeks (L6, Backward pass).`]
           ], a: 3, src: `Exam 2024/25` },
         { q: `2024/25 network: the most activities running at once on the earliest-start Gantt chart is:`, o: [
             [`3`, `3 is the best possible after levelling, not the earliest-start count.`],
-            [`4`, `Correct. Weeks 5-8: C, D, E, I.`],
-            [`10`, `That is the number of activities.`],
-            [`2`, `Weeks 5-8 have four bars.`]
+            [`4`, `Correct. With every activity at its earliest start, C (5–8), D (5–12), E (5–11) and I (5–13) all run in weeks 5–8: four bars at once (L6, team = largest count).`],
+            [`10`, `10 is the number of activities (A to J); the question asks for the largest number running at once, which is 4.`],
+            [`2`, `Weeks 5–8 have four bars at once (C, D, E, I) on the earliest-start chart, so the peak is 4, not 2.`]
           ], a: 1, src: `Exam 2024/25` },
         { q: `13-activity lab example: what minimum team size does the professor's Gantt chart give?`, o: [
-            [`4`, `Correct.`],
+            [`4`, `Correct. Writing the count of running bars under each day of the earliest-start Gantt chart, the largest is 4 (day 20–21: F, G, I, K), the professor's answer (L6, 13-activity example).`],
             [`2`, `Two is only reachable by levelling (not the lecture method).`],
-            [`13`, `That is the number of activities.`],
-            [`3`, `The count reaches 4 at day 20-21.`]
+            [`13`, `13 is the number of activities (A to M); the team is the largest number of parallel bars, which is 4.`],
+            [`3`, `The earliest-start count row reaches 4 at day 20–21 (F, G, I and K run together), so 3 people are too few by the lecture method.`]
           ], a: 0, src: `Lecture 6 example` },
         { q: `In Problem 2, if activity 6 (design screens) is revised from 1 to 6 weeks, the project:`, o: [
             [`finishes earlier`, `A longer activity cannot shorten the project.`],
             [`is unaffected because 6 has slack`, `6 has only 4 weeks of slack; the increase is 5.`],
-            [`is delayed by 1 week to 24 weeks`, `Correct. New critical path 1-2-4-6-8-10.`],
-            [`is delayed by 5 weeks to 28 weeks`, `Slack absorbs 4 of the 5 weeks.`]
+            [`is delayed by 1 week to 24 weeks`, `Correct. Activity 6 had 4 weeks slack; +5 weeks exceeds it by 1. Path 1-2-4-6-8-10 = 2+3+7+6+4+2 = 24 > 23, so the project takes 24 weeks (L6, Problem 2).`],
+            [`is delayed by 5 weeks to 28 weeks`, `Adding all 5 weeks ignores activity 6's 4 weeks of slack, which absorbs most of the increase; the delay is 5 − 4 = 1 week.`]
           ], a: 2, src: `Lecture 6 example` },
         { q: `PERT: o = 4, r = 7, p = 9. Expected time = ?`, o: [
-            [`41`, `You forgot to divide by 6.`],
-            [`6.67`, `That is (4+7+9)/3.`],
-            [`6.83`, `Correct. (4 + 28 + 9)/6 = 41/6 = 6.83.`],
-            [`7`, `Close, but the exact result is 6.83.`]
+            [`41`, `41 is only the numerator 4 + 4×7 + 9; dividing by 6 gives 41/6 = 6.83.`],
+            [`6.67`, `6.67 = (4+7+9)/3 is a simple average; PERT weights r by 4 and divides by 6: (4 + 28 + 9)/6 = 6.83.`],
+            [`6.83`, `Correct. ET = (o + 4r + p)/6 = (4 + 4×7 + 9)/6 = 41/6 = 6.83 (L6, Problem 1, activity J).`],
+            [`7`, `7 is the realistic estimate r, not the expected time; (4 + 28 + 9)/6 = 41/6 = 6.83.`]
           ], a: 2, src: `Lecture 6 example` },
         { q: `A dummy activity:`, o: [
-            [`Consumes no time or resources and is drawn dashed`, `Correct.`],
-            [`Is always on the critical path`, `Not necessarily.`],
-            [`Represents a milestone with resources`, `It uses no resources.`],
-            [`Takes the average time of its neighbours`, `It takes no time.`]
+            [`Consumes no time or resources and is drawn dashed`, `Correct. A dummy activity is a dashed arc that consumes no time or resources; it gives concurrent activities unique end nodes and keeps precedence correct (L6, rule 2).`],
+            [`Is always on the critical path`, `A dummy only expresses a precedence link; it lies on the critical path only if the activities it links are critical.`],
+            [`Represents a milestone with resources`, `A dummy consumes no time and no resources; it is a dashed arc used for precedence, not a resourced milestone.`],
+            [`Takes the average time of its neighbours`, `A dummy takes zero time; it is only a dashed arc that fixes end nodes and precedence.`]
           ], a: 0 },
         { q: `CPM differs from PERT because CPM assumes:`, o: [
-            [`No precedence relationships`, `Both use precedence.`],
-            [`Only one critical path`, `Not the distinguishing feature.`],
-            [`Probabilistic activity durations`, `That is PERT.`],
-            [`Deterministic activity durations`, `Correct.`]
+            [`No precedence relationships`, `Both CPM and PERT are network methods built on precedence relationships; the difference is how durations are treated.`],
+            [`Only one critical path`, `Either method can have more than one critical path; the lecture's difference is deterministic (CPM) vs probabilistic (PERT) durations.`],
+            [`Probabilistic activity durations`, `Probabilistic durations (three estimates o, r, p) are what PERT assumes; CPM assumes deterministic durations.`],
+            [`Deterministic activity durations`, `Correct. The lecture states that CPM assumes deterministic activity durations while PERT assumes probabilistic durations; they were developed independently (L6).`]
           ], a: 3 }
       ] }
   ], exams: [
@@ -950,16 +950,16 @@ team 22222322332222222221111111</pre><b>c) Team.</b> With every activity at its 
             { type: `written`, q: `c) What is meant by Computer-Aided Software Engineering?`, ans: `CASE tools are software that give <b>automated support for some part of the SDLC</b>. They are built around a <b>repository</b> holding all the metadata (data names, formats, uses, locations) and the system specifications. They automate routine tasks and can generate code and DDL. Types: diagramming tools, computer display and report generators, analysis tools, a central repository, documentation generators and code generators. The repository is the most important part because it gives the whole team a single view of the project. (L2)` }
           ] },
         { title: `Question 6 · Write the correct 1st column (do not change the 2nd)`, marks: `10 marks`, items: [
-            { type: `mcq`, q: `"Data flow from a data store to a process."`, o: [`Update`, `Retrieve`, `Slack time`, `Logical design`], a: 1, why: `Store → process means retrieve or use. (L4)` },
-            { type: `mcq`, q: `"Data flow from a process to a data store."`, o: [`Retrieve`, `Data flow diagrams`, `Update`, `Network diagram`], a: 2, why: `Process → store means update (insert, delete or change). (L4)` },
-            { type: `mcq`, q: `"Represent information gathered during requirements determination."`, o: [`Data flow diagrams`, `Physical design`, `Work Breakdown Structure`, `System Service Request`], a: 0, why: `DFDs represent the information gathered as part of requirements determination. (L4)` },
-            { type: `mcq`, q: `"High-level processes described in terms of lower-level sub-processes."`, o: [`Network diagram`, `Functional decomposition`, `Logical design`, `Update`], a: 1, why: `Functional decomposition breaks high-level processes into sub-processes. (L4)` },
-            { type: `mcq`, q: `"The amount of time that an activity can be delayed without delaying the project."`, o: [`Slack time`, `Network diagram`, `Retrieve`, `Physical design`], a: 0, why: `Definition of slack time. (L3)` },
-            { type: `mcq`, q: `"Represent project tasks and their interrelationships."`, o: [`Data flow diagrams`, `Work Breakdown Structure`, `Network diagram`, `Functional decomposition`], a: 2, why: `A network diagram depicts project tasks and their interrelationships. (L3)` },
-            { type: `mcq`, q: `"The process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks."`, o: [`Functional decomposition`, `Work Breakdown Structure`, `System Service Request`, `Slack time`], a: 1, why: `Definition of the WBS. (L3)` },
-            { type: `mcq`, q: `"A standard form for requesting or proposing systems development work within an organization."`, o: [`System Service Request`, `Logical design`, `Update`, `Network diagram`], a: 0, why: `Definition of the SSR. (L3)` },
-            { type: `mcq`, q: `"All functional features of the system chosen for development in analysis are described independently of any computer platform."`, o: [`Physical design`, `Logical design`, `Data flow diagrams`, `Retrieve`], a: 1, why: `Logical design is platform independent. (L2)` },
-            { type: `mcq`, q: `"The specifications of the system are transformed into the technology-specific details."`, o: [`Logical design`, `Update`, `Physical design`, `Slack time`], a: 2, why: `Physical design produces technology-specific details. (L2)` }
+            { type: `mcq`, q: `"Data flow from a data store to a process."`, o: [`Update`, `Retrieve`, `Slack time`, `Logical design`], a: 1, why: `A flow from a data store to a process means retrieve or use: the process reads data that is at rest in the store (L4, Update vs retrieve).`, ow: [`Update is the opposite direction: a flow from a process into a data store (insert, delete or change).`, null, `Slack time is the time an activity can be delayed without delaying the project (L3), not a DFD flow.`, `Logical design describes functional features independently of any platform (L2), not a DFD flow.`] },
+            { type: `mcq`, q: `"Data flow from a process to a data store."`, o: [`Retrieve`, `Data flow diagrams`, `Update`, `Network diagram`], a: 2, why: `Process → store means update (insert, delete or change). (L4)`, ow: [`Retrieve is the reverse direction: a flow from a data store into a process, which reads the data.`, `DFDs are the whole diagrams used to represent requirements, not the meaning of one process-to-store flow.`, null, `A network diagram depicts project tasks and their interrelationships (L3), not a DFD flow.`] },
+            { type: `mcq`, q: `"Represent information gathered during requirements determination."`, o: [`Data flow diagrams`, `Physical design`, `Work Breakdown Structure`, `System Service Request`], a: 0, why: `DFDs represent the information gathered as part of requirements determination. (L4)`, ow: [null, `Physical design transforms logical specifications into technology-specific details (L2); it does not record requirements.`, `The WBS divides a project into manageable, ordered tasks (L3); it does not represent requirements.`, `An SSR is the standard form for requesting development work (L3), filled in before requirements are gathered.`] },
+            { type: `mcq`, q: `"High-level processes described in terms of lower-level sub-processes."`, o: [`Network diagram`, `Functional decomposition`, `Logical design`, `Update`], a: 1, why: `Functional decomposition breaks high-level processes into sub-processes. (L4)`, ow: [`A network diagram depicts project tasks and their interrelationships (L3), not processes broken into sub-processes.`, null, `Logical design describes the system's functional features independently of any platform (L2), not process levels.`, `Update is a flow from a process to a data store (L4), not a way of describing processes.`] },
+            { type: `mcq`, q: `"The amount of time that an activity can be delayed without delaying the project."`, o: [`Slack time`, `Network diagram`, `Retrieve`, `Physical design`], a: 0, why: `Slack time is the amount of time an activity can be delayed without delaying the project; on a network it is LF − EF, and it is zero on the critical path (L3, slide 68).`, ow: [null, `A network diagram depicts project tasks and their interrelationships; it can show slack in its boxes but is not slack itself.`, `Retrieve is a DFD flow from a data store to a process (L4), unrelated to scheduling delay.`, `Physical design turns logical specs into technology-specific details (L2), unrelated to scheduling.`] },
+            { type: `mcq`, q: `"Represent project tasks and their interrelationships."`, o: [`Data flow diagrams`, `Work Breakdown Structure`, `Network diagram`, `Functional decomposition`], a: 2, why: `A network diagram depicts project tasks and their interrelationships. (L3)`, ow: [`DFDs depict data moving between entities, processes and stores (L4), not project tasks.`, `The WBS divides the project into manageable tasks and orders them; the diagram of tasks and their interrelationships is the network diagram.`, null, `Functional decomposition breaks system processes into sub-processes (L4), not project tasks.`] },
+            { type: `mcq`, q: `"The process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks."`, o: [`Functional decomposition`, `Work Breakdown Structure`, `System Service Request`, `Slack time`], a: 1, why: `The Work Breakdown Structure is the process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks (L3, Planning activity 2).`, ow: [`Functional decomposition breaks a system description (processes) into finer detail for DFDs (L4), not a project into tasks.`, null, `An SSR is the standard form for requesting or proposing development work (L3), not a task breakdown.`, `Slack time is how long an activity can be delayed without delaying the project (L3), not a task breakdown.`] },
+            { type: `mcq`, q: `"A standard form for requesting or proposing systems development work within an organization."`, o: [`System Service Request`, `Logical design`, `Update`, `Network diagram`], a: 0, why: `The System Service Request is a standard form for requesting or proposing systems development work; it holds the contact person, problem statement, service request statement and liaison contact (L3).`, ow: [null, `Logical design describes functional features independently of any platform (L2); it is a design step, not a request form.`, `Update is a DFD flow from a process to a data store (L4), not a document.`, `A network diagram depicts project tasks and their interrelationships (L3), not a request for work.`] },
+            { type: `mcq`, q: `"All functional features of the system chosen for development in analysis are described independently of any computer platform."`, o: [`Physical design`, `Logical design`, `Data flow diagrams`, `Retrieve`], a: 1, why: `Logical design is the part of the design phase where all functional features chosen in analysis are described independently of any computer platform; physical design then adds the technology (L2, SDLC phases).`, ow: [`Physical design is the next step: it transforms the logical specs into technology-specific details, so it is not platform independent.`, null, `DFDs represent the requirements gathered in analysis (L4); the platform-independent description of features is logical design.`, `Retrieve is a DFD flow from a data store to a process (L4), not a design step.`] },
+            { type: `mcq`, q: `"The specifications of the system are transformed into the technology-specific details."`, o: [`Logical design`, `Update`, `Physical design`, `Slack time`], a: 2, why: `Physical design produces technology-specific details. (L2)`, ow: [`Logical design is the platform-independent description of features; adding technology-specific details is physical design.`, `Update is a DFD flow from a process to a data store (L4), not a design step.`, null, `Slack time is how long an activity can be delayed without delaying the project (L3), not a design step.`] }
           ] }
       ] },
     { title: `Final Exam 2024/2025`, meta: `January 2025 · 2nd year CS · CS 210 · 2 hours · 60 marks · answer only 6 of 7 questions, 10 marks each`, note: `Transcribed from two phone photos; everything is readable. A student wrote pencil answers on the paper: 23 (project length), "4, 1" (team), 589, 19, 31, 24, 45. These match the worked answers below. The "4, 1" reads the team question as the largest and smallest numbers on the Gantt count row. The network has the same structure as Lecture Problem 2 (activities 1 to 10 renamed A to J).`, sections: [
@@ -1003,16 +1003,16 @@ team 11111444333231111111111</pre><b>c) Team</b>: with earliest starts the count
             { type: `written`, q: `Write short notes: 1 Work Breakdown Structure, 2 Iterative Development, 3 Primitive DFD, 4 Project workbook, 5 Project charter, 6 Slack time, 7 Critical Path, 8 System Service Request, 9 DFD balancing meaning, 10 Context data flow diagram.`, ans: `1) <b>WBS</b>: dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks.<br>2) <b>Iterative development</b>: the analyst should expect to redraw a diagram several times before reaching the closest approximation to the system being modeled.<br>3) <b>Primitive DFD</b>: the lowest logical level of decomposition.<br>4) <b>Project workbook</b>: an online or hard-copy repository for all project correspondence, inputs, outputs, deliverables, procedures and standards.<br>5) <b>Project charter</b>: a short, high-level document for internal and external stakeholders that formally announces the project and describes its objectives, key assumptions and stakeholders.<br>6) <b>Slack time</b>: the time an activity can be delayed without delaying the project.<br>7) <b>Critical path</b>: a sequence of task activities whose order and durations directly affect the completion date of the project.<br>8) <b>SSR</b>: a standard form for requesting or proposing systems development work (contact person, problem statement, service request statement, liaison contact information).<br>9) <b>DFD balancing</b>: the conservation of inputs and outputs to a process when it is decomposed to a lower level.<br>10) <b>Context DFD</b>: shows the scope of the system: the boundary, the external entities and the major flows, with one process (0) and no data stores.` }
           ] },
         { title: `Question 7 · Write the correct answer`, marks: `10 marks (1 each)`, items: [
-            { type: `mcq`, q: `Process: work or actions performed on data (inside - outside) the system.`, o: [`inside`, `outside`], a: 0, why: `Processes and data stores are inside the system. (L4)` },
-            { type: `mcq`, q: `Data flow from a data store to a process (Update / Retrieve).`, o: [`Update`, `Retrieve`], a: 1, why: `Store → process = retrieve or use.` },
-            { type: `mcq`, q: `Interactions between external entities without intervening processes are (inside - outside) the system and therefore not represented in the DFD.`, o: [`inside`, `outside`], a: 1, why: `They are outside the system.` },
-            { type: `mcq`, q: `All flows to or from a data store must move through a (process - source).`, o: [`process`, `source`], a: 0, why: `Data store rule.` },
-            { type: `mcq`, q: `Context diagram contains only one (process - source) symbol.`, o: [`process`, `source`], a: 0, why: `One process numbered 0.` },
-            { type: `mcq`, q: `Source/sink: external entity that is origin or destination of data (inside - outside) the system.`, o: [`inside`, `outside`], a: 1, why: `Sources/sinks are outside.` },
-            { type: `mcq`, q: `Data flow from a process to a data store (Update / Retrieve).`, o: [`Update`, `Retrieve`], a: 0, why: `Process → store = update (insert, delete or change).` },
-            { type: `mcq`, q: `Context diagram contains no (data stores - destination) symbol.`, o: [`data stores`, `destination`], a: 0, why: `Context diagrams have no data stores; sinks (destinations) do appear.` },
-            { type: `mcq`, q: `Data store: data at rest (inside - outside) the system.`, o: [`inside`, `outside`], a: 0, why: `Data stores are inside.` },
-            { type: `mcq`, q: `Joined or forked data flow must refer to (exact same data - feedback flow).`, o: [`exact same data`, `feedback flow`], a: 0, why: `Forked/joined flows must be the exact same data item.` }
+            { type: `mcq`, q: `Process: work or actions performed on data (inside - outside) the system.`, o: [`inside`, `outside`], a: 0, why: `Processes and data stores are inside the system. (L4)`, ow: [null, `Only sources/sinks are outside the system; processes, like data stores, are inside it.`] },
+            { type: `mcq`, q: `Data flow from a data store to a process (Update / Retrieve).`, o: [`Update`, `Retrieve`], a: 1, why: `A flow from a data store to a process means retrieve or use: the process reads the data at rest in the store (L4, Update vs retrieve).`, ow: [`Update is the opposite direction, a flow from a process into a store (insert, delete or change).`, null] },
+            { type: `mcq`, q: `Interactions between external entities without intervening processes are (inside - outside) the system and therefore not represented in the DFD.`, o: [`inside`, `outside`], a: 1, why: `No data moves directly between external entities; interactions between them without an intervening process are outside the system and are not drawn on the DFD (L4, Source/sink rule).`, ow: [`They involve no process of the system, so they cannot be inside it; that is why the DFD does not show them.`, null] },
+            { type: `mcq`, q: `All flows to or from a data store must move through a (process - source).`, o: [`process`, `source`], a: 0, why: `Data store rule: all flows to or from a data store must move through a process; a store cannot connect directly to another store or to an external entity (L4).`, ow: [null, `A store may not connect directly to a source/sink; the data must pass through a process in between.`] },
+            { type: `mcq`, q: `Context diagram contains only one (process - source) symbol.`, o: [`process`, `source`], a: 0, why: `The context diagram has only one process symbol, numbered 0, representing the whole system, with all external entities and the major flows around it (L4).`, ow: [null, `The context diagram shows all external entities (sources/sinks), often several; it is the process that appears only once.`] },
+            { type: `mcq`, q: `Source/sink: external entity that is origin or destination of data (inside - outside) the system.`, o: [`inside`, `outside`], a: 1, why: `A source/sink is an external entity (person, organization, department or another system) that is the origin and/or destination of data outside the system (L4, symbols).`, ow: [`Processes and data stores are the parts inside the system; sources/sinks are external entities, so they are outside.`, null] },
+            { type: `mcq`, q: `Data flow from a process to a data store (Update / Retrieve).`, o: [`Update`, `Retrieve`], a: 0, why: `Process → store = update (insert, delete or change).`, ow: [null, `Retrieve is the reverse direction, a flow from a data store into a process.`] },
+            { type: `mcq`, q: `Context diagram contains no (data stores - destination) symbol.`, o: [`data stores`, `destination`], a: 0, why: `Context diagrams have no data stores; sinks (destinations) do appear.`, ow: [null, `Destinations (sinks) do appear on the context diagram as external entities; the missing symbol is the data store.`] },
+            { type: `mcq`, q: `Data store: data at rest (inside - outside) the system.`, o: [`inside`, `outside`], a: 0, why: `A data store is data at rest inside the system: a file, database, transaction file or set of tables, drawn as an open-ended rectangle D1, D2... (L4, symbols).`, ow: [null, `Only sources/sinks are outside; a data store holds the system's own data, so it is inside.`] },
+            { type: `mcq`, q: `Joined or forked data flow must refer to (exact same data - feedback flow).`, o: [`exact same data`, `feedback flow`], a: 0, why: `Forked/joined flows must be the exact same data item.`, ow: [null, `A feedback flow is not part of the DFD rule; forked and joined flows must refer to the exact same data item.`] }
           ] }
       ] },
     { title: `Final Exam 2023/2024`, meta: `January 2024 · 2nd year CS · CS 210 · 2 hours · 60 marks · 6 questions, 10 marks each (the May 2024 3rd-year paper, CS 310, 50 marks, answer five, has the same questions)`, note: `Transcribed from three sets of photos: "2023/24 2nd" (January, CS 210), "System 23-24 1st term" (the same January paper) and "2023/24 3rd year final" (May, CS 310). The May paper has the same six questions, except Q1(c) asks for the "min and max" team. The DFD figure was zoomed and is readable. Unlike 2025/26, here DF1 goes from E1 into Education System 1, P2 sends DF4 to E2, and DF11 is single-headed. A student solution ("Saad", for the May paper) exists. It agrees with these answers on: 26 days, team 3, 105 MM, 13 months, 8 FSP, 229 DSI/MM, 17.5 months, 16 FSP and EP 520,000. Its slips: it writes "105 MM / 8 M" for the staffing (it should be / 13 months). Its DFD list says DS2 receives "DF1" (it is DF3). It says P3 "has 2 outputs without an output" (it means without an input). It counts "the order of DF8 and DF9 changed" as an error, but that breaks no rule. Its Q3b answer on logical/physical database design is textbook material, not from the slides.`, sections: [
@@ -1048,16 +1048,16 @@ team 22222322332222222221111111</pre><b>c)</b> The largest count is <b>3</b> (da
             { type: `written`, q: `c) What is meant by Computer-Aided Software Engineering?`, ans: `Software tools that give automated support for some portion of the SDLC. They are built around a repository of metadata and specifications. Types: diagramming tools, display and report generators, analysis tools, a central repository, documentation generators and code generators. (L2)` }
           ] },
         { title: `Question 6 · Rewrite the table with the correct answer (do not change the 1st column)`, marks: `10 marks`, items: [
-            { type: `mcq`, q: `Systems Analyst.`, o: [`The amount of time that an activity can be delayed without delaying the project`, `Organizational role most responsible for analysis and design of information systems`, `A repository for all project correspondence`, `Any person, group of people, piece of equipment, or material used in accomplishing an activity`], a: 1, why: `Definition of the systems analyst. (L2)` },
-            { type: `mcq`, q: `Update.`, o: [`Data flow from a data store to a process`, `Data flow from a process to a data store`, `A standard form for requesting systems work`, `A short, high-level document for stakeholders`], a: 1, why: `Process → store = update. (L4)` },
-            { type: `mcq`, q: `Slack time.`, o: [`The amount of time that an activity can be delayed without delaying the project`, `A sequence of task activities whose order and durations directly affect the completion date`, `Data flow from a data store to a process`, `Organizational role most responsible for analysis and design`], a: 0, why: `Definition of slack time. (L3)` },
-            { type: `mcq`, q: `Retrieve.`, o: [`Data flow from a process to a data store`, `Data flow from a data store to a process`, `A repository for project documents`, `Dividing the project into manageable tasks`], a: 1, why: `Store → process = retrieve. (L4)` },
-            { type: `mcq`, q: `Resources.`, o: [`A short, high-level document for stakeholders`, `Any person, group of people, piece of equipment, or material used in accomplishing an activity`, `The amount of time an activity can be delayed`, `A standard form for requesting systems work`], a: 1, why: `Definition of resources. (L3)` },
-            { type: `mcq`, q: `Critical Path.`, o: [`A sequence of task activities whose order and durations directly affect the completion date of a project`, `The process of dividing the project into manageable tasks`, `A repository for all project correspondence`, `Data flow from a process to a data store`], a: 0, why: `Definition of the critical path. (L3)` },
-            { type: `mcq`, q: `Work Breakdown Structure.`, o: [`A standard form for requesting or proposing systems development work`, `The process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks`, `A sequence of task activities affecting completion date`, `Organizational role most responsible for analysis and design`], a: 1, why: `Definition of the WBS. (L3)` },
-            { type: `mcq`, q: `Project charter.`, o: [`A repository for all project correspondence, inputs, outputs, deliverables, procedures, and standards`, `A short, high-level document prepared for both internal and external stakeholders`, `Any person or equipment used in an activity`, `Data flow from a data store to a process`], a: 1, why: `Definition of the project charter. (L3)` },
-            { type: `mcq`, q: `Project workbook.`, o: [`A repository for all project correspondence, inputs, outputs, deliverables, procedures, and standards that are used`, `A short, high-level document prepared for stakeholders`, `A standard form for requesting systems development work`, `The amount of time an activity can be delayed`], a: 0, why: `Definition of the project workbook. (L3)` },
-            { type: `mcq`, q: `System Service Request.`, o: [`Any person, group of people, piece of equipment, or material used in accomplishing an activity`, `A sequence of task activities affecting completion date`, `A standard form for requesting or proposing systems development work within an organization`, `A short, high-level document for stakeholders`], a: 2, why: `Definition of the SSR. (L3)` }
+            { type: `mcq`, q: `Systems Analyst.`, o: [`The amount of time that an activity can be delayed without delaying the project`, `Organizational role most responsible for analysis and design of information systems`, `A repository for all project correspondence`, `Any person, group of people, piece of equipment, or material used in accomplishing an activity`], a: 1, why: `The systems analyst is the organizational role most responsible for the analysis and design of information systems (L2, Key definitions).`, ow: [`This is the definition of slack time (L3), a scheduling term, not a role in the organization.`, null, `This is the project workbook (L3), the repository of all project documents, not a person's role.`, `This is the definition of resources (L3); an analyst is one resource, but the term asked is a specific role.`] },
+            { type: `mcq`, q: `Update.`, o: [`Data flow from a data store to a process`, `Data flow from a process to a data store`, `A standard form for requesting systems work`, `A short, high-level document for stakeholders`], a: 1, why: `Update means a data flow from a process to a data store: the process inserts, deletes or changes data in the store (L4, Update vs retrieve).`, ow: [`A flow from a data store to a process is retrieve (the process reads data), the opposite of update.`, null, `A standard form for requesting systems work is the System Service Request (L3), not a DFD flow.`, `A short, high-level document for stakeholders is the project charter (L3), not a DFD flow.`] },
+            { type: `mcq`, q: `Slack time.`, o: [`The amount of time that an activity can be delayed without delaying the project`, `A sequence of task activities whose order and durations directly affect the completion date`, `Data flow from a data store to a process`, `Organizational role most responsible for analysis and design`], a: 0, why: `Slack time is the amount of time an activity can be delayed without delaying the project; it equals LF − EF and is zero on the critical path (L3, slide 68).`, ow: [null, `A sequence whose order and durations directly affect the completion date is the critical path, whose activities have zero slack.`, `A flow from a data store to a process is retrieve (L4), a DFD term, not a scheduling one.`, `The role most responsible for analysis and design is the systems analyst (L2), not slack.`] },
+            { type: `mcq`, q: `Retrieve.`, o: [`Data flow from a process to a data store`, `Data flow from a data store to a process`, `A repository for project documents`, `Dividing the project into manageable tasks`], a: 1, why: `Retrieve means a data flow from a data store to a process: the process reads or uses data at rest in the store (L4, Update vs retrieve).`, ow: [`A flow from a process to a data store is update (insert, delete or change), the opposite of retrieve.`, null, `A repository for project documents is the project workbook (L3), not a DFD flow.`, `Dividing the project into manageable tasks is the Work Breakdown Structure (L3), not a DFD flow.`] },
+            { type: `mcq`, q: `Resources.`, o: [`A short, high-level document for stakeholders`, `Any person, group of people, piece of equipment, or material used in accomplishing an activity`, `The amount of time an activity can be delayed`, `A standard form for requesting systems work`], a: 1, why: `Resources are any person, group of people, piece of equipment or material used in accomplishing an activity (L3, Representing project plans).`, ow: [`A short, high-level document for stakeholders is the project charter (L3), not resources.`, null, `The time an activity can be delayed without delaying the project is slack time (L3).`, `A standard form for requesting systems work is the System Service Request (L3).`] },
+            { type: `mcq`, q: `Critical Path.`, o: [`A sequence of task activities whose order and durations directly affect the completion date of a project`, `The process of dividing the project into manageable tasks`, `A repository for all project correspondence`, `Data flow from a process to a data store`], a: 0, why: `The critical path is a sequence of task activities whose order and durations directly affect the completion date of a project; its activities have zero slack (L3).`, ow: [null, `Dividing the project into manageable tasks is the Work Breakdown Structure (L3), which comes before any path is found.`, `A repository for all project correspondence is the project workbook (L3).`, `A flow from a process to a data store is update (L4), a DFD term.`] },
+            { type: `mcq`, q: `Work Breakdown Structure.`, o: [`A standard form for requesting or proposing systems development work`, `The process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks`, `A sequence of task activities affecting completion date`, `Organizational role most responsible for analysis and design`], a: 1, why: `The WBS is the process of dividing the project into manageable tasks and logically ordering them to ensure a smooth evolution between tasks (L3, Planning activity 2).`, ow: [`A standard form for requesting or proposing development work is the System Service Request (L3).`, null, `A sequence of activities that fixes the completion date is the critical path (L3), found after the WBS.`, `The role most responsible for analysis and design is the systems analyst (L2).`] },
+            { type: `mcq`, q: `Project charter.`, o: [`A repository for all project correspondence, inputs, outputs, deliverables, procedures, and standards`, `A short, high-level document prepared for both internal and external stakeholders`, `Any person or equipment used in an activity`, `Data flow from a data store to a process`], a: 1, why: `The project charter is a short, high-level document prepared for both internal and external stakeholders that formally announces the project and its objectives, assumptions and stakeholders (L3, slide 25).`, ow: [`A repository for all project correspondence, inputs, outputs and deliverables is the project workbook, not the short charter.`, null, `Any person or equipment used in an activity is the definition of resources (L3).`, `A flow from a data store to a process is retrieve (L4), a DFD term.`] },
+            { type: `mcq`, q: `Project workbook.`, o: [`A repository for all project correspondence, inputs, outputs, deliverables, procedures, and standards that are used`, `A short, high-level document prepared for stakeholders`, `A standard form for requesting systems development work`, `The amount of time an activity can be delayed`], a: 0, why: `The project workbook is an online or hard-copy repository for all project correspondence, inputs, outputs, deliverables, procedures and standards (L3, Initiation activity 5).`, ow: [null, `A short, high-level document for stakeholders is the project charter (L3), not the full repository.`, `A standard form for requesting systems development work is the System Service Request (L3).`, `The time an activity can be delayed is slack time (L3).`] },
+            { type: `mcq`, q: `System Service Request.`, o: [`Any person, group of people, piece of equipment, or material used in accomplishing an activity`, `A sequence of task activities affecting completion date`, `A standard form for requesting or proposing systems development work within an organization`, `A short, high-level document for stakeholders`], a: 2, why: `The System Service Request is a standard form for requesting or proposing systems development work within an organization; it holds contact person, problem statement, service request statement and liaison contact (L3).`, ow: [`Any person, group, equipment or material used in an activity is the definition of resources (L3).`, `A sequence of activities that fixes the completion date is the critical path (L3).`, null, `A short, high-level document for stakeholders is the project charter (L3), written after the request is approved.`] }
           ] }
       ] },
     { title: `Final Exam 2021/2022`, meta: `May 2022 · 3rd year CS (CR) · CS 310 · 2 hours · 50 marks · answer only five of six questions, 10 marks each`, note: `Transcribed from two phone photos; all readable. A student solution exists (reviewed by Eng. Hadeel). Its answers match the lectures and these checks: 26 weeks, team 2, 301 MM, 16 months, 19 FSP, 30 months, 75 FSP, and the 12 DFD errors. Q5(a) completeness/consistency is from the DFD slides; the key's comment that it was "not part of our exam" is wrong, because the slide is in Lecture 4. Q6(a) "form vs report" is not in the taught slides (it is the untaught chapter 8 on forms and reports), so its answer is textbook material.`, sections: [
@@ -1078,16 +1078,16 @@ H                         =====
 team 11111222222112222222111111</pre><b>c) Minimum team = 2</b>: at most two activities run at once (B and C, then E with F or G). This matches the student key. (The lecture version of this table has H = 1 week, giving 22 weeks.)` }
           ] },
         { title: `Question 2 · Rewrite the table with the correct answer (do not change the 1st column)`, marks: `10 marks`, items: [
-            { type: `mcq`, q: `Context Diagram.`, o: [`Depicts work or actions performed on data`, `The scope of an organizational system that shows the system boundaries, external entities that interact with the system and the major information flows`, `Depicts data at rest`, `Lowest logical level of decomposition`], a: 1, why: `Context diagram definition. (L4, lab 6 glossary)` },
-            { type: `mcq`, q: `Data Store.`, o: [`Depicts data at rest`, `Depicts the origin and/or destination of the data`, `Depicts data in motion`, `An iterative process of breaking a system description down`], a: 0, why: `A data store is data at rest.` },
-            { type: `mcq`, q: `Level-0 Diagram.`, o: [`The conservation of inputs and outputs`, `A data-flow diagram that represents a system's major processes, data flows, and data stores at a higher level`, `Depicts data at rest`, `Analyst should expect to redraw diagrams several times`], a: 1, why: `Level-0 definition.` },
-            { type: `mcq`, q: `Functional Decomposition.`, o: [`An iterative process of breaking a system description down into finer and finer detail`, `Lowest logical level of decomposition`, `The conservation of inputs and outputs`, `Depicts work performed on data`], a: 0, why: `Definition of functional decomposition.` },
-            { type: `mcq`, q: `DFD Balancing.`, o: [`Depicts the origin and/or destination of data`, `The conservation of inputs and outputs to a data flow process when that process is decomposed to a lower level`, `Lowest logical level of decomposition`, `Depicts data in motion`], a: 1, why: `Definition of balancing.` },
-            { type: `mcq`, q: `Iterative Development.`, o: [`Analyst should expect to redraw diagram several times before reaching the closest approximation to the system being modelled`, `An iterative process of breaking a system description down`, `Depicts data at rest`, `Depicts work or actions performed on data`], a: 0, why: `DFD guideline "iterative development".` },
-            { type: `mcq`, q: `Primitive DFDs.`, o: [`The scope of an organizational system`, `Lowest logical level of decomposition`, `A system's major processes at a higher level`, `Depicts data in motion`], a: 1, why: `Primitive DFD definition.` },
-            { type: `mcq`, q: `Data Flow.`, o: [`Depicts data at rest`, `Depicts work performed on data`, `Depicts data that are in motion and moving as a unit from one place to another in the system`, `Depicts the origin of data`], a: 2, why: `Data flow definition.` },
-            { type: `mcq`, q: `Process.`, o: [`Depicts work or actions performed on data so that they are transformed, stored or distributed`, `Depicts data at rest`, `Depicts the origin and/or destination of the data`, `Lowest logical level of decomposition`], a: 0, why: `Process definition.` },
-            { type: `mcq`, q: `Source/Sink.`, o: [`Depicts data in motion`, `Depicts the origin and/or destination of the data`, `Depicts data at rest`, `The conservation of inputs and outputs`], a: 1, why: `Source/sink definition.` }
+            { type: `mcq`, q: `Context Diagram.`, o: [`Depicts work or actions performed on data`, `The scope of an organizational system that shows the system boundaries, external entities that interact with the system and the major information flows`, `Depicts data at rest`, `Lowest logical level of decomposition`], a: 1, why: `Context diagram definition. (L4, lab 6 glossary)`, ow: [`Work or actions performed on data is the definition of a process (L4).`, null, `Data at rest is the definition of a data store (L4); the context diagram has none.`, `The lowest logical level of decomposition is the primitive DFD, the opposite end from the context diagram.`] },
+            { type: `mcq`, q: `Data Store.`, o: [`Depicts data at rest`, `Depicts the origin and/or destination of the data`, `Depicts data in motion`, `An iterative process of breaking a system description down`], a: 0, why: `A data store depicts data at rest inside the system: a file, database, transaction file or set of tables (L4, the four DFD symbols).`, ow: [null, `The origin and/or destination of data is a source/sink (external entity), which is outside the system.`, `Data in motion is a data flow; a data store holds data at rest.`, `Breaking a system description into finer detail is functional decomposition (L4).`] },
+            { type: `mcq`, q: `Level-0 Diagram.`, o: [`The conservation of inputs and outputs`, `A data-flow diagram that represents a system's major processes, data flows, and data stores at a higher level`, `Depicts data at rest`, `Analyst should expect to redraw diagrams several times`], a: 1, why: `The Level-0 diagram represents a system's major processes (1.0, 2.0...), data flows and data stores at a high level of abstraction; it is the explosion of process 0 (L4).`, ow: [`The conservation of inputs and outputs when decomposing is DFD balancing (L4).`, null, `Data at rest is the definition of a data store (L4).`, `Expecting to redraw diagrams several times is the iterative development guideline (L4).`] },
+            { type: `mcq`, q: `Functional Decomposition.`, o: [`An iterative process of breaking a system description down into finer and finer detail`, `Lowest logical level of decomposition`, `The conservation of inputs and outputs`, `Depicts work performed on data`], a: 0, why: `Functional decomposition is an iterative process of breaking a system description down into finer and finer detail; high-level processes are described by lower-level sub-processes (L4).`, ow: [null, `The lowest logical level of decomposition is the primitive DFD, the result of decomposition rather than the process itself.`, `The conservation of inputs and outputs when decomposing is DFD balancing (L4).`, `Work performed on data is the definition of a process (L4).`] },
+            { type: `mcq`, q: `DFD Balancing.`, o: [`Depicts the origin and/or destination of data`, `The conservation of inputs and outputs to a data flow process when that process is decomposed to a lower level`, `Lowest logical level of decomposition`, `Depicts data in motion`], a: 1, why: `DFD balancing is the conservation of inputs and outputs to a data flow process when that process is decomposed to a lower level: the child must have the same inputs and outputs as the parent (L4, slide 22).`, ow: [`The origin and/or destination of data is a source/sink (L4).`, null, `The lowest logical level of decomposition is the primitive DFD (L4).`, `Data in motion is the definition of a data flow (L4).`] },
+            { type: `mcq`, q: `Iterative Development.`, o: [`Analyst should expect to redraw diagram several times before reaching the closest approximation to the system being modelled`, `An iterative process of breaking a system description down`, `Depicts data at rest`, `Depicts work or actions performed on data`], a: 0, why: `Iterative development is the DFD guideline that the analyst should expect to redraw a diagram several times before reaching the closest approximation to the system being modelled (L4, slide 30).`, ow: [null, `Breaking a system description down into finer detail is functional decomposition, even though it is also iterative.`, `Data at rest is the definition of a data store (L4).`, `Work or actions performed on data is the definition of a process (L4).`] },
+            { type: `mcq`, q: `Primitive DFDs.`, o: [`The scope of an organizational system`, `Lowest logical level of decomposition`, `A system's major processes at a higher level`, `Depicts data in motion`], a: 1, why: `A primitive DFD is the lowest logical level of decomposition; processes that are not exploded into child diagrams are called primitive (L4).`, ow: [`The scope of an organizational system with its boundary and entities is the context diagram, the top level.`, null, `A system's major processes at a high level is the Level-0 diagram (L4).`, `Data in motion is the definition of a data flow (L4).`] },
+            { type: `mcq`, q: `Data Flow.`, o: [`Depicts data at rest`, `Depicts work performed on data`, `Depicts data that are in motion and moving as a unit from one place to another in the system`, `Depicts the origin of data`], a: 2, why: `A data flow depicts data that are in motion and moving as a unit from one place to another in the system; it is drawn as a labelled arrow (L4, the four DFD symbols).`, ow: [`Data at rest is the definition of a data store (L4).`, `Work performed on data is the definition of a process (L4).`, null, `The origin of data is a source (external entity), not the moving data itself.`] },
+            { type: `mcq`, q: `Process.`, o: [`Depicts work or actions performed on data so that they are transformed, stored or distributed`, `Depicts data at rest`, `Depicts the origin and/or destination of the data`, `Lowest logical level of decomposition`], a: 0, why: `A process depicts work or actions performed on data so that they are transformed, stored or distributed; it is inside the system and labelled with a verb phrase (L4, the four DFD symbols).`, ow: [null, `Data at rest is the definition of a data store (L4).`, `The origin and/or destination of data is a source/sink (L4).`, `The lowest logical level of decomposition is the primitive DFD (L4).`] },
+            { type: `mcq`, q: `Source/Sink.`, o: [`Depicts data in motion`, `Depicts the origin and/or destination of the data`, `Depicts data at rest`, `The conservation of inputs and outputs`], a: 1, why: `A source/sink is an external entity that depicts the origin and/or destination of the data; it lies outside the system (L4, the four DFD symbols).`, ow: [`Data in motion is the definition of a data flow (L4).`, null, `Data at rest is the definition of a data store (L4).`, `The conservation of inputs and outputs when decomposing is DFD balancing (L4).`] }
           ] },
         { title: `Question 3 · COCOMO`, marks: `10 marks`, items: [
             { type: `written`, q: `Embedded mode, 40,000 DSI. Effort = 3.6·(KDSI)^1.20, Schedule = 2.5·(Effort)^0.32. a) man-months; b) duration; c) average staffing to finish in time; d) duration if the staff decreased to ½ the estimated staffing; e) average staffing to finish in 4 months.`, ans: `a) E = 3.6 × 40^1.20 = 3.6 × 83.65 = 301.1 ≈ <b>301 MM</b><br>b) TDEV = 2.5 × 301^0.32 = 2.5 × 6.211 = 15.5 ≈ <b>16 months</b><br>c) Staff = 301 / 16 = 18.8 ≈ <b>19 FSP</b><br>d) ½ × 19 = 9.5 ≈ 10 FSP → 301 / 10 = 30.1 ≈ <b>30 months</b><br>e) 301 / 4 = 75.25 ≈ <b>75 FSP</b>` }
