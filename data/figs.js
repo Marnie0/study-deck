@@ -24,8 +24,6 @@
 @keyframes figflow{ to{ stroke-dashoffset:-26; } }
 .fig .roll{ animation:figroll 2.6s ease-in infinite; }
 @keyframes figroll{ 0%{ transform:translate(0,0); opacity:0; } 10%{ opacity:1; } 85%{ transform:translate(190px,64px); opacity:1; } 100%{ transform:translate(196px,66px); opacity:0; } }
-.fig .sway{ animation:figsway 3s ease-in-out infinite; transform-box:fill-box; transform-origin:50% 100%; } @keyframes figsway{ 0%,100%{ transform:rotate(-2deg); } 50%{ transform:rotate(2deg); } }
-.fig .pulse{ animation:figpulse 2.4s ease-in-out infinite; transform-box:fill-box; transform-origin:center; } @keyframes figpulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.05); } }
 .fig .tap{ animation:figtap 1.4s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
 @keyframes figtap{ 0%,100%{ transform:translateY(-10px); } 45%,60%{ transform:translateY(0); } }
 .fig-elev{ display:grid; gap:10px; padding:12px; border-radius:8px; background:#1b1d22; max-width:520px; margin:0 auto; }
@@ -90,7 +88,7 @@
 .fig-seven .row7{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; } .fig-seven .tab{ border:1px solid var(--line); border-bottom:0; border-radius:6px 6px 0 0; padding:4px 8px; font-size:.8rem; } .fig-seven .face{ width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-size:15px; border:1px solid #9ca3af; }
 .fig-seven ul{ margin:0; padding-left:18px; columns:2; font-size:.85rem; } .fig-seven .menu{ display:inline-grid; border:1px solid var(--line); border-radius:6px; font-size:.82rem; } .fig-seven .menu span{ padding:2px 10px; border-bottom:1px solid var(--rule); }
 .fig-drive{ max-width:520px; margin:0 auto; }
-@media (prefers-reduced-motion: reduce){ .fig .flow, .fig .tap, .fig .roll, .fig .sway, .fig .pulse{ animation:none; } .fig .pop, .fig .fade{ transition:none; } }`;
+@media (prefers-reduced-motion: reduce){ .fig .flow, .fig .tap, .fig .roll{ animation:none; } .fig .pop, .fig .fade{ transition:none; } }`;
   if (!document.getElementById('fig-css')) { const s = document.createElement('style'); s.id = 'fig-css'; s.textContent = CSS; document.head.appendChild(s); }
 
   // steps: [{ en, ar }]; returns [step, controls]
@@ -682,34 +680,5 @@
     </div></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
-
-  /* ── L2 slide 15: the activity's question-mark figure ── */
-  function ThinkActivity({ ar }) {
-    const steps = [
-      { en: '<b>Activity:</b> you are involved in the design of a mobile application for football lovers to watch matches and know match results and statistics.', ar: '<b>نشاط:</b> انت مشارك في تصميم mobile application لمحبين الكورة يتفرجوا فيه على الماتشات ويعرفوا النتايج والإحصائيات.' },
-      { en: 'Think about a layout of the interface that you may consider usable and easy.', ar: 'فكّر في layout للـ interface تشوفه usable وسهل.' },
-      { en: 'Can you think of a plan of user research? How can you conduct it to understand user needs and preferences better?', ar: 'تقدر تفكر في خطة user research؟ هتعملها إزاي عشان تفهم احتياجات الـ users وتفضيلاتهم أحسن؟' },
-      { en: 'Can you think how you can gather usage data similar to the way Microsoft did for the design of Office 2007? What data can be useful, and how can this data help improve the UI?', ar: 'تقدر تفكر إزاي تجمع usage data زي ما Microsoft عملت في تصميم Office 2007؟ أنهي data ممكن تفيد، وإزاي تساعد في تحسين الـ UI؟' }
-    ];
-    const [i, ctl] = useSteps(steps.length, 3600);
-    const m = calm();
-    return html`<figure className="fig"><div className="fig-stage">
-      <svg viewBox="0 0 440 220" role="img" aria-label="A figure leaning on a big red question mark, thinking" style=${{ maxWidth: '360px' }}>
-        <g className=${m ? '' : 'pulse'}>
-          <path d="M238 52 C238 18 268 6 296 6 C330 6 356 26 356 60 C356 92 330 104 314 114 C302 122 300 130 300 146 L262 146 C262 120 268 106 288 92 C304 80 314 74 314 60 C314 46 304 40 294 40 C282 40 276 48 276 62 Z" fill="#d61f26" />
-          <path d="M248 50 C250 26 270 14 294 14" stroke="#ff8a8f" strokeWidth="5" fill="none" strokeLinecap="round" opacity=".7" />
-          <circle cx="281" cy="182" r="24" fill="#d61f26" /><circle cx="274" cy="174" r="7" fill="#ff8a8f" opacity=".7" />
-        </g>
-        <g className=${m ? '' : 'sway'} style=${{ filter: 'drop-shadow(0 0 1px rgba(0,0,0,.55)) drop-shadow(0 2px 2px rgba(0,0,0,.25))' }}>
-          <circle cx="196" cy="62" r="20" fill="#f3f4f6" stroke="#c7cad1" />
-          <path d="M184 86 Q196 80 212 88 L222 150 L176 150 Z" fill="#eceef2" stroke="#c7cad1" />
-          <path d="M210 98 Q232 102 230 124" stroke="#e4e6eb" strokeWidth="11" fill="none" strokeLinecap="round" />
-          <path d="M188 100 Q170 104 182 80" stroke="#e4e6eb" strokeWidth="11" fill="none" strokeLinecap="round" />
-          <path d="M184 150 L176 206 M214 150 L232 204" stroke="#e4e6eb" strokeWidth="13" strokeLinecap="round" />
-        </g>
-        <text x="96" y="110" textAnchor="middle" fontSize="26" fontWeight="700" fill="var(--k-compiler)" style=${{ fill: 'var(--k-compiler)' }}>Activity</text>
-      </svg></div>
-      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
-  }
-  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd, 'fast-slow': FastSlow, 'hotel-search': HotelSearch, 'word-grids': WordGrids, 'time-boxes': TimeBoxes, 'phone-driving': PhoneDriving, 'remember-activity': RememberActivity, 'seven-plus-minus': SevenPlusMinus, 'think-activity': ThinkActivity };
+  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd, 'fast-slow': FastSlow, 'hotel-search': HotelSearch, 'word-grids': WordGrids, 'time-boxes': TimeBoxes, 'phone-driving': PhoneDriving, 'remember-activity': RememberActivity, 'seven-plus-minus': SevenPlusMinus };
 })();
