@@ -133,6 +133,10 @@ COURSES.qa = {
       "Figure 1.2 (Spiral Model): two axes split the figure into four quadrants: <b>Plan</b> (top left), <b>Risk Analysis</b> (top right), <b>Design</b> (bottom right) and <b>Testing</b> (bottom left). The vertical axis points up to <b>Cumulative cost</b>, the horizontal axis points left to <b>Review</b>, and a curved <b>Progress</b> arrow at the top shows the spiral turning clockwise and widening outward. Left of the vertical axis (inside out): Requirements plan, Concept of operation, Development plan, Test plan, Release. Right of it, in the upper part: Risk analysis on each loop, with a shaded wedge widening into <b>Prototype 1, Prototype 2 and Operational Prototype</b>. Right of it, in the lower part: Concept of requirements, Requirements, Draft, Detailed design, Code, Integration, Test, Verification & Validation (twice) and Implementation; the spiral ends with an arrow at Release.",
       "Spiral advantages: manages risks early, flexible, customer feedback, prototyping, suits complex projects. <b>Drawback</b>: time-consuming and costly because of many iterations.",
       "Spiral drawback in full: although it improves problem-solving and customer involvement, the Spiral Model can be time-consuming and costly due to multiple iterations and <b>continuous testing</b>."
+     ],
+     "fig": [
+      "qa-waterfall",
+      "qa-spiral"
      ]
     },
     {
@@ -182,7 +186,8 @@ COURSES.qa = {
      ],
      "pts": [
       "Figure 1.3 (V Model): the boxes form a V. Down the left arm (arrows pointing down): Requirements Specifications → Functional Specifications → System Design → Unit Design → <b>Code</b> at the bottom. Up the right arm (arrows pointing up): Code → Unit Test → Integration Test → System Test → Acceptance Test. Dashed arrows run across from each left box to its partner on the right, labelled with the plan: <b>Acceptance Test Plan, System Test Plan, Integration Test Plan</b>; between Unit Design and Unit Test the label is <b>Test Cases</b>."
-     ]
+     ],
+     "fig": "qa-vmodel"
     },
     {
      "h": "RAD and Agile",
@@ -203,7 +208,8 @@ COURSES.qa = {
       "Summary (1.4): software testing demonstrates that a program performs the intended functions correctly; the goal of software testing is to ensure that the product is error free. Detecting bugs is the most important part of a software testing process; these bugs can be an error in the program or issues that affect the quality of the software. Bugs can prove to be very costly: they take time to resolve, affecting the project timelines and cost, and they also result in losses, as the company may have to compensate the customer with money or by replacing the defective product. They can also damage the reputation of the company.",
       "Summary (1.4): depending on the <b>kind of error or the reason for error</b>, bugs are classified into various types such as bugs due to conceptual error, math bugs, logical bugs, resource bugs, co-programming bugs and team working bugs.",
       "Summary (1.4): bugs in software can occur due to various reasons such as <b>human error, lack of communication, tight time lines, improper design logic, inefficient coding practices and unskilled testers</b>."
-     ]
+     ],
+     "fig": "qa-tdd"
     }
    ],
    "cards": [
@@ -614,7 +620,8 @@ COURSES.qa = {
       "<b>Disadvantages</b>: cannot test all possible inputs; hard to design cases if requirements are unclear; bugs in complex areas may go undetected.",
       "<b>ATM example</b>: the tester acts as a customer and checks functions through the GUI (display changes when the card is detected, password masking, navigating from the main menu to a function) without knowing the internal logic.",
       "<b>Static testing</b> = testing something that is <b>not running</b> (examining and reviewing it). <b>Dynamic testing</b> = running and using the software."
-     ]
+     ],
+     "fig": "qa-blackbox"
     },
     {
      "h": "Static vs dynamic black-box testing",
@@ -624,7 +631,8 @@ COURSES.qa = {
       "Figure (Dynamic black-box): <b>Inputs</b> → a dark box marked <b>?</b> and labelled <b>Software</b> → <b>Outputs</b>. A callout pointing at the inputs says <b>Exploratory Testing</b>, and the caption under it is <b>behavioral testing</b>.",
       "Steps to begin DBB testing: (1) have the documents/specifications, (2) define test cases. Example (Windows calculator addition): 0+0=0, 0+1=1, 254+1=255, 255+1=256, 256+1=257.",
       "<b>Start with test-to-pass</b> (confirm it works normally with standard input) <b>then test-to-fail</b> (push it to its limits with extreme inputs)."
-     ]
+     ],
+     "fig": "qa-dynamic-bb"
     },
     {
      "h": "Test-to-pass vs test-to-fail",
@@ -633,7 +641,8 @@ COURSES.qa = {
       "Figure (Car example): \"Use test-to-pass to reveal bugs before you test-to-fail.\" On the left, a driver waves from a car driven normally (<b>Test-to-pass</b>); on the right, a dented car with a cracked windscreen speeds off with smoke behind it (<b>Test-to-fail</b>).",
       "<b>Test-to-fail</b>: find weaknesses by using <b>abnormal cases</b> (forcing an error).",
       "Error messages: saving to a disk with no disk inserted. The spec says it should show an error, so it looks like test-to-pass, but you are also forcing an error, so it is test-to-fail. <b>In the end it is probably both.</b>"
-     ]
+     ],
+     "fig": "qa-pass-fail"
     },
     {
      "h": "Equivalence partitioning (EP)",
@@ -648,7 +657,8 @@ COURSES.qa = {
       "Partition the system inputs and outputs into <b>'equivalence sets'</b>.",
       "Input values 10,000–99,999 → partitions <b>&lt;10,000</b>, <b>10,000–99,999</b>, <b>&gt;99,999</b>. <b>6 test cases</b>: 00000 (invalid special value), 09999 (invalid left boundary), 10000 (valid left boundary), 50000 (valid mid), 99999 (valid right boundary), 100000 (invalid right boundary).",
       "Figure (EP example): two partition bars. <b>Number of input values</b>: Less than 4 (Invalid) | Between 4 and 10 (Valid) | More than 10 (Invalid), with arrows at <b>3, 4, 7, 10, 11</b>. <b>Input values</b>: Less than 10000 (Invalid) | Between 10000 and 99999 (Valid) | More than 99999 (Invalid), with arrows at <b>9999 (BV), 10000, 50000 (Mid-point), 99999, 100000 (BV)</b>. A red \"Valid\" line spans the middle partition of each bar."
-     ]
+     ],
+     "fig": "qa-ep-boundary"
     },
     {
      "h": "Data testing and boundary conditions",
@@ -661,7 +671,8 @@ COURSES.qa = {
       "<b>Bugs increase at the boundaries</b>, but testing the edges only may not be sufficient, so we must use equivalence partitions to test all data in, out of and at the boundary.",
       "Testing only the edges may not be enough: use partitions to test data <b>in / out / at</b> the boundary. Test: data that works, data that does not work, data at the boundary. Floppy example: very small file, very large file that fits, empty file, file too large.",
       "Floppy disk program (write and read from a floppy disk): boundary = <b>max file, min file</b>. <b>Searching for boundaries in software is a very important task.</b>"
-     ]
+     ],
+     "fig": "qa-cliff"
     },
     {
      "h": "State testing",
@@ -673,6 +684,10 @@ COURSES.qa = {
       "<b>5 ways to reduce states/transitions to test</b>: (1) visit each state at least once; (2) test the most common state-to-state transitions; (3) test the least common paths; (4) test all error states and returning from them; (5) test random transitions.",
       "Check all <b>state variables</b>. Paint's startup state: window as last shown, same size as last time, blank drawing area, tool box/color box/status bar shown, pencil selected, black on white, document \"untitled\".",
       "Figure .11 (<b>The Windows Paint opening screen in the startup state</b>): a window titled \"untitled - Paint\" with the menu File, Edit, View, Image, Colors, Help; the tool box on the left with the <b>pencil</b> tool selected; a blank white drawing area with the pencil cursor; the color box at the bottom (black foreground on white background) and the status bar \"For Help, click Help Topics on the Help Menu\" with the cursor position 194,155."
+     ],
+     "fig": [
+      "qa-paint-states",
+      "qa-password-states"
      ]
     },
     {
@@ -726,7 +741,8 @@ COURSES.qa = {
      ],
      "pts": [
       "A media player has three operations: <b>play, fast forward and fast play</b>. Play and fast forward are activated using the play and fast forward buttons respectively. These operations can be cancelled using the <b>stop</b> button. The media player's operation is specified using the state transition diagram (states OFF, PLAY, FAST FORWARD, FAST PLAY) shown in the table below."
-     ]
+     ],
+     "fig": "qa-media-player"
     },
     {
      "h": "Media player answers",
@@ -1107,7 +1123,8 @@ COURSES.qa = {
       "Also called <b>glass box</b>, <b>structural</b>, <b>open box</b> or <b>clear box</b> testing, because it examines internal workings.",
       "<b>Static white-box</b> (examining the design and code) has 3 parts: <b>Formal Review</b> (peer review, walkthrough, inspection), <b>Coding Standards and Guidelines</b>, <b>Code Review Checklist</b>.",
       "Figure (Static White Box Testing tree): the top box <b>Static White Box Testing</b> has arrows down to three boxes: <b>Formal Review</b>, <b>Coding Standards and Guidelines</b> and <b>Code Review Checklist</b>. From Formal Review, three arrows go to <b>Peer Review</b>, <b>Walkthrough</b> and <b>Inspection</b>. A vertical label on the left reads \"Examining the Design and Code\". Under the tree: \"For a successful formal review, 4 essential elements are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report.\" The next slide repeats the same tree."
-     ]
+     ],
+     "fig": "qa-static-wb"
     },
     {
      "h": "Formal review",
@@ -1188,7 +1205,8 @@ COURSES.qa = {
       "<b>Dynamic white-box testing vs debugging</b>: testing <b>finds</b> bugs; debugging <b>fixes</b> the bugs found during testing.",
       "<b>Testing the pieces</b> = unit and integration testing. Integration testing strategies (figure): <b>Bottom-up</b>, <b>Top-down</b>, <b>Umbrella approach</b>.",
       "Figure (Unit and Integration Testing): a box <b>Integration testing</b> with a line that splits into three arrows down to <b>Bottom Up Testing</b>, <b>Top Down Testing</b> and <b>Umbrella Approach Testing</b>."
-     ]
+     ],
+     "fig": "qa-integration"
     },
     {
      "h": "Data coverage and code coverage",
@@ -1200,11 +1218,13 @@ COURSES.qa = {
       "Statement coverage code: <b>1: PRINT \"Good Morning\" / 2: PRINT \"Be Positive\" / 3: PRINT \"Today is a Great Day\" / 4: END</b>",
       "<b>Path coverage</b>: every path (both branches of every IF). Example: IF Date$ = \"25-12-2008\" → PRINT \"MERRY CHRISTMAS\". 2 tests: Date = 25-12-2008 runs 1,2,3,4,5,6,7; any other date runs 1,2,5,6,7.",
       "Path coverage code: <b>1: PRINT \"Good Morning\" / 2: IF Date$ = \"25-12-2008\" then / 3: PRINT \"MERRY CHRISTMAS\" / 4: END IF / 5: PRINT \"The date id:\"; Date$ / 6: PRINT \"The time:\"; Time$ / 7: END</b>"
-     ]
+     ],
+     "fig": "qa-code-coverage"
     },
     {
      "h": "Condition coverage worked example",
-     "code": "1: PRINT \"Good Morning\"\n2: IF Date$ = \"25-12-2008\" AND Time$ = \"00:00:00\" THEN\n3:    PRINT \"MERRY CHRISTMAS\"\n4: END IF\n5: PRINT \"The date is: \"; Date$\n6: PRINT \"The time is: \"; Time$\n7: END"
+     "code": "1: PRINT \"Good Morning\"\n2: IF Date$ = \"25-12-2008\" AND Time$ = \"00:00:00\" THEN\n3:    PRINT \"MERRY CHRISTMAS\"\n4: END IF\n5: PRINT \"The date is: \"; Date$\n6: PRINT \"The time is: \"; Time$\n7: END",
+     "fig": "qa-condition-coverage"
     },
     {
      "h": "Test cases for full condition coverage",
@@ -1666,7 +1686,8 @@ COURSES.qa = {
       "The opening figure repeats the V-model: the left side going <b>down</b> (requirements spec → functional spec → system design → unit design → code) is <b>verification</b>. The right side going <b>up</b> (unit test → integration test → system test → acceptance test) is <b>validation</b>.",
       "Test plans link the two sides: acceptance test plan, system test plan, integration test plan and unit test cases.",
       "Figure 1.3 (V Model): the left column goes down with solid arrows: <b>Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</b>; the right column goes up from Code with solid arrows: <b>Unit Test → Integration Test → System Test → Acceptance Test</b>. Dotted arrows cross from left to right: Requirements Specifications → Acceptance Test, labelled <b>Acceptance Test Plan</b>; Functional Specifications → System Test, labelled <b>System Test Plan</b>; System Design → Integration Test, labelled <b>Integration Test Plan</b>; the words <b>Test Cases</b> sit between Unit Design and Unit Test. A big arrow pointing down on the left is labelled <b>Verification</b>, and a big arrow pointing up on the right is labelled <b>Validation</b>."
-     ]
+     ],
+     "fig": "qa-v-verify"
     },
     {
      "h": "Worked example: foo()",
@@ -1710,7 +1731,8 @@ COURSES.qa = {
      ],
      "pts": [
       "Figure (control flow graph of foo): six circles: 1 at the top, 2 to its lower right, 3 below 1, then 5 (left) and 4 (right), and 6 at the bottom. Thick solid arrows 1 → 2 and 3 → 4 are <b>True Branch</b>; dotted arrows 1 → 3 and 3 → 5 are <b>False Branch</b>; thin arrows 2 → 3, 4 → 6 and 5 → 6 are <b>Sequential Branch</b>. A legend at the top right lists True Branch, Sequential Branch and False Branch; the caption reads \"control flow graph\"."
-     ]
+     ],
+     "fig": "qa-foo-cfg"
     },
     {
      "h": "Cyclomatic complexity and basis paths",
@@ -1900,7 +1922,8 @@ COURSES.qa = {
        "*",
        "*"
       ]
-     ]
+     ],
+     "fig": "qa-triangle-run"
     },
     {
      "h": "Minimal coverage sets",
@@ -1912,7 +1935,8 @@ COURSES.qa = {
       "<b>Using the test cases of the slide's table</b>, <b>branch coverage minimum = 3 tests</b>: add (3,4,5), the only column that makes C false. (0,1,0) makes E false and G, I true; (4,4,4) makes E true and G, I false. So every IF is both true and false.",
       "‡ The slide gives no answer. With <b>any</b> input (not only the table's columns) the minimums are smaller: (0,0,0) alone runs every line A to K (0==0 sets isosceles and equilateral, 0 ≥ 0+0 sets not a triangle, 0 ≤ 0 sets bad inputs), so <b>statement coverage needs 1 test</b>. (0,0,0) makes every IF true and (3,4,5) makes every IF false, so <b>branch coverage needs 2 tests</b> (one test cannot make an IF both true and false).",
       "Figure (Control flow graph for triangle program): a chain of nodes <b>a → c → e → g → i</b> joined by straight arrows down. a also branches to <b>isosceles</b>, c to <b>equilateral</b>, e to <b>not a triangle</b> and g to <b>bad inputs</b>; each side node has an arrow back into the next chain node (isosceles → c, equilateral → e, not a triangle → g, bad inputs → i)."
-     ]
+     ],
+     "fig": "qa-triangle-cfg"
     },
     {
      "h": "Functional tests: area of a triangle from 3 points",
@@ -1970,7 +1994,8 @@ COURSES.qa = {
       "Figure (stack state machine; slide: \"Find MM and FP of the stack in the following figure\"): three states <b>Empty</b>, <b>Normal</b> and <b>Full</b>. A black start dot has an arrow <b>New</b> into Empty. <b>Push</b> goes Empty → Normal and Normal → Full; <b>Pop</b> goes Full → Normal and Normal → Empty. Under Normal, a loop labelled <b>Push pop</b> leaves Normal and comes back to it. A <b>Pop</b> arrow leaves Empty and a <b>Push</b> arrow leaves Full, both pointing to no state (the error cases).",
       "<b>MM</b>: a simple sequence of <b>create, push and pop</b> might achieve MM testing.",
       "<b>FP (14 pairs)</b>: 1 new-pop (empty, error); 2 new-push; 3 push(from empty)-push; 4 push(from empty)-pop; 5 push(normal→normal)-push (still normal); 6 push(normal→normal)-push (into full); 7 push(normal→normal)-pop; 8 push(normal→full)-push (error); 9 push(normal→full)-pop; 10 pop(normal→normal)-push <b>(still in normal)</b>; 11 pop(normal→normal)-pop (still normal); 12 pop(normal→normal)-pop (into empty); 13 pop(into empty)-push; 14 pop(into empty)-pop (error)."
-     ]
+     ],
+     "fig": "qa-stack-fp"
     },
     {
      "h": "Lecture questions (answers)",
@@ -2416,6 +2441,10 @@ COURSES.qa = {
       "<b>Graphics</b>: all load and display properly. A missing or wrongly named graphic will not load, and the page shows an error in its place.",
       "<b>Forms</b> are text boxes, list boxes, and other fields that allow a user to <b>enter or select information</b> on a Web page (e.g. Google's Gmail sign-up form). Check: are the form fields positioned properly? Are the fields the correct size? Do they accept correct data? Do they reject bad data?",
       "Figure 8.6 (Google's Form): the \"Get started with Gmail\" sign-up form. Fields: First name; Last name; Desired Login Name (followed by @gmail.com, with \"Examples: JSmith, John.Smith\" and a \"check availability!\" button); Choose a password (\"Minimum of 8 characters in length\", with a \"Password strength\" indicator); Re-enter password; and two ticked checkboxes, \"Stay signed in\" and \"Enable Web History\" (with a \"Learn More\" link)."
+     ],
+     "fig": [
+      "qa-web-parts",
+      "qa-gmail-form"
      ]
     },
     {
@@ -2849,7 +2878,8 @@ COURSES.qa = {
       "Org chart of the <b>small team structure</b> (slide 10): the <b>Development Manager</b> is at the top, with two boxes under him: <b>Testers</b> and <b>Programmers</b>.",
       "Org chart of the independent test team (slide 11): the Project Manager is at the top, with two branches under him: the Test Manager/Test Lead, with the Testers under him, and the Development Manager, with the Programmers under him.",
       "Org chart of the <b>test group reporting to executive management</b> (slide 12): the <b>Executive Manager</b> is at the top, with three boxes under him: <b>QA/Test Managers</b>, <b>Development Managers</b> and <b>Project Managers</b>."
-     ]
+     ],
+     "fig": "qa-test-orgs"
     },
     {
      "h": "SQA metrics and indicators",
@@ -3304,7 +3334,8 @@ COURSES.qa = {
       "<b>Level 5 (Optimizing)</b>: focuses on <b>continuous process improvement</b> through incremental and innovative advancements. Organizations at this level <b>systematically refine their processes</b>, using <b>quantitative goals</b> to drive enhancements and <b>achieve long-term business objectives</b>.",
       "Figure (CMM levels): five ellipses stacked from bottom to top, joined by upward arrows: <b>Level 1: Initial (Inconsistent Management)</b> → arrow \"Basic Management Control\" → <b>Level 2: Repeatable (Project Management)</b> → arrow \"Process Definition\" → <b>Level 3: Defined (Process Management)</b> → arrow \"Process Measurement\" → <b>Level 4: Managed (Capability Management)</b> → arrow \"Process Control\" → <b>Level 5: Optimizing (Change Management)</b>. The figure labels Level 4 just \"Managed\"; the slide text and Table 1 call it \"Quantitatively Managed\".",
       "<b>Table 1: Capability Maturity Model Process Areas</b> (Maturity Level: Improvements Implemented): <b>5. Optimizing</b>: develop change infrastructure; assess and organize improvements; remove causes of defects. <b>4. Quantitatively Managed</b>: supervise processes quantitatively; create capability baselines. <b>3. Defined</b>: create enhancement infrastructure; identify required software processes; organize and manage processes; collect process-level data; provide organization-wide training; manage with non-software groups. <b>2. Repeatable</b>: plan and track projects; manage suppliers; manage product configurations; measure projects; assist and assure policy compliance. <b>1. Initial</b>: no required processes."
-     ]
+     ],
+     "fig": "qa-cmm-levels"
     },
     {
      "h": "Transitions, KPA aspects and benefits",
@@ -3793,7 +3824,8 @@ COURSES.qa = {
      ],
      "pts": [
       "Figure (<b>Normal Distribution - Gaussian Curve</b>): a bell-shaped curve centred on 0 (a vertical centre line), with the horizontal axis marked from -6σ to +6σ; one σ is marked as the distance from the centre line to +1σ, with the label <b>Sigma = σ = Deviation (Square root of variance)</b>. Below the curve, arrows show the share of values between ±1σ, ±2σ … ±6σ and the result in ppm out of spec (table below)."
-     ]
+     ],
+     "fig": "qa-sigma-curve"
     },
     {
      "h": "3.4 vs 0.002 ppm",
@@ -3813,6 +3845,10 @@ COURSES.qa = {
       "<b>C – Control</b>: focus on monitoring all of these processes and do not stop, <b>as there are always areas in need of improvement</b>. The following should be taken into consideration: continuously measuring performance standards; conducting measurement processes; correcting any deviations, if found, at the specified time.",
       "The slide also shows <b>DMADV</b> (Define, Measure, Analyze, Design, Verify). ‡ (not on the slides) DMADV is used for designing <b>new</b> processes/products; DMAIC improves <b>existing</b> ones.",
       "Figure (DMADV Methodology): five curved arrows forming a cycle around a central circle labelled \"DMADV\": <b>Define</b> → <b>Measure</b> → <b>Analyze</b> → <b>Design</b> → <b>Verify</b> → back to Define. It covers part of a DMAIC figure behind it, whose visible fragments read \"Control: Maint… soluti…\" and \"Improve: Implement … the solution\"."
+     ],
+     "fig": [
+      "qa-dmaic",
+      "qa-dmadv"
      ]
     },
     {
@@ -3902,7 +3938,8 @@ COURSES.qa = {
        "<b>1.07</b>",
        "<b>6.42</b>"
       ]
-     ]
+     ],
+     "fig": "qa-sigma-case"
     },
     {
      "h": "Belts and tools",
@@ -3934,7 +3971,8 @@ COURSES.qa = {
      ],
      "pts": [
       "Figure (<b>Levels of Six Sigma Certification</b>): a man with a briefcase climbs a staircase toward a target with an arrow in its bullseye. The steps from bottom to top: <b>Step 1: White Belt</b>; <b>Step 2: Yellow Belt</b>; <b>Step 3: Green Belt</b>; <b>Step 4: Black Belt</b>; <b>Step 5: Master Black Belt</b> (the top step, next to the target)."
-     ]
+     ],
+     "fig": "qa-belts"
     },
     {
      "h": "Six Sigma tools and techniques",

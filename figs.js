@@ -15,9 +15,9 @@
 .fig-cap .ar{ display:block; direction:rtl; text-align:right; color:var(--graphite); margin-top:4px; font-family:"IBM Plex Sans Arabic", var(--body); }
 .fig-bar{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; padding:0 14px 12px; }
 .fig-bar .grow{ flex:1; }
-.fig-dots{ display:flex; gap:6px; } .fig-dots i{ width:8px; height:8px; border-radius:50%; background:var(--line); } .fig-dots i.on{ background:var(--k-hci); }
+.fig-dots{ display:flex; gap:6px; } .fig-dots i{ width:8px; height:8px; border-radius:50%; background:var(--line); } .fig-dots i.on{ background:var(--fig-k, var(--k-hci)); }
 .fig-btn{ font:inherit; font-size:.88rem; padding:6px 12px; border-radius:99px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; min-height:32px; }
-.fig-btn:hover{ border-color:var(--k-hci); } .fig-btn.solid{ background:var(--s-hci); color:#fff; border-color:transparent; }
+.fig-btn:hover{ border-color:var(--fig-k, var(--k-hci)); } .fig-btn.solid{ background:var(--fig-s, var(--s-hci)); color:#fff; border-color:transparent; }
 .fig .pop{ transition:opacity .5s ease, transform .5s ease; } .fig .pop.off{ opacity:0; transform:translateY(6px); }
 .fig .fade{ transition:opacity .9s ease; }
 .fig .flow{ stroke-dasharray:6 7; animation:figflow 1.1s linear infinite; }
@@ -680,5 +680,7 @@
     </div></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
-  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd, 'fast-slow': FastSlow, 'hotel-search': HotelSearch, 'word-grids': WordGrids, 'time-boxes': TimeBoxes, 'phone-driving': PhoneDriving, 'remember-activity': RememberActivity, 'seven-plus-minus': SevenPlusMinus };
+  // shared building blocks for the other courses' visual files (figs-<course>.js)
+  window.FIGKIT = { html, useSteps, Cap, Bar, pop, calm, useClock, useFit, sec };
+  window.FIGS = Object.assign(window.FIGS || {}, { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd, 'fast-slow': FastSlow, 'hotel-search': HotelSearch, 'word-grids': WordGrids, 'time-boxes': TimeBoxes, 'phone-driving': PhoneDriving, 'remember-activity': RememberActivity, 'seven-plus-minus': SevenPlusMinus });
 })();

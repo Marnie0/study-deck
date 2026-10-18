@@ -703,9 +703,13 @@ function start() {
   function FigBlock({ name, ar }) {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
+    // names like 'qa-…' live in figs-qa.js, which builds on figs.js
+    const extra = /^([a-z]+)-/.exec(name), file = extra && extra[1] !== 'hci' && ['qa'].includes(extra[1]) ? 'figs-' + extra[1] : null;
+    const [ready2, setReady2] = useState(() => !file || !!(window.FIGS && window.FIGS[name]));
     useEffect(() => { if (!ready) loadScript(dataUrl('figs')).then(() => setReady(true), () => setFailed(true)); }, []);
+    useEffect(() => { if (ready && !ready2) loadScript(dataUrl(file)).then(() => setReady2(true), () => setFailed(true)); }, [ready]);
     if (failed) return html`<p className="muted small">The visual didn't load. Check your connection and refresh.</p>`;
-    if (!ready) return html`<div className="vz vz-wait" style=${{ height: '200px' }} aria-hidden="true"></div>`;
+    if (!ready || !ready2) return html`<div className="vz vz-wait" style=${{ height: '200px' }} aria-hidden="true"></div>`;
     const F = window.FIGS[name]; return F ? html`<div data-fig=${name}><${F} ar=${ar} /></div>` : null;
   }
   // past papers: a trace question can be worked through as a diagram, before or after revealing the model answer
@@ -745,7 +749,7 @@ function start() {
             ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
             ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
             ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} k=${k} />`}
-            ${s.fig && html`<${FigBlock} name=${s.fig} ar=${!!arL} />`}
+            ${s.fig && [].concat(s.fig).map(n => html`<${FigBlock} key=${n} name=${n} ar=${!!arL} />`)}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));
