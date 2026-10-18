@@ -22,7 +22,7 @@ AR.mm = {
       "شكل (سلايد 7، HyperText Navigation): الـ <b>Normal Text</b> بيتقري <b>LINEAR</b>: كتاب مفتوح عليه أسهم ماشية على السطور ونازلة على الصفحات، بترتيب واحد. الـ <b>HyperText</b>: صفحات متوصلة بأسهم مقوسة من hot spots في صفحة لصفحات تانية، فترتيب القراية non-linear.",
       "<b>Hypermedia</b>: مش لازم يبقى text بس. ممكن يحتوي media تانية زي graphics وimages وخصوصًا <b>الـ continuous media — الصوت والـ video</b>.",
       "شكل (سلايد 8، Hypermedia): أربع media حوالين نقطة في النص، متوصلين بأسهم في الاتجاهين: <b>Graphics</b> (فوق)، <b>Sound</b> (على الشمال، سماعة loudspeaker)، <b>Text</b> (على اليمين، صفحات text متوصلة ببعض) و<b>Video</b> (تحت، video recorder وTV)، وفوق film strip مكتوب عليه <b>HYPERMEDIA</b>.",
-      "أمثلة على hypermedia applications: الـ <b>World Wide Web</b> (المثال الواضح)، PowerPoint، Adobe Acrobat (برنامج الـ PDF)، Adobe Flash.",
+      "أمثلة على hypermedia applications: الـ <b>World Wide Web</b> (المثال الواضح)، PowerPoint، Adobe Acrobat (برنامج الـ PDF)، Adobe Flash. وغيرهم كتير جدًا (Many many others?).",
       "أمثلة على multimedia applications: الـ WWW، الـ multimedia authoring (Adobe/Macromedia Director)، hypermedia courseware، video-on-demand، interactive TV، الألعاب، الـ virtual reality، أنظمة الـ digital video editing والإنتاج، والـ multimedia database systems. وسلايد \"Applications\" اللي بعد كده بيزود video conferencing وgroupware والـ home shopping."
      ]
     },
@@ -37,6 +37,7 @@ AR.mm = {
      "h": "الـ Challenges والـ key issues",
      "pts": [
       "<b>الـ Challenges</b>: الـ distributed networks؛ <b>الـ temporal relationship</b> (العلاقة الزمنية) بين الـ data؛ إنك تعرض data مختلفة في نفس الوقت وبشكل continuous؛ <b>الـ sequencing جوه الـ media</b> (تشغيل الـ video frames بالترتيب والتوقيت الصح)؛ <b>الـ synchronisation</b> — inter-media scheduling، زي <b>الـ lip synchronisation</b> بين الـ video والـ audio.",
+      "السلايد بيقسمهم كده: <b>اتنين challenges أساسيين</b>، الـ <b>Distributed Networks</b> والـ <b>Temporal relationship between data</b>. وتحت الـ temporal relationship: إنك تعرض data مختلفة في نفس الوقت وبشكل continuous؛ الـ sequencing جوه الـ media (تشغيل الـ frames بالترتيب والتوقيت الصح في الـ video)؛ الـ synchronisation، يعني inter-media scheduling.",
       "مثال: الـ Video والـ Audio: الـ <b>lip synchronisation</b> مهم جدًا للبني آدمين وهما بيتفرجوا على playback لـ video وaudio، وحتى <b>animation وaudio</b>. (جربت قبل كده تتفرج على فيلم الصوت فيه مش ماشي مع حركة الشفايف لمدة طويلة؟)",
       "<b>الـ Key issues</b>: إزاي نمثّل ونخزن المعلومات الزمنية؛ إزاي نحافظ بدقة على العلاقات الزمنية وقت الـ playback/retrieval؛ إيه الـ processes اللي داخلة؛ الـ data لازم تتمثّل digitally (<b>analog–digital conversion، sampling</b>)؛ <b>الـ data requirements كبيرة</b> (bandwidth، storage) فـ <b>الـ data compression غالبًا بيبقى إجباري</b>."
      ]
@@ -50,8 +51,8 @@ AR.mm = {
       "<b>Data representations</b> — file formats سهل التعامل معاها وفي نفس الوقت تسمح بـ compression/decompression في real-time.",
       "<b>I/O كفء وعالي</b>: الـ input والـ output للـ <b>file subsystem</b> لازم يبقوا كفء وسريعين. ولازم يسمح بالـ recording في real-time وكمان الـ playback للـ data، زي أنظمة الـ direct-to-disk recording.",
       "<b>Operating system خاص</b>: عشان يسمح بالوصول للـ file system ومعالجة الـ data بكفاءة وبسرعة. ولازم يدعم direct transfers للـ disk، real-time scheduling، fast interrupt processing، I/O streaming، إلخ.",
-      "<b>الـ Storage والـ memory</b> — storage بمئات الـ TB، memory كذا GB، caches كبيرة، high-speed buses.",
-      "<b>Network support</b> — client-server/distributed systems. <b>Software tools</b> — tools سهلة الاستخدام للتعامل مع الـ media، وتصميم/تطوير الـ applications، وتوصيل الـ media."
+      "<b>الـ Storage والـ memory</b>: storage units كبيرة (في حدود مئات الـ Tb، لو مش أكتر) وmemory كبيرة (كذا Gb أو أكتر). ومحتاجين كمان caches كبيرة، وhigh-speed buses عشان الإدارة تبقى efficient.",
+      "<b>Network support</b>: الـ client-server systems منتشرة، عشان الـ distributed systems منتشرة. <b>Software tools</b>: tools سهلة الاستخدام للتعامل مع الـ media، وتصميم/تطوير الـ applications، وتوصيل الـ media."
      ]
     },
     {
@@ -101,7 +102,7 @@ AR.mm = {
     "1 bit/pixel أبيض وأسود؛ 8 bits/pixel grey scale أو colour map؛ 24 bits/pixel true colour.",
     "samples بـ 16-bit عند 44.1 kHz. الدقيقة mono ≈ 5 MB، والـ stereo ≈ 10 MB من غير compression.",
     "25 أو 30 أو 50 frame في الثانية.",
-    "الـ Graphics متبنية من primitives (lines، polygons، arcs)، ينفع تتعدل وحجمها صغير؛ الـ images عبارة عن pixel bitmaps، حجمها كبير وبتتعدل pixel بـ pixel بس.",
+    "الـ Graphics متبنية من primitives (lines، polygons، circles، curves، arcs)، وغالبًا ينفع تتعدل أو تتراجع، وحجمها صغير لأن الـ file بيخزن بس الـ primitives اتركبت إزاي؛ الـ images عبارة عن pixel bitmaps، مش بتتعدل بالشكل ده (على عكس الـ graphics)، وحجمها كبير، فغالبًا بيتعملها compression.",
     "الـ Lossless (zip) بيحتفظ بكل الـ data بس مش كفاية للـ MM data؛ الـ lossy بيرمي الـ data الأقل أهمية perceptually (MP3، JPEG، MPEG).",
     "بدل ما تبعت الـ data نفسها، بتبعت تعليمات إزاي تتعمل: vector graphics (Flash)، MPEG video، MP4 audio، MIDI."
    ],
@@ -815,14 +816,15 @@ AR.mm = {
       "الـ sampling frequency <b>حاسمة</b> عشان نطلّع نسخة digital دقيقة من الـ analog waveform.",
       "<b>نظرية Nyquist</b>: الـ sampling frequency للإشارة لازم تكون <b>على الأقل ضعف أعلى frequency component</b> في الإشارة: <b>fs ≥ 2·fmax</b>.",
       "<b>الـ Nyquist frequency</b> = fs / 2 = أعلى frequency يقدر الـ sample rate ده يمثلها (مثلًا 44.1 kHz → 22.05 kHz). <b>الـ Nyquist rate</b> = 2·fmax = أقل sample rate ينفع للإشارة.",
-      "ديمو السلايدز: لو عملت sampling <b>بنفس frequency الإشارة</b> هتاخد sample واحدة في كل cycle، فكل الـ samples هيبقى ليها نفس القيمة (الـ sine بيضيع)؛ لو عملت sampling بالضعف بالعافية بتلقطها؛ ولو عملت sampling <b>أعلى</b> من Nyquist بتلقط الـ waveform كويس.",
+      "ديمو السلايدز: لو عملت sampling <b>بنفس frequency الإشارة</b> هتاخد sample واحدة في كل cycle، فكل الـ samples هيبقى ليها نفس القيمة (الـ sine بيضيع)؛ لو عملت sampling <b>بالضعف</b> الـ frequency بتتحفظ بس لو الـ samples وقعت على القمم والقيعان (triangle wave)، ولو وقعت على نقط الصفر كل الـ samples هتبقى صفر والـ sine يضيع؛ ولو عملت sampling <b>أعلى</b> من Nyquist بتلقط الـ waveform كويس.",
       "أشكال (سلايدز 8 لـ 10)، sine wave والـ samples متعلم عليها: <b>Sampling at Signal Frequency</b>: sample واحدة في كل cycle، كلها على نفس الارتفاع (عند القمم)، فلما توصلهم يطلع خط مستقيم (أخضر). <b>Sampling at Twice Nyquist Frequency</b> (عنوان السلايد): samples عند كل قمة وكل قاع؛ ولما توصلهم يطلع triangle wave بنفس frequency الـ sine. <b>Sampling at above Nyquist Frequency</b>: samples كتير (نقط حمرا) ماشية على الـ sine بالظبط تقريبًا. ‡ في الشكل اللي في النص الـ sample rate ضعف frequency الإشارة، يعني الـ Nyquist rate 2·fmax.",
+      "الشكلين (سلايد 8 و9) فيهم كمان مجموعة samples تانية <b>حمرا على المحور</b>، عند نقط الصفر، وبنفس الـ rate؛ ولما توصلهم يطلع خط أحمر مستقيم على المحور. يعني بنفس frequency الإشارة الـ sine بيضيع في الحالتين، وبضعف الـ frequency بيضيع لو الـ samples وقعت على نقط الصفر.",
       "لو غلطت فيها (<b>undersampling</b>) بيطلع <b>digital sampling artefacts</b> اسمها <b>aliasing</b>: بتظهر frequency وهمية أوطى. الـ aliasing بيأثر على <b>الـ audio والصور والـ video</b> (ديمو الـ aliased sine wave والـ aliased piano).",
       "شكل (سلايد 11، If you get Nyquist Sampling Wrong? (1)): أربع رسومات على محور من 0 لـ 32: الإشارة الأصلية المتصلة، وبعدين نفس الإشارة متعملها sampling كـ bars، الأول كتير، وبعدين أقل، وبعدين قليل خالص؛ وكل ما الـ samples تقل شكل الإشارة بيضيع. <b>بتظهر Digital Sampling Artefacts</b>: الظاهرة دي اسمها <b>Aliasing</b>، وبتأثر على <b>الـ Audio والصور والـ Video</b>.",
-      "شكل (سلايد 12، If you get Nyquist Sampling Wrong? (2)): تلات sinusoids (أخضر وأحمر وأزرق) بـ <b>frequencies مختلفة</b> بيعدوا بالظبط على <b>نفس الـ sample points</b> (متعلم عليها عند t = −4، −3، …، 4)، فمن الـ samples لوحدها مش هتعرف تفرق بينهم.",
+      "شكل (سلايد 12، If you get Nyquist Sampling Wrong? (2)): تلات sinusoids (أخضر وأحمر وأزرق) بـ amplitudes وphases مختلفة بيعدوا بالظبط على <b>نفس الـ sample points</b> (متعلم عليها عند t = −4، −3، …، 4: كل sample قيمتها +1 أو −1)، فمن الـ samples لوحدها مش هتعرف تفرق بينهم. التلاتة بيتكرروا كل 2 على المحور، يعني sample واحدة كل نص cycle.",
       "الـ aliasing صوته عامل إزاي؟ (سلايد 13: دوس على الصور عشان تسمع): <b>Sine Wave</b> و<b>Aliased Sine Wave</b> و<b>Aliased Piano</b>. فيه <b>MATLAB code</b> لديمو الـ sine: Plot Version وAudio Version. وهنشوف أكتر عن <b>الـ sampling artefacts في الصور والـ video</b> بعدين.",
       "<b>الـ Oversampling</b> = sampling أعلى من الـ Nyquist rate. بيقلل الـ aliasing بس بيكلّف data أكتر.",
-      "المعنى العملي: لازم الإشارة تعدي على <b>low-pass filter قبل الـ sampling</b> (analog input → low-pass filter → A/D converter → sampled digital)، وإلا الـ frequencies اللي فوق حد Nyquist هتظهر كـ artefacts غريبة."
+      "المعنى العملي: لازم الإشارة تعدي على <b>low-pass filter قبل الـ sampling</b>: Input Signal (Analog) → <b>Low Pass Filter</b> → Filtered Signal (Analog) → <b>A/D Converter</b> → Sampled Signal (Digital). وإلا الـ frequencies اللي فوق حد Nyquist هتظهر كـ artefacts غريبة."
      ]
     },
     {
@@ -859,13 +861,15 @@ AR.mm = {
      "pts": [
       "formats مشهورة: <b>.au</b> (أصله: Unix، Sun)، <b>.aiff</b> (Mac، SGI)، <b>.wav</b> (PC، DEC). ينفع نستخدم compression في <b>بعض</b> الـ formats دي بس <b>مش إجباري</b>.",
       "طريقة audio compression بسيطة ومستخدمة كتير (<b>في الـ formats اللي فوق</b>) هي <b>ADPCM</b> (Adaptive Delta Pulse Code Modulation): بناءً على الـ samples اللي فاتت <b>بيتوقع الـ sample الجاية</b> وبيعمل encode لـ <b>الفرق</b> بين القيمة الحقيقية والقيمة المتوقعة. هنشوف أكتر عنها بعدين (Audio Compression).",
-      "formats تانية (أغلبها بيستخدم compression): Sound Blaster <b>.voc</b> (ممكن تستخدم silence deletion)، Pro Tools/Sound Designer <b>.sd2</b>، RealAudio <b>.ra</b>، Ogg Vorbis <b>.ogg</b>، AAC/Apple/mp4، FLAC <b>.flac</b>، Dolby AC coding، MPEG audio (MP3، MPEG-4)."
+      "فيه formats كتير مرتبطة بـ audio applications. formats تانية (أغلبها بيستخدم compression): Sound Blaster <b>.voc</b> (ممكن تستخدم silence deletion)، Pro Tools/Sound Designer <b>.sd2</b>، RealAudio <b>.ra</b>، Ogg Vorbis <b>.ogg</b>، AAC/Apple/mp4، FLAC <b>.flac</b>، Dolby AC coding، MPEG audio (MP3، MPEG-4)."
      ]
     },
     {
      "h": "الأصوات الـ Synthetic — تقليل الـ bandwidth",
      "pts": [
+      "الـ Synthetic sounds: بنستخدم أوصاف <b>high-level</b> أكتر عشان نمثل الإشارات.",
       "<b>الـ Synthesis pipeline</b>: بنعمل synthesise للأصوات بـ hardware أو software؛ الـ client هو اللي بيطلّع الصوت، فبنبعت بس <b>الـ parameters</b> اللي بتتحكم في الصوت (MIDI/MP4/HTML5).",
+      "صور (سلايد 22): MIDI keyboard صغير متوصل بـ laptop (ومعاه headphones)، وMIDI keyboard متوصل بـ tablet.",
       "الطرق: <b>FM</b> (Sound Blaster الرخيصة، شريحة OPL-4، Yamaha DX، أوائل الثمانينات)؛ <b>wavetable</b> (من samples لآلات حقيقية)؛ <b>additive</b> (بنجمع waveforms أبسط)؛ <b>subtractive</b> (بنعمل filter لأجزاء من waveform معقدة)؛ <b>granular</b> (بنستخدم حتت صغيرة من samples موجودة عشان نعمل أصوات جديدة)؛ <b>physical modelling</b> (بنعمل model بالـ software لطريقة توليد الصوت الـ acoustic)؛ <b>sample-based</b> (تسجيل وإعادة تشغيل audio متسجل، غالبًا حتت صغيرة ومعمول عليها processing). أغلب الـ synthesisers الحديثة بتخلط بين طرق الـ sample والـ synthesis.",
       "تشبيه: الصوت المتسجل ≈ bitmap image (sampling منتظم، كبير، صعب تعدله)؛ الصوت الـ synthetic ≈ <b>vector graphics</b> (وصف high-level، صغير، سهل تعدله، ومحتاج تحويل — synthesis أو rasterisation — قبل التشغيل/العرض). الفرق: 1D مقابل 2D."
      ]
@@ -1085,7 +1089,7 @@ AR.mm = {
     ],
     [
      "بس الـ sampling أعلى من الـ Nyquist rate هو اللي بيلقطها كويس.",
-     "\"just captured\" ده ديمو الـ sampling بضعف الـ frequency.",
+     "\"just captured\" ده وصف الـ sampling بضعف الـ frequency، وبس لو الـ samples وقعت على القمم والقيعان؛ إنما بنفس الـ frequency بتاعته الـ sine دايمًا بيضيع.",
      "صح — ده ديمو السلايد؛ محتاج على الأقل ضعف الـ frequency.",
      "الـ oversampling يعني sampling أعلى من الـ Nyquist rate؛ وده تحته بكتير."
     ],
@@ -1924,7 +1928,7 @@ AR.mm = {
       "الـ digital image متكونة من <b>pixels</b> (picture elements). عدد الـ pixels = <b>الـ resolution</b>؛ وكل ما الـ resolution تعلى الجودة بتبقى أحسن.",
       "الـ <b>bit-map</b> representation بيخزن الصورة بنفس الطريقة اللي محتوى الشاشة بيتخزن بيها في الـ video memory.",
       "<b>Bit-map (أبيض وأسود)</b>: 1 bit لكل pixel (0 أو 1). bitmap مقاسها 640×480 = 307,200 bits = 38,400 B = <b>37.5 KB</b>. الـ Dithering بيُستخدم كتير عشان نعرض الصور الـ monochrome.",
-      "<b>Grey-scale</b>: 1 byte لكل pixel (0–255). الـ pixel الغامق ممكن يبقى 10، والفاتح 240. 640×480 = 307,200 B ≈ <b>300 KB</b>.",
+      "<b>Grey-scale</b>: 1 byte لكل pixel (0–255). الـ pixel الغامق ممكن يبقى 10، والفاتح 240. صورة grey-scale مقاسها 640×480 محتاجة <b>أكتر من 300 KB</b> تخزين: 307,200 B = 307.2 KB، نفس حجم الـ 8-bit colour image.",
       "الـ Figures (slides 4 و5): صورة Lena معروضة كـ <b>bit-map أبيض وأسود معمولها dithering</b> (1 bit لكل pixel) وكصورة <b>grey-scale</b> (1 byte لكل pixel).",
       "<b>24-bit colour</b>: 3 bytes لكل pixel (R، G، B) → 256×256×256 = <b>16,777,216</b> لون. 640×480×3 = <b>921.6 KB</b> (921,600 B). الصور الـ <b>32-bit</b> بتزود byte زيادة لقيمة الـ <b>alpha</b> (special effects زي الـ transparency).",
       "<b>8-bit colour</b>: 1 byte لكل pixel، 256 لون من ملايين الألوان، جودة مقبولة، ومحتاجة <b>Colour Look-Up Table (LUT)</b>. 640×480 = 307.2 KB (زي الـ 8-bit greyscale بالظبط).",
@@ -1952,7 +1956,7 @@ AR.mm = {
       "أغلب الـ formats فيها compression (lossless أو lossy).",
       "الـ graphics والـ image file formats المشهورة: http://www.dcs.ed.ac.uk/home/mxr/gfx/ فيه listing شامل لـ formats كتير؛ وشوف كمان كتاب <b>Encyclopedia of Graphics File Formats</b> في المكتبة. الـ compression techniques بتاعة الـ graphics والـ video والـ audio هتتشرح في الـ chapter الجاي.",
       "<b>GIF</b> (GIF87a، GIF89a)، تحت عنوان الـ slide <b>Standard System Independent Formats</b>: الـ Graphics Interchange Format، عملته UNISYS Corp. وCompuServe، في الأول عشان إرسال الصور الـ graphical على خطوط التليفون بالـ modems. بيستخدم الـ <b>Lempel-Ziv Welch (LZW)</b> algorithm (الـ slide بتسميه <b>a form of Huffman Coding</b>)، متعدل شوية عشان الـ image scan line packets (<b>line grouping of pixels</b>) → <b>lossless</b>. ‡ الـ LZW في الحقيقة طريقة dictionary-based، مش Huffman coding (الاتنين lossless). محدود بـ <b>8-bit (256 لون)</b>، فمناسب للصور اللي فيها ألوان مميزة قليلة (زي الـ graphics drawing). بيدعم الـ <b>interlacing</b>. الـ GIF89a بيزود <b>animation</b> بسيطة وtransparency index.",
-      "<b>JPEG</b>: من الـ Joint Photographic Experts Group للصور الـ <b>photographic</b>. بيستغل حدود الرؤية عند الإنسان عشان يوصل لـ compression عالي. <b>Lossy</b>؛ والـ user بيختار مستوى الـ quality/compression.",
+      "<b>JPEG</b>: من الـ Joint Photographic Experts Group للصور الـ <b>photographic</b>. بيستغل حدود الرؤية عند الإنسان عشان يوصل لـ compression عالي. <b>Lossy</b>؛ والـ user بيختار مستوى الـ quality/compression. والـ algorithm بتاعه هيتشرح بالتفصيل في الـ chapter الجاي عن الـ compression.",
       "<b>TIFF</b> (Tagged Image File Format): بيخزن أنواع صور كتير (bit-map، greyscale، 8-bit، 24-bit RGB) وبيتعرّف نوعها بالـ <b>tags</b>. من Aldus Corp. (التمانينات)، وبعدين Microsoft دعمته. غالبًا <b>lossless</b>؛ وفيه JPEG tag بيسمح بـ JPEG compression. مالوش أي ميزة كبيرة على الـ JPEG و<b>مش user-controllable زيه</b>، فباين إن شعبيته بتقل.",
       "<b>PNG</b> (Portable Network Graphics): معمول عشان <b>يحل محل</b> الـ <b>GIF</b> standard. لحد <b>48 bits لكل pixel</b>، وده بيدي <b>ألوان أدق</b>؛ فيه gamma-correction و<b>alpha channel</b> (لـ controls زي الـ transparency)؛ وprogressive display عن طريق blocks مقاسها 8×8.",
       "<b>PostScript / EPS</b>: لغة typesetting فيها text وvector graphics وbitmaps (الـ output بتاع Illustrator وFreeHand). <b>مفيهوش compression</b>، فالملفات كبيرة (ممكن يتربط بـ compressors خارجية).",
@@ -1987,7 +1991,7 @@ AR.mm = {
       "ملخص الألوان (slide 40): الصور الملونة بتتعمل encode كـ triplets من القيم. <b>تلات systems مشهورة للـ encoding في الـ video هما RGB وYIQ وYCrCb.</b> وجنب الـ colour models الـ <b>hardware-oriented</b> (يعني RGB، CMY، YIQ، YUV)، فيه كمان HSB (Hue وSaturation وBrightness، زي اللي في Photoshop) وHLS (Hue وLightness وSaturation) بيُستخدموا كتير.",
       "التلاتة بيشتركوا في نفس الـ luminance: <b>Y = 0.299R + 0.587G + 0.114B</b> (الـ CIE Y primary).",
       "في الـ YIQ: الـ vectors التانيين هما <b>I = 0.596R − 0.275G − 0.321B</b> و<b>Q = 0.212R − 0.528G + 0.311B</b>.",
-      "<b>YIQ</b>: بيُستخدم في <b>TV broadcasting الملون (NTSC)</b>؛ و<b>downward compatible مع التلفزيون الأبيض والأسود</b>. الـ I = محور أحمر-برتقالي، والـ Q تقريبًا orthogonal عليه. العين أكتر حساسية للـ Y، وبعده I، وبعده Q، عشان كده NTSC بيدي <b>4 MHz للـ Y، و1.5 MHz للـ I، و0.6 MHz للـ Q</b>.",
+      "<b>YIQ</b>: بيُستخدم في <b>TV broadcasting الملون (NTSC)</b>؛ و<b>downward compatible مع التلفزيون الأبيض والأسود</b>. الـ I = محور أحمر-برتقالي، والـ Q تقريبًا orthogonal عليه. العين أكتر حساسية للـ Y، وبعده I، وبعده Q. ومن هنا الـ <b>NTSC (analog) video compression scheme</b>: <b>4 MHz للـ Y، و1.5 MHz للـ I، و0.6 MHz للـ Q</b>.",
       "الـ Figure (slide 30، YIQ colour space): الصورة الملونة الأصلية (الببغاوات) والـ <b>Y وI وQ image intensities</b> بتاعتها: الـ Y شبه الصورة الـ grey-scale؛ والـ I والـ Q صور غامقة والـ contrast فيها قليل.",
       "<b>YUV</b>: digital video standard (1982). الـ Video = سلسلة fields (السطور الفردي والزوجي)؛ <b>كل fieldين بيعملوا frame</b>. بيشتغل في PAL (50 field/s) أو NTSC (60 field/s). U = B − Y، V = R − Y.",
       "<b>YCrCb</b> (CCIR 601): شبه الـ YUV بس <b>scaled</b>: Cb = (B − Y)/1.772، Cr = (R − Y)/1.402. بيُستخدم في <b>JPEG</b> (وMPEG).",
@@ -2049,7 +2053,7 @@ AR.mm = {
       "<b>S-Video</b> (Separated video، S-VHS): حل وسط — 2 lines: واحد للـ luminance، وواحد للـ composite chrominance.",
       "<b>NTSC</b>: 525 line/frame، 30 fps (بالظبط 29.97، 33.37 ms/frame)، aspect ratio 4:3، interlaced (2 fields، 262.5 line/field)، 20 line في كل field محجوزين للـ control → أقصى حاجة <b>485 visible lines</b> (الـ laser disc/S-VHS ≈ 420، التلفزيون العادي ≈ 320). بيستخدم <b>YIQ</b>: composite = Y + I cos(Fsc t) + Q sin(Fsc t)، والـ <b>Fsc هو الـ frequency بتاع الـ colour subcarrier</b>. فكرة الـ compression الأساسية: العين أحسس حاجة للـ Y، بعدها الـ I، بعدها الـ Q، فالـ bandwidth: Y 4 MHz، I 1.5 MHz، Q 0.6 MHz. ده <b>لسه analog compression</b>؛ وفيه compression شبهه (أسهل في التخيل) جزء من الـ digital compression.",
       "<b>PAL</b>: 625 line/frame، <b>25 fps</b> (40 ms/frame)، 4:3، interlaced (312.5 line/field). بيستخدم <b>YUV (YCrCb)</b>: composite = Y + 0.492 U sin(Fsc t) + 0.877 V cos(Fsc t). الـ Bandwidth: Y 5.5 MHz، وU وV كل واحد 1.8 MHz.",
-      "دوال الـ colour space في الـ image processing toolbox بتاع MATLAB. <b>Colormap manipulation</b>: colormap (تحط أو تجيب الـ colour lookup table)، rgbplot (ترسم components الـ RGB colourmap)، cmpermute (ترتب الألوان في الـ colormap من جديد). <b>Colour space conversions</b>: hsv2rgb/rgb2hsv (تحويل قيم HSV/RGB colour space)، lab2double/lab2uint16/lab2uint8 (تحويل قيم ألوان الـ Lab لـ double إلخ)، <b>ntsc2rgb/rgb2ntsc</b> (تحويل قيم ألوان NTSC (YIQ)/RGB)، <b>ycbcr2rgb/rgb2ycbcr</b> (تحويل ألوان YCbCr/RGB)."
+      "دوال الـ colour space في الـ image processing toolbox بتاع MATLAB. <b>Colormap manipulation</b>: colormap (تحط أو تجيب الـ colour lookup table)، rgbplot (ترسم components الـ RGB colourmap)، cmpermute (ترتب الألوان في الـ colormap من جديد). <b>Colour space conversions</b>: hsv2rgb/rgb2hsv (تحويل قيم HSV/RGB colour space)، lab2double/lab2uint16/lab2uint8 (تحويل قيم ألوان الـ Lab لـ double إلخ)، <b>ntsc2rgb/rgb2ntsc</b> (تحويل قيم ألوان NTSC (YIQ)/RGB)، <b>ycbcr2rgb/rgb2ycbcr</b> (تحويل ألوان YCbCr/RGB). هتشوفوها في الـ Lab Class الجاي."
      ]
     },
     {
@@ -2057,6 +2061,7 @@ AR.mm = {
      "pts": [
       "بيخزن اللون (chroma) بـ <b>resolution أقل</b> من الـ intensity (luma). استخدامه الأساسي: الـ <b>compression</b> في JPEG وMPEG — وهو واحد من أهم مصدرين للـ <b>lossy</b>.",
       "ليه بينفع: الـ human visual system حساس للإضاءة أكتر من اللون، وأقل حساسية لمكان وحركة اللون، فبندي bandwidth للـ Y أكتر من Cr/I وCb/Q. تقريبًا مفيش فرق ملحوظ.",
+      "<b>نقدر نعمل optimise للـ bandwidth</b> لما نخزن تفاصيل luminance أكتر من تفاصيل اللون.",
       "إزاي نعمل chroma subsample (بنشتغل على الـ colour difference components): الـ signal بتتقسم لـ <b>Luma (Y)</b>، وهو الـ intensity component، و<b>Chroma</b>، وهما two colour difference components بنعملهم subsample بطريقة ما عشان نقلل الـ bandwidth (شبه الـ analog video compression، NTSC أو PAL). الـ subsampling scheme بيتكتب عادة كـ three part ratio (زي <b>4:2:2</b>).",
       "النسبة بتتكتب بـ 3 أجزاء J:a:b: الأول = الـ horizontal sampling reference بتاع الـ <b>Luma (Y) أو Red (R)</b> (في الأصل مضاعف لـ 3.579 MHz في الـ NTSC analog television system، اتقرّب لـ 4)؛ التاني = الـ horizontal factor بتاع <b>Cr/I/G</b> (نسبةً للرقم الأول)؛ التالت = الـ horizontal factor بتاع <b>Cb/Q/B</b> (نسبةً للرقم الأول)، إلا لو كان <b>صفر</b>: الـ 0 معناه إن الـ horizontal factor بتاع Cb (Q/B) زي الرقم التاني، وإن الاتنين Cr (I/G) وCb (Q/B) بيتعملهم subsample <b>2:1 vertically</b>.",
       "<b>4:4:4</b>: مفيش subsampling في أي band (نسب متساوية). <b>4:2:2</b>: الـ two chroma components بيتعملهم sample بنص الـ sample rate بتاع الـ luma، فالـ horizontal chroma resolution بتتقسم على اتنين. <b>4:1:1</b>: subsample أفقي بـ factor 4. <b>4:2:0</b>: subsample بـ factor 2 في المحورين الأفقي والرأسي.",
@@ -2064,7 +2069,9 @@ AR.mm = {
       "الحساب: الـ simple image subsampling هو <b>ببساطة frequency sampling مختلف</b> للـ signal الـ digitised. الـ digital subsampling لـ 4:4:4 و4:2:2 و4:1:1: اعمل chroma subsampling بـ 2×2 (أو 1×2، أو 1×4)، يعني subsample في الاتجاه الأفقي، والرأسي لو ينفع، يعني بناخد كل تاني أو رابع pixel value. في <b>4:2:0</b>، الـ Cr والـ Cb عمليًا بيبقوا في النص رأسيًا بين صفوف الصورة: بنقسم الصورة لـ <b>pixel blocks 2×2</b> وبنخزن <b>متوسط (average)</b> معلومات اللون لكل مجموعة 2×2 pixels. في MATLAB: imresize بـ 'nearest' (4:2:2، 4:1:1) أو 'bilinear' (4:2:0).",
       "الـ Figures (slides 51 و52): صورة فوقيها grid من النقط بتوضّح الـ chroma بيتعمله sample فين. <b>4:4:4</b>: نقطة على كل pixel. <b>4:2:2</b>: نقط chroma زرقا على كل تاني pixel في كل صف. <b>4:1:1</b>: نقط chroma زرقا على كل رابع pixel في كل صف. <b>4:2:0</b>: نقطة chroma زرقا واحدة في نص كل block 2×2، في النص بين الصفوف.",
       "الـ Chroma subsampling في MATLAB (slide 53): الـ function <b>imresize()</b> بتعمل كل اللي محتاجينه في الـ subsampling بسهولة. بتغيّر حجم صورة من أي نوع بالـ interpolation method اللي تحددها: 'nearest' (الـ default، nearest neighbour interpolation) أو 'bilinear' (bilinear interpolation). الـ B = IMRESIZE(A,M,METHOD) بترجع صورة حجمها M مرة قد A (لو M بين 0 و1.0 تبقى B أصغر من A؛ لو M أكبر من 1.0 تبقى B أكبر). الـ B = IMRESIZE(A,[MROWS MCOLS],METHOD) بترجع صورة مقاسها MROWS في MCOLS. بعد الـ colour conversion في MATLAB لـ YUV/YIQ، على الـ channels بتاعة U/I وV/Q: استخدم <b>nearest</b> لـ 4:2:2 و4:2:1 وخلّي الـ MCOLS نص أو ربع حجم الصورة؛ واستخدم <b>bilinear</b> (عشان يعمل average) لـ 4:2:0 وخلّي الـ scale نص. ‡ الـ slide مكتوب فيها \"4:2:1\"، بس المقصود 4:1:1 (الـ MCOLS بربع الحجم).",
+      "هتشوفوه في الـ Lab worksheet الجاية (slide 53).",
       "الـ data المتخزنة لكل 4 pixels (samples الـ Y+Cb+Cr، مقابل 12 في 4:4:4): 4:2:2 → 8 (2/3)، 4:1:1 → 6 (1/2)، 4:2:0 → 6 (1/2).",
+      "الـ Error (1) بالتفصيل (slide 54): عملية الـ sampling دي بتدخّل نوعين من الـ errors. الأول مشكلة <b>صغيرة</b>: اللون غالبًا بيتخزن بـ <b>نص الـ resolution الأفقي والرأسي</b> بتاع الصورة الأصلية (subsampling). ودي مش مشكلة حقيقية: العين قدرتها على تمييز تفاصيل اللون أقل من الـ intensity، وتقريبًا كل الـ digital cameras الـ resolution بتاعها للون أقل من الـ intensity، فأصلًا مفيش colour information بـ resolution عالي في صور الـ digital camera.",
       "الـ Errors: (1) اللون بيتحفظ بنص الـ resolution: مش مشكلة حقيقية (العين والكاميرات أصلًا الـ colour resolution بتاعتهم أقل). (2) الـ <b>Integer rounding</b>: الـ subsampling محتاج تحويلين، من الـ RGB لـ representation فيه intensity+colour (YIQ/YUV) وبعدين نرجع تاني (YIQ/YUV → RGB) لما الصورة تتعرض؛ والتحويل بيتعمل بـ integer arithmetic، فبيدخل شوية round-off error. <b>ده تأثير أصغر بكتير</b>، بس بيأثر (شوية) على لون (غالبًا) واحد أو اتنين في المية من الـ pixels. عشان كده ما تعملش compress/recompress للـ videos كتير: <b>عدّل على الأصل</b>."
      ]
     },
@@ -2084,7 +2091,7 @@ AR.mm = {
     }
    ],
    "cards": [
-    "37.5 KB (1 bit/pixel)، حوالي 300 KB (1 byte/pixel)، 921.6 KB (3 bytes/pixel).",
+    "37.5 KB (1 bit/pixel)، أكتر من 300 KB (307.2 KB، 1 byte/pixel)، 921.6 KB (3 bytes/pixel).",
     "256 × 256 × 256 = 16,777,216.",
     "24-bit RGB وزيادة عليه byte للـ alpha عشان special effects زي الـ transparency.",
     "كل pixel بيخزن index؛ والـ look-up table هو اللي بيدي لون الـ RGB. محتاجينه في الـ 8-bit colour؛ وبيسمح بالـ palette animation.",

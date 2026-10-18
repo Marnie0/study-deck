@@ -29,8 +29,13 @@ COURSES.mm = {
       "Figure (slide 7, HyperText Navigation): <b>Normal Text</b> is read <b>LINEAR</b>: an open book with arrows running across the lines and down the pages, in one order. <b>HyperText</b>: pages joined by curved arrows from hot spots on one page to other pages, so the reading order is non-linear.",
       "<b>Hypermedia</b>: not constrained to be text-based. It can include other media, e.g. graphics, images and especially <b>continuous media — sound and video</b>.",
       "Figure (slide 8, Hypermedia): four media around a centre, joined by two-way arrows: <b>Graphics</b> (top), <b>Sound</b> (left, a loudspeaker), <b>Text</b> (right, linked text pages) and <b>Video</b> (bottom, a video recorder and a TV), above a film strip labelled <b>HYPERMEDIA</b>.",
-      "Hypermedia application examples: the <b>World Wide Web</b> (the clear example), PowerPoint, Adobe Acrobat (PDF software), Adobe Flash.",
+      "Hypermedia application examples: the <b>World Wide Web</b> (the clear example), PowerPoint, Adobe Acrobat (PDF software), Adobe Flash. Many many others?",
       "Multimedia application examples: WWW, multimedia authoring (Adobe/Macromedia Director), hypermedia courseware, video-on-demand, interactive TV, computer games, virtual reality, digital video editing and production systems, multimedia database systems. The later \"Applications\" slide adds video conferencing, groupware and home shopping."
+     ],
+     "fig": [
+      "mm-hypertext",
+      "mm-linear-hyper",
+      "mm-hypermedia"
      ]
     },
     {
@@ -44,9 +49,11 @@ COURSES.mm = {
      "h": "Challenges and key issues",
      "pts": [
       "<b>Challenges</b>: distributed networks; <b>temporal relationship</b> between data; rendering different data at the same time, continuously; <b>sequencing within the media</b> (playing video frames in the correct order/time frame); <b>synchronisation</b> — inter-media scheduling, e.g. <b>lip synchronisation</b> of video and audio.",
+      "How the slide groups them: two top-level challenges, <b>Distributed Networks</b> and <b>Temporal relationship between data</b>. Under the temporal relationship come: render different data at the same time, continuously; sequencing within the media (playing frames in correct order/time frame in video); synchronisation, inter-media scheduling.",
       "E.g. Video and Audio: <b>lip synchronisation</b> is clearly important for humans to watch playback of video and audio, and even <b>animation and audio</b>. (Ever tried watching an out of (lip) sync film for a long time?)",
       "<b>Key issues</b>: how to represent and store temporal information; how to strictly maintain temporal relationships on playback/retrieval; what processes are involved; data must be represented digitally (<b>analog–digital conversion, sampling</b>); <b>large data requirements</b> (bandwidth, storage) so <b>data compression is usually mandatory</b>."
-     ]
+     ],
+     "fig": "mm-lipsync"
     },
     {
      "h": "Desirable features of a multimedia system",
@@ -57,8 +64,8 @@ COURSES.mm = {
       "<b>Data representations</b> — file formats that are easy to handle yet allow real-time compression/decompression.",
       "<b>Efficient and high I/O</b>: input and output to the <b>file subsystem</b> needs to be efficient and fast. Needs to allow for real-time recording as well as playback of data, e.g. direct-to-disk recording systems.",
       "<b>Special operating system</b>: to allow access to the file system and process data efficiently and quickly. Needs to support direct transfers to disk, real-time scheduling, fast interrupt processing, I/O streaming, etc.",
-      "<b>Storage and memory</b> — hundreds of TB storage, several GB memory, large caches, high-speed buses.",
-      "<b>Network support</b> — client-server/distributed systems. <b>Software tools</b> — user-friendly tools to handle media, design/develop applications and deliver media."
+      "<b>Storage and memory</b>: large storage units (of the order of hundreds of Tb, if not more) and large memory (several Gb or more). Large caches are also required, and high-speed buses for efficient management.",
+      "<b>Network support</b>: client-server systems are common, as distributed systems are common. <b>Software tools</b>: user-friendly tools to handle media, design/develop applications and deliver media."
      ]
     },
     {
@@ -130,6 +137,10 @@ COURSES.mm = {
        "≈ 155 MB/s",
        "1920×1080×3 = 6,220,800 B ≈ 6.2 MB × 25 ≈ 155 MB (here 1 MB = 1,000,000 B, as on the slide; ‡ with 1 MB = 1024×1024 B it is ≈ 148 MB)"
       ]
+     ],
+     "fig": [
+      "mm-data-size",
+      "mm-frames"
      ]
     },
     {
@@ -140,6 +151,10 @@ COURSES.mm = {
       "<b>Compression via synthesis</b>: encode <b>how to make (synthesise)</b> the data, which can take far fewer bits in certain cases. Examples: vector graphics (Flash), MPEG video, MP4 (audio), <b>MIDI</b>.",
       "Slide 27 photos: two small <b>MIDI keyboards</b>, one connected to a laptop (with headphones) and one to an iPad, as examples of compression via synthesis (MIDI).",
       "Course summary note: lossless = zero error, high quality, low compression; lossy = some error, lower quality, higher compression (e.g. YouTube uses lossy)."
+     ],
+     "fig": [
+      "mm-lossy-lossless",
+      "mm-synthesis"
      ]
     }
    ],
@@ -190,7 +205,7 @@ COURSES.mm = {
     ],
     [
      "Graphics vs images",
-     "Graphics are built from primitives (lines, polygons, arcs), editable and small; images are pixel bitmaps, large and edited only pixel by pixel."
+     "Graphics are built from primitives (lines, polygons, circles, curves, arcs), usually editable or revisable, and small, since the file stores only how the primitives are assembled; images are pixel bitmaps, not editable or revisable in that way (unlike graphics), and large, so compression is commonly applied."
     ],
     [
      "Lossless vs lossy",
@@ -1394,6 +1409,11 @@ COURSES.mm = {
       "<b>Sampling</b> = measuring the analog signal at <b>regular discrete intervals</b> (the sampling interval T) and recording the value at these points.",
       "Figure (slide 5, Digital Sampling (1)): top, the continuous analog signal <b>y(t)</b> against t (a smooth curve that rises then falls); bottom, the sampled signal <b>y<sub>s</sub>(t)</b>: vertical stems with circles at the regular times T<sub>s</sub>, 2T<sub>s</sub>, 3T<sub>s</sub>, 4T<sub>s</sub>, …, each stem as high as the signal value at that point.",
       "Figure (slide 6, Digital Sampling (2)): a shaded signal <b>S(t)</b> against t, going above and below the axis; the samples <b>S<sub>i</sub></b> are dots on the curve at sample indices 0, 1, …, i, 4, 5, …, 13, one every sampling interval <b>T</b>."
+     ],
+     "fig": [
+      "mm-digitise",
+      "mm-sampling-1",
+      "mm-sampling-2"
      ]
     },
     {
@@ -1406,7 +1426,8 @@ COURSES.mm = {
      "formula": [
       "fs = 1 / T      (T = sampling interval in seconds)",
       "Levels = 2^bits  (8 bit → 256 levels, 16 bit → 65,536 levels)"
-     ]
+     ],
+     "fig": "mm-bit-rate"
     },
     {
      "h": "Nyquist's sampling theorem and aliasing",
@@ -1414,19 +1435,28 @@ COURSES.mm = {
       "The sampling frequency is <b>critical</b> to the accurate reproduction of a digital version of an analog waveform.",
       "<b>Nyquist's theorem</b>: the sampling frequency for a signal must be <b>at least twice the highest frequency component</b> in the signal: <b>fs ≥ 2·fmax</b>.",
       "<b>Nyquist frequency</b> = fs / 2 = the highest frequency a given sample rate can represent (e.g. 44.1 kHz → 22.05 kHz). <b>Nyquist rate</b> = 2·fmax = the minimum sample rate for a signal.",
-      "Slide demos: sampling <b>at the signal frequency</b> gives one sample per cycle, so every sample has the same value (the sine is lost); sampling at twice the frequency just captures it; sampling <b>above</b> Nyquist captures the waveform well.",
+      "Slide demos: sampling at the signal frequency gives one sample per cycle, so every sample has the same value (the sine is lost); sampling at twice the frequency keeps the frequency only if the samples land on the peaks and troughs (a triangle wave); if they land on the zero crossings every sample is zero and the sine is lost; sampling above Nyquist captures the waveform well.",
       "Figures (slides 8 to 10), a sine wave with the samples marked: <b>Sampling at Signal Frequency</b>: one sample per cycle, all at the same height (the peaks), so joining them gives a flat (green) line. <b>Sampling at Twice Nyquist Frequency</b> (slide title): samples at every peak and trough; joined, they give a triangle wave with the sine's frequency. <b>Sampling at above Nyquist Frequency</b>: many samples (red dots) that trace the sine closely. ‡ In the middle figure the sample rate is twice the signal frequency, i.e. the Nyquist rate 2·fmax.",
+      "Both figures (slides 8 and 9) also mark a second set of samples in red on the axis, at the zero crossings, taken at the same rate; joined, they give a flat red line along the axis. So at the signal frequency the sine is lost either way, and at twice the frequency it is lost when the samples fall on the zero crossings.",
       "Getting it wrong (<b>undersampling</b>) creates <b>digital sampling artefacts</b> called <b>aliasing</b>: a false lower frequency appears. Aliasing affects <b>audio, imagery and video</b> (aliased sine wave and aliased piano demos).",
       "Figure (slide 11, If you get Nyquist Sampling Wrong? (1)): four panels on a 0 to 32 axis: the original continuous signal, then the same signal sampled as bars, first densely, then less densely, then sparsely; with fewer samples the shape of the signal is lost. <b>Digital Sampling Artefacts Arise</b>: effect known as <b>Aliasing</b>, which affects <b>Audio, Imagery and Video</b>.",
-      "Figure (slide 12, If you get Nyquist Sampling Wrong? (2)): three sinusoids (green, red and blue) of <b>different frequencies</b> pass through exactly the <b>same sample points</b> (marked at t = −4, −3, …, 4), so from the samples alone they cannot be told apart.",
+      "Figure (slide 12, If you get Nyquist Sampling Wrong? (2)): three sinusoids (green, red and blue) with different amplitudes and phases pass through exactly the <b>same sample points</b> (marked at t = −4, −3, …, 4: each sample is +1 or −1), so from the samples alone they cannot be told apart. All three repeat every 2 units on the axis, one sample per half cycle.",
       "What does aliasing sound like? (slide 13: click on the images to play sounds): <b>Sine Wave</b>, <b>Aliased Sine Wave</b> and <b>Aliased Piano</b>. <b>MATLAB code</b> for the sine demos: Plot Version, Audio Version. More on <b>image and video sampling artefacts</b> later.",
       "<b>Oversampling</b> = sampling above the Nyquist rate. It reduces aliasing but costs more data.",
-      "Practical implication: the signal must be <b>low-pass filtered before sampling</b> (analog input → low-pass filter → A/D converter → sampled digital), otherwise frequencies above the Nyquist limit appear as strange artefacts."
+      "Practical implication: the signal must be low-pass filtered before sampling: Input Signal (Analog) → <b>Low Pass Filter</b> → Filtered Signal (Analog) → <b>A/D Converter</b> → Sampled Signal (Digital). Otherwise frequencies above the Nyquist limit appear as strange artefacts."
      ],
      "formula": [
       "fs ≥ 2 × fmax",
       "Nyquist frequency = fs / 2",
       "Alias of a tone f between fs/2 and fs = fs − f   (standard result, not on the slides)"
+     ],
+     "fig": [
+      "mm-nyquist-3",
+      "mm-nyquist-calc",
+      "mm-alias-panels",
+      "mm-same-samples",
+      "mm-alias-sound",
+      "mm-lowpass"
      ]
     },
     {
@@ -1434,7 +1464,8 @@ COURSES.mm = {
      "pts": [
       "The upper range of human hearing is around <b>20–22 kHz</b>. Applying Nyquist, we need at least twice that: 2 × 22.05 kHz = <b>44.1 kHz</b>.",
       "Course constants: <b>audio/music</b> fmax = 22.05 kHz → fs = 44.1 kHz; <b>speech</b> fmax = 4 kHz → fs = 8 kHz. Mono = 1 channel; stereo = 2 channels."
-     ]
+     ],
+     "fig": "mm-cd-rate"
     },
     {
      "h": "Effect of sample rate and bit size on quality and size",
@@ -1469,6 +1500,10 @@ COURSES.mm = {
        "1.26 MB",
        "630 KB"
       ]
+     ],
+     "fig": [
+      "mm-quality-play",
+      "mm-size-table"
      ]
     },
     {
@@ -1482,22 +1517,30 @@ COURSES.mm = {
       "<b>Ex 4</b>: speech, 32-bit, 2.5 h, stereo → fs = 2 × 4000 = 8000 Hz; t = 9000 s; size = 8000 × 32 × 9000 × 2 = <b>4,608,000,000 bits</b> = 576,000,000 B = <b>562,500 KB</b>.",
       "<b>Ex 5</b>: x(t) = 2A·cos(200πt + π/3) + 3A·sin(100πt − π/6). Each term is 2πf·t, so f1 = 200π/2π = <b>100 Hz</b>, f2 = 100π/2π = <b>50 Hz</b>; fmax = 100 Hz → fs ≥ 200 Hz → sampling interval T ≤ 1/200 = <b>0.005 s</b> (the largest interval allowed).",
       "<b>Sampling intervals</b>: speech 1/8000 = <b>0.000125 s</b> (125 µs); music 1/44,100 ≈ <b>0.0000227 s</b> (22.68 µs)."
-     ]
+     ],
+     "fig": "mm-size-calc"
     },
     {
      "h": "Audio file formats",
      "pts": [
       "Popular formats: <b>.au</b> (origin: Unix, Sun), <b>.aiff</b> (Mac, SGI), <b>.wav</b> (PC, DEC). Compression can be utilised in <b>some</b> of the above but is <b>not mandatory</b>.",
       "A simple and widely used (<b>by the above formats</b>) audio compression method is <b>ADPCM</b> (Adaptive Delta Pulse Code Modulation): based on past samples, it <b>predicts the next sample</b> and encodes the <b>difference</b> between the actual value and the predicted value. More on this later (Audio Compression).",
-      "Other formats (most use compression): Sound Blaster <b>.voc</b> (can use silence deletion), Pro Tools/Sound Designer <b>.sd2</b>, RealAudio <b>.ra</b>, Ogg Vorbis <b>.ogg</b>, AAC/Apple/mp4, FLAC <b>.flac</b>, Dolby AC coding, MPEG audio (MP3, MPEG-4)."
-     ]
+      "Many formats are linked to audio applications. Other formats (most use compression): Sound Blaster <b>.voc</b> (can use silence deletion), Pro Tools/Sound Designer <b>.sd2</b>, RealAudio <b>.ra</b>, Ogg Vorbis <b>.ogg</b>, AAC/Apple/mp4, FLAC <b>.flac</b>, Dolby AC coding, MPEG audio (MP3, MPEG-4)."
+     ],
+     "fig": "mm-adpcm"
     },
     {
      "h": "Synthetic sounds — reducing bandwidth",
      "pts": [
+      "Synthetic sounds: use more <b>high-level</b> descriptions to represent signals.",
       "<b>Synthesis pipeline</b>: synthesise sounds in hardware or software; the client produces the sound, so only <b>parameters</b> to control the sound are sent (MIDI/MP4/HTML5).",
+      "Pictures (slide 22): a small MIDI keyboard connected to a laptop (with headphones), and a MIDI keyboard connected to a tablet.",
       "Methods: <b>FM</b> (low-end Sound Blaster, OPL-4 chip, Yamaha DX, early 1980s); <b>wavetable</b> (from sampled real instruments); <b>additive</b> (sum simpler waveforms); <b>subtractive</b> (filter out parts of a complex waveform); <b>granular</b> (use small fragments of existing samples to make new sounds); <b>physical modelling</b> (model how acoustic sound is generated, in software); <b>sample-based</b> (record and play back recorded audio, often small fragments and audio processed). Most modern synthesisers mix sample and synthesis methods.",
       "Analogy: recorded sound ≈ bitmap image (regular sampling, large, hard to modify); synthetic sound ≈ <b>vector graphics</b> (high-level description, small, easy to edit, needs conversion — synthesis or rasterisation — before playback/display). Difference: 1D vs 2D."
+     ],
+     "fig": [
+      "mm-synth-pipe",
+      "mm-synth-methods"
      ]
     }
    ],
@@ -3489,7 +3532,7 @@ COURSES.mm = {
       "A digital image is made of <b>pixels</b> (picture elements). The number of pixels = <b>resolution</b>; higher resolution gives better quality.",
       "A <b>bit-map</b> representation stores the image the same way the monitor contents are stored in video memory.",
       "<b>Bit-map (black-and-white)</b>: 1 bit per pixel (0 or 1). A 640×480 bitmap = 307,200 bits = 38,400 B = <b>37.5 KB</b>. Dithering is often used to display monochrome images.",
-      "<b>Grey-scale</b>: 1 byte per pixel (0–255). A dark pixel may be 10, a bright one 240. 640×480 = 307,200 B ≈ <b>300 KB</b>.",
+      "Grey-scale: 1 byte per pixel (0–255). A dark pixel may be 10, a bright one 240. A 640×480 grey-scale image requires over 300 KB of storage: 307,200 B = 307.2 KB, the same as an 8-bit colour image.",
       "Figures (slides 4 and 5): the Lena photo shown as a <b>dithered black-and-white bit-map</b> (1 bit per pixel) and as a <b>grey-scale</b> image (1 byte per pixel).",
       "<b>24-bit colour</b>: 3 bytes per pixel (R, G, B) → 256×256×256 = <b>16,777,216</b> colours. 640×480×3 = <b>921.6 KB</b> (921,600 B). <b>32-bit</b> images add an extra byte for an <b>alpha</b> value (special effects such as transparency).",
       "<b>8-bit colour</b>: 1 byte per pixel, 256 colours out of millions, acceptable quality, needs a <b>Colour Look-Up Table (LUT)</b>. 640×480 = 307.2 KB (same as 8-bit greyscale).",
@@ -3511,7 +3554,7 @@ COURSES.mm = {
       [
        "Grey-scale",
        "8",
-       "≈300 KB (307,200 B)"
+       "over 300 KB (307,200 B = 307.2 KB)"
       ],
       [
        "8-bit colour (LUT)",
@@ -3528,6 +3571,10 @@ COURSES.mm = {
        "32 (RGB + alpha)",
        "1,228,800 B"
       ]
+     ],
+     "fig": [
+      "mm-8a-sizes",
+      "mm-8a-lut"
      ]
     },
     {
@@ -3541,6 +3588,10 @@ COURSES.mm = {
       "<b>Ordered dither</b> keeps the image size: output pixel = 1 iff the remapped intensity at that pixel is greater than the matrix entry at the corresponding position.",
       "Figure (slide 7): the original grey-scale Lena photo (left) beside its dithered version (right), which shows the grey levels as patterns of black and white dots.",
       "Worked example: pixel 200 → 200 ÷ (256/17) = 200×17/256 = 13.28 → <b>13</b>. Entries smaller than 13 are 0…12, so <b>13 of the 16 dots</b> are set."
+     ],
+     "fig": [
+      "mm-8a-dither",
+      "mm-8a-ordered"
      ]
     },
     {
@@ -3549,7 +3600,7 @@ COURSES.mm = {
       "Most formats include compression (lossless or lossy).",
       "Common graphics and image file formats: http://www.dcs.ed.ac.uk/home/mxr/gfx/ gives a comprehensive listing of various formats; see also the <b>Encyclopedia of Graphics File Formats</b> book in the library. Graphics, video and audio compression techniques are covered in the next chapter.",
       "<b>GIF</b> (GIF87a, GIF89a), under the slide heading <b>Standard System Independent Formats</b>: Graphics Interchange Format, devised by UNISYS Corp. and CompuServe, initially for transmitting graphical images over phone lines via modems. Uses the <b>Lempel-Ziv Welch (LZW)</b> algorithm (the slide calls it <b>a form of Huffman Coding</b>), modified slightly for image scan line packets (<b>line grouping of pixels</b>) → <b>lossless</b>. ‡ LZW is actually a dictionary-based method, not Huffman coding (both are lossless). Limited to <b>8-bit (256 colours)</b>, so suits images with few distinctive colours (e.g. graphics drawing). Supports <b>interlacing</b>. GIF89a adds simple <b>animation</b> and a transparency index.",
-      "<b>JPEG</b>: by the Joint Photographic Experts Group for <b>photographic</b> images. Exploits limits of human vision for high compression. <b>Lossy</b>; the user chooses the quality/compression level.",
+      "JPEG: by the Joint Photographic Experts Group for photographic images. Exploits limits of human vision for high compression. Lossy; the user chooses the quality/compression level. The algorithm is discussed in detail in the next chapter on compression.",
       "<b>TIFF</b> (Tagged Image File Format): stores many image types (bit-map, greyscale, 8-bit, 24-bit RGB) identified by <b>tags</b>. By Aldus Corp. (1980s), later supported by Microsoft. Typically <b>lossless</b>; a JPEG tag allows JPEG compression. It does not provide any major advantages over JPEG and is <b>not as user-controllable</b>, so it appears to be declining in popularity.",
       "<b>PNG</b> (Portable Network Graphics): meant to supersede (<b>replace</b>) the <b>GIF</b> standard. Up to <b>48 bits per pixel</b>, giving <b>more accurate colours</b>; gamma-correction and <b>alpha channel</b> (for controls such as transparency); progressive display through 8×8 blocks.",
       "<b>PostScript / EPS</b>: a typesetting language with text, vector graphics and bitmaps (output of Illustrator, FreeHand). <b>No compression</b>, so files are large (can link to external compressors).",
@@ -3574,6 +3625,16 @@ COURSES.mm = {
       "Figure (slide 26, Lab image space): the original colour image (parrots) and its <b>L, A, B image intensities</b>: L looks like the grey-scale image; A and B are shown in false colour (green/pink and purple/blue).",
       "Other models: <b>HSB</b> (Hue, Saturation, Brightness — Photoshop) and <b>HLS</b> (Hue, Lightness, Saturation).",
       "<b>Luminance</b> = brightness (the grey value, Y). <b>Chrominance</b> = colour information (hue + saturation)."
+     ],
+     "fig": [
+      "mm-8a-spectrum",
+      "mm-8a-eye",
+      "mm-8a-cones",
+      "mm-8a-channels",
+      "mm-8a-displays",
+      "mm-8a-cie-cone",
+      "mm-8a-cie-mix",
+      "mm-8a-lab"
      ]
     },
     {
@@ -3584,7 +3645,7 @@ COURSES.mm = {
       "Summary of colour (slide 40): colour images are encoded as triplets of values. <b>Three common systems of encoding in video are RGB, YIQ and YCrCb.</b> Besides the <b>hardware-oriented</b> colour models (i.e. RGB, CMY, YIQ, YUV), HSB (Hue, Saturation and Brightness, e.g. used in Photoshop) and HLS (Hue, Lightness and Saturation) are also commonly used.",
       "All three share the luminance: <b>Y = 0.299R + 0.587G + 0.114B</b> (the CIE Y primary).",
       "YIQ: the other two vectors are <b>I = 0.596R − 0.275G − 0.321B</b> and <b>Q = 0.212R − 0.528G + 0.311B</b>.",
-      "<b>YIQ</b>: used in colour <b>TV broadcasting (NTSC)</b>; <b>downward compatible with B/W TV</b>. I = red-orange axis, Q roughly orthogonal. Eye is most sensitive to Y, then I, then Q, so NTSC gives <b>4 MHz to Y, 1.5 MHz to I, 0.6 MHz to Q</b>.",
+      "YIQ: used in colour TV broadcasting (NTSC); downward compatible with B/W TV. I = red-orange axis, Q roughly orthogonal. Eye is most sensitive to Y, then I, then Q. This gives the <b>NTSC (analog) video compression scheme</b>: 4 MHz is allocated to Y, 1.5 MHz to I, 0.6 MHz to Q.",
       "Figure (slide 30, YIQ colour space): the original colour image (parrots) and its <b>Y, I, Q image intensities</b>: Y looks like the grey-scale image; I and Q are dark, low-contrast images.",
       "<b>YUV</b>: digital video standard (1982). Video = sequence of fields (odd and even lines); <b>two fields make a frame</b>. Works in PAL (50 fields/s) or NTSC (60 fields/s). U = B − Y, V = R − Y.",
       "<b>YCrCb</b> (CCIR 601): similar to YUV but <b>scaled</b>: Cb = (B − Y)/1.772, Cr = (R − Y)/1.402. Used in <b>JPEG</b> (and MPEG).",
@@ -3597,6 +3658,12 @@ COURSES.mm = {
       "YUV:   [Y; U; V] = [0.299 0.587 0.114; −0.299 −0.587 0.886; 0.701 −0.587 −0.114] · [R; G; B]",
       "YCbCr: Y = 0.299R + 0.587G + 0.114B,  Cb = (B − Y)/1.772,  Cr = (R − Y)/1.402",
       "        Cb = −0.169R − 0.331G + 0.500B,   Cr = 0.500R − 0.419G − 0.081B"
+     ],
+     "fig": [
+      "mm-8a-yiq-yuv",
+      "mm-8a-ntsc",
+      "mm-8a-fields",
+      "mm-ycrcb-lab"
      ]
     },
     {
@@ -3616,6 +3683,11 @@ COURSES.mm = {
      "formula": [
       "[C; M; Y] = [1; 1; 1] − [R; G; B]     [R; G; B] = [1; 1; 1] − [C; M; Y]",
       "K = min(C, M, Y);   C_cmyk = C − K;   M_cmyk = M − K;   Y_cmyk = Y − K"
+     ],
+     "fig": [
+      "mm-cmy-cubes",
+      "mm-add-sub",
+      "mm-cmyk-lab"
      ]
     },
     {
@@ -3662,7 +3734,11 @@ COURSES.mm = {
       "<b>S-Video</b> (Separated video, S-VHS): compromise — 2 lines: one luminance, one composite chrominance.",
       "<b>NTSC</b>: 525 lines/frame, 30 fps (exactly 29.97, 33.37 ms/frame), aspect ratio 4:3, interlaced (2 fields, 262.5 lines/field), 20 lines per field reserved for control → max <b>485 visible lines</b> (laser disc/S-VHS ≈ 420, ordinary TV ≈ 320). Uses <b>YIQ</b>: composite = Y + I cos(Fsc t) + Q sin(Fsc t), where <b>Fsc is the frequency of the colour subcarrier</b>. Basic compression idea: the eye is most sensitive to Y, next to I, next to Q, so bandwidth Y 4 MHz, I 1.5 MHz, Q 0.6 MHz. This is <b>still analog compression</b>; similar (easier to visualise) compression is part of digital compression.",
       "<b>PAL</b>: 625 lines/frame, <b>25 fps</b> (40 ms/frame), 4:3, interlaced (312.5 lines/field). Uses <b>YUV (YCrCb)</b>: composite = Y + 0.492 U sin(Fsc t) + 0.877 V cos(Fsc t). Bandwidth Y 5.5 MHz, U and V 1.8 MHz each.",
-      "MATLAB's image processing toolbox colour space functions. <b>Colormap manipulation</b>: colormap (set or get colour lookup table), rgbplot (plot RGB colourmap components), cmpermute (rearrange colours in colormap). <b>Colour space conversions</b>: hsv2rgb/rgb2hsv (convert HSV values/RGB colour space), lab2double/lab2uint16/lab2uint8 (convert Lab colour values to double etc.), <b>ntsc2rgb/rgb2ntsc</b> (convert NTSC (YIQ)/RGB colour values), <b>ycbcr2rgb/rgb2ycbcr</b> (convert YCbCr/RGB colour)."
+      "MATLAB's image processing toolbox colour space functions. Colormap manipulation: colormap (set or get colour lookup table), rgbplot (plot RGB colourmap components), cmpermute (rearrange colours in colormap). Colour space conversions: hsv2rgb/rgb2hsv (convert HSV values/RGB colour space), lab2double/lab2uint16/lab2uint8 (convert Lab colour values to double etc.), ntsc2rgb/rgb2ntsc (convert NTSC (YIQ)/RGB colour values), ycbcr2rgb/rgb2ycbcr (convert YCbCr/RGB colour). See forthcoming Lab Class."
+     ],
+     "fig": [
+      "mm-video-signals",
+      "mm-ntsc-pal"
      ]
     },
     {
@@ -3670,6 +3746,7 @@ COURSES.mm = {
      "pts": [
       "Stores colour (chroma) at a <b>lower resolution</b> than intensity (luma). Main use: <b>compression</b> in JPEG and MPEG — one of the two main <b>lossy</b> sources.",
       "Why it works: the human visual system is more sensitive to brightness than colour, and less sensitive to the position and motion of colour, so give more bandwidth to Y than to Cr/I and Cb/Q. Almost no visible difference.",
+      "<b>Bandwidth can be optimised</b> by storing more luminance detail than colour detail.",
       "How to chroma subsample (operate on colour difference components): the signal is divided into <b>Luma (Y)</b>, the intensity component, and <b>Chroma</b>, two colour difference components which we subsample in some way to reduce its bandwidth (analogous to analog video compression, NTSC or PAL). The subsampling scheme is commonly expressed as a three part ratio (e.g. <b>4:2:2</b>).",
       "Three-part ratio J:a:b: 1st = <b>Luma (Y) or Red (R)</b> horizontal sampling reference (originally a multiple of 3.579 MHz in the NTSC analog television system, rounded to 4); 2nd = <b>Cr/I/G</b> horizontal factor (relative to first digit); 3rd = <b>Cb/Q/B</b> horizontal factor (relative to first digit), except <b>zero</b>: 0 means the Cb (Q/B) horizontal factor is equal to the 2nd digit, and both Cr (I/G) and Cb (Q/B) are subsampled <b>2:1 vertically</b>.",
       "<b>4:4:4</b>: no subsampling in any band (equal ratios). <b>4:2:2</b>: the two chroma components are sampled at half the sample rate of luma, so horizontal chroma resolution is halved. <b>4:1:1</b>: horizontally subsampled by a factor of 4. <b>4:2:0</b>: subsampled by a factor of 2 in both the horizontal and vertical axes.",
@@ -3677,8 +3754,14 @@ COURSES.mm = {
       "Computing: simple image subsampling is <b>simply different frequency sampling</b> of the digitised signal. Digital subsampling for 4:4:4, 4:2:2 and 4:1:1: perform 2×2 (or 1×2, or 1×4) chroma subsampling, subsampling horizontal and, where applicable, vertical directions, i.e. choose every second, fourth pixel value. For <b>4:2:0</b>, Cr and Cb are effectively centred vertically halfway between image rows: break the image into <b>2×2 pixel blocks</b> and store the <b>average</b> colour information for each 2×2 pixel group. MATLAB: imresize with 'nearest' (4:2:2, 4:1:1) or 'bilinear' (4:2:0).",
       "Figures (slides 51 and 52): an image overlaid with a grid of dots marking where chroma is sampled. <b>4:4:4</b>: a dot on every pixel. <b>4:2:2</b>: blue chroma dots on every second pixel along each row. <b>4:1:1</b>: blue chroma dots on every fourth pixel along each row. <b>4:2:0</b>: one blue chroma dot in the centre of each 2×2 block, halfway between rows.",
       "Chroma subsampling in MATLAB (slide 53): the function <b>imresize()</b> readily achieves all our subsampling needs. It resizes an image of any type using the specified interpolation method: 'nearest' (default, nearest neighbour interpolation) or 'bilinear' (bilinear interpolation). B = IMRESIZE(A,M,METHOD) returns an image that is M times the size of A (M between 0 and 1.0: B is smaller than A; M greater than 1.0: B is larger). B = IMRESIZE(A,[MROWS MCOLS],METHOD) returns an image of size MROWS-by-MCOLS. After the MATLAB colour conversion to YUV/YIQ, for the U/I and V/Q channels: use <b>nearest</b> for 4:2:2 and 4:2:1 and scale the MCOLS to half or quarter the size of the image; use <b>bilinear</b> (to average) for 4:2:0 and set scale to half. ‡ The slide prints \"4:2:1\", but 4:1:1 is meant (quarter-size MCOLS).",
+      "See forthcoming Lab worksheet (slide 53).",
       "Data saved per 4 pixels (Y+Cb+Cr samples, vs 12 for 4:4:4): 4:2:2 → 8 (2/3), 4:1:1 → 6 (1/2), 4:2:0 → 6 (1/2).",
+      "Error (1) in full (slide 54): this sampling process introduces two kinds of errors. The first is a <b>minor</b> problem: colour is typically stored at only <b>half the horizontal and vertical resolution</b> of the original image (subsampling). This is not a real problem: the human eye has lower resolving power for colour than for intensity, and nearly all digital cameras have lower resolution for colour than for intensity, so there is no high resolution colour information present in digital camera images.",
       "Errors: (1) colour kept at half resolution: not a real problem (eye and cameras have lower colour resolution). (2) <b>Integer rounding</b>: subsampling demands two conversions, from RGB to an intensity+colour (YIQ/YUV) representation and back again (YIQ/YUV → RGB) when the image is displayed; conversion is done in integer arithmetic, so some round-off error is introduced. <b>This is a much smaller effect</b>, but (slightly) affects the colour of (typically) one or two percent of the pixels. So do not compress/recompress videos too often: <b>edit the original</b>."
+     ],
+     "fig": [
+      "mm-chroma-layout",
+      "mm-chroma-grid"
      ]
     },
     {
@@ -3693,13 +3776,18 @@ COURSES.mm = {
       "<b>Raster scan aliasing</b>: twinkling/strobing on sharp horizontal lines.",
       "Figure (slide 63): the Barbara image (Strobing Alias Video) and its frequency distribution (Strobing Alias Frequency Distributions Video); see raster_aliasing.m + barbara.gif.",
       "<b>Interlacing aliasing</b>: some video is interlaced; this effectively <b>halves</b> the sampling frequency (figure: Interlacing Aliasing effects, two copies of a slightly slanted line). <b>Image aliasing</b>: stair-stepping/zooming aliasing effects per frame (as in images). Explanation: simply an application of <b>Nyquist's Sampling Theorem</b>."
+     ],
+     "fig": [
+      "mm-stair-zoom",
+      "mm-wagon-wheel",
+      "mm-interlace"
      ]
     }
    ],
    "cards": [
     [
      "Size of a 640×480 image: B/W, grey, 24-bit",
-     "37.5 KB (1 bit/pixel), about 300 KB (1 byte/pixel), 921.6 KB (3 bytes/pixel)."
+     "37.5 KB (1 bit/pixel), over 300 KB (307.2 KB, 1 byte/pixel), 921.6 KB (3 bytes/pixel)."
     ],
     [
      "Colours in 24-bit colour",

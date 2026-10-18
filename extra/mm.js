@@ -769,7 +769,7 @@ EXTRA.mm = {
     ],
     [
      "The sine is just captured, like sampling at twice its frequency",
-     "\"just captured\" is the demo for sampling at twice the frequency."
+     "\"Just captured\" describes sampling at twice the frequency, and only when the samples land on the peaks and troughs; at its own frequency the sine is always lost."
     ],
     [
      "There is one sample per cycle, every sample has the same value, and the sine is lost",
