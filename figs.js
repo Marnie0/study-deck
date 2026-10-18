@@ -72,6 +72,22 @@
 .fig-ucd{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; max-width:560px; margin:0 auto; } .fig-ucd div{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px 6px; text-align:center; font-weight:600; opacity:.45; transition:opacity .4s, box-shadow .4s; }
 .fig-ucd div.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); } .fig-loop{ text-align:center; color:var(--k-hci); font-weight:600; margin-top:8px; }
 @media (max-width:420px){ .fig-ucd{ grid-template-columns:repeat(2, 1fr); } }
+.fig-scr{ background:#0b0b0d; color:#f3f4f6; border-radius:8px; padding:12px 14px; font:500 .86rem/1.35 "Arial Narrow", var(--body); max-width:560px; margin:0 auto; }
+.fig-scr .pr{ cursor:pointer; border-radius:3px; padding:0 2px; } .fig-scr .pr:hover{ background:#374151; } .fig-scr .pr.ok{ background:#15803d; } .fig-scr .pr.no{ background:#b91c1c; }
+.fig-scr table{ border-collapse:collapse; width:100%; } .fig-scr td, .fig-scr th{ text-align:left; padding:1px 6px 1px 0; font-weight:500; white-space:nowrap; } .fig-scr th{ font-weight:600; vertical-align:bottom; } .fig-scr tr.gap td{ height:10px; }
+.fig-task{ text-align:center; font-weight:600; margin:0 0 10px; } .fig-timer{ font:700 1.1rem var(--mono); text-align:center; color:var(--k-hci); margin-top:8px; }
+.fig-res{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; max-width:520px; margin:10px auto 0; } .fig-res div{ border:1px solid var(--line); border-radius:10px; padding:8px; text-align:center; background:var(--paper); font-size:.88rem; } .fig-res b{ display:block; font:700 1.2rem var(--mono); }
+.fig-grid{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px 4px; max-width:620px; margin:0 auto; font:.74rem/1.3 Verdana, var(--body); color:#111; } .fig-grid .g{ padding:3px 4px; background:#fff; } .fig-grid .g.blue{ background:#e8f0fb; }
+.fig-grid.box{ gap:12px 12px; } .fig-grid.box .g{ border:1px solid #2f5fa8; background:#fff; } .fig-grid .w{ display:block; cursor:pointer; border-radius:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } .fig-grid .w:hover{ background:#fde68a; } .fig-grid .w.ok{ background:#86efac; } .fig-grid .w.no{ background:#fca5a5; }
+@media (max-width:560px){ .fig-grid{ grid-template-columns:repeat(2, 1fr); font-size:.74rem; } .fig-grid:not(.box) .g, .fig-grid:not(.box) .g.blue{ background:#fff; } .fig-grid:not(.box) .g:nth-child(4n+1), .fig-grid:not(.box) .g:nth-child(4n){ background:#e8f0fb; } }
+@media (max-width:480px){ .fig-scr{ font-size:.64rem; padding:10px 6px; letter-spacing:-.02em; } .fig-scr td, .fig-scr th{ padding-right:3px; } }
+.fig-time{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:10px; max-width:560px; margin:0 auto; } .fig-time div{ padding:14px 8px; text-align:center; font:600 1rem Arial, var(--body); border:1px solid #333; }
+.fig-swatch{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; max-width:520px; margin:10px auto 0; } .fig-swatch div{ padding:12px 8px; text-align:center; font-weight:700; border-radius:8px; border:1px solid var(--line); } .fig-swatch small{ display:block; font-weight:600; font-size:.75rem; margin-top:4px; }
+.fig-q{ max-width:520px; margin:0 auto; text-align:center; } .fig-q .big{ font-size:1.35rem; font-weight:700; padding:22px 10px; border:1px solid var(--line); border-radius:12px; background:var(--paper); }
+.fig-seven{ display:grid; gap:10px; max-width:560px; margin:0 auto; } .fig-seven .ui{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px; opacity:.4; transition:opacity .4s, box-shadow .4s; } .fig-seven .ui.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); }
+.fig-seven .row7{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; } .fig-seven .tab{ border:1px solid var(--line); border-bottom:0; border-radius:6px 6px 0 0; padding:4px 8px; font-size:.8rem; } .fig-seven .face{ width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-size:15px; border:1px solid #9ca3af; }
+.fig-seven ul{ margin:0; padding-left:18px; columns:2; font-size:.85rem; } .fig-seven .menu{ display:inline-grid; border:1px solid var(--line); border-radius:6px; font-size:.82rem; } .fig-seven .menu span{ padding:2px 10px; border-bottom:1px solid var(--rule); }
+.fig-drive{ max-width:520px; margin:0 auto; }
 @media (prefers-reduced-motion: reduce){ .fig .flow, .fig .tap, .fig .roll{ animation:none; } .fig .pop, .fig .fade{ transition:none; } }`;
   if (!document.getElementById('fig-css')) { const s = document.createElement('style'); s.id = 'fig-css'; s.textContent = CSS; document.head.appendChild(s); }
 
@@ -517,5 +533,152 @@
       <p className=${'fig-loop ' + pop(i === 5)}>↺ iterate</p></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
-  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd };
+
+  /* timer helper for the search activities */
+  function useClock() {
+    const [t0, setT0] = useState(null), [now, setNow] = useState(0);
+    useEffect(() => { if (t0 == null) return; const id = setInterval(() => setNow(performance.now()), 100); return () => clearInterval(id); }, [t0]);
+    return { start: () => { const t = performance.now(); setT0(t); setNow(t); }, stop: () => { const s = (performance.now() - t0) / 1000; setT0(null); return s; }, running: t0 != null, secs: t0 == null ? 0 : (now - t0) / 1000 };
+  }
+  const sec = x => x.toFixed(1) + ' s';
+
+  /* ── L3 slide 4: which involves fast vs slow thinking? (no answers on the slide) ── */
+  function FastSlow({ ar }) {
+    const Q = ['2 + 2 =', '21 × 29 =', 'What color eyes do you have?', 'How many colors are there in the rainbow?', 'How many months in the year have 31 days?', 'What is the name of the first school you attended?'];
+    const [i, setI] = useState(0);
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-q">
+      <p className="muted small" style=${{ margin: '0 0 8px' }}>Question ${i + 1} of ${Q.length} · answer in your head</p>
+      <div className="big">${Q[i]}</div></div></div>
+      <${Cap} en="Which involves <b>fast</b> vs <b>slow</b> thinking? (Kahneman, 2011) The slide leaves the answers for discussion." ar="أنهي فيهم بيحتاج تفكير <b>سريع</b> وأنهي بيحتاج تفكير <b>بطيء</b>؟ (Kahneman, 2011) الـ slide سايبة الإجابات للمناقشة." showAr=${ar} />
+      <div className="fig-bar"><div className="fig-dots" aria-hidden="true">${Q.map((_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div><span className="grow"></span>
+        <button className="fig-btn" onClick=${() => setI(Math.max(0, i - 1))} disabled=${i === 0}>‹ Back</button><button className="fig-btn solid" onClick=${() => setI(Math.min(Q.length - 1, i + 1))} disabled=${i === Q.length - 1}>Next question ›</button></div></figure>`;
+  }
+
+  /* ── L3 slides 8–10: find the hotel price on two screens (Tullis, 1987) ── */
+  const PENN = [['Bedford', 'Crinaline Courts', '(814) 623-9511', 118, 120], ['Bedford', 'Holiday Inn', '(814) 623-9006', 129, 136], ['Bedford', 'Midway', '(814) 623-8107', 121, 126], ['Bedford', 'Penn Manor', '(814) 623-8177', 119, 125], ['Bedford', 'Quality Inn', '(814) 623-5189', 123, 128], ['Bedford', 'Terrace', '(814) 623-5111', 122, 124], ['Bradley', 'De Soto', '(814) 362-3567', 120, 124], ['Bradley', 'Holiday House', '(814) 362-4511', 122, 125], ['Bradley', 'Holiday Inn', '(814) 362-4501', 132, 140], ['Breezewood', 'Best Western Plaza', '(814) 735-4352', 120, 127], ['Breezewood', 'Motel 70', '(814) 735-4385', 116, 118]];
+  const SC = [['Charleston', 'Best Western', '747-0961', 126, 130], ['Charleston', 'Days Inn', '881-1000', 118, 124], ['Charleston', 'Holiday Inn N', '744-1621', 136, 146], ['Charleston', 'Holiday Inn SW', '556-7100', 133, 147], ['Charleston', 'Howard Johnsons', '524-4148', 131, 136], ['Charleston', 'Ramada Inn', '774-8281', 133, 140], ['Charleston', 'Sheraton Inn', '744-2401', 134, 142], null, ['Columbia', 'Best Western', '796-9400', 129, 134], ['Columbia', 'Carolina Inn', '799-8200', 142, 148], ['Columbia', 'Days Inn', '736-0000', 123, 127], ['Columbia', 'Holiday Inn NW', '794-9440', 132, 139], ['Columbia', 'Howard Johnsons', '772-7200', 125, 127], ['Columbia', 'Quality Inn', '772-0270', 134, 141], ['Columbia', 'Ramada Inn', '796-2700', 136, 144], ['Columbia', 'Vagabond Inn', '796-6240', 127, 130]];
+  // shrink a screen's text just enough that it fits its box (the slides' tables are wide)
+  function useFit(dep) {
+    const ref = useRef(null);
+    React.useLayoutEffect(() => { const el = ref.current; if (!el) return; el.style.fontSize = ''; let fs = parseFloat(getComputedStyle(el).fontSize); while (el.scrollWidth > el.clientWidth + 1 && fs > 7) { fs -= .5; el.style.fontSize = fs + 'px'; } }, [dep]);
+    return ref;
+  }
+  function HotelSearch({ ar }) {
+    const [stage, setStage] = useState(0), [times, setTimes] = useState([]), [miss, setMiss] = useState(null);
+    const clk = useClock(), fit = useFit(stage);
+    const begin = () => { setMiss(null); clk.start(); setStage(s => s + 1); };
+    const pick = (ok, id) => { if (!clk.running) return; if (!ok) { setMiss(id); return; } const s = clk.stop(); setTimes(t => t.concat(s)); setMiss(null); setStage(st => st + 1); };
+    const P = (v, ok, id) => html`<span className=${'pr' + (miss === id ? ' no' : '')} onClick=${() => pick(ok, id)}>$${v}</span>`;
+    const screen1 = html`<div className="fig-scr" ref=${fit}><div>Pennsylvania</div>${PENN.map(([c, n, ph, sg, db], j) => html`<div key=${j}><div>${c} Motel/Hotel: ${n}</div><div style=${{ paddingLeft: '10px' }}>${ph}  S: ${P(sg, false, 's' + j)} D: ${P(db, c === 'Bedford' && n === 'Quality Inn', 'd' + j)}</div></div>`)}</div>`;
+    const screen2 = html`<div className="fig-scr" ref=${fit} style=${{ overflowX: 'auto' }}><div style=${{ marginBottom: '8px' }}>South Carolina</div><table><thead><tr><th rowSpan="2">City</th><th rowSpan="2">Motel/Hotel</th><th>Area</th><th rowSpan="2">Phone</th><th colSpan="2" style=${{ textAlign: 'center' }}>Rates</th></tr><tr><th>code</th><th>Single</th><th>Double</th></tr></thead><tbody>
+      ${SC.map((r, j) => r ? html`<tr key=${j}><td>${r[0]}</td><td>${r[1]}</td><td>803</td><td>${r[2]}</td><td>${P(r[3], false, 'S' + j)}</td><td>${P(r[4], r[0] === 'Columbia' && r[1] === 'Holiday Inn NW', 'D' + j)}</td></tr>` : html`<tr key=${j} className="gap"><td colSpan="6"></td></tr>`)}</tbody></table></div>`;
+    const task1 = 'Find the price for a <b>double room</b> at the <b>Quality Inn</b> in <b>Pennsylvania</b>. Tap the price.', task2 = 'Find the price of a <b>double room</b> at the <b>Holiday Inn</b> in <b>Columbia</b>. Tap the price.';
+    let body, en, a;
+    if (stage === 0) { body = html`<div className="fig-q"><button className="fig-btn solid" onClick=${begin}>Start screen 1 (timed)</button></div>`; en = '<b>Try the slide’s activity:</b> two screens with the same density of information. Time yourself on each.'; a = '<b>جرّب نشاط الـ slide:</b> شاشتين فيهم نفس كمية المعلومات. شوف وقتك في كل واحدة.'; }
+    else if (stage === 1) { body = html`<p className="fig-task" dangerouslySetInnerHTML=${{ __html: task1 }}></p>${screen1}<p className="fig-timer">${sec(clk.secs)}</p>`; en = task1; a = 'دوّر على سعر <b>الأوضة الدبل</b> في <b>Quality Inn</b> في <b>Pennsylvania</b>. دوس على السعر.'; }
+    else if (stage === 2) { body = html`<div className="fig-q"><p>Screen 1: <b>${sec(times[0])}</b></p><button className="fig-btn solid" onClick=${begin}>Start screen 2 (timed)</button></div>`; en = 'Found it. Now the second screen.'; a = 'لقيته. دلوقتي الشاشة التانية.'; }
+    else if (stage === 3) { body = html`<p className="fig-task" dangerouslySetInnerHTML=${{ __html: task2 }}></p>${screen2}<p className="fig-timer">${sec(clk.secs)}</p>`; en = task2; a = 'دوّر على سعر <b>الأوضة الدبل</b> في <b>Holiday Inn</b> في <b>Columbia</b>. دوس على السعر.'; }
+    else { body = html`<div className="fig-res"><div>Your screen 1<b>${sec(times[0])}</b></div><div>Your screen 2<b>${sec(times[1])}</b></div><div>Tullis (1987) screen 1<b>5.5 s</b></div><div>Tullis (1987) screen 2<b>3.2 s</b></div></div>`;
+      en = 'Tullis (1987): the 1st screen took an average of <b>5.5 seconds</b> and the 2nd <b>3.2 seconds</b>, although both have the same density of information. Why? <b>Spacing</b>: in the 1st screen the information is bunched up together, making it hard to search; in the 2nd the characters are grouped into vertical categories of information, making it easier.';
+      a = 'Tullis (1987): الشاشة الأولى خدت في المتوسط <b>5.5 ثانية</b> والتانية <b>3.2 ثانية</b>، رغم إن الاتنين فيهم نفس كمية المعلومات. ليه؟ <b>الـ spacing</b>: في الأولى المعلومات لازقة في بعض فصعب تدور فيها؛ في التانية الحروف متقسمة في أعمدة (vertical categories) فأسهل.'; }
+    return html`<figure className="fig"><div className="fig-stage">${body}</div>
+      <${Cap} en=${miss ? 'Not that one. ' + en : en} ar=${miss ? 'مش ده. ' + a : a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span>${stage > 0 && html`<button className="fig-btn" onClick=${() => { clk.running && clk.stop(); setStage(0); setTimes([]); setMiss(null); }}>↻ Start over</button>`}</div></figure>`;
+  }
+
+  /* ── L3 slides 19–21: find Italian (color contrast) vs find French (borders and white space) (Weller, 2004) ── */
+  const G19 = [[["Black Hills Forest","Cheyenne River","Social Science","South San Jose","Badlands Park","Juvenile Justice"],["Peters Landing","Public Health","San Bernardino","Moreno Valley","Altamonte Springs","Peach Tree City"],["Jefferson Farms","Psychophysics","Political Science","Game Schedule","South Addision","Cherry Hills Village"],["Devlin Hall","Positions","Hubard Hall","Fernadino Beach","Council Bluffs","Classical Lit"]], [["Results and Stats","Thousand Oaks","Promotions","North Palermo","Credit Union","Wilner Hall"],["Highland Park","Manchesney Park","Vallecito Mts.","Rock Falls","Freeport","Slaughter Beach"],["Creative Writing","Lake Havasu City","Engineering Bldg","Sports Studies","Lakewood Village","Rock Island"],["Sociology","Greek","Wallace Hall","Concert Tickets","Public Radio FM","Children's Museum"]], [["Performing Arts","Italian","Coaches","McKees Rocks","Glenwood Springs","Urban Affairs"],["Rocky Mountains","Latin","Pleasant Hills","Observatory","Public Affairs","Heskett Center"],["Deerfield Beach","Arlington Hill","Preview Game","Richland Hills","Experts Guide","Neff Hall"],["Writing Center","Theater Auditions","Delaware City","Scholarships","Hendricksville","Knights Landing"]], [["McLeansboro","Experimental Links","Graduation","Emory Lindquist","Clinton Hall","San Luis Obispo"],["Brunswick","East Millinocket","Women's Studies","Vacant","News Theatre","Candlewood Isle"],["Grand Wash Cliffs","Indian Well Valley","Online Courses","Lindquist Hall","Fisk Hall","Los Padres Forest"],["Modern Literature","Studio Arts","Hughes Complex","Cumberland Flats","Central Village","Hoffman Estates"]]], G20 = [[["Webmaster","Russian","Athletics","Go Shockers","Degree Options","Newsletter"],["Curriculum","Emergency (EMS)","Statistics","Award Documents","Language Center","Future Shockers"],["Student Life","Accountancy","McKnight Center","Council of Women","Commute","Small Business"],["Dance","Gerontology","Marketing","College Bylaws","Why Wichita?","Tickets"]], [["Geology","Manufacturing","Management","UCATS","Alumni News","Saso"],["Intercollegiate","Bowling","Wichita Gateway","Transfer Day","Job Openings","Live Radio"],["Thinker & Movers","Alumni","Foundations","Corbin Center","Jardine Hall","Hugo Wall School"],["Career Services","Doers & Shockers","Core Values","Grace Wilkie Hall","Strategic Plan","Medical Tech"]], [["Educational Map","Physical Plant","Graphic Design","Non Credit Class","Media Relations","Advertising"],["Beta Alpha Psi","Liberal Arts","Counseling","Biological Science","Duerksen Fine Art","EMT Program"],["Staff","Aerospace","Choral Dept.","Alberg Hall","French","Spanish"],["Softball, Men's","McKinley Hall","Email","Dental Hygiene","Tenure","Personnel Policies"]], [["English","Graduate Complex","Music Education","Advising Center","Medical School","Levitt Arena"],["Religion","Art Composition","Physics","Entrepreneurship","Koch Arena","Roster"],["Parents","Wrestling","Philosophy","Wichita Lyceum","Fairmount Center","Women's Museum"],["Instrumental","Nursing","Opera","Sports History","Athletic Dept.","Health Plan"]]];
+  function WordGrids({ ar }) {
+    const [stage, setStage] = useState(0), [times, setTimes] = useState([]), [miss, setMiss] = useState(null);
+    const clk = useClock();
+    const begin = () => { setMiss(null); clk.start(); setStage(s => s + 1); };
+    const pick = (w, target, id) => { if (!clk.running) return; if (w !== target) { setMiss(id); return; } const s = clk.stop(); setTimes(t => t.concat(s)); setMiss(null); setStage(st => st + 1); };
+    const grid = (G, boxed, target) => html`<div className=${'fig-grid' + (boxed ? ' box' : '')}>${G.map((row, r) => row.map((g, c) => html`<div key=${r + '-' + c} className=${'g' + (!boxed && (r + c) % 2 === 0 ? ' blue' : '')}>${g.map((w, j) => { const id = r + '-' + c + '-' + j; return html`<span key=${j} className=${'w' + (miss === id ? ' no' : '')} onClick=${() => pick(w, target, id)}>${w}</span>`; })}</div>`))}</div>`;
+    let body, en, a;
+    if (stage === 0) { body = html`<div className="fig-q"><button className="fig-btn solid" onClick=${begin}>Start: find Italian (timed)</button></div>`; en = '<b>Try the slide’s activity:</b> two screens of 96 names. Time yourself finding one word on each.'; a = '<b>جرّب نشاط الـ slide:</b> شاشتين فيهم 96 اسم. شوف وقتك وانت بتدوّر على كلمة في كل واحدة.'; }
+    else if (stage === 1) { body = html`<p className="fig-task">Is color contrast good? Find <b>Italian</b></p>${grid(G19, false, 'Italian')}<p className="fig-timer">${sec(clk.secs)}</p>`; en = 'Groups separated by <b>color contrast</b>. Tap <b>Italian</b>.'; a = 'مجموعات متفرقة بـ <b>color contrast</b>. دوس على <b>Italian</b>.'; }
+    else if (stage === 2) { body = html`<div className="fig-q"><p>Italian: <b>${sec(times[0])}</b></p><button className="fig-btn solid" onClick=${begin}>Start: find French (timed)</button></div>`; en = 'Found it. Now the second screen.'; a = 'لقيتها. دلوقتي الشاشة التانية.'; }
+    else if (stage === 3) { body = html`<p className="fig-task">Are borders and white space better? Find <b>French</b></p>${grid(G20, true, 'French')}<p className="fig-timer">${sec(clk.secs)}</p>`; en = 'Groups separated by <b>borders and white space</b>. Tap <b>French</b>.'; a = 'مجموعات متفرقة بـ <b>borders و white space</b>. دوس على <b>French</b>.'; }
+    else { body = html`<div className="fig-res"><div>Find Italian (color contrast)<b>${sec(times[0])}</b></div><div>Find French (borders)<b>${sec(times[1])}</b></div></div>`;
+      en = 'Weller (2004) found people took <b>less time</b> to locate items for information that was grouped using a <b>border</b> (2nd screen) compared with using <b>color contrast</b> (1st screen). Some argue that too much white space on web pages is detrimental to the search process: it makes it hard to find information. Do you agree?';
+      a = 'Weller (2004) لقى إن الناس خدت <b>وقت أقل</b> عشان تلاقي الحاجة لما المعلومات متجمعة بـ <b>border</b> (الشاشة التانية) مقارنة بـ <b>color contrast</b> (الأولى). وفي ناس بتقول إن الـ white space الكتير في صفحات الويب بيضر عملية البحث: بيخلي صعب تلاقي المعلومة. موافق؟'; }
+    return html`<figure className="fig"><div className="fig-stage" style=${{ overflowX: 'auto' }}>${body}</div>
+      <${Cap} en=${miss ? 'Not that one. ' + en : en} ar=${miss ? 'مش دي. ' + a : a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span>${stage > 0 && html`<button className="fig-btn" onClick=${() => { clk.running && clk.stop(); setStage(0); setTimes([]); setMiss(null); }}>↻ Start over</button>`}</div></figure>`;
+  }
+
+  /* ── L3 slides 22–23: which is the easiest to read, and the color contrast rules ── */
+  function TimeBoxes({ ar }) {
+    const B = [['#e11d48', 'repeating-linear-gradient(135deg, #14532d 0 6px, #166534 6px 12px, #15803d 12px 16px)', 'red on dark green (marbled)'], ['#fde047', '#f97316', 'yellow on orange'], ['#dc2626', '#fb923c', 'red on orange'], ['#111111', '#ffffff', 'black on white'], ['#ffffff', '#ca9a04', 'white on mustard']];
+    const steps = [
+      { en: 'Activity: which is the easiest to read and why? (question for discussion)', ar: 'نشاط: أنهي فيهم أسهل في القراية وليه؟ (سؤال للمناقشة)' },
+      { en: 'Design implications: research proper <b>color contrast</b> techniques when designing an interface. Yellow on black or blue is fine; yellow on green or white is a no-no.', ar: 'الـ Design implications: ادرس تقنيات الـ <b>color contrast</b> الصح وانت بتصمم الـ interface. الأصفر على أسود أو أزرق تمام؛ الأصفر على أخضر أو أبيض ممنوع خالص.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 4000);
+    return html`<figure className="fig"><div className="fig-stage">
+      <div className="fig-time">${B.map(([fg, bg, d], j) => html`<div key=${j} style=${{ color: fg, background: bg }} title=${d}>What is the time?</div>`)}</div>
+      <div className=${'fig-swatch ' + pop(i >= 1)}>
+        <div style=${{ background: '#000', color: '#facc15' }}>Yellow on black<small>fine</small></div><div style=${{ background: '#1d4ed8', color: '#facc15' }}>Yellow on blue<small>fine</small></div>
+        <div style=${{ background: '#16a34a', color: '#facc15' }}>Yellow on green<small>no-no</small></div><div style=${{ background: '#ffffff', color: '#facc15' }}>Yellow on white<small style=${{ color: '#b91c1c' }}>no-no</small></div></div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L3 slides 14–16: using a phone when driving ── */
+  function PhoneDriving({ ar }) {
+    const steps = [
+      { en: 'Is it OK to use a phone when driving? <b>No!</b> Driving is very demanding, and drivers are prone to being distracted.', ar: 'ينفع تستخدم الموبايل وانت سايق؟ <b>لأ!</b> السواقة متطلبة جداً، والسواقين معرضين يتشتتوا.' },
+      { en: 'There is a significant chance of causing accidents. Drivers’ reaction times are longer to external events when talking on the phone in a car (Caird et al., 2018).', ar: 'فيه احتمال كبير إنهم يعملوا حوادث. رد فعل السواق بيبقى أبطأ للأحداث اللي بره لما بيتكلم في الموبايل في العربية (Caird et al., 2018).' },
+      { en: 'Drivers using their phones rely more on their expectations about what is likely to happen next as conducting a conversation takes up their attention. Response time is slower to unexpected events (Briggs et al., 2018).', ar: 'السواقين اللي بيستخدموا الموبايل بيعتمدوا أكتر على توقعاتهم للي هيحصل، لأن المكالمة واخدة انتباههم. ورد الفعل أبطأ للأحداث المفاجئة (Briggs et al., 2018).' },
+      { en: 'Drivers often try to imagine what the other person’s face is like; doing so competes with the processing resources needed to notice and react to what is in front of them.', ar: 'السواقين غالباً بيحاولوا يتخيلوا وش الشخص اللي بيكلموه؛ وده بينافس الـ processing resources اللي محتاجينها عشان يلاحظوا ويتصرفوا مع اللي قدامهم.' },
+      { en: 'Hands-free phones? <b>No</b>, as the same type of cognitive processing is happening when talking.', ar: 'الـ hands-free؟ <b>لأ</b>، لأن نفس نوع الـ cognitive processing بيحصل وانت بتتكلم.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3200);
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-drive">
+      <svg viewBox="0 0 440 210" role="img" aria-label="A driver holding a phone while driving">
+        <rect x="0" y="0" width="440" height="120" rx="10" fill="color-mix(in srgb, var(--k-compiler) 20%, var(--paper))" />
+        <path d="M150 120 L200 40 L240 40 L290 120 Z" fill="#9ca3af" /><path d="M219 50 v12 M219 76 v14 M219 102 v14" stroke="#fff" strokeWidth="4" />
+        <rect x="190" y="40" width="60" height="14" rx="4" fill="#ef4444" className=${pop(i >= 1)} /><text x="220" y="34" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--pen)" className=${pop(i >= 1)}>!</text>
+        <rect x="0" y="120" width="440" height="90" fill="var(--paper-2)" />
+        <circle cx="150" cy="170" r="52" fill="none" stroke="var(--ink)" strokeWidth="12" /><circle cx="150" cy="170" r="10" fill="var(--ink)" />
+        <g className=${calm() ? '' : 'tap'}><rect x="300" y="128" width="46" height="78" rx="8" fill="var(--ink)" /><rect x="305" y="136" width="36" height="58" rx="3" fill="color-mix(in srgb, var(--k-hci) 50%, #fff)" /></g>
+        <g className=${pop(i >= 3)}><circle cx="380" cy="60" r="26" fill="var(--paper)" stroke="var(--graphite)" strokeWidth="2" strokeDasharray="4 4" /><circle cx="371" cy="55" r="3" fill="var(--graphite)" /><circle cx="389" cy="55" r="3" fill="var(--graphite)" /><path d="M370 68 q10 8 20 0" stroke="var(--graphite)" strokeWidth="2" fill="none" /></g>
+      </svg></div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L4 slide 5: what is easy to remember ── */
+  function RememberActivity({ ar }) {
+    const steps = [
+      { en: '<b>Try:</b> remember the dates of your grandparents’ birthday.', ar: '<b>جرّب:</b> افتكر تواريخ أعياد ميلاد جدودك.' },
+      { en: '<b>Try:</b> remember the cover of the last two books you read.', ar: '<b>جرّب:</b> افتكر غلاف آخر كتابين قريتهم.' },
+      { en: 'Which was easiest? Why?', ar: 'أنهي كان أسهل؟ وليه؟' },
+      { en: 'People are very good at remembering <b>visual cues</b> about things, for instance the color of items, the location of objects and marks on an object. They find it more difficult to learn and remember <b>arbitrary material</b>, for example birthdays and phone numbers.', ar: 'الناس شاطرين جداً في إنهم يفتكروا الـ <b>visual cues</b> بتاعة الحاجات، زي لون الحاجة ومكانها والعلامات اللي عليها. وبيلاقوا صعوبة أكبر في إنهم يتعلموا ويفتكروا الـ <b>arbitrary material</b>، زي أعياد الميلاد وأرقام التليفونات.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 4000);
+    const card = (on, icon, t) => html`<div className=${'fig-card' + (on ? ' on' : ' dim')} style=${{ textAlign: 'center' }}><div style=${{ fontSize: '2rem' }}>${icon}</div>${t}</div>`;
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-row" style=${{ gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      ${card(i === 0 || i >= 2, '🎂', 'Grandparents’ birthdays')}${card(i >= 1, '📚', 'Covers of the last two books')}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L4 slides 6–7: the problem with the classic '7, + or - 2' (no answers on the slide) ── */
+  function SevenPlusMinus({ ar }) {
+    const faces = ['#ef4444', '#a855f7', '#1d4ed8', '#facc15', '#111111', '#ffffff', '#60a5fa'];
+    const Q = ['present only 7 options on a menu?', 'display only 7 icons on a tool bar?', 'have no more than 7 bullets in a list?', 'place only 7 items on a pull down menu?', 'place only 7 tabs on the top of a website page?'];
+    const QA = ['يعرض 7 اختيارات بس في الـ menu؟', 'يعرض 7 icons بس في الـ tool bar؟', 'مايحطش أكتر من 7 bullets في الـ list؟', 'يحط 7 items بس في الـ pull down menu؟', 'يحط 7 tabs بس فوق صفحة الويب؟'];
+    const steps = [{ en: 'George Miller’s (1956) theory: people’s immediate memory capacity is very limited to <b>7, + or - 2</b>. It has been applied in interaction design when considering how many options to display. But is it a good use of a theory in HCI? Is it helpful?', ar: 'نظرية George Miller (1956): سعة الذاكرة الفورية عند الناس محدودة جداً بـ <b>7, + or - 2</b>. اتطبقت في الـ interaction design لما بنفكر نعرض كام اختيار. بس هل ده استخدام صح للنظرية في الـ HCI؟ وهل مفيد؟' },
+      ...Q.map((q, k) => ({ en: 'When creating an interface, should the designer ' + q + ' (the slide leaves this open)', ar: 'وانت بتعمل interface، هل المصمم المفروض ' + QA[k] + ' (الـ slide سايباها مفتوحة)' }))];
+    const [i, ctl] = useSteps(steps.length, 3000);
+    const on = k => i === 0 || i === k + 1;
+    const seven = (f) => [0, 1, 2, 3, 4, 5, 6].map(f);
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-seven">
+      <div className=${'ui' + (on(0) ? ' on' : '')}><div className="row7"><b style=${{ fontSize: '.8rem' }}>Menu</b><div className="menu" style=${{ gridAutoFlow: 'column' }}>${seven(k => html`<span key=${k}>Option ${k + 1}</span>`)}</div></div></div>
+      <div className=${'ui' + (on(1) ? ' on' : '')}><div className="row7"><b style=${{ fontSize: '.8rem' }}>Tool bar</b>${faces.map((c, k) => html`<span key=${k} className="face" style=${{ background: c, color: c === '#111111' || c === '#1d4ed8' || c === '#a855f7' ? '#fff' : '#111' }}>☺</span>`)}</div></div>
+      <div className=${'ui' + (on(2) ? ' on' : '')}><b style=${{ fontSize: '.8rem' }}>List</b><ul>${seven(k => html`<li key=${k}>Bullet ${k + 1}</li>`)}</ul></div>
+      <div className=${'ui' + (on(3) ? ' on' : '')}><div className="row7"><b style=${{ fontSize: '.8rem' }}>Pull down</b><div className="menu">${seven(k => html`<span key=${k}>Item ${k + 1}</span>`)}</div></div></div>
+      <div className=${'ui' + (on(4) ? ' on' : '')}><div className="row7">${seven(k => html`<span key=${k} className="tab">Tab ${k + 1}</span>`)}</div></div>
+    </div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd, 'fast-slow': FastSlow, 'hotel-search': HotelSearch, 'word-grids': WordGrids, 'time-boxes': TimeBoxes, 'phone-driving': PhoneDriving, 'remember-activity': RememberActivity, 'seven-plus-minus': SevenPlusMinus };
 })();

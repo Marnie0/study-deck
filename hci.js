@@ -2205,7 +2205,8 @@ COURSES.hci = {
       "How many months in the year have 31 days?",
       "What is the name of the first school you attended?",
       "The slide gives no answers; this is a question for class discussion."
-     ]
+     ],
+     "fig": "fast-slow"
     },
     {
      "h": "How can understanding cognition help?",
@@ -2264,7 +2265,8 @@ COURSES.hci = {
        "Average 5.5 seconds to search",
        "3.2 seconds to search"
       ]
-     ]
+     ],
+     "fig": "hotel-search"
     },
     {
      "h": "Multitasking and attention",
@@ -2309,7 +2311,8 @@ COURSES.hci = {
       "Drivers using their phones rely more on their expectations about what is likely to happen next, as conducting a conversation takes up their attention.",
       "Response time is slower to unexpected events (<b>Briggs et al., 2018</b>).",
       "Drivers often try to imagine what the other person's face is like (the person to whom they are speaking). Doing so competes with the processing resources needed to enable them to notice and react to what is in front of them."
-     ]
+     ],
+     "fig": "phone-driving"
     },
     {
      "h": "Are hands-free phones safer to use when driving?",
@@ -2348,7 +2351,8 @@ COURSES.hci = {
       "<b>Weller (2004)</b> found people took less time to locate items for information that was grouped using a <b>border</b> (2nd screen) compared with using <b>color contrast</b> (1st screen).",
       "Some argue that too much white space on web pages is detrimental to the search process: it makes it hard to find information.",
       "Do you agree? (question for discussion; the slide gives no answer)"
-     ]
+     ],
+     "fig": "word-grids"
     },
     {
      "h": "Activity: which is the easiest to read and why?",
@@ -2360,7 +2364,8 @@ COURSES.hci = {
       "4) Black text on a white background.",
       "5) White text on a yellow (mustard) background.",
       "The slide asks which is easiest to read and why, and gives no answer; it is a question for discussion."
-     ]
+     ],
+     "fig": "time-boxes"
     },
     {
      "h": "Design implications for perception",
@@ -2900,7 +2905,8 @@ COURSES.hci = {
       "Which was easiest? Why?",
       "People are very good at remembering <b>visual cues</b> about things, for instance the color of items, the location of objects and marks on an object.",
       "They find it more difficult to learn and remember <b>arbitrary material</b>, for example birthdays and phone numbers."
-     ]
+     ],
+     "fig": "remember-activity"
     },
     {
      "h": "The problem with the classic '7, + or - 2'",
@@ -2911,7 +2917,8 @@ COURSES.hci = {
       "But is it a good use of a theory in HCI? Is it helpful? (questions for discussion; the slide gives no answer)",
       "When creating an interface, should the designer: present only 7 options on a menu; display only 7 icons on a tool bar; have no more than 7 bullets in a list; place only 7 items on a pull down menu; place only 7 tabs on the top of a website page? (question for discussion; the slide gives no answer)",
       "The slide shows a row of 7 smiley faces in different colors (red, purple, blue, yellow, black, white, light blue)."
-     ]
+     ],
+     "fig": "seven-plus-minus"
     },
     {
      "h": "Design implications for memory",

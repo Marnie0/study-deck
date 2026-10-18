@@ -706,7 +706,7 @@ function start() {
     useEffect(() => { if (!ready) loadScript(dataUrl('figs')).then(() => setReady(true), () => setFailed(true)); }, []);
     if (failed) return html`<p className="muted small">The visual didn't load. Check your connection and refresh.</p>`;
     if (!ready) return html`<div className="vz vz-wait" style=${{ height: '200px' }} aria-hidden="true"></div>`;
-    const F = window.FIGS[name]; return F ? html`<${F} ar=${ar} />` : null;
+    const F = window.FIGS[name]; return F ? html`<div data-fig=${name}><${F} ar=${ar} /></div>` : null;
   }
   // past papers: a trace question can be worked through as a diagram, before or after revealing the model answer
   function WatchSolved({ spec, ar, k }) {
