@@ -1307,7 +1307,8 @@ COURSES.hci = {
       "The <b>double diamond of design</b> has four phases: <b>Discover</b> (insight into the problem) → <b>Define</b> (the area to focus upon) → <b>Develop</b> (potential solutions) → <b>Deliver</b> (solutions that work).",
       "Diagram: two diamonds side by side. The first diamond starts at a point labelled <b>Problem</b>, widens during Discover and narrows during Define to a point labelled <b>Problem Definition</b> / <b>Design Brief</b>.",
       "The second diamond starts from that point, widens during Develop and narrows during Deliver to a point labelled <b>Solution</b>."
-     ]
+     ],
+     "fig": "double-diamond"
     },
     {
      "h": "Four basic activities of interaction design",
@@ -1323,7 +1324,8 @@ COURSES.hci = {
       "Designing alternatives → <b>Prototyping</b>, and Prototyping has an arrow back to Designing alternatives.",
       "Prototyping → <b>Evaluating</b>.",
       "From Evaluating, arrows go back to Discovering requirements and back to Designing alternatives, and one arrow leaves the cycle to the <b>Final product</b>."
-     ]
+     ],
+     "fig": "id-lifecycle"
     },
     {
      "h": "Another lifecycle model: Google Design Sprints",
@@ -1332,13 +1334,15 @@ COURSES.hci = {
       "Google Design Sprint has five steps: 1) <b>Unpack</b> → 2) <b>Sketch</b> → 3) <b>Decide</b> → 4) <b>Prototype</b> → 5) <b>Test</b>.",
       "The steps form a cycle labelled <b>Iterate</b>: Unpack → Sketch → Decide → Prototype → Test → back to Unpack.",
       "Source: Google Design Sprints (used courtesy of Agile Marketing)."
-     ]
+     ],
+     "fig": "design-sprint"
     },
     {
      "h": "Design life cycle (according to Joyner)",
      "pts": [
       "Joyner's design life cycle is an <b>iterative process with four phases</b>: <b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → back to Need finding."
-     ]
+     ],
+     "fig": "joyner-cycle"
     },
     {
      "h": "User-centered design process (Google)",
@@ -1346,7 +1350,8 @@ COURSES.hci = {
      "pts": [
       "<b>Understand → Specify → Design → Evaluate</b>, and iteration is key.",
       "<b>Understand</b>: how users experience the product (a lot of research). <b>Specify</b>: the most important user problem to solve. <b>Design</b>: solutions, then start building. <b>Evaluate</b>: test with real users."
-     ]
+     ],
+     "fig": "google-ucd"
     },
     {
      "h": "Where is \"user research\"?",

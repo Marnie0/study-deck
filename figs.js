@@ -63,6 +63,15 @@
 .fig-form .who{ display:grid; grid-template-columns:repeat(2, 1fr); gap:4px 12px; margin:8px 0; } .fig-form .who span{ opacity:.35; transition:opacity .3s; } .fig-form .who span.done{ opacity:1; } .fig-form .who span.done::before{ content:"✓ "; color:var(--ok); }
 .fig-form .bar{ height:8px; border-radius:99px; background:var(--paper-2); overflow:hidden; } .fig-form .bar i{ display:block; height:100%; background:var(--k-hci); transition:width .4s; }
 .fig-form .err{ margin-top:10px; padding:10px; border-radius:10px; border:2px solid var(--pen); color:var(--pen); font-weight:700; text-align:center; font-size:1rem; }
+.fig-phases{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; margin-top:8px; } .fig-phases div{ border-radius:8px; padding:6px; font-size:.82rem; line-height:1.3; text-align:center; opacity:.45; transition:opacity .4s, background .4s; }
+.fig-phases div b{ display:block; color:var(--pen); } .fig-phases div.on{ opacity:1; background:color-mix(in srgb, var(--pen) 12%, var(--paper)); }
+@media (max-width:480px){ .fig-phases{ grid-template-columns:repeat(2, 1fr); } }
+.fig-walk{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:0 14px 12px; } .fig-walk .path{ width:100%; font-size:.8rem; color:var(--graphite); }
+.fig-chev{ display:flex; gap:2px; max-width:560px; margin:0 auto; } .fig-chev div{ flex:1; color:#fff; font-weight:600; font-size:.85rem; text-align:center; padding:12px 4px 12px 14px; clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 12% 50%); opacity:.4; transition:opacity .4s, transform .4s; }
+.fig-chev div:first-child{ clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%); padding-left:6px; } .fig-chev div.on{ opacity:1; transform:translateY(-3px); } .fig-chev small{ display:block; font-size:.72rem; opacity:.9; }
+.fig-ucd{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; max-width:560px; margin:0 auto; } .fig-ucd div{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px 6px; text-align:center; font-weight:600; opacity:.45; transition:opacity .4s, box-shadow .4s; }
+.fig-ucd div.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); } .fig-loop{ text-align:center; color:var(--k-hci); font-weight:600; margin-top:8px; }
+@media (max-width:420px){ .fig-ucd{ grid-template-columns:repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce){ .fig .flow, .fig .tap, .fig .roll{ animation:none; } .fig .pop, .fig .fade{ transition:none; } }`;
   if (!document.getElementById('fig-css')) { const s = document.createElement('style'); s.id = 'fig-css'; s.textContent = CSS; document.head.appendChild(s); }
 
@@ -384,5 +393,129 @@
       <${Cap} en=${en} ar=${a} showAr=${ar} />
       <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => { setN(0); setRun(!calm()); }}>↻ Replay</button></div></figure>`;
   }
-  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm };
+
+  /* ── L2 slide 5: the double diamond of design ── */
+  function DoubleDiamond({ ar }) {
+    const steps = [
+      { en: 'The double diamond of design has four phases, across two diamonds: from the <b>Problem</b> to the <b>Solution</b>.', ar: 'الـ double diamond of design فيه 4 phases على 2 diamonds: من الـ <b>Problem</b> لحد الـ <b>Solution</b>.' },
+      { en: '<b>Discover</b>: insight into the problem (the first diamond widens).', ar: '<b>Discover</b>: فهم للمشكلة (أول diamond بيوسع).' },
+      { en: '<b>Define</b>: the area to focus upon (it narrows to the <b>Problem Definition / Design Brief</b>).', ar: '<b>Define</b>: المنطقة اللي هنركز عليها (بيضيق لحد الـ <b>Problem Definition / Design Brief</b>).' },
+      { en: '<b>Develop</b>: potential solutions (the second diamond widens).', ar: '<b>Develop</b>: حلول محتملة (تاني diamond بيوسع).' },
+      { en: '<b>Deliver</b>: solutions that work (it narrows to the <b>Solution</b>).', ar: '<b>Deliver</b>: حلول بتشتغل (بيضيق لحد الـ <b>Solution</b>).' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2200);
+    const X = [15, 117, 220, 322, 425], T = 40, B = 220, M = 130;
+    const half = k => k % 2 === 0 ? `M${X[k]},${M} L${X[k + 1]},${T} L${X[k + 1]},${B} Z` : `M${X[k]},${T} L${X[k + 1]},${M} L${X[k]},${B} Z`;
+    const ph = [['Discover', 'insight into the problem'], ['Define', 'the area to focus upon'], ['Develop', 'potential solutions'], ['Deliver', 'solutions that work']];
+    return html`<figure className="fig"><div className="fig-stage">
+      <svg viewBox="0 0 440 272" role="img" aria-label="The double diamond of design">
+        ${[0, 1, 2, 3].map(k => html`<path key=${k} d=${half(k)} fill=${i === k + 1 ? 'color-mix(in srgb, var(--pen) 22%, var(--paper))' : i > k + 1 || i === 0 ? 'color-mix(in srgb, var(--pen) 7%, var(--paper))' : 'var(--paper)'} className="fade" />`)}
+        <path d=${`M${X[0]},${M} L${X[1]},${T} L${X[2]},${M} L${X[1]},${B} Z M${X[2]},${M} L${X[3]},${T} L${X[4]},${M} L${X[3]},${B} Z`} fill="none" stroke="var(--pen)" strokeWidth="3" strokeLinejoin="round" />
+        <circle cx=${X[0]} cy=${M} r="6" fill="var(--pen)" /><circle cx=${X[2]} cy=${M} r="8" fill="var(--paper)" stroke="var(--pen)" strokeWidth="3" /><circle cx=${X[4] - 4} cy=${M} r="9" fill="var(--paper)" stroke="var(--pen)" strokeWidth="3" />
+        <text x=${X[0]} y="248" fontSize="15" fontWeight="600">Problem</text>
+        <text x=${X[2]} y="248" fontSize="14" fontWeight="600" textAnchor="middle">Problem Definition /</text><text x=${X[2]} y="264" fontSize="14" fontWeight="600" textAnchor="middle">Design Brief</text>
+        <text x=${X[4]} y="248" fontSize="15" fontWeight="600" textAnchor="end">Solution</text>
+      </svg>
+      <div className="fig-phases">${ph.map(([a, b], k) => html`<div key=${k} className=${i === 0 || i === k + 1 ? 'on' : ''}><b>${a}</b>${b}</div>`)}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L2 slide 7: a simple interaction design lifecycle model, walk it ── */
+  function Lifecycle({ ar }) {
+    const N = { dis: [220, 58, 'Discovering', 'requirements'], des: [82, 150, 'Designing', 'alternatives'], pro: [220, 240, 'Prototyping', ''], eva: [358, 150, 'Evaluating', ''] };
+    const OUT = { start: ['dis'], dis: ['des'], des: ['dis', 'pro'], pro: ['des', 'eva'], eva: ['dis', 'des', 'end'] };
+    const name = k => k === 'end' ? 'Final product' : (N[k][2] + ' ' + N[k][3]).trim().toLowerCase().replace(/^./, c => c.toUpperCase());
+    const AR = { dis: 'Discovering requirements', des: 'Designing alternatives', pro: 'Prototyping', eva: 'Evaluating', end: 'Final product' };
+    const [cur, setCur] = useState('start'), [path, setPath] = useState([]);
+    const go = k => { setPath(p => p.concat(k)); setCur(k); };
+    const reset = () => { setCur('start'); setPath([]); };
+    const en = cur === 'start' ? '<b>Walk the model:</b> it exemplifies a user-centered design approach. The process enters at Discovering requirements.'
+      : cur === 'end' ? 'Out of the cycle to the <b>Final product</b>. Only Evaluating has an arrow out.'
+      : 'From <b>' + name(cur) + '</b> the arrows go to: ' + OUT[cur].map(name).join(', ') + '.';
+    const a = cur === 'start' ? '<b>امشي في الـ model:</b> هو مثال على الـ user-centered design. الـ process بتبدأ من Discovering requirements.'
+      : cur === 'end' ? 'خرجت من الـ cycle للـ <b>Final product</b>. الـ Evaluating بس هو اللي ليه سهم لبره.'
+      : 'من <b>' + AR[cur] + '</b> الأسهم بتروح لـ: ' + OUT[cur].map(k => AR[k]).join('، ') + '.';
+    const E = (k) => { const [x, y, l1, l2] = N[k]; const on = cur === k, next = (OUT[cur] || []).includes(k);
+      return html`<g key=${k}><ellipse cx=${x} cy=${y} rx="74" ry="28" fill=${on ? 'var(--s-hci)' : next ? 'color-mix(in srgb, var(--k-hci) 18%, var(--paper))' : 'var(--paper)'} stroke=${next ? 'var(--k-hci)' : 'var(--graphite)'} strokeWidth=${next ? 3 : 1.5} className="fade" />
+        <text x=${x} y=${l2 ? y - 3 : y + 5} textAnchor="middle" fontSize="15" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l1}</text>${l2 && html`<text x=${x} y=${y + 15} textAnchor="middle" fontSize="15" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l2}</text>`}</g>`; };
+    return html`<figure className="fig"><div className="fig-stage">
+      <svg viewBox="0 0 440 320" role="img" aria-label="A simple interaction design lifecycle model">
+        <defs><marker id="lc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--graphite)" /></marker></defs>
+        <g stroke="var(--graphite)" strokeWidth="2" fill="none" markerEnd="url(#lc-ar)">
+          <path d="M170 8 Q214 6 218 28" />
+          <path d="M150 70 Q110 86 100 120" /><path d="M128 126 Q150 98 168 84" />
+          <path d="M70 178 Q90 226 146 238" /><path d="M170 216 Q140 196 120 176" />
+          <path d="M294 236 Q340 226 352 178" />
+          <path d="M284 150 H158" />
+          <path d="M350 122 Q336 76 296 66" />
+          <path d="M424 160 Q436 230 420 290" />
+        </g>
+        ${['dis', 'des', 'pro', 'eva'].map(E)}
+        <text x="420" y="310" textAnchor="end" fontSize="15" fontWeight="700" fill=${cur === 'end' ? 'var(--ok)' : 'var(--ink)'} style=${cur === 'end' ? { fill: 'var(--ok)' } : null}>Final product</text>
+      </svg></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-walk">
+        ${cur === 'end' ? null : (OUT[cur] || []).map(k => html`<button key=${k} className="fig-btn solid" onClick=${() => go(k)}>→ ${name(k)}</button>`)}
+        <span className="grow"></span>${path.length > 0 && html`<button className="fig-btn" onClick=${reset}>↻ Start over</button>`}
+        ${path.length > 0 && html`<span className="path">Your path: ${path.map(name).join(' → ')}</span>`}
+      </div></figure>`;
+  }
+
+  /* ── L2 slide 8: Google Design Sprints (Knapp et al., 2016) ── */
+  function Sprint({ ar }) {
+    const S = [['Unpack', '#f97316'], ['Sketch', '#9ca3af'], ['Decide', '#eab308'], ['Prototype', '#4f6bd8'], ['Test', '#22a34a']];
+    const steps = [
+      { en: 'Another lifecycle model: <b>Google Design Sprints</b> (Knapp et al., 2016), with five steps.', ar: 'lifecycle model تاني: <b>Google Design Sprints</b> (Knapp et al., 2016)، فيه 5 خطوات.' },
+      ...S.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>', ar: (k + 1) + ') <b>' + n + '</b>' })),
+      { en: 'The steps form a cycle labelled <b>Iterate</b>: Test leads back to Unpack.', ar: 'الخطوات بتعمل cycle اسمها <b>Iterate</b>: الـ Test بيرجع للـ Unpack.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 1700);
+    const R = 62, cx = 220, cy = 210, pos = k => [cx + R * Math.cos((k / 5) * 2 * Math.PI - Math.PI / 2), cy + R * Math.sin((k / 5) * 2 * Math.PI - Math.PI / 2)];
+    return html`<figure className="fig"><div className="fig-stage">
+      <p style=${{ textAlign: 'center', margin: '0 0 8px', fontWeight: 600 }}>Google Design Sprint</p>
+      <div className="fig-chev">${S.map(([n, c], k) => html`<div key=${k} className=${i === 0 || i === k + 1 || i === 6 ? 'on' : ''} style=${{ background: c }}><small>${k + 1}</small>${n}</div>`)}</div>
+      <svg viewBox="40 110 360 200" role="img" aria-label="The sprint steps form a cycle labelled Iterate" style=${{ maxWidth: '440px', marginTop: '6px', opacity: i === 6 ? 1 : .35, transition: 'opacity .5s' }}>
+        <defs><marker id="sp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--k-compiler)" /></marker></defs>
+        ${S.map(([n], k) => { const [x, y] = pos(k), [x2, y2] = pos(k + 1); return html`<g key=${k}><text x=${x + (x - cx) * .55} y=${y + (y - cy) * .45 + 5} textAnchor="middle" fontSize="15" fontWeight="600">${n}</text>
+          <path d=${`M${x + (x2 - x) * .25},${y + (y2 - y) * .25} L${x + (x2 - x) * .75},${y + (y2 - y) * .75}`} stroke="var(--k-compiler)" strokeWidth="3" markerEnd="url(#sp-ar)" /></g>`; })}
+        <text x=${cx} y=${cy + 6} textAnchor="middle" fontSize="17" fontWeight="700">Iterate</text>
+      </svg>
+      <p className="muted small" style=${{ textAlign: 'center', margin: 0 }}>Source: Google Design Sprints (used courtesy of Agile Marketing)</p></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L2 slide 9: Joyner's design life cycle ── */
+  function Joyner({ ar }) {
+    const P = [['Need finding', 220, 42], ['Design alternative', 352, 140], ['Prototyping', 220, 238], ['Evaluation', 88, 140]];
+    const steps = [
+      { en: 'Joyner’s design life cycle: an <b>iterative process with four phases</b>.', ar: 'الـ design life cycle بتاع Joyner: <b>iterative process فيها 4 phases</b>.' },
+      ...P.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? ', then back to Need finding.' : ''), ar: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? '، وبعدين ترجع للـ Need finding.' : '') }))
+    ];
+    const [i, ctl] = useSteps(steps.length, 1800);
+    const arrows = ['M302 66 L338 100', 'M338 180 L302 214', 'M138 214 L102 180', 'M102 100 L138 66'];
+    return html`<figure className="fig"><div className="fig-stage">
+      <svg viewBox="0 0 440 280" role="img" aria-label="Joyner's design life cycle">
+        <defs><marker id="jy-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3a9ad9" /></marker></defs>
+        ${arrows.map((d, k) => html`<path key=${k} d=${d} stroke="#3a9ad9" strokeWidth="5" strokeLinecap="round" markerEnd="url(#jy-ar)" style=${{ opacity: i === 0 || i === k + 1 ? 1 : .35, transition: 'opacity .4s' }} />`)}
+        ${P.map(([n, x, y], k) => html`<g key=${k}><ellipse cx=${x} cy=${y} rx="80" ry="30" fill=${i === k + 1 ? '#1f8fd6' : '#5bb8ef'} stroke="#1f6fa6" strokeWidth="2" className="fade" />
+          <text x=${x} y=${y + 6} textAnchor="middle" fontSize="17" fontWeight="600" style=${{ fill: '#fff' }}>${n}</text></g>`)}
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L2, from last year's slides: Google's user-centered design process ── */
+  function GoogleUcd({ ar }) {
+    const S = [['Understand', 'how users experience the product (a lot of research)', 'إزاي الـ users بيستخدموا الـ product (research كتير)'], ['Specify', 'the most important user problem to solve', 'أهم مشكلة عند الـ user لازم تتحل'], ['Design', 'solutions, then start building', 'حلول، وبعدين تبدأ تبني'], ['Evaluate', 'test with real users', 'اختبر مع users حقيقيين']];
+    const steps = [
+      { en: 'Google’s user-centered design process: Understand → Specify → Design → Evaluate.', ar: 'الـ user-centered design process بتاع Google: Understand → Specify → Design → Evaluate.' },
+      ...S.map(([n, e, a]) => ({ en: '<b>' + n + '</b>: ' + e + '.', ar: '<b>' + n + '</b>: ' + a + '.' })),
+      { en: '<b>Iteration is key.</b>', ar: '<b>الـ iteration هي الأساس.</b>' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 1900);
+    return html`<figure className="fig"><div className="fig-stage">
+      <div className="fig-ucd">${S.map(([n], k) => html`<div key=${k} className=${i === 0 || i === k + 1 || i === 5 ? 'on' : ''}>${n}${k < 3 ? ' →' : ''}</div>`)}</div>
+      <p className=${'fig-loop ' + pop(i === 5)}>↺ iterate</p></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm, 'double-diamond': DoubleDiamond, 'id-lifecycle': Lifecycle, 'design-sprint': Sprint, 'joyner-cycle': Joyner, 'google-ucd': GoogleUcd };
 })();
