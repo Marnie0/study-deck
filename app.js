@@ -699,6 +699,15 @@ function start() {
     if (!ready) return html`<div className="vz vz-wait" aria-hidden="true"></div>`;
     return html`<${window.VIZ.Viz} spec=${spec} ar=${ar} onAnswer=${onAnswer} />`;
   }
+  // a lecture's own picture as an animation or a small hands-on version (figs.js, copied to data/, fetched when first needed)
+  function FigBlock({ name, ar }) {
+    const [ready, setReady] = useState(() => !!window.FIGS);
+    const [failed, setFailed] = useState(false);
+    useEffect(() => { if (!ready) loadScript(dataUrl('figs')).then(() => setReady(true), () => setFailed(true)); }, []);
+    if (failed) return html`<p className="muted small">The visual didn't load. Check your connection and refresh.</p>`;
+    if (!ready) return html`<div className="vz vz-wait" style=${{ height: '200px' }} aria-hidden="true"></div>`;
+    const F = window.FIGS[name]; return F ? html`<${F} ar=${ar} />` : null;
+  }
   // past papers: a trace question can be worked through as a diagram, before or after revealing the model answer
   function WatchSolved({ spec, ar, k }) {
     const [open, setOpen] = useState(false);
@@ -736,6 +745,7 @@ function start() {
             ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
             ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
             ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} k=${k} />`}
+            ${s.fig && html`<${FigBlock} name=${s.fig} ar=${!!arL} />`}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));

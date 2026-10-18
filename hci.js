@@ -39,7 +39,8 @@ COURSES.hci = {
       "<b>Human</b>: Communication theory, Industrial design, Social science, Cognitive psychology, Human factors.",
       "<b>Computer</b>: Computer graphic, Operating system, Programming language.",
       "<b>Interaction</b>: Interaction design."
-     ]
+     ],
+     "fig": "hci-parts"
     },
     {
      "h": "What is HCI? More from last year's slides",
@@ -81,7 +82,8 @@ COURSES.hci = {
       "Our goal as designers is to help the humans feel they are <b>interacting directly with the task</b> while our interface vanishes in the middle of that interaction.",
       "The user should <b>think about the task rather than thinking about the tool</b>.",
       "Diagram: USER on the left, TASK (a clipboard with a check mark) on the right, and arrows going both ways between them passing through the INTERFACE (a computer screen) in the middle."
-     ]
+     ],
+     "fig": "invisible-interface"
     },
     {
      "h": "Human-Task interaction and the invisible interface",
@@ -98,7 +100,8 @@ COURSES.hci = {
       "Elevator controls and labels on the <b>bottom row all look the same</b>, so it is easy to push a label by mistake instead of a control button.",
       "Picture (www.baddesigns.com): top row shows floor numbers 1, 2, 3 each next to a button; bottom row shows DOOR OPEN, a button, an X, STOP/RUN, a bell, a button, DOOR CLOSE and a button, where labels and buttons are the same square tiles; a red arrow points at a label on the bottom row.",
       "People do not make the same mistake for the labels and buttons on the <b>top row</b>. Why not? (question for discussion; the slide gives no answer)"
-     ]
+     ],
+     "fig": "elevator"
     },
     {
      "h": "Why is this vending machine so bad?",
@@ -108,7 +111,8 @@ COURSES.hci = {
       "So the machine <b>contravenes a well known convention</b>.",
       "Picture: the machine's labels read \"STEP 1 PUSH ANY BUTTON TO START UNIT\", \"STEP 2 FOLLOW DIRECTIONS ON DISPLAY\" and \"STEP 3 TAKE RECEIPT PLACE ON DASH\"; an arrow points to the bill slot.",
       "Picture: a 'REQUIRED' sign with opening hours (7:00 a.m. - 10:00 p.m.); an arrow points to the bill slot, which is separate from the STEP 1 'PUSH ANY BUTTON TO START UNIT' label."
-     ]
+     ],
+     "fig": "vending"
     },
     {
      "h": "Good design: marble answering machine",
@@ -146,7 +150,8 @@ COURSES.hci = {
       "User interface discovered surprising findings (slide wording; the slide's heading is 'User Research is important', so this means the user research found): truckers often have <b>big hands</b> and often <b>wear gloves</b>.",
       "Better design: a <b>large touch screen</b> and a <b>stylus pen</b>.",
       "Picture: a trucker using the device mounted beside the steering wheel."
-     ]
+     ],
+     "fig": "truckers"
     },
     {
      "h": "UI design process (3 components)",
@@ -253,7 +258,8 @@ COURSES.hci = {
       "<b>Academic Disciplines</b> (arrows pointing into ID): Ergonomics, Psychology/Cognitive Science, Informatics, Engineering, Computer Science/Software Engineering, Social Sciences (e.g. Sociology, Anthropology).",
       "<b>Design Practices</b> (arrows pointing into ID): Graphic Design, Product Design, Artist-Design, Industrial Design, Film Industry.",
       "<b>Interdisciplinary Fields</b> (two-way arrows with ID): Human Factors (HF), Cognitive Engineering, Human-Computer Interaction (HCI), Cognitive Ergonomics, Computer-Supported Cooperative Work (CSCW), Information Systems."
-     ]
+     ],
+     "fig": "id-umbrella"
     },
     {
      "h": "Relationship between ID, HCI and other fields",
