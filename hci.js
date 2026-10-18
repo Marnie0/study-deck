@@ -1448,7 +1448,8 @@ COURSES.hci = {
       "Think about a layout of the interface that you may consider usable and easy.",
       "Can you think of a <b>plan of user research</b>? How can you conduct it to understand user needs and preferences better?",
       "Can you think how you can <b>gather usage data</b> similar to the way <b>Microsoft did for the design of Office 2007</b>? What data can be useful, and how can this data help improve the UI?"
-     ]
+     ],
+     "fig": "think-activity"
     }
    ],
    "cards": [
