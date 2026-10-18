@@ -63,6 +63,34 @@ function start() {
       localStorage.setItem('sd:hcirenum', '1');
     } catch (e) {}
   })();
+  // then last year's lectures were merged into this term's (old 5+6 → 1, 7 → 2, 8–13 → 5–10): move saved HCI progress again, once
+  (function mergeHciProgress() {
+    try {
+      if (localStorage.getItem('sd:hcimerge') === '1') return;
+      const M = {"quiz":{"1":{"n":1,"items":[16,17,18,19,20,21,-1,22,23,24,25,26,-1,27,28,29,30,31,32,33]},"2":{"n":2,"items":[9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27]},"5":[[0,10,1,0],[10,35,1,34]],"6":[[0,6,1,10],[6,6,1,59]],"7":[[0,9,2,0],[9,21,2,28]],"8":[[0,33,5,0]],"9":[[0,18,6,0]],"10":[[0,7,7,0]],"11":[[0,22,8,0]],"12":[[0,19,9,0]],"13":[[0,7,10,0]]},"card":{"1":{"n":1,"items":[-1,17,18,19,20,21,22,23,24,25,-1,26,27,28,29,30,-1,31,32,33,34,35,36,37,38]},"2":{"n":2,"items":[9,10,11,12,13,14,15,16,17,18,-1,19,20,21,22,23,24,25,26,27,28,29]},"5":[[0,10,1,0]],"6":[[0,7,1,10]],"7":[[0,9,2,0]],"8":[[0,8,5,0]],"9":[[0,9,6,0]],"10":[[0,8,7,0]],"11":[[0,7,8,0]],"12":[[0,11,9,0]],"13":[[0,9,10,0]]},"extra":{"5":[[0,10,1,0]],"6":[[0,10,1,10]],"7":[[0,10,2,0]],"8":[[0,10,5,0]],"9":[[0,10,6,0]],"10":[[0,10,7,0]],"11":[[0,10,8,0]],"12":[[0,10,9,0]],"13":[[0,10,10,0]]},"lec":{"1":1,"2":2,"5":1,"6":1,"7":2,"8":5,"9":6,"10":7,"11":8,"12":9,"13":10}};
+      const to = (kind, id) => {
+        const m = /^(x?)(\d+)-(\d+)$/.exec(id); if (!m) return id;
+        const e = M[m[1] ? 'extra' : kind][m[2]], i = +m[3]; if (!e) return id;
+        if (e.items) { const j = e.items[i]; return j == null || j < 0 ? null : m[1] + e.n + '-' + j; }
+        const r = e.find(r => i >= r[0] && i < r[1]); return r ? m[1] + r[2] + '-' + (r[3] + i - r[0]) : null;
+      };
+      const get = k => { const v = localStorage.getItem('sd:' + k); return v == null ? null : JSON.parse(v); }, put = (k, v) => localStorage.setItem('sd:' + k, JSON.stringify(v));
+      const lec = n => typeof n === 'number' && M.lec[n] != null ? M.lec[n] : n;
+      [['known', 'card'], ['miss', 'quiz'], ['fixed', 'quiz']].forEach(([k, kind]) => { const v = get(k + ':hci'); if (Array.isArray(v)) put(k + ':hci', [...new Set(v.map(id => to(kind, id)).filter(Boolean))]); });
+      [['srs', 'card'], ['stats', 'quiz']].forEach(([k, kind]) => { const v = get(k + ':hci'); if (v && typeof v === 'object') { const o = {}; Object.entries(v).forEach(([id, x]) => { const n = to(kind, id); if (n && !(n in o)) o[n] = x; }); put(k + ':hci', o); } });
+      const read = get('read:hci'); if (Array.isArray(read)) put('read:hci', [...new Set(read.map(lec))]);
+      const ll = get('lastlec:hci'); if (typeof ll === 'number') put('lastlec:hci', lec(ll));
+      ['nav2', 'last'].forEach(k => { const v = get(k); if (v && v.course === 'hci' && typeof v.lec === 'number') put(k, Object.assign({}, v, { lec: lec(v.lec) })); });
+      // reading positions: merged lectures start from the top; the rest move with their lecture
+      const keys = []; for (let i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+      keys.map(k => /^(sd:(?:pos|posf):hci:|sd:bookpos:hci:L)(\d+)$/.exec(k)).filter(Boolean).sort((a, b) => a[2] - b[2]).forEach(m => {
+        const n = +m[2], v = localStorage.getItem(m[0]);
+        if ([1, 2, 5, 6, 7].includes(n)) localStorage.removeItem(m[0]);
+        else if (M.lec[n] != null && M.lec[n] !== n) { localStorage.removeItem(m[0]); localStorage.setItem(m[1] + M.lec[n], v); }
+      });
+      localStorage.setItem('sd:hcimerge', '1');
+    } catch (e) {}
+  })();
   // state saved under a key: written only when it changes (not on mount), and re-read if the key changes
   function usePersist(key, init) {
     const [s, setS] = useState(() => ({ key, v: store.get(key, init) }));
@@ -698,7 +726,7 @@ function start() {
     const isRead = read.includes(lec.n);
     const arL = arLec(k, lec.n);
     const notesBody = useMemo(() => lec.notes.map((s, i) => { const an = arL && arL.notes && arL.notes[i]; return html`<section key=${i} className="note" id=${'sec-' + lec.n + '-' + i} data-i=${i}>
-            <h3><span className="sec">§${i + 1}</span><${H} h=${s.h} /></h3>
+            <h3><span className="sec">§${i + 1}</span><${H} h=${s.h} />${s.ly && html` <span className="srcbadge summary" title="This part is from last year's slides and is not in this term's slides">Last year's slides</span>`}</h3>
             <${Ar} t=${an && an.h} cls="arh" />
             ${s.formula && html`<div className="formula">${s.formula.join('\n')}</div>`}
             ${s.table && html`<div className="tbl"><table>
@@ -1532,7 +1560,7 @@ function start() {
         return html`<section key=${i} className="bsec" data-i=${i}>
           <div className="bkeep">
             <p className="bsn">Section ${i + 1}</p>
-            <h2><${H} h=${s.h} /></h2>
+            <h2><${H} h=${s.h} />${s.ly ? " (last year's slides)" : ''}</h2>
             ${blocks.length ? blocks[0] : firstIsList ? html`<ul>${li(pts[0], 0)}</ul>` : null}
           </div>
           ${blocks.slice(1)}
