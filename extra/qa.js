@@ -1585,7 +1585,7 @@ EXTRA.qa = {
    "o": [
     [
      "DMAIC",
-     "DMAIC (Define, Measure, Analyze, Improve, Control) improves EXISTING processes; a new design uses DMADV."
+     "DMAIC (Define, Measure, Analyze, Improve, Control) improves EXISTING processes; a new design uses DMADV (‡ not on the slides)."
     ],
     [
      "ISO 9000",
@@ -1597,7 +1597,7 @@ EXTRA.qa = {
     ],
     [
      "DMADV (Define, Measure, Analyze, Design, Verify)",
-     "Correct. DMADV is for designing new processes/products."
+     "Correct. DMADV is for designing new processes/products (‡ not on the slides; the slide only shows the DMADV cycle)."
     ]
    ],
    "a": 3

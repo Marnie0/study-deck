@@ -199,8 +199,10 @@ COURSES.qa = {
       "Figure 1.4 (Agile Model): five boxes stacked top to bottom, joined by downward arrows: Create the test code → Write or modify the function code → Create additional tests → Test the functional code → Refactor the code. A loop arrow goes from <b>Test the functional code</b> back up to <b>Write or modify the function code</b>.",
       "In summary, in the Agile approach, <b>testers play a key role</b> in ensuring software quality and efficiency through continuous testing and feedback.",
       "Agile advantages: flexible, feedback, fast delivery, better quality. <b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep.",
-      "Summary: waterfall is sequential; <b>V and Spiral</b> use testing as an integral part so they are more efficient than waterfall; Agile is the most advanced; XP uses TDD.",
-      "Summary (1.4): software testing demonstrates that a program performs the intended functions correctly; the goal of software testing is to ensure that the product is error free. Detecting bugs is the most important part of a software testing process; these bugs can be an error in the program or issues that affect the quality of the software. Bugs can prove to be very costly: they take time to resolve, affecting the project timelines and cost, and they also result in losses, as the company may have to compensate the customer with money or by replacing the defective product. They can also damage the reputation of the company."
+      "Summary: waterfall is sequential; <b>V and Spiral</b> use testing as an integral part so they are more efficient than waterfall. Agile is considered to be the <b>most advanced and efficient</b> type of software development model. Extreme Programming (XP) is a method developed based on the agile model, which uses test driven development (TDD) to develop highly efficient software.",
+      "Summary (1.4): software testing demonstrates that a program performs the intended functions correctly; the goal of software testing is to ensure that the product is error free. Detecting bugs is the most important part of a software testing process; these bugs can be an error in the program or issues that affect the quality of the software. Bugs can prove to be very costly: they take time to resolve, affecting the project timelines and cost, and they also result in losses, as the company may have to compensate the customer with money or by replacing the defective product. They can also damage the reputation of the company.",
+      "Summary (1.4): depending on the <b>kind of error or the reason for error</b>, bugs are classified into various types such as bugs due to conceptual error, math bugs, logical bugs, resource bugs, co-programming bugs and team working bugs.",
+      "Summary (1.4): bugs in software can occur due to various reasons such as <b>human error, lack of communication, tight time lines, improper design logic, inefficient coding practices and unskilled testers</b>."
      ]
     }
    ],
@@ -363,7 +365,7 @@ COURSES.qa = {
      "o": [
       [
        "True",
-       "Correct. The lecture lists 1988–2000 as prevention-oriented. The summary key marks this False, which contradicts the slide."
+       "Correct. The lecture lists 1988–2000 as prevention-oriented: focused on preventing defects through early test design and planning. (‡ The summary sheet's key marks this False, which contradicts the slide.)"
       ],
       [
        "False",
@@ -422,7 +424,7 @@ COURSES.qa = {
      "o": [
       [
        "Requirement",
-       "The requirement stage is the cheapest place to fix a bug: only documents change, no code, testers or customers are involved (L1, Cost of bugs)."
+       "The requirement stage is the cheapest place to fix a bug: low cost, easy to correct early errors (‡ not on the slides: at this stage only documents change; no code, testers or customers are involved) (L1, Cost of bugs)."
       ],
       [
        "Coding",
@@ -669,7 +671,8 @@ COURSES.qa = {
       "The state transition map may be in the specification, or we may make it. We can use any diagram that <b>all the team accept</b> (e.g. boxes, arrows, circles).",
       "Figure 5.10 (state transition diagrams can be drawn using different techniques), the same password example drawn two ways. <b>Boxes and arrows</b>: Idle → (Esc Key Pressed / Display Password Box) → <b>Waiting for password</b>; Incorrect Password / Clear the field loops back to Waiting for password; Correct Password / Initiate Destruct leaves it. <b>Circles</b>: Idle (double circle) → Esc Key Pressed → <b>Wait for Password</b> → Correct Password; Incorrect Password loops back to Wait for Password. Remember: create your map from the <b>user's view</b> of the software.",
       "<b>5 ways to reduce states/transitions to test</b>: (1) visit each state at least once; (2) test the most common state-to-state transitions; (3) test the least common paths; (4) test all error states and returning from them; (5) test random transitions.",
-      "Check all <b>state variables</b>. Paint's startup state: window as last shown, same size as last time, blank drawing area, tool box/color box/status bar shown, pencil selected, black on white, document \"untitled\"."
+      "Check all <b>state variables</b>. Paint's startup state: window as last shown, same size as last time, blank drawing area, tool box/color box/status bar shown, pencil selected, black on white, document \"untitled\".",
+      "Figure .11 (<b>The Windows Paint opening screen in the startup state</b>): a window titled \"untitled - Paint\" with the menu File, Edit, View, Image, Colors, Help; the tool box on the left with the <b>pencil</b> tool selected; a blank white drawing area with the pencil cursor; the color box at the bottom (black foreground on white background) and the status bar \"For Help, click Help Topics on the Help Menu\" with the cursor position 194,155."
      ]
     },
     {
@@ -1154,7 +1157,7 @@ COURSES.qa = {
       [
        "Control flow",
        "Improper behaviour of loops and control structures",
-       "Loops terminate, correct branching"
+       "The slide lists no checks; it only says the errors come from improper behavior of loops and control structures in a language (‡ e.g. loops terminate, correct branching)"
       ],
       [
        "Input/Output",
@@ -1165,7 +1168,9 @@ COURSES.qa = {
      "pts": [
       "<b>Data reference errors</b> (slide wording): errors caused by the usage of variables, constants, arrays, strings or records which are not properly declared or initialized to use and refer to them. Check: (a) if any un-initialized variables are referenced; (b) if the array and string subscript integer values are within the array's bounds or string dimension; (c) if there are any \"off-by-one\" errors in indexing operations or references to arrays; (d) if a variable is used where a constant would work better (<b>example: when checking the boundary of an array</b>).",
       "<b>Data declaration errors</b> occur due to improper declaration of variables and constants. Check: (a) if the variables are assigned the correct length, type and storage class; (b) if a variable is <b>initialized at the time of declaration</b>, and also whether it is properly initialized and consistent with its type; (c) if there are any variables with similar names; (d) if there are any variables declared which are never referenced or just referenced once <b>(should be a constant)</b>.",
-      "<b>Computation errors</b> appear due to errors in calculations, <b>where the expected results are not obtained due to false calculations</b>. Check: (a) if any calculations use variables which have different data types (ex: adding integers and floating point numbers); (b) if any calculations use variables which have the same data type but vary in size (ex: adding long integers to short integers); (c) if overflow in the middle of a numeric calculation is possible; (d) if it is ever possible for a divisor to be zero."
+      "<b>Computation errors</b> appear due to errors in calculations, <b>where the expected results are not obtained due to false calculations</b>. Check: (a) if any calculations use variables which have different data types (ex: adding integers and floating point numbers); (b) if any calculations use variables which have the same data type but vary in size (ex: adding long integers to short integers); (c) if overflow in the middle of a numeric calculation is possible; (d) if it is ever possible for a divisor to be zero.",
+      "<b>Comparison errors</b> occur during boundary conditions such as 'less than, greater than, equal, not equal, and true or false'. Check: (a) if the comparison is correct (EX: using &lt; instead of &lt;=); (b) whether the operands of a Boolean operator are correct (EX: checking if an integer variable containing integer values is used in a Boolean calculation).",
+      "<b>Control flow errors</b> appear due to improper behavior of loops and control structures in a language. <b>Input/output errors</b> relate to errors such as reading from a file, accepting input from a keyboard or mouse, and writing to an output device such as a file or screen."
      ]
     },
     {
@@ -1234,7 +1239,7 @@ COURSES.qa = {
     {
      "h": "Why condition coverage needs more cases",
      "pts": [
-      "Branch coverage needs only 2 tests (whole IF true once, false once). Condition coverage makes <b>each sub-condition</b> (Date part and Time part) true and false, so the lecture lists all <b>4 combinations</b>.",
+      "Branch coverage needs only 2 tests (whole IF true once, false once). For <b>full condition coverage</b> (the slide's table is titled \"Test cases for a Full Condition Coverage\"), the lecture tests <b>every combination</b> of the two sub-conditions (Date part true/false with Time part true/false), giving the <b>4 test cases</b> in the table; only the last one (25-12-2008, 00:00:00) runs line 3.",
       "The exercise at the end (triangle problem) is solved in Lecture 4."
      ]
     },
@@ -1724,7 +1729,7 @@ COURSES.qa = {
       "a=2, b=0: a&gt;1 && b==0 is true → x=x/2; then a==2 is true → x=x+1. Path 1,2,3,4,6 ✔.",
       "a=2, b=1: b==0 is false → skip 2; a==2 true → node 4. Path 1,3,4,6 ✔.",
       "a=0, b=0, x=0: a&gt;1 false → skip 2; a==2 false and x&gt;1 false → else node 5. Path 1,3,5,6 ✔.",
-      "Cyclomatic complexity = the <b>number of independent (basis) paths</b>, i.e. the minimum number of tests for full path/branch coverage of the basis set."
+      "Cyclomatic complexity = the <b>number of independent (basis) paths</b>, so it gives the number of test cases needed to execute every basis path (<b>3 for foo()</b>: one test case per basis path, as on the slide). ‡ It is not the minimum number of tests for branch coverage: foo() reaches branch coverage with only 2 tests (a=2, b=0 makes both IFs true; a=0, b=0, x=0 makes both false)."
      ]
     },
     {
@@ -2409,7 +2414,7 @@ COURSES.qa = {
       "<b>Text</b>: target audience level, terminology, depth of content, subject matter, accuracy, spelling, punctuation, correct contact info (phones, addresses).",
       "<b>Hyperlinks</b>: each goes to the correct destination and opens in the same tab or a new window as specified (if no spec, check that it works). Links must be <b>obvious</b> (underlined text, mouse pointer changes). For an e-mail link, send an e-mail and verify you get a response.",
       "<b>Graphics</b>: all load and display properly. A missing or wrongly named graphic will not load, and the page shows an error in its place.",
-      "<b>Forms</b> (text boxes, list boxes, fields; e.g. Google's Gmail sign-up form): are fields positioned properly? correct size? accept correct data? reject bad data?",
+      "<b>Forms</b> are text boxes, list boxes, and other fields that allow a user to <b>enter or select information</b> on a Web page (e.g. Google's Gmail sign-up form). Check: are the form fields positioned properly? Are the fields the correct size? Do they accept correct data? Do they reject bad data?",
       "Figure 8.6 (Google's Form): the \"Get started with Gmail\" sign-up form. Fields: First name; Last name; Desired Login Name (followed by @gmail.com, with \"Examples: JSmith, John.Smith\" and a \"check availability!\" button); Choose a password (\"Minimum of 8 characters in length\", with a \"Password strength\" indicator); Re-enter password; and two ticked checkboxes, \"Stay signed in\" and \"Enable Web History\" (with a \"Learn More\" link)."
      ]
     },
@@ -2422,7 +2427,7 @@ COURSES.qa = {
       "3. <b>Programmatically created pages</b>: the designer types entries in a database, drags and drops elements in a layout program and presses a button to generate the HTML.",
       "4. <b>Server performance and loading</b>: popular sites get millions of hits per day, so simulate millions of connections and downloads.",
       "5. <b>Security</b>: denial of service and buffer overflow attacks.",
-      "<b>Gray-box testing</b>: a mix of black-box and white-box. Its purpose is to <b>isolate defects related to bad design or bad implementation</b> of the web. It is possible for web sites because the tester works from the user's view but can also see the page's HTML/scripts."
+      "<b>Gray-box testing</b>: a mix of black-box and white-box. Its purpose is to <b>isolate defects related to bad design or bad implementation</b> of the web. ‡ (not on the slides) It is possible for web sites because the tester works from the user's view but can also see the page's HTML/scripts."
      ]
     },
     {
@@ -2499,7 +2504,7 @@ COURSES.qa = {
     ],
     [
      "Why is gray-box testing possible with web site testing?",
-     "Web pages are built from HTML and scripts that the tester can see (view source) while still testing from the user's view, so black-box and white-box can be mixed. The aim is to isolate defects caused by bad design or bad implementation."
+     "‡ (not on the slides) Web pages are built from HTML and scripts that the tester can see (view source) while still testing from the user's view, so black-box and white-box can be mixed. The aim (on the slide) is to isolate defects caused by bad design or bad implementation."
     ],
     [
      "List what configuration and compatibility testing check for a web site.",
@@ -2841,14 +2846,16 @@ COURSES.qa = {
       ]
      ],
      "pts": [
-      "Org chart of the independent test team (slide 11): the Project Manager is at the top, with two branches under him: the Test Manager/Test Lead, with the Testers under him, and the Development Manager, with the Programmers under him."
+      "Org chart of the <b>small team structure</b> (slide 10): the <b>Development Manager</b> is at the top, with two boxes under him: <b>Testers</b> and <b>Programmers</b>.",
+      "Org chart of the independent test team (slide 11): the Project Manager is at the top, with two branches under him: the Test Manager/Test Lead, with the Testers under him, and the Development Manager, with the Programmers under him.",
+      "Org chart of the <b>test group reporting to executive management</b> (slide 12): the <b>Executive Manager</b> is at the top, with three boxes under him: <b>QA/Test Managers</b>, <b>Development Managers</b> and <b>Project Managers</b>."
      ]
     },
     {
      "h": "SQA metrics and indicators",
      "pts": [
       "<b>Metrics</b>: rules for measuring software attributes (code size, complexity). <b>Indicators</b>: variables reflecting process outcomes (number of detected bugs).",
-      "<b>Product metrics</b> measure the final product (code size, number of documented pages). <b>Process metrics</b> measure the development process (time taken, methodology).",
+      "<b>Product metrics</b> measure the <b>quality of the final product</b> (e.g. code size, number of documented pages). <b>Process metrics</b> measure the development process (e.g. time taken, development methodology).",
       "<b>9 common metrics</b>: code coverage; bugs per line of code; cyclomatic complexity; function point analysis; number of classes and interfaces; cohesion; coupling; order of growth; source lines of code."
      ]
     },
@@ -3783,6 +3790,9 @@ COURSES.qa = {
        "99.9999998%",
        "0.002"
       ]
+     ],
+     "pts": [
+      "Figure (<b>Normal Distribution - Gaussian Curve</b>): a bell-shaped curve centred on 0 (a vertical centre line), with the horizontal axis marked from -6σ to +6σ; one σ is marked as the distance from the centre line to +1σ, with the label <b>Sigma = σ = Deviation (Square root of variance)</b>. Below the curve, arrows show the share of values between ±1σ, ±2σ … ±6σ and the result in ppm out of spec (table below)."
      ]
     },
     {
@@ -3797,11 +3807,11 @@ COURSES.qa = {
      "pts": [
       "<b>6 Sigma Objective</b>: the 6 Sigma methodology is <b>DMAIC</b>: Define, Measure, Analyze, Improve, Control.",
       "<b>D – Define</b>: identify what needs to be <b>improved and developed in the organization's work and activities</b> through the precise identification of the problems <b>that obstacle this improvement</b>. The problem statement should generally include the <b>level</b> of the problem, its <b>location</b> and its <b>financial impact</b>. Also, <b>form a team</b> to solve the problem.",
-      "<b>M – Measure</b>: plan and implement performance measurement against customer requirements and expectations, using criteria for measuring defects with statistical control tools.",
+      "<b>M – Measure</b>: it mainly focuses on planning and implementing performance measurement against the requirements and expectations of customers, based on a set of criteria for measuring defects through the use of statistical control with <b>various scientific and statistical tools (6 σ)</b>.",
       "<b>A – Analyze</b>: analyze the collected data with the aim of identifying and determining the <b>root causes</b> of all problems <b>and obstacles to improvement</b>, by analyzing the chain of failure causes, then ranking them according to their impact, categorizing them, and then controlling and managing them.",
       "<b>I – Improve</b>: changes in processes occur to ensure the elimination of product defects, excessive costs, waste, etc., <b>confirming the precise identification of customer needs and expectations</b>. Studying the causes of failure, finding solutions for them, <b>testing these solutions on a sample</b> of products, <b>determining the results</b>, and making the necessary corrections.",
       "<b>C – Control</b>: focus on monitoring all of these processes and do not stop, <b>as there are always areas in need of improvement</b>. The following should be taken into consideration: continuously measuring performance standards; conducting measurement processes; correcting any deviations, if found, at the specified time.",
-      "The slide also shows <b>DMADV</b> (Define, Measure, Analyze, Design, Verify), used for designing <b>new</b> processes/products; DMAIC improves <b>existing</b> ones.",
+      "The slide also shows <b>DMADV</b> (Define, Measure, Analyze, Design, Verify). ‡ (not on the slides) DMADV is used for designing <b>new</b> processes/products; DMAIC improves <b>existing</b> ones.",
       "Figure (DMADV Methodology): five curved arrows forming a cycle around a central circle labelled \"DMADV\": <b>Define</b> → <b>Measure</b> → <b>Analyze</b> → <b>Design</b> → <b>Verify</b> → back to Define. It covers part of a DMAIC figure behind it, whose visible fragments read \"Control: Maint… soluti…\" and \"Improve: Implement … the solution\"."
      ]
     },
@@ -3952,7 +3962,7 @@ COURSES.qa = {
     ],
     [
      "DMADV",
-     "Define, Measure, Analyze, Design, Verify (for new designs)."
+     "Define, Measure, Analyze, Design, Verify (‡ not on the slides: for new designs)."
     ],
     [
      "Define phase includes",
@@ -4068,7 +4078,7 @@ COURSES.qa = {
       ],
       [
        "Define, Measure, Analyze, Improve, Control",
-       "Correct. DMAIC = Define, Measure, Analyze, Improve, Control, the Six Sigma method for improving existing processes (L8, DMAIC)."
+       "Correct. DMAIC = Define, Measure, Analyze, Improve, Control, the Six Sigma method (‡ for improving existing processes, not on the slides) (L8, DMAIC)."
       ],
       [
        "Define, Manage, Audit, Inspect, Control",

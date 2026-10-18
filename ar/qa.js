@@ -98,8 +98,10 @@ AR.qa = {
       "Figure 1.4 (Agile Model): 5 boxes فوق بعض، متوصلين بأسهم نازلة: Create the test code → Write or modify the function code → Create additional tests → Test the functional code → Refactor the code. وفيه سهم راجع (loop) من <b>Test the functional code</b> لفوق لحد <b>Write or modify the function code</b>.",
       "الخلاصة: في الـ Agile approach، <b>الـ testers ليهم دور أساسي</b> في إنهم يضمنوا الـ quality والـ efficiency بتاعة الـ software عن طريق الـ continuous testing والـ feedback.",
       "مميزات الـ Agile: flexible، feedback، تسليم سريع، quality أحسن. <b>العيوب</b>: محتاج العميل يكون مشارك بشكل فعّال، صعب مع الـ teams الكبيرة، والـ scope creep.",
-      "الخلاصة: الـ waterfall sequential؛ الـ <b>V والـ Spiral</b> بيستخدموا الـ testing كجزء أساسي فبالتالي أكفأ من الـ waterfall؛ الـ Agile هو الأكتر تطور؛ والـ XP بيستخدم الـ TDD.",
-      "الخلاصة (1.4): الـ software testing بيوضح إن البرنامج بيعمل الـ functions المطلوبة صح؛ وهدف الـ software testing إننا نضمن إن المنتج <b>error free</b>. اكتشاف الـ bugs هو أهم جزء في الـ software testing process؛ والـ bugs دي ممكن تكون error في البرنامج أو مشاكل بتأثر على الـ quality بتاعة الـ software. الـ bugs ممكن تطلع مكلفة جدًا: بتاخد وقت عشان تتحل، وده بيأثر على الـ timelines والتكلفة بتاعة المشروع، وكمان بتسبب خساير لأن الشركة ممكن تضطر تعوّض العميل بفلوس أو تبدّل المنتج اللي فيه عيب. وممكن كمان تضر سمعة الشركة."
+      "الخلاصة: الـ waterfall sequential؛ الـ <b>V والـ Spiral</b> بيستخدموا الـ testing كجزء أساسي فبالتالي أكفأ من الـ waterfall. الـ Agile بيتعتبر <b>أكتر نوع متطور وكفء (most advanced and efficient)</b> من موديلات الـ software development. والـ Extreme Programming (XP) طريقة اتعملت على أساس الـ agile model، وبتستخدم الـ test driven development (TDD) عشان تطلّع software كفء جدًا.",
+      "الخلاصة (1.4): الـ software testing بيوضح إن البرنامج بيعمل الـ functions المطلوبة صح؛ وهدف الـ software testing إننا نضمن إن المنتج <b>error free</b>. اكتشاف الـ bugs هو أهم جزء في الـ software testing process؛ والـ bugs دي ممكن تكون error في البرنامج أو مشاكل بتأثر على الـ quality بتاعة الـ software. الـ bugs ممكن تطلع مكلفة جدًا: بتاخد وقت عشان تتحل، وده بيأثر على الـ timelines والتكلفة بتاعة المشروع، وكمان بتسبب خساير لأن الشركة ممكن تضطر تعوّض العميل بفلوس أو تبدّل المنتج اللي فيه عيب. وممكن كمان تضر سمعة الشركة.",
+      "الخلاصة (1.4): على حسب <b>نوع الـ error أو سبب الـ error</b>، الـ bugs بتتقسم لأنواع كتير زي bugs بسبب conceptual error، و math bugs، و logical bugs، و resource bugs، و co-programming bugs، و team working bugs.",
+      "الخلاصة (1.4): الـ bugs في الـ software ممكن تحصل لأسباب كتير زي <b>الـ human error، وقلة التواصل (lack of communication)، والـ time lines الضيقة، والـ design logic الغلط، والـ coding practices اللي مش كفء، والـ testers اللي مش skilled</b>."
      ]
     }
    ],
@@ -147,7 +149,7 @@ AR.qa = {
      "دي في جنب الـ testing، مش المكان اللي بتتكتب فيه الـ plans."
     ],
     [
-     "صح. المحاضرة بتقول إن 1988–2000 كانت prevention-oriented. الـ summary key معلّمها False، وده بيتعارض مع الـ slide.",
+     "صح. المحاضرة بتقول إن 1988–2000 كانت prevention-oriented: بتركز على منع الـ defects عن طريق الـ test design والـ planning بدري. (‡ الـ key بتاع الـ summary معلّمها False، وده بيتعارض مع الـ slide.)",
      "جدول المحاضرة بيقول بوضوح إن 1988–2000 = prevention-oriented."
     ],
     [
@@ -163,7 +165,7 @@ AR.qa = {
      "دي الـ documentation القديمة والملفات المش متطابقة."
     ],
     [
-     "الـ requirement stage هي أرخص مكان تصلّح فيه bug: بتغيّر documents بس، من غير code ولا testers ولا customers (L1, Cost of bugs).",
+     "الـ requirement stage هي أرخص مكان تصلّح فيه bug: تكلفة قليلة، وسهل تصحح الـ errors بدري (‡ مش في الـ slides: في المرحلة دي بتغيّر documents بس، من غير code ولا testers ولا customers) (L1, Cost of bugs).",
      "تصليح الـ bug وقت الـ coding تكلفته متوسطة؛ الـ developer بس اللي داخل في الموضوع ولسه مفيش حاجة اتسلّمت (L1, Cost of bugs).",
      "الـ testing stage مكلفة جدًا (developers و engineers و managers وتأخير)، بس الـ production هي المرحلة اللي تكلفتها extremely costly (L1, Cost of bugs).",
      "صح. بتضر السمعة وممكن تجيب غرامات مالية أو قانونية."
@@ -323,7 +325,8 @@ AR.qa = {
       "الـ state transition map ممكن تكون موجودة في الـ specification، أو إحنا نعملها. وينفع نستخدم أي diagram <b>كل الـ team يوافق عليه</b> (زي boxes وأسهم ودواير).",
       "Figure 5.10 (الـ state transition diagrams ممكن تترسم بطرق مختلفة)، نفس مثال الـ password مرسوم بطريقتين. <b>Boxes وأسهم</b>: Idle → (Esc Key Pressed / Display Password Box) → <b>Waiting for password</b>؛ الـ Incorrect Password / Clear the field بيرجع تاني لـ Waiting for password؛ والـ Correct Password / Initiate Destruct بيخرج منها. <b>دواير</b>: Idle (دايرة مزدوجة) → Esc Key Pressed → <b>Wait for Password</b> → Correct Password؛ والـ Incorrect Password بيلف ويرجع لـ Wait for Password. افتكر: اعمل الـ map <b>من وجهة نظر الـ user</b> للـ software.",
       "<b>5 طرق نقلل بيها الـ states/transitions اللي هنختبرها</b>: (1) زور كل state مرة واحدة على الأقل؛ (2) اختبر الـ transitions الأكتر شيوعًا بين الـ states؛ (3) اختبر الـ paths الأقل شيوعًا؛ (4) اختبر كل الـ error states والرجوع منها؛ (5) اختبر transitions عشوائية.",
-      "اتأكد من كل الـ <b>state variables</b>. الـ startup state بتاعة Paint: الـ window زي ما كانت آخر مرة، بنفس الحجم بتاع آخر مرة، مساحة رسم فاضية، الـ tool box والـ color box والـ status bar ظاهرين، الـ pencil متختار، أسود على أبيض، والـ document اسمه \"untitled\"."
+      "اتأكد من كل الـ <b>state variables</b>. الـ startup state بتاعة Paint: الـ window زي ما كانت آخر مرة، بنفس الحجم بتاع آخر مرة، مساحة رسم فاضية، الـ tool box والـ color box والـ status bar ظاهرين، الـ pencil متختار، أسود على أبيض، والـ document اسمه \"untitled\".",
+      "Figure .11 (<b>شاشة فتح Windows Paint في الـ startup state</b>): window عنوانها \"untitled - Paint\" وفيها الـ menu: File، Edit، View، Image، Colors، Help؛ الـ tool box على الشمال والـ <b>pencil</b> tool متختار؛ مساحة رسم بيضا فاضية وفيها الـ pencil cursor؛ الـ color box تحت (foreground أسود على background أبيض)، والـ status bar مكتوب فيه \"For Help, click Help Topics on the Help Menu\" ومعاه مكان الـ cursor 194,155."
      ]
     },
     {
@@ -533,7 +536,9 @@ AR.qa = {
      "pts": [
       "<b>الـ Data reference errors</b> (كلام الـ slide): errors سببها استخدام variables أو constants أو arrays أو strings أو records مش متعرّفة (declared) أو متعملهاش initialize صح قبل ما نستخدمها ونعملها reference. نتأكد: (a) لو فيه أي un-initialized variables بيتعملها reference؛ (b) لو قيم الـ subscripts (integer) بتاعة الـ arrays والـ strings جوه حدود الـ array أو الـ string dimension؛ (c) لو فيه أي «off-by-one» errors في عمليات الـ indexing أو الـ references للـ arrays؛ (d) لو فيه variable مستخدم في مكان كان الـ constant هيشتغل فيه أحسن (<b>مثال: لما بنشيك على الـ boundary بتاعة array</b>).",
       "<b>الـ Data declaration errors</b> بتحصل بسبب declaration غلط للـ variables والـ constants. نتأكد: (a) إن الـ variables واخدة الـ length والـ type والـ storage class الصح؛ (b) لو الـ variable اتعمله initialize <b>وقت الـ declaration</b>، ونحلل كمان هل الـ initialization صح ومتوافق مع الـ type بتاعه؛ (c) لو فيه variables أساميها شبه بعض؛ (d) لو فيه variables متعرّفة بس عمرها ما اتعملها reference أو اتعملها reference مرة واحدة بس <b>(المفروض تبقى constant)</b>.",
-      "<b>الـ Computation errors</b> بتظهر بسبب errors في الحسابات، <b>يعني النتايج المتوقعة مابتطلعش بسبب حسابات غلط</b>. نتأكد: (a) لو فيه حسابات بتستخدم variables من data types مختلفة (مثال: جمع integers على floating point numbers)؛ (b) لو فيه حسابات بتستخدم variables من نفس الـ data type بس حجمها مختلف (مثال: جمع long integers على short integers)؛ (c) لو ممكن يحصل overflow في نص عملية حسابية؛ (d) لو ممكن الـ divisor يبقى صفر في أي وقت."
+      "<b>الـ Computation errors</b> بتظهر بسبب errors في الحسابات، <b>يعني النتايج المتوقعة مابتطلعش بسبب حسابات غلط</b>. نتأكد: (a) لو فيه حسابات بتستخدم variables من data types مختلفة (مثال: جمع integers على floating point numbers)؛ (b) لو فيه حسابات بتستخدم variables من نفس الـ data type بس حجمها مختلف (مثال: جمع long integers على short integers)؛ (c) لو ممكن يحصل overflow في نص عملية حسابية؛ (d) لو ممكن الـ divisor يبقى صفر في أي وقت.",
+      "الـ <b>Comparison errors</b> بتحصل في الـ boundary conditions زي 'less than، greater than، equal، not equal، و true or false'. نتأكد: (a) إن الـ comparison صح (مثال: استخدام &lt; بدل &lt;=)؛ (b) إن الـ operands بتوع الـ Boolean operator صح (مثال: نشيك لو فيه integer variable فيه قيم integer مستخدم في Boolean calculation).",
+      "الـ <b>Control flow errors</b> بتظهر بسبب سلوك غلط للـ loops والـ control structures في اللغة. والـ <b>Input/output errors</b> ليها علاقة بـ errors زي القراية من file، أو استقبال input من الـ keyboard أو الـ mouse، أو الكتابة على output device زي file أو الشاشة."
      ]
     },
     {
@@ -574,7 +579,7 @@ AR.qa = {
     {
      "h": "ليه الـ condition coverage محتاج cases أكتر",
      "pts": [
-      "الـ Branch coverage محتاج 2 tests بس (الـ IF كله true مرة و false مرة). أما الـ condition coverage فبيخلي <b>كل sub-condition</b> (جزء الـ Date وجزء الـ Time) true و false، فالمحاضرة بتعرض <b>الـ 4 combinations</b> كلهم.",
+      "الـ Branch coverage محتاج 2 tests بس (الـ IF كله true مرة و false مرة). أما في الـ <b>full condition coverage</b> (جدول الـ slide عنوانه \"Test cases for a Full Condition Coverage\")، المحاضرة بتختبر <b>كل combination</b> للـ 2 sub-conditions (جزء الـ Date true/false مع جزء الـ Time true/false)، فبيطلع <b>الـ 4 test cases</b> اللي في الجدول؛ وآخر واحد بس (25-12-2008, 00:00:00) هو اللي بينفذ line 3.",
       "التمرين اللي في الآخر (triangle problem) اتحل في Lecture 4."
      ]
     },
@@ -785,7 +790,7 @@ AR.qa = {
       "a=2, b=0: الـ a&gt;1 && b==0 بتبقى true → x=x/2؛ وبعدين a==2 بتبقى true → x=x+1. الـ Path 1,2,3,4,6 ✔.",
       "a=2, b=1: الـ b==0 بتبقى false → نتنط node 2؛ a==2 بتبقى true → node 4. الـ Path 1,3,4,6 ✔.",
       "a=0, b=0, x=0: الـ a&gt;1 بتبقى false → نتنط node 2؛ a==2 بتبقى false و x&gt;1 بتبقى false → الـ else اللي هي node 5. الـ Path 1,3,5,6 ✔.",
-      "الـ Cyclomatic complexity = <b>عدد الـ independent (basis) paths</b>، يعني أقل عدد tests محتاجينه عشان نعمل full path/branch coverage للـ basis set."
+      "الـ Cyclomatic complexity = <b>عدد الـ independent (basis) paths</b>، فبيدينا عدد الـ test cases اللي محتاجينها عشان ننفذ كل basis path (<b>3 في foo()</b>: test case لكل basis path، زي ما في الـ slide). ‡ بس هو مش أقل عدد tests للـ branch coverage: الـ foo() بتوصل للـ branch coverage بـ 2 tests بس (a=2, b=0 بيخلي الـ IFs الاتنين true؛ و a=0, b=0, x=0 بيخليهم الاتنين false)."
      ]
     },
     {
@@ -1041,7 +1046,7 @@ AR.qa = {
       "الـ <b>Text</b>: مستوى الجمهور المستهدف، الـ terminology، عمق المحتوى، الموضوع، الدقة، الـ spelling، علامات الترقيم، وبيانات التواصل الصح (تليفونات، عناوين).",
       "الـ <b>Hyperlinks</b>: كل واحد بيروح للـ destination الصح وبيفتح في نفس الـ tab أو window جديدة حسب الـ spec (لو مفيش spec، اتأكد إنه شغال). الـ links لازم تبقى <b>واضحة</b> (text عليه underline، ومؤشر الماوس بيتغير). لو e-mail link، ابعت e-mail واتأكد إنك بيجيلك رد.",
       "الـ <b>Graphics</b>: كلها بتتحمل وبتظهر صح. أي graphic ناقصة أو اسمها غلط مش هتتحمل، والصفحة هتطلّع error مكانها.",
-      "الـ <b>Forms</b> (text boxes، list boxes، fields؛ زي الـ sign-up form بتاع Gmail من Google): الـ fields متحطة في مكانها صح؟ حجمها صح؟ بتقبل الـ data الصح؟ بترفض الـ data الغلط؟",
+      "الـ <b>Forms</b> هي text boxes و list boxes و fields تانية بتخلي الـ user <b>يدخّل أو يختار معلومات</b> على الـ Web page (زي الـ sign-up form بتاع Gmail من Google). نتأكد: الـ form fields متحطة في مكانها صح؟ حجم الـ fields صح؟ بتقبل الـ data الصح؟ بترفض الـ data الغلط؟",
       "Figure 8.6 (Google's Form): الـ sign-up form بتاع \"Get started with Gmail\". الـ fields: First name؛ Last name؛ Desired Login Name (وبعده @gmail.com، ومعاه \"Examples: JSmith, John.Smith\" وزرار \"check availability!\")؛ Choose a password (\"Minimum of 8 characters in length\"، ومعاه مؤشر \"Password strength\")؛ Re-enter password؛ واتنين checkboxes متعلّم عليهم، \"Stay signed in\" و\"Enable Web History\" (ومعاه link \"Learn More\")."
      ]
     },
@@ -1054,7 +1059,7 @@ AR.qa = {
       "3. الـ <b>Programmatically created pages</b>: الـ designer بيكتب entries في database، ويعمل drag and drop للعناصر في layout program ويدوس زرار عشان يطلّع الـ HTML.",
       "4. الـ <b>Server performance and loading</b>: المواقع المشهورة بيجيلها ملايين hits في اليوم، فلازم نعمل simulation لملايين connections و downloads.",
       "5. الـ <b>Security</b>: هجمات الـ denial of service والـ buffer overflow.",
-      "الـ <b>Gray-box testing</b>: خليط من الـ black-box والـ white-box. الهدف منه إنه <b>يعزل الـ defects اللي ليها علاقة بـ design وحش أو implementation وحش</b> للـ web. ممكن نعمله مع الـ web sites عشان الـ tester بيشتغل من وجهة نظر الـ user بس كمان يقدر يشوف الـ HTML/الـ scripts بتوع الصفحة."
+      "الـ <b>Gray-box testing</b>: خليط من الـ black-box والـ white-box. الهدف منه إنه <b>يعزل الـ defects اللي ليها علاقة بـ design وحش أو implementation وحش</b> للـ web. ‡ (مش في الـ slides) ممكن نعمله مع الـ web sites عشان الـ tester بيشتغل من وجهة نظر الـ user بس كمان يقدر يشوف الـ HTML/الـ scripts بتوع الصفحة."
      ]
     },
     {
@@ -1084,7 +1089,7 @@ AR.qa = {
    "qa": [
     "الـ Text (الجمهور، الـ terminology، الدقة، الـ spelling، بيانات التواصل)، الـ hyperlinks (الـ destination الصح، نفس الـ tab أو window جديدة، واضحة، e-mail links)، الـ graphics (بتتحمل وبتظهر، مفيش صور ناقصة أو اسمها غلط) والـ forms (متحطة صح، الحجم صح، بتقبل الـ data الصح، بترفض الـ data الغلط).",
     "الـ Dynamic content، الـ database-driven pages، الـ programmatically created pages، الـ server performance and loading، والـ security (denial of service، buffer overflow).",
-    "الـ web pages متبنية من HTML و scripts الـ tester يقدر يشوفها (view source) وهو لسه بيختبر من وجهة نظر الـ user، فينفع نخلط الـ black-box بالـ white-box. الهدف إننا نعزل الـ defects اللي سببها design وحش أو implementation وحش.",
+    "‡ (مش في الـ slides) الـ web pages متبنية من HTML و scripts الـ tester يقدر يشوفها (view source) وهو لسه بيختبر من وجهة نظر الـ user، فينفع نخلط الـ black-box بالـ white-box. الهدف (اللي في الـ slide) إننا نعزل الـ defects اللي سببها design وحش أو implementation وحش.",
     "الـ Hardware: أنواع الـ CPU، الـ RAM، الـ graphics cards، الـ video capture cards، الـ audio cards، الـ monitors، الـ network cards. الـ Compatibility: الـ font sizes، الـ browsers مع الـ CSS، الـ screen resolutions، الـ memory sizes، الـ network environments."
    ],
    "quiz": [
@@ -1243,14 +1248,16 @@ AR.qa = {
     {
      "h": "الـ Test management والـ organization structures",
      "pts": [
-      "الـ org chart بتاع الـ <b>independent test team</b> (slide 11): الـ Project Manager فوق خالص، وتحته فرعين: الـ Test Manager/Test Lead وتحته الـ Testers، والـ Development Manager وتحته الـ Programmers."
+      "الـ org chart بتاع الـ <b>small team structure</b> (slide 10): الـ <b>Development Manager</b> فوق خالص، وتحته box-ين: الـ <b>Testers</b> والـ <b>Programmers</b>.",
+      "الـ org chart بتاع الـ <b>independent test team</b> (slide 11): الـ Project Manager فوق خالص، وتحته فرعين: الـ Test Manager/Test Lead وتحته الـ Testers، والـ Development Manager وتحته الـ Programmers.",
+      "الـ org chart بتاع الـ <b>test group reporting to executive management</b> (slide 12): الـ <b>Executive Manager</b> فوق خالص، وتحته 3 boxes: الـ <b>QA/Test Managers</b>، والـ <b>Development Managers</b>، والـ <b>Project Managers</b>."
      ]
     },
     {
      "h": "الـ SQA metrics والـ indicators",
      "pts": [
       "الـ <b>Metrics</b>: rules لقياس الـ software attributes (حجم الـ code، الـ complexity). الـ <b>Indicators</b>: variables بتعكس نتايج الـ process (عدد الـ bugs اللي اتكشفت).",
-      "الـ <b>Product metrics</b> بتقيس الـ final product (حجم الـ code، عدد الصفحات الموثقة). الـ <b>Process metrics</b> بتقيس الـ development process (الوقت اللي اتاخد، الـ methodology).",
+      "الـ <b>Product metrics</b> بتقيس <b>الـ quality بتاعة الـ final product</b> (زي حجم الـ code، عدد الصفحات الموثقة). الـ <b>Process metrics</b> بتقيس الـ development process (زي الوقت اللي اتاخد، الـ development methodology).",
       "<b>9 metrics مشهورين</b>: code coverage؛ bugs per line of code؛ cyclomatic complexity؛ function point analysis؛ عدد الـ classes والـ interfaces؛ cohesion؛ coupling؛ order of growth؛ source lines of code."
      ]
     },
@@ -1650,7 +1657,10 @@ AR.qa = {
      ]
     },
     {
-     "h": "الـ Normal distribution (الشكل)"
+     "h": "الـ Normal distribution (الشكل)",
+     "pts": [
+      "الشكل (<b>Normal Distribution - Gaussian Curve</b>): منحنى على شكل جرس، مركزه عند 0 (خط رأسي في النص)، والمحور الأفقي متعلّم من -6σ لحد +6σ؛ والـ σ الواحدة متعلّمة على إنها المسافة من خط النص لحد +1σ، ومكتوب جنبها <b>Sigma = σ = Deviation (Square root of variance)</b>. وتحت المنحنى فيه أسهم بتوضح نسبة القيم اللي بين ±1σ، ±2σ … ±6σ، والنتيجة بالـ ppm اللي برا الـ spec (الجدول اللي تحت)."
+     ]
     },
     {
      "h": "الـ 3.4 مقابل الـ 0.002 ppm",
@@ -1664,11 +1674,11 @@ AR.qa = {
      "pts": [
       "<b>الـ 6 Sigma Objective</b>: الـ methodology بتاعة الـ 6 Sigma هي <b>DMAIC</b>: Define، Measure، Analyze، Improve، Control.",
       "<b>D – Define</b>: نحدد إيه اللي محتاج <b>يتحسن ويتطور في شغل الـ organization وأنشطتها</b> عن طريق إننا نحدد بدقة المشاكل <b>اللي بتعطّل التحسين ده</b>. الـ problem statement المفروض يشمل <b>مستوى (level)</b> المشكلة، و<b>مكانها (location)</b>، و<b>تأثيرها المالي (financial impact)</b>. وكمان <b>نكوّن team</b> يحل المشكلة.",
-      "<b>M – Measure</b>: نخطط وننفذ قياس الأداء مقارنة بمتطلبات العملاء وتوقعاتهم، باستخدام criteria لقياس الـ defects بـ statistical control tools.",
+      "<b>M – Measure</b>: بتركز أساسًا على إننا نخطط وننفذ قياس الأداء مقارنة بمتطلبات العملاء وتوقعاتهم، على أساس مجموعة criteria لقياس الـ defects عن طريق الـ statistical control بـ <b>أدوات علمية وإحصائية مختلفة (6 σ)</b>.",
       "<b>A – Analyze</b>: نحلل الـ data اللي اتجمعت بهدف إننا نحدد الـ <b>root causes</b> لكل المشاكل <b>والعوائق اللي قدام التحسين</b>، عن طريق إننا نحلل سلسلة أسباب الفشل، وبعدين نرتبها حسب تأثيرها، ونصنفها، وبعدين نتحكم فيها وندير.",
       "<b>I – Improve</b>: بيحصل تغيير في الـ processes عشان نضمن التخلص من الـ product defects والتكلفة الزيادة والهدر (waste) وغيرهم، <b>وده بيأكد إن احتياجات العميل وتوقعاته متحددة بدقة</b>. ندرس أسباب الفشل، نلاقي لها حلول، <b>نجرب الحلول دي على sample</b> من المنتجات، <b>نحدد النتايج</b>، ونعمل التصحيحات اللازمة.",
       "<b>C – Control</b>: نركز على مراقبة كل الـ processes دي ومنبطلش، <b>لأن دايمًا فيه حاجات محتاجة تتحسن</b>. ولازم ناخد في اعتبارنا: نقيس معايير الأداء باستمرار؛ نعمل عمليات القياس؛ ونصحح أي انحرافات، لو لقيناها، في الوقت المحدد.",
-      "الـ slide كمان بتعرض الـ <b>DMADV</b> (Define، Measure، Analyze، Design، Verify)، وده بيتستخدم لتصميم processes/products <b>جديدة</b>؛ أما الـ DMAIC فبيحسّن الـ processes <b>الموجودة</b>.",
+      "الـ slide كمان بتعرض الـ <b>DMADV</b> (Define، Measure، Analyze، Design، Verify). ‡ (مش في الـ slides) الـ DMADV بيتستخدم لتصميم processes/products <b>جديدة</b>؛ أما الـ DMAIC فبيحسّن الـ processes <b>الموجودة</b>.",
       "الشكل (DMADV Methodology): خمس أسهم مقوسة عاملين دورة حوالين دايرة في النص مكتوب فيها \"DMADV\": <b>Define</b> → <b>Measure</b> → <b>Analyze</b> → <b>Design</b> → <b>Verify</b> → وترجع لـ Define تاني. الشكل ده مغطي جزء من شكل DMAIC وراه، والظاهر منه مكتوب \"Control: Maint… soluti…\" و \"Improve: Implement … the solution\"."
      ]
     },
@@ -1705,7 +1715,7 @@ AR.qa = {
     "الـ Standard deviation = الجذر التربيعي للـ variance.",
     "أواخر السبعينات وأوائل التمانينات.",
     "Define، Measure، Analyze، Improve، Control.",
-    "Define، Measure، Analyze، Design، Verify (للتصميمات الجديدة).",
+    "Define، Measure، Analyze، Design، Verify (‡ مش في الـ slides: للتصميمات الجديدة).",
     "تحديد المشكلة بدقة (الـ level، الـ location، الـ financial impact) وتكوين team.",
     "نلاقي الـ root causes، نرتبها حسب التأثير، نصنفها، ونتحكم فيها.",
     "نغير الـ processes؛ نجرب الحلول على sample من المنتجات؛ ونصحح.",
@@ -1738,7 +1748,7 @@ AR.qa = {
     ],
     [
      "الـ M والـ A بس اللي صح؛ الـ D معناها Define (مش Design)، والـ I معناها Improve (مش Implement)، والـ C معناها Control (مش Check).",
-     "صح. الـ DMAIC = Define, Measure, Analyze, Improve, Control، ودي طريقة الـ Six Sigma لتحسين الـ processes الموجودة (L8, DMAIC).",
+     "صح. الـ DMAIC = Define, Measure, Analyze, Improve, Control، ودي طريقة الـ Six Sigma (‡ لتحسين الـ processes الموجودة، مش في الـ slides) (L8, DMAIC).",
      "الـ D والـ C بس اللي صح؛ الـ M معناها Measure (مش Manage)، والـ A معناها Analyze (مش Audit)، والـ I معناها Improve (مش Inspect).",
      "الـ D معناها Define (مش Develop) والـ C معناها Control (مش Close)؛ وخلي بالك إن آخر phase في الـ Six Sigma عمرها ما بتوقف المراقبة، فمش ممكن تبقى «close»."
     ],
@@ -1817,10 +1827,10 @@ AR.qa = {
      "الـ Define بيحدد المشكلة وبيكوّن الـ team."
     ],
     [
-     "الـ DMAIC (Define, Measure, Analyze, Improve, Control) بيحسّن الـ processes <b>الموجودة</b>؛ أما الـ design الجديد فبيستخدم الـ DMADV.",
+     "الـ DMAIC (Define, Measure, Analyze, Improve, Control) بيحسّن الـ processes <b>الموجودة</b>؛ أما الـ design الجديد فبيستخدم الـ DMADV (‡ مش في الـ slides).",
      "الـ ISO 9000 ده quality standard، مش Six Sigma approach.",
      "الـ CMM ده maturity model، مش Six Sigma approach.",
-     "صح. الـ DMADV لتصميم processes/products جديدة."
+     "صح. الـ DMADV لتصميم processes/products جديدة (‡ مش في الـ slides؛ الـ slide بتعرض دورة الـ DMADV بس)."
     ],
     [
      "بدري قوي؛ المحاضرة بتقول أواخر السبعينات وأوائل التمانينات.",
