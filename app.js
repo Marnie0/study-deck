@@ -1086,7 +1086,7 @@ function start() {
           ${lecs.map(l => html`<section key=${l.n} className="askgroup">
             <h3><span className="sec">L${l.n}</span>${l.title}</h3>
             ${l.qa.map((x, i) => { const id = l.n + '-' + i; return html`<div key=${id} className="askitem">
-              <div className="askq"><span className="qn">Q${i + 1}</span><p>${x[0]}</p>
+              <div className="askq"><span className="qn">Q${i + 1}</span><p>${x[0]}${x[2] && html` <span className="srcbadge summary" title=${x[2]}>Student summary</span>`}</p>
                 <button className="linkbtn" aria-expanded=${String(!!open[id])} onClick=${() => setOpen(o => Object.assign({}, o, { [id]: !o[id] }))}>${open[id] ? 'Hide' : 'Show answer'}</button></div>
               ${open[id] && html`<div className="askans">${x[1]}<${Ar} t=${(arLec(k, l.n) || {}).qa && arLec(k, l.n).qa[i]} /></div>`}
             </div>`; })}

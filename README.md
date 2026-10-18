@@ -26,8 +26,8 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 <td align="center"><h2>12</h2>courses</td>
 <td align="center"><h2>101</h2>lectures</td>
 <td align="center"><h2>1,546</h2>flashcards</td>
-<td align="center"><h2>2,507</h2>quiz questions</td>
-<td align="center"><h2>513</h2>Q&amp;A pairs</td>
+<td align="center"><h2>2,599</h2>quiz questions</td>
+<td align="center"><h2>524</h2>Q&amp;A pairs</td>
 <td align="center"><h2>73</h2>solved past papers</td>
 </tr>
 </table>
@@ -187,7 +187,7 @@ Pick your level on the home page. Course pills, tiles, cards due, weak spots, pa
 | 🟣 Operating Systems | CS332 | 8 | 138 | 174 | 6 | ✓ |
 | 🔴 Multimedia | CS253 | 8 | 118 | 216 | 10 | ✓ |
 | 🟢 Software Quality Assurance | 22H211-CS-EN-T1 | 8 | 116 | 171 | 2 | ✓ |
-| 🟩 Human Computer Interaction *(elective)* | CS314 | 9 | 78 | 166 | 2 | ✓ |
+| 🟩 Human Computer Interaction *(elective)* | CS314 | 9 | 78 | 258 | 2 | ✓ |
 | 🟠 File Processing *(elective)* | CS308 | 5 | 66 | 100 | 3 | ✓ |
 <!-- courses:end -->
 
@@ -215,6 +215,7 @@ study-deck/
 ├── dm.js … sa.js       # Level 2 course sources, same format
 ├── extra/              # extra practice questions, per lecture
 ├── papers/             # more solved past papers, merged into the courses
+├── summary/            # questions from student summaries, answers re-checked against the lectures
 ├── ar/                 # Egyptian Arabic explanations, per course
 ├── build.mjs           # merges the sources into data/ + manifest.js
 ├── dist.mjs            # packages a standalone site into dist/

@@ -29,6 +29,19 @@ for (const [id, c] of Object.entries(COURSES)) {
   if (P.exams) c.exams = c.exams.concat(P.exams);
   for (const l of c.lectures) if (P.quiz && P.quiz[l.n]) l.quiz = l.quiz.concat(P.quiz[l.n]);
 }
+// summary/<id>.js: questions from student-made summaries, answers checked against the lectures (src starts "Student summary")
+for (const id of Object.keys(COURSES)) {
+  const f = `summary/${id}.js`;
+  if (existsSync(f)) vm.runInContext(readFileSync(f, 'utf8'), ctx, { filename: f });
+}
+const SUMMARY = ctx.window.SUMMARY || {};
+for (const [id, c] of Object.entries(COURSES)) {
+  const S = SUMMARY[id]; if (!S) continue;
+  for (const l of c.lectures) {
+    if (S.quiz && S.quiz[l.n]) l.quiz = l.quiz.concat(S.quiz[l.n]);
+    if (S.qa && S.qa[l.n]) l.qa = l.qa.concat(S.qa[l.n]);
+  }
+}
 for (const [id, c] of Object.entries(COURSES)) for (const l of c.lectures) l.extra = (EXTRA[id] && EXTRA[id][l.n]) || [];
 // where a quiz question came from: the professor (exam, sheet, lecture example), a student summary, or the site itself
 const originOf = q => !q.src ? 'extra' : /^(exam|midterm)\b/i.test(q.src) ? 'exam' : /sheet|revision/i.test(q.src) ? 'sheet' : /^lecture\b/i.test(q.src) ? 'lecture' : /summary/i.test(q.src) ? 'summary' : 'extra';
