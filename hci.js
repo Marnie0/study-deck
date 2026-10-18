@@ -30,7 +30,8 @@ COURSES.hci = {
       "Picture: a user and a computer joined by a two-way arrow labelled \"Interaction\".",
       "<b>Human Computer Interaction (HCI)</b> is a <b>multidisciplinary field of study</b> focusing on the design of computer technology and, in particular, the interaction between humans (the users) and computers.",
       "While initially concerned with computers, HCI has since expanded to cover <b>almost all forms of information technology design</b>."
-     ]
+     ],
+     "fig": "user-computer"
     },
     {
      "h": "The three parts of HCI (pie chart)",
@@ -121,7 +122,8 @@ COURSES.hci = {
       "Based on <b>how everyday objects behave</b>.",
       "<b>Easy, intuitive, and a pleasure to use</b>.",
       "Only requires <b>one-step actions</b> to perform core tasks."
-     ]
+     ],
+     "fig": "marble"
     },
     {
      "h": "Good and bad design: TiVo remote",
@@ -130,7 +132,8 @@ COURSES.hci = {
       "<b>Peanut shaped</b> to fit in hand.",
       "<b>Logical layout</b> and <b>color-coded, distinctive buttons</b>.",
       "<b>Easy-to-locate buttons</b>."
-     ]
+     ],
+     "fig": "tivo"
     },
     {
      "h": "Dilemma: interacting with a smart TV",
@@ -140,7 +143,8 @@ COURSES.hci = {
       "2) <b>Swiping</b> across two alphanumeric rows using a touchpad on a remote control.",
       "3) <b>Voice control</b> using a remote or smart speaker.",
       "Pictures: a TV search screen with a grid keyboard of letters and numbers (with Space, Delete and Clear), and an Apple ID Sign In screen with one row of letters a to z and one row of numbers and symbols (.com, .net, .edu)."
-     ]
+     ],
+     "fig": "smart-tv"
     },
     {
      "h": "User research is important: Qualcomm device for truckers",
@@ -198,7 +202,8 @@ COURSES.hci = {
       "First mock-up: [header and menus] on top; a row with [Search box], a [by Title] drop-down and a [Go] button; then four book boxes ([Book 1], [Book 2], [Book 3], [Book 3]).",
       "Second mock-up: the same layout in bright colors (yellow header, blue search box, green drop-down, orange Go button), three books, and a cartoon smiley face with a speech bubble saying \"Reading Rox\".",
       "<b>Bad design</b>: the <b>user research component is almost absent</b>."
-     ]
+     ],
+     "fig": "book-mockups"
     },
     {
      "h": "Example case: International Children's Digital Library (ICDL)",
@@ -209,7 +214,8 @@ COURSES.hci = {
       "The ICDL search page is a <b>good design</b>: <b>more than 3 million unique visitors</b>, and the <b>visual search</b> was preferred by users (<b>71% of searches</b>).",
       "Other labels on the ICDL home page screenshot: a <b>Book list</b> link and <b>Library News and Notes (June 2, 2021)</b>.",
       "The Simple Search page screenshot also shows <b>Featured Books</b> and <b>From Our Shelves</b> rows, a <b>Show Any Language books</b> filter, <b>More Choices</b>, <b>Search By Collections</b> and <b>Browse Exhibitions</b>."
-     ]
+     ],
+     "fig": "icdl-search"
     },
     {
      "h": "Case studies",
@@ -224,7 +230,8 @@ COURSES.hci = {
       "How can the following bad user experience be avoided through a better design? (question for discussion; the slide gives no answer)",
       "Someone spent <b>at least 30 minutes</b> filling out a <b>doctor's office form</b> which asked for the address, phone number, email address and social security number an <b>average of 3 times</b> for <b>at least 10 different people and organizations</b> (my son, the patient, me, my wife, his doctors, dentists, pharmacies, insurance companies, emergency contact information and responsible parties ...).",
       "After completing and submitting, they received this message: <b>\"Internal server error\"</b> (shown with a sad face)."
-     ]
+     ],
+     "fig": "doctor-form"
     },
     {
      "h": "Design considerations",

@@ -22,6 +22,8 @@
 .fig .fade{ transition:opacity .9s ease; }
 .fig .flow{ stroke-dasharray:6 7; animation:figflow 1.1s linear infinite; }
 @keyframes figflow{ to{ stroke-dashoffset:-26; } }
+.fig .roll{ animation:figroll 2.6s ease-in infinite; }
+@keyframes figroll{ 0%{ transform:translate(0,0); opacity:0; } 10%{ opacity:1; } 85%{ transform:translate(190px,64px); opacity:1; } 100%{ transform:translate(196px,66px); opacity:0; } }
 .fig .tap{ animation:figtap 1.4s ease-in-out infinite; transform-box:fill-box; transform-origin:center; }
 @keyframes figtap{ 0%,100%{ transform:translateY(-10px); } 45%,60%{ transform:translateY(0); } }
 .fig-elev{ display:grid; gap:10px; padding:12px; border-radius:8px; background:#1b1d22; max-width:520px; margin:0 auto; }
@@ -44,7 +46,24 @@
 .fig-umb .arr{ font-size:1.5rem; color:var(--k-hci); text-align:center; } .fig-umb .arr .v{ display:none; }
 .fig-umb .bottom{ grid-column:1 / -1; }
 @media (max-width:620px){ .fig-umb{ grid-template-columns:1fr; } .fig-umb .id{ margin:0 auto; } .fig-umb .arr .h{ display:none; } .fig-umb .arr .v{ display:inline; } }
-@media (prefers-reduced-motion: reduce){ .fig .flow, .fig .tap{ animation:none; } .fig .pop, .fig .fade{ transition:none; } }`;
+.fig-row{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; } @media (max-width:620px){ .fig-row{ grid-template-columns:1fr; } }
+.fig-card{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px; font-size:.9rem; line-height:1.4; transition:opacity .4s, box-shadow .4s; }
+.fig-card b{ display:block; margin-bottom:6px; } .fig-card.dim{ opacity:.4; } .fig-card.on{ box-shadow:0 0 0 2px var(--k-hci); }
+.fig-kb{ display:grid; gap:3px; font:600 .7rem/1 var(--mono); } .fig-kb span{ display:grid; place-items:center; height:20px; border-radius:3px; background:var(--paper-2); border:1px solid var(--line); }
+.fig-kb span.cur{ background:var(--s-hci); color:#fff; border-color:transparent; }
+.fig-mock{ border:1px solid var(--line); border-radius:8px; padding:8px; display:grid; gap:6px; font-size:.78rem; background:var(--paper); }
+.fig-mock div{ border:1px solid var(--faint); border-radius:3px; padding:5px; text-align:center; }
+.fig-mock .r{ display:grid; grid-template-columns:2fr 1.3fr .7fr; gap:6px; } .fig-mock .books{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; } .fig-mock .books div{ height:52px; display:grid; place-items:center; }
+.fig-mock.color .hd{ background:#facc15; color:#111; } .fig-mock.color .sb{ background:#60a5fa; color:#111; } .fig-mock.color .dd{ background:#4ade80; color:#111; } .fig-mock.color .go{ background:#fb923c; color:#111; }
+.fig-mock.color .books{ grid-template-columns:repeat(3, 1fr) 1.2fr; } .fig-mock .rox{ border:0; font-size:1.6rem; line-height:1; display:grid; place-items:center; } .fig-mock .rox small{ font-size:.66rem; background:#60a5fa; color:#111; border-radius:99px; padding:2px 6px; }
+.fig-icdl{ display:grid; gap:10px; } .fig-icdl .grp{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; } .fig-icdl .grp > b{ width:100%; font-size:.8rem; color:var(--graphite); }
+.fig-icdl button{ font:inherit; font-size:.82rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:10px; padding:6px 10px; cursor:pointer; display:inline-flex; gap:6px; align-items:center; min-height:34px; }
+.fig-icdl button i{ width:18px; height:18px; border-radius:50%; display:inline-block; } .fig-icdl button.sel{ box-shadow:0 0 0 2px var(--k-hci); }
+.fig-form{ max-width:520px; margin:0 auto; border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px 12px; font-size:.86rem; }
+.fig-form .who{ display:grid; grid-template-columns:repeat(2, 1fr); gap:4px 12px; margin:8px 0; } .fig-form .who span{ opacity:.35; transition:opacity .3s; } .fig-form .who span.done{ opacity:1; } .fig-form .who span.done::before{ content:"✓ "; color:var(--ok); }
+.fig-form .bar{ height:8px; border-radius:99px; background:var(--paper-2); overflow:hidden; } .fig-form .bar i{ display:block; height:100%; background:var(--k-hci); transition:width .4s; }
+.fig-form .err{ margin-top:10px; padding:10px; border-radius:10px; border:2px solid var(--pen); color:var(--pen); font-weight:700; text-align:center; font-size:1rem; }
+@media (prefers-reduced-motion: reduce){ .fig .flow, .fig .tap, .fig .roll{ animation:none; } .fig .pop, .fig .fade{ transition:none; } }`;
   if (!document.getElementById('fig-css')) { const s = document.createElement('style'); s.id = 'fig-css'; s.textContent = CSS; document.head.appendChild(s); }
 
   // steps: [{ en, ar }]; returns [step, controls]
@@ -221,5 +240,149 @@
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
 
-  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella };
+
+  /* ── L1 slide 4: user and computer joined by "Interaction" ── */
+  function UserComputer({ ar }) {
+    const steps = [
+      { en: 'HCI: the <b>interaction</b> between user and computer,', ar: 'الـ HCI: <b>التفاعل</b> بين الـ user والكمبيوتر،' },
+      { en: 'OR the <b>relationship</b> between users and computer systems.', ar: 'أو <b>العلاقة</b> بين الـ users والـ computer systems.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2400);
+    return html`<figure className="fig"><div className="fig-stage">
+      <svg viewBox="0 0 440 190" role="img" aria-label="A user and a computer joined by a two-way arrow labelled Interaction">
+        <circle cx="70" cy="62" r="24" fill="var(--k-hci)" /><path d="M30 132 q40 -54 80 0 z" fill="var(--k-hci)" />
+        <text x="70" y="168" textAnchor="middle" fontSize="18" fontWeight="700">User</text>
+        <rect x="318" y="44" width="96" height="66" rx="7" fill="var(--paper)" stroke="var(--graphite)" strokeWidth="3" /><rect x="356" y="110" width="20" height="12" fill="var(--graphite)" /><rect x="338" y="122" width="56" height="6" rx="3" fill="var(--graphite)" />
+        <text x="366" y="168" textAnchor="middle" fontSize="18" fontWeight="700">Computer</text>
+        <path d="M122 80 H300" stroke="var(--k-hci)" strokeWidth="4" fill="none" className=${calm() ? '' : 'flow'} /><path d="M300 80 l-12 -8 v16 z" fill="var(--k-hci)" />
+        <path d="M300 100 H122" stroke="var(--k-mm)" strokeWidth="4" fill="none" className=${calm() ? '' : 'flow'} /><path d="M122 100 l12 -8 v16 z" fill="var(--k-mm)" />
+        <text x="211" y="66" textAnchor="middle" fontSize="18" fontWeight="700">Interaction</text>
+        <text x="211" y="132" textAnchor="middle" fontSize="15" className=${pop(i >= 1)}>relationship</text>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L1 slide 11: the marble answering machine (Bishop, 1995) ── */
+  function Marble({ ar }) {
+    const steps = [
+      { en: 'Marble answering machine (Bishop, 1995): marbles roll down a track into a tray.', ar: 'الـ Marble answering machine (Bishop, 1995): البلي بيتدحرج على مجرى لحد ما يوصل لصينية.' },
+      { en: 'A hand picks up a marble: it only requires <b>one-step actions</b> to perform core tasks.', ar: 'إيد بتشيل بلية: بيحتاج <b>خطوة واحدة بس</b> عشان تعمل المهام الأساسية.' },
+      { en: 'Based on <b>how everyday objects behave</b>: easy, intuitive, and a pleasure to use.', ar: 'مبني على <b>طريقة تصرف الحاجات اللي بنستعملها كل يوم</b>: سهل و intuitive وممتع في الاستخدام.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const tray = [[300, 150], [328, 150], [356, 150]];
+    return html`<figure className="fig"><div className="fig-stage">
+      <svg viewBox="0 0 440 200" role="img" aria-label="Marbles rolling down a track into a tray, and a hand picking one up">
+        <rect x="40" y="40" width="360" height="140" rx="16" fill="#c08a52" />
+        <path d="M70 70 L280 140" stroke="#8a5a2c" strokeWidth="14" strokeLinecap="round" />
+        <rect x="280" y="136" width="100" height="28" rx="12" fill="#8a5a2c" />
+        ${[0, 1].map(j => html`<circle key=${j} cx="80" cy="73" r="9" fill=${['#ef4444', '#3b82f6'][j]} className=${calm() ? '' : 'roll'} style=${{ animationDelay: j * 1.3 + 's', opacity: calm() ? 0 : 1 }} />`)}
+        ${tray.map(([x, y], j) => html`<circle key=${j} cx=${x} cy=${y} r="10" fill=${['#facc15', '#22c55e', '#a855f7'][j]} style=${{ opacity: i >= 1 && j === 2 ? 0 : 1, transition: 'opacity .6s' }} />`)}
+        <g className=${pop(i >= 1)}><circle cx="356" cy="92" r="10" fill="#a855f7" /><path d="M344 104 q12 -30 40 -26 q14 4 8 24 l-20 40 h-30 z" fill="#f2c9a0" stroke="#b07a50" strokeWidth="2" /></g>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L1 slide 12: the TiVo remote ── */
+  function Tivo({ ar }) {
+    const steps = [
+      { en: 'Why is the TiVo remote much better designed than standard remote controls?', ar: 'ليه الـ TiVo remote متصمم أحسن بكتير من الريموتات العادية؟' },
+      { en: '<b>Peanut shaped</b> to fit in hand.', ar: '<b>على شكل فول سوداني (peanut)</b> عشان يتمسك في الإيد.' },
+      { en: '<b>Logical layout</b> and <b>color-coded, distinctive buttons</b>.', ar: '<b>ترتيب منطقي</b> و<b>زراير متميزة بألوان مختلفة</b>.' },
+      { en: '<b>Easy-to-locate</b> buttons.', ar: 'زراير <b>سهل تلاقيها</b>.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2200);
+    const glow = on => ({ stroke: on ? 'var(--k-hci)' : 'none', strokeWidth: 3 });
+    return html`<figure className="fig"><div className="fig-stage">
+      <svg viewBox="0 0 440 280" role="img" aria-label="The TiVo remote">
+        <path d="M220 16 C270 16 282 60 270 100 C262 128 262 150 272 180 C290 238 258 268 220 268 C182 268 150 238 168 180 C178 150 178 128 170 100 C158 60 170 16 220 16 Z" fill="#26282d" style=${glow(i === 1)} />
+        <circle cx="220" cy="78" r="30" fill="#3a3d44" style=${glow(i === 2)} /><circle cx="220" cy="78" r="11" fill="#9ca3af" />
+        <circle cx="220" cy="38" r="9" fill="#60a5fa" style=${glow(i === 3)} />
+        <circle cx="198" cy="128" r="10" fill="#ef4444" style=${glow(i === 2)} /><circle cx="242" cy="128" r="10" fill="#22c55e" style=${glow(i === 2)} />
+        <ellipse cx="220" cy="160" rx="18" ry="11" fill="#facc15" style=${glow(i === 3)} />
+        ${[0, 1, 2, 3].map(r => [0, 1, 2].map(c => html`<rect key=${r + '-' + c} x=${196 + c * 18} y=${186 + r * 16} width="12" height="10" rx="3" fill="#6b7280" />`))}
+        <text x="64" y="70" fontSize="15" className=${pop(i === 1)}>peanut shaped</text>
+        <text x="300" y="130" fontSize="15" className=${pop(i === 2)}>color-coded</text>
+        <text x="300" y="168" fontSize="15" className=${pop(i === 3)}>easy to locate</text>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L1 slide 13: smart TV dilemma (no answer on the slide) ── */
+  function SmartTv({ ar }) {
+    const steps = [
+      { en: 'Which is the best way to interact with a smart TV? Why? (question for discussion; the slide gives no answer)', ar: 'إيه أحسن طريقة للتعامل مع الـ smart TV؟ وليه؟ (سؤال للمناقشة؛ الـ slide مش بتدي إجابة)' },
+      { en: '1) <b>Pecking</b> using a grid keyboard via a remote control.', ar: '1) <b>Pecking</b> بـ grid keyboard عن طريق الريموت.' },
+      { en: '2) <b>Swiping</b> across two alphanumeric rows using a touchpad on a remote control.', ar: '2) <b>Swiping</b> على صفين حروف وأرقام بـ touchpad في الريموت.' },
+      { en: '3) <b>Voice control</b> using a remote or smart speaker.', ar: '3) <b>Voice control</b> عن طريق الريموت أو smart speaker.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const [t, setT] = useState(0);
+    useEffect(() => { if (calm()) return; const id = setInterval(() => setT(x => x + 1), 450); return () => clearInterval(id); }, []);
+    const grid = 'abcdefghijklmnopqrstuvwxyz1234567890'.split(''), row1 = 'abcdefghijklm'.split(''), row2 = '123.com.net'.split('');
+    const card = (j, title, body) => html`<div className=${'fig-card' + (i === 0 || i === j ? ' on' : ' dim')}><b>${title}</b>${body}</div>`;
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-row">
+      ${card(1, '1) Grid keyboard (pecking)', html`<div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(6, 1fr)' }}>${grid.map((c, j) => html`<span key=${j} className=${j === (t * 7) % 36 ? 'cur' : ''}>${c}</span>`)}</div>`)}
+      ${card(2, '2) Two rows (swiping)', html`<div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(13, 1fr)' }}>${row1.map((c, j) => html`<span key=${j} className=${j === t % 13 ? 'cur' : ''}>${c}</span>`)}</div><div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(11, 1fr)', marginTop: '4px' }}>${row2.map((c, j) => html`<span key=${j}>${c}</span>`)}</div><p className="muted small" style=${{ margin: '6px 0 0' }}>a to z on one row; numbers and symbols (.com, .net, .edu) on the other</p>`)}
+      ${card(3, '3) Voice control', html`<svg viewBox="0 0 120 60" style=${{ maxWidth: '140px' }}><rect x="50" y="8" width="20" height="32" rx="10" fill="var(--k-hci)" /><path d="M42 30 a18 18 0 0 0 36 0" stroke="var(--k-hci)" strokeWidth="4" fill="none" /><path d="M60 48 v8" stroke="var(--k-hci)" strokeWidth="4" />${[0, 1, 2].map(k => html`<path key=${k} d=${'M' + (86 + k * 9) + ' 14 q8 14 0 28'} stroke="var(--k-mm)" strokeWidth="3" fill="none" style=${{ opacity: (t + k) % 3 === 0 ? 1 : .3 }} />`)}</svg><p className="muted small" style=${{ margin: '4px 0 0' }}>using a remote or smart speaker</p>`)}
+    </div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L1 slides 15–16: two mock-ups for an online book library search ── */
+  function BookMockups({ ar }) {
+    const steps = [
+      { en: 'Designing the search feature for an online book library: the first mock-up.', ar: 'تصميم الـ search feature لمكتبة كتب online: أول mock-up.' },
+      { en: 'The second mock-up: the same layout in bright colors, with a cartoon face saying "Reading Rox".', ar: 'تاني mock-up: نفس الـ layout بألوان فاقعة، مع وش كارتون بيقول "Reading Rox".' },
+      { en: '<b>Bad design</b>: the user research component is almost absent.', ar: '<b>Design وحش</b>: الـ user research تقريباً مش موجود.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const mock = (color, books) => html`<div className=${'fig-mock' + (color ? ' color' : '')}>
+      <div className="hd">[header and menus]</div>
+      <div className="r"><div className="sb">[Search box]</div><div className="dd">[by Title] ▾</div><div className="go">[Go]</div></div>
+      <div className="books">${books.map((b, j) => html`<div key=${j}>${b}</div>`)}${color && html`<div className="rox">☺<small>Reading Rox</small></div>`}</div></div>`;
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-row" style=${{ gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))' }}>
+      <div className=${pop(true)}>${mock(false, ['[Book 1]', '[Book 2]', '[Book 3]', '[Book 3]'])}</div>
+      <div className=${pop(i >= 1)}>${mock(true, ['[Book 1]', '[Book 2]', '[Book 3]'])}</div>
+    </div><p className=${pop(i >= 2)} style=${{ textAlign: 'center', margin: '10px 0 0', color: 'var(--pen)', fontWeight: 700 }}>Bad design: user research component is almost absent</p></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L1 slides 17–18: the ICDL Simple Search page, try the picture buttons ── */
+  function IcdlSearch({ ar }) {
+    const [sel, setSel] = useState(null);
+    const colors = [['Rainbow', 'conic-gradient(red, orange, yellow, green, blue, violet, red)'], ['Red', '#ef4444'], ['Orange', '#f97316'], ['Yellow', '#facc15'], ['Green', '#22c55e'], ['Blue', '#3b82f6']];
+    const ages = ['Three to Five', 'Six to Nine', 'Ten to Thirteen'];
+    const kinds = ['Make Believe Books', 'True Books', 'Short Books', 'Medium Books', 'Long Books', 'Picture Books', 'Chapter Books', 'Fairy Tales and Folk Tales', 'Kid Characters', 'Real Animal Characters', 'Imaginary Creature Characters', 'Award Winning Books', 'Recently Added Books'];
+    const btn = (k, label, dot) => html`<button key=${k} className=${sel === k ? 'sel' : ''} onClick=${() => setSel(k)}>${dot && html`<i style=${{ background: dot }}></i>`}${label}</button>`;
+    const en = sel ? 'You searched by <b>' + sel + '</b> with one tap on a picture button: the <b>visual search</b> that users preferred (71% of searches).' : '<b>Try it:</b> the ICDL Simple Search page searches with big picture buttons. HCIL designed it; good design with more than 3 million unique visitors.';
+    const a = sel ? 'دورت بـ <b>' + sel + '</b> بضغطة واحدة على زرار بصورة: ده الـ <b>visual search</b> اللي الـ users فضّلوه (71% من عمليات البحث).' : '<b>جرّب:</b> صفحة الـ Simple Search في ICDL بتدور بزراير كبيرة فيها صور. اللي صممها HCIL؛ design كويس زاره أكتر من 3 مليون زائر مختلف.';
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-icdl">
+      <div className="grp"><b>Covers</b>${colors.map(([c, d]) => btn(c + ' Covers', c, d))}</div>
+      <div className="grp"><b>Age</b>${ages.map(x => btn(x, x))}</div>
+      <div className="grp"><b>Books</b>${kinds.map(x => btn(x, x))}</div>
+    </div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span>${sel && html`<button className="fig-btn" onClick=${() => setSel(null)}>↻ Clear</button>`}</div></figure>`;
+  }
+
+  /* ── L1 slide 19: the doctor's office form (no answer on the slide) ── */
+  function DoctorForm({ ar }) {
+    const who = ['my son', 'the patient', 'me', 'my wife', 'his doctors', 'dentists', 'pharmacies', 'insurance companies', 'emergency contact information', 'responsible parties'];
+    const [n, setN] = useState(calm() ? who.length + 1 : 0), [run, setRun] = useState(!calm());
+    useEffect(() => { if (!run || n > who.length) return; const t = setTimeout(() => setN(x => x + 1), 650); return () => clearTimeout(t); }, [n, run]);
+    const done = n > who.length, mins = Math.min(30, Math.round(n / who.length * 30));
+    const en = done ? 'After completing and submitting: <b>"Internal server error"</b>. How can this bad user experience be avoided through a better design? (question for discussion; the slide gives no answer)' : 'Filling out a doctor’s office form: address, phone number, email address and social security number, an average of 3 times, for at least 10 different people and organizations.';
+    const a = done ? 'بعد ما خلّص وبعت الفورم: <b>"Internal server error"</b>. إزاي نتجنب الـ user experience الوحشة دي بـ design أحسن؟ (سؤال للمناقشة؛ الـ slide مش بتدي إجابة)' : 'بيملا فورم عند الدكتور: العنوان ورقم التليفون والإيميل ورقم الـ social security، في المتوسط 3 مرات، لـ 10 أشخاص وجهات مختلفة على الأقل.';
+    return html`<figure className="fig"><div className="fig-stage"><div className="fig-form">
+      <b>Doctor's office form</b> · address, phone, email, social security number
+      <div className="who">${who.map((w, j) => html`<span key=${j} className=${j < n ? 'done' : ''}>${w}</span>`)}</div>
+      <div className="bar"><i style=${{ width: Math.min(100, n / who.length * 100) + '%' }}></i></div>
+      <p className="muted small" style=${{ margin: '6px 0 0' }}>${done ? 'at least 30 minutes' : mins + ' min'}</p>
+      ${done && html`<div className="err">Internal server error ☹</div>`}
+    </div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => { setN(0); setRun(!calm()); }}>↻ Replay</button></div></figure>`;
+  }
+  window.FIGS = { 'hci-parts': HciParts, 'invisible-interface': Invisible, 'elevator': Elevator, 'vending': Vending, 'truckers': Truckers, 'id-umbrella': Umbrella, 'user-computer': UserComputer, 'marble': Marble, 'tivo': Tivo, 'smart-tv': SmartTv, 'book-mockups': BookMockups, 'icdl-search': IcdlSearch, 'doctor-form': DoctorForm };
 })();
