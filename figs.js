@@ -319,11 +319,11 @@
     const [i, ctl] = useSteps(steps.length, 2600);
     const [t, setT] = useState(0);
     useEffect(() => { if (calm()) return; const id = setInterval(() => setT(x => x + 1), 450); return () => clearInterval(id); }, []);
-    const grid = 'abcdefghijklmnopqrstuvwxyz1234567890'.split(''), row1 = 'abcdefghijklm'.split(''), row2 = '123.com.net'.split('');
+    const grid = 'abcdefghijklmnopqrstuvwxyz1234567890'.split(''), row1 = 'abcdefghijklm'.split(''), row2 = ['1', '2', '3', '…', '.com', '.net', '.edu'];
     const card = (j, title, body) => html`<div className=${'fig-card' + (i === 0 || i === j ? ' on' : ' dim')}><b>${title}</b>${body}</div>`;
     return html`<figure className="fig"><div className="fig-stage"><div className="fig-row">
       ${card(1, '1) Grid keyboard (pecking)', html`<div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(6, 1fr)' }}>${grid.map((c, j) => html`<span key=${j} className=${j === (t * 7) % 36 ? 'cur' : ''}>${c}</span>`)}</div>`)}
-      ${card(2, '2) Two rows (swiping)', html`<div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(13, 1fr)' }}>${row1.map((c, j) => html`<span key=${j} className=${j === t % 13 ? 'cur' : ''}>${c}</span>`)}</div><div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(11, 1fr)', marginTop: '4px' }}>${row2.map((c, j) => html`<span key=${j}>${c}</span>`)}</div><p className="muted small" style=${{ margin: '6px 0 0' }}>a to z on one row; numbers and symbols (.com, .net, .edu) on the other</p>`)}
+      ${card(2, '2) Two rows (swiping)', html`<div className="fig-kb" style=${{ gridTemplateColumns: 'repeat(13, 1fr)' }}>${row1.map((c, j) => html`<span key=${j} className=${j === t % 13 ? 'cur' : ''}>${c}</span>`)}</div><div className="fig-kb" style=${{ gridTemplateColumns: '1fr 1fr 1fr 1fr 2fr 2fr 2fr', marginTop: '4px' }}>${row2.map((c, j) => html`<span key=${j}>${c}</span>`)}</div><p className="muted small" style=${{ margin: '6px 0 0' }}>a to z on one row; numbers and symbols (.com, .net, .edu) on the other</p>`)}
       ${card(3, '3) Voice control', html`<svg viewBox="0 0 120 60" style=${{ maxWidth: '140px' }}><rect x="50" y="8" width="20" height="32" rx="10" fill="var(--k-hci)" /><path d="M42 30 a18 18 0 0 0 36 0" stroke="var(--k-hci)" strokeWidth="4" fill="none" /><path d="M60 48 v8" stroke="var(--k-hci)" strokeWidth="4" />${[0, 1, 2].map(k => html`<path key=${k} d=${'M' + (86 + k * 9) + ' 14 q8 14 0 28'} stroke="var(--k-mm)" strokeWidth="3" fill="none" style=${{ opacity: (t + k) % 3 === 0 ? 1 : .3 }} />`)}</svg><p className="muted small" style=${{ margin: '4px 0 0' }}>using a remote or smart speaker</p>`)}
     </div></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
