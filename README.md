@@ -24,10 +24,10 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 <table>
 <tr>
 <td align="center"><h2>12</h2>courses</td>
-<td align="center"><h2>101</h2>lectures</td>
-<td align="center"><h2>1,546</h2>flashcards</td>
-<td align="center"><h2>2,599</h2>quiz questions</td>
-<td align="center"><h2>524</h2>Q&amp;A pairs</td>
+<td align="center"><h2>105</h2>lectures</td>
+<td align="center"><h2>1,640</h2>flashcards</td>
+<td align="center"><h2>2,675</h2>quiz questions</td>
+<td align="center"><h2>554</h2>Q&amp;A pairs</td>
 <td align="center"><h2>73</h2>solved past papers</td>
 </tr>
 </table>
@@ -187,7 +187,7 @@ Pick your level on the home page. Course pills, tiles, cards due, weak spots, pa
 | 🟣 Operating Systems | CS332 | 8 | 138 | 174 | 6 | ✓ |
 | 🔴 Multimedia | CS253 | 8 | 118 | 216 | 10 | ✓ |
 | 🟢 Software Quality Assurance | 22H211-CS-EN-T1 | 8 | 116 | 171 | 2 | ✓ |
-| 🟩 Human Computer Interaction *(elective)* | CS314 | 9 | 78 | 258 | 2 | ✓ |
+| 🟩 Human Computer Interaction *(elective)* | CS314 | 13 | 172 | 334 | 2 | ✓ |
 | 🟠 File Processing *(elective)* | CS308 | 5 | 66 | 100 | 3 | ✓ |
 <!-- courses:end -->
 

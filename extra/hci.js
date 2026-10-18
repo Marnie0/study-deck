@@ -1,6 +1,6 @@
 window.EXTRA = window.EXTRA || {};
 EXTRA.hci = {
-  1: [
+  5: [
     { q: `According to the lecture, HCI deals with which three activities for interactive systems?`, o: [
       [`Design, Implementation and Evaluation`, `Correct. The lecture says HCI deals with the Design, Implementation and Evaluation of interactive systems.`],
       [`Manufacturing, Shipping and Repair of hardware`, `HCI studies the interaction between users and computers, not the hardware supply chain.`],
@@ -14,7 +14,7 @@ EXTRA.hci = {
       [`Product Design`, `Product Design is one of the three branches of Human Factors Engineering.`]
     ], a: 1 },
     { q: `"The gap between HCI and human factors engineering is growing, because fewer devices are becoming computerized."`, o: [
-      [`True`, `Both halves are reversed: the lecture says the gap is shrinking, because more devices (not fewer) are becoming computerized (L1, HCI hierarchy).`],
+      [`True`, `Both halves are reversed: the lecture says the gap is shrinking, because more devices (not fewer) are becoming computerized (L5, HCI hierarchy).`],
       [`False`, `Correct. The gap is <b>shrinking</b>, because more devices are becoming computerized.`]
     ], a: 1 },
     { q: `Which statement matches the lecture's distinction between UX and HCI?`, o: [
@@ -56,7 +56,7 @@ EXTRA.hci = {
       [`Human factors engineering in industrial design`, `Industrial design is a separate branch; this example is about a poor user experience on a web form.`]
     ], a: 2 }
   ],
-  2: [
+  6: [
     { q: `<b>Scenario:</b> User research showed that truckers often have big hands and often wear gloves. What was the better design for the Qualcomm device?`, o: [
       [`Smaller buttons placed closer together`, `Small buttons were the problem in the early version.`],
       [`A voice-only device with no screen`, `The lecture does not mention voice input; the redesign used a screen.`],
@@ -67,11 +67,11 @@ EXTRA.hci = {
       [`A product with too many features, too many megabytes, too slow, too difficult to use, or simply too much`, `Correct. This is the lecture's definition of bloatware.`],
       [`A program that collects anonymous usage data`, `That describes the CEIP, which Microsoft used to replace guesswork with data.`],
       [`A menu that shows only the most likely used commands`, `That is an adaptive (personalized) menu.`],
-      [`Two or more toolbars sharing one line`, `Two or more toolbars sharing one line is a rafted toolbar, an Office 2000 mechanism. Bloatware is a product with too many features or simply too much (L2, Full-featured systems).`]
+      [`Two or more toolbars sharing one line`, `Two or more toolbars sharing one line is a rafted toolbar, an Office 2000 mechanism. Bloatware is a product with too many features or simply too much (L6, Full-featured systems).`]
     ], a: 0 },
     { q: `In Office 2000, what were <b>rafted toolbars</b>?`, o: [
       [`Menus that show only a short list of commands with a chevron`, `That is the adaptive (personalized) menu.`],
-      [`Two or more toolbars sharing one line, with an algorithm moving the predicted least-used buttons to an overflow area`, `Correct. Rafted toolbars put two or more toolbars on one line, and an algorithm predicted the least-used buttons and moved them to an overflow area (L2, Office 2000 mechanisms).`],
+      [`Two or more toolbars sharing one line, with an algorithm moving the predicted least-used buttons to an overflow area`, `Correct. Rafted toolbars put two or more toolbars on one line, and an algorithm predicted the least-used buttons and moved them to an overflow area (L6, Office 2000 mechanisms).`],
       [`Toolbars that were removed completely from the window`, `The toolbars stayed; they just shared a line and hid some buttons.`],
       [`Toolbars that could only be used from the keyboard`, `Nothing in the lecture says that; keyboard usage was a CEIP finding.`]
     ], a: 1 },
@@ -86,7 +86,7 @@ EXTRA.hci = {
       [`There is more focus on the tool than on the task`, `This is listed as a consequence of more features.`]
     ], a: 2 },
     { q: `What did the CEIP (Customer Experience Improvement Program), introduced in Office 2003, collect?`, o: [
-      [`Users' names and email addresses so the team could contact them`, `CEIP collected no names or emails: its usage and hardware data was anonymous, gathered from users who joined via the "Help make Office better" balloon (L2, From guesswork to data).`],
+      [`Users' names and email addresses so the team could contact them`, `CEIP collected no names or emails: its usage and hardware data was anonymous, gathered from users who joined via the "Help make Office better" balloon (L6, From guesswork to data).`],
       [`Video recordings of users working`, `The lecture does not mention video; CEIP collected usage and hardware data.`],
       [`Only the press reviews calling Office "bloated"`, `Press opinion was part of the problem, not CEIP data.`],
       [`Anonymous usage and hardware data from users who joined through the "Help make Office better" balloon`, `Correct. A balloon enrolled users and the CEIP collected anonymous usage and hardware data.`]
@@ -98,7 +98,7 @@ EXTRA.hci = {
       [`1.3 times`, `1.3 relates to the 1.3+ billion sessions of data, not keyboard use.`]
     ], a: 0 },
     { q: `"For Office 2007, the team kept every bit of the Word and Outlook usage data they collected."`, o: [
-      [`True`, `They did not keep it all: they got so much Word and Outlook data that 70% was thrown away (L2, From guesswork to data).`],
+      [`True`, `They did not keep it all: they got so much Word and Outlook data that 70% was thrown away (L6, From guesswork to data).`],
       [`False`, `Correct. They got so much Word and Outlook data that <b>70% was thrown away</b>.`]
     ], a: 1 },
     { q: `<b>Scenario:</b> A music app automatically hides the options it predicts you rarely use. Its guesses are often wrong, so users end up scanning the full list again. Which lesson from the Office 2000 case applies?`, o: [
@@ -112,7 +112,7 @@ EXTRA.hci = {
       [`False`, `The lecture lists exactly these problems for Office 97–2003.`]
     ], a: 0 }
   ],
-  3: [
+  7: [
     { q: `What is the correct order of Google's user-centered design process?`, o: [
       [`Need finding → Design alternatives → Prototyping → Evaluation`, `That is Joyner's design life cycle, not Google's process.`],
       [`Specify → Understand → Design → Evaluate`, `You must understand users before specifying the problem.`],
@@ -120,9 +120,9 @@ EXTRA.hci = {
       [`Design → Evaluate → Understand → Specify`, `Designing before understanding users is exactly what user-centered design avoids.`]
     ], a: 2 },
     { q: `In Google's process, what happens in the <b>Specify</b> step?`, o: [
-      [`Testing with real users`, `Testing with real users is the Evaluate step, the last of Understand → Specify → Design → Evaluate (L3, Google UCD process).`],
-      [`Designing solutions and starting to build`, `Designing solutions and starting to build is the Design step, which comes after Specify has chosen the problem to solve (L3, Google UCD process).`],
-      [`Learning how users experience the product`, `Learning how users experience the product is the Understand step, the first step and the one with the most research (L3, Google UCD process).`],
+      [`Testing with real users`, `Testing with real users is the Evaluate step, the last of Understand → Specify → Design → Evaluate (L7, Google UCD process).`],
+      [`Designing solutions and starting to build`, `Designing solutions and starting to build is the Design step, which comes after Specify has chosen the problem to solve (L7, Google UCD process).`],
+      [`Learning how users experience the product`, `Learning how users experience the product is the Understand step, the first step and the one with the most research (L7, Google UCD process).`],
       [`Identifying the most important user problem to solve`, `Correct. Specify means choosing the most important user problem to solve.`]
     ], a: 3 },
     { q: `"User-centered design means designing a system to meet a functional specification."`, o: [
@@ -168,11 +168,11 @@ EXTRA.hci = {
       [`False`, `The lecture lists benefits of making user research explicit.`]
     ], a: 0 }
   ],
-  4: [
+  8: [
     { q: `Which of these is <b>PII but NOT SPII</b>?`, o: [
-      [`Social security number`, `Social security number is Sensitive PII, since losing it could cause financial harm. The PII-only items are names, home address, email and phone (L4, Privacy and security).`],
+      [`Social security number`, `Social security number is Sensitive PII, since losing it could cause financial harm. The PII-only items are names, home address, email and phone (L8, Privacy and security).`],
       [`Email address`, `Correct. Email address is listed under PII (with names, home address, phone number), not under SPII.`],
-      [`Passport number`, `Passport numbers are in the SPII list, data whose loss could cause harm or discrimination. Email address is the plain PII choice (L4, Privacy and security).`],
+      [`Passport number`, `Passport numbers are in the SPII list, data whose loss could cause harm or discrimination. Email address is the plain PII choice (L8, Privacy and security).`],
       [`Date of birth`, `Date of birth is listed as Sensitive PII.`]
     ], a: 1 },
     { q: `<b>Scenario:</b> A team designing a charting app reads published facts about color blindness before choosing colors. According to the lecture, this secondary research answers questions about:`, o: [
@@ -188,7 +188,7 @@ EXTRA.hci = {
       [`The data can be too old and/or not specific enough`, `Correct. This is the key disadvantage of secondary research in the table.`]
     ], a: 3 },
     { q: `"Primary research can only produce quantitative data."`, o: [
-      [`True`, `The primary vs secondary table says both can be qualitative or quantitative. Interviews, for example, are primary and qualitative (L4, Primary vs secondary).`],
+      [`True`, `The primary vs secondary table says both can be qualitative or quantitative. Interviews, for example, are primary and qualitative (L8, Primary vs secondary).`],
       [`False`, `Correct. Both primary and secondary research can be either qualitative or quantitative.`]
     ], a: 1 },
     { q: `<b>Scenario:</b> A team needs quick responses from a large number of users in a short time, with a very small budget. Which method fits best?`, o: [
@@ -208,10 +208,10 @@ EXTRA.hci = {
       [`False`, `Correct. Methods are not alternatives; use a <b>combination</b> of them in a relevant order.`]
     ], a: 1 },
     { q: `Which of these is <b>NOT</b> one of the lecture's privacy guidelines for user research?`, o: [
-      [`Only collect the data you need`, `"Only collect the data you need" is the first privacy guideline, so it is not the answer (L4, Privacy and security).`],
-      [`Do not associate collected data with PII or SPII`, `"Do not associate collected data with PII or SPII" is one of the three privacy guidelines, so it is not the answer (L4, Privacy and security).`],
+      [`Only collect the data you need`, `"Only collect the data you need" is the first privacy guideline, so it is not the answer (L8, Privacy and security).`],
+      [`Do not associate collected data with PII or SPII`, `"Do not associate collected data with PII or SPII" is one of the three privacy guidelines, so it is not the answer (L8, Privacy and security).`],
       [`Keep all collected data permanently in case it is useful later`, `Correct. This breaks the rule "do not keep data after you no longer need it".`],
-      [`Do not keep data after you no longer need it`, `"Do not keep data after you no longer need it" is a real guideline. The option that breaks it, keeping data permanently, is the answer (L4, Privacy and security).`]
+      [`Do not keep data after you no longer need it`, `"Do not keep data after you no longer need it" is a real guideline. The option that breaks it, keeping data permanently, is the answer (L8, Privacy and security).`]
     ], a: 2 },
     { q: `"A survey can be used after an interview or a usability study, not only as an initial step."`, o: [
       [`True`, `Correct. Surveys can be an initial step to plan interviews, and can also follow an interview or usability study.`],
@@ -224,7 +224,7 @@ EXTRA.hci = {
       [`Ask only what you need, and only collect the data you need (avoid unneeded PII)`, `Correct. The survey asks for PII it will never use, breaking both the survey tip and the privacy rule.`]
     ], a: 3 }
   ],
-  5: [
+  9: [
     { q: `<b>Scenario:</b> A survey asks "Rate the app from 1 to 5" with no meaning given for the numbers. Which guideline does it break?`, o: [
       [`Be Clear: label numeric scales`, `Correct. Scales should be labeled, e.g. "1 = Highly dissatisfied … 5 = Highly satisfied".`],
       [`Be Concise: use plain language`, `The question is already short; the issue is the unlabeled scale.`],
@@ -239,7 +239,7 @@ EXTRA.hci = {
     ], a: 1 },
     { q: `"How satisfied are you with your food?" is a problem because:`, o: [
       [`It is a loaded question`, `It uses no emotionally loaded word like "wasted".`],
-      [`It has overlapping ranges`, `Overlapping ranges need numeric options like 0-2, 2-5; this question has none. Its flaw is mixing temperature, appearance and flavor (L5, Be Specific).`],
+      [`It has overlapping ranges`, `Overlapping ranges need numeric options like 0-2, 2-5; this question has none. Its flaw is mixing temperature, appearance and flavor (L9, Be Specific).`],
       [`It has internal conflict; split it into temperature, appearance and flavor`, `Correct. This is the "avoid internal conflict" example under Be Specific: one may like the flavor but not the temperature.`],
       [`It is a yes/no question`, `It asks for a level of satisfaction, not yes/no.`]
     ], a: 2 },
@@ -256,13 +256,13 @@ EXTRA.hci = {
     { q: `"Is our price too high?" should become "Do you feel our price is too high, too low, or about right?". Which guideline is this?`, o: [
       [`Be Expressive: emphasize the user's opinion`, `Correct. This is the lecture's example of emphasizing the user's opinion.`],
       [`Be Usable: order questions logically`, `Ordering is about the sequence of questions, not this wording.`],
-      [`Be Clear: avoid overlapping ranges`, `Overlapping ranges concern numeric answer options, and this question has none. The rewrite adds "too low / about right" to capture the user's opinion (L5, Be Expressive).`],
+      [`Be Clear: avoid overlapping ranges`, `Overlapping ranges concern numeric answer options, and this question has none. The rewrite adds "too low / about right" to capture the user's opinion (L9, Be Expressive).`],
       [`Be Concise: use plain language`, `The new version is actually longer; the goal is to capture the user's opinion.`]
     ], a: 0 },
     { q: `What is the problem with "Have you listened to an audiobook this year?"`, o: [
       [`It is a leading question`, `It does not assume an answer or praise anything.`],
       [`It is a yes/no question; use ranges instead`, `Correct. The lecture's exercise flags it as yes/no; ranges (as in "Be Expressive") give richer answers.`],
-      [`It is a loaded question`, `A loaded question contains a judgment word like "wasted"; this question is neutral. Its flaw is the yes/no format (L5, Exercise).`],
+      [`It is a loaded question`, `A loaded question contains a judgment word like "wasted"; this question is neutral. Its flaw is the yes/no format (L9, Exercise).`],
       [`It has overlapping ranges`, `It has no ranges at all, which is the actual problem.`]
     ], a: 1 },
     { q: `"Why did you choose our service?" should be left as an open-ended question instead of forcing fixed options.`, o: [
@@ -270,8 +270,8 @@ EXTRA.hci = {
       [`False`, `The lecture says this question should not force fixed options.`]
     ], a: 0 },
     { q: `A survey asks enjoyment "on a scale of 1 to 4, 1 = a lot, 4 = not at all", then the next question uses "1 to 6, 1 = not at all". What is wrong?`, o: [
-      [`It is a double-barrel question`, `A double-barrel question asks two things at once, but each of these asks only about enjoyment. The flaw is the inconsistent scales (L5, Exercise).`],
-      [`The questions are too concise`, `Being concise is good (Be Concise). The real problem is that the scale changes from 4 to 6 options and its direction is reversed (L5, Exercise).`],
+      [`It is a double-barrel question`, `A double-barrel question asks two things at once, but each of these asks only about enjoyment. The flaw is the inconsistent scales (L9, Exercise).`],
+      [`The questions are too concise`, `Being concise is good (Be Concise). The real problem is that the scale changes from 4 to 6 options and its direction is reversed (L9, Exercise).`],
       [`The number of options changes (4 vs 6) and the scale direction is reversed`, `Correct. The lecture's exercise flags the changing number of options and the reversed scale.`],
       [`It is missing an "Other: ____" option`, `"Other" is for lists of categories, not numeric scales.`]
     ], a: 2 },
@@ -280,11 +280,11 @@ EXTRA.hci = {
       [`False`, `The lecture lists exactly this example under Be Clear.`]
     ], a: 0 }
   ],
-  6: [
+  10: [
     { q: `Joyner says interviews should focus on the "6 Ws". Which of these is <b>NOT</b> one of them?`, o: [
-      [`Where`, `"Where" is one of Joyner's 6 Ws (who, what, where, when, why, how), so it is not the odd one out (L6, Interviews).`],
-      [`How`, `"How" is in the 6 Ws list (who, what, where, when, why, how), even though it does not start with W (L6, Interviews).`],
-      [`Why`, `"Why" is one of the 6 Ws, and interviews are valued for exactly these open "why" questions (L6, Interviews).`],
+      [`Where`, `"Where" is one of Joyner's 6 Ws (who, what, where, when, why, how), so it is not the odd one out (L10, Interviews).`],
+      [`How`, `"How" is in the 6 Ws list (who, what, where, when, why, how), even though it does not start with W (L10, Interviews).`],
+      [`Why`, `"Why" is one of the 6 Ws, and interviews are valued for exactly these open "why" questions (L10, Interviews).`],
       [`Which`, `Correct. The 6 Ws are who, what, where, when, why and how. "Which" is not one of them.`]
     ], a: 3 },
     { q: `<b>Scenario:</b> In an interview, a user is asked how many times they used the app last March, and gives an inaccurate number because they don't remember well. This is:`, o: [
@@ -316,8 +316,8 @@ EXTRA.hci = {
       [`You may need to deal with confounding personalities and "presentation of self" issues`, `Correct. These are the issues listed for group interviews.`]
     ], a: 3 },
     { q: `"Joyner says design is very easy if you follow a few principles."`, o: [
-      [`True`, `Joyner says the opposite: "design is very hard". It is Klemmer who adds that pretty good interfaces are easy if you know basic methods and principles (L6, Design: can I?).`],
-      [`False`, `Correct. Joyner's quote is "design is very hard". Klemmer adds that great UIs need creativity and hard work, while pretty good ones are easy with basic methods (L6, Design: can I?).`]
+      [`True`, `Joyner says the opposite: "design is very hard". It is Klemmer who adds that pretty good interfaces are easy if you know basic methods and principles (L10, Design: can I?).`],
+      [`False`, `Correct. Joyner's quote is "design is very hard". Klemmer adds that great UIs need creativity and hard work, while pretty good ones are easy with basic methods (L10, Design: can I?).`]
     ], a: 1 },
     { q: `During a good interview, who should talk most of the time?`, o: [
       [`The user (interviewee)`, `Correct. "Listen well": the user should talk most of the time.`],
@@ -332,11 +332,11 @@ EXTRA.hci = {
       [`creativity should be turned off to follow the rules`, `The lecture says not to turn off creativity.`]
     ], a: 1 },
     { q: `"Interviews and surveys can be done in sequence in either order, using the results of one to plan the other."`, o: [
-      [`True`, `Correct. The lecture says interviews and surveys can be done in sequence in either order, with the results of one used to plan the other (L6, Interviews).`],
+      [`True`, `Correct. The lecture says interviews and surveys can be done in sequence in either order, with the results of one used to plan the other (L10, Interviews).`],
       [`False`, `Either order is allowed; each can be used to plan the other.`]
     ], a: 0 }
   ],
-  7: [
+  11: [
     { q: `<b>Scenario:</b> After good user research, a team sketches only three small variations of the same hamburger-menu layout on day one and commits to one. Which of Joyner's mistakes is this?`, o: [
       [`Producing too many prototypes`, `Joyner wants as many alternatives as possible; the team made too few.`],
       [`Distancing themselves from existing solutions`, `Distancing yourself is the advice, not the mistake.`],
@@ -350,7 +350,7 @@ EXTRA.hci = {
       [`Distance yourself from existing solutions, at least during brainstorming`, `Correct. This is the lecture's advice when enhancing an existing system.`]
     ], a: 3 },
     { q: `"According to Joyner, the biggest mistake a designer can make is settling on a single design idea too early."`, o: [
-      [`True`, `Settling on one idea too early is Joyner's second biggest mistake. The biggest is jumping to design without understanding the users or the task (L7, Biggest mistakes).`],
+      [`True`, `Settling on one idea too early is Joyner's second biggest mistake. The biggest is jumping to design without understanding the users or the task (L11, Biggest mistakes).`],
       [`False`, `Correct. The biggest mistake is jumping to design without understanding the users or the task; settling on one idea too early is the <b>second</b> biggest.`]
     ], a: 1 },
     { q: `According to the lecture, the final design is often:`, o: [
@@ -392,7 +392,7 @@ EXTRA.hci = {
       [`False`, `It is its own phase (Need finding → Design alternatives → Prototyping → Evaluation).`]
     ], a: 0 }
   ],
-  8: [
+  12: [
     { q: `What does <b>fidelity</b> mean for a prototype?`, o: [
       [`The number of screens in the prototype`, `Fidelity is about look and feel, not screen count.`],
       [`How closely a design matches the look and feel of the final product`, `Correct. This is the lecture's definition of fidelity.`],
@@ -416,26 +416,26 @@ EXTRA.hci = {
       [`Handshake process`, `Correct. In the handshake process, design and development run in parallel with frequent sync points.`]
     ], a: 3 },
     { q: `When brainstorming, how many ideas does the lecture tell you to aim for?`, o: [
-      [`20`, `Correct. The brainstorming tips say to aim for 20 ideas, each a few words or a sentence, without evaluating or excluding any (L8, Brainstorming).`],
+      [`20`, `Correct. The brainstorming tips say to aim for 20 ideas, each a few words or a sentence, without evaluating or excluding any (L12, Brainstorming).`],
       [`5`, `5 is the minimum number of sketch versions per screen when wireframing.`],
       [`3`, `3 is the number of colors in a simple palette (next lecture), not ideas.`],
       [`More than 100`, `More than 100 is the number of prototypes for the first Microsoft mouse.`]
     ], a: 0 },
     { q: `"Since buttons catch the eye, all commands in a form should be displayed as buttons."`, o: [
-      [`True`, `The guideline has a limit: important commands should be buttons, not links, but you should not display all commands as buttons (L8, Form design).`],
+      [`True`, `The guideline has a limit: important commands should be buttons, not links, but you should not display all commands as buttons (L12, Form design).`],
       [`False`, `Correct. Important commands should be buttons, not links, but do <b>not</b> display all commands as buttons.`]
     ], a: 1 },
     { q: `When wireframing with pen and paper, how many versions of each screen should you sketch at least?`, o: [
       [`1`, `One version means settling on a single idea.`],
       [`5`, `Correct. The process says to sketch at least 5 versions per screen.`],
       [`20`, `20 is the number of ideas to aim for when brainstorming.`],
-      [`3`, `3 is too few: the wireframing process says to sketch at least 5 versions of each screen with pen and paper (L8, Wireframing process).`]
+      [`3`, `3 is too few: the wireframing process says to sketch at least 5 versions of each screen with pen and paper (L12, Wireframing process).`]
     ], a: 1 },
     { q: `<b>Scenario:</b> A pricing page shows "Go Pro" and "Free Trial" as two identical grey buttons side by side. Which form guideline does it violate?`, o: [
-      [`Error messages sit next to the field`, `There is no error here, so the error-message guideline does not apply. The flaw is two calls-to-action looking identical (L8, Form design).`],
-      [`Confirm a successful submission with a confirmation page`, `Confirmation pages follow a successful submission, and nothing is submitted here. Identical buttons break the primary vs secondary CTA rule (L8, Form design).`],
+      [`Error messages sit next to the field`, `There is no error here, so the error-message guideline does not apply. The flaw is two calls-to-action looking identical (L12, Form design).`],
+      [`Confirm a successful submission with a confirmation page`, `Confirmation pages follow a successful submission, and nothing is submitted here. Identical buttons break the primary vs secondary CTA rule (L12, Form design).`],
       [`Make a clear distinction between primary and secondary calls-to-action`, `Correct. The lecture's example is "Go Pro" standing out over "Free Trial".`],
-      [`Remove repetitive actions`, `Removing repetitive actions means remembering preferences, and nothing repeats here. Identical buttons break the primary vs secondary CTA rule (L8, Form design).`]
+      [`Remove repetitive actions`, `Removing repetitive actions means remembering preferences, and nothing repeats here. Identical buttons break the primary vs secondary CTA rule (L12, Form design).`]
     ], a: 2 },
     { q: `<b>Scenario:</b> An online store lets users reach a product through many different category choices. Which element should show users where they are?`, o: [
       [`A progress bar`, `Progress bars are for a predefined unique path, showing what is left.`],
@@ -444,11 +444,11 @@ EXTRA.hci = {
       [`Breadcrumbs`, `Correct. Breadcrumbs show where users are when there are multiple choices.`]
     ], a: 3 },
     { q: `"At the first pen-and-paper wireframing stage, you should make sure lines are straight and spacing and alignment are correct."`, o: [
-      [`True`, `At this stage the goal is to move the idea from your mind to paper quickly, so the lecture says to ignore straight lines, spacing and alignment (L8, Wireframing process).`],
+      [`True`, `At this stage the goal is to move the idea from your mind to paper quickly, so the lecture says to ignore straight lines, spacing and alignment (L12, Wireframing process).`],
       [`False`, `Correct. The goal is to move the idea from your mind to paper quickly, so ignore straight lines, spacing and alignment.`]
     ], a: 1 }
   ],
-  9: [
+  13: [
     { q: `<b>Scenario:</b> A dialog asks "Delete this file?" with a "Delete" button and a second button that dismisses the dialog. What should the second button say?`, o: [
       [`Cancel`, `Correct. With two buttons (an action and one to dismiss), use "Cancel", not "Close".`],
       [`Close`, `"Close" is used only when there is a single button.`],
@@ -466,10 +466,10 @@ EXTRA.hci = {
       [`False`, `Correct. Alert messages should be consistent across the whole site; do not change color, style or placement.`]
     ], a: 1 },
     { q: `Which is <b>NOT</b> a guideline for error messages?`, o: [
-      [`Describe briefly why it happened, under the title`, `Describing briefly why the error happened, under the title, is the second error-message guideline, so it is not the answer (L9, Forms).`],
-      [`When possible, link to complete the task or return to the previous state`, `Linking to complete the task or return to the previous state is a listed guideline, so it is not the answer (L9, Forms).`],
+      [`Describe briefly why it happened, under the title`, `Describing briefly why the error happened, under the title, is the second error-message guideline, so it is not the answer (L13, Forms).`],
+      [`When possible, link to complete the task or return to the previous state`, `Linking to complete the task or return to the previous state is a listed guideline, so it is not the answer (L13, Forms).`],
       [`Hide the cause and show only a vague "Something went wrong"`, `Correct. The guidelines say to state the problem in the title and describe why it happened.`],
-      [`Recommend the next course of action`, `Recommending the next course of action is the last error-message guideline, so it is not the answer (L9, Forms).`]
+      [`Recommend the next course of action`, `Recommending the next course of action is the last error-message guideline, so it is not the answer (L13, Forms).`]
     ], a: 2 },
     { q: `<b>Scenario:</b> A form asks for Last name, then Date of birth, then First name, then Middle name. Which layout guideline does it violate?`, o: [
       [`Put the most important information above the fold`, `The problem is the order of the fields, not whether they are visible.`],
@@ -494,7 +494,7 @@ EXTRA.hci = {
       [`Making every item a button`, `Not all commands should be buttons, and buttons do not group information.`]
     ], a: 1 },
     { q: `In the navigation guidelines, a call-to-action (CTA) is:`, o: [
-      [`A link to the Home page`, `Links to Home and categories on every page are a separate guideline. A CTA is an eye-catching button for the most common next step (L9, Navigation).`],
+      [`A link to the Home page`, `Links to Home and categories on every page are a separate guideline. A CTA is an eye-catching button for the most common next step (L13, Navigation).`],
       [`A breadcrumb trail`, `Breadcrumbs show where users are, not what to do next.`],
       [`An eye-catching button for the most common next step`, `Correct. A clear CTA tells users what to do next.`],
       [`An alert message`, `Alert messages inform users; they are not the CTA.`]

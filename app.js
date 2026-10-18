@@ -45,6 +45,24 @@ function start() {
     set(k, v) { cache.set(k, v); try { localStorage.setItem('sd:' + k, JSON.stringify(v)); } catch (e) {} }
   };
   window.addEventListener('storage', e => { if (e.key == null) cache.clear(); else if (e.key.startsWith('sd:')) cache.delete(e.key.slice(3)); window.dispatchEvent(new Event('sd-store')); });
+  // HCI was renumbered (this term's lectures 1–4 came first, last year's 1–9 became 5–13): move saved HCI progress with it, once
+  (function moveHciProgress() {
+    try {
+      if (localStorage.getItem('sd:hcirenum') === '1') return;
+      const sh = n => n + 4, id = s => typeof s === 'string' ? s.replace(/^(x?)(\d+)-/, (m, x, n) => x + sh(+n) + '-') : s;
+      const get = k => { const v = localStorage.getItem('sd:' + k); return v == null ? null : JSON.parse(v); }, put = (k, v) => localStorage.setItem('sd:' + k, JSON.stringify(v));
+      ['known', 'miss', 'fixed'].forEach(k => { const v = get(k + ':hci'); if (Array.isArray(v)) put(k + ':hci', v.map(id)); });
+      ['srs', 'stats'].forEach(k => { const v = get(k + ':hci'); if (v && typeof v === 'object') put(k + ':hci', Object.fromEntries(Object.entries(v).map(([a, b]) => [id(a), b]))); });
+      const read = get('read:hci'); if (Array.isArray(read)) put('read:hci', read.map(n => typeof n === 'number' ? sh(n) : n));
+      const ll = get('lastlec:hci'); if (typeof ll === 'number') put('lastlec:hci', sh(ll));
+      ['nav2', 'last'].forEach(k => { const v = get(k); if (v && v.course === 'hci' && typeof v.lec === 'number') put(k, Object.assign({}, v, { lec: sh(v.lec) })); });
+      // per-lecture keys (reading position, book position): highest lecture first so nothing is overwritten
+      const keys = []; for (let i = 0; i < localStorage.length; i++) keys.push(localStorage.key(i));
+      keys.map(k => /^(sd:(?:pos|posf):hci:|sd:bookpos:hci:L)(\d+)$/.exec(k)).filter(Boolean).sort((a, b) => b[2] - a[2])
+        .forEach(m => { const v = localStorage.getItem(m[0]); localStorage.removeItem(m[0]); localStorage.setItem(m[1] + sh(+m[2]), v); });
+      localStorage.setItem('sd:hcirenum', '1');
+    } catch (e) {}
+  })();
   // state saved under a key: written only when it changes (not on mount), and re-read if the key changes
   function usePersist(key, init) {
     const [s, setS] = useState(() => ({ key, v: store.get(key, init) }));
