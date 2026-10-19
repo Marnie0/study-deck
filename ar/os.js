@@ -788,7 +788,10 @@ AR.os = {
       "الـ memory unit بتشوف بس سلسلة addresses + read requests، أو address + data + write requests. الوصول للـ register بياخد CPU clock واحدة (أو أقل)؛ الـ main memory ممكن تاخد cycles كتير؛ والـ <b>cache</b> قاعد بين الـ main memory والـ CPU registers.",
       "الـ <b>protection</b> بتاع الـ memory لازم عشان الشغل يبقى صح.",
       "زوج <b>base وlimit registers</b> بيحدد الـ logical address space بتاع الـ process. الـ CPU بيتشيك على كل memory access في الـ user-mode: يبقى legal لو <b>base ≤ address &lt; base + limit</b>، غير كده <b>trap</b> للـ OS (addressing error). مثال الرسمة: base 300040، limit 120900 → الـ range الـ legal هو 300040 … 420939."
-     ]
+     ],
+     "figH": {
+      "os-base-limit": "الـ base والـ limit registers: بيتشيكوا على كل address"
+     }
     },
     {
      "h": "الـ Address binding؛ الـ logical مقابل الـ physical addresses؛ الـ MMU",
@@ -800,7 +803,11 @@ AR.os = {
       "الـ <b>Logical address space</b> = مجموعة كل الـ logical addresses اللي البرنامج بيطلّعها؛ الـ <b>physical address space</b> = مجموعة كل الـ physical addresses اللي بتقابلها.",
       "الـ <b>MMU (Memory-Management Unit)</b>: hardware بيعمل mapping من virtual لـ physical addresses وقت التشغيل. أبسط طريقة: الـ base register بيبقى <b>relocation register</b>، وقيمته بتتجمع على كل address الـ user process بتبعته للـ memory (زي relocation 14000 + logical 346 → physical 14346). برنامج الـ user بيتعامل مع logical addresses بس وعمره ما بيشوف الـ physical addresses الحقيقية.",
       "الـ <b>Dynamic loading</b> (slide 10): الـ routine مابتتحمّلش غير لما تتنادى؛ استخدام أحسن لمساحة الـ memory (الـ routine اللي مش مستخدمة عمرها ما بتتحمّل)؛ كل الـ routines متخزنة على الـ disk بـ relocatable load format؛ مفيد للكود الكبير اللي نادرًا ما بيستخدم (error handling). مش محتاج دعم خاص من الـ OS: بيتعمل من خلال تصميم البرنامج، وإن كان الـ OS ممكن يوفر libraries."
-     ]
+     ],
+     "figH": {
+      "os-binding-steps": "من الـ source program للـ memory image، والـ 3 أوقات بتاعة الـ binding",
+      "os-mmu-reloc": "الـ MMU بيجمع الـ relocation register على كل logical address"
+     }
     },
     {
      "h": "الـ Swapping",
@@ -810,7 +817,10 @@ AR.os = {
       "الـ <b>Roll out, roll in</b>: نوع من الـ swapping للـ priority-based scheduling؛ الـ process اللي الـ priority بتاعها أوطى بتتعملها swap out عشان اللي أعلى تتحمّل وتشتغل.",
       "الجزء الأكبر من وقت الـ swap هو الـ <b>transfer time</b>، وبيتناسب طرديًا مع كمية الـ memory اللي بتتعملها swap. السيستم بيحتفظ بـ ready queue للـ processes اللي الـ memory images بتاعتها على الـ disk.",
       "لو الـ process الجاية مش في الـ memory، الـ context switch لازم يعمل swap out لـ process وswap in للتانية: 100 MB بسرعة 50 MB/s = <b>2000 ms</b> out + 2000 ms in = <b>4 s</b> إجمالي جزء الـ swap."
-     ]
+     ],
+     "figH": {
+      "os-swapping": "الـ Swapping: الـ roll out والـ roll in، ووقت الـ swap"
+     }
     },
     {
      "h": "الـ Contiguous allocation ومشكلة الـ dynamic storage-allocation",
@@ -821,7 +831,10 @@ AR.os = {
       "الـ <b>First-fit</b>: ادّي <b>أول</b> hole كبير كفاية. الـ <b>Best-fit</b>: <b>أصغر</b> hole كبير كفاية (لازم تدوّر في اللستة كلها إلا لو مترتبة بالحجم)، وده بيطلّع أصغر hole متبقي. الـ <b>Worst-fit</b>: <b>أكبر</b> hole (برضه بيدوّر في اللستة كلها)، وده بيطلّع أكبر hole متبقي.",
       "الـ First-fit والـ best-fit أحسن من الـ worst-fit في السرعة واستخدام الـ storage.",
       "الطريقة: امشي على الـ processes <b>بالترتيب</b>. بعد كل placement الـ hole بيصغر (زي 500 − 212 = 288 K) والباقي ده ممكن ياخد processes بعدين."
-     ]
+     ],
+     "figH": {
+      "os-fit-sim": "الـ First-fit والـ best-fit والـ worst-fit على partitions المثال"
+     }
     },
     {
      "h": "الـ Fragmentation",
@@ -830,7 +843,10 @@ AR.os = {
       "الـ <b>Internal fragmentation</b>: الـ memory المتخصصة ممكن تبقى أكبر شوية من المطلوب؛ الفرق ده memory <b>جوة الـ partition بس مش مستخدمة</b> (بيحصل مع الـ fixed blocks / paging).",
       "بنقلل الـ external fragmentation بالـ <b>compaction</b>: نحرّك محتويات الـ memory عشان نجمّع كل الـ free memory في block واحد كبير. ممكن <b>بس لو الـ relocation dynamic</b> وبيحصل وقت الـ execution.",
       "مشكلة الـ I/O وقت الـ compaction: نثبّت (latch) الـ job في الـ memory وهي بتعمل I/O، أو نعمل I/O بس في buffers الـ OS. والـ backing store عنده نفس مشاكل الـ fragmentation."
-     ]
+     ],
+     "figH": {
+      "os-ext-frag": "الـ External fragmentation والـ compaction"
+     }
     },
     {
      "h": "الـ Segmentation",
@@ -842,7 +858,10 @@ AR.os = {
       "الـ Hardware: لو <b>offset d &lt; limit</b>، يبقى physical = base + d؛ غير كده <b>trap: addressing error</b>.",
       "الـ Protection: كل entry فيها validation bit (0 = segment مش legal) وصلاحيات read/write/execute؛ ومشاركة الكود بتحصل على مستوى الـ segment. وبما إن الـ segments أطوالها مختلفة، الـ allocation بيبقى dynamic storage-allocation problem (external fragmentation).",
       "مثال الـ slide (limit, base): seg0 (1000, 1400)، seg1 (400, 6300)، seg2 (400, 4300)، seg3 (1100, 3200)، seg4 (1000, 4700). الـ byte 53 من seg 2 → 4300 + 53 = <b>4353</b>؛ الـ byte 852 من seg 3 → 3200 + 852 = <b>4052</b>؛ الـ byte 1222 من seg 0 → 1222 ≥ 1000 → <b>trap</b>."
-     ]
+     ],
+     "figH": {
+      "os-segment-xlate": "الـ Segmentation: من (segment, offset) لـ physical address"
+     }
     },
     {
      "h": "الـ Paging والـ address translation",
@@ -854,7 +873,11 @@ AR.os = {
       "رسمة الـ Paging model: page table 0→1، 1→4، 2→3، 3→7 (page 0 في frame 1، page 1 في frame 4، page 2 في frame 3، page 3 في frame 7).",
       "<b>مثال internal fragmentation</b>: page = 2,048 B، process = 72,766 B → 35 pages + 1,086 B → 36 frames، الـ internal fragmentation = 2,048 − 1,086 = <b>962 B</b>. أسوأ حالة = 1 frame − 1 byte؛ وفي المتوسط ½ frame. الـ pages الصغيرة معناها fragmentation أقل بس page-table entries أكتر؛ وأحجام الـ pages بتكبر مع الوقت (Solaris بيدعم 8 KB و4 MB).",
       "نظرة الـ process والـ physical memory بقوا مختلفين جدًا، والـ process تقدر توصل بس للـ memory بتاعتها."
-     ]
+     ],
+     "figH": {
+      "os-paging-model": "الـ Paging model: الـ pages والـ page table والـ frames",
+      "os-page-frag": "الـ Internal fragmentation في الـ paging: آخر frame"
+     }
     },
     {
      "h": "الـ Paging مقابل الـ segmentation"
@@ -1031,7 +1054,10 @@ AR.os = {
       "الـ <b>Virtual memory</b> = فصل الـ logical memory بتاعة الـ user عن الـ physical memory. جزء بس من البرنامج محتاج يبقى في الـ memory؛ الـ logical address space ممكن يبقى <b>أكبر بكتير من الـ physical address space</b>؛ الـ address spaces ممكن تتشارك بين كذا process؛ إنشاء الـ process بيبقى أكفأ؛ برامج أكتر تشتغل concurrently؛ وI/O أقل للتحميل أو الـ swap.",
       "الـ <b>Virtual address space</b>: النظرة المنطقية لإزاي الـ process متخزنة، غالبًا بتبدأ من 0 وcontiguous؛ والـ physical memory متنظمة في page frames والـ MMU بيعمل mapping من logical لـ physical.",
       "بيتعمل عن طريق <b>demand paging</b> أو <b>demand segmentation</b>."
-     ]
+     ],
+     "figH": {
+      "os-vm-space": "الـ virtual memory: الجزء المحتاجينه بس من البرنامج هو اللي في الـ memory"
+     }
     },
     {
      "h": "الـ Demand paging والـ valid–invalid bit",
@@ -1041,7 +1067,10 @@ AR.os = {
       "الـ <b>Lazy swapper</b>: عمره ما بيعمل swap لـ page للـ memory إلا لو هتتحتاج. والـ swapper اللي بيتعامل مع pages اسمه <b>pager</b>.",
       "لو الـ pages المطلوبة موجودة أصلًا في الـ memory، مفيش فرق عن الـ paging العادي؛ غير كده لازم الـ page تتكشف وتتحمّل من غير ما سلوك البرنامج يتغير أو نحتاج نغير الكود. وده محتاج وظايف جديدة في الـ MMU.",
       "الـ <b>Valid–invalid bit</b> لكل page-table entry: <b>v</b> = في الـ memory (memory resident)، <b>i</b> = مش في الـ memory. في الأول كل الـ entries بتبقى <b>i</b>. لو الـ MMU لقى <b>i</b> وقت الترجمة، بيحصل <b>page fault</b>."
-     ]
+     ],
+     "figH": {
+      "os-demand-paging": "جرّب الـ demand paging: اعمل reference للـ pages وشوف الـ valid–invalid bits"
+     }
     },
     {
      "h": "التعامل مع الـ Page fault",
@@ -1052,7 +1081,10 @@ AR.os = {
       "3) اعمل swap للـ page جوة الـ frame عن طريق disk operation متعملها schedule.",
       "4) عدّل الـ tables عشان توضح إن الـ page بقت في الـ memory: <b>خلّي الـ validation bit = v</b>.",
       "5) <b>اعمل restart للـ instruction</b> اللي عملت الـ page fault."
-     ]
+     ],
+     "figH": {
+      "os-page-fault": "التعامل مع الـ page fault خطوة بخطوة"
+     }
     },
     {
      "h": "مراحل الـ demand paging (أسوأ حالة)",
@@ -1068,7 +1100,10 @@ AR.os = {
       "9. صحّح الـ page table (والـ tables التانية) عشان توضح إن الـ page بقت في الـ memory.",
       "10. استنى لحد ما الـ CPU يتدّي للـ process دي تاني.",
       "11. رجّع الـ user registers والـ process state والـ page table الجديدة، وبعدين كمّل الـ instruction اللي اتقاطعت."
-     ]
+     ],
+     "figH": {
+      "os-fault-stages": "الـ 11 مرحلة بتوع الـ page fault، ومين ماسك الـ CPU"
+     }
     },
     {
      "h": "الـ Page replacement",
@@ -1078,7 +1113,10 @@ AR.os = {
       "لاحظ إن دلوقتي ممكن يبقى فيه <b>2 page transfers</b> لكل page fault (out + in).",
       "الـ <b>Frame-allocation</b> algorithm بيقرر كل process تاخد كام frame وأنهي frames تتبدل؛ والـ <b>page-replacement</b> algorithm عايز أقل page-fault rate في أول access وفي الـ re-access.",
       "بنقيّم بإننا نشغّل الـ algorithm على <b>reference string</b> (أرقام pages بس) ونعد الـ faults. <b>الـ access المتكرر لـ page موجودة أصلًا في الـ memory مش fault.</b> النتايج بتعتمد على عدد الـ frames. وكل مرة بنملا frame فاضي في الأول بتتحسب fault برضه."
-     ]
+     ],
+     "figH": {
+      "os-replace-basic": "الـ page replacement الأساسي: page transfer واحد أو اتنين لكل fault"
+     }
     },
     {
      "h": "الـ FIFO والـ Optimal والـ LRU على string المحاضرة (3 frames)",
@@ -1088,19 +1126,29 @@ AR.os = {
       "الـ <b>Optimal (OPT)</b>: استبدل الـ page اللي <b>مش هتتستخدم لأطول فترة جاية</b> → <b>9 faults</b> (أقل حاجة ممكنة). ماتقدرش تعرف المستقبل، فالـ OPT بيستخدم عشان <b>نقيس</b> الـ algorithms التانية كويسة قد إيه.",
       "الـ <b>LRU (Least Recently Used)</b>: استخدم الماضي: استبدل الـ page اللي <b>ماتستخدمتش من أطول وقت</b> → <b>12 faults</b>: أحسن من الـ FIFO، وأوحش من الـ OPT؛ algorithm كويس عمومًا وبيستخدم كتير.",
       "الـ <b>Belady's anomaly</b> (FIFO): مع <code>1,2,3,4,1,2,5,1,2,3,4,5</code>، 3 frames بيدّوا 9 faults بس 4 frames بيدّوا 10. <b>زيادة الـ frames ممكن تعمل page faults أكتر.</b> الـ LRU والـ OPT دول <b>stack algorithms</b> وعمرهم ما بيعانوا منها."
-     ]
+     ],
+     "figH": {
+      "os-replace-sim": "محاكي الـ page replacement: الـ FIFO والـ Optimal والـ LRU",
+      "os-belady": "الـ Belady's anomaly: frames أكتر و faults أكتر (في الـ FIFO بس)"
+     }
     },
     {
      "h": "جدول الـ Optimal (string المحاضرة، 3 frames)",
      "pts": [
       "الـ <b>Optimal</b>: 9 faults. عند ref 2 (الـ reference الرابع)، الـ page 7 عمرها ما هتتستخدم تاني، فاستبدل 7. عند ref 3، من بين 2، 0، 1 الـ page اللي هتتستخدم أبعد حاجة في المستقبل هي 1، فاستبدل 1. عند ref 4، من بين 2، 0، 3 الأبعد هي 0، فاستبدل 0."
-     ]
+     ],
+     "figH": {
+      "os-opt-why": "الـ Optimal بيختار كل victim ليه: إمتى كل page هتتستخدم تاني"
+     }
     },
     {
      "h": "جدول الـ LRU (string المحاضرة، 3 frames)",
      "pts": [
       "الـ <b>LRU</b>: 12 faults. عند ref 4 (الـ reference التامن)، الـ pages اللي في الـ memory هي 2، 0، 3 وآخر استخدام ليهم: 2 في position 4، 0 في 7، 3 في 6، فاستبدل 2 (الـ least recently used)."
-     ]
+     ],
+     "figH": {
+      "os-lru-why": "الـ LRU بيختار كل victim ليه: آخر مرة كل page اتستخدمت"
+     }
     },
     {
      "h": "تنفيذ الـ LRU والـ LRU approximations",
@@ -1110,7 +1158,12 @@ AR.os = {
       "الـ <b>Reference bit</b>: كل page ليها bit، في الأول 0، بيبقى 1 لما تتعملها reference؛ استبدل أي page الـ bit بتاعها 0 (لو موجودة)، بس مانعرفش الترتيب.",
       "الـ <b>Second-chance (clock) algorithm</b>: FIFO مع الـ hardware reference bit. لو الـ page اللي هتتبدل الـ bit بتاعها 0، استبدلها؛ لو 1، خليه 0، سيب الـ page في الـ memory وشوف الـ page اللي بعدها بنفس القواعد.",
       "الـ <b>Counting algorithms</b> بتعد الـ references: الـ <b>LFU</b> (Least Frequently Used) بيستبدل الـ page اللي ليها <b>أصغر count</b>؛ الـ <b>MFU</b> (Most Frequently Used) بيستبدل الـ page اللي ليها أكبر count، على أساس إن الـ page اللي ليها أصغر count غالبًا لسه داخلة ولسه ماتستخدمتش."
-     ]
+     ],
+     "figH": {
+      "os-lru-impl": "الـ LRU بطريقتين: بالـ counters وبالـ stack",
+      "os-second-chance": "الـ reference bit والـ second-chance (clock) algorithm",
+      "os-lfu-mfu": "الـ counting algorithms: الـ LFU والـ MFU"
+     }
     }
    ],
    "cards": [
@@ -1282,7 +1335,10 @@ AR.os = {
       "<b>2. Hold and wait</b>: process ماسكة resource واحد على الأقل ومستنية تاخد resources زيادة ماسكاها processes تانية.",
       "<b>3. No preemption</b>: الـ resource مايتسابش غير بمزاج الـ process اللي ماسكاه، بعد ما تخلّص الـ task بتاعتها.",
       "<b>4. Circular wait</b>: فيه مجموعة {P0، P1، …، Pn} من الـ processes المستنية بحيث P0 مستنية resource ماسكاه P1، وP1 مستنية P2، …، وPn−1 مستنية Pn، وPn مستنية P0."
-     ]
+     ],
+     "figH": {
+      "os-dl-conditions": "الـ 4 necessary conditions واحدة واحدة، على 3 processes"
+     }
     },
     {
      "h": "الـ Resource-allocation graph (RAG)",
@@ -1293,7 +1349,10 @@ AR.os = {
       "Graph فيه deadlock: نفس اللي فات، وزيادة P3 → R2. فيه two cycles: P1 → R1 → P2 → R3 → P3 → R2 → P1 وP2 → R3 → P3 → R2 → P2، والـ P1 وP2 وP3 كلهم في deadlock.",
       "Graph فيه cycle بس <b>مفيش deadlock</b>: P1 → R1 → P3 → R2 → P1، بس الـ instance التاني من R1 ماسكاه P2 والتاني من R2 ماسكاه P4. P2 وP4 يقدروا يسيبوا، فالـ cycle بتتكسر.",
       "<b>حقائق أساسية</b>: مفيش cycle → <b>مفيش deadlock</b>. فيه cycle و<b>instance واحد بس لكل resource type → deadlock</b>. فيه cycle وكذا instance لكل نوع → <b>احتمال</b> deadlock."
-     ]
+     ],
+     "figH": {
+      "os-dl-rag": "الـ 3 resource-allocation graphs اللي في الـ notes: من غير deadlock، وفيه deadlock، وفيه cycle من غير deadlock"
+     }
     },
     {
      "h": "طرق التعامل مع الـ deadlocks والـ deadlock prevention",
@@ -1302,7 +1361,10 @@ AR.os = {
       "نسيب السيستم يدخل deadlock state وبعدين <b>نعمل recover</b> (detection + recovery).",
       "<b>نتجاهل المشكلة</b> ونعمل نفسنا إن الـ deadlocks عمرها ما بتحصل: ده اللي أغلب الـ operating systems بتعمله، ومنهم UNIX.",
       "الـ <b>Prevention</b> بيقيّد طرق عمل الـ requests، عشان شرط واحد على الأقل من الأربعة مايتحققش."
-     ]
+     ],
+     "figH": {
+      "os-dl-ordering": "منع الـ circular wait: اطلب الـ resources بترتيب تصاعدي"
+     }
     },
     {
      "h": "الـ Deadlock avoidance والـ safe state",
@@ -1313,7 +1375,10 @@ AR.os = {
       "<b>Safe → مفيش deadlocks. Unsafe → احتمال deadlock.</b> الـ Avoidance = نضمن إن السيستم عمره ما يدخل unsafe state. (الـ deadlock states جزء من الـ unsafe states.)",
       "instance واحد لكل resource type → استخدم <b>resource-allocation graph</b> (بـ claim edges). كذا instance → استخدم الـ <b>banker's algorithm</b>.",
       "الـ <b>Banker's algorithm</b>: كذا instance؛ كل process لازم تعلن من الأول أقصى استخدام ليها؛ الـ process اللي بتطلب ممكن تضطر تستنى؛ والـ process اللي بتاخد كل الـ resources بتاعتها لازم ترجّعها في وقت محدود."
-     ]
+     ],
+     "figH": {
+      "os-dl-safe": "الـ safe والـ unsafe والـ deadlock states"
+     }
     },
     {
      "h": "الـ data structures والـ algorithms بتوع الـ Banker's",
@@ -1334,7 +1399,11 @@ AR.os = {
       "اللفة التانية: <b>P0</b> (7,4,3) ✓ → (7,4,5) + (0,1,0) = (7,5,5). <b>P2</b> (6,0,0) ✓ → (7,5,5) + (3,0,2) = (10,5,7) = الإجماليات ✓.",
       "كل الـ Finish = true → <b>SAFE</b>، والـ sequence هي <b>&lt;P1, P3, P4, P0, P2&gt;</b> (فيه ترتيبات safe تانية، زي &lt;P1, P3, P0, P2, P4&gt;).",
       "تمرين زيادة (الكتاب): لو P1 طلبت دلوقتي (1,0,2): الـ Request ≤ Need (1,2,2) ✓ و≤ Available (3,3,2) ✓. نفترض: Available = (2,3,0)، Alloc P1 = (3,0,2)، Need P1 = (0,2,0). الـ Safety لسه بتلاقي &lt;P1, P3, P4, P0, P2&gt;، فالـ request <b>بيتقبل (granted)</b>."
-     ]
+     ],
+     "figH": {
+      "os-dl-bankers": "الـ safety algorithm بتاع الـ Banker's على الـ snapshot بتاع المحاضرة، خطوة خطوة",
+      "os-dl-request": "جرّب الـ resource-request algorithm: اختار process و request"
+     }
     },
     {
      "h": "الـ Deadlock detection",
@@ -1346,7 +1415,10 @@ AR.os = {
       "مثال: A = 7، B = 2، C = 6؛ Available (0,0,0)؛ Allocation P0 010، P1 200، P2 303، P3 211، P4 002؛ Request P0 000، P1 202، P2 000، P3 100، P4 002. الـ Work: P0 → (0,1,0)، P2 → (3,1,3)، P3 → (5,2,4)، P1 → (7,2,4)، P4 → (7,2,6) → الـ sequence <b>&lt;P0, P2, P3, P1, P4&gt;</b>، مفيش deadlock.",
       "لو P2 طلبت دلوقتي C كمان واحد (Request P2 = 001): P0 تقدر تخلص (Work = 0,1,0)، بس مفيش أي request تاني ينفع يتلبى. <b>فيه deadlock، فيه P1 وP2 وP3 وP4.</b>",
       "إمتى ونشغّل الـ detection كل قد إيه بيعتمد على الـ deadlock بيحصل قد إيه، وكام process لازم تتعملها roll back (واحدة لكل disjoint cycle). لو شغّلناه بشكل عشوائي ممكن يلاقي cycles كتير ومايقولش أنهي process هي اللي \"سببت\" الـ deadlock."
-     ]
+     ],
+     "figH": {
+      "os-dl-detect": "الـ detection algorithm على مثال الـ notes، قبل وبعد ما الـ P2 تطلب C زيادة"
+     }
     },
     {
      "h": "الـ Recovery من الـ deadlock",
@@ -1519,7 +1591,10 @@ AR.os = {
       "الـ <b>Attributes</b>: الـ <b>Name</b> (المعلومة الوحيدة اللي بتتحفظ بشكل البني آدم يقدر يقراه)؛ الـ <b>Identifier</b> (tag/رقم مميز جوة الـ file system)؛ الـ <b>Type</b>؛ الـ <b>Location</b> (pointer لمكان الـ file على الجهاز)؛ الـ <b>Size</b>؛ الـ <b>Protection</b> (مين يقدر يقرا، يكتب، ينفذ)؛ الـ <b>Time، date وuser identification</b> (للـ protection والـ security ومتابعة الاستخدام). والـ extended attributes فيها حاجات زي الـ file checksum.",
       "المعلومات عن الـ files بتتحفظ في الـ <b>directory structure</b>، اللي متخزن على الـ disk.",
       "الـ <b>Operations</b>: create؛ write (عند الـ write pointer)؛ read (عند الـ read pointer)؛ reposition جوة الـ file (<b>seek</b>)؛ delete؛ truncate؛ <b>open(Fi)</b>: دوّر في الـ directory على الـ disk على الـ entry Fi وانقل محتواه للـ memory؛ <b>close(Fi)</b>: انقل محتوى الـ entry Fi اللي في الـ memory ورجّعه للـ directory على الـ disk."
-     ]
+     ],
+     "figH": {
+      "os-file-open": "الـ file operations: الـ open والـ close بينقلوا الـ directory entry بين الـ disk والـ memory إزاي"
+     }
     },
     {
      "h": "الـ Open files، أنواع الـ files وهيكل الـ file",
@@ -1527,7 +1602,10 @@ AR.os = {
       "الداتا المطلوبة عشان ندير الـ open files: الـ <b>open-file table</b> (بتتابع الـ files المفتوحة)؛ الـ <b>file pointer</b> (آخر مكان read/write، لكل process)؛ الـ <b>file-open count</b> (عدد مرات فتح الـ file، عشان الـ entry بتاعه يتشال لما آخر process تقفله)؛ الـ <b>access rights</b> (معلومات الـ access-mode لكل process).",
       "أنواع الـ files حسب الـ extension: executable (exe، com، bin)؛ object (obj، o)؛ source code (c، cc، java، asm…)؛ batch (bat، sh)؛ text (txt، doc)؛ word processor (wp، tex، rtf، doc)؛ library (lib، a، so، dll)؛ print or view (ps، pdf، jpg)؛ archive (arc، zip، tar)؛ multimedia (mpeg، mov، mp3، mp4، avi).",
       "الـ <b>File structure</b>: none (سلسلة words أو bytes)؛ simple record structure (lines، fixed length، variable length)؛ complex structures (formatted document، relocatable load file). اللي بيحدده يا الـ <b>operating system</b> يا الـ <b>program</b>."
-     ]
+     ],
+     "figH": {
+      "os-open-count": "الـ open files: الـ open-file table والـ file-open count والـ file pointer بتاع كل process"
+     }
     },
     {
      "h": "الـ Access methods",
@@ -1535,7 +1613,10 @@ AR.os = {
       "الـ <b>Sequential access</b> (موديل الـ tape: البداية، المكان الحالي، النهاية): read next، write next، reset، مفيش read بعد آخر write (rewrite).",
       "الـ <b>Direct access</b>: الـ file عبارة عن logical records ثابتة الطول: read n، write n، position to n، read next، write next، rewrite n، حيث <b>n = relative block number</b>. الـ relative block numbers بتخلي الـ OS يقرر الـ file يتحط فين.",
       "محاكاة الـ sequential access على direct-access file بـ current position <b>cp</b>: reset → cp = 0؛ read next → read cp؛ cp = cp + 1؛ write next → write cp؛ cp = cp + 1."
-     ]
+     ],
+     "figH": {
+      "os-access-methods": "الـ access methods: الـ sequential والـ direct، والـ sequential متعمل على direct access"
+     }
     },
     {
      "h": "الـ Directory structure",
@@ -1544,7 +1625,10 @@ AR.os = {
       "الـ Operations: search عن file، create file، delete file، list directory، rename file، traverse الـ file system.",
       "أهداف التنظيم: الـ <b>Efficiency</b> (تلاقي الـ file بسرعة)؛ الـ <b>Naming</b> (مريح للـ users: اتنين users ممكن يستخدموا نفس الاسم لـ files مختلفة، والـ file الواحد ممكن يبقى ليه كذا اسم)؛ الـ <b>Grouping</b> (تجميع منطقي حسب الخصائص، زي كل برامج الـ Java، كل الـ games).",
       "الـ <b>Tree-structured</b>: search efficient، إمكانية grouping، current (working) directory (زي <code>cd /spell/mail/prog</code>)؛ path names يا absolute يا relative؛ الـ files والـ subdirectories الجديدة بتتعمل في الـ current directory (<code>rm &lt;file-name&gt;</code>، <code>mkdir &lt;dir-name&gt;</code>؛ زي في /mail: <code>mkdir count</code>). مسح \"mail\" بيمسح الـ subtree كله اللي جذره mail."
-     ]
+     ],
+     "figH": {
+      "os-dir-structures": "أنواع الـ directory structure: الـ single-level والـ two-level والـ tree"
+     }
     },
     {
      "h": "الـ File sharing والـ protection",
@@ -1553,7 +1637,10 @@ AR.os = {
       "الـ <b>User IDs</b> بتعرّف الـ users، فينفع نحط permissions لكل user؛ الـ <b>group IDs</b> بتحط الـ users في groups ليها group access rights. كل file أو directory ليه <b>owner</b> و<b>group</b>.",
       "الـ owner/creator بيتحكم في <b>إيه اللي يتعمل ومين يعمله</b>. أنواع الـ access: <b>read، write، execute، append، delete، list</b>.",
       "في UNIX/Linux: الـ modes هي read، write، execute لـ 3 classes: <b>owner</b>، <b>group</b>، <b>public</b>. مثال: owner 7 = RWX 111، group 6 = RW- 110، public 1 = --X 001 → <code>chmod 761 game</code>. اطلب من الـ manager يعمل group (زي G)، يضيف الـ users، وبعدين ظبط الـ access بتاع الـ file. الـ Windows بيستخدم access-control lists (full control، modify، read &amp; execute، read، write)."
-     ]
+     ],
+     "figH": {
+      "os-chmod": "الـ protection في الـ UNIX/Linux: الـ read والـ write والـ execute للـ owner والـ group والـ public"
+     }
     },
     {
      "h": "تنفيذ الـ File-system: الهيكل وتنفيذ الـ directory",
@@ -1563,7 +1650,10 @@ AR.os = {
       "الـ <b>File control block (FCB)</b>: storage structure فيه معلومات عن الـ file. الـ <b>device driver</b> بيتحكم في الجهاز الـ physical.",
       "الـ <b>Linear list</b> فيها أسامي الـ files مع pointers للـ data blocks: سهلة في البرمجة بس بتاخد وقت (linear search)؛ ممكن نخليها sorted بـ linked list أو B+ tree.",
       "الـ <b>Hash table</b>: linear list + hash structure → بتقلل وقت الـ search في الـ directory؛ فيه <b>collisions</b> (اسمين بيروحوا لنفس المكان بعد الـ hash)؛ كويسة بس لو الـ entries ثابتة الحجم، أو استخدم الـ chained-overflow method."
-     ]
+     ],
+     "figH": {
+      "os-dir-impl": "تنفيذ الـ directory: الـ search في linear list مقارنةً بالـ hash table"
+     }
     },
     {
      "h": "الـ Allocation methods: contiguous، linked، FAT، indexed",
@@ -1573,7 +1663,11 @@ AR.os = {
       "الـ <b>Linked</b>: كل file عبارة عن linked list من blocks متفرقة في أي حتة على الـ disk؛ كل block فيه pointer للي بعده؛ الـ file بيخلص عند null pointer؛ والـ directory فيه البداية والنهاية (زي jeep: start 9، end 25، chain 9 → 16 → 1 → 10 → 25). <b>المميزات</b>: مفيش external fragmentation، مفيش compaction، مش محتاج تعلن الحجم وقت الإنشاء. <b>العيوب</b>: الـ reliability (pointers تضيع أو تبوظ)؛ الوصول لـ block ممكن ياخد I/Os وseeks كتير (مفيش direct access efficient)؛ ومحتاجين مساحة للـ pointers.",
       "الـ <b>FAT (File-Allocation Table)</b>: نوع من الـ linked allocation بيحط الـ links في table في أول الـ volume. الـ directory entry \"test\" فيه start block 217؛ FAT[217] = 618، FAT[618] = 339، FAT[339] = −1 (نهاية الـ file).",
       "الـ <b>Indexed</b>: كل file ليه <b>index block(s)</b> خاص بيه فيه pointers للـ data blocks بتاعته (زي الـ index block 19 بتاع jeep فيه 9، 16، 1، 10، 25، −1…). بيدعم <b>random (direct) access</b> وdynamic access <b>من غير external fragmentation</b>، بس فيه <b>overhead الـ index block</b>. file أقصاه 256 KB بـ blocks حجمها 512-byte → 512 block → محتاجين <b>index block واحد</b> بس. لو طول الـ file مش محدود استخدم <b>linked scheme</b> (اربط blocks الـ index table ببعض، من غير حد للحجم)."
-     ]
+     ],
+     "figH": {
+      "os-fat": "الـ FAT: بنمشي ورا الـ file اللي اسمه test في الـ File-Allocation Table",
+      "os-alloc-methods": "الـ allocation methods: الـ contiguous والـ linked والـ indexed على نفس الـ disk"
+     }
     }
    ],
    "cards": [
@@ -1734,7 +1828,10 @@ AR.os = {
       "أنواع الأجهزة: <b>storage، transmission، human-interface</b>.",
       "الـ <b>Port</b>: نقطة توصيل للجهاز. الـ <b>Bus</b>: shared direct access (<b>PCI</b>، منتشر في الـ PCs والـ servers؛ PCI Express، PCIe؛ والـ <b>expansion bus</b> بيوصّل أجهزة بطيئة نسبيًا زي الـ keyboard والـ serial/parallel ports). الـ <b>Controller (host adapter)</b>: إلكترونيات بتشغّل الـ port أو الـ bus أو الجهاز؛ ساعات بيبقى integrated، وساعات circuit board منفصلة؛ وفيه processor، microcode، private memory، bus controller، إلخ.",
       "رسمة الـ PC bus النموذجية: processor + cache → bridge/memory controller → memory؛ الـ PCI bus بيوصّل الـ graphics controller (monitor)، الـ SCSI controller (disks)، الـ IDE disk controller (disks) والـ expansion bus interface (keyboard، parallel وserial ports)."
-     ]
+     ],
+     "figH": {
+      "os-io-pc-bus": "شكل الـ bus في الـ PC: الـ ports والـ buses والـ controllers بيوصّلوا الـ devices إزاي"
+     }
     },
     {
      "h": "الـ Device registers، الـ addressing والـ polling",
@@ -1744,7 +1841,11 @@ AR.os = {
       "الـ PC I/O port ranges (جزء منها): 000–00F DMA controller؛ 020–021 interrupt controller؛ 040–043 timer؛ 200–20F game controller؛ 2F8–2FF serial port (secondary)؛ 320–32F hard-disk controller؛ 378–37F parallel port؛ 3D0–3DF graphics controller؛ 3F0–3F7 diskette-drive controller؛ 3F8–3FF serial port (primary).",
       "<b>الـ Polling (handshaking) لكل byte</b>: (1) الـ host بيقرا الـ <b>busy bit</b> من الـ status register لحد ما يبقى 0؛ (2) الـ host بيظبط الـ read أو الـ write bit، ولو write بينسخ الداتا في الـ data-out؛ (3) الـ host بيظبط <b>command-ready</b>؛ (4) الـ controller بيظبط الـ busy وينفذ النقل؛ (5) الـ controller بيمسح الـ busy والـ error والـ command-ready لما النقل يخلص.",
       "الخطوة 1 دي <b>busy-wait cycle</b>: معقولة لو الجهاز سريع، بس <b>مش efficient لو الجهاز بطيء</b> (الـ CPU كان ممكن يحوّل لـ tasks تانية)."
-     ]
+     ],
+     "figH": {
+      "os-io-port-map": "الـ addresses بتاعة الـ PC I/O ports: اعرف الـ address ده تبع أنهي device",
+      "os-io-polling": "الـ polling لـ byte واحد: الـ 5 خطوات بتوع الـ handshaking مع device سريع و device بطيء"
+     }
     },
     {
      "h": "الـ Interrupts",
@@ -1754,7 +1855,11 @@ AR.os = {
       "الـ interrupt handler بيحدد السبب، يعمل الـ processing المطلوب، يعمل <b>state restore</b>، وينفذ return-from-interrupt instruction عشان يرجّع الـ CPU لحالته اللي كان فيها.",
       "الـ <b>Interrupt-driven I/O cycle</b>: 1 الـ device driver بيبدأ الـ I/O → 2 الـ I/O controller بيبدأ الـ I/O → 3 الـ input جاهز، الـ output خلص أو حصل error: الـ controller بيطلّع interrupt signal → 4 الـ CPU، وهو بيتشيك بين الـ instructions، بيستلم الـ interrupt وينقل التحكم للـ handler → 5 الـ handler بيعالج الداتا ويرجع من الـ interrupt → 6 الـ CPU بيكمّل الـ task اللي اتقاطعت → 7 (بيلف تاني والـ CPU شغال).",
       "<b>الـ Intel Pentium event-vector table</b>: 0 divide error، 1 debug exception، 2 null interrupt، 3 breakpoint، 4 INTO-detected overflow، 5 bound range exception، 6 invalid opcode، 7 device not available، 8 double fault، 9 coprocessor segment overrun، 10 invalid task state segment، 11 segment not present، 12 stack fault، 13 general protection، 14 <b>page fault</b>، 15 reserved، 16 floating-point error، 17 alignment check، 18 machine check، 19–31 reserved، <b>32–255 maskable interrupts</b>."
-     ]
+     ],
+     "figH": {
+      "os-io-irq-cycle": "الـ interrupt-driven I/O cycle خطوة بخطوة",
+      "os-io-vectors": "الـ Intel Pentium event-vector table: دوّر على رقم vector"
+     }
     },
     {
      "h": "الـ Direct Memory Access (DMA)",
@@ -1762,7 +1867,10 @@ AR.os = {
       "الـ DMA بيتجنب الـ <b>programmed I/O</b> (byte واحد في المرة) في نقل الداتا الكبيرة. محتاج <b>DMA controller</b> و<b>بيعدّي على الـ CPU (bypass)</b> عشان ينقل الداتا مباشرة بين الـ I/O device والـ memory.",
       "الـ OS بيكتب <b>DMA command block</b> في الـ memory: (1) الـ source والـ destination addresses؛ (2) الـ read أو write mode؛ (3) عدد الـ bytes؛ (4) بيكتب مكان الـ command block للـ DMA controller؛ (5) الـ <b>bus mastering</b>: الـ DMA controller بياخد الـ bus من الـ CPU (<b>cycle stealing</b>، بس برضه أكفأ بكتير)؛ (6) لما يخلص، بيعمل <b>interrupt</b> عشان يقول إنه خلص.",
       "<b>مميزات الـ DMA</b>: الـ CPU بيفضى من النقل byte byte ويقدر يعمل شغل تاني؛ <b>interrupt واحد بس لكل block</b> بدل لكل byte؛ الأجهزة السريعة بتنقل بسرعة قريبة من سرعة الـ memory؛ و interrupts وcontext switches أقل بتحسّن الـ performance عمومًا."
-     ]
+     ],
+     "figH": {
+      "os-io-dma-six": "الـ DMA transfer في 6 خطوات: الـ C بتقل لحد 0، وبعدين interrupt واحد"
+     }
     },
     {
      "h": "الـ Application I/O interface؛ الـ block والـ character devices",
@@ -1772,7 +1880,11 @@ AR.os = {
       "الأجهزة بتختلف في أبعاد كتير: <b>character-stream أو block</b>؛ <b>sequential أو random-access</b>؛ <b>synchronous أو asynchronous</b>؛ <b>sharable أو dedicated</b>؛ <b>سرعة التشغيل</b>؛ <b>read-write، read-only أو write-only</b>.",
       "الـ <b>Block devices</b> زي الـ disk drives: الـ commands هي read، write، seek؛ raw I/O، direct I/O أو file-system access؛ والـ memory-mapped file access ممكن (الـ file بيتعمله mapping على الـ virtual memory والـ clusters بتيجي عن طريق الـ demand paging)؛ DMA.",
       "الـ <b>Character devices</b> زي الـ keyboards والـ mice والـ serial ports: الـ commands هي <code>get()</code>، <code>put()</code>؛ وفيه libraries فوقيهم بتسمح بالـ line editing."
-     ]
+     ],
+     "figH": {
+      "os-io-kernel": "الـ Kernel I/O structure: من الـ kernel لحد الـ device",
+      "os-io-block-char": "الـ block devices والـ character devices: اختار device وشوف نوعه والـ commands بتاعته"
+     }
     },
     {
      "h": "الـ Performance",
@@ -1780,7 +1892,10 @@ AR.os = {
       "الـ I/O عامل كبير في performance السيستم: بيطلب من الـ CPU ينفذ كود الـ device-driver، وبيعمل <b>context switches بسبب الـ interrupts</b>، وبيعمل <b>نسخ للداتا (data copying)</b>.",
       "<b>الـ overheads بتاعة خدمة الـ interrupt</b>: لما interrupt يحصل، الـ process الشغالة بتتقاطع و<b>الـ state بتاعتها بتتحفظ في الـ PCB بتاعها</b>؛ وبعدين الـ interrupt service routine بتشتغل عشان تتعامل مع الـ interrupt؛ ولما تخلص، <b>الـ state بتاعة الـ process بترجع</b> وبتكمّل. فالـ overheads فيها تكلفة <b>حفظ واسترجاع الـ process state</b> (وكمان تنفيذ الـ ISR والـ context switches اللي فيها).",
       "<b>إزاي نحسّن الـ performance</b>: قلل عدد الـ context switches؛ قلل نسخ الداتا؛ قلل الـ interrupts باستخدام transfers كبيرة وsmart controllers وpolling؛ استخدم DMA؛ استخدم hardware devices أذكى؛ ووازن بين performance الـ CPU والـ memory والـ bus والـ I/O عشان أعلى throughput."
-     ]
+     ],
+     "figH": {
+      "os-io-isr-cost": "الـ overheads بتاعة خدمة الـ interrupt، وليه الـ interrupts الأقل أحسن"
+     }
     }
    ],
    "cards": [

@@ -45,7 +45,9 @@ COURSES.os = {
        "People, machines, other computers"
       ]
      ],
-     "fig": "os-four-components"
+     "fig": [
+      "os-four-components"
+     ]
     },
     {
      "h": "What operating systems do, OS definition and computer startup",
@@ -57,7 +59,9 @@ COURSES.os = {
       "<b>Kernel</b> = \"the one program running at all times on the computer\". Everything else is either a <b>system program</b> (ships with the OS) or an <b>application program</b>.",
       "<b>Bootstrap program</b>: loaded at power-up or reboot; typically stored in <b>ROM or EPROM</b> (known as <b>firmware</b>); initializes all aspects of the system; <b>loads the OS kernel and starts its execution</b>."
      ],
-     "fig": "os-startup"
+     "fig": [
+      "os-startup"
+     ]
     },
     {
      "h": "Computer-system organization and interrupts",
@@ -672,7 +676,9 @@ COURSES.os = {
        "…can be several processes"
       ]
      ],
-     "fig": "os-proc-memory"
+     "fig": [
+      "os-proc-memory"
+     ]
     },
     {
      "h": "Process states and the PCB",
@@ -749,7 +755,9 @@ COURSES.os = {
       "It depends on hardware support: some hardware provides <b>multiple register sets per CPU</b>, so multiple contexts are loaded at once.",
       "Kernel actions: save PC, registers and state of the running process into its PCB; update its state (ready/waiting) and move it to the proper queue; select the next process; restore its PC, registers and memory info from its PCB; switch to user mode and jump to its saved PC."
      ],
-     "fig": "os-cpu-switch"
+     "fig": [
+      "os-cpu-switch"
+     ]
     },
     {
      "h": "Operations on processes: creation and termination",
@@ -765,7 +773,9 @@ COURSES.os = {
       "<code>pid = wait(&amp;status);</code> returns status and the pid of the terminated child. <b>Zombie</b>: terminated, but no parent is waiting (parent has not called wait() yet). <b>Orphan</b>: parent terminated without invoking wait()."
      ],
      "code": "pid_t pid = fork();            /* fork a child process */\nif (pid < 0) {                 /* error occurred */\n    fprintf(stderr, \"Fork Failed\"); return 1;\n} else if (pid == 0) {         /* child process */\n    execlp(\"/bin/ls\", \"ls\", NULL);\n} else {                       /* parent process */\n    wait(NULL);                /* wait for the child to complete */\n    printf(\"Child Complete\");\n}",
-     "fig": "os-fork-life"
+     "fig": [
+      "os-fork-life"
+     ]
     },
     {
      "h": "Chrome multiprocess architecture and IPC models",
@@ -778,7 +788,9 @@ COURSES.os = {
       "<b>Producer–consumer problem</b>: the producer produces information consumed by the consumer. <b>Unbounded buffer</b>: no practical limit; <b>bounded buffer</b>: fixed size."
      ],
      "code": "#define BUFFER_SIZE 10\nitem buffer[BUFFER_SIZE];\nint in = 0, out = 0;            /* shared */\n\n/* Producer */\nwhile (true) {\n    while (((in + 1) % BUFFER_SIZE) == out) ;   /* buffer full: do nothing */\n    buffer[in] = next_produced;\n    in = (in + 1) % BUFFER_SIZE;\n}\n/* Consumer */\nwhile (true) {\n    while (in == out) ;                           /* buffer empty: do nothing */\n    next_consumed = buffer[out];\n    out = (out + 1) % BUFFER_SIZE;\n}\n/* Correct, but can only use BUFFER_SIZE - 1 elements */",
-     "fig": "os-chrome"
+     "fig": [
+      "os-chrome"
+     ]
     },
     {
      "h": "Message passing, synchronization, buffering and sockets",
@@ -1275,7 +1287,9 @@ COURSES.os = {
        "27–30"
       ]
      ],
-     "fig": "os-fcfs-sim"
+     "fig": [
+      "os-fcfs-sim"
+     ]
     },
     {
      "h": "SJF (Shortest-Job-First) and SRTF",
@@ -1370,7 +1384,9 @@ COURSES.os = {
        "26–30"
       ]
      ],
-     "fig": "os-rr-sim"
+     "fig": [
+      "os-rr-sim"
+     ]
     },
     {
      "h": "Priority scheduling (and priority with RR)",
@@ -1512,7 +1528,9 @@ COURSES.os = {
        "<b>20/4 = 5</b>"
       ]
      ],
-     "fig": "os-review-sim"
+     "fig": [
+      "os-review-sim"
+     ]
     }
    ],
    "cards": [
@@ -1884,7 +1902,16 @@ COURSES.os = {
       "The memory unit only sees a stream of addresses + read requests, or address + data + write requests. Register access takes one CPU clock (or less); main memory can take many cycles; the <b>cache</b> sits between main memory and CPU registers.",
       "Memory <b>protection</b> is required for correct operation.",
       "A pair of <b>base and limit registers</b> defines the logical address space of a process. The CPU checks every user-mode memory access: legal if <b>base ≤ address &lt; base + limit</b>, otherwise a <b>trap</b> to the OS (addressing error). Example figure: base 300040, limit 120900 → legal range 300040 … 420939."
-     ]
+     ],
+     "fig": [
+      "os-base-limit"
+     ],
+     "figAt": {
+      "os-base-limit": 3
+     },
+     "figH": {
+      "os-base-limit": "Base and limit registers: checking every address"
+     }
     },
     {
      "h": "Address binding; logical vs physical addresses; MMU",
@@ -1896,7 +1923,19 @@ COURSES.os = {
       "<b>Logical address space</b> = set of all logical addresses generated by a program; <b>physical address space</b> = set of all physical addresses corresponding to them.",
       "<b>MMU (Memory-Management Unit)</b>: hardware that maps virtual to physical addresses at run time. Simple scheme: the base register becomes the <b>relocation register</b>, and its value is added to every address the user process sends to memory (e.g. relocation 14000 + logical 346 → physical 14346). The user program deals only with logical addresses and never sees the real physical addresses.",
       "<b>Dynamic loading</b> (slide 10): a routine is not loaded until it is called; better memory-space utilization (an unused routine is never loaded); all routines kept on disk in relocatable load format; useful for large, infrequently used code (error handling). It needs no special OS support: it is implemented through program design, though the OS can provide libraries."
-     ]
+     ],
+     "fig": [
+      "os-binding-steps",
+      "os-mmu-reloc"
+     ],
+     "figAt": {
+      "os-binding-steps": 2,
+      "os-mmu-reloc": 5
+     },
+     "figH": {
+      "os-binding-steps": "From source program to memory image, and the three binding times",
+      "os-mmu-reloc": "The MMU adds the relocation register to every logical address"
+     }
     },
     {
      "h": "Swapping",
@@ -1906,7 +1945,16 @@ COURSES.os = {
       "<b>Roll out, roll in</b>: a swapping variant for priority-based scheduling; a lower-priority process is swapped out so a higher-priority one can be loaded and run.",
       "The major part of swap time is <b>transfer time</b>, directly proportional to the amount of memory swapped. The system keeps a ready queue of processes whose memory images are on disk.",
       "If the next process is not in memory, the context switch must swap out one process and swap in the other: 100 MB at 50 MB/s = <b>2000 ms</b> out + 2000 ms in = <b>4 s</b> total swap component."
-     ]
+     ],
+     "fig": [
+      "os-swapping"
+     ],
+     "figAt": {
+      "os-swapping": 4
+     },
+     "figH": {
+      "os-swapping": "Swapping: roll out, roll in, and the swap time"
+     }
     },
     {
      "h": "Contiguous allocation and the dynamic storage-allocation problem",
@@ -1955,7 +2003,16 @@ COURSES.os = {
        "<b>All placed: best-fit is the most efficient here</b>",
        "3 of 4 placed"
       ]
-     ]
+     ],
+     "fig": [
+      "os-fit-sim"
+     ],
+     "figAt": {
+      "os-fit-sim": 5
+     },
+     "figH": {
+      "os-fit-sim": "First-fit, best-fit and worst-fit on the example partitions"
+     }
     },
     {
      "h": "Fragmentation",
@@ -1964,7 +2021,16 @@ COURSES.os = {
       "<b>Internal fragmentation</b>: allocated memory may be slightly larger than requested; the difference is memory <b>internal to a partition but not used</b> (occurs with fixed blocks / paging).",
       "Reduce external fragmentation by <b>compaction</b>: shuffle memory contents to place all free memory together in one large block. Possible <b>only if relocation is dynamic</b> and done at execution time.",
       "I/O problem during compaction: latch the job in memory while it is doing I/O, or do I/O only into OS buffers. The backing store has the same fragmentation problems."
-     ]
+     ],
+     "fig": [
+      "os-ext-frag"
+     ],
+     "figAt": {
+      "os-ext-frag": 3
+     },
+     "figH": {
+      "os-ext-frag": "External fragmentation and compaction"
+     }
     },
     {
      "h": "Segmentation",
@@ -2014,7 +2080,16 @@ COURSES.os = {
        "112 ≥ 96 ✗",
        "<b>Illegal: trap (addressing error)</b>"
       ]
-     ]
+     ],
+     "fig": [
+      "os-segment-xlate"
+     ],
+     "figAt": {
+      "os-segment-xlate": 6
+     },
+     "figH": {
+      "os-segment-xlate": "Segmentation: from (segment, offset) to a physical address"
+     }
     },
     {
      "h": "Paging and address translation",
@@ -2037,7 +2112,19 @@ COURSES.os = {
       "frame(2) = 3  → physical = 3 × 1024 + 452 = 3524",
       "",
       "Bits: m = 16-bit logical address, page 4 KB (n = 12) → p = 4 bits (16 pages), d = 12 bits"
-     ]
+     ],
+     "fig": [
+      "os-paging-model",
+      "os-page-frag"
+     ],
+     "figAt": {
+      "os-paging-model": 4,
+      "os-page-frag": 5
+     },
+     "figH": {
+      "os-paging-model": "Paging model: pages, the page table and frames",
+      "os-page-frag": "Internal fragmentation in paging: the last frame"
+     }
     },
     {
      "h": "Paging vs segmentation",
@@ -2466,7 +2553,13 @@ COURSES.os = {
       "<b>Virtual memory</b> = separation of user logical memory from physical memory. Only part of the program needs to be in memory; the logical address space can be <b>much larger than the physical address space</b>; address spaces can be shared by several processes; process creation is more efficient; more programs run concurrently; less I/O to load or swap.",
       "<b>Virtual address space</b>: the logical view of how a process is stored, usually starting at 0 and contiguous; physical memory is organized in page frames and the MMU maps logical to physical.",
       "Implemented via <b>demand paging</b> or <b>demand segmentation</b>."
-     ]
+     ],
+     "fig": [
+      "os-vm-space"
+     ],
+     "figH": {
+      "os-vm-space": "Virtual memory: only the needed part of a program is in memory"
+     }
     },
     {
      "h": "Demand paging and the valid–invalid bit",
@@ -2476,7 +2569,13 @@ COURSES.os = {
       "<b>Lazy swapper</b>: never swaps a page into memory unless it will be needed. A swapper that deals with pages is a <b>pager</b>.",
       "If the needed pages are already memory-resident, there is no difference from ordinary paging; otherwise the page must be detected and loaded without changing program behaviour or requiring code changes. This needs new MMU functionality.",
       "<b>Valid–invalid bit</b> per page-table entry: <b>v</b> = in memory (memory resident), <b>i</b> = not in memory. Initially all entries are <b>i</b>. If the MMU finds <b>i</b> during translation, a <b>page fault</b> occurs."
-     ]
+     ],
+     "fig": [
+      "os-demand-paging"
+     ],
+     "figH": {
+      "os-demand-paging": "Try demand paging: reference pages and watch the valid–invalid bits"
+     }
     },
     {
      "h": "Page fault handling",
@@ -2487,7 +2586,13 @@ COURSES.os = {
       "3) Swap the page into the frame via a scheduled disk operation.",
       "4) Reset the tables to show the page is now in memory: <b>set the validation bit = v</b>.",
       "5) <b>Restart the instruction</b> that caused the page fault."
-     ]
+     ],
+     "fig": [
+      "os-page-fault"
+     ],
+     "figH": {
+      "os-page-fault": "Handling a page fault, step by step"
+     }
     },
     {
      "h": "Stages in demand paging (worst case)",
@@ -2503,7 +2608,13 @@ COURSES.os = {
       "9. Correct the page table (and other tables) to show the page is now in memory.",
       "10. Wait for the CPU to be allocated to this process again.",
       "11. Restore the user registers, process state and new page table, then resume the interrupted instruction."
-     ]
+     ],
+     "fig": [
+      "os-fault-stages"
+     ],
+     "figH": {
+      "os-fault-stages": "The 11 stages of a page fault, and who has the CPU"
+     }
     },
     {
      "h": "Page replacement",
@@ -2513,7 +2624,16 @@ COURSES.os = {
       "Note there are now potentially <b>2 page transfers</b> per page fault (out + in).",
       "<b>Frame-allocation</b> algorithm decides how many frames each process gets and which frames to replace; <b>page-replacement</b> algorithm wants the lowest page-fault rate on both first access and re-access.",
       "Evaluate by running the algorithm on a <b>reference string</b> (page numbers only) and counting faults. <b>Repeated access to a page already in memory is not a fault.</b> Results depend on the number of frames. Every empty-frame fill at the start also counts as a fault."
-     ]
+     ],
+     "fig": [
+      "os-replace-basic"
+     ],
+     "figAt": {
+      "os-replace-basic": 2
+     },
+     "figH": {
+      "os-replace-basic": "Basic page replacement: one or two page transfers per fault"
+     }
     },
     {
      "h": "FIFO, Optimal and LRU on the lecture string (3 frames)",
@@ -2650,7 +2770,18 @@ COURSES.os = {
        "F",
        "F"
       ]
-     ]
+     ],
+     "fig": [
+      "os-replace-sim",
+      "os-belady"
+     ],
+     "figAt": {
+      "os-replace-sim": 3
+     },
+     "figH": {
+      "os-replace-sim": "Page-replacement simulator: FIFO, Optimal and LRU",
+      "os-belady": "Belady's anomaly: more frames, more faults (FIFO only)"
+     }
     },
     {
      "h": "Optimal table (lecture string, 3 frames)",
@@ -2783,7 +2914,13 @@ COURSES.os = {
        "",
        ""
       ]
-     ]
+     ],
+     "fig": [
+      "os-opt-why"
+     ],
+     "figH": {
+      "os-opt-why": "Why Optimal picks each victim: the next use of every page"
+     }
     },
     {
      "h": "LRU table (lecture string, 3 frames)",
@@ -2916,7 +3053,13 @@ COURSES.os = {
        "",
        ""
       ]
-     ]
+     ],
+     "fig": [
+      "os-lru-why"
+     ],
+     "figH": {
+      "os-lru-why": "Why LRU picks each victim: the last use of every page"
+     }
     },
     {
      "h": "Implementing LRU and LRU approximations",
@@ -2926,7 +3069,21 @@ COURSES.os = {
       "<b>Reference bit</b>: each page has a bit, initially 0, set to 1 when referenced; replace any page with bit 0 (if one exists), but we do not know the order.",
       "<b>Second-chance (clock) algorithm</b>: FIFO plus the hardware reference bit. If the page to be replaced has bit 0, replace it; if 1, set it to 0, leave the page in memory and consider the next page under the same rules.",
       "<b>Counting algorithms</b> keep a count of references: <b>LFU</b> (Least Frequently Used) replaces the page with the <b>smallest count</b>; <b>MFU</b> (Most Frequently Used) replaces the page with the largest count, arguing that the page with the smallest count was probably just brought in and has yet to be used."
-     ]
+     ],
+     "fig": [
+      "os-lru-impl",
+      "os-second-chance",
+      "os-lfu-mfu"
+     ],
+     "figAt": {
+      "os-lru-impl": 1,
+      "os-second-chance": 3
+     },
+     "figH": {
+      "os-lru-impl": "LRU two ways: counters and a stack",
+      "os-second-chance": "The reference bit and the second-chance (clock) algorithm",
+      "os-lfu-mfu": "Counting algorithms: LFU and MFU"
+     }
     }
    ],
    "cards": [
@@ -3298,7 +3455,16 @@ COURSES.os = {
       "<b>2. Hold and wait</b>: a process holding at least one resource is waiting to acquire additional resources held by other processes.",
       "<b>3. No preemption</b>: a resource can be released only voluntarily by the process holding it, after that process has completed its task.",
       "<b>4. Circular wait</b>: there exists a set {P0, P1, …, Pn} of waiting processes such that P0 waits for a resource held by P1, P1 waits for P2, …, Pn−1 waits for Pn, and Pn waits for P0."
-     ]
+     ],
+     "fig": [
+      "os-dl-conditions"
+     ],
+     "figAt": {
+      "os-dl-conditions": 5
+     },
+     "figH": {
+      "os-dl-conditions": "The four necessary conditions, one at a time, on three processes"
+     }
     },
     {
      "h": "Resource-allocation graph (RAG)",
@@ -3309,7 +3475,16 @@ COURSES.os = {
       "Graph with a deadlock: the same, plus P3 → R2. There are two cycles: P1 → R1 → P2 → R3 → P3 → R2 → P1 and P2 → R3 → P3 → R2 → P2, and all of P1, P2, P3 are deadlocked.",
       "Graph with a cycle but <b>no deadlock</b>: P1 → R1 → P3 → R2 → P1, but R1's other instance is held by P2 and R2's by P4. P2 and P4 can release, breaking the cycle.",
       "<b>Basic facts</b>: no cycle → <b>no deadlock</b>. Cycle and <b>only one instance per resource type → deadlock</b>. Cycle and several instances per type → <b>possibility</b> of deadlock."
-     ]
+     ],
+     "fig": [
+      "os-dl-rag"
+     ],
+     "figAt": {
+      "os-dl-rag": 5
+     },
+     "figH": {
+      "os-dl-rag": "The notes' three resource-allocation graphs: no deadlock, deadlock, and a cycle without deadlock"
+     }
     },
     {
      "h": "Methods for handling deadlocks and deadlock prevention",
@@ -3340,7 +3515,13 @@ COURSES.os = {
        "Circular wait",
        "Impose a <b>total ordering</b> of all resource types and require requests in <b>increasing order</b> of enumeration. E.g. F(tape drive) = 1, F(disk drive) = 5, F(printer) = 12: to use the tape and printer, request the tape first, then the printer; never the printer then the tape"
       ]
-     ]
+     ],
+     "fig": [
+      "os-dl-ordering"
+     ],
+     "figH": {
+      "os-dl-ordering": "Preventing circular wait: request resources in increasing order"
+     }
     },
     {
      "h": "Deadlock avoidance and safe state",
@@ -3351,7 +3532,16 @@ COURSES.os = {
       "<b>Safe → no deadlocks. Unsafe → possibility of deadlock.</b> Avoidance = ensure the system never enters an unsafe state. (Deadlock states are a subset of the unsafe states.)",
       "Single instance of each resource type → use a <b>resource-allocation graph</b> (with claim edges). Multiple instances → use the <b>banker's algorithm</b>.",
       "<b>Banker's algorithm</b>: multiple instances; each process must a priori claim its maximum use; a requesting process may have to wait; a process that gets all its resources must return them in a finite amount of time."
-     ]
+     ],
+     "fig": [
+      "os-dl-safe"
+     ],
+     "figAt": {
+      "os-dl-safe": 3
+     },
+     "figH": {
+      "os-dl-safe": "Safe, unsafe and deadlock states"
+     }
     },
     {
      "h": "Banker's data structures and algorithms",
@@ -3411,7 +3601,19 @@ COURSES.os = {
        "4 3 3",
        "<b>4 3 1</b>"
       ]
-     ]
+     ],
+     "fig": [
+      "os-dl-bankers",
+      "os-dl-request"
+     ],
+     "figAt": {
+      "os-dl-bankers": 6,
+      "os-dl-request": 7
+     },
+     "figH": {
+      "os-dl-bankers": "Banker's safety algorithm on the lecture's snapshot, step by step",
+      "os-dl-request": "Try the resource-request algorithm: pick a process and a request"
+     }
     },
     {
      "h": "Deadlock detection",
@@ -3423,7 +3625,16 @@ COURSES.os = {
       "Example: A = 7, B = 2, C = 6; Available (0,0,0); Allocation P0 010, P1 200, P2 303, P3 211, P4 002; Request P0 000, P1 202, P2 000, P3 100, P4 002. Work: P0 → (0,1,0), P2 → (3,1,3), P3 → (5,2,4), P1 → (7,2,4), P4 → (7,2,6) → sequence <b>&lt;P0, P2, P3, P1, P4&gt;</b>, no deadlock.",
       "If P2 now requests one more C (Request P2 = 001): P0 can finish (Work = 0,1,0), but no other request can be met. <b>Deadlock exists, consisting of P1, P2, P3 and P4.</b>",
       "When and how often to invoke detection depends on how often deadlock is likely and how many processes must be rolled back (one per disjoint cycle). Invoking it arbitrarily may find many cycles and not tell which process \"caused\" the deadlock."
-     ]
+     ],
+     "fig": [
+      "os-dl-detect"
+     ],
+     "figAt": {
+      "os-dl-detect": 5
+     },
+     "figH": {
+      "os-dl-detect": "The detection algorithm on the notes' example, before and after P2 asks for one more C"
+     }
     },
     {
      "h": "Recovery from deadlock",
@@ -3782,7 +3993,16 @@ COURSES.os = {
       "<b>Attributes</b>: <b>Name</b> (the only information kept in human-readable form); <b>Identifier</b> (unique tag/number within the file system); <b>Type</b>; <b>Location</b> (pointer to the file's location on the device); <b>Size</b>; <b>Protection</b> (who can read, write, execute); <b>Time, date and user identification</b> (for protection, security and usage monitoring). Extended attributes include file checksum.",
       "Information about files is kept in the <b>directory structure</b>, which is maintained on the disk.",
       "<b>Operations</b>: create; write (at the write pointer); read (at the read pointer); reposition within the file (<b>seek</b>); delete; truncate; <b>open(Fi)</b>: search the directory on disk for entry Fi and move its content to memory; <b>close(Fi)</b>: move the content of entry Fi in memory back to the directory on disk."
-     ]
+     ],
+     "fig": [
+      "os-file-open"
+     ],
+     "figAt": {
+      "os-file-open": 3
+     },
+     "figH": {
+      "os-file-open": "File operations: how open and close move the directory entry between disk and memory"
+     }
     },
     {
      "h": "Open files, file types and file structure",
@@ -3790,7 +4010,16 @@ COURSES.os = {
       "Data needed to manage open files: <b>open-file table</b> (tracks open files); <b>file pointer</b> (last read/write location, per process); <b>file-open count</b> (number of times the file is open, so its entry can be removed when the last process closes it); <b>access rights</b> (per-process access-mode information).",
       "File types by extension: executable (exe, com, bin); object (obj, o); source code (c, cc, java, asm…); batch (bat, sh); text (txt, doc); word processor (wp, tex, rtf, doc); library (lib, a, so, dll); print or view (ps, pdf, jpg); archive (arc, zip, tar); multimedia (mpeg, mov, mp3, mp4, avi).",
       "<b>File structure</b>: none (sequence of words or bytes); simple record structure (lines, fixed length, variable length); complex structures (formatted document, relocatable load file). Decided by the <b>operating system</b> or the <b>program</b>."
-     ]
+     ],
+     "fig": [
+      "os-open-count"
+     ],
+     "figAt": {
+      "os-open-count": 0
+     },
+     "figH": {
+      "os-open-count": "Open files: the open-file table, the file-open count and each process's file pointer"
+     }
     },
     {
      "h": "Access methods",
@@ -3798,7 +4027,16 @@ COURSES.os = {
       "<b>Sequential access</b> (tape model: beginning, current position, end): read next, write next, reset, no read after last write (rewrite).",
       "<b>Direct access</b>: the file is fixed-length logical records: read n, write n, position to n, read next, write next, rewrite n, where <b>n = relative block number</b>. Relative block numbers let the OS decide where the file is placed.",
       "Simulating sequential access on a direct-access file with a current position <b>cp</b>: reset → cp = 0; read next → read cp; cp = cp + 1; write next → write cp; cp = cp + 1."
-     ]
+     ],
+     "fig": [
+      "os-access-methods"
+     ],
+     "figAt": {
+      "os-access-methods": 2
+     },
+     "figH": {
+      "os-access-methods": "Access methods: sequential, direct, and sequential simulated on direct access"
+     }
     },
     {
      "h": "Directory structure",
@@ -3834,7 +4072,16 @@ COURSES.os = {
        "Slow as files grow",
        "<b>Efficient searching</b>"
       ]
-     ]
+     ],
+     "fig": [
+      "os-dir-structures"
+     ],
+     "figAt": {
+      "os-dir-structures": 3
+     },
+     "figH": {
+      "os-dir-structures": "Directory structures: single-level, two-level and tree"
+     }
     },
     {
      "h": "File sharing and protection",
@@ -3843,7 +4090,16 @@ COURSES.os = {
       "<b>User IDs</b> identify users, allowing per-user permissions; <b>group IDs</b> put users in groups with group access rights. Each file or directory has an <b>owner</b> and a <b>group</b>.",
       "The owner/creator controls <b>what can be done and by whom</b>. Types of access: <b>read, write, execute, append, delete, list</b>.",
       "UNIX/Linux: modes read, write, execute for 3 classes: <b>owner</b>, <b>group</b>, <b>public</b>. Example: owner 7 = RWX 111, group 6 = RW- 110, public 1 = --X 001 → <code>chmod 761 game</code>. Ask the manager to create a group (e.g. G), add users, then set the file's access. Windows uses access-control lists (full control, modify, read &amp; execute, read, write)."
-     ]
+     ],
+     "fig": [
+      "os-chmod"
+     ],
+     "figAt": {
+      "os-chmod": 3
+     },
+     "figH": {
+      "os-chmod": "UNIX/Linux protection: read, write and execute for owner, group and public (chmod 761)"
+     }
     },
     {
      "h": "File-system implementation: structure and directory implementation",
@@ -3853,7 +4109,16 @@ COURSES.os = {
       "<b>File control block (FCB)</b>: storage structure holding information about a file. The <b>device driver</b> controls the physical device.",
       "<b>Linear list</b> of file names with pointers to data blocks: simple to program but time-consuming (linear search); could keep it sorted via a linked list or a B+ tree.",
       "<b>Hash table</b>: linear list + hash structure → decreases directory search time; <b>collisions</b> (two names hash to the same location); only good if entries are fixed size, or use the chained-overflow method."
-     ]
+     ],
+     "fig": [
+      "os-dir-impl"
+     ],
+     "figAt": {
+      "os-dir-impl": 4
+     },
+     "figH": {
+      "os-dir-impl": "Directory implementation: searching a linear list versus a hash table"
+     }
     },
     {
      "h": "Allocation methods: contiguous, linked, FAT, indexed",
@@ -3901,7 +4166,19 @@ COURSES.os = {
        "Pointer in every block; reliability risk",
        "Index block per file"
       ]
-     ]
+     ],
+     "fig": [
+      "os-fat",
+      "os-alloc-methods"
+     ],
+     "figAt": {
+      "os-fat": 3,
+      "os-alloc-methods": 4
+     },
+     "figH": {
+      "os-fat": "FAT: following the file test through the File-Allocation Table",
+      "os-alloc-methods": "Allocation methods: contiguous, linked and indexed on the same disk"
+     }
     }
    ],
    "cards": [
@@ -4235,7 +4512,16 @@ COURSES.os = {
       "Device categories: <b>storage, transmission, human-interface</b>.",
       "<b>Port</b>: connection point for a device. <b>Bus</b>: shared direct access (<b>PCI</b>, common in PCs and servers; PCI Express, PCIe; an <b>expansion bus</b> connects relatively slow devices such as keyboard and serial/parallel ports). <b>Controller (host adapter)</b>: electronics that operate the port, bus or device; sometimes integrated, sometimes a separate circuit board; contains a processor, microcode, private memory, bus controller, etc.",
       "Typical PC bus figure: processor + cache → bridge/memory controller → memory; PCI bus connects the graphics controller (monitor), SCSI controller (disks), IDE disk controller (disks) and the expansion bus interface (keyboard, parallel and serial ports)."
-     ]
+     ],
+     "fig": [
+      "os-io-pc-bus"
+     ],
+     "figAt": {
+      "os-io-pc-bus": 4
+     },
+     "figH": {
+      "os-io-pc-bus": "A typical PC bus structure: how ports, buses and controllers connect the devices"
+     }
     },
     {
      "h": "Device registers, addressing and polling",
@@ -4245,7 +4531,19 @@ COURSES.os = {
       "PC I/O port ranges (partial): 000–00F DMA controller; 020–021 interrupt controller; 040–043 timer; 200–20F game controller; 2F8–2FF serial port (secondary); 320–32F hard-disk controller; 378–37F parallel port; 3D0–3DF graphics controller; 3F0–3F7 diskette-drive controller; 3F8–3FF serial port (primary).",
       "<b>Polling (handshaking) for each byte</b>: (1) the host reads the <b>busy bit</b> from the status register until 0; (2) the host sets the read or write bit, and for a write copies the data into data-out; (3) the host sets <b>command-ready</b>; (4) the controller sets busy and executes the transfer; (5) the controller clears busy, error and command-ready when the transfer is done.",
       "Step 1 is a <b>busy-wait cycle</b>: reasonable if the device is fast, but <b>inefficient if the device is slow</b> (the CPU could switch to other tasks)."
-     ]
+     ],
+     "fig": [
+      "os-io-port-map",
+      "os-io-polling"
+     ],
+     "figAt": {
+      "os-io-port-map": 2,
+      "os-io-polling": 4
+     },
+     "figH": {
+      "os-io-port-map": "PC I/O port addresses: find which device an address belongs to",
+      "os-io-polling": "Polling one byte: the five handshaking steps, with a fast and a slow device"
+     }
     },
     {
      "h": "Interrupts",
@@ -4255,7 +4553,19 @@ COURSES.os = {
       "The interrupt handler determines the cause, performs the necessary processing, performs a <b>state restore</b>, and executes a return-from-interrupt instruction to return the CPU to its previous state.",
       "<b>Interrupt-driven I/O cycle</b>: 1 the device driver initiates I/O → 2 the I/O controller initiates I/O → 3 input ready, output complete or error: the controller generates an interrupt signal → 4 the CPU, checking between instructions, receives the interrupt and transfers control to the handler → 5 the handler processes the data and returns from interrupt → 6 the CPU resumes the interrupted task → 7 (loop back while the CPU executes).",
       "<b>Intel Pentium event-vector table</b>: 0 divide error, 1 debug exception, 2 null interrupt, 3 breakpoint, 4 INTO-detected overflow, 5 bound range exception, 6 invalid opcode, 7 device not available, 8 double fault, 9 coprocessor segment overrun, 10 invalid task state segment, 11 segment not present, 12 stack fault, 13 general protection, 14 <b>page fault</b>, 15 reserved, 16 floating-point error, 17 alignment check, 18 machine check, 19–31 reserved, <b>32–255 maskable interrupts</b>."
-     ]
+     ],
+     "fig": [
+      "os-io-irq-cycle",
+      "os-io-vectors"
+     ],
+     "figAt": {
+      "os-io-irq-cycle": 3,
+      "os-io-vectors": 4
+     },
+     "figH": {
+      "os-io-irq-cycle": "The interrupt-driven I/O cycle, step by step",
+      "os-io-vectors": "The Intel Pentium event-vector table: look up a vector number"
+     }
     },
     {
      "h": "Direct Memory Access (DMA)",
@@ -4293,7 +4603,13 @@ COURSES.os = {
        "6",
        "When C = 0, the DMA controller interrupts the CPU to signal transfer completion"
       ]
-     ]
+     ],
+     "fig": [
+      "os-io-dma-six"
+     ],
+     "figH": {
+      "os-io-dma-six": "The six-step DMA transfer: the count C goes down to 0, then one interrupt"
+     }
     },
     {
      "h": "Application I/O interface; block and character devices",
@@ -4303,7 +4619,19 @@ COURSES.os = {
       "Devices vary in many dimensions: <b>character-stream or block</b>; <b>sequential or random-access</b>; <b>synchronous or asynchronous</b>; <b>sharable or dedicated</b>; <b>speed of operation</b>; <b>read-write, read-only or write-only</b>.",
       "<b>Block devices</b> include disk drives: commands read, write, seek; raw I/O, direct I/O or file-system access; memory-mapped file access possible (the file is mapped to virtual memory and clusters are brought in via demand paging); DMA.",
       "<b>Character devices</b> include keyboards, mice and serial ports: commands <code>get()</code>, <code>put()</code>; libraries layered on top allow line editing."
-     ]
+     ],
+     "fig": [
+      "os-io-kernel",
+      "os-io-block-char"
+     ],
+     "figAt": {
+      "os-io-kernel": 1,
+      "os-io-block-char": 4
+     },
+     "figH": {
+      "os-io-kernel": "Kernel I/O structure: from the kernel down to the device",
+      "os-io-block-char": "Block devices and character devices: pick a device to see its kind and commands"
+     }
     },
     {
      "h": "Performance",
@@ -4311,7 +4639,16 @@ COURSES.os = {
       "I/O is a major factor in system performance: it demands the CPU to execute device-driver code, causes <b>context switches due to interrupts</b>, and causes <b>data copying</b>.",
       "<b>Performance overheads of servicing an interrupt</b>: when an interrupt occurs, the currently executing process is interrupted and its <b>state is stored in its PCB</b>; the interrupt service routine is then run to deal with the interrupt; on completion, the <b>state of the process is restored</b> and it resumes. So the overheads include the cost of <b>saving and restoring process state</b> (plus executing the ISR and the context switches involved).",
       "<b>How to improve performance</b>: reduce the number of context switches; reduce data copying; reduce interrupts by using large transfers, smart controllers and polling; use DMA; use smarter hardware devices; balance CPU, memory, bus and I/O performance for the highest throughput."
-     ]
+     ],
+     "fig": [
+      "os-io-isr-cost"
+     ],
+     "figAt": {
+      "os-io-isr-cost": 1
+     },
+     "figH": {
+      "os-io-isr-cost": "The overheads of servicing an interrupt, and why fewer interrupts help"
+     }
     }
    ],
    "cards": [

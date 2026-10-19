@@ -1849,4 +1849,1674 @@
     'os-mlq': MultiQueue, 'os-mlq-types': MultiTypes, 'os-mlfq': Feedback
   });
 })();
+/* ── part 5 ── */
+// OS visuals, part 5: L4 Memory Management (internal memory). Every label and caption comes from the site's notes for that lecture.
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, calm } = window.FIGKIT;
+  const CSS = `
+.fo5 .fig-dots i.on{ background:var(--k-os); } .fo5 .fig-btn:hover{ border-color:var(--k-os); }
+.fo5 .fig-btn[aria-pressed="true"]{ background:var(--s-os); color:#fff; border-color:transparent; }
+.fo5 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.fo5-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.fo5-row .fig-btn{ font-size:.84rem; padding:4px 10px; min-height:32px; }
+.fo5-wrap{ max-width:460px; margin:0 auto; color:var(--ink); font-size:.88rem; line-height:1.45; }
+.fo5-box{ border:1.4px solid var(--line); border-radius:9px; background:var(--paper); padding:6px 10px; transition:all .45s ease; }
+.fo5-box.on{ border-color:var(--k-os); box-shadow:0 0 0 3px color-mix(in srgb, var(--k-os) 22%, transparent); }
+.fo5-box.dim{ opacity:.35; }
+.fo5-box.bad{ border-color:var(--pen); background:color-mix(in srgb, var(--pen) 10%, var(--paper)); }
+.fo5-box.good{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 12%, var(--paper)); }
+.fo5-box b.t{ display:block; font-size:.9rem; }
+.fo5-box small{ display:block; color:var(--graphite); font-size:.8rem; }
+.fo5-arrow{ text-align:center; color:var(--graphite); line-height:1.1; margin:2px 0; font-size:.95rem; }
+.fo5-mono{ font-family:var(--mono); }
+.fo5-big{ font-family:var(--mono); font-weight:700; color:var(--k-os); }
+.fo5-red{ color:var(--pen); font-weight:700; }
+.fo5-ok{ color:var(--ok); font-weight:700; }
+.fo5-in{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; justify-content:center; margin:0 0 10px; font-size:.86rem; }
+.fo5-in input, .fo5-in select{ font:inherit; font-family:var(--mono); font-size:.88rem; width:6.2em; padding:4px 6px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); }
+.fo5-in input.w{ width:13em; }
+.fo5-in input:focus, .fo5-in select:focus{ outline:2px solid var(--k-os); outline-offset:1px; }
+.fo5-line{ position:relative; height:46px; margin:14px 8px 26px; }
+.fo5-line .bar{ position:absolute; left:0; right:0; top:18px; height:10px; border-radius:5px; background:color-mix(in srgb, var(--pen) 22%, var(--paper)); border:1px solid var(--line); }
+.fo5-line .ok{ position:absolute; top:18px; height:10px; background:color-mix(in srgb, var(--ok) 45%, var(--paper)); border:1px solid var(--ok); }
+.fo5-line .mk{ position:absolute; top:6px; width:2px; height:34px; background:var(--ink); transition:left .6s ease; }
+.fo5-line .mk i{ position:absolute; top:-4px; left:50%; transform:translateX(-50%); width:10px; height:10px; border-radius:50%; background:var(--k-os); }
+.fo5-line .lb{ position:absolute; top:32px; font-family:var(--mono); font-size:.76rem; color:var(--graphite); transform:translateX(-50%); white-space:nowrap; }
+.fo5-chain{ display:flex; flex-direction:column; gap:0; }
+.fo5-tag{ display:inline-block; font-size:.76rem; font-weight:700; border-radius:99px; padding:1px 8px; margin-left:4px; border:1px solid var(--k-os); color:var(--k-os); background:var(--paper); }
+.fo5-pipe{ display:grid; grid-template-columns:1fr auto 1fr auto 1fr; align-items:center; gap:4px; text-align:center; }
+.fo5-pipe .fo5-box{ padding:6px 4px; }
+.fo5-pipe .op{ font-weight:700; color:var(--graphite); }
+.fo5-pkt{ display:inline-block; font-family:var(--mono); font-weight:700; padding:1px 6px; border-radius:6px; background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); }
+.fo5-two{ display:grid; grid-template-columns:1fr 1fr; gap:10px; align-items:stretch; }
+.fo5-mem{ border:1.4px solid var(--line); border-radius:8px; overflow:hidden; display:flex; flex-direction:column; background:var(--paper-2); min-height:150px; }
+.fo5-mem .seg{ border-bottom:1px solid var(--line); padding:4px 6px; font-size:.8rem; text-align:center; transition:all .6s ease; }
+.fo5-mem .os{ background:color-mix(in srgb, var(--graphite) 18%, var(--paper)); }
+.fo5-mem .p{ background:color-mix(in srgb, var(--k-os) 22%, var(--paper)); font-weight:600; }
+.fo5-mem .p.hi{ background:var(--s-os); color:#fff; }
+.fo5-mem .free{ background:var(--paper); color:var(--graphite); }
+.fo5-mem .hd{ background:var(--paper); font-weight:700; font-size:.8rem; }
+.fo5-prog{ height:10px; border-radius:5px; background:var(--paper-2); border:1px solid var(--line); overflow:hidden; margin:4px 0; }
+.fo5-prog i{ display:block; height:100%; background:var(--k-os); transition:width .8s ease; }
+.fo5-parts{ display:flex; flex-direction:column; gap:6px; }
+.fo5-part{ display:grid; grid-template-columns:3.4em 1fr; gap:6px; align-items:center; }
+.fo5-part .nm{ font-family:var(--mono); font-size:.8rem; color:var(--graphite); text-align:right; }
+.fo5-cells{ display:flex; height:30px; border:1.4px solid var(--graphite); border-radius:5px; overflow:hidden; background:var(--paper); transition:box-shadow .4s; }
+.fo5-cells.cand{ box-shadow:0 0 0 2px color-mix(in srgb, var(--k-os) 45%, transparent); }
+.fo5-cells.pick{ box-shadow:0 0 0 3px var(--k-os); }
+.fo5-cells .u{ display:grid; place-items:center; font-size:.76rem; font-weight:700; color:#fff; background:var(--s-os); border-right:1px solid var(--paper); white-space:nowrap; overflow:hidden; transition:flex-grow .6s ease; }
+.fo5-cells .u.n2{ background:color-mix(in srgb, var(--s-os) 70%, var(--ink)); } .fo5-cells .u.n3{ background:color-mix(in srgb, var(--s-os) 55%, var(--ok)); } .fo5-cells .u.n4{ background:color-mix(in srgb, var(--s-os) 60%, var(--pen)); }
+.fo5-cells .h{ display:grid; place-items:center; font-size:.76rem; color:var(--graphite); white-space:nowrap; overflow:hidden; }
+.fo5-q{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin:0 0 10px; }
+.fo5-q span{ border:1.3px solid var(--line); border-radius:99px; padding:2px 9px; font-size:.8rem; font-family:var(--mono); background:var(--paper); transition:all .4s; }
+.fo5-q span.cur{ border-color:var(--k-os); box-shadow:0 0 0 2px color-mix(in srgb, var(--k-os) 30%, transparent); font-weight:700; }
+.fo5-q span.done{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 12%, var(--paper)); }
+.fo5-q span.wait{ border-color:var(--pen); color:var(--pen); }
+.fo5-res{ margin-top:10px; border:1px solid var(--line); border-radius:9px; background:var(--paper); padding:6px 10px; font-size:.84rem; }
+.fo5-tbl{ border-collapse:collapse; margin:0 auto; font-size:.82rem; }
+.fo5-tbl th, .fo5-tbl td{ border:1px solid var(--line); padding:3px 6px; text-align:center; background:var(--paper); }
+.fo5-tbl th{ background:var(--paper-2); color:var(--graphite); font-weight:600; }
+.fo5-tbl tr.on td{ background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); font-weight:700; }
+.fo5-tbl tr.no td{ background:color-mix(in srgb, var(--pen) 12%, var(--paper)); }
+.fo5-pm{ display:flex; flex-direction:column; border:1.4px solid var(--line); border-radius:6px; overflow:hidden; }
+.fo5-pm div{ font-size:.78rem; padding:0 4px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); transition:all .5s; }
+.fo5-pm .s{ background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); font-weight:600; }
+.fo5-pm .s.on{ background:var(--s-os); color:#fff; }
+.fo5-pm .e{ background:var(--paper); color:var(--graphite); }
+.fo5-frames{ display:flex; flex-direction:column; gap:3px; }
+.fo5-fr{ display:grid; grid-template-columns:3.6em 1fr; gap:6px; align-items:center; font-size:.8rem; }
+.fo5-fr .n{ font-family:var(--mono); color:var(--graphite); text-align:right; }
+.fo5-fr .c{ height:24px; border:1.3px solid var(--line); border-radius:5px; display:grid; place-items:center; background:var(--paper); transition:all .5s ease; }
+.fo5-fr .c.full{ background:color-mix(in srgb, var(--k-os) 20%, var(--paper)); border-color:var(--k-os); font-weight:600; }
+.fo5-fr .c.on{ background:var(--s-os); color:#fff; border-color:var(--s-os); }
+.fo5-split{ display:flex; border:1.4px solid var(--k-os); border-radius:6px; overflow:hidden; font-family:var(--mono); font-size:.86rem; text-align:center; }
+.fo5-split span{ flex:1; padding:4px; } .fo5-split span + span{ border-left:1.4px solid var(--k-os); }
+.fo5-split .pp{ background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); }
+.fo5-last{ display:flex; height:30px; border:1.4px solid var(--graphite); border-radius:5px; overflow:hidden; margin:4px 0; }
+.fo5-last .used{ background:var(--s-os); color:#fff; display:grid; place-items:center; font-size:.76rem; font-weight:700; white-space:nowrap; overflow:hidden; transition:width .7s ease; }
+.fo5-last .waste{ flex:1; display:grid; place-items:center; font-size:.76rem; color:var(--pen); font-weight:700; background:repeating-linear-gradient(45deg, var(--paper), var(--paper) 5px, color-mix(in srgb, var(--pen) 14%, var(--paper)) 5px, color-mix(in srgb, var(--pen) 14%, var(--paper)) 10px); white-space:nowrap; overflow:hidden; }
+.fo5-pg{ display:flex; flex-wrap:wrap; gap:3px; margin:4px 0; }
+.fo5-pg i{ width:12px; height:12px; border-radius:2px; background:color-mix(in srgb, var(--k-os) 40%, var(--paper)); border:1px solid var(--k-os); }
+.fo5-pg i.l{ background:repeating-linear-gradient(45deg, var(--k-os), var(--k-os) 3px, var(--paper) 3px, var(--paper) 6px); }
+@media (prefers-reduced-motion: reduce){ .fo5 *{ transition:none !important; animation:none !important; } }`;
+  if (!document.getElementById('fo5-css')) { const s = document.createElement('style'); s.id = 'fo5-css'; s.textContent = CSS; document.head.appendChild(s); }
+  const fmt = n => Number(n).toLocaleString('en-US');
+  const Modes = ({ list, val, set }) => html`<div className="fo5-row" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(val === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
+  const L = t => `<span class="ltr">${t}</span>`;
 
+  /* ── §0 base and limit registers: is this address legal? ── */
+  function BaseLimit({ ar }) {
+    const BASE = 300040, LIM = 120900, TOP = BASE + LIM;
+    const [a, setA] = useState(300040);
+    const [txt, setTxt] = useState('300040');
+    const legal = a >= BASE && a < TOP, c1 = a >= BASE, c2 = a < TOP;
+    const lo = 280000, hi = 440000, pos = v => Math.max(0, Math.min(100, (v - lo) / (hi - lo) * 100));
+    const pick = v => { setA(v); setTxt(String(v)); };
+    const en = legal ? `<b>${fmt(a)}</b> is legal: base ≤ address &lt; base + limit, so the access goes to memory.` : `<b>${fmt(a)}</b> is outside base … base + limit: the CPU traps to the OS (<b>addressing error</b>).`;
+    const arT = legal ? `العنوان <b>${a}</b> legal، لأنه بيحقق الشرط:${L('base ≤ address &lt; base + limit')}فالـ access بيروح للـ memory.` : `العنوان <b>${a}</b> برّه المدى من الـ base لحد base + limit، فالـ CPU بيعمل trap للـ OS (<b>addressing error</b>).`;
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <div className="fo5-in"><label>Address <input inputMode="numeric" value=${txt} aria-label="Address to check" onInput=${e => { setTxt(e.target.value); const v = parseInt(e.target.value.replace(/\D/g, ''), 10); if (!isNaN(v)) setA(v); }} /></label></div>
+      <div className="fo5-row">${[[299999, '299999'], [300040, '300040'], [350000, '350000'], [420939, '420939'], [420940, '420940']].map(([v, t]) => html`<button key=${v} className="fig-btn" aria-pressed=${String(a === v)} onClick=${() => pick(v)}>${t}</button>`)}</div>
+      <div className="fo5-line" aria-hidden="true"><div className="bar"></div><div className="ok" style=${{ left: pos(BASE) + '%', width: (pos(TOP) - pos(BASE)) + '%' }}></div>
+        <div className="mk" style=${{ left: pos(a) + '%' }}><i></i></div>
+        <span className="lb" style=${{ left: pos(BASE) + '%' }}>300040</span><span className="lb" style=${{ left: pos(TOP) + '%' }}>420940</span></div>
+      <div className="fo5-two">
+        <div className="fo5-box"><small>base register</small><span className="fo5-mono">300040</span></div>
+        <div className="fo5-box"><small>limit register</small><span className="fo5-mono">120900</span></div></div>
+      <div className="fo5-arrow">↓ CPU checks every user-mode access</div>
+      <div className=${'fo5-box ' + (c1 ? 'good' : 'bad')}>address ≥ base? <b className=${c1 ? 'fo5-ok' : 'fo5-red'}>${c1 ? 'yes' : 'no → trap'}</b></div>
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box ' + (!c1 ? 'dim' : c2 ? 'good' : 'bad')}>address ${'<'} base + limit (420940)? <b className=${c2 ? 'fo5-ok' : 'fo5-red'}>${c2 ? 'yes' : 'no → trap'}</b></div>
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box ' + (legal ? 'good' : 'bad')}><b className="t">${legal ? 'Memory access' : 'Trap to OS: addressing error'}</b><small>legal range 300040 … 420939</small></div>
+      </div></div><${Cap} en=${en} ar=${arT} showAr=${ar} /></figure>`;
+  }
+
+  /* ── §1 multistep processing and the three binding times ── */
+  const BIND = [
+    { k: 'Source program', s: 'symbolic addresses (variables)', en: 'The <b>source program</b> uses <b>symbolic</b> addresses, such as variable names.', ar: 'الـ <b>source program</b> بيستخدم addresses <b>symbolic</b>، زي أسامي الـ variables.' },
+    { k: 'Compiler or assembler', s: '', en: 'The <b>compiler or assembler</b> translates it. <b>Compile-time binding</b>: if the memory location is known a priori, absolute code is generated, and it must be recompiled if the start location changes.', ar: 'الـ <b>compiler أو الـ assembler</b> بيترجمه. الـ <b>compile-time binding</b>: لو مكان الـ memory معروف من الأول بيطلع absolute code، ولو مكان البداية اتغير لازم نعمل recompile.', b: 'Compile time' },
+    { k: 'Object module', s: 'relocatable: "14 bytes from the beginning of this module"', en: 'The <b>object module</b> has <b>relocatable</b> addresses, such as "14 bytes from the beginning of this module".', ar: 'الـ <b>object module</b> فيه addresses <b>relocatable</b>، زي <bdi>"14 bytes from the beginning of this module"</bdi>.' },
+    { k: 'Linkage editor', s: '+ other object modules', en: 'The <b>linkage editor</b> joins it with <b>other object modules</b>.', ar: 'الـ <b>linkage editor</b> بيجمعه مع <b>object modules تانية</b>.' },
+    { k: 'Load module', s: '', en: 'The result is the <b>load module</b>, which waits on disk in the <b>input queue</b>.', ar: 'النتيجة هي الـ <b>load module</b>، وبيستنى على الـ disk في الـ <b>input queue</b>.' },
+    { k: 'Loader', s: '+ system library', en: 'The <b>loader</b> brings it into memory with the <b>system library</b>. <b>Load-time binding</b>: relocatable code is generated when the location is not known at compile time.', ar: 'الـ <b>loader</b> بيحمّله في الـ memory مع الـ <b>system library</b>. الـ <b>load-time binding</b>: بيطلع relocatable code لما المكان مايكونش معروف وقت الـ compile.', b: 'Load time' },
+    { k: 'In-memory binary image', s: 'absolute addresses, e.g. 74014', en: 'The <b>in-memory binary image</b> has <b>absolute</b> addresses, e.g. 74014. A <b>dynamically loaded system library</b> can join it through <b>dynamic linking</b>.', ar: 'الـ <b>in-memory binary image</b> فيها addresses <b>absolute</b>، زي 74014. وممكن <b>system library</b> تتحمّل بشكل dynamic وتنضم ليها عن طريق الـ <b>dynamic linking</b>.' },
+    { k: 'Execution time', s: '', en: '<b>Execution-time binding</b>: binding is delayed until run time if the process can move during execution. It needs hardware support (base and limit registers).', ar: 'الـ <b>execution-time binding</b>: الـ binding بيتأجل لوقت التشغيل لو الـ process ممكن تتنقل وهي شغالة، وده محتاج دعم من الـ hardware (الـ base والـ limit registers).', b: 'Execution time', last: 1 }
+  ];
+  function Binding({ ar }) {
+    const [i, ctl] = useSteps(BIND.length, 2400);
+    const boxes = BIND.filter(x => !x.last), s = BIND[i];
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap fo5-chain">
+      ${boxes.map((x, k) => html`<div key=${k}>${k > 0 && html`<div className="fo5-arrow">↓</div>`}
+        <div className=${'fo5-box' + (k === i ? ' on' : k > i ? ' dim' : '')}><b className="t">${x.k}${x.b && k <= i ? html`<span className="fo5-tag">${x.b} binding</span>` : ''}</b>${x.s && html`<small>${x.s}</small>`}</div></div>`)}
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box' + (s.last ? ' on' : ' dim')}><b className="t">While it runs<span className="fo5-tag">Execution time binding</span></b><small>process may move: base and limit registers</small></div>
+      </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${BIND} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §1 MMU with a relocation register ── */
+  function Mmu({ ar }) {
+    const R = 14000;
+    const [x, setX] = useState(346), [t, setT] = useState('346'), [run, setRun] = useState(0);
+    const steps = [0, 1, 2, 3];
+    const [i, ctl] = useSteps(steps.length, 1500);
+    const go = v => { setX(v); setT(String(v)); ctl.replay(); setRun(r => r + 1); };
+    const cap = [
+      { en: 'The CPU sends the <b>logical address</b>. The user program deals only with logical addresses.', ar: 'الـ CPU بيبعت الـ <b>logical address</b>. الـ user program بيتعامل مع الـ logical addresses بس.' },
+      { en: 'The <b>MMU</b> (hardware) maps it at run time: the base register is now the <b>relocation register</b>.', ar: 'الـ <b>MMU</b> (hardware) بيعمل الـ mapping وقت التشغيل، والـ base register بقى اسمه <b>relocation register</b>.' },
+      { en: `Its value is added to every address: ${fmt(R)} + ${fmt(x)} = <b>${fmt(R + x)}</b>.`, ar: `قيمته بتتجمع على كل address:${L(`${R} + ${x} = <b>${R + x}</b>`)}` },
+      { en: `Memory receives the <b>physical address ${fmt(R + x)}</b>; the program never sees it.`, ar: `الـ memory بيوصلها الـ <b>physical address ${R + x}</b>، والبرنامج عمره ما بيشوفه.` }
+    ][i];
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap" key=${run}>
+      <div className="fo5-in"><label>Logical address <input inputMode="numeric" value=${t} aria-label="Logical address" onInput=${e => { setT(e.target.value); const v = parseInt(e.target.value.replace(/\D/g, ''), 10); if (!isNaN(v)) { setX(v); } }} /></label>
+        <button className="fig-btn" onClick=${() => go(x)}>Send</button><button className="fig-btn" onClick=${() => go(346)}>Example 346</button></div>
+      <div className="fo5-pipe">
+        <div className=${'fo5-box' + (i === 0 ? ' on' : '')}><b className="t">CPU</b><small>logical</small><span className="fo5-pkt">${fmt(x)}</span></div>
+        <span className="op">→</span>
+        <div className=${'fo5-box' + (i === 1 || i === 2 ? ' on' : '')}><b className="t">MMU</b><small>relocation register</small><span className="fo5-mono">${fmt(R)}</span>${i >= 2 && html`<small className="fo5-mono">+ ${fmt(x)}</small>`}</div>
+        <span className="op">→</span>
+        <div className=${'fo5-box' + (i === 3 ? ' on' : i < 2 ? ' dim' : '')}><b className="t">Memory</b><small>physical</small><span className="fo5-pkt">${i >= 2 ? fmt(R + x) : '…'}</span></div>
+      </div></div></div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §2 swapping: roll out, roll in ── */
+  function Swap({ ar }) {
+    const [mb, setMb] = useState(100);
+    const RATE = 50, ms = Math.round(mb / RATE * 1000);
+    const steps = [
+      { en: 'Memory holds the OS and a <b>lower-priority</b> process P1. A <b>higher-priority</b> process P2 is ready, but its memory image is on the <b>backing store</b> (a fast disk with direct access to all memory images).', ar: 'الـ memory فيها الـ OS و process اسمها P1 <b>أولويتها أقل</b>. فيه process تانية P2 <b>أولويتها أعلى</b> جاهزة، بس الـ memory image بتاعتها على الـ <b>backing store</b> (disk سريع بيوصل لكل الـ memory images مباشرةً).', o: 0 },
+      { en: `<b>Roll out</b>: P1 is swapped out to the backing store. Transfer time is proportional to the size: ${mb} MB at ${RATE} MB/s = <b>${fmt(ms)} ms</b>.`, ar: `الـ <b>roll out</b>: الـ P1 بتتنقل للـ backing store. وقت النقل بيتناسب مع الحجم:${L(`${mb} MB ÷ ${RATE} MB/s = <b>${ms} ms</b>`)}`, o: 1 },
+      { en: `<b>Roll in</b>: P2 is swapped in, another <b>${fmt(ms)} ms</b>, and runs.`, ar: `الـ <b>roll in</b>: الـ P2 بتدخل الـ memory في <b>${ms} ms</b> كمان، وبعدين تشتغل.`, o: 2 },
+      { en: `The swap component of this context switch is ${fmt(ms)} + ${fmt(ms)} = <b>${fmt(2 * ms / 1000)} s</b>. Most of swap time is <b>transfer time</b>, so it grows with the memory swapped.`, ar: `الجزء بتاع الـ swap في الـ context switch ده ${L(`${ms} + ${ms} ms = <b>${2 * ms / 1000} s</b>`)}وأغلب وقت الـ swap هو <b>transfer time</b>، فبيزيد مع حجم الـ memory اللي بتتنقل.`, o: 3 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const s = steps[i], p1In = s.o < 1, p2In = s.o >= 2;
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <div className="fo5-in"><label>Process size <select value=${mb} aria-label="Process size in MB" onChange=${e => setMb(+e.target.value)}>${[10, 50, 100, 200, 500].map(v => html`<option key=${v} value=${v}>${v} MB</option>`)}</select></label><span>at ${RATE} MB/s</span></div>
+      <div className="fo5-two">
+        <div className="fo5-mem"><div className="seg hd">Main memory</div><div className="seg os">Operating system</div>
+          <div className=${'seg p' + (s.o === 1 || s.o === 2 ? ' hi' : '')} style=${{ flex: 1, display: 'grid', placeItems: 'center' }}>${p1In ? 'P1 (low priority)' : p2In ? 'P2 (high priority)' : html`<span style=${{ color: 'var(--graphite)' }}>user space (free)</span>`}</div></div>
+        <div className="fo5-mem"><div className="seg hd">Backing store</div>
+          <div className="seg free">${p1In ? 'P2 image' : 'P1 image'}</div>
+          <div className="seg free" style=${{ flex: 1, display: 'grid', placeItems: 'center' }}>${p2In ? 'P1 waits here' : ''}</div></div></div>
+      <div style=${{ marginTop: '8px' }}>
+        <small>Swap out ${fmt(ms)} ms</small><div className="fo5-prog"><i style=${{ width: s.o >= 1 ? '100%' : '0%' }}></i></div>
+        <small>Swap in ${fmt(ms)} ms</small><div className="fo5-prog"><i style=${{ width: s.o >= 2 ? '100%' : '0%' }}></i></div></div>
+      </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §3 first-fit, best-fit, worst-fit on the notes' partitions ── */
+  const PARTS = [100, 500, 200, 300, 600];
+  function runFit(alg, procs) {
+    const used = PARTS.map(() => []), log = [];
+    procs.forEach((p, k) => {
+      const free = used.map((u, j) => PARTS[j] - u.reduce((a, b) => a + b.s, 0));
+      const cand = free.map((f, j) => f >= p ? j : -1).filter(j => j >= 0);
+      let j = -1;
+      if (cand.length) j = alg === 'first' ? cand[0] : alg === 'best' ? cand.reduce((a, b) => free[b] < free[a] ? b : a) : cand.reduce((a, b) => free[b] > free[a] ? b : a);
+      if (alg === 'worst' && cand.length) { const mx = Math.max(...free); j = free.indexOf(mx) >= 0 && mx >= p ? free.indexOf(mx) : -1; }
+      log.push({ p, k, cand, j, hole: j >= 0 ? free[j] : null, left: j >= 0 ? free[j] - p : null });
+      if (j >= 0) used[j].push({ s: p, k });
+    });
+    return log;
+  }
+  const NAME = { first: 'First-fit', best: 'Best-fit', worst: 'Worst-fit' };
+  const RULE = { first: 'the first hole that is big enough', best: 'the smallest hole that is big enough', worst: 'the largest hole' };
+  const RULE_AR = { first: 'أول hole كبيرة كفاية', best: 'أصغر hole كبيرة كفاية', worst: 'أكبر hole' };
+  function FitSim({ ar }) {
+    const [alg, setAlg0] = useState('first');
+    const [txt, setTxt] = useState('212, 417, 112, 426');
+    const procs = (txt.match(/\d+/g) || []).map(Number).filter(v => v > 0).slice(0, 6);
+    const ex = txt.replace(/\s/g, '') === '212,417,112,426';
+    const log = runFit(alg, procs);
+    const steps = [null, ...log.flatMap(e => [{ e, ph: 0 }, { e, ph: 1 }]), { end: 1 }];
+    const [i, ctl] = useSteps(steps.length, 1700);
+    const setAlg = a => { setAlg0(a); ctl.replay(); };
+    const s = steps[Math.min(i, steps.length - 1)];
+    const doneK = s && s.end ? procs.length : s ? s.e.k + (s.ph ? 1 : 0) : 0;
+    const used = PARTS.map(() => []); log.slice(0, doneK).forEach(e => { if (e.j >= 0) used[e.j].push({ s: e.p, k: e.k }); });
+    const free = used.map((u, j) => PARTS[j] - u.reduce((a, b) => a + b.s, 0));
+    let en, a;
+    if (!s) { en = `<b>${NAME[alg]}</b> takes ${RULE[alg]}. Partitions 100, 500, 200, 300, 600 KB; the processes arrive in order${ex ? ' (the example from the notes)' : ''}. After each placement the hole shrinks and the leftover can hold later processes.`; a = `الـ <b>${NAME[alg]}</b> بياخد ${RULE_AR[alg]}. الـ partitions هي 100 و 500 و 200 و 300 و 600 KB، والـ processes بتيجي بالترتيب${ex ? ' (ده مثال الـ notes)' : ''}. بعد كل placement الـ hole بتصغر، واللي فاضل منها ممكن ياخد processes بعدين.`; }
+    else if (s.end) { const n = log.filter(e => e.j >= 0).length; en = `<b>${NAME[alg]}</b>: ${n} of ${procs.length} placed.${ex ? (alg === 'best' ? ' All placed: best-fit is the most efficient here.' : ' 426 KB must wait.') : ''} First-fit and best-fit are better than worst-fit in speed and storage utilization.`; a = `الـ <b>${NAME[alg]}</b>: اتحط ${n} من ${procs.length}.${ex ? (alg === 'best' ? ' كلهم اتحطوا، فالـ best-fit هو الأكفأ هنا.' : ' والـ 426 KB لازم تستنى.') : ''} الـ first-fit والـ best-fit أحسن من الـ worst-fit في السرعة واستغلال الـ storage.`; }
+    else if (s.ph === 0) { en = `<b>${s.e.p} KB</b>: holes big enough: ${s.e.cand.length ? s.e.cand.map(j => free[j] + ' KB').join(', ') : 'none'}.`; a = `الـ process اللي حجمها <b>${s.e.p} KB</b>: الـ holes الكبيرة كفاية هي ${s.e.cand.length ? s.e.cand.map(j => free[j] + ' KB').join(' و ') : 'مفيش'}.`; }
+    else if (s.e.j >= 0) { en = `${NAME[alg]} picks ${RULE[alg]}: <b>${s.e.hole} KB</b> (partition ${PARTS[s.e.j]}), leaving <b>${s.e.left} KB</b>.`; a = `الـ ${NAME[alg]} بياخد ${RULE_AR[alg]}: <b>${s.e.hole} KB</b> (الـ partition اللي حجمها ${PARTS[s.e.j]})، ويفضل منها <b>${s.e.left} KB</b>.`; }
+    else { en = `No hole is big enough: <b>${s.e.p} KB must wait</b>.`; a = `مفيش hole كبيرة كفاية، فالـ <b>${s.e.p} KB لازم تستنى</b>.`; }
+    const cur = s && !s.end ? s.e : null;
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <${Modes} list=${[['first', 'First-fit'], ['best', 'Best-fit'], ['worst', 'Worst-fit']]} val=${alg} set=${setAlg} />
+      <div className="fo5-in"><label>Processes (KB) <input className="w" value=${txt} aria-label="Process sizes in KB" onInput=${e => { setTxt(e.target.value); ctl.go(0); }} /></label>
+        ${!ex && html`<button className="fig-btn" onClick=${() => { setTxt('212, 417, 112, 426'); ctl.go(0); }}>Notes example</button>`}</div>
+      <div className="fo5-q">${procs.map((p, k) => { const e = log[k]; const st = cur && cur.k === k ? 'cur' : k < doneK ? (e.j >= 0 ? 'done' : 'wait') : ''; return html`<span key=${k} className=${st}>${p}${k < doneK ? (e.j >= 0 ? ' ✓' : ' waits') : ''}</span>`; })}</div>
+      <div className="fo5-parts">${PARTS.map((P, j) => { const isC = cur && cur.cand.includes(j), isP = cur && s.ph === 1 && cur.j === j;
+        return html`<div key=${j} className="fo5-part"><span className="nm">${P} KB</span>
+          <div className=${'fo5-cells' + (isP ? ' pick' : isC ? ' cand' : '')} style=${{ width: (P / 600 * 100) + '%' }}>
+            ${used[j].map(u => html`<span key=${u.k} className=${'u n' + (u.k + 1)} style=${{ flexGrow: u.s, flexBasis: 0 }}>${u.s}</span>`)}
+            ${free[j] > 0 && html`<span className="h" style=${{ flexGrow: free[j], flexBasis: 0 }}>${free[j] >= 60 ? free[j] : ''}</span>`}</div></div>`; })}</div>
+      </div></div><${Cap} en=${en} ar=${a} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §4 external fragmentation and compaction (the first-fit result) ── */
+  function ExtFrag({ ar }) {
+    // first-fit result from the notes' example: holes 100, 176 (500 − 212 − 112), 200, 300, 183 (600 − 417)
+    const ROWS = [{ P: 100, used: [] }, { P: 500, used: [212, 112] }, { P: 200, used: [] }, { P: 300, used: [] }, { P: 600, used: [417] }];
+    const total = 100 + 176 + 200 + 300 + 183;
+    const steps = [
+      { en: 'After <b>first-fit</b>, the 426 KB process is waiting. The holes left are 100, 176, 200, 300 and 183 KB.', ar: 'بعد الـ <b>first-fit</b>، الـ process اللي حجمها 426 KB مستنية. والـ holes اللي فاضلة هي 100 و 176 و 200 و 300 و 183 KB.' },
+      { en: `<b>External fragmentation</b>: the free memory adds up to ${total} KB, enough for 426 KB, but it is <b>not contiguous</b>. The largest hole is only 300 KB.`, ar: `الـ <b>external fragmentation</b>: مجموع الـ memory الفاضية ${total} KB، وده يكفي الـ 426 KB، بس هي <b>مش contiguous</b>، وأكبر hole فيها 300 KB بس.` },
+      { en: '<b>Compaction</b> shuffles memory contents to place all free memory together in one large block. It is possible only if relocation is dynamic and done at execution time.', ar: 'الـ <b>compaction</b> بيحرك محتويات الـ memory عشان يجمع كل الـ free memory في block واحدة كبيرة. وده ينفع بس لو الـ relocation dynamic وبيحصل وقت الـ execution.' },
+      { en: `Now one hole of <b>${total} KB</b> exists and the 426 KB process fits. During compaction, a job doing I/O must be latched in memory, or I/O is done only into OS buffers.`, ar: `دلوقتي فيه hole واحدة <b>${total} KB</b>، والـ process اللي حجمها 426 KB دخلت. وأثناء الـ compaction، الـ job اللي بتعمل I/O لازم تتثبت في الـ memory، أو الـ I/O يتعمل في الـ OS buffers بس.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2800);
+    const packed = i >= 2;
+    const blocks = packed ? [...ROWS.flatMap(r => r.used), ...(i >= 3 ? [426] : [])] : null;
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <div className="fo5-q"><span className=${i >= 3 ? 'done' : 'wait'}>426 KB ${i >= 3 ? '✓' : 'waits'}</span><span>free: ${total} KB</span></div>
+      ${packed && html`<div className="fo5-q"><span>packed together: 212, 112, 417${i >= 3 ? ', 426' : ''} KB</span></div>`}
+      ${!packed ? html`<div className="fo5-parts">${ROWS.map((r, j) => { const f = r.P - r.used.reduce((a, b) => a + b, 0);
+          return html`<div key=${j} className="fo5-part"><span className="nm">${r.P} KB</span><div className=${'fo5-cells' + (i === 1 ? ' cand' : '')} style=${{ width: (r.P / 600 * 100) + '%' }}>
+            ${r.used.map((u, k) => html`<span key=${k} className="u" style=${{ flexGrow: u, flexBasis: 0 }}>${u}</span>`)}
+            ${f > 0 && html`<span className="h" style=${{ flexGrow: f, flexBasis: 0, background: i === 1 ? 'color-mix(in srgb, var(--pen) 14%, var(--paper))' : undefined }}>${f >= 60 ? f : ''}</span>`}</div></div>`; })}</div>`
+        : html`<div className="fo5-part"><span className="nm">all</span><div className="fo5-cells pick" style=${{ height: '40px' }}>
+            ${blocks.map((u, k) => html`<span key=${k} className=${'u' + (u === 426 && i >= 3 ? ' n4' : '')} style=${{ flexGrow: u, flexBasis: 0 }} title=${u + ' KB'}>${u >= 400 ? u : ''}</span>`)}
+            ${i < 3 && html`<span className="h" style=${{ flexGrow: total, flexBasis: 0, fontWeight: 700, color: 'var(--ok)' }}>${total} free</span>`}
+            ${i >= 3 && html`<span className="h" style=${{ flexGrow: total - 426, flexBasis: 0 }}>${total - 426}</span>`}</div></div>`}
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §5 segmentation address translation (slide example and review Q6) ── */
+  const SEG = { slide: [[1000, 1400], [400, 6300], [400, 4300], [1100, 3200], [1000, 4700]], q6: [[600, 219], [14, 2300], [100, 90], [580, 1327], [96, 1952]] };
+  const SEG_EX = { slide: [[2, 53], [3, 852], [0, 1222]], q6: [[0, 430], [1, 10], [2, 500], [3, 400], [4, 112]] };
+  function Segment({ ar }) {
+    const [set, setSet0] = useState('slide');
+    const [sd, setSd] = useState([2, 53]);
+    const [st, setSt] = useState('2'), [dt, setDt] = useState('53');
+    const T = SEG[set], [s, d] = sd;
+    const sOk = s >= 0 && s < T.length, row = sOk ? T[s] : null, dOk = sOk && d < row[0], phys = dOk ? row[1] + d : null;
+    const pick = (a, b) => { setSd([a, b]); setSt(String(a)); setDt(String(b)); };
+    const setSet = k => { setSet0(k); const e = SEG_EX[k][0]; pick(e[0], e[1]); };
+    const en = !sOk ? `Segment ${s} is illegal: s must be &lt; STLR (${T.length}). Trap.` : dOk ? `Logical &lt;${s}, ${d}&gt;: STBR points to the segment table; entry ${s} has limit ${row[0]}, base ${row[1]}. Offset ${d} &lt; ${row[0]}, so physical = ${row[1]} + ${d} = <b>${phys}</b>.` : `Logical &lt;${s}, ${d}&gt;: entry ${s} has limit ${row[0]}. Offset ${d} ≥ ${row[0]}, so the hardware <b>traps: addressing error</b>.`;
+    const lg = `<bdi dir="ltr">&lt;${s}, ${d}&gt;</bdi>`;
+    const a = !sOk ? `الـ segment رقم ${s} illegal، لأن s لازم يبقى أقل من الـ STLR (${T.length}). فيه trap.` : dOk ? `العنوان ${lg}: الـ STBR بيشاور على الـ segment table، والـ entry رقم ${s} فيها limit ${row[0]} و base ${row[1]}. والـ offset ${d} أقل من ${row[0]}، فالـ physical address هو${L(`${row[1]} + ${d} = <b>${phys}</b>`)}` : `العنوان ${lg}: الـ entry رقم ${s} فيها limit ${row[0]}. والـ offset ${d} مش أقل منه، فالـ hardware بيعمل <b>trap: addressing error</b>.`;
+    const top = set === 'slide' ? 6700 : 2600, order = T.map((r, k) => ({ k, base: r[1], lim: r[0] })).sort((x, y) => x.base - y.base);
+    const cells = []; let at = 0;
+    order.forEach(g => { if (g.base > at) cells.push({ e: 1, h: g.base - at }); cells.push({ k: g.k, h: g.lim, base: g.base }); at = g.base + g.lim; });
+    if (at < top) cells.push({ e: 1, h: top - at });
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <${Modes} list=${[['slide', 'Slide example'], ['q6', 'Review Q6']]} val=${set} set=${setSet} />
+      <div className="fo5-row">${SEG_EX[set].map(([a2, b2]) => html`<button key=${a2 + '-' + b2} className="fig-btn" aria-pressed=${String(s === a2 && d === b2)} onClick=${() => pick(a2, b2)}>(${a2}, ${b2})</button>`)}</div>
+      <div className="fo5-in"><label>s <input style=${{ width: '3.4em' }} inputMode="numeric" value=${st} aria-label="Segment number" onInput=${e => { setSt(e.target.value); const v = parseInt(e.target.value, 10); if (!isNaN(v)) setSd([v, d]); }} /></label>
+        <label>d <input style=${{ width: '4.6em' }} inputMode="numeric" value=${dt} aria-label="Offset" onInput=${e => { setDt(e.target.value); const v = parseInt(e.target.value, 10); if (!isNaN(v)) setSd([s, v]); }} /></label></div>
+      <div className="fo5-two" style=${{ gridTemplateColumns: '1.25fr 1fr' }}>
+        <div><table className="fo5-tbl"><thead><tr><th>s</th><th>limit</th><th>base</th></tr></thead>
+          <tbody>${T.map((r, k) => html`<tr key=${k} className=${k === s ? (dOk ? 'on' : 'no') : ''}><td>${k}</td><td>${r[0]}</td><td>${r[1]}</td></tr>`)}</tbody></table>
+          <div className=${'fo5-box ' + (dOk ? 'good' : 'bad')} style=${{ marginTop: '6px', textAlign: 'center' }}>${dOk ? html`<span className="fo5-mono">${row[1]} + ${d} = </span><b className="fo5-big">${phys}</b>` : html`<b className="fo5-red">trap</b>`}</div></div>
+        <div className="fo5-pm" aria-label="Physical memory" style=${{ height: '210px' }}>${cells.map((c, k) => html`<div key=${k} className=${c.e ? 'e' : 's' + (c.k === s && dOk ? ' on' : '')} style=${{ flex: c.h + ' 0 0' }}>${c.e ? '' : 'seg ' + c.k}</div>`)}</div>
+      </div></div></div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── §6 paging model: page table 0→1, 1→4, 2→3, 3→7 ── */
+  function Paging({ ar }) {
+    const PT = [1, 4, 3, 7];
+    const steps = [
+      { en: 'Logical memory has 4 <b>pages</b>; physical memory is divided into <b>frames</b> of the same size. The OS keeps track of the free frames.', ar: 'الـ logical memory فيها 4 <b>pages</b>، والـ physical memory متقسمة لـ <b>frames</b> بنفس الحجم. والـ OS بيتابع الـ frames الفاضية.', n: 0 },
+      ...PT.map((f, p) => ({ en: `Page ${p} is loaded into a free frame: the page table records <b>${p} → ${f}</b>.`, ar: `الـ page رقم ${p} بتتحط في frame فاضية، والـ page table بتسجل${L(`<b>${p} → ${f}</b>`)}`, n: p + 1 })),
+      { en: 'Translation: the logical address is (p, d). <b>p</b> indexes the page table to get the frame; the offset <b>d</b> is combined with the frame base. For page 2: (2, d) → frame 3, offset d.', ar: 'الـ translation: الـ logical address هو (p, d). الـ <b>p</b> بيدخل على الـ page table ويجيب الـ frame، والـ offset <b>d</b> بيتضاف على بداية الـ frame. يعني الـ page رقم 2:' + L('(2, d) → frame 3, offset d'), n: 4, x: 2 },
+      { en: 'With a logical address space of 2<sup>m</sup> and page size 2<sup>n</sup>, <b>p</b> is the high m − n bits and <b>d</b> the low n bits. The physical frames of a process can be <b>noncontiguous</b>: no external fragmentation.', ar: 'لو الـ logical address space حجمها 2<sup>m</sup> والـ page size حجمها 2<sup>n</sup>، يبقى الـ <b>p</b> هو أعلى m − n bits والـ <b>d</b> هو أقل n bits. والـ frames بتاعة الـ process ممكن تبقى <b>noncontiguous</b>، فمفيش external fragmentation.', n: 4, bits: 1 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    const s = steps[i];
+    const [sel, setSel] = useState(null);
+    const hl = sel != null ? sel : s.x != null ? s.x : (s.n >= 1 && s.n <= 4 && i <= 4 ? s.n - 1 : null);
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <div className="fo5-two" style=${{ gridTemplateColumns: '1fr 1.2fr 1fr' }}>
+        <div><small className="fo5-mono" style=${{ color: 'var(--graphite)' }}>logical</small><div className="fo5-frames">${PT.map((f, p) => html`<div key=${p} className="fo5-fr" style=${{ gridTemplateColumns: '1fr' }}><button className=${'c fig-btn' + (p === hl ? ' on' : ' full')} style=${{ minHeight: '24px', padding: '0' }} onClick=${() => { setSel(p); ctl.go(steps.length - 2); }}>page ${p}</button></div>`)}</div></div>
+        <div><small className="fo5-mono" style=${{ color: 'var(--graphite)' }}>page table</small>
+          <table className="fo5-tbl" style=${{ width: '100%' }}><thead><tr><th>p</th><th>frame</th></tr></thead><tbody>${PT.map((f, p) => html`<tr key=${p} className=${p === hl ? 'on' : ''}><td>${p}</td><td>${p < s.n ? f : ''}</td></tr>`)}</tbody></table></div>
+        <div><small className="fo5-mono" style=${{ color: 'var(--graphite)' }}>physical</small><div className="fo5-frames">${[0, 1, 2, 3, 4, 5, 6, 7].map(f => { const p = PT.indexOf(f), on = p >= 0 && p < s.n;
+          return html`<div key=${f} className="fo5-fr" style=${{ gridTemplateColumns: '1.6em 1fr' }}><span className="n">${f}</span><span className=${'c' + (on ? (p === hl ? ' on' : ' full') : '')} style=${{ height: '20px' }}>${on ? 'p' + p : ''}</span></div>`; })}</div></div>
+      </div>
+      ${hl != null && i >= 5 && html`<div className="fo5-split" style=${{ marginTop: '10px' }}><span className="pp">p = ${hl}</span><span>d</span><span style=${{ flex: '.4', border: 0 }}>→</span><span className="pp">f = ${PT[hl]}</span><span>d</span></div>`}
+      ${s.bits && html`<div className="fo5-split" style=${{ marginTop: '8px' }}><span className="pp">p: m − n bits</span><span>d: n bits</span></div>`}
+      </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §6 internal fragmentation calculator (page 2,048 B, process 72,766 B) ── */
+  function PageFrag({ ar }) {
+    const [ps, setPs] = useState(2048), [sz, setSz] = useState(72766), [t, setT] = useState('72766');
+    const full = Math.floor(sz / ps), rest = sz % ps, frames = full + (rest ? 1 : 0), waste = rest ? ps - rest : 0;
+    const ex = ps === 2048 && sz === 72766;
+    const en = `${fmt(sz)} B ÷ ${fmt(ps)} B = <b>${full} pages + ${fmt(rest)} B</b>, so the process needs <b>${frames} frames</b>. The last frame wastes ${fmt(ps)} − ${fmt(rest)} = <b>${fmt(waste)} B</b> of <b>internal fragmentation</b>${ex ? ' (the example from the notes)' : ''}. Worst case = 1 frame − 1 byte; on average ½ frame. Smaller pages mean less fragmentation but more page-table entries.`;
+    const a = `الحسبة:${L(`${sz} B ÷ ${ps} B = <b>${full} pages + ${rest} B</b>`)}يعني الـ process محتاجة <b>${frames} frames</b>. وآخر frame بيضيع منها${L(`${ps} − ${rest} = <b>${waste} B</b>`)}وده اسمه <b>internal fragmentation</b>${ex ? '، وده مثال الـ notes' : ''}. أسوأ حالة هي frame إلا byte واحد، وفي المتوسط نص frame. والـ pages الأصغر معناها fragmentation أقل، بس entries أكتر في الـ page table.`;
+    const shown = Math.min(frames, 48);
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <div className="fo5-in"><label>Process (B) <input inputMode="numeric" value=${t} aria-label="Process size in bytes" onInput=${e => { setT(e.target.value); const v = parseInt(e.target.value.replace(/\D/g, ''), 10); if (v > 0) setSz(v); }} /></label>
+        <label>Page <select value=${ps} aria-label="Page size in bytes" onChange=${e => setPs(+e.target.value)}>${[512, 1024, 2048, 4096, 8192].map(v => html`<option key=${v} value=${v}>${fmt(v)} B</option>`)}</select></label>
+        ${!ex && html`<button className="fig-btn" onClick=${() => { setPs(2048); setSz(72766); setT('72766'); }}>Notes example</button>`}</div>
+      <small>${frames} frames${frames > shown ? ` (first ${shown} drawn)` : ''}</small>
+      <div className="fo5-pg" aria-hidden="true">${Array.from({ length: shown }, (_, k) => html`<i key=${k} className=${k === frames - 1 && rest ? 'l' : ''}></i>`)}</div>
+      <small>Last frame (${fmt(ps)} B)</small>
+      <div className="fo5-last"><span className="used" style=${{ width: (rest ? rest / ps * 100 : 100) + '%' }}>${rest ? fmt(rest) + ' B used' : 'full'}</span>${waste > 0 && html`<span className="waste">${fmt(waste)} B wasted</span>`}</div>
+      </div></div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'os-base-limit': BaseLimit, 'os-binding-steps': Binding, 'os-mmu-reloc': Mmu, 'os-swapping': Swap, 'os-fit-sim': FitSim, 'os-ext-frag': ExtFrag, 'os-segment-xlate': Segment, 'os-paging-model': Paging, 'os-page-frag': PageFrag });
+})();
+/* ── part 6 ── */
+// OS visuals, part 6: L5 virtual memory (demand paging, page faults, page replacement FIFO / OPT / LRU, Belady, LRU implementations, second chance, LFU/MFU). Every label and caption comes from the site's notes for L5.
+(function () {
+  const { useState, useEffect } = React;
+  const { html, useSteps, Cap, Bar, calm } = window.FIGKIT;
+  const CSS = `
+.fo6 .fig-dots i.on{ background:var(--k-os); } .fo6 .fig-btn:hover{ border-color:var(--k-os); }
+.fo6 .fig-btn.sel, .fo6 .fig-btn[aria-pressed="true"]{ border-color:var(--k-os); box-shadow:0 0 0 1px var(--k-os); background:color-mix(in srgb, var(--k-os) 14%, var(--paper)); }
+.fo6 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.fo6-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.fo6-row .fig-btn{ font-size:.84rem; padding:4px 10px; min-height:32px; }
+.fo6-h{ font-size:.8rem; color:var(--graphite); text-align:center; margin:0 0 4px; font-weight:600; }
+.fo6-muted{ font-size:.8rem; color:var(--graphite); text-align:center; margin:6px 0 0; }
+.fo6-box{ border:1.4px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); padding:5px 8px; font-size:.84rem; line-height:1.3; transition:all .4s ease; }
+.fo6-box.on{ border-color:var(--k-os); box-shadow:0 0 0 2px color-mix(in srgb, var(--k-os) 35%, transparent); }
+.fo6-box.dim{ opacity:.35; }
+.fo6-box.bad{ border-color:var(--pen); background:color-mix(in srgb, var(--pen) 10%, var(--paper)); }
+.fo6-box.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 14%, var(--paper)); }
+.fo6-box small{ display:block; font-size:.78rem; color:var(--graphite); }
+.fo6-tag{ display:inline-block; font-size:.76rem; font-weight:700; border-radius:99px; padding:0 7px; border:1px solid var(--line); background:var(--paper-2); color:var(--ink); margin-left:4px; }
+.fo6-tag.v{ border-color:var(--ok); color:var(--ink); background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.fo6-tag.i{ border-color:var(--pen); color:var(--pen); background:var(--paper); }
+.fo6-tag.k{ border-color:var(--k-os); background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); }
+.fo6-two{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; max-width:460px; margin:0 auto; align-items:start; }
+.fo6-col{ display:flex; flex-direction:column; gap:5px; }
+.fo6-arrow{ text-align:center; color:var(--graphite); font-size:1rem; line-height:1.2; }
+/* page-fault picture */
+.fo6-pf{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; max-width:440px; margin:0 auto; }
+.fo6-pf .fo6-box{ min-height:46px; }
+.fo6-pf .wide{ grid-column:1 / -1; }
+.fo6-num{ display:inline-grid; place-items:center; width:20px; height:20px; border-radius:50%; font-size:.78rem; font-weight:700; background:var(--s-os); color:#fff; margin-right:5px; vertical-align:1px; }
+.fo6-page{ display:inline-block; font-family:var(--mono); font-weight:700; border-radius:5px; padding:0 6px; background:color-mix(in srgb, var(--k-os) 22%, var(--paper)); color:var(--ink); }
+/* stages */
+.fo6-st{ display:flex; flex-direction:column; gap:4px; max-width:460px; margin:0 auto; }
+.fo6-st div{ display:grid; grid-template-columns:22px minmax(0,1fr) auto; gap:6px; align-items:center; border:1px solid var(--line); border-radius:7px; padding:4px 7px; font-size:.82rem; line-height:1.3; background:var(--paper); color:var(--ink); opacity:.4; transition:all .35s; }
+.fo6-st div.done{ opacity:.8; }
+.fo6-st div.on{ opacity:1; border-color:var(--k-os); box-shadow:0 0 0 2px color-mix(in srgb, var(--k-os) 30%, transparent); }
+.fo6-st b.n{ font-size:.78rem; color:var(--graphite); }
+.fo6-who{ font-size:.76rem; font-weight:700; border-radius:99px; padding:1px 7px; white-space:nowrap; border:1px solid var(--line); }
+.fo6-who.os{ background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); } .fo6-who.disk{ background:color-mix(in srgb, var(--graphite) 16%, var(--paper)); } .fo6-who.other{ background:color-mix(in srgb, var(--ok) 16%, var(--paper)); } .fo6-who.me{ background:var(--paper-2); }
+.fo6-now{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:3px 8px; max-width:460px; margin:0 auto 10px; font-size:.82rem; color:var(--ink); }
+.fo6-now span:nth-child(odd){ color:var(--graphite); }
+/* simulator */
+.fo6-in{ display:flex; gap:6px; align-items:center; justify-content:center; flex-wrap:wrap; margin:0 0 8px; font-size:.84rem; color:var(--ink); }
+.fo6-in textarea{ resize:none; overflow:hidden; } .fo6-in input, .fo6-in textarea{ font:inherit; font-family:var(--mono); font-size:.84rem; width:100%; max-width:330px; box-sizing:border-box; padding:5px 7px; border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); }
+.fo6-in textarea:focus, .fo6-in input:focus{ outline:2px solid var(--k-os); outline-offset:1px; }
+.fo6-in .fig-btn{ min-width:32px; padding:3px 8px; }
+.fo6-str{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; margin:0 auto 10px; max-width:460px; }
+.fo6-str span{ position:relative; min-width:22px; text-align:center; font-family:var(--mono); font-size:.86rem; padding:2px 3px; border-radius:5px; border:1px solid var(--line); background:var(--paper); color:var(--ink); }
+.fo6-str span.past{ opacity:.55; } .fo6-str span.cur{ border-color:var(--k-os); box-shadow:0 0 0 2px var(--k-os); opacity:1; font-weight:700; }
+.fo6-str span.f::after{ content:'F'; position:absolute; top:-9px; right:-4px; font-size:.7rem; font-weight:700; color:var(--pen); background:var(--paper); border-radius:4px; padding:0 2px; line-height:1.2; }
+.fo6-str span.mark{ background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); }
+.fo6-fr{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:0 0 8px; }
+.fo6-fr div{ min-width:62px; border:1.5px solid var(--graphite); border-radius:7px; padding:4px 6px; text-align:center; background:var(--paper); color:var(--ink); transition:all .35s; }
+.fo6-fr div b{ display:block; font-family:var(--mono); font-size:1.1rem; line-height:1.2; min-height:1.2em; }
+.fo6-fr div small{ display:block; font-size:.76rem; color:var(--graphite); line-height:1.2; }
+.fo6-fr div.new{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 16%, var(--paper)); }
+.fo6-fr div.vic{ border-color:var(--pen); box-shadow:0 0 0 2px color-mix(in srgb, var(--pen) 30%, transparent); }
+.fo6-fr div.hit{ border-color:var(--k-os); box-shadow:0 0 0 2px color-mix(in srgb, var(--k-os) 35%, transparent); }
+.fo6-cnt{ text-align:center; font-size:.9rem; color:var(--ink); margin:0 0 8px; }
+.fo6-cnt b{ color:var(--k-os); font-size:1.05rem; }
+.fo6-hist{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; max-width:460px; margin:0 auto; }
+.fo6-hist .c{ display:flex; flex-direction:column; gap:1px; }
+.fo6-hist .c span{ width:22px; height:19px; display:grid; place-items:center; font-family:var(--mono); font-size:.76rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); }
+.fo6-hist .c span.r{ background:var(--paper-2); font-weight:700; }
+.fo6-hist .c span.n{ background:color-mix(in srgb, var(--ok) 20%, var(--paper)); font-weight:700; }
+.fo6-hist .c span.x{ border:0; background:transparent; color:var(--pen); font-weight:700; }
+.fo6-nav{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:center; padding:0 12px 12px; }
+.fo6-nav .cnt{ font-size:.82rem; color:var(--graphite); }
+.fo6-cmp{ display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin:8px 0 0; font-size:.82rem; }
+.fo6-cmp span{ border:1px solid var(--line); border-radius:99px; padding:2px 9px; background:var(--paper); color:var(--ink); }
+.fo6-cmp span.on{ border-color:var(--k-os); background:color-mix(in srgb, var(--k-os) 14%, var(--paper)); font-weight:700; }
+/* belady */
+.fo6-bl{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:10px; max-width:460px; margin:0 auto; }
+.fo6-bl .fo6-fr div{ min-width:24px; padding:2px 3px; } .fo6-bl .fo6-fr{ gap:3px; flex-wrap:nowrap; }
+/* lru implementations */
+.fo6-tbl{ border-collapse:collapse; margin:0 auto; font-size:.84rem; }
+.fo6-tbl td, .fo6-tbl th{ border:1px solid var(--line); padding:3px 7px; text-align:center; background:var(--paper); color:var(--ink); }
+.fo6-tbl th{ background:var(--paper-2); color:var(--graphite); font-size:.78rem; }
+.fo6-tbl td.min{ background:color-mix(in srgb, var(--pen) 12%, var(--paper)); font-weight:700; }
+.fo6-stack{ display:flex; flex-direction:column; gap:3px; align-items:center; }
+.fo6-stack span{ width:70px; text-align:center; font-family:var(--mono); font-size:.88rem; border:1.4px solid var(--graphite); border-radius:5px; padding:2px 0; background:var(--paper); color:var(--ink); transition:all .3s; }
+.fo6-stack span.top{ border-color:var(--k-os); background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); }
+.fo6-stack span.bot{ border-color:var(--pen); }
+/* clock */
+.fo6-ring{ position:relative; width:240px; height:220px; margin:0 auto 6px; }
+.fo6-ring .s{ position:absolute; width:76px; transform:translate(-50%,-50%); border:1.5px solid var(--graphite); border-radius:8px; background:var(--paper); color:var(--ink); text-align:center; padding:3px 0; transition:all .35s; }
+.fo6-ring .s b{ display:block; font-family:var(--mono); font-size:1.05rem; min-height:1.2em; }
+.fo6-ring .s small{ display:block; font-size:.76rem; color:var(--graphite); }
+.fo6-ring .s .hd{ position:absolute; top:-19px; left:50%; transform:translateX(-50%); font-size:.78rem; font-weight:700; color:var(--k-os); }
+.fo6-ring .s.hand{ border-color:var(--k-os); box-shadow:0 0 0 3px color-mix(in srgb, var(--k-os) 35%, transparent); }
+.fo6-ring .s.new{ background:color-mix(in srgb, var(--ok) 16%, var(--paper)); }
+.fo6-ring .ctr{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); font-size:.78rem; color:var(--graphite); text-align:center; }
+.fo6 .ltr{ display:block; direction:ltr; unicode-bidi:isolate; }
+@media (prefers-reduced-motion: reduce){ .fo6-box, .fo6-st div, .fo6-fr div, .fo6-stack span, .fo6-ring .s{ transition:none; } }`;
+  if (!document.getElementById('fo6-css')) { const s = document.createElement('style'); s.id = 'fo6-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const LECT = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 0, 3, 2, 1, 2, 0, 1, 7, 0, 1];
+  const BEL = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5];
+  const LTR = t => `<span class="ltr">${t}</span>`;
+
+  // page replacement on a reference string: each step keeps the frames (victim replaced in its own frame), fault, victim and why
+  function simulate(refs, nf, algo) {
+    const fr = Array(nf).fill(null), loaded = Array(nf).fill(-1), last = {}, out = [];
+    refs.forEach((p, t) => {
+      let slot = fr.indexOf(p), fault = false, victim = null, key = null, kind = 'hit';
+      if (slot < 0) {
+        fault = true; slot = fr.indexOf(null); kind = 'empty';
+        if (slot < 0) {
+          kind = 'replace';
+          if (algo === 'FIFO') { slot = loaded.indexOf(Math.min(...loaded)); key = loaded[slot] + 1; }
+          else if (algo === 'LRU') { let b = 0; fr.forEach((q, k) => { if (last[q] < last[fr[b]]) b = k; }); slot = b; key = last[fr[b]] + 1; }
+          else { const nx = fr.map(q => { const k = refs.indexOf(q, t + 1); return k < 0 ? Infinity : k; }); let b = 0; nx.forEach((v, k) => { if (v > nx[b]) b = k; }); slot = b; key = nx[b] === Infinity ? null : nx[b] + 1; }
+          victim = fr[slot];
+        }
+        fr[slot] = p; loaded[slot] = t;
+      }
+      last[p] = t;
+      const info = fr.map((q, k) => q == null ? null : algo === 'FIFO' ? loaded[k] + 1 : algo === 'LRU' ? last[q] + 1 : (() => { const n = refs.indexOf(q, t + 1); return n < 0 ? null : n + 1; })());
+      out.push({ t, p, frames: fr.slice(), fault, slot, victim, key, kind, info });
+    });
+    return out;
+  }
+  const NAME = { FIFO: 'FIFO', OPT: 'Optimal (OPT)', LRU: 'LRU' };
+  function sayStep(s, algo) {
+    if (!s) return null;
+    const p = s.p, n = s.t + 1;
+    if (s.kind === 'hit') return { en: `Reference #${n}: page <b>${p}</b> is already in memory, so <b>no fault</b>.`, ar: `الـ reference رقم ${n}: الـ page <b>${p}</b> موجودة في الـ memory أصلًا، فـ<b>مفيش fault</b>.` };
+    if (s.kind === 'empty') return { en: `Reference #${n}: page <b>${p}</b> goes into an empty frame. That is still a <b>fault</b>: every empty-frame fill at the start counts.`, ar: `الـ reference رقم ${n}: الـ page <b>${p}</b> بتدخل frame فاضي. وده برضه <b>fault</b>، لأن كل ملء لـ frame فاضي في الأول بيتحسب.` };
+    const v = s.victim;
+    if (algo === 'FIFO') return { en: `Reference #${n}: page <b>${p}</b> is not in memory: <b>fault</b>. FIFO replaces page <b>${v}</b>, the page that has been in memory the longest (loaded at #${s.key}).`, ar: `الـ reference رقم ${n}: الـ page <b>${p}</b> مش في الـ memory، يعني <b>fault</b>. الـ FIFO بيشيل الـ page <b>${v}</b>، لأنها أقدم page في الـ memory (دخلت عند رقم ${s.key}).` };
+    if (algo === 'LRU') return { en: `Reference #${n}: page <b>${p}</b> is not in memory: <b>fault</b>. LRU replaces page <b>${v}</b>, the page that has not been used for the longest time (last used at #${s.key}).`, ar: `الـ reference رقم ${n}: الـ page <b>${p}</b> مش في الـ memory، يعني <b>fault</b>. الـ LRU بيشيل الـ page <b>${v}</b>، لأنها أكتر page بقالها مدة ماتستخدمتش (آخر استخدام عند رقم ${s.key}).` };
+    return s.key == null
+      ? { en: `Reference #${n}: page <b>${p}</b> is not in memory: <b>fault</b>. OPT replaces page <b>${v}</b>: it is never used again.`, ar: `الـ reference رقم ${n}: الـ page <b>${p}</b> مش في الـ memory، يعني <b>fault</b>. الـ OPT بيشيل الـ page <b>${v}</b>، لأنها مش هتتستخدم تاني خالص.` }
+      : { en: `Reference #${n}: page <b>${p}</b> is not in memory: <b>fault</b>. OPT replaces page <b>${v}</b>: of the pages in memory it is used farthest in the future (next at #${s.key}).`, ar: `الـ reference رقم ${n}: الـ page <b>${p}</b> مش في الـ memory، يعني <b>fault</b>. الـ OPT بيشيل الـ page <b>${v}</b>، لأنها أبعد page هتتستخدم في المستقبل (جاية عند رقم ${s.key}).` };
+  }
+  const infoLabel = (algo, v, ar) => v == null ? (algo === 'OPT' ? (ar ? 'never again' : 'never again') : '') : algo === 'FIFO' ? `in since #${v}` : algo === 'LRU' ? `last used #${v}` : `next use #${v}`;
+  // a small step controller for simulators: 0 = nothing processed yet
+  function useRun(n, ms) {
+    const [t, setT] = useState(calm() ? n : 0), [play, setPlay] = useState(!calm());
+    useEffect(() => { if (t > n) setT(n); }, [n]);
+    useEffect(() => { if (!play) return; if (t >= n) { setPlay(false); return; } const id = setTimeout(() => setT(x => x + 1), ms); return () => clearTimeout(id); }, [t, play, n]);
+    return { t: Math.min(t, n), play, go: x => { setPlay(false); setT(Math.max(0, Math.min(n, x))); }, toggle: () => { if (t >= n) { setT(0); setPlay(true); } else setPlay(p => !p); }, restart: () => { setT(0); setPlay(!calm()); } };
+  }
+  const Nav = ({ r, n }) => html`<div className="fig-bar fo6-nav">
+    <button className="fig-btn" onClick=${() => r.go(r.t - 1)} disabled=${r.t === 0} aria-label="Previous reference">‹ Back</button>
+    <button className="fig-btn" onClick=${() => r.go(r.t + 1)} disabled=${r.t >= n} aria-label="Next reference">Next ›</button>
+    <button className="fig-btn" onClick=${r.toggle}>${r.play ? '❚❚ Pause' : '▶ Play'}</button>
+    <button className="fig-btn" onClick=${() => r.go(n)} disabled=${r.t >= n}>End</button>
+    <span className="cnt">${r.t} / ${n}</span></div>`;
+  const parseRefs = s => (s.match(/\d+/g) || []).map(Number).filter(x => x <= 99).slice(0, 30);
+
+  /* ── 0.0-0.4: only part of the program in memory, the rest on disk ── */
+  function VmSpace({ ar }) {
+    const PG = [['Code in use', 0], ['Code in use', 1], ['Error code', null], ['Unusual routines', null], ['Large data structures', null], ['Large data structures', null]];
+    const steps = [
+      { en: 'Code must be in memory to execute, but the <b>entire program is rarely used</b>.', ar: 'الـ code لازم يبقى في الـ memory عشان يتنفذ، بس <b>البرنامج كله نادرًا ما بيتستخدم</b>.' },
+      { en: 'Parts like <b>error code</b>, <b>unusual routines</b> and <b>large data structures</b> are rarely used, and not all parts are needed at the same time.', ar: 'فيه أجزاء زي الـ <b>error code</b> والـ <b>unusual routines</b> والـ <b>large data structures</b> نادرًا ما بتتستخدم، ومش كل الأجزاء محتاجينها في نفس الوقت.', rare: 1 },
+      { en: '<b>Virtual memory</b> separates user logical memory from physical memory: only the needed part is in memory, and the <b>MMU</b> maps logical pages to physical page frames. The rest stays on disk.', ar: 'الـ <b>virtual memory</b> بتفصل الـ logical memory بتاعة الـ user عن الـ physical memory: الجزء المحتاجينه بس هو اللي في الـ memory، والـ <b>MMU</b> بيربط الـ logical pages بالـ physical page frames. والباقي بيفضل على الـ disk.', map: 1 },
+      { en: 'So the <b>logical address space can be much larger</b> than the physical address space: the program is no longer constrained by physical memory.', ar: 'وبكده الـ <b>logical address space ممكن يبقى أكبر بكتير</b> من الـ physical address space، والبرنامج مابقاش محدود بالـ physical memory.', map: 1 },
+      { en: 'Each program uses less memory, so <b>more programs run at the same time</b>: higher CPU utilization and throughput, and less I/O to load or swap.', ar: 'كل برنامج بقى بياخد memory أقل، فـ<b>برامج أكتر بتشتغل في نفس الوقت</b>: الـ CPU utilization والـ throughput بيزيدوا، والـ I/O اللي بنحتاجه للـ load أو الـ swap بيقل.', map: 1, two: 1 },
+      { en: 'Virtual memory is implemented via <b>demand paging</b> or <b>demand segmentation</b>.', ar: 'الـ virtual memory بتتنفذ عن طريق الـ <b>demand paging</b> أو الـ <b>demand segmentation</b>.', map: 1, two: 1 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3000);
+    const s = steps[i];
+    const frames = [s.map ? 'P1 page 0' : '', s.two ? 'P2 page 0' : '', s.map ? 'P1 page 1' : '', s.two ? 'P2 page 1' : ''];
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-two">
+        <div><p className="fo6-h">Logical address space (P1)</p><div className="fo6-col">
+          ${PG.map(([t, f], k) => { const rare = f == null; return html`<div key=${k} className=${'fo6-box' + (s.rare && rare ? ' bad' : '') + (s.map && !rare ? ' on' : '')}>page ${k}<small>${t}</small>
+            ${s.map ? html`<span className=${'fo6-tag ' + (rare ? 'i' : 'v')}>${rare ? 'disk' : 'frame ' + (f * 2)}</span>` : null}</div>`; })}</div></div>
+        <div><p className="fo6-h">Physical memory (page frames)</p><div className="fo6-col">
+          ${frames.map((t, k) => html`<div key=${k} className=${'fo6-box' + (t ? ' ok' : ' dim')}>frame ${k}<small>${t || 'free'}</small></div>`)}</div>
+          ${s.map ? html`<p className="fo6-muted">MMU: logical → physical</p>` : null}
+          ${s.two ? html`<p className="fo6-muted">P2 also fits: more programs run at once</p>` : null}</div>
+      </div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 1.0-1.4: demand paging with the valid-invalid bit (try it) ── */
+  function DemandPaging({ ar }) {
+    const N = 6;
+    const [tab, setTab] = useState(() => Array(N).fill(null)), [msg, setMsg] = useState(null), [last, setLast] = useState(null);
+    const free = () => { for (let f = 0; f < N; f++) if (!tab.includes(f)) return f; return null; };
+    const ref = p => {
+      setLast(p);
+      if (p >= N) { setMsg({ en: `Page ${p} is outside the process's address space: an <b>invalid reference</b>, so the process is <b>aborted</b>.`, ar: `الـ page ${p} برة الـ address space بتاع الـ process، يعني <b>invalid reference</b>، فالـ process بيتعمله <b>abort</b>.`, bad: 1 }); return; }
+      if (tab[p] != null) { setMsg({ en: `Entry ${p} has <b>v</b>: the page is memory resident, so the MMU translates to frame ${tab[p]}. No difference from ordinary paging.`, ar: `الـ entry رقم ${p} عليها <b>v</b>، يعني الـ page موجودة في الـ memory، فالـ MMU بيترجم العنوان لـ frame ${tab[p]}. مفيش أي فرق عن الـ paging العادي.` }); return; }
+      const f = free(); const t = tab.slice(); t[p] = f; setTab(t);
+      setMsg({ en: `Entry ${p} has <b>i</b>: the MMU finds i during translation, so a <b>page fault</b> occurs. The page is brought into frame ${f} only now that it is needed, and its bit becomes <b>v</b>.`, ar: `الـ entry رقم ${p} عليها <b>i</b>، فالـ MMU لما يلاقي i وهو بيترجم بيحصل <b>page fault</b>. الـ page بتدخل frame ${f} دلوقتي بس لما احتجناها، والـ bit بتاعها بيبقى <b>v</b>.`, fault: 1 });
+    };
+    const reset = () => { setTab(Array(N).fill(null)); setMsg(null); setLast(null); };
+    const m = msg || { en: '<b>Try it:</b> reference a page. Initially every page-table entry is <b>i</b> (not in memory): a lazy swapper brings a page in only when it is needed.', ar: '<b>جرّب:</b> اعمل reference لـ page. في الأول كل الـ entries في الـ page table عليها <b>i</b> (مش في الـ memory)، والـ lazy swapper مش بيدخّل page غير لما نحتاجها.' };
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-row">${[...Array(N).keys(), 9].map(p => html`<button key=${p} className="fig-btn" onClick=${() => ref(p)}>Page ${p}</button>`)}<button className="fig-btn" onClick=${reset}>↻ Reset</button></div>
+      <div className="fo6-two">
+        <div><p className="fo6-h">Page table</p><div className="fo6-col">
+          ${tab.map((f, p) => html`<div key=${p} className=${'fo6-box' + (last === p ? ' on' : '')}>page ${p}: ${f == null ? '-' : 'frame ' + f}<span className=${'fo6-tag ' + (f == null ? 'i' : 'v')}>${f == null ? 'i' : 'v'}</span></div>`)}</div></div>
+        <div><p className="fo6-h">Physical memory</p><div className="fo6-col">
+          ${[...Array(N).keys()].map(f => { const p = tab.indexOf(f); return html`<div key=${f} className=${'fo6-box' + (p < 0 ? ' dim' : last === p ? ' ok' : '')}>frame ${f}<small>${p < 0 ? 'free' : 'page ' + p}</small></div>`; })}</div></div>
+      </div>
+      ${m.bad ? html`<p className="fo6-muted" style=${{ color: 'var(--pen)', fontWeight: 700 }}>Abort</p>` : null}</div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 2.0-2.5: the steps in handling a page fault ── */
+  function PageFault({ ar }) {
+    const steps = [
+      { en: 'The process references page <b>M</b>, but its page-table entry is <b>i</b>: the page is not resident.', ar: 'الـ process بيعمل reference للـ page <b>M</b>، بس الـ entry بتاعها في الـ page table عليها <b>i</b>، يعني الـ page مش موجودة.', on: ['proc', 'tab'] },
+      { en: 'The first reference to a non-resident page <b>traps to the OS</b>: a <b>page fault</b>.', ar: 'أول reference لـ page مش موجودة بيعمل <b>trap للـ OS</b>، وده الـ <b>page fault</b>.', on: ['os'], n: 0 },
+      { en: '<b>1)</b> The OS looks at another table to decide: an <b>invalid reference</b> → abort; <b>just not in memory</b> → continue.', ar: '<b>(1)</b> الـ OS بيبص في table تاني عشان يقرر: لو <b>invalid reference</b> يبقى abort، ولو <b>مش في الـ memory بس</b> يبقى نكمل.', on: ['os'], n: 1 },
+      { en: '<b>2)</b> Find a <b>free frame</b> in physical memory.', ar: '<b>(2)</b> نلاقي <b>free frame</b> في الـ physical memory.', on: ['mem'], n: 2 },
+      { en: '<b>3)</b> Swap the page from the backing store into the frame, via a <b>scheduled disk operation</b>.', ar: '<b>(3)</b> نعمل swap للـ page من الـ backing store للـ frame، عن طريق <b>disk operation متجدولة</b>.', on: ['disk', 'mem'], n: 3, moving: 1 },
+      { en: '<b>4)</b> Reset the tables to show the page is now in memory: set the validation bit = <b>v</b>.', ar: '<b>(4)</b> نظبط الـ tables عشان توضح إن الـ page بقت في الـ memory، يعني الـ validation bit يبقى <b>v</b>.', on: ['tab'], n: 4, inMem: 1 },
+      { en: '<b>5)</b> <b>Restart the instruction</b> that caused the page fault. This time the reference succeeds.', ar: '<b>(5)</b> نعمل <b>restart للـ instruction</b> اللي عملت الـ page fault، والمرة دي الـ reference بينجح.', on: ['proc'], n: 5, inMem: 1 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2800);
+    const s = steps[i], on = k => s.on.includes(k), v = i >= 5;
+    const B = (k, title, body, extra) => html`<div className=${'fo6-box' + (on(k) ? ' on' : '') + (extra || '')}>${title}<small>${body}</small></div>`;
+    return html`<figure className="fig fo6"><div className="fig-stage"><div className="fo6-pf">
+      ${B('proc', 'Process', v ? html`<span>load <span className="fo6-page">M</span> ✓ restarted</span>` : html`<span>load <span className="fo6-page">M</span></span>`)}
+      ${B('tab', 'Page table', html`<span>M: ${v ? 'frame 2' : '-'} <span className=${'fo6-tag ' + (v ? 'v' : 'i')}>${v ? 'v' : 'i'}</span></span>`)}
+      ${B('os', html`<span>${s.n === 0 ? html`<span className="fo6-num">!</span>` : null}Operating system</span>`, i >= 1 && i <= 2 ? (i === 1 ? 'trap: page fault' : 'invalid → abort, not in memory → continue') : 'waiting for a trap', s.n === 0 ? ' bad' : '')}
+      ${B('disk', 'Backing store (disk)', html`<span>page <span className="fo6-page">M</span>${s.moving ? ' → moving to frame 2' : ''}</span>`)}
+      ${B('mem', 'Physical memory', html`<span>frame 2: ${s.inMem || s.moving ? html`<span className="fo6-page">M</span>` : i >= 3 ? 'free ✓' : 'free'}</span>`, ' wide')}
+      </div>
+      <p className="fo6-muted">${s.n ? html`<span><span className="fo6-num">${s.n}</span>step ${s.n} of 5</span>` : 'page fault handling'}</p></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 3.0-3.10: the 11 stages (worst case), and who has the CPU ── */
+  function FaultStages({ ar }) {
+    const S = [
+      ['Trap to the operating system', 'os'], ['Save the user registers and process state', 'os'], ['Determine that the interrupt was a page fault', 'os'],
+      ['Check the reference is legal; find the page on the disk', 'os'], ['Issue a read from the disk to a free frame (queue, seek/latency, transfer)', 'disk'],
+      ['While waiting, allocate the CPU to some other user', 'other'], ['Interrupt from the disk I/O subsystem (I/O completed)', 'os'],
+      ['Save the registers and process state for the other user', 'os'], ['Correct the page table: the page is now in memory', 'os'],
+      ['Wait for the CPU to be allocated to this process again', 'other'], ['Restore registers, state and new page table; resume the instruction', 'me']];
+    const AR = ['<bdi dir="ltr">1.</bdi> نعمل trap للـ operating system.', '<bdi dir="ltr">2.</bdi> نحفظ الـ user registers والـ process state.', '<bdi dir="ltr">3.</bdi> نحدد إن الـ interrupt كان page fault.',
+      '<bdi dir="ltr">4.</bdi> نتأكد إن الـ page reference كان legal، ونحدد مكان الـ page على الـ disk.', '<bdi dir="ltr">5.</bdi> نطلب read من الـ disk لـ free frame: نستنى في الـ device queue لحد ما يتخدم، ونستنى الـ seek و/أو الـ latency، وبعدين يبدأ نقل الـ page للـ free frame.',
+      '<bdi dir="ltr">6.</bdi> وإحنا مستنيين، الـ CPU بيروح لـ user تاني.', '<bdi dir="ltr">7.</bdi> بييجي interrupt من الـ disk I/O subsystem إن الـ I/O خلص.',
+      '<bdi dir="ltr">8.</bdi> نحفظ الـ registers والـ process state بتوع الـ user التاني.', '<bdi dir="ltr">9.</bdi> نصلّح الـ page table (والـ tables التانية) عشان توضح إن الـ page بقت في الـ memory.',
+      '<bdi dir="ltr">10.</bdi> نستنى لحد ما الـ CPU يرجع للـ process ده تاني.', '<bdi dir="ltr">11.</bdi> نرجّع الـ user registers والـ process state والـ page table الجديدة، ونكمل الـ instruction اللي اتقطعت.'];
+    const EN = ['Trap to the operating system.', 'Save the user registers and process state.', 'Determine that the interrupt was a page fault.', 'Check that the page reference was legal and determine the location of the page on the disk.', 'Issue a read from the disk to a free frame: wait in the device queue until serviced, wait for the device seek and/or latency time, then begin the transfer of the page to a free frame.', 'While waiting, allocate the CPU to some other user.', 'Receive an interrupt from the disk I/O subsystem (I/O completed).', 'Save the registers and process state for the other user.', 'Correct the page table (and other tables) to show the page is now in memory.', 'Wait for the CPU to be allocated to this process again.', 'Restore the user registers, process state and new page table, then resume the interrupted instruction.'];
+    const steps = [{ en: 'The <b>worst case</b> of demand paging goes through <b>11 stages</b>. Watch who has the CPU and what the disk is doing.', ar: 'أسوأ حالة في الـ demand paging بتعدي على <b>11 مرحلة</b>. خلي بالك مين ماسك الـ CPU والـ disk بيعمل إيه.' },
+      ...EN.map((e, k) => ({ en: `${k + 1}. ${e}`, ar: AR[k] }))];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    const k = i - 1, who = { os: 'OS', disk: 'Disk', other: 'Other user', me: 'This process' };
+    const cpu = k < 0 ? 'This process' : k <= 4 ? 'OS (this fault)' : k === 5 || k === 9 ? 'Other user' : k === 10 ? 'This process' : 'OS';
+    const disk = k >= 4 && k <= 5 ? 'reading the page' : k === 6 ? 'done: interrupt' : 'idle';
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-now"><span>CPU:</span><b>${cpu}</b><span>Disk:</span><b>${disk}</b></div>
+      <div className="fo6-st">${S.map(([t, w], j) => html`<div key=${j} className=${j === k ? 'on' : j < k ? 'done' : ''}><b className="n">${j + 1}</b><span>${t}</span><span className=${'fo6-who ' + w}>${who[w]}</span></div>`)}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 4.1-4.2: basic page replacement, one or two transfers ── */
+  function BasicReplace({ ar }) {
+    const [dirty, setDirty] = useState(true);
+    const steps = [
+      { en: 'Process needs page <b>D</b>, which is not in memory, and <b>there is no free frame</b>.', ar: 'الـ process محتاج الـ page <b>D</b>، وهي مش في الـ memory، و<b>مفيش free frame</b>.' },
+      { en: '<b>(1)</b> Find the location of the desired page <b>D</b> on disk.', ar: '<b>(1)</b> نلاقي مكان الـ page المطلوبة <b>D</b> على الـ disk.', disk: 1 },
+      { en: '<b>(2)</b> No free frame, so a <b>page-replacement algorithm selects a victim</b> frame: here page <b>B</b>.', ar: '<b>(2)</b> مفيش free frame، فالـ <b>page-replacement algorithm بيختار victim</b> frame، وهنا الـ page <b>B</b>.', vic: 1, disk: 1 },
+      dirty ? { en: 'The victim is <b>dirty</b> (modified), so it is <b>written to disk</b> first (swap out), and its entry becomes <b>i</b>.', ar: 'الـ victim متعدّل (<b>dirty</b>)، فلازم <b>يتكتب على الـ disk</b> الأول (swap out)، والـ entry بتاعته تبقى <b>i</b>.', vic: 1, out: 1, disk: 1 }
+        : { en: 'The victim is <b>clean</b> (not modified): the copy on disk is already up to date, so nothing is written. Its entry becomes <b>i</b>.', ar: 'الـ victim مش متعدّل (<b>clean</b>)، والنسخة اللي على الـ disk لسه مظبوطة، فمش محتاجين نكتب حاجة. والـ entry بتاعته تبقى <b>i</b>.', vic: 1, out: 1, disk: 1 },
+      { en: '<b>(3)</b> Bring page <b>D</b> into the freed frame (swap in) and update the page and frame tables: D becomes <b>v</b>.', ar: '<b>(3)</b> ندخّل الـ page <b>D</b> في الـ frame اللي فضي (swap in)، ونظبط الـ page table والـ frame table، فالـ D تبقى <b>v</b>.', in: 1, out: 1 },
+      { en: '<b>(4)</b> Restart the instruction that caused the trap. ' + (dirty ? 'This fault needed <b>2 page transfers</b> (out + in).' : 'This fault needed only <b>1 page transfer</b> (in).'), ar: '<b>(4)</b> نعمل restart للـ instruction اللي عملت الـ trap. ' + (dirty ? 'الـ fault ده احتاج <b>2 page transfers</b> (out و in).' : 'الـ fault ده احتاج <b>page transfer واحد بس</b> (in).'), in: 1, out: 1, done: 1 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2700);
+    const s = steps[i], xfers = (s.out && dirty ? 1 : 0) + (s.in ? 1 : 0);
+    const mem = ['A', s.in ? 'D' : 'B', 'C'];
+    const pt = [['A', 'v'], ['B', s.out ? 'i' : 'v'], ['C', 'v'], ['D', s.in ? 'v' : 'i']];
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-row"><button className="fig-btn" aria-pressed=${String(dirty)} onClick=${() => { setDirty(true); ctl.replay(); }}>Victim is dirty</button><button className="fig-btn" aria-pressed=${String(!dirty)} onClick=${() => { setDirty(false); ctl.replay(); }}>Victim is clean</button></div>
+      <div className="fo6-two">
+        <div><p className="fo6-h">Physical memory (full)</p><div className="fo6-col">
+          ${mem.map((p, k) => html`<div key=${k} className=${'fo6-box' + (k === 1 && s.vic && !s.in ? ' bad' : '') + (k === 1 && s.in ? ' ok' : '')}>frame ${k}<small>page ${p}${k === 1 && !s.in ? (dirty ? ' (dirty)' : ' (clean)') : ''}</small></div>`)}</div></div>
+        <div><p className="fo6-h">Page table</p><div className="fo6-col">
+          ${pt.map(([p, b]) => html`<div key=${p} className="fo6-box">page ${p}<span className=${'fo6-tag ' + b}>${b}</span></div>`)}</div></div>
+      </div>
+      <div className="fo6-box" style=${{ maxWidth: '440px', margin: '10px auto 0' }}>Disk<small>${s.disk || s.in ? 'page D is here' : ''}${s.out ? (dirty ? ' · B written out' : ' · B not written (clean)') : ''}${s.in ? ' · D read in' : ''}</small></div>
+      <p className="fo6-cnt">Page transfers for this fault: <b>${xfers}</b></p></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 5.0-5.3: FIFO / OPT / LRU simulator on the lecture string (or your own) ── */
+  function ReplaceSim({ ar }) {
+    const [algo, setAlgo] = useState('FIFO'), [nf, setNf] = useState(3), [txt, setTxt] = useState(LECT.join(','));
+    const refs = parseRefs(txt), sim = simulate(refs, nf, algo), r = useRun(refs.length, 1100);
+    const s = r.t > 0 ? sim[r.t - 1] : null, faults = sim.slice(0, r.t).filter(x => x.fault).length;
+    const lect = txt.replace(/\s/g, '') === LECT.join(',') && nf === 3;
+    const totals = ['FIFO', 'OPT', 'LRU'].map(a => [a, simulate(refs, nf, a).filter(x => x.fault).length]);
+    const cap = s ? sayStep(s, algo) : { en: `<b>${NAME[algo]}</b> on the ${lect ? 'lecture' : 'your'} reference string with <b>${nf} frames</b>. ${algo === 'FIFO' ? 'FIFO replaces the page that has been in memory the longest.' : algo === 'OPT' ? 'OPT replaces the page that will not be used for the longest period of time.' : 'LRU replaces the page that has not been used for the longest time.'} Press Play or Next.`, ar: `الـ <b>${NAME[algo]}</b> على الـ reference string ${lect ? 'بتاع المحاضرة' : 'بتاعك'}، بـ <b>${nf} frames</b>. ${algo === 'FIFO' ? 'الـ FIFO بيشيل أقدم page دخلت الـ memory.' : algo === 'OPT' ? 'الـ OPT بيشيل الـ page اللي مش هتتستخدم لأطول فترة.' : 'الـ LRU بيشيل الـ page اللي بقالها أطول مدة ماتستخدمتش.'} دوس Play أو Next.` };
+    const end = r.t === refs.length && refs.length;
+    const note = end && lect ? { FIFO: { en: ' Total: <b>15 faults</b>, as in the lecture.', ar: ' الإجمالي: <b>15 fault</b>، زي المحاضرة.' }, OPT: { en: ' Total: <b>9 faults</b>, the minimum possible.', ar: ' الإجمالي: <b>9 faults</b>، وده أقل عدد ممكن.' }, LRU: { en: ' Total: <b>12 faults</b>: better than FIFO, worse than OPT.', ar: ' الإجمالي: <b>12 fault</b>: أحسن من الـ FIFO وأوحش من الـ OPT.' } }[algo] : { en: '', ar: '' };
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-row">${['FIFO', 'OPT', 'LRU'].map(a => html`<button key=${a} className="fig-btn" aria-pressed=${String(algo === a)} onClick=${() => { setAlgo(a); r.restart(); }}>${a}</button>`)}</div>
+      <div className="fo6-in"><span>Frames</span><button className="fig-btn" onClick=${() => { setNf(Math.max(1, nf - 1)); r.restart(); }} disabled=${nf <= 1} aria-label="Fewer frames">−</button><b>${nf}</b><button className="fig-btn" onClick=${() => { setNf(Math.min(7, nf + 1)); r.restart(); }} disabled=${nf >= 7} aria-label="More frames">+</button>
+        <button className="fig-btn" onClick=${() => { setTxt(LECT.join(',')); setNf(3); r.restart(); }}>Example from the notes</button></div>
+      <div className="fo6-in"><textarea aria-label="Reference string" rows="2" value=${txt} onChange=${e => { setTxt(e.target.value); r.restart(); }}></textarea></div>
+      <div className="fo6-str">${refs.map((p, k) => html`<span key=${k} className=${(k < r.t - 1 ? 'past' : k === r.t - 1 ? 'cur' : '') + (k < r.t && sim[k].fault ? ' f' : '') + (s && s.key != null && s.kind === 'replace' && k === s.key - 1 && algo !== 'FIFO' ? ' mark' : '')}>${p}</span>`)}</div>
+      <div className="fo6-fr">${Array.from({ length: nf }, (_, k) => { const p = s ? s.frames[k] : null, isNew = s && s.fault && s.slot === k, hit = s && !s.fault && s.slot === k;
+        return html`<div key=${k} className=${isNew ? 'new' : hit ? 'hit' : ''}><small>frame ${k + 1}</small><b>${p == null ? '' : p}</b><small>${s && p != null ? infoLabel(algo, s.info[k]) : ' '}</small></div>`; })}</div>
+      <p className="fo6-cnt">Page faults: <b>${faults}</b></p>
+      <div className="fo6-hist" aria-label="History">${sim.slice(0, r.t).map((x, k) => html`<div key=${k} className="c"><span className="r">${x.p}</span>${x.frames.map((q, j) => html`<span key=${j} className=${x.fault && x.slot === j ? 'n' : ''}>${q == null ? '' : q}</span>`)}<span className="x">${x.fault ? 'F' : ''}</span></div>`)}</div>
+      ${end ? html`<div className="fo6-cmp">${totals.map(([a, n]) => html`<span key=${a} className=${a === algo ? 'on' : ''}>${a}: ${n} faults</span>`)}</div>` : null}</div>
+      <${Cap} en=${cap.en + note.en} ar=${cap.ar + note.ar} showAr=${ar} /><${Nav} r=${r} n=${refs.length} /></figure>`;
+  }
+
+  /* ── 5.4: Belady's anomaly, 3 vs 4 frames ── */
+  function Belady({ ar }) {
+    const [algo, setAlgo] = useState('FIFO');
+    const a = simulate(BEL, 3, algo), b = simulate(BEL, 4, algo), r = useRun(BEL.length, 1100);
+    const fa = a.slice(0, r.t).filter(x => x.fault).length, fb = b.slice(0, r.t).filter(x => x.fault).length, end = r.t === BEL.length;
+    const Side = (sim, nf, f) => { const s = r.t ? sim[r.t - 1] : null; return html`<div><p className="fo6-h">${nf} frames</p>
+      <div className="fo6-fr">${Array.from({ length: nf }, (_, k) => html`<div key=${k} className=${s && s.slot === k ? (s.fault ? 'new' : 'hit') : ''}><b>${s && s.frames[k] != null ? s.frames[k] : ''}</b></div>`)}</div>
+      <p className="fo6-cnt">faults: <b>${f}</b>${s ? (s.fault ? ' (F)' : ' (hit)') : ''}</p></div>`; };
+    let cap;
+    if (!end) cap = { en: `${algo} on <b>1,2,3,4,1,2,5,1,2,3,4,5</b> with 3 frames and with 4 frames, side by side.${r.t ? ` Reference #${r.t}: page <b>${BEL[r.t - 1]}</b>.` : ''}`, ar: `الـ ${algo} على الـ reference string ده، مرة بـ 3 frames ومرة بـ 4 frames جنب بعض:${LTR('1,2,3,4,1,2,5,1,2,3,4,5')}${r.t ? `الـ reference رقم ${r.t} هو الـ page <b>${BEL[r.t - 1]}</b>.` : ''}` };
+    else if (algo === 'FIFO') cap = { en: '<b>Belady\'s anomaly</b>: FIFO gives <b>9 faults with 3 frames but 10 with 4 frames</b>. Adding more frames can cause more page faults.', ar: 'ده الـ <b>Belady\'s anomaly</b>: الـ FIFO بيدّي <b>9 faults بـ 3 frames، بس 10 بـ 4 frames</b>. يعني زيادة الـ frames ممكن تزوّد الـ page faults.' };
+    else cap = { en: `${algo} is a <b>stack algorithm</b> and never suffers from Belady's anomaly: ${fa} faults with 3 frames, ${fb} with 4.`, ar: `الـ ${algo} من الـ <b>stack algorithms</b>، وعمره ما بيحصل فيه Belady's anomaly: ${fa} faults بـ 3 frames، و ${fb} بـ 4 frames.` };
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-row">${['FIFO', 'LRU', 'OPT'].map(x => html`<button key=${x} className="fig-btn" aria-pressed=${String(algo === x)} onClick=${() => { setAlgo(x); r.restart(); }}>${x}</button>`)}</div>
+      <div className="fo6-str">${BEL.map((p, k) => html`<span key=${k} className=${k < r.t - 1 ? 'past' : k === r.t - 1 ? 'cur' : ''}>${p}</span>`)}</div>
+      <div className="fo6-bl">${Side(a, 3, fa)}${Side(b, 4, fb)}</div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${Nav} r=${r} n=${BEL.length} /></figure>`;
+  }
+
+  /* ── 6.0 / 7.0: why OPT and LRU pick their victims (every replacement on the lecture string) ── */
+  function WhyVictim({ ar, algo }) {
+    const sim = simulate(LECT, 3, algo), reps = sim.filter(s => s.kind === 'replace');
+    const steps = [{ intro: 1 }, ...reps];
+    const [i, ctl] = useSteps(steps.length, 3600);
+    const s = steps[i];
+    let cap;
+    if (s.intro) cap = algo === 'OPT'
+      ? { en: `<b>Optimal</b> looks into the <b>future</b>: at each replacement, for every page in memory find its next use; the page used farthest away (or never) is the victim. ${reps.length} replacements + 3 empty-frame fills = <b>9 faults</b>.`, ar: `الـ <b>Optimal</b> بيبص على <b>المستقبل</b>: عند كل replacement بنشوف كل page في الـ memory هتتستخدم إمتى تاني، والـ page اللي استخدامها أبعد حاجة (أو مش هتتستخدم خالص) هي الـ victim. فيه ${reps.length} replacements و 3 مرات ملء frames فاضية، يعني <b>9 faults</b>.` }
+      : { en: `<b>LRU</b> looks into the <b>past</b>: at each replacement, for every page in memory find its last use; the page used longest ago is the victim. ${reps.length} replacements + 3 empty-frame fills = <b>12 faults</b>.`, ar: `الـ <b>LRU</b> بيبص على <b>الماضي</b>: عند كل replacement بنشوف كل page في الـ memory آخر مرة اتستخدمت إمتى، والـ page اللي آخر استخدام ليها أقدم حاجة هي الـ victim. فيه ${reps.length} replacements و 3 مرات ملء frames فاضية، يعني <b>12 fault</b>.` };
+    else {
+      const prev = sim[s.t - 1].frames, n = s.t + 1;
+      const pos = prev.map(q => algo === 'OPT' ? (() => { const k = LECT.indexOf(q, s.t + 1); return k < 0 ? null : k + 1; })() : LECT.lastIndexOf(q, s.t - 1) + 1);
+      const listEn = prev.map((q, k) => `${q} ${algo === 'OPT' ? (pos[k] ? 'next at #' + pos[k] : 'never again') : 'last at #' + pos[k]}`).join(', ');
+      const listAr = prev.map((q, k) => `الـ ${q} ${algo === 'OPT' ? (pos[k] ? 'جاية عند رقم ' + pos[k] : 'مش هتتستخدم تاني') : 'آخر مرة عند رقم ' + pos[k]}`).join('، و');
+      cap = { en: `Reference #${n} (page <b>${s.p}</b>): pages in memory ${prev.join(', ')}. ${listEn}. Replace <b>${s.victim}</b>.`, ar: `الـ reference رقم ${n} (الـ page <b>${s.p}</b>): الـ pages اللي في الـ memory هي ${prev.join(' و ')}. ${listAr}. فبنشيل الـ <b>${s.victim}</b>.` };
+    }
+    const cur = s.intro ? null : s.t, prev = s.intro ? null : sim[s.t - 1].frames;
+    const mark = k => { if (s.intro) return ''; if (k === cur) return 'cur'; if (algo === 'OPT' ? k > cur : k < cur) { const q = LECT[k]; if (prev.includes(q)) { const first = algo === 'OPT' ? LECT.indexOf(q, cur + 1) === k : LECT.lastIndexOf(q, cur - 1) === k; if (first) return 'mark'; } } return algo === 'OPT' ? (k < cur ? 'past' : '') : (k > cur ? 'past' : ''); };
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <p className="fo6-h">${algo === 'OPT' ? 'Next use of each page in memory (shaded)' : 'Last use of each page in memory (shaded)'}</p>
+      <div className="fo6-str">${LECT.map((p, k) => html`<span key=${k} className=${mark(k)}>${p}</span>`)}</div>
+      ${!s.intro ? html`<div className="fo6-fr">${prev.map((q, k) => html`<div key=${k} className=${q === s.victim ? 'vic' : ''}><small>frame ${k + 1}</small><b>${q}</b><small>${q === s.victim ? 'victim → ' + s.p : 'stays'}</small></div>`)}</div>` : null}</div>
+      <${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+  const WhyOpt = ({ ar }) => html`<${WhyVictim} ar=${ar} algo="OPT" />`;
+  const WhyLru = ({ ar }) => html`<${WhyVictim} ar=${ar} algo="LRU" />`;
+
+  /* ── 8.0-8.1: LRU with counters and with a stack ── */
+  function LruImpl({ ar }) {
+    const sim = simulate(LECT, 3, 'LRU'), r = useRun(LECT.length, 1200);
+    const s = r.t ? sim[r.t - 1] : null;
+    const last = {}; LECT.slice(0, r.t).forEach((p, k) => { last[p] = k + 1; });
+    const frames = s ? s.frames : [null, null, null];
+    const inMem = frames.filter(x => x != null), minP = inMem.length === 3 ? inMem.reduce((a, b) => last[a] < last[b] ? a : b) : null;
+    const stack = inMem.slice().sort((a, b) => last[b] - last[a]);
+    const cap = !s ? { en: 'Two ways to implement LRU, on the lecture string with 3 frames. <b>Counter</b>: each page entry gets a copy of the clock when referenced. <b>Stack</b>: a referenced page moves to the top.', ar: 'طريقتين لتنفيذ الـ LRU، على الـ string بتاع المحاضرة بـ 3 frames. الـ <b>counter</b>: كل page entry بياخد نسخة من الـ clock لما يتعملها reference. والـ <b>stack</b>: الـ page اللي بيتعملها reference بتطلع فوق.' }
+      : { en: `Clock = ${r.t}: page <b>${s.p}</b> is referenced, so its counter becomes ${r.t} and it moves to the top of the stack.${s.kind === 'replace' ? ` To replace, the counter way <b>searches</b> for the smallest counter; the stack way just takes the <b>bottom</b>: both give page <b>${s.victim}</b>.` : ''}`, ar: `الـ clock بقى ${r.t}: الـ page <b>${s.p}</b> اتعملها reference، فالـ counter بتاعها بقى ${r.t} وطلعت فوق الـ stack.${s.kind === 'replace' ? ` وعشان نعمل replace، طريقة الـ counter لازم <b>تدوّر</b> على أصغر counter، أما الـ stack فبتاخد اللي <b>تحت خالص</b>، والاتنين بيدّوا الـ page <b>${s.victim}</b>.` : ''}` };
+    const prevMin = s && s.kind === 'replace' ? s.victim : minP;
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-str">${LECT.map((p, k) => html`<span key=${k} className=${k < r.t - 1 ? 'past' : k === r.t - 1 ? 'cur' : ''}>${p}</span>`)}</div>
+      <div className="fo6-two">
+        <div><p className="fo6-h">Counter (clock copy)</p><table className="fo6-tbl"><thead><tr><th>page</th><th>counter</th></tr></thead><tbody>
+          ${inMem.map(p => html`<tr key=${p}><td>${p}</td><td className=${p === minP && inMem.length === 3 ? 'min' : ''}>${last[p]}</td></tr>`)}
+          ${s && s.kind === 'replace' ? html`<tr><td>${s.victim}</td><td className="min">out</td></tr>` : null}</tbody></table>
+          <p className="fo6-muted">replace: smallest counter (search)</p></div>
+        <div><p className="fo6-h">Stack (top = most recent)</p><div className="fo6-stack">
+          ${stack.map((p, k) => html`<span key=${p} className=${k === 0 ? 'top' : k === stack.length - 1 && stack.length === 3 ? 'bot' : ''}>${p}</span>`)}</div>
+          <p className="fo6-muted">replace: bottom, no search</p></div>
+      </div>
+      ${s && s.kind === 'replace' ? html`<p className="fo6-cnt">victim: <b>${prevMin}</b></p>` : null}</div>
+      <${Cap} ...${cap} showAr=${ar} /><${Nav} r=${r} n=${LECT.length} /></figure>`;
+  }
+
+  /* ── 8.2-8.3: reference bit and the second-chance (clock) algorithm ── */
+  function clockRun(refs, nf) {
+    const fr = Array(nf).fill(null), bit = Array(nf).fill(0); let hand = 0; const out = [];
+    for (const p of refs) {
+      const k = fr.indexOf(p), ev = [];
+      if (k >= 0) { bit[k] = 1; out.push({ p, fr: fr.slice(), bit: bit.slice(), hand, hit: k, ev }); continue; }
+      const e = fr.indexOf(null);
+      if (e >= 0) { fr[e] = p; bit[e] = 1; hand = (e + 1) % nf; out.push({ p, fr: fr.slice(), bit: bit.slice(), hand, put: e, ev, fault: 1 }); continue; }
+      while (bit[hand] === 1) { ev.push(fr[hand]); bit[hand] = 0; hand = (hand + 1) % nf; }
+      const v = fr[hand]; fr[hand] = p; bit[hand] = 1; const put = hand; hand = (hand + 1) % nf;
+      out.push({ p, fr: fr.slice(), bit: bit.slice(), hand, put, victim: v, ev, fault: 1 });
+    }
+    return out;
+  }
+  function SecondChance({ ar }) {
+    const NF = 3, refs = LECT, sim = clockRun(refs, NF), r = useRun(refs.length, 1500);
+    const s = r.t ? sim[r.t - 1] : null, faults = sim.slice(0, r.t).filter(x => x.fault).length;
+    const pos = k => { const a = -Math.PI / 2 + k * 2 * Math.PI / NF; return { left: 120 + 80 * Math.cos(a) + 'px', top: 112 + 58 * Math.sin(a) + 'px' }; };
+    let cap;
+    if (!s) cap = { en: 'Each page has a <b>reference bit</b>: 0 at first, set to 1 when referenced. <b>Second chance</b> = FIFO + this bit: the hand moves around the frames; a page with bit 1 gets a second chance (bit cleared to 0, page stays), a page with bit 0 is replaced. Lecture string, 3 frames.', ar: 'كل page ليها <b>reference bit</b>: بيبدأ 0، ولما يتعملها reference بيبقى 1. والـ <b>second chance</b> هو FIFO مع الـ bit ده: العقرب بيلف على الـ frames، والـ page اللي الـ bit بتاعها 1 بتاخد فرصة تانية (الـ bit يبقى 0 والـ page تفضل)، واللي الـ bit بتاعها 0 بتتشال. الـ string بتاع المحاضرة، بـ 3 frames.' };
+    else if (s.hit != null) cap = { en: `Page <b>${s.p}</b> is in memory: its reference bit is set to 1. No fault.`, ar: `الـ page <b>${s.p}</b> موجودة في الـ memory، فالـ reference bit بتاعها بيبقى 1. ومفيش fault.` };
+    else if (s.victim == null) cap = { en: `Page <b>${s.p}</b> fills an empty frame (fault). Its bit is 1.`, ar: `الـ page <b>${s.p}</b> بتملا frame فاضي (fault)، والـ bit بتاعها 1.` };
+    else cap = { en: `Page <b>${s.p}</b>: fault, no free frame. ${s.ev.length ? `The hand passes ${s.ev.join(', ')} with bit 1: each gets a second chance (bit set to 0, stays in memory). ` : ''}It stops at page <b>${s.victim}</b> with bit 0 and replaces it.`, ar: `الـ page <b>${s.p}</b>: فيه fault ومفيش free frame. ${s.ev.length ? `العقرب بيعدي على ${s.ev.join(' و ')} والـ bit بتاعهم 1، فكل واحدة بتاخد فرصة تانية (الـ bit يبقى 0 وتفضل في الـ memory). ` : ''}وبيقف عند الـ page <b>${s.victim}</b> اللي الـ bit بتاعها 0 ويشيلها.` };
+    const fr = s ? s.fr : Array(NF).fill(null), bit = s ? s.bit : Array(NF).fill(0), hand = s ? s.hand : 0;
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-str">${refs.map((p, k) => html`<span key=${k} className=${(k < r.t - 1 ? 'past' : k === r.t - 1 ? 'cur' : '') + (k < r.t && sim[k].fault ? ' f' : '')}>${p}</span>`)}</div>
+      <div className="fo6-ring">${fr.map((p, k) => html`<div key=${k} className=${'s' + (k === hand ? ' hand' : '') + (s && s.put === k ? ' new' : '')} style=${pos(k)}>${k === hand ? html`<span className="hd">hand</span>` : null}<small>frame ${k + 1}</small><b>${p == null ? '' : p}</b><small>bit ${bit[k]}</small></div>`)}
+</div>
+      <p className="fo6-cnt">Page faults: <b>${faults}</b></p></div>
+      <${Cap} ...${cap} showAr=${ar} /><${Nav} r=${r} n=${refs.length} /></figure>`;
+  }
+
+  /* ── 8.4: counting algorithms, LFU and MFU ── */
+  function Counting({ ar }) {
+    const r = useRun(LECT.length, 1300);
+    const cnt = {}; LECT.slice(0, r.t).forEach(p => { cnt[p] = (cnt[p] || 0) + 1; });
+    const pages = Object.keys(cnt).map(Number).sort((a, b) => a - b), max = Math.max(1, ...Object.values(cnt));
+    const lo = pages.length ? Math.min(...pages.map(p => cnt[p])) : 0, hi = pages.length ? Math.max(...pages.map(p => cnt[p])) : 0;
+    const lfu = pages.filter(p => cnt[p] === lo), mfu = pages.filter(p => cnt[p] === hi);
+    const cap = !r.t ? { en: '<b>Counting algorithms</b> keep a count of the references to each page. Step through the lecture string and watch the counts.', ar: 'الـ <b>counting algorithms</b> بتعدّ الـ references لكل page. امشي على الـ string بتاع المحاضرة وشوف الـ counts.' }
+      : { en: `After ${r.t} references, among the pages counted so far: <b>LFU</b> would replace the page with the smallest count (${lfu.join(' or ')}, count ${lo}); <b>MFU</b> would replace the page with the largest count (${mfu.join(' or ')}, count ${hi}), arguing that the page with the smallest count was probably just brought in and has yet to be used.`, ar: `بعد ${r.t} references، ومن الـ pages اللي اتعدّت لحد دلوقتي: الـ <b>LFU</b> هيشيل الـ page اللي الـ count بتاعها أصغر حاجة (${lfu.join(' أو ')}، والـ count بتاعها ${lo})، والـ <b>MFU</b> هيشيل اللي الـ count بتاعها أكبر حاجة (${mfu.join(' أو ')}، والـ count بتاعها ${hi})، وحجته إن الـ page اللي الـ count بتاعها صغير غالبًا لسه داخلة ولسه هتتستخدم.` };
+    return html`<figure className="fig fo6"><div className="fig-stage">
+      <div className="fo6-str">${LECT.map((p, k) => html`<span key=${k} className=${k < r.t - 1 ? 'past' : k === r.t - 1 ? 'cur' : ''}>${p}</span>`)}</div>
+      <div className="fo6-col" style=${{ maxWidth: '400px', margin: '0 auto' }}>${pages.map(p => html`<div key=${p} style=${{ display: 'grid', gridTemplateColumns: '58px minmax(0,1fr) auto', gap: '6px', alignItems: 'center', fontSize: '.84rem', color: 'var(--ink)' }}>
+        <span>page ${p}</span><span style=${{ height: '12px', borderRadius: '99px', background: 'var(--paper)', border: '1px solid var(--line)', overflow: 'hidden' }}><i style=${{ display: 'block', height: '100%', width: (cnt[p] / max * 100) + '%', background: lfu.includes(p) ? 'var(--pen)' : mfu.includes(p) ? 'var(--k-os)' : 'var(--graphite)', transition: 'width .4s' }}></i></span>
+        <span>${cnt[p]}${lfu.includes(p) ? html` <span className="fo6-tag i">LFU</span>` : null}${mfu.includes(p) ? html` <span className="fo6-tag k">MFU</span>` : null}</span></div>`)}</div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${Nav} r=${r} n=${LECT.length} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'os-vm-space': VmSpace, 'os-demand-paging': DemandPaging, 'os-page-fault': PageFault, 'os-fault-stages': FaultStages, 'os-replace-basic': BasicReplace, 'os-replace-sim': ReplaceSim, 'os-belady': Belady, 'os-opt-why': WhyOpt, 'os-lru-why': WhyLru, 'os-lru-impl': LruImpl, 'os-second-chance': SecondChance, 'os-lfu-mfu': Counting });
+})();
+/* ── part 7 ── */
+// OS visuals, part 7: L6 Deadlocks (four conditions, resource-allocation graphs, ordering, safe states, Banker's, detection). Every label and caption comes from the site's notes for that lecture.
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.fo7 .fig-dots i.on{ background:var(--k-os); } .fo7 .fig-btn:hover{ border-color:var(--k-os); } .fo7 .fig-btn.solid{ background:var(--s-os); color:#fff; border-color:transparent; }
+.fo7 .fig-btn[aria-pressed="true"]{ background:var(--s-os); color:#fff; border-color:transparent; }
+.fo7 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.fo7-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.fo7-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.fo7-svg{ display:block; width:100%; max-width:380px; margin:0 auto; }
+.fo7-svg text{ fill:var(--ink); font-weight:600; }
+.fo7-leg{ display:flex; flex-wrap:wrap; gap:4px 12px; justify-content:center; font-size:.8rem; color:var(--graphite); margin:6px 0 0; }
+.fo7-leg i{ display:inline-block; width:18px; height:3px; border-radius:2px; vertical-align:3px; margin-right:4px; }
+.fo7-note{ text-align:center; font-size:.86rem; color:var(--ink); margin:8px auto 0; max-width:420px; min-height:1.4em; }
+.fo7-note b{ color:var(--k-os); }
+.fo7-bad{ color:var(--pen); font-weight:700; }
+.fo7-good{ color:var(--ok); font-weight:700; }
+.fo7-tbl{ border-collapse:collapse; margin:0 auto; font-size:.84rem; }
+.fo7-tbl th, .fo7-tbl td{ border:1px solid var(--line); padding:3px 6px; text-align:center; background:var(--paper); color:var(--ink); white-space:nowrap; transition:background .4s; }
+.fo7-tbl th{ background:var(--paper-2); color:var(--graphite); font-weight:600; font-size:.8rem; }
+.fo7-tbl td.v{ font-family:var(--mono); font-size:.82rem; }
+.fo7-tbl tr.cur td{ background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); }
+.fo7-tbl tr.no td{ background:color-mix(in srgb, var(--pen) 12%, var(--paper)); }
+.fo7-tbl tr.yes td{ background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.fo7-tbl tr.done td{ color:var(--graphite); }
+.fo7-work{ display:flex; flex-wrap:wrap; justify-content:center; align-items:baseline; gap:4px 10px; margin:0 0 8px; font-size:.9rem; color:var(--ink); }
+.fo7-work b{ font-family:var(--mono); font-size:1rem; color:var(--k-os); }
+.fo7-seq{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin:8px 0 0; min-height:28px; font-size:.84rem; align-items:center; color:var(--graphite); }
+.fo7-seq span{ border:1px solid var(--k-os); background:color-mix(in srgb, var(--k-os) 14%, var(--paper)); color:var(--ink); border-radius:99px; padding:2px 9px; font-weight:600; animation:fo7in .4s ease both; }
+.fo7-seq span.bad{ border-color:var(--pen); background:color-mix(in srgb, var(--pen) 12%, var(--paper)); }
+@keyframes fo7in{ from{ opacity:0; transform:scale(.8); } to{ opacity:1; transform:none; } }
+.fo7-ord{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; max-width:360px; margin:0 auto; }
+.fo7-ord button{ font:inherit; font-size:.84rem; border:1.4px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); padding:6px 4px; cursor:pointer; line-height:1.3; }
+.fo7-ord button b{ display:block; font-family:var(--mono); color:var(--k-os); font-size:.9rem; }
+.fo7-ord button.held{ border-color:var(--k-os); background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); }
+.fo7-ord button.no{ border-color:var(--pen); animation:fo7shake .35s; }
+@keyframes fo7shake{ 25%{ transform:translateX(-4px); } 75%{ transform:translateX(4px); } }
+.fo7-log{ max-width:420px; margin:8px auto 0; font-size:.84rem; color:var(--ink); line-height:1.5; min-height:3em; }
+.fo7-log div{ animation:fo7in .3s ease both; }
+.fo7-sets{ position:relative; max-width:330px; margin:0 auto; height:210px; }
+.fo7-sets div{ position:absolute; border-radius:50%; display:flex; align-items:flex-start; justify-content:center; padding-top:10px; box-sizing:border-box; font-size:.86rem; font-weight:700; color:var(--ink); transition:all .5s ease; }
+.fo7-sets .s{ inset:0; background:color-mix(in srgb, var(--ok) 14%, var(--paper)); border:1.5px solid var(--ok); justify-content:flex-start; padding:16px 0 0 26px; }
+.fo7-sets .u{ left:40%; right:4%; top:14%; bottom:8%; background:color-mix(in srgb, var(--pen) 10%, var(--paper)); border:1.5px solid var(--pen); }
+.fo7-sets .d{ left:56%; right:16%; top:46%; bottom:18%; background:color-mix(in srgb, var(--pen) 26%, var(--paper)); border:1.5px solid var(--pen); align-items:center; padding:0; }
+.fo7-sets .off{ opacity:.18; }
+.fo7-sets .hi{ box-shadow:0 0 0 3px color-mix(in srgb, var(--k-os) 45%, transparent); }
+.fo7-req{ max-width:420px; margin:0 auto; }
+.fo7-req .row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; margin:0 0 8px; font-size:.86rem; color:var(--ink); }
+.fo7-req .row .fig-btn{ padding:4px 9px; min-width:34px; }
+.fo7-step{ display:flex; gap:6px; align-items:center; }
+.fo7-step b{ font-family:var(--mono); min-width:1.2em; text-align:center; }
+.fo7-out{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:8px 10px; font-size:.84rem; line-height:1.55; color:var(--ink); margin:8px 0 0; overflow-wrap:anywhere; }
+.fo7-out .m{ font-family:var(--mono); }
+@media (prefers-reduced-motion: reduce){ .fo7-seq span, .fo7-log div, .fo7-ord button.no{ animation:none; } .fo7-sets div{ transition:none; } }`;
+  if (!document.getElementById('fo7-css')) { const s = document.createElement('style'); s.id = 'fo7-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const L = t => `<span class="ltr">${t}</span>`;
+  const Modes = ({ list, mode, set }) => html`<div className="fo7-modes" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
+  const C_ASSIGN = 'var(--k-os)', C_REQ = 'var(--graphite)', C_CYC = 'var(--pen)';
+
+  /* ── a small resource-allocation graph renderer: processes are circles, resource types boxes with one dot per instance ── */
+  const PR = 19, BW = 50, BH = 32;
+  function dotPos(n, k) { const g = n === 1 ? [0] : [-9, 9]; return g[k] || 0; }
+  function edgeLine(N, e) {
+    const [a, b, kind, dot] = e, A = N[a], B = N[b];
+    let x1 = A.x, y1 = A.y; if (A.r) { x1 = A.x + dotPos(A.r, dot || 0); y1 = A.y; }
+    const dx = B.x - x1, dy = B.y - y1, d = Math.hypot(dx, dy), ux = dx / d, uy = dy / d;
+    if (!A.r) { x1 += ux * PR; y1 += uy * PR; } else { x1 += ux * 5; y1 += uy * 5; }
+    let x2, y2;
+    if (B.r) { const t = Math.min((BW / 2) / Math.abs(dx || 1e-9), (BH / 2) / Math.abs(dy || 1e-9)) * d; x2 = B.x - ux * (t + 3); y2 = B.y - uy * (t + 3); }
+    else { x2 = B.x - ux * (PR + 3); y2 = B.y - uy * (PR + 3); }
+    return { x1, y1, x2, y2 };
+  }
+  function Rag({ N, E, cyc = [], gone = [], vb, id, label }) {
+    const onCyc = e => cyc.some(c => c[0] === e[0] && c[1] === e[1]);
+    return html`<svg className="fo7-svg" viewBox=${vb} role="img" aria-label=${label}>
+      <defs>${[['a', C_ASSIGN], ['r', C_REQ], ['c', C_CYC]].map(([k, c]) => html`<marker key=${k} id=${`fo7-${id}-${k}`} viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill=${c} /></marker>`)}</defs>
+      ${E.map((e, k) => { const g = edgeLine(N, e), c = onCyc(e), col = c ? C_CYC : e[2] === 'a' ? C_ASSIGN : C_REQ;
+        return html`<line key=${e.join('-')} x1=${g.x1} y1=${g.y1} x2=${g.x2} y2=${g.y2} stroke=${col} strokeWidth=${c ? 3 : 2} markerEnd=${`url(#fo7-${id}-${c ? 'c' : e[2]})`} className=${c && !calm() ? 'flow' : ''} />`; })}
+      ${Object.entries(N).map(([k, v]) => { const off = gone.includes(k);
+        return v.r ? html`<g key=${k} style=${{ opacity: off ? .3 : 1, transition: 'opacity .5s' }}><rect x=${v.x - BW / 2} y=${v.y - BH / 2} width=${BW} height=${BH} rx="4" fill="var(--paper)" stroke="var(--ink)" strokeWidth="1.5" />
+            ${Array.from({ length: v.r }, (_, d) => html`<circle key=${d} cx=${v.x + dotPos(v.r, d)} cy=${v.y} r="4" fill="var(--ink)" />`)}
+            <text x=${v.lx ?? v.x} y=${v.ly ?? v.y - BH / 2 - 6} textAnchor="middle" fontSize="15">${k}</text></g>`
+          : html`<g key=${k} style=${{ opacity: off ? .3 : 1, transition: 'opacity .5s' }}><circle cx=${v.x} cy=${v.y} r=${PR} fill="var(--paper)" stroke="var(--k-os)" strokeWidth="2" /><text x=${v.x} y=${v.y + 5} textAnchor="middle" fontSize="15">${k}</text></g>`; })}
+    </svg>`;
+  }
+  const Legend = () => html`<div className="fo7-leg"><span><i style=${{ background: C_REQ }}></i>request P → R</span><span><i style=${{ background: C_ASSIGN }}></i>assignment R → P</span><span><i style=${{ background: C_CYC }}></i>cycle</span></div>`;
+
+  /* ── §0: the four necessary conditions on a three-process circle ── */
+  function Conditions({ ar }) {
+    const N = { P0: { x: 150, y: 34 }, P1: { x: 250, y: 200 }, P2: { x: 50, y: 200 }, R1: { x: 72, y: 100, r: 1, lx: 72, ly: 77 }, R2: { x: 228, y: 100, r: 1, lx: 228, ly: 77 }, R3: { x: 150, y: 214, r: 1, ly: 248 } };
+    const hold = [['R1', 'P0', 'a'], ['R2', 'P1', 'a'], ['R3', 'P2', 'a']], want = [['P0', 'R2', 'r'], ['P1', 'R3', 'r'], ['P2', 'R1', 'r']];
+    // P0 holds R1 and wants R2 (held by P1); P1 wants R3 (held by P2); P2 wants R1 (held by P0)
+    const steps = [
+      { en: 'Each process uses a resource as <b>request → use → release</b>. Deadlock can arise if <b>four conditions hold simultaneously</b>. Here P0, P1 and P2 each hold one resource.', ar: 'كل process بتستخدم الـ resource على 3 خطوات:' + L('request → use → release') + 'والـ deadlock ممكن يحصل لو <b>4 conditions اتحققوا في نفس الوقت</b>. هنا كل process من الـ P0 والـ P1 والـ P2 ماسكة resource واحد.', E: hold },
+      { en: '1. <b>Mutual exclusion</b>: only one process at a time can use a resource. Each box has a single instance, held by one process.', ar: '(1) الـ <b>Mutual exclusion</b>: process واحدة بس في المرة تقدر تستخدم الـ resource. كل box فيه instance واحد، وماسكاه process واحدة.', E: hold },
+      { en: '2. <b>Hold and wait</b>: a process holding at least one resource is waiting to acquire additional resources held by other processes.', ar: '(2) الـ <b>Hold and wait</b>: process ماسكة resource واحد على الأقل، ومستنية resources زيادة ماسكاها processes تانية.', E: hold.concat([want[0]]) },
+      { en: '3. <b>No preemption</b>: a resource can be released only voluntarily by the process holding it, after it has completed its task. Nobody can take R2 away from P1.', ar: '(3) الـ <b>No preemption</b>: الـ resource مايتسابش غير بإرادة الـ process اللي ماسكاه، بعد ما تخلّص الـ task بتاعتها. محدش يقدر ياخد الـ R2 من الـ P1 غصب عنها.', E: hold.concat([want[0]]) },
+      { en: '4. <b>Circular wait</b>: P0 waits for a resource held by P1, P1 waits for P2, and P2 waits for P0.', ar: '(4) الـ <b>Circular wait</b>: الـ P0 مستنية resource ماسكاه الـ P1، والـ P1 مستنية الـ P2، والـ P2 مستنية الـ P0.', E: hold.concat(want), cyc: hold.concat(want) },
+      { en: 'All four hold at the same time, so no process can continue: <b>deadlock</b>. Break any one condition and the deadlock cannot happen.', ar: 'الـ 4 conditions متحققين مع بعض، فمفيش process تقدر تكمّل: ده <b>deadlock</b>. ولو كسرنا أي condition منهم، الـ deadlock مش هيحصل.', E: hold.concat(want), cyc: hold.concat(want), dead: 1 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3000), s = steps[i];
+    return html`<figure className="fig fo7"><div className="fig-stage">
+      <${Rag} N=${N} E=${s.E} cyc=${s.cyc || []} vb="0 0 300 255" id="cond" label="Three processes, each holding one resource and waiting for the next" />
+      <${Legend} />
+      <p className="fo7-note">${s.dead ? html`<span className="fo7-bad">Deadlock: P0, P1, P2 all wait</span>` : html`Conditions shown: <b>${Math.max(0, i)}</b> of 4`}</p></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §1: the three resource-allocation graphs of the notes ── */
+  const G1 = { P1: { x: 45, y: 128 }, P2: { x: 150, y: 128 }, P3: { x: 255, y: 128 }, R1: { x: 97, y: 42, r: 1 }, R3: { x: 203, y: 42, r: 1 }, R2: { x: 97, y: 218, r: 2, ly: 252 } };
+  const base1 = [['R1', 'P2', 'a', 0], ['R2', 'P1', 'a', 0], ['R2', 'P2', 'a', 1], ['R3', 'P3', 'a', 0], ['P1', 'R1', 'r'], ['P2', 'R3', 'r']];
+  const G2 = { P2: { x: 150, y: 26 }, P1: { x: 42, y: 140 }, P3: { x: 258, y: 140 }, P4: { x: 150, y: 254 }, R1: { x: 150, y: 92, r: 2, lx: 196, ly: 97 }, R2: { x: 150, y: 188, r: 2, lx: 196, ly: 193 } };
+  const base2 = [['P1', 'R1', 'r'], ['R1', 'P3', 'a', 1], ['R1', 'P2', 'a', 0], ['P3', 'R2', 'r'], ['R2', 'P1', 'a', 0], ['R2', 'P4', 'a', 1]];
+  const cyc2 = [['P1', 'R1'], ['R1', 'P3'], ['P3', 'R2'], ['R2', 'P1']];
+  const RAG = {
+    none: [
+      { en: '<b>No deadlock</b> (slide example). Assignments: R1 → P2, R2 → P1 and P2, R3 → P3. Requests: P1 → R1, P2 → R3. There is <b>no cycle</b>.', ar: '<b>مفيش deadlock</b> (مثال الـ slide).' + L('Assignments: R1 → P2, R2 → P1 and P2, R3 → P3') + L('Requests: P1 → R1, P2 → R3') + 'ومفيش <b>cycle</b>.', E: base1 },
+      { en: '<b>P3 can finish</b>: it holds R3 and requests nothing. It releases R3, which is given to P2 (P2 → R3 becomes R3 → P2).', ar: 'الـ <b>P3 تقدر تخلّص</b>: ماسكة الـ R3 ومش طالبة حاجة. بتسيب الـ R3، فبيروح للـ P2 (الـ request بقى assignment).', E: [['R1', 'P2', 'a', 0], ['R2', 'P1', 'a', 0], ['R2', 'P2', 'a', 1], ['R3', 'P2', 'a', 0], ['P1', 'R1', 'r']], gone: ['P3'] },
+      { en: '<b>Then P2</b> finishes and releases R1, R2 and R3. R1 goes to P1.', ar: '<b>وبعدين الـ P2</b> بتخلّص وتسيب الـ R1 والـ R2 والـ R3، فالـ R1 بيروح للـ P1.', E: [['R2', 'P1', 'a', 0], ['R1', 'P1', 'a', 0]], gone: ['P3', 'P2'] },
+      { en: '<b>Then P1</b> finishes. Every process completed: no cycle means no deadlock.', ar: '<b>وبعدين الـ P1</b> بتخلّص. كل الـ processes خلّصت: مفيش cycle يعني مفيش deadlock.', E: [], gone: ['P3', 'P2', 'P1'], ok: 1 }
+    ],
+    dead: [
+      { en: '<b>Graph with a deadlock</b>: the same graph plus a new request <b>P3 → R2</b>. Both instances of R2 are held, by P1 and P2.', ar: '<b>Graph فيه deadlock</b>: نفس الـ graph وزيادة عليه request جديد من الـ P3 للـ R2. والـ 2 instances بتوع الـ R2 ماسكينهم الـ P1 والـ P2.', E: base1.concat([['P3', 'R2', 'r']]) },
+      { en: 'First cycle: P1 → R1 → P2 → R3 → P3 → R2 → P1.', ar: 'أول cycle:' + L('P1 → R1 → P2 → R3 → P3 → R2 → P1'), E: base1.concat([['P3', 'R2', 'r']]), cyc: [['P1', 'R1'], ['R1', 'P2'], ['P2', 'R3'], ['R3', 'P3'], ['P3', 'R2'], ['R2', 'P1']] },
+      { en: 'Second cycle: P2 → R3 → P3 → R2 → P2.', ar: 'تاني cycle:' + L('P2 → R3 → P3 → R2 → P2'), E: base1.concat([['P3', 'R2', 'r']]), cyc: [['P2', 'R3'], ['R3', 'P3'], ['P3', 'R2'], ['R2', 'P2']] },
+      { en: 'Nobody can finish: P3 waits for R2, P2 waits for P3 (R3), P1 waits for P2 (R1). <b>P1, P2 and P3 are all deadlocked.</b>', ar: 'محدش يقدر يخلّص: الـ P3 مستنية الـ R2، والـ P2 مستنية الـ P3 (عشان الـ R3)، والـ P1 مستنية الـ P2 (عشان الـ R1). <b>الـ P1 والـ P2 والـ P3 كلهم في deadlock.</b>', E: base1.concat([['P3', 'R2', 'r']]), cyc: [['P1', 'R1'], ['R1', 'P2'], ['P2', 'R3'], ['R3', 'P3'], ['P3', 'R2'], ['R2', 'P1'], ['R2', 'P2']], bad: 1 }
+    ],
+    cycle: [
+      { en: '<b>Graph with a cycle but no deadlock</b>: P1 → R1 → P3 → R2 → P1. R1 and R2 have two instances each.', ar: '<b>Graph فيه cycle بس مفيش deadlock</b>:' + L('P1 → R1 → P3 → R2 → P1') + 'والـ R1 والـ R2 كل واحد فيهم ليه 2 instances.', E: base2, cyc: cyc2 },
+      { en: 'R1\'s other instance is held by <b>P2</b>, and R2\'s by <b>P4</b>. Neither of them waits for anything.', ar: 'الـ instance التاني بتاع الـ R1 ماسكاه الـ <b>P2</b>، والتاني بتاع الـ R2 ماسكاه الـ <b>P4</b>. والاتنين دول مش مستنيين أي حاجة.', E: base2, cyc: cyc2 },
+      { en: '<b>P4 releases</b> its instance of R2, so P3\'s request is granted (P3 → R2 becomes R2 → P3). The cycle is broken.', ar: 'الـ <b>P4 بتسيب</b> الـ instance بتاعها من الـ R2، فالـ request بتاع الـ P3 بيتنفذ (بقى assignment من الـ R2 للـ P3). وكده الـ cycle اتكسر.', E: [['P1', 'R1', 'r'], ['R1', 'P3', 'a', 1], ['R1', 'P2', 'a', 0], ['R2', 'P1', 'a', 0], ['R2', 'P3', 'a', 1]], gone: ['P4'], ok: 1 }
+    ]
+  };
+  function RagFig({ ar }) {
+    const [mode, set0] = useState('none'); const steps = RAG[mode];
+    const [i, ctl] = useSteps(steps.length, 3200), s = steps[Math.min(i, steps.length - 1)];
+    const set = m => { set0(m); ctl.go(0); if (!calm()) setTimeout(ctl.replay, 0); };
+    const G = mode === 'cycle' ? G2 : G1;
+    return html`<figure className="fig fo7"><div className="fig-stage">
+      <${Modes} list=${[['none', 'No deadlock'], ['dead', 'Deadlock'], ['cycle', 'Cycle, no deadlock']]} mode=${mode} set=${set} />
+      <${Rag} N=${G} E=${s.E} cyc=${s.cyc || []} gone=${s.gone || []} vb=${mode === 'cycle' ? '0 0 300 280' : '0 0 300 262'} id=${'rag' + mode} label="Resource-allocation graph" />
+      <${Legend} />
+      <p className="fo7-note">${s.bad ? html`<span className="fo7-bad">Cycle, one instance free for nobody: deadlock</span>` : s.ok ? html`<span className="fo7-good">All processes can finish</span>` : html`No cycle → no deadlock. Cycle + several instances → <b>possibly</b> deadlock.`}</p></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${Math.min(i, steps.length - 1)} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §2: preventing circular wait with a total ordering ── */
+  const ORD = [['Tape drive', 1], ['Disk drive', 5], ['Printer', 12]];
+  function Ordering({ ar }) {
+    const [held, setHeld] = useState([]), [log, setLog] = useState([]), [no, setNo] = useState(null);
+    const top = held.length ? Math.max(...held.map(h => ORD[h][1])) : 0;
+    const ask = k => {
+      if (held.includes(k)) return;
+      const [n, f] = ORD[k];
+      if (f > top) { setHeld(h => h.concat(k)); setLog(l => l.concat({ ok: 1, t: `Request ${n} (F = ${f}): granted, ${f} > ${top || 'nothing held'}.` })); setNo(null); }
+      else { setLog(l => l.concat({ ok: 0, t: `Request ${n} (F = ${f}): refused, it is lower than ${top}, which you already hold.` })); setNo(k); }
+    };
+    const reset = () => { setHeld([]); setLog([]); setNo(null); };
+    const cap = { en: '<b>Circular wait</b> is prevented by a <b>total ordering</b> of all resource types: requests must come in <b>increasing order</b>. F(tape drive) = 1, F(disk drive) = 5, F(printer) = 12. To use the tape and the printer, request the tape first, then the printer; never the printer then the tape. Try both orders.', ar: 'الـ <b>Circular wait</b> بنمنعه بإننا نرتّب كل الـ resource types <b>ترتيب كامل</b>، اسمه الـ total ordering، والـ requests لازم تيجي <b>بترتيب تصاعدي</b>:' + L('F(tape drive) = 1, F(disk drive) = 5, F(printer) = 12') + 'يعني عشان تستخدم الـ tape والـ printer، اطلب الـ tape الأول وبعدين الـ printer، وعمرك ما تطلب الـ printer الأول. جرّب الترتيبين.' };
+    return html`<figure className="fig fo7"><div className="fig-stage">
+      <div className="fo7-ord">${ORD.map(([n, f], k) => html`<button key=${n} className=${held.includes(k) ? 'held' : no === k ? 'no' : ''} onClick=${() => ask(k)} aria-pressed=${String(held.includes(k))}><b>F = ${f}</b>${n}</button>`)}</div>
+      <div className="fo7-log" aria-live="polite">${log.length ? log.slice(-3).map((l, k) => html`<div key=${log.length - 3 + k} className=${l.ok ? 'fo7-good' : 'fo7-bad'}>${l.t}</div>`) : html`<div style=${{ color: 'var(--graphite)', textAlign: 'center' }}>Tap a resource to request it.</div>`}</div>
+      <div className="fo7-modes" style=${{ marginTop: '8px' }}><button className="fig-btn" onClick=${reset}>Release all</button></div>
+      <p className="fo7-note">Every process climbs the same order, so no process can wait for a lower resource held by another: <b>no cycle</b>.</p></div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── §3: safe, unsafe and deadlock states ── */
+  function SafeStates({ ar }) {
+    const steps = [
+      { en: 'A state is <b>safe</b> if there exists a sequence &lt;P1, P2, …, Pn&gt; of all processes such that each Pi\'s remaining requests can be met by the available resources plus those held by all Pj with j &lt; i.', ar: 'الـ state بتبقى <b>safe</b> لو فيه sequence لكل الـ processes، كل Pi فيها تقدر تاخد اللي باقي لها من الـ resources المتاحة، زائد اللي ماسكينه كل الـ Pj اللي قبلها.', on: 's' },
+      { en: '<b>Safe → no deadlocks.</b>', ar: '<b>الـ safe يعني مفيش deadlocks.</b>', on: 's' },
+      { en: '<b>Unsafe → possibility of deadlock.</b> An unsafe state is not yet a deadlock.', ar: '<b>الـ unsafe يعني فيه احتمال deadlock.</b> والـ unsafe state لسه مش deadlock.', on: 'u' },
+      { en: 'Deadlock states are a <b>subset of the unsafe states</b>.', ar: 'الـ deadlock states هي <b>جزء من الـ unsafe states</b>.', on: 'd' },
+      { en: '<b>Avoidance</b> = ensure the system never enters an unsafe state, so it can never reach a deadlock.', ar: 'الـ <b>Avoidance</b> معناه إننا نضمن إن الـ system عمره ما يدخل unsafe state، فمستحيل يوصل لـ deadlock.', on: 'a' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2800), s = steps[i];
+    const cls = k => (s.on === k ? ' hi' : '') + (s.on === 'a' && k !== 's' ? ' off' : '');
+    return html`<figure className="fig fo7"><div className="fig-stage">
+      <div className="fo7-sets" role="img" aria-label="Safe states contain no deadlocks; deadlock states lie inside the unsafe states">
+        <div className=${'s' + cls('s')}>safe</div>
+        <div className=${'u' + cls('u') + (i < 2 ? ' off' : '')}>unsafe</div>
+        <div className=${'d' + cls('d') + (i < 3 ? ' off' : '')}>deadlock</div>
+      </div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── Banker's data from the notes (§5) ── */
+  const PS = ['P0', 'P1', 'P2', 'P3', 'P4'];
+  const ALLOC = [[0, 1, 0], [2, 0, 0], [3, 0, 2], [2, 1, 1], [0, 0, 2]], MAX = [[7, 5, 3], [3, 2, 2], [9, 0, 2], [2, 2, 2], [4, 3, 3]], AVAIL = [3, 3, 2];
+  const v = a => '(' + a.join(',') + ')', sp = a => a.join(' ');
+  const add = (a, b) => a.map((x, k) => x + b[k]), subv = (a, b) => a.map((x, k) => x - b[k]), le = (a, b) => a.every((x, k) => x <= b[k]);
+  // the notes' scan: go through P0…P4 repeatedly, taking the next process whose Need ≤ Work
+  function safety(avail, alloc, need) {
+    let work = avail.slice(); const fin = alloc.map(() => false), seq = [], trace = [];
+    let k = 0, idle = 0;
+    while (idle < alloc.length && seq.length < alloc.length) {
+      if (!fin[k]) {
+        if (le(need[k], work)) { const w0 = work; work = add(work, alloc[k]); fin[k] = true; seq.push(k); trace.push({ k, ok: 1, w0, w1: work }); idle = 0; }
+        else { trace.push({ k, ok: 0, w0: work }); idle++; }
+      } else idle++;
+      k = (k + 1) % alloc.length;
+    }
+    return { safe: fin.every(Boolean), seq, trace, work };
+  }
+
+  /* ── §5: the safety algorithm on the notes' snapshot, step by step ── */
+  function Bankers({ ar }) {
+    const need = MAX.map((m, k) => subv(m, ALLOC[k])), run = safety(AVAIL, ALLOC, need);
+    const steps = [{ en: 'Snapshot: 5 processes, A = 10, B = 5, C = 7 instances, <b>Available = (3,3,2)</b>. Need = Max − Allocation. Start with Work = Available and every Finish = false.', ar: 'الـ snapshot: فيه 5 processes، والـ instances هي A = 10 و B = 5 و C = 7، والـ <b>Available</b> هو (3,3,2). الـ Need بيساوي Max ناقص Allocation. بنبدأ بالـ Work بيساوي الـ Available، وكل الـ Finish بـ false.', t: null }]
+      .concat(run.trace.map(t => t.ok
+        ? { en: `${PS[t.k]}: Need ${v(need[t.k])} ≤ Work ${v(t.w0)} ✓. It runs, then returns its Allocation: Work = ${v(t.w0)} + ${v(ALLOC[t.k])} = <b>${v(t.w1)}</b>.`, ar: `الـ ${PS[t.k]}: الـ Need أصغر من أو بيساوي الـ Work، فبتشتغل وترجّع الـ Allocation بتاعها:` + L(`Need ${v(need[t.k])} ≤ Work ${v(t.w0)} ✓ → Work = ${v(t.w0)} + ${v(ALLOC[t.k])} = ${v(t.w1)}`), t }
+        : { en: `${PS[t.k]}: Need ${v(need[t.k])} ≤ Work ${v(t.w0)}? <b>No</b>, it must wait for now.`, ar: `الـ ${PS[t.k]}: الـ Need أكبر من الـ Work، فلازم تستنى دلوقتي:` + L(`Need ${v(need[t.k])} ≤ Work ${v(t.w0)}? no`), t }))
+      .concat([{ en: `All Finish = true, and Work = (10,5,7) = the totals. The state is <b>SAFE</b> with sequence &lt;${run.seq.map(k => PS[k]).join(', ')}&gt; (other safe orders exist).`, ar: 'كل الـ Finish بقت true، والـ Work وصل (10,5,7) اللي هو الـ totals. يبقى الـ state <b>SAFE</b>، والـ sequence هي:' + L(`&lt;${run.seq.map(k => PS[k]).join(', ')}&gt;`) + 'وفيه ترتيبات safe تانية كمان.', t: null, end: 1 }]);
+    const [i, ctl] = useSteps(steps.length, 2600), s = steps[i];
+    const upto = steps.slice(1, i + 1).map(x => x.t).filter(Boolean), fin = new Set(upto.filter(t => t.ok).map(t => t.k));
+    const work = upto.length ? (upto[upto.length - 1].w1 || upto[upto.length - 1].w0) : AVAIL;
+    return html`<figure className="fig fo7"><div className="fig-stage">
+      <div className="fo7-work">Work <b>${v(s.t && s.t.ok ? s.t.w1 : work)}</b></div>
+      <table className="fo7-tbl"><thead><tr><th>Process</th><th>Alloc</th><th>Need</th><th>Finish</th></tr></thead>
+        <tbody>${PS.map((p, k) => { const cur = s.t && s.t.k === k;
+          return html`<tr key=${p} className=${cur ? (s.t.ok ? 'yes' : 'no') : fin.has(k) ? 'done' : ''}><td>${p}</td><td className="v">${sp(ALLOC[k])}</td><td className="v">${sp(need[k])}</td><td>${fin.has(k) ? '✓' : '·'}</td></tr>`; })}</tbody></table>
+      <div className="fo7-seq" aria-label="Safe sequence so far">${fin.size ? html`Sequence:` : ''}${[...fin].map(k => html`<span key=${k}>${PS[k]}</span>`)}${s.end ? html`<span className="fo7-good" style=${{ border: 0, background: 'none' }}>SAFE</span>` : ''}</div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── §5: the resource-request algorithm, hands on (default: P1 requests (1,0,2)) ── */
+  function Request({ ar }) {
+    const [p, setP] = useState(1), [req, setReq] = useState([1, 0, 2]), [res, setRes] = useState(null);
+    const need = MAX.map((m, k) => subv(m, ALLOC[k]));
+    const bump = (k, d) => { setReq(r => r.map((x, j) => j === k ? Math.max(0, Math.min(9, x + d)) : x)); setRes(null); };
+    const runIt = () => {
+      if (!le(req, need[p])) return setRes({ kind: 'err', lines: [`1. Request ${v(req)} ≤ Need ${v(need[p])}? No → <b>ERROR</b>: ${PS[p]} exceeded its maximum claim.`] });
+      const l1 = `1. Request ${v(req)} ≤ Need ${v(need[p])} ✓`;
+      if (!le(req, AVAIL)) return setRes({ kind: 'wait', lines: [l1, `2. Request ${v(req)} ≤ Available ${v(AVAIL)}? No → ${PS[p]} must <b>WAIT</b>.`] });
+      const av = subv(AVAIL, req), al = ALLOC.map((a, k) => k === p ? add(a, req) : a), nd = need.map((n, k) => k === p ? subv(n, req) : n);
+      const r = safety(av, al, nd);
+      const lines = [l1, `2. Request ${v(req)} ≤ Available ${v(AVAIL)} ✓`, `3. Pretend: Available = ${v(av)}, Allocation ${PS[p]} = ${v(al[p])}, Need ${PS[p]} = ${v(nd[p])}.`,
+        r.safe ? `Safety finds &lt;${r.seq.map(k => PS[k]).join(', ')}&gt; → <b>SAFE: the request is granted.</b>` : `Safety gets stuck after &lt;${r.seq.map(k => PS[k]).join(', ') || 'none'}&gt; → <b>UNSAFE: ${PS[p]} waits, the old state is restored.</b>`];
+      setRes({ kind: r.safe ? 'ok' : 'unsafe', lines, seq: r.seq });
+    };
+    const notes = p === 1 && req.join() === '1,0,2';
+    const cap = { en: 'Pick a process and a request, then run the <b>resource-request algorithm</b> on the snapshot above (Available = (3,3,2)). The notes\' example, <b>P1 requests (1,0,2)</b>, is loaded: it is granted because the safety algorithm still finds &lt;P1, P3, P4, P0, P2&gt;.', ar: 'اختار process و request، وبعدين شغّل الـ <b>resource-request algorithm</b> على نفس الـ snapshot، والـ Available فيه هو (3,3,2). ومثال الـ notes محطوط جاهز، وهو إن الـ P1 بتطلب (1,0,2): الطلب ده بيتقبل، لأن الـ safety algorithm لسه بتلاقي sequence:' + L('&lt;P1, P3, P4, P0, P2&gt;') };
+    return html`<figure className="fig fo7"><div className="fig-stage"><div className="fo7-req">
+      <div className="row" role="group" aria-label="Requesting process">${PS.map((x, k) => html`<button key=${x} className="fig-btn" aria-pressed=${String(p === k)} onClick=${() => { setP(k); setRes(null); }}>${x}</button>`)}</div>
+      <div className="row">${['A', 'B', 'C'].map((n, k) => html`<span key=${n} className="fo7-step"><button className="fig-btn" aria-label=${'less ' + n} onClick=${() => bump(k, -1)}>−</button><span>${n}</span><b>${req[k]}</b><button className="fig-btn" aria-label=${'more ' + n} onClick=${() => bump(k, 1)}>+</button></span>`)}</div>
+      <div className="row"><span>Need ${PS[p]} <b className="m" style=${{ fontFamily: 'var(--mono)' }}>${v(need[p])}</b></span><button className="fig-btn solid" onClick=${runIt}>Run request</button></div>
+      ${notes && !res && html`<p className="fo7-note">Example from the notes loaded.</p>`}
+      ${res && html`<div className="fo7-out" aria-live="polite">${res.lines.map((l, k) => html`<div key=${k} dangerouslySetInnerHTML=${{ __html: l }}></div>`)}
+        ${res.seq && html`<div className="fo7-seq">${res.seq.map(k => html`<span key=${k} className=${res.kind === 'ok' ? '' : 'bad'}>${PS[k]}</span>`)}</div>`}</div>`}
+      </div></div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── §6: the detection algorithm on the notes' example, and after P2 asks for one more C ── */
+  const D_ALLOC = [[0, 1, 0], [2, 0, 0], [3, 0, 3], [2, 1, 1], [0, 0, 2]];
+  const D_REQ = { ok: [[0, 0, 0], [2, 0, 2], [0, 0, 0], [1, 0, 0], [0, 0, 2]], dead: [[0, 0, 0], [2, 0, 2], [0, 0, 1], [1, 0, 0], [0, 0, 2]] };
+  const D_STEPS = {
+    ok: [
+      { en: 'Detection: A = 7, B = 2, C = 6, <b>Available = (0,0,0)</b>. No process has Allocation = 0, so every Finish starts false. A process can finish if its <b>Request ≤ Work</b>.', ar: 'الـ detection: الـ A = 7 و B = 2 و C = 6، والـ <b>Available</b> هو (0,0,0). مفيش process الـ Allocation بتاعها صفر، فكل الـ Finish بتبدأ false. والـ process تقدر تخلّص لو الـ <b>Request</b> بتاعها أصغر من أو بيساوي الـ Work.', w: [0, 0, 0], f: [] },
+      { en: 'P0 requests (0,0,0) ✓ → Work = (0,1,0).', ar: 'الـ P0 طالبة (0,0,0)، فبتخلّص:' + L('Work = (0,0,0) + (0,1,0) = (0,1,0)'), w: [0, 1, 0], f: [0], c: 0 },
+      { en: 'P2 requests (0,0,0) ✓ → Work = (3,1,3).', ar: 'الـ P2 طالبة (0,0,0)، فبتخلّص:' + L('Work = (0,1,0) + (3,0,3) = (3,1,3)'), w: [3, 1, 3], f: [0, 2], c: 2 },
+      { en: 'P3 requests (1,0,0) ✓ → Work = (5,2,4).', ar: 'الـ P3 طالبة (1,0,0)، فبتخلّص:' + L('Work = (3,1,3) + (2,1,1) = (5,2,4)'), w: [5, 2, 4], f: [0, 2, 3], c: 3 },
+      { en: 'P1 requests (2,0,2) ✓ → Work = (7,2,4).', ar: 'الـ P1 طالبة (2,0,2)، فبتخلّص:' + L('Work = (5,2,4) + (2,0,0) = (7,2,4)'), w: [7, 2, 4], f: [0, 2, 3, 1], c: 1 },
+      { en: 'P4 requests (0,0,2) ✓ → Work = (7,2,6). Sequence &lt;P0, P2, P3, P1, P4&gt;: every Finish is true, <b>no deadlock</b>.', ar: 'الـ P4 طالبة (0,0,2)، فبتخلّص:' + L('Work = (7,2,4) + (0,0,2) = (7,2,6)') + 'كل الـ Finish بقت true بالـ sequence دي، يعني <b>مفيش deadlock</b>:' + L('&lt;P0, P2, P3, P1, P4&gt;'), w: [7, 2, 6], f: [0, 2, 3, 1, 4], c: 4, ok: 1 }
+    ],
+    dead: [
+      { en: 'Now <b>P2 requests one more C</b>: Request P2 = (0,0,1). Available is still (0,0,0).', ar: 'دلوقتي الـ <b>P2 طلبت C واحدة زيادة</b>، فالـ Request بتاعها بقى (0,0,1)، والـ Available لسه (0,0,0).', w: [0, 0, 0], f: [] },
+      { en: 'P0 can finish: Work = (0,1,0).', ar: 'الـ P0 تقدر تخلّص، فالـ Work بقى (0,1,0).', w: [0, 1, 0], f: [0], c: 0 },
+      { en: 'No other request can be met: P1 (2,0,2), P2 (0,0,1), P3 (1,0,0) and P4 (0,0,2) all exceed Work (0,1,0).', ar: 'مفيش أي request تاني ينفع يتنفذ، كلهم أكبر من الـ Work اللي هو (0,1,0):' + L('P1 (2,0,2), P2 (0,0,1), P3 (1,0,0), P4 (0,0,2)'), w: [0, 1, 0], f: [0], stuck: 1 },
+      { en: 'Finish is false for P1, P2, P3 and P4: <b>a deadlock exists</b>, consisting of P1, P2, P3 and P4.', ar: 'الـ Finish لسه false عند الـ P1 والـ P2 والـ P3 والـ P4، يعني <b>فيه deadlock</b>، والـ processes اللي فيه هي الـ P1 والـ P2 والـ P3 والـ P4.', w: [0, 1, 0], f: [0], dead: 1 }
+    ]
+  };
+  function Detect({ ar }) {
+    const [mode, set0] = useState('ok'); const steps = D_STEPS[mode], R = D_REQ[mode];
+    const [i, ctl] = useSteps(steps.length, 2800), s = steps[Math.min(i, steps.length - 1)];
+    const set = m => { set0(m); ctl.go(0); if (!calm()) setTimeout(ctl.replay, 0); };
+    return html`<figure className="fig fo7"><div className="fig-stage">
+      <${Modes} list=${[['ok', 'Notes example'], ['dead', 'P2 asks one more C']]} mode=${mode} set=${set} />
+      <div className="fo7-work">Work <b>${v(s.w)}</b></div>
+      <table className="fo7-tbl"><thead><tr><th>Process</th><th>Alloc</th><th>Request</th><th>Finish</th></tr></thead>
+        <tbody>${PS.map((p, k) => { const fin = s.f.includes(k), cur = s.c === k, bad = (s.stuck || s.dead) && !fin;
+          return html`<tr key=${p} className=${cur ? 'yes' : bad ? 'no' : fin ? 'done' : ''}><td>${p}</td><td className="v">${sp(D_ALLOC[k])}</td><td className="v">${sp(R[k])}</td><td>${fin ? 'true' : 'false'}</td></tr>`; })}</tbody></table>
+      <div className="fo7-seq">${s.f.map(k => html`<span key=${k}>${PS[k]}</span>`)}${s.dead ? PS.filter((_, k) => !s.f.includes(k)).map(p => html`<span key=${p} className="bad">${p}</span>`) : ''}</div>
+      <p className="fo7-note">${s.ok ? html`<span className="fo7-good">No deadlock</span>` : s.dead ? html`<span className="fo7-bad">Deadlock: P1, P2, P3, P4</span>` : ''}</p></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${Math.min(i, steps.length - 1)} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'os-dl-conditions': Conditions, 'os-dl-rag': RagFig, 'os-dl-ordering': Ordering, 'os-dl-safe': SafeStates, 'os-dl-bankers': Bankers, 'os-dl-request': Request, 'os-dl-detect': Detect });
+})();
+/* ── part 8 ── */
+// OS visuals, part 8: L7 File-System (file operations, open files, access methods, directories, protection, directory implementation, FAT, allocation methods).
+// Every label and caption comes from the site's notes for Lecture 7.
+(function () {
+  const { useState, useEffect } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.fo8 .fig-dots i.on{ background:var(--k-os); } .fo8 .fig-btn:hover{ border-color:var(--k-os); } .fo8 .fig-btn.solid{ background:var(--s-os); }
+.fo8-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 12px; }
+.fo8-modes .fig-btn[aria-pressed="true"]{ background:var(--s-os); color:#fff; border-color:transparent; }
+.fo8-acts{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:10px 0 0; }
+.fo8-acts .fig-btn{ font-size:.82rem; padding:5px 10px; }
+.fo8-two{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; max-width:440px; margin:0 auto; }
+.fo8-panel{ border:1.4px solid var(--line); border-radius:10px; background:var(--paper); padding:7px 8px; font-size:.82rem; color:var(--ink); min-width:0; }
+.fo8-panel h4{ margin:0 0 5px; font-size:.8rem; color:var(--graphite); font-weight:700; }
+.fo8-row{ border:1.2px solid var(--line); border-radius:6px; padding:3px 6px; margin:3px 0; transition:all .4s ease; background:var(--paper); color:var(--ink); }
+.fo8-row.k{ border-color:var(--k-os); background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); font-weight:700; }
+.fo8-row.on{ border-color:var(--s-os); background:var(--s-os); color:#fff; font-weight:700; }
+.fo8-row.ghost{ opacity:.35; border-style:dashed; }
+.fo8-scan{ animation:fo8scan .5s ease 2; }
+@keyframes fo8scan{ 50%{ background:color-mix(in srgb, var(--k-os) 28%, var(--paper)); } }
+.fo8-strip{ display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:3px; max-width:400px; margin:10px auto 0; }
+.fo8-cell{ border:1.3px solid var(--line); border-radius:5px; min-height:30px; display:flex; align-items:center; justify-content:center; font-size:.78rem; color:var(--ink); background:var(--paper); transition:all .35s ease; text-align:center; line-height:1.15; }
+.fo8-cell.full{ background:color-mix(in srgb, var(--k-os) 22%, var(--paper)); border-color:var(--k-os); }
+.fo8-cell.on{ background:var(--s-os); border-color:var(--s-os); color:#fff; font-weight:700; }
+.fo8-cell.gone{ background:var(--paper-2); color:var(--graphite); border-style:dashed; }
+.fo8-ptrs{ display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:3px; max-width:400px; margin:2px auto 0; font-size:.76rem; color:var(--k-os); font-weight:700; text-align:center; min-height:18px; }
+.fo8-note{ text-align:center; font-size:.8rem; color:var(--graphite); margin:6px 0 0; }
+.fo8-ltr{ direction:ltr; unicode-bidi:isolate; }
+.fo8-code{ direction:ltr; text-align:left; font-family:var(--mono, ui-monospace, monospace); font-size:.8rem; max-width:400px; margin:10px auto 0; display:grid; gap:4px; }
+.fo8-code div{ border:1.2px solid var(--line); border-radius:6px; padding:4px 8px; background:var(--paper); color:var(--ink); transition:all .35s ease; overflow-wrap:anywhere; }
+.fo8-code div.on{ border-color:var(--s-os); background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); font-weight:700; }
+.fo8-tbl{ width:100%; border-collapse:collapse; font-size:.8rem; color:var(--ink); }
+.fo8-tbl th, .fo8-tbl td{ border:1px solid var(--line); padding:3px 5px; text-align:center; }
+.fo8-tbl th{ color:var(--graphite); font-weight:700; background:var(--paper-2); }
+.fo8-tbl tr.on td{ background:color-mix(in srgb, var(--k-os) 20%, var(--paper)); font-weight:700; }
+.fo8-tree{ direction:ltr; text-align:left; font-size:.84rem; max-width:360px; margin:0 auto; }
+.fo8-tree ul{ list-style:none; margin:0; padding-left:16px; border-left:1.3px dashed var(--line); }
+.fo8-tree > ul{ border-left:0; padding-left:0; }
+.fo8-tree li{ margin:3px 0; }
+.fo8-node{ display:inline-block; border:1.2px solid var(--line); border-radius:6px; padding:1px 7px; background:var(--paper); color:var(--ink); transition:all .4s ease; }
+.fo8-node.dir{ font-weight:700; }
+.fo8-node.cwd{ background:var(--s-os); border-color:var(--s-os); color:#fff; }
+.fo8-node.new{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.fo8-node.del{ border-color:var(--pen); background:color-mix(in srgb, var(--pen) 14%, var(--paper)); text-decoration:line-through; }
+.fo8-node.path{ border-color:var(--k-os); background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); }
+.fo8-node.bad{ border-color:var(--pen); color:var(--pen); border-style:dashed; }
+.fo8-perm{ display:grid; grid-template-columns:auto repeat(3, 34px) auto auto; gap:5px 6px; align-items:center; justify-content:center; font-size:.84rem; color:var(--ink); }
+.fo8-perm .bit{ min-height:32px; border-radius:6px; border:1.3px solid var(--line); background:var(--paper); color:var(--graphite); font:inherit; font-weight:700; cursor:pointer; }
+.fo8-perm .bit.on{ background:var(--s-os); border-color:var(--s-os); color:#fff; }
+.fo8-perm .hd{ color:var(--graphite); font-size:.78rem; text-align:center; font-weight:700; }
+.fo8-perm .num{ font-weight:700; font-size:1rem; color:var(--k-os); text-align:center; min-width:22px; }
+.fo8-perm .bin{ font-family:var(--mono, ui-monospace, monospace); font-size:.8rem; color:var(--graphite); }
+.fo8-cmd{ direction:ltr; text-align:center; font-family:var(--mono, ui-monospace, monospace); font-size:.95rem; font-weight:700; margin:10px 0 0; color:var(--ink); }
+.fo8-buckets{ display:grid; gap:5px; max-width:400px; margin:0 auto; }
+.fo8-bk{ display:flex; align-items:center; gap:5px; flex-wrap:wrap; font-size:.8rem; color:var(--ink); }
+.fo8-bk > b{ min-width:62px; color:var(--graphite); font-size:.78rem; }
+.fo8-grid{ display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:3px; max-width:400px; margin:0 auto; }
+.fo8-blk{ border:1.2px solid var(--line); border-radius:5px; min-height:30px; display:flex; flex-direction:column; align-items:center; justify-content:center; font-size:.75rem; color:var(--ink); background:var(--paper); transition:all .4s ease; line-height:1.1; }
+.fo8-blk.on{ outline:2.5px solid var(--s-os); outline-offset:-1px; font-weight:700; }
+.fo8-blk.ix{ border-width:2px; border-color:var(--ink); }
+.fo8-legend{ display:flex; flex-wrap:wrap; gap:5px 10px; justify-content:center; font-size:.78rem; color:var(--ink); margin:8px 0 0; }
+.fo8-legend i{ display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:4px; vertical-align:-2px; border:1px solid var(--line); }
+.fo8-chain{ direction:ltr; text-align:center; font-size:.84rem; margin:8px 0 0; color:var(--ink); line-height:1.8; }
+.fo8-chain span{ display:inline-block; border:1.2px solid var(--line); border-radius:5px; padding:0 6px; background:var(--paper); transition:all .35s ease; }
+.fo8-chain span.on{ background:var(--s-os); border-color:var(--s-os); color:#fff; font-weight:700; }
+.fo8-chain span.seen{ background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); border-color:var(--k-os); }
+.fo8-chain em{ font-style:normal; color:var(--graphite); margin:0 3px; }
+.fo8-meter{ text-align:center; font-size:.84rem; font-weight:700; color:var(--k-os); margin:6px 0 0; }
+.fo8-warn{ text-align:center; font-size:.84rem; font-weight:700; color:var(--pen); margin:6px 0 0; }
+@media (prefers-reduced-motion: reduce){ .fo8-scan{ animation:none; } }`;
+  if (!document.getElementById('fo8-css')) { const s = document.createElement('style'); s.id = 'fo8-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const Modes = ({ list, v, set }) => html`<div className="fo8-modes" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(v === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
+  const Btn = ({ on, dis, children }) => html`<button className="fig-btn" disabled=${!!dis} onClick=${on}>${children}</button>`;
+
+  /* ── L7 [0.2]-[0.3]: open, read, write, seek and close move the directory entry between disk and memory ── */
+  const FO = [
+    { en: 'Information about files is kept in the <b>directory structure</b>, which is maintained on the <b>disk</b>.', ar: 'المعلومات عن الـ files محفوظة في الـ <b>directory structure</b>، واللي متخزّن على الـ <b>disk</b>.' },
+    { en: '<b>open(Fi)</b>: search the directory on disk for entry Fi…', ar: 'الـ <b>open(Fi)</b>: بندوّر في الـ directory اللي على الـ disk على الـ entry بتاع Fi…' },
+    { en: '…and move its content to memory.', ar: '…وبعدين بننقل محتواه للـ memory.' },
+    { en: '<b>write</b>: data is written at the <b>write pointer</b>, and the pointer moves on.', ar: 'الـ <b>write</b>: الـ data بتتكتب عند الـ <b>write pointer</b>، والـ pointer بيتحرك لقدام.' },
+    { en: '<b>read</b>: data is read at the <b>read pointer</b>.', ar: 'الـ <b>read</b>: الـ data بتتقري عند الـ <b>read pointer</b>.' },
+    { en: '<b>Reposition within the file (seek)</b>: the pointer jumps to another place in the file.', ar: 'الـ <b>reposition (seek)</b>: الـ pointer بينط لمكان تاني جوه الـ file.' },
+    { en: '<b>close(Fi)</b>: move the content of entry Fi in memory back to the directory on disk. The other operations are <b>create</b>, <b>delete</b> and <b>truncate</b>.', ar: 'الـ <b>close(Fi)</b>: بننقل محتوى الـ entry بتاع Fi من الـ memory ونرجّعه للـ directory اللي على الـ disk. والـ operations التانية هي الـ <b>create</b> والـ <b>delete</b> والـ <b>truncate</b>.' }
+  ];
+  function FileOpen({ ar }) {
+    const [i, ctl] = useSteps(FO.length, 2600);
+    const inMem = i >= 2 && i <= 5, written = i >= 3, W = i >= 3 ? 3 : 0, R = i >= 5 ? 2 : i >= 4 ? 1 : 0;
+    const cellCls = k => 'fo8-cell' + ((i === 3 && k < 3) || (i === 4 && k === 0) ? ' on' : written && k < 3 ? ' full' : '');
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <div className="fo8-two">
+        <div className="fo8-panel"><h4>Disk: directory</h4>
+          ${['F1', 'Fi', 'F3'].map((f, k) => html`<div key=${f + (i === 1 ? 's' : '')} className=${'fo8-row' + (f === 'Fi' && (i === 2 || i === 6) ? ' k' : '') + (i === 1 && !calm() ? ' fo8-scan' : '')} style=${{ animationDelay: (k * .5) + 's' }}>${f}${f === 'Fi' && i === 1 ? ' ← found' : ''}${f === 'Fi' && i === 6 ? ' ← updated' : ''}</div>`)}</div>
+        <div className="fo8-panel"><h4>Memory</h4>
+          ${inMem ? html`<div className="fo8-row on">Fi (open)</div>` : html`<div className="fo8-row ghost">no entry</div>`}</div>
+      </div>
+      <div className="fo8-strip" aria-label="The file Fi, block by block">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => html`<div key=${k} className=${cellCls(k)}>${k}</div>`)}</div>
+      <div className="fo8-ptrs" aria-hidden="true">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => html`<span key=${k}>${inMem ? [k === W ? 'W' : '', k === R ? 'R' : ''].filter(Boolean).join(' ') : ''}</span>`)}</div>
+      <p className="fo8-note">W = write pointer, R = read pointer</p>
+      </div>
+      <${Cap} ...${FO[i]} showAr=${ar} /><${Bar} steps=${FO} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L7 [1.0]: the open-file table, file-open count, per-process file pointer and access rights ── */
+  function OpenCount({ ar }) {
+    const P0 = { A: { open: false, ptr: 0 }, B: { open: false, ptr: 0 } }, RIGHTS = { A: 'read, write', B: 'read' };
+    const [p, setP] = useState(P0), [msg, setMsg] = useState(null);
+    const count = (p.A.open ? 1 : 0) + (p.B.open ? 1 : 0);
+    const act = (who, what) => {
+      const n = { A: { ...p.A }, B: { ...p.B } };
+      if (what === 'open') n[who].open = true;
+      if (what === 'read') n[who].ptr += 1;
+      if (what === 'close') { n[who].open = false; n[who].ptr = 0; }
+      const c = (n.A.open ? 1 : 0) + (n.B.open ? 1 : 0); setP(n); setMsg({ who, what, c });
+    };
+    let en = 'Two processes, <b>A</b> and <b>B</b>, use the same file <b>Fi</b>. Open it from A or B.', a = 'فيه process-ين، <b>A</b> و <b>B</b>، بيستخدموا نفس الـ file <b>Fi</b>. افتحه من A أو من B.';
+    if (msg && msg.what === 'open') { en = `Process ${msg.who} opened Fi: the <b>open-file table</b> tracks it, the <b>file-open count</b> is ${msg.c}, and ${msg.who} gets its own <b>file pointer</b> and <b>access rights</b> (${RIGHTS[msg.who]}).`; a = `الـ process ${msg.who} فتح Fi: الـ <b>open-file table</b> بيتابعه، والـ <b>file-open count</b> بقى ${msg.c}، و${msg.who} خد <b>file pointer</b> و<b>access rights</b> خاصين بيه (${RIGHTS[msg.who]}).`; }
+    if (msg && msg.what === 'read') { en = `Process ${msg.who} reads: only <b>its own</b> file pointer moves, because the pointer is kept <b>per process</b> (last read/write location).`; a = `الـ process ${msg.who} بيقرا: الـ file pointer بتاعه هو بس اللي بيتحرك، لأن الـ pointer بيتحفظ <b>لكل process لوحده</b> (آخر مكان اتقرا أو اتكتب).`; }
+    if (msg && msg.what === 'close' && msg.c > 0) { en = `Process ${msg.who} closed Fi: the count drops to ${msg.c}, so the entry <b>stays</b>; another process still has the file open.`; a = `الـ process ${msg.who} قفل Fi: الـ count نزل لـ ${msg.c}، فالـ entry <b>بيفضل</b> موجود؛ لسه فيه process تاني فاتح الـ file.`; }
+    if (msg && msg.what === 'close' && msg.c === 0) { en = 'The <b>last</b> process closed Fi: the count is 0, so its entry is <b>removed</b> from the open-file table.'; a = 'آخر process قفل Fi: الـ count بقى 0، فالـ entry بتاعه <b>بيتشال</b> من الـ open-file table.'; }
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <div className="fo8-panel" style=${{ maxWidth: '420px', margin: '0 auto' }}><h4>Open-file table</h4>
+        ${count ? html`<div className="fo8-row k">Fi · file-open count = ${count}</div>` : html`<div className="fo8-row ghost">empty</div>`}</div>
+      <div className="fo8-two" style=${{ marginTop: '8px' }}>
+        ${['A', 'B'].map(w => html`<div key=${w} className="fo8-panel"><h4>Process ${w}</h4>
+          ${p[w].open ? html`<div className="fo8-row">pointer: ${p[w].ptr}</div><div className="fo8-row">rights: ${RIGHTS[w]}</div>` : html`<div className="fo8-row ghost">Fi not open</div>`}
+          <div className="fo8-acts">${p[w].open ? html`<${Btn} on=${() => act(w, 'read')}>Read</${Btn}><${Btn} on=${() => act(w, 'close')}>Close</${Btn}>` : html`<${Btn} on=${() => act(w, 'open')}>Open</${Btn}>`}</div></div>`)}
+      </div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L7 [2.0]-[2.2]: sequential access, direct access, and sequential access simulated on a direct-access file ── */
+  function Access({ ar }) {
+    const [mode, setMode] = useState('seq'), [cp, setCp] = useState(0), [end, setEnd] = useState(5), [hit, setHit] = useState(null), [line, setLine] = useState(-1), [n, setN] = useState(3), [msg, setMsg] = useState(null);
+    const change = m => { setMode(m); setCp(0); setEnd(5); setHit(null); setLine(-1); setMsg(null); };
+    const readNext = () => { if (cp >= end) { setHit(null); setMsg('eof'); return; } setHit(cp); setCp(cp + 1); setMsg('read'); setLine(1); };
+    const writeNext = () => { setHit(cp); setEnd(mode === 'seq' ? cp + 1 : Math.max(end, cp + 1)); setCp(cp + 1); setMsg('write'); setLine(2); };
+    const reset = () => { setCp(0); setHit(null); setMsg('reset'); setLine(0); };
+    const nOp = op => { setHit(n); if (op === 'read') setMsg('readn'); if (op === 'write') { setMsg('writen'); setEnd(Math.max(end, n + 1)); } if (op === 'pos') { setCp(n); setHit(null); setMsg('pos'); } };
+    let en, a;
+    if (mode === 'seq') {
+      en = '<b>Sequential access</b> follows the tape model: beginning, current position, end. Operations: <b>read next</b>, <b>write next</b>, <b>reset</b>.'; a = 'الـ <b>sequential access</b> ماشي على الـ tape model: بداية، ومكان حالي، ونهاية. الـ operations هي الـ <b>read next</b> والـ <b>write next</b> والـ <b>reset</b>.';
+      if (msg === 'write') { en = `<b>write next</b> wrote record ${hit} and moved on. There is <b>no read after the last write</b>: the old records after it are gone (rewrite).`; a = `الـ <b>write next</b> كتب الـ record رقم ${hit} واتحرك. مفيش <b>read بعد آخر write</b>: الـ records القديمة اللي بعده راحت (rewrite).`; }
+      if (msg === 'read') { en = `<b>read next</b> read record ${hit}; the current position moved to ${cp}.`; a = `الـ <b>read next</b> قرا الـ record رقم ${hit}، والمكان الحالي بقى ${cp}.`; }
+      if (msg === 'eof') { en = 'Nothing after the end: read next has no record to read.'; a = 'مفيش حاجة بعد النهاية: الـ read next مش لاقي record يقراه.'; }
+      if (msg === 'reset') { en = '<b>reset</b> goes back to the beginning.'; a = 'الـ <b>reset</b> بيرجع للبداية.'; }
+    } else if (mode === 'dir') {
+      en = '<b>Direct access</b>: the file is fixed-length logical records. Pick n (the <b>relative block number</b>) and read n, write n or position to n.'; a = 'الـ <b>direct access</b>: الـ file عبارة عن logical records طولها ثابت. اختار n (الـ <b>relative block number</b>) واعمل read n أو write n أو position to n.';
+      if (msg === 'readn' || msg === 'writen') { en = `<b>${msg === 'readn' ? 'read' : 'write'} ${n}</b> went straight to block ${n}, without passing the blocks before it. Relative block numbers let the OS decide where the file is placed.`; a = `الـ <b>${msg === 'readn' ? 'read' : 'write'} ${n}</b> راح على block ${n} على طول، من غير ما يعدّي على اللي قبله. والـ relative block numbers بتسيب الـ OS يقرر الـ file يتحط فين.`; }
+      if (msg === 'pos') { en = `<b>position to ${n}</b>: the current position is now ${n}, so read next or write next continue from there.`; a = `الـ <b>position to ${n}</b>: المكان الحالي بقى ${n}، فالـ read next أو الـ write next بيكمّلوا من هناك.`; }
+    } else {
+      en = 'Sequential access <b>simulated</b> on a direct-access file, using a current position <b>cp</b>. Press an operation to run its code.'; a = 'الـ sequential access <b>متعمل بالمحاكاة</b> على file بـ direct access، باستخدام مكان حالي اسمه <b>cp</b>. دوس على operation عشان يشغّل الـ code بتاعها.';
+      if (line === 0) { en = '<b>reset</b> → cp = 0.'; a = 'الـ <b>reset</b> بيخلي الـ cp يساوي 0.'; }
+      if (line === 1 && msg === 'read') { en = `<b>read next</b> → read cp; cp = cp + 1. Block ${hit} was read and cp is now ${cp}.`; a = `الـ <b>read next</b> بيقرا الـ cp وبعدين يزوّده 1. اتقرا block ${hit} والـ cp بقى ${cp}.`; }
+      if (msg === 'eof') { en = 'cp is past the last record: there is nothing more to read.'; a = 'الـ cp عدّى آخر record: مفيش حاجة تانية تتقري.'; }
+      if (line === 2) { en = `<b>write next</b> → write cp; cp = cp + 1. Block ${hit} was written and cp is now ${cp}.`; a = `الـ <b>write next</b> بيكتب عند الـ cp وبعدين يزوّده 1. اتكتب block ${hit} والـ cp بقى ${cp}.`; }
+    }
+    const curPos = mode === 'dir' ? cp : cp;
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <${Modes} list=${[['seq', 'Sequential'], ['dir', 'Direct'], ['sim', 'Sequential on direct']]} v=${mode} set=${change} />
+      <div className="fo8-strip" aria-label="Records of the file">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => html`<div key=${k} className=${'fo8-cell' + (k === hit ? ' on' : k < end ? ' full' : mode === 'seq' ? ' gone' : '')}>${k}</div>`)}</div>
+      <div className="fo8-ptrs" aria-hidden="true">${[0, 1, 2, 3, 4, 5, 6, 7].map(k => html`<span key=${k}>${k === curPos ? (mode === 'sim' ? 'cp' : 'cur') : ''}</span>`)}</div>
+      ${mode === 'seq' && html`<p className="fo8-note">beginning = 0 · end = ${end}</p>`}
+      ${mode === 'dir' && html`<div className="fo8-acts"><span style=${{ alignSelf: 'center', fontSize: '.84rem' }}>n =</span>${[0, 1, 2, 3, 4, 5, 6, 7].map(k => html`<button key=${k} className=${'fig-btn' + (k === n ? ' solid' : '')} onClick=${() => setN(k)}>${k}</button>`)}</div>`}
+      ${mode === 'sim' && html`<div className="fo8-code">${['reset → cp = 0', 'read next → read cp; cp = cp + 1', 'write next → write cp; cp = cp + 1'].map((t, k) => html`<div key=${k} className=${k === line ? 'on' : ''}>${t}</div>`)}</div>`}
+      <div className="fo8-acts">${mode === 'dir'
+        ? html`<${Btn} on=${() => nOp('read')}>read ${n}</${Btn}><${Btn} on=${() => nOp('write')}>write ${n}</${Btn}><${Btn} on=${() => nOp('pos')}>position to ${n}</${Btn}><${Btn} on=${readNext}>read next</${Btn}>`
+        : html`<${Btn} on=${readNext}>read next</${Btn}><${Btn} on=${writeNext}>write next</${Btn}><${Btn} on=${reset}>reset</${Btn}>`}</div>
+      </div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L7 [3.2]-[3.3] and its table: single-level, two-level and tree-structured directories ── */
+  function DirStructures({ ar }) {
+    const [mode, setMode] = useState('one'), [act, setAct] = useState(null);
+    const change = m => { setMode(m); setAct(null); };
+    const N = (t, cls) => html`<span className=${'fo8-node ' + (cls || '')}>${t}</span>`;
+    let body, acts, en, a;
+    if (mode === 'one') {
+      body = html`<div className="fo8-tree"><ul><li>${N('directory (all users)', 'dir')}<ul>
+        <li>${N('test (user 1)')}</li><li>${N('prog (user 1)')}</li><li>${N('data (user 2)')}</li>
+        ${act === 'dup' && html`<li>${N('test (user 2) ✗ name taken', 'bad')}</li>`}</ul></li></ul></div>`;
+      acts = html`<${Btn} on=${() => setAct('dup')}>User 2 creates "test"</${Btn}>`;
+      en = '<b>Single-level directory</b>: one directory for all users. There is <b>no grouping</b> of files, and searching gets slow as the files grow.'; a = 'الـ <b>single-level directory</b>: directory واحد لكل الـ users. مفيش <b>grouping</b> للـ files، والـ search بيبطأ لما الـ files تكتر.';
+      if (act === 'dup') { en = '<b>Naming problem</b>: all files must have unique names, so user 2 cannot also call a file "test".'; a = 'دي <b>مشكلة الـ naming</b>: كل الـ files لازم أساميها تبقى مختلفة، فالـ user 2 مايقدرش يسمي file كمان باسم "test".'; }
+    } else if (mode === 'two') {
+      const hot = act === 'find';
+      body = html`<div className="fo8-tree"><ul><li>${N('master directory', 'dir' + (hot ? ' path' : ''))}<ul>
+        <li>${N('user1 (UFD)', 'dir')}<ul><li>${N('test')}</li><li>${N('prog')}</li></ul></li>
+        <li>${N('user2 (UFD)', 'dir' + (hot ? ' path' : ''))}<ul><li>${N('test', hot ? 'path' : '')}</li><li>${N('data')}</li></ul></li></ul></li></ul></div>`;
+      acts = html`<${Btn} on=${() => setAct('find')}>Open user2/test</${Btn}>`;
+      en = '<b>Two-level directory</b>: a separate directory (<b>UFD</b>) for each user under a master directory. Different users can have the <b>same file name</b>.'; a = 'الـ <b>two-level directory</b>: كل user ليه directory لوحده (<b>UFD</b>) تحت الـ master directory. وبكده الـ users المختلفين ممكن يستخدموا <b>نفس اسم الـ file</b>.';
+      if (hot) { en = 'Files are addressed by <b>path name</b> (user/file), here <b>user2/test</b>, and searching is <b>efficient</b>. Still, there is <b>no grouping capability</b> within a user.'; a = 'الـ files بنوصلها بالـ <b>path name</b> (user/file)، وهنا هو <b>user2/test</b>، والـ search بيبقى <b>efficient</b>. بس لسه مفيش <b>grouping</b> جوه الـ user الواحد.'; }
+    } else {
+      const del = act === 'del', made = act === 'mkdir' || del, cd = act === 'cd';
+      body = html`<div className="fo8-tree"><ul><li>${N('/', 'dir')}<ul>
+        <li>${N('spell', 'dir' + (cd ? ' path' : ''))}<ul><li>${N('mail', 'dir' + (cd ? ' path' : ''))}<ul><li>${N('prog', 'dir' + (cd ? ' cwd' : ''))}</li></ul></li></ul></li>
+        <li>${N('mail', 'dir' + (del ? ' del' : act === 'mkdir' ? ' cwd' : ''))}${made && html`<ul><li>${N('count', 'dir ' + (del ? 'del' : 'new'))}</li></ul>`}</li></ul></li></ul></div>`;
+      acts = html`<${Btn} on=${() => setAct('cd')}>cd /spell/mail/prog</${Btn}><${Btn} on=${() => setAct('mkdir')}>in /mail: mkdir count</${Btn}><${Btn} dis=${!made} on=${() => setAct('del')}>Delete mail</${Btn}>`;
+      en = '<b>Tree-structured directory</b>: efficient searching, grouping capability, and a <b>current (working) directory</b>. Try the commands.'; a = 'الـ <b>tree-structured directory</b>: الـ search فيه efficient، وفيه grouping، وفيه <b>current (working) directory</b>. جرّب الـ commands.';
+      if (cd) { en = '<b>cd /spell/mail/prog</b> makes prog the current directory. A path name can be <b>absolute</b> (from the root, /spell/mail/prog) or <b>relative</b> (from the current directory).'; a = 'الـ <b>cd /spell/mail/prog</b> بيخلي prog هو الـ current directory. والـ path name ممكن يبقى <b>absolute</b> (من الـ root زي /spell/mail/prog) أو <b>relative</b> (من الـ current directory).'; }
+      if (act === 'mkdir') { en = 'New files and subdirectories are created in the <b>current directory</b>: in /mail, <b>mkdir count</b> adds count under mail.'; a = 'الـ files والـ subdirectories الجديدة بتتعمل في الـ <b>current directory</b>: في /mail، الـ <b>mkdir count</b> بيضيف count تحت mail.'; }
+      if (del) { en = 'Deleting <b>mail</b> deletes the <b>entire subtree</b> rooted at mail, so count goes with it.'; a = 'لما نمسح <b>mail</b>، بيتمسح <b>الـ subtree كله</b> اللي تحته، فالـ count بيتمسح معاه.'; }
+    }
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <${Modes} list=${[['one', 'Single-level'], ['two', 'Two-level'], ['tree', 'Tree']]} v=${mode} set=${change} />
+      ${body}
+      <div className="fo8-acts">${acts}${act && html`<${Btn} on=${() => setAct(null)}>Reset</${Btn}>`}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L7 [4.3]: UNIX/Linux modes for owner, group and public, chmod 761 game ── */
+  function Chmod({ ar }) {
+    const START = [[1, 1, 1], [1, 1, 0], [0, 0, 1]];
+    const [b, setB] = useState(START);
+    const flip = (r, c) => setB(b.map((row, i) => i !== r ? row : row.map((x, j) => j === c ? 1 - x : x)));
+    const digit = row => row[0] * 4 + row[1] * 2 + row[2], code = b.map(digit).join(''), isEx = code === '761';
+    const CL = ['owner', 'group', 'public'];
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <div className="fo8-perm" role="group" aria-label="Access modes">
+        <span></span><span className="hd">R</span><span className="hd">W</span><span className="hd">X</span><span className="hd">bits</span><span className="hd">digit</span>
+        ${b.map((row, r) => [html`<span key=${'l' + r}>${CL[r]}</span>`,
+          ...row.map((x, c) => html`<button key=${r + '-' + c} className=${'bit' + (x ? ' on' : '')} aria-pressed=${String(!!x)} aria-label=${CL[r] + ' ' + 'RWX'[c]} onClick=${() => flip(r, c)}>${x ? 'RWX'[c] : '-'}</button>`),
+          html`<span key=${'b' + r} className="bin">${row.join('')}</span>`, html`<span key=${'d' + r} className="num">${digit(row)}</span>`])}
+      </div>
+      <p className="fo8-cmd">chmod ${code} game</p>
+      ${!isEx && html`<div className="fo8-acts"><${Btn} on=${() => setB(START)}>Example from the notes (761)</${Btn}></div>`}</div>
+      <${Cap} en=${isEx ? 'Three classes get read, write and execute modes: <b>owner 7 = RWX 111</b>, <b>group 6 = RW- 110</b>, <b>public 1 = --X 001</b>, so <b>chmod 761 game</b>. Tap a mode to change it. (To use a group, ask the manager to create it, e.g. G, and add users.)' : `Each class is 3 bits (R = 4, W = 2, X = 1), and their sum is the class's digit: <b>chmod ${code} game</b>.`}
+        ar=${isEx ? 'فيه 3 classes وكل واحدة ليها modes للـ read والـ write والـ execute:<span class="ltr">owner 7 = RWX 111, group 6 = RW- 110, public 1 = --X 001</span>وبكده الأمر هو <b>chmod 761 game</b>. دوس على أي mode عشان تغيّره. (ولو عايز group، اطلب من الـ manager يعمله، زي G، ويضيف الـ users.)' : `كل class ليها 3 bits (الـ R بـ 4 والـ W بـ 2 والـ X بـ 1)، ومجموعهم هو الرقم بتاع الـ class:<span class="ltr">chmod ${code} game</span>`} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L7 [5.3]-[5.4]: directory as a linear list or a hash table (with chained overflow) ── */
+  const NAMES = ['count', 'tr', 'mail', 'list', 'f'];
+  const hsh = s => [...s].reduce((a, c) => a + c.charCodeAt(0), 0) % 4;
+  function DirImpl({ ar }) {
+    const [mode, setMode] = useState('lin'), [q, setQ] = useState(null), [k, setK] = useState(0);
+    const buckets = [0, 1, 2, 3].map(b => NAMES.filter(n => hsh(n) === b));
+    const path = !q ? [] : mode === 'lin' ? NAMES.slice(0, NAMES.indexOf(q) + 1) : buckets[hsh(q)].slice(0, buckets[hsh(q)].indexOf(q) + 1);
+    useEffect(() => { if (!q) return; if (calm()) { setK(path.length); return; } if (k >= path.length) return; const t = setTimeout(() => setK(x => x + 1), 650); return () => clearTimeout(t); }, [q, k, mode]);
+    const go = n => { setQ(n); setK(0); }, change = m => { setMode(m); setQ(null); setK(0); };
+    const done = q && k >= path.length, seen = path.slice(0, k);
+    const cls = n => 'fo8-row' + (done && n === q ? ' on' : seen.includes(n) ? ' k' : '');
+    let en = mode === 'lin' ? '<b>Linear list</b> of file names with pointers to the data blocks: simple to program, but time-consuming, because a search is linear. Pick a name to search for.' : '<b>Hash table</b>: a linear list plus a hash structure, which decreases the directory search time. Pick a name to search for.';
+    let a = mode === 'lin' ? 'الـ <b>linear list</b> فيها أسامي الـ files ومعاها pointers للـ data blocks: سهلة في البرمجة، بس بتاخد وقت لأن الـ search بيبقى linear. اختار اسم تدوّر عليه.' : 'الـ <b>hash table</b> هي linear list ومعاها hash structure، وده بيقلل وقت الـ search في الـ directory. اختار اسم تدوّر عليه.';
+    if (done) {
+      if (mode === 'lin') { en = `Found <b>${q}</b> after <b>${path.length}</b> comparison${path.length > 1 ? 's' : ''}: the search walks the list from the top. Keeping it sorted (a linked list or a B+ tree) can help.`; a = `لقينا <b>${q}</b> بعد <b>${path.length}</b> مقارنة: الـ search بيمشي على الـ list من أولها. ولو خليناها sorted (بـ linked list أو B+ tree) ده ممكن يساعد.`; }
+      else { const c = buckets[hsh(q)].length > 1; en = `<b>${q}</b> hashes straight to bucket ${hsh(q)}: found after <b>${path.length}</b> comparison${path.length > 1 ? 's' : ''}.${c ? ' Two names hash to the same location here (a <b>collision</b>), so they are kept in a chain (<b>chained overflow</b>).' : ''}`; a = `الاسم <b>${q}</b> بيروح على bucket رقم ${hsh(q)} على طول، ولقيناه بعد <b>${path.length}</b> مقارنة.${c ? ' وهنا فيه اسمين بيروحوا لنفس المكان (ده <b>collision</b>)، فبنحطهم في chain (الـ <b>chained overflow</b>).' : ''}`; }
+    }
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <${Modes} list=${[['lin', 'Linear list'], ['hash', 'Hash table']]} v=${mode} set=${change} />
+      ${mode === 'lin'
+        ? html`<div className="fo8-panel" style=${{ maxWidth: '300px', margin: '0 auto' }}><h4>Directory (linear list)</h4>${NAMES.map(n => html`<div key=${n} className=${cls(n)}>${n} → data blocks</div>`)}</div>`
+        : html`<div className="fo8-buckets">${buckets.map((bk, b) => html`<div key=${b} className="fo8-bk"><b>bucket ${b}</b>${bk.length ? bk.map((n, j) => html`<${React.Fragment} key=${n}>${j > 0 && html`<span aria-hidden="true">→</span>`}<span className=${cls(n)} style=${{ margin: 0 }}>${n}</span></${React.Fragment}>`) : html`<span className="fo8-row ghost" style=${{ margin: 0 }}>empty</span>`}</div>`)}
+          <p className="fo8-note fo8-ltr">toy hash for this demo: sum of letter codes mod 4</p></div>`}
+      <div className="fo8-acts">${NAMES.map(n => html`<button key=${n} className=${'fig-btn' + (q === n ? ' solid' : '')} onClick=${() => go(n)}>${n}</button>`)}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L7 [6.3]: the File-Allocation Table, test = 217 → 618 → 339 → end ── */
+  const FS = [
+    { en: '<b>FAT</b> is a variation of linked allocation that keeps the links in a <b>table at the start of the volume</b>. The directory entry <b>test</b> holds its start block, <b>217</b>.', ar: 'الـ <b>FAT</b> نوع من الـ linked allocation، بس الـ links بتتحفظ في <b>table في أول الـ volume</b>. والـ directory entry اسمه <b>test</b> شايل الـ start block بتاعه، وهو <b>217</b>.', at: 217, chain: [217] },
+    { en: 'Look up <b>FAT[217]</b>: it holds <b>618</b>, the next block of test.', ar: 'بنبص في <b>FAT[217]</b>: فيه <b>618</b>، وده الـ block اللي بعده في test.', at: 217, chain: [217, 618] },
+    { en: '<b>FAT[618]</b> holds <b>339</b>.', ar: 'والـ <b>FAT[618]</b> فيه <b>339</b>.', at: 618, chain: [217, 618, 339] },
+    { en: '<b>FAT[339]</b> holds <b>−1</b>: the end of the file.', ar: 'والـ <b>FAT[339]</b> فيه <b>−1</b>، يعني ده آخر الـ file.', at: 339, chain: [217, 618, 339, 'end'] }
+  ];
+  function Fat({ ar }) {
+    const [i, ctl] = useSteps(FS.length, 2600), s = FS[i];
+    const rows = [[0, ''], ['…', ''], [217, 618], ['…', ''], [339, '−1'], ['…', ''], [618, 339], ['…', '']];
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <div className="fo8-two">
+        <div className="fo8-panel"><h4>Directory</h4><table className="fo8-tbl"><thead><tr><th>name</th><th>start block</th></tr></thead><tbody><tr className=${i === 0 ? 'on' : ''}><td>test</td><td>217</td></tr></tbody></table></div>
+        <div className="fo8-panel"><h4>FAT</h4><table className="fo8-tbl"><thead><tr><th>block</th><th>next</th></tr></thead><tbody>
+          ${rows.map(([b, v], k) => html`<tr key=${k} className=${b === s.at && i > 0 ? 'on' : ''}><td>${b}</td><td>${v}</td></tr>`)}</tbody></table></div>
+      </div>
+      <div className="fo8-chain" aria-label="Blocks of test in order">${s.chain.map((c, k) => html`<${React.Fragment} key=${k}>${k > 0 && html`<em>→</em>`}<span className=${k === s.chain.length - 1 ? 'on' : 'seen'}>${c === 'end' ? 'end of file' : c}</span></${React.Fragment}>`)}</div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${FS} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L7 [6.1]-[6.4] and its table: contiguous, linked and indexed allocation on a 32-block disk ── */
+  const HUE = { count: 'var(--k-os)', tr: 'var(--pen)', mail: 'var(--ok)', list: '#c08a00', f: '#2a8fb0', jeep: 'var(--k-os)', new: '#c08a00' };
+  const CONT = [['count', 0, 2], ['tr', 14, 3], ['mail', 19, 6], ['list', 28, 4], ['f', 6, 2]];
+  const PACKED = [['count', 0, 2], ['f', 2, 2], ['tr', 4, 3], ['mail', 7, 6], ['list', 13, 4]];
+  const JEEP = [9, 16, 1, 10, 25];
+  function Alloc({ ar }) {
+    const [mode, setMode] = useState('cont'), [st, setSt] = useState({}), [k, setK] = useState(0);
+    const change = m => { setMode(m); setSt({}); setK(0); };
+    const files = st.packed ? PACKED.concat(st.made ? [['new', 17, 7]] : []) : CONT;
+    const owner = b => { if (mode !== 'cont') return JEEP.includes(b) || (mode === 'idx' && b === 19) ? 'jeep' : null; const f = files.find(([, s, l]) => b >= s && b < s + l); return f ? f[0] : null; };
+    // linked / indexed walk: how many blocks have been read so far
+    useEffect(() => { if (!st.walk) return; if (calm()) { setK(st.walk.length); return; } if (k >= st.walk.length) return; const t = setTimeout(() => setK(x => x + 1), 700); return () => clearTimeout(t); }, [st, k]);
+    const walk = list => { setSt({ walk: list }); setK(0); };
+    const readBlocks = st.walk ? st.walk.slice(0, k) : [], cur = readBlocks[readBlocks.length - 1];
+    const on = b => (st.hit === b) || cur === b;
+    const free = [...Array(32).keys()].filter(b => !owner(b)), holes = []; free.forEach(b => { const h = holes[holes.length - 1]; if (h && h[1] === b - 1) h[1] = b; else holes.push([b, b]); });
+    const biggest = Math.max(0, ...holes.map(([a, z]) => z - a + 1));
+    let en, a, acts, extra = null;
+    if (mode === 'cont') {
+      en = '<b>Contiguous</b>: each file occupies a set of contiguous blocks, so the directory needs only the <b>start block and length</b>. Best performance in most cases.'; a = 'الـ <b>contiguous</b>: كل file واخد blocks جنب بعض، فالـ directory محتاج بس الـ <b>start block والـ length</b>. وده أحسن performance في أغلب الحالات.';
+      if (st.hit != null) { en = 'Direct access is fast: block 3 of mail is just <b>start + 3 = 19 + 3 = 22</b>, one read.'; a = 'الـ direct access سريع: الـ block رقم 3 في mail هو ببساطة <b>start + 3</b>، يعني 19 + 3 = 22، وده read واحد بس.'; }
+      if (st.fail) { en = `<b>External fragmentation</b>: there are ${free.length} free blocks, but the largest free run is only ${biggest}, so a 7-block file does not fit. The fix is <b>compaction</b>.`; a = `دي <b>external fragmentation</b>: فيه ${free.length} block فاضيين، بس أكبر مساحة فاضية جنب بعض ${biggest} بس، فالـ file اللي حجمه 7 blocks مش هيدخل. والحل هو الـ <b>compaction</b>.`; }
+      if (st.packed && !st.made) { en = '<b>Compaction</b> moved the files together, so all the free blocks are now one run. (It can be done off-line or on-line.)'; a = 'الـ <b>compaction</b> لمّ الـ files جنب بعض، فكل الـ blocks الفاضية بقت مساحة واحدة. (وممكن يتعمل off-line أو on-line.)'; }
+      if (st.made) { en = 'Now the 7-block file fits at blocks 17 to 23. Contiguous allocation also needs the file size <b>known in advance</b>.'; a = 'دلوقتي الـ file اللي حجمه 7 blocks دخل في الـ blocks من 17 لـ 23. والـ contiguous allocation كمان محتاج نعرف حجم الـ file <b>من الأول</b>.'; }
+      acts = st.packed ? html`<${Btn} dis=${st.made} on=${() => setSt({ packed: 1, made: 1 })}>Create a 7-block file</${Btn}>` : html`<${Btn} on=${() => setSt({ hit: 22 })}>Read block 3 of mail</${Btn}>${st.fail ? html`<${Btn} on=${() => setSt({ packed: 1 })}>Compact</${Btn}>` : html`<${Btn} on=${() => setSt({ fail: 1 })}>Create a 7-block file</${Btn}>`}`;
+      extra = html`<table className="fo8-tbl" style=${{ maxWidth: '300px', margin: '8px auto 0' }}><thead><tr><th>file</th><th>start</th><th>length</th></tr></thead><tbody>${files.map(([n, s, l]) => html`<tr key=${n}><td>${n}</td><td>${s}</td><td>${l}</td></tr>`)}</tbody></table>`;
+    } else if (mode === 'link') {
+      en = '<b>Linked</b>: the file is a linked list of blocks scattered anywhere on the disk. Each block points to the next, and a <b>null</b> pointer ends the file. The directory holds <b>start 9</b> and <b>end 25</b>.'; a = 'الـ <b>linked</b>: الـ file عبارة عن linked list من blocks متفرقة في أي حتة على الـ disk. كل block بيشاور على اللي بعده، والـ file بيخلص عند pointer قيمته <b>null</b>. والـ directory شايل الـ <b>start 9</b> والـ <b>end 25</b>.';
+      if (st.walk) { en = `To reach block 4 of jeep, the chain must be followed from the start: <b>${k} read${k === 1 ? '' : 's'}</b> so far. No efficient direct access, and a lost or damaged pointer breaks the file. No external fragmentation, though.`; a = `عشان نوصل للـ block رقم 4 في jeep، لازم نمشي ورا الـ chain من الأول: لحد دلوقتي <b>${k} read</b>. يعني مفيش direct access كويس، ولو pointer ضاع أو باظ الـ file بيبوظ. بس مفيش external fragmentation.`; }
+      acts = html`<${Btn} on=${() => walk(JEEP)}>Read block 4 of jeep</${Btn}>`;
+      extra = html`<div className="fo8-chain">${JEEP.map((b, j) => html`<${React.Fragment} key=${b}>${j > 0 && html`<em>→</em>`}<span className=${cur === b ? 'on' : readBlocks.includes(b) ? 'seen' : ''}>${b}</span></${React.Fragment}>`)}<em>→</em><span>null</span></div>`;
+    } else {
+      en = '<b>Indexed</b>: each file has its own <b>index block</b> of pointers to its data blocks. jeep\'s index block is <b>19</b>, listing 9, 16, 1, 10, 25, −1.'; a = 'الـ <b>indexed</b>: كل file ليه <b>index block</b> خاص بيه فيه pointers للـ data blocks. والـ index block بتاع jeep هو <b>19</b>، وفيه 9 و 16 و 1 و 10 و 25 و −1.';
+      if (st.walk) { en = `Random (direct) access: read the index block 19, then go straight to block 25: <b>${k} read${k === 1 ? '' : 's'}</b>. No external fragmentation, but each file has the overhead of an index block. (A file of max 256 KB with 512-byte blocks is 512 blocks, so 1 index block is enough.)`; a = `الـ random (direct) access: بنقرا الـ index block 19، وبعدين نروح على block 25 على طول: <b>${k} read</b>. مفيش external fragmentation، بس كل file عليه overhead الـ index block. (ولو الـ file أقصاه 256 KB والـ block حجمه 512 byte، يبقى 512 block، فـ index block واحد كفاية.)`; }
+      acts = html`<${Btn} on=${() => walk([19, 25])}>Read block 4 of jeep</${Btn}>`;
+      extra = html`<div className="fo8-chain"><span className=${cur === 19 ? 'on' : readBlocks.includes(19) ? 'seen' : ''}>index block 19</span><em>:</em>${[9, 16, 1, 10, 25, '−1'].map(b => html`<span key=${b} style=${{ marginLeft: '3px' }} className=${cur === b ? 'on' : ''}>${b}</span>`)}</div>`;
+    }
+    const legend = mode === 'cont' ? files.map(f => f[0]) : ['jeep'];
+    return html`<figure className="fig fo8"><div className="fig-stage">
+      <${Modes} list=${[['cont', 'Contiguous'], ['link', 'Linked'], ['idx', 'Indexed']]} v=${mode} set=${change} />
+      <div className="fo8-grid" aria-label="Disk blocks 0 to 31">${[...Array(32).keys()].map(b => { const o = owner(b);
+        return html`<div key=${b} className=${'fo8-blk' + (on(b) ? ' on' : '') + (mode === 'idx' && b === 19 ? ' ix' : '')} style=${o ? { background: `color-mix(in srgb, ${HUE[o]} 30%, var(--paper))`, borderColor: HUE[o] } : null}>${b}</div>`; })}</div>
+      <div className="fo8-legend">${legend.map(n => html`<span key=${n}><i style=${{ background: `color-mix(in srgb, ${HUE[n]} 30%, var(--paper))`, borderColor: HUE[n] }}></i>${n}</span>`)}<span><i></i>free</span></div>
+      ${extra}
+      <div className="fo8-acts">${acts}${Object.keys(st).length > 0 && html`<${Btn} on=${() => change(mode)}>Reset</${Btn}>`}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'os-file-open': FileOpen, 'os-open-count': OpenCount, 'os-access-methods': Access, 'os-dir-structures': DirStructures, 'os-chmod': Chmod, 'os-dir-impl': DirImpl, 'os-fat': Fat, 'os-alloc-methods': Alloc });
+})();
+/* ── part 9 ── */
+// OS visuals, part 9: L8 I/O systems (bus structure, port addresses, polling, interrupt cycle, event vectors, DMA transfer, kernel I/O layers, block and character devices, interrupt overheads). Every label and caption comes from the site's notes for L8.
+(function () {
+  const { useState, useEffect } = React;
+  const { html, useSteps, Cap, Bar, calm } = window.FIGKIT;
+  const CSS = `
+.fo9 .fig-btn.solid{ background:var(--s-os); color:#fff; border-color:transparent; }
+.fo9 .fig-btn[aria-pressed="true"]{ background:var(--s-os); color:#fff; border-color:transparent; }
+.fo9 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.fo9-wrap{ max-width:440px; margin:0 auto; color:var(--ink); font-size:.86rem; line-height:1.35; }
+.fo9-box{ border:1.4px solid var(--line); background:var(--paper); color:var(--ink); border-radius:8px; padding:5px 8px; text-align:center; font-weight:600; transition:background .45s, border-color .45s, color .45s, opacity .45s; }
+.fo9-box small{ display:block; font-weight:400; font-size:.8rem; color:var(--graphite); }
+.fo9-box.on{ background:var(--s-os); border-color:var(--s-os); color:#fff; } .fo9-box.on small{ color:rgba(255,255,255,.92); }
+.fo9-box.seen{ background:color-mix(in srgb, var(--k-os) 14%, var(--paper)); border-color:var(--k-os); }
+.fo9-box.dim{ opacity:.35; }
+.fo9-bus{ border-radius:6px; padding:3px 8px; text-align:center; font-weight:700; font-size:.82rem; color:var(--ink); background:color-mix(in srgb, var(--graphite) 18%, var(--paper)); border:1px solid var(--graphite); transition:all .45s; }
+.fo9-bus.on{ background:var(--s-os); color:#fff; border-color:var(--s-os); }
+.fo9-bus.dim{ opacity:.35; }
+.fo9-v{ text-align:center; color:var(--graphite); line-height:1; margin:3px 0; font-size:.9rem; }
+.fo9-row{ display:grid; gap:6px; }
+.fo9-chips{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:6px 0; }
+.fo9-chip{ border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:99px; padding:3px 10px; font-size:.82rem; cursor:pointer; font:inherit; font-size:.82rem; }
+.fo9-chip[aria-pressed="true"]{ background:var(--s-os); color:#fff; border-color:var(--s-os); }
+.fo9-tbl{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:3px 8px; align-items:center; }
+.fo9-tbl > span{ padding:3px 6px; border-radius:5px; transition:background .35s, color .35s; }
+.fo9-tbl > span.mono{ font-family:var(--mono); font-weight:700; white-space:nowrap; }
+.fo9-tbl > span.hit{ background:var(--s-os); color:#fff; }
+.fo9-in{ display:flex; gap:8px; align-items:center; justify-content:center; flex-wrap:wrap; margin-bottom:8px; }
+.fo9-in input{ font:700 1rem var(--mono); width:5.5em; padding:4px 8px; border:1.4px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); text-transform:uppercase; }
+.fo9-in input[type=range]{ width:150px; padding:0; accent-color:var(--k-os); }
+.fo9-out{ text-align:center; font-weight:700; margin:6px 0 2px; min-height:1.4em; }
+.fo9-regs{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; margin:6px 0; }
+.fo9-bit{ border:1.4px solid var(--line); border-radius:7px; padding:4px 2px; text-align:center; background:var(--paper); font-size:.8rem; transition:all .35s; }
+.fo9-bit b{ display:block; font-family:var(--mono); font-size:1.1rem; }
+.fo9-bit.one{ background:color-mix(in srgb, var(--k-os) 20%, var(--paper)); border-color:var(--k-os); }
+.fo9-side{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.fo9-lane{ border:1px dashed var(--line); border-radius:8px; padding:6px; }
+.fo9-lane h5{ margin:0 0 5px; font-size:.82rem; text-align:center; color:var(--graphite); }
+.fo9-spin{ display:inline-block; animation:fo9spin 1s linear infinite; }
+@keyframes fo9spin{ to{ transform:rotate(360deg); } }
+.fo9-cells{ display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:3px; }
+.fo9-cells div{ height:22px; border-radius:4px; border:1px solid var(--line); background:var(--paper); transition:background .25s; }
+.fo9-cells div.full{ background:color-mix(in srgb, var(--k-os) 40%, var(--paper)); }
+.fo9-cells div.now{ background:var(--s-os); }
+.fo9-kv{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; font-weight:700; margin:6px 0; }
+.fo9-kv b{ font-family:var(--mono); color:var(--k-os); font-size:1.05rem; }
+.fo9-irq{ text-align:center; font-weight:700; color:#fff; background:var(--pen); border-radius:99px; padding:3px 12px; margin:6px auto 0; width:max-content; max-width:100%; }
+.fo9-tl{ display:flex; height:26px; border-radius:6px; overflow:hidden; border:1px solid var(--line); }
+.fo9-tl i{ display:block; height:100%; }
+.fo9-key{ display:flex; flex-wrap:wrap; gap:6px 12px; justify-content:center; font-size:.8rem; color:var(--graphite); margin-top:8px; }
+.fo9-key i{ display:inline-block; width:12px; height:10px; border-radius:2px; margin-right:4px; vertical-align:-1px; }
+@keyframes fo9in{ from{ opacity:0; transform:scaleY(.3); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .fo9-spin{ animation:none; } }`;
+  if (!document.getElementById('fo9-css')) { const s = document.createElement('style'); s.id = 'fo9-css'; s.textContent = CSS; document.head.appendChild(s); }
+  const L = t => `<span class="ltr">${t}</span>`;
+  const cls = (on, seen, dim) => 'fo9-box' + (on ? ' on' : seen ? ' seen' : '') + (dim ? ' dim' : '');
+
+  /* ── L8 §0: a typical PC bus structure ── */
+  function PcBus({ ar }) {
+    const steps = [
+      { en: '<b>Ports, buses and device controllers</b> connect devices. A <b>port</b> is a connection point for a device; a <b>bus</b> gives shared direct access; a <b>controller (host adapter)</b> is the electronics that operate the port, bus or device.', ar: 'الـ <b>ports والـ buses والـ device controllers</b> هما اللي بيوصّلوا الـ devices. الـ <b>port</b> هو نقطة توصيل للـ device، والـ <b>bus</b> بيدي shared direct access، والـ <b>controller (host adapter)</b> هو الـ electronics اللي بتشغّل الـ port أو الـ bus أو الـ device.', k: -1 },
+      { en: 'The <b>processor</b> with its <b>cache</b> connects through the <b>bridge/memory controller</b> to <b>memory</b>.', ar: 'الـ <b>processor</b> ومعاه الـ <b>cache</b> متوصل عن طريق الـ <b>bridge/memory controller</b> بالـ <b>memory</b>.', k: 0 },
+      { en: 'The <b>PCI bus</b> (common in PCs and servers) connects the device controllers.', ar: 'الـ <b>PCI bus</b> (منتشر في الـ PCs والـ servers) هو اللي بيوصّل الـ device controllers.', k: 1 },
+      { en: 'On the PCI bus: the <b>graphics controller</b> (monitor), the <b>SCSI controller</b> (disks) and the <b>IDE disk controller</b> (disks).', ar: 'على الـ PCI bus فيه: الـ <b>graphics controller</b> (للـ monitor)، والـ <b>SCSI controller</b> (للـ disks)، والـ <b>IDE disk controller</b> (للـ disks).', k: 2 },
+      { en: 'The <b>expansion bus interface</b> leads to the <b>expansion bus</b>, which connects relatively slow devices: the <b>keyboard</b> and the <b>parallel and serial ports</b>.', ar: 'الـ <b>expansion bus interface</b> بيوصل للـ <b>expansion bus</b>، وده بيوصّل الـ devices البطيئة نسبيًا: الـ <b>keyboard</b> والـ <b>parallel والـ serial ports</b>.', k: 3 },
+      { en: 'A controller contains a processor, microcode, private memory, a bus controller and so on; it is sometimes integrated and sometimes a separate circuit board.', ar: 'الـ controller جواه processor و microcode و private memory و bus controller وغيرهم؛ وساعات بيبقى integrated وساعات بيبقى circuit board لوحده.', k: 4 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const k = steps[i].k, a = k === -1 || k === 4;
+    const box = (t, sub, kk) => html`<div className=${cls(k === kk, a || k > kk, false)}>${t}${sub && html`<small>${sub}</small>`}</div>`;
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap" role="img" aria-label="A typical PC bus structure">
+      <div className="fo9-row" style=${{ gridTemplateColumns: '1fr 1fr 1fr' }}>${box('processor', 'cache', 0)}${box('bridge / memory controller', null, 0)}${box('memory', null, 0)}</div>
+      <div className="fo9-v">↕</div>
+      <div className=${'fo9-bus' + (k === 1 ? ' on' : '')}>PCI bus</div>
+      <div className="fo9-v">↕</div>
+      <div className="fo9-row" style=${{ gridTemplateColumns: 'repeat(2, minmax(0,1fr))' }}>
+        ${box('graphics controller', 'monitor', 2)}${box('SCSI controller', 'disks', 2)}${box('IDE disk controller', 'disks', 2)}${box('expansion bus interface', null, 3)}</div>
+      <div className="fo9-v">↕</div>
+      <div className=${'fo9-bus' + (k === 3 ? ' on' : '') + (!a && k < 3 ? ' dim' : '')}>expansion bus</div>
+      <div className="fo9-v">↕</div>
+      <div className="fo9-row" style=${{ gridTemplateColumns: 'repeat(3, minmax(0,1fr))' }}>${box('keyboard', null, 3)}${box('parallel port', null, 3)}${box('serial port', null, 3)}</div>
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L8 §1: PC I/O port addresses (partial) ── */
+  const PORTS = [[0x000, 0x00F, 'DMA controller'], [0x020, 0x021, 'interrupt controller'], [0x040, 0x043, 'timer'], [0x200, 0x20F, 'game controller'], [0x2F8, 0x2FF, 'serial port (secondary)'], [0x320, 0x32F, 'hard-disk controller'], [0x378, 0x37F, 'parallel port'], [0x3D0, 0x3DF, 'graphics controller'], [0x3F0, 0x3F7, 'diskette-drive controller'], [0x3F8, 0x3FF, 'serial port (primary)']];
+  const hx = n => n.toString(16).toUpperCase().padStart(3, '0');
+  function PortMap({ ar }) {
+    const [v, setV] = useState('3F8');
+    const n = /^[0-9A-Fa-f]{1,3}$/.test(v) ? parseInt(v, 16) : NaN, hit = PORTS.findIndex(p => n >= p[0] && n <= p[1]);
+    const res = isNaN(n) ? { en: 'Type a hexadecimal address from 000 to 3FF.', ar: 'اكتب address بالـ hexadecimal من 000 لـ 3FF.' }
+      : hit >= 0 ? { en: `Address <b>${hx(n)}</b> belongs to the <b>${PORTS[hit][2]}</b> (range ${hx(PORTS[hit][0])}–${hx(PORTS[hit][1])}).`, ar: `الـ address ده (<b>${hx(n)}</b>) تبع الـ <b>${PORTS[hit][2]}</b>، والـ range بتاعه ${L(hx(PORTS[hit][0]) + '–' + hx(PORTS[hit][1]))}` }
+      : { en: `Address <b>${hx(n)}</b> is not in this partial table.`, ar: `الـ address ده (<b>${hx(n)}</b>) مش موجود في الجدول الجزئي ده.` };
+    const cap = { en: 'Devices have <b>addresses</b>, used by direct I/O instructions or by <b>memory-mapped I/O</b>. These are some of the <b>PC I/O port</b> ranges. ' + res.en, ar: 'الـ devices ليها <b>addresses</b>، بتستخدمها الـ direct I/O instructions أو الـ <b>memory-mapped I/O</b>. دي بعض الـ ranges بتاعة الـ <b>PC I/O ports</b>.<br>' + res.ar };
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      <div className="fo9-in"><label for="fo9-port">I/O address (hex)</label><input id="fo9-port" value=${v} maxLength="3" onInput=${e => setV(e.target.value.trim())} aria-label="I/O port address in hexadecimal" /></div>
+      <div className="fo9-tbl" role="table" aria-label="PC I/O port addresses (partial)">
+        ${PORTS.map((p, j) => [html`<span key=${'a' + j} className=${'mono' + (j === hit ? ' hit' : '')}>${hx(p[0])}–${hx(p[1])}</span>`, html`<span key=${'b' + j} className=${j === hit ? 'hit' : ''} style=${{ cursor: 'pointer' }} onClick=${() => setV(hx(p[0]))}>${p[2]}</span>`])}
+      </div></div></div><${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L8 §1: polling (handshaking) for one byte ── */
+  function Polling({ ar }) {
+    const [slow, setSlow] = useState(false);
+    const steps = [
+      { en: '<b>Polling</b> for each byte. The device controller has a <b>status register</b> (busy, command-ready, error bits) and a <b>data-out</b> register. The host wants to write one byte.', ar: 'الـ <b>Polling</b> لكل byte. الـ device controller فيه <b>status register</b> (فيه الـ bits دي: busy و command-ready و error) و register اسمه <b>data-out</b>. الـ host عايز يكتب byte واحد.', r: [0, 0, 0], d: '', who: 0 },
+      { en: '(1) The host reads the <b>busy</b> bit from the status register <b>until it is 0</b>.', ar: '(1) الـ host بيقرا الـ <b>busy</b> bit من الـ status register <b>لحد ما يبقى 0</b>.', r: [slow ? 1 : 0, 0, 0], d: '', who: 1, spin: 1 },
+      { en: '(2) The host sets the <b>write</b> bit and copies the data into <b>data-out</b>.', ar: '(2) الـ host بيحط الـ <b>write</b> bit، وبينسخ الـ data في الـ <b>data-out</b>.', r: [0, 0, 0], d: 'byte', who: 1 },
+      { en: '(3) The host sets <b>command-ready</b>.', ar: '(3) الـ host بيحط الـ <b>command-ready</b>.', r: [0, 1, 0], d: 'byte', who: 1 },
+      { en: '(4) The controller sets <b>busy</b> and executes the transfer.', ar: '(4) الـ controller بيحط الـ <b>busy</b> وبينفذ الـ transfer.', r: [1, 1, 0], d: 'byte', who: 2 },
+      { en: '(5) When the transfer is done, the controller clears <b>busy</b>, <b>error</b> and <b>command-ready</b>.', ar: '(5) لما الـ transfer يخلص، الـ controller بيمسح الـ <b>busy</b> والـ <b>error</b> والـ <b>command-ready</b>.', r: [0, 0, 0], d: '', who: 2 },
+      { en: slow ? 'Step 1 is a <b>busy-wait</b> cycle. With a <b>slow device</b> it is <b>inefficient</b>: the CPU keeps reading the busy bit when it could switch to other tasks.' : 'Step 1 is a <b>busy-wait</b> cycle. With a <b>fast device</b> it is <b>reasonable</b>: the busy bit clears quickly. Try the slow device.', ar: slow ? 'الخطوة 1 دي <b>busy-wait</b> cycle. ومع <b>device بطيء</b> بتبقى <b>مش كفء</b>: الـ CPU فاضل يقرا الـ busy bit وهو كان ممكن يشتغل على tasks تانية.' : 'الخطوة 1 دي <b>busy-wait</b> cycle. ومع <b>device سريع</b> بتبقى <b>معقولة</b>: الـ busy bit بيتمسح بسرعة. جرّب الـ device البطيء.', r: [0, 0, 0], d: '', who: 0 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const [reads, setReads] = useState(0);
+    useEffect(() => { setReads(0); if (i !== 1 || calm()) return; const t = setInterval(() => setReads(x => x + 1), 260); return () => clearInterval(t); }, [i, slow]);
+    const s = steps[i], B = ['busy', 'command-ready', 'error'];
+    const pick = m => { setSlow(m); ctl.go(0); };
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      <div className="fo9-chips">${[[false, 'Fast device'], [true, 'Slow device']].map(([m, t]) => html`<button key=${t} className="fo9-chip" aria-pressed=${String(slow === m)} onClick=${() => pick(m)}>${t}</button>`)}</div>
+      <div className="fo9-side">
+        <div className="fo9-lane"><h5>host (CPU)</h5><div className=${cls(s.who === 1, false, s.who === 2)}>${s.spin ? html`<span><span className=${calm() ? '' : 'fo9-spin'}>↻</span> read busy bit${!calm() ? ` ×${slow ? reads : Math.min(reads, 1)}` : ''}</span>` : i === 2 ? 'set write, copy data' : i === 3 ? 'set command-ready' : 'host'}</div></div>
+        <div className="fo9-lane"><h5>device controller</h5><div className=${cls(s.who === 2, false, s.who === 1)}>${i === 4 ? 'execute transfer' : i === 5 ? 'clear the bits' : 'controller'}</div></div>
+      </div>
+      <p style=${{ margin: '8px 0 2px', textAlign: 'center', fontWeight: 700 }}>status register</p>
+      <div className="fo9-regs">${B.map((b, j) => html`<div key=${b} className=${'fo9-bit' + (s.r[j] ? ' one' : '')}>${b}<b>${s.r[j]}</b></div>`)}</div>
+      <div className="fo9-kv"><span>data-out: <b>${s.d || '–'}</b></span></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L8 §2: the interrupt-driven I/O cycle ── */
+  function IrqCycle({ ar }) {
+    const steps = [
+      { en: 'Sometimes it is more efficient for the controller to <b>notify the CPU</b> when the device is ready. This is the <b>interrupt-driven I/O cycle</b>.', ar: 'ساعات بيبقى أكفأ إن الـ controller <b>يبلّغ الـ CPU</b> لما الـ device يبقى جاهز. ده الـ <b>interrupt-driven I/O cycle</b>.', c: 0, d: 0 },
+      { en: '(1) The <b>device driver</b> initiates I/O.', ar: '(1) الـ <b>device driver</b> بيبدأ الـ I/O.', c: 1, d: 0 },
+      { en: '(2) The <b>I/O controller</b> initiates I/O. Meanwhile the CPU keeps executing, checking for interrupts between instructions.', ar: '(2) الـ <b>I/O controller</b> بيبدأ الـ I/O. وفي نفس الوقت الـ CPU مكمّل شغل، وبيشيك على الـ interrupts بين كل instruction والتانية.', c: 0, d: 2 },
+      { en: '(3) Input ready, output complete or error: the controller <b>generates an interrupt signal</b> on the Interrupt Request Line.', ar: '(3) الـ input جاهز، أو الـ output خلص، أو حصل error: الـ controller <b>بيطلّع interrupt signal</b> على الـ Interrupt Request Line.', c: 0, d: 3, irq: 1 },
+      { en: '(4) The CPU, checking between instructions, <b>receives the interrupt</b>, saves its state and transfers control to the <b>interrupt handler</b>.', ar: '(4) الـ CPU، وهو بيشيك بين الـ instructions، <b>بيستقبل الـ interrupt</b>، وبيحفظ الـ state بتاعته، وبينقل التحكم للـ <b>interrupt handler</b>.', c: 4, d: 0, irq: 1 },
+      { en: '(5) The handler <b>processes the data</b>, restores the state and returns from interrupt.', ar: '(5) الـ handler <b>بيعالج الـ data</b>، وبيرجّع الـ state، وبيعمل return from interrupt.', c: 5, d: 0 },
+      { en: '(6) The CPU <b>resumes the interrupted task</b>. (7) The cycle loops back while the CPU executes.', ar: '(6) الـ CPU <b>بيكمّل الـ task اللي اتقاطعت</b>. (7) والـ cycle بترجع تتكرر والـ CPU شغال.', c: 6, d: 0 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const s = steps[i];
+    const C = [[1, 'device driver initiates I/O'], [4, 'receive interrupt, go to handler'], [5, 'handler processes data, returns'], [6, 'resume interrupted task']];
+    const D = [[2, 'initiate I/O'], [3, 'input ready, output complete or error: interrupt signal']];
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      <div className="fo9-side">
+        <div className="fo9-lane"><h5>CPU</h5><div className="fo9-row">${C.map(([n, t]) => html`<div key=${n} className=${cls(s.c === n, i > 0 && (s.c > n || (n === 1 && i > 1)), false)}><small style=${{ color: 'inherit' }}>${n}</small>${t}</div>`)}</div></div>
+        <div className="fo9-lane"><h5>I/O controller</h5><div className="fo9-row">${D.map(([n, t]) => html`<div key=${n} className=${cls(s.d === n, i > n - 1 && s.d !== n && i >= n, false)}><small style=${{ color: 'inherit' }}>${n}</small>${t}</div>`)}</div></div>
+      </div>
+      ${s.irq && html`<div className="fo9-irq">${s.c === 4 ? 'CPU senses the interrupt' : 'interrupt signal →'}</div>`}
+      ${i === 2 && html`<p className="fo9-v" style=${{ marginTop: '8px' }}><span className=${calm() ? '' : 'fo9-spin'}>↻</span> CPU executing, checking for interrupts between instructions</p>`}
+    </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L8 §2: Intel Pentium event-vector table ── */
+  const VEC = ['divide error', 'debug exception', 'null interrupt', 'breakpoint', 'INTO-detected overflow', 'bound range exception', 'invalid opcode', 'device not available', 'double fault', 'coprocessor segment overrun', 'invalid task state segment', 'segment not present', 'stack fault', 'general protection', 'page fault', 'reserved', 'floating-point error', 'alignment check', 'machine check'];
+  const vecName = n => n <= 18 ? VEC[n] : n <= 31 ? 'reserved' : 'maskable interrupt';
+  function Vectors({ ar }) {
+    const [n, setN] = useState(14);
+    const cap = { en: `The interrupt handler is found through the <b>Intel Pentium event-vector table</b>. Vector <b>${n}</b>: <b>${vecName(n)}</b>${n >= 19 && n <= 31 ? ' (19–31 are reserved)' : n >= 32 ? ' (32–255 are maskable interrupts)' : ''}. Drag the slider or tap a row.`, ar: `الـ interrupt handler بيتلاقى عن طريق الـ <b>Intel Pentium event-vector table</b>. الـ vector رقم <b>${n}</b> هو الـ <b>${vecName(n)}</b>${n >= 19 && n <= 31 ? '، والأرقام من 19 لـ 31 كلها reserved' : n >= 32 ? '، والأرقام من 32 لـ 255 كلها maskable interrupts' : ''}. حرّك الـ slider أو دوس على سطر.` };
+    const rows = [...VEC.map((t, j) => [String(j), t, j === n]), ['19–31', 'reserved', n >= 19 && n <= 31], ['32–255', 'maskable interrupts', n >= 32]];
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      <div className="fo9-in"><label for="fo9-vec">vector</label><input id="fo9-vec" type="range" min="0" max="255" value=${n} onInput=${e => setN(+e.target.value)} /><b style=${{ fontFamily: 'var(--mono)', minWidth: '2.5em' }}>${n}</b></div>
+      <div className="fo9-tbl" role="table" aria-label="Intel Pentium event-vector table">
+        ${rows.map(([a, t, on], j) => [html`<span key=${'a' + j} className=${'mono' + (on ? ' hit' : '')} style=${{ cursor: 'pointer' }} onClick=${() => setN(parseInt(a, 10))}>${a}</span>`, html`<span key=${'b' + j} className=${on ? 'hit' : ''}>${t}</span>`])}
+      </div></div></div><${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L8 §3: the six-step DMA transfer ── */
+  function DmaSix({ ar }) {
+    const [C0, setC0] = useState(8), [k, setK] = useState(-1), [run, setRun] = useState(false);
+    useEffect(() => { if (!run) return; if (k >= C0 + 3) { setRun(false); return; } const t = setTimeout(() => setK(x => x + 1), calm() ? 120 : k < 2 ? 1300 : 420); return () => clearTimeout(t); }, [run, k, C0]);
+    const moved = Math.max(0, Math.min(C0, k - 2)), C = C0 - moved, done = k >= C0 + 2;
+    const step = k < 0 ? 0 : k === 0 ? 1 : k === 1 ? 2 : k === 2 ? 3 : !done ? 5 : 6;
+    const T = [
+      ['', ''],
+      ['(1) The device driver is told to transfer disk data to a buffer at address <b>X</b>.', '(1) الـ device driver بيتقاله ينقل data من الـ disk لـ buffer عند الـ address <b>X</b>.'],
+      [`(2) The device driver tells the disk controller to transfer <b>C = ${C0}</b> bytes from disk to the buffer at address X.`, `(2) الـ device driver بيقول للـ disk controller ينقل <b>C = ${C0}</b> bytes من الـ disk للـ buffer اللي عند X.`],
+      ['(3) The disk controller initiates the DMA transfer.', '(3) الـ disk controller بيبدأ الـ DMA transfer.'],
+      ['', ''],
+      [`(4) The disk controller sends each byte to the DMA controller. (5) The DMA controller transfers the bytes to buffer X, <b>increasing the memory address</b> and <b>decreasing C</b>: now C = ${C}.`, `(4) الـ disk controller بيبعت كل byte للـ DMA controller. (5) والـ DMA controller بينقل الـ bytes للـ buffer X، و<b>بيزوّد الـ memory address</b> و<b>بينقّص C</b>، فبقت C = ${C}.`],
+      ['(6) <b>C = 0</b>: the DMA controller <b>interrupts the CPU</b> to signal transfer completion. One interrupt for the whole block.', '(6) لما <b>C = 0</b>، الـ DMA controller <b>بيعمل interrupt للـ CPU</b> عشان يقوله إن الـ transfer خلص. يعني interrupt واحد للـ block كله.']
+    ];
+    const cap = step === 0 ? { en: '<b>DMA</b> bypasses the CPU to move data directly between the I/O device and memory. Pick C and press Transfer to run the <b>six-step process</b>.', ar: 'الـ <b>DMA</b> بيعدّي الـ CPU وينقل الـ data على طول بين الـ I/O device والـ memory. اختار C ودوس Transfer عشان تشوف الـ <b>six-step process</b>.' } : { en: T[step][0], ar: T[step][1] };
+    const box = (t, n) => html`<div className=${cls(step === n || (n === 45 && step === 5), false, false)}>${t}</div>`;
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      <div className="fo9-in"><label for="fo9-c">C (bytes)</label><input id="fo9-c" type="range" min="4" max="16" step="4" value=${C0} disabled=${run} onInput=${e => { setC0(+e.target.value); setK(-1); }} /><b style=${{ fontFamily: 'var(--mono)' }}>${C0}</b></div>
+      <div className="fo9-row" style=${{ gridTemplateColumns: 'repeat(3, minmax(0,1fr))' }}>${box('device driver', 1)}${box('disk controller', 3)}${box('DMA controller', 45)}</div>
+      <div className="fo9-kv"><span>address: <b>X${moved ? ' + ' + moved : ''}</b></span><span>C = <b>${k < 1 ? '–' : C}</b></span></div>
+      <p style=${{ margin: '0 0 3px', fontWeight: 700, textAlign: 'center' }}>buffer at X (memory)</p>
+      <div className="fo9-cells" style=${{ gridTemplateColumns: `repeat(${Math.min(C0, 8)}, minmax(0,1fr))` }}>${Array.from({ length: C0 }, (_, j) => html`<div key=${j} className=${j < moved - 1 || (done && j < moved) ? 'full' : j === moved - 1 ? 'now' : ''}></div>`)}</div>
+      ${done && html`<div className="fo9-irq">interrupt → CPU (transfer complete)</div>`}
+    </div></div><${Cap} ...${cap} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn solid" disabled=${run} onClick=${() => { setK(0); setRun(true); }}>▶ Transfer</button></div></figure>`;
+  }
+
+  /* ── L8 §4: kernel I/O structure ── */
+  const DRV = ['SCSI', 'keyboard', 'mouse', 'PCI bus', 'floppy', 'ATAPI'];
+  function KernelIo({ ar }) {
+    const [d, setD] = useState(1);
+    const lit = j => d >= 0 ? true : false;
+    const cap = { en: `<b>Kernel I/O structure</b>: a request from the kernel goes through the <b>kernel I/O subsystem</b>, then the <b>${DRV[d]} device driver</b>, then its <b>device controller</b>, and reaches the <b>device</b>. The device-driver layer hides the differences among I/O controllers from the kernel. Tap another driver.`, ar: `الـ <b>Kernel I/O structure</b>: الـ request بتطلع من الـ kernel وتعدّي على الـ <b>kernel I/O subsystem</b>، وبعدين على الـ <b>${DRV[d]} device driver</b>، وبعدين الـ <b>device controller</b> بتاعه، لحد ما توصل للـ <b>device</b>. وطبقة الـ device drivers بتخبّي الاختلافات بين الـ I/O controllers عن الـ kernel. دوس على driver تاني.` };
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap" role="img" aria-label="Kernel I/O structure layers">
+      <div className="fo9-box on">kernel</div><div className="fo9-v">↓</div>
+      <div className="fo9-box on">kernel I/O subsystem</div><div className="fo9-v">↓</div>
+      <p style=${{ margin: '0 0 4px', textAlign: 'center', color: 'var(--graphite)' }}>device drivers</p>
+      <div className="fo9-chips" style=${{ margin: 0 }}>${DRV.map((t, j) => html`<button key=${t} className="fo9-chip" aria-pressed=${String(j === d)} onClick=${() => setD(j)}>${t}</button>`)}</div>
+      <div className="fo9-v">↓</div>
+      <div className=${cls(lit(), false, false)}>${DRV[d]} device controller</div><div className="fo9-v">↓</div>
+      <div className=${cls(lit(), false, false)}>${DRV[d]} device</div>
+    </div></div><${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L8 §4: block and character devices ── */
+  const DEV = [['disk drive', 'block', 'read, write, seek'], ['keyboard', 'character', 'get(), put()'], ['mouse', 'character', 'get(), put()'], ['serial port', 'character', 'get(), put()']];
+  function BlockChar({ ar }) {
+    const [d, setD] = useState(0);
+    const [n, kind, cmds] = DEV[d], blk = kind === 'block';
+    const cap = blk
+      ? { en: 'A <b>disk drive</b> is a <b>block device</b>: commands <b>read, write, seek</b>; access can be raw I/O, direct I/O or through the file system; memory-mapped file access is possible (the file is mapped to virtual memory and clusters come in by demand paging); DMA.', ar: 'الـ <b>disk drive</b> ده <b>block device</b>: الـ commands بتاعته هي الـ read والـ write والـ seek. الـ access ممكن يبقى raw I/O أو direct I/O أو عن طريق الـ file system. وينفع كمان memory-mapped file access (الـ file بيتعمله map على الـ virtual memory، والـ clusters بتيجي بالـ demand paging)، وفيه DMA.' }
+      : { en: `A <b>${n}</b> is a <b>character device</b>: commands <b>get()</b> and <b>put()</b>; libraries layered on top allow <b>line editing</b>.`, ar: `الـ <b>${n}</b> ده <b>character device</b>: الـ commands بتاعته هي الـ <b>get()</b> والـ <b>put()</b>، وفيه libraries فوقيه بتسمح بالـ <b>line editing</b>.` };
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      <div className="fo9-chips">${DEV.map((x, j) => html`<button key=${x[0]} className="fo9-chip" aria-pressed=${String(j === d)} onClick=${() => setD(j)}>${x[0]}</button>`)}</div>
+      <div className="fo9-side" style=${{ marginTop: '6px' }}>
+        <div className=${cls(blk, false, !blk)}>block device<small>read, write, seek</small></div>
+        <div className=${cls(!blk, false, blk)}>character device<small>get(), put()</small></div>
+      </div>
+      <div className="fo9-out">${n}: ${kind} device · ${cmds}</div>
+      <div className=${blk ? 'fo9-cells' : 'fo9-cells'} style=${{ gridTemplateColumns: blk ? 'repeat(4, minmax(0,1fr))' : 'repeat(8, minmax(0,1fr))', marginTop: '6px' }} aria-hidden="true">${Array.from({ length: blk ? 4 : 8 }, (_, j) => html`<div key=${d + '-' + j} className="full" style=${{ height: blk ? '30px' : '16px', opacity: calm() ? 1 : undefined, animation: calm() ? 'none' : `fo9in .35s ${j * 0.12}s both` }}></div>`)}</div>
+      <p className="fo9-v" style=${{ fontSize: '.8rem', marginTop: '5px' }}>${blk ? 'data moves in blocks' : 'data moves as a stream of characters'}</p>
+    </div></div><${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L8 §5: the overheads of servicing interrupts ── */
+  function IsrCost({ ar }) {
+    const [big, setBig] = useState(false);
+    const steps = [
+      { en: 'The process is <b>running</b>.', ar: 'الـ process <b>شغالة</b>.', k: 0 },
+      { en: 'An interrupt occurs: the process is interrupted and its <b>state is stored in its PCB</b>.', ar: 'حصل interrupt: الـ process بتتقاطع، والـ <b>state بتاعتها بتتحفظ في الـ PCB</b> بتاعها.', k: 1 },
+      { en: 'The <b>interrupt service routine (ISR)</b> runs to deal with the interrupt.', ar: 'الـ <b>interrupt service routine (ISR)</b> بتشتغل عشان تتعامل مع الـ interrupt.', k: 2 },
+      { en: 'On completion, the <b>state is restored</b> and the process <b>resumes</b>.', ar: 'لما تخلص، الـ <b>state بتترجع</b> والـ process <b>بتكمّل</b>.', k: 3 },
+      { en: big ? '<b>Large transfers</b>: fewer interrupts, so less time goes to saving and restoring state and running the ISR. Reducing interrupts (large transfers, smart controllers, polling, DMA) improves performance.' : 'With <b>many small transfers</b>, every interrupt adds its save, ISR and restore overhead (and the context switches involved). Try large transfers.', ar: big ? 'الـ <b>transfers الكبيرة</b>: interrupts أقل، يعني وقت أقل في حفظ الـ state ورجوعها وتشغيل الـ ISR. وتقليل الـ interrupts (بالـ transfers الكبيرة والـ smart controllers والـ polling والـ DMA) بيحسّن الـ performance.' : 'مع <b>transfers صغيرة كتير</b>، كل interrupt بيزوّد overhead الحفظ والـ ISR والرجوع (والـ context switches اللي معاهم). جرّب الـ transfers الكبيرة.', k: 4 }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2400);
+    const s = steps[i], n = big ? 1 : 4;
+    const seg = [];
+    if (s.k < 4) { seg.push(['run', 3]); if (s.k >= 1) seg.push(['save', 1]); if (s.k >= 2) seg.push(['isr', 2]); if (s.k >= 3) { seg.push(['restore', 1]); seg.push(['run', 3]); } }
+    else for (let j = 0; j < n; j++) seg.push(['run', big ? 12 : 3], ['save', 1], ['isr', 2], ['restore', 1]);
+    const col = { run: 'color-mix(in srgb, var(--k-os) 45%, var(--paper))', save: 'var(--pen)', isr: 'var(--graphite)', restore: 'color-mix(in srgb, var(--pen) 55%, var(--paper))' };
+    const tot = seg.reduce((a, x) => a + x[1], 0);
+    const pick = m => { setBig(m); ctl.go(4); };
+    return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
+      ${i === 4 && html`<div className="fo9-chips">${[[false, 'Many small transfers'], [true, 'Large transfers']].map(([m, t]) => html`<button key=${t} className="fo9-chip" aria-pressed=${String(big === m)} onClick=${() => pick(m)}>${t}</button>`)}</div>`}
+      <p style=${{ margin: '4px 0', textAlign: 'center', fontWeight: 700 }}>CPU time (schematic)${i === 4 ? ` · ${n} interrupt${n > 1 ? 's' : ''}` : ''}</p>
+      <div className="fo9-tl" role="img" aria-label="Timeline of running, saving state, ISR and restoring state">${seg.map(([t, w], j) => html`<i key=${j} title=${t} style=${{ width: (w / tot * 100) + '%', background: col[t] }}></i>`)}</div>
+      <div className="fo9-key">${[['run', 'process runs'], ['save', 'save state to PCB'], ['isr', 'ISR'], ['restore', 'restore state']].map(([k2, t]) => html`<span key=${k2}><i style=${{ background: col[k2] }}></i>${t}</span>`)}</div>
+    </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'os-io-pc-bus': PcBus, 'os-io-port-map': PortMap, 'os-io-polling': Polling, 'os-io-irq-cycle': IrqCycle, 'os-io-vectors': Vectors, 'os-io-dma-six': DmaSix, 'os-io-kernel': KernelIo, 'os-io-block-char': BlockChar, 'os-io-isr-cost': IsrCost });
+})();
