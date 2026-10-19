@@ -47,7 +47,10 @@ COURSES.os = {
      ],
      "fig": [
       "os-four-components"
-     ]
+     ],
+     "figH": {
+      "os-four-components": "The four components of a computer system, layer by layer"
+     }
     },
     {
      "h": "What operating systems do, OS definition and computer startup",
@@ -61,7 +64,10 @@ COURSES.os = {
      ],
      "fig": [
       "os-startup"
-     ]
+     ],
+     "figH": {
+      "os-startup": "Computer startup: from power-up to the running OS"
+     }
     },
     {
      "h": "Computer-system organization and interrupts",
@@ -94,7 +100,14 @@ COURSES.os = {
      "fig": [
       "os-sys-org",
       "os-interrupts"
-     ]
+     ],
+     "figAt": {
+      "os-sys-org": 1
+     },
+     "figH": {
+      "os-sys-org": "Computer-system organization: CPUs and device controllers on a common bus",
+      "os-interrupts": "How an interrupt reaches the CPU and gets handled"
+     }
     },
     {
      "h": "I/O structure, storage and DMA",
@@ -119,7 +132,21 @@ COURSES.os = {
       "os-caching",
       "os-dma",
       "os-dma-irq"
-     ]
+     ],
+     "figAt": {
+      "os-io-structure": 1,
+      "os-units": 3,
+      "os-storage-hierarchy": 7,
+      "os-caching": 8
+     },
+     "figH": {
+      "os-io-structure": "Synchronous vs asynchronous I/O: when control returns to the program",
+      "os-units": "Storage units: from a bit to bytes and beyond",
+      "os-storage-hierarchy": "The storage-device hierarchy: speed, size and cost",
+      "os-caching": "Caching: copying data into faster storage",
+      "os-dma": "The direct memory access (DMA) structure",
+      "os-dma-irq": "With and without DMA: interrupts per byte vs one per block"
+     }
     },
     {
      "h": "Performance of the levels of storage (slide 33)",
@@ -188,7 +215,11 @@ COURSES.os = {
      "fig": [
       "os-storage-levels",
       "os-migrate"
-     ]
+     ],
+     "figH": {
+      "os-storage-levels": "Performance of the levels of storage, compared",
+      "os-migrate": "Data \"A\" migrating from the disk up to a register"
+     }
     },
     {
      "h": "Computer-system architecture and OS structure",
@@ -221,7 +252,14 @@ COURSES.os = {
      "fig": [
       "os-dualcore",
       "os-multiprog"
-     ]
+     ],
+     "figAt": {
+      "os-dualcore": 4
+     },
+     "figH": {
+      "os-dualcore": "A dual-core design: two cores sharing one memory",
+      "os-multiprog": "Multiprogramming: keeping the CPU busy while jobs wait for I/O"
+     }
     },
     {
      "h": "Operating-system operations: dual mode and timer",
@@ -237,7 +275,16 @@ COURSES.os = {
       "os-intr-kinds",
       "os-modes",
       "os-timer"
-     ]
+     ],
+     "figAt": {
+      "os-intr-kinds": 0,
+      "os-modes": 3
+     },
+     "figH": {
+      "os-intr-kinds": "Hardware or software interrupt? Sort the events",
+      "os-modes": "Dual mode: switching from user mode to kernel mode and back",
+      "os-timer": "The timer: stopping a process from hogging the CPU"
+     }
     },
     {
      "h": "Process, memory, storage and I/O management; protection and security",
@@ -678,7 +725,13 @@ COURSES.os = {
      ],
      "fig": [
       "os-proc-memory"
-     ]
+     ],
+     "figAt": {
+      "os-proc-memory": 2
+     },
+     "figH": {
+      "os-proc-memory": "A process in memory: stack, heap, data and text"
+     }
     },
     {
      "h": "Process states and the PCB",
@@ -695,7 +748,15 @@ COURSES.os = {
      "fig": [
       "os-state-diagram",
       "os-pcb"
-     ]
+     ],
+     "figAt": {
+      "os-state-diagram": 2,
+      "os-pcb": 5
+     },
+     "figH": {
+      "os-state-diagram": "The process state diagram: every state and transition",
+      "os-pcb": "The process control block (PCB), field by field"
+     }
     },
     {
      "h": "Process scheduling: queues and schedulers",
@@ -744,7 +805,16 @@ COURSES.os = {
       "os-device-queues",
       "os-queueing",
       "os-medium-term"
-     ]
+     ],
+     "figAt": {
+      "os-device-queues": 2,
+      "os-queueing": 3
+     },
+     "figH": {
+      "os-device-queues": "The ready queue and the I/O device queues",
+      "os-queueing": "The queueing diagram: how a process moves between queues",
+      "os-medium-term": "Medium-term scheduling: swapping processes out and back in"
+     }
     },
     {
      "h": "Context switch",
@@ -757,7 +827,13 @@ COURSES.os = {
      ],
      "fig": [
       "os-cpu-switch"
-     ]
+     ],
+     "figAt": {
+      "os-cpu-switch": 1
+     },
+     "figH": {
+      "os-cpu-switch": "The CPU switching from process P0 to P1 and back"
+     }
     },
     {
      "h": "Operations on processes: creation and termination",
@@ -775,7 +851,13 @@ COURSES.os = {
      "code": "pid_t pid = fork();            /* fork a child process */\nif (pid < 0) {                 /* error occurred */\n    fprintf(stderr, \"Fork Failed\"); return 1;\n} else if (pid == 0) {         /* child process */\n    execlp(\"/bin/ls\", \"ls\", NULL);\n} else {                       /* parent process */\n    wait(NULL);                /* wait for the child to complete */\n    printf(\"Child Complete\");\n}",
      "fig": [
       "os-fork-life"
-     ]
+     ],
+     "figAt": {
+      "os-fork-life": 4
+     },
+     "figH": {
+      "os-fork-life": "Process creation and termination: fork(), exec(), wait() and exit()"
+     }
     },
     {
      "h": "Chrome multiprocess architecture and IPC models",
@@ -790,7 +872,13 @@ COURSES.os = {
      "code": "#define BUFFER_SIZE 10\nitem buffer[BUFFER_SIZE];\nint in = 0, out = 0;            /* shared */\n\n/* Producer */\nwhile (true) {\n    while (((in + 1) % BUFFER_SIZE) == out) ;   /* buffer full: do nothing */\n    buffer[in] = next_produced;\n    in = (in + 1) % BUFFER_SIZE;\n}\n/* Consumer */\nwhile (true) {\n    while (in == out) ;                           /* buffer empty: do nothing */\n    next_consumed = buffer[out];\n    out = (out + 1) % BUFFER_SIZE;\n}\n/* Correct, but can only use BUFFER_SIZE - 1 elements */",
      "fig": [
       "os-chrome"
-     ]
+     ],
+     "figAt": {
+      "os-chrome": 0
+     },
+     "figH": {
+      "os-chrome": "Chrome's multiprocess design vs a single-process browser"
+     }
     },
     {
      "h": "Message passing, synchronization, buffering and sockets",
@@ -1247,7 +1335,16 @@ COURSES.os = {
       "os-burst-cycle",
       "os-sched-states",
       "os-dispatch"
-     ]
+     ],
+     "figAt": {
+      "os-burst-cycle": 1,
+      "os-sched-states": 5
+     },
+     "figH": {
+      "os-burst-cycle": "The CPU–I/O burst cycle",
+      "os-sched-states": "When scheduling decisions happen: the four situations",
+      "os-dispatch": "The dispatcher and the dispatch latency"
+     }
     },
     {
      "h": "Scheduling criteria and formulas",
@@ -1289,7 +1386,10 @@ COURSES.os = {
      ],
      "fig": [
       "os-fcfs-sim"
-     ]
+     ],
+     "figH": {
+      "os-fcfs-sim": "FCFS simulator: Gantt chart and waiting times"
+     }
     },
     {
      "h": "SJF (Shortest-Job-First) and SRTF",
@@ -1322,7 +1422,14 @@ COURSES.os = {
      "fig": [
       "os-sjf-sim",
       "os-srtf-sim"
-     ]
+     ],
+     "figAt": {
+      "os-sjf-sim": 4
+     },
+     "figH": {
+      "os-sjf-sim": "SJF simulator: shortest job first",
+      "os-srtf-sim": "SRTF simulator: preemptive shortest remaining time first"
+     }
     },
     {
      "h": "Example of SJF (slides 15–16)",
@@ -1386,7 +1493,10 @@ COURSES.os = {
      ],
      "fig": [
       "os-rr-sim"
-     ]
+     ],
+     "figH": {
+      "os-rr-sim": "Round Robin simulator: try different time quanta"
+     }
     },
     {
      "h": "Priority scheduling (and priority with RR)",
@@ -1416,7 +1526,14 @@ COURSES.os = {
      "fig": [
       "os-prio-sim",
       "os-prio-rr-sim"
-     ]
+     ],
+     "figAt": {
+      "os-prio-sim": 3
+     },
+     "figH": {
+      "os-prio-sim": "Priority scheduling simulator",
+      "os-prio-rr-sim": "Priority with Round Robin simulator"
+     }
     },
     {
      "h": "Priority Scheduling w/ Round-Robin (slide 25)",
@@ -1471,7 +1588,16 @@ COURSES.os = {
       "os-mlq",
       "os-mlq-types",
       "os-mlfq"
-     ]
+     ],
+     "figAt": {
+      "os-mlq": 1,
+      "os-mlq-types": 2
+     },
+     "figH": {
+      "os-mlq": "Multilevel queue: one queue per priority",
+      "os-mlq-types": "Multilevel queue by process type",
+      "os-mlfq": "Multilevel feedback queue: processes moving between queues"
+     }
     },
     {
      "h": "Worked review problem (Topic 3 Q4, also Midterm 2021/22)",
@@ -1530,7 +1656,10 @@ COURSES.os = {
      ],
      "fig": [
       "os-review-sim"
-     ]
+     ],
+     "figH": {
+      "os-review-sim": "Review problem: all algorithms on one set of processes"
+     }
     }
    ],
    "cards": [

@@ -10,7 +10,10 @@ AR.os = {
       "الـ <b>OS</b> = برنامج بيقف <b>وسيط بين الـ user</b> بتاع الكمبيوتر <b>وبين الـ hardware</b>.",
       "<b>أهداف الـ OS (3)</b>: (1) إنه <b>يشغّل برامج الـ user</b> ويسهّل حل مشاكل الـ user؛ (2) يخلّي الـ computer system <b>مريح (convenient)</b> في الاستخدام؛ (3) يستخدم الـ hardware بطريقة <b>efficient</b>.",
       "الرسمة المتقسمة طبقات \"Four Components of a Computer System\": الـ users من 1 لـ n فوق، وبعدهم الـ system والـ application programs (compiler, assembler, text editor, database system)، وبعدهم الـ operating system، وتحت خالص الـ computer hardware."
-     ]
+     ],
+     "figH": {
+      "os-four-components": "الـ 4 components بتوع الـ computer system، طبقة ورا طبقة"
+     }
     },
     {
      "h": "الـ OS بيعمل إيه، تعريفه، وإزاي الكمبيوتر بيبدأ (startup)",
@@ -21,7 +24,10 @@ AR.os = {
       "مفيش تعريف واحد متفق عليه. \"كل حاجة الـ vendor بيبعتهالك لما تطلب OS\" تقريب كويس (بس بيختلف جدًا).",
       "الـ <b>Kernel</b> = \"البرنامج الوحيد اللي شغال طول الوقت على الكمبيوتر\". أي حاجة تانية يا إما <b>system program</b> (جاي مع الـ OS) يا إما <b>application program</b>.",
       "الـ <b>Bootstrap program</b>: بيتحمّل أول ما الجهاز يشتغل أو يعمل reboot؛ غالبًا متخزن في <b>ROM أو EPROM</b> (اسمها <b>firmware</b>)؛ بيعمل initialize لكل حاجة في السيستم؛ و<b>بيحمّل الـ OS kernel ويبدأ تشغيله</b>."
-     ]
+     ],
+     "figH": {
+      "os-startup": "تشغيل الكمبيوتر: من لحظة الـ power-up لحد ما الـ OS يشتغل"
+     }
     },
     {
      "h": "تنظيم الـ computer system والـ interrupts",
@@ -32,7 +38,11 @@ AR.os = {
       "الـ interrupt بينقل التحكم للـ <b>interrupt service routine</b>، غالبًا عن طريق الـ <b>interrupt vector</b> (فيه عناوين كل الـ service routines). والـ interrupt architecture لازم <b>تحفظ عنوان الـ instruction اللي اتقاطعت</b>.",
       "الـ <b>trap</b> (أو <b>exception</b>) هو <b>interrupt جاي من الـ software</b> سببه يا إما <b>error</b> يا إما <b>طلب من الـ user</b>. الـ OS هو <b>interrupt driven</b>.",
       "<b>التعامل مع الـ interrupt</b>: الـ OS بيحفظ حالة الـ CPU بإنه يخزن الـ registers والـ program counter؛ بيعرف نوع الـ interrupt اللي حصل عن طريق الـ <b>polling</b> أو الـ <b>vectored interrupt system</b>؛ وفيه أجزاء code منفصلة بتقرر هيتعمل إيه لكل نوع interrupt."
-     ]
+     ],
+     "figH": {
+      "os-sys-org": "تنظيم الـ computer system: الـ CPUs والـ device controllers على bus واحد",
+      "os-interrupts": "الـ interrupt بيوصل للـ CPU إزاي وبيتعامل معاه إزاي"
+     }
     },
     {
      "h": "الـ I/O structure، الـ storage، والـ DMA",
@@ -49,14 +59,26 @@ AR.os = {
       "<b>Device driver</b> لكل device controller <b>عشان يدير الـ I/O</b>: بيدّي interface موحد بين الـ controller والـ kernel.",
       "الـ <b>DMA (Direct Memory Access)</b>: بيستخدم مع <b>الـ I/O devices السريعة</b> اللي بتنقل بسرعة قريبة من سرعة الـ memory. الـ device controller بينقل <b>blocks</b> من الداتا من الـ buffer <b>مباشرة للـ main memory من غير تدخل الـ CPU</b>. <b>interrupt واحد بس لكل block</b>، بدل interrupt لكل byte.",
       "الرسمة (slide 20، Direct Memory Access Structure): الـ CPU (*N) جواه thread of execution و cache. بين الـ cache والـ memory (اللي فيها instructions و data) فيه سهمين في الاتجاهين: <b>instruction execution cycle</b> و<b>data movement</b>. وبين الـ CPU والـ device (*M) فيه 3 أسهم: <b>I/O request</b> (من الـ CPU للـ device)، <b>data</b> (في الاتجاهين)، و<b>interrupt</b> (من الـ device للـ CPU). وفيه سهم <b>DMA</b> في الاتجاهين بيوصّل الـ device بالـ memory مباشرة من غير ما يعدّي على الـ CPU."
-     ]
+     ],
+     "figH": {
+      "os-io-structure": "الـ I/O الـ synchronous والـ asynchronous: الـ control بيرجع للبرنامج إمتى",
+      "os-units": "وحدات الـ storage: من الـ bit للـ bytes وأكبر",
+      "os-storage-hierarchy": "ترتيب أجهزة الـ storage: السرعة والحجم والتكلفة",
+      "os-caching": "الـ caching: بننسخ الـ data في storage أسرع",
+      "os-dma": "تركيبة الـ direct memory access (DMA)",
+      "os-dma-irq": "من غير DMA ومعاه: interrupt لكل byte قصاد interrupt واحد لكل block"
+     }
     },
     {
      "h": "الـ performance بتاع مستويات الـ storage (slide 33)",
      "pts": [
       "النقل بين المستويات ممكن يكون explicit أو implicit. الداتا \"A\" بتنتقل disk ← main memory ← cache ← hardware register.",
       "في الـ Multitasking: لازم دايمًا تستخدم <b>أحدث قيمة</b> أيًا كان مكانها. في الـ Multiprocessors: الـ hardware لازم يوفر <b>cache coherency</b> عشان كل الـ CPUs تشوف أحدث قيمة. في الـ Distributed systems: ممكن يبقى فيه كذا نسخة من نفس الداتا (أعقد كمان)."
-     ]
+     ],
+     "figH": {
+      "os-storage-levels": "مقارنة أداء مستويات الـ storage",
+      "os-migrate": "الـ data \"A\" وهي طالعة من الـ disk لحد الـ register"
+     }
     },
     {
      "h": "الـ computer-system architecture وهيكل الـ OS",
@@ -67,7 +89,11 @@ AR.os = {
       "<b>Dual-core design</b>: multi-chip و<b>multicore</b>؛ كل core ليه الـ registers والـ cache بتوعه، وبيشاركوا الـ memory. وأنظمة فيها كل الـ chips: <b>chassis جواه كذا system منفصل</b>.",
       "شكل (slide 22، A Dual-Core Design): chip واحدة جواها مربعين، <b>CPU core0</b> و<b>CPU core1</b>؛ كل core ليه <b>registers</b> فوق الـ <b>cache</b> بتاعه. الخطوط اللي طالعة من الـ caches الاتنين بتتجمع وتنزل لـ <b>memory</b> واحدة برا الـ chip.",
       "شكل الـ memory في multiprogrammed system: الـ OS عند address 0، وبعده job 1 … job 4 لحد 512M."
-     ]
+     ],
+     "figH": {
+      "os-dualcore": "تصميم الـ dual-core: اتنين cores بيشاركوا memory واحدة",
+      "os-multiprog": "الـ multiprogramming: الـ CPU يفضل شغال وهي الـ jobs مستنية الـ I/O"
+     }
     },
     {
      "h": "عمليات الـ OS: الـ dual mode والـ timer",
@@ -78,7 +104,12 @@ AR.os = {
       "الرسمة (slide 27، Transition from User to Kernel Mode): شريطين بينهم خط. الشريط اللي فوق هو الـ <b>user process</b> (user mode، mode bit = 1): \"user process executing\" ← \"calls system call\". سهم مكتوب عليه <b>trap، mode bit = 0</b> بينزل للشريط اللي تحت، الـ <b>kernel</b> (kernel mode، mode bit = 0)، لـ \"execute system call\". وبعدين سهم مكتوب عليه <b>return، mode bit = 1</b> بيطلع تاني لـ \"return from system call\" في شريط الـ user.",
       "الـ CPUs بقت بتدعم multi-mode operation أكتر، زي mode للـ <b>virtual machine manager (VMM)</b> عشان الـ guest VMs.",
       "الـ <b>Timer</b> بيمنع الـ infinite loop أو إن process تستحوذ على الـ resources: بيتظبط إنه يعمل interrupt بعد فترة؛ counter بيقل مع الـ physical clock؛ الـ OS هو اللي بيظبطه (<b>privileged instruction</b>)؛ بيعمل interrupt لما يوصل صفر؛ بيتظبط قبل ما الـ process تتعملها schedule عشان الـ OS يرجع ياخد التحكم أو يقفل برنامج عدّى الوقت المسموحله."
-     ]
+     ],
+     "figH": {
+      "os-intr-kinds": "interrupt من الـ hardware ولا من الـ software؟ صنّف الأحداث",
+      "os-modes": "الـ dual mode: التحويل من الـ user mode للـ kernel mode والرجوع",
+      "os-timer": "الـ timer: بيمنع أي process إنها تستولى على الـ CPU"
+     }
     },
     {
      "h": "إدارة الـ process والـ memory والـ storage والـ I/O؛ الـ protection والـ security",
@@ -270,7 +301,10 @@ AR.os = {
       "أجزاء الـ process في الـ memory (من الـ max address لحد 0): الـ <b>stack</b> (داتا مؤقتة: function parameters، return addresses، local variables) بيكبر لتحت؛ الـ <b>heap</b> (memory بتتعملها allocation وقت التشغيل: new، delete، malloc، free) بيكبر لفوق؛ الـ <b>data section</b> (الـ global والـ static variables: متعرّفة برة الـ main function و<b>أي function تقدر توصلها</b>)؛ الـ <b>text section</b> (كود البرنامج). وكمان النشاط الحالي: الـ <b>program counter</b> والـ processor registers.",
       "الـ program حاجة <b>passive</b> متخزنة على الـ disk (executable file)؛ والـ process حاجة <b>active</b>. الـ program بيبقى process لما الـ executable file بتاعه يتحمّل في الـ memory. <b>تشغيل البرنامج بيبدأ بـ GUI mouse clicks، أو إنك تكتب اسمه في الـ command line، إلخ.</b>",
       "البرنامج الواحد ممكن يبقى كذا process (زي كذا user بيشغّلوا نفس البرنامج)."
-     ]
+     ],
+     "figH": {
+      "os-proc-memory": "الـ process جوه الـ memory: الـ stack والـ heap والـ data والـ text"
+     }
     },
     {
      "h": "الـ Process states والـ PCB",
@@ -282,7 +316,11 @@ AR.os = {
       "الـ <b>PCB (Process Control Block، أو task control block)</b> فيه: الـ <b>process state</b> (running، waiting، إلخ)؛ رقم الـ process؛ الـ <b>program counter</b> (مكان الـ instruction اللي عليها الدور)؛ الـ <b>CPU registers</b> (محتوى كل الـ registers الخاصة بالـ process)؛ معلومات الـ CPU-scheduling (priorities، scheduling queue pointers)؛ معلومات الـ memory-management (الـ memory المتخصصة للـ process)؛ معلومات الـ accounting (الـ CPU المستخدم، الوقت اللي عدّى من البداية، الـ time limits)؛ معلومات الـ I/O status (أجهزة الـ I/O المتخصصة للـ process، لستة الـ open files).",
       "رسمة (slide 6، Process Control Block): عمود فيه fields من فوق لتحت: <b>process state</b>؛ <b>process number</b>؛ <b>program counter</b>؛ <b>registers</b>؛ <b>memory limits</b>؛ <b>list of open files</b>؛ • • • (fields تانية).",
       "الـ <b>Threads</b>: الـ process ممكن يبقى ليها كذا program counter، فكذا thread of control يشتغلوا في نفس الوقت؛ وساعتها الـ PCB لازم يخزن تفاصيل كل thread."
-     ]
+     ],
+     "figH": {
+      "os-state-diagram": "الـ state diagram بتاع الـ process: كل state وكل انتقال",
+      "os-pcb": "الـ process control block (PCB)، field ورا field"
+     }
     },
     {
      "h": "الـ Process scheduling: الـ queues والـ schedulers",
@@ -294,7 +332,12 @@ AR.os = {
       "الـ <b>I/O-bound</b> process: بتقضي وقت في الـ I/O أكتر من الحسابات، <b>CPU bursts قصيرة وكتير</b>. الـ <b>CPU-bound</b> process: بتقضي وقت أكتر في الحسابات، <b>CPU bursts قليلة وطويلة جدًا</b>.",
       "الـ <b>Mobile multitasking</b>: فيه mobile systems (زي النسخ الأولى من iOS) بتسمح لـ <b>process واحدة بس تشتغل، والباقي suspended</b>. وبسبب مساحة الشاشة وقيود الـ user interface، الـ iOS بيوفر <b>foreground</b> process واحدة (بتتحكم فيها من الـ user interface) وكذا <b>background</b> process (في الـ memory وشغالة، بس مش ظاهرة على الشاشة، وعليها قيود). القيود منها: task واحدة قصيرة، استقبال notifications للـ events، tasks معينة طويلة زي الـ audio playback. الـ Android بيشغّل foreground وbackground بقيود أقل؛ والـ background process بتستخدم <b>service</b> عشان تعمل الـ tasks؛ والـ service تقدر تفضل شغالة حتى لو الـ background process اتعملها suspend، ومالهاش user interface وبتستخدم memory صغيرة.",
       "رسمة (slide 12، Addition of medium-term scheduling): الـ <b>medium-term scheduler</b> ممكن يتضاف لو الـ degree of multiprogramming محتاجة تقل: يشيل الـ process من الـ memory، يخزنها على الـ disk، ويرجّعها من الـ disk تاني عشان تكمّل تنفيذ (<b>swapping</b>). الرسمة: الـ processes بتدخل الـ <b>ready queue</b> → الـ <b>CPU</b> → <b>end</b>؛ الـ CPU → <b>I/O waiting queues</b> → <b>I/O</b> → ترجع للـ ready queue؛ الـ CPU → <b>swap out</b> → <b>partially executed swapped-out processes</b> → <b>swap in</b> → ترجع للـ ready queue."
-     ]
+     ],
+     "figH": {
+      "os-device-queues": "الـ ready queue والـ queues بتاعة أجهزة الـ I/O",
+      "os-queueing": "الـ queueing diagram: الـ process بتتنقل بين الـ queues إزاي",
+      "os-medium-term": "الـ medium-term scheduling: الـ swap out والـ swap in للـ processes"
+     }
     },
     {
      "h": "الـ Context switch",
@@ -304,7 +347,10 @@ AR.os = {
       "وقت الـ context-switch ده <b>overhead</b> صافي: السيستم مابيعملش أي شغل مفيد وهو بيبدّل. كل ما الـ OS والـ PCB يبقوا أعقد، الـ switch ياخد وقت أطول.",
       "ده بيعتمد على دعم الـ hardware: فيه hardware بيوفر <b>كذا register set لكل CPU</b>، فكذا context يبقوا متحمّلين مرة واحدة.",
       "اللي الـ kernel بيعمله: يحفظ الـ PC والـ registers والـ state بتاعة الـ process الشغالة في الـ PCB بتاعها؛ يحدّث الـ state بتاعتها (ready/waiting) وينقلها للـ queue المناسبة؛ يختار الـ process الجاية؛ يرجّع الـ PC والـ registers ومعلومات الـ memory بتاعتها من الـ PCB؛ يحوّل لـ user mode وينط على الـ PC المحفوظ بتاعها."
-     ]
+     ],
+     "figH": {
+      "os-cpu-switch": "الـ CPU وهي بتنقل من الـ process P0 لـ P1 وترجع"
+     }
     },
     {
      "h": "العمليات على الـ processes: الإنشاء والإنهاء",
@@ -318,7 +364,10 @@ AR.os = {
       "الـ Parent ممكن يوقف تنفيذ الـ children بالـ system call <b>abort()</b>. من الأسباب: الـ child عدّى الـ resources المتخصصة له؛ الـ task اللي اتدّت للـ child ماتبقاش مطلوبة؛ الـ parent بيخرج والـ OS مابيسمحش للـ child يكمّل لو الـ parent بتاعه خلص.",
       "فيه operating systems مابتسمحش إن child يفضل موجود لو الـ parent بتاعه خلص: <b>لو process خلصت، كل الـ children بتوعها لازم يخلصوا هما كمان</b>. الـ <b>Cascading termination</b>: كل الـ children والـ grandchildren إلخ بيتقفلوا؛ والـ OS هو اللي بيبدأ الـ termination.",
       "<code>pid = wait(&amp;status);</code> بترجع الـ status والـ pid بتاع الـ child اللي خلص. الـ <b>Zombie</b>: خلصت، بس مفيش parent مستنيها (الـ parent لسه ماعملش wait()). الـ <b>Orphan</b>: الـ parent بتاعها خلص من غير ما يعمل wait()."
-     ]
+     ],
+     "figH": {
+      "os-fork-life": "إنشاء الـ process وإنهاؤها: <bdi dir=\"ltr\">fork(), exec(), wait(), exit()</bdi>"
+     }
     },
     {
      "h": "الـ Chrome multiprocess architecture وموديلات الـ IPC",
@@ -329,7 +378,10 @@ AR.os = {
       "فيه موديلين للـ IPC: <b>shared memory</b> و<b>message passing</b> (الرسمة: (a) message passing عن طريق message queue في الـ kernel؛ (b) shared-memory region بين process A وB).",
       "الـ <b>Shared memory</b>: منطقة memory متشاركة بين الـ processes اللي بتتواصل؛ التواصل تحت تحكم <b>الـ user processes، مش الـ OS</b>؛ والمشكلة الكبيرة هي <b>الـ synchronization</b> بين أفعالهم.",
       "الـ <b>Producer–consumer problem</b>: الـ producer بيطلّع معلومات والـ consumer بيستهلكها. الـ <b>Unbounded buffer</b>: مفيش حد عملي؛ الـ <b>bounded buffer</b>: حجمه ثابت."
-     ]
+     ],
+     "figH": {
+      "os-chrome": "تصميم Chrome الـ multiprocess قصاد browser بـ process واحدة"
+     }
     },
     {
      "h": "الـ Message passing، الـ synchronization، الـ buffering والـ sockets",
@@ -526,7 +578,12 @@ AR.os = {
       "<b>الـ Preemptive scheduling ممكن يعمل race conditions</b> لما تبقى فيه داتا مشتركة: process تتعملها preempt وهي بتحدّث الداتا، والـ process التانية تقرا داتا مش متسقة (inconsistent).",
       "الـ <b>Dispatcher</b> بيدّي التحكم في الـ CPU للـ process اللي الـ scheduler اختارها: <b>switching context</b>، <b>التحويل لـ user mode</b>، و<b>النط للمكان الصح</b> في برنامج الـ user عشان يكمّله. الـ <b>Dispatch latency</b> = الوقت اللي بياخده عشان يوقف process ويشغّل التانية.",
       "شكل (سلايد 6، الـ dispatch latency): boxes متوصلة بأسهم لتحت: <b>P0 executing</b> → <b>save state into PCB0</b> → <b>restore state from PCB1</b> → <b>P1 executing</b>. وجنب الخطوتين اللي في النص (من آخر P0 executing لحد أول P1 executing) فيه قوس مكتوب عليه <b>dispatch latency</b>."
-     ]
+     ],
+     "figH": {
+      "os-burst-cycle": "دورة الـ CPU burst والـ I/O burst",
+      "os-sched-states": "قرارات الـ scheduling بتحصل إمتى: الـ 4 حالات",
+      "os-dispatch": "الـ dispatcher والـ dispatch latency"
+     }
     },
     {
      "h": "معايير الـ scheduling والقوانين",
@@ -546,7 +603,10 @@ AR.os = {
       "الترتيب P1، P2، P3: WT P1 = 0، P2 = 24، P3 = 27 → المتوسط <b>(0 + 24 + 27)/3 = 17</b>.",
       "الترتيب P2، P3، P1: الـ Gantt: <b>P2 0–3 | P3 3–6 | P1 6–30</b>. WT P1 = 6، P2 = 0، P3 = 3 → المتوسط <b>(6 + 0 + 3)/3 = 3</b>، أحسن بكتير من الحالة اللي قبلها.",
       "الـ <b>Convoy effect</b>: الـ processes القصيرة اللي بتتزنق ورا واحدة طويلة بتخلي متوسط الـ waiting time في الـ FCFS كبير."
-     ]
+     ],
+     "figH": {
+      "os-fcfs-sim": "محاكي الـ FCFS: الـ Gantt chart وأوقات الانتظار"
+     }
     },
     {
      "h": "الـ SJF (Shortest-Job-First) والـ SRTF",
@@ -559,7 +619,11 @@ AR.os = {
       "مثال على الـ Shortest-remaining-time-first (سلايد 17): دلوقتي بنضيف لتحليلنا فكرة <b>إن أوقات الوصول مختلفة وفيه preemption</b>.",
       "مثال الـ SRTF في المحاضرة (arrival/burst): P1 0/8، P2 1/4، P3 2/9، P4 3/5. عند t = 1 الـ P2 (4) &lt; اللي فاضل من P1 وهو 7، فـ P1 بتتعملها preempt.",
       "الـ Gantt chart بتاع الـ SRTF (الـ preemptive SJF): <b>P1 0–1 | P2 1–5 | P4 5–10 | P1 10–17 | P3 17–26</b>. متوسط الـ WT = [(10 − 1) + (1 − 1) + (17 − 2) + (5 − 3)]/4 = <b>26/4 = 6.5</b>."
-     ]
+     ],
+     "figH": {
+      "os-sjf-sim": "محاكي الـ SJF: أقصر job الأول",
+      "os-srtf-sim": "محاكي الـ SRTF: أقل وقت متبقي الأول، مع الـ preemption"
+     }
     },
     {
      "h": "مثال على الـ SJF (سلايد 15–16)",
@@ -576,7 +640,10 @@ AR.os = {
       "عادة <b>متوسط turnaround أعلى من الـ SJF بس response أحسن</b>.",
       "مثال على الـ RR بـ time quantum = 4 (سلايد 20–21): P1 = 24، P2 = 3، P3 = 3. الـ Gantt: <b>P1 0–4 | P2 4–7 | P3 7–10 | P1 10–14 | P1 14–18 | P1 18–22 | P1 22–26 | P1 26–30</b> (بعد P3، الـ P1 بتبقى لوحدها وبتشتغل quantum ورا quantum). متوسط الـ WT = [(30 − 24) + (7 − 3) + (10 − 3)]/3 = <b>17/3 = 5.67</b>. (الـ WT = completion − burst لما الكل يوصل عند 0.)",
       "الاصطلاح المستخدم في كل الإجابات المحلولة: لما الـ quantum بتاع process يخلص في نفس اللحظة اللي process جديدة بتوصل فيها، <b>الجديدة بتدخل الـ queue الأول</b> والـ process اللي اتعملها preempt بتقف وراها."
-     ]
+     ],
+     "figH": {
+      "os-rr-sim": "محاكي الـ Round Robin: جرّب قيم مختلفة للـ time quantum"
+     }
     },
     {
      "h": "الـ Priority scheduling (والـ priority مع RR)",
@@ -586,7 +653,11 @@ AR.os = {
       "<b>المشكلة: starvation</b>: الـ processes اللي الـ priority بتاعها واطي ممكن عمرها ما تتنفذ. <b>الحل: aging</b>: نزوّد الـ priority بالتدريج للـ processes اللي بتستنى كتير.",
       "مثال المحاضرة (burst/priority): P1 10/3، P2 1/1، P3 2/4، P4 1/5، P5 5/2. الـ Chart: P2 0–1، P5 1–6، P1 6–16، P3 16–18، P4 18–19. متوسط الـ WT = (6 + 0 + 16 + 18 + 1)/5 = <b>41/5 = 8.2</b>.",
       "<b>الـ Priority مع Round-Robin</b> (سلايد 25): شغّل الـ process اللي ليها أعلى priority؛ والـ processes اللي <b>ليها نفس الـ priority بتشتغل round-robin</b>. مثال (burst/priority): P1 4/3، P2 5/2، P3 8/2، P4 7/1، P5 3/3. الـ Gantt chart بـ time quantum = 2: <b>P4 0–7 | P2 7–9 | P3 9–11 | P2 11–13 | P3 13–15 | P2 15–16 | P3 16–20 | P1 20–22 | P5 22–24 | P1 24–26 | P5 26–27</b>. متوسط الـ WT = [(22) + (11) + (12) + (0) + (24)]/5 = <b>69/5 = 13.8</b>."
-     ]
+     ],
+     "figH": {
+      "os-prio-sim": "محاكي الـ priority scheduling",
+      "os-prio-rr-sim": "محاكي الـ priority مع الـ Round Robin"
+     }
     },
     {
      "h": "الـ Priority Scheduling مع Round-Robin (سلايد 25)",
@@ -604,7 +675,12 @@ AR.os = {
       "<b>الـ Aging ممكن يتعمل</b> باستخدام multilevel feedback queue.",
       "مثال: Q0 = RR بـ q = 8 ms، Q1 = RR بـ q = 16 ms، Q2 = FCFS. الـ process الجديدة بتدخل Q0 وتاخد 8 ms؛ لو ماخلصتش بتنزل Q1 وتاخد 16 ms كمان؛ لو لسه ماخلصتش بتتعملها preempt وتنزل Q2.",
       "شكل (سلايد 29، الـ multilevel feedback queue): سهم داخل على الـ queue اللي <b>quantum = 8</b>؛ كل queue ليها سهم خارج على اليمين (الـ process بتخلص هناك)؛ وفيه خط من آخر الـ queue اللي quantum = 8 نازل يدخل الـ queue اللي <b>quantum = 16</b>، وخط من آخر الـ queue دي نازل يدخل الـ queue اللي <b>FCFS</b>."
-     ]
+     ],
+     "figH": {
+      "os-mlq": "الـ multilevel queue: queue لكل priority",
+      "os-mlq-types": "الـ multilevel queue على حسب نوع الـ process",
+      "os-mlfq": "الـ multilevel feedback queue: الـ processes بتتنقل بين الـ queues"
+     }
     },
     {
      "h": "مسألة مراجعة محلولة (Topic 3 Q4، وكمان Midterm 2021/22)",
@@ -616,7 +692,10 @@ AR.os = {
       "<b>Priority</b>: P2 0–3، P3 3–5، P1 5–15، P4 15–16 → WT 5، 0، 3، 15 → المتوسط <b>5.75</b>.",
       "أقل متوسط waiting time: <b>SJF (2.5)</b>، لأن الـ SJF مثبت إنه optimal.",
       "مراجعة Q5 (الـ starvation): <b>الـ SJF والـ priority</b> ممكن يعملوا starvation (الـ jobs الطويلة أو اللي الـ priority بتاعها واطي ممكن تستنى للأبد)؛ والحل هو <b>aging</b>. الـ FCFS والـ RR مافيهمش starvation. الـ slides وورقة المراجعة بيركزوا على الـ priority."
-     ]
+     ],
+     "figH": {
+      "os-review-sim": "مسألة المراجعة: كل الـ algorithms على نفس الـ processes"
+     }
     }
    ],
    "cards": [
