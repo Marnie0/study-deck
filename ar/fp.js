@@ -657,7 +657,7 @@ AR.fp = {
       "المشكلة: <b>مفيش أي طريقة نرجّع بيها المعلومات</b> بشكل الـ record المنظم."
      ],
      "figH": {
-      "fp-stream-file": "الـ stream file: bytes من غير أي معلومات زيادة"
+      "fp-stream-file": "الـ stream file، يعني bytes من غير أي معلومات زيادة"
      }
     },
     {
@@ -669,7 +669,7 @@ AR.fp = {
       "الـ <b>Delimiter</b> في آخر كل field:<span class=\"ltr\"><code>87359|CARROLL|ALICE IN WONDERLAND|</code></span>"
      ],
      "figH": {
-      "fp-field-structs": "الـ 4 field structures، byte ورا byte: عدّل الـ fields واقراها تاني"
+      "fp-field-structs": "الـ 4 field structures byte ورا byte، عدّل الـ fields واقراها تاني"
      }
     },
     {
@@ -1293,7 +1293,7 @@ AR.fp = {
         null,
         "الـ O(1) ده direct access بالـ RRN (seek واحد)، مش sequential access (L3).",
         "الـ log n ده binary search على file متترتب بالـ key، مش sequential access (L3–L4).",
-        "التلاتة دول بتوع methods مختلفة (sequential O(n)، binary log n، direct O(1))، فمش كلهم صح (L3)."
+        "التلاتة دول بتوع methods مختلفة، فمش كلهم صح (L3):<span class=\"ltr\">sequential O(n), binary log n, direct O(1)</span>"
        ]
       },
       {
@@ -1301,14 +1301,14 @@ AR.fp = {
        "ow": [
         "الـ 32768 = 64 × 512 دي سعة الـ TRACK؛ الـ cluster هو 4 sectors بس: 4 × 512 (L2, Capacity formulas).",
         null,
-        "الـ 128 = 512 / 4 قسمت بدل ما تضرب؛ الـ cluster = sectors per cluster × bytes per sector (L2).",
+        "الرقم 128 جاي من إنك قسمت 512 على 4 بدل ما تضرب. والصح (L2):<span class=\"ltr\">cluster = sectors per cluster × bytes per sector</span>",
         "الـ 8 bytes مش طالعة من أي formula؛ الـ cluster اللي فيه 4 sectors بيشيل 4 × 512 = 2048 B (L2)."
        ]
       },
       {
        "why": "تقرا آخر page (D)، تضيف الـ record (C)، وتكتبها تاني (D).",
        "ow": [
-        "ده الـ insert/delete بتاع الـ sorted file: binary search وتزحيق نص الـ file، B(D + RC) (L4, Cost table).",
+        "ده الـ insert/delete بتاع الـ sorted file، يعني binary search وتزحيق نص الـ file، وتكلفته <bdi dir=\"ltr\">B(D + RC)</bdi> (L4, Cost table).",
         "الـ sorted search مضاف على 2D + C مش مطابق لأي حاجة في الـ cost table؛ الـ heap insert مش محتاج search (L4).",
         "الـ 1.25B(D + RC) ده الـ scan بتاع الـ hashed file (الـ pages مليانة ~80%)، مش heap insert (L4).",
         null
@@ -1349,11 +1349,11 @@ AR.fp = {
       },
       {
        "why": "الـ Cylinder = 12 track وعدد الـ cylinders = 500. و61,440,000 / 1,048,576 ≈ 58.6 MB.",
-       "ans": "الـ Disk capacity = track capacity × cylinder height × tracks/surface = 10,240 × 12 × 500 = <b>61,440,000 B ≈ 58.6 MB</b>."
+       "ans": "الـ disk capacity بتتحسب كده:<span class=\"ltr\">track capacity × cylinder height × tracks/surface</span><span class=\"ltr\">= 10,240 × 12 × 500 = <b>61,440,000 B ≈ 58.6 MB</b></span>"
       },
       {
        "why": "كل sector بياخد 1/20 من اللفة. والإجابة النموذجية كاتباها [(3×60)/5000]/20، وهي نفس الحاجة.",
-       "ans": "اللفة = 60,000/5000 = 12 ms<br>الـ Transfer (3 sectors) = 3 × 12 / 20 = <b>1.8 ms</b><br>الـ Average total = seek 7 + latency 6 + transfer 1.8 = <b>14.8 ms</b>"
+       "ans": "اللفة:<span class=\"ltr\">60,000 / 5000 = 12 ms</span>الـ transfer لـ 3 sectors:<span class=\"ltr\">3 × 12 / 20 = <b>1.8 ms</b></span>والـ average total:<span class=\"ltr\">seek 7 + latency 6 + transfer 1.8 = <b>14.8 ms</b></span>"
       }
      ]
     }
@@ -1373,7 +1373,7 @@ AR.fp = {
        ]
       },
       {
-       "why": "الـ direct access بيعمل seek على طول للـ byte offset بتاع الـ record (RRN × record size) في access واحد، فالـ cost مش معتمد على n: O(1) (L3, Managing files of records).",
+       "why": "الـ direct access بيعمل seek على طول للـ byte offset بتاع الـ record (<bdi dir=\"ltr\">RRN × record size</bdi>) في access واحد، فالـ cost مش معتمد على n، وبيبقى <bdi dir=\"ltr\">O(1)</bdi> (L3, Managing files of records).",
        "ow": [
         "الـ O(n) ده الـ sequential search، اللي بيقرا الـ records بالترتيب لحد ما يلاقي match (L3).",
         null,
@@ -1431,7 +1431,7 @@ AR.fp = {
      "items": [
       {
        "why": "من Lecture 2، جزء \"Disk as a bottleneck\". أي أربعة منهم ياخدوا الدرجة.",
-       "ans": "1. <b>الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.<br>2. <b>الـ Disk striping</b>: blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).<br>3. <b>الـ RAID</b>: Redundant Array of Independent Disks.<br>4. <b>الـ RAM disk</b>: جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل volatility).<br>5. <b>الـ Disk cache</b>: الـ memory شايلة pages من الـ disk؛ تشيك على الـ cache الأول وتروح للـ disk لو حصل miss."
+       "ans": "(1) <b>الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.<br>(2) <b>الـ Disk striping</b>: blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).<br>(3) <b>الـ RAID</b>: Redundant Array of Independent Disks.<br>(4) <b>الـ RAM disk</b>: جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل volatility).<br>(5) <b>الـ Disk cache</b>: الـ memory شايلة pages من الـ disk؛ تشيك على الـ cache الأول وتروح للـ disk لو حصل miss."
       },
       {
        "why": "الـ Track = 15,360 B، واضربه × 10 tracks في الـ cylinder.",
@@ -1447,7 +1447,7 @@ AR.fp = {
       },
       {
        "why": "الإجابة النموذجية بتحسب \"(2/1000)×60 = 120 ms\" وتقسم على 30. ده بيدي نفس الـ 4 ms، بس الطريقة الأوضح إنك تاخد لفة واحدة (60 ms) × 2/30. والـ average rotational delay (5 ms) معطى، فمتحسبوش تاني من الـ rpm.",
-       "ans": "اللفة = 60,000/1000 = 60 ms<br>الـ Transfer (2 sectors) = 2 × 60 / 30 = <b>4 ms</b><br>الـ Total = seek 10 + rotational delay 5 + transfer 4 = <b>19 ms</b>"
+       "ans": "اللفة:<span class=\"ltr\">60,000 / 1000 = 60 ms</span>الـ transfer لـ 2 sectors:<span class=\"ltr\">2 × 60 / 30 = <b>4 ms</b></span>والـ total:<span class=\"ltr\">seek 10 + rotational delay 5 + transfer 4 = <b>19 ms</b></span>"
       }
      ]
     }
@@ -1461,8 +1461,8 @@ AR.fp = {
        "why": "وعشان كده منقدرش نرجّع الـ records من الـ stream file.",
        "ow": [
         null,
-        "الـ \"No space\" مش هو التعريف؛ الفكرة إن مفيش أي added information (delimiters، lengths) بتتكتب (L3, Stream files).",
-        "الـ added information (delimiters، length indicators، keywords) دي اللي الـ field structures بتضيفها؛ الـ stream مفيهوش منها حاجة (L3).",
+        "الـ \"No space\" مش هو التعريف؛ الفكرة إن مفيش أي added information بتتكتب، زي الـ delimiters والـ lengths (L3, Stream files).",
+        "الـ added information، زي الـ delimiters والـ length indicators والـ keywords، دي اللي الـ field structures بتضيفها؛ والـ stream مفيهوش منها حاجة (L3).",
         "الـ \"Space\" مش هو التعريف؛ الـ stream file مفيهوش أي added information (L3)."
        ]
       },
@@ -1480,7 +1480,7 @@ AR.fp = {
        "ow": [
         "الـ OS فعلاً file manager، بس الـ DBMS كمان، فدي نص الإجابة بس (L1).",
         "الـ DBMS فعلاً file manager، بس الـ OS كمان، فدي نص الإجابة بس (L1).",
-        "الـ MIS ده management information system، مش واحد من الـ file managers (OS، DBMS) اللي المحاضرة سمّتهم (L1).",
+        "الـ MIS ده management information system، مش واحد من الـ file managers اللي المحاضرة سمّتهم، وهما الـ OS والـ DBMS (L1).",
         null
        ]
       },
@@ -1488,7 +1488,7 @@ AR.fp = {
        "why": "المحاضرة بتعرّف الـ bucket إنه الـ unit of storage اللي تقدر تشيل record واحد أو أكتر في الـ hash file organization (L5, What is hashing?).",
        "ow": [
         null,
-        "الـ disk page مصطلح تخزين عام (الـ page = block في الـ cost model)؛ المصطلح بتاع الـ hashing هو bucket (L5).",
+        "الـ disk page مصطلح تخزين عام، والـ page في الـ cost model هي الـ block؛ أما المصطلح بتاع الـ hashing فهو bucket (L5).",
         "الـ blocks دي الطريقة اللي الـ DBMS بينظم بيها الـ tracks physically (L2)؛ في الـ hashing الوحدة اسمها bucket (L5).",
         "الـ nodes بتاعة الـ trees والـ linked lists، مش الـ hash file organization (L5)."
        ]
@@ -1525,7 +1525,7 @@ AR.fp = {
     {
      "items": [
       {
-       "why": "الأحجام الثابتة معناها إن الـ offset = RRN × record size. الـ seekp بيحط الـ put pointer في مكانه، والـ write بتكتب فوق الـ record.",
+       "why": "الأحجام الثابتة معناها إن الـ offset بيتحسب كده:<span class=\"ltr\">offset = RRN × record size</span>والـ seekp بيحط الـ put pointer في مكانه، والـ write بتكتب فوق الـ record.",
        "ans": "<pre>struct Item {\n    char desc[31];\n    int qty;\n    float price;\n};\n\nvoid UpdateRecord(fstream &amp;file, Item &amp;newItem, int RRN)\n{\n    // newItem contains the new record to overwrite the old one\n    file.seekp(RRN * sizeof(newItem), ios::beg);\n    file.write((char *) &amp;newItem, sizeof(newItem));\n}</pre>"
       }
      ]
@@ -1534,7 +1534,7 @@ AR.fp = {
      "items": [
       {
        "why": "الجداول بتاعة Lecture 1 وLecture 2.",
-       "ans": "<b>(i)</b> الـ Physical file: مجموعة bytes على الـ disk؛ ليه physical name (A.txt)؛ بيستخدم مرة واحدة وقت الـ opening. الـ Logical file: channel بيوصل البرنامج بالـ physical file؛ الـ logical name بتاعه variable في البرنامج (infile، fp)؛ بيستخدم أي عدد مرات محتاجه (open، read، write، append، close).<br><b>(ii)</b> الـ Seek time: الوقت اللي الـ read/write arm بياخده عشان يروح للـ cylinder الصح. الـ Rotational delay (latency): الوقت اللي الـ disk بياخده عشان يلف ويجيب الـ sector المطلوب تحت الـ head. الـ Transfer time: أول ما الـ head يبقى فوق الداتا، ده الوقت اللي بياخده عشان ينقلها."
+       "ans": "<b>(i)</b> الـ Physical file: مجموعة bytes على الـ disk؛ ليه physical name (A.txt)؛ بيستخدم مرة واحدة وقت الـ opening. الـ Logical file: channel بيوصل البرنامج بالـ physical file؛ الـ logical name بتاعه variable في البرنامج (زي infile و fp)؛ بيستخدم أي عدد مرات محتاجه (في الـ open والـ read والـ write والـ append والـ close).<br><b>(ii)</b> الـ Seek time: الوقت اللي الـ read/write arm بياخده عشان يروح للـ cylinder الصح. الـ Rotational delay (latency): الوقت اللي الـ disk بياخده عشان يلف ويجيب الـ sector المطلوب تحت الـ head. الـ Transfer time: أول ما الـ head يبقى فوق الداتا، ده الوقت اللي بياخده عشان ينقلها."
       },
       {
        "why": "الإجابة النموذجية بتوري الـ cylinder size بس. كمّل بالقسمة على حجم الـ record.",
