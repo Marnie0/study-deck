@@ -23,12 +23,12 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 <!-- stats:start -->
 <table>
 <tr>
-<td align="center"><h2>12</h2>courses</td>
-<td align="center"><h2>102</h2>lectures</td>
-<td align="center"><h2>1,636</h2>flashcards</td>
-<td align="center"><h2>2,673</h2>quiz questions</td>
-<td align="center"><h2>570</h2>Q&amp;A pairs</td>
-<td align="center"><h2>73</h2>solved past papers</td>
+<td align="center"><h2>13</h2>courses</td>
+<td align="center"><h2>110</h2>lectures</td>
+<td align="center"><h2>1,835</h2>flashcards</td>
+<td align="center"><h2>2,958</h2>quiz questions</td>
+<td align="center"><h2>688</h2>Q&amp;A pairs</td>
+<td align="center"><h2>75</h2>solved past papers</td>
 </tr>
 </table>
 <!-- stats:end -->
@@ -189,6 +189,7 @@ Pick your level on the home page. Course pills, tiles, cards due, weak spots, pa
 | 🟢 Software Quality Assurance | 22H211-CS-EN-T1 | 8 | 116 | 171 | 2 | ✓ |
 | 🟩 Human Computer Interaction *(elective)* | CS314 | 10 | 168 | 332 | 2 | ✓ |
 | 🟠 File Processing *(elective)* | CS308 | 5 | 66 | 100 | 3 | ✓ |
+| 🟡 Modeling & Simulation *(elective)* | 22CS351 | 8 | 199 | 285 | 2 | ✓ |
 <!-- courses:end -->
 
 Where an official answer key disagrees with the lecture slides, both are shown and the conflict is flagged.
@@ -211,7 +212,7 @@ No framework build, no bundler, no `node_modules`. The whole app is static files
 study-deck/
 ├── index.html          # styles + page shell
 ├── app.js              # the whole React app
-├── compiler.js … fp.js # Level 3 course sources: notes, cards, Q&A, quiz, exams
+├── compiler.js … ms.js # Level 3 course sources: notes, cards, Q&A, quiz, exams
 ├── dm.js … sa.js       # Level 2 course sources, same format
 ├── extra/              # extra practice questions, per lecture
 ├── papers/             # more solved past papers, merged into the courses

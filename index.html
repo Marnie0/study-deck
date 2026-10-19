@@ -16,8 +16,8 @@
   --desk:#EEF0F4; --desk-2:#E6E9EF; --paper:#FFFFFF; --paper-2:#F5F6F9;
   --ink:#111827; --graphite:#4B5563; --faint:#7C8493; --line:#E2E5EB; --rule:#EDEFF3;
   --pen:#DC2626; --ok:#15803D; --warn:#B45309; --hl:#FDE68A; --hlp:60%;
-  --k-compiler:#2F5BD8; --k-os:#7444D6; --k-mm:#C42A6C; --k-qa:#0B7A80; --k-hci:#1E7D40; --k-fp:#C2410C;
-  --s-compiler:#2F5BD8; --s-os:#7444D6; --s-mm:#C42A6C; --s-qa:#0B7A80; --s-hci:#1E7D40; --s-fp:#C2410C;
+  --k-compiler:#2F5BD8; --k-os:#7444D6; --k-mm:#C42A6C; --k-qa:#0B7A80; --k-hci:#1E7D40; --k-fp:#C2410C; --k-ms:#8A6A00;
+  --s-compiler:#2F5BD8; --s-os:#7444D6; --s-mm:#C42A6C; --s-qa:#0B7A80; --s-hci:#1E7D40; --s-fp:#C2410C; --s-ms:#8A6A00;
   --c:#4B5563; --s:#111827; --on-s:#FFFFFF; --hero:#111827; --on-hero:#FFFFFF;
   --t-yellow:#FDE68A; --t-green:#CFF5E3; --t-blue:#DBE8FE; --t-pink:#FBE2F0; --t-ink:#111827;
   --aurora:radial-gradient(900px 540px at 0% -10%, rgba(139,92,246,.40), transparent 70%), radial-gradient(820px 520px at 100% 0%, rgba(59,130,246,.30), transparent 70%), radial-gradient(900px 620px at 85% 100%, rgba(236,72,153,.24), transparent 70%), radial-gradient(760px 520px at 5% 100%, rgba(245,158,11,.22), transparent 70%), #F6F4FF;
@@ -41,7 +41,7 @@
     --desk:#0B0D12; --desk-2:#10131A; --paper:#161A22; --paper-2:#1D222C;
     --ink:#EEF1F6; --graphite:#A8B0BE; --faint:#7A8392; --line:#272C37; --rule:#1F232D;
     --pen:#F87171; --ok:#4ADE80; --warn:#FBBF24; --hl:#A16207; --hlp:45%;
-    --k-compiler:#93B0FF; --k-os:#BCA3FF; --k-mm:#FF8FC0; --k-qa:#5FD3D8; --k-hci:#74D79B; --k-fp:#FFA474;
+    --k-compiler:#93B0FF; --k-os:#BCA3FF; --k-mm:#FF8FC0; --k-qa:#5FD3D8; --k-hci:#74D79B; --k-fp:#FFA474; --k-ms:#F0C35A;
     --c:#C9CFDA; --s:#E5E7EB; --on-s:#111827; --hero:#1E2433; --on-hero:#FFFFFF;
     --t-yellow:#3A3116; --t-green:#10302A; --t-blue:#15284A; --t-pink:#3A1A33; --t-ink:#EEF1F6;
     --aurora:radial-gradient(900px 540px at 0% -10%, rgba(116,68,214,.55), transparent 70%), radial-gradient(820px 520px at 100% 0%, rgba(47,91,216,.42), transparent 70%), radial-gradient(900px 620px at 85% 100%, rgba(196,42,108,.36), transparent 70%), radial-gradient(760px 520px at 5% 100%, rgba(217,119,6,.20), transparent 70%), #0B0D12;
@@ -58,7 +58,7 @@
   --desk:#0B0D12; --desk-2:#10131A; --paper:#161A22; --paper-2:#1D222C;
   --ink:#EEF1F6; --graphite:#A8B0BE; --faint:#7A8392; --line:#272C37; --rule:#1F232D;
   --pen:#F87171; --ok:#4ADE80; --warn:#FBBF24; --hl:#A16207; --hlp:45%;
-  --k-compiler:#93B0FF; --k-os:#BCA3FF; --k-mm:#FF8FC0; --k-qa:#5FD3D8; --k-hci:#74D79B; --k-fp:#FFA474;
+  --k-compiler:#93B0FF; --k-os:#BCA3FF; --k-mm:#FF8FC0; --k-qa:#5FD3D8; --k-hci:#74D79B; --k-fp:#FFA474; --k-ms:#F0C35A;
   --c:#C9CFDA; --s:#E5E7EB; --on-s:#111827; --hero:#1E2433; --on-hero:#FFFFFF;
   --t-yellow:#3A3116; --t-green:#10302A; --t-blue:#15284A; --t-pink:#3A1A33; --t-ink:#EEF1F6;
   --aurora:radial-gradient(900px 540px at 0% -10%, rgba(116,68,214,.55), transparent 70%), radial-gradient(820px 520px at 100% 0%, rgba(47,91,216,.42), transparent 70%), radial-gradient(900px 620px at 85% 100%, rgba(196,42,108,.36), transparent 70%), radial-gradient(760px 520px at 5% 100%, rgba(217,119,6,.20), transparent 70%), #0B0D12;
@@ -75,7 +75,8 @@ body[data-course="mm"], body[data-course="ds"]{ --c:var(--k-mm); --s:var(--s-mm)
 body[data-course="qa"], body[data-course="web"]{ --c:var(--k-qa); --s:var(--s-qa); --on-s:#FFFFFF; }
 body[data-course="hci"], body[data-course="micro"]{ --c:var(--k-hci); --s:var(--s-hci); --on-s:#FFFFFF; }
 body[data-course="fp"], body[data-course="sa"]{ --c:var(--k-fp); --s:var(--s-fp); --on-s:#FFFFFF; }
-.sp-compiler, .sp-dm{ --sp:var(--k-compiler); --spd:var(--s-compiler); } .sp-os, .sp-or{ --sp:var(--k-os); --spd:var(--s-os); } .sp-mm, .sp-ds{ --sp:var(--k-mm); --spd:var(--s-mm); } .sp-qa, .sp-web{ --sp:var(--k-qa); --spd:var(--s-qa); } .sp-hci, .sp-micro{ --sp:var(--k-hci); --spd:var(--s-hci); } .sp-fp, .sp-sa{ --sp:var(--k-fp); --spd:var(--s-fp); }
+body[data-course="ms"]{ --c:var(--k-ms); --s:var(--s-ms); --on-s:#FFFFFF; }
+.sp-compiler, .sp-dm{ --sp:var(--k-compiler); --spd:var(--s-compiler); } .sp-os, .sp-or{ --sp:var(--k-os); --spd:var(--s-os); } .sp-mm, .sp-ds{ --sp:var(--k-mm); --spd:var(--s-mm); } .sp-qa, .sp-web{ --sp:var(--k-qa); --spd:var(--s-qa); } .sp-hci, .sp-micro{ --sp:var(--k-hci); --spd:var(--s-hci); } .sp-fp, .sp-sa{ --sp:var(--k-fp); --spd:var(--s-fp); } .sp-ms{ --sp:var(--k-ms); --spd:var(--s-ms); }
 
 /* ───── base ───── */
 *{ box-sizing:border-box; }

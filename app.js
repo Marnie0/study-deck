@@ -26,7 +26,7 @@ function start() {
   // each level lists its courses as [id, elective]; ORDER is the level on screen, set by App on every render
   const LEVELS = [
     { id: 'l2', name: 'Level 2', sem: 'Semester 1', order: [['dm', 0], ['or', 0], ['ds', 0], ['web', 0], ['micro', 0], ['sa', 0]] },
-    { id: 'l3', name: 'Level 3', sem: 'Semester 1', order: [['compiler', 0], ['os', 0], ['mm', 0], ['qa', 0], ['hci', 1], ['fp', 1]] }
+    { id: 'l3', name: 'Level 3', sem: 'Semester 1', order: [['compiler', 0], ['os', 0], ['mm', 0], ['qa', 0], ['hci', 1], ['fp', 1], ['ms', 1]] }
   ].map(v => Object.assign(v, { order: v.order.filter(([k]) => M[k]) })).filter(v => v.order.length);
   const levelOf = k => LEVELS.find(v => v.order.some(o => o[0] === k));
   let LEVEL = LEVELS.find(v => v.id === 'l3') || LEVELS[0];
@@ -718,7 +718,7 @@ function start() {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
     // names like 'qa-…' live in figs-qa.js, which builds on figs.js
-    const extra = /^([a-z]+)-/.exec(name), file = extra && extra[1] !== 'hci' && ['qa', 'mm', 'os', 'cc', 'fp', 'hc'].includes(extra[1]) ? 'figs-' + extra[1] : null;
+    const extra = /^([a-z]+)-/.exec(name), file = extra && extra[1] !== 'hci' && ['qa', 'mm', 'os', 'cc', 'fp', 'hc', 'ms'].includes(extra[1]) ? 'figs-' + extra[1] : null;
     const [ready2, setReady2] = useState(() => !file || !!(window.FIGS && window.FIGS[name]));
     useEffect(() => { if (!ready) loadScript(dataUrl('figs')).then(() => setReady(true), () => setFailed(true)); }, []);
     useEffect(() => { if (ready && !ready2) loadScript(dataUrl(file)).then(() => setReady2(true), () => setFailed(true)); }, [ready]);
@@ -1162,7 +1162,7 @@ function start() {
           ${lecs.map(l => html`<section key=${l.n} className="askgroup">
             <h3><span className="sec">L${l.n}</span>${l.title}</h3>
             ${l.qa.map((x, i) => { const id = l.n + '-' + i; return html`<div key=${id} className="askitem">
-              <div className="askq"><span className="qn">Q${i + 1}</span><p>${x[0]}${x[2] && html` <span className="srcbadge summary" title=${x[2]}>Student summary</span>`}</p>
+              <div className="askq"><span className="qn">Q${i + 1}</span><p>${x[0]}${x[2] && (/^student summary/i.test(x[2]) || !/sheet|revision|quiz/i.test(x[2]) ? html` <span className="srcbadge summary" title=${x[2]}>Student summary</span>` : html` <span className="srcbadge prof" title=${x[2]}>${x[2]}</span>`)}</p>
                 <button className="linkbtn" aria-expanded=${String(!!open[id])} onClick=${() => setOpen(o => Object.assign({}, o, { [id]: !o[id] }))}>${open[id] ? 'Hide' : 'Show answer'}</button></div>
               ${open[id] && html`<div className="askans">${x[1]}<${Ar} t=${(arLec(k, l.n) || {}).qa && arLec(k, l.n).qa[i]} /></div>`}
             </div>`; })}
