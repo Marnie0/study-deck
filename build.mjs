@@ -75,7 +75,7 @@ for (const id of Object.keys(COURSES)) {
   console.log(`data/ar-${id}.js`.padEnd(20), (json.length / 1024).toFixed(0).padStart(5), 'KB');
 }
 // the diagram engine is served from data/ so it gets the same content-hash URL and year-long caching as the course files
-for (const f of ['figs-qa.js', 'figs-mm.js', 'figs-os.js', 'figs-cc.js']) if (existsSync(f)) { writeFileSync('data/' + f, readFileSync(f)); console.log(('data/' + f).padEnd(20), (readFileSync(f).length / 1024).toFixed(0).padStart(5), 'KB'); }
+for (const f of ['figs-qa.js', 'figs-mm.js', 'figs-os.js', 'figs-cc.js', 'figs-fp.js']) if (existsSync(f)) { writeFileSync('data/' + f, readFileSync(f)); console.log(('data/' + f).padEnd(20), (readFileSync(f).length / 1024).toFixed(0).padStart(5), 'KB'); }
 if (existsSync('figs.js')) { writeFileSync('data/figs.js', readFileSync('figs.js')); console.log('data/figs.js'.padEnd(20), (readFileSync('figs.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
 if (existsSync('viz.js')) { writeFileSync('data/viz.js', readFileSync('viz.js')); console.log('data/viz.js'.padEnd(20), (readFileSync('viz.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
 writeFileSync('manifest.js', `window.MANIFEST=${JSON.stringify(manifest)};\n`);
