@@ -26,18 +26,18 @@ AR.hci = {
     {
      "h": "الـ 3 أجزاء بتوع الـ HCI (pie chart)",
      "pts": [
-      "Pie chart فيها 3 أجزاء: Human و Computer و Interaction.",
-      "<b>Human</b>: Communication theory، Industrial design، Social science، Cognitive psychology، Human factors.",
-      "<b>Computer</b>: Computer graphic، Operating system، Programming language.",
-      "<b>Interaction</b>: Interaction design."
+      "فيه pie chart بـ 3 أجزاء: الـ Human والـ Computer والـ Interaction.",
+      "الـ <b>Human</b>: فيه الـ Communication theory والـ Industrial design والـ Social science والـ Cognitive psychology والـ Human factors.",
+      "الـ <b>Computer</b>: فيه الـ Computer graphic والـ Operating system والـ Programming language.",
+      "الـ <b>Interaction</b>: فيه الـ Interaction design."
      ]
     },
     {
      "h": "إيه هو الـ HCI؟ تفاصيل زيادة من slides السنة اللي فاتت",
      "pts": [
-      "فيه مصطلحات بتتقال بنفس المعنى: <b>HCI</b> (Human Computer Interaction)، <b>HMI</b> (Human Machine Interaction)، و<b>MMI</b> (Man Machine Interaction).",
+      "فيه مصطلحات بتتقال بنفس المعنى:<br>• الـ <b>HCI</b> (Human Computer Interaction)<br>• الـ <b>HMI</b> (Human Machine Interaction)<br>• الـ <b>MMI</b> (Man Machine Interaction)",
       "الـ HCI بيتعامل مع الـ <b>Design</b> والـ <b>Implementation</b> والـ <b>Evaluation</b> بتاع الـ interactive systems.",
-      "فيه 3 أجزاء بيتقابلوا في الـ HCI: الـ <b>User</b> (قدراته العقلية والجسدية)، والـ <b>Computer / Machine</b> (أجهزة الـ input/output)، والـ <b>Interaction</b> (الـ interfaces والـ HCI patterns والـ design والـ usability evaluation)."
+      "فيه 3 أجزاء بيتقابلوا في الـ HCI:<br>• الـ <b>User</b> (قدراته العقلية والجسدية)<br>• الـ <b>Computer / Machine</b> (أجهزة الـ input/output)<br>• الـ <b>Interaction</b> (الـ interfaces والـ HCI patterns والـ design والـ usability evaluation)"
      ]
     },
     {
@@ -84,7 +84,7 @@ AR.hci = {
      "h": "مثال على design وحش و design كويس: أزرار الأسانسير",
      "pts": [
       "الـ controls والـ labels بتوع الأسانسير في <b>الصف اللي تحت شكلهم كلهم واحد</b>، فسهل تدوس على label بالغلط بدل زرار الـ control.",
-      "صورة (www.baddesigns.com): الصف اللي فوق فيه أرقام الأدوار 1 و 2 و 3 وجنب كل رقم زرار؛ والصف اللي تحت فيه DOOR OPEN، وزرار، وعلامة X، و STOP/RUN، وجرس، وزرار، و DOOR CLOSE وزرار، والـ labels والزراير كلهم نفس المربعات؛ وفيه سهم أحمر بيشاور على label في الصف اللي تحت.",
+      "صورة (www.baddesigns.com):<br>• الصف اللي فوق فيه أرقام الأدوار 1 و 2 و 3، وجنب كل رقم زرار.<br>• الصف اللي تحت فيه DOOR OPEN، وزرار، وعلامة X، و STOP/RUN، وجرس، وزرار، و DOOR CLOSE وزرار، والـ labels والزراير كلهم نفس المربعات.<br>• وفيه سهم أحمر بيشاور على label في الصف اللي تحت.",
       "الناس مش بتغلط نفس الغلطة مع الـ labels والزراير في <b>الصف اللي فوق</b>. ليه؟ (سؤال للمناقشة؛ الـ slide مش بتدّي إجابة)"
      ]
     },
@@ -147,9 +147,9 @@ AR.hci = {
      "h": "مشكلة الـ full-featured systems (MS Office)",
      "pts": [
       "برامج الـ productivity الكاملة فيها features كتير عشان تغطي كل الاحتياجات الممكنة.",
-      "features أكتر معناها: البرنامج يحسسك إنه معقد، والحاجات أصعب في إنك تلاقيها أو تتعلمها، والتركيز يبقى على الأداة أكتر من الـ task.",
+      "الـ features الأكتر معناها:<br>• البرنامج يحسسك إنه معقد<br>• الحاجات أصعب في إنك تلاقيها أو تتعلمها<br>• التركيز يبقى على الأداة أكتر من الـ task",
       "الـ <b>Bloatware</b>: منتج فيه features كتير أوي، أو megabytes كتير أوي، أو بطيء أوي، أو صعب أوي في الاستخدام، أو ببساطة \"كتير أوي\".",
-      "Office 97–2003: الصحافة سمّته \"bloated\"؛ كان فيه list طويلة جداً من الـ feature requests؛ الناس حسّت إنها متحكمة أقل؛ الـ menus والـ toolbars كانت مليانة ومش scalable؛ والناس مكانتش بتاخد بالها من الـ features الجديدة ولا بتستخدمها."
+      "في Office 97–2003:<br>• الصحافة سمّته \"bloated\"<br>• كان فيه list طويلة جداً من الـ feature requests<br>• الناس حسّت إنها متحكمة أقل<br>• الـ menus والـ toolbars كانت مليانة ومش scalable<br>• الناس مكانتش بتاخد بالها من الـ features الجديدة ولا بتستخدمها"
      ]
     },
     {
@@ -167,7 +167,7 @@ AR.hci = {
       "قبل 2003، القرارات كانت في الغالب <b>تخمين</b>: \"based on feel, estimation, and guess work\" يعني بالإحساس والتقدير والتخمين.",
       "Office 2003 قدّم الـ <b>CEIP</b> (Customer Experience Improvement Program): balloon مكتوب فيها \"Help make Office better\" بتسجّل الـ users وبتجمع usage data و hardware data <b>anonymous</b>.",
       "لـ Office 2007 الفريق كان عنده data لأكتر من <b>1.3 billion sessions</b>. جالهم data من Word و Outlook كتير لدرجة إن <b>70% منها اترمى</b>.",
-      "اتعلموا أنهي commands بتتستخدم كتير، وأنهي بتتستخدم ورا بعض، وأنهي بتتستخدم <b>7x أكتر بالـ keyboard</b> من الماوس، والناس بتفتح كام document في نفس الوقت، والشاشات حجمها قد إيه."
+      "اتعلموا:<br>• أنهي commands بتتستخدم كتير<br>• أنهي بتتستخدم ورا بعض<br>• أنهي بتتستخدم <b>7x أكتر بالـ keyboard</b> من الماوس<br>• الناس بتفتح كام document في نفس الوقت<br>• الشاشات حجمها قد إيه"
      ]
     },
     {
@@ -183,11 +183,9 @@ AR.hci = {
      "h": "Example case: الـ International Children's Digital Library (ICDL)",
      "pts": [
       "<b>HCIL</b> هي اللي صممت الـ <b>international children digital library</b>.",
-      "Screenshot للـ home page (University of Maryland): \"International Children's Digital Library, A Library for the World's Children\"؛ لينكات The Foundation (Mission، Board of Advisors، Foundation Team، Sponsors، For Researchers & Librarians)؛ partnership مع الـ Human-Computer Interaction Lab بتاع University of Maryland، بدعم من الـ iSchool والـ Computer Science Department بتوع UMD؛ زرار READ BOOKS!؛ قوايم كتب حسب اللغة، واللون، والشكل، والـ format، والـ genre (أنواع مختلفة)، والشخصية، والحقيقي ضد الخيالي (true vs. make believe)؛ Our Mission: الـ ICDL Foundation بتنشر التسامح واحترام الثقافات المختلفة عن طريق إنها توفر الوصول لأحسن أدب أطفال من كل حتة في العالم.",
-      "Screenshot لصفحة الـ Simple Search: زراير كبيرة بالصور عشان تدور حسب لون الغلاف (Rainbow، Red، Orange، Yellow، Green، Blue Covers)، وحسب السن (Three to Five، Six to Nine، Ten to Thirteen)، و Make Believe Books، و True Books، و Short/Medium/Long Books، و Recently Added Books، و Award Winning Books، و Fairy Tales and Folk Tales، و Kid Characters، و Real Animal Characters، و Imaginary Creature Characters، و Picture Books، و Chapter Books، وكمان search box للـ Keywords.",
-      "صفحة الـ search بتاعة الـ ICDL <b>design كويس</b>: <b>أكتر من 3 مليون unique visitors</b>، والـ users فضّلوا الـ <b>visual search</b> (<b>71% من عمليات البحث</b>).",
-      "labels تانية على screenshot الـ home page بتاعة الـ ICDL: لينك <b>Book list</b> و <b>Library News and Notes (June 2, 2021)</b>.",
-      "Screenshot صفحة الـ Simple Search كمان فيها صفوف <b>Featured Books</b> و <b>From Our Shelves</b>، و filter <b>Show Any Language books</b>، و <b>More Choices</b>، و <b>Search By Collections</b> و <b>Browse Exhibitions</b>."
+      "Screenshot للـ home page (University of Maryland):<br>• العنوان: \"International Children's Digital Library, A Library for the World's Children\".<br>• لينكات The Foundation:<span class=\"ltr\">Mission, Board of Advisors, Foundation Team, Sponsors, For Researchers &amp; Librarians</span>• partnership مع الـ Human-Computer Interaction Lab بتاع University of Maryland، بدعم من الـ iSchool والـ Computer Science Department بتوع UMD.<br>• زرار READ BOOKS!<br>• قوايم كتب حسب اللغة، واللون، والشكل، والـ format، والـ genre (أنواع مختلفة)، والشخصية، والحقيقي ضد الخيالي (true vs. make believe).<br>• الـ Our Mission: الـ ICDL Foundation بتنشر التسامح واحترام الثقافات المختلفة عن طريق إنها توفر الوصول لأحسن أدب أطفال من كل حتة في العالم.<br>• labels تانية: لينك <b>Book list</b> و <b>Library News and Notes (June 2, 2021)</b>.",
+      "Screenshot لصفحة الـ Simple Search: زراير كبيرة بالصور عشان تدور بيها:<br>• حسب لون الغلاف:<span class=\"ltr\">Rainbow, Red, Orange, Yellow, Green, Blue Covers</span>• حسب السن:<span class=\"ltr\">Three to Five, Six to Nine, Ten to Thirteen</span>• وزراير تانية:<span class=\"ltr\">Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books</span>• وكمان search box للـ Keywords.<br>وفيها كمان صفوف <b>Featured Books</b> و <b>From Our Shelves</b>، و filter <b>Show Any Language books</b>، و <b>More Choices</b>، و <b>Search By Collections</b> و <b>Browse Exhibitions</b>.",
+      "صفحة الـ search بتاعة الـ ICDL <b>design كويس</b>: <b>أكتر من 3 مليون unique visitors</b>، والـ users فضّلوا الـ <b>visual search</b> (<b>71% من عمليات البحث</b>)."
      ]
     },
     {
@@ -214,7 +212,7 @@ AR.hci = {
     {
      "h": "أنهي نوع design؟",
      "pts": [
-      "فيه مصطلحات تانية كتير بتتقال وبتركز على الحاجة اللي بتتصمم، زي: <b>user interface design، software design، user-centered design، product design، web design، experience design (UX)</b>.",
+      "فيه مصطلحات تانية كتير بتتقال وبتركز على الحاجة اللي بتتصمم، زي <b>الـ user interface design والـ software design والـ user-centered design والـ product design والـ web design والـ experience design (UX)</b>.",
       "<b>الـ Interaction design هو الـ umbrella term</b> اللي بيغطي كل الجوانب دي.",
       "وهو <b>أساسي لكل الـ disciplines والـ fields والـ approaches</b> اللي بتهتم بالبحث وتصميم computer-based systems للناس."
      ]
@@ -232,22 +230,22 @@ AR.hci = {
      "h": "الـ Interaction design والمجالات التانية (diagram)",
      "pts": [
       "Diagram: دايرة مكتوب عليها Interaction Design في النص، وحواليها 3 مجموعات.",
-      "<b>Academic Disciplines</b> (أسهم داخلة على الـ ID): Ergonomics، Psychology/Cognitive Science، Informatics، Engineering، Computer Science/Software Engineering، Social Sciences (زي Sociology و Anthropology).",
-      "<b>Design Practices</b> (أسهم داخلة على الـ ID): Graphic Design، Product Design، Artist-Design، Industrial Design، Film Industry.",
-      "<b>Interdisciplinary Fields</b> (أسهم في الاتجاهين مع الـ ID): Human Factors (HF)، Cognitive Engineering، Human-Computer Interaction (HCI)، Cognitive Ergonomics، Computer-Supported Cooperative Work (CSCW)، Information Systems."
+      "الـ <b>Academic Disciplines</b> (أسهم داخلة على الـ ID):<span class=\"ltr\">Ergonomics, Psychology/Cognitive Science, Informatics, Engineering, Computer Science/Software Engineering, Social Sciences (e.g. Sociology, Anthropology)</span>",
+      "الـ <b>Design Practices</b> (أسهم داخلة على الـ ID):<span class=\"ltr\">Graphic Design, Product Design, Artist-Design, Industrial Design, Film Industry</span>",
+      "الـ <b>Interdisciplinary Fields</b> (أسهم في الاتجاهين مع الـ ID):<span class=\"ltr\">Human Factors (HF), Cognitive Engineering, Human-Computer Interaction (HCI), Cognitive Ergonomics, Computer-Supported Cooperative Work (CSCW), Information Systems</span>"
      ]
     },
     {
      "h": "العلاقة بين الـ ID والـ HCI والمجالات التانية (جدول)",
      "pts": [
-      "<b>الـ Academic disciplines اللي بتساهم في الـ ID</b>: Psychology، Social Sciences، Computing Sciences، Engineering، Ergonomics، Informatics.",
-      "<b>الـ Design practices اللي بتساهم في الـ ID</b>: Graphic design، Product design، Artist-design، Industrial design، Film industry."
+      "<b>الـ Academic disciplines اللي بتساهم في الـ ID</b> هي الـ Psychology والـ Social Sciences والـ Computing Sciences والـ Engineering والـ Ergonomics والـ Informatics.",
+      "<b>الـ Design practices اللي بتساهم في الـ ID</b> هي الـ Graphic design والـ Product design والـ Artist-design والـ Industrial design والـ Film industry."
      ]
     },
     {
      "h": "مكان الـ HCI وسط المجالات",
      "pts": [
-      "<b>Engineering + Psychology ← Human Factors Engineering</b>: يعني تصميم التفاعل بين الناس والمنتجات أو الـ systems أو الأجهزة.",
+      "الـ <b>Engineering</b> مع الـ <b>Psychology</b> بيطلّعوا الـ <b>Human Factors Engineering</b>، يعني تصميم التفاعل بين الناس والمنتجات أو الـ systems أو الأجهزة.",
       "الـ Human Factors Engineering بيتفرع لـ <b>Industrial Design</b> و<b>HCI</b> و<b>Product Design</b>.",
       "والـ HCI نفسه بيتفرع لـ <b>UI Design</b> و<b>UX Design</b> و<b>Interaction</b> design.",
       "مثال على حدود الإنسان: البني آدم يقدر يفرّق بين <b>ملايين الألوان</b> لكن حوالي <b>30 درجة رمادي</b> بس.",
@@ -771,7 +769,7 @@ AR.hci = {
     {
      "h": "افتكر: الـ interaction design process",
      "pts": [
-      "الـ interaction design process فيه <b>3 components</b>: 1) <b>User research</b>. 2) <b>Design and prototyping</b>. 3) <b>Evaluation (improvement)</b>.",
+      "الـ interaction design process فيه <b>3 components</b>:<br>(1) <b>User research</b><br>(2) <b>Design and prototyping</b><br>(3) <b>Evaluation (improvement)</b>.",
       "الـ User research معناه <b>إنك تشتغل مع الـ users بدل ما تخمّن</b> (<b>user-centric design</b>). تجاهل الـ user research حاجة منتشرة. دخّل الـ users عشان القرارات تبقى مبنية على الواقع مش على التخمين.",
       "الـ User research: <b>invisible interfaces</b> (<b>task-oriented design</b>)."
      ]
@@ -786,7 +784,7 @@ AR.hci = {
     {
      "h": "الـ double diamond of design",
      "pts": [
-      "الـ <b>double diamond of design</b> فيه 4 phases: <b>Discover</b> (فهم للمشكلة، insight into the problem) ← <b>Define</b> (المنطقة اللي هنركز عليها) ← <b>Develop</b> (حلول محتملة) ← <b>Deliver</b> (حلول شغالة فعلاً).",
+      "الـ <b>double diamond of design</b> فيه 4 phases:<span class=\"ltr\"><b>Discover</b> → <b>Define</b> → <b>Develop</b> → <b>Deliver</b></span>• الـ <b>Discover</b>: فهم للمشكلة (insight into the problem).<br>• الـ <b>Define</b>: المنطقة اللي هنركز عليها.<br>• الـ <b>Develop</b>: حلول محتملة.<br>• الـ <b>Deliver</b>: حلول شغالة فعلاً.",
       "الرسمة: 2 diamonds جنب بعض. الـ diamond الأولانية بتبدأ من نقطة اسمها <b>Problem</b>، وبتوسع في الـ Discover وبتضيق في الـ Define لحد نقطة اسمها <b>Problem Definition</b> / <b>Design Brief</b>.",
       "الـ diamond التانية بتبدأ من النقطة دي، وبتوسع في الـ Develop وبتضيق في الـ Deliver لحد نقطة اسمها <b>Solution</b>."
      ]
@@ -794,7 +792,7 @@ AR.hci = {
     {
      "h": "الـ 4 basic activities بتوع الـ interaction design",
      "pts": [
-      "الـ 4 basic activities بتوع الـ interaction design: 1) <b>Discovering requirements</b>. 2) <b>Designing alternatives</b>. 3) <b>Prototyping alternative designs</b>. 4) <b>Evaluating product and its user experience throughout</b> (تقييم المنتج والـ user experience بتاعته طول الوقت)."
+      "الـ 4 basic activities بتوع الـ interaction design:<br>(1) <b>Discovering requirements</b><br>(2) <b>Designing alternatives</b><br>(3) <b>Prototyping alternative designs</b><br>(4) <b>Evaluating product and its user experience throughout</b>، يعني تقييم المنتج والـ user experience بتاعته طول الوقت."
      ]
     },
     {
@@ -802,8 +800,8 @@ AR.hci = {
      "pts": [
       "الـ lifecycle model البسيط ده <b>مثال على user-centered design approach</b>.",
       "الرسمة: الـ process بيدخل من <b>Discovering requirements</b>. وبين الـ Discovering requirements والـ <b>Designing alternatives</b> فيه أسهم رايحة جاية في الاتجاهين.",
-      "الـ Designing alternatives ← <b>Prototyping</b>، والـ Prototyping ليه سهم راجع للـ Designing alternatives.",
-      "الـ Prototyping ← <b>Evaluating</b>.",
+      "من الـ Designing alternatives فيه سهم رايح للـ <b>Prototyping</b>، والـ Prototyping ليه سهم راجع للـ Designing alternatives.",
+      "ومن الـ Prototyping فيه سهم رايح للـ <b>Evaluating</b>.",
       "من الـ Evaluating فيه أسهم راجعة للـ Discovering requirements وللـ Designing alternatives، وسهم واحد بيطلع برة الـ cycle للـ <b>Final product</b>."
      ]
     },
@@ -811,22 +809,22 @@ AR.hci = {
      "h": "Lifecycle model تاني: Google Design Sprints",
      "pts": [
       "Lifecycle model تاني: <b>Google Design Sprints</b> (<b>Knapp et al., 2016</b>).",
-      "الـ Google Design Sprint فيه 5 steps: 1) <b>Unpack</b> ← 2) <b>Sketch</b> ← 3) <b>Decide</b> ← 4) <b>Prototype</b> ← 5) <b>Test</b>.",
-      "الـ steps بتعمل cycle اسمها <b>Iterate</b>: Unpack ← Sketch ← Decide ← Prototype ← Test ← وترجع للـ Unpack تاني.",
+      "الـ Google Design Sprint فيه 5 steps:<span class=\"ltr\">(1) <b>Unpack</b> → (2) <b>Sketch</b> → (3) <b>Decide</b> → (4) <b>Prototype</b> → (5) <b>Test</b></span>",
+      "الـ steps بتعمل cycle اسمها <b>Iterate</b>، وبعد الـ Test بترجع للـ Unpack تاني:<span class=\"ltr\">Unpack → Sketch → Decide → Prototype → Test → Unpack</span>",
       "المصدر: Google Design Sprints (used courtesy of Agile Marketing)."
      ]
     },
     {
      "h": "الـ Design life cycle (حسب Joyner)",
      "pts": [
-      "الـ design life cycle بتاع Joyner هو <b>iterative process فيه 4 phases</b>: <b>Need finding</b> ← <b>Design alternative</b> ← <b>Prototyping</b> ← <b>Evaluation</b> ← وترجع للـ Need finding."
+      "الـ design life cycle بتاع Joyner هو <b>iterative process فيه 4 phases</b>، وبعد الـ Evaluation بترجع للـ Need finding:<span class=\"ltr\"><b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → Need finding</span>"
      ]
     },
     {
      "h": "الـ User-centered design process (Google)",
      "pts": [
-      "<b>Understand ← Specify ← Design ← Evaluate</b>، والـ iteration هو الأساس.",
-      "<b>Understand</b>: الـ users بيجرّبوا المنتج إزاي (research كتير). <b>Specify</b>: أهم user problem محتاجين نحلها. <b>Design</b>: حلول، وبعدين نبدأ نبني. <b>Evaluate</b>: نختبر مع users حقيقيين."
+      "الـ process بيمشي كده، والـ iteration هو الأساس:<span class=\"ltr\"><b>Understand → Specify → Design → Evaluate</b></span>",
+      "• الـ <b>Understand</b>: الـ users بيجرّبوا المنتج إزاي (research كتير).<br>• الـ <b>Specify</b>: أهم user problem محتاجين نحلها.<br>• الـ <b>Design</b>: حلول، وبعدين نبدأ نبني.<br>• الـ <b>Evaluate</b>: نختبر مع users حقيقيين."
      ]
     },
     {
@@ -843,7 +841,7 @@ AR.hci = {
      "pts": [
       "<b>Software engineer</b> بيصمم الـ system كله، وغالباً يعرف حاجة بسيطة عن الـ HCI.",
       "<b>UI/UX designer</b> في فريق الـ development، وده بقى منتشر أكتر في الشركات الصغيرة والمتوسطة.",
-      "<b>Specialists</b> لكل دور (UX researcher، UX designer، visual designer، UX engineer) في الشركات الكبيرة زي Google."
+      "<b>Specialists</b> لكل دور، زي الـ UX researcher والـ UX designer والـ visual designer والـ UX engineer، في الشركات الكبيرة زي Google."
      ]
     },
     {
@@ -878,18 +876,18 @@ AR.hci = {
     {
      "h": "أنواع الـ user research حسب إمتى (WHEN)",
      "pts": [
-      "<b>1. Foundational (strategic / generative)</b>: بيحصل <b>قبل ما أي حاجة تتصمم</b>. الهدف إنك تحدد مشاكل الـ users وإيه اللي هنبنيه. بتتكلم مع الـ users عن الـ pain points بتاعتهم، وبيطلّعلك فرص الفريق مكانش هيفكر فيها.",
-      "<b>2. Tactical (design)</b>: بيحصل <b>أثناء مرحلة الـ design</b>. بيقولك المنتج المفروض يتبني إزاي، ومحتاج user feedback على الـ prototypes.",
-      "<b>3. Post-launch</b>: هل نجحنا؟ هل الـ system بيلبّي احتياجات الـ users؟"
+      "<b>(1) Foundational (strategic / generative)</b>: بيحصل <b>قبل ما أي حاجة تتصمم</b>. الهدف إنك تحدد مشاكل الـ users وإيه اللي هنبنيه. بتتكلم مع الـ users عن الـ pain points بتاعتهم، وبيطلّعلك فرص الفريق مكانش هيفكر فيها.",
+      "<b>(2) Tactical (design)</b>: بيحصل <b>أثناء مرحلة الـ design</b>. بيقولك المنتج المفروض يتبني إزاي، ومحتاج user feedback على الـ prototypes.",
+      "<b>(3) Post-launch</b>: هل نجحنا؟ هل الـ system بيلبّي احتياجات الـ users؟"
      ]
     },
     {
      "h": "أنواع الـ user research حسب مين (WHO)",
      "pts": [
-      "<b>Primary research</b>: research إنت بتعمله بنفسك. الطرق: interviews، focus groups، surveys، usability studies، participant observations.",
+      "<b>Primary research</b>: research إنت بتعمله بنفسك. الطرق زي الـ interviews والـ focus groups والـ surveys والـ usability studies والـ participant observations.",
       "<b>Secondary research</b>: research حد تاني عمله. المصادر: كتب، journals، وحاجات شبه كده.",
       "الـ Secondary research مهم في الأول عشان تجمع statistics وحقائق وأرقام. بيوفر مجهود ووقت وبيدعم الـ primary findings. وغالباً بيعمله researchers عندهم خبرة في organizations موثوقة، وده صعب تكرره.",
-      "ناس كتير من الـ practitioners مش عارفين يستخدموه إزاي. الكورسات (psychology، cognition) ومجتمعات الـ HCI/UX بتساعد."
+      "ناس كتير من الـ practitioners مش عارفين يستخدموه إزاي. الكورسات (زي الـ psychology والـ cognition) ومجتمعات الـ HCI/UX بتساعد."
      ]
     },
     {
@@ -1281,12 +1279,12 @@ AR.hci = {
     {
      "h": "الـ Cognitive processes",
      "pts": [
-      "1) Attention",
-      "2) Perception",
-      "3) Memory",
-      "4) Learning",
-      "5) Reading, speaking and listening",
-      "6) Problem-solving, planning, reasoning and decision-making"
+      "(1) Attention",
+      "(2) Perception",
+      "(3) Memory",
+      "(4) Learning",
+      "(5) Reading, speaking and listening",
+      "(6) Problem-solving, planning, reasoning and decision-making"
      ]
     },
     {
@@ -1301,11 +1299,11 @@ AR.hci = {
     {
      "h": "Activity: دوّر على سعر الأوتيل (شاشتين)",
      "pts": [
-      "<b>الشاشة الأولى</b> (الـ task: تلاقي سعر الـ double room في الـ Quality Inn في Pennsylvania): شاشة غامقة عنوانها \"Pennsylvania\" والـ entries مكتوبة ورا بعض، كل واحدة على شكل \"City Motel/Hotel: Name\" وتحتها في السطر اللي بعده رقم التليفون وسعر الـ S (single) والـ D (double)، مثلاً \"Bedford Motel/Hotel: Crinaline Courts (814) 623-9511 S: $118 D: $120\".",
-      "الـ entries اللي في الشاشة الأولى: Bedford (Crinaline Courts, Holiday Inn, Midway, Penn Manor, Quality Inn, Terrace)، Bradley (De Soto, Holiday House, Holiday Inn)، Breezewood (Best Western Plaza, Motel 70). السطر المطلوب هو \"Bedford Motel/Hotel: Quality Inn (814) 623-5189 S: $123 D: $128\".",
-      "<b>الشاشة التانية</b> (الـ task: تلاقي سعر الـ double room في الـ Holiday Inn في Columbia): شاشة غامقة عنوانها \"South Carolina\" ومترتبة في columns: City، Motel/Hotel، Area code، Phone، Rates (Single, Double)، وصفوف Charleston متجمعة مع بعض وصفوف Columbia متجمعة تحتها.",
-      "أوتيلات Charleston: Best Western, Days Inn, Holiday Inn N, Holiday Inn SW, Howard Johnsons, Ramada Inn, Sheraton Inn. أوتيلات Columbia: Best Western, Carolina Inn, Days Inn, Holiday Inn NW, Howard Johnsons, Quality Inn, Ramada Inn, Vagabond Inn. الصف المطلوب هو \"Columbia, Holiday Inn NW, 803, 794-9440, $132, $139\".",
-      "<b>Tullis (1987)</b> لقى إن الشاشتين طلّعوا نتايج مختلفة جداً: الشاشة الأولى أخدت في المتوسط <b>5.5 ثانية</b> عشان تدوّر فيها؛ والشاشة التانية أخدت <b>3.2 ثانية</b>.",
+      "<b>الشاشة الأولى</b> (الـ task: تلاقي سعر الـ double room في الـ Quality Inn في Pennsylvania): شاشة غامقة عنوانها \"Pennsylvania\" والـ entries مكتوبة ورا بعض.<br>• كل entry على شكل:<span class=\"ltr\">City Motel/Hotel: Name</span>وتحتها في السطر اللي بعده رقم التليفون وسعر الـ S (single) والـ D (double).<br>• مثال:<span class=\"ltr\">Bedford Motel/Hotel: Crinaline Courts (814) 623-9511 S: $118 D: $120</span>",
+      "الـ entries اللي في الشاشة الأولى:<span class=\"ltr\"><b>Bedford</b>: Crinaline Courts, Holiday Inn, Midway, Penn Manor, Quality Inn, Terrace</span><span class=\"ltr\"><b>Bradley</b>: De Soto, Holiday House, Holiday Inn</span><span class=\"ltr\"><b>Breezewood</b>: Best Western Plaza, Motel 70</span>والسطر المطلوب هو:<span class=\"ltr\">Bedford Motel/Hotel: Quality Inn (814) 623-5189 S: $123 D: $128</span>",
+      "<b>الشاشة التانية</b> (الـ task: تلاقي سعر الـ double room في الـ Holiday Inn في Columbia): شاشة غامقة عنوانها \"South Carolina\" ومترتبة في columns:<span class=\"ltr\">City | Motel/Hotel | Area code | Phone | Rates (Single, Double)</span>وصفوف Charleston متجمعة مع بعض، وصفوف Columbia متجمعة تحتها.",
+      "أوتيلات Charleston:<span class=\"ltr\">Best Western, Days Inn, Holiday Inn N, Holiday Inn SW, Howard Johnsons, Ramada Inn, Sheraton Inn</span>أوتيلات Columbia:<span class=\"ltr\">Best Western, Carolina Inn, Days Inn, Holiday Inn NW, Howard Johnsons, Quality Inn, Ramada Inn, Vagabond Inn</span>والصف المطلوب هو:<span class=\"ltr\">Columbia, Holiday Inn NW, 803, 794-9440, $132, $139</span>",
+      "<b>Tullis (1987)</b> لقى إن الشاشتين طلّعوا نتايج مختلفة جداً:<br>• الشاشة الأولى أخدت في المتوسط <b>5.5 ثانية</b> عشان تدوّر فيها؛<br>• والشاشة التانية أخدت <b>3.2 ثانية</b>.",
       "طب ليه، مع إن الاتنين فيهم نفس الـ density من المعلومات؟ السبب هو الـ <b>Spacing</b>:",
       "في الشاشة الأولى، المعلومات لازقة في بعض (bunched up)، وده بيخلي التدوير صعب.",
       "في الشاشة التانية، الحروف متجمعة في vertical categories من المعلومات، وده بيخليه أسهل."
@@ -1336,10 +1334,10 @@ AR.hci = {
       "البني آدمين بيميلوا إنهم يمسكوا في الحاجة اللي شغالة.",
       "إنك تفكر في alternatives بيساعدك تلاقي designs أحسن.",
       "الـ alternative designs بتيجي منين؟",
-      "1) <b>'Flair and creativity'</b>: research و synthesis.",
-      "2) <b>Cross-fertilization of ideas</b> من وجهات نظر مختلفة.",
-      "3) <b>الـ Users ممكن يطلّعوا designs مختلفة</b>.",
-      "4) <b>Seek inspiration</b>: منتجات و domain شبه بعض، أو منتجات و domain مختلفين."
+      "(1) <b>'Flair and creativity'</b>: research و synthesis.",
+      "(2) <b>Cross-fertilization of ideas</b> من وجهات نظر مختلفة.",
+      "(3) <b>الـ Users ممكن يطلّعوا designs مختلفة</b>.",
+      "(4) <b>Seek inspiration</b>: منتجات و domain شبه بعض، أو منتجات و domain مختلفين."
      ]
     },
     {
@@ -1388,8 +1386,8 @@ AR.hci = {
     {
      "h": "Activity: الـ color contrast ضد الـ borders والـ white space",
      "pts": [
-      "<b>الشاشة الأولى: \"Is color contrast good? Find Italian\"</b>: grid مقاسه 4 × 4 من المجموعات، كل مجموعة list فيها ست أسامي (مثلاً \"Black Hills Forest, Cheyenne River, Social Science, South San Jose, Badlands Park, Juvenile Justice\"). المجموعات مفصولة عن بعض بالـ color contrast بس (خلفيات لبني فاتح وأبيض بالتبادل). \"Italian\" هي تاني item في المجموعة اللي في الصف التالت، العمود الأول (Performing Arts, Italian, Coaches, McKees Rocks, Glenwood Springs, Urban Affairs).",
-      "<b>الشاشة التانية: \"Are borders and white space better? Find French\"</b>: grid مقاسه 4 × 4 من مجموعات فيها ست أسامي (مثلاً \"Webmaster, Russian, Athletics, Go Shockers, Degree Options, Newsletter\")، كل مجموعة جوه border ومفصولة عن الباقي بـ white space. \"French\" في المجموعة اللي في الصف التالت، العمود التالت (Staff, Aerospace, Choral Dept., Alberg Hall, French, Spanish).",
+      "<b>الشاشة الأولى: \"Is color contrast good? Find Italian\"</b>: فيها grid مقاسه 4 × 4 من المجموعات، كل مجموعة list فيها ست أسامي.<br>• مثال على مجموعة:<span class=\"ltr\">Black Hills Forest, Cheyenne River, Social Science, South San Jose, Badlands Park, Juvenile Justice</span>• المجموعات مفصولة عن بعض بالـ <b>color contrast</b> بس (خلفيات لبني فاتح وأبيض بالتبادل).<br>• الكلمة \"Italian\" هي تاني item في المجموعة اللي في الصف التالت، العمود الأول:<span class=\"ltr\">Performing Arts, Italian, Coaches, McKees Rocks, Glenwood Springs, Urban Affairs</span>",
+      "<b>الشاشة التانية: \"Are borders and white space better? Find French\"</b>: فيها grid مقاسه 4 × 4 من مجموعات فيها ست أسامي.<br>• مثال على مجموعة:<span class=\"ltr\">Webmaster, Russian, Athletics, Go Shockers, Degree Options, Newsletter</span>• كل مجموعة جوه <b>border</b> ومفصولة عن الباقي بـ <b>white space</b>.<br>• الكلمة \"French\" في المجموعة اللي في الصف التالت، العمود التالت:<span class=\"ltr\">Staff, Aerospace, Choral Dept., Alberg Hall, French, Spanish</span>",
       "<b>Weller (2004)</b> لقى إن الناس أخدوا وقت أقل عشان يلاقوا الـ items لما المعلومات كانت متجمعة باستخدام <b>border</b> (الشاشة التانية) مقارنة باستخدام <b>color contrast</b> (الشاشة الأولى).",
       "فيه ناس بتقول إن الـ white space الكتير أوي في صفحات الويب بيضر عملية التدوير (search): بيخلي صعب تلاقي المعلومة.",
       "إنت موافق؟ (سؤال للمناقشة؛ الـ slide مش بتدي إجابة)"
@@ -1399,11 +1397,11 @@ AR.hci = {
      "h": "Activity: أنهي واحد أسهل في القراية وليه؟",
      "pts": [
       "الـ slide بتعرض نفس النص، \"What is the time?\"، في خمس مربعات:",
-      "1) كلام أحمر على خلفية أخضر غامق textured (شكلها رخام).",
-      "2) كلام أصفر على خلفية برتقاني.",
-      "3) كلام أحمر على خلفية برتقاني.",
-      "4) كلام أسود على خلفية بيضا.",
-      "5) كلام أبيض على خلفية صفرا (mustard).",
+      "(1) كلام أحمر على خلفية أخضر غامق textured (شكلها رخام).",
+      "(2) كلام أصفر على خلفية برتقاني.",
+      "(3) كلام أحمر على خلفية برتقاني.",
+      "(4) كلام أسود على خلفية بيضا.",
+      "(5) كلام أبيض على خلفية صفرا (mustard).",
       "الـ slide بتسأل أنهي واحد أسهل في القراية وليه، ومش بتدي إجابة؛ ده سؤال للمناقشة."
      ]
     },
@@ -1576,13 +1574,13 @@ AR.hci = {
      "pts": [
       "الـ Context بيأثر على قد إيه المعلومة ممكن نعملها retrieve بعد كده.",
       "ساعات بيبقى صعب على الناس يفتكروا معلومة اتعملها encode في context مختلف.",
-      "مثال: \"You are on a train and someone comes up to you and says hello. You don't recognize him for a few moments, but then realize it is one of your neighbors. You are only used to seeing your neighbor in the hallway of your apartment building, and seeing him out of context makes him difficult to recognize initially.\" (يعني إنت في القطر وحد جه سلّم عليك، مش عارفه لثواني وبعدين تكتشف إنه جارك، عشان إنت متعود تشوفه في طرقة العمارة بس، فلما شفته out of context بقى صعب تعرفه في الأول)."
+      "مثال:<span class=\"ltr\">\"You are on a train and someone comes up to you and says hello. You don't recognize him for a few moments, but then realize it is one of your neighbors. You are only used to seeing your neighbor in the hallway of your apartment building, and seeing him out of context makes him difficult to recognize initially.\"</span>يعني إنت في القطر وحد جه سلّم عليك، مش عارفه لثواني وبعدين تكتشف إنه جارك، عشان إنت متعود تشوفه في طرقة العمارة بس، فلما شفته out of context بقى صعب تعرفه في الأول."
      ]
     },
     {
-     "h": "Activity: إيه اللي سهل نفتكره",
+     "h": "نشاط (Activity): إيه اللي سهل نفتكره",
      "pts": [
-      "Activity: حاول تفتكر تواريخ أعياد ميلاد جدودك.",
+      "نشاط (Activity): حاول تفتكر تواريخ أعياد ميلاد جدودك.",
       "حاول تفتكر غلاف آخر كتابين قريتهم.",
       "أنهي فيهم كان أسهل؟ وليه؟",
       "الناس شاطرة جداً في إنها تفتكر الـ <b>visual cues</b> عن الحاجات، زي لون الحاجات، ومكان الأشياء، والعلامات اللي على أي حاجة.",
@@ -1596,7 +1594,7 @@ AR.hci = {
       "الـ immediate memory capacity عند الناس محدودة جداً بـ <b>7, + or - 2</b>.",
       "اتطبقت في الـ interaction design لما بنفكر هنعرض كام option.",
       "بس هل ده استخدام كويس لنظرية في الـ HCI؟ هل هي مفيدة؟ (أسئلة للنقاش؛ السلايد مش بيدي إجابة)",
-      "لما بنعمل interface، هل المفروض الـ designer: يعرض 7 options بس في الـ menu؛ يعرض 7 icons بس على الـ tool bar؛ ميحطش أكتر من 7 bullets في list؛ يحط 7 items بس في الـ pull down menu؛ يحط 7 tabs بس فوق في صفحة الموقع؟ (سؤال للنقاش؛ السلايد مش بيدي إجابة)",
+      "لما بنعمل interface، هل المفروض الـ designer:<br>• يعرض 7 options بس في الـ menu؟<br>• يعرض 7 icons بس على الـ tool bar؟<br>• ميحطش أكتر من 7 bullets في list؟<br>• يحط 7 items بس في الـ pull down menu؟<br>• يحط 7 tabs بس فوق في صفحة الموقع؟<br>(سؤال للنقاش؛ السلايد مش بيدي إجابة)",
       "السلايد فيها صف من 7 smiley faces بألوان مختلفة (أحمر، بنفسجي، أزرق، أصفر، أسود، أبيض، لبني)."
      ]
     },
@@ -1612,7 +1610,7 @@ AR.hci = {
      "h": "الـ Learning",
      "pts": [
       "الـ <b>Learning</b> معناه تجميع skills ومعرفة، وده بيعتمد على الـ memory.",
-      "فيه نوعين أساسيين: <b>incidental learning</b> (زي إنك تتعرف على وشوش الناس، أو إيه اللي عملته النهارده) و<b>intentional learning</b> (زي المذاكرة لامتحان، أو إنك تتعلم تطبخ).",
+      "فيه نوعين أساسيين:<br>• الـ <b>incidental learning</b> (زي إنك تتعرف على وشوش الناس، أو إيه اللي عملته النهارده)<br>• الـ <b>intentional learning</b> (زي المذاكرة لامتحان، أو إنك تتعلم تطبخ).",
       "الـ Intentional learning أصعب بكتير!",
       "فيه technologies كتير اتعملت عشان تساعد (زي الـ multimedia، والـ animations، والـ VR).",
       "الناس بتلاقي صعوبة إنها تتعلم من إنها تمشي ورا instructions في manual.",
@@ -1823,8 +1821,8 @@ AR.hci = {
     {
      "h": "أنواع الـ user research حسب إيه (WHAT)",
      "pts": [
-      "<b>Quantitative</b>: data طبيعتها <b>أرقام</b> (قياسات، عدّ). أسهل للـ engineers والناس الـ technical.",
-      "<b>Qualitative</b>: ملاحظات عن <b>ليه وإزاي</b> الحاجات بتحصل، وغالباً مبنية على interviews. أصعب على الناس الـ technical، بس هي اللي محتاجينها عشان نفهم بجد."
+      "الـ <b>Quantitative</b>: data طبيعتها <b>أرقام</b> (قياسات، عدّ). أسهل للـ engineers والناس الـ technical.",
+      "الـ <b>Qualitative</b>: ملاحظات عن <b>ليه وإزاي</b> الحاجات بتحصل، وغالباً مبنية على interviews. أصعب على الناس الـ technical، بس هي اللي محتاجينها عشان نفهم بجد."
      ]
     },
     {
@@ -1843,17 +1841,17 @@ AR.hci = {
     {
      "h": "الـ Privacy والـ security",
      "pts": [
-      "اجمع بس الـ data اللي محتاجها. متربطش الـ data اللي جمعتها بـ PII أو SPII. ومتحتفظش بالـ data بعد ما متبقاش محتاجها.",
+      "• اجمع بس الـ data اللي محتاجها.<br>• متربطش الـ data اللي جمعتها بـ PII أو SPII.<br>• ومتحتفظش بالـ data بعد ما متبقاش محتاجها.",
       "الـ <b>PII (Personally Identifiable Information)</b>: تفاصيل ممكن تعرّف بيها الـ user: <b>الأسامي، عنوان البيت، الـ email، رقم التليفون</b>.",
       "الـ <b>SPII (Sensitive PII)</b>: data لو ضاعت أو اتسرقت ممكن تعمل ضرر مالي أو إحراج أو تمييز: <b>الـ social security number، رخصة السواقة، أرقام الباسبور، أرقام الحسابات المالية، تاريخ الميلاد</b>."
      ]
     },
     {
-     "h": "1) الـ Surveys",
+     "h": "(1) الـ Surveys",
      "pts": [
       "ردود سريعة من <b>عدد كبير من الـ users</b> في وقت قصير (نظرة عامة واسعة). غالباً أونلاين وسهل تعملها. وهي من <b>أرخص</b> الطرق.",
       "ممكن تبقى خطوة أولى عشان تاخد insights عن الدوافع والتفضيلات والأولويات والـ pain points، عشان تخطط لأنشطة بعدها زي الـ interviews. وممكن كمان تيجي بعد interview أو usability study.",
-      "نصايح: <b>خليها صغيرة على قد ما تقدر</b> (أسئلة كتير بتقلل الـ response rate والـ reliability)؛ اسأل بس اللي محتاجه وهتستخدمه؛ <b>خلي بالك من الـ bias</b>؛ وخد feedback من المشاركين عن الـ survey نفسه."
+      "نصايح:<br>• <b>خليها صغيرة على قد ما تقدر</b> (أسئلة كتير بتقلل الـ response rate والـ reliability)<br>• اسأل بس اللي محتاجه وهتستخدمه<br>• <b>خلي بالك من الـ bias</b><br>• وخد feedback من المشاركين عن الـ survey نفسه."
      ]
     }
    ],
@@ -2131,9 +2129,9 @@ AR.hci = {
      "h": "Be Clear (خليك واضح)",
      "pts": [
       "<b>اكتب labels للـ numeric scales</b>: مش \"1–5\" وخلاص، لكن \"1 = Highly dissatisfied … 5 = Highly satisfied\".",
-      "<b>تجنب الـ ranges اللي بتتداخل</b>: 0-2، 2-5، 5-10 دول متداخلين. استخدم 0-2، 3-5، 6-10، 11-19، 20+.",
+      "<b>تجنب الـ ranges اللي بتتداخل</b>، زي:<span class=\"ltr\">0-2, 2-5, 5-10</span>دول متداخلين. واستخدم بدلهم:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>",
       "<b>لو شاكك، زوّد تفاصيل</b>: \"tablet computer (يعني أي كمبيوتر بـ touchscreen و keyboard بيتفك)\".",
-      "<b>حط إطار زمني (timebox) لأسئلة التكرار</b>: بدل \"Never / Rarely / Often…\"، اسأل \"في آخر 7 أيام، اتمرنت كام مرة؟ 0، 1-2، 3-4، 5-7، 7 أو أكتر\"."
+      "<b>حط إطار زمني (timebox) لأسئلة التكرار</b>: بدل \"Never / Rarely / Often…\"، اسأل \"في آخر 7 أيام، اتمرنت كام مرة؟\" والاختيارات: 0 و 1-2 و 3-4 و 5-7 و \"7 أو أكتر\"."
      ]
     },
     {
@@ -2171,16 +2169,16 @@ AR.hci = {
     {
      "h": "Be Usable (خلّي الـ survey سهل الاستخدام)",
      "pts": [
-      "حط <b>progress bar</b>. خلي <b>أطوال الصفحات ثابتة</b>. <b>رتّب الأسئلة بشكل منطقي</b>. <b>نبّه الـ users على الأسئلة اللي متجاوبتش</b>. و<b>اعمل preview للـ survey بنفسك</b>."
+      "• حط <b>progress bar</b>.<br>• خلي <b>أطوال الصفحات ثابتة</b>.<br>• <b>رتّب الأسئلة بشكل منطقي</b>.<br>• <b>نبّه الـ users على الأسئلة اللي متجاوبتش</b>.<br>• و<b>اعمل preview للـ survey بنفسك</b>."
      ]
     },
     {
      "h": "تمرين: قيّم أسئلة الـ survey دي",
      "pts": [
-      "\"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\" ده <b>scale مش واضح / معكوس</b>.",
-      "\"Why do you like to exercise?\" ده <b>leading question</b> لأنه بيفترض إنك بتحبه.",
-      "\"On a scale of 1 to 6 with 1 meaning 'not at all'…\" فيه <b>عدد options بيتغير</b> (4 ضد 6) و<b>scale معكوس</b> مقارنة بالسؤال اللي قبله.",
-      "\"Have you listened to an audiobook this year?\" ده <b>سؤال yes/no</b>. استخدم ranges."
+      "السؤال \"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\" ده <b>scale مش واضح / معكوس</b>.",
+      "السؤال \"Why do you like to exercise?\" ده <b>leading question</b> لأنه بيفترض إنك بتحبه.",
+      "السؤال \"On a scale of 1 to 6 with 1 meaning 'not at all'…\" فيه <b>عدد options بيتغير</b> (4 ضد 6) و<b>scale معكوس</b> مقارنة بالسؤال اللي قبله.",
+      "السؤال \"Have you listened to an audiobook this year?\" ده <b>سؤال yes/no</b>. استخدم ranges."
      ]
     }
    ],
@@ -2363,12 +2361,12 @@ AR.hci = {
   "7": {
    "notes": [
     {
-     "h": "2) الـ Interviews",
+     "h": "(2) الـ Interviews",
      "pts": [
       "الـ research technique <b>الأكتر انتشاراً</b>.",
-      "فهم أعمق وأشمل: أسئلة مفتوحة وأسئلة \"ليه\" أكتر (Joyner: ركّز على الـ <b>6 Ws</b>: who، what، where، when، why، how)، ومساحة لـ follow-up questions، وتفكير في الأحداث النادرة.",
+      "فهم أعمق وأشمل:<br>• أسئلة مفتوحة وأسئلة \"ليه\" أكتر (وJoyner بيقول ركّز على الـ <b>6 Ws</b>، وهما who و what و where و when و why و how)<br>• مساحة لـ follow-up questions<br>• تفكير في الأحداث النادرة.",
       "عدد الـ users اللي تقدر تعملهم interview أقل بكتير من اللي تقدر تعملهم survey.",
-      "<b>أغلى</b>: <b>synchronous</b> (اللي بيعمل الـ interview بيدّي وقت لكل شخص) و<b>incentives</b> (اللي بيتعملهم interview غالباً مستنيين مقابل).",
+      "<b>أغلى</b>:<br>• الـ <b>synchronous</b> (اللي بيعمل الـ interview بيدّي وقت لكل شخص)<br>• الـ <b>incentives</b> (اللي بيتعملهم interview غالباً مستنيين مقابل).",
       "الـ Interviews والـ surveys ممكن يتعملوا ورا بعض بأي ترتيب، وتستخدم نتايج واحد عشان تخطط للتاني."
      ]
     },
@@ -2376,7 +2374,7 @@ AR.hci = {
      "h": "نصايح لـ interview كويس",
      "pts": [
       "<b>خطط من بدري</b> وجهّز الأسئلة قبل الـ interview.",
-      "أثناء الـ interview فيه مفتاحين: <b>اسمع كويس</b> (الـ user هو اللي المفروض يتكلم أغلب الوقت) و<b>اكتب notes</b> (واحد يسأل وواحد يكتب؛ الـ audio recording مش كفاية؛ اكتب المشاعر وردود الفعل).",
+      "أثناء الـ interview فيه مفتاحين:<br>• <b>اسمع كويس</b> (الـ user هو اللي المفروض يتكلم أغلب الوقت)<br>• <b>اكتب notes</b> (واحد يسأل وواحد يكتب؛ الـ audio recording مش كفاية؛ اكتب المشاعر وردود الفعل).",
       "<b>سيب شوية وقت بين الـ interviews.</b>"
      ]
     },
@@ -2396,8 +2394,8 @@ AR.hci = {
     {
      "h": "الـ Design: أقدر أعمله؟",
      "pts": [
-      "Scott Klemmer: \"Designing great user interfaces requires enormous creativity and a lot of hard work…\" يعني الـ interfaces العظيمة محتاجة إبداع ضخم وشغل كتير، بس الـ interfaces الكويسة سهلة لو عارف الـ methods والـ techniques والـ principles الأساسية.",
-      "Joyner: \"design is very hard\" يعني الـ design صعب جداً.",
+      "بيقول Scott Klemmer: \"Designing great user interfaces requires enormous creativity and a lot of hard work…\" يعني الـ interfaces العظيمة محتاجة إبداع ضخم وشغل كتير، بس الـ interfaces الكويسة سهلة لو عارف الـ methods والـ techniques والـ principles الأساسية.",
+      "بيقول Joyner: \"design is very hard\"، يعني الـ design صعب جداً.",
       "الـ Designers بيقولوا: \"إحنا مش فنانين؛ وفي أغلب الحالات مش موهوبين في الرسم كمان.\" الـ Design مش بيطلّع لوحات تتعلق على الحيطة.",
       "الموهبة والإبداع ميزة. متقفلش الإبداع؛ امشي على النصايح وتجنب أكبر أخطاء الـ design."
      ]
@@ -2541,10 +2539,10 @@ AR.hci = {
      "pts": [
       "أغلب الناس فاكرة إن الـ prototype نسخة سريعة أو صغيرة من الحاجة الحقيقية. والفهم ده مش مفيد.",
       "بالنسبة للـ designers: <b>\"Rapidly creating an approximation of a design so that you can quickly get feedback.\"</b> يعني تعمل بسرعة نسخة تقريبية من الـ design عشان تاخد feedback بسرعة.",
-      "Klemmer: <b>\"A prototype is not about the artifact, it's about feedback and iteration.\"</b> يعني الـ prototype مش عن الحاجة نفسها، هو عن الـ feedback والـ iteration.",
-      "Joyner: الـ design هو process iterative فيه brainstorming وتجميع وسيب وتعديل وتحسين للأفكار، وده محتاج كذا فكرة تبدأ بيهم.",
+      "بيقول Klemmer: <b>\"A prototype is not about the artifact, it's about feedback and iteration.\"</b> يعني الـ prototype مش عن الحاجة نفسها، هو عن الـ feedback والـ iteration.",
+      "بيقول Joyner إن الـ design هو process iterative فيه brainstorming وتجميع وسيب وتعديل وتحسين للأفكار، وده محتاج كذا فكرة تبدأ بيهم.",
       "الـ prototype الكويس بيخليك تاخد <b>feedback مفيد (constructive)</b> وتعمل iteration. ومش لازم يشبه المنتج النهائي.",
-      "الـ Prototypes اللي مش بتدّيك معرفة جديدة بتضيّع الـ design process. Klemmer: <b>\"prototypes are questions, ask a lot of them.\"</b> يعني الـ prototypes أسئلة، اسأل كتير منها."
+      "الـ Prototypes اللي مش بتدّيك معرفة جديدة بتضيّع الـ design process. وبيقول Klemmer: <b>\"prototypes are questions, ask a lot of them.\"</b> يعني الـ prototypes أسئلة، اسأل كتير منها."
      ]
     }
    ],
@@ -2741,23 +2739,23 @@ AR.hci = {
       "<b>أسرع وأسهل وأرخص</b> في إنك تعملها.",
       "الـ Hi-fi مش ممكن في الأول لأن تفاصيل كتير لسه متقررتش.",
       "<b>الناس بتبقى مستعدة تتكلم أكتر بكتير</b> لما تديهم sketch من لما تديهم حاجة شكلها خلصان.",
-      "Konstan: الـ prototype اللي باين إنه معمول بمجهود قليل (زي مرسوم بالإيد) بياخد <b>constructive feedback</b> أكتر.",
+      "بيقول Konstan: الـ prototype اللي باين إنه معمول بمجهود قليل (زي مرسوم بالإيد) بياخد <b>constructive feedback</b> أكتر.",
       "التفاصيل الكتير أوي بتخلي الناس تدّي feedback في <b>مستوى أقل (lower level)</b> من المطلوب.",
-      "Google: اعرض <b>أفكار high-level</b> في الأول؛ وركّز على التفاصيل والشاشات بعدين."
+      "ونصيحة Google: اعرض <b>أفكار high-level</b> في الأول؛ وركّز على التفاصيل والشاشات بعدين."
      ]
     },
     {
      "h": "أنشطة الـ design والـ brainstorming",
      "pts": [
       "كل design activity يا إما بتساعد الـ <b>designer يفكر ويتخيل</b>، يا إما بتساعد <b>أعضاء الفريق والـ stakeholders يتخيلوا ويتواصلوا</b>، يا إما الاتنين.",
-      "الـ Brainstorming هدفه يطلّع أفكار كتير. Joyner: <b>ابدأ بـ brainstorming فردي</b>، لأن الـ groups بتتجمع على أفكار بدري أوي.",
-      "نصايح: اكتب أفكار أكتر ما تقدر؛ كل فكرة كلمتين أو جملة؛ <b>خلي هدفك 20</b>؛ <b>متقيّمش ومتستبعدش</b> أي فكرة؛ خد breaks أو اعمل كذا session؛ والـ team sessions للمشاركة وإضافة أفكار، مش للتضييق."
+      "الـ Brainstorming هدفه يطلّع أفكار كتير. وبيقول Joyner: <b>ابدأ بـ brainstorming فردي</b>، لأن الـ groups بتتجمع على أفكار بدري أوي.",
+      "نصايح:<br>• اكتب أفكار أكتر ما تقدر<br>• كل فكرة كلمتين أو جملة<br>• <b>خلي هدفك 20</b><br>• <b>متقيّمش ومتستبعدش</b> أي فكرة<br>• خد breaks أو اعمل كذا session<br>• والـ team sessions للمشاركة وإضافة أفكار، مش للتضييق."
      ]
     },
     {
      "h": "ليه ندرس design؟ والـ design-development process",
      "pts": [
-      "فيه طلبة هيلمعوا كـ designers؛ والـ developers كتير بيعملوا design لما ميكونش فيه designers؛ والـ developers بيشتغلوا أحسن مع الـ designers لما يفهموا الـ process.",
+      "• فيه طلبة هيلمعوا كـ designers.<br>• والـ developers كتير بيعملوا design لما ميكونش فيه designers.<br>• والـ developers بيشتغلوا أحسن مع الـ designers لما يفهموا الـ process.",
       "الـ <b>Handoff process</b>: الـ design يخلص، وبعدين يتسلّم للـ development (ورا بعض - sequential).",
       "الـ <b>Handshake process</b>: الـ design والـ development ماشيين <b>بالتوازي (in parallel)</b> مع sync points كتير."
      ]
@@ -2766,19 +2764,19 @@ AR.hci = {
      "h": "الـ Wireframes",
      "pts": [
       "<b>رسم تخطيطي (schematic) للهيكل الأساسي للشاشة</b>. معمول من خطوط وأشكال بسيطة (مستطيلات، دواير) مع شوية text، والخطوط شكلها زي السلوك (wires).",
-      "<b>مفيهوش ألوان ولا font styles</b> عن قصد، عشان نركز على الـ structure. الـ Wireframe = <b>هيكل (skeleton) فيه placeholders</b>.",
-      "Google بتسميه \"key part of the design process\" يعني جزء أساسي من الـ design process.",
+      "<b>مفيهوش ألوان ولا font styles</b> عن قصد، عشان نركز على الـ structure. يعني الـ Wireframe هو <b>هيكل (skeleton) فيه placeholders</b>.",
+      "شركة Google بتسميه \"key part of the design process\" يعني جزء أساسي من الـ design process.",
       "الـ Wireframes مش فن. هي بتنظم المعلومات وتوصّلها بوضوح.",
-      "الأهداف: (1) تقرر الـ structure الأساسي للصفحة قبل الألوان والصور؛ (2) تخلي الفريق متفق من بدري، فتوفر وقت وموارد؛ (3) توجّه الـ feedback للمستوى الصح (الـ structure والـ function، مش الألوان والـ typography)؛ (4) تمسك العناصر المنسية أو المش منظمة من بدري.",
+      "الأهداف:<br>(1) تقرر الـ structure الأساسي للصفحة قبل الألوان والصور<br>(2) تخلي الفريق متفق من بدري، فتوفر وقت وموارد<br>(3) توجّه الـ feedback للمستوى الصح (الـ structure والـ function، مش الألوان والـ typography)<br>(4) تمسك العناصر المنسية أو المش منظمة من بدري.",
       "إمتى: <b>بعد الـ foundational user research</b>، أول ما يبقى فيه <b>site map</b> مبدئي (هرم المحتوى - content hierarchy)."
      ]
     },
     {
      "h": "الـ Wireframing standards والـ process",
      "pts": [
-      "الـ Standards: الـ text كخطوط أفقية أو placeholder text؛ الصور كمستطيلات أو دواير فيها <b>X</b>؛ الـ calls to action كمستطيلات أو دواير؛ و<b>annotation</b> مظبوط.",
-      "الـ Process: ابدأ بـ <b>ورقة وقلم</b>. الهدف الأول إنك <b>توصل</b> لـ design، مش إنك تعرض واحد. ارسم <b>5 versions على الأقل</b> لكل شاشة. اعمل iteration بالـ feedback. والهدف التاني إنك تنقل الفكرة من دماغك للورقة بسرعة، فتجاهل الخطوط المستقيمة والمسافات والـ alignment في المرحلة دي.",
-      "بعدين استخدم tools: <b>Figma، Adobe XD، Sketch، Balsamiq، Pencil</b>.",
+      "الـ Standards:<br>• الـ text كخطوط أفقية أو placeholder text<br>• الصور كمستطيلات أو دواير فيها <b>X</b><br>• الـ calls to action كمستطيلات أو دواير<br>• و<b>annotation</b> مظبوط.",
+      "الـ Process:<br>• ابدأ بـ <b>ورقة وقلم</b>. الهدف الأول إنك <b>توصل</b> لـ design، مش إنك تعرض واحد.<br>• ارسم <b>5 versions على الأقل</b> لكل شاشة.<br>• اعمل iteration بالـ feedback.<br>• والهدف التاني إنك تنقل الفكرة من دماغك للورقة بسرعة، فتجاهل الخطوط المستقيمة والمسافات والـ alignment في المرحلة دي.",
+      "بعدين استخدم tools زي <b>Figma و Adobe XD و Sketch و Balsamiq و Pencil</b>.",
       "مثال في المحاضرة: app لتمشية الكلاب (dog-walking app)."
      ]
     },
@@ -2786,7 +2784,7 @@ AR.hci = {
      "h": "إرشادات تصميم الـ Forms",
      "pts": [
       "الـ commands المهمة تبقى <b>buttons مش links</b>، لأن الـ buttons بتشد العين. بس <b>متعرضش</b> كل الـ commands كـ buttons.",
-      "الـ <b>Breadcrumbs</b> بتوري الـ users هم <b>فين</b>، لما يكون فيه اختيارات كتير. الـ <b>Progress bars</b> بتوري الـ users هم فين <b>وفاضل إيه</b>، لـ path واحد محدد مسبقاً.",
+      "• الـ <b>Breadcrumbs</b> بتوري الـ users هم <b>فين</b>، لما يكون فيه اختيارات كتير.<br>• الـ <b>Progress bars</b> بتوري الـ users هم فين <b>وفاضل إيه</b>، لـ path واحد محدد مسبقاً.",
       "لما الـ form يتبعت بنجاح، بنأكد ده بـ <b>confirmation page</b>.",
       "<b>الـ Error messages تبقى جنب الـ field</b> اللي فيه الغلط. وتغيير لون الـ border بتاع الـ field (زي الأحمر) ده المفضّل.",
       "الـ Text boxes تدّي <b>مساحة كفاية</b> للإجابة.",
@@ -2984,9 +2982,9 @@ AR.hci = {
      "pts": [
       "<b>التزم بـ color palette بسيطة من 3 ألوان.</b> أكتر من 3 primary colors صعب وبيلخبط الـ users.",
       "<b>الـ Alert messages تبقى consistent</b> في الموقع كله. متغيرش اللون ولا الـ style ولا المكان.",
-      "<b>Close ضد Cancel</b>: لو فيه button واحد بس يبقى <b>\"Close\"</b>. لو فيه اتنين (Action button وواحد للقفل) استخدم <b>\"Cancel\"</b> مش \"Close\". والـ Cancel غالباً بيبقى <b>على اليمين</b> و<b>مش لافت للنظر</b>.",
-      "<b>الـ Error messages</b>: اكتب المشكلة في الـ <b>title</b>؛ اشرح باختصار <b>حصلت ليه</b> تحت الـ title؛ ولو ينفع حط link عشان <b>يكمّل الـ task أو يرجع</b> للحالة اللي قبلها؛ وادّي recommendations لـ <b>الخطوة الجاية</b>.",
-      "<b>الـ System notice</b>: فيه \"Action\" button، و\"Remind me later\" button، وbox \"Don't show again\". ورسايل الـ notice متبقاش طويلة ولا عامة (generic)."
+      "<b>الفرق بين Close و Cancel</b>: لو فيه button واحد بس يبقى <b>\"Close\"</b>. لو فيه اتنين (Action button وواحد للقفل) استخدم <b>\"Cancel\"</b> مش \"Close\". والـ Cancel غالباً بيبقى <b>على اليمين</b> و<b>مش لافت للنظر</b>.",
+      "<b>الـ Error messages</b>:<br>• اكتب المشكلة في الـ <b>title</b><br>• اشرح باختصار <b>حصلت ليه</b> تحت الـ title<br>• ولو ينفع حط link عشان <b>يكمّل الـ task أو يرجع</b> للحالة اللي قبلها<br>• وادّي recommendations لـ <b>الخطوة الجاية</b>.",
+      "<b>الـ System notice</b> فيه:<br>• زرار \"Action\"<br>• زرار \"Remind me later\"<br>• مربع \"Don't show again\".<br>ورسايل الـ notice متبقاش طويلة ولا عامة (generic)."
      ]
     },
     {

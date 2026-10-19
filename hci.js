@@ -47,9 +47,9 @@ COURSES.hci = {
      "h": "What is HCI? More from last year's slides",
      "ly": 1,
      "pts": [
-      "Terms used interchangeably: <b>HCI</b> (Human Computer Interaction), <b>HMI</b> (Human Machine Interaction), <b>MMI</b> (Man Machine Interaction).",
+      "Terms used interchangeably:<br>• <b>HCI</b> (Human Computer Interaction)<br>• <b>HMI</b> (Human Machine Interaction)<br>• <b>MMI</b> (Man Machine Interaction)",
       "HCI deals with the <b>Design</b>, <b>Implementation</b> and <b>Evaluation</b> of interactive systems.",
-      "Three parts meet in HCI: the <b>User</b> (mental and physical capabilities), the <b>Computer / Machine</b> (input/output devices) and the <b>Interaction</b> (interfaces, HCI patterns, design, usability evaluation)."
+      "Three parts meet in HCI:<br>• the <b>User</b> (mental and physical capabilities)<br>• the <b>Computer / Machine</b> (input/output devices)<br>• the <b>Interaction</b> (interfaces, HCI patterns, design, usability evaluation)"
      ]
     },
     {
@@ -99,7 +99,7 @@ COURSES.hci = {
      "h": "Example of bad and good design: elevator controls",
      "pts": [
       "Elevator controls and labels on the <b>bottom row all look the same</b>, so it is easy to push a label by mistake instead of a control button.",
-      "Picture (www.baddesigns.com): top row shows floor numbers 1, 2, 3 each next to a button; bottom row shows DOOR OPEN, a button, an X, STOP/RUN, a bell, a button, DOOR CLOSE and a button, where labels and buttons are the same square tiles; a red arrow points at a label on the bottom row.",
+      "Picture (www.baddesigns.com):<br>• Top row: floor numbers 1, 2, 3, each next to a button.<br>• Bottom row: DOOR OPEN, a button, an X, STOP/RUN, a bell, a button, DOOR CLOSE and a button, where labels and buttons are the same square tiles.<br>• A red arrow points at a label on the bottom row.",
       "People do not make the same mistake for the labels and buttons on the <b>top row</b>. Why not? (question for discussion; the slide gives no answer)"
      ],
      "fig": "elevator"
@@ -170,9 +170,9 @@ COURSES.hci = {
      "ly": 1,
      "pts": [
       "Full-featured productivity apps include many features to meet all possible needs.",
-      "More features lead to: the app feels complicated, things are harder to find or learn, and there is more focus on the tool than the task.",
+      "More features lead to:<br>• the app feels complicated<br>• things are harder to find or learn<br>• more focus on the tool than the task",
       "<b>Bloatware</b>: a product with too many features, too many megabytes, too slow, too difficult to use, or simply too much.",
-      "Office 97–2003: press called it \"bloated\"; a miles-long list of feature requests; people felt less in control; menus and toolbars were full and not scalable; people did not notice or use new features."
+      "Office 97–2003:<br>• the press called it \"bloated\"<br>• a miles-long list of feature requests<br>• people felt less in control<br>• menus and toolbars were full and not scalable<br>• people did not notice or use new features"
      ]
     },
     {
@@ -192,7 +192,7 @@ COURSES.hci = {
       "Before 2003, decisions were mostly <b>guesswork</b>: \"based on feel, estimation, and guess work\".",
       "Office 2003 introduced the <b>CEIP</b> (Customer Experience Improvement Program): a balloon \"Help make Office better\" enrols users and collects <b>anonymous</b> usage and hardware data.",
       "For Office 2007 the team had <b>1.3+ billion sessions</b> of data. They got so much Word and Outlook data that <b>70% was thrown away</b>.",
-      "They learned which commands are used often, which are used in sequence, which are used <b>7x more with the keyboard</b> than the mouse, how many documents people open at once, and how big screens are."
+      "They learned:<br>• which commands are used often<br>• which are used in sequence<br>• which are used <b>7x more with the keyboard</b> than the mouse<br>• how many documents people open at once<br>• how big screens are"
      ]
     },
     {
@@ -209,11 +209,9 @@ COURSES.hci = {
      "h": "Example case: International Children's Digital Library (ICDL)",
      "pts": [
       "<b>HCIL</b> designed the <b>international children digital library</b>.",
-      "Home page screenshot (University of Maryland): \"International Children's Digital Library, A Library for the World's Children\"; The Foundation links (Mission, Board of Advisors, Foundation Team, Sponsors, For Researchers & Librarians); a partnership with the University of Maryland's Human-Computer Interaction Lab, supported by UMD's iSchool and Computer Science Department; a READ BOOKS! button; book lists by language, color, shape, format, genre (different kinds), character, and true vs. make believe; Our Mission: the ICDL Foundation promotes tolerance and respect for diverse cultures by providing access to the best of children's literature from around the world.",
-      "Simple Search page screenshot: big picture buttons to search by cover color (Rainbow, Red, Orange, Yellow, Green, Blue Covers), by age (Three to Five, Six to Nine, Ten to Thirteen), Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books, plus a Keywords search box.",
-      "The ICDL search page is a <b>good design</b>: <b>more than 3 million unique visitors</b>, and the <b>visual search</b> was preferred by users (<b>71% of searches</b>).",
-      "Other labels on the ICDL home page screenshot: a <b>Book list</b> link and <b>Library News and Notes (June 2, 2021)</b>.",
-      "The Simple Search page screenshot also shows <b>Featured Books</b> and <b>From Our Shelves</b> rows, a <b>Show Any Language books</b> filter, <b>More Choices</b>, <b>Search By Collections</b> and <b>Browse Exhibitions</b>."
+      "Home page screenshot (University of Maryland):<br>• Title: \"International Children's Digital Library, A Library for the World's Children\".<br>• The Foundation links: Mission, Board of Advisors, Foundation Team, Sponsors, For Researchers &amp; Librarians.<br>• A partnership with the University of Maryland's Human-Computer Interaction Lab, supported by UMD's iSchool and Computer Science Department.<br>• A READ BOOKS! button.<br>• Book lists by language, color, shape, format, genre (different kinds), character, and true vs. make believe.<br>• Our Mission: the ICDL Foundation promotes tolerance and respect for diverse cultures by providing access to the best of children's literature from around the world.<br>• Other labels: a <b>Book list</b> link and <b>Library News and Notes (June 2, 2021)</b>.",
+      "Simple Search page screenshot: big picture buttons to search by:<br>• cover color: Rainbow, Red, Orange, Yellow, Green, Blue Covers<br>• age: Three to Five, Six to Nine, Ten to Thirteen<br>• Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books<br>• plus a Keywords search box.<br>It also shows <b>Featured Books</b> and <b>From Our Shelves</b> rows, a <b>Show Any Language books</b> filter, <b>More Choices</b>, <b>Search By Collections</b> and <b>Browse Exhibitions</b>.",
+      "The ICDL search page is a <b>good design</b>: <b>more than 3 million unique visitors</b>, and the <b>visual search</b> was preferred by users (<b>71% of searches</b>)."
      ],
      "fig": "icdl-search"
     },
@@ -1288,7 +1286,7 @@ COURSES.hci = {
     {
      "h": "Remember: the interaction design process",
      "pts": [
-      "The interaction design process involves <b>three components</b>: 1) <b>User research</b>. 2) <b>Design and prototyping</b>. 3) <b>Evaluation (improvement)</b>.",
+      "The interaction design process involves <b>three components</b>:<br>(1) <b>User research</b><br>(2) <b>Design and prototyping</b><br>(3) <b>Evaluation (improvement)</b>.",
       "User research means <b>working with users rather than guessing</b> (<b>user-centric design</b>). Ignoring user research is common. Involve users so decisions are based on reality, not guesses.",
       "User research: <b>invisible interfaces</b> (<b>task-oriented design</b>)."
      ]
@@ -1304,7 +1302,7 @@ COURSES.hci = {
     {
      "h": "The double diamond of design",
      "pts": [
-      "The <b>double diamond of design</b> has four phases: <b>Discover</b> (insight into the problem) → <b>Define</b> (the area to focus upon) → <b>Develop</b> (potential solutions) → <b>Deliver</b> (solutions that work).",
+      "The <b>double diamond of design</b> has four phases: <b>Discover</b> → <b>Define</b> → <b>Develop</b> → <b>Deliver</b>.<br>• <b>Discover</b>: insight into the problem.<br>• <b>Define</b>: the area to focus upon.<br>• <b>Develop</b>: potential solutions.<br>• <b>Deliver</b>: solutions that work.",
       "Diagram: two diamonds side by side. The first diamond starts at a point labelled <b>Problem</b>, widens during Discover and narrows during Define to a point labelled <b>Problem Definition</b> / <b>Design Brief</b>.",
       "The second diamond starts from that point, widens during Develop and narrows during Deliver to a point labelled <b>Solution</b>."
      ],
@@ -1313,7 +1311,7 @@ COURSES.hci = {
     {
      "h": "Four basic activities of interaction design",
      "pts": [
-      "The four basic activities of interaction design: 1) <b>Discovering requirements</b>. 2) <b>Designing alternatives</b>. 3) <b>Prototyping alternative designs</b>. 4) <b>Evaluating product and its user experience throughout</b>."
+      "The four basic activities of interaction design:<br>(1) <b>Discovering requirements</b><br>(2) <b>Designing alternatives</b><br>(3) <b>Prototyping alternative designs</b><br>(4) <b>Evaluating product and its user experience throughout</b>."
      ]
     },
     {
@@ -1331,7 +1329,7 @@ COURSES.hci = {
      "h": "Another lifecycle model: Google Design Sprints",
      "pts": [
       "Another lifecycle model: <b>Google Design Sprints</b> (<b>Knapp et al., 2016</b>).",
-      "Google Design Sprint has five steps: 1) <b>Unpack</b> → 2) <b>Sketch</b> → 3) <b>Decide</b> → 4) <b>Prototype</b> → 5) <b>Test</b>.",
+      "Google Design Sprint has five steps:<br>(1) <b>Unpack</b> → (2) <b>Sketch</b> → (3) <b>Decide</b> → (4) <b>Prototype</b> → (5) <b>Test</b>.",
       "The steps form a cycle labelled <b>Iterate</b>: Unpack → Sketch → Decide → Prototype → Test → back to Unpack.",
       "Source: Google Design Sprints (used courtesy of Agile Marketing)."
      ],
@@ -1340,7 +1338,7 @@ COURSES.hci = {
     {
      "h": "Design life cycle (according to Joyner)",
      "pts": [
-      "Joyner's design life cycle is an <b>iterative process with four phases</b>: <b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → back to Need finding."
+      "Joyner's design life cycle is an <b>iterative process with four phases</b>:<br><b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → back to Need finding."
      ],
      "fig": "joyner-cycle"
     },
@@ -1349,7 +1347,7 @@ COURSES.hci = {
      "ly": 1,
      "pts": [
       "<b>Understand → Specify → Design → Evaluate</b>, and iteration is key.",
-      "<b>Understand</b>: how users experience the product (a lot of research). <b>Specify</b>: the most important user problem to solve. <b>Design</b>: solutions, then start building. <b>Evaluate</b>: test with real users."
+      "• <b>Understand</b>: how users experience the product (a lot of research).<br>• <b>Specify</b>: the most important user problem to solve.<br>• <b>Design</b>: solutions, then start building.<br>• <b>Evaluate</b>: test with real users."
      ],
      "fig": "google-ucd"
     },
@@ -2239,11 +2237,11 @@ COURSES.hci = {
     {
      "h": "Activity: find the hotel price (two screens)",
      "pts": [
-      "<b>1st screen</b> (task: find the price for a double room at the Quality Inn in Pennsylvania): a dark screen headed \"Pennsylvania\" with entries written one after another, each as \"City Motel/Hotel: Name\" followed on the next line by the phone number and S (single) and D (double) prices, e.g. \"Bedford Motel/Hotel: Crinaline Courts (814) 623-9511 S: $118 D: $120\".",
-      "Entries on the 1st screen: Bedford (Crinaline Courts, Holiday Inn, Midway, Penn Manor, Quality Inn, Terrace), Bradley (De Soto, Holiday House, Holiday Inn), Breezewood (Best Western Plaza, Motel 70). The target line is \"Bedford Motel/Hotel: Quality Inn (814) 623-5189 S: $123 D: $128\".",
-      "<b>2nd screen</b> (task: find the price of a double room at the Holiday Inn in Columbia): a dark screen headed \"South Carolina\" laid out in columns: City, Motel/Hotel, Area code, Phone, Rates (Single, Double), with the Charleston rows grouped together and the Columbia rows grouped below them.",
-      "Charleston hotels: Best Western, Days Inn, Holiday Inn N, Holiday Inn SW, Howard Johnsons, Ramada Inn, Sheraton Inn. Columbia hotels: Best Western, Carolina Inn, Days Inn, Holiday Inn NW, Howard Johnsons, Quality Inn, Ramada Inn, Vagabond Inn. The target row is \"Columbia, Holiday Inn NW, 803, 794-9440, $132, $139\".",
-      "<b>Tullis (1987)</b> found that the two screens produced quite different results: the 1st screen took an average of <b>5.5 seconds</b> to search; the 2nd screen took <b>3.2 seconds</b> to search.",
+      "<b>1st screen</b> (task: find the price for a double room at the Quality Inn in Pennsylvania): a dark screen headed \"Pennsylvania\" with entries written one after another.<br>• Each entry is \"City Motel/Hotel: Name\", followed on the next line by the phone number and S (single) and D (double) prices.<br>• Example: \"Bedford Motel/Hotel: Crinaline Courts (814) 623-9511 S: $118 D: $120\".",
+      "Entries on the 1st screen:<br>• <b>Bedford</b>: Crinaline Courts, Holiday Inn, Midway, Penn Manor, Quality Inn, Terrace.<br>• <b>Bradley</b>: De Soto, Holiday House, Holiday Inn.<br>• <b>Breezewood</b>: Best Western Plaza, Motel 70.<br>The target line is \"Bedford Motel/Hotel: Quality Inn (814) 623-5189 S: $123 D: $128\".",
+      "<b>2nd screen</b> (task: find the price of a double room at the Holiday Inn in Columbia): a dark screen headed \"South Carolina\" laid out in columns:<br>City | Motel/Hotel | Area code | Phone | Rates (Single, Double)<br>The Charleston rows are grouped together and the Columbia rows are grouped below them.",
+      "• <b>Charleston</b> hotels: Best Western, Days Inn, Holiday Inn N, Holiday Inn SW, Howard Johnsons, Ramada Inn, Sheraton Inn.<br>• <b>Columbia</b> hotels: Best Western, Carolina Inn, Days Inn, Holiday Inn NW, Howard Johnsons, Quality Inn, Ramada Inn, Vagabond Inn.<br>The target row is \"Columbia, Holiday Inn NW, 803, 794-9440, $132, $139\".",
+      "<b>Tullis (1987)</b> found that the two screens produced quite different results:<br>• the 1st screen took an average of <b>5.5 seconds</b> to search;<br>• the 2nd screen took <b>3.2 seconds</b> to search.",
       "Why, since both displays have the same density of information? <b>Spacing</b>:",
       "In the 1st screen, the information is bunched up together, making it hard to search.",
       "In the 2nd screen, the characters are grouped into vertical categories of information, making it easier."
@@ -2346,8 +2344,8 @@ COURSES.hci = {
     {
      "h": "Activity: color contrast vs borders and white space",
      "pts": [
-      "<b>1st screen: \"Is color contrast good? Find Italian\"</b>: a 4 × 4 grid of groups, each group a list of six names (e.g. \"Black Hills Forest, Cheyenne River, Social Science, South San Jose, Badlands Park, Juvenile Justice\"). The groups are separated only by color contrast (alternating light blue and white backgrounds). \"Italian\" is the second item of the group in the third row, first column (Performing Arts, Italian, Coaches, McKees Rocks, Glenwood Springs, Urban Affairs).",
-      "<b>2nd screen: \"Are borders and white space better? Find French\"</b>: a 4 × 4 grid of groups of six names (e.g. \"Webmaster, Russian, Athletics, Go Shockers, Degree Options, Newsletter\"), each group enclosed in a border and separated from the others by white space. \"French\" is in the group in the third row, third column (Staff, Aerospace, Choral Dept., Alberg Hall, French, Spanish).",
+      "<b>1st screen: \"Is color contrast good? Find Italian\"</b>: a 4 × 4 grid of groups, each group a list of six names.<br>• Example group: \"Black Hills Forest, Cheyenne River, Social Science, South San Jose, Badlands Park, Juvenile Justice\".<br>• The groups are separated only by <b>color contrast</b> (alternating light blue and white backgrounds).<br>• \"Italian\" is the second item of the group in the third row, first column (Performing Arts, Italian, Coaches, McKees Rocks, Glenwood Springs, Urban Affairs).",
+      "<b>2nd screen: \"Are borders and white space better? Find French\"</b>: a 4 × 4 grid of groups of six names.<br>• Example group: \"Webmaster, Russian, Athletics, Go Shockers, Degree Options, Newsletter\".<br>• Each group is enclosed in a <b>border</b> and separated from the others by <b>white space</b>.<br>• \"French\" is in the group in the third row, third column (Staff, Aerospace, Choral Dept., Alberg Hall, French, Spanish).",
       "<b>Weller (2004)</b> found people took less time to locate items for information that was grouped using a <b>border</b> (2nd screen) compared with using <b>color contrast</b> (1st screen).",
       "Some argue that too much white space on web pages is detrimental to the search process: it makes it hard to find information.",
       "Do you agree? (question for discussion; the slide gives no answer)"
@@ -2915,7 +2913,7 @@ COURSES.hci = {
       "People's immediate memory capacity is very limited to <b>7, + or - 2</b>.",
       "It has been applied in interaction design when considering how many options to display.",
       "But is it a good use of a theory in HCI? Is it helpful? (questions for discussion; the slide gives no answer)",
-      "When creating an interface, should the designer: present only 7 options on a menu; display only 7 icons on a tool bar; have no more than 7 bullets in a list; place only 7 items on a pull down menu; place only 7 tabs on the top of a website page? (question for discussion; the slide gives no answer)",
+      "When creating an interface, should the designer:<br>• present only 7 options on a menu?<br>• display only 7 icons on a tool bar?<br>• have no more than 7 bullets in a list?<br>• place only 7 items on a pull down menu?<br>• place only 7 tabs on the top of a website page?<br>(question for discussion; the slide gives no answer)",
       "The slide shows a row of 7 smiley faces in different colors (red, purple, blue, yellow, black, white, light blue)."
      ],
      "fig": "seven-plus-minus"
@@ -2932,7 +2930,7 @@ COURSES.hci = {
      "h": "Learning",
      "pts": [
       "<b>Learning</b> involves the accumulation of skills and knowledge involving memory.",
-      "Two main types: <b>incidental learning</b> (for example, recognizing people's faces, what you did today) and <b>intentional learning</b> (for instance, studying for an exam, learning to cook).",
+      "Two main types:<br>• <b>incidental learning</b> (for example, recognizing people's faces, what you did today)<br>• <b>intentional learning</b> (for instance, studying for an exam, learning to cook).",
       "Intentional learning is much harder!",
       "Many technologies have been developed to help (for example, multimedia, animations, VR).",
       "People find it hard to learn by following instructions in a manual.",
@@ -3595,7 +3593,7 @@ COURSES.hci = {
     {
      "h": "Privacy and security",
      "pts": [
-      "Only collect the data you need. Do not associate collected data with PII or SPII. Do not keep data after you no longer need it.",
+      "• Only collect the data you need.<br>• Do not associate collected data with PII or SPII.<br>• Do not keep data after you no longer need it.",
       "<b>PII (Personally Identifiable Information)</b>: details that could identify a user: <b>names, home address, email address, phone number</b>.",
       "<b>SPII (Sensitive PII)</b>: data that could cause financial harm, embarrassment or discrimination if lost or stolen: <b>social security number, driver's license, passport numbers, financial account numbers, date of birth</b>."
      ]
@@ -3605,7 +3603,7 @@ COURSES.hci = {
      "pts": [
       "Quick responses from a <b>large number of users</b> in a short time (a broad view). Often online and easy to create. One of the <b>cheapest</b> methods.",
       "Can be an initial step for insights on motivations, preferences, priorities and pain points, to plan later activities such as interviews. Can also follow an interview or usability study.",
-      "Tips: <b>keep it as small as possible</b> (too many questions hurt response rate and reliability); ask only what you need and will use; <b>be aware of bias</b>; get feedback from participants about the survey."
+      "Tips:<br>• <b>keep it as small as possible</b> (too many questions hurt response rate and reliability)<br>• ask only what you need and will use<br>• <b>be aware of bias</b><br>• get feedback from participants about the survey."
      ]
     }
    ],
@@ -3938,7 +3936,7 @@ COURSES.hci = {
     {
      "h": "Be Usable",
      "pts": [
-      "Provide a <b>progress bar</b>. Keep <b>page lengths consistent</b>. <b>Order questions logically</b>. <b>Alert users about unanswered questions</b>. <b>Preview the survey yourself</b>."
+      "• Provide a <b>progress bar</b>.<br>• Keep <b>page lengths consistent</b>.<br>• <b>Order questions logically</b>.<br>• <b>Alert users about unanswered questions</b>.<br>• <b>Preview the survey yourself</b>."
      ]
     },
     {
@@ -4211,9 +4209,9 @@ COURSES.hci = {
      "h": "2) Interviews",
      "pts": [
       "The <b>most common</b> research technique.",
-      "Deeper, more thorough understanding: more open-ended and \"why\" questions (Joyner: focus on the <b>6 Ws</b>: who, what, where, when, why, how), room for follow-up questions, and reflection on rare events.",
+      "Deeper, more thorough understanding:<br>• more open-ended and \"why\" questions (Joyner: focus on the <b>6 Ws</b>: who, what, where, when, why, how)<br>• room for follow-up questions<br>• reflection on rare events.",
       "Far fewer users can be interviewed than surveyed.",
-      "<b>More expensive</b>: <b>synchronous</b> (the interviewer devotes time to each interviewee) and <b>incentives</b> (interviewees often expect compensation).",
+      "<b>More expensive</b>:<br>• <b>synchronous</b> (the interviewer devotes time to each interviewee)<br>• <b>incentives</b> (interviewees often expect compensation).",
       "Interviews and surveys can be done in sequence in either order, using the results of one to plan the other."
      ]
     },
@@ -4221,7 +4219,7 @@ COURSES.hci = {
      "h": "Tips for a good interview",
      "pts": [
       "<b>Plan ahead</b> and prepare questions before the interview.",
-      "During the interview, two keys: <b>listen well</b> (the user should talk most of the time) and <b>take notes</b> (one person asks and one takes notes; audio recording is not enough; note emotions and reactions).",
+      "During the interview, two keys:<br>• <b>listen well</b> (the user should talk most of the time)<br>• <b>take notes</b> (one person asks and one takes notes; audio recording is not enough; note emotions and reactions).",
       "<b>Leave some time between interviews.</b>"
      ]
     },
@@ -4721,13 +4719,13 @@ COURSES.hci = {
      "pts": [
       "Every design activity either helps the <b>designer think and visualize</b>, or helps <b>team members and stakeholders visualize and communicate</b>, or both.",
       "Brainstorming aims to generate a lot of ideas. Joyner: <b>start with individual brainstorming</b>, because groups coalesce on ideas too early.",
-      "Tips: write as many ideas as you can; each idea is a few words or a sentence; <b>aim for 20</b>; <b>do not evaluate or exclude</b> any idea; take breaks or use several sessions; team sessions are for sharing and adding ideas, not narrowing."
+      "Tips:<br>• write as many ideas as you can<br>• each idea is a few words or a sentence<br>• <b>aim for 20</b><br>• <b>do not evaluate or exclude</b> any idea<br>• take breaks or use several sessions<br>• team sessions are for sharing and adding ideas, not narrowing."
      ]
     },
     {
      "h": "Why study design? And the design-development process",
      "pts": [
-      "Some students will shine as designers; developers often do design when there are no designers; developers work better with designers when they understand the process.",
+      "• Some students will shine as designers.<br>• Developers often do design when there are no designers.<br>• Developers work better with designers when they understand the process.",
       "<b>Handoff process</b>: design finishes, then it is handed over to development (sequential).",
       "<b>Handshake process</b>: design and development run <b>in parallel</b> with frequent sync points."
      ]
@@ -4739,15 +4737,15 @@ COURSES.hci = {
       "It intentionally has <b>no colors or font styles</b>, to focus on structure. Wireframe = <b>skeleton with placeholders</b>.",
       "Google calls it a \"key part of the design process\".",
       "Wireframes are not art. They organize and communicate information clearly.",
-      "Purposes: (1) decide the basic page structure before colors and images; (2) get the team on the same page early, saving time and resources; (3) direct feedback to the right level (structure and function, not colors and typography); (4) catch forgotten or disorganized elements early.",
+      "Purposes:<br>(1) decide the basic page structure before colors and images<br>(2) get the team on the same page early, saving time and resources<br>(3) direct feedback to the right level (structure and function, not colors and typography)<br>(4) catch forgotten or disorganized elements early.",
       "When: <b>after foundational user research</b>, as soon as there is an initial <b>site map</b> (content hierarchy)."
      ]
     },
     {
      "h": "Wireframing standards and process",
      "pts": [
-      "Standards: text as horizontal lines or placeholder text; images as rectangles or circles with an <b>X</b>; calls to action as rectangles or circles; proper <b>annotation</b>.",
-      "Process: start with <b>pen and paper</b>. The first goal is <b>reaching</b> a design, not showing one. Sketch <b>at least 5 versions</b> per screen. Iterate with feedback. The second goal is to move an idea from your mind to paper quickly, so ignore straight lines, spacing and alignment at this stage.",
+      "Standards:<br>• text as horizontal lines or placeholder text<br>• images as rectangles or circles with an <b>X</b><br>• calls to action as rectangles or circles<br>• proper <b>annotation</b>.",
+      "Process:<br>• start with <b>pen and paper</b>. The first goal is <b>reaching</b> a design, not showing one.<br>• sketch <b>at least 5 versions</b> per screen.<br>• iterate with feedback.<br>• the second goal is to move an idea from your mind to paper quickly, so ignore straight lines, spacing and alignment at this stage.",
       "Then use tools: <b>Figma, Adobe XD, Sketch, Balsamiq, Pencil</b>.",
       "Example in the lecture: a dog-walking app."
      ]
@@ -4756,7 +4754,7 @@ COURSES.hci = {
      "h": "Form design guidelines",
      "pts": [
       "Important commands are <b>buttons, not links</b>, because buttons catch the eye. But do <b>not</b> display all commands as buttons.",
-      "<b>Breadcrumbs</b> show <b>where</b> users are, when there are multiple choices. <b>Progress bars</b> show where users are <b>and what is left</b>, for a predefined unique path.",
+      "• <b>Breadcrumbs</b> show <b>where</b> users are, when there are multiple choices.<br>• <b>Progress bars</b> show where users are <b>and what is left</b>, for a predefined unique path.",
       "A successful form submission is confirmed with a <b>confirmation page</b>.",
       "<b>Error messages sit next to the field</b> where the error occurred. Changing the field border color (e.g. red) is preferred.",
       "Text boxes provide <b>plenty of space</b> for the answer.",
@@ -5063,8 +5061,8 @@ COURSES.hci = {
       "<b>Stick to a simple 3-color palette.</b> More than 3 primary colors is difficult and confuses users.",
       "<b>Alert messages are consistent</b> across the whole site. Do not change color, style or placement.",
       "<b>Close vs Cancel</b>: if there is only one button it should be <b>\"Close\"</b>. With two buttons (an Action button and one to dismiss) use <b>\"Cancel\"</b>, not \"Close\". Cancel is most commonly placed <b>to the right</b> and is <b>not eye-catching</b>.",
-      "<b>Error messages</b>: state the problem in the <b>title</b>; describe briefly <b>why it happened</b> under the title; when possible link to <b>complete the task or return</b> to the previous state; give recommendations for the <b>next course of action</b>.",
-      "<b>System notice</b>: an \"Action\" button, a \"Remind me later\" button and a \"Don't show again\" box. Notice messages should not be lengthy or generic."
+      "<b>Error messages</b>:<br>• state the problem in the <b>title</b><br>• describe briefly <b>why it happened</b> under the title<br>• when possible link to <b>complete the task or return</b> to the previous state<br>• give recommendations for the <b>next course of action</b>.",
+      "<b>System notice</b>:<br>• an \"Action\" button<br>• a \"Remind me later\" button<br>• a \"Don't show again\" box.<br>Notice messages should not be lengthy or generic."
      ]
     },
     {
