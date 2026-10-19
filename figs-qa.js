@@ -34,12 +34,12 @@
     const P = [['System', 'Engineering'], ['Analysis'], ['Design'], ['Coding'], ['Testing'], ['Maintenance']];
     const steps = [
       { en: '<b>Figure 1.1 Waterfall Model</b>: one of the oldest software lifecycle models. The process starts at the system level and is followed by phases like analysis, design, coding, testing and maintenance.', ar: '<b>Figure 1.1 Waterfall Model</b>: من أقدم الـ software lifecycle models. الـ process بتبدأ من <b>الـ system level</b> وبعدها phases زي الـ analysis والـ design والـ coding والـ testing والـ maintenance.' },
-      { en: '1. <b>System Engineering</b>: defines both software and hardware requirements necessary for development.', ar: '1. الـ <b>System Engineering</b>: بيحدد الـ software requirements والـ hardware requirements الاتنين اللي محتاجينهم للتطوير.' },
-      { en: '2. <b>Analysis</b>: involves feasibility studies and setting the goals, performance, and interface requirements.', ar: '2. الـ <b>Analysis</b>: فيه feasibility studies وتحديد الـ goals والـ performance والـ interface requirements.' },
-      { en: '3. <b>Design</b>: translates requirements into software structure, such as database design, to guide coding and ensure quality.', ar: '3. الـ <b>Design</b>: بيحوّل الـ requirements لـ software structure، زي الـ database design، عشان يوجّه الـ coding ويضمن الـ quality.' },
-      { en: '4. <b>Coding</b>: developers write the program code based on the design specifications.', ar: '4. الـ <b>Coding</b>: الـ developers بيكتبوا الـ program code على أساس الـ design specifications.' },
-      { en: '5. <b>Testing</b>: the software is tested to detect bugs and verify that it meets the stated requirements.', ar: '5. الـ <b>Testing</b>: بنختبر الـ software عشان نكتشف الـ bugs ونتأكد إنه ماشي على الـ requirements المذكورة.' },
-      { en: '6. <b>Maintenance</b>: fixes issues and updates the software as new needs arise.', ar: '6. الـ <b>Maintenance</b>: بيصلّح المشاكل ويعمل update للـ software لما تظهر احتياجات جديدة.' },
+      { en: '1. <b>System Engineering</b>: defines both software and hardware requirements necessary for development.', ar: '<bdi dir="ltr">1.</bdi> الـ <b>System Engineering</b>: بيحدد الـ software requirements والـ hardware requirements الاتنين اللي محتاجينهم للتطوير.' },
+      { en: '2. <b>Analysis</b>: involves feasibility studies and setting the goals, performance, and interface requirements.', ar: '<bdi dir="ltr">2.</bdi> الـ <b>Analysis</b>: فيه feasibility studies وتحديد الـ goals والـ performance والـ interface requirements.' },
+      { en: '3. <b>Design</b>: translates requirements into software structure, such as database design, to guide coding and ensure quality.', ar: '<bdi dir="ltr">3.</bdi> الـ <b>Design</b>: بيحوّل الـ requirements لـ software structure، زي الـ database design، عشان يوجّه الـ coding ويضمن الـ quality.' },
+      { en: '4. <b>Coding</b>: developers write the program code based on the design specifications.', ar: '<bdi dir="ltr">4.</bdi> الـ <b>Coding</b>: الـ developers بيكتبوا الـ program code على أساس الـ design specifications.' },
+      { en: '5. <b>Testing</b>: the software is tested to detect bugs and verify that it meets the stated requirements.', ar: '<bdi dir="ltr">5.</bdi> الـ <b>Testing</b>: بنختبر الـ software عشان نكتشف الـ bugs ونتأكد إنه ماشي على الـ requirements المذكورة.' },
+      { en: '6. <b>Maintenance</b>: fixes issues and updates the software as new needs arise.', ar: '<bdi dir="ltr">6.</bdi> الـ <b>Maintenance</b>: بيصلّح المشاكل ويعمل update للـ software لما تظهر احتياجات جديدة.' },
       { en: 'A vertical line rises from Maintenance and is joined by <b>two-headed arrows</b> to every earlier phase, so each later phase can feed back to the earlier ones.', ar: 'فيه خط رأسي طالع من الـ Maintenance ومتوصل بـ <b>أسهم بوشين (two-headed)</b> بكل الـ phases اللي قبله، يعني كل phase متأخرة ممكن ترجع feedback للـ phases اللي قبلها.' },
       { en: '<b>Advantages</b>: simple, structured, clear documentation, early requirements, easy management. <b>Drawback</b>: errors made in early phases can carry over to later stages, causing delays and increased costs since problems must be fixed at multiple points.', ar: '<b>المميزات</b>: بسيط، structured، documentation واضحة، الـ requirements بدري، وإدارته سهلة. <b>العيب</b>: الـ errors اللي بتحصل في الـ phases الأولانية ممكن تنتقل للمراحل اللي بعدها، وده بيعمل تأخير وتكلفة أكتر لأن المشاكل لازم تتصلح في أكتر من مكان.' }
     ];
@@ -152,12 +152,12 @@
     const B = ['Create the test code', 'Write or modify the function code', 'Create additional tests', 'Test the functional code', 'Refactor the code'];
     const steps = [
       { en: '<b>Test-driven development (TDD)</b>, a main XP practice, involves writing test cases before coding to ensure quality and reduce errors. <b>Figure 1.4 Agile Model</b> shows its five steps.', ar: 'الـ <b>Test-driven development (TDD)</b>، وهو practice أساسي في الـ XP، بيكتب الـ test cases قبل الـ coding عشان يضمن الـ quality ويقلل الـ errors. <b>Figure 1.4 Agile Model</b> بيوضح الـ 5 steps بتوعه.', b: -1 },
-      { en: '1. <b>Create the test code</b>: the developer writes automated test scripts before writing the actual program code. These tests define what the software should do.', ar: '1. <b>Create the test code</b>: الـ developer بيكتب automated test scripts قبل ما يكتب الـ program code الحقيقي. الـ tests دي بتحدد الـ software المفروض يعمل إيه.', b: 0 },
-      { en: '2. <b>Write or modify the functional code</b>: the developer then writes the actual code to pass the predefined test cases. The code is adjusted until it meets all test requirements.', ar: '2. <b>Write or modify the functional code</b>: بعدها الـ developer بيكتب الـ code الحقيقي عشان يعدّي الـ test cases المحددة مسبقًا، وبيتعدل لحد ما يحقق كل الـ test requirements.', b: 1 },
-      { en: '3. <b>Create additional tests</b>: the tester adds more tests with different inputs based on the complexity of the module.', ar: '3. <b>Create additional tests</b>: الـ tester بيزود tests تانية بـ inputs مختلفة على حسب تعقيد الـ module.', b: 2 },
-      { en: '4. <b>Test the functional code</b>: the functional code is tested repeatedly using the created test cases until all tests pass successfully.', ar: '4. <b>Test the functional code</b>: الـ functional code بيتختبر أكتر من مرة بالـ test cases اللي اتعملت لحد ما كل الـ tests تعدّي بنجاح.', b: 3 },
+      { en: '1. <b>Create the test code</b>: the developer writes automated test scripts before writing the actual program code. These tests define what the software should do.', ar: '<bdi dir="ltr">1.</bdi> <b>Create the test code</b>: الـ developer بيكتب automated test scripts قبل ما يكتب الـ program code الحقيقي. الـ tests دي بتحدد الـ software المفروض يعمل إيه.', b: 0 },
+      { en: '2. <b>Write or modify the functional code</b>: the developer then writes the actual code to pass the predefined test cases. The code is adjusted until it meets all test requirements.', ar: '<bdi dir="ltr">2.</bdi> <b>Write or modify the functional code</b>: بعدها الـ developer بيكتب الـ code الحقيقي عشان يعدّي الـ test cases المحددة مسبقًا، وبيتعدل لحد ما يحقق كل الـ test requirements.', b: 1 },
+      { en: '3. <b>Create additional tests</b>: the tester adds more tests with different inputs based on the complexity of the module.', ar: '<bdi dir="ltr">3.</bdi> <b>Create additional tests</b>: الـ tester بيزود tests تانية بـ inputs مختلفة على حسب تعقيد الـ module.', b: 2 },
+      { en: '4. <b>Test the functional code</b>: the functional code is tested repeatedly using the created test cases until all tests pass successfully.', ar: '<bdi dir="ltr">4.</bdi> <b>Test the functional code</b>: الـ functional code بيتختبر أكتر من مرة بالـ test cases اللي اتعملت لحد ما كل الـ tests تعدّي بنجاح.', b: 3 },
       { en: 'The <b>loop arrow</b> goes from Test the functional code back up to Write or modify the function code: the code is adjusted and tested again until all tests pass.', ar: '<b>السهم الراجع (loop)</b> بيروح من Test the functional code لفوق لـ Write or modify the function code: الـ code بيتعدل ويتختبر تاني لحد ما كل الـ tests تعدّي.', b: 5 },
-      { en: '5. <b>Refactor the code</b>: the developer improves the code to make it easier to maintain, extend, and update. This step removes duplicate or unused code and reduces complexity.', ar: '5. <b>Refactor the code</b>: الـ developer بيحسّن الـ code عشان يبقى أسهل في الـ maintenance والتوسيع والـ update. الخطوة دي بتشيل الـ code المتكرر أو اللي مش مستخدم وبتقلل التعقيد.', b: 4 }
+      { en: '5. <b>Refactor the code</b>: the developer improves the code to make it easier to maintain, extend, and update. This step removes duplicate or unused code and reduces complexity.', ar: '<bdi dir="ltr">5.</bdi> <b>Refactor the code</b>: الـ developer بيحسّن الـ code عشان يبقى أسهل في الـ maintenance والتوسيع والـ update. الخطوة دي بتشيل الـ code المتكرر أو اللي مش مستخدم وبتقلل التعقيد.', b: 4 }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const b = steps[i].b, X = 6, W = 272, H = 36, Y = k => 6 + k * 56, seenB = k => k < 4 ? i >= k + 1 : i >= 6;
@@ -1299,3 +1299,210 @@
   window.FIGS = Object.assign(window.FIGS || {}, { 'qa-web-parts': WebParts, 'qa-gmail-form': GmailForm, 'qa-sigma-curve': SigmaCurve, 'qa-dmadv': Dmadv, 'qa-dmaic': Dmaic, 'qa-sigma-case': SigmaCase, 'qa-belts': Belts });
 })();
 
+/* ── part 5 ── */
+// Software Quality Assurance visuals, part 5: L1 section 1.3, the software development models in motion
+// (Waterfall, RAD, Agile, and where testing sits in each model). Every label and caption comes from the site's notes for L1.
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.fq5 .fig-dots i.on{ background:var(--k-qa); } .fq5 .fig-btn:hover{ border-color:var(--k-qa); } .fq5 .fig-btn.solid{ background:var(--s-qa); }
+.fq5-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 12px; }
+.fq5-modes .fig-btn[aria-pressed="true"]{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.fq5-cas{ display:flex; flex-direction:column; gap:7px; max-width:420px; margin:0 auto; }
+.fq5-ph{ position:relative; border:1.4px solid var(--line); background:var(--paper); color:var(--ink); border-radius:8px; padding:6px 10px; font-size:.86rem; line-height:1.35; font-weight:600; transition:background .5s ease, border-color .5s ease, opacity .5s ease, color .5s ease; }
+.fq5-ph small{ display:block; font-weight:400; font-size:.8rem; color:var(--graphite); }
+.fq5-ph.done{ background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); border-color:var(--k-qa); }
+.fq5-ph.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .fq5-ph.on small{ color:rgba(255,255,255,.9); }
+.fq5-ph.wait{ opacity:.35; }
+.fq5-ph.bad{ border-color:var(--pen); box-shadow:inset 4px 0 0 var(--pen); }
+.fq5-ph.fix{ background:color-mix(in srgb, var(--pen) 14%, var(--paper)); border-color:var(--pen); }
+.fq5-tag{ display:inline-block; margin-left:6px; vertical-align:1px; font-size:.76rem; font-weight:700; color:var(--pen); background:var(--paper); border:1px solid var(--pen); border-radius:99px; padding:1px 7px; }
+.fq5-ph.on .fq5-tag{ color:var(--pen); }
+.fq5-drop{ position:absolute; left:-15px; top:50%; width:11px; height:11px; margin-top:-5.5px; border-radius:50%; background:var(--k-qa); box-shadow:0 0 0 3px color-mix(in srgb, var(--k-qa) 30%, transparent); animation:fq5pulse 1.2s ease-in-out infinite; }
+@keyframes fq5pulse{ 50%{ transform:scale(1.35); } }
+.fq5-meters{ display:grid; grid-template-columns:auto 1fr; gap:5px 8px; align-items:center; max-width:420px; margin:12px auto 0; font-size:.82rem; color:var(--ink); }
+.fq5-meter{ height:10px; border-radius:99px; background:var(--paper); border:1px solid var(--line); overflow:hidden; }
+.fq5-meter i{ display:block; height:100%; background:var(--pen); transition:width .9s ease; }
+.fq5-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:6px 0; }
+.fq5-chip{ border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:99px; padding:3px 10px; font-size:.82rem; line-height:1.3; transition:all .5s ease; }
+.fq5-chip.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 14%, var(--paper)); }
+.fq5-chip.gap{ border-color:var(--pen); border-style:dashed; color:var(--pen); }
+.fq5-chip.k{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); }
+.fq5-arrow{ text-align:center; color:var(--graphite); font-size:1rem; line-height:1; margin:2px 0; }
+.fq5-box{ border:1.4px solid var(--line); border-radius:10px; background:var(--paper); padding:8px 10px; max-width:420px; margin:0 auto; font-size:.84rem; color:var(--ink); transition:all .5s ease; }
+.fq5-box.on{ border-color:var(--k-qa); box-shadow:0 0 0 3px color-mix(in srgb, var(--k-qa) 22%, transparent); }
+.fq5-box.wait{ opacity:.35; }
+.fq5-box b.t{ display:block; font-size:.88rem; margin-bottom:4px; }
+.fq5-bar{ position:relative; height:16px; border-radius:4px; background:var(--paper-2); border:1px solid var(--line); overflow:hidden; margin-top:4px; }
+.fq5-bar i{ position:absolute; left:0; top:0; bottom:0; transition:width 1s ease; }
+.fq5-spin{ display:inline-block; animation:fq5spin 1.6s linear infinite; }
+@keyframes fq5spin{ to{ transform:rotate(360deg); } }
+.fq5-fail{ text-align:center; color:var(--pen); font-weight:700; font-size:.86rem; margin-top:6px; }
+.fq5-stack{ display:flex; flex-direction:column-reverse; gap:4px; min-height:118px; justify-content:flex-start; }
+.fq5-rel{ border-radius:6px; padding:4px 8px; font-size:.82rem; font-weight:600; color:#fff; background:var(--s-qa); animation:fq5in .6s ease both; }
+.fq5-rel.k2{ background:color-mix(in srgb, var(--s-qa) 82%, var(--ink)); } .fq5-rel.k3{ background:color-mix(in srgb, var(--s-qa) 64%, var(--ink)); }
+@keyframes fq5in{ from{ opacity:0; transform:translateY(-10px); } to{ opacity:1; transform:none; } }
+.fq5-ag{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.1fr); gap:10px; max-width:440px; margin:0 auto; align-items:start; }
+.fq5-cyc{ display:grid; grid-template-columns:1fr 1fr; gap:5px; }
+.fq5-cyc span{ border:1.3px solid var(--line); border-radius:6px; padding:4px 4px; font-size:.8rem; text-align:center; background:var(--paper); color:var(--ink); transition:all .4s ease; }
+.fq5-cyc span.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; }
+.fq5-h{ font-size:.8rem; color:var(--graphite); margin:0 0 4px; text-align:center; }
+.fq5-roles{ display:flex; gap:5px; justify-content:center; flex-wrap:wrap; margin-top:10px; }
+.fq5-tl{ max-width:440px; margin:0 auto; display:grid; grid-template-columns:minmax(0,1.25fr) minmax(0,1fr); gap:4px 8px; font-size:.8rem; }
+.fq5-tl .hd{ font-size:.78rem; color:var(--graphite); text-align:center; font-weight:600; }
+.fq5-tl .d, .fq5-tl .t{ border-radius:6px; padding:3px 7px; line-height:1.3; min-height:22px; animation:fq5in .45s ease both; }
+.fq5-tl .d{ border:1.3px solid var(--line); background:var(--paper); color:var(--ink); }
+.fq5-tl .t.y{ border:1.3px solid var(--k-qa); background:color-mix(in srgb, var(--k-qa) 18%, var(--paper)); color:var(--ink); font-weight:600; }
+.fq5-tl .t.p{ border:1.3px dashed var(--k-qa); background:var(--paper); color:var(--ink); }
+.fq5-tl .t.n{ border:1px dashed var(--line); opacity:.5; }
+.fq5-tl .cy{ grid-column:1 / -1; font-size:.76rem; color:var(--graphite); font-weight:700; margin-top:3px; animation:fq5in .45s ease both; }
+.fq5-key{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; font-size:.76rem; color:var(--graphite); margin-top:8px; }
+.fq5-key i{ display:inline-block; width:12px; height:10px; border-radius:3px; margin-right:4px; vertical-align:-1px; }
+@media (prefers-reduced-motion: reduce){ .fq5-drop, .fq5-spin, .fq5-rel, .fq5-tl .d, .fq5-tl .t, .fq5-tl .cy{ animation:none; } }`;
+  if (!document.getElementById('fq5-css')) { const s = document.createElement('style'); s.id = 'fq5-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const Modes = ({ list, mode, setMode }) => html`<div className="fq5-modes" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => setMode(k)}>${t}</button>`)}</div>`;
+
+  /* ── Waterfall in motion: one phase at a time, and what happens to an early error ── */
+  const WF = [['System Engineering', 'software and hardware requirements'], ['Analysis', 'feasibility, goals, performance, interfaces'], ['Design', 'software structure, e.g. database design'], ['Coding', 'program code from the design'], ['Testing', 'detect bugs, verify the requirements'], ['Maintenance', 'fix issues, update for new needs']];
+  const WF_CLEAN = [
+    { en: '<b>Waterfall</b> is sequential: the process starts at the system level and each phase is finished before the next one starts, like water falling down steps.', ar: 'الـ <b>Waterfall</b> sequential: الـ process بتبدأ من الـ system level، وكل phase بتخلص قبل ما اللي بعدها تبدأ، زي الميه وهي نازلة على سلم.', at: -1 },
+    ...WF.map(([n, d], k) => ({ en: `${k + 1}. <b>${n}</b>: ${d}.`, ar: `<bdi dir="ltr">${k + 1}.</bdi> الـ <b>${n}</b>: ${['بيحدد الـ software requirements والـ hardware requirements', 'feasibility study والـ goals والـ performance والـ interface requirements', 'بيحوّل الـ requirements لـ software structure، زي الـ database design', 'الـ developers بيكتبوا الـ program code على أساس الـ design', 'بنكتشف الـ bugs ونتأكد إن الـ software ماشي على الـ requirements', 'بنصلّح المشاكل ونعمل update لما تظهر احتياجات جديدة'][k]}.`, at: k })),
+    { en: '<b>Advantages</b>: simple, structured, clear documentation, early requirements, easy management.<br>Notice that testing comes only once, after coding.', ar: '<b>المميزات</b>: بسيط، ومنظم (structured)، والـ documentation واضحة، والـ requirements بدري، وإدارته سهلة.<br>لاحظ إن الـ testing بييجي مرة واحدة بس، بعد الـ coding.', at: 6 }
+  ];
+  const WF_ERR = [
+    { en: 'Now suppose an <b>error is made in an early phase</b>, here in Analysis.', ar: 'افترض دلوقتي إن فيه <b>error حصل في phase بدري</b>، هنا في الـ Analysis.', at: 1, bad: [1] },
+    { en: 'Design is built on the analysis, so the error <b>carries over</b> into the design.', ar: 'الـ Design متبني على الـ analysis، فالـ error <b>بينتقل</b> للـ design.', at: 2, bad: [1, 2] },
+    { en: 'Coding follows the design, so the error carries over into the code too.', ar: 'والـ Coding ماشي ورا الـ design، فالـ error بينتقل للـ code كمان.', at: 3, bad: [1, 2, 3] },
+    { en: 'Only in <b>Testing</b> is the bug detected, several phases after it was made.', ar: 'الـ bug بيتكشف بس في الـ <b>Testing</b>، بعد ما حصل بكذا phase.', at: 4, bad: [1, 2, 3], found: 1 },
+    { en: 'The problem <b>must be fixed at multiple points</b>: in Analysis, Design and Coding, then tested again.', ar: 'المشكلة <b>لازم تتصلح في أكتر من مكان</b>: في الـ Analysis والـ Design والـ Coding، وبعدين تتختبر تاني.', at: 4, fix: [1, 2, 3], found: 1 },
+    { en: '<b>Drawback</b>: errors made in early phases can carry over to later stages, causing <b>delays and increased costs</b>, since problems must be fixed at multiple points.', ar: '<b>العيب</b>: الـ errors اللي بتحصل في الـ phases الأولانية ممكن تنتقل للمراحل اللي بعدها، وده بيعمل <b>تأخير وتكلفة أعلى</b>، لأن المشاكل لازم تتصلح في أكتر من مكان.', at: 4, fix: [1, 2, 3], found: 1, cost: 1 }
+  ];
+  function WaterfallFlow({ ar }) {
+    const [mode, setMode0] = useState('clean');
+    const steps = mode === 'clean' ? WF_CLEAN : WF_ERR;
+    const [i, ctl] = useSteps(steps.length, 2400);
+    const setMode = m => { setMode0(m); ctl.go(0); if (!calm()) setTimeout(ctl.replay, 0); };
+    const s = steps[i] || steps[0], bad = s.bad || [], fix = s.fix || [];
+    const fixing = fix.length > 0, delay = s.cost ? 90 : fixing ? 60 : s.found ? 25 : 0;
+    return html`<figure className="fig fq5"><div className="fig-stage">
+      <${Modes} list=${[['clean', 'Run the phases'], ['err', 'An early error']]} mode=${mode} setMode=${setMode} />
+      <div className="fq5-cas" role="img" aria-label="Waterfall phases in order: System Engineering, Analysis, Design, Coding, Testing, Maintenance">
+        ${WF.map(([n, d], k) => { const on = s.at === k && !fix.includes(k), done = mode === 'err' ? k <= s.at : k < s.at || (s.at === 6), wait = !on && !done && !fix.includes(k);
+          return html`<div key=${k} className=${'fq5-ph' + (on ? ' on' : done ? ' done' : '') + (wait ? ' wait' : '') + (bad.includes(k) && !fixing ? ' bad' : '') + (fix.includes(k) ? ' fix' : '')} style=${{ marginLeft: `calc(${k} * min(4.4%, 16px) + 14px)` }}>
+            ${s.at === k && html`<span className="fq5-drop"></span>`}
+            ${n}${bad.includes(k) && !fixing && html`<span className="fq5-tag">${k === 1 ? 'error' : 'carried'}</span>`}
+            ${k === 4 && s.found && !fixing && html`<span className="fq5-tag">bug found</span>`}
+            ${fix.includes(k) && html`<span className="fq5-tag"><span className=${calm() ? '' : 'fq5-spin'}>↻</span> fix</span>`}<small>${d}</small></div>`; })}
+      </div>
+      ${mode === 'err' && html`<div className="fq5-meters" aria-label="Delay and cost">
+        <span>Delay</span><div className="fq5-meter"><i style=${{ width: delay + '%' }}></i></div>
+        <span>Cost</span><div className="fq5-meter"><i style=${{ width: delay + '%' }}></i></div></div>`}
+      </div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── RAD: prototype against the requirements, construction until the customer is satisfied, quick handover ── */
+  const RAD = [
+    { en: '<b>RAD</b> (Rapid Application Development) is built from <b>business</b>, <b>project-management</b> and <b>SRS</b> requirements. It is linear sequential with an <b>extremely short cycle</b> and reusable components.', ar: 'الـ <b>RAD</b> (Rapid Application Development) بيتبني من الـ <b>business</b> والـ <b>project-management</b> والـ <b>SRS</b> requirements. هو linear sequential بـ <b>cycle قصيرة جدًا</b> و reusable components.', p: -1 },
+    { en: '1. <b>Requirements planning</b>: collecting the project requirements and creating an outline.', ar: '<bdi dir="ltr">1.</bdi> الـ <b>Requirements planning</b>: بنجمع الـ requirements بتاعة المشروع ونعمل outline.', p: 0 },
+    { en: '2. <b>Design</b>: a prototype is built and <b>matched against the requirements</b>. Here it misses one: there is a <b>gap</b>.', ar: '<bdi dir="ltr">2.</bdi> الـ <b>Design</b>: بنبني prototype و<b>نقارنه بالـ requirements</b>. هنا فيه requirement ناقص: يعني فيه <b>gap</b>.', p: 1, proto: 1 },
+    { en: 'Because of the gap, <b>another prototype</b> is built. Prototype 2 includes all the requirements and necessary changes.', ar: 'عشان الـ gap، بنبني <b>prototype تاني</b>. الـ Prototype 2 فيه كل الـ requirements والتغييرات اللازمة.', p: 1, proto: 2 },
+    { en: '3. <b>Construction</b>: the prototype is developed and improved using <b>RAD tools</b> until <b>the customer is satisfied</b>.', ar: '<bdi dir="ltr">3.</bdi> الـ <b>Construction</b>: بنطور ونحسّن الـ prototype بالـ <b>RAD tools</b> لحد ما <b>العميل يبقى راضي</b>.', p: 2, proto: 2, loop: 1 },
+    { en: '4. <b>Testing &amp; handover</b>: <b>reusable components</b> are already tested, so testing time is reduced before delivering the final product.', ar: '<bdi dir="ltr">4.</bdi> الـ <b>Testing &amp; handover</b>: الـ <b>reusable components</b> متختبرة قبل كده، فوقت الـ testing بيقل قبل ما نسلّم الـ final product.', p: 3, proto: 2, reuse: 1 },
+    { en: '<b>Advantages</b>: fast development with prototypes, flexible to changes, customer feedback, reduced risk, high quality.<br><b>Disadvantages</b>: only for small, simple projects; and a missing reusable component can make the project fail (try the button).', ar: '<b>المميزات</b>: development سريع بالـ prototypes، ومرن (flexible) مع التغييرات، وفيه customer feedback، والـ risk أقل، والـ quality عالية.<br><b>العيوب</b>: مناسب بس للمشاريع الصغيرة والبسيطة؛ ولو reusable component ناقص ممكن المشروع يفشل (جرّب الزرار).', p: 3, proto: 2, reuse: 1, end: 1 }
+  ];
+  function Rad({ ar }) {
+    const [i, ctl] = useSteps(RAD.length, 2800);
+    const [missing, setMissing] = useState(false);
+    const s = RAD[i], PH = ['Requirements planning', 'Design (prototype)', 'Construction (RAD tools)', 'Testing & handover'];
+    const reqs = ['Req 1', 'Req 2', 'Req 3', 'Req 4'], covered = s.proto === 1 ? 3 : s.proto === 2 ? 4 : 0;
+    const box = k => 'fq5-box' + (s.p === k ? ' on' : s.p < k ? ' wait' : '');
+    const fail = s.end && missing;
+    return html`<figure className="fig fq5"><div className="fig-stage">
+      <div className="fq5-row">${['Business', 'Project management', 'SRS'].map(t => html`<span key=${t} className=${'fq5-chip' + (s.p >= 0 ? ' k' : '')}>${t}</span>`)}</div>
+      <div className="fq5-arrow">↓</div>
+      <div className=${box(0)}><b className="t">${PH[0]}</b>collect the requirements, create an outline</div>
+      <div className="fq5-arrow">↓</div>
+      <div className=${box(1)}><b className="t">${PH[1]}${s.proto ? `: Prototype ${s.proto}` : ''}</b>
+        <div className="fq5-row" style=${{ justifyContent: 'flex-start' }}>${reqs.map((r, k) => html`<span key=${r} className=${'fq5-chip' + (!s.proto ? '' : k < covered ? ' ok' : ' gap')}>${!s.proto ? r : k < covered ? '✓ ' + r : '✗ ' + r + ' (gap)'}</span>`)}</div>
+        ${s.proto === 1 && html`<div style=${{ color: 'var(--pen)', fontWeight: 700 }}>Gap → build another prototype</div>`}</div>
+      <div className="fq5-arrow">↓</div>
+      <div className=${box(2)}><b className="t">${PH[2]}</b>
+        ${s.loop ? html`<span><span className=${calm() ? '' : 'fq5-spin'}>↻</span> develop and improve → customer satisfied? → yes</span>` : 'develop and improve until the customer is satisfied'}</div>
+      <div className="fq5-arrow">↓</div>
+      <div className=${box(3)}><b className="t">${PH[3]}</b>
+        <div style=${{ fontSize: '.8rem', color: 'var(--graphite)' }}>Testing time</div>
+        <div className="fq5-bar"><i style=${{ width: s.reuse ? '38%' : '100%', background: 'color-mix(in srgb, var(--k-qa) 45%, var(--paper))' }}></i></div>
+        ${s.reuse && html`<div style=${{ fontSize: '.8rem', marginTop: '3px' }}>shorter: reusable components are already tested</div>`}
+        ${s.end && html`<div style=${{ marginTop: '8px', textAlign: 'center' }}><button className="fig-btn" aria-pressed=${String(missing)} onClick=${() => setMissing(m => !m)}>${missing ? 'Put the component back' : 'Remove a reusable component'}</button></div>`}
+        ${fail && html`<div className="fq5-fail">A missing reusable component can make the project fail.</div>`}</div>
+      </div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${RAD} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── Agile: small testable parts, short cycles, each release builds on the previous one ── */
+  const AG = [
+    { en: '<b>Agile</b> is incremental: the work is divided into <b>small, testable parts</b>, delivered in short cycles and small releases.', ar: 'الـ <b>Agile</b> incremental: الشغل بيتقسم لـ <b>أجزاء صغيرة ينفع تتختبر</b>، وبتتسلم في cycles قصيرة و releases صغيرة.', r: 0, c: -1, cy: 0, on: [] },
+    { en: 'Cycle 1: the first part is built and <b>thoroughly tested</b>, so bugs are fixed early.', ar: 'الـ Cycle 1: أول جزء بيتعمل و<b>بيتختبر كويس</b>، فالـ bugs بتتصلح بدري.', r: 0, c: 0, cy: 1, on: [0, 1] },
+    { en: '<b>Release 1</b> goes out, and the customer gives <b>feedback</b>.', ar: '<b>Release 1</b> بيطلع، والعميل بيدي <b>feedback</b>.', r: 1, c: 1, cy: 1, on: [2, 3] },
+    { en: 'Cycle 2: the next part is refined based on that user input. <b>Release 2 builds on Release 1</b> and is tested again.', ar: 'الـ Cycle 2: الجزء اللي بعده بيتحسن على حسب الـ input بتاع الـ user. <b>Release 2 بيتبني على Release 1</b> وبيتختبر تاني.', r: 2, c: 1, cy: 2, on: [0, 1, 2] },
+    { en: 'The customer <b>changes a requirement</b>. Agile is designed for continuous changes: the next short cycle simply takes it in.', ar: 'العميل <b>غيّر requirement</b>. الـ Agile معمول للتغييرات المستمرة: الـ cycle القصيرة اللي بعدها بتاخده وخلاص.', r: 2, c: 2, cy: 3, on: [3, 0], change: 1 },
+    { en: 'Cycle 3 → <b>Release 3</b>. The <b>continuous collaboration</b> of customers, developers and testers ensures that requirements are met accurately.', ar: 'الـ Cycle 3 ← <b>Release 3</b>. الـ <b>continuous collaboration</b> بين العملاء والـ developers والـ testers بيضمن إن الـ requirements تتحقق بدقة.', r: 3, c: 3, cy: 3, on: [1, 2], roles: 1 },
+    { en: 'Approaches: <b>DSDM</b>, <b>SCRUM</b>, <b>XP</b> (the most popular; it uses TDD, Figure 1.4).<br><b>Advantages</b>: flexible, feedback, fast delivery, better quality.<br><b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep.', ar: 'الـ approaches: <b>DSDM</b> و<b>SCRUM</b> و<b>XP</b> (الأشهر، وبيستخدم الـ TDD في Figure 1.4).<br><b>المميزات</b>: مرن (flexible)، وفيه feedback، وتسليم سريع، والـ quality أحسن.<br><b>العيوب</b>: محتاج العميل يشارك بشكل فعّال، صعب مع الـ teams الكبيرة، والـ scope creep.', r: 3, c: 3, cy: 3, on: [], roles: 1, apps: 1 }
+  ];
+  function Agile({ ar }) {
+    const [i, ctl] = useSteps(AG.length, 2600);
+    const s = AG[i], parts = ['Part 1', 'Part 2', 'Part 3'];
+    const CYC = ['Build a small part', 'Test it', 'Release', 'Feedback'];
+    return html`<figure className="fig fq5"><div className="fig-stage">
+      <div className="fq5-row">${parts.map((p, k) => html`<span key=${p} className=${'fq5-chip' + (s.r > k ? ' ok' : s.c >= 0 && s.r === k ? ' k' : '')}>${s.r > k ? '✓ ' : ''}${p}</span>`)}
+        ${s.change && html`<span className="fq5-chip gap">changed requirement</span>`}</div>
+      <div className="fq5-ag" style=${{ marginTop: '8px' }}>
+        <div><p className="fq5-h">Each short cycle${s.cy ? ` (cycle ${s.cy})` : ''}</p>
+          <div className="fq5-cyc">${CYC.map((t, k) => html`<span key=${t} className=${s.on.includes(k) ? 'on' : ''}>${t}</span>`)}</div>
+          ${s.on.length > 0 && !calm() && html`<div className="fq5-arrow" style=${{ marginTop: '6px' }}><span className="fq5-spin">↻</span></div>`}</div>
+        <div><p className="fq5-h">Releases</p>
+          <div className="fq5-stack">${[1, 2, 3].filter(k => s.r >= k).map(k => html`<div key=${k} className=${'fq5-rel k' + k}>Release ${k}${k > 1 ? ` (builds on ${k - 1})` : ''}</div>`)}</div></div>
+      </div>
+      <div className="fq5-roles">${['Customers', 'Developers', 'Testers'].map(t => html`<span key=${t} className=${'fq5-chip' + (s.roles ? ' k' : '')}>${t}</span>`)}</div>
+      ${s.apps && html`<div className="fq5-row">${['DSDM', 'SCRUM', 'XP → TDD'].map(t => html`<span key=${t} className="fq5-chip ok">${t}</span>`)}</div>`}
+      </div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${AG} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── Where testing sits in each model (from the notes and the summary) ── */
+  // rows: [development activity, testing activity, kind] kind y = testing done, p = test planned, n = none; 'cy' rows are cycle headings
+  const CMP = {
+    Waterfall: { rows: [['System Engineering', '', 'n'], ['Analysis', '', 'n'], ['Design', '', 'n'], ['Coding', '', 'n'], ['', 'Testing', 'y'], ['Maintenance', '', 'n']],
+      en: '<b>Waterfall</b> is sequential: testing happens <b>once</b>, after coding, so errors from early phases are found late.', ar: 'الـ <b>Waterfall</b> sequential: الـ testing بيحصل <b>مرة واحدة</b> بعد الـ coding، فالـ errors اللي في الـ phases الأولى بتتكشف متأخر.' },
+    V: { rows: [['Requirements Specifications', 'Acceptance Test Plan', 'p'], ['Functional Specifications', 'System Test Plan', 'p'], ['System Design', 'Integration Test Plan', 'p'], ['Unit Design', 'Test Cases', 'p'], ['Code', '', 'n'], ['', 'Unit Test', 'y'], ['', 'Integration Test', 'y'], ['', 'System Test', 'y'], ['', 'Acceptance Test', 'y']],
+      en: '<b>V-Model</b>: testing is an integral part. Each development stage already produces its test plan (early testing from the requirements phase), and the tests then run from low level to high level.', ar: 'الـ <b>V-Model</b>: الـ testing جزء أساسي. كل development stage بتطلّع الـ test plan بتاعها من الأول، يعني الـ testing بيبدأ بدري من الـ requirements phase. وبعدين الـ tests بتشتغل من الـ low level للـ high level.' },
+    Spiral: { rows: [['cy', 'Prototype 1'], ['Planning, Risk analysis', '', 'n'], ['Design engineering', '', 'n'], ['', 'Testing & evaluation (customer)', 'y'], ['cy', 'Prototype 2'], ['Planning, Risk analysis', '', 'n'], ['Design engineering', '', 'n'], ['', 'Testing & evaluation (customer)', 'y'], ['cy', 'Operational prototype → Release'], ['Planning, Risk analysis', '', 'n'], ['Design engineering', '', 'n'], ['', 'Testing & evaluation (customer)', 'y']],
+      en: '<b>Spiral</b>: testing is an integral part. Every cycle ends with testing and evaluation, so each prototype (usually 2 or 3) is checked before the next one; the cost is the time the iterations take.', ar: 'الـ <b>Spiral</b>: الـ testing جزء أساسي. كل cycle بتخلص بـ testing و evaluation، فكل prototype (عادةً 2 أو 3) بيتشيك قبل اللي بعده؛ والتمن هو الوقت اللي بتاخده الـ iterations.' },
+    RAD: { rows: [['Requirements planning', '', 'n'], ['Design (prototype)', 'match against requirements', 'p'], ['Construction (RAD tools)', 'customer feedback', 'p'], ['', 'Testing & handover (short: reusable components)', 'y']],
+      en: '<b>RAD</b>: each prototype is matched against the requirements, the customer judges the construction, and the final testing is short because reusable components are already tested.', ar: 'الـ <b>RAD</b>: كل prototype بيتقارن بالـ requirements، والعميل بيحكم على الـ construction، والـ testing الأخير قصير لأن الـ reusable components متختبرة قبل كده.' },
+    Agile: { rows: [['cy', 'Release 1'], ['Build a small part', 'Test it thoroughly', 'y'], ['cy', 'Release 2'], ['Build the next part', 'Test it thoroughly', 'y'], ['cy', 'Release 3'], ['Build the next part', 'Test it thoroughly', 'y']],
+      en: '<b>Agile</b>: every small release is thoroughly tested, so bugs are fixed early. The summary calls Agile the <b>most advanced and efficient</b> model; XP builds on it with TDD.', ar: 'الـ <b>Agile</b>: كل release صغير بيتختبر كويس، فالـ bugs بتتصلح بدري. الخلاصة بتقول إن الـ Agile هو <b>أكتر model متطور وكفء</b>؛ والـ XP مبني عليه وبيستخدم الـ TDD.' }
+  };
+  function Compare({ ar }) {
+    const [m, setM] = useState('Waterfall');
+    const c = CMP[m];
+    let d = 0;
+    return html`<figure className="fig fq5"><div className="fig-stage">
+      <${Modes} list=${Object.keys(CMP).map(k => [k, k])} mode=${m} setMode=${setM} />
+      <div key=${m} className="fq5-tl" role="table" aria-label=${'Development and testing in the ' + m + ' model, top to bottom in time'}>
+        <span className="hd">Development ↓ time</span><span className="hd">Testing</span>
+        ${c.rows.map((r, k) => { const delay = { animationDelay: calm() ? '0s' : (d++ * 0.22) + 's' };
+          if (r[0] === 'cy') return html`<span key=${k} className="cy" style=${delay}>${r[1]}</span>`;
+          return [html`<span key=${k + 'd'} className=${r[0] ? 'd' : 't n'} style=${delay}>${r[0]}</span>`,
+            html`<span key=${k + 't'} className=${'t ' + r[2]} style=${delay}>${r[1]}</span>`]; })}
+      </div>
+      <div className="fq5-key"><span><i style=${{ background: 'color-mix(in srgb, var(--k-qa) 18%, var(--paper))', border: '1.3px solid var(--k-qa)' }}></i>testing done</span><span><i style=${{ border: '1.3px dashed var(--k-qa)' }}></i>test planned or checked early</span></div>
+      </div>
+      <${Cap} en=${c.en + ' <b>Summary</b>: waterfall is sequential; V and Spiral use testing as an integral part, so they are more efficient than waterfall.'} ar=${c.ar + ' <b>الخلاصة</b>: الـ waterfall sequential؛ والـ V والـ Spiral بيستخدموا الـ testing كجزء أساسي، فهما أكفأ من الـ waterfall.'} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'qa-waterfall-flow': WaterfallFlow, 'qa-rad': Rad, 'qa-agile': Agile, 'qa-models-compare': Compare });
+})();

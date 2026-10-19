@@ -136,6 +136,7 @@ COURSES.qa = {
      ],
      "fig": [
       "qa-waterfall",
+      "qa-waterfall-flow",
       "qa-spiral"
      ]
     },
@@ -209,7 +210,12 @@ COURSES.qa = {
       "Summary (1.4): depending on the <b>kind of error or the reason for error</b>, bugs are classified into various types such as bugs due to conceptual error, math bugs, logical bugs, resource bugs, co-programming bugs and team working bugs.",
       "Summary (1.4): bugs in software can occur due to various reasons such as <b>human error, lack of communication, tight time lines, improper design logic, inefficient coding practices and unskilled testers</b>."
      ],
-     "fig": "qa-tdd"
+     "fig": [
+      "qa-rad",
+      "qa-agile",
+      "qa-tdd",
+      "qa-models-compare"
+     ]
     }
    ],
    "cards": [
