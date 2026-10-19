@@ -665,23 +665,29 @@ COURSES.qa = {
      "pts": [
       "Also called <b>behavioral testing</b>. Focuses on functionality <b>without knowing the internal logic</b>. The tester analyses <b>inputs and expected outputs</b> and checks the software meets requirements.",
       "Figure (Black-box): an <b>Input</b> arrow points down into a closed grey box labelled <b>Software</b>, and an <b>output</b> arrow points down out of it; the tester sees only the input and the output.",
-      "<b>Advantages</b>: no need to understand the code; quick test-case development; helps <b>expose ambiguities in specifications</b>; suitable for user-perspective (GUI) testing.",
-      "<b>Disadvantages</b>: cannot test all possible inputs; hard to design cases if requirements are unclear; bugs in complex areas may go undetected.",
+      "<b>Advantages</b>:<br>• no need to understand the code<br>• quick test-case development<br>• helps <b>expose ambiguities in specifications</b><br>• suitable for user-perspective (GUI) testing.",
+      "<b>Disadvantages</b>:<br>• cannot test all possible inputs<br>• hard to design cases if requirements are unclear<br>• bugs in complex areas may go undetected.",
       "<b>ATM example</b>: the tester acts as a customer and checks functions through the GUI (display changes when the card is detected, password masking, navigating from the main menu to a function) without knowing the internal logic.",
-      "<b>Static testing</b> = testing something that is <b>not running</b> (examining and reviewing it). <b>Dynamic testing</b> = running and using the software."
+      "<b>Static testing</b> = testing something that is <b>not running</b> (examining and reviewing it).<br><b>Dynamic testing</b> = running and using the software."
      ],
-     "fig": "qa-blackbox"
+     "fig": "qa-blackbox",
+     "figAt": {
+      "qa-blackbox": 1
+     }
     },
     {
      "h": "Static vs dynamic black-box testing",
      "pts": [
-      "<b>Static black-box</b>: testing <b>without executing</b> the software; focuses on the <b>specification</b>. Purpose: ensure completeness and appropriateness. Key document: the specification (e.g. user manual) from early SDLC. Goal: bug-free, clear, user-focused documentation.",
+      "<b>Static black-box</b>: testing <b>without executing</b> the software; focuses on the <b>specification</b>.<br>• Purpose: ensure completeness and appropriateness.<br>• Key document: the specification (e.g. user manual) from early SDLC.<br>• Goal: bug-free, clear, user-focused documentation.",
       "<b>Dynamic black-box</b>: testing by <b>executing</b> the software with data, without knowing the inside code (customer view, also called <b>exploratory</b>/behavioral testing). You should have the specification.",
       "Figure (Dynamic black-box): <b>Inputs</b> → a dark box marked <b>?</b> and labelled <b>Software</b> → <b>Outputs</b>. A callout pointing at the inputs says <b>Exploratory Testing</b>, and the caption under it is <b>behavioral testing</b>.",
-      "Steps to begin DBB testing:<br>(1) have the documents/specifications<br>(2) define test cases. Example (Windows calculator addition): 0+0=0, 0+1=1, 254+1=255, 255+1=256, 256+1=257.",
+      "Steps to begin DBB testing:<br>(1) have the documents/specifications<br>(2) define test cases.<br>Example (Windows calculator addition): 0+0=0, 0+1=1, 254+1=255, 255+1=256, 256+1=257.",
       "<b>Start with test-to-pass</b> (confirm it works normally with standard input) <b>then test-to-fail</b> (push it to its limits with extreme inputs)."
      ],
-     "fig": "qa-dynamic-bb"
+     "fig": "qa-dynamic-bb",
+     "figAt": {
+      "qa-dynamic-bb": 2
+     }
     },
     {
      "h": "Test-to-pass vs test-to-fail",
@@ -691,7 +697,10 @@ COURSES.qa = {
       "<b>Test-to-fail</b>: find weaknesses by using <b>abnormal cases</b> (forcing an error).",
       "Error messages: saving to a disk with no disk inserted. The spec says it should show an error, so it looks like test-to-pass, but you are also forcing an error, so it is test-to-fail. <b>In the end it is probably both.</b>"
      ],
-     "fig": "qa-pass-fail"
+     "fig": "qa-pass-fail",
+     "figAt": {
+      "qa-pass-fail": 1
+     }
     },
     {
      "h": "Equivalence partitioning (EP)",
@@ -702,9 +711,9 @@ COURSES.qa = {
       "Equivalence partitioning is the process of <b>methodically reducing the huge set of possible test cases into a much smaller one</b>. <b>Partition</b>: a set of test cases that test the same thing.",
       "Classes: <b>valid</b> (satisfy the condition) and <b>invalid</b> (do not satisfy it). Example: 1+1, 1+2… are one partition; 1+999999999999999999999999999 is another (it may overflow).",
       "<b>Driving license example</b>: age above 18 and at most 60 is eligible. Classes: valid = 18 to 60; invalid = below 18; invalid = above 60 → <b>3 classes</b>.",
-      "<b>Program example</b>: accepts <b>4 to 10 inputs</b>, each a <b>5-digit integer ≥ 10,000</b>. Number of inputs: less than 4 (invalid, test 3), 4–10 (valid, test 4, 7, 10), more than 10 (invalid, test 11).",
+      "<b>Program example</b>: accepts <b>4 to 10 inputs</b>, each a <b>5-digit integer ≥ 10,000</b>.<br>Number of inputs:<br>• less than 4 (invalid, test 3)<br>• 4–10 (valid, test 4, 7, 10)<br>• more than 10 (invalid, test 11).",
       "Partition the system inputs and outputs into <b>'equivalence sets'</b>.",
-      "Input values 10,000–99,999 → partitions <b>&lt;10,000</b>, <b>10,000–99,999</b>, <b>&gt;99,999</b>. <b>6 test cases</b>: 00000 (invalid special value), 09999 (invalid left boundary), 10000 (valid left boundary), 50000 (valid mid), 99999 (valid right boundary), 100000 (invalid right boundary).",
+      "Input values 10,000–99,999 → partitions <b>&lt;10,000</b>, <b>10,000–99,999</b>, <b>&gt;99,999</b>.<br><b>6 test cases</b>:<br>• 00000 (invalid special value)<br>• 09999 (invalid left boundary)<br>• 10000 (valid left boundary)<br>• 50000 (valid mid)<br>• 99999 (valid right boundary)<br>• 100000 (invalid right boundary).",
       "Figure (EP example): two partition bars.<br>• <b>Number of input values</b>: Less than 4 (Invalid) | Between 4 and 10 (Valid) | More than 10 (Invalid), with arrows at <b>3, 4, 7, 10, 11</b>.<br>• <b>Input values</b>: Less than 10000 (Invalid) | Between 10000 and 99999 (Valid) | More than 99999 (Invalid), with arrows at <b>9999 (BV), 10000, 50000 (Mid-point), 99999, 100000 (BV)</b>. A red \"Valid\" line spans the middle partition of each bar."
      ],
      "fig": "qa-ep-boundary"
@@ -712,32 +721,37 @@ COURSES.qa = {
     {
      "h": "Data testing and boundary conditions",
      "pts": [
-      "Software = <b>data</b> (keyboard input, mouse clicks, disk files, printouts…) + <b>program</b> (executable flow, transitions, logic, computations). Goal: reduce test cases using partitions based on <b>boundary conditions, sub-boundary conditions, nulls and bad data</b>.",
-      "Examples of data: the words you type into a word processor; the numbers entered into a spreadsheet; the picture printed by your photo software; the backup files stored on your floppy disk; the data being sent by your modem over the phone lines.",
+      "Software = <b>data</b> (keyboard input, mouse clicks, disk files, printouts…)<br>+ <b>program</b> (executable flow, transitions, logic, computations).<br>Goal: reduce test cases using partitions based on <b>boundary conditions, sub-boundary conditions, nulls and bad data</b>.",
+      "Examples of data:<br>• the words you type into a word processor<br>• the numbers entered into a spreadsheet<br>• the picture printed by your photo software<br>• the backup files stored on your floppy disk<br>• the data being sent by your modem over the phone lines.",
       "<b>Boundary conditions</b>: situations at the <b>edge of the planned operational limits</b>. Programming is susceptible to problems at its edges (like the edge of a cliff).",
       "Figure 5.5: \"A software boundary is much like the edge of a cliff\" (a person walking with a dog right at the edge of a cliff).",
-      "Text field 1–255 chars: valid 1, 255 (and 254); invalid <b>0 and 256</b>. CD-R: very small file, file at the disc limit, empty file, file too large. Print multiple pages per sheet: 1, the maximum, 0 and max+1. 9-digit ZIP: 00000-0000, 99999-9999, one digit more or less.",
-      "<b>Bugs increase at the boundaries</b>, but testing the edges only may not be sufficient, so we must use equivalence partitions to test all data in, out of and at the boundary.",
-      "Testing only the edges may not be enough: use partitions to test data <b>in / out / at</b> the boundary. Test: data that works, data that does not work, data at the boundary. Floppy example: very small file, very large file that fits, empty file, file too large.",
+      "<b>Boundary examples</b>:<br>• Text field 1–255 chars: valid 1, 255 (and 254); invalid <b>0 and 256</b>.<br>• CD-R: very small file, file at the disc limit, empty file, file too large.<br>• Print multiple pages per sheet: 1, the maximum, 0 and max+1.<br>• 9-digit ZIP: 00000-0000, 99999-9999, one digit more or less.",
+      "<b>Bugs increase at the boundaries</b>, but testing the edges only may not be sufficient, so we must use equivalence partitions to test all data in, out of and at the boundary.<br>• Test: data that works, data that does not work, data at the boundary.<br>• Floppy example: very small file, very large file that fits, empty file, file too large.",
       "Floppy disk program (write and read from a floppy disk): boundary = <b>max file, min file</b>. <b>Searching for boundaries in software is a very important task.</b>"
      ],
-     "fig": "qa-cliff"
+     "fig": "qa-cliff",
+     "figAt": {
+      "qa-cliff": 3
+     }
     },
     {
      "h": "State testing",
      "pts": [
       "<b>Software state</b>: the condition or mode the software is currently in (e.g. Paint's pencil state vs airbrush state). <b>State testing</b> verifies the program's logic through its states and the <b>transitions</b> between them.",
-      "A <b>state transition map</b> (from the spec or drawn by you with boxes, arrows, circles) shows:<br>(1) each unique state<br>(2) the input/condition that moves from one state to the next<br>(3) conditions set and output produced when a state is entered or exited. Draw it <b>from the user's view</b>.",
-      "The state transition map may be in the specification, or we may make it. We can use any diagram that <b>all the team accept</b> (e.g. boxes, arrows, circles).",
+      "A <b>state transition map</b> (from the spec or drawn by you with boxes, arrows, circles) shows:<br>(1) each unique state<br>(2) the input/condition that moves from one state to the next<br>(3) conditions set and output produced when a state is entered or exited.<br>The state transition map may be in the specification, or we may make it. We can use any diagram that <b>all the team accept</b> (e.g. boxes, arrows, circles).<br>Draw it <b>from the user's view</b>.",
       "Figure 5.10 (state transition diagrams can be drawn using different techniques), the same password example drawn two ways.<br>• <b>Boxes and arrows</b>: Idle → (Esc Key Pressed / Display Password Box) → <b>Waiting for password</b>; Incorrect Password / Clear the field loops back to Waiting for password; Correct Password / Initiate Destruct leaves it.<br>• <b>Circles</b>: Idle (double circle) → Esc Key Pressed → <b>Wait for Password</b> → Correct Password; Incorrect Password loops back to Wait for Password.<br>Remember: create your map from the <b>user's view</b> of the software.",
       "<b>5 ways to reduce states/transitions to test</b>:<br>(1) visit each state at least once<br>(2) test the most common state-to-state transitions<br>(3) test the least common paths<br>(4) test all error states and returning from them<br>(5) test random transitions.",
-      "Check all <b>state variables</b>. Paint's startup state: window as last shown, same size as last time, blank drawing area, tool box/color box/status bar shown, pencil selected, black on white, document \"untitled\".",
+      "Check all <b>state variables</b>.<br>Paint's startup state:<br>• window as last shown<br>• same size as last time<br>• blank drawing area<br>• tool box/color box/status bar shown<br>• pencil selected<br>• black on white<br>• document \"untitled\".",
       "Figure .11 (<b>The Windows Paint opening screen in the startup state</b>): a window titled \"untitled - Paint\" with the menu File, Edit, View, Image, Colors, Help; the tool box on the left with the <b>pencil</b> tool selected; a blank white drawing area with the pencil cursor; the color box at the bottom (black foreground on white background) and the status bar \"For Help, click Help Topics on the Help Menu\" with the cursor position 194,155."
      ],
      "fig": [
       "qa-paint-states",
       "qa-password-states"
-     ]
+     ],
+     "figAt": {
+      "qa-password-states": 2,
+      "qa-paint-states": 5
+     }
     },
     {
      "h": "Worked example: media player state diagram",
@@ -1167,11 +1181,11 @@ COURSES.qa = {
     {
      "h": "What white-box testing does",
      "pts": [
-      "Unit outline: <b>1. Static white-box</b> (examining design and code, formal review, coding standards and guidelines, code review checklist) and <b>2. Dynamic white-box</b> (vs debugging, testing the pieces, data coverage, code coverage).",
+      "Unit outline:<br>(1) <b>Static white-box</b>: examining design and code, formal review, coding standards and guidelines, code review checklist.<br>(2) <b>Dynamic white-box</b>: vs debugging, testing the pieces, data coverage, code coverage.",
       "White-box testing helps a tester:<br>(1) test <b>independent paths</b> within a unit or module<br>(2) test <b>logical correctness</b> (both the true and false conditions)<br>(3) test <b>loops</b>, specifically at their boundaries, and <b>check the operational boundary correctness</b><br>(4) test <b>internal data structures</b> to ensure their validity.",
       "Also called <b>glass box</b>, <b>structural</b>, <b>open box</b> or <b>clear box</b> testing, because it examines internal workings.",
-      "<b>Static white-box</b> (examining the design and code) has 3 parts: <b>Formal Review</b> (peer review, walkthrough, inspection), <b>Coding Standards and Guidelines</b>, <b>Code Review Checklist</b>.",
-      "Figure (Static White Box Testing tree): the top box <b>Static White Box Testing</b> has arrows down to three boxes: <b>Formal Review</b>, <b>Coding Standards and Guidelines</b> and <b>Code Review Checklist</b>. From Formal Review, three arrows go to <b>Peer Review</b>, <b>Walkthrough</b> and <b>Inspection</b>. A vertical label on the left reads \"Examining the Design and Code\". Under the tree: \"For a successful formal review, 4 essential elements are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report.\" The next slide repeats the same tree."
+      "<b>Static white-box</b> (examining the design and code) has 3 parts:<br>• <b>Formal Review</b> (peer review, walkthrough, inspection)<br>• <b>Coding Standards and Guidelines</b><br>• <b>Code Review Checklist</b>.",
+      "Figure (Static White Box Testing tree): the top box <b>Static White Box Testing</b> has arrows down to three boxes: <b>Formal Review</b>, <b>Coding Standards and Guidelines</b> and <b>Code Review Checklist</b>.<br>From Formal Review, three arrows go to <b>Peer Review</b>, <b>Walkthrough</b> and <b>Inspection</b>.<br>A vertical label on the left reads \"Examining the Design and Code\".<br>Under the tree: \"For a successful formal review, 4 essential elements are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report.\" The next slide repeats the same tree."
      ],
      "fig": "qa-static-wb"
     },
@@ -1189,7 +1203,7 @@ COURSES.qa = {
      "h": "Coding standards and guidelines",
      "pts": [
       "<b>Standards</b> are rules that <b>must be adhered to</b> (mandatory). <b>Guidelines</b> are instructions which <b>enable a person to follow a set of standards</b> (<b>not really mandatory</b>).",
-      "<b>3 reasons</b> to follow them:<br>(1) <b>Reliability</b>: code written based on standards and guidelines is more reliable and secure than code that is not<br>(2) <b>Readability / Maintainability</b>: such code is easier to understand and maintain<br>(3) <b>Portability</b>: code must be portable enough to run on different hardware and different compilers. <b>When standards and guidelines are followed, it becomes easier for people to access the code.</b>"
+      "<b>3 reasons</b> to follow them:<br>(1) <b>Reliability</b>: code written based on standards and guidelines is more reliable and secure than code that is not<br>(2) <b>Readability / Maintainability</b>: such code is easier to understand and maintain<br>(3) <b>Portability</b>: code must be portable enough to run on different hardware and different compilers.<br><b>When standards and guidelines are followed, it becomes easier for people to access the code.</b>"
      ]
     },
     {
@@ -1236,7 +1250,7 @@ COURSES.qa = {
       "<b>Data declaration errors</b> occur due to improper declaration of variables and constants. Check:<br>(a) if the variables are assigned the correct length, type and storage class<br>(b) if a variable is <b>initialized at the time of declaration</b>, and also whether it is properly initialized and consistent with its type<br>(c) if there are any variables with similar names<br>(d) if there are any variables declared which are never referenced or just referenced once <b>(should be a constant)</b>.",
       "<b>Computation errors</b> appear due to errors in calculations, <b>where the expected results are not obtained due to false calculations</b>. Check:<br>(a) if any calculations use variables which have different data types (ex: adding integers and floating point numbers)<br>(b) if any calculations use variables which have the same data type but vary in size (ex: adding long integers to short integers)<br>(c) if overflow in the middle of a numeric calculation is possible<br>(d) if it is ever possible for a divisor to be zero.",
       "<b>Comparison errors</b> occur during boundary conditions such as 'less than, greater than, equal, not equal, and true or false'. Check:<br>(a) if the comparison is correct (EX: using &lt; instead of &lt;=)<br>(b) whether the operands of a Boolean operator are correct (EX: checking if an integer variable containing integer values is used in a Boolean calculation).",
-      "<b>Control flow errors</b> appear due to improper behavior of loops and control structures in a language. <b>Input/output errors</b> relate to errors such as reading from a file, accepting input from a keyboard or mouse, and writing to an output device such as a file or screen."
+      "• <b>Control flow errors</b> appear due to improper behavior of loops and control structures in a language.<br>• <b>Input/output errors</b> relate to errors such as reading from a file, accepting input from a keyboard or mouse, and writing to an output device such as a file or screen."
      ]
     },
     {
@@ -1252,7 +1266,7 @@ COURSES.qa = {
       "A <b>validation check</b>: running test cases with input values to ensure the application works according to the spec throughout execution.",
       "It covers:<br>(a) testing low-level functions, procedures, subroutines or libraries directly<br>(b) testing the whole program at the top level, adjusting test cases based on what we know of its operation<br>(c) reading variables and state information to check the tests do what they were designed to do, and forcing the software to do things that are hard to test normally.",
       "<b>Dynamic white-box testing vs debugging</b>: testing <b>finds</b> bugs; debugging <b>fixes</b> the bugs found during testing.",
-      "<b>Testing the pieces</b> = unit and integration testing. Integration testing strategies (figure): <b>Bottom-up</b>, <b>Top-down</b>, <b>Umbrella approach</b>.",
+      "<b>Testing the pieces</b> = unit and integration testing.<br>Integration testing strategies (figure): <b>Bottom-up</b>, <b>Top-down</b>, <b>Umbrella approach</b>.",
       "Figure (Unit and Integration Testing): a box <b>Integration testing</b> with a line that splits into three arrows down to <b>Bottom Up Testing</b>, <b>Top Down Testing</b> and <b>Umbrella Approach Testing</b>."
      ],
      "fig": "qa-integration"
@@ -1260,7 +1274,7 @@ COURSES.qa = {
     {
      "h": "Data coverage and code coverage",
      "pts": [
-      "<b>Data coverage</b>: data tracked completely through the software (values stored in variables, constants, arrays and data structures; keyboard and mouse input, files, screen input and output, and data sent to modems, networks and so on). In the data coverage method, the code is divided into <b>data and states</b>, <b>relating to program flow</b>, which is similar to black-box testing, so it is easy to map white-box and black-box cases. Types: <b>Data flow</b>, <b>Sub-boundaries</b>, <b>Error forcing</b>.",
+      "<b>Data coverage</b>: data tracked completely through the software (values stored in variables, constants, arrays and data structures; keyboard and mouse input, files, screen input and output, and data sent to modems, networks and so on).<br>In the data coverage method, the code is divided into <b>data and states</b>, <b>relating to program flow</b>, which is similar to black-box testing, so it is easy to map white-box and black-box cases.<br>Types: <b>Data flow</b>, <b>Sub-boundaries</b>, <b>Error forcing</b>.",
       "<b>Code coverage</b> has 3 types: <b>Statement coverage</b>, <b>Path coverage</b> (branch), <b>Condition coverage</b>.",
       "Figure (4.2.4 Code Coverage): a box <b>Code Coverage</b> with one arrow that splits into three arrows to <b>Statement Coverage</b>, <b>Path Coverage</b> and <b>Condition Coverage</b>. The same figure appears on the statement coverage and path coverage slides.",
       "<b>Statement coverage</b>: every statement runs at least once. Example: 4 sequential PRINT lines, so one test runs all of them.",
@@ -1268,7 +1282,10 @@ COURSES.qa = {
       "<b>Path coverage</b>: every path (both branches of every IF). Example: IF Date$ = \"25-12-2008\" → PRINT \"MERRY CHRISTMAS\". 2 tests: Date = 25-12-2008 runs 1,2,3,4,5,6,7; any other date runs 1,2,5,6,7.",
       "Path coverage code:<br><code>1: PRINT \"Good Morning\"</code><br><code>2: IF Date$ = \"25-12-2008\" then</code><br><code>3: PRINT \"MERRY CHRISTMAS\"</code><br><code>4: END IF</code><br><code>5: PRINT \"The date id:\"; Date$</code><br><code>6: PRINT \"The time:\"; Time$</code><br><code>7: END</code>"
      ],
-     "fig": "qa-code-coverage"
+     "fig": "qa-code-coverage",
+     "figAt": {
+      "qa-code-coverage": 2
+     }
     },
     {
      "h": "Condition coverage worked example",
@@ -1734,7 +1751,7 @@ COURSES.qa = {
      "pts": [
       "The opening figure repeats the V-model: the left side going <b>down</b> (requirements spec → functional spec → system design → unit design → code) is <b>verification</b>. The right side going <b>up</b> (unit test → integration test → system test → acceptance test) is <b>validation</b>.",
       "Test plans link the two sides: acceptance test plan, system test plan, integration test plan and unit test cases.",
-      "Figure 1.3 (V Model): the left column goes down with solid arrows: <b>Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</b>; the right column goes up from Code with solid arrows: <b>Unit Test → Integration Test → System Test → Acceptance Test</b>. Dotted arrows cross from left to right: Requirements Specifications → Acceptance Test, labelled <b>Acceptance Test Plan</b>; Functional Specifications → System Test, labelled <b>System Test Plan</b>; System Design → Integration Test, labelled <b>Integration Test Plan</b>; the words <b>Test Cases</b> sit between Unit Design and Unit Test. A big arrow pointing down on the left is labelled <b>Verification</b>, and a big arrow pointing up on the right is labelled <b>Validation</b>."
+      "Figure 1.3 (V Model):<br>• <b>Left column</b>: goes down with solid arrows: <b>Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</b>.<br>• <b>Right column</b>: goes up from Code with solid arrows: <b>Unit Test → Integration Test → System Test → Acceptance Test</b>.<br>• <b>Dotted arrows</b> cross from left to right: Requirements Specifications → Acceptance Test, labelled <b>Acceptance Test Plan</b>; Functional Specifications → System Test, labelled <b>System Test Plan</b>; System Design → Integration Test, labelled <b>Integration Test Plan</b>.<br>• The words <b>Test Cases</b> sit between Unit Design and Unit Test.<br>• A big arrow pointing down on the left is labelled <b>Verification</b>, and a big arrow pointing up on the right is labelled <b>Validation</b>."
      ],
      "fig": "qa-v-verify"
     },
@@ -1779,7 +1796,7 @@ COURSES.qa = {
       ]
      ],
      "pts": [
-      "Figure (control flow graph of foo): six circles: 1 at the top, 2 to its lower right, 3 below 1, then 5 (left) and 4 (right), and 6 at the bottom. Thick solid arrows 1 → 2 and 3 → 4 are <b>True Branch</b>; dotted arrows 1 → 3 and 3 → 5 are <b>False Branch</b>; thin arrows 2 → 3, 4 → 6 and 5 → 6 are <b>Sequential Branch</b>. A legend at the top right lists True Branch, Sequential Branch and False Branch; the caption reads \"control flow graph\"."
+      "Figure (control flow graph of foo):<br>• <b>Nodes</b>: six circles: 1 at the top, 2 to its lower right, 3 below 1, then 5 (left) and 4 (right), and 6 at the bottom.<br>• Thick solid arrows 1 → 2 and 3 → 4 are <b>True Branch</b>.<br>• Dotted arrows 1 → 3 and 3 → 5 are <b>False Branch</b>.<br>• Thin arrows 2 → 3, 4 → 6 and 5 → 6 are <b>Sequential Branch</b>.<br>• A legend at the top right lists True Branch, Sequential Branch and False Branch; the caption reads \"control flow graph\"."
      ],
      "fig": "qa-foo-cfg"
     },
@@ -1808,7 +1825,7 @@ COURSES.qa = {
      "pts": [
       "Exercise: Apply black box and white box on the triangle problem. Show <b>Function testing, statement, and Path (branch) coverage</b> of the triangle problem.",
       "Pseudocode:<br><code>read a,b,c;</code><br><code>type=\"scalene\";</code><br><code>if (a==b or a==c or b==c) type=\"isosceles\";</code><br><code>if (a==b and a==c) type=\"equilateral\";</code><br><code>if (a&gt;=b+c or b&gt;=a+c or c&gt;=a+b) type=\"not a triangle\";</code><br><code>if (a&lt;=0 or b&lt;=0 or c&lt;=0) type=\"bad inputs\";</code><br><code>print type</code>",
-      "Domain split into 3 subdomains: <b>scalene</b> (no sides equal), <b>isosceles</b> (two equal), <b>equilateral</b> (all equal), plus 2 error subdomains: <b>bad inputs</b> and <b>not a triangle</b>. Each test case must state the expected output."
+      "Domain split into 3 subdomains:<br>• <b>scalene</b>: no sides equal.<br>• <b>isosceles</b>: two equal.<br>• <b>equilateral</b>: all equal.<br>Plus 2 error subdomains: <b>bad inputs</b> and <b>not a triangle</b>.<br>Each test case must state the expected output."
      ]
     },
     {
@@ -1983,7 +2000,7 @@ COURSES.qa = {
       "<b>Using the test cases of the slide's table</b>, <b>statement coverage minimum = 2 tests</b>: (4,4,4) + (0,1,0) run every line A–K (only (4,4,4) reaches F, and only (0,1,0) reaches H and J).",
       "<b>Using the test cases of the slide's table</b>, <b>branch coverage minimum = 3 tests</b>: add (3,4,5), the only column that makes C false. (0,1,0) makes E false and G, I true; (4,4,4) makes E true and G, I false. So every IF is both true and false.",
       "‡ The slide gives no answer. With <b>any</b> input (not only the table's columns) the minimums are smaller: (0,0,0) alone runs every line A to K (0==0 sets isosceles and equilateral, 0 ≥ 0+0 sets not a triangle, 0 ≤ 0 sets bad inputs), so <b>statement coverage needs 1 test</b>. (0,0,0) makes every IF true and (3,4,5) makes every IF false, so <b>branch coverage needs 2 tests</b> (one test cannot make an IF both true and false).",
-      "Figure (Control flow graph for triangle program): a chain of nodes <b>a → c → e → g → i</b> joined by straight arrows down. a also branches to <b>isosceles</b>, c to <b>equilateral</b>, e to <b>not a triangle</b> and g to <b>bad inputs</b>; each side node has an arrow back into the next chain node (isosceles → c, equilateral → e, not a triangle → g, bad inputs → i)."
+      "Figure (Control flow graph for triangle program):<br>• <b>Chain</b>: a chain of nodes <b>a → c → e → g → i</b> joined by straight arrows down.<br>• <b>Branches</b>: a also branches to <b>isosceles</b>, c to <b>equilateral</b>, e to <b>not a triangle</b> and g to <b>bad inputs</b>.<br>• <b>Arrows back</b>: each side node has an arrow back into the next chain node (isosceles → c, equilateral → e, not a triangle → g, bad inputs → i)."
      ],
      "fig": "qa-triangle-cfg"
     },
@@ -2028,7 +2045,7 @@ COURSES.qa = {
     {
      "h": "OOP testing",
      "pts": [
-      "Testing object-oriented software presents <b>some new challenges</b>. <b>Many conventional techniques are still appropriate</b>; for example, functional testing of OO software is no different from functional testing of conventional software.",
+      "Testing object-oriented software presents <b>some new challenges</b>. <b>Many conventional techniques are still appropriate</b>.",
       "Functional testing of OO software is <b>no different</b> from conventional software: test cases come from the required functionality in the requirements document. <b>Structural</b> testing of OOP is very different.",
       "Two structural testing approaches will be covered: <b>Method-message (MM) testing</b> and <b>function pair testing</b>.",
       "Conventional software uses coverage criteria (statement, branch, data flow). These can be applied to OO, but statement and branch coverage <b>do not seem appropriate</b> for OO complexity: the <b>interactions between methods</b> must be tested.",
@@ -2039,10 +2056,10 @@ COURSES.qa = {
     {
      "h": "Stack example: MM and FP",
      "pts": [
-      "States: <b>Empty, Normal, Full</b>. new → Empty. push: Empty→Normal, Normal→Normal, Normal→Full, Full→error. pop: Empty→error, Normal→Normal, Normal→Empty, Full→Normal.",
-      "Figure (stack state machine; slide: \"Find MM and FP of the stack in the following figure\"): three states <b>Empty</b>, <b>Normal</b> and <b>Full</b>. A black start dot has an arrow <b>New</b> into Empty. <b>Push</b> goes Empty → Normal and Normal → Full; <b>Pop</b> goes Full → Normal and Normal → Empty. Under Normal, a loop labelled <b>Push pop</b> leaves Normal and comes back to it. A <b>Pop</b> arrow leaves Empty and a <b>Push</b> arrow leaves Full, both pointing to no state (the error cases).",
+      "States: <b>Empty, Normal, Full</b>.<br>• <b>new</b> → Empty.<br>• <b>push</b>: Empty→Normal, Normal→Normal, Normal→Full, Full→error.<br>• <b>pop</b>: Empty→error, Normal→Normal, Normal→Empty, Full→Normal.",
+      "Figure (stack state machine; slide: \"Find MM and FP of the stack in the following figure\"):<br>• Three states <b>Empty</b>, <b>Normal</b> and <b>Full</b>.<br>• A black start dot has an arrow <b>New</b> into Empty.<br>• <b>Push</b> goes Empty → Normal and Normal → Full; <b>Pop</b> goes Full → Normal and Normal → Empty.<br>• Under Normal, a loop labelled <b>Push pop</b> leaves Normal and comes back to it.<br>• A <b>Pop</b> arrow leaves Empty and a <b>Push</b> arrow leaves Full, both pointing to no state (the error cases).",
       "<b>MM</b>: a simple sequence of <b>create, push and pop</b> might achieve MM testing.",
-      "<b>FP (14 pairs)</b>: 1 new-pop (empty, error); 2 new-push; 3 push(from empty)-push; 4 push(from empty)-pop; 5 push(normal→normal)-push (still normal); 6 push(normal→normal)-push (into full); 7 push(normal→normal)-pop; 8 push(normal→full)-push (error); 9 push(normal→full)-pop; 10 pop(normal→normal)-push <b>(still in normal)</b>; 11 pop(normal→normal)-pop (still normal); 12 pop(normal→normal)-pop (into empty); 13 pop(into empty)-push; 14 pop(into empty)-pop (error)."
+      "<b>FP (14 pairs)</b>:<br>(1) new-pop (empty, error)<br>(2) new-push<br>(3) push(from empty)-push<br>(4) push(from empty)-pop<br>(5) push(normal→normal)-push (still normal)<br>(6) push(normal→normal)-push (into full)<br>(7) push(normal→normal)-pop<br>(8) push(normal→full)-push (error)<br>(9) push(normal→full)-pop<br>(10) pop(normal→normal)-push <b>(still in normal)</b><br>(11) pop(normal→normal)-pop (still normal)<br>(12) pop(normal→normal)-pop (into empty)<br>(13) pop(into empty)-push<br>(14) pop(into empty)-pop (error)."
      ],
      "fig": "qa-stack-fp"
     },
@@ -2387,7 +2404,7 @@ COURSES.qa = {
     {
      "h": "Introduction and why web testing matters",
      "pts": [
-      "Objectives: fundamentals of web-page testing; black-box testing of web pages; white-box and gray-box testing; configuration and compatibility testing.",
+      "Objectives:<br>• fundamentals of web-page testing<br>• black-box testing of web pages<br>• white-box and gray-box testing<br>• configuration and compatibility testing.",
       "A <b>web site</b> is a collection of one or more web pages (text, graphics, links, sounds…) grouped under the <b>same domain</b>. It must have a <b>domain name</b> and a <b>web host</b>.",
       "Importance: a site built for Internet Explorer may fail in Mozilla, Chrome or on Linux, so testing makes sure the site works on <b>every browser and platform</b>."
      ]
@@ -2396,8 +2413,8 @@ COURSES.qa = {
      "h": "Web page fundamentals",
      "pts": [
       "<b>1. Home page</b>: the default page. It usually has a header at the top with the <b>source name</b> of the site (text only, or designs with graphics).",
-      "<b>2. Links</b> connect local and remote pages to the home page. Used to: navigate to other pages; direct the user to a different location; download files; open other Internet tools such as the default e-mail client (e.g. Outlook).",
-      "<b>3. Content</b> is the <b>most important</b> part. Forms: text documents, graphics, sounds, downloadable movie clips, fields for user data, rotating advertisements, dynamically changing text."
+      "<b>2. Links</b> connect local and remote pages to the home page. Used to:<br>• navigate to other pages<br>• direct the user to a different location<br>• download files<br>• open other Internet tools such as the default e-mail client (e.g. Outlook).",
+      "<b>3. Content</b> is the <b>most important</b> part. Forms:<br>• text documents<br>• graphics<br>• sounds<br>• downloadable movie clips<br>• fields for user data<br>• rotating advertisements<br>• dynamically changing text."
      ]
     },
     {
@@ -2484,17 +2501,21 @@ COURSES.qa = {
      "h": "Black-box testing of a web page",
      "pts": [
       "Example screen: the Infosys web site shows the fundamental elements: <b>text, graphics and hyperlinks</b> (plus forms).",
-      "Figure 8.5 (Website with Texts, Hyperlinks, and Graphics): a screen image of the Infosys home page. Top left: the Infosys logo with the slogan \"Building Tomorrow's Enterprise\". Top right: links Global [Change] | Contact Us | Careers | Investors | Blogs | Microsites, and a Search box. Navigation bar: Home, Building Tomorrow's Enterprise, Offerings, Global Sourcing, Infosys Labs, Sustainability, Newsroom, About Us. Below it a banner picture (hands shaping a clay pot) with the text \"TRANSFORM. Build Tomorrow's Enterprise Today\".",
+      "Figure 8.5 (Website with Texts, Hyperlinks, and Graphics): a screen image of the Infosys home page.<br>• <b>Top left</b>: the Infosys logo with the slogan \"Building Tomorrow's Enterprise\".<br>• <b>Top right</b>: links Global [Change] | Contact Us | Careers | Investors | Blogs | Microsites, and a Search box.<br>• <b>Navigation bar</b>: Home, Building Tomorrow's Enterprise, Offerings, Global Sourcing, Infosys Labs, Sustainability, Newsroom, About Us.<br>• <b>Below it</b>: a banner picture (hands shaping a clay pot) with the text \"TRANSFORM. Build Tomorrow's Enterprise Today\".",
       "<b>Text</b>: target audience level, terminology, depth of content, subject matter, accuracy, spelling, punctuation, correct contact info (phones, addresses).",
       "<b>Hyperlinks</b>: each goes to the correct destination and opens in the same tab or a new window as specified (if no spec, check that it works). Links must be <b>obvious</b> (underlined text, mouse pointer changes). For an e-mail link, send an e-mail and verify you get a response.",
       "<b>Graphics</b>: all load and display properly. A missing or wrongly named graphic will not load, and the page shows an error in its place.",
-      "<b>Forms</b> are text boxes, list boxes, and other fields that allow a user to <b>enter or select information</b> on a Web page (e.g. Google's Gmail sign-up form). Check: are the form fields positioned properly? Are the fields the correct size? Do they accept correct data? Do they reject bad data?",
-      "Figure 8.6 (Google's Form): the \"Get started with Gmail\" sign-up form. Fields: First name; Last name; Desired Login Name (followed by @gmail.com, with \"Examples: JSmith, John.Smith\" and a \"check availability!\" button); Choose a password (\"Minimum of 8 characters in length\", with a \"Password strength\" indicator); Re-enter password; and two ticked checkboxes, \"Stay signed in\" and \"Enable Web History\" (with a \"Learn More\" link)."
+      "<b>Forms</b> are text boxes, list boxes, and other fields that allow a user to <b>enter or select information</b> on a Web page (e.g. Google's Gmail sign-up form). Check:<br>• Are the form fields positioned properly?<br>• Are the fields the correct size?<br>• Do they accept correct data?<br>• Do they reject bad data?",
+      "Figure 8.6 (Google's Form): the \"Get started with Gmail\" sign-up form. Fields:<br>• First name<br>• Last name<br>• Desired Login Name (followed by @gmail.com, with \"Examples: JSmith, John.Smith\" and a \"check availability!\" button)<br>• Choose a password (\"Minimum of 8 characters in length\", with a \"Password strength\" indicator)<br>• Re-enter password<br>• and two ticked checkboxes, \"Stay signed in\" and \"Enable Web History\" (with a \"Learn More\" link)."
      ],
      "fig": [
       "qa-web-parts",
       "qa-gmail-form"
-     ]
+     ],
+     "figAt": {
+      "qa-web-parts": 4,
+      "qa-gmail-form": 6
+     }
     },
     {
      "h": "White-box and gray-box testing of a web site",
@@ -2509,11 +2530,16 @@ COURSES.qa = {
      ]
     },
     {
-     "h": "Configuration and compatibility testing; tools",
+     "h": "Configuration and compatibility testing",
      "pts": [
-      "<b>Hardware configurations</b>: 1 CPU types, 2 RAM, 3 graphics cards, 4 video capture cards, 5 audio cards, 6 monitors/display devices, 7 network cards.",
-      "<b>Compatibility</b>: 1 various font sizes, 2 browsers with CSS, 3 various screen resolutions, 4 various memory sizes, 5 different network environments.",
-      "<b>Automatic web testing tools</b> check: browser compatibility; load, stress and performance; broken hyperlinks; web functional/GUI testing; spelling; security; database; OOP; network; web applications (<b>Selenium</b> and <b>Cypress</b>)."
+      "<b>Hardware configurations</b>:<br>(1) CPU types<br>(2) RAM<br>(3) graphics cards<br>(4) video capture cards<br>(5) audio cards<br>(6) monitors/display devices<br>(7) network cards.",
+      "<b>Compatibility</b>:<br>(1) various font sizes<br>(2) browsers with CSS<br>(3) various screen resolutions<br>(4) various memory sizes<br>(5) different network environments."
+     ]
+    },
+    {
+     "h": "Automatic web testing tools",
+     "pts": [
+      "<b>Automatic web testing tools</b> check:<br>• browser compatibility<br>• load, stress and performance<br>• broken hyperlinks<br>• web functional/GUI testing<br>• spelling<br>• security<br>• database<br>• OOP<br>• network<br>• web applications (<b>Selenium</b> and <b>Cypress</b>)."
      ]
     }
    ],
@@ -2879,19 +2905,19 @@ COURSES.qa = {
     {
      "h": "Testing vs QA; roles and tasks",
      "pts": [
-      "<b>Software testing</b>: part of SQA; detection-oriented; evaluates spec, design and coding; performed under specified (normal and abnormal) conditions; main goal: find and report bugs; done by testers.",
-      "<b>QA</b>: broader than testing; prevents defects; ensures correct processes, standards and methodologies; uses <b>ISO / CMM</b> models.",
+      "<b>Software testing</b>:<br>• part of SQA<br>• detection-oriented<br>• evaluates spec, design and coding<br>• performed under specified (normal and abnormal) conditions<br>• main goal: find and report bugs<br>• done by testers.",
+      "<b>QA</b>:<br>• broader than testing<br>• prevents defects<br>• ensures correct processes, standards and methodologies<br>• uses <b>ISO / CMM</b> models.",
       "<b>Tasks of testing</b>:<br>(1) choose the test implementation approach<br>(2) execute tests to find bugs<br>(3) prepare verification and validation reports<br>(4) attend project and design review meetings.",
-      "<b>Role of the tester</b>: take responsibility for bugs found; track bugs through their life cycle; convince the development team to fix them.",
-      "<b>QA responsibilities</b>: inspect the development process; find improvements that prevent bugs; scope is larger than the testing team; monitor and evaluate processes and testing activities.",
-      "<b>QA task examples</b>: develop standard processes; create guidelines (requirements, design, coding); use checklists for each stage; define quality metrics and criteria."
+      "<b>Role of the tester</b>:<br>• take responsibility for bugs found<br>• track bugs through their life cycle<br>• convince the development team to fix them.",
+      "<b>QA responsibilities</b>:<br>• inspect the development process<br>• find improvements that prevent bugs<br>• scope is larger than the testing team<br>• monitor and evaluate processes and testing activities.",
+      "<b>QA task examples</b>:<br>• develop standard processes<br>• create guidelines (requirements, design, coding)<br>• use checklists for each stage<br>• define quality metrics and criteria."
      ]
     },
     {
      "h": "Quality management in IT and in organizations",
      "pts": [
       "Quality management in IT is often called <b>ITSM (IT Service Management)</b>. Goal: deliver IT services at an <b>agreed-upon level of quality</b>.",
-      "Categories: <b>IT Service Support</b> = processes for the <b>efficient delivery of IT operational services</b>. <b>IT Service Delivery</b> = processes for <b>long-term planning, control and management</b> of IT services.",
+      "Categories:<br>• <b>IT Service Support</b> = processes for the <b>efficient delivery of IT operational services</b>.<br>• <b>IT Service Delivery</b> = processes for <b>long-term planning, control and management</b> of IT services.",
       "SQA is not just testing. It includes establishing standards and methodologies, monitoring and evaluating the development process, and correcting errors during development while preventing their recurrence. Quality metrics assess how far quality requirements are met."
      ]
     },
@@ -2933,9 +2959,9 @@ COURSES.qa = {
     {
      "h": "SQA metrics and indicators",
      "pts": [
-      "<b>Metrics</b>: rules for measuring software attributes (code size, complexity). <b>Indicators</b>: variables reflecting process outcomes (number of detected bugs).",
-      "<b>Product metrics</b> measure the <b>quality of the final product</b> (e.g. code size, number of documented pages). <b>Process metrics</b> measure the development process (e.g. time taken, development methodology).",
-      "<b>9 common metrics</b>: code coverage; bugs per line of code; cyclomatic complexity; function point analysis; number of classes and interfaces; cohesion; coupling; order of growth; source lines of code."
+      "• <b>Metrics</b>: rules for measuring software attributes (code size, complexity).<br>• <b>Indicators</b>: variables reflecting process outcomes (number of detected bugs).",
+      "• <b>Product metrics</b> measure the <b>quality of the final product</b> (e.g. code size, number of documented pages).<br>• <b>Process metrics</b> measure the development process (e.g. time taken, development methodology).",
+      "<b>9 common metrics</b>:<br>• code coverage<br>• bugs per line of code<br>• cyclomatic complexity<br>• function point analysis<br>• number of classes and interfaces<br>• cohesion<br>• coupling<br>• order of growth<br>• source lines of code."
      ]
     },
     {
@@ -3309,9 +3335,9 @@ COURSES.qa = {
     {
      "h": "Introduction",
      "pts": [
-      "Unit objectives: explain CMM; describe the elements of ISO 9000; state the software engineering standards.",
+      "Unit objectives:<br>• explain CMM<br>• describe the elements of ISO 9000<br>• state the software engineering standards.",
       "Organizations seek sustainable excellence in their IT operations, <b>requiring a flexible framework to meet evolving business needs</b>. However, challenges like poor IT application design, high costs and delayed projects obstruct progress. Quality assurance, through <b>maturity models</b> and systematic procedures, helps define organizational structures and improve performance.",
-      "<b>CMM</b> helps manage complex IT systems efficiently. A <b>QMS</b> (quality management system) gives a structured way to improve process capability, manage risk and ensure customer satisfaction. <b>ISO 9000</b> promotes continuous improvement, product reliability and international recognition."
+      "• <b>CMM</b> helps manage complex IT systems efficiently.<br>• A <b>QMS</b> (quality management system) gives a structured way to improve process capability, manage risk and ensure customer satisfaction.<br>• <b>ISO 9000</b> promotes continuous improvement, product reliability and international recognition."
      ]
     },
     {
@@ -3327,7 +3353,7 @@ COURSES.qa = {
     {
      "h": "CMM structure: 6 components",
      "pts": [
-      "<b>1. Maturity levels</b>: define an organization's process capability. The CMM model consists of <b>five levels</b>: the initial level (Level 1) is characterized by ad-hoc processes with minimal structure; the top level (Level 5) represents an ideal state where processes are systematically managed, optimized and continuously improved. This structured progression helps organizations <b>enhance their process maturity over time</b>.",
+      "<b>1. Maturity levels</b>: define an organization's process capability. The CMM model consists of <b>five levels</b>:<br>• the initial level (Level 1) is characterized by ad-hoc processes with minimal structure;<br>• the top level (Level 5) represents an ideal state where processes are systematically managed, optimized and continuously improved.<br>This structured progression helps organizations <b>enhance their process maturity over time</b>.",
       "<b>2. Process capability</b>: the organization's ability to meet quality expectations through its current processes; it helps <b>predict</b> the outcomes of future software projects, <b>ensuring consistency and reliability</b>.",
       "<b>3. Key Process Areas (KPA)</b>: groups of related activities that achieve goals when performed together; they define capability at each level. Example: software project delivery planning.",
       "<b>4. Goals</b>: evaluate essential practices within a process area to determine if an <b>organization or project</b> has successfully implemented it, <b>highlighting its importance and purpose</b>.",
@@ -3381,17 +3407,18 @@ COURSES.qa = {
       "<b>Level 3 (Defined)</b>: standardized processes are <b>developed and refined over time</b>. <b>Management ensures process consistency across the organization</b>, and project teams tailor processes based on these standards.",
       "<b>Level 4 (Quantitatively Managed)</b>: processes are controlled through statistical and quantitative techniques, allowing organizations to <b>predict and manage project performance accurately</b>. This ensures <b>stable software quality and maintenance</b> while minimizing variations.",
       "<b>Level 5 (Optimizing)</b>: focuses on <b>continuous process improvement</b> through incremental and innovative advancements. Organizations at this level <b>systematically refine their processes</b>, using <b>quantitative goals</b> to drive enhancements and <b>achieve long-term business objectives</b>.",
-      "Figure (CMM levels): five ellipses stacked from bottom to top, joined by upward arrows: <b>Level 1: Initial (Inconsistent Management)</b> → arrow \"Basic Management Control\" → <b>Level 2: Repeatable (Project Management)</b> → arrow \"Process Definition\" → <b>Level 3: Defined (Process Management)</b> → arrow \"Process Measurement\" → <b>Level 4: Managed (Capability Management)</b> → arrow \"Process Control\" → <b>Level 5: Optimizing (Change Management)</b>. The figure labels Level 4 just \"Managed\"; the slide text and Table 1 call it \"Quantitatively Managed\".",
+      "Figure (CMM levels): five ellipses stacked from bottom to top, joined by upward arrows:<br><b>Level 1: Initial (Inconsistent Management)</b><br>↑ arrow \"Basic Management Control\" (Level 1→2)<br><b>Level 2: Repeatable (Project Management)</b><br>↑ arrow \"Process Definition\" (Level 2→3)<br><b>Level 3: Defined (Process Management)</b><br>↑ arrow \"Process Measurement\" (Level 3→4)<br><b>Level 4: Managed (Capability Management)</b><br>↑ arrow \"Process Control\" (Level 4→5)<br><b>Level 5: Optimizing (Change Management)</b>.<br>The figure labels Level 4 just \"Managed\"; the slide text and Table 1 call it \"Quantitatively Managed\".",
       "<b>Table 1: Capability Maturity Model Process Areas</b> (Maturity Level: Improvements Implemented):<br><b>5. Optimizing</b>: develop change infrastructure; assess and organize improvements; remove causes of defects.<br><b>4. Quantitatively Managed</b>: supervise processes quantitatively; create capability baselines.<br><b>3. Defined</b>: create enhancement infrastructure; identify required software processes; organize and manage processes; collect process-level data; provide organization-wide training; manage with non-software groups.<br><b>2. Repeatable</b>: plan and track projects; manage suppliers; manage product configurations; measure projects; assist and assure policy compliance.<br><b>1. Initial</b>: no required processes."
      ],
-     "fig": "qa-cmm-levels"
+     "fig": "qa-cmm-levels",
+     "figAt": {
+      "qa-cmm-levels": 5
+     }
     },
     {
-     "h": "Transitions, KPA aspects and benefits",
+     "h": "Key Process Areas (KPA) and benefits of CMM",
      "pts": [
-      "Figure arrows between levels: 1→2 <b>basic management control</b>; 2→3 <b>process definition</b>; 3→4 <b>process measurement</b>; 4→5 <b>process control</b>.",
-      "<b>Within each of the maturity levels are Key Process Areas (KPA)</b> which explain about that level, and for each KPA there are five aspects.",
-      "Each KPA has <b>5 aspects</b>:<br>(1) <b>Goals</b>: each KPA sets several goals, which include the different objectives that help the organization climb to the next CMM level<br>(2) <b>Commitment</b>: various requirements that must be met to achieve the specified goals<br>(3) <b>Ability</b>: the activities carried out to enable the organization to meet the commitments<br>(4) <b>Measurement</b>: <b>the activities performed should be monitored</b>, and hence there are methods that have to be followed to implement the same<br>(5) <b>Verification</b>: various methods that need to be followed that define the verification.",
+      "<b>Within each of the maturity levels are Key Process Areas (KPA)</b> which explain about that level, and each KPA has <b>5 aspects</b>:<br>(1) <b>Goals</b>: each KPA sets several goals, which include the different objectives that help the organization climb to the next CMM level<br>(2) <b>Commitment</b>: various requirements that must be met to achieve the specified goals<br>(3) <b>Ability</b>: the activities carried out to enable the organization to meet the commitments<br>(4) <b>Measurement</b>: <b>the activities performed should be monitored</b>, and hence there are methods that have to be followed to implement the same<br>(5) <b>Verification</b>: various methods that need to be followed that define the verification.",
       "<b>Benefits of CMM</b>:<br>(1) simple and easy to analyze<br>(2) many executives already know it<br>(3) used to explain major IT issues to senior executives<br>(4) helps get project funding (e.g. enterprise data asset management, metadata repository)<br>(5) large companies and governments use it to compare themselves with others."
      ]
     },
@@ -3480,10 +3507,15 @@ COURSES.qa = {
      ]
     },
     {
-     "h": "ISO 8 principles and software engineering standards",
+     "h": "ISO 8 principles",
      "pts": [
-      "ISO is built on <b>8 key principles</b> that guide organizations toward high-quality performance:<br>• <b>Customer Focus</b>: understand and exceed customer needs to gain loyalty.<br>• <b>Leadership</b>: leaders create an environment where people are fully involved.<br>• <b>Involvement of People</b>: employees at all levels contribute to the organization's success.<br>• <b>Process Approach</b>: manage activities as processes for consistent results.<br>• <b>System Approach to Management</b>: align interconnected processes as one system.<br>• <b>Continuous Improvement</b>: ongoing improvement is a permanent objective.<br>• <b>Factual Decision Making</b>: base decisions on reliable data and analysis.<br>• <b>Mutually Beneficial Supplier Relationships</b>: build strong, value-creating relationships with suppliers.",
-      "Software engineering standards ensure proper development, testing and maintenance of software <b>by following specific guidelines</b>. <b>Various organizations, including international and national bodies, establish and enforce Software Quality Assurance (SQA) standards.</b> Organizations are increasingly shifting from <b>local to international</b> standards. The <b>IEEE and IEEE Computer Society</b> are at the forefront of this movement; since <b>1976</b> IEEE has contributed significantly to standardization, leading to the <b>IEEE Software Engineering Standard Collection</b>, which <b>serves as a foundation for many international project process standards</b>.",
+      "ISO is built on <b>8 key principles</b> that guide organizations toward high-quality performance:<br>• <b>Customer Focus</b>: understand and exceed customer needs to gain loyalty.<br>• <b>Leadership</b>: leaders create an environment where people are fully involved.<br>• <b>Involvement of People</b>: employees at all levels contribute to the organization's success.<br>• <b>Process Approach</b>: manage activities as processes for consistent results.<br>• <b>System Approach to Management</b>: align interconnected processes as one system.<br>• <b>Continuous Improvement</b>: ongoing improvement is a permanent objective.<br>• <b>Factual Decision Making</b>: base decisions on reliable data and analysis.<br>• <b>Mutually Beneficial Supplier Relationships</b>: build strong, value-creating relationships with suppliers."
+     ]
+    },
+    {
+     "h": "Software engineering standards and SPICE",
+     "pts": [
+      "• Software engineering standards ensure proper development, testing and maintenance of software <b>by following specific guidelines</b>.<br>• <b>Various organizations, including international and national bodies, establish and enforce Software Quality Assurance (SQA) standards.</b><br>• Organizations are increasingly shifting from <b>local to international</b> standards.<br>• The <b>IEEE and IEEE Computer Society</b> are at the forefront of this movement; since <b>1976</b> IEEE has contributed significantly to standardization, leading to the <b>IEEE Software Engineering Standard Collection</b>, which <b>serves as a foundation for many international project process standards</b>.",
       "<b>SPICE</b> = <b>Software Process Improvement for Capability Determination</b>; the SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by ISO and IEC to establish a standard software process assessment methodology. Introduced in <b>1993</b>, SPICE aims to <b>improve international software process standards</b>.",
       "<b>3 objectives of SPICE</b>:<br>(1) establish a standard framework for software process assessment<br>(2) conduct organizational assessments for emerging standards<br>(3) facilitate global adoption of software process assessment in industry."
      ]
@@ -3891,19 +3923,22 @@ COURSES.qa = {
       "<b>M – Measure</b>: it mainly focuses on planning and implementing performance measurement against the requirements and expectations of customers, based on a set of criteria for measuring defects through the use of statistical control with <b>various scientific and statistical tools (6 σ)</b>.",
       "<b>A – Analyze</b>: analyze the collected data with the aim of identifying and determining the <b>root causes</b> of all problems <b>and obstacles to improvement</b>, by analyzing the chain of failure causes, then ranking them according to their impact, categorizing them, and then controlling and managing them.",
       "<b>I – Improve</b>: changes in processes occur to ensure the elimination of product defects, excessive costs, waste, etc., <b>confirming the precise identification of customer needs and expectations</b>. Studying the causes of failure, finding solutions for them, <b>testing these solutions on a sample</b> of products, <b>determining the results</b>, and making the necessary corrections.",
-      "<b>C – Control</b>: focus on monitoring all of these processes and do not stop, <b>as there are always areas in need of improvement</b>. The following should be taken into consideration: continuously measuring performance standards; conducting measurement processes; correcting any deviations, if found, at the specified time.",
+      "<b>C – Control</b>: focus on monitoring all of these processes and do not stop, <b>as there are always areas in need of improvement</b>. The following should be taken into consideration:<br>• continuously measuring performance standards<br>• conducting measurement processes<br>• correcting any deviations, if found, at the specified time."
+     ],
+     "fig": "qa-dmaic"
+    },
+    {
+     "h": "DMADV methodology",
+     "pts": [
       "The slide also shows <b>DMADV</b> (Define, Measure, Analyze, Design, Verify). ‡ (not on the slides) DMADV is used for designing <b>new</b> processes/products; DMAIC improves <b>existing</b> ones.",
       "Figure (DMADV Methodology): five curved arrows forming a cycle around a central circle labelled \"DMADV\": <b>Define</b> → <b>Measure</b> → <b>Analyze</b> → <b>Design</b> → <b>Verify</b> → back to Define. It covers part of a DMAIC figure behind it, whose visible fragments read \"Control: Maint… soluti…\" and \"Improve: Implement … the solution\"."
      ],
-     "fig": [
-      "qa-dmaic",
-      "qa-dmadv"
-     ]
+     "fig": "qa-dmadv"
     },
     {
      "h": "Principles and implementation phases",
      "pts": [
-      "<b>Principles</b>: focus on customers; making decisions based on facts and accurate data; focusing on internal operations and activities; effective management based on advance planning; collaborative teamwork and avoiding competition <b>in order to achieve the desired goals</b>.",
+      "<b>Principles</b>:<br>• focus on customers<br>• making decisions based on facts and accurate data<br>• focusing on internal operations and activities<br>• effective management based on advance planning<br>• collaborative teamwork and avoiding competition <b>in order to achieve the desired goals</b>.",
       "<b>Implementation phases</b>:<br>(1) identifying and selecting the important projects <b>in which the Six Sigma methodology will be applied</b><br>(2) assigning the organization's employees <b>who have good experience</b> to improvement tasks<br>(3) preparing a written document for the problem or project, <b>including everything related to the project</b>, its reasons for being chosen, its objectives and its scope<br>(4) training on <b>requirements related to Six Sigma</b>, such as measurement, analysis, process redesign, planning and problem-solving<br>(5) <b>implementing the process</b>, providing practical solutions and applying them<br>(6) submission of solutions."
      ]
     },
@@ -3912,7 +3947,7 @@ COURSES.qa = {
      "pts": [
       "Table on the slide: <b>Six Sigma for failure cases in the preparatory certificate</b> (the slide's column headings are in Arabic: المواد, المتوسط الحسابي, الإنحراف المعياري; the overall row المؤشر الكلي is in bold).",
       "A table of 10 subjects (X1–X10) gives each subject's mean, standard deviation and a \"Six sigma\" value. The Six Sigma column is <b>6 × standard deviation</b>: e.g. X1: 6 × 1.22 = 7.32; X2: 6 × 0.98 = 5.88; overall: 6 × 1.07 = 6.42 (overall mean 2.99).",
-      "Applying the Six Sigma methodology, which can be summarized as: <b>Define</b>: identify these causes; then <b>Measure</b>: measure the impact of the magnitude of these causes; then <b>Analyze</b>: the sources and elements, etc.; then <b>Improve</b>: <b>derive appropriate solutions through the previous (DMAIC) steps</b>, which is useful for reducing failure cases and thereby improving and increasing the level of success; and finally <b>Control</b>: <b>continuously monitor the improvement processes</b>."
+      "Applying the Six Sigma methodology, which can be summarized as:<br>• <b>Define</b>: identify these causes;<br>• then <b>Measure</b>: measure the impact of the magnitude of these causes;<br>• then <b>Analyze</b>: the sources and elements, etc.;<br>• then <b>Improve</b>: <b>derive appropriate solutions through the previous (DMAIC) steps</b>, which is useful for reducing failure cases and thereby improving and increasing the level of success;<br>• and finally <b>Control</b>: <b>continuously monitor the improvement processes</b>."
      ],
      "table": [
       [
@@ -3991,7 +4026,7 @@ COURSES.qa = {
      "fig": "qa-sigma-case"
     },
     {
-     "h": "Belts and tools",
+     "h": "Six Sigma belts (levels of certification)",
      "table": [
       [
        "Belt",
@@ -4019,14 +4054,14 @@ COURSES.qa = {
       ]
      ],
      "pts": [
-      "Figure (<b>Levels of Six Sigma Certification</b>): a man with a briefcase climbs a staircase toward a target with an arrow in its bullseye. The steps from bottom to top: <b>Step 1: White Belt</b>; <b>Step 2: Yellow Belt</b>; <b>Step 3: Green Belt</b>; <b>Step 4: Black Belt</b>; <b>Step 5: Master Black Belt</b> (the top step, next to the target)."
+      "Figure (<b>Levels of Six Sigma Certification</b>): a man with a briefcase climbs a staircase toward a target with an arrow in its bullseye. The steps from bottom to top:<br>• <b>Step 1: White Belt</b><br>• <b>Step 2: Yellow Belt</b><br>• <b>Step 3: Green Belt</b><br>• <b>Step 4: Black Belt</b><br>• <b>Step 5: Master Black Belt</b> (the top step, next to the target)."
      ],
      "fig": "qa-belts"
     },
     {
      "h": "Six Sigma tools and techniques",
      "pts": [
-      "<b>5S</b>, <b>Seven Wastes</b>, <b>Value stream mapping</b>, <b>Visual workspace</b>, <b>Voice of Customer (VOC)</b>, <b>Kaizen</b>, <b>Kanban</b>, <b>Regression analysis</b>."
+      "• <b>5S</b><br>• <b>Seven Wastes</b><br>• <b>Value stream mapping</b><br>• <b>Visual workspace</b><br>• <b>Voice of Customer (VOC)</b><br>• <b>Kaizen</b><br>• <b>Kanban</b><br>• <b>Regression analysis</b>"
      ]
     }
    ],
