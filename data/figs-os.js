@@ -260,7 +260,7 @@
     const rest = [
       { en: 'The OS <b>preserves the state of the CPU</b> by storing the <b>registers</b> and the <b>program counter</b>: the interrupt architecture must save the address of the interrupted instruction.', ar: 'الـ OS بيـ<b>حافظ على حالة الـ CPU</b> بإنه يخزّن الـ <b>registers</b> والـ <b>program counter</b>: الـ interrupt architecture لازم تحفظ عنوان الـ instruction اللي اتقطعت.' },
       how === 'vec'
-        ? { en: 'Which type of interrupt has occurred? A <b>vectored interrupt system</b>: the <b>interrupt vector</b> contains the addresses of all the service routines.', ar: 'نوع الـ interrupt إيه؟ <b>vectored interrupt system</b>: الـ <b>interrupt vector</b> فيه عناوين كل الـ service routines.' }
+        ? { en: 'Which type of interrupt has occurred? A <b>vectored interrupt system</b>: the <b>interrupt vector</b> contains the addresses of all the service routines.', ar: 'نوع الـ interrupt إيه؟ الـ <b>vectored interrupt system</b>: الـ <b>interrupt vector</b> فيه عناوين كل الـ service routines.' }
         : { en: 'Which type of interrupt has occurred? Here the OS finds it by <b>polling</b>.', ar: 'نوع الـ interrupt إيه؟ هنا الـ OS بيعرفه بالـ <b>polling</b>.' },
       { en: 'Control transfers to the <b>interrupt service routine</b>' + (how === 'vec' ? ' through the interrupt vector' : '') + '. <b>Separate segments of code</b> determine what action should be taken for each type of interrupt.', ar: 'التحكم بيتنقل للـ <b>interrupt service routine</b>' + (how === 'vec' ? ' عن طريق الـ interrupt vector' : '') + '. فيه <b>أجزاء code منفصلة</b> بتحدد المفروض يحصل إيه لكل نوع interrupt.' }
     ];
@@ -358,7 +358,7 @@
     const txt = {
       bit: { en: 'The basic unit of computer storage is the <b>bit</b>. A bit can contain one of two values, <b>0 and 1</b>. All other storage is based on collections of bits. Click any bit to flip it.', ar: 'الوحدة الأساسية للتخزين هي الـ <b>bit</b>. الـ bit ممكن يشيل قيمة من اتنين، <b>0 أو 1</b>. أي تخزين تاني مبني على مجموعات bits. دوس على أي bit عشان تقلبه.' },
       byte: { en: 'A <b>byte</b> is <b>8 bits</b>, and on most computers it is the smallest convenient chunk of storage: most computers don\'t have an instruction to move a bit but do have one to move a byte.', ar: 'الـ <b>byte</b> = <b>8 bits</b>، وفي أغلب الكمبيوترات هو أصغر حتة مريحة للتخزين: أغلب الكمبيوترات مفيهاش instruction تنقل bit لكن فيها واحدة تنقل byte.' },
-      word: { en: 'A <b>word</b> is a computer architecture\'s native unit of data, made up of one or more bytes. With 64-bit registers and 64-bit memory addressing: <b>64-bit (8-byte) words</b>. A computer executes many operations in its native word size rather than a byte at a time.', ar: 'الـ <b>word</b> هي وحدة الـ data الأصلية للـ architecture، ومكونة من byte أو أكتر. مع 64-bit registers و 64-bit memory addressing: <b>words حجمها 64 bit (8 bytes)</b>. الكمبيوتر بينفّذ عمليات كتير بحجم الـ word بتاعه مش byte byte.' }
+      word: { en: 'A <b>word</b> is a computer architecture\'s native unit of data, made up of one or more bytes. With 64-bit registers and 64-bit memory addressing: <b>64-bit (8-byte) words</b>. A computer executes many operations in its native word size rather than a byte at a time.', ar: 'الـ <b>word</b> هي وحدة الـ data الأصلية للـ architecture، ومكونة من byte أو أكتر. مع 64-bit registers و 64-bit memory addressing، الـ <b>words حجمها 64 bit (8 bytes)</b>. الكمبيوتر بينفّذ عمليات كتير بحجم الـ word بتاعه مش byte byte.' }
     };
     const v = Math.max(0, Math.min(999999, parseInt(n, 10) || 0)), bytes = BigInt(v) * (1024n ** BigInt(u + 1));
     const flip = k => { setBits(b => b.map((x, j) => j === k ? 1 - x : x)); setLvl('bit'); setHb(k); };
@@ -584,7 +584,7 @@
       { en: 'And <b>data movement</b> between the CPU (through its cache) and memory.', ar: 'وكمان <b>data movement</b> بين الـ CPU (عن طريق الـ cache بتاعه) والـ memory.' },
       { en: 'The CPU sends an <b>I/O request</b> to the device. The figure also shows <b>data</b> passing between the CPU and the device.', ar: 'الـ CPU بيبعت <b>I/O request</b> للـ device. والرسمة كمان فيها <b>data</b> رايحة جاية بين الـ CPU والـ device.' },
       { en: '<b>DMA</b>: the device controller transfers <b>blocks of data</b> from buffer storage <b>directly to main memory</b> without CPU intervention.', ar: 'الـ <b>DMA</b>: الـ device controller بينقل <b>blocks of data</b> من الـ buffer storage <b>على الـ main memory على طول</b> من غير ما الـ CPU يتدخل.' },
-      { en: 'When the block is done, the device sends an <b>interrupt</b> to the CPU: only <b>one interrupt per block</b>, rather than one interrupt per byte.', ar: 'لما الـ block يخلص، الـ device بيبعت <b>interrupt</b> للـ CPU: <b>interrupt واحد بس لكل block</b>، مش interrupt لكل byte.' }
+      { en: 'When the block is done, the device sends an <b>interrupt</b> to the CPU: only <b>one interrupt per block</b>, rather than one interrupt per byte.', ar: 'لما الـ block يخلص، الـ device بيبعت <b>interrupt</b> للـ CPU، يعني <b>interrupt واحد بس لكل block</b>، مش interrupt لكل byte.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const star = (cx, cy, R, r, n) => Array.from({ length: n * 2 }, (_, k) => { const a = -Math.PI / 2 + k * Math.PI / n, q = k % 2 ? r : R; return `${(cx + q * Math.cos(a)).toFixed(1)},${(cy + q * Math.sin(a)).toFixed(1)}`; }).join(' ');
@@ -653,11 +653,11 @@
   /* ── L1 slide 22: A Dual-Core Design ── */
   function DualCore({ ar }) {
     const steps = [
-      { en: '<b>Multicore</b>: two CPU cores, core<sub>0</sub> and core<sub>1</sub>, on one chip.', ar: 'الـ <b>Multicore</b>: 2 CPU cores، core<sub>0</sub> و core<sub>1</sub>، على chip واحدة.' },
+      { en: '<b>Multicore</b>: two CPU cores, core<sub>0</sub> and core<sub>1</sub>, on one chip.', ar: 'الـ <b>Multicore</b> فيه 2 CPU cores، هما core<sub>0</sub> و core<sub>1</sub>، على chip واحدة.' },
       { en: 'Each core has its own <b>registers</b>.', ar: 'كل core ليه الـ <b>registers</b> بتاعته.' },
       { en: 'Each core has its own <b>cache</b>, below its registers.', ar: 'كل core ليه الـ <b>cache</b> بتاعه، تحت الـ registers.' },
       { en: 'Both caches connect to <b>one shared memory</b>, outside the chip.', ar: 'الـ 2 caches متوصلين بـ <b>memory واحدة مشتركة</b>، برة الـ chip.' },
-      { en: 'Designs are <b>multi-chip</b> and <b>multicore</b>. Systems containing all chips: a <b>chassis containing multiple separate systems</b>.', ar: 'الـ designs بتبقى <b>multi-chip</b> و <b>multicore</b>. فيه systems فيها كل الـ chips: <b>chassis جواه كذا system منفصل</b>.' }
+      { en: 'Designs are <b>multi-chip</b> and <b>multicore</b>. Systems containing all chips: a <b>chassis containing multiple separate systems</b>.', ar: 'الـ designs بتبقى <b>multi-chip</b> و <b>multicore</b>. فيه systems فيها كل الـ chips، يعني <b>chassis جواه كذا system منفصل</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2200);
     const core = (x, n) => html`<g key=${n}>
@@ -946,7 +946,7 @@
       { en: '<b>Process</b>: a program in execution; process execution must progress in sequential fashion. It has multiple parts in memory, from address 0 up to max.', ar: 'الـ <b>Process</b>: برنامج وهو شغال؛ والتنفيذ بتاعها لازم يمشي بالترتيب (sequential). ليها أجزاء كتير في الـ memory، من العنوان 0 لحد الـ max.' },
       { en: 'The program code, also called the <b>text section</b>.', ar: 'الـ program code، واسمه كمان الـ <b>text section</b>.' },
       { en: '<b>Data section</b> containing global and static variables: declared outside the main function and can be accessed by any function.', ar: 'الـ <b>Data section</b> فيه الـ global والـ static variables: متعرفين برة الـ main function وأي function تقدر توصلهم.' },
-      { en: '<b>Heap</b> containing memory dynamically allocated during run time, as the pointers: new, delete, malloc, free, etc. It grows up into the free space.', ar: 'الـ <b>Heap</b> فيه الـ memory اللي بتتحجز dynamically وقت التشغيل، زي الـ pointers: new و delete و malloc و free. وبيكبر لفوق في المساحة الفاضية.' },
+      { en: '<b>Heap</b> containing memory dynamically allocated during run time, as the pointers: new, delete, malloc, free, etc. It grows up into the free space.', ar: 'الـ <b>Heap</b> فيه الـ memory اللي بتتحجز dynamically وقت التشغيل، زي الـ pointers بـ <code>new</code> و<code>delete</code> و<code>malloc</code> و<code>free</code>. وبيكبر لفوق في المساحة الفاضية.' },
       { en: '<b>Stack</b> containing temporary / local variables: function parameters, return addresses, local variables. It grows down into the free space.', ar: 'الـ <b>Stack</b> فيه الـ temporary / local variables: الـ function parameters والـ return addresses والـ local variables. وبيكبر لتحت في المساحة الفاضية.' },
       { en: 'Current activity including the <b>program counter</b> and the <b>processor registers</b>.', ar: 'الـ current activity، وفيها الـ <b>program counter</b> والـ <b>processor registers</b>.' }
     ];
@@ -1012,7 +1012,7 @@
 
   /* ── slide 6: the PCB, tap a field ── */
   const PCBF = [
-    ['process state', 0, 'Process state: running, waiting, etc.', 'الـ Process state: running أو waiting إلخ.'],
+    ['process state', 0, 'Process state: running, waiting, etc.', 'الـ process state، زي running أو waiting وغيرهم.'],
     ['process number', 0, 'Process number: the process is identified and managed via a process identifier (PID).', 'الـ Process number: الـ process بتتعرف وتتدار عن طريق الـ process identifier (PID).'],
     ['program counter', 0, 'Program counter: location of instruction to next execute.', 'الـ Program counter: مكان الـ instruction اللي هتتنفذ بعد كده.'],
     ['registers', 1, 'CPU registers: contents of all process-centric registers.', 'الـ CPU registers: محتوى كل الـ registers الخاصة بالـ process.'],
@@ -1080,10 +1080,10 @@
   function DeviceQueues({ ar }) {
     const steps = [
       { en: 'The scheduler keeps <b>scheduling queues</b>. Each queue has a <b>queue header</b> with a <b>head</b> and a <b>tail</b> pointer.', ar: 'الـ scheduler بيحتفظ بـ <b>scheduling queues</b>. كل queue ليها <b>queue header</b> فيه pointer للـ <b>head</b> و pointer للـ <b>tail</b>.' },
-      { en: '<b>Ready queue</b> (processes in main memory, ready and waiting to execute): head → PCB7 → PCB2. The ground sign after PCB2 means no next PCB.', ar: 'الـ <b>Ready queue</b> (الـ processes اللي في الـ main memory وجاهزة ومستنية تتنفذ): head ← PCB7 ← PCB2. علامة الـ ground بعد PCB2 معناها مفيش PCB بعدها.' },
+      { en: '<b>Ready queue</b> (processes in main memory, ready and waiting to execute): head → PCB7 → PCB2. The ground sign after PCB2 means no next PCB.', ar: 'الـ <b>Ready queue</b> (الـ processes اللي في الـ main memory وجاهزة ومستنية تتنفذ):<span class="ltr">head → PCB7 → PCB2</span>وعلامة الـ ground بعد PCB2 معناها مفيش PCB بعدها.' },
       { en: 'The <b>tail</b> points to the last PCB in the queue, PCB2.', ar: 'الـ <b>tail</b> بيشاور على آخر PCB في الـ queue، وهو PCB2.' },
       { en: '<b>mag tape unit 0</b> and <b>mag tape unit 1</b> are empty: their head and tail point to nothing.', ar: 'الـ <b>mag tape unit 0</b> والـ <b>mag tape unit 1</b> فاضيين: الـ head والـ tail بتوعهم مش بيشاوروا على حاجة.' },
-      { en: '<b>disk unit 0</b> is a device queue (processes waiting for an I/O device): head → PCB3 → PCB14 → PCB6; tail → PCB6.', ar: 'الـ <b>disk unit 0</b> دي device queue (processes مستنية I/O device): head ← PCB3 ← PCB14 ← PCB6؛ والـ tail ← PCB6.' },
+      { en: '<b>disk unit 0</b> is a device queue (processes waiting for an I/O device): head → PCB3 → PCB14 → PCB6; tail → PCB6.', ar: 'الـ <b>disk unit 0</b> دي device queue (processes مستنية I/O device):<span class="ltr">head → PCB3 → PCB14 → PCB6, tail → PCB6</span>' },
       { en: '<b>terminal unit 0</b> holds one process, so head and tail both point to PCB5. Processes migrate among the various queues.', ar: 'الـ <b>terminal unit 0</b> فيها process واحدة، فالـ head والـ tail الاتنين بيشاوروا على PCB5. والـ processes بتتنقل بين الـ queues المختلفة.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -1193,7 +1193,7 @@
     io: ['It waits in the <b>I/O waiting queues</b>, does its <b>I/O</b>, then returns to the ready queue.', 'بتستنى في الـ <b>I/O waiting queues</b>، وتعمل الـ <b>I/O</b> بتاعها، وبعدين ترجع للـ ready queue.'],
     out: ['<b>Swap out</b>: remove the process from memory and store it on disk. It joins the <b>partially executed swapped-out processes</b>, so the degree of multiprogramming decreases.', '<b>Swap out</b>: نشيل الـ process من الـ memory ونخزنها على الـ disk. بتنضم للـ <b>partially executed swapped-out processes</b>، فالـ degree of multiprogramming بتقل.'],
     in: ['<b>Swap in</b>: bring it back in from disk to continue execution. Removing and bringing back is <b>swapping</b>.', '<b>Swap in</b>: نرجعها من الـ disk عشان تكمل تنفيذ. الشيل والإرجاع ده اسمه <b>swapping</b>.'],
-    end: ['The process leaves the CPU: <b>end</b>.', 'الـ process بتسيب الـ CPU: <b>end</b>.']
+    end: ['The process leaves the CPU: <b>end</b>.', 'الـ process بتسيب الـ CPU، وده الـ <b>end</b>.']
   };
   function MediumTerm({ ar }) {
     const [p, busy, run, reset] = useToken(), [where, setWhere] = useState('out'), [msg, setMsg] = useState('start');
@@ -1235,11 +1235,11 @@
     const fork = () => { setCh({ prog: 'dup', st: 'run' }); say('<b>fork()</b> system call creates a new process. The child is a <b>duplicate of the parent</b> (first type of address space).', 'الـ <b>fork()</b> system call بيعمل process جديدة. الـ child <b>نسخة من الـ parent</b> (أول نوع من الـ address space).'); };
     const exec = () => { setCh(c => Object.assign({}, c, { prog: 'new' })); say('<b>exec()</b> system call, used after a fork(), replaces the process\' memory space with a <b>new program</b>: the child has a program loaded into it (second type).', 'الـ <b>exec()</b> system call، بيتستخدم بعد الـ fork()، بيبدّل الـ memory space بتاعة الـ process بـ <b>program جديد</b>: الـ child بقى فيه program متحمّل (تاني نوع).'); };
     const wait = () => {
-      if (ch && ch.st === 'zombie') { setCh(null); say('<b>pid = wait(&amp;status);</b> returns the status information and the pid of the terminated child. Its resources are deallocated by the operating system.', 'الـ <b>pid = wait(&amp;status);</b> بيرجّع الـ status والـ pid بتاع الـ child اللي خلص. والـ resources بتاعته الـ OS بيرجعها (deallocated).'); return; }
+      if (ch && ch.st === 'zombie') { setCh(null); say('<b>pid = wait(&amp;status);</b> returns the status information and the pid of the terminated child. Its resources are deallocated by the operating system.', 'الـ <b><code>pid = wait(&amp;status);</code></b> بيرجّع الـ status والـ pid بتاع الـ child اللي خلص. والـ resources بتاعته الـ OS بيرجعها (deallocated).'); return; }
       setPar('wait'); say('The parent calls <b>wait()</b>: the parent waits until the child terminates.', 'الـ parent بينادي <b>wait()</b>: الـ parent بيستنى لحد ما الـ child يخلص.');
     };
     const cexit = () => {
-      if (par === 'wait') { setCh(null); setPar('run'); say('The child executes its last statement and asks the OS to delete it using <b>exit()</b>. Status data returns from child to parent via wait(): <b>pid = wait(&amp;status);</b> gives the status and the pid. The child\'s resources are deallocated by the OS.', 'الـ child بينفذ آخر statement ويطلب من الـ OS يمسحه بـ <b>exit()</b>. الـ status بيرجع من الـ child للـ parent عن طريق wait(): الـ <b>pid = wait(&amp;status);</b> بيدي الـ status والـ pid. والـ resources بتاعة الـ child الـ OS بيرجعها.'); return; }
+      if (par === 'wait') { setCh(null); setPar('run'); say('The child executes its last statement and asks the OS to delete it using <b>exit()</b>. Status data returns from child to parent via wait(): <b>pid = wait(&amp;status);</b> gives the status and the pid. The child\'s resources are deallocated by the OS.', 'الـ child بينفذ آخر statement ويطلب من الـ OS يمسحه بـ <b>exit()</b>. الـ status بيرجع من الـ child للـ parent عن طريق الـ wait()، والـ <b><code>pid = wait(&amp;status);</code></b> بيدي الـ status والـ pid. والـ resources بتاعة الـ child الـ OS بيرجعها.'); return; }
       setCh(c => Object.assign({}, c, { st: 'zombie' })); say('The child called <b>exit()</b>, but no parent is waiting (it did not invoke wait()): the child is a <b>zombie</b>. Press the parent\'s wait() to collect it.', 'الـ child نادى <b>exit()</b>، بس مفيش parent مستني (ماندهش wait()): الـ child بقى <b>zombie</b>. دوس wait() بتاعة الـ parent عشان يلمّه.');
     };
     const abort = () => { setCh(null); say('The parent terminates the child using <b>abort()</b>. Some reasons: the child has exceeded allocated resources; the task assigned to the child is no longer required; the parent is exiting and the OS does not allow a child to continue if its parent terminates.', 'الـ parent بينهي الـ child بـ <b>abort()</b>. من الأسباب: الـ child عدّى الـ resources المتخصصة له؛ الـ task اللي مع الـ child مبقتش مطلوبة؛ الـ parent خارج والـ OS مابيسمحش لـ child يكمل لو الـ parent بتاعه خلص.'); };
@@ -1580,7 +1580,7 @@
   }
   const ALG = { fcfs: 'FCFS', sjf: 'SJF', srtf: 'SRTF', rr: 'RR', prio: 'Priority', priorr: 'Priority + RR' };
   const INTRO = {
-    fcfs: () => ({ en: '<b>First-Come, First-Served</b>: the processes get the CPU in the order they arrive, and each keeps it until its CPU burst ends. Watch the Gantt chart being drawn, or press Next.', ar: 'الـ <b>First-Come, First-Served</b>: الـ processes بتاخد الـ CPU بترتيب وصولها، وكل واحدة بتفضل ماسكاه لحد ما الـ CPU burst بتاعها يخلص. اتفرج على الـ Gantt chart وهو بيترسم، أو دوس Next.' }),
+    fcfs: () => ({ en: '<b>First-Come, First-Served</b>: the processes get the CPU in the order they arrive, and each keeps it until its CPU burst ends. Watch the Gantt chart being drawn, or press Next.', ar: 'الـ <b><bdi>First-Come, First-Served</bdi></b>: الـ processes بتاخد الـ CPU بترتيب وصولها، وكل واحدة بتفضل ماسكاه لحد ما الـ CPU burst بتاعها يخلص. اتفرج على الـ Gantt chart وهو بيترسم، أو دوس Next.' }),
     sjf: () => ({ en: '<b>Shortest-Job-First</b>: associate with each process the length of its next CPU burst, and schedule the process with the shortest time. SJF is optimal: it gives the minimum average waiting time.', ar: 'الـ <b>Shortest-Job-First</b>: بنربط كل process بطول الـ CPU burst الجاي بتاعها، ونشغّل الأقصر. الـ SJF هو الـ optimal: بيدّي أقل متوسط waiting time.' }),
     srtf: () => ({ en: '<b>Preemptive SJF</b> (shortest-remaining-time-first): now we add the concepts of varying arrival times and preemption. A process that arrives with a shorter burst than what is left of the running one preempts it.', ar: 'الـ <b>Preemptive SJF</b> (shortest-remaining-time-first): دلوقتي بنضيف فكرة أوقات الوصول المختلفة والـ preemption. الـ process اللي توصل بـ burst أقصر من اللي فاضل من الشغالة بتعملها preempt.' }),
     rr: q => ({ en: `<b>Round Robin</b>, time quantum q = ${q}: each process gets a small unit of CPU time; after it has elapsed, the process is preempted and added to the end of the ready queue.`, ar: `الـ <b>Round Robin</b>، الـ time quantum q = ${q}: كل process بتاخد حتة صغيرة من وقت الـ CPU؛ ولما تخلص بتتعملها preempt وتتحط في آخر الـ ready queue.` }),
@@ -1674,12 +1674,12 @@
   function BurstCycle({ ar }) {
     const steps = [
       { en: 'Process execution consists of a <b>cycle</b> of CPU execution and I/O wait (the CPU–I/O Burst Cycle).', ar: 'تنفيذ الـ process عبارة عن <b>cycle</b> من تنفيذ على الـ CPU وانتظار I/O (الـ CPU–I/O Burst Cycle).' },
-      { en: '<b>CPU burst</b>: load store, add store, read from file.', ar: '<b>CPU burst</b>: load store و add store و read from file.' },
+      { en: '<b>CPU burst</b>: load store, add store, read from file.', ar: 'الـ <b>CPU burst</b> فيه load store و add store و read from file.' },
       { en: '<b>I/O burst</b>: wait for I/O.', ar: '<b>I/O burst</b>: wait for I/O.' },
       { en: 'Another <b>CPU burst</b>: store increment, index, write to file.', ar: '<b>CPU burst</b> تاني: store increment و index و write to file.' },
       { en: 'Another <b>I/O burst</b>: wait for I/O.', ar: '<b>I/O burst</b> تاني: wait for I/O.' },
-      { en: '<b>CPU burst</b>: load store, add store, read from file.', ar: '<b>CPU burst</b>: load store و add store و read from file.' },
-      { en: '<b>I/O burst</b>: wait for I/O. And so on: a <b>CPU burst followed by an I/O burst</b>. The CPU burst distribution is of main concern; maximum CPU utilization is obtained with multiprogramming.', ar: '<b>I/O burst</b>: wait for I/O. وهكذا: <b>CPU burst وبعده I/O burst</b>. الاهتمام الأساسي بتوزيع الـ CPU bursts؛ وأعلى CPU utilization بتيجي من الـ multiprogramming.' }
+      { en: '<b>CPU burst</b>: load store, add store, read from file.', ar: 'الـ <b>CPU burst</b> فيه load store و add store و read from file.' },
+      { en: '<b>I/O burst</b>: wait for I/O. And so on: a <b>CPU burst followed by an I/O burst</b>. The CPU burst distribution is of main concern; maximum CPU utilization is obtained with multiprogramming.', ar: 'الـ <b>I/O burst</b> فيه wait for I/O. وهكذا: <b>CPU burst وبعده I/O burst</b>. الاهتمام الأساسي بتوزيع الـ CPU bursts؛ وأعلى CPU utilization بتيجي من الـ multiprogramming.' }
     ];
     const [i, ctl] = useSteps(steps.length, 1800);
     return html`<figure className="fig fo4"><div className="fig-stage"><div className="fo4-bc">
@@ -2162,7 +2162,7 @@
     const steps = [
       { en: 'Logical memory has 4 <b>pages</b>; physical memory is divided into <b>frames</b> of the same size. The OS keeps track of the free frames.', ar: 'الـ logical memory فيها 4 <b>pages</b>، والـ physical memory متقسمة لـ <b>frames</b> بنفس الحجم. والـ OS بيتابع الـ frames الفاضية.', n: 0 },
       ...PT.map((f, p) => ({ en: `Page ${p} is loaded into a free frame: the page table records <b>${p} → ${f}</b>.`, ar: `الـ page رقم ${p} بتتحط في frame فاضية، والـ page table بتسجل${L(`<b>${p} → ${f}</b>`)}`, n: p + 1 })),
-      { en: 'Translation: the logical address is (p, d). <b>p</b> indexes the page table to get the frame; the offset <b>d</b> is combined with the frame base. For page 2: (2, d) → frame 3, offset d.', ar: 'الـ translation: الـ logical address هو (p, d). الـ <b>p</b> بيدخل على الـ page table ويجيب الـ frame، والـ offset <b>d</b> بيتضاف على بداية الـ frame. يعني الـ page رقم 2:' + L('(2, d) → frame 3, offset d'), n: 4, x: 2 },
+      { en: 'Translation: the logical address is (p, d). <b>p</b> indexes the page table to get the frame; the offset <b>d</b> is combined with the frame base. For page 2: (2, d) → frame 3, offset d.', ar: 'الـ translation: الـ logical address هو <bdi dir="ltr">(p, d)</bdi>. والـ <b>p</b> بيدخل على الـ page table ويجيب الـ frame، والـ offset <b>d</b> بيتضاف على بداية الـ frame. يعني الـ page رقم 2:' + L('(2, d) → frame 3, offset d'), n: 4, x: 2 },
       { en: 'With a logical address space of 2<sup>m</sup> and page size 2<sup>n</sup>, <b>p</b> is the high m − n bits and <b>d</b> the low n bits. The physical frames of a process can be <b>noncontiguous</b>: no external fragmentation.', ar: 'لو الـ logical address space حجمها 2<sup>m</sup> والـ page size حجمها 2<sup>n</sup>، يبقى الـ <b>p</b> هو أعلى m − n bits والـ <b>d</b> هو أقل n bits. والـ frames بتاعة الـ process ممكن تبقى <b>noncontiguous</b>، فمفيش external fragmentation.', n: 4, bits: 1 }
     ];
     const [i, ctl] = useSteps(steps.length, 2300);
@@ -2733,8 +2733,8 @@
     // P0 holds R1 and wants R2 (held by P1); P1 wants R3 (held by P2); P2 wants R1 (held by P0)
     const steps = [
       { en: 'Each process uses a resource as <b>request → use → release</b>. Deadlock can arise if <b>four conditions hold simultaneously</b>. Here P0, P1 and P2 each hold one resource.', ar: 'كل process بتستخدم الـ resource على 3 خطوات:' + L('request → use → release') + 'والـ deadlock ممكن يحصل لو <b>4 conditions اتحققوا في نفس الوقت</b>. هنا كل process من الـ P0 والـ P1 والـ P2 ماسكة resource واحد.', E: hold },
-      { en: '1. <b>Mutual exclusion</b>: only one process at a time can use a resource. Each box has a single instance, held by one process.', ar: '(1) الـ <b>Mutual exclusion</b>: process واحدة بس في المرة تقدر تستخدم الـ resource. كل box فيه instance واحد، وماسكاه process واحدة.', E: hold },
-      { en: '2. <b>Hold and wait</b>: a process holding at least one resource is waiting to acquire additional resources held by other processes.', ar: '(2) الـ <b>Hold and wait</b>: process ماسكة resource واحد على الأقل، ومستنية resources زيادة ماسكاها processes تانية.', E: hold.concat([want[0]]) },
+      { en: '1. <b>Mutual exclusion</b>: only one process at a time can use a resource. Each box has a single instance, held by one process.', ar: '(1) الـ <b>Mutual exclusion</b>: يعني process واحدة بس في المرة تقدر تستخدم الـ resource. كل box فيه instance واحد، وماسكاه process واحدة.', E: hold },
+      { en: '2. <b>Hold and wait</b>: a process holding at least one resource is waiting to acquire additional resources held by other processes.', ar: '(2) الـ <b>Hold and wait</b>: يعني process ماسكة resource واحد على الأقل، ومستنية resources زيادة ماسكاها processes تانية.', E: hold.concat([want[0]]) },
       { en: '3. <b>No preemption</b>: a resource can be released only voluntarily by the process holding it, after it has completed its task. Nobody can take R2 away from P1.', ar: '(3) الـ <b>No preemption</b>: الـ resource مايتسابش غير بإرادة الـ process اللي ماسكاه، بعد ما تخلّص الـ task بتاعتها. محدش يقدر ياخد الـ R2 من الـ P1 غصب عنها.', E: hold.concat([want[0]]) },
       { en: '4. <b>Circular wait</b>: P0 waits for a resource held by P1, P1 waits for P2, and P2 waits for P0.', ar: '(4) الـ <b>Circular wait</b>: الـ P0 مستنية resource ماسكاه الـ P1، والـ P1 مستنية الـ P2، والـ P2 مستنية الـ P0.', E: hold.concat(want), cyc: hold.concat(want) },
       { en: 'All four hold at the same time, so no process can continue: <b>deadlock</b>. Break any one condition and the deadlock cannot happen.', ar: 'الـ 4 conditions متحققين مع بعض، فمفيش process تقدر تكمّل: ده <b>deadlock</b>. ولو كسرنا أي condition منهم، الـ deadlock مش هيحصل.', E: hold.concat(want), cyc: hold.concat(want), dead: 1 }
@@ -3113,7 +3113,7 @@
         <li>${N('test (user 1)')}</li><li>${N('prog (user 1)')}</li><li>${N('data (user 2)')}</li>
         ${act === 'dup' && html`<li>${N('test (user 2) ✗ name taken', 'bad')}</li>`}</ul></li></ul></div>`;
       acts = html`<${Btn} on=${() => setAct('dup')}>User 2 creates "test"</${Btn}>`;
-      en = '<b>Single-level directory</b>: one directory for all users. There is <b>no grouping</b> of files, and searching gets slow as the files grow.'; a = 'الـ <b>single-level directory</b>: directory واحد لكل الـ users. مفيش <b>grouping</b> للـ files، والـ search بيبطأ لما الـ files تكتر.';
+      en = '<b>Single-level directory</b>: one directory for all users. There is <b>no grouping</b> of files, and searching gets slow as the files grow.'; a = 'الـ <b>single-level directory</b> فيه directory واحد لكل الـ users. مفيش <b>grouping</b> للـ files، والـ search بيبطأ لما الـ files تكتر.';
       if (act === 'dup') { en = '<b>Naming problem</b>: all files must have unique names, so user 2 cannot also call a file "test".'; a = 'دي <b>مشكلة الـ naming</b>: كل الـ files لازم أساميها تبقى مختلفة، فالـ user 2 مايقدرش يسمي file كمان باسم "test".'; }
     } else if (mode === 'two') {
       const hot = act === 'find';
