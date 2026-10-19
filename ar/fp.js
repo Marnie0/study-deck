@@ -8,51 +8,69 @@ AR.fp = {
      "h": "الفرق بين الـ data structure والـ file structure",
      "pts": [
       "الاتنين فيهم <b>طريقة تمثيل للداتا</b> + <b>عمليات للوصول للداتا</b>.",
-      "الفرق: الـ data structures بتتعامل مع الداتا اللي في الـ <b>main memory</b>، أما الـ file structures فبتتعامل مع الداتا اللي على الـ <b>secondary storage</b> (يعني الـ files).",
-      "المرجع الأساسي: كتاب <i>File Structures: An Object-Oriented Approach with C++</i> بتاع Folk وZoellick وRiccardi.",
-      "مراجع المادة (slide 3):<br>• كتاب <bdi><i>File Structures: An Object-Oriented Approach with C++</i></bdi> بتاع Folk و Zoellick و Riccardi.<br>• كتاب <bdi><i>File Organization and Processing</i></bdi> بتاع Alan L. Tharp.<br>• كتاب <bdi><i>Database Management Systems</i></bdi> بتاع Ramakrishnan و Gehrke.<br>• كتاب <bdi><i>Operating System Concepts</i></bdi> بتاع Silberschatz و Galvin و Gagne.<br>• والـ lecture notes بتاعة Prof Lucia Moura.",
-      "المحاضرة جزئين (slides 5 و 6 و 18):<br>• الـ <b>Part (1)</b> مقدمة عن الـ file management والـ organization، وفيه: (1) الـ data processing، و(2) الـ file والـ computer storage، و(3) الـ file structures، و(4) الـ file organization، و(5) الـ file management، و(6) الـ file managers.<br>• الـ <b>Part (2)</b> العمليات الأساسية على الـ files في C/C++، وفيه: الـ physical file والـ logical file، وفتح وقفل الـ files، والقراية والكتابة، وبرنامج مثال، والـ full methods، وquiz."
+      "الفرق: الـ data structures بتتعامل مع الداتا اللي في الـ <b>main memory</b>، أما الـ file structures فبتتعامل مع الداتا اللي على الـ <b>secondary storage</b> (يعني الـ files)."
      ]
     },
     {
-     "h": "(1) الـ Data processing و(2) الـ files",
+     "h": "مراجع المادة وخطة المحاضرة",
+     "pts": [
+      "مراجع المادة (slide 3):<br>• كتاب <bdi><i>File Structures: An Object-Oriented Approach with C++</i></bdi> بتاع Folk و Zoellick و Riccardi، وده <b>المرجع الأساسي</b>.<br>• كتاب <bdi><i>File Organization and Processing</i></bdi> بتاع Alan L. Tharp.<br>• كتاب <bdi><i>Database Management Systems</i></bdi> بتاع Ramakrishnan و Gehrke.<br>• كتاب <bdi><i>Operating System Concepts</i></bdi> بتاع Silberschatz و Galvin و Gagne.<br>• والـ lecture notes بتاعة Prof Lucia Moura.",
+      "المحاضرة جزئين (slides 5 و 6 و 18):<br>• الـ <b>Part (1)</b> مقدمة عن الـ file management والـ organization، وفيه:<br>(1) الـ data processing<br>(2) الـ file والـ computer storage<br>(3) الـ file structures<br>(4) الـ file organization<br>(5) الـ file management<br>(6) الـ file managers<br>• الـ <b>Part (2)</b> العمليات الأساسية على الـ files في C/C++، وفيه: الـ physical file والـ logical file، وفتح وقفل الـ files، والقراية والكتابة، وبرنامج مثال، والـ full methods، وquiz."
+     ]
+    },
+    {
+     "h": "(1) الـ Data processing",
      "pts": [
       "الـ <b>Data processing</b> (slide 7):<br>• الـ <b>Storage of data</b>: الداتا بتتحفظ جوه files، والـ files بتتحفظ على storage devices.<br>• الـ <b>Organization of data</b>: إزاي ننظم الـ files على الـ primary storage والـ secondary storage.<br>• الـ <b>Access of data</b>: يا sequential يا direct access.<br>• الـ <b>Processing of data</b>: معالجة الداتا بعد الـ storage والـ organization والـ access.",
-      "الداتا بتتحفظ في files، والـ files بتتحفظ على primary storage (الـ RAM) أو secondary storage (الـ hard disk). والتنظيم يا إما <b>sequential</b> access يا إما <b>direct</b> access.",
-      "الـ <b>File</b> = مجموعة داتا متحطوطة على storage <b>secondary و non-volatile</b> (يعني مش بتضيع لما الكهربا تقطع)، زي الـ hard disk والـ magnetic tape والـ optical media.",
-      "الـ computer storage ممكن يبقى secondary storage أو main memory.",
-      "تخزين الـ files بطيء عشان فيه <b>أجزاء كتير بتتحرك</b> (moving parts).",
-      "رسمة (slide 9، اسمها Computer Storage):<br>• الـ <b>Main memory (RAM)</b>: هنا الداتا بتتعالج (manipulated)، وهي سريعة وصغيرة وغالية و volatile.<br>• الـ <b>Secondary storage</b> (disk عليه files زي A.mp3 و first.java و mo.flv): هنا الداتا بتتخزن، وهو بطيء وكبير ورخيص و stable. أمثلة: الـ disk والـ tape والـ CD-ROM.<br>• الداتا بتتنقل بين الاتنين. والتعليقات اللي على الرسمة: «Files will store here» على الـ secondary storage، و«Why is file storage so slow?»، و«File storage systems have many moving parts».",
-      "ليه محتاجين files؟ لإنها الطريقة الوحيدة المناسبة لتخزين كمية معلومات كبيرة (صور، مزيكا، فيديو)؛ والـ operating systems أكبر من إنها تدخل كلها في الـ memory؛ والـ databases موجودة في كل حتة؛ وكمان عشان الـ backup والـ archiving."
+      "الداتا بتتحفظ في files، والـ files بتتحفظ على primary storage (الـ RAM) أو secondary storage (الـ hard disk). والتنظيم يا إما <b>sequential</b> access يا إما <b>direct</b> access."
      ]
     },
     {
-     "h": "(3) الـ File structures، (4) الـ organization، (5) الـ management، (6) الـ managers",
+     "h": "(2) الـ Files والـ computer storage",
      "pts": [
-      "الـ <b>Logical structure</b>: الـ programmer شايف الـ file إزاي (text، image، data file…). الـ <b>Physical structure</b>: الـ file متخزن إزاي فعلًا على الـ secondary storage.",
+      "الـ <b>File</b> = مجموعة داتا متحطوطة على storage <b>secondary و non-volatile</b> (يعني مش بتضيع لما الكهربا تقطع)، زي الـ hard disk والـ magnetic tape والـ optical media.",
+      "الـ computer storage ممكن يبقى secondary storage أو main memory.<br>تخزين الـ files بطيء عشان فيه <b>أجزاء كتير بتتحرك</b> (moving parts).",
+      "رسمة (slide 9، اسمها Computer Storage):<br>• الـ <b>Main memory (RAM)</b>: هنا الداتا بتتعالج (manipulated)، وهي سريعة وصغيرة وغالية و volatile.<br>• الـ <b>Secondary storage</b> (disk عليه files زي A.mp3 و first.java و mo.flv): هنا الداتا بتتخزن، وهو بطيء وكبير ورخيص و stable. أمثلة: الـ disk والـ tape والـ CD-ROM.<br>• الداتا بتتنقل بين الاتنين. والتعليقات اللي على الرسمة: «Files will store here» على الـ secondary storage، و«Why is file storage so slow?»، و«File storage systems have many moving parts».",
+      "ليه محتاجين files؟<br>• لإنها الطريقة الوحيدة المناسبة لتخزين كمية معلومات كبيرة (صور، مزيكا، فيديو).<br>• والـ operating systems أكبر من إنها تدخل كلها في الـ memory.<br>• والـ databases موجودة في كل حتة.<br>• وكمان عشان الـ backup والـ archiving."
+     ]
+    },
+    {
+     "h": "(3) الـ File structures",
+     "pts": [
+      "الـ <b>Logical structure</b>: الـ programmer شايف الـ file إزاي (زي text أو image أو data file…).<br>الـ <b>Physical structure</b>: الـ file متخزن إزاي فعلًا على الـ secondary storage."
+     ]
+    },
+    {
+     "h": "(4) الـ File organization",
+     "pts": [
       "رسمة (slide 12، اسمها File Organization): كومة كتب مكركبة مكتوب عليها <b>Unorganized</b>، وجنبها كتب مترتبة على الرفوف مكتوب عليها <b>Organized</b>.",
-      "<b>طرق الـ logical organization</b>: الـ heap والـ indexing والـ hashing. <b>طرق الـ physical organization</b>: إننا ننظم الـ tracks بالـ <b>sectors</b> أو بالـ <b>blocks</b>.",
-      "طرق تنظيم الـ file لازم توفر <b>access time سريع</b> و<b>استغلال كويس للمساحة</b> (good space utilization).",
-      "الـ <b>File management</b> بيشمل: تجهيز/عمل format للـ storage media؛ حجز مساحة التخزين والـ addressing؛ وإدارة المساحة الفاضية (free space).",
+      "• <b>طرق الـ logical organization</b>: الـ heap والـ indexing والـ hashing.<br>• <b>طرق الـ physical organization</b>: إننا ننظم الـ tracks بالـ <b>sectors</b> أو بالـ <b>blocks</b>.",
+      "طرق تنظيم الـ file لازم توفر <b>access time سريع</b> و<b>استغلال كويس للمساحة</b> (good space utilization)."
+     ]
+    },
+    {
+     "h": "(5) الـ File management و(6) الـ file managers",
+     "pts": [
+      "الـ <b>File management</b> بيشمل:<br>• تجهيز/عمل format للـ storage media<br>• حجز مساحة التخزين والـ addressing<br>• وإدارة المساحة الفاضية (free space).",
       "الـ <b>File managers</b> (دي system software): الـ <b>OS</b> والـ <b>DBMS</b>.",
-      "أهداف المادة: نجيب المعلومة بـ <b>أقل عدد ممكن من الـ disk accesses</b>، ونجمّع المعلومات اللي ليها علاقة ببعض عشان أي طلب يحتاج <b>رحلة واحدة بس للـ disk</b>."
+      "أهداف المادة:<br>• نجيب المعلومة بـ <b>أقل عدد ممكن من الـ disk accesses</b>.<br>• ونجمّع المعلومات اللي ليها علاقة ببعض عشان أي طلب يحتاج <b>رحلة واحدة بس للـ disk</b>."
      ]
     },
     {
      "h": "الـ Physical file مقابل الـ logical file",
      "pts": [
       "رسمة (slide 20، اسمها Physical File vs. Logical File): فيه hard disk عليه 6 physical files هما A.txt و b.txt و aa.txt و aa.mp3 و a.doc و z.mp3. برنامج C/C++ بيتعامل مع الـ physical file اللي اسمه b.txt عن طريق الـ logical name <b>infile</b>، وبرنامج تاني بيتعامل مع aa.txt عن طريق logical name بتاعه هو كمان اسمه <b>infile</b>.",
-      "تعريف الـ logical name (slide 22): في C بنكتب <code>FILE * outfile;</code>. وفي C++ الـ logical name بيبقى object من الـ class اللي اسمها <code>fstream</code>، وبنكتب:<span class=\"ltr\"><code>fstream outfile;</code></span>وفي اللغتين الـ logical name اللي هو outfile بيتربط بالـ physical file اللي هو myfile.txt وقت <b>فتح</b> الـ file."
+      "تعريف الـ logical name (slide 22):<br>• في C بنكتب:<span class=\"ltr\"><code>FILE * outfile;</code></span>• وفي C++ الـ logical name بيبقى object من الـ class اللي اسمها <code>fstream</code>، وبنكتب:<span class=\"ltr\"><code>fstream outfile;</code></span>وفي اللغتين الـ logical name اللي هو outfile بيتربط بالـ physical file اللي هو myfile.txt وقت <b>فتح</b> الـ file."
      ]
     },
     {
      "h": "فتح الـ files",
      "pts": [
       "الـ Opening بيجهز الـ file للاستخدام: يا إما تفتح file موجود يا إما تعمل file جديد. بعد ما تفتح بتكون واقف في <b>أول</b> الـ file.",
-      "رسمة (slide 23، اسمها Opening Files in C):<span class=\"ltr\"><code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code></span>وعليها labels: الـ <b>outFile</b> هو الـ logical name، والـ <b>fopen</b> هي الـ method اللي بتفتح الـ file، و\"A.txt\" هو الـ physical file، و\"w\" هو الـ mode. وجنبها فقاعة فيها الـ modes:<span class=\"ltr\">r (reading), w (writing), a (append), r+ w+ a+, rb wb ab, rb+ wb+ ab+</span>",
+      "رسمة (slide 23، اسمها Opening Files in C):<span class=\"ltr\"><code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code></span>وعليها labels:<br>• الـ <b>outFile</b> هو الـ logical name.<br>• والـ <b>fopen</b> هي الـ method اللي بتفتح الـ file.<br>• و\"A.txt\" هو الـ physical file.<br>• و\"w\" هو الـ mode.<br>وجنبها فقاعة فيها الـ modes:<span class=\"ltr\">r (reading), w (writing), a (append), r+ w+ a+, rb wb ab, rb+ wb+ ab+</span>",
       "في C++ بنكتب:<span class=\"ltr\"><code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code></span>والـ argument التاني <b>integer</b> بيحدد الـ mode، وقيمته بتتعمل بـ bitwise OR (الـ operator <code>|</code>) بين constants متعرّفة في الـ class اللي اسمها <code>ios</code>.",
-      "الـ modes في C: <b>\"r\"</b> يفتح file موجود للقراية؛ <b>\"w\"</b> يعمل file جديد أو يفضّي (truncate) الموجود للـ output؛ <b>\"a\"</b> يعمل file جديد أو يزوّد (append) على الموجود للـ output؛ <b>\"r+\"</b> file موجود للـ input والـ output؛ <b>\"w+\"</b> يعمل/يفضّي للـ input والـ output؛ <b>\"a+\"</b> يعمل/يعمل append للـ input والـ output؛ ولو زوّدت <b>b</b> (rb، wb، ab، r+b…) يبقى معناها <b>binary mode</b>.",
-      "الـ flags في C++: <code>ios::in</code> للـ input، <code>ios::out</code> للـ output، <code>ios::app</code> يعمل seek للآخر قبل كل write، <code>ios::ate</code> يبدأ وهو واقف في الآخر، <code>ios::trunc</code> دايمًا يعمل file جديد (truncate)، <code>ios::binary</code> للـ binary mode."
+      "الـ modes في C:<br>• الـ <b>\"r\"</b> يفتح file موجود للقراية.<br>• الـ <b>\"w\"</b> يعمل file جديد أو يفضّي (truncate) الموجود للـ output.<br>• الـ <b>\"a\"</b> يعمل file جديد أو يزوّد (append) على الموجود للـ output.<br>• الـ <b>\"r+\"</b> file موجود للـ input والـ output.<br>• الـ <b>\"w+\"</b> يعمل/يفضّي للـ input والـ output.<br>• الـ <b>\"a+\"</b> يعمل/يعمل append للـ input والـ output.<br>• ولو زوّدت <b>b</b> (زي rb و wb و ab و r+b…) يبقى معناها <b>binary mode</b>.",
+      "الـ flags في C++:<br>• الـ <code>ios::in</code> للـ input.<br>• الـ <code>ios::out</code> للـ output.<br>• الـ <code>ios::app</code> يعمل seek للآخر قبل كل write.<br>• الـ <code>ios::ate</code> يبدأ وهو واقف في الآخر.<br>• الـ <code>ios::trunc</code> دايمًا يعمل file جديد (truncate).<br>• الـ <code>ios::binary</code> للـ binary mode."
      ]
     },
     {
@@ -64,15 +82,15 @@ AR.fp = {
       "الـ Closing بيحرر الـ logical name عشان يتربط بـ physical file تاني، \"زي ما بتقفل السكة بعد ما تخلص المكالمة\".",
       "الـ bytes مش بتتبعت واحدة واحدة. بتتجمع في <b>buffer</b> وتتبعت مرة واحدة كـ <b>block</b>.",
       "لو مقفلتش الـ file، الـ OS هيقفله في آخر البرنامج. بس لو البرنامج <b>وقع فجأة (terminated abnormally) ممكن الداتا تضيع</b>.",
-      "قفل الـ file في الكود (slide 28): في C بنكتب <code>fclose(outfile);</code>، وفي C++ بنكتب <code>outfile.close();</code>."
+      "قفل الـ file في الكود (slide 28):<br>• في C بنكتب <code>fclose(outfile);</code><br>• وفي C++ بنكتب <code>outfile.close();</code>."
      ]
     },
     {
      "h": "القراية والكتابة",
      "pts": [
       "العمليات العامة (slides 29 و 33):<br>• الـ <code>Read(Source_file, Destination_addr, Size)</code>: الـ Source_file هو الـ logical file name اللي البرنامج بيقرا منه، والـ Destination_addr هو أول عنوان في الـ memory block اللي عايزين نقرا الداتا فيه، والـ Size هو كمية المعلومات اللي جاية من الـ file (عدد الـ bytes).<br>• الـ <code>Write(Destination_file, Source_addr, Size)</code>: الـ Destination_file هو الـ logical file name اللي الداتا هتتكتب فيه، والـ Source_addr هو أول عنوان في الـ memory block اللي فيه الداتا اللي هتتكتب، والـ Size هو عدد الـ bytes اللي هتتكتب.",
-      "الـ <code>fgetc(fp)</code> بتقرا character واحد. والـ <code>fgets(str, n, fp)</code> بتقرا string (‡ أقصى حاجة n-1 characters). والـ <code>fscanf(fp, \"fmt\", vars)</code> بتقرا formatted text. والـ <code>fread(&amp;blk, size, count, fp)</code> بتقرا record/block.",
-      "الـ arguments بتاعة fread/fwrite: 1) عنوان الـ variable، 2) حجم العنصر بالـ bytes، 3) عدد العناصر، 4) الـ logical file name.",
+      "• الـ <code>fgetc(fp)</code> بتقرا character واحد.<br>• والـ <code>fgets(str, n, fp)</code> بتقرا string (‡ أقصى حاجة n-1 characters).<br>• والـ <code>fscanf(fp, \"fmt\", vars)</code> بتقرا formatted text.<br>• والـ <code>fread(&amp;blk, size, count, fp)</code> بتقرا record/block.",
+      "الـ arguments بتاعة fread/fwrite:<br>(1) عنوان الـ variable<br>(2) حجم العنصر بالـ bytes<br>(3) عدد العناصر<br>(4) الـ logical file name.",
       "القراية في C (slide 31، «أو في C++ باستخدام الـ C streams»):<span class=\"ltr\"><code>char c; char a[100]; FILE * infile; infile = fopen(\"myfile.txt\",\"r\"); fread(&amp;c,1,1,infile); /* reads one character */ fread(a,1,10,infile); /* reads 10 characters */</code></span>والـ slide كاتبة جنب c إنه «a character» وجنب a إنها «an array with 100 characters». والـ <b>char</b> بياخد 1 byte، عشان كده الـ element size بيساوي 1.",
       "الكتابة في C (slide 34):<span class=\"ltr\"><code>char c; char a[100]; FILE * outfile; outfile = fopen(\"mynew.txt\",\"w\"); /* omitted initialization of c and a */ fwrite(&amp;c,1,1,outfile); fwrite(a,1,10,outfile);</code></span>والـ slide بتكتب نفس الـ 4 arguments بتوع fread، وبتسمي أول واحد «destination address (address of variable c)». ‡ في الحقيقة أول argument في fwrite هو الـ <b>source</b> address، يعني الـ memory اللي الداتا بتتكتب منها.",
       "القراية في C++ (slide 32):<span class=\"ltr\"><code>char c; char a[100]; fstream infile; infile.open(\"myfile.txt\",ios::in); infile &gt;&gt; c; infile.read(&amp;c,1); infile.read(a,10);</code></span>الـ <code>infile &gt;&gt; c;</code> بتقرا character واحد، والـ <code>infile.read(&amp;c,1);</code> طريقة تانية لقراية character واحد، والـ <code>infile.read(a,10);</code> بتقرا 10 bytes.<br>والكتابة في C++ (slide 35):<span class=\"ltr\"><code>char c; char a[100]; fstream outfile; outfile.open(\"mynew.txt\",ios::out); /* omitted initialization of c and a */ outfile &lt;&lt; c; outfile.write(&amp;c,1); outfile.write(a,10);</code></span>",
@@ -97,7 +115,7 @@ AR.fp = {
      "pts": [
       "المطلوب (slide 38): برنامج C يعرض محتوى file على الشاشة. والـ algorithm:<span class=\"ltr\">open the file for input → while there are characters/records, read one and write it to the screen → close the file</span>",
       "التعليقات اللي على الكود (slides 39 و 40):<br>• الـ <code>struct employee</code>: بنعمل الـ employee struct.<br>• الـ <code>fopen(...)</code>: بنفتح الـ file اللي اسمه emp.txt.<br>• الـ <code>if(my_file == NULL)</code>: بنختبر الـ file اتفتح ولا لأ.<br>• الـ <code>while(!feof(my_file))</code>: بنستخدم while loop نقرا بيها من الـ file لحد آخره.<br>• جوه الـ loop: بنقرا من الـ file بـ fread، ونطبع على الشاشة بـ printf، ونقفل الـ while loop بـ }.<br>• الـ <code>fclose(my_file);</code>: بنقفل الـ logical file.",
-      "‡ نصيحة: الـ <code>while(!feof())</code> مش بتبقى true غير <i>بعد</i> ما قراية تفشل، فممكن آخر record يتطبع مرتين. والأأمن إنك تشيك على <code>fread(...) == 1</code>. وكمان الكود اللي في الـ slides (39 و 40) بيطبع <code>%f</code> للـ salary وهي int (استخدم <code>%d</code> زي الكود اللي فوق)، وفيه <code>\"</code> زيادة بعد emp.sal، وبيكتب <code>==</code> على شكل <code>= =</code>، وبيستخدم <code>void main()</code>، وبيخلص بـ <code>getch();</code>."
+      "‡ نصيحة: الـ <code>while(!feof())</code> مش بتبقى true غير <i>بعد</i> ما قراية تفشل، فممكن آخر record يتطبع مرتين. والأأمن إنك تشيك على <code>fread(...) == 1</code>.<br>وكمان الكود اللي في الـ slides (39 و 40):<br>• بيطبع <code>%f</code> للـ salary وهي int (استخدم <code>%d</code> زي الكود اللي فوق)<br>• وفيه <code>\"</code> زيادة بعد emp.sal<br>• وبيكتب <code>==</code> على شكل <code>= =</code><br>• وبيستخدم <code>void main()</code>، وبيخلص بـ <code>getch();</code>."
      ]
     },
     {
@@ -290,7 +308,12 @@ AR.fp = {
       "ممكن نقول <b>disks</b> أو <b>HDD</b> ونقصد بيها الـ hard disks. والـ components المهمة في الـ disk هي:<br>(1) الـ platters<br>(2) الـ read/write heads<br>(3) الـ arm assembly<br>(4) الـ spindle<br>(5) الـ arms",
       "رسمة (slide 5، الـ hard disk من جوه ومن بره): drive من غير الغطا، وعليه labels للأجزاء دي:<span class=\"ltr\">base casting, spindle, slider (and head), actuator arm, actuator axis, actuator, platters, cover mounting holes (cover not shown), case mounting holes, ribbon cable (attaches heads to logic board), SCSI interface connector, jumper pins, jumper, power connector, tape seal</span>",
       "رسمة (slides 6 و 16 و 19، وفيها drive مفتوح): فيه أسهم بتشاور على الـ <b>platters</b> والـ <b>spindle</b> والـ <b>read/write heads</b> والـ <b>arm</b> والـ <b>arm assembly</b>.",
-      "<b>(1) الـ Platter</b>: هو الـ <b>disk الدايرية</b> اللي الداتا الـ magnetic بتتخزن عليها جوه الـ hard disk drive. وممكن يخزن معلومات على <b>الوشين (surfaces)</b> لـ platter واحد أو أكتر؛ وكل الـ surfaces فيها <b>نفس الـ components في نفس المكان</b>، والـ platters متصممة عشان تسهّل <b>تخزين الداتا واسترجاعها</b>.<br>• كل platter متقسم لدواير جوه بعض اسمها <b>tracks</b>: فيه آلاف الـ tracks في كل platter، وشكلها زي الحلقات، والمعلومات بتتخزن في tracks ورا بعض على سطح الـ disk.<br>• وكل track متقسم لعدد من الـ <b>sectors</b>.",
+      "<b>(1) الـ Platter</b>: هو الـ <b>disk الدايرية</b> اللي الداتا الـ magnetic بتتخزن عليها جوه الـ hard disk drive. وممكن يخزن معلومات على <b>الوشين (surfaces)</b> لـ platter واحد أو أكتر؛ وكل الـ surfaces فيها <b>نفس الـ components في نفس المكان</b>، والـ platters متصممة عشان تسهّل <b>تخزين الداتا واسترجاعها</b>.<br>• كل platter متقسم لدواير جوه بعض اسمها <b>tracks</b>: فيه آلاف الـ tracks في كل platter، وشكلها زي الحلقات، والمعلومات بتتخزن في tracks ورا بعض على سطح الـ disk.<br>• وكل track متقسم لعدد من الـ <b>sectors</b>."
+     ]
+    },
+    {
+     "h": "تقسيم الـ platter: الـ tracks والـ sectors والـ clusters والـ cylinders",
+     "pts": [
       "رسمة (slides 8 و 15 و 18، وفيها disk drive فيه 4 platters و 8 surfaces): منظر من الجنب للـ platters على الـ <b>spindle</b>؛ وفيه <b>read/write head</b> على كل surface من الـ 8، وكل الـ heads متشالة على الـ <b>boom</b> اللي بيتحرك لجوه ولبره (سهمين). وفي slide 8 بس فيه كمان منظر من فوق: حلقة مكتوب عليها <b>Track</b>، ومعاها <b>Track 0</b> و <b>Track 1</b>.",
       "رسمة (slide 9): platters فوق بعض؛ وعلى الـ platter اللي فوق فيه حلقة مكتوب عليها <b>Track</b>، وحتة صغيرة من الحلقة دي مكتوب عليها <b>Sector</b>.",
       "مثال (slide 10): platter فيه 1000 track، وكل track فيه 33 sector. الـ track capacity بتساوي عدد الـ sectors في الـ track مضروب في الـ bytes في الـ sector:<span class=\"ltr\">33 × 512 = <b>16,896 bytes</b></span>",
@@ -300,9 +323,14 @@ AR.fp = {
       "رسمة (slide 12): سطح disk فيه tracks دواير جوه بعض.<br>• حرف <b>A</b> هو الـ track (حلقة واحدة).<br>• حرف <b>B</b> هو الـ geometrical sector (شريحة زي حتة الكيكة معدية على كل الـ tracks).<br>• حرف <b>C</b> هو الـ track sector (جزء الشريحة اللي على track واحد).<br>• حرف <b>D</b> هو الـ cluster (sectors جنب بعض على نفس الـ track).",
       "الـ <b>cylinder</b> هو مجموعة الـ tracks اللي فوق/تحت بعض بالظبط. كل الداتا اللي على cylinder واحد تتقري <b>من غير ما الـ arm يتحرك</b>. عدد الـ cylinders = عدد الـ tracks في كل surface.",
       "رسمة (slide 13، الـ cylinder): 4 platters فوق بعض، ونفس الحلقة الصفرا متعلّمة على كل platter، ومكتوب عليها <b>Cylinder</b>.",
-      "يعني الـ platter ليه 4 مكونات: الـ <b>sector</b> والـ <b>cluster</b> والـ <b>track</b> والـ <b>cylinder</b> (رسمة slide 14: 4 مجموعات platters، وكل مجموعة متعلّم فيها واحد منهم).",
+      "يعني الـ platter ليه 4 مكونات: الـ <b>sector</b> والـ <b>cluster</b> والـ <b>track</b> والـ <b>cylinder</b> (رسمة slide 14: 4 مجموعات platters، وكل مجموعة متعلّم فيها واحد منهم)."
+     ]
+    },
+    {
+     "h": "الـ read/write heads والـ arm assembly والـ spindle والـ arms",
+     "pts": [
       "<b>(2) الـ Read/write heads</b>: هي الجزء الصغير في الـ disk اللي بيتحرك فوق الـ platter. الـ heads بتطير فوق سطح الـ platter بمسافة ممكن توصل لـ <b>3 nanometers</b> بس. والـ read/write head <b>بيروح للـ track اللي فيه الداتا</b> اللي هتتنقل. وكل surface ليه الـ read/write head بتاعه.",
-      "<b>(3) الـ Arm assembly</b>: مجموعة components جوه الـ hard disk فيها الـ arms، والـ arms دي شايلة الـ read/write heads. ودوره إنه <b>يقرا ويكتب المعلومات</b> من مجموعة platters متغطية بطبقة magnetic رفيعة. ولو الـ arm assembly وقف عن الشغل، الـ drive كله بيبوظ. ولما نقرا byte معين، الـ OS بيلاقي الـ platter والـ track والـ sector الصح، ويقرا <b>الـ sector كله في buffer</b> (مكان مخصوص في الـ memory)، وبعدين يلاقي الـ byte المطلوب جوه الـ buffer ده.",
+      "<b>(3) الـ Arm assembly</b>: مجموعة components جوه الـ hard disk فيها الـ arms، والـ arms دي شايلة الـ read/write heads. ودوره إنه <b>يقرا ويكتب المعلومات</b> من مجموعة platters متغطية بطبقة magnetic رفيعة. ولو الـ arm assembly وقف عن الشغل، الـ drive كله بيبوظ.<br>ولما نقرا byte معين، الـ OS بيلاقي الـ platter والـ track والـ sector الصح، ويقرا <b>الـ sector كله في buffer</b> (مكان مخصوص في الـ memory)، وبعدين يلاقي الـ byte المطلوب جوه الـ buffer ده.",
       "<b>(4) الـ Spindle</b> بيمسك الـ platters في <b>مكان ثابت</b>، ومع <b>مسافة كفاية للـ read/write arms</b> عشان توصل للداتا اللي على الـ disks، و<b>بيلفّها</b>، فيجيب الـ sector تحت الـ head.",
       "<b>(5) الـ Arms</b> بتشيل الـ heads وتوجهها وتحركها. تحريك الـ arm اسمه <b>seeking</b>، وده غالبًا <b>أبطأ</b> جزء.",
       "رسمة (slide 20): 3 <b>platters</b> على <b>spindle</b> واحد، وفيه سهم للـ <b>rotation</b>. وكل platter عليه حلقة متقسمة لحتت صغيرة: الحلقة اللي على الـ platter اللي فوق اسمها <b>track t</b>، وحتة واحدة من الحلقة (على الـ platter اللي في النص) اسمها <b>sector s</b>؛ ونفس الـ track على كل الـ platters، متوصلة بخطوط متقطعة، هي الـ <b>cylinder c</b>. وكل platter عليه <b>read-write head</b> (مربع غامق) في آخر <b>arm</b>، وكل الـ arms متثبتة في الـ <b>arm assembly</b>."
@@ -314,18 +342,18 @@ AR.fp = {
     {
      "h": "مسألة محلولة (سلايدز 22–26)",
      "pts": [
-      "المعطيات: 90,000 record طولهم ثابت 256 B؛ 512 B/sector؛ 60 sectors/track؛ الـ cylinder height = 14 tracks؛ 5000 tracks/surface؛ 4 sectors/cluster.",
-      "الـ Platters = 14/2 = <b>7</b>؛ الـ sides = <b>14</b>؛ حجم الـ track = 60×512 = <b>30,720 B</b>؛ الـ cylinders = <b>5000</b>.",
-      "حجم الـ cylinder = 14 × 30,720 = <b>430,080 B</b>؛ الـ sectors في الـ cylinder = 430,080/512 = <b>840</b>.",
-      "حجم الـ file = 90,000 × 256 = <b>23,040,000 B</b>. الـ records/sector = 512/256 = <b>2</b>؛ الـ records/track = 30,720/256 = <b>120</b>؛ الـ records/cylinder = 430,080/256 = <b>1680</b>.",
-      "الـ sectors اللي الـ file محتاجها = 23,040,000/512 = <b>45,000</b>؛ الـ tracks = 23,040,000/30,720 = <b>750</b>؛ الـ cylinders = 23,040,000/430,080 = <b>53.57</b> (‡ يعني 54 cylinder كاملين).",
-      "الـ capacity بتاعة الـ drive = 5000 × 430,080 = <b>2,150,400,000 B</b>."
+      "المعطيات:<br>• فيه 90,000 record طولهم ثابت 256 B.<br>• الـ sector فيه 512 B.<br>• الـ track فيه 60 sectors.<br>• الـ cylinder height هو 14 tracks.<br>• كل surface فيه 5000 tracks.<br>• الـ cluster فيه 4 sectors.",
+      "• عدد الـ platters هو<span class=\"ltr\">14/2 = <b>7</b></span>• وعدد الـ sides هو <b>14</b>.<br>• وحجم الـ track هو<span class=\"ltr\">60×512 = <b>30,720 B</b></span>• وعدد الـ cylinders هو <b>5000</b>.",
+      "• حجم الـ cylinder هو<span class=\"ltr\">14 × 30,720 = <b>430,080 B</b></span>• وعدد الـ sectors في الـ cylinder هو<span class=\"ltr\">430,080/512 = <b>840</b></span>",
+      "• حجم الـ file هو<span class=\"ltr\">90,000 × 256 = <b>23,040,000 B</b></span>• وعدد الـ records في الـ sector هو<span class=\"ltr\">512/256 = <b>2</b></span>• وعدد الـ records في الـ track هو<span class=\"ltr\">30,720/256 = <b>120</b></span>• وعدد الـ records في الـ cylinder هو<span class=\"ltr\">430,080/256 = <b>1680</b></span>",
+      "• الـ sectors اللي الـ file محتاجها هي<span class=\"ltr\">23,040,000/512 = <b>45,000</b></span>• والـ tracks هي<span class=\"ltr\">23,040,000/30,720 = <b>750</b></span>• والـ cylinders هي<span class=\"ltr\">23,040,000/430,080 = <b>53.57</b></span>وده معناه 54 cylinder كاملين (‡).",
+      "الـ capacity بتاعة الـ drive هي<span class=\"ltr\">5000 × 430,080 = <b>2,150,400,000 B</b></span>"
      ]
     },
     {
      "h": "تنظيم الـ tracks بالـ sectors مقابل بالـ blocks",
      "pts": [
-      "<b>بالـ sectors</b>: بيستخدمها الـ <b>OS</b>. وفيها <b>access بطيء</b> أو <b>fragmentation</b> لما نتعامل مع file فيه records. والـ fragmentation هو مساحة بتضيع جوه الـ sector، عشان الـ records مش جاية مظبوطة عليه (مثلًا الـ sector حجمه 512 B والـ record حجمه 300 B). وبعض الـ OSs بتسمح للـ <b>system administrator إنه يستخدم clusters</b>.",
+      "<b>بالـ sectors</b>: بيستخدمها الـ <b>OS</b>.<br>وفيها <b>access بطيء</b> أو <b>fragmentation</b> لما نتعامل مع file فيه records.<br>والـ fragmentation هو مساحة بتضيع جوه الـ sector، عشان الـ records مش جاية مظبوطة عليه (مثلًا الـ sector حجمه 512 B والـ record حجمه 300 B).<br>وبعض الـ OSs بتسمح للـ <b>system administrator إنه يستخدم clusters</b>.",
       "<b>بالـ blocks</b>: بيستخدمها الـ <b>DBMS</b>. الـ tracks ممكن تتقسم لـ <b>blocks (pages) الـ user هو اللي بيحددها</b> بدل الـ sectors. والـ block غالبًا بيتنظم بحيث يبقى فيه <b>عدد صحيح من الـ logical records</b>.",
       "الـ <b>Blocking factor</b> = عدد الـ records اللي متخزنة في كل block. مفيش internal fragmentation ومفيش record بيتقسم على 2 blocks.",
       "في الـ block addressing، كل block فيه داتا بيبقى معاه <b>sub-block</b> واحد أو أكتر فيهم معلومات زيادة عن الـ block. والـ block عادةً فيه:<br>• الـ <b>count sub-block</b>: عدد الـ bytes في الـ block.<br>• الـ <b>key sub-block</b> (اختياري): فيه الـ key بتاع آخر record في الـ data sub-block، عشان الـ disk controller يقدر يدوّر على key من غير ما يحمّل الـ block في الـ main memory.<br>• الـ <b>data sub-block</b>: فيه الـ data records.",
@@ -348,7 +376,7 @@ AR.fp = {
       "الوقت اللي بناخده عشان نوصل لـ sector في track على surface بيتقسم لـ <b>3 أجزاء</b>: الـ <b>seek time</b> والـ <b>rotational delay</b> والـ <b>transfer time</b>.",
       "رسمة (slide 35): disk والـ arm ماددة فوقه. والـ labels بتوضح الـ <b>seek time</b> (الـ arm وهي رايحة للـ track)، والـ <b>rotational latency</b> (الـ disk وهو بيلف لحد ما الـ sector ييجي عند الـ head)، والـ <b>transmission time</b> (الـ sector وهو بيعدي تحت الـ head).",
       "الـ <b>Seek time</b>: الوقت اللي الـ arm محتاجه عشان يروح للـ cylinder الصح. وده <b>أكبر</b> تكلفة. والقيم المعتادة:<br>• حوالي 5 ms عشان ينقل من track للي جنبه (track-to-track).<br>• وأقصاه 50 ms (من أجوّا track لأبرّا track).<br>• وفي المتوسط 30 ms (من track عشوائي لـ track عشوائي تاني).",
-      "الـ <b>Rotational delay (latency)</b>: الوقت اللي الـ disk محتاجه عشان يلف لحد ما الـ sector اللي عايزينه ييجي تحت الـ read/write head. والـ hard disks عادةً بتلف حوالي 5000 rpm، يعني لفة كل 12 ms. وأقل latency بصفر، وأكبر latency هي وقت لفة كاملة، والـ <b>average latency (r)</b> هي:<span class=\"ltr\">(min + max)/2 = max/2 = ½ revolution = ½ × (60 × 1000)/RPM ms</span>وفي العادة المتوسط بيبقى 6–8 ms.",
+      "الـ <b>Rotational delay (latency)</b>: الوقت اللي الـ disk محتاجه عشان يلف لحد ما الـ sector اللي عايزينه ييجي تحت الـ read/write head.<br>والـ hard disks عادةً بتلف حوالي 5000 rpm، يعني لفة كل 12 ms.<br>• أقل latency بصفر.<br>• وأكبر latency هي وقت لفة كاملة.<br>• والـ <b>average latency (r)</b> هي:<span class=\"ltr\">(min + max)/2 = max/2 = ½ revolution = ½ × (60 × 1000)/RPM ms</span>وفي العادة المتوسط بيبقى 6–8 ms.",
       "الـ <b>Transfer time</b>: الوقت اللي الـ read/write head بياخده وهو بيعدي على <b>block</b>. والـ formula بتاعته:<span class=\"ltr\">Transfer time = (bytes transferred / bytes on a track) × rotation time = revolution time / sectors per track</span>مثلًا لو فيه 63 sector في الـ track، نقل sector واحد بياخد 1/63 من اللفة."
      ]
     },
@@ -373,7 +401,7 @@ AR.fp = {
     {
      "h": "Quiz (2) محلول",
      "pts": [
-      "المعطيات: 20 surface، 800 tracks/surface، 25 sectors/track، 512 B/sector، 3600 rpm، الـ seek: 7 ms من track للي جنبه، 28 ms في المتوسط، 50 ms أقصى حاجة.",
+      "المعطيات:<br>• فيه 20 surface.<br>• كل surface فيه 800 tracks.<br>• كل track فيه 25 sectors.<br>• الـ sector فيه 512 B.<br>• السرعة 3600 rpm.<br>• الـ seek بياخد 7 ms من track للي جنبه، و 28 ms في المتوسط، و 50 ms أقصى حاجة.",
       "‡ (a) اللفة بتاخد 60,000/3600 = 16.67 ms، يبقى <b>الـ average latency بـ 8.33 ms</b>.",
       "‡ (b) الـ <b>disk capacity</b> بتساوي:<span class=\"ltr\">20 × 800 × 25 × 512 = <b>204,800,000 B ≈ 195.3 MB</b></span>",
       "‡ (c) <b>قراية الـ disk كله، cylinder ورا التاني</b> (800 cylinder × 20 track). نفترض إن كل track بياخد average latency + لفة كاملة، يعني 8.33 + 16.67 = 25 ms، فالـ cylinder الواحد بياخد 20 × 25 = 500 ms. والحركات هي average seek واحد (28 ms) عشان نوصل لأول cylinder، وبعدين 799 seek من track للي جنبه (7 ms).<br>والـ total تقريبًا:<span class=\"ltr\">28 + 799×7 + 800×500 = 28 + 5,593 + 400,000 = <b>405,621 ms ≈ 405.6 s</b></span>والـ slide مفيهاش إجابة، فاكتب الافتراضات بتاعتك في الامتحان."
@@ -571,10 +599,10 @@ AR.fp = {
     {
      "h": "2. الـ Field structures (4 طرق)",
      "pts": [
-      "<b>Fixed length</b>: مثلًا الأطوال 5، 7، 25 ← <code>87358CARROLLALICE IN WONDERLAND</code>، <code>03818FOLK&nbsp;&nbsp;&nbsp;FILE STRUCTURES</code>.",
-      "<b>Length indicator</b> في أول كل field ← <code>058735907CARROLL19ALICE IN WONDERLAND</code>.",
-      "<b>keyword = value</b> ← <code>ISBN=87359 AU=CARROLL TI=ALICE IN WONDERLAND</code>.",
-      "<b>Delimiter</b> في آخر كل field ← <code>87359|CARROLL|ALICE IN WONDERLAND|</code>."
+      "الـ <b>Fixed length</b>: مثلًا الأطوال 5 و 7 و 25:<span class=\"ltr\"><code>87358CARROLLALICE IN WONDERLAND</code>, <code>03818FOLK&nbsp;&nbsp;&nbsp;FILE STRUCTURES</code></span>",
+      "الـ <b>Length indicator</b> في أول كل field:<span class=\"ltr\"><code>058735907CARROLL19ALICE IN WONDERLAND</code></span>",
+      "كل field بيتكتب على شكل <b>keyword = value</b>:<span class=\"ltr\"><code>ISBN=87359 AU=CARROLL TI=ALICE IN WONDERLAND</code></span>",
+      "الـ <b>Delimiter</b> في آخر كل field:<span class=\"ltr\"><code>87359|CARROLL|ALICE IN WONDERLAND|</code></span>"
      ]
     },
     {
@@ -584,7 +612,7 @@ AR.fp = {
      "h": "3. الـ Record structures",
      "pts": [
       "الـ record هو مجموعة fields بتنتمي لبعض في مستوى تنظيم أعلى. هو أداة conceptual وفكرة logical مهمة في structure الـ file.",
-      "الطرق: (1) <b>fixed-length records بـ fixed-length fields</b>؛ (2) <b>fixed-length records بـ variable-length fields</b> (fields بـ delimiters أو بـ length indicators، ونعمل padding لحد ما الـ record يوصل للحجم الثابت)؛ (3) <b>كل record بيبدأ بـ length indicator</b> (عدد الـ bytes)، مثلًا <code>3387359|CARROLL|ALICE IN WONDERLAND</code>."
+      "الطرق:<br>(1) <b>fixed-length records بـ fixed-length fields</b><br>(2) <b>fixed-length records بـ variable-length fields</b> (fields بـ delimiters أو بـ length indicators، ونعمل padding لحد ما الـ record يوصل للحجم الثابت)<br>(3) <b>كل record بيبدأ بـ length indicator</b> (عدد الـ bytes)، مثلًا:<span class=\"ltr\"><code>3387359|CARROLL|ALICE IN WONDERLAND</code></span>"
      ]
     },
     {
@@ -593,7 +621,7 @@ AR.fp = {
     {
      "h": "إدارة files الـ records",
      "pts": [
-      "الـ <b>Primary key</b>: بيميّز الـ record بشكل unique ومش بيتغير. الـ <b>Secondary key</b>: بنستخدمه في البحث بس عادةً مش بيميّز الـ record بشكل unique.",
+      "الـ <b>Primary key</b>: بيميّز الـ record بشكل unique ومش بيتغير.<br>الـ <b>Secondary key</b>: بنستخدمه في البحث بس عادةً مش بيميّز الـ record بشكل unique.",
       "الـ <b>Sequential search</b>: نقرا الـ records بالترتيب لحد ما نلاقي اللي عايزينه. <b>O(n)</b>. مناسب للـ pattern matching أو للـ files اللي فيها records قليلة.",
       "الـ <b>Direct access</b>: نعمل seek على طول لأول الـ record. <b>O(1)</b>. ينفع لما نكون عارفين الـ <b>RRN</b> (Relative Record Number: أول record الـ RRN بتاعه 0، اللي بعده RRN 1…)."
      ]
@@ -602,8 +630,8 @@ AR.fp = {
      "h": "الـ Seeking",
      "pts": [
       "بشكل عام: <code>Seek(Source_File, Offset)</code>؛ مثلًا <code>Seek(infile, 3030)</code> بتنقلك للـ byte رقم 3030.",
-      "في C: <code>int fseek(FILE *stream, long offset, int origin)</code>، والـ origin <b>0</b> = البداية، <b>1</b> = المكان الحالي، <b>2</b> = النهاية.<br><code>fseek(infile,0L,0)</code> ← البداية؛ <code>fseek(infile,0L,2)</code> ← النهاية؛ <code>fseek(infile,-10L,1)</code> ← يرجع 10 bytes لورا.",
-      "في C++: الـ fstream ليه pointer-ين. الـ <code>seekg</code> بيحرك الـ <b>get</b> pointer (القراية) والـ <code>seekp</code> بيحرك الـ <b>put</b> pointer (الكتابة). الـ Origins: <code>ios::beg</code>، <code>ios::cur</code>، <code>ios::end</code>.<br><code>infile.seekg(0, ios::beg); infile.seekg(0, ios::end); infile.seekg(-10, ios::cur);</code>"
+      "في C:<span class=\"ltr\"><code>int fseek(FILE *stream, long offset, int origin)</code></span>والـ origin قيمته:<br>• <b>0</b>: البداية<br>• <b>1</b>: المكان الحالي<br>• <b>2</b>: النهاية<br>• الـ <code>fseek(infile,0L,0)</code> بيروح للبداية<br>• الـ <code>fseek(infile,0L,2)</code> بيروح للنهاية<br>• الـ <code>fseek(infile,-10L,1)</code> بيرجع 10 bytes لورا.",
+      "في C++: الـ fstream ليه pointer-ين. الـ <code>seekg</code> بيحرك الـ <b>get</b> pointer (القراية) والـ <code>seekp</code> بيحرك الـ <b>put</b> pointer (الكتابة). والـ origins هي <code>ios::beg</code> و <code>ios::cur</code> و <code>ios::end</code>.<br><code>infile.seekg(0, ios::beg); infile.seekg(0, ios::end); infile.seekg(-10, ios::cur);</code>"
      ]
     },
     {
@@ -768,19 +796,19 @@ AR.fp = {
      "h": "الـ file organizations الأساسية",
      "pts": [
       "طريقة الـ file organization بتحدد <b>استراتيجية مكان الـ record</b> (record placement strategy) والعلاقة بين <b>الـ key value</b> بتاع الـ record والـ <b>relative address</b> بتاعه.",
-      "الهدف: <b>retrieve</b> بكفاءة (الجار الـ logical، الـ records اللي بتحقق شرط، record عشوائي) و<b>update</b> بكفاءة (insert، delete، modify).",
+      "الهدف: <b>retrieve</b> بكفاءة (الجار الـ logical، الـ records اللي بتحقق شرط، record عشوائي) و<b>update</b> بكفاءة (الـ insert والـ delete والـ modify).",
       "الكفاءة بتتقاس بـ <b>عدد الـ disk accesses</b>: كل ما يقل كل ما يبقى أحسن.",
-      "استراتيجيات الـ access: الـ <b>sequential search</b> بطيء وبـ O(n)؛ الـ <b>direct access</b> بيجيب الـ record في read واحدة، O(1).",
-      "الطرق: <b>unordered (heap) file</b>، <b>ordered (sequential) file</b>، <b>indexing</b>، <b>hashing</b>."
+      "استراتيجيات الـ access:<br>• الـ <b>sequential search</b> بطيء وبـ O(n)<br>• الـ <b>direct access</b> بيجيب الـ record في read واحدة، O(1).",
+      "الطرق هي الـ <b>unordered (heap) file</b> والـ <b>ordered (sequential) file</b> والـ <b>indexing</b> والـ <b>hashing</b>."
      ]
     },
     {
      "h": "الـ Unordered file / الـ heap file",
      "pts": [
       "مجموعة records <b>مش مترتبة</b> متخزنة <b>بترتيب دخولها</b>، بغض النظر عن الـ key. وبيتسمى كمان unordered sequential file أو <b>pile</b> file.",
-      "بيدعم create/destroy، وopen/close، وinsert/delete. والـ records بتتعرف بـ <b>record id (rid)</b>.",
+      "بيدعم الـ create/destroy والـ open/close والـ insert/delete. والـ records بتتعرف بـ <b>record id (rid)</b>.",
       "الـ <b>Retrieve</b>: بالـ <b>linear search</b> بس.",
-      "الـ <b>Insert في الآخر</b>: بسيط وكفء، access واحد عشان تقرا آخر page وواحد عشان تكتبها تاني. بس فيه عيب كبير: <b>بيسمح بـ records متكررة (duplicates)</b> (مثلًا لو عملت insert لـ 4، Ali، CS عند offset 80).",
+      "الـ <b>Insert في الآخر</b>: بسيط وكفء، access واحد عشان تقرا آخر page وواحد عشان تكتبها تاني.<br>بس فيه عيب كبير: <b>بيسمح بـ records متكررة (duplicates)</b> (مثلًا لو عملت insert للـ record <bdi dir=\"ltr\">(4, Ali, CS)</bdi> عند offset 80).",
       "الـ <b>Delete</b>: تلاقي الـ record، تمسحه <b>physically أو logically</b>، وتكتبه تاني."
      ]
     },
@@ -790,8 +818,8 @@ AR.fp = {
     {
      "h": "الـ cost model",
      "pts": [
-      "الـ <b>B</b> = عدد الـ data pages (الـ page = block)، الـ <b>R</b> = عدد الـ records في كل page، الـ <b>D</b> = متوسط الوقت عشان تقرا/تكتب disk page، الـ <b>C</b> = متوسط الوقت عشان تعالج record.",
-      "العمليات: الـ <b>Scan</b> (تجيب كل الـ records)، الـ <b>equality search</b> (\"sid = 23\")، الـ <b>range search</b> (\"name after Smith\")، الـ <b>Insert</b>، الـ <b>Delete</b> (بالـ rid)."
+      "• الـ <b>B</b> هو عدد الـ data pages (الـ page = block)<br>• الـ <b>R</b> هو عدد الـ records في كل page<br>• الـ <b>D</b> هو متوسط الوقت عشان تقرا/تكتب disk page<br>• الـ <b>C</b> هو متوسط الوقت عشان تعالج record.",
+      "العمليات:<br>• الـ <b>Scan</b> (تجيب كل الـ records)<br>• الـ <b>equality search</b> (\"sid = 23\")<br>• الـ <b>range search</b> (\"name after Smith\")<br>• الـ <b>Insert</b><br>• الـ <b>Delete</b> (بالـ rid)."
      ]
     },
     {
@@ -809,7 +837,7 @@ AR.fp = {
      "pts": [
       "مجموعة records <b>مترتبة</b> متخزنة بترتيب الـ <b>key value</b>. والـ records بيتعملها access بالتسلسل من الأول للآخر.",
       "الـ Insert: الـ record الجديد بيروح لمكان محدد بالظبط، فـ <b>كل الـ records اللي الـ key بتاعها أكبر بتتحرك مكان واحد ناحية الآخر</b>. والـ delete والـ update محتاجين العكس.",
-      "مثال: لو عملت insert لـ (4، Ali، CS) في 1، 2، 3، 5 هيتحط عند offset 60 وAhmed (5) هيتزق لـ 80."
+      "مثال: لو عملت insert للـ record <bdi dir=\"ltr\">(4, Ali, CS)</bdi> في الـ records <bdi dir=\"ltr\">1, 2, 3, 5</bdi> هيتحط عند offset 60، والـ record بتاع Ahmed (5) هيتزق لـ 80."
      ]
     },
     {
@@ -818,7 +846,7 @@ AR.fp = {
       "الـ <b>Scan</b>: B(D + RC).",
       "الـ <b>Equality search</b>: <b>D·log₂B + C·log₂R</b>. binary search على الـ pages، وبعدين binary search جوا الـ page.",
       "الـ <b>Range search</b>: search cost + تكلفة إنك تجيب الـ records المطابقة.",
-      "الـ <b>Insert</b>: search cost + 2 × (0.5B(D + RC)) = search + B(D + RC). بتقرا وتكتب تاني نص الـ file في المتوسط.",
+      "الـ <b>Insert</b>:<span class=\"ltr\">search cost + 2 × (0.5B(D + RC)) = search + B(D + RC)</span>بتقرا وتكتب تاني نص الـ file في المتوسط.",
       "الـ <b>Delete</b>: زي الـ insert بالظبط: search + B(D + RC)."
      ]
     },
@@ -828,7 +856,7 @@ AR.fp = {
     {
      "h": "إزاي تقرا اختيارات الامتحان",
      "pts": [
-      "الامتحانات بتفك كلمة \"search +\" لـ formulas. الـ delete في الـ sorted file = <b>Dlog₂B + Clog₂R + B(D+RC)</b>. الـ delete في الـ hashed file = <b>1.25B(D+RC) + C + D</b> في الإجابة النموذجية (بتستخدم الـ hashed scan cost كـ \"search\").",
+      "الامتحانات بتفك كلمة \"search +\" لـ formulas.<br>• الـ delete في الـ sorted file = <b>Dlog₂B + Clog₂R + B(D+RC)</b>.<br>• الـ delete في الـ hashed file = <b>1.25B(D+RC) + C + D</b> في الإجابة النموذجية (بتستخدم الـ hashed scan cost كـ \"search\").",
       "الـ hashed scan بيبقى <b>1.25B(D+RC)</b> لإن الـ hash buckets عادةً بتتساب مليانة حوالي 80%، فبيبقى فيه pages أكتر بـ 1.25 مرة."
      ]
     }
@@ -982,14 +1010,14 @@ AR.fp = {
      "h": "ليه الـ hashing؟",
      "pts": [
       "الـ Hashing تقنية بحث مفيدة في عمل الـ indexes. والدافع الأساسي ليها إنها <b>تحسّن وقت البحث</b>.",
-      "وقت البحث: الـ simple indexes مع binary search بـ <b>O(log N)</b>؛ الـ B-trees بـ <b>O(log<sub>k</sub> N)</b>؛ الـ hashing بـ <b>O(1)</b>."
+      "وقت البحث:<br>• الـ simple indexes مع binary search بـ <b>O(log N)</b><br>• الـ B-trees بـ <b>O(log<sub>k</sub> N)</b><br>• الـ hashing بـ <b>O(1)</b>."
      ]
     },
     {
      "h": "يعني إيه hashing؟",
      "pts": [
       "إنك تعرف مكان الـ key بمجرد ما تبص على الـ key نفسه. وعشان كده بنصمم <b>hash function</b>.",
-      "الـ hash function <b>h(k)</b> بتحوّل الـ <b>key</b> لـ <b>address</b>. والـ address space بيتحدد من الأول، مثلًا 1000 address متاحين، فالـ h بتحوّل كل الـ keys الممكنة U لـ {0، 1، …، 999}.",
+      "الـ hash function <b>h(k)</b> بتحوّل الـ <b>key</b> لـ <b>address</b>. والـ address space بيتحدد من الأول، مثلًا 1000 address متاحين، فالـ h بتحوّل كل الـ keys الممكنة U لـ <bdi dir=\"ltr\">{0, 1, …, 999}</bdi>.",
       "في الـ hashing <b>مفيش علاقة واضحة بين الـ key والمكان</b>.",
       "الـ address بتاع كل record بيتحدد بـ algorithm رياضي. وده اسمه <b>hashed</b> file organization.",
       "الـ <b>bucket</b> هو وحدة تخزين تقدر تشيل record واحد أو أكتر في الـ hash file."

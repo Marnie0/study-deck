@@ -15,34 +15,52 @@ COURSES.fp = {
      "h": "Data structure vs file structure",
      "pts": [
       "Both involve <b>representation of data</b> + <b>operations for accessing data</b>.",
-      "Difference: data structures deal with data in <b>main memory</b>; file structures deal with data in <b>secondary storage</b> (files).",
-      "Main reference: <i>File Structures: An Object-Oriented Approach with C++</i> by Folk, Zoellick and Riccardi.",
-      "Course references (slide 3): <i>File Structures: An Object-Oriented Approach with C++</i> (Folk, Zoellick, Riccardi); <i>File Organization and Processing</i> (Alan L. Tharp); <i>Database Management Systems</i> (Ramakrishnan, Gehrke); <i>Operating System Concepts</i> (Silberschatz, Galvin, Gagne); and lecture notes by Prof Lucia Moura.",
-      "The lecture has two parts (slides 5, 6, 18):<br>• <b>Part (1)</b> Introduction to file management and organization: (1) data processing, (2) file and computer storage, (3) file structures, (4) file organization, (5) file management, (6) file managers.<br>• <b>Part (2)</b> Basic file processing operations, handling files in C/C++: physical vs logical file, opening and closing files, reading and writing, a sample program, full methods and a quiz."
+      "Difference: data structures deal with data in <b>main memory</b>; file structures deal with data in <b>secondary storage</b> (files)."
      ]
     },
     {
-     "h": "(1) Data processing and (2) files",
+     "h": "Course references and lecture outline",
+     "pts": [
+      "<b>Course references</b> (slide 3):<br>• <i>File Structures: An Object-Oriented Approach with C++</i> by Folk, Zoellick and Riccardi: the <b>main reference</b>.<br>• <i>File Organization and Processing</i> (Alan L. Tharp).<br>• <i>Database Management Systems</i> (Ramakrishnan, Gehrke).<br>• <i>Operating System Concepts</i> (Silberschatz, Galvin, Gagne).<br>• Lecture notes by Prof Lucia Moura.",
+      "The lecture has two parts (slides 5, 6, 18):<br>• <b>Part (1)</b> Introduction to file management and organization:<br>(1) data processing<br>(2) file and computer storage<br>(3) file structures<br>(4) file organization<br>(5) file management<br>(6) file managers<br>• <b>Part (2)</b> Basic file processing operations, handling files in C/C++: physical vs logical file, opening and closing files, reading and writing, a sample program, full methods and a quiz."
+     ]
+    },
+    {
+     "h": "(1) Data processing",
      "pts": [
       "<b>Data processing</b> (slide 7):<br>• <b>Storage of data</b>: data is saved within files, and the files are saved in storage devices.<br>• <b>Organization of data</b>: how we organize files on primary and secondary storage.<br>• <b>Access of data</b>: sequential or direct access.<br>• <b>Processing of data</b>: the processing of data after storage, organization and access.",
-      "Data is saved in files, and files are saved on primary (RAM) or secondary (hard disk) storage. Organization is either <b>sequential</b> or <b>direct</b> access.",
-      "<b>File</b> = a collection of data placed on <b>secondary, non-volatile</b> storage (hard disk, magnetic tape, optical media).",
-      "Computer storage can be secondary storage or main memory.",
-      "File storage is slow because it has <b>many moving parts</b>.",
-      "Figure (slide 9, Computer Storage):<br>• <b>Main memory (RAM)</b>: data is manipulated here; fast, small, expensive, volatile.<br>• <b>Secondary storage</b> (disk holding files such as A.mp3, first.java, mo.flv): data is stored here; slow, large, cheap, stable. Examples: disk, tape, CD-ROM.<br>• Data is transferred between the two. Callouts: \"Files will store here\" (secondary storage); \"Why is file storage so slow?\"; \"File storage systems have many moving parts\".",
-      "Why files? They are the only suitable way to store large amounts of information (pictures, music, video); operating systems are too large to fit fully in memory; databases are everywhere; backup and archiving."
+      "Data is saved in files, and files are saved on primary (RAM) or secondary (hard disk) storage. Organization is either <b>sequential</b> or <b>direct</b> access."
      ]
     },
     {
-     "h": "(3) File structures, (4) organization, (5) management, (6) managers",
+     "h": "(2) Files and computer storage",
      "pts": [
-      "<b>Logical structure</b>: how programmers see the file (text, image, data file…). <b>Physical structure</b>: how it is stored on secondary storage.",
+      "<b>File</b> = a collection of data placed on <b>secondary, non-volatile</b> storage (hard disk, magnetic tape, optical media).",
+      "Computer storage can be secondary storage or main memory.<br>File storage is slow because it has <b>many moving parts</b>.",
+      "Figure (slide 9, Computer Storage):<br>• <b>Main memory (RAM)</b>: data is manipulated here; fast, small, expensive, volatile.<br>• <b>Secondary storage</b> (disk holding files such as A.mp3, first.java, mo.flv): data is stored here; slow, large, cheap, stable. Examples: disk, tape, CD-ROM.<br>• Data is transferred between the two. Callouts: \"Files will store here\" (secondary storage); \"Why is file storage so slow?\"; \"File storage systems have many moving parts\".",
+      "Why files?<br>• They are the only suitable way to store large amounts of information (pictures, music, video).<br>• Operating systems are too large to fit fully in memory.<br>• Databases are everywhere.<br>• Backup and archiving."
+     ]
+    },
+    {
+     "h": "(3) File structures",
+     "pts": [
+      "<b>Logical structure</b>: how programmers see the file (text, image, data file…).<br><b>Physical structure</b>: how it is stored on secondary storage."
+     ]
+    },
+    {
+     "h": "(4) File organization",
+     "pts": [
       "Figure (slide 12, File Organization): a messy pile of books labelled <b>Unorganized</b> next to books neatly arranged on shelves labelled <b>Organized</b>.",
-      "<b>Logical organization methods</b>: heap, indexing, hashing. <b>Physical organization methods</b>: organizing tracks by <b>sectors</b> or by <b>blocks</b>.",
-      "File organization methods must provide <b>fast access time</b> and <b>good space utilization</b>.",
-      "<b>File management</b> covers: preparing/formatting storage media; allocating storage space and addressing; managing free space.",
+      "• <b>Logical organization methods</b>: heap, indexing, hashing.<br>• <b>Physical organization methods</b>: organizing tracks by <b>sectors</b> or by <b>blocks</b>.",
+      "File organization methods must provide <b>fast access time</b> and <b>good space utilization</b>."
+     ]
+    },
+    {
+     "h": "(5) File management and (6) file managers",
+     "pts": [
+      "<b>File management</b> covers:<br>• preparing/formatting storage media<br>• allocating storage space and addressing<br>• managing free space.",
       "<b>File managers</b> (system software): the <b>OS</b> and the <b>DBMS</b>.",
-      "Course objectives: get information with <b>as few disk accesses as possible</b>, and group related information so a request needs <b>only one trip to the disk</b>."
+      "Course objectives:<br>• Get information with <b>as few disk accesses as possible</b>.<br>• Group related information so a request needs <b>only one trip to the disk</b>."
      ]
     },
     {
@@ -67,17 +85,17 @@ COURSES.fp = {
      ],
      "pts": [
       "Figure (slide 20, Physical File vs. Logical File): a hard disk with 6 physical files (A.txt, b.txt, aa.txt, aa.mp3, a.doc, z.mp3). One C/C++ program deals with the physical file b.txt through the logical name <b>infile</b>; another program deals with aa.txt through its own logical name <b>infile</b>.",
-      "Declaring the logical name (slide 22): in C, <code>FILE * outfile;</code>. In C++ the logical name is an object of the class <code>fstream</code>: <code>fstream outfile;</code>. In both languages the logical name outfile is associated with the physical file myfile.txt at the time of <b>opening</b> the file."
+      "Declaring the logical name (slide 22):<br>• In C: <code>FILE * outfile;</code><br>• In C++ the logical name is an object of the class <code>fstream</code>: <code>fstream outfile;</code><br>In both languages the logical name outfile is associated with the physical file myfile.txt at the time of <b>opening</b> the file."
      ]
     },
     {
      "h": "Opening files",
      "pts": [
       "Opening makes a file ready for use: either open an existing file or create a new one. After opening you are positioned at the <b>beginning</b> of the file.",
-      "Figure (slide 23, Opening Files in C): <code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code> with labels: <b>outFile</b> = logical name, <b>fopen</b> = method to open file, \"A.txt\" = physical file, \"w\" = the mode. A bubble lists the modes: r (reading), w (writing), a (append), r+ w+ a+, rb wb ab, rb+ wb+ ab+.",
-      "C++: <code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code>. The second argument is an <b>integer</b> indicating the mode; its value is set as a bitwise OR (operator <code>|</code>) of constants defined in the class <code>ios</code>.",
-      "C modes: <b>\"r\"</b> open existing for reading; <b>\"w\"</b> create new or truncate existing for output; <b>\"a\"</b> create new or append for output; <b>\"r+\"</b> existing for input and output; <b>\"w+\"</b> create/truncate for input and output; <b>\"a+\"</b> create/append for input and output; adding <b>b</b> (rb, wb, ab, r+b…) means <b>binary mode</b>.",
-      "C++ flags: <code>ios::in</code> input, <code>ios::out</code> output, <code>ios::app</code> seek to end before each write, <code>ios::ate</code> start positioned at end, <code>ios::trunc</code> always create new (truncate), <code>ios::binary</code> binary mode."
+      "Figure (slide 23, Opening Files in C): <code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code><br>Labels:<br>• <b>outFile</b> = logical name<br>• <b>fopen</b> = method to open file<br>• \"A.txt\" = physical file<br>• \"w\" = the mode<br>A bubble lists the modes: r (reading), w (writing), a (append), r+ w+ a+, rb wb ab, rb+ wb+ ab+.",
+      "C++: <code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code><br>The second argument is an <b>integer</b> indicating the mode; its value is set as a bitwise OR (operator <code>|</code>) of constants defined in the class <code>ios</code>.",
+      "C modes:<br>• <b>\"r\"</b>: open existing for reading.<br>• <b>\"w\"</b>: create new or truncate existing for output.<br>• <b>\"a\"</b>: create new or append for output.<br>• <b>\"r+\"</b>: existing for input and output.<br>• <b>\"w+\"</b>: create/truncate for input and output.<br>• <b>\"a+\"</b>: create/append for input and output.<br>• Adding <b>b</b> (rb, wb, ab, r+b…) means <b>binary mode</b>.",
+      "C++ flags:<br>• <code>ios::in</code> input<br>• <code>ios::out</code> output<br>• <code>ios::app</code> seek to end before each write<br>• <code>ios::ate</code> start positioned at end<br>• <code>ios::trunc</code> always create new (truncate)<br>• <code>ios::binary</code> binary mode."
      ]
     },
     {
@@ -123,15 +141,15 @@ COURSES.fp = {
       "Closing frees the logical name for another physical file, \"like hanging up the telephone after a call\".",
       "Bytes are not sent one by one. They are collected in a <b>buffer</b> and sent as a <b>block</b>.",
       "If you do not close, the OS closes the file at the end of the program. If the program <b>terminates abnormally, data may be lost</b>.",
-      "Closing in code (slide 28): in C, <code>fclose(outfile);</code>; in C++, <code>outfile.close();</code>."
+      "Closing in code (slide 28):<br>• In C: <code>fclose(outfile);</code><br>• In C++: <code>outfile.close();</code>"
      ]
     },
     {
      "h": "Reading and writing",
      "pts": [
       "Generic operations (slides 29, 33):<br>• <code>Read(Source_file, Destination_addr, Size)</code>: Source_file = the logical file name the program reads from; Destination_addr = the first address of the memory block where we want to read the data; Size = how much information is brought in from the file (byte count).<br>• <code>Write(Destination_file, Source_addr, Size)</code>: Destination_file = the logical file name where the data will be written; Source_addr = the first address of the memory block where the data to be written is stored; Size = the number of bytes to be written.",
-      "<code>fgetc(fp)</code> reads one character. <code>fgets(str, n, fp)</code> reads a string (‡ at most n-1 characters). <code>fscanf(fp, \"fmt\", vars)</code> reads formatted text. <code>fread(&amp;blk, size, count, fp)</code> reads a record/block.",
-      "fread/fwrite arguments: 1) address of the variable, 2) element size in bytes, 3) number of elements, 4) logical file name.",
+      "• <code>fgetc(fp)</code> reads one character.<br>• <code>fgets(str, n, fp)</code> reads a string (‡ at most n-1 characters).<br>• <code>fscanf(fp, \"fmt\", vars)</code> reads formatted text.<br>• <code>fread(&amp;blk, size, count, fp)</code> reads a record/block.",
+      "fread/fwrite arguments:<br>(1) address of the variable<br>(2) element size in bytes<br>(3) number of elements<br>(4) logical file name.",
       "Reading in C (slide 31, \"or in C++ using C streams\"): <code>char c; char a[100]; FILE * infile; infile = fopen(\"myfile.txt\",\"r\"); fread(&amp;c,1,1,infile); /* reads one character */ fread(a,1,10,infile); /* reads 10 characters */</code>. The slide comments c as \"a character\" and a as \"an array with 100 characters\". A <b>char</b> occupies 1 byte, so the element size is 1.",
       "Writing in C (slide 34): <code>char c; char a[100]; FILE * outfile; outfile = fopen(\"mynew.txt\",\"w\"); /* omitted initialization of c and a */ fwrite(&amp;c,1,1,outfile); fwrite(a,1,10,outfile);</code>. The slide lists the same four arguments as fread, calling the 1st one \"destination address (address of variable c)\". ‡ For fwrite the 1st argument is really the <b>source</b> address: the memory the data is written from.",
       "Reading in C++ (slide 32): <code>char c; char a[100]; fstream infile; infile.open(\"myfile.txt\",ios::in); infile &gt;&gt; c;</code> (reads one character), <code>infile.read(&amp;c,1);</code> (alternative way of reading one character), <code>infile.read(a,10);</code> (reads 10 bytes).<br>Writing in C++ (slide 35): <code>char c; char a[100]; fstream outfile; outfile.open(\"mynew.txt\",ios::out); /* omitted initialization of c and a */ outfile &lt;&lt; c; outfile.write(&amp;c,1); outfile.write(a,10);</code>.",
@@ -220,7 +238,7 @@ COURSES.fp = {
      "pts": [
       "Task (slide 38): write a C program that displays the contents of a file on the screen. Algorithm: open the file for input → while there are characters/records, read one and write it to the screen → close the file.",
       "Slide callouts (slides 39-40):<br>• <code>struct employee</code>: create employee struct.<br>• <code>fopen(...)</code>: open the emp.txt file.<br>• <code>if(my_file == NULL)</code>: test if the file opened or not.<br>• <code>while(!feof(my_file))</code>: use a while loop to read from the file until the end of file.<br>• Loop body: read from the file using fread, print the output to the screen using printf, end the while loop with }.<br>• <code>fclose(my_file);</code>: close the logical file.",
-      "‡ Tip: <code>while(!feof())</code> only becomes true <i>after</i> a read fails, so the last record may print twice. Checking <code>fread(...) == 1</code> is safer. The slide's code (slides 39-40) also prints <code>%f</code> for the int salary (use <code>%d</code>, as in the code above), has a stray <code>\"</code> after emp.sal, writes <code>==</code> as <code>= =</code>, uses <code>void main()</code> and ends with <code>getch();</code>."
+      "‡ Tip: <code>while(!feof())</code> only becomes true <i>after</i> a read fails, so the last record may print twice. Checking <code>fread(...) == 1</code> is safer.<br>The slide's code (slides 39-40) also:<br>• prints <code>%f</code> for the int salary (use <code>%d</code>, as in the code above)<br>• has a stray <code>\"</code> after emp.sal<br>• writes <code>==</code> as <code>= =</code><br>• uses <code>void main()</code> and ends with <code>getch();</code>."
      ]
     },
     {
@@ -630,7 +648,12 @@ COURSES.fp = {
       "We can use <b>disks</b> or <b>HDD</b> to refer to hard disks. The important components in disks are:<br>(1) Platters<br>(2) Read/write heads<br>(3) Arm assembly<br>(4) Spindle<br>(5) Arms",
       "Figure (slide 5, inside and outside a hard disk): a drive with its cover off, with labels for the base casting, spindle, slider (and head), actuator arm, actuator axis, actuator, platters, cover mounting holes (cover not shown), case mounting holes, ribbon cable (attaches heads to logic board), SCSI interface connector, jumper pins, jumper, power connector and tape seal.",
       "Figure (slides 6, 16 and 19, an opened drive): arrows point to the <b>platters</b>, <b>spindle</b>, <b>read/write heads</b>, <b>arm</b> and <b>arm assembly</b>.",
-      "<b>1. Platter</b>: the <b>circular disk</b> on which magnetic data is stored in a hard disk drive. It can store information on <b>both sides (surfaces)</b> of one or more platters; all surfaces have the <b>same components at the same position</b>, and the platters are structured to facilitate <b>storage and retrieval</b> of data.<br>• Each platter is divided into concentric rings called <b>tracks</b>: there are thousands of tracks on each platter, they look like rings, and the information is stored in successive tracks on the surface of the disk.<br>• Each track is divided into a number of <b>sectors</b>.",
+      "<b>1. Platter</b>: the <b>circular disk</b> on which magnetic data is stored in a hard disk drive. It can store information on <b>both sides (surfaces)</b> of one or more platters; all surfaces have the <b>same components at the same position</b>, and the platters are structured to facilitate <b>storage and retrieval</b> of data.<br>• Each platter is divided into concentric rings called <b>tracks</b>: there are thousands of tracks on each platter, they look like rings, and the information is stored in successive tracks on the surface of the disk.<br>• Each track is divided into a number of <b>sectors</b>."
+     ]
+    },
+    {
+     "h": "Platter layout: tracks, sectors, clusters and cylinders",
+     "pts": [
       "Figure (slides 8, 15 and 18, disk drive with 4 platters and 8 surfaces): a side view of the platters on the <b>spindle</b>; there is a <b>read/write head</b> on each of the 8 surfaces, and all heads are held by the <b>boom</b>, which moves in and out (two arrows). On slide 8 a top view is added: a ring labelled <b>Track</b>, with <b>Track 0</b> and <b>Track 1</b>.",
       "Figure (slide 9): stacked platters; one ring on the top platter is marked <b>Track</b>, and a small piece of that ring is marked <b>Sector</b>.",
       "Example (slide 10): a platter has 1000 tracks, each containing 33 sectors. Track capacity = number of sectors per track × bytes per sector = 33 × 512 = <b>16,896 bytes</b>.",
@@ -640,9 +663,14 @@ COURSES.fp = {
       "Figure (slide 12): a disk surface with concentric tracks. <b>A</b> = track (one ring); <b>B</b> = geometrical sector (a pie-shaped wedge across all tracks); <b>C</b> = track sector (the part of the wedge on one track); <b>D</b> = cluster (a run of neighbouring sectors along one track).",
       "A <b>cylinder</b> is the set of tracks directly above/below each other. All data on one cylinder can be read <b>without moving the arm</b>. Number of cylinders = number of tracks per surface.",
       "Figure (slide 13, cylinder): a stack of 4 platters with the same yellow ring highlighted on every platter, labelled <b>Cylinder</b>.",
-      "So a platter has four components: <b>sector</b>, <b>cluster</b>, <b>track</b>, <b>cylinder</b> (figure, slide 14: four stacks of platters, each highlighting one of them).",
+      "So a platter has four components: <b>sector</b>, <b>cluster</b>, <b>track</b>, <b>cylinder</b> (figure, slide 14: four stacks of platters, each highlighting one of them)."
+     ]
+    },
+    {
+     "h": "Read/write heads, arm assembly, spindle and arms",
+     "pts": [
       "<b>2. Read/write heads</b>: the small part of the disk that moves above the disk platter. Heads only fly above the platter surface with clearance of as little as <b>3 nanometers</b>. A read/write head <b>moves to the track that contains the data</b> to be transferred. Each surface has its own read/write head.",
-      "<b>3. Arm assembly</b>: an internal set of hard disk components containing the arms, which contain the read/write heads. Its role is to <b>read and write information</b> from a set of platters coated with a thin magnetic material. When the arm assembly stops working, the drive fails. On a read of a particular byte, the OS finds the correct platter, track and sector, reads the <b>entire sector into a buffer</b> (a special area in memory), then finds the requested byte within that buffer.",
+      "<b>3. Arm assembly</b>: an internal set of hard disk components containing the arms, which contain the read/write heads. Its role is to <b>read and write information</b> from a set of platters coated with a thin magnetic material. When the arm assembly stops working, the drive fails.<br>On a read of a particular byte, the OS finds the correct platter, track and sector, reads the <b>entire sector into a buffer</b> (a special area in memory), then finds the requested byte within that buffer.",
       "<b>4. Spindle</b> holds the platters in a <b>fixed position</b>, with <b>enough space for the read/write arms</b> to get the data on the disks, and <b>rotates</b> them, bringing the sector under the head.",
       "<b>5. Arms</b> carry, guide and move the heads. Moving the arm is called <b>seeking</b>, and it is usually the <b>slowest</b> part.",
       "Figure (slide 20): three <b>platters</b> on one <b>spindle</b>, with a <b>rotation</b> arrow. Each platter has a ring of small segments: the ring on the top platter is labelled <b>track t</b> and one segment of the ring (middle platter) is labelled <b>sector s</b>; the same track on all platters, joined by dashed lines, is <b>cylinder c</b>. Each platter has a <b>read-write head</b> (a dark square) at the end of an <b>arm</b>, and all arms are fixed to the <b>arm assembly</b>."
@@ -663,18 +691,18 @@ COURSES.fp = {
     {
      "h": "Worked problem (slides 22–26)",
      "pts": [
-      "Given: 90,000 fixed-length records of 256 B; 512 B/sector; 60 sectors/track; cylinder height 14 tracks; 5000 tracks/surface; 4 sectors/cluster.",
-      "Platters = 14/2 = <b>7</b>; sides = <b>14</b>; track size = 60×512 = <b>30,720 B</b>; cylinders = <b>5000</b>.",
-      "Cylinder size = 14 × 30,720 = <b>430,080 B</b>; sectors per cylinder = 430,080/512 = <b>840</b>.",
-      "File size = 90,000 × 256 = <b>23,040,000 B</b>. Records/sector = 512/256 = <b>2</b>; records/track = 30,720/256 = <b>120</b>; records/cylinder = 430,080/256 = <b>1680</b>.",
-      "Sectors for file = 23,040,000/512 = <b>45,000</b>; tracks = 23,040,000/30,720 = <b>750</b>; cylinders = 23,040,000/430,080 = <b>53.57</b> (‡ 54 whole cylinders).",
+      "Given:<br>• 90,000 fixed-length records of 256 B<br>• 512 B/sector<br>• 60 sectors/track<br>• cylinder height 14 tracks<br>• 5000 tracks/surface<br>• 4 sectors/cluster.",
+      "• Platters = 14/2 = <b>7</b><br>• Sides = <b>14</b><br>• Track size = 60×512 = <b>30,720 B</b><br>• Cylinders = <b>5000</b>",
+      "• Cylinder size = 14 × 30,720 = <b>430,080 B</b><br>• Sectors per cylinder = 430,080/512 = <b>840</b>",
+      "• File size = 90,000 × 256 = <b>23,040,000 B</b><br>• Records/sector = 512/256 = <b>2</b><br>• Records/track = 30,720/256 = <b>120</b><br>• Records/cylinder = 430,080/256 = <b>1680</b>",
+      "• Sectors for file = 23,040,000/512 = <b>45,000</b><br>• Tracks = 23,040,000/30,720 = <b>750</b><br>• Cylinders = 23,040,000/430,080 = <b>53.57</b> (‡ 54 whole cylinders)",
       "Drive capacity = 5000 × 430,080 = <b>2,150,400,000 B</b>."
      ]
     },
     {
      "h": "Organizing tracks by sectors vs by blocks",
      "pts": [
-      "<b>By sectors</b>: used by the <b>OS</b>. <b>Slow access</b> or <b>fragmentation</b> when handling a file of records. Fragmentation is loss of space within a sector, due to records not fitting exactly in a sector (e.g. sector size is 512 B and record size is 300 B). Some OSs allow the <b>system administrator to use clusters</b>.",
+      "<b>By sectors</b>: used by the <b>OS</b>.<br><b>Slow access</b> or <b>fragmentation</b> when handling a file of records.<br>Fragmentation is loss of space within a sector, due to records not fitting exactly in a sector (e.g. sector size is 512 B and record size is 300 B).<br>Some OSs allow the <b>system administrator to use clusters</b>.",
       "<b>By blocks</b>: used by the <b>DBMS</b>. Disk tracks may be divided into <b>user-defined blocks (pages)</b> rather than sectors. A block is usually organized to contain an <b>integral number of logical records</b>.",
       "<b>Blocking factor</b> = number of records stored in each block. No internal fragmentation and no record spans two blocks.",
       "In the block-addressing scheme each block of data is accompanied by one or more <b>sub-blocks</b> containing extra information about the block. A block typically contains:<br>• <b>Count sub-block</b>: the number of bytes in the block.<br>• <b>Key sub-block</b> (optional): the key of the last record in the data sub-block, so the disk controller can search for a key without loading the block into main memory.<br>• <b>Data sub-block</b>: the data records.",
@@ -704,8 +732,8 @@ COURSES.fp = {
       "The time to access a sector in a track on a surface is divided into <b>3 components</b>: <b>seek time</b>, <b>rotational delay</b> and <b>transfer time</b>.",
       "Figure (slide 35): a disk with the arm reaching over it. Labels show the <b>seek time</b> (the arm moving to the track), the <b>rotational latency</b> (the disk turning the sector to the head) and the <b>transmission time</b> (the sector passing under the head).",
       "<b>Seek time</b>: time required to move the arm to the correct cylinder. The <b>largest</b> in cost. Typically:<br>• 5 ms to move from one track to the next (track-to-track).<br>• 50 ms maximum (from the inside track to the outside track).<br>• 30 ms average (from one random track to another random track).",
-      "<b>Rotational delay (latency)</b>: time needed for the disk to rotate so the sector we want is under the read/write head. Hard disks usually rotate at about 5000 rpm, which is one revolution per 12 ms. Min latency = 0; max latency = time for one disk revolution; <b>average latency (r)</b> = (min + max)/2 = max/2 = time for ½ disk revolution = ½ × (60 × 1000)/RPM ms. Typically 6–8 ms average.",
-      "<b>Transfer time</b>: the time for the read/write head to pass over a <b>block</b>. Transfer time = (number of bytes transferred / number of bytes on a track) × rotation time, or revolution time / number of sectors per track. E.g. with 63 sectors per track, the time to transfer one sector is 1/63 of a revolution."
+      "<b>Rotational delay (latency)</b>: time needed for the disk to rotate so the sector we want is under the read/write head.<br>Hard disks usually rotate at about 5000 rpm, which is one revolution per 12 ms.<br>• Min latency = 0<br>• Max latency = time for one disk revolution<br>• <b>Average latency (r)</b> = (min + max)/2 = max/2 = time for ½ disk revolution = ½ × (60 × 1000)/RPM ms<br>Typically 6–8 ms average.",
+      "<b>Transfer time</b>: the time for the read/write head to pass over a <b>block</b>.<br>Transfer time = (number of bytes transferred / number of bytes on a track) × rotation time, or revolution time / number of sectors per track.<br>E.g. with 63 sectors per track, the time to transfer one sector is 1/63 of a revolution."
      ],
      "table": [
       [
@@ -729,8 +757,8 @@ COURSES.fp = {
     {
      "h": "Examples 1 and 2",
      "pts": [
-      "<b>Ex 1</b>: average seek 8 ms, average rotational delay 3 ms, maximum rotational delay 6 ms, spindle speed 10,000 rpm, 170 sectors/track, sector size 512 B. Average time to read one sector? Transfer = revolution time / sectors per track = (1/10,000 min)/170 = (60/10,000 s)/170 = 6/170,000 s = 6/170 ms ≈ <b>0.035 ms</b>. Total = 8 + 3 + 0.035 = <b>11.035 ms</b>.",
-      "<b>Ex 2</b> (a current disk, Seagate ST3200822A): capacity 200 GB; transfer rate: maximum internal 683 Mbits/sec, maximum external 100 Mbytes/sec; discs/heads 2/4; 512 bytes per sector; spindle speed 7200 rpm; average seek 8.5 ms; average latency 4.16 ms; 170 sectors per track. Average time to read one sector? Transfer = (1/7200 min)/170 = (60/7200 s)/170 = 6/(720 × 170) = 6/122,400 ≈ <b>0.05 ms</b>. Total = 8.5 + 4.16 + 0.05 = <b>12.71 ms</b>."
+      "<b>Ex 1</b>: average seek 8 ms, average rotational delay 3 ms, maximum rotational delay 6 ms, spindle speed 10,000 rpm, 170 sectors/track, sector size 512 B. Average time to read one sector?<br>Transfer = revolution time / sectors per track = (1/10,000 min)/170 = (60/10,000 s)/170 = 6/170,000 s = 6/170 ms ≈ <b>0.035 ms</b>.<br>Total = 8 + 3 + 0.035 = <b>11.035 ms</b>.",
+      "<b>Ex 2</b> (a current disk, Seagate ST3200822A): capacity 200 GB; transfer rate: maximum internal 683 Mbits/sec, maximum external 100 Mbytes/sec; discs/heads 2/4; 512 bytes per sector; spindle speed 7200 rpm; average seek 8.5 ms; average latency 4.16 ms; 170 sectors per track. Average time to read one sector?<br>Transfer = (1/7200 min)/170 = (60/7200 s)/170 = 6/(720 × 170) = 6/122,400 ≈ <b>0.05 ms</b>.<br>Total = 8.5 + 4.16 + 0.05 = <b>12.71 ms</b>."
      ]
     },
     {
@@ -747,7 +775,7 @@ COURSES.fp = {
     {
      "h": "Quiz (2), solved",
      "pts": [
-      "Given: 20 surfaces, 800 tracks/surface, 25 sectors/track, 512 B/sector, 3600 rpm, seek 7 ms track-to-track, 28 ms average, 50 ms max.",
+      "Given:<br>• 20 surfaces<br>• 800 tracks/surface<br>• 25 sectors/track<br>• 512 B/sector<br>• 3600 rpm<br>• seek: 7 ms track-to-track, 28 ms average, 50 ms max.",
       "‡ (a) Revolution = 60,000/3600 = 16.67 ms, so <b>average latency = 8.33 ms</b>.",
       "‡ (b) <b>Disk capacity</b> = 20 × 800 × 25 × 512 = <b>204,800,000 B ≈ 195.3 MB</b>.",
       "‡ (c) <b>Read the whole disk, one cylinder at a time</b> (800 cylinders × 20 tracks). Assume each track costs average latency + one full revolution = 8.33 + 16.67 = 25 ms, so one cylinder = 20 × 25 = 500 ms. Moves: one average seek (28 ms) to reach the first cylinder, then 799 track-to-track seeks (7 ms).<br>Total ≈ 28 + 799×7 + 800×500 = 28 + 5,593 + 400,000 = <b>405,621 ms ≈ 405.6 s</b>. The slide gives no answer, so state your assumptions in the exam."
@@ -1198,7 +1226,7 @@ COURSES.fp = {
      "h": "3. Record structures",
      "pts": [
       "A record is a set of fields that belong together at a higher level of organization. It is a conceptual tool and an important logical notion in the file's structure.",
-      "Methods: (1) <b>fixed-length records with fixed-length fields</b>; (2) <b>fixed-length records with variable-length fields</b> (delimited fields or fields with length indicators, padded to a fixed record size); (3) <b>each record begins with a length indicator</b> (byte count), e.g. <code>3387359|CARROLL|ALICE IN WONDERLAND</code>."
+      "Methods:<br>(1) <b>fixed-length records with fixed-length fields</b><br>(2) <b>fixed-length records with variable-length fields</b> (delimited fields or fields with length indicators, padded to a fixed record size)<br>(3) <b>each record begins with a length indicator</b> (byte count), e.g. <code>3387359|CARROLL|ALICE IN WONDERLAND</code>."
      ]
     },
     {
@@ -1224,7 +1252,7 @@ COURSES.fp = {
     {
      "h": "Managing files of records",
      "pts": [
-      "<b>Primary key</b>: uniquely identifies a record and does not change. <b>Secondary key</b>: used for searching but does not typically identify a record uniquely.",
+      "<b>Primary key</b>: uniquely identifies a record and does not change.<br><b>Secondary key</b>: used for searching but does not typically identify a record uniquely.",
       "<b>Sequential search</b>: read records in order until a match. <b>O(n)</b>. Appropriate for pattern matching or files with few records.",
       "<b>Direct access</b>: seek directly to the start of the record. <b>O(1)</b>. Possible when we know the <b>RRN</b> (Relative Record Number: the first record has RRN 0, the next RRN 1…)."
      ]
@@ -1233,7 +1261,7 @@ COURSES.fp = {
      "h": "Seeking",
      "pts": [
       "Generic: <code>Seek(Source_File, Offset)</code>; e.g. <code>Seek(infile, 3030)</code> moves to byte 3030.",
-      "C: <code>int fseek(FILE *stream, long offset, int origin)</code>, where origin <b>0</b> = beginning, <b>1</b> = current, <b>2</b> = end.<br><code>fseek(infile,0L,0)</code> → start; <code>fseek(infile,0L,2)</code> → end; <code>fseek(infile,-10L,1)</code> → back 10 bytes.",
+      "C: <code>int fseek(FILE *stream, long offset, int origin)</code>, where origin:<br>• <b>0</b> = beginning<br>• <b>1</b> = current<br>• <b>2</b> = end<br>• <code>fseek(infile,0L,0)</code> → start<br>• <code>fseek(infile,0L,2)</code> → end<br>• <code>fseek(infile,-10L,1)</code> → back 10 bytes.",
       "C++: an fstream has two pointers. <code>seekg</code> moves the <b>get</b> (read) pointer and <code>seekp</code> moves the <b>put</b> (write) pointer. Origins: <code>ios::beg</code>, <code>ios::cur</code>, <code>ios::end</code>.<br><code>infile.seekg(0, ios::beg); infile.seekg(0, ios::end); infile.seekg(-10, ios::cur);</code>"
      ]
     },
@@ -1565,7 +1593,7 @@ COURSES.fp = {
       "A file organization method defines the <b>record placement strategy</b> and the relationship between a record's <b>key value</b> and its <b>relative address</b>.",
       "Goal: efficient <b>retrieve</b> (logical neighbour, records matching a condition, a random record) and <b>update</b> (insert, delete, modify).",
       "Efficiency is measured by the <b>number of disk accesses</b>: fewer is better.",
-      "Access strategies: <b>sequential search</b> is slow and O(n); <b>direct access</b> gets the record in one read, O(1).",
+      "Access strategies:<br>• <b>sequential search</b> is slow and O(n)<br>• <b>direct access</b> gets the record in one read, O(1).",
       "Methods: <b>unordered (heap) file</b>, <b>ordered (sequential) file</b>, <b>indexing</b>, <b>hashing</b>."
      ]
     },
@@ -1575,7 +1603,7 @@ COURSES.fp = {
       "An <b>unordered</b> set of records stored in <b>order of entry</b>, regardless of key. Also called an unordered sequential file or <b>pile</b> file.",
       "Supports create/destroy, open/close, insert/delete. Records are identified by a <b>record id (rid)</b>.",
       "<b>Retrieve</b>: only <b>linear search</b>.",
-      "<b>Insert at the end</b>: simple and efficient, with one access to read the last page and one to write it back. Serious disadvantage: it <b>allows duplicate records</b> (e.g. inserting 4, Ali, CS at offset 80).",
+      "<b>Insert at the end</b>: simple and efficient, with one access to read the last page and one to write it back.<br>Serious disadvantage: it <b>allows duplicate records</b> (e.g. inserting 4, Ali, CS at offset 80).",
       "<b>Delete</b>: find the record, delete it <b>physically or logically</b>, and write it back."
      ]
     },
@@ -1623,8 +1651,8 @@ COURSES.fp = {
     {
      "h": "The cost model",
      "pts": [
-      "<b>B</b> = number of data pages (page = block), <b>R</b> = records per page, <b>D</b> = average time to read/write a disk page, <b>C</b> = average time to process a record.",
-      "Operations: <b>Scan</b> (fetch all records), <b>equality search</b> (\"sid = 23\"), <b>range search</b> (\"name after Smith\"), <b>Insert</b>, <b>Delete</b> (by rid)."
+      "• <b>B</b> = number of data pages (page = block)<br>• <b>R</b> = records per page<br>• <b>D</b> = average time to read/write a disk page<br>• <b>C</b> = average time to process a record.",
+      "Operations:<br>• <b>Scan</b> (fetch all records)<br>• <b>equality search</b> (\"sid = 23\")<br>• <b>range search</b> (\"name after Smith\")<br>• <b>Insert</b><br>• <b>Delete</b> (by rid)."
      ]
     },
     {
@@ -1699,7 +1727,7 @@ COURSES.fp = {
     {
      "h": "Reading the exam choices",
      "pts": [
-      "Exams expand \"search +\" into formulas. Sorted-file delete = <b>Dlog₂B + Clog₂R + B(D+RC)</b>. Hashed-file delete = <b>1.25B(D+RC) + C + D</b> in the model answer (it uses the hashed scan cost as its \"search\" term).",
+      "Exams expand \"search +\" into formulas.<br>• Sorted-file delete = <b>Dlog₂B + Clog₂R + B(D+RC)</b>.<br>• Hashed-file delete = <b>1.25B(D+RC) + C + D</b> in the model answer (it uses the hashed scan cost as its \"search\" term).",
       "Hashed scan is <b>1.25B(D+RC)</b> because hash buckets are typically kept about 80% full, so there are 1.25× as many pages."
      ]
     }
@@ -2017,7 +2045,7 @@ COURSES.fp = {
      "h": "Why hashing?",
      "pts": [
       "Hashing is a useful searching technique for implementing indexes. Its main motivation is to <b>improve search time</b>.",
-      "Search time: simple indexes with binary search <b>O(log N)</b>; B-trees <b>O(log<sub>k</sub> N)</b>; hashing <b>O(1)</b>."
+      "Search time:<br>• simple indexes with binary search <b>O(log N)</b><br>• B-trees <b>O(log<sub>k</sub> N)</b><br>• hashing <b>O(1)</b>."
      ]
     },
     {
