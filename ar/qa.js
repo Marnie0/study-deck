@@ -157,7 +157,7 @@ AR.qa = {
     "1) مش بيعمل اللي الـ spec بتقوله (زرار الـ + مش شغال).<br>2) بيعمل حاجة الـ spec بتقول مايعملهاش (crash).<br>3) بيعمل حاجة الـ spec ماذكرتهاش (function الـ square الزيادة).<br>4) مش بيعمل حاجة المفروض يعملها حتى لو مش مذكورة (إجابات غلط لما البطارية تضعف).<br>5) صعب يتفهم، أو معقد، أو بطيء (زراير صغيرة قوي، إضاءة مزغللة).",
     "الـ Requirement stage: تكلفة قليلة. الـ Coding: متوسطة. الـ Integration: أعلى، ومحتاجة developers و engineers. الـ Testing: مكلفة جدًا، بيدخل فيها managers وبتأخر المشروع. الـ Production: مكلفة جدًا جدًا، بتضر السمعة وممكن تجيب غرامات مالية أو قانونية (زي الـ Patriot missile 1991).",
     "الـ Waterfall linear و sequential، والـ testing بييجي قرب الآخر، بسيط ومتوثق كويس، بس الـ errors اللي بدري بتنتقل وبتبقى غالية. الـ Spiral iterative وفيه planning و risk analysis و engineering و customer evaluation في كل cycle، وبيستخدم 2 لـ 3 prototypes، وبيتعامل مع الـ risk بدري، بس بياخد وقت ومكلف.",
-    "كل development stage في الشمال بتطلّع test plan للـ test level المقابل ليها في اليمين: الـ requirements → acceptance test plan، الـ functional specs → system test plan، الـ system design → integration test plan، الـ unit design → unit test cases. فالـ testing بيتخطط له بدري وبالتوازي مع الـ development."
+    "كل development stage في الشمال بتطلّع test plan للـ test level المقابل ليها في اليمين:<br>• الـ requirements بتطلّع الـ acceptance test plan.<br>• الـ functional specs بتطلّع الـ system test plan.<br>• الـ system design بيطلّع الـ integration test plan.<br>• الـ unit design بيطلّع الـ unit test cases.<br>وبكده الـ testing بيتخطط له بدري وبالتوازي مع الـ development."
    ],
    "quiz": [
     [
@@ -180,7 +180,7 @@ AR.qa = {
     ],
     [
      "صح. المحاضرة بتقول إن 1988–2000 كانت prevention-oriented: بتركز على منع الـ defects عن طريق الـ test design والـ planning بدري. (‡ الـ key بتاع الـ summary معلّمها False، وده بيتعارض مع الـ slide.)",
-     "جدول المحاضرة بيقول بوضوح إن 1988–2000 = prevention-oriented."
+     "جدول المحاضرة بيقول بوضوح إن الفترة من 1988 لـ 2000 هي الـ prevention-oriented."
     ],
     [
      "الـ Condition 1 إن البرنامج ما يعملش اللي الـ spec بتقوله، زي زرار الـ + مش شغال؛ إنما الـ square function دي حاجة زيادة، مش حاجة ناقصة.",
@@ -269,7 +269,7 @@ AR.qa = {
      "الـ Unit test cases بتطلع من الـ unit design stage اللي في قاع الناحية الشمال، مش من الـ system design (L1, V-model mapping)."
     ],
     [
-     "بالعكس: الـ development ماشي من high → low level (نازل في الجنب الشمال) والـ testing ماشي من low → high level (طالع في الجنب اليمين).",
+     "بالعكس: الـ development بينزل في الجنب الشمال من الـ high level للـ low level، والـ testing بيطلع في الجنب اليمين من الـ low level للـ high level.",
      "صح. الـ development ماشي من high level لـ low level، والـ testing ماشي من low level (unit) لـ high level (acceptance)."
     ],
     [
@@ -303,9 +303,9 @@ AR.qa = {
     {
      "h": "الـ Static vs dynamic black-box testing",
      "pts": [
-      "الـ <b>Static black-box</b>: testing <b>من غير ما نشغّل</b> الـ software؛ بيركز على الـ <b>specification</b>.<br>• الهدف منه: نتأكد إنها كاملة ومناسبة.<br>• الـ document الأساسي: الـ specification (زي الـ user manual) من بدري في الـ SDLC.<br>• الهدف: documentation من غير bugs، واضحة، ومركزة على الـ user.",
-      "الـ <b>Dynamic black-box</b>: testing عن طريق إننا <b>نشغّل</b> الـ software بـ data، من غير ما نعرف الـ code اللي جوه (وجهة نظر العميل، واسمه كمان <b>exploratory</b>/behavioral testing). لازم يكون معاك الـ specification.",
-      "<bdi>Figure (Dynamic black-box)</bdi>: <b>Inputs</b> → box غامق عليه علامة <b>?</b> ومكتوب تحته <b>Software</b> → <b>Outputs</b>. وفيه callout بيشاور على الـ inputs مكتوب فيه <b>Exploratory Testing</b>، والـ caption اللي تحت هو <b>behavioral testing</b>.",
+      "الـ <b>Static black-box</b> يعني testing <b>من غير ما نشغّل</b> الـ software؛ بيركز على الـ <b>specification</b>.<br>• الهدف منه: نتأكد إنها كاملة ومناسبة.<br>• الـ document الأساسي: الـ specification (زي الـ user manual) من بدري في الـ SDLC.<br>• الهدف: documentation من غير bugs، واضحة، ومركزة على الـ user.",
+      "الـ <b>Dynamic black-box</b> يعني testing عن طريق إننا <b>نشغّل</b> الـ software بـ data، من غير ما نعرف الـ code اللي جوه (وجهة نظر العميل، واسمه كمان <b>exploratory</b>/behavioral testing). لازم يكون معاك الـ specification.",
+      "<bdi>Figure (Dynamic black-box)</bdi>: الـ <b>Inputs</b> بتدخل في box غامق عليه علامة <b>?</b> ومكتوب تحته <b>Software</b>، والـ <b>Outputs</b> بتطلع منه. وفيه callout بيشاور على الـ inputs مكتوب فيه <b>Exploratory Testing</b>، والـ caption اللي تحت هو <b>behavioral testing</b>.",
       "خطوات البداية في الـ DBB testing:<br>(1) يكون معاك الـ documents/specifications<br>(2) تحدد الـ test cases.<br>مثال (الجمع في Windows calculator): 0+0=0, 0+1=1, 254+1=255, 255+1=256, 256+1=257.",
       "<b>ابدأ بالـ test-to-pass</b> (تأكد إنه شغال عادي بـ input طبيعي) <b>وبعدين الـ test-to-fail</b> (اضغط عليه لحد أقصى حدوده بـ inputs متطرفة)."
      ]
@@ -326,24 +326,24 @@ AR.qa = {
       "<b>الـ Objective</b>: نحدد الـ test cases اللي بتطلّع <b>نتايج متشابهة</b>. وبما إن الـ test cases اللي في نفس الـ class متساوية (equivalent)، فاختبار <b>case واحدة من كل class</b> كفاية عشان نكتشف الـ bugs.",
       "<b>المميزات (Benefits)</b>: بيقلل عدد الـ test cases جدًا؛ وبيوفر وقت ومجهود وفي نفس الوقت بيضمن coverage كويس.",
       "الـ Equivalence partitioning هو process إننا <b>نقلل بشكل منظم المجموعة الضخمة من الـ test cases الممكنة لمجموعة أصغر بكتير</b>. الـ <b>Partition</b>: مجموعة test cases بتختبر نفس الحاجة.",
-      "الـ Classes: <b>valid</b> (بتحقق الشرط) و<b>invalid</b> (مابتحققوش). مثال: 1+1، 1+2… دول partition واحدة؛ و 1+999999999999999999999999999 partition تانية (ممكن تعمل overflow).",
-      "<b>مثال رخصة السواقة</b>: السن فوق 18 ولحد 60 بالكتير يبقى مستحق. الـ Classes: valid = من 18 لـ 60؛ invalid = أقل من 18؛ invalid = أكبر من 60 → <b>3 classes</b>.",
+      "الـ classes نوعين: <b>valid</b> (بتحقق الشرط) و<b>invalid</b> (مابتحققوش). مثال: 1+1، 1+2… دول partition واحدة؛ و 1+999999999999999999999999999 partition تانية (ممكن تعمل overflow).",
+      "<b>مثال رخصة السواقة</b>: السن فوق 18 ولحد 60 بالكتير يبقى مستحق. الـ classes هي:<br>• الـ valid: من 18 لـ 60.<br>• الـ invalid: أقل من 18.<br>• الـ invalid: أكبر من 60.<br>يعني عندنا <b>3 classes</b>.",
       "<b>مثال البرنامج</b>: بيقبل <b>من 4 لـ 10 inputs</b>، وكل واحد <b>integer من 5 digits ≥ 10,000</b>.<br>عدد الـ inputs:<br>• أقل من 4 (invalid، اختبر 3)<br>• 4–10 (valid، اختبر 4، 7، 10)<br>• أكتر من 10 (invalid، اختبر 11).",
       "بنقسم الـ inputs والـ outputs بتاعة الـ system لـ <b>'equivalence sets'</b>.",
       "قيم الـ input من 10,000–99,999 → الـ partitions هي <b>&lt;10,000</b>، <b>10,000–99,999</b>، <b>&gt;99,999</b>.<br><b>6 test cases</b>:<br>• 00000 (invalid special value)<br>• 09999 (invalid left boundary)<br>• 10000 (valid left boundary)<br>• 50000 (valid mid)<br>• 99999 (valid right boundary)<br>• 100000 (invalid right boundary).",
-      "Figure (مثال الـ EP): فيه 2 partition bars.<br>• <b>Number of input values</b>: Less than 4 (Invalid) | Between 4 and 10 (Valid) | More than 10 (Invalid)، وفيه أسهم عند <b>3 و 4 و 7 و 10 و 11</b>.<br>• <b>Input values</b>: Less than 10000 (Invalid) | Between 10000 and 99999 (Valid) | More than 99999 (Invalid)، وفيه أسهم عند <b>9999 (BV) و 10000 و 50000 (Mid-point) و 99999 و 100000 (BV)</b>. وفيه خط أحمر مكتوب عليه <bdi>\"Valid\"</bdi> فوق الـ partition اللي في النص في كل bar."
+      "Figure (مثال الـ EP): فيه 2 partition bars.<br>• <b>Number of input values</b>:<span class=\"ltr\">Less than 4 (Invalid) | Between 4 and 10 (Valid) | More than 10 (Invalid)</span>وفيه أسهم عند <b>3 و 4 و 7 و 10 و 11</b>.<br>• <b>Input values</b>:<span class=\"ltr\">Less than 10000 (Invalid) | Between 10000 and 99999 (Valid) | More than 99999 (Invalid)</span>وفيه أسهم عند <b>9999 (BV) و 10000 و 50000 (Mid-point) و 99999 و 100000 (BV)</b>. وفيه خط أحمر مكتوب عليه <bdi>\"Valid\"</bdi> فوق الـ partition اللي في النص في كل bar."
      ]
     },
     {
      "h": "الـ Data testing والـ boundary conditions",
      "pts": [
-      "الـ Software = <b>data</b> (input من الكيبورد، ضغطات الماوس، ملفات على الـ disk، و printouts…)<br>+ <b>program</b> (الـ executable flow، الـ transitions، الـ logic، الحسابات).<br>الهدف: نقلل الـ test cases باستخدام partitions مبنية على <b>الـ boundary conditions والـ sub-boundary conditions والـ nulls والـ bad data</b>.",
+      "الـ software بيتكون من <b>data</b> (input من الكيبورد، ضغطات الماوس، ملفات على الـ disk، و printouts…)<br>وكمان <b>program</b> (الـ executable flow، الـ transitions، الـ logic، الحسابات).<br>الهدف: نقلل الـ test cases باستخدام partitions مبنية على <b>الـ boundary conditions والـ sub-boundary conditions والـ nulls والـ bad data</b>.",
       "أمثلة على الـ data:<br>• الكلام اللي بتكتبه في الـ word processor<br>• الأرقام اللي بتدخلها في الـ spreadsheet<br>• الصورة اللي بيطبعها برنامج الصور بتاعك<br>• الـ backup files اللي متخزنة على الـ floppy disk<br>• الـ data اللي الـ modem بيبعتها على خطوط التليفون.",
       "الـ <b>Boundary conditions</b>: المواقف اللي على <b>حافة الحدود التشغيلية المخططة</b>. الـ programming بيبقى معرض للمشاكل عند الأطراف بتاعته (زي حافة الجرف).",
       "<bdi>Figure 5.5</bdi>: <bdi>\"A software boundary is much like the edge of a cliff\"</bdi> (واحد ماشي مع كلب على حافة الجرف بالظبط).",
       "<b>أمثلة على الـ boundaries</b>:<br>• الـ Text field من 1–255 حرف: الـ valid هو 1، 255 (و 254)؛ والـ invalid هو <b>0 و 256</b>.<br>• الـ CD-R: ملف صغير جدًا، ملف على حد سعة الـ disc بالظبط، ملف فاضي، ملف كبير زيادة.<br>• طباعة كذا صفحة في الورقة: 1، الـ maximum، 0 و max+1.<br>• الـ ZIP اللي 9 digits: 00000-0000 و 99999-9999 و digit زيادة أو ناقص.",
       "<b>الـ bugs بتزيد عند الـ boundaries</b>، بس إنك تختبر الأطراف بس ممكن مايكونش كفاية، فلازم نستخدم الـ equivalence partitions عشان نختبر كل الـ data اللي جوه وبره وعلى الـ boundary.<br>• اختبر: data شغالة، data مش شغالة، data على الـ boundary.<br>• مثال الـ Floppy: ملف صغير جدًا، ملف كبير جدًا بس داخل، ملف فاضي، ملف كبير زيادة.",
-      "برنامج الـ floppy disk (write و read من الـ floppy disk): الـ boundary = <b>max file و min file</b>. <b>البحث عن الـ boundaries في الـ software مهمة مهمة جدًا.</b>"
+      "برنامج الـ floppy disk (write و read من الـ floppy disk): الـ boundary هي <b>max file و min file</b>. <b>البحث عن الـ boundaries في الـ software مهمة مهمة جدًا.</b>"
      ]
     },
     {
@@ -351,28 +351,28 @@ AR.qa = {
      "pts": [
       "الـ <b>Software state</b>: الحالة أو الـ mode اللي الـ software فيه دلوقتي (زي الـ pencil state مقابل الـ airbrush state في Paint). الـ <b>State testing</b> بيتأكد من الـ logic بتاع البرنامج من خلال الـ states بتاعته والـ <b>transitions</b> بينهم.",
       "الـ <b>State transition map</b> (من الـ spec أو إنت ترسمها بـ boxes وأسهم ودواير) بتوضح:<br>(1) كل state مميزة<br>(2) الـ input/condition اللي بينقلك من state للتانية<br>(3) الـ conditions اللي بتتظبط والـ output اللي بيطلع لما تدخل أو تخرج من state.<br>الـ state transition map ممكن تكون موجودة في الـ specification، أو إحنا نعملها. وينفع نستخدم أي diagram <b>كل الـ team يوافق عليه</b> (زي boxes وأسهم ودواير).<br>ارسمها <b>من وجهة نظر الـ user</b>.",
-      "Figure 5.10 (الـ state transition diagrams ممكن تترسم بطرق مختلفة)، نفس مثال الـ password مرسوم بطريقتين.<br>• <b>Boxes وأسهم</b>: Idle → (Esc Key Pressed / Display Password Box) → <b>Waiting for password</b>؛ الـ Incorrect Password / Clear the field بيرجع تاني لـ Waiting for password؛ والـ Correct Password / Initiate Destruct بيخرج منها.<br>• <b>دواير</b>: Idle (دايرة مزدوجة) → Esc Key Pressed → <b>Wait for Password</b> → Correct Password؛ والـ Incorrect Password بيلف ويرجع لـ Wait for Password.<br>افتكر: اعمل الـ map <b>من وجهة نظر الـ user</b> للـ software.",
+      "Figure 5.10 (الـ state transition diagrams ممكن تترسم بطرق مختلفة)، نفس مثال الـ password مرسوم بطريقتين.<br>• <b>Boxes وأسهم</b>:<span class=\"ltr\">Idle → (Esc Key Pressed / Display Password Box) → <b>Waiting for password</b></span>والـ Incorrect Password / Clear the field بيرجع تاني لـ Waiting for password؛ والـ Correct Password / Initiate Destruct بيخرج منها.<br>• <b>دواير</b>، والـ Idle دايرة مزدوجة:<span class=\"ltr\">Idle → Esc Key Pressed → <b>Wait for Password</b> → Correct Password</span>والـ Incorrect Password بيلف ويرجع لـ Wait for Password.<br>افتكر: اعمل الـ map <b>من وجهة نظر الـ user</b> للـ software.",
       "<b>5 طرق نقلل بيها الـ states/transitions اللي هنختبرها</b>:<br>(1) زور كل state مرة واحدة على الأقل<br>(2) اختبر الـ transitions الأكتر شيوعًا بين الـ states<br>(3) اختبر الـ paths الأقل شيوعًا<br>(4) اختبر كل الـ error states والرجوع منها<br>(5) اختبر transitions عشوائية.",
       "اتأكد من كل الـ <b>state variables</b>.<br>الـ startup state بتاعة Paint:<br>• الـ window زي ما كانت آخر مرة<br>• بنفس الحجم بتاع آخر مرة<br>• مساحة رسم فاضية<br>• الـ tool box والـ color box والـ status bar ظاهرين<br>• الـ pencil متختار<br>• أسود على أبيض<br>• والـ document اسمه <bdi>\"untitled\"</bdi>.",
-      "Figure .11 (<b>شاشة فتح Windows Paint في الـ startup state</b>): window عنوانها <bdi>\"untitled - Paint\"</bdi> وفيها الـ menu: File و Edit و View و Image و Colors و Help؛ الـ tool box على الشمال والـ <b>pencil</b> tool متختار؛ مساحة رسم بيضا فاضية وفيها الـ pencil cursor؛ الـ color box تحت (foreground أسود على background أبيض)، والـ status bar مكتوب فيه <bdi>\"For Help, click Help Topics on the Help Menu\"</bdi> ومعاه مكان الـ cursor 194,155."
+      "Figure .11 (<b>شاشة فتح Windows Paint في الـ startup state</b>): window عنوانها <bdi>\"untitled - Paint\"</bdi> وفيها menu فيه File و Edit و View و Image و Colors و Help؛ الـ tool box على الشمال والـ <b>pencil</b> tool متختار؛ مساحة رسم بيضا فاضية وفيها الـ pencil cursor؛ الـ color box تحت (foreground أسود على background أبيض)، والـ status bar مكتوب فيه <bdi>\"For Help, click Help Topics on the Help Menu\"</bdi> ومعاه مكان الـ cursor 194,155."
      ]
     },
     {
      "h": "مثال محلول: الـ state diagram بتاع الـ media player",
      "pts": [
-      "الـ media player ليه 3 operations: <b>play و fast forward و fast play</b>. الـ play والـ fast forward بيشتغلوا بزرار الـ play وزرار الـ fast forward بالترتيب. والـ operations دي ممكن تتلغي بزرار الـ <b>stop</b>. الـ operation بتاعة الـ media player متحددة بالـ state transition diagram (الـ states هي OFF و PLAY و FAST FORWARD و FAST PLAY) اللي في الجدول اللي تحت."
+      "الـ media player ليه 3 operations هي <b>play و fast forward و fast play</b>. الـ play والـ fast forward بيشتغلوا بزرار الـ play وزرار الـ fast forward بالترتيب. والـ operations دي ممكن تتلغي بزرار الـ <b>stop</b>. الـ operation بتاعة الـ media player متحددة بالـ state transition diagram (الـ states هي OFF و PLAY و FAST FORWARD و FAST PLAY) اللي في الجدول اللي تحت."
      ]
     },
     {
      "h": "إجابات الـ media player",
      "pts": [
-      "<b>كل الـ states مرة واحدة على الأقل</b> (الـ minimum = test case واحدة): &lt;Off&gt; play → fast forward → fast forward (بتزور OFF و PLAY و FAST PLAY و FAST FORWARD).",
-      "<b>كل الـ 8 transitions مرة واحدة على الأقل</b> (2 test cases): TC1 &lt;Off&gt; play → fast forward → fast forward → stop؛ TC2 &lt;Off&gt; fast forward → play → fast forward → stop → stop."
+      "<b>كل الـ states مرة واحدة على الأقل</b> (والـ minimum هو test case واحدة):<span class=\"ltr\">&lt;Off&gt; play → fast forward → fast forward</span>والـ sequence دي بتزور OFF و PLAY و FAST PLAY و FAST FORWARD.",
+      "<b>كل الـ 8 transitions مرة واحدة على الأقل</b> (محتاجين 2 test cases):<span class=\"ltr\">TC1: &lt;Off&gt; play → fast forward → fast forward → stop</span><span class=\"ltr\">TC2: &lt;Off&gt; fast forward → play → fast forward → stop → stop</span>"
      ]
     }
    ],
    "cards": [
-    "هل إحنا بنبني الـ product صح؟ (code reviews، design checks)",
+    "هل إحنا بنبني الـ product صح؟ (زي الـ code reviews والـ design checks)",
     "هل إحنا بنبني الـ product الصح؟ (user acceptance testing)",
     "الـ QA: مركز على الـ process، وقائي (preventive). الـ QC: مركز على الـ product، تصحيحي (corrective).",
     "Document فيه الـ test objectives والـ scope.",
@@ -457,9 +457,9 @@ AR.qa = {
      "الـ 6 ده عدد الـ test cases في مثال الـ 5-digit، مش عدد الـ classes هنا."
     ],
     [
-     "صح. Off → play → fast forward → fast forward بتزور الأربع states كلهم.",
+     "صح. الـ sequence دي:<span class=\"ltr\">Off → play → fast forward → fast forward</span>بتزور الأربع states كلهم.",
      "محتاجين اتنين عشان نغطي كل الـ transitions، مش كل الـ states.",
-     "مش محتاجين 4 test cases (واحدة لكل state): sequence واحدة off ← play ← fast forward ← fast forward بتزور الـ 4 states كلهم.",
+     "مش محتاجين 4 test cases (واحدة لكل state)، لأن sequence واحدة بتزور الـ 4 states كلهم:<span class=\"ltr\">off → play → fast forward → fast forward</span>",
      "الـ 8 ده عدد الـ transitions في الـ media-player diagram، مش عدد الـ test cases؛ sequence واحدة بتزور كل الـ states."
     ],
     [
@@ -512,7 +512,7 @@ AR.qa = {
     ],
     [
      "الـ stop من FAST PLAY بيروح لـ PLAY، مش OFF (الـ stop من PLAY أو FAST FORWARD بس هو اللي بيروح لـ OFF).",
-     "صح. OFF → FAST FORWARD → PLAY → FAST PLAY، والـ stop من FAST PLAY بيرجعك لـ PLAY.",
+     "صح. الترتيب هو:<span class=\"ltr\">OFF → FAST FORWARD → PLAY → FAST PLAY</span>والـ stop من FAST PLAY بيرجعك لـ PLAY.",
      "إنت كنت في FAST PLAY قبل آخر input؛ والـ stop بيطلعك منها.",
      "الـ play من FAST FORWARD نقلك لـ PLAY في الخطوة التانية وماارجعتلهاش تاني."
     ],
@@ -539,7 +539,7 @@ AR.qa = {
       "الـ White-box testing بيساعد الـ tester إنه:<br>(1) يختبر الـ <b>independent paths</b> جوه الـ unit أو الـ module<br>(2) يختبر <b>الـ logical correctness</b> (الـ conditions لما تبقى true ولما تبقى false)<br>(3) يختبر الـ <b>loops</b>، وبالذات عند الـ boundaries بتاعتها، و<b>يتأكد من الـ operational boundary correctness</b><br>(4) يختبر الـ <b>internal data structures</b> ويتأكد إنها valid.",
       "اسمه كمان <b>glass box</b> أو <b>structural</b> أو <b>open box</b> أو <b>clear box</b> testing، عشان بيفحص الشغل الداخلي.",
       "الـ <b>Static white-box</b> (فحص الـ design والـ code) ليه 3 أجزاء:<br>• الـ <b>Formal Review</b> (الـ peer review والـ walkthrough والـ inspection)<br>• الـ <b>Coding Standards and Guidelines</b><br>• الـ <b>Code Review Checklist</b>.",
-      "شكل (شجرة الـ Static White Box Testing): الـ box اللي فوق <b>Static White Box Testing</b> طالع منه أسهم لتحت لـ 3 boxes: <b>Formal Review</b> و<b>Coding Standards and Guidelines</b> و<b>Code Review Checklist</b>.<br>ومن الـ Formal Review طالعين 3 أسهم لـ <b>Peer Review</b> و<b>Walkthrough</b> و<b>Inspection</b>.<br>وعلى الشمال فيه label بالطول مكتوب فيه <bdi>«Examining the Design and Code»</bdi>.<br>وتحت الشجرة: <bdi>«For a successful formal review, 4 essential elements are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report»</bdi>. والـ slide اللي بعدها بتعيد نفس الشجرة."
+      "شكل (شجرة الـ Static White Box Testing): الـ box اللي فوق <b>Static White Box Testing</b> طالع منه أسهم لتحت لـ 3 boxes، هما الـ <b>Formal Review</b> و<b>Coding Standards and Guidelines</b> و<b>Code Review Checklist</b>.<br>ومن الـ Formal Review طالعين 3 أسهم لـ <b>Peer Review</b> و<b>Walkthrough</b> و<b>Inspection</b>.<br>وعلى الشمال فيه label بالطول مكتوب فيه <bdi>«Examining the Design and Code»</bdi>.<br>وتحت الشجرة: <bdi>«For a successful formal review, 4 essential elements are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report»</bdi>. والـ slide اللي بعدها بتعيد نفس الشجرة."
      ]
     },
     {
@@ -547,7 +547,7 @@ AR.qa = {
      "pts": [
       "اجتماعات رسمية بين الـ programmers والـ testers عشان يفحصوا الـ design والـ code بتوع الـ software.",
       "<b>4 عناصر أساسية</b>:<br>(1) <b>Identify problems</b>: نطلّع المشاكل في الـ design والـ code<br>(2) <b>Follow rules</b>: مجموعة rules ثابتة، زي عدد سطور الـ code اللي بتتراجع في اليوم والوقت المستهلك<br>(3) <b>Prepare</b>: كل مشارك بيحضّر وبيساهم<br>(4) <b>Write a report</b> بيلخص النتايج، ويبقى متاح للـ development team.",
-      "الـ <b>Peer review</b>: programmer ساعد في تصميم الـ architecture/الـ code، ومعاه programmers أو testers تانيين بيعملوا review.",
+      "الـ <b>Peer review</b>: فيه programmer ساعد في تصميم الـ architecture/الـ code، ومعاه programmers أو testers تانيين بيعملوا review.",
       "الـ <b>Walkthrough</b>: الـ programmer اللي <b>كتب</b> الـ code بيعرضه على group من <b>5 أو 6</b> programmers و testers. اللي بيعرض بيقرا الـ code سطر سطر أو function function، و<b>بيشرح كل function وكل سطر code معناه إيه</b>. والـ comments والـ queries المهمة بيترد عليها خلال الـ walkthrough session.",
       "الـ <b>Inspection</b>: اللي بيعرض <b>مش هو الـ programmer الحقيقي</b>. الـ inspectors بيراجعوا الـ code من <b>وجهة نظر الـ user والـ tester</b>."
      ]
@@ -565,7 +565,7 @@ AR.qa = {
       "<b>الـ Data reference errors</b> (كلام الـ slide): errors سببها استخدام variables أو constants أو arrays أو strings أو records مش متعرّفة (declared) أو متعملهاش initialize صح قبل ما نستخدمها ونعملها reference. نتأكد:<br>(a) لو فيه أي un-initialized variables بيتعملها reference<br>(b) لو قيم الـ subscripts (integer) بتاعة الـ arrays والـ strings جوه حدود الـ array أو الـ string dimension<br>(c) لو فيه أي <bdi>«off-by-one»</bdi> errors في عمليات الـ indexing أو الـ references للـ arrays<br>(d) لو فيه variable مستخدم في مكان كان الـ constant هيشتغل فيه أحسن (<b>مثال: لما بنشيك على الـ boundary بتاعة array</b>).",
       "<b>الـ Data declaration errors</b> بتحصل بسبب declaration غلط للـ variables والـ constants. نتأكد:<br>(a) إن الـ variables واخدة الـ length والـ type والـ storage class الصح<br>(b) لو الـ variable اتعمله initialize <b>وقت الـ declaration</b>، ونحلل كمان هل الـ initialization صح ومتوافق مع الـ type بتاعه<br>(c) لو فيه variables أساميها شبه بعض<br>(d) لو فيه variables متعرّفة بس عمرها ما اتعملها reference أو اتعملها reference مرة واحدة بس <b>(المفروض تبقى constant)</b>.",
       "<b>الـ Computation errors</b> بتظهر بسبب errors في الحسابات، <b>يعني النتايج المتوقعة مابتطلعش بسبب حسابات غلط</b>. نتأكد:<br>(a) لو فيه حسابات بتستخدم variables من data types مختلفة (مثال: جمع integers على floating point numbers)<br>(b) لو فيه حسابات بتستخدم variables من نفس الـ data type بس حجمها مختلف (مثال: جمع long integers على short integers)<br>(c) لو ممكن يحصل overflow في نص عملية حسابية<br>(d) لو ممكن الـ divisor يبقى صفر في أي وقت.",
-      "الـ <b>Comparison errors</b> بتحصل في الـ boundary conditions زي 'less than، greater than، equal، not equal، و true or false'. نتأكد:<br>(a) إن الـ comparison صح (مثال: استخدام &lt; بدل &lt;=)<br>(b) إن الـ operands بتوع الـ Boolean operator صح (مثال: نشيك لو فيه integer variable فيه قيم integer مستخدم في Boolean calculation).",
+      "الـ <b>Comparison errors</b> بتحصل في الـ boundary conditions زي:<span class=\"ltr\">'less than, greater than, equal, not equal, and true or false'</span>نتأكد:<br>(a) إن الـ comparison صح (مثال: استخدام &lt; بدل &lt;=)<br>(b) إن الـ operands بتوع الـ Boolean operator صح (مثال: نشيك لو فيه integer variable فيه قيم integer مستخدم في Boolean calculation).",
       "• الـ <b>Control flow errors</b> بتظهر بسبب سلوك غلط للـ loops والـ control structures في اللغة.<br>• الـ <b>Input/output errors</b> ليها علاقة بـ errors زي القراية من file، أو استقبال input من الـ keyboard أو الـ mouse، أو الكتابة على output device زي file أو الشاشة."
      ]
     },
@@ -594,7 +594,7 @@ AR.qa = {
       "شكل (4.2.4 Code Coverage): box مكتوب فيه <b>Code Coverage</b> طالع منه سهم واحد بيتقسم لـ 3 أسهم رايحين لـ <b>Statement Coverage</b> و<b>Path Coverage</b> و<b>Condition Coverage</b>. ونفس الشكل موجود في slide الـ statement coverage و slide الـ path coverage.",
       "الـ <b>Statement coverage</b>: كل statement تتنفذ مرة واحدة على الأقل. مثال: 4 سطور PRINT ورا بعض، فـ test واحد بيشغّلهم كلهم.",
       "الـ code بتاع الـ Statement coverage:<br><code>1: PRINT \"Good Morning\"</code><br><code>2: PRINT \"Be Positive\"</code><br><code>3: PRINT \"Today is a Great Day\"</code><br><code>4: END</code>",
-      "الـ <b>Path coverage</b>: كل path (الـ branch-ين بتوع كل IF). مثال: IF Date$ = \"25-12-2008\" → PRINT <bdi>\"MERRY CHRISTMAS\"</bdi>. 2 tests: لو Date = 25-12-2008 بيشغّل 1,2,3,4,5,6,7؛ وأي تاريخ تاني بيشغّل 1,2,5,6,7.",
+      "الـ <b>Path coverage</b>: كل path (الـ branch-ين بتوع كل IF). مثال:<span class=\"ltr\">IF Date$ = \"25-12-2008\" → PRINT <bdi>\"MERRY CHRISTMAS\"</bdi></span>فيه 2 tests: لو Date = 25-12-2008 بيشغّل 1,2,3,4,5,6,7؛ وأي تاريخ تاني بيشغّل 1,2,5,6,7.",
       "الـ code بتاع الـ Path coverage:<br><code>1: PRINT \"Good Morning\"</code><br><code>2: IF Date$ = \"25-12-2008\" then</code><br><code>3: PRINT \"MERRY CHRISTMAS\"</code><br><code>4: END IF</code><br><code>5: PRINT \"The date id:\"; Date$</code><br><code>6: PRINT \"The time:\"; Time$</code><br><code>7: END</code>"
      ]
     },
@@ -621,31 +621,31 @@ AR.qa = {
     }
    ],
    "cards": [
-    "Glass box، structural، open box، clear box testing.",
+    "الـ glass box والـ structural والـ open box والـ clear box testing.",
     "الـ Formal review، الـ coding standards and guidelines، الـ code review checklist.",
-    "Identify problems، follow rules، prepare، write a report.",
+    "نحدد المشاكل (identify problems)، ونمشي على الـ rules (follow rules)، ونحضّر (prepare)، ونكتب report (write a report).",
     "الـ Peer review، الـ walkthrough، الـ inspection.",
     "اللي كتب الـ code بيعرضه سطر سطر على group من 5 أو 6 programmers و testers.",
     "اللي بيعرض مش هو اللي كتب الـ code؛ والـ inspectors بيراجعوا من وجهة نظر الـ user والـ tester.",
     "الـ Standards هي rules إلزامية (mandatory)؛ والـ guidelines تعليمات بتساعدك تمشي عليها ومش mandatory أوي.",
-    "Reliability، readability/maintainability، portability.",
+    "الـ reliability والـ readability/maintainability والـ portability.",
     "Computation error.",
     "Comparison error.",
     "Data reference error.",
     "الـ Testing بيلاقي الـ bugs؛ والـ debugging بيصلّحها.",
-    "Bottom-up، top-down، umbrella approach.",
-    "Data flow، sub-boundaries، error forcing.",
-    "Statement، path (branch)، condition coverage."
+    "الـ bottom-up والـ top-down والـ umbrella approach.",
+    "الـ data flow والـ sub-boundaries والـ error forcing.",
+    "الـ statement coverage والـ path coverage (branch) والـ condition coverage."
    ],
    "qa": [
-    "الـ Peer review: programmer شارك في الـ design أو الـ code، ومعاه programmers أو testers تانيين كـ reviewers. الـ Walkthrough: اللي كتب الـ code بيعرضه سطر سطر على 5 أو 6 programmers و testers وبيرد على الأسئلة. الـ Inspection: حد غير اللي كتب الـ code هو اللي بيعرض؛ والـ inspectors بيراجعوا من وجهة نظر الـ user والـ tester. وهي الأكتر formality.",
-    "Data reference (uninitialized variable، off-by-one)؛ data declaration (type أو length غلط، variable مش مستخدم)؛ computation (int زائد float، long زائد short، overflow، قسمة على صفر)؛ comparison (&lt; بدل &lt;=)؛ control flow (loop سلوكها مش مظبوط)؛ input/output (قراية file، input من الكيبورد، كتابة على الشاشة).",
+    "الـ Peer review: فيه programmer شارك في الـ design أو الـ code، ومعاه programmers أو testers تانيين كـ reviewers.<br>الـ Walkthrough: اللي كتب الـ code بيعرضه سطر سطر على 5 أو 6 programmers و testers وبيرد على الأسئلة.<br>الـ Inspection: حد غير اللي كتب الـ code هو اللي بيعرض؛ والـ inspectors بيراجعوا من وجهة نظر الـ user والـ tester. وهي الأكتر formality.",
+    "• الـ data reference، زي uninitialized variable أو off-by-one.<br>• الـ data declaration، زي type أو length غلط، أو variable مش مستخدم.<br>• الـ computation، زي int زائد float، أو long زائد short، أو overflow، أو قسمة على صفر.<br>• الـ comparison، زي <code>&lt;</code> بدل <code>&lt;=</code>.<br>• الـ control flow، زي loop سلوكها مش مظبوط.<br>• الـ input/output، زي قراية file، أو input من الكيبورد، أو كتابة على الشاشة.",
     "لأ. الـ dynamic white-box testing بيشغّل test cases بـ inputs عشان يلاقي bugs، كـ validation check. والـ debugging بيصلّح الـ bugs اللي اتلاقت في الـ testing. والاتنين بيستخدموا معرفة بالـ code.",
     "(25-12-2007، 11:11:11) بيشغّل 1,2,5,6,7<br>(25-12-2007، 00:00:00) بيشغّل 1,2,5,6,7<br>(25-12-2008، 11:11:11) بيشغّل 1,2,5,6,7<br>(25-12-2008، 00:00:00) بيشغّل 1,2,3,4,5,6,7."
    ],
    "quiz": [
     [
-     "صح. الـ Formal review = peer review و walkthrough و inspection.",
+     "صح. الـ Formal review بيشمل الـ peer review والـ walkthrough والـ inspection.",
      "الـ Peer review أخو الـ inspection (في نفس المستوى)، مش الأب بتاعه.",
      "الـ Code coverage (statement و path و condition) تبع الـ dynamic white-box testing اللي بيشغّل الـ code؛ إنما الـ inspections دي static formal review.",
      "الـ Data coverage (data flow و sub-boundaries و error forcing) جزء من الـ dynamic white-box testing؛ الـ inspection واحدة من الـ 3 formal reviews."
@@ -653,7 +653,7 @@ AR.qa = {
     [
      "الـ Scalability مش من الـ 3 أسباب بتوع اتباع الـ standards والـ guidelines، اللي هما reliability و readability/maintainability و portability (L3).",
      "صح. الأسباب هي reliability و readability/maintainability و portability.",
-     "الـ Usability دي quality بتخص الـ user، مش من الـ 3 أسباب بتوع الـ standards والـ guidelines: reliability و readability/maintainability و portability (L3).",
+     "الـ Usability دي quality بتخص الـ user، مش من الـ 3 أسباب بتوع الـ standards والـ guidelines، وهما الـ reliability والـ readability/maintainability والـ portability (L3).",
      "مش من الـ 3 أسباب (الـ portability منهم، الـ compatibility لأ)."
     ],
     [
@@ -675,22 +675,22 @@ AR.qa = {
      "الـ Dynamic black-box بيشغّل الـ software من غير معرفة بالـ code."
     ],
     [
-     "مع الـ AND لازم الجزئين يبقوا true؛ X=3,y=1 و X=2,y=1 فيهم Y≠0 فبيفوّتوا A=A/X، يعني مش كل الاختيارات شغالة.",
-     "Y=1 بتخلي (Y=0) false، فالـ AND condition تبقى false والـ A=A/X عمره ما يتنفذ؛ والـ statement coverage محتاجة كل statement تتنفذ.",
-     "الـ X&gt;1 متحققة بس Y=1 بتخلي (Y=0) false، فالـ AND بتفشل والـ statement A=A/X بتتفوّت.",
-     "صح. X&gt;1 و Y=0 الاتنين true، فـ A=A/X بتتنفذ وكل statement بتتنفذ."
+     "مع الـ AND لازم الجزئين يبقوا true؛ والاختيارين <code>X=3, y=1</code> و <code>X=2, y=1</code> فيهم <code>Y≠0</code>، فبيفوّتوا <code>A=A/X</code>، يعني مش كل الاختيارات شغالة.",
+     "القيمة <code>Y=1</code> بتخلي <code>(Y=0)</code> false، فالـ AND condition تبقى false والـ <code>A=A/X</code> عمره ما يتنفذ؛ والـ statement coverage محتاجة كل statement تتنفذ.",
+     "الـ <code>X&gt;1</code> متحققة بس <code>Y=1</code> بتخلي <code>(Y=0)</code> false، فالـ AND بتفشل والـ statement <code>A=A/X</code> بتتفوّت.",
+     "صح. الشرطين <code>X&gt;1</code> و <code>Y=0</code> الاتنين true، فـ <code>A=A/X</code> بتتنفذ وكل statement بتتنفذ."
     ],
     [
-     "ده شغال فعلًا (X=2 بتخلي الـ OR true فـ A=A+1 بيتنفذ)، بس مش هو الوحيد: التانيين كمان بيخلّوا الـ condition true، فالاختيار الكامل هو <bdi>«All answers»</bdi>.",
-     "ده شغال (X=2 و y&gt;1 الاتنين true)، بس كل الـ cases التانية كمان بتنفّذ A=A+1، فالإجابة الصح <bdi>«All answers»</bdi>.",
-     "ده شغال (y=2 &gt; 1 بتخلي الـ OR true)، بس الـ cases التانية كمان بتنفّذ A=A+1، فالإجابة الصح <bdi>«All answers»</bdi>.",
-     "صح. مع الـ OR، كل case بتخلي الـ condition تبقى true، فـ A=A+1 بتتنفذ في التلاتة."
+     "ده شغال فعلًا (<code>X=2</code> بتخلي الـ OR true فـ <code>A=A+1</code> بيتنفذ)، بس مش هو الوحيد: التانيين كمان بيخلّوا الـ condition true، فالاختيار الكامل هو <bdi>«All answers»</bdi>.",
+     "ده شغال (<code>X=2</code> و <code>y&gt;1</code> الاتنين true)، بس كل الـ cases التانية كمان بتنفّذ <code>A=A+1</code>، فالإجابة الصح <bdi>«All answers»</bdi>.",
+     "ده شغال (<code>y=2 &gt; 1</code> بتخلي الـ OR true)، بس الـ cases التانية كمان بتنفّذ <code>A=A+1</code>، فالإجابة الصح <bdi>«All answers»</bdi>.",
+     "صح. مع الـ OR، كل case بتخلي الـ condition تبقى true، فـ <code>A=A+1</code> بتتنفذ في التلاتة."
     ],
     [
-     "أول IF بيبقى true: A=1/3. التاني: X≠2 و A=0.33 مش &gt;1، فـ A=A+1 بتتنط.",
-     "أول IF بيبقى false (X&gt;1 مش متحققة)، فـ A=A/X بتتنط.",
-     "مش كل الـ cases بتنفّذ الـ 2 statements: X=0 بيفوّت A=A/X، و X=3,Y=0,A=1 بتدي A=1/3 فـ A=A+1 بتتفوّت. X=2,Y=0,A=4 بس اللي بتنفّذ الاتنين.",
-     "صح. أول IF بيبقى true: A=4/2=2. التاني IF: X=2 بتبقى true، فـ A=3. الـ statements الاتنين بيتنفذوا."
+     "أول IF بيبقى true، فـ <code>A=1/3</code>. والتاني: <code>X≠2</code> و <code>A=0.33</code> مش <code>&gt;1</code>، فـ <code>A=A+1</code> بتتنط.",
+     "أول IF بيبقى false (<code>X&gt;1</code> مش متحققة)، فـ <code>A=A/X</code> بتتنط.",
+     "مش كل الـ cases بتنفّذ الـ 2 statements: الـ case <code>X=0</code> بيفوّت <code>A=A/X</code>، والـ case <code>X=3, Y=0, A=1</code> بتدي <code>A=1/3</code> فـ <code>A=A+1</code> بتتفوّت. والـ case <code>X=2, Y=0, A=4</code> بس هي اللي بتنفّذ الاتنين.",
+     "صح. أول IF بيبقى true، فـ <code>A=4/2=2</code>. وفي تاني IF الـ <code>X=2</code> بتبقى true، فـ <code>A=3</code>. والـ statements الاتنين بيتنفذوا."
     ],
     [
      "الـ Static black-box testing بيراجع الـ specification من غير ما يشغّل الـ software؛ لا بيشغّل tests ولا بيصلّح bugs.",
@@ -720,7 +720,7 @@ AR.qa = {
      "الـ slide مش بتذكر Java؛ جملة الـ Comparison Errors فيها بتسمّي C. (وفي الحقيقة Java أصلًا مش بتعامل الـ integers كـ Booleans.)",
      "الـ slide بتسمّي C بس، مش C++. (وفي الحقيقة في C و C++ الـ zero يعني false والـ non-zero يعني true، عكس الـ slide.)",
      "الـ slide بتنسب الجملة لـ C لوحدها، فـ <bdi>«All the above»</bdi> مش مطابقة لإجابة الـ slide.",
-     "دي إجابة الـ slide/الـ summary. خد بالك: في C الحقيقية الموضوع بالعكس (0 = false، و non-zero = true). اختار «C» بس لو الامتحان كرر كلام الـ slide."
+     "دي إجابة الـ slide/الـ summary. خد بالك: في C الحقيقية الموضوع بالعكس (الـ 0 معناها false، وأي قيمة non-zero معناها true). اختار «C» بس لو الامتحان كرر كلام الـ slide."
     ],
     [
      "إن presenter مستقل مش هو الـ author يعرض ده inspection؛ في الـ walkthrough الـ author هو اللي بيعرض (L3, Formal review).",
@@ -768,7 +768,7 @@ AR.qa = {
     ],
     [
      "test واحد بـ X &gt; 10 بيشغّل كل الـ statements أصلًا، فالـ statement coverage محتاج 1 بس.",
-     "صح. X = 20 بيشغّل كل السطور (1)؛ والـ path coverage محتاج كمان case بـ false زي X = 5 (2)، زي مثال الكريسماس.",
+     "صح. الـ case <code>X = 20</code> بيشغّل كل السطور (1)؛ والـ path coverage محتاج كمان case بـ false زي <code>X = 5</code> (2)، زي مثال الكريسماس.",
      "test واحد مايقدرش ياخد الـ true branch والـ false branch بتوع الـ IF مع بعض.",
      "فيه condition بسيطة واحدة بس، فالـ path coverage محتاج 2، مش 4."
     ],
@@ -776,7 +776,7 @@ AR.qa = {
      "case واحدة ماتقدرش تخلي كل sub-condition تبقى true و false.",
      "الـ 2 كفاية للـ branch coverage (الـ IF كله true مرة و false مرة)، مش لجدول الـ condition coverage بتاع المحاضرة.",
      "الـ 8 = 2×2×2 كانت هتحتاج 3 sub-conditions؛ الـ IF ده فيه 2 بس (Age و Member$)، فيدّي 2×2 = 4 combinations.",
-     "صح. 2 sub-conditions × (true، false) = 4 combinations، زي جدول الـ Date$/Time$."
+     "صح. فيه 2 sub-conditions، وكل واحد ليه قيمتين (true أو false)، يعني 2 × 2 = 4 combinations، زي جدول الـ Date$/Time$."
     ],
     [
      "صح. المحاضرة بتقول ده بالظبط عن الـ data coverage.",
@@ -795,9 +795,9 @@ AR.qa = {
     {
      "h": "الـ V-model: الـ verification والـ validation",
      "pts": [
-      "الشكل اللي في الأول بيعيد الـ V-model: الجنب الشمال وهو <b>نازل</b> (requirements spec → functional spec → system design → unit design → code) ده الـ <b>verification</b>. والجنب اليمين وهو <b>طالع</b> (unit test → integration test → system test → acceptance test) ده الـ <b>validation</b>.",
+      "الشكل اللي في الأول بيعيد الـ V-model:<br>• الجنب الشمال وهو <b>نازل</b> ده الـ <b>verification</b>:<span class=\"ltr\">requirements spec → functional spec → system design → unit design → code</span>• والجنب اليمين وهو <b>طالع</b> ده الـ <b>validation</b>:<span class=\"ltr\">unit test → integration test → system test → acceptance test</span>",
       "الـ test plans بتربط الجنبين: الـ acceptance test plan، الـ system test plan، الـ integration test plan، والـ unit test cases.",
-      "شكل 1.3 (V Model):<br>• <b>العمود الشمال</b> نازل بأسهم solid: <b>Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</b>.<br>• <b>العمود اليمين</b> طالع من الـ Code بأسهم solid: <b>Unit Test → Integration Test → System Test → Acceptance Test</b>.<br>• فيه <b>أسهم dotted</b> بتعدّي من الشمال لليمين: Requirements Specifications → Acceptance Test ومكتوب عليه <b>Acceptance Test Plan</b>؛ و Functional Specifications → System Test ومكتوب عليه <b>System Test Plan</b>؛ و System Design → Integration Test ومكتوب عليه <b>Integration Test Plan</b>.<br>• وكلمة <b>Test Cases</b> مكتوبة بين الـ Unit Design والـ Unit Test.<br>• وفيه سهم كبير نازل على الشمال مكتوب عليه <b>Verification</b>، وسهم كبير طالع على اليمين مكتوب عليه <b>Validation</b>."
+      "شكل 1.3 (V Model):<br>• <b>العمود الشمال</b> نازل بأسهم solid:<span class=\"ltr\"><b>Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</b></span>• <b>العمود اليمين</b> طالع من الـ Code بأسهم solid:<span class=\"ltr\"><b>Unit Test → Integration Test → System Test → Acceptance Test</b></span>• فيه <b>أسهم dotted</b> بتعدّي من الشمال لليمين، ومكتوب على كل سهم اسم الـ plan بتاعه:<span class=\"ltr\">Requirements Specifications → Acceptance Test: <b>Acceptance Test Plan</b></span><span class=\"ltr\">Functional Specifications → System Test: <b>System Test Plan</b></span><span class=\"ltr\">System Design → Integration Test: <b>Integration Test Plan</b></span>• وكلمة <b>Test Cases</b> مكتوبة بين الـ Unit Design والـ Unit Test.<br>• وفيه سهم كبير نازل على الشمال مكتوب عليه <b>Verification</b>، وسهم كبير طالع على اليمين مكتوب عليه <b>Validation</b>."
      ]
     },
     {
@@ -815,18 +815,18 @@ AR.qa = {
     {
      "h": "التأكد من الـ test cases",
      "pts": [
-      "a=2, b=0: الـ a&gt;1 && b==0 بتبقى true → x=x/2؛ وبعدين a==2 بتبقى true → x=x+1. الـ Path 1,2,3,4,6 ✔.",
-      "a=2, b=1: الـ b==0 بتبقى false → نتنط node 2؛ a==2 بتبقى true → node 4. الـ Path 1,3,4,6 ✔.",
-      "a=0, b=0, x=0: الـ a&gt;1 بتبقى false → نتنط node 2؛ a==2 بتبقى false و x&gt;1 بتبقى false → الـ else اللي هي node 5. الـ Path 1,3,5,6 ✔.",
-      "الـ Cyclomatic complexity = <b>عدد الـ independent (basis) paths</b>، فبيدينا عدد الـ test cases اللي محتاجينها عشان ننفذ كل basis path (<b>3 في foo()</b>: test case لكل basis path، زي ما في الـ slide). ‡ بس هو مش أقل عدد tests للـ branch coverage: الـ foo() بتوصل للـ branch coverage بـ 2 tests بس (a=2, b=0 بيخلي الـ IFs الاتنين true؛ و a=0, b=0, x=0 بيخليهم الاتنين false)."
+      "لما <bdi>a=2, b=0</bdi>:<br>• الشرط <bdi>a&gt;1 && b==0</bdi> بيبقى true، فبننفذ <bdi>x=x/2</bdi>.<br>• وبعدين <bdi>a==2</bdi> بيبقى true، فبننفذ <bdi>x=x+1</bdi>.<br>• والـ path هو:<span class=\"ltr\">1,2,3,4,6 ✔</span>",
+      "لما <bdi>a=2, b=1</bdi>:<br>• الشرط <bdi>b==0</bdi> بيبقى false، فبنتنط node 2.<br>• و <bdi>a==2</bdi> بيبقى true، فبنروح لـ node 4.<br>• والـ path هو:<span class=\"ltr\">1,3,4,6 ✔</span>",
+      "لما <bdi>a=0, b=0, x=0</bdi>:<br>• الشرط <bdi>a&gt;1</bdi> بيبقى false، فبنتنط node 2.<br>• و <bdi>a==2</bdi> بيبقى false و <bdi>x&gt;1</bdi> بيبقى false، فبنروح للـ else اللي هي node 5.<br>• والـ path هو:<span class=\"ltr\">1,3,5,6 ✔</span>",
+      "الـ Cyclomatic complexity بيساوي <b>عدد الـ independent (basis) paths</b>، فبيدينا عدد الـ test cases اللي محتاجينها عشان ننفذ كل basis path (<b>3 في foo()</b>، يعني test case لكل basis path، زي ما في الـ slide). ‡ بس هو مش أقل عدد tests للـ branch coverage: الـ foo() بتوصل للـ branch coverage بـ 2 tests بس (<bdi>a=2, b=0</bdi> بيخلي الـ IFs الاتنين true؛ و <bdi>a=0, b=0, x=0</bdi> بيخليهم الاتنين false)."
      ]
     },
     {
-     "h": "الـ Triangle problem: functional (black-box) testing",
+     "h": "الـ Triangle problem: الـ functional (black-box) testing",
      "pts": [
       "تمرين: طبّق الـ black box والـ white box على الـ triangle problem. وضّح الـ <b>Function testing والـ statement والـ Path (branch) coverage</b> بتوع الـ triangle problem.",
       "الـ Pseudocode:<br><code>read a,b,c;</code><br><code>type=\"scalene\";</code><br><code>if (a==b or a==c or b==c) type=\"isosceles\";</code><br><code>if (a==b and a==c) type=\"equilateral\";</code><br><code>if (a&gt;=b+c or b&gt;=a+c or c&gt;=a+b) type=\"not a triangle\";</code><br><code>if (a&lt;=0 or b&lt;=0 or c&lt;=0) type=\"bad inputs\";</code><br><code>print type</code>",
-      "الـ Domain بيتقسم لـ 3 subdomains:<br>• الـ <b>scalene</b>: مفيش أضلاع متساوية.<br>• الـ <b>isosceles</b>: ضلعين متساويين.<br>• الـ <b>equilateral</b>: كلهم متساويين.<br>وزيادة عليهم 2 error subdomains: <b>bad inputs</b> و<b>not a triangle</b>.<br>كل test case لازم تقول الـ expected output بتاعها."
+      "الـ Domain بيتقسم لـ 3 subdomains:<br>• الـ <b>scalene</b>: مفيش أضلاع متساوية.<br>• الـ <b>isosceles</b>: ضلعين متساويين.<br>• الـ <b>equilateral</b>: كلهم متساويين.<br>وزيادة عليهم 2 error subdomains، هما الـ <b>bad inputs</b> والـ <b>not a triangle</b>.<br>كل test case لازم تقول الـ expected output بتاعها."
      ]
     },
     {
@@ -845,18 +845,18 @@ AR.qa = {
      "h": "أقل sets للـ coverage",
      "pts": [
       "سؤال (الـ slide): هات <b>أقل set من الـ test cases</b> تحقق <b>الـ statement والـ branch coverage</b> للـ pseudocode بتاع الـ triangle problem.",
-      "(0,1,0): a==c → isosceles (D)؛ مش كلهم متساويين؛ b ≥ a+c (1 ≥ 0) → not a triangle (H)؛ a ≤ 0 → bad inputs (J).",
+      "الـ test <bdi>(0,1,0)</bdi>:<br>• عشان <bdi>a==c</bdi>، بيروح لـ isosceles (D).<br>• ومش كلهم متساويين.<br>• وعشان <bdi>b ≥ a+c (1 ≥ 0)</bdi>، بيروح لـ not a triangle (H).<br>• وعشان <bdi>a ≤ 0</bdi>، بيروح لـ bad inputs (J).",
       "(4,4,4): isosceles (D) و equilateral (F)، ومثلث valid، والأضلاع موجبة.",
-      "<b>باستخدام الـ test cases اللي في جدول الـ slide</b>، <b>أقل عدد للـ Statement coverage = 2 tests</b>: (4,4,4) + (0,1,0) بيشغّلوا كل السطور من A لـ K (الـ (4,4,4) بس هي اللي بتوصل لـ F، والـ (0,1,0) بس هي اللي بتوصل لـ H و J).",
+      "<b>باستخدام الـ test cases اللي في جدول الـ slide</b>، <b>أقل عدد للـ Statement coverage هو 2 tests</b>، هما <bdi>(4,4,4)</bdi> و <bdi>(0,1,0)</bdi>، وبيشغّلوا كل السطور من A لـ K (الـ <bdi>(4,4,4)</bdi> بس هي اللي بتوصل لـ F، والـ <bdi>(0,1,0)</bdi> بس هي اللي بتوصل لـ H و J).",
       "<b>باستخدام الـ test cases اللي في جدول الـ slide</b>، <b>أقل عدد للـ Branch coverage = 3 tests</b>: ضيف (3,4,5)، وهي الـ column الوحيدة اللي بتخلي C تبقى false. الـ (0,1,0) بتخلي E تبقى false و G و I يبقوا true؛ والـ (4,4,4) بتخلي E تبقى true و G و I يبقوا false. كده كل IF بقى true و false.",
       "‡ الـ slide مابتديش إجابة. لو مسموح بـ <b>أي</b> input (مش بس الـ columns بتاعة الجدول) الأرقام بتقل: الـ (0,0,0) لوحدها بتشغّل كل السطور من A لـ K (0==0 بتحط isosceles و equilateral، و 0 ≥ 0+0 بتحط not a triangle، و 0 ≤ 0 بتحط bad inputs)، فـ <b>الـ statement coverage محتاجة test واحد</b>. والـ (0,0,0) بتخلي كل IF يبقى true، والـ (3,4,5) بتخلي كل IF يبقى false، فـ <b>الـ branch coverage محتاجة 2 tests</b> (test واحد مايقدرش يخلي الـ IF يبقى true و false مع بعض).",
-      "شكل (Control flow graph for triangle program):<br>• <b>السلسلة</b>: سلسلة nodes <b>a → c → e → g → i</b> متوصلة بأسهم نازلة على طول.<br>• <b>الفروع</b>: الـ a كمان بتتفرع لـ <b>isosceles</b>، والـ c لـ <b>equilateral</b>، والـ e لـ <b>not a triangle</b>، والـ g لـ <b>bad inputs</b>.<br>• <b>الأسهم الراجعة</b>: كل side node طالع منه سهم راجع للـ node اللي بعدها في السلسلة (isosceles → c و equilateral → e و not a triangle → g و bad inputs → i)."
+      "شكل (Control flow graph for triangle program):<br>• <b>السلسلة</b>: سلسلة nodes متوصلة بأسهم نازلة على طول:<span class=\"ltr\"><b>a → c → e → g → i</b></span>• <b>الفروع</b>: الـ a كمان بتتفرع لـ <b>isosceles</b>، والـ c لـ <b>equilateral</b>، والـ e لـ <b>not a triangle</b>، والـ g لـ <b>bad inputs</b>.<br>• <b>الأسهم الراجعة</b>: كل side node طالع منه سهم راجع للـ node اللي بعدها في السلسلة:<span class=\"ltr\">isosceles → c, equilateral → e, not a triangle → g, bad inputs → i</span>"
      ]
     },
     {
      "h": "الـ Functional tests: مساحة المثلث من 3 نقط",
      "pts": [
-      "مثال: برنامج بيحسب مساحة مثلث. الـ inputs هي <b>3 sets من الـ x,y coordinates</b>. اعمل functional tests؛ والإجابة إنك تكمّل الجدول اللي تحت."
+      "مثال: برنامج بيحسب مساحة مثلث. الـ inputs هي <b>3 sets من الـ <bdi>x,y</bdi> coordinates</b>. اعمل functional tests؛ والإجابة إنك تكمّل الجدول اللي تحت."
      ]
     },
     {
@@ -873,10 +873,10 @@ AR.qa = {
     {
      "h": "مثال الـ Stack: الـ MM والـ FP",
      "pts": [
-      "الـ States: <b>Empty و Normal و Full</b>.<br>• الـ <b>new</b> → Empty.<br>• الـ <b>push</b>: Empty→Normal و Normal→Normal و Normal→Full و Full→error.<br>• الـ <b>pop</b>: Empty→error و Normal→Normal و Normal→Empty و Full→Normal.",
-      "شكل (الـ state machine بتاعة الـ stack؛ الـ slide: <bdi>«Find MM and FP of the stack in the following figure»</bdi>):<br>• فيه 3 states هي <b>Empty</b> و<b>Normal</b> و<b>Full</b>.<br>• فيه نقطة سودا (البداية) طالع منها سهم <b>New</b> داخل على الـ Empty.<br>• الـ <b>Push</b> بيودّي من Empty → Normal ومن Normal → Full؛ والـ <b>Pop</b> بيودّي من Full → Normal ومن Normal → Empty.<br>• وتحت الـ Normal فيه loop مكتوب عليه <b>Push pop</b> بيطلع من الـ Normal ويرجعلها.<br>• وفيه سهم <b>Pop</b> طالع من الـ Empty وسهم <b>Push</b> طالع من الـ Full، والاتنين مش رايحين لأي state (دي حالات الـ error).",
-      "الـ <b>MM</b>: sequence بسيطة من <b>create و push و pop</b> ممكن تحقق الـ MM testing.",
-      "الـ <b>FP (14 pairs)</b>:<br>(1) new-pop (empty: error)<br>(2) new-push<br>(3) push(from empty)-push<br>(4) push(from empty)-pop<br>(5) push(normal→normal)-push (لسه normal)<br>(6) push(normal→normal)-push (بقى full)<br>(7) push(normal→normal)-pop<br>(8) push(normal→full)-push (error)<br>(9) push(normal→full)-pop<br>(10) pop(normal→normal)-push <b>(لسه normal)</b><br>(11) pop(normal→normal)-pop (لسه normal)<br>(12) pop(normal→normal)-pop (بقى empty)<br>(13) pop(into empty)-push<br>(14) pop(into empty)-pop (error)."
+      "الـ states هي <b>Empty و Normal و Full</b>.<br>• الـ <b>new</b> بيودّي على الـ Empty.<br>• الـ <b>push</b>:<span class=\"ltr\">Empty→Normal, Normal→Normal, Normal→Full, Full→error</span>• الـ <b>pop</b>:<span class=\"ltr\">Empty→error, Normal→Normal, Normal→Empty, Full→Normal</span>",
+      "شكل (الـ state machine بتاعة الـ stack؛ الـ slide: <bdi>«Find MM and FP of the stack in the following figure»</bdi>):<br>• فيه 3 states هي <b>Empty</b> و<b>Normal</b> و<b>Full</b>.<br>• فيه نقطة سودا (البداية) طالع منها سهم <b>New</b> داخل على الـ Empty.<br>• الـ <b>Push</b> بيودّي من الـ Empty للـ Normal، ومن الـ Normal للـ Full.<br>• والـ <b>Pop</b> بيودّي من الـ Full للـ Normal، ومن الـ Normal للـ Empty.<br>• وتحت الـ Normal فيه loop مكتوب عليه <b>Push pop</b> بيطلع من الـ Normal ويرجعلها.<br>• وفيه سهم <b>Pop</b> طالع من الـ Empty وسهم <b>Push</b> طالع من الـ Full، والاتنين مش رايحين لأي state (دي حالات الـ error).",
+      "الـ <b>MM</b>: ممكن نحقق الـ MM testing بـ sequence بسيطة من <b>create و push و pop</b>.",
+      "الـ <b>FP (14 pairs)</b>:<span class=\"ltr\">(1) new-pop (empty: error)</span><span class=\"ltr\">(2) new-push</span><span class=\"ltr\">(3) push(from empty)-push</span><span class=\"ltr\">(4) push(from empty)-pop</span><span class=\"ltr\">(5) push(normal→normal)-push (لسه normal)</span><span class=\"ltr\">(6) push(normal→normal)-push (بقى full)</span><span class=\"ltr\">(7) push(normal→normal)-pop</span><span class=\"ltr\">(8) push(normal→full)-push (error)</span><span class=\"ltr\">(9) push(normal→full)-pop</span><span class=\"ltr\">(10) pop(normal→normal)-push <b>(لسه normal)</b></span><span class=\"ltr\">(11) pop(normal→normal)-pop (لسه normal)</span><span class=\"ltr\">(12) pop(normal→normal)-pop (بقى empty)</span><span class=\"ltr\">(13) pop(into empty)-push</span><span class=\"ltr\">(14) pop(into empty)-pop (error)</span>"
      ]
     },
     {
@@ -895,21 +895,21 @@ AR.qa = {
     "1,2,3,4,6؛ 1,3,4,6؛ 1,3,5,6.",
     "عدد الـ independent (basis) paths.",
     "الشمال (نازل) = verification؛ اليمين (طالع) = validation.",
-    "Scalene، isosceles، equilateral، وزيادة عليهم الـ error cases: bad inputs و not a triangle.",
-    "من الـ test cases اللي في جدول الـ slide: (4,4,4) و (0,1,0). ‡ لو أي input مسموح: (0,0,0) لوحدها (test واحد).",
-    "من الـ test cases اللي في جدول الـ slide: (3,4,5)، (4,4,4) و (0,1,0). ‡ لو أي input مسموح: (0,0,0) و (3,4,5) (2 tests).",
+    "الـ scalene والـ isosceles والـ equilateral، وزيادة عليهم الـ error cases، هما الـ bad inputs والـ not a triangle.",
+    "من الـ test cases اللي في جدول الـ slide، هما <bdi>(4,4,4)</bdi> و <bdi>(0,1,0)</bdi>. ‡ ولو أي input مسموح: <bdi>(0,0,0)</bdi> لوحدها (test واحد).",
+    "من الـ test cases اللي في جدول الـ slide، هما <bdi>(3,4,5)</bdi> و <bdi>(4,4,4)</bdi> و <bdi>(0,1,0)</bdi>. ‡ ولو أي input مسموح: <bdi>(0,0,0)</bdi> و <bdi>(3,4,5)</bdi> (2 tests).",
     "كل method call بيتختبر مرة واحدة على الأقل.",
     "لأ.",
     "كل الـ sequences من تنفيذ الـ methods اللي طولها اتنين، مبنية على state machine.",
-    "create، push، pop.",
-    "Empty، Normal، Full.",
+    "الـ create والـ push والـ pop.",
+    "الـ Empty والـ Normal والـ Full.",
     "14."
    ],
    "qa": [
-    "الـ Nodes من 1 لـ 6، والـ edges هي 1-2، 1-3، 2-3، 3-4، 3-5، 4-6، 5-6، فبيدّونا E=7 و N=6، يبقى V(G)=7-6+2=3 (وبرضه 2 predicates + 1). الـ Basis paths: 1,2,3,4,6 (a=2,b=0,x=0)؛ 1,3,4,6 (a=2,b=1,x=0)؛ 1,3,5,6 (a=0,b=0,x=0).",
+    "الـ nodes من 1 لـ 6، والـ edges هي:<span class=\"ltr\">1-2, 1-3, 2-3, 3-4, 3-5, 4-6, 5-6</span>فبيدّونا <bdi>E=7</bdi> و <bdi>N=6</bdi>، يبقى:<span class=\"ltr\">V(G)=7-6+2=3</span>وده برضه 2 predicates + 1.<br>والـ basis paths هما:<span class=\"ltr\">1,2,3,4,6 (a=2,b=0,x=0)</span><span class=\"ltr\">1,3,4,6 (a=2,b=1,x=0)</span><span class=\"ltr\">1,3,5,6 (a=0,b=0,x=0)</span>",
     "الـ MM testing بيطلب إن كل method call يتختبر مرة واحدة على الأقل (كل call مرة واحدة حتى لو بيتكرر). هو أبسط criterion ومابيشملش الـ statement coverage. أما الـ function pair testing فبيطلب كل sequence ممكنة من تنفيذ اتنين methods، وعادةً بتطلع من state machine diagram، فبيختبر الـ interactions والسلوك اللي معتمد على الـ state.",
-    "باستخدام الـ test cases اللي في جدول الـ slide (3,4,5 / 3,5,3 / 0,1,0 / 4,4,4): الـ Statement: (4,4,4) و (0,1,0)، ودول بيوصلوا لـ isosceles و equilateral و not a triangle و bad inputs (2 tests). الـ Branch: ضيف (3,4,5) عشان أول IF يبقى false كمان (3 tests). كده كل decision بقت true و false مرة على الأقل. ‡ الـ slide مابتديش إجابة؛ لو أي input مسموح، الـ (0,0,0) لوحدها بتشغّل كل السطور من A لـ K، فالـ statement coverage محتاجة test واحد، والـ (0,0,0) (كل IF بيبقى true) مع الـ (3,4,5) (كل IF بيبقى false) بيدّوا branch coverage بـ 2 tests.",
-    "new-pop (error)، new-push، push(from empty)-push، push(from empty)-pop، push(normal)-push (لسه normal)، push(normal)-push (بقى full)، push(normal)-pop، push(to full)-push (error)، push(to full)-pop، pop(normal)-push (لسه normal)، pop(normal)-pop (لسه normal)، pop(normal)-pop (بقى empty)، pop(into empty)-push، pop(into empty)-pop (error)."
+    "باستخدام الـ test cases اللي في جدول الـ slide:<span class=\"ltr\">3,4,5 / 3,5,3 / 0,1,0 / 4,4,4</span>• الـ <b>Statement</b>: <bdi>(4,4,4)</bdi> و <bdi>(0,1,0)</bdi>، ودول بيوصلوا لـ isosceles و equilateral و not a triangle و bad inputs (2 tests).<br>• الـ <b>Branch</b>: ضيف <bdi>(3,4,5)</bdi> عشان أول IF يبقى false كمان (3 tests). كده كل decision بقت true و false مرة على الأقل.<br>‡ الـ slide مابتديش إجابة؛ لو أي input مسموح، الـ <bdi>(0,0,0)</bdi> لوحدها بتشغّل كل السطور من A لـ K، فالـ statement coverage محتاجة test واحد، والـ <bdi>(0,0,0)</bdi> (كل IF بيبقى true) مع الـ <bdi>(3,4,5)</bdi> (كل IF بيبقى false) بيدّوا branch coverage بـ 2 tests.",
+    "الـ 14 function pairs:<span class=\"ltr\">new-pop (error)</span><span class=\"ltr\">new-push</span><span class=\"ltr\">push(from empty)-push</span><span class=\"ltr\">push(from empty)-pop</span><span class=\"ltr\">push(normal)-push (لسه normal)</span><span class=\"ltr\">push(normal)-push (بقى full)</span><span class=\"ltr\">push(normal)-pop</span><span class=\"ltr\">push(to full)-push (error)</span><span class=\"ltr\">push(to full)-pop</span><span class=\"ltr\">pop(normal)-push (لسه normal)</span><span class=\"ltr\">pop(normal)-pop (لسه normal)</span><span class=\"ltr\">pop(normal)-pop (بقى empty)</span><span class=\"ltr\">pop(into empty)-push</span><span class=\"ltr\">pop(into empty)-pop (error)</span>"
    ],
    "quiz": [
     [
@@ -921,8 +921,8 @@ AR.qa = {
     [
      "الـ V(G) = 1 بس للـ code الماشي في خط مستقيم من غير decisions؛ الـ foo() فيها 2 predicate nodes (1 و 3)، فـ V(G) = 3.",
      "الـ 2 ده عدد الـ predicate nodes (1 و 3)؛ الـ V(G) = predicates + 1 = 3، أو E − N + 2 = 7 − 6 + 2 = 3.",
-     "صح. V(G) = E − N + 2P = 7 − 6 + 2(1) = 3، وده نفس predicate nodes + 1 = 2 + 1 ونفس الـ 3 regions بتوع الـ graph (L4, foo()).",
-     "الـ 13 = E + N = 7 + 6، وده مش الـ formula؛ V(G) = E − N + 2P = 7 − 6 + 2 = 3."
+     "صح. الحساب:<span class=\"ltr\">V(G) = E − N + 2P = 7 − 6 + 2(1) = 3</span>وده نفس عدد الـ predicate nodes + 1 (يعني 2 + 1)، ونفس الـ 3 regions بتوع الـ graph (L4, foo()).",
+     "الـ 13 جاية من E + N (يعني 7 + 6)، وده مش الـ formula. الـ formula الصح:<span class=\"ltr\">V(G) = E − N + 2P = 7 − 6 + 2 = 3</span>"
     ],
     [
      "صح. بتدينا عدد الـ independent (basis) paths.",
@@ -937,10 +937,10 @@ AR.qa = {
      "الـ State coverage ما اتقارنتش بالـ MM في المحاضرة (الـ states تبع الـ function pair testing)؛ المعلومة المذكورة عن الـ statement coverage."
     ],
     [
-     "a=2, b=0 بتخلي أول IF true (node 2)، وبعدين a==2 بتودّي لـ node 4: الـ path يبقى 1,2,3,4,6، وده basis path 1 في المحاضرة.",
+     "القيم <bdi>a=2, b=0</bdi> بتخلي أول IF true (node 2)، وبعدين <bdi>a==2</bdi> بتودّي لـ node 4، فالـ path يبقى <bdi>1,2,3,4,6</bdi>، وده basis path 1 في المحاضرة.",
      "b=1 بتفوّت node 2، بس a==2 بتخلي تاني IF true، فـ node 4 بتتنفذ: الـ path يبقى 1,3,4,6، وده basis path 2.",
      "صح. أول IF بيبقى false، وبعدين a≠2 و x=0 مش &gt;1، فالـ else (5) بيتنفذ.",
-     "a=3, b=0 بتخلي أول IF true (node 2: x=9/3=3)، وبعدين x&gt;1 true، فـ node 4 بتتنفذ: الـ path يبقى 1,2,3,4,6."
+     "القيم <bdi>a=3, b=0</bdi> بتخلي أول IF true (في node 2 بتبقى <bdi>x=9/3=3</bdi>)، وبعدين <bdi>x&gt;1</bdi> بيبقى true، فـ node 4 بتتنفذ، والـ path يبقى <bdi>1,2,3,4,6</bdi>."
     ],
     [
      "من الـ 4 columns بتوع الجدول، الـ (4,4,4) بس هي اللي بتوصل لـ equilateral (F)، والـ (0,1,0) بس هي اللي بتوصل لـ not a triangle (H) و bad inputs (J)، فمفيش column واحدة بتشغّل كل السطور. (‡ لو أي input مسموح، الـ (0,0,0) لوحدها كانت هتعملها.)",
@@ -957,7 +957,7 @@ AR.qa = {
     [
      "إنك تختبر كل method call مرة ده الـ MM (method-message) coverage؛ الـ FP coverage بيختبر كل sequence من 2 method executions.",
      "صح. وعادةً بتطلع من state machine diagram.",
-     "كل statement ده الـ statement coverage، criterion تقليدي المحاضرة بتقول إنه مش كفاية للـ OO؛ الـ FP بيختبر pairs من الـ method executions.",
+     "«كل statement» ده الـ statement coverage، وده criterion تقليدي المحاضرة بتقول إنه مش كفاية للـ OO؛ أما الـ FP فبيختبر pairs من الـ method executions.",
      "الـ FP فيه error pairs (زي new-pop، و push على stack full) بس هو محتاج كل الـ sequences اللي طولها 2، يعني 14 pair في مثال الـ stack."
     ],
     [
@@ -968,7 +968,7 @@ AR.qa = {
     ],
     [
      "الـ Validation هي الناحية اليمين الطالعة من الـ V (من الـ unit test لحد الـ acceptance test)؛ الناحية الشمال النازلة هي الـ verification.",
-     "صح. الناحية الشمال النازلة (requirements spec ← functional spec ← system design ← unit design ← code) هي الـ verification؛ والناحية اليمين الطالعة هي الـ validation (L4, V-model).",
+     "صح. الناحية الشمال النازلة هي الـ verification:<span class=\"ltr\">requirements spec → functional spec → system design → unit design → code</span>والناحية اليمين الطالعة هي الـ validation (L4, V-model).",
      "الـ Debugging مش label في رسمة الـ V-model؛ الناحيتين هما verification (شمال، نازل) و validation (يمين، طالع).",
      "الـ Maintenance دي phase في الـ Waterfall، مش label في الـ V-model؛ الناحية الشمال في الرسمة verification واليمين validation."
     ],
@@ -982,9 +982,9 @@ AR.qa = {
    "extra": [
     [
      "الـ 1 = 8 − 7 ناسية الـ +2P؛ V(G) = E − N + 2P = 8 − 7 + 2(1) = 3.",
-     "صح. V(G) = E − N + 2P = 8 − 7 + 2(1) = 3، يعني الـ graph فيه 3 independent paths (L4, Cyclomatic complexity).",
+     "صح. الحساب:<span class=\"ltr\">V(G) = E − N + 2P = 8 − 7 + 2(1) = 3</span>يعني الـ graph فيه 3 independent paths (L4, Cyclomatic complexity).",
      "ده مستخدم P = 2 (8 − 7 + 4)؛ والـ graph عبارة عن component واحدة.",
-     "الـ 15 = E + N = 8 + 7؛ الـ nodes بتتطرح مش بتتجمع: V(G) = 8 − 7 + 2 = 3."
+     "الـ 15 جاية من E + N (يعني 8 + 7)، لكن الـ nodes بتتطرح مش بتتجمع:<span class=\"ltr\">V(G) = 8 − 7 + 2 = 3</span>"
     ],
     [
      "صح. فيه 3 simple decisions (predicate nodes)، فـ V(G) = 3 + 1 = 4.",
@@ -993,8 +993,8 @@ AR.qa = {
      "الـ V(G) مش 2^3؛ هي بتزيد واحد مع كل decision."
     ],
     [
-     "صح. a&gt;1 && b==0 بتبقى true فـ x = 2/3 ≈ 0.67؛ وبعدين a==2 بتبقى false و x&gt;1 بتبقى false، فالـ else (node 5) بيتنفذ.",
-     "بعد node 2، x ≈ 0.67، فـ x&gt;1 بتبقى false، و a مش 2؛ فمش هنوصل لـ node 4.",
+     "صح. الشرط <bdi>a&gt;1 && b==0</bdi> بيبقى true، فـ <bdi>x = 2/3 ≈ 0.67</bdi>؛ وبعدين <bdi>a==2</bdi> بيبقى false و <bdi>x&gt;1</bdi> بيبقى false، فالـ else (node 5) بيتنفذ.",
+     "بعد node 2 بتبقى <bdi>x ≈ 0.67</bdi>، فـ <bdi>x&gt;1</bdi> بيبقى false، والـ a مش 2؛ فمش هنوصل لـ node 4.",
      "أول IF بيبقى true (3 &gt; 1 و b = 0)، فـ node 2 بيتنفذ.",
      "أول IF بيبقى true، فمينفعش نتنط node 2."
     ],
@@ -1002,7 +1002,7 @@ AR.qa = {
      "بيتحط الأول، بس الـ IF اللي بعده (4 &gt;= 2+2) بيكتب فوقه.",
      "فيه ضلعين متساويين، فالـ scalene بيتكتب فوقه.",
      "كل الأضلاع موجبة، فآخر IF بيبقى false.",
-     "صح. a==b بتحط isosceles، بس c &gt;= a+b (4 &gt;= 4) بعدها بتحط <bdi>\"not a triangle\"</bdi>؛ ومفيش ضلع ≤ 0."
+     "صح. الشرط <bdi>a==b</bdi> بيحط isosceles، بس بعدها <bdi>c &gt;= a+b (4 &gt;= 4)</bdi> بيحط <bdi>\"not a triangle\"</bdi>؛ ومفيش ضلع ≤ 0."
     ],
     [
      "الـ (4,4,4) والـ (0,1,0) لازم الاتنين (هما بس اللي بيوصلوا لـ equilateral و not a triangle و bad inputs)، والاتنين بيخلّوا أول IF يبقى true؛ ومن columns الجدول الـ (3,4,5) بس هي اللي بتخليه false، فالـ 2 مش كفاية. (‡ لو أي input مسموح، الـ (0,0,0) + (3,4,5) كانوا هيدّوا 2.)",
@@ -1023,7 +1023,7 @@ AR.qa = {
      "الـ Push عمره ما بيفضّي الـ stack؛ الـ Empty بنوصلها بس بـ pop من Normal. والـ push على stack Full ده error (pair 8)."
     ],
     [
-     "صح. التلات نقط على نفس الخط (y = x)، فهما collinear، زي (1,1)، (1,5)، (1,10).",
+     "صح. التلات نقط على نفس الخط (<bdi>y = x</bdi>)، فهما collinear، زي <bdi>(1,1)</bdi> و <bdi>(1,5)</bdi> و <bdi>(1,10)</bdi>.",
      "النقط (0,0) و (4,0) و (0,6) مش على خط واحد؛ بيعملوا right triangle ضلعيه 4 و 6، مساحته ½ × 4 × 6 = 12.",
      "النقط (1,1) و (5,1) و (1,4) مش collinear؛ بيعملوا right triangle ضلعيه 4 و 3، مساحته ½ × 4 × 3 = 6.",
      "النقط (0,0) و (3,0) و (3,3) مش collinear؛ بيعملوا right triangle ضلعيه 3 و 3، مساحته ½ × 3 × 3 = 4.5."
@@ -1036,7 +1036,7 @@ AR.qa = {
      "الـ 3 بتعدّ الـ inner regions بس؛ الـ outer region كمان بتتحسب، فـ V(G) = 3 + 1 = 4 (في foo: 2 inner + 1 outer = 3).",
      "ده بيطرح بدل ما يزود الـ outer region.",
      "الـ 5 بتضيف 2 outer regions؛ الـ planar graph فيه outer region واحدة بالظبط، فـ V(G) = 3 + 1 = 4.",
-     "صح. V(G) = عدد الـ regions = 3 inner + 1 outer = 4 (الـ foo كان فيها 2 + 1 = 3)."
+     "صح. الـ V(G) بيساوي عدد الـ regions، يعني 3 inner + 1 outer = 4 (والـ foo كان فيها 2 + 1 = 3)."
     ]
    ]
   },
@@ -1062,7 +1062,7 @@ AR.qa = {
      "h": "الـ 13 element بتوع الـ web site testing",
      "pts": [
       "<bdi dir=\"ltr\">2.</bdi> الـ <b>Instructions</b>: اتأكد إن الـ web site فيه كل الـ instructions المهمة. عشان ناس كتير بتستخدم الـ web sites، فيه منهم اللي ممكن يحتاج توضيح (clarification).",
-      "<bdi dir=\"ltr\">3.</bdi> الـ <b>Site map</b> أو الـ navigational mapping: اختبر هل الـ site عنده map، عشان الـ users اللي عندهم خبرة غالبًا عارفين بالظبط عايزين يروحوا فين وبيتجنبوا الـ instructions الطويلة. مثال الـ site map اللي على الـ slide: http://www.apple.com/sitemap/",
+      "<bdi dir=\"ltr\">3.</bdi> الـ <b>Site map</b> أو الـ navigational mapping: اختبر هل الـ site عنده map، عشان الـ users اللي عندهم خبرة غالبًا عارفين بالظبط عايزين يروحوا فين وبيتجنبوا الـ instructions الطويلة. ومثال الـ site map اللي على الـ slide هو:<span class=\"ltr\">http://www.apple.com/sitemap/</span>",
       "<bdi dir=\"ltr\">4.</bdi> الـ <b>Content</b>: افحص الـ plagiarism وخلّي الـ bold text والـ big fonts والـ blinking texts في أقل حدود، لأنها ممكن ماتعجبش الـ customer، وبالتالي ممكن مايرجعش للـ web site تاني."
      ]
     },
@@ -1070,7 +1070,7 @@ AR.qa = {
      "h": "الـ Black-box testing للـ web page",
      "pts": [
       "شاشة كمثال: الـ web site بتاع Infosys بيوضح العناصر الأساسية: <b>text و graphics و hyperlinks</b> (وكمان forms).",
-      "<bdi>Figure 8.5 (Website with Texts, Hyperlinks, and Graphics)</bdi>: صورة شاشة للـ home page بتاع Infosys.<br>• <b>فوق على الشمال</b>: الـ logo بتاع Infosys ومعاه الـ slogan <bdi>\"Building Tomorrow's Enterprise\"</bdi>.<br>• <b>فوق على اليمين</b>: links هي Global [Change] | Contact Us | Careers | Investors | Blogs | Microsites، وصندوق Search.<br>• <b>الـ navigation bar</b>: Home و Building Tomorrow's Enterprise و Offerings و Global Sourcing و Infosys Labs و Sustainability و Newsroom و About Us.<br>• <b>وتحتها</b> banner فيه صورة (إيدين بيشكّلوا قُلّة من الطين) ومكتوب عليه <bdi>\"TRANSFORM. Build Tomorrow's Enterprise Today\"</bdi>.",
+      "<bdi>Figure 8.5 (Website with Texts, Hyperlinks, and Graphics)</bdi>: صورة شاشة للـ home page بتاع Infosys.<br>• <b>فوق على الشمال</b>: الـ logo بتاع Infosys ومعاه الـ slogan <bdi>\"Building Tomorrow's Enterprise\"</bdi>.<br>• <b>فوق على اليمين</b>: فيه links هي:<span class=\"ltr\">Global [Change] | Contact Us | Careers | Investors | Blogs | Microsites</span>وفيه كمان صندوق Search.<br>• <b>الـ navigation bar</b> فيه: Home و Building Tomorrow's Enterprise و Offerings و Global Sourcing و Infosys Labs و Sustainability و Newsroom و About Us.<br>• <b>وتحتها</b> banner فيه صورة (إيدين بيشكّلوا قُلّة من الطين) ومكتوب عليه <bdi>\"TRANSFORM. Build Tomorrow's Enterprise Today\"</bdi>.",
       "الـ <b>Text</b>: مستوى الجمهور المستهدف، الـ terminology، عمق المحتوى، الموضوع، الدقة، الـ spelling، علامات الترقيم، وبيانات التواصل الصح (تليفونات، عناوين).",
       "الـ <b>Hyperlinks</b>: كل واحد بيروح للـ destination الصح وبيفتح في نفس الـ tab أو window جديدة حسب الـ spec (لو مفيش spec، اتأكد إنه شغال). الـ links لازم تبقى <b>واضحة</b> (text عليه underline، ومؤشر الماوس بيتغير). لو e-mail link، ابعت e-mail واتأكد إنك بيجيلك رد.",
       "الـ <b>Graphics</b>: كلها بتتحمل وبتظهر صح. أي graphic ناقصة أو اسمها غلط مش هتتحمل، والصفحة هتطلّع error مكانها.",
@@ -1082,8 +1082,8 @@ AR.qa = {
      "h": "الـ White-box والـ gray-box testing للـ web site",
      "pts": [
       "الـ <b>White-box</b>: الـ tester عارف الـ internal design. العناصر اللي بنختبرها:",
-      "<bdi dir=\"ltr\">1.</bdi> الـ <b>Dynamic content</b>: graphics و text بيتغيروا حسب الظروف (وقت اليوم، الطقس، الـ stock tickers).",
-      "<bdi dir=\"ltr\">2.</bdi> الـ <b>Database-driven pages</b>: catalogs و inventories (e-commerce).",
+      "<bdi dir=\"ltr\">1.</bdi> الـ <b>Dynamic content</b> يعني graphics و text بيتغيروا حسب الظروف (وقت اليوم، الطقس، الـ stock tickers).",
+      "<bdi dir=\"ltr\">2.</bdi> الـ <b>Database-driven pages</b> زي الـ catalogs والـ inventories (في الـ e-commerce).",
       "<bdi dir=\"ltr\">3.</bdi> الـ <b>Programmatically created pages</b>: الـ designer بيكتب entries في database، ويعمل drag and drop للعناصر في layout program ويدوس زرار عشان يطلّع الـ HTML.",
       "<bdi dir=\"ltr\">4.</bdi> الـ <b>Server performance and loading</b>: المواقع المشهورة بيجيلها ملايين hits في اليوم، فلازم نعمل simulation لملايين connections و downloads.",
       "<bdi dir=\"ltr\">5.</bdi> الـ <b>Security</b>: هجمات الـ denial of service والـ buffer overflow.",
@@ -1121,7 +1121,7 @@ AR.qa = {
    ],
    "qa": [
     "الـ Text (الجمهور، الـ terminology، الدقة، الـ spelling، بيانات التواصل)، الـ hyperlinks (الـ destination الصح، نفس الـ tab أو window جديدة، واضحة، e-mail links)، الـ graphics (بتتحمل وبتظهر، مفيش صور ناقصة أو اسمها غلط) والـ forms (متحطة صح، الحجم صح، بتقبل الـ data الصح، بترفض الـ data الغلط).",
-    "الـ Dynamic content، الـ database-driven pages، الـ programmatically created pages، الـ server performance and loading، والـ security (denial of service، buffer overflow).",
+    "الـ Dynamic content، الـ database-driven pages، الـ programmatically created pages، الـ server performance and loading، والـ security (زي الـ denial of service والـ buffer overflow).",
     "‡ (مش في الـ slides) الـ web pages متبنية من HTML و scripts الـ tester يقدر يشوفها (view source) وهو لسه بيختبر من وجهة نظر الـ user، فينفع نخلط الـ black-box بالـ white-box. الهدف (اللي في الـ slide) إننا نعزل الـ defects اللي سببها design وحش أو implementation وحش.",
     "الـ Hardware: أنواع الـ CPU، الـ RAM، الـ graphics cards، الـ video capture cards، الـ audio cards، الـ monitors، الـ network cards. الـ Compatibility: الـ font sizes، الـ browsers مع الـ CSS، الـ screen resolutions، الـ memory sizes، الـ network environments."
    ],
@@ -1167,12 +1167,12 @@ AR.qa = {
     [
      "الـ CPU types هي item 1 من الـ 7 hardware configuration checks، يعني موجودة في اللستة (L5, Configuration testing).",
      "الـ Audio cards هي item 5 من الـ 7 hardware configuration checks، يعني موجودة في اللستة.",
-     "صح. الليستة هي CPU، RAM، graphics، video capture، audio، monitors، network cards.",
+     "صح. الليستة هي:<span class=\"ltr\">CPU, RAM, graphics, video capture, audio, monitors, network cards</span>",
      "الـ Network cards هي item 7، آخر واحدة في الـ hardware configuration checks، يعني موجودة في اللستة."
     ],
     [
      "المحاضرة بتسمح بالـ cookies؛ element 13 بيقول نختبر إنها شغالة، مش إننا نمنعها.",
-     "صح. Element 13 في الـ web testing بيقول نتأكد إن الـ cookies شغالة وإن الـ login information اللي متخزنة فيها encrypted (L5, Web site testing elements).",
+     "صح. الـ element رقم 13 في الـ web testing بيقول نتأكد إن الـ cookies شغالة وإن الـ login information اللي متخزنة فيها encrypted (L5, Web site testing elements).",
      "إن الـ login data تتخزن plain text ده عكس المطلوب بالظبط؛ المحاضرة بتقول إن الـ login information في الـ cookies لازم تبقى encrypted.",
      "الـ Blinking ليه علاقة بالـ text content (قلل الـ blinking text)، مش بالـ cookies؛ الـ check بتاع الـ cookies إنها شغالة و encrypted."
     ],
@@ -1233,7 +1233,7 @@ AR.qa = {
     [
      "الـ Various screen resolutions هي item 3 في لستة الـ compatibility، يعني مذكورة.",
      "الـ Various font sizes هي item 1 في لستة الـ compatibility، يعني مذكورة.",
-     "صح. الليستة هي font sizes، browsers مع الـ CSS، screen resolutions، memory sizes، و network environments.",
+     "صح. الليستة هي الـ font sizes، والـ browsers مع الـ CSS، والـ screen resolutions، والـ memory sizes، والـ network environments.",
      "الـ Different network environments هي item 5 في لستة الـ compatibility، يعني مذكورة."
     ],
     [
@@ -1274,7 +1274,7 @@ AR.qa = {
      "h": "الـ Quality management في الـ IT وفي الـ organizations",
      "pts": [
       "الـ Quality management في الـ IT غالبًا اسمه <b>ITSM (IT Service Management)</b>. الهدف: نقدم IT services بـ <b>مستوى quality متفق عليه (agreed-upon)</b>.",
-      "الـ Categories:<br>• الـ <b>IT Service Support</b> = processes لـ <b>التقديم الكفء للـ IT operational services</b>.<br>• الـ <b>IT Service Delivery</b> = processes لـ <b>الـ planning والـ control والـ management على المدى الطويل</b> للـ IT services.",
+      "الـ Categories:<br>• الـ <b>IT Service Support</b>: هي الـ processes الخاصة بـ <b>التقديم الكفء للـ IT operational services</b>.<br>• الـ <b>IT Service Delivery</b>: هي الـ processes الخاصة بـ <b>الـ planning والـ control والـ management على المدى الطويل</b> للـ IT services.",
       "الـ SQA مش testing وبس. بيشمل إننا نحط standards و methodologies، ونراقب ونقيّم الـ development process، ونصلّح الـ errors أثناء الـ development ونمنع إنها تتكرر. والـ quality metrics بتقيس إحنا حققنا الـ quality requirements لحد فين."
      ]
     },
@@ -1289,7 +1289,7 @@ AR.qa = {
     {
      "h": "الـ SQA metrics والـ indicators",
      "pts": [
-      "• الـ <b>Metrics</b>: rules لقياس الـ software attributes (حجم الـ code، الـ complexity).<br>• الـ <b>Indicators</b>: variables بتعكس نتايج الـ process (عدد الـ bugs اللي اتكشفت).",
+      "• الـ <b>Metrics</b>: هي rules لقياس الـ software attributes (زي حجم الـ code والـ complexity).<br>• الـ <b>Indicators</b>: هي variables بتعكس نتايج الـ process (زي عدد الـ bugs اللي اتكشفت).",
       "• الـ <b>Product metrics</b> بتقيس <b>الـ quality بتاعة الـ final product</b> (زي حجم الـ code، عدد الصفحات الموثقة).<br>• الـ <b>Process metrics</b> بتقيس الـ development process (زي الوقت اللي اتاخد، الـ development methodology).",
       "<b>9 metrics مشهورين</b>:<br>• code coverage<br>• bugs per line of code<br>• cyclomatic complexity<br>• function point analysis<br>• عدد الـ classes والـ interfaces<br>• cohesion<br>• coupling<br>• order of growth<br>• source lines of code."
      ]
@@ -1306,19 +1306,19 @@ AR.qa = {
     "المجهود المطلوب عشان نلاقي الـ errors ونصلحها.",
     "المجهود المطلوب عشان نغير البرنامج.",
     "المجهود المطلوب عشان ننقل البرنامج لـ system تاني.",
-    "الـ SQA: process، prevention، proactive. الـ SQC: product، detection، reactive.",
+    "الـ SQA بيركز على الـ process، وهدفه الـ prevention، وهو proactive.<br>الـ SQC بيركز على الـ product، وهدفه الـ detection، وهو reactive.",
     "IT Service Management: تقديم IT services بمستوى quality متفق عليه.",
     "الـ Support: التقديم الكفء للـ operational services. الـ Delivery: الـ planning والـ control والـ management على المدى الطويل.",
-    "الـ Metrics: rules لقياس الـ attributes. الـ Indicators: variables بتعكس نتايج الـ process.",
+    "الـ Metrics: هي rules لقياس الـ attributes.<br>الـ Indicators: هي variables بتعكس نتايج الـ process.",
     "الـ Product: الـ final product (حجم الـ code، الصفحات). الـ Process: الـ development (الوقت، الـ methodology).",
     "الـ Removal rate: اللي اتكشف واتحل. الـ Age profile: اللي ماتحلش، خلال فترة.",
     "بيحدد الأجزاء في الـ system اللي معرضة للـ defects (defect-prone)."
    ],
    "qa": [
-    "الـ Code coverage، bugs per line of code، الـ cyclomatic complexity، الـ function point analysis، عدد الـ classes والـ interfaces، الـ cohesion، الـ coupling، الـ order of growth، الـ source lines of code.",
+    "الـ code coverage، والـ bugs per line of code، والـ cyclomatic complexity، والـ function point analysis، وعدد الـ classes والـ interfaces، والـ cohesion، والـ coupling، والـ order of growth، والـ source lines of code.",
     "الـ Testing جزء من الـ SQA، هدفه الاكتشاف، بيقيّم الـ spec والـ design والـ code تحت conditions عادية ومش عادية، بيلاقي الـ bugs ويبلّغ عنها، والـ testers هما اللي بيعملوه. الـ QA أوسع، بيمنع الـ defects، بيضمن إن الـ processes والـ standards والـ methodologies صح، وبيستخدم موديلات ISO/CMM.",
-    "الـ Small team تحت الـ development manager: تواصل سريع، بس الـ bug reports ممكن تتطنش. الـ Independent team تحت الـ project manager: الـ feedback بتاع الـ test بيتاخد في الاعتبار، بس الـ PM هو اللي بيقرر، وده خطر في المشاريع الحساسة (critical). الـ Test group اللي بيرفع تقاريره للـ executive management: QA team مستقل والـ quality reports بتوصل للـ senior management على طول.",
-    "Progress، stability، process compliance، quality evaluation effort، defect detection efficiency، defect removal rate، defect age profile، defect density، complexity."
+    "الـ Small team تحت الـ development manager: تواصل سريع، بس الـ bug reports ممكن تتطنش.<br>الـ Independent team تحت الـ project manager: الـ feedback بتاع الـ test بيتاخد في الاعتبار، بس الـ PM هو اللي بيقرر، وده خطر في المشاريع الحساسة (critical).<br>الـ Test group اللي بيرفع تقاريره للـ executive management: فيه QA team مستقل والـ quality reports بتوصل للـ senior management على طول.",
+    "الـ progress، والـ stability، والـ process compliance، والـ quality evaluation effort، والـ defect detection efficiency، والـ defect removal rate، والـ defect age profile، والـ defect density، والـ complexity."
    ],
    "quiz": [
     [
@@ -1343,13 +1343,13 @@ AR.qa = {
      "الـ Developing standard processes هو أول مثال من أمثلة مهام الـ QA في المحاضرة، يعني فعلًا بيتعمل تحت الـ SQA.",
      "عمل guidelines (للـ requirements والـ design والـ coding) ده من أمثلة مهام الـ QA في المحاضرة، يعني هو فعلًا SQA task.",
      "استخدام checklists لكل stage ده من أمثلة مهام الـ QA في المحاضرة، يعني هو فعلًا SQA task.",
-     "صح. اختيار الـ test implementation approach ده task 1 من مهام الـ software TESTING، مش من أمثلة مهام الـ QA (processes، guidelines، checklists، metrics) (L6, Tasks of testing)."
+     "صح. اختيار الـ test implementation approach ده task 1 من مهام الـ software TESTING، مش من أمثلة مهام الـ QA (زي الـ processes والـ guidelines والـ checklists والـ metrics) (L6, Tasks of testing)."
     ],
     [
      "الـ Process-focused و preventive (proactive) ده وصف الـ SQA؛ الـ SQC هو product-focused و detection-oriented.",
      "صح. الـ SQC بيركز على الـ product وهو reactive: بيكتشف الـ defects، بيقيّم quality الـ product ويستبعد الحاجات اللي مش مطابقة، أما الـ SQA فبيمنعها من الأول (L6, SQA vs SQC).",
      "إنك تحط standards وتتأكد إنها بتتطبق صح ده هدف الـ SQA؛ الـ SQC بيقيّم الـ product نفسه.",
-     "المحاضرة بتقارن بينهم: الـ SQA = process، prevention، proactive؛ الـ SQC = product، detection، reactive."
+     "المحاضرة بتقارن بينهم: الـ SQA بيركز على الـ process، وهدفه الـ prevention، وهو proactive؛ والـ SQC بيركز على الـ product، وهدفه الـ detection، وهو reactive."
     ],
     [
      "الـ Flexibility هي المجهود عشان نغير البرنامج.",
@@ -1413,7 +1413,7 @@ AR.qa = {
      "الـ Developing standard processes ده مثال على مهام الـ QA، مش واحدة من الـ 4 tasks بتوع الـ software testing.",
      "تحديد الـ quality metrics والـ criteria ده مثال على مهام الـ QA؛ مهام الـ testing هي اختيار الـ approach، تنفيذ الـ tests، الـ reports، والـ review meetings.",
      "عمل guidelines للـ requirements والـ design والـ coding ده مثال على مهام الـ QA، مش task من مهام الـ software testing.",
-     "صح. الـ 4 testing tasks هما: اختيار الـ test approach، تنفيذ الـ tests، تحضير الـ V&amp;V reports، وحضور الـ project و design review meetings، ودي task 4 (L6, Tasks of testing)."
+     "صح. الـ 4 testing tasks هما: اختيار الـ test approach، تنفيذ الـ tests، تحضير الـ verification والـ validation reports، وحضور الـ project و design review meetings، ودي task 4 (L6, Tasks of testing)."
     ],
     [
      "في الـ small team الـ testers بيرفعوا تقاريرهم للـ development manager.",
@@ -1425,13 +1425,13 @@ AR.qa = {
      "صح. الـ Process metrics بتقيس الـ development process.",
      "الـ Product metrics بتقيس الـ final product، زي حجم الـ code أو عدد الصفحات الموثقة.",
      "الـ Quality factors هي attributes زي الـ reliability والـ usability.",
-     "الـ Defect indicators (removal rate، age profile، density) بتعد الـ defects أو بتحدد مكانها؛ وقت الـ development والـ methodology دول process metrics."
+     "الـ Defect indicators (الـ removal rate والـ age profile والـ density) بتعد الـ defects أو بتحدد مكانها؛ وقت الـ development والـ methodology دول process metrics."
     ],
     [
      "الـ Coupling فعلًا واحد من الـ 9 common SQA metrics، جنب الـ cohesion، يعني موجود في اللستة.",
      "الـ Function point analysis فعلًا واحد من الـ 9 common SQA metrics المذكورة في المحاضرة.",
      "الـ Order of growth فعلًا واحد من الـ 9 common SQA metrics، ومكتوب قبل الـ source lines of code على طول.",
-     "صح. الـ 9 metrics هما code coverage، bugs per line، cyclomatic complexity، function points، classes and interfaces، cohesion، coupling، order of growth و SLOC؛ عدد الـ meetings مش منهم (L6)."
+     "صح. الـ 9 metrics هما الـ code coverage، والـ bugs per line، والـ cyclomatic complexity، والـ function points، والـ classes and interfaces، والـ cohesion، والـ coupling، والـ order of growth، والـ SLOC؛ عدد الـ meetings مش منهم (L6)."
     ],
     [
      "الـ Progress بيقيس الشغل اللي الـ developer عمله في كل phase، مش إذا كان ماشي على الـ procedures اللي اتوافق عليها ولا لأ.",
@@ -1470,12 +1470,12 @@ AR.qa = {
     {
      "h": "الـ CMM structure: الـ 6 components",
      "pts": [
-      "<b>1. الـ Maturity levels</b>: بتحدد الـ process capability بتاعة الـ organization. الـ CMM model فيه <b>خمس levels</b>:<br>• الـ initial level (Level 1) فيه processes ad-hoc و structure قليل جدًا؛<br>• والـ top level (Level 5) هو الحالة المثالية، الـ processes فيه بتتدار بشكل systematic، و optimized، وبتتحسن باستمرار.<br>التدرج المنظم ده بيساعد الـ organizations <b>تحسّن الـ process maturity بتاعتها مع الوقت</b>.",
-      "<b>2. الـ Process capability</b>: قدرة الـ organization إنها تحقق توقعات الـ quality بالـ processes الحالية بتاعتها؛ وبتساعد إننا <b>نتوقع</b> نتايج مشاريع الـ software الجاية، <b>وده بيضمن الـ consistency والـ reliability</b>.",
-      "<b>3. الـ Key Process Areas (KPA)</b>: مجموعات أنشطة مرتبطة ببعض بتحقق goals لما تتعمل مع بعض؛ وبتحدد الـ capability في كل level. مثال: الـ software project delivery planning.",
-      "<b>4. الـ Goals</b>: بتقيّم الـ practices الأساسية جوه الـ process area عشان نعرف هل الـ <b>organization أو الـ project</b> طبّقها بنجاح، <b>وبتوضح أهميتها والغرض منها</b>.",
-      "<b>5. الـ Common features</b>: خصائص بتوضح هل تطبيق الـ KPA ناجح ومستدام.",
-      "<b>6. الـ Key practices</b>: بتحدد الأفعال والـ infrastructure المطلوبين عشان يدعموا الـ KPA، <b>وده بيضمن إنها تتطبق بفعالية</b>. مثال: الـ software delivery schedule ماشي على procedure موثق."
+      "<b>(1) الـ Maturity levels</b>: بتحدد الـ process capability بتاعة الـ organization. الـ CMM model فيه <b>خمس levels</b>:<br>• الـ initial level (Level 1) فيه processes ad-hoc و structure قليل جدًا؛<br>• والـ top level (Level 5) هو الحالة المثالية، الـ processes فيه بتتدار بشكل systematic، و optimized، وبتتحسن باستمرار.<br>التدرج المنظم ده بيساعد الـ organizations <b>تحسّن الـ process maturity بتاعتها مع الوقت</b>.",
+      "<b>(2) الـ Process capability</b>: قدرة الـ organization إنها تحقق توقعات الـ quality بالـ processes الحالية بتاعتها؛ وبتساعد إننا <b>نتوقع</b> نتايج مشاريع الـ software الجاية، <b>وده بيضمن الـ consistency والـ reliability</b>.",
+      "<b>(3) الـ Key Process Areas (KPA)</b>: مجموعات أنشطة مرتبطة ببعض بتحقق goals لما تتعمل مع بعض؛ وبتحدد الـ capability في كل level. مثال: الـ software project delivery planning.",
+      "<b>(4) الـ Goals</b>: بتقيّم الـ practices الأساسية جوه الـ process area عشان نعرف هل الـ <b>organization أو الـ project</b> طبّقها بنجاح، <b>وبتوضح أهميتها والغرض منها</b>.",
+      "<b>(5) الـ Common features</b>: خصائص بتوضح هل تطبيق الـ KPA ناجح ومستدام.",
+      "<b>(6) الـ Key practices</b>: بتحدد الأفعال والـ infrastructure المطلوبين عشان يدعموا الـ KPA، <b>وده بيضمن إنها تتطبق بفعالية</b>. مثال: الـ software delivery schedule ماشي على procedure موثق."
      ]
     },
     {
@@ -1486,14 +1486,14 @@ AR.qa = {
       "<b>الـ Level 3 (Defined)</b>: processes standard <b>بتتعمل وبتتحسن مع الوقت</b>. <b>الـ management بيضمن إن الـ processes ثابتة على مستوى الـ organization كلها</b>، والـ project teams بتعدل الـ processes على مقاسها بناءً على الـ standards دي.",
       "<b>الـ Level 4 (Quantitatively Managed)</b>: الـ processes متحكم فيها بـ statistical و quantitative techniques، وده بيخلي الـ organizations <b>تتوقع وتدير أداء المشروع بدقة</b>. وده بيضمن <b>software quality و maintenance مستقرين</b> مع تقليل الـ variations.",
       "<b>الـ Level 5 (Optimizing)</b>: بيركز على الـ <b>continuous process improvement</b> عن طريق تطويرات incremental و innovative. الـ organizations في الـ level ده <b>بتحسّن الـ processes بتاعتها بشكل systematic</b>، وبتستخدم <b>quantitative goals</b> عشان تحرك التحسينات <b>وتحقق business objectives طويلة المدى</b>.",
-      "الشكل (الـ CMM levels): خمس ellipses فوق بعض من تحت لفوق، وبينهم أسهم طالعة لفوق:<br><b>Level 1: Initial (Inconsistent Management)</b><br>↑ سهم <bdi>\"Basic Management Control\"</bdi> (Level 1→2)<br><b>Level 2: Repeatable (Project Management)</b><br>↑ سهم <bdi>\"Process Definition\"</bdi> (Level 2→3)<br><b>Level 3: Defined (Process Management)</b><br>↑ سهم <bdi>\"Process Measurement\"</bdi> (Level 3→4)<br><b>Level 4: Managed (Capability Management)</b><br>↑ سهم <bdi>\"Process Control\"</bdi> (Level 4→5)<br><b>Level 5: Optimizing (Change Management)</b>.<br>الشكل كاتب الـ Level 4 <bdi>\"Managed\"</bdi> بس؛ أما كلام الـ slide والـ Table 1 فبيسموه <bdi>\"Quantitatively Managed\"</bdi>.",
-      "<b>Table 1: Capability Maturity Model Process Areas</b> (الـ Maturity Level: الـ Improvements Implemented):<br><b>5. Optimizing</b>: develop change infrastructure؛ assess and organize improvements؛ remove causes of defects.<br><b>4. Quantitatively Managed</b>: supervise processes quantitatively؛ create capability baselines.<br><b>3. Defined</b>: create enhancement infrastructure؛ identify required software processes؛ organize and manage processes؛ collect process-level data؛ provide organization-wide training؛ manage with non-software groups.<br><b>2. Repeatable</b>: plan and track projects؛ manage suppliers؛ manage product configurations؛ measure projects؛ assist and assure policy compliance.<br><b>1. Initial</b>: no required processes."
+      "الشكل (الـ CMM levels): خمس ellipses فوق بعض من تحت لفوق، وبينهم أسهم طالعة لفوق:<span class=\"ltr\"><b>Level 1: Initial (Inconsistent Management)</b></span>↑ سهم من Level 1 لـ Level 2 اسمه <bdi>\"Basic Management Control\"</bdi><span class=\"ltr\"><b>Level 2: Repeatable (Project Management)</b></span>↑ سهم من Level 2 لـ Level 3 اسمه <bdi>\"Process Definition\"</bdi><span class=\"ltr\"><b>Level 3: Defined (Process Management)</b></span>↑ سهم من Level 3 لـ Level 4 اسمه <bdi>\"Process Measurement\"</bdi><span class=\"ltr\"><b>Level 4: Managed (Capability Management)</b></span>↑ سهم من Level 4 لـ Level 5 اسمه <bdi>\"Process Control\"</bdi><span class=\"ltr\"><b>Level 5: Optimizing (Change Management)</b>.</span>الشكل كاتب الـ Level 4 <bdi>\"Managed\"</bdi> بس؛ أما كلام الـ slide والـ Table 1 فبيسموه <bdi>\"Quantitatively Managed\"</bdi>.",
+      "الـ <b>Table 1</b> (<bdi>Capability Maturity Model Process Areas</bdi>) بيقول لكل Maturity Level إيه الـ Improvements Implemented فيه:<span class=\"ltr\"><b>5. Optimizing</b>: develop change infrastructure; assess and organize improvements; remove causes of defects.</span><span class=\"ltr\"><b>4. Quantitatively Managed</b>: supervise processes quantitatively; create capability baselines.</span><span class=\"ltr\"><b>3. Defined</b>: create enhancement infrastructure; identify required software processes; organize and manage processes; collect process-level data; provide organization-wide training; manage with non-software groups.</span><span class=\"ltr\"><b>2. Repeatable</b>: plan and track projects; manage suppliers; manage product configurations; measure projects; assist and assure policy compliance.</span><span class=\"ltr\"><b>1. Initial</b>: no required processes.</span>"
      ]
     },
     {
      "h": "الـ Key Process Areas (KPA) وفوايد الـ CMM",
      "pts": [
-      "<b>جوه كل maturity level فيه Key Process Areas (KPA)</b> بتشرح الـ level ده، وكل KPA ليه <b>5 aspects</b>:<br>(1) الـ <b>Goals</b>: كل KPA بيحط كذا goal فيهم الـ objectives المختلفة اللي بتساعد الـ organization تطلع للـ CMM level اللي بعده<br>(2) الـ <b>Commitment</b>: متطلبات مختلفة لازم تتحقق عشان نوصل للـ goals المحددة<br>(3) الـ <b>Ability</b>: الأنشطة اللي بتتعمل عشان الـ organization تقدر تحقق الـ commitments<br>(4) الـ <b>Measurement</b>: <b>الأنشطة اللي بتتعمل لازم تتراقب</b>، وعشان كده فيه methods لازم نمشي عليها عشان ننفذ ده<br>(5) الـ <b>Verification</b>: methods مختلفة لازم نمشي عليها بتحدد الـ verification.",
+      "<b>جوه كل maturity level فيه Key Process Areas (KPA)</b> بتشرح الـ level ده، وكل KPA ليه <b>5 aspects</b>:<br>(1) الـ <b>Goals</b>: كل KPA بيحط كذا goal فيهم الـ objectives المختلفة اللي بتساعد الـ organization تطلع للـ CMM level اللي بعده<br>(2) الـ <b>Commitment</b>: متطلبات مختلفة لازم تتحقق عشان نوصل للـ goals المحددة<br>(3) الـ <b>Ability</b>: الأنشطة اللي بتتعمل عشان الـ organization تقدر تحقق الـ commitments<br>(4) الـ <b>Measurement</b>: <b>الأنشطة اللي بتتعمل لازم تتراقب</b>، وعشان كده فيه methods لازم نمشي عليها عشان ننفذ ده<br>(5) الـ <b>Verification</b>: فيه methods مختلفة لازم نمشي عليها بتحدد الـ verification.",
       "<b>فوايد الـ CMM</b>:<br>(1) بسيط وسهل يتحلل<br>(2) executives كتير عارفينه أصلًا<br>(3) بيتستخدم عشان نشرح مشاكل الـ IT الكبيرة للـ senior executives<br>(4) بيساعد نجيب funding للمشاريع (زي الـ enterprise data asset management، الـ metadata repository)<br>(5) الشركات الكبيرة والحكومات بيستخدموه عشان يقارنوا نفسهم بغيرهم."
      ]
     },
@@ -1523,21 +1523,21 @@ AR.qa = {
      "h": "الـ Software engineering standards والـ SPICE",
      "pts": [
       "• الـ Software engineering standards بتضمن إن الـ development والـ testing والـ maintenance بتوع الـ software بيتعملوا صح <b>عن طريق إننا نمشي على guidelines محددة</b>.<br>• <b>organizations مختلفة، منها جهات دولية ومحلية، بتعمل الـ Software Quality Assurance (SQA) standards وبتفرض تطبيقها.</b><br>• الـ organizations بتتحول أكتر وأكتر من standards <b>محلية لـ دولية</b>.<br>• الـ <b>IEEE والـ IEEE Computer Society</b> في مقدمة الحركة دي؛ ومن <b>1976</b> الـ IEEE ساهم جامد في الـ standardization، وده وصّل لـ <b>IEEE Software Engineering Standard Collection</b>، اللي <b>بقت أساس لـ international project process standards كتير</b>.",
-      "الـ <b>SPICE</b> = <b>Software Process Improvement for Capability Determination</b>؛ الـ SPICE project والـ <b>ISO/IEC 15504</b> مبادرات مشتركة بين الـ ISO والـ IEC عشان يعملوا methodology standard لتقييم الـ software process. اتقدم سنة <b>1993</b>، والـ SPICE هدفه <b>يحسّن الـ international software process standards</b>.",
+      "الـ <b>SPICE</b> اختصار لـ <b>Software Process Improvement for Capability Determination</b>.<br>الـ SPICE project والـ <b>ISO/IEC 15504</b> مبادرات مشتركة بين الـ ISO والـ IEC عشان يعملوا methodology standard لتقييم الـ software process. اتقدم سنة <b>1993</b>، والـ SPICE هدفه <b>يحسّن الـ international software process standards</b>.",
       "<b>الـ 3 objectives بتوع الـ SPICE</b>:<br>(1) نعمل standard framework لتقييم الـ software process<br>(2) نعمل organizational assessments للـ standards الجديدة<br>(3) نسهّل تبني تقييم الـ software process عالميًا في الصناعة."
      ]
     }
    ],
    "cards": [
-    "Capability Maturity Model: standard framework لتقييم وتحسين الـ maturity بتاعة الـ development process في شركة الـ software.",
+    "الـ Capability Maturity Model، وهو standard framework لتقييم وتحسين الـ maturity بتاعة الـ development process في شركة الـ software.",
     "الـ SEI و Carnegie Mellon University، تحت U.S. Department of Defense.",
     "خمسة، ومينفعش ننط levels.",
-    "Initial، Repeatable، Defined، Quantitatively Managed، Optimizing.",
-    "Initial: ad-hoc، unstructured، reactive. مفيش processes مطلوبة.",
+    "الـ Initial والـ Repeatable والـ Defined والـ Quantitatively Managed والـ Optimizing.",
+    "الـ Initial: الـ processes بتبقى ad-hoc و unstructured و reactive، ومفيش processes مطلوبة.",
     "Quantitatively managed: الـ processes متحكم فيها بـ statistical/quantitative techniques؛ و capability baselines.",
-    "Optimizing: continuous process improvement؛ وبنشيل أسباب الـ defects.",
+    "الـ Optimizing: فيه continuous process improvement، وبنشيل أسباب الـ defects.",
     "Key Process Area: أنشطة مرتبطة ببعض بتحقق goals مع بعض (زي الـ delivery planning).",
-    "Goals، commitment، ability، measurement، verification.",
+    "الـ goals والـ commitment والـ ability والـ measurement والـ verification.",
     "الكلمة اليونانية <bdi>\"isos\"</bdi> = متساوي (equal).",
     "20.",
     "Control of non-conforming product (الـ element رقم 13).",
@@ -1546,9 +1546,9 @@ AR.qa = {
     "1976 (الـ IEEE Software Engineering Standard Collection)."
    ],
    "qa": [
-    "الـ Level 1 Initial: الـ processes بتبقى unstructured و reactive ومش ثابتة، وده بيخلي الـ project management مش مستقر؛ والـ goals بتتحقق بشكل مش مضمون. الـ Level 2 Repeatable: الـ basic project management practices بتدي نجاح بيتكرر؛ الـ organizations بتعمل project planning و requirement control و product modifications، وده بيضمن إدارة أحسن للتكلفة والـ schedule. الـ Level 3 Defined: processes standard بتتعمل وبتتحسن مع الوقت؛ الـ management بيضمن إنها ثابتة على مستوى الـ organization كلها، والـ teams بتعدلها على مقاسها. الـ Level 4 Quantitatively Managed: تحكم statistical و quantitative؛ أداء المشروع بيتوقع وبيتدار بدقة، و quality مستقرة و variation قليلة. الـ Level 5 Optimizing: تحسين مستمر incremental و innovative بـ quantitative goals عشان نحقق business objectives طويلة المدى.",
-    "Management responsibility، quality systems، contract review، design control، documentation and data control، purchasing، customer-supplied product control، product identification and traceability، process control، inspection and testing، inspection/measuring equipment، inspection and test status، control of non-conforming product، corrective and preventive action، handling/storage/packaging/delivery، quality records، internal quality audits، training، servicing، statistical techniques.",
-    "Customer focus، leadership، involvement of people، process approach، system approach to management، continuous improvement، factual decision making، mutually beneficial supplier relationships.",
+    "الـ Level 1 Initial: الـ processes بتبقى unstructured و reactive ومش ثابتة، وده بيخلي الـ project management مش مستقر؛ والـ goals بتتحقق بشكل مش مضمون.<br>الـ Level 2 Repeatable: الـ basic project management practices بتدي نجاح بيتكرر؛ الـ organizations بتعمل project planning و requirement control و product modifications، وده بيضمن إدارة أحسن للتكلفة والـ schedule.<br>الـ Level 3 Defined: فيه processes standard بتتعمل وبتتحسن مع الوقت؛ الـ management بيضمن إنها ثابتة على مستوى الـ organization كلها، والـ teams بتعدلها على مقاسها.<br>الـ Level 4 Quantitatively Managed: تحكم statistical و quantitative؛ أداء المشروع بيتوقع وبيتدار بدقة، و quality مستقرة و variation قليلة.<br>الـ Level 5 Optimizing: تحسين مستمر incremental و innovative بـ quantitative goals عشان نحقق business objectives طويلة المدى.",
+    "الـ 20 element هما:<span class=\"ltr\">Management responsibility, quality systems, contract review, design control, documentation and data control, purchasing, customer-supplied product control, product identification and traceability, process control, inspection and testing, inspection/measuring equipment, inspection and test status, control of non-conforming product, corrective and preventive action, handling/storage/packaging/delivery, quality records, internal quality audits, training, servicing, statistical techniques.</span>",
+    "الـ 8 principles هما:<span class=\"ltr\">Customer focus, leadership, involvement of people, process approach, system approach to management, continuous improvement, factual decision making, mutually beneficial supplier relationships.</span>",
     "نعمل standard framework لتقييم الـ software process؛ نعمل organizational assessments للـ standards الجديدة؛ ونسهّل تبني تقييم الـ software process عالميًا في الصناعة.",
     "بسيط وسهل يتحلل؛ الـ executives عارفينه؛ بيشرح مشاكل الـ IT للـ senior executives؛ بيساعد نجيب funding للمبادرات المهمة؛ والشركات الكبيرة والحكومات بيستخدموه عشان يعملوا benchmark لنفسهم."
    ],
@@ -1556,12 +1556,12 @@ AR.qa = {
     [
      "صح. كلام الـ summary: <bdi>«CMM is the widely used and preferred software method of evaluation»</bdi>.",
      "ده quality standard عام (generic)، مش طريقة التقييم المفضلة.",
-     "الـ Six Sigma ده statistical و data-driven methodology لتقليل الـ defects والـ variation (DMAIC، L8)، مش هو الـ software evaluation method المفضل.",
+     "الـ Six Sigma ده statistical و data-driven methodology لتقليل الـ defects والـ variation (الـ DMAIC في L8)، مش هو الـ software evaluation method المفضل.",
      "مبادرة لتقييم الـ process، بس مش هي الإجابة هنا."
     ],
     [
-     "3 levels قليل؛ الـ CMM ليه 5: Initial، Repeatable، Defined، Quantitatively Managed و Optimizing (L7).",
-     "صح. Initial، Repeatable، Defined، Quantitatively Managed، Optimizing.",
+     "الـ 3 levels دول قليلين؛ الـ CMM ليه 5 levels (L7):<span class=\"ltr\">Initial, Repeatable, Defined, Quantitatively Managed, Optimizing</span>",
+     "صح، الـ 5 levels هما:<span class=\"ltr\">Initial, Repeatable, Defined, Quantitatively Managed, Optimizing</span>",
      "4 levels ناقصهم واحد؛ الـ CMM ده incremental model من 5 levels، وآخرهم Level 5 Optimizing (L7).",
      "مافيش level سادس؛ الـ CMM بيقف عند Level 5 Optimizing. الـ 6 ده عدد الـ CMM structure components، مش الـ levels."
     ],
@@ -1572,10 +1572,10 @@ AR.qa = {
      "الـ SPICE (ISO/IEC 15504) متعرّف بـ 3 objectives للـ software process assessment، مش 20 element."
     ],
     [
-     "صح. الـ SPICE = Software Process Improvement for Capability Determination، وهو initiative مشتركة بين الـ ISO والـ IEC (ISO/IEC 15504) للـ software process assessment (L7).",
-     "<bdi>«Capability Evaluation»</bdi> شايلة معظم الاسم، والمحاضرة بتقول Determination مش Evaluation؛ الـ SPICE = Software Process Improvement for Capability Determination.",
+     "صح. الـ SPICE اختصار لـ Software Process Improvement for Capability Determination، وهو initiative مشتركة بين الـ ISO والـ IEC (ISO/IEC 15504) للـ software process assessment (L7).",
+     "<bdi>«Capability Evaluation»</bdi> شايلة معظم الاسم، والمحاضرة بتقول Determination مش Evaluation؛ والـ SPICE اختصار لـ Software Process Improvement for Capability Determination.",
      "الـ SPICE بتقول Process مش Procedure، والاختيار ده شايل <bdi>«for Capability Determination»</bdi>؛ الاسم الكامل هو Software Process Improvement for Capability Determination.",
-     "كاتبة Procedure بدل Process وشايلة <bdi>«Capability»</bdi>؛ الـ SPICE = Software Process Improvement for Capability Determination."
+     "كاتبة Procedure بدل Process وشايلة <bdi>«Capability»</bdi>؛ والـ SPICE اختصار لـ Software Process Improvement for Capability Determination."
     ],
     [
      "1985 بدري قوي؛ المحاضرة بتقول إن الـ SPICE initiative (ISO/IEC 15504) كانت سنة 1993.",
@@ -1586,17 +1586,17 @@ AR.qa = {
     [
      "صح. الاسم جاي من الكلمة اليونانية <bdi>\"isos\"</bdi> = متساوي.",
      "الـ ISO مش مقصورة على الـ software: هي الـ International Organization for Standardization، والـ ISO 9000 بيتطبق على أي organization.",
-     "الـ ISO هيئة دولية، مش هندية؛ هي الـ International Organization for Standardization (من الكلمة اليوناني isos = equal).",
+     "الـ ISO هيئة دولية، مش هندية؛ هي الـ International Organization for Standardization (من الكلمة اليوناني isos، ومعناها equal).",
      "الـ ISO مش هندية؛ معناها International Organization for Standardization، والـ ISO 9000 standards بتوعها معترف بيها في العالم كله."
     ],
     [
-     "الـ Level 2 Repeatable بيضيف basic project management (planning، tracking، requirement control)، مش statistical control للـ processes.",
+     "الـ Level 2 Repeatable بيضيف basic project management (planning و tracking و requirement control)، مش statistical control للـ processes.",
      "الـ Level 3 Defined بيعمل standardization للـ processes على مستوى الـ organization كلها؛ الـ statistical والـ quantitative control بييجي في Level 4.",
      "صح. في Level 4 Quantitatively Managed، الـ processes بتتحكم فيها بـ statistical و quantitative techniques عشان نتوقع الـ performance ونقلل الـ variation (L7, Five levels).",
      "تحسين مستمر (بيستخدم quantitative goals، بس التحكم بالـ statistics ده level 4)."
     ],
     [
-     "الـ Commitment (الـ requirements اللي لازم تتحقق عشان نوصل للـ goals) فعلًا واحد من الـ 5 KPA aspects: goals، commitment، ability، measurement، verification.",
+     "الـ Commitment (الـ requirements اللي لازم تتحقق عشان نوصل للـ goals) فعلًا واحد من الـ 5 KPA aspects، وهما الـ goals والـ commitment والـ ability والـ measurement والـ verification.",
      "الـ Ability (الـ activities اللي بتخليك تقدر تنفذ الـ commitments) فعلًا واحد من الـ 5 KPA aspects.",
      "صح. الـ aspects هي goals و commitment و ability و measurement و verification.",
      "الـ Verification (الـ methods اللي بتحدد إزاي نعمل verification) فعلًا هو خامس KPA aspect، بعد الـ goals والـ commitment والـ ability والـ measurement."
@@ -1607,7 +1607,7 @@ AR.qa = {
     ],
     [
      "الـ Purchasing (element 6) بيحط requirements للـ suppliers؛ الـ procedures بتاعة الـ rejected materials هي element 13، الـ control of non-conforming product.",
-     "صح. Element 13 في الـ ISO 9000، الـ control of non-conforming product، بيطلب procedures عشان نحدد الحاجات المرفوضة ونفصلها وندير التعامل معاها (L7, 20 elements).",
+     "صح. الـ Element 13 في الـ ISO 9000 هو الـ control of non-conforming product، وبيطلب procedures عشان نحدد الحاجات المرفوضة ونفصلها وندير التعامل معاها (L7, 20 elements).",
      "الـ Servicing (element 19) بيغطي الـ support بعد التسليم، مش التعامل مع الـ rejected materials.",
      "الـ Training (element 18) بيحتفظ بسجلات مؤهلات الموظفين؛ الـ rejected materials تبع الـ control of non-conforming product."
     ],
@@ -1641,7 +1641,7 @@ AR.qa = {
      "الـ Basic management control ده الـ label اللي على السهم من Level 1 لـ Level 2، مش من Level 2 لـ Level 3.",
      "الـ Process measurement ده label السهم من Level 3 لـ Level 4، يعني خطوة لفوق كمان.",
      "الـ Process control ده label آخر سهم، من Level 4 لـ Level 5.",
-     "صح. 1→2 basic management control، 2→3 process definition، 3→4 process measurement، 4→5 process control."
+     "صح. الأسهم بين الـ levels:<span class=\"ltr\">1→2 basic management control, 2→3 process definition, 3→4 process measurement, 4→5 process control.</span>"
     ],
     [
      "الـ Maturity levels هي الـ 5 مراحل اللي بتحدد الـ process capability.",
@@ -1660,13 +1660,13 @@ AR.qa = {
      "صح. الـ organizations بتتقدم واحدة واحدة ومينفعش تنط levels."
     ],
     [
-     "صح. Element 14، الـ corrective &amp; preventive action، بيتعامل مع إننا نلاقي الـ root causes بتاعة المشاكل عشان ماتتكررش (L7, 20 elements of ISO 9000).",
+     "صح. الـ Element 14، وهو الـ corrective &amp; preventive action، بيتعامل مع إننا نلاقي الـ root causes بتاعة المشاكل عشان ماتتكررش (L7, 20 elements of ISO 9000).",
      "الـ Control of non-conforming product (element 13) بيتعامل مع الحاجات المرفوضة اللي اتلاقت خلاص، مش مع الـ root cause اللي بيمنع التكرار.",
      "الـ Audits بتختبر الـ quality system؛ أما الـ root-cause action فده element رقم 14.",
      "الـ Statistical techniques (element 20) معناها استخدام tools زي الـ control charts، مش التعامل مع الـ root cause بتاع الـ defect."
     ],
     [
-     "صح. الـ 8 principles بتوع الـ ISO هما customer focus، leadership، involvement of people، process approach، system approach، continuous improvement، factual decisions و supplier relations؛ الـ profit مش منهم (L7).",
+     "صح. الـ 8 principles بتوع الـ ISO هما:<span class=\"ltr\">customer focus, leadership, involvement of people, process approach, system approach, continuous improvement, factual decisions and supplier relations</span>والـ profit مش منهم (L7).",
      "الـ Customer focus فعلًا واحد من الـ 8 quality management principles بتوع الـ ISO (أول واحد في اللستة).",
      "الـ Factual decision making فعلًا واحد من الـ 8 quality management principles بتوع الـ ISO.",
      "الـ Mutually beneficial supplier relationships فعلًا واحد من الـ 8 principles بتوع الـ ISO (آخر واحد في اللستة)."
@@ -1702,13 +1702,13 @@ AR.qa = {
      "h": "الـ 3.4 مقابل الـ 0.002 ppm",
      "pts": [
       "الشكل بيوضح المنحنى وهو في النص (centred): الـ ±6σ بتسيب 0.002 ppm بس بره. أما الرقم المشهور <b>3.4 defects per million</b> فجاي من إننا بنسمح للـ process mean إنه <b>يزحف 1.5σ (drift)</b> على المدى الطويل (6 − 1.5 = 4.5σ من ناحية واحدة). النقطة الأخيرة دي معلومة عامة عن الـ Six Sigma، مش موجودة على الـ slide.",
-      "<b>Background formula</b> (مش على الـ slides، مفيدة لو اتسألت): DPMO = defects ÷ (units × opportunities per unit) × 1,000,000. مثال: 25 defects في 500 unit وكل واحدة فيها 10 opportunities → 25 ÷ 5,000 × 10⁶ = <b>5,000 DPMO</b> (yield 99.5%، يعني حوالي 4.1σ مع الـ shift بتاع 1.5σ). عند 6σ، الـ DPMO = 3.4."
+      "<b>Background formula</b> (مش على الـ slides، مفيدة لو اتسألت):<span class=\"ltr\">DPMO = defects ÷ (units × opportunities per unit) × 1,000,000</span>مثال: 25 defects في 500 unit، وكل واحدة فيها 10 opportunities:<span class=\"ltr\">25 ÷ 5,000 × 10⁶ = <b>5,000 DPMO</b></span>يعني الـ yield بيبقى 99.5%، أو حوالي 4.1σ مع الـ shift بتاع 1.5σ. وعند 6σ، الـ DPMO بيبقى 3.4."
      ]
     },
     {
      "h": "الـ DMAIC methodology",
      "pts": [
-      "<b>الـ 6 Sigma Objective</b>: الـ methodology بتاعة الـ 6 Sigma هي <b>DMAIC</b>: Define و Measure و Analyze و Improve و Control.",
+      "<b>الـ 6 Sigma Objective</b>: الـ methodology بتاعة الـ 6 Sigma هي <b>DMAIC</b>، يعني Define و Measure و Analyze و Improve و Control.",
       "<b>D – Define</b>: نحدد إيه اللي محتاج <b>يتحسن ويتطور في شغل الـ organization وأنشطتها</b> عن طريق إننا نحدد بدقة المشاكل <b>اللي بتعطّل التحسين ده</b>. الـ problem statement المفروض يشمل <b>مستوى (level)</b> المشكلة، و<b>مكانها (location)</b>، و<b>تأثيرها المالي (financial impact)</b>. وكمان <b>نكوّن team</b> يحل المشكلة.",
       "<b>M – Measure</b>: بتركز أساسًا على إننا نخطط وننفذ قياس الأداء مقارنة بمتطلبات العملاء وتوقعاتهم، على أساس مجموعة criteria لقياس الـ defects عن طريق الـ statistical control بـ <b>أدوات علمية وإحصائية مختلفة (6 σ)</b>.",
       "<b>A – Analyze</b>: نحلل الـ data اللي اتجمعت بهدف إننا نحدد الـ <b>root causes</b> لكل المشاكل <b>والعوائق اللي قدام التحسين</b>، عن طريق إننا نحلل سلسلة أسباب الفشل، وبعدين نرتبها حسب تأثيرها، ونصنفها، وبعدين نتحكم فيها وندير.",
@@ -1720,7 +1720,7 @@ AR.qa = {
      "h": "الـ DMADV methodology",
      "pts": [
       "الـ slide كمان بتعرض الـ <b>DMADV</b> (Define و Measure و Analyze و Design و Verify). ‡ (مش في الـ slides) الـ DMADV بيتستخدم لتصميم processes/products <b>جديدة</b>؛ أما الـ DMAIC فبيحسّن الـ processes <b>الموجودة</b>.",
-      "الشكل (DMADV Methodology): خمس أسهم مقوسة عاملين دورة حوالين دايرة في النص مكتوب فيها <bdi>\"DMADV\"</bdi>: <b>Define</b> → <b>Measure</b> → <b>Analyze</b> → <b>Design</b> → <b>Verify</b> → وترجع لـ Define تاني. الشكل ده مغطي جزء من شكل DMAIC وراه، والظاهر منه مكتوب <bdi>\"Control: Maint… soluti…\"</bdi> و <bdi>\"Improve: Implement … the solution\"</bdi>."
+      "الشكل (DMADV Methodology): خمس أسهم مقوسة عاملين دورة حوالين دايرة في النص مكتوب فيها <bdi>\"DMADV\"</bdi>:<span class=\"ltr\"><b>Define</b> → <b>Measure</b> → <b>Analyze</b> → <b>Design</b> → <b>Verify</b> →</span>وبعدها الدورة بترجع لـ Define تاني. الشكل ده مغطي جزء من شكل DMAIC وراه، والظاهر منه مكتوب <bdi>\"Control: Maint… soluti…\"</bdi> و <bdi>\"Improve: Implement … the solution\"</bdi>."
      ]
     },
     {
@@ -1733,7 +1733,7 @@ AR.qa = {
     {
      "h": "حالة عملية: حالات الرسوب في الشهادة الإعدادية",
      "pts": [
-      "جدول الـ slide: <b>Six Sigma for failure cases in the preparatory certificate</b> (عناوين الأعمدة على الـ slide بالعربي: المواد، المتوسط الحسابي، الإنحراف المعياري؛ وصف المؤشر الكلي مكتوب bold).",
+      "عنوان جدول الـ slide هو:<span class=\"ltr\"><b>Six Sigma for failure cases in the preparatory certificate</b></span>(عناوين الأعمدة على الـ slide بالعربي: المواد، المتوسط الحسابي، الإنحراف المعياري؛ وصف المؤشر الكلي مكتوب bold).",
       "جدول فيه 10 مواد (X1–X10) بيدي لكل مادة الـ mean والـ standard deviation وقيمة <bdi>\"Six sigma\"</bdi>. عمود الـ Six Sigma هو <b>6 × standard deviation</b>: مثلًا X1: 6 × 1.22 = 7.32؛ X2: 6 × 0.98 = 5.88؛ الإجمالي: 6 × 1.07 = 6.42 (الـ mean الإجمالي 2.99).",
       "تطبيق الـ Six Sigma methodology، واللي ممكن نلخصه كده:<br>• <b>Define</b>: نحدد الأسباب دي؛<br>• بعدين <b>Measure</b>: نقيس تأثير حجم الأسباب دي؛<br>• بعدين <b>Analyze</b>: المصادر والعناصر وغيرها؛<br>• بعدين <b>Improve</b>: <b>نطلّع حلول مناسبة من خلال الخطوات اللي قبلها (DMAIC)</b>، وده مفيد إنه يقلل حالات الرسوب وبالتالي يحسّن ويزود مستوى النجاح؛<br>• وفي الآخر <b>Control</b>: <b>نراقب عمليات التحسين باستمرار</b>."
      ]
@@ -1741,7 +1741,7 @@ AR.qa = {
     {
      "h": "الـ Six Sigma belts (مستويات الـ certification)",
      "pts": [
-      "الشكل (<b>Levels of Six Sigma Certification</b>): راجل شايل شنطة طالع على سلم ناحية target فيه سهم في النص. الدرجات من تحت لفوق:<br>• <b>Step 1: White Belt</b><br>• <b>Step 2: Yellow Belt</b><br>• <b>Step 3: Green Belt</b><br>• <b>Step 4: Black Belt</b><br>• <b>Step 5: Master Black Belt</b> (آخر درجة، جنب الـ target)."
+      "الشكل (<b>Levels of Six Sigma Certification</b>): راجل شايل شنطة طالع على سلم ناحية target فيه سهم في النص. الدرجات من تحت لفوق:<br>• الدرجة الأولى (Step 1): <b>White Belt</b><br>• الدرجة التانية (Step 2): <b>Yellow Belt</b><br>• الدرجة التالتة (Step 3): <b>Green Belt</b><br>• الدرجة الرابعة (Step 4): <b>Black Belt</b><br>• الدرجة الخامسة (Step 5): <b>Master Black Belt</b> (آخر درجة، جنب الـ target)."
      ]
     },
     {
@@ -1755,8 +1755,8 @@ AR.qa = {
     "3.4 defects لكل مليون opportunity أو أقل (الهدف: zero defects).",
     "الـ Standard deviation = الجذر التربيعي للـ variance.",
     "أواخر السبعينات وأوائل التمانينات.",
-    "Define، Measure، Analyze، Improve، Control.",
-    "Define، Measure، Analyze، Design، Verify (‡ مش في الـ slides: للتصميمات الجديدة).",
+    "Define و Measure و Analyze و Improve و Control.",
+    "Define و Measure و Analyze و Design و Verify (‡ مش في الـ slides: للتصميمات الجديدة).",
     "تحديد المشكلة بدقة (الـ level، الـ location، الـ financial impact) وتكوين team.",
     "نلاقي الـ root causes، نرتبها حسب التأثير، نصنفها، ونتحكم فيها.",
     "نغير الـ processes؛ نجرب الحلول على sample من المنتجات؛ ونصحح.",
@@ -1769,7 +1769,7 @@ AR.qa = {
     "Defects ÷ (units × opportunities) × 1,000,000."
    ],
    "qa": [
-    "الـ Six Sigma هو statistical management methodology بيقلل الـ process variation لـ 3.4 defects لكل مليون أو أقل، وهدفه zero defects ورضا العميل. بيستخدم الـ DMAIC: Define المشكلة (الـ level، الـ location، الـ financial impact) ونكوّن team؛ Measure الأداء مقارنة بمتطلبات العملاء بـ statistical tools؛ Analyze الـ data عشان نلاقي الـ root causes ونرتبها؛ Improve الـ processes ونجرب الحلول على sample؛ Control بالمتابعة المستمرة وتصحيح الانحرافات.",
+    "الـ Six Sigma هو statistical management methodology بيقلل الـ process variation لـ 3.4 defects لكل مليون أو أقل، وهدفه zero defects ورضا العميل. بيستخدم الـ DMAIC:<br>• الـ <b>Define</b>: نحدد المشكلة (الـ level، الـ location، الـ financial impact) ونكوّن team.<br>• الـ <b>Measure</b>: نقيس الأداء مقارنة بمتطلبات العملاء بـ statistical tools.<br>• الـ <b>Analyze</b>: نحلل الـ data عشان نلاقي الـ root causes ونرتبها.<br>• الـ <b>Improve</b>: نحسّن الـ processes ونجرب الحلول على sample.<br>• الـ <b>Control</b>: بالمتابعة المستمرة وتصحيح الانحرافات.",
     "التركيز على العملاء؛ قرارات مبنية على حقايق و data دقيقة؛ التركيز على العمليات الداخلية؛ إدارة فعالة مبنية على التخطيط المسبق؛ teamwork تعاوني من غير منافسة.",
     "الـ Yellow: كل الموظفين. الـ Green: الموظفين التنفيذيين. الـ Black: الإدارة الوسطى والعليا. الـ Master Black: الإدارة العليا. (والشكل كمان بيبدأ بـ White Belt.)",
     "DPMO = 25 / (500 x 10) x 1,000,000 = 25 / 5,000 x 1,000,000 = 5,000 DPMO، يعني حوالي 4.1 sigma. ده تمرين background، مش على الـ slides."
@@ -1789,7 +1789,7 @@ AR.qa = {
     ],
     [
      "الـ M والـ A بس اللي صح؛ الـ D معناها Define (مش Design)، والـ I معناها Improve (مش Implement)، والـ C معناها Control (مش Check).",
-     "صح. الـ DMAIC = Define, Measure, Analyze, Improve, Control، ودي طريقة الـ Six Sigma (‡ لتحسين الـ processes الموجودة، مش في الـ slides) (L8, DMAIC).",
+     "صح. الـ DMAIC اختصار لـ Define و Measure و Analyze و Improve و Control، ودي طريقة الـ Six Sigma (‡ لتحسين الـ processes الموجودة، مش في الـ slides) (L8, DMAIC).",
      "الـ D والـ C بس اللي صح؛ الـ M معناها Measure (مش Manage)، والـ A معناها Analyze (مش Audit)، والـ I معناها Improve (مش Inspect).",
      "الـ D معناها Define (مش Develop) والـ C معناها Control (مش Close)؛ وخلي بالك إن آخر phase في الـ Six Sigma عمرها ما بتوقف المراقبة، فمش ممكن تبقى <bdi>«close»</bdi>."
     ],
@@ -1831,7 +1831,7 @@ AR.qa = {
     ],
     [
      "نسيت الـ 10 opportunities لكل unit (25/500 × 10⁶).",
-     "صح. الـ DPMO = defects ÷ (units × opportunities) × 10⁶ = 25 ÷ (500 × 10) × 10⁶ = 25 ÷ 5,000 × 10⁶ = 5,000 (L8 notes, background formula).",
+     "صح. الحساب:<span class=\"ltr\">DPMO = defects ÷ (units × opportunities) × 10⁶ = 25 ÷ (500 × 10) × 10⁶ = 25 ÷ 5,000 × 10⁶ = 5,000</span>والمصدر هو (L8 notes, background formula).",
      "الـ 500 أصغر من الإجابة بعشر مرات (زي لو ضربت في 10⁵ بدل 10⁶): الصح 25 ÷ 5,000 × 1,000,000 = 5,000.",
      "الـ 3.4 ده الـ target DPMO بتاع الـ Six Sigma، مش قيمة الـ process دي؛ الحساب: 25 ÷ 5,000 × 10⁶ = 5,000."
     ],
@@ -1868,7 +1868,7 @@ AR.qa = {
      "الـ Define بيحدد المشكلة وبيكوّن الـ team."
     ],
     [
-     "الـ DMAIC (Define, Measure, Analyze, Improve, Control) بيحسّن الـ processes <b>الموجودة</b>؛ أما الـ design الجديد فبيستخدم الـ DMADV (‡ مش في الـ slides).",
+     "الـ DMAIC (Define و Measure و Analyze و Improve و Control) بيحسّن الـ processes <b>الموجودة</b>؛ أما الـ design الجديد فبيستخدم الـ DMADV (‡ مش في الـ slides).",
      "الـ ISO 9000 ده quality standard، مش Six Sigma approach.",
      "الـ CMM ده maturity model، مش Six Sigma approach.",
      "صح. الـ DMADV لتصميم processes/products جديدة (‡ مش في الـ slides؛ الـ slide بتعرض دورة الـ DMADV بس)."
@@ -1896,7 +1896,7 @@ AR.qa = {
      "الشكل بيقول إن 99.9999998% جوه الـ ±6σ، يعني 0.002 ppm بره."
     ],
     [
-     "صح. Define الأسباب → Measure تأثيرها → Analyze المصادر → Improve → Control.",
+     "صح. الترتيب:<br>(1) الـ <b>Define</b>: نحدد الأسباب.<br>(2) الـ <b>Measure</b>: نقيس تأثيرها.<br>(3) الـ <b>Analyze</b>: نحلل المصادر.<br>(4) الـ <b>Improve</b>.<br>(5) الـ <b>Control</b>.",
      "في الـ case study الـ Define بيحدد أسباب الرسوب؛ أما قياس حجم تأثيرها فده الخطوة اللي بعدها، الـ Measure.",
      "الـ Improve بيطلّع حلول لأسباب الرسوب؛ وده بييجي بعد ما تأثيرها يتقاس ومصادرها تتحلل.",
      "الـ Control هو آخر خطوة، المتابعة المستمرة بعد تطبيق الحلول، مش قياس تأثير الأسباب."
