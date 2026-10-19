@@ -45,7 +45,8 @@ AR.compiler = {
      "pts": [
       "الـ semantics بتاعة البرنامج هي <b>\"معناه\"</b>، عكس الـ syntax اللي هو التركيب. الـ semantics بتحدد جزء من سلوك البرنامج وقت التشغيل <b>قبل</b> ما يتنفّذ.",
       "الـ <b>Static semantics</b>: الـ declarations والـ type checking.",
-      "الـ <b>Attributes</b>: معلومات زيادة الـ semantic analyzer بيحسبها. والنتيجة هي الـ <b>annotated syntax tree</b>: <code>a</code> = array of integer، <code>index</code> = integer، <code>4</code> و <code>2</code> = integer، الـ subscript-expression = integer، الـ additive-expression = integer."
+      "الـ <b>Attributes</b>: معلومات زيادة الـ semantic analyzer بيحسبها. والنتيجة هي الـ <b>annotated syntax tree</b>: <code>a</code> = array of integer، <code>index</code> = integer، <code>4</code> و <code>2</code> = integer، الـ subscript-expression = integer، الـ additive-expression = integer.",
+      "شكل (slide 10, The Annotated Syntax Tree): الـ syntax tree بتاع <code>a[index]=4+2</code> وتحت كل node الـ attribute بتاعها. الـ <b>Assign-expression</b> ليها 2 children: <b>subscript-expression</b> (integer) و <b>additive-expression</b> (integer). الـ subscript-expression → identifier <code>a</code> (array of integer) و identifier <code>index</code> (integer). الـ additive-expression → number <code>4</code> (integer) و number <code>2</code> (integer)."
      ]
     },
     {
@@ -61,7 +62,7 @@ AR.compiler = {
     {
      "h": "5) الـ Code generator و 6) الـ target code optimizer",
      "pts": [
-      "الـ <b>code generator</b> بياخد الـ intermediate code (IR) ويطلّع كود للـ <b>target machine</b>. هنا <b>خصائص الـ target machine</b> بتبقى العامل الأساسي: الـ instructions بتاعتها وطريقة تمثيل الداتا. المثال بيستخدم assembly language افتراضية (MUL R0,2 عشان الـ integer حجمه 2 bytes).",
+      "الـ <b>code generator</b> بياخد الـ intermediate code (IR) ويطلّع كود للـ <b>target machine</b>. هنا <b>خصائص الـ target machine</b> بتبقى العامل الأساسي: الـ instructions بتاعتها وطريقة تمثيل الداتا. المثال code sequence بـ assembly language افتراضية (‡ MUL R0,2 عشان الـ integer معتبر حجمه 2 bytes على الجهاز ده؛ السلايد مش بيقول السبب).",
       "الـ <b>target code optimizer</b> بيحسّن الكود اللي اتولّد: <b>اختيار الـ address modes</b>، <b>استبدال instructions</b> (الضرب في 2 يبقى SHL، يعني shift left) و <b>شيل الـ instructions الزيادة (redundant)</b>."
      ]
     },
@@ -254,12 +255,12 @@ AR.compiler = {
      "ده بيعد الـ identifiers والأرقام وoperator واحد بس. الأقواس والـ = والـ + كلهم tokens برضه.",
      "صح. a، [، index، ]، =، 4، +، 2: identifier، left bracket، identifier، right bracket، assignment، number، plus sign، number.",
      "كده نسيت القوسين، والمحاضرة بتعدّهم tokens منفصلة.",
-     "ده بيعد حروف \"index\" لوحدها. الـ scanner بيجمّع i-n-d-e-x في identifier token <b>واحد</b>."
+     "حتى لو عدّيت كل حرف لوحده هيطلعوا 12 (a، [، i، n، d، e، x، ]، =، 4، +، 2) مش 11. الـ scanner بيجمّع i-n-d-e-x في identifier token <b>واحد</b>، فالـ tokens عددهم 8."
     ],
     [
      "الـ Constant folding حصل قبل كده وملوش علاقة بالـ scaling بتاع الـ index.",
      "حجم الـ array مش مستخدم هنا. الـ 2 ده حجم element واحد.",
-     "صح. الـ code generator بيستخدم طريقة تمثيل الداتا في الـ target machine: الـ a[index] مكانها &a + index × 2.",
+     "صح. ‡ السلايد مش بيشرح الـ 2، بس ده المعنى: الـ code generator بيستخدم طريقة تمثيل الداتا في الـ target machine، فالـ a[index] مكانها &a + index × 2 (الـ integer معتبر 2 bytes).",
      "الـ target code optimizer بعد كده <b>بيستبدل</b> الضرب في 2 بـ SHL؛ هو مش اللي عامله."
     ],
     [
@@ -315,7 +316,7 @@ AR.compiler = {
      "pts": [
       "هي <b>أول phase</b> في الـ compiler. بتقرا حروف الـ input وتطلّع <b>sequence من الـ tokens</b> الـ parser بيستخدمها في الـ syntax analysis.",
       "كمان <b>بتشيل الـ comments والـ white space</b> (blank، tab، newline).",
-      "وكمان <b>بتربط رسايل الأخطاء</b> بتاعة الـ compiler بالـ source program (أرقام السطور).",
+      "وكمان بتربط رسايل الأخطاء اللي طالعة من الـ compiler بالـ source program. ‡ مثلاً بإنها تحط أرقام السطور (line numbers) في رسايل الأخطاء.",
       "اسمها كمان <b>scanning</b>: سيل الحروف بيتقري من الشمال لليمين ويتجمّع في tokens. والـ keywords بيتعرفوا هنا.",
       "الـ <b>Token مقابل الـ lexeme</b> (من نوتس المحاضرة): الـ token هو category منطقية (id، relop، number)؛ الـ lexeme هو الـ string الحقيقي نفسه (زي <code>distance</code>). <code>if distance &gt;= rate * (time1 – time0) then distance := maxdist;</code> → <code>if id relop id * ( id – id ) then id := id ;</code>"
      ]
@@ -326,7 +327,7 @@ AR.compiler = {
       "الـ <b>alphabet (Σ)</b> هو set محدودة، مش فاضية، ومرتّبة من الـ symbols أو الحروف أو الـ characters.",
       "الـ <b>string</b> (وبيتقال لها word أو token) هي sequence محدودة من symbols من alphabet. <code>011</code> string طولها 3 على Σ = {0,1}؛ <code>0101</code> طولها 4؛ <code>for</code> string طولها 3 على alphabet الـ C++.",
       "مجموعة كل الـ integer constants أو مجموعة كل أسماء الـ variables دي sets من الـ strings، والحروف اللي فيها متاخدة من alphabet معيّنة.",
-      "مجموعة من الـ strings اسمها <b>language</b>. الـ integers بتستخدم الـ alphabet من 0–9؛ أسماء الـ variables بتستخدم حروف وأرقام (وممكن underscore)."
+      "الـ set دي من الـ strings اسمها language. في الـ integers الـ alphabet بتتكوّن من الـ digits من 0 لـ 9، وفي أسماء الـ variables الـ alphabet فيها letters و digits مع بعض (وممكن كام character تاني، زي الـ underscore)."
      ]
     },
     {
@@ -362,7 +363,7 @@ AR.compiler = {
       "الشكل (سلايد 9، State وTransition): الـ <b>State</b> بتترسم دايرة واسمها جوّاها (q1). الـ <b>Transition</b> بتترسم سهم عليه \"input token\"؛ السلايد فيها سهمين زي كده، واحد ناحية اليمين وواحد ناحية الشمال، وكل واحد مكتوب عليه \"input token\".",
       "الشكل (سلايد 10، A finite automata for the expression 01): start → q0 –0→ q1 –1→ q2. الـ q0 مكتوب تحتها <b>Start State</b>؛ والـ q2 دايرة دبل مكتوب تحتها <b>End State</b>. (الـ transition table تحت.)",
       "الشكل (سلايد 10، a* وa+ و(a|b)*): <b>a*</b>: state واحدة متظللة عليها سهم start، مرسومة دايرة دبل (start وfinal)، وعليها loop بـ a. <b>a+</b>: start state متظللة عليها loop بـ a، وطالع منها edge بـ a لـ state تانية مرسومة دايرة دبل (final). <b>(a|b)*</b>: state واحدة q2 عليها سهم start، مرسومة دايرة دبل (start وfinal)، وعليها loop بـ a,b.",
-      "اعمل finite automaton يتعرّف على الـ regular expression <b>1*01(0|1)*</b> (سلايد 11): start → q0 (loop بـ 1) –0→ q1 –1→ q2. الـ q2 هي الـ <b>Final state</b> (دايرة دبل) وعليها loop بـ 0,1. (الـ transition table تحت.)"
+      "اعمل finite automaton يتعرّف على الـ regular expression 1*01(0|1)* (slide 11): start → q0 (loop 1) –0→ q1 –1→ q2. الـ q2 هي الـ Final state (double circle) وعليها loop مكتوب عليه 0,1. (الـ transition table بتاعها في سكشن \"Finite automaton for 1*01(0|1)*\".)"
      ]
     },
     {
@@ -381,13 +382,13 @@ AR.compiler = {
      "h": "الـ NFA مقابل الـ DFA",
      "pts": [
       "المثال (سلايد 12، DFA): سهم داخل على state على الشمال؛ طالع منها two edges لـ state على اليمين، الـ edge اللي فوق عليها s واللي تحت عليها t؛ وفيه خط طالع من الـ state اللي على اليمين.",
-      "المثال (سلايد 12، NFA): سهم داخل على state على الشمال؛ طالع منها edge عليها ε لفوق لـ box مكتوب فيه s، وedge تانية عليها ε لتحت لـ box مكتوب فيه t؛ ومن كل box طالعة edge عليها ε داخلة على state على اليمين، والـ state دي طالع منها edge عليها ε."
+      "مثال (slide 12, NFA): arrow داخل على state على الشمال؛ edge مكتوب عليه ε طالع لفوق لـ oval جواه s، و edge تاني مكتوب عليه ε نازل لتحت لـ oval جواه t؛ ومن كل oval فيه edge مكتوب عليه ε داخل على state على اليمين، والـ state دي طالع منها edge مكتوب عليه ε."
      ]
     }
    ],
    "cards": [
     "الـ Input: الـ source code (حروف). الـ Output: list من الـ tokens.",
-    "بيشيل الـ comments والـ white space؛ وبيربط رسايل الأخطاء بالـ source.",
+    "(1) بيشيل الـ comments، (2) بيشيل الـ white spaces (الـ blank والـ tab والـ newline)، (3) بيربط رسايل الأخطاء اللي طالعة من الـ compiler بالـ source program.",
     "set محدودة، مش فاضية، ومرتّبة من الـ symbols.",
     "sequence محدودة من symbols من alphabet (وبيتقال لها word أو token).",
     "set من الـ strings على alphabet.",
@@ -407,7 +408,7 @@ AR.compiler = {
     "(a|b)*a(a|b)*a(a|b)* ; b*ab*ab* ; (a|b)*a(a|b)*b(a|b)* | (a|b)*b(a|b)*a(a|b)* ; (a|b)* ; b* | ab* ; (a|b)*(aa|bb)(a|b)* ; a*ba*ba* | a*ba*ba*ba* (من Sheet One).",
     "الـ q0 عليها loop بـ b؛ q0 --a--> q1؛ الـ q1 عليها loop بـ a؛ q1 --c--> q2 و q1 --d--> q2؛ والـ q2 هي الـ final state.",
     "الـ q0 عليها loop بـ a,b؛ q0 --c--> q1 (final، وعليها loop بـ c)؛ q0 --d--> q2 (final، وعليها loop بـ d).",
-    "الـ DFA: مفيهوش ε transitions، فيه next state واحدة بالظبط لكل (state, input)، أسرع في التشغيل، والـ next state محددة بوضوح. الـ NFA: ممكن يستخدم ε transitions، صفر أو أكتر من الـ next states لكل (state, input)، أبطأ، وكل pair ممكن يبقى ليها next states كتير محتملة.",
+    "الـ DFA: مش قادر يستخدم empty string (ε) transition؛ عدد الـ next state واحد؛ الوقت الكلي لتشغيل أي input string أقل من الـ NFA؛ والـ next possible state محددة بوضوح. الـ NFA: يقدر يستخدم empty string transition؛ عدد الـ next state/states يا صفر يا واحد (ده كلام الـ slide؛ ‡ في العموم الـ NFA ممكن يكون ليه صفر أو واحد أو كذا next state)؛ الوقت الكلي لتشغيل أي input string أكبر من الـ DFA؛ وكل pair من الـ input symbols والـ states ممكن يبقى ليها next states كتير محتملة.",
     "الـ states هي q0 وq1 وq2. start → q0؛ الـ q0 عليها loop بـ 1؛ q0 --0--> q1؛ q1 --1--> q2؛ الـ q2 هي الـ final state وعليها loop بـ 0,1. الـ table: q0: 0→q1، 1→q0؛ q1: 1→q2؛ q2 (final): 0→q2، 1→q2."
    ],
    "quiz": [
@@ -579,7 +580,7 @@ AR.compiler = {
       "الـ NFA (Non-Deterministic Finite Automaton) بيبقى فيه <b>واحدة أو أكتر</b> من الصفات دي:",
       "1) <b>فيه ε</b> (transition بالـ empty string).",
       "الرسمة (slide 2، فيها ε): الـ a هي الـ start state وكمان final state (دايرة مزدوجة)؛ a –ε→ b؛ b –0→ a؛ a –1→ c؛ الـ c عليها loop بـ 0؛ c –0,1→ b.",
-      "2) <b>فيه loop على input symbol وبعدها transition بنفس الـ input symbol</b>. مثال: q0 عليها loop على 0,1 و q0 –0→ q1 –1→ (q2). على 0، الـ q0 ممكن تفضل مكانها أو تروح q1.",
+      "2) <b>فيه loop على input symbol وبعدها transition بنفس الـ input symbol</b>. الرسمة (slide 2): الـ q0 هي الـ start state وعليها loop على 0,1؛ q0 –0→ q1؛ q1 –1→ q2؛ الـ q2 هي الـ final state (دايرة مزدوجة). على 0، الـ q0 ممكن تفضل مكانها أو تروح q1.",
       "3) فيه أكتر من path لنفس الـ input string والـ automaton يقدر يتعرّف عليها (جرّب الـ expression <b>001</b>). الرسمة (slide 3): الـ A عليها loop بـ 0,1؛ A –0→ C؛ A –1→ B؛ B –1→ C؛ الـ C عليها loop بـ 0,1؛ الـ B والـ C هما الـ final states (دواير مزدوجة). ‡ للـ 001: A –0→ A –0→ A –1→ B، و A –0→ A –0→ C –1→ C، و A –0→ C –0→ C –1→ C، كلهم بيخلصوا في final state.",
       "يعني <b>الـ loop لوحده مش بيخلّي الـ automaton non-deterministic</b>. الـ DFA ممكن يبقى فيه loops. وكمان إن يكون فيه أكتر من accept state مش بيخليه NFA."
      ]
@@ -587,7 +588,7 @@ AR.compiler = {
     {
      "h": "الـ NFA مقابل الـ DFA",
      "pts": [
-      "مثال (DFA)، الرسمة في slide 4: start state طالع منها two edges لـ state تانية، واحد عليه <b>s</b> (فوق) وواحد عليه <b>t</b> (تحت)؛ مفيش ε edges.",
+      "مثال (DFA)، الرسمة في slide 4: start state (داخل عليها سهم) طالع منها two edges لـ state تانية، واحد عليه <b>s</b> (فوق) وواحد عليه <b>t</b> (تحت)؛ والـ state التانية طالع منها خط؛ مفيش ε edges.",
       "مثال (NFA)، الرسمة في slide 4: الـ start state –ε→ الـ box بتاع <b>s</b> –ε→ آخر state، والـ start state –ε→ الـ box بتاع <b>t</b> –ε→ آخر state؛ وآخر state طالع منها ε edge.",
       "‡ السلايد بتقول إن عدد الـ next states في الـ NFA «either zero or one»؛ بس في الحقيقة الـ NFA ممكن يبقى ليه صفر أو واحدة أو أكتر من الـ next states لكل (state, symbol)، زي ما آخر row في الجدول بيقول («many possible next states»)."
      ]

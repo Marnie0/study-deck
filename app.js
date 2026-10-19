@@ -704,7 +704,7 @@ function start() {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
     // names like 'qa-…' live in figs-qa.js, which builds on figs.js
-    const extra = /^([a-z]+)-/.exec(name), file = extra && extra[1] !== 'hci' && ['qa', 'mm', 'os'].includes(extra[1]) ? 'figs-' + extra[1] : null;
+    const extra = /^([a-z]+)-/.exec(name), file = extra && extra[1] !== 'hci' && ['qa', 'mm', 'os', 'cc'].includes(extra[1]) ? 'figs-' + extra[1] : null;
     const [ready2, setReady2] = useState(() => !file || !!(window.FIGS && window.FIGS[name]));
     useEffect(() => { if (!ready) loadScript(dataUrl('figs')).then(() => setReady(true), () => setFailed(true)); }, []);
     useEffect(() => { if (ready && !ready2) loadScript(dataUrl(file)).then(() => setReady2(true), () => setFailed(true)); }, [ready]);

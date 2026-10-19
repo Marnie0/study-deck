@@ -19,7 +19,7 @@ EXTRA.compiler = {
     ],
     [
      "11",
-     "This counts characters of \"index\" separately. The scanner groups i-n-d-e-x into ONE identifier token."
+     "Even counting every character separately gives 12 (a, [, i, n, d, e, x, ], =, 4, +, 2), not 11. The scanner groups i-n-d-e-x into ONE identifier token, so there are 8 tokens."
     ]
    ],
    "a": 1
@@ -37,7 +37,7 @@ EXTRA.compiler = {
     ],
     [
      "Because an integer is 2 bytes in the hypothetical machine, so the index becomes a byte offset",
-     "Correct. The code generator uses the target machine's data representation: a[index] lives at &a + index × 2."
+     "Correct. ‡ The slide does not explain the 2, but this is the reading: the code generator uses the target machine's data representation, so a[index] lives at &a + index × 2 (an integer taken as 2 bytes)."
     ],
     [
      "Because the target code optimizer always doubles registers",

@@ -42,7 +42,8 @@ COURSES.compiler = {
        "Used by JavaScript, Python, Ruby.",
        "Used by C, C++, Java."
       ]
-     ]
+     ],
+     "fig": "cc-comp-vs-interp"
     },
     {
      "h": "Phases of a compiler (draw this figure)",
@@ -51,6 +52,10 @@ COURSES.compiler = {
       "All six phases talk to the <b>literal table</b>, the <b>symbol table</b> and the <b>error handler</b>. These are data structures and helpers, <b>not phases</b>. The exams often ask \"symbol table is not a phase\".",
       "The input/output chain is <b>source code → tokens → syntax tree → annotated tree → intermediate code → target code → (optimized) target code</b>.",
       "\"Testing\" is <b>not</b> a phase of a compiler."
+     ],
+     "fig": [
+      "cc-phases",
+      "cc-is-phase"
      ]
     },
     {
@@ -58,7 +63,8 @@ COURSES.compiler = {
      "pts": [
       "Collects sequences of characters into meaningful units called <b>tokens</b>.",
       "Example: <code>a[index]=4+2</code> gives: <code>a</code> identifier, <code>[</code> left bracket, <code>index</code> identifier, <code>]</code> right bracket, <code>=</code> assignment, <code>4</code> number, <code>+</code> plus sign, <code>2</code> number."
-     ]
+     ],
+     "fig": "cc-scanner"
     },
     {
      "h": "2) Syntax analysis (parser)",
@@ -68,6 +74,10 @@ COURSES.compiler = {
       "Figure (slide 7, The Parse Tree): <b>expression</b> → <b>Assign-expression</b>; Assign-expression has three children: expression, =, expression. The left expression → <b>subscript-expression</b>, whose children are Expression, [, expression, ]; Expression → identifier → <code>a</code>; expression → identifier → <code>index</code>. The right expression → <b>additive-expression</b>, whose children are expression, +, expression; expression → number → <code>4</code>; expression → number → <code>2</code>.",
       "The <b>syntax tree</b> (AST) is the condensed version: assign-expression with children subscript-expression(a, index) and additive-expression(4, 2).",
       "Figure (slide 8, The Syntax Tree): <b>Assign-expression</b> has two children, <b>subscript-expression</b> and <b>additive-expression</b>. subscript-expression → identifier (<code>a</code>) and identifier (<code>index</code>). additive-expression → number (<code>4</code>) and number (<code>2</code>)."
+     ],
+     "fig": [
+      "cc-parse-tree",
+      "cc-syntax-tree"
      ]
     },
     {
@@ -75,8 +85,10 @@ COURSES.compiler = {
      "pts": [
       "The semantics of a program are its <b>\"meaning\"</b>, as opposed to its syntax (structure). Semantics determine some of its running-time behaviour <b>before</b> execution.",
       "<b>Static semantics</b>: declarations and type checking.",
-      "<b>Attributes</b>: the extra pieces of information computed by the semantic analyzer. The result is the <b>annotated syntax tree</b>: <code>a</code> = array of integer, <code>index</code> = integer, <code>4</code> and <code>2</code> = integer, subscript-expression = integer, additive-expression = integer."
-     ]
+      "<b>Attributes</b>: the extra pieces of information computed by the semantic analyzer. The result is the <b>annotated syntax tree</b>: <code>a</code> = array of integer, <code>index</code> = integer, <code>4</code> and <code>2</code> = integer, subscript-expression = integer, additive-expression = integer.",
+      "Figure (slide 10, The Annotated Syntax Tree): the syntax tree of <code>a[index]=4+2</code> with attributes under each node. <b>Assign-expression</b> has two children: <b>subscript-expression</b> (integer) and <b>additive-expression</b> (integer). subscript-expression → identifier <code>a</code> (array of integer) and identifier <code>index</code> (integer). additive-expression → number <code>4</code> (integer) and number <code>2</code> (integer)."
+     ],
+     "fig": "cc-annotated-tree"
     },
     {
      "h": "4) Source code optimizer",
@@ -86,15 +98,20 @@ COURSES.compiler = {
       "<b>Constant folding</b> on the annotated tree: <code>4+2</code> becomes the single node <code>6</code>.",
       "Figure (slides 12 and 13, Optimizations on Annotated Tree): before, the tree is the annotated syntax tree. After folding, <b>Assign-expression</b> has two children: <b>subscript-expression</b> (integer), with identifier <code>a</code> (array of integer) and identifier <code>index</code> (integer), and a single <b>number <code>6</code></b> (integer) that replaces the additive-expression and its numbers 4 and 2.",
       "Or on intermediate code (three-address code, p-code): <code>t = 4 + 2; a[index] = t</code> → <code>t = 6; a[index] = t</code> → <code>a[index] = 6</code>."
+     ],
+     "fig": [
+      "cc-fold-tree",
+      "cc-fold-ir"
      ]
     },
     {
      "h": "5) Code generator and 6) target code optimizer",
      "code": "a[index]=6   ──code generator──►   MOV R0, index\n                                     MUL R0, 2\n                                     MOV R1, &a\n                                     ADD R1, R0\n                                     MOV *R1, 6\n\n──target code optimizer──►   MOV R0, index\n                             SHL R0\n                             MOV &a[R0], 6     (slide prints &a[R1])",
      "pts": [
-      "The <b>code generator</b> takes the intermediate code (IR) and generates code for the <b>target machine</b>. The <b>properties of the target machine</b> become the major factor: its instructions and data representation. The example is a hypothetical assembly language (MUL R0,2 because an integer is 2 bytes).",
+      "The <b>code generator</b> takes the intermediate code (IR) and generates code for the <b>target machine</b>. The <b>properties of the target machine</b> become the major factor: its instructions and data representation. The example is a code sequence in a hypothetical assembly language (‡ MUL R0,2 because an integer is taken to be 2 bytes on this machine; the slide does not say why).",
       "The <b>target code optimizer</b> improves the generated code: <b>choosing address modes</b>, <b>replacing instructions</b> (MUL by 2 becomes SHL, a shift left) and <b>eliminating redundant</b> instructions."
-     ]
+     ],
+     "fig": "cc-codegen"
     },
     {
      "h": "Principal data structures for communication among phases",
@@ -105,7 +122,8 @@ COURSES.compiler = {
       "<b>Literal table</b>: stores <b>constants and strings</b>, reducing program size. Quick insertion and lookup are essential.",
       "<b>Intermediate code</b>: kept as an array of text strings, a temporary text, or a linked list of structures (e.g. three-address code, p-code). It should be easy to reorganize.",
       "<b>Temporary files</b>: hold the products of intermediate steps. They solve memory constraints and allow <b>back-patching</b> of addresses during code generation."
-     ]
+     ],
+     "fig": "cc-data-structs"
     }
    ],
    "cards": [
@@ -478,10 +496,11 @@ COURSES.compiler = {
      "pts": [
       "The <b>first phase</b> of the compiler. It reads the input characters and produces a <b>sequence of tokens</b> that the parser uses for syntax analysis.",
       "It also <b>removes comments and white space</b> (blank, tab, newline).",
-      "It also <b>correlates error messages</b> from the compiler with the source program (line numbers).",
+      "It also correlates error messages from the compiler with the source program. ‡ For example, by attaching line numbers to error messages.",
       "Also called <b>scanning</b>: the stream of characters is read left to right and grouped into tokens. Keywords are recognized here.",
       "<b>Token vs lexeme</b> (lecture notes): a token is a logical category (id, relop, number); a lexeme is the actual string instance (e.g. <code>distance</code>). <code>if distance &gt;= rate * (time1 – time0) then distance := maxdist;</code> → <code>if id relop id * ( id – id ) then id := id ;</code>"
-     ]
+     ],
+     "fig": "cc-lexer"
     },
     {
      "h": "Alphabets and strings",
@@ -489,8 +508,9 @@ COURSES.compiler = {
       "An <b>alphabet (Σ)</b> is a finite, non-empty, ordered set of symbols, letters or characters.",
       "A <b>string</b> (also called a word or token) is a finite sequence of symbols from an alphabet. <code>011</code> is a string of length 3 over Σ = {0,1}; <code>0101</code> has length 4; <code>for</code> is a string of length 3 over the C++ alphabet.",
       "The set of all integer constants or the set of all variable names are sets of strings, where the individual letters are taken from a particular alphabet.",
-      "A set of strings is called a <b>language</b>. Integers use the alphabet 0–9; variable names use letters, digits (and maybe underscore)."
-     ]
+      "Such a set of strings is called a language. For integers, the alphabet consists of the digits 0-9, and for variable names the alphabet contains both letters and digits (and perhaps a few other characters, such as underscore)."
+     ],
+     "fig": "cc-strings"
     },
     {
      "h": "Operations on languages",
@@ -501,7 +521,8 @@ COURSES.compiler = {
       "<b>What is ε transition?</b> It is a notation of an empty string, such as Φ, so that {ε} is a set of one element which is the empty string. ‡ ε is the string of length 0; Φ normally names the empty set (no elements), so {ε} and Φ are not the same set.",
       "<b>Positive closure</b>: Σ+ is the set of all strings that can be made by concatenating one or more strings in Σ. {a}+ = {a, aa, aaa, aaaa, …}.",
       "<b>Or operator</b>: a|b|c = {a, b, c}."
-     ]
+     ],
+     "fig": "cc-lang-ops"
     },
     {
      "h": "Regular expressions",
@@ -509,7 +530,8 @@ COURSES.compiler = {
       "Over X = {a,b,c}, examples of regular expressions: <code>ab*</code>, <code>a|b|c*</code>.",
       "Precedence: <b>*</b> binds tightest, then <b>concatenation</b>, then <b>|</b>. So <code>a|ab*</code> means <code>a|(a(b*))</code>.",
       "Examples: 0|1 = {0,1}; 0* = {ε,0,00,…}; (0|1)(0|1) = {00,01,10,11}; 0|0*1 = {0,1,01,001,…}; exactly one b over {a,b,c}: (a|c)*b(a|c)*."
-     ]
+     ],
+     "fig": "cc-regex-test"
     },
     {
      "h": "Algebraic properties of regular expressions",
@@ -565,7 +587,8 @@ COURSES.compiler = {
      ],
      "pts": [
       "Exam traps: <b>aε = εa = a</b> (not ε). <b>Yε = εY</b> (so \"Yε ≠ εY\" is false). <b>(X|Y)* ≠ X*|Y*</b>: (X|Y)* contains XY, but X*|Y* does not."
-     ]
+     ],
+     "fig": "cc-re-algebra"
     },
     {
      "h": "Finite automata",
@@ -575,7 +598,7 @@ COURSES.compiler = {
       "Figure (slide 9, State and Transition): a <b>State</b> is drawn as a circle with its name inside (q1). A <b>Transition</b> is drawn as an arrow labelled with an \"input token\"; the slide shows two such arrows, one pointing right and one pointing left, each labelled \"input token\".",
       "Figure (slide 10, A finite automata for the expression 01): start → q0 –0→ q1 –1→ q2. q0 is labelled <b>Start State</b>; q2 is a double circle labelled <b>End State</b>. (Transition table below.)",
       "Figure (slide 10, a*, a+, (a|b)*): <b>a*</b>: one shaded state with a start arrow, drawn as a double circle (start and final), with a loop labelled a. <b>a+</b>: a shaded start state with a loop labelled a, and an edge labelled a to a second state drawn as a double circle (final). <b>(a|b)*</b>: one state q2 with a start arrow, drawn as a double circle (start and final), with a loop labelled a,b.",
-      "Construct a finite automaton to recognize the regular expression <b>1*01(0|1)*</b> (slide 11): start → q0 (loop 1) –0→ q1 –1→ q2. q2 is the <b>Final state</b> (double circle) with a loop labelled 0,1. (Transition table below.)"
+      "Construct a finite automaton to recognize the regular expression 1*01(0|1)* (slide 11): start → q0 (loop 1) –0→ q1 –1→ q2. q2 is the Final state (double circle) with a loop labelled 0,1. (Its transition table is in the section \"Finite automaton for 1*01(0|1)*\".)"
      ],
      "table": [
       [
@@ -598,6 +621,10 @@ COURSES.compiler = {
        "–",
        "–"
       ]
+     ],
+     "fig": [
+      "cc-state-transition",
+      "cc-fa-01"
      ]
     },
     {
@@ -636,7 +663,8 @@ COURSES.compiler = {
        "q2",
        "q2"
       ]
-     ]
+     ],
+     "fig": "cc-fa-closures"
     },
     {
      "h": "Finite automaton for 1*01(0|1)*",
@@ -664,7 +692,8 @@ COURSES.compiler = {
        "q2",
        "q2"
       ]
-     ]
+     ],
+     "fig": "cc-fa-1s01"
     },
     {
      "h": "NFA vs DFA",
@@ -697,8 +726,9 @@ COURSES.compiler = {
      ],
      "pts": [
       "Example (slide 12, DFA): an arrow into a state on the left; two edges go from it to a state on the right, the upper edge labelled s and the lower edge labelled t; a line leaves the right state.",
-      "Example (slide 12, NFA): an arrow into a state on the left; an edge labelled ε goes up into a box labelled s and another edge labelled ε goes down into a box labelled t; from each box an edge labelled ε goes into a state on the right, which has an outgoing edge labelled ε."
-     ]
+      "Example (slide 12, NFA): an arrow into a state on the left; an edge labelled ε goes up into an oval containing s and another edge labelled ε goes down into an oval containing t; from each oval an edge labelled ε goes into a state on the right, which has an outgoing edge labelled ε."
+     ],
+     "fig": "cc-nfa-dfa"
     }
    ],
    "cards": [
@@ -708,7 +738,7 @@ COURSES.compiler = {
     ],
     [
      "3 extra jobs of the scanner",
-     "Removes comments and white space; correlates error messages with the source."
+     "(1) Removes comments, (2) removes white spaces (blank, tab and newline characters), (3) correlates error messages from the compiler with the source program."
     ],
     [
      "Alphabet Σ",
@@ -782,7 +812,7 @@ COURSES.compiler = {
     ],
     [
      "Compare DFA and NFA.",
-     "DFA: no ε transitions, exactly one next state per (state, input), runs faster, next state clearly set. NFA: may use ε transitions, zero or more next states per (state, input), slower, each pair may have many possible next states."
+     "DFA: not capable of using an empty string (ε) transition; the number related to the next state is one; the total time for running any input string is less than in an NFA; the next possible state is clearly set. NFA: can use an empty string transition; the number related to the next state/states is either zero or one (slide wording; ‡ in general an NFA can have zero, one or several next states); the total time for running any input string is larger than in a DFA; every single pair of input symbols and states may contain many possible next states."
     ],
     [
      "Construct a finite automaton to recognize the following regular expression: 1*01(0|1)*",
@@ -1076,15 +1106,16 @@ COURSES.compiler = {
       "An NFA (Non-Deterministic Finite Automaton) has <b>one or more</b> of these characteristics:",
       "1) It <b>contains ε</b> (an empty-string transition).",
       "Figure (slide 2, contains ε): a is the start state and a final state (double circle); a –ε→ b; b –0→ a; a –1→ c; c has a loop on 0; c –0,1→ b.",
-      "2) It <b>contains a loop with an input symbol followed by a transition with the same input symbol</b>. Example: q0 has a loop on 0,1 and q0 –0→ q1 –1→ (q2). On 0, q0 can stay or move to q1.",
+      "2) It contains a loop with an input symbol followed by a transition with the same input symbol. Figure (slide 2): q0 is the start state with a loop on 0,1; q0 –0→ q1; q1 –1→ q2; q2 is the final state (double circle). On 0, q0 can stay or move to q1.",
       "3) It contains multiple paths with the same input string that the automaton can recognize (try the expression <b>001</b>). Figure (slide 3): A has a loop on 0,1; A –0→ C; A –1→ B; B –1→ C; C has a loop on 0,1; B and C are final states (double circles). ‡ For 001: A –0→ A –0→ A –1→ B, A –0→ A –0→ C –1→ C and A –0→ C –0→ C –1→ C all end in a final state.",
       "So <b>a loop by itself does NOT make an automaton non-deterministic</b>. A DFA may contain loops. Having several accept states does not either."
-     ]
+     ],
+     "fig": "cc-nfa-signs"
     },
     {
      "h": "NFA vs. DFA",
      "pts": [
-      "Example (DFA), figure on slide 4: a start state with two edges to a second state, one labelled <b>s</b> (top) and one labelled <b>t</b> (bottom); no ε edges.",
+      "Example (DFA), figure on slide 4: a start state (incoming arrow) with two edges to a second state, one labelled s (top) and one labelled t (bottom); the second state has an outgoing line; no ε edges.",
       "Example (NFA), figure on slide 4: the start state –ε→ the box for <b>s</b> –ε→ the last state, and the start state –ε→ the box for <b>t</b> –ε→ the last state; the last state has an outgoing ε edge.",
       "‡ The slide says the NFA's number of next states is \"either zero or one\"; in fact an NFA may have zero, one or more next states for a (state, symbol) pair, as the last row of the table says (\"many possible next states\")."
      ],
@@ -1114,7 +1145,8 @@ COURSES.compiler = {
        "The next possible state is clearly set in DFA.",
        "Every single pair of input symbols and states may contain many possible next states."
       ]
-     ]
+     ],
+     "fig": "cc-nfa-vs-dfa"
     },
     {
      "h": "Transition tables",
@@ -1158,7 +1190,8 @@ COURSES.compiler = {
        "-",
        "-"
       ]
-     ]
+     ],
+     "fig": "cc-trans-table"
     },
     {
      "h": "NFA into DFA: first transition table (with empty transition)",
@@ -1185,7 +1218,8 @@ COURSES.compiler = {
        "-",
        "B"
       ]
-     ]
+     ],
+     "fig": "cc-first-table"
     },
     {
      "h": "NFA → DFA (subset construction), lecture method",
@@ -1212,7 +1246,8 @@ COURSES.compiler = {
        "{A,B}",
        "A"
       ]
-     ]
+     ],
+     "fig": "cc-subset"
     },
     {
      "h": "Worked exam NFA 1 (appears in 2021–2025 papers)",
@@ -1246,7 +1281,8 @@ COURSES.compiler = {
        "{1,3}",
        "{2,3}"
       ]
-     ]
+     ],
+     "fig": "cc-subset-exam1"
     },
     {
      "h": "Worked exam NFA 2 (with ε), 2024/25 paper",
@@ -1285,7 +1321,8 @@ COURSES.compiler = {
        "{1,2,3}",
        "{2,3}"
       ]
-     ]
+     ],
+     "fig": "cc-subset-exam2"
     }
    ],
    "cards": [
