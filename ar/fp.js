@@ -137,10 +137,10 @@ AR.fp = {
     "الـ Logical: الـ programmer شايف الـ file إزاي. الـ Physical: الـ file متخزن إزاي على الـ disk.",
     "الـ Heap والـ indexing والـ hashing.",
     "تنظيم الـ tracks بالـ sectors أو بالـ blocks.",
-    "access time سريع واستغلال كويس للمساحة (good space utilization).",
+    "الـ access time سريع، والـ space utilization كويس، يعني استغلال كويس للمساحة.",
     "الـ OS والـ DBMS.",
-    "bytes على الـ disk ليها physical name (A.txt)؛ بتستخدم مرة واحدة بس، وقت الـ open.",
-    "variable في البرنامج (fp، infile) بيمثل channel للـ physical file؛ بيستخدم مرات كتير.",
+    "مجموعة bytes على الـ disk ليها physical name (A.txt)؛ بتستخدم مرة واحدة بس، وقت الـ open.",
+    "variable في البرنامج (زي fp أو infile) بيمثل channel للـ physical file؛ بيستخدم مرات كتير.",
     "يعمل file جديد أو يفضّي (truncate) الموجود، للـ input والـ output.",
     "يعمل file جديد أو يعمل append على الموجود، للـ output.",
     "الـ app: يعمل seek للآخر قبل <b>كل</b> write. الـ ate: بيبدأ وهو واقف في الآخر بس.",
@@ -148,7 +148,7 @@ AR.fp = {
     "بيحرر الـ logical name، وبيعمل flush للـ buffer؛ ولو البرنامج وقع فجأة ممكن الداتا تضيع."
    ],
    "qa": [
-    "الـ Physical file: مجموعة bytes على الـ disk ليها physical name (A.txt)، وبتستخدم مرة واحدة وقت الـ opening. الـ Logical file: channel بيوصل البرنامج بالـ physical file، والـ logical name بتاعه variable في البرنامج (infile، fp)، وبيستخدم مرات كتير في الـ open والـ read والـ write والـ append والـ close.",
+    "الـ Physical file هو مجموعة bytes على الـ disk ليها physical name (A.txt)، وبتستخدم مرة واحدة وقت الـ opening.<br>والـ Logical file هو channel بيوصل البرنامج بالـ physical file، والـ logical name بتاعه variable في البرنامج (زي infile أو fp)، وبيستخدم مرات كتير في الـ open والـ read والـ write والـ append والـ close.",
     "لإنها الطريقة الوحيدة المناسبة لتخزين كمية معلومات كبيرة زي الصور والمزيكا والفيديو؛ والـ operating systems أكبر من إنها تتحمل كلها في الـ memory؛ والـ databases في كل حتة؛ وكمان عشان الـ backup والـ archiving.",
     "تجهيز/عمل format للـ storage media، وحجز مساحة التخزين والـ addressing، وإدارة الـ free space.",
     "الـ OS هيقفله في آخر التنفيذ، بس لو البرنامج وقع فجأة (terminated abnormally) الداتا اللي في الـ buffer ممكن تضيع.",
@@ -181,7 +181,7 @@ AR.fp = {
     [
      "صح. الـ fopen بتاخد اسم الـ file والـ mode وبترجع FILE*.",
      "الـ fopen محتاجة two arguments: اسم الـ file والـ mode string (\"r\"، \"w\"، \"a\"…)؛ من غير الـ mode الـ file مش هيتفتح (L1, Opening files).",
-     "الـ function بتاعة مكتبة C اسمها fopen مش open؛ المادة بتكتب outFile = fopen(\"A.txt\", \"w\")، وبترجع FILE* (L1, Opening files).",
+     "الـ function بتاعة مكتبة C اسمها fopen مش open؛ والمادة بتكتبها كده:<span class=\"ltr\"><code>outFile = fopen(\"A.txt\", \"w\")</code></span>وبترجع FILE* (L1, Opening files).",
      "غلط في كل حتة: الـ function اسمها fopen، وبترجع pointer يعني FILE*، وبتاخد اسم الـ file والـ mode الاتنين (L1, Opening files)."
     ],
     [
@@ -191,15 +191,15 @@ AR.fp = {
      "الـ update مع الاحتفاظ بالمحتوى ده \"a+\" (create/append للـ input والـ output). الـ \"w+\" بيعمل truncate، فالمحتوى القديم بيضيع (L1, C modes)."
     ],
     [
-     "الـ text mode هو الـ default لما مفيش b؛ لما تضيف b (rb، wb، ab، r+b) بتقلب على الـ binary mode (L1, C modes).",
+     "الـ text mode هو الـ default لما مفيش b؛ لما تضيف b (زي rb و wb و ab و r+b) بتقلب على الـ binary mode (L1, C modes).",
      "مفيش حاجة اسمها \"big text\" mode؛ المعنى الوحيد لحرف b في الـ mode string هو binary (L1, C modes).",
-     "صح. لما تضيف b بعد حرف الـ mode (rb، wb، ab، r+b…) الـ file بيتفتح binary mode؛ والمقابل في C++ هو | ios::binary (L1, C modes).",
+     "صح. لما تضيف b بعد حرف الـ mode (زي rb و wb و ab و r+b) الـ file بيتفتح binary mode؛ والمقابل في C++ هو | ios::binary (L1, C modes).",
      "\"Blueprint\" مش file mode أصلاً؛ الـ b في mode string زي \"rb\" معناها binary mode (L1, C modes)."
     ],
     [
      "الـ ofstream ده file stream للـ OUTPUT بس (الـ default بتاعه ios::out)، فمينفعش يتستخدم للـ input والـ output مع بعض (L1, C++ file streams).",
      "الـ ifstream ده file stream للـ INPUT بس (الـ default بتاعه ios::in)، فمبيكتبش؛ اللي بيعمل الاتنين هو fstream (L1, C++ file streams).",
-     "الـ iostream ده الـ header/class بتاع الـ console I/O (cin، cout)؛ الـ file streams اللي بتعمل input و output جاية من fstream (L1, C++ file streams).",
+     "الـ iostream ده الـ header/class بتاع الـ console I/O (زي cin و cout)؛ الـ file streams اللي بتعمل input و output جاية من fstream (L1, C++ file streams).",
      "صح. الـ fstream ينفع يتفتح للـ input والـ output مع بعض، مثلاً open(\"f.txt\", ios::in | ios::out)؛ الـ ifstream للـ input بس والـ ofstream للـ output بس (L1, Opening files)."
     ],
     [
@@ -221,8 +221,8 @@ AR.fp = {
      "الـ cout بيكتب على الشاشة بس؛ مبيكتشفش أي حاجة. الـ EOF في C++ بيتعرف بـ infile.fail() أو infile.eof() (L1)."
     ],
     [
-     "الـ fget() مش function في مكتبة C؛ الـ function اللي بتقرا string هي fgets(str, n, fp)، والـ fgetc بتقرا character واحد (L1, Reading).",
-     "صح. الـ fgets(str, n, fp) بتقرا لحد n-1 characters وبتحط '\\0' في الآخر.",
+     "الـ fget() مش function في مكتبة C؛ والـ function اللي بتقرا string هي <code>fgets(str, n, fp)</code>، والـ fgetc بتقرا character واحد (L1, Reading).",
+     "صح. الـ <code>fgets(str, n, fp)</code> بتقرا لحد n-1 characters وبتحط '\\0' في الآخر.",
      "الـ fput() مش standard function، وأي حاجة اسمها put بتكتب مش بتقرا؛ اللي بتقرا هي fgets() (L1).",
      "الـ fputs() بتكتب string في الـ file؛ السؤال عن قراية n−1 characters بالكتير، ودي fgets() (L1)."
     ],
@@ -241,7 +241,7 @@ AR.fp = {
      "الـ \"a\" ده output mode (create أو append)، فالـ 20 bytes هيتكتبوا في آخر الـ file. القراية بس ده الـ mode \"r\" (L1, C modes)."
     ],
     [
-     "الـ ios::in لوحده input بس، يعني المقابل لـ \"r\". الـ \"r+\" محتاج input و output: ios::out | ios::in (L1, C mode ↔ C++ flags).",
+     "الـ ios::in لوحده input بس، يعني المقابل لـ \"r\". الـ \"r+\" محتاج input و output، يعني:<span class=\"ltr\"><code>ios::out | ios::in</code></span>(L1, C mode ↔ C++ flags).",
      "صح. الـ \"r+\" بيفتح file موجود للـ input والـ output.",
      "لو زوّدت trunc يبقى \"w+\"، وده بيمسح المحتوى الموجود.",
      "الـ ios::out | ios::app ده شكل C++ لـ \"a\" (output بس مع append)، من غير input؛ الـ \"r+\" هو ios::out | ios::in (L1, C mode ↔ C++ flags)."
@@ -393,13 +393,13 @@ AR.fp = {
       "الـ processes كتير بتبقى <b>disk-bound</b>: يعني الـ network والـ CPU بيستنوا الـ disk وقت طويل. الحلول:",
       "<b>(1) الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.",
       "<b>(2) الـ Disk striping</b>: نحط blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).",
-      "<b>(3) الـ RAID</b>: Redundant Array of Independent Disks.",
+      "<b>(3) الـ RAID</b>، اختصار لـ Redundant Array of Independent Disks.",
       "<b>(4) الـ RAM disk</b> (memory disk): جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل إن الداتا volatile).",
       "<b>(5) الـ Disk cache</b>: حتة كبيرة من الـ memory شايلة pages من الـ disk. بنشيك على الـ cache الأول، ولو مش موجودة (miss) نروح للـ disk."
      ]
     },
     {
-     "h": "Quiz (2) محلول",
+     "h": "حل الـ Quiz (2)",
      "pts": [
       "المعطيات:<br>• فيه 20 surface.<br>• كل surface فيه 800 tracks.<br>• كل track فيه 25 sectors.<br>• الـ sector فيه 512 B.<br>• السرعة 3600 rpm.<br>• الـ seek بياخد 7 ms من track للي جنبه، و 28 ms في المتوسط، و 50 ms أقصى حاجة.",
       "‡ (a) اللفة بتاخد 60,000/3600 = 16.67 ms، يبقى <b>الـ average latency بـ 8.33 ms</b>.",
@@ -409,7 +409,7 @@ AR.fp = {
     }
    ],
    "cards": [
-    "الـ Magnetic disks (hard، floppy) والـ optical disks (CD-ROM، CD-R، CD-RW، DVD).",
+    "الـ magnetic disks (زي الـ hard والـ floppy) والـ optical disks (زي الـ CD-ROM والـ CD-R والـ CD-RW والـ DVD).",
     "الـ Magnetic tape.",
     "أصغر جزء ليه address في الـ disk، وغالبًا 512 bytes.",
     "عدد ثابت من الـ sectors اللي ورا بعض (ده اللي الـ OS file manager شايفه).",
@@ -423,7 +423,7 @@ AR.fp = {
     "مساحة بتضيع جوا الـ sector عشان الـ records مش جاية مظبوطة عليه.",
     "½ × (60 × 1000 / RPM) ms.",
     "وقت اللفة / عدد الـ sectors في الـ track.",
-    "Seek + rotational delay + transfer.",
+    "مجموع الـ seek والـ rotational delay والـ transfer.",
     "الـ Multiprocessing، والـ disk striping، والـ RAID، والـ RAM disk، والـ disk cache."
    ],
    "qa": [
@@ -431,8 +431,8 @@ AR.fp = {
     "الـ Multiprocessing (الـ CPU يعمل jobs تانية وهو مستني)؛ الـ disk striping (blocks على drives مختلفة بالتوازي)؛ الـ RAID؛ الـ RAM disk (الـ memory بتعمل نفسها disk)؛ الـ disk cache (الـ memory شايلة pages من الـ disk، ولو حصل miss نروح للـ disk).",
     "الـ Sectors: بيستخدمها الـ OS؛ وحدات ثابتة 512 B؛ بتعمل fragmentation وبطء في الـ access لـ files الـ records. الـ Blocks: بيستخدمها الـ DBMS؛ حجمها بيحدده الـ user وفيها عدد صحيح من الـ records (الـ blocking factor)؛ مفيش internal fragmentation، ومفيش record بيتقسم على 2 blocks؛ بس الـ sub-blocks بتزود الـ non-data overhead.",
     "اللفة = 60,000/6000 = 10 ms، يبقى الـ average latency = 5 ms.",
-    "3 × 512 = 1536 bytes.",
-    "33 × 512 = 16,896 bytes (عدد الـ tracks مالوش دعوة بالـ track capacity).",
+    "الحساب:<span class=\"ltr\">3 × 512 = 1536 bytes</span>",
+    "الحساب:<span class=\"ltr\">33 × 512 = 16,896 bytes</span>وعدد الـ tracks مالوش دعوة بالـ track capacity.",
     "(a) حجم الـ data sub-block بيبقى 10 × 100 = 1000 B، فالـ block بـ 1000 + 300 = 1300 B، وعدد الـ blocks في الـ track:<span class=\"ltr\">⌊20,000/1300⌋ = ⌊15.38⌋ = 15</span>يبقى الـ records في الـ track هي 15 × 10 = <b>150</b>.<br>(b) الـ data sub-block بـ 6000 B والـ block بـ 6300 B، وعدد الـ blocks:<span class=\"ltr\">⌊20,000/6300⌋ = ⌊3.17⌋ = 3</span>يبقى الـ records في الـ track هي 3 × 60 = <b>180</b>.",
     "‡ (a) اللفة بتاخد 60 × 1000 / 3600 = 16.67 ms، يبقى الـ average latency هي ½ × 16.67 = <b>8.33 ms</b>.<br>(b) الـ capacity بتساوي عدد الـ surfaces في الـ tracks في الـ sectors في الـ bytes:<span class=\"ltr\">20 × 800 × 25 × 512 = <b>204,800,000 bytes</b> (≈ 195.3 MB)</span>"
    ],
@@ -457,8 +457,8 @@ AR.fp = {
     ],
     [
      "الـ 32,768 = 64 × 512 دي سعة الـ TRACK (sectors per track × bytes per sector)؛ الـ cluster هو 4 sectors بس (L2, Capacity formulas).",
-     "صح. 4 × 512 = 2048. وعدد الـ sectors في الـ track ده مجرد تشتيت.",
-     "الـ 128 = 512 / 4 جاية من إنك قسمت بدل ما تضرب؛ الـ cluster capacity = sectors per cluster × bytes per sector (L2).",
+     "صح. الحساب هو:<span class=\"ltr\">4 × 512 = 2048</span>وعدد الـ sectors في الـ track ده مجرد تشتيت.",
+     "الـ 128 = 512 / 4 جاية من إنك قسمت بدل ما تضرب. والصح:<span class=\"ltr\">cluster capacity = sectors per cluster × bytes per sector</span>(L2).",
      "الـ 8 bytes مش طالعة من أي formula (لا 4 × 512 ولا 64 × 512)؛ الـ cluster اللي فيه 4 sectors بيشيل 4 × 512 = 2048 B (L2)."
     ],
     [
@@ -494,7 +494,7 @@ AR.fp = {
     [
      "الـ cylinder height = 14 معناه 14 tracks في الـ cylinder، يعني 14 surface (وش). كل platter ليه 2 surfaces، فالـ platters عددها 7 (L2).",
      "صح. الـ cylinder height = عدد الـ surfaces = 14، وكل platter ليه وشين، فالـ platters = 14 / 2 = 7 (L2, Worked problem).",
-     "الـ 28 = 14 × 2 ضربت بدل ما تقسم؛ الـ platters = cylinder height / 2 = 7 (L2, Capacity formulas).",
+     "الـ 28 = 14 × 2 ضربت بدل ما تقسم. والصح:<span class=\"ltr\">platters = cylinder height / 2 = 7</span>(L2, Capacity formulas).",
      "ده عدد الـ cylinders في مثال السلايدز."
     ],
     [
@@ -548,7 +548,7 @@ AR.fp = {
      "الـ Multiprocessing بيخلي الـ CPU يعمل jobs تانية وهو مستني الـ disk."
     ],
     [
-     "الـ Blocks بتزود sub-blocks (count، key) و inter-block gaps، وده بيزود الـ overhead.",
+     "الـ blocks بتزود sub-blocks (زي الـ count والـ key) و inter-block gaps، وده بيزود الـ overhead.",
      "صح. السلايدز بتقول إن التنظيم بالـ blocks فيه non-data overhead <b>أكتر</b> من الـ sector addressing."
     ],
     [
@@ -558,7 +558,7 @@ AR.fp = {
      "صح. الـ Fragmentation هو ضياع مساحة جوا الـ sector لما الـ records متجيش مظبوطة عليه."
     ],
     [
-     "صح. كل cylinder هو مجموعة الـ tracks عند وضع واحد للـ arm، track من كل surface، فبيبقى فيه cylinder لكل مكان track.",
+     "صح. كل cylinder هو مجموعة الـ tracks عند وضع واحد للـ arm، يعني track واحد من كل surface، فبيبقى فيه cylinder لكل مكان track.",
      "السلايدز قايلة القاعدة دي صريحة: عدد الـ cylinders = عدد الـ tracks في كل surface."
     ],
     [
@@ -589,7 +589,7 @@ AR.fp = {
      ]
     },
     {
-     "h": "1. الـ Stream files",
+     "h": "(1) الـ Stream files",
      "pts": [
       "المعلومات بتتكتب كـ stream من الـ bytes <b>من غير أي معلومات زيادة</b>.",
       "مثال: <code>AmesMary123 MapleStillwaterOK74075MasonAlan90 EastgateAdaOK74820</code>.",
@@ -597,11 +597,11 @@ AR.fp = {
      ]
     },
     {
-     "h": "2. الـ Field structures (4 طرق)",
+     "h": "(2) الـ Field structures (4 طرق)",
      "pts": [
       "الـ <b>Fixed length</b>: مثلًا الأطوال 5 و 7 و 25:<span class=\"ltr\"><code>87358CARROLLALICE IN WONDERLAND</code>, <code>03818FOLK&nbsp;&nbsp;&nbsp;FILE STRUCTURES</code></span>",
       "الـ <b>Length indicator</b> في أول كل field:<span class=\"ltr\"><code>058735907CARROLL19ALICE IN WONDERLAND</code></span>",
-      "كل field بيتكتب على شكل <b>keyword = value</b>:<span class=\"ltr\"><code>ISBN=87359 AU=CARROLL TI=ALICE IN WONDERLAND</code></span>",
+      "كل field بيتكتب على شكل <b><bdi dir=\"ltr\">keyword = value</bdi></b>، زي كده:<span class=\"ltr\"><code>ISBN=87359 AU=CARROLL TI=ALICE IN WONDERLAND</code></span>",
       "الـ <b>Delimiter</b> في آخر كل field:<span class=\"ltr\"><code>87359|CARROLL|ALICE IN WONDERLAND|</code></span>"
      ]
     },
@@ -609,7 +609,7 @@ AR.fp = {
      "h": "الـ Field structures: المميزات والعيوب"
     },
     {
-     "h": "3. الـ Record structures",
+     "h": "(3) الـ Record structures",
      "pts": [
       "الـ record هو مجموعة fields بتنتمي لبعض في مستوى تنظيم أعلى. هو أداة conceptual وفكرة logical مهمة في structure الـ file.",
       "الطرق:<br>(1) <b>fixed-length records بـ fixed-length fields</b><br>(2) <b>fixed-length records بـ variable-length fields</b> (fields بـ delimiters أو بـ length indicators، ونعمل padding لحد ما الـ record يوصل للحجم الثابت)<br>(3) <b>كل record بيبدأ بـ length indicator</b> (عدد الـ bytes)، مثلًا:<span class=\"ltr\"><code>3387359|CARROLL|ALICE IN WONDERLAND</code></span>"
@@ -622,7 +622,7 @@ AR.fp = {
      "h": "إدارة files الـ records",
      "pts": [
       "الـ <b>Primary key</b>: بيميّز الـ record بشكل unique ومش بيتغير.<br>الـ <b>Secondary key</b>: بنستخدمه في البحث بس عادةً مش بيميّز الـ record بشكل unique.",
-      "الـ <b>Sequential search</b>: نقرا الـ records بالترتيب لحد ما نلاقي اللي عايزينه. <b>O(n)</b>. مناسب للـ pattern matching أو للـ files اللي فيها records قليلة.",
+      "الـ <b>Sequential search</b>: نقرا الـ records بالترتيب لحد ما نلاقي اللي عايزينه، والـ cost بتاعه <b>O(n)</b>. وده مناسب للـ pattern matching أو للـ files اللي فيها records قليلة.",
       "الـ <b>Direct access</b>: نعمل seek على طول لأول الـ record. <b>O(1)</b>. ينفع لما نكون عارفين الـ <b>RRN</b> (Relative Record Number: أول record الـ RRN بتاعه 0، اللي بعده RRN 1…)."
      ]
     },
@@ -635,13 +635,13 @@ AR.fp = {
      ]
     },
     {
-     "h": "Quiz (3) س1: انسخ file من غير loops",
+     "h": "السؤال الأول في الـ Quiz (3): انسخ file من غير loops",
      "pts": [
       "الفكرة: تعمل <code>seekg</code> للآخر والـ <code>tellg</code> تديك الحجم، وبعدين <code>read</code> واحدة و<code>write</code> واحدة بالحجم ده."
      ]
     },
     {
-     "h": "Quiz (3) س2: عدّل record بالـ RRN",
+     "h": "السؤال التاني في الـ Quiz (3): عدّل record بالـ RRN",
      "pts": [
       "الـ fields والـ records الـ fixed-length معناها إن كل record ليه نفس الحجم، فالـ byte offset بيبقى بالظبط <b>RRN × record size</b>."
      ]
@@ -652,19 +652,19 @@ AR.fp = {
     "أصغر وحدة داتا ليها معنى logical.",
     "مجموعة fields بتكوّن وحدة logical واحدة.",
     "مفيش معلومات زيادة، فمنقدرش نرجّع الـ records بشكل منظم.",
-    "الـ Fixed length، والـ length indicator، والـ keyword=value، والـ delimiter.",
+    "الـ Fixed length، والـ length indicator، والـ <bdi dir=\"ltr\">keyword = value</bdi>، والـ delimiter.",
     "+ سهل في القراية والتخزين؛ − بيضيع مساحة في الـ padding.",
     "+ ممكن يضيع مساحة أقل؛ − لازم تشيك كل byte وتقارنه بالـ delimiter.",
     "+ بيوصف نفسه (self-describing)، وبيسمح إن fields تبقى ناقصة؛ − الـ keywords بتضيع مساحة.",
     "+ سهل تنط لآخر الـ field؛ − الـ fields الطويلة محتاجة أكتر من byte للطول.",
     "الـ Fixed: سهل تنط للـ record رقم i بس بيضيع مساحة في الـ padding. الـ Variable: بيوفر مساحة بس محتاج index عشان تنط.",
-    "Relative Record Number؛ أول record = 0. الـ Offset = RRN × record size.",
-    "0 = البداية، 1 = المكان الحالي، 2 = النهاية.",
+    "اختصار لـ Relative Record Number، وأول record رقمه 0. والـ offset بيتحسب كده:<span class=\"ltr\">offset = RRN × record size</span>",
+    "الـ 0 معناها البداية، والـ 1 معناها المكان الحالي، والـ 2 معناها النهاية.",
     "الـ seekg بيحرك الـ get pointer (القراية)؛ الـ seekp بيحرك الـ put pointer (الكتابة).",
     "الـ Sequential بـ O(n)؛ الـ direct بـ O(1)."
    ],
    "qa": [
-    "الـ Fixed length (+ سهل في القراية والتخزين، − بيضيع مساحة في الـ padding)؛ الـ length indicator (+ سهل تنط لآخر الـ field، − الـ fields الطويلة محتاجة أكتر من byte واحد للطول)؛ الـ delimited (+ ممكن يضيع مساحة أقل، − لازم تشيك كل byte على الـ delimiter)؛ الـ keyword=value (+ بيوصف نفسه وبيسمح إن fields تبقى ناقصة، − الـ keywords بتضيع مساحة).",
+    "الـ Fixed length (+ سهل في القراية والتخزين، − بيضيع مساحة في الـ padding)؛ الـ length indicator (+ سهل تنط لآخر الـ field، − الـ fields الطويلة محتاجة أكتر من byte واحد للطول)؛ الـ delimited (+ ممكن يضيع مساحة أقل، − لازم تشيك كل byte على الـ delimiter)؛ الـ <bdi dir=\"ltr\">keyword = value</bdi> (+ بيوصف نفسه وبيسمح إن fields تبقى ناقصة، − الـ keywords بتضيع مساحة).",
     "الحل: <code>void UpdateRecord(fstream &amp;file, Item &amp;newItem, int RRN){ file.seekp(RRN*sizeof(newItem), ios::beg); file.write((char*)&amp;newItem, sizeof(newItem)); }</code>",
     "في الـ pattern matching أو الـ files اللي فيها records قليلة. غير كده هو O(n)، فالـ direct access (O(1) بالـ RRN) أحسن.",
     "الـ primary key بيميّز الـ record بشكل unique ومش بيتغير. الـ secondary key بنستخدمه في البحث بس عادةً مش بيميّز الـ record بشكل unique."
@@ -673,7 +673,7 @@ AR.fp = {
     [
      "صح. وعشان كده منقدرش نرجّع الـ records.",
      "ممكن يبقى فيه مسافات جوا الداتا؛ بس ده مش التعريف.",
-     "المعلومات الزيادة (delimiters، lengths) دي اللي الـ field structures بتضيفها.",
+     "المعلومات الزيادة (زي الـ delimiters والـ lengths) دي اللي الـ field structures بتضيفها.",
      "الـ \"Space\" مش جزء من التعريف؛ الـ stream file هو stream of bytes من غير أي معلومات زيادة، وعشان كده مبنقدرش نرجّع الـ records (L3, Stream files)."
     ],
     [
@@ -685,7 +685,7 @@ AR.fp = {
     [
      "إهدار المساحة بالـ padding ده عيب الـ FIXED-length fields؛ الـ delimiters عيبها بدل كده إنك بتشيك byte by byte (L3, Field structures table).",
      "صح. لما يبقى فيه delimiter في آخر كل field، البرنامج لازم يقارن كل byte في الـ field بالـ delimiter عشان يعرف الـ field بيخلص فين (L3, Field structures table).",
-     "إهدار المساحة بالـ keywords ده عيب الـ KEYWORD = VALUE fields، اللي ميزتها إنها self-describing (L3, Field structures table).",
+     "إهدار المساحة بالـ keywords ده عيب الـ <bdi dir=\"ltr\">KEYWORD = VALUE</bdi> fields، اللي ميزتها إنها self-describing (L3, Field structures table).",
      "إن الأطوال الكبيرة تحتاج أكتر من byte ده عيب الـ LENGTH-INDICATOR fields (لما الـ max size > 256)، مش الـ delimited (L3)."
     ],
     [
@@ -696,7 +696,7 @@ AR.fp = {
     ],
     [
      "الـ O(n) ده الـ SEQUENTIAL search، اللي بيقرا الـ records بالترتيب لحد ما يلاقي match؛ الـ direct access بيعمل seek على الـ record على طول (L3, Managing files of records).",
-     "صح. الـ direct access بيعمل seek على طول لبداية الـ record (الـ offset معروف من الـ RRN بتاعه)، فالـ cost مش معتمد على n: O(1) (L3, Managing files of records).",
+     "صح. الـ direct access بيعمل seek على طول لبداية الـ record (الـ offset معروف من الـ RRN بتاعه)، فالـ cost مش معتمد على n، وبيبقى O(1) (L3, Managing files of records).",
      "الـ log n ده cost الـ BINARY search على file متترتب؛ الـ direct access محتاج seek واحد، O(1) (L3–L4).",
      "التلات costs دول بتوع methods مختلفة: O(n) للـ sequential، و log n للـ binary search، و O(1) للـ direct access، فمينفعش يبقوا كلهم صح (L3)."
     ],
@@ -714,8 +714,8 @@ AR.fp = {
     ],
     [
      "الـ Origin 1 معناه CURRENT (المكان الحالي)، والـ offset سالب.",
-     "صح. في fseek(stream, offset, origin)، الـ origin 1 = الـ current position، والـ offset −10L بيرجع 10 bytes لورا من هناك (L3, Seeking).",
-     "10 bytes قبل الآخر ده يبقى fseek(infile, -10L, 2)؛ الـ origin 2 هو الـ end، بس الـ call ده بيستخدم origin 1 (current) (L3, Seeking).",
+     "صح. في <code>fseek(stream, offset, origin)</code>، الـ origin رقم 1 معناه الـ current position، والـ offset −10L بيرجع 10 bytes لورا من هناك (L3, Seeking).",
+     "لو عايز 10 bytes قبل الآخر هتكتب <code>fseek(infile, -10L, 2)</code>؛ الـ origin 2 هو الـ end، بس الـ call ده بيستخدم origin 1 (current) (L3, Seeking).",
      "الـ fseek بتحرك الـ file pointer بس؛ قفل الـ file بيتعمل بـ fclose (L3, Seeking)."
     ],
     [
@@ -725,16 +725,16 @@ AR.fp = {
      "الـ fseek دي function في C لتحريك الـ file pointer؛ السؤال عن function الـ put pointer في C++، يعني seekp (L3)."
     ],
     [
-     "الـ 5 ده الـ RRN نفسه؛ الـ byte offset = RRN × record size = 5 × 40 = 200 (L3, Direct access).",
-     "صح. الـ RRNs بتبدأ من 0، فالـ byte offset = RRN × record size = 5 × 40 = 200 (L3, Direct access).",
+     "الـ 5 ده الـ RRN نفسه. والـ byte offset الصح:<span class=\"ltr\">byte offset = RRN × record size = 5 × 40 = 200</span>(L3, Direct access).",
+     "صح. الـ RRNs بتبدأ من 0، فالـ byte offset:<span class=\"ltr\">byte offset = RRN × record size = 5 × 40 = 200</span>(L3, Direct access).",
      "الـ 240 = 6 × 40 بتعامل الـ RRN كأنه بيبدأ من 1؛ أول record الـ RRN بتاعه 0، فالـ offset = 5 × 40 = 200 (L3).",
-     "الـ 45 = 5 + 40 جمعت بدل ما تضرب؛ الـ offset = RRN × record size = 200 (L3)."
+     "الـ 45 = 5 + 40 جمعت بدل ما تضرب. والصح:<span class=\"ltr\">offset = RRN × record size = 200</span>(L3)."
     ]
    ],
    "extra": [
     [
      "دي طريقة الـ delimiter، مش الـ length indicators.",
-     "الـ ISBN=… AU=… TI=… دي طريقة الـ keyword = value؛ الـ length indicators بتحط طول الـ field قبل كل field (05 52814…) (L3).",
+     "الطريقة اللي فيها <bdi dir=\"ltr\">ISBN=… AU=… TI=…</bdi> هي الـ <bdi dir=\"ltr\">keyword = value</bdi>؛ الـ length indicators بتحط طول الـ field قبل كل field (05 52814…) (L3).",
      "صح. كل field قبله طوله: 05 + 52814، 05 + KNUTH، 07 + SORTING.",
      "كلمة SORTING فيها 7 characters مش 6. الطول اتعد غلط."
     ],
@@ -742,18 +742,18 @@ AR.fp = {
      "هنا عدّيت characters الداتا بس وسبت الـ 2 delimiters (|).",
      "هنا زوّدت delimiter في الآخر والـ record مفيهوش.",
      "ده عدد الـ fields، مش عدد الـ bytes.",
-     "صح. 5 + 1 + 5 + 1 + 7 = 19 byte، زي ما السلايد بيعد 5 + 1 + 7 + 1 + 19 = 33."
+     "صح. الحساب:<span class=\"ltr\">5 + 1 + 5 + 1 + 7 = 19 byte</span>زي ما السلايد بيعد:<span class=\"ltr\">5 + 1 + 7 + 1 + 19 = 33</span>"
     ],
     [
-     "صح. الـ Record size = 24 + 4 + 4 = 32 B؛ الـ offset = RRN × record size = 12 × 32 = 384.",
+     "صح. الحساب:<span class=\"ltr\">record size = 24 + 4 + 4 = 32 B</span><span class=\"ltr\">offset = RRN × record size = 12 × 32 = 384</span>",
      "ده 13 × 32، وده بيعامل الـ RRNs كأنها بتبدأ من 1. أول record الـ RRN بتاعه 0.",
      "ده 11 × 32، غلطة بواحد في الاتجاه التاني.",
-     "الـ 12 ده الـ RRN، مش الـ byte offset؛ الـ offset = RRN × record size = 12 × 32 = 384 (L3, Direct access)."
+     "الـ 12 ده الـ RRN، مش الـ byte offset. والصح:<span class=\"ltr\">offset = RRN × record size = 12 × 32 = 384</span>(L3, Direct access)."
     ],
     [
      "الـ seekg بيحرك الـ GET pointer (القراية). الكتابة بتستخدم الـ put pointer.",
      "صح. الـ seekp بيحرك الـ put pointer (الكتابة)، و7 × 50 = 350 byte من البداية.",
-     "400 = 8 × 50، وده بيعامل الـ RRN كأنه بيبدأ من 1 فبيقع على الـ record اللي بعده.",
+     "الـ 400 جاية من <bdi dir=\"ltr\">8 × 50</bdi>، وده بيعامل الـ RRN كأنه بيبدأ من 1 فبيقع على الـ record اللي بعده.",
      "الـ offset لازم يتحسب من البداية (ios::beg)، مش من النهاية."
     ],
     [
@@ -768,9 +768,9 @@ AR.fp = {
     ],
     [
      "دي ميزة الـ variable-length records.",
-     "دي ميزة الـ keyword = value fields.",
+     "دي ميزة الـ <bdi dir=\"ltr\">keyword = value</bdi> fields.",
      "الـ fixed-length records بتضيع مساحة في الـ padding؛ ده عيبها.",
-     "صح. كل record ليه نفس الحجم، فالـ offset = RRN × record size."
+     "صح. كل record ليه نفس الحجم، فالـ offset بيتحسب كده:<span class=\"ltr\">offset = RRN × record size</span>"
     ],
     [
      "صح. الطول المتخزن في الأول بيقولك بالظبط تنط كام byte.",
@@ -818,18 +818,18 @@ AR.fp = {
     {
      "h": "الـ cost model",
      "pts": [
-      "• الـ <b>B</b> هو عدد الـ data pages (الـ page = block)<br>• الـ <b>R</b> هو عدد الـ records في كل page<br>• الـ <b>D</b> هو متوسط الوقت عشان تقرا/تكتب disk page<br>• الـ <b>C</b> هو متوسط الوقت عشان تعالج record.",
+      "• الـ <b>B</b> هو عدد الـ data pages (والـ page هنا هي الـ block)<br>• الـ <b>R</b> هو عدد الـ records في كل page<br>• الـ <b>D</b> هو متوسط الوقت عشان تقرا/تكتب disk page<br>• الـ <b>C</b> هو متوسط الوقت عشان تعالج record.",
       "العمليات:<br>• الـ <b>Scan</b> (تجيب كل الـ records)<br>• الـ <b>equality search</b> (\"sid = 23\")<br>• الـ <b>range search</b> (\"name after Smith\")<br>• الـ <b>Insert</b><br>• الـ <b>Delete</b> (بالـ rid)."
      ]
     },
     {
      "h": "تكاليف الـ Heap file",
      "pts": [
-      "الـ <b>Scan</b>: B(D + RC). تقرا B pages، وتعالج R records في كل واحدة.",
+      "الـ <b>Scan</b> تكلفته:<span class=\"ltr\">B(D + RC)</span>لأنك بتقرا B pages، وتعالج R records في كل واحدة.",
       "الـ <b>Equality search</b>: 0.5B(D + RC). في المتوسط بتعمل scan لنص الـ file. ولو مفيش حاجة مطابقة، بتعمل scan للـ file كله.",
-      "الـ <b>Range search</b>: B(D + RC). الـ records المطابقة ممكن تبقى في أي حتة، فلازم تعمل scan للـ file كله.",
+      "الـ <b>Range search</b> تكلفته:<span class=\"ltr\">B(D + RC)</span>لأن الـ records المطابقة ممكن تبقى في أي حتة، فلازم تعمل scan للـ file كله.",
       "الـ <b>Insert</b>: <b>2D + C</b>. تجيب آخر page، تضيف الـ record، وتكتبها تاني.",
-      "الـ <b>Delete</b>: search cost + C + D."
+      "الـ <b>Delete</b> تكلفته:<span class=\"ltr\">search cost + C + D</span>"
      ]
     },
     {
@@ -843,9 +843,9 @@ AR.fp = {
     {
      "h": "تكاليف الـ Sorted file",
      "pts": [
-      "الـ <b>Scan</b>: B(D + RC).",
-      "الـ <b>Equality search</b>: <b>D·log₂B + C·log₂R</b>. binary search على الـ pages، وبعدين binary search جوا الـ page.",
-      "الـ <b>Range search</b>: search cost + تكلفة إنك تجيب الـ records المطابقة.",
+      "الـ <b>Scan</b> تكلفته:<span class=\"ltr\">B(D + RC)</span>",
+      "الـ <b>Equality search</b> تكلفته:<span class=\"ltr\"><b>D·log₂B + C·log₂R</b></span>يعني binary search على الـ pages، وبعدين binary search جوا الـ page.",
+      "الـ <b>Range search</b> تكلفته هي الـ search cost + تكلفة إنك تجيب الـ records المطابقة.",
       "الـ <b>Insert</b>:<span class=\"ltr\">search cost + 2 × (0.5B(D + RC)) = search + B(D + RC)</span>بتقرا وتكتب تاني نص الـ file في المتوسط.",
       "الـ <b>Delete</b>: زي الـ insert بالظبط: search + B(D + RC)."
      ]
@@ -856,7 +856,7 @@ AR.fp = {
     {
      "h": "إزاي تقرا اختيارات الامتحان",
      "pts": [
-      "الامتحانات بتفك كلمة \"search +\" لـ formulas.<br>• الـ delete في الـ sorted file = <b>Dlog₂B + Clog₂R + B(D+RC)</b>.<br>• الـ delete في الـ hashed file = <b>1.25B(D+RC) + C + D</b> في الإجابة النموذجية (بتستخدم الـ hashed scan cost كـ \"search\").",
+      "الامتحانات بتفك كلمة \"search +\" لـ formulas.<br>• الـ delete في الـ sorted file تكلفته:<span class=\"ltr\"><b>Dlog₂B + Clog₂R + B(D+RC)</b></span><br>• الـ delete في الـ hashed file تكلفته:<span class=\"ltr\"><b>1.25B(D+RC) + C + D</b></span>وده في الإجابة النموذجية (بتستخدم الـ hashed scan cost كـ \"search\").",
       "الـ hashed scan بيبقى <b>1.25B(D+RC)</b> لإن الـ hash buckets عادةً بتتساب مليانة حوالي 80%، فبيبقى فيه pages أكتر بـ 1.25 مرة."
      ]
     }
@@ -864,28 +864,28 @@ AR.fp = {
    "cards": [
     "استراتيجية مكان الـ record + العلاقة بين الـ key value والـ relative address.",
     "عدد الـ disk accesses (كل ما يقل أحسن).",
-    "records مش مترتبة، متخزنة بترتيب دخولها؛ وبيتسمى كمان pile file.",
+    "الـ records مش مترتبة، متخزنة بترتيب دخولها؛ وبيتسمى كمان pile file.",
     "الـ Linear search بس.",
     "بيسمح بـ records متكررة (duplicates).",
     "عدد الـ Pages، الـ records/page، وقت قراية/كتابة الـ page، وقت معالجة الـ record.",
-    "B(D + RC)",
-    "0.5B(D + RC)",
-    "2D + C",
-    "D·log₂B + C·log₂R",
-    "search + 2·(0.5B(D + RC)) = search + B(D + RC)",
-    "1.25B(D + RC)",
-    "H + D + 0.5RC",
+    "<span class=\"ltr\">B(D + RC)</span>",
+    "<span class=\"ltr\">0.5B(D + RC)</span>",
+    "<span class=\"ltr\">2D + C</span>",
+    "<span class=\"ltr\">D·log₂B + C·log₂R</span>",
+    "<span class=\"ltr\">search + 2·(0.5B(D + RC)) = search + B(D + RC)</span>",
+    "<span class=\"ltr\">1.25B(D + RC)</span>",
+    "<span class=\"ltr\">H + D + 0.5RC</span>",
     "كل الـ records اللي الـ key بتاعها أكبر لازم تتزق مكان واحد ناحية الآخر."
    ],
    "qa": [
     "الـ record بيتضاف في آخر page: تقرا آخر page (D)، تضيف الـ record (C) وتكتبها تاني (D)، يبقى 2D + C. والعيب إنه بيسمح بـ records متكررة.",
     "بعد ما تلاقي المكان، كل الـ records اللي بعده بتتزق خطوة. في المتوسط نص الـ file (0.5B pages) لازم يتقري ويتكتب تاني، يبقى 2 × 0.5B(D+RC).",
     "في المتوسط الـ record بيتلاقي بعد ما تعمل scan لنص الـ pages. كل page بتكلف D عشان تتقري + RC عشان تشيك على الـ R records بتوعها. ولو مفيش record مطابق، بتعمل scan للـ file كله B(D+RC).",
-    "B(D+RC) = 100 × (15 + 50×0.1) = 100 × 20 = 2000 ms."
+    "الحساب:<span class=\"ltr\">B(D+RC) = 100 × (15 + 50×0.1) = 100 × 20 = 2000 ms</span>"
    ],
    "quiz": [
     [
-     "ده الـ insert/delete بتاع الـ SORTED file: binary search (Dlog₂B + Clog₂R) وبعدين إعادة كتابة نص الـ file مرتين، B(D + RC). الـ heap insert بيعمل append وخلاص (L4, Cost table).",
+     "ده الـ insert/delete بتاع الـ SORTED file، يعني binary search تكلفته <bdi dir=\"ltr\">Dlog₂B + Clog₂R</bdi>، وبعدين إعادة كتابة نص الـ file مرتين بتكلفة <bdi dir=\"ltr\">B(D + RC)</bdi>. الـ heap insert بيعمل append وخلاص (L4, Cost table).",
      "دي لازقة الـ search cost بتاع الـ sorted file في الـ heap insert 2D + C؛ مفيش operation في الـ cost table ليها الـ formula دي. الـ heap insert مش محتاج search (L4).",
      "الـ 1.25B(D + RC) ده الـ scan بتاع الـ HASHED file (الـ buckets مليانة ~80%)؛ الـ heap insert بيلمس آخر page بس: 2D + C (L4, Cost table).",
      "صح. تقرا آخر page، تضيف الـ record، وتكتبها تاني."
@@ -900,7 +900,7 @@ AR.fp = {
      "الـ 2D + C ده الـ insert بتاع الـ HEAP file (تقرا آخر page، تضيف، تكتبها تاني)؛ الـ sorted delete لازم يعمل search ويزحّق records (L4, Cost table).",
      "ده الـ scan cost بس؛ جزء الـ search ناقص.",
      "الـ 1.25B(D + RC) ده الـ scan بتاع الـ HASHED file؛ الـ sorted delete هو binary search + B(D + RC) (L4, Cost table).",
-     "صح. Search (binary) + تزق نص الـ file (قراية وكتابة)."
+     "صح. الأول search (binary)، وبعدين تزق نص الـ file (قراية وكتابة)."
     ],
     [
      "الـ 2D + C ده الـ INSERT cost بتاع الـ heap؛ الـ equality search لازم يعمل scan على الـ pages لحد ما يلاقي الـ match (L4, Heap file costs).",
@@ -928,7 +928,7 @@ AR.fp = {
     ],
     [
      "الـ append سريع: قراية واحدة لآخر page وكتابة واحدة، 2D + C. العيب الخطير بتاعه إنه بيسمح بالـ duplicates (L4, Heap file).",
-     "صح. الـ append عمره ما بيشيك على الـ keys الموجودة، فنفس الـ key ممكن يدخل مرتين (زي record تاني 4, Ali, CS عند offset 80) (L4, Heap file).",
+     "صح. الـ append عمره ما بيشيك على الـ keys الموجودة، فنفس الـ key ممكن يدخل مرتين (زي record تاني <bdi dir=\"ltr\">4, Ali, CS</bdi> عند offset 80) (L4, Heap file).",
      "تزحيق الـ records اللي الـ key بتاعها أكبر ناحية الآخر ده بيحصل في الـ SORTED (sequential) file، مش الـ heap file (L4, Ordered file).",
      "الـ hash function بتاعة الـ hashed files؛ الـ heap file بيعمل append في الآخر من غير ما يحسب أي address (L4)."
     ],
@@ -953,14 +953,14 @@ AR.fp = {
      "صح. الـ Insert = 2D + C = 2 × 12 + 0.5 = 24.5 ms."
     ],
     [
-     "صح. D·log₂B + C·log₂R = 10 × 8 + 1 × 4 = 84 ms.",
-     "بدّلت الـ logs: D·log₂R + C·log₂B = 40 + 8.",
+     "صح. الحساب:<span class=\"ltr\">D·log₂B + C·log₂R = 10 × 8 + 1 × 4 = 84 ms</span>",
+     "بدّلت الـ logs، فحسبت:<span class=\"ltr\">D·log₂R + C·log₂B = 40 + 8</span>",
      "هنا استخدمت log₂B في الاتنين (80 + 8). الجزء بتاع الـ record بيستخدم log₂R.",
      "ده الـ equality search بتاع الـ HEAP، 0.5B(D + RC)."
     ],
     [
      "ده B(D + RC) بس. نسيت تزود الـ search cost.",
-     "صح. Search + 2 × 0.5B(D + RC) = 84 + 256 × (10 + 16) = 84 + 6656 = 6740 ms.",
+     "صح. الحساب:<span class=\"ltr\">Search + 2 × 0.5B(D + RC) = 84 + 256 × (10 + 16) = 84 + 6656 = 6740 ms</span>",
      "هنا زقيت نص الـ file مرة واحدة بس (84 + 3328). نص الـ file لازم يتقري <b>ويتكتب</b>: 2 × 0.5B(D + RC).",
      "ده الـ search cost بس؛ متجاهل تزقيق الـ records اللي بعده."
     ],
@@ -990,7 +990,7 @@ AR.fp = {
     ],
     [
      "صح. الـ records المطابقة ممكن تبقى في أي حتة في file مش مترتب، فلازم كل page تتقري.",
-     "الـ heap file مفيهوش ترتيب نستفيد منه، فالـ range search = B(D + RC)، زي الـ scan بالظبط."
+     "الـ heap file مفيهوش ترتيب نستفيد منه، فالـ range search تكلفته <bdi dir=\"ltr\">B(D + RC)</bdi>، زي الـ scan بالظبط."
     ],
     [
      "الـ indexing ده organization method منفصل (هو والـ heap والـ sequential والـ hashing)؛ الاسم التاني للـ heap file هو pile file (L4).",
@@ -1031,7 +1031,7 @@ AR.fp = {
      ]
     },
     {
-     "h": "hash function بسيطة (Midterm Model A)",
+     "h": "الـ hash function البسيطة (Midterm Model A)",
      "pts": [
       "الخطوة 1: نمثّل الـ key كرقم، بإننا نجمّع كل 2 characters مع بعض (الـ ASCII codes).",
       "الخطوة 2: نعمل fold ونجمع، ونقسم على عدد prime (19937) عشان نمنع الـ overflow.",
@@ -1044,11 +1044,11 @@ AR.fp = {
    ],
    "cards": [
     "بتحوّل الـ key لـ address.",
-    "2 keys مختلفين بيطلعوا نفس الـ address بعد الـ hash.",
+    "لما 2 keys مختلفين بيطلعوا نفس الـ address بعد الـ hash.",
     "الـ keys اللي بيحصل بينهم collision (نفس الـ address).",
     "وحدة تخزين بتشيل record واحد أو أكتر في الـ hash file.",
-    "O(log N) / O(log_k N) / O(1).",
-    "H + D + 0.5RC",
+    "بالترتيب:<span class=\"ltr\">O(log N) / O(log_k N) / O(1)</span>",
+    "<span class=\"ltr\">H + D + 0.5RC</span>",
     "الـ Hashing بيبوّظ ترتيب الـ keys، فلازم تعمل scan للـ file كله (1.25B pages).",
     "الـ address بتاع كل record بيتحدد بـ algorithm رياضي."
    ],
@@ -1080,7 +1080,7 @@ AR.fp = {
      "الـ O(n) ده الـ sequential search، اللي بيقرا الـ records واحد واحد؛ الـ hashing بيحسب الـ address على طول (L3, L5).",
      "الـ O(log N) ده simple index بندور فيه بالـ binary search؛ الـ hashing أسرع، O(1) (L5, Why hashing?).",
      "الـ O(log_k N) ده search time بتاع الـ B-trees؛ الـ hashing بيروح للـ address على طول، O(1) (L5, Why hashing?).",
-     "صح. الـ h(k) بتحسب address الـ record مباشرة من الـ key، فالـ search time مبيزيدش مع N: O(1)، مقابل O(log N) للـ index و O(log_k N) للـ B-tree (L5, Why hashing?)."
+     "صح. الـ h(k) بتحسب address الـ record مباشرة من الـ key، فالـ search time مبيزيدش مع N، وبيبقى O(1)، مقابل O(log N) للـ index و O(log_k N) للـ B-tree (L5, Why hashing?)."
     ],
     [
      "الـ hashing مبيرتبش حاجة؛ بالعكس هو بيبوّظ ترتيب الـ keys (وعشان كده الـ range search في الـ hashed file بيعمل scan على الـ file كله) (L5).",
@@ -1097,28 +1097,28 @@ AR.fp = {
    ],
    "extra": [
     [
-     "صح. 65 × 66 = 4290؛ 67 × 68 = 4556؛ الـ sum = 8846؛ 8846 % 19937 = 8846؛ 8846 % 100 = 46.",
+     "صح. الحساب:<span class=\"ltr\">65 × 66 = 4290; 67 × 68 = 4556; sum = 8846</span><span class=\"ltr\">8846 % 19937 = 8846; 8846 % 100 = 46</span>",
      "هنا نطيت آخر خطوة % maxAddress. الـ address لازم يبقى في 0..99.",
      "هنا جمعت الـ 4 codes (266) بدل ما تضرب كل 2 في بعض.",
      "الـ 90 = 4290 % 100 استخدمت أول pair بس (65 × 66)؛ لازم تضيف التاني 67 × 68 = 4556: 8846 % 100 = 46 (L5)."
     ],
     [
-     "30 mod 13 = 4 و44 mod 13 = 5: addresses مختلفة.",
-     "صح. 27 mod 13 = 1 و53 mod 13 = 1. الاتنين بيطلعوا نفس الـ address، فبيحصل بينهم collision ويبقوا synonyms.",
-     "19 mod 13 = 6 و33 mod 13 = 7: addresses مختلفة.",
-     "40 mod 13 = 1 و64 mod 13 = 12: addresses مختلفة."
+     "الـ addresses مختلفة:<span class=\"ltr\">30 mod 13 = 4, 44 mod 13 = 5</span>",
+     "صح. الحساب:<span class=\"ltr\">27 mod 13 = 1, 53 mod 13 = 1</span>يعني الاتنين بيطلعوا نفس الـ address، فبيحصل بينهم collision ويبقوا synonyms.",
+     "الـ addresses مختلفة:<span class=\"ltr\">19 mod 13 = 6, 33 mod 13 = 7</span>",
+     "الـ addresses مختلفة:<span class=\"ltr\">40 mod 13 = 1, 64 mod 13 = 12</span>"
     ],
     [
      "ده خارج القسمة (1234 / 101 ≈ 12)، مش الباقي.",
      "هنا استخدمت آخر رقمين، مش باقي القسمة على 101.",
-     "صح. 101 × 12 = 1212، و1234 - 1212 = 22.",
+     "صح. الحساب:<span class=\"ltr\">101 × 12 = 1212, 1234 - 1212 = 22</span>",
      "الـ addresses من 0 لـ 100، فالـ 101 برا الـ address space."
     ],
     [
      "هنا عملت scan للـ page كلها (RC = 10) بدل نصها في المتوسط.",
      "هنا سبت H، اللي هو وقت حساب الـ hash.",
      "هنا سبت الجزء 0.5RC بتاع إنك تشيك على الـ records اللي في الـ page.",
-     "صح. 1 + 10 + 0.5 × 20 × 0.5 = 1 + 10 + 5 = 16 ms."
+     "صح. الحساب:<span class=\"ltr\">1 + 10 + 0.5 × 20 × 0.5 = 1 + 10 + 5 = 16 ms</span>"
     ],
     [
      "المحاضرة بتقول العكس: في الـ hashing مفيش علاقة واضحة بين الـ key والـ location؛ الـ h(k) هي اللي بتحسبه (L5, What is hashing?).",
@@ -1150,7 +1150,7 @@ AR.fp = {
      "كل page بتتقري مرة واحدة؛ التكلفة الزيادة جاية من إن الـ pages أكتر.",
      "الـ scan بيقرا كل page ورا التانية وعمره ما بيحسب h(k)؛ الـ 0.25 الزيادة جاية من إن الـ pages مليانة ~80% بس (L5).",
      "الـ hashing مبيرتبش الـ file؛ بيبعتر الـ records حسب h(k). الـ factor 1.25 جاي من إن الـ buckets مليانة ~80% (L5).",
-     "صح. 1 / 0.8 = 1.25، فبيبقى فيه 1.25B pages لازم تتقري."
+     "صح. لأن <bdi dir=\"ltr\">1 / 0.8 = 1.25</bdi>، فبيبقى فيه 1.25B pages لازم تتقري."
     ]
    ]
   }
