@@ -11,7 +11,7 @@ AR.qa = {
       "بيضمن <b>الـ quality والـ reliability ورضا الـ user</b>. لما نلاقي الـ bugs بدري بنوفر وقت وفلوس وبنزود ثقة العميل.",
       "<b>هدف الـ testing عند Miller</b>: «الهدف العام من الـ testing هو إننا <b>نأكد الـ quality</b> بتاعة الـ software systems عن طريق إننا <b>نشغّل الـ software بشكل منظم (systematically)</b> في <b>ظروف متحكم فيها بعناية</b>».",
       "<b>الـ 6 objectives بتوع الـ testing</b>:<br>(1) نتأكد إن الـ solution بيحقق الـ <b>business requirements</b>، وده بيزود ثقة العميل<br>(2) نمسك الـ bugs والـ errors والـ defects<br>(3) نتأكد إن الـ system <b>stable وجاهز</b> للاستخدام<br>(4) نحدد <b>نقط الضعف</b><br>(5) نحدد <b>درجة الـ quality</b><br>(6) نحدد <b>user acceptability</b> (المستخدم هيقبله ولا لأ).",
-      "فوايده للـ organization: بيوفر وقت وفلوس (الـ defects بتتلاقى بدري)، منتج stable وdowntime أقل، ورضا العميل."
+      "فوايده للـ organization:<br>• بيوفر وقت وفلوس، لأن الـ defects بتتلاقى بدري.<br>• المنتج بيبقى stable والـ downtime أقل.<br>• العميل بيبقى راضي."
      ]
     },
     {
@@ -23,13 +23,13 @@ AR.qa = {
     {
      "h": "يعني إيه bug؟ (الـ 5 conditions)",
      "pts": [
-      "الـ <b>bug</b> هو error في البرنامج ممكن يطلّع نتيجة غلط أو مش مطلوبة، أو يوقفه إنه يشتغل صح. في الـ testing، الـ bug معناه <b>أي حاجة بتأثر على الـ quality</b>. أسماء تانية ليه: defect, fault, problem, error, incident, anomaly, failure, variance, inconsistency.",
+      "الـ <b>bug</b> هو error في البرنامج ممكن يطلّع نتيجة غلط أو مش مطلوبة، أو يوقفه إنه يشتغل صح. في الـ testing، الـ bug معناه <b>أي حاجة بتأثر على الـ quality</b>.<br>أسماء تانية ليه:<span class=\"ltr\">defect, fault, problem, error, incident, anomaly, failure, variance, inconsistency</span>",
       "الـ conditions دي ممكن نطبقها على الـ calculator عشان نفهمها أحسن. إحنا عارفين إن الـ calculator المفروض يعمل عمليات <b>الجمع والطرح والضرب والقسمة</b>.",
-      "<b>1.</b> الـ software <b>مش بيعمل</b> اللي الـ specification بتقول إنه لازم يعمله. <i>في الـ calculator: زرار الـ + مش شغال.</i>",
-      "<b>2.</b> الـ software بيعمل حاجة الـ specification بتقول إنه <b>مايعملهاش</b> (عكس المطلوب). <i>الـ calculator بيعمل crash أو freeze.</i>",
-      "<b>3.</b> الـ software بيعمل حاجة الـ specification <b>ماذكرتهاش أصلًا</b>. <i>الـ calculator فيه function زيادة اسمها <bdi>\"square\"</bdi> مش موجودة في الـ spec.</i>",
-      "<b>4.</b> الـ software مش بيعمل حاجة <b>المفروض (لازم) يعملها</b> حتى لو الـ spec ماذكرتهاش. <i>البطارية ضعيفة → إجابات غلط.</i>",
-      "<b>5.</b> الـ software <b>صعب يتفهم</b>، أو خطواته معقدة، أو <b>بطيء</b> (من وجهة نظر العميل). <i>الزراير صغيرة قوي، أو الإضاءة مزغللة لدرجة إنك مش عارف تقرا الإجابة.</i>",
+      "<b>(1)</b> الـ software <b>مش بيعمل</b> اللي الـ specification بتقول إنه لازم يعمله. <i>في الـ calculator: زرار الـ + مش شغال.</i>",
+      "<b>(2)</b> الـ software بيعمل حاجة الـ specification بتقول إنه <b>مايعملهاش</b> (عكس المطلوب). <i>الـ calculator بيعمل crash أو freeze.</i>",
+      "<b>(3)</b> الـ software بيعمل حاجة الـ specification <b>ماذكرتهاش أصلًا</b>. <i>الـ calculator فيه function زيادة اسمها <bdi>\"square\"</bdi> مش موجودة في الـ spec.</i>",
+      "<b>(4)</b> الـ software مش بيعمل حاجة <b>المفروض (لازم) يعملها</b> حتى لو الـ spec ماذكرتهاش. <i>البطارية ضعيفة → إجابات غلط.</i>",
+      "<b>(5)</b> الـ software <b>صعب يتفهم</b>، أو خطواته معقدة، أو <b>بطيء</b> (من وجهة نظر العميل). <i>الزراير صغيرة قوي، أو الإضاءة مزغللة لدرجة إنك مش عارف تقرا الإجابة.</i>",
       "الـ condition 5 بتجيب <b>وجهة نظر العميل (customer perspective)</b>: بتحصل لما أداء الـ software مايبقاش مقبول بالنسبة للـ user. هنا <b>الـ feedback بتاع الـ tester</b> بيبقى مهم، لأنه بيطلّع العيوب حتى قبل ما المنتج يوصل للعميل."
      ]
     },
@@ -50,9 +50,9 @@ AR.qa = {
      "h": "الـ Software development models: الـ Waterfall",
      "pts": [
       "<b>1.3 الـ Software development models</b>: الـ software development life cycle بيتكون من كذا phase، من أول فكرة المشروع لحد ما يخلص. فيه models مختلفة زي <b>Waterfall و V و Spiral و RAD و Prototyping و Agile</b> بنستخدمها على حسب الـ requirements بتاعة المشروع. وطريقة الـ testing كمان بتختلف على حسب طبيعة كل model.",
-      "الـ <b>Waterfall</b> (من أقدم الموديلات، sequential): System Engineering → Analysis → Design → Coding → Testing → Maintenance.",
+      "الـ <b>Waterfall</b> من أقدم الموديلات، وهو sequential (المراحل ورا بعض):<span class=\"ltr\">System Engineering → Analysis → Design → Coding → Testing → Maintenance</span>",
       "الـ process في الـ Waterfall بتبدأ من <b>الـ system level</b> وبعدها phases زي الـ analysis والـ design والـ coding والـ testing والـ maintenance، زي ما في Figure 1.1.",
-      "<bdi>Figure 1.1 (Waterfall Model)</bdi>: 6 أشكال سداسية (hexagons) نازلة زي السلم: <b>System Engineering → Analysis → Design → Coding → Testing → Maintenance</b>، وكل واحد متوصل باللي بعده بسهم. ومن الـ Maintenance فيه خط رأسي طالع على اليمين، متوصل بأسهم بوشين (two-headed) بكل الـ phases اللي قبله (Testing و Coding و Design و Analysis و System Engineering)، يعني كل phase متأخرة ممكن ترجع (feedback) للـ phases اللي قبلها.",
+      "<bdi>Figure 1.1 (Waterfall Model)</bdi>: فيه 6 أشكال سداسية (hexagons) نازلة زي السلم، وكل واحد متوصل باللي بعده بسهم:<span class=\"ltr\"><b>System Engineering → Analysis → Design → Coding → Testing → Maintenance</b></span>ومن الـ Maintenance فيه خط رأسي طالع على اليمين، متوصل بأسهم بوشين (two-headed) بكل الـ phases اللي قبله (Testing و Coding و Design و Analysis و System Engineering)، يعني كل phase متأخرة ممكن ترجع (feedback) للـ phases اللي قبلها.",
       "<b>الـ 6 phases</b>:<br>• الـ <b>System Engineering</b>: بيحدد <b>الـ software requirements والـ hardware requirements الاتنين</b>.<br>• الـ <b>Analysis</b>: الـ feasibility study والـ goals والـ performance والـ interface requirements.<br>• الـ <b>Design</b>: بيحوّل الـ requirements لـ software structure، زي الـ database design، عشان يوجّه الـ coding ويضمن الـ quality.<br>• الـ <b>Coding</b>: الـ developers بيكتبوا الـ program code على أساس الـ design specifications.<br>• الـ <b>Testing</b>: بنختبر الـ software عشان نكتشف الـ bugs ونتأكد إنه ماشي على الـ requirements المذكورة.<br>• الـ <b>Maintenance</b>: بيصلح المشاكل ويعمل update للـ software لما تظهر احتياجات جديدة.",
       "<b>المميزات</b>: بسيط، ومنظم (structured)، والـ documentation واضحة، والـ requirements بتتحدد بدري، وسهل في الإدارة.<br><b>العيب</b>: الـ errors اللي بتحصل في الـ phases الأولى ممكن تنتقل للمراحل اللي بعدها، فتسبب تأخير وتكلفة أعلى، لأن المشاكل لازم <b>تتصلح في أكتر من مكان</b>."
      ],
@@ -64,7 +64,7 @@ AR.qa = {
     {
      "h": "الـ Spiral model",
      "pts": [
-      "الـ <b>Spiral</b>: iterative، وبيحل مشاكل الـ waterfall. 4 phases بتتكرر في cycles: <b>Planning → Risk analysis → Design engineering → Customer evaluation (testing & evaluation)</b>. عادةً بيتعمل <b>2 أو 3 prototypes</b> قبل الـ final product.",
+      "الـ <b>Spiral</b> model بيمشي بشكل iterative (بيكرر نفس الخطوات)، وبيحل مشاكل الـ waterfall.<br>فيه 4 phases بتتكرر في cycles:<span class=\"ltr\"><b>Planning → Risk analysis → Design engineering → Customer evaluation (testing &amp; evaluation)</b></span>وعادةً بيتعمل <b>2 أو 3 prototypes</b> قبل الـ final product.",
       "في الـ Spiral الـ phases بتتكرر في cycles <b>لحد ما كل المشاكل تتحل</b>. وكل prototype بيعدي على <b>الـ cycle كلها</b> عشان نلاقي المشاكل ونصلحها.",
       "<b>الـ 4 phases</b>:<br>• الـ <b>Planning</b>: بيحدد الـ specifications والـ objectives والـ constraints والـ strategies؛ وبنحلل كل البدائل اللي تساعد نعمل مشروع cost-effective، ونحدد كل الـ risks المحتملة في تطوير المشروع.<br>• الـ <b>Risk analysis</b>: بيحدد الـ risks المحتملة ويقيّم الحلول الـ cost-effective.<br>• الـ <b>Design engineering</b>: الـ software الحقيقي بيتعمل بشكل iterative.<br>• الـ <b>Testing & evaluation</b>: العملاء بيختبروا المنتج ويدّوا feedback عشان يتحسن؛ وفي الـ cycle دي كل الـ phases بتركز على الـ feedback اللي جاي من العميل والـ testing team عشان تحل العيوب والـ bugs اللي اتلاقت في كل prototype.",
       "<bdi>Figure 1.2 (Spiral Model)</bdi>: <br>• <b>الأرباع</b>: فيه محورين بيقسموا الشكل لـ 4 أرباع: <b>Plan</b> (فوق شمال)، <b>Risk Analysis</b> (فوق يمين)، <b>Design</b> (تحت يمين)، و<b>Testing</b> (تحت شمال).<br>• <b>المحاور</b>: المحور الرأسي سهمه لفوق ومكتوب عليه <b>Cumulative cost</b>، والمحور الأفقي سهمه للشمال ومكتوب عليه <b>Review</b>، وفيه سهم مقوس فوق اسمه <b>Progress</b> بيوضح إن الـ spiral بيلف مع عقارب الساعة وبيوسع لبره.<br>• <b>شمال المحور الرأسي</b> (من جوه لبره): Requirements plan و Concept of operation و Development plan و Test plan و Release.<br>• <b>يمينه من فوق</b>: Risk analysis على كل لفة، وفيه جزء متظلل بيوسع لحد <b>Prototype 1 و Prototype 2 و Operational Prototype</b>.<br>• <b>يمينه من تحت</b>: Concept of requirements و Requirements و Draft و Detailed design و Code و Integration و Test و Verification & Validation (مرتين) و Implementation؛ والـ spiral بيخلص بسهم عند الـ Release.",
@@ -77,7 +77,7 @@ AR.qa = {
     {
      "h": "الـ V-Model",
      "pts": [
-      "بيدمج الـ testing في <b>كل stage</b> من الـ SDLC، والـ testing بيبدأ بدري من الـ requirements phase. الـ development ماشي من <b>high level → low level</b> (الجنب الشمال، نازل)؛ والـ testing ماشي من <b>low level → high level</b> (الجنب اليمين، طالع).",
+      "الـ V-Model بيدمج الـ testing في <b>كل stage</b> من الـ SDLC، والـ testing بيبدأ بدري من الـ requirements phase.<br>• الـ development بينزل على الجنب الشمال، من الـ <b>high level</b> للـ <b>low level</b>.<br>• والـ testing بيطلع على الجنب اليمين، من الـ <b>low level</b> للـ <b>high level</b>.",
       "بيضمن إن فيه quality checks مستمرة طول الـ process. <b>أهم ميزة (salient aspect)</b> في الـ V model إنه بيوضح test levels منفصلة، وإزاي كل level بيغطي stage مختلفة من الـ lifecycle. الـ development activities بتبدأ بتحديد الـ business requirements. الـ model شكله زي حرف \"V\": <b>الجنب الشمال</b> بيمثل الـ development activities (من الـ business requirements لحد الـ detailed design)، و<b>الجنب اليمين</b> بيمثل الـ <b>testing phases</b> المقابلة ليها (من الـ unit testing لحد الـ acceptance testing).",
       "<b>الـ test levels</b>:<br>• الـ <b>Unit</b>: كل module لوحده.<br>• الـ <b>Integration</b>: التفاعل بين الـ modules.<br>• الـ <b>System</b>: الـ system كله ماشي على الـ design والـ performance.<br>• الـ <b>Acceptance</b>: بيعمله العميل عشان يتأكد من الـ business requirements.",
       "في الـ <b>unit design stage</b> بنحدد الـ programs أو الـ modules الفردية بتاعة الـ software كله، وعلى أساسها بنعمل الـ test cases بتاعة الـ unit testing. الـ test cases بتتعمل عشان تشيك على جوانب مختلفة من الـ software: الـ checks دي بتختبر الـ program structure الحقيقي، أو إذا كان الـ software شغال زي الـ specification ولا لأ.",
@@ -88,7 +88,7 @@ AR.qa = {
     {
      "h": "الـ V-Model mapping (الشكل)",
      "pts": [
-      "<bdi>Figure 1.3 (V Model)</bdi>: الـ boxes عاملة شكل حرف V. على الدراع الشمال (الأسهم نازلة): Requirements Specifications → Functional Specifications → System Design → Unit Design → الـ <b>Code</b> في القاع. وعلى الدراع اليمين (الأسهم طالعة): Code → Unit Test → Integration Test → System Test → Acceptance Test. وفيه أسهم متقطعة (dashed) رايحة بالعرض من كل box في الشمال للـ box المقابل ليه في اليمين، ومكتوب عليها الـ plan: <b>Acceptance Test Plan و System Test Plan و Integration Test Plan</b>؛ وبين الـ Unit Design والـ Unit Test مكتوب <b>Test Cases</b>."
+      "<bdi>Figure 1.3 (V Model)</bdi>: الـ boxes عاملة شكل حرف V.<br>• <b>الدراع الشمال</b> (الأسهم نازلة)، والـ <b>Code</b> في القاع:<span class=\"ltr\">Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</span>• <b>الدراع اليمين</b> (الأسهم طالعة):<span class=\"ltr\">Code → Unit Test → Integration Test → System Test → Acceptance Test</span>• فيه أسهم متقطعة (dashed) رايحة بالعرض من كل box في الشمال للـ box المقابل ليه في اليمين، ومكتوب على كل سهم اسم الـ plan بتاعه:<span class=\"ltr\"><b>Acceptance Test Plan, System Test Plan, Integration Test Plan</b></span>وبين الـ Unit Design والـ Unit Test مكتوب <b>Test Cases</b>."
      ],
      "figH": {
       "qa-vmodel": "<bdi>Figure 1.3</bdi>: الـ V Model، كل development stage والـ test level اللي بيختبرها"
@@ -99,7 +99,7 @@ AR.qa = {
      "pts": [
       "الـ <b>RAD</b> (Rapid Application Development): بيتبني من الـ business requirements والـ project-management requirements والـ SRS. بنقارن الـ prototype بالـ requirements؛ لو فيه gap، بنعمل prototype تاني. هو <b>linear sequential</b> بـ <b>cycle قصيرة جدًا</b> و<b>reusable components</b>.",
       "لما الـ requirements تكون مفهومة ومتحددة كويس، الـ RAD process بتخلي الـ development team تعمل الـ final product في <b>وقت أقصر</b>.",
-      "<b>الـ phases بتاعة الـ RAD</b>: Requirements planning → Design (prototype) → Construction → Testing &amp; handover.<br>• الـ <b>Requirements planning</b>: بنجمع الـ requirements بتاعة المشروع ونعمل outline.<br>• الـ <b>Design phase</b>: بنبني prototype فيه كل الـ requirements والتغييرات اللازمة.<br>• الـ <b>Construction phase</b>: بنطور ونحسّن الـ prototypes بالـ RAD tools لحد ما العميل يبقى راضي.<br>• الـ <b>Testing and handover</b>: بنستخدم reusable components عشان نقلل وقت الـ testing قبل ما نسلّم الـ final product.",
+      "<b>الـ phases بتاعة الـ RAD</b>:<span class=\"ltr\">Requirements planning → Design (prototype) → Construction → Testing &amp; handover</span>• الـ <b>Requirements planning</b>: بنجمع الـ requirements بتاعة المشروع ونعمل outline.<br>• الـ <b>Design phase</b>: بنبني prototype فيه كل الـ requirements والتغييرات اللازمة.<br>• الـ <b>Construction phase</b>: بنطور ونحسّن الـ prototypes بالـ RAD tools لحد ما العميل يبقى راضي.<br>• الـ <b>Testing and handover</b>: بنستخدم reusable components عشان نقلل وقت الـ testing قبل ما نسلّم الـ final product.",
       "<b>المميزات</b>: development سريع بالـ prototypes، ومرن (flexible) مع التغييرات، وفيه customer feedback، وبيقلل الـ risk، و<b>بيضمن quality عالية</b>.<br><b>العيوب</b>: لو reusable component ناقص ممكن المشروع كله يفشل؛ ومناسب بس للمشاريع <b>الصغيرة والبسيطة</b>، مش المعقدة."
      ],
      "figH": {
@@ -109,11 +109,11 @@ AR.qa = {
     {
      "h": "الـ Agile model والـ XP والـ TDD",
      "pts": [
-      "الـ <b>Agile</b>: أكتر model مستخدم النهارده. <b>Incremental</b>، cycles قصيرة، releases صغيرة، feedback مستمر و<b>تعاون مستمر (continuous collaboration)</b> بين العملاء والـ developers والـ testers. الـ approaches: <b>DSDM, SCRUM, XP</b> (والـ XP هو الأشهر).",
-      "على عكس الـ sequential models التقليدية زي الـ Waterfall أو الـ Spiral، الـ Agile معمول عشان يتعامل مع <b>المشاريع المعقدة اللي فيها تغييرات مستمرة</b> بإنه يستجيب بسرعة وبكفاءة. بيعتمد على <b>الـ constant feedback</b> عشان يقسم الشغل لأجزاء صغيرة ينفع تتختبر، وبتتحسن على حسب الـ input بتاع الـ user. كل release بيتبني على اللي قبله وبيتختبر كويس عشان نصلح الـ bugs بدري. والتعاون المستمر بين العملاء والـ developers والـ testers بيضمن إن الـ requirements تتحقق بدقة.<br>الـ DSDM = <b>Dynamic Systems Development Method</b>؛ والـ XP = <b>Extreme Programming</b>.",
+      "الـ <b>Agile</b> هو أكتر model مستخدم النهارده.<br>• هو <b>incremental</b>، يعني cycles قصيرة و releases صغيرة.<br>• فيه feedback مستمر و<b>تعاون مستمر (continuous collaboration)</b> بين العملاء والـ developers والـ testers.<br>• الـ approaches بتاعته: <b>DSDM و SCRUM و XP</b>، والـ XP هو الأشهر.",
+      "على عكس الـ sequential models التقليدية زي الـ Waterfall أو الـ Spiral، الـ Agile معمول عشان يتعامل مع <b>المشاريع المعقدة اللي فيها تغييرات مستمرة</b> بإنه يستجيب بسرعة وبكفاءة. بيعتمد على <b>الـ constant feedback</b> عشان يقسم الشغل لأجزاء صغيرة ينفع تتختبر، وبتتحسن على حسب الـ input بتاع الـ user. كل release بيتبني على اللي قبله وبيتختبر كويس عشان نصلح الـ bugs بدري. والتعاون المستمر بين العملاء والـ developers والـ testers بيضمن إن الـ requirements تتحقق بدقة.<br>الـ DSDM اختصار لـ <b>Dynamic Systems Development Method</b>، والـ XP اختصار لـ <b>Extreme Programming</b>.",
       "الـ <b>XP</b>: الـ programmers بيشتغلوا <b>pairs</b> (واحد بيكتب code والتاني بيعمل review/test). الـ <b>TDD</b> = بنكتب الـ test cases <b>قبل</b> الـ code، في 5 steps:",
       "الـ TDD، وهو practice أساسي في الـ XP، بيكتب الـ test cases قبل الـ coding <b>عشان يضمن الـ quality ويقلل الـ errors</b>.<br>(1) <b>Create the test code</b>: الـ developer بيكتب automated test scripts قبل ما يكتب الـ program code الحقيقي؛ الـ tests دي بتحدد الـ software المفروض يعمل إيه.<br>(2) <b>Write or modify the functional code</b>: بعدها الـ developer بيكتب الـ code الحقيقي عشان يعدّي الـ test cases المحددة مسبقًا؛ وبيتعدل لحد ما يحقق كل الـ test requirements.<br>(3) <b>Create additional tests</b>: الـ tester بيزود tests تانية بـ inputs مختلفة على حسب تعقيد الـ module.<br>(4) <b>Test the functional code</b>: الـ functional code بيتختبر أكتر من مرة بالـ test cases اللي اتعملت لحد ما كل الـ tests تعدّي بنجاح.<br>(5) <b>Refactor the code</b>: الـ developer بيحسّن الـ code عشان يبقى أسهل في الـ maintenance والتوسيع والـ update؛ والخطوة دي بتشيل الـ code المتكرر أو اللي مش مستخدم وبتقلل التعقيد.",
-      "<bdi>Figure 1.4 (Agile Model)</bdi>: 5 boxes فوق بعض، متوصلين بأسهم نازلة: Create the test code → Write or modify the function code → Create additional tests → Test the functional code → Refactor the code. وفيه سهم راجع (loop) من <b>Test the functional code</b> لفوق لحد <b>Write or modify the function code</b>.",
+      "<bdi>Figure 1.4 (Agile Model)</bdi>: فيه 5 boxes فوق بعض، متوصلين بأسهم نازلة:<span class=\"ltr\">Create the test code → Write or modify the function code → Create additional tests → Test the functional code → Refactor the code</span>وفيه سهم راجع (loop) من <b>Test the functional code</b> لفوق لحد <b>Write or modify the function code</b>.",
       "الخلاصة: في الـ Agile approach، <b>الـ testers ليهم دور أساسي</b> في إنهم يضمنوا الـ quality والـ efficiency بتاعة الـ software عن طريق الـ continuous testing والـ feedback.",
       "<b>المميزات</b>: مرن (flexible)، وفيه feedback، وتسليم سريع، والـ quality أحسن.<br><b>العيوب</b>: محتاج العميل يكون مشارك بشكل فعّال، وصعب مع الـ teams الكبيرة، والـ scope creep."
      ],
@@ -142,12 +142,12 @@ AR.qa = {
     "Destruction-oriented testing: الـ tests متصممة عشان تلاقي errors (عصر Myers).",
     "Evaluation-oriented: دخّل الـ verification والـ validation.",
     "Prevention-oriented: نمنع الـ defects بإننا نعمل test design و planning بدري.",
-    "Divide-by-zero، overflow، rounding errors.",
-    "Deadlocks، race conditions، مشاكل الـ concurrency.",
+    "الـ divide-by-zero والـ overflow والـ rounding errors.",
+    "الـ deadlocks والـ race conditions ومشاكل الـ concurrency.",
     "Documentation قديمة (outdated)، ملفات مش متطابقة (mismatched files)، incorrect linking.",
     "الـ Requirement stage. أما الـ Production stage فمكلفة جدًا جدًا.",
     "timing bug أدى لموت 28 عسكري.",
-    "Planning، risk analysis، design engineering، customer evaluation (بيتكرروا في cycles).",
+    "الـ planning والـ risk analysis والـ design engineering والـ customer evaluation، وبيتكرروا في cycles.",
     "في الـ requirements specifications stage.",
     "لو reusable component ناقص ممكن يسبب فشل؛ ومناسب بس للمشاريع الصغيرة والبسيطة.",
     "نعمل الـ test code، نكتب الـ functional code، نعمل tests زيادة، نختبر الـ functional code، نعمل refactor."
@@ -209,8 +209,8 @@ AR.qa = {
     [
      "الـ Spiral model كله مبني على الـ prototypes: كل cycle فيها planning و risk analysis و engineering و evaluation بتطلّع prototype، فـ <bdi>«None»</bdi> غلط.",
      "الـ Spiral model بيكرر الـ 4 phases بتوعه في كذا cycle، فبيبني أكتر من prototype واحد؛ والمحاضرة بتقول عادةً 2 أو 3.",
-     "صح. الـ Spiral model بيلف في cycles: planning ← risk analysis ← design engineering ← customer evaluation، وعادةً بيطلّع 2 أو 3 prototypes قبل الـ final product (L1, Spiral model).",
-     "10 prototypes أو أكتر هيخلّوا الـ Spiral model، اللي هو أصلًا بياخد وقت ومكلف، مش عملي خالص؛ المحاضرة بتقول عادةً 2 أو 3."
+     "صح. الـ Spiral model بيلف في cycles:<span class=\"ltr\">planning → risk analysis → design engineering → customer evaluation</span>وعادةً بيطلّع 2 أو 3 prototypes قبل الـ final product (L1, Spiral model).",
+     "لو عملنا 10 prototypes أو أكتر، ده هيخلّي الـ Spiral model، اللي هو أصلًا بياخد وقت ومكلف، مش عملي خالص؛ المحاضرة بتقول عادةً 2 أو 3."
     ],
     [
      "الـ functional code بييجي تاني، وبيتكتب عشان يعدّي الـ tests.",
@@ -275,7 +275,7 @@ AR.qa = {
     [
      "دي step 1، قبل ما الـ functional code يتكتب.",
      "الـ Refactoring هو step 5، آخر خطوة؛ بعد ما تكتب الـ functional code الأول بتعمل tests زيادة وتشغّلها (L1, TDD).",
-     "صح. الترتيب: create test code → write/modify functional code → create additional tests → test the functional code → refactor.",
+     "صح. الترتيب:<span class=\"ltr\">create test code → write/modify functional code → create additional tests → test the functional code → refactor</span>",
      "دي step 4؛ الـ additional tests بتتعمل الأول (step 3)."
     ],
     [
