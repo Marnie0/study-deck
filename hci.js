@@ -31,7 +31,13 @@ COURSES.hci = {
       "<b>Human Computer Interaction (HCI)</b> is a <b>multidisciplinary field of study</b> focusing on the design of computer technology and, in particular, the interaction between humans (the users) and computers.",
       "While initially concerned with computers, HCI has since expanded to cover <b>almost all forms of information technology design</b>."
      ],
-     "fig": "user-computer"
+     "fig": "user-computer",
+     "figAt": {
+      "user-computer": 1
+     },
+     "figH": {
+      "user-computer": "HCI: the interaction between the user and the computer"
+     }
     },
     {
      "h": "The three parts of HCI (pie chart)",
@@ -41,7 +47,10 @@ COURSES.hci = {
       "<b>Computer</b>: Computer graphic, Operating system, Programming language.",
       "<b>Interaction</b>: Interaction design."
      ],
-     "fig": "hci-parts"
+     "fig": "hci-parts",
+     "figH": {
+      "hci-parts": "The three parts of HCI and the fields in each"
+     }
     },
     {
      "h": "What is HCI? More from last year's slides",
@@ -84,7 +93,10 @@ COURSES.hci = {
       "The user should <b>think about the task rather than thinking about the tool</b>.",
       "Diagram: USER on the left, TASK (a clipboard with a check mark) on the right, and arrows going both ways between them passing through the INTERFACE (a computer screen) in the middle."
      ],
-     "fig": "invisible-interface"
+     "fig": "invisible-interface",
+     "figH": {
+      "invisible-interface": "The invisible interface: the user thinks about the task, not the tool"
+     }
     },
     {
      "h": "Human-Task interaction and the invisible interface",
@@ -102,7 +114,13 @@ COURSES.hci = {
       "Picture (www.baddesigns.com):<br>• Top row: floor numbers 1, 2, 3, each next to a button.<br>• Bottom row: DOOR OPEN, a button, an X, STOP/RUN, a bell, a button, DOOR CLOSE and a button, where labels and buttons are the same square tiles.<br>• A red arrow points at a label on the bottom row.",
       "People do not make the same mistake for the labels and buttons on the <b>top row</b>. Why not? (question for discussion; the slide gives no answer)"
      ],
-     "fig": "elevator"
+     "fig": "elevator",
+     "figAt": {
+      "elevator": 1
+     },
+     "figH": {
+      "elevator": "Bad design: elevator buttons that all look the same"
+     }
     },
     {
      "h": "Why is this vending machine so bad?",
@@ -113,7 +131,10 @@ COURSES.hci = {
       "Picture: the machine's labels read \"STEP 1 PUSH ANY BUTTON TO START UNIT\", \"STEP 2 FOLLOW DIRECTIONS ON DISPLAY\" and \"STEP 3 TAKE RECEIPT PLACE ON DASH\"; an arrow points to the bill slot.",
       "Picture: a 'REQUIRED' sign with opening hours (7:00 a.m. - 10:00 p.m.); an arrow points to the bill slot, which is separate from the STEP 1 'PUSH ANY BUTTON TO START UNIT' label."
      ],
-     "fig": "vending"
+     "fig": "vending",
+     "figH": {
+      "vending": "Bad design: a vending machine that breaks the usual order"
+     }
     },
     {
      "h": "Good design: marble answering machine",
@@ -123,7 +144,10 @@ COURSES.hci = {
       "<b>Easy, intuitive, and a pleasure to use</b>.",
       "Only requires <b>one-step actions</b> to perform core tasks."
      ],
-     "fig": "marble"
+     "fig": "marble",
+     "figH": {
+      "marble": "Good design: the marble answering machine"
+     }
     },
     {
      "h": "Good and bad design: TiVo remote",
@@ -133,7 +157,10 @@ COURSES.hci = {
       "<b>Logical layout</b> and <b>color-coded, distinctive buttons</b>.",
       "<b>Easy-to-locate buttons</b>."
      ],
-     "fig": "tivo"
+     "fig": "tivo",
+     "figH": {
+      "tivo": "Good design: the TiVo remote compared with a standard remote"
+     }
     },
     {
      "h": "Dilemma: interacting with a smart TV",
@@ -144,7 +171,10 @@ COURSES.hci = {
       "3) <b>Voice control</b> using a remote or smart speaker.",
       "Pictures: a TV search screen with a grid keyboard of letters and numbers (with Space, Delete and Clear), and an Apple ID Sign In screen with one row of letters a to z and one row of numbers and symbols (.com, .net, .edu)."
      ],
-     "fig": "smart-tv"
+     "fig": "smart-tv",
+     "figH": {
+      "smart-tv": "Three ways to type on a smart TV, compared"
+     }
     },
     {
      "h": "User research is important: Qualcomm device for truckers",
@@ -155,7 +185,10 @@ COURSES.hci = {
       "Better design: a <b>large touch screen</b> and a <b>stylus pen</b>.",
       "Picture: a trucker using the device mounted beside the steering wheel."
      ],
-     "fig": "truckers"
+     "fig": "truckers",
+     "figH": {
+      "truckers": "User research: the Qualcomm device for truckers, before and after"
+     }
     },
     {
      "h": "UI design process (3 components)",
@@ -203,7 +236,13 @@ COURSES.hci = {
       "Second mock-up: the same layout in bright colors (yellow header, blue search box, green drop-down, orange Go button), three books, and a cartoon smiley face with a speech bubble saying \"Reading Rox\".",
       "<b>Bad design</b>: the <b>user research component is almost absent</b>."
      ],
-     "fig": "book-mockups"
+     "fig": "book-mockups",
+     "figAt": {
+      "book-mockups": 2
+     },
+     "figH": {
+      "book-mockups": "The online book library search: two mock-ups"
+     }
     },
     {
      "h": "Example case: International Children's Digital Library (ICDL)",
@@ -213,7 +252,13 @@ COURSES.hci = {
       "Simple Search page screenshot: big picture buttons to search by:<br>• cover color: Rainbow, Red, Orange, Yellow, Green, Blue Covers<br>• age: Three to Five, Six to Nine, Ten to Thirteen<br>• Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books<br>• plus a Keywords search box.<br>It also shows <b>Featured Books</b> and <b>From Our Shelves</b> rows, a <b>Show Any Language books</b> filter, <b>More Choices</b>, <b>Search By Collections</b> and <b>Browse Exhibitions</b>.",
       "The ICDL search page is a <b>good design</b>: <b>more than 3 million unique visitors</b>, and the <b>visual search</b> was preferred by users (<b>71% of searches</b>)."
      ],
-     "fig": "icdl-search"
+     "fig": "icdl-search",
+     "figAt": {
+      "icdl-search": 2
+     },
+     "figH": {
+      "icdl-search": "The ICDL visual search for children"
+     }
     },
     {
      "h": "Case studies",
@@ -229,7 +274,10 @@ COURSES.hci = {
       "Someone spent <b>at least 30 minutes</b> filling out a <b>doctor's office form</b> which asked for the address, phone number, email address and social security number an <b>average of 3 times</b> for <b>at least 10 different people and organizations</b> (my son, the patient, me, my wife, his doctors, dentists, pharmacies, insurance companies, emergency contact information and responsible parties ...).",
       "After completing and submitting, they received this message: <b>\"Internal server error\"</b> (shown with a sad face)."
      ],
-     "fig": "doctor-form"
+     "fig": "doctor-form",
+     "figH": {
+      "doctor-form": "A bad user experience: the doctor's office form"
+     }
     },
     {
      "h": "Design considerations",
@@ -264,7 +312,10 @@ COURSES.hci = {
       "<b>Design Practices</b> (arrows pointing into ID): Graphic Design, Product Design, Artist-Design, Industrial Design, Film Industry.",
       "<b>Interdisciplinary Fields</b> (two-way arrows with ID): Human Factors (HF), Cognitive Engineering, Human-Computer Interaction (HCI), Cognitive Ergonomics, Computer-Supported Cooperative Work (CSCW), Information Systems."
      ],
-     "fig": "id-umbrella"
+     "fig": "id-umbrella",
+     "figH": {
+      "id-umbrella": "Interaction design and the fields around it"
+     }
     },
     {
      "h": "Relationship between ID, HCI and other fields",
@@ -1306,7 +1357,10 @@ COURSES.hci = {
       "Diagram: two diamonds side by side. The first diamond starts at a point labelled <b>Problem</b>, widens during Discover and narrows during Define to a point labelled <b>Problem Definition</b> / <b>Design Brief</b>.",
       "The second diamond starts from that point, widens during Develop and narrows during Deliver to a point labelled <b>Solution</b>."
      ],
-     "fig": "double-diamond"
+     "fig": "double-diamond",
+     "figH": {
+      "double-diamond": "The double diamond: Discover, Define, Develop, Deliver"
+     }
     },
     {
      "h": "Four basic activities of interaction design",
@@ -1323,7 +1377,10 @@ COURSES.hci = {
       "Prototyping → <b>Evaluating</b>.",
       "From Evaluating, arrows go back to Discovering requirements and back to Designing alternatives, and one arrow leaves the cycle to the <b>Final product</b>."
      ],
-     "fig": "id-lifecycle"
+     "fig": "id-lifecycle",
+     "figH": {
+      "id-lifecycle": "A simple interaction design lifecycle, step by step"
+     }
     },
     {
      "h": "Another lifecycle model: Google Design Sprints",
@@ -1333,14 +1390,23 @@ COURSES.hci = {
       "The steps form a cycle labelled <b>Iterate</b>: Unpack → Sketch → Decide → Prototype → Test → back to Unpack.",
       "Source: Google Design Sprints (used courtesy of Agile Marketing)."
      ],
-     "fig": "design-sprint"
+     "fig": "design-sprint",
+     "figAt": {
+      "design-sprint": 2
+     },
+     "figH": {
+      "design-sprint": "Google Design Sprints: five steps in a cycle"
+     }
     },
     {
      "h": "Design life cycle (according to Joyner)",
      "pts": [
       "Joyner's design life cycle is an <b>iterative process with four phases</b>:<br><b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → back to Need finding."
      ],
-     "fig": "joyner-cycle"
+     "fig": "joyner-cycle",
+     "figH": {
+      "joyner-cycle": "Joyner's design life cycle"
+     }
     },
     {
      "h": "User-centered design process (Google)",
@@ -1349,7 +1415,10 @@ COURSES.hci = {
       "<b>Understand → Specify → Design → Evaluate</b>, and iteration is key.",
       "• <b>Understand</b>: how users experience the product (a lot of research).<br>• <b>Specify</b>: the most important user problem to solve.<br>• <b>Design</b>: solutions, then start building.<br>• <b>Evaluate</b>: test with real users."
      ],
-     "fig": "google-ucd"
+     "fig": "google-ucd",
+     "figH": {
+      "google-ucd": "Google's user-centered design process"
+     }
     },
     {
      "h": "Where is \"user research\"?",
@@ -2204,7 +2273,10 @@ COURSES.hci = {
       "What is the name of the first school you attended?",
       "The slide gives no answers; this is a question for class discussion."
      ],
-     "fig": "fast-slow"
+     "fig": "fast-slow",
+     "figH": {
+      "fast-slow": "Fast or slow thinking? Sort the questions"
+     }
     },
     {
      "h": "How can understanding cognition help?",
@@ -2264,7 +2336,13 @@ COURSES.hci = {
        "3.2 seconds to search"
       ]
      ],
-     "fig": "hotel-search"
+     "fig": "hotel-search",
+     "figAt": {
+      "hotel-search": 3
+     },
+     "figH": {
+      "hotel-search": "Find the hotel price: the two screens timed"
+     }
     },
     {
      "h": "Multitasking and attention",
@@ -2310,7 +2388,10 @@ COURSES.hci = {
       "Response time is slower to unexpected events (<b>Briggs et al., 2018</b>).",
       "Drivers often try to imagine what the other person's face is like (the person to whom they are speaking). Doing so competes with the processing resources needed to enable them to notice and react to what is in front of them."
      ],
-     "fig": "phone-driving"
+     "fig": "phone-driving",
+     "figH": {
+      "phone-driving": "Why using a phone while driving is dangerous"
+     }
     },
     {
      "h": "Are hands-free phones safer to use when driving?",
@@ -2350,7 +2431,13 @@ COURSES.hci = {
       "Some argue that too much white space on web pages is detrimental to the search process: it makes it hard to find information.",
       "Do you agree? (question for discussion; the slide gives no answer)"
      ],
-     "fig": "word-grids"
+     "fig": "word-grids",
+     "figAt": {
+      "word-grids": 1
+     },
+     "figH": {
+      "word-grids": "Color contrast vs borders and white space: find the word"
+     }
     },
     {
      "h": "Activity: which is the easiest to read and why?",
@@ -2363,7 +2450,13 @@ COURSES.hci = {
       "5) White text on a yellow (mustard) background.",
       "The slide asks which is easiest to read and why, and gives no answer; it is a question for discussion."
      ],
-     "fig": "time-boxes"
+     "fig": "time-boxes",
+     "figAt": {
+      "time-boxes": 5
+     },
+     "figH": {
+      "time-boxes": "Which text is easiest to read?"
+     }
     },
     {
      "h": "Design implications for perception",
@@ -2904,7 +2997,10 @@ COURSES.hci = {
       "People are very good at remembering <b>visual cues</b> about things, for instance the color of items, the location of objects and marks on an object.",
       "They find it more difficult to learn and remember <b>arbitrary material</b>, for example birthdays and phone numbers."
      ],
-     "fig": "remember-activity"
+     "fig": "remember-activity",
+     "figH": {
+      "remember-activity": "What is easy to remember: visual cues vs arbitrary facts"
+     }
     },
     {
      "h": "The problem with the classic '7, + or - 2'",
@@ -2916,7 +3012,10 @@ COURSES.hci = {
       "When creating an interface, should the designer:<br>• present only 7 options on a menu?<br>• display only 7 icons on a tool bar?<br>• have no more than 7 bullets in a list?<br>• place only 7 items on a pull down menu?<br>• place only 7 tabs on the top of a website page?<br>(question for discussion; the slide gives no answer)",
       "The slide shows a row of 7 smiley faces in different colors (red, purple, blue, yellow, black, white, light blue)."
      ],
-     "fig": "seven-plus-minus"
+     "fig": "seven-plus-minus",
+     "figH": {
+      "seven-plus-minus": "Miller's 7 ± 2: how many options to show?"
+     }
     },
     {
      "h": "Design implications for memory",

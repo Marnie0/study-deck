@@ -21,7 +21,10 @@ AR.hci = {
       "صورة: user وكمبيوتر بينهم سهم في الاتجاهين مكتوب عليه \"Interaction\".",
       "الـ <b>Human Computer Interaction (HCI)</b> هو <b>multidisciplinary field of study</b> بيركز على تصميم الـ computer technology، وبالذات التفاعل بين البني آدمين (الـ users) والكمبيوتر.",
       "في الأول كان الـ HCI مهتم بالكمبيوتر بس، وبعد كده اتوسع وبقى بيغطي <b>تقريباً كل أشكال الـ information technology design</b>."
-     ]
+     ],
+     "figH": {
+      "user-computer": "الـ HCI: التفاعل بين الـ user والـ computer"
+     }
     },
     {
      "h": "الـ 3 أجزاء بتوع الـ HCI (pie chart)",
@@ -30,7 +33,10 @@ AR.hci = {
       "الـ <b>Human</b>: فيه الـ Communication theory والـ Industrial design والـ Social science والـ Cognitive psychology والـ Human factors.",
       "الـ <b>Computer</b>: فيه الـ Computer graphic والـ Operating system والـ Programming language.",
       "الـ <b>Interaction</b>: فيه الـ Interaction design."
-     ]
+     ],
+     "figH": {
+      "hci-parts": "الـ 3 أجزاء بتوع الـ HCI والمجالات اللي في كل جزء"
+     }
     },
     {
      "h": "إيه هو الـ HCI؟ تفاصيل زيادة من slides السنة اللي فاتت",
@@ -70,7 +76,10 @@ AR.hci = {
       "هدفنا كـ designers إننا نخلي البني آدمين يحسوا إنهم <b>بيتفاعلوا مع الـ task على طول</b>، والـ interface بتاعنا يختفي في نص التفاعل ده.",
       "الـ user المفروض <b>يفكر في الـ task مش في الأداة (tool)</b>.",
       "Diagram: الـ USER على الشمال، والـ TASK (clipboard عليها علامة صح) على اليمين، وأسهم رايحة جاية بينهم بتعدي على الـ INTERFACE (شاشة كمبيوتر) في النص."
-     ]
+     ],
+     "figH": {
+      "invisible-interface": "الـ interface الخفي: الـ user بيفكر في الـ task مش في الأداة"
+     }
     },
     {
      "h": "التفاعل مع الـ Task والـ invisible interface",
@@ -86,7 +95,10 @@ AR.hci = {
       "الـ controls والـ labels بتوع الأسانسير في <b>الصف اللي تحت شكلهم كلهم واحد</b>، فسهل تدوس على label بالغلط بدل زرار الـ control.",
       "صورة (www.baddesigns.com):<br>• الصف اللي فوق فيه أرقام الأدوار 1 و 2 و 3، وجنب كل رقم زرار.<br>• الصف اللي تحت فيه DOOR OPEN، وزرار، وعلامة X، و STOP/RUN، وجرس، وزرار، و DOOR CLOSE وزرار، والـ labels والزراير كلهم نفس المربعات.<br>• وفيه سهم أحمر بيشاور على label في الصف اللي تحت.",
       "الناس مش بتغلط نفس الغلطة مع الـ labels والزراير في <b>الصف اللي فوق</b>. ليه؟ (سؤال للمناقشة؛ الـ slide مش بتدّي إجابة)"
-     ]
+     ],
+     "figH": {
+      "elevator": "تصميم وحش: زراير أسانسير كلها شبه بعض"
+     }
     },
     {
      "h": "ليه الـ vending machine دي وحشة كده؟",
@@ -96,7 +108,10 @@ AR.hci = {
       "فالمكنة <b>بتخالف convention معروف</b>.",
       "صورة: الـ labels اللي على المكنة مكتوب فيها \"STEP 1 PUSH ANY BUTTON TO START UNIT\" و \"STEP 2 FOLLOW DIRECTIONS ON DISPLAY\" و \"STEP 3 TAKE RECEIPT PLACE ON DASH\"؛ وفيه سهم بيشاور على فتحة الفلوس.",
       "صورة: لافتة 'REQUIRED' فيها مواعيد الشغل (7:00 a.m. - 10:00 p.m.)؛ وسهم بيشاور على فتحة الفلوس، وهي منفصلة عن الـ label بتاع STEP 1 'PUSH ANY BUTTON TO START UNIT'."
-     ]
+     ],
+     "figH": {
+      "vending": "تصميم وحش: ماكينة بيع بتكسر الترتيب المعتاد"
+     }
     },
     {
      "h": "Design كويس: الـ marble answering machine",
@@ -105,7 +120,10 @@ AR.hci = {
       "مبنية على <b>الطريقة اللي الحاجات اليومية بتتصرف بيها</b>.",
       "<b>سهلة، و intuitive، وممتعة في الاستخدام</b>.",
       "محتاجة بس <b>one-step actions</b> عشان تعمل الـ core tasks."
-     ]
+     ],
+     "figH": {
+      "marble": "تصميم كويس: الـ marble answering machine"
+     }
     },
     {
      "h": "Design كويس و design وحش: ريموت TiVo",
@@ -114,7 +132,10 @@ AR.hci = {
       "<b>على شكل فول سوداني (peanut)</b> عشان يتمسك في الإيد.",
       "<b>Layout منطقي</b> و<b>زراير color-coded ومميزة</b>.",
       "<b>زراير سهل تلاقيها</b>."
-     ]
+     ],
+     "figH": {
+      "tivo": "تصميم كويس: ريموت الـ TiVo قصاد الريموت العادي"
+     }
     },
     {
      "h": "Dilemma: التفاعل مع الـ smart TV",
@@ -124,7 +145,10 @@ AR.hci = {
       "2) <b>Swiping</b>: على صفين alphanumeric باستخدام touchpad على الريموت.",
       "3) <b>Voice control</b>: باستخدام ريموت أو smart speaker.",
       "صور: شاشة search على التليفزيون فيها grid keyboard حروف وأرقام (فيه Space و Delete و Clear)، وشاشة Apple ID Sign In فيها صف حروف من a لـ z وصف أرقام ورموز (.com و .net و .edu)."
-     ]
+     ],
+     "figH": {
+      "smart-tv": "مقارنة بين 3 طرق للكتابة على الـ smart TV"
+     }
     },
     {
      "h": "الـ User research مهم: جهاز Qualcomm لسواقين التريلات",
@@ -134,7 +158,10 @@ AR.hci = {
       "الـ User interface اكتشف findings مفاجئة (ده كلام الـ slide؛ وعنوان الـ slide هو 'User Research is important'، فالمقصود إن الـ user research هو اللي اكتشف): السواقين غالباً <b>إيديهم كبيرة</b> وغالباً <b>لابسين جوانتي</b>.",
       "الـ design الأحسن: <b>touch screen كبيرة</b> و<b>stylus pen</b>.",
       "صورة: سواق بيستخدم الجهاز وهو متركب جنب الدركسيون."
-     ]
+     ],
+     "figH": {
+      "truckers": "الـ user research: جهاز Qualcomm لسواقين التريلات، قبل وبعد"
+     }
     },
     {
      "h": "الـ UI design process (3 أجزاء)",
@@ -177,7 +204,10 @@ AR.hci = {
       "أول mock-up: [header and menus] فوق؛ وبعدين صف فيه [Search box]، و drop-down [by Title]، وزرار [Go]؛ وبعدين 4 مربعات كتب ([Book 1]، [Book 2]، [Book 3]، [Book 3]).",
       "تاني mock-up: نفس الـ layout بألوان فاقعة (header أصفر، search box أزرق، drop-down أخضر، زرار Go برتقاني)، و 3 كتب، ووش smiley كارتون وجنبه speech bubble مكتوب فيها \"Reading Rox\".",
       "<b>Design وحش</b>: <b>الـ user research component تقريباً مش موجود</b>."
-     ]
+     ],
+     "figH": {
+      "book-mockups": "البحث في مكتبة الكتب الأونلاين: اتنين mock-ups"
+     }
     },
     {
      "h": "Example case: الـ International Children's Digital Library (ICDL)",
@@ -186,7 +216,10 @@ AR.hci = {
       "Screenshot للـ home page (University of Maryland):<br>• العنوان: \"International Children's Digital Library, A Library for the World's Children\".<br>• لينكات The Foundation:<span class=\"ltr\">Mission, Board of Advisors, Foundation Team, Sponsors, For Researchers &amp; Librarians</span>• partnership مع الـ Human-Computer Interaction Lab بتاع University of Maryland، بدعم من الـ iSchool والـ Computer Science Department بتوع UMD.<br>• زرار READ BOOKS!<br>• قوايم كتب حسب اللغة، واللون، والشكل، والـ format، والـ genre (أنواع مختلفة)، والشخصية، والحقيقي ضد الخيالي (true vs. make believe).<br>• الـ Our Mission: الـ ICDL Foundation بتنشر التسامح واحترام الثقافات المختلفة عن طريق إنها توفر الوصول لأحسن أدب أطفال من كل حتة في العالم.<br>• labels تانية: لينك <b>Book list</b> و <b>Library News and Notes (June 2, 2021)</b>.",
       "Screenshot لصفحة الـ Simple Search: زراير كبيرة بالصور عشان تدور بيها:<br>• حسب لون الغلاف:<span class=\"ltr\">Rainbow, Red, Orange, Yellow, Green, Blue Covers</span>• حسب السن:<span class=\"ltr\">Three to Five, Six to Nine, Ten to Thirteen</span>• وزراير تانية:<span class=\"ltr\">Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books</span>• وكمان search box للـ Keywords.<br>وفيها كمان صفوف <b>Featured Books</b> و <b>From Our Shelves</b>، و filter <b>Show Any Language books</b>، و <b>More Choices</b>، و <b>Search By Collections</b> و <b>Browse Exhibitions</b>.",
       "صفحة الـ search بتاعة الـ ICDL <b>design كويس</b>: <b>أكتر من 3 مليون unique visitors</b>، والـ users فضّلوا الـ <b>visual search</b> (<b>71% من عمليات البحث</b>)."
-     ]
+     ],
+     "figH": {
+      "icdl-search": "البحث بالصور في الـ ICDL للأطفال"
+     }
     },
     {
      "h": "Case studies",
@@ -200,7 +233,10 @@ AR.hci = {
       "إزاي ممكن نتجنب الـ user experience الوحشة دي بـ design أحسن؟ (سؤال للمناقشة؛ الـ slide مش بتدّي إجابة)",
       "واحد قعد <b>30 دقيقة على الأقل</b> يملا <b>form في عيادة دكتور</b>، كانت بتطلب العنوان ورقم التليفون والإيميل والـ social security number <b>في المتوسط 3 مرات</b> لـ <b>10 أشخاص وجهات مختلفة على الأقل</b> (ابني، المريض، أنا، مراتي، دكاترته، دكاترة الأسنان، الصيدليات، شركات التأمين، بيانات الاتصال في الطوارئ، والأطراف المسؤولة ...).",
       "بعد ما خلص وعمل submit، جاتله الرسالة دي: <b>\"Internal server error\"</b> (وجنبها وش زعلان)."
-     ]
+     ],
+     "figH": {
+      "doctor-form": "تجربة استخدام وحشة: الـ form بتاعة عيادة الدكتور"
+     }
     },
     {
      "h": "اعتبارات الـ design (Design considerations)",
@@ -233,7 +269,10 @@ AR.hci = {
       "الـ <b>Academic Disciplines</b> (أسهم داخلة على الـ ID):<span class=\"ltr\">Ergonomics, Psychology/Cognitive Science, Informatics, Engineering, Computer Science/Software Engineering, Social Sciences (e.g. Sociology, Anthropology)</span>",
       "الـ <b>Design Practices</b> (أسهم داخلة على الـ ID):<span class=\"ltr\">Graphic Design, Product Design, Artist-Design, Industrial Design, Film Industry</span>",
       "الـ <b>Interdisciplinary Fields</b> (أسهم في الاتجاهين مع الـ ID):<span class=\"ltr\">Human Factors (HF), Cognitive Engineering, Human-Computer Interaction (HCI), Cognitive Ergonomics, Computer-Supported Cooperative Work (CSCW), Information Systems</span>"
-     ]
+     ],
+     "figH": {
+      "id-umbrella": "الـ interaction design والمجالات اللي حواليه"
+     }
     },
     {
      "h": "العلاقة بين الـ ID والـ HCI والمجالات التانية (جدول)",
@@ -787,7 +826,10 @@ AR.hci = {
       "الـ <b>double diamond of design</b> فيه 4 phases:<span class=\"ltr\"><b>Discover</b> → <b>Define</b> → <b>Develop</b> → <b>Deliver</b></span>• الـ <b>Discover</b>: فهم للمشكلة (insight into the problem).<br>• الـ <b>Define</b>: المنطقة اللي هنركز عليها.<br>• الـ <b>Develop</b>: حلول محتملة.<br>• الـ <b>Deliver</b>: حلول شغالة فعلاً.",
       "الرسمة: 2 diamonds جنب بعض. الـ diamond الأولانية بتبدأ من نقطة اسمها <b>Problem</b>، وبتوسع في الـ Discover وبتضيق في الـ Define لحد نقطة اسمها <b>Problem Definition</b> / <b>Design Brief</b>.",
       "الـ diamond التانية بتبدأ من النقطة دي، وبتوسع في الـ Develop وبتضيق في الـ Deliver لحد نقطة اسمها <b>Solution</b>."
-     ]
+     ],
+     "figH": {
+      "double-diamond": "الـ double diamond بمراحله الأربعة: Discover و Define و Develop و Deliver"
+     }
     },
     {
      "h": "الـ 4 basic activities بتوع الـ interaction design",
@@ -803,7 +845,10 @@ AR.hci = {
       "من الـ Designing alternatives فيه سهم رايح للـ <b>Prototyping</b>، والـ Prototyping ليه سهم راجع للـ Designing alternatives.",
       "ومن الـ Prototyping فيه سهم رايح للـ <b>Evaluating</b>.",
       "من الـ Evaluating فيه أسهم راجعة للـ Discovering requirements وللـ Designing alternatives، وسهم واحد بيطلع برة الـ cycle للـ <b>Final product</b>."
-     ]
+     ],
+     "figH": {
+      "id-lifecycle": "دورة حياة بسيطة للـ interaction design، خطوة بخطوة"
+     }
     },
     {
      "h": "Lifecycle model تاني: Google Design Sprints",
@@ -812,20 +857,29 @@ AR.hci = {
       "الـ Google Design Sprint فيه 5 steps:<span class=\"ltr\">(1) <b>Unpack</b> → (2) <b>Sketch</b> → (3) <b>Decide</b> → (4) <b>Prototype</b> → (5) <b>Test</b></span>",
       "الـ steps بتعمل cycle اسمها <b>Iterate</b>، وبعد الـ Test بترجع للـ Unpack تاني:<span class=\"ltr\">Unpack → Sketch → Decide → Prototype → Test → Unpack</span>",
       "المصدر: Google Design Sprints (used courtesy of Agile Marketing)."
-     ]
+     ],
+     "figH": {
+      "design-sprint": "الـ Google Design Sprints: خمس خطوات في دايرة"
+     }
     },
     {
      "h": "الـ Design life cycle (حسب Joyner)",
      "pts": [
       "الـ design life cycle بتاع Joyner هو <b>iterative process فيه 4 phases</b>، وبعد الـ Evaluation بترجع للـ Need finding:<span class=\"ltr\"><b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → Need finding</span>"
-     ]
+     ],
+     "figH": {
+      "joyner-cycle": "دورة حياة التصميم عند Joyner"
+     }
     },
     {
      "h": "الـ User-centered design process (Google)",
      "pts": [
       "الـ process بيمشي كده، والـ iteration هو الأساس:<span class=\"ltr\"><b>Understand → Specify → Design → Evaluate</b></span>",
       "• الـ <b>Understand</b>: الـ users بيجرّبوا المنتج إزاي (research كتير).<br>• الـ <b>Specify</b>: أهم user problem محتاجين نحلها.<br>• الـ <b>Design</b>: حلول، وبعدين نبدأ نبني.<br>• الـ <b>Evaluate</b>: نختبر مع users حقيقيين."
-     ]
+     ],
+     "figH": {
+      "google-ucd": "الـ user-centered design process بتاعة Google"
+     }
     },
     {
      "h": "فين الـ \"user research\"؟",
@@ -1266,7 +1320,10 @@ AR.hci = {
       "كام شهر في السنة فيه 31 يوم؟",
       "اسم أول مدرسة دخلتها إيه؟",
       "الـ slide مش بتدي إجابات؛ ده سؤال للمناقشة في المحاضرة."
-     ]
+     ],
+     "figH": {
+      "fast-slow": "تفكير سريع ولا بطيء؟ صنّف الأسئلة"
+     }
     },
     {
      "h": "فهم الـ cognition بيساعد في إيه؟",
@@ -1307,7 +1364,10 @@ AR.hci = {
       "طب ليه، مع إن الاتنين فيهم نفس الـ density من المعلومات؟ السبب هو الـ <b>Spacing</b>:",
       "في الشاشة الأولى، المعلومات لازقة في بعض (bunched up)، وده بيخلي التدوير صعب.",
       "في الشاشة التانية، الحروف متجمعة في vertical categories من المعلومات، وده بيخليه أسهل."
-     ]
+     ],
+     "figH": {
+      "hotel-search": "دوّر على سعر الفندق: الشاشتين وقت كل واحدة"
+     }
     },
     {
      "h": "الـ Multitasking والـ attention",
@@ -1352,7 +1412,10 @@ AR.hci = {
       "السواقين اللي بيستخدموا الموبايل بيعتمدوا أكتر على توقعاتهم للي غالباً هيحصل بعد كده، عشان المكالمة واخدة الـ attention بتاعهم.",
       "الـ Response time بيبقى أبطأ للأحداث اللي مش متوقعة (<b>Briggs et al., 2018</b>).",
       "السواقين كتير بيحاولوا يتخيلوا وش الشخص التاني (اللي بيكلموه) شكله إيه. وده بينافس على الـ processing resources اللي محتاجينها عشان ياخدوا بالهم من اللي قدامهم ويتصرفوا."
-     ]
+     ],
+     "figH": {
+      "phone-driving": "ليه استخدام الموبايل وإنت سايق خطر"
+     }
     },
     {
      "h": "هل الـ hands-free phones أأمن وإنت سايق؟",
@@ -1391,7 +1454,10 @@ AR.hci = {
       "<b>Weller (2004)</b> لقى إن الناس أخدوا وقت أقل عشان يلاقوا الـ items لما المعلومات كانت متجمعة باستخدام <b>border</b> (الشاشة التانية) مقارنة باستخدام <b>color contrast</b> (الشاشة الأولى).",
       "فيه ناس بتقول إن الـ white space الكتير أوي في صفحات الويب بيضر عملية التدوير (search): بيخلي صعب تلاقي المعلومة.",
       "إنت موافق؟ (سؤال للمناقشة؛ الـ slide مش بتدي إجابة)"
-     ]
+     ],
+     "figH": {
+      "word-grids": "تباين الألوان قصاد الـ borders والمسافات الفاضية: دوّر على الكلمة"
+     }
     },
     {
      "h": "Activity: أنهي واحد أسهل في القراية وليه؟",
@@ -1403,7 +1469,10 @@ AR.hci = {
       "(4) كلام أسود على خلفية بيضا.",
       "(5) كلام أبيض على خلفية صفرا (mustard).",
       "الـ slide بتسأل أنهي واحد أسهل في القراية وليه، ومش بتدي إجابة؛ ده سؤال للمناقشة."
-     ]
+     ],
+     "figH": {
+      "time-boxes": "أنهي نص أسهل في القراية؟"
+     }
     },
     {
      "h": "الـ Design implications للـ perception",
@@ -1585,7 +1654,10 @@ AR.hci = {
       "أنهي فيهم كان أسهل؟ وليه؟",
       "الناس شاطرة جداً في إنها تفتكر الـ <b>visual cues</b> عن الحاجات، زي لون الحاجات، ومكان الأشياء، والعلامات اللي على أي حاجة.",
       "وبيلاقوا صعوبة أكتر في إنهم يتعلموا ويفتكروا الـ <b>arbitrary material</b>، زي أعياد الميلاد وأرقام التليفونات."
-     ]
+     ],
+     "figH": {
+      "remember-activity": "إيه السهل نفتكره: الإشارات المرئية قصاد المعلومات العشوائية"
+     }
     },
     {
      "h": "المشكلة في الـ '7, + or - 2' الكلاسيكية",
@@ -1596,7 +1668,10 @@ AR.hci = {
       "بس هل ده استخدام كويس لنظرية في الـ HCI؟ هل هي مفيدة؟ (أسئلة للنقاش؛ السلايد مش بيدي إجابة)",
       "لما بنعمل interface، هل المفروض الـ designer:<br>• يعرض 7 options بس في الـ menu؟<br>• يعرض 7 icons بس على الـ tool bar؟<br>• ميحطش أكتر من 7 bullets في list؟<br>• يحط 7 items بس في الـ pull down menu؟<br>• يحط 7 tabs بس فوق في صفحة الموقع؟<br>(سؤال للنقاش؛ السلايد مش بيدي إجابة)",
       "السلايد فيها صف من 7 smiley faces بألوان مختلفة (أحمر، بنفسجي، أزرق، أصفر، أسود، أبيض، لبني)."
-     ]
+     ],
+     "figH": {
+      "seven-plus-minus": "قاعدة Miller بتاعة 7 ± 2: نعرض كام اختيار؟"
+     }
     },
     {
      "h": "الـ Design implications للـ memory",

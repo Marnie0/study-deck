@@ -111,8 +111,8 @@
   function HciParts({ ar }) {
     const steps = [
       { en: 'HCI is drawn as a pie with three parts.', ar: 'الـ HCI مترسوم كـ pie فيها 3 أجزاء.' },
-      { en: '<b>Human</b>: Communication theory, Industrial design, Social science, Cognitive psychology, Human factors.', ar: '<b>Human</b>: Communication theory و Industrial design و Social science و Cognitive psychology و Human factors.' },
-      { en: '<b>Computer</b>: Computer graphic, Operating system, Programming language.', ar: '<b>Computer</b>: Computer graphic و Operating system و Programming language.' },
+      { en: '<b>Human</b>: Communication theory, Industrial design, Social science, Cognitive psychology, Human factors.', ar: 'الجزء الـ <b>Human</b> فيه الـ Communication theory والـ Industrial design والـ Social science والـ Cognitive psychology والـ Human factors.' },
+      { en: '<b>Computer</b>: Computer graphic, Operating system, Programming language.', ar: 'الجزء الـ <b>Computer</b> فيه الـ Computer graphic والـ Operating system والـ Programming language.' },
       { en: '<b>Interaction</b>: Interaction design.', ar: '<b>Interaction</b>: Interaction design.' }
     ];
     const [i, ctl] = useSteps(steps.length, 1800);
@@ -504,7 +504,7 @@
   function Joyner({ ar }) {
     const P = [['Need finding', 220, 42], ['Design alternative', 352, 140], ['Prototyping', 220, 238], ['Evaluation', 88, 140]];
     const steps = [
-      { en: 'Joyner’s design life cycle: an <b>iterative process with four phases</b>.', ar: 'الـ design life cycle بتاع Joyner: <b>iterative process فيها 4 phases</b>.' },
+      { en: 'Joyner’s design life cycle: an <b>iterative process with four phases</b>.', ar: 'الـ design life cycle بتاع Joyner هي <b>iterative process فيها 4 phases</b>.' },
       ...P.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? ', then back to Need finding.' : ''), ar: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? '، وبعدين ترجع للـ Need finding.' : '') }))
     ];
     const [i, ctl] = useSteps(steps.length, 1800);
@@ -523,7 +523,7 @@
   function GoogleUcd({ ar }) {
     const S = [['Understand', 'how users experience the product (a lot of research)', 'إزاي الـ users بيستخدموا الـ product (research كتير)'], ['Specify', 'the most important user problem to solve', 'أهم مشكلة عند الـ user لازم تتحل'], ['Design', 'solutions, then start building', 'حلول، وبعدين تبدأ تبني'], ['Evaluate', 'test with real users', 'اختبر مع users حقيقيين']];
     const steps = [
-      { en: 'Google’s user-centered design process: Understand → Specify → Design → Evaluate.', ar: 'الـ user-centered design process بتاع Google: Understand → Specify → Design → Evaluate.' },
+      { en: 'Google’s user-centered design process: Understand → Specify → Design → Evaluate.', ar: 'خطوات الـ user-centered design process بتاعة Google:<span class="ltr">Understand → Specify → Design → Evaluate</span>' },
       ...S.map(([n, e, a]) => ({ en: '<b>' + n + '</b>: ' + e + '.', ar: '<b>' + n + '</b>: ' + a + '.' })),
       { en: '<b>Iteration is key.</b>', ar: '<b>الـ iteration هي الأساس.</b>' }
     ];
