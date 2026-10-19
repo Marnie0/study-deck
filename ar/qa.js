@@ -1919,16 +1919,16 @@ AR.qa = {
        ]
       },
       {
-       "why": "Initial، Repeatable، Defined، Quantitatively Managed، Optimizing (L7).",
+       "why": "الـ CMM فيه خمس levels (L7):<span class=\"ltr\">Initial, Repeatable, Defined, Quantitatively Managed, Optimizing</span>",
        "ow": [
-        "تلاتة قليلين؛ الـ CMM فيه خمسة: Initial, Repeatable, Defined, Quantitatively Managed, Optimizing (L7).",
+        "تلاتة قليلين؛ الـ CMM فيه خمسة (L7):<span class=\"ltr\">Initial, Repeatable, Defined, Quantitatively Managed, Optimizing</span>",
         null,
         "أربعة ناقصين واحد؛ الـ CMM ده incremental model من خمس levels آخرها Level 5 Optimizing (L7).",
         "مفيش level سادس؛ الـ 6 دي عدد الـ structure components بتاعة الـ CMM، أما الـ maturity levels فخمسة (L7)."
        ]
       },
       {
-       "why": "الـ ISO 9000 فيه 20 key element (management responsibility، quality systems، … statistical techniques)، وكل واحد لازم يتوثق بشكل واضح وكامل عشان تثبت الـ compliance (L7).",
+       "why": "الـ ISO 9000 فيه 20 key element (من أول الـ management responsibility والـ quality systems لحد الـ statistical techniques)، وكل واحد لازم يتوثق بشكل واضح وكامل عشان تثبت الـ compliance (L7).",
        "ow": [
         "الـ CMM مبني من 5 maturity levels و 6 structure components، مش 20 element (L7).",
         "الـ Six Sigma متنظم حوالين phases الـ DMAIC، مش 20 element (L8).",
@@ -1964,7 +1964,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "الـ QA هو النشاط اللي على مستوى الـ organization كلها (processes، standards، prevention) واللي بيضمن products بـ quality (L6). أما الـ QC فبيفلتر الـ product بس.",
+       "why": "الـ QA هو النشاط اللي على مستوى الـ organization كلها (بالـ processes والـ standards والـ prevention) واللي بيضمن products بـ quality (L6). أما الـ QC فبيفلتر الـ product بس.",
        "ow": [
         null,
         "الـ QC مركز على الـ product وبيشتغل reactive: بيفحص المنتج ويفلتر الـ defects، مش النشاط اللي بيضمن الجودة على مستوى الـ organization كلها (L6).",
@@ -1982,20 +1982,20 @@ AR.qa = {
        ]
       },
       {
-       "why": "الـ Formal review = peer review، walkthrough، inspection (L3).",
+       "why": "الـ formal review بيشمل الـ peer review والـ walkthrough والـ inspection (L3).",
        "ow": [
         null,
         "الـ Peer review ده واحد من التلات formal reviews جنب الـ inspection، مش الـ stage اللي الـ inspections تحتها (L3).",
-        "الـ Code coverage (statement، path، condition) ده dynamic white-box testing وبيشغّل الـ code؛ أما الـ inspection فـ static (L3).",
-        "الـ Data coverage (data flow، sub-boundaries، error forcing) ده dynamic white-box testing؛ أما الـ inspection فـ formal review (L3)."
+        "الـ Code coverage (الـ statement والـ path والـ condition) ده dynamic white-box testing وبيشغّل الـ code؛ أما الـ inspection فـ static (L3).",
+        "الـ Data coverage (الـ data flow والـ sub-boundaries والـ error forcing) ده dynamic white-box testing؛ أما الـ inspection فـ formal review (L3)."
        ]
       },
       {
-       "why": "الـ 3 أسباب للـ standards والـ guidelines: reliability، readability/maintainability، portability (L3).",
+       "why": "الـ 3 أسباب للـ standards والـ guidelines، وهما الـ reliability والـ readability/maintainability والـ portability (L3).",
        "ow": [
-        "الـ Scalability مش من الـ 3 أسباب بتوع الـ standards والـ guidelines: reliability، readability/maintainability، portability (L3).",
+        "الـ Scalability مش من الـ 3 أسباب بتوع الـ standards والـ guidelines، وهما الـ reliability والـ readability/maintainability والـ portability (L3).",
         null,
-        "الـ Usability مش من الـ 3 أسباب بتوع الـ standards والـ guidelines: reliability، readability/maintainability، portability (L3).",
+        "الـ Usability مش من الـ 3 أسباب بتوع الـ standards والـ guidelines، وهما الـ reliability والـ readability/maintainability والـ portability (L3).",
         "الـ Compatibility مش في الـ list؛ السبب القريب منها هو الـ portability (الـ code يشتغل على hardware و compilers مختلفة) (L3)."
        ]
       },
@@ -2009,7 +2009,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "BVA/EP: الـ 9000 = invalid boundary (لازم يترفض)، الـ 9001 = valid boundary، الـ 9999 = قيمة valid. كلهم test cases مفيدة، وده متوافق مع الـ summary key.",
+       "why": "حسب الـ BVA والـ EP:<br>• الـ 9000 هي الـ invalid boundary (لازم تترفض).<br>• الـ 9001 هي الـ valid boundary.<br>• الـ 9999 قيمة valid.<br>كلهم test cases مفيدة، وده متوافق مع الـ summary key.",
        "ow": [
         "الـ 9000 test مطلوب (الـ invalid boundary، لازم يترفض) بس مش هو الوحيد؛ الـ 9001 والـ 9999 كمان test cases valid.",
         "الـ 9001 هو الـ valid left boundary، بس مش الحالة المفيدة الوحيدة؛ الـ 9000 (invalid boundary) والـ 9999 (قيمة valid) كمان tests.",
@@ -2018,29 +2018,29 @@ AR.qa = {
        ]
       },
       {
-       "why": "X=2, Y=0 بس هي اللي بتخلي جزئين الـ AND يبقوا true، فـ A=A/X بتتنفذ.",
+       "why": "الحالة <bdi dir=\"ltr\">X=2, Y=0</bdi> بس هي اللي بتخلي جزئين الـ AND يبقوا true، فـ <bdi dir=\"ltr\">A=A/X</bdi> بتتنفذ.",
        "ow": [
-        "مع الـ AND لازم الجزئين يبقوا true؛ X=3,y=1 و X=2,y=1 فيهم Y≠0 فبيعدّوا A=A/X، فمش كل الاختيارات شغالة.",
-        "الـ Y=1 بيخلي (Y=0) false، فالـ AND بيفشل والـ A=A/X عمرها ما بتتنفذ؛ والـ statement coverage محتاج كل statement يتنفذ.",
-        "الـ X&gt;1 متحقق بس Y=1 بيخلي (Y=0) false، فالـ AND بيفشل والـ A=A/X بتتعدّى.",
+        "مع الـ AND لازم الجزئين يبقوا true؛ والحالتين <bdi dir=\"ltr\">X=3, y=1</bdi> و <bdi dir=\"ltr\">X=2, y=1</bdi> فيهم <bdi dir=\"ltr\">Y≠0</bdi>، فبيعدّوا <bdi dir=\"ltr\">A=A/X</bdi>، فمش كل الاختيارات شغالة.",
+        "القيمة <bdi dir=\"ltr\">Y=1</bdi> بتخلي الشرط <bdi dir=\"ltr\">(Y=0)</bdi> false، فالـ AND بيفشل والـ <bdi dir=\"ltr\">A=A/X</bdi> عمرها ما بتتنفذ؛ والـ statement coverage محتاج كل statement يتنفذ.",
+        "الشرط <bdi dir=\"ltr\">X&gt;1</bdi> متحقق، بس <bdi dir=\"ltr\">Y=1</bdi> بتخلي <bdi dir=\"ltr\">(Y=0)</bdi> false، فالـ AND بيفشل والـ <bdi dir=\"ltr\">A=A/X</bdi> بتتعدّى.",
         null
        ]
       },
       {
-       "why": "مع الـ OR، كل اختيار بيخلي جزء واحد على الأقل true، فـ A=A+1 بتتنفذ في التلاتة.",
+       "why": "مع الـ OR، كل اختيار بيخلي جزء واحد على الأقل true، فـ <bdi dir=\"ltr\">A=A+1</bdi> بتتنفذ في التلاتة.",
        "ow": [
         "ده شغال (X=2 بتخلي الـ OR true)، بس الحالتين التانيين شغالين برضه، فـ <bdi>«All answers»</bdi> هو الاختيار الكامل.",
-        "ده شغال (الجزئين true)، بس الحالات التانية كمان بتنفذ A=A+1، فـ <bdi>«All answers»</bdi> هو الاختيار الكامل.",
-        "ده شغال (y=2 &gt; 1 بتخلي الـ OR true)، بس الحالات التانية كمان بتنفذ A=A+1، فـ <bdi>«All answers»</bdi> هو الاختيار الكامل.",
+        "ده شغال (الجزئين true)، بس الحالات التانية كمان بتنفذ <bdi dir=\"ltr\">A=A+1</bdi>، فـ <bdi>«All answers»</bdi> هو الاختيار الكامل.",
+        "ده شغال، لأن <bdi dir=\"ltr\">y=2 &gt; 1</bdi> بتخلي الـ OR true، بس الحالات التانية كمان بتنفذ <bdi dir=\"ltr\">A=A+1</bdi>، فـ <bdi>«All answers»</bdi> هو الاختيار الكامل.",
         null
        ]
       },
       {
-       "why": "X=2,Y=0,A=4: A=4/2=2، وبعدين X=2 بتبقى true فـ A=3، والـ statements الاتنين بيتنفذوا. الاختيار (A) بيدي A=1/3 والـ IF التاني بيبقى false. والاختيار (B) بيخلي أول IF يبقى false.",
+       "why": "مع <bdi dir=\"ltr\">X=2, Y=0, A=4</bdi>:<span class=\"ltr\">A = 4/2 = 2</span>وبعدين <bdi dir=\"ltr\">X=2</bdi> بتبقى true فـ <bdi dir=\"ltr\">A=3</bdi>، والـ statements الاتنين بيتنفذوا.<br>الاختيار (A) بيدي <bdi dir=\"ltr\">A=1/3</bdi> والـ IF التاني بيبقى false.<br>والاختيار (B) بيخلي أول IF يبقى false.",
        "ow": [
-        "أول IF بيبقى true: A = 1/3. تاني IF: X≠2 و A=0.33 مش &gt;1، فـ A=A+1 بتتعدّى؛ يعني مش كل الـ statements اتنفذت.",
-        "الـ X=0 بتخلي X&gt;1 false، فـ A=A/X بتتعدّى (حتى لو A=4 بعد كده بتنفذ A=A+1).",
-        "X=2,Y=0,A=4 بس اللي بتنفذ الـ statements الاتنين؛ كل واحدة من التانيين بتعدّي واحد، فمش كل الإجابات شغالة.",
+        "أول IF بيبقى true، فـ <bdi dir=\"ltr\">A = 1/3</bdi>.<br>وفي تاني IF، <bdi dir=\"ltr\">X≠2</bdi> و <bdi dir=\"ltr\">A=0.33</bdi> مش أكبر من 1، فـ <bdi dir=\"ltr\">A=A+1</bdi> بتتعدّى؛ يعني مش كل الـ statements اتنفذت.",
+        "القيمة <bdi dir=\"ltr\">X=0</bdi> بتخلي <bdi dir=\"ltr\">X&gt;1</bdi> false، فـ <bdi dir=\"ltr\">A=A/X</bdi> بتتعدّى (حتى لو <bdi dir=\"ltr\">A=4</bdi> بعد كده بتنفذ <bdi dir=\"ltr\">A=A+1</bdi>).",
+        "الحالة <bdi dir=\"ltr\">X=2, Y=0, A=4</bdi> بس هي اللي بتنفذ الـ statements الاتنين؛ وكل واحدة من التانيين بتعدّي واحد، فمش كل الإجابات شغالة.",
         null
        ]
       },
@@ -2095,7 +2095,7 @@ AR.qa = {
      "items": [
       {
        "why": "L7 <bdi>«Five Levels of CMM»</bdi> وجدول Table 1. اذكر أسامي الخمسة بالترتيب.",
-       "ans": "<b>Level 1 – Initial</b> (inconsistent management): الـ processes بتبقى ad-hoc و unstructured و reactive ومش ثابتة؛ الـ project management مش مستقر؛ ومفيش processes مطلوبة.<br><b>Level 2 – Repeatable</b> (project management): الـ basic project management (planning، requirement control، product modifications) بيدي نجاح بيتكرر؛ بنخطط للمشاريع ونتابعها، وبندير الـ suppliers والـ configurations.<br><b>Level 3 – Defined</b> (process management): processes standard بتتحدد وبتتحسن على مستوى الـ organization كلها؛ والـ teams بتعدلها على مقاسها؛ و training على مستوى الـ organization.<br><b>Level 4 – Quantitatively Managed</b> (capability management): الـ processes متحكم فيها بـ statistical و quantitative techniques؛ الأداء ممكن نتوقعه؛ capability baselines؛ و variation قليلة جدًا.<br><b>Level 5 – Optimizing</b> (change management): continuous process improvement عن طريق تطويرات incremental و innovative بـ quantitative goals؛ وبنشيل أسباب الـ defects.<br>الـ levels بتتطلع بالترتيب ومينفعش ننط أي level."
+       "ans": "<b>Level 1 – Initial</b> (inconsistent management): الـ processes بتبقى ad-hoc و unstructured و reactive ومش ثابتة؛ الـ project management مش مستقر؛ ومفيش processes مطلوبة.<br><b>Level 2 – Repeatable</b> (project management): الـ basic project management (الـ planning والـ requirement control والـ product modifications) بيدي نجاح بيتكرر؛ بنخطط للمشاريع ونتابعها، وبندير الـ suppliers والـ configurations.<br><b>Level 3 – Defined</b> (process management): processes standard بتتحدد وبتتحسن على مستوى الـ organization كلها؛ والـ teams بتعدلها على مقاسها؛ و training على مستوى الـ organization.<br><b>Level 4 – Quantitatively Managed</b> (capability management): الـ processes متحكم فيها بـ statistical و quantitative techniques؛ الأداء ممكن نتوقعه؛ capability baselines؛ و variation قليلة جدًا.<br><b>Level 5 – Optimizing</b> (change management): continuous process improvement عن طريق تطويرات incremental و innovative بـ quantitative goals؛ وبنشيل أسباب الـ defects.<br>الـ levels بتتطلع بالترتيب ومينفعش ننط أي level."
       },
       {
        "why": "slides الـ DMAIC في L8. ممكن تزود الـ principles أو الـ belts عشان تفاصيل أكتر.",
@@ -2118,12 +2118,12 @@ AR.qa = {
     {
      "items": [
       {
-       "why": "ده مثال الـ stack بتاع المحاضرة بس الـ push بقت insert والـ pop بقت delete. الـ queue diagram فيه نفس الـ states (Empty، Normal، Full) ونفس الـ transitions.",
-       "ans": "<b>MM</b>: الـ sequence البسيطة <b>create (new)، insert، delete</b> بتنادي كل method مرة واحدة على الأقل.<br><b>Function pairs</b> (نفس pattern الـ stack، 14 pair):<br>1. new – delete (على empty، error)<br>2. new – insert<br>3. insert (from empty) – insert<br>4. insert (from empty) – delete<br>5. insert (normal→normal) – insert (لسه normal)<br>6. insert (normal→normal) – insert (بقى full)<br>7. insert (normal→normal) – delete<br>8. insert (normal→full) – insert (error)<br>9. insert (normal→full) – delete<br>10. delete (normal→normal) – insert (لسه normal)<br>11. delete (normal→normal) – delete (لسه normal)<br>12. delete (normal→normal) – delete (بقى empty)<br>13. delete (into empty) – insert<br>14. delete (into empty) – delete (error)"
+       "why": "ده مثال الـ stack بتاع المحاضرة بس الـ push بقت insert والـ pop بقت delete. الـ queue diagram فيه نفس الـ states (Empty و Normal و Full) ونفس الـ transitions.",
+       "ans": "<b>MM</b>: الـ sequence البسيطة <b>create (new) و insert و delete</b> بتنادي كل method مرة واحدة على الأقل.<br><b>Function pairs</b> (نفس pattern الـ stack، 14 pair):<span class=\"ltr\">(1) new – delete (على empty، error)</span><span class=\"ltr\">(2) new – insert</span><span class=\"ltr\">(3) insert (from empty) – insert</span><span class=\"ltr\">(4) insert (from empty) – delete</span><span class=\"ltr\">(5) insert (normal→normal) – insert (لسه normal)</span><span class=\"ltr\">(6) insert (normal→normal) – insert (بقى full)</span><span class=\"ltr\">(7) insert (normal→normal) – delete</span><span class=\"ltr\">(8) insert (normal→full) – insert (error)</span><span class=\"ltr\">(9) insert (normal→full) – delete</span><span class=\"ltr\">(10) delete (normal→normal) – insert (لسه normal)</span><span class=\"ltr\">(11) delete (normal→normal) – delete (لسه normal)</span><span class=\"ltr\">(12) delete (normal→normal) – delete (بقى empty)</span><span class=\"ltr\">(13) delete (into empty) – insert</span><span class=\"ltr\">(14) delete (into empty) – delete (error)</span>"
       },
       {
        "why": "L5 الأجزاء 2 و 8.3.",
-       "ans": "<b>1. الـ Black-box</b>: الـ <b>text</b> (الجمهور، الـ terminology، الدقة، الـ spelling، بيانات التواصل)، الـ <b>hyperlinks</b> (الـ destination الصح، نفس الـ window أو window جديدة، واضحة، e-mail links)، الـ <b>graphics</b> (بتتحمل وبتظهر صح)، الـ <b>forms</b> (متحطة صح، الحجم صح، بتقبل الـ data الصح، بترفض الـ data الغلط).<br><b>2. الـ Gray-box</b> ممكن عشان الـ web pages متبنية من HTML و scripts الـ tester يقدر يشوفها (view source) وهو لسه بيختبر من ناحية الـ user، فينفع نخلط الـ black-box بالـ white-box. الهدف منه إنه يعزل الـ defects اللي ليها علاقة بـ design وحش أو implementation وحش للـ web.<br><b>3. الـ White-box</b>: الـ <b>dynamic content</b> (وقت اليوم، الطقس، الـ stock tickers)، الـ <b>database-driven pages</b> (catalogs الـ e-commerce)، الـ <b>programmatically created pages</b>، الـ <b>server performance and loading</b> (ملايين الـ hits)، الـ <b>security</b> (denial of service، buffer overflow)."
+       "ans": "<b>(1) الـ Black-box</b>: الـ <b>text</b> (الجمهور، الـ terminology، الدقة، الـ spelling، بيانات التواصل)، الـ <b>hyperlinks</b> (الـ destination الصح، نفس الـ window أو window جديدة، واضحة، e-mail links)، الـ <b>graphics</b> (بتتحمل وبتظهر صح)، الـ <b>forms</b> (متحطة صح، الحجم صح، بتقبل الـ data الصح، بترفض الـ data الغلط).<br><b>(2) الـ Gray-box</b> ممكن عشان الـ web pages متبنية من HTML و scripts الـ tester يقدر يشوفها (view source) وهو لسه بيختبر من ناحية الـ user، فينفع نخلط الـ black-box بالـ white-box. الهدف منه إنه يعزل الـ defects اللي ليها علاقة بـ design وحش أو implementation وحش للـ web.<br><b>(3) الـ White-box</b>: الـ <b>dynamic content</b> (وقت اليوم، الطقس، الـ stock tickers)، الـ <b>database-driven pages</b> (catalogs الـ e-commerce)، الـ <b>programmatically created pages</b>، الـ <b>server performance and loading</b> (ملايين الـ hits)، الـ <b>security</b> (زي الـ denial of service والـ buffer overflow)."
       }
      ]
     },
@@ -2131,11 +2131,11 @@ AR.qa = {
      "items": [
       {
        "why": "نسخة من جدول <bdi>«Test cases for a full condition coverage»</bdi> في L3، بالتاريخ الجديد. الـ case اللي فيها true/true بس هي اللي بتطبع <bdi>\"Happy New Year\"</bdi>.",
-       "ans": "<b>الـ Branch coverage</b> (الـ IF يبقى true مرة و false مرة)، 2 tests:<table><tr><th>Date$</th><th>Time$</th><th>Lines</th></tr><tr><td>01-01-2026</td><td>00:00:00</td><td>1,2,3,4,5,6,7</td></tr><tr><td>01-01-2025</td><td>11:11:11</td><td>1,2,5,6,7</td></tr></table><b>الـ Condition coverage</b> (كل condition تبقى true و false؛ وكل الـ combinations زي المحاضرة)، 4 tests:<table><tr><th>Date$</th><th>Time$</th><th>Lines</th></tr><tr><td>01-01-2025</td><td>11:11:11</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2025</td><td>00:00:00</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2026</td><td>11:11:11</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2026</td><td>00:00:00</td><td>1,2,3,4,5,6,7</td></tr></table>"
+       "ans": "<b>الـ Branch coverage</b> (الـ IF يبقى true مرة و false مرة)، ومحتاج 2 tests هما:<table><tr><th>Date$</th><th>Time$</th><th>Lines</th></tr><tr><td>01-01-2026</td><td>00:00:00</td><td>1,2,3,4,5,6,7</td></tr><tr><td>01-01-2025</td><td>11:11:11</td><td>1,2,5,6,7</td></tr></table><b>الـ Condition coverage</b> (كل condition تبقى true و false؛ وكل الـ combinations زي المحاضرة)، ومحتاج 4 tests هما:<table><tr><th>Date$</th><th>Time$</th><th>Lines</th></tr><tr><td>01-01-2025</td><td>11:11:11</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2025</td><td>00:00:00</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2026</td><td>11:11:11</td><td>1,2,5,6,7</td></tr><tr><td>01-01-2026</td><td>00:00:00</td><td>1,2,3,4,5,6,7</td></tr></table>"
       },
       {
        "why": "slides المثلث في L4. الـ slide بتعتبر (1,2,4) و (3,2,5) <bdi>«bad inputs»</bdi>، بس حسب الـ pseudocode هما بيطبعوا <bdi>\"not a triangle\"</bdi> (مفيش ضلع ≤ 0)، فاستخدمنا هنا أضلاع سالبة/صفر.",
-       "ans": "<b>الـ Function (black-box) testing</b>: الـ subdomains هي scalene، isosceles، equilateral، not a triangle، bad inputs:<br>الـ Scalene: (3,4,5)، (5,4,3)، (4,5,3).<br>الـ Isosceles: (5,5,8)، (5,8,5)، (8,5,5)، (8,8,5)، (8,5,8)، (5,8,8).<br>الـ Equilateral: (5,5,5).<br>الـ Not a triangle: (6,4,2)، (4,6,2)، (1,2,3).<br>الـ Bad inputs: (−1,2,4)، (0,−2,5)، (0,0,0).<br><b>الـ Statement coverage</b> (جدول المحاضرة بـ (3,4,5)، (3,5,3)، (0,1,0)، (4,4,4)):<br>(3,4,5) → scalene؛ (3,5,3) → isosceles؛ (4,4,4) → equilateral؛ (0,1,0) → سطور الـ not-a-triangle والـ bad-inputs الاتنين بيتنفذوا، وبيطبع <bdi>\"bad inputs\"</bdi>.<br>من test cases جدول المحاضرة، أقل set هي <b>(4,4,4) و (0,1,0)</b>، واللي مع بعض بينفذوا كل الـ statements من A لـ K.<br>‡ لو ينفع تختار أي inputs، عدد أقل يكفي: <b>(0,0,0)</b> لوحده بينفذ كل الـ statements من A لـ K (0==0 → isosceles و equilateral؛ 0 ≥ 0+0 → not a triangle؛ 0 ≤ 0 → bad inputs)."
+       "ans": "<b>الـ Function (black-box) testing</b>: الـ subdomains هي الـ scalene والـ isosceles والـ equilateral والـ not a triangle والـ bad inputs:• الـ scalene:<span class=\"ltr\">(3,4,5), (5,4,3), (4,5,3)</span>• الـ isosceles:<span class=\"ltr\">(5,5,8), (5,8,5), (8,5,5), (8,8,5), (8,5,8), (5,8,8)</span>• الـ equilateral:<span class=\"ltr\">(5,5,5)</span>• الـ not a triangle:<span class=\"ltr\">(6,4,2), (4,6,2), (1,2,3)</span>• الـ bad inputs:<span class=\"ltr\">(−1,2,4), (0,−2,5), (0,0,0)</span><b>الـ Statement coverage</b> (جدول المحاضرة بـ (3,4,5)، (3,5,3)، (0,1,0)، (4,4,4)):<br><span class=\"ltr\">(3,4,5) → scalene, (3,5,3) → isosceles, (4,4,4) → equilateral</span>والـ (0,1,0) بتنفذ سطور الـ not-a-triangle والـ bad-inputs الاتنين، وبتطبع <bdi>\"bad inputs\"</bdi>.<br>من test cases جدول المحاضرة، أقل set هي <b>(4,4,4) و (0,1,0)</b>، واللي مع بعض بينفذوا كل الـ statements من A لـ K.<br>‡ لو ينفع تختار أي inputs، عدد أقل يكفي: <b>(0,0,0)</b> لوحده بينفذ كل الـ statements من A لـ K :<span class=\"ltr\">0==0 → isosceles, equilateral; 0 ≥ 0+0 → not a triangle; 0 ≤ 0 → bad inputs</span>"
       }
      ]
     }
@@ -2146,7 +2146,7 @@ AR.qa = {
     {
      "items": [
       {
-       "why": "جدول L1: الـ 1988–2000 = prevention-oriented. الـ summary key غلط.",
+       "why": "جدول L1 بيقول إن الفترة من 1988 لـ 2000 هي الـ prevention-oriented، يعني الـ summary key غلط.",
        "ow": [
         null,
         "جدول التطور في L1 بيحط الـ 1988–2000 في فترة الـ prevention-oriented (نمنع الـ defects بالـ test design والـ planning بدري)، فالجملة صح."
@@ -2160,7 +2160,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "ده الـ System Engineering. الـ Analysis = feasibility و goals و performance و interface requirements (L1).",
+       "why": "ده الـ System Engineering. أما الـ Analysis فهو الـ feasibility والـ goals والـ performance والـ interface requirements (L1).",
        "ow": [
         "تحديد الـ software والـ hardware requirements الاتنين ده phase الـ System Engineering في الـ Waterfall؛ أما الـ Analysis فبيغطي الـ feasibility والـ goals والـ performance والـ interface requirements (L1).",
         null
@@ -2174,7 +2174,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "L3 بيعدّ الأسماء التانية للـ white-box testing: glass box و structural و open box و clear box testing، عشان هو بيفحص الشغل الداخلي للـ code.",
+       "why": "الـ L3 بيعدّ الأسماء التانية للـ white-box testing، وهي glass box و structural و open box و clear box testing، عشان هو بيفحص الشغل الداخلي للـ code.",
        "ow": [
         null,
         "L3 بيدي clear box و glass box (ومعاهم structural و open box) كأسماء للـ white-box testing، فالجملة صح."
@@ -2212,7 +2212,7 @@ AR.qa = {
        "why": "ده تعريف الـ equivalence partitioning (L2).",
        "ow": [
         null,
-        "ده تعريف الـ equivalence partitioning في L2: case واحدة من كل class كفاية، فبنقلل الـ test cases من غير ما الـ quality تقل."
+        "ده تعريف الـ equivalence partitioning في L2، يعني case واحدة من كل class كفاية، فبنقلل الـ test cases من غير ما الـ quality تقل."
        ]
       },
       {
@@ -2273,7 +2273,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "L3 بيعدّ الأسماء التانية للـ white-box testing: glass box و structural و open box و clear box testing.",
+       "why": "الـ L3 بيعدّ الأسماء التانية للـ white-box testing، وهي glass box و structural و open box و clear box testing.",
        "ow": [
         "<bdi>«Structural analysis»</bdi> مش الاسم اللي في المحاضرة؛ الـ white-box اسمه structural <b>testing</b> أو glass box أو open box أو clear box (L3).",
         "الـ Gray-box testing ده <b>خليط</b> من الـ black-box والـ white-box (L5)، مش اسم تاني للـ white-box.",
@@ -2282,7 +2282,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "تعريف L3. الحسابات = computation errors؛ والـ loops = control flow.",
+       "why": "ده تعريف L3. الحسابات تبع الـ computation errors، والـ loops تبع الـ control flow.",
        "ow": [
         null,
         "الـ variables اللي مش متعملها initialization بتتشيك تحت الـ data reference errors (variables مش متعرفة أو متعملها initialization صح)؛ أما تعريف الـ data declaration فهو الـ declaration الغلط (L3).",
@@ -2291,7 +2291,7 @@ AR.qa = {
        ]
       },
       {
-       "why": "الـ CMM فيه خمس maturity levels: Initial و Repeatable و Defined و Quantitatively Managed و Optimizing، وبنطلعهم من غير ما نفوّت level (L7).",
+       "why": "الـ CMM فيه خمس maturity levels، وهما Initial و Repeatable و Defined و Quantitatively Managed و Optimizing، وبنطلعهم من غير ما نفوّت level (L7).",
        "ow": [
         "level واحد مايبقاش model؛ الـ CMM فيه خمس levels من Initial لـ Optimizing (L7).",
         "اتنين بيوصلوا لحد Repeatable بس؛ الـ CMM بيكمل لـ Defined و Quantitatively Managed و Optimizing (خمس levels) (L7).",
@@ -2303,8 +2303,8 @@ AR.qa = {
        "why": "الشكل بيوضح bottom-up و top-down و umbrella approach.",
        "ow": [
         null,
-        "الـ Static white-box testing (reviews، standards، checklists) بيفحص الـ code من غير ما يشغّله؛ مش integration strategy (L3).",
-        "الـ Black-box testing ده approach عام من غير معرفة بالـ code، مش واحد من الـ integration strategies (bottom-up، top-down، umbrella) (L3).",
+        "الـ Static white-box testing (زي الـ reviews والـ standards والـ checklists) بيفحص الـ code من غير ما يشغّله؛ مش integration strategy (L3).",
+        "الـ Black-box testing ده approach عام من غير معرفة بالـ code، مش واحد من الـ integration strategies (الـ bottom-up والـ top-down والـ umbrella) (L3).",
         "الـ Code review (checklist) جزء من الـ static white-box testing، مش integration testing strategy (L3)."
        ]
       },
@@ -2321,18 +2321,18 @@ AR.qa = {
        "why": "الـ Data coverage بيشمل data flow و sub-boundaries و error forcing (L3).",
        "ow": [
         null,
-        "الـ Code coverage (statement، path، condition) بيشيك أنهي code اتنفذ؛ أما الـ sub-boundaries فنوع من الـ data coverage (L3).",
+        "الـ Code coverage (الـ statement والـ path والـ condition) بيشيك أنهي code اتنفذ؛ أما الـ sub-boundaries فنوع من الـ data coverage (L3).",
         "الـ Inspections دي formal review static للـ code بيعملها حد غير اللي كتبه، مش dynamic test لأحجام الـ data (L3).",
         "الـ walkthrough ده static review الكاتب فيه بيعرض الـ code؛ مابيختبرش الـ sub-boundaries (L3)."
        ]
       },
       {
-       "why": "tools الـ L8: 5S، seven wastes، value stream mapping، visual workspace، VOC، Kaizen، Kanban، regression analysis.",
+       "why": "الـ tools بتاعة L8 هي:<span class=\"ltr\">5S, seven wastes, value stream mapping, visual workspace, VOC, Kaizen, Kanban, regression analysis</span>",
        "ow": [
         null,
         "الـ Selenium والـ Cypress دول tools لاختبار الـ web applications (L5)، مش tools بتاعة الـ Six Sigma.",
         "الـ Peer review ده formal review في الـ static white-box testing (L3)، مش tool بتاع الـ Six Sigma.",
-        "الـ SPICE ده standard لتقييم الـ software process (ISO/IEC 15504، L7)، مش tool بتاع الـ Six Sigma."
+        "الـ SPICE ده standard لتقييم الـ software process (<bdi dir=\"ltr\">ISO/IEC 15504</bdi> في L7)، مش tool بتاع الـ Six Sigma."
        ]
       }
      ]

@@ -1431,7 +1431,7 @@ AR.fp = {
      "items": [
       {
        "why": "من Lecture 2، جزء \"Disk as a bottleneck\". أي أربعة منهم ياخدوا الدرجة.",
-       "ans": "(1) <b>الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.<br>(2) <b>الـ Disk striping</b>: blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).<br>(3) <b>الـ RAID</b>: Redundant Array of Independent Disks.<br>(4) <b>الـ RAM disk</b>: جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل volatility).<br>(5) <b>الـ Disk cache</b>: الـ memory شايلة pages من الـ disk؛ تشيك على الـ cache الأول وتروح للـ disk لو حصل miss."
+       "ans": "(1) <b>الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.<br>(2) <b>الـ Disk striping</b>، يعني blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).<br>(3) <b>الـ RAID</b>، اختصار لـ Redundant Array of Independent Disks.<br>(4) <b>الـ RAM disk</b>: جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل volatility).<br>(5) <b>الـ Disk cache</b>: الـ memory شايلة pages من الـ disk؛ تشيك على الـ cache الأول وتروح للـ disk لو حصل miss."
       },
       {
        "why": "الـ Track = 15,360 B، واضربه × 10 tracks في الـ cylinder.",
@@ -1534,7 +1534,7 @@ AR.fp = {
      "items": [
       {
        "why": "الجداول بتاعة Lecture 1 وLecture 2.",
-       "ans": "<b>(i)</b> الـ Physical file: مجموعة bytes على الـ disk؛ ليه physical name (A.txt)؛ بيستخدم مرة واحدة وقت الـ opening. الـ Logical file: channel بيوصل البرنامج بالـ physical file؛ الـ logical name بتاعه variable في البرنامج (زي infile و fp)؛ بيستخدم أي عدد مرات محتاجه (في الـ open والـ read والـ write والـ append والـ close).<br><b>(ii)</b> الـ Seek time: الوقت اللي الـ read/write arm بياخده عشان يروح للـ cylinder الصح. الـ Rotational delay (latency): الوقت اللي الـ disk بياخده عشان يلف ويجيب الـ sector المطلوب تحت الـ head. الـ Transfer time: أول ما الـ head يبقى فوق الداتا، ده الوقت اللي بياخده عشان ينقلها."
+       "ans": "<b>(i)</b> الـ Physical file: مجموعة bytes على الـ disk؛ ليه physical name (A.txt)؛ بيستخدم مرة واحدة وقت الـ opening. الـ Logical file هو channel بيوصل البرنامج بالـ physical file؛ الـ logical name بتاعه variable في البرنامج (زي infile و fp)؛ بيستخدم أي عدد مرات محتاجه (في الـ open والـ read والـ write والـ append والـ close).<br><b>(ii)</b> الـ Seek time: الوقت اللي الـ read/write arm بياخده عشان يروح للـ cylinder الصح. الـ Rotational delay (latency): الوقت اللي الـ disk بياخده عشان يلف ويجيب الـ sector المطلوب تحت الـ head. الـ Transfer time: أول ما الـ head يبقى فوق الداتا، ده الوقت اللي بياخده عشان ينقلها."
       },
       {
        "why": "الإجابة النموذجية بتوري الـ cylinder size بس. كمّل بالقسمة على حجم الـ record.",
