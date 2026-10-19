@@ -64,7 +64,12 @@ AR.qa = {
       "Figure 1.2 (Spiral Model): فيه محورين بيقسموا الشكل لـ 4 أرباع: <b>Plan</b> (فوق شمال)، <b>Risk Analysis</b> (فوق يمين)، <b>Design</b> (تحت يمين)، و<b>Testing</b> (تحت شمال). المحور الرأسي سهمه لفوق ومكتوب عليه <b>Cumulative cost</b>، والمحور الأفقي سهمه للشمال ومكتوب عليه <b>Review</b>، وفيه سهم مقوس فوق اسمه <b>Progress</b> بيوضح إن الـ spiral بيلف مع عقارب الساعة وبيوسع لبره. شمال المحور الرأسي (من جوه لبره): Requirements plan، Concept of operation، Development plan، Test plan، Release. يمينه من فوق: Risk analysis على كل لفة، وفيه جزء متظلل بيوسع لحد <b>Prototype 1 و Prototype 2 و Operational Prototype</b>. يمينه من تحت: Concept of requirements، Requirements، Draft، Detailed design، Code، Integration، Test، Verification & Validation (مرتين) و Implementation؛ والـ spiral بيخلص بسهم عند الـ Release.",
       "مميزات الـ Spiral: بيتعامل مع الـ risks بدري، flexible، فيه customer feedback، prototyping، ومناسب للمشاريع المعقدة. <b>العيب</b>: بياخد وقت ومكلف بسبب كتر الـ iterations.",
       "عيب الـ Spiral بالتفصيل: رغم إنه بيحسّن حل المشاكل ومشاركة العميل، الـ Spiral Model ممكن ياخد وقت ويبقى مكلف بسبب كتر الـ iterations والـ <b>continuous testing</b>."
-     ]
+     ],
+     "figH": {
+      "qa-waterfall": "Figure 1.1: الـ Waterfall Model، والـ phases واحدة ورا التانية",
+      "qa-waterfall-flow": "الـ Waterfall وهو شغال: الشغل بينزل على الـ phases إزاي، والـ error اللي بيحصل بدري بيكلّف قد إيه",
+      "qa-spiral": "Figure 1.2: الـ Spiral Model، ربع ورا ربع"
+     }
     },
     {
      "h": "الـ V-Model",
@@ -81,7 +86,10 @@ AR.qa = {
      "h": "الـ V-Model mapping (الشكل)",
      "pts": [
       "Figure 1.3 (V Model): الـ boxes عاملة شكل حرف V. على الدراع الشمال (الأسهم نازلة): Requirements Specifications → Functional Specifications → System Design → Unit Design → الـ <b>Code</b> في القاع. وعلى الدراع اليمين (الأسهم طالعة): Code → Unit Test → Integration Test → System Test → Acceptance Test. وفيه أسهم متقطعة (dashed) رايحة بالعرض من كل box في الشمال للـ box المقابل ليه في اليمين، ومكتوب عليها الـ plan: <b>Acceptance Test Plan و System Test Plan و Integration Test Plan</b>؛ وبين الـ Unit Design والـ Unit Test مكتوب <b>Test Cases</b>."
-     ]
+     ],
+     "figH": {
+      "qa-vmodel": "Figure 1.3: الـ V Model، كل development stage والـ test level اللي بيختبرها"
+     }
     },
     {
      "h": "الـ RAD والـ Agile",
@@ -102,7 +110,13 @@ AR.qa = {
       "الخلاصة (1.4): الـ software testing بيوضح إن البرنامج بيعمل الـ functions المطلوبة صح؛ وهدف الـ software testing إننا نضمن إن المنتج <b>error free</b>. اكتشاف الـ bugs هو أهم جزء في الـ software testing process؛ والـ bugs دي ممكن تكون error في البرنامج أو مشاكل بتأثر على الـ quality بتاعة الـ software. الـ bugs ممكن تطلع مكلفة جدًا: بتاخد وقت عشان تتحل، وده بيأثر على الـ timelines والتكلفة بتاعة المشروع، وكمان بتسبب خساير لأن الشركة ممكن تضطر تعوّض العميل بفلوس أو تبدّل المنتج اللي فيه عيب. وممكن كمان تضر سمعة الشركة.",
       "الخلاصة (1.4): على حسب <b>نوع الـ error أو سبب الـ error</b>، الـ bugs بتتقسم لأنواع كتير زي bugs بسبب conceptual error، و math bugs، و logical bugs، و resource bugs، و co-programming bugs، و team working bugs.",
       "الخلاصة (1.4): الـ bugs في الـ software ممكن تحصل لأسباب كتير زي <b>الـ human error، وقلة التواصل (lack of communication)، والـ time lines الضيقة، والـ design logic الغلط، والـ coding practices اللي مش كفء، والـ testers اللي مش skilled</b>."
-     ]
+     ],
+     "figH": {
+      "qa-rad": "الـ RAD وهو شغال: من الـ requirements للـ prototype لحد التسليم",
+      "qa-agile": "الـ Agile وهو شغال: cycles قصيرة و releases صغيرة و feedback مستمر",
+      "qa-tdd": "Figure 1.4: الـ Agile Model، الـ 5 steps بتوع الـ test-driven development (TDD)",
+      "qa-models-compare": "مقارنة الـ models: الـ testing بيحصل فين في كل واحد"
+     }
     }
    ],
    "cards": [

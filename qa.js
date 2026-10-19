@@ -143,6 +143,11 @@ COURSES.qa = {
       "qa-waterfall": 7,
       "qa-waterfall-flow": 7,
       "qa-spiral": 13
+     },
+     "figH": {
+      "qa-waterfall": "Figure 1.1: the Waterfall Model, phase by phase",
+      "qa-waterfall-flow": "Waterfall in action: how the work flows down the phases, and what an early error costs",
+      "qa-spiral": "Figure 1.2: the Spiral Model, quadrant by quadrant"
      }
     },
     {
@@ -193,7 +198,10 @@ COURSES.qa = {
      "pts": [
       "Figure 1.3 (V Model): the boxes form a V. Down the left arm (arrows pointing down): Requirements Specifications → Functional Specifications → System Design → Unit Design → <b>Code</b> at the bottom. Up the right arm (arrows pointing up): Code → Unit Test → Integration Test → System Test → Acceptance Test. Dashed arrows run across from each left box to its partner on the right, labelled with the plan: <b>Acceptance Test Plan, System Test Plan, Integration Test Plan</b>; between Unit Design and Unit Test the label is <b>Test Cases</b>."
      ],
-     "fig": "qa-vmodel"
+     "fig": "qa-vmodel",
+     "figH": {
+      "qa-vmodel": "Figure 1.3: the V Model, each development stage and the test level that checks it"
+     }
     },
     {
      "h": "RAD and Agile",
@@ -226,6 +234,12 @@ COURSES.qa = {
       "qa-agile": 6,
       "qa-tdd": 9,
       "qa-models-compare": 12
+     },
+     "figH": {
+      "qa-rad": "RAD in action: from the requirements to a prototype to the handover",
+      "qa-agile": "Agile in action: short cycles and small releases with constant feedback",
+      "qa-tdd": "Figure 1.4: the Agile Model, the five steps of test-driven development (TDD)",
+      "qa-models-compare": "Comparing the models: where testing happens in each one"
      }
     }
    ],

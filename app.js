@@ -710,6 +710,10 @@ function start() {
     });
     return runs;
   }
+  // a visual with the headline its section gives it in s.figH (Arabic in the Arabic notes' figH)
+  const figWithHead = (s, an, n, ar) => html`<${React.Fragment} key=${n}>
+    ${s.figH && s.figH[n] && html`<p className="fighead"><span dangerouslySetInnerHTML=${{ __html: s.figH[n] }}></span><${Ar} t=${an && an.figH && an.figH[n]} cls="arh" /></p>`}
+    <${FigBlock} name=${n} ar=${ar} /></${React.Fragment}>`;
   function FigBlock({ name, ar }) {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
@@ -759,9 +763,9 @@ function start() {
             ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
             ${s.pts && figRuns(s).map((r, ri) => html`<${React.Fragment} key=${ri}>
               <ul>${r.pts.map(j => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: s.pts[j] }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>
-              ${r.figs.map(n => html`<${FigBlock} key=${n} name=${n} ar=${!!arL} />`)}</${React.Fragment}>`)}
+              ${r.figs.map(n => figWithHead(s, an, n, !!arL))}</${React.Fragment}>`)}
             ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} k=${k} />`}
-            ${[].concat(s.fig || []).filter(n => !s.pts || !(s.figAt && s.figAt[n] < s.pts.length)).map(n => html`<${FigBlock} key=${n} name=${n} ar=${!!arL} />`)}
+            ${[].concat(s.fig || []).filter(n => !s.pts || !(s.figAt && s.figAt[n] < s.pts.length)).map(n => figWithHead(s, an, n, !!arL))}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));
