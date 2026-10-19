@@ -27,7 +27,7 @@ Notes, flashcards, Q&amp;A, quizzes with an explanation for every choice, and so
 <td align="center"><h2>102</h2>lectures</td>
 <td align="center"><h2>1,636</h2>flashcards</td>
 <td align="center"><h2>2,673</h2>quiz questions</td>
-<td align="center"><h2>554</h2>Q&amp;A pairs</td>
+<td align="center"><h2>563</h2>Q&amp;A pairs</td>
 <td align="center"><h2>73</h2>solved past papers</td>
 </tr>
 </table>

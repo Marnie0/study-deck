@@ -44,7 +44,8 @@ COURSES.os = {
        "Use the system",
        "People, machines, other computers"
       ]
-     ]
+     ],
+     "fig": "os-four-components"
     },
     {
      "h": "What operating systems do, OS definition and computer startup",
@@ -55,7 +56,8 @@ COURSES.os = {
       "No universally accepted definition. \"Everything a vendor ships when you order an OS\" is a good approximation (but varies wildly).",
       "<b>Kernel</b> = \"the one program running at all times on the computer\". Everything else is either a <b>system program</b> (ships with the OS) or an <b>application program</b>.",
       "<b>Bootstrap program</b>: loaded at power-up or reboot; typically stored in <b>ROM or EPROM</b> (known as <b>firmware</b>); initializes all aspects of the system; <b>loads the OS kernel and starts its execution</b>."
-     ]
+     ],
+     "fig": "os-startup"
     },
     {
      "h": "Computer-system organization and interrupts",
@@ -84,12 +86,16 @@ COURSES.os = {
        "Synchronous with the running program",
        "Asynchronous; transfers control to the ISR through the interrupt vector"
       ]
+     ],
+     "fig": [
+      "os-sys-org",
+      "os-interrupts"
      ]
     },
     {
      "h": "I/O structure, storage and DMA",
      "pts": [
-      "<b>Synchronous I/O</b>: after I/O starts, control returns to the user program <b>only upon I/O completion</b> (wait instruction idles the CPU until the next interrupt, or a wait loop); at most one I/O request outstanding, no simultaneous I/O.",
+      "<b>Synchronous I/O</b>: after I/O starts, control returns to the user program <b>only upon I/O completion</b> (wait instruction idles the CPU until the next interrupt, or a <b>wait loop</b> (contention for memory access)); at most one I/O request outstanding, no simultaneous I/O.",
       "Asynchronous I/O: after I/O starts, control returns to the user program without waiting for I/O completion. <b>System call</b>: a request to the OS to allow the user to wait for I/O completion. The <b>device-status table</b> contains an entry for each I/O device indicating its type, address and state. The OS indexes into the I/O device table to determine device status and to modify the table entry <b>to include the interrupt</b>.",
       "Storage definitions: the basic unit of computer storage is the <b>bit</b>, which can contain one of two values, 0 and 1. All other storage in a computer is based on <b>collections of bits</b>; given enough bits, a computer can represent numbers, letters, images, movies, sounds, documents and programs, to name a few. A <b>byte</b> is 8 bits, and on most computers it is the smallest convenient chunk of storage: for example, most computers don't have an instruction to move a bit but do have one to move a byte. A <b>word</b> (a less common term) is a given computer architecture's native unit of data, made up of one or more bytes: a computer with 64-bit registers and 64-bit memory addressing typically has 64-bit (8-byte) words. A computer executes many operations in its native word size rather than a byte at a time.",
       "Computer storage, along with most computer throughput, is generally measured and manipulated in <b>bytes</b> and collections of bytes: KB (kilobyte) = 1,024 B; MB (megabyte) = 1,024² B; GB (gigabyte) = 1,024³ B; TB (terabyte) = 1,024⁴ B; PB (petabyte) = 1,024⁵ B. Computer manufacturers often round off these numbers and say that a megabyte is 1 million bytes and a gigabyte is 1 billion bytes. Networking measurements are an exception to this rule: they are given in <b>bits</b>, because networks move data a bit at a time.",
@@ -101,6 +107,14 @@ COURSES.os = {
       "<b>Device driver</b> for each device controller <b>to manage I/O</b>: provides a uniform interface between controller and kernel.",
       "<b>DMA (Direct Memory Access)</b>: used for <b>high-speed I/O devices</b> able to transmit at close to memory speeds. The device controller transfers <b>blocks</b> of data from buffer storage <b>directly to main memory without CPU intervention</b>. <b>Only one interrupt per block</b>, rather than one interrupt per byte.",
       "Figure (slide 20, Direct Memory Access Structure): the CPU (*N) box holds a thread of execution and a cache. Between the cache and memory (which holds instructions and data) run two two-way arrows: <b>instruction execution cycle</b> and <b>data movement</b>. Between the CPU and the device (*M) run three arrows: <b>I/O request</b> (CPU → device), <b>data</b> (both ways) and <b>interrupt</b> (device → CPU). A two-way <b>DMA</b> arrow links the device directly with memory, without passing through the CPU."
+     ],
+     "fig": [
+      "os-io-structure",
+      "os-units",
+      "os-storage-hierarchy",
+      "os-caching",
+      "os-dma",
+      "os-dma-irq"
      ]
     },
     {
@@ -166,6 +180,10 @@ COURSES.os = {
      "pts": [
       "Movement between levels can be explicit or implicit. Data \"A\" migrates disk → main memory → cache → hardware register.",
       "Multitasking: must always use the <b>most recent value</b> wherever it is. Multiprocessors: hardware must provide <b>cache coherency</b> so all CPUs see the most recent value. Distributed systems: several copies of a datum can exist (even more complex)."
+     ],
+     "fig": [
+      "os-storage-levels",
+      "os-migrate"
      ]
     },
     {
@@ -174,7 +192,8 @@ COURSES.os = {
       "Most systems use a single general-purpose processor (plus special-purpose processors).",
       "<b>Multiprocessors</b> systems are growing in use and importance; also known as parallel systems or tightly-coupled systems. Advantages: (1) increased throughput, (2) economy of scale, (3) increased reliability.",
       "<b>Asymmetric multiprocessing</b>: each processor is assigned a <b>specific task</b>. <b>Symmetric multiprocessing (SMP)</b>: each processor performs <b>all tasks</b>.",
-      "<b>Dual-core design</b>: multi-chip and <b>multicore</b>; each core has its own registers and cache, sharing memory. Some systems are chassis containing multiple separate systems.",
+      "<b>Dual-core design</b>: multi-chip and <b>multicore</b>; each core has its own registers and cache, sharing memory. Systems containing all chips: <b>chassis containing multiple separate systems</b>.",
+      "Figure (slide 22, A Dual-Core Design): one chip holds two boxes, <b>CPU core0</b> and <b>CPU core1</b>; each core has its own <b>registers</b> above its own <b>cache</b>. Lines from both caches join and lead down to a single <b>memory</b> outside the chip.",
       "Memory layout for a multiprogrammed system: OS at address 0, then job 1 … job 4 up to 512M."
      ],
      "table": [
@@ -194,6 +213,10 @@ COURSES.os = {
        "When a job has to wait (e.g. for I/O), the OS switches to another job",
        "Several jobs ready at once → <b>CPU scheduling</b>; if processes don't fit in memory, <b>swapping</b>; <b>virtual memory</b> runs processes not completely in memory"
       ]
+     ],
+     "fig": [
+      "os-dualcore",
+      "os-multiprog"
      ]
     },
     {
@@ -205,6 +228,11 @@ COURSES.os = {
       "Figure (slide 27, Transition from User to Kernel Mode): two bands separated by a line. Top band, <b>user process</b> (user mode, mode bit = 1): \"user process executing\" → \"calls system call\". An arrow labelled <b>trap, mode bit = 0</b> goes down into the bottom band, <b>kernel</b> (kernel mode, mode bit = 0), to \"execute system call\". An arrow labelled <b>return, mode bit = 1</b> goes back up to \"return from system call\" in the user band.",
       "CPUs increasingly support multi-mode operation, e.g. a <b>virtual machine manager (VMM)</b> mode for guest VMs.",
       "<b>Timer</b> prevents an infinite loop or a process hogging resources: set to interrupt after a period; a counter decremented by the physical clock; the OS sets it (<b>privileged instruction</b>); interrupt when it reaches zero; set up before scheduling a process to regain control or terminate a program that exceeds its allotted time."
+     ],
+     "fig": [
+      "os-intr-kinds",
+      "os-modes",
+      "os-timer"
      ]
     },
     {
@@ -216,7 +244,7 @@ COURSES.os = {
       "<b>Memory management activities</b>: keeping track of which parts of memory are used and by whom; deciding which processes and data to move into and out of memory; <b>allocating and deallocating memory space</b> as needed.",
       "Storage management: the OS provides a uniform, logical view of data storage: it abstracts physical properties to a logical storage unit, the <b>file</b>. Each medium is controlled by a device (i.e., disk drive, tape drive); varying properties include access speed, capacity, data-transfer rate and access method (sequential or random). <b>File-system management</b>: files are usually organized into directories; access control on most systems determines who can access what. OS activities: creating and deleting files and directories, primitives to manipulate files and directories, mapping files onto secondary storage, backing up files onto stable (non-volatile) storage media.",
       "Mass-storage management: usually disks are used to store data that does not fit in main memory or data that must be kept for a \"long\" period of time. Proper management is of central importance: the entire speed of computer operation hinges on the disk subsystem and its algorithms. OS activities: free-space management, storage allocation, disk scheduling. Some storage need not be fast (‡ often called tertiary storage): it includes optical storage and magnetic tape, still must be managed (by the OS or applications), and varies between WORM (write-once, read-many-times) and RW (read-write).",
-      "<b>I/O subsystem</b> hides hardware attributes from the user; responsible for memory management of I/O: <b>buffering</b> (storing data temporarily while transferred), <b>caching</b> (storing parts of data in faster storage), <b>spooling</b> (overlapping the output of one job with the input of other jobs); general device-driver interface; drivers for specific devices.",
+      "One purpose of the OS is to <b>hide attributes of hardware devices</b> from the user. The <b>I/O subsystem</b> is responsible for: memory management of I/O including <b>buffering</b> (storing data temporarily while it is being transferred), <b>caching</b> (storing parts of data in faster storage for performance), <b>spooling</b> (the overlapping of output of one job with input of other jobs); a general device-driver interface; drivers for specific hardware devices.",
       "<b>Protection</b>: any mechanism for <b>controlling access</b> of processes or users to resources defined by the OS. <b>Security</b>: <b>defense</b> of the system against internal and external <b>attacks</b> (denial-of-service, viruses, identity theft, theft of service).",
       "Systems generally first distinguish among users, to determine who can do what. User identities (<b>user IDs</b>, security IDs) include a name and an associated number, one per user; the user ID is then associated with all files and processes of that user to determine access control. The group identifier (<b>group ID</b>) allows a set of users to be defined and controls managed, then is also associated with each process and file. <b>Privilege escalation</b> allows a user to change to an effective ID with more rights."
      ]
@@ -643,24 +671,30 @@ COURSES.os = {
        "One program…",
        "…can be several processes"
       ]
-     ]
+     ],
+     "fig": "os-proc-memory"
     },
     {
      "h": "Process states and the PCB",
      "pts": [
+      "As a process executes, it changes <b>state</b>:",
       "<b>new</b>: being created. <b>running</b>: instructions are being executed. <b>waiting</b>: waiting for some event (I/O completion, signal). <b>ready</b>: waiting to be assigned to a processor. <b>terminated</b>: finished execution.",
       "Transitions (state diagram): new →<i>admitted</i>→ ready →<i>scheduler dispatch</i>→ running; running →<i>interrupt</i>→ ready; running →<i>I/O or event wait</i>→ waiting →<i>I/O or event completion</i>→ ready; running →<i>exit</i>→ terminated.",
       "On a single processor only <b>one process can be running</b> at any instant; many can be ready or waiting.",
-      "<b>PCB (Process Control Block, task control block)</b> holds: process state; process number; <b>program counter</b>; <b>CPU registers</b>; CPU-scheduling info (priorities, queue pointers); memory-management info (memory allocated); accounting info (CPU used, clock time elapsed, time limits); I/O status info (devices allocated, list of open files).",
+      "<b>PCB (Process Control Block, task control block)</b> holds: <b>process state</b> (running, waiting, etc.); process number; <b>program counter</b> (location of instruction to next execute); <b>CPU registers</b> (contents of all process-centric registers); CPU-scheduling info (priorities, scheduling queue pointers); memory-management info (memory allocated to the process); accounting info (CPU used, clock time elapsed since start, time limits); I/O status info (I/O devices allocated to the process, list of open files).",
       "Figure (slide 6, Process Control Block): a column of fields from top to bottom: <b>process state</b>; <b>process number</b>; <b>program counter</b>; <b>registers</b>; <b>memory limits</b>; <b>list of open files</b>; • • • (more fields).",
       "<b>Threads</b>: a process may have multiple program counters, so multiple threads of control can execute at once; the PCB must then store per-thread details."
      ],
-     "code": "        admitted            interrupt            exit\n  new ─────────► ready ◄──────────── running ─────────► terminated\n                   ▲   ───────────────►  │\n                   │   scheduler dispatch│\n   I/O or event    │                     │ I/O or event wait\n   completion      └────── waiting ◄─────┘"
+     "code": "        admitted            interrupt            exit\n  new ─────────► ready ◄──────────── running ─────────► terminated\n                   ▲   ───────────────►  │\n                   │   scheduler dispatch│\n   I/O or event    │                     │ I/O or event wait\n   completion      └────── waiting ◄─────┘",
+     "fig": [
+      "os-state-diagram",
+      "os-pcb"
+     ]
     },
     {
      "h": "Process scheduling: queues and schedulers",
      "pts": [
-      "Goal: maximize CPU use, quickly switch processes onto the CPU for time sharing. The <b>process scheduler</b> selects among available processes.",
+      "Goal: maximize CPU use, quickly switch processes onto the CPU for time sharing. The <b>process scheduler</b> selects among available processes for next execution on CPU.",
       "The scheduler maintains scheduling queues of processes. Job queue: set of all processes in the system. Ready queue: set of all processes residing in main memory, ready and waiting to execute. Device queues: set of processes waiting for an I/O device. Processes migrate among the various queues.",
       "Figure (slide 9, Ready queue and various I/O device queues): each queue has a <b>queue header</b> with a <b>head</b> and a <b>tail</b> pointer. <b>Ready queue</b>: head → PCB7 → PCB2 → null, tail → PCB2 (each PCB holds registers, …). <b>Mag tape unit 0</b> and <b>mag tape unit 1</b>: head and tail both null (empty). <b>Disk unit 0</b>: head → PCB3 → PCB14 → PCB6 → null, tail → PCB6. <b>Terminal unit 0</b>: head and tail both → PCB5 → null. • • • (more device queues).",
       "Figure (slide 10, Representation of process scheduling): a <b>queueing diagram</b> represents queues, resources, flows. New processes enter the <b>ready queue</b> → <b>CPU</b> → exit (process ends), or the CPU leads to one of four paths, each returning to the ready queue: <b>I/O request</b> → <b>I/O queue</b> → <b>I/O</b>; <b>time slice expired</b>; <b>fork a child</b> → <b>child executes</b>; <b>wait for an interrupt</b> → <b>interrupt occurs</b>.",
@@ -699,6 +733,11 @@ COURSES.os = {
        "Added when the degree of multiprogramming must decrease",
        "Should pick a good mix of I/O-bound and CPU-bound processes"
       ]
+     ],
+     "fig": [
+      "os-device-queues",
+      "os-queueing",
+      "os-medium-term"
      ]
     },
     {
@@ -709,13 +748,14 @@ COURSES.os = {
       "Context-switch time is pure <b>overhead</b>: the system does no useful work while switching. The more complex the OS and PCB, the longer the switch.",
       "It depends on hardware support: some hardware provides <b>multiple register sets per CPU</b>, so multiple contexts are loaded at once.",
       "Kernel actions: save PC, registers and state of the running process into its PCB; update its state (ready/waiting) and move it to the proper queue; select the next process; restore its PC, registers and memory info from its PCB; switch to user mode and jump to its saved PC."
-     ]
+     ],
+     "fig": "os-cpu-switch"
     },
     {
      "h": "Operations on processes: creation and termination",
      "pts": [
       "Operations on processes: the system must provide mechanisms for <b>process creation</b> and <b>process termination</b>.",
-      "Parents create children, forming a <b>tree of processes</b> (Linux: init pid 1 → login, kthreadd, sshd → bash → ps, emacs …). Processes are identified by a <b>process identifier (PID)</b>.",
+      "Parents create children, forming a <b>tree of processes</b> (Linux: init (pid 1) has children login, kthreadd and sshd; login → bash → ps and emacs). Processes are identified by a <b>process identifier (PID)</b>.",
       "<b>Resource sharing options</b>: parent and children share all resources; children share a subset; or share none. <b>Execution options</b>: run concurrently, or the parent waits until the children terminate.",
       "<b>Address space (code block) has two types</b>: the child is a duplicate of the parent, or the child has a program loaded into it.",
       "UNIX: <b>fork()</b> creates a new process (returns 0 in the child, the child's PID in the parent, &lt; 0 on error); <b>exec()</b> used after fork() replaces the process' memory space with a new program; parent calls <b>wait()</b>. Windows: <b>CreateProcess()</b> (e.g. starts mspaint.exe) then WaitForSingleObject().",
@@ -724,7 +764,8 @@ COURSES.os = {
       "Some operating systems do not allow a child to exist if its parent has terminated: <b>if a process terminates, then all its children must also be terminated</b>. <b>Cascading termination</b>: all children, grandchildren, etc. are terminated; the termination is initiated by the operating system.",
       "<code>pid = wait(&amp;status);</code> returns status and the pid of the terminated child. <b>Zombie</b>: terminated, but no parent is waiting (parent has not called wait() yet). <b>Orphan</b>: parent terminated without invoking wait()."
      ],
-     "code": "pid_t pid = fork();            /* fork a child process */\nif (pid < 0) {                 /* error occurred */\n    fprintf(stderr, \"Fork Failed\"); return 1;\n} else if (pid == 0) {         /* child process */\n    execlp(\"/bin/ls\", \"ls\", NULL);\n} else {                       /* parent process */\n    wait(NULL);                /* wait for the child to complete */\n    printf(\"Child Complete\");\n}"
+     "code": "pid_t pid = fork();            /* fork a child process */\nif (pid < 0) {                 /* error occurred */\n    fprintf(stderr, \"Fork Failed\"); return 1;\n} else if (pid == 0) {         /* child process */\n    execlp(\"/bin/ls\", \"ls\", NULL);\n} else {                       /* parent process */\n    wait(NULL);                /* wait for the child to complete */\n    printf(\"Child Complete\");\n}",
+     "fig": "os-fork-life"
     },
     {
      "h": "Chrome multiprocess architecture and IPC models",
@@ -736,7 +777,8 @@ COURSES.os = {
       "<b>Shared memory</b>: an area of memory shared among communicating processes; communication is under the control of the <b>user processes, not the OS</b>; the major issue is <b>synchronizing</b> their actions.",
       "<b>Producer–consumer problem</b>: the producer produces information consumed by the consumer. <b>Unbounded buffer</b>: no practical limit; <b>bounded buffer</b>: fixed size."
      ],
-     "code": "#define BUFFER_SIZE 10\nitem buffer[BUFFER_SIZE];\nint in = 0, out = 0;            /* shared */\n\n/* Producer */\nwhile (true) {\n    while (((in + 1) % BUFFER_SIZE) == out) ;   /* buffer full: do nothing */\n    buffer[in] = next_produced;\n    in = (in + 1) % BUFFER_SIZE;\n}\n/* Consumer */\nwhile (true) {\n    while (in == out) ;                           /* buffer empty: do nothing */\n    next_consumed = buffer[out];\n    out = (out + 1) % BUFFER_SIZE;\n}\n/* Correct, but can only use BUFFER_SIZE - 1 elements */"
+     "code": "#define BUFFER_SIZE 10\nitem buffer[BUFFER_SIZE];\nint in = 0, out = 0;            /* shared */\n\n/* Producer */\nwhile (true) {\n    while (((in + 1) % BUFFER_SIZE) == out) ;   /* buffer full: do nothing */\n    buffer[in] = next_produced;\n    in = (in + 1) % BUFFER_SIZE;\n}\n/* Consumer */\nwhile (true) {\n    while (in == out) ;                           /* buffer empty: do nothing */\n    next_consumed = buffer[out];\n    out = (out + 1) % BUFFER_SIZE;\n}\n/* Correct, but can only use BUFFER_SIZE - 1 elements */",
+     "fig": "os-chrome"
     },
     {
      "h": "Message passing, synchronization, buffering and sockets",
@@ -1188,6 +1230,11 @@ COURSES.os = {
        "e.g. FCFS, non-preemptive SJF, non-preemptive priority",
        "e.g. RR, SRTF, preemptive priority. Windows, macOS, Linux and UNIX all use preemptive scheduling"
       ]
+     ],
+     "fig": [
+      "os-burst-cycle",
+      "os-sched-states",
+      "os-dispatch"
      ]
     },
     {
@@ -1227,7 +1274,8 @@ COURSES.os = {
        "24–27",
        "27–30"
       ]
-     ]
+     ],
+     "fig": "os-fcfs-sim"
     },
     {
      "h": "SJF (Shortest-Job-First) and SRTF",
@@ -1256,6 +1304,10 @@ COURSES.os = {
        "10–17",
        "17–26"
       ]
+     ],
+     "fig": [
+      "os-sjf-sim",
+      "os-srtf-sim"
      ]
     },
     {
@@ -1301,15 +1353,24 @@ COURSES.os = {
        "P1",
        "P2",
        "P3",
-       "P1 (five quanta of 4)"
+       "P1",
+       "P1",
+       "P1",
+       "P1",
+       "P1"
       ],
       [
        "0–4",
        "4–7",
        "7–10",
-       "10–14 | 14–18 | 18–22 | 22–26 | 26–30"
+       "10–14",
+       "14–18",
+       "18–22",
+       "22–26",
+       "26–30"
       ]
-     ]
+     ],
+     "fig": "os-rr-sim"
     },
     {
      "h": "Priority scheduling (and priority with RR)",
@@ -1335,6 +1396,10 @@ COURSES.os = {
        "16–18",
        "18–19"
       ]
+     ],
+     "fig": [
+      "os-prio-sim",
+      "os-prio-rr-sim"
      ]
     },
     {
@@ -1385,6 +1450,11 @@ COURSES.os = {
       "<b>Aging can be implemented</b> using a multilevel feedback queue.",
       "Example: Q0 = RR with q = 8 ms, Q1 = RR with q = 16 ms, Q2 = FCFS. A new process enters Q0 and gets 8 ms; if not finished it moves to Q1 and gets 16 more ms; if it still does not complete it is preempted and moved to Q2.",
       "Figure (slide 29, multilevel feedback queue): an arrow enters the <b>quantum = 8</b> queue; each queue has an exit arrow on the right (the process finishes there); a line from the end of the quantum = 8 queue leads down into the <b>quantum = 16</b> queue, and a line from the end of that queue leads down into the <b>FCFS</b> queue."
+     ],
+     "fig": [
+      "os-mlq",
+      "os-mlq-types",
+      "os-mlfq"
      ]
     },
     {
@@ -1441,7 +1511,8 @@ COURSES.os = {
        "36/4 = 9",
        "<b>20/4 = 5</b>"
       ]
-     ]
+     ],
+     "fig": "os-review-sim"
     }
    ],
    "cards": [
