@@ -68,6 +68,7 @@
 @media (max-width:480px){ .fig-phases{ grid-template-columns:repeat(2, 1fr); } }
 .fig-walk{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:0 14px 12px; } .fig-walk .path{ width:100%; font-size:.8rem; color:var(--graphite); }
 .fig-chev{ display:flex; gap:2px; max-width:560px; margin:0 auto; } .fig-chev div{ flex:1; color:#fff; font-weight:600; font-size:.85rem; text-align:center; padding:12px 4px 12px 14px; clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 12% 50%); opacity:.4; transition:opacity .4s, transform .4s; }
+@media (max-width:480px){ .fig-chev{ flex-wrap:wrap; row-gap:4px; } .fig-chev div{ flex:1 1 30%; min-width:0; } }
 .fig-chev div:first-child{ clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%); padding-left:6px; } .fig-chev div.on{ opacity:1; transform:translateY(-3px); } .fig-chev small{ display:block; font-size:.72rem; opacity:.9; }
 .fig-ucd{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; max-width:560px; margin:0 auto; } .fig-ucd div{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px 6px; text-align:center; font-weight:600; opacity:.45; transition:opacity .4s, box-shadow .4s; }
 .fig-ucd div.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); } .fig-loop{ text-align:center; color:var(--k-hci); font-weight:600; margin-top:8px; }
@@ -84,7 +85,8 @@
 .fig-time{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:10px; max-width:560px; margin:0 auto; } .fig-time div{ padding:14px 8px; text-align:center; font:600 1rem Arial, var(--body); border:1px solid #333; }
 .fig-swatch{ display:grid; grid-template-columns:repeat(2, 1fr); gap:8px; max-width:520px; margin:10px auto 0; } .fig-swatch div{ padding:12px 8px; text-align:center; font-weight:700; border-radius:8px; border:1px solid var(--line); } .fig-swatch small{ display:block; font-weight:600; font-size:.75rem; margin-top:4px; }
 .fig-q{ max-width:520px; margin:0 auto; text-align:center; } .fig-q .big{ font-size:1.35rem; font-weight:700; padding:22px 10px; border:1px solid var(--line); border-radius:12px; background:var(--paper); }
-.fig-seven{ display:grid; gap:10px; max-width:560px; margin:0 auto; } .fig-seven .ui{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px; opacity:.4; transition:opacity .4s, box-shadow .4s; } .fig-seven .ui.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); }
+.fig-seven{ display:grid; grid-template-columns:minmax(0,1fr); gap:10px; max-width:560px; margin:0 auto; }
+.fig-seven .menu[style*="grid-auto-flow"]{ display:inline-flex; flex-wrap:wrap; } .fig-seven .ui{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px; opacity:.4; transition:opacity .4s, box-shadow .4s; } .fig-seven .ui.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); }
 .fig-seven .row7{ display:flex; gap:6px; flex-wrap:wrap; align-items:center; } .fig-seven .tab{ border:1px solid var(--line); border-bottom:0; border-radius:6px 6px 0 0; padding:4px 8px; font-size:.8rem; } .fig-seven .face{ width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-size:15px; border:1px solid #9ca3af; }
 .fig-seven ul{ margin:0; padding-left:18px; columns:2; font-size:.85rem; } .fig-seven .menu{ display:inline-grid; border:1px solid var(--line); border-radius:6px; font-size:.82rem; } .fig-seven .menu span{ padding:2px 10px; border-bottom:1px solid var(--rule); }
 .fig-drive{ max-width:520px; margin:0 auto; }

@@ -1898,10 +1898,16 @@ AR.hci = {
      "pts": [
       "الـ <b>Quantitative</b> يعني data طبيعتها <b>أرقام</b> (قياسات، عدّ). أسهل للـ engineers والناس الـ technical.",
       "الـ <b>Qualitative</b>: ملاحظات عن <b>ليه وإزاي</b> الحاجات بتحصل، وغالباً مبنية على interviews. أصعب على الناس الـ technical، بس هي اللي محتاجينها عشان نفهم بجد."
-     ]
+     ],
+     "figH": {
+      "hc-qual-quant": "الـ data دي quantitative ولا qualitative؟ صنّفها"
+     }
     },
     {
-     "h": "Primary ضد secondary research"
+     "h": "Primary ضد secondary research",
+     "figH": {
+      "hc-primary-secondary": "الـ research ده primary ولا secondary؟ صنّف الـ methods وقارن بينهم"
+     }
     },
     {
      "h": "نصايح عامة للـ research methods",
@@ -1919,7 +1925,10 @@ AR.hci = {
       "• اجمع بس الـ data اللي محتاجها.<br>• متربطش الـ data اللي جمعتها بـ PII أو SPII.<br>• ومتحتفظش بالـ data بعد ما متبقاش محتاجها.",
       "الـ <b>PII (Personally Identifiable Information)</b>: تفاصيل ممكن تعرّف بيها الـ user: <b>الأسامي، عنوان البيت، الـ email، رقم التليفون</b>.",
       "الـ <b>SPII (Sensitive PII)</b>: data لو ضاعت أو اتسرقت ممكن تعمل ضرر مالي أو إحراج أو تمييز: <b>الـ social security number، رخصة السواقة، أرقام الباسبور، أرقام الحسابات المالية، تاريخ الميلاد</b>."
-     ]
+     ],
+     "figH": {
+      "hc-pii-spii": "الـ data دي PII ولا sensitive PII؟ صنّفها"
+     }
     },
     {
      "h": "(1) الـ Surveys",
@@ -1927,7 +1936,10 @@ AR.hci = {
       "ردود سريعة من <b>عدد كبير من الـ users</b> في وقت قصير (نظرة عامة واسعة). غالباً أونلاين وسهل تعملها. وهي من <b>أرخص</b> الطرق.",
       "ممكن تبقى خطوة أولى عشان تاخد insights عن الدوافع والتفضيلات والأولويات والـ pain points، عشان تخطط لأنشطة بعدها زي الـ interviews. وممكن كمان تيجي بعد interview أو usability study.",
       "نصايح:<br>• <b>خليها صغيرة على قد ما تقدر</b> (أسئلة كتير بتقلل الـ response rate والـ reliability)<br>• اسأل بس اللي محتاجه وهتستخدمه<br>• <b>خلي بالك من الـ bias</b><br>• وخد feedback من المشاركين عن الـ survey نفسه."
-     ]
+     ],
+     "figH": {
+      "hc-survey-fit": "مكان الـ surveys في الـ user research، وإزاي تخليها كويسة"
+     }
     }
    ],
    "cards": [
@@ -2198,7 +2210,10 @@ AR.hci = {
      "h": "6 مبادئ: Clear · Concise · Specific · Expressive · Unbiased · Usable",
      "pts": [
       "كل مبدأ ليه أمثلة \"متسألش كده… / اسأل كده بدلها…\". والممتحنين كتير بيطلبوا منك تقيّم سؤال بيها."
-     ]
+     ],
+     "figH": {
+      "hc-six-principles": "الـ 6 مبادئ: متسألش كده، واسأل كده بدلها"
+     }
     },
     {
      "h": "Be Clear (خليك واضح)",
@@ -2207,7 +2222,10 @@ AR.hci = {
       "<b>تجنب الـ ranges اللي بتتداخل</b>، زي:<span class=\"ltr\">0-2, 2-5, 5-10</span>دول متداخلين. واستخدم بدلهم:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>",
       "<b>لو شاكك، زوّد تفاصيل</b>: \"tablet computer (يعني أي كمبيوتر بـ touchscreen و keyboard بيتفك)\".",
       "<b>حط إطار زمني (timebox) لأسئلة التكرار</b>: بدل \"Never / Rarely / Often…\"، اسأل \"في آخر 7 أيام، اتمرنت كام مرة؟\" والاختيارات: 0 و 1-2 و 3-4 و 5-7 و \"7 أو أكتر\"."
-     ]
+     ],
+     "figH": {
+      "hc-clear-ranges": "الـ ranges المتداخلة والـ scale من غير labels: جرّب قيمة"
+     }
     },
     {
      "h": "Be Concise (خليك مختصر)",
@@ -2230,7 +2248,10 @@ AR.hci = {
       "<b>استخدم ranges بدل yes/no</b>: \"Do you use social media?\" تبقى \"في آخر 7 أيام، قضيت قد إيه على الـ social media؟ 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ ساعات\".",
       "<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل Dissatisfied/Satisfied.",
       "<b>اسمح بأكتر من اختيار</b> لما ينفع (checkboxes بدل radio buttons)."
-     ]
+     ],
+     "figH": {
+      "hc-expressive": "خلّي الـ user يعبّر: كل سؤال قبل وبعد"
+     }
     },
     {
      "h": "Be Unbiased (خليك محايد)",
@@ -2245,7 +2266,10 @@ AR.hci = {
      "h": "Be Usable (خلّي الـ survey سهل الاستخدام)",
      "pts": [
       "• حط <b>progress bar</b>.<br>• خلي <b>أطوال الصفحات ثابتة</b>.<br>• <b>رتّب الأسئلة بشكل منطقي</b>.<br>• <b>نبّه الـ users على الأسئلة اللي متجاوبتش</b>.<br>• و<b>اعمل preview للـ survey بنفسك</b>."
-     ]
+     ],
+     "figH": {
+      "hc-usable-survey": "survey سهل الاستخدام: شغّل كل نصيحة وجاوبه"
+     }
     },
     {
      "h": "تمرين: قيّم أسئلة الـ survey دي",
@@ -2254,7 +2278,10 @@ AR.hci = {
       "السؤال \"Why do you like to exercise?\" ده <b>leading question</b> لأنه بيفترض إنك بتحبه.",
       "السؤال \"On a scale of 1 to 6 with 1 meaning 'not at all'…\" فيه <b>عدد options بيتغير</b> (4 ضد 6) و<b>scale معكوس</b> مقارنة بالسؤال اللي قبله.",
       "السؤال \"Have you listened to an audiobook this year?\" ده <b>سؤال yes/no</b>. استخدم ranges."
-     ]
+     ],
+     "figH": {
+      "hc-evaluate-questions": "تمرين: اعرف إيه الغلط في كل سؤال"
+     }
     }
    ],
    "cards": [
@@ -2443,7 +2470,10 @@ AR.hci = {
       "عدد الـ users اللي تقدر تعملهم interview أقل بكتير من اللي تقدر تعملهم survey.",
       "<b>أغلى</b>:<br>• الـ <b>synchronous</b> (اللي بيعمل الـ interview بيدّي وقت لكل شخص)<br>• الـ <b>incentives</b> (اللي بيتعملهم interview غالباً مستنيين مقابل).",
       "الـ Interviews والـ surveys ممكن يتعملوا ورا بعض بأي ترتيب، وتستخدم نتايج واحد عشان تخطط للتاني."
-     ]
+     ],
+     "figH": {
+      "hc-interview-vs-survey": "الـ interviews قصاد الـ surveys: العمق والانتشار والتكلفة، وإزاي تستخدمهم ورا بعض"
+     }
     },
     {
      "h": "نصايح لـ interview كويس",
@@ -2451,10 +2481,16 @@ AR.hci = {
       "<b>خطط من بدري</b> وجهّز الأسئلة قبل الـ interview.",
       "أثناء الـ interview فيه مفتاحين:<br>• <b>اسمع كويس</b> (الـ user هو اللي المفروض يتكلم أغلب الوقت)<br>• <b>اكتب notes</b> (واحد يسأل وواحد يكتب؛ الـ audio recording مش كفاية؛ اكتب المشاعر وردود الفعل).",
       "<b>سيب شوية وقت بين الـ interviews.</b>"
-     ]
+     ],
+     "figH": {
+      "hc-good-interview": "الـ interview الكويس: قبله وأثناءه وبين الـ interviews"
+     }
     },
     {
-     "h": "Interview لأفراد ضد groups"
+     "h": "Interview لأفراد ضد groups",
+     "figH": {
+      "hc-indiv-group": "الـ interview مع أفراد أو مع groups: كل واحد بيدّيك إيه"
+     }
     },
     {
      "h": "تحديات الـ data اللي بتتجمع بالأسئلة",
@@ -2464,7 +2500,10 @@ AR.hci = {
       "الـ <b>Recall bias</b>: إجابات مش دقيقة عن حاجات حصلت زمان.",
       "الـ <b>Reporting bias</b>: الناس بتدّي إجابات مثالية أكتر من الواقع.",
       "الحل: اعمل combination مع techniques تانية زي <b>participant observation و usability studies و secondary research</b>."
-     ]
+     ],
+     "figH": {
+      "hc-ask-challenges": "تحديات الأسئلة، والـ 2 biases، والحل"
+     }
     },
     {
      "h": "الـ Design: أقدر أعمله؟",
@@ -2597,7 +2636,10 @@ AR.hci = {
      "pts": [
       "<b>أكبر غلطة</b>: إنك تنط على طول تصمم interface <b>من غير ما تفهم الـ users أو الـ task</b>.",
       "<b>تاني أكبر غلطة</b>: إنك تثبت على <b>فكرة design واحدة</b> أو نوع واحد من الأفكار <b>بدري أوي</b>."
-     ]
+     ],
+     "figH": {
+      "hc-design-mistakes": "أكبر غلطتين في الـ design عند Joyner، والصح تعمل إيه"
+     }
     },
     {
      "h": "الـ Design alternatives",
@@ -2607,7 +2649,10 @@ AR.hci = {
       "الـ design النهائي غالباً بيبقى <b>combination</b> من alternatives اتستكشفت قبل كده.",
       "كام alternative؟ <b>أكتر ما تقدر.</b>",
       "مثال: <b>أول ماوس من Microsoft</b> اتعمله <b>أكتر من 100 prototype</b>."
-     ]
+     ],
+     "figH": {
+      "hc-alternatives": "الـ design alternatives: استكشف كتير، وابعد عن الـ interface الموجود، واجمع الأحسن"
+     }
     },
     {
      "h": "الـ Prototyping",
@@ -2618,7 +2663,10 @@ AR.hci = {
       "بيقول Joyner إن الـ design هو process iterative فيه brainstorming وتجميع وسيب وتعديل وتحسين للأفكار، وده محتاج كذا فكرة تبدأ بيهم.",
       "الـ prototype الكويس بيخليك تاخد <b>feedback مفيد (constructive)</b> وتعمل iteration. ومش لازم يشبه المنتج النهائي.",
       "الـ Prototypes اللي مش بتدّيك معرفة جديدة بتضيّع الـ design process. وبيقول Klemmer: <b>\"prototypes are questions, ask a lot of them.\"</b> يعني الـ prototypes أسئلة، اسأل كتير منها."
-     ]
+     ],
+     "figH": {
+      "hc-prototype-loop": "الـ prototyping: نسخة تقريبية سريعة عشان الـ feedback والـ iteration"
+     }
     }
    ],
    "cards": [
@@ -2817,7 +2865,10 @@ AR.hci = {
       "بيقول Konstan: الـ prototype اللي باين إنه معمول بمجهود قليل (زي مرسوم بالإيد) بياخد <b>constructive feedback</b> أكتر.",
       "التفاصيل الكتير أوي بتخلي الناس تدّي feedback في <b>مستوى أقل (lower level)</b> من المطلوب.",
       "ونصيحة Google: اعرض <b>أفكار high-level</b> في الأول؛ وركّز على التفاصيل والشاشات بعدين."
-     ]
+     ],
+     "figH": {
+      "hc-fidelity": "نفس الشاشة بـ low fidelity و high fidelity، وكل واحدة بتفيدك في إيه"
+     }
     },
     {
      "h": "أنشطة الـ design والـ brainstorming",
@@ -2825,7 +2876,10 @@ AR.hci = {
       "كل design activity يا إما بتساعد الـ <b>designer يفكر ويتخيل</b>، يا إما بتساعد <b>أعضاء الفريق والـ stakeholders يتخيلوا ويتواصلوا</b>، يا إما الاتنين.",
       "الـ Brainstorming هدفه يطلّع أفكار كتير. وبيقول Joyner: <b>ابدأ بـ brainstorming فردي</b>، لأن الـ groups بتتجمع على أفكار بدري أوي.",
       "نصايح:<br>• اكتب أفكار أكتر ما تقدر<br>• كل فكرة كلمتين أو جملة<br>• <b>خلي هدفك 20</b><br>• <b>متقيّمش ومتستبعدش</b> أي فكرة<br>• خد breaks أو اعمل كذا session<br>• والـ team sessions للمشاركة وإضافة أفكار، مش للتضييق."
-     ]
+     ],
+     "figH": {
+      "hc-brainstorm": "اعمل brainstorming بالقواعد: لوحدك الأول، وهدفك 20 فكرة، ومتحكمش على أي فكرة"
+     }
     },
     {
      "h": "ليه ندرس design؟ والـ design-development process",
@@ -2833,7 +2887,10 @@ AR.hci = {
       "• فيه طلبة هيلمعوا كـ designers.<br>• والـ developers كتير بيعملوا design لما ميكونش فيه designers.<br>• والـ developers بيشتغلوا أحسن مع الـ designers لما يفهموا الـ process.",
       "الـ <b>Handoff process</b>: الـ design يخلص، وبعدين يتسلّم للـ development (ورا بعض - sequential).",
       "الـ <b>Handshake process</b>: الـ design والـ development ماشيين <b>بالتوازي (in parallel)</b> مع sync points كتير."
-     ]
+     ],
+     "figH": {
+      "hc-handoff": "الـ handoff قصاد الـ handshake: الـ design والـ development ورا بعض ولا بالتوازي"
+     }
     },
     {
      "h": "الـ Wireframes",
@@ -2853,7 +2910,10 @@ AR.hci = {
       "الـ Process:<br>• ابدأ بـ <b>ورقة وقلم</b>. الهدف الأول إنك <b>توصل</b> لـ design، مش إنك تعرض واحد.<br>• ارسم <b>5 versions على الأقل</b> لكل شاشة.<br>• اعمل iteration بالـ feedback.<br>• والهدف التاني إنك تنقل الفكرة من دماغك للورقة بسرعة، فتجاهل الخطوط المستقيمة والمسافات والـ alignment في المرحلة دي.",
       "بعدين استخدم tools زي <b>Figma و Adobe XD و Sketch و Balsamiq و Pencil</b>.",
       "مثال في المحاضرة: app لتمشية الكلاب (dog-walking app)."
-     ]
+     ],
+     "figH": {
+      "hc-wireframe": "بناء wireframe بالـ standards، وخطوات الـ wireframing"
+     }
     },
     {
      "h": "إرشادات تصميم الـ Forms",
@@ -2866,7 +2926,11 @@ AR.hci = {
       "الـ Fields يبقى فيها <b>hints أو أمثلة أو الـ format المطلوب</b>.",
       "<b>شيل الـ actions المتكررة</b>: افتكر تفضيلات العملاء.",
       "اعمل <b>فرق واضح بين الـ primary والـ secondary calls-to-action</b> (زي \"Go Pro\" يبان أكتر من \"Free Trial\")."
-     ]
+     ],
+     "figH": {
+      "hc-where-am-i": "أنا فين؟ الـ breadcrumbs لما الاختيارات كتير، والـ progress bar لـ path واحد",
+      "hc-form-fix": "لاقي مشاكل form مثال وصلّحها"
+     }
     }
    ],
    "cards": [
@@ -3060,7 +3124,11 @@ AR.hci = {
       "<b>الفرق بين Close و Cancel</b>: لو فيه button واحد بس يبقى <b>\"Close\"</b>. لو فيه اتنين (Action button وواحد للقفل) استخدم <b>\"Cancel\"</b> مش \"Close\". والـ Cancel غالباً بيبقى <b>على اليمين</b> و<b>مش لافت للنظر</b>.",
       "<b>الـ Error messages</b>:<br>• اكتب المشكلة في الـ <b>title</b><br>• اشرح باختصار <b>حصلت ليه</b> تحت الـ title<br>• ولو ينفع حط link عشان <b>يكمّل الـ task أو يرجع</b> للحالة اللي قبلها<br>• وادّي recommendations لـ <b>الخطوة الجاية</b>.",
       "<b>الـ System notice</b> فيه:<br>• زرار \"Action\"<br>• زرار \"Remind me later\"<br>• مربع \"Don't show again\".<br>ورسايل الـ notice متبقاش طويلة ولا عامة (generic)."
-     ]
+     ],
+     "figH": {
+      "hc-close-cancel": "تختار Close ولا Cancel؟ اختار اسم زرار القفل",
+      "hc-messages": "أجزاء الـ error message والـ system notice الكويسين"
+     }
     },
     {
      "h": "الـ Layout",
@@ -3071,7 +3139,10 @@ AR.hci = {
       "<b>العناصر المرتبطة تبقى مترتبة منطقياً</b> (First/Middle/Last name؛ Start/End date؛ Origin/Destination).",
       "الـ <b>logo بتاعك في نفس المكان في كل صفحة</b> (من غير ما يتحرك).",
       "الـ <b>background مش معقد</b> ومش بيشتت عن المحتوى."
-     ]
+     ],
+     "figH": {
+      "hc-layout": "صلّح صفحة مثال بإرشادات الـ layout"
+     }
     },
     {
      "h": "الـ Navigation",
@@ -3083,7 +3154,10 @@ AR.hci = {
       "فيه <b>تغيير واضح لما تعمل hover</b> على أي حاجة بتتداس.",
       "الـ <b>company logo بيودّي للـ homepage</b>.",
       "ارسم الـ <b>\"Red Routes\"</b>: سلسلة الصفحات أو الـ actions اللي العملاء بيستخدموها أكتر حاجة عشان يخلصوا الـ tasks."
-     ]
+     ],
+     "figH": {
+      "hc-navigation": "إرشادات الـ navigation على موقع مثال"
+     }
     }
    ],
    "cards": [

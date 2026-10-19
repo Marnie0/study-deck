@@ -31,7 +31,9 @@ COURSES.hci = {
       "<b>Human Computer Interaction (HCI)</b> is a <b>multidisciplinary field of study</b> focusing on the design of computer technology and, in particular, the interaction between humans (the users) and computers.",
       "While initially concerned with computers, HCI has since expanded to cover <b>almost all forms of information technology design</b>."
      ],
-     "fig": "user-computer",
+     "fig": [
+      "user-computer"
+     ],
      "figAt": {
       "user-computer": 1
      },
@@ -47,7 +49,9 @@ COURSES.hci = {
       "<b>Computer</b>: Computer graphic, Operating system, Programming language.",
       "<b>Interaction</b>: Interaction design."
      ],
-     "fig": "hci-parts",
+     "fig": [
+      "hci-parts"
+     ],
      "figH": {
       "hci-parts": "The three parts of HCI and the fields in each"
      }
@@ -93,7 +97,9 @@ COURSES.hci = {
       "The user should <b>think about the task rather than thinking about the tool</b>.",
       "Diagram: USER on the left, TASK (a clipboard with a check mark) on the right, and arrows going both ways between them passing through the INTERFACE (a computer screen) in the middle."
      ],
-     "fig": "invisible-interface",
+     "fig": [
+      "invisible-interface"
+     ],
      "figH": {
       "invisible-interface": "The invisible interface: the user thinks about the task, not the tool"
      }
@@ -114,7 +120,9 @@ COURSES.hci = {
       "Picture (www.baddesigns.com):<br>• Top row: floor numbers 1, 2, 3, each next to a button.<br>• Bottom row: DOOR OPEN, a button, an X, STOP/RUN, a bell, a button, DOOR CLOSE and a button, where labels and buttons are the same square tiles.<br>• A red arrow points at a label on the bottom row.",
       "People do not make the same mistake for the labels and buttons on the <b>top row</b>. Why not? (question for discussion; the slide gives no answer)"
      ],
-     "fig": "elevator",
+     "fig": [
+      "elevator"
+     ],
      "figAt": {
       "elevator": 1
      },
@@ -131,7 +139,9 @@ COURSES.hci = {
       "Picture: the machine's labels read \"STEP 1 PUSH ANY BUTTON TO START UNIT\", \"STEP 2 FOLLOW DIRECTIONS ON DISPLAY\" and \"STEP 3 TAKE RECEIPT PLACE ON DASH\"; an arrow points to the bill slot.",
       "Picture: a 'REQUIRED' sign with opening hours (7:00 a.m. - 10:00 p.m.); an arrow points to the bill slot, which is separate from the STEP 1 'PUSH ANY BUTTON TO START UNIT' label."
      ],
-     "fig": "vending",
+     "fig": [
+      "vending"
+     ],
      "figH": {
       "vending": "Bad design: a vending machine that breaks the usual order"
      }
@@ -144,7 +154,9 @@ COURSES.hci = {
       "<b>Easy, intuitive, and a pleasure to use</b>.",
       "Only requires <b>one-step actions</b> to perform core tasks."
      ],
-     "fig": "marble",
+     "fig": [
+      "marble"
+     ],
      "figH": {
       "marble": "Good design: the marble answering machine"
      }
@@ -157,7 +169,9 @@ COURSES.hci = {
       "<b>Logical layout</b> and <b>color-coded, distinctive buttons</b>.",
       "<b>Easy-to-locate buttons</b>."
      ],
-     "fig": "tivo",
+     "fig": [
+      "tivo"
+     ],
      "figH": {
       "tivo": "Good design: the TiVo remote compared with a standard remote"
      }
@@ -171,7 +185,9 @@ COURSES.hci = {
       "3) <b>Voice control</b> using a remote or smart speaker.",
       "Pictures: a TV search screen with a grid keyboard of letters and numbers (with Space, Delete and Clear), and an Apple ID Sign In screen with one row of letters a to z and one row of numbers and symbols (.com, .net, .edu)."
      ],
-     "fig": "smart-tv",
+     "fig": [
+      "smart-tv"
+     ],
      "figH": {
       "smart-tv": "Three ways to type on a smart TV, compared"
      }
@@ -185,7 +201,9 @@ COURSES.hci = {
       "Better design: a <b>large touch screen</b> and a <b>stylus pen</b>.",
       "Picture: a trucker using the device mounted beside the steering wheel."
      ],
-     "fig": "truckers",
+     "fig": [
+      "truckers"
+     ],
      "figH": {
       "truckers": "User research: the Qualcomm device for truckers, before and after"
      }
@@ -236,7 +254,9 @@ COURSES.hci = {
       "Second mock-up: the same layout in bright colors (yellow header, blue search box, green drop-down, orange Go button), three books, and a cartoon smiley face with a speech bubble saying \"Reading Rox\".",
       "<b>Bad design</b>: the <b>user research component is almost absent</b>."
      ],
-     "fig": "book-mockups",
+     "fig": [
+      "book-mockups"
+     ],
      "figAt": {
       "book-mockups": 2
      },
@@ -252,7 +272,9 @@ COURSES.hci = {
       "Simple Search page screenshot: big picture buttons to search by:<br>• cover color: Rainbow, Red, Orange, Yellow, Green, Blue Covers<br>• age: Three to Five, Six to Nine, Ten to Thirteen<br>• Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books<br>• plus a Keywords search box.<br>It also shows <b>Featured Books</b> and <b>From Our Shelves</b> rows, a <b>Show Any Language books</b> filter, <b>More Choices</b>, <b>Search By Collections</b> and <b>Browse Exhibitions</b>.",
       "The ICDL search page is a <b>good design</b>: <b>more than 3 million unique visitors</b>, and the <b>visual search</b> was preferred by users (<b>71% of searches</b>)."
      ],
-     "fig": "icdl-search",
+     "fig": [
+      "icdl-search"
+     ],
      "figAt": {
       "icdl-search": 2
      },
@@ -274,7 +296,9 @@ COURSES.hci = {
       "Someone spent <b>at least 30 minutes</b> filling out a <b>doctor's office form</b> which asked for the address, phone number, email address and social security number an <b>average of 3 times</b> for <b>at least 10 different people and organizations</b> (my son, the patient, me, my wife, his doctors, dentists, pharmacies, insurance companies, emergency contact information and responsible parties ...).",
       "After completing and submitting, they received this message: <b>\"Internal server error\"</b> (shown with a sad face)."
      ],
-     "fig": "doctor-form",
+     "fig": [
+      "doctor-form"
+     ],
      "figH": {
       "doctor-form": "A bad user experience: the doctor's office form"
      }
@@ -312,7 +336,9 @@ COURSES.hci = {
       "<b>Design Practices</b> (arrows pointing into ID): Graphic Design, Product Design, Artist-Design, Industrial Design, Film Industry.",
       "<b>Interdisciplinary Fields</b> (two-way arrows with ID): Human Factors (HF), Cognitive Engineering, Human-Computer Interaction (HCI), Cognitive Ergonomics, Computer-Supported Cooperative Work (CSCW), Information Systems."
      ],
-     "fig": "id-umbrella",
+     "fig": [
+      "id-umbrella"
+     ],
      "figH": {
       "id-umbrella": "Interaction design and the fields around it"
      }
@@ -1357,7 +1383,9 @@ COURSES.hci = {
       "Diagram: two diamonds side by side. The first diamond starts at a point labelled <b>Problem</b>, widens during Discover and narrows during Define to a point labelled <b>Problem Definition</b> / <b>Design Brief</b>.",
       "The second diamond starts from that point, widens during Develop and narrows during Deliver to a point labelled <b>Solution</b>."
      ],
-     "fig": "double-diamond",
+     "fig": [
+      "double-diamond"
+     ],
      "figH": {
       "double-diamond": "The double diamond: Discover, Define, Develop, Deliver"
      }
@@ -1377,7 +1405,9 @@ COURSES.hci = {
       "Prototyping → <b>Evaluating</b>.",
       "From Evaluating, arrows go back to Discovering requirements and back to Designing alternatives, and one arrow leaves the cycle to the <b>Final product</b>."
      ],
-     "fig": "id-lifecycle",
+     "fig": [
+      "id-lifecycle"
+     ],
      "figH": {
       "id-lifecycle": "A simple interaction design lifecycle, step by step"
      }
@@ -1390,7 +1420,9 @@ COURSES.hci = {
       "The steps form a cycle labelled <b>Iterate</b>: Unpack → Sketch → Decide → Prototype → Test → back to Unpack.",
       "Source: Google Design Sprints (used courtesy of Agile Marketing)."
      ],
-     "fig": "design-sprint",
+     "fig": [
+      "design-sprint"
+     ],
      "figAt": {
       "design-sprint": 2
      },
@@ -1403,7 +1435,9 @@ COURSES.hci = {
      "pts": [
       "Joyner's design life cycle is an <b>iterative process with four phases</b>:<br><b>Need finding</b> → <b>Design alternative</b> → <b>Prototyping</b> → <b>Evaluation</b> → back to Need finding."
      ],
-     "fig": "joyner-cycle",
+     "fig": [
+      "joyner-cycle"
+     ],
      "figH": {
       "joyner-cycle": "Joyner's design life cycle"
      }
@@ -1415,7 +1449,9 @@ COURSES.hci = {
       "<b>Understand → Specify → Design → Evaluate</b>, and iteration is key.",
       "• <b>Understand</b>: how users experience the product (a lot of research).<br>• <b>Specify</b>: the most important user problem to solve.<br>• <b>Design</b>: solutions, then start building.<br>• <b>Evaluate</b>: test with real users."
      ],
-     "fig": "google-ucd",
+     "fig": [
+      "google-ucd"
+     ],
      "figH": {
       "google-ucd": "Google's user-centered design process"
      }
@@ -2273,7 +2309,9 @@ COURSES.hci = {
       "What is the name of the first school you attended?",
       "The slide gives no answers; this is a question for class discussion."
      ],
-     "fig": "fast-slow",
+     "fig": [
+      "fast-slow"
+     ],
      "figH": {
       "fast-slow": "Fast or slow thinking? Sort the questions"
      }
@@ -2336,7 +2374,9 @@ COURSES.hci = {
        "3.2 seconds to search"
       ]
      ],
-     "fig": "hotel-search",
+     "fig": [
+      "hotel-search"
+     ],
      "figAt": {
       "hotel-search": 3
      },
@@ -2388,7 +2428,9 @@ COURSES.hci = {
       "Response time is slower to unexpected events (<b>Briggs et al., 2018</b>).",
       "Drivers often try to imagine what the other person's face is like (the person to whom they are speaking). Doing so competes with the processing resources needed to enable them to notice and react to what is in front of them."
      ],
-     "fig": "phone-driving",
+     "fig": [
+      "phone-driving"
+     ],
      "figH": {
       "phone-driving": "Why using a phone while driving is dangerous"
      }
@@ -2431,7 +2473,9 @@ COURSES.hci = {
       "Some argue that too much white space on web pages is detrimental to the search process: it makes it hard to find information.",
       "Do you agree? (question for discussion; the slide gives no answer)"
      ],
-     "fig": "word-grids",
+     "fig": [
+      "word-grids"
+     ],
      "figAt": {
       "word-grids": 1
      },
@@ -2450,7 +2494,9 @@ COURSES.hci = {
       "5) White text on a yellow (mustard) background.",
       "The slide asks which is easiest to read and why, and gives no answer; it is a question for discussion."
      ],
-     "fig": "time-boxes",
+     "fig": [
+      "time-boxes"
+     ],
      "figAt": {
       "time-boxes": 5
      },
@@ -2997,7 +3043,9 @@ COURSES.hci = {
       "People are very good at remembering <b>visual cues</b> about things, for instance the color of items, the location of objects and marks on an object.",
       "They find it more difficult to learn and remember <b>arbitrary material</b>, for example birthdays and phone numbers."
      ],
-     "fig": "remember-activity",
+     "fig": [
+      "remember-activity"
+     ],
      "figH": {
       "remember-activity": "What is easy to remember: visual cues vs arbitrary facts"
      }
@@ -3012,7 +3060,9 @@ COURSES.hci = {
       "When creating an interface, should the designer:<br>• present only 7 options on a menu?<br>• display only 7 icons on a tool bar?<br>• have no more than 7 bullets in a list?<br>• place only 7 items on a pull down menu?<br>• place only 7 tabs on the top of a website page?<br>(question for discussion; the slide gives no answer)",
       "The slide shows a row of 7 smiley faces in different colors (red, purple, blue, yellow, black, white, light blue)."
      ],
-     "fig": "seven-plus-minus",
+     "fig": [
+      "seven-plus-minus"
+     ],
      "figH": {
       "seven-plus-minus": "Miller's 7 ± 2: how many options to show?"
      }
@@ -3642,7 +3692,13 @@ COURSES.hci = {
      "pts": [
       "<b>Quantitative</b>: data of <b>numeric</b> nature (measures, counts). Easier for engineers and technical people.",
       "<b>Qualitative</b>: observations about <b>why and how</b> things happen, often based on interviews. Harder for technical people, but it is what we need for real understanding."
-     ]
+     ],
+     "fig": [
+      "hc-qual-quant"
+     ],
+     "figH": {
+      "hc-qual-quant": "Quantitative or qualitative? Sort the kinds of data"
+     }
     },
     {
      "h": "Primary vs secondary research",
@@ -3677,7 +3733,13 @@ COURSES.hci = {
        "Usually costs more and takes longer",
        "Data can be too old and/or not specific enough"
       ]
-     ]
+     ],
+     "fig": [
+      "hc-primary-secondary"
+     ],
+     "figH": {
+      "hc-primary-secondary": "Primary or secondary research? Sort the methods, then compare them"
+     }
     },
     {
      "h": "General tips for research methods",
@@ -3695,7 +3757,13 @@ COURSES.hci = {
       "• Only collect the data you need.<br>• Do not associate collected data with PII or SPII.<br>• Do not keep data after you no longer need it.",
       "<b>PII (Personally Identifiable Information)</b>: details that could identify a user: <b>names, home address, email address, phone number</b>.",
       "<b>SPII (Sensitive PII)</b>: data that could cause financial harm, embarrassment or discrimination if lost or stolen: <b>social security number, driver's license, passport numbers, financial account numbers, date of birth</b>."
-     ]
+     ],
+     "fig": [
+      "hc-pii-spii"
+     ],
+     "figH": {
+      "hc-pii-spii": "PII or sensitive PII? Sort the user data"
+     }
     },
     {
      "h": "1) Surveys",
@@ -3703,7 +3771,13 @@ COURSES.hci = {
       "Quick responses from a <b>large number of users</b> in a short time (a broad view). Often online and easy to create. One of the <b>cheapest</b> methods.",
       "Can be an initial step for insights on motivations, preferences, priorities and pain points, to plan later activities such as interviews. Can also follow an interview or usability study.",
       "Tips:<br>• <b>keep it as small as possible</b> (too many questions hurt response rate and reliability)<br>• ask only what you need and will use<br>• <b>be aware of bias</b><br>• get feedback from participants about the survey."
-     ]
+     ],
+     "fig": [
+      "hc-survey-fit"
+     ],
+     "figH": {
+      "hc-survey-fit": "Where surveys fit in user research, and how to keep them good"
+     }
     }
    ],
    "cards": [
@@ -3989,7 +4063,16 @@ COURSES.hci = {
      "h": "Six principles: Clear · Concise · Specific · Expressive · Unbiased · Usable",
      "pts": [
       "Each principle has \"Don't ask this… / Instead, ask this…\" examples. Examiners often ask you to evaluate a question with them."
-     ]
+     ],
+     "fig": [
+      "hc-six-principles"
+     ],
+     "figAt": {
+      "hc-six-principles": 0
+     },
+     "figH": {
+      "hc-six-principles": "The six principles: don't ask this, ask this instead"
+     }
     },
     {
      "h": "Be Clear",
@@ -3998,7 +4081,13 @@ COURSES.hci = {
       "<b>Avoid overlapping ranges</b>: 0-2, 2-5, 5-10 overlap. Use 0-2, 3-5, 6-10, 11-19, 20+.",
       "<b>When in doubt, give extra detail</b>: \"tablet computer (i.e. any computer with a touchscreen and detachable keyboard)\".",
       "<b>Timebox frequency questions</b>: instead of \"Never / Rarely / Often…\", ask \"In the past seven days, how many times have you exercised? 0, 1-2, 3-4, 5-7, 7 or more\"."
-     ]
+     ],
+     "fig": [
+      "hc-clear-ranges"
+     ],
+     "figH": {
+      "hc-clear-ranges": "Overlapping ranges and unlabelled scales: try a value"
+     }
     },
     {
      "h": "Be Concise",
@@ -4021,7 +4110,13 @@ COURSES.hci = {
       "<b>Use ranges instead of yes/no</b>: \"Do you use social media?\" becomes \"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\".",
       "<b>Give levels of frequency or agreement</b>: a 5-level satisfaction scale instead of Dissatisfied/Satisfied.",
       "<b>Allow multiple selections</b> when possible (checkboxes instead of radio buttons)."
-     ]
+     ],
+     "fig": [
+      "hc-expressive"
+     ],
+     "figH": {
+      "hc-expressive": "Be Expressive: each question before and after"
+     }
     },
     {
      "h": "Be Unbiased",
@@ -4036,7 +4131,13 @@ COURSES.hci = {
      "h": "Be Usable",
      "pts": [
       "• Provide a <b>progress bar</b>.<br>• Keep <b>page lengths consistent</b>.<br>• <b>Order questions logically</b>.<br>• <b>Alert users about unanswered questions</b>.<br>• <b>Preview the survey yourself</b>."
-     ]
+     ],
+     "fig": [
+      "hc-usable-survey"
+     ],
+     "figH": {
+      "hc-usable-survey": "A usable survey: turn on each tip and take it"
+     }
     },
     {
      "h": "Exercise: evaluate these survey questions",
@@ -4045,7 +4146,13 @@ COURSES.hci = {
       "\"Why do you like to exercise?\" is a <b>leading question</b> because it assumes you like it.",
       "\"On a scale of 1 to 6 with 1 meaning 'not at all'…\" has a <b>changing number of options</b> (4 vs 6) and a <b>reversed scale</b> compared with the previous question.",
       "\"Have you listened to an audiobook this year?\" is a <b>yes/no question</b>. Use ranges."
-     ]
+     ],
+     "fig": [
+      "hc-evaluate-questions"
+     ],
+     "figH": {
+      "hc-evaluate-questions": "Exercise: find what is wrong with each question"
+     }
     }
    ],
    "cards": [
@@ -4312,7 +4419,13 @@ COURSES.hci = {
       "Far fewer users can be interviewed than surveyed.",
       "<b>More expensive</b>:<br>• <b>synchronous</b> (the interviewer devotes time to each interviewee)<br>• <b>incentives</b> (interviewees often expect compensation).",
       "Interviews and surveys can be done in sequence in either order, using the results of one to plan the other."
-     ]
+     ],
+     "fig": [
+      "hc-interview-vs-survey"
+     ],
+     "figH": {
+      "hc-interview-vs-survey": "Interviews vs surveys: depth, reach and cost, and using them in sequence"
+     }
     },
     {
      "h": "Tips for a good interview",
@@ -4320,7 +4433,13 @@ COURSES.hci = {
       "<b>Plan ahead</b> and prepare questions before the interview.",
       "During the interview, two keys:<br>• <b>listen well</b> (the user should talk most of the time)<br>• <b>take notes</b> (one person asks and one takes notes; audio recording is not enough; note emotions and reactions).",
       "<b>Leave some time between interviews.</b>"
-     ]
+     ],
+     "fig": [
+      "hc-good-interview"
+     ],
+     "figH": {
+      "hc-good-interview": "A good interview: before, during and between interviews"
+     }
     },
     {
      "h": "Interviewing individuals vs groups",
@@ -4345,7 +4464,13 @@ COURSES.hci = {
        "",
        "\"Presentation of self\" issues"
       ]
-     ]
+     ],
+     "fig": [
+      "hc-indiv-group"
+     ],
+     "figH": {
+      "hc-indiv-group": "Interviewing individuals or groups: what each one gives you"
+     }
     },
     {
      "h": "Challenges of data gathered by asking questions",
@@ -4355,7 +4480,13 @@ COURSES.hci = {
       "<b>Recall bias</b>: inaccurate answers about things in the past.",
       "<b>Reporting bias</b>: people give answers more ideal than reality.",
       "Solution: combine with other techniques such as <b>participant observation, usability studies and secondary research</b>."
-     ]
+     ],
+     "fig": [
+      "hc-ask-challenges"
+     ],
+     "figH": {
+      "hc-ask-challenges": "Challenges of asking questions, the two biases, and the solution"
+     }
     },
     {
      "h": "Design: can I?",
@@ -4572,7 +4703,13 @@ COURSES.hci = {
      "pts": [
       "<b>Biggest mistake</b>: jumping straight to designing an interface <b>without understanding the users or the task</b>.",
       "<b>Second biggest</b>: settling on a <b>single design idea</b> or a single genre of ideas <b>too early</b>."
-     ]
+     ],
+     "fig": [
+      "hc-design-mistakes"
+     ],
+     "figH": {
+      "hc-design-mistakes": "Joyner's two biggest design mistakes, and what to do instead"
+     }
     },
     {
      "h": "Design alternatives",
@@ -4582,7 +4719,13 @@ COURSES.hci = {
       "The final design is often a <b>combination</b> of alternatives explored earlier.",
       "How many alternatives? <b>As many as you can.</b>",
       "Example: the <b>first Microsoft mouse</b> had <b>more than 100 prototypes</b>."
-     ]
+     ],
+     "fig": [
+      "hc-alternatives"
+     ],
+     "figH": {
+      "hc-alternatives": "Design alternatives: explore many, avoid the existing interface, combine the best"
+     }
     },
     {
      "h": "Prototyping",
@@ -4593,7 +4736,13 @@ COURSES.hci = {
       "Joyner: design is an iterative process of brainstorming, combining, abandoning, revising and improving ideas, which requires several ideas to start with.",
       "A good prototype enables <b>useful (constructive) feedback</b> and iteration. It does not need to resemble the final product.",
       "Prototypes that give no new knowledge waste the design process. Klemmer: <b>\"prototypes are questions, ask a lot of them.\"</b>"
-     ]
+     ],
+     "fig": [
+      "hc-prototype-loop"
+     ],
+     "figH": {
+      "hc-prototype-loop": "Prototyping: a quick approximation for feedback and iteration"
+     }
     }
    ],
    "cards": [
@@ -4811,7 +4960,13 @@ COURSES.hci = {
       "Konstan: a prototype that looks like little effort (e.g. hand-drawn) gets more <b>constructive feedback</b>.",
       "Too many details make people give feedback at a <b>lower level</b> than needed.",
       "Google: present <b>high-level ideas</b> early; focus on details and screens later."
-     ]
+     ],
+     "fig": [
+      "hc-fidelity"
+     ],
+     "figH": {
+      "hc-fidelity": "The same screen in low and high fidelity, and what each one gets you"
+     }
     },
     {
      "h": "Design activities and brainstorming",
@@ -4819,7 +4974,13 @@ COURSES.hci = {
       "Every design activity either helps the <b>designer think and visualize</b>, or helps <b>team members and stakeholders visualize and communicate</b>, or both.",
       "Brainstorming aims to generate a lot of ideas. Joyner: <b>start with individual brainstorming</b>, because groups coalesce on ideas too early.",
       "Tips:<br>• write as many ideas as you can<br>• each idea is a few words or a sentence<br>• <b>aim for 20</b><br>• <b>do not evaluate or exclude</b> any idea<br>• take breaks or use several sessions<br>• team sessions are for sharing and adding ideas, not narrowing."
-     ]
+     ],
+     "fig": [
+      "hc-brainstorm"
+     ],
+     "figH": {
+      "hc-brainstorm": "Brainstorm by the rules: individual first, aim for 20, judge nothing"
+     }
     },
     {
      "h": "Why study design? And the design-development process",
@@ -4827,7 +4988,13 @@ COURSES.hci = {
       "• Some students will shine as designers.<br>• Developers often do design when there are no designers.<br>• Developers work better with designers when they understand the process.",
       "<b>Handoff process</b>: design finishes, then it is handed over to development (sequential).",
       "<b>Handshake process</b>: design and development run <b>in parallel</b> with frequent sync points."
-     ]
+     ],
+     "fig": [
+      "hc-handoff"
+     ],
+     "figH": {
+      "hc-handoff": "Handoff vs handshake: design and development in sequence or in parallel"
+     }
     },
     {
      "h": "Wireframes",
@@ -4847,7 +5014,13 @@ COURSES.hci = {
       "Process:<br>• start with <b>pen and paper</b>. The first goal is <b>reaching</b> a design, not showing one.<br>• sketch <b>at least 5 versions</b> per screen.<br>• iterate with feedback.<br>• the second goal is to move an idea from your mind to paper quickly, so ignore straight lines, spacing and alignment at this stage.",
       "Then use tools: <b>Figma, Adobe XD, Sketch, Balsamiq, Pencil</b>.",
       "Example in the lecture: a dog-walking app."
-     ]
+     ],
+     "fig": [
+      "hc-wireframe"
+     ],
+     "figH": {
+      "hc-wireframe": "Building a wireframe by the standards, and the wireframing process"
+     }
     },
     {
      "h": "Form design guidelines",
@@ -4860,7 +5033,18 @@ COURSES.hci = {
       "Fields contain <b>hints, examples or required formats</b>.",
       "<b>Remove repetitive actions</b>: remember customers' preferences.",
       "Make a <b>clear distinction between primary and secondary calls-to-action</b> (e.g. \"Go Pro\" stands out over \"Free Trial\")."
-     ]
+     ],
+     "fig": [
+      "hc-where-am-i",
+      "hc-form-fix"
+     ],
+     "figAt": {
+      "hc-where-am-i": 1
+     },
+     "figH": {
+      "hc-where-am-i": "Where am I? Breadcrumbs for many choices, a progress bar for one path",
+      "hc-form-fix": "Spot and fix the problems in an example form"
+     }
     }
    ],
    "cards": [
@@ -5162,7 +5346,18 @@ COURSES.hci = {
       "<b>Close vs Cancel</b>: if there is only one button it should be <b>\"Close\"</b>. With two buttons (an Action button and one to dismiss) use <b>\"Cancel\"</b>, not \"Close\". Cancel is most commonly placed <b>to the right</b> and is <b>not eye-catching</b>.",
       "<b>Error messages</b>:<br>• state the problem in the <b>title</b><br>• describe briefly <b>why it happened</b> under the title<br>• when possible link to <b>complete the task or return</b> to the previous state<br>• give recommendations for the <b>next course of action</b>.",
       "<b>System notice</b>:<br>• an \"Action\" button<br>• a \"Remind me later\" button<br>• a \"Don't show again\" box.<br>Notice messages should not be lengthy or generic."
-     ]
+     ],
+     "fig": [
+      "hc-close-cancel",
+      "hc-messages"
+     ],
+     "figAt": {
+      "hc-close-cancel": 2
+     },
+     "figH": {
+      "hc-close-cancel": "Close or Cancel? Label the dismiss button",
+      "hc-messages": "The parts of a good error message and system notice"
+     }
     },
     {
      "h": "Layout",
@@ -5173,7 +5368,13 @@ COURSES.hci = {
       "<b>Related items are logically ordered</b> (First/Middle/Last name; Start/End date; Origin/Destination).",
       "Your <b>logo is in the same place on every page</b> (no shift).",
       "The <b>background is not complicated</b> and does not distract from content."
-     ]
+     ],
+     "fig": [
+      "hc-layout"
+     ],
+     "figH": {
+      "hc-layout": "Fix an example page by the layout guidelines"
+     }
     },
     {
      "h": "Navigation",
@@ -5185,7 +5386,13 @@ COURSES.hci = {
       "There is an <b>obvious change on hover</b> over anything clickable.",
       "The <b>company logo links to the homepage</b>.",
       "Map out <b>\"Red Routes\"</b>: the series of pages or actions customers most often use to complete tasks."
-     ]
+     ],
+     "fig": [
+      "hc-navigation"
+     ],
+     "figH": {
+      "hc-navigation": "The navigation guidelines on an example site"
+     }
     }
    ],
    "cards": [
