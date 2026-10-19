@@ -110,43 +110,43 @@ COURSES.qa = {
      "pts": [
       "<b>7 reasons</b>:<br>(1) <b>Human factor</b>: mistakes in logic or syntax<br>(2) <b>Communication failure</b> between teams<br>(3) <b>Unrealistic development timeframe</b><br>(4) <b>Poor design logic</b> (inadequate research, misunderstood feasibility)<br>(5) <b>Poor coding practices</b> (inefficient methods and <b>faulty tools</b>)<br>(6) <b>Lack of skilled testing</b><br>(7) <b>Change requests</b> at the last minute.",
       "Explanations:<br>• <b>Communication failure</b>: miscommunication between teams leads to errors in design or development.<br>• <b>Unrealistic development timeframe</b>: tight deadlines cause poor design and testing compromises.<br>• <b>Lack of skilled testing</b>: unskilled testers fail to detect hidden issues.<br>• <b>Change requests</b>: last-minute requirement or tool changes introduce new defects.",
-      "<b>Cost of fixing depends on when the bug is found</b>: Requirement stage = <b>low</b>; Coding = <b>moderate</b>; Integration = <b>higher</b> (developer + engineers); Testing = <b>very costly</b> (developers, engineers, managers, delays); Production = <b>extremely costly</b> (reputation, financial or legal penalties).",
-      "<b>Requirement stage</b>: low cost; easy to correct early errors. <b>Coding stage</b>: moderate cost; the developer can fix it easily if caught early.",
+      "<b>Cost of fixing depends on when the bug is found</b>:<br>• <b>Requirement stage</b>: <b>low</b> cost; easy to correct early errors.<br>• <b>Coding stage</b>: <b>moderate</b> cost; the developer can fix it easily if caught early.<br>• <b>Integration</b>: <b>higher</b> (developer + engineers).<br>• <b>Testing</b>: <b>very costly</b> (developers, engineers, managers, delays).<br>• <b>Production</b>: <b>extremely costly</b> (reputation, financial or legal penalties).",
       "Real example: the <b>Patriot missile failure (Gulf War, 1991)</b> was caused by a <b>timing bug</b> and led to the death of <b>28 soldiers</b>.",
       "It is a real-world example of how a <b>single software bug</b> can have a catastrophic result."
      ]
     },
     {
-     "h": "Waterfall and Spiral models",
+     "h": "Software development models: Waterfall",
      "pts": [
       "<b>1.3 Software development models</b>: the software development life cycle consists of several phases, from the project's conception to its completion. Different models such as <b>Waterfall, V, Spiral, RAD, Prototyping and Agile</b> are used depending on project requirements. The testing approach also varies according to the nature of each model.",
       "<b>Waterfall</b> (one of the oldest, sequential): System Engineering → Analysis → Design → Coding → Testing → Maintenance.",
       "The Waterfall process starts at the <b>system level</b> and is followed by phases like analysis, design, coding, testing and maintenance, as depicted in Figure 1.1.",
       "Figure 1.1 (Waterfall Model): six hexagons step down like a staircase: <b>System Engineering → Analysis → Design → Coding → Testing → Maintenance</b>, each joined to the next by an arrow. A vertical line rises from Maintenance on the right and is joined by two-headed arrows to every earlier phase (Testing, Coding, Design, Analysis, System Engineering), so each later phase can feed back to the earlier ones.",
-      "Phases: <b>System engineering</b> defines both <b>software and hardware requirements</b>; <b>Analysis</b> = feasibility study, goals, performance and interface requirements; <b>Design</b> = software structure (e.g. database design); <b>Coding</b>; <b>Testing</b>; <b>Maintenance</b>.",
-      "Phase details: <b>Design</b>: translates requirements into software structure, such as database design, to guide coding and ensure quality. <b>Coding</b>: developers write the program code based on the design specifications. <b>Testing</b>: the software is tested to detect bugs and verify that it meets the stated requirements. <b>Maintenance</b>: fixes issues and updates the software as new needs arise.",
-      "Waterfall advantages: simple, structured, clear documentation, early requirements, easy management. <b>Drawback</b>: errors in early phases carry over to later stages → delays and higher cost.",
-      "Waterfall drawback in full: errors made in early phases can carry over to later stages, causing delays and increased costs, since problems must be <b>fixed at multiple points</b>.",
-      "<b>Spiral</b>: iterative, overcomes waterfall limits. Four phases repeated in cycles: <b>Planning → Risk analysis → Design engineering → Customer evaluation (testing & evaluation)</b>. Usually <b>2 or 3 prototypes</b> before the final product.",
-      "In the Spiral model the phases are repeated in cycles <b>until all issues are resolved</b>. Each prototype goes through the <b>full cycle</b> to identify and fix problems.",
-      "Spiral phases: <b>Planning</b>: defines specifications, objectives, constraints and strategies; all the alternatives that help in developing a cost-effective project are analyzed and all possible risks involved in the project development are identified. <b>Risk analysis</b>: identifies possible risks and evaluates cost-effective solutions. <b>Design engineering</b>: the actual software is developed iteratively. <b>Testing & evaluation</b>: customers test the product and provide feedback to improve it; during this cycle all the phases concentrate on the feedback received from the customer and the testing team to resolve the drawbacks and bugs found in each prototype. The main drawback of the model is the amount of time taken to complete the iterations, which can increase costs.",
-      "Figure 1.2 (Spiral Model): two axes split the figure into four quadrants: <b>Plan</b> (top left), <b>Risk Analysis</b> (top right), <b>Design</b> (bottom right) and <b>Testing</b> (bottom left). The vertical axis points up to <b>Cumulative cost</b>, the horizontal axis points left to <b>Review</b>, and a curved <b>Progress</b> arrow at the top shows the spiral turning clockwise and widening outward. Left of the vertical axis (inside out): Requirements plan, Concept of operation, Development plan, Test plan, Release. Right of it, in the upper part: Risk analysis on each loop, with a shaded wedge widening into <b>Prototype 1, Prototype 2 and Operational Prototype</b>. Right of it, in the lower part: Concept of requirements, Requirements, Draft, Detailed design, Code, Integration, Test, Verification & Validation (twice) and Implementation; the spiral ends with an arrow at Release.",
-      "Spiral advantages: manages risks early, flexible, customer feedback, prototyping, suits complex projects. <b>Drawback</b>: time-consuming and costly because of many iterations.",
-      "Spiral drawback in full: although it improves problem-solving and customer involvement, the Spiral Model can be time-consuming and costly due to multiple iterations and <b>continuous testing</b>."
+      "<b>The six phases</b>:<br>• <b>System Engineering</b>: defines both <b>software and hardware requirements</b>.<br>• <b>Analysis</b>: feasibility study, goals, performance and interface requirements.<br>• <b>Design</b>: translates requirements into software structure, such as database design, to guide coding and ensure quality.<br>• <b>Coding</b>: developers write the program code based on the design specifications.<br>• <b>Testing</b>: the software is tested to detect bugs and verify that it meets the stated requirements.<br>• <b>Maintenance</b>: fixes issues and updates the software as new needs arise.",
+      "<b>Advantages</b>: simple, structured, clear documentation, early requirements, easy management.<br><b>Drawback</b>: errors made in early phases can carry over to later stages, causing delays and increased costs, since problems must be <b>fixed at multiple points</b>."
      ],
      "fig": [
       "qa-waterfall",
-      "qa-waterfall-flow",
-      "qa-spiral"
+      "qa-waterfall-flow"
      ],
-     "figAt": {
-      "qa-waterfall": 7,
-      "qa-waterfall-flow": 7,
-      "qa-spiral": 13
-     },
      "figH": {
       "qa-waterfall": "Figure 1.1: the Waterfall Model, phase by phase",
-      "qa-waterfall-flow": "Waterfall in action: how the work flows down the phases, and what an early error costs",
+      "qa-waterfall-flow": "Waterfall in action: how the work flows down the phases, and what an early error costs"
+     }
+    },
+    {
+     "h": "Spiral model",
+     "pts": [
+      "<b>Spiral</b>: iterative, overcomes waterfall limits. Four phases repeated in cycles: <b>Planning → Risk analysis → Design engineering → Customer evaluation (testing & evaluation)</b>. Usually <b>2 or 3 prototypes</b> before the final product.",
+      "In the Spiral model the phases are repeated in cycles <b>until all issues are resolved</b>. Each prototype goes through the <b>full cycle</b> to identify and fix problems.",
+      "<b>The four phases</b>:<br>• <b>Planning</b>: defines specifications, objectives, constraints and strategies; all the alternatives that help in developing a cost-effective project are analyzed and all possible risks involved in the project development are identified.<br>• <b>Risk analysis</b>: identifies possible risks and evaluates cost-effective solutions.<br>• <b>Design engineering</b>: the actual software is developed iteratively.<br>• <b>Testing & evaluation</b>: customers test the product and provide feedback to improve it; during this cycle all the phases concentrate on the feedback received from the customer and the testing team to resolve the drawbacks and bugs found in each prototype.",
+      "Figure 1.2 (Spiral Model): <br>• <b>Quadrants</b>: two axes split the figure into four: <b>Plan</b> (top left), <b>Risk Analysis</b> (top right), <b>Design</b> (bottom right) and <b>Testing</b> (bottom left).<br>• <b>Axes</b>: the vertical axis points up to <b>Cumulative cost</b>, the horizontal axis points left to <b>Review</b>, and a curved <b>Progress</b> arrow at the top shows the spiral turning clockwise and widening outward.<br>• <b>Left of the vertical axis</b> (inside out): Requirements plan, Concept of operation, Development plan, Test plan, Release.<br>• <b>Right of it, upper part</b>: Risk analysis on each loop, with a shaded wedge widening into <b>Prototype 1, Prototype 2 and Operational Prototype</b>.<br>• <b>Right of it, lower part</b>: Concept of requirements, Requirements, Draft, Detailed design, Code, Integration, Test, Verification & Validation (twice) and Implementation; the spiral ends with an arrow at Release.",
+      "<b>Advantages</b>: manages risks early, flexible, customer feedback, prototyping, suits complex projects.<br><b>Drawback</b>: the main drawback of the model is the amount of time taken to complete the iterations, which can increase costs. Although it improves problem-solving and customer involvement, the Spiral Model can be time-consuming and costly due to multiple iterations and <b>continuous testing</b>."
+     ],
+     "fig": [
+      "qa-spiral"
+     ],
+     "figH": {
       "qa-spiral": "Figure 1.2: the Spiral Model, quadrant by quadrant"
      }
     },
@@ -155,10 +155,10 @@ COURSES.qa = {
      "pts": [
       "Integrates testing into <b>every stage</b> of the SDLC, with early testing starting from the requirements phase. Development goes <b>high level → low level</b> (left side, down); testing goes <b>low level → high level</b> (right side, up).",
       "It ensures continuous quality checks throughout the process. The <b>salient aspect</b> of the V model is that it portrays distinct testing levels and illustrates how each level addresses a different stage of the lifecycle. The development activities begin with defining the business requirements. The model is shaped like a \"V\": the <b>left side</b> represents development activities (from business requirements to detailed design) and the <b>right side</b> represents the corresponding <b>testing phases</b> (from unit testing to acceptance testing).",
-      "Test levels: <b>Unit</b> (individual modules), <b>Integration</b> (interactions between modules), <b>System</b> (whole system meets design and performance), <b>Acceptance</b> (done by the customer to confirm business requirements).",
+      "<b>Test levels</b>:<br>• <b>Unit</b>: individual modules.<br>• <b>Integration</b>: interactions between modules.<br>• <b>System</b>: the whole system meets design and performance.<br>• <b>Acceptance</b>: done by the customer to confirm business requirements.",
       "During the <b>unit design stage</b>, the individual programs or modules of the entire software are specified, and the test cases for unit testing are developed based on them. Test cases are constructed to check various aspects of the software: these checks test the actual program structure or whether the software functions as per the specification.",
       "Example (calculator): test code logic of calculations, memory per module, how modules are linked, overall efficiency.",
-      "Advantage: early verification and validation reduce defects <b>and improve quality</b>. Drawback: less effective when requirements are incomplete or badly documented; not suitable for every project."
+      "<b>Advantage</b>: early verification and validation reduce defects <b>and improve quality</b>.<br><b>Drawback</b>: less effective when requirements are incomplete or badly documented; not suitable for every project."
      ]
     },
     {
@@ -204,41 +204,59 @@ COURSES.qa = {
      }
     },
     {
-     "h": "RAD and Agile",
+     "h": "RAD model",
      "pts": [
       "<b>RAD</b> (Rapid Application Development): built from business, project-management and SRS requirements. A prototype is matched against requirements; if there is a gap, another prototype is built. <b>Linear sequential</b> with an <b>extremely short cycle</b> and <b>reusable components</b>.",
       "When the requirements are well understood and defined, the RAD process enables the development team to develop the final product in a <b>shorter period</b>.",
-      "RAD phases: <b>Requirements planning → Design (prototype) → Construction (RAD tools until the customer is satisfied) → Testing & handover</b> (reusable components cut testing time).",
-      "RAD phase details: <b>Requirements planning</b>: collecting project requirements and creating an outline. <b>Design phase</b>: building a prototype that includes all requirements and necessary changes. <b>Construction phase</b>: developing and improving prototypes using RAD tools until the customer is satisfied. <b>Testing and handover</b>: using reusable components to reduce testing time before delivering the final product.",
-      "RAD advantages: fast development with prototypes, flexible to changes, involves customer feedback, reduces risk, and <b>ensures high quality</b>. Disadvantages: a missing reusable component can make the project fail; only for small, simple projects, not complex ones.",
+      "<b>RAD phases</b>: Requirements planning → Design (prototype) → Construction → Testing &amp; handover.<br>• <b>Requirements planning</b>: collecting project requirements and creating an outline.<br>• <b>Design phase</b>: building a prototype that includes all requirements and necessary changes.<br>• <b>Construction phase</b>: developing and improving prototypes using RAD tools until the customer is satisfied.<br>• <b>Testing and handover</b>: using reusable components to reduce testing time before delivering the final product.",
+      "<b>Advantages</b>: fast development with prototypes, flexible to changes, involves customer feedback, reduces risk, and <b>ensures high quality</b>.<br><b>Disadvantages</b>: a missing reusable component can make the project fail; only for small, simple projects, not complex ones."
+     ],
+     "fig": [
+      "qa-rad"
+     ],
+     "figH": {
+      "qa-rad": "RAD in action: from the requirements to a prototype to the handover"
+     }
+    },
+    {
+     "h": "Agile model, XP and TDD",
+     "pts": [
       "<b>Agile</b>: most widely used model today. <b>Incremental</b>, short cycles, small releases, constant feedback and <b>continuous collaboration</b> of customers, developers and testers. Approaches: <b>DSDM, SCRUM, XP</b> (XP most popular).",
-      "Unlike traditional sequential models like Waterfall or Spiral, Agile is designed to handle <b>complex projects with continuous changes</b> by responding quickly and efficiently. It relies on <b>constant feedback</b> to divide work into small, testable parts that are refined based on user input. Each release builds on the previous one and is thoroughly tested to fix bugs early. The continuous collaboration between customers, developers and testers ensures that requirements are met accurately. DSDM = <b>Dynamic Systems Development Method</b>; XP = <b>Extreme Programming</b>.",
-      "<b>XP</b>: programmers work in <b>pairs</b> (one codes, one reviews/tests). <b>TDD</b> = write test cases <b>before</b> code:<br>(1) create the test code →<br>(2) write/modify the functional code →<br>(3) create additional tests →<br>(4) test the functional code →<br>(5) refactor the code.",
+      "Unlike traditional sequential models like Waterfall or Spiral, Agile is designed to handle <b>complex projects with continuous changes</b> by responding quickly and efficiently. It relies on <b>constant feedback</b> to divide work into small, testable parts that are refined based on user input. Each release builds on the previous one and is thoroughly tested to fix bugs early. The continuous collaboration between customers, developers and testers ensures that requirements are met accurately.<br>DSDM = <b>Dynamic Systems Development Method</b>; XP = <b>Extreme Programming</b>.",
+      "<b>XP</b>: programmers work in <b>pairs</b> (one codes, one reviews/tests). <b>TDD</b> = write test cases <b>before</b> code, in five steps:",
       "TDD, a main XP practice, writes test cases before coding <b>to ensure quality and reduce errors</b>.<br>(1) <b>Create the test code</b>: the developer writes automated test scripts before writing the actual program code; these tests define what the software should do.<br>(2) <b>Write or modify the functional code</b>: the developer then writes the actual code to pass the predefined test cases; the code is adjusted until it meets all test requirements.<br>(3) <b>Create additional tests</b>: the tester adds more tests with different inputs based on the complexity of the module.<br>(4) <b>Test the functional code</b>: the functional code is tested repeatedly using the created test cases until all tests pass successfully.<br>(5) <b>Refactor the code</b>: the developer improves the code to make it easier to maintain, extend and update; this step removes duplicate or unused code and reduces complexity.",
       "Figure 1.4 (Agile Model): five boxes stacked top to bottom, joined by downward arrows: Create the test code → Write or modify the function code → Create additional tests → Test the functional code → Refactor the code. A loop arrow goes from <b>Test the functional code</b> back up to <b>Write or modify the function code</b>.",
       "In summary, in the Agile approach, <b>testers play a key role</b> in ensuring software quality and efficiency through continuous testing and feedback.",
-      "Agile advantages: flexible, feedback, fast delivery, better quality. <b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep.",
-      "Summary: waterfall is sequential; <b>V and Spiral</b> use testing as an integral part so they are more efficient than waterfall. Agile is considered to be the <b>most advanced and efficient</b> type of software development model. Extreme Programming (XP) is a method developed based on the agile model, which uses test driven development (TDD) to develop highly efficient software.",
+      "<b>Advantages</b>: flexible, feedback, fast delivery, better quality.<br><b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep."
+     ],
+     "fig": [
+      "qa-agile",
+      "qa-tdd"
+     ],
+     "figAt": {
+      "qa-agile": 1,
+      "qa-tdd": 4
+     },
+     "figH": {
+      "qa-agile": "Agile in action: short cycles and small releases with constant feedback",
+      "qa-tdd": "Figure 1.4: the Agile Model, the five steps of test-driven development (TDD)"
+     }
+    },
+    {
+     "h": "Summary",
+     "pts": [
+      "<b>Summary of the models</b>:<br>• Waterfall is sequential.<br>• <b>V and Spiral</b> use testing as an integral part, so they are more efficient than waterfall.<br>• Agile is considered to be the <b>most advanced and efficient</b> type of software development model.<br>• Extreme Programming (XP) is a method developed based on the agile model, which uses test driven development (TDD) to develop highly efficient software.",
       "Summary (1.4): software testing demonstrates that a program performs the intended functions correctly; the goal of software testing is to ensure that the product is error free. Detecting bugs is the most important part of a software testing process; these bugs can be an error in the program or issues that affect the quality of the software. Bugs can prove to be very costly: they take time to resolve, affecting the project timelines and cost, and they also result in losses, as the company may have to compensate the customer with money or by replacing the defective product. They can also damage the reputation of the company.",
       "Summary (1.4): depending on the <b>kind of error or the reason for error</b>, bugs are classified into various types such as bugs due to conceptual error, math bugs, logical bugs, resource bugs, co-programming bugs and team working bugs.",
       "Summary (1.4): bugs in software can occur due to various reasons such as <b>human error, lack of communication, tight time lines, improper design logic, inefficient coding practices and unskilled testers</b>."
      ],
      "fig": [
-      "qa-rad",
-      "qa-agile",
-      "qa-tdd",
       "qa-models-compare"
      ],
      "figAt": {
-      "qa-rad": 4,
-      "qa-agile": 6,
-      "qa-tdd": 9,
-      "qa-models-compare": 12
+      "qa-models-compare": 0
      },
      "figH": {
-      "qa-rad": "RAD in action: from the requirements to a prototype to the handover",
-      "qa-agile": "Agile in action: short cycles and small releases with constant feedback",
-      "qa-tdd": "Figure 1.4: the Agile Model, the five steps of test-driven development (TDD)",
       "qa-models-compare": "Comparing the models: where testing happens in each one"
      }
     }
