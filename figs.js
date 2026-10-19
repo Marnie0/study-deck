@@ -29,7 +29,8 @@
 .fig-elev{ display:grid; gap:10px; padding:12px; border-radius:8px; background:#1b1d22; max-width:520px; margin:0 auto; }
 .fig-elev .row{ display:grid; grid-template-columns:repeat(8, 1fr); gap:6px; align-items:center; }
 .fig-elev .top{ grid-template-columns:repeat(6, 1fr); }
-.fig-elev button{ aspect-ratio:1; border-radius:5px; border:0; cursor:pointer; font:600 .62rem/1.1 var(--body); color:#fff; padding:2px; min-width:0; }
+@media (max-width:480px){ .fig-elev .row:not(.top){ grid-template-columns:repeat(4, 1fr); } }
+.fig-elev button{ aspect-ratio:1; border-radius:5px; border:0; cursor:pointer; font:600 .74rem/1.1 var(--body); color:#fff; padding:2px; min-width:0; }
 .fig-elev .btn{ background:linear-gradient(145deg,#e9eef3,#aeb7c0); box-shadow:inset 0 0 0 3px #7d8790; }
 .fig-elev .lbl{ background:#1f5fbf; } .fig-elev .dark{ background:#2a2d33; }
 .fig-elev .num{ background:transparent; color:#fff; font-size:1.2rem; cursor:default; }
@@ -49,13 +50,13 @@
 .fig-row{ display:grid; grid-template-columns:repeat(3, 1fr); gap:10px; } @media (max-width:620px){ .fig-row{ grid-template-columns:1fr; } }
 .fig-card{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px; font-size:.9rem; line-height:1.4; transition:opacity .4s, box-shadow .4s; }
 .fig-card b{ display:block; margin-bottom:6px; } .fig-card.dim{ opacity:.4; } .fig-card.on{ box-shadow:0 0 0 2px var(--k-hci); }
-.fig-kb{ display:grid; gap:3px; font:600 .7rem/1 var(--mono); } .fig-kb span{ display:grid; place-items:center; height:20px; border-radius:3px; background:var(--paper-2); border:1px solid var(--line); }
+.fig-kb{ display:grid; gap:3px; font:600 .75rem/1 var(--mono); } .fig-kb span{ display:grid; place-items:center; height:20px; border-radius:3px; background:var(--paper-2); border:1px solid var(--line); }
 .fig-kb span.cur{ background:var(--s-hci); color:#fff; border-color:transparent; }
 .fig-mock{ border:1px solid var(--line); border-radius:8px; padding:8px; display:grid; gap:6px; font-size:.78rem; background:var(--paper); }
 .fig-mock div{ border:1px solid var(--faint); border-radius:3px; padding:5px; text-align:center; }
 .fig-mock .r{ display:grid; grid-template-columns:2fr 1.3fr .7fr; gap:6px; } .fig-mock .books{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; } .fig-mock .books div{ height:52px; display:grid; place-items:center; }
 .fig-mock.color .hd{ background:#facc15; color:#111; } .fig-mock.color .sb{ background:#60a5fa; color:#111; } .fig-mock.color .dd{ background:#4ade80; color:#111; } .fig-mock.color .go{ background:#fb923c; color:#111; }
-.fig-mock.color .books{ grid-template-columns:repeat(3, 1fr) 1.2fr; } .fig-mock .rox{ border:0; font-size:1.6rem; line-height:1; display:grid; place-items:center; } .fig-mock .rox small{ font-size:.66rem; background:#60a5fa; color:#111; border-radius:99px; padding:2px 6px; }
+.fig-mock.color .books{ grid-template-columns:repeat(3, 1fr) 1.2fr; } .fig-mock .rox{ border:0; font-size:1.6rem; line-height:1; display:grid; place-items:center; } .fig-mock .rox small{ font-size:.74rem; line-height:1.2; background:#60a5fa; color:#111; border-radius:99px; padding:2px 6px; }
 .fig-icdl{ display:grid; gap:10px; } .fig-icdl .grp{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; } .fig-icdl .grp > b{ width:100%; font-size:.8rem; color:var(--graphite); }
 .fig-icdl button{ font:inherit; font-size:.82rem; border:1px solid var(--line); background:var(--paper); color:var(--ink); border-radius:10px; padding:6px 10px; cursor:pointer; display:inline-flex; gap:6px; align-items:center; min-height:34px; }
 .fig-icdl button i{ width:18px; height:18px; border-radius:50%; display:inline-block; } .fig-icdl button.sel{ box-shadow:0 0 0 2px var(--k-hci); }
@@ -69,7 +70,7 @@
 .fig-walk{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:0 14px 12px; } .fig-walk .path{ width:100%; font-size:.8rem; color:var(--graphite); }
 .fig-chev{ display:flex; gap:2px; max-width:560px; margin:0 auto; } .fig-chev div{ flex:1; color:#fff; font-weight:600; font-size:.85rem; text-align:center; padding:12px 4px 12px 14px; clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%, 12% 50%); opacity:.4; transition:opacity .4s, transform .4s; }
 @media (max-width:480px){ .fig-chev{ flex-wrap:wrap; row-gap:4px; } .fig-chev div{ flex:1 1 30%; min-width:0; } }
-.fig-chev div:first-child{ clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%); padding-left:6px; } .fig-chev div.on{ opacity:1; transform:translateY(-3px); } .fig-chev small{ display:block; font-size:.72rem; opacity:.9; }
+.fig-chev div:first-child{ clip-path:polygon(0 0, 88% 0, 100% 50%, 88% 100%, 0 100%); padding-left:6px; } .fig-chev div.on{ opacity:1; transform:translateY(-3px); } .fig-chev small{ display:block; font-size:.75rem; opacity:.9; }
 .fig-ucd{ display:grid; grid-template-columns:repeat(4, 1fr); gap:6px; max-width:560px; margin:0 auto; } .fig-ucd div{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:10px 6px; text-align:center; font-weight:600; opacity:.45; transition:opacity .4s, box-shadow .4s; }
 .fig-ucd div.on{ opacity:1; box-shadow:0 0 0 2px var(--k-hci); } .fig-loop{ text-align:center; color:var(--k-hci); font-weight:600; margin-top:8px; }
 @media (max-width:420px){ .fig-ucd{ grid-template-columns:repeat(2, 1fr); } }
@@ -121,13 +122,13 @@
     const cx = 210, cy = 175, r = 160, P = a => [cx + r * Math.cos(a * Math.PI / 180), cy + r * Math.sin(a * Math.PI / 180)];
     const arc = (a, b) => { const [x1, y1] = P(a), [x2, y2] = P(b); return `M${cx},${cy} L${x1},${y1} A${r},${r} 0 0 1 ${x2},${y2} Z`; };
     const part = (d, fill, on) => html`<path d=${d} fill=${fill} stroke="var(--paper)" strokeWidth="3" className="fade" style=${{ opacity: on ? 1 : .18 }} />`;
-    const lines = (x, y, head, items, on) => html`<g className=${pop(on)}><text x=${x} y=${y} textAnchor="middle" fontSize="19" fontWeight="700">${head}</text>${items.map((t, j) => html`<text key=${j} x=${x} y=${y + 21 + j * 18} textAnchor="middle" fontSize="14">${t}</text>`)}</g>`;
+    const lines = (x, y, head, items, on) => html`<g className=${pop(on)}><text x=${x} y=${y} textAnchor="middle" fontSize="22" fontWeight="700">${head}</text>${items.map((t, j) => html`<text key=${j} x=${x} y=${y + 24 + j * 22} textAnchor="middle" fontSize="18.5">${t}</text>`)}</g>`;
     return html`<figure className="fig"><div className="fig-stage">
       <svg viewBox="0 0 420 345" role="img" aria-label="The three parts of HCI: Human, Computer and Interaction">
         ${part(arc(150, 270), 'color-mix(in srgb, var(--k-hci) 22%, var(--paper))', i >= 1)}
         ${part(arc(270, 390), 'color-mix(in srgb, var(--k-compiler) 20%, var(--paper))', i >= 2)}
         ${part(arc(30, 150), 'color-mix(in srgb, var(--k-mm) 18%, var(--paper))', i >= 3)}
-        ${lines(116, 100, 'Human', ['Communication theory', 'Industrial design', 'Social science', 'Cognitive psychology', 'Human factors'], i >= 1)}
+        ${lines(116, 92, 'Human', ['Communication theory', 'Industrial design', 'Social science', 'Cognitive psychology', 'Human factors'], i >= 1)}
         ${lines(304, 108, 'Computer', ['Computer graphic', 'Operating system', 'Programming language'], i >= 2)}
         ${lines(210, 262, 'Interaction', ['Interaction design'], i >= 3)}
       </svg></div>
@@ -146,18 +147,18 @@
     const ui = i >= 2 ? .12 : i === 1 ? .55 : 1;
     return html`<figure className="fig"><div className="fig-stage">
       <svg viewBox="0 0 520 205" role="img" aria-label="User, interface and task">
-        <g><circle cx="70" cy="80" r="24" fill="var(--k-hci)" /><path d="M30 150 q40 -50 80 0 z" fill="var(--k-hci)" /><text x="70" y="182" textAnchor="middle" fontSize="19" fontWeight="700">USER</text></g>
+        <g><circle cx="70" cy="80" r="24" fill="var(--k-hci)" /><path d="M30 150 q40 -50 80 0 z" fill="var(--k-hci)" /><text x="70" y="182" textAnchor="middle" fontSize="23" fontWeight="700">USER</text></g>
         <g className="fade" style=${{ opacity: ui }}>
           <rect x="205" y="58" width="110" height="74" rx="8" fill="var(--paper)" stroke="var(--graphite)" strokeWidth="3" />
           <rect x="248" y="132" width="24" height="14" fill="var(--graphite)" /><rect x="228" y="146" width="64" height="6" rx="3" fill="var(--graphite)" />
-          <text x="260" y="182" textAnchor="middle" fontSize="19" fontWeight="700" fill="var(--pen)">INTERFACE</text>
+          <text x="260" y="182" textAnchor="middle" fontSize="23" fontWeight="700" fill="var(--pen)">INTERFACE</text>
         </g>
         <path d="M110 86 H470" stroke="var(--k-hci)" strokeWidth="3" fill="none" className=${calm() ? '' : 'flow'} />
         <path d="M470 108 H110" stroke="var(--k-mm)" strokeWidth="3" fill="none" className=${calm() ? '' : 'flow'} />
         <g><rect x="440" y="52" width="58" height="76" rx="6" fill="var(--paper)" stroke="var(--ink)" strokeWidth="3" /><rect x="456" y="46" width="26" height="12" rx="3" fill="var(--ink)" />
           <path d="M455 92 l10 10 l20 -22" stroke="var(--ok)" strokeWidth="5" fill="none" strokeLinecap="round" />
-          <text x="469" y="182" textAnchor="middle" fontSize="19" fontWeight="700">TASK</text></g>
-        <text x="290" y="30" textAnchor="middle" fontSize="18" fontWeight="600" className=${pop(i >= 3)}>think about the task, not the tool</text>
+          <text x="469" y="182" textAnchor="middle" fontSize="23" fontWeight="700">TASK</text></g>
+        <text x="282" y="30" textAnchor="middle" fontSize="22.5" fontWeight="600" className=${pop(i >= 3)}>think about the task, not the tool</text>
       </svg></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
@@ -225,14 +226,14 @@
     const small = []; for (let r = 0; r < 4; r++) for (let c = 0; c < 6; c++) small.push([40 + c * 30, 50 + r * 26]);
     const under = (x, y) => i === 1 && Math.hypot(x + 11 - 120, y + 9 - 100) < 40;
     return html`<figure className="fig"><div className="fig-stage">
-      <svg viewBox="0 0 520 220" role="img" aria-label="Small buttons versus a large touch screen">
+      <svg viewBox="0 0 520 236" role="img" aria-label="Small buttons versus a large touch screen">
         <g className="fade" style=${{ opacity: i < 2 ? 1 : .25 }}>
           <rect x="24" y="30" width="200" height="140" rx="12" fill="var(--paper)" stroke="var(--graphite)" strokeWidth="3" />
           ${small.map(([x, y], j) => html`<rect key=${j} x=${x} y=${y} width="22" height="18" rx="3" fill=${under(x, y) ? 'var(--pen)' : 'var(--paper-2)'} stroke="var(--faint)" />`)}
-          <text x="124" y="200" textAnchor="middle" fontSize="17" fontWeight="700">Small buttons</text>
+          <text x="124" y="204" textAnchor="middle" fontSize="23" fontWeight="700">Small buttons</text>
           <g className=${i === 1 && !calm() ? 'tap' : ''} style=${{ opacity: i === 1 ? 1 : 0 }}>
             <ellipse cx="120" cy="96" rx="34" ry="30" fill="#8a6a4a" opacity=".92" /><rect x="96" y="96" width="48" height="70" rx="18" fill="#8a6a4a" opacity=".92" />
-            <text x="120" y="102" textAnchor="middle" fontSize="14" fill="#fff" style=${{ fill: '#fff' }}>glove</text></g>
+            <text x="120" y="104" textAnchor="middle" fontSize="23" fill="#fff" style=${{ fill: '#fff' }}>glove</text></g>
         </g>
         <g className=${pop(i >= 2)}>
           <rect x="290" y="30" width="200" height="140" rx="12" fill="var(--paper)" stroke="var(--k-hci)" strokeWidth="3" />
@@ -240,7 +241,7 @@
           <rect x="324" y="64" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--k-hci)" /><rect x="396" y="64" width="62" height="34" rx="6" fill="var(--paper)" stroke="var(--k-hci)" />
           <rect x="324" y="106" width="134" height="34" rx="6" fill="var(--paper)" stroke="var(--k-hci)" />
           <g className=${i >= 2 && !calm() ? 'tap' : ''}><path d="M418 8 L452 70" stroke="var(--ink)" strokeWidth="9" strokeLinecap="round" /><path d="M449 64 L456 80 L443 72 Z" fill="var(--ink)" /><path d="M418 8 L424 19" stroke="var(--k-hci)" strokeWidth="9" strokeLinecap="round" /></g>
-          <text x="390" y="200" textAnchor="middle" fontSize="17" fontWeight="700">Large touch screen + stylus</text>
+          <text x="390" y="200" textAnchor="middle" fontSize="23" fontWeight="700">Large touch screen</text><text x="390" y="226" textAnchor="middle" fontSize="23" fontWeight="700">+ stylus</text>
         </g>
       </svg></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
@@ -278,13 +279,13 @@
     return html`<figure className="fig"><div className="fig-stage">
       <svg viewBox="0 0 440 190" role="img" aria-label="A user and a computer joined by a two-way arrow labelled Interaction">
         <circle cx="70" cy="62" r="24" fill="var(--k-hci)" /><path d="M30 132 q40 -54 80 0 z" fill="var(--k-hci)" />
-        <text x="70" y="168" textAnchor="middle" fontSize="18" fontWeight="700">User</text>
+        <text x="70" y="170" textAnchor="middle" fontSize="20" fontWeight="700">User</text>
         <rect x="318" y="44" width="96" height="66" rx="7" fill="var(--paper)" stroke="var(--graphite)" strokeWidth="3" /><rect x="356" y="110" width="20" height="12" fill="var(--graphite)" /><rect x="338" y="122" width="56" height="6" rx="3" fill="var(--graphite)" />
-        <text x="366" y="168" textAnchor="middle" fontSize="18" fontWeight="700">Computer</text>
+        <text x="366" y="170" textAnchor="middle" fontSize="20" fontWeight="700">Computer</text>
         <path d="M122 80 H300" stroke="var(--k-hci)" strokeWidth="4" fill="none" className=${calm() ? '' : 'flow'} /><path d="M300 80 l-12 -8 v16 z" fill="var(--k-hci)" />
         <path d="M300 100 H122" stroke="var(--k-mm)" strokeWidth="4" fill="none" className=${calm() ? '' : 'flow'} /><path d="M122 100 l12 -8 v16 z" fill="var(--k-mm)" />
-        <text x="211" y="66" textAnchor="middle" fontSize="18" fontWeight="700">Interaction</text>
-        <text x="211" y="132" textAnchor="middle" fontSize="15" className=${pop(i >= 1)}>relationship</text>
+        <text x="211" y="66" textAnchor="middle" fontSize="20" fontWeight="700">Interaction</text>
+        <text x="211" y="134" textAnchor="middle" fontSize="20" className=${pop(i >= 1)}>relationship</text>
       </svg></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
@@ -328,9 +329,9 @@
         <circle cx="198" cy="128" r="10" fill="#ef4444" style=${glow(i === 2)} /><circle cx="242" cy="128" r="10" fill="#22c55e" style=${glow(i === 2)} />
         <ellipse cx="220" cy="160" rx="18" ry="11" fill="#facc15" style=${glow(i === 3)} />
         ${[0, 1, 2, 3].map(r => [0, 1, 2].map(c => html`<rect key=${r + '-' + c} x=${196 + c * 18} y=${186 + r * 16} width="12" height="10" rx="3" fill="#6b7280" />`))}
-        <text x="64" y="70" fontSize="15" className=${pop(i === 1)}>peanut shaped</text>
-        <text x="300" y="130" fontSize="15" className=${pop(i === 2)}>color-coded</text>
-        <text x="300" y="168" fontSize="15" className=${pop(i === 3)}>easy to locate</text>
+        <text x="14" y="70" fontSize="20" className=${pop(i === 1)}>peanut shaped</text>
+        <text x="290" y="134" fontSize="20" className=${pop(i === 2)}>color-coded</text>
+        <text x="290" y="172" fontSize="20" className=${pop(i === 3)}>easy to locate</text>
       </svg></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
@@ -426,13 +427,13 @@
     const half = k => k % 2 === 0 ? `M${X[k]},${M} L${X[k + 1]},${T} L${X[k + 1]},${B} Z` : `M${X[k]},${T} L${X[k + 1]},${M} L${X[k]},${B} Z`;
     const ph = [['Discover', 'insight into the problem'], ['Define', 'the area to focus upon'], ['Develop', 'potential solutions'], ['Deliver', 'solutions that work']];
     return html`<figure className="fig"><div className="fig-stage">
-      <svg viewBox="0 0 440 272" role="img" aria-label="The double diamond of design">
+      <svg viewBox="0 0 440 282" role="img" aria-label="The double diamond of design">
         ${[0, 1, 2, 3].map(k => html`<path key=${k} d=${half(k)} fill=${i === k + 1 ? 'color-mix(in srgb, var(--pen) 22%, var(--paper))' : i > k + 1 || i === 0 ? 'color-mix(in srgb, var(--pen) 7%, var(--paper))' : 'var(--paper)'} className="fade" />`)}
         <path d=${`M${X[0]},${M} L${X[1]},${T} L${X[2]},${M} L${X[1]},${B} Z M${X[2]},${M} L${X[3]},${T} L${X[4]},${M} L${X[3]},${B} Z`} fill="none" stroke="var(--pen)" strokeWidth="3" strokeLinejoin="round" />
         <circle cx=${X[0]} cy=${M} r="6" fill="var(--pen)" /><circle cx=${X[2]} cy=${M} r="8" fill="var(--paper)" stroke="var(--pen)" strokeWidth="3" /><circle cx=${X[4] - 4} cy=${M} r="9" fill="var(--paper)" stroke="var(--pen)" strokeWidth="3" />
-        <text x=${X[0]} y="248" fontSize="15" fontWeight="600">Problem</text>
-        <text x=${X[2]} y="248" fontSize="14" fontWeight="600" textAnchor="middle">Problem Definition /</text><text x=${X[2]} y="264" fontSize="14" fontWeight="600" textAnchor="middle">Design Brief</text>
-        <text x=${X[4]} y="248" fontSize="15" fontWeight="600" textAnchor="end">Solution</text>
+        <text x=${X[0]} y="250" fontSize="20" fontWeight="600">Problem</text>
+        <text x=${X[2]} y="250" fontSize="20" fontWeight="600" textAnchor="middle">Problem Definition /</text><text x=${X[2]} y="274" fontSize="20" fontWeight="600" textAnchor="middle">Design Brief</text>
+        <text x=${X[4]} y="250" fontSize="20" fontWeight="600" textAnchor="end">Solution</text>
       </svg>
       <div className="fig-phases">${ph.map(([a, b], k) => html`<div key=${k} className=${i === 0 || i === k + 1 ? 'on' : ''}><b>${a}</b>${b}</div>`)}</div></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
@@ -454,8 +455,8 @@
       : cur === 'end' ? 'خرجت من الـ cycle للـ <b>Final product</b>. الـ Evaluating بس هو اللي ليه سهم لبره.'
       : 'من <b>' + AR[cur] + '</b> الأسهم بتروح لـ: ' + OUT[cur].map(k => AR[k]).join('، ') + '.';
     const E = (k) => { const [x, y, l1, l2] = N[k]; const on = cur === k, next = (OUT[cur] || []).includes(k);
-      return html`<g key=${k}><ellipse cx=${x} cy=${y} rx="74" ry="28" fill=${on ? 'var(--s-hci)' : next ? 'color-mix(in srgb, var(--k-hci) 18%, var(--paper))' : 'var(--paper)'} stroke=${next ? 'var(--k-hci)' : 'var(--graphite)'} strokeWidth=${next ? 3 : 1.5} className="fade" />
-        <text x=${x} y=${l2 ? y - 3 : y + 5} textAnchor="middle" fontSize="15" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l1}</text>${l2 && html`<text x=${x} y=${y + 15} textAnchor="middle" fontSize="15" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l2}</text>`}</g>`; };
+      return html`<g key=${k}><ellipse cx=${x} cy=${y} rx="76" ry="32" fill=${on ? 'var(--s-hci)' : next ? 'color-mix(in srgb, var(--k-hci) 18%, var(--paper))' : 'var(--paper)'} stroke=${next ? 'var(--k-hci)' : 'var(--graphite)'} strokeWidth=${next ? 3 : 1.5} className="fade" />
+        <text x=${x} y=${l2 ? y - 5 : y + 7} textAnchor="middle" fontSize="19.5" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l1}</text>${l2 && html`<text x=${x} y=${y + 18} textAnchor="middle" fontSize="19.5" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l2}</text>`}</g>`; };
     return html`<figure className="fig"><div className="fig-stage">
       <svg viewBox="0 0 440 320" role="img" aria-label="A simple interaction design lifecycle model">
         <defs><marker id="lc-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--graphite)" /></marker></defs>
@@ -469,7 +470,7 @@
           <path d="M424 160 Q436 230 420 290" />
         </g>
         ${['dis', 'des', 'pro', 'eva'].map(E)}
-        <text x="420" y="310" textAnchor="end" fontSize="15" fontWeight="700" fill=${cur === 'end' ? 'var(--ok)' : 'var(--ink)'} style=${cur === 'end' ? { fill: 'var(--ok)' } : null}>Final product</text>
+        <text x="420" y="312" textAnchor="end" fontSize="19.5" fontWeight="700" fill=${cur === 'end' ? 'var(--ok)' : 'var(--ink)'} style=${cur === 'end' ? { fill: 'var(--ok)' } : null}>Final product</text>
       </svg></div>
       <${Cap} en=${en} ar=${a} showAr=${ar} />
       <div className="fig-walk">
@@ -494,9 +495,9 @@
       <div className="fig-chev">${S.map(([n, c], k) => html`<div key=${k} className=${i === 0 || i === k + 1 || i === 6 ? 'on' : ''} style=${{ background: c }}><small>${k + 1}</small>${n}</div>`)}</div>
       <svg viewBox="40 110 360 200" role="img" aria-label="The sprint steps form a cycle labelled Iterate" style=${{ maxWidth: '440px', marginTop: '6px', opacity: i === 6 ? 1 : .35, transition: 'opacity .5s' }}>
         <defs><marker id="sp-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--k-compiler)" /></marker></defs>
-        ${S.map(([n], k) => { const [x, y] = pos(k), [x2, y2] = pos(k + 1); return html`<g key=${k}><text x=${x + (x - cx) * .55} y=${y + (y - cy) * .45 + 5} textAnchor="middle" fontSize="15" fontWeight="600">${n}</text>
+        ${S.map(([n], k) => { const [x, y] = pos(k), [x2, y2] = pos(k + 1); return html`<g key=${k}><text x=${x + (x - cx) * .55} y=${y + (y - cy) * .45 + 5} textAnchor="middle" fontSize="17" fontWeight="600">${n}</text>
           <path d=${`M${x + (x2 - x) * .25},${y + (y2 - y) * .25} L${x + (x2 - x) * .75},${y + (y2 - y) * .75}`} stroke="var(--k-compiler)" strokeWidth="3" markerEnd="url(#sp-ar)" /></g>`; })}
-        <text x=${cx} y=${cy + 6} textAnchor="middle" fontSize="17" fontWeight="700">Iterate</text>
+        <text x=${cx} y=${cy + 6} textAnchor="middle" fontSize="18" fontWeight="700">Iterate</text>
       </svg>
       <p className="muted small" style=${{ textAlign: 'center', margin: 0 }}>Source: Google Design Sprints (used courtesy of Agile Marketing)</p></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
@@ -515,8 +516,8 @@
       <svg viewBox="0 0 440 280" role="img" aria-label="Joyner's design life cycle">
         <defs><marker id="jy-ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#3a9ad9" /></marker></defs>
         ${arrows.map((d, k) => html`<path key=${k} d=${d} stroke="#3a9ad9" strokeWidth="5" strokeLinecap="round" markerEnd="url(#jy-ar)" style=${{ opacity: i === 0 || i === k + 1 ? 1 : .35, transition: 'opacity .4s' }} />`)}
-        ${P.map(([n, x, y], k) => html`<g key=${k}><ellipse cx=${x} cy=${y} rx="80" ry="30" fill=${i === k + 1 ? '#1f8fd6' : '#5bb8ef'} stroke="#1f6fa6" strokeWidth="2" className="fade" />
-          <text x=${x} y=${y + 6} textAnchor="middle" fontSize="17" fontWeight="600" style=${{ fill: '#fff' }}>${n}</text></g>`)}
+        ${P.map(([n, x, y], k) => { const two = n.length > 14 ? n.split(' ') : null; return html`<g key=${k}><ellipse cx=${x} cy=${y} rx="80" ry=${two ? 36 : 30} fill=${i === k + 1 ? '#1f8fd6' : '#5bb8ef'} stroke="#1f6fa6" strokeWidth="2" className="fade" />
+          ${two ? two.map((w, j) => html`<text key=${j} x=${x} y=${y - 4 + j * 22} textAnchor="middle" fontSize="19.5" fontWeight="600" style=${{ fill: '#fff' }}>${w}</text>`) : html`<text x=${x} y=${y + 7} textAnchor="middle" fontSize="19.5" fontWeight="600" style=${{ fill: '#fff' }}>${n}</text>`}</g>`; })}
       </svg></div>
       <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
@@ -639,7 +640,7 @@
       <svg viewBox="0 0 440 210" role="img" aria-label="A driver holding a phone while driving">
         <rect x="0" y="0" width="440" height="120" rx="10" fill="color-mix(in srgb, var(--k-compiler) 20%, var(--paper))" />
         <path d="M150 120 L200 40 L240 40 L290 120 Z" fill="#9ca3af" /><path d="M219 50 v12 M219 76 v14 M219 102 v14" stroke="#fff" strokeWidth="4" />
-        <rect x="190" y="40" width="60" height="14" rx="4" fill="#ef4444" className=${pop(i >= 1)} /><text x="220" y="34" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--pen)" className=${pop(i >= 1)}>!</text>
+        <rect x="190" y="40" width="60" height="14" rx="4" fill="#ef4444" className=${pop(i >= 1)} /><text x="220" y="36" textAnchor="middle" fontSize="22" fontWeight="700" fill="var(--pen)" className=${pop(i >= 1)}>!</text>
         <rect x="0" y="120" width="440" height="90" fill="var(--paper-2)" />
         <circle cx="150" cy="170" r="52" fill="none" stroke="var(--ink)" strokeWidth="12" /><circle cx="150" cy="170" r="10" fill="var(--ink)" />
         <g className=${calm() ? '' : 'tap'}><rect x="300" y="128" width="46" height="78" rx="8" fill="var(--ink)" /><rect x="305" y="136" width="36" height="58" rx="3" fill="color-mix(in srgb, var(--k-hci) 50%, #fff)" /></g>
