@@ -700,6 +700,16 @@ function start() {
     return html`<${window.VIZ.Viz} spec=${spec} ar=${ar} onAnswer=${onAnswer} />`;
   }
   // a lecture's own picture as an animation or a small hands-on version (figs.js, copied to data/, fetched when first needed)
+  // a section's points split into runs, each followed by the visuals that s.figAt places after its last point (name → point index)
+  function figRuns(s) {
+    const at = s.figAt || {}, runs = [{ pts: [], figs: [] }];
+    s.pts.forEach((_, j) => {
+      const figs = [].concat(s.fig || []).filter(n => at[n] === j);
+      runs[runs.length - 1].pts.push(j);
+      if (figs.length) { runs[runs.length - 1].figs = figs; if (j < s.pts.length - 1) runs.push({ pts: [], figs: [] }); }
+    });
+    return runs;
+  }
   function FigBlock({ name, ar }) {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
@@ -747,9 +757,11 @@ function start() {
               <tbody>${s.table.slice(1).map((r, ri) => html`<tr key=${ri}>${r.map((x, j) => html`<td key=${j} dangerouslySetInnerHTML=${{ __html: x }}></td>`)}</tr>`)}</tbody>
             </table></div>`}
             ${s.code && html`<pre className="code" data-hl="" dangerouslySetInnerHTML=${{ __html: codeHtml(s.code) }}></pre>`}
-            ${s.pts && html`<ul>${s.pts.map((p, j) => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: p }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>`}
+            ${s.pts && figRuns(s).map((r, ri) => html`<${React.Fragment} key=${ri}>
+              <ul>${r.pts.map(j => html`<li key=${j}><span dangerouslySetInnerHTML=${{ __html: s.pts[j] }}></span><${Ar} t=${an && an.pts && an.pts[j]} /></li>`)}</ul>
+              ${r.figs.map(n => html`<${FigBlock} key=${n} name=${n} ar=${!!arL} />`)}</${React.Fragment}>`)}
             ${s.viz && html`<${VizBlock} spec=${s.viz} ar=${!!arL} k=${k} />`}
-            ${s.fig && [].concat(s.fig).map(n => html`<${FigBlock} key=${n} name=${n} ar=${!!arL} />`)}
+            ${[].concat(s.fig || []).filter(n => !s.pts || !(s.figAt && s.figAt[n] < s.pts.length)).map(n => html`<${FigBlock} key=${n} name=${n} ar=${!!arL} />`)}
           </section>`; }), [lec, arL]);
     const toggleRead = () => setRead(r => r.includes(lec.n) ? r.filter(x => x !== lec.n) : r.concat(lec.n));
     const setPref = patch => setPrefs(p => Object.assign({}, p, patch));

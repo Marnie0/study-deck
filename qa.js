@@ -138,7 +138,12 @@ COURSES.qa = {
       "qa-waterfall",
       "qa-waterfall-flow",
       "qa-spiral"
-     ]
+     ],
+     "figAt": {
+      "qa-waterfall": 7,
+      "qa-waterfall-flow": 7,
+      "qa-spiral": 13
+     }
     },
     {
      "h": "V-Model",
@@ -215,7 +220,13 @@ COURSES.qa = {
       "qa-agile",
       "qa-tdd",
       "qa-models-compare"
-     ]
+     ],
+     "figAt": {
+      "qa-rad": 4,
+      "qa-agile": 6,
+      "qa-tdd": 9,
+      "qa-models-compare": 12
+     }
     }
    ],
    "cards": [
