@@ -32,7 +32,10 @@ AR.fp = {
       "الـ computer storage ممكن يبقى secondary storage أو main memory.<br>تخزين الـ files بطيء عشان فيه <b>أجزاء كتير بتتحرك</b> (moving parts).",
       "رسمة (slide 9، اسمها Computer Storage):<br>• الـ <b>Main memory (RAM)</b>: هنا الداتا بتتعالج (manipulated)، وهي سريعة وصغيرة وغالية و volatile.<br>• الـ <b>Secondary storage</b> (disk عليه files زي A.mp3 و first.java و mo.flv): هنا الداتا بتتخزن، وهو بطيء وكبير ورخيص و stable. أمثلة: الـ disk والـ tape والـ CD-ROM.<br>• الداتا بتتنقل بين الاتنين. والتعليقات اللي على الرسمة: «Files will store here» على الـ secondary storage، و«Why is file storage so slow?»، و«File storage systems have many moving parts».",
       "ليه محتاجين files؟<br>• لإنها الطريقة الوحيدة المناسبة لتخزين كمية معلومات كبيرة (صور، مزيكا، فيديو).<br>• والـ operating systems أكبر من إنها تدخل كلها في الـ memory.<br>• والـ databases موجودة في كل حتة.<br>• وكمان عشان الـ backup والـ archiving."
-     ]
+     ],
+     "figH": {
+      "fp-storage": "الـ computer storage: الـ main memory قصاد الـ secondary storage"
+     }
     },
     {
      "h": "(3) الـ File structures",
@@ -46,7 +49,10 @@ AR.fp = {
       "رسمة (slide 12، اسمها File Organization): كومة كتب مكركبة مكتوب عليها <b>Unorganized</b>، وجنبها كتب مترتبة على الرفوف مكتوب عليها <b>Organized</b>.",
       "• <b>طرق الـ logical organization</b>: الـ heap والـ indexing والـ hashing.<br>• <b>طرق الـ physical organization</b>: إننا ننظم الـ tracks بالـ <b>sectors</b> أو بالـ <b>blocks</b>.",
       "طرق تنظيم الـ file لازم توفر <b>access time سريع</b> و<b>استغلال كويس للمساحة</b> (good space utilization)."
-     ]
+     ],
+     "figH": {
+      "fp-file-org": "الـ file organization: من كومة مكركبة لرفوف مترتبة"
+     }
     },
     {
      "h": "(5) الـ File management و(6) الـ file managers",
@@ -61,7 +67,10 @@ AR.fp = {
      "pts": [
       "رسمة (slide 20، اسمها Physical File vs. Logical File): فيه hard disk عليه 6 physical files هما A.txt و b.txt و aa.txt و aa.mp3 و a.doc و z.mp3. برنامج C/C++ بيتعامل مع الـ physical file اللي اسمه b.txt عن طريق الـ logical name <b>infile</b>، وبرنامج تاني بيتعامل مع aa.txt عن طريق logical name بتاعه هو كمان اسمه <b>infile</b>.",
       "تعريف الـ logical name (slide 22):<br>• في C بنكتب:<span class=\"ltr\"><code>FILE * outfile;</code></span>• وفي C++ الـ logical name بيبقى object من الـ class اللي اسمها <code>fstream</code>، وبنكتب:<span class=\"ltr\"><code>fstream outfile;</code></span>وفي اللغتين الـ logical name اللي هو outfile بيتربط بالـ physical file اللي هو myfile.txt وقت <b>فتح</b> الـ file."
-     ]
+     ],
+     "figH": {
+      "fp-log-phys": "الـ physical files اللي على الـ disk والـ logical names اللي البرامج بتستخدمها"
+     }
     },
     {
      "h": "فتح الـ files",
@@ -71,10 +80,16 @@ AR.fp = {
       "في C++ بنكتب:<span class=\"ltr\"><code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code></span>والـ argument التاني <b>integer</b> بيحدد الـ mode، وقيمته بتتعمل بـ bitwise OR (الـ operator <code>|</code>) بين constants متعرّفة في الـ class اللي اسمها <code>ios</code>.",
       "الـ modes في C:<br>• الـ <b>\"r\"</b> يفتح file موجود للقراية.<br>• الـ <b>\"w\"</b> يعمل file جديد أو يفضّي (truncate) الموجود للـ output.<br>• الـ <b>\"a\"</b> يعمل file جديد أو يزوّد (append) على الموجود للـ output.<br>• الـ <b>\"r+\"</b> file موجود للـ input والـ output.<br>• الـ <b>\"w+\"</b> يعمل/يفضّي للـ input والـ output.<br>• الـ <b>\"a+\"</b> يعمل/يعمل append للـ input والـ output.<br>• ولو زوّدت <b>b</b> (زي rb و wb و ab و r+b…) يبقى معناها <b>binary mode</b>.",
       "الـ flags في C++:<br>• الـ <code>ios::in</code> للـ input.<br>• الـ <code>ios::out</code> للـ output.<br>• الـ <code>ios::app</code> يعمل seek للآخر قبل كل write.<br>• الـ <code>ios::ate</code> يبدأ وهو واقف في الآخر.<br>• الـ <code>ios::trunc</code> دايمًا يعمل file جديد (truncate).<br>• الـ <code>ios::binary</code> للـ binary mode."
-     ]
+     ],
+     "figH": {
+      "fp-fopen-parts": "أجزاء الـ fopen call"
+     }
     },
     {
-     "h": "الـ C mode ↔ الـ C++ flags"
+     "h": "الـ C mode ↔ الـ C++ flags",
+     "figH": {
+      "fp-modes": "جرّب كل mode للفتح على file، ومعاه الـ C++ flags بتاعته"
+     }
     },
     {
      "h": "قفل الـ files",
@@ -83,7 +98,10 @@ AR.fp = {
       "الـ bytes مش بتتبعت واحدة واحدة. بتتجمع في <b>buffer</b> وتتبعت مرة واحدة كـ <b>block</b>.",
       "لو مقفلتش الـ file، الـ OS هيقفله في آخر البرنامج. بس لو البرنامج <b>وقع فجأة (terminated abnormally) ممكن الداتا تضيع</b>.",
       "قفل الـ file في الكود (slide 28):<br>• في C بنكتب <code>fclose(outfile);</code><br>• وفي C++ بنكتب <code>outfile.close();</code>."
-     ]
+     ],
+     "figH": {
+      "fp-buffer": "الـ buffer: الـ close بيعمل إيه، والـ crash بيضيّع إيه"
+     }
     },
     {
      "h": "القراية والكتابة",
@@ -96,13 +114,20 @@ AR.fp = {
       "القراية في C++ (slide 32):<span class=\"ltr\"><code>char c; char a[100]; fstream infile; infile.open(\"myfile.txt\",ios::in); infile &gt;&gt; c; infile.read(&amp;c,1); infile.read(a,10);</code></span>الـ <code>infile &gt;&gt; c;</code> بتقرا character واحد، والـ <code>infile.read(&amp;c,1);</code> طريقة تانية لقراية character واحد، والـ <code>infile.read(a,10);</code> بتقرا 10 bytes.<br>والكتابة في C++ (slide 35):<span class=\"ltr\"><code>char c; char a[100]; fstream outfile; outfile.open(\"mynew.txt\",ios::out); /* omitted initialization of c and a */ outfile &lt;&lt; c; outfile.write(&amp;c,1); outfile.write(a,10);</code></span>",
       "في C++ (slides 32 و 35) الـ operator <code>&gt;&gt;</code> بيوصّل نفس المعلومة بس على مستوى أعلى: بما إن c متغير char، فمفهوم ضمنيًا إن 1 byte بس هيتنقل. والـ fstream في C++ فيها كمان الـ method اللي اسمها <b>read</b>، وهي المقابل لـ fread في C (والـ <b>write</b> المقابل لـ fwrite). والفتح للكتابة بيبقى <code>outfile.open(\"mynew.txt\",ios::out);</code>.",
       "اكتشاف آخر الـ file (EOF) (slide 36):<br>• في C بنشوف الـ <code>fread</code> رجّعت <b>0</b> ولا لأ:<span class=\"ltr\"><code>int i; i = fread(&amp;c,1,1,infile);</code> (attempted to read)<br><code>if (i==0)</code> (true if file has ended) …</span>• في C++ بنشوف الـ <code>infile.fail()</code> بترجع true ولا لأ:<span class=\"ltr\"><code>infile &gt;&gt; c;</code> (attempted to read)<br><code>if (infile.fail())</code> (true if file has ended) …</span>• أو بدل كده بنشوف الـ <code>infile.eof()</code> بترجع true ولا لأ."
-     ]
+     ],
+     "figH": {
+      "fp-rw-args": "الـ Read والـ Write العامين، والـ arguments بتوع الـ fread والـ fwrite",
+      "fp-read-sim": "قراية file في C و C++ لحد ما الـ file يخلص"
+     }
     },
     {
      "h": "الـ methods اللي بنقرا بيها من الـ files (في C)",
      "pts": [
       "الـ slide 30 بتدي 4 methods للقراية من الـ files، ولكل واحدة اسمها المختصر والاستخدام والـ syntax ومثال (الجدول اللي فوق)."
-     ]
+     ],
+     "figH": {
+      "fp-read-methods": "الـ 4 طرق للقراية من file في C"
+     }
     },
     {
      "h": "الـ logical names بتاعة الـ Standard I/O",
@@ -116,7 +141,10 @@ AR.fp = {
       "المطلوب (slide 38): برنامج C يعرض محتوى file على الشاشة. والـ algorithm:<span class=\"ltr\">open the file for input → while there are characters/records, read one and write it to the screen → close the file</span>",
       "التعليقات اللي على الكود (slides 39 و 40):<br>• الـ <code>struct employee</code>: بنعمل الـ employee struct.<br>• الـ <code>fopen(...)</code>: بنفتح الـ file اللي اسمه emp.txt.<br>• الـ <code>if(my_file == NULL)</code>: بنختبر الـ file اتفتح ولا لأ.<br>• الـ <code>while(!feof(my_file))</code>: بنستخدم while loop نقرا بيها من الـ file لحد آخره.<br>• جوه الـ loop: بنقرا من الـ file بـ fread، ونطبع على الشاشة بـ printf، ونقفل الـ while loop بـ }.<br>• الـ <code>fclose(my_file);</code>: بنقفل الـ logical file.",
       "‡ نصيحة: الـ <code>while(!feof())</code> مش بتبقى true غير <i>بعد</i> ما قراية تفشل، فممكن آخر record يتطبع مرتين. والأأمن إنك تشيك على <code>fread(...) == 1</code>.<br>وكمان الكود اللي في الـ slides (39 و 40):<br>• بيطبع <code>%f</code> للـ salary وهي int (استخدم <code>%d</code> زي الكود اللي فوق)<br>• وفيه <code>\"</code> زيادة بعد emp.sal<br>• وبيكتب <code>==</code> على شكل <code>= =</code><br>• وبيستخدم <code>void main()</code>، وبيخلص بـ <code>getch();</code>."
-     ]
+     ],
+     "figH": {
+      "fp-sample-run": "تشغيل البرنامج المثال: ليه الـ while(!feof) بتطبع آخر record مرتين"
+     }
     },
     {
      "h": "الـ Full methods (slides 41 لـ 54)",
@@ -128,7 +156,10 @@ AR.fp = {
       "الـ <b>Method (5) writeASCII()</b> (slides 49 و 50): بتكتب جزء من جدول الـ ASCII (من character رقم 32 لحد 127) في ascii.txt باستخدام <code>fprintf</code>: سطر عناوين «Letter Decimal Hexadecimal»، وبعدين كل character بـ %c و %d و %x.",
       "الـ <b>Method (6) readASCII()</b> (slides 51 لـ 53، واسمها في الـ slide <code>read()</code>): بتقرا ascii.txt تاني: سطر العناوين بـ <code>fgets</code> و <code>puts</code>، وبعدين كل سطر بـ <code>fscanf(my_file,\"%c %d %x\",...)</code> لحد ما ترجع <code>EOF</code>، وبتطبع كل سطر بـ printf.",
       "الـ <b>Activity (1) / Quiz (1)</b> (slide 54): أعد كتابة كل أمثلة برامج C اللي فاتت، من slide 38 لحد slide 53، كبرامج C++."
-     ]
+     ],
+     "figH": {
+      "fp-ascii": "جدول الـ ASCII اللي الـ writeASCII بتكتبه والـ readASCII بتقراه"
+     }
     }
    ],
    "cards": [
@@ -300,7 +331,10 @@ AR.fp = {
       "الـ secondary storage مختلف عن الـ main memory، فلازم نفهم <b>هو بيشتغل إزاي عشان نعمل file design كويس</b>. وفيه نوعين أساسيين من الـ secondary storage:<br>(1) الـ Direct Access Storage Devices (<b>DASD</b>)<br>(2) الـ Serial Access Storage Devices (<b>SASD</b>)",
       "الـ <b>DASD</b> (Direct Access Storage Devices):<br>• الـ <b>magnetic disks</b> زي الـ hard disk والـ floppy disk.<br>• الـ <b>optical disks</b>، وهما:<span class=\"ltr\">CD-ROM (Compact Disk – Read Only Memory), CD-R (Compact Disk – Recordable), CD-RW (Compact Disk – ReWritable), DVD (Digital Video Disk)</span>",
       "الـ <b>SASD</b> (Serial Access Storage Devices): الـ <b>magnetic tape</b>."
-     ]
+     ],
+     "figH": {
+      "fp-storage-types": "الـ DASD ولا الـ SASD؟ صنّف أجهزة الـ secondary storage"
+     }
     },
     {
      "h": "مكونات الـ Disk",
@@ -324,7 +358,10 @@ AR.fp = {
       "الـ <b>cylinder</b> هو مجموعة الـ tracks اللي فوق/تحت بعض بالظبط. كل الداتا اللي على cylinder واحد تتقري <b>من غير ما الـ arm يتحرك</b>. عدد الـ cylinders = عدد الـ tracks في كل surface.",
       "رسمة (slide 13، الـ cylinder): 4 platters فوق بعض، ونفس الحلقة الصفرا متعلّمة على كل platter، ومكتوب عليها <b>Cylinder</b>.",
       "يعني الـ platter ليه 4 مكونات: الـ <b>sector</b> والـ <b>cluster</b> والـ <b>track</b> والـ <b>cylinder</b> (رسمة slide 14: 4 مجموعات platters، وكل مجموعة متعلّم فيها واحد منهم)."
-     ]
+     ],
+     "figH": {
+      "fp-platter-parts": "الـ track والـ geometrical sector والـ track sector والـ cluster والـ cylinder على الـ platter"
+     }
     },
     {
      "h": "الـ read/write heads والـ arm assembly والـ spindle والـ arms",
@@ -334,10 +371,16 @@ AR.fp = {
       "<b>(4) الـ Spindle</b> بيمسك الـ platters في <b>مكان ثابت</b>، ومع <b>مسافة كفاية للـ read/write arms</b> عشان توصل للداتا اللي على الـ disks، و<b>بيلفّها</b>، فيجيب الـ sector تحت الـ head.",
       "<b>(5) الـ Arms</b> بتشيل الـ heads وتوجهها وتحركها. تحريك الـ arm اسمه <b>seeking</b>، وده غالبًا <b>أبطأ</b> جزء.",
       "رسمة (slide 20): 3 <b>platters</b> على <b>spindle</b> واحد، وفيه سهم للـ <b>rotation</b>. وكل platter عليه حلقة متقسمة لحتت صغيرة: الحلقة اللي على الـ platter اللي فوق اسمها <b>track t</b>، وحتة واحدة من الحلقة (على الـ platter اللي في النص) اسمها <b>sector s</b>؛ ونفس الـ track على كل الـ platters، متوصلة بخطوط متقطعة، هي الـ <b>cylinder c</b>. وكل platter عليه <b>read-write head</b> (مربع غامق) في آخر <b>arm</b>، وكل الـ arms متثبتة في الـ <b>arm assembly</b>."
-     ]
+     ],
+     "figH": {
+      "fp-disk-parts": "مكونات الـ hard disk واحد ورا التاني (slide 20)"
+     }
     },
     {
-     "h": "قوانين الـ Capacity"
+     "h": "قوانين الـ Capacity",
+     "figH": {
+      "fp-capacity": "حاسبة الـ capacity: الـ sector والـ cluster والـ track والـ cylinder والـ drive"
+     }
     },
     {
      "h": "مسألة محلولة (سلايدز 22–26)",
@@ -348,7 +391,10 @@ AR.fp = {
       "• حجم الـ file هو<span class=\"ltr\">90,000 × 256 = <b>23,040,000 B</b></span>• وعدد الـ records في الـ sector هو<span class=\"ltr\">512/256 = <b>2</b></span>• وعدد الـ records في الـ track هو<span class=\"ltr\">30,720/256 = <b>120</b></span>• وعدد الـ records في الـ cylinder هو<span class=\"ltr\">430,080/256 = <b>1680</b></span>",
       "• الـ sectors اللي الـ file محتاجها هي<span class=\"ltr\">23,040,000/512 = <b>45,000</b></span>• والـ tracks هي<span class=\"ltr\">23,040,000/30,720 = <b>750</b></span>• والـ cylinders هي<span class=\"ltr\">23,040,000/430,080 = <b>53.57</b></span>وده معناه 54 cylinder كاملين (‡).",
       "الـ capacity بتاعة الـ drive هي<span class=\"ltr\">5000 × 430,080 = <b>2,150,400,000 B</b></span>"
-     ]
+     ],
+     "figH": {
+      "fp-worked-problem": "المسألة المحلولة خطوة خطوة: الـ file محتاج قد إيه من الـ disk"
+     }
     },
     {
      "h": "تنظيم الـ tracks بالـ sectors مقابل بالـ blocks",
@@ -359,7 +405,10 @@ AR.fp = {
       "في الـ block addressing، كل block فيه داتا بيبقى معاه <b>sub-block</b> واحد أو أكتر فيهم معلومات زيادة عن الـ block. والـ block عادةً فيه:<br>• الـ <b>count sub-block</b>: عدد الـ bytes في الـ block.<br>• الـ <b>key sub-block</b> (اختياري): فيه الـ key بتاع آخر record في الـ data sub-block، عشان الـ disk controller يقدر يدوّر على key من غير ما يحمّل الـ block في الـ main memory.<br>• الـ <b>data sub-block</b>: فيه الـ data records.",
       "رسمة (slide 29، الـ sub-blocks): block واحد مترسوم كقوس من track، ومتكون من <b>key sub-block</b> و <b>count sub-block</b> والـ <b>data sub-block</b>، وبعده <b>gap</b> قبل الـ block اللي بعده.",
       "رسمة (slide 30، الـ pages والـ blocks): سطح disk والـ tracks اللي عليه متقطعة لـ sectors وبينها gaps. وتحتها track واحد مترسوم كصف:<span class=\"ltr\">sector 1, gap, sector 2, gap, sector 3, gap, sector 4, gap, …</span>وفيه قوس بيوضح إن <b>الـ page/block الواحد = 4 sectors</b>."
-     ]
+     ],
+     "figH": {
+      "fp-sectors-blocks": "الـ sectors والـ blocks والـ sub-blocks: الـ track بيتنظم إزاي"
+     }
     },
     {
      "h": "الـ Non-data overhead",
@@ -368,7 +417,10 @@ AR.fp = {
       "في التنظيم بالـ sectors: الـ sector address والـ track address والـ condition (هل هو بايظ؟) في أول كل sector، وكمان الـ gaps اللي بين الـ sectors.",
       "في التنظيم بالـ blocks: الـ sub-blocks والـ inter-block gaps، فبيبقى فيه non-data overhead <b>أكتر</b> من الـ sector addressing.",
       "<b>تمرين</b> (slides 32–34): disk بيتعمل له <b>block addressing</b>، حجم الـ track فيه 20,000 B، والـ non-data overhead لكل block بـ 300 B، والـ record حجمه 100 B. كام record ممكن يتخزن في الـ track لو الـ blocking factor بـ (a) 10 أو (b) 60؟<br>لو الـ BF بـ 10:<span class=\"ltr\">data sub-block = 1000; block = 1000 + 300 = 1300; ⌊20,000/1300⌋ = ⌊15.38⌋ = 15 blocks</span>يعني <b>150 records/track</b>.<br>ولو الـ BF بـ 60:<span class=\"ltr\">data sub-block = 6000; block = 6000 + 300 = 6300; ⌊20,000/6300⌋ = ⌊3.17⌋ = 3 blocks</span>يعني <b>180 records/track</b>."
-     ]
+     ],
+     "figH": {
+      "fp-records-track": "عدد الـ records في الـ track مع الـ blocking factor والـ non-data overhead"
+     }
     },
     {
      "h": "تكلفة الـ disk access",
@@ -378,14 +430,20 @@ AR.fp = {
       "الـ <b>Seek time</b>: الوقت اللي الـ arm محتاجه عشان يروح للـ cylinder الصح. وده <b>أكبر</b> تكلفة. والقيم المعتادة:<br>• حوالي 5 ms عشان ينقل من track للي جنبه (track-to-track).<br>• وأقصاه 50 ms (من أجوّا track لأبرّا track).<br>• وفي المتوسط 30 ms (من track عشوائي لـ track عشوائي تاني).",
       "الـ <b>Rotational delay (latency)</b>: الوقت اللي الـ disk محتاجه عشان يلف لحد ما الـ sector اللي عايزينه ييجي تحت الـ read/write head.<br>والـ hard disks عادةً بتلف حوالي 5000 rpm، يعني لفة كل 12 ms.<br>• أقل latency بصفر.<br>• وأكبر latency هي وقت لفة كاملة.<br>• والـ <b>average latency (r)</b> هي:<span class=\"ltr\">(min + max)/2 = max/2 = ½ revolution = ½ × (60 × 1000)/RPM ms</span>وفي العادة المتوسط بيبقى 6–8 ms.",
       "الـ <b>Transfer time</b>: الوقت اللي الـ read/write head بياخده وهو بيعدي على <b>block</b>. والـ formula بتاعته:<span class=\"ltr\">Transfer time = (bytes transferred / bytes on a track) × rotation time = revolution time / sectors per track</span>مثلًا لو فيه 63 sector في الـ track، نقل sector واحد بياخد 1/63 من اللفة."
-     ]
+     ],
+     "figH": {
+      "fp-access-steps": "الـ disk access في 3 خطوات: الـ seek والـ rotational latency والـ transfer (slide 35)"
+     }
     },
     {
      "h": "مثال 1 ومثال 2",
      "pts": [
       "<b>مثال 1</b>: الـ average seek بـ 8 ms، والـ average rotational delay بـ 3 ms، والـ maximum rotational delay بـ 6 ms، والـ spindle speed بـ 10,000 rpm، وفيه 170 sector في الـ track، والـ sector بـ 512 B. المطلوب متوسط وقت قراية sector واحد. الـ transfer بيساوي وقت اللفة على عدد الـ sectors:<span class=\"ltr\">(1/10,000 min)/170 = (60/10,000 s)/170 = 6/170,000 s = 6/170 ms ≈ <b>0.035 ms</b></span>والـ total هو:<span class=\"ltr\">8 + 3 + 0.035 = <b>11.035 ms</b></span>",
       "<b>مثال 2</b> (disk حقيقي، Seagate ST3200822A): الـ capacity بـ 200 GB؛ والـ transfer rate أقصاه 683 Mbits/sec جوّه و 100 Mbytes/sec بره؛ وفيه 2 discs و 4 heads؛ والـ sector بـ 512 bytes؛ والـ spindle speed بـ 7200 rpm؛ والـ average seek بـ 8.5 ms؛ والـ average latency بـ 4.16 ms؛ وفيه 170 sector في الـ track. المطلوب متوسط وقت قراية sector واحد:<span class=\"ltr\">Transfer = (1/7200 min)/170 = (60/7200 s)/170 = 6/(720 × 170) = 6/122,400 ≈ <b>0.05 ms</b></span><span class=\"ltr\">Total = 8.5 + 4.16 + 0.05 = <b>12.71 ms</b></span>"
-     ]
+     ],
+     "figH": {
+      "fp-access-time": "متوسط وقت قراية sector واحد: مثال 1 ومثال 2، وتقدر تغيّر القيم"
+     }
     },
     {
      "h": "الـ Disk كـ bottleneck",
@@ -586,7 +644,10 @@ AR.fp = {
       "الـ <b>Record</b>: مجموعة fields بتكوّن وحدة logical واحدة.",
       "الـ <b>Field</b>: قيمة داتا، وهو أصغر وحدة داتا ليها معنى logical. الـ fields ليها أسماء وأنواع (types) وأطوال وقيم.",
       "فيه 3 file structures: الـ <b>stream</b> والـ <b>field</b> والـ <b>record</b> structures."
-     ]
+     ],
+     "figH": {
+      "fp-file-records": "الـ logical view: الـ file عبارة عن records، والـ record عبارة عن fields"
+     }
     },
     {
      "h": "(1) الـ Stream files",
@@ -594,7 +655,10 @@ AR.fp = {
       "المعلومات بتتكتب كـ stream من الـ bytes <b>من غير أي معلومات زيادة</b>.",
       "مثال: <code>AmesMary123 MapleStillwaterOK74075MasonAlan90 EastgateAdaOK74820</code>.",
       "المشكلة: <b>مفيش أي طريقة نرجّع بيها المعلومات</b> بشكل الـ record المنظم."
-     ]
+     ],
+     "figH": {
+      "fp-stream-file": "الـ stream file: bytes من غير أي معلومات زيادة"
+     }
     },
     {
      "h": "(2) الـ Field structures (4 طرق)",
@@ -603,7 +667,10 @@ AR.fp = {
       "الـ <b>Length indicator</b> في أول كل field:<span class=\"ltr\"><code>058735907CARROLL19ALICE IN WONDERLAND</code></span>",
       "كل field بيتكتب على شكل <b><bdi dir=\"ltr\">keyword = value</bdi></b>، زي كده:<span class=\"ltr\"><code>ISBN=87359 AU=CARROLL TI=ALICE IN WONDERLAND</code></span>",
       "الـ <b>Delimiter</b> في آخر كل field:<span class=\"ltr\"><code>87359|CARROLL|ALICE IN WONDERLAND|</code></span>"
-     ]
+     ],
+     "figH": {
+      "fp-field-structs": "الـ 4 field structures، byte ورا byte: عدّل الـ fields واقراها تاني"
+     }
     },
     {
      "h": "الـ Field structures: المميزات والعيوب"
@@ -613,7 +680,10 @@ AR.fp = {
      "pts": [
       "الـ record هو مجموعة fields بتنتمي لبعض في مستوى تنظيم أعلى. هو أداة conceptual وفكرة logical مهمة في structure الـ file.",
       "الطرق:<br>(1) <b>fixed-length records بـ fixed-length fields</b><br>(2) <b>fixed-length records بـ variable-length fields</b> (fields بـ delimiters أو بـ length indicators، ونعمل padding لحد ما الـ record يوصل للحجم الثابت)<br>(3) <b>كل record بيبدأ بـ length indicator</b> (عدد الـ bytes)، مثلًا:<span class=\"ltr\"><code>3387359|CARROLL|ALICE IN WONDERLAND</code></span>"
-     ]
+     ],
+     "figH": {
+      "fp-record-structs": "الـ 3 record structures، وإزاي ننط للـ record رقم i"
+     }
     },
     {
      "h": "الـ Record structures: المميزات والعيوب"
@@ -624,7 +694,10 @@ AR.fp = {
       "الـ <b>Primary key</b>: بيميّز الـ record بشكل unique ومش بيتغير.<br>الـ <b>Secondary key</b>: بنستخدمه في البحث بس عادةً مش بيميّز الـ record بشكل unique.",
       "الـ <b>Sequential search</b>: نقرا الـ records بالترتيب لحد ما نلاقي اللي عايزينه، والـ cost بتاعه <b>O(n)</b>. وده مناسب للـ pattern matching أو للـ files اللي فيها records قليلة.",
       "الـ <b>Direct access</b>: نعمل seek على طول لأول الـ record. <b>O(1)</b>. ينفع لما نكون عارفين الـ <b>RRN</b> (Relative Record Number: أول record الـ RRN بتاعه 0، اللي بعده RRN 1…)."
-     ]
+     ],
+     "figH": {
+      "fp-access": "الـ sequential search بـ O(n) قصاد الـ direct access بـ O(1) عن طريق الـ RRN"
+     }
     },
     {
      "h": "الـ Seeking",
@@ -632,19 +705,28 @@ AR.fp = {
       "بشكل عام: <code>Seek(Source_File, Offset)</code>؛ مثلًا <code>Seek(infile, 3030)</code> بتنقلك للـ byte رقم 3030.",
       "في C:<span class=\"ltr\"><code>int fseek(FILE *stream, long offset, int origin)</code></span>والـ origin قيمته:<br>• <b>0</b>: البداية<br>• <b>1</b>: المكان الحالي<br>• <b>2</b>: النهاية<br>• الـ <code>fseek(infile,0L,0)</code> بيروح للبداية<br>• الـ <code>fseek(infile,0L,2)</code> بيروح للنهاية<br>• الـ <code>fseek(infile,-10L,1)</code> بيرجع 10 bytes لورا.",
       "في C++: الـ fstream ليه pointer-ين. الـ <code>seekg</code> بيحرك الـ <b>get</b> pointer (القراية) والـ <code>seekp</code> بيحرك الـ <b>put</b> pointer (الكتابة). والـ origins هي <code>ios::beg</code> و <code>ios::cur</code> و <code>ios::end</code>.<br><code>infile.seekg(0, ios::beg); infile.seekg(0, ios::end); infile.seekg(-10, ios::cur);</code>"
-     ]
+     ],
+     "figH": {
+      "fp-seek": "الـ seeking: الـ fseek في C، والـ seekg والـ seekp في C++"
+     }
     },
     {
      "h": "السؤال الأول في الـ Quiz (3): انسخ file من غير loops",
      "pts": [
       "الفكرة: تعمل <code>seekg</code> للآخر والـ <code>tellg</code> تديك الحجم، وبعدين <code>read</code> واحدة و<code>write</code> واحدة بالحجم ده."
-     ]
+     ],
+     "figH": {
+      "fp-copy-file": "نسخ file كامل بـ read واحدة و write واحدة"
+     }
     },
     {
      "h": "السؤال التاني في الـ Quiz (3): عدّل record بالـ RRN",
      "pts": [
       "الـ fields والـ records الـ fixed-length معناها إن كل record ليه نفس الحجم، فالـ byte offset بيبقى بالظبط <b>RRN × record size</b>."
-     ]
+     ],
+     "figH": {
+      "fp-update-rrn": "تعديل record مكانه: الـ seekp لحد RRN × record size، وبعدين write"
+     }
     }
    ],
    "cards": [
@@ -800,7 +882,10 @@ AR.fp = {
       "الكفاءة بتتقاس بـ <b>عدد الـ disk accesses</b>: كل ما يقل كل ما يبقى أحسن.",
       "استراتيجيات الـ access:<br>• الـ <b>sequential search</b> بطيء وبـ O(n)<br>• الـ <b>direct access</b> بيجيب الـ record في read واحدة، O(1).",
       "الطرق هي الـ <b>unordered (heap) file</b> والـ <b>ordered (sequential) file</b> والـ <b>indexing</b> والـ <b>hashing</b>."
-     ]
+     ],
+     "figH": {
+      "fp-access-strat": "الـ sequential search قصاد الـ direct access: بنعدّ الـ disk accesses"
+     }
     },
     {
      "h": "الـ Unordered file / الـ heap file",
@@ -813,7 +898,10 @@ AR.fp = {
      ]
     },
     {
-     "h": "مثال heap file (records حجمها 20 byte)"
+     "h": "مثال heap file (records حجمها 20 byte)",
+     "figH": {
+      "fp-heap-file": "الـ heap file: الـ insert في الآخر والـ duplicates والـ delete"
+     }
     },
     {
      "h": "الـ cost model",
@@ -838,7 +926,10 @@ AR.fp = {
       "مجموعة records <b>مترتبة</b> متخزنة بترتيب الـ <b>key value</b>. والـ records بيتعملها access بالتسلسل من الأول للآخر.",
       "الـ Insert: الـ record الجديد بيروح لمكان محدد بالظبط، فـ <b>كل الـ records اللي الـ key بتاعها أكبر بتتحرك مكان واحد ناحية الآخر</b>. والـ delete والـ update محتاجين العكس.",
       "مثال: لو عملت insert للـ record <bdi dir=\"ltr\">(4, Ali, CS)</bdi> في الـ records <bdi dir=\"ltr\">1, 2, 3, 5</bdi> هيتحط عند offset 60، والـ record بتاع Ahmed (5) هيتزق لـ 80."
-     ]
+     ],
+     "figH": {
+      "fp-sorted-insert": "الـ insert في الـ ordered file: كل key أكبر بيتزق"
+     }
     },
     {
      "h": "تكاليف الـ Sorted file",
@@ -848,10 +939,16 @@ AR.fp = {
       "الـ <b>Range search</b> تكلفته هي الـ search cost + تكلفة إنك تجيب الـ records المطابقة.",
       "الـ <b>Insert</b>:<span class=\"ltr\">search cost + 2 × (0.5B(D + RC)) = search + B(D + RC)</span>بتقرا وتكتب تاني نص الـ file في المتوسط.",
       "الـ <b>Delete</b>: زي الـ insert بالظبط: search + B(D + RC)."
-     ]
+     ],
+     "figH": {
+      "fp-search-compare": "الـ equality search: خطي في الـ heap file وثنائي (binary) في الـ sorted file"
+     }
     },
     {
-     "h": "جدول مقارنة التكاليف"
+     "h": "جدول مقارنة التكاليف",
+     "figH": {
+      "fp-cost-calc": "حاسبة تكلفة الـ heap والـ sorted والـ hashed files"
+     }
     },
     {
      "h": "إزاي تقرا اختيارات الامتحان",
@@ -1011,7 +1108,10 @@ AR.fp = {
      "pts": [
       "الـ Hashing تقنية بحث مفيدة في عمل الـ indexes. والدافع الأساسي ليها إنها <b>تحسّن وقت البحث</b>.",
       "وقت البحث:<br>• الـ simple indexes مع binary search بـ <b>O(log N)</b><br>• الـ B-trees بـ <b>O(log<sub>k</sub> N)</b><br>• الـ hashing بـ <b>O(1)</b>."
-     ]
+     ],
+     "figH": {
+      "fp-search-time": "وقت البحث: الـ binary search قصاد الـ B-tree قصاد الـ hashing"
+     }
     },
     {
      "h": "يعني إيه hashing؟",
@@ -1028,7 +1128,10 @@ AR.fp = {
      "pts": [
       "ممكن 2 keys مختلفين يتحوّلوا لـ <b>نفس الـ address</b>. وده اسمه <b>collision</b>.",
       "الـ keys اللي بيحصل بينهم collision اسمهم <b>synonyms</b>."
-     ]
+     ],
+     "figH": {
+      "fp-collisions": "الـ collisions والـ synonyms: بنعمل hash للـ keys في 10 addresses"
+     }
     },
     {
      "h": "الـ hash function البسيطة (Midterm Model A)",
@@ -1036,10 +1139,16 @@ AR.fp = {
       "الخطوة 1: نمثّل الـ key كرقم، بإننا نجمّع كل 2 characters مع بعض (الـ ASCII codes).",
       "الخطوة 2: نعمل fold ونجمع، ونقسم على عدد prime (19937) عشان نمنع الـ overflow.",
       "الخطوة 3: نقسم على حجم الـ address space وناخد الباقي (remainder) كـ home address."
-     ]
+     ],
+     "figH": {
+      "fp-hash-fn": "الـ hash function خطوة بخطوة: من الـ key لحد الـ home address بتاعه"
+     }
     },
     {
-     "h": "تكاليف الـ Hashed file"
+     "h": "تكاليف الـ Hashed file",
+     "figH": {
+      "fp-hash-costs": "تكاليف الـ hashed file: الـ scan والـ buckets مليانة 80%، والـ equality search"
+     }
     }
    ],
    "cards": [

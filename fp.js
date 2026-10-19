@@ -39,7 +39,16 @@ COURSES.fp = {
       "Computer storage can be secondary storage or main memory.<br>File storage is slow because it has <b>many moving parts</b>.",
       "Figure (slide 9, Computer Storage):<br>• <b>Main memory (RAM)</b>: data is manipulated here; fast, small, expensive, volatile.<br>• <b>Secondary storage</b> (disk holding files such as A.mp3, first.java, mo.flv): data is stored here; slow, large, cheap, stable. Examples: disk, tape, CD-ROM.<br>• Data is transferred between the two. Callouts: \"Files will store here\" (secondary storage); \"Why is file storage so slow?\"; \"File storage systems have many moving parts\".",
       "Why files?<br>• They are the only suitable way to store large amounts of information (pictures, music, video).<br>• Operating systems are too large to fit fully in memory.<br>• Databases are everywhere.<br>• Backup and archiving."
-     ]
+     ],
+     "fig": [
+      "fp-storage"
+     ],
+     "figAt": {
+      "fp-storage": 2
+     },
+     "figH": {
+      "fp-storage": "Computer storage: main memory vs secondary storage"
+     }
     },
     {
      "h": "(3) File structures",
@@ -53,7 +62,13 @@ COURSES.fp = {
       "Figure (slide 12, File Organization): a messy pile of books labelled <b>Unorganized</b> next to books neatly arranged on shelves labelled <b>Organized</b>.",
       "• <b>Logical organization methods</b>: heap, indexing, hashing.<br>• <b>Physical organization methods</b>: organizing tracks by <b>sectors</b> or by <b>blocks</b>.",
       "File organization methods must provide <b>fast access time</b> and <b>good space utilization</b>."
-     ]
+     ],
+     "fig": [
+      "fp-file-org"
+     ],
+     "figH": {
+      "fp-file-org": "File organization: from an unorganized pile to organized shelves"
+     }
     },
     {
      "h": "(5) File management and (6) file managers",
@@ -86,7 +101,16 @@ COURSES.fp = {
      "pts": [
       "Figure (slide 20, Physical File vs. Logical File): a hard disk with 6 physical files (A.txt, b.txt, aa.txt, aa.mp3, a.doc, z.mp3). One C/C++ program deals with the physical file b.txt through the logical name <b>infile</b>; another program deals with aa.txt through its own logical name <b>infile</b>.",
       "Declaring the logical name (slide 22):<br>• In C: <code>FILE * outfile;</code><br>• In C++ the logical name is an object of the class <code>fstream</code>: <code>fstream outfile;</code><br>In both languages the logical name outfile is associated with the physical file myfile.txt at the time of <b>opening</b> the file."
-     ]
+     ],
+     "fig": [
+      "fp-log-phys"
+     ],
+     "figAt": {
+      "fp-log-phys": 1
+     },
+     "figH": {
+      "fp-log-phys": "Physical files on the disk and the logical names programs use"
+     }
     },
     {
      "h": "Opening files",
@@ -96,7 +120,16 @@ COURSES.fp = {
       "C++: <code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code><br>The second argument is an <b>integer</b> indicating the mode; its value is set as a bitwise OR (operator <code>|</code>) of constants defined in the class <code>ios</code>.",
       "C modes:<br>• <b>\"r\"</b>: open existing for reading.<br>• <b>\"w\"</b>: create new or truncate existing for output.<br>• <b>\"a\"</b>: create new or append for output.<br>• <b>\"r+\"</b>: existing for input and output.<br>• <b>\"w+\"</b>: create/truncate for input and output.<br>• <b>\"a+\"</b>: create/append for input and output.<br>• Adding <b>b</b> (rb, wb, ab, r+b…) means <b>binary mode</b>.",
       "C++ flags:<br>• <code>ios::in</code> input<br>• <code>ios::out</code> output<br>• <code>ios::app</code> seek to end before each write<br>• <code>ios::ate</code> start positioned at end<br>• <code>ios::trunc</code> always create new (truncate)<br>• <code>ios::binary</code> binary mode."
-     ]
+     ],
+     "fig": [
+      "fp-fopen-parts"
+     ],
+     "figAt": {
+      "fp-fopen-parts": 1
+     },
+     "figH": {
+      "fp-fopen-parts": "The parts of an fopen call"
+     }
     },
     {
      "h": "C mode ↔ C++ flags",
@@ -133,7 +166,13 @@ COURSES.fp = {
        "…b",
        "… | binary"
       ]
-     ]
+     ],
+     "fig": [
+      "fp-modes"
+     ],
+     "figH": {
+      "fp-modes": "Try each opening mode on a file, with its C++ flags"
+     }
     },
     {
      "h": "Closing files",
@@ -142,7 +181,13 @@ COURSES.fp = {
       "Bytes are not sent one by one. They are collected in a <b>buffer</b> and sent as a <b>block</b>.",
       "If you do not close, the OS closes the file at the end of the program. If the program <b>terminates abnormally, data may be lost</b>.",
       "Closing in code (slide 28):<br>• In C: <code>fclose(outfile);</code><br>• In C++: <code>outfile.close();</code>"
-     ]
+     ],
+     "fig": [
+      "fp-buffer"
+     ],
+     "figH": {
+      "fp-buffer": "The buffer: what closing a file does, and what a crash loses"
+     }
     },
     {
      "h": "Reading and writing",
@@ -155,7 +200,18 @@ COURSES.fp = {
       "Reading in C++ (slide 32): <code>char c; char a[100]; fstream infile; infile.open(\"myfile.txt\",ios::in); infile &gt;&gt; c;</code> (reads one character), <code>infile.read(&amp;c,1);</code> (alternative way of reading one character), <code>infile.read(a,10);</code> (reads 10 bytes).<br>Writing in C++ (slide 35): <code>char c; char a[100]; fstream outfile; outfile.open(\"mynew.txt\",ios::out); /* omitted initialization of c and a */ outfile &lt;&lt; c; outfile.write(&amp;c,1); outfile.write(a,10);</code>.",
       "In C++ (slides 32, 35) the operator <code>&gt;&gt;</code> communicates the same information at a higher level: since c is a char variable, it is implicit that only 1 byte is transferred. C++ fstream also provides the <b>read</b> method, corresponding to fread in C (and <b>write</b>, corresponding to fwrite). Opening for writing: <code>outfile.open(\"mynew.txt\",ios::out);</code>.",
       "Detecting end of file (slide 36):<br>• In C, check whether <code>fread</code> returned <b>0</b>: <code>int i; i = fread(&amp;c,1,1,infile);</code> (attempted to read), then <code>if (i==0)</code> (true if file has ended) …<br>• In C++, check whether <code>infile.fail()</code> returns true: <code>infile &gt;&gt; c;</code> (attempted to read), then <code>if (infile.fail())</code> (true if file has ended) …<br>• Alternatively, check whether <code>infile.eof()</code> returns true."
-     ]
+     ],
+     "fig": [
+      "fp-rw-args",
+      "fp-read-sim"
+     ],
+     "figAt": {
+      "fp-rw-args": 2
+     },
+     "figH": {
+      "fp-rw-args": "Generic Read and Write, and the arguments of fread and fwrite",
+      "fp-read-sim": "Reading a file in C and C++, until the end of the file"
+     }
     },
     {
      "h": "Methods used to read from files (C)",
@@ -198,7 +254,13 @@ COURSES.fp = {
        "<code>fread(&amp;block_var, block_size, No_of_block, file_pointer);</code>",
        "<code>fread(&amp;emp, sizeof(emp), 1, my_file);</code>"
       ]
-     ]
+     ],
+     "fig": [
+      "fp-read-methods"
+     ],
+     "figH": {
+      "fp-read-methods": "The four ways to read from a file in C"
+     }
     },
     {
      "h": "Standard I/O logical names",
@@ -239,7 +301,13 @@ COURSES.fp = {
       "Task (slide 38): write a C program that displays the contents of a file on the screen. Algorithm: open the file for input → while there are characters/records, read one and write it to the screen → close the file.",
       "Slide callouts (slides 39-40):<br>• <code>struct employee</code>: create employee struct.<br>• <code>fopen(...)</code>: open the emp.txt file.<br>• <code>if(my_file == NULL)</code>: test if the file opened or not.<br>• <code>while(!feof(my_file))</code>: use a while loop to read from the file until the end of file.<br>• Loop body: read from the file using fread, print the output to the screen using printf, end the while loop with }.<br>• <code>fclose(my_file);</code>: close the logical file.",
       "‡ Tip: <code>while(!feof())</code> only becomes true <i>after</i> a read fails, so the last record may print twice. Checking <code>fread(...) == 1</code> is safer.<br>The slide's code (slides 39-40) also:<br>• prints <code>%f</code> for the int salary (use <code>%d</code>, as in the code above)<br>• has a stray <code>\"</code> after emp.sal<br>• writes <code>==</code> as <code>= =</code><br>• uses <code>void main()</code> and ends with <code>getch();</code>."
-     ]
+     ],
+     "fig": [
+      "fp-sample-run"
+     ],
+     "figH": {
+      "fp-sample-run": "Running the sample program: why while(!feof) prints the last record twice"
+     }
     },
     {
      "h": "Full methods (slides 41-54)",
@@ -251,7 +319,16 @@ COURSES.fp = {
       "<b>Method (5) writeASCII()</b> (slides 49-50): write part of the ASCII table (characters 32 to 127) to ascii.txt using <code>fprintf</code>: a header line \"Letter Decimal Hexadecimal\", then each character as %c, %d and %x.",
       "<b>Method (6) readASCII()</b> (slides 51-53, named <code>read()</code> on the slide): read ascii.txt back: the header with <code>fgets</code> and <code>puts</code>, then each line with <code>fscanf(my_file,\"%c %d %x\",...)</code> until it returns <code>EOF</code>, printing each with printf.",
       "<b>Activity (1) / Quiz (1)</b> (slide 54): re-implement all the previous C program samples, from slide 38 to slide 53, as C++ programs."
-     ]
+     ],
+     "fig": [
+      "fp-ascii"
+     ],
+     "figAt": {
+      "fp-ascii": 5
+     },
+     "figH": {
+      "fp-ascii": "The ASCII table written by writeASCII and read by readASCII"
+     }
     }
    ],
    "cards": [
@@ -640,7 +717,13 @@ COURSES.fp = {
       "Secondary storage is different from main memory, so we have to understand <b>how it works in order to do good file design</b>. Two major types of secondary storage:<br>(1) Direct Access Storage Devices (<b>DASD</b>)<br>(2) Serial Access Storage Devices (<b>SASD</b>)",
       "<b>DASD</b> (Direct Access Storage Devices):<br>• <b>Magnetic disks</b>: hard disk, floppy disk.<br>• <b>Optical disks</b>: CD-ROM (Compact Disk – Read Only Memory), CD-R (Compact Disk – Recordable), CD-RW (Compact Disk – ReWritable), DVD (Digital Video Disk).",
       "<b>SASD</b> (Serial Access Storage Devices): <b>magnetic tape</b>."
-     ]
+     ],
+     "fig": [
+      "fp-storage-types"
+     ],
+     "figH": {
+      "fp-storage-types": "DASD or SASD? Sort the secondary storage devices"
+     }
     },
     {
      "h": "Disk components",
@@ -664,7 +747,13 @@ COURSES.fp = {
       "A <b>cylinder</b> is the set of tracks directly above/below each other. All data on one cylinder can be read <b>without moving the arm</b>. Number of cylinders = number of tracks per surface.",
       "Figure (slide 13, cylinder): a stack of 4 platters with the same yellow ring highlighted on every platter, labelled <b>Cylinder</b>.",
       "So a platter has four components: <b>sector</b>, <b>cluster</b>, <b>track</b>, <b>cylinder</b> (figure, slide 14: four stacks of platters, each highlighting one of them)."
-     ]
+     ],
+     "fig": [
+      "fp-platter-parts"
+     ],
+     "figH": {
+      "fp-platter-parts": "Track, geometrical sector, track sector, cluster and cylinder on a platter"
+     }
     },
     {
      "h": "Read/write heads, arm assembly, spindle and arms",
@@ -674,7 +763,13 @@ COURSES.fp = {
       "<b>4. Spindle</b> holds the platters in a <b>fixed position</b>, with <b>enough space for the read/write arms</b> to get the data on the disks, and <b>rotates</b> them, bringing the sector under the head.",
       "<b>5. Arms</b> carry, guide and move the heads. Moving the arm is called <b>seeking</b>, and it is usually the <b>slowest</b> part.",
       "Figure (slide 20): three <b>platters</b> on one <b>spindle</b>, with a <b>rotation</b> arrow. Each platter has a ring of small segments: the ring on the top platter is labelled <b>track t</b> and one segment of the ring (middle platter) is labelled <b>sector s</b>; the same track on all platters, joined by dashed lines, is <b>cylinder c</b>. Each platter has a <b>read-write head</b> (a dark square) at the end of an <b>arm</b>, and all arms are fixed to the <b>arm assembly</b>."
-     ]
+     ],
+     "fig": [
+      "fp-disk-parts"
+     ],
+     "figH": {
+      "fp-disk-parts": "The hard disk's components, one by one (slide 20)"
+     }
     },
     {
      "h": "Capacity formulas",
@@ -686,7 +781,13 @@ COURSES.fp = {
       "Drive capacity = number of cylinders × cylinder capacity",
       "Platters = cylinder height / 2   (surfaces = cylinder height)",
       "Number of cylinders = tracks per surface"
-     ]
+     ],
+     "fig": [
+      "fp-capacity"
+     ],
+     "figH": {
+      "fp-capacity": "Capacity calculator: sector, cluster, track, cylinder and drive"
+     }
     },
     {
      "h": "Worked problem (slides 22–26)",
@@ -697,7 +798,16 @@ COURSES.fp = {
       "• File size = 90,000 × 256 = <b>23,040,000 B</b><br>• Records/sector = 512/256 = <b>2</b><br>• Records/track = 30,720/256 = <b>120</b><br>• Records/cylinder = 430,080/256 = <b>1680</b>",
       "• Sectors for file = 23,040,000/512 = <b>45,000</b><br>• Tracks = 23,040,000/30,720 = <b>750</b><br>• Cylinders = 23,040,000/430,080 = <b>53.57</b> (‡ 54 whole cylinders)",
       "Drive capacity = 5000 × 430,080 = <b>2,150,400,000 B</b>."
-     ]
+     ],
+     "fig": [
+      "fp-worked-problem"
+     ],
+     "figAt": {
+      "fp-worked-problem": 0
+     },
+     "figH": {
+      "fp-worked-problem": "The worked problem, step by step: how much disk a file needs"
+     }
     },
     {
      "h": "Organizing tracks by sectors vs by blocks",
@@ -708,7 +818,13 @@ COURSES.fp = {
       "In the block-addressing scheme each block of data is accompanied by one or more <b>sub-blocks</b> containing extra information about the block. A block typically contains:<br>• <b>Count sub-block</b>: the number of bytes in the block.<br>• <b>Key sub-block</b> (optional): the key of the last record in the data sub-block, so the disk controller can search for a key without loading the block into main memory.<br>• <b>Data sub-block</b>: the data records.",
       "Figure (slide 29, sub-blocks): one block drawn as an arc of a track, made of a <b>key sub-block</b>, a <b>count sub-block</b> and the <b>data sub-block</b>, followed by a <b>gap</b> before the next block.",
       "Figure (slide 30, pages and blocks): a disk surface whose concentric tracks are cut into sectors, with gaps between them. Below it, one track is drawn as a row: sector 1, gap, sector 2, gap, sector 3, gap, sector 4, gap, …, and a brace shows <b>1 page/block = 4 sectors</b>."
-     ]
+     ],
+     "fig": [
+      "fp-sectors-blocks"
+     ],
+     "figH": {
+      "fp-sectors-blocks": "Sectors, blocks and sub-blocks: how a track is organized"
+     }
     },
     {
      "h": "Non-data overhead",
@@ -717,7 +833,13 @@ COURSES.fp = {
       "Sector-organized: sector address, track address, condition (defective?) at the start of each sector, plus gaps between sectors.",
       "Block-organized: sub-blocks and inter-block gaps, so there is <b>more</b> non-data overhead than with sector addressing.",
       "<b>Exercise</b> (slides 32–34): a <b>block-addressable</b> disk with track size = 20,000 B, non-data overhead per block = 300 B, record size = 100 B. How many records can be stored per track if the blocking factor is (a) 10, (b) 60?<br>BF = 10: data sub-block = 1000; block = 1000+300 = 1300; ⌊20,000/1300⌋ = ⌊15.38⌋ = 15 blocks, so <b>150 records/track</b>.<br>BF = 60: data sub-block = 6000; block = 6000+300 = 6300; ⌊20,000/6300⌋ = ⌊3.17⌋ = 3 blocks, so <b>180 records/track</b>."
-     ]
+     ],
+     "fig": [
+      "fp-records-track"
+     ],
+     "figH": {
+      "fp-records-track": "Records per track with a blocking factor and non-data overhead"
+     }
     },
     {
      "h": "The cost of a disk access",
@@ -752,14 +874,29 @@ COURSES.fp = {
        "Transfer time",
        "Once the read/write head is positioned over the data, this is the time it takes for transferring data"
       ]
-     ]
+     ],
+     "fig": [
+      "fp-access-steps"
+     ],
+     "figAt": {
+      "fp-access-steps": 1
+     },
+     "figH": {
+      "fp-access-steps": "A disk access in three steps: seek, rotational latency, transfer (slide 35)"
+     }
     },
     {
      "h": "Examples 1 and 2",
      "pts": [
       "<b>Ex 1</b>: average seek 8 ms, average rotational delay 3 ms, maximum rotational delay 6 ms, spindle speed 10,000 rpm, 170 sectors/track, sector size 512 B. Average time to read one sector?<br>Transfer = revolution time / sectors per track = (1/10,000 min)/170 = (60/10,000 s)/170 = 6/170,000 s = 6/170 ms ≈ <b>0.035 ms</b>.<br>Total = 8 + 3 + 0.035 = <b>11.035 ms</b>.",
       "<b>Ex 2</b> (a current disk, Seagate ST3200822A): capacity 200 GB; transfer rate: maximum internal 683 Mbits/sec, maximum external 100 Mbytes/sec; discs/heads 2/4; 512 bytes per sector; spindle speed 7200 rpm; average seek 8.5 ms; average latency 4.16 ms; 170 sectors per track. Average time to read one sector?<br>Transfer = (1/7200 min)/170 = (60/7200 s)/170 = 6/(720 × 170) = 6/122,400 ≈ <b>0.05 ms</b>.<br>Total = 8.5 + 4.16 + 0.05 = <b>12.71 ms</b>."
-     ]
+     ],
+     "fig": [
+      "fp-access-time"
+     ],
+     "figH": {
+      "fp-access-time": "Average time to read one sector: Examples 1 and 2, editable"
+     }
     },
     {
      "h": "Disk as a bottleneck",
@@ -1173,7 +1310,13 @@ COURSES.fp = {
       "<b>Record</b>: a group of fields forming a logical unit.",
       "<b>Field</b>: a data value, the smallest unit of data with logical meaning. Fields have names, types, lengths and values.",
       "Three file structures: <b>stream</b>, <b>field</b> and <b>record</b> structures."
-     ]
+     ],
+     "fig": [
+      "fp-file-records"
+     ],
+     "figH": {
+      "fp-file-records": "The logical view: a file is records, a record is fields"
+     }
     },
     {
      "h": "1. Stream files",
@@ -1181,7 +1324,13 @@ COURSES.fp = {
       "Information is written as a stream of bytes containing <b>no added information</b>.",
       "Example: <code>AmesMary123 MapleStillwaterOK74075MasonAlan90 EastgateAdaOK74820</code>.",
       "Problem: there is <b>no way to get the information back</b> in the organized record format."
-     ]
+     ],
+     "fig": [
+      "fp-stream-file"
+     ],
+     "figH": {
+      "fp-stream-file": "A stream file: bytes with no added information"
+     }
     },
     {
      "h": "2. Field structures (4 ways)",
@@ -1190,7 +1339,13 @@ COURSES.fp = {
       "<b>Length indicator</b> at the start of each field → <code>058735907CARROLL19ALICE IN WONDERLAND</code>.",
       "<b>keyword = value</b> → <code>ISBN=87359 AU=CARROLL TI=ALICE IN WONDERLAND</code>.",
       "<b>Delimiter</b> at the end of each field → <code>87359|CARROLL|ALICE IN WONDERLAND|</code>."
-     ]
+     ],
+     "fig": [
+      "fp-field-structs"
+     ],
+     "figH": {
+      "fp-field-structs": "The four field structures, byte by byte: edit the fields and read them back"
+     }
     },
     {
      "h": "Field structures: advantages and disadvantages",
@@ -1227,7 +1382,13 @@ COURSES.fp = {
      "pts": [
       "A record is a set of fields that belong together at a higher level of organization. It is a conceptual tool and an important logical notion in the file's structure.",
       "Methods:<br>(1) <b>fixed-length records with fixed-length fields</b><br>(2) <b>fixed-length records with variable-length fields</b> (delimited fields or fields with length indicators, padded to a fixed record size)<br>(3) <b>each record begins with a length indicator</b> (byte count), e.g. <code>3387359|CARROLL|ALICE IN WONDERLAND</code>."
-     ]
+     ],
+     "fig": [
+      "fp-record-structs"
+     ],
+     "figH": {
+      "fp-record-structs": "The three record structures, and jumping to the i-th record"
+     }
     },
     {
      "h": "Record structures: advantages and disadvantages",
@@ -1255,7 +1416,16 @@ COURSES.fp = {
       "<b>Primary key</b>: uniquely identifies a record and does not change.<br><b>Secondary key</b>: used for searching but does not typically identify a record uniquely.",
       "<b>Sequential search</b>: read records in order until a match. <b>O(n)</b>. Appropriate for pattern matching or files with few records.",
       "<b>Direct access</b>: seek directly to the start of the record. <b>O(1)</b>. Possible when we know the <b>RRN</b> (Relative Record Number: the first record has RRN 0, the next RRN 1…)."
-     ]
+     ],
+     "fig": [
+      "fp-access"
+     ],
+     "figAt": {
+      "fp-access": 2
+     },
+     "figH": {
+      "fp-access": "Sequential search O(n) vs direct access O(1) with the RRN"
+     }
     },
     {
      "h": "Seeking",
@@ -1263,21 +1433,39 @@ COURSES.fp = {
       "Generic: <code>Seek(Source_File, Offset)</code>; e.g. <code>Seek(infile, 3030)</code> moves to byte 3030.",
       "C: <code>int fseek(FILE *stream, long offset, int origin)</code>, where origin:<br>• <b>0</b> = beginning<br>• <b>1</b> = current<br>• <b>2</b> = end<br>• <code>fseek(infile,0L,0)</code> → start<br>• <code>fseek(infile,0L,2)</code> → end<br>• <code>fseek(infile,-10L,1)</code> → back 10 bytes.",
       "C++: an fstream has two pointers. <code>seekg</code> moves the <b>get</b> (read) pointer and <code>seekp</code> moves the <b>put</b> (write) pointer. Origins: <code>ios::beg</code>, <code>ios::cur</code>, <code>ios::end</code>.<br><code>infile.seekg(0, ios::beg); infile.seekg(0, ios::end); infile.seekg(-10, ios::cur);</code>"
-     ]
+     ],
+     "fig": [
+      "fp-seek"
+     ],
+     "figH": {
+      "fp-seek": "Seeking: fseek in C, seekg and seekp in C++"
+     }
     },
     {
      "h": "Quiz (3) Q1: copy a file with no loops",
      "code": "#include <fstream>\nusing namespace std;\nint main() {\n    ifstream infile(\"d:\\\\IFile.txt\", ios::binary);\n    ofstream outfile(\"d:\\\\OFile.txt\", ios::binary);\n    infile.seekg(0, infile.end);      // jump to end\n    long size = infile.tellg();       // position = file size\n    infile.seekg(0);                  // back to start\n    char* buffer = new char[size];\n    infile.read(buffer, size);        // read everything at once\n    outfile.write(buffer, size);      // write everything at once\n    delete[] buffer;\n    outfile.close(); infile.close();\n    return 0;\n}",
      "pts": [
       "The trick: <code>seekg</code> to the end and <code>tellg</code> gives the size, then one <code>read</code> and one <code>write</code> of that size."
-     ]
+     ],
+     "fig": [
+      "fp-copy-file"
+     ],
+     "figH": {
+      "fp-copy-file": "Copying a whole file with one read and one write"
+     }
     },
     {
      "h": "Quiz (3) Q2: update a record by RRN",
      "code": "struct Item { char desc[31]; int qty; float price; };\n\nvoid UpdateRecord(fstream &file, Item &newItem, int RRN) {\n    file.seekp(RRN * sizeof(newItem), ios::beg); // byte offset = RRN × record size\n    file.write((char*)&newItem, sizeof(newItem)); // overwrite the old record\n}",
      "pts": [
       "Fixed-length fields and records mean every record has the same size, so the byte offset is exactly <b>RRN × record size</b>."
-     ]
+     ],
+     "fig": [
+      "fp-update-rrn"
+     ],
+     "figH": {
+      "fp-update-rrn": "Updating a record in place: seekp to RRN × record size, then write"
+     }
     }
    ],
    "cards": [
@@ -1595,7 +1783,16 @@ COURSES.fp = {
       "Efficiency is measured by the <b>number of disk accesses</b>: fewer is better.",
       "Access strategies:<br>• <b>sequential search</b> is slow and O(n)<br>• <b>direct access</b> gets the record in one read, O(1).",
       "Methods: <b>unordered (heap) file</b>, <b>ordered (sequential) file</b>, <b>indexing</b>, <b>hashing</b>."
-     ]
+     ],
+     "fig": [
+      "fp-access-strat"
+     ],
+     "figAt": {
+      "fp-access-strat": 3
+     },
+     "figH": {
+      "fp-access-strat": "Sequential search vs direct access: counting disk accesses"
+     }
     },
     {
      "h": "Unordered file / heap file",
@@ -1646,7 +1843,13 @@ COURSES.fp = {
        "Ali",
        "CS  ← appended"
       ]
-     ]
+     ],
+     "fig": [
+      "fp-heap-file"
+     ],
+     "figH": {
+      "fp-heap-file": "The heap file: insert at the end, duplicates, and delete"
+     }
     },
     {
      "h": "The cost model",
@@ -1671,7 +1874,16 @@ COURSES.fp = {
       "An <b>ordered</b> set of records stored in order of the <b>key value</b>. Records are accessed sequentially from beginning to end.",
       "Insert: the new record goes into an exactly determined position, so <b>all records with a greater key move one location towards the end</b>. Delete and update need the opposite procedure.",
       "Example: inserting (4, Ali, CS) into 1, 2, 3, 5 places it at offset 60 and shifts Ahmed (5) to 80."
-     ]
+     ],
+     "fig": [
+      "fp-sorted-insert"
+     ],
+     "figAt": {
+      "fp-sorted-insert": 2
+     },
+     "figH": {
+      "fp-sorted-insert": "Inserting into an ordered file: every greater key shifts"
+     }
     },
     {
      "h": "Sorted file costs",
@@ -1681,7 +1893,16 @@ COURSES.fp = {
       "<b>Range search</b>: search cost + cost of retrieving the matching records.",
       "<b>Insert</b>: search cost + 2 × (0.5B(D + RC)) = search + B(D + RC). Read and rewrite half the file on average.",
       "<b>Delete</b>: same as insert: search + B(D + RC)."
-     ]
+     ],
+     "fig": [
+      "fp-search-compare"
+     ],
+     "figAt": {
+      "fp-search-compare": 1
+     },
+     "figH": {
+      "fp-search-compare": "Equality search: linear in the heap file vs binary in the sorted file"
+     }
     },
     {
      "h": "Cost comparison table",
@@ -1722,7 +1943,13 @@ COURSES.fp = {
        "search + 2·(0.5B(D+RC))",
        "search + C + D"
       ]
-     ]
+     ],
+     "fig": [
+      "fp-cost-calc"
+     ],
+     "figH": {
+      "fp-cost-calc": "Cost calculator for heap, sorted and hashed files"
+     }
     },
     {
      "h": "Reading the exam choices",
@@ -2046,7 +2273,16 @@ COURSES.fp = {
      "pts": [
       "Hashing is a useful searching technique for implementing indexes. Its main motivation is to <b>improve search time</b>.",
       "Search time:<br>• simple indexes with binary search <b>O(log N)</b><br>• B-trees <b>O(log<sub>k</sub> N)</b><br>• hashing <b>O(1)</b>."
-     ]
+     ],
+     "fig": [
+      "fp-search-time"
+     ],
+     "figAt": {
+      "fp-search-time": 1
+     },
+     "figH": {
+      "fp-search-time": "Search time: binary search vs B-tree vs hashing"
+     }
     },
     {
      "h": "What is hashing?",
@@ -2063,7 +2299,13 @@ COURSES.fp = {
      "pts": [
       "Two different keys may be transformed into the <b>same address</b>. That is a <b>collision</b>.",
       "Keys that collide are called <b>synonyms</b>."
-     ]
+     ],
+     "fig": [
+      "fp-collisions"
+     ],
+     "figH": {
+      "fp-collisions": "Collisions and synonyms: hashing keys into 10 addresses"
+     }
     },
     {
      "h": "A simple hash function (Midterm Model A)",
@@ -2072,7 +2314,13 @@ COURSES.fp = {
       "Step 1: represent the key numerically, combining pairs of characters (ASCII codes).",
       "Step 2: fold and add, dividing by a prime (19937) to prevent overflow.",
       "Step 3: divide by the address-space size and use the remainder as the home address."
-     ]
+     ],
+     "fig": [
+      "fp-hash-fn"
+     ],
+     "figH": {
+      "fp-hash-fn": "The hash function step by step: from a key to its home address"
+     }
     },
     {
      "h": "Hashed file costs",
@@ -2101,7 +2349,13 @@ COURSES.fp = {
        "Delete",
        "search + C + D"
       ]
-     ]
+     ],
+     "fig": [
+      "fp-hash-costs"
+     ],
+     "figH": {
+      "fp-hash-costs": "Hashed-file costs: scan at 80% full buckets and equality search"
+     }
     }
    ],
    "cards": [
