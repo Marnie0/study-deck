@@ -74,7 +74,7 @@ COURSES.fp = {
      "h": "Opening files",
      "pts": [
       "Opening makes a file ready for use: either open an existing file or create a new one. After opening you are positioned at the <b>beginning</b> of the file.",
-      "C: <code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code> (logical name = outFile, physical file = \"A.txt\", mode = \"w\").",
+      "Figure (slide 23, Opening Files in C): <code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code> with labels: <b>outFile</b> = logical name, <b>fopen</b> = method to open file, \"A.txt\" = physical file, \"w\" = the mode. A bubble lists the modes: r (reading), w (writing), a (append), r+ w+ a+, rb wb ab, rb+ wb+ ab+.",
       "C++: <code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code>. The second argument is an <b>integer</b> indicating the mode; its value is set as a bitwise OR (operator <code>|</code>) of constants defined in the class <code>ios</code>.",
       "C modes: <b>\"r\"</b> open existing for reading; <b>\"w\"</b> create new or truncate existing for output; <b>\"a\"</b> create new or append for output; <b>\"r+\"</b> existing for input and output; <b>\"w+\"</b> create/truncate for input and output; <b>\"a+\"</b> create/append for input and output; adding <b>b</b> (rb, wb, ab, r+b…) means <b>binary mode</b>.",
       "C++ flags: <code>ios::in</code> input, <code>ios::out</code> output, <code>ios::app</code> seek to end before each write, <code>ios::ate</code> start positioned at end, <code>ios::trunc</code> always create new (truncate), <code>ios::binary</code> binary mode."
@@ -122,7 +122,8 @@ COURSES.fp = {
      "pts": [
       "Closing frees the logical name for another physical file, \"like hanging up the telephone after a call\".",
       "Bytes are not sent one by one. They are collected in a <b>buffer</b> and sent as a <b>block</b>.",
-      "If you do not close, the OS closes the file at the end of the program. If the program <b>terminates abnormally, data may be lost</b>."
+      "If you do not close, the OS closes the file at the end of the program. If the program <b>terminates abnormally, data may be lost</b>.",
+      "Closing in code (slide 28): in C, <code>fclose(outfile);</code>; in C++, <code>outfile.close();</code>."
      ]
     },
     {
@@ -131,11 +132,11 @@ COURSES.fp = {
       "Generic operations (slides 29, 33):<br>• <code>Read(Source_file, Destination_addr, Size)</code>: Source_file = the logical file name the program reads from; Destination_addr = the first address of the memory block where we want to read the data; Size = how much information is brought in from the file (byte count).<br>• <code>Write(Destination_file, Source_addr, Size)</code>: Destination_file = the logical file name where the data will be written; Source_addr = the first address of the memory block where the data to be written is stored; Size = the number of bytes to be written.",
       "<code>fgetc(fp)</code> reads one character. <code>fgets(str, n, fp)</code> reads a string (‡ at most n-1 characters). <code>fscanf(fp, \"fmt\", vars)</code> reads formatted text. <code>fread(&amp;blk, size, count, fp)</code> reads a record/block.",
       "fread/fwrite arguments: 1) address of the variable, 2) element size in bytes, 3) number of elements, 4) logical file name.",
-      "Reading in C (slide 31, \"or in C++ using C streams\"): <code>char c; char a[100]; FILE * infile; infile = fopen(\"myfile.txt\",\"r\"); fread(&amp;c,1,1,infile); /* reads one character */ fread(a,1,10,infile); /* reads 10 characters */</code>. A <b>char</b> occupies 1 byte, so the element size is 1.",
+      "Reading in C (slide 31, \"or in C++ using C streams\"): <code>char c; char a[100]; FILE * infile; infile = fopen(\"myfile.txt\",\"r\"); fread(&amp;c,1,1,infile); /* reads one character */ fread(a,1,10,infile); /* reads 10 characters */</code>. The slide comments c as \"a character\" and a as \"an array with 100 characters\". A <b>char</b> occupies 1 byte, so the element size is 1.",
       "Writing in C (slide 34): <code>char c; char a[100]; FILE * outfile; outfile = fopen(\"mynew.txt\",\"w\"); /* omitted initialization of c and a */ fwrite(&amp;c,1,1,outfile); fwrite(a,1,10,outfile);</code>. The slide lists the same four arguments as fread, calling the 1st one \"destination address (address of variable c)\". ‡ For fwrite the 1st argument is really the <b>source</b> address: the memory the data is written from.",
-      "C++: <code>infile &gt;&gt; c;</code> or <code>infile.read(&amp;c,1);</code> / <code>infile.read(a,10);</code>. Writing: <code>outfile &lt;&lt; c;</code>, <code>outfile.write(&amp;c,1);</code>, <code>outfile.write(a,10);</code>.",
+      "Reading in C++ (slide 32): <code>char c; char a[100]; fstream infile; infile.open(\"myfile.txt\",ios::in); infile &gt;&gt; c;</code> (reads one character), <code>infile.read(&amp;c,1);</code> (alternative way of reading one character), <code>infile.read(a,10);</code> (reads 10 bytes).<br>Writing in C++ (slide 35): <code>char c; char a[100]; fstream outfile; outfile.open(\"mynew.txt\",ios::out); /* omitted initialization of c and a */ outfile &lt;&lt; c; outfile.write(&amp;c,1); outfile.write(a,10);</code>.",
       "In C++ (slides 32, 35) the operator <code>&gt;&gt;</code> communicates the same information at a higher level: since c is a char variable, it is implicit that only 1 byte is transferred. C++ fstream also provides the <b>read</b> method, corresponding to fread in C (and <b>write</b>, corresponding to fwrite). Opening for writing: <code>outfile.open(\"mynew.txt\",ios::out);</code>.",
-      "End of file: in C, <code>fread</code> returns <b>0</b>; in C++, <code>infile.fail()</code> returns true, or <code>infile.eof()</code> returns true."
+      "Detecting end of file (slide 36):<br>• In C, check whether <code>fread</code> returned <b>0</b>: <code>int i; i = fread(&amp;c,1,1,infile);</code> (attempted to read), then <code>if (i==0)</code> (true if file has ended) …<br>• In C++, check whether <code>infile.fail()</code> returns true: <code>infile &gt;&gt; c;</code> (attempted to read), then <code>if (infile.fail())</code> (true if file has ended) …<br>• Alternatively, check whether <code>infile.eof()</code> returns true."
      ]
     },
     {
@@ -218,6 +219,7 @@ COURSES.fp = {
      "code": "struct employee { char name[20]; int sal; };\nFILE *my_file; struct employee emp;\nmy_file = fopen(\"c:\\\\emp.txt\", \"rb+\");\nif (my_file == NULL) { printf(\"Error in opening file\"); exit(1); }\nwhile (!feof(my_file)) {\n    fread(&emp, sizeof(emp), 1, my_file);\n    printf(\"The Emp Name: %s \\t\", emp.name);\n    printf(\"The Emp Sal : %d\\n\", emp.sal);\n}\nfclose(my_file);",
      "pts": [
       "Task (slide 38): write a C program that displays the contents of a file on the screen. Algorithm: open the file for input → while there are characters/records, read one and write it to the screen → close the file.",
+      "Slide callouts (slides 39-40):<br>• <code>struct employee</code>: create employee struct.<br>• <code>fopen(...)</code>: open the emp.txt file.<br>• <code>if(my_file == NULL)</code>: test if the file opened or not.<br>• <code>while(!feof(my_file))</code>: use a while loop to read from the file until the end of file.<br>• Loop body: read from the file using fread, print the output to the screen using printf, end the while loop with }.<br>• <code>fclose(my_file);</code>: close the logical file.",
       "‡ Tip: <code>while(!feof())</code> only becomes true <i>after</i> a read fails, so the last record may print twice. Checking <code>fread(...) == 1</code> is safer. The slide's code (slides 39-40) also prints <code>%f</code> for the int salary (use <code>%d</code>, as in the code above), has a stray <code>\"</code> after emp.sal, writes <code>==</code> as <code>= =</code>, uses <code>void main()</code> and ends with <code>getch();</code>."
      ]
     },
@@ -310,12 +312,12 @@ COURSES.fp = {
      "The OS closes it at the end of execution, but if the program terminates abnormally, data in the buffer may be lost."
     ],
     [
-     "Write a method writeC() that reads one character from the keyboard and writes it to alphabet.txt.",
-     "void writeC(){ FILE *fp = fopen(\"c:\\\\alphabet.txt\",\"w\"); if(fp==NULL){ printf(\"Error in opening file\"); exit(1);} char ch = getche(); fputc(ch, fp); fclose(fp); } ‡ The slide writes Printf and Exit with capitals; C is case-sensitive, so they must be printf and exit."
+     "Write a method writeC() that asks the user to enter one character from the keyboard, then writes it to the physical file alphabet.txt. (slides 41-42)",
+     "void writeC(){ FILE *fp; fp = fopen(\"c:\\\\alphabet.txt\",\"w\"); if(fp==NULL){ printf(\"Error in opening file\"); exit(1); } char ch; ch = getche(); fputc(ch,fp); fclose(fp); } ‡ The slide writes Printf and Exit with capitals; C is case-sensitive, so they must be printf and exit."
     ],
     [
-     "Write readS() to read strings from std.txt and print them.",
-     "FILE *f = fopen(\"c:\\\\std.txt\",\"r\"); if(f==NULL){...} char s[80]; while(1){ fgets(s,80,f); if(feof(f)) break; puts(s);} fclose(f);"
+     "Write a method readS() which reads strings from the physical file std.txt and prints them to the screen. (slides 47-48)",
+     "void read(){ FILE *my_file; int result; my_file=fopen(\"c:\\\\std.txt\",\"r\"); if(my_file==NULL){ printf(\"Error in opening file\"); exit(1); } char string[80]; while(1){ fgets(string,80,my_file); result = feof(my_file); if(result !=0) break; puts(string); } fclose(my_file); } (The slide names the method read() rather than readS().)"
     ],
     [
      "Write a method readC() which reads one character from the physical file alphabet.txt and prints it to the screen. (slides 43-44)",
@@ -629,20 +631,21 @@ COURSES.fp = {
       "Figure (slide 5, inside and outside a hard disk): a drive with its cover off, with labels for the base casting, spindle, slider (and head), actuator arm, actuator axis, actuator, platters, cover mounting holes (cover not shown), case mounting holes, ribbon cable (attaches heads to logic board), SCSI interface connector, jumper pins, jumper, power connector and tape seal.",
       "Figure (slides 6, 16 and 19, an opened drive): arrows point to the <b>platters</b>, <b>spindle</b>, <b>read/write heads</b>, <b>arm</b> and <b>arm assembly</b>.",
       "<b>1. Platter</b>: the <b>circular disk</b> on which magnetic data is stored in a hard disk drive. It can store information on <b>both sides (surfaces)</b> of one or more platters; all surfaces have the <b>same components at the same position</b>, and the platters are structured to facilitate <b>storage and retrieval</b> of data.<br>• Each platter is divided into concentric rings called <b>tracks</b>: there are thousands of tracks on each platter, they look like rings, and the information is stored in successive tracks on the surface of the disk.<br>• Each track is divided into a number of <b>sectors</b>.",
-      "Figure (slides 8, 15 and 18, disk drive with 4 platters and 8 surfaces): a side view of the platters on the <b>spindle</b>; there is a <b>read/write head</b> on each of the 8 surfaces, and all heads are held by the <b>boom</b>, which moves in and out (two arrows). A top view labels <b>Track 0</b> and <b>Track 1</b>.",
+      "Figure (slides 8, 15 and 18, disk drive with 4 platters and 8 surfaces): a side view of the platters on the <b>spindle</b>; there is a <b>read/write head</b> on each of the 8 surfaces, and all heads are held by the <b>boom</b>, which moves in and out (two arrows). On slide 8 a top view is added: a ring labelled <b>Track</b>, with <b>Track 0</b> and <b>Track 1</b>.",
       "Figure (slide 9): stacked platters; one ring on the top platter is marked <b>Track</b>, and a small piece of that ring is marked <b>Sector</b>.",
       "Example (slide 10): a platter has 1000 tracks, each containing 33 sectors. Track capacity = number of sectors per track × bytes per sector = 33 × 512 = <b>16,896 bytes</b>.",
       "A <b>sector</b> is the <b>smallest addressable portion</b> of a disk, usually <b>512 bytes</b>.",
       "Another view of sector organization is the one maintained by the <b>OS file manager</b>: it views the file as a series of <b>clusters</b> of sectors. A <b>cluster</b> is a fixed number of <b>contiguous sectors</b>.",
-      "Example (slide 11): sector size = 512 bytes and cluster size = 3 sectors, so the cluster size = 3 × 512 = <b>1536 bytes</b>. The slide's figure shows one ring of a platter with a dark run labelled \"Cluster of 3 Sectors\".",
+      "Example (slide 11): sector size = 512 bytes and cluster size = 3 sectors, so the cluster size = 3 × 512 = <b>1536 bytes</b>. The slide has two figures:<br>• a disk whose top surface has one small dark piece of a ring labelled \"Sector\" and a longer dark run labelled \"Cluster of 3 Sectors\";<br>• a stack of 4 platters with a small yellow piece on the top platter labelled \"Cluster\".",
       "Figure (slide 12): a disk surface with concentric tracks. <b>A</b> = track (one ring); <b>B</b> = geometrical sector (a pie-shaped wedge across all tracks); <b>C</b> = track sector (the part of the wedge on one track); <b>D</b> = cluster (a run of neighbouring sectors along one track).",
       "A <b>cylinder</b> is the set of tracks directly above/below each other. All data on one cylinder can be read <b>without moving the arm</b>. Number of cylinders = number of tracks per surface.",
+      "Figure (slide 13, cylinder): a stack of 4 platters with the same yellow ring highlighted on every platter, labelled <b>Cylinder</b>.",
       "So a platter has four components: <b>sector</b>, <b>cluster</b>, <b>track</b>, <b>cylinder</b> (figure, slide 14: four stacks of platters, each highlighting one of them).",
       "<b>2. Read/write heads</b>: the small part of the disk that moves above the disk platter. Heads only fly above the platter surface with clearance of as little as <b>3 nanometers</b>. A read/write head <b>moves to the track that contains the data</b> to be transferred. Each surface has its own read/write head.",
       "<b>3. Arm assembly</b>: an internal set of hard disk components containing the arms, which contain the read/write heads. Its role is to <b>read and write information</b> from a set of platters coated with a thin magnetic material. When the arm assembly stops working, the drive fails. On a read of a particular byte, the OS finds the correct platter, track and sector, reads the <b>entire sector into a buffer</b> (a special area in memory), then finds the requested byte within that buffer.",
       "<b>4. Spindle</b> holds the platters in a <b>fixed position</b>, with <b>enough space for the read/write arms</b> to get the data on the disks, and <b>rotates</b> them, bringing the sector under the head.",
       "<b>5. Arms</b> carry, guide and move the heads. Moving the arm is called <b>seeking</b>, and it is usually the <b>slowest</b> part.",
-      "Figure (slide 20): three <b>platters</b> on one <b>spindle</b>, with a <b>rotation</b> arrow. On each platter one ring is <b>track t</b> and a dark spot on it is <b>sector s</b>; the same track on all platters, joined by dashed lines, is <b>cylinder c</b>. Each platter has a <b>read-write head</b> on an <b>arm</b>, and all arms are fixed to the <b>arm assembly</b>."
+      "Figure (slide 20): three <b>platters</b> on one <b>spindle</b>, with a <b>rotation</b> arrow. Each platter has a ring of small segments: the ring on the top platter is labelled <b>track t</b> and one segment of the ring (middle platter) is labelled <b>sector s</b>; the same track on all platters, joined by dashed lines, is <b>cylinder c</b>. Each platter has a <b>read-write head</b> (a dark square) at the end of an <b>arm</b>, and all arms are fixed to the <b>arm assembly</b>."
      ]
     },
     {

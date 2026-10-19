@@ -42,15 +42,15 @@ AR.fp = {
      "h": "الـ Physical file مقابل الـ logical file",
      "pts": [
       "رسمة (slide 20، اسمها Physical File vs. Logical File): فيه hard disk عليه 6 physical files هما A.txt و b.txt و aa.txt و aa.mp3 و a.doc و z.mp3. برنامج C/C++ بيتعامل مع الـ physical file اللي اسمه b.txt عن طريق الـ logical name <b>infile</b>، وبرنامج تاني بيتعامل مع aa.txt عن طريق logical name بتاعه هو كمان اسمه <b>infile</b>.",
-      "تعريف الـ logical name (slide 22): في C بنكتب <code>FILE * outfile;</code>. وفي C++ الـ logical name بيبقى object من الـ class اللي اسمها <code>fstream</code>: <code>fstream outfile;</code>. وفي اللغتين الـ logical name اللي هو outfile بيتربط بالـ physical file اللي هو myfile.txt وقت <b>فتح</b> الـ file."
+      "تعريف الـ logical name (slide 22): في C بنكتب <code>FILE * outfile;</code>. وفي C++ الـ logical name بيبقى object من الـ class اللي اسمها <code>fstream</code>، وبنكتب:<span class=\"ltr\"><code>fstream outfile;</code></span>وفي اللغتين الـ logical name اللي هو outfile بيتربط بالـ physical file اللي هو myfile.txt وقت <b>فتح</b> الـ file."
      ]
     },
     {
      "h": "فتح الـ files",
      "pts": [
       "الـ Opening بيجهز الـ file للاستخدام: يا إما تفتح file موجود يا إما تعمل file جديد. بعد ما تفتح بتكون واقف في <b>أول</b> الـ file.",
-      "في C: <code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code> (الـ logical name هو outFile، والـ physical file هو \"A.txt\"، والـ mode هو \"w\").",
-      "في C++: <code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code>. والـ argument التاني <b>integer</b> بيحدد الـ mode، وقيمته بتتعمل بـ bitwise OR (الـ operator <code>|</code>) بين constants متعرّفة في الـ class اللي اسمها <code>ios</code>.",
+      "رسمة (slide 23، اسمها Opening Files in C):<span class=\"ltr\"><code>FILE *outFile; outFile = fopen(\"A.txt\", \"w\");</code></span>وعليها labels: الـ <b>outFile</b> هو الـ logical name، والـ <b>fopen</b> هي الـ method اللي بتفتح الـ file، و\"A.txt\" هو الـ physical file، و\"w\" هو الـ mode. وجنبها فقاعة فيها الـ modes:<span class=\"ltr\">r (reading), w (writing), a (append), r+ w+ a+, rb wb ab, rb+ wb+ ab+</span>",
+      "في C++ بنكتب:<span class=\"ltr\"><code>fstream outfile; outfile.open(\"myfile.txt\", ios::out);</code></span>والـ argument التاني <b>integer</b> بيحدد الـ mode، وقيمته بتتعمل بـ bitwise OR (الـ operator <code>|</code>) بين constants متعرّفة في الـ class اللي اسمها <code>ios</code>.",
       "الـ modes في C: <b>\"r\"</b> يفتح file موجود للقراية؛ <b>\"w\"</b> يعمل file جديد أو يفضّي (truncate) الموجود للـ output؛ <b>\"a\"</b> يعمل file جديد أو يزوّد (append) على الموجود للـ output؛ <b>\"r+\"</b> file موجود للـ input والـ output؛ <b>\"w+\"</b> يعمل/يفضّي للـ input والـ output؛ <b>\"a+\"</b> يعمل/يعمل append للـ input والـ output؛ ولو زوّدت <b>b</b> (rb، wb، ab، r+b…) يبقى معناها <b>binary mode</b>.",
       "الـ flags في C++: <code>ios::in</code> للـ input، <code>ios::out</code> للـ output، <code>ios::app</code> يعمل seek للآخر قبل كل write، <code>ios::ate</code> يبدأ وهو واقف في الآخر، <code>ios::trunc</code> دايمًا يعمل file جديد (truncate)، <code>ios::binary</code> للـ binary mode."
      ]
@@ -63,7 +63,8 @@ AR.fp = {
      "pts": [
       "الـ Closing بيحرر الـ logical name عشان يتربط بـ physical file تاني، \"زي ما بتقفل السكة بعد ما تخلص المكالمة\".",
       "الـ bytes مش بتتبعت واحدة واحدة. بتتجمع في <b>buffer</b> وتتبعت مرة واحدة كـ <b>block</b>.",
-      "لو مقفلتش الـ file، الـ OS هيقفله في آخر البرنامج. بس لو البرنامج <b>وقع فجأة (terminated abnormally) ممكن الداتا تضيع</b>."
+      "لو مقفلتش الـ file، الـ OS هيقفله في آخر البرنامج. بس لو البرنامج <b>وقع فجأة (terminated abnormally) ممكن الداتا تضيع</b>.",
+      "قفل الـ file في الكود (slide 28): في C بنكتب <code>fclose(outfile);</code>، وفي C++ بنكتب <code>outfile.close();</code>."
      ]
     },
     {
@@ -72,11 +73,11 @@ AR.fp = {
       "العمليات العامة (slides 29 و 33):<br>• الـ <code>Read(Source_file, Destination_addr, Size)</code>: الـ Source_file هو الـ logical file name اللي البرنامج بيقرا منه، والـ Destination_addr هو أول عنوان في الـ memory block اللي عايزين نقرا الداتا فيه، والـ Size هو كمية المعلومات اللي جاية من الـ file (عدد الـ bytes).<br>• الـ <code>Write(Destination_file, Source_addr, Size)</code>: الـ Destination_file هو الـ logical file name اللي الداتا هتتكتب فيه، والـ Source_addr هو أول عنوان في الـ memory block اللي فيه الداتا اللي هتتكتب، والـ Size هو عدد الـ bytes اللي هتتكتب.",
       "الـ <code>fgetc(fp)</code> بتقرا character واحد. والـ <code>fgets(str, n, fp)</code> بتقرا string (‡ أقصى حاجة n-1 characters). والـ <code>fscanf(fp, \"fmt\", vars)</code> بتقرا formatted text. والـ <code>fread(&amp;blk, size, count, fp)</code> بتقرا record/block.",
       "الـ arguments بتاعة fread/fwrite: 1) عنوان الـ variable، 2) حجم العنصر بالـ bytes، 3) عدد العناصر، 4) الـ logical file name.",
-      "القراية في C (slide 31، «أو في C++ باستخدام الـ C streams»):<span class=\"ltr\"><code>char c; char a[100]; FILE * infile; infile = fopen(\"myfile.txt\",\"r\"); fread(&amp;c,1,1,infile); /* reads one character */ fread(a,1,10,infile); /* reads 10 characters */</code></span>والـ <b>char</b> بياخد 1 byte، عشان كده الـ element size بيساوي 1.",
+      "القراية في C (slide 31، «أو في C++ باستخدام الـ C streams»):<span class=\"ltr\"><code>char c; char a[100]; FILE * infile; infile = fopen(\"myfile.txt\",\"r\"); fread(&amp;c,1,1,infile); /* reads one character */ fread(a,1,10,infile); /* reads 10 characters */</code></span>والـ slide كاتبة جنب c إنه «a character» وجنب a إنها «an array with 100 characters». والـ <b>char</b> بياخد 1 byte، عشان كده الـ element size بيساوي 1.",
       "الكتابة في C (slide 34):<span class=\"ltr\"><code>char c; char a[100]; FILE * outfile; outfile = fopen(\"mynew.txt\",\"w\"); /* omitted initialization of c and a */ fwrite(&amp;c,1,1,outfile); fwrite(a,1,10,outfile);</code></span>والـ slide بتكتب نفس الـ 4 arguments بتوع fread، وبتسمي أول واحد «destination address (address of variable c)». ‡ في الحقيقة أول argument في fwrite هو الـ <b>source</b> address، يعني الـ memory اللي الداتا بتتكتب منها.",
-      "في C++: <code>infile &gt;&gt; c;</code> أو <code>infile.read(&amp;c,1);</code> / <code>infile.read(a,10);</code>. وللكتابة: <code>outfile &lt;&lt; c;</code>، <code>outfile.write(&amp;c,1);</code>، <code>outfile.write(a,10);</code>.",
+      "القراية في C++ (slide 32):<span class=\"ltr\"><code>char c; char a[100]; fstream infile; infile.open(\"myfile.txt\",ios::in); infile &gt;&gt; c; infile.read(&amp;c,1); infile.read(a,10);</code></span>الـ <code>infile &gt;&gt; c;</code> بتقرا character واحد، والـ <code>infile.read(&amp;c,1);</code> طريقة تانية لقراية character واحد، والـ <code>infile.read(a,10);</code> بتقرا 10 bytes.<br>والكتابة في C++ (slide 35):<span class=\"ltr\"><code>char c; char a[100]; fstream outfile; outfile.open(\"mynew.txt\",ios::out); /* omitted initialization of c and a */ outfile &lt;&lt; c; outfile.write(&amp;c,1); outfile.write(a,10);</code></span>",
       "في C++ (slides 32 و 35) الـ operator <code>&gt;&gt;</code> بيوصّل نفس المعلومة بس على مستوى أعلى: بما إن c متغير char، فمفهوم ضمنيًا إن 1 byte بس هيتنقل. والـ fstream في C++ فيها كمان الـ method اللي اسمها <b>read</b>، وهي المقابل لـ fread في C (والـ <b>write</b> المقابل لـ fwrite). والفتح للكتابة بيبقى <code>outfile.open(\"mynew.txt\",ios::out);</code>.",
-      "آخر الـ file (EOF): في C الـ <code>fread</code> بترجع <b>0</b>؛ في C++ الـ <code>infile.fail()</code> بترجع true، أو <code>infile.eof()</code> بترجع true."
+      "اكتشاف آخر الـ file (EOF) (slide 36):<br>• في C بنشوف الـ <code>fread</code> رجّعت <b>0</b> ولا لأ:<span class=\"ltr\"><code>int i; i = fread(&amp;c,1,1,infile);</code> (attempted to read)<br><code>if (i==0)</code> (true if file has ended) …</span>• في C++ بنشوف الـ <code>infile.fail()</code> بترجع true ولا لأ:<span class=\"ltr\"><code>infile &gt;&gt; c;</code> (attempted to read)<br><code>if (infile.fail())</code> (true if file has ended) …</span>• أو بدل كده بنشوف الـ <code>infile.eof()</code> بترجع true ولا لأ."
      ]
     },
     {
@@ -95,6 +96,7 @@ AR.fp = {
      "h": "مثال: قراية employee records (بـ C)",
      "pts": [
       "المطلوب (slide 38): برنامج C يعرض محتوى file على الشاشة. والـ algorithm:<span class=\"ltr\">open the file for input → while there are characters/records, read one and write it to the screen → close the file</span>",
+      "التعليقات اللي على الكود (slides 39 و 40):<br>• الـ <code>struct employee</code>: بنعمل الـ employee struct.<br>• الـ <code>fopen(...)</code>: بنفتح الـ file اللي اسمه emp.txt.<br>• الـ <code>if(my_file == NULL)</code>: بنختبر الـ file اتفتح ولا لأ.<br>• الـ <code>while(!feof(my_file))</code>: بنستخدم while loop نقرا بيها من الـ file لحد آخره.<br>• جوه الـ loop: بنقرا من الـ file بـ fread، ونطبع على الشاشة بـ printf، ونقفل الـ while loop بـ }.<br>• الـ <code>fclose(my_file);</code>: بنقفل الـ logical file.",
       "‡ نصيحة: الـ <code>while(!feof())</code> مش بتبقى true غير <i>بعد</i> ما قراية تفشل، فممكن آخر record يتطبع مرتين. والأأمن إنك تشيك على <code>fread(...) == 1</code>. وكمان الكود اللي في الـ slides (39 و 40) بيطبع <code>%f</code> للـ salary وهي int (استخدم <code>%d</code> زي الكود اللي فوق)، وفيه <code>\"</code> زيادة بعد emp.sal، وبيكتب <code>==</code> على شكل <code>= =</code>، وبيستخدم <code>void main()</code>، وبيخلص بـ <code>getch();</code>."
      ]
     },
@@ -132,8 +134,8 @@ AR.fp = {
     "لإنها الطريقة الوحيدة المناسبة لتخزين كمية معلومات كبيرة زي الصور والمزيكا والفيديو؛ والـ operating systems أكبر من إنها تتحمل كلها في الـ memory؛ والـ databases في كل حتة؛ وكمان عشان الـ backup والـ archiving.",
     "تجهيز/عمل format للـ storage media، وحجز مساحة التخزين والـ addressing، وإدارة الـ free space.",
     "الـ OS هيقفله في آخر التنفيذ، بس لو البرنامج وقع فجأة (terminated abnormally) الداتا اللي في الـ buffer ممكن تضيع.",
-    "الحل: <code>void writeC(){ FILE *fp = fopen(\"c:\\\\alphabet.txt\",\"w\"); if(fp==NULL){ printf(\"Error in opening file\"); exit(1);} char ch = getche(); fputc(ch, fp); fclose(fp); }</code><br>‡ الـ slide كاتبة Printf و Exit بحروف capital، والـ C بتفرق بين الـ capital والـ small، فلازم يبقوا printf و exit.",
-    "الحل: <code>FILE *f = fopen(\"c:\\\\std.txt\",\"r\"); if(f==NULL){...} char s[80]; while(1){ fgets(s,80,f); if(feof(f)) break; puts(s);} fclose(f);</code>",
+    "الحل: <code>void writeC(){ FILE *fp; fp = fopen(\"c:\\\\alphabet.txt\",\"w\"); if(fp==NULL){ printf(\"Error in opening file\"); exit(1); } char ch; ch = getche(); fputc(ch,fp); fclose(fp); }</code><br>‡ الـ slide كاتبة Printf و Exit بحروف capital، والـ C بتفرق بين الـ capital والـ small، فلازم يبقوا printf و exit.",
+    "الحل: <code>void read(){ FILE *my_file; int result; my_file=fopen(\"c:\\\\std.txt\",\"r\"); if(my_file==NULL){ printf(\"Error in opening file\"); exit(1); } char string[80]; while(1){ fgets(string,80,my_file); result = feof(my_file); if(result !=0) break; puts(string); } fclose(my_file); }</code><br>والـ slide بتسمي الـ method <code>read()</code> بدل <code>readS()</code>.",
     "الحل: <code>void readC(){ FILE *fp; fp = fopen(\"c:\\\\alphabet.txt\",\"r\"); if(fp==NULL){ printf(\"Error in opening file\"); exit(1); } char ch; ch = fgetc(fp); putchar(ch); fclose(fp); }</code>",
     "الحل: <code>void writeS(){ FILE *my_file; my_file=fopen(\"c:\\\\std.txt\",\"w\"); if(my_file==NULL){ printf(\"Error in opening file\"); exit(1); } char string[80]; while(1){ gets(string); if(strlen(string)==0) break; fputs(string,my_file); } fclose(my_file); }</code><br>‡ الـ gets() اتشالت من C11 عشان مبتقدرش تحدد طول الـ input، والاختيار الآمن هو <code>fgets(string,80,stdin)</code>.",
     "الحل: <code>void writeASCII(){ FILE *my_file; char ch; my_file=fopen(\"ascii.txt\",\"w\"); if(my_file==NULL){ printf(\"Error in opening file\"); exit(1); } fprintf(my_file,\"Letter\\t Decimal \\t Hexadecimal \\n\"); for(ch = 32; ch&lt;=127; ch++) fprintf(my_file, \"%c \\t%d \\t %x \\n\", ch, ch, ch); fclose(my_file); }</code><br>‡ الـ slide ناقصها علامة \" في أول الـ format string التانية. وكمان لو الـ char كان signed، الشرط <code>ch&lt;=127</code> هيفضل true على طول والـ loop مش هتخلص، فاستخدم counter نوعه int.",
@@ -289,20 +291,21 @@ AR.fp = {
       "رسمة (slide 5، الـ hard disk من جوه ومن بره): drive من غير الغطا، وعليه labels للأجزاء دي:<span class=\"ltr\">base casting, spindle, slider (and head), actuator arm, actuator axis, actuator, platters, cover mounting holes (cover not shown), case mounting holes, ribbon cable (attaches heads to logic board), SCSI interface connector, jumper pins, jumper, power connector, tape seal</span>",
       "رسمة (slides 6 و 16 و 19، وفيها drive مفتوح): فيه أسهم بتشاور على الـ <b>platters</b> والـ <b>spindle</b> والـ <b>read/write heads</b> والـ <b>arm</b> والـ <b>arm assembly</b>.",
       "<b>(1) الـ Platter</b>: هو الـ <b>disk الدايرية</b> اللي الداتا الـ magnetic بتتخزن عليها جوه الـ hard disk drive. وممكن يخزن معلومات على <b>الوشين (surfaces)</b> لـ platter واحد أو أكتر؛ وكل الـ surfaces فيها <b>نفس الـ components في نفس المكان</b>، والـ platters متصممة عشان تسهّل <b>تخزين الداتا واسترجاعها</b>.<br>• كل platter متقسم لدواير جوه بعض اسمها <b>tracks</b>: فيه آلاف الـ tracks في كل platter، وشكلها زي الحلقات، والمعلومات بتتخزن في tracks ورا بعض على سطح الـ disk.<br>• وكل track متقسم لعدد من الـ <b>sectors</b>.",
-      "رسمة (slides 8 و 15 و 18، وفيها disk drive فيه 4 platters و 8 surfaces): منظر من الجنب للـ platters على الـ <b>spindle</b>؛ وفيه <b>read/write head</b> على كل surface من الـ 8، وكل الـ heads متشالة على الـ <b>boom</b> اللي بيتحرك لجوه ولبره (سهمين). ومنظر من فوق مكتوب عليه <b>Track 0</b> و <b>Track 1</b>.",
+      "رسمة (slides 8 و 15 و 18، وفيها disk drive فيه 4 platters و 8 surfaces): منظر من الجنب للـ platters على الـ <b>spindle</b>؛ وفيه <b>read/write head</b> على كل surface من الـ 8، وكل الـ heads متشالة على الـ <b>boom</b> اللي بيتحرك لجوه ولبره (سهمين). وفي slide 8 بس فيه كمان منظر من فوق: حلقة مكتوب عليها <b>Track</b>، ومعاها <b>Track 0</b> و <b>Track 1</b>.",
       "رسمة (slide 9): platters فوق بعض؛ وعلى الـ platter اللي فوق فيه حلقة مكتوب عليها <b>Track</b>، وحتة صغيرة من الحلقة دي مكتوب عليها <b>Sector</b>.",
       "مثال (slide 10): platter فيه 1000 track، وكل track فيه 33 sector. الـ track capacity بتساوي عدد الـ sectors في الـ track مضروب في الـ bytes في الـ sector:<span class=\"ltr\">33 × 512 = <b>16,896 bytes</b></span>",
       "الـ <b>sector</b> هو <b>أصغر جزء ليه address</b> في الـ disk، وغالبًا حجمه <b>512 bytes</b>.",
       "فيه طريقة تانية نشوف بيها تنظيم الـ sectors، وهي اللي الـ <b>OS file manager</b> ماشي بيها: بيشوف الـ file كأنه سلسلة من <b>clusters</b> من الـ sectors. والـ <b>cluster</b> هو عدد ثابت من الـ <b>sectors اللي ورا بعض</b> (contiguous).",
-      "مثال (slide 11): حجم الـ sector بـ 512 bytes والـ cluster فيه 3 sectors، يبقى حجم الـ cluster هو 3 × 512 = <b>1536 bytes</b>. والرسمة اللي في الـ slide فيها حلقة من platter وجزء غامق مكتوب عليه \"Cluster of 3 Sectors\".",
+      "مثال (slide 11): حجم الـ sector بـ 512 bytes والـ cluster فيه 3 sectors، يبقى حجم الـ cluster هو 3 × 512 = <b>1536 bytes</b>. والـ slide فيها رسمتين:<br>• رسمة لـ disk على سطحه اللي فوق حتة غامقة صغيرة من حلقة مكتوب عليها \"Sector\"، وحتة غامقة أطول مكتوب عليها \"Cluster of 3 Sectors\".<br>• ورسمة لـ 4 platters فوق بعض، وعلى الـ platter اللي فوق حتة صفرا صغيرة مكتوب عليها \"Cluster\".",
       "رسمة (slide 12): سطح disk فيه tracks دواير جوه بعض.<br>• حرف <b>A</b> هو الـ track (حلقة واحدة).<br>• حرف <b>B</b> هو الـ geometrical sector (شريحة زي حتة الكيكة معدية على كل الـ tracks).<br>• حرف <b>C</b> هو الـ track sector (جزء الشريحة اللي على track واحد).<br>• حرف <b>D</b> هو الـ cluster (sectors جنب بعض على نفس الـ track).",
       "الـ <b>cylinder</b> هو مجموعة الـ tracks اللي فوق/تحت بعض بالظبط. كل الداتا اللي على cylinder واحد تتقري <b>من غير ما الـ arm يتحرك</b>. عدد الـ cylinders = عدد الـ tracks في كل surface.",
+      "رسمة (slide 13، الـ cylinder): 4 platters فوق بعض، ونفس الحلقة الصفرا متعلّمة على كل platter، ومكتوب عليها <b>Cylinder</b>.",
       "يعني الـ platter ليه 4 مكونات: الـ <b>sector</b> والـ <b>cluster</b> والـ <b>track</b> والـ <b>cylinder</b> (رسمة slide 14: 4 مجموعات platters، وكل مجموعة متعلّم فيها واحد منهم).",
       "<b>(2) الـ Read/write heads</b>: هي الجزء الصغير في الـ disk اللي بيتحرك فوق الـ platter. الـ heads بتطير فوق سطح الـ platter بمسافة ممكن توصل لـ <b>3 nanometers</b> بس. والـ read/write head <b>بيروح للـ track اللي فيه الداتا</b> اللي هتتنقل. وكل surface ليه الـ read/write head بتاعه.",
       "<b>(3) الـ Arm assembly</b>: مجموعة components جوه الـ hard disk فيها الـ arms، والـ arms دي شايلة الـ read/write heads. ودوره إنه <b>يقرا ويكتب المعلومات</b> من مجموعة platters متغطية بطبقة magnetic رفيعة. ولو الـ arm assembly وقف عن الشغل، الـ drive كله بيبوظ. ولما نقرا byte معين، الـ OS بيلاقي الـ platter والـ track والـ sector الصح، ويقرا <b>الـ sector كله في buffer</b> (مكان مخصوص في الـ memory)، وبعدين يلاقي الـ byte المطلوب جوه الـ buffer ده.",
       "<b>(4) الـ Spindle</b> بيمسك الـ platters في <b>مكان ثابت</b>، ومع <b>مسافة كفاية للـ read/write arms</b> عشان توصل للداتا اللي على الـ disks، و<b>بيلفّها</b>، فيجيب الـ sector تحت الـ head.",
-      "<b>5. الـ Arms</b> بتشيل الـ heads وتوجهها وتحركها. تحريك الـ arm اسمه <b>seeking</b>، وده غالبًا <b>أبطأ</b> جزء.",
-      "رسمة (slide 20): 3 <b>platters</b> على <b>spindle</b> واحد، وفيه سهم للـ <b>rotation</b>. وعلى كل platter حلقة اسمها <b>track t</b> وعليها نقطة غامقة اسمها <b>sector s</b>؛ ونفس الـ track على كل الـ platters، متوصلة بخطوط متقطعة، هي الـ <b>cylinder c</b>. وكل platter عليه <b>read-write head</b> على <b>arm</b>، وكل الـ arms متثبتة في الـ <b>arm assembly</b>."
+      "<b>(5) الـ Arms</b> بتشيل الـ heads وتوجهها وتحركها. تحريك الـ arm اسمه <b>seeking</b>، وده غالبًا <b>أبطأ</b> جزء.",
+      "رسمة (slide 20): 3 <b>platters</b> على <b>spindle</b> واحد، وفيه سهم للـ <b>rotation</b>. وكل platter عليه حلقة متقسمة لحتت صغيرة: الحلقة اللي على الـ platter اللي فوق اسمها <b>track t</b>، وحتة واحدة من الحلقة (على الـ platter اللي في النص) اسمها <b>sector s</b>؛ ونفس الـ track على كل الـ platters، متوصلة بخطوط متقطعة، هي الـ <b>cylinder c</b>. وكل platter عليه <b>read-write head</b> (مربع غامق) في آخر <b>arm</b>، وكل الـ arms متثبتة في الـ <b>arm assembly</b>."
      ]
     },
     {
@@ -360,11 +363,11 @@ AR.fp = {
      "h": "الـ Disk كـ bottleneck",
      "pts": [
       "الـ processes كتير بتبقى <b>disk-bound</b>: يعني الـ network والـ CPU بيستنوا الـ disk وقت طويل. الحلول:",
-      "<b>1. الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.",
-      "<b>2. الـ Disk striping</b>: نحط blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).",
-      "<b>3. الـ RAID</b>: Redundant Array of Independent Disks.",
-      "<b>4. الـ RAM disk</b> (memory disk): جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل إن الداتا volatile).",
-      "<b>5. الـ Disk cache</b>: حتة كبيرة من الـ memory شايلة pages من الـ disk. بنشيك على الـ cache الأول، ولو مش موجودة (miss) نروح للـ disk."
+      "<b>(1) الـ Multiprocessing</b>: الـ CPU يشتغل على jobs تانية وهو مستني الـ disk.",
+      "<b>(2) الـ Disk striping</b>: نحط blocks مختلفة من الـ file على drives مختلفة، عشان الـ processes المستقلة متعطلش بعض (parallelism).",
+      "<b>(3) الـ RAID</b>: Redundant Array of Independent Disks.",
+      "<b>(4) الـ RAM disk</b> (memory disk): جزء من الـ main memory بيعمل نفسه disk (سرعة مقابل إن الداتا volatile).",
+      "<b>(5) الـ Disk cache</b>: حتة كبيرة من الـ memory شايلة pages من الـ disk. بنشيك على الـ cache الأول، ولو مش موجودة (miss) نروح للـ disk."
      ]
     },
     {
