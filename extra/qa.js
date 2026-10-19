@@ -1663,7 +1663,7 @@ EXTRA.qa = {
     ],
     [
      "Identify and select important projects",
-     "Correct. The implementation phases are (1) identify and select important projects, (2) assign experienced employees, (3) document the problem, (4) train, (5) implement, (6) submit (L8)."
+     "Correct. The implementation phases are<br>(1) identify and select important projects<br>(2) assign experienced employees<br>(3) document the problem<br>(4) train<br>(5) implement<br>(6) submit (L8)."
     ]
    ],
    "a": 3
