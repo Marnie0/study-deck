@@ -13,7 +13,10 @@ AR.compiler = {
      ]
     },
     {
-     "h": "الـ compilers مقابل الـ interpreters"
+     "h": "الـ compilers مقابل الـ interpreters",
+     "figH": {
+      "cc-comp-vs-interp": "الـ interpreter مقابل الـ compiler صف بصف: الترجمة والسرعة والـ memory واللغات"
+     }
     },
     {
      "h": "مراحل (phases) الـ compiler (ارسم الشكل ده)",
@@ -21,14 +24,21 @@ AR.compiler = {
       "الـ six phases كلهم بيتعاملوا مع الـ <b>literal table</b> والـ <b>symbol table</b> والـ <b>error handler</b>. دول data structures وأدوات مساعدة، <b>مش phases</b>. الامتحانات كتير بتسأل \"الـ symbol table مش phase\".",
       "سلسلة الـ input/output هي: <b>source code → tokens → syntax tree → annotated tree → intermediate code → target code → (optimized) target code</b>.",
       "الـ \"Testing\" <b>مش</b> phase من phases الـ compiler."
-     ]
+     ],
+     "figH": {
+      "cc-phases": "المثال <bdi>a[index]=4+2</bdi> وهو بيعدّي على الـ six phases، ومعاهم الـ three helpers المشتركين",
+      "cc-is-phase": "جرّب: ده phase ولا مش phase؟"
+     }
     },
     {
      "h": "1) الـ Lexical analysis (الـ scanner)",
      "pts": [
       "بيجمّع سلاسل الحروف في وحدات ليها معنى اسمها <b>tokens</b>.",
       "مثال: <code>a[index]=4+2</code> بيطلّع: <code>a</code> identifier، <code>[</code> left bracket، <code>index</code> identifier، <code>]</code> right bracket، <code>=</code> assignment، <code>4</code> number، <code>+</code> plus sign، <code>2</code> number."
-     ]
+     ],
+     "figH": {
+      "cc-scanner": "جرّب: اعمل scan للـ <bdi>a[index]=4+2</bdi> (أو لسطر من عندك) token ورا token"
+     }
     },
     {
      "h": "2) الـ Syntax analysis (الـ parser)",
@@ -38,7 +48,11 @@ AR.compiler = {
       "شكل (slide 7, The Parse Tree): <b>expression</b> → <b>Assign-expression</b>؛ والـ Assign-expression ليها 3 children: expression و = و expression. الـ expression الشمال → <b>subscript-expression</b>، والـ children بتوعها Expression و [ و expression و ]؛ الـ Expression → identifier → <code>a</code>؛ والـ expression → identifier → <code>index</code>. الـ expression اليمين → <b>additive-expression</b>، والـ children بتوعها expression و + و expression؛ الـ expression → number → <code>4</code>؛ والـ expression → number → <code>2</code>.",
       "الـ <b>syntax tree</b> (AST) هو النسخة المختصرة: assign-expression وتحته children هما subscript-expression(a, index) و additive-expression(4, 2).",
       "شكل (slide 8, The Syntax Tree): الـ <b>Assign-expression</b> ليها 2 children، هما <b>subscript-expression</b> و <b>additive-expression</b>. الـ subscript-expression → identifier (<code>a</code>) و identifier (<code>index</code>). الـ additive-expression → number (<code>4</code>) و number (<code>2</code>)."
-     ]
+     ],
+     "figH": {
+      "cc-parse-tree": "الـ parse tree بتاع <bdi>a[index]=4+2</bdi> بكل nodes الـ grammar (slide 7)",
+      "cc-syntax-tree": "الـ syntax tree المختصرة (AST) بتاعة <bdi>a[index]=4+2</bdi> (slide 8)"
+     }
     },
     {
      "h": "3) الـ Semantic analyzer",
@@ -47,7 +61,10 @@ AR.compiler = {
       "الـ <b>Static semantics</b>: الـ declarations والـ type checking.",
       "الـ <b>Attributes</b>: معلومات زيادة الـ semantic analyzer بيحسبها. والنتيجة هي الـ <b>annotated syntax tree</b>: <code>a</code> = array of integer، <code>index</code> = integer، <code>4</code> و <code>2</code> = integer، الـ subscript-expression = integer، الـ additive-expression = integer.",
       "شكل (slide 10, The Annotated Syntax Tree): الـ syntax tree بتاع <code>a[index]=4+2</code> وتحت كل node الـ attribute بتاعها. الـ <b>Assign-expression</b> ليها 2 children: <b>subscript-expression</b> (integer) و <b>additive-expression</b> (integer). الـ subscript-expression → identifier <code>a</code> (array of integer) و identifier <code>index</code> (integer). الـ additive-expression → number <code>4</code> (integer) و number <code>2</code> (integer)."
-     ]
+     ],
+     "figH": {
+      "cc-annotated-tree": "الـ semantic analyzer بيضيف الـ types، فتطلع الـ annotated syntax tree (slide 10)"
+     }
     },
     {
      "h": "4) الـ Source code optimizer",
@@ -57,14 +74,21 @@ AR.compiler = {
       "الـ <b>Constant folding</b> على الـ annotated tree: <code>4+2</code> بتتحوّل لـ node واحدة هي <code>6</code>.",
       "شكل (slides 12 و 13, Optimizations on Annotated Tree): قبل، الشجرة هي الـ annotated syntax tree. بعد الـ folding، الـ <b>Assign-expression</b> ليها 2 children: الـ <b>subscript-expression</b> (integer) وتحتها identifier <code>a</code> (array of integer) و identifier <code>index</code> (integer)، و <b>number <code>6</code></b> واحد (integer) بياخد مكان الـ additive-expression والـ numbers بتوعها 4 و 2.",
       "أو على الـ intermediate code (three-address code، p-code): <code>t = 4 + 2; a[index] = t</code> → <code>t = 6; a[index] = t</code> → <code>a[index] = 6</code>."
-     ]
+     ],
+     "figH": {
+      "cc-fold-tree": "الـ constant folding على الـ annotated tree، والـ <bdi>4+2</bdi> بتبقى node واحدة <bdi>6</bdi>",
+      "cc-fold-ir": "نفس الـ folding على الـ intermediate code، من سطرين لـ <bdi>a[index]=6</bdi>"
+     }
     },
     {
      "h": "5) الـ Code generator و 6) الـ target code optimizer",
      "pts": [
       "الـ <b>code generator</b> بياخد الـ intermediate code (IR) ويطلّع كود للـ <b>target machine</b>. هنا <b>خصائص الـ target machine</b> بتبقى العامل الأساسي: الـ instructions بتاعتها وطريقة تمثيل الداتا. المثال code sequence بـ assembly language افتراضية (‡ MUL R0,2 عشان الـ integer معتبر حجمه 2 bytes على الجهاز ده؛ السلايد مش بيقول السبب).",
       "الـ <b>target code optimizer</b> بيحسّن الكود اللي اتولّد: <b>اختيار الـ address modes</b>، <b>استبدال instructions</b> (الضرب في 2 يبقى SHL، يعني shift left) و <b>شيل الـ instructions الزيادة (redundant)</b>."
-     ]
+     ],
+     "figH": {
+      "cc-codegen": "من <bdi>a[index]=6</bdi> لـ assembly، وبعدين الـ 5 instructions بيبقوا 3 بعد الـ optimization"
+     }
     },
     {
      "h": "الـ data structures الأساسية للتواصل بين الـ phases",
@@ -75,7 +99,10 @@ AR.compiler = {
       "الـ <b>Literal table</b>: بيخزّن الـ <b>constants والـ strings</b>، وده بيقلل حجم البرنامج. الـ insertion والـ lookup السريع مهمين جدًا.",
       "الـ <b>Intermediate code</b>: بيتخزن كـ array من text strings، أو text مؤقت، أو linked list من structures (زي three-address code، p-code). لازم يبقى سهل نعيد ترتيبه.",
       "الـ <b>Temporary files</b>: بتشيل نواتج الخطوات الوسطانية. بتحل مشكلة قلة الـ memory وبتسمح بالـ <b>back-patching</b> للعناوين أثناء الـ code generation."
-     ]
+     ],
+     "figH": {
+      "cc-data-structs": "جرّب: الـ six data structures اللي بتنقل المعلومات بين الـ phases"
+     }
     }
    ],
    "cards": [
@@ -319,7 +346,10 @@ AR.compiler = {
       "وكمان بتربط رسايل الأخطاء اللي طالعة من الـ compiler بالـ source program. ‡ مثلاً بإنها تحط أرقام السطور (line numbers) في رسايل الأخطاء.",
       "اسمها كمان <b>scanning</b>: سيل الحروف بيتقري من الشمال لليمين ويتجمّع في tokens. والـ keywords بيتعرفوا هنا.",
       "الـ <b>Token مقابل الـ lexeme</b> (من نوتس المحاضرة): الـ token هو category منطقية (id، relop، number)؛ الـ lexeme هو الـ string الحقيقي نفسه (زي <code>distance</code>). <code>if distance &gt;= rate * (time1 – time0) then distance := maxdist;</code> → <code>if id relop id * ( id – id ) then id := id ;</code>"
-     ]
+     ],
+     "figH": {
+      "cc-lexer": "الـ scanner وهو شغال: الـ tokens والـ lexemes والـ keywords، وشيل الـ comments والـ white space، والـ errors بأرقام السطور"
+     }
     },
     {
      "h": "الـ Alphabets والـ strings",
@@ -328,7 +358,10 @@ AR.compiler = {
       "الـ <b>string</b> (وبيتقال لها word أو token) هي sequence محدودة من symbols من alphabet. <code>011</code> string طولها 3 على Σ = {0,1}؛ <code>0101</code> طولها 4؛ <code>for</code> string طولها 3 على alphabet الـ C++.",
       "مجموعة كل الـ integer constants أو مجموعة كل أسماء الـ variables دي sets من الـ strings، والحروف اللي فيها متاخدة من alphabet معيّنة.",
       "الـ set دي من الـ strings اسمها language. في الـ integers الـ alphabet بتتكوّن من الـ digits من 0 لـ 9، وفي أسماء الـ variables الـ alphabet فيها letters و digits مع بعض (وممكن كام character تاني، زي الـ underscore)."
-     ]
+     ],
+     "figH": {
+      "cc-strings": "جرّب: الكلمة بتاعتك string على الـ alphabet ولا لأ، وطولها كام؟"
+     }
     },
     {
      "h": "العمليات على الـ languages",
@@ -339,7 +372,10 @@ AR.compiler = {
       "<b>يعني إيه ε transition؟</b> هي رمز للـ empty string، زي Φ، بحيث إن {ε} تبقى set فيها element واحد هو الـ empty string. ‡ الـ ε هي الـ string اللي طولها 0؛ والـ Φ عادةً اسم الـ empty set (مفيهاش elements)، فالـ {ε} والـ Φ مش نفس الـ set.",
       "الـ <b>Positive closure</b>: الـ Σ+ هي set كل الـ strings اللي ممكن نعملها بـ concatenation لواحد أو أكتر من الـ strings اللي في Σ. {a}+ = {a, aa, aaa, aaaa, …}.",
       "الـ <b>Or operator</b>: a|b|c = {a, b, c}."
-     ]
+     ],
+     "figH": {
+      "cc-lang-ops": "جرّب: الـ union والـ concatenation والـ Kleene والـ positive closure والـ or operator"
+     }
     },
     {
      "h": "الـ Regular expressions",
@@ -347,13 +383,19 @@ AR.compiler = {
       "على X = {a,b,c}، أمثلة على regular expressions: <code>ab*</code>، <code>a|b|c*</code>.",
       "الأولوية (precedence): الـ <b>*</b> الأقوى، بعدها الـ <b>concatenation</b>، بعدها الـ <b>|</b>. يعني <code>a|ab*</code> معناها <code>a|(a(b*))</code>.",
       "أمثلة: 0|1 = {0,1}؛ 0* = {ε,0,00,…}؛ (0|1)(0|1) = {00,01,10,11}؛ 0|0*1 = {0,1,01,001,…}؛ b واحدة بالظبط على {a,b,c}: (a|c)*b(a|c)*."
-     ]
+     ],
+     "figH": {
+      "cc-regex-test": "جرّب: اختبر strings على الـ regular expressions بتاعة السلايدز، ومعاها الـ precedence"
+     }
     },
     {
      "h": "الخواص الجبرية (algebraic properties) للـ regular expressions",
      "pts": [
       "فخاخ الامتحان: <b>aε = εa = a</b> (مش ε). <b>Yε = εY</b> (فجملة \"Yε ≠ εY\" غلط). <b>(X|Y)* ≠ X*|Y*</b>: الـ (X|Y)* فيها XY، لكن X*|Y* مفيهاش."
-     ]
+     ],
+     "figH": {
+      "cc-re-algebra": "جرّب: اتأكد من كل law بمقارنة الـ strings اللي كل جنب بيطلّعها"
+     }
     },
     {
      "h": "الـ Finite automata",
@@ -364,26 +406,39 @@ AR.compiler = {
       "الشكل (سلايد 10، A finite automata for the expression 01): start → q0 –0→ q1 –1→ q2. الـ q0 مكتوب تحتها <b>Start State</b>؛ والـ q2 دايرة دبل مكتوب تحتها <b>End State</b>. (الـ transition table تحت.)",
       "الشكل (سلايد 10، a* وa+ و(a|b)*): <b>a*</b>: state واحدة متظللة عليها سهم start، مرسومة دايرة دبل (start وfinal)، وعليها loop بـ a. <b>a+</b>: start state متظللة عليها loop بـ a، وطالع منها edge بـ a لـ state تانية مرسومة دايرة دبل (final). <b>(a|b)*</b>: state واحدة q2 عليها سهم start، مرسومة دايرة دبل (start وfinal)، وعليها loop بـ a,b.",
       "اعمل finite automaton يتعرّف على الـ regular expression 1*01(0|1)* (slide 11): start → q0 (loop 1) –0→ q1 –1→ q2. الـ q2 هي الـ Final state (double circle) وعليها loop مكتوب عليه 0,1. (الـ transition table بتاعها في سكشن \"Finite automaton for 1*01(0|1)*\".)"
-     ]
+     ],
+     "figH": {
+      "cc-state-transition": "الـ states والـ transitions: إزاي الـ finite automaton بيترسم (slide 9)",
+      "cc-fa-01": "جرّب: شغّل strings على الـ automaton بتاع <bdi>01</bdi>"
+     }
     },
     {
      "h": "الـ finite automata بتاعة a* وa+ و(a|b)*",
      "pts": [
       "الـ transition table بتاعة الـ three automata اللي في سلايد 10 (→ الـ start state، * الـ final state، – مفيش transition). ‡ السلايد مسمّتش الـ states بتاعة a* وa+؛ الأسامي S وS0 وS1 إحنا اللي حاطينها هنا. في a+ الـ start state طالع منها two edges بـ a: الـ loop والـ edge اللي رايحة للـ final state."
-     ]
+     ],
+     "figH": {
+      "cc-fa-closures": "جرّب: شغّل strings على الـ automata بتاعة <span class=\"ltr\">a*, a+, (a|b)*</span>"
+     }
     },
     {
      "h": "الـ finite automaton بتاعة 1*01(0|1)*",
      "pts": [
       "الـ transition table بتاعة الـ automaton اللي في سلايد 11 (→ الـ start state، * الـ final state، – مفيش transition): الـ q0 عليها loop بـ 1 وبتروح لـ q1 بـ 0؛ الـ q1 بتروح لـ q2 بـ 1؛ الـ q2 final وعليها loop بـ 0 و1."
-     ]
+     ],
+     "figH": {
+      "cc-fa-1s01": "جرّب: شغّل strings على الـ automaton بتاع <bdi>1*01(0|1)*</bdi>"
+     }
     },
     {
      "h": "الـ NFA مقابل الـ DFA",
      "pts": [
       "المثال (سلايد 12، DFA): سهم داخل على state على الشمال؛ طالع منها two edges لـ state على اليمين، الـ edge اللي فوق عليها s واللي تحت عليها t؛ وفيه خط طالع من الـ state اللي على اليمين.",
       "مثال (slide 12, NFA): arrow داخل على state على الشمال؛ edge مكتوب عليه ε طالع لفوق لـ oval جواه s، و edge تاني مكتوب عليه ε نازل لتحت لـ oval جواه t؛ ومن كل oval فيه edge مكتوب عليه ε داخل على state على اليمين، والـ state دي طالع منها edge مكتوب عليه ε."
-     ]
+     ],
+     "figH": {
+      "cc-nfa-dfa": "الـ NFA مقابل الـ DFA على مثالين السلايد، صف بصف"
+     }
     }
    ],
    "cards": [
@@ -583,7 +638,10 @@ AR.compiler = {
       "2) <b>فيه loop على input symbol وبعدها transition بنفس الـ input symbol</b>. الرسمة (slide 2): الـ q0 هي الـ start state وعليها loop على 0,1؛ q0 –0→ q1؛ q1 –1→ q2؛ الـ q2 هي الـ final state (دايرة مزدوجة). على 0، الـ q0 ممكن تفضل مكانها أو تروح q1.",
       "3) فيه أكتر من path لنفس الـ input string والـ automaton يقدر يتعرّف عليها (جرّب الـ expression <b>001</b>). الرسمة (slide 3): الـ A عليها loop بـ 0,1؛ A –0→ C؛ A –1→ B؛ B –1→ C؛ الـ C عليها loop بـ 0,1؛ الـ B والـ C هما الـ final states (دواير مزدوجة). ‡ للـ 001: A –0→ A –0→ A –1→ B، و A –0→ A –0→ C –1→ C، و A –0→ C –0→ C –1→ C، كلهم بيخلصوا في final state.",
       "يعني <b>الـ loop لوحده مش بيخلّي الـ automaton non-deterministic</b>. الـ DFA ممكن يبقى فيه loops. وكمان إن يكون فيه أكتر من accept state مش بيخليه NFA."
-     ]
+     ],
+     "figH": {
+      "cc-nfa-signs": "جرّب: العلامات التلاتة بتاعة الـ NFA، كل واحدة على الـ automaton بتاعها في السلايد"
+     }
     },
     {
      "h": "الـ NFA مقابل الـ DFA",
@@ -591,21 +649,30 @@ AR.compiler = {
       "مثال (DFA)، الرسمة في slide 4: start state (داخل عليها سهم) طالع منها two edges لـ state تانية، واحد عليه <b>s</b> (فوق) وواحد عليه <b>t</b> (تحت)؛ والـ state التانية طالع منها خط؛ مفيش ε edges.",
       "مثال (NFA)، الرسمة في slide 4: الـ start state –ε→ الـ box بتاع <b>s</b> –ε→ آخر state، والـ start state –ε→ الـ box بتاع <b>t</b> –ε→ آخر state؛ وآخر state طالع منها ε edge.",
       "‡ السلايد بتقول إن عدد الـ next states في الـ NFA «either zero or one»؛ بس في الحقيقة الـ NFA ممكن يبقى ليه صفر أو واحدة أو أكتر من الـ next states لكل (state, symbol)، زي ما آخر row في الجدول بيقول («many possible next states»)."
-     ]
+     ],
+     "figH": {
+      "cc-nfa-vs-dfa": "الـ DFA والـ NFA بتوع slide 4 جنب بعض، ومعاهم المقارنة في 4 صفوف"
+     }
     },
     {
      "h": "الـ Transition tables",
      "pts": [
       "الـ <b>transition table</b> هو طريقة نكتب بيها الـ automaton في جدول: الصفوف = الـ states، الأعمدة = الـ input symbols، الخانات = الـ next state(s)، و \"-\" = مفيش transition.",
       "الرسمة (slide 5): الـ S هي الـ start state؛ S –a→ P؛ S –b→ Q؛ P –b→ R؛ R –b→ F؛ الـ Q عليها loop بـ a؛ Q –a→ T؛ الـ T عليها loop بـ b؛ T –a→ F؛ الـ F هي الـ final state (دايرة مزدوجة)."
-     ]
+     ],
+     "figH": {
+      "cc-trans-table": "الـ automaton بتاع slide 5 بيتحوّل لـ transition table، صف ورا صف"
+     }
     },
     {
      "h": "تحويل الـ NFA لـ DFA: أول transition table (بالـ empty transition)",
      "pts": [
       "الـ NFA بتاع السلايد (slide 6): الـ A هي الـ start state وعليها loop بـ 0,1؛ A –0→ B؛ الـ B هي الـ final state (دايرة مزدوجة).",
       "اعمل أول transition table (بالـ empty transition): الأعمدة 0 و 1 و ε؛ وخانة الـ ε لكل state فيها الـ state نفسها."
-     ]
+     ],
+     "figH": {
+      "cc-first-table": "ملء أول transition table (بالـ ε) للـ NFA بتاع slide 6، خانة خانة"
+     }
     },
     {
      "h": "تحويل NFA → DFA (subset construction) بطريقة المحاضرة",
@@ -615,21 +682,30 @@ AR.compiler = {
       "<b>Step 3</b>: ارسم الـ DFA. أي set فيها final state من الأصل تبقى final. الخانة الفاضية (-) معناها dead state أو ببساطة مفيش transition.",
       "مثال السلايد: الـ NFA هو A (start، عليها loop بـ 0,1) –0→ B (final). اعمل تاني transition table (من غير empty transition)، وبعدين الـ DFA:",
       "الرسمة (slide 6، الـ DFA): الـ A هي الـ start state وعليها loop بـ 1؛ A –0→ {A,B}؛ الـ {A,B} عليها loop بـ 0؛ {A,B} –1→ A؛ الـ {A,B} هي الـ final state (دايرة مزدوجة)."
-     ]
+     ],
+     "figH": {
+      "cc-subset": "جرّب: خطوات المحاضرة التلاتة بتحوّل الـ NFA بتاع slide 6 لـ DFA"
+     }
     },
     {
      "h": "NFA امتحان محلول 1 (جه في امتحانات 2021–2025)",
      "pts": [
       "الـ NFA: الـ start هو 1؛ الـ final هو 3. 1 –0→ 3؛ 3 –0→ 1؛ 3 –1→ 3 (loop)؛ 3 –1→ 2؛ 2 –0→ 3. (بيترسم برضه بالـ states S, R, M.)",
       "<b>ليه non-deterministic؟</b> الـ state 3 عليها loop على 1 وكمان transition بنفس الـ symbol 1 للـ state 2، فالـ (3,1) ليها اتنين next states."
-     ]
+     ],
+     "figH": {
+      "cc-subset-exam1": "جرّب: تحويل NFA الامتحان 1 لـ DFA خطوة خطوة"
+     }
     },
     {
      "h": "NFA امتحان محلول 2 (فيه ε)، امتحان 2024/25",
      "pts": [
       "الـ NFA: الـ start والـ final هو 1؛ 1 –b→ 2؛ 1 –ε→ 3؛ 2 –a→ 2؛ 2 –a,b→ 3؛ 3 –a→ 1.",
       "الـ ε-closures: E(1) = {1,3}، E(2) = {2}، E(3) = {3}. يبقى الـ DFA بيبدأ من {1,3}. الـ final states في الـ DFA = اللي فيها 1."
-     ]
+     ],
+     "figH": {
+      "cc-subset-exam2": "جرّب: تحويل NFA الامتحان 2 (فيه ε) لـ DFA، والـ ε-closures الأول"
+     }
     }
    ],
    "cards": [
@@ -799,7 +875,10 @@ AR.compiler = {
       "الـ Syntax analysis (<b>parsing</b>) هو <b>تاني phase</b>. الـ lexer بيلاقي الـ tokens بالـ regular expressions، بس <b>مايقدرش يتشيك على الـ syntax</b> بتاع الجملة بسبب حدود الـ regular expressions.",
       "الـ regular expressions <b>ماتقدرش تتشيك على الـ tokens المتوازنة</b> زي الأقواس، فالـ phase دي بتستخدم <b>context-free grammar (CFG)</b>.",
       "الـ parser بياخد الـ <b>token stream</b> من الـ lexer، ويقارنه بالـ production rules عشان يكتشف الـ errors، ويطلّع <b>parse tree</b>. الـ Parsing = عملية إننا نلاقي parse tree لـ string من الـ tokens."
-     ]
+     ],
+     "figH": {
+      "cc-parse-pipeline": "من الحروف للـ parse tree: الـ lexer مش بيشوف الأقواس اللي مش متوازنة، والـ parser بيشوفها"
+     }
     },
     {
      "h": "المكونات الأربعة للـ CFG",
@@ -810,7 +889,10 @@ AR.compiler = {
       "<b>Start symbol (S)</b>: المكان اللي الـ derivation بيبدأ منه. الـ strings بتتعمل derive من الـ start symbol إننا نفضل نبدّل non-terminal بالـ right side بتاع واحدة من الـ productions بتاعته.",
       "مفيش حاجة اسمها <b>\"end symbol\"</b> في الـ CFG (اختيار غلط مشهور في الامتحانات).",
       "مثال: S→ABC، A→a|Aa، B→b|Bb، C→c. الـ terminals {a,b,c}؛ الـ non-terminals {S,A,B,C}؛ الـ start هو S."
-     ]
+     ],
+     "figH": {
+      "cc-cfg-parts": "الأربع components بتوع الـ grammar في slide 5، ومفيش end symbol"
+     }
     },
     {
      "h": "الـ Derivations",
@@ -818,10 +900,17 @@ AR.compiler = {
       "الـ <b>derivation</b> هو سلسلة production rules بنطبّقها عشان نوصل للـ input string. في كل خطوة بنقرر (1) أنهي non-terminal هنبدّله و(2) أنهي production هنستخدمها.",
       "<b>Leftmost derivation</b>: دايماً بدّل الـ non-terminal اللي على أقصى الشمال (امشي من الشمال لليمين). <b>Rightmost</b>: دايماً بدّل اللي على أقصى اليمين (امشي من اليمين للشمال).",
       "الـ top-down parser بيطلّع <b>leftmost derivation</b>. الـ Bottom-up parsers (shift-reduce, LR) بيطلّعوا rightmost derivation بالعكس."
-     ]
+     ],
+     "figH": {
+      "cc-cfg-derive": "اعمل derive لـ string بنفسك: اختار الـ non-terminal وبعدين الـ production",
+      "cc-top-bottom": "الـ top-down بيبني الـ leftmost derivation، والـ bottom-up بيمشي في الـ rightmost بالعكس"
+     }
     },
     {
-     "h": "مثال: int*int مع E→TX, X→+E|ε, T→int Y|(E), Y→*T|ε"
+     "h": "مثال: int*int مع E→TX, X→+E|ε, T→int Y|(E), Y→*T|ε",
+     "figH": {
+      "cc-int-derive": "جدول slide 8 خطوة خطوة، والـ parse tree بيكبر معاه"
+     }
     },
     {
      "h": "الـ Parse trees",
@@ -831,7 +920,11 @@ AR.compiler = {
       "الـ parse tree بيوضّح الـ <b>associativity والـ precedence</b>: أعمق sub-tree بيتحسب الأول، فالـ operator بتاعه ليه precedence على الـ operators اللي في الـ parent nodes.",
       "السلايدز بتبني الـ leftmost tree لـ id+id*id خطوة خطوة: E→E*E، E→E+E*E، E→id+E*E، E→id+id*E، E→id+id*id.",
       "إجابة الـ revision sheet الرسمية: \"A leftmost parsing tree grows from the <b>right</b> side\" (جاوب الـ MCQ/T-F كده)."
-     ]
+     ],
+     "figH": {
+      "cc-tree-parts": "الـ leaves والـ interior nodes والـ in-order traversal، وأعمق sub-tree الأول",
+      "cc-lm-tree": "الـ leftmost parsing tree بتاع id+id*id، متبني في الخمس خطوات بتوع السلايدز"
+     }
     },
     {
      "h": "الـ Ambiguity",
@@ -840,10 +933,17 @@ AR.compiler = {
       "إن يبقى فيه leftmost derivation واحد و rightmost derivation واحد لنفس الـ string ده مش بيثبت الـ ambiguity. لازم يبقى عندك اتنين LEFTMOST مختلفين (أو اتنين rightmost مختلفين) derivations/trees.",
       "لو فيه leftmost (أو rightmost) tree واحد بس لكل sentence، يبقى الـ grammar <b>unambiguous</b>.",
       "مثال: E→E+E | E–E | id ده ambiguous. الـ id–id+id ليها اتنين trees (تحت)."
-     ]
+     ],
+     "figH": {
+      "cc-lmd-rmd": "الـ leftmost والـ rightmost لنفس الـ string ممكن يبقى ليهم tree واحدة",
+      "cc-ambig-trees": "اتنين leftmost derivations للـ id-id+id، واتنين parse trees"
+     }
     },
     {
-     "h": "إثباتات ambiguity زيادة من الشيتات"
+     "h": "إثباتات ambiguity زيادة من الشيتات",
+     "figH": {
+      "cc-ambig-finder": "كل الـ leftmost derivations للـ strings بتاعة الشيتات، أو للـ grammar بتاعتك"
+     }
     },
     {
      "h": "الـ Left recursion",
@@ -852,10 +952,17 @@ AR.compiler = {
       "دي مشكلة للـ <b>top-down parsers</b>: بيبدأوا من الـ start symbol، ويفضلوا يعملوا expand لنفس الـ non-terminal اللي على الشمال، ومايعرفوش يقفوا إمتى فيدخلوا في <b>infinite loop</b>. عشان كده <b>الـ LL(1) مينفعش يتطبّق على left-recursive grammar</b>.",
       "(1) A → Aα | β ده <b>immediate</b> left recursion. (2) S → Aα | β مع A ⇒ Sd ده <b>indirect</b> left recursion.",
       "الـ A → Ab | c ده left-recursive."
-     ]
+     ],
+     "figH": {
+      "cc-lr-loop": "الـ grammar اللي فيها left recursion بتدخّل الـ top-down parser في infinite loop، وبعد التعديل لأ",
+      "cc-lr-kinds": "الـ immediate والـ indirect left recursion من slide 15"
+     }
     },
     {
-     "h": "إزالة الـ left recursion"
+     "h": "إزالة الـ left recursion",
+     "figH": {
+      "cc-lr-remove": "شيل الـ left recursion خطوة خطوة: قسّم الاختيارات لـ α و β وبعدين ضيف non-terminal جديد"
+     }
     }
    ],
    "cards": [
@@ -1097,7 +1204,11 @@ AR.compiler = {
       "<b>FIRST(α)</b> = مجموعة الـ terminals اللي ممكن تبدأ بيها أي strings طالعة من α. ولو α ⇒* ε يبقى ε كمان بتدخل في FIRST(α).",
       "في الـ predictive parsing، لو عندنا A → α | β، ولو FIRST(α) وFIRST(β) مفيش بينهم حاجة مشتركة (disjoint)، بنختار الـ A-production الصح بإننا نبص على الـ input symbol اللي جاي.",
       "<b>FOLLOW(A)</b> = مجموعة الـ terminals a اللي ممكن تيجي على يمين A على طول في أي sentential form (S ⇒* αAaβ). لو A ممكن تبقى آخر symbol على اليمين، يبقى <b>$</b> في FOLLOW(A). والـ FOLLOW عمره ما بيكون فيه ε."
-     ]
+     ],
+     "figH": {
+      "cc-first-pick": "لما الـ FIRST sets تبقى disjoint، فرمز واحد من الـ input بيختار الـ production",
+      "cc-follow-form": "الـ FIRST والـ FOLLOW من الـ sentential forms بتاعة Example 1"
+     }
     },
     {
      "h": "قواعد الـ FIRST",
@@ -1105,7 +1216,10 @@ AR.compiler = {
       "1. لو X عبارة عن terminal، يبقى FIRST(X) = {X}.",
       "2. لو X → Y1Y2…Yk، حط a في FIRST(X) لو a ∈ FIRST(Yi) وكانت ε موجودة في كل FIRST(Y1)…FIRST(Yi-1). ولو ε موجودة في كل FIRST(Yj)، ضيف ε لـ FIRST(X).",
       "3. لو X → ε production موجودة، ضيف ε لـ FIRST(X)."
-     ]
+     ],
+     "figH": {
+      "cc-first-sets": "حساب الـ FIRST production ورا production، وكل مرة باسم القاعدة"
+     }
     },
     {
      "h": "قواعد الـ FOLLOW",
@@ -1113,7 +1227,10 @@ AR.compiler = {
       "1. حط $ في FOLLOW(S)، وS هنا هو الـ start symbol.",
       "2. لو A → αBβ، كل اللي في FIRST(β) ما عدا ε بيدخل في FOLLOW(B).",
       "3. لو A → αB، أو A → αBβ وFIRST(β) فيها ε، يبقى كل اللي في FOLLOW(A) بيدخل في FOLLOW(B)."
-     ]
+     ],
+     "figH": {
+      "cc-follow-sets": "حساب الـ FOLLOW مكان ورا مكان بالقواعد التلاتة"
+     }
     },
     {
      "h": "الـ LL(1) grammars",
@@ -1122,7 +1239,11 @@ AR.compiler = {
       "أول <b>L</b>: بنقرا الـ input من الشمال لليمين (Left to right). تاني <b>L</b>: Leftmost derivation. والـ <b>1</b>: بنبص على input symbol واحد قدام (lookahead).",
       "الـ G تبقى LL(1) لو وبس لو لكل زوج A → α | β: (1) α وβ مايطلعوش الاتنين strings بتبدأ بنفس الـ terminal؛ (2) واحد بس منهم على الأكتر ممكن يطلّع ε؛ (3) لو α ⇒* ε، يبقى β مايطلّعش أي string بيبدأ بـ terminal موجود في FOLLOW(A).",
       "يعني باختصار: مفيش left recursion، مفيش ambiguity، ومفيش خانة في الجدول فيها entry-ين."
-     ]
+     ],
+     "figH": {
+      "cc-ll1-letters": "الـ scan من الشمال لليمين والـ leftmost derivation والـ lookahead الواحد على <bdi>abd</bdi>",
+      "cc-ll1-check": "الـ 3 شروط بتوع الـ LL(1) متشيّكة على كل زوج alternatives"
+     }
     },
     {
      "h": "بناء الـ predictive parsing table M",
@@ -1132,22 +1253,35 @@ AR.compiler = {
       "2. لو ε ∈ FIRST(α)، ضيف A → α في M[A, b] لكل b في FOLLOW(A) (ومعاهم $).",
       "الخانات الفاضية معناها errors.",
       "<b>الـ Parsing</b>: الـ stack بيبدأ S$ والـ input بيبقى w$. لو الـ top عبارة عن terminal بيساوي الـ input symbol، يبقى <b>match</b> (pop ونقدّم في الـ input). لو هو non-terminal A، بنبدّله بالـ right side بتاع M[A, a] (بنعمله push بحيث أول symbol يبقى فوق). بنعمل accept لما الاتنين يبقوا $."
-     ]
+     ],
+     "figH": {
+      "cc-ll1-moves": "حركات الـ parser: الـ expand والـ match والـ accept والـ error"
+     }
     },
     {
      "h": "مثال 1: S → A, A → aB | Ad, B → b, C → g",
      "pts": [
       "بعد ما نشيل الـ left recursion: S → A, A → aBA', A' → dA' | ε, B → b, C → g."
-     ]
+     ],
+     "figH": {
+      "cc-leftrec-ex1": "إزالة الـ left recursion من <bdi>A → aB | Ad</bdi>",
+      "cc-table-ex1": "الجدول M بتاع Example 1 بيتملا production ورا production"
+     }
     },
     {
-     "h": "مثال 1: عمل parse لـ abd"
+     "h": "مثال 1: عمل parse لـ abd",
+     "figH": {
+      "cc-parse-abd": "عمل parse لـ <bdi>abd</bdi>: الـ stack والـ input والـ action، والـ parse tree بتكبر"
+     }
     },
     {
      "h": "مثال 2: الـ expression grammar",
      "pts": [
       "E → TE', E' → +TE' | ε, T → FT', T' → *FT' | ε, F → (E) | id."
-     ]
+     ],
+     "figH": {
+      "cc-table-expr": "الـ FIRST والـ FOLLOW والجدول M بتوع الـ expression grammar خانة خانة"
+     }
     },
     {
      "h": "جرامر الامتحان: S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε",
@@ -1156,7 +1290,12 @@ AR.compiler = {
       "FOLLOW(U): فيها FIRST(VW) − ε = {a, c}؛ وبما إن VW ممكن تختفي، بنضيف FOLLOW(S).",
       "FOLLOW(V): فيها FIRST(W) − ε = {c}، وكمان FOLLOW(S) عشان W هي nullable. وFOLLOW(W) = FOLLOW(S).",
       "مفيش خانة فيها entry-ين، يبقى الـ grammar ده LL(1). والـ parse الكامل لـ (dc)ac موجود في امتحان 2024/25 تحت."
-     ]
+     ],
+     "figH": {
+      "cc-exam-follow": "الـ FOLLOW sets بتاعة جرامر الامتحان خطوة خطوة",
+      "cc-exam-table": "الجدول M بتاع جرامر الامتحان: مفيش خانة فيها entry-ين",
+      "cc-exam-parse": "عمل parse لـ <bdi>(dc)ac</bdi> بجدول جرامر الامتحان"
+     }
     }
    ],
    "cards": [
@@ -1328,7 +1467,10 @@ AR.compiler = {
       "بيتأكد إن الـ declarations والـ statements بتاعة البرنامج <b>صح من ناحية المعنى (semantically correct)</b>.",
       "بيستخدم <b>الـ syntax tree والـ symbol table</b> عشان يشوف البرنامج ماشي مع تعريف اللغة ولا لأ. بيجمع <b>type information</b> ويخزنها في الـ syntax tree أو الـ symbol table. والـ compiler بيستخدم ده بعدين في <b>intermediate-code generation</b>.",
       "الـ Type checking بيتعمل أثناء الـ semantic analysis، يعني أثناء الـ <b>syntax-directed translation</b>. الـ Input: syntax tree. الـ Output: <b>annotated syntax tree</b> (parse tree بيبيّن قيم الـ attributes عند كل node)."
-     ]
+     ],
+     "figH": {
+      "cc-sem-pipeline": "الـ semantic analysis بياخد إيه وبيطلّع إيه"
+     }
     },
     {
      "h": "الـ Semantic errors اللي الـ analyzer لازم يكتشفها",
@@ -1348,7 +1490,10 @@ AR.compiler = {
       "بيدّي <b>semantics</b> للـ CFG ويقدر يوصف الـ syntax والـ semantics مع بعض. ولو بصّينا عليه كـ parse tree، يقدر ينقل قيم بين الـ nodes.",
       "مثال: <code>E → E + T { E.value = E.value + T.value }</code>. هنا \"value\" دي attribute.",
       "يعني الـ attribute grammar بيطلع لما <b>نربط attributes بكل non-terminal في الـ CFG</b>. والـ semantic analysis بيستخدم الـ <b>attribute</b> grammar عشان يحوّل الـ <b>syntax</b> tree لـ <b>annotated syntax</b> tree."
-     ]
+     ],
+     "figH": {
+      "cc-attr-grammar": "إزاي production في الـ CFG بتبقى attribute grammar"
+     }
     },
     {
      "h": "الـ Syntax Directed Translation (SDT)",
@@ -1357,7 +1502,11 @@ AR.compiler = {
       "المعلومات بتتنقل <b>bottom-up و/أو top-down</b> في الـ parse tree على شكل attributes متعلقة بالـ nodes. قواعد الـ SDT بتستخدم 1) الـ <b>lexical values</b> بتاعة الـ nodes، 2) <b>constants</b>، و3) الـ <b>attributes</b> بتاعة الـ non-terminals.",
       "الطريقة العامة: نبني parse/syntax tree ونحسب قيم الـ attributes عند الـ nodes بإننا نزورها بترتيب معيّن. وغالباً ده ممكن يتعمل أثناء الـ parsing من غير ما نبني tree صريحة.",
       "بشكل عام، الـ SDT بيربط 1) <b>مجموعة attributes بكل node</b> في الـ grammar و2) <b>مجموعة translation rules بكل production</b>، باستخدام attributes وconstants وlexical values. والنتيجة هي الـ annotated syntax tree."
-     ]
+     ],
+     "figH": {
+      "cc-sdt-augment": "الـ grammar بعد ما زوّدنا عليها قواعد الـ SDT من <bdi>PR#1</bdi> لـ <bdi>PR#5</bdi>",
+      "cc-sdt-approach": "نبني الـ tree ونزور الـ nodes، أو نحسب أثناء الـ parsing"
+     }
     },
     {
      "h": "مثال SDT: 2 + 3 * 4",
@@ -1365,10 +1514,16 @@ AR.compiler = {
       "الـ 2 و3 و4 اسمهم <b>lexical values</b>.",
       "بنحسب بـ <b>depth-first traversal واحد</b>. المعلومات بتمشي <b>bottom-up</b>: كل attributes الـ children بتتحسب قبل الـ parent.",
       "الـ nodes اللي على الـ right-hand side ساعات بنكتبها بـ subscript 1 (E → E1 + T) عشان نفرّق الـ child عن الـ parent."
-     ]
+     ],
+     "figH": {
+      "cc-sdt-eval": "حساب قيمة المثال على الـ parse tree قاعدة بقاعدة (أو جرّب expression بتاعك)"
+     }
     },
     {
-     "h": "الـ Synthesized مقابل الـ inherited attributes"
+     "h": "الـ Synthesized مقابل الـ inherited attributes",
+     "figH": {
+      "cc-syn-inh": "الـ attribute بياخد قيمته منين في <bdi>S → ABC</bdi>"
+     }
     },
     {
      "h": "الـ Definite assignment analysis (نوتس المحاضرة، شيت المراجعة)",
@@ -1377,7 +1532,10 @@ AR.compiler = {
       "<b>Definitely assigned</b>: متأكدين إنه أخد قيمة.",
       "<b>Definitely unassigned</b>: متأكدين إنه ماخدش قيمة.",
       "<b>Unknown</b>: ممكن يكون أخد قيمة وممكن لأ."
-     ]
+     ],
+     "figH": {
+      "cc-def-assign": "التلات حالات بتوع المتغير عند المكان اللي بيتستخدم فيه"
+     }
     }
    ],
    "cards": [
@@ -1562,10 +1720,16 @@ AR.compiler = {
      "pts": [
       "الـ binding بيربط الـ <b>declaration</b> بالـ <b>uses</b> بتوعه. والـ <b>scope</b> بتاع الـ identifier هو الجزء من البرنامج اللي تقدر توصله فيه.",
       "نفس الـ identifier ممكن يشاور على حاجات مختلفة في أجزاء مختلفة من البرنامج. الـ scopes المختلفة لنفس الاسم مش بتتداخل. والـ identifier ممكن يكون الـ scope بتاعه محدود."
-     ]
+     ],
+     "figH": {
+      "cc-binding-scope": "كل x مربوط بأنهي declaration، والـ scope بتاع كل x فين"
+     }
     },
     {
-     "h": "الـ static binding مقابل الـ dynamic binding"
+     "h": "الـ static binding مقابل الـ dynamic binding",
+     "figH": {
+      "cc-static-dynamic": "الـ static مقابل الـ dynamic binding على آخر سطر في مثال المحاضرة"
+     }
     },
     {
      "h": "مثال على الـ scoping (من المحاضرة)",
@@ -1573,20 +1737,29 @@ AR.compiler = {
       "الـ x اللي جوه الـ block الداخلي بيخبّي الـ x اللي برّه لحد قوس القفل بتاع الـ block الداخلي.",
       "اتفاقية الكورس لـ \"dynamic\" في التمارين دي: آخر declaration اتنفّذ (الـ x الداخلي) بيفضل مستخدم حتى بعد الـ block. فالـ y النهائي = <b>6 (static)</b> أو <b>8 (dynamic)</b>.",
       "نسخة الـ revision sheet (int x = 3 جوه، و cout بعد كل +=): الـ output في الـ static <b>5, 6</b>؛ وفي الـ dynamic <b>5, 8</b>."
-     ]
+     ],
+     "figH": {
+      "cc-scope-run": "شغّل برامج الكورس سطر سطر بالـ static والـ dynamic binding"
+     }
     },
     {
      "h": "الـ Symbol tables",
      "pts": [
       "data structure جوه الـ compiler/interpreter كل identifier فيها مربوط بمعلومات عن الـ declaration أو الظهور بتاعه: <b>type، scope level</b> وأحيانًا <b>location</b>."
-     ]
+     ],
+     "figH": {
+      "cc-symtab-ops": "عمليات الـ symbol table الـ high level والـ low level وإحنا ماشيين في مثال المحاضرة"
+     }
     },
     {
      "h": "طرق التنفيذ والـ approaches",
      "pts": [
       "التنفيذ: <b>unordered list</b>، <b>ordered list</b>، <b>binary search trees</b>، <b>hash tables</b> (الأشهر).",
       "الـ approaches: <b>symbol table لكل scope</b>، أو <b>symbol table واحدة لكل الـ scopes</b>. يعني فيه أكتر من approach."
-     ]
+     ],
+     "figH": {
+      "cc-symtab-impl": "الـ look_up في unordered list و ordered list و binary search tree و hash table"
+     }
     },
     {
      "h": "symbol table لكل scope (شرح السلايدز خطوة بخطوة)",
@@ -1595,7 +1768,10 @@ AR.compiler = {
       "الـ type declaration → نضيف a, b, c (id, int, Init = No). وكل assignment: \"موجود في الـ ST الحالية؟ Yes\" → نعلّم إنه initiated.",
       "ندخل block 2 → نعمل <b>ST2</b> ونضيف c, d. في <code>c = a + 1</code>: الـ c لقيناه في ST2 → نعلّمه initiated؛ الـ a مش في ST2، فبندوّر في الـ parent اللي هي ST1: لقيناه وهو initiated.",
       "الـ <code>print d</code> الأخير برّه block 2، فالـ d مش visible (ده access لمتغير out-of-scope)."
-     ]
+     ],
+     "figH": {
+      "cc-st-per-scope": "الـ symbol table لكل scope: الـ ST1 والـ ST2 والـ ST3 بيتملوا event ورا event"
+     }
     },
     {
      "h": "مشكلة table لكل scope والحلول",
@@ -1605,7 +1781,12 @@ AR.compiler = {
       "<b>Solution 1</b>: ندّي كل scope رقم unique (الـ global scope_id = 0، ونزوّد واحد مع كل scope جديد). الـ Key = <code>\"identifier,scope_id\"</code>. عشان ندوّر، بنلزّق الـ scope_id الحالي في الـ identifier. وده <b>ممكن لسه يحتاج كذا بحث</b>.",
       "<b>Solution 2</b>: الـ key = الـ identifier؛ والـ value = <b>linked list</b> من pointers لـ records، record لكل usage (declaration) للـ identifier. في الـ single-pass compiler كل insertion جديد بيتحط في <b>أول</b> الـ list، وفيه structure منفصلة بتتابع الـ identifiers المعرّفة في الـ scope الحالي (عشان نمسحهم لما نخرج من الـ scope).",
       "مع solution 2، كل الـ entries بتبقى في scopes مفتوحة، و<b>أول item دايمًا هو الصح</b> للـ scope الحالي. ومش بياخد وقت."
-     ]
+     ],
+     "figH": {
+      "cc-st-one-vs-all": "الـ table لكل scope بتكلّف memory وبحث زيادة، والـ table الواحدة لكل الـ scopes لأ",
+      "cc-st-sol1": "الحل الأول: كل key بالشكل <bdi>\"identifier,scope_id\"</bdi>، وعدد مرات البحث",
+      "cc-st-sol2": "الحل التاني: linked list لكل identifier وأحدث declaration في الأول"
+     }
     }
    ],
    "cards": [
@@ -1787,7 +1968,10 @@ AR.compiler = {
      "pts": [
       "الـ <b>Runtime</b> = برنامج شغّال (في التنفيذ). والـ <b>runtime environment</b> هو حالة الـ target machine (software libraries، environment variables…) اللي بتقدّم خدمات للـ processes اللي شغّالة.",
       "الـ <b>runtime support system</b> ده package، غالبًا بيتعمل مع الـ executable نفسه، وبيظبط التواصل بين الـ process والـ runtime environment. وهو اللي بياخد باله من <b>memory allocation و de-allocation</b> وإنت البرنامج شغّال."
-     ]
+     ],
+     "figH": {
+      "cc-runtime-env": "الـ process والـ runtime support system والـ runtime environment"
+     }
     },
     {
      "h": "الـ Storage allocation: إيه اللي محتاج ميموري",
@@ -1795,7 +1979,10 @@ AR.compiler = {
       "الـ <b>Code</b>: الـ text part، ومش بيتغير وقت الـ runtime. احتياجه من الميموري <b>معروف في الـ compile time</b>.",
       "الـ <b>Procedures</b>: الـ text بتاعها static، بس بتتنادى بترتيب عشوائي، فالـ <b>stack</b> هو اللي بيدير الـ procedure calls والـ activations.",
       "الـ <b>Variables</b>: بتتعرف بس وقت الـ runtime (إلا لو global أو constant). والـ <b>Heap</b> allocation هو اللي بيديرها."
-     ]
+     ],
+     "figH": {
+      "cc-mem-needs": "الـ code والـ procedures والـ variables، وكل واحد بيتدار بأنهي storage"
+     }
     },
     {
      "h": "الـ 3 أنواع بتوع الـ storage allocation",
@@ -1804,14 +1991,20 @@ AR.compiler = {
       "الـ <b>Stack allocation</b>: الـ procedure calls والـ activations بتتدار بـ stack (<b>LIFO</b>). مفيد جدًا للـ <b>recursive</b> calls.",
       "الـ <b>Heap allocation</b>: الميموري بتتحجز وتتفك dynamically وقت الـ runtime وبترجع لما مانحتاجهاش. ودي لازمة للغات اللي بتسمح بـ <b>dynamic data structures</b>.",
       "ماعدا الـ static area، الـ <b>stack والـ heap بيكبروا ويصغروا dynamically</b>، فماينفعش ندّيهم كمية ميموري ثابتة. عشان كده الـ compiler بيستخدم storage حجمه ثابت (static) و storage حجمه متغير (stack/heap)."
-     ]
+     ],
+     "figH": {
+      "cc-alloc-kinds": "الـ static والـ stack والـ heap وقت التشغيل: مين بيكبر ويصغر"
+     }
     },
     {
      "h": "الـ Memory layout (ارسم الشكل ده)",
      "pts": [
       "الـ text part بياخد كمية ميموري ثابتة. والـ stack والـ heap موجودين في <b>الطرفين</b> بتوع ميموري البرنامج و<b>بيكبروا ويصغروا ناحية بعض</b>.",
       "الـ Lecture notes (layout بتاع C): text segment، initialized data segment (globals/statics ليها قيمة)، uninitialized data segment (BSS: globals/statics من غير قيمة)، stack (automatic variables، stack frames فيها الـ return addresses)، heap (malloc/realloc/free)."
-     ]
+     ],
+     "figH": {
+      "cc-mem-layout": "الـ memory layout: الـ text والـ static data ثابتين، والـ stack والـ heap بيكبروا ناحية بعض"
+     }
     },
     {
      "h": "الـ Formal مقابل الـ actual parameters",
@@ -1819,10 +2012,16 @@ AR.compiler = {
       "الـ <b>Formal parameters</b>: متغيرات في <b>تعريف (definition)</b> الـ function اللي اتنادت، وبتستقبل المعلومات اللي الـ caller بعتها.",
       "الـ <b>Actual parameters</b>: المتغيرات اللي قيمها أو عناوينها بتتبعت؛ وبتظهر في الـ <b>function call</b> كـ arguments.",
       "الـ formal parameters بتشيل معلومات الـ actual parameter: قيمة أو عنوان، حسب طريقة الـ passing."
-     ]
+     ],
+     "figH": {
+      "cc-formal-actual": "الـ fun_one بتبعت الـ actual_parameter للـ formal_parameter بتاع fun_two، كقيمة أو كعنوان"
+     }
     },
     {
-     "h": "طرق الـ Parameter-passing (مثال المحاضرة)"
+     "h": "طرق الـ Parameter-passing (مثال المحاضرة)",
+     "figH": {
+      "cc-param-modes": "تشغيل الـ concentrate خطوة بخطوة بالـ value والـ result والـ value-result والـ reference"
+     }
     },
     {
      "h": "أغراض الـ Symbol table (من ناحية الـ runtime)",
@@ -1840,14 +2039,21 @@ AR.compiler = {
       "<b>Redundant load and store elimination</b>: <code>y = x + 5; i = y; z = i; w = z * 3;</code> → <code>y = x + 5; i = y; w = y * 3;</code>",
       "<b>Constant folding</b>: نبسّط اللي ينفع يتحسب في الـ compile time: <code>x = 2 * 3;</code> → <code>x = 6;</code>",
       "<b>Combine operations</b>: كذا operation بتتبدّل بواحدة مكافئة. مثال السلايد: <code>X = (2*3)+5; y = X – Sqrt(3*8);</code> (ممكن تبقى <code>X = 11; y = 11 – Sqrt(24);</code>)."
-     ]
+     ],
+     "figH": {
+      "cc-peep-redundant": "الـ peephole window بتمشي على الكود: الـ redundant load and store elimination",
+      "cc-peep-fold": "الـ constant folding والـ combine operations على كود الـ slide"
+     }
     },
     {
      "h": "الـ Loop optimization",
      "pts": [
       "الـ loop optimization بيحسّن الـ <b>cache performance</b> وبيقلل الـ <b>overheads</b> بتاعة تنفيذ الـ loops.",
       "نسخة الامتحان: <code>for (i=0; i &lt; a→length-1; i++) swap_elements(a[i], a[i+1]);</code> → <code>int x = a→length-1; for (i=0; i &lt; x; i++) swap_elements(a[i], a[i+1]);</code> فالـ length-1 بيتحسب مرة واحدة بدل ما يتحسب كل iteration، وده بيوفّر processing ووقت."
-     ]
+     ],
+     "figH": {
+      "cc-loop-hoist": "حساب حد الـ loop مرة واحدة: عدد مرات الحساب في كل check"
+     }
     }
    ],
    "cards": [

@@ -43,7 +43,10 @@ COURSES.compiler = {
        "Used by C, C++, Java."
       ]
      ],
-     "fig": "cc-comp-vs-interp"
+     "fig": "cc-comp-vs-interp",
+     "figH": {
+      "cc-comp-vs-interp": "Interpreter vs compiler, row by row: translation, speed, memory and languages"
+     }
     },
     {
      "h": "Phases of a compiler (draw this figure)",
@@ -56,7 +59,15 @@ COURSES.compiler = {
      "fig": [
       "cc-phases",
       "cc-is-phase"
-     ]
+     ],
+     "figAt": {
+      "cc-phases": 1,
+      "cc-is-phase": 2
+     },
+     "figH": {
+      "cc-phases": "a[index]=4+2 through the six phases, with the three shared helpers",
+      "cc-is-phase": "Try it: phase or not a phase?"
+     }
     },
     {
      "h": "1) Lexical analysis (scanner)",
@@ -64,7 +75,13 @@ COURSES.compiler = {
       "Collects sequences of characters into meaningful units called <b>tokens</b>.",
       "Example: <code>a[index]=4+2</code> gives: <code>a</code> identifier, <code>[</code> left bracket, <code>index</code> identifier, <code>]</code> right bracket, <code>=</code> assignment, <code>4</code> number, <code>+</code> plus sign, <code>2</code> number."
      ],
-     "fig": "cc-scanner"
+     "fig": "cc-scanner",
+     "figAt": {
+      "cc-scanner": 1
+     },
+     "figH": {
+      "cc-scanner": "Try it: scan a[index]=4+2 (or your own line) token by token"
+     }
     },
     {
      "h": "2) Syntax analysis (parser)",
@@ -78,7 +95,15 @@ COURSES.compiler = {
      "fig": [
       "cc-parse-tree",
       "cc-syntax-tree"
-     ]
+     ],
+     "figAt": {
+      "cc-parse-tree": 2,
+      "cc-syntax-tree": 4
+     },
+     "figH": {
+      "cc-parse-tree": "The parse tree of a[index]=4+2, keeping every grammar node (slide 7)",
+      "cc-syntax-tree": "The condensed syntax tree (AST) of a[index]=4+2 (slide 8)"
+     }
     },
     {
      "h": "3) Semantic analyzer",
@@ -88,7 +113,13 @@ COURSES.compiler = {
       "<b>Attributes</b>: the extra pieces of information computed by the semantic analyzer. The result is the <b>annotated syntax tree</b>: <code>a</code> = array of integer, <code>index</code> = integer, <code>4</code> and <code>2</code> = integer, subscript-expression = integer, additive-expression = integer.",
       "Figure (slide 10, The Annotated Syntax Tree): the syntax tree of <code>a[index]=4+2</code> with attributes under each node. <b>Assign-expression</b> has two children: <b>subscript-expression</b> (integer) and <b>additive-expression</b> (integer). subscript-expression → identifier <code>a</code> (array of integer) and identifier <code>index</code> (integer). additive-expression → number <code>4</code> (integer) and number <code>2</code> (integer)."
      ],
-     "fig": "cc-annotated-tree"
+     "fig": "cc-annotated-tree",
+     "figAt": {
+      "cc-annotated-tree": 3
+     },
+     "figH": {
+      "cc-annotated-tree": "The semantic analyzer adds the types: the annotated syntax tree (slide 10)"
+     }
     },
     {
      "h": "4) Source code optimizer",
@@ -102,7 +133,15 @@ COURSES.compiler = {
      "fig": [
       "cc-fold-tree",
       "cc-fold-ir"
-     ]
+     ],
+     "figAt": {
+      "cc-fold-tree": 3,
+      "cc-fold-ir": 4
+     },
+     "figH": {
+      "cc-fold-tree": "Constant folding on the annotated tree: 4+2 becomes one node 6",
+      "cc-fold-ir": "The same folding on intermediate code, from two lines to a[index]=6"
+     }
     },
     {
      "h": "5) Code generator and 6) target code optimizer",
@@ -111,7 +150,13 @@ COURSES.compiler = {
       "The <b>code generator</b> takes the intermediate code (IR) and generates code for the <b>target machine</b>. The <b>properties of the target machine</b> become the major factor: its instructions and data representation. The example is a code sequence in a hypothetical assembly language (‡ MUL R0,2 because an integer is taken to be 2 bytes on this machine; the slide does not say why).",
       "The <b>target code optimizer</b> improves the generated code: <b>choosing address modes</b>, <b>replacing instructions</b> (MUL by 2 becomes SHL, a shift left) and <b>eliminating redundant</b> instructions."
      ],
-     "fig": "cc-codegen"
+     "fig": "cc-codegen",
+     "figAt": {
+      "cc-codegen": 1
+     },
+     "figH": {
+      "cc-codegen": "From a[index]=6 to assembly, then five instructions optimized into three"
+     }
     },
     {
      "h": "Principal data structures for communication among phases",
@@ -123,7 +168,10 @@ COURSES.compiler = {
       "<b>Intermediate code</b>: kept as an array of text strings, a temporary text, or a linked list of structures (e.g. three-address code, p-code). It should be easy to reorganize.",
       "<b>Temporary files</b>: hold the products of intermediate steps. They solve memory constraints and allow <b>back-patching</b> of addresses during code generation."
      ],
-     "fig": "cc-data-structs"
+     "fig": "cc-data-structs",
+     "figH": {
+      "cc-data-structs": "Try it: the six data structures that carry information between the phases"
+     }
     }
    ],
    "cards": [
@@ -500,7 +548,10 @@ COURSES.compiler = {
       "Also called <b>scanning</b>: the stream of characters is read left to right and grouped into tokens. Keywords are recognized here.",
       "<b>Token vs lexeme</b> (lecture notes): a token is a logical category (id, relop, number); a lexeme is the actual string instance (e.g. <code>distance</code>). <code>if distance &gt;= rate * (time1 – time0) then distance := maxdist;</code> → <code>if id relop id * ( id – id ) then id := id ;</code>"
      ],
-     "fig": "cc-lexer"
+     "fig": "cc-lexer",
+     "figH": {
+      "cc-lexer": "The scanner at work: tokens and lexemes, keywords, removed comments and white space, errors with line numbers"
+     }
     },
     {
      "h": "Alphabets and strings",
@@ -510,7 +561,13 @@ COURSES.compiler = {
       "The set of all integer constants or the set of all variable names are sets of strings, where the individual letters are taken from a particular alphabet.",
       "Such a set of strings is called a language. For integers, the alphabet consists of the digits 0-9, and for variable names the alphabet contains both letters and digits (and perhaps a few other characters, such as underscore)."
      ],
-     "fig": "cc-strings"
+     "fig": "cc-strings",
+     "figAt": {
+      "cc-strings": 1
+     },
+     "figH": {
+      "cc-strings": "Try it: is your word a string over the alphabet, and how long is it?"
+     }
     },
     {
      "h": "Operations on languages",
@@ -522,7 +579,10 @@ COURSES.compiler = {
       "<b>Positive closure</b>: Σ+ is the set of all strings that can be made by concatenating one or more strings in Σ. {a}+ = {a, aa, aaa, aaaa, …}.",
       "<b>Or operator</b>: a|b|c = {a, b, c}."
      ],
-     "fig": "cc-lang-ops"
+     "fig": "cc-lang-ops",
+     "figH": {
+      "cc-lang-ops": "Try it: union, concatenation, Kleene and positive closure, and the or operator"
+     }
     },
     {
      "h": "Regular expressions",
@@ -531,7 +591,10 @@ COURSES.compiler = {
       "Precedence: <b>*</b> binds tightest, then <b>concatenation</b>, then <b>|</b>. So <code>a|ab*</code> means <code>a|(a(b*))</code>.",
       "Examples: 0|1 = {0,1}; 0* = {ε,0,00,…}; (0|1)(0|1) = {00,01,10,11}; 0|0*1 = {0,1,01,001,…}; exactly one b over {a,b,c}: (a|c)*b(a|c)*."
      ],
-     "fig": "cc-regex-test"
+     "fig": "cc-regex-test",
+     "figH": {
+      "cc-regex-test": "Try it: test strings against the slide's regular expressions, with precedence shown"
+     }
     },
     {
      "h": "Algebraic properties of regular expressions",
@@ -588,7 +651,10 @@ COURSES.compiler = {
      "pts": [
       "Exam traps: <b>aε = εa = a</b> (not ε). <b>Yε = εY</b> (so \"Yε ≠ εY\" is false). <b>(X|Y)* ≠ X*|Y*</b>: (X|Y)* contains XY, but X*|Y* does not."
      ],
-     "fig": "cc-re-algebra"
+     "fig": "cc-re-algebra",
+     "figH": {
+      "cc-re-algebra": "Try it: check each algebraic law by comparing the strings both sides produce"
+     }
     },
     {
      "h": "Finite automata",
@@ -625,7 +691,15 @@ COURSES.compiler = {
      "fig": [
       "cc-state-transition",
       "cc-fa-01"
-     ]
+     ],
+     "figAt": {
+      "cc-state-transition": 2,
+      "cc-fa-01": 3
+     },
+     "figH": {
+      "cc-state-transition": "States and transitions: how a finite automaton is drawn (slide 9)",
+      "cc-fa-01": "Try it: run strings through the automaton for 01"
+     }
     },
     {
      "h": "Finite automata for a*, a+ and (a|b)*",
@@ -664,7 +738,10 @@ COURSES.compiler = {
        "q2"
       ]
      ],
-     "fig": "cc-fa-closures"
+     "fig": "cc-fa-closures",
+     "figH": {
+      "cc-fa-closures": "Try it: run strings through the automata for a*, a+ and (a|b)*"
+     }
     },
     {
      "h": "Finite automaton for 1*01(0|1)*",
@@ -693,7 +770,10 @@ COURSES.compiler = {
        "q2"
       ]
      ],
-     "fig": "cc-fa-1s01"
+     "fig": "cc-fa-1s01",
+     "figH": {
+      "cc-fa-1s01": "Try it: run strings through the automaton for 1*01(0|1)*"
+     }
     },
     {
      "h": "NFA vs DFA",
@@ -728,7 +808,10 @@ COURSES.compiler = {
       "Example (slide 12, DFA): an arrow into a state on the left; two edges go from it to a state on the right, the upper edge labelled s and the lower edge labelled t; a line leaves the right state.",
       "Example (slide 12, NFA): an arrow into a state on the left; an edge labelled ε goes up into an oval containing s and another edge labelled ε goes down into an oval containing t; from each oval an edge labelled ε goes into a state on the right, which has an outgoing edge labelled ε."
      ],
-     "fig": "cc-nfa-dfa"
+     "fig": "cc-nfa-dfa",
+     "figH": {
+      "cc-nfa-dfa": "NFA vs DFA on the slide's two examples, row by row"
+     }
     }
    ],
    "cards": [
@@ -1110,7 +1193,10 @@ COURSES.compiler = {
       "3) It contains multiple paths with the same input string that the automaton can recognize (try the expression <b>001</b>). Figure (slide 3): A has a loop on 0,1; A –0→ C; A –1→ B; B –1→ C; C has a loop on 0,1; B and C are final states (double circles). ‡ For 001: A –0→ A –0→ A –1→ B, A –0→ A –0→ C –1→ C and A –0→ C –0→ C –1→ C all end in a final state.",
       "So <b>a loop by itself does NOT make an automaton non-deterministic</b>. A DFA may contain loops. Having several accept states does not either."
      ],
-     "fig": "cc-nfa-signs"
+     "fig": "cc-nfa-signs",
+     "figH": {
+      "cc-nfa-signs": "Try it: the three signs of an NFA, each on its slide automaton"
+     }
     },
     {
      "h": "NFA vs. DFA",
@@ -1146,7 +1232,10 @@ COURSES.compiler = {
        "Every single pair of input symbols and states may contain many possible next states."
       ]
      ],
-     "fig": "cc-nfa-vs-dfa"
+     "fig": "cc-nfa-vs-dfa",
+     "figH": {
+      "cc-nfa-vs-dfa": "Slide 4's DFA and NFA side by side, with the four-row comparison"
+     }
     },
     {
      "h": "Transition tables",
@@ -1191,7 +1280,13 @@ COURSES.compiler = {
        "-"
       ]
      ],
-     "fig": "cc-trans-table"
+     "fig": "cc-trans-table",
+     "figAt": {
+      "cc-trans-table": 1
+     },
+     "figH": {
+      "cc-trans-table": "Slide 5's automaton becomes a transition table, row by row"
+     }
     },
     {
      "h": "NFA into DFA: first transition table (with empty transition)",
@@ -1219,7 +1314,13 @@ COURSES.compiler = {
        "B"
       ]
      ],
-     "fig": "cc-first-table"
+     "fig": "cc-first-table",
+     "figAt": {
+      "cc-first-table": 1
+     },
+     "figH": {
+      "cc-first-table": "Filling the first transition table (with ε) of slide 6's NFA, cell by cell"
+     }
     },
     {
      "h": "NFA → DFA (subset construction), lecture method",
@@ -1247,7 +1348,10 @@ COURSES.compiler = {
        "A"
       ]
      ],
-     "fig": "cc-subset"
+     "fig": "cc-subset",
+     "figH": {
+      "cc-subset": "Try it: the lecture's three steps turn slide 6's NFA into a DFA"
+     }
     },
     {
      "h": "Worked exam NFA 1 (appears in 2021–2025 papers)",
@@ -1282,7 +1386,10 @@ COURSES.compiler = {
        "{2,3}"
       ]
      ],
-     "fig": "cc-subset-exam1"
+     "fig": "cc-subset-exam1",
+     "figH": {
+      "cc-subset-exam1": "Try it: exam NFA 1 converted to a DFA, step by step"
+     }
     },
     {
      "h": "Worked exam NFA 2 (with ε), 2024/25 paper",
@@ -1322,7 +1429,10 @@ COURSES.compiler = {
        "{2,3}"
       ]
      ],
-     "fig": "cc-subset-exam2"
+     "fig": "cc-subset-exam2",
+     "figH": {
+      "cc-subset-exam2": "Try it: exam NFA 2 (with ε) converted to a DFA, ε-closures first"
+     }
     }
    ],
    "cards": [
@@ -1627,7 +1737,16 @@ COURSES.compiler = {
       "Syntax analysis (<b>parsing</b>) is the <b>second phase</b>. The lexer finds tokens with regular expressions, but it <b>cannot check the syntax</b> of a sentence because of the limits of regular expressions.",
       "Regular expressions <b>cannot check balancing tokens</b> such as parentheses, so this phase uses a <b>context-free grammar (CFG)</b>.",
       "The parser takes the <b>token stream</b> from the lexer, checks it against the production rules to detect errors, and outputs a <b>parse tree</b>. Parsing = the process of finding a parse tree for a string of tokens."
-     ]
+     ],
+     "fig": [
+      "cc-parse-pipeline"
+     ],
+     "figAt": {
+      "cc-parse-pipeline": 2
+     },
+     "figH": {
+      "cc-parse-pipeline": "From characters to a parse tree: the lexer cannot see unbalanced parentheses, the parser can"
+     }
     },
     {
      "h": "The four components of a CFG",
@@ -1638,7 +1757,16 @@ COURSES.compiler = {
       "<b>Start symbol (S)</b>: where derivation begins. Strings are derived from the start symbol by repeatedly replacing a non-terminal by the right side of one of its productions.",
       "There is <b>no \"end symbol\"</b> in a CFG (common exam distractor).",
       "Example: S→ABC, A→a|Aa, B→b|Bb, C→c. Terminals {a,b,c}; non-terminals {S,A,B,C}; start S."
-     ]
+     ],
+     "fig": [
+      "cc-cfg-parts"
+     ],
+     "figAt": {
+      "cc-cfg-parts": 5
+     },
+     "figH": {
+      "cc-cfg-parts": "The four components of the slide-5 grammar, and no end symbol"
+     }
     },
     {
      "h": "Derivations",
@@ -1646,7 +1774,19 @@ COURSES.compiler = {
       "A <b>derivation</b> is a sequence of production rules applied to get the input string. At each step we decide (1) which non-terminal to replace and (2) which production to use.",
       "<b>Leftmost derivation</b>: always replace the leftmost non-terminal (scan left to right). <b>Rightmost</b>: always replace the rightmost one (scan right to left).",
       "A top-down parser produces a <b>leftmost derivation</b>. Bottom-up (shift-reduce, LR) parsers produce a rightmost derivation in reverse."
-     ]
+     ],
+     "fig": [
+      "cc-cfg-derive",
+      "cc-top-bottom"
+     ],
+     "figAt": {
+      "cc-cfg-derive": 0,
+      "cc-top-bottom": 2
+     },
+     "figH": {
+      "cc-cfg-derive": "Derive a string yourself: pick the non-terminal, then the production",
+      "cc-top-bottom": "Top-down builds the leftmost derivation; bottom-up undoes the rightmost one"
+     }
     },
     {
      "h": "Example: int*int with E→TX, X→+E|ε, T→int Y|(E), Y→*T|ε",
@@ -1693,7 +1833,13 @@ COURSES.compiler = {
        "Y → ε",
        "int * int"
       ]
-     ]
+     ],
+     "fig": [
+      "cc-int-derive"
+     ],
+     "figH": {
+      "cc-int-derive": "The slide-8 table step by step, with the parse tree growing"
+     }
     },
     {
      "h": "Parse trees",
@@ -1703,7 +1849,19 @@ COURSES.compiler = {
       "A parse tree shows <b>associativity and precedence</b>: the deepest sub-tree is evaluated first, so its operator has precedence over operators in parent nodes.",
       "Slides build the leftmost tree for id+id*id step by step: E→E*E, E→E+E*E, E→id+E*E, E→id+id*E, E→id+id*id.",
       "Official revision-sheet key: \"A leftmost parsing tree grows from the <b>right</b> side\" (answer the MCQ/T-F this way)."
-     ]
+     ],
+     "fig": [
+      "cc-tree-parts",
+      "cc-lm-tree"
+     ],
+     "figAt": {
+      "cc-tree-parts": 2,
+      "cc-lm-tree": 3
+     },
+     "figH": {
+      "cc-tree-parts": "Leaves, interior nodes, in-order traversal and the deepest sub-tree first",
+      "cc-lm-tree": "The leftmost parsing tree of id+id*id, built in the slides' five steps"
+     }
     },
     {
      "h": "Ambiguity",
@@ -1713,11 +1871,29 @@ COURSES.compiler = {
       "If only one leftmost (or rightmost) tree exists for every sentence, the grammar is <b>unambiguous</b>.",
       "Example: E→E+E | E–E | id is ambiguous. id–id+id has two trees (below)."
      ],
-     "code": "LMD 1 (root is +)            LMD 2 (root is -)\nE ⇒ E+E                       E ⇒ E-E\n  ⇒ E-E+E                       ⇒ id-E\n  ⇒ id-E+E                      ⇒ id-E+E\n  ⇒ id-id+E                     ⇒ id-id+E\n  ⇒ id-id+id                    ⇒ id-id+id\n\nTree 1:        E               Tree 2:     E\n            /  |                       /  |             E   +   E                   E   -   E\n         / |      |                   |     / |         E  -  E    id                  id   E  +  E\n        |     |                             |     |\n        id    id                            id    id"
+     "code": "LMD 1 (root is +)            LMD 2 (root is -)\nE ⇒ E+E                       E ⇒ E-E\n  ⇒ E-E+E                       ⇒ id-E\n  ⇒ id-E+E                      ⇒ id-E+E\n  ⇒ id-id+E                     ⇒ id-id+E\n  ⇒ id-id+id                    ⇒ id-id+id\n\nTree 1:        E               Tree 2:     E\n            /  |                       /  |             E   +   E                   E   -   E\n         / |      |                   |     / |         E  -  E    id                  id   E  +  E\n        |     |                             |     |\n        id    id                            id    id",
+     "fig": [
+      "cc-lmd-rmd",
+      "cc-ambig-trees"
+     ],
+     "figAt": {
+      "cc-lmd-rmd": 1,
+      "cc-ambig-trees": 3
+     },
+     "figH": {
+      "cc-lmd-rmd": "A leftmost and a rightmost derivation of one string can share one tree",
+      "cc-ambig-trees": "Two leftmost derivations of id-id+id, two parse trees"
+     }
     },
     {
      "h": "More ambiguity proofs from the sheets",
-     "code": "S → 0A | 1B,  A → 0AA | 1S | 1,  B → 1BB | 0S | 0,   string 001101\nLMD 1: S ⇒ 0A ⇒ 00AA ⇒ 001SA ⇒ 0011BA ⇒ 00110A ⇒ 001101\nLMD 2: S ⇒ 0A ⇒ 00AA ⇒ 001A  ⇒ 0011S  ⇒ 00110A ⇒ 001101\n\nS → Ab | aaB,  A → a | Aa,  B → b,   string aab\nLMD 1: S ⇒ aaB ⇒ aab\nLMD 2: S ⇒ Ab ⇒ Aab ⇒ aab\n\nS → AB | C, A → aAb | ab, B → cBd | cd, C → aCd | aDd, D → bDc | bc,  string aabbccdd\nLMD 1: S ⇒ AB ⇒ aAbB ⇒ aabbB ⇒ aabbcBd ⇒ aabbccdd\nLMD 2: S ⇒ C ⇒ aCd ⇒ aaDdd ⇒ aabDcdd ⇒ aabbccdd\n\nUnambiguous check: E → E+T | T, T → T*F | F, F → (E) | id,   string id+id*id\nE ⇒ E+T ⇒ T+T ⇒ F+T ⇒ id+T ⇒ id+T*F ⇒ id+F*F ⇒ id+id*F ⇒ id+id*id"
+     "code": "S → 0A | 1B,  A → 0AA | 1S | 1,  B → 1BB | 0S | 0,   string 001101\nLMD 1: S ⇒ 0A ⇒ 00AA ⇒ 001SA ⇒ 0011BA ⇒ 00110A ⇒ 001101\nLMD 2: S ⇒ 0A ⇒ 00AA ⇒ 001A  ⇒ 0011S  ⇒ 00110A ⇒ 001101\n\nS → Ab | aaB,  A → a | Aa,  B → b,   string aab\nLMD 1: S ⇒ aaB ⇒ aab\nLMD 2: S ⇒ Ab ⇒ Aab ⇒ aab\n\nS → AB | C, A → aAb | ab, B → cBd | cd, C → aCd | aDd, D → bDc | bc,  string aabbccdd\nLMD 1: S ⇒ AB ⇒ aAbB ⇒ aabbB ⇒ aabbcBd ⇒ aabbccdd\nLMD 2: S ⇒ C ⇒ aCd ⇒ aaDdd ⇒ aabDcdd ⇒ aabbccdd\n\nUnambiguous check: E → E+T | T, T → T*F | F, F → (E) | id,   string id+id*id\nE ⇒ E+T ⇒ T+T ⇒ F+T ⇒ id+T ⇒ id+T*F ⇒ id+F*F ⇒ id+id*F ⇒ id+id*id",
+     "fig": [
+      "cc-ambig-finder"
+     ],
+     "figH": {
+      "cc-ambig-finder": "Every leftmost derivation of the sheets' strings, or of your own grammar"
+     }
     },
     {
      "h": "Left recursion",
@@ -1726,7 +1902,19 @@ COURSES.compiler = {
       "It is a problem for <b>top-down parsers</b>: they start from the start symbol, keep expanding the same left non-terminal, can't judge when to stop and go into an <b>infinite loop</b>. So <b>LL(1) cannot be applied to a left-recursive grammar</b>.",
       "(1) A → Aα | β is <b>immediate</b> left recursion. (2) S → Aα | β with A ⇒ Sd is <b>indirect</b> left recursion.",
       "A → Ab | c is left-recursive."
-     ]
+     ],
+     "fig": [
+      "cc-lr-loop",
+      "cc-lr-kinds"
+     ],
+     "figAt": {
+      "cc-lr-loop": 1,
+      "cc-lr-kinds": 2
+     },
+     "figH": {
+      "cc-lr-loop": "A → Ab | c sends a top-down parser into an infinite loop; the rewritten grammar does not",
+      "cc-lr-kinds": "Immediate and indirect left recursion (slide 15)"
+     }
     },
     {
      "h": "Removing left recursion",
@@ -1737,7 +1925,13 @@ COURSES.compiler = {
       "A → ABα | Aa | a   becomes   A → aA'  ,  A' → BαA' | aA' | ε",
       "A → aB | Ad        becomes   A → aBA' ,  A' → dA' | ε",
       "A → Abc | b        becomes   A → bA'  ,  A' → bcA' | ε"
-     ]
+     ],
+     "fig": [
+      "cc-lr-remove"
+     ],
+     "figH": {
+      "cc-lr-remove": "Remove left recursion step by step: split into α and β, then A → βA', A' → αA' | ε"
+     }
     }
    ],
    "cards": [
@@ -2113,7 +2307,19 @@ COURSES.compiler = {
       "<b>FIRST(α)</b> = the set of terminals that begin strings derived from α. If α ⇒* ε then ε is also in FIRST(α).",
       "In predictive parsing, for A → α | β, if FIRST(α) and FIRST(β) are disjoint, we pick the right A-production by looking at the next input symbol.",
       "<b>FOLLOW(A)</b> = the set of terminals a that can appear immediately to the right of A in some sentential form (S ⇒* αAaβ). If A can be the rightmost symbol, <b>$</b> is in FOLLOW(A). FOLLOW never contains ε."
-     ]
+     ],
+     "fig": [
+      "cc-first-pick",
+      "cc-follow-form"
+     ],
+     "figAt": {
+      "cc-first-pick": 1,
+      "cc-follow-form": 2
+     },
+     "figH": {
+      "cc-first-pick": "Disjoint FIRST sets let one input symbol pick the production",
+      "cc-follow-form": "FIRST and FOLLOW read off Example 1's sentential forms"
+     }
     },
     {
      "h": "Rules for FIRST",
@@ -2121,7 +2327,16 @@ COURSES.compiler = {
       "1. If X is a terminal, FIRST(X) = {X}.",
       "2. If X → Y1Y2…Yk, put a in FIRST(X) if a ∈ FIRST(Yi) and ε is in all of FIRST(Y1)…FIRST(Yi-1). If ε is in every FIRST(Yj), add ε to FIRST(X).",
       "3. If X → ε is a production, add ε to FIRST(X)."
-     ]
+     ],
+     "fig": [
+      "cc-first-sets"
+     ],
+     "figAt": {
+      "cc-first-sets": 2
+     },
+     "figH": {
+      "cc-first-sets": "FIRST computed production by production, naming the rule each time"
+     }
     },
     {
      "h": "Rules for FOLLOW",
@@ -2129,7 +2344,16 @@ COURSES.compiler = {
       "1. Put $ in FOLLOW(S), where S is the start symbol.",
       "2. If A → αBβ, everything in FIRST(β) except ε is in FOLLOW(B).",
       "3. If A → αB, or A → αBβ where FIRST(β) contains ε, then everything in FOLLOW(A) is in FOLLOW(B)."
-     ]
+     ],
+     "fig": [
+      "cc-follow-sets"
+     ],
+     "figAt": {
+      "cc-follow-sets": 2
+     },
+     "figH": {
+      "cc-follow-sets": "FOLLOW computed occurrence by occurrence with rules 1, 2 and 3"
+     }
     },
     {
      "h": "LL(1) grammars",
@@ -2138,7 +2362,19 @@ COURSES.compiler = {
       "<b>L</b>: scan input Left to right. <b>L</b>: Leftmost derivation. <b>1</b>: one input symbol of lookahead.",
       "G is LL(1) iff for every pair A → α | β: (1) α and β do not both derive strings beginning with the same terminal; (2) at most one of them can derive ε; (3) if α ⇒* ε, then β derives no string beginning with a terminal in FOLLOW(A).",
       "So: no left recursion, no ambiguity, and no two entries in one table cell."
-     ]
+     ],
+     "fig": [
+      "cc-ll1-letters",
+      "cc-ll1-check"
+     ],
+     "figAt": {
+      "cc-ll1-letters": 1,
+      "cc-ll1-check": 3
+     },
+     "figH": {
+      "cc-ll1-letters": "Left-to-right scan, leftmost derivation, one lookahead symbol on abd",
+      "cc-ll1-check": "The three LL(1) conditions checked pair by pair"
+     }
     },
     {
      "h": "Building the predictive parsing table M",
@@ -2148,7 +2384,16 @@ COURSES.compiler = {
       "2. If ε ∈ FIRST(α), add A → α to M[A, b] for each b in FOLLOW(A) (including $).",
       "Empty entries are errors.",
       "<b>Parsing</b>: stack starts as S$ and input as w$. If the top is a terminal equal to the input symbol, <b>match</b> (pop and advance). If it is a non-terminal A, replace it with the right side of M[A, a] (pushed so the first symbol is on top). Accept when both are $."
-     ]
+     ],
+     "fig": [
+      "cc-ll1-moves"
+     ],
+     "figAt": {
+      "cc-ll1-moves": 4
+     },
+     "figH": {
+      "cc-ll1-moves": "The parser's moves: expand, match, accept and error"
+     }
     },
     {
      "h": "Example 1: S → A, A → aB | Ad, B → b, C → g",
@@ -2216,7 +2461,18 @@ COURSES.compiler = {
        "C → g",
        ""
       ]
-     ]
+     ],
+     "fig": [
+      "cc-leftrec-ex1",
+      "cc-table-ex1"
+     ],
+     "figAt": {
+      "cc-leftrec-ex1": 0
+     },
+     "figH": {
+      "cc-leftrec-ex1": "Removing the left recursion of A → aB | Ad",
+      "cc-table-ex1": "Example 1's table M filled production by production"
+     }
     },
     {
      "h": "Example 1: parsing abd",
@@ -2271,7 +2527,13 @@ COURSES.compiler = {
        "$",
        "accept"
       ]
-     ]
+     ],
+     "fig": [
+      "cc-parse-abd"
+     ],
+     "figH": {
+      "cc-parse-abd": "Parsing abd: stack, input and action, with the parse tree growing"
+     }
     },
     {
      "h": "Example 2: expression grammar",
@@ -2345,7 +2607,13 @@ COURSES.compiler = {
        "",
        ""
       ]
-     ]
+     ],
+     "fig": [
+      "cc-table-expr"
+     ],
+     "figH": {
+      "cc-table-expr": "The expression grammar's FIRST, FOLLOW and table M, cell by cell"
+     }
     },
     {
      "h": "Exam grammar: S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε",
@@ -2416,7 +2684,21 @@ COURSES.compiler = {
       "FOLLOW(U): FIRST(VW) − ε = {a, c}; VW can vanish, so add FOLLOW(S).",
       "FOLLOW(V): FIRST(W) − ε = {c}, plus FOLLOW(S) because W is nullable. FOLLOW(W) = FOLLOW(S).",
       "No cell has two entries, so the grammar is LL(1). The full parse of (dc)ac is in the 2024/25 exam below."
-     ]
+     ],
+     "fig": [
+      "cc-exam-follow",
+      "cc-exam-table",
+      "cc-exam-parse"
+     ],
+     "figAt": {
+      "cc-exam-follow": 2,
+      "cc-exam-table": 3
+     },
+     "figH": {
+      "cc-exam-follow": "The exam grammar's FOLLOW sets, step by step",
+      "cc-exam-table": "The exam grammar's table M: no cell with two entries",
+      "cc-exam-parse": "Parsing (dc)ac with the exam grammar's table"
+     }
     }
    ],
    "cards": [
@@ -2758,7 +3040,16 @@ COURSES.compiler = {
       "Makes sure that the declarations and statements of a program are <b>semantically correct</b>.",
       "It uses the <b>syntax tree and the symbol table</b> to check whether the program is consistent with the language definition. It gathers <b>type information</b> and stores it in the syntax tree or the symbol table. The compiler later uses this during <b>intermediate-code generation</b>.",
       "Type checking is done during semantic analysis, i.e. during <b>syntax-directed translation</b>. Input: syntax tree. Output: <b>annotated syntax tree</b> (a parse tree showing the attribute values at each node)."
-     ]
+     ],
+     "fig": [
+      "cc-sem-pipeline"
+     ],
+     "figAt": {
+      "cc-sem-pipeline": 2
+     },
+     "figH": {
+      "cc-sem-pipeline": "What semantic analysis takes in and what it gives out"
+     }
     },
     {
      "h": "Semantic errors the analyzer should recognize",
@@ -2778,7 +3069,16 @@ COURSES.compiler = {
       "It gives <b>semantics</b> to the CFG and can specify both syntax and semantics. Viewed as a parse tree, it can pass values among the nodes.",
       "Example: <code>E → E + T { E.value = E.value + T.value }</code>. Here \"value\" is an attribute.",
       "So an attribute grammar is produced by <b>attaching attributes to each non-terminal of the CFG</b>. Semantic analysis uses the <b>attribute</b> grammar to transform the <b>syntax</b> tree into the <b>annotated syntax</b> tree."
-     ]
+     ],
+     "fig": [
+      "cc-attr-grammar"
+     ],
+     "figAt": {
+      "cc-attr-grammar": 3
+     },
+     "figH": {
+      "cc-attr-grammar": "From a CFG production to an attribute grammar"
+     }
     },
     {
      "h": "Syntax Directed Translation (SDT)",
@@ -2787,7 +3087,19 @@ COURSES.compiler = {
       "Information is passed <b>bottom-up and/or top-down</b> the parse tree as attributes attached to the nodes. SDT rules use 1) <b>lexical values</b> of nodes, 2) <b>constants</b> and 3) <b>attributes</b> of non-terminals.",
       "General approach: build a parse/syntax tree and compute the attribute values at its nodes by visiting them in some order. Often this can be done during parsing, without an explicit tree.",
       "In general, SDT associates 1) a <b>set of attributes to every node</b> of the grammar and 2) a <b>set of translation rules to every production</b>, using attributes, constants and lexical values. The result is the annotated syntax tree."
-     ]
+     ],
+     "fig": [
+      "cc-sdt-augment",
+      "cc-sdt-approach"
+     ],
+     "figAt": {
+      "cc-sdt-augment": 1,
+      "cc-sdt-approach": 3
+     },
+     "figH": {
+      "cc-sdt-augment": "The grammar augmented with the SDT rules PR#1 to PR#5",
+      "cc-sdt-approach": "Build the tree and visit its nodes, or compute during parsing"
+     }
     },
     {
      "h": "SDT example: 2 + 3 * 4",
@@ -2796,7 +3108,13 @@ COURSES.compiler = {
       "2, 3 and 4 are called <b>lexical values</b>.",
       "Evaluate with <b>one depth-first traversal</b>. The information flows <b>bottom-up</b>: all children's attributes are computed before the parent's.",
       "Right-hand-side nodes are sometimes written with subscript 1 (E → E1 + T) to tell the child from the parent."
-     ]
+     ],
+     "fig": [
+      "cc-sdt-eval"
+     ],
+     "figH": {
+      "cc-sdt-eval": "2 + 3 * 4 evaluated on its parse tree, rule by rule (or try your own)"
+     }
     },
     {
      "h": "Synthesized vs inherited attributes",
@@ -2821,7 +3139,13 @@ COURSES.compiler = {
        "Passed <b>upwards</b>, leaves → root (e.g. E → E + T).",
        "Example: a symbol table is synthesized by a declaration and inherited by the scope of that declaration."
       ]
-     ]
+     ],
+     "fig": [
+      "cc-syn-inh"
+     ],
+     "figH": {
+      "cc-syn-inh": "Where the attribute takes its value from in S → ABC"
+     }
     },
     {
      "h": "Definite assignment analysis (lecture notes, revision sheet)",
@@ -2830,7 +3154,13 @@ COURSES.compiler = {
       "<b>Definitely assigned</b>: known with certainty to be assigned.",
       "<b>Definitely unassigned</b>: known with certainty to be unassigned.",
       "<b>Unknown</b>: may or may not be assigned."
-     ]
+     ],
+     "fig": [
+      "cc-def-assign"
+     ],
+     "figH": {
+      "cc-def-assign": "The three states of a variable at the point where it is used"
+     }
     }
    ],
    "cards": [
@@ -3173,7 +3503,16 @@ COURSES.compiler = {
      "pts": [
       "Binding connects a <b>declaration</b> and its <b>uses</b>. The <b>scope</b> of an identifier is the portion of the program where it is accessible.",
       "The same identifier may refer to different things in different parts of the program. Different scopes for the same name do not overlap. An identifier may have restricted scope."
-     ]
+     ],
+     "fig": [
+      "cc-binding-scope"
+     ],
+     "figAt": {
+      "cc-binding-scope": 1
+     },
+     "figH": {
+      "cc-binding-scope": "Which declaration each x is bound to, and where each x is in scope"
+     }
     },
     {
      "h": "Static vs dynamic binding",
@@ -3198,7 +3537,13 @@ COURSES.compiler = {
        "Resolved at <b>compile time</b>.",
        "<b>Cannot</b> be resolved at compile time."
       ]
-     ]
+     ],
+     "fig": [
+      "cc-static-dynamic"
+     ],
+     "figH": {
+      "cc-static-dynamic": "Static vs dynamic binding on the lecture's last line, y += (int)x"
+     }
     },
     {
      "h": "Scoping example (lecture)",
@@ -3207,7 +3552,16 @@ COURSES.compiler = {
       "The inner block's x hides the outer x until the inner closing brace.",
       "The course's convention for \"dynamic\" in these exercises: the most recently executed declaration (the inner x) is still used after the block. So final y = <b>6 (static)</b> or <b>8 (dynamic)</b>.",
       "Revision sheet version (int x = 3 inside, cout after each +=): static output <b>5, 6</b>; dynamic output <b>5, 8</b>."
-     ]
+     ],
+     "fig": [
+      "cc-scope-run"
+     ],
+     "figAt": {
+      "cc-scope-run": 2
+     },
+     "figH": {
+      "cc-scope-run": "Run the course's programs line by line with static and dynamic binding"
+     }
     },
     {
      "h": "Symbol tables",
@@ -3239,14 +3593,32 @@ COURSES.compiler = {
        "",
        "exit_scope(): exit the current scope"
       ]
-     ]
+     ],
+     "fig": [
+      "cc-symtab-ops"
+     ],
+     "figAt": {
+      "cc-symtab-ops": 0
+     },
+     "figH": {
+      "cc-symtab-ops": "The high- and low-level symbol-table operations while walking the lecture example"
+     }
     },
     {
      "h": "Implementation techniques and approaches",
      "pts": [
       "Implementation: <b>unordered list</b>, <b>ordered list</b>, <b>binary search trees</b>, <b>hash tables</b> (the most common).",
       "Approaches: <b>one symbol table per scope</b>, or <b>one symbol table for all scopes</b>. So there is more than one approach."
-     ]
+     ],
+     "fig": [
+      "cc-symtab-impl"
+     ],
+     "figAt": {
+      "cc-symtab-impl": 0
+     },
+     "figH": {
+      "cc-symtab-impl": "look_up in an unordered list, an ordered list, a binary search tree and a hash table"
+     }
     },
     {
      "h": "One symbol table per scope (slide walkthrough)",
@@ -3256,7 +3628,16 @@ COURSES.compiler = {
       "Type declaration → add a, b, c (id, int, Init = No). Each assignment: \"found in current ST? Yes\" → mark initiated.",
       "Enter block 2 → create <b>ST2</b>, add c, d. <code>c = a + 1</code>: c is found in ST2 → mark initiated; a is not in ST2, so look in the parent ST1: found and initiated.",
       "The final <code>print d</code> is outside block 2, so d is not visible (an out-of-scope access)."
-     ]
+     ],
+     "fig": [
+      "cc-st-per-scope"
+     ],
+     "figAt": {
+      "cc-st-per-scope": 3
+     },
+     "figH": {
+      "cc-st-per-scope": "One symbol table per scope: ST1, ST2 and ST3 filled event by event"
+     }
     },
     {
      "h": "Problem with one table per scope and the solutions",
@@ -3267,7 +3648,22 @@ COURSES.compiler = {
       "<b>Solution 2</b>: key = identifier; value = a <b>linked list</b> of pointers to records, one per usage (declaration) of the identifier. In a single-pass compiler each new insertion goes at the <b>front</b> of the list, and a separate structure tracks the identifiers defined in the current scope (used to delete them on scope exit).",
       "With solution 2, all entries are in open scopes, and the <b>front item is always the right one</b> for the current scope. It is not time consuming."
      ],
-     "code": "Linked-list symbol table for:  int x=1; int y=2; { int x=3; ... }\nx  ->  [scope 1 | init YES | next] -> [scope 0 | init YES | NULL]\ny  ->  [scope 0 | init YES | NULL]"
+     "code": "Linked-list symbol table for:  int x=1; int y=2; { int x=3; ... }\nx  ->  [scope 1 | init YES | next] -> [scope 0 | init YES | NULL]\ny  ->  [scope 0 | init YES | NULL]",
+     "fig": [
+      "cc-st-one-vs-all",
+      "cc-st-sol1",
+      "cc-st-sol2"
+     ],
+     "figAt": {
+      "cc-st-one-vs-all": 1,
+      "cc-st-sol1": 2,
+      "cc-st-sol2": 4
+     },
+     "figH": {
+      "cc-st-one-vs-all": "A table per scope costs memory and extra searches; one table for all scopes does not",
+      "cc-st-sol1": "Solution 1: keys \"identifier,scope_id\" and the searches a lookup needs",
+      "cc-st-sol2": "Solution 2: each identifier's linked list, newest declaration in front"
+     }
     }
    ],
    "cards": [
@@ -3605,7 +4001,16 @@ COURSES.compiler = {
      "pts": [
       "<b>Runtime</b> = a program in execution. The <b>runtime environment</b> is a state of the target machine (software libraries, environment variables…) that provides services to running processes.",
       "The <b>runtime support system</b> is a package, mostly generated with the executable itself, that handles communication between the process and the runtime environment. It takes care of <b>memory allocation and de-allocation</b> while the program runs."
-     ]
+     ],
+     "fig": [
+      "cc-runtime-env"
+     ],
+     "figAt": {
+      "cc-runtime-env": 1
+     },
+     "figH": {
+      "cc-runtime-env": "The process, the runtime support system and the runtime environment"
+     }
     },
     {
      "h": "Storage allocation: what needs memory",
@@ -3613,7 +4018,16 @@ COURSES.compiler = {
       "<b>Code</b>: the text part, which does not change at runtime. Its memory needs are <b>known at compile time</b>.",
       "<b>Procedures</b>: their text is static, but they are called in a random order, so <b>stack</b> storage manages procedure calls and activations.",
       "<b>Variables</b>: known only at runtime (unless global or constant). <b>Heap</b> allocation manages them."
-     ]
+     ],
+     "fig": [
+      "cc-mem-needs"
+     ],
+     "figAt": {
+      "cc-mem-needs": 2
+     },
+     "figH": {
+      "cc-mem-needs": "Code, procedures and variables, and the storage that manages each"
+     }
     },
     {
      "h": "The 3 types of storage allocation",
@@ -3622,7 +4036,16 @@ COURSES.compiler = {
       "<b>Stack allocation</b>: procedure calls and activations are managed with a stack (<b>LIFO</b>). Very useful for <b>recursive</b> calls.",
       "<b>Heap allocation</b>: memory is allocated and de-allocated dynamically at runtime and reclaimed when no longer needed. Needed by languages that allow <b>dynamic data structures</b>.",
       "Except for the static area, <b>stack and heap grow and shrink dynamically</b>, so they cannot be given a fixed amount of memory. The compiler therefore uses fixed-size (static) and dynamic-size (stack/heap) storage."
-     ]
+     ],
+     "fig": [
+      "cc-alloc-kinds"
+     ],
+     "figAt": {
+      "cc-alloc-kinds": 3
+     },
+     "figH": {
+      "cc-alloc-kinds": "Static, stack and heap during a run: which ones grow and shrink"
+     }
     },
     {
      "h": "Memory layout (draw this figure)",
@@ -3630,7 +4053,16 @@ COURSES.compiler = {
      "pts": [
       "The text part gets a fixed amount of memory. Stack and heap are at the <b>two extremes</b> of the program's memory and <b>grow and shrink against each other</b>.",
       "Lecture notes (C layout): text segment, initialized data segment (globals/statics with a value), uninitialized data segment (BSS: globals/statics without one), stack (automatic variables, stack frames with return addresses), heap (malloc/realloc/free)."
-     ]
+     ],
+     "fig": [
+      "cc-mem-layout"
+     ],
+     "figAt": {
+      "cc-mem-layout": 1
+     },
+     "figH": {
+      "cc-mem-layout": "The memory layout: fixed text and static data, stack and heap growing toward each other"
+     }
     },
     {
      "h": "Formal vs actual parameters",
@@ -3639,7 +4071,16 @@ COURSES.compiler = {
       "<b>Formal parameters</b>: variables in the <b>definition</b> of the called function that receive the information passed by the caller.",
       "<b>Actual parameters</b>: variables whose values or addresses are passed; they appear in the <b>function call</b> as arguments.",
       "Formal parameters hold the actual parameter's information: a value or an address, depending on the passing technique."
-     ]
+     ],
+     "fig": [
+      "cc-formal-actual"
+     ],
+     "figAt": {
+      "cc-formal-actual": 2
+     },
+     "figH": {
+      "cc-formal-actual": "fun_one passes actual_parameter to fun_two's formal_parameter, as a value or an address"
+     }
     },
     {
      "h": "Parameter-passing mechanisms (lecture example)",
@@ -3670,7 +4111,13 @@ COURSES.compiler = {
        "Formals are aliases of the actuals (x IS a[2]).",
        "2 1 2 3 / 3 0 1 0 3 / 3 1 0 3"
       ]
-     ]
+     ],
+     "fig": [
+      "cc-param-modes"
+     ],
+     "figH": {
+      "cc-param-modes": "concentrate(i, a[i]) run step by step by value, result, value-result and reference"
+     }
     },
     {
      "h": "Symbol table purposes (runtime view)",
@@ -3688,7 +4135,19 @@ COURSES.compiler = {
       "<b>Redundant load and store elimination</b>: <code>y = x + 5; i = y; z = i; w = z * 3;</code> → <code>y = x + 5; i = y; w = y * 3;</code>",
       "<b>Constant folding</b>: simplify what can be computed at compile time: <code>x = 2 * 3;</code> → <code>x = 6;</code>",
       "<b>Combine operations</b>: several operations replaced by one equivalent. Slide example: <code>X = (2*3)+5; y = X – Sqrt(3*8);</code> (can become <code>X = 11; y = 11 – Sqrt(24);</code>)."
-     ]
+     ],
+     "fig": [
+      "cc-peep-redundant",
+      "cc-peep-fold"
+     ],
+     "figAt": {
+      "cc-peep-redundant": 3,
+      "cc-peep-fold": 5
+     },
+     "figH": {
+      "cc-peep-redundant": "The peephole window slides over the code: redundant load and store elimination",
+      "cc-peep-fold": "Constant folding and combine operations on the slide's code"
+     }
     },
     {
      "h": "Loop optimization",
@@ -3696,7 +4155,16 @@ COURSES.compiler = {
      "pts": [
       "Loop optimization improves <b>cache performance</b> and reduces the <b>overheads</b> of executing loops.",
       "Exam version: <code>for (i=0; i &lt; a→length-1; i++) swap_elements(a[i], a[i+1]);</code> → <code>int x = a→length-1; for (i=0; i &lt; x; i++) swap_elements(a[i], a[i+1]);</code> so length-1 is computed once instead of on every iteration, saving processing and time."
-     ]
+     ],
+     "fig": [
+      "cc-loop-hoist"
+     ],
+     "figAt": {
+      "cc-loop-hoist": 1
+     },
+     "figH": {
+      "cc-loop-hoist": "Computing the loop bound once: evaluations counted on every check"
+     }
     }
    ],
    "cards": [
