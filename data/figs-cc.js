@@ -209,7 +209,7 @@
       { en: 'Interpreter: translates the program <b>one statement at a time</b>. Compiler: <b>scans the entire program</b> and translates it as a whole into machine code.', ar: 'الـ interpreter: بيترجم البرنامج <b>statement واحدة في المرة</b>. الـ compiler: <b>بيعمل scan للبرنامج كله</b> ويترجمه مرة واحدة لـ machine code.' },
       { en: 'Interpreter: usually <b>less time to analyze</b> the source code, but the overall execution is <b>slower</b>. Compiler: usually a <b>large amount of time to analyze</b>, but the overall execution is <b>faster</b>. (Bar lengths only show more or less; the slide gives no numbers.)', ar: 'الـ interpreter: غالباً <b>وقت أقل في الـ analysis</b> للـ source code، بس الـ execution كله <b>أبطأ</b>. الـ compiler: غالباً <b>وقت كبير في الـ analysis</b>، بس الـ execution <b>أسرع</b>. (طول الـ bars بيوضح أكتر وأقل بس؛ الـ slide مفيهاش أرقام.)' },
       { en: 'Interpreter: <b>no intermediate object code</b> is generated, so it is <b>memory efficient</b>. Compiler: generates <b>intermediate object code</b> which further requires <b>linking</b>, so it requires <b>more memory</b>.', ar: 'الـ interpreter: <b>مفيش intermediate object code</b> بيتعمل، فهو <b>موفّر في الـ memory</b>. الـ compiler: بيعمل <b>intermediate object code</b> محتاج <b>linking</b> بعد كده، فبيحتاج <b>memory أكتر</b>.' },
-      { en: 'Languages that use interpreters: <b>JavaScript, Python, Ruby</b>. Languages that use compilers: <b>C, C++, Java</b>.', ar: 'لغات بتستخدم interpreters: <b>JavaScript و Python و Ruby</b>. لغات بتستخدم compilers: <b>C و C++ و Java</b>.' }
+      { en: 'Languages that use interpreters: <b>JavaScript, Python, Ruby</b>. Languages that use compilers: <b>C, C++, Java</b>.', ar: 'اللغات اللي بتستخدم الـ interpreters زي <b>JavaScript و Python و Ruby</b>. واللغات اللي بتستخدم الـ compilers زي <b>C و <bdi dir="ltr">C++</bdi> و Java</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3600);
     const S = ['statement 1', 'statement 2', 'statement 3'];
@@ -242,13 +242,13 @@
   const OPT = ['MOV R0, index', 'SHL R0', 'MOV &a[R1],6'];
   function Phases({ ar }) {
     const steps = [
-      { en: 'The slides’ example <b>a[index]=4+2</b> enters as <b>source code</b>. Press Next to send it through the six phases, or tap a phase.', ar: 'مثال الـ slides <b>a[index]=4+2</b> بيدخل كـ <b>source code</b>. دوس Next عشان يعدّي على الـ six phases، أو دوس على أي phase.' },
-      { en: '<b>1 Scanner</b> → <b>tokens</b>: it collects sequences of characters into meaningful units (slide 6).', ar: '<b>1 الـ Scanner</b> → <b>tokens</b>: بيجمّع سلاسل الحروف في وحدات ليها معنى (slide 6).' },
-      { en: '<b>2 Parser</b> → <b>syntax tree</b>: it determines the structure of the program (slide 8).', ar: '<b>2 الـ Parser</b> → <b>syntax tree</b>: بيحدد الـ structure بتاع البرنامج (slide 8).' },
-      { en: '<b>3 Semantics Analyzer</b> → <b>annotated tree</b>: the syntax tree with its attributes (the types) added (slide 10).', ar: '<b>3 الـ Semantics Analyzer</b> → <b>annotated tree</b>: الـ syntax tree ومعاها الـ attributes (الـ types) (slide 10).' },
-      { en: '<b>4 Source Code Optimizer</b> → <b>intermediate code</b>: 4+2 is folded to 6, so the code becomes a[index]=6 (slides 13 and 14).', ar: '<b>4 الـ Source Code Optimizer</b> → <b>intermediate code</b>: الـ 4+2 بتتعمل fold لـ 6، فالكود بيبقى a[index]=6 (slides 13 و 14).' },
-      { en: '<b>5 Code Generator</b> → <b>target code</b>: a code sequence in a hypothetical assembly language (slide 16).', ar: '<b>5 الـ Code Generator</b> → <b>target code</b>: code sequence بـ assembly language افتراضية (slide 16).' },
-      { en: '<b>6 Target Code Optimizer</b> → improved <b>target code</b>: MUL R0,2 becomes SHL R0 and five lines become three (slide 17).', ar: '<b>6 الـ Target Code Optimizer</b> → <b>target code</b> أحسن: الـ MUL R0,2 بقت SHL R0 والـ 5 سطور بقوا 3 (slide 17).' },
+      { en: 'The slides’ example <b>a[index]=4+2</b> enters as <b>source code</b>. Press Next to send it through the six phases, or tap a phase.', ar: 'مثال الـ slides <b><bdi dir="ltr">a[index]=4+2</bdi></b> بيدخل كـ <b>source code</b>. دوس Next عشان يعدّي على الـ six phases، أو دوس على أي phase.' },
+      { en: '<b>1 Scanner</b> → <b>tokens</b>: it collects sequences of characters into meaningful units (slide 6).', ar: '<b>المرحلة 1:</b><span class="ltr"><b>Scanner → tokens</b></span>الـ Scanner بيجمّع سلاسل الحروف في وحدات ليها معنى (slide 6).' },
+      { en: '<b>2 Parser</b> → <b>syntax tree</b>: it determines the structure of the program (slide 8).', ar: '<b>المرحلة 2:</b><span class="ltr"><b>Parser → syntax tree</b></span>الـ Parser بيحدد الـ structure بتاع البرنامج (slide 8).' },
+      { en: '<b>3 Semantics Analyzer</b> → <b>annotated tree</b>: the syntax tree with its attributes (the types) added (slide 10).', ar: '<b>المرحلة 3:</b><span class="ltr"><b>Semantics Analyzer → annotated tree</b></span>الـ syntax tree ومعاها الـ attributes (الـ types) (slide 10).' },
+      { en: '<b>4 Source Code Optimizer</b> → <b>intermediate code</b>: 4+2 is folded to 6, so the code becomes a[index]=6 (slides 13 and 14).', ar: '<b>المرحلة 4:</b><span class="ltr"><b>Source Code Optimizer → intermediate code</b></span>الـ <bdi dir="ltr">4+2</bdi> بتتعمل fold لـ 6، فالكود بيبقى <bdi dir="ltr">a[index]=6</bdi> (slides 13 و 14).' },
+      { en: '<b>5 Code Generator</b> → <b>target code</b>: a code sequence in a hypothetical assembly language (slide 16).', ar: '<b>المرحلة 5:</b><span class="ltr"><b>Code Generator → target code</b></span>الناتج code sequence بـ assembly language افتراضية (slide 16).' },
+      { en: '<b>6 Target Code Optimizer</b> → improved <b>target code</b>: MUL R0,2 becomes SHL R0 and five lines become three (slide 17).', ar: '<b>المرحلة 6:</b><span class="ltr"><b>Target Code Optimizer → target code</b></span>والـ target code بيبقى أحسن: الـ <bdi dir="ltr">MUL&nbsp;R0,2</bdi> بقت <bdi dir="ltr">SHL&nbsp;R0</bdi> والـ 5 سطور بقوا 3 (slide 17).' },
       { en: 'Every phase is linked to the <b>Literal Table</b>, the <b>Symbol Table</b> and the <b>Error Handler</b>. They are data structures and helpers, <b>not phases</b>.', ar: 'كل phase متوصلة بالـ <b>Literal Table</b> والـ <b>Symbol Table</b> والـ <b>Error Handler</b>. دول data structures وأدوات مساعدة، <b>مش phases</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3400);
@@ -283,16 +283,16 @@
 
   /* ───────── slide 4 (exam favourite): is it a phase? ───────── */
   const ITEMS = [
-    ['Symbol Table', false, 'Not a phase: a data structure beside the phases that (almost) every phase uses. The exams love this one.', 'مش phase: data structure جنب الـ phases وكل phase تقريباً بتستخدمها. الامتحانات بتحب السؤال ده.'],
-    ['Scanner', true, 'Phase 1: source code → tokens.', 'Phase 1: الـ source code → tokens.'],
+    ['Symbol Table', false, 'Not a phase: a data structure beside the phases that (almost) every phase uses. The exams love this one.', 'مش phase، دي data structure جنب الـ phases وكل phase تقريباً بتستخدمها. الامتحانات بتحب السؤال ده.'],
+    ['Scanner', true, 'Phase 1: source code → tokens.', 'دي الـ phase رقم 1: بتحوّل الـ source code لـ tokens.'],
     ['Testing', false, '“Testing” is not a phase of a compiler.', 'الـ “Testing” مش phase من phases الـ compiler.'],
-    ['Code Generator', true, 'Phase 5: intermediate code → target code.', 'Phase 5: الـ intermediate code → target code.'],
+    ['Code Generator', true, 'Phase 5: intermediate code → target code.', 'دي الـ phase رقم 5: بتحوّل الـ intermediate code لـ target code.'],
     ['Error Handler', false, 'Not a phase: a helper linked to every phase.', 'مش phase: أداة مساعدة متوصلة بكل الـ phases.'],
-    ['Parser', true, 'Phase 2: tokens → syntax tree.', 'Phase 2: الـ tokens → syntax tree.'],
-    ['Literal Table', false, 'Not a phase: a data structure linked to every phase.', 'مش phase: data structure متوصلة بكل الـ phases.'],
-    ['Semantics Analyzer', true, 'Phase 3: syntax tree → annotated tree.', 'Phase 3: الـ syntax tree → annotated tree.'],
-    ['Source Code Optimizer', true, 'Phase 4: annotated tree → intermediate code.', 'Phase 4: الـ annotated tree → intermediate code.'],
-    ['Target Code Optimizer', true, 'Phase 6: target code → improved target code.', 'Phase 6: الـ target code → target code أحسن.']
+    ['Parser', true, 'Phase 2: tokens → syntax tree.', 'دي الـ phase رقم 2: بتحوّل الـ tokens لـ syntax tree.'],
+    ['Literal Table', false, 'Not a phase: a data structure linked to every phase.', 'مش phase، دي data structure متوصلة بكل الـ phases.'],
+    ['Semantics Analyzer', true, 'Phase 3: syntax tree → annotated tree.', 'دي الـ phase رقم 3: بتحوّل الـ syntax tree لـ annotated tree.'],
+    ['Source Code Optimizer', true, 'Phase 4: annotated tree → intermediate code.', 'دي الـ phase رقم 4: بتحوّل الـ annotated tree لـ intermediate code.'],
+    ['Target Code Optimizer', true, 'Phase 6: target code → improved target code.', 'دي الـ phase رقم 6: بتحوّل الـ target code لـ target code أحسن.']
   ];
   function IsPhase({ ar }) {
     const [k, setK] = useState(0), [ans, setAns] = useState(null), [done, setDone] = useState([]), [score, setScore] = useState(0);
@@ -301,7 +301,7 @@
     const next = () => { setAns(null); setK(x => x + 1); };
     const reset = () => { setK(0); setAns(null); setDone([]); setScore(0); };
     let en, a;
-    if (end) { en = `You got <b>${score} of ${ITEMS.length}</b>. The six phases: Scanner, Parser, Semantics Analyzer, Source Code Optimizer, Code Generator, Target Code Optimizer. The Literal Table, Symbol Table and Error Handler are not phases.`; a = `جبت <b>${score} من ${ITEMS.length}</b>. الـ six phases: Scanner و Parser و Semantics Analyzer و Source Code Optimizer و Code Generator و Target Code Optimizer. الـ Literal Table والـ Symbol Table والـ Error Handler مش phases.`; }
+    if (end) { en = `You got <b>${score} of ${ITEMS.length}</b>. The six phases: Scanner, Parser, Semantics Analyzer, Source Code Optimizer, Code Generator, Target Code Optimizer. The Literal Table, Symbol Table and Error Handler are not phases.`; a = `جبت <b>${score} من ${ITEMS.length}</b>. الـ six phases هي الـ Scanner والـ Parser والـ Semantics Analyzer والـ Source Code Optimizer والـ Code Generator والـ Target Code Optimizer. الـ Literal Table والـ Symbol Table والـ Error Handler مش phases.`; }
     else if (ans === null) { en = '<b>Try it:</b> is this a <b>phase</b> of a compiler? (A favourite exam question.)'; a = '<b>جرّب:</b> ده <b>phase</b> من phases الـ compiler ولا لأ؟ (سؤال بيتكرر في الامتحانات.)'; }
     else { en = (ans ? 'Right. ' : 'Not quite. ') + it[2]; a = (ans ? 'صح. ' : 'لأ. ') + it[3]; }
     return html`<figure className="fig cf1"><div className="fig-stage"><div className="cf1-q">
@@ -343,8 +343,8 @@
     if (!toks.length) { en = 'Type a line to scan.'; a = 'اكتب سطر عشان نعمله scan.'; }
     else if (n === 0) { en = (src === EX ? 'This is the slide’s example (slide 6). ' : '') + '<b>Try it:</b> press <b>Next token</b> and watch the scanner collect characters into tokens. You can also type your own line.'; a = (src === EX ? 'ده مثال الـ slide (slide 6). ' : '') + '<b>جرّب:</b> دوس <b>Next token</b> وشوف الـ scanner بيجمّع الحروف في tokens. وممكن تكتب السطر بتاعك.'; }
     else if (done && src === EX) { en = 'Done: the same <b>8 tokens</b> as the slide. The scanner collects sequences of characters into meaningful units called <b>tokens</b>.'; a = 'خلصنا: نفس الـ <b>8 tokens</b> اللي في الـ slide. الـ scanner بيجمّع سلاسل الحروف في وحدات ليها معنى اسمها <b>tokens</b>.'; }
-    else if (!cur.k) { en = `<b>${cur.lx}</b> is not one of the token kinds on the slide (identifier, number, brackets, assignment, plus sign).`; a = `<b>${cur.lx}</b> مش من أنواع الـ tokens اللي في الـ slide (identifier و number والأقواس و assignment و plus sign).`; }
-    else { en = `<b>${cur.lx}</b>${cur.lx.length > 1 ? ` (${cur.lx.length} characters)` : ''} → one token: <b>${cur.k}</b>.` + (done ? ' All characters are now tokens.' : ''); a = `<b>${cur.lx}</b>${cur.lx.length > 1 ? ` (${cur.lx.length} حروف)` : ''} → token واحد: <b>${KIND_AR[cur.k]}</b>.` + (done ? ' كل الحروف بقت tokens.' : ''); }
+    else if (!cur.k) { en = `<b>${cur.lx}</b> is not one of the token kinds on the slide (identifier, number, brackets, assignment, plus sign).`; a = `الـ <b><bdi dir="ltr">${cur.lx}</bdi></b> مش من أنواع الـ tokens اللي في الـ slide (identifier و number والأقواس و assignment و plus sign).`; }
+    else { en = `<b>${cur.lx}</b>${cur.lx.length > 1 ? ` (${cur.lx.length} characters)` : ''} → one token: <b>${cur.k}</b>.` + (done ? ' All characters are now tokens.' : ''); a = `الـ <b><bdi dir="ltr">${cur.lx}</bdi></b>${cur.lx.length > 1 ? ` (${cur.lx.length} حروف)` : ''} بيبقى token واحد نوعه <b>${KIND_AR[cur.k]}</b>.` + (done ? ' كل الحروف بقت tokens.' : ''); }
     return html`<figure className="fig cf1"><div className="fig-stage"><div className="cf1-sc">
       <div style=${{ textAlign: 'center' }}><input className="cf1-in" value=${src} onInput=${e => edit(e.target.value)} onChange=${e => edit(e.target.value)} aria-label="Source line to scan" spellCheck="false" autoComplete="off" /></div>
       <div className="cf1-chars" aria-hidden="true">${[...src].map((c, j) => html`<span key=${j} className=${charCls(j)}>${c === ' ' ? '␣' : c}</span>`)}</div>
@@ -363,10 +363,10 @@
   /* ───────── slide 7: the parse tree ───────── */
   function ParseTree({ ar }) {
     const steps = [
-      { en: 'The parse tree for <b>a[index]=4+2</b> starts at <b>expression</b> → <b>Assign-expression</b>.', ar: 'الـ parse tree بتاع <b>a[index]=4+2</b> بيبدأ من <b>expression</b> → <b>Assign-expression</b>.' },
-      { en: 'Assign-expression has three children: <b>expression</b>, <b>=</b>, <b>expression</b>.', ar: 'الـ Assign-expression ليها 3 children: <b>expression</b> و <b>=</b> و <b>expression</b>.' },
+      { en: 'The parse tree for <b>a[index]=4+2</b> starts at <b>expression</b> → <b>Assign-expression</b>.', ar: 'الـ parse tree بتاع <b><bdi dir="ltr">a[index]=4+2</bdi></b> بيبدأ كده:<span class="ltr"><b>expression → Assign-expression</b></span>' },
+      { en: 'Assign-expression has three children: <b>expression</b>, <b>=</b>, <b>expression</b>.', ar: 'الـ Assign-expression ليها 3 children، هما الـ <b>expression</b> والـ <b>=</b> والـ <b>expression</b>.' },
       { en: 'The left expression is a <b>subscript-expression</b>; the right one is an <b>additive-expression</b>.', ar: 'الـ expression الشمال <b>subscript-expression</b>؛ واليمين <b>additive-expression</b>.' },
-      { en: 'subscript-expression → <b>Expression [ expression ]</b>. additive-expression → <b>expression + expression</b>.', ar: 'الـ subscript-expression → <b>Expression [ expression ]</b>. الـ additive-expression → <b>expression + expression</b>.' },
+      { en: 'subscript-expression → <b>Expression [ expression ]</b>. additive-expression → <b>expression + expression</b>.', ar: 'القاعدتين بتوع الـ subscript-expression والـ additive-expression:<span class="ltr">subscript-expression → <b>Expression [ expression ]</b></span><span class="ltr">additive-expression → <b>expression + expression</b></span>' },
       { en: 'At the bottom: <b>identifier</b> a and index, <b>number</b> 4 and 2. The parse tree keeps every grammar node.', ar: 'تحت خالص: <b>identifier</b> للـ a والـ index، و <b>number</b> للـ 4 والـ 2. الـ parse tree بيحتفظ بكل node في الـ grammar.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -379,8 +379,8 @@
   /* ───────── slide 8: the syntax tree ───────── */
   function SyntaxTree({ ar }) {
     const steps = [
-      { en: 'The syntax tree (abstract syntax tree) for <b>a[index]=4+2</b>: the root is <b>Assign-expression</b>.', ar: 'الـ syntax tree (الـ abstract syntax tree) بتاع <b>a[index]=4+2</b>: الـ root هو <b>Assign-expression</b>.' },
-      { en: 'Its two children: <b>subscript-expression</b> and <b>additive-expression</b>.', ar: 'ليها 2 children: <b>subscript-expression</b> و <b>additive-expression</b>.' },
+      { en: 'The syntax tree (abstract syntax tree) for <b>a[index]=4+2</b>: the root is <b>Assign-expression</b>.', ar: 'الـ syntax tree (الـ abstract syntax tree) بتاع <b><bdi dir="ltr">a[index]=4+2</bdi></b>: الـ root هو <b>Assign-expression</b>.' },
+      { en: 'Its two children: <b>subscript-expression</b> and <b>additive-expression</b>.', ar: 'ليها 2 children، هما الـ <b>subscript-expression</b> والـ <b>additive-expression</b>.' },
       { en: 'The leaves: <b>identifier</b> a, <b>identifier</b> index, <b>number</b> 4, <b>number</b> 2.', ar: 'الأوراق: <b>identifier</b> a و <b>identifier</b> index و <b>number</b> 4 و <b>number</b> 2.' },
       { en: 'Compared with the parse tree (slide 7) this is the condensed version: the expression nodes and the <b>[ ] = +</b> nodes are gone.', ar: 'مقارنة بالـ parse tree (slide 7) دي النسخة المختصرة: الـ expression nodes والـ <b>[ ] = +</b> مش موجودين.' }
     ];
@@ -412,7 +412,7 @@
   function FoldTree({ ar }) {
     const steps = [
       { en: 'Before (slide 12): the annotated tree. The earliest point of most optimization steps is <b>just after semantic analysis</b>.', ar: 'قبل (slide 12): الـ annotated tree. أول مكان لمعظم خطوات الـ optimization هو <b>بعد الـ semantic analysis على طول</b>.' },
-      { en: '<b>Constant folding</b> performed directly on the annotated tree: the additive-expression adds two constants, <b>4 + 2</b>.', ar: 'الـ <b>constant folding</b> بيتعمل على الـ annotated tree مباشرة: الـ additive-expression بتجمع 2 constants، <b>4 + 2</b>.' },
+      { en: '<b>Constant folding</b> performed directly on the annotated tree: the additive-expression adds two constants, <b>4 + 2</b>.', ar: 'الـ <b>constant folding</b> بيتعمل على الـ annotated tree مباشرة: الـ additive-expression بتجمع 2 constants، هما <b><bdi dir="ltr">4&nbsp;+&nbsp;2</bdi></b>.' },
       { en: 'After (slide 13): the additive-expression and its numbers are replaced by a single <b>number 6</b> (integer).', ar: 'بعد (slide 13): الـ additive-expression والأرقام بتاعتها اتشالوا وحل مكانهم <b>number 6</b> واحد (integer).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
@@ -429,9 +429,9 @@
   /* ───────── slide 14: optimization on intermediate code ───────── */
   function FoldIR({ ar }) {
     const steps = [
-      { en: 'Optimization using <b>intermediate code</b> (three-address code, p-code): <b>t = 4 + 2</b>, then <b>a[index]=t</b>.', ar: 'الـ optimization باستخدام الـ <b>intermediate code</b> (three-address code و p-code): <b>t = 4 + 2</b>، وبعدين <b>a[index]=t</b>.' },
-      { en: '<b>4 + 2</b> is folded: <b>t = 6</b>.', ar: 'الـ <b>4 + 2</b> بتتعمل fold: <b>t = 6</b>.' },
-      { en: 't is replaced by its value: <b>a[index]=6</b>. One line instead of two.', ar: 'الـ t اتبدلت بقيمتها: <b>a[index]=6</b>. سطر واحد بدل اتنين.' }
+      { en: 'Optimization using <b>intermediate code</b> (three-address code, p-code): <b>t = 4 + 2</b>, then <b>a[index]=t</b>.', ar: 'الـ optimization باستخدام الـ <b>intermediate code</b> (الـ three-address code والـ p-code) بيبقى كده:<span class="ltr"><b>t = 4 + 2<br>a[index]=t</b></span>' },
+      { en: '<b>4 + 2</b> is folded: <b>t = 6</b>.', ar: 'الـ <b><bdi dir="ltr">4&nbsp;+&nbsp;2</bdi></b> بتتعمل fold وتبقى <b><bdi dir="ltr">t&nbsp;=&nbsp;6</bdi></b>.' },
+      { en: 't is replaced by its value: <b>a[index]=6</b>. One line instead of two.', ar: 'الـ t اتبدلت بقيمتها: <b><bdi dir="ltr">a[index]=6</bdi></b>. سطر واحد بدل اتنين.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
     const B = (k, body) => html`<div className=${'cf1-code ' + pop(i >= k) + (i === k ? ' on' : '')}>${body}</div>`;
@@ -447,12 +447,12 @@
   /* ───────── slides 15–17: code generator and target code optimizer ───────── */
   function CodeGen({ ar }) {
     const steps = [
-      { en: 'The <b>code generator</b> takes the intermediate code (IR), here <b>a[index]=6</b>, and generates code for the target machine.', ar: 'الـ <b>code generator</b> بياخد الـ intermediate code (الـ IR)، هنا <b>a[index]=6</b>، ويعمل كود للـ target machine.' },
-      { en: 'A possible code sequence in a <b>hypothetical assembly language</b>. The properties of the target machine (its instructions and representation of data) become the major factor.', ar: 'code sequence ممكنة بـ <b>assembly language افتراضية</b>. خصائص الـ target machine (الـ instructions وطريقة تمثيل الـ data) بتبقى العامل الأساسي.' },
-      { en: '<b>MUL R0,2</b>: the index is multiplied by 2 (‡ the slide gives no reason; usually because an integer takes 2 bytes here).', ar: '<b>MUL R0,2</b>: الـ index بيتضرب في 2 (‡ السلايد مش بتقول ليه؛ غالبًا لأن الـ integer واخد 2 bytes هنا).' },
+      { en: 'The <b>code generator</b> takes the intermediate code (IR), here <b>a[index]=6</b>, and generates code for the target machine.', ar: 'الـ <b>code generator</b> بياخد الـ intermediate code (الـ IR)، هنا <b><bdi dir="ltr">a[index]=6</bdi></b>، ويعمل كود للـ target machine.' },
+      { en: 'A possible code sequence in a <b>hypothetical assembly language</b>. The properties of the target machine (its instructions and representation of data) become the major factor.', ar: 'دي code sequence ممكنة بـ <b>assembly language افتراضية</b>. خصائص الـ target machine (الـ instructions وطريقة تمثيل الـ data) بتبقى العامل الأساسي.' },
+      { en: '<b>MUL R0,2</b>: the index is multiplied by 2 (‡ the slide gives no reason; usually because an integer takes 2 bytes here).', ar: 'الـ <b><bdi dir="ltr">MUL&nbsp;R0,2</bdi></b> معناها إن الـ index بيتضرب في 2 (‡ السلايد مش بتقول ليه؛ غالبًا لأن الـ integer واخد 2 bytes هنا).' },
       { en: 'The <b>target code optimizer</b> improves the target code: <b>address modes</b> choosing, <b>instructions</b> replacing, and <b>redundant</b> eliminating.', ar: 'الـ <b>target code optimizer</b> بيحسّن الـ target code: اختيار الـ <b>address modes</b>، واستبدال الـ <b>instructions</b>، وشيل الـ <b>redundant</b>.' },
-      { en: '<b>Instructions replacing</b>: MUL R0,2 becomes <b>SHL R0</b> (shift left).', ar: '<b>Instructions replacing</b>: الـ MUL R0,2 بقت <b>SHL R0</b> (shift left).' },
-      { en: '<b>Address modes choosing</b> and <b>redundant eliminating</b>: MOV R1,&amp;a, ADD R1,R0 and MOV *R1,6 become one instruction, <b>MOV &amp;a[R1],6</b> (as printed on the slide; the site’s notes read it as &amp;a[R0]). Five lines become three.', ar: '<b>Address modes choosing</b> و <b>redundant eliminating</b>: الـ MOV R1,&amp;a و ADD R1,R0 و MOV *R1,6 بقوا instruction واحدة <b>MOV &amp;a[R1],6</b> (زي ما مكتوبة في الـ slide؛ الـ notes بتقراها &amp;a[R0]). الـ 5 سطور بقوا 3.' }
+      { en: '<b>Instructions replacing</b>: MUL R0,2 becomes <b>SHL R0</b> (shift left).', ar: 'الـ <b>Instructions replacing</b>: الـ <bdi dir="ltr">MUL&nbsp;R0,2</bdi> بقت <b><bdi dir="ltr">SHL&nbsp;R0</bdi></b> (shift left).' },
+      { en: '<b>Address modes choosing</b> and <b>redundant eliminating</b>: MOV R1,&amp;a, ADD R1,R0 and MOV *R1,6 become one instruction, <b>MOV &amp;a[R1],6</b> (as printed on the slide; the site’s notes read it as &amp;a[R0]). Five lines become three.', ar: 'الـ <b>Address modes choosing</b> والـ <b>redundant eliminating</b>: الـ instructions دي:<span class="ltr">MOV R1,&amp;a<br>ADD R1,R0<br>MOV *R1,6</span>بقوا instruction واحدة:<span class="ltr"><b>MOV &amp;a[R1],6</b></span>(زي ما مكتوبة في الـ slide؛ الـ notes بتقراها <bdi dir="ltr">&amp;a[R0]</bdi>). الـ 5 سطور بقوا 3.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3200);
     const genCls = j => 'cf1-ln' + (i === 2 && j === 1 ? ' on' : '') + (i === 4 && j === 1 ? ' gone' : '') + (i >= 5 && j >= 1 ? ' gone' : '') + (i === 5 && j >= 2 ? ' on' : '');
@@ -480,7 +480,7 @@
       ar: ['الـ scanner بيجمّع الحروف في token، كقيمة من enumerated data type للـ tokens.', 'ممكن كمان يحتفظ بالـ string بتاع الحروف أو معلومات تانية، زي اسم الـ identifier أو قيمة الـ number token.', 'بتتحفظ في global variable واحد أو array of tokens.'],
       ex: () => html`<span className="cf1-oh">The tokens of a[index]=4+2 (slide 6)</span><div className="cf1-toks">${TOKS.map(([l, k], j) => html`<span key=${j} className="cf1-tok"><span className="lx">${l}</span>${k}</span>`)}</div>` },
     { k: 'Syntax tree', pts: ['A standard pointer-based structure generated by the parser.', 'Each node represents information collected by the parser or later, which may be dynamically allocated or stored in the symbol table.', 'The node requires different attributes depending on the kind of language structure, which may be represented as a variable record.'],
-      ar: ['structure عادية معمولة بالـ pointers والـ parser هو اللي بيعملها.', 'كل node بتمثل معلومات جمعها الـ parser أو اللي بعده، وممكن تتعمل dynamically allocated أو تتحفظ في الـ symbol table.', 'الـ node محتاجة attributes مختلفة حسب نوع الـ language structure، وممكن تتمثل كـ variable record.'],
+      ar: ['دي structure عادية معمولة بالـ pointers والـ parser هو اللي بيعملها.', 'كل node بتمثل معلومات جمعها الـ parser أو اللي بعده، وممكن تتعمل dynamically allocated أو تتحفظ في الـ symbol table.', 'الـ node محتاجة attributes مختلفة حسب نوع الـ language structure، وممكن تتمثل كـ variable record.'],
       ex: () => html`<span className="cf1-oh">The syntax tree of a[index]=4+2 (slide 8)</span><${Tree} all=${SYN_PLAIN} show=${() => true} label="Syntax tree of a[index]=4+2" />` },
     { k: 'Symbol table', pts: ['Keeps information associated with identifiers: functions, variables, constants and data types.', 'Interacts with almost every phase of the compiler.', 'Access operations need to be constant-time, so one or several hash tables are often used.'],
       ar: ['بيحتفظ بالمعلومات الخاصة بالـ identifiers: الـ functions والـ variables والـ constants والـ data types.', 'بيتعامل مع تقريباً كل phase في الـ compiler.', 'عمليات الـ access لازم تبقى constant-time، فغالباً بنستخدم hash table واحد أو أكتر.'],
@@ -661,14 +661,14 @@ textarea.cf2-in{ resize:vertical; }
       const L = '<code>' + esc(cur.t) + '</code>';
       if (cur.k === 'ws') { en = 'Reading ' + L + ': white space (' + cur.tok + '), <b>removed</b>.'; a = 'بيقرا ' + L + ': ده white space (' + cur.tok + ')، <b>بيتشال</b>.'; }
       else if (cur.k === 'cm') { en = 'Reading ' + L + ': a comment, <b>removed</b>.'; a = 'بيقرا ' + L + ': ده comment، <b>بيتشال</b>.'; }
-      else if (cur.k === 'err') { en = 'Line ' + cur.line + ': ' + esc(cur.msg) + '. The error message is tied to <b>line ' + cur.line + '</b> of the source.'; a = 'سطر ' + cur.line + ': ' + esc(cur.msg) + '. رسالة الـ error مربوطة بـ <b>السطر ' + cur.line + '</b> في الـ source.'; }
+      else if (cur.k === 'err') { en = 'Line ' + cur.line + ': ' + esc(cur.msg) + '. The error message is tied to <b>line ' + cur.line + '</b> of the source.'; a = 'سطر ' + cur.line + ': <bdi dir="ltr">' + esc(cur.msg) + '</bdi>. رسالة الـ error مربوطة بـ <b>السطر ' + cur.line + '</b> في الـ source.'; }
       else if (cur.k === 'kw') { en = 'Reading ' + L + ': a <b>keyword</b>, recognized here. Token: <code>' + cur.tok + '</code>.'; a = 'بيقرا ' + L + ': ده <b>keyword</b>، بيتعرف عليه هنا. الـ token: <code>' + cur.tok + '</code>.'; }
       else if (cur.tok === cur.t) { en = 'Reading ' + L + ': the token is the symbol itself.'; a = 'بيقرا ' + L + ': الـ token هو الرمز نفسه.'; }
       else { en = 'Reading ' + L + ': token <code>' + cur.tok + '</code>, lexeme <code>' + esc(cur.t) + '</code>.'; a = 'بيقرا ' + L + ': الـ token هو <code>' + cur.tok + '</code> والـ lexeme هو <code>' + esc(cur.t) + '</code>.'; }
     } else {
       const rm = [['blank', cnt('blank')], ['tab', cnt('tab')], ['newline', cnt('newline')], ['comment', cnt('comment')]].filter(x => x[1]);
       en = '<b>' + toks.length + ' tokens</b> go to the parser for syntax analysis.' + (rm.length ? ' Removed: ' + rm.map(([k, c]) => c + ' ' + k + (c > 1 ? 's' : '')).join(', ') + '.' : '') + (errs.length ? ' Errors are reported with their <b>line number</b> in the source program.' : '');
-      a = '<b>' + toks.length + ' tokens</b> رايحين للـ parser عشان الـ syntax analysis.' + (rm.length ? ' اتشال: ' + rm.map(([k, c]) => c + ' ' + k).join('، ') + '.' : '') + (errs.length ? ' والـ errors بتطلع ومعاها <b>رقم السطر</b> في الـ source program.' : '');
+      a = 'فيه <b>' + toks.length + ' tokens</b> رايحين للـ parser عشان الـ syntax analysis.' + (rm.length ? ' اتشال: ' + rm.map(([k, c]) => c + ' ' + k).join(' و ') + '.' : '') + (errs.length ? ' والـ errors بتطلع ومعاها <b>رقم السطر</b> في الـ source program.' : '');
     }
     const chip = (x, j) => {
       const rm = x.k === 'ws' || x.k === 'cm';
@@ -692,10 +692,10 @@ textarea.cf2-in{ resize:vertical; }
 
   /* ── L2 slide 3: alphabets and strings ── */
   const ALPHA = [
-    { id: 'bin', b: 'Σ = {0, 1}', name: 'alphabet Σ = {0, 1}', nameAr: 'الـ alphabet Σ = {0, 1}', ok: c => c === '0' || c === '1' },
+    { id: 'bin', b: 'Σ = {0, 1}', name: 'alphabet Σ = {0, 1}', nameAr: 'الـ alphabet <bdi dir="ltr">Σ&nbsp;=&nbsp;{0,&nbsp;1}</bdi>', ok: c => c === '0' || c === '1' },
     { id: 'dig', b: '0–9', name: 'the digits 0–9 (integers)', nameAr: 'الأرقام 0–9 (الـ integers)', ok: c => /[0-9]/.test(c) },
     { id: 'var', b: 'letters, digits, _', name: 'letters, digits and underscore (variable names)', nameAr: 'الحروف والأرقام والـ underscore (أسماء المتغيرات)', ok: c => /[A-Za-z0-9_]/.test(c) },
-    { id: 'cpp', b: 'C++', name: 'the alphabet of C++ language', nameAr: 'الـ alphabet بتاع لغة C++', ok: c => /[\x21-\x7e]/.test(c) }
+    { id: 'cpp', b: 'C++', name: 'the alphabet of C++ language', nameAr: 'الـ alphabet بتاع لغة <bdi dir="ltr">C++</bdi>', ok: c => /[\x21-\x7e]/.test(c) }
   ];
   const NUMW = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten'];
   function Strings({ ar }) {
@@ -705,8 +705,8 @@ textarea.cf2-in{ resize:vertical; }
     const len = syms.length, lw = len <= 10 ? NUMW[len] : String(len);
     let en, a;
     if (!len) { en = 'No symbols: this is <b>ε</b>, the empty string, of length 0.'; a = 'مفيش symbols: ده <b>ε</b>، الـ empty string، طوله 0.'; }
-    else if (bad < 0) { en = '<code>' + esc(w) + '</code> is a string of length <b>' + lw + '</b> over ' + A.name + ': a finite sequence of symbols from the alphabet.'; a = '<code>' + esc(w) + '</code> هو string طوله <b>' + len + '</b> على ' + A.nameAr + ': sequence محدودة من symbols من الـ alphabet.'; }
-    else { en = '<code>' + esc(w) + '</code> is <b>not</b> a string over ' + A.name + ': symbol ' + (bad + 1) + ' (<code>' + esc(syms[bad]) + '</code>) is not in the alphabet.'; a = '<code>' + esc(w) + '</code> <b>مش</b> string على ' + A.nameAr + ': الـ symbol رقم ' + (bad + 1) + ' (<code>' + esc(syms[bad]) + '</code>) مش في الـ alphabet.'; }
+    else if (bad < 0) { en = '<code>' + esc(w) + '</code> is a string of length <b>' + lw + '</b> over ' + A.name + ': a finite sequence of symbols from the alphabet.'; a = 'الـ <code>' + esc(w) + '</code> هو string طوله <b>' + len + '</b> على ' + A.nameAr + '، يعني sequence محدودة من symbols من الـ alphabet.'; }
+    else { en = '<code>' + esc(w) + '</code> is <b>not</b> a string over ' + A.name + ': symbol ' + (bad + 1) + ' (<code>' + esc(syms[bad]) + '</code>) is not in the alphabet.'; a = 'الـ <code>' + esc(w) + '</code> <b>مش</b> string على ' + A.nameAr + ': الـ symbol رقم ' + (bad + 1) + ' (<code>' + esc(syms[bad]) + '</code>) مش في الـ alphabet.'; }
     return html`<figure className="fig cf2"><div className="fig-stage"><div className="cf2-wrap">
       <div className="cf2-row"><span className="cf2-lbl">Alphabet:</span>${ALPHA.map((x, k) => html`<button key=${x.id} className=${'fig-btn' + (al === k ? ' cf2-sel' : '')} onClick=${() => setAl(k)}>${x.b}</button>`)}</div>
       <div className="cf2-row"><span className="cf2-lbl">Slide:</span>${ex.map(([s, k]) => html`<button key=${s} className=${'fig-btn' + (w === s && al === k ? ' cf2-sel' : '')} onClick=${() => { setW(s); setAl(k); }}>${s}</button>`)}</div>
@@ -739,7 +739,7 @@ textarea.cf2-in{ resize:vertical; }
         <div className="cf2-h">L2 ∪ L1</div><div className="cf2-chips">${V.map(x => html`<span key=${'v' + x} className=${cls(x)}><code>${E(x)}</code></span>`)}</div>
         <div className="cf2-set" style=${{ marginTop: '8px' }}>${setText(U)} ${same ? html`<span className="cf2-ok">= L2 ∪ L1 ✓</span>` : null}</div>`;
       en = 'Union: all the elements in each of the two sets, with nothing else.' + (both.length ? ' <code>' + both.map(E).join(', ') + '</code> is in both, so it appears once.' : '') + ' Notice that L1 ∪ L2 = L2 ∪ L1.';
-      a = 'الـ Union: كل العناصر اللي في كل set من الاتنين، ومفيش حاجة تانية.' + (both.length ? ' <code>' + both.map(E).join(', ') + '</code> موجودة في الاتنين، فبتظهر مرة واحدة.' : '') + ' لاحظ إن L1 ∪ L2 = L2 ∪ L1.';
+      a = 'الـ Union: كل العناصر اللي في كل set من الاتنين، ومفيش حاجة تانية.' + (both.length ? ' <code>' + both.map(E).join(', ') + '</code> موجودة في الاتنين، فبتظهر مرة واحدة.' : '') + ' لاحظ إن <bdi dir="ltr">L1&nbsp;∪&nbsp;L2&nbsp;=&nbsp;L2&nbsp;∪&nbsp;L1</bdi>.';
     } else if (tab === 1) {
       const A0 = parseSet(c1), B0 = parseSet(c2), A = swap ? B0 : A0, B = swap ? A0 : B0;
       const prod = uniq(A.flatMap(x => B.map(y => x + y))), other = uniq(B.flatMap(x => A.map(y => x + y)));
@@ -753,7 +753,7 @@ textarea.cf2-in{ resize:vertical; }
           <tbody>${A.map(x => html`<tr key=${x}><th>${E(x)}</th>${B.map(y => { const on = k++ < cells; return html`<td key=${y} className=${on ? (k === cells ? 'cf2-hot' : '') : 'cf2-off'}>${E(x + y)}</td>`; })}</tr>`)}</tbody></table></div>
         <div className="cf2-set" style=${{ marginTop: '8px' }}>${nm[0] + nm[1]} = ${setText(prod)}${swap ? html`<br /><span className=${same ? 'cf2-ok' : 'cf2-no'}>${same ? 'L1L2 = L2L1 here' : 'L1L2 ≠ L2L1: order matters'}</span>` : null}</div>`;
       en = swap ? 'Now each string of L2 comes first: ' + nm[0] + nm[1] + ' = ' + setText(prod) + '. ' + (same ? 'Here both orders give the same set.' : 'Notice that <b>L1L2 ≠ L2L1</b>.') : 'Concatenation: each string in L1 joined with each string in L2, giving ' + setText(prod) + '. Press <b>Swap order</b> to build L2L1.';
-      a = swap ? 'دلوقتي كل string من L2 بييجي الأول: ' + nm[0] + nm[1] + ' = ' + setText(prod) + '. ' + (same ? 'هنا الترتيبين طلعوا نفس الـ set.' : 'لاحظ إن <b>L1L2 ≠ L2L1</b>.') : 'الـ Concatenation: كل string في L1 نلزق فيه كل string في L2، فيطلع ' + setText(prod) + '. دوس <b>Swap order</b> عشان تبني L2L1.';
+      a = swap ? 'دلوقتي كل string من L2 بييجي الأول:<span class="ltr">' + nm[0] + nm[1] + ' = ' + setText(prod) + '</span>' + (same ? 'هنا الترتيبين طلعوا نفس الـ set.' : 'لاحظ إن <b><bdi dir="ltr">L1L2&nbsp;≠&nbsp;L2L1</bdi></b>.') : 'الـ Concatenation: كل string في L1 نلزق فيه كل string في L2، فيطلع:<span class="ltr">' + setText(prod) + '</span>دوس <b>Swap order</b> عشان تبني L2L1.';
     } else if (tab === 2) {
       const S = parseSet(ks).filter(x => x !== '');
       const rows = []; let layer = [''];
@@ -765,12 +765,12 @@ textarea.cf2-in{ resize:vertical; }
         <div className="cf2-krow" style=${{ marginTop: '6px' }}>${rows.map((r, j) => [html`<span key=${'k' + j}>${j} string${j === 1 ? '' : 's'}:</span>`, html`<span key=${'v' + j} className="cf2-chips">${r.slice(0, 27).map(x => html`<span key=${x} className=${'cf2-chip' + (j === 0 ? ' cf2-rm' : '')}><code style=${j === 0 ? { textDecoration: 'none' } : null}>${E(x)}</code></span>`)}${r.length > 27 ? '…' : ''}</span>`])}</div>
         <div className="cf2-set" style=${{ marginTop: '8px' }}>Σ* = ${star}<br />Σ⁺ = ${plus}</div>`;
       en = 'Kleene closure Σ*: all strings made by concatenating <b>zero or more</b> strings in Σ, so it includes <b>ε</b> (zero strings). Positive closure Σ⁺: <b>one or more</b>, so no ε. ε is the empty string: {ε} is a set of one element.';
-      a = 'الـ Kleene closure Σ*: كل الـ strings اللي بنعملها بـ concatenation لـ <b>صفر أو أكتر</b> من الـ strings اللي في Σ، فبتشمل <b>ε</b> (صفر strings). الـ Positive closure Σ⁺: <b>واحد أو أكتر</b>، فمفيهاش ε. الـ ε هي الـ empty string: و{ε} set فيها عنصر واحد.';
+      a = 'الـ Kleene closure <bdi dir="ltr">Σ*</bdi> هو كل الـ strings اللي بنعملها بـ concatenation لـ <b>صفر أو أكتر</b> من الـ strings اللي في Σ، فبتشمل <b>ε</b> (صفر strings). الـ Positive closure <bdi dir="ltr">Σ⁺</bdi> هو <b>واحد أو أكتر</b>، فمفيهاش ε. الـ ε هي الـ empty string، و<bdi dir="ltr">{ε}</bdi> set فيها عنصر واحد.';
     } else {
       const parts = uniq(orx.replace(/\s/g, '').split('|').map(x => x === 'ε' ? '' : x).slice(0, 8));
       body = html`<div className="cf2-field"><span>RE</span><input className="cf2-in" aria-label="Alternatives" value=${orx} onChange=${e => setOrx(e.target.value.slice(0, 30))} /></div>
         <div className="cf2-set" style=${{ marginTop: '8px' }}>${orx.replace(/\s/g, '') || 'ε'} = ${setText(parts)}</div>`;
-      en = 'The <b>or</b> operator |: a|b|c = {a, b, c}. Each alternative is one string of the set.'; a = 'الـ <b>or</b> operator |: a|b|c = {a, b, c}. كل اختيار هو string واحدة في الـ set.';
+      en = 'The <b>or</b> operator |: a|b|c = {a, b, c}. Each alternative is one string of the set.'; a = 'الـ <b>or</b> operator هو <code>|</code>، ومثاله:<span class="ltr">a|b|c = {a, b, c}</span>كل اختيار هو string واحدة في الـ set.';
     }
     return html`<figure className="fig cf2"><div className="fig-stage"><div className="cf2-wrap">
       <div className="cf2-row">${tabs.map((t, k) => html`<button key=${t} className=${'fig-btn' + (tab === k ? ' cf2-sel' : '')} onClick=${() => { setTab(k); if (k === 1) restart(); }}>${t}</button>`)}</div>
@@ -790,7 +790,7 @@ textarea.cf2-in{ resize:vertical; }
     const R = RX[k], rx = new RegExp('^(?:' + R.re + ')$'), hit = rx.test(w);
     const mem = allStrings(R.sig, 4).filter(s => rx.test(s)), shown = mem.slice(0, 12);
     const en = '<code>' + esc(R.re) + '</code> is read as <code>' + esc(R.g) + '</code>: * binds tightest, then concatenation, then |. ' + (w === '' ? 'ε (the empty string) ' : '<code>' + esc(w) + '</code> ') + (hit ? 'is <b>in</b> the language.' : 'is <b>not</b> in the language.');
-    const a = '<code>' + esc(R.re) + '</code> بتتقري <code>' + esc(R.g) + '</code>: الـ * الأقوى، بعدها الـ concatenation، بعدها الـ |. ' + (w === '' ? 'الـ ε (الـ empty string) ' : '<code>' + esc(w) + '</code> ') + (hit ? '<b>جوه</b> الـ language.' : '<b>مش</b> جوه الـ language.');
+    const a = 'الـ <code>' + esc(R.re) + '</code> بتتقري <code>' + esc(R.g) + '</code>: الـ <code>*</code> الأقوى، بعدها الـ concatenation، بعدها الـ <code>|</code>. ' + (w === '' ? 'الـ ε (الـ empty string) ' : '<code>' + esc(w) + '</code> ') + (hit ? '<b>جوه</b> الـ language.' : '<b>مش</b> جوه الـ language.');
     return html`<figure className="fig cf2"><div className="fig-stage"><div className="cf2-wrap">
       <div className="cf2-row">${RX.map((x, j) => html`<button key=${x.re} className=${'fig-btn' + (k === j ? ' cf2-sel' : '')} style=${{ fontFamily: 'var(--mono)' }} onClick=${() => setK(j)}>${x.re}</button>`)}</div>
       <div className="cf2-field"><span>string</span><input className="cf2-in" spellCheck="false" aria-label="String to test" value=${w} onChange=${e => setW(e.target.value.replace(/\s/g, '').slice(0, 16))} /></div>
@@ -803,18 +803,18 @@ textarea.cf2-in{ resize:vertical; }
 
   /* ── L2 slide 8: algebraic properties of regular expressions, check each law ── */
   const LAWS = [
-    { f: ['(r|s)|t', 'r|s|t', 'r|(s|t)'], m: '| is associative', ma: 'الـ | associative' },
-    { f: ['s|t', 't|s'], m: '| is commutative', ma: 'الـ | commutative' },
-    { f: ['s|s', 's'], m: '| is idempotent', ma: 'الـ | idempotent' },
+    { f: ['(r|s)|t', 'r|s|t', 'r|(s|t)'], m: '| is associative', ma: 'الـ <code>|</code> associative' },
+    { f: ['s|t', 't|s'], m: '| is commutative', ma: 'الـ <code>|</code> commutative' },
+    { f: ['s|s', 's'], m: '| is idempotent', ma: 'الـ <code>|</code> idempotent' },
     { f: ['s?', 's|ε'], m: 'by definition', ma: 'بالتعريف' },
     { f: ['(rs)t', 'rst', 'r(st)'], m: 'concatenation is associative', ma: 'الـ concatenation associative' },
     { f: ['sε', 's', 'εs'], m: 'ε is a neutral element for concatenation', ma: 'الـ ε عنصر محايد للـ concatenation' },
-    { f: ['r(s|t)', 'rs|rt'], m: 'concatenation distributes over |', ma: 'الـ concatenation بيتوزع على الـ |' },
-    { f: ['(r|s)t', 'rt|st'], m: 'concatenation distributes over |', ma: 'الـ concatenation بيتوزع على الـ |' },
-    { f: ['(s*)*', 's*'], m: '* is idempotent', ma: 'الـ * idempotent' },
+    { f: ['r(s|t)', 'rs|rt'], m: 'concatenation distributes over |', ma: 'الـ concatenation بيتوزع على الـ <code>|</code>' },
+    { f: ['(r|s)t', 'rt|st'], m: 'concatenation distributes over |', ma: 'الـ concatenation بيتوزع على الـ <code>|</code>' },
+    { f: ['(s*)*', 's*'], m: '* is idempotent', ma: 'الـ <code>*</code> idempotent' },
     { f: ['s*s*', 's*'], m: '0 or more twice is still 0 or more', ma: 'صفر أو أكتر مرتين لسه صفر أو أكتر' },
     { f: ['ss*', 's⁺', 's*s'], m: 'by definition', ma: 'بالتعريف' },
-    { f: ['aε', 'εa', 'a'], m: 'exam trap: aε = a, not ε', ma: 'فخ امتحان: aε = a مش ε', trap: true },
+    { f: ['aε', 'εa', 'a'], m: 'exam trap: aε = a, not ε', ma: 'فخ امتحان: <bdi dir="ltr">aε&nbsp;=&nbsp;a</bdi> مش ε', trap: true },
     { f: ['(X|Y)*', 'X*|Y*'], m: 'exam trap: these are not equal', ma: 'فخ امتحان: دول مش متساويين', trap: true }
   ];
   const SUB = { r: 'a', s: 'b', t: 'c', X: 'a', Y: 'b' };
@@ -828,8 +828,8 @@ textarea.cf2-in{ resize:vertical; }
     const vars = L.f.join('').match(/[XY]/) ? 'X = a, Y = b' : 'r = a, s = b, t = c';
     const en = same ? 'With ' + vars + ', every side gives the <b>same set</b> of strings (checked for all strings up to length 3): <code>' + esc(L.f.join(' = ')) + '</code>, ' + esc(L.m) + '.'
       : 'With ' + vars + ' the sets differ: (X|Y)* contains <code>ab</code> (that is XY) and <code>ba</code>, but X*|Y* only has strings of all a or all b. So <b>(X|Y)* ≠ X*|Y*</b>.';
-    const a = same ? 'لما ' + vars + '، كل الأطراف بتطلع <b>نفس الـ set</b> من الـ strings (اتشيكت على كل الـ strings لحد طول 3): <code>' + esc(L.f.join(' = ')) + '</code>، ' + L.ma + '.'
-      : 'لما ' + vars + ' الـ sets بتختلف: (X|Y)* فيها <code>ab</code> (يعني XY) و<code>ba</code>، لكن X*|Y* فيها بس strings كلها a أو كلها b. يبقى <b>(X|Y)* ≠ X*|Y*</b>.';
+    const a = same ? 'لما <bdi dir="ltr">' + vars + '</bdi>، كل الأطراف بتطلع <b>نفس الـ set</b> من الـ strings (اتشيكت على كل الـ strings لحد طول 3):<span class="ltr">' + esc(L.f.join(' = ')) + '</span>والسبب: ' + L.ma + '.'
+      : 'لما <bdi dir="ltr">' + vars + '</bdi> الـ sets بتختلف: الـ <bdi dir="ltr">(X|Y)*</bdi> فيها <code>ab</code> (يعني XY) و<code>ba</code>، لكن الـ <bdi dir="ltr">X*|Y*</bdi> فيها بس strings كلها a أو كلها b. يبقى <b><bdi dir="ltr">(X|Y)*&nbsp;≠&nbsp;X*|Y*</bdi></b>.';
     return html`<figure className="fig cf2"><div className="fig-stage"><div className="cf2-wrap">
       <div className="cf2-law" role="list">${LAWS.map((x, j) => html`<button key=${j} className=${(k === j ? 'cf2-sel' : '') + (x.trap ? ' cf2-trap' : '')} onClick=${() => setK(j)}><span>${x.f.join(' = ').replace('(X|Y)* = X*|Y*', '(X|Y)* ≠ X*|Y*')}</span><span>${x.m}</span></button>`)}</div>
       <div className="cf2-h">Try it: ${vars}, strings up to length 3</div>
@@ -871,15 +871,15 @@ textarea.cf2-in{ resize:vertical; }
 
   /* ── L2 slides 10–11: the slide's finite automata, run a string through them ── */
   const FA = {
-    '01': { re: '01', slide: 'A finite automata for the expression 01 (slide 10)', slideAr: 'A finite automata for the expression 01 (سلايد 10)', vb: [340, 140], sig: ['0', '1'], start: 'q0', fin: ['q2'],
+    '01': { re: '01', slide: 'A finite automata for the expression 01 (slide 10)', slideAr: 'الـ finite automata بتاع الـ expression 01 (سلايد 10)', vb: [340, 140], sig: ['0', '1'], start: 'q0', fin: ['q2'],
       S: [{ id: 'q0', x: 95, y: 62, sub: 'Start State' }, { id: 'q1', x: 190, y: 62 }, { id: 'q2', x: 285, y: 62, sub: 'End State' }], E: [{ f: 'q0', t: 'q1', l: '0' }, { f: 'q1', t: 'q2', l: '1' }], ex: ['01', '0', '011', '10'] },
-    'a*': { re: 'a*', slide: 'the automaton for a* (slide 10)', slideAr: 'الـ automaton بتاع a* (سلايد 10)', vb: [340, 160], sig: ['a'], start: 'S', fin: ['S'], named: true,
+    'a*': { re: 'a*', slide: 'the automaton for a* (slide 10)', slideAr: 'الـ automaton بتاع <bdi dir="ltr">a*</bdi> (سلايد 10)', vb: [340, 160], sig: ['a'], start: 'S', fin: ['S'], named: true,
       S: [{ id: 'S', x: 190, y: 98, shade: true, sub: 'a*' }], E: [{ f: 'S', t: 'S', l: 'a' }], ex: ['aaa', '', 'ab'] },
-    'a+': { re: 'a⁺', slide: 'the automaton for a⁺ (slide 10)', slideAr: 'الـ automaton بتاع a⁺ (سلايد 10)', vb: [340, 160], sig: ['a'], start: 'S0', fin: ['S1'], named: true,
+    'a+': { re: 'a⁺', slide: 'the automaton for a⁺ (slide 10)', slideAr: 'الـ automaton بتاع <bdi dir="ltr">a⁺</bdi> (سلايد 10)', vb: [340, 160], sig: ['a'], start: 'S0', fin: ['S1'], named: true,
       S: [{ id: 'S0', x: 140, y: 98, shade: true, sub: 'a⁺' }, { id: 'S1', x: 268, y: 98 }], E: [{ f: 'S0', t: 'S0', l: 'a' }, { f: 'S0', t: 'S1', l: 'a' }], ex: ['aaa', 'a', ''] },
-    '(a|b)*': { re: '(a|b)*', slide: 'the automaton for (a|b)* (slide 10)', slideAr: 'الـ automaton بتاع (a|b)* (سلايد 10)', vb: [340, 160], sig: ['a', 'b'], start: 'q2', fin: ['q2'],
+    '(a|b)*': { re: '(a|b)*', slide: 'the automaton for (a|b)* (slide 10)', slideAr: 'الـ automaton بتاع <bdi dir="ltr">(a|b)*</bdi> (سلايد 10)', vb: [340, 160], sig: ['a', 'b'], start: 'q2', fin: ['q2'],
       S: [{ id: 'q2', x: 190, y: 98, sub: '(a|b)*' }], E: [{ f: 'q2', t: 'q2', l: 'a,b' }], ex: ['abba', '', 'abc'] },
-    '1*01(0|1)*': { re: '1*01(0|1)*', slide: 'the automaton for 1*01(0|1)* (slide 11)', slideAr: 'الـ automaton بتاع 1*01(0|1)* (سلايد 11)', vb: [340, 172], sig: ['0', '1'], start: 'q0', fin: ['q2'],
+    '1*01(0|1)*': { re: '1*01(0|1)*', slide: 'the automaton for 1*01(0|1)* (slide 11)', slideAr: 'الـ automaton بتاع <bdi dir="ltr">1*01(0|1)*</bdi> (سلايد 11)', vb: [340, 172], sig: ['0', '1'], start: 'q0', fin: ['q2'],
       S: [{ id: 'q0', x: 95, y: 100 }, { id: 'q1', x: 190, y: 100 }, { id: 'q2', x: 285, y: 100, sub: 'Final state' }], E: [{ f: 'q0', t: 'q0', l: '1' }, { f: 'q0', t: 'q1', l: '0' }, { f: 'q1', t: 'q2', l: '1' }, { f: 'q2', t: 'q2', l: '0,1' }], ex: ['1101', '11010', '01', '100'] }
   };
   Object.values(FA).forEach(M => { M.d = {}; M.S.forEach(s => { M.d[s.id] = {}; }); M.E.forEach(e => e.l.split(',').forEach(c => { (M.d[e.f][c] = M.d[e.f][c] || []).push(e.t); })); });
@@ -915,7 +915,7 @@ textarea.cf2-in{ resize:vertical; }
     let en, a;
     if (p === 0) { en = 'Slide’s automaton loaded: ' + M.slide + '. ' + 'Start in <b>' + M.start + '</b>, the start state. Input: ' + wq + '.'; a = 'الـ automaton بتاع الـ slide: ' + M.slideAr + '. ' + 'نبدأ من <b>' + M.start + '</b>، الـ start state. الـ input: ' + wq + '.'; }
     else if (stuck) { en = 'Read <b>' + esc(c) + '</b>: there is no transition from ' + L(prev) + ' on ' + esc(c) + '.'; a = 'قرينا <b>' + esc(c) + '</b>: مفيش transition من ' + L(prev) + ' على ' + esc(c) + '.'; }
-    else { en = 'Read <b>' + esc(c) + '</b>: ' + L(prev) + ' → ' + L(cur) + '.' + (cur.length > 1 ? ' Two edges are labelled ' + esc(c) + ', so the machine can be in <b>both</b> states.' : ''); a = 'قرينا <b>' + esc(c) + '</b>: ' + L(prev) + ' → ' + L(cur) + '.' + (cur.length > 1 ? ' فيه edgeين عليهم ' + esc(c) + '، فالـ machine ممكن تبقى في <b>الاتنين</b>.' : ''); }
+    else { en = 'Read <b>' + esc(c) + '</b>: ' + L(prev) + ' → ' + L(cur) + '.' + (cur.length > 1 ? ' Two edges are labelled ' + esc(c) + ', so the machine can be in <b>both</b> states.' : ''); a = 'قرينا <b>' + esc(c) + '</b> واتنقلنا كده:<span class="ltr">' + L(prev) + ' → ' + L(cur) + '</span>' + (cur.length > 1 ? 'فيه edgeين عليهم ' + esc(c) + '، فالـ machine ممكن تبقى في <b>الاتنين</b>.' : ''); }
     if (end) {
       if (acc) { en += ' Input finished in ' + L(cur.filter(s => M.fin.includes(s))) + ', a final state (double circle): ' + wq + ' is <b>accepted</b>.'; a += ' الـ input خلص في ' + L(cur.filter(s => M.fin.includes(s))) + '، وهي final state (دايرة دبل): ' + wq + ' <b>accepted</b>.'; }
       else if (stuck) { en += ' ' + wq + ' is <b>rejected</b>.'; a += ' ' + wq + ' <b>rejected</b>.'; }
@@ -954,11 +954,11 @@ textarea.cf2-in{ resize:vertical; }
   const N_PATH = { s: 'M54 84 C66 46 88 36 114 36 L186 36 C214 36 236 52 244 80', t: 'M54 106 C66 144 88 154 114 154 L186 154 C214 154 236 138 244 110' };
   function NfaDfa({ ar }) {
     const steps = [
-      { en: 'NFA vs. DFA: the slide compares the two kinds of finite automata, with an example of each.', ar: 'NFA vs. DFA: الـ slide بتقارن بين النوعين بتوع الـ finite automata، ومعاها مثال لكل واحد.' },
-      { en: '<b>Empty string transition:</b> the DFA’s edges carry input symbols (s, t). The NFA’s edges marked <b>ε</b> are empty string transitions.', ar: '<b>Empty string transition:</b> الـ edges في الـ DFA عليها input symbols (s و t). أما الـ NFA فالـ edges اللي عليها <b>ε</b> هي empty string transitions.' },
-      { en: '<b>Transition functions:</b> in the DFA, reading s (or t) from the start state leads to <b>one</b> next state. The slide says an NFA has zero or one; in general an NFA can have zero, one or several next states.', ar: '<b>Transition functions:</b> في الـ DFA، لو قرينا s (أو t) من الـ start state بنروح لـ <b>state واحدة</b>. الـ slide بتقول الـ NFA عندها صفر أو واحد؛ وعموماً الـ NFA ممكن يبقى عندها صفر أو واحد أو أكتر.' },
-      { en: '<b>Complexities of time:</b> running any input string takes less time in a DFA than in an NFA.', ar: '<b>Complexities of time:</b> تشغيل أي input string بياخد وقت أقل في الـ DFA عن الـ NFA.' },
-      { en: '<b>The setting of the next possible set:</b> in the DFA the next state is clearly set. In the NFA, the start state has two ε edges, so it can be in <b>both</b> paths (through s and through t) at once.', ar: '<b>The setting of the next possible set:</b> في الـ DFA الـ next state محددة بوضوح. في الـ NFA، الـ start state طالع منها edgeين ε، فممكن تبقى في <b>المسارين</b> (عن طريق s وعن طريق t) في نفس الوقت.' }
+      { en: 'NFA vs. DFA: the slide compares the two kinds of finite automata, with an example of each.', ar: 'الـ NFA قصاد الـ DFA: الـ slide بتقارن بين النوعين بتوع الـ finite automata، ومعاها مثال لكل واحد.' },
+      { en: '<b>Empty string transition:</b> the DFA’s edges carry input symbols (s, t). The NFA’s edges marked <b>ε</b> are empty string transitions.', ar: '<b>الـ Empty string transition:</b> الـ edges في الـ DFA عليها input symbols (s و t). أما الـ NFA فالـ edges اللي عليها <b>ε</b> هي empty string transitions.' },
+      { en: '<b>Transition functions:</b> in the DFA, reading s (or t) from the start state leads to <b>one</b> next state. The slide says an NFA has zero or one; in general an NFA can have zero, one or several next states.', ar: '<b>الـ Transition functions:</b> في الـ DFA، لو قرينا s (أو t) من الـ start state بنروح لـ <b>state واحدة</b>. الـ slide بتقول الـ NFA عندها صفر أو واحد؛ وعموماً الـ NFA ممكن يبقى عندها صفر أو واحد أو أكتر.' },
+      { en: '<b>Complexities of time:</b> running any input string takes less time in a DFA than in an NFA.', ar: '<b>الـ Complexities of time:</b> تشغيل أي input string بياخد وقت أقل في الـ DFA عن الـ NFA.' },
+      { en: '<b>The setting of the next possible set:</b> in the DFA the next state is clearly set. In the NFA, the start state has two ε edges, so it can be in <b>both</b> paths (through s and through t) at once.', ar: '<b>الـ setting بتاع الـ next possible set:</b> في الـ DFA الـ next state محددة بوضوح. في الـ NFA، الـ start state طالع منها edgeين ε، فممكن تبقى في <b>المسارين</b> (عن طريق s وعن طريق t) في نفس الوقت.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3600);
     const [pick, setPick] = useState('s'), [nk, setNk] = useState(0);
@@ -1136,11 +1136,11 @@ textarea.cf2-in{ resize:vertical; }
     mk({ key: 'eps', tab: '1) Contains ε', states: ['a', 'b', 'c'], start: 'a', fin: ['a'], syms: ['0', '1'], edges: ['a-ε>b', 'b-0>a', 'a-1>c', 'c-0>c', 'c-0,1>b'],
       pos: { a: [175, 50], b: [62, 165], c: [262, 165] }, w: 350, h: 210, loops: { 'c>c': 'right' }, bends: { 'a>b': 24, 'b>a': 24 }, init: '',
       en: '<b>Sign 1: it contains ε.</b> The edge a –ε→ b is taken without reading any input, so before reading anything the NFA is already in <b>{a, b}</b> (the ε-closure of a). A DFA is not capable of using an empty-string transition. Press <b>0</b> and <b>1</b> to feed a string.',
-      ar: '<b>العلامة 1: فيه ε.</b> الـ edge اللي هو a –ε→ b بيتاخد من غير ما يقرا أي input، فقبل ما يقرا أي حاجة الـ NFA بيبقى في <b>{a, b}</b> (الـ ε-closure بتاع a). الـ DFA مايقدرش يستخدم empty-string transition. دوس <b>0</b> و<b>1</b> عشان تدخّل string.' }),
+      ar: '<b>العلامة 1: فيه ε.</b> الـ edge اللي هو <bdi dir="ltr">a&nbsp;–ε→&nbsp;b</bdi> بيتاخد من غير ما يقرا أي input، فقبل ما يقرا أي حاجة الـ NFA بيبقى في <b><bdi dir="ltr">{a,&nbsp;b}</bdi></b> (الـ ε-closure بتاع a). الـ DFA مايقدرش يستخدم empty-string transition. دوس <b>0</b> و<b>1</b> عشان تدخّل string.' }),
     mk({ key: 'loop', tab: '2) Loop + same symbol', states: ['q0', 'q1', 'q2'], lab: { q0: 'q₀', q1: 'q₁', q2: 'q₂' }, start: 'q0', fin: ['q2'], syms: ['0', '1'], edges: ['q0-0,1>q0', 'q0-0>q1', 'q1-1>q2'],
       pos: { q0: [72, 95], q1: [190, 95], q2: [305, 95] }, w: 350, h: 130, init: '',
       en: '<b>Sign 2: a loop with an input symbol followed by a transition with the same input symbol.</b> q₀ loops on 0,1 and also has q₀ –0→ q₁, so on 0 the machine can stay in q₀ or move to q₁. Press <b>0</b> and watch both light up.',
-      ar: '<b>العلامة 2: loop على input symbol وبعده transition بنفس الـ symbol.</b> الـ q₀ عليها loop على 0,1 وكمان q₀ –0→ q₁، فعلى 0 الـ machine ممكن تفضل في q₀ أو تروح q₁. دوس <b>0</b> وشوف الاتنين بينوّروا.' }),
+      ar: '<b>العلامة 2: فيه loop على input symbol وبعده transition بنفس الـ symbol.</b> الـ q₀ عليها loop على 0,1 وكمان <bdi dir="ltr">q₀&nbsp;–0→&nbsp;q₁</bdi>، فعلى 0 الـ machine ممكن تفضل في q₀ أو تروح q₁. دوس <b>0</b> وشوف الاتنين بينوّروا.' }),
     mk({ key: 'paths', tab: '3) Multiple paths (001)', states: ['A', 'B', 'C'], start: 'A', fin: ['B', 'C'], syms: ['0', '1'], edges: ['A-0,1>A', 'A-0>C', 'A-1>B', 'B-1>C', 'C-0,1>C'],
       pos: { A: [72, 85], B: [72, 200], C: [285, 85] }, w: 350, h: 238, init: '001', note: 'The slide draws no start arrow; the paths start from A.', noteAr: 'الـ slide مش راسمة سهم بداية؛ الـ paths بتبدأ من A.',
       en: '<b>Sign 3: multiple paths with the same input string that the automaton can recognize.</b> The slide says: try the expression <b>001</b>. Press <b>Next</b> (or <b>Run</b>) to read it symbol by symbol; the list below shows every path.',
@@ -1167,10 +1167,10 @@ textarea.cf2-in{ resize:vertical; }
       const x = w[k - 1], prev = sets[k - 1], mvs = M.mv(prev, x), added = cur.filter(q => !mvs.includes(q));
       const mv = prev.map(q => [q, M.d[q][x] || []]);
       const pe = mv.map(([q, t]) => t.length ? `${M.nm(q)} –${x}→ ${t.map(M.nm).join(', ')}` : `${M.nm(q)} has no move on ${x}`).join('; ');
-      const pa = mv.map(([q, t]) => t.length ? `${M.nm(q)} –${x}→ ${t.map(M.nm).join(', ')}` : `${M.nm(q)} مالهاش move على ${x}`).join('؛ ');
+      const pa = mv.map(([q, t]) => t.length ? `<bdi dir="ltr">${M.nm(q)}&nbsp;–${x}→&nbsp;${t.map(M.nm).join(',&nbsp;')}</bdi>` : `الـ ${M.nm(q)} مالهاش move على ${x}`).join('، و');
       const multi = mv.filter(([, t]) => t.length > 1);
       en = `Read <b>${x}</b> (symbol ${k} of ${w.length}): ${pe}${added.length ? `; then ε adds ${added.map(M.nm).join(', ')}` : ''}. Now in <b>${S(cur)}</b>.`;
-      a = `قرينا <b>${x}</b> (الـ symbol رقم ${k} من ${w.length}): ${pa}${added.length ? `؛ وبعدين الـ ε بتضيف ${added.map(M.nm).join(', ')}` : ''}. دلوقتي إحنا في <b>${S(cur)}</b>.`;
+      a = `قرينا <b>${x}</b> (الـ symbol رقم ${k} من ${w.length})، و${pa}${added.length ? `؛ وبعدين الـ ε بتضيف <bdi dir="ltr">${added.map(M.nm).join(',&nbsp;')}</bdi>` : ''}. دلوقتي إحنا في <b>${S(cur)}</b>.`;
       if (multi.length) { en += ` ${multi.map(([q, t]) => `${M.nm(q)} has ${t.length} next states on ${x}`).join(', ')}: non-deterministic.`; a += ` ${multi.map(([q, t]) => `الـ ${M.nm(q)} ليها ${t.length} next states على ${x}`).join('، ')}: ده non-deterministic.`; }
       if (k === w.length) {
         const acc = cur.some(q => M.fin.includes(q)), fins = M.fin.map(M.nm).join(', ');
@@ -1212,7 +1212,7 @@ textarea.cf2-in{ resize:vertical; }
       { en: 'Slide 4’s two examples. <b>DFA</b>: two edges go from the start state to the second state, one labelled <b>s</b> and one labelled <b>t</b>, with no ε. <b>NFA</b>: ε edges lead from the start state into a box for s and a box for t, ε edges lead out of them into the last state, and the last state has an outgoing ε edge.',
         ar: 'المثالين بتوع slide 4. الـ <b>DFA</b>: فيه edgeين من الـ start state للـ state التانية، واحد عليه <b>s</b> وواحد عليه <b>t</b>، ومفيش ε. الـ <b>NFA</b>: فيه ε edges من الـ start state داخلة على box لـ s وbox لـ t، وε edges طالعة منهم للـ state الأخيرة، والـ state الأخيرة طالع منها ε edge.' },
       { en: '<b>Empty string transition.</b> DFA is not capable of using an empty string transition. NFA can use an empty string transition: every lit edge in the NFA example is an ε edge.', ar: '<b>الـ Empty string transition.</b> الـ DFA مايقدرش يستخدم empty string transition. الـ NFA يقدر: كل الـ edges المنوّرة في مثال الـ NFA هي ε edges.' },
-      { en: '<b>Transition functions.</b> DFA: the number related to the next state is one (on s, exactly one next state; on t, exactly one). NFA, as the slide says: either zero or one. ‡ In fact an NFA may have zero, one or more next states for a (state, symbol) pair, as the last row says.', ar: '<b>الـ Transition functions.</b> الـ DFA: عدد الـ next state واحد بس (على s فيه next state واحدة بالظبط، وعلى t واحدة). الـ NFA زي ما الـ slide بتقول: يا صفر يا واحد. ‡ في الحقيقة الـ NFA ممكن يبقى ليه صفر أو واحد أو أكتر من next state لكل (state, symbol)، زي ما الصف الأخير بيقول.' },
+      { en: '<b>Transition functions.</b> DFA: the number related to the next state is one (on s, exactly one next state; on t, exactly one). NFA, as the slide says: either zero or one. ‡ In fact an NFA may have zero, one or more next states for a (state, symbol) pair, as the last row says.', ar: '<b>الـ Transition functions.</b> الـ DFA: عدد الـ next state واحد بس (على s فيه next state واحدة بالظبط، وعلى t واحدة). الـ NFA زي ما الـ slide بتقول: يا صفر يا واحد. ‡ في الحقيقة الـ NFA ممكن يبقى ليه صفر أو واحد أو أكتر من next state لكل <bdi dir="ltr">(state,&nbsp;symbol)</bdi>، زي ما الصف الأخير بيقول.' },
       { en: '<b>Complexities of time.</b> The total time required for running any input string in a DFA is less than in an NFA; in an NFA it is larger.', ar: '<b>الـ Complexities of time.</b> الوقت الكلي لتشغيل أي input string في الـ DFA أقل منه في الـ NFA؛ وفي الـ NFA أكبر.' },
       { en: '<b>The setting of the next possible set.</b> DFA: the next possible state is clearly set. NFA: every single pair of input symbols and states may contain many possible next states (here the start state’s ε edges lead to both the s box and the t box).', ar: '<b>الـ setting بتاع الـ next possible set.</b> الـ DFA: الـ next possible state محددة بوضوح. الـ NFA: كل pair من input symbol وstate ممكن يبقى ليه next states كتير (هنا الـ ε edges بتاعة الـ start state بتروح للـ box بتاع s وللـ box بتاع t الاتنين).' },
     ];
@@ -1255,11 +1255,11 @@ textarea.cf2-in{ resize:vertical; }
   const TT = mk({ states: ['S', 'P', 'Q', 'R', 'T', 'F'], start: 'S', fin: ['F'], syms: ['a', 'b'], edges: ['S-a>P', 'S-b>Q', 'P-b>R', 'R-b>F', 'Q-a>Q', 'Q-a>T', 'T-b>T', 'T-a>F'],
     pos: { S: [52, 105], P: [150, 40], Q: [150, 165], R: [255, 40], T: [255, 165], F: [334, 105] }, w: 362, h: 255, loops: { 'Q>Q': 'down', 'T>T': 'down' } });
   const TTROW = [
-    ['Row S (the start state): S –a→ P and S –b→ Q.', 'صف S (الـ start state): S –a→ P و S –b→ Q.'],
-    ['Row P: P –b→ R. P has no edge on a, so that cell is <b>-</b> (no transition).', 'صف P: P –b→ R. الـ P مالهاش edge على a، فالخانة دي <b>-</b> (مفيش transition).'],
+    ['Row S (the start state): S –a→ P and S –b→ Q.', 'صف S (الـ start state): <bdi dir="ltr">S&nbsp;–a→&nbsp;P</bdi> و <bdi dir="ltr">S&nbsp;–b→&nbsp;Q</bdi>.'],
+    ['Row P: P –b→ R. P has no edge on a, so that cell is <b>-</b> (no transition).', 'صف P: <bdi dir="ltr">P&nbsp;–b→&nbsp;R</bdi>. الـ P مالهاش edge على a، فالخانة دي <b>-</b> (مفيش transition).'],
     ['Row Q: on a, Q can loop back to Q or go to T, so the cell holds two states: <b>Q,T</b>. No edge on b: <b>-</b>.', 'صف Q: على a الـ Q ممكن ترجع لنفسها (loop) أو تروح T، فالخانة فيها state اتنين: <b>Q,T</b>. مفيش edge على b: <b>-</b>.'],
-    ['Row R: R –b→ F; nothing on a: <b>-</b>.', 'صف R: R –b→ F؛ مفيش حاجة على a: <b>-</b>.'],
-    ['Row T: T –a→ F, and T –b→ T (the loop).', 'صف T: T –a→ F، و T –b→ T (الـ loop).'],
+    ['Row R: R –b→ F; nothing on a: <b>-</b>.', 'صف R: <bdi dir="ltr">R&nbsp;–b→&nbsp;F</bdi>؛ مفيش حاجة على a: <b>-</b>.'],
+    ['Row T: T –a→ F, and T –b→ T (the loop).', 'صف T: <bdi dir="ltr">T&nbsp;–a→&nbsp;F</bdi>، و <bdi dir="ltr">T&nbsp;–b→&nbsp;T</bdi> (الـ loop).'],
     ['Row F: F is the final state (double circle) and has no outgoing edges: <b>-</b> and <b>-</b>.', 'صف F: الـ F هي الـ final state (الدايرة المزدوجة) ومفيش edges طالعة منها: <b>-</b> و <b>-</b>.'],
   ];
   function TransTable({ ar }) {
@@ -1273,7 +1273,7 @@ textarea.cf2-in{ resize:vertical; }
       const [q, x] = sel, t = TT.d[q][x] || [];
       on = [q]; hot = TT.E.filter(e => e.f === q && e.syms.includes(x)).map(e => e.id);
       cap = { en: `(${q}, ${x}) = <b>${cell(q, x)}</b>: ` + (t.length ? `from ${q} on ${x} the automaton goes to ${t.join(' or ')}.` : `${q} has no edge on ${x}, so there is no transition.`),
-        ar: `(${q}, ${x}) = <b>${cell(q, x)}</b>: ` + (t.length ? `من ${q} على ${x} الـ automaton بيروح ${t.join(' أو ')}.` : `الـ ${q} مالهاش edge على ${x}، يعني مفيش transition.`) };
+        ar: `الخانة <b><bdi dir="ltr">(${q},&nbsp;${x})&nbsp;=&nbsp;${cell(q, x)}</bdi></b>: ` + (t.length ? `من ${q} على ${x} الـ automaton بيروح ${t.join(' أو ')}.` : `الـ ${q} مالهاش edge على ${x}، يعني مفيش transition.`) };
     } else if (i > 0) { const q = TT.states[i - 1]; on = [q]; hot = TT.E.filter(e => e.f === q).map(e => e.id); }
     return html`<figure className="fig cf3"><div className="fig-stage">
       <${Graph} g=${nfaGraph(TT)} on=${on} hot=${hot} mw=${440} title="Slide 5 automaton: S, P, Q, R, T, F" />
@@ -1289,10 +1289,10 @@ textarea.cf2-in{ resize:vertical; }
   const SLM = mk(SL);
   function FirstTable({ ar }) {
     const steps = [
-      { en: 'Slide 6’s NFA: <b>A</b> is the start state with a loop on 0,1, and A –0→ <b>B</b>; B is the final state (double circle). <b>Construct the first transition table (with empty transition)</b>: columns 0, 1 and ε.', ar: 'الـ NFA بتاع slide 6: الـ <b>A</b> هي الـ start state وعليها loop على 0,1، و A –0→ <b>B</b>؛ والـ B هي الـ final state (دايرة مزدوجة). <b>اعمل أول transition table (فيها empty transition)</b>: أعمدة 0 و 1 و ε.', on: [], hot: [] },
-      { en: '(A, 0): on 0, A can loop back to A <b>or</b> go to B, so the cell is <b>A,B</b>.', ar: '(A, 0): على 0 الـ A ممكن ترجع لنفسها (loop) <b>أو</b> تروح B، فالخانة <b>A,B</b>.', on: ['A'], hot: [0, 1] },
-      { en: '(A, 1): only the loop reads 1, so the cell is <b>A</b>.', ar: '(A, 1): الـ loop بس هو اللي بيقرا 1، فالخانة <b>A</b>.', on: ['A'], hot: [0] },
-      { en: '(A, ε): there is no ε edge, but every state reaches itself by ε, so the ε cell of A is <b>A</b>.', ar: '(A, ε): مفيش ε edge، بس كل state بتوصل لنفسها بالـ ε، فخانة الـ ε بتاعة A هي <b>A</b>.', on: ['A'], hot: [] },
+      { en: 'Slide 6’s NFA: <b>A</b> is the start state with a loop on 0,1, and A –0→ <b>B</b>; B is the final state (double circle). <b>Construct the first transition table (with empty transition)</b>: columns 0, 1 and ε.', ar: 'الـ NFA بتاع slide 6: الـ <b>A</b> هي الـ start state وعليها loop على 0,1، و <bdi dir="ltr">A&nbsp;–0→&nbsp;<b>B</b></bdi>؛ والـ B هي الـ final state (دايرة مزدوجة). <b>اعمل أول transition table (فيها empty transition)</b>: أعمدة 0 و 1 و ε.', on: [], hot: [] },
+      { en: '(A, 0): on 0, A can loop back to A <b>or</b> go to B, so the cell is <b>A,B</b>.', ar: 'الخانة <bdi dir="ltr">(A,&nbsp;0)</bdi>: على 0 الـ A ممكن ترجع لنفسها (loop) <b>أو</b> تروح B، فالخانة <b>A,B</b>.', on: ['A'], hot: [0, 1] },
+      { en: '(A, 1): only the loop reads 1, so the cell is <b>A</b>.', ar: 'الخانة <bdi dir="ltr">(A,&nbsp;1)</bdi>: الـ loop بس هو اللي بيقرا 1، فالخانة <b>A</b>.', on: ['A'], hot: [0] },
+      { en: '(A, ε): there is no ε edge, but every state reaches itself by ε, so the ε cell of A is <b>A</b>.', ar: 'الخانة <bdi dir="ltr">(A,&nbsp;ε)</bdi>: مفيش ε edge، بس كل state بتوصل لنفسها بالـ ε، فخانة الـ ε بتاعة A هي <b>A</b>.', on: ['A'], hot: [] },
       { en: 'Row B: no edge leaves B, so its 0 and 1 cells are <b>-</b>, and its ε cell is <b>B</b> itself. Next comes the second table, without ε (next section).', ar: 'صف B: مفيش edge طالع من B، فخانات 0 و 1 بتاعتها <b>-</b>، وخانة الـ ε هي <b>B</b> نفسها. بعد كده الـ second table من غير ε (السكشن اللي جاي).', on: ['B'], hot: [] },
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
@@ -1308,21 +1308,21 @@ textarea.cf2-in{ resize:vertical; }
   /* ── L3 slide 6 and the notes' exam NFAs: the lecture's 3-step NFA → DFA (subset construction) ── */
   const EX = [
     Object.assign({}, SL, { key: 'slide', name: 'Slide 6', fmt: 'slide',
-      why: 'on 0, A can stay in A (the loop) or go to B, so (A, 0) has two next states', whyAr: 'على 0 الـ A ممكن تفضل في A (الـ loop) أو تروح B، يعني (A, 0) ليها next state اتنين',
+      why: 'on 0, A can stay in A (the loop) or go to B, so (A, 0) has two next states', whyAr: 'على 0 الـ A ممكن تفضل في A (الـ loop) أو تروح B، يعني <bdi dir="ltr">(A,&nbsp;0)</bdi> ليها next state اتنين',
       end: 'It accepts the strings that end in 0.', endAr: 'بيقبل الـ strings اللي آخرها 0.',
       dpos: { 'A': [82, 105], 'A,B': [255, 105] }, dw: 340, dh: 150 }),
     { key: 'exam1', name: 'Exam NFA 1', states: ['1', '2', '3'], start: '1', fin: ['3'], syms: ['0', '1'], edges: ['1-0>3', '3-0>1', '3-1>3', '3-1>2', '2-0>3'],
       pos: { 1: [60, 110], 3: [185, 110], 2: [305, 110] }, w: 345, h: 155,
-      why: 'state 3 has a loop on 1 AND a transition on the same symbol 1 to state 2, so (3, 1) has two next states', whyAr: 'الـ state 3 عليها loop على 1 وكمان transition بنفس الـ symbol 1 لـ state 2، يعني (3, 1) ليها next state اتنين',
+      why: 'state 3 has a loop on 1 AND a transition on the same symbol 1 to state 2, so (3, 1) has two next states', whyAr: 'الـ state 3 عليها loop على 1 وكمان transition بنفس الـ symbol 1 لـ state 2، يعني <bdi dir="ltr">(3,&nbsp;1)</bdi> ليها next state اتنين',
       dpos: { '1': [70, 60], '3': [255, 60], '2,3': [255, 195], '1,3': [70, 195] }, dloops: { '2,3': 'down', '1,3': 'down' }, dw: 340, dh: 282 },
     { key: 'exam2', name: 'Exam NFA 2 (ε)', states: ['1', '2', '3'], start: '1', fin: ['1'], syms: ['a', 'b'], edges: ['1-b>2', '1-ε>3', '2-a>2', '2-a,b>3', '3-a>1'],
       pos: { 1: [62, 180], 2: [180, 85], 3: [300, 180] }, w: 340, h: 225,
-      why: 'it contains ε (1 –ε→ 3)', whyAr: 'فيه ε (1 –ε→ 3)',
+      why: 'it contains ε (1 –ε→ 3)', whyAr: 'فيه ε <bdi dir="ltr">(1&nbsp;–ε→&nbsp;3)</bdi>',
       dpos: { '1,3': [76, 80], '2': [190, 80], '3': [72, 215], '2,3': [190, 215], '1,2,3': [302, 215] }, dloops: { '1,3': 'up', '1,2,3': 'up' }, dw: 350, dh: 268 },
     { key: 'qa3', name: 'Q&A: ab | ba+', states: ['0', '1', '2', '3'], start: '0', fin: ['3'], syms: ['a', 'b'], edges: ['0-b>2', '0-a>1', '2-a>2', '2-a>3', '1-b>3'],
       pos: { 0: [55, 110], 1: [180, 45], 2: [180, 175], 3: [305, 110] }, w: 340, h: 252, loops: { '2>2': 'down' },
       why: 'on a, state 2 can loop back to 2 or go to 3', whyAr: 'على a الـ state 2 ممكن ترجع لنفسها (loop) أو تروح 3',
-      end: 'The language is ab | ba+.', endAr: 'الـ language هي ab | ba+.',
+      end: 'The language is ab | ba+.', endAr: 'الـ language هي <bdi dir="ltr">ab&nbsp;|&nbsp;ba+</bdi>.',
       dpos: { '0': [55, 110], '1': [172, 45], '2': [172, 175], '3': [300, 45], '2,3': [300, 175] }, dloops: { '2,3': 'down' }, dw: 345, dh: 255 },
     { key: 'p2122', name: '2021/22 paper', states: ['1', '2', '3'], start: '1', fin: ['3'], syms: ['0', '1'], edges: ['1-0>3', '3-0>1', '3-0>3', '3-1>2', '2-0>3'],
       pos: { 1: [60, 110], 3: [185, 110], 2: [305, 110] }, w: 345, h: 155,
@@ -1373,32 +1373,32 @@ textarea.cf2-in{ resize:vertical; }
     const finSets = pl.rows.filter(S => S.some(q => M.fin.includes(q)));
     const anyEmpty = steps.some(s => s.k === 'cell' && !s.res.length);
     let en, a;
-    if (st.k === 'nfa') { en = `<b>${M.name}.</b> Start state ${M.start}; final state${M.fin.length > 1 ? 's' : ''} ${M.fin.join(', ')}. It is non-deterministic: ${M.why}. Convert it with the lecture’s 3 steps (press Next).`; a = `<b>${M.name}.</b> الـ start state هي ${M.start}؛ والـ final هي ${M.fin.join(', ')}. ده non-deterministic: ${M.whyAr}. حوّله بالـ 3 steps بتوع المحاضرة (دوس Next).`; }
+    if (st.k === 'nfa') { en = `<b>${M.name}.</b> Start state ${M.start}; final state${M.fin.length > 1 ? 's' : ''} ${M.fin.join(', ')}. It is non-deterministic: ${M.why}. Convert it with the lecture’s 3 steps (press Next).`; a = `<b>الـ <bdi dir="ltr">${M.name}</bdi>.</b> الـ start state هي ${M.start}؛ والـ final هي ${M.fin.join(', ')}. ده non-deterministic: ${M.whyAr}. حوّله بالـ 3 steps بتوع المحاضرة (دوس Next).`; }
     if (st.k === 't1') {
       const q = st.q, E1 = M.clo([q]);
-      const mv = M.syms.map(x => `on ${x} → ${F1(M.d[q][x] || [])}`).join(', '), mva = M.syms.map(x => `على ${x} ← ${F1(M.d[q][x] || [])}`).join('، ');
+      const mv = M.syms.map(x => `on ${x} → ${F1(M.d[q][x] || [])}`).join(', '), mva = M.syms.map(x => `${x} → ${F1(M.d[q][x] || [])}`).join(', ');
       en = `<b>Step 1: first transition table (with ε).</b> Row ${q}: ${mv}; ε → <b>${F1(E1)}</b> (every state reaches itself by ε${E1.length > 1 ? `, plus ${E1.filter(x => x !== q).map(t => q + ' –ε→ ' + t).join(', ')}` : ''}).`;
-      a = `<b>الخطوة 1: أول transition table (فيها ε).</b> صف ${q}: ${mva}؛ والـ ε ← <b>${F1(E1)}</b> (كل state بتوصل لنفسها بالـ ε${E1.length > 1 ? `، وكمان ${E1.filter(x => x !== q).map(t => q + ' –ε→ ' + t).join('، ')}` : ''}).`;
+      a = `<b>الخطوة 1: أول transition table (فيها ε).</b> صف ${q}:<span class="ltr">${mva}, ε → <b>${F1(E1)}</b></span>(كل state بتوصل لنفسها بالـ ε${E1.length > 1 ? `، وكمان ${E1.filter(x => x !== q).map(t => '<bdi dir="ltr">' + q + '&nbsp;–ε→&nbsp;' + t + '</bdi>').join(' و ')}` : ''}).`;
     }
     if (st.k === 'start') {
       en = `<b>Step 2: second transition table (without ε).</b> Start from the ε-closure of the start state: E(${M.start}) = <b>${Ce(st.S)}</b>. This set is the first row, the DFA start state.`;
-      a = `<b>الخطوة 2: تاني transition table (من غير ε).</b> ابدأ من الـ ε-closure بتاع الـ start state: E(${M.start}) = <b>${Ce(st.S)}</b>. الـ set دي هي أول صف، وهي الـ start state بتاعة الـ DFA.`;
+      a = `<b>الخطوة 2: تاني transition table (من غير ε).</b> ابدأ من الـ ε-closure بتاع الـ start state:<span class="ltr">E(${M.start}) = <b>${Ce(st.S)}</b></span>الـ set دي هي أول صف، وهي الـ start state بتاعة الـ DFA.`;
     }
     if (st.k === 'cell') {
       const parts = st.S.map(q => [q, M.d[q][st.x] || []]).filter(p => p[1].length);
       const pe = parts.length ? parts.map(([q, t]) => `${q} –${st.x}→ ${t.join(', ')}`).join('; ') : `no member of ${F2(st.S)} moves on ${st.x}`;
-      const pa = parts.length ? parts.map(([q, t]) => `${q} –${st.x}→ ${t.join(', ')}`).join('؛ ') : `ولا عنصر في ${F2(st.S)} بيتحرك على ${st.x}`;
+      const pa = parts.length ? ':<span class="ltr">' + parts.map(([q, t]) => `${q} –${st.x}→ ${t.join(', ')}`).join('; ') + '</span>' : `: ولا عنصر في <bdi dir="ltr">${F2(st.S)}</bdi> بيتحرك على ${st.x}. `;
       const epsAdd = st.res.length > st.mv.length;
       en = `Row ${F2(st.S)} on <b>${st.x}</b>: ${pe}` + (epsAdd ? `; the ε-closure of ${Ce(st.mv)} is ${Ce(st.res)}` : '') + '. ';
-      a = `صف ${F2(st.S)} على <b>${st.x}</b>: ${pa}` + (epsAdd ? `؛ والـ ε-closure بتاع ${Ce(st.mv)} هو ${Ce(st.res)}` : '') + '. ';
+      a = `صف <bdi dir="ltr">${F2(st.S)}</bdi> على <b>${st.x}</b>${pa}` + (epsAdd ? `والـ ε-closure بتاع <bdi dir="ltr">${Ce(st.mv)}</bdi> هو <bdi dir="ltr">${Ce(st.res)}</bdi>. ` : '');
       if (!st.res.length) { en += `The cell is <b>${F2([])}</b>: a dead state, or simply no transition.`; a += `الخانة <b>${F2([])}</b>: dead state، أو ببساطة مفيش transition.`; }
-      else if (st.isNew) { en += `<b>${F2(st.res)} is a new set, so it becomes a new row.</b>`; a += `<b>${F2(st.res)} set جديدة، فبتبقى صف جديد.</b>`; }
-      else { en += `Cell = <b>${F2(st.res)}</b>, which already has a row.`; a += `الخانة = <b>${F2(st.res)}</b>، ودي ليها صف خلاص.`; }
+      else if (st.isNew) { en += `<b>${F2(st.res)} is a new set, so it becomes a new row.</b>`; a += `<b>الـ <bdi dir="ltr">${F2(st.res)}</bdi> set جديدة، فبتبقى صف جديد.</b>`; }
+      else { en += `Cell = <b>${F2(st.res)}</b>, which already has a row.`; a += `الخانة بتبقى <b><bdi dir="ltr">${F2(st.res)}</bdi></b>، ودي ليها صف خلاص.`; }
     }
     if (st.k === 'done') { en = `No new sets appear, so the second table is complete: <b>${pl.rows.length} DFA states</b>${anyEmpty ? ' (not counting the dead state)' : ''}.`; a = `مفيش sets جديدة ظهرت، فالـ second table خلص: <b>${pl.rows.length} DFA states</b>${anyEmpty ? ' (من غير الـ dead state)' : ''}.`; }
     if (st.k === 'dfa') {
       en = `<b>Step 3: draw the DFA.</b> Start state ${F2(pl.rows[0])}. Every set that contains an original final state (${M.fin.join(', ')}) is final: <b>${finSets.map(F2).join(', ')}</b>.` + (anyEmpty ? ` Empty cells (${F2([])}) are a dead state, or simply no transition (not drawn).` : '') + (M.end ? ' ' + M.end : '');
-      a = `<b>الخطوة 3: ارسم الـ DFA.</b> الـ start state هي ${F2(pl.rows[0])}. كل set فيها final state أصلية (${M.fin.join(', ')}) تبقى final: <b>${finSets.map(F2).join(', ')}</b>.` + (anyEmpty ? ` الخانات الفاضية (${F2([])}) معناها dead state، أو ببساطة مفيش transition (مش مرسومة).` : '') + (M.endAr ? ' ' + M.endAr : '');
+      a = `<b>الخطوة 3: ارسم الـ DFA.</b> الـ start state هي <bdi dir="ltr">${F2(pl.rows[0])}</bdi>. كل set فيها final state أصلية (${M.fin.join(', ')}) تبقى final، وهي <b><bdi dir="ltr">${finSets.map(F2).join(', ')}</bdi></b>.` + (anyEmpty ? ` الخانات الفاضية (${F2([])}) معناها dead state، أو ببساطة مفيش transition (مش مرسومة).` : '') + (M.endAr ? ' ' + M.endAr : '');
     }
     const curCell = st.k === 'cell' ? st.r + '|' + st.x : null;
     return html`<figure className="fig cf3"><div className="fig-stage">
@@ -1684,7 +1684,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     try { E(root); if (i < tk.length) fail('the end of the input'); return { T: { N, root } }; } catch (e) { if (e && e.need) return { err: e }; throw e; }
   }
   const errEn = e => `expected <b>${esc(e.need)}</b> but found <b>${e.got == null ? 'the end of the input' : esc(e.got)}</b> (token ${e.at + 1})`;
-  const errAr = e => `كان مستني <bdi>${esc(e.need)}</bdi> ولقى <bdi>${e.got == null ? 'end of input' : esc(e.got)}</bdi>`;
+  const errAr = e => `كان مستني <bdi dir="ltr">${esc(e.need)}</bdi> ولقى <bdi dir="ltr">${e.got == null ? 'end of input' : esc(e.got)}</bdi>`;
 
   /* ───────── [0] the parser between the lexer and the parse tree ───────── */
   const PIPE_EX = ['int*int', '(int*int)', '(int*int', 'int*int)'];
@@ -1696,8 +1696,8 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const S = esc(src.trim() || ' ');
     let en, a;
     if (i === 0) { en = `Source text <b>${S}</b>. Syntax analysis (parsing) is the second phase; first the lexical analyzer reads the characters.`; a = 'ده الـ source text، والـ syntax analysis (الـ parsing) هو تاني phase. الأول الـ lexical analyzer بيقرا الحروف:' + L(S); }
-    else if (lx.err != null) { en = `The lexical analyzer finds the tokens with regular expressions, but <b>${esc(lx.err)}</b> is not a token of this grammar: a lexical error, so nothing reaches the parser.`; a = `الـ lexical analyzer بيلاقي الـ tokens بالـ regular expressions، لكن الحرف <bdi>${esc(lx.err)}</bdi> مش token في الـ grammar دي، فده lexical error ومفيش حاجة بتوصل للـ parser.`; }
-    else if (i === 1) { en = `The lexical analyzer finds <b>${n}</b> tokens with regular expressions. It does not check that the parentheses balance: regular expressions cannot check balancing tokens.`; a = `الـ lexical analyzer لقى <bdi>${n}</bdi> tokens بالـ regular expressions. هو مش بيتشيك إن الأقواس متوازنة، لأن الـ regular expressions ماتقدرش تتشيك على الـ balancing tokens.`; }
+    else if (lx.err != null) { en = `The lexical analyzer finds the tokens with regular expressions, but <b>${esc(lx.err)}</b> is not a token of this grammar: a lexical error, so nothing reaches the parser.`; a = `الـ lexical analyzer بيلاقي الـ tokens بالـ regular expressions، لكن الحرف <bdi dir="ltr">${esc(lx.err)}</bdi> مش token في الـ grammar دي، فده lexical error ومفيش حاجة بتوصل للـ parser.`; }
+    else if (i === 1) { en = `The lexical analyzer finds <b>${n}</b> tokens with regular expressions. It does not check that the parentheses balance: regular expressions cannot check balancing tokens.`; a = `الـ lexical analyzer لقى <bdi dir="ltr">${n}</bdi> tokens بالـ regular expressions. هو مش بيتشيك إن الأقواس متوازنة، لأن الـ regular expressions ماتقدرش تتشيك على الـ balancing tokens.`; }
     else if (i === 2) { en = 'The parser takes the token stream and checks it against the production rules of a context-free grammar (here the grammar of slide 8).'; a = 'الـ parser بياخد الـ token stream ويقارنه بالـ production rules بتاعة الـ context-free grammar (هنا الـ grammar بتاعة slide 8).'; }
     else if (ps.err) { en = `The parser detects a syntax error: ${errEn(ps.err)}. The lexer passed the same tokens without complaint; only the CFG sees that the structure is wrong.`; a = `الـ parser اكتشف syntax error لأنه ${errAr(ps.err)}. الـ lexer عدّى نفس الـ tokens عادي؛ الـ CFG بس هي اللي شافت إن الـ structure غلط.`; }
     else { en = 'No errors, so the output is a <b>parse tree</b>. Parsing = finding a parse tree for a string of tokens. Its leaves, read left to right, are the tokens again.'; a = 'مفيش errors، فالـ output هو <b>parse tree</b>. الـ Parsing يعني إننا نلاقي parse tree لـ string من الـ tokens، والـ leaves بتاعته لو قريناها من الشمال لليمين بترجع الـ tokens تاني.'; }
@@ -1763,11 +1763,11 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     if (!hist.length) { en = 'The grammar of slide 5. Every derivation step takes two decisions: (1) which non-terminal to replace, (2) which production to use. Start: pick a production for <b>S</b>.'; a = 'دي الـ grammar بتاعة slide 5. كل خطوة في الـ derivation فيها قرارين: (1) أنهي non-terminal هنبدّله و(2) أنهي production هنستخدمها. ابدأ واختار production للـ <b>S</b>.'; }
     else if (done) {
       en = `Derived <b>${str}</b> in ${hist.length} steps. ` + (kind === 'L' ? 'You always replaced the leftmost non-terminal: a <b>leftmost derivation</b>.' : kind === 'R' ? 'You always replaced the rightmost non-terminal: a <b>rightmost derivation</b>.' : 'You mixed the order, so it is neither leftmost nor rightmost; the string and the tree do not depend on the order.');
-      a = `وصلنا للـ string <bdi>${str}</bdi> في <bdi>${hist.length}</bdi> خطوات. ` + (kind === 'L' ? 'انت دايماً بدّلت الـ non-terminal اللي على أقصى الشمال، يبقى ده <b>leftmost derivation</b>.' : kind === 'R' ? 'انت دايماً بدّلت الـ non-terminal اللي على أقصى اليمين، يبقى ده <b>rightmost derivation</b>.' : 'انت خلطت الترتيب، فده لا leftmost ولا rightmost؛ والـ string والـ tree مش بيتأثروا بالترتيب.');
+      a = `وصلنا للـ string <bdi dir="ltr">${str}</bdi> في <bdi dir="ltr">${hist.length}</bdi> خطوات. ` + (kind === 'L' ? 'انت دايماً بدّلت الـ non-terminal اللي على أقصى الشمال، يبقى ده <b>leftmost derivation</b>.' : kind === 'R' ? 'انت دايماً بدّلت الـ non-terminal اللي على أقصى اليمين، يبقى ده <b>rightmost derivation</b>.' : 'انت خلطت الترتيب، فده لا leftmost ولا rightmost؛ والـ string والـ tree مش بيتأثروا بالترتيب.');
     } else if (sel) { const w = where(sel), s = T.N[sel].s;
       en = `Decision 2: which production for <b>${s}</b>?` + (w === 'L' ? ' It is the leftmost non-terminal.' : w === 'R' ? ' It is the rightmost non-terminal.' : w === 'B' ? ' It is the only non-terminal left.' : ' It is neither the leftmost nor the rightmost.');
-      a = `القرار التاني: أنهي production للـ <bdi>${s}</bdi>؟` + (w === 'L' ? ' ده الـ non-terminal اللي على أقصى الشمال.' : w === 'R' ? ' ده الـ non-terminal اللي على أقصى اليمين.' : w === 'B' ? ' ده آخر non-terminal فاضل.' : ' ده لا اللي على الشمال ولا اللي على اليمين.'); }
-    else { en = `Decision 1: which non-terminal to replace? ${nts.length} are left; tap one.`; a = `القرار الأول: أنهي non-terminal هنبدّله؟ فاضل <bdi>${nts.length}</bdi>، دوس على واحد.`; }
+      a = `القرار التاني: أنهي production للـ <bdi dir="ltr">${s}</bdi>؟` + (w === 'L' ? ' ده الـ non-terminal اللي على أقصى الشمال.' : w === 'R' ? ' ده الـ non-terminal اللي على أقصى اليمين.' : w === 'B' ? ' ده آخر non-terminal فاضل.' : ' ده لا اللي على الشمال ولا اللي على اليمين.'); }
+    else { en = `Decision 1: which non-terminal to replace? ${nts.length} are left; tap one.`; a = `القرار الأول: أنهي non-terminal هنبدّله؟ فاضل <bdi dir="ltr">${nts.length}</bdi>، دوس على واحد.`; }
     const hiSet = st.last ? new Set([st.last, ...T.N[st.last].kids]) : NONE;
     return html`<figure className="fig cv4"><div className="fig-stage">
       <div className="cv4-gram"><${Gram} g="S → ABC, A → a | Aa, B → b | Bb, C → c" /><small>slide 5</small></div>
@@ -1786,12 +1786,12 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const ord = React.useMemo(() => T ? order(T, dir) : [{ n: null, form: [] }], [src, dir]);
     const n = ord.length, [i, ctl] = useWalk(n, 1900, src + dir + mode), steps = ord, Ld = dir === 'L';
     let en = '', a = '';
-    if (!T) { en = lx.err != null ? `<b>${esc(lx.err)}</b> is not a token of this grammar (tokens: int + * ( )).` : `Not derivable: ${errEn(ps.err)}.`; a = lx.err != null ? `الحرف <bdi>${esc(lx.err)}</bdi> مش token في الـ grammar دي.` : `الـ string دي مش بتتعمل derive لأن الـ parser ${errAr(ps.err)}.`; }
+    if (!T) { en = lx.err != null ? `<b>${esc(lx.err)}</b> is not a token of this grammar (tokens: int + * ( )).` : `Not derivable: ${errEn(ps.err)}.`; a = lx.err != null ? `الحرف <bdi dir="ltr">${esc(lx.err)}</bdi> مش token في الـ grammar دي.` : `الـ string دي مش بتتعمل derive لأن الـ parser ${errAr(ps.err)}.`; }
     else if (i === 0) { en = 'Start with the start symbol <b>E</b>. ' + (Ld ? '<b>Leftmost</b>: always replace the leftmost non-terminal (scan left to right).' : '<b>Rightmost</b>: always replace the rightmost non-terminal (scan right to left).');
       a = 'بنبدأ بالـ start symbol اللي هو E. ' + (Ld ? 'في الـ <b>leftmost</b> دايماً بنبدّل الـ non-terminal اللي على أقصى الشمال (من الشمال لليمين).' : 'في الـ <b>rightmost</b> دايماً بنبدّل الـ non-terminal اللي على أقصى اليمين (من اليمين للشمال).'); }
     else { const r = rule(T, ord[i].n, true), f = fstr(T, ord[i].form, true), s = T.N[ord[i].n].s;
       en = `Step ${i}: the ${Ld ? 'leftmost' : 'rightmost'} non-terminal is <b>${s}</b>; apply <b>${r}</b> to get <b>${f}</b>.`;
-      a = `في الخطوة <bdi>${i}</bdi> الـ non-terminal اللي على أقصى ${Ld ? 'الشمال' : 'اليمين'} هو <bdi>${s}</bdi>، فبنطبّق الـ production دي ونوصل للـ sentential form:` + L(`${r} &nbsp;⇒&nbsp; ${f}`);
+      a = `في الخطوة <bdi dir="ltr">${i}</bdi> الـ non-terminal اللي على أقصى ${Ld ? 'الشمال' : 'اليمين'} هو <bdi dir="ltr">${s}</bdi>، فبنطبّق الـ production دي ونوصل للـ sentential form:` + L(`${r} &nbsp;⇒&nbsp; ${f}`);
       if (i === n - 1) { en += ' Done: only terminals are left. Leftmost and rightmost use the same productions in a different order and build the same parse tree.'; a += 'كده خلصنا: مفيش غير terminals. الـ leftmost والـ rightmost بيستخدموا نفس الـ productions بترتيب مختلف وبيبنوا نفس الـ parse tree.'; } }
     const vis = T ? grown(T, ord, i) : null, cur = T && i > 0 ? ord[i].n : null, hi = cur ? new Set([cur, ...T.N[cur].kids]) : NONE;
     return html`<figure className="fig cv4"><div className="fig-stage">
@@ -1841,12 +1841,12 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   function LmTree({ ar }) {
     const D = [
       ['The root gets three children: <b>E * E</b>.', 'الـ root بياخد 3 children وهم E و * و E.'],
-      ['The leftmost E expands to <b>E + E</b>.', 'الـ E اللي على الشمال بيتعمله expand لـ <bdi>E + E</bdi>.'],
+      ['The leftmost E expands to <b>E + E</b>.', 'الـ E اللي على الشمال بيتعمله expand لـ <bdi dir="ltr">E + E</bdi>.'],
       ['The leftmost E becomes <b>id</b>.', 'الـ E اللي على أقصى الشمال بيبقى id.'],
       ['The next leftmost E becomes <b>id</b>.', 'الـ E اللي بعده على الشمال بيبقى id.'],
       ['The last E becomes <b>id</b>: the tree is complete and every leaf is a terminal.', 'آخر E بيبقى id، والـ tree كده كملت وكل leaf فيها terminal.']];
-    const steps = [{ en: 'Leftmost parsing tree for <b>id+id*id</b> (slides 10–11). The start symbol <b>E</b> is the root.', ar: 'ده الـ leftmost parsing tree بتاع id+id*id من slides 10 و 11. الـ start symbol اللي هو E هو الـ root.' }]
-      .concat(D.map(([e, r], k) => { const f = 'E → ' + fstr(T10, O10[k + 1].form); return { en: `Step ${k + 1}: <b>${f}</b>. ${e}`, ar: `في الخطوة <bdi>${k + 1}</bdi> ${r}` + L(f) }; }));
+    const steps = [{ en: 'Leftmost parsing tree for <b>id+id*id</b> (slides 10–11). The start symbol <b>E</b> is the root.', ar: 'ده الـ leftmost parsing tree بتاع <bdi dir="ltr">id+id*id</bdi> من slides 10 و 11. الـ start symbol اللي هو E هو الـ root.' }]
+      .concat(D.map(([e, r], k) => { const f = 'E → ' + fstr(T10, O10[k + 1].form); return { en: `Step ${k + 1}: <b>${f}</b>. ${e}`, ar: `في الخطوة <bdi dir="ltr">${k + 1}</bdi> ${r}` + L(f) }; }));
     const [i, ctl] = useSteps(steps.length, 2300);
     const vis = grown(T10, O10, i), hi = i ? new Set(T10.N[O10[i].n].kids.concat(O10[i].n)) : new Set([T10.root]);
     return html`<figure className="fig cv4"><div className="fig-stage">
@@ -1860,11 +1860,11 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const ids = Object.keys(T10.N), leaves = [], walk = id => { const k = T10.N[id].kids; if (!k.length) leaves.push(id); k.forEach(walk); }; walk(T10.root);
     const inner = ids.filter(id => T10.N[id].kids.length), deep = T10.N[T10.root].kids[0], sub = []; const col = id => { sub.push(id); T10.N[id].kids.forEach(col); }; col(deep);
     const steps = [
-      { en: 'The parse tree of <b>id+id*id</b> from slide 11.', ar: 'ده الـ parse tree بتاع id+id*id من slide 11.' },
+      { en: 'The parse tree of <b>id+id*id</b> from slide 11.', ar: 'ده الـ parse tree بتاع <bdi dir="ltr">id+id*id</bdi> من slide 11.' },
       { en: 'All <b>leaf nodes are terminals</b>: id, +, id, *, id.', ar: 'كل الـ <b>leaf nodes بتبقى terminals</b>، وهم:' + L('id, +, id, *, id') },
       { en: 'All <b>interior (non-leaf) nodes are non-terminals</b>: every E.', ar: 'كل الـ <b>interior (non-leaf) nodes بتبقى non-terminals</b>، يعني كل الـ E.' },
       ...leaves.map((id, k) => ({ en: `In-order traversal reads the leaves from left to right: <b>${leaves.slice(0, k + 1).map(x => T10.N[x].s).join('')}</b>` + (k === leaves.length - 1 ? '. That is the original input string.' : ' …'), ar: 'الـ in-order traversal بيقرا الـ leaves من الشمال لليمين:' + L(leaves.slice(0, k + 1).map(x => T10.N[x].s).join('')) + (k === leaves.length - 1 ? 'وده الـ input string الأصلي.' : '') })),
-      { en: 'Precedence: the <b>deepest sub-tree is traversed first</b>. Here that is E → E + E, so <b>id + id</b> is evaluated before anything in the parent nodes.', ar: 'الـ precedence: <b>أعمق sub-tree بيتحسب الأول</b>. هنا ده الـ <bdi>E → E + E</bdi>، فالـ <bdi>id + id</bdi> بيتحسب قبل أي حاجة في الـ parent nodes.' },
+      { en: 'Precedence: the <b>deepest sub-tree is traversed first</b>. Here that is E → E + E, so <b>id + id</b> is evaluated before anything in the parent nodes.', ar: 'الـ precedence: <b>أعمق sub-tree بيتحسب الأول</b>. هنا ده الـ <bdi dir="ltr">E → E + E</bdi>، فالـ <bdi dir="ltr">id + id</bdi> بيتحسب قبل أي حاجة في الـ parent nodes.' },
       { en: 'Then the <b>*</b> at the root uses that result: in this tree + has precedence over *, so it computes <b>(id + id) * id</b>.', ar: 'وبعدين الـ * اللي في الـ root بيستخدم الناتج ده. يعني في الـ tree دي الـ + ليه precedence على الـ *، فهي بتحسب:' + L('(id + id) * id') }
     ];
     const [i, ctl] = useSteps(steps.length, 2200), nl = leaves.length;
@@ -1886,11 +1886,11 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   const G13 = parseG('E → E+E | E-E | id'), A13 = allLmd(G13, tok('id-id+id')).trees, O13 = A13.map(T => order(T, 'L'));
   function AmbigTrees({ ar }) {
     const n = O13[0].length;
-    const steps = [{ en: 'Slide 13: <b>E → E + E | E – E | id</b>. Derive <b>id-id+id</b> leftmost, two ways side by side.', ar: 'الـ slide 13 فيها الـ grammar دي، وهنعمل leftmost derivation للـ string <bdi>id-id+id</bdi> بطريقتين جنب بعض:' + L('E → E + E | E – E | id') }];
+    const steps = [{ en: 'Slide 13: <b>E → E + E | E – E | id</b>. Derive <b>id-id+id</b> leftmost, two ways side by side.', ar: 'الـ slide 13 فيها الـ grammar دي، وهنعمل leftmost derivation للـ string <bdi dir="ltr">id-id+id</bdi> بطريقتين جنب بعض:' + L('E → E + E | E – E | id') }];
     for (let k = 1; k < n; k++) {
       const f1 = fstr(A13[0], O13[0][k].form), f2 = fstr(A13[1], O13[1][k].form);
-      steps.push(k === 1 ? { en: 'The first step already differs: LMD 1 uses <b>E → E+E</b> (root +), LMD 2 uses <b>E → E-E</b> (root -).', ar: 'من أول خطوة الاتنين مختلفين: الـ LMD 1 بيستخدم <bdi>E → E+E</bdi> (الـ root هو +)، والـ LMD 2 بيستخدم <bdi>E → E-E</bdi> (الـ root هو -).' }
-        : { en: `Step ${k}: each replaces its leftmost E. LMD 1 ⇒ <b>${f1}</b>, LMD 2 ⇒ <b>${f2}</b>.`, ar: `في الخطوة <bdi>${k}</bdi> كل واحد بيبدّل الـ E اللي على أقصى الشمال:` + L(`LMD 1 ⇒ ${f1}<br>LMD 2 ⇒ ${f2}`) });
+      steps.push(k === 1 ? { en: 'The first step already differs: LMD 1 uses <b>E → E+E</b> (root +), LMD 2 uses <b>E → E-E</b> (root -).', ar: 'من أول خطوة الاتنين مختلفين: الـ LMD 1 بيستخدم <bdi dir="ltr">E → E+E</bdi> (الـ root هو +)، والـ LMD 2 بيستخدم <bdi dir="ltr">E → E-E</bdi> (الـ root هو -).' }
+        : { en: `Step ${k}: each replaces its leftmost E. LMD 1 ⇒ <b>${f1}</b>, LMD 2 ⇒ <b>${f2}</b>.`, ar: `في الخطوة <bdi dir="ltr">${k}</bdi> كل واحد بيبدّل الـ E اللي على أقصى الشمال:` + L(`LMD 1 ⇒ ${f1}<br>LMD 2 ⇒ ${f2}`) });
     }
     steps.push({ en: 'Same string, <b>two different leftmost derivations</b> and two parse trees (root + with id-id below it, root - with id+id below it): the grammar is <b>ambiguous</b>.', ar: 'نفس الـ string ليها <b>اتنين leftmost derivations مختلفين</b> واتنين parse trees (واحدة الـ root بتاعها + وتحتها id-id، والتانية الـ root بتاعها - وتحتها id+id)، يبقى الـ grammar دي <b>ambiguous</b>.' });
     const [i, ctl] = useSteps(steps.length, 2300), k = Math.min(i, n - 1);
@@ -1907,7 +1907,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const [dir, setDir] = useState('L'), O = React.useMemo(() => order(T6, dir), [dir]), n = O.length, Ld = dir === 'L';
     const [i, ctl] = useWalk(n, 1500, dir);
     let en, a;
-    if (i === 0) { en = `The sheets' unambiguous grammar <b>E → E+T | T, T → T*F | F, F → (E) | id</b> and the string <b>id+id*id</b>. Derive it ${Ld ? 'leftmost' : 'rightmost'}.`; a = `دي الـ grammar الـ unambiguous بتاعة الشيتات، والـ string هي <bdi>id+id*id</bdi>. هنعمل ${Ld ? 'leftmost' : 'rightmost'} derivation:` + L('E → E+T | T, T → T*F | F, F → (E) | id'); }
+    if (i === 0) { en = `The sheets' unambiguous grammar <b>E → E+T | T, T → T*F | F, F → (E) | id</b> and the string <b>id+id*id</b>. Derive it ${Ld ? 'leftmost' : 'rightmost'}.`; a = `دي الـ grammar الـ unambiguous بتاعة الشيتات، والـ string هي <bdi dir="ltr">id+id*id</bdi>. هنعمل ${Ld ? 'leftmost' : 'rightmost'} derivation:` + L('E → E+T | T, T → T*F | F, F → (E) | id'); }
     else { const r = rule(T6, O[i].n), f = fstr(T6, O[i].form); en = `Replace the ${Ld ? 'leftmost' : 'rightmost'} non-terminal with <b>${r}</b>: <b>${f}</b>.`; a = `بنبدّل الـ non-terminal اللي على أقصى ${Ld ? 'الشمال' : 'اليمين'}:` + L(`${r} &nbsp;⇒&nbsp; ${f}`); }
     if (i === n - 1) { en += ' The leftmost and the rightmost derivations look different, yet they build <b>the same single tree</b>. One leftmost plus one rightmost derivation does NOT prove ambiguity: you need two different leftmost (or two rightmost) ones.'; a += 'الـ leftmost والـ rightmost شكلهم مختلف، لكن الاتنين بيبنوا <b>نفس الـ tree الوحيدة</b>. يعني leftmost واحد و rightmost واحد مش بيثبتوا الـ ambiguity؛ لازم اتنين leftmost مختلفين (أو اتنين rightmost).'; }
     const vis = grown(T6, O, i), hi = i ? new Set([O[i].n, ...T6.N[O[i].n].kids]) : NONE;
@@ -1932,9 +1932,9 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const m = R.trees ? R.trees.length : 0, kk = Math.min(k, Math.max(0, m - 1)), T = m ? R.trees[kk] : null, O = T ? order(T, 'L') : null;
     let en, a;
     if (R.err) { en = 'Grammar: ' + esc(R.err) + '.'; a = 'فيه مشكلة في الـ grammar:' + L(esc(R.err)); }
-    else if (!m) { en = R.cut ? 'The search stopped early: try a shorter string.' : `No leftmost derivation: <b>${esc(s)}</b> is not in the language of this grammar.`; a = R.cut ? 'البحث وقف بدري، جرّب string أقصر.' : `مفيش leftmost derivation، يعني الـ string <bdi>${esc(s)}</bdi> مش من الـ language بتاعة الـ grammar دي.`; }
-    else if (m === 1) { en = `Exactly <b>one</b> leftmost derivation (one parse tree) for <b>${esc(s)}</b>${R.cut ? ' found before the search stopped' : ''}. If only one leftmost tree exists for every sentence, the grammar is unambiguous.`; a = `فيه leftmost derivation <b>واحد بس</b> (parse tree واحدة) للـ string <bdi>${esc(s)}</bdi>. ولو كل sentence ليها leftmost tree واحدة بس، تبقى الـ grammar دي unambiguous.`; }
-    else { en = `<b>${m === 6 ? 'At least 6' : m}</b> different leftmost derivations, so ${m === 6 ? 'at least 6' : m} parse trees, for <b>${esc(s)}</b>: the grammar is <b>ambiguous</b>. Switch between them below.`; a = `لقينا <bdi>${m === 6 ? '6+' : m}</bdi> leftmost derivations مختلفين، يعني نفس العدد من الـ parse trees، للـ string <bdi>${esc(s)}</bdi>، يبقى الـ grammar <b>ambiguous</b>. بدّل بينهم تحت.`; }
+    else if (!m) { en = R.cut ? 'The search stopped early: try a shorter string.' : `No leftmost derivation: <b>${esc(s)}</b> is not in the language of this grammar.`; a = R.cut ? 'البحث وقف بدري، جرّب string أقصر.' : `مفيش leftmost derivation، يعني الـ string <bdi dir="ltr">${esc(s)}</bdi> مش من الـ language بتاعة الـ grammar دي.`; }
+    else if (m === 1) { en = `Exactly <b>one</b> leftmost derivation (one parse tree) for <b>${esc(s)}</b>${R.cut ? ' found before the search stopped' : ''}. If only one leftmost tree exists for every sentence, the grammar is unambiguous.`; a = `فيه leftmost derivation <b>واحد بس</b> (parse tree واحدة) للـ string <bdi dir="ltr">${esc(s)}</bdi>. ولو كل sentence ليها leftmost tree واحدة بس، تبقى الـ grammar دي unambiguous.`; }
+    else { en = `<b>${m === 6 ? 'At least 6' : m}</b> different leftmost derivations, so ${m === 6 ? 'at least 6' : m} parse trees, for <b>${esc(s)}</b>: the grammar is <b>ambiguous</b>. Switch between them below.`; a = `لقينا <bdi dir="ltr">${m === 6 ? '6+' : m}</bdi> leftmost derivations مختلفين، يعني نفس العدد من الـ parse trees، للـ string <bdi dir="ltr">${esc(s)}</bdi>، يبقى الـ grammar <b>ambiguous</b>. بدّل بينهم تحت.`; }
     return html`<figure className="fig cv4"><div className="fig-stage">
       <div className="cv4-modes" role="group">${AMB.map((x, j) => html`<button key=${j} className="fig-btn" style=${{ fontFamily: 'var(--mono)' }} aria-pressed=${String(!own && p === j)} onClick=${() => pick(j)}>${x.s}</button>`)}<button className="fig-btn" aria-pressed=${String(own)} onClick=${() => setOwn(true)}>Try your own</button></div>
       ${own ? html`<div style=${{ display: 'grid', gap: '6px', maxWidth: '360px', margin: '0 auto 8px' }}><textarea className="cv4-in" value=${g} onInput=${e => { setG(e.target.value); setK(0); }} aria-label="Grammar, one rule per line" spellCheck="false" autoCapitalize="off"></textarea>
@@ -1963,7 +1963,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
       form = 'A' + 'b'.repeat(d); if (i && i <= LOOP) hi = new Set([loopTree.chain[d - 1], ...T.N[loopTree.chain[d - 1]].kids]);
       if (i === 0) { en = `Grammar <b>A → Ab | c</b> is left-recursive. A top-down parser gets the input <b>${esc(w)}</b> and starts from the start symbol A.`; a = 'الـ grammar دي left-recursive. الـ top-down parser بياخد الـ input ده ويبدأ من الـ start symbol اللي هو A:' + L('A → Ab | c &nbsp;&nbsp; input: ' + esc(w)); }
       else if (i <= LOOP) { en = `Expand the left A with <b>A → Ab</b>: <b>${form}</b>. The leftmost symbol is A again, so no input can be matched.`; a = 'بنعمل expand للـ A اللي على الشمال، والـ leftmost symbol بيرجع A تاني، فمفيش ولا input بيتعمله match:' + L('A → Ab &nbsp;⇒&nbsp; ' + form); }
-      else { en = 'It cannot judge when to stop expanding the left A, so it goes into an <b>infinite loop</b>, never moving along the input. That is why LL(1) cannot be applied to a left-recursive grammar.'; a = 'مايعرفش يحدد إمتى يبطّل expand للـ A اللي على الشمال، فبيدخل في <b>infinite loop</b> ومابيتحركش في الـ input خالص. عشان كده الـ LL(1) مينفعش يتطبّق على left-recursive grammar.'; } }
+      else { en = 'It cannot judge when to stop expanding the left A, so it goes into an <b>infinite loop</b>, never moving along the input. That is why LL(1) cannot be applied to a left-recursive grammar.'; a = 'مايعرفش يحدد إمتى يبطّل expand للـ A اللي على الشمال، فبيدخل في <b>infinite loop</b> ومابيتحركش في الـ input خالص. عشان كده الـ <bdi dir="ltr">LL(1)</bdi> مينفعش يتطبّق على left-recursive grammar.'; } }
     else if (!ok) { en = `<b>${esc(w)}</b> is not generated by A → Ab | c (its strings are c followed by b's). Type c, cb, cbb, …`; a = 'الـ string دي مش من الـ grammar دي، لأن الـ strings بتاعتها c وبعدها b كذا مرة. اكتب حاجة زي:' + L('c, cb, cbb, …'); }
     else { T = R.T; const d = Math.min(i, R.ex.length); vis = new Set([T.root]); R.ex.slice(0, d).forEach(id => T.N[id].kids.forEach(c => vis.add(c)));
       const f = [T.root]; let fo = f; for (let k = 0; k < d; k++) { const id = R.ex[k]; const j = fo.indexOf(id); fo = fo.slice(0, j).concat(T.N[id].kids.filter(c => !T.N[c].eps), fo.slice(j + 1)); }
@@ -1972,7 +1972,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
       else if (i === 1) { en = "Expand A → cA': the <b>c</b> is matched at once."; a = 'بنعمل expand بالـ production دي، والـ c بيتعمله match على طول:' + L("A → cA'"); }
       else if (i < R.ex.length) { en = "Next input is <b>b</b>: A' → bA' matches it; the parser moves forward."; a = 'الـ input اللي جاي b، فالـ production دي بتعمله match والـ parser بيتقدّم:' + L("A' → bA'"); }
       else if (i === R.ex.length) { en = "No input left: <b>A' → ε</b> ends the derivation."; a = 'مفيش input فاضل، فالـ production دي بتنهي الـ derivation:' + L("A' → ε"); }
-      else { en = `Done: <b>${esc(w)}</b> parsed in ${R.ex.length} expansions, each one matching input. No loop.`; a = `خلصنا: الـ string <bdi>${esc(w)}</bdi> اتعملها parse في <bdi>${R.ex.length}</bdi> expansions، وكل واحدة عملت match لـ input. مفيش loop.`; } }
+      else { en = `Done: <b>${esc(w)}</b> parsed in ${R.ex.length} expansions, each one matching input. No loop.`; a = `خلصنا: الـ string <bdi dir="ltr">${esc(w)}</bdi> اتعملها parse في <bdi dir="ltr">${R.ex.length}</bdi> expansions، وكل واحدة عملت match لـ input. مفيش loop.`; } }
     return html`<figure className="fig cv4"><div className="fig-stage">
       <${Modes} list=${[['L', 'A → Ab | c'], ['R', "A → cA', A' → bA' | ε"]]} mode=${dir} set=${setDir} />
       <div className="cv4-row"><label className="cv4-lbl">input <input className="cv4-in" value=${w} onInput=${e => setW(e.target.value.trim())} spellCheck="false" autoCapitalize="off" style=${{ maxWidth: '150px' }} /></label></div>
@@ -2028,9 +2028,9 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     if (bad) { en = esc(R.err) + '.'; a = 'الـ rule دي مش هتنفع هنا:' + L(esc(R.err)); }
     else { const A = R.A, Ap = R.Ap, als = R.al.map(x => cat(x)).join(', '), bes = R.be.map(x => cat(x)).join(', ');
       if (i === 0) { en = `For each rule with a left-recursive option, <b>A → Aα | β</b>, introduce a new non-terminal A'. Here: <b>${esc(txt)}</b>.`; a = "لكل rule فيها اختيار left-recursive بالشكل ده بنضيف non-terminal جديد اسمه A'. والـ rule هنا:" + L('A → Aα | β &nbsp;&nbsp;&nbsp; ' + esc(txt)); }
-      else if (i === 1) { en = `Split the alternatives: those starting with <b>${A}</b> give α = <b>${als}</b>; the others give β = <b>${bes}</b>.` + (R.al.length > 1 ? ' Slide 17 does each left-recursive option separately and merges the A\' rules: the same result.' : ''); a = `بنقسم الاختيارات: اللي بيبدأ بالـ <bdi>${A}</bdi> بيدّينا الـ α، والباقي بيدّينا الـ β:` + L(`α = ${als} &nbsp;&nbsp; β = ${bes}`) + (R.al.length > 1 ? "والـ slide 17 بتعمل كل اختيار left-recursive لوحده وبعدين تجمع الـ A' rules، ونفس النتيجة." : ''); }
+      else if (i === 1) { en = `Split the alternatives: those starting with <b>${A}</b> give α = <b>${als}</b>; the others give β = <b>${bes}</b>.` + (R.al.length > 1 ? ' Slide 17 does each left-recursive option separately and merges the A\' rules: the same result.' : ''); a = `بنقسم الاختيارات: اللي بيبدأ بالـ <bdi dir="ltr">${A}</bdi> بيدّينا الـ α، والباقي بيدّينا الـ β:` + L(`α = ${als} &nbsp;&nbsp; β = ${bes}`) + (R.al.length > 1 ? "والـ slide 17 بتعمل كل اختيار left-recursive لوحده وبعدين تجمع الـ A' rules، ونفس النتيجة." : ''); }
       else if (i === 2) { en = `Each β is followed by the new non-terminal: <b>${R.lhs}</b>.`; a = 'كل β بييجي بعدها الـ non-terminal الجديد:' + L(R.lhs); }
-      else if (i === 3) { en = `${Ap} produces each α again and again, or ε to stop: <b>${R.rhs}</b>. No alternative starts with its own left side any more.`; a = `الـ <bdi>${Ap}</bdi> بيطلّع كل α مرة ورا مرة، أو ε عشان يقف. ومفيش اختيار بقى بيبدأ بالـ left side بتاعه:` + L(R.rhs); }
+      else if (i === 3) { en = `${Ap} produces each α again and again, or ε to stop: <b>${R.rhs}</b>. No alternative starts with its own left side any more.`; a = `الـ <bdi dir="ltr">${Ap}</bdi> بيطلّع كل α مرة ورا مرة، أو ε عشان يقف. ومفيش اختيار بقى بيبدأ بالـ left side بتاعه:` + L(R.rhs); }
       else { en = `Both grammars derive the same strings (checked up to 5 symbols): <b>${R.list.join(', ')}</b>, … ${R.same ? '' : '(mismatch!)'}`; a = 'الـ grammar القديمة والجديدة بيطلّعوا نفس الـ strings (اتشيّكنا على كل الـ strings اللي طولها لحد خمس symbols):' + L(R.list.join(', ') + ', …'); } }
     return html`<figure className="fig cv4"><div className="fig-stage">
       <div className="cv4-modes" role="group">${LRX.map((x, j) => html`<button key=${j} className="fig-btn" style=${{ fontFamily: 'var(--mono)' }} aria-pressed=${String(!own && p === j)} onClick=${() => pick(j)}>${x}</button>`)}<button className="fig-btn" aria-pressed=${String(own)} onClick=${() => setOwn(true)}>Try your own</button></div>
@@ -2159,7 +2159,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   if (!document.getElementById('cv6-css')) { const s = document.createElement('style'); s.id = 'cv6-css'; s.textContent = CSS; document.head.appendChild(s); }
 
   const EPS = 'ε';
-  const L = x => `<span class="ltr">${x}</span>`, bd = x => `<bdi>${x}</bdi>`;
+  const L = x => `<span class="ltr">${x}</span>`, bd = x => `<bdi dir="ltr">${x}</bdi>`;
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const uniq = a => a.filter((x, i) => a.indexOf(x) === i);
   const seq = r => r.length ? r.join('') : EPS;
@@ -2391,7 +2391,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const forms = [['S'], ['A'], ['a', 'B', "A'"], ['a', 'b', "A'"], ['a', 'b', 'd', "A'"], ['a', 'b', 'd']], tape = ['a', 'b', 'd', '$'];
     const lead = f => { let k = 0; while (k < f.length && !/^[A-Z]/.test(f[k])) k++; return k; };
     const steps = [
-      { en: 'LL(1) on Example 1\'s input <b>abd</b>: the first <b>L</b> scans the input left to right, the second <b>L</b> builds a leftmost derivation, and <b>1</b> is one input symbol of lookahead.', ar: 'الـ LL(1) على الـ input بتاع Example 1 وهو ' + bd('abd') + ':' + L('L = Left to right ; L = Leftmost derivation ; 1 = one lookahead symbol') },
+      { en: 'LL(1) on Example 1\'s input <b>abd</b>: the first <b>L</b> scans the input left to right, the second <b>L</b> builds a leftmost derivation, and <b>1</b> is one input symbol of lookahead.', ar: 'الـ <bdi dir="ltr">LL(1)</bdi> على الـ input بتاع Example 1 وهو ' + bd('abd') + ':' + L('L = Left to right ; L = Leftmost derivation ; 1 = one lookahead symbol') },
       { en: 'Lookahead <b>a</b>. The leftmost non-terminal is <b>S</b>: S ⇒ A.', ar: 'الـ lookahead هو ' + bd('a') + '، والـ leftmost non-terminal هو ' + bd('S') + ':' + L('S ⇒ A') },
       { en: 'Still lookahead <b>a</b>; expand the leftmost non-terminal <b>A</b>: ⇒ aBA\'. Its a matches the input, so the scan moves right.', ar: 'الـ lookahead لسه ' + bd('a') + '، فنفك الـ leftmost non-terminal وهو A، والـ a بتاعته بتعمل match مع الـ input فالـ scan بيتحرك يمين:' + L("A ⇒ aBA'") },
       { en: 'Lookahead <b>b</b>; the leftmost non-terminal is now <b>B</b>: ⇒ abA\'.', ar: 'الـ lookahead بقى ' + bd('b') + '، والـ leftmost non-terminal دلوقتي ' + bd('B') + ':' + L("aBA' ⇒ abA'") },
@@ -2429,7 +2429,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     });
     const ll1 = !an.conflicts.length;
     const en = (ll1 ? 'Every pair of alternatives passes the three conditions and no table cell gets two entries: <b>LL(1)</b>.' : `<b>Not LL(1)</b>: ${esc(bad.join('; ')) || 'a cell gets two entries'} fails a condition, and ${an.conflicts.map(([A, t]) => `M[${esc(A)}, ${esc(t)}]`).join(', ')} would hold two entries.`) + (lr.length ? ` ${esc(lr.map(prodS).join(', '))} is <b>left-recursive</b>.` : '') + (cards.length ? '' : ' No non-terminal has two alternatives, so there is never a choice.');
-    const a = (ll1 ? 'كل زوج alternatives بيعدّي الـ 3 شروط، ومفيش خانة في الجدول فيها entry-ين، يبقى الـ grammar ده <b>LL(1)</b>.' : 'الـ grammar ده <b>مش LL(1)</b>، لأن فيه شرط مش متحقق، وفيه خانات هيبقى فيها entry-ين:' + L(esc(bad.concat(an.conflicts.map(([A, t]) => `M[${A}, ${t}]`)).join(' ; ')))) + (lr.length ? 'وكمان فيه <b>left recursion</b> في الـ production ده:' + L(esc(lr.map(prodS).join(' ; '))) : '') + (cards.length ? '' : ' ومفيش non-terminal ليه alternative-ين، فمفيش اختيار أصلًا.');
+    const a = (ll1 ? 'كل زوج alternatives بيعدّي الـ 3 شروط، ومفيش خانة في الجدول فيها entry-ين، يبقى الـ grammar ده <b><bdi dir="ltr">LL(1)</bdi></b>.' : 'الـ grammar ده <b>مش <bdi dir="ltr">LL(1)</bdi></b>، لأن فيه شرط مش متحقق، وفيه خانات هيبقى فيها entry-ين:' + L(esc(bad.concat(an.conflicts.map(([A, t]) => `M[${A}, ${t}]`)).join(' ; ')))) + (lr.length ? 'وكمان فيه <b>left recursion</b> في الـ production ده:' + L(esc(lr.map(prodS).join(' ; '))) : '') + (cards.length ? '' : ' ومفيش non-terminal ليه alternative-ين، فمفيش اختيار أصلًا.');
     const R = (ok, txt) => html`<div className="r"><span className=${ok ? 'y' : 'n'}>${ok ? '✓' : '✗'}</span><span>${txt}</span></div>`;
     return html`<figure className="fig cv6"><div className="fig-stage">${g.ui}
       <div className="cv6-ck">${cards.map((c, k) => html`<div key=${k}><div className="hd">${c.A} → ${seq(c.a.rhs)} | ${seq(c.b.rhs)}</div>
@@ -2466,7 +2466,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   /* ── [5.0] removing the left recursion of Example 1 ── */
   function LeftRec({ ar }) {
     const steps = [
-      { en: 'Example 1 has <b>A → aB | Ad</b>. In A → Ad the right side starts with A itself: the grammar is <b>left-recursive</b>, so LL(1) cannot use it as it is.', ar: 'في Example 1 عندنا ' + bd('A → aB | Ad') + '. في ' + bd('A → Ad') + ' الـ right side بيبدأ بـ A نفسها، يعني الـ grammar ده <b>left-recursive</b> والـ LL(1) مينفعش يستخدمه كده.' },
+      { en: 'Example 1 has <b>A → aB | Ad</b>. In A → Ad the right side starts with A itself: the grammar is <b>left-recursive</b>, so LL(1) cannot use it as it is.', ar: 'في Example 1 عندنا ' + bd('A → aB | Ad') + '. في ' + bd('A → Ad') + ' الـ right side بيبدأ بـ A نفسها، يعني الـ grammar ده <b>left-recursive</b> والـ <bdi dir="ltr">LL(1)</bdi> مينفعش يستخدمه كده.' },
       { en: 'Match it to <b>A → Aα | β</b>: <b>α = d</b> (what follows A) and <b>β = aB</b> (the other alternative).', ar: 'نطابقه مع الشكل ده:' + L('A → Aα | β ; α = d ; β = aB') },
       { en: "Rewrite A as <b>A → βA'</b>: A → aBA'.", ar: 'نكتب الـ A على الشكل ده:' + L("A → βA' = aBA'") },
       { en: "Add the new non-terminal <b>A' → αA' | ε</b>: A' → dA' | ε.", ar: 'ونضيف non-terminal جديد:' + L("A' → αA' | ε = dA' | ε") },
@@ -2489,8 +2489,8 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     if (s.k === 'start') return { en: 'Table <b>M</b>: one row per non-terminal, one column per terminal and $. For each production A → α apply the two rules, using the FIRST and FOLLOW sets above. Each cell shows the right side of its row\'s production.', ar: 'الجدول <b>M</b> فيه صف لكل non-terminal وعمود لكل terminal ومعاهم $. لكل production بنطبّق القاعدتين باستخدام الـ FIRST والـ FOLLOW اللي فوق، وكل خانة مكتوب فيها الـ right side بتاع الـ production.' };
     if (s.k === 'done') {
       const cs = s.conflicts.map(([A, t]) => `M[${esc(A)}, ${esc(t)}]`).join(', ');
-      return s.conflicts.length ? { en: `Every other cell is empty = error. ${cs} holds two entries, so the grammar is <b>not LL(1)</b>.`, ar: 'باقي الخانات فاضية يعني error. وفيه خانات فيها entry-ين، يبقى الـ grammar ده <b>مش LL(1)</b>، ودي الخانات:' + L(cs) }
-        : { en: 'Every other cell is empty = <b>error</b>. No cell has two entries, so the grammar is <b>LL(1)</b>.', ar: 'باقي الخانات فاضية يعني <b>error</b>. ومفيش خانة فيها entry-ين، يبقى الـ grammar ده <b>LL(1)</b>.' };
+      return s.conflicts.length ? { en: `Every other cell is empty = error. ${cs} holds two entries, so the grammar is <b>not LL(1)</b>.`, ar: 'باقي الخانات فاضية يعني error. وفيه خانات فيها entry-ين، يبقى الـ grammar ده <b>مش <bdi dir="ltr">LL(1)</bdi></b>، ودي الخانات:' + L(cs) }
+        : { en: 'Every other cell is empty = <b>error</b>. No cell has two entries, so the grammar is <b>LL(1)</b>.', ar: 'باقي الخانات فاضية يعني <b>error</b>. ومفيش خانة فيها entry-ين، يبقى الـ grammar ده <b><bdi dir="ltr">LL(1)</bdi></b>.' };
     }
     const P = esc(prodS(s.p)), A = esc(s.p.A), al = esc(seq(s.p.rhs));
     const calc = [s.r1.length ? `FIRST(${al}) − ε = ${esc(set(s.r1))}` : '', s.e ? `ε ∈ FIRST(${al}) ⇒ FOLLOW(${A}) = ${esc(set(s.r2))}` : ''].filter(Boolean).join(' ; ') + ' ⇒ ' + (s.cells.length ? s.cells.map(t => `M[${A}, ${esc(t)}]`).join(', ') : 'no cell');
@@ -2566,7 +2566,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const [i, ctl] = useRun(n, 2200, g.key);
     let msg = null;
     if (an.err) msg = errCap(an);
-    else if (an.conflicts.length) msg = { en: `This grammar is <b>not LL(1)</b>: ${an.conflicts.map(([A, t]) => `M[${esc(A)}, ${esc(t)}]`).join(', ')} has two entries, so the parser cannot choose.`, ar: 'الـ grammar ده <b>مش LL(1)</b>: فيه خانات فيها entry-ين، فالـ parser مش هيعرف يختار:' + L(an.conflicts.map(([A, t]) => esc(`M[${A}, ${t}]`)).join(' ; ')) };
+    else if (an.conflicts.length) msg = { en: `This grammar is <b>not LL(1)</b>: ${an.conflicts.map(([A, t]) => `M[${esc(A)}, ${esc(t)}]`).join(', ')} has two entries, so the parser cannot choose.`, ar: 'الـ grammar ده <b>مش <bdi dir="ltr">LL(1)</bdi></b>: فيه خانات فيها entry-ين، فالـ parser مش هيعرف يختار:' + L(an.conflicts.map(([A, t]) => esc(`M[${A}, ${t}]`)).join(' ; ')) };
     else if (res.err) msg = { en: 'The string has a problem: <b>' + esc(res.err) + '</b>.', ar: 'الـ string فيه مشكلة:' + L(esc(res.err)) };
     if (msg) return html`<figure className="fig cv6"><div className="fig-stage">${g.ui}<p className="cv6-err" dangerouslySetInnerHTML=${{ __html: msg.en }}></p></div><${Cap} ...${msg} showAr=${ar} /></figure>`;
     const r = res.rows[i], c = parseCap(r, an), act = x => x.act.k === 'acc' ? 'accept' : x.act.k === 'm' ? 'match ' + x.top.s : x.act.k === 'e' ? prodS(x.act.p) : 'error';
@@ -2753,7 +2753,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
       { en: 'Slide 6’s grammar validates the syntax of expressions with additions and multiplications: <b>E → E+T | T</b>, <b>T → T*F | F</b>, <b>F → INT</b>.', ar: 'الـ grammar بتاعة slide 6 بتتأكد من الـ syntax بتاع expressions فيها جمع وضرب.<span class="ltr">E → E+T | T<br>T → T*F | F<br>F → INT</span>' },
       { en: 'SDT <b>augments</b> the grammar: each of the five productions gets a translation rule in braces, numbered PR#1 to PR#5.', ar: 'الـ SDT بيزوّد الـ grammar بـ <b>augmented rules</b>، فكل production من الخمسة بياخد translation rule بين أقواس، ومترقمين من PR#1 لـ PR#5.' },
       { en: 'The rules use <b>attributes of non-terminals</b>: <b>val</b> is the attribute of E, T and F (highlighted).', ar: 'القواعد بتستخدم <b>attributes بتاعة الـ non-terminals</b>، والـ attribute هنا اسمه <b>val</b> على الـ E والـ T والـ F (المتعلّم عليهم).' },
-      { en: 'The rules use <b>lexical values</b> of nodes: <b>INT.lexval</b> in PR#5 is the token’s value, like 2, 3 and 4.', ar: 'القواعد بتستخدم الـ <b>lexical values</b> بتاعة الـ nodes، زي <bdi>INT.lexval</bdi> في الـ PR#5 وهي قيمة الـ token زي 2 و3 و4.' },
+      { en: 'The rules use <b>lexical values</b> of nodes: <b>INT.lexval</b> in PR#5 is the token’s value, like 2, 3 and 4.', ar: 'القواعد بتستخدم الـ <b>lexical values</b> بتاعة الـ nodes، زي <bdi dir="ltr">INT.lexval</bdi> في الـ PR#5 وهي قيمة الـ token زي 2 و3 و4.' },
       { en: 'Rules may also use <b>constants</b>. These five rules use none: every value comes from an attribute or a lexical value.', ar: 'القواعد ممكن كمان تستخدم <b>constants</b>. الخمس قواعد دول مفيهمش ولا constant، وكل قيمة جاية من attribute أو lexical value.' },
       { en: '<b>PR#1</b>: the right-hand side of the rule (E.val + T.val) uses the attributes of the right-side nodes of the production, the children E and T. The left side E.val (underlined) belongs to the parent E.', ar: 'في الـ <b>PR#1</b> الجانب اليمين من القاعدة بيستخدم attributes الـ nodes اللي على يمين الـ production يعني الـ children، والجانب الشمال (اللي تحته خط) بتاع الـ parent.<span class="ltr">E → E + T { E.val = E.val + T.val }</span>' }
     ];
@@ -2846,7 +2846,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const prRule = n => (sub && PR_SUB[n.pr]) || PR[n.pr];
     const steps = [{
       en: `The parse tree of <b>${pretty(expr)}</b>${ex ? ' (slide 8)' : ''}. Its leaves ${lex.join(', ')} are the <b>lexical values</b>. One depth-first traversal, bottom-up and left to right, computes each <b>val</b> with the rule of its production.` + (sub ? ' A child with the same name as its parent is written with subscript 1 (E₁, T₁) to tell the child from the parent.' : ''),
-      ar: `الـ parse tree بتاع <bdi>${pretty(expr)}</bdi>${ex ? ' (slide 8)' : ''}. الأوراق هي الـ <b>lexical values</b>، وبـ depth-first traversal واحد (bottom-up ومن الشمال لليمين) بنحسب كل <b>val</b> بالقاعدة بتاعة الـ production بتاعه.` + (sub ? ' والـ child اللي ليه نفس اسم الـ parent مكتوب بـ subscript 1 عشان نفرّقه عن الـ parent.' : '')
+      ar: `الـ parse tree بتاع <bdi dir="ltr">${pretty(expr)}</bdi>${ex ? ' (slide 8)' : ''}. الأوراق هي الـ <b>lexical values</b>، وبـ depth-first traversal واحد (bottom-up ومن الشمال لليمين) بنحسب كل <b>val</b> بالقاعدة بتاعة الـ production بتاعه.` + (sub ? ' والـ child اللي ليه نفس اسم الـ parent مكتوب بـ subscript 1 عشان نفرّقه عن الـ parent.' : '')
     }].concat(ord.map(n => {
       const f = calc(n, sub), last = n === root;
       const en = { 5: 'F gets the lexical value of its leaf.', 4: 'T copies the value of F.', 2: 'E copies the value of T.', 3: 'Both children are done, so the parent can be computed.', 1: 'Both children are done, so the parent can be computed.' }[n.pr];
@@ -2888,7 +2888,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
       ${mode === 'own' && html`<div className="cv7-try"><label className="cv7-muted" htmlFor="cv7-expr">Digits with + and * (up to 4 numbers)</label>
         <input id="cv7-expr" className="cv7-in" value=${txt} maxLength="12" spellCheck="false" autoComplete="off" onChange=${e => setTxt(e.target.value)} /></div>`}`;
     if (mode === 'own' && !ok) return html`<figure className="fig cv7"><div className="fig-stage">${top}<p className="cv7-err">Type one-digit numbers joined by + or *, for example 5*2+3*4.</p></div>
-      <${Cap} en="The grammar only has <b>INT</b>, <b>+</b> and <b>*</b>: E → E+T | T, T → T*F | F, F → INT." ar="الـ grammar فيها بس <b>INT</b> و <b>+</b> و <b>*</b>.<span class='ltr'>E → E+T | T<br>T → T*F | F<br>F → INT</span>" showAr=${ar} /></figure>`;
+      <${Cap} en="The grammar only has <b>INT</b>, <b>+</b> and <b>*</b>: E → E+T | T, T → T*F | F, F → INT." ar=${'الـ grammar فيها بس <b>INT</b> و <b><code>+</code></b> و <b><code>*</code></b>.<span class="ltr">E → E+T | T<br>T → T*F | F<br>F → INT</span>'} showAr=${ar} /></figure>`;
     return html`<${EvalRun} key=${expr} expr=${expr} ex=${mode === 'ex'} sub=${sub} ar=${ar} top=${top} />`;
   }
 
@@ -3076,7 +3076,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   if (!document.getElementById('cv8-css')) { const s = document.createElement('style'); s.id = 'cv8-css'; s.textContent = CSS; document.head.appendChild(s); }
 
   const L = s => `<span class="ltr">${s}</span>`;
-  const D = s => `<bdi>${s}</bdi>`;
+  const D = s => `<bdi dir="ltr">${s}</bdi>`;
   const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   const fmt = v => Number.isInteger(v) ? String(v) : v.toFixed(5) + '…';
   // a code line with one substring marked: mark(line, [from, len], className)
@@ -3124,8 +3124,8 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   function StaticDynamic({ ar }) {
     const steps = [
       { en: 'Which <b>x</b> does the last line <code>y += (int)x;</code> of the lecture example use? The two kinds of binding answer differently.', ar: 'السطر الأخير في مثال المحاضرة بيستخدم أنهي <b>x</b>؟ نوعين الـ binding بيجاوبوا إجابات مختلفة.<span class="ltr">y += (int)x;</span>' },
-      { en: '<b>Static</b>: look at the braces. The use sits in the outer block, so it is the outer <b>x = 1</b>. <b>Dynamic</b>: the declaration most recently encountered while running is the inner <b>x = 3.14…</b>.', ar: 'في الـ <b>static</b> بنبص على الأقواس: الـ use موجود في الـ block الخارجي، فده الـ <bdi>x = 1</bdi> اللي برّه. وفي الـ <b>dynamic</b> آخر declaration اتقابل وقت التنفيذ هو الـ x اللي جوه وقيمته <bdi>3.14…</bdi>.' },
-      { en: 'Static depends only on the program text. Dynamic depends on the execution: the compiler/interpreter <b>walks up the symbol-table stack</b> from the top and takes the first x it meets.', ar: 'الـ static معتمد على نص البرنامج بس. والـ dynamic معتمد على التنفيذ: الـ compiler/interpreter <b>بيطلع في الـ symbol-table stack</b> من فوق وياخد أول x يقابله.' },
+      { en: '<b>Static</b>: look at the braces. The use sits in the outer block, so it is the outer <b>x = 1</b>. <b>Dynamic</b>: the declaration most recently encountered while running is the inner <b>x = 3.14…</b>.', ar: 'في الـ <b>static</b> بنبص على الأقواس: الـ use موجود في الـ block الخارجي، فده الـ <bdi dir="ltr">x = 1</bdi> اللي برّه. وفي الـ <b>dynamic</b> آخر declaration اتقابل وقت التنفيذ هو الـ x اللي جوه وقيمته <bdi dir="ltr">3.14…</bdi>.' },
+      { en: 'Static depends only on the program text. Dynamic depends on the execution: the compiler/interpreter <b>walks up the symbol-table stack</b> from the top and takes the first x it meets.', ar: 'الـ static معتمد على نص البرنامج بس. والـ dynamic معتمد على التنفيذ: الـ compiler أو الـ interpreter <b>بيطلع في الـ symbol-table stack</b> من فوق وياخد أول x يقابله.' },
       { en: 'Most languages are static (Java, C). A few are dynamic: Lisp, SNOBOL, and Perl through certain keywords.', ar: 'معظم اللغات static زي Java و C. وقليل منها dynamic زي Lisp و SNOBOL، والـ Perl من خلال keywords معينة.' },
       { en: 'Static binding is <b>resolved at compile time</b>. Dynamic binding, by its nature, <b>cannot be resolved at compile time</b>.', ar: 'الـ static binding <b>بيتحدد وقت الـ compile</b>. والـ dynamic binding بطبيعته <b>مينفعش يتحدد وقت الـ compile</b>.' }
     ];
@@ -3269,7 +3269,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
       { ln: 0, h: 0, c: [['enter_scope()', '']], st: [['scope 1', []]], en: '<code>{</code>: <b>enter scope</b>. <code>enter_scope()</code> starts a new nested scope.', ar: 'القوس ده معناه <b>enter scope</b>: الـ <code>enter_scope()</code> بتبدأ scope جديد nested.' },
       { ln: 1, h: 1, c: [['local_lookup(x)', 'no'], ['insert_symbol(x)', 'ok'], ['local_lookup(y)', 'no'], ['insert_symbol(y)', 'ok']], st: [['scope 1', ['x', 'y']]], en: '<b>Process a declaration</b>: <code>local_lookup</code> finds x and y are not yet in the local scope, then <code>insert_symbol</code> adds them to the table.', ar: 'بنعمل <b>process a declaration</b>: الـ <code>local_lookup</code> بتلاقي إن x و y مش موجودين في الـ local scope، وبعدين الـ <code>insert_symbol</code> بتضيفهم للـ table.' },
       { ln: 2, h: 0, c: [['enter_scope()', '']], st: [['scope 1', ['x', 'y']], ['scope 2', []]], en: 'The inner <code>{</code>: <b>enter scope</b> again, a nested scope on top.', ar: 'القوس الداخلي: <b>enter scope</b> تاني، scope nested فوق الأولاني.' },
-      { ln: 3, h: 1, c: [['local_lookup(x)', 'no'], ['insert_symbol(x)', 'ok']], st: [['scope 1', ['x', 'y']], ['scope 2', ['x']]], en: '<code>local_lookup(x)</code> checks only the <b>local</b> scope: the outer x does not count, so the new x is inserted in scope 2.', ar: 'الـ <code>local_lookup(x)</code> بتدوّر في الـ scope <b>المحلي</b> بس: الـ x اللي برّه مش بيتحسب، فالـ x الجديد بيتضاف في scope 2.' },
+      { ln: 3, h: 1, c: [['local_lookup(x)', 'no'], ['insert_symbol(x)', 'ok']], st: [['scope 1', ['x', 'y']], ['scope 2', ['x']]], en: '<code>local_lookup(x)</code> checks only the <b>local</b> scope: the outer x does not count, so the new x is inserted in scope 2.', ar: 'الـ <b><bdi dir="ltr">local_lookup(x)</bdi></b> بتدوّر في الـ scope <b>المحلي</b> بس: الـ x اللي برّه مش بيتحسب، فالـ x الجديد بيتضاف في scope 2.' },
       { ln: 4, h: 2, c: [['look_up(y)', 'ok'], ['look_up(x)', 'ok']], st: [['scope 1', ['x', 'y']], ['scope 2', ['x']]], f: 'x', en: '<b>Process a use</b>: <code>look_up</code> finds the current x via the scoping rules: the x of scope 2. y is found in scope 1.', ar: 'بنعمل <b>process a use</b>: الـ <code>look_up</code> بتلاقي الـ x الحالي بالـ scoping rules: الـ x بتاع scope 2. والـ y بيتلاقي في scope 1.' },
       { ln: 5, h: 3, c: [['exit_scope()', '']], st: [['scope 1', ['x', 'y']], ['scope 2', ['x'], 1]], en: '<code>}</code>: <b>exit scope</b>. <code>exit_scope()</code> exits the current scope; its x is no longer visible.', ar: 'القوس ده معناه <b>exit scope</b>: الـ <code>exit_scope()</code> بتخرج من الـ scope الحالي، والـ x بتاعه مبقاش visible.' },
       { ln: 6, h: 2, c: [['look_up(y)', 'ok'], ['look_up(x)', 'ok']], st: [['scope 1', ['x', 'y']]], f: 'x1', en: '<b>Process a use</b> again: now <code>look_up(x)</code> finds the outer x (static scoping).', ar: 'بنعمل <b>process a use</b> تاني: دلوقتي الـ <code>look_up(x)</code> بتلاقي الـ x اللي برّه (static scoping).' },
@@ -3340,20 +3340,20 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   const PS = [
     { ln: 0, at: '{', ev: [['Event', 'enter new block'], ['Action', 'Create Symbol Table ST1']], mk: ['ST1'], en: 'Enter <b>Block 1</b>: create symbol table <b>ST1</b> with the columns Symb, Token, Dtype, Init?.', ar: 'بندخل <b>Block 1</b>: بنعمل الـ symbol table <b>ST1</b> بالأعمدة Symb و Token و Dtype و Init?.' },
     { ln: 0, at: 'int a, b, c;', ev: [['Event', 'recognise type dec'], ['Action', 'Add to current symbol table']], add: ['ST1', [['a', 'Int'], ['b', 'Int'], ['c', 'Int']]], en: 'Type declaration: add <b>a, b, c</b> to the current table ST1 (Token id, Dtype int, Init? No).', ar: 'الـ type declaration: بنضيف <b>a و b و c</b> للـ table الحالية ST1 (الـ Token هو id والـ Dtype هو int والـ Init? هو No).' },
-    { ln: 1, at: 'a = 0;', ev: [['Event', 'variable assignment'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST1', 'a'], en: '<b>a = 0</b>: found in the current ST? Yes, so mark a as initiated.', ar: 'في <bdi>a = 0</bdi> الـ a موجود في الـ ST الحالية؟ Yes، فبنعلّمه initiated.' },
-    { ln: 1, at: 'b = 0;', ev: [['Event', 'variable assignment'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST1', 'b'], en: '<b>b = 0</b>: found in the current ST? Yes, so mark b as initiated.', ar: 'في <bdi>b = 0</bdi> الـ b موجود في الـ ST الحالية؟ Yes، فبنعلّمه initiated.' },
-    { ln: 1, at: 'c = 0;', ev: [['Event', 'variable assignment'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST1', 'c'], en: '<b>c = 0</b>: found in the current ST? Yes, so mark c as initiated.', ar: 'في <bdi>c = 0</bdi> الـ c موجود في الـ ST الحالية؟ Yes، فبنعلّمه initiated.' },
+    { ln: 1, at: 'a = 0;', ev: [['Event', 'variable assignment'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST1', 'a'], en: '<b>a = 0</b>: found in the current ST? Yes, so mark a as initiated.', ar: 'في <bdi dir="ltr">a = 0</bdi> الـ a موجود في الـ ST الحالية؟ Yes، فبنعلّمه initiated.' },
+    { ln: 1, at: 'b = 0;', ev: [['Event', 'variable assignment'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST1', 'b'], en: '<b>b = 0</b>: found in the current ST? Yes, so mark b as initiated.', ar: 'في <bdi dir="ltr">b = 0</bdi> الـ b موجود في الـ ST الحالية؟ Yes، فبنعلّمه initiated.' },
+    { ln: 1, at: 'c = 0;', ev: [['Event', 'variable assignment'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST1', 'c'], en: '<b>c = 0</b>: found in the current ST? Yes, so mark c as initiated.', ar: 'في <bdi dir="ltr">c = 0</bdi> الـ c موجود في الـ ST الحالية؟ Yes، فبنعلّمه initiated.' },
     { ln: 2, at: '{', ev: [['Event', 'Enter new block'], ['Action', 'Create new Symb Table ST2']], mk: ['ST2'], en: 'Enter <b>Block 2</b>: create a new symbol table <b>ST2</b>. Its parent is ST1.', ar: 'بندخل <b>Block 2</b>: بنعمل symbol table جديدة <b>ST2</b>، والـ parent بتاعها ST1.' },
     { ln: 2, at: 'int c, d;', ev: [['Event', 'recognise type dec'], ['Action', 'Add to current symbol table']], add: ['ST2', [['c', 'Int'], ['d', 'Int']]], en: 'Type declaration: add <b>c, d</b> to the current table ST2 (Init? No). This c is a different c from ST1’s.', ar: 'الـ type declaration: بنضيف <b>c و d</b> للـ table الحالية ST2 (الـ Init? هو No). والـ c ده غير الـ c اللي في ST1.' },
-    { ln: 3, at: 'c', ev: [['Event', 'variable assignment (c)'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST2', 'c'], en: '<b>c = a + 1</b>, the assignment to <b>c</b>: found in the current ST (ST2)? Yes, so mark ST2’s c as initiated.', ar: 'في <bdi>c = a + 1</bdi> الـ assignment للـ <b>c</b>: موجود في الـ ST الحالية (ST2)؟ Yes، فبنعلّم الـ c بتاع ST2 إنه initiated.' },
+    { ln: 3, at: 'c', ev: [['Event', 'variable assignment (c)'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated']], init: ['ST2', 'c'], en: '<b>c = a + 1</b>, the assignment to <b>c</b>: found in the current ST (ST2)? Yes, so mark ST2’s c as initiated.', ar: 'في <bdi dir="ltr">c = a + 1</bdi> الـ assignment للـ <b>c</b>: موجود في الـ ST الحالية (ST2)؟ Yes، فبنعلّم الـ c بتاع ST2 إنه initiated.' },
     { ln: 3, at: 'a', from: 5, ev: [['Event', 'variable reference to a'], ['Query', 'Found in current ST? NO', 'no'], ['Query', 'Found in parent ST? YES', 'yes'], ['Query', 'Initiated in parent ST? YES', 'yes']], q: [['ST1', 'a']], en: 'The reference to <b>a</b>: not in ST2, so look in the parent <b>ST1</b>: found, and it is initiated.', ar: 'الـ reference للـ <b>a</b>: مش في ST2، فبندوّر في الـ parent اللي هي <b>ST1</b>: لقيناه وهو initiated.' },
-    { ln: 4, at: 'd = c;', ev: [['Event', 'variable assignment (d)'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated'], ['Event', 'variable reference to c'], ['Query', 'Found in current ST? Yes, initiated', 'yes']], init: ['ST2', 'd'], q: [['ST2', 'c']], en: 'Continuing the same way (the slides stop at c = a + 1): <b>d = c</b> marks d as initiated in ST2, and c is found in ST2, initiated.', ar: 'بنكمّل بنفس الطريقة (السلايدز وقفت عند <bdi>c = a + 1</bdi>): الـ <bdi>d = c</bdi> بيعلّم الـ d إنه initiated في ST2، والـ c بيتلاقي في ST2 وهو initiated.' },
+    { ln: 4, at: 'd = c;', ev: [['Event', 'variable assignment (d)'], ['Query', 'Found in current ST? Yes', 'yes'], ['Action', 'Mark as initiated'], ['Event', 'variable reference to c'], ['Query', 'Found in current ST? Yes, initiated', 'yes']], init: ['ST2', 'd'], q: [['ST2', 'c']], en: 'Continuing the same way (the slides stop at c = a + 1): <b>d = c</b> marks d as initiated in ST2, and c is found in ST2, initiated.', ar: 'بنكمّل بنفس الطريقة (السلايدز وقفت عند <bdi dir="ltr">c = a + 1</bdi>): الـ <bdi dir="ltr">d = c</bdi> بيعلّم الـ d إنه initiated في ST2، والـ c بيتلاقي في ST2 وهو initiated.' },
     { ln: 4, at: '}', last: 1, ev: [['Event', 'exit block'], ['Action', 'exit_scope(): close ST2, back to ST1']], close: 'ST2', en: '<b>}</b> ends Block 2: exit the scope, so ST2 is closed and ST1 is current again.', ar: 'القوس ده بيقفل Block 2: بنعمل exit للـ scope، فالـ ST2 بتتقفل والـ ST1 ترجع هي الحالية.' },
     { ln: 5, at: '{', ev: [['Event', 'Enter new block'], ['Action', 'Create new Symb Table ST3']], mk: ['ST3'], en: 'Enter <b>Block 3</b>: create <b>ST3</b>, whose parent is ST1.', ar: 'بندخل <b>Block 3</b>: بنعمل <b>ST3</b>، والـ parent بتاعها ST1.' },
     { ln: 5, at: 'string a; int c;', ev: [['Event', 'recognise type dec'], ['Action', 'Add to current symbol table']], add: ['ST3', [['a', 'String'], ['c', 'Int']]], en: 'Type declarations: add <b>a</b> (string) and <b>c</b> (int) to ST3.', ar: 'الـ type declarations: بنضيف <b>a</b> (string) و <b>c</b> (int) لـ ST3.' },
-    { ln: 6, at: 'print c;', ev: [['Event', 'variable reference to c'], ['Query', 'Found in current ST? Yes (ST3’s c, Init? No)', 'yes']], q: [['ST3', 'c']], en: '<b>print c</b>: c is found in the current table ST3 (its Init? is No).', ar: 'في <bdi>print c</bdi> الـ c بيتلاقي في الـ table الحالية ST3 (والـ Init? بتاعه No).' },
+    { ln: 6, at: 'print c;', ev: [['Event', 'variable reference to c'], ['Query', 'Found in current ST? Yes (ST3’s c, Init? No)', 'yes']], q: [['ST3', 'c']], en: '<b>print c</b>: c is found in the current table ST3 (its Init? is No).', ar: 'في <bdi dir="ltr">print c</bdi> الـ c بيتلاقي في الـ table الحالية ST3 (والـ Init? بتاعه No).' },
     { ln: 6, at: '}', last: 1, ev: [['Event', 'exit block'], ['Action', 'exit_scope(): close ST3, back to ST1']], close: 'ST3', en: '<b>}</b> ends Block 3: ST3 is closed and ST1 is current again.', ar: 'القوس ده بيقفل Block 3: الـ ST3 بتتقفل والـ ST1 ترجع هي الحالية.' },
-    { ln: 7, at: 'print d', ev: [['Event', 'variable reference to d'], ['Query', 'Found in current ST (ST1)? NO', 'no'], ['Query', 'ST1 has no parent: d is not visible', 'no']], en: '<b>print d</b> is outside Block 2: d is not in ST1 and ST1 has no parent, so d is <b>not visible</b>. This is an out-of-scope access.', ar: 'الـ <bdi>print d</bdi> برّه Block 2: الـ d مش في ST1 والـ ST1 ملهاش parent، فالـ d <b>مش visible</b>. ده access لمتغير out-of-scope.' }
+    { ln: 7, at: 'print d', ev: [['Event', 'variable reference to d'], ['Query', 'Found in current ST (ST1)? NO', 'no'], ['Query', 'ST1 has no parent: d is not visible', 'no']], en: '<b>print d</b> is outside Block 2: d is not in ST1 and ST1 has no parent, so d is <b>not visible</b>. This is an out-of-scope access.', ar: 'الـ <bdi dir="ltr">print d</bdi> برّه Block 2: الـ d مش في ST1 والـ ST1 ملهاش parent، فالـ d <b>مش visible</b>. ده access لمتغير out-of-scope.' }
   ];
   const PS_STATES = (() => { const st = {}, order = [], out = []; PS.forEach(s => {
     const chg = new Set(), q = new Set();
@@ -3385,9 +3385,9 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   function OneVsAll({ ar }) {
     const steps = [
       { en: '<b>One symbol table per scope</b> for <code>int x=1; int y=2; { int x=3; … }</code>: scope 0 and scope 1 each get their own hash table. Each table needs its own slots: <b>10 slots</b> for 3 symbols. That is the <b>memory overhead</b>.', ar: 'في <b>symbol table لكل scope</b> الـ scope 0 والـ scope 1 كل واحد ليه hash table لوحده. وكل table محتاجة slots خاصة بيها: <b>10 slots</b> لـ 3 symbols بس. ده الـ <b>memory overhead</b>.<span class="ltr">int x=1; int y=2; { int x=3; … }</span>' },
-      { en: 'Inside the inner scope, <b>look_up(y)</b>: search the scope 1 table (miss), then the scope 0 table (found). <b>2 searches</b>: less efficient for speed as well.', ar: 'جوه الـ scope الداخلي بنعمل <b>look_up(y)</b>: بندوّر في table الـ scope 1 (مش موجود)، وبعدين table الـ scope 0 (لقيناه). يعني <b>2 searches</b>، وده أبطأ كمان.' },
+      { en: 'Inside the inner scope, <b>look_up(y)</b>: search the scope 1 table (miss), then the scope 0 table (found). <b>2 searches</b>: less efficient for speed as well.', ar: 'جوه الـ scope الداخلي بنعمل <b><bdi dir="ltr">look_up(y)</bdi></b>: بندوّر في table الـ scope 1 (مش موجود)، وبعدين table الـ scope 0 (لقيناه). يعني <b>2 searches</b>، وده أبطأ كمان.' },
       { en: 'Solution: <b>a single hash table for all scopes</b>. The same 3 symbols need only <b>5 slots</b>: less memory overhead.', ar: 'الحل: <b>hash table واحدة لكل الـ scopes</b>. نفس الـ 3 symbols محتاجين <b>5 slots</b> بس: memory overhead أقل.' },
-      { en: '<b>look_up(y)</b> in the single table: <b>only one search</b>.', ar: 'الـ <b>look_up(y)</b> في الـ table الواحدة: <b>search واحد بس</b>.' }
+      { en: '<b>look_up(y)</b> in the single table: <b>only one search</b>.', ar: 'الـ <b><bdi dir="ltr">look_up(y)</bdi></b> في الـ table الواحدة: <b>search واحد بس</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3400);
     const T0 = { 0: ['y'], 4: ['x'] }, T1 = { 4: ['x'] }, ALL = { 0: ['y (0)'], 4: ['x (1)', 'x (0)'] };
@@ -3406,11 +3406,11 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   function Sol1({ ar }) {
     // keys present, current scope id, search log [[key, hit]]
     const S = [
-      { keys: ['x,0', 'y,0'], sid: 0, log: [], ln: 0, en: 'Global scope: <b>scope_id = 0</b>. <code>int x=1; int y=2;</code> enter the table with the keys <b>"x,0"</b> and <b>"y,0"</b>.', ar: 'الـ global scope ليه <bdi>scope_id = 0</bdi>. والتعريفين بيدخلوا الـ table بالـ keys دي:<span class="ltr">int x=1; int y=2;  →  "x,0"  "y,0"</span>' },
+      { keys: ['x,0', 'y,0'], sid: 0, log: [], ln: 0, en: 'Global scope: <b>scope_id = 0</b>. <code>int x=1; int y=2;</code> enter the table with the keys <b>"x,0"</b> and <b>"y,0"</b>.', ar: 'الـ global scope ليه <bdi dir="ltr">scope_id = 0</bdi>. والتعريفين بيدخلوا الـ table بالـ keys دي:<span class="ltr">int x=1; int y=2;  →  "x,0"  "y,0"</span>' },
       { keys: ['x,0', 'y,0', 'x,1'], sid: 1, log: [], ln: 1, en: '<code>{</code> starts a new scope: increment, <b>scope_id = 1</b>. <code>int x=3;</code> enters with the key <b>"x,1"</b>, a different key from "x,0".', ar: 'القوس بيبدأ scope جديد: بنزوّد الـ scope_id فيبقى 1. والـ x الجديد بيدخل بـ key مختلف عن الأولاني:<span class="ltr">int x=3;  →  "x,1"</span>' },
-      { keys: ['x,0', 'y,0', 'x,1'], sid: 1, log: [['x,1', 1]], ln: 2, en: 'Use of <b>x</b> in scope 1: append the current scope_id, look for <b>"x,1"</b>: found in <b>1 search</b>.', ar: 'استخدام الـ <b>x</b> في scope 1: بنلزّق الـ scope_id الحالي وندوّر على <bdi>"x,1"</bdi>: لقيناه في <b>search واحد</b>.' },
-      { keys: ['x,0', 'y,0', 'x,1'], sid: 1, log: [['y,1', 0], ['y,0', 1]], ln: 2, en: 'Use of <b>y</b> in scope 1: <b>"y,1"</b> is not there, so try the enclosing scope, <b>"y,0"</b>: found. <b>2 searches</b>: this solution still may require multiple searches!', ar: 'استخدام الـ <b>y</b> في scope 1: مفيش <bdi>"y,1"</bdi>، فبنجرّب الـ scope اللي برّه <bdi>"y,0"</bdi>: لقيناه. يعني <b>2 searches</b>: الحل ده لسه ممكن يحتاج كذا بحث!' },
-      { keys: ['x,0', 'y,0', 'x,1'], sid: 0, log: [['x,0', 1]], ln: 3, en: 'After <code>}</code> we are back in scope 0: use of <b>x</b> looks for <b>"x,0"</b>, the outer x.', ar: 'بعد القوس رجعنا لـ scope 0: استخدام الـ <b>x</b> بيدوّر على <bdi>"x,0"</bdi> اللي هو الـ x اللي برّه.' }
+      { keys: ['x,0', 'y,0', 'x,1'], sid: 1, log: [['x,1', 1]], ln: 2, en: 'Use of <b>x</b> in scope 1: append the current scope_id, look for <b>"x,1"</b>: found in <b>1 search</b>.', ar: 'استخدام الـ <b>x</b> في scope 1: بنلزّق الـ scope_id الحالي وندوّر على <bdi dir="ltr">"x,1"</bdi>: لقيناه في <b>search واحد</b>.' },
+      { keys: ['x,0', 'y,0', 'x,1'], sid: 1, log: [['y,1', 0], ['y,0', 1]], ln: 2, en: 'Use of <b>y</b> in scope 1: <b>"y,1"</b> is not there, so try the enclosing scope, <b>"y,0"</b>: found. <b>2 searches</b>: this solution still may require multiple searches!', ar: 'استخدام الـ <b>y</b> في scope 1: مفيش <bdi dir="ltr">"y,1"</bdi>، فبنجرّب الـ scope اللي برّه <bdi dir="ltr">"y,0"</bdi>: لقيناه. يعني <b>2 searches</b>: الحل ده لسه ممكن يحتاج كذا بحث!' },
+      { keys: ['x,0', 'y,0', 'x,1'], sid: 0, log: [['x,0', 1]], ln: 3, en: 'After <code>}</code> we are back in scope 0: use of <b>x</b> looks for <b>"x,0"</b>, the outer x.', ar: 'بعد القوس رجعنا لـ scope 0: استخدام الـ <b>x</b> بيدوّر على <bdi dir="ltr">"x,0"</bdi> اللي هو الـ x اللي برّه.' }
     ];
     const LN = ['int x=1; int y=2;', '{ int x=3;', '  y += x; }', 'y += x;'];
     const [i, ctl] = useSteps(S.length, 3200), s = S[i];
@@ -3626,11 +3626,11 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const S = [
       { sk: [], hp: [], on: 0, en: '<b>Static allocation</b>: data is bound to fixed locations before the program runs, and they never change. Sizes and places are known in advance, so <b>no runtime support package</b> is needed.', ar: 'الـ <b>Static allocation</b>: الداتا بتترتبط بأماكن ثابتة قبل ما البرنامج يشتغل، ومش بتتغير. الأحجام والأماكن معروفة من الأول، فمش محتاجين <b>runtime support package</b>.' },
       { sk: ['P #1'], hp: [], on: 1, nw: 'sk', en: '<b>Stack allocation</b>: a procedure call pushes an activation of P on the stack.', ar: 'الـ <b>Stack allocation</b>: الـ procedure call بيعمل push لـ activation بتاعة P على الـ stack.' },
-      { sk: ['P #1', 'P #2'], hp: [], on: 1, nw: 'sk', en: 'P calls itself (a <b>recursive</b> call): a second activation goes on top. This is why the stack suits recursion.', ar: 'الـ P بتنادي نفسها (<b>recursive</b> call): activation تانية بتتحط فوق. وعشان كده الـ stack مناسب للـ recursion.' },
+      { sk: ['P #1', 'P #2'], hp: [], on: 1, nw: 'sk', en: 'P calls itself (a <b>recursive</b> call): a second activation goes on top. This is why the stack suits recursion.', ar: 'الـ P بتنادي نفسها (<b>recursive</b> call)، فـ activation تانية بتتحط فوق. وعشان كده الـ stack مناسب للـ recursion.' },
       { sk: ['P #1'], hp: [], on: 1, en: 'Return: the <b>last</b> activation pushed is the <b>first</b> removed (LIFO).', ar: 'الـ Return: آخر activation اتحطت هي <b>أول</b> واحدة تطلع (LIFO).' },
       { sk: ['P #1'], hp: ['x', 'y'], on: 2, nw: 'hp', en: '<b>Heap allocation</b>: memory for variables x and y is allocated dynamically, at runtime.', ar: 'الـ <b>Heap allocation</b>: الميموري بتاعة المتغيرات x و y بتتحجز dynamically وقت الـ runtime.' },
       { sk: ['P #1'], hp: [null, 'y'], on: 2, en: 'x is no longer required, so its memory is de-allocated and claimed back, in any order (not LIFO).', ar: 'الـ x مابقيناش محتاجينه، فالميموري بتاعته بتتفك وترجع، وبأي ترتيب (مش LIFO).' },
-      { sk: ['P #1'], hp: [null, 'y'], on: -1, en: 'Look at the sizes over the run: the <b>static</b> area never changed, while <b>stack and heap grew and shrank</b>. So they cannot be given a fixed amount of memory: the compiler uses fixed-size (static) and dynamic-size (stack/heap) storage.', ar: 'بص على الأحجام طول التشغيل: الـ <b>static</b> area ماتغيرتش، لكن الـ <b>stack والـ heap كبروا وصغروا</b>. فماينفعش ندّيهم كمية ميموري ثابتة: الـ compiler بيستخدم storage حجمه ثابت (static) و storage حجمه متغير (stack/heap).' }
+      { sk: ['P #1'], hp: [null, 'y'], on: -1, en: 'Look at the sizes over the run: the <b>static</b> area never changed, while <b>stack and heap grew and shrank</b>. So they cannot be given a fixed amount of memory: the compiler uses fixed-size (static) and dynamic-size (stack/heap) storage.', ar: 'بص على الأحجام طول التشغيل: الـ <b>static</b> area ماتغيرتش، لكن الـ <b>stack والـ heap كبروا وصغروا</b>. فماينفعش ندّيهم كمية ميموري ثابتة: الـ compiler بيستخدم storage حجمه ثابت (static) و storage حجمه متغير (الـ stack والـ heap).' }
     ];
     const [i, ctl] = useSteps(S.length, 3000), s = S[i];
     const N = 4, used = st => ({ st: 3, sk: st.sk.length, hp: st.hp.filter(Boolean).length });
@@ -3655,9 +3655,9 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
   function MemLayout({ ar }) {
     const steps = [
       { en: '<b>Text (code) memory</b> gets a fixed amount: the code does not change at runtime.', ar: 'الـ <b>Text (code) memory</b> بياخد كمية ثابتة، لأن الكود مش بيتغير وقت الـ runtime.' },
-      { en: '<b>Static data</b> is fixed too. In C it is the initialized data segment (globals/statics with a value) and the uninitialized one, <b>BSS</b> (globals/statics without one).', ar: 'الـ <b>Static data</b> ثابتة برضه. في C هي الـ initialized data segment (globals/statics ليها قيمة) والـ uninitialized اللي اسمها <b>BSS</b> (من غير قيمة).' },
+      { en: '<b>Static data</b> is fixed too. In C it is the initialized data segment (globals/statics with a value) and the uninitialized one, <b>BSS</b> (globals/statics without one).', ar: 'الـ <b>Static data</b> ثابتة برضه. في C هي الـ initialized data segment (الـ globals والـ statics اللي ليها قيمة) والـ uninitialized اللي اسمها <b>BSS</b> (من غير قيمة).' },
       { en: '<b>Stack memory</b> sits at one extreme of the dynamic part and grows <b>down</b>: one stack frame per call (automatic variables and the return address).', ar: 'الـ <b>Stack memory</b> في طرف من الجزء الـ dynamic وبيكبر <b>لتحت</b>: stack frame لكل call (فيه الـ automatic variables والـ return address).' },
-      { en: '<b>Heap memory</b> sits at the other extreme and grows <b>up</b> (malloc/realloc/free). Stack and heap grow and shrink against each other.', ar: 'الـ <b>Heap memory</b> في الطرف التاني وبيكبر <b>لفوق</b> (malloc/realloc/free). والـ stack والـ heap بيكبروا ويصغروا ناحية بعض.' },
+      { en: '<b>Heap memory</b> sits at the other extreme and grows <b>up</b> (malloc/realloc/free). Stack and heap grow and shrink against each other.', ar: 'الـ <b>Heap memory</b> في الطرف التاني وبيكبر <b>لفوق</b> (الـ malloc والـ realloc والـ free). والـ stack والـ heap بيكبروا ويصغروا ناحية بعض.' },
       { en: '<b>Try it:</b> call and return to push and pop stack frames; malloc and free (or tap a heap block) to use the heap. Watch the free space between them.', ar: '<b>جرّب:</b> اعمل call و return عشان تعمل push و pop للـ stack frames؛ واعمل malloc و free (أو دوس على block في الـ heap). وبص على المساحة الفاضية اللي بينهم.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
@@ -3754,7 +3754,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     const call = `${P.proc}(i, a[i])`;
     if (mode === 'value') { F = { j: G.i, x: G.a[ax(xi)] }; snap('call', `Call ${call}: i = ${G.i}, so the call is ${P.proc}(i, ${A}). <b>By value</b>: ${f0} gets a copy of i (${F.j}) and ${f1} a copy of ${A} (${F.x}). Nothing will be copied back.`, `الـ call ده${L(call)}وبما إن${L('i = ' + G.i)}يبقى الـ call على${L(A)}و<b>by value</b> يعني ${f0} بياخد نسخة من i وهي ${F.j}، و ${f1} بياخد نسخة من${L(A)}وهي ${F.x}. ومفيش حاجة هترجع.`, ['j', 'x']); }
     if (mode === 'result') { F = { j: 0, x: 0 }; snap('call', `Call ${call} = ${P.proc}(i, ${A}). <b>By result</b>: no value goes in, so ${f0} = 0 and ${f1} = 0. The addresses of i and ${A} are kept for the copy back.`, `الـ call ده${L(`${call} = ${P.proc}(i, ${A})`)}و<b>by result</b> يعني مفيش قيمة بتدخل، فالـ ${f0} و ${f1} بيبدأوا بـ 0. وعناوين i و${L(A)}بتتحفظ عشان الـ copy back.`, ['j', 'x']); }
-    if (mode === 'vr') { F = { j: G.i, x: G.a[ax(xi)] }; snap('call', `Call ${call} = ${P.proc}(i, ${A}). <b>By value-result</b>: copied in (${f0} = ${F.j}, ${f1} = ${F.x}), and the addresses i and ${A} are fixed now, at call time, for the copy back.`, `الـ call ده${L(`${call} = ${P.proc}(i, ${A})`)}و<b>by value-result</b> يعني القيم بتدخل نسخ (${f0} = ${F.j} و ${f1} = ${F.x})، وعناوين i و${L(A)}بتتثبت دلوقتي وقت الـ call عشان الـ copy back.`, ['j', 'x']); }
+    if (mode === 'vr') { F = { j: G.i, x: G.a[ax(xi)] }; snap('call', `Call ${call} = ${P.proc}(i, ${A}). <b>By value-result</b>: copied in (${f0} = ${F.j}, ${f1} = ${F.x}), and the addresses i and ${A} are fixed now, at call time, for the copy back.`, `الـ call ده${L(`${call} = ${P.proc}(i, ${A})`)}و<b>by value-result</b> يعني القيم بتدخل نسخ (<bdi dir="ltr">${f0}&nbsp;=&nbsp;${F.j}</bdi> و <bdi dir="ltr">${f1}&nbsp;=&nbsp;${F.x}</bdi>)، وعناوين i و${L(A)}بتتثبت دلوقتي وقت الـ call عشان الـ copy back.`, ['j', 'x']); }
     if (ref) { F = {}; snap('call', `Call ${call} = ${P.proc}(i, ${A}). <b>By reference</b>: ${f0} is another name (alias) for i, and ${f1} IS ${A}. No copies.`, `الـ call ده${L(`${call} = ${P.proc}(i, ${A})`)}و<b>by reference</b> يعني ${f0} اسم تاني (alias) لـ i، و ${f1} هو نفسه${L(A)}ومفيش نسخ.`, ['j', 'x', 'i', 'a' + xi]); }
     if (P.local) { F.li = 0; snap('local', `A local i := 0 is created inside ${P.proc}. It hides the global i, but the call already used the global i (${P.i0}) to pick ${A}.`, `اتعمل i جديد local جوه الـ ${P.proc} قيمته 0. ده بيخبّي الـ i الـ global، بس الـ call كان خلاص استخدم الـ i الـ global (${P.i0}) عشان يختار${L(A)}`, ['li']); }
     const setJ = v => { if (ref) G.i = v; else F.j = v; }, setX = v => { if (ref) G.a[ax(xi)] = v; else F.x = v; };
@@ -3762,7 +3762,7 @@ button.cv4-chip.sel{ background:var(--fig-s); color:#fff; }
     setX(gx() + P.d[1]); snap('x', `${f1} := ${f1}+${P.d[1]} gives ${f1} = <b>${gx()}</b>` + (ref ? `, written straight into ${A}.` : '.'), `الـ ${f1} بقى <b>${gx()}</b>` + (ref ? ` ومكتوب على طول في${L(A)}` : '.') + (ref ? '' : L(`${f1} := ${f1}+${P.d[1]}`)), ref ? ['x', 'a' + xi] : ['x']);
     G.a[ax(P.zi)] = 0;
     const same = xi === P.zi;
-    snap('z', `a[${P.zi}] := 0 writes the global array` + (same ? (ref ? `: ${f1} IS a[${P.zi}], so ${f1} is 0 now too.` : `: ${f1} is a separate copy, so it keeps ${gx()}.`) : '.'), `الـ${L(`a[${P.zi}] := 0`)}بيكتب في الـ array الـ global` + (same ? (ref ? `، وبما إن ${f1} هو نفسه${L(`a[${P.zi}]`)}فالـ ${f1} بقى 0 هو كمان.` : `، والـ ${f1} نسخة منفصلة فبيفضل ${gx()}.`) : '.'), ['a' + P.zi].concat(same && ref ? ['x'] : []));
+    snap('z', `a[${P.zi}] := 0 writes the global array` + (same ? (ref ? `: ${f1} IS a[${P.zi}], so ${f1} is 0 now too.` : `: ${f1} is a separate copy, so it keeps ${gx()}.`) : '.'), `الـ statement ده${L(`a[${P.zi}] := 0`)}بيكتب في الـ array الـ global` + (same ? (ref ? `، وبما إن ${f1} هو نفسه${L(`a[${P.zi}]`)}فالـ ${f1} بقى 0 هو كمان.` : `، والـ ${f1} نسخة منفصلة فبيفضل ${gx()}.`) : '.'), ['a' + P.zi].concat(same && ref ? ['x'] : []));
     if (P.pin) { out.push(`${gj()} ${gx()} ${arr()}`); snap('pin', `Inside, print(${f0}); print(${f1}); print(a) prints <b>${out[out.length - 1]}</b>.`, `جوه الـ procedure الطباعة بتطلع${L(out[out.length - 1])}`); }
     const vj = gj(), vx = gx();
     if (mode === 'result' || mode === 'vr') {
