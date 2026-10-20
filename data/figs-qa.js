@@ -125,7 +125,7 @@
     const pair = steps[i].p, plansOn = r => i >= 4 + (3 - r) || i === 8;
     const box = (x, w, y, t, seen, on, k) => html`<g key=${k} className="fade" style=${{ opacity: seen ? 1 : .2 }}>
       <rect x=${x} y=${y} width=${w} height=${H} rx="3" fill=${on ? ON : seen ? DONE : 'var(--paper)'} stroke=${on ? 'var(--k-qa)' : 'var(--graphite)'} strokeWidth=${on ? 2.5 : 1.3} />
-      ${label(x + w / 2, y + H / 2, t, on, 13)}</g>`;
+      ${label(x + w / 2, y + H / 2, t, on, 13.4)}</g>`;
     const line = (d, seen, k) => html`<path key=${k} d=${d} stroke="var(--graphite)" strokeWidth="1.5" fill="none" markerEnd="url(#fq1-v-a)" className=${pop(seen)} />`;
     const PL = [['Acceptance', 'Test Plan'], ['System', 'Test Plan'], ['Integration', 'Test Plan'], ['Test', 'Cases']];
     const lc = r => LB[r][0] + LB[r][1] / 2, rc = r => RB[r][0] + RB[r][1] / 2;
@@ -139,7 +139,7 @@
         ${PL.map((t, r) => { const on = pair === r, seen = plansOn(r), x1 = LB[r][0] + LB[r][1], x2 = RB[r][0], mid = (x1 + x2) / 2;
           return html`<g key=${'p' + r} className=${pop(seen)}>
             ${r < 3 && html`<path d=${`M${x1 + 2} ${Y(r) + 36} H${x2 - 2}`} stroke=${on ? 'var(--k-qa)' : 'var(--graphite)'} strokeWidth=${on ? 2.2 : 1.3} strokeDasharray="4 4" fill="none" markerEnd=${on ? 'url(#fq1-v-k)' : 'url(#fq1-v-a)'} className=${on && !calm() ? 'flow' : ''} />`}
-            ${t.map((s, j) => html`<text key=${j} x=${mid} y=${Y(r) + (r === 3 ? 19 : 12) + j * 15} textAnchor="middle" fontSize="13" fontWeight=${on ? 700 : 500} style=${on ? { fill: 'var(--k-qa)' } : null}>${s}</text>`)}</g>`; })}
+            ${t.map((s, j) => html`<text key=${j} x=${mid} y=${Y(r) + (r === 3 ? 19 : 12) + j * 15} textAnchor="middle" fontSize="13.4" fontWeight=${on ? 700 : 500} style=${on ? { fill: 'var(--k-qa)' } : null}>${s}</text>`)}</g>`; })}
         ${L.map((t, r) => box(LB[r][0], LB[r][1], Y(r), t, i >= 1, pair === r || (i === 1), 'L' + r))}
         ${box(CB[0], CB[2], CB[1], ['Code'], i >= 2, i === 2, 'C')}
         ${R.map((t, r) => box(RB[r][0], RB[r][1], Y(r), t, i >= 3, pair === r || i === 3, 'R' + r))}
@@ -602,10 +602,10 @@
           <marker id="fq2-mp-ahk" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="4" markerHeight="4" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--k-qa)" /></marker></defs>
         ${MT.map(([f, a, t, d, lx, ly, an], k) => { const on = g.last === k, was = g.done.includes(k); return html`<g key=${k}>
           <path d=${d} fill="none" stroke=${on ? 'var(--k-qa)' : 'var(--ink)'} strokeWidth=${on ? 4 : 2} strokeOpacity=${on || was ? 1 : .7} markerEnd=${`url(#fq2-mp-ah${on ? 'k' : ''})`} />
-          <text x=${lx} y=${ly} textAnchor=${an} fontSize="14.5" fontWeight=${on ? 700 : 600} className=${on ? 'fq2-k' : 'fq2-mut'}>${BTN[a]}${was ? ' ✓' : ''}</text></g>`; })}
+          <text x=${lx} y=${ly} textAnchor=${an} fontSize="15" fontWeight=${on ? 700 : 600} className=${on ? 'fq2-k' : 'fq2-mut'}>${BTN[a]}${was ? ' ✓' : ''}</text></g>`; })}
         ${Object.entries(MS).map(([k, [x, y, L]]) => { const on = g.s === k; return html`<g key=${k}>
           <rect x=${x - 42} y=${y - 25} width="84" height="50" rx="10" fill=${on ? 'var(--s-qa)' : 'var(--paper)'} stroke=${on ? 'var(--s-qa)' : 'var(--ink)'} strokeWidth="2" />
-          ${L.map((w, j) => html`<text key=${j} x=${x} y=${y + 5 + (j - (L.length - 1) / 2) * 17} textAnchor="middle" fontSize="14.5" fontWeight="700" className=${on ? 'fq2-w' : ''}>${w}</text>`)}</g>`; })}
+          ${L.map((w, j) => html`<text key=${j} x=${x} y=${y + 5 + (j - (L.length - 1) / 2) * 17} textAnchor="middle" fontSize="15" fontWeight="700" className=${on ? 'fq2-w' : ''}>${w}</text>`)}</g>`; })}
       </svg>
       <div className="fq2-mp" role="group" aria-label="Media player buttons">
         <button className="fig-btn solid" onClick=${() => press('play')}>▶ play</button>
@@ -1190,10 +1190,10 @@
         <line x1=${cx} y1=${Y(1)} x2=${X(1)} y2=${Y(1)} style=${{ stroke: 'var(--ink)' }} strokeWidth="1.5" />
         <text x=${(cx + X(1)) / 2} y=${Y(1) - 6} textAnchor="middle" fontSize="16" style=${{ fill: 'var(--pen)' }}>σ</text>
         <line x1="6" y1=${base} x2="354" y2=${base} style=${{ stroke: 'var(--ink)' }} strokeWidth="2.5" />
-        ${[-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6].map(z => html`<g key=${z}><line x1=${X(z)} y1=${base} x2=${X(z)} y2=${base + (z % 2 ? 22 : 5)} style=${{ stroke: 'var(--line)' }} /><line x1=${X(z)} y1=${base} x2=${X(z)} y2=${base + 5} style=${{ stroke: 'var(--ink)' }} /><text x=${X(z)} y=${base + (z % 2 ? 37 : 20)} textAnchor="middle" fontSize="15" style=${{ fontWeight: Math.abs(z) === k ? 700 : 400, fill: Math.abs(z) === k ? 'var(--k-qa)' : 'var(--ink)' }}>${z === 0 ? '0' : (z > 0 ? '+' : '\u2212') + Math.abs(z) + 'σ'}</text></g>`)}
+        ${[-6, -5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5, 6].map(z => html`<g key=${z}><line x1=${X(z)} y1=${base} x2=${X(z)} y2=${base + (z % 2 ? 22 : 5)} style=${{ stroke: 'var(--line)' }} /><line x1=${X(z)} y1=${base} x2=${X(z)} y2=${base + 5} style=${{ stroke: 'var(--ink)' }} /><text x=${X(z)} y=${base + (z % 2 ? 37 : 20)} textAnchor="middle" fontSize="15.8" style=${{ fontWeight: Math.abs(z) === k ? 700 : 400, fill: Math.abs(z) === k ? 'var(--k-qa)' : 'var(--ink)' }}>${z === 0 ? '0' : (z > 0 ? '+' : '\u2212') + Math.abs(z) + 'σ'}</text></g>`)}
         <line x1=${X(-v)} y1="262" x2=${X(v)} y2="262" style=${{ stroke: 'var(--k-qa)' }} strokeWidth="2" />
         <path d=${`M${X(-v)},262 l8,-5 v10 z M${X(v)},262 l-8,-5 v10 z`} style=${{ fill: 'var(--k-qa)' }} />
-        <text x="180" y="255" textAnchor="middle" fontSize="15" fontWeight="700">between +/\u2212 ${k}σ</text>
+        <text x="180" y="255" textAnchor="middle" fontSize="15.8" fontWeight="700">between +/\u2212 ${k}σ</text>
       </svg>
       <p className="fq4-sd">Sigma = σ = Deviation (Square root of variance)</p>
       <div className="fq4-read"><div><b>${pct}</b>inside ±${k}σ</div><div><b>${ppm} ppm</b>out of spec</div></div></div>
@@ -1505,4 +1505,1472 @@
   }
 
   window.FIGS = Object.assign(window.FIGS || {}, { 'qa-waterfall-flow': WaterfallFlow, 'qa-rad': Rad, 'qa-agile': Agile, 'qa-models-compare': Compare });
+})();
+/* ── part L5 ── */
+// Software Quality Assurance visuals, Lecture 5 (Web Site Testing): the web site and its pages, the three page components, the 13 testing
+// elements and site-map checks, white-box elements (dynamic content, database-driven and generated pages, load, security), gray-box,
+// configuration and compatibility, and the automatic tools (slides 3 to 21). Every label and number comes from the site's notes.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.qv5 .fig-dots i.on{ background:var(--k-qa); } .qv5 .fig-btn:hover{ border-color:var(--k-qa); } .qv5 .fig-btn.solid{ background:var(--s-qa); }
+.qv5-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 12px; }
+.qv5-modes .fig-btn[aria-pressed="true"]{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.qv5-in{ animation:qv5in .5s ease both; } @keyframes qv5in{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+.qv5-chip{ display:inline-block; border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:99px; padding:2px 9px; font-size:.78rem; line-height:1.35; transition:all .4s ease; }
+.qv5-chip.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; }
+.qv5-chip.k{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); }
+.qv5-chip.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 14%, var(--paper)); }
+.qv5-chip.bad{ border-color:var(--pen); color:var(--pen); background:color-mix(in srgb, var(--pen) 10%, var(--paper)); font-weight:700; }
+.qv5-chip.dim{ opacity:.4; }
+.qv5-ok{ color:var(--ok); font-weight:700; } .qv5-bad{ color:var(--pen); font-weight:700; }
+.qv5-note{ text-align:center; font-size:.82rem; color:var(--graphite); margin:8px 0 0; }
+.qv5-page{ max-width:460px; margin:0 auto; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); font-size:.82rem; line-height:1.35; overflow:hidden; }
+.qv5-addr{ display:flex; gap:6px; align-items:center; padding:5px 8px; background:var(--paper-2); border-bottom:1px solid var(--line); font:.78rem/1.3 var(--mono); color:var(--graphite); overflow-wrap:anywhere; }
+.qv5-addr i{ font-style:normal; display:inline-flex; gap:3px; } .qv5-addr i b{ width:8px; height:8px; border-radius:50%; background:var(--line); display:inline-block; }
+.qv5-hl{ box-shadow:0 0 0 2.5px var(--k-qa); border-radius:6px; transition:box-shadow .4s, opacity .4s; } .qv5-lo{ opacity:.35; transition:opacity .4s; }
+/* web site */
+.qv5-dom{ max-width:440px; margin:0 auto; border:2px dashed transparent; border-radius:12px; padding:8px; transition:border-color .5s, background .5s; }
+.qv5-dom.on{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 6%, transparent); }
+.qv5-domtag{ text-align:center; margin:0 0 8px; } .qv5-domtag span{ display:inline-block; background:var(--s-qa); color:#fff; border-radius:8px; padding:4px 10px; font:600 .84rem/1.3 var(--mono); }
+.qv5-domtag small{ display:block; font:.76rem var(--body); color:var(--graphite); margin-top:3px; }
+.qv5-pages{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; }
+.qv5-pg{ border:1.3px solid var(--line); border-radius:6px; background:var(--paper); padding:5px; display:flex; flex-direction:column; gap:3px; align-items:stretch; }
+.qv5-pg > b{ font-size:.8rem; text-align:center; border-bottom:1px solid var(--line); padding-bottom:3px; }
+.qv5-pg .qv5-chip{ text-align:center; padding:1px 4px; font-size:.75rem; }
+.qv5-host{ max-width:260px; margin:6px auto 0; border:1.4px solid var(--k-qa); border-radius:8px; padding:6px 10px; text-align:center; font-weight:600; font-size:.86rem; background:var(--paper); color:var(--ink); }
+.qv5-host small{ display:block; font-weight:400; font-size:.76rem; color:var(--graphite); }
+.qv5-up{ text-align:center; color:var(--k-qa); font-size:.8rem; margin-top:4px; }
+/* browsers */
+.qv5-br{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; max-width:420px; margin:0 auto; }
+.qv5-br div{ border:1.4px solid var(--line); border-radius:10px; padding:10px 6px; text-align:center; background:var(--paper); color:var(--ink); font-weight:600; font-size:.88rem; transition:all .5s ease; }
+.qv5-br div small{ display:block; font-weight:500; font-size:.78rem; margin-top:4px; color:var(--graphite); }
+.qv5-br div.ok{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 12%, var(--paper)); }
+.qv5-br div.warn{ border-color:var(--pen); border-style:dashed; } .qv5-br div.warn small{ color:var(--pen); font-weight:700; }
+.qv5-br div.test{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 14%, var(--paper)); } .qv5-br div.test small{ color:var(--ok); font-weight:700; }
+.qv5-br div.dim{ opacity:.35; }
+/* page parts */
+.qv5-hd{ padding:8px 10px; border-bottom:1px solid var(--line); }
+.qv5-hd.gfx{ background:linear-gradient(120deg, color-mix(in srgb, var(--k-qa) 40%, var(--paper)), var(--paper)); display:flex; gap:8px; align-items:center; }
+.qv5-hd .nm{ font-weight:700; font-size:1rem; } .qv5-logo{ width:30px; height:30px; border-radius:50%; background:var(--s-qa); color:#fff; display:grid; place-items:center; font-weight:800; font-size:.9rem; flex:none; }
+.qv5-lk{ display:flex; flex-wrap:wrap; gap:4px 12px; padding:6px 10px; border-bottom:1px solid var(--line); }
+.qv5-lk a{ color:var(--k-qa); text-decoration:underline; cursor:pointer; font-size:.8rem; }
+.qv5-ct{ padding:8px 10px; display:grid; grid-template-columns:minmax(0,1fr) 70px; gap:8px; align-items:start; }
+.qv5-lines i{ display:block; height:6px; border-radius:3px; background:var(--line); margin:4px 0; } .qv5-pic{ height:52px; border-radius:6px; background:color-mix(in srgb, var(--k-qa) 30%, var(--paper-2)); display:grid; place-items:center; font-size:.75rem; color:var(--ink); }
+.qv5-legend{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-top:10px; }
+/* link uses */
+.qv5-view{ min-height:92px; padding:10px; display:grid; place-items:center; text-align:center; }
+.qv5-prog{ width:180px; max-width:100%; height:10px; border-radius:99px; background:var(--paper-2); border:1px solid var(--line); overflow:hidden; margin:6px auto 0; } .qv5-prog i{ display:block; height:100%; background:var(--k-qa); transition:width .2s linear; }
+.qv5-mail{ width:100%; max-width:300px; border:1px solid var(--line); border-radius:6px; text-align:left; overflow:hidden; } .qv5-mail .t{ background:#1f5fbf; color:#fff; padding:3px 8px; font-size:.78rem; font-weight:600; } .qv5-mail div{ padding:3px 8px; border-bottom:1px solid var(--line); font-size:.78rem; }
+.qv5-links{ display:flex; flex-wrap:wrap; gap:6px 12px; padding:8px 10px; border-bottom:1px solid var(--line); justify-content:center; }
+.qv5-links button{ font:inherit; font-size:.8rem; background:none; border:0; padding:3px 4px; color:var(--k-qa); text-decoration:underline; cursor:pointer; border-radius:4px; }
+.qv5-links button.on{ background:color-mix(in srgb, var(--k-qa) 16%, var(--paper)); font-weight:700; }
+/* content forms */
+.qv5-cg{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; padding:8px; }
+.qv5-cg > div{ border:1.3px solid var(--line); border-radius:8px; padding:6px; min-height:58px; display:flex; flex-direction:column; gap:4px; align-items:center; justify-content:center; text-align:center; font-size:.78rem; transition:opacity .4s, box-shadow .4s; background:var(--paper); }
+.qv5-cg > div > b{ font-size:.78rem; }
+.qv5-cg .wide{ grid-column:1 / -1; }
+.qv5-wave{ display:flex; gap:2px; align-items:center; height:22px; } .qv5-wave i{ width:3px; background:var(--k-qa); border-radius:2px; animation:qv5w 1s ease-in-out infinite; } @keyframes qv5w{ 50%{ transform:scaleY(.35); } }
+.qv5-cg input{ font:inherit; font-size:.8rem; width:100%; max-width:130px; box-sizing:border-box; border:1px solid var(--line); border-radius:4px; padding:2px 5px; background:var(--paper); color:var(--ink); }
+.qv5-ad{ background:var(--s-qa); color:#fff; border-radius:6px; padding:3px 8px; font-weight:700; animation:qv5in .5s ease both; }
+/* 13 elements */
+.qv5-nums{ display:grid; grid-template-columns:repeat(7, minmax(0,1fr)); gap:5px; max-width:400px; margin:0 auto 10px; }
+.qv5-nums button{ font:600 .86rem var(--body); min-height:32px; border-radius:8px; border:1.3px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; padding:0; }
+.qv5-nums button.on{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.qv5-elh{ text-align:center; font-weight:700; font-size:.95rem; margin:0 0 2px; } .qv5-elc{ text-align:center; font-size:.82rem; color:var(--graphite); margin:0 0 8px; }
+.qv5-mini{ max-width:380px; margin:0 auto; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); padding:10px; font-size:.82rem; line-height:1.4; min-height:96px; position:relative; }
+.qv5-mini.fail{ box-shadow:inset 4px 0 0 var(--pen); } .qv5-mini.pass{ box-shadow:inset 4px 0 0 var(--ok); }
+.qv5-verdict{ text-align:center; font-weight:700; font-size:.86rem; margin:8px 0 0; }
+.qv5-tiny{ display:flex; gap:3px; flex-wrap:wrap; } .qv5-tiny i{ width:22px; height:22px; border:1px solid var(--line); border-radius:3px; display:grid; place-items:center; font-style:normal; font-size:.75rem; color:var(--graphite); }
+.qv5-big{ display:inline-block; background:var(--s-qa); color:#fff; border-radius:8px; padding:6px 16px; font-weight:700; }
+.qv5-blink{ font-size:1.25rem; font-weight:900; color:var(--pen); animation:qv5blink 1s steps(2, start) infinite; } @keyframes qv5blink{ to{ visibility:hidden; } }
+.qv5-a{ color:var(--k-qa); text-decoration:underline; }
+.qv5-busy{ padding:8px; border-radius:6px; color:#9ca3af; background:repeating-linear-gradient(45deg,#a3a9b8 0 8px,#b9bfcc 8px 16px); font-weight:600; }
+.qv5-clean{ padding:8px; border-radius:6px; color:#111; background:#f8fafc; border:1px solid #cbd5e1; }
+.qv5-bars{ display:flex; gap:6px; align-items:flex-end; height:60px; justify-content:center; } .qv5-bars i{ width:26px; background:var(--k-qa); border-radius:3px 3px 0 0; display:block; }
+.qv5-tbl{ border-collapse:collapse; font-size:.78rem; } .qv5-tbl td, .qv5-tbl th{ border:1px solid var(--line); padding:2px 6px; }
+.qv5-sb{ height:8px; border-radius:99px; background:var(--paper-2); border:1px solid var(--line); margin-top:5px; position:relative; } .qv5-sb i{ position:absolute; left:0; top:0; bottom:0; width:30%; border-radius:99px; background:var(--graphite); }
+.qv5-wrap .im{ width:64px; height:52px; border-radius:6px; background:color-mix(in srgb, var(--k-qa) 45%, var(--paper-2)); display:grid; place-items:center; font-size:.75rem; color:var(--ink); }
+.qv5-wrap.pass .im{ float:left; margin:0 8px 4px 0; } .qv5-wrap.fail .im{ position:absolute; left:40px; top:14px; opacity:.92; }
+.qv5-code{ font:.78rem/1.45 var(--mono); background:var(--paper-2); border:1px solid var(--line); border-radius:6px; padding:6px 8px; white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.qv5-code .on{ background:color-mix(in srgb, var(--k-qa) 26%, transparent); border-radius:3px; }
+/* site map */
+.qv5-sm{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px; max-width:440px; margin:0 auto; }
+.qv5-map{ border:1.4px solid var(--k-qa); border-radius:8px; padding:6px 8px; background:var(--paper); }
+.qv5-map > b{ display:block; font-size:.82rem; margin-bottom:4px; } .qv5-map .row{ display:flex; flex-wrap:wrap; gap:5px; }
+.qv5-pgs{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; }
+.qv5-pgs > div{ border:1.3px solid var(--line); border-radius:8px; padding:5px; background:var(--paper); transition:box-shadow .4s; }
+.qv5-pgs > div > b{ display:block; font-size:.82rem; margin-bottom:3px; } .qv5-pgs .nav{ display:flex; flex-wrap:wrap; gap:3px; min-height:22px; }
+.qv5-pgs .nav .qv5-chip{ font-size:.75rem; padding:1px 5px; } .qv5-pgs .none{ font-size:.76rem; color:var(--pen); font-weight:700; }
+.qv5-pgs > div.cur{ box-shadow:0 0 0 2.5px var(--k-qa); }
+/* dynamic content */
+.qv5-dyn .sky{ height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 12px; transition:background .6s; color:#fff; font-weight:700; }
+.qv5-dyn .sky .ic{ font-size:1.6rem; } .qv5-ticker{ display:flex; flex-wrap:wrap; gap:0 14px; background:#0b0b0d; color:#e5e7eb; font:.8rem/1.8 var(--mono); padding:0 8px; }
+.qv5-ticker span{ white-space:nowrap; } .qv5-up2{ color:#4ade80; } .qv5-dn2{ color:#f87171; }
+.qv5-ctl{ display:grid; gap:6px; max-width:420px; margin:10px auto 0; font-size:.82rem; } .qv5-ctl label{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; } .qv5-ctl input[type=range]{ flex:1; min-width:120px; accent-color:var(--k-qa); }
+.qv5-cov{ display:grid; grid-template-columns:auto repeat(3, minmax(0,1fr)); gap:3px; max-width:340px; margin:8px auto 0; font-size:.76rem; text-align:center; }
+.qv5-cov span{ border:1px solid var(--line); border-radius:4px; padding:2px; background:var(--paper); } .qv5-cov span.hd{ border:0; background:none; color:var(--graphite); font-weight:600; } .qv5-cov span.y{ background:color-mix(in srgb, var(--ok) 22%, var(--paper)); border-color:var(--ok); }
+/* database pages */
+.qv5-db{ display:grid; grid-template-columns:minmax(0,1fr); gap:6px; max-width:440px; margin:0 auto; }
+.qv5-box{ border:1.4px solid var(--line); border-radius:8px; padding:6px 8px; background:var(--paper); transition:opacity .4s, box-shadow .4s; } .qv5-box > b{ display:block; font-size:.8rem; color:var(--graphite); margin-bottom:4px; }
+.qv5-box.on{ box-shadow:0 0 0 2.5px var(--k-qa); } .qv5-box.off{ opacity:.35; }
+.qv5-box table{ border-collapse:collapse; width:100%; font-size:.8rem; } .qv5-box td, .qv5-box th{ border:1px solid var(--line); padding:2px 5px; text-align:left; } .qv5-box tr.new td{ background:color-mix(in srgb, var(--k-qa) 18%, var(--paper)); }
+.qv5-slots{ display:flex; gap:5px; flex-wrap:wrap; align-items:center; } .qv5-slot{ border:1.4px dashed var(--line); border-radius:6px; min-width:62px; min-height:24px; display:grid; place-items:center; font-size:.78rem; }
+.qv5-cat{ display:grid; grid-template-columns:repeat(auto-fill, minmax(78px, 1fr)); gap:5px; } .qv5-cat div{ border:1px solid var(--line); border-radius:6px; padding:4px; text-align:center; font-size:.78rem; } .qv5-cat div b{ display:block; } .qv5-cat .out{ color:var(--pen); font-weight:700; }
+.qv5-add{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; margin:8px 0 0; font-size:.8rem; } .qv5-add input{ font:inherit; font-size:.82rem; width:96px; border:1px solid var(--line); border-radius:6px; padding:3px 6px; background:var(--paper); color:var(--ink); }
+.qv5-btnpress{ animation:qv5press .6s ease 2; } @keyframes qv5press{ 50%{ transform:scale(.92); } }
+/* load */
+.qv5-ld{ display:grid; grid-template-columns:minmax(0,1fr) 92px; gap:8px; align-items:center; max-width:420px; margin:0 auto; }
+.qv5-users{ container-type:inline-size; position:relative; height:110px; border:1px solid var(--line); border-radius:8px; background:var(--paper); overflow:hidden; }
+.qv5-users i{ position:absolute; width:7px; height:7px; border-radius:50%; background:var(--k-qa); animation:qv5go var(--d) linear infinite; animation-delay:var(--dl); left:0; }
+.qv5-users i.x{ background:var(--pen); }
+@keyframes qv5go{ from{ transform:translateX(0); opacity:0; } 10%{ opacity:1; } to{ transform:translateX(var(--w)); opacity:.9; } }
+.qv5-srv{ border:2px solid var(--k-qa); border-radius:8px; padding:6px; text-align:center; font-size:.8rem; font-weight:600; background:var(--paper); }
+.qv5-srv.hot{ border-color:var(--pen); }
+.qv5-meter{ height:10px; border-radius:99px; background:var(--paper-2); border:1px solid var(--line); overflow:hidden; margin-top:5px; } .qv5-meter i{ display:block; height:100%; background:var(--k-qa); transition:width .5s ease; } .qv5-srv.hot .qv5-meter i{ background:var(--pen); }
+.qv5-nums2{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; max-width:420px; margin:8px auto 0; } .qv5-nums2 div{ border:1px solid var(--line); border-radius:8px; padding:5px; text-align:center; background:var(--paper); font-size:.78rem; color:var(--graphite); } .qv5-nums2 b{ display:block; font:700 .95rem var(--mono); color:var(--ink); }
+/* security */
+.qv5-q{ display:grid; grid-template-columns:repeat(10, minmax(0,1fr)); gap:3px; max-width:340px; margin:6px auto; } .qv5-q i{ height:22px; border-radius:4px; border:1px solid var(--line); background:var(--paper); transition:background .3s; } .qv5-q i.a{ background:var(--pen); border-color:var(--pen); } .qv5-q i.u{ background:var(--ok); border-color:var(--ok); }
+.qv5-who{ display:flex; justify-content:space-between; gap:8px; max-width:340px; margin:0 auto; font-size:.8rem; }
+.qv5-buf{ display:grid; grid-template-columns:repeat(12, minmax(0,1fr)); gap:2px; max-width:380px; margin:8px auto 2px; }
+.qv5-buf i{ height:28px; border:1.4px solid var(--k-qa); background:var(--paper); display:grid; place-items:center; font:700 .8rem var(--mono); font-style:normal; border-radius:3px; }
+.qv5-buf i.nx{ border-color:var(--line); border-style:dashed; color:var(--graphite); } .qv5-buf i.ov{ background:var(--pen); color:#fff; border-color:var(--pen); border-style:solid; }
+.qv5-bufl{ display:grid; grid-template-columns:2fr 1fr; max-width:380px; margin:0 auto; font-size:.76rem; color:var(--graphite); text-align:center; }
+.qv5-inrow{ display:flex; gap:6px; justify-content:center; align-items:center; flex-wrap:wrap; font-size:.82rem; } .qv5-inrow input[type=text]{ font:.86rem var(--mono); width:150px; border:1px solid var(--line); border-radius:6px; padding:3px 6px; background:var(--paper); color:var(--ink); }
+/* box views */
+.qv5-bx{ display:grid; grid-template-columns:minmax(0,1fr); gap:6px; max-width:440px; margin:0 auto; }
+.qv5-pane{ border:1.4px solid var(--line); border-radius:8px; background:var(--paper); padding:6px 8px; transition:opacity .5s, box-shadow .5s; } .qv5-pane > b{ display:block; font-size:.8rem; color:var(--graphite); margin-bottom:4px; }
+.qv5-pane.on{ box-shadow:0 0 0 2.5px var(--k-qa); } .qv5-pane.off{ opacity:.25; filter:grayscale(1); }
+.qv5-err{ border:2px dashed var(--pen); color:var(--pen); font-weight:700; border-radius:6px; padding:6px; text-align:center; font-size:.8rem; }
+.qv5-files{ display:flex; gap:5px; flex-wrap:wrap; font:.78rem var(--mono); }
+/* config */
+.qv5-fac{ display:grid; grid-template-columns:minmax(0,1fr) auto; gap:4px 8px; align-items:center; max-width:400px; margin:0 auto; font-size:.82rem; }
+.qv5-fac h5{ grid-column:1 / -1; margin:6px 0 0; font-size:.8rem; color:var(--graphite); }
+.qv5-step{ display:inline-flex; align-items:center; gap:4px; } .qv5-step button{ width:28px; height:28px; border-radius:50%; border:1px solid var(--line); background:var(--paper); color:var(--ink); font:700 .95rem var(--body); cursor:pointer; padding:0; } .qv5-step b{ min-width:18px; text-align:center; font-family:var(--mono); }
+.qv5-total{ text-align:center; margin:10px 0 0; } .qv5-total b{ display:block; font:800 1.4rem var(--mono); color:var(--k-qa); } .qv5-total code{ font:.78rem var(--mono); color:var(--graphite); overflow-wrap:anywhere; direction:ltr; display:block; }
+.qv5-sw{ display:flex; flex-wrap:wrap; gap:4px; align-items:center; } .qv5-sw > span{ width:100%; font-size:.78rem; color:var(--graphite); }
+.qv5-sw button{ font:inherit; font-size:.78rem; padding:3px 8px; border-radius:99px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; min-height:28px; } .qv5-sw button[aria-pressed="true"]{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.qv5-ctrls{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px 10px; max-width:440px; margin:0 auto 10px; }
+.qv5-scr{ margin:0 auto; border:3px solid var(--graphite); border-radius:6px; background:var(--paper); transition:width .5s ease; overflow:hidden; }
+.qv5-site{ color:var(--ink); } .qv5-site .h{ background:var(--s-qa); color:#fff; padding:5px 8px; font-weight:700; } .qv5-site .n{ display:flex; flex-wrap:wrap; gap:2px 10px; padding:4px 8px; background:var(--paper-2); } .qv5-site .n span{ color:var(--k-qa); }
+.qv5-site .c{ display:flex; flex-wrap:wrap; gap:6px; padding:6px 8px; } .qv5-site .c p{ margin:0; flex:1 1 120px; } .qv5-site .im{ flex:0 0 70px; height:50px; border-radius:4px; background:color-mix(in srgb, var(--k-qa) 40%, var(--paper-2)); display:grid; place-items:center; font-size:.75rem; }
+.qv5-site.nocss{ font-family:"Times New Roman", serif; } .qv5-site.nocss .h{ background:none; color:var(--ink); font-size:1.2em; padding:4px 6px; } .qv5-site.nocss .n{ display:block; background:none; padding:0 6px; } .qv5-site.nocss .n span{ display:block; text-decoration:underline; color:#2563eb; }
+.qv5-site.nocss .c{ display:block; padding:4px 6px; } .qv5-site.nocss .im{ border-radius:0; background:none; border:1px solid var(--graphite); width:70px; }
+.qv5-site .im.load{ background:var(--paper-2); color:var(--graphite); }
+.qv5-tc{ text-align:center; font:.78rem var(--mono); color:var(--graphite); margin:8px auto 0; max-width:420px; overflow-wrap:anywhere; }
+/* tools */
+.qv5-tools{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:5px; max-width:420px; margin:0 auto; }
+.qv5-tools div{ border:1.3px solid var(--line); border-radius:8px; padding:5px 6px; font-size:.8rem; line-height:1.3; background:var(--paper); display:flex; gap:6px; align-items:center; transition:all .4s; }
+.qv5-tools div i{ font-style:normal; width:16px; flex:none; text-align:center; } .qv5-tools div.done{ border-color:var(--ok); } .qv5-tools div.done i{ color:var(--ok); }
+.qv5-tools div.on{ background:var(--s-qa); color:#fff; border-color:var(--s-qa); }
+.qv5-scan{ display:inline-block; animation:qv5spin 1.4s linear infinite; } @keyframes qv5spin{ to{ transform:rotate(360deg); } }
+.qv5-script{ max-width:420px; margin:10px auto 0; }
+.qv5-script .qv5-code div{ transition:opacity .4s; } .qv5-script .qv5-code div.w{ opacity:.35; }
+@media (prefers-reduced-motion: reduce){ .qv5-in, .qv5-wave i, .qv5-blink, .qv5-users i, .qv5-scan, .qv5-ad, .qv5-btnpress{ animation:none; } }`;
+  if (!document.getElementById('qv5-css')) { const s = document.createElement('style'); s.id = 'qv5-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const Fig = ({ children, cls }) => html`<figure className=${'fig qv5' + (cls ? ' ' + cls : '')}>${children}</figure>`;
+  const Addr = ({ url }) => html`<div className="qv5-addr"><i><b></b><b></b><b></b></i><span>${url}</span></div>`;
+  // a ticking counter (stops under reduced motion)
+  function useTick(ms, on) { const [t, setT] = useState(0); useEffect(() => { if (calm() || on === false) return; const id = setInterval(() => setT(x => x + 1), ms); return () => clearInterval(id); }, [ms, on]); return t; }
+
+  /* ── [0.1] slide 3: a web site = pages under one domain, with a domain name and a web host ── */
+  function WebSite({ ar }) {
+    const steps = [
+      { en: 'A <b>Web site</b> is a collection of a number of <b>Web pages</b>.', ar: 'الـ <b>Web site</b> هو مجموعة من الـ <b>Web pages</b>.' },
+      { en: 'The pages include <b>texts, graphic images, links, sounds</b> and other elements.', ar: 'الصفحات دي فيها <b>texts و graphic images و links و sounds</b> وعناصر تانية.' },
+      { en: 'It is one or more Web pages <b>grouped under the same domain</b>.', ar: 'يعني web page واحدة أو أكتر <b>متجمعين تحت نفس الـ domain</b>.' },
+      { en: 'It must contain a <b>domain name</b>…', ar: 'ولازم يكون ليه <b>domain name</b>…' },
+      { en: '…and a <b>Web host</b>, the server the pages are stored on and served from.', ar: 'و<b>Web host</b> كمان، وده الـ server اللي الصفحات متخزنة عليه وبتتبعت منه.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2200);
+    const P = ['Home page', 'Page 2', 'Page 3'], E = ['Text', 'Graphics', 'Links', 'Sounds'];
+    return html`<${Fig}><div className="fig-stage">
+      <div className=${'qv5-dom' + (i >= 2 ? ' on' : '')}>
+        <div className=${'qv5-domtag ' + pop(i >= 3)}><span>www.yoursite.com</span><small>domain name</small></div>
+        <div className="qv5-pages">${P.map((p, j) => html`<div key=${p} className="qv5-pg qv5-in" style=${{ animationDelay: j * .25 + 's' }}><b>${p}</b>
+          ${E.map(e => html`<span key=${e} className=${'qv5-chip k ' + pop(i >= 1)}>${e}</span>`)}</div>`)}</div>
+        ${i >= 2 && html`<p className="qv5-note">same domain</p>`}
+      </div>
+      <div className=${pop(i >= 4)}><div className="qv5-up">▲ stored on ▲</div><div className="qv5-host">Web host<small>the server</small></div></div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [0.2] slide 4: a site built for Internet Explorer, then tested on every browser and platform ── */
+  function Browsers({ ar }) {
+    const B = ['Internet Explorer', 'Mozilla', 'Chrome', 'Linux'];
+    const S = [['ok', 'dim', 'dim', 'dim'], ['ok', 'warn', 'dim', 'dim'], ['ok', 'warn', 'warn', 'warn'], ['test', 'test', 'test', 'test']];
+    const L = { ok: 'designed for it', warn: 'may not work?', dim: 'not checked', test: '✓ tested, works' };
+    const steps = [
+      { en: 'You designed a Web site for your company that can be accessed using the browser <b>Internet Explorer</b>.', ar: 'إنت عملت Web site لشركتك بيشتغل على الـ browser اللي اسمه <b>Internet Explorer</b>.' },
+      { en: 'How would the customer access the Web site while using another browser like <b>Mozilla</b>?', ar: 'طب الـ customer هيفتح الـ Web site إزاي لو بيستخدم browser تاني زي <b>Mozilla</b>؟' },
+      { en: '…or <b>Chrome</b>, or on <b>Linux</b>? Nobody has checked, so the site may fail there.', ar: 'أو <b>Chrome</b>، أو على <b>Linux</b>؟ محدش اتأكد، فالـ site ممكن يبوظ هناك.' },
+      { en: 'Thus <b>Web site testing</b> is essential to ensure that your Web site is operational <b>on every browser and across all platforms</b>.', ar: 'عشان كده الـ <b>Web site testing</b> ضروري عشان نضمن إن الـ Web site شغال <b>على كل browser وعلى كل الـ platforms</b>.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-br">${B.map((b, j) => html`<div key=${b} className=${S[i][j]}>${b}<small>${L[S[i][j]]}</small></div>`)}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [1.0] slides 4 and 5: the three components of a web page ── */
+  function PageParts({ ar }) {
+    const steps = [
+      { k: '', en: 'Web page fundamentals: three components, <b>1. Home page</b>, <b>2. Links</b>, <b>3. Content</b>.', ar: 'أساسيات الـ Web page فيها 3 components هما الـ <b>Home page</b> والـ <b>Links</b> والـ <b>Content</b>.' },
+      { k: 'H', en: '<b>Home page</b>: the default page in the Web site. Usually it includes a <b>header on the top</b> representing the source name of the site. Some simple headers include <b>only text</b>…', ar: 'الـ <b>Home page</b> هي الصفحة الـ default في الـ Web site. عادةً فيها <b>header فوق</b> بيمثل الـ source name بتاع الـ site. فيه headers بسيطة فيها <b>text بس</b>…' },
+      { k: 'H', g: 1, en: '…while others include <b>designs along with graphic images</b>.', ar: 'وفيه headers تانية فيها <b>designs ومعاها graphic images</b>.' },
+      { k: 'L', g: 1, en: '<b>Links</b> link all local and remotely stored Web pages to the home page.', ar: 'الـ <b>Links</b> بتربط كل الـ Web pages الـ local والـ remote بالـ home page.' },
+      { k: 'C', g: 1, en: '<b>Content</b>: texts, graphic images and sounds. It is the <b>most important part</b> of a Web site.', ar: 'الـ <b>Content</b> زي الـ texts والـ graphic images والـ sounds. وده <b>أهم جزء</b> في الـ Web site.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const st = steps[i], c = k => (st.k === '' ? '' : st.k === k ? ' qv5-hl' : ' qv5-lo');
+    return html`<${Fig}><div className="fig-stage">
+      <div className="qv5-page"><${Addr} url="www.yoursite.com  (default page)" />
+        <div className=${(st.g ? 'qv5-hd gfx' : 'qv5-hd') + c('H')}>${st.g ? html`<span className="qv5-logo">Y</span>` : null}<span className="nm">Your Site Name</span></div>
+        <div className=${'qv5-lk' + c('L')}><a>About us</a><a>Products</a><a>Partner site ↗</a></div>
+        <div className=${'qv5-ct' + c('C')}><div className="qv5-lines"><i style=${{ width: '90%' }}></i><i></i><i style=${{ width: '75%' }}></i><i style=${{ width: '85%' }}></i><span>♪ sound</span></div><div className="qv5-pic">graphic</div></div>
+      </div>
+      <div className="qv5-legend">${[['H', '1. Home page'], ['L', '2. Links'], ['C', '3. Content']].map(([k, t]) => html`<span key=${k} className=${'qv5-chip' + (st.k === k || st.k === '' ? ' on' : '')}>${t}</span>`)}</div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [1.1] slide 5: what links are used for, click each ── */
+  function LinkUses({ ar }) {
+    const U = [
+      { t: 'Products', url: 'www.yoursite.com/products.html', en: '1. <b>Navigate users to other Web pages</b>: a local page of the same site opens.', ar: 'الاستخدام الأول إنها <b>توديك لـ Web pages تانية</b>: صفحة local من نفس الـ site بتفتح.' },
+      { t: 'Partner site ↗', url: 'www.othersite.com', en: '2. <b>Direct the user to a different location</b>: here a remotely stored page on another site.', ar: 'الاستخدام التاني إنها <b>توجّه الـ user لمكان مختلف</b>: هنا صفحة remote على site تاني.' },
+      { t: 'brochure.pdf ⤓', url: 'www.yoursite.com', en: '3. <b>Download files</b> from the Web site.', ar: 'الاستخدام التالت إنها <b>تنزّل files</b> من الـ Web site.' },
+      { t: 'E-mail us ✉', url: 'www.yoursite.com', en: '4. <b>Access other Internet tools</b>, such as the default e-mail client like Microsoft Outlook. Tester: send an e-mail and verify that you get a response.', ar: 'الاستخدام الرابع إنها <b>تفتح Internet tools تانية</b> زي الـ default e-mail client مثلًا Microsoft Outlook. والـ tester يبعت e-mail ويتأكد إن فيه رد بيوصله.' }
+    ];
+    const steps = [{ en: 'Links on a Web site are used to access local and remotely stored Web pages. <b>Click a link</b>, or press Next.', ar: 'الـ Links في الـ Web site بنوصل بيها للـ Web pages الـ local والـ remote. <b>دوس على link</b> أو دوس Next.' }].concat(U);
+    const [i, ctl] = useSteps(steps.length, 2800);
+    const [p, setP] = useState(0);
+    useEffect(() => { if (i !== 3) return; if (calm()) { setP(100); return; } setP(0); const id = setInterval(() => setP(x => { if (x >= 100) { clearInterval(id); return 100; } return x + 10; }), 160); return () => clearInterval(id); }, [i]);
+    let view;
+    if (i === 0) view = html`<div><b>Home page</b><div className="qv5-note">four links above</div></div>`;
+    else if (i === 1) view = html`<div className="qv5-in"><b>Products</b><div className="qv5-note">another page of this site (local)</div></div>`;
+    else if (i === 2) view = html`<div className="qv5-in"><b>Other Site</b><div className="qv5-note">a different location (remote)</div></div>`;
+    else if (i === 3) view = html`<div style=${{ width: '100%' }}><b>${p < 100 ? 'Downloading brochure.pdf…' : '✓ brochure.pdf downloaded'}</b><div className="qv5-prog"><i style=${{ width: p + '%' }}></i></div></div>`;
+    else view = html`<div className="qv5-mail qv5-in"><div className="t">Microsoft Outlook · New message</div><div>To: info@yoursite.com</div><div>Subject:</div><div style=${{ minHeight: '22px', borderBottom: 0 }}></div></div>`;
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-page">
+      <${Addr} url=${i === 0 ? 'www.yoursite.com' : U[i - 1].url} />
+      <div className="qv5-links">${U.map((u, j) => html`<button key=${j} className=${i === j + 1 ? 'on' : ''} onClick=${() => ctl.go(j + 1)}>${u.t}</button>`)}</div>
+      <div className="qv5-view">${view}</div></div></div>
+      <${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [1.2] slide 6: the seven forms content takes, live ── */
+  function ContentForms({ ar }) {
+    const F = [
+      ['Text documents', 'الـ text documents'], ['Graphics', 'الـ graphics'], ['Sounds', 'الأصوات (sounds)'], ['Movie clips (that can be downloaded)', 'الـ movie clips (اللي ممكن تتنزل)'],
+      ['Fields (that enable the users to enter the data)', 'الـ fields (اللي بتخلي الـ users يدخلوا data)'], ['Advertisements (that keep rotating)', 'الإعلانات (اللي بتلف على طول)'], ['Text (that change dynamically)', 'الـ text (اللي بيتغير dynamically)']
+    ];
+    const steps = [{ en: '<b>Content is the most important part of a Web site.</b> It can take many forms.', ar: '<b>الـ Content هو أهم جزء في الـ Web site.</b> وليه أشكال كتير.' }]
+      .concat(F.map(([e, a], j) => ({ en: `${j + 1}. <b>${e}</b>`, ar: `الشكل رقم ${j + 1} هو <b>${a}</b>` })));
+    const [i, ctl] = useSteps(steps.length, 1900);
+    const t = useTick(1000), ads = ['Ad 1 of 3', 'Ad 2 of 3', 'Ad 3 of 3'], ad = Math.floor(t / 2) % 3;
+    const now = new Date(), hh = String(now.getHours()).padStart(2, '0'), mm = String(now.getMinutes()).padStart(2, '0'), ss = String(now.getSeconds()).padStart(2, '0');
+    const c = j => (i === 0 ? '' : i === j + 1 ? ' qv5-hl' : ' qv5-lo');
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-page"><${Addr} url="www.yoursite.com" />
+      <div className="qv5-cg">
+        <div className=${c(0)}><b>📄 Text</b><div className="qv5-lines" style=${{ width: '80%' }}><i></i><i style=${{ width: '70%' }}></i></div></div>
+        <div className=${c(1)}><b>Graphics</b><svg viewBox="0 0 60 30" width="60" height="30" aria-hidden="true"><path d="M0 30 L18 10 L30 22 L42 6 L60 30 Z" style=${{ fill: 'var(--k-qa)' }} /><circle cx="50" cy="8" r="4" style=${{ fill: 'var(--pen)' }} /></svg></div>
+        <div className=${c(2)}><b>Sound</b><div className="qv5-wave">${[10, 18, 8, 22, 14, 20, 9, 16].map((h, k) => html`<i key=${k} style=${{ height: h + 'px', animationDelay: k * .1 + 's' }}></i>`)}</div></div>
+        <div className=${c(3)}><b>▶ clip.mp4</b><span className="qv5-a">Download ⤓</span></div>
+        <div className=${c(4)}><b>Your name:</b><input type="text" aria-label="Your name" placeholder="type here" /></div>
+        <div className=${c(5)}><b>Advertisement</b><span key=${ad} className="qv5-ad">${ads[ad]}</span></div>
+        <div className=${'wide' + c(6)}><b>Text that changes dynamically</b><span style=${{ fontFamily: 'var(--mono)' }}>Last updated ${hh}:${mm}:${ss}</span></div>
+      </div></div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [2] slides 7 to 12: the 13 elements, each as a failing and a passing page ── */
+  const xorHex = (s, k) => [...s].map((ch, j) => ((ch.charCodeAt(0) ^ k.charCodeAt(j % k.length)) & 255).toString(16).padStart(2, '0')).join('');
+  const EL = [
+    { n: 'User Interface', c: 'Verify that the Web site is simple to use.', ca: 'اتأكد إن الـ Web site سهل في الاستخدام.',
+      s: ok => ok ? html`<div style=${{ textAlign: 'center' }}><span className="qv5-big">Sign in</span><div className="qv5-note">one clear action, labelled</div></div>`
+        : html`<div><div className="qv5-tiny">${'?????????'.split('').map((q, k) => html`<i key=${k}>${q}</i>`)}</div><div className="qv5-note">nine unlabelled buttons: which one signs you in?</div></div>` },
+    { n: 'Instructions', c: 'Make sure the Web site contains all relevant instructions; some people may require some clarification.', ca: 'اتأكد إن الـ Web site فيه كل الـ instructions المهمة، لأن فيه ناس ممكن تحتاج توضيح.',
+      s: ok => html`<div><b>Choose a password:</b><div style=${{ border: '1px solid var(--line)', borderRadius: '3px', height: '22px', maxWidth: '170px', margin: '4px 0' }}></div>${ok ? html`<div className="qv5-note" style=${{ textAlign: 'left' }}>Minimum of 8 characters in length</div>` : html`<div className="qv5-bad">no instruction: how long? which characters?</div>`}</div>` },
+    { n: 'Site map / navigational map', c: 'The map exists and is appropriate, every link on it exists and works, the navigation bar is on every page.', ca: 'الـ map موجود ومناسب، وكل link فيه موجود وشغال، والـ navigation bar موجود في كل صفحة.',
+      s: ok => html`<div>${ok ? html`<div style=${{ display: 'flex', gap: '4px 10px', flexWrap: 'wrap', borderBottom: '1px solid var(--line)', paddingBottom: '4px' }}>${['Home', 'Products', 'Support', 'Site map'].map(t => html`<span key=${t} className="qv5-a">${t}</span>`)}</div>` : html`<div className="qv5-bad">no navigation bar, no site map</div>`}<p style=${{ margin: '6px 0 0' }}><b>Support</b> page: how do you get back to Products?</p></div>` },
+    { n: 'Content', c: 'Professional: no plagiarism, minimal bold text, big fonts and blinking text; all Web references are hyperlinked.', ca: 'محتوى professional: مفيش plagiarism، وأقل bold text و big fonts و blinking text، وكل الـ Web references عليها hyperlink.',
+      s: ok => ok ? html`<p style=${{ margin: 0 }}>Our new courses start in October. Read more in the <span className="qv5-a">course guide</span>.</p>`
+        : html`<div><span className="qv5-blink">BEST COURSES!!!</span><p style=${{ margin: '4px 0 0' }}><b>OUR NEW COURSES START IN OCTOBER.</b> Read more at www.yoursite.com/guide (not a link)</p></div>` },
+    { n: 'Colors / backgrounds', c: 'Colors and backgrounds must not make the content difficult to read.', ca: 'الـ colors والـ backgrounds لازم ماتخليش قراية الـ content صعبة.',
+      s: ok => html`<div className=${ok ? 'qv5-clean' : 'qv5-busy'}>Opening hours: 9:00 to 17:00, Sunday to Thursday.</div>` },
+    { n: 'Images', c: '"A picture is worth a thousand words": use it to convey messages to the users.', ca: 'الصورة بألف كلمة، فاستخدمها عشان توصّل الرسالة للـ users.',
+      s: ok => ok ? html`<div><div className="qv5-bars">${[20, 34, 48, 58].map((h, k) => html`<i key=${k} style=${{ height: h + 'px' }}></i>`)}</div><div className="qv5-note">Sales, Q1 to Q4</div></div>`
+        : html`<p style=${{ margin: 0 }}>Sales in the first quarter were low, in the second quarter they were higher than the first, in the third quarter higher again, and in the fourth quarter they were the highest of the year…</p>` },
+    { n: 'Tables', c: 'Position tables so users do not need to keep scrolling to access the information.', ca: 'حط الـ tables في مكان مريح عشان الـ users مايفضلوش يعملوا scroll عشان يوصلوا للمعلومة.',
+      s: ok => ok ? html`<table className="qv5-tbl"><tbody>${[['Course', 'SQA'], ['Lecture', '5'], ['Topic', 'Web site testing'], ['Room', 'Hall 2']].map(([a, b]) => html`<tr key=${a}><th>${a}</th><td>${b}</td></tr>`)}</tbody></table>`
+        : html`<div><table className="qv5-tbl"><thead><tr><th>Course</th><th>Lecture</th><th>Topic</th><th>…</th></tr></thead><tbody><tr><td>SQA</td><td>5</td><td>Web site…</td><td>…</td></tr></tbody></table><div className="qv5-sb"><i></i></div><div className="qv5-bad" style=${{ fontSize: '.78rem', marginTop: '4px' }}>→ keep scrolling sideways to see the other columns</div></div>` },
+    { n: 'Wrap-around', c: 'When there are images on the Web site, ensure the correct wrap-around of those images.', ca: 'لو فيه images في الـ Web site، اتأكد إن الـ text بيلف حواليها صح (wrap-around).',
+      s: ok => html`<div className=${'qv5-wrap ' + (ok ? 'pass' : 'fail')}><div className="im">image</div><p style=${{ margin: 0 }}>The text of this paragraph should flow around the image beside it and never run underneath it, so every word stays readable on the page.</p></div>` },
+    { n: 'Functionality', c: 'Test all the links, the database connection, and the forms used to acquire information from the users.', ca: 'اختبر كل الـ links والـ database connection والـ forms اللي بتاخد معلومات من الـ users.',
+      s: ok => html`<div style=${{ display: 'grid', gap: '4px' }}>${[['Links', 1], ['Database connection', ok], ['Forms', 1]].map(([t, g]) => html`<div key=${t}><span className=${g ? 'qv5-ok' : 'qv5-bad'}>${g ? '✓' : '✕'}</span> ${t}${g ? '' : ': could not connect'}</div>`)}</div>` },
+    { n: 'Links', c: 'A link acts as a vehicle that navigates the user from one page to another.', ca: 'الـ link هو العربية اللي بتنقل الـ user من صفحة لصفحة.',
+      s: ok => html`<div><span className="qv5-a">Products</span> → ${ok ? html`<b>Products page</b> <span className="qv5-ok">✓</span>` : html`<span className="qv5-bad">404 Page not found</span>`}</div>` },
+    { n: 'Forms', c: 'When a user fills up a form, the information should be accepted and the submit button should work properly.', ca: 'لما الـ user يملا form، المعلومات لازم تتقبل وزرار الـ submit يشتغل صح.',
+      s: ok => html`<div><div>Name: <b>John Smith</b></div><div style=${{ margin: '6px 0' }}><span className="qv5-big" style=${{ padding: '3px 12px' }}>Submit</span></div>${ok ? html`<span className="qv5-ok">✓ Information accepted</span>` : html`<span className="qv5-bad">pressed… nothing happens</span>`}</div>` },
+    { n: 'Data verification', c: 'The data entered as user input should match the business rules defined for the system.', ca: 'الـ data اللي الـ user بيدخلها لازم تطابق الـ business rules المتحددة للـ system.',
+      s: ok => html`<div><div>Rule: password, <b>minimum of 8 characters</b></div><div style=${{ margin: '6px 0', fontFamily: 'var(--mono)' }}>input: abc12 (5 characters)</div>${ok ? html`<span className="qv5-ok">✓ rejected: minimum of 8 characters</span>` : html`<span className="qv5-bad">✕ accepted, although it breaks the rule</span>`}</div>` },
+    { n: 'Cookies', c: 'If the site uses cookies, check them; for login information, the cookies work and the information is encrypted in the cookie file.', ca: 'لو الـ site بيستخدم cookies اختبرها، ولو فيها login information اتأكد إن الـ cookies شغالة والمعلومات متشفرة (encrypted) في الـ cookie file.',
+      s: ok => html`<div><b>cookie file</b><div className="qv5-code">login=JSmith; password=${ok ? xorHex('abcd1234', 'k3y') : 'abcd1234'}</div><div style=${{ marginTop: '4px' }}>${ok ? html`<span className="qv5-ok">✓ works (stays signed in), password encrypted</span>` : html`<span className="qv5-bad">✕ password readable by anyone with the file</span>`}</div></div>` }
+  ];
+  function Elements13({ ar }) {
+    const [k, setK] = useState(0), [ok, setOk] = useState(false);
+    const e = EL[k];
+    const en = `<b>${k + 1}. ${e.n}</b>: ${e.c} ${ok ? 'This page <b>passes</b> the check.' : 'This page <b>fails</b> the check.'}`;
+    const a = `العنصر رقم ${k + 1} هو الـ <b>${e.n}</b>: ${e.ca} ${ok ? 'الصفحة دي <b>بتعدّي</b> الـ check.' : 'الصفحة دي <b>بتفشل</b> في الـ check.'}`;
+    return html`<${Fig}><div className="fig-stage">
+      <div className="qv5-nums" role="group" aria-label="Pick an element">${EL.map((x, j) => html`<button key=${j} className=${j === k ? 'on' : ''} aria-pressed=${j === k} onClick=${() => { setK(j); setOk(false); }}>${j + 1}</button>`)}</div>
+      <p className="qv5-elh">${k + 1}. ${e.n}</p>
+      <div className="qv5-modes"><button className="fig-btn" aria-pressed=${!ok} onClick=${() => setOk(false)}>✕ Fails the check</button><button className="fig-btn" aria-pressed=${ok} onClick=${() => setOk(true)}>✓ Passes the check</button></div>
+      <div key=${k + '' + ok} className=${'qv5-mini qv5-in ' + (ok ? 'pass' : 'fail')}>${e.s(ok)}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><//>`;
+  }
+
+  /* ── [2.1] slide 8: site map testing, points (a) to (d), run on a small site ── */
+  function SiteMap({ ar }) {
+    const PG = ['Home', 'Products', 'Support', 'About'], MAP = ['Home', 'Products', 'Support', 'About', 'Downloads'];
+    const [fixed, setFixed] = useState(false);
+    const steps = [
+      { en: 'Experienced users generally know where exactly they want to go and avoid lengthy instructions, so the site needs a <b>site map</b> (like http://www.apple.com/sitemap/). Here: a small site with four pages and its map.', ar: 'الـ users اللي عندهم خبرة غالبًا عارفين بالظبط عايزين يروحوا فين وبيتجنبوا الـ instructions الطويلة، فالـ site محتاج <b>site map</b> زي اللي في الـ slide. وهنا site صغير فيه 4 صفحات ومعاه الـ map بتاعه.' },
+      { en: '<b>(a) Is the site map appropriate?</b> Every page of the site appears on the map.', ar: 'السؤال الأول: <b>هل الـ site map مناسب؟</b> كل صفحة في الـ site موجودة على الـ map.' },
+      { en: '<b>(b) Does each link on the map really exist?</b> ' + (fixed ? 'Every map entry is a real page.' : '"Downloads" is on the map, but <b>no such page exists</b>.'), ar: 'السؤال التاني: <b>هل كل link على الـ map موجود فعلًا؟</b> ' + (fixed ? 'كل حاجة على الـ map صفحة حقيقية.' : 'الـ "Downloads" موجود على الـ map، بس <b>مفيش صفحة بالاسم ده</b>.') },
+      { en: '<b>(c) Is the navigational bar present on every page of the site?</b> ' + (fixed ? 'Yes, on all four pages.' : 'The <b>About</b> page has <b>no navigation bar</b>.'), ar: 'السؤال التالت: <b>هل الـ navigational bar موجود في كل صفحة؟</b> ' + (fixed ? 'أيوه، في الـ 4 صفحات.' : 'صفحة الـ <b>About</b> <b>مفيهاش navigation bar</b>.') },
+      { en: '<b>(d) Does each link work on each page?</b> ' + (fixed ? 'Every link works on every page.' : 'On the <b>Support</b> page, the "Products" link is <b>broken</b>.'), ar: 'السؤال الرابع: <b>هل كل link شغال في كل صفحة؟</b> ' + (fixed ? 'كل الـ links شغالة في كل الصفحات.' : 'في صفحة الـ <b>Support</b>، الـ link بتاع "Products" <b>بايظ</b>.') },
+      { en: fixed ? 'Re-test: <b>all four checks pass</b>.' : '<b>3 defects found</b> by the four site-map checks. Press "Fix and re-test".', ar: fixed ? 'إعادة الـ test: <b>الـ 4 checks عدّوا كلهم</b>.' : 'الـ 4 checks بتوع الـ site map لقوا <b>3 defects</b>. دوس "Fix and re-test".' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2800);
+    const mapCls = m => { if (i < 1) return 'qv5-chip'; if (m === 'Downloads') { if (fixed) return 'qv5-chip dim'; return i >= 2 ? 'qv5-chip bad' : 'qv5-chip'; } return 'qv5-chip ok'; };
+    const navOf = p => (p === 'About' && !fixed ? null : PG);
+    const linkCls = (p, l) => (i >= 4 && p === 'Support' && l === 'Products' && !fixed ? 'qv5-chip bad' : i >= 4 ? 'qv5-chip ok' : 'qv5-chip');
+    const cur = p => (i === 3 && p === 'About') || (i === 4 && p === 'Support');
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-sm">
+      <div className=${'qv5-map' + (i === 1 || i === 2 ? ' qv5-hl' : '')}><b>Site map</b><div className="row">${MAP.filter(m => !(fixed && m === 'Downloads')).map(m => html`<span key=${m} className=${mapCls(m)}>${m}${i >= 2 && m === 'Downloads' && !fixed ? ' ✕' : ''}</span>`)}</div></div>
+      <div className="qv5-pgs">${PG.map(p => { const nav = navOf(p); return html`<div key=${p} className=${cur(p) ? 'cur' : ''}><b>${p}</b>
+        ${nav ? html`<div className="nav">${nav.filter(l => l !== p).map(l => html`<span key=${l} className=${linkCls(p, l)}>${l}${linkCls(p, l).includes('bad') ? ' ✕' : ''}</span>`)}</div>` : html`<div className=${i >= 3 ? 'none' : 'qv5-note'} style=${{ textAlign: 'left', margin: 0 }}>${i >= 3 ? '✕ no navigation bar' : 'page text…'}</div>`}</div>`; })}</div>
+    </div>${i === steps.length - 1 && html`<div className="qv5-modes" style=${{ marginTop: '10px' }}><button className="fig-btn solid" onClick=${() => { setFixed(f => !f); ctl.replay(); }}>${fixed ? '↺ Put the defects back' : 'Fix and re-test'}</button></div>`}</div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [4.1] slide 18: dynamic content, varied by time of day, weather, stock tickers ── */
+  function Dynamic({ ar }) {
+    const W = [['Sunny', '☀', '#f59e0b'], ['Rainy', '🌧', '#64748b'], ['Snowy', '❄', '#60a5fa']];
+    const [h, setH] = useState(9), [w, setW] = useState(0), [seen, setSeen] = useState({ '0-0': 1 });
+    const br = h < 12 ? 0 : h < 18 ? 1 : 2, G = ['Good morning', 'Good afternoon', 'Good evening'];
+    useEffect(() => { setSeen(s => Object.assign({}, s, { [br + '-' + w]: 1 })); }, [br, w]);
+    const t = useTick(1500);
+    const px = (b, k) => (b + 3 * Math.sin((t + k) * 1.7) + 1.5 * Math.cos((t + k * 2) * .9)).toFixed(2);
+    const stocks = [['STOCK A', 101.2, 0], ['STOCK B', 48.75, 3], ['STOCK C', 230.1, 5]];
+    const n = Object.keys(seen).length;
+    const sky = h < 6 || h >= 19 ? '#1e293b' : W[w][2];
+    const en = `<b>Dynamic content</b>: graphics and text that vary depending on some conditions, e.g. time of day, weather, stock tickers. White-box: you know the conditions in the code, so test every branch with every weather: <b>${n} of 9</b> combinations seen. Move the hour and pick the weather.`;
+    const a = `الـ <b>Dynamic content</b> هو graphics و text بيتغيروا حسب ظروف معينة، زي وقت اليوم والطقس والـ stock tickers. في الـ white-box إنت عارف الشروط اللي في الـ code، فاختبر كل branch مع كل طقس. شفت <b><bdi>${n}</bdi> من <bdi>9</bdi></b> combinations. حرّك الساعة واختار الطقس.`;
+    return html`<${Fig}><div className="fig-stage">
+      <div className="qv5-page qv5-dyn"><${Addr} url="www.yoursite.com" />
+        <div className="sky" style=${{ background: sky }}><span>${G[br]}!</span><span className="ic" aria-hidden="true">${W[w][1]}</span></div>
+        <div className="qv5-ticker">${stocks.map(([s, b, k]) => { const v = px(b, k), up = Math.sin((t + k) * 1.7) >= 0; return html`<span key=${s}>${s} ${v} <b className=${up ? 'qv5-up2' : 'qv5-dn2'}>${up ? '▲' : '▼'}</b></span>`; })}</div>
+      </div>
+      <div className="qv5-ctl"><label>Hour <input type="range" min="0" max="23" value=${h} onInput=${e => setH(+e.target.value)} onChange=${e => setH(+e.target.value)} aria-label="Hour of day" /><b style=${{ fontFamily: 'var(--mono)' }}>${String(h).padStart(2, '0')}:00</b></label>
+        <div className="qv5-sw">${W.map(([x], j) => html`<button key=${x} aria-pressed=${j === w} onClick=${() => setW(j)}>${x}</button>`)}</div></div>
+      <div className="qv5-script"><div className="qv5-code">${[['if (hour < 12)', 'greet = "Good morning"'], ['else if (hour < 18)', 'greet = "Good afternoon"'], ['else', 'greet = "Good evening"']].map(([c, g], j) => html`<div key=${j} className=${j === br ? 'on' : ''}>${c}<br />${'    ' + g}</div>`)}</div></div>
+      <div className="qv5-cov"><span className="hd"></span>${W.map(([x]) => html`<span key=${x} className="hd">${x}</span>`)}${G.map((g, b) => html`<${React.Fragment} key=${g}><span className="hd">${g.split(' ')[1]}</span>${W.map(([x], j) => html`<span key=${x} className=${seen[b + '-' + j] ? 'y' : ''}>${seen[b + '-' + j] ? '✓' : ''}</span>`)}<//>`)}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><//>`;
+  }
+
+  /* ── [4.3] slides 18 and 19: database-driven pages and programmatically created pages ── */
+  function DbPages({ ar }) {
+    const ROWS = [['Pen', 2, 120], ['Notebook', 5, 40], ['Bag', 25, 0]];
+    const [mine, setMine] = useState(null), [nm, setNm] = useState('Lamp'), [pr, setPr] = useState('15');
+    const steps = [
+      { en: '<b>Database-driven Web pages</b>: pages that display <b>catalogs or inventories</b> (e.g. e-commerce) are built from the rows of a database.', ar: 'الـ <b>Database-driven Web pages</b>: الصفحات اللي بتعرض <b>catalogs أو inventories</b> (زي الـ e-commerce) بتتبني من الـ rows اللي في الـ database.' },
+      { en: '<b>Programmatically created pages</b>: a Web page designer may <b>type entries in a database</b>…', ar: 'الـ <b>Programmatically created pages</b>: الـ designer ممكن <b>يكتب entries في database</b>…' },
+      { en: '…<b>drag and drop elements in a layout program</b>…', ar: 'و<b>يعمل drag and drop للعناصر في layout program</b>…' },
+      { en: '…<b>press a button, and generate the HTML</b>…', ar: 'و<b>يدوس زرار فيطلّع الـ HTML</b>…' },
+      { en: '…that <b>displays the Web page</b>. White-box testing checks this inner path: does every database row reach the page correctly ("Bag" with 0 in stock shows "out of stock")? Type your own entry.', ar: 'اللي <b>بيعرض الـ Web page</b>. الـ white-box testing بيختبر الطريق ده من جوه: هل كل row في الـ database بيوصل للصفحة صح؟ (الـ "Bag" اللي الـ stock بتاعه صفر بيظهر "out of stock"). اكتب entry بتاعك.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2800);
+    const extra = i >= 1 ? (mine || ['Lamp', 15, 4]) : null;
+    const rows = extra ? ROWS.concat([extra]) : ROWS;
+    const typed = i === 1 && !calm() ? 'Lamp' : null;
+    const shown = i === 0 || i >= 4 ? rows : ROWS;
+    const lay = i >= 2, gen = i >= 3;
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-db">
+      <div className=${'qv5-box' + (i <= 1 ? ' on' : '')}><b>database: inventory</b><table><thead><tr><th>item</th><th>price</th><th>stock</th></tr></thead>
+        <tbody>${rows.map((r, j) => html`<tr key=${j} className=${j === 3 ? 'new' : ''}><td>${j === 3 && typed ? html`<span className="qv5-in">${r[0]}</span>` : r[0]}</td><td>$${r[1]}</td><td>${r[2]}</td></tr>`)}</tbody></table></div>
+      <div className=${'qv5-box' + (i === 2 ? ' on' : i < 2 ? ' off' : '')}><b>layout program</b><div className="qv5-slots">${['item', 'price', 'stock'].map((s, j) => html`<span key=${s} className="qv5-slot">${lay ? html`<span className="qv5-chip k qv5-in" style=${{ animationDelay: j * .3 + 's' }}>[${s}]</span>` : ''}</span>`)}
+        <span className=${'qv5-chip' + (gen ? ' on' : '') + (i === 3 ? ' qv5-btnpress' : '')}>Generate HTML</span></div></div>
+      <div className=${'qv5-box' + (i === 3 ? ' on' : i < 3 ? ' off' : '')}><b>generated HTML</b><div className="qv5-code">${gen ? rows.map((r, j) => html`<div key=${j}>${'<div class="item">' + r[0] + ' $' + r[1] + '</div>'}</div>`) : '…'}</div></div>
+      <div className=${'qv5-box' + (i === 0 || i === 4 ? ' on' : ' off')}><b>Web page: catalog</b><div className="qv5-cat">${shown.map((r, j) => html`<div key=${j}><b>${r[0]}</b>$${r[1]}${r[2] ? '' : html`<span className="out"> out of stock</span>`}</div>`)}</div></div>
+    </div>
+    ${i === 4 && html`<div className="qv5-add"><input type="text" value=${nm} aria-label="Item name" onInput=${e => setNm(e.target.value)} /><input type="number" min="0" value=${pr} aria-label="Price" style=${{ width: '64px' }} onInput=${e => setPr(e.target.value)} /><button className="fig-btn solid" onClick=${() => setMine([nm.trim() || 'Item', Math.max(0, +pr || 0), 4])}>Add and generate</button></div>`}</div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${{ go: ctl.go, replay: () => { setMine(null); ctl.replay(); } }} /><//>`;
+  }
+
+  /* ── [4.4] slide 19: server performance and loading, simulate up to millions of connections ── */
+  function Load({ ar }) {
+    const [k, setK] = useState(calm() ? 6 : 2);
+    const N = Math.pow(10, k), CAP = 100000, served = Math.min(N, CAP), failed = N - served, pct = Math.min(100, N / CAP * 100);
+    const f = x => x.toLocaleString('en-US');
+    const dots = Math.min(28, 3 + k * 4);
+    const en = `Popular Web sites might receive <b>millions of hits per day</b>, so we simulate millions of connections and downloads to test performance. Simulating <b>${f(N)}</b> connection${N > 1 ? 's' : ''}: ${failed ? `<b>${f(failed)}</b> fail, the server is past its limit.` : 'all are served.'} (This demo server is assumed to handle ${f(CAP)} at once.)`;
+    const a = `المواقع المشهورة ممكن يجيلها <b>ملايين hits في اليوم</b>، فبنعمل simulation لملايين connections و downloads عشان نختبر الـ performance. عاملين simulation لـ <b><bdi>${f(N)}</bdi></b> connection: ${failed ? `فيه <b><bdi>${f(failed)}</bdi></b> فشلوا، الـ server عدّى الحد بتاعه.` : 'كلهم اتخدموا.'} وافترضنا إن الـ server ده بيستحمل <bdi>${f(CAP)}</bdi> في نفس الوقت.`;
+    return html`<${Fig}><div className="fig-stage">
+      <div className="qv5-ld"><div className="qv5-users" aria-hidden="true">${Array.from({ length: dots }, (_, j) => html`<i key=${k + '-' + j} className=${failed && j % 3 === 0 ? 'x' : ''} style=${{ top: (6 + (j * 37) % 96) + 'px', '--d': (2.4 - k * .25) + 's', '--dl': (-(j * .37) % 2) + 's', '--w': 'calc(100cqw - 10px)' }}></i>`)}</div>
+        <div className=${'qv5-srv' + (failed ? ' hot' : '')}>Web server<div className="qv5-meter"><i style=${{ width: pct + '%' }}></i></div><div style=${{ fontWeight: 400, fontSize: '.78rem', marginTop: '3px' }}>load ${pct >= 100 ? '100%+' : pct.toFixed(pct < 1 ? 3 : 0) + '%'}</div></div></div>
+      <div className="qv5-ctl"><label>Simulated connections <input type="range" min="0" max="7" value=${k} onInput=${e => setK(+e.target.value)} onChange=${e => setK(+e.target.value)} aria-label="Simulated connections, power of ten" /></label></div>
+      <div className="qv5-nums2"><div><b>${f(N)}</b>simulated</div><div><b>${f(served)}</b>served</div><div><b style=${{ color: failed ? 'var(--pen)' : 'var(--ink)' }}>${f(failed)}</b>failed</div></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><//>`;
+  }
+
+  /* ── [4.5] slide 19: security tests, denial of service and buffer overflow ── */
+  function Security({ ar }) {
+    const [m, setM] = useState(0), [flood, setFlood] = useState(false), [inp, setInp] = useState('AAAAAAAAAAAA'), [chk, setChk] = useState(false);
+    const t = useTick(350, flood);
+    const fill = flood ? (calm() ? 10 : Math.min(10, t + 1)) : 0;
+    let body, en, a;
+    if (m === 0) {
+      const full = fill >= 10;
+      body = html`<div className="qv5-who"><span className="qv5-bad">attacker</span><span>server: 10 request slots</span><span className="qv5-ok">real user</span></div>
+        <div className="qv5-q">${Array.from({ length: 10 }, (_, j) => html`<i key=${j} className=${j < fill ? 'a' : !flood && j === 0 ? 'u' : ''}></i>`)}</div>
+        <p className="qv5-note">${!flood ? 'normal day: the real user’s request is served' : full ? html`<span className="qv5-bad">all slots busy: the real user’s request is denied</span>` : 'flooding…'}</p>
+        <div className="qv5-modes"><button className="fig-btn solid" onClick=${() => setFlood(f => !f)}>${flood ? 'Stop the flood' : 'Start a flood of requests'}</button></div>`;
+      en = '<b>Denial of service</b>: an attacker floods the server with requests until real users are denied service. The security test sends such a flood and checks whether the site keeps serving its users.';
+      a = 'الـ <b>Denial of service</b>: الـ attacker بيغرق الـ server بـ requests لحد ما الـ users الحقيقيين مايتخدموش. الـ security test بيبعت flood زي ده ويشوف الـ site لسه بيخدم الـ users ولا لأ.';
+    } else {
+      const s = chk ? inp.slice(0, 8) : inp, over = Math.max(0, inp.length - 8);
+      body = html`<div className="qv5-inrow"><label>Input <input type="text" value=${inp} maxLength="12" aria-label="Input" onInput=${e => setInp(e.target.value)} /></label><span>${inp.length} chars</span></div>
+        <div className="qv5-buf">${Array.from({ length: 12 }, (_, j) => html`<i key=${j} className=${j >= 8 ? (j < s.length ? 'ov' : 'nx') : ''}>${s[j] || ''}</i>`)}</div>
+        <div className="qv5-bufl"><span>buffer: 8 characters</span><span>next data in memory</span></div>
+        <div className="qv5-modes" style=${{ marginTop: '8px' }}><button className="fig-btn" aria-pressed=${!chk} onClick=${() => setChk(false)}>No length check</button><button className="fig-btn" aria-pressed=${chk} onClick=${() => setChk(true)}>Checks the length</button></div>
+        <p className="qv5-note">${over ? (chk ? html`<span className="qv5-ok">extra ${over} characters rejected</span>` : html`<span className="qv5-bad">${over} characters overwrite the next data</span>`) : 'fits in the buffer'}</p>`;
+      en = '<b>Buffer overflow</b>: input longer than the space reserved for it spills over and overwrites the data next to it in memory. The security test types over-long input and checks that the site rejects it.';
+      a = 'الـ <b>Buffer overflow</b>: input أطول من المساحة المحجوزة ليه بيطفح ويكتب فوق الـ data اللي جنبه في الـ memory. الـ security test بيدخّل input طويل زيادة ويتأكد إن الـ site بيرفضه.';
+    }
+    return html`<${Fig}><div className="fig-stage">
+      <div className="qv5-modes">${['Denial of service', 'Buffer overflow'].map((x, j) => html`<button key=${x} className="fig-btn" aria-pressed=${j === m} onClick=${() => { setM(j); setFlood(false); }}>${x}</button>`)}</div>${body}</div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><//>`;
+  }
+
+  /* ── [4.6] slides 18 and 20: black, white and gray box on the same page; gray box isolates the defect ── */
+  function BoxView({ ar }) {
+    const steps = [
+      { v: [1, 0, 0], en: '<b>Black-box</b>: the tester sees only the page, as the user does. The graphic shows an <b>error</b>, but why?', ar: 'الـ <b>Black-box</b>: الـ tester شايف الصفحة بس زي الـ user. الـ graphic بيطلّع <b>error</b>، بس ليه؟' },
+      { v: [0, 0, 1], en: '<b>White-box</b>: the tester knows the internal design and working of the system: server code, database, files.', ar: 'الـ <b>White-box</b>: الـ tester عارف الـ internal design وطريقة شغل الـ system من جوه: الـ server code والـ database والـ files.' },
+      { v: [1, 1, 0], en: '<b>Gray-box</b>: a mix of black-box and white-box. The tester works from the user’s view but can also see the page’s HTML and scripts (‡ not on the slides).', ar: 'الـ <b>Gray-box</b>: خليط من الـ black-box والـ white-box. الـ tester بيشتغل من وجهة نظر الـ user بس كمان يقدر يشوف الـ HTML والـ scripts بتوع الصفحة (‡ مش في الـ slides).' },
+      { v: [1, 1, 0], hit: 1, en: 'Its purpose: <b>isolate defects</b> related to bad design or bad implementation. The HTML asks for <b>logo.jpg</b>: the graphic is <b>incorrectly named</b>, a bad implementation, not a bad design.', ar: 'الهدف منه إنه <b>يعزل الـ defects</b> اللي سببها design وحش أو implementation وحش. الـ HTML بيطلب <b>logo.jpg</b>، يعني الـ graphic <b>اسمها غلط</b>، وده implementation وحش مش design وحش.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3000);
+    const st = steps[i], cls = j => 'qv5-pane' + (st.v[j] ? ' on' : ' off');
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-bx">
+      <div className=${cls(0)}><b>what the user sees</b><div style=${{ display: 'flex', gap: '8px', alignItems: 'center' }}><div className="qv5-err" style=${{ flex: 'none', width: '84px' }}>⚠ image error</div><div>Welcome to our site</div></div></div>
+      <div className=${cls(1)}><b>page HTML and scripts</b><div className="qv5-code"><div className=${st.hit ? 'on' : ''}>${'<img src="images/logo.jpg">'}</div><div>${'<p>Welcome to our site</p>'}</div></div></div>
+      <div className=${cls(2)}><b>internal design</b><div className="qv5-files"><span className="qv5-chip">server code</span><span className="qv5-chip">database</span><span className="qv5-chip">images/Logo-new.jpg</span></div></div>
+    </div><div className="qv5-legend">${['Black-box', 'Gray-box', 'White-box'].map((x, j) => html`<span key=${x} className=${'qv5-chip' + ((i === 0 && j === 0) || (i === 1 && j === 2) || (i >= 2 && j === 1) ? ' on' : '')}>${x}</span>`)}</div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [5.0] slide 20: hardware configurations and compatibility factors multiply ── */
+  const HW = ['CPU types', 'RAM', 'Graphics cards', 'Video capture cards', 'Audio cards', 'Monitors/Display devices', 'Network cards'];
+  const CO = ['Font sizes', 'Browsers with CSS', 'Screen resolutions', 'Memory sizes', 'Network environments'];
+  function ConfigCount({ ar }) {
+    const [n, setN] = useState(HW.concat(CO).map(() => 2));
+    const set = (j, d) => setN(a => a.map((v, k) => (k === j ? Math.max(1, Math.min(5, v + d)) : v)));
+    const hw = n.slice(0, 7).reduce((p, v) => p * v, 1), all = n.reduce((p, v) => p * v, 1), f = x => x.toLocaleString('en-US');
+    const row = (name, j) => html`<${React.Fragment} key=${name}><span>${j < 7 ? '(' + (j + 1) + ')' : '(' + (j - 6) + ')'} ${name}</span><span className="qv5-step"><button aria-label=${'Fewer ' + name} onClick=${() => set(j, -1)}>−</button><b>${n[j]}</b><button aria-label=${'More ' + name} onClick=${() => set(j, 1)}>+</button></span><//>`;
+    const en = `Configuration testing checks <b>variances</b> in each piece of hardware; compatibility checking adds font sizes, browsers with CSS, screen resolutions, memory sizes and network environments. Every choice multiplies: <b>${f(hw)}</b> hardware configurations, <b>${f(all)}</b> with the compatibility factors. Change how many variants each factor has.`;
+    const a = `الـ configuration testing بيشوف الـ <b>variances</b> في كل قطعة hardware، والـ compatibility بيزوّد عليها font sizes و browsers with CSS و screen resolutions و memory sizes و network environments. كل اختيار بيضرب في اللي قبله، فبقى عندنا <b><bdi>${f(hw)}</bdi></b> hardware configuration، و <b><bdi>${f(all)}</bdi></b> لما نضيف الـ compatibility. غيّر عدد الـ variants لكل factor.`;
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-fac">
+      <h5>Hardware configurations</h5>${HW.map((x, j) => row(x, j))}
+      <h5>Compatibility</h5>${CO.map((x, j) => row(x, j + 7))}</div>
+      <div className="qv5-total"><code>${n.slice(0, 7).join(' × ')} = ${f(hw)}</code>hardware configurations<b>${f(hw)}</b><code>${f(hw)} × ${n.slice(7).join(' × ')} = ${f(all)}</code>with compatibility<b>${f(all)}</b></div>
+      <div className="qv5-modes" style=${{ marginTop: '8px' }}><button className="fig-btn" onClick=${() => setN(n.map(() => 2))}>↻ 2 variants each</button></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><//>`;
+  }
+
+  /* ── [5.1] slide 20: compatibility, one page under different font sizes, CSS, resolutions, memory, networks ── */
+  function CompatView({ ar }) {
+    const FS = [['Small', .8], ['Normal', 1], ['Large', 1.3]], RS = [['800×600', 62], ['1024×768', 80], ['1920×1080', 100]], CS = ['With CSS', 'No CSS'], MS = ['Low memory', 'High memory'], NS = ['Slow network', 'Fast network'];
+    const [fs, setFs] = useState(1), [rs, setRs] = useState(2), [cs, setCs] = useState(0), [ms, setMs] = useState(1), [ns, setNs] = useState(1), [loaded, setLoaded] = useState(true);
+    useEffect(() => { if (ns === 1 || calm()) { setLoaded(true); return; } setLoaded(false); const t = setTimeout(() => setLoaded(true), 2500); return () => clearTimeout(t); }, [ns, fs, rs, cs, ms]);
+    const sw = (label, opts, v, set) => html`<div className="qv5-sw"><span>${label}</span>${opts.map((o, j) => html`<button key=${j} aria-pressed=${j === v} onClick=${() => set(j)}>${Array.isArray(o) ? o[0] : o}</button>`)}</div>`;
+    const tc = [FS[fs][0] + ' font', CS[cs], RS[rs][0], MS[ms], NS[ns]].join(' · ');
+    const en = 'Compatibility checking: <b>various font sizes</b>, <b>browsers with CSS</b>, <b>various screen resolutions</b>, <b>various memory sizes</b> and <b>different network environments</b>. Every test case is one combination: ' + `<b>${3 * 2 * 3 * 2 * 2}</b> here. Low memory slows the page (the meter shows what is left).`;
+    const a = 'الـ compatibility بيختبر <b>font sizes مختلفة</b> و <b>browsers مع الـ CSS</b> و <b>screen resolutions مختلفة</b> و <b>memory sizes مختلفة</b> و <b>network environments مختلفة</b>. كل test case هو combination واحد، وهنا عندنا ' + `<b><bdi>${3 * 2 * 3 * 2 * 2}</bdi></b>. والـ memory القليلة بتبطّأ الصفحة (الـ meter بيوري الباقي).`;
+    return html`<${Fig}><div className="fig-stage">
+      <div className="qv5-ctrls">${sw('Font size', FS, fs, setFs)}${sw('Browser', CS, cs, setCs)}${sw('Screen resolution', RS, rs, setRs)}${sw('Network', NS, ns, setNs)}${sw('Memory', MS, ms, setMs)}
+        <div className="qv5-sw"><span>Memory left</span><div className="qv5-meter" style=${{ width: '100%' }}><i style=${{ width: ms ? '70%' : '12%', background: ms ? 'var(--k-qa)' : 'var(--pen)' }}></i></div></div></div>
+      <div className="qv5-scr" style=${{ width: RS[rs][1] + '%' }}><div className=${'qv5-site' + (cs ? ' nocss' : '')} style=${{ fontSize: Math.max(.75, .82 * FS[fs][1]) + 'rem' }}>
+        <div className="h">Your Site Name</div><div className="n"><span>Home</span><span>Products</span><span>Contact</span></div>
+        <div className="c"><div className=${'im' + (loaded ? '' : ' load')}>${loaded ? 'graphic' : 'loading…'}</div><p>Web site testing makes sure this page works on every browser and platform.</p></div></div></div>
+      <p className="qv5-tc">test case: ${tc}</p></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><//>`;
+  }
+
+  /* ── [6.0] slide 21: what automatic web testing tools check, and a Cypress-style web application test ── */
+  function Tools({ ar }) {
+    const T = [
+      ['Browser compatibility', 'الـ Browser compatibility', 'the same pages opened in many browsers.', 'نفس الصفحات بتتفتح على browsers كتير.'],
+      ['Load, stress and performance', 'الـ Load والـ stress والـ performance', 'many simulated users at once.', 'users كتير متعملهم simulation في نفس الوقت.'],
+      ['Broken hyperlinks', 'الـ hyperlinks المكسورة', 'every link followed, broken ones reported.', 'كل link بيتمشي عليه، والمكسور بيتسجّل.'],
+      ['Web functional, GUI testing', 'الـ Web functional والـ GUI testing', 'clicks and typing replayed like a user.', 'الضغطات والكتابة بتتعاد زي الـ user.'],
+      ['Spelling on text', 'الـ Spelling في الـ text', 'every word of the text checked.', 'كل كلمة في الـ text بتتراجع.'],
+      ['Security', 'الـ Security', 'attacks tried against the site.', 'هجمات بتتجرب على الـ site.'],
+      ['Database', 'الـ Database', 'the data behind the pages.', 'الـ data اللي ورا الصفحات.'],
+      ['OOP', 'الـ OOP', 'the object-oriented code.', 'الـ object-oriented code.'],
+      ['Network', 'الـ Network', 'the connection between users and the server.', 'الاتصال بين الـ users والـ server.'],
+      ['Web application (Selenium and Cypress)', 'الـ Web application (Selenium و Cypress)', 'a script drives the browser through the form.', 'script بيسوق الـ browser خطوة بخطوة في الـ form.']
+    ];
+    const steps = [{ en: '<b>Tools that automatically check websites</b> for ten kinds of problems.', ar: 'فيه <b>tools بتختبر الـ websites أوتوماتيك</b> في 10 أنواع مشاكل.' }]
+      .concat(T.map(([e, ea, d, da]) => ({ en: `<b>${e}</b>: ${d}`, ar: `الـ tool بتختبر <b>${ea}</b>: ${da}` })));
+    const [i, ctl] = useSteps(steps.length, 1800);
+    const S = ["cy.visit('/signup')", "cy.get('#login').type('JSmith')", "cy.get('#password').type('abc12')", "cy.contains('Submit').click()", "cy.contains('Minimum of 8 characters')"];
+    const [ln, setLn] = useState(0);
+    useEffect(() => { if (i !== T.length) return; if (calm()) { setLn(S.length); return; } setLn(0); const id = setInterval(() => setLn(x => (x >= S.length ? x : x + 1)), 650); return () => clearInterval(id); }, [i]);
+    return html`<${Fig}><div className="fig-stage"><div className="qv5-tools">${T.map(([e], j) => html`<div key=${j} className=${i === j + 1 ? 'on' : i > j + 1 ? 'done' : ''}><i>${i === j + 1 ? html`<span className="qv5-scan">◌</span>` : i > j + 1 ? '✓' : '·'}</i>${e}</div>`)}</div>
+      ${i === T.length && html`<div className="qv5-script"><div className="qv5-code">${S.map((l, j) => html`<div key=${j} className=${j < ln ? '' : 'w'}>${j < ln ? '✓ ' : '  '}${l}</div>`)}</div><p className="qv5-note">a Cypress test on the Gmail-style form: the short password must be rejected</p></div>`}</div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'qa-web-site': WebSite, 'qa-browsers': Browsers, 'qa-page-parts': PageParts, 'qa-link-uses': LinkUses, 'qa-content-forms': ContentForms,
+    'qa-13-elements': Elements13, 'qa-site-map': SiteMap, 'qa-dynamic': Dynamic, 'qa-db-pages': DbPages, 'qa-load': Load, 'qa-security': Security,
+    'qa-box-views': BoxView, 'qa-config-count': ConfigCount, 'qa-compat-view': CompatView, 'qa-web-tools': Tools
+  });
+})();
+/* ── part L6 ── */
+// Software Quality Assurance visuals, Lecture 6 (Software Quality Assurance, SQA): quality factors, SQA vs SQC, testing inside QA,
+// tester and QA duties, ITSM, where a bug report goes in each test organization, metrics vs indicators and the quality indicators (slides 2 to 15).
+// Every label and number comes from the site's notes.
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.qv6 .fig-stage{ padding-left:8px; padding-right:8px; }
+.qv6-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 12px; }
+.qv6-modes .fig-btn[aria-pressed="true"]{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.qv6-def{ max-width:440px; margin:0 auto 12px; border:1.4px solid var(--k-qa); border-radius:10px; background:var(--paper); color:var(--ink); padding:8px 10px; font-size:.88rem; line-height:1.4; text-align:center; }
+.qv6-def b{ color:var(--ink); }
+.qv6-card{ max-width:440px; margin:0 auto 10px; border:1.6px dashed var(--k-qa); border-radius:10px; background:var(--paper); color:var(--ink); padding:10px; text-align:center; font-weight:600; font-size:.95rem; line-height:1.35; min-height:46px; }
+.qv6-card small{ display:block; font-weight:400; font-size:.78rem; color:var(--graphite); margin-bottom:3px; }
+.qv6-card.done{ border-style:solid; border-color:var(--ok); }
+.qv6-bins{ display:grid; gap:6px; max-width:460px; margin:0 auto; }
+.qv6-grp{ text-align:center; font-size:.78rem; color:var(--graphite); border-bottom:2px solid var(--k-qa); padding-bottom:3px; line-height:1.3; }
+.qv6-bin{ font:inherit; text-align:left; border:1.4px solid var(--line); background:var(--paper); color:var(--ink); border-radius:10px; padding:7px 6px; cursor:pointer; min-height:92px; display:flex; flex-direction:column; gap:4px; transition:border-color .3s, box-shadow .3s, background .3s; min-width:0; }
+.qv6-bin:hover{ border-color:var(--k-qa); }
+.qv6-bin > b{ font-size:.84rem; line-height:1.25; text-align:center; display:block; }
+.qv6-bin > span.sub{ font-size:.76rem; line-height:1.25; color:var(--graphite); text-align:center; display:block; }
+.qv6-bin.hit{ border-color:var(--ok); box-shadow:0 0 0 3px color-mix(in srgb, var(--ok) 25%, transparent); }
+.qv6-bin.miss{ border-color:var(--pen); box-shadow:0 0 0 3px color-mix(in srgb, var(--pen) 25%, transparent); }
+.qv6-bin i{ font-style:normal; display:block; font-size:.78rem; line-height:1.25; border-radius:6px; padding:2px 5px; background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); border:1px solid var(--k-qa); animation:qv6in .4s ease both; overflow-wrap:anywhere; }
+.qv6-score{ text-align:center; font-size:.82rem; color:var(--graphite); margin-top:8px; }
+@keyframes qv6in{ from{ opacity:0; transform:translateY(-6px); } to{ opacity:1; transform:none; } }
+.qv6-in{ animation:qv6in .45s ease both; }
+.qv6-grid8{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; max-width:440px; margin:0 auto; }
+.qv6-grid8 button{ font:inherit; font-size:.86rem; font-weight:600; border:1.4px solid var(--line); background:var(--paper); color:var(--ink); border-radius:10px; padding:8px 4px; cursor:pointer; min-height:40px; transition:all .3s; }
+.qv6-grid8 button small{ display:block; font-weight:400; font-size:.76rem; color:var(--graphite); }
+.qv6-grid8 button.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .qv6-grid8 button.on small{ color:rgba(255,255,255,.9); }
+.qv6-grid8 button.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 16%, var(--paper)); }
+.qv6-grid8 button.no{ border-color:var(--pen); background:color-mix(in srgb, var(--pen) 12%, var(--paper)); }
+.qv6-grid8 button.eff{ box-shadow:inset 0 -3px 0 var(--k-qa); }
+.qv6-svg{ max-width:330px !important; }
+.qv6-dot{ animation:qv6flowA 3s ease-in infinite; }
+.qv6-dot.go{ animation-name:qv6flowB; } .qv6-dot.out{ animation-name:qv6flowC; }
+@keyframes qv6flowA{ 0%{ transform:translate(0,0); opacity:0; } 12%{ opacity:1; } 80%{ transform:translate(0,64px); opacity:1; } 100%{ transform:translate(0,68px); opacity:0; } }
+@keyframes qv6flowB{ 0%{ transform:translate(0,0); opacity:0; } 8%{ opacity:1; } 88%{ transform:translate(0,196px); opacity:1; } 100%{ transform:translate(0,200px); opacity:0; } }
+@keyframes qv6flowC{ 0%{ transform:translate(0,0); opacity:0; } 8%{ opacity:1; } 55%{ transform:translate(0,138px); } 88%{ transform:translate(130px,214px); opacity:1; } 100%{ transform:translate(132px,218px); opacity:0; } }
+.qv6-nest{ max-width:440px; margin:0 auto; border:2px solid var(--k-qa); border-radius:14px; padding:8px; background:color-mix(in srgb, var(--k-qa) 8%, var(--paper)); }
+.qv6-nest > b, .qv6-inner > b{ display:block; text-align:center; font-size:.9rem; margin-bottom:6px; color:var(--ink); }
+.qv6-inner{ border:2px dashed var(--s-qa); border-radius:12px; padding:8px; background:var(--paper); margin-top:8px; transition:box-shadow .4s, opacity .4s; }
+.qv6-inner.on, .qv6-nest.on{ box-shadow:0 0 0 3px color-mix(in srgb, var(--k-qa) 30%, transparent); }
+.qv6-chips{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; }
+.qv6-chips span{ border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:99px; padding:3px 9px; font-size:.8rem; line-height:1.3; }
+.qv6-chips span.k{ border-color:var(--k-qa); font-weight:600; }
+.qv6-chips span.p{ border-color:var(--pen); color:var(--pen); font-weight:700; }
+.qv6-tree{ max-width:440px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:0; }
+.qv6-node{ border:1.4px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); padding:7px 10px; font-size:.86rem; line-height:1.35; text-align:center; transition:opacity .45s, transform .45s, border-color .45s, box-shadow .45s; }
+.qv6-node b{ display:block; font-size:.9rem; }
+.qv6-node.root{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .qv6-node.root b{ color:#fff; }
+.qv6-node.on{ border-color:var(--k-qa); box-shadow:0 0 0 3px color-mix(in srgb, var(--k-qa) 25%, transparent); }
+.qv6-node.off{ opacity:0; transform:translateY(6px); }
+.qv6-stem{ width:2px; height:14px; background:var(--graphite); }
+.qv6-two{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; width:100%; position:relative; padding-top:14px; }
+.qv6-two::before{ content:""; position:absolute; top:0; left:25%; right:25%; height:14px; border:2px solid var(--graphite); border-bottom:0; border-radius:6px 6px 0 0; }
+.qv6-goal{ margin:6px 0 0; font-size:.82rem; color:var(--ink); border:1px dashed var(--k-qa); border-radius:99px; padding:3px 10px; text-align:center; }
+.qv6-umb{ max-width:440px; margin:0 auto; }
+.qv6-pill{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; margin-top:8px; }
+.qv6-pill div{ border:1.4px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); padding:7px 6px; font-size:.82rem; line-height:1.3; text-align:center; transition:opacity .45s, border-color .45s, background .45s; }
+.qv6-pill div.on{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); }
+.qv6-pill div.off{ opacity:.25; }
+.qv6-roof{ text-align:center; padding:10px 6px; border-radius:60px 60px 8px 8px; background:var(--s-qa); color:#fff; font-weight:700; font-size:.95rem; }
+.qv6-roof small{ display:block; font-weight:400; font-size:.8rem; color:rgba(255,255,255,.92); }
+.qv6-meter{ margin-top:10px; border:1.4px solid var(--line); border-radius:10px; padding:8px; background:var(--paper); font-size:.82rem; text-align:center; color:var(--ink); }
+.qv6-meter .tr{ height:12px; border-radius:99px; background:var(--paper-2); border:1px solid var(--line); overflow:hidden; margin-top:6px; position:relative; }
+.qv6-meter .tr i{ position:absolute; top:0; bottom:0; left:0; background:var(--k-qa); animation:qv6meter 3.2s ease-in-out infinite alternate; }
+@keyframes qv6meter{ from{ width:15%; } to{ width:90%; } }
+.qv6-chain{ max-width:400px; margin:0 auto; display:flex; flex-direction:column; align-items:stretch; gap:0; }
+.qv6-hop{ display:flex; gap:6px; align-items:stretch; }
+.qv6-box{ flex:1; border:1.4px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); padding:7px 8px; font-size:.86rem; font-weight:600; text-align:center; line-height:1.3; transition:all .4s; position:relative; min-width:0; }
+.qv6-box small{ display:block; font-weight:400; font-size:.76rem; color:var(--graphite); }
+.qv6-box.test{ border-color:var(--k-qa); }
+.qv6-box.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .qv6-box.on small{ color:rgba(255,255,255,.9); }
+.qv6-box.dec::after{ content:"decides"; position:absolute; top:-9px; right:8px; font-size:.72rem; font-weight:700; background:var(--paper); color:var(--pen); border:1px solid var(--pen); border-radius:99px; padding:0 6px; line-height:1.5; }
+.qv6-side{ flex:0 0 36%; border:1px dashed var(--line); border-radius:10px; padding:6px 4px; font-size:.78rem; color:var(--graphite); text-align:center; line-height:1.3; display:flex; align-items:center; justify-content:center; }
+.qv6-up{ text-align:center; color:var(--graphite); font-size:1rem; line-height:1; padding:3px 0; width:64%; }
+.qv6-tok{ display:inline-block; margin-top:4px; font-size:.74rem; font-weight:700; background:var(--paper); color:var(--ink); border:1.3px solid var(--pen); border-radius:6px; padding:1px 6px; animation:qv6in .4s ease both; }
+.qv6-out{ max-width:400px; margin:10px auto 0; display:grid; gap:6px; }
+.qv6-out div{ border-radius:8px; padding:6px 8px; font-size:.82rem; line-height:1.35; color:var(--ink); animation:qv6in .45s ease both; }
+.qv6-out .pro{ border:1.3px solid var(--ok); background:color-mix(in srgb, var(--ok) 12%, var(--paper)); }
+.qv6-out .con{ border:1.3px solid var(--pen); background:color-mix(in srgb, var(--pen) 10%, var(--paper)); }
+.qv6-pool{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; max-width:460px; margin:0 auto; }
+.qv6-pool button{ font:inherit; font-size:.8rem; line-height:1.25; border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:99px; padding:5px 10px; cursor:pointer; min-height:32px; transition:all .3s; }
+.qv6-pool button.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 18%, var(--paper)); font-weight:600; }
+.qv6-pool button.no{ border-color:var(--pen); color:var(--pen); text-decoration:line-through; }
+.qv6-pool button.shown{ border-color:var(--k-qa); border-style:dashed; }
+.qv6-map{ max-width:460px; margin:0 auto; display:grid; gap:8px; }
+.qv6-zone{ border:1.4px solid var(--line); border-radius:10px; background:var(--paper); padding:7px; transition:opacity .45s, border-color .45s, box-shadow .45s; }
+.qv6-zone.on{ border-color:var(--k-qa); box-shadow:0 0 0 3px color-mix(in srgb, var(--k-qa) 22%, transparent); }
+.qv6-zone.dim{ opacity:.4; }
+.qv6-zone > b{ display:block; font-size:.8rem; color:var(--graphite); margin-bottom:5px; text-align:center; font-weight:600; }
+.qv6-phases{ display:flex; align-items:stretch; gap:0; }
+.qv6-ph{ flex:1; border:1.3px solid var(--k-qa); border-radius:8px; padding:4px 2px; text-align:center; font-size:.8rem; color:var(--ink); background:color-mix(in srgb, var(--k-qa) 10%, var(--paper)); min-width:0; }
+.qv6-gate{ flex:0 0 18px; display:flex; align-items:center; justify-content:center; color:var(--pen); font-weight:700; font-size:.9rem; }
+.qv6-tags{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; margin-top:6px; }
+.qv6-tags span{ font-size:.78rem; border-radius:6px; padding:2px 7px; background:var(--s-qa); color:#fff; font-weight:600; line-height:1.35; }
+.qv6-tags span.o{ background:var(--paper); color:var(--ink); border:1.3px solid var(--k-qa); }
+.qv6-board{ max-width:460px; margin:0 auto; }
+.qv6-row{ display:flex; flex-wrap:wrap; gap:5px; align-items:center; justify-content:center; margin-bottom:6px; font-size:.8rem; color:var(--graphite); }
+.qv6-row .fig-btn{ padding:4px 10px; font-size:.82rem; }
+.qv6-row .fig-btn[aria-pressed="true"]{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.qv6-parts{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; }
+.qv6-part{ border:1.4px solid var(--line); border-radius:10px; background:var(--paper); padding:5px; min-height:84px; transition:border-color .4s, box-shadow .4s; min-width:0; }
+.qv6-part > b{ display:block; text-align:center; font-size:.82rem; color:var(--ink); }
+.qv6-part.hot{ border-color:var(--pen); box-shadow:0 0 0 3px color-mix(in srgb, var(--pen) 20%, transparent); }
+.qv6-bugs{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; margin-top:4px; }
+.qv6-bug{ font:inherit; font-size:.76rem; font-weight:700; border-radius:6px; border:1.3px solid var(--pen); background:var(--paper); color:var(--pen); padding:1px 5px; cursor:pointer; min-height:26px; animation:qv6in .35s ease both; }
+.qv6-bug.fixed{ border-color:var(--ok); color:var(--ink); background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.qv6-ind{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; margin-top:10px; }
+.qv6-ind div{ border:1.3px solid var(--line); border-radius:8px; background:var(--paper); padding:5px 6px; font-size:.78rem; line-height:1.3; color:var(--ink); text-align:center; }
+.qv6-ind div b{ display:block; font:700 1.05rem var(--mono); color:var(--ink); }
+.qv6-ind div.w{ grid-column:1 / -1; }
+@media (prefers-reduced-motion: reduce){ .qv6-in, .qv6-bin i, .qv6-tok, .qv6-out div, .qv6-bug{ animation:none; } .qv6-dot{ animation:none; opacity:0; } .qv6-meter .tr i{ animation:none; width:60%; } }`;
+  if (!document.getElementById('qv6-css')) { const s = document.createElement('style'); s.id = 'qv6-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* shared: sort each card into the right box */
+  function Sorter({ ar, items, bins, intro, top, groups, done }) {
+    const [k, setK] = useState(0), [placed, setPlaced] = useState({}), [fb, setFb] = useState(null), [flash, setFlash] = useState(null), [miss, setMiss] = useState(0);
+    const cur = items[k];
+    const pick = b => {
+      if (!cur) return;
+      if (b === cur.bin) {
+        setPlaced(p => Object.assign({}, p, { [b]: (p[b] || []).concat(cur.t) }));
+        setFb({ en: 'Right. ' + cur.why, ar: 'صح. ' + cur.whyAr }); setFlash([b, 'hit']); setK(k + 1);
+      } else {
+        const B = bins.find(x => x.k === b); setMiss(m => m + 1);
+        setFb({ en: 'Not <b>' + B.en + '</b>. Try again.', ar: 'مش في <b>' + B.en + '</b>. جرّب تاني.' }); setFlash([b, 'miss']);
+      }
+    };
+    const reset = () => { setK(0); setPlaced({}); setFb(null); setFlash(null); setMiss(0); };
+    const fin = k >= items.length;
+    const cap = fin ? { en: (fb ? fb.en + '<br>' : '') + done.en, ar: (fb ? fb.ar + '<br>' : '') + done.ar } : (fb || intro);
+    return html`<figure className="fig qv6"><div className="fig-stage">
+      ${top}
+      <div className=${'qv6-card' + (fin ? ' done' : '')}>${fin ? html`<span>All ${items.length} sorted${miss ? ', ' + miss + ' slip' + (miss > 1 ? 's' : '') : ''}.</span>` : html`<span key=${k} className=${calm() ? '' : 'qv6-in'}><small>Card ${k + 1} of ${items.length}: tap the box it belongs in</small>${cur.t}</span>`}</div>
+      <div className="qv6-bins" style=${{ gridTemplateColumns: `repeat(${bins.length}, minmax(0,1fr))` }}>
+        ${groups && groups.map((g, j) => html`<div key=${'g' + j} className="qv6-grp" style=${{ gridColumn: 'span ' + g.span, visibility: g.en ? 'visible' : 'hidden' }} dangerouslySetInnerHTML=${{ __html: g.en || '.' }}></div>`)}
+        ${bins.map(b => html`<button key=${b.k} className=${'qv6-bin' + (flash && flash[0] === b.k ? ' ' + flash[1] : '')} onClick=${() => pick(b.k)}>
+          <b>${b.en}</b>${b.sub && html`<span className="sub">${b.sub}</span>`}${(placed[b.k] || []).map((t, j) => html`<i key=${j}>${t}</i>`)}</button>`)}
+      </div></div>
+      <${Cap} en=${cap.en} ar=${cap.ar} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${reset}>↻ Start over</button></div></figure>`;
+  }
+
+  /* ── [0] quality: directly vs indirectly measurable factors ── */
+  function Measurable({ ar }) {
+    const items = [
+      { t: 'Defects', bin: 'd', why: '<b>Defects</b> are the slide\'s example of a <b>directly measurable</b> factor.', whyAr: 'الـ <b>Defects</b> هي مثال الـ slide على factor <b>directly measurable</b>.' },
+      { t: 'Maintainability', bin: 'i', why: '<b>Maintainability</b> is an <b>indirectly measurable</b> factor.', whyAr: 'الـ <b>Maintainability</b> هي factor <b>indirectly measurable</b>.' },
+      { t: 'Usability', bin: 'i', why: '<b>Usability</b> is an <b>indirectly measurable</b> factor.', whyAr: 'الـ <b>Usability</b> هي كمان factor <b>indirectly measurable</b>.' }
+    ];
+    const bins = [{ k: 'd', en: 'Directly measurable', sub: 'factors' }, { k: 'i', en: 'Indirectly measurable', sub: 'factors' }];
+    const top = html`<div className="qv6-def"><b>Quality</b> = conformance to requirements<br />= the set of attributes valued by end-users</div>`;
+    return html`<${Sorter} ar=${ar} items=${items} bins=${bins} top=${top}
+      intro=${{ en: 'Quality is affected by two kinds of factors. <b>Sort the slide\'s three examples.</b>', ar: 'الـ quality بتتأثر بنوعين من الـ factors. <b>رتّب أمثلة الـ slide التلاتة.</b>' }}
+      done=${{ en: 'Directly measurable: <b>defects</b>. Indirectly measurable: <b>maintainability</b> and <b>usability</b>.', ar: 'الـ directly measurable زي الـ <b>defects</b>، والـ indirectly measurable زي الـ <b>maintainability</b> والـ <b>usability</b>.' }} />`;
+  }
+
+  /* ── [1] the 8 software quality factors: explore, then quiz ── */
+  const F8 = [
+    ['Reliability', 'Performs its intended function accurately.', 'بيأدي الـ function المطلوبة منه بدقة.'],
+    ['Efficiency', 'Optimal use of computing resources.', 'استخدام أمثل للـ computing resources.'],
+    ['Integrity', 'Control over access and security.', 'تحكم في الـ access والـ security.'],
+    ['Usability', 'Effort required to learn and operate the program.', 'المجهود المطلوب عشان تتعلم البرنامج وتشغّله.'],
+    ['Maintainability', 'Effort required to locate and fix errors.', 'المجهود المطلوب عشان تلاقي الـ errors وتصلّحها.'],
+    ['Flexibility', 'Effort required to change the program.', 'المجهود المطلوب عشان تغيّر البرنامج.'],
+    ['Portability', 'Effort required to transfer the program to another system.', 'المجهود المطلوب عشان تنقل البرنامج لـ system تاني.'],
+    ['Reusability', 'Which parts can be used in other applications.', 'أنهي أجزاء ممكن تتستخدم في applications تانية.']
+  ];
+  const ORDER = [4, 0, 6, 2, 5, 1, 7, 3];
+  function EightFactors({ ar }) {
+    const [mode, setMode] = useState('look'), [sel, setSel] = useState(null), [q, setQ] = useState(0), [got, setGot] = useState({}), [wrong, setWrong] = useState(null), [tries, setTries] = useState(0);
+    const switchMode = m => { setMode(m); setSel(null); setQ(0); setGot({}); setWrong(null); setTries(0); };
+    const target = ORDER[q];
+    const answer = j => {
+      if (mode === 'look') { setSel(j); return; }
+      if (q >= 8) return; setTries(t => t + 1);
+      if (j === target) { setGot(g => Object.assign({}, g, { [j]: 1 })); setWrong(null); setQ(q + 1); } else setWrong(j);
+    };
+    let en, a;
+    if (mode === 'look') {
+      if (sel == null) { en = 'Tap a factor to see what it means. The four marked ones all start with <b>"Effort required to…"</b>: they differ only in <i>what</i> the effort is for.'; a = 'دوس على أي factor عشان تشوف معناه. الأربعة اللي عليهم علامة كلهم بيبدأوا بنفس الجملة:<br><span class="ltr"><b>Effort required to…</b></span><br>والفرق بينهم بس في المجهود ده عشان إيه.'; }
+      else { en = `<b>${sel + 1}. ${F8[sel][0]}</b>: ${F8[sel][1]}`; a = `الـ <b>${F8[sel][0]}</b> معناها: ${F8[sel][2]}`; }
+    } else if (q < 8) {
+      en = (wrong != null ? `No, that is <b>${F8[wrong][0]}</b> (${F8[wrong][1].replace(/\.$/, '')}). ` : '') + `Which factor is this? <b>"${F8[target][1]}"</b>`;
+      a = (wrong != null ? `لأ، ده الـ <b>${F8[wrong][0]}</b>. ` : '') + `أنهي factor ده؟ <b>${F8[target][2]}</b>`;
+    } else { en = `All 8 matched in ${tries} taps.`; a = `طابقت الـ 8 كلهم في <bdi>${tries}</bdi> ضغطة.`; }
+    return html`<figure className="fig qv6"><div className="fig-stage">
+      <div className="qv6-modes">
+        <button className="fig-btn" aria-pressed=${mode === 'look'} onClick=${() => switchMode('look')}>Explore</button>
+        <button className="fig-btn" aria-pressed=${mode === 'quiz'} onClick=${() => switchMode('quiz')}>Quiz me</button>
+      </div>
+      ${mode === 'quiz' && html`<div className="qv6-card">${q < 8 ? html`<span key=${q}><small>Meaning ${q + 1} of 8</small>${F8[target][1]}</span>` : html`<span>Done: 8 of 8</span>`}</div>`}
+      <div className="qv6-grid8">${F8.map((f, j) => html`<button key=${j} onClick=${() => answer(j)}
+        className=${[mode === 'look' && sel === j ? 'on' : '', mode === 'quiz' && got[j] ? 'ok' : '', mode === 'quiz' && wrong === j ? 'no' : '', mode === 'look' && j >= 3 && j <= 6 ? 'eff' : ''].join(' ')}>
+        ${j + 1}. ${f[0]}${mode === 'look' && j >= 3 && j <= 6 ? html`<small>Effort required to…</small>` : null}</button>`)}</div>
+      </div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [2] SQA vs SQC: prevention on the process, detection on the product ── */
+  function SqaSqc({ ar }) {
+    const steps = [
+      { en: 'Software is built by a <b>process</b> (following standards and procedures) and comes out as a <b>product</b>.', ar: 'الـ software بيتبني عن طريق <b>process</b> (ماشية على standards و procedures) وبيطلع في الآخر <b>product</b>.' },
+      { en: '<b>SQA (Assurance)</b> watches the <b>process</b>: <b>prevention</b>, proactive. Goal: ensure standards and procedures are applied correctly.', ar: 'الـ <b>SQA (Assurance)</b> بتراقب الـ <b>process</b>: يعني <b>prevention</b> وهي proactive. الهدف إن الـ standards والـ procedures تتطبق صح.' },
+      { en: '<b>SQC (Control)</b> checks the <b>product</b>: <b>detection</b>, reactive. Goal: evaluate product quality and <b>screen out non-compliant items</b>.', ar: 'الـ <b>SQC (Control)</b> بتفحص الـ <b>product</b>: يعني <b>detection</b> وهي reactive. الهدف نقيّم الـ quality بتاعة الـ product و<b>نشيل الـ items اللي مش مطابقة</b>.' },
+      { en: '<b>SQA vs SQC = prevention vs detection</b>: SQA works on <i>how</i> it is made, SQC on <i>what</i> was made. QA is not the same as QC.', ar: 'الفرق <b>prevention vs detection</b>: الـ SQA بتشتغل على الطريقة اللي بنعمل بيها، والـ SQC على اللي اتعمل فعلًا. يعني الـ QA مش هي الـ QC.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3800);
+    const gate = i >= 2, still = calm();
+    const dots = [0, 1, 2, 3, 4, 5].map(j => { const bad = j === 1 || j === 4; return { bad, cls: 'qv6-dot' + (gate ? (bad ? ' out' : ' go') : ''), d: j * 0.5 }; });
+    const A = i === 1 || i === 3, C = i >= 2;
+    return html`<figure className="fig qv6"><div className="fig-stage">
+      <svg className="qv6-svg" viewBox="0 0 300 336" role="img" aria-label="SQA guards the process, SQC screens the product">
+        <defs><marker id="qv6-ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="var(--graphite)" /></marker></defs>
+        <rect x="14" y="10" width="172" height="70" rx="10" fill=${A ? 'color-mix(in srgb, var(--k-qa) 16%, var(--paper))' : 'var(--paper)'} stroke=${A ? 'var(--k-qa)' : 'var(--graphite)'} strokeWidth=${A ? 2.4 : 1.4} />
+        <text x="100" y="38" textAnchor="middle" fontSize="18" fontWeight="700">Process</text>
+        <text x="100" y="62" textAnchor="middle" fontSize="14.5">standards, procedures</text>
+        <path d="M100 82 V116" stroke="var(--graphite)" strokeWidth="1.6" markerEnd="url(#qv6-ar)" />
+        ${!still && dots.map((o, j) => html`<circle key=${'d' + j + (gate ? 'g' : '')} cx="100" cy="86" r="7" className=${o.cls} style=${{ animationDelay: o.d + 's', fill: gate && o.bad ? 'var(--pen)' : 'var(--k-qa)' }} />`)}
+        <rect x="14" y="120" width="172" height="52" rx="10" fill=${C ? 'color-mix(in srgb, var(--k-qa) 16%, var(--paper))' : 'var(--paper)'} stroke=${C ? 'var(--k-qa)' : 'var(--graphite)'} strokeWidth=${C ? 2.4 : 1.4} />
+        <text x="100" y="152" textAnchor="middle" fontSize="18" fontWeight="700">Product</text>
+        <g className=${pop(gate)}>
+          <path d="M100 174 V214" stroke="var(--graphite)" strokeWidth="1.6" />
+          <path d="M14 222 H186" stroke="var(--pen)" strokeWidth="3" strokeDasharray="8 6" />
+          <path d="M100 226 V270" stroke="var(--graphite)" strokeWidth="1.6" markerEnd="url(#qv6-ar)" />
+          <rect x="14" y="274" width="172" height="48" rx="10" fill="color-mix(in srgb, var(--ok) 14%, var(--paper))" stroke="var(--ok)" strokeWidth="1.6" />
+          <text x="100" y="303" textAnchor="middle" fontSize="15">compliant items</text>
+          <text x="240" y="322" textAnchor="middle" fontSize="14" fill="var(--pen)">screened out</text>
+        </g>
+        <g className=${pop(i >= 1)}>
+          <rect x="198" y="10" width="96" height="70" rx="10" fill="var(--s-qa)" />
+          <text x="246" y="32" textAnchor="middle" fontSize="17" fontWeight="700" style=${{ fill: '#fff' }}>SQA</text>
+          <text x="246" y="51" textAnchor="middle" fontSize="13.5" style=${{ fill: '#fff' }}>prevention</text>
+          <text x="246" y="69" textAnchor="middle" fontSize="13.5" style=${{ fill: '#fff' }}>proactive</text>
+          <path d="M198 45 H190" stroke="var(--s-qa)" strokeWidth="3" />
+        </g>
+        <g className=${pop(gate)}>
+          <rect x="198" y="186" width="96" height="70" rx="10" fill="var(--s-qa)" />
+          <text x="246" y="208" textAnchor="middle" fontSize="17" fontWeight="700" style=${{ fill: '#fff' }}>SQC</text>
+          <text x="246" y="227" textAnchor="middle" fontSize="13.5" style=${{ fill: '#fff' }}>detection</text>
+          <text x="246" y="245" textAnchor="middle" fontSize="13.5" style=${{ fill: '#fff' }}>reactive</text>
+          <path d="M198 222 H190" stroke="var(--s-qa)" strokeWidth="3" />
+        </g>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3] software testing sits inside QA ── */
+  function TestInQa({ ar }) {
+    const steps = [
+      { en: 'Software testing is <b>part of SQA</b>: QA is the broader box, testing sits inside it.', ar: 'الـ Software testing <b>جزء من الـ SQA</b>: الـ QA هي الصندوق الأكبر والـ testing جوّاه.' },
+      { en: '<b>Testing</b>: detection-oriented; evaluates spec, design and coding under specified (normal and abnormal) conditions; main goal is to <b>find and report bugs</b>; done by testers.', ar: 'الـ <b>Testing</b> هدفه الاكتشاف (detection-oriented)، بيقيّم الـ spec والـ design والـ coding تحت conditions متحددة (normal و abnormal)، وهدفه الأساسي <b>يلاقي الـ bugs ويبلّغ عنها</b>، والـ testers هما اللي بيعملوه.' },
+      { en: '<b>QA</b>: broader than testing; <b>prevents defects</b>; ensures correct processes, standards and methodologies; uses <b>ISO / CMM</b> models.', ar: 'الـ <b>QA</b> أوسع من الـ testing، و<b>بيمنع الـ defects</b>، وبيضمن إن الـ processes والـ standards والـ methodologies صح، وبيستخدم موديلات <b>ISO / CMM</b>.' },
+      { en: 'In one line: testing <b>detects</b> bugs in the product, QA <b>prevents</b> them through the process.', ar: 'في سطر واحد: الـ testing <b>بيكتشف</b> الـ bugs في الـ product، والـ QA <b>بيمنعها</b> عن طريق الـ process.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3800);
+    const T = ['Evaluates spec, design, coding', 'Normal and abnormal conditions', 'Find and report bugs', 'Done by testers'];
+    const Q = ['Broader than testing', 'Correct processes, standards, methodologies', 'ISO / CMM models'];
+    return html`<figure className="fig qv6"><div className="fig-stage">
+      <div className=${'qv6-nest' + (i === 2 ? ' on' : '')}>
+        <b>Software Quality Assurance (QA)</b>
+        <div className=${'qv6-chips ' + pop(i >= 2)}><span className=${'k' + (i === 3 ? ' p' : '')}>Prevents defects</span>${Q.map(t => html`<span key=${t}>${t}</span>`)}</div>
+        <div className=${'qv6-inner' + (i === 1 ? ' on' : '')}>
+          <b>Software testing <span style=${{ fontWeight: 400, color: 'var(--graphite)' }}>(part of SQA)</span></b>
+          <div className=${'qv6-chips ' + pop(i >= 1)}><span className=${'k' + (i === 3 ? ' p' : '')}>Detection-oriented</span>${T.map(t => html`<span key=${t}>${t}</span>`)}</div>
+        </div>
+      </div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3] who does it: testing or QA? ── */
+  function WhoDoesIt({ ar }) {
+    const t = (x, w, wa) => ({ t: x, bin: 't', why: w, whyAr: wa }), q = (x, w, wa) => ({ t: x, bin: 'q', why: w, whyAr: wa });
+    const items = [
+      t('Execute tests to find bugs', 'It is task (2) of <b>testing</b>.', 'دي مهمة (2) من مهام الـ <b>testing</b>.'),
+      q('Develop standard processes', 'It is a <b>QA</b> task example.', 'ده مثال لمهام الـ <b>QA</b>.'),
+      t('Track bugs through their life cycle', 'It is the <b>tester\'s</b> role.', 'ده دور الـ <b>tester</b>.'),
+      q('Inspect the development process', 'It is a <b>QA</b> responsibility.', 'دي مسؤولية من مسؤوليات الـ <b>QA</b>.'),
+      t('Choose the test implementation approach', 'It is task (1) of <b>testing</b> (the quiz\'s "NOT performed under SQA" answer).', 'دي مهمة (1) من مهام الـ <b>testing</b> (وهي إجابة سؤال الـ quiz بتاع "NOT performed under SQA").'),
+      q('Create guidelines (requirements, design, coding)', 'It is a <b>QA</b> task example.', 'ده مثال لمهام الـ <b>QA</b>.'),
+      t('Convince the development team to fix bugs', 'It is the <b>tester\'s</b> role.', 'ده دور الـ <b>tester</b>.'),
+      q('Find improvements that prevent bugs', 'It is a <b>QA</b> responsibility: prevention.', 'دي مسؤولية الـ <b>QA</b>: الـ prevention.'),
+      t('Prepare verification and validation reports', 'It is task (3) of <b>testing</b>.', 'دي مهمة (3) من مهام الـ <b>testing</b>.'),
+      q('Use checklists for each stage', 'It is a <b>QA</b> task example.', 'ده مثال لمهام الـ <b>QA</b>.'),
+      t('Take responsibility for bugs found', 'It is the <b>tester\'s</b> role.', 'ده دور الـ <b>tester</b>.'),
+      q('Monitor and evaluate processes and testing activities', 'It is a <b>QA</b> responsibility: its scope is larger than the testing team.', 'دي مسؤولية الـ <b>QA</b>: الـ scope بتاعه أكبر من الـ testing team.'),
+      t('Attend project and design review meetings', 'It is task (4) of <b>testing</b>.', 'دي مهمة (4) من مهام الـ <b>testing</b>.'),
+      q('Define quality metrics and criteria', 'It is a <b>QA</b> task example.', 'ده مثال لمهام الـ <b>QA</b>.')
+    ];
+    const bins = [{ k: 't', en: 'Testing / tester', sub: 'tasks and role' }, { k: 'q', en: 'QA', sub: 'responsibilities and tasks' }];
+    return html`<${Sorter} ar=${ar} items=${items} bins=${bins}
+      intro=${{ en: 'Each card is a task, role or responsibility from the slides. <b>Does it belong to testing (the tester) or to QA?</b>', ar: 'كل كارت مهمة أو دور أو مسؤولية من الـ slides. <b>ده تبع الـ testing (الـ tester) ولا تبع الـ QA؟</b>' }}
+      done=${{ en: 'Testing finds, reports and tracks bugs. QA shapes the process: standards, guidelines, checklists, metrics.', ar: 'الـ testing بيلاقي الـ bugs ويبلّغ عنها ويتابعها. والـ QA بيظبط الـ process نفسها: standards و guidelines و checklists و metrics.' }} />`;
+  }
+
+  /* ── [4] ITSM and its two categories ── */
+  function Itsm({ ar }) {
+    const steps = [
+      { en: 'Quality management in IT is often called <b>ITSM</b> (IT Service Management).', ar: 'الـ Quality management في الـ IT غالبًا اسمه <b>ITSM</b> (IT Service Management).' },
+      { en: 'Goal: deliver IT services at an <b>agreed-upon level of quality</b>.', ar: 'الهدف إننا نقدم IT services بـ <b>مستوى quality متفق عليه</b>.' },
+      { en: '<b>IT Service Support</b>: processes for the <b>efficient delivery</b> of IT operational services.', ar: 'الـ <b>IT Service Support</b> هي الـ processes الخاصة بـ <b>التقديم الكفء</b> للـ IT operational services.' },
+      { en: '<b>IT Service Delivery</b>: processes for the <b>long-term planning, control and management</b> of IT services. (Careful: the "delivery" category is the long-term one.)', ar: 'الـ <b>IT Service Delivery</b> هي الـ processes الخاصة بـ <b>الـ planning والـ control والـ management على المدى الطويل</b>. (خلي بالك: الـ category اللي اسمها delivery هي بتاعة المدى الطويل.)' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3400);
+    return html`<figure className="fig qv6"><div className="fig-stage"><div className="qv6-tree">
+      <div className="qv6-node root"><b>ITSM</b>IT Service Management</div>
+      <div className=${'qv6-goal ' + pop(i >= 1)}>goal: an agreed-upon level of quality</div>
+      <div className=${'qv6-two ' + pop(i >= 2)}>
+        <div className=${'qv6-node' + (i === 2 ? ' on' : '')}><b>IT Service Support</b>efficient delivery of IT operational services</div>
+        <div className=${'qv6-node' + (i === 3 ? ' on' : '') + (i >= 3 ? '' : ' off')}><b>IT Service Delivery</b>long-term planning, control and management of IT services</div>
+      </div></div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4] SQA is not just testing ── */
+  function NotJustTesting({ ar }) {
+    const steps = [
+      { en: 'Software quality assurance is <b>not just testing</b>.', ar: 'الـ Software quality assurance <b>مش testing وبس</b>.' },
+      { en: 'It includes <b>establishing standards and software development methodologies</b>.', ar: 'بيشمل إننا <b>نحط standards و software development methodologies</b>.' },
+      { en: 'It includes <b>monitoring and evaluating the development process</b>.', ar: 'وبيشمل إننا <b>نراقب ونقيّم الـ development process</b>.' },
+      { en: 'It includes <b>correcting errors during development and preventing their recurrence</b>.', ar: 'وبيشمل إننا <b>نصلّح الـ errors أثناء الـ development ونمنع إنها تتكرر</b>.' },
+      { en: '<b>Software quality metrics</b> assess the extent to which quality requirements are met.', ar: 'والـ <b>Software quality metrics</b> بتقيس إحنا حققنا الـ quality requirements لحد فين.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 3200);
+    const P = ['Testing', 'Standards and development methodologies', 'Monitor and evaluate the development process', 'Correct errors and prevent recurrence'];
+    return html`<figure className="fig qv6"><div className="fig-stage"><div className="qv6-umb">
+      <div className="qv6-roof">Software Quality Assurance<small>in an organization</small></div>
+      <div className="qv6-pill">${P.map((t, j) => html`<div key=${j} className=${j === 0 ? (i === 0 ? 'on' : '') : (i === j ? 'on' : i > j ? '' : 'off')}>${t}</div>`)}</div>
+      <div className=${'qv6-meter ' + pop(i >= 4)}><b>Software quality metrics</b>: to what extent are the quality requirements met?<div className="tr"><i></i></div></div>
+      </div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5] where a bug report goes in each test organization ── */
+  const PATHS = [
+    { name: '1. Small team', nodes: [['Testers', '', true], ['Development Manager', 'also manages the Programmers', false, true]],
+      hops: [{ en: '<b>Small team</b>: the testers find a bug and write a bug report.', ar: 'في الـ <b>Small team</b>: الـ testers لقوا bug وكتبوا bug report.' },
+        { en: 'The report goes straight to the <b>Development Manager</b>, who also runs the programmers: <b>fast communication</b> between developers and testers.', ar: 'الـ report بيروح على طول للـ <b>Development Manager</b> اللي هو كمان مدير الـ programmers، فالتواصل بين الـ developers والـ testers <b>سريع</b>.' },
+        { en: 'He decides. If he is not experienced, he <b>may ignore the bug report</b> to push the team to deliver.', ar: 'هو اللي بيقرر. ولو مش experienced ممكن <b>يطنّش الـ bug report</b> عشان يخلي الـ team يسلّم.' }],
+      pro: 'Fast communication between developers and testers.', con: 'An inexperienced development manager may ignore bug reports to push delivery.' },
+    { name: '2. Independent team', nodes: [['Testers', '', true], ['Test Manager / Test Lead', '', true], ['Project Manager', 'also hears the Development Manager', false, true]],
+      hops: [{ en: '<b>Independent test team</b>: the testers find a bug and write a bug report.', ar: 'في الـ <b>Independent test team</b>: الـ testers لقوا bug وكتبوا bug report.' },
+        { en: 'It goes to their own <b>Test Manager / Test Lead</b>, not to the development manager.', ar: 'الـ report بيروح للـ <b>Test Manager / Test Lead</b> بتاعهم، مش للـ development manager.' },
+        { en: 'The test manager takes it to the <b>Project Manager</b>: the testing team\'s <b>feedback is considered</b> in decision-making.', ar: 'الـ test manager بيوصّله للـ <b>Project Manager</b>، فالـ feedback بتاع الـ testing team <b>بيتاخد في الاعتبار</b> في القرارات.' },
+        { en: 'But the <b>final decision lies with the project manager</b>, which may affect quality in critical projects.', ar: 'بس <b>القرار الأخير في إيد الـ project manager</b>، وده ممكن يأثر على الـ quality في المشاريع الـ critical.' }],
+      pro: 'The testing team\'s feedback is considered in decision-making.', con: 'The final decision lies with the project manager; may affect quality in critical projects.' },
+    { name: '3. Reports to executive', nodes: [['QA / Test Managers', 'beside the Development and Project Managers', true], ['Executive Manager', 'senior management', false, true]],
+      hops: [{ en: '<b>Test group reporting to executive management</b>: the QA/Test Managers sit beside the development and project managers, not under them (<b>independence of the quality team</b>).', ar: 'في الـ <b>Test group reporting to executive management</b>: الـ QA/Test Managers جنب الـ development والـ project managers مش تحتهم، يعني <b>الـ quality team مستقل</b>.' },
+        { en: 'Their <b>quality reports reach senior management directly</b>: the Executive Manager.', ar: 'والـ <b>quality reports بتاعتهم بتوصل للـ senior management على طول</b>، يعني للـ Executive Manager.' }],
+      pro: 'Independence of the quality team; quality reports reach senior management directly.', con: null }
+  ];
+  function BugPathRun({ ar, p }) {
+    const P = PATHS[p], last = P.nodes.length;
+    const steps = P.hops;
+    const [i, ctl] = useSteps(steps.length, 3000);
+    const at = Math.min(i, last - 1), end = i === steps.length - 1;
+    const rows = P.nodes.map((n, j) => ({ n, j })).reverse();
+    return html`<div>
+      <div className="fig-stage"><div className="qv6-chain">
+        ${rows.map(({ n, j }) => html`<div key=${j}>
+          <div className="qv6-hop">
+            <div className=${'qv6-box' + (n[2] ? ' test' : '') + (j === at ? ' on' : '') + (n[3] && end ? ' dec' : '')}>${n[0]}${j === at ? html`<br /><span className="qv6-tok" key=${'t' + i}>bug report</span>` : null}</div>
+            ${n[1] ? html`<div className="qv6-side">${n[1]}</div>` : null}
+          </div>
+          ${j > 0 ? html`<div className="qv6-up" aria-hidden="true">↑</div>` : null}
+        </div>`)}
+      </div>
+      ${end && html`<div className="qv6-out"><div className="pro"><b>Pros</b>: ${P.pro}</div>${P.con && html`<div className="con"><b>Cons</b>: ${P.con}</div>`}</div>`}
+      </div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></div>`;
+  }
+  function BugPath({ ar }) {
+    const [p, setP] = useState(0);
+    return html`<figure className="fig qv6"><div className="fig-stage" style=${{ paddingBottom: 0 }}><div className="qv6-modes" style=${{ marginBottom: 0 }}>
+      ${PATHS.map((x, j) => html`<button key=${j} className="fig-btn" aria-pressed=${p === j} onClick=${() => setP(j)}>${x.name}</button>`)}</div></div>
+      <${BugPathRun} key=${p} ar=${ar} p=${p} /></figure>`;
+  }
+
+  /* ── [6] metrics (product / process) vs indicators: sort the slide's examples ── */
+  function MetricTree({ ar }) {
+    const items = [
+      { t: 'Code size', bin: 'pd', why: '<b>Code size</b> is a product metric: it measures the final product.', whyAr: 'الـ <b>Code size</b> هي product metric: بتقيس الـ final product.' },
+      { t: 'Number of detected bugs', bin: 'in', why: '<b>Number of detected bugs</b> is an indicator: a variable reflecting the process outcome.', whyAr: 'الـ <b>Number of detected bugs</b> ده indicator: variable بيعكس نتيجة الـ process.' },
+      { t: 'Time taken', bin: 'pc', why: '<b>Time taken</b> is a process metric: it measures the development process.', whyAr: 'الـ <b>Time taken</b> هي process metric: بتقيس الـ development process.' },
+      { t: 'Number of documented pages', bin: 'pd', why: '<b>Number of documented pages</b> is a product metric.', whyAr: 'الـ <b>Number of documented pages</b> هي product metric.' },
+      { t: 'Development methodology', bin: 'pc', why: '<b>Development methodology</b> is a process metric.', whyAr: 'الـ <b>Development methodology</b> هي process metric.' }
+    ];
+    const bins = [{ k: 'pd', en: 'Product metrics', sub: 'the final product' }, { k: 'pc', en: 'Process metrics', sub: 'the development process' }, { k: 'in', en: 'Indicators', sub: 'process outcomes' }];
+    const groups = [{ span: 2, en: '<b>Metrics</b>: rules for measuring software attributes' }, { span: 1, en: '<b>Indicators</b>: variables' }];
+    return html`<${Sorter} ar=${ar} items=${items} bins=${bins} groups=${groups}
+      intro=${{ en: 'Metrics are <b>rules</b> for measuring software attributes (code size, complexity); indicators are <b>variables</b> reflecting process outcomes. <b>Sort the slide\'s examples.</b>', ar: 'الـ metrics هي <b>rules</b> لقياس الـ software attributes (زي حجم الـ code والـ complexity)، والـ indicators هي <b>variables</b> بتعكس نتايج الـ process. <b>رتّب أمثلة الـ slide.</b>' }}
+      done=${{ en: 'Product metrics: code size, documented pages. Process metrics: time taken, methodology. Indicator: number of detected bugs.', ar: 'الـ product metrics فيها حجم الـ code وعدد الصفحات الموثقة، والـ process metrics فيها الوقت والـ methodology، والـ indicator هو عدد الـ bugs اللي اتكشفت.' }} />`;
+  }
+
+  /* ── [6] pick the 9 common metrics out of the metrics + indicators ── */
+  const METRICS = ['Code coverage', 'Bugs per line of code', 'Cyclomatic complexity', 'Function point analysis', 'Number of classes and interfaces', 'Cohesion', 'Coupling', 'Order of growth', 'Source lines of code'];
+  const INDIC = [['Progress', 'work done by the developer in each phase'], ['Stability', 'whether each phase\'s products are stable enough to proceed'], ['Process compliance', 'obedience to the procedures approved at project start'], ['Quality evaluation effort', 'effort spent on internal quality evaluation'], ['Defect detection efficiency', 'how many defects were detected in a phase'], ['Defect removal rate', 'defects detected AND resolved over a period'], ['Defect age profile', 'defects NOT resolved over a period'], ['Defect density', 'identifies defect-prone parts of the system'], ['Complexity', 'complexity of the code in a program']];
+  const CHIPS = (() => { const out = [], mi = [0, 2, 4, 6, 8, 1, 3, 5, 7], ii = [8, 0, 4, 2, 6, 1, 7, 3, 5]; for (let j = 0; j < 9; j++) { out.push({ t: METRICS[mi[j]], m: true }); out.push({ t: INDIC[ii[j]][0], m: false, d: INDIC[ii[j]][1] }); } return out; })();
+  function PickMetrics({ ar }) {
+    const [st, setSt] = useState({}), [msg, setMsg] = useState(null), [show, setShow] = useState(false);
+    const found = CHIPS.filter((c, j) => c.m && st[j]).length;
+    const tap = j => { const c = CHIPS[j]; if (st[j]) return; setSt(s => Object.assign({}, s, { [j]: c.m ? 'ok' : 'no' }));
+      setMsg(c.m ? { en: `Yes: <b>${c.t}</b> is one of the 9 common metrics.`, ar: `أيوه: الـ <b>${c.t}</b> واحدة من الـ 9 metrics المشهورين.` }
+        : { en: `No: <b>${c.t}</b> is a quality <b>indicator</b> (${c.d}).` + (c.t === 'Complexity' ? ' Watch out: the metric is <b>cyclomatic</b> complexity.' : ''), ar: `لأ: الـ <b>${c.t}</b> ده <b>indicator</b> مش metric.` + (c.t === 'Complexity' ? ' خلي بالك: الـ metric اسمها <b>cyclomatic</b> complexity.' : '') }); };
+    const reset = () => { setSt({}); setMsg(null); setShow(false); };
+    const m = found === 9 ? { en: 'All <b>9 metrics</b> found. The rest are the 9 software quality indicators of the next section.', ar: 'لقيت الـ <b>9 metrics</b> كلهم. والباقيين هما الـ 9 software quality indicators بتوع الـ section اللي جاي.' } : msg || { en: 'The slides list <b>9 common metrics</b> and <b>9 quality indicators</b>. They are mixed here: <b>tap only the 9 metrics</b>.', ar: 'الـ slides فيها <b>9 metrics مشهورين</b> و<b>9 quality indicators</b>. هنا متلخبطين مع بعض: <b>دوس على الـ 9 metrics بس</b>.' };
+    return html`<figure className="fig qv6"><div className="fig-stage">
+      <div className="qv6-pool">${CHIPS.map((c, j) => html`<button key=${j} className=${st[j] || (show && c.m ? 'shown' : '')} onClick=${() => tap(j)}>${c.t}</button>`)}</div>
+      <p className="qv6-score">Metrics found: <b>${found}</b> / 9</p></div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span>
+        <button className="fig-btn" onClick=${() => setShow(true)} disabled=${show}>Show the 9</button>
+        <button className="fig-btn" onClick=${reset}>↻ Start over</button></div></figure>`;
+  }
+
+  /* ── [7] the 9 software quality indicators, placed on the project ── */
+  function IndicatorMap({ ar }) {
+    const steps = [
+      { en: 'The slide lists <b>9 software quality indicators</b>. Each one looks at a different part of the project.', ar: 'الـ slide فيها <b>9 software quality indicators</b>. كل واحد بيبص على جزء مختلف من المشروع.' },
+      { en: '<b>Per phase</b>: <b>Progress</b> measures the work done by the developer in each phase; <b>Defect detection efficiency</b> measures how many defects were detected in a phase.', ar: '<b>في كل phase</b>: الـ <b>Progress</b> بيقيس الشغل اللي الـ developer عمله في كل phase، والـ <b>Defect detection efficiency</b> بيقيس كام defect اتكشف في الـ phase.' },
+      { en: '<b>Between phases</b>: <b>Stability</b> evaluates whether the products of each phase are stable enough to proceed to the next phase.', ar: '<b>بين الـ phases</b>: الـ <b>Stability</b> بيقيّم هل الـ products بتاعة كل phase مستقرة كفاية إننا نكمّل للـ phase اللي بعدها.' },
+      { en: '<b>The developer\'s way of working</b>: <b>Process compliance</b> (obedience to the procedures approved at the start of the project) and <b>Quality evaluation effort</b> (effort spent on internal quality evaluation).', ar: '<b>طريقة شغل الـ developer</b>: الـ <b>Process compliance</b> (الالتزام بالـ procedures اللي اتوافق عليها في أول المشروع) والـ <b>Quality evaluation effort</b> (المجهود اللي بيتصرف على الـ internal quality evaluation).' },
+      { en: '<b>Over a period of time</b>: <b>Defect removal rate</b> counts defects detected <b>and resolved</b>; <b>Defect age profile</b> counts defects <b>not resolved</b>.', ar: '<b>على مدة زمنية</b>: الـ <b>Defect removal rate</b> بيعد الـ defects اللي اتكشفت <b>واتحلت</b>، والـ <b>Defect age profile</b> بيعد الـ defects اللي <b>لسه ماتحلتش</b>.' },
+      { en: '<b>In the code and the system</b>: <b>Defect density</b> identifies the defect-prone parts of the system; <b>Complexity</b> measures the complexity of the code in a program.', ar: '<b>في الـ code والـ system</b>: الـ <b>Defect density</b> بيحدد الأجزاء اللي فيها defects كتير، والـ <b>Complexity</b> بيقيس الـ complexity بتاعة الـ code في البرنامج.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 4200);
+    const z = k => 'qv6-zone' + (i === k ? ' on' : i > 0 && i < k ? ' dim' : '');
+    const zp = 'qv6-zone' + (i === 1 || i === 2 ? ' on' : '');
+    return html`<figure className="fig qv6"><div className="fig-stage"><div className="qv6-map">
+      <div className=${zp}><b>The phases</b>
+        <div className="qv6-phases"><div className="qv6-ph">Phase</div><div className="qv6-gate" style=${{ opacity: i >= 2 ? 1 : .3 }}>▸</div><div className="qv6-ph">Phase</div><div className="qv6-gate" style=${{ opacity: i >= 2 ? 1 : .3 }}>▸</div><div className="qv6-ph">Phase</div></div>
+        <div className=${'qv6-tags ' + pop(i >= 1)}><span>Progress</span><span>Defect detection efficiency</span></div>
+        <div className=${'qv6-tags ' + pop(i >= 2)}><span className="o">▸ Stability (ready for the next phase?)</span></div></div>
+      <div className=${z(3)}><b>The developer's process</b><div className=${'qv6-tags ' + pop(i >= 3)}><span>Process compliance</span><span>Quality evaluation effort</span></div></div>
+      <div className=${z(4)}><b>Over a period of time</b><div className=${'qv6-tags ' + pop(i >= 4)}><span>Defect removal rate: resolved</span><span className="o">Defect age profile: not resolved</span></div></div>
+      <div className=${z(5)}><b>The code and the system</b><div className=${'qv6-tags ' + pop(i >= 5)}><span>Defect density</span><span>Complexity</span></div></div>
+      </div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [7] try your own defect log: the defect indicators computed from it ── */
+  const PARTS = ['Part A', 'Part B', 'Part C'];
+  function DefectBoard({ ar }) {
+    const [log, setLog] = useState([]), [ph, setPh] = useState(1);
+    const add = p => { setLog(l => l.concat({ id: l.length + 1, p, ph, fixed: false })); };
+    const flip = id => { setLog(l => l.map(d => d.id === id ? Object.assign({}, d, { fixed: !d.fixed }) : d)); };
+    const resolved = log.filter(d => d.fixed).length, open = log.length - resolved;
+    const per = PARTS.map((_, j) => log.filter(d => d.p === j).length), top = Math.max(0, ...per);
+    const hot = top > 0 && per.filter(x => x === top).length === 1 ? per.indexOf(top) : -1;
+    const inPh = log.filter(d => d.ph === ph).length;
+    let en, a;
+    if (!log.length) { en = '<b>Try your own:</b> pick a phase, then tap <b>+ bug</b> under a part of the system to log a detected defect. Tap a logged bug to mark it resolved.'; a = '<b>جرّب بنفسك:</b> اختار phase، وبعدين دوس على زرار الـ <b>bug</b> اللي عليه علامة زائد تحت جزء من الـ system عشان تسجّل defect اتكشف. ودوس على أي bug عشان تعلّمه إنه اتحل.'; }
+    else { en = `Defect removal rate counts the <b>${resolved}</b> detected and resolved; defect age profile counts the <b>${open}</b> not resolved. Defect detection efficiency for phase ${ph}: <b>${inPh}</b> detected.` + (hot >= 0 ? ` Defect density points at <b>${PARTS[hot]}</b> as the defect-prone part.` : '');
+      a = `الـ Defect removal rate بيعد الـ defects اللي اتكشفت واتحلت وعددهم <bdi>${resolved}</bdi>، والـ Defect age profile بيعد اللي ماتحلتش وعددهم <bdi>${open}</bdi>. والـ Defect detection efficiency في الـ phase رقم <bdi>${ph}</bdi> عدده <bdi>${inPh}</bdi>.` + (hot >= 0 ? ` والـ Defect density بيشاور على <bdi>${PARTS[hot]}</bdi> إنه الجزء اللي فيه defects كتير.` : ''); }
+    return html`<figure className="fig qv6"><div className="fig-stage"><div className="qv6-board">
+      <div className="qv6-row">Detected in: ${[1, 2, 3].map(n => html`<button key=${n} className="fig-btn" aria-pressed=${ph === n} onClick=${() => setPh(n)}>Phase ${n}</button>`)}</div>
+      <div className="qv6-parts">${PARTS.map((t, j) => html`<div key=${j} className=${'qv6-part' + (hot === j ? ' hot' : '')}><b>${t}</b>
+        <div className="qv6-bugs">${log.filter(d => d.p === j).map(d => html`<button key=${d.id} className=${'qv6-bug' + (d.fixed ? ' fixed' : '')} onClick=${() => flip(d.id)} aria-label=${'bug ' + d.id + (d.fixed ? ' resolved' : ' open')}>${d.fixed ? '✓' : '✕'}P${d.ph}</button>`)}</div>
+        <div style=${{ textAlign: 'center', marginTop: '5px' }}><button className="fig-btn" style=${{ padding: '2px 8px' }} onClick=${() => add(j)}>+ bug</button></div></div>`)}</div>
+      <div className="qv6-ind">
+        <div>Defect removal rate<b>${resolved}</b>detected and resolved</div>
+        <div>Defect age profile<b>${open}</b>not resolved</div>
+        <div>Detection efficiency<b>${inPh}</b>detected in phase ${ph}</div>
+        <div>Defect density<b>${hot >= 0 ? PARTS[hot] : '–'}</b>most defect-prone part</div>
+      </div></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => { setLog([]); }} disabled=${!log.length}>↻ Clear</button></div></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'qa-measurable': Measurable, 'qa-eight-factors': EightFactors, 'qa-sqa-sqc': SqaSqc, 'qa-test-in-qa': TestInQa, 'qa-who-does-it': WhoDoesIt,
+    'qa-itsm': Itsm, 'qa-not-just-testing': NotJustTesting, 'qa-bug-path': BugPath, 'qa-metric-tree': MetricTree, 'qa-pick-metrics': PickMetrics,
+    'qa-indicator-map': IndicatorMap, 'qa-defect-board': DefectBoard
+  });
+})();
+/* ── part L7 ── */
+// Software Quality Assurance visuals, Lecture 7 (Maturity Model and Quality Standards): the why of maturity models, CMM origin and uses, no-skipping climb,
+// the 6 CMM components, Table 1 as a self-assessment, the 5 KPA aspects, CMM benefits, ISO 9000 overview, the 20 elements and 8 principles (tour and quiz),
+// software engineering standards over time and SPICE (slides 2 to 15). Every label and number comes from the site's notes.
+(function () {
+  const { useState, useEffect } = React;
+  const { html, useSteps, Cap, Bar, calm } = window.FIGKIT;
+  const CSS = `
+.qv7 .fig-dots i.on{ background:var(--k-qa); } .qv7 .fig-btn:hover{ border-color:var(--k-qa); } .qv7 .fig-btn.solid{ background:var(--s-qa); color:#fff; }
+.qv7-many .fig-dots{ flex-wrap:wrap; row-gap:5px; min-width:0; flex:1 1 120px; }
+.qv7 .fig-stage{ padding-left:8px; padding-right:8px; }
+.qv7-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.qv7-modes .fig-btn[aria-pressed="true"]{ background:var(--s-qa); color:#fff; border-color:transparent; }
+.qv7-col{ display:flex; flex-direction:column; gap:6px; max-width:460px; margin:0 auto; }
+.qv7-box{ border:1.4px solid var(--line); background:var(--paper); color:var(--ink); border-radius:9px; padding:7px 10px; font-size:.86rem; line-height:1.35; transition:background .5s ease, border-color .5s ease, opacity .5s ease, color .5s ease, box-shadow .5s ease; overflow-wrap:anywhere; min-width:0; }
+.qv7-box b.t{ display:block; font-size:.9rem; }
+.qv7-box small{ display:block; font-size:.8rem; line-height:1.35; color:var(--graphite); margin-top:2px; }
+.qv7-box.done{ background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); border-color:var(--k-qa); }
+.qv7-box.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .qv7-box.on small{ color:rgba(255,255,255,.92); }
+.qv7-box.wait{ opacity:.3; }
+.qv7-box.bad{ border:1.6px dashed var(--pen); color:var(--pen); font-weight:600; }
+.qv7-box.c{ text-align:center; }
+.qv7-arr{ text-align:center; color:var(--graphite); font-size:.8rem; line-height:1.25; transition:opacity .5s ease; }
+.qv7-arr i{ font-style:normal; font-size:1rem; color:var(--k-qa); display:block; line-height:1; }
+.qv7-arr.wait{ opacity:.25; }
+.qv7-row{ display:grid; grid-template-columns:repeat(var(--qv7n, 3), minmax(0, 1fr)); gap:6px; }
+.qv7-chips{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; }
+.qv7-chip{ border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:99px; padding:3px 9px; font-size:.8rem; line-height:1.3; transition:all .45s ease; }
+.qv7-chip.k{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); }
+.qv7-chip.bad{ border-color:var(--pen); border-style:dashed; color:var(--pen); }
+.qv7-chip.wait{ opacity:.3; }
+.qv7-in{ animation:qv7in .5s ease both; }
+@keyframes qv7in{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+.qv7-shake{ animation:qv7shake .45s ease; }
+@keyframes qv7shake{ 20%{ transform:translateX(-6px); } 40%{ transform:translateX(6px); } 60%{ transform:translateX(-4px); } 80%{ transform:translateX(3px); } }
+/* staircase */
+.qv7-stairs{ display:flex; flex-direction:column; gap:5px; max-width:420px; margin:0 auto; }
+.qv7-st{ font:inherit; text-align:left; cursor:pointer; border:1.4px solid var(--line); background:var(--paper); color:var(--ink); border-radius:8px; padding:6px 9px; font-size:.84rem; line-height:1.3; min-height:40px; transition:background .45s ease, border-color .45s ease, opacity .45s ease, color .45s ease; }
+.qv7-st small{ display:block; font-size:.78rem; color:var(--graphite); }
+.qv7-st.done{ background:color-mix(in srgb, var(--k-qa) 14%, var(--paper)); border-color:var(--k-qa); }
+.qv7-st.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .qv7-st.on small{ color:rgba(255,255,255,.92); }
+.qv7-st.up{ opacity:.6; } .qv7-st.no{ border-color:var(--pen); border-style:dashed; opacity:1; }
+.qv7-here{ float:right; font-size:.78rem; font-weight:700; border-radius:99px; padding:0 7px; background:var(--paper); color:var(--s-qa); margin-left:6px; }
+/* Table 1 checklist */
+.qv7-res{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:3px; max-width:420px; margin:0 auto 4px; }
+.qv7-res span{ height:10px; border-radius:3px; background:var(--paper); border:1px solid var(--line); transition:background .45s ease; }
+.qv7-res span.on{ background:var(--s-qa); border-color:var(--s-qa); }
+.qv7-lvtxt{ text-align:center; font-weight:700; font-size:.92rem; color:var(--ink); margin-bottom:8px; }
+.qv7-lv{ border:1.4px solid var(--line); border-radius:9px; background:var(--paper); padding:6px 8px; transition:border-color .45s ease, background .45s ease; }
+.qv7-lv.ok{ border-color:var(--k-qa); background:color-mix(in srgb, var(--k-qa) 10%, var(--paper)); }
+.qv7-lv.blk{ border-color:var(--pen); border-style:dashed; }
+.qv7-lv h5{ margin:0 0 5px; font-size:.84rem; line-height:1.3; color:var(--ink); display:flex; gap:6px; flex-wrap:wrap; align-items:baseline; }
+.qv7-tag{ font-size:.76rem; font-weight:700; border-radius:99px; padding:0 7px; border:1px solid var(--line); color:var(--graphite); }
+.qv7-tag.ok{ border-color:var(--ok); color:var(--ok); } .qv7-tag.blk{ border-color:var(--pen); color:var(--pen); }
+.qv7-tog{ font:inherit; font-size:.8rem; line-height:1.3; text-align:left; cursor:pointer; border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:4px 8px; min-height:30px; transition:all .3s ease; }
+.qv7-tog[aria-pressed="true"]{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; }
+.qv7-tog[aria-pressed="true"]::before{ content:"✓ "; }
+.qv7-togs{ display:flex; flex-wrap:wrap; gap:4px; }
+/* tiles (20 elements, 8 principles) */
+.qv7-tiles{ display:grid; grid-template-columns:repeat(var(--qv7c, 4), minmax(0,1fr)); gap:5px; max-width:560px; margin:0 auto; }
+@media (max-width:520px){ .qv7-tiles{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+.qv7-tile{ font:inherit; font-size:.8rem; line-height:1.25; text-align:left; cursor:pointer; border:1.3px solid var(--line); background:var(--paper); color:var(--ink); border-radius:7px; padding:5px 6px; display:flex; gap:5px; align-items:flex-start; min-width:0; overflow-wrap:anywhere; transition:background .4s ease, border-color .4s ease, color .4s ease; }
+.qv7-tile .n{ flex:none; min-width:20px; height:20px; border-radius:99px; display:grid; place-items:center; font-size:.78rem; font-weight:700; background:color-mix(in srgb, var(--k-qa) 20%, var(--paper)); color:var(--ink); }
+.qv7-tile.done{ border-color:var(--k-qa); }
+.qv7-tile.on{ background:var(--s-qa); border-color:var(--s-qa); color:#fff; } .qv7-tile.on .n{ background:rgba(255,255,255,.25); color:#fff; }
+.qv7-tile.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.qv7-tile.no{ border-color:var(--pen); border-style:dashed; }
+.qv7-score{ font-size:.84rem; color:var(--graphite); }
+.qv7-q{ max-width:560px; margin:0 auto 8px; border:1.4px solid var(--k-qa); border-radius:9px; background:var(--paper); padding:7px 10px; font-size:.86rem; line-height:1.4; color:var(--ink); }
+.qv7-q b{ display:block; font-size:.8rem; color:var(--graphite); }
+/* SPICE letters */
+.qv7-ac{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:4px 8px; align-items:center; max-width:360px; margin:0 auto; }
+.qv7-ac .L{ width:34px; height:34px; border-radius:8px; display:grid; place-items:center; font-weight:800; font-size:1.1rem; background:var(--s-qa); color:#fff; }
+.qv7-ac .w{ font-size:.92rem; font-weight:600; color:var(--ink); transition:opacity .5s ease, transform .5s ease; }
+.qv7-ac .w.off{ opacity:0; transform:translateX(-8px); }
+.qv7-ac .w u{ text-decoration:none; color:var(--k-qa); font-weight:800; }
+.qv7-ac .for{ grid-column:2; font-size:.8rem; color:var(--graphite); font-style:italic; }
+/* timeline */
+.qv7-tl{ position:relative; max-width:440px; margin:0 auto; padding-left:64px; display:flex; flex-direction:column; gap:7px; }
+.qv7-tl::before{ content:""; position:absolute; left:51px; top:4px; bottom:4px; width:2px; background:var(--line); }
+.qv7-yr{ position:absolute; left:-64px; width:38px; text-align:right; font-weight:800; font-size:.86rem; color:var(--k-qa); top:7px; }
+.qv7-tl .qv7-box{ position:relative; }
+.qv7-tl .qv7-box::before{ content:""; position:absolute; left:-19px; top:11px; width:10px; height:10px; border-radius:50%; background:var(--paper); border:2px solid var(--line); }
+.qv7-tl .qv7-box.on::before, .qv7-tl .qv7-box.done::before{ background:var(--k-qa); border-color:var(--k-qa); }
+.qv7-shift{ display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:6px; align-items:center; }
+.qv7-shift .mv{ font-size:1.2rem; color:var(--k-qa); }
+.qv7-shift .mv.go{ animation:qv7go 1.4s ease-in-out infinite; }
+@keyframes qv7go{ 0%,100%{ transform:translateX(-3px); } 50%{ transform:translateX(4px); } }
+.qv7-sq{ display:grid; grid-template-columns:repeat(10, minmax(0,1fr)); gap:3px; margin-top:5px; }
+.qv7-sq span{ aspect-ratio:1; border-radius:3px; border:1px solid var(--line); background:var(--paper); display:grid; place-items:center; font-size:.72rem; color:#fff; transition:background .4s ease; }
+.qv7-sq span.doc{ background:var(--s-qa); border-color:var(--s-qa); }
+.qv7-check{ text-align:center; font-size:.84rem; margin-top:8px; color:var(--ink); }
+.qv7-check .qv7-chips{ margin-top:5px; }
+.qv7-chipbtn{ font:inherit; cursor:pointer; }
+.qv7-chipbtn.ok{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.qv7-chipbtn.no{ border-color:var(--pen); border-style:dashed; }
+.qv7-fb{ min-height:1.4em; font-size:.82rem; margin-top:5px; color:var(--graphite); }
+@media (prefers-reduced-motion: reduce){ .qv7-in, .qv7-shake, .qv7-shift .mv.go{ animation:none; } .qv7-ac .w{ transition:none; } }`;
+  if (!document.getElementById('qv7-css')) { const s = document.createElement('style'); s.id = 'qv7-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const st = (i, k) => i === k ? ' on' : i > k ? ' done' : ' wait';
+  const Arr = ({ show, t }) => html`<div className=${'qv7-arr' + (show ? '' : ' wait')}><i>↓</i>${t}</div>`;
+  const Modes = ({ list, mode, setMode }) => html`<div className="qv7-modes" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => setMode(k)}>${t}</button>`)}</div>`;
+
+  /* ── slide 2: why maturity models (introduction) ── */
+  const INTRO = [
+    { en: 'Organizations seek <b>sustainable excellence</b> in their IT operations, and need a <b>flexible framework</b> to meet evolving business needs.', ar: 'الـ organizations عايزة <b>تميّز مستدام</b> في شغل الـ IT، ومحتاجة <b>framework مرن</b> يواكب احتياجات الـ business اللي بتتغير.' },
+    { en: 'But challenges like <b>poor IT application design</b>, <b>high costs</b> and <b>delayed projects</b> obstruct progress.', ar: 'بس فيه challenges زي الـ <b>design الوحش للـ IT applications</b> و<b>التكاليف العالية</b> و<b>المشاريع المتأخرة</b> بتعطّل التقدم.' },
+    { en: '<b>Quality assurance</b>, through <b>maturity models</b> and <b>systematic procedures</b>, helps define organizational structures and improve performance.', ar: 'الـ <b>quality assurance</b>، عن طريق الـ <b>maturity models</b> والـ <b>procedures المنظمة</b>، بيساعد يحدد الـ organizational structures وبيحسّن الأداء.' },
+    { en: '<b>CMM</b> helps manage complex IT systems efficiently.', ar: 'الـ <b>CMM</b> بيساعد في إدارة الـ IT systems المعقدة بكفاءة.' },
+    { en: 'A <b>QMS</b> (quality management system) gives a structured way to improve process capability, manage risk and ensure customer satisfaction.', ar: 'الـ <b>QMS</b> (quality management system) بيدي طريقة منظمة لتحسين الـ process capability، وإدارة الـ risk، وضمان رضا العميل.' },
+    { en: '<b>ISO 9000</b> promotes continuous improvement, product reliability and international recognition.', ar: 'الـ <b>ISO 9000</b> بيشجع الـ continuous improvement، والـ product reliability، والاعتراف الدولي.' }
+  ];
+  function Intro({ ar }) {
+    const [i, ctl] = useSteps(INTRO.length, 3000);
+    const tool = (k, n, d) => html`<div className=${'qv7-box' + st(i, k)}><b className="t">${n}</b><small>${d}</small></div>`;
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className=${'qv7-box c' + (i === 0 ? ' on' : ' done')}><b className="t">Sustainable excellence in IT operations</b><small>a flexible framework for evolving business needs</small></div>
+      <div className=${'qv7-arr' + (i >= 1 ? '' : ' wait')}>obstruct progress</div>
+      <div className="qv7-chips">${['Poor IT application design', 'High costs', 'Delayed projects'].map(t => html`<span key=${t} className=${'qv7-chip bad' + (i >= 1 ? '' : ' wait')}>✕ ${t}</span>`)}</div>
+      <${Arr} show=${i >= 2} t="help" />
+      <div className=${'qv7-box c' + st(i, 2)}><b className="t">Quality assurance</b><small>maturity models + systematic procedures: define organizational structures, improve performance</small></div>
+      <${Arr} show=${i >= 3} t="for example" />
+      ${tool(3, 'CMM', 'manage complex IT systems efficiently')}
+      ${tool(4, 'QMS (quality management system)', 'improve process capability, manage risk, ensure customer satisfaction')}
+      ${tool(5, 'ISO 9000', 'continuous improvement, product reliability, international recognition')}
+    </div></div><${Cap} ...${INTRO[i]} showAr=${ar} /><${Bar} steps=${INTRO} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 3: CMM, who made it, what it is, what it is for, where it applies ── */
+  const GL = [
+    { en: 'CMM was developed by the <b>Software Engineering Institute (SEI)</b> and <b>Carnegie Mellon University</b> under the <b>U.S. Department of Defense</b>.', ar: 'الـ CMM اتعمل بواسطة الـ <b>Software Engineering Institute (SEI)</b> و<b>Carnegie Mellon University</b> تحت <b>U.S. Department of Defense</b>.' },
+    { en: 'CMM is a <b>standard framework for assessing and improving the maturity</b> of a software company’s development process, giving structured guidance for enhancing software quality.', ar: 'الـ CMM هو <b>standard framework لتقييم وتحسين الـ maturity</b> بتاعة الـ development process في شركة الـ software، وبيدي توجيه منظم لتحسين الـ software quality.' },
+    { en: 'A maturity model gives <b>structured levels</b> showing how well processes and behaviors achieve desired outcomes. It can be used for both <b>evaluation</b> and <b>improvement</b>.', ar: 'الـ maturity model بيدي <b>levels منظمة</b> بتوضح الـ processes والـ behaviors بتحقق النتايج المطلوبة لحد فين. ينفع يتستخدم للـ <b>evaluation</b> وللـ <b>improvement</b> الاتنين.' },
+    { en: 'Designed mainly for <b>software development organizations</b>, but it also applies to software/system engineering, project management, IT, risk management and personnel management.', ar: 'متصمم أساسًا لـ <b>organizations الـ software development</b>، بس كمان بيتطبق على الـ software/system engineering والـ project management والـ IT والـ risk management والـ personnel management.' }
+  ];
+  function CmmGlance({ ar }) {
+    const [i, ctl] = useSteps(GL.length, 3400);
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className=${'qv7-box c' + (i === 0 ? ' on' : ' done')}><small style=${{ marginTop: 0 }}>under the</small><b className="t">U.S. Department of Defense</b></div>
+      <div className="qv7-row" style=${{ '--qv7n': 2 }}>
+        <div className=${'qv7-box c' + (i === 0 ? ' on' : ' done')}><b className="t">SEI</b><small>Software Engineering Institute</small></div>
+        <div className=${'qv7-box c' + (i === 0 ? ' on' : ' done')}><b className="t">Carnegie Mellon University</b></div></div>
+      <${Arr} show=${true} t="developed" />
+      <div className=${'qv7-box c' + st(i, 1)}><b className="t">CMM: Capability Maturity Model</b><small>standard framework for assessing and improving the maturity of a software company’s development process</small></div>
+      <${Arr} show=${i >= 2} t="used for" />
+      <div className="qv7-row" style=${{ '--qv7n': 2 }}>
+        <div className=${'qv7-box c' + st(i, 2)}><b className="t">Evaluation</b><small>how well processes and behaviors achieve desired outcomes</small></div>
+        <div className=${'qv7-box c' + st(i, 2)}><b className="t">Improvement</b><small>structured guidance for enhancing software quality</small></div></div>
+      <${Arr} show=${i >= 3} t="applies to" />
+      <div className="qv7-chips">
+        <span className=${'qv7-chip' + (i >= 3 ? ' k' : ' wait')}><b>Software development organizations</b> (mainly)</span>
+        ${['Software/system engineering', 'Project management', 'IT', 'Risk management', 'Personnel management'].map(t => html`<span key=${t} className=${'qv7-chip' + (i >= 3 ? '' : ' wait')}>${t}</span>`)}</div>
+    </div></div><${Cap} ...${GL[i]} showAr=${ar} /><${Bar} steps=${GL} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 3: five-level incremental approach, no skipping (try it) ── */
+  const LV = ['Initial', 'Repeatable', 'Defined', 'Quantitatively Managed', 'Optimizing'];
+  const LVD = ['ad-hoc processes, minimal structure', 'basic project management', 'standardized processes', 'statistical and quantitative control', 'continuous process improvement'];
+  const VIA = [null, 'Basic Management Control', 'Process Definition', 'Process Measurement', 'Process Control'];
+  function CmmClimb({ ar }) {
+    const [cur, setCur] = useState(1), [msg, setMsg] = useState(null), [bad, setBad] = useState(0), [tick, setTick] = useState(0);
+    const go = k => {
+      setTick(t => t + 1);
+      if (k === cur + 1) { setCur(k); setBad(0); setMsg({ en: `Climbed to <b><bdi>Level ${k} (${LV[k - 1]})</bdi></b>, through <b>${VIA[k - 1]}</b>.${k === 5 ? ' This is the top level: processes are systematically managed, optimized and continuously improved.' : ''}`, ar: `طلعت للـ <b><bdi>Level ${k} (${LV[k - 1]})</bdi></b> عن طريق الـ <b>${VIA[k - 1]}</b>.${k === 5 ? ' ده الـ top level: الـ processes بتتدار بشكل systematic، و optimized، وبتتحسن باستمرار.' : ''}` }); }
+      else if (k > cur + 1) { setBad(k); setMsg({ en: `<b>Not allowed.</b> CMM is a five-level <b>incremental</b> approach: organizations progress gradually <b>without skipping levels</b>. Reach <b><bdi>Level ${cur + 1} (${LV[cur]})</bdi></b> first.`, ar: `<b>مينفعش.</b> الـ CMM هو approach <b>incremental</b> من خمس levels: الـ organizations بتتقدم واحدة واحدة <b>من غير ما تنط levels</b>. لازم توصل للـ <b><bdi>Level ${cur + 1} (${LV[cur]})</bdi></b> الأول.` }); }
+      else { setBad(0); setMsg({ en: `Level ${k} is already reached: you are at <b><bdi>Level ${cur} (${LV[cur - 1]})</bdi></b>.`, ar: `الـ Level ${k} انت وصلته خلاص: انت دلوقتي في الـ <b><bdi>Level ${cur} (${LV[cur - 1]})</bdi></b>.` }); }
+    };
+    const m = msg || { en: '<b>Try it:</b> your organization starts at <b>Level 1 (Initial)</b>. Tap a level to move there. Try jumping straight to Level 5.', ar: '<b>جرّب:</b> الـ organization بتاعتك بادئة من الـ <b><bdi>Level 1 (Initial)</bdi></b>. دوس على level عشان تروحله. وجرّب تنط على طول للـ Level 5.' };
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-stairs" role="group" aria-label="CMM levels, Level 5 at the top">
+      ${[5, 4, 3, 2, 1].map(k => html`<button key=${k + '-' + (bad === k ? tick : 0)} className=${'qv7-st' + (k === cur ? ' on' : k < cur ? ' done' : ' up') + (bad === k ? ' no' + (calm() ? '' : ' qv7-shake') : '')}
+        style=${{ marginLeft: `calc(${k - 1} * min(7%, 26px))` }} onClick=${() => go(k)}>
+        ${k === cur && html`<span className="qv7-here">you are here</span>`}<b>Level ${k}: ${LV[k - 1]}</b><small>${LVD[k - 1]}</small></button>`)}
+    </div></div><${Cap} ...${m} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span>
+        <button className="fig-btn solid" disabled=${cur === 5} onClick=${() => go(cur + 1)}>Climb one level ↑</button>
+        <button className="fig-btn" onClick=${() => { setCur(1); setMsg(null); setBad(0); }}>↻ Start again</button></div></figure>`;
+  }
+
+  /* ── slides 4 and 5: the 6 components of the CMM structure ── */
+  const STR = [
+    { en: '(1) <b>Maturity levels</b> define an organization’s process capability. There are five: Level 1 has ad-hoc processes with minimal structure; Level 5 is the ideal state where processes are systematically managed, optimized and continuously improved.', ar: '(1) الـ <b>Maturity levels</b> بتحدد الـ process capability بتاعة الـ organization. وهما خمسة: الـ Level 1 فيه processes ad-hoc و structure قليل جدًا؛ والـ Level 5 هو الحالة المثالية اللي الـ processes فيها بتتدار بشكل systematic، و optimized، وبتتحسن باستمرار.' },
+    { en: '(2) <b>Process capability</b>: the organization’s ability to meet quality expectations through its current processes. It helps predict the outcomes of future software projects, ensuring consistency and reliability.', ar: '(2) الـ <b>Process capability</b>: قدرة الـ organization إنها تحقق توقعات الـ quality بالـ processes الحالية بتاعتها؛ وبتساعد إننا نتوقع نتايج مشاريع الـ software الجاية، وده بيضمن الـ consistency والـ reliability.' },
+    { en: '(3) <b>Key Process Areas (KPA)</b>: groups of related activities that achieve goals when performed together; they define capability at each level. Example: software project delivery planning.', ar: '(3) الـ <b>Key Process Areas (KPA)</b>: مجموعات أنشطة مرتبطة ببعض بتحقق goals لما تتعمل مع بعض؛ وبتحدد الـ capability في كل level. مثال: الـ software project delivery planning.' },
+    { en: '(4) <b>Goals</b>: evaluate essential practices within a process area to determine if an organization or project has successfully implemented it, highlighting its importance and purpose.', ar: '(4) الـ <b>Goals</b>: بتقيّم الـ practices الأساسية جوه الـ process area عشان نعرف هل الـ organization أو الـ project طبّقها بنجاح، وبتوضح أهميتها والغرض منها.' },
+    { en: '(5) <b>Common features</b>: characteristics showing whether a KPA’s implementation is successful and sustainable.', ar: '(5) الـ <b>Common features</b>: خصائص بتوضح هل تطبيق الـ KPA ناجح ومستدام.' },
+    { en: '(6) <b>Key practices</b>: define the necessary actions and infrastructure to support a KPA, ensuring effective application. Example: a software delivery schedule follows a documented procedure.', ar: '(6) الـ <b>Key practices</b>: بتحدد الأفعال والـ infrastructure المطلوبين عشان يدعموا الـ KPA، وده بيضمن إنها تتطبق بفعالية. مثال: الـ software delivery schedule ماشي على procedure موثق.' }
+  ];
+  function CmmStructure({ ar }) {
+    const [i, ctl] = useSteps(STR.length, 3400);
+    const B = (k, t, d) => html`<div className=${'qv7-box c' + st(i, k)} onClick=${() => ctl.go(k)} style=${{ cursor: 'pointer' }}><b className="t">${t}</b>${d && html`<small>${d}</small>`}</div>`;
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div style=${{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) auto minmax(0,1fr)', gap: '6px', alignItems: 'center' }}>
+        ${B(0, '(1) Maturity levels', 'five levels, 1 to 5')}
+        <div className=${'qv7-arr' + (i >= 1 ? '' : ' wait')}><i>→</i>define</div>
+        ${B(1, '(2) Process capability', 'predicts future project outcomes')}</div>
+      <${Arr} show=${i >= 2} t="at each level" />
+      ${B(2, '(3) Key Process Areas (KPA)', 'e.g. software project delivery planning')}
+      <${Arr} show=${i >= 3} t="for each KPA" />
+      <div className="qv7-row" style=${{ '--qv7n': 3 }}>${B(3, '(4) Goals')}${B(4, '(5) Common features')}${B(5, '(6) Key practices')}</div>
+      <div className=${'qv7-box c' + (i >= 5 ? ' done qv7-in' : ' wait')}><small style=${{ marginTop: 0 }}>key practice example: a software delivery schedule follows a documented procedure</small></div>
+    </div></div><${Cap} ...${STR[i]} showAr=${ar} /><${Bar} steps=${STR} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 8: Table 1 as a self-assessment (try it) ── */
+  const T1 = {
+    2: ['Plan and track projects', 'Manage suppliers', 'Manage product configurations', 'Measure projects', 'Assist and assure policy compliance'],
+    3: ['Create enhancement infrastructure', 'Identify required software processes', 'Organize and manage processes', 'Collect process-level data', 'Provide organization-wide training', 'Manage with non-software groups'],
+    4: ['Supervise processes quantitatively', 'Create capability baselines'],
+    5: ['Develop change infrastructure', 'Assess and organize improvements', 'Remove causes of defects']
+  };
+  const full = k => T1[k].map(() => true);
+  function CmmAssess({ ar }) {
+    const empty = () => ({ 2: T1[2].map(() => false), 3: T1[3].map(() => false), 4: T1[4].map(() => false), 5: T1[5].map(() => false) });
+    const [has, setHas] = useState(empty), [touched, setTouched] = useState(false);
+    const flip = (k, j) => { setTouched(true); setHas(h => Object.assign({}, h, { [k]: h[k].map((v, x) => x === j ? !v : v) })); };
+    const preset = p => { setTouched(true); setHas(p === 'none' ? empty() : p === 'skip' ? Object.assign(empty(), { 2: full(2), 4: full(4) }) : { 2: full(2), 3: full(3), 4: full(4), 5: full(5) }); };
+    const all = k => has[k].every(Boolean);
+    let lvl = 1; for (let k = 2; k <= 5; k++) { if (all(k) && lvl === k - 1) lvl = k; }
+    const blocked = [2, 3, 4, 5].filter(k => k > lvl + 1 && all(k));
+    const missing = lvl < 5 ? T1[lvl + 1].filter((_, j) => !has[lvl + 1][j]) : [];
+    let en, a;
+    if (!touched) { en = '<b>Try it:</b> tick the improvements your organization has implemented (Table 1). The maturity level is the highest level whose improvements are all in place, with every level below it complete too.'; a = '<b>جرّب:</b> علّم على الـ improvements اللي الـ organization بتاعتك طبقتها (الـ Table 1). الـ maturity level هو أعلى level كل الـ improvements بتاعته متطبقة، وكل الـ levels اللي تحته كاملة كمان.'; }
+    else {
+      en = `Maturity level: <b><bdi>Level ${lvl} (${LV[lvl - 1]})</bdi></b>.` + (lvl === 1 ? ' Level 1 has no required processes.' : '');
+      a = `الـ maturity level: <b>الـ <bdi>Level ${lvl} (${LV[lvl - 1]})</bdi></b>.` + (lvl === 1 ? ' الـ Level 1 مفيهوش processes مطلوبة.' : '');
+      if (lvl < 5) { en += ` To reach Level ${lvl + 1}, still implement: ${missing.join('; ')}.`; a += ` عشان توصل للـ Level ${lvl + 1} لسه محتاج تطبق:<br><span class="ltr">${missing.join('; ')}</span>`; }
+      else { en += ' All of Table 1 is implemented.'; a += ' كل الـ Table 1 متطبق.'; }
+      if (blocked.length) { en += `<br>Level ${blocked.join(' and ')} improvements are all ticked, but they do not count yet: <b>levels cannot be skipped</b>.`; a += `<br>كل الـ improvements بتاعة الـ Level ${blocked.join(' والـ Level ')} متعلّم عليها، بس لسه مبتتحسبش: <b>مينفعش ننط levels</b>.`; }
+    }
+    const lvBox = k => { const ok = k <= lvl, blk = blocked.includes(k); const n = has[k].filter(Boolean).length;
+      return html`<div key=${k} className=${'qv7-lv' + (ok ? ' ok' : blk ? ' blk' : '')}>
+        <h5>Level ${k}: ${LV[k - 1]} <span className=${'qv7-tag' + (ok ? ' ok' : blk ? ' blk' : '')}>${ok ? 'reached' : blk ? 'blocked: lower level missing' : n + ' / ' + T1[k].length}</span></h5>
+        <div className="qv7-togs">${T1[k].map((t, j) => html`<button key=${j} className="qv7-tog" aria-pressed=${String(has[k][j])} onClick=${() => flip(k, j)}>${t}</button>`)}</div></div>`; };
+    return html`<figure className="fig qv7"><div className="fig-stage">
+      <div className="qv7-res" aria-hidden="true">${[1, 2, 3, 4, 5].map(k => html`<span key=${k} className=${k <= lvl ? 'on' : ''}></span>`)}</div>
+      <div className="qv7-lvtxt" aria-live="polite">Level ${lvl}: ${LV[lvl - 1]}</div>
+      <div className="qv7-col">${[5, 4, 3, 2].map(lvBox)}
+        <div className="qv7-lv ok"><h5>Level 1: Initial <span className="qv7-tag ok">reached</span></h5><span style=${{ fontSize: '.8rem', color: 'var(--graphite)' }}>No required processes</span></div></div>
+    </div><${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span>
+        <button className="fig-btn" onClick=${() => preset('none')}>Clear</button>
+        <button className="fig-btn" onClick=${() => preset('skip')}>Levels 2 and 4 only</button>
+        <button className="fig-btn" onClick=${() => preset('all')}>Tick all</button></div></figure>`;
+  }
+
+  /* ── slide 9: the five aspects of a KPA ── */
+  const KPA = [
+    { en: 'Within each maturity level are <b>Key Process Areas (KPA)</b> which explain about that level, and each KPA has <b>5 aspects</b>.', ar: 'جوه كل maturity level فيه <b>Key Process Areas (KPA)</b> بتشرح الـ level ده، وكل KPA ليه <b>5 aspects</b>.' },
+    { en: '(1) <b>Goals</b>: each KPA sets several goals, which include the different objectives that help the organization <b>climb to the next CMM level</b>.', ar: '(1) الـ <b>Goals</b>: كل KPA بيحط كذا goal فيهم الـ objectives المختلفة اللي بتساعد الـ organization <b>تطلع للـ CMM level اللي بعده</b>.' },
+    { en: '(2) <b>Commitment</b>: various requirements that must be met to achieve the specified goals.', ar: '(2) الـ <b>Commitment</b>: متطلبات مختلفة لازم تتحقق عشان نوصل للـ goals المحددة.' },
+    { en: '(3) <b>Ability</b>: the activities carried out to enable the organization to meet the commitments.', ar: '(3) الـ <b>Ability</b>: الأنشطة اللي بتتعمل عشان الـ organization تقدر تحقق الـ commitments.' },
+    { en: '(4) <b>Measurement</b>: the activities performed should be monitored, so there are methods that have to be followed to do it.', ar: '(4) الـ <b>Measurement</b>: الأنشطة اللي بتتعمل لازم تتراقب، وعشان كده فيه methods لازم نمشي عليها عشان ننفذ ده.' },
+    { en: '(5) <b>Verification</b>: various methods that need to be followed that define the verification.', ar: '(5) الـ <b>Verification</b>: فيه methods مختلفة لازم نمشي عليها بتحدد الـ verification.' }
+  ];
+  const ASP = [['Goals', 'objectives that help climb to the next CMM level'], ['Commitment', 'requirements that must be met to achieve the goals'], ['Ability', 'activities that enable meeting the commitments'], ['Measurement', 'methods to monitor the activities performed'], ['Verification', 'methods that define the verification']];
+  function KpaAspects({ ar }) {
+    const [i, ctl] = useSteps(KPA.length, 3000);
+    const [pick, setPick] = useState(null);
+    const opts = ['Goals', 'Commitment', 'Marketing', 'Ability', 'Measurement', 'Verification'];
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className="qv7-row" style=${{ '--qv7n': 2 }}>
+        <div className="qv7-box c done"><b className="t">Maturity level</b></div>
+        <div className=${'qv7-box c' + (i === 0 ? ' on' : ' done')}><b className="t">Key Process Areas</b><small>explain the level</small></div></div>
+      <div className="qv7-arr"><i>↓</i>each KPA has 5 aspects</div>
+      ${ASP.map(([n, d], k) => html`<div key=${n} className=${'qv7-box' + st(i, k + 1)} onClick=${() => ctl.go(k + 1)} style=${{ cursor: 'pointer' }}><b className="t">(${k + 1}) ${n}${k === 0 && i >= 1 ? ' ↑ next CMM level' : ''}</b><small>${d}</small></div>`)}
+      <div className="qv7-check">Quick check: which one is <b>not</b> an aspect of a KPA?
+        <div className="qv7-chips">${opts.map(o => html`<button key=${o} className=${'qv7-chip qv7-chipbtn' + (pick === o ? (o === 'Marketing' ? ' ok' : ' no') : '')} onClick=${() => setPick(o)}>${o}</button>`)}</div>
+        <div className="qv7-fb" aria-live="polite">${pick == null ? '' : pick === 'Marketing' ? 'Right: Marketing is not one of the five aspects.' : pick + ' is one of the five aspects. Try again.'}
+          ${pick != null && ar && html`<span style=${{ display: 'block', direction: 'rtl' }}>${pick === 'Marketing' ? 'صح: الـ Marketing مش من الـ 5 aspects.' : 'لأ، الـ ' + pick + ' واحد من الـ 5 aspects. جرّب تاني.'}</span>`}</div></div>
+    </div></div><${Cap} ...${KPA[i]} showAr=${ar} /><${Bar} steps=${KPA} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 10: benefits of CMM ── */
+  const BEN = [
+    ['Analysts', 'Simple and easy to analyze', 'الـ CMM بسيط وسهل يتحلل.'],
+    ['Executives', 'Many corporate executives already know the model', 'فيه executives كتير في الشركات عارفين الـ model ده أصلًا.'],
+    ['Senior executives', 'Used to explain major IT issues and concepts to them', 'شركات كتير بتستخدمه بنجاح عشان تشرح مشاكل ومفاهيم الـ IT الكبيرة للـ senior executives.'],
+    ['Project funding', 'Helps get funding for key initiatives, e.g. enterprise data asset management, metadata repository', 'أداة مفيدة عشان نجيب funding للمشاريع المهمة، زي الـ enterprise data asset management والـ metadata repository.'],
+    ['Companies and governments', 'Large companies and governments use it to compare themselves with others', 'الشركات الكبيرة والحكومات بيستخدموه عشان يقارنوا نفسهم بغيرهم.']
+  ];
+  const BENS = [{ en: 'The <b>benefits of CMM</b>: five ways it helps, and who it helps.', ar: 'الـ <b>benefits بتوع الـ CMM</b>: خمس طرق بيساعد بيها، وبيساعد مين.' },
+    ...BEN.map(([w, en, a], k) => ({ en: `(${k + 1}) <b>${en}</b>.`, ar: `(${k + 1}) <b>${a}</b>` }))];
+  function CmmBenefits({ ar }) {
+    const [i, ctl] = useSteps(BENS.length, 2800);
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className="qv7-box c on" style=${{ maxWidth: '200px', margin: '0 auto', borderRadius: '99px' }}><b className="t">CMM</b></div>
+      <div className="qv7-arr"><i>↓</i>helps</div>
+      ${BEN.map(([w, d], k) => html`<div key=${w} className=${'qv7-box' + (i === k + 1 ? ' on' : i > k + 1 || i === 0 ? ' done' : ' wait')} onClick=${() => ctl.go(k + 1)} style=${{ cursor: 'pointer' }}><b className="t">(${k + 1}) ${w}</b><small>${d}</small></div>`)}
+    </div></div><${Cap} ...${BENS[i]} showAr=${ar} /><${Bar} steps=${BENS} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 11: ISO 9000 at a glance ── */
+  const ISO = [
+    { en: 'The <b>International Organization for Standardization (ISO)</b> publishes <b>ISO 9000</b>: a set of internationally recognized standards.', ar: 'الـ <b>International Organization for Standardization (ISO)</b> بتنشر الـ <b>ISO 9000</b>: مجموعة standards معترف بيها دوليًا.' },
+    { en: 'It defines <b>universal best practices</b> so organizations meet <b>quality requirements</b> and <b>client expectations</b>.', ar: 'بتحدد <b>best practices عالمية</b> عشان الـ organizations تحقق الـ <b>quality requirements</b> و<b>توقعات العملاء</b>.' },
+    { en: 'It is <b>highly generic</b>: it applies to any organization providing <b>products</b> or <b>services</b>.', ar: 'هو <b>generic جدًا</b>: بيتطبق على أي organization بتقدم <b>products</b> أو <b>services</b>.' },
+    { en: 'The name <b>ISO</b> comes from the Greek word <b>isos</b> = “equal”, reflecting a global standard for quality assurance.', ar: 'كلمة <b>ISO</b> جاية من الكلمة اليونانية <b>isos</b> ومعناها «متساوي»، وده بيعكس إنه standard عالمي للـ quality assurance.' },
+    { en: 'ISO 9000 consists of <b>20 key elements</b> that outline the measures an organization needs to comply with its quality assurance guidelines.', ar: 'الـ ISO 9000 فيه <b>20 key elements</b> بتحدد الإجراءات اللازمة عشان الـ organizations تلتزم بالـ quality assurance guidelines بتاعته.' },
+    { en: 'Each element must be <b>clearly and thoroughly documented</b> to demonstrate adherence to ISO 9000.', ar: 'وكل element لازم <b>يكون موثق بوضوح وبالتفصيل</b> عشان نثبت الالتزام بالـ ISO 9000.' }
+  ];
+  function IsoOverview({ ar }) {
+    const [i, ctl] = useSteps(ISO.length, 3000);
+    const [n, setN] = useState(0);
+    useEffect(() => { if (i < 5) { setN(0); return; } if (calm()) { setN(20); return; } setN(0); let x = 0; const t = setInterval(() => { x++; setN(x); if (x >= 20) clearInterval(t); }, 90); return () => clearInterval(t); }, [i]);
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className=${'qv7-box c' + (i === 0 ? ' on' : ' done')}><b className="t">ISO</b><small>International Organization for Standardization</small></div>
+      <${Arr} show=${true} t="publishes" />
+      <div className=${'qv7-box c' + st(i, 1)}><b className="t">ISO 9000</b><small>universal best practices: quality requirements and client expectations</small></div>
+      <div className="qv7-row" style=${{ '--qv7n': 2 }}>
+        <div className=${'qv7-box c' + st(i, 2)}><b className="t">Products</b><small>any organization</small></div>
+        <div className=${'qv7-box c' + st(i, 2)}><b className="t">Services</b><small>any organization</small></div></div>
+      <div className=${'qv7-box c' + st(i, 3)}><b className="t">ISO ← isos (Greek) = equal</b><small>a global standard for quality assurance</small></div>
+      <div className=${'qv7-box' + st(i, 4)}><b className="t">20 key elements${i >= 5 ? ', each documented' : ''}</b>
+        <div className="qv7-sq" aria-hidden="true">${Array.from({ length: 20 }, (_, k) => html`<span key=${k} className=${k < n ? 'doc' : ''}>${k < n ? '✓' : ''}</span>`)}</div></div>
+    </div></div><${Cap} ...${ISO[i]} showAr=${ar} /><${Bar} steps=${ISO} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── tiles: tour each item, or quiz yourself (20 elements, 8 principles) ── */
+  const shuffle = a => { const b = a.slice(); for (let k = b.length - 1; k > 0; k--) { const j = Math.floor(Math.random() * (k + 1)); [b[k], b[j]] = [b[j], b[k]]; } return b; };
+  function Tiles({ ar, items, cols, what, whatAr, intro, quiz, ms, num }) {
+    const W = t => t.replace(/\//g, '/<wbr>');
+    const steps = [intro, ...items.map((it, k) => ({ en: `${num ? '(' + (k + 1) + ') ' : ''}<b>${W(it.n)}</b>: ${it.d}`, ar: `${num ? 'العنصر (' + (k + 1) + ') ' : 'الـ principle '}<b>${W(it.n)}</b>: ${it.a}` }))];
+    const [i, ctl] = useSteps(steps.length, ms);
+    const [mode, setMode] = useState('tour');
+    const [order, setOrder] = useState(() => shuffle(quiz.map((_, k) => k)));
+    const [q, setQ] = useState(0), [pick, setPick] = useState(null), [score, setScore] = useState([0, 0]);
+    const Q = quiz[order[q]];
+    const tap = k => {
+      if (mode === 'tour') return ctl.go(k + 1);
+      if (pick != null) return;
+      setPick(k); setScore(([r, t]) => [r + (k === Q.k ? 1 : 0), t + 1]);
+    };
+    const next = () => { if (q + 1 >= order.length) { setOrder(shuffle(quiz.map((_, k) => k))); setQ(0); setScore([0, 0]); } else setQ(q + 1); setPick(null); };
+    const label = (k) => `${num ? '(' + (k + 1) + ') ' : ''}${W(items[k].n)}`;
+    let cap;
+    if (mode === 'tour') cap = steps[i];
+    else if (pick == null) cap = { en: `<b>Which ${what}?</b> Tap the tile that matches the description above.`, ar: `<b>أنهي ${whatAr}؟</b> دوس على المربع اللي بيطابق الوصف اللي فوق.` };
+    else if (pick === Q.k) cap = { en: `<b>Right:</b> ${label(Q.k)}. ${items[Q.k].d}`, ar: `<b>صح:</b> <bdi>${label(Q.k)}</bdi>. ${items[Q.k].a}` };
+    else cap = { en: `<b>Not quite:</b> you picked ${label(pick)} (${items[pick].d}). The answer is <b>${label(Q.k)}</b>.`, ar: `<b>مش بالظبط:</b> انت اخترت <bdi>${label(pick)}</bdi>، ودي معناها «${items[pick].a}». والإجابة هي <b><bdi>${label(Q.k)}</bdi></b>.` };
+    const cls = k => mode === 'tour' ? (i === k + 1 ? ' on' : i > k + 1 ? ' done' : '') : pick == null ? '' : k === Q.k ? ' ok' : k === pick ? ' no' : '';
+    return html`<figure className="fig qv7 qv7-many"><div className="fig-stage">
+      <${Modes} list=${[['tour', 'Tour'], ['quiz', 'Quiz yourself']]} mode=${mode} setMode=${m => { setMode(m); setPick(null); if (m === 'tour') ctl.go(0); }} />
+      ${mode === 'quiz' && html`<div className="qv7-q"><b>Question ${q + 1} of ${order.length}</b>${Q.en}${ar && html`<span style=${{ display: 'block', direction: 'rtl', textAlign: 'right', color: 'var(--graphite)', marginTop: '3px' }} dangerouslySetInnerHTML=${{ __html: Q.ar }}></span>`}</div>`}
+      <div className="qv7-tiles" style=${{ '--qv7c': cols }}>${items.map((it, k) => html`<button key=${k} className=${'qv7-tile' + cls(k)} onClick=${() => tap(k)}>${num && html`<span className="n">${k + 1}</span>`}<span dangerouslySetInnerHTML=${{ __html: W(it.n) }}></span></button>`)}</div>
+    </div><${Cap} ...${cap} showAr=${ar} />
+      ${mode === 'tour' ? html`<${Bar} steps=${steps} i=${i} ctl=${ctl} />` : html`<div className="fig-bar"><span className="qv7-score">Score ${score[0]} / ${score[1]}</span><span className="grow"></span><button className="fig-btn solid" disabled=${pick == null} onClick=${next}>${q + 1 >= order.length ? '↻ New round' : 'Next ›'}</button></div>`}</figure>`;
+  }
+
+  /* ── slides 12 and 13: the 20 elements of ISO 9000 ── */
+  const EL = [
+    ['Management Responsibility', 'management must set the quality policy and provide resources.', 'الـ management لازم يحط الـ quality policy ويوفر الـ resources.'],
+    ['Quality Systems', 'maintain a documented quality manual and procedures.', 'نحافظ على quality manual و procedures موثقين.'],
+    ['Contract Review', 'clearly state and verify customer needs.', 'نحدد احتياجات العميل بوضوح ونتأكد منها.'],
+    ['Design Control', 'document and control design and engineering changes.', 'نوثق ونتحكم في تغييرات الـ design والـ engineering.'],
+    ['Documentation & Data Control', 'strict control of document creation and modification.', 'تحكم صارم في إنشاء الـ documents وتعديلها.'],
+    ['Purchasing', 'define supplier requirements and compliance processes.', 'نحدد متطلبات الـ suppliers و processes الـ compliance.'],
+    ['Customer Supplied Product Control', 'handle and protect customer-provided materials.', 'نتعامل مع المواد اللي العميل بيوفرها ونحميها.'],
+    ['Product Identification & Traceability', 'track products from start to finish.', 'نتابع الـ products من البداية للنهاية.'],
+    ['Process Control', 'use work instructions, quality plans and standards.', 'نستخدم work instructions و quality plans و standards.'],
+    ['Inspection & Testing', 'perform receiving, in-process and final inspections.', 'نعمل inspections عند الاستلام (receiving)، وأثناء الـ process (in-process)، وفي الآخر (final).'],
+    ['Inspection/Measuring Equipment', 'calibrate instruments regularly.', 'نعمل calibration للأجهزة بانتظام.'],
+    ['Inspection & Test Status', 'clearly identify inspected products.', 'نحدد بوضوح الـ products اللي اتعملها inspection.'],
+    ['Control of Non-Conforming Product', 'separate and manage rejected items.', 'نفصل الحاجات المرفوضة وندير أمرها.'],
+    ['Corrective & Preventive Action', 'identify root causes and prevent future defects.', 'نحدد الـ root causes ونمنع defects في المستقبل.'],
+    ['Handling/Storage/Packaging/Delivery', 'protect products throughout production and shipping.', 'نحمي الـ products طول الإنتاج والشحن.'],
+    ['Quality Records', 'maintain records for audit trails.', 'نحتفظ بـ records للـ audit trails.'],
+    ['Internal Quality Audits', 'conduct periodic audits and share results.', 'نعمل audits دورية ونشارك النتايج.'],
+    ['Training', 'maintain training records and qualifications of all employees.', 'نحتفظ بـ training records و qualifications لكل الموظفين.'],
+    ['Servicing', 'ensure after-delivery support meets requirements (if applicable).', 'نتأكد إن الدعم بعد التسليم بيحقق المتطلبات (لو موجود).'],
+    ['Statistical Techniques', 'use data, control charts and analysis for quality improvement.', 'نستخدم data و control charts وتحليل عشان نحسّن الـ quality.']
+  ].map(([n, d, a]) => ({ n, d: d.charAt(0).toUpperCase() + d.slice(1), a }));
+  const EL_Q = EL.map((e, k) => ({ k, en: e.d, ar: e.a }));
+  EL_Q.push({ k: 12, en: 'You must develop procedures for <b>rejected materials</b>.', ar: 'لازم تعمل procedures للـ <b>materials المرفوضة</b>.' });
+  function IsoElements({ ar }) {
+    return html`<${Tiles} ar=${ar} items=${EL} cols=${4} num=${true} ms=${2600} what="element" whatAr="element"
+      intro=${{ en: 'ISO 9000 has <b>20 key elements</b>; each must be clearly and thoroughly documented. Tap a tile, or let the tour walk through all 20.', ar: 'الـ ISO 9000 فيه <b>20 key elements</b>؛ وكل element لازم يكون موثق بوضوح وبالتفصيل. دوس على أي مربع، أو سيب الـ tour يمشي على الـ 20.' }}
+      quiz=${EL_Q} />`;
+  }
+
+  /* ── slide 14: the 8 quality management principles ── */
+  const PR = [
+    ['Customer Focus', 'Understand and exceed customer needs to gain loyalty.', 'نفهم احتياجات العميل ونتخطاها عشان نكسب ولاءه.'],
+    ['Leadership', 'Leaders create an environment where people are fully involved.', 'الـ leaders بيعملوا بيئة الناس فيها مشاركة بالكامل.'],
+    ['Involvement of People', 'Employees at all levels contribute to the organization’s success.', 'الموظفين في كل المستويات بيساهموا في نجاح الـ organization.'],
+    ['Process Approach', 'Manage activities as processes for consistent results.', 'ندير الأنشطة كـ processes عشان نوصل لنتايج ثابتة.'],
+    ['System Approach to Management', 'Align interconnected processes as one system.', 'نظبط الـ processes المترابطة مع بعض كأنها system واحد.'],
+    ['Continuous Improvement', 'Ongoing improvement is a permanent objective.', 'التحسين المستمر هدف دايم.'],
+    ['Factual Decision Making', 'Base decisions on reliable data and analysis.', 'القرارات تتبني على data وتحليل موثوق.'],
+    ['Mutually Beneficial Supplier Relationships', 'Build strong, value-creating relationships with suppliers.', 'نبني علاقات قوية مع الـ suppliers بتعمل value للطرفين.']
+  ].map(([n, d, a]) => ({ n, d, a }));
+  function IsoPrinciples({ ar }) {
+    return html`<${Tiles} ar=${ar} items=${PR} cols=${2} num=${false} ms=${2800} what="principle" whatAr="principle"
+      intro=${{ en: 'ISO is built on <b>8 key principles</b> that guide organizations toward high-quality performance. Tap one, or let the tour walk through them.', ar: 'الـ ISO مبني على <b>8 key principles</b> بيوجهوا الـ organizations لأداء عالي الـ quality. دوس على واحد، أو سيب الـ tour يمشي عليهم.' }}
+      quiz=${PR.map((p, k) => ({ k, en: p.d, ar: p.a }))} />`;
+  }
+
+  /* ── slide 15: software engineering standards over time ── */
+  const SES = [
+    { en: '<b>Software engineering standards</b> ensure proper development, testing and maintenance of software by following specific guidelines.', ar: 'الـ <b>Software engineering standards</b> بتضمن إن الـ development والـ testing والـ maintenance بتوع الـ software بيتعملوا صح عن طريق إننا نمشي على guidelines محددة.' },
+    { en: 'Various organizations, including <b>international and national bodies</b>, establish and enforce <b>SQA standards</b>.', ar: 'فيه organizations مختلفة، منها <b>جهات دولية ومحلية</b>، بتعمل الـ <b>SQA standards</b> وبتفرض تطبيقها.' },
+    { en: 'Organizations are increasingly shifting <b>from local to international standards</b>.', ar: 'الـ organizations بتتحول أكتر وأكتر <b>من standards محلية لـ دولية</b>.' },
+    { en: '<b>1976</b>: the <b>IEEE</b> and the <b>IEEE Computer Society</b> lead this movement; since 1976 IEEE has contributed significantly to standardization.', ar: 'سنة <b>1976</b>: الـ <b>IEEE</b> والـ <b>IEEE Computer Society</b> في مقدمة الحركة دي؛ ومن 1976 الـ IEEE ساهم جامد في الـ standardization.' },
+    { en: 'This led to the <b>IEEE Software Engineering Standard Collection</b>, a foundation for many international project process standards.', ar: 'وده وصّل لـ <b>IEEE Software Engineering Standard Collection</b>، اللي بقت أساس لـ international project process standards كتير.' },
+    { en: '<b>1993</b>: <b>SPICE</b> is introduced. The SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by <b>ISO</b> and <b>IEC</b> to establish a standard software process assessment methodology.', ar: 'سنة <b>1993</b>: اتقدم الـ <b>SPICE</b>. والـ SPICE project والـ <b>ISO/IEC 15504</b> مبادرات مشتركة بين الـ <b>ISO</b> والـ <b>IEC</b> عشان يعملوا methodology standard لتقييم الـ software process.' }
+  ];
+  function StdTimeline({ ar }) {
+    const [i, ctl] = useSteps(SES.length, 3200);
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className=${'qv7-box c' + st(i, 0)}><b className="t">Software engineering standards</b><small>proper development, testing and maintenance, by following guidelines</small></div>
+      <div className="qv7-row" style=${{ '--qv7n': 2 }}>
+        <div className=${'qv7-box c' + st(i, 1)}><b className="t">International bodies</b></div>
+        <div className=${'qv7-box c' + st(i, 1)}><b className="t">National bodies</b></div></div>
+      <div className=${'qv7-arr' + (i >= 1 ? '' : ' wait')}>establish and enforce SQA standards</div>
+      <div className=${'qv7-box' + st(i, 2)}><div className="qv7-shift"><span style=${{ textAlign: 'center' }}>Local standards</span><span className=${'mv' + (i >= 2 && !calm() ? ' go' : '')}>→</span><b style=${{ textAlign: 'center' }}>International standards</b></div></div>
+      <div className="qv7-tl" style=${{ marginTop: '6px' }}>
+        <div className=${'qv7-box' + st(i, 3)}><span className="qv7-yr">1976</span><b className="t">IEEE + IEEE Computer Society</b><small>lead standardization</small></div>
+        <div className=${'qv7-box' + st(i, 4)}><b className="t">IEEE Software Engineering Standard Collection</b><small>foundation for many international project process standards</small></div>
+        <div className=${'qv7-box' + st(i, 5)}><span className="qv7-yr">1993</span><b className="t">SPICE project (ISO + IEC)</b><small>ISO/IEC 15504: standard software process assessment methodology</small></div>
+      </div>
+    </div></div><${Cap} ...${SES[i]} showAr=${ar} /><${Bar} steps=${SES} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 15: SPICE, the acronym and its 3 objectives ── */
+  const SP = [
+    { en: '<b>SPICE</b> = <b>S</b>oftware <b>P</b>rocess <b>I</b>mprovement for <b>C</b>apability d<b>E</b>termination.', ar: 'الـ <b>SPICE</b> اختصار لـ:<br><span class="ltr">Software Process Improvement for Capability Determination</span>' },
+    { en: 'The SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by <b>ISO</b> and <b>IEC</b>. Introduced in <b>1993</b>, SPICE aims to improve international software process standards.', ar: 'الـ SPICE project والـ <b>ISO/IEC 15504</b> مبادرات مشتركة بين الـ <b>ISO</b> والـ <b>IEC</b>. اتقدم سنة <b>1993</b>، وهدفه يحسّن الـ international software process standards.' },
+    { en: 'Objective (1): <b>establish a standard framework</b> for software process assessment.', ar: 'الـ objective الأول: <b>نعمل standard framework</b> لتقييم الـ software process.' },
+    { en: 'Objective (2): <b>conduct organizational assessments</b> for emerging standards.', ar: 'الـ objective التاني: <b>نعمل organizational assessments</b> للـ standards الجديدة.' },
+    { en: 'Objective (3): <b>facilitate global adoption</b> of software process assessment in industry.', ar: 'الـ objective التالت: <b>نسهّل تبني</b> تقييم الـ software process عالميًا في الصناعة.' }
+  ];
+  function Spice({ ar }) {
+    const [i, ctl] = useSteps(SP.length, 3200);
+    const W = [['S', 'oftware'], ['P', 'rocess'], ['I', 'mprovement'], ['C', 'apability'], ['E', 'Determination']];
+    const OB = ['Establish a standard framework for software process assessment', 'Conduct organizational assessments for emerging standards', 'Facilitate global adoption of software process assessment in industry'];
+    return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-col">
+      <div className="qv7-ac" role="img" aria-label="SPICE: Software Process Improvement for Capability Determination">
+        ${W.map(([L, w], k) => [
+          k === 3 && html`<span key="for" className="for">for</span>`,
+          html`<span key=${'L' + k} className="L">${L}</span>`,
+          html`<span key=${'w' + k} className=${'w' + (calm() ? '' : ' qv7-in')} style=${{ animationDelay: k * .3 + 's' }}>${k === 4 ? html`<span>D<u>e</u>termination</span>` : html`<span><u>${L}</u>${w}</span>`}</span>`])}
+      </div>
+      <div className=${'qv7-box c' + st(i, 1)} style=${{ marginTop: '6px' }}><b className="t">1993 · ISO + IEC · ISO/IEC 15504</b><small>aims to improve international software process standards</small></div>
+      <${Arr} show=${i >= 2} t="3 objectives" />
+      ${OB.map((o, k) => html`<div key=${k} className=${'qv7-box' + st(i, k + 2)}><b className="t">(${k + 1}) ${o}</b></div>`)}
+    </div></div><${Cap} ...${SP[i]} showAr=${ar} /><${Bar} steps=${SP} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'qa-qm-intro': Intro, 'qa-cmm-glance': CmmGlance, 'qa-cmm-climb': CmmClimb, 'qa-cmm-structure': CmmStructure, 'qa-cmm-assess': CmmAssess,
+    'qa-kpa-aspects': KpaAspects, 'qa-cmm-benefits': CmmBenefits, 'qa-iso-overview': IsoOverview, 'qa-iso-elements': IsoElements,
+    'qa-iso-principles': IsoPrinciples, 'qa-std-timeline': StdTimeline, 'qa-spice': Spice
+  });
 })();
