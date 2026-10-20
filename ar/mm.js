@@ -24,7 +24,12 @@ AR.mm = {
       "شكل (سلايد 8، Hypermedia): أربع media حوالين نقطة في النص، متوصلين بأسهم في الاتجاهين: <b>Graphics</b> (فوق)، <b>Sound</b> (على الشمال، سماعة loudspeaker)، <b>Text</b> (على اليمين، صفحات text متوصلة ببعض) و<b>Video</b> (تحت، video recorder وTV)، وفوق film strip مكتوب عليه <b>HYPERMEDIA</b>.",
       "أمثلة على hypermedia applications: الـ <b>World Wide Web</b> (المثال الواضح)، PowerPoint، Adobe Acrobat (برنامج الـ PDF)، Adobe Flash. وغيرهم كتير جدًا (Many many others?).",
       "أمثلة على multimedia applications: الـ WWW، الـ multimedia authoring (Adobe/Macromedia Director)، hypermedia courseware، video-on-demand، interactive TV، الألعاب، الـ virtual reality، أنظمة الـ digital video editing والإنتاج، والـ multimedia database systems. وسلايد \"Applications\" اللي بعد كده بيزود video conferencing وgroupware والـ home shopping."
-     ]
+     ],
+     "figH": {
+      "mm-hypertext": "جرّب: دوس على الـ hot spots وانط بين صفحات الـ hypertext",
+      "mm-linear-hyper": "الـ Normal Text بيتقري linear، والـ HyperText بيتقري non-linear",
+      "mm-hypermedia": "الـ HyperMedia: الـ text والـ graphics والـ sound والـ video متربطين في الاتجاهين"
+     }
     },
     {
      "h": "الـ Multimedia systems: التعريف و4 خصائص",
@@ -40,7 +45,10 @@ AR.mm = {
       "السلايد بيقسمهم كده: <b>اتنين challenges أساسيين</b>، الـ <b>Distributed Networks</b> والـ <b>Temporal relationship between data</b>. وتحت الـ temporal relationship: إنك تعرض data مختلفة في نفس الوقت وبشكل continuous؛ الـ sequencing جوه الـ media (تشغيل الـ frames بالترتيب والتوقيت الصح في الـ video)؛ الـ synchronisation، يعني inter-media scheduling.",
       "مثال: الـ Video والـ Audio: الـ <b>lip synchronisation</b> مهم جدًا للبني آدمين وهما بيتفرجوا على playback لـ video وaudio، وحتى <b>animation وaudio</b>. (جربت قبل كده تتفرج على فيلم الصوت فيه مش ماشي مع حركة الشفايف لمدة طويلة؟)",
       "<b>الـ Key issues</b>: إزاي نمثّل ونخزن المعلومات الزمنية؛ إزاي نحافظ بدقة على العلاقات الزمنية وقت الـ playback/retrieval؛ إيه الـ processes اللي داخلة؛ الـ data لازم تتمثّل digitally (<b>analog–digital conversion، sampling</b>)؛ <b>الـ data requirements كبيرة</b> (bandwidth، storage) فـ <b>الـ data compression غالبًا بيبقى إجباري</b>."
-     ]
+     ],
+     "figH": {
+      "mm-lipsync": "جرّب: لخبط ترتيب الـ frames أو زحزح الـ audio وشوف الـ lip sync بيبوظ إزاي"
+     }
     },
     {
      "h": "المميزات المطلوبة في الـ multimedia system",
@@ -77,7 +85,11 @@ AR.mm = {
       "<b>Audio</b>: analog signal متصلة، بتتعمل digitise من الـ microphone. <b>الـ CD quality = 16-bit sampling عند 44.1 kHz</b>؛ الـ audiophile مثلًا 24-bit، 96 kHz. دقيقة mono CD ≈ 5 MB، stereo ≈ 10 MB. غالبًا بيتعمله compression (MP3، AAC، FLAC، Ogg Vorbis).",
       "<b>Video</b>: سلسلة صور منفصلة، عادةً <b>25 أو 30 أو 50 frame في الثانية</b>. غالبًا لازم يتعمله compression.",
       "الـ Video input: الـ <b>analog video</b> عادةً بيتصور بـ video camera وبعدين بيتعمله <b>digitise</b>. فيه formats كتير للـ video (analog وdigital). مثلًا: video monochrome مقاس 512 × 512 بياخد 25 × 0.25 = 6.25 MB للثانية الواحدة من غير compression؛ والـ PAL digital video العادي (720 × 576 pixel لكل frame ملوّن) ≈ 1.24 × 25 = 31 MB في الثانية؛ والـ High Definition video على <b>Blu-ray</b> (لحد 1920 × 1080 = <b>2 Megapixels لكل frame</b>) ≈ 6.2 × 25 = 155 MB في الثانية من غير compression (وفيه frame rates أعلى كمان!). الـ digital video <b>أكيد محتاج compression</b> في أغلب الأوقات."
-     ]
+     ],
+     "figH": {
+      "mm-data-size": "جرّب: احسب الحجم الخام للـ images والـ audio والـ video",
+      "mm-frames": "ثانية واحدة من الـ raw video كأنها 25 أو 30 أو 50 صورة منفردة"
+     }
     },
     {
      "h": "الخلاصة: الكورس في الأساس عن الـ compression",
@@ -87,7 +99,11 @@ AR.mm = {
       "<b>Compression via synthesis</b>: بنعمل encode لـ <b>طريقة صناعة (synthesise)</b> الـ data، وده ممكن ياخد bits أقل بكتير في حالات معينة. أمثلة: vector graphics (Flash)، MPEG video، MP4 (audio)، <b>MIDI</b>.",
       "صور سلايد 27: اتنين <b>MIDI keyboards</b> صغيرين، واحد متوصل بـ laptop (ومعاه headphones) والتاني متوصل بـ iPad، كأمثلة على الـ compression via synthesis (الـ MIDI).",
       "ملاحظة من خلاصة الكورس: lossless = zero error، جودة عالية، compression قليل؛ lossy = فيه شوية error، جودة أقل، compression أعلى (زي YouTube بيستخدم lossy)."
-     ]
+     ],
+     "figH": {
+      "mm-lossy-lossless": "الـ compression الـ lossless قصاد الـ lossy، خطوة بخطوة",
+      "mm-synthesis": "جرّب: تخزّن الصوت نفسه ولا الـ instructions اللي بتعمله؟"
+     }
     }
    ],
    "cards": [
@@ -279,7 +295,13 @@ AR.mm = {
       "الـ sine wave بتتوصف بتلات حاجات: الـ <b>amplitude</b> والـ <b>frequency</b> والـ <b>phase</b>: z(t) = a·sin(ω·t + φ). لما تغيّر الـ phase الموجة بتتزحلق على محور الوقت (الـ sinphasedemo بيرسم محور x بالدرجات: 0، 90، 180، 270، 360 …).",
       "الـ <b>cosine هو sine wave متأخرة/مزاحة 90° في الـ phase</b>.",
       "<b>مثال محلول</b>: F<sub>w</sub> = 1000 Hz، F<sub>s</sub> = 8000 Hz → F<sub>w</sub>/F<sub>s</sub> = 1/8، يعني الـ cycle الواحدة بتاخد 8 samples. n = 1: y = A·sin(π/4) = 0.7071A؛ n = 2: y = A·sin(π/2) = A؛ n = 4: y = A·sin(π) = 0."
-     ]
+     ],
+     "figH": {
+      "mm-period": "غيّر الـ frequency وشوف الـ period والـ cycle بيقصروا",
+      "mm-sine-abc": "الـ amplitude والـ frequency والـ phase في الـ sine wave",
+      "mm-phase-demo": "الـ sinphasedemo: موجة sine متزاحة بـ phase، والـ cosine عند <bdi>90°</bdi>",
+      "mm-sampled-sine": "الـ sampled sine خطوة بخطوة لكل sample"
+     }
     },
     {
      "h": "الـ decibel (dB) والـ dynamic range والـ SNR",
@@ -292,7 +314,12 @@ AR.mm = {
       "الودن أكتر حساسية بين <b>2 و4 kHz (الكلام)</b>؛ والـ <b>frequency weighting</b> بيدّي الـ range ده وزن أكبر. الـ filtering لـ bands في الـ range ده بيتستخدم في تحليل الكلام، وفي عمل model للسمع البشري، وفي الـ audio compression (MPEG audio).",
       "<b>Digital noise: 6 dB لكل bit</b> (في الـ linear PCM). أول bit (الـ LSB) بيدي residual quantisation noise؛ وكل bit زيادة بيضاعف الـ resolution = 10·log<sub>10</sub>(4) ≈ 6 dB. الـ 16-bit: 15 × 6 = <b>90 dB</b> dynamic range؛ الـ 8-bit: 7 × 6 = <b>42 dB</b>؛ الفرق 48 dB = 48/6 = <b>8 times as noisy</b> (زي ما السلايد بتقولها).",
       "الـ <b>Signal-to-noise ratio</b>: SNR = P<sub>signal</sub>/P<sub>noise</sub> = (A<sub>signal</sub>/A<sub>noise</sub>)<sup>2</sup>، حيث P = الـ average power، A = الـ RMS amplitude، وبيتقاسوا عند نقط متكافئة وفي نفس الـ bandwidth. SNR<sub>dB</sub> = 10·log<sub>10</sub>(P<sub>s</sub>/P<sub>n</sub>) = 20·log<sub>10</sub>(A<sub>s</sub>/A<sub>n</sub>)."
-     ]
+     ],
+     "figH": {
+      "mm-db-scale": "ليه الـ dB: مدى الودن من الـ power بيبقى من 0 لـ <bdi>120 dB</bdi>",
+      "mm-bits-db": "قاعدة <bdi>6 dB</bdi> لكل bit والـ dynamic range للـ 8-bit والـ 16-bit",
+      "mm-db-calc": "حاسبة الـ dB والـ SNR لنسب الـ power والـ amplitude"
+     }
     },
     {
      "h": "الـ Signal flow graphs: delay وmultiply وadd",
@@ -303,7 +330,11 @@ AR.mm = {
       "الـ <b>Addition</b>: دايرة فيها <b>+</b>: y(n) = a<sub>1</sub>·x<sub>1</sub>(n) + a<sub>2</sub>·x<sub>2</sub>(n)؛ ولو a<sub>1</sub> = a<sub>2</sub> = 1: y(n) = x<sub>1</sub>(n) + x<sub>2</sub>(n).",
       "مثال كامل: <b>y(n) = ½x(n) + ⅓x(n − 1) + ¼x(n − 2)</b> (2 delays، 3 multipliers، adder واحد). الـ <b>impulse response</b> بتاعه (الـ input 1، 0، 0، …) هو ½، ⅓، ¼، 0، 0، … (finite).",
       "<b>مثال محلول</b>: input x = 2، 4، 6 (وبعدين أصفار) داخل على الـ filter ده:<br>y(0) = ½·2 = 1<br>y(1) = ½·4 + ⅓·2 = 2 + 0.667 = 2.667<br>y(2) = ½·6 + ⅓·4 + ¼·2 = 3 + 1.333 + 0.5 = 4.833<br>y(3) = ⅓·6 + ¼·4 = 2 + 1 = 3<br>y(4) = ¼·6 = 1.5، وبعدين 0."
-     ]
+     ],
+     "figH": {
+      "mm-sfg-blocks": "الـ 3 building blocks: الـ delay والـ multiply والـ add على إشارة",
+      "mm-sfg-run": "الـ filter الكامل شغال على <bdi>2, 4, 6</bdi> sample بـ sample"
+     }
     },
     {
      "h": "الـ Filtering؛ الـ IIR والـ FIR systems",
@@ -316,7 +347,14 @@ AR.mm = {
       "<b>مثال IIR محلول</b>: y(n) = x(n) − a<sub>1</sub>y(n − 1) مع a<sub>1</sub> = −0.5 (يعني y(n) = x(n) + 0.5y(n − 1)). الـ impulse input 1، 0، 0، … بيدّي 1، 0.5، 0.25، 0.125، … — عمره ما بيوصل صفر بالظبط، وعشان كده اسمه \"infinite\" impulse response.",
       "الـ Filters عبارة عن 2 coefficient vectors: <b>A = {a<sub>k</sub>}</b> (feedback) و<b>B = {b<sub>k</sub>}</b> (feed-forward). الـ <code>filter(B,A,X)</code> في MATLAB بتنفذ IIR/FIR hybrid اسمه \"Direct Form II Transposed\": a(1)y(n) = b(1)x(n) + … + b(nb+1)x(n − nb) − a(2)y(n − 1) − … − a(na+1)y(n − na). لو a(1) ≠ 1 الـ coefficients بتتعمل normalise بالقسمة على a(1)؛ ولو a(1) = 0 بيطلع error.",
       "الـ Filter banks ممكن <b>تتعمل بالإيد</b> (زي IIRdemo.m: cut-off fg = 4000 Hz، sampling fa = 48000 Hz، k = tan(π·fg/fa)، coefficients من الـ 2nd-order b(1..3)، a(1..3) مع a(1) = 1) أو بـ functions في MATLAB: <code>butter, buttord, besself, cheby1, cheby2, ellip</code>. لما تطبقها بالإيد بتستخدم state variables xh1، xh2، yh1، yh2 جوه loop؛ بس <code>filter()</code> أحسن لأنها عامة (أي طول للـ filter)."
-     ]
+     ],
+     "figH": {
+      "mm-iir-graph": "الـ IIR signal flow graph: الـ output راجع على delays متضروبة",
+      "mm-fir-graph": "الـ FIR signal flow graph: الـ feed-forward delays من غير feedback",
+      "mm-impulse": "الـ impulse response: الـ IIR مبيوصلش للصفر والـ FIR بيقف",
+      "mm-filter-ba": "الـ <bdi>filter(B, A, X)</bdi> بتاع MATLAB محسوب sample بـ sample",
+      "mm-iirdemo": "الـ IIRdemo.m: الـ coefficients والـ state variables بتاعة الـ loop"
+     }
     },
     {
      "h": "الـ Frequency domain والـ Fourier Transform",
@@ -329,7 +367,14 @@ AR.mm = {
       "الـ <b>Sinusoidal decomposition</b>: أي digital signal ينفع يتفكك لـ sine waves بـ amplitude وfrequency وphase مختلفين، ولما تجمعهم ترجع الـ original. مثال (additive synthesis): square(ish) wave بـ 200 Hz = sinusoids عند <b>200، 600، 1000 Hz …</b> (المضاعفات الفردية).",
       "الـ Filtering في الـ frequency space = إنك تعمل attenuate أو تشيل frequencies: <b>low-pass</b> (تتجاهل الـ high-frequency noise وتسيب الـ low)، <b>high-pass</b> (العكس)، <b>band-pass</b> (range معين بس). فكّر في الـ <b>graphic equaliser</b>.",
       "أدوات رياضة للتذكير: sin(−x) = −sin(x) (odd)، cos(−x) = cos(x) (even)؛ الـ phasor r·e<sup>iφ</sup> = r(cos φ + i sin φ)؛ ∫e<sup>kx</sup>dx = e<sup>kx</sup>/k."
-     ]
+     ],
+     "figH": {
+      "mm-chord": "الـ chord بتاع البيانو في الـ temporal domain والـ frequency domain",
+      "mm-8hz": "الـ sine اللي بـ <bdi>8 Hz</bdi> والـ peak الوحيدة بتاعتها",
+      "mm-image-line": "الـ spatial frequencies على خط في صورة: object وكلام و noise",
+      "mm-additive": "جمع sines بـ <bdi>200, 600, 1000 Hz</bdi> عشان تطلع square wave",
+      "mm-eq": "الـ filtering كأنه graphic equaliser: الـ low-pass والـ high-pass والـ band-pass"
+     }
     },
     {
      "h": "قوانين الـ FT والـ DFT والـ spectra",
@@ -344,7 +389,14 @@ AR.mm = {
       "الـ <b>Magnitude spectrum</b>: |F(k)| = √(F<sub>R</sub>(k)<sup>2</sup> + F<sub>I</sub>(k)<sup>2</sup>) (في MATLAB <code>abs(fft(X,N))/N</code>). الـ <b>Phase spectrum</b>: φ = arctan(F<sub>I</sub>(k)/F<sub>R</sub>(k)) (<code>angle</code>). مثال: F = 3 + 4i → |F| = 5، φ = arctan(4/3) ≈ 53.13°.",
       "<b>من الـ sample point للـ frequency</b>: <b>f<sub>k</sub> = k·f<sub>s</sub>/N</b>، خطوات متساوية كل واحدة f<sub>s</sub>/N من 0 لحد (N−1)f<sub>s</sub>/N Hz. مثال: f<sub>s</sub> = 8000 Hz، N = 256 → الخطوة 31.25 Hz، k = 32 → 1000 Hz.",
       "الـ <b>Spectrogram</b> (time-frequency): بتقسم الـ signal لـ segments وتعمل <b>Short-Time Fourier Transform (STFT)</b> بـ window؛ والـ window من نوع <b>Blackman أو Hamming أو Hanning</b> بيقلل الـ leakage effect. في MATLAB <code>spectrogram(y,512,20,1024,Fs)</code>. والـ Aphex Twin مشهور إنه خبّى صور (وشّه) جوه الـ spectrogram بتاع tracks في الـ Windowlicker EP."
-     ]
+     ],
+     "figH": {
+      "mm-sinc": "الـ Fourier transform بتاع الـ top hat هو الـ sinc function",
+      "mm-dft": "مجموع الـ DFT كأسهم phasors بتتجمع ورا بعض",
+      "mm-mag-phase": "الـ magnitude والـ phase لعدد complex",
+      "mm-bin-freq": "من الـ sample point k للـ frequency بالـ Hz",
+      "mm-spectrogram": "بناء الـ spectrogram بالـ windowed STFT والـ leakage"
+     }
     },
     {
      "h": "الـ Filtering في الـ frequency domain",
@@ -356,7 +408,14 @@ AR.mm = {
       "الـ <b>Butterworth low-pass</b>: <b>H(u,v) = 1 / (1 + [(u<sup>2</sup> + v<sup>2</sup>)/w<sub>0</sub><sup>2</sup>]<sup>n</sup>)</b>، n = الـ order. ده <b>top hat ناعم (smoothed)</b> (دايرة مـ blurred في الـ 2D): بيحتفظ بشوية high-frequency information فـ <b>بيقلل الـ blurring</b>/الـ ringing مقارنةً بالـ ideal filter. عند الـ cut-off بالظبط H = 1/2؛ والـ 2nd order عند ضعف الـ cut-off: 1/(1 + 4<sup>2</sup>) = 1/17 ≈ 0.059.",
       "الـ Noise بيتضاف في MATLAB بـ <code>imnoise()</code>؛ والـ cut-off الأوطى بيشيل noise أكتر بس بيعمل blur أكتر.",
       "Filters تانية: <b>high-pass</b> (بتختار اللي فوق u<sub>0</sub>؛ وعادةً بتتعرّف إنها <b>1 − low-pass = 1 − H</b>)، <b>band-pass</b> (بتحتفظ بـ u<sub>0</sub>…u<sub>1</sub>)، <b>band-reject</b> (بتعمل attenuate لـ u<sub>0</sub>…u<sub>1</sub>)، <b>notch</b> (بتعمل attenuate لـ band ضيق حوالين u<sub>0</sub>)، <b>resonator</b> (بتعمل amplify لـ band ضيق حوالين u<sub>0</sub>)."
-     ]
+     ],
+     "figH": {
+      "mm-lpf-1d": "الـ low-pass filtering بـ <bdi>G = H·F</bdi> على إشارة فيها noise خطوة بخطوة",
+      "mm-ideal-2d": "الـ ideal 2D low-pass: النقطة جوه الدايرة ولا برّه؟",
+      "mm-butter": "الـ ideal قصاد الـ Butterworth low-pass في 1D و 2D",
+      "mm-image-lpf": "فلترة صور السلايدز بالـ fft2: الـ ideal والـ Butterworth والـ high-pass",
+      "mm-other-filters": "أشكال الـ high-pass والـ band-pass والـ band-reject والـ notch والـ resonator"
+     }
     },
     {
      "h": "الـ Convolution والـ convolution theorem والـ deconvolution",
@@ -367,7 +426,12 @@ AR.mm = {
       "الـ <b>Convolution theorem</b>: الـ FT بتاع f(x) * g(x) هو ببساطة <b>حاصل الضرب F(u)·G(u)</b>. الـ convolution في الـ frequency space سهل (مجرد ضرب)، وعشان كده <code>G = H.*F</code> بتشتغل.",
       "الـ Fast convolution / الـ <b>deconvolution</b>: اعمل FT للـ audio/image، واعمل FT لتأثير الـ system، و<b>اضرب</b> عشان تطبق effect (زي الـ reverb) أو <b>اقسم</b> عشان تشيله/تعوّضه، وبعدين inverse FT. لما تقسم صورة اتعملها blur بـ Butterworth على H (<code>Ghigh = G./H</code>) ده بيشتغل زي high-pass filter وبيرجّع F في الحالة المثالية.",
       "في الواقع الـ blurring function H بالظبط بتبقى مش معروفة، والـ noise بيبوّظ الـ deconvolution (الـ noise بيتضخّم): <b>الـ deconvolution مش دايمًا بالبساطة دي</b>."
-     ]
+     ],
+     "figH": {
+      "mm-convolve": "الـ convolution للـ top hats: اعكس وزق وقيس التداخل",
+      "mm-conv-theorem": "التأكد من الـ convolution theorem: الجمع المباشر قصاد <bdi>F·G</bdi>",
+      "mm-deconv": "الـ deconvolution بـ <bdi>G./H</bdi> وإزاي الـ noise بيبوّظه"
+     }
     }
    ],
    "cards": [
@@ -588,7 +652,10 @@ AR.mm = {
      "pts": [
       "<b>Static / discrete media</b>: <b>مش معتمدة على الزمن (time independent)</b>. أمثلة: data عادية، text، صورة واحدة، graphics.",
       "<b>Continuous media</b>: <b>معتمدة على الزمن (time dependent)</b>. أمثلة: video، animation، audio."
-     ]
+     ],
+     "figH": {
+      "mm-l3-media-time": "الـ static media ثابتة مع الزمن، والـ continuous media بتتغير على نفس الساعة"
+     }
     },
     {
      "h": "الـ Analog والـ digital signals، والـ ADC والـ DAC",
@@ -598,7 +665,12 @@ AR.mm = {
       "<b>الـ ADC (Analog-to-Digital Converter)</b>: hardware خاص بياخد الـ analog signals من analog sensor (زي الـ microphone) ويعملها sampling بشكل digital (زي الـ sound card).",
       "<b>الـ DAC (Digital-to-Analog Converter)</b>: العكس، وبيُستخدم في الـ playback. بياخد digital signal (ممكن تكون اتعدلت، زي تغيير الـ volume أو الـ equalisation) ويطلّع analog signal لـ analog output device (سماعة loudspeaker، RGB monitor).",
       "خلاصة الكورس: الـ ADC = <b>sampling</b> (من continuous لـ discrete في الزمن) + <b>quantisation</b> (من discrete لـ digital values). يعني Digital = sampling + quantisation."
-     ]
+     ],
+     "figH": {
+      "mm-l3-sensors": "الـ transducers بتحوّل الحرارة والصوت والضوء لـ electrical signals",
+      "mm-l3-adc-dac": "تسجيل بالـ ADC، تعديل الأرقام، وتشغيل بالـ DAC",
+      "mm-l3-digital": "خطوة بخطوة: الـ Digital يساوي sampling + quantisation"
+     }
     },
     {
      "h": "الـ pipeline من analog لـ digital لـ analog",
@@ -608,7 +680,10 @@ AR.mm = {
       "بعد الـ anti-aliasing filter، الـ ADC بيعمل <b>quantise</b> للـ input المتصل ويحوّله لـ levels متقطعة (discrete).",
       "بعد الـ digital processing، الـ DAC بيحوّل الـ discrete levels لـ voltages أو currents متصلة.",
       "الـ output كمان لازم يتعمله filter بـ <b>low-pass filter</b> عشان يشيل الـ aliases (images) اللي جت من الـ sampling. ممكن يحصل processing زيادة بعد كده (filtering، mixing) بس مش في المنهج."
-     ]
+     ],
+     "figH": {
+      "mm-l3-pipeline": "الإشارة في كل مرحلة من الـ A-D-A pipeline، بالـ filters ومن غيرها"
+     }
     },
     {
      "h": "التقاط وتخزين كل medium",
@@ -618,7 +693,13 @@ AR.mm = {
       "<b>Text</b>: keyboard، speech input، OCR، disk. <b>1 byte لكل حرف</b> (ASCII)، وأكتر في الـ Unicode. الـ Spreadsheets ممكن تكون text (CSV) أو binary. الـ Formatted text: HTML، RTF، Word، program source. مش temporal بس ممكن يكون ليه sequence ضمني. الحجم مش مهم. الـ Compression (zip، RAR، 7-zip) مريح للأرشفة، بس الـ general-purpose compressors ممكن ما تشتغلش كويس مع الـ audio أو الـ images أو الـ video.",
       "<b>Graphics</b>: متكونة من primitives (lines، polygons، circles، curves، arcs)؛ بتتعمل بـ editors (Illustrator، Freehand) أو برامج (PostScript)؛ الـ input بالـ keyboard، mouse، trackball، tablet؛ <b>ينفع تتختار وتتعدل</b> (عكس الـ images)؛ الـ storage قليل. الـ Standard: <b>OpenGL</b> (API لـ 2D/3D graphics شغال مع لغات ومنصات مختلفة cross-language, cross-platform).",
       "<b>Animation</b>: سلسلة graphics كل واحدة متغيرة شوية عن اللي قبلها. 2D (Flash): <b>key-frame interpolation — tweening</b> للحركة والشكل. 3D (Maya): تغييرات في الشكل والـ texture والمكان والإضاءة والكاميرا. الـ graphics animation <b>compact</b> (حجمها صغير)، فمناسبة للإرسال على الـ network."
-     ]
+     ],
+     "figH": {
+      "mm-l3-capture": "أنهي مصادر محتاجة digitising، وكل واحد بيدخل إزاي",
+      "mm-l3-text-bytes": "الـ text حرف حرف: 1 byte لكل حرف ASCII، وأكتر في الـ Unicode",
+      "mm-l3-vector-bitmap": "عدّل رسمة السلايد كـ graphics primitives، وبعدين كـ pixels",
+      "mm-l3-tween": "الـ Tweening: اتنين key frames والباقي بيتحسب"
+     }
     },
     {
      "h": "أحجام الـ images والـ audio والـ video",
@@ -627,7 +708,11 @@ AR.mm = {
       "<b>Audio</b>: analog متصل، من الـ microphones وبعدين بيتعمله digitise. الـ CD quality = <b>16-bit عند 44.1 kHz</b>؛ الـ audiophile 24-bit، 96 kHz. دقيقة mono CD = 5 MB؛ stereo = 10 MB. غالبًا بيتعمله compression (MP3، AAC، FLAC، Ogg Vorbis).",
       "<b>Video</b>: بيتصوّر بكاميرا (الكاميرات الـ digital دلوقتي بتعمل digitise كمان). الـ Raw video = سلسلة صور بـ <b>25 أو 30 أو 50 fps</b>.",
       "أحجام الـ video (من غير compression، في الثانية): 512×512 monochrome: 25 × 0.25 = <b>6.25 MB</b>؛ PAL 720×576 colour: ≈ 1.2 × 25 = <b>30 MB</b>؛ HD Blu-ray 1920×1080 (≈2 megapixels): ≈ 6 × 25 = <b>150 MB</b>، يعني تقريبًا <b>9 GB في الدقيقة</b>. (Lecture 1 بتذكر نفس الأمثلة بـ 31 MB و155 MB باستخدام 1.24 و6.2 MB لكل frame.)"
-     ]
+     ],
+     "figH": {
+      "mm-l3-bitmap": "الـ bitmap بتاعة السلايد (10×10 قيم grey) وحجمها حسب الـ bits لكل pixel",
+      "mm-l3-video-rate": "حجم الـ video من غير compression في الثانية والدقيقة عند 25 أو 30 أو 50 fps"
+     }
     },
     {
      "h": "حسابات أحجام محلولة",
@@ -636,7 +721,10 @@ AR.mm = {
       "<b>PAL frame</b>: 720 × 576 = 414,720 pixels × 3 B = 1,244,160 B ≈ 1.2 MB.",
       "<b>صورة 10 megapixel</b>: 10,000,000 × 3 B = 30,000,000 B = 28.6 MB (لو 1 MB = 1,048,576 B) ≈ 29 MB.",
       "<b>دقيقة mono CD audio</b>: 44,100 × 16 bits × 1 × 60 = 42,336,000 bits = 5,292,000 B ≈ 5.05 MB."
-     ]
+     ],
+     "figH": {
+      "mm-l3-worked": "حسابات الأحجام الأربعة، سطر سطر"
+     }
     },
     {
      "h": "الـ Roadmap: المواضيع العامة",
@@ -800,7 +888,12 @@ AR.mm = {
       "<b>الـ Sampling</b> = إننا نقيس الـ analog signal على <b>فترات discrete منتظمة</b> (الـ sampling interval T) ونسجل القيمة عند النقط دي.",
       "شكل (سلايد 5، Digital Sampling (1)): فوق، الـ analog signal المتصلة <b>y(t)</b> مع t (منحنى ناعم بيطلع وبعدين ينزل)؛ تحت، الـ sampled signal <b>y<sub>s</sub>(t)</b>: خطوط رأسية (stems) فوقها دواير عند أوقات منتظمة T<sub>s</sub>، 2T<sub>s</sub>، 3T<sub>s</sub>، 4T<sub>s</sub>، …، وطول كل خط قد قيمة الإشارة عند النقطة دي.",
       "شكل (سلايد 6، Digital Sampling (2)): إشارة <b>S(t)</b> متظللة مع t، بتطلع فوق المحور وتنزل تحته؛ والـ samples <b>S<sub>i</sub></b> نقط على المنحنى عند sample indices من 0، 1، …، i، 4، 5، …، 13، نقطة كل sampling interval <b>T</b>."
-     ]
+     ],
+     "figH": {
+      "mm-digitise": "تحويل الصوت لـ digital: من موجات الصوت لحد الأرقام الـ binary",
+      "mm-sampling-1": "الـ Digital sampling الأولى: بنقيس الـ analog signal على فترات منتظمة",
+      "mm-sampling-2": "الـ Digital sampling التانية: sample واحدة كل sampling interval اسمه T"
+     }
     },
     {
      "h": "الـ Sample rate والـ bit size (الـ quantisation)",
@@ -808,7 +901,10 @@ AR.mm = {
       "<b>الـ Bit size = quantisation</b>: إزاي بنخزن قيمة كل sample؟ قيمة <b>8-bit</b>: من 0 لـ 255. قيمة <b>16-bit</b> (integer): من 0 لـ 65535.",
       "<b>الـ Sample rate</b>: بناخد كام sample في الثانية (Hz). <b>11.025 kHz</b> — للكلام speech (التليفون <b>8 kHz</b>)؛ <b>22.05 kHz</b> — audio جودة ضعيفة (WWW audio، راديو AM)؛ <b>44.1 kHz</b> — جودة CD.",
       "الـ Sampling frequency (الـ sample rate) = عدد الـ samples في الثانية = <b>1 / sampling interval</b>. الوحدة: <b>Hertz (Hz)</b>."
-     ]
+     ],
+     "figH": {
+      "mm-bit-rate": "جرّب: اختار sample rate وشوف قيمة الـ sample بـ 8 bit و16 bit"
+     }
     },
     {
      "h": "نظرية Nyquist للـ sampling والـ aliasing",
@@ -825,14 +921,25 @@ AR.mm = {
       "الـ aliasing صوته عامل إزاي؟ (سلايد 13: دوس على الصور عشان تسمع): <b>Sine Wave</b> و<b>Aliased Sine Wave</b> و<b>Aliased Piano</b>. فيه <b>MATLAB code</b> لديمو الـ sine: Plot Version وAudio Version. وهنشوف أكتر عن <b>الـ sampling artefacts في الصور والـ video</b> بعدين.",
       "<b>الـ Oversampling</b> = sampling أعلى من الـ Nyquist rate. بيقلل الـ aliasing بس بيكلّف data أكتر.",
       "المعنى العملي: لازم الإشارة تعدي على <b>low-pass filter قبل الـ sampling</b>: Input Signal (Analog) → <b>Low Pass Filter</b> → Filtered Signal (Analog) → <b>A/D Converter</b> → Sampled Signal (Digital). وإلا الـ frequencies اللي فوق حد Nyquist هتظهر كـ artefacts غريبة."
-     ]
+     ],
+     "figH": {
+      "mm-nyquist-3": "الـ sampling لـ sine عند الـ frequency بتاعتها وضعفها وأكتر منها",
+      "mm-nyquist-calc": "جرّب: احسب الـ Nyquist sample rate لأي signal",
+      "mm-alias-panels": "لو الـ Nyquist sampling غلط (1): بنعمل sampling أقل وأقل",
+      "mm-same-samples": "لو الـ Nyquist sampling غلط (2): تلات sinusoids بيعدوا على نفس الـ samples",
+      "mm-alias-sound": "جرّب: اسمع الـ aliasing في sine sweep متعمله sampling بـ 8 kHz",
+      "mm-lowpass": "الـ low pass filter قبل الـ sampling، وإلا الـ aliasing يدخل"
+     }
     },
     {
      "h": "ليه الـ sample rate بتاع الـ CD هو 44.1 kHz؟",
      "pts": [
       "أعلى مدى لسمع الإنسان حوالي <b>20–22 kHz</b>. لو طبقنا Nyquist، محتاجين على الأقل الضعف: 2 × 22.05 kHz = <b>44.1 kHz</b>.",
       "ثوابت الكورس: <b>الـ audio/music</b> fmax = 22.05 kHz → fs = 44.1 kHz؛ <b>الـ speech</b> fmax = 4 kHz → fs = 8 kHz. الـ Mono = channel واحد؛ الـ stereo = 2 channels."
-     ]
+     ],
+     "figH": {
+      "mm-cd-rate": "ليه الـ CD audio بيتعمله sampling بـ 44.1 kHz"
+     }
     },
     {
      "h": "تأثير الـ sample rate والـ bit size على الجودة والحجم",
@@ -841,7 +948,11 @@ AR.mm = {
       "الـ <b>16-bit</b> الـ signal-to-noise ratio بتاعه <b>98 dB</b> (تقريبًا مش مسموع)؛ والـ <b>8-bit</b> الـ signal-to-noise ratio بتاعه <b>50 dB</b>. عشان كده الـ 8-bit noisy أكتر بحوالي 8 مرات. <b>زيادة 6 dB معناها الصوت أعلى بالضعف</b>. ‡ الـ \"حوالي 8 مرات\" ده كلام السلايد نفسه؛ ومش جاي من 48 dB ÷ 6 dB، لأن بقاعدة الـ 6 dB = الضعف، فرق 48 dB هيبقى 2<sup>8</sup> = 256 مرة.",
       "أمثلة الصوت في السلايد: 44 kHz 16-bit، 44 kHz 8-bit، 22 kHz 16-bit، 22 kHz 8-bit، 11 kHz 8-bit (كلهم mono): الجودة بتقل كل ما الـ rate والـ bits يقلوا.",
       "sample rate أو bit size أعلى = جودة أحسن بس <b>ملفات أكبر</b>. وزيادة الـ fs عن اللي السمع محتاجه مش \"دايمًا بتحسّن\" الجودة."
-     ]
+     ],
+     "figH": {
+      "mm-quality-play": "جرّب: اسمع الجودة وهي بتقل مع samples وbits أقل",
+      "mm-size-table": "دقيقة audio واحدة: الحجم حسب الـ sample rate والـ bits والـ channels"
+     }
     },
     {
      "h": "حجم ملف الـ audio — أمثلة محلولة (ملخص الكورس)",
@@ -854,7 +965,10 @@ AR.mm = {
       "<b>مثال 4</b>: speech، 32-bit، 2.5 h، stereo → fs = 2 × 4000 = 8000 Hz؛ t = 9000 s؛ الحجم = 8000 × 32 × 9000 × 2 = <b>4,608,000,000 bits</b> = 576,000,000 B = <b>562,500 KB</b>.",
       "<b>مثال 5</b>: x(t) = 2A·cos(200πt + π/3) + 3A·sin(100πt − π/6). كل term شكله 2πf·t، يبقى f1 = 200π/2π = <b>100 Hz</b>، f2 = 100π/2π = <b>50 Hz</b>؛ fmax = 100 Hz → fs ≥ 200 Hz → الـ sampling interval T ≤ 1/200 = <b>0.005 s</b> (أكبر interval مسموح).",
       "<b>الـ Sampling intervals</b>: الـ speech 1/8000 = <b>0.000125 s</b> (125 µs)؛ الـ music 1/44,100 ≈ <b>0.0000227 s</b> (22.68 µs)."
-     ]
+     ],
+     "figH": {
+      "mm-size-calc": "جرّب: حاسبة حجم ملف الـ audio"
+     }
     },
     {
      "h": "الـ Audio file formats",
@@ -862,7 +976,10 @@ AR.mm = {
       "formats مشهورة: <b>.au</b> (أصله: Unix، Sun)، <b>.aiff</b> (Mac، SGI)، <b>.wav</b> (PC، DEC). ينفع نستخدم compression في <b>بعض</b> الـ formats دي بس <b>مش إجباري</b>.",
       "طريقة audio compression بسيطة ومستخدمة كتير (<b>في الـ formats اللي فوق</b>) هي <b>ADPCM</b> (Adaptive Delta Pulse Code Modulation): بناءً على الـ samples اللي فاتت <b>بيتوقع الـ sample الجاية</b> وبيعمل encode لـ <b>الفرق</b> بين القيمة الحقيقية والقيمة المتوقعة. هنشوف أكتر عنها بعدين (Audio Compression).",
       "فيه formats كتير مرتبطة بـ audio applications. formats تانية (أغلبها بيستخدم compression): Sound Blaster <b>.voc</b> (ممكن تستخدم silence deletion)، Pro Tools/Sound Designer <b>.sd2</b>، RealAudio <b>.ra</b>، Ogg Vorbis <b>.ogg</b>، AAC/Apple/mp4، FLAC <b>.flac</b>، Dolby AC coding، MPEG audio (MP3، MPEG-4)."
-     ]
+     ],
+     "figH": {
+      "mm-adpcm": "الـ ADPCM بيتوقع الـ sample الجاية ويخزن الفرق بس"
+     }
     },
     {
      "h": "الأصوات الـ Synthetic — تقليل الـ bandwidth",
@@ -872,7 +989,11 @@ AR.mm = {
       "صور (سلايد 22): MIDI keyboard صغير متوصل بـ laptop (ومعاه headphones)، وMIDI keyboard متوصل بـ tablet.",
       "الطرق: <b>FM</b> (Sound Blaster الرخيصة، شريحة OPL-4، Yamaha DX، أوائل الثمانينات)؛ <b>wavetable</b> (من samples لآلات حقيقية)؛ <b>additive</b> (بنجمع waveforms أبسط)؛ <b>subtractive</b> (بنعمل filter لأجزاء من waveform معقدة)؛ <b>granular</b> (بنستخدم حتت صغيرة من samples موجودة عشان نعمل أصوات جديدة)؛ <b>physical modelling</b> (بنعمل model بالـ software لطريقة توليد الصوت الـ acoustic)؛ <b>sample-based</b> (تسجيل وإعادة تشغيل audio متسجل، غالبًا حتت صغيرة ومعمول عليها processing). أغلب الـ synthesisers الحديثة بتخلط بين طرق الـ sample والـ synthesis.",
       "تشبيه: الصوت المتسجل ≈ bitmap image (sampling منتظم، كبير، صعب تعدله)؛ الصوت الـ synthetic ≈ <b>vector graphics</b> (وصف high-level، صغير، سهل تعدله، ومحتاج تحويل — synthesis أو rasterisation — قبل التشغيل/العرض). الفرق: 1D مقابل 2D."
-     ]
+     ],
+     "figH": {
+      "mm-synth-pipe": "الـ synthesis pipeline، والصوت المتسجل قصاد الصوت الـ synthetic",
+      "mm-synth-methods": "طرق الـ sound synthesis، وجرّب الـ additive والـ subtractive"
+     }
     }
    ],
    "cards": [
@@ -1132,7 +1253,16 @@ AR.mm = {
       "<b>Attack</b>: الصوت بيوصل لأعلى volume بسرعة قد إيه بعد ما تدوس الزرار (تقريبًا فوري في معظم الآلات الميكانيكية؛ بطيء في الـ bowed strings والـ \"pads\"). <b>Decay</b>: بينزل للـ sustain level بسرعة قد إيه بعد الـ peak. <b>Sustain</b>: الـ volume الثابت اللي بيفضل لحد ما تسيب الزرار — ده <b>level مش وقت</b>. <b>Release</b>: بيخفت بسرعة قد إيه بعد ما تسيب الزرار (قصير جدًا في الـ organ؛ طويل في الجرس أو البيانو مع الـ sustain pedal).",
       "الـ MATLAB demo <code>subtract_synth.m</code>: sawtooth عند 440 Hz، Fs = 22050، بيتعمله filter بـ <code>butter(1,0.04,'low')</code> و<code>butter(4,0.04,'low')</code> وبعدين <code>filter()</code>. الـ cut-off 0.04 ده نسبة من الـ Nyquist: 0.04 × 11025 = <b>441 Hz</b>. الـ filter الـ 4th-order بيشيل من الـ partials العالية أكتر من الـ 1st-order.",
       "<code>synth.m</code> بيعمل notes من نوع 'sine' أو 'saw' أو 'fm'. الـ period بتاع الـ sawtooth فيه T = Fs/freq samples (22050/440 ≈ 50.1 samples) ومتبني بـ <code>ramp - fix(ramp)</code>؛ الـ up slope بتاعه non-linear، صوته أقل حدة شوية وأنسب للـ synthesis. الأطراف بتتنعّم بـ ramp مدته 10 ms."
-     ]
+     ],
+     "figH": {
+      "mm-5-bowed": "الوتر بالقوس: sawtooth عليه low-pass filter",
+      "mm-5-vocal": "الصوت البشري كـ oscillator و filter: الـ ooh والـ aah والفلتر اللي بيتحرك",
+      "mm-5-noise": "الـ white noise بعد الـ filter بيبقى pink noise",
+      "mm-5-control": "الـ source والـ filter والـ amplitude envelope تظبطهم بنفسك",
+      "mm-5-adsr": "الـ ADSR envelope: أربع مراحل وأربع آلات",
+      "mm-5-butter": "الملف subtract_synth.m بـ <bdi>butter(1, 0.04)</bdi> قصاد <bdi>butter(4, 0.04)</bdi>",
+      "mm-5-synth-saw": "إزاي synth.m بيبني الـ sawtooth بتاعه sample ورا sample"
+     }
     },
     {
      "h": "الـ Additive synthesis",
@@ -1143,7 +1273,12 @@ AR.mm = {
       "الأساس: <b>Fourier theory</b> — أي timbre بعد ما تحلله لـ sinusoids تقدر تبنيه تاني بإنك تجمعهم.",
       "<b>الميزة</b>: يقدر يعيد عمل الـ micro-variations في الـ frequency والـ amplitude بتاعة كل partial، ودي اللي بتخلي الأصوات الطبيعية غنية وفيها حياة. <b>العيب</b>: <b>مش efficient</b> — لازم تحدد data كتير جدًا عشان صوت مفصّل.",
       "أمثلة: تقريب <b>square wave</b> بجمع sine waves (الـ odd harmonics f، 3f، 5f، … بـ amplitudes 1، 1/3، 1/5، …؛ مثلًا لـ 100 Hz: 100، 300، 500 Hz …)، والـ <b>Aphex Twin spectrogram</b> (additive synthesis بالـ inverse-Fourier بي\"رسم\" sinusoids من شدة الصورة ومكان الـ pixel)."
-     ]
+     ],
+     "figH": {
+      "mm-5-partials": "كل partial بالـ amplitude envelope بتاعه",
+      "mm-5-square": "موجة square wave متبنية من الـ odd harmonics بتوع <bdi>100 Hz</bdi>",
+      "mm-5-paint": "ارسم spectrogram وشوفه كـ sinusoids متجمعة"
+     }
     },
     {
      "h": "الـ FM (Frequency Modulation) synthesis",
@@ -1156,7 +1291,12 @@ AR.mm = {
       "الـ J<sub>0</sub>(I) بيحدد الـ amplitude بتاع الـ <b>carrier</b>؛ والـ J<sub>n</sub>(I) بيحدد الـ sidebands رقم n العلوية والسفلية. الـ sidebands اللي order بتاعها عالي بيبقى فيها energy ملحوظة بس لما I يكون <b>كبير</b>؛ الـ bandwidth بيزيد مع I؛ لو I &gt; 1 الـ energy بتتسحب أكتر وأكتر من الـ carrier؛ وطاقة الـ sidebands بتتغير زي damped sinusoid مع زيادة I.",
       "الـ <b>Operators</b> = الـ oscillators في مصطلحات الـ FM؛ الـ FM synths فيها <b>4 أو 6</b> operators لأن carrier واحد + modulator واحد مش معقد كفاية. الـ <b>Algorithms</b> = توصيلات preset: <b>Multiple carriers</b> (oscillator واحد بيعمل modulate لـ 2 carriers أو أكتر)، <b>Multiple modulators</b> (2 oscillators أو أكتر بيعملوا modulate لـ carrier واحد)، <b>Feedback</b> (الـ output بتاع oscillator بيعمل modulate لنفسه).",
       "أمثلة FM تانية: compressing/uncompressing sine، periodic modulation، bell، wood block، brass."
-     ]
+     ],
+     "figH": {
+      "mm-5-fm-basic": "الـ modulator والـ carrier وموجة الـ FM",
+      "mm-5-bessel": "الـ Bessel functions بتحدد amplitude الـ carrier والـ sidebands",
+      "mm-5-fm-algo": "الـ FM algorithms: كذا carrier وكذا modulator والـ feedback"
+     }
     },
     {
      "h": "مثال محلول: الـ FM sidebands",
@@ -1166,7 +1306,11 @@ AR.mm = {
       "n = 2: 440 ± 60 = <b>380 Hz و500 Hz</b> (J<sub>2</sub>). n = 3: 440 ± 90 = <b>350 Hz و530 Hz</b> (J<sub>3</sub>).",
       "كل ما I يكبر أثناء الـ note، sidebands أكتر بتاخد energy، فالصوت بيبقى أنصع/أعقد تدريجيًا.",
       "مثال harmonic: fc = 200، fm = 200 (نسبة 1:1) بيدي 200 ± 200n → 0، 400، 600 … كلهم مضاعفات 200 Hz (harmonic). ومع fm = 141 Hz (نسبة non-integer) الـ sidebands 59، 341، 482 … مش مضاعفات لـ fundamental مشترك → صوت زي الجرس، inharmonic."
-     ]
+     ],
+     "figH": {
+      "mm-5-fm-eg": "الملف fm_eg.m: الـ sidebands حوالين <bdi>440 Hz</bdi> والـ I بيزيد",
+      "mm-5-fm-ratio": "النسبة <bdi>1:1</bdi> الـ harmonic قصاد <bdi>200 : 141</bdi> اللي شبه الجرس"
+     }
     },
     {
      "h": "الـ Sample-based synthesis",
@@ -1179,7 +1323,13 @@ AR.mm = {
       "<b>Multisampling</b>: بتسجّل الآلة على فترات منتظمة بتغطي مناطق من notes جنب بعض (<b>splits</b>) أو كل note — فالانتقال من الـ registers الواطية للعالية يبقى طبيعي أكتر. الـ Drum mapping هو المثال اللي مالوش pitch.",
       "<b>Velocity layers</b>: الصوت بيعتمد على قد إيه ضربت الزرار/الوتر/الدرام جامد (key velocity). Single layer: الـ volume بس اللي بيتغير، مفيش تغيير في الـ timbre. Dual layer: صوت 1 عند velocity أقل، وصوت 2 عند velocity أعلى. Triple: تلات أصوات. الـ multisamples بتترتب رأسيًا (vertically) في الـ keymap، والـ velocity layers أفقيًا (horizontally)؛ ومعظم الآلات بتجمع الاتنين.",
       "<b>Keyswitching</b>: زراير (غالبًا زراير واطية برا مدى الآلة) بتختار طريقة العزف (trumpet مكتوم/مفتوح، violin بالنقر/بالقوس) — banks من samples متوزعة على الزراير وفيها velocity layers. الـ samplers المتقدمة فيها أوركسترا كاملة، وكورال بيغني كلام، وتحكم بالـ script (Kontakt 2+)."
-     ]
+     ],
+     "figH": {
+      "mm-5-loop": "إزاي نلاقي الـ loop points: الـ zero crossings والـ pattern matching",
+      "mm-5-multi": "تغيير الـ pitch والـ multisampling على الكيبورد",
+      "mm-5-velocity": "الـ velocity layers والـ key map",
+      "mm-5-keyswitch": "الـ keyswitches بتختار طريقة العزف"
+     }
     },
     {
      "h": "الـ Beat slicing",
@@ -1191,7 +1341,13 @@ AR.mm = {
       "الأدوات: <b>ReCycle</b> (الـ Sensitivity slider بيعمل slices)، <b>Cubase</b> Sample Editor (Hitpoints + Threshold، وبعدين Create Slices)، <b>Groove Agent One</b> drum sampler (اسحب الملف المتقطّع على pad؛ الـ slices بتروح على pads ورا بعض). التطبيق: MIDI chromatic scale بيشغّل كل slice في وقتها الصح عشان يعيد عمل الـ audio.",
       "مشاكل الـ tempo: tempo أبطأ → <b>فراغات صامتة (silent gaps)</b> بين الـ slices؛ tempo أسرع → <b>tail overlap</b> (بيقلل وقت التشغيل). الـ attacks بتفضل من غير artefacts (ودي أهم حتة في الـ percussion).",
       "الحلول: طبّق <b>envelope</b> يخفّت كل slice لحد الصمت قبل الـ gap/الـ overlap؛ وفي حالة الـ gaps، <b>اعمل loop لآخر الـ tail</b> عشان تمدّه ويملا الـ gap."
-     ]
+     ],
+     "figH": {
+      "mm-5-beat": "الـ instant energy قصاد متوسط الثانية: كشف الـ beats",
+      "mm-5-subbands": "كشف الـ beats في 32 frequency sub-band",
+      "mm-5-slices": "الـ hitpoints والـ slices والـ pads",
+      "mm-5-tempo": "الـ tempo الأبطأ والأسرع: الفراغات والتداخل وحلولهم"
+     }
     },
     {
      "h": "الـ Wavetable synthesis",
@@ -1204,7 +1360,13 @@ AR.mm = {
       "الـ Dynamic waveshaping: (1) <b>Linear crossfading</b> — crossfade بالترتيب من table للي بعده باستخدام envelope؛ (2) <b>Sequential enveloping</b> — 2 tables بيتمزجوا في أي لحظة بـ envelopes بتتحرك. الـ Linear crossfading حالة خاصة (subclass) فيها الـ envelopes عبارة عن <b>overlapping triangular pulses</b>.",
       "<b>المميزات</b>: storage صغير (data أقل بكتير من الـ PCM sample لنفس الصوت)؛ عام زي الـ additive synthesis بحسابات real-time أقل بكتير؛ بيستغل الـ quasi-periodicity عشان يشيل الـ redundancy؛ الـ <b>inverse DFT بيتحسب مسبقًا (precomputed)</b> قبل الـ playback بدل ما يتحسب في real time.",
       "الـ Demo <code>wavetable_synth.m</code>: period واحد من sine عند 440 Hz وperiod من saw عند 500 Hz بـ Fs = 22050 (22050/440 ≈ 50 sample، 22050/500 = 44.1 sample) وبيتعملهم crossfade؛ ونفس التقنية ممكن تبني ADSR envelope."
-     ]
+     ],
+     "figH": {
+      "mm-5-wavetable": "صناعة الموجات: tables كل واحد period واحد بتتقري وتتخلط",
+      "mm-5-attack-loop": "الـ attack مرة واحدة وبعدين sustain بيتكرر وعليه envelope",
+      "mm-5-seq-env": "الـ linear crossfading والـ sequential enveloping",
+      "mm-5-crossfade": "الملف wavetable_synth.m فيه period من sine بيعمل crossfade لـ period من saw"
+     }
     },
     {
      "h": "الـ Granular synthesis",
@@ -1217,7 +1379,13 @@ AR.mm = {
       "تلات طرق لتجميع الـ grains: <b>Quasi-synchronous</b> (stream من grains ليهم نفس المدة → amplitude modulation لو الـ grains &lt; 50 ms)، <b>Asynchronous</b> (الـ grains متوزعة stochastically يعني عشوائيًا)، <b>Pitch/Tempo-synchronous</b> (بيحافظ على الـ pitch/tempo وهو بيغيّر سرعة التشغيل؛ envelopes متداخلة ومتزامنة مع frequency الـ waveform بتاعة الـ grain، artefacts أقل).",
       "الـ Demo <code>granulation.m</code>: 400 grain كل واحد 10–20 ms (من fs×0.01 لـ fs×0.02 sample)، مع Hanning fade-in/out مدته 10 ms. عند 44.1 kHz ده 441–882 sample لكل grain. الـ grains اللي متباعدة بانتظام بتتصرف زي <b>filtered pulse train</b>.",
       "<b>PSOLA</b> (Pitch Synchronous Overlap-Add): جاي من الـ speech processing؛ بيقسم الـ waveform لـ segments صغيرة متداخلة. الـ Pitch: لو بعّدت الـ segments عن بعض <b>→ pitch أوطى</b>، لو قرّبتهم <b>→ pitch أعلى</b>. المدة: لو <b>كررت segments → أطول</b>، لو <b>شلت شوية → أقصر</b>. بيتجمعوا تاني بالـ overlap-add. وعكس الـ phase vocoder، <b>مفيش STFT</b> في الـ PSOLA (هو أقدم من الـ phase vocoder). grains بعيدة عن بعض → بينهم صمت؛ grains قصيرة كتير ومتداخلة → texture."
-     ]
+     ],
+     "figH": {
+      "mm-5-grain": "الـ grain عبارة عن envelope مضروب في contents، والـ spectrum بتاعها",
+      "mm-5-grain-modes": "الـ grains الـ quasi-synchronous والـ asynchronous والـ pitch-synchronous",
+      "mm-5-granulation": "الملف granulation.m بيعمل grains عشوائية من <bdi>441</bdi> لـ <bdi>882</bdi> sample",
+      "mm-5-psola": "الـ PSOLA: حرّك الـ segments للـ pitch وكررها أو شيلها للمدة"
+     }
     },
     {
      "h": "الـ Physical modelling والـ Karplus-Strong",
@@ -1229,7 +1397,12 @@ AR.mm = {
       "محلول: <code>karplus.m</code> بيستخدم fs = 44100، D = 200 → F1 = 44100/200 = <b>220.5 Hz</b>. لو عايز A = 441 Hz محتاج D = 44100/441 = <b>100 sample</b>. الـ filter بتاعه b = −0.99×[0.5 0.5] (averaging بـ gain 0.99 &lt; 1).",
       "نسخة الدرام: X(t) = +½(X(t−p) + X(t−p+1)) باحتمال <b>b</b>، وإلا −½(…). الـ p (طول الـ wavetable، حوالي 150–500) بيحدد الـ decay (كبير = طويل) والـ pitch (كبير = أوطى). <b>b</b> = blend factor (0–1): b = ½ أحسن <b>snare</b>؛ b قريب من 0 → صوت زي الـ <b>string</b>؛ b قريب من 1 → <b>crash cymbal</b> كهربائي غريب.",
       "الـ Presets: crash cymbal b &gt; 0.98، p = 200–800، random table، decaying envelope؛ metallic plink b &gt; 0.98، p = 5–50؛ string b &lt; 0.05، p = 20–400. الـ demo الكامل: notes جيتار، fretted strings، chords وstrumming."
-     ]
+     ],
+     "figH": {
+      "mm-5-ks-diagram": "الـ Karplus-Strong loop فيها noise و delay و filter و feedback",
+      "mm-5-karplus": "الملف karplus.m: الـ <bdi>D = 200</bdi> sample بيدّي <bdi>220.5 Hz</bdi>",
+      "mm-5-ks-drum": "نسخة الـ drum: طول الـ table اللي هو p والـ blend factor اللي هو b"
+     }
     }
    ],
    "cards": [
@@ -1408,7 +1581,10 @@ AR.mm = {
       "الـ MIDI كـ compression: الملف محتاج بس <b>كام 100K bytes</b> storage / bandwidth قليلة جدًا، لأن الـ MIDI بيبعت <b>تعليمات</b> (أنهي note، بصوت عالي قد إيه، أنهي instrument)، مش audio samples.",
       "<b>مسؤولية إنتاج الصوت بتتنقل للـ client</b>: synthesiser module أو sampler أو soundcard أو software synth. معظم الـ web browsers بتعرف تتعامل مع الـ MIDI (plugins زي QuickTime وMPEG-4، ومن 2013 فيه <b>Web MIDI API</b> في HTML5).",
       "التاريخ: الـ MIDI عمره حوالي <b>40 سنة</b> (2022/3) ولسه بيتطور، زي <b>MIDI 2.0</b> (\"High Definition MIDI\"). حتى الـ iPad شغّل sequencer قديم بتاع Commodore."
-     ]
+     ],
+     "figH": {
+      "mm-6-instr": "الـ audio بيبعت samples، والـ MIDI بيبعت تعليمات الـ client بيحوّلها لصوت"
+     }
     },
     {
      "h": "مكونات الـ MIDI system",
@@ -1419,7 +1595,10 @@ AR.mm = {
       "<b>MIDI control input devices</b>: غالبًا keyboard فيه controls زيادة (sustain، pitch bend، modulation، aftertouch)؛ أو instrument تاني (جيتار متعدّل، wind controller)، أو مجموعة controllers، motion capture، virtual input، وحتى \"mind control\"؛ وفيه breath وmotion وbite controllers.",
       "<b>MIDI interfaces</b>: بتوصّل أجهزة الـ MIDI بالكمبيوتر، wired أو wireless؛ غالبًا بتبقى مدمجة في الـ keyboard/controller أو في audio interface؛ عن طريق MIDI cable أو USB أو Ethernet أو Bluetooth أو WiFi.",
       "<b>MIDI control output devices</b>: الـ MIDI بيتحكم في حاجات أكتر من الصوت: <b>الإضاءة، الـ robotics</b> (الـ robot band بتاعة Pat Metheny، الـ <b>Orchestrion</b>)، video systems (video DJing)، <b>MPEG-4 compression</b>، وحتى \"hamster control\"."
-     ]
+     ],
+     "figH": {
+      "mm-6-system": "أجزاء الـ MIDI system، من الـ input device لحد الصوت والـ outputs التانية"
+     }
     },
     {
      "h": "مفاهيم الـ MIDI الأساسية والـ hardware",
@@ -1431,7 +1610,11 @@ AR.mm = {
       "<b>Voice</b>: الجزء من الـ synthesiser اللي بيطلّع الصوت. الـ synthesisers فيها voices كتير (12، 20، 24، 36…)، كل واحد شغال لوحده وفي نفس الوقت عشان يطلّع أصوات بـ timbre وpitch مختلفين.",
       "<b>Patch</b>: الـ control settings اللي بتحدد timbre معيّن.",
       "<b>Connectors</b>: الـ interface الـ standard هو USB أو (القديم) <b>تلات ports بـ 5 pins</b>: <b>MIDI IN</b> (بيستقبل كل الـ MIDI data)، <b>MIDI OUT</b> (بيبعت الـ data اللي الجهاز <b>بيولّدها بنفسه</b>)، <b>MIDI THROUGH</b> (بيعمل <b>echo</b> للـ data اللي جت على الـ MIDI IN). الأجهزة الحديثة بتجمّعهم وبتتوصل مباشرة (USB/Ethernet، Bluetooth/WiFi)."
-     ]
+     ],
+     "figH": {
+      "mm-6-concepts": "الـ track والـ channel والـ timbre والـ pitch والـ voice والـ patch في sequencer و synth واحد",
+      "mm-6-ports": "الـ MIDI IN و OUT و THRU بيوصلوا keyboard و interface و 2 modules"
+     }
     },
     {
      "h": "تركيب الـ MIDI messages",
@@ -1442,14 +1625,21 @@ AR.mm = {
       "<b>Data byte</b>: الـ MSB = <b>0</b>، فكل data value بتبقى 7 bits: <b>0–127</b> (hex 00–7F). وعشان كده الـ status bytes بتبقى hex 80–FF.",
       "ترقيم الـ channels: الـ nibble بيشيل 0–15 بس الموسيقيين بيرقّموا الـ channels <b>1–16</b>. مثال السلايد بيستخدم channel 13 = hex C (يعني قيمة الـ nibble 12 + 1).",
       "التقسيم: <b>Channel messages</b> → <b>voice</b> messages و<b>mode</b> messages. <b>System messages</b> → <b>common</b> و<b>real-time</b> و<b>exclusive</b> messages."
-     ]
+     ],
+     "figH": {
+      "mm-6-bits": "فك <bdi>9C 50 7F</bdi> bit بـ bit: الـ status byte ونوع الـ message والـ channel والـ data",
+      "mm-6-classes": "تقسيم الـ MIDI messages مع الـ status bytes بتاعتها"
+     }
     },
     {
      "h": "الـ Channel voice والـ mode messages",
      "pts": [
       "<b>الـ Channel voice messages</b> بتتبعت على <b>channels منفردة</b> مش global لكل الأجهزة. بتقول للـ receiver يوزّع أصوات على الـ voices بتاعته، ويشغّل ويطفي notes، ويغيّر صوت الـ notes الشغالة.",
       "<b>الـ Channel mode messages</b> حالة خاصة من <b>Control Change (Bx، binary 1011nnnn)</b>. الفرق في <b>أول data byte</b>: القيم من <b>121 لـ 127</b> محجوزة للـ channel mode messages. وهي بتحدد <b>الـ instrument بيعالج الـ voice messages إزاي</b>."
-     ]
+     ],
+     "figH": {
+      "mm-6-builder": "ابني أي voice message من الجدول واعرف الـ mode message"
+     }
     },
     {
      "h": "أمثلة محلولة: فك وحساب حجم الـ MIDI messages",
@@ -1461,7 +1651,12 @@ AR.mm = {
       "الـ <b>Program change</b> فيها data byte <b>واحد</b> بس (2 bytes في المجموع)؛ والـ <b>channel pressure</b> كمان 2 bytes. أما الـ note on/off والـ poly pressure والـ control change والـ pitch bend فـ 3 bytes.",
       "<b>مقارنة الحجم</b>: مقطوعة مدتها دقيقة فيها 1000 note محتاجة 1000 Note On + 1000 Note Off = 2000 × 3 = <b>6000 bytes</b>. دقيقة واحدة stereo CD audio = 44100 × 16 × 2 × 60 / 8 = <b>10,584,000 bytes</b> (حوالي 10 MB). وعشان كده بنقول على الـ MIDI إنه compression tool.",
       "<b>وقت الإرسال</b> (معلومة standard من MIDI 1.0، مش في السلايدز): الـ serial link شغال بـ <b>31.25 kbaud</b> وكل byte بيتبعت كـ <b>10 bits</b> (start + 8 data + stop). يعني message من 3 bytes = 30 bits / 31,250 bit/s = <b>0.96 ms</b>، فتقريبًا 1041 message من 3 bytes في الثانية."
-     ]
+     ],
+     "figH": {
+      "mm-6-decoder": "فك أمثلة الـ notes أو MIDI bytes من عندك",
+      "mm-6-size": "ألف note بالـ MIDI قصاد دقيقة CD audio، بنفس المقياس",
+      "mm-6-wire": "الـ message اللي 3 bytes بتاخد <bdi>0.96 ms</bdi> على link سرعته <bdi>31.25 kbaud</bdi>"
+     }
     },
     {
      "h": "الـ System messages والـ General MIDI",
@@ -1474,7 +1669,12 @@ AR.mm = {
       "<b>الـ Patch map</b>: لستة standard فيها <b>128 instrument</b> في 16 family كل واحدة 8 (1–8 Piano، 9–16 Chromatic Percussion، 17–24 Organ، 25–32 Guitar، 33–40 Bass، 41–48 Strings، 49–56 Ensemble، 57–64 Brass، 65–72 Reed، 73–80 Pipe، 81–88 Synth Lead، 89–96 Synth Pad، 97–104 Synth Effects، 105–112 Ethnic، 113–120 Percussive، 121–128 Sound Effects). مثلًا 1 Acoustic Grand، 41 Violin، 57 Trumpet، 74 Flute، 128 Gunshot.",
       "<b>الـ Percussion map</b>: <b>47 percussion sound</b> على الـ keys <b>35–81</b> (35 Acoustic Bass Drum، 38 Acoustic Snare، 42 Closed Hi-Hat، 49 Crash Cymbal 1، 81 Open Triangle). الـ percussion اللي بالـ keys بتتبعت على <b>channel 10</b> by default (وممكن channels تانية). كل key في الأساس عبارة عن <b>switch</b>، مفيهوش pitch information؛ وممكن كمان يشغّل video (VJ).",
       "<b>متطلبات الـ GM</b>: يدعم كل الـ <b>16 channel</b>؛ كل channel تقدر تعزف instrument مختلف (<b>multitimbral</b>)؛ كل channel تقدر تعزف notes كتير (<b>polyphony</b>)؛ وعلى الأقل <b>24</b> voice بيتوزعوا dynamically بالكامل (غالبًا 64/128) ومتقسمين على كل الـ channels."
-     ]
+     ],
+     "figH": {
+      "mm-6-sysbytes": "الـ system status bytes من <bdi>F0</bdi> لـ <bdi>FF</bdi>: الـ real-time والـ common والـ exclusive",
+      "mm-6-patch": "الـ GM patch map: الـ 128 instrument في 16 عيلة كل عيلة 8",
+      "mm-6-drums": "الـ GM percussion keys من 35 لـ 81 والـ Note On bytes بتاعتها على channel 10"
+     }
     },
     {
      "h": "عيوب الـ MIDI والـ MPEG-4 Structured Audio",
@@ -1490,7 +1690,12 @@ AR.mm = {
       "<b>Scheduler</b>: الجسم الرئيسي للـ Structured Audio؛ بيحدد الـ SAOL بيطلّع الصوت إزاي لما يتشغّل بـ MIDI أو SASL.",
       "<b>AudioBIFS</b>: الـ BIFS = MPEG-4 <b>Binary Format for Scene Description</b>، بيوصف الـ objects (video، أصوات، animations) بتتركب مع بعض إزاي. الـ AudioBIFS بيحدد <b>الـ mixing والـ post-production</b> للـ audio scenes وقت الـ playback (زي صوت متمكسج مع background music، fading بعد 10 s، موسيقى جديدة بـ reverb). ده VRML متوسّع (extended). مثال الـ tree: Piano وBass وVocal AudioSources → AudioFX / AudioDelay → AudioMix nodes → الـ AudioMix النهائي.",
       "<b>HTML5 Web MIDI API</b>: بتخلّي الـ web developers يوصلوا لأجهزة الـ MIDI input/output (hardware وsoftware) بـ JavaScript؛ synthesis جوه الـ browser؛ والدعم لسه مش كامل في كل الـ browsers. أمثلة: <b>Google Doodle Mini Moog</b> (subtractive synthesis، عيد ميلاد Bob Moog الـ 78)، modular subtractive synth، FM (DX7) synth، drum machine، granular synth، Chrome Music Lab."
-     ]
+     ],
+     "figH": {
+      "mm-6-msblsb": "قيمتين 8-bit كـ MSB و LSB بيدّوا range بـ 16-bit",
+      "mm-6-sa-tools": "إزاي الـ 6 Structured Audio tools بيشتغلوا مع بعض",
+      "mm-6-bifs": "شجرة AudioBIFS بتعمل mix للـ Piano والـ Bass والـ Vocal"
+     }
     }
    ],
    "cards": [
@@ -1669,7 +1874,12 @@ AR.mm = {
       "ترتيب standard: <b>Compression → Distortion → EQ → Noise Redux → Amp Sim → Modulation → Delay → Reverb</b>. الـ guitar multi-effects pedal (Zoom G1/G1X) بيوصل 8 modules ورا بعض: COMP/EFX، DRIVE، EQ، ZNR، AMP، MODULATION، DELAY، REVERB (مثلًا الـ MODULATION module فيه Chorus وFlanger...؛ والـ REVERB فيه Hall وRoom...).",
       "<b>التصنيف حسب طريقة معالجة الـ signal</b>:",
       "• <b>Basic filtering</b>: lowpass، highpass، equaliser<br>• <b>Time-varying filters</b>: wah-wah، phaser<br>• <b>Delays</b>: vibrato، flanger، chorus، echo<br>• <b>Modulators</b>: ring modulation، tremolo، vibrato<br>• <b>Non-linear processing</b>: compression، limiters، distortion، exciters/enhancers<br>• <b>Spatial effects</b>: panning، reverb، surround sound"
-     ]
+     ],
+     "figH": {
+      "mm-fx-order": "الـ series والـ parallel chains، وإزاي تبديل ترتيب effect اتنين بيغيّر الـ output",
+      "mm-fx-pedal": "الترتيب الـ standard والـ 8 modules ورا بعض في pedal الـ Zoom G1/G1X",
+      "mm-fx-classes": "صنّف الـ effects في الـ 6 classes"
+     }
     },
     {
      "h": "الـ Equalisers: الـ shelving والـ peak filters",
@@ -1681,7 +1891,12 @@ AR.mm = {
       "الـ peak من الـ 2nd-order: H(z) = 1 + (H<sub>0</sub>/2)(1 − A<sub>2</sub>(z)) مع <b>second-order allpass</b> A<sub>2</sub>(z)؛ معامل الـ centre frequency هو d = −cos(2πf<sub>c</sub>/f<sub>s</sub>)؛ والـ bandwidth f<sub>b</sub> هو اللي بيحدد a<sub>B</sub>/a<sub>C</sub>.",
       "تحويل الـ gain من dB لـ linear: <b>V<sub>0</sub> = 10<sup>G/20</sup></b>، <b>H<sub>0</sub> = V<sub>0</sub> − 1</b>.",
       "مثال MATLAB: الـ shelving(G, fc, fs, Q, type) والـ type يا 'Base_Shelf' يا 'Treble_Shelf' بيرجّع [b,a] عشان filter(b,a,x)؛ الـ demo استخدم G = 4 dB، bass f<sub>c</sub> = 300 Hz، treble f<sub>c</sub> = 600 Hz، Q = 3."
-     ]
+     ],
+     "figH": {
+      "mm-eq-response": "الـ response بتاع الـ shelving والـ peak filters: غيّر G وfc وQ وfb",
+      "mm-eq-flow": "الـ signal flow graphs بتاعة الـ shelving والـ peak filters خطوة بخطوة",
+      "mm-eq-db": "تحويل الـ gain من dB لـ V0 وH0"
+     }
     },
     {
      "h": "الـ Time-varying filters: wah-wah، phaser، state variable filter",
@@ -1691,7 +1906,13 @@ AR.mm = {
       "<b>M-fold wah-wah</b>: M من الـ tap-delay bandpass filters متوزعين على الـ spectrum كله وبيغيروا الـ centre frequencies بتاعتهم في نفس الوقت. الـ <b>bell effect</b> محتاج حوالي مية M tap delays بـ filters الـ bandwidth بتاعها ضيق.",
       "<b>State Variable Filter</b> (مأخوذ من الـ analog electronics): بيدّيك <b>تحكم مستقل في الـ cut-off frequency والـ damping</b>، وبيطلّع <b>في نفس الوقت</b> outputs <b>lowpass وbandpass وhighpass</b>.",
       "تنفيذ الـ wah-wah = state variable filter الـ f<sub>c</sub> بتاعه بيتعمله modulation (الـ demo بيحرّك f<sub>c</sub> على شكل <b>triangle wave</b> بين 500 و3000 Hz، Fw = 2000 Hz في الثانية، damping 0.05). لازم الـ F1 يتحسب من جديد كل مرة الـ f<sub>c</sub> يتغير. والـ damping factor الأقل بيدّي pass band أصغر."
-     ]
+     ],
+     "figH": {
+      "mm-wah-flow": "الـ signal flow بتاع الـ wah-wah بـ bandpass بيتحرك، والـ notch بتاع الـ phaser",
+      "mm-wah-mfold": "الـ M-fold wah-wah: عدد M من الـ bandpass filters بيتحركوا مع بعض",
+      "mm-svf-step": "الـ state variable filter على impulse، عيّنة ورا عيّنة",
+      "mm-wah-sweep": "الـ Wah-wah: الـ SVF والـ fc بتتحرك كـ triangle wave، والـ 3 outputs بتوعه"
+     }
     },
     {
      "h": "الـ effects المعتمدة على الـ delay: الـ comb filters",
@@ -1702,7 +1923,13 @@ AR.mm = {
       "الـ <b>IIR comb</b>: بيعمل simulation لـ <b>انعكاسات مالهاش نهاية</b> بين طرفين cylinder. الـ signal بيلف في delay line راجعة للـ input (feedback) وبيضعف بـ g كل لفة؛ والـ input أحيانًا بيتضرب في c عشان يعوّض الـ amplification العالي بتاع الـ structure. y(n) = c·x(n) + g·y(n−M).",
       "السلايدز كاتبة M = τ/f<sub>s</sub>؛ بس حسابيًا الـ delay بالـ samples هو <b>M = τ × f<sub>s</sub></b> (يعني τ مقسومة على الـ sampling period). مثلًا τ = 100 ms عند 44.1 kHz → M = 0.1 × 44100 = <b>4410 samples</b>.",
       "الـ <b>Universal comb</b>: هو في الأساس allpass فيه delay بـ M sample وmultiplier زيادة feed-forward. الـ parameters: <b>BL</b> (blend)، <b>FB</b> (feedback)، <b>FF</b> (feed-forward). الـ algorithm: xh(n) = x(n) + FB·xh(n−M)؛ y(n) = FF·xh(n−M) + BL·xh(n)."
-     ]
+     ],
+     "figH": {
+      "mm-fir-comb": "الـ signal flow بتاع الـ FIR comb filter: نسخة متأخرة واحدة",
+      "mm-iir-comb": "الـ signal flow بتاع الـ IIR comb filter: الـ output راجع عن طريق الـ delay",
+      "mm-delay-samples": "تحويل وقت الـ delay لعدد samples",
+      "mm-unicomb": "الـ Universal comb filter: اختار BL وFB وFF وشوف الـ impulse response"
+     }
     },
     {
      "h": "مثال محلول: الـ impulse responses بتاعة الـ comb filters",
@@ -1711,7 +1938,10 @@ AR.mm = {
       "الـ <b>FIR comb</b>: y(0) = 1، y(10) = 0.5، وكل الـ samples التانية 0. يعني echo <b>واحد</b> بس.",
       "الـ <b>IIR comb</b> (c = 1): y(0) = 1، y(10) = 0.5، y(20) = 0.25، y(30) = 0.125، y(40) = 0.0625 ... سلسلة echoes <b>مالهاش نهاية وبتقل exponentially</b> (كل لفة × g).",
       "الـ delay بالوقت: عند f<sub>s</sub> = 8000 Hz، الـ M = 10 samples يساوي 10/8000 = 1.25 ms (في range الـ resonator)؛ ولو عايز echo بـ 100 ms عند 8 kHz هتحتاج M = 800 samples."
-     ]
+     ],
+     "figH": {
+      "mm-comb-impulse": "الـ fircomb.m والـ iircomb.m على unit impulse، عيّنة ورا عيّنة"
+     }
     },
     {
      "h": "الـ Vibrato والـ flanger والـ chorus والـ slapback والـ echo",
@@ -1720,7 +1950,12 @@ AR.mm = {
       "الـ Flanger والـ chorus والـ slapback والـ echo كلهم بيستخدموا comb filter (FIR أو IIR) مع شوية modulation؛ الفرق بينهم في الـ delay range:",
       "الـ <b>Slapback (doubling)</b> = تكرار سريع للصوت. الـ <b>Flanging</b> = delay بيتغير باستمرار بـ LFO. الـ <b>Chorus</b> = كذا نسخة من الصوت متأخرة بـ delays صغيرة random.",
       "كود الـ Flanger: FIR delay واحد بيتذبذب من 0–3 ms (أو 0–15 ms) بمعدل 0.1–5 Hz؛ الـ demo: max delay 3 ms، rate 1 Hz، amp = 0.7، y(i) = 0.7·x(i) + 0.7·x(i − cur_delay). عند 44.1 kHz، الـ 3 ms → round(0.003 × 44100) = round(132.3) = <b>132 samples</b>."
-     ]
+     ],
+     "figH": {
+      "mm-vibrato": "الـ Vibrato: تأخير (delay) بيتغير بـ LFO فبيغيّر الـ pitch",
+      "mm-delay-ranges": "مدى الـ delay للـ resonator والـ flanger والـ chorus والـ slapback والـ echo",
+      "mm-flanger": "الـ flanger.m: الـ delay المتذبذب بيحرّك الـ notches بتاعة الـ comb"
+     }
     },
     {
      "h": "الـ Modulation effects: ring modulation، AM، tremolo",
@@ -1730,7 +1965,12 @@ AR.mm = {
       "مثال: f<sub>c</sub> = 440 Hz، f<sub>x</sub> = 200 Hz → الـ RM output فيه <b>640 Hz و240 Hz</b> (مفيش 440 ولا 200).",
       "<b>Amplitude modulation (AM)</b>: <b>y(n) = (1 + α·m(n))·x(n)</b>، والـ m(n) normalised يعني أقصى قيمة ليها 1، الـ m هو LFO، والـ x هو الـ audio carrier؛ <b>α = depth</b>: α = 1 يعني أقصى modulation، وα = 0 بتقفلها. مع sines بـ f<sub>c</sub> وf<sub>x</sub> بتسمع <b>تلات</b> frequencies: f<sub>c</sub>، f<sub>c</sub> − f<sub>x</sub>، f<sub>c</sub> + f<sub>x</sub>.",
       "الـ <b>Tremolo</b> = AM بـ modulation frequency <b>أقل من 20 Hz</b> (الـ demo: 5 Hz، α = 0.5 → الـ gain بيتغير بين 0.5 و1.5). وممكن تعمل tremolo كمان بـ ring modulation مع LFO على شكل <b>triangular</b> wave."
-     ]
+     ],
+     "figH": {
+      "mm-ring-mod": "الـ Ring modulation لـ sine اتنين: يفضل المجموع والفرق بس",
+      "mm-am-mod": "الـ Amplitude modulation: الـ carrier ومعاه ترددين جنبه",
+      "mm-tremolo": "الـ Tremolo: الـ gain بيتغير ببطء (AM بـ sine أو RM بمثلث)"
+     }
     },
     {
      "h": "الـ Non-linear processing: limiter، compressor، expander، distortion، exciter، enhancer",
@@ -1743,7 +1983,14 @@ AR.mm = {
       "<b>Distortion/Fuzz</b>: non-linear exponential amplification f(x) = (x/|x|)(1 − e<sup>αx²/|x|</sup>) زي ما هي مكتوبة على السلايد؛ الـ gain <b>α</b> بيتحكم في الكمية؛ وعادةً جزء من الـ distorted signal بـ <b>يتخلط</b> مع الأصلي.",
       "<b>Exciter</b>: بيبرز/يقلل frequencies معينة عشان يغيّر الـ <b>timbre</b>؛ brightness زيادة من غير EQ؛ distortion خفيف في الـ high-frequency وphase shifting عن طريق الـ <b>Short-Time Fourier Transform</b> (phase vocoder)؛ بيزود الـ presence والوضوح والـ speech intelligibility؛ أحسن حاجة على signals ناقصها high frequencies.",
       "<b>Enhancer</b>: <b>equalisation + non-linear processing</b>، كمية distortion \"بالكاد ملحوظة\"؛ filter network (3 bands على الأقل) + harmonic generator؛ بيستخدم بدل الـ EQs في بعض الـ consoles، وللـ stereo enhancement في الـ radio broadcast."
-     ]
+     ],
+     "figH": {
+      "mm-limiter": "الـ limiter.m: الـ peak level والـ gain والـ output على إشارة الـ slide",
+      "mm-compexp": "الـ compexp.m: الـ compression والـ expansion لإشارة هادية وعالية ومتوسطة",
+      "mm-overdrive": "الـ Overdrive soft clipping: المنحنى والموجة والـ harmonics الجديدة",
+      "mm-fuzz": "الـ Fuzz: تشويه (distortion) أُسّي بالـ gain والـ mix",
+      "mm-exciter": "الـ exciter والـ enhancer، خطوة بخطوة على الـ block diagram"
+     }
     },
     {
      "h": "الـ Spatial effects: الـ panning والـ reverb",
@@ -1756,7 +2003,15 @@ AR.mm = {
       "<b>Schroeder (1961)</b>: IIR <b>comb filters في parallel banks</b> وبعدها <b>allpass filters في series</b>؛ التصميم الكلاسيكي فيه <b>4 comb + 2 allpass</b>. هو <b>مش</b> بيعمل الزيادة في معدل وصول الانعكاسات (بدائي بمقاييس النهارده).",
       "<b>Moorer (1976)</b>، بنى على Schroeder: combs parallel بأطوال delay مختلفة (room modes، انعكاسات بين حيطان متوازية)، allpass عشان يزود <b>reflection density (diffusion)</b>، <b>lowpass filters جوه الـ feedback loops</b> عشان الـ reverb time يبقى أقصر في الـ high frequencies (امتصاص الهوا، انعكاسية الحيطان)؛ (a) <b>tapped delay lines</b> بتعمل simulation للـ early reflections، (b) combs parallel + allpass بيعملوا simulation للـ diffuse reverb. الـ demo بيستخدم 6 lowpass combs + 1 allpass.",
       "<b>Convolution reverb</b>: بتعمل convolution للـ input مع الـ <b>impulse response</b> بتاع الأوضة (الأدق). طويل جدًا على الـ direct filters (مئات الـ taps)، فبنستخدم الـ <b>FFT</b> والـ <b>convolution theorem</b>: FT(f ∗ g) = F(u)·G(u). بتسجل الـ impulse بطلقة مسدس أو ضربة drum أو تسقيفة إيد (أو تعملها simulation). تجاري: <b>Altiverb</b>، Kontakt/Intakt، Garritan Violin، PianoTeq (وبيعملوا simulation لجسم الآلة كمان). وتقدر تعمل convolution مع أي حاجة (كاتدرائية معكوسة، كلام)."
-     ]
+     ],
+     "figH": {
+      "mm-panning": "الـ Panning بالـ rotation: قيم <bdi>gL</bdi> و<bdi>gR</bdi> مع تغيّر الزاوية θ",
+      "mm-room-reflect": "الانعكاسات في الأوضة والـ echogram اللي بتعمله",
+      "mm-reverb-delay": "الـ feedback delay قصاد reverb الأوضة: early reflections وبعدها diffuse؛ والـ echo",
+      "mm-schroeder": "الـ Schroeder reverb: أربعة combs على التوازي وبعدهم اتنين allpass",
+      "mm-moorer": "الـ Moorer reverb: الـ tapped delay line وستة lowpass combs وبعدهم allpass",
+      "mm-conv-reverb": "الـ Convolution reverb بالـ FFT على 3 impulse responses"
+     }
     }
    ],
    "cards": [
@@ -1935,7 +2190,11 @@ AR.mm = {
       "الـ Figures (slides 8 و9): نفس صورة الببغاوات معروضة كصورة <b>24-bit colour</b> وكصورة <b>8-bit colour</b> (الـ 8-bit بتاخد 307.2 KB، قارنها بالـ 8-bit greyscale).",
       "<b>الـ Colour LUT</b>: كل pixel بيخزن <b>index</b> بس جوه الـ table؛ والـ table هو اللي بيدي لون الـ RGB. بيتبني وإحنا بنحوّل من 24-bit لـ 8-bit عن طريق تجميع الألوان المتشابهة (entry واحد لكل مجموعة). لو غيّرت الـ map تقدر تعمل <b>palette animation</b>.",
       "الـ Figure (slide 10، Colour LUT): تلات panels بينهم أسهم. الشمال: الـ image memory مقاسها M×N (الـ x من 0 لـ M−1، والـ y من 0 لـ N−1)؛ وفيه pixel شايل <b>memory value = 25</b>. النص: الـ LUT فيه columns R وG وB وrows من 0 لـ 255؛ والـ row رقم 25 فيه 00011110 10111110 00111100. اليمين: الصورة اللي بتتعرض، والـ pixel ده <b>الـ pixel value بتاعه R = 30، G = 190، B = 60</b>."
-     ]
+     ],
+     "figH": {
+      "mm-8a-sizes": "جرّب: أنواع الصور وحجم كل نوع",
+      "mm-8a-lut": "الـ colour LUT: من الـ index بتاع الـ pixel للون الـ RGB"
+     }
     },
     {
      "h": "الـ Dithering",
@@ -1948,7 +2207,11 @@ AR.mm = {
       "الـ <b>Ordered dither</b> بيحافظ على حجم الصورة: الـ output pixel = 1 لو وبس لو الـ intensity بعد الـ remap عند الـ pixel ده أكبر من الـ entry بتاع الـ matrix في المكان المقابل.",
       "الـ Figure (slide 7): صورة Lena الـ grey-scale الأصلية (شمال) جنب النسخة اللي معمولها dithering (يمين)، واللي بتعرض درجات الرمادي كـ patterns من نقط سودا وبيضا.",
       "مثال محلول: pixel قيمته 200 → 200 ÷ (256/17) = 200×17/256 = 13.28 → <b>13</b>. الـ entries الأصغر من 13 هي 0…12، يعني <b>13 من الـ 16 نقطة</b> بيتعملهم set."
-     ]
+     ],
+     "figH": {
+      "mm-8a-dither": "جرّب: اعمل dithering لـ pixel واحدة بالـ matrix اللي <bdi>4×4</bdi>",
+      "mm-8a-ordered": "الـ simple dithering قصاد الـ ordered dither"
+     }
     },
     {
      "h": "الـ Image file formats",
@@ -1981,7 +2244,17 @@ AR.mm = {
       "الـ Figure (slide 26، Lab image space): الصورة الملونة الأصلية (الببغاوات) والـ <b>L وA وB image intensities</b> بتاعتها: الـ L شبه الصورة الـ grey-scale؛ والـ A والـ B معروضين بألوان مش حقيقية (أخضر/بمبي وبنفسجي/أزرق).",
       "Models تانية: <b>HSB</b> (Hue، Saturation، Brightness — Photoshop) و<b>HLS</b> (Hue، Lightness، Saturation).",
       "الـ <b>Luminance</b> = الإضاءة/brightness (قيمة الرمادي، Y). الـ <b>Chrominance</b> = معلومات اللون (hue + saturation)."
-     ]
+     ],
+     "figH": {
+      "mm-8a-spectrum": "الضوء المرئي والـ spectrum بتاعه من 400 لـ 700 nm",
+      "mm-8a-eye": "العين زي الـ camera: الـ lens والـ retina والـ rods والـ cones",
+      "mm-8a-cones": "جرّب: أنواع الـ cones التلاتة بتستجيب لكل wavelength إزاي",
+      "mm-8a-channels": "صورة متقسمة لـ channels الـ RGB أو الـ Lab أو الـ YIQ",
+      "mm-8a-displays": "شاشات الألوان: الـ phosphors في الـ CRT والطبقات في الـ LCD",
+      "mm-8a-cie-cone": "الـ CIE XYZ: من الـ cone اللي على شكل حدوة للـ chromaticity diagram",
+      "mm-8a-cie-mix": "جرّب: اخلط ألوان على الـ CIE chromaticity diagram",
+      "mm-8a-lab": "موديل الـ CIE Lab ومحاور الـ L والـ a والـ b"
+     }
     },
     {
      "h": "الـ Luminance–chrominance models: YIQ، YUV، YCrCb",
@@ -1998,7 +2271,13 @@ AR.mm = {
       "ملخص (slide 40): الـ YIQ بيستغل خصائص عين الإنسان عشان يدي أولوية للمعلومات: الـ Y هي الصورة الأبيض والأسود (luminance)، والـ I والـ Q هما صور اللون (chrominance)؛ والـ YUV بيستخدم فكرة شبهها. <b>الـ YUV/YCrCb هو standard للـ digital video بيحدد حجم الصورة، وبيعمل decimate لصور الـ chrominance (في الـ 4:2:2 video).</b>",
       "تحذير بخصوص السلايد: الـ YCrCb matrix اللي في السلايد (وفي الـ rules sheet) كاتبة على الصف التاني \"Cr\" = [−0.169 −0.331 0.500] وعلى الصف التالت \"Cb\" = [0.500 −0.419 −0.081]. من المعادلات، الصف [−0.169 −0.331 0.500] هو في الحقيقة <b>Cb</b> ((B−Y)/1.772) والصف [0.500 −0.419 −0.081] هو <b>Cr</b> ((R−Y)/1.402). اعتمد على المعادلات؛ وفي الامتحان اكتب الـ matrix زي ما هي وسمّي الصفوف صح لو اتطلب منك.",
       "الـ Figure (slide 34، YCrCb colour space): الصورة الملونة الأصلية (الببغاوات) والـ <b>Y وCr وCb image intensities</b> بتاعتها: الـ Y شبه الصورة الـ grey-scale؛ والـ Cr والـ Cb صور رمادي والـ contrast فيها قليل."
-     ]
+     ],
+     "figH": {
+      "mm-8a-yiq-yuv": "جرّب: الـ YIQ والـ YUV transforms على لون واحد",
+      "mm-8a-ntsc": "الـ YIQ في الـ NTSC: محاور الـ I والـ Q والـ bandwidth بتاعتهم",
+      "mm-8a-fields": "الـ YUV video: الـ fields الفردية والزوجية بيعملوا frame",
+      "mm-ycrcb-lab": "جرّب: حوّل pixel لـ YCrCb وشوف كل component لوحده"
+     }
     },
     {
      "h": "موديلات الطباعة: CMY وCMYK",
@@ -2013,7 +2292,12 @@ AR.mm = {
       "الـ Figure (slide 39، CMYK colour space): الصورة الملونة الأصلية (الببغاوات) والـ <b>C وM وY وK image intensities</b> بتاعتها، plate لكل حبر: cyan، magenta، yellow، وplate رمادي للأسود (K).",
       "<b>ليه CMYK (مش RGB) للطباعة؟</b> الطباعة شغالة بإن الأحبار <b>بتمتص (بتطرح/subtract)</b> wavelengths من الضوء المنعكس، وده بالظبط الـ subtractive CMY model. الـ RGB ده additive (ضوء خارج من الشاشات). والـ K بيضيف أسود حقيقي الـ CMY مش بيقدر يعمله.",
       "<b>خطوات الحل في الامتحان</b> (من الـ Final Rules sheet): القيم لازم تبقى من 0…1، فلو الصورة جاية من 0–255 الأول <b>اعمل normalize (÷255)</b>، وبعدين CMY = 1 − RGB، وبعدين K = min، وبعدين اطرح K. خلّي حوالي 4–6 أرقام عشرية."
-     ]
+     ],
+     "figH": {
+      "mm-cmy-cubes": "الـ RGB cube والـ CMY cube، ركن ركن",
+      "mm-add-sub": "جرّب: خلط الألوان الـ additive والـ subtractive",
+      "mm-cmyk-lab": "جرّب: حوّل pixel لـ CMYK وشوف كل plate حبر"
+     }
     },
     {
      "h": "مثال تحويل محلول (من ملخص الكورس، مش في سلايدات CM3106)",
@@ -2054,7 +2338,11 @@ AR.mm = {
       "<b>NTSC</b>: 525 line/frame، 30 fps (بالظبط 29.97، 33.37 ms/frame)، aspect ratio 4:3، interlaced (2 fields، 262.5 line/field)، 20 line في كل field محجوزين للـ control → أقصى حاجة <b>485 visible lines</b> (الـ laser disc/S-VHS ≈ 420، التلفزيون العادي ≈ 320). بيستخدم <b>YIQ</b>: composite = Y + I cos(Fsc t) + Q sin(Fsc t)، والـ <b>Fsc هو الـ frequency بتاع الـ colour subcarrier</b>. فكرة الـ compression الأساسية: العين أحسس حاجة للـ Y، بعدها الـ I، بعدها الـ Q، فالـ bandwidth: Y 4 MHz، I 1.5 MHz، Q 0.6 MHz. ده <b>لسه analog compression</b>؛ وفيه compression شبهه (أسهل في التخيل) جزء من الـ digital compression.",
       "<b>PAL</b>: 625 line/frame، <b>25 fps</b> (40 ms/frame)، 4:3، interlaced (312.5 line/field). بيستخدم <b>YUV (YCrCb)</b>: composite = Y + 0.492 U sin(Fsc t) + 0.877 V cos(Fsc t). الـ Bandwidth: Y 5.5 MHz، وU وV كل واحد 1.8 MHz.",
       "دوال الـ colour space في الـ image processing toolbox بتاع MATLAB. <b>Colormap manipulation</b>: colormap (تحط أو تجيب الـ colour lookup table)، rgbplot (ترسم components الـ RGB colourmap)، cmpermute (ترتب الألوان في الـ colormap من جديد). <b>Colour space conversions</b>: hsv2rgb/rgb2hsv (تحويل قيم HSV/RGB colour space)، lab2double/lab2uint16/lab2uint8 (تحويل قيم ألوان الـ Lab لـ double إلخ)، <b>ntsc2rgb/rgb2ntsc</b> (تحويل قيم ألوان NTSC (YIQ)/RGB)، <b>ycbcr2rgb/rgb2ycbcr</b> (تحويل ألوان YCbCr/RGB). هتشوفوها في الـ Lab Class الجاي."
-     ]
+     ],
+     "figH": {
+      "mm-video-signals": "الـ signals بتاعة الـ component والـ composite والـ S-Video",
+      "mm-ntsc-pal": "الـ NTSC قصاد الـ PAL في السطور والـ frame rate والـ fields والـ bandwidth"
+     }
     },
     {
      "h": "الـ Chroma subsampling",
@@ -2073,7 +2361,11 @@ AR.mm = {
       "الـ data المتخزنة لكل 4 pixels (samples الـ Y+Cb+Cr، مقابل 12 في 4:4:4): 4:2:2 → 8 (2/3)، 4:1:1 → 6 (1/2)، 4:2:0 → 6 (1/2).",
       "الـ Error (1) بالتفصيل (slide 54): عملية الـ sampling دي بتدخّل نوعين من الـ errors. الأول مشكلة <b>صغيرة</b>: اللون غالبًا بيتخزن بـ <b>نص الـ resolution الأفقي والرأسي</b> بتاع الصورة الأصلية (subsampling). ودي مش مشكلة حقيقية: العين قدرتها على تمييز تفاصيل اللون أقل من الـ intensity، وتقريبًا كل الـ digital cameras الـ resolution بتاعها للون أقل من الـ intensity، فأصلًا مفيش colour information بـ resolution عالي في صور الـ digital camera.",
       "الـ Errors: (1) اللون بيتحفظ بنص الـ resolution: مش مشكلة حقيقية (العين والكاميرات أصلًا الـ colour resolution بتاعتهم أقل). (2) الـ <b>Integer rounding</b>: الـ subsampling محتاج تحويلين، من الـ RGB لـ representation فيه intensity+colour (YIQ/YUV) وبعدين نرجع تاني (YIQ/YUV → RGB) لما الصورة تتعرض؛ والتحويل بيتعمل بـ integer arithmetic، فبيدخل شوية round-off error. <b>ده تأثير أصغر بكتير</b>، بس بيأثر (شوية) على لون (غالبًا) واحد أو اتنين في المية من الـ pixels. عشان كده ما تعملش compress/recompress للـ videos كتير: <b>عدّل على الأصل</b>."
-     ]
+     ],
+     "figH": {
+      "mm-chroma-layout": "الـ chroma subsampling: كل scheme بيحتفظ بأنهي samples من الـ Y والـ Cb والـ Cr",
+      "mm-chroma-grid": "جرّب: الـ chroma بتتاخد منين في <span class=\"ltr\">4:4:4, 4:2:2, 4:1:1, 4:2:0</span>"
+     }
     },
     {
      "h": "الـ Aliasing في الصور والـ video",
@@ -2087,7 +2379,12 @@ AR.mm = {
       "<b>Raster scan aliasing</b>: twinkling/strobing (لمعان ورعشة) على الخطوط الأفقية الحادة.",
       "الـ Figure (slide 63): صورة Barbara (Strobing Alias Video) والـ frequency distribution بتاعتها (Strobing Alias Frequency Distributions Video)؛ شوف raster_aliasing.m + barbara.gif.",
       "<b>Interlacing aliasing</b>: فيه video بيبقى interlaced؛ وده عمليًا <b>بيقسم الـ sampling frequency على اتنين</b> (الـ figure: Interlacing Aliasing effects، نسختين من خط مايل شوية). <b>Image aliasing</b>: تأثيرات الـ stair-stepping/zooming aliasing في كل frame (زي الصور). التفسير: ببساطة تطبيق لـ <b>Nyquist's Sampling Theorem</b>."
-     ]
+     ],
+     "figH": {
+      "mm-stair-zoom": "الـ aliasing في الصور: الـ stair-stepping والـ digital zoom",
+      "mm-wagon-wheel": "جرّب: الـ wagon-wheel effect بـ sampling أقل وأعلى من الـ Nyquist",
+      "mm-interlace": "الـ interlacing aliasing وكل field لوحده"
+     }
     }
    ],
    "cards": [

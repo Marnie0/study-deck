@@ -36,7 +36,17 @@ COURSES.mm = {
       "mm-hypertext",
       "mm-linear-hyper",
       "mm-hypermedia"
-     ]
+     ],
+     "figAt": {
+      "mm-hypertext": 1,
+      "mm-linear-hyper": 3,
+      "mm-hypermedia": 5
+     },
+     "figH": {
+      "mm-hypertext": "Try it: click hot spots to jump between hypertext pages",
+      "mm-linear-hyper": "Normal text read linearly vs hypertext read non-linearly",
+      "mm-hypermedia": "Hypermedia: text, graphics, sound and video linked both ways"
+     }
     },
     {
      "h": "Multimedia systems: definition and 4 characteristics",
@@ -53,7 +63,13 @@ COURSES.mm = {
       "E.g. Video and Audio: <b>lip synchronisation</b> is clearly important for humans to watch playback of video and audio, and even <b>animation and audio</b>. (Ever tried watching an out of (lip) sync film for a long time?)",
       "<b>Key issues</b>: how to represent and store temporal information; how to strictly maintain temporal relationships on playback/retrieval; what processes are involved; data must be represented digitally (<b>analog–digital conversion, sampling</b>); <b>large data requirements</b> (bandwidth, storage) so <b>data compression is usually mandatory</b>."
      ],
-     "fig": "mm-lipsync"
+     "fig": "mm-lipsync",
+     "figAt": {
+      "mm-lipsync": 2
+     },
+     "figH": {
+      "mm-lipsync": "Try it: shuffle the frames or shift the audio and watch the lip sync break"
+     }
     },
     {
      "h": "Desirable features of a multimedia system",
@@ -141,7 +157,14 @@ COURSES.mm = {
      "fig": [
       "mm-data-size",
       "mm-frames"
-     ]
+     ],
+     "figAt": {
+      "mm-frames": 7
+     },
+     "figH": {
+      "mm-data-size": "Try it: work out the raw size of images, audio and video",
+      "mm-frames": "One second of raw video as 25, 30 or 50 single images"
+     }
     },
     {
      "h": "Summary: the course is essentially about compression",
@@ -155,7 +178,15 @@ COURSES.mm = {
      "fig": [
       "mm-lossy-lossless",
       "mm-synthesis"
-     ]
+     ],
+     "figAt": {
+      "mm-lossy-lossless": 1,
+      "mm-synthesis": 2
+     },
+     "figH": {
+      "mm-lossy-lossless": "Lossless vs lossy compression, step by step",
+      "mm-synthesis": "Try it: store the sound itself or the instructions to make it"
+     }
     }
    ],
    "cards": [
@@ -518,7 +549,25 @@ COURSES.mm = {
       "A sine wave is described by three quantities: <b>amplitude</b>, <b>frequency</b> and <b>phase</b>: z(t) = a·sin(ω·t + φ). Changing the phase shifts the wave along the time axis (sinphasedemo plots the x-axis in degrees: 0, 90, 180, 270, 360 …).",
       "A <b>cosine is a sine wave 90° out of phase</b>.",
       "<b>Worked example</b>: F<sub>w</sub> = 1000 Hz, F<sub>s</sub> = 8000 Hz → F<sub>w</sub>/F<sub>s</sub> = 1/8, so one cycle takes 8 samples. n = 1: y = A·sin(π/4) = 0.7071A; n = 2: y = A·sin(π/2) = A; n = 4: y = A·sin(π) = 0."
-     ]
+     ],
+     "fig": [
+      "mm-period",
+      "mm-sine-abc",
+      "mm-phase-demo",
+      "mm-sampled-sine"
+     ],
+     "figAt": {
+      "mm-period": 1,
+      "mm-sine-abc": 3,
+      "mm-phase-demo": 4,
+      "mm-sampled-sine": 5
+     },
+     "figH": {
+      "mm-period": "Frequency, period and wavelength: change f and watch each cycle shrink",
+      "mm-sine-abc": "Amplitude, frequency and phase of z = a·sin(ωt + φ)",
+      "mm-phase-demo": "sinphasedemo: a sine shifted by a phase, and the cosine at 90°",
+      "mm-sampled-sine": "The sampled sine y = A·sin(2π·n·Fw/Fs), sample by sample"
+     }
     },
     {
      "h": "The decibel (dB), dynamic range and SNR",
@@ -568,7 +617,22 @@ COURSES.mm = {
        "10·log<sub>10</sub>(0.5)",
        "≈ −3.01 dB"
       ]
-     ]
+     ],
+     "fig": [
+      "mm-db-scale",
+      "mm-bits-db",
+      "mm-db-calc"
+     ],
+     "figAt": {
+      "mm-db-scale": 4,
+      "mm-bits-db": 6,
+      "mm-db-calc": 7
+     },
+     "figH": {
+      "mm-db-scale": "Why decibels: the ear's 10¹² power range becomes 0 to 120 dB",
+      "mm-bits-db": "6 dB per bit: dynamic range of 8-bit and 16-bit PCM",
+      "mm-db-calc": "dB and SNR calculator for power and amplitude ratios"
+     }
     },
     {
      "h": "Signal flow graphs: delay, multiply, add",
@@ -579,7 +643,19 @@ COURSES.mm = {
       "<b>Addition</b>: a circle with <b>+</b>: y(n) = a<sub>1</sub>·x<sub>1</sub>(n) + a<sub>2</sub>·x<sub>2</sub>(n); with a<sub>1</sub> = a<sub>2</sub> = 1: y(n) = x<sub>1</sub>(n) + x<sub>2</sub>(n).",
       "Complete example: <b>y(n) = ½x(n) + ⅓x(n − 1) + ¼x(n − 2)</b> (two delays, three multipliers, one adder). Its <b>impulse response</b> (input 1, 0, 0, …) is ½, ⅓, ¼, 0, 0, … (finite).",
       "<b>Worked example</b>: input x = 2, 4, 6 (then zeros) into that filter:<br>y(0) = ½·2 = 1<br>y(1) = ½·4 + ⅓·2 = 2 + 0.667 = 2.667<br>y(2) = ½·6 + ⅓·4 + ¼·2 = 3 + 1.333 + 0.5 = 4.833<br>y(3) = ⅓·6 + ¼·4 = 2 + 1 = 3<br>y(4) = ¼·6 = 1.5, then 0."
-     ]
+     ],
+     "fig": [
+      "mm-sfg-blocks",
+      "mm-sfg-run"
+     ],
+     "figAt": {
+      "mm-sfg-blocks": 3,
+      "mm-sfg-run": 5
+     },
+     "figH": {
+      "mm-sfg-blocks": "The three building blocks: delay, multiply and add on a signal",
+      "mm-sfg-run": "The complete example filter run on 2, 4, 6 sample by sample"
+     }
     },
     {
      "h": "Filtering; IIR and FIR systems",
@@ -593,7 +669,28 @@ COURSES.mm = {
       "Filters are two coefficient vectors <b>A = {a<sub>k</sub>}</b> (feedback) and <b>B = {b<sub>k</sub>}</b> (feed-forward). MATLAB <code>filter(B,A,X)</code> implements a \"Direct Form II Transposed\" IIR/FIR hybrid: a(1)y(n) = b(1)x(n) + … + b(nb+1)x(n − nb) − a(2)y(n − 1) − … − a(na+1)y(n − na). If a(1) ≠ 1 the coefficients are normalised by a(1); a(1) = 0 gives an error.",
       "Filter banks can be <b>hand-created</b> (e.g. IIRdemo.m: cut-off fg = 4000 Hz, sampling fa = 48000 Hz, k = tan(π·fg/fa), 2nd-order coefficients b(1..3), a(1..3) with a(1) = 1) or made by MATLAB functions: <code>butter, buttord, besself, cheby1, cheby2, ellip</code>. Applying by hand uses state variables xh1, xh2, yh1, yh2 in a loop; <code>filter()</code> is preferable because it is general (any filter length)."
      ],
-     "code": "for n=1:N\n  y(n)=b(1)*x(n) + b(2)*xh1 + b(3)*xh2 - a(2)*yh1 - a(3)*yh2;\n  xh2=xh1; xh1=x(n);\n  yh2=yh1; yh1=y(n);\nend;"
+     "code": "for n=1:N\n  y(n)=b(1)*x(n) + b(2)*xh1 + b(3)*xh2 - a(2)*yh1 - a(3)*yh2;\n  xh2=xh1; xh1=x(n);\n  yh2=yh1; yh1=y(n);\nend;",
+     "fig": [
+      "mm-iir-graph",
+      "mm-fir-graph",
+      "mm-impulse",
+      "mm-filter-ba",
+      "mm-iirdemo"
+     ],
+     "figAt": {
+      "mm-iir-graph": 3,
+      "mm-fir-graph": 4,
+      "mm-impulse": 5,
+      "mm-filter-ba": 6,
+      "mm-iirdemo": 7
+     },
+     "figH": {
+      "mm-iir-graph": "The IIR signal flow graph: output fed back through weighted delays",
+      "mm-fir-graph": "The FIR signal flow graph: N − 1 feed-forward delays, no feedback",
+      "mm-impulse": "Impulse responses: IIR never reaches zero, FIR stops",
+      "mm-filter-ba": "MATLAB filter(B, A, X) computed sample by sample",
+      "mm-iirdemo": "IIRdemo.m: the coefficients and the loop's state variables"
+     }
     },
     {
      "h": "Frequency domain and the Fourier Transform",
@@ -606,7 +703,28 @@ COURSES.mm = {
       "<b>Sinusoidal decomposition</b>: any digital signal can be decomposed into sine waves of different amplitude, frequency and phase that add back to the original. Example (additive synthesis): a 200 Hz square(ish) wave = sinusoids at <b>200, 600, 1000 Hz …</b> (odd multiples).",
       "Filtering in frequency space = attenuating or removing frequencies: <b>low-pass</b> (ignore high-frequency noise, keep low), <b>high-pass</b> (opposite), <b>band-pass</b> (only a range). Think of a <b>graphic equaliser</b>.",
       "Maths tools recalled: sin(−x) = −sin(x) (odd), cos(−x) = cos(x) (even); phasor r·e<sup>iφ</sup> = r(cos φ + i sin φ); ∫e<sup>kx</sup>dx = e<sup>kx</sup>/k."
-     ]
+     ],
+     "fig": [
+      "mm-chord",
+      "mm-8hz",
+      "mm-image-line",
+      "mm-additive",
+      "mm-eq"
+     ],
+     "figAt": {
+      "mm-chord": 2,
+      "mm-8hz": 3,
+      "mm-image-line": 4,
+      "mm-additive": 5,
+      "mm-eq": 6
+     },
+     "figH": {
+      "mm-chord": "The piano chord in the temporal and frequency domains",
+      "mm-8hz": "An 8 Hz sine and its single spectral peak",
+      "mm-image-line": "Spatial frequencies along an image line: object, text and noise",
+      "mm-additive": "Adding 200, 600, 1000 Hz … sines into a square(ish) wave",
+      "mm-eq": "Filtering as a graphic equaliser: low-pass, high-pass, band-pass"
+     }
     },
     {
      "h": "FT formulas, DFT and spectra",
@@ -621,7 +739,28 @@ COURSES.mm = {
       "<b>Magnitude spectrum</b>: |F(k)| = √(F<sub>R</sub>(k)<sup>2</sup> + F<sub>I</sub>(k)<sup>2</sup>) (MATLAB <code>abs(fft(X,N))/N</code>). <b>Phase spectrum</b>: φ = arctan(F<sub>I</sub>(k)/F<sub>R</sub>(k)) (<code>angle</code>). Example: F = 3 + 4i → |F| = 5, φ = arctan(4/3) ≈ 53.13°.",
       "<b>Sample point → frequency</b>: <b>f<sub>k</sub> = k·f<sub>s</sub>/N</b>, equidistant steps of f<sub>s</sub>/N from 0 to (N−1)f<sub>s</sub>/N Hz. Example: f<sub>s</sub> = 8000 Hz, N = 256 → step 31.25 Hz, k = 32 → 1000 Hz.",
       "<b>Spectrogram</b> (time-frequency): split the signal into segments and do a windowed <b>Short-Time Fourier Transform (STFT)</b>; a <b>Blackman, Hamming or Hanning</b> window reduces the leakage effect. MATLAB <code>spectrogram(y,512,20,1024,Fs)</code>. Aphex Twin famously hid images (his face) in the spectrogram of tracks on the Windowlicker EP."
-     ]
+     ],
+     "fig": [
+      "mm-sinc",
+      "mm-dft",
+      "mm-mag-phase",
+      "mm-bin-freq",
+      "mm-spectrogram"
+     ],
+     "figAt": {
+      "mm-sinc": 2,
+      "mm-dft": 4,
+      "mm-mag-phase": 7,
+      "mm-bin-freq": 8,
+      "mm-spectrogram": 9
+     },
+     "figH": {
+      "mm-sinc": "The Fourier transform of a top hat is the sinc function",
+      "mm-dft": "The DFT sum as phasors added head to tail",
+      "mm-mag-phase": "Magnitude and phase of F = FR + iFI",
+      "mm-bin-freq": "From DFT sample point k to frequency fk = k·fs/N",
+      "mm-spectrogram": "Building a spectrogram with a windowed STFT, and leakage"
+     }
     },
     {
      "h": "Filtering in the frequency domain",
@@ -633,7 +772,28 @@ COURSES.mm = {
       "<b>Butterworth low-pass</b>: <b>H(u,v) = 1 / (1 + [(u<sup>2</sup> + v<sup>2</sup>)/w<sub>0</sub><sup>2</sup>]<sup>n</sup>)</b>, n = order. It is a <b>smoothed top hat</b> (blurred circle in 2D): keeps some high-frequency information and so <b>reduces blurring</b>/ringing compared with the ideal filter. At the cut-off H = 1/2; 2nd order at twice the cut-off: 1/(1 + 4<sup>2</sup>) = 1/17 ≈ 0.059.",
       "Noise is added in MATLAB with <code>imnoise()</code>; a lower cut-off removes more noise but blurs more.",
       "Other filters: <b>high-pass</b> (select above u<sub>0</sub>; usually defined as <b>1 − low-pass = 1 − H</b>), <b>band-pass</b> (keep u<sub>0</sub>…u<sub>1</sub>), <b>band-reject</b> (attenuate u<sub>0</sub>…u<sub>1</sub>), <b>notch</b> (attenuate a narrow band around u<sub>0</sub>), <b>resonator</b> (amplify a narrow band around u<sub>0</sub>)."
-     ]
+     ],
+     "fig": [
+      "mm-lpf-1d",
+      "mm-ideal-2d",
+      "mm-butter",
+      "mm-image-lpf",
+      "mm-other-filters"
+     ],
+     "figAt": {
+      "mm-lpf-1d": 1,
+      "mm-ideal-2d": 2,
+      "mm-butter": 4,
+      "mm-image-lpf": 5,
+      "mm-other-filters": 6
+     },
+     "figH": {
+      "mm-lpf-1d": "Low-pass filtering G = H·F on a noisy signal, step by step",
+      "mm-ideal-2d": "The ideal 2D low-pass: is (u, v) inside the circle of radius w0?",
+      "mm-butter": "Ideal vs Butterworth low-pass, in 1D and 2D",
+      "mm-image-lpf": "Filtering the slides' images with fft2: ideal, Butterworth, high-pass",
+      "mm-other-filters": "High-pass, band-pass, band-reject, notch and resonator shapes"
+     }
     },
     {
      "h": "Convolution, the convolution theorem and deconvolution",
@@ -644,7 +804,22 @@ COURSES.mm = {
       "<b>Convolution theorem</b>: the FT of f(x) * g(x) is simply the <b>product F(u)·G(u)</b>. Convolution in frequency space is easy (multiply), which is why <code>G = H.*F</code> works.",
       "Fast convolution / <b>deconvolution</b>: FT the audio/image, FT the system's effect, <b>multiply</b> to apply an effect (e.g. reverb) or <b>divide</b> to remove/compensate for it, then inverse FT. Dividing a Butterworth-blurred image by H (<code>Ghigh = G./H</code>) acts like a high-pass filter and recovers F in the ideal case.",
       "In the real world the exact blurring function H is unknown, and noise makes deconvolution fail (noise gets amplified): <b>deconvolution is not always that simple</b>."
-     ]
+     ],
+     "fig": [
+      "mm-convolve",
+      "mm-conv-theorem",
+      "mm-deconv"
+     ],
+     "figAt": {
+      "mm-convolve": 2,
+      "mm-conv-theorem": 3,
+      "mm-deconv": 5
+     },
+     "figH": {
+      "mm-convolve": "Convolving the two top hats: reflect, shift, measure the overlap",
+      "mm-conv-theorem": "The convolution theorem checked: direct sum vs F·G",
+      "mm-deconv": "Deconvolution by G./H, and how noise breaks it"
+     }
     }
    ],
    "cards": [
@@ -1037,7 +1212,16 @@ COURSES.mm = {
      "pts": [
       "<b>Static / discrete media</b>: <b>time independent</b>. Examples: normal data, text, single images, graphics.",
       "<b>Continuous media</b>: <b>time dependent</b>. Examples: video, animation and audio."
-     ]
+     ],
+     "fig": [
+      "mm-l3-media-time"
+     ],
+     "figAt": {
+      "mm-l3-media-time": 1
+     },
+     "figH": {
+      "mm-l3-media-time": "Static media stay the same over time; continuous media change on one clock"
+     }
     },
     {
      "h": "Analog and digital signals, ADC and DAC",
@@ -1047,7 +1231,22 @@ COURSES.mm = {
       "<b>ADC (Analog-to-Digital Converter)</b>: special hardware that takes analog signals from an analog sensor (e.g. microphone) and digitally samples them (e.g. a sound card).",
       "<b>DAC (Digital-to-Analog Converter)</b>: the converse, used for playback. Takes a digital signal (possibly modified, e.g. volume change, equalisation) and outputs an analog signal for an analog output device (loudspeaker, RGB monitor).",
       "Course summary: ADC = <b>sampling</b> (continuous → discrete in time) + <b>quantisation</b> (discrete → digital values). Digital = sampling + quantisation."
-     ]
+     ],
+     "fig": [
+      "mm-l3-sensors",
+      "mm-l3-adc-dac",
+      "mm-l3-digital"
+     ],
+     "figAt": {
+      "mm-l3-sensors": 0,
+      "mm-l3-adc-dac": 3,
+      "mm-l3-digital": 4
+     },
+     "figH": {
+      "mm-l3-sensors": "Transducers turn temperature, sound and light into electrical signals",
+      "mm-l3-adc-dac": "Record with the ADC, modify the numbers, play back with the DAC",
+      "mm-l3-digital": "Digital = sampling + quantisation, step by step"
+     }
     },
     {
      "h": "Analog-to-digital-to-analog pipeline",
@@ -1057,7 +1256,16 @@ COURSES.mm = {
       "After the anti-aliasing filter, the ADC <b>quantises</b> the continuous input into discrete levels.",
       "After digital processing, the DAC converts discrete levels into continuous voltages or currents.",
       "The output must also be filtered with a <b>low-pass filter</b> to remove the aliases (images) from the sampling. Further processing (filtering, mixing) may follow but is not covered."
-     ]
+     ],
+     "fig": [
+      "mm-l3-pipeline"
+     ],
+     "figAt": {
+      "mm-l3-pipeline": 4
+     },
+     "figH": {
+      "mm-l3-pipeline": "The signal at every stage of the A-D-A pipeline, with or without its filters"
+     }
     },
     {
      "h": "Capturing and storing each medium",
@@ -1067,7 +1275,25 @@ COURSES.mm = {
       "<b>Text</b>: keyboard, speech input, OCR, disk. <b>1 byte per character</b> (ASCII), more for Unicode. Spreadsheets may be text (CSV) or binary. Formatted text: HTML, RTF, Word, program source. Not temporal but may have an implied sequence. Size not significant. Compression (zip, RAR, 7-zip) is convenient for archiving, but general-purpose compressors may not work well for audio, images or video.",
       "<b>Graphics</b>: composed of primitives (lines, polygons, circles, curves, arcs); made by editors (Illustrator, Freehand) or programs (PostScript); input by keyboard, mouse, trackball, tablet; <b>selectable and editable</b> (unlike images); low storage. Standard: <b>OpenGL</b> (cross-language, cross-platform API for 2D/3D graphics).",
       "<b>Animation</b>: a sequence of slightly changed graphics. 2D (Flash): <b>key-frame interpolation — tweening</b> of motion and shape. 3D (Maya): changes of shape, texture, position, lighting, camera. Graphics animation is <b>compact</b>, so suitable for network transmission."
-     ]
+     ],
+     "fig": [
+      "mm-l3-capture",
+      "mm-l3-text-bytes",
+      "mm-l3-vector-bitmap",
+      "mm-l3-tween"
+     ],
+     "figAt": {
+      "mm-l3-capture": 1,
+      "mm-l3-text-bytes": 2,
+      "mm-l3-vector-bitmap": 3,
+      "mm-l3-tween": 4
+     },
+     "figH": {
+      "mm-l3-capture": "Which sources need digitising, and how each gets in",
+      "mm-l3-text-bytes": "Text byte by byte: 1 byte per ASCII character, more for Unicode",
+      "mm-l3-vector-bitmap": "Edit the slide's drawing as graphics primitives, then as pixels",
+      "mm-l3-tween": "Tweening: two key frames, the in-betweens computed"
+     }
     },
     {
      "h": "Images, audio and video data sizes",
@@ -1081,7 +1307,19 @@ COURSES.mm = {
       "Image size (bytes) = width × height × bits per pixel / 8",
       "Video data rate = frame size × frames per second",
       "Audio size (bits) = sample rate × bits per sample × channels × seconds"
-     ]
+     ],
+     "fig": [
+      "mm-l3-bitmap",
+      "mm-l3-video-rate"
+     ],
+     "figAt": {
+      "mm-l3-bitmap": 0,
+      "mm-l3-video-rate": 3
+     },
+     "figH": {
+      "mm-l3-bitmap": "The slide's 10×10 bitmap of grey values, and what it costs per bit depth",
+      "mm-l3-video-rate": "Uncompressed video per second and per minute at 25, 30 or 50 fps"
+     }
     },
     {
      "h": "Worked size calculations",
@@ -1090,7 +1328,13 @@ COURSES.mm = {
       "<b>PAL frame</b>: 720 × 576 = 414,720 pixels × 3 B = 1,244,160 B ≈ 1.2 MB.",
       "<b>10 megapixel photo</b>: 10,000,000 × 3 B = 30,000,000 B = 28.6 MB (with 1 MB = 1,048,576 B) ≈ 29 MB.",
       "<b>1 min mono CD audio</b>: 44,100 × 16 bits × 1 × 60 = 42,336,000 bits = 5,292,000 B ≈ 5.05 MB."
-     ]
+     ],
+     "fig": [
+      "mm-l3-worked"
+     ],
+     "figH": {
+      "mm-l3-worked": "The four worked size sums, one line at a time"
+     }
     },
     {
      "h": "Roadmap: general themes",
@@ -1414,7 +1658,16 @@ COURSES.mm = {
       "mm-digitise",
       "mm-sampling-1",
       "mm-sampling-2"
-     ]
+     ],
+     "figAt": {
+      "mm-digitise": 3,
+      "mm-sampling-1": 5
+     },
+     "figH": {
+      "mm-digitise": "Digitising sound: from sound waves to binary numbers",
+      "mm-sampling-1": "Digital sampling (1): the analog signal measured at regular intervals",
+      "mm-sampling-2": "Digital sampling (2): one sample every sampling interval T"
+     }
     },
     {
      "h": "Sample rate and bit size (quantisation)",
@@ -1427,7 +1680,10 @@ COURSES.mm = {
       "fs = 1 / T      (T = sampling interval in seconds)",
       "Levels = 2^bits  (8 bit → 256 levels, 16 bit → 65,536 levels)"
      ],
-     "fig": "mm-bit-rate"
+     "fig": "mm-bit-rate",
+     "figH": {
+      "mm-bit-rate": "Try it: pick a sample rate and store a sample as 8 or 16 bits"
+     }
     },
     {
      "h": "Nyquist's sampling theorem and aliasing",
@@ -1457,7 +1713,22 @@ COURSES.mm = {
       "mm-same-samples",
       "mm-alias-sound",
       "mm-lowpass"
-     ]
+     ],
+     "figAt": {
+      "mm-nyquist-3": 4,
+      "mm-nyquist-calc": 2,
+      "mm-alias-panels": 7,
+      "mm-same-samples": 8,
+      "mm-alias-sound": 9
+     },
+     "figH": {
+      "mm-nyquist-3": "Sampling a sine at, twice and above its frequency",
+      "mm-nyquist-calc": "Try it: find the Nyquist sample rate for a signal",
+      "mm-alias-panels": "Getting Nyquist wrong (1): sampling a signal less and less densely",
+      "mm-same-samples": "Getting Nyquist wrong (2): three sinusoids through the same samples",
+      "mm-alias-sound": "Try it: hear a sine sweep alias at 8 kHz",
+      "mm-lowpass": "Low-pass filter before sampling, or aliasing gets in"
+     }
     },
     {
      "h": "Why are CD sample rates 44.1 kHz?",
@@ -1465,7 +1736,13 @@ COURSES.mm = {
       "The upper range of human hearing is around <b>20–22 kHz</b>. Applying Nyquist, we need at least twice that: 2 × 22.05 kHz = <b>44.1 kHz</b>.",
       "Course constants: <b>audio/music</b> fmax = 22.05 kHz → fs = 44.1 kHz; <b>speech</b> fmax = 4 kHz → fs = 8 kHz. Mono = 1 channel; stereo = 2 channels."
      ],
-     "fig": "mm-cd-rate"
+     "fig": "mm-cd-rate",
+     "figAt": {
+      "mm-cd-rate": 0
+     },
+     "figH": {
+      "mm-cd-rate": "Why CD audio is sampled at 44.1 kHz"
+     }
     },
     {
      "h": "Effect of sample rate and bit size on quality and size",
@@ -1504,7 +1781,14 @@ COURSES.mm = {
      "fig": [
       "mm-quality-play",
       "mm-size-table"
-     ]
+     ],
+     "figAt": {
+      "mm-quality-play": 2
+     },
+     "figH": {
+      "mm-quality-play": "Try it: hear audio quality drop with fewer samples and bits",
+      "mm-size-table": "One minute of audio: size by sample rate, bits and channels"
+     }
     },
     {
      "h": "Audio file size — worked examples (course summary)",
@@ -1518,7 +1802,13 @@ COURSES.mm = {
       "<b>Ex 5</b>: x(t) = 2A·cos(200πt + π/3) + 3A·sin(100πt − π/6). Each term is 2πf·t, so f1 = 200π/2π = <b>100 Hz</b>, f2 = 100π/2π = <b>50 Hz</b>; fmax = 100 Hz → fs ≥ 200 Hz → sampling interval T ≤ 1/200 = <b>0.005 s</b> (the largest interval allowed).",
       "<b>Sampling intervals</b>: speech 1/8000 = <b>0.000125 s</b> (125 µs); music 1/44,100 ≈ <b>0.0000227 s</b> (22.68 µs)."
      ],
-     "fig": "mm-size-calc"
+     "fig": "mm-size-calc",
+     "figAt": {
+      "mm-size-calc": 1
+     },
+     "figH": {
+      "mm-size-calc": "Try it: audio file size calculator"
+     }
     },
     {
      "h": "Audio file formats",
@@ -1527,7 +1817,13 @@ COURSES.mm = {
       "A simple and widely used (<b>by the above formats</b>) audio compression method is <b>ADPCM</b> (Adaptive Delta Pulse Code Modulation): based on past samples, it <b>predicts the next sample</b> and encodes the <b>difference</b> between the actual value and the predicted value. More on this later (Audio Compression).",
       "Many formats are linked to audio applications. Other formats (most use compression): Sound Blaster <b>.voc</b> (can use silence deletion), Pro Tools/Sound Designer <b>.sd2</b>, RealAudio <b>.ra</b>, Ogg Vorbis <b>.ogg</b>, AAC/Apple/mp4, FLAC <b>.flac</b>, Dolby AC coding, MPEG audio (MP3, MPEG-4)."
      ],
-     "fig": "mm-adpcm"
+     "fig": "mm-adpcm",
+     "figAt": {
+      "mm-adpcm": 1
+     },
+     "figH": {
+      "mm-adpcm": "ADPCM: predict the next sample, store only the difference"
+     }
     },
     {
      "h": "Synthetic sounds — reducing bandwidth",
@@ -1541,7 +1837,14 @@ COURSES.mm = {
      "fig": [
       "mm-synth-pipe",
       "mm-synth-methods"
-     ]
+     ],
+     "figAt": {
+      "mm-synth-methods": 3
+     },
+     "figH": {
+      "mm-synth-pipe": "Synthesis pipeline, and recorded vs synthetic sound",
+      "mm-synth-methods": "Sound synthesis methods, with additive and subtractive to try"
+     }
     }
    ],
    "cards": [
@@ -1968,7 +2271,34 @@ COURSES.mm = {
       "<b>Attack</b>: how quickly the sound reaches full volume after the key is pressed (almost instantaneous for most mechanical instruments; slow for bowed strings and \"pads\"). <b>Decay</b>: how quickly it drops to the sustain level after the peak. <b>Sustain</b>: the constant volume held until the key is released — it is a <b>level, not a time</b>. <b>Release</b>: how quickly it fades after the key is released (very short for an organ; long for a bell or a piano with the sustain pedal).",
       "MATLAB demo <code>subtract_synth.m</code>: sawtooth at 440 Hz, Fs = 22050, filtered with <code>butter(1,0.04,'low')</code> and <code>butter(4,0.04,'low')</code> then <code>filter()</code>. The cut-off 0.04 is relative to Nyquist: 0.04 × 11025 = <b>441 Hz</b>. The 4th-order filter removes more of the high partials than the 1st-order one.",
       "<code>synth.m</code> makes 'sine', 'saw' or 'fm' notes. Its sawtooth period is T = Fs/freq samples (22050/440 ≈ 50.1 samples) built with <code>ramp - fix(ramp)</code>; it has a non-linear up slope, sounds slightly less harsh and suits synthesis better. Edges are smoothed with a 10 ms ramp."
-     ]
+     ],
+     "fig": [
+      "mm-5-bowed",
+      "mm-5-vocal",
+      "mm-5-noise",
+      "mm-5-control",
+      "mm-5-adsr",
+      "mm-5-butter",
+      "mm-5-synth-saw"
+     ],
+     "figAt": {
+      "mm-5-bowed": 1,
+      "mm-5-vocal": 2,
+      "mm-5-noise": 3,
+      "mm-5-control": 4,
+      "mm-5-adsr": 6,
+      "mm-5-butter": 7,
+      "mm-5-synth-saw": 8
+     },
+     "figH": {
+      "mm-5-bowed": "Bowed string: a sawtooth, low-pass filtered",
+      "mm-5-vocal": "The voice as oscillator and filter: ooh, aah and the sweeping filter",
+      "mm-5-noise": "White noise filtered into pink noise",
+      "mm-5-control": "Source, filter and amplitude envelope you can set",
+      "mm-5-adsr": "ADSR envelope: four phases and four instruments",
+      "mm-5-butter": "subtract_synth.m: butter(1, 0.04) against butter(4, 0.04)",
+      "mm-5-synth-saw": "How synth.m builds its sawtooth, sample by sample"
+     }
     },
     {
      "h": "Additive synthesis",
@@ -1979,7 +2309,22 @@ COURSES.mm = {
       "Basis: <b>Fourier theory</b> — a timbre analysed into sinusoids can be rebuilt by adding them.",
       "<b>Advantage</b>: can recreate the micro-variations in frequency and amplitude of individual partials that make natural sounds rich and lively. <b>Disadvantage</b>: <b>inefficient</b> — a great deal of data must be specified for a detailed sound.",
       "Examples: approximating a <b>square wave</b> by adding sine waves (odd harmonics f, 3f, 5f, … with amplitudes 1, 1/3, 1/5, …; e.g. for 100 Hz: 100, 300, 500 Hz …), and the <b>Aphex Twin spectrogram</b> (inverse-Fourier additive synthesis that \"paints\" sinusoids from image intensity and pixel location)."
-     ]
+     ],
+     "fig": [
+      "mm-5-partials",
+      "mm-5-square",
+      "mm-5-paint"
+     ],
+     "figAt": {
+      "mm-5-partials": 1,
+      "mm-5-square": 5,
+      "mm-5-paint": 5
+     },
+     "figH": {
+      "mm-5-partials": "Each partial with its own amplitude envelope",
+      "mm-5-square": "A square wave built from odd harmonics of 100 Hz",
+      "mm-5-paint": "Paint a spectrogram, get it back as added sinusoids"
+     }
     },
     {
      "h": "FM (Frequency Modulation) synthesis",
@@ -1998,7 +2343,22 @@ COURSES.mm = {
       "A = peak amplitude, e = instantaneous amplitude, α = carrier freq, β = modulator freq",
       "I = modulation index = peak deviation / modulator frequency",
       "Sidebands at fc ± n·fm (n = 1, 2, 3 …)"
-     ]
+     ],
+     "fig": [
+      "mm-5-fm-basic",
+      "mm-5-bessel",
+      "mm-5-fm-algo"
+     ],
+     "figAt": {
+      "mm-5-fm-basic": 3,
+      "mm-5-bessel": 5,
+      "mm-5-fm-algo": 6
+     },
+     "figH": {
+      "mm-5-fm-basic": "Modulator, carrier and the FM wave e = A sin(αt + I sin βt)",
+      "mm-5-bessel": "Bessel functions set the carrier and sideband amplitudes",
+      "mm-5-fm-algo": "FM algorithms: multiple carriers, multiple modulators, feedback"
+     }
     },
     {
      "h": "Worked example: FM sidebands",
@@ -2008,7 +2368,19 @@ COURSES.mm = {
       "n = 2: 440 ± 60 = <b>380 Hz and 500 Hz</b> (J<sub>2</sub>). n = 3: 440 ± 90 = <b>350 Hz and 530 Hz</b> (J<sub>3</sub>).",
       "As I grows during the note, more of these sidebands gain energy, so the sound becomes progressively brighter/more complex.",
       "Harmonic example: fc = 200, fm = 200 (ratio 1:1) gives 200 ± 200n → 0, 400, 600 … all multiples of 200 Hz (harmonic). With fm = 141 Hz (non-integer ratio) the sidebands 59, 341, 482 … are not multiples of a common fundamental → bell-like, inharmonic."
-     ]
+     ],
+     "fig": [
+      "mm-5-fm-eg",
+      "mm-5-fm-ratio"
+     ],
+     "figAt": {
+      "mm-5-fm-eg": 2,
+      "mm-5-fm-ratio": 4
+     },
+     "figH": {
+      "mm-5-fm-eg": "fm_eg.m: sidebands of 440 Hz ± n × 30 Hz as I rises",
+      "mm-5-fm-ratio": "Harmonic 1:1 ratio against the bell-like 200 : 141"
+     }
     },
     {
      "h": "Sample-based synthesis",
@@ -2021,7 +2393,25 @@ COURSES.mm = {
       "<b>Multisampling</b>: sample the instrument at regular intervals covering regions of adjacent notes (<b>splits</b>) or every note — more natural progression from low to high registers. Drum mapping is the non-pitched example.",
       "<b>Velocity layers</b>: the sound depends on how hard a key/string/drum is hit (key velocity). Single layer: only volume changes, no timbre change. Dual layer: sound 1 at lower velocity, sound 2 at higher. Triple: three sounds. Multisamples are laid out vertically in the keymap, velocity layers horizontally; most instruments combine both.",
       "<b>Keyswitching</b>: keys (usually low keys outside the instrument's range) select the playing style (muted/open trumpet, plucked/bowed violin) — banks of key-mapped, velocity-layered samples. Advanced samplers have full orchestras, choirs that sing words, and script control (Kontakt 2+)."
-     ]
+     ],
+     "fig": [
+      "mm-5-loop",
+      "mm-5-multi",
+      "mm-5-velocity",
+      "mm-5-keyswitch"
+     ],
+     "figAt": {
+      "mm-5-loop": 3,
+      "mm-5-multi": 5,
+      "mm-5-velocity": 6,
+      "mm-5-keyswitch": 7
+     },
+     "figH": {
+      "mm-5-loop": "Finding loop points: zero crossings and pattern matching",
+      "mm-5-multi": "Pitch shifting and multisampling on a keyboard",
+      "mm-5-velocity": "Velocity layers and the key map",
+      "mm-5-keyswitch": "Keyswitches choose the playing style"
+     }
     },
     {
      "h": "Beat slicing",
@@ -2033,7 +2423,25 @@ COURSES.mm = {
       "Tools: <b>ReCycle</b> (Sensitivity slider creates slices), <b>Cubase</b> Sample Editor (Hitpoints + Threshold, then Create Slices), <b>Groove Agent One</b> drum sampler (drag sliced file onto a pad; slices go to consecutive pads). Application: a MIDI chromatic scale triggers each slice at the right time to recreate the audio.",
       "Tempo problems: slower tempo → <b>silent gaps</b> between slices; faster tempo → <b>tail overlap</b> (reduces playing time). Attacks stay artefact-free (the most important part of percussion).",
       "Solutions: apply an <b>envelope</b> to fade each slice to silence before the gap/overlap; for gaps, <b>loop the end of the tail</b> to extend it through the gap."
-     ]
+     ],
+     "fig": [
+      "mm-5-beat",
+      "mm-5-subbands",
+      "mm-5-slices",
+      "mm-5-tempo"
+     ],
+     "figAt": {
+      "mm-5-beat": 2,
+      "mm-5-subbands": 3,
+      "mm-5-slices": 4,
+      "mm-5-tempo": 6
+     },
+     "figH": {
+      "mm-5-beat": "Instant energy against the 1 s average: beat detection",
+      "mm-5-subbands": "Beat detection in 32 frequency sub-bands",
+      "mm-5-slices": "Hitpoints, slices and pads",
+      "mm-5-tempo": "Slower and faster tempo: gaps, overlaps and their fixes"
+     }
     },
     {
      "h": "Wavetable synthesis",
@@ -2046,7 +2454,25 @@ COURSES.mm = {
       "Dynamic waveshaping: (1) <b>Linear crossfading</b> — crossfade sequentially from one table to the next using an envelope; (2) <b>Sequential enveloping</b> — two tables mixed at any instant by moving envelopes. Linear crossfading is a subclass where the envelopes are <b>overlapping triangular pulses</b>.",
       "<b>Advantages</b>: compact storage (far less data than the PCM sample of the same sound); as general as additive synthesis with much less real-time computation; exploits quasi-periodicity to remove redundancy; the <b>inverse DFT is precomputed</b> before playback instead of in real time.",
       "Demo <code>wavetable_synth.m</code>: one period each of a 440 Hz sine and a 500 Hz saw at Fs = 22050 (22050/440 ≈ 50 samples, 22050/500 = 44.1 samples) crossfaded; the same technique can build an ADSR envelope."
-     ]
+     ],
+     "fig": [
+      "mm-5-wavetable",
+      "mm-5-attack-loop",
+      "mm-5-seq-env",
+      "mm-5-crossfade"
+     ],
+     "figAt": {
+      "mm-5-wavetable": 2,
+      "mm-5-attack-loop": 3,
+      "mm-5-seq-env": 5,
+      "mm-5-crossfade": 7
+     },
+     "figH": {
+      "mm-5-wavetable": "Making waves: single-period tables read and mixed",
+      "mm-5-attack-loop": "Attack once, then a looped and enveloped sustain",
+      "mm-5-seq-env": "Linear crossfading and sequential enveloping",
+      "mm-5-crossfade": "wavetable_synth.m: a sine period crossfaded into a saw period"
+     }
     },
     {
      "h": "Granular synthesis",
@@ -2059,7 +2485,25 @@ COURSES.mm = {
       "Three ways to combine grains: <b>Quasi-synchronous</b> (stream of equal-duration grains → amplitude modulation for grains &lt; 50 ms), <b>Asynchronous</b> (grains distributed stochastically), <b>Pitch/Tempo-synchronous</b> (preserve pitch/tempo while changing playback speed; overlapping envelopes synchronous with the grain waveform frequency, fewer artefacts).",
       "Demo <code>granulation.m</code>: 400 grains of 10–20 ms (fs×0.01 to fs×0.02 samples), 10 ms Hanning fade-in/out. At 44.1 kHz that is 441–882 samples per grain. Regularly spaced grains act like a <b>filtered pulse train</b>.",
       "<b>PSOLA</b> (Pitch Synchronous Overlap-Add): from speech processing; divides the waveform into small overlapping segments. Pitch: segments moved <b>further apart → lower pitch</b>, <b>closer → higher pitch</b>. Duration: segments <b>repeated → longer</b>, some <b>eliminated → shorter</b>. Recombined by overlap-add. Unlike the phase vocoder, there is <b>no STFT</b> in PSOLA (it predates the phase vocoder). Grains far apart → separated by silences; many short overlapping grains → texture."
-     ]
+     ],
+     "fig": [
+      "mm-5-grain",
+      "mm-5-grain-modes",
+      "mm-5-granulation",
+      "mm-5-psola"
+     ],
+     "figAt": {
+      "mm-5-grain": 4,
+      "mm-5-grain-modes": 5,
+      "mm-5-granulation": 6,
+      "mm-5-psola": 7
+     },
+     "figH": {
+      "mm-5-grain": "A grain: envelope × contents, and its spectrum",
+      "mm-5-grain-modes": "Quasi-synchronous, asynchronous and pitch-synchronous grains",
+      "mm-5-granulation": "granulation.m: random grains of 441 to 882 samples",
+      "mm-5-psola": "PSOLA: move segments for pitch, repeat or drop them for duration"
+     }
     },
     {
      "h": "Physical modelling and Karplus-Strong",
@@ -2075,7 +2519,22 @@ COURSES.mm = {
      "formula": [
       "D = Fs / F1   (delay in samples)",
       "44100 / 200 = 220.5 Hz ;  44100 / 441 = 100 samples"
-     ]
+     ],
+     "fig": [
+      "mm-5-ks-diagram",
+      "mm-5-karplus",
+      "mm-5-ks-drum"
+     ],
+     "figAt": {
+      "mm-5-ks-diagram": 2,
+      "mm-5-karplus": 4,
+      "mm-5-ks-drum": 6
+     },
+     "figH": {
+      "mm-5-ks-diagram": "The Karplus-Strong loop: noise, delay, filter, feedback",
+      "mm-5-karplus": "karplus.m: D = 200 samples gives 220.5 Hz",
+      "mm-5-ks-drum": "The drum variant: table length p and blend factor b"
+     }
     }
    ],
    "cards": [
@@ -2467,7 +2926,16 @@ COURSES.mm = {
       "MIDI as compression: a file needs only a <b>few 100K bytes</b> of storage / very low bandwidth, because MIDI sends <b>instructions</b> (which note, how loud, which instrument), not audio samples.",
       "The <b>responsibility of producing the sound is moved to the client</b>: a synthesiser module, sampler, soundcard or software synth. Most web browsers can handle MIDI (plugins such as QuickTime, MPEG-4, and since 2013 the <b>Web MIDI API</b> in HTML5).",
       "History: MIDI is about <b>40 years old</b> (2022/3) and still evolving, e.g. <b>MIDI 2.0</b> (\"High Definition MIDI\"). An iPad even played an old Commodore sequencer."
-     ]
+     ],
+     "fig": [
+      "mm-6-instr"
+     ],
+     "figAt": {
+      "mm-6-instr": 3
+     },
+     "figH": {
+      "mm-6-instr": "Audio sends samples, MIDI sends instructions the client turns into sound"
+     }
     },
     {
      "h": "Components of a MIDI system",
@@ -2478,7 +2946,13 @@ COURSES.mm = {
       "<b>MIDI control input devices</b>: usually a keyboard with extra controls (sustain, pitch bend, modulation, aftertouch); or another instrument (customised guitar, wind controller), a bunch of controllers, motion capture, virtual input, even \"mind control\"; breath, motion and bite controllers exist.",
       "<b>MIDI interfaces</b>: connect MIDI devices to the computer, wired or wireless; often bundled into the keyboard/controller or an audio interface; via MIDI cable, USB, Ethernet, Bluetooth or WiFi.",
       "<b>MIDI control output devices</b>: MIDI controls more than sound: <b>lighting, robotics</b> (Pat Metheny's robot band, the <b>Orchestrion</b>), video systems (video DJing), <b>MPEG-4 compression</b>, even \"hamster control\"."
-     ]
+     ],
+     "fig": [
+      "mm-6-system"
+     ],
+     "figH": {
+      "mm-6-system": "The parts of a MIDI system, from input device to sound and other outputs"
+     }
     },
     {
      "h": "Basic MIDI concepts and hardware",
@@ -2490,7 +2964,19 @@ COURSES.mm = {
       "<b>Voice</b>: the portion of the synthesiser that produces sound. Synthesisers have many voices (12, 20, 24, 36…), each working independently and simultaneously to produce sounds of different timbre and pitch.",
       "<b>Patch</b>: the control settings that define a particular timbre.",
       "<b>Connectors</b>: standard interface is USB or (older) <b>three 5-pin ports</b>: <b>MIDI IN</b> (receives all MIDI data), <b>MIDI OUT</b> (transmits the data the device <b>generates itself</b>), <b>MIDI THROUGH</b> (<b>echoes</b> the data received at MIDI IN). Modern devices bundle these and connect directly (USB/Ethernet, Bluetooth/WiFi)."
-     ]
+     ],
+     "fig": [
+      "mm-6-concepts",
+      "mm-6-ports"
+     ],
+     "figAt": {
+      "mm-6-concepts": 5,
+      "mm-6-ports": 6
+     },
+     "figH": {
+      "mm-6-concepts": "Track, channel, timbre, pitch, voice and patch in one sequencer and synth",
+      "mm-6-ports": "MIDI IN, OUT and THRU chaining a keyboard, an interface and two modules"
+     }
     },
     {
      "h": "Structure of MIDI messages",
@@ -2502,7 +2988,19 @@ COURSES.mm = {
       "Channel numbering: the nibble holds 0–15 but musicians number channels <b>1–16</b>. The slide example uses channel 13 = hex C (i.e. nibble value 12 + 1).",
       "Classification: <b>Channel messages</b> → <b>voice</b> messages and <b>mode</b> messages. <b>System messages</b> → <b>common</b>, <b>real-time</b> and <b>exclusive</b> messages."
      ],
-     "code": "Status byte:  1 m m m  c c c c      (m = message type, c = channel 0-15)\nData byte:    0 d d d  d d d d      (value 0-127)\n\nExample 9C 50 7F:\n  9C = 1001 1100 -> 1 | 001 = Note On (9x) | 1100 = C = 12 -> channel 13\n  50 = 0101 0000 = 80  -> key (note) number 80\n  7F = 0111 1111 = 127 -> maximum velocity"
+     "code": "Status byte:  1 m m m  c c c c      (m = message type, c = channel 0-15)\nData byte:    0 d d d  d d d d      (value 0-127)\n\nExample 9C 50 7F:\n  9C = 1001 1100 -> 1 | 001 = Note On (9x) | 1100 = C = 12 -> channel 13\n  50 = 0101 0000 = 80  -> key (note) number 80\n  7F = 0111 1111 = 127 -> maximum velocity",
+     "fig": [
+      "mm-6-bits",
+      "mm-6-classes"
+     ],
+     "figAt": {
+      "mm-6-bits": 4,
+      "mm-6-classes": 5
+     },
+     "figH": {
+      "mm-6-bits": "9C 50 7F decoded bit by bit: status byte, message type, channel, data",
+      "mm-6-classes": "How MIDI messages are classified, with their status bytes"
+     }
     },
     {
      "h": "Channel voice and mode messages",
@@ -2559,7 +3057,13 @@ COURSES.mm = {
        "MSB",
        "LSB"
       ]
-     ]
+     ],
+     "fig": [
+      "mm-6-builder"
+     ],
+     "figH": {
+      "mm-6-builder": "Build any voice message from the table, and spot a mode message"
+     }
     },
     {
      "h": "Worked examples: decoding and sizing MIDI messages",
@@ -2571,7 +3075,22 @@ COURSES.mm = {
       "<b>Program change</b> has only <b>one</b> data byte (2 bytes total); <b>channel pressure</b> also 2 bytes. Note on/off, poly pressure, control change and pitch bend are 3 bytes.",
       "<b>Size comparison</b>: a 1-minute piece with 1000 notes needs 1000 Note On + 1000 Note Off = 2000 × 3 = <b>6000 bytes</b>. One minute of stereo CD audio = 44100 × 16 × 2 × 60 / 8 = <b>10,584,000 bytes</b> (about 10 MB). That is why MIDI is called a compression tool.",
       "<b>Transmission time</b> (standard MIDI 1.0 fact, not on the slides): the serial link runs at <b>31.25 kbaud</b> and each byte is sent as <b>10 bits</b> (start + 8 data + stop). A 3-byte message = 30 bits / 31,250 bit/s = <b>0.96 ms</b>, so about 1041 three-byte messages per second."
-     ]
+     ],
+     "fig": [
+      "mm-6-decoder",
+      "mm-6-size",
+      "mm-6-wire"
+     ],
+     "figAt": {
+      "mm-6-decoder": 3,
+      "mm-6-size": 5,
+      "mm-6-wire": 6
+     },
+     "figH": {
+      "mm-6-decoder": "Decode the notes' examples or your own MIDI bytes",
+      "mm-6-size": "1000 notes of MIDI against one minute of CD audio, to scale",
+      "mm-6-wire": "A 3-byte message on the 31.25 kbaud link takes 0.96 ms"
+     }
     },
     {
      "h": "System messages and General MIDI",
@@ -2584,7 +3103,22 @@ COURSES.mm = {
       "<b>Patch map</b>: a standard list of <b>128 instruments</b> in 16 families of 8 (1–8 Piano, 9–16 Chromatic Percussion, 17–24 Organ, 25–32 Guitar, 33–40 Bass, 41–48 Strings, 49–56 Ensemble, 57–64 Brass, 65–72 Reed, 73–80 Pipe, 81–88 Synth Lead, 89–96 Synth Pad, 97–104 Synth Effects, 105–112 Ethnic, 113–120 Percussive, 121–128 Sound Effects). E.g. 1 Acoustic Grand, 41 Violin, 57 Trumpet, 74 Flute, 128 Gunshot.",
       "<b>Percussion map</b>: <b>47 percussion sounds</b> on keys <b>35–81</b> (35 Acoustic Bass Drum, 38 Acoustic Snare, 42 Closed Hi-Hat, 49 Crash Cymbal 1, 81 Open Triangle). Key-based percussion is transmitted on <b>channel 10</b> by default (other channels possible). Each key is essentially a <b>switch</b>, no pitch information; it can even trigger video (VJ).",
       "<b>GM requirements</b>: support all <b>16 channels</b>; each channel can play a different instrument (<b>multitimbral</b>); each channel can play many notes (<b>polyphony</b>); a minimum of <b>24</b> fully dynamically allocated voices (usually 64/128) shared across all channels."
-     ]
+     ],
+     "fig": [
+      "mm-6-sysbytes",
+      "mm-6-patch",
+      "mm-6-drums"
+     ],
+     "figAt": {
+      "mm-6-sysbytes": 3,
+      "mm-6-patch": 5,
+      "mm-6-drums": 6
+     },
+     "figH": {
+      "mm-6-sysbytes": "The system status bytes F0 to FF: real-time, common and exclusive",
+      "mm-6-patch": "The GM patch map: 128 instruments in 16 families of 8",
+      "mm-6-drums": "The GM percussion keys 35 to 81 and their Note On bytes on channel 10"
+     }
     },
     {
      "h": "Limitations of MIDI and MPEG-4 Structured Audio",
@@ -2600,7 +3134,22 @@ COURSES.mm = {
       "<b>Scheduler</b>: the main body of Structured Audio; defines how SAOL creates sound when driven by MIDI or SASL.",
       "<b>AudioBIFS</b>: BIFS = MPEG-4 <b>Binary Format for Scene Description</b>, describing how objects (video, sounds, animations) fit together. AudioBIFS specifies <b>mixing and post-production</b> of audio scenes at playback (e.g. voice mixed with background music, fading after 10 s, new music with reverb). An extended <b>VRML</b>. Example tree: Piano, Bass, Vocal AudioSources → AudioFX / AudioDelay → AudioMix nodes → final AudioMix.",
       "<b>HTML5 Web MIDI API</b>: lets web developers access MIDI input/output devices (hardware and software) with JavaScript; synthesis in the browser; support is not complete across browsers. Examples: the <b>Google Doodle Mini Moog</b> (subtractive synthesis, Bob Moog's 78th birthday), modular subtractive synth, FM (DX7) synth, drum machine, granular synth, Chrome Music Lab."
-     ]
+     ],
+     "fig": [
+      "mm-6-msblsb",
+      "mm-6-sa-tools",
+      "mm-6-bifs"
+     ],
+     "figAt": {
+      "mm-6-msblsb": 0,
+      "mm-6-sa-tools": 8,
+      "mm-6-bifs": 9
+     },
+     "figH": {
+      "mm-6-msblsb": "Two 8-bit values as MSB and LSB give a 16-bit range",
+      "mm-6-sa-tools": "How the six Structured Audio tools work together",
+      "mm-6-bifs": "An AudioBIFS tree mixing Piano, Bass and Vocal streams"
+     }
     }
    ],
    "cards": [
@@ -2992,7 +3541,22 @@ COURSES.mm = {
       "Standard orders: <b>Compression → Distortion → EQ → Noise Redux → Amp Sim → Modulation → Delay → Reverb</b>. A guitar multi-effects pedal (Zoom G1/G1X) links 8 modules in series: COMP/EFX, DRIVE, EQ, ZNR, AMP, MODULATION, DELAY, REVERB (e.g. the MODULATION module offers Chorus, Flanger...; REVERB offers Hall, Room...).",
       "<b>Classification by how the signal is processed</b>:",
       "• <b>Basic filtering</b>: lowpass, highpass, equaliser<br>• <b>Time-varying filters</b>: wah-wah, phaser<br>• <b>Delays</b>: vibrato, flanger, chorus, echo<br>• <b>Modulators</b>: ring modulation, tremolo, vibrato<br>• <b>Non-linear processing</b>: compression, limiters, distortion, exciters/enhancers<br>• <b>Spatial effects</b>: panning, reverb, surround sound"
-     ]
+     ],
+     "fig": [
+      "mm-fx-order",
+      "mm-fx-pedal",
+      "mm-fx-classes"
+     ],
+     "figAt": {
+      "mm-fx-order": 1,
+      "mm-fx-pedal": 2,
+      "mm-fx-classes": 4
+     },
+     "figH": {
+      "mm-fx-order": "Series and parallel chains, and how swapping two effects changes the output",
+      "mm-fx-pedal": "The standard order and the 8 serial modules of the Zoom G1/G1X pedal",
+      "mm-fx-classes": "Sort the effects into the six classes"
+     }
     },
     {
      "h": "Equalisers: shelving and peak filters",
@@ -3013,7 +3577,22 @@ COURSES.mm = {
       "Peak:  y1(n) = −aB/C·x(n) + d(1−aB/C)·x(n−1) + x(n−2) − d(1−aB/C)·y1(n−1) + aB/C·y1(n−2)",
       "       y(n)  = (H0/2)·(x(n) − y1(n)) + x(n),   d = −cos(2π fc/fs)",
       "Example: G = 4 dB → V0 = 10^(4/20) = 1.585 → H0 = 0.585;  G = 20 dB → V0 = 10, H0 = 9;  G = 6 dB → V0 ≈ 1.995 (≈ doubling of amplitude)"
-     ]
+     ],
+     "fig": [
+      "mm-eq-response",
+      "mm-eq-flow",
+      "mm-eq-db"
+     ],
+     "figAt": {
+      "mm-eq-response": 2,
+      "mm-eq-flow": 4,
+      "mm-eq-db": 5
+     },
+     "figH": {
+      "mm-eq-response": "Shelving and peak filter responses: change G, fc, Q and fb",
+      "mm-eq-flow": "Signal flow graphs of the shelving and peak filters, step by step",
+      "mm-eq-db": "Gain in dB to V0 and H0"
+     }
     },
     {
      "h": "Time-varying filters: wah-wah, phaser, state variable filter",
@@ -3030,7 +3609,25 @@ COURSES.mm = {
       "yh(n) = x(n) − yl(n−1) − Q1·yb(n−1)   (highpass)",
       "F1 = 2 sin(π fc / fs),   Q1 = 2d",
       "Example: fc = 1000 Hz, fs = 44100 Hz → F1 = 2 sin(0.07124) ≈ 0.1424;  d = 0.05 → Q1 = 0.1"
-     ]
+     ],
+     "fig": [
+      "mm-wah-flow",
+      "mm-wah-mfold",
+      "mm-svf-step",
+      "mm-wah-sweep"
+     ],
+     "figAt": {
+      "mm-wah-flow": 1,
+      "mm-wah-mfold": 2,
+      "mm-svf-step": 3,
+      "mm-wah-sweep": 4
+     },
+     "figH": {
+      "mm-wah-flow": "Wah-wah signal flow with a sweeping bandpass, and the phaser's notch",
+      "mm-wah-mfold": "M-fold wah-wah: M bandpass filters moving together",
+      "mm-svf-step": "The state variable filter, run on an impulse sample by sample",
+      "mm-wah-sweep": "Wah-wah: the SVF with fc swept as a triangle wave, its three outputs"
+     }
     },
     {
      "h": "Delay-based effects: comb filters",
@@ -3073,7 +3670,25 @@ COURSES.mm = {
        "0",
        "1"
       ]
-     ]
+     ],
+     "fig": [
+      "mm-fir-comb",
+      "mm-iir-comb",
+      "mm-delay-samples",
+      "mm-unicomb"
+     ],
+     "figAt": {
+      "mm-fir-comb": 2,
+      "mm-iir-comb": 3,
+      "mm-delay-samples": 4,
+      "mm-unicomb": 5
+     },
+     "figH": {
+      "mm-fir-comb": "FIR comb filter signal flow: one delayed copy",
+      "mm-iir-comb": "IIR comb filter signal flow: the output fed back through the delay",
+      "mm-delay-samples": "Delay time to samples: M = τ × fs",
+      "mm-unicomb": "Universal comb filter: pick BL, FB, FF and see the impulse response"
+     }
     },
     {
      "h": "Worked example: comb filter impulse responses",
@@ -3082,7 +3697,16 @@ COURSES.mm = {
       "<b>FIR comb</b>: y(0) = 1, y(10) = 0.5, every other sample 0. Only <b>one</b> echo.",
       "<b>IIR comb</b> (c = 1): y(0) = 1, y(10) = 0.5, y(20) = 0.25, y(30) = 0.125, y(40) = 0.0625 ... an <b>endless, exponentially decaying</b> series of echoes (each pass × g).",
       "Delay in time: at f<sub>s</sub> = 8000 Hz, M = 10 samples is 10/8000 = 1.25 ms (resonator range); for a 100 ms echo at 8 kHz you need M = 800 samples."
-     ]
+     ],
+     "fig": [
+      "mm-comb-impulse"
+     ],
+     "figAt": {
+      "mm-comb-impulse": 3
+     },
+     "figH": {
+      "mm-comb-impulse": "fircomb.m and iircomb.m on a unit impulse, sample by sample"
+     }
     },
     {
      "h": "Vibrato, flanger, chorus, slapback, echo",
@@ -3123,7 +3747,22 @@ COURSES.mm = {
        "> 50",
        "None"
       ]
-     ]
+     ],
+     "fig": [
+      "mm-vibrato",
+      "mm-delay-ranges",
+      "mm-flanger"
+     ],
+     "figAt": {
+      "mm-vibrato": 0,
+      "mm-delay-ranges": 2,
+      "mm-flanger": 3
+     },
+     "figH": {
+      "mm-vibrato": "Vibrato: an LFO-modulated delay changes the pitch",
+      "mm-delay-ranges": "Delay ranges of resonator, flanger, chorus, slapback and echo",
+      "mm-flanger": "flanger.m: the oscillating delay sweeps the comb notches"
+     }
     },
     {
      "h": "Modulation effects: ring modulation, AM, tremolo",
@@ -3133,7 +3772,22 @@ COURSES.mm = {
       "Example: f<sub>c</sub> = 440 Hz, f<sub>x</sub> = 200 Hz → RM output contains <b>640 Hz and 240 Hz</b> (no 440 or 200).",
       "<b>Amplitude modulation (AM)</b>: <b>y(n) = (1 + α·m(n))·x(n)</b>, m(n) normalised to peak 1, m is an LFO, x is the audio carrier; <b>α = depth</b>: α = 1 maximum modulation, α = 0 turns it off. With sines f<sub>c</sub> and f<sub>x</sub> you hear <b>three</b> frequencies: f<sub>c</sub>, f<sub>c</sub> − f<sub>x</sub>, f<sub>c</sub> + f<sub>x</sub>.",
       "<b>Tremolo</b> = AM with modulation frequency <b>below 20 Hz</b> (demo: 5 Hz, α = 0.5 → gain varies between 0.5 and 1.5). Tremolo can also be made by ring modulating with a <b>triangular</b> wave LFO."
-     ]
+     ],
+     "fig": [
+      "mm-ring-mod",
+      "mm-am-mod",
+      "mm-tremolo"
+     ],
+     "figAt": {
+      "mm-ring-mod": 2,
+      "mm-am-mod": 3,
+      "mm-tremolo": 4
+     },
+     "figH": {
+      "mm-ring-mod": "Ring modulation of two sines: only the sum and difference remain",
+      "mm-am-mod": "Amplitude modulation: carrier plus two side frequencies",
+      "mm-tremolo": "Tremolo: the gain swings at a low rate (sine AM or triangle RM)"
+     }
     },
     {
      "h": "Non-linear processing: limiter, compressor, expander, distortion, exciter, enhancer",
@@ -3146,7 +3800,28 @@ COURSES.mm = {
       "<b>Distortion/Fuzz</b>: non-linear exponential amplification f(x) = (x/|x|)(1 − e<sup>αx²/|x|</sup>) as printed on the slide; the gain <b>α</b> controls the amount; part of the distorted signal is usually <b>mixed</b> with the original.",
       "<b>Exciter</b>: emphasises/de-emphasises certain frequencies to change <b>timbre</b>; extra brightness without EQ; subtle high-frequency distortion and phase shifting via the <b>Short-Time Fourier Transform</b> (phase vocoder); adds presence/clarity and speech intelligibility; best on signals lacking high frequencies.",
       "<b>Enhancer</b>: <b>equalisation + non-linear processing</b>, a \"just noticeable\" amount of distortion; a filter network (at least 3 bands) + harmonic generator; used instead of EQs on some consoles, and for stereo enhancement in radio broadcast."
-     ]
+     ],
+     "fig": [
+      "mm-limiter",
+      "mm-compexp",
+      "mm-overdrive",
+      "mm-fuzz",
+      "mm-exciter"
+     ],
+     "figAt": {
+      "mm-limiter": 1,
+      "mm-compexp": 2,
+      "mm-overdrive": 4,
+      "mm-fuzz": 5,
+      "mm-exciter": 7
+     },
+     "figH": {
+      "mm-limiter": "limiter.m: peak level, gain and output on the slide's test signal",
+      "mm-compexp": "compexp.m: compressing and expanding a quiet-loud-medium signal",
+      "mm-overdrive": "Overdrive soft clipping: the curve, the waveform and the new harmonics",
+      "mm-fuzz": "Fuzz: exponential distortion with gain and mix",
+      "mm-exciter": "Exciter and enhancer, block by block"
+     }
     },
     {
      "h": "Spatial effects: panning and reverb",
@@ -3163,7 +3838,31 @@ COURSES.mm = {
      "formula": [
       "Discrete convolution: y(n) = Σ x(k)·h(n − k)",
       "Convolution theorem: f ∗ g  ⇔  F(u)·G(u)  → y = IFFT( FFT(x)·FFT(h) )"
-     ]
+     ],
+     "fig": [
+      "mm-panning",
+      "mm-room-reflect",
+      "mm-reverb-delay",
+      "mm-schroeder",
+      "mm-moorer",
+      "mm-conv-reverb"
+     ],
+     "figAt": {
+      "mm-panning": 0,
+      "mm-room-reflect": 1,
+      "mm-reverb-delay": 3,
+      "mm-schroeder": 5,
+      "mm-moorer": 6,
+      "mm-conv-reverb": 7
+     },
+     "figH": {
+      "mm-panning": "Panning by rotation: gL and gR as θ moves",
+      "mm-room-reflect": "Reflections in a room and the echogram they build",
+      "mm-reverb-delay": "Feedback delay v. room reverb: early reflections, then diffuse; and echo",
+      "mm-schroeder": "Schroeder reverb: 4 parallel combs, then 2 allpass filters",
+      "mm-moorer": "Moorer reverb: tapped delay line, 6 lowpass combs, allpass",
+      "mm-conv-reverb": "Convolution reverb with the FFT on three impulse responses"
+     }
     }
    ],
    "cards": [
@@ -3575,7 +4274,14 @@ COURSES.mm = {
      "fig": [
       "mm-8a-sizes",
       "mm-8a-lut"
-     ]
+     ],
+     "figAt": {
+      "mm-8a-lut": 10
+     },
+     "figH": {
+      "mm-8a-sizes": "Try it: image types and their sizes",
+      "mm-8a-lut": "The colour look-up table: from a pixel index to an RGB colour"
+     }
     },
     {
      "h": "Dithering",
@@ -3592,7 +4298,14 @@ COURSES.mm = {
      "fig": [
       "mm-8a-dither",
       "mm-8a-ordered"
-     ]
+     ],
+     "figAt": {
+      "mm-8a-ordered": 5
+     },
+     "figH": {
+      "mm-8a-dither": "Try it: dither one pixel with the 4×4 matrix",
+      "mm-8a-ordered": "Simple dithering vs ordered dither"
+     }
     },
     {
      "h": "Image file formats",
@@ -3635,7 +4348,27 @@ COURSES.mm = {
       "mm-8a-cie-cone",
       "mm-8a-cie-mix",
       "mm-8a-lab"
-     ]
+     ],
+     "figAt": {
+      "mm-8a-spectrum": 1,
+      "mm-8a-eye": 3,
+      "mm-8a-cones": 4,
+      "mm-8a-channels": 6,
+      "mm-8a-displays": 7,
+      "mm-8a-cie-cone": 9,
+      "mm-8a-cie-mix": 10,
+      "mm-8a-lab": 11
+     },
+     "figH": {
+      "mm-8a-spectrum": "Visible light and its spectrum, 400 to 700 nm",
+      "mm-8a-eye": "The eye as a camera: lens, retina, rods and cones",
+      "mm-8a-cones": "Try it: how the three cone types respond to each wavelength",
+      "mm-8a-channels": "An image split into its RGB, Lab or YIQ channels",
+      "mm-8a-displays": "Colour displays: CRT phosphors and LCD layers",
+      "mm-8a-cie-cone": "CIE XYZ: from the horseshoe cone to the chromaticity diagram",
+      "mm-8a-cie-mix": "Try it: mix colours on the CIE chromaticity diagram",
+      "mm-8a-lab": "The CIE Lab model: L, a and b axes"
+     }
     },
     {
      "h": "Luminance–chrominance models: YIQ, YUV, YCrCb",
@@ -3664,7 +4397,19 @@ COURSES.mm = {
       "mm-8a-ntsc",
       "mm-8a-fields",
       "mm-ycrcb-lab"
-     ]
+     ],
+     "figAt": {
+      "mm-8a-yiq-yuv": 4,
+      "mm-8a-ntsc": 5,
+      "mm-8a-fields": 7,
+      "mm-ycrcb-lab": 8
+     },
+     "figH": {
+      "mm-8a-yiq-yuv": "Try it: the YIQ and YUV transforms on one colour",
+      "mm-8a-ntsc": "YIQ in NTSC: the I and Q axes and their bandwidths",
+      "mm-8a-fields": "YUV video: odd and even fields make a frame",
+      "mm-ycrcb-lab": "Try it: convert a pixel to YCrCb and see each component"
+     }
     },
     {
      "h": "Printing models: CMY and CMYK",
@@ -3688,7 +4433,17 @@ COURSES.mm = {
       "mm-cmy-cubes",
       "mm-add-sub",
       "mm-cmyk-lab"
-     ]
+     ],
+     "figAt": {
+      "mm-cmy-cubes": 1,
+      "mm-add-sub": 3,
+      "mm-cmyk-lab": 7
+     },
+     "figH": {
+      "mm-cmy-cubes": "The RGB cube and the CMY cube, corner by corner",
+      "mm-add-sub": "Try it: additive and subtractive colour mixing",
+      "mm-cmyk-lab": "Try it: convert a pixel to CMYK and see each ink plate"
+     }
     },
     {
      "h": "Worked conversion example (from the course summary, not on the CM3106 slides)",
@@ -3739,7 +4494,15 @@ COURSES.mm = {
      "fig": [
       "mm-video-signals",
       "mm-ntsc-pal"
-     ]
+     ],
+     "figAt": {
+      "mm-video-signals": 2,
+      "mm-ntsc-pal": 4
+     },
+     "figH": {
+      "mm-video-signals": "Component, composite and S-Video signals",
+      "mm-ntsc-pal": "NTSC vs PAL: lines, frame rate, fields and bandwidth"
+     }
     },
     {
      "h": "Chroma subsampling",
@@ -3762,7 +4525,15 @@ COURSES.mm = {
      "fig": [
       "mm-chroma-layout",
       "mm-chroma-grid"
-     ]
+     ],
+     "figAt": {
+      "mm-chroma-layout": 6,
+      "mm-chroma-grid": 8
+     },
+     "figH": {
+      "mm-chroma-layout": "Chroma subsampling: which Y, Cb and Cr samples each scheme keeps",
+      "mm-chroma-grid": "Try it: where chroma is sampled in 4:4:4, 4:2:2, 4:1:1 and 4:2:0"
+     }
     },
     {
      "h": "Aliasing in images and video",
@@ -3781,7 +4552,16 @@ COURSES.mm = {
       "mm-stair-zoom",
       "mm-wagon-wheel",
       "mm-interlace"
-     ]
+     ],
+     "figAt": {
+      "mm-stair-zoom": 2,
+      "mm-wagon-wheel": 5
+     },
+     "figH": {
+      "mm-stair-zoom": "Image aliasing: stair-stepping and digital zoom",
+      "mm-wagon-wheel": "Try it: the wagon-wheel effect, sampled below and above Nyquist",
+      "mm-interlace": "Interlacing aliasing: field by field"
+     }
     }
    ],
    "cards": [
