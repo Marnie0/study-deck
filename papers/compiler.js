@@ -32,20 +32,36 @@ PAPERS.compiler = {
         ]},
         { title: `Q2 · Written`, marks: `30 marks · 6 each`, items: [
           { type: `written`, q: `a- Compare between compilers and interpreters.`, ans: `<table><tr><th>Interpreter</th><th>Compiler</th></tr><tr><td>Translates the program one statement at a time</td><td>Scans the entire program and translates it as a whole into machine code</td></tr><tr><td>Less time to analyze the source code, but slower overall execution</td><td>More time to analyze the source code, but faster overall execution</td></tr><tr><td>No intermediate object code is generated, so it is memory efficient</td><td>Generates intermediate object code that needs linking, so it needs more memory</td></tr><tr><td>JavaScript, Python, Ruby</td><td>C, C++, Java</td></tr></table>`, why: `L1 table; revision sheet essay Q10.` },
-          { type: `written`, q: `b- Consider the following CFG, use leftmost derivations and parsing trees on the string 001101 to prove the ambiguity of this grammar.<br>S → 0A | 1B<br>A → 0AA | 1S | 1<br>B → 1BB | 0S | 0`, ans: `<pre>LMD 1: S ⇒ 0A ⇒ 00AA ⇒ 001SA ⇒ 0011BA ⇒ 00110A ⇒ 001101
-LMD 2: S ⇒ 0A ⇒ 00AA ⇒ 001A  ⇒ 0011S  ⇒ 00110A ⇒ 001101
+          { type: `written`, q: `b- Consider the following CFG, use leftmost derivations and parsing trees on the string 001101 to prove the ambiguity of this grammar.<br>S → 0A | 1B<br>A → 0AA | 1S | 1<br>B → 1BB | 0S | 0`, ans: `<pre>LMD 1: S ⇒ 0A ⇒ 00AA ⇒ 001SA
+     ⇒ 0011BA ⇒ 00110A ⇒ 001101
+LMD 2: S ⇒ 0A ⇒ 00AA ⇒ 001A
+     ⇒ 0011S ⇒ 00110A ⇒ 001101
 
-Tree 1:  S                    Tree 2:  S
-        / \                           / \
-       0   A                         0   A
-         / | \                         / | \
-        0  A  A                       0  A  A
-          / \  \                         |  / \
-         1   S  1                        1 1   S
-            / \                               / \
-           1   B                             0   A
-               |                                 |
-               0                                 1</pre>Two different leftmost derivations (two different parse trees) for the same string 001101, so the grammar is ambiguous.`, why: `In tree 1 the first A of 0AA uses A → 1S (and S → 1B → 10) and the second A uses A → 1. In tree 2 the first A uses A → 1 and the second uses A → 1S (S → 0A → 01). Both yield 0·0·1·1·0·1. Same as revision sheet essay Q2 and the 2023/24 (50) paper.` },
+Tree 1:
+    S
+   / \\
+  0   A
+    / | \\
+   0  A  A
+     / \\  \\
+    1   S  1
+       / \\
+      1   B
+          |
+          0
+
+Tree 2:
+    S
+   / \\
+  0   A
+    / |  \\
+   0  A   A
+      |  / \\
+      1 1   S
+           / \\
+          0   A
+              |
+              1</pre>Two different leftmost derivations (two different parse trees) for the same string 001101, so the grammar is ambiguous.`, why: `In tree 1 the first A of 0AA uses A → 1S (and S → 1B → 10) and the second A uses A → 1. In tree 2 the first A uses A → 1 and the second uses A → 1S (S → 0A → 01). Both yield 0·0·1·1·0·1. Same as revision sheet essay Q2 and the 2023/24 (50) paper.` },
           { type: `written`, q: `c- Consider the following NFA: State the reason(s) of being non-deterministic, then convert it into its equivalent DFA.<br>NFA as printed: start 1, final (double circle) 3; 1 –0→ 3; 3 –0→ 1; 3 –0→ 3 (self-loop); 3 –1→ 2; 2 –0→ 3.`, ans: `<b>Reason</b>: state 3 has a loop on 0 and another transition on the same symbol 0 (to 1), so δ(3, 0) = {1, 3} has two possible next states.<br>Transition table (with ε):<table><tr><th>State</th><th>0</th><th>1</th><th>ε</th></tr><tr><td>1</td><td>3</td><td>-</td><td>1</td></tr><tr><td>2</td><td>3</td><td>-</td><td>2</td></tr><tr><td>3</td><td>1,3</td><td>2</td><td>3</td></tr></table>DFA:<table><tr><th>DFA state</th><th>0</th><th>1</th></tr><tr><td>→ {1}</td><td>{3}</td><td>∅ (dead)</td></tr><tr><td>* {3}</td><td>{1,3}</td><td>{2}</td></tr><tr><td>* {1,3}</td><td>{1,3}</td><td>{2}</td></tr><tr><td>{2}</td><td>{3}</td><td>∅ (dead)</td></tr></table>Start = {1}. Final states = sets containing 3: {3} and {1,3}.<br><br><b>If the loop is read as 1</b> (the revision-sheet / 2024/25 version: 3 –1→ 3): reason = state 3 has a loop on 1 and another transition on 1 (to 2). DFA: {1} –0→ {3}; {3} –0→ {1}, –1→ {2,3}; {2,3} –0→ {1,3}, –1→ {2,3}; {1,3} –0→ {1,3}, –1→ {2,3}; finals {3}, {2,3}, {1,3}.`, why: `Subset construction from {1}: {1} on 0 → {3}. {3} on 0 → {1,3} (edge to 1 plus the loop); on 1 → {2}. {1,3} on 0 → {3} ∪ {1,3} = {1,3}; on 1 → {2}. {2} on 0 → {3}; on 1 nothing. No new sets appear, so the DFA has 4 states plus a dead state. The scan's loop label is the same glyph as the other 0 labels, clearly different from the "1" on the 3 → 2 edge.` },
           { type: `written`, q: `d- Consider the following C++ code segment: (i) Show the printed output in cases of static and dynamic binding environments, then (ii) draw a symbol table with a linked list for all scopes.<pre>void main( ) {
    int i =10 , w = 20 ;
@@ -119,22 +135,48 @@ double d; string s[10];
    cout&lt;&lt;"x= "&lt;&lt;x&lt;&lt;"y= "&lt;&lt;y;
 }</pre>`, ans: `<table><tr><th></th><th>Static</th><th>Dynamic</th></tr><tr><td>Inner block (x = 6, y = 2 + 6)</td><td>x= 6 y= 8</td><td>x= 6 y= 8</td></tr><tr><td>After block (y += x)</td><td>x= 1 y= 9</td><td>x= 6 y= 14</td></tr></table><b>Optimizations</b>:<br>1) <b>Constant folding</b>: <code>int x = 3*2</code> → <code>int x = 6</code>; <code>result = (2+3)*sqrt(2*8)</code> → <code>result = 5*sqrt(16)</code> → <code>result = 20</code>. Computed once at compile time instead of at run time.<br>2) <b>Combine operations</b>: the whole expression becomes one constant assignment.<br>3) <b>Dead code elimination</b>: d and s[10] are never used (and result is assigned but never used), so they can be removed to save memory.`, why: `Same code as the 2023/24 (50) paper. Static: after the block the outer x = 1 is visible again, so y = 8 + 1 = 9. Dynamic (course convention): the most recent declaration x = 6 is still used, so y = 8 + 6 = 14 and x prints as 6.` },
           { type: `written`, q: `b- Describe syntax directed translation.`, ans: `SDT adds augmented (translation) rules to the grammar to facilitate semantic analysis. It passes information bottom-up and/or top-down the parse tree as <b>attributes</b> attached to the nodes. The general approach is to construct a parse tree or syntax tree and compute the values of the attributes at its nodes by visiting them in some order, producing the <b>annotated syntax tree</b>. In general, SDT augments a CFG by associating (1) a set of attributes with every grammar symbol/node and (2) a set of translation (semantic) rules with every production, using attributes, constants and lexical values. Example: E → E1 + T { E.val = E1.val + T.val } gives E.val = 14 for 2+3*4.`, why: `L7; revision sheet essay Q13.` },
-          { type: `written`, q: `c- Consider the grammar:<br>E → E op E | (E) | +E | num<br>op → + | - | * | / | ε<br>Prove the ambiguity of the given grammar using leftmost derivation(s) and parsing tree(s) on the string <i>(num / num) + num</i>.`, ans: `The + can be generated either as a binary operator (op → +) or as a unary plus (E → +E) after an empty operator (op → ε).<pre>LMD 1: E ⇒ E op E ⇒ (E) op E ⇒ (E op E) op E ⇒ (num op E) op E
-         ⇒ (num / E) op E ⇒ (num / num) op E ⇒ (num / num) + E
-         ⇒ (num / num) + num
-LMD 2: E ⇒ E op E ⇒ (E) op E ⇒ (E op E) op E ⇒ (num op E) op E
-         ⇒ (num / E) op E ⇒ (num / num) op E ⇒ (num / num) E      [op → ε]
-         ⇒ (num / num) + E ⇒ (num / num) + num                  [E → +E]
+          { type: `written`, q: `c- Consider the grammar:<br>E → E op E | (E) | +E | num<br>op → + | - | * | / | ε<br>Prove the ambiguity of the given grammar using leftmost derivation(s) and parsing tree(s) on the string <i>(num / num) + num</i>.`, ans: `The + can be generated either as a binary operator (op → +) or as a unary plus (E → +E) after an empty operator (op → ε).<pre>LMD 1:
+E ⇒ E op E
+  ⇒ (E) op E
+  ⇒ (E op E) op E
+  ⇒ (num op E) op E
+  ⇒ (num / E) op E
+  ⇒ (num / num) op E
+  ⇒ (num / num) + E
+  ⇒ (num / num) + num
 
-Tree 1:            E                 Tree 2:            E
-             /     |     \                        /     |     \
-            E      op     E                      E      op     E
-          / | \    |      |                    / | \    |     / \
-         (  E  )   +     num                  (  E  )   ε    +   E
-          / | \                                / | \             |
-         E  op  E                             E  op  E          num
-         |  |   |                             |  |   |
-        num /  num                           num /  num</pre>The same string has two different leftmost derivations and two different parse trees, so the grammar is ambiguous.`, why: `Inside the parentheses there is only one way to get num / num (the / can only come from op). The ambiguity is in the +: tree 1 uses op → +, tree 2 uses op → ε and E → +E. Both derivations are leftmost (the leftmost non-terminal is replaced at every step).` },
+LMD 2:
+E ⇒ E op E
+  ⇒ (E) op E
+  ⇒ (E op E) op E
+  ⇒ (num op E) op E
+  ⇒ (num / E) op E
+  ⇒ (num / num) op E
+  ⇒ (num / num) E     [op → ε]
+  ⇒ (num / num) + E   [E → +E]
+  ⇒ (num / num) + num
+
+Tree 1:
+         E
+      /  |  \\
+     E   op   E
+   / | \\  |    |
+  (  E  ) +   num
+   / | \\
+  E  op  E
+  |  |   |
+ num /  num
+
+Tree 2:
+         E
+      /  |  \\
+     E   op   E
+   / | \\  |   / \\
+  (  E  ) ε  +   E
+   / | \\         |
+  E  op  E      num
+  |  |   |
+ num /  num</pre>The same string has two different leftmost derivations and two different parse trees, so the grammar is ambiguous.`, why: `Inside the parentheses there is only one way to get num / num (the / can only come from op). The ambiguity is in the +: tree 1 uses op → +, tree 2 uses op → ε and E → +E. Both derivations are leftmost (the leftmost non-terminal is replaced at every step).` },
           { type: `written`, q: `d- Consider the following Finite Automaton; convert it into the equivalent deterministic finite automaton.<br>FA: start 0, final (double circle) 2; 0 –b→ 1; 0 –a→ 2; 1 –a→ 1 (self-loop); 1 –a→ 2; 2 –a→ 1.`, ans: `It is an NFA because state 1 has a loop on a and another transition on a (to 2).<br>NFA table:<table><tr><th>State</th><th>a</th><th>b</th></tr><tr><td>0</td><td>2</td><td>1</td></tr><tr><td>1</td><td>1,2</td><td>-</td></tr><tr><td>2</td><td>1</td><td>-</td></tr></table>DFA:<table><tr><th>DFA state</th><th>a</th><th>b</th></tr><tr><td>→ {0}</td><td>{2}</td><td>{1}</td></tr><tr><td>* {2}</td><td>{1}</td><td>∅ (dead)</td></tr><tr><td>{1}</td><td>{1,2}</td><td>∅ (dead)</td></tr><tr><td>* {1,2}</td><td>{1,2}</td><td>∅ (dead)</td></tr></table>Start = {0}. Final states = sets containing 2: {2} and {1,2}. All b-moves except from {0} go to a dead state (or are left out).`, why: `{0} on a → {2}, on b → {1}. {2} on a → {1}. {1} on a → {1,2} (loop + edge to 2). {1,2} on a → {1,2} ∪ {1} = {1,2}. No state has a b-move except 0. Checked twice.` },
           { type: `written`, q: `e- Consider the following CFG, use LL(1) parsing to prove the correctness of the string <i>abbcde</i>.<br>S → aABe<br>A → Abc | b<br>B → d`, ans: `Remove left recursion: S → aABe, A → bA', A' → bcA' | ε, B → d.<table><tr><th>NT</th><th>FIRST</th><th>FOLLOW</th></tr><tr><td>S</td><td>{a}</td><td>{$}</td></tr><tr><td>A</td><td>{b}</td><td>{d}</td></tr><tr><td>A'</td><td>{b, ε}</td><td>{d}</td></tr><tr><td>B</td><td>{d}</td><td>{e}</td></tr></table>Table: M[S,a] = S→aABe; M[A,b] = A→bA'; M[A',b] = A'→bcA'; M[A',d] = A'→ε; M[B,d] = B→d.<table><tr><th>Stack</th><th>Input</th><th>Action</th></tr><tr><td>S$</td><td>abbcde$</td><td>S→aABe</td></tr><tr><td>aABe$</td><td>abbcde$</td><td>match a</td></tr><tr><td>ABe$</td><td>bbcde$</td><td>A→bA'</td></tr><tr><td>bA'Be$</td><td>bbcde$</td><td>match b</td></tr><tr><td>A'Be$</td><td>bcde$</td><td>A'→bcA'</td></tr><tr><td>bcA'Be$</td><td>bcde$</td><td>match b</td></tr><tr><td>cA'Be$</td><td>cde$</td><td>match c</td></tr><tr><td>A'Be$</td><td>de$</td><td>A'→ε</td></tr><tr><td>Be$</td><td>de$</td><td>B→d</td></tr><tr><td>de$</td><td>de$</td><td>match d</td></tr><tr><td>e$</td><td>e$</td><td>match e</td></tr><tr><td>$</td><td>$</td><td>accept</td></tr></table>The input is accepted, so abbcde is a correct sentence of the grammar.`, why: `Same grammar and string as the 2023/24 (50) paper. A → Abc | b is left-recursive, so it is rewritten first. FOLLOW(A) = FIRST(B) = {d}; FOLLOW(A') = FOLLOW(A) = {d}; FOLLOW(B) = {e}. No table cell has two entries, so the grammar is LL(1).` }
         ]}
@@ -252,20 +294,32 @@ for (i=0; i &lt; x ; i++)
    swap_elements(a[i],a[ i+1]);</pre>Instead of computing length-1 as many times as the length of the array, store it once in an integer x and make x the terminating condition. length-1 is evaluated only once, which saves processing and time.`, key: `The official explanation also says it "saves memory"; it actually adds one variable. The real gain is processing time.`, why: `Loop optimization / code hoisting (L9 arr.length example).` },
           { type: `written`, q: `5- Given the ambiguous CFG S → Ab | aaB, A → a | Aa, B → b. Show that the string aab has two leftmost derivations.`, ans: `<pre>LMD 1: S ⇒ aaB ⇒ aab
 LMD 2: S ⇒ Ab ⇒ Aab ⇒ aab</pre>`, why: `Official answer. In LMD 2, A → Aa then A → a.` },
-          { type: `written`, q: `6- Given the ambiguous CFG S → AB | C, A → aAb | ab, B → cBd | cd, C → aCd | aDd, D → bDc | bc. Show that the string aabbccdd has two leftmost derivations AND draw the two leftmost parsing trees.`, ans: `<pre>LMD 1: S ⇒ AB ⇒ aAbB ⇒ aabbB ⇒ aabbcBd ⇒ aabbccdd
-LMD 2: S ⇒ C ⇒ aCd ⇒ aaDdd ⇒ aabDcdd ⇒ aabbccdd
+          { type: `written`, q: `6- Given the ambiguous CFG S → AB | C, A → aAb | ab, B → cBd | cd, C → aCd | aDd, D → bDc | bc. Show that the string aabbccdd has two leftmost derivations AND draw the two leftmost parsing trees.`, ans: `<pre>LMD 1: S ⇒ AB ⇒ aAbB ⇒ aabbB
+     ⇒ aabbcBd ⇒ aabbccdd
+LMD 2: S ⇒ C ⇒ aCd ⇒ aaDdd
+     ⇒ aabDcdd ⇒ aabbccdd
 
-Tree 1:        S                Tree 2:   S
-            /     \                       |
-           A       B                      C
-         / | \   / | \                  / | \
-        a  A  b c  B  d                a  C  d
-          / \     / \                   / | \
-         a   b   c   d                 a  D  d
-                                        / | \
-                                       b  D  c
-                                         / \
-                                        b   c</pre>`, why: `Official answer. Tree 1 splits the string as (aabb)(ccdd); tree 2 nests from the outside (a…d, a…d, b…c, b…c).` },
+Tree 1:
+        S
+     /     \\
+    A       B
+  / | \\   / | \\
+ a  A  b c  B  d
+   / \\     / \\
+  a   b   c   d
+
+Tree 2:
+    S
+    |
+    C
+  / | \\
+ a  C  d
+  / | \\
+ a  D  d
+  / | \\
+ b  D  c
+   / \\
+  b   c</pre>`, why: `Official answer. Tree 1 splits the string as (aabb)(ccdd); tree 2 nests from the outside (a…d, a…d, b…c, b…c).` },
           { type: `written`, q: `7- Draw a finite automaton for each of the following regular expressions: b*a+(c|d) and (a|b)*(c+|d+).`, ans: `<b>b*a+(c|d)</b>: →0 (loop b) –a→ 1 (loop a); 1 –c→ 2; 1 –d→ 2; 2 final.<br><b>(a|b)*(c+|d+)</b>: →0 (loop a,b); 0 –c→ 2 (final, loop c); 0 –d→ 3 (final, loop d).`, why: `Official figures. In the second, c's and d's need separate final states so they cannot mix.` },
           { type: `written`, q: `8- Differentiate between synthesized attributes and inherited attributes.`, ans: `Synthesized attributes are passed upwards in the syntax tree, from the leaves up to the root (a node's value is computed from its children). Inherited attributes are passed downwards (from the parent and/or siblings). Information synthesized in one subtree may be inherited by another subtree or, in a later pass, by the same subtree. Example: a symbol table is synthesized by a declaration and inherited by the scope of the declaration.`, why: `Official answer (L7).` },
           { type: `written`, q: `9- Consider the C++ code:<pre>void main() {
@@ -299,16 +353,30 @@ void main()
 a[3]  ->  [ 0 | YES | NULL ]</pre>`, why: `Official answer. The call is my_function(i, a[2]). By result/value-result copy j back to i and x back to a[2] (address fixed at the call), overwriting the a[2] := 0. The local int i = 0 does not affect anything printed. In the symbol table, the local i (scope 1) is in front of the global i (scope 0).` },
           { type: `written`, q: `13- Explain the purpose of SDT?`, ans: `SDT is augmented rules to the grammar that facilitate semantic analysis. It passes information bottom-up and/or top-down the parse tree in the form of attributes attached to the nodes. The general approach is to construct a parse tree or syntax tree and compute the attribute values at its nodes by visiting them in some order. Generalizing, SDT associates (1) a set of attributes with every node of the grammar and (2) a set of translation rules with every production, using attributes, constants and lexical values.`, why: `Official answer (L7).` },
           { type: `written`, q: `14- Construct the regular expression of the following FA: start 1, final 5; 1 –e→ 2; 2 –a→ 2 (loop); 2 –a→ 3; 3 –b→ 5; 1 –a→ 4; 4 –b→ 4 (loop); 4 –b→ 5.`, ans: `Official solution: <b>e a+b | ab+</b>, i.e. <b>a+b | ab+</b> when e is ε.`, key: `The edge 1 → 2 is labelled "e", which here means ε (the empty string), so "e a+b" = a+b. If e were a real input symbol, the answer would be ea+b | ab+.`, why: `Upper path: ε, then a* (loop at 2), then a, then b → a*ab = a+b. Lower path: a, then b* (loop at 4), then b → ab*b = ab+. The two paths are joined with |.` },
-          { type: `written`, q: `15- Consider the grammar E → E + E | E-E | id. Prove that the grammar is ambiguous using leftmost derivations and parsing trees on the string id-id+id.`, ans: `<pre>LMD 1: E ⇒ E+E ⇒ E-E+E ⇒ id-E+E ⇒ id-id+E ⇒ id-id+id
-LMD 2: E ⇒ E-E ⇒ id-E ⇒ id-E+E ⇒ id-id+E ⇒ id-id+id
+          { type: `written`, q: `15- Consider the grammar E → E + E | E-E | id. Prove that the grammar is ambiguous using leftmost derivations and parsing trees on the string id-id+id.`, ans: `<pre>LMD 1: E ⇒ E+E ⇒ E-E+E
+     ⇒ id-E+E ⇒ id-id+E
+     ⇒ id-id+id
+LMD 2: E ⇒ E-E ⇒ id-E
+     ⇒ id-E+E ⇒ id-id+E
+     ⇒ id-id+id
 
-Tree 1:       E                Tree 2:     E
-            / | \                        / | \
-           E  +  E                      E  -  E
-         / | \   |                      |   / | \
-        E  -  E  id                     id E  +  E
-        |     |                            |     |
-        id    id                           id    id</pre>Two leftmost derivations / parse trees for the same string, so the grammar is ambiguous.`, why: `Official answer. Tree 1 = (id-id)+id, tree 2 = id-(id+id).` },
+Tree 1:
+        E
+      / | \\
+     E  +  E
+   / | \\   |
+  E  -  E  id
+  |     |
+  id    id
+
+Tree 2:
+     E
+   / | \\
+  E  -  E
+  |   / | \\
+  id E  +  E
+     |     |
+     id    id</pre>Two leftmost derivations / parse trees for the same string, so the grammar is ambiguous.`, why: `Official answer. Tree 1 = (id-id)+id, tree 2 = id-(id+id).` },
           { type: `written`, q: `16- Convert the following NFA into DFA: start 1 (also final); 1 –b→ 2; 1 –ε→ 3; 2 –a→ 2 (loop); 2 –a,b→ 3; 3 –a→ 1.`, ans: `ε-closures: E(1) = {1,3}, E(2) = {2}, E(3) = {3}.<table><tr><th>DFA state</th><th>a</th><th>b</th></tr><tr><td>→* {1,3}</td><td>{1,3}</td><td>{2}</td></tr><tr><td>{2}</td><td>{2,3}</td><td>{3}</td></tr><tr><td>{2,3}</td><td>{1,2,3}</td><td>{3}</td></tr><tr><td>{3}</td><td>{1,3}</td><td>-</td></tr><tr><td>* {1,2,3}</td><td>{1,2,3}</td><td>{2,3}</td></tr></table>Final states: {1,3} and {1,2,3} (they contain 1).`, why: `Official answer, identical to the 2024/25 (60) Q1-b. Checked: {2,3} on a = {2,3} ∪ E(1) = {1,2,3}; {1,2,3} on b = {2} ∪ {3} = {2,3}.` },
           { type: `written`, q: `17- Consider the grammar S → A, A → aB | Ad, B → b, C → g. Create LL(1) parser for the string abd.`, ans: `a- Remove left recursion: S → A, A → aBA', A' → dA' | ε, B → b, C → g.<table><tr><th>NT</th><th>FIRST</th><th>FOLLOW</th></tr><tr><td>S</td><td>{a}</td><td>{$}</td></tr><tr><td>A</td><td>{a}</td><td>{$}</td></tr><tr><td>A'</td><td>{d, ε}</td><td>{$}</td></tr><tr><td>B</td><td>{b}</td><td>{d, $}</td></tr><tr><td>C</td><td>{g}</td><td>{ } (C is unreachable)</td></tr></table>Table: M[S,a] = S→A; M[A,a] = A→aBA'; M[A',d] = A'→dA'; M[A',$] = A'→ε; M[B,b] = B→b; M[C,g] = C→g.<table><tr><th>Stack</th><th>Input</th><th>Action</th></tr><tr><td>S$</td><td>abd$</td><td>S→A</td></tr><tr><td>A$</td><td>abd$</td><td>A→aBA'</td></tr><tr><td>aBA'$</td><td>abd$</td><td>match a</td></tr><tr><td>BA'$</td><td>bd$</td><td>B→b</td></tr><tr><td>bA'$</td><td>bd$</td><td>match b</td></tr><tr><td>A'$</td><td>d$</td><td>A'→dA'</td></tr><tr><td>dA'$</td><td>d$</td><td>match d</td></tr><tr><td>A'$</td><td>$</td><td>A'→ε</td></tr><tr><td>$</td><td>$</td><td>accept</td></tr></table>`, key: `Typos in the official solution: the table entry M[A', $] and the trace step are printed as "A→ε" (should be A'→ε), and the trace's first stack is printed as "$" (should be S$). The FIRST/FOLLOW sets and the moves are otherwise correct.`, why: `FOLLOW(B) = FIRST(A') − ε ∪ FOLLOW(A) = {d, $}. C never appears on a right-hand side, so it has an empty FOLLOW set (the sheet writes {-}).` }
         ]}

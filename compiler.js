@@ -1871,7 +1871,7 @@ COURSES.compiler = {
       "If only one leftmost (or rightmost) tree exists for every sentence, the grammar is <b>unambiguous</b>.",
       "Example: E→E+E | E–E | id is ambiguous. id–id+id has two trees (below)."
      ],
-     "code": "LMD 1 (root is +)            LMD 2 (root is -)\nE ⇒ E+E                       E ⇒ E-E\n  ⇒ E-E+E                       ⇒ id-E\n  ⇒ id-E+E                      ⇒ id-E+E\n  ⇒ id-id+E                     ⇒ id-id+E\n  ⇒ id-id+id                    ⇒ id-id+id\n\nTree 1:        E               Tree 2:     E\n            /  |                       /  |             E   +   E                   E   -   E\n         / |      |                   |     / |         E  -  E    id                  id   E  +  E\n        |     |                             |     |\n        id    id                            id    id",
+     "code": "LMD 1 (root is +)\nE ⇒ E+E\n  ⇒ E-E+E\n  ⇒ id-E+E\n  ⇒ id-id+E\n  ⇒ id-id+id\n\nLMD 2 (root is -)\nE ⇒ E-E\n  ⇒ id-E\n  ⇒ id-E+E\n  ⇒ id-id+E\n  ⇒ id-id+id\n\nTree 1:\n        E\n      / | \\\n     E  +  E\n   / | \\   |\n  E  -  E  id\n  |     |\n  id    id\n\nTree 2:\n     E\n   / | \\\n  E  -  E\n  |   / | \\\n  id E  +  E\n     |     |\n     id    id",
      "fig": [
       "cc-lmd-rmd",
       "cc-ambig-trees"
@@ -4566,7 +4566,7 @@ COURSES.compiler = {
       {
        "type": "written",
        "q": "Consider the CFG S → AB, A → AA | a, B → Tc, T → aT | a. Use leftmost derivations and parsing trees to prove its ambiguity. Input string: aaac.",
-       "ans": "<pre>LMD 1: S ⇒ AB ⇒ AAB ⇒ aAB ⇒ aaB ⇒ aaTc ⇒ aaac\nLMD 2: S ⇒ AB ⇒ aB ⇒ aTc ⇒ aaTc ⇒ aaac\n\nTree 1:        S                Tree 2:       S\n             /                             /               A     B                        A     B\n           /    /                        |    /           A   A T   c                      a   T   c\n          |   | |                             /           a   a a                            a   T\n                                                 |\n                                                 a</pre>Two different leftmost derivations (two different parse trees) for the same string aaac, so the grammar is ambiguous.",
+       "ans": "<pre>LMD 1: S ⇒ AB ⇒ AAB ⇒ aAB\n     ⇒ aaB ⇒ aaTc ⇒ aaac\nLMD 2: S ⇒ AB ⇒ aB ⇒ aTc\n     ⇒ aaTc ⇒ aaac\n\nTree 1:\n        S\n      /   \\\n     A     B\n    / \\   / \\\n   A   A T   c\n   |   | |\n   a   a a\n\nTree 2:\n      S\n    /   \\\n   A     B\n   |    / \\\n   a   T   c\n      / \\\n     a   T\n         |\n         a</pre>Two different leftmost derivations (two different parse trees) for the same string aaac, so the grammar is ambiguous.",
        "why": "In tree 1, A derives aa and T derives a. In tree 2, A derives a and T derives aa. Other valid pairs exist too, e.g. A → AA → AAA grouped two ways for a longer string. Marks: two correct LMDs + two trees + the conclusion."
       }
      ]
@@ -5257,7 +5257,7 @@ COURSES.compiler = {
       {
        "type": "written",
        "q": "e) Consider the grammar E → E + E | E-E | id. Prove that the grammar is ambiguous using leftmost derivations and parsing trees on the string id-id+id.",
-       "ans": "<pre>LMD 1: E ⇒ E+E ⇒ E-E+E ⇒ id-E+E ⇒ id-id+E ⇒ id-id+id\nLMD 2: E ⇒ E-E ⇒ id-E ⇒ id-E+E ⇒ id-id+E ⇒ id-id+id\n\nTree 1:       E                Tree 2:     E\n            / |                         / |            E  +  E                      E  -  E\n         / |    |                      |   / |         E  -  E  id                     id E  +  E\n        |     |                            |     |\n        id    id                           id    id</pre>Two leftmost derivations (two parse trees) for the same string, so the grammar is ambiguous.",
+       "ans": "<pre>LMD 1: E ⇒ E+E ⇒ E-E+E\n     ⇒ id-E+E ⇒ id-id+E\n     ⇒ id-id+id\nLMD 2: E ⇒ E-E ⇒ id-E\n     ⇒ id-E+E ⇒ id-id+E\n     ⇒ id-id+id\n\nTree 1:\n        E\n      / | \\\n     E  +  E\n   / | \\   |\n  E  -  E  id\n  |     |\n  id    id\n\nTree 2:\n     E\n   / | \\\n  E  -  E\n  |   / | \\\n  id E  +  E\n     |     |\n     id    id</pre>Two leftmost derivations (two parse trees) for the same string, so the grammar is ambiguous.",
        "why": "Tree 1 computes (id-id)+id; tree 2 computes id-(id+id)."
       }
      ]
@@ -6244,7 +6244,7 @@ COURSES.compiler = {
       {
        "type": "written",
        "q": "b) Consider S → 0A | 1B, A → 0AA | 1S | 1, B → 1BB | 0S | 0. Use leftmost derivations and parsing trees to prove its ambiguity using the string 001101.",
-       "ans": "<pre>LMD 1: S ⇒ 0A ⇒ 00AA ⇒ 001SA ⇒ 0011BA ⇒ 00110A ⇒ 001101\nLMD 2: S ⇒ 0A ⇒ 00AA ⇒ 001A  ⇒ 0011S  ⇒ 00110A ⇒ 001101\n\nTree 1:  S                    Tree 2:  S\n        /                            /        0   A                         0   A\n         / |                          / |         0  A  A                       0  A  A\n          /                            |  /          1   S  1                        1 1   S\n            /                                /            1   B                             0   A\n               |                                 |\n               0                                 1</pre>Two different leftmost derivations/parse trees, so the grammar is ambiguous.",
+       "ans": "<pre>LMD 1: S ⇒ 0A ⇒ 00AA ⇒ 001SA\n     ⇒ 0011BA ⇒ 00110A ⇒ 001101\nLMD 2: S ⇒ 0A ⇒ 00AA ⇒ 001A\n     ⇒ 0011S ⇒ 00110A ⇒ 001101\n\nTree 1:\n    S\n   / \\\n  0   A\n    / | \\\n   0  A  A\n     / \\  \\\n    1   S  1\n       / \\\n      1   B\n          |\n          0\n\nTree 2:\n    S\n   / \\\n  0   A\n    / |  \\\n   0  A   A\n      |  / \\\n      1 1   S\n           / \\\n          0   A\n              |\n              1</pre>Two different leftmost derivations/parse trees, so the grammar is ambiguous.",
        "why": "In tree 1 the first A → 1S and the second A → 1. In tree 2 the first A → 1 and the second A → 1S. Revision sheet essay Q2 uses the same derivations."
       },
       {
