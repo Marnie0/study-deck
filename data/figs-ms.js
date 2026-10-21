@@ -528,7 +528,7 @@
     const steps = [
       { en: 'A real <b>system</b> takes an <b>input</b> and gives an <b>output</b>.', ar: 'الـ <b>system</b> الحقيقي بياخد <b>input</b> وبيطلع <b>output</b>.' },
       { en: '<b>Approach</b>: consider <b>only those aspects</b> of the system that affect the problem under investigation (the lecture notes: a model is a simplification of reality).', ar: '<b>الطريقة</b>: ناخد <b>بس الجوانب</b> من الـ system اللي بتأثر على المشكلة اللي بندرسها (والـ lecture notes بتقول إن الـ model تبسيط للواقع).' },
-      { en: 'A <b>model</b> is a representation of a system for the purpose of studying the system: input I(t), output O(t).', ar: 'الـ <b>model</b> هو تمثيل للـ system بهدف إننا ندرس الـ system ده، والـ input بتاعه I(t) والـ output بتاعه O(t).' },
+      { en: 'A <b>model</b> is a representation of a system for the purpose of studying the system: input I(t), output O(t).', ar: 'الـ <b>model</b> هو تمثيل للـ system بهدف إننا ندرس الـ system ده، والـ input بتاعه <bdi dir="ltr">I(t)</bdi> والـ output بتاعه <bdi dir="ltr">O(t)</bdi>.' },
       { en: '<b>Problems</b>: the <b>granularity of details</b> (how much detail to keep), and <b>models are not unique</b> (the same system can have different models).', ar: '<b>المشاكل</b>: الأولى الـ <b>granularity of details</b> يعني نسيب تفاصيل قد إيه، والتانية إن <b>الـ models مش unique</b> يعني نفس الـ system ممكن يتعمل له كذا model.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
@@ -657,10 +657,10 @@
     const [sel, setSel] = useState(0);
     const msgs = [
       ['<b>Application</b> ↔ Application: both models have it.', 'الـ <b>Application</b> موجودة في الاتنين.'],
-      ['<b>Presentation</b> and <b>Session</b> <b>don\'t exist</b> in TCP/IP.', 'الـ <b>Presentation</b> والـ <b>Session</b> <b>مش موجودين</b> في الـ TCP/IP.'],
+      ['<b>Presentation</b> and <b>Session</b> <b>don\'t exist</b> in TCP/IP.', 'الـ <b>Presentation</b> والـ <b>Session</b> <b>مش موجودين</b> في الـ <bdi dir="ltr">TCP/IP</bdi>.'],
       ['<b>Transport</b> ↔ Transport: both models have it.', 'الـ <b>Transport</b> موجودة في الاتنين.'],
-      ['The OSI <b>Network</b> layer is the TCP/IP <b>Internet layer</b>.', 'الـ <b>Network layer</b> في الـ OSI هي الـ <b>Internet layer</b> في الـ TCP/IP.'],
-      ['OSI <b>Data Link + Physical</b> together are the TCP/IP <b>Host-to-Network layer</b>.', 'الـ <b>Data Link والـ Physical</b> في الـ OSI مع بعض هما الـ <b>Host-to-Network layer</b> في الـ TCP/IP.']];
+      ['The OSI <b>Network</b> layer is the TCP/IP <b>Internet layer</b>.', 'الـ <b>Network layer</b> في الـ OSI هي الـ <b>Internet layer</b> في الـ <bdi dir="ltr">TCP/IP</bdi>.'],
+      ['OSI <b>Data Link + Physical</b> together are the TCP/IP <b>Host-to-Network layer</b>.', 'الـ <b>Data Link والـ Physical</b> في الـ OSI مع بعض هما الـ <b>Host-to-Network layer</b> في الـ <bdi dir="ltr">TCP/IP</bdi>.']];
     const rows = [1, 2, 1, 1, 2];
     return html`<figure className="fig mf1"><div className="fig-stage"><div className="mf1-two">
       <div><h5>ISO/OSI</h5><div className="mf1-stk">${OSI.map((n, k) => html`<div key=${k} className=${T[sel][1].includes(k) ? 'on' : ''} onClick=${() => setSel(T.findIndex(x => x[1].includes(k)))}>${n} Layer</div>`)}</div></div>
@@ -732,7 +732,7 @@
   function UserLevels({ ar }) {
     const U = [[14, 22], [74, 22], [158, 22], [254, 22]], O = [[14, 46], [74, 70], [158, 92], [254, 40]], PK = [2, 3, 3, 2];
     const steps = [
-      { en: '<b>User / application level</b>: short user or application actions (e.g. a click).', ar: 'الـ <b>User/Application level</b>: أفعال قصيرة من الـ user أو الـ application (زي click).' },
+      { en: '<b>User / application level</b>: short user or application actions (e.g. a click).', ar: 'الـ <b><bdi dir="ltr">User/Application&nbsp;level</bdi></b>: أفعال قصيرة من الـ user أو الـ application (زي click).' },
       { en: '<b>Object level</b>: each action produces a longer object transfer.', ar: 'الـ <b>Object level</b>: كل فعل بيطلع عنه object transfer أطول.' },
       { en: '<b>Packet level</b>: each object is split into several packets. User behavior can be modelled at any of the three levels.', ar: 'الـ <b>Packet level</b>: كل object بيتقسم لكذا packet. ونقدر نعمل model لسلوك الـ user على أي level من التلاتة.' }
     ];
@@ -789,7 +789,7 @@
       { t: 'Done incorrectly', e: 'Error j: Page not found', m: [['Probability', 'p = 0.3'], ['Time between errors', '30 min = 1800 sec']] },
       { t: 'Cannot do', e: 'Event k: Server Down', m: [['Duration of the event', '1 Hour = 3600 sec'], ['Time between events', '1 Day = 86400 sec']] }];
     const steps = [
-      { en: 'A <b>request for service i</b> enters the <b>system</b> (here a web server; the request is "Get page name.html"). Three things can happen.', ar: 'فيه <b>request for service i</b> بيدخل الـ <b>system</b>، وهنا الـ system هو web server والـ request هو <bdi>Get page name.html</bdi>. فيه 3 احتمالات.' },
+      { en: 'A <b>request for service i</b> enters the <b>system</b> (here a web server; the request is "Get page name.html"). Three things can happen.', ar: 'فيه <b>request for service i</b> بيدخل الـ <b>system</b>، وهنا الـ system هو web server والـ request هو <bdi dir="ltr">Get page name.html</bdi>. فيه 3 احتمالات.' },
       { en: '<b>Done correctly</b> → measure <b>time</b> (response time), <b>rate</b> (throughput) and <b>resources</b> (utilization). Web server: 300 msec = 0.3 sec; 8420 queries/min = 12.5 MB/sec; 48.4% load.', ar: 'لو <b>اتعمل صح</b> بنقيس الـ <b>time</b> (الـ response time) والـ <b>rate</b> (الـ throughput) والـ <b>resources</b> (الـ utilization). في الـ web server القيم هي:<span class="ltr">300 msec = 0.3 sec<br>8420 queries/min = 12.5 MB/sec<br>48.4% Load</span>' },
       { en: '<b>Done incorrectly</b> → <b>error j</b> (page not found) → measure its <b>probability</b> (p = 0.3) and the <b>time between errors</b> (30 min = 1800 sec).', ar: 'لو <b>اتعمل غلط</b> يبقى حصل <b>error j</b>، يعني الصفحة مش موجودة. ساعتها بنقيس الـ <b>probability</b> بتاعته، والوقت بين الـ errors وده الـ <b>time between errors</b>.<span class="ltr">p = 0.3<br>30 min = 1800 sec</span>' },
       { en: '<b>Cannot do</b> → <b>event k</b> (server down) → measure the <b>duration of the event</b> (1 hour = 3600 sec) and the <b>time between events</b> (1 day = 86400 sec).', ar: 'لو <b>مقدرش يعمله</b> يبقى حصل <b>event k</b>، يعني الـ server وقع. ساعتها بنقيس مدة الـ event وده الـ <b>duration of the event</b>، والوقت بين الـ events وده الـ <b>time between events</b>.<span class="ltr">1 Hour = 3600 sec<br>1 Day = 86400 sec</span>' }
@@ -1226,7 +1226,7 @@
     const text = mode === 'mm1' ? 'M/M/1' : mode === 'full' ? 'M/M/1/∞/∞' : mode === 'tire' ? 'G/G/1/5/5' : [own.A, own.B, own.c, own.N, own.K].join('/');
     const ROWS = [['A', 'Interarrival-time distribution', 'الـ interarrival-time distribution'], ['B', 'Service-time distribution', 'الـ service-time distribution'], ['c', 'Number of parallel servers', 'عدد الـ parallel servers'], ['N', 'System capacity', 'الـ system capacity'], ['K', 'Size of the calling population', 'حجم الـ calling population']];
     const val = (k, v) => k === 'A' || k === 'B' ? `${v}: ${SYM[v][0]}` : v === '∞' ? (k === 'c' ? '∞ (unlimited servers)' : '∞ (no limit)') : v;
-    const cap = mode === 'mm1' ? { en: '<b>M/M/1/∞/∞</b> is usually shortened to <b>M/M/1</b>: when N and K are left out they are ∞.', ar: 'الـ <b>M/M/1/∞/∞</b> عادة بنختصرها لـ <b>M/M/1</b>، يعني لما الـ N والـ K مش مكتوبين يبقوا ∞.' }
+    const cap = mode === 'mm1' ? { en: '<b>M/M/1/∞/∞</b> is usually shortened to <b>M/M/1</b>: when N and K are left out they are ∞.', ar: 'الـ <b><bdi dir="ltr">M/M/1/∞/∞</bdi></b> عادة بنختصرها لـ <b><bdi dir="ltr">M/M/1</bdi></b>، يعني لما الـ N والـ K مش مكتوبين يبقوا ∞.' }
       : mode === 'full' ? { en: 'The full form: exponential interarrival and service times, one server, unlimited capacity, infinite calling population.', ar: 'دي الصيغة الكاملة: الـ interarrival times والـ service times الاتنين exponential، وفيه server واحد، والـ capacity مفتوحة، والـ calling population لانهائية.' }
       : mode === 'tire' ? { en: 'The tire-curing system: <b>one worker</b> (c = 1) and <b>five machines</b>, so at most 5 in the system (N = 5) from a calling population of 5 (K = 5): <b>G/G/1/5/5</b>.', ar: 'نظام الـ tire-curing فيه <b>عامل واحد</b> و<b>5 machines</b>، فبالكتير 5 في الـ system من calling population حجمها 5:' + L('c = 1, N = 5, K = 5 → G/G/1/5/5') }
       : { en: 'Pick each symbol; the reading updates. M, D, Eₖ and GI are the notes\' common symbols for A and B.', ar: 'اختار كل رمز وهتلاقي القراءة بتتغير. والـ M والـ D والـ Eₖ والـ GI هما الرموز المشهورة في الـ notes للـ A والـ B.' };
@@ -1396,7 +1396,7 @@
       ['Average time in system', '491 / 100', '4.91 min', 't̄ = 491 / 100 = 4.91 = 1.74 + 3.17', 'متوسط الوقت في الـ system، وبيساوي الانتظار زائد الخدمة']
     ];
     const steps = [{ en: 'Slide 16 turns the 100-customer totals into seven statistics: waiting <b>174</b>, customers who wait <b>46</b>, idle <b>101</b>, run time <b>418</b>, service <b>317</b>, interarrival <b>415</b>, in system <b>491</b>.', ar: 'الـ slide 16 بتحوّل الـ totals بتاعة الـ 100 customer لـ 7 statistics، والأرقام اللي بنستخدمها هي:' + L('waiting 174, waited 46, idle 101, run 418, service 317, interarrival 415, system 491'), k: -1 }]
-      .concat(S.map(([t, fr, v, f, a], k) => ({ en: `<b>${t}</b>: ${f.replace(/ ; /g, '; ')}.${k === 5 ? ' ‡ The slide divides by <b>54</b> here but uses <b>46</b> waiters for p(wait); with 46 it would be 3.78 min. The method: total waiting ÷ number who actually waited.' : ''}`, ar: `<b>${a}</b>:` + L(f) + (k === 5 ? '‡ الـ slide قسمت هنا على <b>54</b> مع إنها استخدمت <b>46</b> في الـ p(wait)، ولو قسمنا على 46 تطلع 3.78. والطريقة الصح: مجموع الانتظار على عدد اللي استنوا فعلًا.' : ''), k })));
+      .concat(S.map(([t, fr, v, f, a], k) => ({ en: `<b>${t}</b>: ${f.replace(/ ; /g, '; ')}.${k === 5 ? ' ‡ The slide divides by <b>54</b> here but uses <b>46</b> waiters for p(wait); with 46 it would be 3.78 min. The method: total waiting ÷ number who actually waited.' : ''}`, ar: `<b>${a}</b>:` + L(f) + (k === 5 ? '‡ الـ slide قسمت هنا على <b>54</b> مع إنها استخدمت <b>46</b> في الـ <bdi dir="ltr">p(wait)</bdi>، ولو قسمنا على 46 تطلع 3.78. والطريقة الصح: مجموع الانتظار على عدد اللي استنوا فعلًا.' : ''), k })));
     const [i, ctl] = useSteps(steps.length, 2600), s = steps[i];
     return html`<figure className="fig mf2"><div className="fig-stage">
       <div className="mf2-stat">${S.map(([t, fr, v], k) => html`<div key=${k} className=${s.k === k ? 'on' : s.k >= 0 && k > s.k ? 'off' : ''}>${t}<small>${fr}</small><b>${s.k === -1 || k <= s.k ? v : '?'}</b></div>`)}</div>
@@ -1562,8 +1562,8 @@
       const tl = r.type === 'Good' ? '01–35' : r.type === 'Fair' ? '36–80' : '81–00';
       en = `Day ${r.day}: type digits <b>${r.td}</b> ∈ ${tl} → <b>${r.type}</b>; demand digits <b>${r.dd}</b> in the ${r.type} column → demand <b>${r.D}</b>. Profit = ${usd(r.rev)} − 23.10 − ${usd(r.lost)} + ${usd(r.salv)} = <b>$${usd(r.profit)}</b>${r.lost ? ` (${r.D - 70} papers short × $0.17)` : r.salv ? ` (${70 - r.D} scrap × $0.05)` : ''}.`;
       a = `اليوم رقم ${r.day}: الـ type digits بتوعه ${r.td} يدّوا يوم <b>${r.type}</b>، والـ demand digits ${r.dd} في عمود الـ ${r.type} يدّوا demand قدره <b>${r.D}</b>. والـ profit بيطلع كده:` + L(`${r.td} ∈ ${tl} → ${r.type} ; ${r.dd} → ${r.D}<br>profit = ${usd(r.rev)} − 23.10 − ${usd(r.lost)} + ${usd(r.salv)} = $${usd(r.profit)}`);
-    } else if (ex) { en = 'Policy <b>70</b> papers a day: total = $645.00 − $462.00 − $13.60 + $5.50 = <b>$174.90</b> for 20 days. The bars repeat the same 20 days for the other policies (computed with the same random digits): with these digits 70 is the best.'; a = 'الـ policy إننا نشتري <b>70</b> جرنال في اليوم بتدّي total على 20 يوم قدره <bdi>$174.90</bdi>:' + L('645.00 − 462.00 − 13.60 + 5.50 = $174.90') + 'والـ bars بتعيد نفس الـ 20 يوم مع policies تانية بنفس الـ random digits، وبالأرقام دي الـ 70 هي الأحسن.'; }
-    else { en = `Buy <b>${q}</b> papers a day (cost ${q} × $0.33 = $${usd(33 * q)}): total profit for 20 days = <b>$${usd(tot.p)}</b>. Best policy for these digits: <b>${best[0]}</b> ($${usd(best[1])}). Change the policy or draw new digits.`; a = `لو اشترينا <b>${q}</b> جرنال في اليوم، الـ total profit على 20 يوم بيطلع <b><bdi>$${usd(tot.p)}</bdi></b>. وأحسن policy بالـ digits دي هي <b>${best[0]}</b>. غيّر الـ policy أو هات digits جديدة.`; }
+    } else if (ex) { en = 'Policy <b>70</b> papers a day: total = $645.00 − $462.00 − $13.60 + $5.50 = <b>$174.90</b> for 20 days. The bars repeat the same 20 days for the other policies (computed with the same random digits): with these digits 70 is the best.'; a = 'الـ policy إننا نشتري <b>70</b> جرنال في اليوم بتدّي total على 20 يوم قدره <bdi dir="ltr">$174.90</bdi>:' + L('645.00 − 462.00 − 13.60 + 5.50 = $174.90') + 'والـ bars بتعيد نفس الـ 20 يوم مع policies تانية بنفس الـ random digits، وبالأرقام دي الـ 70 هي الأحسن.'; }
+    else { en = `Buy <b>${q}</b> papers a day (cost ${q} × $0.33 = $${usd(33 * q)}): total profit for 20 days = <b>$${usd(tot.p)}</b>. Best policy for these digits: <b>${best[0]}</b> ($${usd(best[1])}). Change the policy or draw new digits.`; a = `لو اشترينا <b>${q}</b> جرنال في اليوم، الـ total profit على 20 يوم بيطلع <b><bdi dir="ltr">$${usd(tot.p)}</bdi></b>. وأحسن policy بالـ digits دي هي <b>${best[0]}</b>. غيّر الـ policy أو هات digits جديدة.`; }
     const mx = Math.max(...pol.map(x => Math.abs(x[1])), 1);
     return html`<figure className="fig mf2"><div className="fig-stage">
       <${Modes} list=${[['ex', 'Example from the notes'], ['try', 'Try other policies']]} mode=${mode} set=${m => { setMode(m); if (m === 'ex') ctl.replay(); else ctl.go(20); }} />
@@ -1681,7 +1681,7 @@
       const bits = [`begins with ${r.beg}${r.rc ? ` and receives <b>${r.rc}</b>` : ''}`, `R = ${r.R.toFixed(3)} → demand <b>${r.d}</b>`, r.ok ? `I = <b>${r.end}</b>` : `only ${r.beg + r.rc} in stock: shortage ${r.d - r.beg - r.rc} × $50 = <b>$${usd(r.sc)}</b>, I = 0`,
         r.hit ? (r.busy ? `I ≤ r but an order is <b>outstanding</b>: no new order` : r.R2 != null ? `I ≤ r = ${P.r} and no order outstanding: <b>order</b> ($20), R = ${r.R2.toFixed(3)} → lead time <b>${r.L}</b> (arrives day ${r.day + r.L})` : 'I ≤ r') : `I &gt; r: no order`];
       en = `Day ${r.day}: ` + bits.join('; ') + `. Holding 0.10 × ${r.end} = ${usd(r.hc)}; total <b>${usd(r.tc)}</b>.`;
-      a = `اليوم رقم ${r.day}: ` + (r.ok ? 'المخزون كفى الـ demand' : `المخزون مكفاش، فيه shortage تكلفته <b><bdi>$${usd(r.sc)}</bdi></b> والـ I بقى صفر`) + '، و' + (r.hit ? (r.busy ? 'وصلنا للـ reorder point لكن فيه order لسه مجاش، فمفيش order جديد' : 'وصلنا للـ reorder point ومفيش order معلّق، فبنطلب order بـ $20') : 'لسه موصلناش للـ reorder point') + ':' + L(`begin ${r.beg}${r.rc ? ' + ' + r.rc : ''} ; R = ${r.R.toFixed(3)} → d = ${r.d} ; I = ${r.end}${r.R2 != null ? ` ; R = ${r.R2.toFixed(3)} → L = ${r.L}` : ''} ; total = ${usd(r.tc)}`);
+      a = `اليوم رقم ${r.day}: ` + (r.ok ? 'المخزون كفى الـ demand' : `المخزون مكفاش، فيه shortage تكلفته <b><bdi dir="ltr">$${usd(r.sc)}</bdi></b> والـ I بقى صفر`) + '، و' + (r.hit ? (r.busy ? 'وصلنا للـ reorder point لكن فيه order لسه مجاش، فمفيش order جديد' : 'وصلنا للـ reorder point ومفيش order معلّق، فبنطلب order بـ $20') : 'لسه موصلناش للـ reorder point') + ':' + L(`begin ${r.beg}${r.rc ? ' + ' + r.rc : ''} ; R = ${r.R.toFixed(3)} → d = ${r.d} ; I = ${r.end}${r.R2 != null ? ` ; R = ${r.R2.toFixed(3)} → L = ${r.L}` : ''} ; total = ${usd(r.tc)}`);
     }
     const shown = end ? n : i + 1, num = (k, lo, hi) => e => { const v = Math.max(lo, Math.min(hi, parseInt(e.target.value, 10) || 0)); setRx(o => ({ ...o, [k]: v })); };
     return html`<figure className="fig mf2"><div className="fig-stage">
@@ -1705,7 +1705,7 @@
     const v = D.v[sel[0]][sel[1]], rk = sorted.indexOf(v) + 1, isMark = sel[0] === D.mark[0] && sel[1] === D.mark[1], isMin = sel[0] === minAt[0] && sel[1] === minAt[1];
     const shade = x => { const q = sorted.indexOf(x) / (sorted.length - 1); return `color-mix(in srgb, var(--k-ms) ${Math.round(75 - q * 70)}%, var(--paper))`; };
     const cap = { en: `r = <b>${D.rs[sel[0]]}</b>, x = <b>${D.xs[sel[1]]}</b>: average daily cost <b>$${v.toFixed(2)}</b> (rank ${rk} of ${flat.length}; darker = cheaper).` + (isMark ? (fine ? ' The slide marks this cell (2.33) as the best. ‡ The table also shows <b>2.32</b> at r = 7, x = 29, lower by the table\'s own numbers; the difference is within simulation noise.' : ' The slide highlights this cell: <b>r = 6, x = 20</b>, the smallest cost in the table. (The lecture notes print a different text value; follow the slide.)') : isMin && fine ? ' ‡ The smallest value in this table, though the slide marks 2.33.' : ' Tap another cell.'),
-      ar: `الخانة دي متوسط تكلفتها اليومية <b><bdi>$${v.toFixed(2)}</bdi></b>، وترتيبها ${rk} من ${flat.length}، وكل ما اللون يغمق التكلفة تقل:` + L(`r = ${D.rs[sel[0]]}, x = ${D.xs[sel[1]]} → ${v.toFixed(2)}`) + (isMark ? (fine ? 'الـ slide معلّمة الخانة دي (2.33) على إنها الأحسن. ‡ لكن الجدول نفسه فيه <b>2.32</b> عند الخانة اللي r فيها 7 و x فيها 29، وهي أقل، والفرق صغير جدًا وجوه الـ simulation noise.' : 'الـ slide معلّمة الخانة دي على إنها الأحسن، وهي أقل تكلفة في الجدول. والـ lecture notes كاتبة رقم تاني في الكلام، فامشي على الـ slide.') : isMin && fine ? '‡ دي أقل قيمة في الجدول ده، مع إن الـ slide معلّمة 2.33.' : 'دوس على خانة تانية.') };
+      ar: `الخانة دي متوسط تكلفتها اليومية <b><bdi dir="ltr">$${v.toFixed(2)}</bdi></b>، وترتيبها ${rk} من ${flat.length}، وكل ما اللون يغمق التكلفة تقل:` + L(`r = ${D.rs[sel[0]]}, x = ${D.xs[sel[1]]} → ${v.toFixed(2)}`) + (isMark ? (fine ? 'الـ slide معلّمة الخانة دي (2.33) على إنها الأحسن. ‡ لكن الجدول نفسه فيه <b>2.32</b> عند الخانة اللي r فيها 7 و x فيها 29، وهي أقل، والفرق صغير جدًا وجوه الـ simulation noise.' : 'الـ slide معلّمة الخانة دي على إنها الأحسن، وهي أقل تكلفة في الجدول. والـ lecture notes كاتبة رقم تاني في الكلام، فامشي على الـ slide.') : isMin && fine ? '‡ دي أقل قيمة في الجدول ده، مع إن الـ slide معلّمة 2.33.' : 'دوس على خانة تانية.') };
     return html`<figure className="fig mf2"><div className="fig-stage"><div style=${{ maxWidth: '460px', margin: '0 auto' }}>
       <p className="mf2-h4">${fine ? '1000 days, 21 ≤ x ≤ 30' : '1000 days, 5 ≤ x ≤ 50 and 1 ≤ r ≤ 10'}</p>
       <div role="grid" aria-label="Average daily cost by reorder level r and order quantity x" style=${{ display: 'grid', gridTemplateColumns: `1.7em repeat(${D.xs.length}, minmax(0, 1fr))`, gap: '2px', fontSize: '.76rem', textAlign: 'center' }}>
@@ -1837,7 +1837,7 @@
   /* ── §2 Fig 3.1: PMF of the loaded die ── */
   function Die({ ar }) {
     const steps = [
-      { en: 'Loaded die: p(x) is proportional to x. The weights 1 + 2 + ... + 6 add up to <b>21</b>, so p(x) = x/21.', ar: 'ده زهر متلعّب فيه: الـ p(x) متناسبة مع x. الأوزان مجموعها <b>21</b>:' + L('1 + 2 + 3 + 4 + 5 + 6 = 21') + 'يبقى' + L('p(x) = x/21') },
+      { en: 'Loaded die: p(x) is proportional to x. The weights 1 + 2 + ... + 6 add up to <b>21</b>, so p(x) = x/21.', ar: 'ده زهر متلعّب فيه: الـ <bdi dir="ltr">p(x)</bdi> متناسبة مع x. الأوزان مجموعها <b>21</b>:' + L('1 + 2 + 3 + 4 + 5 + 6 = 21') + 'يبقى' + L('p(x) = x/21') },
       { en: 'Fig 3.1: a vertical bar at each x = 1..6, heights 1/21 to 6/21, increasing.', ar: 'الـ Fig 3.1 فيها عمود رأسي عند كل قيمة x من 1 لـ 6، وأطوالهم بتزيد بالترتيب:' + L('1/21, 2/21, 3/21, 4/21, 5/21, 6/21') },
       { en: 'PMF condition 1: every p(xᵢ) ≥ 0. All six bars stand on or above the axis.', ar: 'أول شرط للـ PMF إن كل الاحتمالات موجبة أو صفر:' + L('p(xᵢ) ≥ 0') + 'وفعلًا كل الأعمدة الستة فوق المحور.' },
       { en: 'PMF condition 2: the bars add up to 1: 1/21 + 2/21 + ... + 6/21 = 21/21 = 1 (the strip below).', ar: 'تاني شرط إن مجموع الأعمدة يساوي 1 (الشريط اللي تحت):' + L('1/21 + 2/21 + ... + 6/21 = 21/21 = 1') }
@@ -1879,8 +1879,8 @@
     sums: ['91/21', '441/21'], E: '91/21 = 4.33', E2: '441/21 = 21', V: '21 − (91/21)² = 2.22', sd: '√2.22 = 1.49',
     row: j => { const x = j + 1; return { en: `x = ${x}: x·p(x) = ${x} × ${x}/21 = ${x * x}/21, and x²·p(x) = ${x * x} × ${x}/21 = ${x ** 3}/21.`, ar: `في الصف ده القيمة ${x}:` + L(`x·p(x) = ${x} × ${x}/21 = ${x * x}/21`) + 'وكمان' + L(`x²·p(x) = ${x * x} × ${x}/21 = ${x ** 3}/21`) }; },
     end: [
-      { en: 'Add the x·p(x) column: E(X) = 1(1/21) + 2(2/21) + ... + 6(6/21) = 91/21 = <b>4.33</b>.', ar: 'نجمع عمود الـ x·p(x):' + L('E(X) = 1(1/21) + 2(2/21) + ... + 6(6/21) = 91/21 = 4.33') },
-      { en: 'Add the x²·p(x) column: E(X²) = 441/21 = <b>21</b>.', ar: 'نجمع عمود الـ x²·p(x):' + L('E(X²) = 441/21 = 21') },
+      { en: 'Add the x·p(x) column: E(X) = 1(1/21) + 2(2/21) + ... + 6(6/21) = 91/21 = <b>4.33</b>.', ar: 'نجمع عمود الـ <bdi dir="ltr">x·p(x)</bdi>:' + L('E(X) = 1(1/21) + 2(2/21) + ... + 6(6/21) = 91/21 = 4.33') },
+      { en: 'Add the x²·p(x) column: E(X²) = 441/21 = <b>21</b>.', ar: 'نجمع عمود الـ <bdi dir="ltr">x²·p(x)</bdi>:' + L('E(X²) = 441/21 = 21') },
       { en: 'V(X) = E(X²) − (E(X))² = 21 − 18.78 = <b>2.22</b> (using the exact mean 91/21; squaring the rounded 4.33 would give 2.25), σ = √2.22 = <b>1.49</b>.', ar: 'الـ variance بنطرح مربع المتوسط:' + L('V(X) = 21 − (91/21)² = 21 − 18.78 = 2.22') + 'وده بالمتوسط المظبوط (لو ربّعنا الـ 4.33 المقرّبة هتطلع 2.25). والـ standard deviation:' + L('σ = √2.22 = 1.49') }
     ]
   };
@@ -1889,8 +1889,8 @@
     sums: ['6.5', '49.9'], E: '6.5', E2: '49.9', V: '49.9 − 6.5² = 7.65', sd: '√7.65 = 2.77',
     row: j => { const x = DISC.xs[j], p = DISC.p[j]; return { en: `x = ${x}: x·p(x) = ${x} × ${p} = ${DISC.xp[j]}, and x²·p(x) = ${x * x} × ${p} = ${DISC.x2p[j]}.`, ar: `في الصف ده القيمة ${x}:` + L(`x·p(x) = ${x} × ${p} = ${DISC.xp[j]}`) + 'وكمان' + L(`x²·p(x) = ${x * x} × ${p} = ${DISC.x2p[j]}`) }; },
     end: [
-      { en: 'E(X) = 0.4 + 1 + 1.4 + 2.7 + 1 = <b>6.5</b>.', ar: 'نجمع عمود الـ x·p(x):' + L('E(X) = 0.4 + 1 + 1.4 + 2.7 + 1 = 6.5') },
-      { en: 'E(X²) = 0.8 + 5 + 9.8 + 24.3 + 10 = <b>49.9</b>.', ar: 'نجمع عمود الـ x²·p(x):' + L('E(X²) = 0.8 + 5 + 9.8 + 24.3 + 10 = 49.9') },
+      { en: 'E(X) = 0.4 + 1 + 1.4 + 2.7 + 1 = <b>6.5</b>.', ar: 'نجمع عمود الـ <bdi dir="ltr">x·p(x)</bdi>:' + L('E(X) = 0.4 + 1 + 1.4 + 2.7 + 1 = 6.5') },
+      { en: 'E(X²) = 0.8 + 5 + 9.8 + 24.3 + 10 = <b>49.9</b>.', ar: 'نجمع عمود الـ <bdi dir="ltr">x²·p(x)</bdi>:' + L('E(X²) = 0.8 + 5 + 9.8 + 24.3 + 10 = 49.9') },
       { en: 'V(X) = 49.9 − 6.5² = 49.9 − 42.25 = <b>7.65</b>; σ = √7.65 = <b>2.77</b>. (Part (c), which the slide leaves as "try to compute".)', ar: 'الـ variance والـ standard deviation:' + L('V(X) = 49.9 − 6.5² = 49.9 − 42.25 = 7.65') + L('σ = √7.65 = 2.77') + 'وده الجزء (c) اللي الـ slide سايباه تمرين.' }
     ]
   };
@@ -2217,10 +2217,10 @@
   /* ── §24 Example 3.8: waiting for a bus ── */
   function Bus({ ar }) {
     const steps = [
-      { en: 'A bus arrives every 20 minutes from 6:40 am to 8:40 am. Around the passenger: buses at 7:00, 7:20 and 7:40.', ar: 'الأتوبيس بييجي كل 20 دقيقة من <bdi>6:40</bdi> لحد <bdi>8:40</bdi>، فحوالين الراكب فيه أتوبيسات الساعة <bdi>7:00</bdi> و <bdi>7:20</bdi> و <bdi>7:40</bdi>.' },
-      { en: 'The passenger arrives uniformly between 7:00 and 7:30. X = minutes past 7 am, X ~ U(0, 30).', ar: 'الراكب بيوصل في أي لحظة بين <bdi>7:00</bdi> و <bdi>7:30</bdi> بنفس الاحتمال. لو X عدد الدقايق بعد الساعة 7 يبقى' + L('X ~ U(0, 30)') },
-      { en: 'Arriving between 7:00 and 7:15 (0 < X < 15), the next bus is 7:20: the wait is more than 5 minutes.', ar: 'لو وصل بين <bdi>7:00</bdi> و <bdi>7:15</bdi> الأتوبيس الجاي <bdi>7:20</bdi>، يعني هيستنى أكتر من 5 دقايق.' },
-      { en: 'Arriving between 7:20 and 7:30 (20 < X < 30), the next bus is 7:40: again more than 5 minutes.', ar: 'ولو وصل بين <bdi>7:20</bdi> و <bdi>7:30</bdi> الأتوبيس الجاي <bdi>7:40</bdi>، وبرضه هيستنى أكتر من 5 دقايق.' },
+      { en: 'A bus arrives every 20 minutes from 6:40 am to 8:40 am. Around the passenger: buses at 7:00, 7:20 and 7:40.', ar: 'الأتوبيس بييجي كل 20 دقيقة من <bdi dir="ltr">6:40</bdi> لحد <bdi dir="ltr">8:40</bdi>، فحوالين الراكب فيه أتوبيسات الساعة <bdi dir="ltr">7:00</bdi> و <bdi dir="ltr">7:20</bdi> و <bdi dir="ltr">7:40</bdi>.' },
+      { en: 'The passenger arrives uniformly between 7:00 and 7:30. X = minutes past 7 am, X ~ U(0, 30).', ar: 'الراكب بيوصل في أي لحظة بين <bdi dir="ltr">7:00</bdi> و <bdi dir="ltr">7:30</bdi> بنفس الاحتمال. لو X عدد الدقايق بعد الساعة 7 يبقى' + L('X ~ U(0, 30)') },
+      { en: 'Arriving between 7:00 and 7:15 (0 < X < 15), the next bus is 7:20: the wait is more than 5 minutes.', ar: 'لو وصل بين <bdi dir="ltr">7:00</bdi> و <bdi dir="ltr">7:15</bdi> الأتوبيس الجاي <bdi dir="ltr">7:20</bdi>، يعني هيستنى أكتر من 5 دقايق.' },
+      { en: 'Arriving between 7:20 and 7:30 (20 < X < 30), the next bus is 7:40: again more than 5 minutes.', ar: 'ولو وصل بين <bdi dir="ltr">7:20</bdi> و <bdi dir="ltr">7:30</bdi> الأتوبيس الجاي <bdi dir="ltr">7:40</bdi>، وبرضه هيستنى أكتر من 5 دقايق.' },
       { en: 'P = P(0 < X < 15) + P(20 < X < 30) = 15/30 − 0 + 1 − 20/30 = <b>5/6</b>.', ar: 'الاحتمال الكلي:' + L('P = F(15) − F(0) + F(30) − F(20) = 15/30 − 0 + 1 − 20/30 = 5/6') }
     ];
     const [i, ctl] = useSteps(steps.length, 2700);
@@ -2285,7 +2285,7 @@
   function NormalShape({ ar }) {
     const steps = [
       { en: 'X ~ N(μ, σ²): a bell-shaped curve centred at μ.', ar: 'الـ normal distribution شكلها جرس متمركز عند μ.' + L('X ~ N(μ, σ²)') },
-      { en: '(1) f(x) → 0 as x → −∞ and as x → ∞: both tails approach the axis.', ar: '(1) الـ f(x) بتقرب من 0 في الناحيتين، يعني الطرفين بيقربوا من المحور.' },
+      { en: '(1) f(x) → 0 as x → −∞ and as x → ∞: both tails approach the axis.', ar: '(1) الـ <bdi dir="ltr">f(x)</bdi> بتقرب من 0 في الناحيتين، يعني الطرفين بيقربوا من المحور.' },
       { en: '(2) f(μ − x) = f(μ + x): the PDF is <b>symmetric about μ</b> (the two dots have the same height).', ar: '(2) الـ PDF <b>متماثلة حوالين μ</b>، والنقطتين ليهم نفس الارتفاع:' + L('f(μ − x) = f(μ + x)') },
       { en: '(3) The maximum of the PDF is at x = μ, so <b>the mean and the mode are equal</b>.', ar: '(3) أعلى نقطة في الـ PDF عند μ، يعني <b>الـ mean بيساوي الـ mode</b>.' },
       { en: 'No closed form: use the standard normal Z = (X − μ)/σ ~ N(0, 1). The lower scale shows μ − σ, μ, μ + σ becoming −1, 0, 1.', ar: 'مفيش closed form، فبنحوّل للـ standard normal:' + L('Z = (X − μ)/σ ~ N(0, 1)') + 'والسطر اللي تحت بيوضح التحويل ده:' + L('μ − σ, μ, μ + σ  →  −1, 0, 1') }
@@ -2369,7 +2369,7 @@
           <line x1=${F.sx(Math.min(x, X1))} x2=${F.sx(Math.min(x, X1))} y1=${F.sy(0)} y2=${F.sy(Fc(x))} stroke="var(--pen)" strokeDasharray="4 4" /><circle cx=${F.sx(Math.min(x, X1))} cy=${F.sy(Fc(x))} r="5" fill="var(--pen)" /><//>
           <${Res} items=${[['F(x) = P(X ≤ x) =', fx(Fc(x))], ['P(X > x) =', fx(1 - Fc(x))], ['E(X) =', fx(E)], ['V(X) =', fx(V, 4)]]} /></div>`;
         cap = { en: `Weibull CDF F(x) = 1 − exp[−((x − ν)/α)^β]. ((${tr(x)} − ${tr(nu)})/${tr(al)})^${tr(be)} = ${tr(inner)}^${tr(be)} = ${tr(pw)}, so F(${tr(x)}) = 1 − e^(−${tr(pw)}) = <b>${fx(Fc(x))}</b> and P(X > ${tr(x)}) = <b>${fx(1 - Fc(x))}</b>. E(X) = ν + αΓ(1/β + 1).${ex ? ' Example 3.13: the notes write P(X > 1.5) = 1 − e⁻² = 0.865 ‡; with this CDF 0.865 is F(1.5) = P(X ≤ 1.5), and P(X > 1.5) = e⁻² = 0.135.' : ''}`,
-          ar: 'الـ Weibull CDF:' + L(`F(${tr(x)}) = 1 − exp[−((${tr(x)} − ${tr(nu)})/${tr(al)})^${tr(be)}] = 1 − e^(−${tr(pw)}) = ${fx(Fc(x))}`) + L(`P(X > ${tr(x)}) = ${fx(1 - Fc(x))}`) + (ex ? 'ده مثال 3.13: النوتس كاتبة إن 0.865 هي احتمال أكبر من 1.5 ‡، بس بالـ CDF دي 0.865 هي F(1.5) يعني أقل من أو يساوي، والاحتمال الأكبر من 1.5 هو 0.135.' : '') };
+          ar: 'الـ Weibull CDF:' + L(`F(${tr(x)}) = 1 − exp[−((${tr(x)} − ${tr(nu)})/${tr(al)})^${tr(be)}] = 1 − e^(−${tr(pw)}) = ${fx(Fc(x))}`) + L(`P(X > ${tr(x)}) = ${fx(1 - Fc(x))}`) + (ex ? 'ده مثال 3.13: النوتس كاتبة إن 0.865 هي احتمال أكبر من 1.5 ‡، بس بالـ CDF دي 0.865 هي <bdi dir="ltr">F(1.5)</bdi> يعني أقل من أو يساوي، والاحتمال الأكبر من 1.5 هو 0.135.' : '') };
       }
     } else if (tab === 't') {
       const a = num(t.a), b = num(t.b), c = num(t.c), x = num(t.x), ok = isFinite(a + b + c + x) && a <= b && b <= c && c > a;
@@ -2402,7 +2402,7 @@
           ${E <= X1 && html`<g><line x1=${F.sx(E)} x2=${F.sx(E)} y1=${F.sy(0)} y2=${F.sy(f(E))} stroke="var(--pen)" strokeWidth="2" strokeDasharray="5 4" /><text x=${F.sx(E) + 5} y=${F.sy(f(E)) - 6} fontSize="15">E(X)</text></g>`}<//>
           <${Res} items=${[['E(X) = e^(μ + σ²/2) =', fx(E)], ['V(X) ‡ =', fx(V)]]} /></div>`;
         cap = { en: `If Y ~ N(μ, σ²) then X = e^Y is lognormal with parameters μ = ${tr(mu)} and σ² = ${tr(s2)}, which are <b>not</b> the mean and variance of X: E(X) = e^(μ + σ²/2) = <b>${fx(E)}</b>. The notes leave V(X) blank ‡; the standard result e^(2μ+σ²)(e^(σ²) − 1) gives ${fx(V)}.`,
-          ar: 'لو Y موزعة normal يبقى المتغير' + L('X = e^Y') + 'موزع lognormal بنفس الـ parameters، بس دول <b>مش</b> المتوسط والتباين بتوع X:' + L(`E(X) = e^(μ + σ²/2) = ${fx(E)}`) + 'والنوتس سايبة الـ V(X) فاضية ‡، والقانون المعروف بيدي:' + L(`V(X) = e^(2μ+σ²)(e^(σ²) − 1) = ${fx(V)}`) };
+          ar: 'لو Y موزعة normal يبقى المتغير' + L('X = e^Y') + 'موزع lognormal بنفس الـ parameters، بس دول <b>مش</b> المتوسط والتباين بتوع X:' + L(`E(X) = e^(μ + σ²/2) = ${fx(E)}`) + 'والنوتس سايبة الـ <bdi dir="ltr">V(X)</bdi> فاضية ‡، والقانون المعروف بيدي:' + L(`V(X) = e^(2μ+σ²)(e^(σ²) − 1) = ${fx(V)}`) };
       }
     }
     return html`<${Fig} ar=${ar} cap=${cap}>
@@ -2423,7 +2423,7 @@
     let d = `M${F.sx(0)},${F.sy(0)}`; seen.forEach((t, j) => { d += `H${F.sx(t)}V${F.sy(j + 1)}`; }); d += `H${F.sx(cur)}`;
     const gaps = seen.map((t, j) => t - (j ? seen[j - 1] : 0)).slice(0, 4);
     const cap = { en: `Arrivals one at a time, rate λ = ${lam} per unit time: N(t) counts them in [0, t]. In this run N(${T}) = <b>${cur >= T ? N : '…'}</b>; N(t) is Poisson with mean and variance λt = ${tr(lam * T)}. The gaps between arrivals (A₁, A₂, …) are exponential with mean 1/λ = ${tr(1 / lam)}.${many && many.l === lam ? ` Over 1000 runs: mean of N(10) = ${many.m.toFixed(2)}, variance = ${many.v.toFixed(2)}, both close to λt = ${tr(lam * T)}.` : ''}`,
-      ar: `الوصول بيحصل واحد واحد بمعدل λ، والـ N(t) بتعد عدد الوصولات في الفترة لحد t. في الـ run دي:` + L(`N(${T}) = ${cur >= T ? N : '…'},  E[N(t)] = V[N(t)] = λt = ${tr(lam * T)}`) + `والمسافات بين الوصولات exponential ومتوسطها ${tr(1 / lam)}.` + (many && many.l === lam ? 'وعلى 1000 run:' + L(`mean = ${many.m.toFixed(2)},  variance = ${many.v.toFixed(2)}`) + 'والاتنين قريبين من λt.' : '') };
+      ar: `الوصول بيحصل واحد واحد بمعدل λ، والـ <bdi dir="ltr">N(t)</bdi> بتعد عدد الوصولات في الفترة لحد t. في الـ run دي:` + L(`N(${T}) = ${cur >= T ? N : '…'},  E[N(t)] = V[N(t)] = λt = ${tr(lam * T)}`) + `والمسافات بين الوصولات exponential ومتوسطها ${tr(1 / lam)}.` + (many && many.l === lam ? 'وعلى 1000 run:' + L(`mean = ${many.m.toFixed(2)},  variance = ${many.v.toFixed(2)}`) + 'والاتنين قريبين من λt.' : '') };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Svg} F=${F} label="A Poisson process: counting function N(t)">
         <path d=${d} fill="none" stroke=${K} strokeWidth="3" />
@@ -2441,8 +2441,8 @@
       { en: 'A₁, A₂, … are the interarrival times: A₁ is the gap from 0 to the 1st arrival, A₂ the gap to the 2nd.', ar: 'الـ A₁ و A₂ هما الـ interarrival times: الـ A₁ الفترة من 0 لأول وصول، والـ A₂ الفترة لحد التاني.' },
       { en: 'The 1st arrival comes after time t <b>iff</b> there are no arrivals in [0, t].', ar: 'أول وصول هييجي بعد t <b>لو وبس لو</b> مفيش ولا وصول في الفترة من 0 لـ t.' },
       { en: 'So P(A₁ > t) = P(N(t) = 0) = e^(−λt).', ar: 'يبقى' + L('P(A₁ > t) = P(N(t) = 0) = e^(−λt)') },
-      { en: 'P(A₁ ≤ t) = 1 − e^(−λt): the CDF of exp(λ). Interarrival times are exponential and independent with mean 1/λ.', ar: 'وده الـ CDF بتاع الـ exponential:' + L('P(A₁ ≤ t) = 1 − e^(−λt)') + 'يعني الـ interarrival times موزعة exponential ومستقلة ومتوسطها 1/λ.' },
-      { en: 'Arrival counts ~ Poisson(λ) (stationary and independent) ⟷ interarrival time ~ exp(1/λ) (memoryless); the slide writes exp(1/λ) meaning mean 1/λ.', ar: 'الوجهين لنفس الـ process: عدد الوصولات Poisson، والوقت بينهم exponential ومالوش ذاكرة (memoryless). والـ slide كاتبة الـ exp بالمتوسط 1/λ.' }
+      { en: 'P(A₁ ≤ t) = 1 − e^(−λt): the CDF of exp(λ). Interarrival times are exponential and independent with mean 1/λ.', ar: 'وده الـ CDF بتاع الـ exponential:' + L('P(A₁ ≤ t) = 1 − e^(−λt)') + 'يعني الـ interarrival times موزعة exponential ومستقلة ومتوسطها <bdi dir="ltr">1/λ</bdi>.' },
+      { en: 'Arrival counts ~ Poisson(λ) (stationary and independent) ⟷ interarrival time ~ exp(1/λ) (memoryless); the slide writes exp(1/λ) meaning mean 1/λ.', ar: 'الوجهين لنفس الـ process: عدد الوصولات Poisson، والوقت بينهم exponential ومالوش ذاكرة (memoryless). والـ slide كاتبة الـ exp بالمتوسط <bdi dir="ltr">1/λ</bdi>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2700);
     const P = { o: 22, t: 140, a1: 184, a2: 258 }, y = 50;
@@ -2633,7 +2633,7 @@
       { en: 'The graph is a rectangle of width 1 and height 1, so the <b>area under f is 1</b>.', ar: 'الرسمة مستطيل عرضه 1 وطوله 1، يعني <b>المساحة تحت الـ f بتساوي 1</b>.', eq: 'area = 1 × 1 = 1' },
       { en: 'The mean sits in the middle: <b>E(R) = 1/2</b>.', ar: 'الـ mean في النص بالظبط:' + L('E(R) = ∫₀¹ x dx = [x²/2]₀¹ = 1/2'), eq: 'E(R) = ∫₀¹ x dx = [x²/2]₀¹ = <b>1/2</b>' },
       { en: 'The variance is <b>V(R) = 1/12</b>. ‡ (lecture notes)', ar: 'والـ variance بيطلع كده ‡ (lecture notes):' + L('V(R) = ∫₀¹ x² dx − [E(R)]² = 1/3 − 1/4 = 1/12'), eq: 'V(R) = ∫₀¹ x² dx − [E(R)]² = 1/3 − 1/4 = <b>1/12</b>' },
-      { en: 'Divide [0,1] into n classes of equal length: each class expects <b>N/n</b> of the N observations (e.g. N = 100, n = 10 gives 10 per class), whatever values came before. ‡ (lecture notes)', ar: 'لو قسمنا الفترة لـ n classes متساوية، كل class متوقع يجيلها <b>N/n</b> من الـ N observations، مهما كانت القيم اللي قبلها ‡ (lecture notes). مثلًا:' + L('N = 100, n = 10 → 10 per class'), eq: 'expected per class = N/n' }
+      { en: 'Divide [0,1] into n classes of equal length: each class expects <b>N/n</b> of the N observations (e.g. N = 100, n = 10 gives 10 per class), whatever values came before. ‡ (lecture notes)', ar: 'لو قسمنا الفترة لـ n classes متساوية، كل class متوقع يجيلها <b><bdi dir="ltr">N/n</bdi></b> من الـ N observations، مهما كانت القيم اللي قبلها ‡ (lecture notes). مثلًا:' + L('N = 100, n = 10 → 10 per class'), eq: 'expected per class = N/n' }
     ];
     const [i, ctl] = useSteps(steps.length, 2400);
     const X = x => 20 + (x + 0.3) / 1.6 * 245, Y0 = 160, Y1 = 55;
@@ -2812,7 +2812,7 @@
         ${cs && html`<div>Longest possible period: <span dangerouslySetInnerHTML=${{ __html: cs.maxT }}></span></div>`}
         <div>Period found by running it: <b className=${cs && P === cs.max ? 'mf4-good' : ''}>${P}</b>${run.start ? ` (after ${run.start} values before the cycle)` : ''}</div></div>
         <div className="mf4-chips" style=${{ marginTop: '8px' }}>${run.xs.slice(0, 18).map((x, k) => html`<span key=${k} className=${'mf4-chip' + (k === 0 ? ' hi' : '')}>${x}</span>`)}${run.xs.length > 18 ? html`<span className="mf4-chip dim">…</span>` : ''}</div>`;
-      if (!cs) { en = `m = ${v.m} is neither a power of 2 nor a prime with c = 0, so slide 21 gives no rule here. Running the generator gives period <b>${P}</b>.`; arr = 'الـ m هنا مش power of 2 ومش prime مع c = 0، فالـ slide 21 مالهاش قاعدة للحالة دي. ولما نشغّل الـ generator الـ period بيطلع:' + L(`m = ${v.m}, P = ${P}`); }
+      if (!cs) { en = `m = ${v.m} is neither a power of 2 nor a prime with c = 0, so slide 21 gives no rule here. Running the generator gives period <b>${P}</b>.`; arr = 'الـ m هنا مش power of 2 ومش prime مع <bdi dir="ltr">c&nbsp;=&nbsp;0</bdi>، فالـ slide 21 مالهاش قاعدة للحالة دي. ولما نشغّل الـ generator الـ period بيطلع:' + L(`m = ${v.m}, P = ${P}`); }
       else if (allOk) { en = `All conditions of Case ${cs.n} hold, so the generator reaches the longest possible period: <b>P = ${cs.max}</b>, and running it confirms ${P}.`; arr = 'كل شروط الحالة دي متحققة، فالـ generator بيوصل لأطول period ممكن، والتشغيل بيأكد ده:' + L(`Case ${cs.n}: P = ${cs.max}, found ${P}`); }
       else { en = `A condition of Case ${cs.n} fails, so the period (<b>${P}</b>) can be below the longest possible ${cs.max}.`; arr = 'فيه شرط من شروط الحالة دي مش متحقق، فالـ period ممكن يطلع أقل من أطول period ممكن:' + L(`Case ${cs.n}: max ${cs.max}, found ${P}`); }
     } else { en = 'Use 1 < m ≤ 65536, 0 < a < m, 0 ≤ c < m and 0 ≤ X₀ < m.'; arr = 'استخدم قيم في الحدود دي:' + L('1 < m ≤ 65536, 0 < a < m, 0 ≤ c < m, 0 ≤ X₀ < m'); }
@@ -2901,8 +2901,8 @@
     const N = Ns[k], st = N ? ksStat(data.slice(0, N)) : null;
     const en = N === 0 ? 'F(x), the CDF of U[0,1] (slide 35): 0 for x < 0, the straight line from (0,0) to (1,1), then 1 for x > 1. Pick N to draw the empirical CDF S<sub>N</sub>(x).'
       : `S<sub>N</sub>(x) for the first <b>N = ${N}</b> of the 100 numbers of Example 4.5: a step function that jumps by 1/N at each observed value. Largest gap D = max |F(x) − S<sub>N</sub>(x)| = <b>${st.D.toFixed(3)}</b>. As N grows, S<sub>N</sub>(x) ≈ F(x). ‡ (lecture notes)`;
-    const arr = N === 0 ? 'الـ F(x) هي الـ CDF بتاعة الـ uniform على الفترة من 0 لـ 1 (الـ slide 35): صفر قبل الـ 0، وبعدين خط مستقيم بين النقطتين دول، وبعدها 1:' + L('(0,0) → (1,1)') + 'اختار N عشان ترسم الـ empirical CDF.'
-      : 'دي الـ S<sub>N</sub>(x) لأول N رقم من الـ 100 رقم بتوع Example 4.5. هي step function بتنط بمقدار 1/N عند كل قيمة، وكل ما الـ N يكبر بتقرب من الـ F(x) ‡ (lecture notes). وأكبر فرق بينهم:' + L(`N = ${N}: D = max |F(x) − S<sub>N</sub>(x)| = ${st.D.toFixed(3)}`);
+    const arr = N === 0 ? 'الـ <bdi dir="ltr">F(x)</bdi> هي الـ CDF بتاعة الـ uniform على الفترة من 0 لـ 1 (الـ slide 35): صفر قبل الـ 0، وبعدين خط مستقيم بين النقطتين دول، وبعدها 1:' + L('(0,0) → (1,1)') + 'اختار N عشان ترسم الـ empirical CDF.'
+      : 'دي الـ <bdi dir="ltr">S<sub>N</sub>(x)</bdi> لأول N رقم من الـ 100 رقم بتوع Example 4.5. هي step function بتنط بمقدار <bdi dir="ltr">1/N</bdi> عند كل قيمة، وكل ما الـ N يكبر بتقرب من الـ <bdi dir="ltr">F(x)</bdi> ‡ (lecture notes). وأكبر فرق بينهم:' + L(`N = ${N}: D = max |F(x) − S<sub>N</sub>(x)| = ${st.D.toFixed(3)}`);
     return html`<figure className="fig mf4"><div className="fig-stage">
       <div className="mf4-modes" role="group">${Ns.map((n, j) => html`<button key=${n} className="fig-btn" aria-pressed=${String(j === k)} onClick=${() => setK(j)}>${n === 0 ? 'F(x) only' : 'N = ' + n}</button>`)}</div>
       <${CdfPlot} s=${st && st.s} x0=${-0.15} x1=${1.15} ext=${1} aria="Uniform CDF and empirical CDF" maxAt=${null} />
@@ -2915,10 +2915,10 @@
     const steps = [
       { en: 'N = 5 numbers: 0.44, 0.81, 0.14, 0.05, 0.93; α = 0.05.', ar: 'عندنا 5 أرقام والـ α هي 0.05:' + L('0.44, 0.81, 0.14, 0.05, 0.93') },
       { en: 'Step 1: rank from smallest to largest: R<sub>(i)</sub> = 0.05, 0.14, 0.44, 0.81, 0.93.', ar: 'الخطوة الأولى: نرتب من الأصغر للأكبر:' + L('R<sub>(i)</sub> = 0.05, 0.14, 0.44, 0.81, 0.93') },
-      { en: 'Step 2: i/N = 0.20, 0.40, 0.60, 0.80, 1.00.', ar: 'الخطوة التانية: نحسب الـ i/N:' + L('i/N = 0.20, 0.40, 0.60, 0.80, 1.00') },
+      { en: 'Step 2: i/N = 0.20, 0.40, 0.60, 0.80, 1.00.', ar: 'الخطوة التانية: نحسب الـ <bdi dir="ltr">i/N</bdi>:' + L('i/N = 0.20, 0.40, 0.60, 0.80, 1.00') },
       { en: 'D⁺ = max{i/N − R<sub>(i)</sub>} = <b>0.26</b> (at i = 2). "-" marks a negative value, which cannot be the maximum.', ar: 'الـ D⁺ هو أكبر قيمة في الصف ده، والعلامة "-" معناها قيمة سالبة ومينفعش تبقى الـ max:' + L('D⁺ = max{i/N − R<sub>(i)</sub>} = 0.26 (i = 2)') },
       { en: 'D⁻ = max{R<sub>(i)</sub> − (i−1)/N} = <b>0.21</b> (at i = 4).', ar: 'والـ D⁻ هو أكبر قيمة في الصف التاني:' + L('D⁻ = max{R<sub>(i)</sub> − (i−1)/N} = 0.21 (i = 4)') },
-      { en: 'The slide\'s plot: S<sub>N</sub>(x) jumps by 0.2 at each R<sub>(i)</sub>; the vertical gaps to F(x) = x are 0.05, 0.15, 0.26, 0.04, 0.16, 0.21, 0.13, 0.07. The largest, <b>0.26</b>, is just after R<sub>(2)</sub> = 0.14.', ar: 'رسمة الـ slide: الـ S<sub>N</sub>(x) بتنط 0.2 عند كل R<sub>(i)</sub>، والمسافات الرأسية بينها وبين الـ F(x) هي اللي تحت. وأكبرها 0.26 بعد R<sub>(2)</sub> على طول:' + L('0.05, 0.15, 0.26, 0.04, 0.16, 0.21, 0.13, 0.07') },
+      { en: 'The slide\'s plot: S<sub>N</sub>(x) jumps by 0.2 at each R<sub>(i)</sub>; the vertical gaps to F(x) = x are 0.05, 0.15, 0.26, 0.04, 0.16, 0.21, 0.13, 0.07. The largest, <b>0.26</b>, is just after R<sub>(2)</sub> = 0.14.', ar: 'رسمة الـ slide: الـ <bdi dir="ltr">S<sub>N</sub>(x)</bdi> بتنط 0.2 عند كل <bdi dir="ltr">R<sub>(i)</sub></bdi>، والمسافات الرأسية بينها وبين الـ <bdi dir="ltr">F(x)</bdi> هي اللي تحت. وأكبرها 0.26 بعد <bdi dir="ltr">R<sub>(2)</sub></bdi> على طول:' + L('0.05, 0.15, 0.26, 0.04, 0.16, 0.21, 0.13, 0.07') },
       { en: 'Step 3: D = max(D⁺, D⁻) = <b>0.26</b>. Step 4: D<sub>0.05</sub> for N = 5 is 0.565. Step 5: D = 0.26 ≤ 0.565, so <b>H₀ is not rejected</b>: no difference from the uniform distribution was detected.', ar: 'الخطوة التالتة والرابعة والخامسة: نجيب الـ D ونقارنه بالـ critical value. الـ D أصغر، يعني <b>مش هنرفض الـ H₀</b>، ومفيش فرق اتلاحظ عن الـ uniform distribution:' + L('D = max(0.26, 0.21) = 0.26 ≤ D<sub>0.05</sub> = 0.565') }
     ];
     const [i, ctl] = useSteps(steps.length, 2500);
@@ -2969,7 +2969,7 @@
     prods.forEach((p, k) => steps.push({ en: `R${sub(idx[k])} × R${sub(idx[k + 1])} = (${f2(R(idx[k]))})(${f2(R(idx[k + 1]))}) = ${p.toFixed(4)}. Running sum = <b>${prods.slice(0, k + 1).reduce((a, b) => a + b, 0).toFixed(4)}</b>.`, ar: 'نضرب كل رقم في اللي بعده ونجمع:' + L(`(${f2(R(idx[k]))})(${f2(R(idx[k + 1]))}) = ${p.toFixed(4)}, sum = ${prods.slice(0, k + 1).reduce((a, b) => a + b, 0).toFixed(4)}`), hi: idx, on: [idx[k], idx[k + 1]] }));
     steps.push({ en: `ρ̂<sub>${i0}${m}</sub> = [1/(M+1)] Σ − 0.25 = ${sum.toFixed(4)}/${M + 1} − 0.25 = <b>${rs}</b>.`, ar: 'نحسب الـ estimator:' + L(`ρ̂ = ${sum.toFixed(4)}/${M + 1} − 0.25 = ${rs}`), hi: idx });
     steps.push({ en: `σ̂ = √(13M + 7) / [12(M + 1)] = √${13 * M + 7}/${12 * (M + 1)} = <b>${ss}</b>.`, ar: 'ونحسب الـ standard deviation:' + L(`σ̂ = √(13(${M}) + 7) / [12(${M} + 1)] = √${13 * M + 7}/${12 * (M + 1)} = ${ss}`), hi: idx });
-    steps.push({ en: `Z₀ = ρ̂/σ̂ = ${rs}/${ss} = <b>${zs}</b>` + (notes ? ' (the slide prints −1.516; exact division gives −1.519 ‡).' : '.'), ar: 'والـ Z₀ بيطلع كده' + (notes ? '، والـ slide كاتبة −1.516 والقسمة الصح بتدي −1.519 ‡' : '') + ':' + L(`Z₀ = ${rs}/${ss} = ${zs}`), hi: idx, z: 1 });
+    steps.push({ en: `Z₀ = ρ̂/σ̂ = ${rs}/${ss} = <b>${zs}</b>` + (notes ? ' (the slide prints −1.516; exact division gives −1.519 ‡).' : '.'), ar: 'والـ Z₀ بيطلع كده' + (notes ? '، والـ slide كاتبة <bdi dir="ltr">−1.516</bdi> والقسمة الصح بتدي <bdi dir="ltr">−1.519</bdi> ‡' : '') + ':' + L(`Z₀ = ${rs}/${ss} = ${zs}`), hi: idx, z: 1 });
     steps.push({ en: `z<sub>0.025</sub> = 1.96 and ${ok ? `−1.96 ≤ ${zs} ≤ 1.96, so the hypothesis of independence is <b>not rejected</b>.` : `|Z₀| > 1.96, so the hypothesis of independence is <b>rejected</b>.`}` + (rho > 0 ? ' (ρ̂ > 0: positive autocorrelation, high numbers tend to follow high ones.)' : ' (ρ̂ < 0: negative autocorrelation, low numbers tend to be followed by high ones.)'), ar: (ok ? 'الـ Z₀ جوه منطقة القبول، يعني <b>مش بنرفض</b> الـ independence' : 'الـ Z₀ برّه منطقة القبول، يعني <b>بنرفض</b> الـ independence') + '، والإشارة بتقول نوع الـ autocorrelation لو موجود:' + L(`−1.96 ≤ Z₀ ≤ 1.96? Z₀ = ${zs}; ρ̂ ${rho > 0 ? '> 0' : '< 0'}`), hi: idx, z: 1 });
     const [i, ctl] = useSteps(steps.length, 2300), s = steps[i], hi = new Set(s.hi), on = new Set(s.on || []);
     return html`<div><div className="fig-stage" style=${{ paddingTop: 0 }}>
@@ -3092,10 +3092,10 @@
   function ZRegion({ ar }) {
     const steps = [
       { en: 'Under H₀ the statistic Z₀ ~ N(0,1), the standard normal curve.', ar: 'تحت الـ H₀ الـ statistic بيمشي على الـ standard normal:' + L('Z₀ ~ N(0,1)'), z: null, sh: false },
-      { en: 'Each tail beyond ±z<sub>α/2</sub> has area α/2 (reject). For α = 0.05, z<sub>0.025</sub> = 1.96. The middle, <b>−z<sub>α/2</sub> ≤ Z₀ ≤ z<sub>α/2</sub></b>, is the acceptance region for independence (fail to reject).', ar: 'كل ذيل بعد الـ critical value مساحته α/2، ولو الـ Z₀ وقع فيه بنرفض. ولما الـ α تبقى 0.05 الـ critical value بتبقى 1.96. والنص هو منطقة القبول للـ independence:' + L('−z<sub>α/2</sub> ≤ Z₀ ≤ z<sub>α/2</sub>, z<sub>0.025</sub> = 1.96'), z: null, sh: true },
+      { en: 'Each tail beyond ±z<sub>α/2</sub> has area α/2 (reject). For α = 0.05, z<sub>0.025</sub> = 1.96. The middle, <b>−z<sub>α/2</sub> ≤ Z₀ ≤ z<sub>α/2</sub></b>, is the acceptance region for independence (fail to reject).', ar: 'كل ذيل بعد الـ critical value مساحته <bdi dir="ltr">α/2</bdi>، ولو الـ Z₀ وقع فيه بنرفض. ولما الـ α تبقى 0.05 الـ critical value بتبقى 1.96. والنص هو منطقة القبول للـ independence:' + L('−z<sub>α/2</sub> ≤ Z₀ ≤ z<sub>α/2</sub>, z<sub>0.025</sub> = 1.96'), z: null, sh: true },
       { en: 'Runs up and down (40 numbers): Z₀ = <b>−0.13</b>, inside the region: independence cannot be rejected.', ar: 'في مثال الـ runs up and down على 40 رقم الـ Z₀ جوه منطقة القبول، فمنقدرش نرفض الـ independence:' + L('Z₀ = −0.13'), z: -0.13, sh: true },
       { en: 'Runs above and below the mean (Example 4.8): Z₀ = <b>−1.07</b>, inside: not rejected. ‡ (lecture notes)', ar: 'في مثال الـ runs above and below the mean الـ Z₀ جوه برضه، فمش بنرفض ‡ (lecture notes):' + L('Z₀ = −1.07'), z: -1.07, sh: true },
-      { en: 'Autocorrelation of the 3rd, 8th, 13th, … numbers: Z₀ = <b>−1.519</b> (the slide prints −1.516 ‡), still inside: not rejected.', ar: 'في مثال الـ autocorrelation الـ Z₀ لسه جوه المنطقة، فمش بنرفض. والـ slide كاتبة −1.516 والقسمة الصح بتدي −1.519 ‡:' + L('Z₀ = −1.519'), z: -1.519, sh: true }
+      { en: 'Autocorrelation of the 3rd, 8th, 13th, … numbers: Z₀ = <b>−1.519</b> (the slide prints −1.516 ‡), still inside: not rejected.', ar: 'في مثال الـ autocorrelation الـ Z₀ لسه جوه المنطقة، فمش بنرفض. والـ slide كاتبة <bdi dir="ltr">−1.516</bdi> والقسمة الصح بتدي <bdi dir="ltr">−1.519</bdi> ‡:' + L('Z₀ = −1.519'), z: -1.519, sh: true }
     ];
     const [i, ctl] = useSteps(steps.length, 2400), s = steps[i];
     return html`<figure className="fig mf4"><div className="fig-stage"><${Normal} z=${s.z} zLabel=${s.z != null ? 'Z₀ = ' + s.z : ''} shade=${s.sh} />
@@ -3204,7 +3204,7 @@
       { en: `${nm}: the 60 numbers give ${s.length} signs and <b>${lens.length} runs</b>. Tally the run lengths: O₁ = ${O[0]}, O₂ = ${O[1]}, O₃ = ${O[2]}, O<sub>≥4</sub> = ${O[3]}. ‡ (lecture notes)`, ar: 'الـ 60 رقم بيطلّعوا الإشارات دي والـ runs اللي تحت، وبنعد كل طول اتكرر كام مرة ‡ (lecture notes):' + L(`${s.length} signs, ${lens.length} runs; O₁ = ${O[0]}, O₂ = ${O[1]}, O₃ = ${O[2]}, O≥4 = ${O[3]}`), p: 0 },
       { en: 'Expected counts E(Y<sub>i</sub>) from the formulas; the class "≥ 4" takes what is left of the expected total number of runs.', ar: 'نحسب الـ expected counts من القوانين، والـ class بتاعة "4 أو أكتر" بتاخد الباقي من العدد المتوقع الكلي للـ runs:' + L(eqs.join('<br>') + `<br>E(Y≥4) = ${Eall.toFixed(2)} − ${rd(E[0] + E[1] + E[2], 2).toFixed(2)} = ${E4.toFixed(2)}`), p: 1 },
       { en: `Expected values below 5 are too small, so combine lengths ${cLab[cLab.length - 1]}: O = ${cO[cO.length - 1]}, E = ${cE[cE.length - 1].toFixed(2)}. That leaves L = ${cO.length} classes, df = L − 1 = ${df}.`, ar: 'القيم المتوقعة الصغيرة بندمجها مع بعض، فبيفضل عندنا classes أقل ودرجات حرية أقل:' + L(`O = ${cO[cO.length - 1]}, E = ${cE[cE.length - 1].toFixed(2)}; L = ${cO.length}, df = ${df}`), p: 2 },
-      { en: `χ₀² = ${terms.map(x => x.toFixed(2)).join(' + ')} = <b>${chi.toFixed(2)}</b> (${chiU.toFixed(3)} unrounded) < χ²<sub>0.05,${df}</sub> = ${crit}, so <b>independence is not rejected</b>.` + (kind === 'ud' ? ' (The notes\' Table 4.3 lists E(Y₃) as 3.82; the formula gives 3.04 ‡.)' : ''), ar: 'الـ χ₀² أصغر من الـ critical value، يعني <b>مش بنرفض الـ independence</b>:' + L(`χ₀² = ${terms.map(x => x.toFixed(2)).join(' + ')} = ${chi.toFixed(2)} < χ²<sub>0.05,${df}</sub> = ${crit}`) + (kind === 'ud' ? 'وجدول 4.3 في الـ notes كاتب 3.82 للـ E(Y₃)، والقانون بيدي 3.04 ‡.' : ''), p: 3 }
+      { en: `χ₀² = ${terms.map(x => x.toFixed(2)).join(' + ')} = <b>${chi.toFixed(2)}</b> (${chiU.toFixed(3)} unrounded) < χ²<sub>0.05,${df}</sub> = ${crit}, so <b>independence is not rejected</b>.` + (kind === 'ud' ? ' (The notes\' Table 4.3 lists E(Y₃) as 3.82; the formula gives 3.04 ‡.)' : ''), ar: 'الـ χ₀² أصغر من الـ critical value، يعني <b>مش بنرفض الـ independence</b>:' + L(`χ₀² = ${terms.map(x => x.toFixed(2)).join(' + ')} = ${chi.toFixed(2)} < χ²<sub>0.05,${df}</sub> = ${crit}`) + (kind === 'ud' ? 'وجدول 4.3 في الـ notes كاتب 3.82 للـ <bdi dir="ltr">E(Y₃)</bdi>، والقانون بيدي 3.04 ‡.' : ''), p: 3 }
     ];
     const [i, ctl] = useSteps(steps.length, 3200), P = steps[i].p;
     const rows = P < 2 ? lab.map((l, k) => [l, O[k], P >= 1 ? Ef[k].toFixed(2) : '']) : cLab.map((l, k) => [l, cO[k], cE[k].toFixed(2)].concat(P >= 3 ? [terms[k].toFixed(2)] : []));
@@ -3254,7 +3254,7 @@
       (window.crypto || {}).getRandomValues ? crypto.getRandomValues(b) : b.forEach((_, k) => b[k] = Math.random() * 256);
       for (let k = 0; k < 10000; k++) { const v = b[k] & 1 ? 255 : 0; img.data.set([v, v, v, 255], k * 4); } ctx.putImageData(img, 0, 0); }, [n]);
     return html`<figure className="fig mf4"><div className="fig-stage"><canvas ref=${ref} width="100" height="100" className="mf4-pix" role="img" aria-label="Random black and white pixels"></canvas></div>
-      <${Cap} en="Like slide 65's bitmap from random.org/analysis: every pixel is black or white at random, and <b>no pattern is visible</b>. (random.org gets its randomness from atmospheric noise; this one uses your browser's crypto random source.)" ar="زي الـ bitmap اللي في الـ slide 65 من <bdi>random.org/analysis</bdi>: كل pixel أسود أو أبيض بشكل random، و<b>مفيش أي pattern باين</b>. والـ random.org بياخد الـ randomness من الـ atmospheric noise، أما هنا فالـ pixels جاية من الـ crypto random source بتاع الـ browser." showAr=${ar} />
+      <${Cap} en="Like slide 65's bitmap from random.org/analysis: every pixel is black or white at random, and <b>no pattern is visible</b>. (random.org gets its randomness from atmospheric noise; this one uses your browser's crypto random source.)" ar="زي الـ bitmap اللي في الـ slide 65 من <bdi dir="ltr">random.org/analysis</bdi>: كل pixel أسود أو أبيض بشكل random، و<b>مفيش أي pattern باين</b>. والـ random.org بياخد الـ randomness من الـ atmospheric noise، أما هنا فالـ pixels جاية من الـ crypto random source بتاع الـ browser." showAr=${ar} />
       <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => setN(x => x + 1)}>New bitmap</button></div></figure>`;
   }
 
@@ -3372,9 +3372,9 @@
       { en: `<b>Step 1</b>: the cdf of the exponential is F(x) = 1 − e^(−λx), x ≥ 0 (here λ = ${lam}, so the mean is 1/λ = ${+(1 / lam).toFixed(2)}).`,
         ar: 'الخطوة الأولى: نحسب الـ <b>cdf</b> بتاع الـ exponential' + L('F(x) = 1 − e^(−λx),  x ≥ 0') + 'وهنا' + L(`λ = ${lam},  mean = 1/λ = ${+(1 / lam).toFixed(2)}`) },
       { en: `<b>Step 2</b>: set F(X) = R. The random number R = ${f2(R)} is placed on the vertical axis (R is uniform on (0, 1)).`,
-        ar: 'الخطوة التانية: نخلي الـ F(X) تساوي الـ R. بنحط الـ random number على المحور الرأسي (الـ R دي uniform على الفترة من 0 لـ 1)' + L(`F(X) = R = ${f2(R)}`) },
+        ar: 'الخطوة التانية: نخلي الـ <bdi dir="ltr">F(X)</bdi> تساوي الـ R. بنحط الـ random number على المحور الرأسي (الـ R دي uniform على الفترة من 0 لـ 1)' + L(`F(X) = R = ${f2(R)}`) },
       { en: `<b>Step 3</b>: solve for X: go across to the curve and drop to the x axis. X = −(1/λ) ln(1 − R) = −(1/${lam}) ln(${f2(1 - R)}) = <b>${f3(x1)}</b> (5.1). This is X = F⁻¹(R), not 1/f.`,
-        ar: 'الخطوة التالتة: نحل المعادلة ونطلع الـ X. نمشي أفقي لحد المنحنى وننزل على محور الـ x' + L(`X = −(1/λ) ln(1 − R) = −(1/${lam}) ln(${f2(1 - R)}) = ${f3(x1)}`) + 'ودي معادلة (5.1)، يعني الـ X هي الـ F⁻¹(R) مش 1/f.' },
+        ar: 'الخطوة التالتة: نحل المعادلة ونطلع الـ X. نمشي أفقي لحد المنحنى وننزل على محور الـ x' + L(`X = −(1/λ) ln(1 − R) = −(1/${lam}) ln(${f2(1 - R)}) = ${f3(x1)}`) + 'ودي معادلة (5.1)، يعني الـ X هي الـ <bdi dir="ltr">F⁻¹(R)</bdi> مش <bdi dir="ltr">1/f</bdi>.' },
       { en: `<b>Step 4</b>: every new random number Ri gives a new Xi = F⁻¹(Ri). Press <b>New R</b> to generate R1, R2, R3, … and their variates.`,
         ar: 'الخطوة الرابعة: كل random number جديد بيدّي variate جديد. دوس <b>New R</b> عشان تولّد أرقام جديدة وتشوف الـ X بتاعة كل واحد' + L('Xi = F⁻¹(Ri),  i = 1, 2, …') },
       { en: `<b>(5.2)</b>: 1 − Ri can be replaced by Ri, because both are uniform on (0, 1). X = −(1/λ) ln R = <b>${f3(x2)}</b> (grey line, reading the level 1 − R). A different value for the same R, but the stream has the same exponential distribution.`,
@@ -3410,7 +3410,7 @@
       { en: `<b>Step 1</b>: the cdf is 0 for x < a, (x − a)/(b − a) for a ≤ x ≤ b, and 1 for x > b (here a = ${A}, b = ${B}).`,
         ar: 'الخطوة الأولى: الـ <b>cdf</b> بيساوي 0 قبل الـ a، وبعدين خط مستقيم لحد الـ b، وبعد كده 1' + L(`F(x) = (x − a)/(b − a),  a ≤ x ≤ b`) + 'وهنا' + L(`a = ${A},  b = ${B}`) },
       { en: `<b>Step 2</b>: set F(X) = (X − a)/(b − a) = R, with R = ${f2(R)} on the vertical axis.`,
-        ar: 'الخطوة التانية: نخلي الـ F(X) تساوي الـ R، والـ R على المحور الرأسي' + L(`(X − a)/(b − a) = R = ${f2(R)}`) },
+        ar: 'الخطوة التانية: نخلي الـ <bdi dir="ltr">F(X)</bdi> تساوي الـ R، والـ R على المحور الرأسي' + L(`(X − a)/(b − a) = R = ${f2(R)}`) },
       { en: `<b>Step 3</b>: solve for X: X − a = R(b − a), so X = a + (b − a)R = ${A} + ${B - A} × ${f2(R)} = <b>${+x.toFixed(3)}</b> (5.3).`,
         ar: 'الخطوة التالتة: نحل ونطلع الـ X، ودي معادلة (5.3)' + L(`X = a + (b − a)R = ${A} + ${B - A} × ${f2(R)} = ${+x.toFixed(3)}`) }
     ];
@@ -3468,9 +3468,9 @@
       { en: 'The cdf has two pieces: F(x) = x²/2 for 0 < x ≤ 1 and F(x) = 1 − (2 − x)²/2 for 1 < x ≤ 2. They meet at x = 1, where F = 1/2.',
         ar: 'الـ <b>cdf</b> ليه جزئين بيتقابلوا عند النقطة دي' + L('x = 1,   F(1) = 1/2') + L('F(x) = x²/2,  0 < x ≤ 1') + L('F(x) = 1 − (2 − x)²/2,  1 < x ≤ 2') },
       { en: `R = ${f2(R)} ≤ 1/2, so X is on the first piece: R = X²/2 (5.4), X = √(2R) = √(${f2(2 * R)}) = <b>${f3(x)}</b>.`,
-        ar: 'الـ R هنا أقل من أو تساوي 1/2، يبقى الـ X على الجزء الأول، معادلة (5.4)' + L(`R = ${f2(R)} ≤ 1/2   ⇒   X = √(2R) = √(${f2(2 * R)}) = ${f3(x)}`) },
+        ar: 'الـ R هنا أقل من أو تساوي <bdi dir="ltr">1/2</bdi>، يبقى الـ X على الجزء الأول، معادلة (5.4)' + L(`R = ${f2(R)} ≤ 1/2   ⇒   X = √(2R) = √(${f2(2 * R)}) = ${f3(x)}`) },
       { en: `R = ${f2(R)} > 1/2, so X is on the second piece: R = 1 − (2 − X)²/2 (5.5), X = 2 − √(2(1 − R)) = 2 − √(${f2(2 * (1 - R))}) = <b>${f3(x)}</b>.`,
-        ar: 'الـ R هنا أكبر من 1/2، يبقى الـ X على الجزء التاني، معادلة (5.5)' + L(`R = ${f2(R)} > 1/2   ⇒   X = 2 − √(2(1 − R)) = 2 − √(${f2(2 * (1 - R))}) = ${f3(x)}`) },
+        ar: 'الـ R هنا أكبر من <bdi dir="ltr">1/2</bdi>، يبقى الـ X على الجزء التاني، معادلة (5.5)' + L(`R = ${f2(R)} > 1/2   ⇒   X = 2 − √(2(1 − R)) = 2 − √(${f2(2 * (1 - R))}) = ${f3(x)}`) },
       { en: `Check: R = 1/2 gives X = √1 = 1 from both pieces, the mode. Move R: ${low ? 'X = √(2R)' : 'X = 2 − √(2(1 − R))'} = <b>${f3(x)}</b>.`,
         ar: 'للتأكيد: الجزئين بيدّوا نفس القيمة عند الـ mode' + L('R = 1/2   ⇒   X = √1 = 1') + 'حرّك الـ R وشوف' + L(`R = ${f2(R)}   ⇒   X = ${f3(x)}`) }
     ];
@@ -3498,7 +3498,7 @@
     const S = [
       { en: 'The cdf of a discrete random variable is made of <b>horizontal line segments</b>: F(x) = 0.5 for 0 ≤ x < 1, 0.8 for 1 ≤ x < 2, 1 for x ≥ 2.',
         ar: 'الـ <b>cdf</b> بتاع أي discrete random variable عبارة عن <b>خطوط أفقية</b>، وهنا قيمته 0.5 من 0 لـ 1، وبعدين 0.8 من 1 لـ 2، وبعدين 1.' },
-      { en: 'It <b>jumps by p(x)</b> at each value: 0.5 at x = 0, 0.3 at x = 1 and 0.2 at x = 2.', ar: 'وبيعمل <b>jump</b> بحجم الـ p(x) عند كل قيمة' + L('p(0) = 0.5,  p(1) = 0.3,  p(2) = 0.2') },
+      { en: 'It <b>jumps by p(x)</b> at each value: 0.5 at x = 0, 0.3 at x = 1 and 0.2 at x = 2.', ar: 'وبيعمل <b>jump</b> بحجم الـ <bdi dir="ltr">p(x)</bdi> عند كل قيمة' + L('p(0) = 0.5,  p(1) = 0.3,  p(2) = 0.2') },
       { en: '<b>Graphically</b>: locate R1 = 0.73 on the vertical axis and draw a horizontal line until it hits a jump in the cdf.', ar: 'بالرسم: نحدد الـ R1 على المحور الرأسي ونرسم خط أفقي لحد ما يخبط في <b>jump</b> في الـ cdf' + L('R1 = 0.73') },
       { en: 'Then drop a perpendicular to the horizontal axis: the generated variate is <b>X1 = 1</b>.', ar: 'وبعدين ننزل عمودي على المحور الأفقي، فالـ variate اللي طلع هو' + L('X1 = 1') }
     ];
@@ -3559,7 +3559,7 @@
     const R = Rh / 100, Rk100 = Rh * k, X = Math.ceil(Rk100 / 100), Rk = +(Rk100 / 100).toFixed(2);
     const cuts = Array.from({ length: k + 1 }, (_, j) => j / k);
     const cap = { en: `k = ${k}, so each value i gets an interval of width 1/k: (i − 1)/k < R ≤ i/k (5.6). R = ${f2(R)} gives Rk = ${Rk} and <b>X = ⌈Rk⌉ = ⌈${Rk}⌉ = ${X}</b>${k === 10 && Rh === 78 ? ' (the notes’ example ⌈7.8⌉ = 8)' : ''}.`,
-      ar: 'كل قيمة i ليها فترة عرضها 1/k، ودي معادلة (5.6). نضرب الـ R في الـ k ونقرّب لفوق' + L(`(i − 1)/k < R ≤ i/k`) + L(`k = ${k},  R = ${f2(R)},  Rk = ${Rk}`) + L(`X = ⌈Rk⌉ = ⌈${Rk}⌉ = ${X}`) + (k === 10 && Rh === 78 ? 'وده نفس مثال الـ notes.' : '') };
+      ar: 'كل قيمة i ليها فترة عرضها <bdi dir="ltr">1/k</bdi>، ودي معادلة (5.6). نضرب الـ R في الـ k ونقرّب لفوق' + L(`(i − 1)/k < R ≤ i/k`) + L(`k = ${k},  R = ${f2(R)},  Rk = ${Rk}`) + L(`X = ⌈Rk⌉ = ⌈${Rk}⌉ = ${X}`) + (k === 10 && Rh === 78 ? 'وده نفس مثال الـ notes.' : '') };
     return html`<figure className="fig mf5"><div className="fig-stage">
       <${IBar} cuts=${cuts} labels=${cuts.slice(1).map((_, j) => j + 1)} on=${X - 1} R=${R} Rlab=${'R = ' + f2(R)} />
       <div className="mf5-calc"><div>${X - 1}/${k} ${'<'} R = ${f2(R)} ≤ ${X}/${k}</div><div>X = ⌈Rk⌉ = ⌈${f2(R)} × ${k}⌉ = ⌈${Rk}⌉ = <b>${X}</b></div></div>
@@ -3595,7 +3595,7 @@
     const [mode, setMode] = useState('ex'), [ph, setPh] = useState(30), [q, setQ] = useState(1), [Rh, setRh] = useState(60);
     const S = [
       { en: 'Example 5.6: geometric on {1, 2, …} with mean 1/p = 2, so <b>p = 1/2</b> and <b>q = 1</b>: X = 1 + ⌈ln(1 − R)/ln(1 − 0.5) − 1⌉. Random numbers 0.932, 0.105, 0.687.',
-        ar: 'في Example 5.6 الـ mean بيساوي 2، يبقى الـ p بتساوي 1/2 والـ q بتساوي 1' + L('X = 1 + ⌈ln(1 − R)/ln(1 − 0.5) − 1⌉') + 'والـ random numbers هي' + L('R1 = 0.932,  R2 = 0.105,  R3 = 0.687') }
+        ar: 'في Example 5.6 الـ mean بيساوي 2، يبقى الـ p بتساوي <bdi dir="ltr">1/2</bdi> والـ q بتساوي 1' + L('X = 1 + ⌈ln(1 − R)/ln(1 − 0.5) − 1⌉') + 'والـ random numbers هي' + L('R1 = 0.932,  R2 = 0.105,  R3 = 0.687') }
     ];
     GEX.forEach((r, k) => {
       const g = geo(r, 0.5, 1);
@@ -3637,11 +3637,11 @@
     const mx = Math.max(1, ...bins);
     let cap;
     if (!last) cap = { en: 'Generate X uniform on [1/4, 1]. <b>Step 1</b>: generate R. <b>Step 2</b>: accept X = R if R ≥ 1/4, otherwise reject R and go back to Step 1. <b>Step 3</b>: repeat if another X is needed. Press <b>Generate R</b>.',
-      ar: 'عايزين X تكون uniform على الفترة من 1/4 لـ 1. الخطوة الأولى نولّد R، والتانية نقبلها لو أكبر من أو تساوي 1/4 ونرفضها لو أصغر ونرجع للخطوة الأولى، والتالتة نكرر لو محتاجين X تاني. دوس <b>Generate R</b>.' };
+      ar: 'عايزين X تكون uniform على الفترة من <bdi dir="ltr">1/4</bdi> لـ 1. الخطوة الأولى نولّد R، والتانية نقبلها لو أكبر من أو تساوي <bdi dir="ltr">1/4</bdi> ونرفضها لو أصغر ونرجع للخطوة الأولى، والتالتة نكرر لو محتاجين X تاني. دوس <b>Generate R</b>.' };
     else if (last.many) cap = { en: `100 values accepted after <b>${last.tries}</b> random numbers. Overall ${nAcc} accepted of ${tries} (${(100 * nAcc / tries).toFixed(1)}%; P(R ≥ 1/4) = 3/4). Each accepted part of [1/4, 1] gets about the same share: (b − a)/(3/4). Fewer rejections means higher efficiency.`,
-      ar: 'اتقبل 100 قيمة بعد عدد ده من الـ random numbers' + L(`${last.tries} random numbers,  accepted ${nAcc} / ${tries} = ${(100 * nAcc / tries).toFixed(1)}%`) + 'والاحتمال النظري للقبول هو 3/4. وكل جزء من الفترة بياخد تقريبًا نفس النصيب، ودي الـ <b>uniform</b>. وكل ما الـ rejections تقل الـ efficiency تزيد.' };
-    else if (last.y) cap = { en: `<b>Step 2a</b>: R = ${f4(last.r)} ≥ 1/4, so <b>accept X = ${f4(last.r)}</b>. Step 3: press Generate R again if another X is needed.`, ar: 'دي <b>acceptance</b> لأن الـ R أكبر من أو تساوي 1/4' + L(`R = ${f4(last.r)} ≥ 1/4   ⇒   X = ${f4(last.r)}`) + 'ولو محتاج X تاني دوس Generate R تاني.' };
-    else cap = { en: `<b>Step 2b</b>: R = ${f4(last.r)} < 1/4, so <b>reject</b> it and return to Step 1 for a new R.`, ar: 'دي <b>rejection</b> لأن الـ R أصغر من 1/4، فنرجع للخطوة الأولى ونولّد R جديدة' + L(`R = ${f4(last.r)} < 1/4`) };
+      ar: 'اتقبل 100 قيمة بعد عدد ده من الـ random numbers' + L(`${last.tries} random numbers,  accepted ${nAcc} / ${tries} = ${(100 * nAcc / tries).toFixed(1)}%`) + 'والاحتمال النظري للقبول هو <bdi dir="ltr">3/4</bdi>. وكل جزء من الفترة بياخد تقريبًا نفس النصيب، ودي الـ <b>uniform</b>. وكل ما الـ rejections تقل الـ efficiency تزيد.' };
+    else if (last.y) cap = { en: `<b>Step 2a</b>: R = ${f4(last.r)} ≥ 1/4, so <b>accept X = ${f4(last.r)}</b>. Step 3: press Generate R again if another X is needed.`, ar: 'دي <b>acceptance</b> لأن الـ R أكبر من أو تساوي <bdi dir="ltr">1/4</bdi>' + L(`R = ${f4(last.r)} ≥ 1/4   ⇒   X = ${f4(last.r)}`) + 'ولو محتاج X تاني دوس Generate R تاني.' };
+    else cap = { en: `<b>Step 2b</b>: R = ${f4(last.r)} < 1/4, so <b>reject</b> it and return to Step 1 for a new R.`, ar: 'دي <b>rejection</b> لأن الـ R أصغر من <bdi dir="ltr">1/4</bdi>، فنرجع للخطوة الأولى ونولّد R جديدة' + L(`R = ${f4(last.r)} < 1/4`) };
     const fl = !last ? -1 : last.many ? 3 : last.y ? 1 : 2;
     return html`<figure className="fig mf5"><div className="fig-stage">
       <div className="mf5-flow">
@@ -3699,8 +3699,8 @@
       if (n === 0) S.push({ en: `Variate ${v}, <b>Step 1</b>: set n = 0, P = 1.`, ar: 'الـ variate رقم ' + v + '، الخطوة الأولى' + L('n = 0,   P = 1'), st: 0, row: k, v, pv: 1, pStr: '1' });
       S.push({ en: `<b>Step 2</b>: R${n + 1} = ${r}, P = ${n === 0 ? '1' : PROWS[k - 1][3]} × ${r} = <b>${P}</b>${k === 3 ? ' (0.83129…, the notes keep 0.8312)' : ''}.`,
         ar: 'الخطوة التانية: نولّد R جديدة ونضربها في الـ P' + L(`R${n + 1} = ${r},   P = ${n === 0 ? '1' : PROWS[k - 1][3]} × ${r} = ${P}`) + (k === 3 ? 'والقيمة بالظبط 0.83129 والـ notes كاتباها 0.8312.' : ''), st: 1, row: k + 1, v, pv: +P, pStr: P });
-      S.push(acc ? { en: `<b>Step 3</b>: P = ${P} < e^(−α) = 0.8187, so <b>accept N = ${n}</b>.`, ar: 'الخطوة التالتة: الـ P أصغر من الـ e^(−α)، يبقى نقبل' + L(`P = ${P} < 0.8187   ⇒   N = ${n}`), st: 2, row: k + 1, v, pv: +P, pStr: P, acc: 1 }
-        : { en: `<b>Step 3</b>: P = ${P} ≥ e^(−α) = 0.8187, so <b>reject n = ${n}</b>, set n = ${n + 1} and return to Step 2.`, ar: 'الخطوة التالتة: الـ P أكبر من أو تساوي الـ e^(−α)، يبقى نرفض الـ n دي ونزودها واحد ونرجع للخطوة التانية' + L(`P = ${P} ≥ 0.8187   ⇒   n = ${n + 1}`), st: 2, row: k + 1, v, pv: +P, pStr: P, acc: 0 });
+      S.push(acc ? { en: `<b>Step 3</b>: P = ${P} < e^(−α) = 0.8187, so <b>accept N = ${n}</b>.`, ar: 'الخطوة التالتة: الـ P أصغر من الـ <bdi dir="ltr">e^(−α)</bdi>، يبقى نقبل' + L(`P = ${P} < 0.8187   ⇒   N = ${n}`), st: 2, row: k + 1, v, pv: +P, pStr: P, acc: 1 }
+        : { en: `<b>Step 3</b>: P = ${P} ≥ e^(−α) = 0.8187, so <b>reject n = ${n}</b>, set n = ${n + 1} and return to Step 2.`, ar: 'الخطوة التالتة: الـ P أكبر من أو تساوي الـ <bdi dir="ltr">e^(−α)</bdi>، يبقى نرفض الـ n دي ونزودها واحد ونرجع للخطوة التانية' + L(`P = ${P} ≥ 0.8187   ⇒   n = ${n + 1}`), st: 2, row: k + 1, v, pv: +P, pStr: P, acc: 0 });
     });
     S.push({ en: 'N = 0, 0, 2 used <b>5 random numbers</b>. N = n needs n + 1 random numbers, so on average E(N + 1) = α + 1: about 1000(0.2 + 1) = <b>1200</b> random numbers for 1000 variates.',
       ar: 'التلات variates استخدموا <b>5 random numbers</b>. ولو الـ variate طلع قيمته n، بنحتاج random numbers عددها' + L('n + 1') + 'فالمتوسط' + L('E(N + 1) = α + 1') + 'يعني عشان نولّد 1000 variate محتاجين حوالي' + L('1000(0.2 + 1) = 1200'), st: 3, row: 5 });
@@ -3844,7 +3844,7 @@
     { en: 'The raw data are turned into <b>Input Data</b> for the model, e.g. the distributions of time between arrivals and service times.', ar: 'الـ raw data دي بتتحول لـ <b>Input Data</b> للـ model، زي توزيع الـ time between arrivals والـ service times.' },
     { en: 'The input data drive the <b>System Performance Simulation</b>: input models provide the driving force for a simulation model.', ar: 'الـ input data هي اللي بتشغّل الـ <b>System Performance Simulation</b>، لأن الـ input models هي الـ driving force بتاعة الـ simulation model.' },
     { en: 'The simulation gives the <b>Output</b>. Its quality is <b>no better</b> than the quality of the inputs.', ar: 'الـ simulation بتطلّع الـ <b>Output</b>، وجودته <b>عمرها ما هتبقى أحسن</b> من جودة الـ inputs.' },
-    { en: '<b>GIGO: Garbage-In-Garbage-Out.</b> If the input data are inaccurately collected, inappropriately analyzed or not representative of the environment, the results can be misleading even when the model structure is valid.', ar: 'ده معنى الـ <b>GIGO</b> يعني <b><bdi>Garbage-In-Garbage-Out</bdi></b>. لو الـ input data اتجمعت غلط أو اتحللت بطريقة مش مناسبة أو مش ممثلة للبيئة، النتايج ممكن تضلّلنا حتى لو الـ model structure نفسه valid.' }
+    { en: '<b>GIGO: Garbage-In-Garbage-Out.</b> If the input data are inaccurately collected, inappropriately analyzed or not representative of the environment, the results can be misleading even when the model structure is valid.', ar: 'ده معنى الـ <b>GIGO</b> يعني <b><bdi dir="ltr">Garbage-In-Garbage-Out</bdi></b>. لو الـ input data اتجمعت غلط أو اتحللت بطريقة مش مناسبة أو مش ممثلة للبيئة، النتايج ممكن تضلّلنا حتى لو الـ model structure نفسه valid.' }
   ];
   function Gigo({ ar }) {
     const [i, ctl] = useSteps(GIGO.length, 2600), bad = i === 4;
@@ -3879,11 +3879,11 @@
   /* ── [2.8] Fig 6.1 of the notes: ragged, coarse and appropriate histograms (heights as drawn) ── */
   const F61 = [
     { v: [1, 0, 1, 1, 3, 1, 1.8, 1, 5, 2.7, 5, 3.8, 6, 1, 0, 0, 1.7, 1.7, 1, 0, 0, 0, 0, 0, 1], lab: Array.from({ length: 25 }, (_, j) => j % 4 === 0 ? String(j) : ''), max: 7,
-      en: '(a) Original data in cells of <b>width 1</b> from 0 to 24: <b>too ragged</b>. The intervals are too narrow.', ar: '(a) الـ data الأصلية في cells <b>عرضها 1</b> من 0 لـ 24، والنتيجة <b>ragged قوي</b> لأن الـ intervals ضيقة أوي.' },
+      en: '(a) Original data in cells of <b>width 1</b> from 0 to 24: <b>too ragged</b>. The intervals are too narrow.', ar: 'في الرسمة (a) الـ data الأصلية في cells <b>عرضها 1</b> من 0 لـ 24، والنتيجة <b>ragged قوي</b> لأن الـ intervals ضيقة أوي.' },
     { v: [10.5, 23, 6.5], lab: ['0-7', '8-15', '16-23'], max: 24,
-      en: '(b) Adjacent cells combined into <b>0-7, 8-15, 16-23</b>: <b>too coarse</b> (blocky). The intervals are too wide.', ar: '(b) لما نجمع الـ cells اللي جنب بعض في 3 cells بس الشكل بيبقى <b>coarse قوي</b> (blocky)، لأن الـ intervals واسعة أوي.' },
+      en: '(b) Adjacent cells combined into <b>0-7, 8-15, 16-23</b>: <b>too coarse</b> (blocky). The intervals are too wide.', ar: 'في الرسمة (b) لما نجمع الـ cells اللي جنب بعض في 3 cells بس الشكل بيبقى <b>coarse قوي</b> (blocky)، لأن الـ intervals واسعة أوي.' },
     { v: [2, 5, 7.5, 10, 6.6, 5, 1, 1], lab: ['0-\n2', '3-\n5', '6-\n8', '9-\n11', '12-\n14', '15-\n17', '18-\n20', '21-\n24'], max: 12,
-      en: '(c) Cells combined in threes (0-2, 3-5, …, 21-24): <b>appropriate</b>, a smooth single-peaked shape.', ar: '(c) لما نجمع كل 3 cells مع بعض الشكل بيبقى <b>appropriate</b>، يعني ناعم وليه peak واحدة.' }
+      en: '(c) Cells combined in threes (0-2, 3-5, …, 21-24): <b>appropriate</b>, a smooth single-peaked shape.', ar: 'في الرسمة (c) لما نجمع كل 3 cells مع بعض الشكل بيبقى <b>appropriate</b>، يعني ناعم وليه peak واحدة.' }
   ];
   function HistCells({ ar }) {
     const [i, ctl] = useSteps(F61.length, 3000), s = F61[i];
@@ -4064,7 +4064,7 @@
     { en: 'Square each value, multiply by its frequency and add: Σ fⱼXⱼ² = <b>2080</b>.', ar: 'بنربّع كل قيمة ونضربها في الـ frequency ونجمع.' + L('Σ fⱼXⱼ² = 2080') },
     { en: 'Sample mean: X̄ = Σ fⱼXⱼ / n = 364 / 100 = <b>3.64</b>.', ar: 'الـ sample mean بيطلع كده:' + L('X̄ = 364 / 100 = 3.64') },
     { en: 'Sample variance: S² = (Σ fⱼXⱼ² − n X̄²) / (n − 1) = (2080 − 100 × 3.64²) / 99 = (2080 − 1324.96) / 99 = 755.04 / 99 = <b>7.63</b>.', ar: 'الـ sample variance بيطلع كده:' + L('S² = (2080 − 100 × 3.64²) / 99 = 755.04 / 99 = 7.63') },
-    { en: 'The histogram suggests a <b>Poisson</b> distribution. The red curve is 100 · p(x) for a Poisson with α = 3.64; it peaks at about 21 near x = 3, higher than the bars there.', ar: 'الـ histogram بيقول إن التوزيع <b>Poisson</b>. المنحنى الأحمر هو 100 مضروبة في p(x) لـ Poisson بـ α قيمتها 3.64، والـ peak بتاعه حوالي 21 عند القيمة 3.' },
+    { en: 'The histogram suggests a <b>Poisson</b> distribution. The red curve is 100 · p(x) for a Poisson with α = 3.64; it peaks at about 21 near x = 3, higher than the bars there.', ar: 'الـ histogram بيقول إن التوزيع <b>Poisson</b>. المنحنى الأحمر هو 100 مضروبة في <bdi dir="ltr">p(x)</bdi> لـ Poisson بـ α قيمتها 3.64، والـ peak بتاعه حوالي 21 عند القيمة 3.' },
     { en: 'But X̄ = 3.64 is not equal to S² = 7.63, although for a Poisson μ = σ² = λ. Reason: <b>each estimator is a random variable</b>; it is not perfect.', ar: 'بس الـ mean مش بيساوي الـ variance، مع إن في الـ Poisson المفروض الـ mean يساوي الـ variance. والسبب إن <b>كل estimator هو random variable</b> ومش perfect.' + L('X̄ = 3.64 ≠ S² = 7.63,  μ = σ² = λ') }
   ];
   function VehicleEst({ ar }) {
@@ -4095,7 +4095,7 @@
     { en: 'Take natural logs (rounded to one decimal as in the notes): 2.9, 3.3, 3.0, 1.8, 3.6, 1.6, 3.1, 0, 1.1, 2.1.', ar: 'بناخد الـ natural log لكل قيمة ونقرّبه لرقم عشري واحد زي الـ notes.' },
     { en: 'μ̂ = X̄ of the logs = 22.5 / 10 = <b>2.25</b>.', ar: 'الـ μ̂ هي متوسط الـ logs.' + L('μ̂ = 22.5 / 10 = 2.25') },
     { en: 'σ̂² = S² of the logs = (Σ(ln)² − n X̄²) / (n − 1) = (62.29 − 10 × 2.25²) / 9 = 11.665 / 9 = 1.296 ≈ <b>1.3</b>.', ar: 'الـ σ̂² هي الـ S² بتاعة الـ logs.' + L('σ̂² = (62.29 − 10 × 2.25²) / 9 = 11.665 / 9 ≈ 1.3') },
-    { en: 'With unrounded logs the estimates are μ̂ = 2.27 and σ̂² = 1.32. (This example was asked on the 2024/25 final.)', ar: 'لو استخدمنا الـ logs من غير تقريب النتيجة بتبقى كده، والمثال ده جه في امتحان <bdi>2024/25</bdi>.' + L('μ̂ = 2.27,  σ̂² = 1.32') }
+    { en: 'With unrounded logs the estimates are μ̂ = 2.27 and σ̂² = 1.32. (This example was asked on the 2024/25 final.)', ar: 'لو استخدمنا الـ logs من غير تقريب النتيجة بتبقى كده، والمثال ده جه في امتحان <bdi dir="ltr">2024/25</bdi>.' + L('μ̂ = 2.27,  σ̂² = 1.32') }
   ];
   function Lognormal({ ar }) {
     const [mode, setMode] = useState('ex'), [i, ctl] = useSteps(LSTEPS.length, 3000), [txt, setTxt] = useState('18.8, 27.9, 21.0, 6.1, 37.4, 5.0, 22.9, 1.0, 3.1, 8.3');
@@ -4129,7 +4129,7 @@
   };
   function Errors({ ar }) {
     const [c, setC] = useState(null), cell = (k, t) => html`<button className=${(ERR[k].good ? 'good' : 'err') + (c === k ? ' on' : '')} onClick=${() => setC(k)} aria-pressed=${String(c === k)}>${t}</button>`;
-    const m = c ? ERR[c] : { en: 'A goodness-of-fit test ends in a decision about H₀. Tap a cell: what really holds (columns) against what we decide (rows).', ar: 'أي <bdi>goodness-of-fit</bdi> test بيخلص بقرار عن الـ H₀. دوس على أي خانة، والأعمدة هي الحقيقة والصفوف هي قرارنا.' };
+    const m = c ? ERR[c] : { en: 'A goodness-of-fit test ends in a decision about H₀. Tap a cell: what really holds (columns) against what we decide (rows).', ar: 'أي <bdi dir="ltr">goodness-of-fit</bdi> test بيخلص بقرار عن الـ H₀. دوس على أي خانة، والأعمدة هي الحقيقة والصفوف هي قرارنا.' };
     return html`<figure className="fig mf6"><div className="fig-stage"><div className="mf6-grid2">
       <div></div><div>H₀ true</div><div>H₀ false</div>
       <div>Accept H₀</div>${cell('at', 'Correct')}${cell('af', 'Type II error (β)')}
@@ -4325,9 +4325,9 @@
     { en: 'Example 6.10: 20 gaps (seconds) between buy and sell orders, in time order Xₜ.', ar: 'ده مثال 6.10 وفيه 20 فاصل زمني بالثواني بين أوامر البيع والشراء بالترتيب.' },
     { en: 'Plot each gap against the next one (Xₜ, Xₜ₊₁): the points sit near the diagonal, so a gap is close to the one before. The gaps are <b>dependent</b>.', ar: 'لما نرسم كل فاصل قصاد اللي بعده النقط بتبقى قريبة من القطر، يعني كل فاصل قريب من اللي قبله. الفواصل دي <b>dependent</b>.' },
     { en: 'X̄ = <b>5.2</b>, σ̂² = <b>26.7</b>.', ar: 'الـ mean والـ variance بتوع الـ 20 فاصل كده:' + L('X̄ = 5.2,  σ̂² = 26.7') },
-    { en: 'Σ XₜXₜ₊₁ = 924.1, so the lag-1 covariance cov̂ = [924.1 − 19 × 5.2²] / 19 = <b>21.6</b>.', ar: 'بنحسب الـ <bdi>lag-1</bdi> covariance من المجموع ده.' + L('cov̂ = (924.1 − 19 × 5.2²) / 19 = 21.6') },
-    { en: 'ρ̂ = 21.6 / 26.7 = <b>0.8</b>: a high positive lag-1 autocorrelation.', ar: 'الـ <bdi>lag-1</bdi> autocorrelation عالية وموجبة.' + L('ρ̂ = 21.6 / 26.7 = 0.8') },
-    { en: 'Model the gaps as <b>EAR(1)</b> with λ̂ = 1/5.2 = <b>0.192</b> and φ̂ = <b>0.8</b>, provided the exponential is a good model for the individual gaps.', ar: 'بنعمل للفواصل model من نوع <b>EAR(1)</b> بالـ parameters دي، بشرط إن الـ exponential يبقى مناسب لكل فاصل لوحده.' + L('λ̂ = 1/5.2 = 0.192,  φ̂ = 0.8') }
+    { en: 'Σ XₜXₜ₊₁ = 924.1, so the lag-1 covariance cov̂ = [924.1 − 19 × 5.2²] / 19 = <b>21.6</b>.', ar: 'بنحسب الـ <bdi dir="ltr">lag-1</bdi> covariance من المجموع ده.' + L('cov̂ = (924.1 − 19 × 5.2²) / 19 = 21.6') },
+    { en: 'ρ̂ = 21.6 / 26.7 = <b>0.8</b>: a high positive lag-1 autocorrelation.', ar: 'الـ <bdi dir="ltr">lag-1</bdi> autocorrelation عالية وموجبة.' + L('ρ̂ = 21.6 / 26.7 = 0.8') },
+    { en: 'Model the gaps as <b>EAR(1)</b> with λ̂ = 1/5.2 = <b>0.192</b> and φ̂ = <b>0.8</b>, provided the exponential is a good model for the individual gaps.', ar: 'بنعمل للفواصل model من نوع <b><bdi dir="ltr">EAR(1)</bdi></b> بالـ parameters دي، بشرط إن الـ exponential يبقى مناسب لكل فاصل لوحده.' + L('λ̂ = 1/5.2 = 0.192,  φ̂ = 0.8') }
   ];
   function EarEx({ ar }) {
     const [i, ctl] = useSteps(GSTEPS.length, 3200);
@@ -4371,10 +4371,10 @@
     const top = Math.max(15, ...xs.map(x => Math.ceil(x / 5) * 5)), bot = Math.min(0, ...xs.map(x => Math.floor(x / 5) * 5));
     const f = frame([0.5, 60.5], [bot, top], { b: 40, l: 38 });
     const r1 = xs.length >= 10 ? corr(xs.slice(0, -1), xs.slice(1)) : null;
-    const intro = m === 'ear' ? { en: `<b>EAR(1)</b> with λ = 0.192 (mean 5.2) and φ = ${fx(phi)}: each step draws U; if U ≤ φ then Xₜ = φXₜ₋₁, otherwise Xₜ = φXₜ₋₁ + εₜ with εₜ exponential. Only positive autocorrelation can be represented.`, ar: 'الـ <b>EAR(1)</b> بالـ λ والـ φ دول. كل خطوة بنسحب U، ولو أصغر من أو بتساوي φ بنضرب القيمة اللي فاتت في φ بس، غير كده بنزود εₜ exponential. والـ model ده بيمثل autocorrelation موجبة بس.' }
-      : { en: `<b>AR(1)</b> with μ = 5.2, σ̂² = 26.7 (Example 6.10) and φ = ${fx(phi)}: Xₜ = μ + φ(Xₜ₋₁ − μ) + εₜ, εₜ normal with σε² = σ̂²(1 − φ²). Here φ can also be negative.`, ar: 'الـ <b>AR(1)</b> بالـ mean والـ variance بتوع مثال 6.10. كل قيمة بتتحسب من اللي قبلها والـ εₜ normal، وهنا الـ φ ممكن تبقى سالبة.' + L('Xₜ = μ + φ(Xₜ₋₁ − μ) + εₜ,  σε² = σ̂²(1 − φ²)') };
+    const intro = m === 'ear' ? { en: `<b>EAR(1)</b> with λ = 0.192 (mean 5.2) and φ = ${fx(phi)}: each step draws U; if U ≤ φ then Xₜ = φXₜ₋₁, otherwise Xₜ = φXₜ₋₁ + εₜ with εₜ exponential. Only positive autocorrelation can be represented.`, ar: 'الـ <b><bdi dir="ltr">EAR(1)</bdi></b> بالـ λ والـ φ دول. كل خطوة بنسحب U، ولو أصغر من أو بتساوي φ بنضرب القيمة اللي فاتت في φ بس، غير كده بنزود الـ <bdi dir="ltr">εₜ</bdi> exponential. والـ model ده بيمثل autocorrelation موجبة بس.' }
+      : { en: `<b>AR(1)</b> with μ = 5.2, σ̂² = 26.7 (Example 6.10) and φ = ${fx(phi)}: Xₜ = μ + φ(Xₜ₋₁ − μ) + εₜ, εₜ normal with σε² = σ̂²(1 − φ²). Here φ can also be negative.`, ar: 'الـ <b><bdi dir="ltr">AR(1)</bdi></b> بالـ mean والـ variance بتوع مثال 6.10. كل قيمة بتتحسب من اللي قبلها والـ <bdi dir="ltr">εₜ</bdi> normal، وهنا الـ φ ممكن تبقى سالبة.' + L('Xₜ = μ + φ(Xₜ₋₁ − μ) + εₜ,  σε² = σ̂²(1 − φ²)') };
     const en = last ? last.en + (r1 == null ? '' : ` Lag-1 autocorrelation of the ${xs.length} values: <b>${fx(r1)}</b> (ρ₁ = φ = ${fx(phi)}).`) : intro.en;
-    const a = last ? 'دي آخر خطوة اتحسبت.' + last.ar + (r1 == null ? '' : 'والـ <bdi>lag-1</bdi> autocorrelation للقيم المتولّدة قريبة من φ.' + L(`r₁ = ${fx(r1)},  φ = ${fx(phi)}`)) : intro.ar;
+    const a = last ? 'دي آخر خطوة اتحسبت.' + last.ar + (r1 == null ? '' : 'والـ <bdi dir="ltr">lag-1</bdi> autocorrelation للقيم المتولّدة قريبة من φ.' + L(`r₁ = ${fx(r1)},  φ = ${fx(phi)}`)) : intro.ar;
     return html`<figure className="fig mf6"><div className="fig-stage">
       <${Tabs} list=${[['ear', 'EAR(1)'], ['ar', 'AR(1)']]} v=${m} set=${k => reset(k, 0.8)} />
       <div className="mf6-row"><label htmlFor="mf6-phi">φ = <b>${fx(phi)}</b></label><input id="mf6-phi" type="range" min=${m === 'ear' ? 0 : -0.95} max="0.95" step="0.05" value=${phi} onInput=${e => reset(null, +e.target.value)} aria-label="phi" /></div>
@@ -4817,7 +4817,7 @@
     const box = (k, title, val) => html`<div className=${'mf8-nd' + (i === k ? ' on' : '')} style=${{ opacity: i >= k ? 1 : .3 }}><b>${title}</b><br /><span className="mf8-f" dangerouslySetInnerHTML=${{ __html: i >= k ? val : '·' }}></span></div>`;
     const draw = () => { const c = {}; for (let v = lo; v <= hi; v++) c[v] = 0; for (let k = 0; k < 1000; k++) c[lo + Math.floor(Math.random() * (hi - lo))]++; setTally(c); };
     const caps = [
-      { en: `Step (1): generate an integer <b>R0 = rand()</b>, from 0 up to RAND_MAX (a macro that gives the maximum value rand() returns).`, ar: `الخطوة (1): بنطلع integer عشوائي${L('R0 = rand()')}وقيمته من 0 لحد الـ RAND_MAX (ده macro بيدّي أكبر قيمة الـ rand() ممكن ترجعها).` },
+      { en: `Step (1): generate an integer <b>R0 = rand()</b>, from 0 up to RAND_MAX (a macro that gives the maximum value rand() returns).`, ar: `الخطوة (1): بنطلع integer عشوائي${L('R0 = rand()')}وقيمته من 0 لحد الـ RAND_MAX (ده macro بيدّي أكبر قيمة الـ <bdi dir="ltr">rand()</bdi> ممكن ترجعها).` },
       { en: `Step (2) <b>normalization</b>: R1 = R0 / (RAND_MAX + 1) = <b>${r1s}</b>. Because R0 ≤ RAND_MAX, R1 is always in [0, 1).`, ar: `الخطوة (2) هي الـ <b>normalization</b>:${L(`R1 = R0 / (RAND_MAX + 1) = ${r1s}`)}ولأن الـ R0 عمره ما يعدي الـ RAND_MAX فالـ R1 دايماً جوه ${L('[0, 1)')}` },
       { en: `Step (3) <b>scaling</b> by the interval length: R2 = R1 × (High − Low) = ${r1s} × (${hi} − ${lo}) = <b>${r2s}</b>.`, ar: `الخطوة (3) هي الـ <b>scaling</b> بطول الفترة:${L(`R2 = R1 × (High − Low) = ${r1s} × (${hi} − ${lo}) = ${r2s}`)}` },
       isInt ? { en: `Step (4) for integers, <b>truncation</b>: int(${r2s}) = <b>${t}</b>.`, ar: `الخطوة (4) للـ integers بنعمل <b>truncation</b>:${L(`int(${r2s}) = ${t}`)}` } : { en: 'Step (4): a real number skips the truncation.', ar: 'الخطوة (4): الرقم الـ real مش محتاج truncation.' },
@@ -4860,7 +4860,7 @@
     ];
     const val = k => isR ? Rs[k] : 0, head = k => isR ? Rs[k] < 0.5 : true;
     const H = Rs.filter((_, k) => head(k)).length, T = 100 - H;
-    const steps = [{ at: 's', en: 'Goal: show by simulation that P(H) = P(T) = 1/2 for an unbiased coin.', ar: 'الهدف: نثبت بالـ simulation إن الـ P(H) والـ P(T) كل واحد فيهم 1/2 للعملة الـ unbiased.' },
+    const steps = [{ at: 's', en: 'Goal: show by simulation that P(H) = P(T) = 1/2 for an unbiased coin.', ar: 'الهدف: نثبت بالـ simulation إن الـ <bdi dir="ltr">P(H)</bdi> والـ <bdi dir="ltr">P(T)</bdi> كل واحد فيهم <bdi dir="ltr">1/2</bdi> للعملة الـ unbiased.' },
       { at: 'i', v: { i: 0, H: 0, T: 0 }, en: 'Start the counters at zero.', ar: 'بنبدأ العدادات كلها بصفر.' }];
     let h = 0, tt = 0;
     for (let k = 0; k < 2; k++) {
@@ -4894,7 +4894,7 @@
       <div className="mf8-bars">${bar('Heads', H, pH, 'color-mix(in srgb, var(--fig-k) 55%, var(--paper))')}${bar('Tails', T, pT, 'color-mix(in srgb, var(--graphite) 45%, var(--paper))')}</div>
       <div className="mf8-card"><div>P(H) = ${H} / ${shown || N} = <span className="mf8-big">${fx(pH, N >= 1000 ? 4 : 2)}</span></div><div>P(T) = ${T} / ${shown || N} = <span className="mf8-big">${fx(pT, N >= 1000 ? 4 : 2)}</span></div></div>
       <p className="mf8-note">The lab’s Excel run of 100 tosses: H = 48 (48.00%), T = 52 (52.00%).</p>
-    </div><${Cap} en=${done ? `${N} tosses: P(H) = ${fx(pH, 4)} and P(T) = ${fx(pT, 4)}, close to 0.5. The more tosses, the closer both get to 1/2. Press a button to toss again.` : 'Tossing: R = RealRand(0, 1); R &lt; 0.5 counts a Head, otherwise a Tail.'} ar=${done ? `بعد ${N} رمية النسب طلعت${L(`P(H) = ${fx(pH, 4)} , P(T) = ${fx(pT, 4)}`)}وقريبة من 0.5. وكل ما نزوّد الرميات النسبتين بيقربوا أكتر من 1/2. دوس على أي زرار وارمي تاني.` : `بنرمي العملة: لو الرقم العشوائي أقل من 0.5 تبقى Head وغير كده Tail.`} showAr=${ar} /></figure>`;
+    </div><${Cap} en=${done ? `${N} tosses: P(H) = ${fx(pH, 4)} and P(T) = ${fx(pT, 4)}, close to 0.5. The more tosses, the closer both get to 1/2. Press a button to toss again.` : 'Tossing: R = RealRand(0, 1); R &lt; 0.5 counts a Head, otherwise a Tail.'} ar=${done ? `بعد ${N} رمية النسب طلعت${L(`P(H) = ${fx(pH, 4)} , P(T) = ${fx(pT, 4)}`)}وقريبة من 0.5. وكل ما نزوّد الرميات النسبتين بيقربوا أكتر من <bdi dir="ltr">1/2</bdi>. دوس على أي زرار وارمي تاني.` : `بنرمي العملة: لو الرقم العشوائي أقل من 0.5 تبقى Head وغير كده Tail.`} showAr=${ar} /></figure>`;
   }
 
   /* ── [5] gift shop: arrival and departure events ── */
@@ -4989,7 +4989,7 @@
   /* ── [10] Figure 8-1: area under the curve y = f(x), accept or reject a random point ── */
   function AreaFig({ ar }) {
     const steps = [
-      { en: 'The shaded area <b>A</b> is bounded by the non-negative curve y = f(x), the x axis and the vertical lines x = b and x = c: A is the integral of f(x) from b to c, with 0 ≤ f(x) ≤ h.', ar: `المساحة المظللة <b>A</b> محصورة بين المنحنى الموجب${L('y = f(x)')}ومحور الـ x والخطين ${L('x = b , x = c')}يعني الـ A هي تكامل الـ f(x) من b لـ c.` },
+      { en: 'The shaded area <b>A</b> is bounded by the non-negative curve y = f(x), the x axis and the vertical lines x = b and x = c: A is the integral of f(x) from b to c, with 0 ≤ f(x) ≤ h.', ar: `المساحة المظللة <b>A</b> محصورة بين المنحنى الموجب${L('y = f(x)')}ومحور الـ x والخطين ${L('x = b , x = c')}يعني الـ A هي تكامل الـ <bdi dir="ltr">f(x)</bdi> من b لـ c.` },
       { en: 'Enclose it in the rectangle <b>R</b> with base (b, c) and height h.', ar: 'بنحطها جوه المستطيل <b>R</b> اللي قاعدته من b لـ c وارتفاعه h.' },
       { en: 'Drop a point (xᵢ, yᵢ) at random on R, like a dart: every portion of R has the same chance of being hit. This one is under the curve: <b>accepted</b>.', ar: 'بنرمي نقطة عشوائية على الـ R زي السهم، وكل حتة في الـ R ليها نفس الفرصة. النقطة دي تحت المنحنى فهي <b>accepted</b>.' },
       { en: 'This point is above the curve: <b>rejected</b>.', ar: 'النقطة دي فوق المنحنى فهي <b>rejected</b>.' },
@@ -5046,14 +5046,14 @@
       steps.push({ at: 'n', v: { N: j + 1, K: K(j) }, en: `N ← ${j + 1}.`, ar: `الـ N بقت ${j + 1}.` });
       steps.push({ at: 'q', br: 'n', v: { N: j + 1, K: K(j) }, en: `${j + 1} is not above 3000: continue.`, ar: 'لسه موصلناش 3000 فبنكمل.' });
       steps.push({ at: 'g', v, en: `Random point x = ${v.x}, y = ${v.y}; f(${v.x}) = √(1 − ${v.x}²) = ${v['f(x)']}.`, ar: `نقطة عشوائية${L(`x = ${v.x} , y = ${v.y} , f(x) = ${v['f(x)']}`)}` });
-      steps.push({ at: 'a', br: p.in ? 'y' : 'n', v, en: p.in ? `${v.y} ≤ ${v['f(x)']}: the point is under the curve.` : `${v.y} &gt; ${v['f(x)']}: the point is above the curve, K stays.`, ar: p.in ? 'الـ y أقل من أو بتساوي الـ f(x) فالنقطة تحت المنحنى.' : 'الـ y أكبر من الـ f(x) فالنقطة فوق المنحنى والـ K زي ما هي.' });
+      steps.push({ at: 'a', br: p.in ? 'y' : 'n', v, en: p.in ? `${v.y} ≤ ${v['f(x)']}: the point is under the curve.` : `${v.y} &gt; ${v['f(x)']}: the point is above the curve, K stays.`, ar: p.in ? 'الـ y أقل من أو بتساوي الـ <bdi dir="ltr">f(x)</bdi> فالنقطة تحت المنحنى.' : 'الـ y أكبر من الـ <bdi dir="ltr">f(x)</bdi> فالنقطة فوق المنحنى والـ K زي ما هي.' });
       if (p.in) steps.push({ at: 'k', v: Object.assign({}, v, { K: K(j + 1) }), en: `K ← ${K(j + 1)}.`, ar: `الـ K بقت ${K(j + 1)}.` });
       steps.push({ at: 'm', br: 'n', v: Object.assign({}, v, { K: K(j + 1) }), en: `${j + 1} mod 500 ≠ 0: no print, back to N ← N + 1.`, ar: 'باقي القسمة على 500 مش صفر، فمفيش طباعة ونرجع نزوّد الـ N.' });
     }
     const k5 = K(500), k3 = K(3000);
     steps.push({ at: 'm', br: 'y', v: { N: 500, K: k5 }, en: `… the loop repeats. At N = 500 (K = ${k5}) N mod 500 = 0:`, ar: `الـ loop بيتكرر. عند N بـ 500 والـ K بـ ${k5} باقي القسمة بصفر.` });
     steps.push({ at: 'p', v: { N: 500, K: k5, A: fx(k5 / 500, 4) }, en: `Print N = 500, A = ${k5} × 1 × (1 − 0) / 500 = ${fx(k5 / 500, 4)}. (The book’s run printed 0.7680001.)`, ar: `بنطبع${L(`N = 500 , A = ${k5}/500 = ${fx(k5 / 500, 4)}`)}وتشغيلة الكتاب طبعت 0.7680001.` });
-    steps.push({ at: 'p', v: { N: 3000, K: k3, A: fx(k3 / 3000, 4) }, en: `… prints at 1000, 1500, 2000, 2500 and 3000: A = ${k3}/3000 = ${fx(k3 / 3000, 4)}. (The book’s run: 0.78399998; π/4 = 0.7853981.)`, ar: `وبنطبع تاني عند 1000 و 1500 و 2000 و 2500 و 3000، وآخر قيمة${L(`A = ${k3}/3000 = ${fx(k3 / 3000, 4)}`)}والكتاب طلع 0.78399998 والقيمة المظبوطة π/4.` });
+    steps.push({ at: 'p', v: { N: 3000, K: k3, A: fx(k3 / 3000, 4) }, en: `… prints at 1000, 1500, 2000, 2500 and 3000: A = ${k3}/3000 = ${fx(k3 / 3000, 4)}. (The book’s run: 0.78399998; π/4 = 0.7853981.)`, ar: `وبنطبع تاني عند 1000 و 1500 و 2000 و 2500 و 3000، وآخر قيمة${L(`A = ${k3}/3000 = ${fx(k3 / 3000, 4)}`)}والكتاب طلع 0.78399998 والقيمة المظبوطة <bdi dir="ltr">π/4</bdi>.` });
     steps.push({ at: 'q', br: 'y', v: { N: 3001, K: k3 }, en: 'N ← 3001 &gt; 3000: End.', ar: 'الـ N عدّت 3000 فبنخلص.' });
     steps.push({ at: 'e', v: { N: 3001, K: k3 }, en: 'End.', ar: 'خلصنا.' });
     return html`<${Walk} ar=${ar} nodes=${nodes} steps=${steps} ms=${1900} />`;
@@ -5207,7 +5207,7 @@
       { id: 'p', k: 'io', en: 'Print X and Y' },
       { id: 'e', k: 't', en: 'Stop' }
     ];
-    const W = walk(DRUNK[0]), steps = [{ at: 's', v: { X: 0, Y: 0, N: 10 }, en: 'Trial 1 of Table 8-1: start at the corner (0, 0); N = 10 blocks to walk.', ar: `أول trial في Table 8-1: بنبدأ من الناصية ${L('(0, 0)')}وقدامنا 10 blocks.` }];
+    const W = walk(DRUNK[0]), steps = [{ at: 's', v: { X: 0, Y: 0, N: 10 }, en: 'Trial 1 of Table 8-1: start at the corner (0, 0); N = 10 blocks to walk.', ar: `أول trial في <bdi dir="ltr">Table&nbsp;8-1</bdi>: بنبدأ من الناصية ${L('(0, 0)')}وقدامنا 10 blocks.` }];
     const tests = { E: ['a'], W: ['a', 'b'], N: ['a', 'b', 'c'], S: ['a', 'b', 'c'] };
     const nameEn = { E: 'east', W: 'west', N: 'north', S: 'south' }, nameAr = { E: 'الشرق', W: 'الغرب', N: 'الشمال', S: 'الجنوب' };
     for (let k = 0; k < 3; k++) {
@@ -5236,7 +5236,7 @@
     let cap;
     if (i === 0) cap = { en: 'Each block uses one two-digit RN: 00-24 east (X + 1), 25-49 west (X − 1), 50-74 north (Y + 1), 75-99 south (Y − 1). The shaded corners are within 2 blocks of the start.', ar: 'كل block بياخد رقم عشوائي من رقمين: من 00 لـ 24 شرق، من 25 لـ 49 غرب، من 50 لـ 74 شمال، من 75 لـ 99 جنوب. النواصي المظللة هي اللي على بعد 2 blocks أو أقل من البداية.' };
     else if (!fin) cap = { en: `Block ${shown}: RN ${d2(w.rn)} → ${({ E: 'east', W: 'west', N: 'north', S: 'south' })[w.dd]}; location (${w.x}, ${w.y}).`, ar: `الـ block رقم ${shown}: الرقم ${d2(w.rn)} معناه ${({ E: 'شرق', W: 'غرب', N: 'شمال', S: 'جنوب' })[w.dd]}، والمكان${L(`(${w.x}, ${w.y})`)}` };
-    else cap = { en: `After 10 blocks he is at (${W[9].x}, ${W[9].y}): |X| + |Y| = ${Math.abs(W[9].x) + Math.abs(W[9].y)} ${ok ? '≤ 2, a <b>success</b>' : '&gt; 2, a <b>failure</b>'}. Table 8-1: trials 1, 4 and 5 succeed, so the estimate is 3/5 = 0.6; five trials are not enough for a good estimate.`, ar: `بعد 10 blocks بقى عند${L(`(${W[9].x}, ${W[9].y}) , |X| + |Y| = ${Math.abs(W[9].x) + Math.abs(W[9].y)}`)}${ok ? 'يعني <b>نجاح</b>.' : 'يعني <b>فشل</b>.'} في Table 8-1 الـ trials رقم 1 و 4 و 5 نجحوا، فالتقدير ${L('3/5 = 0.6')}وخمس trials مش كفاية لتقدير كويس.` };
+    else cap = { en: `After 10 blocks he is at (${W[9].x}, ${W[9].y}): |X| + |Y| = ${Math.abs(W[9].x) + Math.abs(W[9].y)} ${ok ? '≤ 2, a <b>success</b>' : '&gt; 2, a <b>failure</b>'}. Table 8-1: trials 1, 4 and 5 succeed, so the estimate is 3/5 = 0.6; five trials are not enough for a good estimate.`, ar: `بعد 10 blocks بقى عند${L(`(${W[9].x}, ${W[9].y}) , |X| + |Y| = ${Math.abs(W[9].x) + Math.abs(W[9].y)}`)}${ok ? 'يعني <b>نجاح</b>.' : 'يعني <b>فشل</b>.'} في <bdi dir="ltr">Table&nbsp;8-1</bdi> الـ trials رقم 1 و 4 و 5 نجحوا، فالتقدير ${L('3/5 = 0.6')}وخمس trials مش كفاية لتقدير كويس.` };
     return html`<figure className="fig mf8"><div className="fig-stage">
       <div className="mf8-row">${[0, 1, 2, 3, 4].map(k => html`<button key=${k} className=${'fig-btn' + (tr === k ? ' mf8-sel' : '')} onClick=${() => pick(k)}>Trial ${k + 1}</button>`)}<button className=${'fig-btn' + (tr === 'r' ? ' mf8-sel' : '')} onClick=${() => pick('r')}>Random trial</button></div>
       <svg viewBox=${`0 0 ${S} ${S}`} style=${{ maxWidth: '300px' }} role="img" aria-label=${`Walk ending at ${W[9].x}, ${W[9].y}`}>
@@ -5324,7 +5324,7 @@
     let cap;
     if (i === 0) cap = { en: 'Quiz 2 gives 100 random numbers. rn &lt; 0.5 is a tail (diff − 1), otherwise a head (diff + 1); a game ends when |diff| = 3 and its net gain is 8 − flips.', ar: 'الـ Quiz 2 مدّينا 100 رقم عشوائي. لو الرقم أقل من 0.5 تبقى tail (الفرق يقل 1) وغير كده head (الفرق يزيد 1). الـ game بتخلص لما الفرق يوصل 3، والـ net gain هو 8 ناقص عدد الرميات.' };
     else if (g) cap = { en: `Game ${gi + 1} uses numbers ${g.s + 1}-${g.e + 1 > 100 ? '100, then 1-' + (g.e + 1 - 100) : g.e + 1}: ${g.n} flips, net gain 8 − ${g.n} = <b>${mn(g.net)}</b>${g.n < 8 ? ' (a win)' : ' (a loss)'}.${g.e >= 100 ? ' Only 18 numbers were left, so the code (rns[idx % total]) reuses numbers 1-9 from the start.' : ''}`, ar: `الـ game رقم ${gi + 1} خدت ${g.n} رميات، والـ net gain${L(`8 − ${g.n} = ${mn(g.net)}`)}${g.n < 8 ? 'يعني مكسب.' : 'يعني خسارة.'}${g.e >= 100 ? ' كان فاضل 18 رقم بس، فالكود بيرجع ياخد الأرقام من 1 لـ 9 من الأول.' : ''}` };
-    else cap = { en: `13 games, sum of net gains = ${S.s}. Mean = ${S.s}/13 = <b>${mn(fx(S.m, 4))}</b>, variance = Σ(net − mean)²/13 = <b>${fx(S.va, 4)}</b>, standard deviation = <b>${fx(S.sd, 4)}</b>. ${S.w} wins (won $${S.gain}, lost $${S.loss}). The average net gain is negative: an expected loss over time, so <b>the game is not safe to play</b>.`, ar: `عندنا 13 game ومجموع الـ net gains بـ ${mn(S.s)}.${L(`Mean = ${mn(fx(S.m, 4))} , Variance = ${fx(S.va, 4)} , SD = ${fx(S.sd, 4)}`)}المتوسط سالب يعني خسارة متوقعة على المدى الطويل، فـ <b>اللعبة مش safe</b>.` };
+    else cap = { en: `13 games, sum of net gains = ${S.s}. Mean = ${S.s}/13 = <b>${mn(fx(S.m, 4))}</b>, variance = Σ(net − mean)²/13 = <b>${fx(S.va, 4)}</b>, standard deviation = <b>${fx(S.sd, 4)}</b>. ${S.w} wins (won $${S.gain}, lost $${S.loss}). The average net gain is negative: an expected loss over time, so <b>the game is not safe to play</b>.`, ar: `عندنا 13 game ومجموع الـ net gains بـ <bdi dir="ltr">${mn(S.s)}</bdi>.${L(`Mean = ${mn(fx(S.m, 4))} , Variance = ${fx(S.va, 4)} , SD = ${fx(S.sd, 4)}`)}المتوسط سالب يعني خسارة متوقعة على المدى الطويل، فـ <b>اللعبة مش safe</b>.` };
     return html`<figure className="fig mf8"><div className="fig-stage">
       <${Seg} opts=${[['quiz', 'Quiz 2 numbers'], ['rand', 'Try your own: 100 random games']]} v=${mode} set=${setMode} />
       ${g ? html`<div className="mf8-chips">${g.fl.map((f, k) => html`<span key=${k} title=${'number ' + (f.k % 100 + 1)} style=${f.k >= 100 ? { borderStyle: 'dashed' } : null}><b>${fx(f.r, 2)}</b>${f.h ? 'H' : 'T'} ${f.diff > 0 ? '+' + f.diff : mn(f.diff)}</span>`)}</div>
@@ -5417,7 +5417,7 @@
       steps.push({ at: 'g', v: { x: 3, day: k + 1, d }, en: `A hypothetical daily demand is chosen for day ${k + 1}: d = ${d}.`, ar: `بنختار demand افتراضي لليوم رقم ${k + 1} وهو ${d}.` });
       steps.push({ at: 'z', v: { x: 3, day: k + 1, d, z: m2(z) }, en: d >= 3 ? `The model gives the daily profit: x = 3 ≤ d = ${d}, so z = 3(2.50) = ${m2(z)}.` : `The model gives the daily profit: x = 3 &gt; d = ${d}, so z = 3(${d}) − 0.5(3) = ${m2(z)}.`, ar: `الـ model بيحسب الربح${L(`z = ${m2(z)}`)}` });
       steps.push({ at: 'a', v: { x: 3, day: k + 1, d, z: m2(z), total: m2(tot) }, en: `Add to the total: $${m2(tot)}. Return for the next day.`, ar: `بنضيفه للمجموع فيبقى ${m2(tot)} ونرجع لليوم اللي بعده.` }); });
-    steps.push({ at: 'a', v: { x: 3, day: 10, total: '60.00' }, en: 'The daily profits are accumulated for a prespecified number of days N: after 10 days (Table 8-3) the total is $60.00.', ar: 'الأرباح اليومية بتتجمع لعدد أيام N متحدد: بعد 10 أيام (Table 8-3) المجموع 60 دولار.' });
+    steps.push({ at: 'a', v: { x: 3, day: 10, total: '60.00' }, en: 'The daily profits are accumulated for a prespecified number of days N: after 10 days (Table 8-3) the total is $60.00.', ar: 'الأرباح اليومية بتتجمع لعدد أيام N متحدد: بعد 10 أيام (<bdi dir="ltr">Table&nbsp;8-3</bdi>) المجموع 60 دولار.' });
     return html`<${Walk} ar=${ar} nodes=${nodes} steps=${steps} ms=${2000} />`;
   }
   const SLIPS = CAKE_F.flatMap((f, d) => Array(f).fill(d));
@@ -5429,7 +5429,7 @@
     const n = sum(tal);
     const lo = d => d ? CAKE_CUM[d - 1] : 0;
     const cap = last ? (last.R != null ? { en: `R = ${fx(last.R, 4)} falls in ${fx(lo(last.d), 2)} to ${fx(CAKE_CUM[last.d] - 0.00001, 5)}, so d = <b>${last.d}</b>. Each interval includes its lower end${last.R === 0.15 || last.R === 0.75 ? `: R = ${last.R} equals a cumulative probability and goes to the <b>next</b> value. The random-digit reading of Lecture 2 and the rule F(xᵢ₋₁) &lt; R ≤ F(xᵢ) of Lecture 5 would give ${last.d - 1} instead; state the convention you use.` : '.'}`, ar: `الرقم${L(`R = ${fx(last.R, 4)} → d = ${last.d}`)}وكل فترة بتشمل أولها${last.R === 0.15 || last.R === 0.75 ? `، فالـ R اللي بتساوي cumulative probability بتروح للقيمة <b>اللي بعدها</b>. طريقة الـ random digits في Lecture 2 وقاعدة Lecture 5 بيحطوها في القيمة اللي قبلها، فلازم تقول إنت ماشي بأنهي convention.` : '.'}` } : { en: `Drew a slip with <b>${last.d}</b> written on it, then put it back and reshuffled (with replacement).`, ar: `سحبنا ورقة مكتوب عليها <b>${last.d}</b> ورجعناها وخلطنا تاني.` })
-      : { en: `The past 20 days (Table 8-2) on 20 equal slips: 0 on one, 1 on two, 2 on one, 3 on two, 4 on three, 5 on six, 6 on three, 7 on one, 8 on one. Drawing a slip per day generates 0 about 5% of the time, 1 about 10%, and so on.${n ? ` After ${n} draws, compare your frequencies with the table.` : ''}`, ar: `الـ 20 يوم اللي فاتوا (Table 8-2) على 20 ورقة متساوية، وسحب ورقة كل يوم بيطلّع الصفر حوالي 5% من الوقت والواحد حوالي 10% وهكذا.${n ? ` بعد ${n} سحبة قارن النسب بتاعتك بالجدول.` : ''}` };
+      : { en: `The past 20 days (Table 8-2) on 20 equal slips: 0 on one, 1 on two, 2 on one, 3 on two, 4 on three, 5 on six, 6 on three, 7 on one, 8 on one. Drawing a slip per day generates 0 about 5% of the time, 1 about 10%, and so on.${n ? ` After ${n} draws, compare your frequencies with the table.` : ''}`, ar: `الـ 20 يوم اللي فاتوا (<bdi dir="ltr">Table&nbsp;8-2</bdi>) على 20 ورقة متساوية، وسحب ورقة كل يوم بيطلّع الصفر حوالي 5% من الوقت والواحد حوالي 10% وهكذا.${n ? ` بعد ${n} سحبة قارن النسب بتاعتك بالجدول.` : ''}` };
     return html`<figure className="fig mf8"><div className="fig-stage">
       <${Seg} opts=${[['slip', 'Paper slips'], ['rn', 'Random numbers']]} v=${mode} set=${m => { setMode(m); setLast(null); setTal(Array(9).fill(0)); }} />
       <div className="mf8-row"><button className="fig-btn solid" onClick=${one}>${mode === 'slip' ? 'Draw a slip' : 'Generate R'}</button><button className="fig-btn" onClick=${many}>+500 draws</button>${mode === 'rn' ? html`<button className="fig-btn" onClick=${() => draw(null, 0.15)}>R = 0.15</button><button className="fig-btn" onClick=${() => draw(null, 0.75)}>R = 0.75</button>` : null}</div>
@@ -5452,10 +5452,10 @@
     const Z = D.map(d => cz(x, d, g)), run = k => sum(Z.slice(0, k + 1));
     const bestX = tot.map((t, k) => t === best ? k + 1 : 0).filter(Boolean);
     let cap;
-    if (long) cap = { en: `500 simulated days (each demand from the random-number intervals of Table 8-2): the totals per x are on the chips; best: x = ${bestX.join(', ')}. The book’s 500-day computer run (Table 8-5) also found x = 6 ($4467).${g ? ' With the $2 goodwill cost.' : ''}`, ar: `عملنا 500 يوم simulation، والمجاميع لكل x مكتوبة على الأزرار، وأحسن x هي ${bestX.join(' و ')}. وتشغيلة الكتاب لـ 500 يوم (Table 8-5) طلّعت x بـ 6 برضه.` };
+    if (long) cap = { en: `500 simulated days (each demand from the random-number intervals of Table 8-2): the totals per x are on the chips; best: x = ${bestX.join(', ')}. The book’s 500-day computer run (Table 8-5) also found x = 6 ($4467).${g ? ' With the $2 goodwill cost.' : ''}`, ar: `عملنا 500 يوم simulation، والمجاميع لكل x مكتوبة على الأزرار، وأحسن x هي ${bestX.join(' و ')}. وتشغيلة الكتاب لـ 500 يوم (<bdi dir="ltr">Table&nbsp;8-5</bdi>) طلّعت x بـ 6 برضه.` };
     else if (i === 0) cap = { en: `Production x = ${x} every day; the same ten demands are used for every x${mode === 'book' ? ' (Table 8-3: 5, 1, 6, 3, 4, 4, 8, 0, 5, 6)' : ''}.${g ? ' Q2 adds a goodwill cost of $2 per unsatisfied order: if x ≤ d, z = 2.5x − 2(d − x).' : ''}`, ar: `بننتج ${x} كيكات كل يوم، ونفس الـ 10 demands بتتستخدم لكل x.${g ? ` سؤال Q2 بيضيف goodwill cost بـ 2 دولار لكل طلب متلبّاش:${L('x ≤ d → z = 2.5x − 2(d − x)')}` : ''}` };
     else if (cur >= 0) { const d = D[cur], z = Z[cur]; cap = { en: `Day ${cur + 1}: d = ${d}. ${x <= d ? `x = ${x} ≤ d: z = 2.5(${x})${g && d > x ? ` − 2(${d - x})` : ''} = ${m2(z)}${x < d ? ` (under-production of ${d - x})` : ''}` : `x = ${x} &gt; d: z = 3(${d}) − 0.5(${x}) = ${m2(z)} (${x - d} sold day-old at a loss of $0.50 each)`}. Total $${m2(run(cur))}.`, ar: `اليوم رقم ${cur + 1} الطلب فيه ${d}.${L(`z = ${m2(z)} , total = ${m2(run(cur))}`)}` }; }
-    else cap = { en: `Ten-day profit for x = ${x}: <b>$${m2(run(9))}</b>. ${mode === 'book' && !g ? 'Table 8-4 (tap the chips): the best is x = 6 ($90).' : g && mode === 'book' ? 'With goodwill, x = 6, 7 and 8 all give $86 (a three-way tie): the goodwill cost penalizes under-production, so the best quantity tends to increase.' : `Best on these days: x = ${bestX.join(', ')}.`} Ten days is too short to trust the result.`, ar: `ربح الـ 10 أيام لـ x بـ ${x} هو ${m2(run(9))} دولار. ${mode === 'book' && !g ? 'وفي Table 8-4 أحسن واحدة x بـ 6 بربح 90.' : g && mode === 'book' ? 'ومع الـ goodwill الـ x بـ 6 و 7 و 8 كلهم 86 (تعادل)، فالـ goodwill بيعاقب قلة الإنتاج والكمية الأحسن بتميل تزيد.' : `وأحسن x على الأيام دي ${bestX.join(' و ')}.`} و10 أيام مدة قصيرة نثق فيها.` };
+    else cap = { en: `Ten-day profit for x = ${x}: <b>$${m2(run(9))}</b>. ${mode === 'book' && !g ? 'Table 8-4 (tap the chips): the best is x = 6 ($90).' : g && mode === 'book' ? 'With goodwill, x = 6, 7 and 8 all give $86 (a three-way tie): the goodwill cost penalizes under-production, so the best quantity tends to increase.' : `Best on these days: x = ${bestX.join(', ')}.`} Ten days is too short to trust the result.`, ar: `ربح الـ 10 أيام لـ x بـ ${x} هو ${m2(run(9))} دولار. ${mode === 'book' && !g ? 'وفي <bdi dir="ltr">Table&nbsp;8-4</bdi> أحسن واحدة x بـ 6 بربح 90.' : g && mode === 'book' ? 'ومع الـ goodwill الـ x بـ 6 و 7 و 8 كلهم 86 (تعادل)، فالـ goodwill بيعاقب قلة الإنتاج والكمية الأحسن بتميل تزيد.' : `وأحسن x على الأيام دي ${bestX.join(' و ')}.`} والـ 10 أيام مدة قصيرة أوي عشان نثق في النتيجة.` };
     return html`<figure className="fig mf8"><div className="fig-stage">
       <${Seg} opts=${[['book', 'Table 8-3 demands'], ['r10', 'New 10 days'], ['r500', '500 days']]} v=${mode} set=${pick} />
       <div className="mf8-row"><button className=${'fig-btn' + (!g ? ' mf8-sel' : '')} onClick=${() => setG(0)}>No goodwill</button><button className=${'fig-btn' + (g ? ' mf8-sel' : '')} onClick=${() => setG(2)}>Q2: goodwill $2</button></div>
@@ -5468,8 +5468,8 @@
   function CakeCompare({ ar }) {
     const T4 = [22, 41, 60, 76, 86, 90, 88, 86], T5 = [1187, 2191, 3096, 3845, 4360, 4467, 4397, 4231];
     const steps = [
-      { en: 'Table 8-4: the same ten demands for every x = 1 … 8. The best ten-day profit is <b>x = 6 ($90)</b>. But ten days is too short: demands of 2 and 7 never appeared although each has 5%.', ar: 'الـ Table 8-4: نفس الـ 10 demands لكل x. أحسن ربح لـ 10 أيام عند <b>x بـ 6</b> وهو 90 دولار. بس 10 أيام قليلة: الطلب 2 والطلب 7 مظهروش خالص مع إن كل واحد ليه 5%.' },
-      { en: 'Table 8-5: a computer simulation of <b>500 days</b>; the longer run follows Table 8-2 more closely. It also gives <b>x = 6</b> as the best ($4467).', ar: 'الـ Table 8-5 فيه simulation على الكمبيوتر لـ <b>500 يوم</b> بتمشي مع Table 8-2 أكتر، وبرضه أحسن حاجة <b>x بـ 6</b> بربح 4467.' },
+      { en: 'Table 8-4: the same ten demands for every x = 1 … 8. The best ten-day profit is <b>x = 6 ($90)</b>. But ten days is too short: demands of 2 and 7 never appeared although each has 5%.', ar: 'الـ <bdi dir="ltr">Table&nbsp;8-4</bdi>: نفس الـ 10 demands لكل x. أحسن ربح لـ 10 أيام عند <b>x بـ 6</b> وهو 90 دولار. بس 10 أيام قليلة: الطلب 2 والطلب 7 مظهروش خالص مع إن كل واحد ليه 5%.' },
+      { en: 'Table 8-5: a computer simulation of <b>500 days</b>; the longer run follows Table 8-2 more closely. It also gives <b>x = 6</b> as the best ($4467).', ar: 'الـ <bdi dir="ltr">Table&nbsp;8-5</bdi> فيه simulation على الكمبيوتر لـ <b>500 يوم</b> بتمشي مع <bdi dir="ltr">Table&nbsp;8-2</bdi> أكتر، وبرضه أحسن حاجة <b>x بـ 6</b> بربح 4467.' },
       { en: 'Conclusion: if the model and the demand distribution are appropriate, produce <b>x = 6 cakes per day</b>.', ar: 'النتيجة: لو الـ model وتوزيع الطلب مناسبين، ننتج <b>6 كيكات كل يوم</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);

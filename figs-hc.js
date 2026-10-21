@@ -216,28 +216,28 @@
 
   /* ── L6 §0-§6: the six principles, each with its "Don't ask this… / Instead, ask this…" examples ── */
   const PR = {
-    Clear: { en: '<b>Be Clear</b>: label numeric scales, avoid overlapping ranges, give extra detail when in doubt, and timebox frequency questions.', ar: '<b>Be Clear</b>: اكتب labels للـ numeric scales، وتجنب الـ ranges المتداخلة، وزوّد تفاصيل لو شاكك، وحط إطار زمني لأسئلة التكرار.', pairs: [
+    Clear: { en: '<b>Be Clear</b>: label numeric scales, avoid overlapping ranges, give extra detail when in doubt, and timebox frequency questions.', ar: 'مبدأ <b>Be Clear</b>: اكتب labels للـ numeric scales، وتجنب الـ ranges المتداخلة، وزوّد تفاصيل لو شاكك، وحط إطار زمني لأسئلة التكرار.', pairs: [
       ['Rate it: 1–5', '1 = Highly dissatisfied … 5 = Highly satisfied', 'Label numeric scales.'],
       ['0-2, 2-5, 5-10', '0-2, 3-5, 6-10, 11-19, 20+', 'Avoid overlapping ranges.'],
       ['tablet computer', 'tablet computer (i.e. any computer with a touchscreen and detachable keyboard)', 'When in doubt, give extra detail.'],
       ['Never / Rarely / Often…', 'In the past seven days, how many times have you exercised? 0, 1-2, 3-4, 5-7, 7 or more', 'Timebox frequency questions.']] },
-    Concise: { en: '<b>Be Concise</b>: use plain language.', ar: '<b>Be Concise</b>: استخدم لغة بسيطة.', pairs: [
+    Concise: { en: '<b>Be Concise</b>: use plain language.', ar: 'مبدأ <b>Be Concise</b>: استخدم لغة بسيطة.', pairs: [
       ['What was the overall level of cleanliness that you observed within the car?', 'How clean was the car?', 'Plain language.']] },
-    Specific: { en: '<b>Be Specific</b>: avoid super-big ideas, double-barrel questions (two things in one) and internal conflict.', ar: '<b>Be Specific</b>: تجنب الأفكار الكبيرة أوي، والـ double-barrel questions (حاجتين في سؤال واحد)، والتعارض الداخلي.', pairs: [
+    Specific: { en: '<b>Be Specific</b>: avoid super-big ideas, double-barrel questions (two things in one) and internal conflict.', ar: 'مبدأ <b>Be Specific</b>: تجنب الأفكار الكبيرة أوي، والـ double-barrel questions (حاجتين في سؤال واحد)، والتعارض الداخلي.', pairs: [
       ['How satisfied were you with the interface?', '…with how quickly the interface responded? (plus follow-up questions)', 'Avoid super-big ideas.'],
       ['…the speed and availability of your connection?', 'Split it into two questions: one on speed, one on availability.', 'Avoid double-barrel questions.'],
       ['How satisfied with your food?', 'Split it into temperature, appearance and flavor.', 'Avoid internal conflict.']] },
-    Expressive: { en: '<b>Be Expressive</b>: emphasize the user\'s opinion, use ranges instead of yes/no, give levels of frequency or agreement, and allow multiple selections when possible.', ar: '<b>Be Expressive</b>: ركّز على رأي الـ user، واستخدم ranges بدل yes/no، وادّي مستويات للتكرار أو الموافقة، واسمح بأكتر من اختيار لما ينفع.', pairs: [
+    Expressive: { en: '<b>Be Expressive</b>: emphasize the user\'s opinion, use ranges instead of yes/no, give levels of frequency or agreement, and allow multiple selections when possible.', ar: 'مبدأ <b>Be Expressive</b>: ركّز على رأي الـ user، واستخدم ranges بدل <bdi dir="ltr">yes/no</bdi>، وادّي مستويات للتكرار أو الموافقة، واسمح بأكتر من اختيار لما ينفع.', pairs: [
       ['Is our price too high?', 'Do you feel our price is too high, too low, or about right?', 'Emphasize the user\'s opinion.'],
       ['Do you use social media?', 'In the past seven days, how much time have you spent on social media? 0 / <1 / 1-2 / 3-5 / 6-9 / 10+ hours', 'Use ranges instead of yes/no.'],
       ['Dissatisfied / Satisfied', 'A 5-level satisfaction scale', 'Give levels of frequency or agreement.'],
       ['Radio buttons (one choice)', 'Checkboxes (several choices)', 'Allow multiple selections when possible.']] },
-    Unbiased: { en: '<b>Be Unbiased</b>: let users add categories, leave open-ended questions open, and avoid leading and loaded questions.', ar: '<b>Be Unbiased</b>: اسمح للـ users يضيفوا categories، وسيب الأسئلة المفتوحة مفتوحة، وتجنب الـ leading والـ loaded questions.', pairs: [
+    Unbiased: { en: '<b>Be Unbiased</b>: let users add categories, leave open-ended questions open, and avoid leading and loaded questions.', ar: 'مبدأ <b>Be Unbiased</b>: اسمح للـ users يضيفوا categories، وسيب الأسئلة المفتوحة مفتوحة، وتجنب الـ leading والـ loaded questions.', pairs: [
       ['Fixed categories only', 'Add "Other: ____"', 'Allow users to add nominal categories.'],
       ['Why did you choose our service? (with fixed options)', 'Why did you choose our service? (open answer)', 'Leave open-ended questions open.'],
       ['Did our brand-new AI-based interface generate better recommendations?', 'How satisfied were you with the recommendations?', 'Avoid leading questions.'],
       ['How much time have you wasted on social media?', 'How much time have you spent on social media?', 'Avoid loaded questions.']] },
-    Usable: { en: '<b>Be Usable</b>: provide a progress bar, keep page lengths consistent, order questions logically, alert users about unanswered questions, and preview the survey yourself.', ar: '<b>Be Usable</b>: حط progress bar، وخلي أطوال الصفحات ثابتة، ورتّب الأسئلة بشكل منطقي، ونبّه الـ users على الأسئلة اللي متجاوبتش، واعمل preview للـ survey بنفسك.', tips: ['Provide a progress bar', 'Keep page lengths consistent', 'Order questions logically', 'Alert users about unanswered questions', 'Preview the survey yourself'] }
+    Usable: { en: '<b>Be Usable</b>: provide a progress bar, keep page lengths consistent, order questions logically, alert users about unanswered questions, and preview the survey yourself.', ar: 'مبدأ <b>Be Usable</b>: حط progress bar، وخلي أطوال الصفحات ثابتة، ورتّب الأسئلة بشكل منطقي، ونبّه الـ users على الأسئلة اللي متجاوبتش، واعمل preview للـ survey بنفسك.', tips: ['Provide a progress bar', 'Keep page lengths consistent', 'Order questions logically', 'Alert users about unanswered questions', 'Preview the survey yourself'] }
   };
   function Principles({ ar }) {
     const [p, setP] = useState('Clear'), [open, setOpen] = useState({}), P = PR[p];
@@ -260,7 +260,7 @@
     const name = ([a, b]) => b === Infinity ? a + '+' : a + '-' + b;
     const msg = hits === 1 ? 'Exactly one answer fits.' : hits === 0 ? 'No answer fits this value.' : 'Two answers fit: the question is ambiguous.';
     const cap = mode === 'bad'
-      ? { en: `<b>Avoid overlapping ranges</b>: with 0-2, 2-5, 5-10, a user with ${v} ${hits > 1 ? 'could tick two answers' : hits === 0 ? 'has no answer to tick' : 'has one answer'}. Try 2 or 5.`, ar: `<b>تجنب الـ ranges المتداخلة</b>: مع <bdi dir="ltr">0-2, 2-5, 5-10</bdi>، الـ user اللي عنده ${v} ${hits > 1 ? 'ممكن يختار إجابتين' : hits === 0 ? 'ملوش إجابة يختارها' : 'ليه إجابة واحدة'}. جرّب القيمة 2 أو 5.` }
+      ? { en: `<b>Avoid overlapping ranges</b>: with 0-2, 2-5, 5-10, a user with ${v} ${hits > 1 ? 'could tick two answers' : hits === 0 ? 'has no answer to tick' : 'has one answer'}. Try 2 or 5.`, ar: `<b>تجنب الـ ranges المتداخلة</b>: مع <bdi dir="ltr">0-2,&nbsp;2-5,&nbsp;5-10</bdi>، الـ user اللي عنده ${v} ${hits > 1 ? 'ممكن يختار إجابتين' : hits === 0 ? 'ملوش إجابة يختارها' : 'ليه إجابة واحدة'}. جرّب القيمة 2 أو 5.` }
       : { en: '<b>Use ranges that do not overlap</b>: 0-2, 3-5, 6-10, 11-19, 20+. Every value fits exactly one answer.', ar: '<b>استخدم ranges مش متداخلة</b>، زي <bdi dir="ltr">0-2, 3-5, 6-10, 11-19, 20+</bdi>، وكده كل قيمة ليها إجابة واحدة بس.' };
     const capS = lab ? { en: ' The scale is <b>labelled</b>: 1 = Highly dissatisfied … 5 = Highly satisfied.', ar: ' والـ scale عليه <b>labels</b>، يعني 1 معناها Highly dissatisfied و 5 معناها Highly satisfied.' } : { en: ' A bare "1–5" scale does not say which end is good: label it.', ar: ' والـ scale من غير labels مش بيقول أنهي ناحية الكويسة، فاكتب labels.' };
     return html`<figure className="fig hf6"><div className="fig-stage"><div className="hf6-wrap">
@@ -276,11 +276,11 @@
 
   /* ── L6 §4: Be Expressive, before and after ── */
   const EX = [
-    { en: '<b>Emphasize the user\'s opinion</b>: "Is our price too high?" becomes "Do you feel our price is too high, too low, or about right?"', ar: '<b>ركّز على رأي الـ user</b>: السؤال "Is our price too high?" يبقى "Do you feel our price is too high, too low, or about right?"',
+    { en: '<b>Emphasize the user\'s opinion</b>: "Is our price too high?" becomes "Do you feel our price is too high, too low, or about right?"', ar: '<b>ركّز على رأي الـ user</b>: السؤال <bdi dir="ltr">"Is our price too high?"</bdi> يبقى:<span class="ltr">"Do you feel our price is too high, too low, or about right?"</span>',
       b: ['Is our price too high?', ['Yes', 'No']], g: ['Do you feel our price is too high, too low, or about right?', ['Too high', 'Too low', 'About right']] },
-    { en: '<b>Use ranges instead of yes/no</b>: "Do you use social media?" becomes a question about the past seven days, answered in hours.', ar: '<b>استخدم ranges بدل yes/no</b>: السؤال "Do you use social media?" يبقى سؤال عن آخر 7 أيام، والإجابة بالساعات.',
+    { en: '<b>Use ranges instead of yes/no</b>: "Do you use social media?" becomes a question about the past seven days, answered in hours.', ar: '<b>استخدم ranges بدل <bdi dir="ltr">yes/no</bdi></b>: السؤال <bdi dir="ltr">"Do you use social media?"</bdi> يبقى سؤال عن آخر 7 أيام، والإجابة بالساعات.',
       b: ['Do you use social media?', ['Yes', 'No']], g: ['In the past seven days, how much time have you spent on social media?', ['0', '<1', '1-2', '3-5', '6-9', '10+ hours']] },
-    { en: '<b>Give levels of frequency or agreement</b>: a 5-level satisfaction scale instead of Dissatisfied/Satisfied.', ar: '<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل Dissatisfied/Satisfied.',
+    { en: '<b>Give levels of frequency or agreement</b>: a 5-level satisfaction scale instead of Dissatisfied/Satisfied.', ar: '<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل <bdi dir="ltr">Dissatisfied/Satisfied</bdi>.',
       b: ['How satisfied are you?', ['Dissatisfied', 'Satisfied']], g: ['How satisfied are you?', ['1 = Highly dissatisfied', '2', '3', '4', '5 = Highly satisfied']] },
     { en: '<b>Allow multiple selections when possible</b>: checkboxes (several choices) instead of radio buttons (one choice).', ar: '<b>اسمح بأكتر من اختيار لما ينفع</b>: checkboxes (أكتر من اختيار) بدل radio buttons (اختيار واحد).',
       b: ['Radio buttons: one choice', ['Option 1', 'Option 2', 'Option 3']], g: ['Checkboxes: several choices', ['Option 1', 'Option 2', 'Option 3']], sq: 1 }
@@ -314,9 +314,9 @@
       if (miss && on.alert && !warn) { setWarn(true); return; }
       setSkipped(s => s + miss); setWarn(false); setPage(p => p + 1); };
     const left = TIPS.filter(([key]) => !on[key]).map(([, t]) => t);
-    const cap = on.prev && !done ? { en: '<b>Preview</b>: you went through the survey yourself first. ' + (left.length > 1 ? 'Problems a user would still meet: ' + left.filter(t => t !== 'Preview the survey yourself').join('; ').toLowerCase() + '.' : 'Every tip is applied.'), ar: '<b>Preview</b>: إنت جربت الـ survey بنفسك الأول. ' + (left.length > 1 ? 'لسه فيه ' + (left.length - 1) + ' مشاكل الـ user هيقابلها، شغّل باقي النصايح.' : 'كل النصايح متطبقة.') }
+    const cap = on.prev && !done ? { en: '<b>Preview</b>: you went through the survey yourself first. ' + (left.length > 1 ? 'Problems a user would still meet: ' + left.filter(t => t !== 'Preview the survey yourself').join('; ').toLowerCase() + '.' : 'Every tip is applied.'), ar: 'الـ <b>Preview</b>: إنت جربت الـ survey بنفسك الأول. ' + (left.length > 1 ? 'لسه فيه ' + (left.length - 1) + ' مشاكل الـ user هيقابلها، شغّل باقي النصايح.' : 'كل النصايح متطبقة.') }
       : done ? { en: `Survey finished${skipped ? `, with <b>${skipped} unanswered question${skipped > 1 ? 's' : ''}</b> nobody warned about` : ''}. Turn on the tips and try again.`, ar: `الـ survey خلص${skipped ? `، وفيه <b>${skipped} سؤال متجاوبش</b> ومحدش نبّه عليه` : ''}. شغّل النصايح وجرّب تاني.` }
-      : { en: '<b>Be Usable</b>: turn each tip on and answer the survey. Without them there is no progress bar, the pages have 1, 4 and 1 questions, the order jumps between topics, and unanswered questions slip through.', ar: '<b>Be Usable</b>: شغّل كل نصيحة وجاوب الـ survey. من غيرها مفيش progress bar، والصفحات فيها سؤال واحد وبعدين 4 وبعدين واحد، والترتيب بينط بين المواضيع، والأسئلة اللي متجاوبتش بتعدّي.' };
+      : { en: '<b>Be Usable</b>: turn each tip on and answer the survey. Without them there is no progress bar, the pages have 1, 4 and 1 questions, the order jumps between topics, and unanswered questions slip through.', ar: 'مبدأ <b>Be Usable</b>: شغّل كل نصيحة وجاوب الـ survey. من غيرها مفيش progress bar، والصفحات فيها سؤال واحد وبعدين 4 وبعدين واحد، والترتيب بينط بين المواضيع، والأسئلة اللي متجاوبتش بتعدّي.' };
     return html`<figure className="fig hf6"><div className="fig-stage"><div className="hf6-wrap">
       <div className="hf6-toggles">${TIPS.map(([key, t]) => html`<label key=${key}><input type="checkbox" checked=${on[key]} onChange=${() => toggle(key)} />${t}</label>`)}</div>
       <div className="hf6-sv">
@@ -339,10 +339,10 @@
     { q: '"Have you listened to an audiobook this year?"', a: 3 }
   ];
   const EP = [
-    ['Ambiguous / reversed scale', 'An ambiguous, reversed scale: 1 means "a lot" and 4 means "not at all".', 'scale مش واضح ومعكوس: الـ 1 معناها "a lot" والـ 4 معناها "not at all".'],
-    ['Leading question', 'A leading question: it assumes you like exercising.', 'leading question: بيفترض إنك بتحب التمرين.'],
+    ['Ambiguous / reversed scale', 'An ambiguous, reversed scale: 1 means "a lot" and 4 means "not at all".', 'الـ scale مش واضح ومعكوس: الـ 1 معناها "a lot" والـ 4 معناها "not at all".'],
+    ['Leading question', 'A leading question: it assumes you like exercising.', 'ده leading question: بيفترض إنك بتحب التمرين.'],
     ['Changing options and reversed scale', 'The number of options changes (4 vs 6) and the scale is reversed compared with the previous question.', 'عدد الـ options بيتغير (4 ضد 6)، والـ scale معكوس مقارنة بالسؤال اللي قبله.'],
-    ['Yes/no question: use ranges', 'A yes/no question. Use ranges instead.', 'سؤال yes/no، فاستخدم ranges بداله.']
+    ['Yes/no question: use ranges', 'A yes/no question. Use ranges instead.', 'سؤال <bdi dir="ltr">yes/no</bdi>، فاستخدم ranges بداله.']
   ];
   function Evaluate({ ar }) {
     const [pick, setPick] = useState({}), [last, setLast] = useState(null);

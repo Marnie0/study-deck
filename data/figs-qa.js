@@ -33,7 +33,7 @@
   function Waterfall({ ar }) {
     const P = [['System', 'Engineering'], ['Analysis'], ['Design'], ['Coding'], ['Testing'], ['Maintenance']];
     const steps = [
-      { en: '<b>Figure 1.1 Waterfall Model</b>: one of the oldest software lifecycle models. The process starts at the system level and is followed by phases like analysis, design, coding, testing and maintenance.', ar: '<b>Figure 1.1 Waterfall Model</b>: من أقدم الـ software lifecycle models. الـ process بتبدأ من <b>الـ system level</b> وبعدها phases زي الـ analysis والـ design والـ coding والـ testing والـ maintenance.' },
+      { en: '<b>Figure 1.1 Waterfall Model</b>: one of the oldest software lifecycle models. The process starts at the system level and is followed by phases like analysis, design, coding, testing and maintenance.', ar: 'شكل <b>Figure 1.1 Waterfall Model</b>: من أقدم الـ software lifecycle models. الـ process بتبدأ من <b>الـ system level</b> وبعدها phases زي الـ analysis والـ design والـ coding والـ testing والـ maintenance.' },
       { en: '1. <b>System Engineering</b>: defines both software and hardware requirements necessary for development.', ar: '<bdi dir="ltr">1.</bdi> الـ <b>System Engineering</b>: بيحدد الـ software requirements والـ hardware requirements الاتنين اللي محتاجينهم للتطوير.' },
       { en: '2. <b>Analysis</b>: involves feasibility studies and setting the goals, performance, and interface requirements.', ar: '<bdi dir="ltr">2.</bdi> الـ <b>Analysis</b>: فيه feasibility studies وتحديد الـ goals والـ performance والـ interface requirements.' },
       { en: '3. <b>Design</b>: translates requirements into software structure, such as database design, to guide coding and ensure quality.', ar: '<bdi dir="ltr">3.</bdi> الـ <b>Design</b>: بيحوّل الـ requirements لـ software structure، زي الـ database design، عشان يوجّه الـ coding ويضمن الـ quality.' },
@@ -41,7 +41,7 @@
       { en: '5. <b>Testing</b>: the software is tested to detect bugs and verify that it meets the stated requirements.', ar: '<bdi dir="ltr">5.</bdi> الـ <b>Testing</b>: بنختبر الـ software عشان نكتشف الـ bugs ونتأكد إنه ماشي على الـ requirements المذكورة.' },
       { en: '6. <b>Maintenance</b>: fixes issues and updates the software as new needs arise.', ar: '<bdi dir="ltr">6.</bdi> الـ <b>Maintenance</b>: بيصلّح المشاكل ويعمل update للـ software لما تظهر احتياجات جديدة.' },
       { en: 'A vertical line rises from Maintenance and is joined by <b>two-headed arrows</b> to every earlier phase, so each later phase can feed back to the earlier ones.', ar: 'فيه خط رأسي طالع من الـ Maintenance ومتوصل بـ <b>أسهم بوشين (two-headed)</b> بكل الـ phases اللي قبله، يعني كل phase متأخرة ممكن ترجع feedback للـ phases اللي قبلها.' },
-      { en: '<b>Advantages</b>: simple, structured, clear documentation, early requirements, easy management. <b>Drawback</b>: errors made in early phases can carry over to later stages, causing delays and increased costs since problems must be fixed at multiple points.', ar: '<b>المميزات</b>: بسيط، structured، documentation واضحة، الـ requirements بدري، وإدارته سهلة. <b>العيب</b>: الـ errors اللي بتحصل في الـ phases الأولانية ممكن تنتقل للمراحل اللي بعدها، وده بيعمل تأخير وتكلفة أكتر لأن المشاكل لازم تتصلح في أكتر من مكان.' }
+      { en: '<b>Advantages</b>: simple, structured, clear documentation, early requirements, easy management. <b>Drawback</b>: errors made in early phases can carry over to later stages, causing delays and increased costs since problems must be fixed at multiple points.', ar: '<b>المميزات</b>: بسيط، و structured، والـ documentation واضحة، والـ requirements بدري، وإدارته سهلة. <b>العيب</b>: الـ errors اللي بتحصل في الـ phases الأولانية ممكن تنتقل للمراحل اللي بعدها، وده بيعمل تأخير وتكلفة أكتر لأن المشاكل لازم تتصلح في أكتر من مكان.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const W = 112, H = 40, X = k => 4 + k * 38, Y = k => 6 + k * 48, LX = 290;
@@ -67,7 +67,7 @@
   const SP = 'M187 218 A27.5 21 0 0 1 242 218 A54.5 42 0 0 1 133 218 A82 63 0 0 1 297 218 A109.5 84 0 0 1 78 218 A137 105 0 0 1 352 218 A164.5 125 0 0 1 23 218 A192 148 0 0 1 407 218 A220 169 0 0 1 187 387';
   function Spiral({ ar }) {
     const steps = [
-      { en: '<b>Figure 1.2 Spiral Model</b>: two axes split the figure into four quadrants. The vertical axis points up to <b>Cumulative cost</b>, the horizontal axis points left to <b>Review</b>, and the <b>Progress</b> arrow shows the spiral turning clockwise and widening outward.', ar: '<b>Figure 1.2 Spiral Model</b>: فيه محورين بيقسموا الشكل لـ 4 أرباع. المحور الرأسي سهمه لفوق لـ <b>Cumulative cost</b>، والأفقي سهمه للشمال لـ <b>Review</b>، وسهم الـ <b>Progress</b> بيوضح إن الـ spiral بيلف مع عقارب الساعة وبيوسع لبره.', q: -1, chips: [] },
+      { en: '<b>Figure 1.2 Spiral Model</b>: two axes split the figure into four quadrants. The vertical axis points up to <b>Cumulative cost</b>, the horizontal axis points left to <b>Review</b>, and the <b>Progress</b> arrow shows the spiral turning clockwise and widening outward.', ar: 'شكل <b>Figure 1.2 Spiral Model</b>: فيه محورين بيقسموا الشكل لـ 4 أرباع. المحور الرأسي سهمه لفوق لـ <b>Cumulative cost</b>، والأفقي سهمه للشمال لـ <b>Review</b>، وسهم الـ <b>Progress</b> بيوضح إن الـ spiral بيلف مع عقارب الساعة وبيوسع لبره.', q: -1, chips: [] },
       { en: '<b>Planning</b> (Plan): defines specifications, objectives, constraints, and strategies. All the alternatives that are helpful in developing a cost effective project are analyzed and all possible risks involved in the project development are identified.', ar: 'الـ <b>Planning</b> (Plan): بيحدد الـ specifications والـ objectives والـ constraints والـ strategies. بنحلل كل البدائل اللي تساعد نعمل مشروع cost effective، ونحدد كل الـ risks المحتملة في تطوير المشروع.', q: 0, chips: ['Requirements plan'] },
       { en: '<b>Risk Analysis</b>: identifies possible risks and evaluates cost-effective solutions. On each loop there is a <b>Risk analysis</b>, and the shaded wedge widens into <b>Prototype 1</b>, <b>Prototype 2</b> and <b>Operational Prototype</b>.', ar: 'الـ <b>Risk Analysis</b>: بيحدد الـ risks المحتملة ويقيّم الحلول الـ cost-effective. في كل لفة فيه <b>Risk analysis</b>، والجزء المتظلل بيوسع لـ <b>Prototype 1</b> و<b>Prototype 2</b> و<b>Operational Prototype</b>.', q: 1, chips: ['Risk analysis (on each loop)', 'Prototype 1', 'Prototype 2', 'Operational Prototype'] },
       { en: '<b>Design Engineering</b> (Design): the actual software is developed iteratively.', ar: 'الـ <b>Design Engineering</b> (Design): الـ software الحقيقي بيتعمل بشكل iterative.', q: 2, chips: ['Concept of requirements', 'Requirements', 'Draft', 'Detailed design', 'Code', 'Integration', 'Test', 'Verification & Validation (twice)', 'Implementation'] },
@@ -108,7 +108,7 @@
     const L = [['Requirements', 'Specifications'], ['Functional', 'Specifications'], ['System Design'], ['Unit Design']];
     const R = [['Acceptance', 'Test'], ['System Test'], ['Integration', 'Test'], ['Unit Test']];
     const steps = [
-      { en: '<b>Figure 1.3 V Model</b>: the V-Model integrates testing into every stage of the software development life cycle. It emphasizes early testing, starting from the requirements phase, ensuring continuous quality checks throughout the process.', ar: '<b>Figure 1.3 V Model</b>: الـ V-Model بيدخّل الـ testing في كل stage من الـ software development life cycle. بيركز على الـ testing بدري، من أول الـ requirements phase، وده بيضمن quality checks مستمرة طول الـ process.' },
+      { en: '<b>Figure 1.3 V Model</b>: the V-Model integrates testing into every stage of the software development life cycle. It emphasizes early testing, starting from the requirements phase, ensuring continuous quality checks throughout the process.', ar: 'شكل <b>Figure 1.3 V Model</b>: الـ V-Model بيدخّل الـ testing في كل stage من الـ software development life cycle. بيركز على الـ testing بدري، من أول الـ requirements phase، وده بيضمن quality checks مستمرة طول الـ process.' },
       { en: '<b>Left side</b> (arrows pointing down): development activities, from business requirements to detailed design. Development moves from the high level to the low level design.', ar: '<b>الناحية الشمال</b> (الأسهم نازلة): الـ development activities، من الـ business requirements لحد الـ detailed design. الـ development بيمشي من الـ high level للـ low level design.' },
       { en: '<b>Code</b> sits at the bottom of the V.', ar: 'الـ <b>Code</b> في قاع الـ V.' },
       { en: '<b>Right side</b> (arrows pointing up): the corresponding testing phases, from unit testing to acceptance testing. The testing cycle moves from the low level to the higher level.', ar: '<b>الناحية اليمين</b> (الأسهم طالعة): الـ testing phases المقابلة، من الـ unit testing لحد الـ acceptance testing. الـ testing cycle بيمشي من الـ low level للـ higher level.' },
@@ -152,12 +152,12 @@
     const B = ['Create the test code', 'Write or modify the function code', 'Create additional tests', 'Test the functional code', 'Refactor the code'];
     const steps = [
       { en: '<b>Test-driven development (TDD)</b>, a main XP practice, involves writing test cases before coding to ensure quality and reduce errors. <b>Figure 1.4 Agile Model</b> shows its five steps.', ar: 'الـ <b>Test-driven development (TDD)</b>، وهو practice أساسي في الـ XP، بيكتب الـ test cases قبل الـ coding عشان يضمن الـ quality ويقلل الـ errors. <b>Figure 1.4 Agile Model</b> بيوضح الـ 5 steps بتوعه.', b: -1 },
-      { en: '1. <b>Create the test code</b>: the developer writes automated test scripts before writing the actual program code. These tests define what the software should do.', ar: '<bdi dir="ltr">1.</bdi> <b>Create the test code</b>: الـ developer بيكتب automated test scripts قبل ما يكتب الـ program code الحقيقي. الـ tests دي بتحدد الـ software المفروض يعمل إيه.', b: 0 },
-      { en: '2. <b>Write or modify the functional code</b>: the developer then writes the actual code to pass the predefined test cases. The code is adjusted until it meets all test requirements.', ar: '<bdi dir="ltr">2.</bdi> <b>Write or modify the functional code</b>: بعدها الـ developer بيكتب الـ code الحقيقي عشان يعدّي الـ test cases المحددة مسبقًا، وبيتعدل لحد ما يحقق كل الـ test requirements.', b: 1 },
-      { en: '3. <b>Create additional tests</b>: the tester adds more tests with different inputs based on the complexity of the module.', ar: '<bdi dir="ltr">3.</bdi> <b>Create additional tests</b>: الـ tester بيزود tests تانية بـ inputs مختلفة على حسب تعقيد الـ module.', b: 2 },
-      { en: '4. <b>Test the functional code</b>: the functional code is tested repeatedly using the created test cases until all tests pass successfully.', ar: '<bdi dir="ltr">4.</bdi> <b>Test the functional code</b>: الـ functional code بيتختبر أكتر من مرة بالـ test cases اللي اتعملت لحد ما كل الـ tests تعدّي بنجاح.', b: 3 },
+      { en: '1. <b>Create the test code</b>: the developer writes automated test scripts before writing the actual program code. These tests define what the software should do.', ar: '<bdi dir="ltr">1.</bdi> خطوة <b>Create the test code</b>: الـ developer بيكتب automated test scripts قبل ما يكتب الـ program code الحقيقي. الـ tests دي بتحدد الـ software المفروض يعمل إيه.', b: 0 },
+      { en: '2. <b>Write or modify the functional code</b>: the developer then writes the actual code to pass the predefined test cases. The code is adjusted until it meets all test requirements.', ar: '<bdi dir="ltr">2.</bdi> خطوة <b>Write or modify the functional code</b>: بعدها الـ developer بيكتب الـ code الحقيقي عشان يعدّي الـ test cases المحددة مسبقًا، وبيتعدل لحد ما يحقق كل الـ test requirements.', b: 1 },
+      { en: '3. <b>Create additional tests</b>: the tester adds more tests with different inputs based on the complexity of the module.', ar: '<bdi dir="ltr">3.</bdi> خطوة <b>Create additional tests</b>: الـ tester بيزود tests تانية بـ inputs مختلفة على حسب تعقيد الـ module.', b: 2 },
+      { en: '4. <b>Test the functional code</b>: the functional code is tested repeatedly using the created test cases until all tests pass successfully.', ar: '<bdi dir="ltr">4.</bdi> خطوة <b>Test the functional code</b>: الـ functional code بيتختبر أكتر من مرة بالـ test cases اللي اتعملت لحد ما كل الـ tests تعدّي بنجاح.', b: 3 },
       { en: 'The <b>loop arrow</b> goes from Test the functional code back up to Write or modify the function code: the code is adjusted and tested again until all tests pass.', ar: '<b>السهم الراجع (loop)</b> بيروح من Test the functional code لفوق لـ Write or modify the function code: الـ code بيتعدل ويتختبر تاني لحد ما كل الـ tests تعدّي.', b: 5 },
-      { en: '5. <b>Refactor the code</b>: the developer improves the code to make it easier to maintain, extend, and update. This step removes duplicate or unused code and reduces complexity.', ar: '<bdi dir="ltr">5.</bdi> <b>Refactor the code</b>: الـ developer بيحسّن الـ code عشان يبقى أسهل في الـ maintenance والتوسيع والـ update. الخطوة دي بتشيل الـ code المتكرر أو اللي مش مستخدم وبتقلل التعقيد.', b: 4 }
+      { en: '5. <b>Refactor the code</b>: the developer improves the code to make it easier to maintain, extend, and update. This step removes duplicate or unused code and reduces complexity.', ar: '<bdi dir="ltr">5.</bdi> خطوة <b>Refactor the code</b>: الـ developer بيحسّن الـ code عشان يبقى أسهل في الـ maintenance والتوسيع والـ update. الخطوة دي بتشيل الـ code المتكرر أو اللي مش مستخدم وبتقلل التعقيد.', b: 4 }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const b = steps[i].b, X = 6, W = 272, H = 36, Y = k => 6 + k * 56, seenB = k => k < 4 ? i >= k + 1 : i >= 6;
@@ -178,9 +178,9 @@
   /* ── L6 slides 10 to 12: test management and organization structures ── */
   function TestOrgs({ ar }) {
     const steps = [
-      { en: '<b>1. Small Team Structure</b>: the Development Manager is at the top, with the Testers and the Programmers under him.<br><b>Pros</b>: fast communication between developers and testers.<br><b>Cons</b>: if the development manager is not experienced he/she may ignore bug reports to motivate the team to deliver.', ar: '<b>1. الـ Small Team Structure</b>: الـ Development Manager فوق خالص، وتحته الـ Testers والـ Programmers.<br><b>المميزات</b>: تواصل سريع بين الـ developers والـ testers.<br><b>العيوب</b>: لو الـ development manager مش experienced ممكن يطنّش الـ bug reports عشان يحمّس الـ team إنه يسلّم.' },
-      { en: '<b>2. Organizational Structure for an Independent Team</b>: the Project Manager is at the top, with two branches: the Test Manager/Test Lead, with the Testers under him, and the Development Manager, with the Programmers under him.<br><b>Pros</b>: the testing team\'s feedback is considered in decision-making.<br><b>Cons</b>: the final decision lies with the project manager, which may affect quality in critical projects.', ar: '<b>2. الـ Organizational Structure for an Independent Team</b>: الـ Project Manager فوق خالص، وتحته فرعين: الـ Test Manager/Test Lead وتحته الـ Testers، والـ Development Manager وتحته الـ Programmers.<br><b>المميزات</b>: الـ feedback بتاع الـ testing team بيتاخد في الاعتبار في القرارات.<br><b>العيوب</b>: القرار الأخير في إيد الـ project manager، وده ممكن يأثر على الـ quality في المشاريع الـ critical.' },
-      { en: '<b>3. Test Group Reporting to Executive Management</b>: the Executive Manager is at the top, with the QA/Test Managers, the Development Managers and the Project Managers under him.<br><b>Pros</b>: independence of the quality team; quality reports reach senior management directly.', ar: '<b>3. الـ Test Group Reporting to Executive Management</b>: الـ Executive Manager فوق خالص، وتحته الـ QA/Test Managers والـ Development Managers والـ Project Managers.<br><b>المميزات</b>: الـ quality team مستقل؛ والـ quality reports بتوصل للـ senior management على طول.' }
+      { en: '<b>1. Small Team Structure</b>: the Development Manager is at the top, with the Testers and the Programmers under him.<br><b>Pros</b>: fast communication between developers and testers.<br><b>Cons</b>: if the development manager is not experienced he/she may ignore bug reports to motivate the team to deliver.', ar: '<b><bdi dir="ltr">1.</bdi> الـ Small Team Structure</b>: الـ Development Manager فوق خالص، وتحته الـ Testers والـ Programmers.<br><b>المميزات</b>: تواصل سريع بين الـ developers والـ testers.<br><b>العيوب</b>: لو الـ development manager مش experienced ممكن يطنّش الـ bug reports عشان يحمّس الـ team إنه يسلّم.' },
+      { en: '<b>2. Organizational Structure for an Independent Team</b>: the Project Manager is at the top, with two branches: the Test Manager/Test Lead, with the Testers under him, and the Development Manager, with the Programmers under him.<br><b>Pros</b>: the testing team\'s feedback is considered in decision-making.<br><b>Cons</b>: the final decision lies with the project manager, which may affect quality in critical projects.', ar: '<b><bdi dir="ltr">2.</bdi> الـ Organizational Structure for an Independent Team</b>: الـ Project Manager فوق خالص، وتحته فرعين: الـ <bdi dir="ltr">Test Manager/Test Lead</bdi> وتحته الـ Testers، والـ Development Manager وتحته الـ Programmers.<br><b>المميزات</b>: الـ feedback بتاع الـ testing team بيتاخد في الاعتبار في القرارات.<br><b>العيوب</b>: القرار الأخير في إيد الـ project manager، وده ممكن يأثر على الـ quality في المشاريع الـ critical.' },
+      { en: '<b>3. Test Group Reporting to Executive Management</b>: the Executive Manager is at the top, with the QA/Test Managers, the Development Managers and the Project Managers under him.<br><b>Pros</b>: independence of the quality team; quality reports reach senior management directly.', ar: '<b><bdi dir="ltr">3.</bdi> الـ Test Group Reporting to Executive Management</b>: الـ Executive Manager فوق خالص، وتحته الـ <bdi dir="ltr">QA/Test Managers</bdi> والـ Development Managers والـ Project Managers.<br><b>المميزات</b>: الـ quality team مستقل؛ والـ quality reports بتوصل للـ senior management على طول.' }
     ];
     const [i, ctl0] = useSteps(steps.length, 6000);
     const [run, ctl] = useRun(ctl0);
@@ -206,7 +206,7 @@
     const steps = [
       { en: '<b>Level 1 (Initial)</b>: processes are unstructured, reactive and inconsistent, leading to unstable project management. Organizations at this level struggle to meet goals reliably.', ar: '<b>الـ Level 1 (Initial)</b>: الـ processes بتبقى unstructured و reactive ومش ثابتة، وده بيخلي الـ project management مش مستقر. الـ organizations في الـ level ده بتعاني عشان تحقق الـ goals بشكل مضمون.' },
       { en: 'Arrow <b>Basic Management Control</b> to <b>Level 2 (Repeatable)</b>: basic project management practices are implemented, allowing for repeatable success. Organizations establish project planning, requirement control and product modifications, ensuring better cost and schedule management.', ar: 'سهم <b>Basic Management Control</b> لـ <b>الـ Level 2 (Repeatable)</b>: بيتطبق basic project management practices، وده بيدي نجاح بيتكرر. الـ organizations بتعمل project planning و requirement control و product modifications، وده بيضمن إدارة أحسن للتكلفة والـ schedule.' },
-      { en: 'Arrow <b>Process Definition</b> to <b>Level 3 (Defined)</b>: standardized processes are developed and refined over time. Management ensures process consistency across the organization, and project teams tailor processes based on these standards.', ar: 'سهم <b>Process Definition</b> لـ <b>الـ Level 3 (Defined)</b>: processes standard بتتعمل وبتتحسن مع الوقت. الـ management بيضمن إن الـ processes ثابتة على مستوى الـ organization كلها، والـ project teams بتعدل الـ processes على مقاسها بناءً على الـ standards دي.' },
+      { en: 'Arrow <b>Process Definition</b> to <b>Level 3 (Defined)</b>: standardized processes are developed and refined over time. Management ensures process consistency across the organization, and project teams tailor processes based on these standards.', ar: 'سهم <b>Process Definition</b> لـ <b>الـ Level 3 (Defined)</b>: الـ processes الـ standard بتتعمل وبتتحسن مع الوقت. الـ management بيضمن إن الـ processes ثابتة على مستوى الـ organization كلها، والـ project teams بتعدل الـ processes على مقاسها بناءً على الـ standards دي.' },
       { en: 'Arrow <b>Process Measurement</b> to <b>Level 4</b>, labelled <b>Managed (Capability Management)</b> in the figure (the slide text and Table 1 call it <b>Quantitatively Managed</b>): processes are controlled through statistical and quantitative techniques, allowing organizations to predict and manage project performance accurately. This ensures stable software quality and maintenance while minimizing variations.', ar: 'سهم <b>Process Measurement</b> لـ <b>الـ Level 4</b>، ومكتوب عليه في الشكل <b>Managed (Capability Management)</b> (والـ slide والـ Table 1 بيسموه <b>Quantitatively Managed</b>): الـ processes متحكم فيها بـ statistical و quantitative techniques، وده بيخلي الـ organizations تتوقع وتدير أداء المشروع بدقة، وبيضمن software quality و maintenance مستقرين مع تقليل الـ variations.' },
       { en: 'Arrow <b>Process Control</b> to <b>Level 5 (Optimizing)</b>: focuses on continuous process improvement through incremental and innovative advancements. Organizations at this level systematically refine their processes, using quantitative goals to drive enhancements and achieve long-term business objectives.', ar: 'سهم <b>Process Control</b> لـ <b>الـ Level 5 (Optimizing)</b>: بيركز على الـ continuous process improvement عن طريق تطويرات incremental و innovative. الـ organizations في الـ level ده بتحسّن الـ processes بتاعتها بشكل systematic، وبتستخدم quantitative goals عشان تحرك التحسينات وتحقق business objectives على المدى الطويل.' }
     ];
@@ -322,7 +322,7 @@
     const steps = [
       { en: '<b>Dynamic black-box testing</b>: testing software <b>without knowing details of inside code</b> and <b>while the program is running</b> (customer view). You <b>should</b> have the software’s documents or specifications.', ar: '<b>الـ Dynamic black-box testing</b>: بنختبر الـ software <b>من غير ما نعرف تفاصيل الـ code اللي جوه</b> و<b>والبرنامج شغال</b> (من وجهة نظر العميل). <b>لازم</b> يبقى معاك الـ documents أو الـ specifications بتاعة الـ software.' },
       { en: 'You only see what goes in and what comes out: this is <b>Exploratory Testing</b>, also called <b>behavioral testing</b>.', ar: 'انت شايف بس اللي داخل واللي طالع: ده <b>Exploratory Testing</b>، واسمه كمان <b>behavioral testing</b>.' },
-      { en: 'Steps to begin DBB testing: (1) have the documents or specifications, (2) define test cases. Example: the addition function of the Windows Calculator. Tap a test case.', ar: 'خطوات البداية في الـ DBB testing: (1) يبقى معاك الـ documents أو الـ specifications، (2) تحدد الـ test cases. مثال: عملية الجمع في الـ Windows Calculator. دوس على test case.' },
+      { en: 'Steps to begin DBB testing: (1) have the documents or specifications, (2) define test cases. Example: the addition function of the Windows Calculator. Tap a test case.', ar: 'خطوات البداية في الـ DBB testing: أولاً يبقى معاك الـ documents أو الـ specifications، وتانيًا تحدد الـ test cases. مثال: عملية الجمع في الـ Windows Calculator. دوس على test case.' },
       { en: 'Start with <b>test-to-pass</b> (confirm it works normally with standard input), then <b>test-to-fail</b> (push it to its limits with extreme inputs).', ar: 'ابدأ بـ <b>test-to-pass</b> (اتأكد إنه شغال عادي بـ standard input)، وبعدين <b>test-to-fail</b> (اضغط عليه لحد أقصى حدوده بـ extreme inputs).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3400);
@@ -409,7 +409,7 @@
     else if (b.key === 'v' && v === 0) { en = '00000 is the notes’ <b>invalid special value</b>, not a boundary value'; a = 'الـ 00000 هي الـ <b>invalid special value</b> في الـ notes، مش boundary value'; }
     else if (b.key === 'n' && v === 7) { en = 'a value from inside the valid partition, not a boundary value'; a = 'قيمة من جوه الـ valid partition، مش boundary value'; }
     else { en = 'not a boundary value: every value in this partition tests the same thing, so one test from it is enough'; a = 'مش boundary value: كل القيم اللي في الـ partition دي بتختبر نفس الحاجة، فـ test واحد منها كفاية'; }
-    return { en: `<b>${v}</b> (${b.title.toLowerCase()}) is in <b>${P}</b>, an <b>${valid ? 'valid' : 'invalid'}</b> partition: ${en}.`.replace('an <b>valid', 'a <b>valid'), ar: `<b>${v}</b> (${b.titleAr}) في <b>${P}</b>، وده <b>${valid ? 'valid' : 'invalid'}</b> partition: ${a}.` };
+    return { en: `<b>${v}</b> (${b.title.toLowerCase()}) is in <b>${P}</b>, an <b>${valid ? 'valid' : 'invalid'}</b> partition: ${en}.`.replace('an <b>valid', 'a <b>valid'), ar: `القيمة <b>${v}</b> (${b.titleAr}) في <b>${P}</b>، وده <b>${valid ? 'valid' : 'invalid'}</b> partition: ${a}.` };
   }
   function EpBar({ b, sel, onPick }) {
     const v = sel && sel.b === b.key ? sel.v : null;
@@ -526,8 +526,8 @@
     const steps = [
       { en: 'Both drawings start in <b>Idle</b> (in the circles style, the double circle).', ar: 'الرسمتين بيبدأوا من <b>Idle</b> (في رسمة الدواير، الدايرة المزدوجة).' },
       { en: 'Input <b>Esc Key Pressed</b> moves to <b>Waiting for password</b>. In the boxes style the output is written under the line: <b>Display Password Box</b>.', ar: 'الـ input <b>Esc Key Pressed</b> بيودّي على <b>Waiting for password</b>. في رسمة البوكسات الـ output مكتوب تحت الخط: <b>Display Password Box</b>.' },
-      { en: '<b>Incorrect Password</b> loops back to the same state; the output is <b>Clear the field</b>.', ar: '<b>Incorrect Password</b> بيرجع لنفس الـ state؛ والـ output هو <b>Clear the field</b>.' },
-      { en: '<b>Correct Password</b> leaves the state; the output is <b>Initiate Destruct</b>.', ar: '<b>Correct Password</b> بيخرج من الـ state؛ والـ output هو <b>Initiate Destruct</b>.' },
+      { en: '<b>Incorrect Password</b> loops back to the same state; the output is <b>Clear the field</b>.', ar: 'الـ input <b>Incorrect Password</b> بيرجع لنفس الـ state؛ والـ output هو <b>Clear the field</b>.' },
+      { en: '<b>Correct Password</b> leaves the state; the output is <b>Initiate Destruct</b>.', ar: 'الـ input <b>Correct Password</b> بيخرج من الـ state؛ والـ output هو <b>Initiate Destruct</b>.' },
       { en: 'State transition diagrams can be drawn using different techniques (boxes, arrows, circles), as long as the team accepts them. Remember: create your map from the <b>user’s view</b> of the software.', ar: 'الـ State transition diagrams ممكن تترسم بطرق مختلفة (boxes و arrows و circles)، طالما الـ team موافق عليها. افتكر: اعمل الـ map بتاعتك من <b>وجهة نظر الـ user</b> للـ software.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -581,7 +581,7 @@
     const fresh = () => ({ s: 'OFF', last: null, log: [['<Off>']], seen: ['OFF'], done: [], msg: null });
     const [g, setG] = useState(fresh), [queue, setQueue] = useState([]);
     const step = (g, a) => {
-      if (a === 'new') return { ...g, s: 'OFF', last: null, log: g.log.concat([['<Off>']]), seen: g.seen, msg: { en: 'New test case: back to <b>OFF</b>.', ar: 'test case جديدة: رجعنا لـ <b>OFF</b>.' } };
+      if (a === 'new') return { ...g, s: 'OFF', last: null, log: g.log.concat([['<Off>']]), seen: g.seen, msg: { en: 'New test case: back to <b>OFF</b>.', ar: 'بدأنا test case جديدة، فرجعنا لـ <b>OFF</b>.' } };
       const k = MT.findIndex(t => t[0] === g.s && t[1] === a), log = g.log.slice(0, -1).concat([g.log[g.log.length - 1].concat(BTN[a])]);
       if (k < 0) return { ...g, last: null, log, msg: { en: `The diagram has no <b>${BTN[a]}</b> arrow out of <b>${MNAME[g.s]}</b>, so there is no transition to follow.`, ar: `الـ diagram مفيهوش سهم <b>${BTN[a]}</b> طالع من <b>${MNAME[g.s]}</b>، فمفيش transition نمشي فيها.` } };
       const to = MT[k][2];
@@ -593,7 +593,7 @@
     useEffect(() => { if (!queue.length) return; const t = setTimeout(() => { setG(x => step(x, queue[0])); setQueue(q => q.slice(1)); }, 1000); return () => clearTimeout(t); }, [queue]);
     const intro = { en: '<b>Try it:</b> the player starts in <b>OFF</b>. Press the buttons and follow the slide’s state transition diagram. Can you visit every state, then exercise all 8 transitions?', ar: '<b>جرّب:</b> الـ player بيبدأ من <b>OFF</b>. دوس على الزراير وامشي على الـ state transition diagram بتاع الـ slide. تقدر تزور كل الـ states، وبعدين تجرب الـ 8 transitions كلهم؟' };
     let m = g.msg || intro;
-    if (g.seen.length === 4 && g.done.length < 8 && g.msg) m = { en: m.en + ' All 4 states visited. The slide does it in <b>1 test case</b>: &lt;Off&gt; play => fast forward => fast forward.', ar: m.ar + ' زرت الـ 4 states كلهم. الـ slide بتعملها في <b>test case واحدة</b>: &lt;Off&gt; play => fast forward => fast forward.' };
+    if (g.seen.length === 4 && g.done.length < 8 && g.msg) m = { en: m.en + ' All 4 states visited. The slide does it in <b>1 test case</b>: &lt;Off&gt; play => fast forward => fast forward.', ar: m.ar + ' زرت الـ 4 states كلهم. الـ slide بتعملها في <b>test case واحدة</b>:<span class="ltr">&lt;Off&gt; play => fast forward => fast forward</span>' };
     if (g.done.length === 8 && g.msg) m = { en: m.en + ' All 8 transitions exercised. The slide does it with <b>2 test cases</b>.', ar: m.ar + ' جربت الـ 8 transitions كلهم. الـ slide بتعملها بـ <b>2 test cases</b>.' };
     const tc = g.log.filter(l => l.length > 1).length || 1;
     return html`<figure className="fig fq2"><div className="fig-stage">
@@ -705,7 +705,7 @@
       { en: '<b>Static white box testing</b>: examining the design and code.', ar: 'الـ <b>Static white box testing</b>: فحص الـ design والـ code.' },
       { en: 'It has 3 parts: <b>Formal Review</b>, <b>Coding Standards and Guidelines</b> and <b>Code Review Checklist</b>.', ar: 'ليه 3 أجزاء: <b>Formal Review</b> و<b>Coding Standards and Guidelines</b> و<b>Code Review Checklist</b>.' },
       { en: 'Formal review has 3 types: <b>Peer Review</b>, <b>Walkthrough</b> and <b>Inspection</b>.', ar: 'الـ Formal review ليه 3 أنواع: <b>Peer Review</b> و<b>Walkthrough</b> و<b>Inspection</b>.' },
-      { en: 'For a successful formal review, <b>4 essential elements</b> are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report.', ar: 'عشان الـ formal review ينجح، لازم <b>4 حاجات أساسية</b> (essential elements): 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report' }
+      { en: 'For a successful formal review, <b>4 essential elements</b> are required: 1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report.', ar: 'عشان الـ formal review ينجح، لازم <b>4 حاجات أساسية</b> (essential elements):<span class="ltr">1- Identify Problems 2- Follow Rules 3- Prepare 4- Write a Report</span>' }
     ];
     const [i, ctl] = useSteps(steps.length, 2200);
     return html`<figure className="fig"><div className="fig-stage">
@@ -780,7 +780,7 @@
     if (!r) { en = '<b>Try it:</b> pick a test case from the slide’s table to see which part of the condition is true or false and which lines run.'; a = '<b>جرّب:</b> اختار test case من جدول الـ slide عشان تشوف أنهي جزء من الـ condition بقى true أو false وأنهي سطور اتنفذت.'; }
     else {
       en = `Date$ = "${r[0]}" makes the Date part <b>${tf(dT)}</b>; Time$ = "${r[1]}" makes the Time part <b>${tf(tT)}</b>. With AND the IF is <b>${tf(both)}</b>, so lines <b>${r[2].join(', ')}</b> run${both ? '' : ' (3 and 4 are skipped)'}.`;
-      a = `الـ <bdi>Date$ = "${r[0]}"</bdi> بيخلي جزء الـ Date <b>${tf(dT)}</b>؛ والـ <bdi>Time$ = "${r[1]}"</bdi> بيخلي جزء الـ Time <b>${tf(tT)}</b>. مع الـ AND الـ IF بيبقى <b>${tf(both)}</b>، فالسطور <b><bdi>${r[2].join(', ')}</bdi></b> بتتنفذ${both ? '' : ' (السطرين 3 و 4 بيتخطوا)'}.`;
+      a = `الـ <bdi dir="ltr">Date$ = "${r[0]}"</bdi> بيخلي جزء الـ Date <b>${tf(dT)}</b>؛ والـ <bdi dir="ltr">Time$ = "${r[1]}"</bdi> بيخلي جزء الـ Time <b>${tf(tT)}</b>. مع الـ AND الـ IF بيبقى <b>${tf(both)}</b>، فالسطور <b><bdi dir="ltr">${r[2].join(', ')}</bdi></b> بتتنفذ${both ? '' : ' (السطرين 3 و 4 بيتخطوا)'}.`;
       if (seen.length === 4) { en += ' You have tried all 4 rows: each part has been true and false, which is <b>full condition coverage</b>.'; a += ' جربت الـ 4 rows: كل جزء بقى true ومرة false، وده <b>full condition coverage</b>.'; }
     }
     return html`<figure className="fig"><div className="fig-stage">
@@ -808,8 +808,8 @@
   /* ── L4 slide 2: the V model, verification and validation ── */
   function VModel({ ar }) {
     const steps = [
-      { en: 'Figure 1.3, V Model. The left side goes down: Requirements Specifications → Functional Specifications → System Design → Unit Design → Code. This side is <b>Verification</b>.', ar: 'الـ Figure 1.3، الـ V Model. الجنب الشمال نازل: <bdi>Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</bdi>. الجنب ده هو الـ <b>Verification</b>.' },
-      { en: 'From Code the right side goes up: Unit Test → Integration Test → System Test → Acceptance Test. This side is <b>Validation</b>.', ar: 'من الـ Code الجنب اليمين طالع: <bdi>Unit Test → Integration Test → System Test → Acceptance Test</bdi>. الجنب ده هو الـ <b>Validation</b>.' },
+      { en: 'Figure 1.3, V Model. The left side goes down: Requirements Specifications → Functional Specifications → System Design → Unit Design → Code. This side is <b>Verification</b>.', ar: 'الـ Figure 1.3، الـ V Model. الجنب الشمال نازل:<span class="ltr">Requirements Specifications → Functional Specifications → System Design → Unit Design → Code</span>الجنب ده هو الـ <b>Verification</b>.' },
+      { en: 'From Code the right side goes up: Unit Test → Integration Test → System Test → Acceptance Test. This side is <b>Validation</b>.', ar: 'من الـ Code الجنب اليمين طالع:<span class="ltr">Unit Test → Integration Test → System Test → Acceptance Test</span>الجنب ده هو الـ <b>Validation</b>.' },
       { en: 'Dotted arrows link the two sides: <b>Acceptance Test Plan</b>, <b>System Test Plan</b>, <b>Integration Test Plan</b>, and <b>Test Cases</b> between Unit Design and Unit Test.', ar: 'أسهم منقطة بتربط الجنبين: <b>Acceptance Test Plan</b> و<b>System Test Plan</b> و<b>Integration Test Plan</b>، و<b>Test Cases</b> بين الـ Unit Design والـ Unit Test.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
@@ -842,12 +842,12 @@
   const FOO_P = [[[1, 2, 3, 4, 6], 'a=2, b=0, x= 0 &lt;any suitable value&gt;'], [[1, 3, 4, 6], 'a=2, b=1, x= 0 &lt;any suitable value&gt;'], [[1, 3, 5, 6], 'a=0, b=0, x= 0']];
   function FooCfg({ ar }) {
     const steps = [
-      { en: 'Consider foo(). Each numbered statement is a node of the <b>control flow graph</b>: 6 nodes.', ar: 'خد الـ foo(). كل statement عليه رقم بيبقى node في الـ <b>control flow graph</b>: 6 nodes.' },
-      { en: '<b>True Branch</b> (thick arrows): 1 → 2 when (a>1 && b==0) is true, and 3 → 4 when (a==2 || x>1) is true.', ar: 'الـ <b>True Branch</b> (الأسهم التقيلة): <bdi>1 → 2</bdi> لما <bdi>(a>1 && b==0)</bdi> تبقى true، و <bdi>3 → 4</bdi> لما <bdi>(a==2 || x>1)</bdi> تبقى true.' },
-      { en: '<b>False Branch</b> (dotted arrows): 1 → 3 skips line 2, and 3 → 5 goes to the else.', ar: 'الـ <b>False Branch</b> (الأسهم المنقطة): <bdi>1 → 3</bdi> بيتخطى سطر 2، و <bdi>3 → 5</bdi> بيروح للـ else.' },
-      { en: '<b>Sequential Branch</b> (thin arrows): 2 → 3, 4 → 6 and 5 → 6. That makes <b>7 edges</b>.', ar: 'الـ <b>Sequential Branch</b> (الأسهم الرفيعة): <bdi>2 → 3</bdi> و <bdi>4 → 6</bdi> و <bdi>5 → 6</bdi>. كده بقوا <b><bdi>7 edges</bdi></b>.' },
-      { en: 'Cyclomatic Complexity: <b>E(G) − N(G) + 2 = 7 − 6 + 2 = 3</b>. So there are 3 basis paths.', ar: 'الـ Cyclomatic Complexity: <b><bdi>E(G) − N(G) + 2 = 7 − 6 + 2 = 3</bdi></b>. يبقى فيه 3 basis paths.' },
-      ...FOO_P.map(([p, t], k) => ({ en: `Basis path ${k + 1}: <b>${p.join(',')}</b>. Test case: ${t}.`, ar: `الـ Basis path رقم ${k + 1}: <b><bdi>${p.join(',')}</bdi></b>. والـ test case بتاعه: <bdi>${t}</bdi>.` }))
+      { en: 'Consider foo(). Each numbered statement is a node of the <b>control flow graph</b>: 6 nodes.', ar: 'خد الـ <bdi dir="ltr">foo()</bdi>. كل statement عليه رقم بيبقى node في الـ <b>control flow graph</b>، يعني 6 nodes.' },
+      { en: '<b>True Branch</b> (thick arrows): 1 → 2 when (a>1 && b==0) is true, and 3 → 4 when (a==2 || x>1) is true.', ar: 'الـ <b>True Branch</b> (الأسهم التقيلة): <bdi dir="ltr">1&nbsp;→&nbsp;2</bdi> لما <bdi dir="ltr">(a>1&nbsp;&amp;&amp;&nbsp;b==0)</bdi> تبقى true، و <bdi dir="ltr">3&nbsp;→&nbsp;4</bdi> لما <bdi dir="ltr">(a==2&nbsp;||&nbsp;x>1)</bdi> تبقى true.' },
+      { en: '<b>False Branch</b> (dotted arrows): 1 → 3 skips line 2, and 3 → 5 goes to the else.', ar: 'الـ <b>False Branch</b> (الأسهم المنقطة): <bdi dir="ltr">1&nbsp;→&nbsp;3</bdi> بيتخطى سطر 2، و <bdi dir="ltr">3&nbsp;→&nbsp;5</bdi> بيروح للـ else.' },
+      { en: '<b>Sequential Branch</b> (thin arrows): 2 → 3, 4 → 6 and 5 → 6. That makes <b>7 edges</b>.', ar: 'الـ <b>Sequential Branch</b> (الأسهم الرفيعة): <bdi dir="ltr">2&nbsp;→&nbsp;3</bdi> و <bdi dir="ltr">4&nbsp;→&nbsp;6</bdi> و <bdi dir="ltr">5&nbsp;→&nbsp;6</bdi>. كده بقوا <b><bdi dir="ltr">7&nbsp;edges</bdi></b>.' },
+      { en: 'Cyclomatic Complexity: <b>E(G) − N(G) + 2 = 7 − 6 + 2 = 3</b>. So there are 3 basis paths.', ar: 'الـ Cyclomatic Complexity:<span class="ltr"><b>E(G) − N(G) + 2 = 7 − 6 + 2 = 3</b></span>يبقى فيه 3 basis paths.' },
+      ...FOO_P.map(([p, t], k) => ({ en: `Basis path ${k + 1}: <b>${p.join(',')}</b>. Test case: ${t}.`, ar: `الـ Basis path رقم ${k + 1}: <b><bdi dir="ltr">${p.join(',')}</bdi></b>. والـ test case بتاعه:<span class="ltr">${t}</span>` }))
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const fit = useFit(i);
@@ -920,7 +920,7 @@
       const lines = TRI.filter(([n]) => res.run[n]).map(([n]) => n);
       const sideEn = ['isosceles', 'equilateral', 'not a triangle', 'bad inputs'].filter((_, j) => res.path[j]);
       en = `(${key}): lines <b>${lines.join(', ')}</b> run and it prints <b>${res.type}</b>. On the control flow graph the run goes down a → c → e → g → i${sideEn.length ? ', passing through ' + sideEn.join(', ') : ' without any side node'}.`;
-      a = `مع <bdi>(${key})</bdi>: السطور <b><bdi>${lines.join(', ')}</bdi></b> بتتنفذ وبيطبع <b>${res.type}</b>. على الـ control flow graph التنفيذ بينزل <bdi>a → c → e → g → i</bdi>${sideEn.length ? '، وبيعدي على ' + sideEn.join('، ') : ' من غير ما يعدي على أي side node'}.`;
+      a = `مع <bdi dir="ltr">(${key})</bdi>: السطور <b><bdi dir="ltr">${lines.join(', ')}</bdi></b> بتتنفذ وبيطبع <b>${res.type}</b>. على الـ control flow graph التنفيذ بينزل:<span class="ltr">a → c → e → g → i</span>${sideEn.length ? 'وبيعدي على ' + sideEn.map(x => 'الـ ' + x).join(' و') : 'من غير ما يعدي على أي side node'}.`;
       if (lines.length === 11) { en += ' This one input runs <b>every line A to K</b>.'; a += ' الـ input ده لوحده بينفذ <b>كل السطور من A لـ K</b>.'; }
       if (col) { en += ' (A column of the slide’s table.)'; a += ' (ده column من جدول الـ slide.)'; }
     }
@@ -942,7 +942,7 @@
   /* ── L4 slide 9: the control flow graph for the triangle program ── */
   function TriangleCfg({ ar }) {
     const steps = [
-      { en: 'Control flow graph for triangle program: a chain of nodes <b>a → c → e → g → i</b>.', ar: 'الـ Control flow graph بتاع الـ triangle program: سلسلة nodes <b><bdi>a → c → e → g → i</bdi></b>.' },
+      { en: 'Control flow graph for triangle program: a chain of nodes <b>a → c → e → g → i</b>.', ar: 'الـ Control flow graph بتاع الـ triangle program: سلسلة nodes:<span class="ltr"><b>a → c → e → g → i</b></span>' },
       { en: '<b>a</b> also branches to <b>isosceles</b>, which leads back into c.', ar: 'الـ <b>a</b> كمان بيتفرع لـ <b>isosceles</b>، وده بيرجع يدخل في c.' },
       { en: '<b>c</b> branches to <b>equilateral</b>, which leads back into e.', ar: 'الـ <b>c</b> بيتفرع لـ <b>equilateral</b>، وده بيرجع يدخل في e.' },
       { en: '<b>e</b> branches to <b>not a triangle</b>, which leads back into g.', ar: 'الـ <b>e</b> بيتفرع لـ <b>not a triangle</b>، وده بيرجع يدخل في g.' },
@@ -985,8 +985,8 @@
       const [m, f, t] = OPS[last.op];
       if (m === 'new') { en = '<b>New</b>: the start dot goes to <b>Empty</b>.'; a = 'الـ <b>New</b>: النقطة السودا بتروح لـ <b>Empty</b>.'; }
       else if (t === null) { en = `<b>${m === 'pop' ? 'Pop' : 'Push'}</b> on <b>${f}</b> is an <b>error</b>: on the figure this arrow points to no state. Press New to start again.`; a = `الـ <b>${m}</b> على <b>${f}</b> ده <b>error</b>: في الرسمة السهم ده مش رايح لأي state. دوس New عشان تبدأ تاني.`; }
-      else { en = `<b>${m === 'push' ? 'Push' : 'Pop'}</b>: ${f} → <b>${t}</b>.`; a = `الـ <b>${m}</b>: <bdi>${f} → ${t}</bdi>.`; }
-      if (last.fp) { en += ` The last two calls are function pair <b>${last.fp}</b>: ${FP_LIST[last.fp - 1]}.`; a += ` آخر اتنين calls هما الـ function pair رقم <b>${last.fp}</b>: <bdi>${FP_LIST[last.fp - 1]}</bdi>.`; }
+      else { en = `<b>${m === 'push' ? 'Push' : 'Pop'}</b>: ${f} → <b>${t}</b>.`; a = `الـ <b>${m}</b>: <bdi dir="ltr">${f} → ${t}</bdi>.`; }
+      if (last.fp) { en += ` The last two calls are function pair <b>${last.fp}</b>: ${FP_LIST[last.fp - 1]}.`; a += ` آخر اتنين calls هما الـ function pair رقم <b>${last.fp}</b>:<span class="ltr">${FP_LIST[last.fp - 1]}</span>`; }
       else if (last.fp === 0) { en += ' These last two calls are not one of the 14 pairs listed on the slide.'; a += ' آخر اتنين calls دول مش من الـ 14 pair اللي في الـ slide.'; }
       if (mm.length === 3 && m !== 'new') { en += ' New, push and pop have all been called: that sequence achieves <b>MM</b> testing.'; a += ' اتعمل call لـ new و push و pop: الـ sequence دي بتحقق الـ <b>MM</b> testing.'; }
     }
@@ -1090,12 +1090,12 @@
   /* ── L5 slide 13: Figure 8.5, a web site with texts, hyperlinks and graphics ── */
   function WebParts({ ar }) {
     const steps = [
-      { k: '', en: '<b>Figure 8.5: Website with Texts, Hyperlinks, and Graphics.</b> A screen image of the Infosys Web site: we can see all the fundamental elements such as texts, graphics, and hyperlinks.', ar: '<b>Figure 8.5</b>: صورة شاشة من موقع Infosys، وفيها كل الـ fundamental elements زي الـ texts والـ graphics والـ hyperlinks.' },
+      { k: '', en: '<b>Figure 8.5: Website with Texts, Hyperlinks, and Graphics.</b> A screen image of the Infosys Web site: we can see all the fundamental elements such as texts, graphics, and hyperlinks.', ar: 'شكل <b>Figure 8.5</b>: صورة شاشة من موقع Infosys، وفيها كل الـ fundamental elements زي الـ texts والـ graphics والـ hyperlinks.' },
       { k: 'T', en: '<b>Text</b>: consider the targeted audience level, the terminology used, the depth of content, the subject matter, the accuracy of the information, and the routine aspects of spellings, punctuations and correct contact information (phone numbers, addresses).', ar: '<b>الـ Text</b>: بص على مستوى الـ audience المستهدف، والـ terminology المستخدمة، وعمق الـ content، والـ subject matter، ودقة المعلومات، وكمان الحاجات الروتينية زي الـ spelling والـ punctuation وصحة بيانات التواصل (أرقام التليفونات والعناوين).' },
       { k: 'H', en: '<b>Hyperlinks</b>: test each link takes the user to the correct destination and opens in the same tab or in a new window (no specification: test that it works). Links must be obvious: underlined text, mouse pointer changes. An e-mail link: send an e-mail and verify you get a response.', ar: '<b>الـ Hyperlinks</b>: اختبر إن كل link بيودي الـ user للمكان الصح وبيفتح في نفس الـ tab أو في window جديدة (لو مفيش specification، اختبر إنه شغال). الـ links لازم تبقى واضحة: text عليه خط، والـ mouse pointer بيتغير. لو الـ link بيفتح e-mail: ابعت e-mail واتأكد إن جالك رد.' },
       { k: 'G', en: '<b>Graphics</b>: check that all the graphics are loaded and display properly.', ar: '<b>الـ Graphics</b>: اتأكد إن كل الـ graphics اتحملت وبتظهر صح.' },
       { k: 'G', err: true, en: 'If a graphic is <b>missing or incorrectly named</b>, it will not load and the Web page will display an <b>error</b> where the graphic was meant to be.', ar: 'لو فيه graphic <b>ناقصة أو اسمها غلط</b>، مش هتتحمل والصفحة هتعرض <b>error</b> مكان الـ graphic.' },
-      { k: 'F', en: 'The <b>Search</b> box is a text box, one of the <b>form</b> fields (8.2.4 Forms, Figure 8.6).', ar: 'الـ <b>Search</b> box ده text box، يعني field من الـ <b>forms</b> (8.2.4 Forms، Figure 8.6).' }
+      { k: 'F', en: 'The <b>Search</b> box is a text box, one of the <b>form</b> fields (8.2.4 Forms, Figure 8.6).', ar: 'الـ <b>Search</b> box ده text box، يعني field من الـ <b>forms</b> (<bdi dir="ltr">8.2.4 Forms, Figure 8.6</bdi>).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3200);
     const st = steps[i];
@@ -1126,7 +1126,7 @@
   function GmailForm({ ar }) {
     const Q = ['Are the form fields positioned properly?', 'Are the fields the correct size?', 'Do they accept correct data?', 'Do they reject bad data?'];
     const steps = [
-      { en: '<b>Forms</b> are text boxes, list boxes, and other fields that allow a user to enter or select information on a Web page. Figure 8.6: Google’s form, "Get started with Gmail".', ar: 'الـ <b>Forms</b> هي text boxes و list boxes و fields تانية بتخلي الـ user يدخل أو يختار معلومات في صفحة الويب. Figure 8.6: الـ form بتاع Google، "Get started with Gmail".' },
+      { en: '<b>Forms</b> are text boxes, list boxes, and other fields that allow a user to enter or select information on a Web page. Figure 8.6: Google’s form, "Get started with Gmail".', ar: 'الـ <b>Forms</b> هي text boxes و list boxes و fields تانية بتخلي الـ user يدخل أو يختار معلومات في صفحة الويب. Figure 8.6: الـ form بتاع Google اللي اسمه "Get started with Gmail".' },
       { en: '1) <b>Are the form fields positioned properly?</b> Each label should sit next to its own field.', ar: '1) <b>هل الـ form fields في مكانها الصح؟</b> كل label المفروض يبقى جنب الـ field بتاعه.' },
       { en: '2) <b>Are the fields the correct size?</b>', ar: '2) <b>هل الـ fields مقاسها صح؟</b>' },
       { en: '3) <b>Do they accept correct data?</b> A login name like the form’s own example (JSmith) and a password of at least 8 characters should be accepted.', ar: '3) <b>هل بتقبل الـ data الصح؟</b> login name زي المثال اللي في الـ form نفسه (JSmith) و password فيه 8 حروف على الأقل المفروض يتقبلوا.' },
@@ -1177,7 +1177,7 @@
     const [pct, ppm] = SIG[k - 1];
     const pick = n => { setAuto(false); setK(n); };
     const en = `Between <b>\u00b1${k}\u03c3</b>: <b>${pct}</b> of the results lie inside; <b>${ppm} ppm</b> are out of spec. The wider the band in sigmas, the fewer parts per million fall outside it.`;
-    const a = `بين <b>\u00b1${k}\u03c3</b>: <b>${pct}</b> من النتايج جوه؛ و<b>${ppm} ppm</b> برّه الـ spec. كل ما الـ band يوسع بعدد sigmas أكتر، كل ما الـ parts per million اللي برّه تقل.`;
+    const a = `بين <b><bdi dir="ltr">\u00b1${k}\u03c3</bdi></b> فيه <b><bdi dir="ltr">${pct}</bdi></b> من النتايج جوه؛ و<b><bdi dir="ltr">${ppm}&nbsp;ppm</bdi></b> برّه الـ spec. كل ما الـ band يوسع بعدد sigmas أكتر، كل ما الـ parts per million اللي برّه تقل.`;
     return html`<figure className="fig"><div className="fig-stage">
       <svg viewBox="0 0 360 272" role="img" aria-label=${'Normal distribution, Gaussian curve, shaded between plus and minus ' + k + ' sigma'}>
         <text x="180" y="20" textAnchor="middle" fontSize="16" fontWeight="700">Normal Distribution - Gaussian Curve</text>
@@ -1227,8 +1227,8 @@
   function Dmadv({ ar }) {
     const names = ['Define', 'Measure', 'Analyze', 'Design', 'Verify'];
     const steps = [
-      { en: 'The <b>DMADV Methodology</b> figure: five arrows in a cycle around DMADV.', ar: 'شكل الـ <b>DMADV Methodology</b>: 5 أسهم في دايرة حوالين DMADV.' },
-      ...names.map((n, j) => ({ en: (j + 1) + ') <b>' + n + '</b>' + (j ? ', after ' + names[j - 1] + '.' : '.'), ar: (j + 1) + ') <b>' + n + '</b>' + (j ? '، بعد ' + names[j - 1] + '.' : '.') })),
+      { en: 'The <b>DMADV Methodology</b> figure: five arrows in a cycle around DMADV.', ar: 'شكل الـ <b>DMADV Methodology</b> فيه 5 أسهم في دايرة حوالين DMADV.' },
+      ...names.map((n, j) => ({ en: (j + 1) + ') <b>' + n + '</b>' + (j ? ', after ' + names[j - 1] + '.' : '.'), ar: (j + 1) + ') الـ <b>' + n + '</b>' + (j ? '، بعد الـ ' + names[j - 1] + '.' : '.') })),
       { en: 'Verify leads back to Define: the arrows form a closed cycle. (The figure names the phases only.)', ar: 'الـ Verify بيرجع للـ Define: الأسهم بتعمل دايرة مقفولة. (الشكل بيكتب أسماء الـ phases بس.)' }
     ];
     return html`<${Cycle} ar=${ar} id="fq4-dmadv" center="DMADV" names=${names} steps=${steps} ms=${1700} />`;
@@ -1238,12 +1238,12 @@
   function Dmaic({ ar }) {
     const names = ['Define', 'Measure', 'Analyze', 'Improve', 'Control'];
     const steps = [
-      { en: 'The 6 Sigma methodology is <b>DMAIC</b>: Define, Measure, Analyze, Improve, Control.', ar: 'الـ methodology بتاعة 6 Sigma هي <b>DMAIC</b>: Define و Measure و Analyze و Improve و Control.' },
-      { en: '<b>Define</b>: identify what needs to be improved through the precise identification of the problems that obstacle this improvement. The problem statement includes the level of the problem, its location and its financial impact. Form a team to solve the problem.', ar: '<b>Define</b>: حدد إيه اللي محتاج يتحسن عن طريق تحديد دقيق للمشاكل اللي معطلة التحسين ده. الـ problem statement بيشمل مستوى المشكلة ومكانها والـ financial impact بتاعها. وكوّن team يحل المشكلة.' },
-      { en: '<b>Measure</b>: plan and implement performance measurement against the requirements and expectations of customers, with criteria for measuring defects using statistical control tools.', ar: '<b>Measure</b>: خطط ونفذ قياس للـ performance قصاد requirements وتوقعات العملاء، بـ criteria لقياس الـ defects باستخدام أدوات الـ statistical control.' },
-      { en: '<b>Analyze</b>: analyze the collected data to determine the root causes of all problems: analyze the chain of failure causes, rank them by impact, categorize them, then control and manage them.', ar: '<b>Analyze</b>: حلل الـ data اللي اتجمعت عشان تحدد الـ root causes لكل المشاكل: حلل سلسلة أسباب الـ failure، ورتبها حسب تأثيرها، وصنفها، وبعدين اتحكم فيها وأدرها.' },
-      { en: '<b>Improve</b>: change the processes to eliminate product defects, excessive costs and waste. Study the causes of failure, find solutions, test them on a sample of products, determine the results and make the necessary corrections.', ar: '<b>Improve</b>: غيّر في الـ processes عشان تشيل الـ defects والتكاليف الزيادة والـ waste. ادرس أسباب الـ failure، لاقي حلول، جربها على sample من المنتجات، شوف النتايج واعمل التصحيحات اللازمة.' },
-      { en: '<b>Control</b>: keep monitoring all of these processes and do not stop: continuously measure performance standards, conduct measurement processes, and correct any deviations at the specified time.', ar: '<b>Control</b>: فضل راقب كل الـ processes دي ومتوقفش: قيس الـ performance standards باستمرار، واعمل عمليات القياس، وصحح أي deviations في وقتها.' },
+      { en: 'The 6 Sigma methodology is <b>DMAIC</b>: Define, Measure, Analyze, Improve, Control.', ar: 'الـ methodology بتاعة 6 Sigma هي <b>DMAIC</b>: يعني الـ Define والـ Measure والـ Analyze والـ Improve والـ Control.' },
+      { en: '<b>Define</b>: identify what needs to be improved through the precise identification of the problems that obstacle this improvement. The problem statement includes the level of the problem, its location and its financial impact. Form a team to solve the problem.', ar: 'الـ <b>Define</b>: حدد إيه اللي محتاج يتحسن عن طريق تحديد دقيق للمشاكل اللي معطلة التحسين ده. الـ problem statement بيشمل مستوى المشكلة ومكانها والـ financial impact بتاعها. وكوّن team يحل المشكلة.' },
+      { en: '<b>Measure</b>: plan and implement performance measurement against the requirements and expectations of customers, with criteria for measuring defects using statistical control tools.', ar: 'الـ <b>Measure</b>: خطط ونفذ قياس للـ performance قصاد requirements وتوقعات العملاء، بـ criteria لقياس الـ defects باستخدام أدوات الـ statistical control.' },
+      { en: '<b>Analyze</b>: analyze the collected data to determine the root causes of all problems: analyze the chain of failure causes, rank them by impact, categorize them, then control and manage them.', ar: 'الـ <b>Analyze</b>: حلل الـ data اللي اتجمعت عشان تحدد الـ root causes لكل المشاكل: حلل سلسلة أسباب الـ failure، ورتبها حسب تأثيرها، وصنفها، وبعدين اتحكم فيها وأدرها.' },
+      { en: '<b>Improve</b>: change the processes to eliminate product defects, excessive costs and waste. Study the causes of failure, find solutions, test them on a sample of products, determine the results and make the necessary corrections.', ar: 'الـ <b>Improve</b>: غيّر في الـ processes عشان تشيل الـ defects والتكاليف الزيادة والـ waste. ادرس أسباب الـ failure، لاقي حلول، جربها على sample من المنتجات، شوف النتايج واعمل التصحيحات اللازمة.' },
+      { en: '<b>Control</b>: keep monitoring all of these processes and do not stop: continuously measure performance standards, conduct measurement processes, and correct any deviations at the specified time.', ar: 'الـ <b>Control</b>: فضل راقب كل الـ processes دي ومتوقفش: قيس الـ performance standards باستمرار، واعمل عمليات القياس، وصحح أي deviations في وقتها.' },
       { en: 'Control does not stop, as there are <b>always areas in need of improvement</b>.', ar: 'الـ Control مبيقفش، لأن <b>دايماً فيه حاجات محتاجة تتحسن</b>.' }
     ];
     return html`<${Cycle} ar=${ar} id="fq4-dmaic" center="DMAIC" names=${names} steps=${steps} ms=${3600} />`;
@@ -1255,9 +1255,9 @@
   function SigmaCase({ ar }) {
     const rows = CASE.concat([TOT]);
     const steps = [
-      { en: '<b>Six Sigma for failure cases in the preparatory certificate</b>: for each subject, the mean and the standard deviation. The Six sigma column is <b>6 × standard deviation</b>.', ar: '<b>Six Sigma لحالات الرسوب في الشهادة الإعدادية</b>: لكل مادة، المتوسط الحسابي والانحراف المعياري. عمود الـ Six sigma هو <b>6 × الانحراف المعياري</b>.' },
-      ...rows.map(r => ({ en: (r === TOT ? '<b>Overall indicator</b> (المؤشر الكلي)' : '<b>' + r[0] + '</b>') + ': 6 × ' + r[2] + ' = <b>' + r[3] + '</b>' + (r === TOT ? ' (overall mean ' + r[1] + ').' : '.'), ar: (r === TOT ? '<b>المؤشر الكلي</b>' : '<b>' + r[0] + '</b>') + ': 6 × ' + r[2] + ' = <b>' + r[3] + '</b>' + (r === TOT ? ' (المتوسط الكلي ' + r[1] + ').' : '.') })),
-      { en: 'Applying DMAIC: <b>Define</b> these causes; <b>Measure</b> the impact of their magnitude; <b>Analyze</b> the sources and elements; <b>Improve</b>: derive solutions, reducing failure cases and increasing the level of success; <b>Control</b>: continuously monitor the improvement processes.', ar: 'تطبيق الـ DMAIC: <b>Define</b> الأسباب دي؛ <b>Measure</b> حجم تأثيرها؛ <b>Analyze</b> المصادر والعناصر؛ <b>Improve</b>: طلّع حلول تقلل حالات الرسوب وتزود مستوى النجاح؛ <b>Control</b>: راقب عمليات التحسين باستمرار.' }
+      { en: '<b>Six Sigma for failure cases in the preparatory certificate</b>: for each subject, the mean and the standard deviation. The Six sigma column is <b>6 × standard deviation</b>.', ar: '<b>الـ Six Sigma لحالات الرسوب في الشهادة الإعدادية</b>: لكل مادة، المتوسط الحسابي والانحراف المعياري. عمود الـ Six sigma هو <b>6 × الانحراف المعياري</b>.' },
+      ...rows.map(r => ({ en: (r === TOT ? '<b>Overall indicator</b> (المؤشر الكلي)' : '<b>' + r[0] + '</b>') + ': 6 × ' + r[2] + ' = <b>' + r[3] + '</b>' + (r === TOT ? ' (overall mean ' + r[1] + ').' : '.'), ar: (r === TOT ? '<b>المؤشر الكلي</b>' : 'الـ <b>' + r[0] + '</b>') + ':<span class="ltr">6 × ' + r[2] + ' = <b>' + r[3] + '</b></span>' + (r === TOT ? '(المتوسط الكلي ' + r[1] + ').' : '') })),
+      { en: 'Applying DMAIC: <b>Define</b> these causes; <b>Measure</b> the impact of their magnitude; <b>Analyze</b> the sources and elements; <b>Improve</b>: derive solutions, reducing failure cases and increasing the level of success; <b>Control</b>: continuously monitor the improvement processes.', ar: 'تطبيق الـ DMAIC: الـ <b>Define</b> للأسباب دي؛ والـ <b>Measure</b> لحجم تأثيرها؛ والـ <b>Analyze</b> للمصادر والعناصر؛ والـ <b>Improve</b>: طلّع حلول تقلل حالات الرسوب وتزود مستوى النجاح؛ والـ <b>Control</b>: راقب عمليات التحسين باستمرار.' }
     ];
     const [i, ctl] = useSteps(steps.length, 1500);
     const cr = i >= 1 && i <= rows.length ? rows[i - 1] : null;
@@ -1275,11 +1275,11 @@
     const B = [['White Belt', '#6b4ea2', '#fff'], ['Yellow Belt', '#2b9fd8', '#fff'], ['Green Belt', '#2f9a72', '#fff'], ['Black Belt', '#f2a81d', '#111'], ['Master Black Belt', '#e2412f', '#fff']];
     const steps = [
       { en: '<b>Levels of Six Sigma Certification</b>: a staircase of five steps.', ar: '<b>مستويات الـ Six Sigma Certification</b>: سلم فيه 5 درجات.' },
-      { en: '<b>Step 1: White Belt</b>, the bottom step.', ar: '<b>Step 1: White Belt</b>، أول درجة تحت.' },
-      { en: '<b>Step 2: Yellow Belt</b>, applied to all employees.', ar: '<b>Step 2: Yellow Belt</b>، بيتطبق على كل الموظفين.' },
-      { en: '<b>Step 3: Green Belt</b>, applied to executive employees.', ar: '<b>Step 3: Green Belt</b>، بيتطبق على الـ executive employees.' },
-      { en: '<b>Step 4: Black Belt</b>, applied to middle management and senior management.', ar: '<b>Step 4: Black Belt</b>، بيتطبق على الـ middle management والـ senior management.' },
-      { en: '<b>Step 5: Master Black Belt</b>, the top step, applied to senior management.', ar: '<b>Step 5: Master Black Belt</b>، آخر درجة فوق، بيتطبق على الـ senior management.' }
+      { en: '<b>Step 1: White Belt</b>, the bottom step.', ar: 'الـ <b><bdi dir="ltr">Step 1: White Belt</bdi></b>، أول درجة تحت.' },
+      { en: '<b>Step 2: Yellow Belt</b>, applied to all employees.', ar: 'الـ <b><bdi dir="ltr">Step 2: Yellow Belt</bdi></b>، بيتطبق على كل الموظفين.' },
+      { en: '<b>Step 3: Green Belt</b>, applied to executive employees.', ar: 'الـ <b><bdi dir="ltr">Step 3: Green Belt</bdi></b>، بيتطبق على الـ executive employees.' },
+      { en: '<b>Step 4: Black Belt</b>, applied to middle management and senior management.', ar: 'الـ <b><bdi dir="ltr">Step 4: Black Belt</bdi></b>، بيتطبق على الـ middle management والـ senior management.' },
+      { en: '<b>Step 5: Master Black Belt</b>, the top step, applied to senior management.', ar: 'الـ <b><bdi dir="ltr">Step 5: Master Black Belt</bdi></b>، آخر درجة فوق، بيتطبق على الـ senior management.' }
     ];
     const [i, ctl] = useSteps(steps.length, 1900);
     const R = (k, add) => `calc(${k - 1} * var(--w)${add ? ' + ' + add : ''})`, Up = k => `calc(${k - 1} * var(--r))`;
@@ -1446,11 +1446,11 @@
   const AG = [
     { en: '<b>Agile</b> is incremental: the work is divided into <b>small, testable parts</b>, delivered in short cycles and small releases.', ar: 'الـ <b>Agile</b> incremental: الشغل بيتقسم لـ <b>أجزاء صغيرة ينفع تتختبر</b>، وبتتسلم في cycles قصيرة و releases صغيرة.', r: 0, c: -1, cy: 0, on: [] },
     { en: 'Cycle 1: the first part is built and <b>thoroughly tested</b>, so bugs are fixed early.', ar: 'الـ Cycle 1: أول جزء بيتعمل و<b>بيتختبر كويس</b>، فالـ bugs بتتصلح بدري.', r: 0, c: 0, cy: 1, on: [0, 1] },
-    { en: '<b>Release 1</b> goes out, and the customer gives <b>feedback</b>.', ar: '<b>Release 1</b> بيطلع، والعميل بيدي <b>feedback</b>.', r: 1, c: 1, cy: 1, on: [2, 3] },
+    { en: '<b>Release 1</b> goes out, and the customer gives <b>feedback</b>.', ar: 'الـ <b>Release 1</b> بيطلع، والعميل بيدي <b>feedback</b>.', r: 1, c: 1, cy: 1, on: [2, 3] },
     { en: 'Cycle 2: the next part is refined based on that user input. <b>Release 2 builds on Release 1</b> and is tested again.', ar: 'الـ Cycle 2: الجزء اللي بعده بيتحسن على حسب الـ input بتاع الـ user. <b>Release 2 بيتبني على Release 1</b> وبيتختبر تاني.', r: 2, c: 1, cy: 2, on: [0, 1, 2] },
     { en: 'The customer <b>changes a requirement</b>. Agile is designed for continuous changes: the next short cycle simply takes it in.', ar: 'العميل <b>غيّر requirement</b>. الـ Agile معمول للتغييرات المستمرة: الـ cycle القصيرة اللي بعدها بتاخده وخلاص.', r: 2, c: 2, cy: 3, on: [3, 0], change: 1 },
-    { en: 'Cycle 3 → <b>Release 3</b>. The <b>continuous collaboration</b> of customers, developers and testers ensures that requirements are met accurately.', ar: 'الـ Cycle 3 ← <b>Release 3</b>. الـ <b>continuous collaboration</b> بين العملاء والـ developers والـ testers بيضمن إن الـ requirements تتحقق بدقة.', r: 3, c: 3, cy: 3, on: [1, 2], roles: 1 },
-    { en: 'Approaches: <b>DSDM</b>, <b>SCRUM</b>, <b>XP</b> (the most popular; it uses TDD, Figure 1.4).<br><b>Advantages</b>: flexible, feedback, fast delivery, better quality.<br><b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep.', ar: 'الـ approaches: <b>DSDM</b> و<b>SCRUM</b> و<b>XP</b> (الأشهر، وبيستخدم الـ TDD في Figure 1.4).<br><b>المميزات</b>: مرن (flexible)، وفيه feedback، وتسليم سريع، والـ quality أحسن.<br><b>العيوب</b>: محتاج العميل يشارك بشكل فعّال، صعب مع الـ teams الكبيرة، والـ scope creep.', r: 3, c: 3, cy: 3, on: [], roles: 1, apps: 1 }
+    { en: 'Cycle 3 → <b>Release 3</b>. The <b>continuous collaboration</b> of customers, developers and testers ensures that requirements are met accurately.', ar: 'وبعدها:<span class="ltr">Cycle 3 → <b>Release 3</b></span>الـ <b>continuous collaboration</b> بين العملاء والـ developers والـ testers بيضمن إن الـ requirements تتحقق بدقة.', r: 3, c: 3, cy: 3, on: [1, 2], roles: 1 },
+    { en: 'Approaches: <b>DSDM</b>, <b>SCRUM</b>, <b>XP</b> (the most popular; it uses TDD, Figure 1.4).<br><b>Advantages</b>: flexible, feedback, fast delivery, better quality.<br><b>Disadvantages</b>: needs active customer involvement, hard for large teams, scope creep.', ar: 'الـ approaches هي <b>DSDM</b> و<b>SCRUM</b> و<b>XP</b> (الأشهر، وبيستخدم الـ TDD في Figure 1.4).<br><b>المميزات</b>: مرن (flexible)، وفيه feedback، وتسليم سريع، والـ quality أحسن.<br><b>العيوب</b>: محتاج العميل يشارك بشكل فعّال، صعب مع الـ teams الكبيرة، والـ scope creep.', r: 3, c: 3, cy: 3, on: [], roles: 1, apps: 1 }
   ];
   function Agile({ ar }) {
     const [i, ctl] = useSteps(AG.length, 2600);
@@ -1868,7 +1868,7 @@
     const n = Object.keys(seen).length;
     const sky = h < 6 || h >= 19 ? '#1e293b' : W[w][2];
     const en = `<b>Dynamic content</b>: graphics and text that vary depending on some conditions, e.g. time of day, weather, stock tickers. White-box: you know the conditions in the code, so test every branch with every weather: <b>${n} of 9</b> combinations seen. Move the hour and pick the weather.`;
-    const a = `الـ <b>Dynamic content</b> هو graphics و text بيتغيروا حسب ظروف معينة، زي وقت اليوم والطقس والـ stock tickers. في الـ white-box إنت عارف الشروط اللي في الـ code، فاختبر كل branch مع كل طقس. شفت <b><bdi>${n}</bdi> من <bdi>9</bdi></b> combinations. حرّك الساعة واختار الطقس.`;
+    const a = `الـ <b>Dynamic content</b> هو graphics و text بيتغيروا حسب ظروف معينة، زي وقت اليوم والطقس والـ stock tickers. في الـ white-box إنت عارف الشروط اللي في الـ code، فاختبر كل branch مع كل طقس. شفت <b><bdi dir="ltr">${n}</bdi> من <bdi dir="ltr">9</bdi></b> combinations. حرّك الساعة واختار الطقس.`;
     return html`<${Fig}><div className="fig-stage">
       <div className="qv5-page qv5-dyn"><${Addr} url="www.yoursite.com" />
         <div className="sky" style=${{ background: sky }}><span>${G[br]}!</span><span className="ic" aria-hidden="true">${W[w][1]}</span></div>
@@ -1917,7 +1917,7 @@
     const f = x => x.toLocaleString('en-US');
     const dots = Math.min(28, 3 + k * 4);
     const en = `Popular Web sites might receive <b>millions of hits per day</b>, so we simulate millions of connections and downloads to test performance. Simulating <b>${f(N)}</b> connection${N > 1 ? 's' : ''}: ${failed ? `<b>${f(failed)}</b> fail, the server is past its limit.` : 'all are served.'} (This demo server is assumed to handle ${f(CAP)} at once.)`;
-    const a = `المواقع المشهورة ممكن يجيلها <b>ملايين hits في اليوم</b>، فبنعمل simulation لملايين connections و downloads عشان نختبر الـ performance. عاملين simulation لـ <b><bdi>${f(N)}</bdi></b> connection: ${failed ? `فيه <b><bdi>${f(failed)}</bdi></b> فشلوا، الـ server عدّى الحد بتاعه.` : 'كلهم اتخدموا.'} وافترضنا إن الـ server ده بيستحمل <bdi>${f(CAP)}</bdi> في نفس الوقت.`;
+    const a = `المواقع المشهورة ممكن يجيلها <b>ملايين hits في اليوم</b>، فبنعمل simulation لملايين connections و downloads عشان نختبر الـ performance. عاملين simulation لـ <b><bdi dir="ltr">${f(N)}</bdi></b> connection: ${failed ? `فيه <b><bdi dir="ltr">${f(failed)}</bdi></b> فشلوا، الـ server عدّى الحد بتاعه.` : 'كلهم اتخدموا.'} وافترضنا إن الـ server ده بيستحمل <bdi dir="ltr">${f(CAP)}</bdi> في نفس الوقت.`;
     return html`<${Fig}><div className="fig-stage">
       <div className="qv5-ld"><div className="qv5-users" aria-hidden="true">${Array.from({ length: dots }, (_, j) => html`<i key=${k + '-' + j} className=${failed && j % 3 === 0 ? 'x' : ''} style=${{ top: (6 + (j * 37) % 96) + 'px', '--d': (2.4 - k * .25) + 's', '--dl': (-(j * .37) % 2) + 's', '--w': 'calc(100cqw - 10px)' }}></i>`)}</div>
         <div className=${'qv5-srv' + (failed ? ' hot' : '')}>Web server<div className="qv5-meter"><i style=${{ width: pct + '%' }}></i></div><div style=${{ fontWeight: 400, fontSize: '.78rem', marginTop: '3px' }}>load ${pct >= 100 ? '100%+' : pct.toFixed(pct < 1 ? 3 : 0) + '%'}</div></div></div>
@@ -1948,7 +1948,7 @@
         <div className="qv5-modes" style=${{ marginTop: '8px' }}><button className="fig-btn" aria-pressed=${!chk} onClick=${() => setChk(false)}>No length check</button><button className="fig-btn" aria-pressed=${chk} onClick=${() => setChk(true)}>Checks the length</button></div>
         <p className="qv5-note">${over ? (chk ? html`<span className="qv5-ok">extra ${over} characters rejected</span>` : html`<span className="qv5-bad">${over} characters overwrite the next data</span>`) : 'fits in the buffer'}</p>`;
       en = '<b>Buffer overflow</b>: input longer than the space reserved for it spills over and overwrites the data next to it in memory. The security test types over-long input and checks that the site rejects it.';
-      a = 'الـ <b>Buffer overflow</b>: input أطول من المساحة المحجوزة ليه بيطفح ويكتب فوق الـ data اللي جنبه في الـ memory. الـ security test بيدخّل input طويل زيادة ويتأكد إن الـ site بيرفضه.';
+      a = 'الـ <b>Buffer overflow</b>: الـ input اللي أطول من المساحة المحجوزة ليه بيطفح ويكتب فوق الـ data اللي جنبه في الـ memory. الـ security test بيدخّل input طويل زيادة ويتأكد إن الـ site بيرفضه.';
     }
     return html`<${Fig}><div className="fig-stage">
       <div className="qv5-modes">${['Denial of service', 'Buffer overflow'].map((x, j) => html`<button key=${x} className="fig-btn" aria-pressed=${j === m} onClick=${() => { setM(j); setFlood(false); }}>${x}</button>`)}</div>${body}</div>
@@ -1982,7 +1982,7 @@
     const hw = n.slice(0, 7).reduce((p, v) => p * v, 1), all = n.reduce((p, v) => p * v, 1), f = x => x.toLocaleString('en-US');
     const row = (name, j) => html`<${React.Fragment} key=${name}><span>${j < 7 ? '(' + (j + 1) + ')' : '(' + (j - 6) + ')'} ${name}</span><span className="qv5-step"><button aria-label=${'Fewer ' + name} onClick=${() => set(j, -1)}>−</button><b>${n[j]}</b><button aria-label=${'More ' + name} onClick=${() => set(j, 1)}>+</button></span><//>`;
     const en = `Configuration testing checks <b>variances</b> in each piece of hardware; compatibility checking adds font sizes, browsers with CSS, screen resolutions, memory sizes and network environments. Every choice multiplies: <b>${f(hw)}</b> hardware configurations, <b>${f(all)}</b> with the compatibility factors. Change how many variants each factor has.`;
-    const a = `الـ configuration testing بيشوف الـ <b>variances</b> في كل قطعة hardware، والـ compatibility بيزوّد عليها font sizes و browsers with CSS و screen resolutions و memory sizes و network environments. كل اختيار بيضرب في اللي قبله، فبقى عندنا <b><bdi>${f(hw)}</bdi></b> hardware configuration، و <b><bdi>${f(all)}</bdi></b> لما نضيف الـ compatibility. غيّر عدد الـ variants لكل factor.`;
+    const a = `الـ configuration testing بيشوف الـ <b>variances</b> في كل قطعة hardware، والـ compatibility بيزوّد عليها font sizes و browsers with CSS و screen resolutions و memory sizes و network environments. كل اختيار بيضرب في اللي قبله، فبقى عندنا <b><bdi dir="ltr">${f(hw)}</bdi></b> hardware configuration، و <b><bdi dir="ltr">${f(all)}</bdi></b> لما نضيف الـ compatibility. غيّر عدد الـ variants لكل factor.`;
     return html`<${Fig}><div className="fig-stage"><div className="qv5-fac">
       <h5>Hardware configurations</h5>${HW.map((x, j) => row(x, j))}
       <h5>Compatibility</h5>${CO.map((x, j) => row(x, j + 7))}</div>
@@ -1999,7 +1999,7 @@
     const sw = (label, opts, v, set) => html`<div className="qv5-sw"><span>${label}</span>${opts.map((o, j) => html`<button key=${j} aria-pressed=${j === v} onClick=${() => set(j)}>${Array.isArray(o) ? o[0] : o}</button>`)}</div>`;
     const tc = [FS[fs][0] + ' font', CS[cs], RS[rs][0], MS[ms], NS[ns]].join(' · ');
     const en = 'Compatibility checking: <b>various font sizes</b>, <b>browsers with CSS</b>, <b>various screen resolutions</b>, <b>various memory sizes</b> and <b>different network environments</b>. Every test case is one combination: ' + `<b>${3 * 2 * 3 * 2 * 2}</b> here. Low memory slows the page (the meter shows what is left).`;
-    const a = 'الـ compatibility بيختبر <b>font sizes مختلفة</b> و <b>browsers مع الـ CSS</b> و <b>screen resolutions مختلفة</b> و <b>memory sizes مختلفة</b> و <b>network environments مختلفة</b>. كل test case هو combination واحد، وهنا عندنا ' + `<b><bdi>${3 * 2 * 3 * 2 * 2}</bdi></b>. والـ memory القليلة بتبطّأ الصفحة (الـ meter بيوري الباقي).`;
+    const a = 'الـ compatibility بيختبر <b>font sizes مختلفة</b> و <b>browsers مع الـ CSS</b> و <b>screen resolutions مختلفة</b> و <b>memory sizes مختلفة</b> و <b>network environments مختلفة</b>. كل test case هو combination واحد، وهنا عندنا ' + `<b><bdi dir="ltr">${3 * 2 * 3 * 2 * 2}</bdi></b>. والـ memory القليلة بتبطّأ الصفحة (الـ meter بيوري الباقي).`;
     return html`<${Fig}><div className="fig-stage">
       <div className="qv5-ctrls">${sw('Font size', FS, fs, setFs)}${sw('Browser', CS, cs, setCs)}${sw('Screen resolution', RS, rs, setRs)}${sw('Network', NS, ns, setNs)}${sw('Memory', MS, ms, setMs)}
         <div className="qv5-sw"><span>Memory left</span><div className="qv5-meter" style=${{ width: '100%' }}><i style=${{ width: ms ? '70%' : '12%', background: ms ? 'var(--k-qa)' : 'var(--pen)' }}></i></div></div></div>
@@ -2014,7 +2014,7 @@
   function Tools({ ar }) {
     const T = [
       ['Browser compatibility', 'الـ Browser compatibility', 'the same pages opened in many browsers.', 'نفس الصفحات بتتفتح على browsers كتير.'],
-      ['Load, stress and performance', 'الـ Load والـ stress والـ performance', 'many simulated users at once.', 'users كتير متعملهم simulation في نفس الوقت.'],
+      ['Load, stress and performance', 'الـ Load والـ stress والـ performance', 'many simulated users at once.', 'فيه users كتير متعملهم simulation في نفس الوقت.'],
       ['Broken hyperlinks', 'الـ hyperlinks المكسورة', 'every link followed, broken ones reported.', 'كل link بيتمشي عليه، والمكسور بيتسجّل.'],
       ['Web functional, GUI testing', 'الـ Web functional والـ GUI testing', 'clicks and typing replayed like a user.', 'الضغطات والكتابة بتتعاد زي الـ user.'],
       ['Spelling on text', 'الـ Spelling في الـ text', 'every word of the text checked.', 'كل كلمة في الـ text بتتراجع.'],
@@ -2022,7 +2022,7 @@
       ['Database', 'الـ Database', 'the data behind the pages.', 'الـ data اللي ورا الصفحات.'],
       ['OOP', 'الـ OOP', 'the object-oriented code.', 'الـ object-oriented code.'],
       ['Network', 'الـ Network', 'the connection between users and the server.', 'الاتصال بين الـ users والـ server.'],
-      ['Web application (Selenium and Cypress)', 'الـ Web application (Selenium و Cypress)', 'a script drives the browser through the form.', 'script بيسوق الـ browser خطوة بخطوة في الـ form.']
+      ['Web application (Selenium and Cypress)', 'الـ Web application (Selenium و Cypress)', 'a script drives the browser through the form.', 'فيه script بيسوق الـ browser خطوة بخطوة في الـ form.']
     ];
     const steps = [{ en: '<b>Tools that automatically check websites</b> for ten kinds of problems.', ar: 'فيه <b>tools بتختبر الـ websites أوتوماتيك</b> في 10 أنواع مشاكل.' }]
       .concat(T.map(([e, ea, d, da]) => ({ en: `<b>${e}</b>: ${d}`, ar: `الـ tool بتختبر <b>${ea}</b>: ${da}` })));
@@ -2230,7 +2230,7 @@
     } else if (q < 8) {
       en = (wrong != null ? `No, that is <b>${F8[wrong][0]}</b> (${F8[wrong][1].replace(/\.$/, '')}). ` : '') + `Which factor is this? <b>"${F8[target][1]}"</b>`;
       a = (wrong != null ? `لأ، ده الـ <b>${F8[wrong][0]}</b>. ` : '') + `أنهي factor ده؟ <b>${F8[target][2]}</b>`;
-    } else { en = `All 8 matched in ${tries} taps.`; a = `طابقت الـ 8 كلهم في <bdi>${tries}</bdi> ضغطة.`; }
+    } else { en = `All 8 matched in ${tries} taps.`; a = `طابقت الـ 8 كلهم في <bdi dir="ltr">${tries}</bdi> ضغطة.`; }
     return html`<figure className="fig qv6"><div className="fig-stage">
       <div className="qv6-modes">
         <button className="fig-btn" aria-pressed=${mode === 'look'} onClick=${() => switchMode('look')}>Explore</button>
@@ -2297,7 +2297,7 @@
     const steps = [
       { en: 'Software testing is <b>part of SQA</b>: QA is the broader box, testing sits inside it.', ar: 'الـ Software testing <b>جزء من الـ SQA</b>: الـ QA هي الصندوق الأكبر والـ testing جوّاه.' },
       { en: '<b>Testing</b>: detection-oriented; evaluates spec, design and coding under specified (normal and abnormal) conditions; main goal is to <b>find and report bugs</b>; done by testers.', ar: 'الـ <b>Testing</b> هدفه الاكتشاف (detection-oriented)، بيقيّم الـ spec والـ design والـ coding تحت conditions متحددة (normal و abnormal)، وهدفه الأساسي <b>يلاقي الـ bugs ويبلّغ عنها</b>، والـ testers هما اللي بيعملوه.' },
-      { en: '<b>QA</b>: broader than testing; <b>prevents defects</b>; ensures correct processes, standards and methodologies; uses <b>ISO / CMM</b> models.', ar: 'الـ <b>QA</b> أوسع من الـ testing، و<b>بيمنع الـ defects</b>، وبيضمن إن الـ processes والـ standards والـ methodologies صح، وبيستخدم موديلات <b>ISO / CMM</b>.' },
+      { en: '<b>QA</b>: broader than testing; <b>prevents defects</b>; ensures correct processes, standards and methodologies; uses <b>ISO / CMM</b> models.', ar: 'الـ <b>QA</b> أوسع من الـ testing، و<b>بيمنع الـ defects</b>، وبيضمن إن الـ processes والـ standards والـ methodologies صح، وبيستخدم موديلات <b><bdi dir="ltr">ISO&nbsp;/&nbsp;CMM</bdi></b>.' },
       { en: 'In one line: testing <b>detects</b> bugs in the product, QA <b>prevents</b> them through the process.', ar: 'في سطر واحد: الـ testing <b>بيكتشف</b> الـ bugs في الـ product، والـ QA <b>بيمنعها</b> عن طريق الـ process.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3800);
@@ -2387,12 +2387,12 @@
       pro: 'Fast communication between developers and testers.', con: 'An inexperienced development manager may ignore bug reports to push delivery.' },
     { name: '2. Independent team', nodes: [['Testers', '', true], ['Test Manager / Test Lead', '', true], ['Project Manager', 'also hears the Development Manager', false, true]],
       hops: [{ en: '<b>Independent test team</b>: the testers find a bug and write a bug report.', ar: 'في الـ <b>Independent test team</b>: الـ testers لقوا bug وكتبوا bug report.' },
-        { en: 'It goes to their own <b>Test Manager / Test Lead</b>, not to the development manager.', ar: 'الـ report بيروح للـ <b>Test Manager / Test Lead</b> بتاعهم، مش للـ development manager.' },
+        { en: 'It goes to their own <b>Test Manager / Test Lead</b>, not to the development manager.', ar: 'الـ report بيروح للـ <b><bdi dir="ltr">Test Manager / Test Lead</bdi></b> بتاعهم، مش للـ development manager.' },
         { en: 'The test manager takes it to the <b>Project Manager</b>: the testing team\'s <b>feedback is considered</b> in decision-making.', ar: 'الـ test manager بيوصّله للـ <b>Project Manager</b>، فالـ feedback بتاع الـ testing team <b>بيتاخد في الاعتبار</b> في القرارات.' },
         { en: 'But the <b>final decision lies with the project manager</b>, which may affect quality in critical projects.', ar: 'بس <b>القرار الأخير في إيد الـ project manager</b>، وده ممكن يأثر على الـ quality في المشاريع الـ critical.' }],
       pro: 'The testing team\'s feedback is considered in decision-making.', con: 'The final decision lies with the project manager; may affect quality in critical projects.' },
     { name: '3. Reports to executive', nodes: [['QA / Test Managers', 'beside the Development and Project Managers', true], ['Executive Manager', 'senior management', false, true]],
-      hops: [{ en: '<b>Test group reporting to executive management</b>: the QA/Test Managers sit beside the development and project managers, not under them (<b>independence of the quality team</b>).', ar: 'في الـ <b>Test group reporting to executive management</b>: الـ QA/Test Managers جنب الـ development والـ project managers مش تحتهم، يعني <b>الـ quality team مستقل</b>.' },
+      hops: [{ en: '<b>Test group reporting to executive management</b>: the QA/Test Managers sit beside the development and project managers, not under them (<b>independence of the quality team</b>).', ar: 'في الـ <b>Test group reporting to executive management</b>: الـ <bdi dir="ltr">QA/Test Managers</bdi> جنب الـ development والـ project managers مش تحتهم، يعني <b>الـ quality team مستقل</b>.' },
         { en: 'Their <b>quality reports reach senior management directly</b>: the Executive Manager.', ar: 'والـ <b>quality reports بتاعتهم بتوصل للـ senior management على طول</b>، يعني للـ Executive Manager.' }],
       pro: 'Independence of the quality team; quality reports reach senior management directly.', con: null }
   ];
@@ -2427,7 +2427,7 @@
   function MetricTree({ ar }) {
     const items = [
       { t: 'Code size', bin: 'pd', why: '<b>Code size</b> is a product metric: it measures the final product.', whyAr: 'الـ <b>Code size</b> هي product metric: بتقيس الـ final product.' },
-      { t: 'Number of detected bugs', bin: 'in', why: '<b>Number of detected bugs</b> is an indicator: a variable reflecting the process outcome.', whyAr: 'الـ <b>Number of detected bugs</b> ده indicator: variable بيعكس نتيجة الـ process.' },
+      { t: 'Number of detected bugs', bin: 'in', why: '<b>Number of detected bugs</b> is an indicator: a variable reflecting the process outcome.', whyAr: 'الـ <b>Number of detected bugs</b> ده indicator: يعني variable بيعكس نتيجة الـ process.' },
       { t: 'Time taken', bin: 'pc', why: '<b>Time taken</b> is a process metric: it measures the development process.', whyAr: 'الـ <b>Time taken</b> هي process metric: بتقيس الـ development process.' },
       { t: 'Number of documented pages', bin: 'pd', why: '<b>Number of documented pages</b> is a product metric.', whyAr: 'الـ <b>Number of documented pages</b> هي product metric.' },
       { t: 'Development methodology', bin: 'pc', why: '<b>Development methodology</b> is a process metric.', whyAr: 'الـ <b>Development methodology</b> هي process metric.' }
@@ -2498,7 +2498,7 @@
     let en, a;
     if (!log.length) { en = '<b>Try your own:</b> pick a phase, then tap <b>+ bug</b> under a part of the system to log a detected defect. Tap a logged bug to mark it resolved.'; a = '<b>جرّب بنفسك:</b> اختار phase، وبعدين دوس على زرار الـ <b>bug</b> اللي عليه علامة زائد تحت جزء من الـ system عشان تسجّل defect اتكشف. ودوس على أي bug عشان تعلّمه إنه اتحل.'; }
     else { en = `Defect removal rate counts the <b>${resolved}</b> detected and resolved; defect age profile counts the <b>${open}</b> not resolved. Defect detection efficiency for phase ${ph}: <b>${inPh}</b> detected.` + (hot >= 0 ? ` Defect density points at <b>${PARTS[hot]}</b> as the defect-prone part.` : '');
-      a = `الـ Defect removal rate بيعد الـ defects اللي اتكشفت واتحلت وعددهم <bdi>${resolved}</bdi>، والـ Defect age profile بيعد اللي ماتحلتش وعددهم <bdi>${open}</bdi>. والـ Defect detection efficiency في الـ phase رقم <bdi>${ph}</bdi> عدده <bdi>${inPh}</bdi>.` + (hot >= 0 ? ` والـ Defect density بيشاور على <bdi>${PARTS[hot]}</bdi> إنه الجزء اللي فيه defects كتير.` : ''); }
+      a = `الـ Defect removal rate بيعد الـ defects اللي اتكشفت واتحلت وعددهم <bdi dir="ltr">${resolved}</bdi>، والـ Defect age profile بيعد اللي ماتحلتش وعددهم <bdi dir="ltr">${open}</bdi>. والـ Defect detection efficiency في الـ phase رقم <bdi dir="ltr">${ph}</bdi> عدده <bdi dir="ltr">${inPh}</bdi>.` + (hot >= 0 ? ` والـ Defect density بيشاور على <bdi dir="ltr">${PARTS[hot]}</bdi> إنه الجزء اللي فيه defects كتير.` : ''); }
     return html`<figure className="fig qv6"><div className="fig-stage"><div className="qv6-board">
       <div className="qv6-row">Detected in: ${[1, 2, 3].map(n => html`<button key=${n} className="fig-btn" aria-pressed=${ph === n} onClick=${() => setPh(n)}>Phase ${n}</button>`)}</div>
       <div className="qv6-parts">${PARTS.map((t, j) => html`<div key=${j} className=${'qv6-part' + (hot === j ? ' hot' : '')}><b>${t}</b>
@@ -2654,7 +2654,7 @@
     { en: 'CMM was developed by the <b>Software Engineering Institute (SEI)</b> and <b>Carnegie Mellon University</b> under the <b>U.S. Department of Defense</b>.', ar: 'الـ CMM اتعمل بواسطة الـ <b>Software Engineering Institute (SEI)</b> و<b>Carnegie Mellon University</b> تحت <b>U.S. Department of Defense</b>.' },
     { en: 'CMM is a <b>standard framework for assessing and improving the maturity</b> of a software company’s development process, giving structured guidance for enhancing software quality.', ar: 'الـ CMM هو <b>standard framework لتقييم وتحسين الـ maturity</b> بتاعة الـ development process في شركة الـ software، وبيدي توجيه منظم لتحسين الـ software quality.' },
     { en: 'A maturity model gives <b>structured levels</b> showing how well processes and behaviors achieve desired outcomes. It can be used for both <b>evaluation</b> and <b>improvement</b>.', ar: 'الـ maturity model بيدي <b>levels منظمة</b> بتوضح الـ processes والـ behaviors بتحقق النتايج المطلوبة لحد فين. ينفع يتستخدم للـ <b>evaluation</b> وللـ <b>improvement</b> الاتنين.' },
-    { en: 'Designed mainly for <b>software development organizations</b>, but it also applies to software/system engineering, project management, IT, risk management and personnel management.', ar: 'متصمم أساسًا لـ <b>organizations الـ software development</b>، بس كمان بيتطبق على الـ software/system engineering والـ project management والـ IT والـ risk management والـ personnel management.' }
+    { en: 'Designed mainly for <b>software development organizations</b>, but it also applies to software/system engineering, project management, IT, risk management and personnel management.', ar: 'متصمم أساسًا لـ <b>organizations الـ software development</b>، بس كمان بيتطبق على الـ <bdi dir="ltr">software/system engineering</bdi> والـ project management والـ IT والـ risk management والـ personnel management.' }
   ];
   function CmmGlance({ ar }) {
     const [i, ctl] = useSteps(GL.length, 3400);
@@ -2684,11 +2684,11 @@
     const [cur, setCur] = useState(1), [msg, setMsg] = useState(null), [bad, setBad] = useState(0), [tick, setTick] = useState(0);
     const go = k => {
       setTick(t => t + 1);
-      if (k === cur + 1) { setCur(k); setBad(0); setMsg({ en: `Climbed to <b><bdi>Level ${k} (${LV[k - 1]})</bdi></b>, through <b>${VIA[k - 1]}</b>.${k === 5 ? ' This is the top level: processes are systematically managed, optimized and continuously improved.' : ''}`, ar: `طلعت للـ <b><bdi>Level ${k} (${LV[k - 1]})</bdi></b> عن طريق الـ <b>${VIA[k - 1]}</b>.${k === 5 ? ' ده الـ top level: الـ processes بتتدار بشكل systematic، و optimized، وبتتحسن باستمرار.' : ''}` }); }
-      else if (k > cur + 1) { setBad(k); setMsg({ en: `<b>Not allowed.</b> CMM is a five-level <b>incremental</b> approach: organizations progress gradually <b>without skipping levels</b>. Reach <b><bdi>Level ${cur + 1} (${LV[cur]})</bdi></b> first.`, ar: `<b>مينفعش.</b> الـ CMM هو approach <b>incremental</b> من خمس levels: الـ organizations بتتقدم واحدة واحدة <b>من غير ما تنط levels</b>. لازم توصل للـ <b><bdi>Level ${cur + 1} (${LV[cur]})</bdi></b> الأول.` }); }
-      else { setBad(0); setMsg({ en: `Level ${k} is already reached: you are at <b><bdi>Level ${cur} (${LV[cur - 1]})</bdi></b>.`, ar: `الـ Level ${k} انت وصلته خلاص: انت دلوقتي في الـ <b><bdi>Level ${cur} (${LV[cur - 1]})</bdi></b>.` }); }
+      if (k === cur + 1) { setCur(k); setBad(0); setMsg({ en: `Climbed to <b><bdi>Level ${k} (${LV[k - 1]})</bdi></b>, through <b>${VIA[k - 1]}</b>.${k === 5 ? ' This is the top level: processes are systematically managed, optimized and continuously improved.' : ''}`, ar: `طلعت للـ <b><bdi dir="ltr">Level ${k} (${LV[k - 1]})</bdi></b> عن طريق الـ <b>${VIA[k - 1]}</b>.${k === 5 ? ' ده الـ top level: الـ processes بتتدار بشكل systematic، و optimized، وبتتحسن باستمرار.' : ''}` }); }
+      else if (k > cur + 1) { setBad(k); setMsg({ en: `<b>Not allowed.</b> CMM is a five-level <b>incremental</b> approach: organizations progress gradually <b>without skipping levels</b>. Reach <b><bdi>Level ${cur + 1} (${LV[cur]})</bdi></b> first.`, ar: `<b>مينفعش.</b> الـ CMM هو approach <b>incremental</b> من خمس levels: الـ organizations بتتقدم واحدة واحدة <b>من غير ما تنط levels</b>. لازم توصل للـ <b><bdi dir="ltr">Level ${cur + 1} (${LV[cur]})</bdi></b> الأول.` }); }
+      else { setBad(0); setMsg({ en: `Level ${k} is already reached: you are at <b><bdi>Level ${cur} (${LV[cur - 1]})</bdi></b>.`, ar: `الـ Level ${k} انت وصلته خلاص: انت دلوقتي في الـ <b><bdi dir="ltr">Level ${cur} (${LV[cur - 1]})</bdi></b>.` }); }
     };
-    const m = msg || { en: '<b>Try it:</b> your organization starts at <b>Level 1 (Initial)</b>. Tap a level to move there. Try jumping straight to Level 5.', ar: '<b>جرّب:</b> الـ organization بتاعتك بادئة من الـ <b><bdi>Level 1 (Initial)</bdi></b>. دوس على level عشان تروحله. وجرّب تنط على طول للـ Level 5.' };
+    const m = msg || { en: '<b>Try it:</b> your organization starts at <b>Level 1 (Initial)</b>. Tap a level to move there. Try jumping straight to Level 5.', ar: '<b>جرّب:</b> الـ organization بتاعتك بادئة من الـ <b><bdi dir="ltr">Level 1 (Initial)</bdi></b>. دوس على level عشان تروحله. وجرّب تنط على طول للـ Level 5.' };
     return html`<figure className="fig qv7"><div className="fig-stage"><div className="qv7-stairs" role="group" aria-label="CMM levels, Level 5 at the top">
       ${[5, 4, 3, 2, 1].map(k => html`<button key=${k + '-' + (bad === k ? tick : 0)} className=${'qv7-st' + (k === cur ? ' on' : k < cur ? ' done' : ' up') + (bad === k ? ' no' + (calm() ? '' : ' qv7-shake') : '')}
         style=${{ marginLeft: `calc(${k - 1} * min(7%, 26px))` }} onClick=${() => go(k)}>
@@ -2745,7 +2745,7 @@
     if (!touched) { en = '<b>Try it:</b> tick the improvements your organization has implemented (Table 1). The maturity level is the highest level whose improvements are all in place, with every level below it complete too.'; a = '<b>جرّب:</b> علّم على الـ improvements اللي الـ organization بتاعتك طبقتها (الـ Table 1). الـ maturity level هو أعلى level كل الـ improvements بتاعته متطبقة، وكل الـ levels اللي تحته كاملة كمان.'; }
     else {
       en = `Maturity level: <b><bdi>Level ${lvl} (${LV[lvl - 1]})</bdi></b>.` + (lvl === 1 ? ' Level 1 has no required processes.' : '');
-      a = `الـ maturity level: <b>الـ <bdi>Level ${lvl} (${LV[lvl - 1]})</bdi></b>.` + (lvl === 1 ? ' الـ Level 1 مفيهوش processes مطلوبة.' : '');
+      a = `الـ maturity level: <b>الـ <bdi dir="ltr">Level ${lvl} (${LV[lvl - 1]})</bdi></b>.` + (lvl === 1 ? ' الـ Level 1 مفيهوش processes مطلوبة.' : '');
       if (lvl < 5) { en += ` To reach Level ${lvl + 1}, still implement: ${missing.join('; ')}.`; a += ` عشان توصل للـ Level ${lvl + 1} لسه محتاج تطبق:<br><span class="ltr">${missing.join('; ')}</span>`; }
       else { en += ' All of Table 1 is implemented.'; a += ' كل الـ Table 1 متطبق.'; }
       if (blocked.length) { en += `<br>Level ${blocked.join(' and ')} improvements are all ticked, but they do not count yet: <b>levels cannot be skipped</b>.`; a += `<br>كل الـ improvements بتاعة الـ Level ${blocked.join(' والـ Level ')} متعلّم عليها، بس لسه مبتتحسبش: <b>مينفعش ننط levels</b>.`; }
@@ -2858,8 +2858,8 @@
     let cap;
     if (mode === 'tour') cap = steps[i];
     else if (pick == null) cap = { en: `<b>Which ${what}?</b> Tap the tile that matches the description above.`, ar: `<b>أنهي ${whatAr}؟</b> دوس على المربع اللي بيطابق الوصف اللي فوق.` };
-    else if (pick === Q.k) cap = { en: `<b>Right:</b> ${label(Q.k)}. ${items[Q.k].d}`, ar: `<b>صح:</b> <bdi>${label(Q.k)}</bdi>. ${items[Q.k].a}` };
-    else cap = { en: `<b>Not quite:</b> you picked ${label(pick)} (${items[pick].d}). The answer is <b>${label(Q.k)}</b>.`, ar: `<b>مش بالظبط:</b> انت اخترت <bdi>${label(pick)}</bdi>، ودي معناها «${items[pick].a}». والإجابة هي <b><bdi>${label(Q.k)}</bdi></b>.` };
+    else if (pick === Q.k) cap = { en: `<b>Right:</b> ${label(Q.k)}. ${items[Q.k].d}`, ar: `<b>صح:</b> <bdi dir="ltr">${label(Q.k)}</bdi>. ${items[Q.k].a}` };
+    else cap = { en: `<b>Not quite:</b> you picked ${label(pick)} (${items[pick].d}). The answer is <b>${label(Q.k)}</b>.`, ar: `<b>مش بالظبط:</b> انت اخترت <bdi dir="ltr">${label(pick)}</bdi>، ودي معناها «${items[pick].a}». والإجابة هي <b><bdi dir="ltr">${label(Q.k)}</bdi></b>.` };
     const cls = k => mode === 'tour' ? (i === k + 1 ? ' on' : i > k + 1 ? ' done' : '') : pick == null ? '' : k === Q.k ? ' ok' : k === pick ? ' no' : '';
     return html`<figure className="fig qv7 qv7-many"><div className="fig-stage">
       <${Modes} list=${[['tour', 'Tour'], ['quiz', 'Quiz yourself']]} mode=${mode} setMode=${m => { setMode(m); setPick(null); if (m === 'tour') ctl.go(0); }} />
@@ -2924,7 +2924,7 @@
     { en: 'Organizations are increasingly shifting <b>from local to international standards</b>.', ar: 'الـ organizations بتتحول أكتر وأكتر <b>من standards محلية لـ دولية</b>.' },
     { en: '<b>1976</b>: the <b>IEEE</b> and the <b>IEEE Computer Society</b> lead this movement; since 1976 IEEE has contributed significantly to standardization.', ar: 'سنة <b>1976</b>: الـ <b>IEEE</b> والـ <b>IEEE Computer Society</b> في مقدمة الحركة دي؛ ومن 1976 الـ IEEE ساهم جامد في الـ standardization.' },
     { en: 'This led to the <b>IEEE Software Engineering Standard Collection</b>, a foundation for many international project process standards.', ar: 'وده وصّل لـ <b>IEEE Software Engineering Standard Collection</b>، اللي بقت أساس لـ international project process standards كتير.' },
-    { en: '<b>1993</b>: <b>SPICE</b> is introduced. The SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by <b>ISO</b> and <b>IEC</b> to establish a standard software process assessment methodology.', ar: 'سنة <b>1993</b>: اتقدم الـ <b>SPICE</b>. والـ SPICE project والـ <b>ISO/IEC 15504</b> مبادرات مشتركة بين الـ <b>ISO</b> والـ <b>IEC</b> عشان يعملوا methodology standard لتقييم الـ software process.' }
+    { en: '<b>1993</b>: <b>SPICE</b> is introduced. The SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by <b>ISO</b> and <b>IEC</b> to establish a standard software process assessment methodology.', ar: 'سنة <b>1993</b>: اتقدم الـ <b>SPICE</b>. والـ SPICE project والـ <b><bdi dir="ltr">ISO/IEC 15504</bdi></b> مبادرات مشتركة بين الـ <b>ISO</b> والـ <b>IEC</b> عشان يعملوا methodology standard لتقييم الـ software process.' }
   ];
   function StdTimeline({ ar }) {
     const [i, ctl] = useSteps(SES.length, 3200);
@@ -2946,7 +2946,7 @@
   /* ── slide 15: SPICE, the acronym and its 3 objectives ── */
   const SP = [
     { en: '<b>SPICE</b> = <b>S</b>oftware <b>P</b>rocess <b>I</b>mprovement for <b>C</b>apability d<b>E</b>termination.', ar: 'الـ <b>SPICE</b> اختصار لـ:<br><span class="ltr">Software Process Improvement for Capability Determination</span>' },
-    { en: 'The SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by <b>ISO</b> and <b>IEC</b>. Introduced in <b>1993</b>, SPICE aims to improve international software process standards.', ar: 'الـ SPICE project والـ <b>ISO/IEC 15504</b> مبادرات مشتركة بين الـ <b>ISO</b> والـ <b>IEC</b>. اتقدم سنة <b>1993</b>، وهدفه يحسّن الـ international software process standards.' },
+    { en: 'The SPICE project and <b>ISO/IEC 15504</b> are joint initiatives by <b>ISO</b> and <b>IEC</b>. Introduced in <b>1993</b>, SPICE aims to improve international software process standards.', ar: 'الـ SPICE project والـ <b><bdi dir="ltr">ISO/IEC 15504</bdi></b> مبادرات مشتركة بين الـ <b>ISO</b> والـ <b>IEC</b>. اتقدم سنة <b>1993</b>، وهدفه يحسّن الـ international software process standards.' },
     { en: 'Objective (1): <b>establish a standard framework</b> for software process assessment.', ar: 'الـ objective الأول: <b>نعمل standard framework</b> لتقييم الـ software process.' },
     { en: 'Objective (2): <b>conduct organizational assessments</b> for emerging standards.', ar: 'الـ objective التاني: <b>نعمل organizational assessments</b> للـ standards الجديدة.' },
     { en: 'Objective (3): <b>facilitate global adoption</b> of software process assessment in industry.', ar: 'الـ objective التالت: <b>نسهّل تبني</b> تقييم الـ software process عالميًا في الصناعة.' }

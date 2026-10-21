@@ -203,7 +203,7 @@
       if (st === 0) setMsg({ en: 'Nothing happens: on this machine you <b>need to push a button first to activate the reader</b>. Normally you insert the bill first before making a selection, so this machine <b>contravenes a well known convention</b>.', ar: 'مفيش حاجة حصلت: في المكنة دي <b>لازم تدوس زرار الأول عشان الـ reader يشتغل</b>. عادةً بتحط الفلوس الأول قبل ما تختار، فالمكنة دي <b>بتخالف convention معروف</b>.' });
       else if (st === 1) { setSt(2); setMsg({ en: 'Bill accepted. Then <b>STEP 2</b>: follow directions on display, and <b>STEP 3</b>: take receipt, place on dash.', ar: 'الفلوس اتقبلت. بعد كده <b>STEP 2</b>: اتبع التعليمات على الشاشة، و<b>STEP 3</b>: خد الإيصال وحطه على الـ dash.' }); }
     };
-    const push = () => { if (st === 0) { setSt(1); setMsg({ en: '<b>STEP 1: Push any button to start unit.</b> Now the reader is active and you can insert the bill.', ar: '<b>STEP 1: دوس أي زرار عشان المكنة تشتغل.</b> دلوقتي الـ reader شغال وتقدر تحط الفلوس.' }); } };
+    const push = () => { if (st === 0) { setSt(1); setMsg({ en: '<b>STEP 1: Push any button to start unit.</b> Now the reader is active and you can insert the bill.', ar: 'الـ <b>STEP 1: دوس أي زرار عشان المكنة تشتغل.</b> دلوقتي الـ reader شغال وتقدر تحط الفلوس.' }); } };
     const reset = () => { setSt(0); setMsg({ en: '<b>Try it the usual way:</b> you want to pay and choose. What do you do first?', ar: '<b>جرّبها بالطريقة المعتادة:</b> عايز تدفع وتختار. هتعمل إيه الأول؟' }); };
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fig-steps">${[['STEP 1', 'Push any button to start unit'], ['STEP 2', 'Follow directions on display'], ['STEP 3', 'Take receipt, place on dash']].map((t, j) => html`<div key=${j} className=${'fig-step' + (st === 2 || (st === 1 && j === 0) ? ' on' : '')}><b>${t[0]}</b>${t[1]}</div>`)}</div>
@@ -340,9 +340,9 @@
   function SmartTv({ ar }) {
     const steps = [
       { en: 'Which is the best way to interact with a smart TV? Why? (question for discussion; the slide gives no answer)', ar: 'إيه أحسن طريقة للتعامل مع الـ smart TV؟ وليه؟ (سؤال للمناقشة؛ الـ slide مش بتدي إجابة)' },
-      { en: '1) <b>Pecking</b> using a grid keyboard via a remote control.', ar: '1) <b>Pecking</b> بـ grid keyboard عن طريق الريموت.' },
-      { en: '2) <b>Swiping</b> across two alphanumeric rows using a touchpad on a remote control.', ar: '2) <b>Swiping</b> على صفين حروف وأرقام بـ touchpad في الريموت.' },
-      { en: '3) <b>Voice control</b> using a remote or smart speaker.', ar: '3) <b>Voice control</b> عن طريق الريموت أو smart speaker.' }
+      { en: '1) <b>Pecking</b> using a grid keyboard via a remote control.', ar: '1) الـ <b>Pecking</b> بـ grid keyboard عن طريق الريموت.' },
+      { en: '2) <b>Swiping</b> across two alphanumeric rows using a touchpad on a remote control.', ar: '2) الـ <b>Swiping</b> على صفين حروف وأرقام بـ touchpad في الريموت.' },
+      { en: '3) <b>Voice control</b> using a remote or smart speaker.', ar: '3) الـ <b>Voice control</b> عن طريق الريموت أو smart speaker.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const [t, setT] = useState(0);
@@ -362,7 +362,7 @@
     const steps = [
       { en: 'Designing the search feature for an online book library: the first mock-up.', ar: 'تصميم الـ search feature لمكتبة كتب online: أول mock-up.' },
       { en: 'The second mock-up: the same layout in bright colors, with a cartoon face saying "Reading Rox".', ar: 'تاني mock-up: نفس الـ layout بألوان فاقعة، مع وش كارتون بيقول "Reading Rox".' },
-      { en: '<b>Bad design</b>: the user research component is almost absent.', ar: '<b>Design وحش</b>: الـ user research تقريباً مش موجود.' }
+      { en: '<b>Bad design</b>: the user research component is almost absent.', ar: '<b>ده Design وحش</b>: الـ user research تقريباً مش موجود.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const mock = (color, books) => html`<div className=${'fig-mock' + (color ? ' color' : '')}>
@@ -384,7 +384,7 @@
     const kinds = ['Make Believe Books', 'True Books', 'Short Books', 'Medium Books', 'Long Books', 'Picture Books', 'Chapter Books', 'Fairy Tales and Folk Tales', 'Kid Characters', 'Real Animal Characters', 'Imaginary Creature Characters', 'Award Winning Books', 'Recently Added Books'];
     const btn = (k, label, dot) => html`<button key=${k} className=${sel === k ? 'sel' : ''} onClick=${() => setSel(k)}>${dot && html`<i style=${{ background: dot }}></i>`}${label}</button>`;
     const en = sel ? 'You searched by <b>' + sel + '</b> with one tap on a picture button: the <b>visual search</b> that users preferred (71% of searches).' : '<b>Try it:</b> the ICDL Simple Search page searches with big picture buttons. HCIL designed it; good design with more than 3 million unique visitors.';
-    const a = sel ? 'دورت بـ <b>' + sel + '</b> بضغطة واحدة على زرار بصورة: ده الـ <b>visual search</b> اللي الـ users فضّلوه (71% من عمليات البحث).' : '<b>جرّب:</b> صفحة الـ Simple Search في ICDL بتدور بزراير كبيرة فيها صور. اللي صممها HCIL؛ design كويس زاره أكتر من 3 مليون زائر مختلف.';
+    const a = sel ? 'دورت بـ <b>' + sel + '</b> بضغطة واحدة على زرار بصورة: ده الـ <b>visual search</b> اللي الـ users فضّلوه (71% من عمليات البحث).' : '<b>جرّب:</b> صفحة الـ Simple Search في ICDL بتدور بزراير كبيرة فيها صور. اللي صممها HCIL، وهو design كويس زاره أكتر من 3 مليون زائر مختلف.';
     return html`<figure className="fig"><div className="fig-stage"><div className="fig-icdl">
       <div className="grp"><b>Covers</b>${colors.map(([c, d]) => btn(c + ' Covers', c, d))}</div>
       <div className="grp"><b>Age</b>${ages.map(x => btn(x, x))}</div>
@@ -417,10 +417,10 @@
   function DoubleDiamond({ ar }) {
     const steps = [
       { en: 'The double diamond of design has four phases, across two diamonds: from the <b>Problem</b> to the <b>Solution</b>.', ar: 'الـ double diamond of design فيه 4 phases على 2 diamonds: من الـ <b>Problem</b> لحد الـ <b>Solution</b>.' },
-      { en: '<b>Discover</b>: insight into the problem (the first diamond widens).', ar: '<b>Discover</b>: فهم للمشكلة (أول diamond بيوسع).' },
-      { en: '<b>Define</b>: the area to focus upon (it narrows to the <b>Problem Definition / Design Brief</b>).', ar: '<b>Define</b>: المنطقة اللي هنركز عليها (بيضيق لحد الـ <b>Problem Definition / Design Brief</b>).' },
-      { en: '<b>Develop</b>: potential solutions (the second diamond widens).', ar: '<b>Develop</b>: حلول محتملة (تاني diamond بيوسع).' },
-      { en: '<b>Deliver</b>: solutions that work (it narrows to the <b>Solution</b>).', ar: '<b>Deliver</b>: حلول بتشتغل (بيضيق لحد الـ <b>Solution</b>).' }
+      { en: '<b>Discover</b>: insight into the problem (the first diamond widens).', ar: 'الـ <b>Discover</b>: فهم للمشكلة (أول diamond بيوسع).' },
+      { en: '<b>Define</b>: the area to focus upon (it narrows to the <b>Problem Definition / Design Brief</b>).', ar: 'الـ <b>Define</b>: المنطقة اللي هنركز عليها (بيضيق لحد الـ <b><bdi dir="ltr">Problem Definition / Design Brief</bdi></b>).' },
+      { en: '<b>Develop</b>: potential solutions (the second diamond widens).', ar: 'الـ <b>Develop</b>: حلول محتملة (تاني diamond بيوسع).' },
+      { en: '<b>Deliver</b>: solutions that work (it narrows to the <b>Solution</b>).', ar: 'الـ <b>Deliver</b>: حلول بتشتغل (بيضيق لحد الـ <b>Solution</b>).' }
     ];
     const [i, ctl] = useSteps(steps.length, 2200);
     const X = [15, 117, 220, 322, 425], T = 40, B = 220, M = 130;
@@ -453,7 +453,7 @@
       : 'From <b>' + name(cur) + '</b> the arrows go to: ' + OUT[cur].map(name).join(', ') + '.';
     const a = cur === 'start' ? '<b>امشي في الـ model:</b> هو مثال على الـ user-centered design. الـ process بتبدأ من Discovering requirements.'
       : cur === 'end' ? 'خرجت من الـ cycle للـ <b>Final product</b>. الـ Evaluating بس هو اللي ليه سهم لبره.'
-      : 'من <b>' + AR[cur] + '</b> الأسهم بتروح لـ: ' + OUT[cur].map(k => AR[k]).join('، ') + '.';
+      : 'من <b>' + AR[cur] + '</b> الأسهم بتروح لـ: ' + OUT[cur].map(k => 'الـ ' + AR[k]).join(' و') + '.';
     const E = (k) => { const [x, y, l1, l2] = N[k]; const on = cur === k, next = (OUT[cur] || []).includes(k);
       return html`<g key=${k}><ellipse cx=${x} cy=${y} rx="76" ry="32" fill=${on ? 'var(--s-hci)' : next ? 'color-mix(in srgb, var(--k-hci) 18%, var(--paper))' : 'var(--paper)'} stroke=${next ? 'var(--k-hci)' : 'var(--graphite)'} strokeWidth=${next ? 3 : 1.5} className="fade" />
         <text x=${x} y=${l2 ? y - 5 : y + 7} textAnchor="middle" fontSize="19.5" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l1}</text>${l2 && html`<text x=${x} y=${y + 18} textAnchor="middle" fontSize="19.5" fontWeight="600" style=${on ? { fill: '#fff' } : null}>${l2}</text>`}</g>`; };
@@ -484,8 +484,8 @@
   function Sprint({ ar }) {
     const S = [['Unpack', '#f97316'], ['Sketch', '#9ca3af'], ['Decide', '#eab308'], ['Prototype', '#4f6bd8'], ['Test', '#22a34a']];
     const steps = [
-      { en: 'Another lifecycle model: <b>Google Design Sprints</b> (Knapp et al., 2016), with five steps.', ar: 'lifecycle model تاني: <b>Google Design Sprints</b> (Knapp et al., 2016)، فيه 5 خطوات.' },
-      ...S.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>', ar: (k + 1) + ') <b>' + n + '</b>' })),
+      { en: 'Another lifecycle model: <b>Google Design Sprints</b> (Knapp et al., 2016), with five steps.', ar: 'كمان فيه lifecycle model تاني: <b>Google Design Sprints</b> (Knapp et al., 2016)، فيه 5 خطوات.' },
+      ...S.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>', ar: (k + 1) + ') الـ <b>' + n + '</b>' })),
       { en: 'The steps form a cycle labelled <b>Iterate</b>: Test leads back to Unpack.', ar: 'الخطوات بتعمل cycle اسمها <b>Iterate</b>: الـ Test بيرجع للـ Unpack.' }
     ];
     const [i, ctl] = useSteps(steps.length, 1700);
@@ -508,7 +508,7 @@
     const P = [['Need finding', 220, 42], ['Design alternative', 352, 140], ['Prototyping', 220, 238], ['Evaluation', 88, 140]];
     const steps = [
       { en: 'Joyner’s design life cycle: an <b>iterative process with four phases</b>.', ar: 'الـ design life cycle بتاع Joyner هي <b>iterative process فيها 4 phases</b>.' },
-      ...P.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? ', then back to Need finding.' : ''), ar: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? '، وبعدين ترجع للـ Need finding.' : '') }))
+      ...P.map(([n], k) => ({ en: (k + 1) + ') <b>' + n + '</b>' + (k === 3 ? ', then back to Need finding.' : ''), ar: (k + 1) + ') الـ <b>' + n + '</b>' + (k === 3 ? '، وبعدين ترجع للـ Need finding.' : '') }))
     ];
     const [i, ctl] = useSteps(steps.length, 1800);
     const arrows = ['M302 66 L338 100', 'M338 180 L302 214', 'M138 214 L102 180', 'M102 100 L138 66'];
@@ -583,7 +583,7 @@
     else if (stage === 3) { body = html`<p className="fig-task" dangerouslySetInnerHTML=${{ __html: task2 }}></p>${screen2}<p className="fig-timer">${sec(clk.secs)}</p>`; en = task2; a = 'دوّر على سعر <b>الأوضة الدبل</b> في <b>Holiday Inn</b> في <b>Columbia</b>. دوس على السعر.'; }
     else { body = html`<div className="fig-res"><div>Your screen 1<b>${sec(times[0])}</b></div><div>Your screen 2<b>${sec(times[1])}</b></div><div>Tullis (1987) screen 1<b>5.5 s</b></div><div>Tullis (1987) screen 2<b>3.2 s</b></div></div>`;
       en = 'Tullis (1987): the 1st screen took an average of <b>5.5 seconds</b> and the 2nd <b>3.2 seconds</b>, although both have the same density of information. Why? <b>Spacing</b>: in the 1st screen the information is bunched up together, making it hard to search; in the 2nd the characters are grouped into vertical categories of information, making it easier.';
-      a = 'Tullis (1987): الشاشة الأولى خدت في المتوسط <b>5.5 ثانية</b> والتانية <b>3.2 ثانية</b>، رغم إن الاتنين فيهم نفس كمية المعلومات. ليه؟ <b>الـ spacing</b>: في الأولى المعلومات لازقة في بعض فصعب تدور فيها؛ في التانية الحروف متقسمة في أعمدة (vertical categories) فأسهل.'; }
+      a = 'حسب Tullis (1987)، الشاشة الأولى خدت في المتوسط <b>5.5 ثانية</b> والتانية <b>3.2 ثانية</b>، رغم إن الاتنين فيهم نفس كمية المعلومات. ليه؟ <b>الـ spacing</b>: في الأولى المعلومات لازقة في بعض فصعب تدور فيها؛ في التانية الحروف متقسمة في أعمدة (vertical categories) فأسهل.'; }
     return html`<figure className="fig"><div className="fig-stage">${body}</div>
       <${Cap} en=${miss ? 'Not that one. ' + en : en} ar=${miss ? 'مش ده. ' + a : a} showAr=${ar} />
       <div className="fig-bar"><span className="grow"></span>${stage > 0 && html`<button className="fig-btn" onClick=${() => { clk.running && clk.stop(); setStage(0); setTimes([]); setMiss(null); }}>↻ Start over</button>`}</div></figure>`;
@@ -604,7 +604,7 @@
     else if (stage === 3) { body = html`<p className="fig-task">Are borders and white space better? Find <b>French</b></p>${grid(G20, true, 'French')}<p className="fig-timer">${sec(clk.secs)}</p>`; en = 'Groups separated by <b>borders and white space</b>. Tap <b>French</b>.'; a = 'مجموعات متفرقة بـ <b>borders و white space</b>. دوس على <b>French</b>.'; }
     else { body = html`<div className="fig-res"><div>Find Italian (color contrast)<b>${sec(times[0])}</b></div><div>Find French (borders)<b>${sec(times[1])}</b></div></div>`;
       en = 'Weller (2004) found people took <b>less time</b> to locate items for information that was grouped using a <b>border</b> (2nd screen) compared with using <b>color contrast</b> (1st screen). Some argue that too much white space on web pages is detrimental to the search process: it makes it hard to find information. Do you agree?';
-      a = 'Weller (2004) لقى إن الناس خدت <b>وقت أقل</b> عشان تلاقي الحاجة لما المعلومات متجمعة بـ <b>border</b> (الشاشة التانية) مقارنة بـ <b>color contrast</b> (الأولى). وفي ناس بتقول إن الـ white space الكتير في صفحات الويب بيضر عملية البحث: بيخلي صعب تلاقي المعلومة. موافق؟'; }
+      a = 'لقى Weller (2004) إن الناس خدت <b>وقت أقل</b> عشان تلاقي الحاجة لما المعلومات متجمعة بـ <b>border</b> (الشاشة التانية) مقارنة بـ <b>color contrast</b> (الأولى). وفي ناس بتقول إن الـ white space الكتير في صفحات الويب بيضر عملية البحث: بيخلي صعب تلاقي المعلومة. موافق؟'; }
     return html`<figure className="fig"><div className="fig-stage" style=${{ overflowX: 'auto' }}>${body}</div>
       <${Cap} en=${miss ? 'Not that one. ' + en : en} ar=${miss ? 'مش دي. ' + a : a} showAr=${ar} />
       <div className="fig-bar"><span className="grow"></span>${stage > 0 && html`<button className="fig-btn" onClick=${() => { clk.running && clk.stop(); setStage(0); setTimes([]); setMiss(null); }}>↻ Start over</button>`}</div></figure>`;
@@ -669,7 +669,7 @@
     const faces = ['#ef4444', '#a855f7', '#1d4ed8', '#facc15', '#111111', '#ffffff', '#60a5fa'];
     const Q = ['present only 7 options on a menu?', 'display only 7 icons on a tool bar?', 'have no more than 7 bullets in a list?', 'place only 7 items on a pull down menu?', 'place only 7 tabs on the top of a website page?'];
     const QA = ['يعرض 7 اختيارات بس في الـ menu؟', 'يعرض 7 icons بس في الـ tool bar؟', 'مايحطش أكتر من 7 bullets في الـ list؟', 'يحط 7 items بس في الـ pull down menu؟', 'يحط 7 tabs بس فوق صفحة الويب؟'];
-    const steps = [{ en: 'George Miller’s (1956) theory: people’s immediate memory capacity is very limited to <b>7, + or - 2</b>. It has been applied in interaction design when considering how many options to display. But is it a good use of a theory in HCI? Is it helpful?', ar: 'نظرية George Miller (1956): سعة الذاكرة الفورية عند الناس محدودة جداً بـ <b>7, + or - 2</b>. اتطبقت في الـ interaction design لما بنفكر نعرض كام اختيار. بس هل ده استخدام صح للنظرية في الـ HCI؟ وهل مفيد؟' },
+    const steps = [{ en: 'George Miller’s (1956) theory: people’s immediate memory capacity is very limited to <b>7, + or - 2</b>. It has been applied in interaction design when considering how many options to display. But is it a good use of a theory in HCI? Is it helpful?', ar: 'نظرية George Miller (1956): سعة الذاكرة الفورية عند الناس محدودة جداً بـ <b><bdi dir="ltr">7,&nbsp;+&nbsp;or&nbsp;-&nbsp;2</bdi></b>. اتطبقت في الـ interaction design لما بنفكر نعرض كام اختيار. بس هل ده استخدام صح للنظرية في الـ HCI؟ وهل مفيد؟' },
       ...Q.map((q, k) => ({ en: 'When creating an interface, should the designer ' + q + ' (the slide leaves this open)', ar: 'وانت بتعمل interface، هل المصمم المفروض ' + QA[k] + ' (الـ slide سايباها مفتوحة)' }))];
     const [i, ctl] = useSteps(steps.length, 3000);
     const on = k => i === 0 || i === k + 1;

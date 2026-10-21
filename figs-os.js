@@ -321,9 +321,9 @@
       setBusy(nb);
       if (mode === 'sync') { setWaiting(false); setMsg({ en: 'The ' + d + '\'s interrupt: I/O completed, so control returns to the user program.', ar: 'الـ interrupt بتاع الـ ' + d + ': الـ I/O خلص، فالتحكم رجع للـ user program.' }); return; }
       setIntr(x => Object.assign({}, x, { [d]: true })); setCh(d); if (!still) setWaiting(false);
-      setMsg({ en: 'Interrupt from the ' + d + ': the OS <b>indexes into the I/O device table</b> to determine the device status and <b>modifies the table entry to include the interrupt</b>.' + (waiting && !still ? ' The I/O the user waited for is complete.' : ''), ar: 'interrupt من الـ ' + d + ': الـ OS <b>بيدوّر في الـ I/O device table</b> عشان يعرف حالة الجهاز و<b>يعدّل الـ entry عشان يسجّل الـ interrupt</b>.' + (waiting && !still ? ' الـ I/O اللي الـ user كان مستنيه خلص.' : '') });
+      setMsg({ en: 'Interrupt from the ' + d + ': the OS <b>indexes into the I/O device table</b> to determine the device status and <b>modifies the table entry to include the interrupt</b>.' + (waiting && !still ? ' The I/O the user waited for is complete.' : ''), ar: 'الـ interrupt من الـ ' + d + ': الـ OS <b>بيدوّر في الـ I/O device table</b> عشان يعرف حالة الجهاز و<b>يعدّل الـ entry عشان يسجّل الـ interrupt</b>.' + (waiting && !still ? ' الـ I/O اللي الـ user كان مستنيه خلص.' : '') });
     };
-    const sysWait = () => { setWaiting(true); setMsg({ en: '<b>System call</b>: a request to the OS to allow the user to <b>wait for I/O completion</b>.', ar: '<b>System call</b>: طلب من الـ OS إنه يسمح للـ user <b>يستنى لحد ما الـ I/O يخلص</b>.' }); };
+    const sysWait = () => { setWaiting(true); setMsg({ en: '<b>System call</b>: a request to the OS to allow the user to <b>wait for I/O completion</b>.', ar: 'الـ <b>System call</b>: طلب من الـ OS إنه يسمح للـ user <b>يستنى لحد ما الـ I/O يخلص</b>.' }); };
     const cpu = mode === 'sync' && waiting ? (wh === 'instr' ? 'idle (wait instruction)' : 'wait loop') : waiting ? 'running other work' : 'running the user program';
     const tref = useFit(JSON.stringify([busy, intr, mode]));
     return html`<figure className="fig fo1"><div className="fig-stage"><div className="fo1-io">
@@ -357,8 +357,8 @@
     const [n, setN] = useState('1'), [u, setU] = useState(2);
     const txt = {
       bit: { en: 'The basic unit of computer storage is the <b>bit</b>. A bit can contain one of two values, <b>0 and 1</b>. All other storage is based on collections of bits. Click any bit to flip it.', ar: 'الوحدة الأساسية للتخزين هي الـ <b>bit</b>. الـ bit ممكن يشيل قيمة من اتنين، <b>0 أو 1</b>. أي تخزين تاني مبني على مجموعات bits. دوس على أي bit عشان تقلبه.' },
-      byte: { en: 'A <b>byte</b> is <b>8 bits</b>, and on most computers it is the smallest convenient chunk of storage: most computers don\'t have an instruction to move a bit but do have one to move a byte.', ar: 'الـ <b>byte</b> = <b>8 bits</b>، وفي أغلب الكمبيوترات هو أصغر حتة مريحة للتخزين: أغلب الكمبيوترات مفيهاش instruction تنقل bit لكن فيها واحدة تنقل byte.' },
-      word: { en: 'A <b>word</b> is a computer architecture\'s native unit of data, made up of one or more bytes. With 64-bit registers and 64-bit memory addressing: <b>64-bit (8-byte) words</b>. A computer executes many operations in its native word size rather than a byte at a time.', ar: 'الـ <b>word</b> هي وحدة الـ data الأصلية للـ architecture، ومكونة من byte أو أكتر. مع 64-bit registers و 64-bit memory addressing، الـ <b>words حجمها 64 bit (8 bytes)</b>. الكمبيوتر بينفّذ عمليات كتير بحجم الـ word بتاعه مش byte byte.' }
+      byte: { en: 'A <b>byte</b> is <b>8 bits</b>, and on most computers it is the smallest convenient chunk of storage: most computers don\'t have an instruction to move a bit but do have one to move a byte.', ar: 'الـ <bdi dir="ltr"><b>byte</b>&nbsp;=&nbsp;<b>8&nbsp;bits</b></bdi>، وفي أغلب الكمبيوترات هو أصغر حتة مريحة للتخزين: أغلب الكمبيوترات مفيهاش instruction تنقل bit لكن فيها واحدة تنقل byte.' },
+      word: { en: 'A <b>word</b> is a computer architecture\'s native unit of data, made up of one or more bytes. With 64-bit registers and 64-bit memory addressing: <b>64-bit (8-byte) words</b>. A computer executes many operations in its native word size rather than a byte at a time.', ar: 'الـ <b>word</b> هي وحدة الـ data الأصلية للـ architecture، ومكونة من byte أو أكتر. مع <bdi dir="ltr">64-bit</bdi> registers و <bdi dir="ltr">64-bit</bdi> memory addressing، الـ <b>words حجمها <bdi dir="ltr">64 bit (8 bytes)</bdi></b>. الكمبيوتر بينفّذ عمليات كتير بحجم الـ word بتاعه مش byte byte.' }
     };
     const v = Math.max(0, Math.min(999999, parseInt(n, 10) || 0)), bytes = BigInt(v) * (1024n ** BigInt(u + 1));
     const flip = k => { setBits(b => b.map((x, j) => j === k ? 1 - x : x)); setLvl('bit'); setHb(k); };
@@ -430,13 +430,13 @@
       const free = slots.indexOf(null);
       if (free >= 0) { setSlots(s => s.map((v, j) => j === free ? x : v)); setMark(['new', free]); setMsg({ en: 'Checked the ' + fast + ' first: data ' + x + ' is <b>not there</b>, so it is <b>copied from ' + slow + ' to the cache and used there</b>.', ar: 'اتشيّك على الـ ' + fast + ' الأول: data ' + x + ' <b>مش موجودة</b>، فـ<b>بتتنسخ من الـ ' + slow + ' للـ cache وتتستخدم هناك</b>.' }); return; }
       setPend(x); setMark(null);
-      setMsg({ en: 'Data ' + x + ' is not there, and the cache is full: the <b>cache is smaller than the storage being cached</b>. Click the entry to replace: that choice is the <b>replacement policy</b>.', ar: 'data ' + x + ' مش موجودة، والـ cache مليانة: الـ <b>cache أصغر من التخزين اللي بتعمله cache</b>. دوس على الـ entry اللي هيتبدّل: الاختيار ده هو الـ <b>replacement policy</b>.' });
+      setMsg({ en: 'Data ' + x + ' is not there, and the cache is full: the <b>cache is smaller than the storage being cached</b>. Click the entry to replace: that choice is the <b>replacement policy</b>.', ar: 'الـ data ' + x + ' مش موجودة، والـ cache مليانة: الـ <b>cache أصغر من التخزين اللي بتعمله cache</b>. دوس على الـ entry اللي هيتبدّل: الاختيار ده هو الـ <b>replacement policy</b>.' });
     };
     const evict = j => {
       if (!pend) return;
       const old = slots[j];
       setSlots(s => s.map((v, k) => k === j ? pend : v)); setMark(['new', j]); setPend(null);
-      setMsg({ en: 'Data ' + pend + ' replaced ' + old + ' and is used from the cache. Cache size and replacement policy: <b>cache management is an important design problem</b>.', ar: 'data ' + pend + ' خدت مكان ' + old + ' وبتتستخدم من الـ cache. حجم الـ cache والـ replacement policy: <b>إدارة الـ cache مشكلة design مهمة</b>.' });
+      setMsg({ en: 'Data ' + pend + ' replaced ' + old + ' and is used from the cache. Cache size and replacement policy: <b>cache management is an important design problem</b>.', ar: 'الـ data ' + pend + ' خدت مكان ' + old + ' وبتتستخدم من الـ cache. حجم الـ cache والـ replacement policy: <b>إدارة الـ cache مشكلة design مهمة</b>.' });
     };
     return html`<figure className="fig fo1"><div className="fig-stage"><div className="fo1-ca">
       <div className="fo1-row" role="group" aria-label="Levels">${PAIRS.map((p, k) => html`<button key=${k} className=${'fig-btn' + (pair === k ? ' fo1-sel' : '')} onClick=${() => reset(k, size)}>${p[0]} ← ${p[1]}</button>`)}</div>
@@ -634,7 +634,7 @@
     const pickMode = m => { setDma(m); setK(0); setRun(false); };
     const cap = dma
       ? { en: '<b>With DMA</b>: the device controller moves the whole block from its buffer straight into main memory without the CPU. <b>Only one interrupt is generated per block.</b> Press Transfer.', ar: '<b>بالـ DMA</b>: الـ device controller بينقل الـ block كله من الـ buffer بتاعه على الـ main memory على طول من غير الـ CPU. <b>بيطلع interrupt واحد بس لكل block.</b> دوس Transfer.' }
-      : { en: '<b>One interrupt per byte</b>: the CPU is interrupted for every byte that moves. DMA avoids this. Press Transfer and compare the count.', ar: '<b>interrupt لكل byte</b>: الـ CPU بيتقاطع مع كل byte بيتنقل. الـ DMA بيمنع ده. دوس Transfer وقارن العدد.' };
+      : { en: '<b>One interrupt per byte</b>: the CPU is interrupted for every byte that moves. DMA avoids this. Press Transfer and compare the count.', ar: 'فيه <b>interrupt لكل byte</b>: الـ CPU بيتقاطع مع كل byte بيتنقل. الـ DMA بيمنع ده. دوس Transfer وقارن العدد.' };
     return html`<figure className="fig fo2"><div className="fig-stage"><div className="fo2-wrap">
       <div className="fo2-blk">
         <span>buffer</span><div className="fo2-cells">${Array.from({ length: N }, (_, j) => html`<div key=${j} className=${j >= k ? 'fo2-full' : ''}></div>`)}</div>
@@ -690,7 +690,7 @@
     const st = j => !multi && j > 0 ? 'free' : j === run ? 'run' : j === wait ? 'wait' : 'ready';
     let cap;
     if (!multi) cap = run === 0
-      ? { en: 'One job only: a <b>single user cannot keep the CPU and I/O devices busy at all times</b>. Make the job wait for I/O.', ar: 'job واحد بس: <b>user واحد مش بيقدر يخلّي الـ CPU والـ I/O devices مشغولين طول الوقت</b>. خلّي الـ job يستنى I/O.' }
+      ? { en: 'One job only: a <b>single user cannot keep the CPU and I/O devices busy at all times</b>. Make the job wait for I/O.', ar: 'فيه job واحد بس: <b>user واحد مش بيقدر يخلّي الـ CPU والـ I/O devices مشغولين طول الوقت</b>. خلّي الـ job يستنى I/O.' }
       : { en: 'The only job waits for I/O, so the <b>CPU is idle</b>: nothing else in memory to run. This is why multiprogramming is <b>needed for efficiency</b>.', ar: 'الـ job الوحيد مستني I/O، فالـ <b>CPU قاعد فاضي</b>: مفيش حاجة تانية في الـ memory يشغّلها. علشان كده الـ multiprogramming <b>مطلوب للـ efficiency</b>.' };
     else cap = n === 0
       ? { en: '<b>Multiprogramming (batch system)</b>: the OS sits at address 0 and a <b>subset of the total jobs</b> (job 1 to job 4) is kept in memory, up to 512M. One job is selected and run via <b>job scheduling</b>. Press the button.', ar: 'الـ <b>Multiprogramming (batch system)</b>: الـ OS عند address 0 و<b>جزء من الـ jobs الكلية</b> (من job 1 لـ job 4) محطوط في الـ memory لحد 512M. job واحد بيتختار ويشتغل بالـ <b>job scheduling</b>. دوس الزرار.' }
@@ -739,12 +739,12 @@
   /* ── L1 slides 26 and 27: dual mode and the transition from user to kernel mode ── */
   function Modes({ ar }) {
     const steps = [
-      { en: 'The <b>user process</b> is executing in <b>user mode</b> (mode bit = 1). The <b>mode bit</b>, provided by hardware, distinguishes when the system is running user code or kernel code.', ar: 'الـ <b>user process</b> شغّال في الـ <b>user mode</b> (mode bit = 1). الـ <b>mode bit</b> اللي بيوفّره الـ hardware بيفرّق إمتى الـ system بيشغّل user code وإمتى kernel code.' },
+      { en: 'The <b>user process</b> is executing in <b>user mode</b> (mode bit = 1). The <b>mode bit</b>, provided by hardware, distinguishes when the system is running user code or kernel code.', ar: 'الـ <b>user process</b> شغّال في الـ <b>user mode</b> (<bdi dir="ltr">mode bit = 1</bdi>). الـ <b>mode bit</b> اللي بيوفّره الـ hardware بيفرّق إمتى الـ system بيشغّل user code وإمتى kernel code.' },
       { en: 'The user process <b>calls a system call</b>.', ar: 'الـ user process <b>بينادي system call</b>.' },
-      { en: '<b>Trap</b>: mode bit = 0. The system call changes the mode to <b>kernel</b>.', ar: '<b>Trap</b>: الـ mode bit = 0. الـ system call بيغيّر الـ mode لـ <b>kernel</b>.' },
-      { en: 'The kernel <b>executes the system call</b> in <b>kernel mode</b> (mode bit = 0). <b>Privileged</b> instructions can run only here.', ar: 'الـ kernel <b>بينفّذ الـ system call</b> في الـ <b>kernel mode</b> (mode bit = 0). الـ instructions الـ <b>privileged</b> بتشتغل هنا بس.' },
-      { en: '<b>Return</b>: mode bit = 1. Return from the call resets the mode to <b>user</b>.', ar: '<b>Return</b>: الـ mode bit = 1. الرجوع من الـ call بيرجّع الـ mode لـ <b>user</b>.' },
-      { en: '<b>Return from system call</b>: the user process continues in user mode. Dual-mode operation lets the OS protect itself and other system components.', ar: '<b>Return from system call</b>: الـ user process بيكمّل في الـ user mode. الـ dual-mode operation بيخلّي الـ OS يحمي نفسه وباقي الـ system components.' }
+      { en: '<b>Trap</b>: mode bit = 0. The system call changes the mode to <b>kernel</b>.', ar: 'الـ <b>Trap</b>: الـ <bdi dir="ltr">mode bit = 0</bdi>. الـ system call بيغيّر الـ mode لـ <b>kernel</b>.' },
+      { en: 'The kernel <b>executes the system call</b> in <b>kernel mode</b> (mode bit = 0). <b>Privileged</b> instructions can run only here.', ar: 'الـ kernel <b>بينفّذ الـ system call</b> في الـ <b>kernel mode</b> (<bdi dir="ltr">mode bit = 0</bdi>). الـ instructions الـ <b>privileged</b> بتشتغل هنا بس.' },
+      { en: '<b>Return</b>: mode bit = 1. Return from the call resets the mode to <b>user</b>.', ar: 'الـ <b>Return</b>: الـ <bdi dir="ltr">mode bit = 1</bdi>. الرجوع من الـ call بيرجّع الـ mode لـ <b>user</b>.' },
+      { en: '<b>Return from system call</b>: the user process continues in user mode. Dual-mode operation lets the OS protect itself and other system components.', ar: 'الـ <b>Return from system call</b>: الـ user process بيكمّل في الـ user mode. الـ dual-mode operation بيخلّي الـ OS يحمي نفسه وباقي الـ system components.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2400);
     const [priv, setPriv] = useState(null);
@@ -815,7 +815,7 @@
     const [s, setS] = useState(0);
     const L = LV[s], pos = v => (Math.log10(v) + 1) / 8 * 100;
     const rows = [['Name', L.n], ['Typical size', L.size], ['Implementation technology', L.tech], ['Access time (ns)', L.acc], ['Bandwidth (MB/sec)', L.bw], ['Managed by', L.man], ['Backed by', L.back]];
-    const cap = { en: '<b>Level ' + (s + 1) + ': ' + L.n + '</b>, managed by the <b>' + L.man + '</b> and backed by <b>' + L.back + '</b>. Pick a level. Movement between levels of the storage hierarchy can be <b>explicit or implicit</b>.', ar: '<b>Level ' + (s + 1) + ': ' + L.n + '</b>، اللي بيديره الـ <b>' + L.man + '</b> ووراه <b>' + L.back + '</b>. اختار level. الحركة بين مستويات الـ storage hierarchy ممكن تبقى <b>explicit أو implicit</b>.' };
+    const cap = { en: '<b>Level ' + (s + 1) + ': ' + L.n + '</b>, managed by the <b>' + L.man + '</b> and backed by <b>' + L.back + '</b>. Pick a level. Movement between levels of the storage hierarchy can be <b>explicit or implicit</b>.', ar: 'الـ <b><bdi dir="ltr">Level ' + (s + 1) + ': ' + L.n + '</bdi></b>، اللي بيديره الـ <b>' + L.man + '</b> ووراه <b>' + L.back + '</b>. اختار level. الحركة بين مستويات الـ storage hierarchy ممكن تبقى <b>explicit أو implicit</b>.' };
     return html`<figure className="fig fo2"><div className="fig-stage"><div className="fo2-wrap">
       <div className="fo2-lv" role="group" aria-label="Storage level">${LV.map((l, k) => html`<button key=${k} className=${s === k ? 'fo2-on' : ''} aria-pressed=${s === k} onClick=${() => setS(k)}><b>${k + 1}</b>${l.n}</button>`)}</div>
       <div className="fo2-dl">${rows.map(([a, b]) => html`<${React.Fragment} key=${a}><span>${a}</span><span>${b}</span></${React.Fragment}>`)}</div>
@@ -1041,7 +1041,7 @@
       { en: 'The OS <b>saves the state of P0 into PCB0</b>.', ar: 'الـ OS <b>بيحفظ الـ state بتاعة P0 في PCB0</b>.', s: ['idle', 'save state into PCB0', 'idle'] },
       { en: '... then <b>reloads the state of P1 from PCB1</b>. While the OS switches, neither process runs: context-switch time is overhead; the system does no useful work while switching.', ar: '... وبعدين <b>بيحمّل الـ state بتاعة P1 من PCB1</b>. وهو بيبدّل مفيش ولا process شغالة: وقت الـ context switch ده overhead، السيستم مابيعملش شغل مفيد وهو بيبدّل.', s: ['idle', 'reload state from PCB1', 'idle'] },
       { en: '<b>Process P1</b> is executing; P0 is idle.', ar: 'الـ <b>process P1</b> شغالة؛ والـ P0 واقفة (idle).', s: ['idle', '', 'executing'] },
-      { en: 'Another <b>interrupt or system call</b>: the OS <b>saves the state of P1 into PCB1</b>.', ar: '<b>interrupt أو system call</b> تاني: الـ OS <b>بيحفظ الـ state بتاعة P1 في PCB1</b>.', s: ['idle', 'save state into PCB1', 'idle'] },
+      { en: 'Another <b>interrupt or system call</b>: the OS <b>saves the state of P1 into PCB1</b>.', ar: 'فيه <b>interrupt أو system call</b> تاني: الـ OS <b>بيحفظ الـ state بتاعة P1 في PCB1</b>.', s: ['idle', 'save state into PCB1', 'idle'] },
       { en: '... then <b>reloads the state of P0 from PCB0</b>.', ar: '... وبعدين <b>بيحمّل الـ state بتاعة P0 من PCB0</b>.', s: ['idle', 'reload state from PCB0', 'idle'] },
       { en: '<b>P0 is executing again</b>, from where it stopped; P1 is idle. The context of a process is represented in its PCB.', ar: 'الـ <b>P0 رجعت تشتغل تاني</b> من المكان اللي وقفت عنده؛ والـ P1 واقفة. الـ context بتاع الـ process بيتمثل في الـ PCB بتاعها.', s: ['executing', '', 'idle'] }
     ];
@@ -1232,28 +1232,28 @@
   function ForkLife({ ar }) {
     const [par, setPar] = useState('run'), [ch, setCh] = useState(null), [cas, setCas] = useState(false), [msg, setMsg] = useState(null);
     const say = (en, a) => setMsg({ en, ar: a });
-    const fork = () => { setCh({ prog: 'dup', st: 'run' }); say('<b>fork()</b> system call creates a new process. The child is a <b>duplicate of the parent</b> (first type of address space).', 'الـ <b>fork()</b> system call بيعمل process جديدة. الـ child <b>نسخة من الـ parent</b> (أول نوع من الـ address space).'); };
-    const exec = () => { setCh(c => Object.assign({}, c, { prog: 'new' })); say('<b>exec()</b> system call, used after a fork(), replaces the process\' memory space with a <b>new program</b>: the child has a program loaded into it (second type).', 'الـ <b>exec()</b> system call، بيتستخدم بعد الـ fork()، بيبدّل الـ memory space بتاعة الـ process بـ <b>program جديد</b>: الـ child بقى فيه program متحمّل (تاني نوع).'); };
+    const fork = () => { setCh({ prog: 'dup', st: 'run' }); say('<b>fork()</b> system call creates a new process. The child is a <b>duplicate of the parent</b> (first type of address space).', 'الـ <b><bdi dir="ltr">fork()</bdi></b> system call بيعمل process جديدة. الـ child <b>نسخة من الـ parent</b> (أول نوع من الـ address space).'); };
+    const exec = () => { setCh(c => Object.assign({}, c, { prog: 'new' })); say('<b>exec()</b> system call, used after a fork(), replaces the process\' memory space with a <b>new program</b>: the child has a program loaded into it (second type).', 'الـ <b><bdi dir="ltr">exec()</bdi></b> system call، بيتستخدم بعد الـ <bdi dir="ltr">fork()</bdi>، بيبدّل الـ memory space بتاعة الـ process بـ <b>program جديد</b>: الـ child بقى فيه program متحمّل (تاني نوع).'); };
     const wait = () => {
-      if (ch && ch.st === 'zombie') { setCh(null); say('<b>pid = wait(&amp;status);</b> returns the status information and the pid of the terminated child. Its resources are deallocated by the operating system.', 'الـ <b><code>pid = wait(&amp;status);</code></b> بيرجّع الـ status والـ pid بتاع الـ child اللي خلص. والـ resources بتاعته الـ OS بيرجعها (deallocated).'); return; }
-      setPar('wait'); say('The parent calls <b>wait()</b>: the parent waits until the child terminates.', 'الـ parent بينادي <b>wait()</b>: الـ parent بيستنى لحد ما الـ child يخلص.');
+      if (ch && ch.st === 'zombie') { setCh(null); say('<b>pid = wait(&amp;status);</b> returns the status information and the pid of the terminated child. Its resources are deallocated by the operating system.', 'الـ statement ده:<span class="ltr"><b><code>pid = wait(&amp;status);</code></b></span>بيرجّع الـ status والـ pid بتاع الـ child اللي خلص. والـ resources بتاعته الـ OS بيرجعها (deallocated).'); return; }
+      setPar('wait'); say('The parent calls <b>wait()</b>: the parent waits until the child terminates.', 'الـ parent بينادي <b><bdi dir="ltr">wait()</bdi></b>: الـ parent بيستنى لحد ما الـ child يخلص.');
     };
     const cexit = () => {
-      if (par === 'wait') { setCh(null); setPar('run'); say('The child executes its last statement and asks the OS to delete it using <b>exit()</b>. Status data returns from child to parent via wait(): <b>pid = wait(&amp;status);</b> gives the status and the pid. The child\'s resources are deallocated by the OS.', 'الـ child بينفذ آخر statement ويطلب من الـ OS يمسحه بـ <b>exit()</b>. الـ status بيرجع من الـ child للـ parent عن طريق الـ wait()، والـ <b><code>pid = wait(&amp;status);</code></b> بيدي الـ status والـ pid. والـ resources بتاعة الـ child الـ OS بيرجعها.'); return; }
-      setCh(c => Object.assign({}, c, { st: 'zombie' })); say('The child called <b>exit()</b>, but no parent is waiting (it did not invoke wait()): the child is a <b>zombie</b>. Press the parent\'s wait() to collect it.', 'الـ child نادى <b>exit()</b>، بس مفيش parent مستني (ماندهش wait()): الـ child بقى <b>zombie</b>. دوس wait() بتاعة الـ parent عشان يلمّه.');
+      if (par === 'wait') { setCh(null); setPar('run'); say('The child executes its last statement and asks the OS to delete it using <b>exit()</b>. Status data returns from child to parent via wait(): <b>pid = wait(&amp;status);</b> gives the status and the pid. The child\'s resources are deallocated by the OS.', 'الـ child بينفذ آخر statement ويطلب من الـ OS يمسحه بـ <b><bdi dir="ltr">exit()</bdi></b>. الـ status بيرجع من الـ child للـ parent عن طريق الـ <bdi dir="ltr">wait()</bdi>، والـ statement ده بيدي الـ status والـ pid:<span class="ltr"><b><code>pid = wait(&amp;status);</code></b></span>والـ resources بتاعة الـ child الـ OS بيرجعها.'); return; }
+      setCh(c => Object.assign({}, c, { st: 'zombie' })); say('The child called <b>exit()</b>, but no parent is waiting (it did not invoke wait()): the child is a <b>zombie</b>. Press the parent\'s wait() to collect it.', 'الـ child نادى <b><bdi dir="ltr">exit()</bdi></b>، بس مفيش parent مستني (ماندهش <bdi dir="ltr">wait()</bdi>): الـ child بقى <b>zombie</b>. دوس <bdi dir="ltr">wait()</bdi> بتاعة الـ parent عشان يلمّه.');
     };
-    const abort = () => { setCh(null); say('The parent terminates the child using <b>abort()</b>. Some reasons: the child has exceeded allocated resources; the task assigned to the child is no longer required; the parent is exiting and the OS does not allow a child to continue if its parent terminates.', 'الـ parent بينهي الـ child بـ <b>abort()</b>. من الأسباب: الـ child عدّى الـ resources المتخصصة له؛ الـ task اللي مع الـ child مبقتش مطلوبة؛ الـ parent خارج والـ OS مابيسمحش لـ child يكمل لو الـ parent بتاعه خلص.'); };
+    const abort = () => { setCh(null); say('The parent terminates the child using <b>abort()</b>. Some reasons: the child has exceeded allocated resources; the task assigned to the child is no longer required; the parent is exiting and the OS does not allow a child to continue if its parent terminates.', 'الـ parent بينهي الـ child بـ <b><bdi dir="ltr">abort()</bdi></b>. من الأسباب: الـ child عدّى الـ resources المتخصصة له؛ الـ task اللي مع الـ child مبقتش مطلوبة؛ الـ parent خارج والـ OS مابيسمحش لـ child يكمل لو الـ parent بتاعه خلص.'); };
     const pexit = () => {
       setPar('end');
       if (ch && ch.st === 'run') {
-        if (cas) { setCh(null); say('The parent called <b>exit()</b>. This OS does not allow a child to exist if its parent has terminated: <b>cascading termination</b>. All children, grandchildren, etc. are terminated; the termination is initiated by the operating system.', 'الـ parent نادى <b>exit()</b>. الـ OS ده مابيسمحش إن child يفضل موجود لو الـ parent خلص: <b>cascading termination</b>. كل الـ children والـ grandchildren إلخ بيخلصوا؛ والـ OS هو اللي بيبدأ الإنهاء.'); }
-        else { setCh(c => Object.assign({}, c, { st: 'orphan' })); say('The parent terminated without invoking <b>wait()</b>: the child is an <b>orphan</b>.', 'الـ parent خلص من غير ما ينادي <b>wait()</b>: الـ child بقى <b>orphan</b>.'); }
+        if (cas) { setCh(null); say('The parent called <b>exit()</b>. This OS does not allow a child to exist if its parent has terminated: <b>cascading termination</b>. All children, grandchildren, etc. are terminated; the termination is initiated by the operating system.', 'الـ parent نادى <b><bdi dir="ltr">exit()</bdi></b>. الـ OS ده مابيسمحش إن child يفضل موجود لو الـ parent خلص: <b>cascading termination</b>. كل الـ children والـ grandchildren إلخ بيخلصوا؛ والـ OS هو اللي بيبدأ الإنهاء.'); }
+        else { setCh(c => Object.assign({}, c, { st: 'orphan' })); say('The parent terminated without invoking <b>wait()</b>: the child is an <b>orphan</b>.', 'الـ parent خلص من غير ما ينادي <b><bdi dir="ltr">wait()</bdi></b>: الـ child بقى <b>orphan</b>.'); }
         return;
       }
-      say('The parent executes its last statement and asks the OS to delete it using <b>exit()</b>; its resources are deallocated by the OS.', 'الـ parent بينفذ آخر statement ويطلب من الـ OS يمسحه بـ <b>exit()</b>؛ والـ resources بتاعته الـ OS بيرجعها.');
+      say('The parent executes its last statement and asks the OS to delete it using <b>exit()</b>; its resources are deallocated by the OS.', 'الـ parent بينفذ آخر statement ويطلب من الـ OS يمسحه بـ <b><bdi dir="ltr">exit()</bdi></b>؛ والـ resources بتاعته الـ OS بيرجعها.');
     };
     const reset = () => { setPar('run'); setCh(null); setMsg(null); };
-    const m = msg || { en: 'A <b>parent</b> process creates <b>children</b> processes. <b>Try it:</b> press <b>fork()</b>, then try exec(), wait() and exit() in different orders.', ar: 'الـ <b>parent</b> process بتعمل <b>children</b> processes. <b>جرّب:</b> دوس <b>fork()</b>، وبعدين جرّب exec() و wait() و exit() بترتيبات مختلفة.' };
+    const m = msg || { en: 'A <b>parent</b> process creates <b>children</b> processes. <b>Try it:</b> press <b>fork()</b>, then try exec(), wait() and exit() in different orders.', ar: 'الـ <b>parent</b> process بتعمل <b>children</b> processes. <b>جرّب:</b> دوس <b><bdi dir="ltr">fork()</bdi></b>، وبعدين جرّب <bdi dir="ltr">exec()</bdi> و <bdi dir="ltr">wait()</bdi> و <bdi dir="ltr">exit()</bdi> بترتيبات مختلفة.' };
     const chip = (st) => { const L = { run: ['running', 'run'], wait: ['waiting in wait()', 'wait'], end: ['terminated', 'end'], zombie: ['zombie', 'zom'], orphan: ['orphan', 'orph'] }[st]; return html`<span className=${'fo3-chip ' + L[1]}>${L[0]}</span>`; };
     const B = (txt, fn, ok) => html`<button className="fig-btn" onClick=${fn} disabled=${!ok}>${txt}</button>`;
     const pr = par === 'run';
@@ -1436,7 +1436,7 @@
   // ps: [{ n, at, bt, pr }] in table order (equal arrival times are served in table order).
   // alg: 'fcfs' | 'sjf' | 'srtf' | 'rr' | 'prio' | 'priorr'. Returns { blocks: [{ p, s, e, en, ar }], ct: [] }.
   const fmtN = x => String(Math.round(x * 100) / 100);
-  const joinEn = a => a.join(', '), joinAr = a => a.join('، ');
+  const joinEn = a => a.join(', '), joinAr = a => a.map((x, i) => (i ? 'والـ ' : 'الـ ') + x).join('، ');
   function simulate(ps, alg, q) {
     const n = ps.length, rem = ps.map(p => p.bt), blocks = [], N = i => ps[i].n;
     const order = ps.map((_, i) => i).sort((a, b) => ps[a].at - ps[b].at || a - b);
@@ -1457,12 +1457,12 @@
           else { const l = ready.map(N); en = `Ready queue, in order of arrival: ${joinEn(l)}. ${N(c)} came first, so it gets the CPU and keeps it until its burst of ${ps[c].bt} ends: ${s} to ${t}.`; ar = `الـ ready queue بترتيب الوصول: ${joinAr(l)}. الـ ${N(c)} جت الأول، فبتاخد الـ CPU وتفضل ماسكاه لحد ما الـ burst بتاعها (${ps[c].bt}) يخلص: من ${s} لـ ${t}.`; }
         } else if (alg === 'sjf') {
           const l = ready.map(i => `${N(i)} (${ps[i].bt})`);
-          if (ready.length === 1) { en = `At t = ${s} only ${l[0]} is ready, so it runs to the end: ${s} to ${t}.`; ar = `عند t = ${s} الجاهزة بس ${l[0]}، فبتشتغل لحد ما تخلص: من ${s} لـ ${t}.`; }
-          else { en = `At t = ${s} the ready processes and their next CPU bursts are ${joinEn(l)}. The shortest is ${N(c)} (${ps[c].bt})${tie ? ', first come among the equal ones' : ''}, so it runs to the end: ${s} to ${t}.`; ar = `عند t = ${s} الـ processes الجاهزة والـ CPU burst الجاي لكل واحدة: ${joinAr(l)}. الأقصر هي ${N(c)} (${ps[c].bt})${tie ? '، والتعادل بيتحل بالأسبق' : ''}، فبتشتغل لحد ما تخلص: من ${s} لـ ${t}.`; }
+          if (ready.length === 1) { en = `At t = ${s} only ${l[0]} is ready, so it runs to the end: ${s} to ${t}.`; ar = `عند <bdi dir="ltr">t&nbsp;=&nbsp;${s}</bdi> الجاهزة بس ${l[0]}، فبتشتغل لحد ما تخلص: من ${s} لـ ${t}.`; }
+          else { en = `At t = ${s} the ready processes and their next CPU bursts are ${joinEn(l)}. The shortest is ${N(c)} (${ps[c].bt})${tie ? ', first come among the equal ones' : ''}, so it runs to the end: ${s} to ${t}.`; ar = `عند <bdi dir="ltr">t&nbsp;=&nbsp;${s}</bdi> الـ processes الجاهزة والـ CPU burst الجاي لكل واحدة: ${joinAr(l)}. الأقصر هي ${N(c)} (${ps[c].bt})${tie ? '، والتعادل بيتحل بالأسبق' : ''}، فبتشتغل لحد ما تخلص: من ${s} لـ ${t}.`; }
         } else {
           const l = ready.map(i => `${N(i)} (${ps[i].pr})`);
-          if (ready.length === 1) { en = `At t = ${s} only ${l[0]} is ready, so it runs its burst of ${ps[c].bt}: ${s} to ${t}.`; ar = `عند t = ${s} الجاهزة بس ${l[0]}، فبتشغّل الـ burst بتاعها (${ps[c].bt}): من ${s} لـ ${t}.`; }
-          else { en = `At t = ${s} the ready processes and their priorities are ${joinEn(l)}. The smallest integer is the highest priority: ${N(c)} (${ps[c].pr})${tie ? ', first come among the equal ones,' : ''} runs its burst of ${ps[c].bt}: ${s} to ${t}.`; ar = `عند t = ${s} الـ processes الجاهزة والـ priority بتاعتها: ${joinAr(l)}. أصغر رقم = أعلى priority: الـ ${N(c)} (${ps[c].pr})${tie ? ' (والتعادل بيتحل بالأسبق)' : ''} بتشغّل الـ burst بتاعها (${ps[c].bt}): من ${s} لـ ${t}.`; }
+          if (ready.length === 1) { en = `At t = ${s} only ${l[0]} is ready, so it runs its burst of ${ps[c].bt}: ${s} to ${t}.`; ar = `عند <bdi dir="ltr">t&nbsp;=&nbsp;${s}</bdi> الجاهزة بس ${l[0]}، فبتشغّل الـ burst بتاعها (${ps[c].bt}): من ${s} لـ ${t}.`; }
+          else { en = `At t = ${s} the ready processes and their priorities are ${joinEn(l)}. The smallest integer is the highest priority: ${N(c)} (${ps[c].pr})${tie ? ', first come among the equal ones,' : ''} runs its burst of ${ps[c].bt}: ${s} to ${t}.`; ar = `عند <bdi dir="ltr">t&nbsp;=&nbsp;${s}</bdi> الـ processes الجاهزة والـ priority بتاعتها: ${joinAr(l)}. أصغر رقم = أعلى priority: الـ ${N(c)} (${ps[c].pr})${tie ? ' (والتعادل بيتحل بالأسبق)' : ''} بتشغّل الـ burst بتاعها (${ps[c].bt}): من ${s} لـ ${t}.`; }
         }
         blocks.push({ p: c, s, e: t, en, ar });
       }
@@ -1483,7 +1483,7 @@
         if (b.p < 0) continue;
         const m = b.m, c = b.p;
         const during = ps.map((p, i) => i).filter(i => i !== c && ps[i].at > b.s && ps[i].at < b.e);
-        let hEn = `At t = ${b.s}: `, hAr = `عند t = ${b.s}: `;
+        let hEn = `At t = ${b.s}: `, hAr = `عند <bdi dir="ltr">t&nbsp;=&nbsp;${b.s}</bdi>: `;
         if (m.fin) { hEn += `${m.fin} finishes. `; hAr += `الـ ${m.fin} بتخلص. `; }
         if (m.arr.length) { hEn += `${joinEn(m.arr)} ${m.arr.length > 1 ? 'arrive' : 'arrives'}. `; hAr += `${joinAr(m.arr)} ${m.arr.length > 1 ? 'بيوصلوا' : 'بتوصل'}. `; }
         const rl = m.rems.map(([x, r]) => `${x} ${r}`);
@@ -1504,9 +1504,9 @@
         if (rem[c] > 0) Q.push(c); else done++;
         const ql = Q.map(N), qEn = ql.length ? `Ready queue now: ${joinEn(ql)}.` : 'The ready queue is now empty.', qAr = ql.length ? `الـ ready queue دلوقتي: ${joinAr(ql)}.` : 'الـ ready queue فاضية دلوقتي.';
         let en = `${N(c)} is at the head of the ready queue and runs ${s} to ${t}`, ar = `الـ ${N(c)} في أول الـ ready queue وبتشتغل من ${s} لـ ${t}`;
-        if (rem[c] > 0) { en += ` (a full quantum, q = ${q}). The quantum expires with ${rem[c]} left, so it is preempted and added to the end of the ready queue. `; ar += ` (quantum كامل، q = ${q}). الـ quantum بيخلص وفاضل لها ${rem[c]}، فبتتعملها preempt وتتحط في آخر الـ ready queue. `; }
-        else if (run < q) { en += ` and finishes before its quantum (q = ${q}) is used up. `; ar += ` وبتخلص قبل ما الـ quantum (q = ${q}) يخلص. `; }
-        else { en += ` (q = ${q}) and finishes. `; ar += ` (q = ${q}) وبتخلص. `; }
+        if (rem[c] > 0) { en += ` (a full quantum, q = ${q}). The quantum expires with ${rem[c]} left, so it is preempted and added to the end of the ready queue. `; ar += ` (quantum كامل، <bdi dir="ltr">q&nbsp;=&nbsp;${q}</bdi>). الـ quantum بيخلص وفاضل لها ${rem[c]}، فبتتعملها preempt وتتحط في آخر الـ ready queue. `; }
+        else if (run < q) { en += ` and finishes before its quantum (q = ${q}) is used up. `; ar += ` وبتخلص قبل ما الـ quantum (<bdi dir="ltr">q&nbsp;=&nbsp;${q}</bdi>) يخلص. `; }
+        else { en += ` (q = ${q}) and finishes. `; ar += ` (<bdi dir="ltr">q&nbsp;=&nbsp;${q}</bdi>) وبتخلص. `; }
         blocks.push({ p: c, s, e: t, en: en + qEn, ar: ar + qAr });
       }
     } else { // priority with round-robin
@@ -1530,7 +1530,7 @@
           b.ar = `أعلى priority مستنية هي ${b.lvl}، والـ ${c} هي الوحيدة اللي ليها الـ priority دي، فبتفضل ماسكة الـ CPU: من ${b.s} لـ ${b.e}${fin ? ' وبتخلص' : ''}.`;
         } else {
           b.en = `The highest priority waiting is ${b.lvl}: ${joinEn(b.peers)}. Same priority, so they run round-robin with q = ${q}: ${c} runs ${b.s} to ${b.e}${fin ? ' and finishes' : `, then goes to the end of the queue (${b.left} left)`}.`;
-          b.ar = `أعلى priority مستنية هي ${b.lvl}: ${joinAr(b.peers)}. نفس الـ priority، فبيشتغلوا round-robin بـ q = ${q}: الـ ${c} بتشتغل من ${b.s} لـ ${b.e}${fin ? ' وبتخلص' : `، وبعدين بتروح آخر الـ queue (فاضل ${b.left})`}.`;
+          b.ar = `أعلى priority مستنية هي ${b.lvl}: ${joinAr(b.peers)}. نفس الـ priority، فبيشتغلوا round-robin بـ <bdi dir="ltr">q&nbsp;=&nbsp;${q}</bdi>: الـ ${c} بتشتغل من ${b.s} لـ ${b.e}${fin ? ' وبتخلص' : `، وبعدين بتروح آخر الـ queue (فاضل ${b.left})`}.`;
         }
         delete b.peers; delete b.lvl; delete b.left; delete b.k;
       }
@@ -1580,12 +1580,12 @@
   }
   const ALG = { fcfs: 'FCFS', sjf: 'SJF', srtf: 'SRTF', rr: 'RR', prio: 'Priority', priorr: 'Priority + RR' };
   const INTRO = {
-    fcfs: () => ({ en: '<b>First-Come, First-Served</b>: the processes get the CPU in the order they arrive, and each keeps it until its CPU burst ends. Watch the Gantt chart being drawn, or press Next.', ar: 'الـ <b><bdi>First-Come, First-Served</bdi></b>: الـ processes بتاخد الـ CPU بترتيب وصولها، وكل واحدة بتفضل ماسكاه لحد ما الـ CPU burst بتاعها يخلص. اتفرج على الـ Gantt chart وهو بيترسم، أو دوس Next.' }),
+    fcfs: () => ({ en: '<b>First-Come, First-Served</b>: the processes get the CPU in the order they arrive, and each keeps it until its CPU burst ends. Watch the Gantt chart being drawn, or press Next.', ar: 'الـ <b><bdi dir="ltr">First-Come, First-Served</bdi></b>: الـ processes بتاخد الـ CPU بترتيب وصولها، وكل واحدة بتفضل ماسكاه لحد ما الـ CPU burst بتاعها يخلص. اتفرج على الـ Gantt chart وهو بيترسم، أو دوس Next.' }),
     sjf: () => ({ en: '<b>Shortest-Job-First</b>: associate with each process the length of its next CPU burst, and schedule the process with the shortest time. SJF is optimal: it gives the minimum average waiting time.', ar: 'الـ <b>Shortest-Job-First</b>: بنربط كل process بطول الـ CPU burst الجاي بتاعها، ونشغّل الأقصر. الـ SJF هو الـ optimal: بيدّي أقل متوسط waiting time.' }),
     srtf: () => ({ en: '<b>Preemptive SJF</b> (shortest-remaining-time-first): now we add the concepts of varying arrival times and preemption. A process that arrives with a shorter burst than what is left of the running one preempts it.', ar: 'الـ <b>Preemptive SJF</b> (shortest-remaining-time-first): دلوقتي بنضيف فكرة أوقات الوصول المختلفة والـ preemption. الـ process اللي توصل بـ burst أقصر من اللي فاضل من الشغالة بتعملها preempt.' }),
-    rr: q => ({ en: `<b>Round Robin</b>, time quantum q = ${q}: each process gets a small unit of CPU time; after it has elapsed, the process is preempted and added to the end of the ready queue.`, ar: `الـ <b>Round Robin</b>، الـ time quantum q = ${q}: كل process بتاخد حتة صغيرة من وقت الـ CPU؛ ولما تخلص بتتعملها preempt وتتحط في آخر الـ ready queue.` }),
+    rr: q => ({ en: `<b>Round Robin</b>, time quantum q = ${q}: each process gets a small unit of CPU time; after it has elapsed, the process is preempted and added to the end of the ready queue.`, ar: `الـ <b>Round Robin</b>، الـ time quantum <bdi dir="ltr">q&nbsp;=&nbsp;${q}</bdi>: كل process بتاخد حتة صغيرة من وقت الـ CPU؛ ولما تخلص بتتعملها preempt وتتحط في آخر الـ ready queue.` }),
     prio: () => ({ en: '<b>Priority scheduling</b>: the CPU is allocated to the process with the highest priority (smallest integer = highest priority).', ar: 'الـ <b>Priority scheduling</b>: الـ CPU بيروح للـ process اللي ليها أعلى priority (أصغر رقم = أعلى priority).' }),
-    priorr: q => ({ en: `<b>Priority with round-robin</b>: run the process with the highest priority. Processes with the same priority run round-robin (time quantum = ${q}).`, ar: `الـ <b>Priority مع round-robin</b>: شغّل الـ process اللي ليها أعلى priority. والـ processes اللي ليها نفس الـ priority بتشتغل round-robin (time quantum = ${q}).` })
+    priorr: q => ({ en: `<b>Priority with round-robin</b>: run the process with the highest priority. Processes with the same priority run round-robin (time quantum = ${q}).`, ar: `الـ <b>Priority مع round-robin</b>: شغّل الـ process اللي ليها أعلى priority. والـ processes اللي ليها نفس الـ priority بتشتغل round-robin (<bdi dir="ltr">time quantum = ${q}</bdi>).` })
   };
   const LIM = { at: [0, 30], bt: [1, 30], pr: [0, 20] };
   function runAll(ps, alg, q) {
@@ -1628,7 +1628,7 @@
     else {
       const w = R.byName.map(k => `${ps[k].n} = ${R.wt[k]}`);
       cap = { en: `Waiting time for ${w.join('; ')}. Average waiting time = ${R.fW}.`, ar: `الـ waiting time: <span dir="ltr">${w.join('; ')}</span>. متوسط الـ waiting time = <span dir="ltr">${R.fW}</span>.` };
-      if (alg === 'rr' && q >= maxB) { cap.en += ' q is at least as long as every burst, so RR gives the FCFS chart (q large ⇒ FIFO).'; cap.ar += ' الـ q أطول من أو بيساوي كل الـ bursts، فالـ RR بيدّي نفس chart الـ FCFS (q large ⇒ FIFO).'; }
+      if (alg === 'rr' && q >= maxB) { cap.en += ' q is at least as long as every burst, so RR gives the FCFS chart (q large ⇒ FIFO).'; cap.ar += ' الـ q أطول من أو بيساوي كل الـ bursts، فالـ RR بيدّي نفس chart الـ FCFS (<bdi dir="ltr">q large ⇒ FIFO</bdi>).'; }
       if (cmp) { const best = cmp.filter(c => Number(c.v) === minV).map(c => ALG[c.a]).join(', '); cap.en += ` Minimum average waiting time: ${best} (${fmtN(minV)}).`; cap.ar += ` أقل متوسط waiting time: ${best} (${fmtN(minV)}).`; }
       if (match) { cap.en += ` <b>Same Gantt chart and average as ${srcEn}.</b>`; cap.ar += ` <b>نفس الـ Gantt chart والمتوسط اللي في ${srcAr}.</b>`; }
     }
@@ -1676,8 +1676,8 @@
       { en: 'Process execution consists of a <b>cycle</b> of CPU execution and I/O wait (the CPU–I/O Burst Cycle).', ar: 'تنفيذ الـ process عبارة عن <b>cycle</b> من تنفيذ على الـ CPU وانتظار I/O (الـ CPU–I/O Burst Cycle).' },
       { en: '<b>CPU burst</b>: load store, add store, read from file.', ar: 'الـ <b>CPU burst</b> فيه load store و add store و read from file.' },
       { en: '<b>I/O burst</b>: wait for I/O.', ar: '<b>I/O burst</b>: wait for I/O.' },
-      { en: 'Another <b>CPU burst</b>: store increment, index, write to file.', ar: '<b>CPU burst</b> تاني: store increment و index و write to file.' },
-      { en: 'Another <b>I/O burst</b>: wait for I/O.', ar: '<b>I/O burst</b> تاني: wait for I/O.' },
+      { en: 'Another <b>CPU burst</b>: store increment, index, write to file.', ar: 'فيه <b>CPU burst</b> تاني: store increment و index و write to file.' },
+      { en: 'Another <b>I/O burst</b>: wait for I/O.', ar: 'فيه <b>I/O burst</b> تاني: wait for I/O.' },
       { en: '<b>CPU burst</b>: load store, add store, read from file.', ar: 'الـ <b>CPU burst</b> فيه load store و add store و read from file.' },
       { en: '<b>I/O burst</b>: wait for I/O. And so on: a <b>CPU burst followed by an I/O burst</b>. The CPU burst distribution is of main concern; maximum CPU utilization is obtained with multiprogramming.', ar: 'الـ <b>I/O burst</b> فيه wait for I/O. وهكذا: <b>CPU burst وبعده I/O burst</b>. الاهتمام الأساسي بتوزيع الـ CPU bursts؛ وأعلى CPU utilization بتيجي من الـ multiprogramming.' }
     ];
@@ -1700,17 +1700,17 @@
   const ST = { new: [62, 38, 50, 'new'], ready: [100, 196, 56, 'ready'], running: [300, 196, 62, 'running'], waiting: [200, 326, 62, 'waiting'], terminated: [322, 38, 72, 'terminated'] };
   const EV = [
     { id: 'admitted', from: 'new', to: 'ready', d: 'M74 62 C 82 100, 92 130, 96 168', lx: 88, ly: 94, la: 'start', lab: ['admitted'], sit: 0,
-      en: '<b>admitted</b>: the new process enters the ready queue.', ar: '<b>admitted</b>: الـ process الجديدة بتدخل الـ ready queue.' },
+      en: '<b>admitted</b>: the new process enters the ready queue.', ar: 'الـ <b>admitted</b>: الـ process الجديدة بتدخل الـ ready queue.' },
     { id: 'dispatch', from: 'ready', to: 'running', d: 'M132 218 Q 200 284 266 218', lx: 200, ly: 280, la: 'middle', lab: ['scheduler dispatch'], sit: 0,
-      en: '<b>scheduler dispatch</b>: the CPU scheduler selects the process from the ready queue and allocates a CPU core to it. It is now running.', ar: '<b>scheduler dispatch</b>: الـ CPU scheduler بيختار الـ process من الـ ready queue ويدّيها CPU core. هي دلوقتي running.' },
+      en: '<b>scheduler dispatch</b>: the CPU scheduler selects the process from the ready queue and allocates a CPU core to it. It is now running.', ar: 'الـ <b>scheduler dispatch</b>: الـ CPU scheduler بيختار الـ process من الـ ready queue ويدّيها CPU core. هي دلوقتي running.' },
     { id: 'interrupt', from: 'running', to: 'ready', d: 'M276 172 Q 200 96 126 170', lx: 200, ly: 120, la: 'middle', lab: ['interrupt'], sit: 2,
-      en: '<b>interrupt</b>: the process switches from running to ready state. This is situation <b>2</b>: there is a <b>choice</b> (scheduling here makes it preemptive).', ar: '<b>interrupt</b>: الـ process بتتنقل من running لـ ready. دي الحالة <b>2</b>: فيه <b>اختيار</b> (لو بنعمل scheduling هنا يبقى preemptive).' },
+      en: '<b>interrupt</b>: the process switches from running to ready state. This is situation <b>2</b>: there is a <b>choice</b> (scheduling here makes it preemptive).', ar: 'الـ <b>interrupt</b>: الـ process بتتنقل من running لـ ready. دي الحالة <b>2</b>: فيه <b>اختيار</b> (لو بنعمل scheduling هنا يبقى preemptive).' },
     { id: 'wait', from: 'running', to: 'waiting', d: 'M318 222 Q 330 300 262 318', lx: 396, ly: 384, la: 'end', lab: ['I/O or event', 'wait'], sit: 1,
-      en: '<b>I/O or event wait</b>: the process switches from running to waiting state. This is situation <b>1</b>: <b>no choice</b> in terms of scheduling. A new process (if one exists in the ready queue) must be selected for execution.', ar: '<b>I/O or event wait</b>: الـ process بتتنقل من running لـ waiting. دي الحالة <b>1</b>: <b>مفيش اختيار</b> في الـ scheduling. لازم process جديدة (لو فيه واحدة في الـ ready queue) تتختار للتنفيذ.' },
+      en: '<b>I/O or event wait</b>: the process switches from running to waiting state. This is situation <b>1</b>: <b>no choice</b> in terms of scheduling. A new process (if one exists in the ready queue) must be selected for execution.', ar: 'الـ <b>I/O or event wait</b>: الـ process بتتنقل من running لـ waiting. دي الحالة <b>1</b>: <b>مفيش اختيار</b> في الـ scheduling. لازم process جديدة (لو فيه واحدة في الـ ready queue) تتختار للتنفيذ.' },
     { id: 'completion', from: 'waiting', to: 'ready', d: 'M140 318 Q 76 300 84 224', lx: 4, ly: 384, la: 'start', lab: ['I/O or event', 'completion'], sit: 3,
-      en: '<b>I/O or event completion</b>: the process switches from waiting to ready. This is situation <b>3</b>: there is a <b>choice</b>.', ar: '<b>I/O or event completion</b>: الـ process بتتنقل من waiting لـ ready. دي الحالة <b>3</b>: فيه <b>اختيار</b>.' },
+      en: '<b>I/O or event completion</b>: the process switches from waiting to ready. This is situation <b>3</b>: there is a <b>choice</b>.', ar: 'الـ <b>I/O or event completion</b>: الـ process بتتنقل من waiting لـ ready. دي الحالة <b>3</b>: فيه <b>اختيار</b>.' },
     { id: 'exit', from: 'running', to: 'terminated', d: 'M318 170 L 322 66', lx: 330, ly: 124, la: 'start', lab: ['exit'], sit: 4,
-      en: '<b>exit</b>: the process terminates. This is situation <b>4</b>: <b>no choice</b>. A new process (if one exists in the ready queue) must be selected for execution.', ar: '<b>exit</b>: الـ process بتخلص (terminates). دي الحالة <b>4</b>: <b>مفيش اختيار</b>. لازم process جديدة (لو فيه واحدة في الـ ready queue) تتختار للتنفيذ.' }
+      en: '<b>exit</b>: the process terminates. This is situation <b>4</b>: <b>no choice</b>. A new process (if one exists in the ready queue) must be selected for execution.', ar: 'الـ <b>exit</b>: الـ process بتخلص (terminates). دي الحالة <b>4</b>: <b>مفيش اختيار</b>. لازم process جديدة (لو فيه واحدة في الـ ready queue) تتختار للتنفيذ.' }
   ];
   const SIT = [['1', 'running → waiting', 'no choice'], ['2', 'running → ready', 'choice'], ['3', 'waiting → ready', 'choice'], ['4', 'terminates', 'no choice']];
   function SchedStates({ ar }) {
@@ -1718,7 +1718,7 @@
     const ev = last && EV.find(e => e.id === last);
     const go = e => { setSt(e.to); setLast(e.id); };
     const cap = ev ? ev : st === 'new'
-      ? { en: 'CPU scheduling decisions may take place when a process: <b>1</b> switches from running to waiting state, <b>2</b> switches from running to ready state, <b>3</b> switches from waiting to ready, <b>4</b> terminates. Drive a process through its states with the buttons.', ar: 'قرارات الـ CPU scheduling ممكن تحصل لما الـ process: <b>1</b> تتنقل من running لـ waiting، <b>2</b> تتنقل من running لـ ready، <b>3</b> تتنقل من waiting لـ ready، <b>4</b> تخلص (terminates). حرّك process بين الـ states بالزراير.' }
+      ? { en: 'CPU scheduling decisions may take place when a process: <b>1</b> switches from running to waiting state, <b>2</b> switches from running to ready state, <b>3</b> switches from waiting to ready, <b>4</b> terminates. Drive a process through its states with the buttons.', ar: 'قرارات الـ CPU scheduling ممكن تحصل لما الـ process: <b><bdi dir="ltr">1</bdi></b> تتنقل من running لـ waiting، <b><bdi dir="ltr">2</bdi></b> تتنقل من running لـ ready، <b><bdi dir="ltr">3</bdi></b> تتنقل من waiting لـ ready، <b><bdi dir="ltr">4</bdi></b> تخلص (terminates). حرّك process بين الـ states بالزراير.' }
       : null;
     const nm = [];
     return html`<figure className="fig fo4"><div className="fig-stage fo4-sd">
@@ -1746,9 +1746,9 @@
   function Dispatch({ ar }) {
     const steps = [
       { en: 'P<sub>0</sub> is executing. The CPU scheduler has selected P<sub>1</sub>; the <b>dispatcher</b> module gives control of the CPU to it.', ar: 'الـ P<sub>0</sub> شغالة. الـ CPU scheduler اختار P<sub>1</sub>؛ والـ <b>dispatcher</b> هو اللي بيدّيها التحكم في الـ CPU.' },
-      { en: '<b>Switching context</b>: save the state of P<sub>0</sub> into PCB<sub>0</sub>. The dispatch latency starts.', ar: '<b>Switching context</b>: نحفظ الـ state بتاعة P<sub>0</sub> في PCB<sub>0</sub>. الـ dispatch latency بتبدأ.' },
+      { en: '<b>Switching context</b>: save the state of P<sub>0</sub> into PCB<sub>0</sub>. The dispatch latency starts.', ar: 'الـ <b>Switching context</b>: نحفظ الـ state بتاعة P<sub>0</sub> في PCB<sub>0</sub>. الـ dispatch latency بتبدأ.' },
       { en: 'Restore the state of P<sub>1</sub> from PCB<sub>1</sub>.', ar: 'نرجّع الـ state بتاعة P<sub>1</sub> من PCB<sub>1</sub>.' },
-      { en: '<b>Switching to user mode</b> and <b>jumping to the proper location</b> in the user program to restart that program: P<sub>1</sub> is executing.', ar: '<b>Switching to user mode</b> و<b>jumping to the proper location</b> في الـ user program عشان يكمّل: الـ P<sub>1</sub> شغالة.' },
+      { en: '<b>Switching to user mode</b> and <b>jumping to the proper location</b> in the user program to restart that program: P<sub>1</sub> is executing.', ar: 'الـ <b>Switching to user mode</b> و<b>jumping to the proper location</b> في الـ user program عشان يكمّل: الـ P<sub>1</sub> شغالة.' },
       { en: '<b>Dispatch latency</b>: the time it takes for the dispatcher to stop one process and start another running.', ar: 'الـ <b>Dispatch latency</b>: الوقت اللي بياخده الـ dispatcher عشان يوقف process ويشغّل واحدة تانية.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2200);
@@ -1778,7 +1778,7 @@
     let cap;
     if (!picked.length) cap = { en: 'With priority scheduling, have <b>separate queues for each priority</b>. Schedule the process in the <b>highest-priority queue</b>! Press Schedule.', ar: 'مع الـ priority scheduling، بنعمل <b>queue منفصلة لكل priority</b>. شغّل الـ process اللي في <b>الـ queue اللي ليها أعلى priority</b>! دوس Schedule.' };
     else if (next == null) cap = { en: 'Every queue is empty. Each pick came from the highest-priority queue that still had a process.', ar: 'كل الـ queues فضيت. كل اختيار جه من أعلى priority queue كان لسه فيها process.' };
-    else cap = { en: `T<sub>${lastT}</sub> is picked: priority = ${MQ[lastRow][0]} is the highest-priority queue that is not empty.${lastRow === 3 ? ' (The slide shows the queues between 2 and n only as dots.)' : ''}`, ar: `الـ T<sub>${lastT}</sub> اتختارت: الـ priority = ${MQ[lastRow][0]} هي أعلى priority queue مش فاضية.${lastRow === 3 ? ' (الـ slide بتبيّن الـ queues اللي بين 2 و n كنقط بس.)' : ''}` };
+    else cap = { en: `T<sub>${lastT}</sub> is picked: priority = ${MQ[lastRow][0]} is the highest-priority queue that is not empty.${lastRow === 3 ? ' (The slide shows the queues between 2 and n only as dots.)' : ''}`, ar: `الـ T<sub>${lastT}</sub> اتختارت: الـ <bdi dir="ltr">priority = ${MQ[lastRow][0]}</bdi> هي أعلى priority queue مش فاضية.${lastRow === 3 ? ' (الـ slide بتبيّن الـ queues اللي بين 2 و n كنقط بس.)' : ''}` };
     return html`<figure className="fig fo4"><div className="fig-stage"><div className="fo4-mq">
       ${MQ.map(([p, ts], r) => html`<${React.Fragment} key=${p}>
         ${r === 3 ? html`<div></div><div className="vd" aria-hidden="true">●<br />●<br />●</div>` : null}
@@ -1814,7 +1814,7 @@
   /* ── slide 29: multilevel feedback queue example ── */
   function Feedback({ ar }) {
     const [b, setB] = useState(30);
-    const s = [{ at: 'in', en: `A new process (CPU burst ${b} ms) enters queue Q<sub>0</sub>, which is served in RR.`, ar: `process جديدة (CPU burst ${b} ms) بتدخل الـ queue Q<sub>0</sub>، اللي بتتخدم RR.` }];
+    const s = [{ at: 'in', en: `A new process (CPU burst ${b} ms) enters queue Q<sub>0</sub>, which is served in RR.`, ar: `فيه process جديدة (CPU burst ${b} ms) بتدخل الـ queue Q<sub>0</sub>، اللي بتتخدم RR.` }];
     if (b <= 8) {
       s.push({ at: 'q0', tok: `${b} ms used`, en: `When it gains the CPU, the process receives 8 milliseconds. It needs only ${b}, so it finishes in Q<sub>0</sub>.`, ar: `لما تاخد الـ CPU بتاخد 8 milliseconds. هي محتاجة ${b} بس، فبتخلص في Q<sub>0</sub>.` });
       s.push({ at: 'out0', en: `Finished after ${b} ms in Q<sub>0</sub>.`, ar: `خلصت بعد ${b} ms في Q<sub>0</sub>.` });
@@ -1823,12 +1823,12 @@
       s.push({ at: 'd1', tok: `${b - 8} ms left`, en: 'It does not finish in 8 milliseconds, so the process is moved to queue Q<sub>1</sub>.', ar: 'ماخلصتش في 8 milliseconds، فالـ process بتتنقل لـ queue Q<sub>1</sub>.' });
       if (b <= 24) {
         s.push({ at: 'q1', tok: `${b - 8} ms used`, en: `At Q<sub>1</sub> the job is again served in RR and receives 16 additional milliseconds. It needs ${b - 8} more, so it finishes in Q<sub>1</sub>.`, ar: `في Q<sub>1</sub> الـ job بتتخدم RR تاني وبتاخد 16 milliseconds زيادة. محتاجة ${b - 8} كمان، فبتخلص في Q<sub>1</sub>.` });
-        s.push({ at: 'out1', en: `Finished: 8 ms in Q<sub>0</sub> + ${b - 8} ms in Q<sub>1</sub> = ${b} ms.`, ar: `خلصت: 8 ms في Q<sub>0</sub> + ${b - 8} ms في Q<sub>1</sub> = ${b} ms.` });
+        s.push({ at: 'out1', en: `Finished: 8 ms in Q<sub>0</sub> + ${b - 8} ms in Q<sub>1</sub> = ${b} ms.`, ar: `خلصت:<span class="ltr">8 ms في Q<sub>0</sub> + ${b - 8} ms في Q<sub>1</sub> = ${b} ms</span>` });
       } else {
         s.push({ at: 'q1', tok: `16 ms used, ${b - 24} left`, en: 'At Q<sub>1</sub> the job is again served in RR and receives 16 additional milliseconds.', ar: 'في Q<sub>1</sub> الـ job بتتخدم RR تاني وبتاخد 16 milliseconds زيادة.' });
         s.push({ at: 'd2', tok: `${b - 24} ms left`, en: 'It still does not complete, so it is preempted and moved to queue Q<sub>2</sub>.', ar: 'لسه ماخلصتش، فبتتعملها preempt وتتنقل لـ queue Q<sub>2</sub>.' });
         s.push({ at: 'q2', tok: `${b - 24} ms used`, en: `Q<sub>2</sub> is FCFS: it runs the remaining ${b - 24} ms.`, ar: `الـ Q<sub>2</sub> هي FCFS: بتشغّل الـ ${b - 24} ms الفاضلين.` });
-        s.push({ at: 'out2', en: `Finished: 8 ms in Q<sub>0</sub> + 16 ms in Q<sub>1</sub> + ${b - 24} ms in Q<sub>2</sub> = ${b} ms.`, ar: `خلصت: 8 ms في Q<sub>0</sub> + 16 ms في Q<sub>1</sub> + ${b - 24} ms في Q<sub>2</sub> = ${b} ms.` });
+        s.push({ at: 'out2', en: `Finished: 8 ms in Q<sub>0</sub> + 16 ms in Q<sub>1</sub> + ${b - 24} ms in Q<sub>2</sub> = ${b} ms.`, ar: `خلصت:<span class="ltr">8 ms في Q<sub>0</sub> + 16 ms في Q<sub>1</sub> + ${b - 24} ms في Q<sub>2</sub> = ${b} ms</span>` });
       }
     }
     const [i, ctl] = useRun(s.length, 1900, b, false);
@@ -1977,7 +1977,7 @@
   const BIND = [
     { k: 'Source program', s: 'symbolic addresses (variables)', en: 'The <b>source program</b> uses <b>symbolic</b> addresses, such as variable names.', ar: 'الـ <b>source program</b> بيستخدم addresses <b>symbolic</b>، زي أسامي الـ variables.' },
     { k: 'Compiler or assembler', s: '', en: 'The <b>compiler or assembler</b> translates it. <b>Compile-time binding</b>: if the memory location is known a priori, absolute code is generated, and it must be recompiled if the start location changes.', ar: 'الـ <b>compiler أو الـ assembler</b> بيترجمه. الـ <b>compile-time binding</b>: لو مكان الـ memory معروف من الأول بيطلع absolute code، ولو مكان البداية اتغير لازم نعمل recompile.', b: 'Compile time' },
-    { k: 'Object module', s: 'relocatable: "14 bytes from the beginning of this module"', en: 'The <b>object module</b> has <b>relocatable</b> addresses, such as "14 bytes from the beginning of this module".', ar: 'الـ <b>object module</b> فيه addresses <b>relocatable</b>، زي <bdi>"14 bytes from the beginning of this module"</bdi>.' },
+    { k: 'Object module', s: 'relocatable: "14 bytes from the beginning of this module"', en: 'The <b>object module</b> has <b>relocatable</b> addresses, such as "14 bytes from the beginning of this module".', ar: 'الـ <b>object module</b> فيه addresses <b>relocatable</b>، زي <bdi dir="ltr">"14 bytes from the beginning of this module"</bdi>.' },
     { k: 'Linkage editor', s: '+ other object modules', en: 'The <b>linkage editor</b> joins it with <b>other object modules</b>.', ar: 'الـ <b>linkage editor</b> بيجمعه مع <b>object modules تانية</b>.' },
     { k: 'Load module', s: '', en: 'The result is the <b>load module</b>, which waits on disk in the <b>input queue</b>.', ar: 'النتيجة هي الـ <b>load module</b>، وبيستنى على الـ disk في الـ <b>input queue</b>.' },
     { k: 'Loader', s: '+ system library', en: 'The <b>loader</b> brings it into memory with the <b>system library</b>. <b>Load-time binding</b>: relocatable code is generated when the location is not known at compile time.', ar: 'الـ <b>loader</b> بيحمّله في الـ memory مع الـ <b>system library</b>. الـ <b>load-time binding</b>: بيطلع relocatable code لما المكان مايكونش معروف وقت الـ compile.', b: 'Load time' },
@@ -2138,7 +2138,7 @@
     const setSet = k => { setSet0(k); const e = SEG_EX[k][0]; pick(e[0], e[1]); };
     const en = !sOk ? `Segment ${s} is illegal: s must be &lt; STLR (${T.length}). Trap.` : dOk ? `Logical &lt;${s}, ${d}&gt;: STBR points to the segment table; entry ${s} has limit ${row[0]}, base ${row[1]}. Offset ${d} &lt; ${row[0]}, so physical = ${row[1]} + ${d} = <b>${phys}</b>.` : `Logical &lt;${s}, ${d}&gt;: entry ${s} has limit ${row[0]}. Offset ${d} ≥ ${row[0]}, so the hardware <b>traps: addressing error</b>.`;
     const lg = `<bdi dir="ltr">&lt;${s}, ${d}&gt;</bdi>`;
-    const a = !sOk ? `الـ segment رقم ${s} illegal، لأن s لازم يبقى أقل من الـ STLR (${T.length}). فيه trap.` : dOk ? `العنوان ${lg}: الـ STBR بيشاور على الـ segment table، والـ entry رقم ${s} فيها limit ${row[0]} و base ${row[1]}. والـ offset ${d} أقل من ${row[0]}، فالـ physical address هو${L(`${row[1]} + ${d} = <b>${phys}</b>`)}` : `العنوان ${lg}: الـ entry رقم ${s} فيها limit ${row[0]}. والـ offset ${d} مش أقل منه، فالـ hardware بيعمل <b>trap: addressing error</b>.`;
+    const a = !sOk ? `الـ segment رقم ${s} illegal، لأن s لازم يبقى أقل من الـ STLR (${T.length}). فيه trap.` : dOk ? `العنوان ${lg}: الـ STBR بيشاور على الـ segment table، والـ entry رقم ${s} فيها limit ${row[0]} و base ${row[1]}. والـ offset ${d} أقل من ${row[0]}، فالـ physical address هو${L(`${row[1]} + ${d} = <b>${phys}</b>`)}` : `العنوان ${lg}: الـ entry رقم ${s} فيها limit ${row[0]}. والـ offset ${d} مش أقل منه، فالـ hardware بيعمل <b><bdi dir="ltr">trap: addressing error</bdi></b>.`;
     const top = set === 'slide' ? 6700 : 2600, order = T.map((r, k) => ({ k, base: r[1], lim: r[0] })).sort((x, y) => x.base - y.base);
     const cells = []; let at = 0;
     order.forEach(g => { if (g.base > at) cells.push({ e: 1, h: g.base - at }); cells.push({ k: g.k, h: g.lim, base: g.base }); at = g.base + g.lim; });
@@ -2163,7 +2163,7 @@
       { en: 'Logical memory has 4 <b>pages</b>; physical memory is divided into <b>frames</b> of the same size. The OS keeps track of the free frames.', ar: 'الـ logical memory فيها 4 <b>pages</b>، والـ physical memory متقسمة لـ <b>frames</b> بنفس الحجم. والـ OS بيتابع الـ frames الفاضية.', n: 0 },
       ...PT.map((f, p) => ({ en: `Page ${p} is loaded into a free frame: the page table records <b>${p} → ${f}</b>.`, ar: `الـ page رقم ${p} بتتحط في frame فاضية، والـ page table بتسجل${L(`<b>${p} → ${f}</b>`)}`, n: p + 1 })),
       { en: 'Translation: the logical address is (p, d). <b>p</b> indexes the page table to get the frame; the offset <b>d</b> is combined with the frame base. For page 2: (2, d) → frame 3, offset d.', ar: 'الـ translation: الـ logical address هو <bdi dir="ltr">(p, d)</bdi>. والـ <b>p</b> بيدخل على الـ page table ويجيب الـ frame، والـ offset <b>d</b> بيتضاف على بداية الـ frame. يعني الـ page رقم 2:' + L('(2, d) → frame 3, offset d'), n: 4, x: 2 },
-      { en: 'With a logical address space of 2<sup>m</sup> and page size 2<sup>n</sup>, <b>p</b> is the high m − n bits and <b>d</b> the low n bits. The physical frames of a process can be <b>noncontiguous</b>: no external fragmentation.', ar: 'لو الـ logical address space حجمها 2<sup>m</sup> والـ page size حجمها 2<sup>n</sup>، يبقى الـ <b>p</b> هو أعلى m − n bits والـ <b>d</b> هو أقل n bits. والـ frames بتاعة الـ process ممكن تبقى <b>noncontiguous</b>، فمفيش external fragmentation.', n: 4, bits: 1 }
+      { en: 'With a logical address space of 2<sup>m</sup> and page size 2<sup>n</sup>, <b>p</b> is the high m − n bits and <b>d</b> the low n bits. The physical frames of a process can be <b>noncontiguous</b>: no external fragmentation.', ar: 'لو الـ logical address space حجمها 2<sup>m</sup> والـ page size حجمها 2<sup>n</sup>، يبقى الـ <b>p</b> هو أعلى <bdi dir="ltr">m&nbsp;−&nbsp;n</bdi> bits والـ <b>d</b> هو أقل n bits. والـ frames بتاعة الـ process ممكن تبقى <b>noncontiguous</b>، فمفيش external fragmentation.', n: 4, bits: 1 }
     ];
     const [i, ctl] = useSteps(steps.length, 2300);
     const s = steps[i];
@@ -2523,7 +2523,7 @@
     let cap;
     if (!end) cap = { en: `${algo} on <b>1,2,3,4,1,2,5,1,2,3,4,5</b> with 3 frames and with 4 frames, side by side.${r.t ? ` Reference #${r.t}: page <b>${BEL[r.t - 1]}</b>.` : ''}`, ar: `الـ ${algo} على الـ reference string ده، مرة بـ 3 frames ومرة بـ 4 frames جنب بعض:${LTR('1,2,3,4,1,2,5,1,2,3,4,5')}${r.t ? `الـ reference رقم ${r.t} هو الـ page <b>${BEL[r.t - 1]}</b>.` : ''}` };
     else if (algo === 'FIFO') cap = { en: '<b>Belady\'s anomaly</b>: FIFO gives <b>9 faults with 3 frames but 10 with 4 frames</b>. Adding more frames can cause more page faults.', ar: 'ده الـ <b>Belady\'s anomaly</b>: الـ FIFO بيدّي <b>9 faults بـ 3 frames، بس 10 بـ 4 frames</b>. يعني زيادة الـ frames ممكن تزوّد الـ page faults.' };
-    else cap = { en: `${algo} is a <b>stack algorithm</b> and never suffers from Belady's anomaly: ${fa} faults with 3 frames, ${fb} with 4.`, ar: `الـ ${algo} من الـ <b>stack algorithms</b>، وعمره ما بيحصل فيه Belady's anomaly: ${fa} faults بـ 3 frames، و ${fb} بـ 4 frames.` };
+    else cap = { en: `${algo} is a <b>stack algorithm</b> and never suffers from Belady's anomaly: ${fa} faults with 3 frames, ${fb} with 4.`, ar: `الـ ${algo} من الـ <b>stack algorithms</b>، وعمره ما بيحصل فيه Belady's anomaly: <bdi dir="ltr">${fa}&nbsp;faults</bdi> بـ 3 frames، و ${fb} بـ 4 frames.` };
     return html`<figure className="fig fo6"><div className="fig-stage">
       <div className="fo6-row">${['FIFO', 'LRU', 'OPT'].map(x => html`<button key=${x} className="fig-btn" aria-pressed=${String(algo === x)} onClick=${() => { setAlgo(x); r.restart(); }}>${x}</button>`)}</div>
       <div className="fo6-str">${BEL.map((p, k) => html`<span key=${k} className=${k < r.t - 1 ? 'past' : k === r.t - 1 ? 'cur' : ''}>${p}</span>`)}</div>
@@ -2761,13 +2761,13 @@
       { en: '<b>Then P1</b> finishes. Every process completed: no cycle means no deadlock.', ar: '<b>وبعدين الـ P1</b> بتخلّص. كل الـ processes خلّصت: مفيش cycle يعني مفيش deadlock.', E: [], gone: ['P3', 'P2', 'P1'], ok: 1 }
     ],
     dead: [
-      { en: '<b>Graph with a deadlock</b>: the same graph plus a new request <b>P3 → R2</b>. Both instances of R2 are held, by P1 and P2.', ar: '<b>Graph فيه deadlock</b>: نفس الـ graph وزيادة عليه request جديد من الـ P3 للـ R2. والـ 2 instances بتوع الـ R2 ماسكينهم الـ P1 والـ P2.', E: base1.concat([['P3', 'R2', 'r']]) },
+      { en: '<b>Graph with a deadlock</b>: the same graph plus a new request <b>P3 → R2</b>. Both instances of R2 are held, by P1 and P2.', ar: 'الـ <b>Graph فيه deadlock</b>: نفس الـ graph وزيادة عليه request جديد من الـ P3 للـ R2. والـ 2 instances بتوع الـ R2 ماسكينهم الـ P1 والـ P2.', E: base1.concat([['P3', 'R2', 'r']]) },
       { en: 'First cycle: P1 → R1 → P2 → R3 → P3 → R2 → P1.', ar: 'أول cycle:' + L('P1 → R1 → P2 → R3 → P3 → R2 → P1'), E: base1.concat([['P3', 'R2', 'r']]), cyc: [['P1', 'R1'], ['R1', 'P2'], ['P2', 'R3'], ['R3', 'P3'], ['P3', 'R2'], ['R2', 'P1']] },
       { en: 'Second cycle: P2 → R3 → P3 → R2 → P2.', ar: 'تاني cycle:' + L('P2 → R3 → P3 → R2 → P2'), E: base1.concat([['P3', 'R2', 'r']]), cyc: [['P2', 'R3'], ['R3', 'P3'], ['P3', 'R2'], ['R2', 'P2']] },
       { en: 'Nobody can finish: P3 waits for R2, P2 waits for P3 (R3), P1 waits for P2 (R1). <b>P1, P2 and P3 are all deadlocked.</b>', ar: 'محدش يقدر يخلّص: الـ P3 مستنية الـ R2، والـ P2 مستنية الـ P3 (عشان الـ R3)، والـ P1 مستنية الـ P2 (عشان الـ R1). <b>الـ P1 والـ P2 والـ P3 كلهم في deadlock.</b>', E: base1.concat([['P3', 'R2', 'r']]), cyc: [['P1', 'R1'], ['R1', 'P2'], ['P2', 'R3'], ['R3', 'P3'], ['P3', 'R2'], ['R2', 'P1'], ['R2', 'P2']], bad: 1 }
     ],
     cycle: [
-      { en: '<b>Graph with a cycle but no deadlock</b>: P1 → R1 → P3 → R2 → P1. R1 and R2 have two instances each.', ar: '<b>Graph فيه cycle بس مفيش deadlock</b>:' + L('P1 → R1 → P3 → R2 → P1') + 'والـ R1 والـ R2 كل واحد فيهم ليه 2 instances.', E: base2, cyc: cyc2 },
+      { en: '<b>Graph with a cycle but no deadlock</b>: P1 → R1 → P3 → R2 → P1. R1 and R2 have two instances each.', ar: 'الـ <b>Graph فيه cycle بس مفيش deadlock</b>:' + L('P1 → R1 → P3 → R2 → P1') + 'والـ R1 والـ R2 كل واحد فيهم ليه 2 instances.', E: base2, cyc: cyc2 },
       { en: 'R1\'s other instance is held by <b>P2</b>, and R2\'s by <b>P4</b>. Neither of them waits for anything.', ar: 'الـ instance التاني بتاع الـ R1 ماسكاه الـ <b>P2</b>، والتاني بتاع الـ R2 ماسكاه الـ <b>P4</b>. والاتنين دول مش مستنيين أي حاجة.', E: base2, cyc: cyc2 },
       { en: '<b>P4 releases</b> its instance of R2, so P3\'s request is granted (P3 → R2 becomes R2 → P3). The cycle is broken.', ar: 'الـ <b>P4 بتسيب</b> الـ instance بتاعها من الـ R2، فالـ request بتاع الـ P3 بيتنفذ (بقى assignment من الـ R2 للـ P3). وكده الـ cycle اتكسر.', E: [['P1', 'R1', 'r'], ['R1', 'P3', 'a', 1], ['R1', 'P2', 'a', 0], ['R2', 'P1', 'a', 0], ['R2', 'P3', 'a', 1]], gone: ['P4'], ok: 1 }
     ]
@@ -2848,7 +2848,7 @@
   /* ── §5: the safety algorithm on the notes' snapshot, step by step ── */
   function Bankers({ ar }) {
     const need = MAX.map((m, k) => subv(m, ALLOC[k])), run = safety(AVAIL, ALLOC, need);
-    const steps = [{ en: 'Snapshot: 5 processes, A = 10, B = 5, C = 7 instances, <b>Available = (3,3,2)</b>. Need = Max − Allocation. Start with Work = Available and every Finish = false.', ar: 'الـ snapshot: فيه 5 processes، والـ instances هي A = 10 و B = 5 و C = 7، والـ <b>Available</b> هو (3,3,2). الـ Need بيساوي Max ناقص Allocation. بنبدأ بالـ Work بيساوي الـ Available، وكل الـ Finish بـ false.', t: null }]
+    const steps = [{ en: 'Snapshot: 5 processes, A = 10, B = 5, C = 7 instances, <b>Available = (3,3,2)</b>. Need = Max − Allocation. Start with Work = Available and every Finish = false.', ar: 'الـ snapshot: فيه 5 processes، والـ instances هي <bdi dir="ltr">A&nbsp;=&nbsp;10</bdi> و <bdi dir="ltr">B&nbsp;=&nbsp;5</bdi> و <bdi dir="ltr">C&nbsp;=&nbsp;7</bdi>، والـ <b>Available</b> هو (3,3,2). الـ Need بيساوي Max ناقص Allocation. بنبدأ بالـ Work بيساوي الـ Available، وكل الـ Finish بـ false.', t: null }]
       .concat(run.trace.map(t => t.ok
         ? { en: `${PS[t.k]}: Need ${v(need[t.k])} ≤ Work ${v(t.w0)} ✓. It runs, then returns its Allocation: Work = ${v(t.w0)} + ${v(ALLOC[t.k])} = <b>${v(t.w1)}</b>.`, ar: `الـ ${PS[t.k]}: الـ Need أصغر من أو بيساوي الـ Work، فبتشتغل وترجّع الـ Allocation بتاعها:` + L(`Need ${v(need[t.k])} ≤ Work ${v(t.w0)} ✓ → Work = ${v(t.w0)} + ${v(ALLOC[t.k])} = ${v(t.w1)}`), t }
         : { en: `${PS[t.k]}: Need ${v(need[t.k])} ≤ Work ${v(t.w0)}? <b>No</b>, it must wait for now.`, ar: `الـ ${PS[t.k]}: الـ Need أكبر من الـ Work، فلازم تستنى دلوقتي:` + L(`Need ${v(need[t.k])} ≤ Work ${v(t.w0)}? no`), t }))
@@ -2898,7 +2898,7 @@
   const D_REQ = { ok: [[0, 0, 0], [2, 0, 2], [0, 0, 0], [1, 0, 0], [0, 0, 2]], dead: [[0, 0, 0], [2, 0, 2], [0, 0, 1], [1, 0, 0], [0, 0, 2]] };
   const D_STEPS = {
     ok: [
-      { en: 'Detection: A = 7, B = 2, C = 6, <b>Available = (0,0,0)</b>. No process has Allocation = 0, so every Finish starts false. A process can finish if its <b>Request ≤ Work</b>.', ar: 'الـ detection: الـ A = 7 و B = 2 و C = 6، والـ <b>Available</b> هو (0,0,0). مفيش process الـ Allocation بتاعها صفر، فكل الـ Finish بتبدأ false. والـ process تقدر تخلّص لو الـ <b>Request</b> بتاعها أصغر من أو بيساوي الـ Work.', w: [0, 0, 0], f: [] },
+      { en: 'Detection: A = 7, B = 2, C = 6, <b>Available = (0,0,0)</b>. No process has Allocation = 0, so every Finish starts false. A process can finish if its <b>Request ≤ Work</b>.', ar: 'الـ detection: الـ <bdi dir="ltr">A&nbsp;=&nbsp;7</bdi> و <bdi dir="ltr">B&nbsp;=&nbsp;2</bdi> و <bdi dir="ltr">C&nbsp;=&nbsp;6</bdi>، والـ <b>Available</b> هو (0,0,0). مفيش process الـ Allocation بتاعها صفر، فكل الـ Finish بتبدأ false. والـ process تقدر تخلّص لو الـ <b>Request</b> بتاعها أصغر من أو بيساوي الـ Work.', w: [0, 0, 0], f: [] },
       { en: 'P0 requests (0,0,0) ✓ → Work = (0,1,0).', ar: 'الـ P0 طالبة (0,0,0)، فبتخلّص:' + L('Work = (0,0,0) + (0,1,0) = (0,1,0)'), w: [0, 1, 0], f: [0], c: 0 },
       { en: 'P2 requests (0,0,0) ✓ → Work = (3,1,3).', ar: 'الـ P2 طالبة (0,0,0)، فبتخلّص:' + L('Work = (0,1,0) + (3,0,3) = (3,1,3)'), w: [3, 1, 3], f: [0, 2], c: 2 },
       { en: 'P3 requests (1,0,0) ✓ → Work = (5,2,4).', ar: 'الـ P3 طالبة (1,0,0)، فبتخلّص:' + L('Work = (3,1,3) + (2,1,1) = (5,2,4)'), w: [5, 2, 4], f: [0, 2, 3], c: 3 },
@@ -3008,12 +3008,12 @@
   /* ── L7 [0.2]-[0.3]: open, read, write, seek and close move the directory entry between disk and memory ── */
   const FO = [
     { en: 'Information about files is kept in the <b>directory structure</b>, which is maintained on the <b>disk</b>.', ar: 'المعلومات عن الـ files محفوظة في الـ <b>directory structure</b>، واللي متخزّن على الـ <b>disk</b>.' },
-    { en: '<b>open(Fi)</b>: search the directory on disk for entry Fi…', ar: 'الـ <b>open(Fi)</b>: بندوّر في الـ directory اللي على الـ disk على الـ entry بتاع Fi…' },
+    { en: '<b>open(Fi)</b>: search the directory on disk for entry Fi…', ar: 'الـ <b><bdi dir="ltr">open(Fi)</bdi></b>: بندوّر في الـ directory اللي على الـ disk على الـ entry بتاع Fi…' },
     { en: '…and move its content to memory.', ar: '…وبعدين بننقل محتواه للـ memory.' },
     { en: '<b>write</b>: data is written at the <b>write pointer</b>, and the pointer moves on.', ar: 'الـ <b>write</b>: الـ data بتتكتب عند الـ <b>write pointer</b>، والـ pointer بيتحرك لقدام.' },
     { en: '<b>read</b>: data is read at the <b>read pointer</b>.', ar: 'الـ <b>read</b>: الـ data بتتقري عند الـ <b>read pointer</b>.' },
     { en: '<b>Reposition within the file (seek)</b>: the pointer jumps to another place in the file.', ar: 'الـ <b>reposition (seek)</b>: الـ pointer بينط لمكان تاني جوه الـ file.' },
-    { en: '<b>close(Fi)</b>: move the content of entry Fi in memory back to the directory on disk. The other operations are <b>create</b>, <b>delete</b> and <b>truncate</b>.', ar: 'الـ <b>close(Fi)</b>: بننقل محتوى الـ entry بتاع Fi من الـ memory ونرجّعه للـ directory اللي على الـ disk. والـ operations التانية هي الـ <b>create</b> والـ <b>delete</b> والـ <b>truncate</b>.' }
+    { en: '<b>close(Fi)</b>: move the content of entry Fi in memory back to the directory on disk. The other operations are <b>create</b>, <b>delete</b> and <b>truncate</b>.', ar: 'الـ <b><bdi dir="ltr">close(Fi)</bdi></b>: بننقل محتوى الـ entry بتاع Fi من الـ memory ونرجّعه للـ directory اللي على الـ disk. والـ operations التانية هي الـ <b>create</b> والـ <b>delete</b> والـ <b>truncate</b>.' }
   ];
   function FileOpen({ ar }) {
     const [i, ctl] = useSteps(FO.length, 2600);
@@ -3130,8 +3130,8 @@
         <li>${N('mail', 'dir' + (del ? ' del' : act === 'mkdir' ? ' cwd' : ''))}${made && html`<ul><li>${N('count', 'dir ' + (del ? 'del' : 'new'))}</li></ul>`}</li></ul></li></ul></div>`;
       acts = html`<${Btn} on=${() => setAct('cd')}>cd /spell/mail/prog</${Btn}><${Btn} on=${() => setAct('mkdir')}>in /mail: mkdir count</${Btn}><${Btn} dis=${!made} on=${() => setAct('del')}>Delete mail</${Btn}>`;
       en = '<b>Tree-structured directory</b>: efficient searching, grouping capability, and a <b>current (working) directory</b>. Try the commands.'; a = 'الـ <b>tree-structured directory</b>: الـ search فيه efficient، وفيه grouping، وفيه <b>current (working) directory</b>. جرّب الـ commands.';
-      if (cd) { en = '<b>cd /spell/mail/prog</b> makes prog the current directory. A path name can be <b>absolute</b> (from the root, /spell/mail/prog) or <b>relative</b> (from the current directory).'; a = 'الـ <b>cd /spell/mail/prog</b> بيخلي prog هو الـ current directory. والـ path name ممكن يبقى <b>absolute</b> (من الـ root زي /spell/mail/prog) أو <b>relative</b> (من الـ current directory).'; }
-      if (act === 'mkdir') { en = 'New files and subdirectories are created in the <b>current directory</b>: in /mail, <b>mkdir count</b> adds count under mail.'; a = 'الـ files والـ subdirectories الجديدة بتتعمل في الـ <b>current directory</b>: في /mail، الـ <b>mkdir count</b> بيضيف count تحت mail.'; }
+      if (cd) { en = '<b>cd /spell/mail/prog</b> makes prog the current directory. A path name can be <b>absolute</b> (from the root, /spell/mail/prog) or <b>relative</b> (from the current directory).'; a = 'الـ <b>cd /spell/mail/prog</b> بيخلي prog هو الـ current directory. والـ path name ممكن يبقى <b>absolute</b> (من الـ root زي <bdi dir="ltr">/spell/mail/prog</bdi>) أو <b>relative</b> (من الـ current directory).'; }
+      if (act === 'mkdir') { en = 'New files and subdirectories are created in the <b>current directory</b>: in /mail, <b>mkdir count</b> adds count under mail.'; a = 'الـ files والـ subdirectories الجديدة بتتعمل في الـ <b>current directory</b>: في <bdi dir="ltr">/mail</bdi>، الـ <b>mkdir count</b> بيضيف count تحت mail.'; }
       if (del) { en = 'Deleting <b>mail</b> deletes the <b>entire subtree</b> rooted at mail, so count goes with it.'; a = 'لما نمسح <b>mail</b>، بيتمسح <b>الـ subtree كله</b> اللي تحته، فالـ count بيتمسح معاه.'; }
     }
     return html`<figure className="fig fo8"><div className="fig-stage">
@@ -3191,9 +3191,9 @@
   /* ── L7 [6.3]: the File-Allocation Table, test = 217 → 618 → 339 → end ── */
   const FS = [
     { en: '<b>FAT</b> is a variation of linked allocation that keeps the links in a <b>table at the start of the volume</b>. The directory entry <b>test</b> holds its start block, <b>217</b>.', ar: 'الـ <b>FAT</b> نوع من الـ linked allocation، بس الـ links بتتحفظ في <b>table في أول الـ volume</b>. والـ directory entry اسمه <b>test</b> شايل الـ start block بتاعه، وهو <b>217</b>.', at: 217, chain: [217] },
-    { en: 'Look up <b>FAT[217]</b>: it holds <b>618</b>, the next block of test.', ar: 'بنبص في <b>FAT[217]</b>: فيه <b>618</b>، وده الـ block اللي بعده في test.', at: 217, chain: [217, 618] },
-    { en: '<b>FAT[618]</b> holds <b>339</b>.', ar: 'والـ <b>FAT[618]</b> فيه <b>339</b>.', at: 618, chain: [217, 618, 339] },
-    { en: '<b>FAT[339]</b> holds <b>−1</b>: the end of the file.', ar: 'والـ <b>FAT[339]</b> فيه <b>−1</b>، يعني ده آخر الـ file.', at: 339, chain: [217, 618, 339, 'end'] }
+    { en: 'Look up <b>FAT[217]</b>: it holds <b>618</b>, the next block of test.', ar: 'بنبص في <b><bdi dir="ltr">FAT[217]</bdi></b>: فيه <b>618</b>، وده الـ block اللي بعده في test.', at: 217, chain: [217, 618] },
+    { en: '<b>FAT[618]</b> holds <b>339</b>.', ar: 'والـ <b><bdi dir="ltr">FAT[618]</bdi></b> فيه <b>339</b>.', at: 618, chain: [217, 618, 339] },
+    { en: '<b>FAT[339]</b> holds <b>−1</b>: the end of the file.', ar: 'والـ <b><bdi dir="ltr">FAT[339]</bdi></b> فيه <b><bdi dir="ltr">−1</bdi></b>، يعني ده آخر الـ file.', at: 339, chain: [217, 618, 339, 'end'] }
   ];
   function Fat({ ar }) {
     const [i, ctl] = useSteps(FS.length, 2600), s = FS[i];
@@ -3228,7 +3228,7 @@
     let en, a, acts, extra = null;
     if (mode === 'cont') {
       en = '<b>Contiguous</b>: each file occupies a set of contiguous blocks, so the directory needs only the <b>start block and length</b>. Best performance in most cases.'; a = 'الـ <b>contiguous</b>: كل file واخد blocks جنب بعض، فالـ directory محتاج بس الـ <b>start block والـ length</b>. وده أحسن performance في أغلب الحالات.';
-      if (st.hit != null) { en = 'Direct access is fast: block 3 of mail is just <b>start + 3 = 19 + 3 = 22</b>, one read.'; a = 'الـ direct access سريع: الـ block رقم 3 في mail هو ببساطة <b>start + 3</b>، يعني 19 + 3 = 22، وده read واحد بس.'; }
+      if (st.hit != null) { en = 'Direct access is fast: block 3 of mail is just <b>start + 3 = 19 + 3 = 22</b>, one read.'; a = 'الـ direct access سريع: الـ block رقم 3 في mail هو ببساطة <b>start + 3</b>، يعني <bdi dir="ltr">19&nbsp;+&nbsp;3&nbsp;=&nbsp;22</bdi>، وده read واحد بس.'; }
       if (st.fail) { en = `<b>External fragmentation</b>: there are ${free.length} free blocks, but the largest free run is only ${biggest}, so a 7-block file does not fit. The fix is <b>compaction</b>.`; a = `دي <b>external fragmentation</b>: فيه ${free.length} block فاضيين، بس أكبر مساحة فاضية جنب بعض ${biggest} بس، فالـ file اللي حجمه 7 blocks مش هيدخل. والحل هو الـ <b>compaction</b>.`; }
       if (st.packed && !st.made) { en = '<b>Compaction</b> moved the files together, so all the free blocks are now one run. (It can be done off-line or on-line.)'; a = 'الـ <b>compaction</b> لمّ الـ files جنب بعض، فكل الـ blocks الفاضية بقت مساحة واحدة. (وممكن يتعمل off-line أو on-line.)'; }
       if (st.made) { en = 'Now the 7-block file fits at blocks 17 to 23. Contiguous allocation also needs the file size <b>known in advance</b>.'; a = 'دلوقتي الـ file اللي حجمه 7 blocks دخل في الـ blocks من 17 لـ 23. والـ contiguous allocation كمان محتاج نعرف حجم الـ file <b>من الأول</b>.'; }
@@ -3240,7 +3240,7 @@
       acts = html`<${Btn} on=${() => walk(JEEP)}>Read block 4 of jeep</${Btn}>`;
       extra = html`<div className="fo8-chain">${JEEP.map((b, j) => html`<${React.Fragment} key=${b}>${j > 0 && html`<em>→</em>`}<span className=${cur === b ? 'on' : readBlocks.includes(b) ? 'seen' : ''}>${b}</span></${React.Fragment}>`)}<em>→</em><span>null</span></div>`;
     } else {
-      en = '<b>Indexed</b>: each file has its own <b>index block</b> of pointers to its data blocks. jeep\'s index block is <b>19</b>, listing 9, 16, 1, 10, 25, −1.'; a = 'الـ <b>indexed</b>: كل file ليه <b>index block</b> خاص بيه فيه pointers للـ data blocks. والـ index block بتاع jeep هو <b>19</b>، وفيه 9 و 16 و 1 و 10 و 25 و −1.';
+      en = '<b>Indexed</b>: each file has its own <b>index block</b> of pointers to its data blocks. jeep\'s index block is <b>19</b>, listing 9, 16, 1, 10, 25, −1.'; a = 'الـ <b>indexed</b>: كل file ليه <b>index block</b> خاص بيه فيه pointers للـ data blocks. والـ index block بتاع jeep هو <b>19</b>، وفيه 9 و 16 و 1 و 10 و 25 و <bdi dir="ltr">−1</bdi>.';
       if (st.walk) { en = `Random (direct) access: read the index block 19, then go straight to block 25: <b>${k} read${k === 1 ? '' : 's'}</b>. No external fragmentation, but each file has the overhead of an index block. (A file of max 256 KB with 512-byte blocks is 512 blocks, so 1 index block is enough.)`; a = `الـ random (direct) access: بنقرا الـ index block 19، وبعدين نروح على block 25 على طول: <b>${k} read</b>. مفيش external fragmentation، بس كل file عليه overhead الـ index block. (ولو الـ file أقصاه 256 KB والـ block حجمه 512 byte، يبقى 512 block، فـ index block واحد كفاية.)`; }
       acts = html`<${Btn} on=${() => walk([19, 25])}>Read block 4 of jeep</${Btn}>`;
       extra = html`<div className="fo8-chain"><span className=${cur === 19 ? 'on' : readBlocks.includes(19) ? 'seen' : ''}>index block 19</span><em>:</em>${[9, 16, 1, 10, 25, '−1'].map(b => html`<span key=${b} style=${{ marginLeft: '3px' }} className=${cur === b ? 'on' : ''}>${b}</span>`)}</div>`;
@@ -3436,11 +3436,11 @@
     const T = [
       ['', ''],
       ['(1) The device driver is told to transfer disk data to a buffer at address <b>X</b>.', '(1) الـ device driver بيتقاله ينقل data من الـ disk لـ buffer عند الـ address <b>X</b>.'],
-      [`(2) The device driver tells the disk controller to transfer <b>C = ${C0}</b> bytes from disk to the buffer at address X.`, `(2) الـ device driver بيقول للـ disk controller ينقل <b>C = ${C0}</b> bytes من الـ disk للـ buffer اللي عند X.`],
+      [`(2) The device driver tells the disk controller to transfer <b>C = ${C0}</b> bytes from disk to the buffer at address X.`, `(2) الـ device driver بيقول للـ disk controller ينقل <b><bdi dir="ltr">C = ${C0}</bdi></b> bytes من الـ disk للـ buffer اللي عند X.`],
       ['(3) The disk controller initiates the DMA transfer.', '(3) الـ disk controller بيبدأ الـ DMA transfer.'],
       ['', ''],
-      [`(4) The disk controller sends each byte to the DMA controller. (5) The DMA controller transfers the bytes to buffer X, <b>increasing the memory address</b> and <b>decreasing C</b>: now C = ${C}.`, `(4) الـ disk controller بيبعت كل byte للـ DMA controller. (5) والـ DMA controller بينقل الـ bytes للـ buffer X، و<b>بيزوّد الـ memory address</b> و<b>بينقّص C</b>، فبقت C = ${C}.`],
-      ['(6) <b>C = 0</b>: the DMA controller <b>interrupts the CPU</b> to signal transfer completion. One interrupt for the whole block.', '(6) لما <b>C = 0</b>، الـ DMA controller <b>بيعمل interrupt للـ CPU</b> عشان يقوله إن الـ transfer خلص. يعني interrupt واحد للـ block كله.']
+      [`(4) The disk controller sends each byte to the DMA controller. (5) The DMA controller transfers the bytes to buffer X, <b>increasing the memory address</b> and <b>decreasing C</b>: now C = ${C}.`, `(4) الـ disk controller بيبعت كل byte للـ DMA controller. (5) والـ DMA controller بينقل الـ bytes للـ buffer X، و<b>بيزوّد الـ memory address</b> و<b>بينقّص C</b>، فبقت <bdi dir="ltr">C = ${C}</bdi>.`],
+      ['(6) <b>C = 0</b>: the DMA controller <b>interrupts the CPU</b> to signal transfer completion. One interrupt for the whole block.', '(6) لما <b><bdi dir="ltr">C = 0</bdi></b>، الـ DMA controller <b>بيعمل interrupt للـ CPU</b> عشان يقوله إن الـ transfer خلص. يعني interrupt واحد للـ block كله.']
     ];
     const cap = step === 0 ? { en: '<b>DMA</b> bypasses the CPU to move data directly between the I/O device and memory. Pick C and press Transfer to run the <b>six-step process</b>.', ar: 'الـ <b>DMA</b> بيعدّي الـ CPU وينقل الـ data على طول بين الـ I/O device والـ memory. اختار C ودوس Transfer عشان تشوف الـ <b>six-step process</b>.' } : { en: T[step][0], ar: T[step][1] };
     const box = (t, n) => html`<div className=${cls(step === n || (n === 45 && step === 5), false, false)}>${t}</div>`;
@@ -3479,7 +3479,7 @@
     const [n, kind, cmds] = DEV[d], blk = kind === 'block';
     const cap = blk
       ? { en: 'A <b>disk drive</b> is a <b>block device</b>: commands <b>read, write, seek</b>; access can be raw I/O, direct I/O or through the file system; memory-mapped file access is possible (the file is mapped to virtual memory and clusters come in by demand paging); DMA.', ar: 'الـ <b>disk drive</b> ده <b>block device</b>: الـ commands بتاعته هي الـ read والـ write والـ seek. الـ access ممكن يبقى raw I/O أو direct I/O أو عن طريق الـ file system. وينفع كمان memory-mapped file access (الـ file بيتعمله map على الـ virtual memory، والـ clusters بتيجي بالـ demand paging)، وفيه DMA.' }
-      : { en: `A <b>${n}</b> is a <b>character device</b>: commands <b>get()</b> and <b>put()</b>; libraries layered on top allow <b>line editing</b>.`, ar: `الـ <b>${n}</b> ده <b>character device</b>: الـ commands بتاعته هي الـ <b>get()</b> والـ <b>put()</b>، وفيه libraries فوقيه بتسمح بالـ <b>line editing</b>.` };
+      : { en: `A <b>${n}</b> is a <b>character device</b>: commands <b>get()</b> and <b>put()</b>; libraries layered on top allow <b>line editing</b>.`, ar: `الـ <b>${n}</b> ده <b>character device</b>: الـ commands بتاعته هي الـ <b><bdi dir="ltr">get()</bdi></b> والـ <b><bdi dir="ltr">put()</bdi></b>، وفيه libraries فوقيه بتسمح بالـ <b>line editing</b>.` };
     return html`<figure className="fig fo9"><div className="fig-stage"><div className="fo9-wrap">
       <div className="fo9-chips">${DEV.map((x, j) => html`<button key=${x[0]} className="fo9-chip" aria-pressed=${String(j === d)} onClick=${() => setD(j)}>${x[0]}</button>`)}</div>
       <div className="fo9-side" style=${{ marginTop: '6px' }}>

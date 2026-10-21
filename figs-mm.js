@@ -124,7 +124,7 @@
     const steps = [
       { en: 'Traversal through pages of hypertext is usually <b>non-linear</b>. Compare it with normal text.', ar: 'التنقل بين صفحات الـ hypertext عادةً بيبقى <b>non-linear</b>. قارنه بالـ text العادي.' },
       { en: '<b>Normal Text</b> is read <b>LINEAR</b>: along each line, down the page, then on to the next page, always in one order.', ar: 'الـ <b>Normal Text</b> بيتقري <b>LINEAR</b>: على طول السطر، ونازل في الصفحة، وبعدين الصفحة اللي بعدها، دايماً بترتيب واحد.' },
-      { en: '<b>HyperText</b>: a hot spot on one page jumps to another page, so the reading order is <b>non-linear</b> (here page 1 → 3 → 2 → 1).', ar: 'الـ <b>HyperText</b>: الـ hot spot في صفحة بتنطك لصفحة تانية، فترتيب القراية بيبقى <b>non-linear</b> (هنا صفحة 1 ← 3 ← 2 ← 1).' },
+      { en: '<b>HyperText</b>: a hot spot on one page jumps to another page, so the reading order is <b>non-linear</b> (here page 1 → 3 → 2 → 1).', ar: 'الـ <b>HyperText</b>: الـ hot spot في صفحة بتنطك لصفحة تانية، فترتيب القراية بيبقى <b>non-linear</b>، وهنا ترتيب الصفحات:<span class="ltr">1 → 3 → 2 → 1</span>' },
       { en: 'This has implications in the <b>layout and organisation</b> of material, and depends a lot on the application at hand.', ar: 'ده بيأثر على <b>الـ layout وتنظيم</b> المادة، وبيعتمد جامد على الـ application اللي شغالين عليه.' }
     ];
     const [i, ctl] = useSteps(steps.length, 5200);
@@ -212,7 +212,7 @@
     const open = MOUTH[vid(f)], sound = snd(f);
     const seqOk = !shuf, syncOk = !shuf && !shift;
     let cap;
-    if (!shuf && !shift) cap = { en: 'Frames play in the <b>correct order/time frame</b> (sequencing within the media) and the sound matches the mouth (<b>synchronisation</b>, inter-media scheduling). <b>Try</b> the two buttons below.', ar: 'الـ frames بتشتغل <b>بالترتيب والتوقيت الصح</b> (sequencing within the media) والصوت ماشي مع البُق (<b>synchronisation</b>، inter-media scheduling). <b>جرّب</b> الزرارين اللي تحت.' };
+    if (!shuf && !shift) cap = { en: 'Frames play in the <b>correct order/time frame</b> (sequencing within the media) and the sound matches the mouth (<b>synchronisation</b>, inter-media scheduling). <b>Try</b> the two buttons below.', ar: 'الـ frames بتشتغل <b>بالترتيب والتوقيت الصح</b> (sequencing within the media) والصوت ماشي مع البُق (<b>synchronisation</b> يعني inter-media scheduling). <b>جرّب</b> الزرارين اللي تحت.' };
     else if (shuf && !shift) cap = { en: 'Frames out of order: <b>sequencing within the media</b> fails. Video must play its frames in the correct order/time frame, and the mouth no longer matches the sound either.', ar: 'الـ frames مش بالترتيب: الـ <b>sequencing within the media</b> باظ. الـ video لازم يشغّل الـ frames بالترتيب والتوقيت الصح، وكمان البُق مبقاش ماشي مع الصوت.' };
     else if (!shuf) cap = { en: 'Audio shifted against the video: an <b>out of (lip) sync</b> film. Lip synchronisation is clearly important for humans to watch playback of video and audio, and even animation and audio. Ever tried watching one for a long time?', ar: 'الصوت متزحلق عن الـ video: فيلم <b>out of (lip) sync</b>. الـ lip synchronisation مهم جداً للناس وهم بيتفرجوا على video وaudio، وحتى animation وaudio. جربت تتفرج على فيلم كده مدة طويلة؟' };
     else cap = { en: 'Both fail: frames out of order (<b>sequencing</b>) and audio shifted (<b>synchronisation</b>). These are the temporal relationships a multimedia system must keep.', ar: 'الاتنين باظوا: الـ frames مش بالترتيب (<b>sequencing</b>) والصوت متزحلق (<b>synchronisation</b>). دي الـ temporal relationships اللي الـ multimedia system لازم يحافظ عليها.' };
@@ -269,7 +269,7 @@
           ${chooseWide('Bits per pixel', im.bpp, [[1, '1 (Black and White)'], [8, '8 (Grey Scale, Colour Map)'], [24, '24 (True Colour)']], v => setIm({ ...im, bpp: v }))}
           ${im.mp ? html`<label> <button className="fig-btn" onClick=${() => setIm({ w: 512, h: 512, bpp: im.bpp, mp: 0 })}>Enter width × height</button></label>` : null}</div>
         <div className="fm1-res"><div className="f">${im.mp ? num(px) : num(im.w) + ' × ' + num(im.h)} pixels × ${im.bpp} bits ÷ 8 = ${num(b)} B</div>${MB(b)}${slideOf(IMG_P, im)}</div>`;
-      cap = { en: 'Images are still pictures stored (uncompressed) as a <b>bitmap</b>: 1 bit per pixel (Black and White), 8 (Grey Scale, Colour Map) or 24 (True Colour). Size = pixels × bits per pixel ÷ 8. The overhead soon increases with image size, so <b>compression</b> is commonly applied.', ar: 'الـ images صور ثابتة بتتخزن (من غير compression) كـ <b>bitmap</b>: 1 bit لكل pixel (أبيض وأسود)، 8 (Grey Scale، Colour Map) أو 24 (True Colour). الحجم = عدد الـ pixels × الـ bits لكل pixel ÷ 8. الحجم بيكبر بسرعة مع حجم الصورة، عشان كده الـ <b>compression</b> بيتعمل عادةً.' };
+      cap = { en: 'Images are still pictures stored (uncompressed) as a <b>bitmap</b>: 1 bit per pixel (Black and White), 8 (Grey Scale, Colour Map) or 24 (True Colour). Size = pixels × bits per pixel ÷ 8. The overhead soon increases with image size, so <b>compression</b> is commonly applied.', ar: 'الـ images صور ثابتة بتتخزن (من غير compression) كـ <b>bitmap</b> فيه 1 bit لكل pixel (أبيض وأسود) أو 8 (الـ Grey Scale والـ Colour Map) أو 24 (الـ True Colour). الحجم = عدد الـ pixels × الـ bits لكل pixel ÷ 8. الحجم بيكبر بسرعة مع حجم الصورة، عشان كده الـ <b>compression</b> بيتعمل عادةً.' };
     } else if (tab === 1) {
       const b = au.rate * au.bits / 8 * au.ch * au.min * 60;
       body = html`${presets(AUD_P, au, setAu)}
@@ -278,7 +278,7 @@
           ${choose('Channels', au.ch, [[1, 'Mono (1)'], [2, 'Stereo (2)']], v => setAu({ ...au, ch: v }))}
           ${field('Minutes', au.min, v => setAu({ ...au, min: v }), 1, 120)}</div>
         <div className="fm1-res"><div className="f">${num(au.rate)} samples/s × ${au.bits} bits ÷ 8 × ${au.ch} × ${num(au.min * 60)} s = ${num(b)} B</div>${MB(b)}${slideOf(AUD_P, au)}</div>`;
-      cap = { en: 'Audio is a continuous analog signal, input from microphones, then digitised. CD Quality Audio is <b>16-bit sampling at 44.1 kHz</b>; audiophile rates are higher (e.g. 24-bit, 96 kHz). Size = samples per second × bits ÷ 8 × channels × seconds. Usually <b>compressed</b> (e.g. MP3, AAC, Flac, Ogg Vorbis).', ar: 'الـ audio إشارة analog مستمرة، بتدخل من الـ microphones وبعدين بتتحول digital. الـ CD Quality Audio هو <b>16-bit sampling عند 44.1 kHz</b>؛ والـ audiophile أعلى (زي 24-bit و96 kHz). الحجم = samples في الثانية × الـ bits ÷ 8 × الـ channels × الثواني. وعادةً بيبقى <b>compressed</b> (زي MP3 وAAC وFlac وOgg Vorbis).' };
+      cap = { en: 'Audio is a continuous analog signal, input from microphones, then digitised. CD Quality Audio is <b>16-bit sampling at 44.1 kHz</b>; audiophile rates are higher (e.g. 24-bit, 96 kHz). Size = samples per second × bits ÷ 8 × channels × seconds. Usually <b>compressed</b> (e.g. MP3, AAC, Flac, Ogg Vorbis).', ar: 'الـ audio إشارة analog مستمرة، بتدخل من الـ microphones وبعدين بتتحول digital. الـ CD Quality Audio هو <b>sampling بـ <bdi dir="ltr">16-bit</bdi> عند 44.1 kHz</b>؛ والـ audiophile أعلى (زي <bdi dir="ltr">24-bit</bdi> و96 kHz). الحجم = عدد الـ samples في الثانية × الـ bits ÷ 8 × الـ channels × الثواني. وعادةً بيبقى <b>compressed</b> (زي MP3 وAAC وFlac وOgg Vorbis).' };
     } else {
       const fr = vi.w * vi.h * vi.B, b = fr * vi.fps;
       body = html`${presets(VID_P, vi, setVi)}
@@ -286,7 +286,7 @@
           ${choose('Each pixel', vi.B, [[1, 'Monochrome (1 byte)'], [3, 'Colour (3 bytes)']], v => setVi({ ...vi, B: v }))}
           ${choose('Frames per second', vi.fps, [[25, '25'], [30, '30'], [50, '50']], v => setVi({ ...vi, fps: v }))}</div>
         <div className="fm1-res"><div className="f">One frame: ${num(vi.w)} × ${num(vi.h)} × ${vi.B} B = ${num(fr)} B</div><div className="f">× ${vi.fps} frames = ${num(b)} B for a second</div>${MB(b)}${slideOf(VID_P, vi)}</div>`;
-      cap = { en: 'Raw video is a <b>series of single images</b>, typically 25, 30 or 50 frames per second. Size for a second = one frame × frames per second. Digital video <b>clearly needs to be compressed</b> for most times.', ar: 'الـ raw video هو <b>سلسلة صور منفردة</b>، عادةً 25 أو 30 أو 50 frame في الثانية. الحجم لثانية = frame واحد × عدد الـ frames في الثانية. الـ digital video <b>لازم يتعمله compression</b> في أغلب الأوقات.' };
+      cap = { en: 'Raw video is a <b>series of single images</b>, typically 25, 30 or 50 frames per second. Size for a second = one frame × frames per second. Digital video <b>clearly needs to be compressed</b> for most times.', ar: 'الـ raw video هو <b>سلسلة صور منفردة</b>، عادةً 25 أو 30 أو 50 frame في الثانية. الحجم لثانية = حجم frame واحد × عدد الـ frames في الثانية. الـ digital video <b>لازم يتعمله compression</b> في أغلب الأوقات.' };
     }
     return html`<figure className="fig fm1"><div className="fig-stage"><div className="fm1-calc">
       <div className="fm1-row" role="tablist">${['Image', 'Audio', 'Video'].map((t, j) => html`<button key=${j} role="tab" aria-selected=${tab === j} className=${'fig-btn' + (tab === j ? ' solid' : '')} onClick=${() => setTab(j)}>${t}</button>`)}</div>
@@ -323,8 +323,8 @@
       { en: 'How can we compress data? <b>Lossy v Lossless</b>. Here is a stream of multimedia data.', ar: 'إزاي نعمل compression للـ data؟ <b>Lossy ولا Lossless</b>. دي stream من الـ multimedia data.' },
       { en: '<b>Lossless</b>: ideal (e.g. zip, unix compress): every part of the data is kept. But it is <b>not good enough for MM data</b>.', ar: 'الـ <b>Lossless</b>: مثالي (زي zip وunix compress): كل حتة في الـ data بتفضل موجودة. بس <b>مش كفاية للـ MM data</b>.' },
       { en: '<b>Lossy</b>: throw away nonessential (<b>perceptually less relevant</b>) parts of the data stream: <b>FILTER</b> the data somehow.', ar: 'الـ <b>Lossy</b>: بنرمي الأجزاء اللي مش أساسية (<b>perceptually less relevant</b>) من الـ data stream: بنعمل <b>FILTER</b> للـ data بطريقة ما.' },
-      { en: 'Lossy examples: <b>MP3, JPEG, MPEG Video/Audio</b>.', ar: 'أمثلة على الـ lossy: <b>MP3 وJPEG وMPEG Video/Audio</b>.' },
-      { en: 'Lossless = <b>zero error</b>, high quality, low compression. Lossy = some error, lower quality, <b>higher compression</b> (e.g. YouTube uses lossy).', ar: 'الـ Lossless = <b>zero error</b>، جودة عالية، compression قليل. الـ Lossy = شوية error، جودة أقل، <b>compression أعلى</b> (زي YouTube بيستخدم lossy).' }
+      { en: 'Lossy examples: <b>MP3, JPEG, MPEG Video/Audio</b>.', ar: 'أمثلة على الـ lossy هي <b>MP3 وJPEG و<bdi dir="ltr">MPEG Video/Audio</bdi></b>.' },
+      { en: 'Lossless = <b>zero error</b>, high quality, low compression. Lossy = some error, lower quality, <b>higher compression</b> (e.g. YouTube uses lossy).', ar: 'الـ Lossless معناه <b>zero error</b>، وجودة عالية، و compression قليل. الـ Lossy معناه شوية error، جودة أقل، <b>compression أعلى</b> (زي YouTube بيستخدم lossy).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3200);
     const lr = h => h < 30;
@@ -485,7 +485,7 @@
     const steps = [
       { en: '<b>Microphone</b>: receives sound.', ar: 'الـ <b>Microphone</b>: بيستقبل الصوت.' },
       { en: 'The microphone <b>converts</b> it to an <b>analog signal</b>.', ar: 'الـ microphone <b>بيحوّله</b> لـ <b>analog signal</b>.' },
-      { en: 'Computers like <b>discrete entities</b>, so we need to convert <b>Analog-to-Digital</b>: dedicated hardware (e.g. a <b>Soundcard</b>).', ar: 'الكمبيوتر بيحب الـ <b>discrete entities</b>، فلازم نحوّل <b>Analog-to-Digital</b>: hardware مخصوص (زي الـ <b>Soundcard</b>).' },
+      { en: 'Computers like <b>discrete entities</b>, so we need to convert <b>Analog-to-Digital</b>: dedicated hardware (e.g. a <b>Soundcard</b>).', ar: 'الكمبيوتر بيحب الـ <b>discrete entities</b>، فلازم نحوّل <b>Analog-to-Digital</b>، وده بيحتاج hardware مخصوص (زي الـ <b>Soundcard</b>).' },
       { en: 'Out come <b>binary numbers</b>. This is also known as <b>Digital Sampling</b>.', ar: 'بيطلع منه <b>أرقام binary</b>. وده اسمه برضه <b>Digital Sampling</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2300);
@@ -510,8 +510,8 @@
   /* ── L4 slide 5: digital sampling (1), y(t) and its samples ── */
   function Sampling1({ ar }) {
     const steps = [
-      { en: 'The continuous <b>analog signal</b> y(t) against t.', ar: 'الـ <b>analog signal</b> المتصلة y(t) قصاد الـ t.' },
-      { en: '<b>Measuring</b> the analog signal at <b>regular discrete intervals</b>: Tₛ, 2Tₛ, 3Tₛ, 4Tₛ, …', ar: '<b>بنقيس</b> الـ analog signal على <b>فترات منتظمة discrete</b>: Tₛ و2Tₛ و3Tₛ و4Tₛ و…' },
+      { en: 'The continuous <b>analog signal</b> y(t) against t.', ar: 'الـ <b>analog signal</b> المتصلة <bdi dir="ltr">y(t)</bdi> قصاد الـ t.' },
+      { en: '<b>Measuring</b> the analog signal at <b>regular discrete intervals</b>: Tₛ, 2Tₛ, 3Tₛ, 4Tₛ, …', ar: '<b>بنقيس</b> الـ analog signal على <b>فترات منتظمة discrete</b>، يعني Tₛ و2Tₛ و3Tₛ و4Tₛ و…' },
       { en: '<b>Recording</b> the value at these points: each stem is as high as the signal there. This is the sampled signal yₛ(t).', ar: '<b>بنسجّل</b> القيمة عند النقط دي: كل stem طوله قد قيمة الإشارة عندها. وده الـ sampled signal اللي هي yₛ(t).' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -535,8 +535,8 @@
   /* ── L4 slide 6: digital sampling (2), S(t) and the samples Si ── */
   function Sampling2({ ar }) {
     const steps = [
-      { en: 'A signal <b>S(t)</b> against t, going above and below the axis.', ar: 'إشارة <b>S(t)</b> قصاد الـ t، بتطلع فوق المحور وتنزل تحته.' },
-      { en: 'One sample every <b>sampling interval T</b>, at the sample indices 0, 1, …, i, 4, 5, …, 13.', ar: 'sample واحدة كل <b>sampling interval T</b>، عند الـ sample indices من 0، 1، …، i، 4، 5، … لحد 13.' },
+      { en: 'A signal <b>S(t)</b> against t, going above and below the axis.', ar: 'إشارة <b><bdi dir="ltr">S(t)</bdi></b> قصاد الـ t، بتطلع فوق المحور وتنزل تحته.' },
+      { en: 'One sample every <b>sampling interval T</b>, at the sample indices 0, 1, …, i, 4, 5, …, 13.', ar: 'بناخد sample واحدة كل <b>sampling interval T</b>، عند الـ sample indices دي:<span class="ltr">0, 1, …, i, 4, 5, …, 13</span>' },
       { en: 'The samples <b>Sᵢ</b> are dots on the curve: the signal\'s value at each sample index.', ar: 'الـ samples <b>Sᵢ</b> هي نقط على المنحنى: قيمة الإشارة عند كل sample index.' },
       { en: 'Sample number <b>i</b> has the value <b>Sᵢ</b>. Only these values, one every T, are kept.', ar: 'الـ sample رقم <b>i</b> قيمتها <b>Sᵢ</b>. القيم دي بس، واحدة كل T، هي اللي بتتحفظ.' }
     ];
@@ -566,14 +566,14 @@
   }
 
   /* ── L4 slide 4: bit size (quantisation) and sample rate, try it ── */
-  const RATES = [['8 KHz', 'Telephone', 'تليفون', 8000], ['11.025 KHz', 'Speech', 'كلام (Speech)', 11025], ['22.05 KHz', 'Low Grade Audio (WWW Audio, AM Radio)', 'Low Grade Audio (WWW Audio، AM Radio)', 22050], ['44.1 KHz', 'CD Quality', 'جودة CD', 44100]];
+  const RATES = [['8 KHz', 'Telephone', 'تليفون', 8000], ['11.025 KHz', 'Speech', 'كلام (Speech)', 11025], ['22.05 KHz', 'Low Grade Audio (WWW Audio, AM Radio)', 'Low Grade Audio (WWW Audio و AM Radio)', 22050], ['44.1 KHz', 'CD Quality', 'جودة CD', 44100]];
   function BitRate({ ar }) {
     const [v, setV] = useState(50), [r, setR] = useState(3);
     const q8 = Math.round(v / 100 * 255), q16 = Math.round(v / 100 * 65535);
     const bin = (n, w) => n.toString(2).padStart(w, '0').replace(/(.{4})(?=.)/g, '$1 ');
     const [lab, use, useAr, fs] = RATES[r], T = 1e6 / fs, dots = Math.round(fs / 1000);
     const en = `<b>${lab}</b> (${use}): ${fmt(fs, 0)} samples every second, one every T = 1/fs ≈ ${fmt(T, 2)} µs. Each sample value is stored as an <b>8 bit value</b> (0-255) or a <b>16 bit value</b> (integer, 0-65535).`;
-    const a = `<b>${lab}</b> (${useAr}): ${fmt(fs, 0)} sample في الثانية، يعني واحدة كل T = 1/fs ≈ ${fmt(T, 2)} µs. وكل قيمة sample بتتخزن كـ <b>8 bit value</b> (من 0 لـ 255) أو <b>16 bit value</b> (integer، من 0 لـ 65535).`;
+    const a = `الـ rate <b>${lab}</b> (${useAr}) فيه ${fmt(fs, 0)} sample في الثانية، يعني واحدة كل:<span class="ltr">T = 1/fs ≈ ${fmt(T, 2)} µs</span>وكل قيمة sample بتتخزن كـ <b>8 bit value</b> (من 0 لـ 255) أو <b>16 bit value</b> (integer، من 0 لـ 65535).`;
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm2-box"><div className="hd">Bit Size: Quantisation</div><div className="bd">
         <div className="fm2-range"><span>Sample value (low → high)</span><input type="range" min="0" max="100" step="1" value=${v} onInput=${e => setV(+e.target.value)} onChange=${e => setV(+e.target.value)} aria-label="Sample value" /></div>
@@ -595,9 +595,9 @@
   /* ── L4 slides 8–10: sampling at the signal frequency, twice it, and above Nyquist ── */
   function Nyquist3({ ar }) {
     const steps = [
-      { en: '<b>Sampling at Signal Frequency</b>: one sample per cycle, all at the same height, so joining them gives a <b>flat line</b>. The sine is lost.', ar: '<b>Sampling at Signal Frequency</b>: sample واحدة في كل cycle، كلها على نفس الارتفاع، فلما توصلهم يطلع <b>خط مستقيم</b>. الـ sine ضاع.' },
-      { en: '<b>Sampling at Twice Nyquist Frequency</b> (slide title): samples at every <b>peak and trough</b>, 2 per cycle. Joined, they give a <b>triangle wave</b> with the sine\'s frequency: the sine is just captured. (The sample rate here is twice the signal frequency, i.e. the Nyquist rate 2·fmax.)', ar: '<b>Sampling at Twice Nyquist Frequency</b> (عنوان السلايد): samples عند كل <b>قمة وقاع</b>، 2 في كل cycle. لما توصلهم يطلع <b>triangle wave</b> بنفس frequency الـ sine: الـ sine اتلقط بالعافية. (الـ sample rate هنا ضعف frequency الإشارة، يعني الـ Nyquist rate 2·fmax.)' },
-      { en: '<b>Sampling at above Nyquist Frequency</b>: many samples per cycle trace the sine closely, so the waveform is captured well.', ar: '<b>Sampling at above Nyquist Frequency</b>: samples كتير في كل cycle ماشية على الـ sine بالظبط تقريبًا، فالـ waveform بيتلقط كويس.' }
+      { en: '<b>Sampling at Signal Frequency</b>: one sample per cycle, all at the same height, so joining them gives a <b>flat line</b>. The sine is lost.', ar: 'الـ <b>Sampling at Signal Frequency</b> بياخد sample واحدة في كل cycle، كلها على نفس الارتفاع، فلما توصلهم يطلع <b>خط مستقيم</b>. الـ sine ضاع.' },
+      { en: '<b>Sampling at Twice Nyquist Frequency</b> (slide title): samples at every <b>peak and trough</b>, 2 per cycle. Joined, they give a <b>triangle wave</b> with the sine\'s frequency: the sine is just captured. (The sample rate here is twice the signal frequency, i.e. the Nyquist rate 2·fmax.)', ar: 'الـ <b>Sampling at Twice Nyquist Frequency</b> (عنوان السلايد) بياخد samples عند كل <b>قمة وقاع</b>، 2 في كل cycle. لما توصلهم يطلع <b>triangle wave</b> بنفس frequency الـ sine: الـ sine اتلقط بالعافية. (الـ sample rate هنا ضعف frequency الإشارة، يعني الـ Nyquist rate 2·fmax.)' },
+      { en: '<b>Sampling at above Nyquist Frequency</b>: many samples per cycle trace the sine closely, so the waveform is captured well.', ar: 'الـ <b>Sampling at above Nyquist Frequency</b> بياخد samples كتير في كل cycle ماشية على الـ sine بالظبط تقريبًا، فالـ waveform بيتلقط كويس.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3600);
     const X = t => 20 + t * 133, Y = v => 112 - v * 82, f = t => Math.sin(2 * Math.PI * t);
@@ -622,7 +622,7 @@
     const [fmax, setF] = useState(4000);
     const ok = isFinite(fmax) && fmax > 0, need = 2 * fmax;
     const en = ok ? `Highest frequency <b>${fmt(fmax)} Hz</b> → Nyquist: sample at least <b>2 × ${fmt(fmax)} = ${fmt(need)} Hz</b> (sampling interval at most 1/${fmt(need)} = ${fmt(1 / need, 7)} s). A rate captures the signal when its Nyquist frequency fs/2 reaches fmax.` : 'Enter the highest frequency component in the signal (in Hz).';
-    const a = ok ? `أعلى frequency <b>${fmt(fmax)} Hz</b> ← Nyquist: لازم نعمل sampling على الأقل بـ <b>2 × ${fmt(fmax)} = ${fmt(need)} Hz</b> (والـ sampling interval أقصاه 1/${fmt(need)} = ${fmt(1 / need, 7)} s). الـ rate بيلقط الإشارة لما الـ Nyquist frequency بتاعته fs/2 توصل للـ fmax.` : 'اكتب أعلى frequency component في الإشارة (بالـ Hz).';
+    const a = ok ? `أعلى frequency <b>${fmt(fmax)} Hz</b>، فحسب Nyquist لازم نعمل sampling على الأقل بـ:<span class="ltr"><b>2 × ${fmt(fmax)} = ${fmt(need)} Hz</b></span>والـ sampling interval أقصاه:<span class="ltr">1/${fmt(need)} = ${fmt(1 / need, 7)} s</span>الـ rate بيلقط الإشارة لما الـ Nyquist frequency بتاعته <bdi dir="ltr">fs/2</bdi> توصل للـ fmax.` : 'اكتب أعلى frequency component في الإشارة (بالـ Hz).';
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm2-form" style=${{ gridTemplateColumns: '1fr' }}><label>Highest frequency in the signal, fmax (Hz)
         <input type="number" min="1" step="any" value=${isFinite(fmax) ? fmax : ''} onInput=${e => setF(parseFloat(e.target.value))} /></label></div>
@@ -665,9 +665,9 @@
   /* ── L4 slide 12: three sinusoids through the same sample points ── */
   function SameSamples({ ar }) {
     const steps = [
-      { en: 'The <b>sample points</b>: one sample at each t = −4, −3, …, 4.', ar: 'الـ <b>sample points</b>: sample واحدة عند كل t = −4، −3، …، 4.' },
-      { en: 'A <span class="fm2-c-b">blue</span> sinusoid passes through them.', ar: 'sinusoid <span class="fm2-c-b">أزرق</span> بيعدي عليهم.' },
-      { en: 'A <span class="fm2-c-r">red</span> sinusoid, a different one, passes through <b>exactly the same points</b>.', ar: 'sinusoid <span class="fm2-c-r">أحمر</span>، واحد تاني خالص، بيعدي على <b>نفس النقط بالظبط</b>.' },
+      { en: 'The <b>sample points</b>: one sample at each t = −4, −3, …, 4.', ar: 'الـ <b>sample points</b> فيها sample واحدة عند كل:<span class="ltr">t = −4, −3, …, 4</span>' },
+      { en: 'A <span class="fm2-c-b">blue</span> sinusoid passes through them.', ar: 'فيه sinusoid <span class="fm2-c-b">أزرق</span> بيعدي عليهم.' },
+      { en: 'A <span class="fm2-c-r">red</span> sinusoid, a different one, passes through <b>exactly the same points</b>.', ar: 'وفيه sinusoid <span class="fm2-c-r">أحمر</span>، واحد تاني خالص، بيعدي على <b>نفس النقط بالظبط</b>.' },
       { en: 'So does a <span class="fm2-c-g">green</span> one.', ar: 'وكمان واحد <span class="fm2-c-g">أخضر</span>.' },
       { en: 'If you get Nyquist sampling wrong, the samples alone <b>cannot tell the three apart</b>.', ar: 'لو الـ Nyquist sampling غلط، الـ samples لوحدها <b>مش هتعرف تفرق بين التلاتة</b>.' }
     ];
@@ -695,7 +695,7 @@
     const T = Math.min(pl.t, SWEEP);
     let en, a;
     if (pl.on === 'cd') { en = 'Playing: the sine sweeping up from 0 to 8 KHz, sampled at <b>44.1 KHz</b> (CD). Its Nyquist frequency is 22.05 KHz, so the whole sweep is captured: you hear it rise all the way.'; a = 'شغّال: sine طالع من 0 لـ 8 KHz، متعملها sampling بـ <b>44.1 KHz</b> (CD). الـ Nyquist frequency بتاعتها 22.05 KHz، فالـ sweep كله بيتلقط: هتسمعه طالع للآخر.'; }
-    else if (pl.on === 'tel') { en = 'Playing: the same sweep sampled at <b>8 KHz</b> (telephone). Its Nyquist frequency is 8 ÷ 2 = 4 KHz. Above that the samples no longer fit the sine: <b>aliasing</b>, a false lower frequency, so the pitch you hear turns round and falls.'; a = 'شغّال: نفس الـ sweep متعملها sampling بـ <b>8 KHz</b> (تليفون). الـ Nyquist frequency بتاعتها 8 ÷ 2 = 4 KHz. فوقها الـ samples مبقتش بتمثل الـ sine: <b>aliasing</b>، يعني frequency أقل كدابة، فالـ pitch اللي بتسمعه بيلف وينزل.'; }
+    else if (pl.on === 'tel') { en = 'Playing: the same sweep sampled at <b>8 KHz</b> (telephone). Its Nyquist frequency is 8 ÷ 2 = 4 KHz. Above that the samples no longer fit the sine: <b>aliasing</b>, a false lower frequency, so the pitch you hear turns round and falls.'; a = 'شغّال: نفس الـ sweep متعملها sampling بـ <b>8 KHz</b> (تليفون). الـ Nyquist frequency بتاعتها:<span class="ltr">8 ÷ 2 = 4 KHz</span>فوقها الـ samples مبقتش بتمثل الـ sine، وده <b>aliasing</b>، يعني frequency أقل كدابة، فالـ pitch اللي بتسمعه بيلف وينزل.'; }
     else { en = 'What does aliasing sound like? Play a sine that sweeps up from 0 to 8 KHz, once sampled at 44.1 KHz (CD) and once at 8 KHz (telephone). The graph shows the frequency you hear. The slide\'s demos (Sine Wave, Aliased Sine Wave, Aliased Piano) come with MATLAB code (Plot Version, Audio Version); more on image and video sampling artefacts later.'; a = 'الـ aliasing صوته عامل إزاي؟ شغّل sine طالع من 0 لـ 8 KHz، مرة متعملها sampling بـ 44.1 KHz (CD) ومرة بـ 8 KHz (تليفون). الرسمة بتوري الـ frequency اللي بتسمعها. ديمو السلايد (Sine Wave وAliased Sine Wave وAliased Piano) معاه MATLAB code (Plot Version وAudio Version)؛ والـ artefacts بتاعة الصور والـ video جاية بعدين.'; }
     return html`<figure className="fig"><div className="fig-stage">
       <svg viewBox="0 0 440 236" role="img" aria-label="Heard frequency against time: at 44.1 KHz it rises to 8 KHz; at 8 KHz it rises to 4 KHz then falls back">
@@ -719,11 +719,11 @@
   /* ── L4 slide 17: low-pass filter before sampling ── */
   function LowPass({ ar }) {
     const steps = [
-      { en: '<b>Input Signal (Analog)</b>: it also contains high frequencies.', ar: '<b>Input Signal (Analog)</b>: فيها frequencies عالية كمان.' },
+      { en: '<b>Input Signal (Analog)</b>: it also contains high frequencies.', ar: 'الـ <b><bdi dir="ltr">Input Signal (Analog)</bdi></b>: فيها frequencies عالية كمان.' },
       { en: 'It must go through a <b>Low Pass Filter</b> before sampling.', ar: 'لازم تعدي على <b>Low Pass Filter</b> قبل الـ sampling.' },
-      { en: '<b>Filtered Signal (Analog)</b>: the high frequencies are taken out.', ar: '<b>Filtered Signal (Analog)</b>: الـ frequencies العالية اتشالت.' },
-      { en: 'The <b>A/D Converter</b> samples it.', ar: 'الـ <b>A/D Converter</b> بيعمل لها sampling.' },
-      { en: '<b>Sampled Signal (Digital)</b>: the samples follow the signal. Try <b>Skip the filter</b> below.', ar: '<b>Sampled Signal (Digital)</b>: الـ samples ماشية مع الإشارة. جرّب <b>Skip the filter</b> تحت.' }
+      { en: '<b>Filtered Signal (Analog)</b>: the high frequencies are taken out.', ar: 'الـ <b><bdi dir="ltr">Filtered Signal (Analog)</bdi></b>: الـ frequencies العالية اتشالت.' },
+      { en: 'The <b>A/D Converter</b> samples it.', ar: 'الـ <b><bdi dir="ltr">A/D Converter</bdi></b> بيعمل لها sampling.' },
+      { en: '<b>Sampled Signal (Digital)</b>: the samples follow the signal. Try <b>Skip the filter</b> below.', ar: 'الـ <b><bdi dir="ltr">Sampled Signal (Digital)</bdi></b>: الـ samples ماشية مع الإشارة. جرّب <b>Skip the filter</b> تحت.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2000);
     const [skip, setSkip] = useState(false);
@@ -735,7 +735,7 @@
       ${skip && html`<path d=${curve(slow, 0, 1, 100, Xm, Ym)} stroke="var(--faint)" strokeDasharray="3 3" fill="none" />`}
       ${pts.map((u, k) => html`<g key=${k}><path d=${`M${Xm(u)} 32 V${Ym(src(u))}`} stroke="var(--ink)" strokeWidth="1.3" /><circle cx=${Xm(u)} cy=${Ym(src(u))} r="3.2" fill=${skip ? 'var(--pen)' : 'var(--k-mm)'} /></g>`)}</svg>`;
     const arw = on => html`<div className="fm2-ar" style=${{ opacity: on ? 1 : .3 }}><span className="h">→</span><span className="v">↓</span></div>`;
-    const cap = skip && i === steps.length - 1 ? { en: 'Without the filter, high frequency signals (<b>above the Nyquist Limit</b>) reach the A/D converter and <b>strange artefacts</b> appear in the sampled signal: the dots no longer follow the slow wave (dashed).', ar: 'من غير الـ filter، الـ high frequency signals (<b>فوق الـ Nyquist Limit</b>) بتوصل للـ A/D converter و<b>artefacts غريبة</b> بتظهر في الـ sampled signal: النقط مبقتش ماشية مع الموجة البطيئة (المتقطعة).' } : steps[i];
+    const cap = skip && i === steps.length - 1 ? { en: 'Without the filter, high frequency signals (<b>above the Nyquist Limit</b>) reach the A/D converter and <b>strange artefacts</b> appear in the sampled signal: the dots no longer follow the slow wave (dashed).', ar: 'من غير الـ filter، الـ high frequency signals (<b>فوق الـ Nyquist Limit</b>) بتوصل للـ <bdi dir="ltr">A/D converter</bdi> و<b>artefacts غريبة</b> بتظهر في الـ sampled signal: النقط مبقتش ماشية مع الموجة البطيئة (المتقطعة).' } : steps[i];
     return html`<figure className="fig"><div className="fig-stage"><div className="fm2-chain">
       <div className=${'fm2-node' + (i >= 0 ? ' on' : '')}>${mini(inp, true)}Input Signal (Analog)</div>${arw(i >= 1)}
       <div className=${'fm2-blk' + (skip ? ' off' : i >= 1 ? ' on' : '')}>Low Pass Filter</div>${arw(i >= 2)}
@@ -752,8 +752,8 @@
   function CdRate({ ar }) {
     const steps = [
       { en: 'Why are CD sample rates <b>44.1 KHz</b>?', ar: 'ليه الـ sample rate بتاع الـ CD <b>44.1 KHz</b>؟' },
-      { en: 'The upper range of human hearing is around <b>20-22 KHz</b>.', ar: 'أعلى مدى لسمع الإنسان حوالي <b>20-22 KHz</b>.' },
-      { en: 'Apply <b>Nyquist</b>: sample at least twice the highest frequency, 2 × 22.05 KHz = <b>44.1 KHz</b>.', ar: 'طبّق <b>Nyquist</b>: الـ sampling لازم يكون على الأقل ضعف أعلى frequency، 2 × 22.05 KHz = <b>44.1 KHz</b>.' }
+      { en: 'The upper range of human hearing is around <b>20-22 KHz</b>.', ar: 'أعلى مدى لسمع الإنسان حوالي <b><bdi dir="ltr">20-22 KHz</bdi></b>.' },
+      { en: 'Apply <b>Nyquist</b>: sample at least twice the highest frequency, 2 × 22.05 KHz = <b>44.1 KHz</b>.', ar: 'طبّق <b>Nyquist</b>: الـ sampling لازم يكون على الأقل ضعف أعلى frequency، يعني:<span class="ltr">2 × 22.05 KHz = <b>44.1 KHz</b></span>' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const X = f => 22 + f * 8.9;
@@ -794,7 +794,7 @@
     const go = k => { const [, fs, b] = Q15[k]; if (!cache.current[k]) cache.current[k] = clip(fs, b); pl.play(k, cache.current[k], fs); };
     const k = pl.on;
     const en = k == null ? 'The slide\'s audio examples (all mono) at five settings. Press play: the page makes one short clip at each setting so you can compare. Fewer bits and a lower sample rate give lower quality.' : `Playing <b>${Q15[k][0]}</b>: ${fmt(Q15[k][1], 0)} samples per second, each stored with ${Q15[k][2]} bits (${fmt(Math.pow(2, Q15[k][2]), 0)} levels).`;
-    const a = k == null ? 'أمثلة الصوت بتاعة السلايد (كلها mono) بخمس إعدادات. دوس play: الصفحة بتعمل clip قصير بكل إعداد عشان تقارن. bits أقل وsample rate أقل يعني جودة أقل.' : `شغّال <b>${Q15[k][0]}</b>: ${fmt(Q15[k][1], 0)} sample في الثانية، وكل واحدة متخزنة بـ ${Q15[k][2]} bits (${fmt(Math.pow(2, Q15[k][2]), 0)} level).`;
+    const a = k == null ? 'أمثلة الصوت بتاعة السلايد (كلها mono) بخمس إعدادات. دوس play: الصفحة بتعمل clip قصير بكل إعداد عشان تقارن. bits أقل وsample rate أقل يعني جودة أقل.' : `شغّال <b>${Q15[k][0]}</b>، وفيه ${fmt(Q15[k][1], 0)} sample في الثانية، وكل واحدة متخزنة بـ ${Q15[k][2]} bits (${fmt(Math.pow(2, Q15[k][2]), 0)} level).`;
     return html`<figure className="fig"><div className="fig-stage">
       <table className="fm2-tbl" style=${{ maxWidth: '380px' }}><thead><tr><th>File Type</th><th>Audio File (all mono)</th></tr></thead><tbody>
         ${Q15.map((r, j) => html`<tr key=${j} className=${k === j ? 'on' : ''}><td>${r[0]}</td><td><button className=${'fm2-pb' + (k === j ? ' on' : '')} onClick=${() => go(j)} disabled=${!pl.ok} aria-label=${(k === j ? 'Stop ' : 'Play ') + r[0]}>${k === j ? '■ Stop' : '▶ Play'}</button></td></tr>`)}
@@ -810,7 +810,7 @@
     const [sel, setSel] = useState([0, 0]), fit = useFit(sel.join());
     const [r, c] = sel, row = R16[r], fs = C16[c][1], bits = fs * row[1] * row[2] * 60, B = bits / 8;
     const en = `<b>${row[0]} at ${C16[c][0]}</b> for 1 minute: size = sample rate × bits × channels × time. The result matches the slide's <b>${row[3][c]}</b>. Tap another cell.`;
-    const a = `<b>${row[0]} بـ ${C16[c][0]}</b> لمدة دقيقة: الحجم = sample rate × bits × channels × time. الناتج نفس رقم السلايد <b>${row[3][c]}</b>. دوس على خانة تانية.`;
+    const a = `مثال <b>${row[0]} بـ ${C16[c][0]}</b> لمدة دقيقة: الحجم بيساوي:<span class="ltr">sample rate × bits × channels × time</span>الناتج نفس رقم السلايد <b>${row[3][c]}</b>. دوس على خانة تانية.`;
     return html`<figure className="fig"><div className="fig-stage">
       <div ref=${fit} style=${{ overflow: 'hidden' }}><table className="fm2-tbl fm2-st"><thead><tr><th>File Type</th>${C16.map(x => html`<th key=${x[0]}>${x[0]}</th>`)}</tr></thead><tbody>
         ${R16.map((x, j) => html`<tr key=${j}><th className="rh">${x[0]}</th>${x[3].map((v, k) => html`<td key=${k} className=${'pick' + (j === r && k === c ? ' sel' : '')} onClick=${() => setSel([j, k])} role="button" tabIndex="0" onKeyDown=${e => { if (e.key === 'Enter' || e.key === ' ') setSel([j, k]); }}>${v}</td>`)}</tr>`)}
@@ -842,7 +842,7 @@
     const ok = [fs, s.bits, t, s.ch].every(x => isFinite(x) && x > 0);
     const bits = fs * s.bits * t * s.ch, B = bits / 8;
     const en = '<b>Size (bits) = time (s) × sample rate (Hz) × sample size (bits) × channels.</b> Divide by 8 for bytes, by 1024 for KB, by 1024 again for MB. If only the sampling interval is given, fs = 1 / interval. Pick a worked example or enter your own values.';
-    const a = '<b>الحجم (bits) = الوقت (s) × الـ sample rate (Hz) × الـ sample size (bits) × عدد الـ channels.</b> اقسم على 8 عشان الـ bytes، وعلى 1024 للـ KB، وعلى 1024 تاني للـ MB. لو معاك الـ sampling interval بس، fs = 1 / interval. اختار مثال محلول أو اكتب أرقامك.';
+    const a = '<b>الحجم بالـ bits بيساوي الوقت (s) × الـ sample rate (Hz) × الـ sample size (bits) × عدد الـ channels.</b> اقسم على 8 عشان الـ bytes، وعلى 1024 للـ KB، وعلى 1024 تاني للـ MB. لو معاك الـ sampling interval بس، يبقى:<span class="ltr">fs = 1 / interval</span>اختار مثال محلول أو اكتب أرقامك.';
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm2-chips">${EX.map((x, k) => html`<button key=${k} className=${'fig-btn' + (ex === k ? ' sel' : '')} onClick=${() => { setEx(k); setS(o => Object.assign({}, o, x)); }}>${x.n}</button>`)}</div>
       <div className="fm2-form">
@@ -902,9 +902,9 @@
   /* ── L4 slides 22 and 24: synthesis pipeline and the analogy with vector graphics ── */
   function SynthPipe({ ar }) {
     const steps = [
-      { en: '<b>Synthesis pipeline</b>: synthesise sounds in <b>hardware or software</b>.', ar: '<b>Synthesis pipeline</b>: بنعمل synthesis للأصوات بالـ <b>hardware أو الـ software</b>.' },
-      { en: 'The <b>client produces the sound</b>: only <b>parameters</b> to control the sound are sent (<b>MIDI / MP4 / HTML5</b>).', ar: 'الـ <b>client هو اللي بيطلّع الصوت</b>: بنبعت بس <b>الـ parameters</b> اللي بتتحكم في الصوت (<b>MIDI / MP4 / HTML5</b>).' },
-      { en: '<b>Recorded sounds</b> and <b>digital images</b>: regular sampling; large data size; difficult to modify.', ar: 'الـ <b>Recorded sounds</b> والـ <b>digital images</b>: sampling منتظم؛ حجم data كبير؛ صعب تعدّل فيها.' },
+      { en: '<b>Synthesis pipeline</b>: synthesise sounds in <b>hardware or software</b>.', ar: 'الـ <b>Synthesis pipeline</b>: بنعمل synthesis للأصوات بالـ <b>hardware أو الـ software</b>.' },
+      { en: 'The <b>client produces the sound</b>: only <b>parameters</b> to control the sound are sent (<b>MIDI / MP4 / HTML5</b>).', ar: 'الـ <b>client هو اللي بيطلّع الصوت</b>: بنبعت بس <b>الـ parameters</b> اللي بتتحكم في الصوت (<b>الـ MIDI أو الـ MP4 أو الـ HTML5</b>).' },
+      { en: '<b>Recorded sounds</b> and <b>digital images</b>: regular sampling; large data size; difficult to modify.', ar: 'الـ <b>Recorded sounds</b> والـ <b>digital images</b> فيها sampling منتظم؛ حجم data كبير؛ صعب تعدّل فيها.' },
       { en: '<b>Synthetic sounds</b> and <b>vector graphics</b>: high level descriptions; small data size; easier to edit. <b>Conversion is needed before display</b>: synthesis or rasterisation.', ar: 'الـ <b>Synthetic sounds</b> والـ <b>vector graphics</b>: وصف high level؛ حجم data صغير؛ أسهل في التعديل. <b>لازم conversion قبل العرض</b>: synthesis أو rasterisation.' },
       { en: 'Difference: <b>1D vs 2D</b>.', ar: 'الفرق: <b>1D vs 2D</b>.' }
     ];
@@ -938,7 +938,7 @@
 
   /* ── L4 slide 23: synthesis methods, with additive and subtractive to try ── */
   const METH = [
-    ['FM (Frequency Modulation) Synthesis', 'used in low-end Sound Blaster cards, OPL-4 chip, Yamaha DX Synthesiser range popular in Early 1980\'s.', 'مستخدم في كروت Sound Blaster الرخيصة، وشريحة OPL-4، وسلسلة Yamaha DX Synthesiser اللي كانت مشهورة في أول الثمانينات.'],
+    ['FM (Frequency Modulation) Synthesis', 'used in low-end Sound Blaster cards, OPL-4 chip, Yamaha DX Synthesiser range popular in Early 1980\'s.', 'مستخدم في كروت Sound Blaster الرخيصة، وشريحة <bdi dir="ltr">OPL-4</bdi>، وسلسلة Yamaha DX Synthesiser اللي كانت مشهورة في أول الثمانينات.'],
     ['Wavetable synthesis', 'wavetable generated from sampled sound waves of real instruments.', 'الـ wavetable بيتعمل من sound waves متسجلة (sampled) لآلات حقيقية.'],
     ['Additive synthesis', 'make up signal from smaller simpler waveforms.', 'بنكوّن الإشارة من waveforms أصغر وأبسط.'],
     ['Subtractive synthesis', 'modify a (complex) waveform but taking out (Filtering) elements.', 'بنعدّل waveform (معقدة) عن طريق إننا نشيل منها عناصر (Filtering).'],
@@ -958,7 +958,7 @@
     const toggle = k => { pl.stop(); setOn(o => o.map((v, j) => j === k ? !v : v)); };
     const [t, en, a] = METH[m];
     const enC = `<b>${t}</b>: ${en}${demo ? (m === 2 ? ' <b>Try it:</b> add simpler waveforms (sines) to build the signal.' : ' <b>Try it:</b> start from the complex waveform and take elements out.') : ''} Most modern Synthesisers use a mixture of sample and synthesis.`;
-    const arC = `<b>${t}</b>: ${a}${demo ? (m === 2 ? ' <b>جرّب:</b> زوّد waveforms أبسط (sines) عشان تبني الإشارة.' : ' <b>جرّب:</b> ابدأ من الـ waveform المعقدة وشيل منها عناصر.') : ''} معظم الـ Synthesisers الحديثة بتستخدم خليط من الـ sample والـ synthesis.`;
+    const arC = `الـ <b>${t}</b>: ${a}${demo ? (m === 2 ? ' <b>جرّب:</b> زوّد waveforms أبسط (sines) عشان تبني الإشارة.' : ' <b>جرّب:</b> ابدأ من الـ waveform المعقدة وشيل منها عناصر.') : ''} معظم الـ Synthesisers الحديثة بتستخدم خليط من الـ sample والـ synthesis.`;
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm2-chips">${METH.map((x, k) => html`<button key=${k} className=${'fig-btn' + (k === m ? ' sel' : '')} onClick=${() => pick(k)}>${x[0].replace(' (Frequency Modulation)', '')}</button>`)}</div>
       <div className="fm2-desc"><span className="t">${t}</span>: ${en}</div>
@@ -1109,8 +1109,8 @@
   const TYPES = [
     { n: 'Bit-map (B/W)', bpp: 1, grp: [['0 or 1', 1]], div: 1024, slide: '37.5 KB', en: 'each pixel is stored as a single bit (0 or 1). Dithering is often used for displaying monochrome images.', ar: 'كل pixel بيتخزن كـ bit واحد (0 أو 1). والـ dithering بيستخدم كتير عشان نعرض صور monochrome.' },
     { n: 'Grey-scale', bpp: 8, grp: [['0 to 255', 8]], div: 1024, slide: 'over 300 KB', en: 'each pixel is usually stored as a byte (value between 0 to 255). A dark pixel may have a value of 10; a bright one may be 240.', ar: 'كل pixel غالباً بيتخزن كـ byte (قيمة من 0 لـ 255). الـ pixel الغامق ممكن قيمته 10، والفاتح ممكن 240.' },
-    { n: '8-bit colour', bpp: 8, grp: [['LUT index', 8]], div: 1000, slide: '307.2 KB (cf. 8-bit greyscale)', en: 'one byte for each pixel; supports 256 out of the millions possible colours; acceptable colour quality; requires Colour Look-Up Tables (LUTs).', ar: 'byte واحد لكل pixel؛ بيدعم 256 لون من الملايين الممكنة؛ جودة ألوان مقبولة؛ ومحتاج Colour Look-Up Tables (LUTs).' },
-    { n: '24-bit colour', bpp: 24, grp: [['R', 8], ['G', 8], ['B', 8]], div: 1000, slide: '921.6 KB', en: 'each pixel is represented by three bytes (e.g. RGB); supports 256 × 256 × 256 (16,777,216) possible colours.', ar: 'كل pixel بيتمثل بـ 3 bytes (زي RGB)؛ بيدعم 256 × 256 × 256 (16,777,216) لون ممكن.' },
+    { n: '8-bit colour', bpp: 8, grp: [['LUT index', 8]], div: 1000, slide: '307.2 KB (cf. 8-bit greyscale)', en: 'one byte for each pixel; supports 256 out of the millions possible colours; acceptable colour quality; requires Colour Look-Up Tables (LUTs).', ar: 'فيه byte واحد لكل pixel؛ بيدعم 256 لون من الملايين الممكنة؛ جودة ألوان مقبولة؛ ومحتاج Colour Look-Up Tables (LUTs).' },
+    { n: '24-bit colour', bpp: 24, grp: [['R', 8], ['G', 8], ['B', 8]], div: 1000, slide: '921.6 KB', en: 'each pixel is represented by three bytes (e.g. RGB); supports 256 × 256 × 256 (16,777,216) possible colours.', ar: 'كل pixel بيتمثل بـ 3 bytes (زي RGB)؛ بيدعم <bdi dir="ltr">256&nbsp;×&nbsp;256&nbsp;×&nbsp;256</bdi> (16,777,216) لون ممكن.' },
     { n: '32-bit colour', bpp: 32, grp: [['R', 8], ['G', 8], ['B', 8], ['alpha', 8]], div: null, slide: null, en: 'the extra byte of data for each pixel is used to store an alpha value representing special effect information.', ar: 'الـ byte الزيادة في كل pixel بيتخزن فيه قيمة <b>alpha</b> بتمثل معلومات الـ special effects.' }
   ];
   function ImgSizes({ ar }) {
@@ -1119,7 +1119,7 @@
     const bits = w * h * T.bpp, bytes = bits / 8, std = w === 640 && h === 480;
     const kbLine = d => html`<div className=${T.div === d ? 'fm3-hi' : 'fm3-mut'}>÷ ${d} = ${num(bytes / d)} KB${T.div === d && std ? ' ← the slide’s ' + T.slide : ''}</div>`;
     const en = `<b>${T.n}</b>: ${T.en} ` + (T.slide ? `The slide: a 640 × 480 image takes <b>${T.slide}</b> (bytes ÷ ${T.div}).` : 'The slide gives no size for 32-bit images; the same formula gives 1,228,800 B at 640 × 480.') + ' Size = width × height × bits per pixel ÷ 8 bytes.';
-    const a = `<b>${T.n}</b>: ${T.ar} ` + (T.slide ? `الـ slide: صورة 640 × 480 بتاخد <b>${T.slide}</b> (الـ bytes ÷ ${T.div}).` : 'الـ slide مش مدية حجم للـ 32-bit؛ نفس القانون بيدي 1,228,800 B لـ 640 × 480.') + ' الحجم = العرض × الطول × الـ bits per pixel ÷ 8 bytes.';
+    const a = `الـ <b><bdi dir="ltr">${T.n}</bdi></b>: ${T.ar} ` + (T.slide ? `الـ slide بتقول إن صورة <bdi dir="ltr">640&nbsp;×&nbsp;480</bdi> بتاخد <b>${T.slide}</b> (الـ bytes ÷ ${T.div}).` : 'الـ slide مش مدية حجم للـ <bdi dir="ltr">32-bit</bdi>؛ نفس القانون بيدي 1,228,800 B لـ <bdi dir="ltr">640&nbsp;×&nbsp;480</bdi>.') + ' الحجم = العرض × الطول × الـ bits per pixel ÷ 8 bytes.';
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm3-row">${TYPES.map((x, k) => html`<button key=${k} className=${'fm3-chip' + (k === t ? ' on' : '')} onClick=${() => setT(k)}>${x.n}</button>`)}</div>
       <div className="fm3-in"><label>Width <input type="number" min="1" value=${W} onChange=${e => setW(e.target.value)} /></label> × <label>Height <input type="number" min="1" value=${H} onChange=${e => setH(e.target.value)} /></label>
@@ -1138,10 +1138,10 @@
   /* ── slide 10: the colour LUT ── */
   function Lut({ ar }) {
     const steps = [
-      { en: 'Store only the <b>index</b> of the colour LUT for each pixel: in the image memory (M × N, x from 0 to M−1, y from 0 to N−1) this pixel holds the <b>memory value 25</b>.', ar: 'بنخزن <b>الـ index</b> بتاع الـ colour LUT بس لكل pixel: في الـ image memory (M × N، الـ x من 0 لـ M−1 والـ y من 0 لـ N−1) الـ pixel ده شايل <b>memory value = 25</b>.' },
+      { en: 'Store only the <b>index</b> of the colour LUT for each pixel: in the image memory (M × N, x from 0 to M−1, y from 0 to N−1) this pixel holds the <b>memory value 25</b>.', ar: 'بنخزن <b>الـ index</b> بتاع الـ colour LUT بس لكل pixel: في الـ image memory (M × N، الـ x من 0 لـ M−1 والـ y من 0 لـ N−1) الـ pixel ده شايل <b><bdi dir="ltr">memory value = 25</bdi></b>.' },
       { en: 'Look up the table to find the colour (RGB) for the index: go to <b>row 25</b> of the LUT (rows 0 to 255, columns R, G, B).', ar: 'ندوّر في الـ table على اللون (RGB) بتاع الـ index: نروح لـ <b>row 25</b> في الـ LUT (الـ rows من 0 لـ 255، والـ columns هي R وG وB).' },
-      { en: 'Row 25 holds <b>00011110 10111110 00111100</b>: one byte each for R, G and B.', ar: 'الـ row 25 فيه <b>00011110 10111110 00111100</b>: byte لكل واحد من R وG وB.' },
-      { en: 'The displayed pixel gets the <b>pixel value R = 30, G = 190, B = 60</b>.', ar: 'الـ pixel اللي بيتعرض بياخد <b>pixel value: R = 30، G = 190، B = 60</b>.' },
+      { en: 'Row 25 holds <b>00011110 10111110 00111100</b>: one byte each for R, G and B.', ar: 'الـ row 25 فيه <b><bdi dir="ltr">00011110 10111110 00111100</bdi></b>، يعني byte لكل واحد من R وG وB.' },
+      { en: 'The displayed pixel gets the <b>pixel value R = 30, G = 190, B = 60</b>.', ar: 'الـ pixel اللي بيتعرض بياخد الـ <b>pixel value</b> دي:<span class="ltr"><b>R = 30, G = 190, B = 60</b></span>' },
       { en: '<b>Try:</b> palette animation is possible by changing the colour map. Tap any bit of row 25: the image memory still holds 25, but the displayed colour changes.', ar: '<b>جرّب:</b> الـ palette animation ممكنة لما نغيّر الـ colour map. دوس على أي bit في الـ row 25: الـ image memory لسه فيها 25، بس اللون اللي بيتعرض بيتغير.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -1171,7 +1171,7 @@
   function Dither({ ar }) {
     const [v, setV] = useState(200), q = v * 17 / 256, r = remap(v);
     const en = `Pixel value <b>${v}</b> → ${v} ÷ (256/17) = ${q.toFixed(2)} → rounding down: <b>${r}</b> (new range 0 to 16). Put a dot (set to 1) where ${r} &gt; the dither matrix entry, otherwise 0: <b>${r} of 16</b> dots. A 4 × 4 array of dots approximates from 0 (no dots) to 16 (full dots).`;
-    const a = `الـ pixel value <b>${v}</b> → ${v} ÷ (256/17) = ${q.toFixed(2)} → بنقرّب لتحت: <b>${r}</b> (الـ range الجديد 0 لـ 16). بنحط نقطة (1) في المكان لو ${r} &gt; الـ entry بتاع الـ dither matrix، غير كده 0: <b>${r} من 16</b> نقطة. الـ 4 × 4 array من النقط بتقرّب من 0 (مفيش نقط) لـ 16 (كل النقط).`;
+    const a = `الـ pixel value <b>${v}</b> بتتقسم:<span class="ltr">${v} ÷ (256/17) = ${q.toFixed(2)}</span>وبنقرّب لتحت: <b>${r}</b> (الـ range الجديد 0 لـ 16). بنحط نقطة (1) في المكان لو ${r} أكبر من الـ entry بتاع الـ dither matrix، غير كده 0، فبيطلع <b>${r} من 16</b> نقطة. الـ <bdi dir="ltr">4&nbsp;×&nbsp;4</bdi> array من النقط بتقرّب من 0 (مفيش نقط) لـ 16 (كل النقط).`;
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm3-row">${[0, 10, 200, 240, 255].map(x => html`<button key=${x} className=${'fm3-chip' + (x === v ? ' on' : '')} onClick=${() => setV(x)}>${x}</button>`)}</div>
       <div className="fm3-sl"><span>Pixel value</span><input type="range" min="0" max="255" value=${v} onChange=${e => setV(+e.target.value)} aria-label="Pixel value" /><output>${v}</output></div>
@@ -1187,9 +1187,9 @@
   const RW = 64, RH = 16, ramp = x => Math.round(x / (RW - 1) * 255);
   function Ordered({ ar }) {
     const steps = [
-      { en: 'A greyscale image (here a grey ramp from 0 to 255, standing in for the slide’s photo): <b>64 × 16 pixels</b>.', ar: 'صورة greyscale (هنا تدرّج رمادي من 0 لـ 255، بدل صورة الـ slide): <b>64 × 16 pixel</b>.' },
-      { en: '<b>Simple dithering</b>: replace each pixel by a 4 × 4 array of dots. Since each pixel is replaced by 4 × 4 dots, the image becomes <b>16 times as large</b>: 256 × 64.', ar: 'الـ <b>Simple dithering</b>: بنبدّل كل pixel بـ 4 × 4 نقط. وبما إن كل pixel بقى 4 × 4، الصورة بتكبر <b>16 مرة</b>: 256 × 64.' },
-      { en: 'To keep the image size, an <b>ordered dither</b> produces an output pixel with value 1 <b>iff</b> the remapped intensity level <b>just at the pixel position</b> is greater than the corresponding matrix entry: still 64 × 16.', ar: 'عشان نحافظ على حجم الصورة، الـ <b>ordered dither</b> بيطلع output pixel قيمته 1 <b>لو وبس لو</b> الـ intensity بعد الـ remap <b>عند مكان الـ pixel نفسه</b> أكبر من الـ entry المقابل في الـ matrix: لسه 64 × 16.' }
+      { en: 'A greyscale image (here a grey ramp from 0 to 255, standing in for the slide’s photo): <b>64 × 16 pixels</b>.', ar: 'صورة greyscale (هنا تدرّج رمادي من 0 لـ 255، بدل صورة الـ slide) مقاسها <b><bdi dir="ltr">64&nbsp;×&nbsp;16</bdi> pixel</b>.' },
+      { en: '<b>Simple dithering</b>: replace each pixel by a 4 × 4 array of dots. Since each pixel is replaced by 4 × 4 dots, the image becomes <b>16 times as large</b>: 256 × 64.', ar: 'الـ <b>Simple dithering</b>: بنبدّل كل pixel بـ <bdi dir="ltr">4&nbsp;×&nbsp;4</bdi> نقط. وبما إن كل pixel بقى <bdi dir="ltr">4&nbsp;×&nbsp;4</bdi>، الصورة بتكبر <b>16 مرة</b> وتبقى <bdi dir="ltr">256&nbsp;×&nbsp;64</bdi>.' },
+      { en: 'To keep the image size, an <b>ordered dither</b> produces an output pixel with value 1 <b>iff</b> the remapped intensity level <b>just at the pixel position</b> is greater than the corresponding matrix entry: still 64 × 16.', ar: 'عشان نحافظ على حجم الصورة، الـ <b>ordered dither</b> بيطلع output pixel قيمته 1 <b>لو وبس لو</b> الـ intensity بعد الـ remap <b>عند مكان الـ pixel نفسه</b> أكبر من الـ entry المقابل في الـ matrix، والحجم لسه <bdi dir="ltr">64&nbsp;×&nbsp;16</bdi>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3200);
     const src = d => { for (let y = 0; y < RH; y++) for (let x = 0; x < RW; x++) { const o = 4 * (y * RW + x), g = ramp(x); d[o] = d[o + 1] = d[o + 2] = g; d[o + 3] = 255; } };
@@ -1209,7 +1209,7 @@
   function Spectrum({ ar }) {
     const steps = [
       { en: 'Visible light is an <b>electromagnetic wave</b> in the <b>400 nm to 700 nm</b> range.', ar: 'الضوء المرئي هو <b>electromagnetic wave</b> في الـ range من <b>400 nm لـ 700 nm</b>.' },
-      { en: 'Most light we see is not one wavelength, it’s a <b>combination of many wavelengths</b> (cf. a Rainbow): the graph plots Amplitude E(λ) against Wavelength (λ).', ar: 'أغلب الضوء اللي بنشوفه مش wavelength واحدة، ده <b>خليط من wavelengths كتير</b> (زي قوس قزح): الـ graph بيرسم الـ Amplitude E(λ) قصاد الـ Wavelength (λ).' },
+      { en: 'Most light we see is not one wavelength, it’s a <b>combination of many wavelengths</b> (cf. a Rainbow): the graph plots Amplitude E(λ) against Wavelength (λ).', ar: 'أغلب الضوء اللي بنشوفه مش wavelength واحدة، ده <b>خليط من wavelengths كتير</b> (زي قوس قزح): الـ graph بيرسم الـ Amplitude <bdi dir="ltr">E(λ)</bdi> قصاد الـ Wavelength (λ).' },
       { en: 'The profile above is called a <b>spectra</b>.', ar: 'الشكل ده اسمه <b>spectra</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -1322,7 +1322,7 @@
       if (m === 'YIQ') { const [Y, I, Q] = mul(YIQ, pk); read += ` → Y = ${fmt(Y, 1)}, I = ${fmt(I, 1)}, Q = ${fmt(Q, 1)}`; }
       if (m === 'Lab') { const [L, A, B] = rgb2lab(r, g, b); read += ` → L = ${fmt(L, 1)}, a = ${fmt(A, 1)}, b = ${fmt(B, 1)}`; } }
     const caps = {
-      RGB: ['A true colour image is a 2-D array of (R,G,B) integer triplets. The image here is the RGB colour cube seen corner-on (slide 27). The <b>RGB colour space</b> is made up of Red, Green and Blue intensity components: the three grey images are the <b>Red, Green, Blue (RGB) respective intensities</b> (slide 21).', 'الـ true colour image هي 2-D array من integer triplets (R,G,B). الصورة هنا هي الـ RGB colour cube متشافة من الركن (slide 27). الـ <b>RGB colour space</b> مكوّنة من intensity components للأحمر والأخضر والأزرق: الـ 3 صور الرمادي هما <b>الـ Red وGreen وBlue respective intensities</b> (slide 21).'],
+      RGB: ['A true colour image is a 2-D array of (R,G,B) integer triplets. The image here is the RGB colour cube seen corner-on (slide 27). The <b>RGB colour space</b> is made up of Red, Green and Blue intensity components: the three grey images are the <b>Red, Green, Blue (RGB) respective intensities</b> (slide 21).', 'الـ true colour image هي <bdi dir="ltr">2-D</bdi> array من integer triplets (R,G,B). الصورة هنا هي الـ RGB colour cube متشافة من الركن (slide 27). الـ <b>RGB colour space</b> مكوّنة من intensity components للأحمر والأخضر والأزرق: الـ 3 صور الرمادي هما <b>الـ Red وGreen وBlue respective intensities</b> (slide 21).'],
       Lab: ['<b>Lab image space</b> (slide 26): the original colour image and its <b>L, A, B image intensities</b>. L (luminance) looks like the grey-scale image; A (green to red) and B (blue to yellow) are shown in false colour, as on the slide.', 'الـ <b>Lab image space</b> (slide 26): الصورة الأصلية والـ <b>L وA وB image intensities</b>. الـ L (luminance) شبه الصورة الـ grey-scale؛ والـ A (من green لـ red) والـ B (من blue لـ yellow) معروضين بـ false colour زي الـ slide.'],
       YIQ: ['<b>YIQ colour space</b> (slide 30): the original colour image and its <b>Y, I, Q image intensities</b>, worked out with the slide’s YIQ transform. Y is the black-and-white (luminance) image; I and Q are small and can be negative, so as intensities they look dark, as on the slide.', 'الـ <b>YIQ colour space</b> (slide 30): الصورة الأصلية والـ <b>Y وI وQ image intensities</b>، محسوبين بالـ YIQ transform بتاع الـ slide. الـ Y هي الصورة الأبيض وأسود (luminance)؛ والـ I والـ Q قيمهم صغيرة وممكن تبقى سالبة، فبيبانوا غامقين زي الـ slide.']
     };
@@ -1360,7 +1360,7 @@
         return html`<div key=${k} style=${{ background: bg, color: r === 6 ? '#111' : 'var(--ink)' }}>${txt}</div>`; })}<//>`)}
       <span>Displayed pixel</span><div style=${{ gridColumn: 'span 3', background: rgbCss(...v), minHeight: '34px' }}></div></div>`;
     const en = (mode === 'CRT' ? '(Old) <b>CRT</b> displays have three phosphors (RGB) which produce a <b>mix of colours</b> when excited with electrons.' : '(Newer) colour <b>LCD</b> panels (typically thin-film-transistor liquid-crystal displays, <b>TFT LCD</b>): a transistor switch for each (R, G or B) pixel.') + ' Set the three primaries. The <b>gamut</b> is all colours that can be reproduced using the three primaries; the gamut of a colour monitor is smaller than that of colour models such as CIE (LAB).';
-    const a = (mode === 'CRT' ? 'شاشات الـ <b>CRT</b> (القديمة) فيها 3 phosphors (RGB) بيطلّعوا <b>خليط من الألوان</b> لما الـ electrons تثيرهم.' : 'شاشات الـ <b>LCD</b> الملونة (الأحدث، غالباً thin-film-transistor liquid-crystal displays، <b>TFT LCD</b>): transistor switch لكل pixel (R أو G أو B).') + ' ظبط الـ 3 primaries. الـ <b>gamut</b> هو كل الألوان اللي ممكن نطلّعها بالـ 3 primaries؛ والـ gamut بتاع الشاشة أصغر من بتاع colour models زي الـ CIE (LAB).';
+    const a = (mode === 'CRT' ? 'شاشات الـ <b>CRT</b> (القديمة) فيها 3 phosphors (RGB) بيطلّعوا <b>خليط من الألوان</b> لما الـ electrons تثيرهم.' : 'شاشات الـ <b>LCD</b> الملونة (الأحدث، غالباً thin-film-transistor liquid-crystal displays يعني <b>TFT LCD</b>) فيها transistor switch لكل pixel (R أو G أو B).') + ' ظبط الـ 3 primaries. الـ <b>gamut</b> هو كل الألوان اللي ممكن نطلّعها بالـ 3 primaries؛ والـ gamut بتاع الشاشة أصغر من بتاع colour models زي الـ CIE (LAB).';
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm3-row">${['CRT', 'TFT LCD'].map(k => html`<button key=${k} className=${'fm3-chip' + (k === mode ? ' on' : '')} onClick=${() => setMode(k)}>${k}</button>`)}</div>
       ${mode === 'CRT' ? crt : lcd}
@@ -1376,10 +1376,10 @@
   /* ── slide 23: the CIE XYZ primaries, the horseshoe cone and the plane X+Y+Z=1 ── */
   function CieCone({ ar }) {
     const steps = [
-      { en: 'Human focussed colour models: in 1931, the CIE defined three standard primaries <b>(X, Y, Z)</b>.', ar: 'Colour models مبنية على الإنسان: في 1931 الـ CIE عرّفت 3 standard primaries <b>(X, Y, Z)</b>.' },
+      { en: 'Human focussed colour models: in 1931, the CIE defined three standard primaries <b>(X, Y, Z)</b>.', ar: 'الـ Colour models مبنية على الإنسان: في 1931 الـ CIE عرّفت 3 standard primaries <b>(X, Y, Z)</b>.' },
       { en: 'The <b>Y</b> primary was intentionally chosen to be identical to the <b>luminous-efficiency</b> function of human eyes (<b>Perceptual Model</b>).', ar: 'الـ primary <b>Y</b> اتختار عن قصد يبقى زي الـ <b>luminous-efficiency</b> function بتاعة عين الإنسان بالظبط (<b>Perceptual Model</b>).' },
       { en: 'All visible colours are in a <b>horseshoe shaped cone</b> in the X-Y-Z space.', ar: 'كل الألوان المرئية موجودة جوه <b>cone على شكل حدوة حصان</b> في الـ X-Y-Z space.' },
-      { en: 'Consider the plane <b>X+Y+Z=1</b>: it cuts the cone in a horseshoe.', ar: 'خد الـ plane <b>X+Y+Z=1</b>: بيقطع الـ cone في شكل حدوة.' },
+      { en: 'Consider the plane <b>X+Y+Z=1</b>: it cuts the cone in a horseshoe.', ar: 'خد الـ plane <b><bdi dir="ltr">X+Y+Z=1</bdi></b>: بيقطع الـ cone في شكل حدوة.' },
       { en: 'Project it onto the X-Y plane and we get the <b>CIE chromaticity diagram</b> (next figure).', ar: 'نعمله projection على الـ X-Y plane فنطلع بالـ <b>CIE chromaticity diagram</b> (الـ figure اللي بعدها).' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -1415,7 +1415,7 @@
     const M = A && B ? [A[0] + (B[0] - A[0]) * t / 100, A[1] + (B[1] - A[1]) * t / 100] : null;
     const dot = (p, l, c) => html`<g><circle cx=${CX(p[0])} cy=${CY(p[1])} r="8" fill=${rgbCss(...xy2rgb(...p))} stroke=${c} strokeWidth="3" /><text x=${CX(p[0]) + 11} y=${CY(p[1]) - 9} fontSize="19" fontWeight="700" style=${{ fill: '#111', paintOrder: 'stroke', stroke: '#fff', strokeWidth: 4 }}>${l}</text></g>`;
     const en = !A ? 'The <b>CIE chromaticity diagram</b>: the edges represent the <b>pure</b> colours (wavelengths in nm); <b>white</b> (a blackbody radiating at 6447 kelvin) is at the <b>dot</b>. <b>Tap a colour</b> inside the horseshoe.' : !B ? 'Now tap a <b>second</b> colour.' : '<b>Vector-based colour model</b>: when <b>added</b>, any two colours (points on the CIE diagram) produce a point <b>on the line between them</b>. Slide the mix along the line. Tap again to start over.';
-    const a = !A ? 'الـ <b>CIE chromaticity diagram</b>: الأطراف بتمثل الألوان <b>الـ pure</b> (الـ wavelengths بالـ nm)؛ والـ <b>white</b> (blackbody بيشع عند 6447 kelvin) عند <b>النقطة</b>. <b>دوس على لون</b> جوه الحدوة.' : !B ? 'دلوقتي دوس على <b>لون تاني</b>.' : '<b>Vector-based colour model</b>: لما <b>نجمع</b> أي لونين (نقطتين على الـ CIE diagram) بيطلع نقطة <b>على الخط اللي بينهم</b>. حرّك الـ mix على الخط. دوس تاني عشان تبدأ من الأول.';
+    const a = !A ? 'الـ <b>CIE chromaticity diagram</b>: الأطراف بتمثل الألوان <b>الـ pure</b> (الـ wavelengths بالـ nm)؛ والـ <b>white</b> (blackbody بيشع عند 6447 kelvin) عند <b>النقطة</b>. <b>دوس على لون</b> جوه الحدوة.' : !B ? 'دلوقتي دوس على <b>لون تاني</b>.' : 'الـ <b>Vector-based colour model</b>: لما <b>نجمع</b> أي لونين (نقطتين على الـ CIE diagram) بيطلع نقطة <b>على الخط اللي بينهم</b>. حرّك الـ mix على الخط. دوس تاني عشان تبدأ من الأول.';
     const lab = (x, y, t) => html`<text x=${CX(x)} y=${CY(y)} fontSize="19" fontWeight="600" textAnchor="middle" style=${{ fill: '#111' }}>${t}</text>`;
     return html`<figure className="fig"><div className="fig-stage">
       <svg ref=${svg} viewBox="0 0 400 412" className="fm3-click" onClick=${tap} role="img" aria-label="CIE chromaticity diagram: horseshoe of pure colours from 400 to 700 nm, white dot in the middle">
@@ -1458,7 +1458,7 @@
       <div className="fm3-sl"><span>a</span><input type="range" min="-100" max="100" value=${A} onChange=${e => setA(+e.target.value)} aria-label="a, from green to red" /><output>${A < 0 ? 'green' : A > 0 ? 'red' : '0'}</output></div>
       <div className="fm3-sl"><span>b</span><input type="range" min="-100" max="100" value=${B} onChange=${e => setB(+e.target.value)} aria-label="b, from blue to yellow" /><output>${B < 0 ? 'blue' : B > 0 ? 'yellow' : '0'}</output></div>
       <div className="fm3-sw"><i style=${{ background: rgbCss(r, g, b) }}></i><span>${ok ? 'This colour is inside the monitor’s gamut.' : 'Outside the monitor’s gamut: shown clipped (the gamut of a monitor is smaller than CIE Lab, slide 22).'}</span></div></div>
-      <${Cap} en="<b>L*a*b* (Lab)</b>: a refined CIE model, named CIE L*a*b* in 1976. <b>Luminance: L</b> runs from L=0 (Black) to L=100 (White). <b>Chrominance</b>: <b>a</b> ranges from green to red, <b>b</b> ranges from blue to yellow. Used by Photoshop. Move L to slide the colour disc up and down the axis." ar="الـ <b>L*a*b* (Lab)</b>: CIE model متحسّن، اسمه CIE L*a*b* في 1976. الـ <b>Luminance: L</b> من L=0 (Black) لـ L=100 (White). الـ <b>Chrominance</b>: الـ <b>a</b> من green لـ red، والـ <b>b</b> من blue لـ yellow. بيستخدمه Photoshop. حرّك الـ L عشان الـ colour disc يطلع وينزل على المحور." showAr=${ar} /></figure>`;
+      <${Cap} en="<b>L*a*b* (Lab)</b>: a refined CIE model, named CIE L*a*b* in 1976. <b>Luminance: L</b> runs from L=0 (Black) to L=100 (White). <b>Chrominance</b>: <b>a</b> ranges from green to red, <b>b</b> ranges from blue to yellow. Used by Photoshop. Move L to slide the colour disc up and down the axis." ar="الـ <b><bdi dir='ltr'>L*a*b* (Lab)</bdi></b> هو CIE model متحسّن، اسمه <bdi dir='ltr'>CIE&nbsp;L*a*b*</bdi> في 1976. الـ <b>Luminance</b> هي الـ <b>L</b>، من <bdi dir='ltr'>L=0</bdi> (Black) لـ <bdi dir='ltr'>L=100</bdi> (White). الـ <b>Chrominance</b>: الـ <b>a</b> من green لـ red، والـ <b>b</b> من blue لـ yellow. بيستخدمه Photoshop. حرّك الـ L عشان الـ colour disc يطلع وينزل على المحور." showAr=${ar} /></figure>`;
   }
 
   /* ── slides 28, 31, 32: the YIQ and YUV transforms ── */
@@ -1470,7 +1470,7 @@
     const y = out[0];
     const check = m === 'YUV' && row > 0 ? html`<div className="fm3-mut">check: ${row === 1 ? `U = B − Y = ${c[2]} − ${fmt(y, 3)} = ${fmt(c[2] - y, 3)}` : `V = R − Y = ${c[0]} − ${fmt(y, 3)} = ${fmt(c[0] - y, 3)}`}</div>` : null;
     const en = m === 'YIQ' ? 'YIQ is used in colour TV broadcasting; it is downward compatible with B/W TV. <b>Y</b> (luminance) is the CIE Y primary: <b>Y = 0.299R + 0.587G + 0.114B</b>; the other two vectors: <b>I = 0.596R − 0.275G − 0.321B</b>, <b>Q = 0.212R − 0.528G + 0.311B</b>. Pick a colour and tap a row of the transform.' : 'YUV uses the <b>Y, U, V</b> colour space: <b>Y = 0.299R + 0.587G + 0.114B</b>, <b>U = B − Y</b>, <b>V = R − Y</b>. The YUV transform writes the same thing as a matrix: tap the U or V row to check it against B − Y or R − Y.';
-    const a = m === 'YIQ' ? 'الـ YIQ بيستخدم في الـ colour TV broadcasting؛ وهو downward compatible مع التليفزيون الأبيض وأسود. الـ <b>Y</b> (luminance) هو الـ CIE Y primary: <b>Y = 0.299R + 0.587G + 0.114B</b>؛ والـ vectors التانيين: <b>I = 0.596R − 0.275G − 0.321B</b>، <b>Q = 0.212R − 0.528G + 0.311B</b>. اختار لون ودوس على row في الـ transform.' : 'الـ YUV بيستخدم الـ <b>Y, U, V</b> colour space: <b>Y = 0.299R + 0.587G + 0.114B</b>، <b>U = B − Y</b>، <b>V = R − Y</b>. الـ YUV transform بيكتب نفس الكلام كـ matrix: دوس على row الـ U أو الـ V وقارنه بـ B − Y أو R − Y.';
+    const a = m === 'YIQ' ? 'الـ YIQ بيستخدم في الـ colour TV broadcasting؛ وهو downward compatible مع التليفزيون الأبيض وأسود. الـ <b>Y</b> (luminance) هو الـ CIE Y primary:<span class="ltr"><b>Y = 0.299R + 0.587G + 0.114B</b></span>والـ vectors التانيين:<span class="ltr"><b>I = 0.596R − 0.275G − 0.321B</b></span><span class="ltr"><b>Q = 0.212R − 0.528G + 0.311B</b></span>اختار لون ودوس على row في الـ transform.' : 'الـ YUV بيستخدم الـ <b><bdi dir="ltr">Y, U, V</bdi></b> colour space:<span class="ltr"><b>Y = 0.299R + 0.587G + 0.114B</b></span><span class="ltr"><b>U = B − Y</b>, <b>V = R − Y</b></span>الـ YUV transform بيكتب نفس الكلام كـ matrix: دوس على row الـ U أو الـ V وقارنه بـ <bdi dir="ltr">B&nbsp;−&nbsp;Y</bdi> أو <bdi dir="ltr">R&nbsp;−&nbsp;Y</bdi>.';
     return html`<figure className="fig"><div className="fig-stage">
       <div className="fm3-row">${['YIQ', 'YUV'].map(k => html`<button key=${k} className=${'fm3-chip' + (k === m ? ' on' : '')} onClick=${() => setM(k)}>${k} transform</button>`)}</div>
       <div className="fm3-row">${PRE.map(([n, v]) => html`<button key=${n} className=${'fm3-chip' + (v.join() === c.join() ? ' on' : '')} onClick=${() => setC(v)}>${n}</button>`)}</div>
@@ -1493,7 +1493,7 @@
       { en: '<b>I</b> is the <b>red-orange</b> axis (the I–Q plane here keeps Y fixed, worked out from the slide’s YIQ transform).', ar: 'الـ <b>I</b> هو محور الـ <b>red-orange</b> (الـ I–Q plane هنا ثابت فيها الـ Y، محسوبة من الـ YIQ transform بتاع الـ slide).' },
       { en: '<b>Q</b> is roughly <b>orthogonal</b> to I.', ar: 'الـ <b>Q</b> تقريباً <b>orthogonal</b> (عمودي) على الـ I.' },
       { en: 'The eye is <b>most sensitive</b> to <b>Y</b>, next to <b>I</b>, next to <b>Q</b>.', ar: 'العين <b>أكتر حساسية</b> للـ <b>Y</b>، بعده الـ <b>I</b>، بعده الـ <b>Q</b>.' },
-      { en: '<b>Analog Video Compression Scheme</b>: <b>4 MHz</b> is allocated to Y, <b>1.5 MHz</b> to I, <b>0.6 MHz</b> to Q.', ar: 'الـ <b>Analog Video Compression Scheme</b>: <b>4 MHz</b> للـ Y، و<b>1.5 MHz</b> للـ I، و<b>0.6 MHz</b> للـ Q.' }
+      { en: '<b>Analog Video Compression Scheme</b>: <b>4 MHz</b> is allocated to Y, <b>1.5 MHz</b> to I, <b>0.6 MHz</b> to Q.', ar: 'الـ <b>Analog Video Compression Scheme</b> فيه <b>4 MHz</b> للـ Y، و<b>1.5 MHz</b> للـ I، و<b>0.6 MHz</b> للـ Q.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
     const plane = useMemo(() => dataUrl(120, 120, d => { for (let j = 0; j < 120; j++) for (let k = 0; k < 120; k++) { const o = 4 * (j * 120 + k), I = (k + .5 - 60) / 60 * .6, Q = -(j + .5 - 60) / 60 * .6, c = mul(YIQi, [.5, I, Q]); if (c.some(v => v < 0 || v > 1)) { d[o + 3] = 0; continue; } d[o] = c[0] * 255; d[o + 1] = c[1] * 255; d[o + 2] = c[2] * 255; d[o + 3] = 255; } }), []);
@@ -1516,11 +1516,11 @@
   /* ── slide 31: fields (odd and even lines), two fields make a frame ── */
   function Fields({ ar }) {
     const steps = [
-      { en: 'YUV: a digital video standard established in 1982. Video is represented by a <b>sequence of fields</b> (odd and even lines).', ar: 'الـ YUV: digital video standard اتعمل في 1982. الـ video بيتمثل كـ <b>sequence of fields</b> (سطور فردية وسطور زوجية).' },
-      { en: 'One field: the <b>odd lines</b> (1, 3, 5, …).', ar: 'field واحد: <b>السطور الفردية</b> (1، 3، 5، …).' },
-      { en: 'The other field: the <b>even lines</b> (2, 4, 6, …).', ar: 'الـ field التاني: <b>السطور الزوجية</b> (2، 4، 6، …).' },
+      { en: 'YUV: a digital video standard established in 1982. Video is represented by a <b>sequence of fields</b> (odd and even lines).', ar: 'الـ YUV هو digital video standard اتعمل في 1982. الـ video بيتمثل كـ <b>sequence of fields</b> (سطور فردية وسطور زوجية).' },
+      { en: 'One field: the <b>odd lines</b> (1, 3, 5, …).', ar: 'الـ field الأولاني: <b>السطور الفردية</b> (<bdi dir="ltr">1, 3, 5, …</bdi>).' },
+      { en: 'The other field: the <b>even lines</b> (2, 4, 6, …).', ar: 'الـ field التاني: <b>السطور الزوجية</b> (<bdi dir="ltr">2, 4, 6, …</bdi>).' },
       { en: '<b>Two fields make a frame.</b>', ar: '<b>الـ 2 fields بيعملوا frame.</b>' },
-      { en: 'Works in <b>PAL (50 fields/sec)</b> or <b>NTSC (60 fields/sec)</b>; with two fields per frame that is 25 or 30 frames each second.', ar: 'بيشتغل في <b>PAL (50 fields/sec)</b> أو <b>NTSC (60 fields/sec)</b>؛ وبما إن كل frame = 2 fields يبقى 25 أو 30 frame في الثانية.' }
+      { en: 'Works in <b>PAL (50 fields/sec)</b> or <b>NTSC (60 fields/sec)</b>; with two fields per frame that is 25 or 30 frames each second.', ar: 'بيشتغل في <b><bdi dir="ltr">PAL (50 fields/sec)</bdi></b> أو <b><bdi dir="ltr">NTSC (60 fields/sec)</bdi></b>؛ وبما إن كل frame فيه 2 fields يبقى 25 أو 30 frame في الثانية.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2400);
     const n = 14, R = 6.2;
@@ -1648,17 +1648,17 @@
     else { const v = cmyk(r, g, b);
       calc = [[`RGB ÷ 255 = (${f6(r / 255)}, ${f6(g / 255)}, ${f6(b / 255)})`], ['[C;M;Y] = [1;1;1] − [R;G;B]'], [`   = (${f6(v.C)}, ${f6(v.M)}, ${f6(v.Y)})`], [`K = min(C, M, Y) = ${f6(v.K)}`], ['C, M, Y (CMYK) = C − K, M − K, Y − K'], ['CMYK = ', `(${f6(v.c)}, ${f6(v.m)}, ${f6(v.y)}, ${f6(v.K)})`]]; }
     const capY = {
-      orig: ['YCrCb (CCIR 601) is similar to YUV, normalised by a scaling: <span class="em">Cb = (B − Y)/1.772</span>, <span class="em">Cr = (R − Y)/1.402</span>. Tap a pixel or move the sliders; switch to Y, Cr or Cb to see each component as its own image (slide 34).', 'الـ YCrCb (CCIR 601) شبه الـ YUV بس متعمله scaling: <b>Cb = (B − Y)/1.772</b> و <b>Cr = (R − Y)/1.402</b>. دوس على pixel أو حرّك الـ sliders، وبدّل لـ Y أو Cr أو Cb عشان تشوف كل component كصورة لوحدها (slide 34).'],
-      Y: ['<b>Y image intensities</b>: the luminance Y = 0.299R + 0.587G + 0.114B; it looks like the grey-scale image.', '<b>صورة الـ Y</b>: الـ luminance يعني Y = 0.299R + 0.587G + 0.114B؛ شكلها زي الصورة الـ grey-scale.'],
-      Cr: ['<b>Cr image intensities</b> (R − Y)/1.402, drawn with 0 as mid-grey: a low-contrast grey image that only shows the colour difference.', '<b>صورة الـ Cr</b> يعني (R − Y)/1.402، مرسومة والـ 0 رمادي في النص: صورة رمادي contrast قليل بتبيّن فرق اللون بس.'],
-      Cb: ['<b>Cb image intensities</b> (B − Y)/1.772, drawn with 0 as mid-grey: a low-contrast grey image that only shows the colour difference.', '<b>صورة الـ Cb</b> يعني (B − Y)/1.772، مرسومة والـ 0 رمادي في النص: صورة رمادي contrast قليل بتبيّن فرق اللون بس.']
+      orig: ['YCrCb (CCIR 601) is similar to YUV, normalised by a scaling: <span class="em">Cb = (B − Y)/1.772</span>, <span class="em">Cr = (R − Y)/1.402</span>. Tap a pixel or move the sliders; switch to Y, Cr or Cb to see each component as its own image (slide 34).', 'الـ YCrCb (CCIR 601) شبه الـ YUV بس متعمله scaling:<span class="ltr"><b>Cb = (B − Y)/1.772</b>, <b>Cr = (R − Y)/1.402</b></span>دوس على pixel أو حرّك الـ sliders، وبدّل لـ Y أو Cr أو Cb عشان تشوف كل component كصورة لوحدها (slide 34).'],
+      Y: ['<b>Y image intensities</b>: the luminance Y = 0.299R + 0.587G + 0.114B; it looks like the grey-scale image.', '<b>صورة الـ Y</b>: الـ luminance يعني:<span class="ltr">Y = 0.299R + 0.587G + 0.114B</span>وشكلها زي الصورة الـ grey-scale.'],
+      Cr: ['<b>Cr image intensities</b> (R − Y)/1.402, drawn with 0 as mid-grey: a low-contrast grey image that only shows the colour difference.', '<b>صورة الـ Cr</b> يعني <bdi dir="ltr">(R&nbsp;−&nbsp;Y)/1.402</bdi>، مرسومة والـ 0 رمادي في النص: صورة رمادي contrast قليل بتبيّن فرق اللون بس.'],
+      Cb: ['<b>Cb image intensities</b> (B − Y)/1.772, drawn with 0 as mid-grey: a low-contrast grey image that only shows the colour difference.', '<b>صورة الـ Cb</b> يعني <bdi dir="ltr">(B&nbsp;−&nbsp;Y)/1.772</bdi>، مرسومة والـ 0 رمادي في النص: صورة رمادي contrast قليل بتبيّن فرق اللون بس.']
     };
     const capC = {
-      orig: ['CMY are the complements of RGB: <span class="em">[C;M;Y] = [1;1;1] − [R;G;B]</span>. E.g. White (1,1,1) in RGB is (0,0,0) in CMY. CMYK adds K = min(C, M, Y), then C − K, M − K, Y − K. Switch to C, M, Y or K to see one image per ink (slide 39).', 'الـ CMY هي الـ complements بتاعة الـ RGB: <b>[C;M;Y] = [1;1;1] − [R;G;B]</b>. مثلاً الـ White (1,1,1) في الـ RGB تبقى (0,0,0) في الـ CMY. الـ CMYK بتزود K = min(C, M, Y) وبعدين C − K و M − K و Y − K. بدّل لـ C أو M أو Y أو K عشان تشوف صورة لكل ink (slide 39).'],
+      orig: ['CMY are the complements of RGB: <span class="em">[C;M;Y] = [1;1;1] − [R;G;B]</span>. E.g. White (1,1,1) in RGB is (0,0,0) in CMY. CMYK adds K = min(C, M, Y), then C − K, M − K, Y − K. Switch to C, M, Y or K to see one image per ink (slide 39).', 'الـ CMY هي الـ complements بتاعة الـ RGB:<span class="ltr"><b>[C;M;Y] = [1;1;1] − [R;G;B]</b></span>مثلاً الـ White (1,1,1) في الـ RGB تبقى (0,0,0) في الـ CMY. الـ CMYK بتزود:<span class="ltr">K = min(C, M, Y)</span>وبعدين:<span class="ltr">C − K, M − K, Y − K</span>بدّل لـ C أو M أو Y أو K عشان تشوف صورة لكل ink (slide 39).'],
       C: ['<b>C image intensity</b>: how much cyan ink each pixel gets after K is taken out.', '<b>صورة الـ C</b>: قد إيه cyan ink كل pixel بياخد بعد ما نطلّع الـ K.'],
       M: ['<b>M image intensity</b>: how much magenta ink each pixel gets after K is taken out.', '<b>صورة الـ M</b>: قد إيه magenta ink كل pixel بياخد بعد ما نطلّع الـ K.'],
       Y: ['<b>Y image intensity</b>: how much yellow ink each pixel gets after K is taken out.', '<b>صورة الـ Y</b>: قد إيه yellow ink كل pixel بياخد بعد ما نطلّع الـ K.'],
-      K: ['<b>K image intensity</b> (K = black, K = min(C, M, Y)): a separate black ink gives a darker black than simply mixing CMY, which is never really black.', '<b>صورة الـ K</b> (الـ K = black، و K = min(C, M, Y)): الـ black ink اللي لوحده بيدّي أسود أغمق من خلط الـ CMY، اللي عمره ما بيطلع أسود بجد.']
+      K: ['<b>K image intensity</b> (K = black, K = min(C, M, Y)): a separate black ink gives a darker black than simply mixing CMY, which is never really black.', '<b>صورة الـ K</b> (الـ K هي black، و <bdi dir="ltr">K&nbsp;=&nbsp;min(C,&nbsp;M,&nbsp;Y)</bdi>): الـ black ink اللي لوحده بيدّي أسود أغمق من خلط الـ CMY، اللي عمره ما بيطلع أسود بجد.']
     };
     const cap = (isY ? capY : capC)[view];
     const tile = i => html`<button key=${i} className=${sel === i ? 'sel' : ''} style=${{ background: plane(mode, view, TILES[i].slice(1)) }} title=${TILES[i][0]} aria-label=${TILES[i][0] + ' ' + TILES[i].slice(1).join(', ')} onClick=${() => pick(i)}></button>`;
@@ -1697,8 +1697,8 @@
       ? `<b>The CMY Cube</b>: White at (0,0,0) and Black at (1,1,1). Every corner holds the <b>complement</b> of the RGB cube's colour at the same place. ${nm(t)} is (C,M,Y) = ${tx}; back to RGB: [1;1;1] − ${tx} = (${rgb.join(', ')}).`
       : `<b>The RGB Cube</b>: Black at (0,0,0) and White at (1,1,1). ${nm(t)} is (R,G,B) = ${tx}; in CMY: [1;1;1] − ${tx} = <b>(${comp.join(', ')})</b>.`;
     const a = cmy
-      ? `<b>الـ CMY Cube</b>: الـ White عند (0,0,0) والـ Black عند (1,1,1). كل ركن فيه الـ <b>complement</b> بتاع لون الـ RGB cube في نفس المكان. الـ ${nm(t)} هو (C,M,Y) = ${tx}؛ ونرجع للـ RGB: [1;1;1] − ${tx} = (${rgb.join(', ')}).`
-      : `<b>الـ RGB Cube</b>: الـ Black عند (0,0,0) والـ White عند (1,1,1). الـ ${nm(t)} هو (R,G,B) = ${tx}؛ في الـ CMY: [1;1;1] − ${tx} = <b>(${comp.join(', ')})</b>.`;
+      ? `<b>الـ CMY Cube</b>: الـ White عند (0,0,0) والـ Black عند (1,1,1). كل ركن فيه الـ <b>complement</b> بتاع لون الـ RGB cube في نفس المكان. الـ ${nm(t)} هو:<span class="ltr">(C,M,Y) = ${tx}</span>ونرجع للـ RGB:<span class="ltr">[1;1;1] − ${tx} = (${rgb.join(', ')})</span>`
+      : `<b>الـ RGB Cube</b>: الـ Black عند (0,0,0) والـ White عند (1,1,1). الـ ${nm(t)} هو:<span class="ltr">(R,G,B) = ${tx}</span>وفي الـ CMY:<span class="ltr">[1;1;1] − ${tx} = <b>(${comp.join(', ')})</b></span>`;
     return html`<figure className="fig fm4"><div className="fig-stage">
       <svg viewBox="12 10 392 292" role="img" aria-label=${cmy ? 'The CMY cube' : 'The RGB cube'}>
         ${E(2, 3)}${E(3, 5)}${E(5, 4)}${E(4, 2)}${E(0, 1)}${E(1, 7)}${E(2, 0)}${E(3, 1)}${E(5, 7)}${E(6, 0, 1)}${E(6, 7, 1)}${E(6, 4, 1)}
@@ -1728,7 +1728,7 @@
     const pairs = ['01', '02', '12'].filter(k => on[+k[0]] && on[+k[1]]);
     const sum = ids.length === 3 ? M.names.join(' + ') + ' = ' + M.all : pairs.length ? M.names[+pairs[0][0]] + ' + ' + M.names[+pairs[0][1]] + ' = ' + M.pair[pairs[0]] : ids.length ? M.names[ids[0]] : 'nothing';
     const en = (sub ? '<b>Subtractive</b> (CMY, inks on paper: pigments absorb colours). ' : '<b>Additive</b> (RGB, light). ') + 'Turn the circles on and off: <b>' + sum + '</b>.';
-    const a = (sub ? '<b>Subtractive</b> (الـ CMY، حبر على ورق: الـ pigments بتمتص ألوان). ' : '<b>Additive</b> (الـ RGB، نور). ') + 'شغّل واطفي الدواير: <b>' + sum + '</b>.';
+    const a = (sub ? 'الـ <b>Subtractive</b> (الـ CMY، حبر على ورق: الـ pigments بتمتص ألوان). ' : 'الـ <b>Additive</b> (الـ RGB، نور). ') + 'شغّل واطفي الدواير: <b>' + sum + '</b>.';
     return html`<figure className="fig fm4"><div className="fig-stage">
       <svg viewBox="0 0 360 310" role="img" aria-label="Combinations of additive and subtractive colours" className="fm4-circ">
         <g style=${{ isolation: 'isolate' }}><rect x="0" y="0" width="360" height="310" rx="10" fill=${M.bg} />
@@ -1773,8 +1773,8 @@
       ? '<b>NTSC</b>: 525 scan lines per frame, 30 frames per second (exactly 29.97 fps, 33.37 msec/frame), aspect ratio 4:3, <b>interlaced</b>: each frame is 2 fields of 262.5 lines (field 1 draws, then field 2 fills the gaps). 20 lines per field are reserved for control information, so at most <b>485</b> visible lines. Colour: YIQ, and the eye is most sensitive to Y, next to I, next to Q, so 4 MHz to Y, 1.5 MHz to I, 0.6 MHz to Q: this is STILL analog compression. Fsc is the frequency of the colour subcarrier.'
       : '<b>PAL</b>: 625 scan lines per frame, 25 frames per second (40 msec/frame), aspect ratio 4:3, <b>interlaced</b>: each frame is 2 fields of 312.5 lines. Colour: YUV (YCrCb). PAL analog video compression: 5.5 MHz is allocated to Y, 1.8 MHz each to U and V.';
     const a = k === 'NTSC'
-      ? 'الـ <b>NTSC</b>: 525 scan line في الـ frame، و 30 frame في الثانية (بالظبط 29.97 fps يعني 33.37 msec للـ frame)، والـ aspect ratio 4:3، و <b>interlaced</b>: كل frame عبارة عن 2 fields كل واحد 262.5 line (الـ field 1 يترسم وبعدين الـ field 2 يملا الفراغات). فيه 20 line في كل field محجوزين للـ control information، فأقصى حاجة <b>485</b> line ظاهرين. الألوان: YIQ، والعين أحسّ حاجة للـ Y وبعدين الـ I وبعدين الـ Q، فـ 4 MHz للـ Y و 1.5 MHz للـ I و 0.6 MHz للـ Q: ده لسه analog compression. الـ Fsc هو تردد الـ colour subcarrier.'
-      : 'الـ <b>PAL</b>: 625 scan line في الـ frame، و 25 frame في الثانية (40 msec للـ frame)، والـ aspect ratio 4:3، و <b>interlaced</b>: كل frame عبارة عن 2 fields كل واحد 312.5 line. الألوان: YUV (YCrCb). الـ PAL analog video compression: 5.5 MHz للـ Y و 1.8 MHz لكل واحد من الـ U والـ V.';
+      ? 'الـ <b>NTSC</b> فيه 525 scan line في الـ frame، و 30 frame في الثانية (بالظبط 29.97 fps يعني 33.37 msec للـ frame)، والـ aspect ratio <bdi dir="ltr">4:3</bdi>، و <b>interlaced</b>: كل frame عبارة عن 2 fields كل واحد 262.5 line (الـ field 1 يترسم وبعدين الـ field 2 يملا الفراغات). فيه 20 line في كل field محجوزين للـ control information، فأقصى حاجة <b>485</b> line ظاهرين. الألوان: YIQ، والعين أحسّ حاجة للـ Y وبعدين الـ I وبعدين الـ Q، فـ 4 MHz للـ Y و 1.5 MHz للـ I و 0.6 MHz للـ Q: ده لسه analog compression. الـ Fsc هو تردد الـ colour subcarrier.'
+      : 'الـ <b>PAL</b> فيه 625 scan line في الـ frame، و 25 frame في الثانية (40 msec للـ frame)، والـ aspect ratio <bdi dir="ltr">4:3</bdi>، و <b>interlaced</b>: كل frame عبارة عن 2 fields كل واحد 312.5 line. الألوان: <bdi dir="ltr">YUV (YCrCb)</bdi>. الـ PAL analog video compression فيه 5.5 MHz للـ Y و 1.8 MHz لكل واحد من الـ U والـ V.';
     return html`<figure className="fig fm4"><div className="fig-stage">
       <div className="fm4-std">
         <div><svg viewBox="0 0 240 180" role="img" aria-label="An interlaced frame: field 1 lines then field 2 lines (drawn with 16 lines instead of all of them)" style=${{ width: '100%', height: 'auto', display: 'block' }}>
@@ -1801,10 +1801,10 @@
   /* ── L8 slide 50: chroma subsampling examples (sample layout) ── */
   function ChromaLayout({ ar }) {
     const steps = [
-      { en: '<b>4:4:4</b>: no subsampling in any band, equal ratios. Every pixel keeps all three samples: R0 to R3, G0 to G3, B0 to B3 (12 samples for 4 pixels).', ar: '<b>4:4:4</b>: مفيش subsampling في أي band، النسب متساوية. كل pixel محتفظ بالـ 3 samples: من R0 لـ R3 ومن G0 لـ G3 ومن B0 لـ B3 (12 sample لكل 4 pixels).' },
-      { en: '<b>4:2:2</b>: the two chroma components are sampled at half the sample rate of luma: Y0 to Y3, but one Cb and one Cr per row of 2 pixels. Horizontal chroma resolution halved (8 samples for 4 pixels).', ar: '<b>4:2:2</b>: الـ 2 chroma components بيتعملهم sampling بنص الـ sample rate بتاع الـ luma: Y0 لـ Y3، بس Cb واحد و Cr واحد لكل صف فيه 2 pixels. الـ horizontal chroma resolution بقت النص (8 samples لكل 4 pixels).' },
-      { en: '<b>4:1:1</b>: horizontally subsampled by a factor of 4: Y0 to Y7, with one Cb and one Cr per row of 4 pixels (12 samples for 8 pixels, i.e. 6 for 4).', ar: '<b>4:1:1</b>: subsampling أفقي بمعامل 4: من Y0 لـ Y7، و Cb واحد و Cr واحد لكل صف فيه 4 pixels (12 sample لكل 8 pixels، يعني 6 لكل 4).' },
-      { en: '<b>4:2:0</b>: subsampled by a factor of 2 in both the horizontal and vertical axes: Y0 to Y3 with a single Cb and a single Cr for the whole 2×2 block (6 samples for 4 pixels).', ar: '<b>4:2:0</b>: subsampling بمعامل 2 في الاتجاه الأفقي والرأسي الاتنين: Y0 لـ Y3 و Cb واحد و Cr واحد للـ 2×2 block كله (6 samples لكل 4 pixels).' }
+      { en: '<b>4:4:4</b>: no subsampling in any band, equal ratios. Every pixel keeps all three samples: R0 to R3, G0 to G3, B0 to B3 (12 samples for 4 pixels).', ar: 'الـ <b><bdi dir="ltr">4:4:4</bdi></b>: مفيش subsampling في أي band، النسب متساوية. كل pixel محتفظ بالـ 3 samples: من R0 لـ R3 ومن G0 لـ G3 ومن B0 لـ B3 (12 sample لكل 4 pixels).' },
+      { en: '<b>4:2:2</b>: the two chroma components are sampled at half the sample rate of luma: Y0 to Y3, but one Cb and one Cr per row of 2 pixels. Horizontal chroma resolution halved (8 samples for 4 pixels).', ar: 'الـ <b><bdi dir="ltr">4:2:2</bdi></b>: الـ 2 chroma components بيتعملهم sampling بنص الـ sample rate بتاع الـ luma، يعني Y0 لـ Y3، بس Cb واحد و Cr واحد لكل صف فيه 2 pixels. الـ horizontal chroma resolution بقت النص (8 samples لكل 4 pixels).' },
+      { en: '<b>4:1:1</b>: horizontally subsampled by a factor of 4: Y0 to Y7, with one Cb and one Cr per row of 4 pixels (12 samples for 8 pixels, i.e. 6 for 4).', ar: 'الـ <b><bdi dir="ltr">4:1:1</bdi></b> فيه subsampling أفقي بمعامل 4: من Y0 لـ Y7، و Cb واحد و Cr واحد لكل صف فيه 4 pixels (12 sample لكل 8 pixels، يعني 6 لكل 4).' },
+      { en: '<b>4:2:0</b>: subsampled by a factor of 2 in both the horizontal and vertical axes: Y0 to Y3 with a single Cb and a single Cr for the whole 2×2 block (6 samples for 4 pixels).', ar: 'الـ <b><bdi dir="ltr">4:2:0</bdi></b> فيه subsampling بمعامل 2 في الاتجاه الأفقي والرأسي الاتنين: Y0 لـ Y3 و Cb واحد و Cr واحد للـ <bdi dir="ltr">2×2</bdi> block كله (6 samples لكل 4 pixels).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
     const sub = (L, n) => html`${L}<sub>${n}</sub>`;
@@ -1848,10 +1848,10 @@
     }
     const grid = (px, extra) => html`<svg viewBox=${`0 0 ${GN * Z} ${GN * Z}`} role="img" aria-label="8 by 8 pixel image">${px.map((row, r) => row.map((p, c) => html`<rect key=${r + '-' + c} x=${c * Z} y=${r * Z} width=${Z} height=${Z} fill=${rgbs(...p)} stroke="rgba(0,0,0,.25)" strokeWidth="1" />`))}${extra}</svg>`;
     const INFO = {
-      '4:4:4': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['4', 'Cr: horizontal factor 4 (relative to the first digit): every pixel'], ['4', 'Cb: horizontal factor 4: every pixel']], m: 'No subsampling: Cr and Cb kept at full size.', en: '<b>4:4:4</b>: no subsampling in any band. A chroma sample (blue) on every pixel, so the result is the same as the original.', ar: '<b>4:4:4</b>: مفيش subsampling في أي band. فيه chroma sample (الأزرق) على كل pixel، فالنتيجة زي الأصل بالظبط.' },
-      '4:2:2': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['2', 'Cr: horizontal factor 2 of 4: every second pixel'], ['2', 'Cb: horizontal factor 2 of 4: every second pixel']], m: "On U/I and V/Q: B = IMRESIZE(A,[MROWS MCOLS],'nearest')\nwith MCOLS = half the image width", en: '<b>4:2:2</b>: choose every second pixel value along each row (1×2 subsampling). Each pixel keeps its own Y, so edges stay sharp in brightness; only the colour spreads a little.', ar: '<b>4:2:2</b>: ناخد قيمة كل تاني pixel في كل صف (1×2 subsampling). كل pixel محتفظ بالـ Y بتاعه، فالـ edges فاضلة حادة في الـ brightness؛ اللون بس اللي بيسيح شوية.' },
-      '4:1:1': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['1', 'Cr: horizontal factor 1 of 4: every fourth pixel'], ['1', 'Cb: horizontal factor 1 of 4: every fourth pixel']], m: "On U/I and V/Q: B = IMRESIZE(A,[MROWS MCOLS],'nearest')\nwith MCOLS = a quarter of the image width", en: '<b>4:1:1</b>: horizontally subsampled by a factor of 4: choose every fourth pixel value along each row (1×4 subsampling).', ar: '<b>4:1:1</b>: subsampling أفقي بمعامل 4: ناخد قيمة كل رابع pixel في كل صف (1×4 subsampling).' },
-      '4:2:0': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['2', 'Cr: horizontal factor 2 of 4'], ['0', 'Zero: Cb horizontal factor equals the second digit, and both Cr and Cb are subsampled 2:1 vertically']], m: "On U/I and V/Q: B = IMRESIZE(A,0.5,'bilinear')\n(bilinear to average, scale set to half)", en: '<b>4:2:0</b>: Cr and Cb are effectively centred vertically halfway between image rows: break the image into 2×2 pixel blocks and store the <b>average</b> colour information for each 2×2 pixel group.', ar: '<b>4:2:0</b>: الـ Cr والـ Cb بيبقوا في النص رأسياً بين صفوف الصورة: نقسم الصورة لـ 2×2 pixel blocks ونخزن <b>متوسط</b> معلومات اللون لكل 2×2 pixel group.' }
+      '4:4:4': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['4', 'Cr: horizontal factor 4 (relative to the first digit): every pixel'], ['4', 'Cb: horizontal factor 4: every pixel']], m: 'No subsampling: Cr and Cb kept at full size.', en: '<b>4:4:4</b>: no subsampling in any band. A chroma sample (blue) on every pixel, so the result is the same as the original.', ar: 'الـ <b><bdi dir="ltr">4:4:4</bdi></b>: مفيش subsampling في أي band. فيه chroma sample (الأزرق) على كل pixel، فالنتيجة زي الأصل بالظبط.' },
+      '4:2:2': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['2', 'Cr: horizontal factor 2 of 4: every second pixel'], ['2', 'Cb: horizontal factor 2 of 4: every second pixel']], m: "On U/I and V/Q: B = IMRESIZE(A,[MROWS MCOLS],'nearest')\nwith MCOLS = half the image width", en: '<b>4:2:2</b>: choose every second pixel value along each row (1×2 subsampling). Each pixel keeps its own Y, so edges stay sharp in brightness; only the colour spreads a little.', ar: 'الـ <b><bdi dir="ltr">4:2:2</bdi></b>: ناخد قيمة كل تاني pixel في كل صف (<bdi dir="ltr">1×2</bdi> subsampling). كل pixel محتفظ بالـ Y بتاعه، فالـ edges فاضلة حادة في الـ brightness؛ اللون بس اللي بيسيح شوية.' },
+      '4:1:1': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['1', 'Cr: horizontal factor 1 of 4: every fourth pixel'], ['1', 'Cb: horizontal factor 1 of 4: every fourth pixel']], m: "On U/I and V/Q: B = IMRESIZE(A,[MROWS MCOLS],'nearest')\nwith MCOLS = a quarter of the image width", en: '<b>4:1:1</b>: horizontally subsampled by a factor of 4: choose every fourth pixel value along each row (1×4 subsampling).', ar: 'الـ <b><bdi dir="ltr">4:1:1</bdi></b> فيه subsampling أفقي بمعامل 4: ناخد قيمة كل رابع pixel في كل صف (<bdi dir="ltr">1×4</bdi> subsampling).' },
+      '4:2:0': { d: [['4', 'Luma (Y): horizontal sampling reference'], ['2', 'Cr: horizontal factor 2 of 4'], ['0', 'Zero: Cb horizontal factor equals the second digit, and both Cr and Cb are subsampled 2:1 vertically']], m: "On U/I and V/Q: B = IMRESIZE(A,0.5,'bilinear')\n(bilinear to average, scale set to half)", en: '<b>4:2:0</b>: Cr and Cb are effectively centred vertically halfway between image rows: break the image into 2×2 pixel blocks and store the <b>average</b> colour information for each 2×2 pixel group.', ar: 'الـ <b><bdi dir="ltr">4:2:0</bdi></b>: الـ Cr والـ Cb بيبقوا في النص رأسياً بين صفوف الصورة: نقسم الصورة لـ <bdi dir="ltr">2×2</bdi> pixel blocks ونخزن <b>متوسط</b> معلومات اللون لكل <bdi dir="ltr">2×2</bdi> pixel group.' }
     }[s];
     const extraEn = ' Grey dots: luma (Y) samples; blue dots: chroma (Cr, Cb) samples. The HVS is more sensitive to brightness than colour, so the reduction gives almost no perceivable visual difference.';
     const extraAr = ' النقط الرمادي: luma (Y) samples؛ والزرقا: chroma (Cr و Cb) samples. الـ HVS حساس للـ brightness أكتر من اللون، فالتقليل ده تقريباً مش باين للعين.';
@@ -1873,7 +1873,7 @@
     const gridL = []; for (let c = 0; c <= N; c++) gridL.push(html`<line key=${'v' + c} x1=${c * cw} x2=${c * cw} y1="0" y2=${rows * cw} stroke="var(--faint)" strokeWidth="1" />`); for (let r = 0; r <= rows; r++) gridL.push(html`<line key=${'h' + r} x1="0" x2=${W} y1=${r * cw} y2=${r * cw} stroke="var(--faint)" strokeWidth="1" />`);
     const pane = (body, lab) => html`<div><p className="fm4-lbl">${lab}</p><svg viewBox=${`0 0 ${W} ${H}`} role="img" aria-label=${lab}><rect width=${W} height=${H} fill="var(--paper)" />${body}${gridL}</svg></div>`;
     const en = `<b>Stair-stepping</b>: stepped or jagged edges of angled lines, e.g. at the slanted edges of letters. <b>Image zooming</b> (digital zoom on cameras, digital scanning): zooming in by a factor n divides the sample resolution by n. Here n = ${n}: ${N} samples across. Explanation: simply application of Nyquist's Sampling Theorem.`;
-    const a = `الـ <b>Stair-stepping</b>: حواف متدرجة أو مسننة للخطوط المايلة، زي الحواف المايلة للحروف. الـ <b>Image zooming</b> (الـ digital zoom في الكاميرات أو الـ digital scanning): لما تعمل zoom in بمعامل n بتقسم الـ sample resolution على n. هنا n = ${n}: ${N} samples بالعرض. التفسير: ببساطة تطبيق لـ Nyquist's Sampling Theorem.`;
+    const a = `الـ <b>Stair-stepping</b>: حواف متدرجة أو مسننة للخطوط المايلة، زي الحواف المايلة للحروف. الـ <b>Image zooming</b> (الـ digital zoom في الكاميرات أو الـ digital scanning): لما تعمل zoom in بمعامل n بتقسم الـ sample resolution على n. هنا <bdi dir="ltr">n&nbsp;=&nbsp;${n}</bdi>، يعني ${N} samples بالعرض. التفسير: ببساطة تطبيق لـ Nyquist's Sampling Theorem.`;
     return html`<figure className="fig fm4"><div className="fig-stage"><div className="fm4-two">
       ${pane(html`<polygon points=${`0,${yAt(0)} ${W},${yAt(W)} ${W},${H} 0,${H}`} fill="var(--ink)" />`, 'The angled edge')}
       ${pane(cells, 'Sampled on the pixel grid')}
@@ -1905,7 +1905,7 @@
     const T = {
       below: ['<b>Sampling below the Nyquist video sample rate</b>: between two frames the wheel turns almost a whole turn (337.5°), so each frame catches the red spoke 22.5° short of where it was: the video shows the wheel turning <b>backwards</b>. This is the <b>strobing effect</b>: the incorrect sampling rate "freezes" the frames at the wrong moment (slide 62: Frame 1 to Frame 5).', 'الـ <b>Sampling أقل من الـ Nyquist video sample rate</b>: بين كل 2 frames العجلة بتلف تقريباً لفة كاملة (337.5°)، فكل frame بيمسك الـ spoke الأحمر ورا مكانه بـ 22.5°: الفيديو يبيّن العجلة بتلف <b>بالعكس</b>. ده الـ <b>strobing effect</b>: الـ sampling rate الغلط بيـ"جمّد" الـ frames في اللحظة الغلط (slide 62: من Frame 1 لـ Frame 5).'],
       at: ['<b>Sampling at the Nyquist video sample rate</b>: half a turn (180°) between frames. The red spoke just flips up, down, up: from the frames alone you cannot tell which way the wheel turns.', 'الـ <b>Sampling عند الـ Nyquist video sample rate</b>: نص لفة (180°) بين الـ frames. الـ spoke الأحمر بيقلب فوق، تحت، فوق: من الـ frames لوحدها متقدرش تعرف العجلة بتلف في أنهي اتجاه.'],
-      above: ['<b>Sampling above the Nyquist video sample rate</b>: only 22.5° between frames, so the video shows the true motion: the wheel turns forwards (clockwise).', 'الـ <b>Sampling أعلى من الـ Nyquist video sample rate</b>: 22.5° بس بين الـ frames، فالفيديو بيبيّن الحركة الحقيقية: العجلة بتلف لقدام (مع عقارب الساعة).']
+      above: ['<b>Sampling above the Nyquist video sample rate</b>: only 22.5° between frames, so the video shows the true motion: the wheel turns forwards (clockwise).', 'الـ <b>Sampling أعلى من الـ Nyquist video sample rate</b>، يعني 22.5° بس بين الـ frames، فالفيديو بيبيّن الحركة الحقيقية: العجلة بتلف لقدام (مع عقارب الساعة).']
     }[rate];
     return html`<figure className="fig fm4"><div className="fig-stage">
       <div className="fm4-wheel"><div><p className="fm4-lbl">Real wheel (clockwise)</p><${Wheel} a=${st.real % 360} /></div><div><p className="fm4-lbl">Video frame ${st.n}</p><${Wheel} a=${shown} /></div></div>
@@ -1918,10 +1918,10 @@
   /* ── L8 slides 63 and 64: interlacing aliasing (and twinkling on sharp horizontal lines) ── */
   function Interlace({ ar }) {
     const steps = [
-      { en: 'A full frame: a nearly horizontal line and a sharp one-pixel horizontal line, sampled on every row.', ar: 'frame كامل: خط شبه أفقي وخط أفقي حاد سُمكه pixel واحد، متعملهم sampling على كل صف.' },
+      { en: 'A full frame: a nearly horizontal line and a sharp one-pixel horizontal line, sampled on every row.', ar: 'الـ frame الكامل: خط شبه أفقي وخط أفقي حاد سُمكه pixel واحد، متعملهم sampling على كل صف.' },
       { en: '<b>Interlacing aliasing</b>: some video is interlaced. Field 1 only has every second row, which effectively <b>halves the sampling frequency</b>: the slanted line now steps in bigger jumps.', ar: 'الـ <b>Interlacing aliasing</b>: فيه video بيبقى interlaced. الـ field 1 فيه كل تاني صف بس، وده عملياً <b>بيقسم الـ sampling frequency على 2</b>: الخط المايل بقى بيتدرج بقفزات أكبر.' },
       { en: 'Field 2 has the other rows: the same line is drawn with different steps, and the sharp one-pixel horizontal line is <b>missing</b> from this field.', ar: 'الـ field 2 فيه باقي الصفوف: نفس الخط بيترسم بدرجات مختلفة، والخط الأفقي الحاد اللي سُمكه pixel واحد <b>مش موجود</b> في الـ field ده.' },
-      { en: 'Shown one field after the other, the steps jump and the sharp horizontal line appears in one field only: the <b>twinkling or strobing</b> effect on sharp horizontal lines (raster scan aliasing, slide 63). Explanation: simply application of Nyquist\'s Sampling Theorem.', ar: 'لما الـ fields تتعرض ورا بعض، الدرجات بتنط والخط الأفقي الحاد بيظهر في field واحد بس: ده الـ <b>twinkling أو strobing</b> effect على الخطوط الأفقية الحادة (الـ raster scan aliasing، slide 63). التفسير: ببساطة تطبيق لـ Nyquist\'s Sampling Theorem.' }
+      { en: 'Shown one field after the other, the steps jump and the sharp horizontal line appears in one field only: the <b>twinkling or strobing</b> effect on sharp horizontal lines (raster scan aliasing, slide 63). Explanation: simply application of Nyquist\'s Sampling Theorem.', ar: 'لما الـ fields تتعرض ورا بعض، الدرجات بتنط والخط الأفقي الحاد بيظهر في field واحد بس: ده الـ <b>twinkling أو strobing</b> effect على الخطوط الأفقية الحادة (الـ raster scan aliasing في slide 63). التفسير: ببساطة تطبيق لـ Nyquist\'s Sampling Theorem.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
     const [f, setF] = useState(0);
@@ -2093,7 +2093,7 @@
       <${Sl} label="f (Hz)" min="1" max="16" v=${f} set=${setF} />
       <p className="mv2-out">f = <span className="mv2-v">${f} Hz</span>: ${f} cycles in 1 s · T = 1/${f} = <span className="mv2-v">${fmt(T, 4)} s</span></p></div>
       <${Cap} en=${`<b>Frequency</b> = cycles per second, in Hz. <b>Period</b> T = 1/f: at ${f} Hz the wave makes ${f} cycles in one second, each lasting ${fmt(T, 4)} s${f === 8 ? ' (the notes\' example: 1/8 = 0.125 s)' : ''}. Wavelength varies as 1/frequency: raise f and each cycle (highlighted) gets shorter.`}
-        ar=${`الـ <b>Frequency</b> هي عدد الـ cycles في الثانية وبتتقاس بالـ Hz، والـ <b>Period</b> هو <bdi>T = 1/f</bdi>. عند <bdi>${f} Hz</bdi> الموجة بتعمل ${f} cycles في الثانية، وكل cycle بتاخد <bdi>${fmt(T, 4)} s</bdi>${f === 8 ? ' (ده مثال النوتس <bdi>1/8 = 0.125 s</bdi>)' : ''}. الـ Wavelength بيتناسب عكسيًا مع الـ frequency: علّي الـ f والـ cycle المتلونة هتقصر.`} showAr=${ar} /></figure>`;
+        ar=${`الـ <b>Frequency</b> هي عدد الـ cycles في الثانية وبتتقاس بالـ Hz، والـ <b>Period</b> هو <bdi dir="ltr">T = 1/f</bdi>. عند <bdi dir="ltr">${f} Hz</bdi> الموجة بتعمل ${f} cycles في الثانية، وكل cycle بتاخد <bdi dir="ltr">${fmt(T, 4)} s</bdi>${f === 8 ? ' (ده مثال النوتس <bdi dir="ltr">1/8 = 0.125 s</bdi>)' : ''}. الـ Wavelength بيتناسب عكسيًا مع الـ frequency: علّي الـ f والـ cycle المتلونة هتقصر.`} showAr=${ar} /></figure>`;
   }
 
   /* ── slide 5: amplitude, frequency and phase of z = a·sin(ωt + φ) ── */
@@ -2106,7 +2106,7 @@
     const ref = t => Math.sin(P2 * t), mine = t => a * Math.sin(P2 * w * t + ph * Math.PI / 180);
     const C = {
       amp: ['Change the <b>amplitude</b> a: the wave gets taller (or flatter), same frequency and phase.', 'غيّر الـ <b>amplitude</b> a: الموجة بتطول (أو تقصر) وبنفس الـ frequency والـ phase.'],
-      freq: ['Change the <b>frequency</b> ω: more cycles fit in the same time, same height.', 'غيّر الـ <b>frequency</b> ω: cycles أكتر بتدخل في نفس الوقت وبنفس الارتفاع.'],
+      freq: ['Change the <b>frequency</b> ω: more cycles fit in the same time, same height.', 'غيّر الـ <b>frequency</b> ω: بيدخل cycles أكتر في نفس الوقت وبنفس الارتفاع.'],
       phase: ['Change the <b>phase</b> φ: the same wave slides along the time axis.', 'غيّر الـ <b>phase</b> φ: نفس الموجة بتتزحلق على محور الوقت.']
     };
     const [en, at] = mode ? C[mode] : ['Your wave (thin) against the original (thick).', 'الموجة بتاعتك (الرفيعة) قصاد الأصلية (التخينة).'];
@@ -2141,7 +2141,7 @@
       <${Sl} label="Enter Phase" min="0" max="360" step="15" v=${ph} set=${setPh} out=${ph + '°'} />
       <p className="mv2-out">${cos ? html`phase 90° → the red wave is a <span className="mv2-r">cosine</span>` : inv ? 'phase 180° → the wave is upside down' : ph % 360 === 0 ? 'phase 0° or 360° → the same wave' : html`the red wave is shifted ${ph}° along the axis`}</p></div>
       <${Cap} en=${'sinphasedemo.m plots a 1 Hz sine for 2 seconds with the x axis in degrees (360° = one cycle), then asks for a phase and plots the shifted wave in red. Changing the phase shifts the wave along the axis; <b>a cosine is a sine wave 90° out of phase</b>.'}
-        ar=${'الـ sinphasedemo.m بيرسم sine بـ <bdi>1 Hz</bdi> لمدة ثانيتين والـ x axis بالدرجات (<bdi>360°</bdi> يعني cycle كاملة)، وبعدين بيطلب phase ويرسم الموجة المزاحة بالأحمر. تغيير الـ phase بيزق الموجة على المحور؛ والـ <b>cosine هو sine wave متزاحة <bdi>90°</bdi></b>.'} showAr=${ar} /></figure>`;
+        ar=${'الـ sinphasedemo.m بيرسم sine بـ <bdi dir="ltr">1 Hz</bdi> لمدة ثانيتين والـ x axis بالدرجات (<bdi dir="ltr">360°</bdi> يعني cycle كاملة)، وبعدين بيطلب phase ويرسم الموجة المزاحة بالأحمر. تغيير الـ phase بيزق الموجة على المحور؛ والـ <b>cosine هو sine wave متزاحة <bdi dir="ltr">90°</bdi></b>.'} showAr=${ar} /></figure>`;
   }
 
   /* ── slide 4 + worked example: y = A·sin(2π·n·Fw/Fs) ── */
@@ -2169,7 +2169,7 @@
       <${Sl} label="n" min="0" max=${M - 1} v=${nn} set=${setN} />
       <div className="mv2-calc"><div>Fw/Fs = ${fmt(fw)}/${fmt(fs)} = ${fmt(fw / fs, 5)} → one cycle every <span className="mv2-res">${fmt(spc, 3)} samples</span></div><div className="mv2-res">${calc}</div></div>` : html`<p className="mv2-out">Enter positive numbers for A, Fw and Fs.</p>`}</div>
       <${Cap} en=${'The sampled sine wave y = A·sin(2π·n·Fw/Fs): A amplitude, Fw frequency of the wave, Fs sample frequency, n sample index (MATLAB sin() works in radians, 2π = 360° = one cycle). Notes\' example: Fw = 1000 Hz, Fs = 8000 Hz → 8 samples per cycle; n = 1 gives 0.7071A, n = 2 gives A, n = 4 gives 0.'}
-        ar=${'الـ sine wave الـ sampled هي<span class="ltr">y = A·sin(2π·n·Fw/Fs)</span>حيث A الـ amplitude و Fw الـ frequency بتاعة الموجة و Fs الـ sample frequency و n الـ sample index (الـ <bdi>sin()</bdi> في MATLAB بالـ radians، و <bdi>2π = 360°</bdi> يعني cycle كاملة). مثال النوتس:<span class="ltr">Fw = 1000 Hz, Fs = 8000 Hz → 8 samples per cycle<br>n = 1 → 0.7071A, n = 2 → A, n = 4 → 0</span>'} showAr=${ar} /></figure>`;
+        ar=${'الـ sine wave الـ sampled هي<span class="ltr">y = A·sin(2π·n·Fw/Fs)</span>حيث A الـ amplitude و Fw الـ frequency بتاعة الموجة و Fs الـ sample frequency و n الـ sample index (الـ <bdi dir="ltr">sin()</bdi> في MATLAB بالـ radians، و <bdi dir="ltr">2π = 360°</bdi> يعني cycle كاملة). مثال النوتس:<span class="ltr">Fw = 1000 Hz, Fs = 8000 Hz → 8 samples per cycle<br>n = 1 → 0.7071A, n = 2 → A, n = 4 → 0</span>'} showAr=${ar} /></figure>`;
   }
 
   /* ════════ [1] The decibel (dB), dynamic range and SNR ════════ */
@@ -2189,7 +2189,7 @@
       <${Sl} label="X/X0 = 10^" min="0" max="12" v=${e} set=${setE} />
       <p className="mv2-out">${e === 0 ? html`X = X0 → log10(1) = 0 → <span className="mv2-v">0 dB</span>: the reference, the threshold of human perception` : e === 12 ? html`max/min power the ear handles ≈ 10<sup>12</sup> → log = 12 → <span className="mv2-r">120 dB, threshold of pain</span>` : html`${sup} times the reference power → <span className="mv2-v">${db} dB</span>`}</p></div>
       <${Cap} en=${'Logarithmic units are used when there is a large range in magnitude. On a linear scale anything below about 10<sup>10</sup> is invisible next to 10<sup>12</sup>; in dB every factor of 10 is the same +10 dB step. In acoustics 0 dB is the threshold of human perception and a power ratio above 10<sup>12</sup> (log = 12) is 120 dB, the threshold of pain.'}
-        ar=${'الوحدات الـ logarithmic بنستخدمها لما يكون فيه مدى كبير جدًا في القيم. على scale خطي أي حاجة أقل من حوالي <bdi>10<sup>10</sup></bdi> مش باينة جنب <bdi>10<sup>12</sup></bdi>؛ لكن بالـ dB كل ضرب في 10 هو نفس الخطوة <bdi>+10 dB</bdi>. في الـ acoustics الـ <bdi>0 dB</bdi> هو أقل صوت الإنسان يحس بيه، ونسبة power أكبر من <bdi>10<sup>12</sup></bdi> (الـ log بتاعها 12) يعني <bdi>120 dB</bdi> وده الـ threshold of pain.'} showAr=${ar} /></figure>`;
+        ar=${'الوحدات الـ logarithmic بنستخدمها لما يكون فيه مدى كبير جدًا في القيم. على scale خطي أي حاجة أقل من حوالي <bdi dir="ltr">10<sup>10</sup></bdi> مش باينة جنب <bdi dir="ltr">10<sup>12</sup></bdi>؛ لكن بالـ dB كل ضرب في 10 هو نفس الخطوة <bdi dir="ltr">+10 dB</bdi>. في الـ acoustics الـ <bdi dir="ltr">0 dB</bdi> هو أقل صوت الإنسان يحس بيه، ونسبة power أكبر من <bdi dir="ltr">10<sup>12</sup></bdi> (الـ log بتاعها 12) يعني <bdi dir="ltr">120 dB</bdi> وده الـ threshold of pain.'} showAr=${ar} /></figure>`;
   }
 
   /* ── slide 14: 6 dB per bit ── */
@@ -2204,7 +2204,7 @@
       ${row('8-bit', 42, true)}${row('16-bit', 90, true)}${row(b + '-bit', R)}
       <p className="mv2-out">16-bit vs 8-bit: 90 − 42 = <span className="mv2-v">48 dB</span> → 48/6 = <span className="mv2-v">8</span> ("8 times as noisy", as the slide words it)</p></div>
       <${Cap} en=${'Digital noise: <b>6 dB per bit</b> in linear PCM. The first bit (LSB) only gives residual quantisation noise; every bit after it adds about 6 dB of dynamic range between quantisation noise and clipping. 16-bit has 15 bits beyond the first: 15 × 6 = 90 dB; 8-bit: 7 × 6 = 42 dB.'}
-        ar=${'الـ Digital noise: <b>6 dB لكل bit</b> في الـ linear PCM. أول bit (الـ LSB) بيدي residual quantisation noise بس؛ وكل bit بعده بيزود حوالي <bdi>6 dB</bdi> في الـ dynamic range ما بين الـ quantisation noise والـ clipping. الـ 16-bit فيه 15 bits بعد الأول يعني<span class="ltr">15 × 6 = 90 dB</span>والـ 8-bit<span class="ltr">7 × 6 = 42 dB</span>'} showAr=${ar} /></figure>`;
+        ar=${'الـ Digital noise: <b>6 dB لكل bit</b> في الـ linear PCM. أول bit (الـ LSB) بيدي residual quantisation noise بس؛ وكل bit بعده بيزود حوالي <bdi dir="ltr">6 dB</bdi> في الـ dynamic range ما بين الـ quantisation noise والـ clipping. الـ 16-bit فيه 15 bits بعد الأول يعني<span class="ltr">15 × 6 = 90 dB</span>والـ 8-bit<span class="ltr">7 × 6 = 42 dB</span>'} showAr=${ar} /></figure>`;
   }
 
   /* ── slides 8, 15 and the notes' table: dB and SNR calculator ── */
@@ -2226,7 +2226,7 @@
         ${DBT.map(([mm, ss], k) => { const v = (mm === 'P' ? 10 : 20) * Math.log10(parseNum(ss)); return html`<tr key=${k} className=${'pick' + (m === mm && s === ss ? ' on' : '')} onClick=${() => pick(mm, ss)}><td className="t">${mm === 'P' ? 'Power' : 'Amplitude'} ${ss.replace('10^12', '10¹²')}</td><td>${mm === 'P' ? 10 : 20}·log10</td><td>${(Math.abs(v - Math.round(v)) < 1e-9 ? '' : '≈ ') + fmt(v, 2)} dB</td></tr>`; })}
       </tbody></table></div>
       <${Cap} en=${'X<sub>dB</sub> = 10·log10(X/X0) for power; since power = |X|², amplitude ratios use 20·log10. SNR = Psignal/Pnoise = (Asignal/Anoise)², so SNR<sub>dB</sub> = 10·log10(Ps/Pn) = 20·log10(As/An). Tap a row of the notes\' table to load it.'}
-        ar=${'للـ power بنستخدم<span class="ltr">XdB = 10·log10(X/X0)</span>وعشان الـ power يساوي <bdi>|X|²</bdi> فنسب الـ amplitude بتاخد <bdi>20·log10</bdi>. والـ SNR هو<span class="ltr">SNR = Ps/Pn = (As/An)²<br>SNRdB = 10·log10(Ps/Pn) = 20·log10(As/An)</span>دوس على أي صف من جدول النوتس عشان يتحمّل.'} showAr=${ar} /></figure>`;
+        ar=${'للـ power بنستخدم<span class="ltr">XdB = 10·log10(X/X0)</span>وعشان الـ power يساوي <bdi dir="ltr">|X|²</bdi> فنسب الـ amplitude بتاخد <bdi dir="ltr">20·log10</bdi>. والـ SNR هو<span class="ltr">SNR = Ps/Pn = (As/An)²<br>SNRdB = 10·log10(Ps/Pn) = 20·log10(As/An)</span>دوس على أي صف من جدول النوتس عشان يتحمّل.'} showAr=${ar} /></figure>`;
   }
 
   /* ════════ [2] Signal flow graphs ════════ */
@@ -2239,8 +2239,8 @@
   const BLK = {
     d1: { eq: 'y(n) = x(n − 1)', y: n => n >= 1 ? XS[n - 1] : 0, en: 'A <b>delay</b> of one sampling interval: a block labelled T. Every input sample comes out one step later.', ar: 'الـ <b>delay</b> بمقدار sampling interval واحد بيترسم block مكتوب عليه T. كل sample بتطلع متأخرة خطوة.' },
     d2: { eq: 'y(n) = x(n − 2)', y: n => n >= 2 ? XS[n - 2] : 0, en: 'Two T blocks in series: a delay of <b>two</b> sampling intervals.', ar: 'اتنين T ورا بعض: <b>delay</b> بمقدار اتنين sampling intervals.' },
-    mul: { eq: 'y(n) = a·x(n), a = 0.5', y: n => .5 * XS[n], en: '<b>Multiplication</b> (weighting): a circle with × and the coefficient a. With a = 0.5 every sample is halved.', ar: 'الـ <b>Multiplication</b> (الـ weighting) بتترسم دايرة فيها × ومعاها الـ coefficient a. لما <bdi>a = 0.5</bdi> كل sample بتتقسم على 2.' },
-    add: { eq: 'y(n) = a1·x1(n) + a2·x2(n), a1 = a2 = 1', y: n => XS[n] + X2[n], en: '<b>Addition</b>: a circle with +. With a1 = a2 = 1 the output is x1(n) + x2(n), sample by sample.', ar: 'الـ <b>Addition</b> بتترسم دايرة فيها +. لما <bdi>a1 = a2 = 1</bdi> الـ output بيبقى مجموع <bdi>x1(n) + x2(n)</bdi> sample بـ sample.' }
+    mul: { eq: 'y(n) = a·x(n), a = 0.5', y: n => .5 * XS[n], en: '<b>Multiplication</b> (weighting): a circle with × and the coefficient a. With a = 0.5 every sample is halved.', ar: 'الـ <b>Multiplication</b> (الـ weighting) بتترسم دايرة فيها × ومعاها الـ coefficient a. لما <bdi dir="ltr">a = 0.5</bdi> كل sample بتتقسم على 2.' },
+    add: { eq: 'y(n) = a1·x1(n) + a2·x2(n), a1 = a2 = 1', y: n => XS[n] + X2[n], en: '<b>Addition</b>: a circle with +. With a1 = a2 = 1 the output is x1(n) + x2(n), sample by sample.', ar: 'الـ <b>Addition</b> بتترسم دايرة فيها +. لما <bdi dir="ltr">a1 = a2 = 1</bdi> الـ output بيبقى مجموع <bdi dir="ltr">x1(n) + x2(n)</bdi> sample بـ sample.' }
   };
   function BlockRun({ m, ar }) {
     const B = BLK[m], [i, ctl] = useSteps(8, 750), id = 'mv2-ab-' + m;
@@ -2297,7 +2297,7 @@
       <p className="mv2-pl">y(n)</p><svg className="mv2-s" viewBox="0 0 300 100" role="img" aria-label="output samples"><${Axes} F=${F} yt=${[0, top]} xt=${N(L + 1, k => k)} /><${Stems} F=${F} d=${N(L + 1, y)} show=${n + 1} hi=${n} /></svg>
       <div className="mv2-calc mv2-res">${calc}</div></div>
       <${Cap} en=${`n = ${n}: the delay line holds x(${n}), x(${n}−1), x(${n}−2) = ${xs.map(v => fmt(v)).join(', ')}; each is weighted (½, ⅓, ¼) and the adder sums them. Two delays, three multipliers, one adder.`}
-        ar=${`عند <bdi>n = ${n}</bdi> الـ delay line شايلة<span class="ltr">x(${n}), x(${n}−1), x(${n}−2) = ${xs.map(v => fmt(v)).join(', ')}</span>كل واحدة بتتضرب في الـ weight بتاعها (<bdi>½ و ⅓ و ¼</bdi>) والـ adder بيجمعهم. يعني 2 delays و 3 multipliers و adder واحد.`} showAr=${ar} />
+        ar=${`عند <bdi dir="ltr">n = ${n}</bdi> الـ delay line شايلة<span class="ltr">x(${n}), x(${n}−1), x(${n}−2) = ${xs.map(v => fmt(v)).join(', ')}</span>كل واحدة بتتضرب في الـ weight بتاعها (<bdi>½ و ⅓ و ¼</bdi>) والـ adder بيجمعهم. يعني 2 delays و 3 multipliers و adder واحد.`} showAr=${ar} />
       <${Bar} steps=${N(L + 1, k => k)} i=${n} ctl=${ctl} /></div>`;
   }
   function SfgRun({ ar }) {
@@ -2315,10 +2315,10 @@
   /* ── slides 27–29: the IIR signal flow graph ── */
   function IirGraph({ ar }) {
     const steps = [
-      { en: 'The input x(n) enters the adder.', ar: 'الـ input <bdi>x(n)</bdi> بيدخل على الـ adder.' },
-      { en: 'The adder\'s result is the output y(n).', ar: 'ناتج الـ adder هو الـ output <bdi>y(n)</bdi>.' },
-      { en: 'The output y(n) is <b>fed back</b> through a series of delays: y(n − 1), y(n − 2).', ar: 'الـ output <bdi>y(n)</bdi> بيرجع <b>feedback</b> على سلسلة delays فيطلع <bdi>y(n − 1)</bdi> و <bdi>y(n − 2)</bdi>.' },
-      { en: 'Each delay is <b>weighted</b>: by −a1 and −a2.', ar: 'كل delay بيتضرب في <b>weight</b> وهما <bdi>−a1</bdi> و <bdi>−a2</bdi>.' },
+      { en: 'The input x(n) enters the adder.', ar: 'الـ input <bdi dir="ltr">x(n)</bdi> بيدخل على الـ adder.' },
+      { en: 'The adder\'s result is the output y(n).', ar: 'ناتج الـ adder هو الـ output <bdi dir="ltr">y(n)</bdi>.' },
+      { en: 'The output y(n) is <b>fed back</b> through a series of delays: y(n − 1), y(n − 2).', ar: 'الـ output <bdi dir="ltr">y(n)</bdi> بيرجع <b>feedback</b> على سلسلة delays فيطلع <bdi dir="ltr">y(n − 1)</bdi> و <bdi dir="ltr">y(n − 2)</bdi>.' },
+      { en: 'Each delay is <b>weighted</b>: by −a1 and −a2.', ar: 'كل delay بيتضرب في <b>weight</b> وهما <bdi dir="ltr">−a1</bdi> و <bdi dir="ltr">−a2</bdi>.' },
       { en: 'Each fed-back weighted delay is summed into the new output: a <b>recursive</b> system. y(n) = x(n) − a1·y(n − 1) − a2·y(n − 2); in general y(n) = x(n) − Σ<sub>k=1..M</sub> a<sub>k</sub>·y(n − k).', ar: 'كل delay راجع ومتضرب بيتجمع على الـ output الجديد، فده نظام <b>recursive</b>.<span class="ltr">y(n) = x(n) − a1·y(n − 1) − a2·y(n − 2)<br>y(n) = x(n) − Σ(k=1..M) ak·y(n − k)</span>' }
     ];
     const [i, ctl] = useSteps(steps.length, 2200), id = 'mv2-ai', id2 = 'mv2-ai2';
@@ -2346,9 +2346,9 @@
   function FirGraph({ ar }) {
     const [Nn, setNn] = useState(3);
     const steps = [
-      { en: `The input passes along a line of <b>${Nn - 1} delay${Nn > 2 ? 's' : ''}</b> (N − 1 feed-forward delays): x(n), x(n − 1), ….`, ar: `الـ input بيمشي على خط فيه <b>${Nn - 1} delay</b> (يعني N − 1 feed-forward delays) فيطلع <bdi>x(n)</bdi> و <bdi>x(n − 1)</bdi> وهكذا.` },
-      { en: 'Each delayed input is weighted by its coefficient b<sub>k</sub>.', ar: 'كل input متأخر بيتضرب في الـ coefficient بتاعه <bdi>b<sub>k</sub></bdi>.' },
-      { en: 'The weighted values are summed to give the output y(n).', ar: 'القيم المتضروبة بتتجمع وتدي الـ output <bdi>y(n)</bdi>.' },
+      { en: `The input passes along a line of <b>${Nn - 1} delay${Nn > 2 ? 's' : ''}</b> (N − 1 feed-forward delays): x(n), x(n − 1), ….`, ar: `الـ input بيمشي على خط فيه <b>${Nn - 1} delay</b> (يعني <bdi dir="ltr">N&nbsp;−&nbsp;1</bdi> feed-forward delays) فيطلع <bdi dir="ltr">x(n)</bdi> و <bdi dir="ltr">x(n − 1)</bdi> وهكذا.` },
+      { en: 'Each delayed input is weighted by its coefficient b<sub>k</sub>.', ar: 'كل input متأخر بيتضرب في الـ coefficient بتاعه <bdi dir="ltr">b<sub>k</sub></bdi>.' },
+      { en: 'The weighted values are summed to give the output y(n).', ar: 'القيم المتضروبة بتتجمع وتدي الـ output <bdi dir="ltr">y(n)</bdi>.' },
       { en: 'There is <b>no feedback loop</b>: the output never goes back in, so FIR is simpler than IIR and its impulse response is finite.', ar: 'مفيش <b>feedback loop</b>: الـ output عمره ما بيرجع جوه، فالـ FIR أبسط من الـ IIR والـ impulse response بتاعه finite.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2200), id = 'mv2-af', id2 = 'mv2-af2';
@@ -2391,7 +2391,7 @@
       <p className="mv2-out">IIR: ${iir.slice(0, 6).map(v => fmt(v, 4)).join(', ')}, … · FIR: ½, ⅓, ¼, 0, 0, …</p>
       <${Sl} label="a1" min="-0.9" max="0.9" step="0.1" v=${a1} set=${setA1} out=${fmt(a1)} /></div>
       <${Cap} en=${a1 === 0 ? 'With a1 = 0 there is no feedback and the response stops after one sample.' : `Impulse input 1, 0, 0, …. The IIR filter feeds each output back, so with a1 = ${fmt(a1)} the response ${a1 < 0 ? 'halves' : 'shrinks'} every step${a1 > 0 ? ' and flips sign' : ''} but <b>never becomes exactly zero</b>: an infinite impulse response. The FIR filter has no feedback, so after its last tap the response is 0: finite.`}
-        ar=${a1 === 0 ? 'لما <bdi>a1 = 0</bdi> مفيش feedback والـ response بيخلص بعد sample واحدة.' : `الـ input هو impulse يعني <bdi>1, 0, 0, …</bdi>. الـ IIR filter بيرجّع كل output تاني، فمع <bdi>a1 = ${fmt(a1)}</bdi> الـ response بيصغر كل خطوة${a1 > 0 ? ' وإشارته بتتقلب' : ''} لكن <b>عمره ما يوصل للصفر بالظبط</b>، وده الـ infinite impulse response. الـ FIR مفيهوش feedback، فبعد آخر tap الـ response بيبقى صفر يعني finite.`} showAr=${ar} />
+        ar=${a1 === 0 ? 'لما <bdi dir="ltr">a1 = 0</bdi> مفيش feedback والـ response بيخلص بعد sample واحدة.' : `الـ input هو impulse يعني <bdi dir="ltr">1, 0, 0, …</bdi>. الـ IIR filter بيرجّع كل output تاني، فمع <bdi dir="ltr">a1 = ${fmt(a1)}</bdi> الـ response بيصغر كل خطوة${a1 > 0 ? ' وإشارته بتتقلب' : ''} لكن <b>عمره ما يوصل للصفر بالظبط</b>، وده الـ infinite impulse response. الـ FIR مفيهوش feedback، فبعد آخر tap الـ response بيبقى صفر يعني finite.`} showAr=${ar} />
       <${Bar} steps=${N(12, k => k)} i=${i} ctl=${ctl} /></figure>`;
   }
 
@@ -2422,7 +2422,7 @@
         <label>X (input)<input value=${x} onInput=${e => setX(e.target.value)} /></label></div>
       <p className="mv2-fx">Y = filter(B, A, X)</p>${body}</div>
       <${Cap} en=${'MATLAB filter(B, A, X) is a Direct Form II Transposed IIR/FIR hybrid: a(1)y(n) = b(1)x(n) + … + b(nb+1)x(n − nb) − a(2)y(n − 1) − … − a(na+1)y(n − na). With A = 1 it is an FIR filter; any further a(k) adds feedback (IIR). If a(1) ≠ 1 the coefficients are normalised by a(1); a(1) = 0 is an error. Tap a row to see its sum.'}
-        ar=${'الـ <bdi>filter(B, A, X)</bdi> في MATLAB هو hybrid بين IIR و FIR بطريقة Direct Form II Transposed:<span class="ltr">a(1)y(n) = b(1)x(n) + … + b(nb+1)x(n − nb) − a(2)y(n − 1) − … − a(na+1)y(n − na)</span>لو <bdi>A = 1</bdi> يبقى FIR، وأي <bdi>a(k)</bdi> زيادة بتضيف feedback يعني IIR. لو <bdi>a(1) ≠ 1</bdi> الـ coefficients بتتقسم على <bdi>a(1)</bdi>، ولو <bdi>a(1) = 0</bdi> يطلع error. دوس على أي صف تشوف الجمع بتاعه.'} showAr=${ar} /></figure>`;
+        ar=${'الـ <bdi dir="ltr">filter(B, A, X)</bdi> في MATLAB هو hybrid بين IIR و FIR بطريقة Direct Form II Transposed:<span class="ltr">a(1)y(n) = b(1)x(n) + … + b(nb+1)x(n − nb) − a(2)y(n − 1) − … − a(na+1)y(n − na)</span>لو <bdi dir="ltr">A = 1</bdi> يبقى FIR، وأي <bdi dir="ltr">a(k)</bdi> زيادة بتضيف feedback يعني IIR. لو <bdi dir="ltr">a(1) ≠ 1</bdi> الـ coefficients بتتقسم على <bdi dir="ltr">a(1)</bdi>، ولو <bdi dir="ltr">a(1) = 0</bdi> يطلع error. دوس على أي صف تشوف الجمع بتاعه.'} showAr=${ar} /></figure>`;
   }
 
   /* ── slides 34–36: IIRdemo.m, coefficients and the loop by hand ── */
@@ -2449,7 +2449,7 @@
       <div className="mv2-calc">${cur ? html`<div>n=${cur.n}: y(n) = b(1)·${cur.x} + b(2)·xh1 + b(3)·xh2 − a(2)·yh1 − a(3)·yh2</div><div>xh1=${f4(cur.st.xh1)}, xh2=${f4(cur.st.xh2)}, yh1=${f4(cur.st.yh1)}, yh2=${f4(cur.st.yh2)}</div><div className="mv2-res">y(${cur.n}) = ${f4(cur.y)}</div><div className="mv2-note">then xh2=xh1; xh1=x(n); yh2=yh1; yh1=y(n)</div>` : html`<div className="mv2-note">All state variables xh1, xh2, yh1, yh2 start at 0. Press Next to run the loop.</div>`}</div>`
         : html`<p className="mv2-out">Enter fg and fa with 0 < fg < fa/2.</p>`}</div>
       <${Cap} en=${'IIRdemo.m builds the filter banks by hand: k = tan(π·fg/fa) with fg = 4000 Hz and fa = 48000 Hz, three b and three a coefficients (a(1) = 1). The loop applies the difference equation sample by sample, keeping the last two inputs (xh1, xh2) and outputs (yh1, yh2). Feeding in an impulse gives the slide\'s output. filter() does the same for any filter length. (The plot index starts at 0; the loop\'s n starts at 1.)'}
-        ar=${'الـ IIRdemo.m بيبني الـ filter banks بإيده:<span class="ltr">k = tan(π·fg/fa), fg = 4000 Hz, fa = 48000 Hz</span>وبيحسب 3 coefficients لـ b و 3 لـ a (و <bdi>a(1) = 1</bdi>). الـ loop بيطبق الـ difference equation sample بـ sample، وبيحفظ آخر اتنين inputs (xh1 و xh2) وآخر اتنين outputs (yh1 و yh2). لما ندخل impulse يطلع الـ output اللي في السلايد. الـ <bdi>filter()</bdi> بيعمل نفس الحاجة لأي طول filter. (الرسمة بتبدأ من 0 والـ n بتاع الـ loop بيبدأ من 1.)'} showAr=${ar} />
+        ar=${'الـ IIRdemo.m بيبني الـ filter banks بإيده:<span class="ltr">k = tan(π·fg/fa), fg = 4000 Hz, fa = 48000 Hz</span>وبيحسب 3 coefficients لـ b و 3 لـ a (و <bdi dir="ltr">a(1) = 1</bdi>). الـ loop بيطبق الـ difference equation sample بـ sample، وبيحفظ آخر اتنين inputs (xh1 و xh2) وآخر اتنين outputs (yh1 و yh2). لما ندخل impulse يطلع الـ output اللي في السلايد. الـ <bdi dir="ltr">filter()</bdi> بيعمل نفس الحاجة لأي طول filter. (الرسمة بتبدأ من 0 والـ n بتاع الـ loop بيبدأ من 1.)'} showAr=${ar} />
       <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => setJ(v => Math.max(0, v - 1))} disabled=${!j}>‹ Back</button><button className="fig-btn" onClick=${() => setJ(v => Math.min(L, v + 1))} disabled=${j >= L || !ok}>Next ›</button><button className="fig-btn" onClick=${() => setJ(0)}>↻ Replay</button></div></figure>`;
   }
 
@@ -2491,7 +2491,7 @@
       <svg className="mv2-s" viewBox="0 0 300 130" role="img" aria-label=${`One peak at ${f} Hz with magnitude 1`}><${Axes} F=${S} yt=${[0, 0.5, 1]} xt=${[0, 5, 10, 15, 20]} /><path d=${`M${S.X(f)} ${S.Y(0)} V${S.Y(1)}`} stroke="var(--k-mm)" strokeWidth="4" /><text x=${S.X(f)} y=${S.Y(1) - 5} textAnchor="middle" fontSize="14" className="mv2-kt">${f} Hz, 1.0</text></svg>
       <${Sl} label="f (Hz)" min="1" max="19" v=${f} set=${setF} /></div>
       <${Cap} en=${`A ${f} Hz sine completes ${f} cycles in one second. In the frequency domain there is <b>one peak</b> at ${f} Hz (only one sine wave here) with magnitude 1.0, i.e. the whole signal.`}
-        ar=${`الـ sine اللي بـ <bdi>${f} Hz</bdi> بتعمل ${f} cycles في الثانية. في الـ frequency domain فيه <b>peak واحدة</b> عند <bdi>${f} Hz</bdi> (لأن فيه sine wave واحدة بس) والـ magnitude بتاعها <bdi>1.0</bdi> يعني الإشارة كلها.`} showAr=${ar} /></figure>`;
+        ar=${`الـ sine اللي بـ <bdi dir="ltr">${f} Hz</bdi> بتعمل ${f} cycles في الثانية. في الـ frequency domain فيه <b>peak واحدة</b> عند <bdi dir="ltr">${f} Hz</bdi> (لأن فيه sine wave واحدة بس) والـ magnitude بتاعها <bdi dir="ltr">1.0</bdi> يعني الإشارة كلها.`} showAr=${ar} /></figure>`;
   }
 
   /* ── slides 43–44: what frequencies in an image mean ── */
@@ -2521,9 +2521,9 @@
   function Additive({ ar }) {
     const steps = [
       { en: 'Start with the <b>200 Hz</b> sine (the fundamental).', ar: 'نبدأ بالـ sine اللي بـ <b>200 Hz</b> (الـ fundamental).' },
-      { en: 'Add <b>600 Hz</b> (3 × 200) with a third of the amplitude.', ar: 'نضيف <b>600 Hz</b> (يعني <bdi>3 × 200</bdi>) بتلت الـ amplitude.' },
-      { en: 'Add <b>1000 Hz</b> (5 × 200) with a fifth: the sum already looks square(ish), as on the slide.', ar: 'نضيف <b>1000 Hz</b> (يعني <bdi>5 × 200</bdi>) بخُمس الـ amplitude: المجموع بقى شبه square زي السلايد.' },
-      { en: 'Keep adding odd multiples (1400, 1800, … Hz): the sum gets closer and closer to a square wave.', ar: 'نكمّل نضيف الـ odd multiples (<bdi>1400, 1800, … Hz</bdi>): المجموع بيقرب أكتر وأكتر من الـ square wave.' }
+      { en: 'Add <b>600 Hz</b> (3 × 200) with a third of the amplitude.', ar: 'نضيف <b>600 Hz</b> (يعني <bdi dir="ltr">3 × 200</bdi>) بتلت الـ amplitude.' },
+      { en: 'Add <b>1000 Hz</b> (5 × 200) with a fifth: the sum already looks square(ish), as on the slide.', ar: 'نضيف <b>1000 Hz</b> (يعني <bdi dir="ltr">5 × 200</bdi>) بخُمس الـ amplitude: المجموع بقى شبه square زي السلايد.' },
+      { en: 'Keep adding odd multiples (1400, 1800, … Hz): the sum gets closer and closer to a square wave.', ar: 'نكمّل نضيف الـ odd multiples (<bdi dir="ltr">1400, 1800, … Hz</bdi>): المجموع بيقرب أكتر وأكتر من الـ square wave.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2400), [ov, setOv] = useState(null);
     const K = ov == null ? [1, 2, 3, 10][i] : ov, wrap = { go: j => { setOv(null); ctl.go(j); }, replay: () => { setOv(null); ctl.replay(); } };
@@ -2542,7 +2542,7 @@
         ${N(K, k => (2 * k + 1) * 200 <= 4000 && html`<path key=${k} d=${`M${S.X((2 * k + 1) * 200)} ${S.Y(0)} V${S.Y(1 / (2 * k + 1))}`} stroke="var(--k-mm)" strokeWidth="3.5" />`)}</svg>
       <${Sl} label="sines" min="1" max="10" v=${K} set=${setOv} /></div>
       <${Cap} en=${'Any digital signal can be decomposed into sine waves of different amplitude, frequency and phase that add back to the original. A 200 Hz square(ish) wave is made of sinusoids at 200, 600, 1000 Hz … (odd multiples): this is also how additive synthesis works. ' + (ov == null ? steps[i].en : `Now ${K} sine${K > 1 ? 's' : ''}.`)}
-        ar=${'أي digital signal ممكن نفككها لـ sine waves بـ amplitudes و frequencies و phases مختلفة، ولما نجمعهم ترجع الأصلية. الـ square(ish) wave اللي بـ <bdi>200 Hz</bdi> متكونة من sinusoids عند<span class="ltr">200, 600, 1000 Hz … (odd multiples)</span>وده برضه اللي بيعمله الـ additive synthesis. ' + (ov == null ? steps[i].ar : `دلوقتي فيه ${K} sines.`)} showAr=${ar} />
+        ar=${'أي digital signal ممكن نفككها لـ sine waves بـ amplitudes و frequencies و phases مختلفة، ولما نجمعهم ترجع الأصلية. الـ square(ish) wave اللي بـ <bdi dir="ltr">200 Hz</bdi> متكونة من sinusoids عند<span class="ltr">200, 600, 1000 Hz … (odd multiples)</span>وده برضه اللي بيعمله الـ additive synthesis. ' + (ov == null ? steps[i].ar : `دلوقتي فيه ${K} sines.`)} showAr=${ar} />
       <${Bar} steps=${steps} i=${ov == null ? i : steps.length - 1} ctl=${wrap} /></figure>`;
   }
 
@@ -2566,11 +2566,11 @@
   /* ── slides 54–56: the Fourier transform of a top hat is the sinc function ── */
   function Sinc({ ar }) {
     const steps = [
-      { en: 'The top hat: f(x) = 1 for |x| ≤ 1, 0 otherwise. Its area is 2.', ar: 'الـ top hat هي <bdi>f(x) = 1</bdi> لما <bdi>|x| ≤ 1</bdi> وصفر غير كده، ومساحتها 2.' },
-      { en: 'F(u) = ∫ f(x)e<sup>−2πixu</sup>dx over −1 … 1 = (−1/2πiu)(e<sup>−2πiu</sup> − e<sup>2πiu</sup>) = sin(2πu)/(πu): the <b>sinc function</b>.', ar: 'بنحسب التكامل من −1 لـ 1 فيطلع الـ <b>sinc function</b>:<span class="ltr">F(u) = (−1/2πiu)(e^(−2πiu) − e^(2πiu)) = sin(2πu)/(πu)</span>' },
-      { en: 'As u → 0 the peak value is <b>2</b>, the area of the top hat.', ar: 'لما <bdi>u → 0</bdi> القيمة العظمى بتبقى <b>2</b>، وهي مساحة الـ top hat.' },
+      { en: 'The top hat: f(x) = 1 for |x| ≤ 1, 0 otherwise. Its area is 2.', ar: 'الـ top hat هي <bdi dir="ltr">f(x) = 1</bdi> لما <bdi dir="ltr">|x| ≤ 1</bdi> وصفر غير كده، ومساحتها 2.' },
+      { en: 'F(u) = ∫ f(x)e<sup>−2πixu</sup>dx over −1 … 1 = (−1/2πiu)(e<sup>−2πiu</sup> − e<sup>2πiu</sup>) = sin(2πu)/(πu): the <b>sinc function</b>.', ar: 'بنحسب التكامل من <bdi dir="ltr">−1</bdi> لـ 1 فيطلع الـ <b>sinc function</b>:<span class="ltr">F(u) = (−1/2πiu)(e^(−2πiu) − e^(2πiu)) = sin(2πu)/(πu)</span>' },
+      { en: 'As u → 0 the peak value is <b>2</b>, the area of the top hat.', ar: 'لما <bdi dir="ltr">u → 0</bdi> القيمة العظمى بتبقى <b>2</b>، وهي مساحة الـ top hat.' },
       { en: 'Zeros at u = ±0.5, ±1, ±1.5, …', ar: 'الأصفار عند<span class="ltr">u = ±0.5, ±1, ±1.5, …</span>' },
-      { en: 'F(u) is <b>purely real</b> because f is even (symmetric in x and −x). Drag u to read values.', ar: 'الـ F(u) <b>real بالكامل</b> لأن الـ f دالة even (متماثلة بين x و −x). حرّك u عشان تقرا القيم.' }
+      { en: 'F(u) is <b>purely real</b> because f is even (symmetric in x and −x). Drag u to read values.', ar: 'الـ <bdi dir="ltr">F(u)</bdi> <b>real بالكامل</b> لأن الـ f دالة even (متماثلة بين x و <bdi dir="ltr">−x</bdi>). حرّك u عشان تقرا القيم.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600), [u, setU] = useState(0.25);
     const sc = v => Math.abs(v) < 1e-9 ? 2 : Math.sin(P2 * v) / (Math.PI * v);
@@ -2613,7 +2613,7 @@
       <div className="mv2-calc">${i === 0 ? html`<div className="mv2-note">Sum over x = 0 … ${n - 1} of f(x)·e<sup>−2πixu/N</sup>, here u = ${u}, N = ${n}. Press Next or wait.</div>` : html`<div>x = ${k}: f(${k})·e<sup>−2πi·${k}·${u}/${n}</sup> = ${fmt(f[k])} × (angle ${fmt(terms[k][2] * 180 / Math.PI, 1)}°) = ${fmtC(terms[k][0], terms[k][1])}</div><div>running sum = ${fmtC(S[0], S[1])}</div>`}
         ${fin && html`<div className="mv2-res">F(${u}) = (1/${n}) × ${fmtC(S[0], S[1])} = ${fmtC(S[0] / n, S[1] / n)}</div>`}</div></div>
       <${Cap} en=${'DFT: F(u) = (1/N) Σ<sub>x=0..N−1</sub> f(x)·e<sup>−2πixu/N</sup>. Each sample becomes a phasor (an arrow of length f(x) turned by −2πxu/N); the arrows are added head to tail and the total is divided by N. The inverse f(x) = Σ F(u)·e<sup>2πixu/N</sup> has the opposite sign and no 1/N. Tap a bar to pick u.'}
-        ar=${'الـ DFT هو<span class="ltr">F(u) = (1/N) Σ(x=0..N−1) f(x)·e^(−2πixu/N)</span>كل sample بتبقى phasor (سهم طوله <bdi>f(x)</bdi> ومتلف بزاوية <bdi>−2πxu/N</bdi>)، الأسهم بتتجمع ورا بعض والمجموع بيتقسم على N. والـ inverse هو<span class="ltr">f(x) = Σ F(u)·e^(2πixu/N)</span>بإشارة عكسية ومن غير <bdi>1/N</bdi>. دوس على أي bar تختار u.'} showAr=${ar} />
+        ar=${'الـ DFT هو<span class="ltr">F(u) = (1/N) Σ(x=0..N−1) f(x)·e^(−2πixu/N)</span>كل sample بتبقى phasor (سهم طوله <bdi dir="ltr">f(x)</bdi> ومتلف بزاوية <bdi dir="ltr">−2πxu/N</bdi>)، الأسهم بتتجمع ورا بعض والمجموع بيتقسم على N. والـ inverse هو<span class="ltr">f(x) = Σ F(u)·e^(2πixu/N)</span>بإشارة عكسية ومن غير <bdi dir="ltr">1/N</bdi>. دوس على أي bar تختار u.'} showAr=${ar} />
       <${Bar} steps=${N(n + 1, j => j)} i=${i} ctl=${ctl} /></div>`;
   }
   function Dft({ ar }) {
@@ -2668,7 +2668,7 @@
       <div className="mv2-calc"><div>step = fs/N = ${fmt(S)}/${fmt(M)} = ${fmt(step, 4)} Hz</div><div className="mv2-res">f${K} = k·fs/N = ${K} × ${fmt(step, 4)} = ${fmt(fk, 4)} Hz</div><div className="mv2-note">equidistant steps from 0 Hz to (N−1)fs/N = ${fmt(top, 3)} Hz</div></div>`
         : html`<p className="mv2-out">Enter fs > 0, a whole number N ≥ 1 and a whole k from 0 to N − 1.</p>`}</div>
       <${Cap} en=${'To label a DFT plot in Hz instead of sample points k = 0 … N − 1: f<sub>k</sub> = k·f<sub>s</sub>/N. Notes\' example: f<sub>s</sub> = 8000 Hz, N = 256 → steps of 31.25 Hz, and k = 32 is 1000 Hz.'}
-        ar=${'عشان نكتب محور الـ DFT بالـ Hz بدل الـ sample points من 0 لـ <bdi>N − 1</bdi> بنستخدم <bdi>fk = k·fs/N</bdi>. مثال النوتس:<span class="ltr">fs = 8000 Hz, N = 256 → step 31.25 Hz, k = 32 → 1000 Hz</span>'} showAr=${ar} /></figure>`;
+        ar=${'عشان نكتب محور الـ DFT بالـ Hz بدل الـ sample points من 0 لـ <bdi dir="ltr">N − 1</bdi> بنستخدم <bdi dir="ltr">fk = k·fs/N</bdi>. مثال النوتس:<span class="ltr">fs = 8000 Hz, N = 256 → step 31.25 Hz, k = 32 → 1000 Hz</span>'} showAr=${ar} /></figure>`;
   }
 
   /* ── slides 67–68: the spectrogram (windowed STFT) ── */
@@ -2695,7 +2695,7 @@
       <svg className="mv2-s" viewBox="0 0 300 130" role="img" aria-label="Spectrum of one windowed segment in decibels"><${Axes} F=${F} yt=${[[-100, '−100'], [-50, '−50'], [0, '0']]} xt=${[0, 2000, 4000]} />
         <path d=${pathOf(one.map((v, k) => [F.X(k * SPF / len), F.Y(v)]))} stroke="var(--k-mm)" strokeWidth="1.5" fill="none" /></svg></div>
       <${Cap} en=${'Spectrogram: split the signal into N segments and take a windowed <b>Short-Time Fourier Transform</b> of each, giving the frequency content over time (here a sine sweeping from 500 to 3500 Hz, fs = 8000 Hz). A Blackman, Hamming or Hanning window reduces the <b>leakage</b> that a short segment spreads around each peak: compare "No window". MATLAB: spectrogram(y,512,20,1024,Fs).'}
-        ar=${'الـ Spectrogram: بنقسم الإشارة لـ N segments ونعمل لكل واحد <b>Short-Time Fourier Transform</b> بـ window، فنشوف الـ frequencies بتتغير إزاي مع الوقت (هنا sine طالع من <bdi>500</bdi> لـ <bdi>3500 Hz</bdi> و <bdi>fs = 8000 Hz</bdi>). الـ window زي Blackman أو Hamming أو Hanning بيقلل الـ <b>leakage</b> اللي الـ segment القصير بيفرشه حوالين كل peak: قارن بـ "No window". وفي MATLAB<span class="ltr">spectrogram(y,512,20,1024,Fs)</span>'} showAr=${ar} /></figure>`;
+        ar=${'الـ Spectrogram: بنقسم الإشارة لـ N segments ونعمل لكل واحد <b>Short-Time Fourier Transform</b> بـ window، فنشوف الـ frequencies بتتغير إزاي مع الوقت (هنا sine طالع من <bdi dir="ltr">500</bdi> لـ <bdi dir="ltr">3500 Hz</bdi> و <bdi dir="ltr">fs = 8000 Hz</bdi>). الـ window زي Blackman أو Hamming أو Hanning بيقلل الـ <b>leakage</b> اللي الـ segment القصير بيفرشه حوالين كل peak: قارن بـ "No window". وفي MATLAB<span class="ltr">spectrogram(y,512,20,1024,Fs)</span>'} showAr=${ar} /></figure>`;
   }
 
   /* ════════ [6] Filtering in the frequency domain ════════ */
@@ -2705,11 +2705,11 @@
   const FN = (() => { const re = Float64Array.from(NOISY), im = new Float64Array(L1); fft(re, im); return [re, im]; })();
   function Lpf1d({ ar }) {
     const steps = [
-      { en: 'f(x): the signal with noise, spurious high frequencies (rapid local transitions).', ar: 'الـ <bdi>f(x)</bdi>: الإشارة ومعاها noise، يعني high frequencies زيادة (تغييرات سريعة في أماكن صغيرة).' },
-      { en: 'F(u): its Fourier transform. The two real components sit at low u; the noise is spread over all u.', ar: 'الـ <bdi>F(u)</bdi>: الـ Fourier transform بتاعها. الـ components الحقيقية قاعدة عند u صغيرة، والـ noise متفرش على كل الـ u.' },
-      { en: 'H(u): the ideal low-pass filter, a top hat: 1 for u ≤ u0 (cut-off), 0 elsewhere.', ar: 'الـ <bdi>H(u)</bdi>: الـ ideal low-pass filter، وهو top hat قيمته 1 لما <bdi>u ≤ u0</bdi> (الـ cut-off) وصفر غير كده.' },
-      { en: 'G(u) = H(u)·F(u): everything above u0 is discarded (MATLAB G = H.*F).', ar: 'الـ <bdi>G(u) = H(u)·F(u)</bdi>: أي حاجة فوق u0 بتتشال (في MATLAB <bdi>G = H.*F</bdi>).' },
-      { en: 'g(x): the inverse FT of G, the improved signal. Move u0: too low and the signal itself is blurred, too high and the noise stays.', ar: 'الـ <bdi>g(x)</bdi>: الـ inverse FT لـ G، وهي الإشارة بعد التحسين. حرّك u0: لو واطي قوي الإشارة نفسها بتتمسح، ولو عالي قوي الـ noise بيفضل.' }
+      { en: 'f(x): the signal with noise, spurious high frequencies (rapid local transitions).', ar: 'الـ <bdi dir="ltr">f(x)</bdi>: الإشارة ومعاها noise، يعني high frequencies زيادة (تغييرات سريعة في أماكن صغيرة).' },
+      { en: 'F(u): its Fourier transform. The two real components sit at low u; the noise is spread over all u.', ar: 'الـ <bdi dir="ltr">F(u)</bdi>: الـ Fourier transform بتاعها. الـ components الحقيقية قاعدة عند u صغيرة، والـ noise متفرش على كل الـ u.' },
+      { en: 'H(u): the ideal low-pass filter, a top hat: 1 for u ≤ u0 (cut-off), 0 elsewhere.', ar: 'الـ <bdi dir="ltr">H(u)</bdi>: الـ ideal low-pass filter، وهو top hat قيمته 1 لما <bdi dir="ltr">u ≤ u0</bdi> (الـ cut-off) وصفر غير كده.' },
+      { en: 'G(u) = H(u)·F(u): everything above u0 is discarded (MATLAB G = H.*F).', ar: 'الـ <bdi dir="ltr">G(u) = H(u)·F(u)</bdi>: أي حاجة فوق u0 بتتشال (في MATLAB <bdi dir="ltr">G = H.*F</bdi>).' },
+      { en: 'g(x): the inverse FT of G, the improved signal. Move u0: too low and the signal itself is blurred, too high and the noise stays.', ar: 'الـ <bdi dir="ltr">g(x)</bdi>: الـ inverse FT لـ G، وهي الإشارة بعد التحسين. حرّك u0: لو واطي قوي الإشارة نفسها بتتمسح، ولو عالي قوي الـ noise بيفضل.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2400), [u0, setU0] = useState(8);
     const H = N(L1, u => Math.min(u, L1 - u) <= u0 ? 1 : 0);
@@ -2749,7 +2749,7 @@
       <${Sl} label="w0" min="5" max="25" v=${w0} set=${setW0} />
       <div className="mv2-calc"><div>(u, v) = (${p[0]}, ${p[1]}): √(u² + v²) = √(${p[0] * p[0]} + ${p[1] * p[1]}) = √${p[0] * p[0] + p[1] * p[1]} = ${fmt(d, 2)}</div><div className="mv2-res">${fmt(d, 2)} ${keep ? '≤' : '>'} w0 = ${w0} → ${keep ? 'kept, H = 1' : 'discarded, H = 0'}</div></div></div>
       <${Cap} en=${'Ideal 2D low-pass filter: H(u, v) = 1 if √(u² + v²) ≤ w0, else 0. All frequencies <b>inside a circle</b> of radius w0 are kept and all others discarded. Tap the plane to test any point. Notes\' example with w0 = 20: (12, 16) → √400 = 20, kept; (15, 16) → √481 ≈ 21.9, discarded.'}
-        ar=${'الـ ideal 2D low-pass filter هو<span class="ltr">H(u, v) = 1 if √(u² + v²) ≤ w0, else 0</span>يعني كل الـ frequencies <b>جوه دايرة</b> نص قطرها w0 بتفضل والباقي بيتشال. دوس على أي نقطة تجربها. مثال النوتس مع <bdi>w0 = 20</bdi>:<span class="ltr">(12, 16) → √400 = 20 → kept<br>(15, 16) → √481 ≈ 21.9 → discarded</span>'} showAr=${ar} /></figure>`;
+        ar=${'الـ ideal 2D low-pass filter هو<span class="ltr">H(u, v) = 1 if √(u² + v²) ≤ w0, else 0</span>يعني كل الـ frequencies <b>جوه دايرة</b> نص قطرها w0 بتفضل والباقي بيتشال. دوس على أي نقطة تجربها. مثال النوتس مع <bdi dir="ltr">w0 = 20</bdi>:<span class="ltr">(12, 16) → √400 = 20 → kept<br>(15, 16) → √481 ≈ 21.9 → discarded</span>'} showAr=${ar} /></figure>`;
   }
 
   /* ── slides 82–84: the Butterworth low-pass, a smoothed top hat ── */
@@ -2770,7 +2770,7 @@
       <div className="mv2-calc"><div>H = 1 / (1 + [(u² + v²)/w0²]<sup>n</sup>)</div><div className="mv2-res">at the cut-off u = w0: 1/(1 + 1) = 0.5</div><div className="mv2-res">at u = 2w0: 1/(1 + 4<sup>${n}</sup>) = 1/${fmt(1 + Math.pow(4, n))} ≈ ${fmt(h2, 4)}</div></div>
       <div className="mv2-ims" style=${{ marginTop: '10px' }}><${Cv} S=${S2} val=${ideal} dep=${'i' + w0} cap="ideal 2D: a sharp circle" /><${Cv} S=${S2} val=${bw} dep=${'b' + w0 + '-' + n} cap=${`Butterworth (n = ${n}): a blurred circle`} /></div></div>
       <${Cap} en=${'The Butterworth low-pass filter is essentially a <b>smoothed top hat</b> (in 2D a blurred circle). It keeps some high-frequency information, so it reduces the blurring of the ideal filter. H is 1/2 at the cut-off; the 2nd-order filter at twice the cut-off is 1/(1 + 4²) = 1/17 ≈ 0.059. A higher order n gets closer to the ideal top hat.'}
-        ar=${'الـ Butterworth low-pass filter هو تقريبًا <b>top hat ناعمة</b> (وفي 2D دايرة متمسحة الحواف). بيسيب شوية من الـ high-frequency information فبيقلل الـ blurring اللي بيعمله الـ ideal filter. قيمته <bdi>1/2</bdi> عند الـ cut-off، والـ 2nd order عند ضعف الـ cut-off بيبقى<span class="ltr">1/(1 + 4²) = 1/17 ≈ 0.059</span>وكل ما الـ order n يزيد بيقرب من الـ ideal top hat.'} showAr=${ar} /></figure>`;
+        ar=${'الـ Butterworth low-pass filter هو تقريبًا <b>top hat ناعمة</b> (وفي 2D دايرة متمسحة الحواف). بيسيب شوية من الـ high-frequency information فبيقلل الـ blurring اللي بيعمله الـ ideal filter. قيمته <bdi dir="ltr">1/2</bdi> عند الـ cut-off، والـ 2nd order عند ضعف الـ cut-off بيبقى<span class="ltr">1/(1 + 4²) = 1/17 ≈ 0.059</span>وكل ما الـ order n يزيد بيقرب من الـ ideal top hat.'} showAr=${ar} /></figure>`;
   }
 
   /* ── slides 78–93: lowpass.m / butterworth.m on the slides' two images ── */
@@ -2795,7 +2795,7 @@
     const H = useMemo(() => { const h = Hfun(shape, u0); return type === 'low' ? h : h.map(v => 1 - v); }, [shape, u0, type]);
     const g = useMemo(() => { const re = F[0].map((v, k) => v * H[k]), im = F[1].map((v, k) => v * H[k]); fft2(re, im, S, true); return re; }, [F, H]);
     const key = [pic, noise, type, shape, u0].join('-');
-    const C = type === 'high' ? ['<b>High-pass = 1 − low-pass</b>: the low frequencies (the big flat areas) are removed and only rapid changes, the edges and the noise, are left.', 'الـ <b>High-pass = 1 − low-pass</b>: الـ low frequencies (المساحات الكبيرة الساده) بتتشال ومش بيفضل غير التغييرات السريعة، يعني الـ edges والـ noise.']
+    const C = type === 'high' ? ['<b>High-pass = 1 − low-pass</b>: the low frequencies (the big flat areas) are removed and only rapid changes, the edges and the noise, are left.', 'بالنسبة للـ high-pass:<span class="ltr"><b>High-pass = 1 − low-pass</b></span>الـ low frequencies (المساحات الكبيرة الساده) بتتشال ومش بيفضل غير التغييرات السريعة، يعني الـ edges والـ noise.']
       : shape === 'ideal' ? ['<b>Ideal low-pass</b>: the noise goes, but edges are high frequencies too, so they blur; the sharp cut also gives ringing. Lower u0: more noise removed, more blur.', 'الـ <b>Ideal low-pass</b>: الـ noise بيروح، بس الـ edges برضه high frequencies فبتتمسح، والقطع الحاد بيعمل ringing كمان. كل ما u0 يقل الـ noise بيتشال أكتر والـ blur يزيد.']
       : ['<b>Butterworth low-pass</b> (2nd order): the smoothed top hat keeps some high frequencies, so there is less blurring and ringing than with the ideal filter.', 'الـ <b>Butterworth low-pass</b> (2nd order): الـ top hat الناعمة بتسيب شوية high frequencies، فالـ blurring والـ ringing أقل من الـ ideal filter.'];
     return html`<figure className="fig mv2"><div className="fig-stage">
@@ -2809,13 +2809,13 @@
         <${Cv} S=${S} val=${shiftV(H, (a, k) => a[k])} dep=${type + shape + u0} cap=${`(c) filter H, u0 = ${u0}`} />
         <${Cv} S=${S} val=${k => g[k]} dep=${key} cap="(d) g = real(ifft2(H.*F))" /></div>
       <${Sl} label="cut-off u0" min="4" max="80" v=${u0} set=${setU0} /></div>
-      <${Cap} en=${'The slides\' code: F = fft2(image), compute H on the frequency grid (u0 = 20 in lowpass.m and butterworth.m), G = H.*F, g = real(ifft2(G)). ' + C[0]} ar=${'كود السلايدز: بنحسب <bdi>F = fft2(image)</bdi> وبعدين H على الـ frequency grid (الـ <bdi>u0 = 20</bdi> في lowpass.m و butterworth.m)، وبعدين <bdi>G = H.*F</bdi> و <bdi>g = real(ifft2(G))</bdi>. ' + C[1]} showAr=${ar} /></figure>`;
+      <${Cap} en=${'The slides\' code: F = fft2(image), compute H on the frequency grid (u0 = 20 in lowpass.m and butterworth.m), G = H.*F, g = real(ifft2(G)). ' + C[0]} ar=${'كود السلايدز: بنحسب <bdi dir="ltr">F = fft2(image)</bdi> وبعدين H على الـ frequency grid (الـ <bdi dir="ltr">u0 = 20</bdi> في lowpass.m و butterworth.m)، وبعدين <bdi dir="ltr">G = H.*F</bdi> و <bdi dir="ltr">g = real(ifft2(G))</bdi>. ' + C[1]} showAr=${ar} /></figure>`;
   }
 
   /* ── slide 92: other filters ── */
   const OF = {
     low: ['Low-pass', (u, a) => u <= a ? 1 : 0, 'keep below u0', 'بيسيب اللي تحت u0'],
-    high: ['High-pass', (u, a) => u <= a ? 0 : 1, 'select above u0, defined as 1 − low-pass', 'بيختار اللي فوق u0، وتعريفه <bdi>1 − low-pass</bdi>'],
+    high: ['High-pass', (u, a) => u <= a ? 0 : 1, 'select above u0, defined as 1 − low-pass', 'بيختار اللي فوق u0، وتعريفه <bdi dir="ltr">1 − low-pass</bdi>'],
     band: ['Band-pass', (u, a, b) => u >= a && u <= b ? 1 : 0, 'keep only u0 … u1', 'بيسيب من u0 لـ u1 بس'],
     rej: ['Band-reject', (u, a, b) => u >= a && u <= b ? 0 : 1, 'attenuate u0 … u1', 'بيقلل من u0 لـ u1'],
     notch: ['Notch', (u, a) => Math.abs(u - a) <= 3 ? 0 : 1, 'attenuate a narrow band around u0', 'بيقلل band ضيق حوالين u0'],
@@ -2838,7 +2838,7 @@
       <${Sl} label="u0" min="5" max="90" v=${a} set=${setA} />${two && html`<${Sl} label="u1" min="10" max="95" v=${hi} set=${setB} />`}
       <p className="mv2-out"><b>${nm}</b>: ${en}</p></div>
       <${Cap} en=${'Other filters, drawn as H(u): high-pass (select above u0; usually 1 − low-pass), band-pass (keep u0 … u1), band-reject (attenuate u0 … u1), notch (attenuate a narrow band around u0), resonator (amplify a narrow band around u0). The shaded area is what passes.'}
-        ar=${`فلاتر تانية مرسومة كـ <bdi>H(u)</bdi>: الـ ${nm} ${at}. الـ high-pass بيختار اللي فوق u0، والـ band-pass بيسيب من u0 لـ u1، والـ band-reject بيقللهم، والـ notch بيقلل band ضيق حوالين u0، والـ resonator بيكبّره. الجزء المتلون هو اللي بيعدي.`} showAr=${ar} /></figure>`;
+        ar=${`فلاتر تانية مرسومة كـ <bdi dir="ltr">H(u)</bdi>: الـ ${nm} ${at}. الـ high-pass بيختار اللي فوق u0، والـ band-pass بيسيب من u0 لـ u1، والـ band-reject بيقللهم، والـ notch بيقلل band ضيق حوالين u0، والـ resonator بيكبّره. الجزء المتلون هو اللي بيعدي.`} showAr=${ar} /></figure>`;
   }
 
   /* ════════ [7] Convolution ════════ */
@@ -2847,10 +2847,10 @@
   /* ── slides 96–101: convolving the two top hats ── */
   function Convolve({ ar }) {
     const steps = [
-      { en: 'f(α): the top hat, 1 for |α| ≤ 1.', ar: 'الـ <bdi>f(α)</bdi>: الـ top hat، قيمتها 1 لما <bdi>|α| ≤ 1</bdi>.' },
-      { en: 'g(α) = ½ for 0 ≤ α ≤ 1.', ar: 'الـ <bdi>g(α) = ½</bdi> لما <bdi>0 ≤ α ≤ 1</bdi>.' },
-      { en: 'g(−α) is the <b>reflection</b> of g in the vertical y-axis.', ar: 'الـ <bdi>g(−α)</bdi> هي <b>انعكاس</b> g حوالين محور y الرأسي.' },
-      { en: 'g(x − α) is that reflection <b>shifted right by x</b>. For each x, ∫f(α)g(x − α)dα is the <b>area of overlap</b> (shaded). Slide x.', ar: 'الـ <bdi>g(x − α)</bdi> هي نفس الانعكاس <b>متزاح يمين بمقدار x</b>. لكل x التكامل هو <b>مساحة التداخل</b> (المتلونة). حرّك x.' }
+      { en: 'f(α): the top hat, 1 for |α| ≤ 1.', ar: 'الـ <bdi dir="ltr">f(α)</bdi>: الـ top hat، قيمتها 1 لما <bdi dir="ltr">|α| ≤ 1</bdi>.' },
+      { en: 'g(α) = ½ for 0 ≤ α ≤ 1.', ar: 'الـ <bdi dir="ltr">g(α) = ½</bdi> لما <bdi dir="ltr">0 ≤ α ≤ 1</bdi>.' },
+      { en: 'g(−α) is the <b>reflection</b> of g in the vertical y-axis.', ar: 'الـ <bdi dir="ltr">g(−α)</bdi> هي <b>انعكاس</b> g حوالين محور y الرأسي.' },
+      { en: 'g(x − α) is that reflection <b>shifted right by x</b>. For each x, ∫f(α)g(x − α)dα is the <b>area of overlap</b> (shaded). Slide x.', ar: 'الـ <bdi dir="ltr">g(x − α)</bdi> هي نفس الانعكاس <b>متزاح يمين بمقدار x</b>. لكل x التكامل هو <b>مساحة التداخل</b> (المتلونة). حرّك x.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2300), [x, setX] = useState(-0.5), raf = useRef(0);
     useEffect(() => () => cancelAnimationFrame(raf.current), []);
@@ -2894,11 +2894,11 @@
   })();
   function ConvTheorem({ ar }) {
     const steps = [
-      { en: 'Sample both top hats every 0.125: f = 1 on −1 ≤ α < 1 (16 samples), g = ½ on 0 < α ≤ 1 (8 samples).', ar: 'ناخد samples من الـ top hats كل <bdi>0.125</bdi>: الـ f قيمتها 1 (16 sample) والـ g قيمتها ½ (8 samples).' },
+      { en: 'Sample both top hats every 0.125: f = 1 on −1 ≤ α < 1 (16 samples), g = ½ on 0 < α ≤ 1 (8 samples).', ar: 'ناخد samples من الـ top hats كل <bdi dir="ltr">0.125</bdi>: الـ f قيمتها 1 (16 sample) والـ g قيمتها ½ (8 samples).' },
       { en: '<b>Directly</b>: f * g = Σ f(α)g(x − α)·0.125 for every x, the same shape as before: up to ½, flat, down to 0.', ar: '<b>مباشرةً</b>: بنحسب المجموع لكل x فيطلع نفس الشكل: بيطلع لـ ½ ويفضل ثابت وينزل لصفر.' },
-      { en: '<b>Fourier route</b>: take the FT of each (fft, padded to 32 points): |F| and |G|.', ar: '<b>طريق Fourier</b>: ناخد الـ FT لكل واحدة (fft بعد ما نكملها لـ 32 نقطة) فيطلع |F| و |G|.' },
-      { en: 'Multiply: F(u)·G(u), point by point. No sliding, no overlap areas.', ar: 'نضرب <bdi>F(u)·G(u)</bdi> نقطة بنقطة، من غير تزحيق ولا حساب مساحات تداخل.' },
-      { en: `Inverse FT of F·G gives exactly the direct result (largest difference ${CT.err < 1e-12 ? 'below 10⁻¹²' : CT.err.toExponential(1)}): <b>the FT of f * g is F(u)·G(u)</b>.`, ar: `الـ inverse FT لـ <bdi>F·G</bdi> بيدي نفس النتيجة المباشرة بالظبط، وده معناه إن الـ <b>FT بتاع f * g هو F(u)·G(u)</b>.` }
+      { en: '<b>Fourier route</b>: take the FT of each (fft, padded to 32 points): |F| and |G|.', ar: '<b>طريق Fourier</b>: ناخد الـ FT لكل واحدة (fft بعد ما نكملها لـ 32 نقطة) فيطلع <bdi dir="ltr">|F|</bdi> و <bdi dir="ltr">|G|</bdi>.' },
+      { en: 'Multiply: F(u)·G(u), point by point. No sliding, no overlap areas.', ar: 'نضرب <bdi dir="ltr">F(u)·G(u)</bdi> نقطة بنقطة، من غير تزحيق ولا حساب مساحات تداخل.' },
+      { en: `Inverse FT of F·G gives exactly the direct result (largest difference ${CT.err < 1e-12 ? 'below 10⁻¹²' : CT.err.toExponential(1)}): <b>the FT of f * g is F(u)·G(u)</b>.`, ar: `الـ inverse FT لـ <bdi dir="ltr">F·G</bdi> بيدي نفس النتيجة المباشرة بالظبط، وده معناه إن الـ <b>FT بتاع <bdi dir="ltr">f&nbsp;*&nbsp;g</bdi> هو <bdi dir="ltr">F(u)·G(u)</bdi></b>.` }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const A = frame({ H: 110, L: 30, x0: -1.25, x1: 2.25, y0: 0, y1: 1.15 }), Q = frame({ H: 100, L: 36, x0: -0.5, x1: 16.5, y0: 0, y1: 1 });
@@ -2918,7 +2918,7 @@
         <svg className="mv2-s" viewBox="0 0 300 100" role="img" aria-label="Fourier magnitudes of f and g"><${Axes} F=${Q} xt=${[0, 8, 16]} /><g transform="translate(-3 0)">${bars(CT.F, 'var(--graphite)', mxF)}</g><g transform="translate(3 0)">${bars(CT.G, 'var(--k-mm)', mxF)}</g></svg></div>
       <div className="mv2-fade" style=${{ opacity: i >= 3 ? 1 : .15 }}><p className="mv2-pl">|F(u)·G(u)|</p>
         <svg className="mv2-s" viewBox="0 0 300 100" role="img" aria-label="magnitude of the product"><${Axes} F=${Q} xt=${[0, 8, 16]} />${bars(CT.P, 'var(--pen)', mxP)}</svg></div></div>
-      <${Cap} en=${steps[i].en + ' This is why filtering by G = H.*F works: multiplying in frequency space is convolving in real space.'} ar=${steps[i].ar + ' وعشان كده الـ filtering بـ <bdi>G = H.*F</bdi> شغال: الضرب في الـ frequency space هو نفسه الـ convolution في الـ real space.'} showAr=${ar} />
+      <${Cap} en=${steps[i].en + ' This is why filtering by G = H.*F works: multiplying in frequency space is convolving in real space.'} ar=${steps[i].ar + ' وعشان كده الـ filtering بـ <bdi dir="ltr">G = H.*F</bdi> شغال: الضرب في الـ frequency space هو نفسه الـ convolution في الـ real space.'} showAr=${ar} />
       <${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
 
@@ -2930,8 +2930,8 @@
     const blur = useMemo(() => { const [re, im] = spectrumOf(base); for (let k = 0; k < S * S; k++) { re[k] *= H[k]; im[k] *= H[k]; } fft2(re, im, S, true); return re; }, [base]);
     const out = useMemo(() => { const r = rng(9), gn = blur.map(v => { if (!sig) return v; const u1 = Math.max(1e-12, r()), u2 = r(); return v + sig * Math.sqrt(-2 * Math.log(u1)) * Math.cos(P2 * u2); }); const [re, im] = spectrumOf(gn); for (let k = 0; k < S * S; k++) { re[k] /= H[k]; im[k] /= H[k]; } fft2(re, im, S, true); return { gn, re }; }, [blur, sig]);
     const k0 = pic + sig;
-    const C = sig ? ['With noise added to the blurred image, dividing by H amplifies it enormously: H is tiny at high frequencies, so 1/H is huge. Deconvolution fails. In the real world we also do not know the exact blurring function H.', 'لما نضيف noise للصورة الـ blurred، القسمة على H بتكبّره جدًا: الـ H صغيرة خالص عند الـ high frequencies فـ <bdi>1/H</bdi> ضخمة. الـ deconvolution بيفشل. وفي الحقيقة كمان مش بنبقى عارفين الـ blurring function H بالظبط.']
-      : ['Blur with the Butterworth low-pass H (multiply: G = H.*F), then divide by the same H (Ghigh = G./H, effectively a high-pass filter) and inverse FT: in this ideal case we get F, and the image, back.', 'بنعمل blur بالـ Butterworth low-pass H (ضرب يعني <bdi>G = H.*F</bdi>)، وبعدين نقسم على نفس H (يعني <bdi>Ghigh = G./H</bdi> وده فعليًا high-pass filter) ونعمل inverse FT: في الحالة المثالية دي بنرجّع F والصورة زي ما هي.'];
+    const C = sig ? ['With noise added to the blurred image, dividing by H amplifies it enormously: H is tiny at high frequencies, so 1/H is huge. Deconvolution fails. In the real world we also do not know the exact blurring function H.', 'لما نضيف noise للصورة الـ blurred، القسمة على H بتكبّره جدًا: الـ H صغيرة خالص عند الـ high frequencies فـ <bdi dir="ltr">1/H</bdi> ضخمة. الـ deconvolution بيفشل. وفي الحقيقة كمان مش بنبقى عارفين الـ blurring function H بالظبط.']
+      : ['Blur with the Butterworth low-pass H (multiply: G = H.*F), then divide by the same H (Ghigh = G./H, effectively a high-pass filter) and inverse FT: in this ideal case we get F, and the image, back.', 'بنعمل blur بالـ Butterworth low-pass H (ضرب يعني <bdi dir="ltr">G = H.*F</bdi>)، وبعدين نقسم على نفس H (يعني <bdi dir="ltr">Ghigh = G./H</bdi> وده فعليًا high-pass filter) ونعمل inverse FT: في الحالة المثالية دي بنرجّع F والصورة زي ما هي.'];
     return html`<figure className="fig mv2"><div className="fig-stage">
       <${Chips} items=${[['text', 'Text image'], ['box', 'White box']]} on=${pic} set=${setPic} />
       <${Chips} items=${[[0, 'No noise'], [0.0001, 'Tiny noise'], [0.001, 'Noise']]} on=${sig} set=${setSig} />
@@ -3164,7 +3164,7 @@
       { en: 'An <b>analog</b> signal: continuous in time and in value.', ar: 'الـ <b>analog</b> signal: متصلة في الزمن وفي القيمة.' },
       { en: '<b>Sampling</b>: measure it at regular instants. Continuous → <b>discrete in time</b>.', ar: 'الـ <b>Sampling</b>: بنقيسها عند لحظات منتظمة. من continuous لـ <b>discrete في الزمن</b>.' },
       { en: '<b>Quantisation</b>: each sample snaps to the nearest allowed level (red: the error). Discrete → <b>digital values</b>.', ar: 'الـ <b>Quantisation</b>: كل sample بتتقرّب لأقرب level مسموح (الأحمر هو الـ error). من discrete لـ <b>digital values</b>.' },
-      { en: 'Each level is a binary code, so the signal is now a list of numbers. <b>Digital = sampling + quantisation</b>, which is what the ADC does. Change the sliders to try your own.', ar: 'كل level ليه binary code، فالإشارة بقت قايمة أرقام. يعني <b>Digital = sampling + quantisation</b>، وده اللي الـ ADC بيعمله. غيّر الـ sliders وجرّب بنفسك.' }];
+      { en: 'Each level is a binary code, so the signal is now a list of numbers. <b>Digital = sampling + quantisation</b>, which is what the ADC does. Change the sliders to try your own.', ar: 'كل level ليه binary code، فالإشارة بقت قايمة أرقام. يعني:<span class="ltr"><b>Digital = sampling + quantisation</b></span>وده اللي الـ ADC بيعمله. غيّر الـ sliders وجرّب بنفسك.' }];
     const [i, ctl] = useSteps(steps.length, 2400);
     const [n, setN] = useState(12), [bits, setBits] = useState(3);
     const L = 2 ** bits, f = u => .8 * Math.sin(2 * Math.PI * u) + .2 * Math.sin(4 * Math.PI * u + 1);
@@ -3242,7 +3242,7 @@
     { k: 'Handwritten text', how: 'OCR (some) or electronic pen sensing', out: 'Text', dig: true,
       en: 'Some <b>handwritten text</b> can be scanned via OCR; handwriting can also be digitised by <b>electronic pen sensing</b>.', ar: 'شوية من الـ <b>text المكتوب بخط الإيد</b> ممكن يتعمله scan بالـ OCR؛ والخط اليدوي ممكن كمان يتعمله digitise بالـ <b>electronic pen sensing</b>.' },
     { k: 'Printed image', how: 'Flatbed scanner', out: 'Image format', dig: true,
-      en: '<b>Printed imagery/graphics</b> can be <b>flatbed scanned</b> directly to image formats.', ar: 'الـ <b>صور/graphics المطبوعة</b> ممكن تتعمل <b>flatbed scan</b> على طول لـ image formats.' }];
+      en: '<b>Printed imagery/graphics</b> can be <b>flatbed scanned</b> directly to image formats.', ar: 'الـ <b>صور أو الـ graphics المطبوعة</b> ممكن تتعمل <b>flatbed scan</b> على طول لـ image formats.' }];
   function Capture({ ar }) {
     const [i, ctl] = useSteps(SRC.length, 2600), s = SRC[i];
     return html`<figure className="fig mv3"><div className="fig-stage"><div className="mv3-w">
@@ -3379,7 +3379,7 @@
         <div>512 × 512 × ${bpp} bits ÷ 8 = ${num(b512)} B = <span className="mv3-k">${mbTxt}</span></div></div>
     </div></div>
       <${Cap} en="An uncompressed image is a <b>bitmap</b>: a grid of pixels, each a number (these are the slide's grey values, 35 to 132). Tap a pixel. Stored at 1 bit per pixel (black and white), 8 bits (grey scale, colour map) or 24 bits (true colour): a 512 × 512 grey image is 1/4 MB, a 24-bit one 3/4 MB."
-        ar="الـ image من غير compression هي <b>bitmap</b>: grid من الـ pixels، كل واحد رقم (دي قيم الـ grey بتاعة السلايد، من 35 لـ 132). دوس على أي pixel. بتتخزن بـ 1 bit لكل pixel (أبيض وأسود) أو 8 bits (grey scale والـ colour map) أو 24 bits (true colour): صورة grey مقاسها <bdi>512 × 512</bdi> حجمها 1/4 MB، والـ 24-bit حجمها 3/4 MB." showAr=${ar} /></figure>`;
+        ar="الـ image من غير compression هي <b>bitmap</b>، يعني grid من الـ pixels، كل واحد رقم (دي قيم الـ grey بتاعة السلايد، من 35 لـ 132). دوس على أي pixel. بتتخزن بـ 1 bit لكل pixel (أبيض وأسود) أو 8 bits (grey scale والـ colour map) أو 24 bits (true colour): صورة grey مقاسها <bdi dir='ltr'>512 × 512</bdi> حجمها <bdi dir='ltr'>1/4 MB</bdi>، والـ <bdi dir='ltr'>24-bit</bdi> حجمها <bdi dir='ltr'>3/4 MB</bdi>." showAr=${ar} /></figure>`;
   }
 
   /* ── slide 25: uncompressed video per second / per minute ── */
@@ -3417,9 +3417,9 @@
         { f: `× 25 = ${num(palF * 25)} B ≈ 30 MB/s`, en: 'At 25 fps the slide gives 1.2 × 25 = <b>30 MB</b> for a second.', ar: 'عند 25 fps السلايد بيدّي <b>30 MB</b> للثانية:<span class="ltr">1.2 × 25 = 30 MB</span>' }] },
       { t: '10 MP photo', rows: [
         { f: `10,000,000 × 3 B = ${num(mp)} B`, en: 'A 10 megapixel photo at 3 bytes per pixel.', ar: 'صورة 10 megapixel بـ 3 bytes لكل pixel.' },
-        { f: `÷ 1,048,576 = ${fx(mp / 1048576, 1)} MB ≈ 29 MB`, en: 'With 1 MB = 1,048,576 B that is <b>28.6 MB</b>, the slide\'s <b>≈ 29 MB</b> uncompressed.', ar: 'لو الـ MB الواحد = 1,048,576 B يبقى <b>28.6 MB</b>، وده الـ <b>≈ 29 MB</b> بتاع السلايد من غير compression.' }] },
+        { f: `÷ 1,048,576 = ${fx(mp / 1048576, 1)} MB ≈ 29 MB`, en: 'With 1 MB = 1,048,576 B that is <b>28.6 MB</b>, the slide\'s <b>≈ 29 MB</b> uncompressed.', ar: 'لو الـ MB الواحد بيساوي <bdi dir="ltr">1,048,576 B</bdi> يبقى <b>28.6 MB</b>، وده الـ <b>≈ 29 MB</b> بتاع السلايد من غير compression.' }] },
       { t: 'CD audio minute', rows: [
-        { f: `44,100 × 16 bits = ${num(44100 * 16)} bits/s`, en: 'CD quality: <b>16-bit</b> samples at <b>44.1 kHz</b>.', ar: 'الـ CD quality معناها samples بـ <b>16-bit</b> عند <b>44.1 kHz</b>.' },
+        { f: `44,100 × 16 bits = ${num(44100 * 16)} bits/s`, en: 'CD quality: <b>16-bit</b> samples at <b>44.1 kHz</b>.', ar: 'الـ CD quality معناها samples بـ <b><bdi dir="ltr">16-bit</bdi></b> عند <b>44.1 kHz</b>.' },
         { f: `× 1 channel × 60 s = ${num(cdBits)} bits`, en: 'Mono is 1 channel; a minute is 60 seconds.', ar: 'الـ Mono يعني channel واحدة؛ والدقيقة 60 ثانية.' },
         { f: `÷ 8 = ${num(cdB)} B`, en: '8 bits per byte.', ar: 'كل byte فيه 8 bits.' },
         { f: `÷ 1,048,576 = ${fx(cdB / 1048576, 2)} MB ≈ 5 MB`, en: 'About <b>5 MB</b> for a mono minute; stereo doubles it to about <b>10 MB</b>.', ar: 'حوالي <b>5 MB</b> للدقيقة الـ mono؛ والـ stereo بيضاعفها لحوالي <b>10 MB</b>.' }] }];
@@ -3580,8 +3580,8 @@
   /* ── [1.1] slide 5: simulating a bowed string, sawtooth → low-pass filter ── */
   function Bowed({ ar }) {
     const steps = [
-      { en: 'Take the output of a <b>sawtooth generator</b> (440 Hz at 22050 Hz, as in subtract_synth.m): a harsh wave, rich in harmonics. Its partials sit at every multiple of 440 Hz.', ar: 'خد الـ output بتاع <b>sawtooth generator</b> (<bdi>440 Hz</bdi> على <bdi>22050 Hz</bdi> زي subtract_synth.m): موجة حادة وغنية بالـ harmonics. الـ partials بتاعتها عند كل مضاعف لـ <bdi>440 Hz</bdi>.' },
-      { en: 'Use a <b>low-pass filter</b> (here butter(1, 0.04), cut-off 441 Hz) to <b>dampen its higher partials</b>: the dashed curve is the filter, the bars show what is left of each partial.', ar: 'استخدم <b>low-pass filter</b> (هنا <bdi>butter(1, 0.04)</bdi> والـ cut-off بتاعه <bdi>441 Hz</bdi>) عشان <b>تهدّي الـ partials العالية</b>: المنحنى المتقطع هو الـ filter، والأعمدة بتوري اللي فاضل من كل partial.' },
+      { en: 'Take the output of a <b>sawtooth generator</b> (440 Hz at 22050 Hz, as in subtract_synth.m): a harsh wave, rich in harmonics. Its partials sit at every multiple of 440 Hz.', ar: 'خد الـ output بتاع <b>sawtooth generator</b> (<bdi dir="ltr">440 Hz</bdi> على <bdi dir="ltr">22050 Hz</bdi> زي subtract_synth.m): موجة حادة وغنية بالـ harmonics. الـ partials بتاعتها عند كل مضاعف لـ <bdi dir="ltr">440 Hz</bdi>.' },
+      { en: 'Use a <b>low-pass filter</b> (here butter(1, 0.04), cut-off 441 Hz) to <b>dampen its higher partials</b>: the dashed curve is the filter, the bars show what is left of each partial.', ar: 'استخدم <b>low-pass filter</b> (هنا <bdi dir="ltr">butter(1, 0.04)</bdi> والـ cut-off بتاعه <bdi dir="ltr">441 Hz</bdi>) عشان <b>تهدّي الـ partials العالية</b>: المنحنى المتقطع هو الـ filter، والأعمدة بتوري اللي فاضل من كل partial.' },
       { en: 'The result is smoother: a <b>more natural approximation of a bowed string</b> than the sawtooth generator alone. Removing overtones from a rich sound is subtractive synthesis.', ar: 'النتيجة أنعم: <b>تقريب أطبع لصوت الوتر بالقوس</b> من الـ sawtooth generator لوحده. إننا نشيل overtones من صوت غني هو ده الـ subtractive synthesis.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
@@ -3675,7 +3675,7 @@
     const note = N(1201, j => (env ? e(j / 1200) : 1) * d.out[(j * 9) % M] / po);
     const nm = { square: 'square', pulse: 'pulse', saw: 'sawtooth', tri: 'triangle' }[src];
     const cap = { en: `<b>Source signal</b>: a ${nm} wave (common sources: square, pulse, sawtooth and triangle; modern synthesisers allow arbitrary waveforms). <b>Filtering</b>: the cut-off (here ${cut} × the fundamental) and resonance (Q = ${q}) are set to simulate an instrument's timbre; resonance boosts the harmonics near the cut-off. <b>Amplitude envelope</b>: shapes the note's volume over time (strictly not subtractive, but frequently used).`,
-      ar: `الـ <b>Source signal</b> هنا موجة ${nm} (المصادر المشهورة square و pulse و sawtooth و triangle، والـ synthesisers الحديثة بتسمح بأي waveform). الـ <b>Filtering</b>: بنظبط الـ cut-off (هنا <bdi>${cut} × f₀</bdi>) والـ resonance (<bdi>Q = ${q}</bdi>) عشان نقلّد الـ timbre بتاع آلة؛ والـ resonance بتعلّي الـ harmonics اللي جنب الـ cut-off. الـ <b>Amplitude envelope</b>: بيشكّل علو النوتة مع الوقت (مش subtractive بالظبط بس مستخدم كتير).` };
+      ar: `الـ <b>Source signal</b> هنا موجة ${nm} (المصادر المشهورة square و pulse و sawtooth و triangle، والـ synthesisers الحديثة بتسمح بأي waveform). الـ <b>Filtering</b>: بنظبط الـ cut-off (هنا <bdi dir="ltr">${cut} × f₀</bdi>) والـ resonance (<bdi dir="ltr">Q = ${q}</bdi>) عشان نقلّد الـ timbre بتاع آلة؛ والـ resonance بتعلّي الـ harmonics اللي جنب الـ cut-off. الـ <b>Amplitude envelope</b>: بيشكّل علو النوتة مع الوقت (مش subtractive بالظبط بس مستخدم كتير).` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['square', 'Square'], ['pulse', 'Pulse'], ['saw', 'Sawtooth'], ['tri', 'Triangle']]} mode=${src} set=${setSrc} />
       <${Slider} label="Cut-off" min=${1} max=${16} v=${cut} set=${setCut} out=${cut + '× f₀'} />
@@ -3739,9 +3739,9 @@
     const hs = N(25, k => 1 / (k + 1)), hf = hs.map((a, k) => a * butterMag(ord, Wn, 440 * (k + 1), 22050));
     const X = f => 10 + f / 11025 * 300, fc = Wn * 11025;
     const g = f => fx(butterMag(ord, Wn, f, 22050), 3);
-    const cap = raw ? { en: '<b>y = synth(440, 2, 0.9, 22050, \'saw\')</b>, then <b>plot(y(1:440))</b>: the raw sawtooth, harmonics at every multiple of 440 Hz up to the Nyquist frequency 11025 Hz. (The first 221 samples rise with synth.m\'s 10 ms edge ramp.)', ar: 'الأول بنعمل الـ sawtooth الخام وبنرسم أول 440 sample:' + L("y = synth(440, 2, 0.9, 22050, 'saw') ; plot(y(1:440))") + 'الـ harmonics عند كل مضاعف لـ <bdi>440 Hz</bdi> لحد الـ Nyquist frequency <bdi>11025 Hz</bdi>. (أول 221 sample طالعين مع الـ edge ramp بتاع synth.m اللي طوله <bdi>10 ms</bdi>.)' }
+    const cap = raw ? { en: '<b>y = synth(440, 2, 0.9, 22050, \'saw\')</b>, then <b>plot(y(1:440))</b>: the raw sawtooth, harmonics at every multiple of 440 Hz up to the Nyquist frequency 11025 Hz. (The first 221 samples rise with synth.m\'s 10 ms edge ramp.)', ar: 'الأول بنعمل الـ sawtooth الخام وبنرسم أول 440 sample:' + L("y = synth(440, 2, 0.9, 22050, 'saw') ; plot(y(1:440))") + 'الـ harmonics عند كل مضاعف لـ <bdi dir="ltr">440 Hz</bdi> لحد الـ Nyquist frequency <bdi dir="ltr">11025 Hz</bdi>. (أول 221 sample طالعين مع الـ edge ramp بتاع synth.m اللي طوله <bdi dir="ltr">10 ms</bdi>.)' }
       : { en: `<b>[B, A] = butter(${ord}, ${Wn}, 'low'); yf = filter(B, A, y)</b>. The cut-off ${Wn} is relative to Nyquist: ${Wn} × 11025 = <b>${fmt(fc, 1)} Hz</b>. ${mode === 'o4' ? 'The <b>4th-order</b> filter removes much more of the high partials than the 1st-order one: almost only the 440 Hz fundamental is left.' : mode === 'o1' ? 'The <b>1st-order</b> filter falls gently, so higher partials are reduced but still there. Compare with butter(4, 0.04).' : 'Higher order = steeper fall above the cut-off.'}`,
-        ar: `بنعمل الـ filter وبنطبقه:` + L(`[B, A] = butter(${ord}, ${Wn}, 'low') ; yf = filter(B, A, y)`) + `الـ cut-off نسبة من الـ Nyquist:` + L(`${Wn} × 11025 = ${fmt(fc, 1)} Hz`) + (mode === 'o4' ? 'الـ filter الـ <b>4th-order</b> بيشيل من الـ partials العالية أكتر بكتير من الـ 1st-order، وتقريبًا مفيش غير الـ fundamental بتاع <bdi>440 Hz</bdi>.' : mode === 'o1' ? 'الـ filter الـ <b>1st-order</b> بينزل بالراحة، فالـ partials العالية بتقل بس لسه موجودة. قارن بـ <bdi>butter(4, 0.04)</bdi>.' : 'كل ما الـ order يعلى، النزول بعد الـ cut-off بيبقى أحدّ.') };
+        ar: `بنعمل الـ filter وبنطبقه:` + L(`[B, A] = butter(${ord}, ${Wn}, 'low') ; yf = filter(B, A, y)`) + `الـ cut-off نسبة من الـ Nyquist:` + L(`${Wn} × 11025 = ${fmt(fc, 1)} Hz`) + (mode === 'o4' ? 'الـ filter الـ <b>4th-order</b> بيشيل من الـ partials العالية أكتر بكتير من الـ 1st-order، وتقريبًا مفيش غير الـ fundamental بتاع <bdi dir="ltr">440 Hz</bdi>.' : mode === 'o1' ? 'الـ filter الـ <b>1st-order</b> بينزل بالراحة، فالـ partials العالية بتقل بس لسه موجودة. قارن بـ <bdi dir="ltr">butter(4, 0.04)</bdi>.' : 'كل ما الـ order يعلى، النزول بعد الـ cut-off بيبقى أحدّ.') };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['raw', 'Raw sawtooth'], ['o1', 'butter(1, 0.04)'], ['o4', 'butter(4, 0.04)'], ['own', 'Try your own']]} mode=${mode} set=${setMode} />
       ${mode === 'own' && html`<div><${Slider} label="Order" min=${1} max=${8} v=${n} set=${setN} /><${Slider} label="Cut-off Wn" min=${.01} max=${.4} step=${.01} v=${wn} set=${setWn} out=${fx(wn, 2)} /></div>`}
@@ -3762,7 +3762,7 @@
   function SynthSaw({ ar }) {
     const steps = [
       { en: '<b>T = (1/freq) × Fs</b> = 22050 / 440 = <b>50.11</b> samples per period (fractional). <b>ramp = (0:(N−1))/T</b> counts periods: it rises by 1 every 50.11 samples.', ar: 'الـ period بالـ samples (رقم كسري):' + L('T = (1/freq) × Fs = 22050 / 440 = 50.11') + 'وبعدين الـ ramp بيعدّ الـ periods وبيزيد 1 كل 50.11 sample:' + L('ramp = (0:(N−1)) / T') },
-      { en: '<b>y = ramp − fix(ramp)</b>: fix() rounds towards zero, so only the fractional part is left: a sawtooth from 0 up to almost 1 that drops back after each period.', ar: 'الـ <b>fix()</b> بيقرّب ناحية الصفر، فلما نطرحه بيفضل الجزء الكسري بس: sawtooth من 0 لحد تقريبًا 1 وبيرجع ينزل بعد كل period.' + L('y = ramp − fix(ramp)') },
+      { en: '<b>y = ramp − fix(ramp)</b>: fix() rounds towards zero, so only the fractional part is left: a sawtooth from 0 up to almost 1 that drops back after each period.', ar: 'الـ <b><bdi dir="ltr">fix()</bdi></b> بيقرّب ناحية الصفر، فلما نطرحه بيفضل الجزء الكسري بس: sawtooth من 0 لحد تقريبًا 1 وبيرجع ينزل بعد كل period.' + L('y = ramp − fix(ramp)') },
       { en: '<b>y = amp × y</b> with amp = 0.9, then <b>y = y − mean(y)</b> so it is centred on zero.', ar: 'بنضرب في الـ amplitude وبعدين نطرح المتوسط عشان الموجة تبقى حوالين الصفر:' + L('y = 0.9 × y ; y = y − mean(y)') },
       { en: '<b>Smooth edges with a 10 ms ramp</b>: L = 2 × fix(0.01 × 22050) + 1 = 441, and the first 221 samples are multiplied by a rising Bartlett ramp. Plotted, the first 100 samples have the <b>non-linear up slope</b> of slide 18.', ar: 'الـ <b>edges بتتنعّم بـ ramp طوله 10 ms</b>، وأول 221 sample بيتضربوا في Bartlett ramp طالع:' + L('L = 2 × fix(0.01 × 22050) + 1 = 441') + 'ولما نرسم أول 100 sample بيطلع الـ <b>non-linear up slope</b> اللي في slide 18.' }
     ];
@@ -3814,7 +3814,7 @@
     const X = f => 10 + f / 2600 * 300;
     const list = N(Math.min(K, 4), j => `${(2 * j + 1) * 100} Hz × ${j ? '1/' + (2 * j + 1) : '1'}`).join(' + ') + (K > 4 ? ' + …' : '');
     const cap = { en: `Adding <b>${K}</b> odd harmonic${K > 1 ? 's' : ''} of 100 Hz (f, 3f, 5f, … with amplitudes 1, 1/3, 1/5, …): ${list}. ${K === 1 ? 'One sine is a poor square.' : K < 10 ? 'Each new sine makes the edges steeper and the top flatter.' : 'With many harmonics the sum is close to the square wave (the grey target).'} Fourier theory: a timbre analysed into sinusoids can be rebuilt by adding them.`,
-      ar: `بنجمع <b>${K}</b> من الـ odd harmonics بتوع <bdi>100 Hz</bdi> (يعني f و 3f و 5f بـ amplitudes قدها 1 و 1/3 و 1/5):` + L(list) + (K === 1 ? 'موجة sine واحدة بعيدة عن الـ square.' : K < 10 ? 'كل sine جديدة بتخلي الحروف أحدّ والقمة أفلط.' : 'مع harmonics كتير المجموع بيقرب من الـ square wave (الهدف الرمادي).') + ' ودي الـ Fourier theory: الـ timbre اللي اتحلل لـ sinusoids ممكن يتبني تاني بجمعهم.' };
+      ar: `بنجمع <b>${K}</b> من الـ odd harmonics بتوع <bdi dir="ltr">100 Hz</bdi> (يعني f و 3f و 5f بـ amplitudes قدها 1 و <bdi dir="ltr">1/3</bdi> و <bdi dir="ltr">1/5</bdi>):` + L(list) + (K === 1 ? 'موجة sine واحدة بعيدة عن الـ square.' : K < 10 ? 'كل sine جديدة بتخلي الحروف أحدّ والقمة أفلط.' : 'مع harmonics كتير المجموع بيقرب من الـ square wave (الهدف الرمادي).') + ' ودي الـ Fourier theory: الـ timbre اللي اتحلل لـ sinusoids ممكن يتبني تاني بجمعهم.' };
     return html`<${Fig} ar=${ar} cap=${cap} bar=${html`<${Bar} steps=${steps} i=${i} ctl=${ctl} />`}>
       <${Lbl} l=${`<b>Sum of ${K} sine${K > 1 ? 's' : ''}</b>`} r="20 ms (two periods)" />
       <${Svg} h=${110}>${axis(55)}<path d=${'M4 ' + sy(1, -1.3, 1.3, 6, 104) + ' H82 V' + sy(-1, -1.3, 1.3, 6, 104) + ' H160 V' + sy(1, -1.3, 1.3, 6, 104) + ' H238 V' + sy(-1, -1.3, 1.3, 6, 104) + ' H316'} stroke="var(--faint)" strokeWidth="2" fill="none" />
@@ -3834,7 +3834,7 @@
     for (let c = 0; c < 16; c++) for (let s = 0; s < S; s++) { const t = c * S + s; let v = 0; for (let r = 0; r < 8; r++) if (g[r][c]) v += Math.sin(2 * Math.PI * (8 - r) * 2 * t / S); wave.push(v); }
     const pk = Math.max(1, peak(wave)), lit = g.flat().filter(Boolean).length;
     const cap = { en: `Paint a <b>spectrogram</b>: each lit pixel is one sinusoid. Its <b>row</b> sets the frequency (higher row = higher frequency), its <b>column</b> sets when it sounds, its intensity sets the amplitude. Adding them (inverse Fourier, additive synthesis) gives the waveform below, whose spectrogram shows your picture: the Aphex Twin trick. ${lit} pixel${lit === 1 ? '' : 's'} lit.`,
-      ar: `ارسم <b>spectrogram</b>: كل pixel منوّر هو sinusoid واحدة. الـ <b>row</b> بتاعه بيحدد الـ frequency (كل ما يعلى الـ frequency تعلى)، والـ <b>column</b> بيحدد إمتى تشتغل، وشدة اللون بتحدد الـ amplitude. لما نجمعهم (inverse Fourier يعني additive synthesis) بتطلع الـ waveform اللي تحت، واللي الـ spectrogram بتاعها بيورّي رسمتك: ودي فكرة الـ Aphex Twin. عدد الـ pixels المنوّرة <bdi>${lit}</bdi>.` };
+      ar: `ارسم <b>spectrogram</b>: كل pixel منوّر هو sinusoid واحدة. الـ <b>row</b> بتاعه بيحدد الـ frequency (كل ما يعلى الـ frequency تعلى)، والـ <b>column</b> بيحدد إمتى تشتغل، وشدة اللون بتحدد الـ amplitude. لما نجمعهم (inverse Fourier يعني additive synthesis) بتطلع الـ waveform اللي تحت، واللي الـ spectrogram بتاعها بيورّي رسمتك: ودي فكرة الـ Aphex Twin. عدد الـ pixels المنوّرة <bdi dir="ltr">${lit}</bdi>.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Lbl} l="<b>Spectrogram</b>: tap pixels" r="↑ frequency · time →" />
       <div className="mv5-paint" role="group" aria-label="Spectrogram pixels">${g.map((row, r) => row.map((v, c) => html`<button key=${r + '-' + c} className=${v ? 'on' : ''} aria-label=${'row ' + (r + 1) + ' column ' + (c + 1)} aria-pressed=${String(v)} onClick=${() => tog(r, c)}></button>`))}</div>
@@ -3850,7 +3850,7 @@
     const mod = t => Math.sin(2 * Math.PI * b * t), car = t => Math.sin(2 * Math.PI * a * t), e = t => Math.sin(2 * Math.PI * a * t + I * Math.sin(2 * Math.PI * b * t));
     const dev = I * b;
     const cap = { en: `<b>Modulator</b> (β = ${b} Hz) bends the frequency of the <b>carrier</b> (α = ${a} Hz). I is the modulation index, peak deviation ÷ modulator frequency, so the peak deviation is I × β = ${fmt(I, 1)} × ${b} = <b>${fmt(dev, 1)} Hz</b>: the carrier swings between ${fmt(Math.max(0, a - dev), 1)} and ${fmt(a + dev, 1)} Hz. A is the peak amplitude, e the instantaneous amplitude. Oscillator = device generating waveforms.`,
-      ar: `الـ <b>Modulator</b> (<bdi>β = ${b} Hz</bdi>) بيلوي الـ frequency بتاعة الـ <b>carrier</b> (<bdi>α = ${a} Hz</bdi>). الـ I هو الـ modulation index، يعني الـ peak deviation على الـ modulator frequency، فالـ peak deviation بيطلع:` + L(`I × β = ${fmt(I, 1)} × ${b} = ${fmt(dev, 1)} Hz`) + `يعني الـ carrier بتتمرجح بين <bdi>${fmt(Math.max(0, a - dev), 1)}</bdi> و <bdi>${fmt(a + dev, 1)} Hz</bdi>. الـ A هو الـ peak amplitude والـ e هو الـ instantaneous amplitude. والـ Oscillator جهاز بيطلّع waveforms.` };
+      ar: `الـ <b>Modulator</b> (<bdi dir="ltr">β = ${b} Hz</bdi>) بيلوي الـ frequency بتاعة الـ <b>carrier</b> (<bdi dir="ltr">α = ${a} Hz</bdi>). الـ I هو الـ modulation index، يعني الـ peak deviation على الـ modulator frequency، فالـ peak deviation بيطلع:` + L(`I × β = ${fmt(I, 1)} × ${b} = ${fmt(dev, 1)} Hz`) + `يعني الـ carrier بتتمرجح بين <bdi dir="ltr">${fmt(Math.max(0, a - dev), 1)}</bdi> و <bdi dir="ltr">${fmt(a + dev, 1)} Hz</bdi>. الـ A هو الـ peak amplitude والـ e هو الـ instantaneous amplitude. والـ Oscillator جهاز بيطلّع waveforms.` };
     const P = (f, lbl, col) => html`<${Lbl} l=${lbl} /><${Svg} h=${56}>${axis(28)}<path d=${fnp(f, 0, 2, 600, 4, 316, 3, 53)} stroke=${col} strokeWidth="1.6" fill="none" /><//>`;
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Slider} label="Carrier α" min=${2} max=${16} v=${a} set=${setA} out=${a + ' Hz'} />
@@ -3872,7 +3872,7 @@
     const sig = N(9, n => Math.abs(Jn[n]) > .01 ? n : 0).reduce((m, v) => Math.max(m, v), 0);
     const bx = n => 160 + n * 16.5;
     const cap = { en: I === 0 ? '<b>I = 0</b>: no modulation, only the carrier (J0(0) = 1).' : `<b>I = ${fx(I, 1)}</b>: J0(I) = ${fx(Jn[0], 3)} sets the <b>carrier</b> amplitude, Jn(I) the <b>n-th upper and lower sidebands</b> at α ± nβ. Sidebands above 1% reach n = ${sig}: the bandwidth grows with I, and higher-order sidebands only gain energy when I is large.${I > 1 ? ' Since I > 1, energy is increasingly stolen from the carrier.' : ''}${Math.abs(Jn[0]) < .03 ? ' Here the carrier almost vanishes.' : ''} As I increases the sideband energies vary like a damped sinusoid.`,
-      ar: I === 0 ? 'لما <bdi>I = 0</bdi> مفيش modulation، الـ carrier بس <bdi>(J0(0) = 1)</bdi>.' : `عند <bdi>I = ${fx(I, 1)}</bdi> الـ J0 بيحدد amplitude الـ <b>carrier</b>، والـ Jn بيحدد <b>الـ sidebands رقم n فوق وتحت</b> عند <bdi>α ± nβ</bdi>:` + L(`J0(${fx(I, 1)}) = ${fx(Jn[0], 3)}`) + `الـ sidebands اللي فوق 1% بتوصل لحد <bdi>n = ${sig}</bdi>: الـ bandwidth بتكبر مع الـ I، والـ sidebands العالية مبتاخدش طاقة غير لما I تبقى كبيرة.${I > 1 ? ' وبما إن I أكبر من 1، الطاقة بتتسرق من الـ carrier أكتر وأكتر.' : ''}${Math.abs(Jn[0]) < .03 ? ' وهنا الـ carrier تقريبًا اختفت.' : ''} ولما I تزيد، طاقة الـ sidebands بتتغير زي damped sinusoid.` };
+      ar: I === 0 ? 'لما <bdi dir="ltr">I = 0</bdi> مفيش modulation، الـ carrier بس <bdi dir="ltr">(J0(0) = 1)</bdi>.' : `عند <bdi dir="ltr">I = ${fx(I, 1)}</bdi> الـ J0 بيحدد amplitude الـ <b>carrier</b>، والـ Jn بيحدد <b>الـ sidebands رقم n فوق وتحت</b> عند <bdi dir="ltr">α ± nβ</bdi>:` + L(`J0(${fx(I, 1)}) = ${fx(Jn[0], 3)}`) + `الـ sidebands اللي فوق 1% بتوصل لحد <bdi dir="ltr">n = ${sig}</bdi>: الـ bandwidth بتكبر مع الـ I، والـ sidebands العالية مبتاخدش طاقة غير لما I تبقى كبيرة.${I > 1 ? ' وبما إن I أكبر من 1، الطاقة بتتسرق من الـ carrier أكتر وأكتر.' : ''}${Math.abs(Jn[0]) < .03 ? ' وهنا الـ carrier تقريبًا اختفت.' : ''} ولما I تزيد، طاقة الـ sidebands بتتغير زي damped sinusoid.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[0, 1, 2, 3, 4].map(v => [v, 'I = ' + v])} mode=${I} set=${setI} />
       <${Slider} label="Index I" min=${0} max=${20} step=${.1} v=${I} set=${setI} out=${fx(I, 1)} />
@@ -3927,7 +3927,7 @@
     const items = []; for (let n = -nmax; n <= nmax; n++) { const f = C + n * M; if (f >= 0) items.push([f, Math.abs(J[Math.abs(n)]), n]); }
     const win = N(301, k => { const tt = t + k / 300 / M, Ii = tt * IM / 2; return Math.sin(2 * Math.PI * C * tt + Ii * Math.sin(2 * Math.PI * M * tt)); });
     const cap = { en: `I = t × (Imax − Imin)/dur + Imin, so at <b>t = ${fx(t, 2)} s</b>, <b>I = ${fx(I, 1)}</b>. Sidebands at fc ± n·fm: n = 1 → ${C - M} and ${C + M} Hz (J1), n = 2 → ${C - 2 * M} and ${C + 2 * M} Hz (J2), n = 3 → ${C - 3 * M} and ${C + 3 * M} Hz (J3). As I grows during the note more sidebands gain energy, so the sound gets brighter and more complex. Press Play to let I rise.`,
-      ar: `الـ I بيزيد مع الوقت حسب الكود، فعند <bdi>t = ${fx(t, 2)} s</bdi> بيبقى <bdi>I = ${fx(I, 1)}</bdi>:` + L(`I = t × (Imax − Imin)/dur + Imin`) + `والـ sidebands عند <bdi>fc ± n·fm</bdi>:` + L(`n = 1 → ${C - M}, ${C + M} Hz (J1)<br>n = 2 → ${C - 2 * M}, ${C + 2 * M} Hz (J2)<br>n = 3 → ${C - 3 * M}, ${C + 3 * M} Hz (J3)`) + 'وكل ما I تكبر خلال النوتة، sidebands أكتر بتاخد طاقة، فالصوت بيبقى أسطع وأعقد. دوس Play وسيب I تطلع.' };
+      ar: `الـ I بيزيد مع الوقت حسب الكود، فعند <bdi dir="ltr">t = ${fx(t, 2)} s</bdi> بيبقى <bdi dir="ltr">I = ${fx(I, 1)}</bdi>:` + L(`I = t × (Imax − Imin)/dur + Imin`) + `والـ sidebands عند <bdi dir="ltr">fc ± n·fm</bdi>:` + L(`n = 1 → ${C - M}, ${C + M} Hz (J1)<br>n = 2 → ${C - 2 * M}, ${C + 2 * M} Hz (J2)<br>n = 3 → ${C - 3 * M}, ${C + 3 * M} Hz (J3)`) + 'وكل ما I تكبر خلال النوتة، sidebands أكتر بتاخد طاقة، فالصوت بيبقى أسطع وأعقد. دوس Play وسيب I تطلع.' };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['ex', 'Example from the notes'], ['own', 'Try your own']]} mode=${mode} set=${m => { setMode(m); setPlay(false); }} />
       ${!ex && html`<div><${Slider} label="Carrier fc" min=${200} max=${1000} step=${10} v=${fc} set=${setFc} out=${fc + ' Hz'} /><${Slider} label="Modulator fm" min=${10} max=${200} step=${5} v=${fm} set=${setFm} out=${fm + ' Hz'} /><${Slider} label="Imax" min=${1} max=${20} v=${im} set=${setIm} /></div>`}
@@ -3951,7 +3951,7 @@
     const r = M / C, g = (a, b) => b ? g(b, a % b) : a, G = g(C, M), harm = G >= Math.min(C, M) / 4;
     const X = f => 10 + f / 1000 * 300;
     const listS = sb.map(([f]) => f).sort((a, b) => a - b).join(', ');
-    const cap = harm ? { en: `fc = ${C}, fm = ${M} (ratio ${fmt(r, 3)}): fc ± n·fm = ${listS} Hz … all multiples of <b>${G} Hz</b> (the grey grid), so the sound is <b>harmonic</b>: the modulator has a harmonic relationship to the carrier.`, ar: 'الـ sidebands كلها مضاعفات لـ <bdi>' + G + ' Hz</bdi> (الخطوط الرمادية)، فالصوت <b>harmonic</b>: الـ modulator ليه علاقة harmonic بالـ carrier.' + L(`fc = ${C}, fm = ${M} → ${listS} Hz`) }
+    const cap = harm ? { en: `fc = ${C}, fm = ${M} (ratio ${fmt(r, 3)}): fc ± n·fm = ${listS} Hz … all multiples of <b>${G} Hz</b> (the grey grid), so the sound is <b>harmonic</b>: the modulator has a harmonic relationship to the carrier.`, ar: 'الـ sidebands كلها مضاعفات لـ <bdi dir="ltr">' + G + ' Hz</bdi> (الخطوط الرمادية)، فالصوت <b>harmonic</b>: الـ modulator ليه علاقة harmonic بالـ carrier.' + L(`fc = ${C}, fm = ${M} → ${listS} Hz`) }
       : { en: `fc = ${C}, fm = ${M} (non-integer ratio ${fmt(r, 3)}): fc ± n·fm = ${listS} Hz … are not multiples of a common fundamental, so the sound is <b>inharmonic</b>: bell-like, dissonant, percussive ("clang", "bong").`, ar: 'الـ sidebands مش مضاعفات لـ fundamental مشترك (النسبة مش رقم صحيح)، فالصوت <b>inharmonic</b>: شبه الجرس، نشاز و percussive ("clang" و "bong").' + L(`fc = ${C}, fm = ${M} → ${listS} Hz`) };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['h', 'fm = 200 (1:1)'], ['i', 'fm = 141'], ['own', 'Try your own']]} mode=${mode} set=${setMode} />
@@ -3981,8 +3981,8 @@
     const snapPat = () => { const n = Math.max(1, Math.round((e - s) / P)); setE(Math.min(s + n * P, s + Math.floor((600 - s) / P) * P)); };
     const len = e - s, out = y.slice(0, s).concat(y.slice(s, e), y.slice(s, e), y.slice(s, e));
     const jump = Math.abs(y[s] - (e < 600 ? y[e] : 0)), click = jump > .12, tot = out.length;
-    const cap = mode === 'drum' ? { en: `Samples were kept short (memory was expensive) and part of the sample is <b>looped</b>. Simple idea: find <b>silence points</b> (zero amplitude crossings), e.g. between drum beats, and loop between these. Loop ${s} → ${e}: the jump at each seam is <b>${fx(jump, 2)}</b>${click ? ', a click.' : ', clean.'} Press "Snap to silence".`, ar: `زمان الـ samples كانت قصيرة (الـ memory كانت غالية) وجزء منها بيتعمله <b>loop</b>. الفكرة البسيطة: دوّر على <b>نقط السكوت</b> (الـ zero amplitude crossings) زي اللي بين ضربات الـ drums، واعمل loop بينها. الـ loop من <bdi>${s}</bdi> لـ <bdi>${e}</bdi> والقفزة عند كل لحام <bdi>${fx(jump, 2)}</bdi>${click ? '، يعني click.' : '، يعني نضيف.'} دوس "Snap to silence".` }
-      : { en: `A <b>sustaining instrument</b>: after the attack, part of the sustain is <b>looped</b> to save memory. Loop ${s} → ${e} (${len} samples): the jump at each seam is <b>${fx(jump, 2)}</b>${click ? ': a click.' : ': clean.'} Snap to <b>zero crossings</b>, or use <b>pattern matching</b> (find portions with the same audio content: here a whole number of ${P}-sample periods).`, ar: `آلة <b>sustaining</b>: بعد الـ attack، جزء من الـ sustain بيتعمله <b>loop</b> عشان نوفر memory. الـ loop من <bdi>${s}</bdi> لـ <bdi>${e}</bdi> (<bdi>${len}</bdi> sample) والقفزة عند كل لحام <bdi>${fx(jump, 2)}</bdi>${click ? '، يعني click.' : '، يعني نضيف.'} اعمل snap على الـ <b>zero crossings</b> أو استخدم <b>pattern matching</b> (دوّر على أجزاء فيها نفس المحتوى الصوتي: هنا عدد صحيح من الـ periods، كل period <bdi>${P}</bdi> sample).` };
+    const cap = mode === 'drum' ? { en: `Samples were kept short (memory was expensive) and part of the sample is <b>looped</b>. Simple idea: find <b>silence points</b> (zero amplitude crossings), e.g. between drum beats, and loop between these. Loop ${s} → ${e}: the jump at each seam is <b>${fx(jump, 2)}</b>${click ? ', a click.' : ', clean.'} Press "Snap to silence".`, ar: `زمان الـ samples كانت قصيرة (الـ memory كانت غالية) وجزء منها بيتعمله <b>loop</b>. الفكرة البسيطة: دوّر على <b>نقط السكوت</b> (الـ zero amplitude crossings) زي اللي بين ضربات الـ drums، واعمل loop بينها. الـ loop من <bdi dir="ltr">${s}</bdi> لـ <bdi dir="ltr">${e}</bdi> والقفزة عند كل لحام <bdi dir="ltr">${fx(jump, 2)}</bdi>${click ? '، يعني click.' : '، يعني نضيف.'} دوس "Snap to silence".` }
+      : { en: `A <b>sustaining instrument</b>: after the attack, part of the sustain is <b>looped</b> to save memory. Loop ${s} → ${e} (${len} samples): the jump at each seam is <b>${fx(jump, 2)}</b>${click ? ': a click.' : ': clean.'} Snap to <b>zero crossings</b>, or use <b>pattern matching</b> (find portions with the same audio content: here a whole number of ${P}-sample periods).`, ar: `آلة <b>sustaining</b>: بعد الـ attack، جزء من الـ sustain بيتعمله <b>loop</b> عشان نوفر memory. الـ loop من <bdi dir="ltr">${s}</bdi> لـ <bdi dir="ltr">${e}</bdi> (<bdi dir="ltr">${len}</bdi> sample) والقفزة عند كل لحام <bdi dir="ltr">${fx(jump, 2)}</bdi>${click ? '، يعني click.' : '، يعني نضيف.'} اعمل snap على الـ <b>zero crossings</b> أو استخدم <b>pattern matching</b> (دوّر على أجزاء فيها نفس المحتوى الصوتي: هنا عدد صحيح من الـ periods، كل period <bdi dir="ltr">${P}</bdi> sample).` };
     const Xo = k => 4 + k / Math.max(tot, 600) * 312;
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['sus', 'Sustaining instrument'], ['drum', 'Drum beats']]} mode=${mode} set=${setM} />
@@ -4020,9 +4020,9 @@
     const drum = mode === 'drum';
     const over = k => drum ? [k < 10 ? (k % 2 ? 'var(--pen)' : 'var(--k-mm)') : null, .45] : [Math.abs(k - root(k)) === 0 ? 'var(--k-mm)' : 'var(--pen)', Math.abs(k - root(k)) === 0 ? .7 : Math.min(.65, .12 * Math.abs(k - root(k)))];
     const r = root(sel), sh = sel - r, idx = roots.indexOf(r) + 1;
-    const cap = drum ? { en: `<b>Drum mapping</b>, the non-pitched example: each key triggers a different drum sound, so key ${sel + 1} ${sel < 10 ? 'plays drum sample ' + (sel + 1) + ', unshifted' : 'has no sample here'}. No speed change is needed.`, ar: `الـ <b>Drum mapping</b> هو المثال اللي من غير pitch: كل key بتشغّل صوت drum مختلف${sel < 10 ? '، فالـ key رقم <bdi>' + (sel + 1) + '</bdi> بتشغّل drum sample رقم <bdi>' + (sel + 1) + '</bdi> من غير shift' : '، والـ key دي ملهاش sample هنا'}. مش محتاجين نغيّر السرعة.` }
+    const cap = drum ? { en: `<b>Drum mapping</b>, the non-pitched example: each key triggers a different drum sound, so key ${sel + 1} ${sel < 10 ? 'plays drum sample ' + (sel + 1) + ', unshifted' : 'has no sample here'}. No speed change is needed.`, ar: `الـ <b>Drum mapping</b> هو المثال اللي من غير pitch: كل key بتشغّل صوت drum مختلف${sel < 10 ? '، فالـ key رقم <bdi dir="ltr">' + (sel + 1) + '</bdi> بتشغّل drum sample رقم <bdi dir="ltr">' + (sel + 1) + '</bdi> من غير shift' : '، والـ key دي ملهاش sample هنا'}. مش محتاجين نغيّر السرعة.` }
       : { en: `Key ${sel + 1} plays sample ${mode === 'every' ? sel + 1 : idx} (recorded at key ${r + 1})${sh ? `, sped ${sh > 0 ? 'up' : 'down'} by <b>${Math.abs(sh)} semitone${Math.abs(sh) > 1 ? 's' : ''}</b>` : ', at its own speed'}. Speeding up or slowing a sample changes its pitch but is realistic only over a few semitones (darker red = further). ${mode === 'one' ? 'One sample for the whole keyboard stretches it too far.' : mode === 'split' ? '<b>Multisampling</b>: the instrument is sampled at regular intervals, each sample covering a region of adjacent notes (a split).' : 'Sampling every note: the most natural progression from the low to the high registers.'}`,
-        ar: `الـ key رقم <bdi>${sel + 1}</bdi> بتشغّل sample رقم <bdi>${mode === 'every' ? sel + 1 : idx}</bdi> (متسجّلة عند key رقم <bdi>${r + 1}</bdi>)${sh ? `، ومتسرّعة ${sh > 0 ? 'لفوق' : 'لتحت'} بمقدار <b><bdi>${Math.abs(sh)}</bdi> semitone</b>` : '، بسرعتها الأصلية'}. لما نسرّع أو نبطّأ الـ sample الـ pitch بيتغير، بس ده واقعي لكام semitone بس (الأحمر الأغمق يعني أبعد). ${mode === 'one' ? 'الـ sample الواحدة للكيبورد كله بتتمط زيادة عن اللزوم.' : mode === 'split' ? 'ده الـ <b>Multisampling</b>: الآلة بتتسجل على مسافات منتظمة، وكل sample بتغطي منطقة من النوتات اللي جنب بعض (split).' : 'لما نسجل كل نوتة بنوصل لأطبع انتقال من الـ registers الواطية للعالية.'}` };
+        ar: `الـ key رقم <bdi dir="ltr">${sel + 1}</bdi> بتشغّل sample رقم <bdi dir="ltr">${mode === 'every' ? sel + 1 : idx}</bdi> (متسجّلة عند key رقم <bdi dir="ltr">${r + 1}</bdi>)${sh ? `، ومتسرّعة ${sh > 0 ? 'لفوق' : 'لتحت'} بمقدار <b><bdi dir="ltr">${Math.abs(sh)}</bdi> semitone</b>` : '، بسرعتها الأصلية'}. لما نسرّع أو نبطّأ الـ sample الـ pitch بيتغير، بس ده واقعي لكام semitone بس (الأحمر الأغمق يعني أبعد). ${mode === 'one' ? 'الـ sample الواحدة للكيبورد كله بتتمط زيادة عن اللزوم.' : mode === 'split' ? 'ده الـ <b>Multisampling</b>: الآلة بتتسجل على مسافات منتظمة، وكل sample بتغطي منطقة من النوتات اللي جنب بعض (split).' : 'لما نسجل كل نوتة بنوصل لأطبع انتقال من الـ registers الواطية للعالية.'}` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['one', 'One sample'], ['split', 'Splits'], ['every', 'Every note'], ['drum', 'Drum map']]} mode=${mode} set=${setMode} />
       <${Keys} over=${over} onKey=${setSel} sel=${sel} top=${28}>
@@ -4048,9 +4048,9 @@
     const Z = VZ[mode], z = Z.find(q => k >= q[0] && k <= q[1] && v >= q[2] && v <= q[3]);
     const cols = ['var(--k-mm)', 'var(--pen)', 'var(--ok)'];
     const zc = (q, j) => mode === 'map' ? cols[Math.floor(j / 2)] : cols[j];
-    const cap = mode === 'one' ? { en: `<b>Single velocity layer</b>: only one type of sound is played at any velocity. Velocity ${v} changes only the volume (${v}/127), not the timbre.`, ar: `الـ <b>Single velocity layer</b>: نوع صوت واحد بس بيشتغل مع أي velocity. الـ velocity <bdi>${v}</bdi> بتغيّر العلو بس (<bdi>${v}/127</bdi>) مش الـ timbre.` }
-      : mode === 'map' ? { en: `<b>Key map + velocity layers</b>: most instruments combine both. Multisamples are laid out <b>vertically</b> (each covers a column of keys), velocity layers <b>horizontally</b>. Key ${k + 1} at velocity ${v} → <b>${z[4]}</b>.`, ar: `الـ <b>Key map مع الـ velocity layers</b>: معظم الآلات بتجمع الاتنين. الـ multisamples مترتبة <b>رأسي</b> (كل واحدة بتغطي عمود keys)، والـ velocity layers <b>أفقي</b>. الـ key رقم <bdi>${k + 1}</bdi> مع velocity <bdi>${v}</bdi> بتشغّل <b><bdi>${z[4]}</bdi></b>.` }
-      : { en: `<b>${mode === 'two' ? 'Dual' : 'Triple'} velocity layer</b>: the sound depends on how hard the key is hit. ${mode === 'two' ? 'Sound one is played at lower velocity, sound two at higher velocity.' : 'Three types of sound are played according to the velocity.'} Velocity ${v} → <b>${z[4]}</b>, so the timbre changes, not just the volume.`, ar: `الـ <b>${mode === 'two' ? 'Dual' : 'Triple'} velocity layer</b>: الصوت بيعتمد على إنت ضاغط على الـ key جامد قد إيه. ${mode === 'two' ? 'الصوت الأول بيشتغل مع velocity واطية والتاني مع velocity عالية.' : 'تلات أنواع أصوات بتشتغل حسب الـ velocity.'} الـ velocity <bdi>${v}</bdi> بتشغّل <b><bdi>${z[4]}</bdi></b>، فالـ timbre بيتغير مش العلو بس.` };
+    const cap = mode === 'one' ? { en: `<b>Single velocity layer</b>: only one type of sound is played at any velocity. Velocity ${v} changes only the volume (${v}/127), not the timbre.`, ar: `الـ <b>Single velocity layer</b>: نوع صوت واحد بس بيشتغل مع أي velocity. الـ velocity <bdi dir="ltr">${v}</bdi> بتغيّر العلو بس (<bdi dir="ltr">${v}/127</bdi>) مش الـ timbre.` }
+      : mode === 'map' ? { en: `<b>Key map + velocity layers</b>: most instruments combine both. Multisamples are laid out <b>vertically</b> (each covers a column of keys), velocity layers <b>horizontally</b>. Key ${k + 1} at velocity ${v} → <b>${z[4]}</b>.`, ar: `الـ <b>Key map مع الـ velocity layers</b>: معظم الآلات بتجمع الاتنين. الـ multisamples مترتبة <b>رأسي</b> (كل واحدة بتغطي عمود keys)، والـ velocity layers <b>أفقي</b>. الـ key رقم <bdi dir="ltr">${k + 1}</bdi> مع velocity <bdi dir="ltr">${v}</bdi> بتشغّل <b><bdi dir="ltr">${z[4]}</bdi></b>.` }
+      : { en: `<b>${mode === 'two' ? 'Dual' : 'Triple'} velocity layer</b>: the sound depends on how hard the key is hit. ${mode === 'two' ? 'Sound one is played at lower velocity, sound two at higher velocity.' : 'Three types of sound are played according to the velocity.'} Velocity ${v} → <b>${z[4]}</b>, so the timbre changes, not just the volume.`, ar: `الـ <b>${mode === 'two' ? 'Dual' : 'Triple'} velocity layer</b>: الصوت بيعتمد على إنت ضاغط على الـ key جامد قد إيه. ${mode === 'two' ? 'الصوت الأول بيشتغل مع velocity واطية والتاني مع velocity عالية.' : 'تلات أنواع أصوات بتشتغل حسب الـ velocity.'} الـ velocity <bdi dir="ltr">${v}</bdi> بتشغّل <b><bdi dir="ltr">${z[4]}</bdi></b>، فالـ timbre بيتغير مش العلو بس.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['one', 'Single'], ['two', 'Dual'], ['three', 'Triple'], ['map', 'Key map + layers']]} mode=${mode} set=${setMode} />
       <${Lbl} l="<b>Key map</b>: keys → , velocity ↑" r="tap the map" />
@@ -4071,7 +4071,7 @@
     const over = k => k === 0 ? ['var(--pen)', st === 0 ? .7 : .25] : k === 2 ? ['var(--pen)', st === 1 ? .7 : .25] : k >= 7 ? ['var(--k-mm)', .18] : [null, 0];
     const tapK = k => { if (k === 0) setSt(0); else if (k === 2) setSt(1); setSel(k); };
     const msg = sel === 0 || sel === 2 ? `Key ${sel + 1} is a <b>keyswitch</b>: it plays no note, it selects <b>${style}</b>.` : sel >= 7 ? `Key ${sel + 1} plays the <b>${style} ${name.toLowerCase()}</b> bank (key-mapped, velocity-layered samples).` : `Key ${sel + 1} is outside the ${name.toLowerCase()}'s range.`;
-    const msgA = sel === 0 || sel === 2 ? `الـ key رقم <bdi>${sel + 1}</bdi> هي <b>keyswitch</b>: مبتعزفش نوتة، بتختار <b><bdi>${style}</bdi></b>.` : sel >= 7 ? `الـ key رقم <bdi>${sel + 1}</bdi> بتشغّل الـ bank بتاع الـ <b><bdi>${style} ${name.toLowerCase()}</bdi></b> (samples عاملة key-map و velocity layers).` : `الـ key رقم <bdi>${sel + 1}</bdi> برّه مدى الـ ${name.toLowerCase()}.`;
+    const msgA = sel === 0 || sel === 2 ? `الـ key رقم <bdi dir="ltr">${sel + 1}</bdi> هي <b>keyswitch</b>: مبتعزفش نوتة، بتختار <b><bdi dir="ltr">${style}</bdi></b>.` : sel >= 7 ? `الـ key رقم <bdi dir="ltr">${sel + 1}</bdi> بتشغّل الـ bank بتاع الـ <b><bdi dir="ltr">${style} ${name.toLowerCase()}</bdi></b> (samples عاملة key-map و velocity layers).` : `الـ key رقم <bdi dir="ltr">${sel + 1}</bdi> برّه مدى الـ ${name.toLowerCase()}.`;
     const cap = { en: `Instruments sound vastly different depending on how they are played. <b>Keyswitching</b>: keys outside the instrument's range (usually low keys, red) choose the playing style. ${msg}`, ar: `الآلات صوتها بيختلف جدًا حسب طريقة العزف. الـ <b>Keyswitching</b> معناه إن keys برّه مدى الآلة (غالبًا الـ keys الواطية، الحمرا) بتختار طريقة العزف. ${msgA}` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['tr', 'Trumpet: muted / open'], ['vn', 'Violin: plucked / bowed']]} mode=${ins} set=${k => { setIns(k); setSt(0); }} />
@@ -4104,7 +4104,7 @@
     const runs = d.beat.slice(0, cur + 1).filter((b, k) => b && !d.beat[k - 1]).length;
     const cE = d.E[cur], cA = d.avg[cur], g3 = v => isFinite(v) ? v.toPrecision(3) : '-';
     const cap = { en: `The ear hears a beat when the sound energy is <b>much larger than its recent history</b>. Simple detection: the <b>instant energy</b> over about 5/100 s (0.05 × 44,100 = 2,205 samples, the bars) against the <b>average energy</b> over about 1 s (44,100 samples, the line). A beat is detected only when instant > local average (red). Block ${cur + 1} at ${fx(cur * .05, 2)} s: ${g3(cE)} ${d.beat[cur] ? '>' : '≤'} ${g3(cA)}. Beats so far: <b>${runs}</b> of ${beats}. Tap the steps to change the rhythm.`,
-      ar: `الودن بتسمع beat لما طاقة الصوت تبقى <b>أكبر بكتير من تاريخها القريب</b>. الكشف البسيط بيقارن الـ <b>instant energy</b> على حوالي 5/100 ثانية (الأعمدة) بالـ <b>average energy</b> على حوالي ثانية (الخط):` + L('0.05 × 44,100 = 2,205 samples ; 1 s = 44,100 samples') + `وبنعتبرها beat بس لما الـ instant أكبر من الـ local average (الأحمر). الـ block رقم <bdi>${cur + 1}</bdi> عند <bdi>${fx(cur * .05, 2)} s</bdi>:` + L(`${g3(cE)} ${d.beat[cur] ? '>' : '≤'} ${g3(cA)}`) + `عدد الـ beats لحد دلوقتي <b><bdi>${runs}</bdi></b> من <bdi>${beats}</bdi>. دوس على الخانات عشان تغيّر الإيقاع.` };
+      ar: `الودن بتسمع beat لما طاقة الصوت تبقى <b>أكبر بكتير من تاريخها القريب</b>. الكشف البسيط بيقارن الـ <b>instant energy</b> على حوالي <bdi dir="ltr">5/100</bdi> ثانية (الأعمدة) بالـ <b>average energy</b> على حوالي ثانية (الخط):` + L('0.05 × 44,100 = 2,205 samples ; 1 s = 44,100 samples') + `وبنعتبرها beat بس لما الـ instant أكبر من الـ local average (الأحمر). الـ block رقم <bdi dir="ltr">${cur + 1}</bdi> عند <bdi dir="ltr">${fx(cur * .05, 2)} s</bdi>:` + L(`${g3(cE)} ${d.beat[cur] ? '>' : '≤'} ${g3(cA)}`) + `عدد الـ beats لحد دلوقتي <b><bdi dir="ltr">${runs}</bdi></b> من <bdi dir="ltr">${beats}</bdi>. دوس على الخانات عشان تغيّر الإيقاع.` };
     const X = b => 4 + (b + .5) * 312 / 60;
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Lbl} l="<b>Signal</b> (3 s at 44.1 kHz)" />
@@ -4137,7 +4137,7 @@
     const X = b => 10 + (b + .5) * 300 / 32;
     const tt = f * 1024 / 44100;
     const cap = { en: `More elaborate: look for large energy changes in particular <b>frequency sub-bands</b>. Frame ${f + 1} (${fx(tt, 2)} s): Fourier transform over <b>1024 samples</b>, divided into <b>32 sub-bands</b>; each band's energy (bar) is compared with its recent average over about 1 s (tick). ${cnt ? `<b>${cnt}</b> sub-band${cnt > 1 ? 's are' : ' is'} above ${cnt > 1 ? 'their' : 'its'} average (red): <b>beat detected</b>.` : 'No sub-band is above its average: no beat.'} The low drum lights the low bands, the hi-hat the high ones.`,
-      ar: `طريقة أدق: بندوّر على تغيّرات كبيرة في الطاقة في <b>frequency sub-bands</b> معينة. في الـ frame رقم <bdi>${f + 1}</bdi> (<bdi>${fx(tt, 2)} s</bdi>) بنعمل Fourier transform على <b>1024 sample</b> ونقسمه لـ <b>32 sub-band</b>، وطاقة كل band (العمود) بتتقارن بمتوسطها القريب على حوالي ثانية (الشرطة). ${cnt ? `فيه <b><bdi>${cnt}</bdi></b> sub-band فوق المتوسط بتاعها (الأحمر)، يعني <b>اتكشف beat</b>.` : 'مفيش sub-band فوق المتوسط بتاعها، يعني مفيش beat.'} الـ drum الواطي بينوّر الـ bands الواطية، والـ hi-hat بينوّر العالية.` };
+      ar: `طريقة أدق: بندوّر على تغيّرات كبيرة في الطاقة في <b>frequency sub-bands</b> معينة. في الـ frame رقم <bdi dir="ltr">${f + 1}</bdi> (<bdi dir="ltr">${fx(tt, 2)} s</bdi>) بنعمل Fourier transform على <b>1024 sample</b> ونقسمه لـ <b>32 sub-band</b>، وطاقة كل band (العمود) بتتقارن بمتوسطها القريب على حوالي ثانية (الشرطة). ${cnt ? `فيه <b><bdi dir="ltr">${cnt}</bdi></b> sub-band فوق المتوسط بتاعها (الأحمر)، يعني <b>اتكشف beat</b>.` : 'مفيش sub-band فوق المتوسط بتاعها، يعني مفيش beat.'} الـ drum الواطي بينوّر الـ bands الواطية، والـ hi-hat بينوّر العالية.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Lbl} l="<b>Signal</b>: low drum and hi-hat (2 s)" />
       <${Svg} h=${64}>${axis(32)}<path d=${band(d.x, 4, 316, 3, 61, -1, 1, 156)} fill="var(--graphite)" opacity=".7" /><rect x=${4 + f / d.F * 312} y="0" width=${Math.max(2, 312 / d.F)} height="64" fill="var(--k-mm)" opacity=".6" /><//>
@@ -4161,7 +4161,7 @@
     const curK = play ? sl.findIndex(([a, z]) => pt >= a && pt < z) : -1;
     const X = t => 4 + t / 2 * 312;
     const cap = { en: `Set the <b>threshold</b> (Cubase: Hitpoints + Threshold; ReCycle: the Sensitivity slider): every hit above it becomes a <b>hitpoint</b>, and <b>Create Slices</b> cuts the loop there. ${hits.length} slices. Dragged onto Groove Agent One, the slices go to <b>consecutive pads</b>. A MIDI chromatic scale whose notes trigger each slice at the right time recreates the audio${play ? ' (playing)' : ': press Play'}.`,
-      ar: `ظبّط الـ <b>threshold</b> (في Cubase الـ Hitpoints والـ Threshold، وفي ReCycle الـ Sensitivity slider): كل ضربة فوقه بتبقى <b>hitpoint</b>، والـ <b>Create Slices</b> بيقطع الـ loop عندها. عدد الـ slices <bdi>${hits.length}</bdi>. ولما نسحبهم على Groove Agent One بيروحوا على <b>pads ورا بعض</b>. وMIDI chromatic scale نوتاتها بتشغّل كل slice في وقتها بيرجّع الصوت زي ما كان${play ? ' (شغّال)' : '، دوس Play'}.` };
+      ar: `ظبّط الـ <b>threshold</b> (في Cubase الـ Hitpoints والـ Threshold، وفي ReCycle الـ Sensitivity slider): كل ضربة فوقه بتبقى <b>hitpoint</b>، والـ <b>Create Slices</b> بيقطع الـ loop عندها. عدد الـ slices <bdi dir="ltr">${hits.length}</bdi>. ولما نسحبهم على Groove Agent One بيروحوا على <b>pads ورا بعض</b>. وMIDI chromatic scale نوتاتها بتشغّل كل slice في وقتها بيرجّع الصوت زي ما كان${play ? ' (شغّال)' : '، دوس Play'}.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Slider} label="Threshold" min=${.1} max=${.95} step=${.05} v=${th} set=${setTh} out=${fx(th, 2)} />
       <${Lbl} l="<b>Drum loop</b> cut at the hitpoints" r="2 s" />
@@ -4189,9 +4189,9 @@
       return 'M' + top.join(' L') + ' L' + bot.reverse().join(' L') + ' Z';
     };
     const tot = 8 * sp;
-    const cap = r < 1 ? { en: `<b>Slower tempo</b> (${Math.round(r * 100)}%): each slice still starts on its beat, now every ${Math.round(sp * 1000)} ms, but lasts only 250 ms, so <b>extra time is introduced as silent gaps</b> of ${Math.round(gap * 1000)} ms (red). ${loop ? 'Fix: <b>loop the end of the tail</b> to extend it through the gap (dashed).' : fade ? 'The fade envelope ends each slice cleanly, but the gaps stay: for gaps, loop the end of the tail.' : 'The attacks stay artefact free, the most important part of percussion.'} Total ${fx(tot, 2)} s instead of 2 s.`, ar: `الـ <b>tempo أبطأ</b> (<bdi>${Math.round(r * 100)}%</bdi>): كل slice لسه بتبدأ على الـ beat بتاعها، كل <bdi>${Math.round(sp * 1000)} ms</bdi>، بس طولها <bdi>250 ms</bdi> بس، فـ <b>الوقت الزيادة بيظهر كفراغات سكوت</b> طولها <bdi>${Math.round(gap * 1000)} ms</bdi> (الأحمر). ${loop ? 'الحل: <b>نعمل loop لآخر الذيل</b> عشان نمدّه لحد آخر الفراغ (المتقطع).' : fade ? 'الـ fade envelope بيقفل كل slice بنضافة، بس الفراغات لسه موجودة: للفراغات اعمل loop لآخر الذيل.' : 'الـ attacks بتفضل من غير artefacts، ودي أهم حتة في الـ percussion.'} الطول الكلي <bdi>${fx(tot, 2)} s</bdi> بدل <bdi>2 s</bdi>.` }
-      : r > 1 ? { en: `<b>Faster tempo</b> (${Math.round(r * 100)}%): slices now start every ${Math.round(sp * 1000)} ms but still last 250 ms, so their <b>tails overlap</b> by ${Math.round(-gap * 1000)} ms (red), and the overlaps reduce the total playing time to ${fx(tot, 2)} s. ${fade ? 'Fix: an <b>envelope fades each slice to silence</b> before the next one starts.' : 'Turn on the fade envelope.'}`, ar: `الـ <b>tempo أسرع</b> (<bdi>${Math.round(r * 100)}%</bdi>): الـ slices بقت تبدأ كل <bdi>${Math.round(sp * 1000)} ms</bdi> بس لسه طولها <bdi>250 ms</bdi>، فـ <b>الذيول بتتداخل</b> بمقدار <bdi>${Math.round(-gap * 1000)} ms</bdi> (الأحمر)، والتداخل بيقلل وقت التشغيل الكلي لـ <bdi>${fx(tot, 2)} s</bdi>. ${fade ? 'الحل: <b>envelope بيعمل fade لكل slice لحد السكوت</b> قبل ما اللي بعدها تبدأ.' : 'شغّل الـ fade envelope.'}` }
-      : { en: 'Original tempo: each 250 ms slice ends just as the next one starts. Move the slider to replay the slices slower or faster.', ar: 'الـ tempo الأصلي: كل slice طولها <bdi>250 ms</bdi> بتخلص بالظبط لما اللي بعدها تبدأ. حرّك الـ slider عشان تشغّل الـ slices أبطأ أو أسرع.' };
+    const cap = r < 1 ? { en: `<b>Slower tempo</b> (${Math.round(r * 100)}%): each slice still starts on its beat, now every ${Math.round(sp * 1000)} ms, but lasts only 250 ms, so <b>extra time is introduced as silent gaps</b> of ${Math.round(gap * 1000)} ms (red). ${loop ? 'Fix: <b>loop the end of the tail</b> to extend it through the gap (dashed).' : fade ? 'The fade envelope ends each slice cleanly, but the gaps stay: for gaps, loop the end of the tail.' : 'The attacks stay artefact free, the most important part of percussion.'} Total ${fx(tot, 2)} s instead of 2 s.`, ar: `الـ <b>tempo أبطأ</b> (<bdi dir="ltr">${Math.round(r * 100)}%</bdi>): كل slice لسه بتبدأ على الـ beat بتاعها، كل <bdi dir="ltr">${Math.round(sp * 1000)} ms</bdi>، بس طولها <bdi dir="ltr">250 ms</bdi> بس، فـ <b>الوقت الزيادة بيظهر كفراغات سكوت</b> طولها <bdi dir="ltr">${Math.round(gap * 1000)} ms</bdi> (الأحمر). ${loop ? 'الحل: <b>نعمل loop لآخر الذيل</b> عشان نمدّه لحد آخر الفراغ (المتقطع).' : fade ? 'الـ fade envelope بيقفل كل slice بنضافة، بس الفراغات لسه موجودة: للفراغات اعمل loop لآخر الذيل.' : 'الـ attacks بتفضل من غير artefacts، ودي أهم حتة في الـ percussion.'} الطول الكلي <bdi dir="ltr">${fx(tot, 2)} s</bdi> بدل <bdi dir="ltr">2 s</bdi>.` }
+      : r > 1 ? { en: `<b>Faster tempo</b> (${Math.round(r * 100)}%): slices now start every ${Math.round(sp * 1000)} ms but still last 250 ms, so their <b>tails overlap</b> by ${Math.round(-gap * 1000)} ms (red), and the overlaps reduce the total playing time to ${fx(tot, 2)} s. ${fade ? 'Fix: an <b>envelope fades each slice to silence</b> before the next one starts.' : 'Turn on the fade envelope.'}`, ar: `الـ <b>tempo أسرع</b> (<bdi dir="ltr">${Math.round(r * 100)}%</bdi>): الـ slices بقت تبدأ كل <bdi dir="ltr">${Math.round(sp * 1000)} ms</bdi> بس لسه طولها <bdi dir="ltr">250 ms</bdi>، فـ <b>الذيول بتتداخل</b> بمقدار <bdi dir="ltr">${Math.round(-gap * 1000)} ms</bdi> (الأحمر)، والتداخل بيقلل وقت التشغيل الكلي لـ <bdi dir="ltr">${fx(tot, 2)} s</bdi>. ${fade ? 'الحل: <b>envelope بيعمل fade لكل slice لحد السكوت</b> قبل ما اللي بعدها تبدأ.' : 'شغّل الـ fade envelope.'}` }
+      : { en: 'Original tempo: each 250 ms slice ends just as the next one starts. Move the slider to replay the slices slower or faster.', ar: 'الـ tempo الأصلي: كل slice طولها <bdi dir="ltr">250 ms</bdi> بتخلص بالظبط لما اللي بعدها تبدأ. حرّك الـ slider عشان تشغّل الـ slices أبطأ أو أسرع.' };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Slider} label="Tempo" min=${.6} max=${1.6} step=${.05} v=${r} set=${setR} out=${Math.round(r * 100) + '%'} />
       <div className="mv5-checks"><label><input type="checkbox" checked=${fade} onChange=${() => setFade(v => !v)} />Fade envelope</label><label><input type="checkbox" checked=${loop} onChange=${() => setLoop(v => !v)} />Loop tail into gaps</label></div>
@@ -4212,7 +4212,7 @@
     const steps = [
       { en: 'The sound of an existing instrument (a single note) is <b>sampled</b>. Its waveform slowly changes from period to period (dashed lines = period boundaries).', ar: 'صوت آلة موجودة (نوتة واحدة) بيتعمله <b>sampling</b>. الـ waveform بتاعته بتتغير بالراحة من period للتاني (الخطوط المتقطعة حدود الـ periods).' },
       { en: 'It is parsed into a <b>circular sequence of wavetables</b>, each holding <b>one period</b> (one cycle) of the wave. A set of wavetables with user-specified harmonic content can also be generated mathematically.', ar: 'بيتقسم لـ <b>سلسلة دايرية من الـ wavetables</b>، كل واحد فيه <b>period واحد</b> (cycle واحدة) من الموجة. وممكن كمان نولّد wavetables بالرياضة بـ harmonic content نحدده.' },
-      { en: '<b>At playback</b> the wavetables are used to fetch samples (<b>table lookup</b>): a pointer steps round the current table, period after period.', ar: '<b>وقت التشغيل</b> الـ wavetables بتُستخدم عشان نجيب الـ samples (<b>table lookup</b>): pointer بيلف حوالين الـ table الحالي، period ورا period.' },
+      { en: '<b>At playback</b> the wavetables are used to fetch samples (<b>table lookup</b>): a pointer steps round the current table, period after period.', ar: '<b>وقت التشغيل</b> الـ wavetables بتُستخدم عشان نجيب الـ samples (<b>table lookup</b>)، وفيه pointer بيلف حوالين الـ table الحالي، period ورا period.' },
       { en: 'But the output is not normally static: it <b>evolves slowly in time</b> as one wavetable is mixed with the next, while <b>ADSR enveloping</b> shapes the volume.', ar: 'بس الـ output عادة مش ثابت: <b>بيتطور بالراحة مع الوقت</b> لأن كل wavetable بيتخلط باللي بعده، والـ <b>ADSR enveloping</b> بيشكّل العلو.' },
       { en: '<b>Looping</b> may be used to slow or reverse the wavetable evolution: here the sequence runs forward, then back.', ar: 'الـ <b>Looping</b> ممكن يُستخدم عشان نبطّأ أو نعكس تطور الـ wavetables: هنا السلسلة ماشية لقدام وبعدين بترجع.' }
     ];
@@ -4286,8 +4286,8 @@
   }
   function Crossfade({ ar }) {
     const steps = [
-      { en: '<b>Wave 1</b>: y1 = synth(440, 1/440, 0.9, 22050, \'sine\'), one period of a 440 Hz sine: 22050/440 = 50.1, so <b>50 samples</b>, followed by zeros.', ar: 'الـ <b>Wave 1</b> هي period واحد من sine بتاعة <bdi>440 Hz</bdi>، وبعدها أصفار:' + L("y1 = synth(440, 1/440, 0.9, 22050, 'sine') ; 22050/440 = 50.1 → 50 samples") },
-      { en: '<b>Wave 2</b>: y2 = synth(500, 1/500, 0.9, 22050, \'saw\'), one period of a 500 Hz sawtooth: 22050/500 = 44.1, so <b>44 samples</b>, placed after Wave 1.', ar: 'الـ <b>Wave 2</b> هي period واحد من sawtooth بتاعة <bdi>500 Hz</bdi>، متحطوطة بعد الـ Wave 1:' + L("y2 = synth(500, 1/500, 0.9, 22050, 'saw') ; 22050/500 = 44.1 → 44 samples") },
+      { en: '<b>Wave 1</b>: y1 = synth(440, 1/440, 0.9, 22050, \'sine\'), one period of a 440 Hz sine: 22050/440 = 50.1, so <b>50 samples</b>, followed by zeros.', ar: 'الـ <b>Wave 1</b> هي period واحد من sine بتاعة <bdi dir="ltr">440 Hz</bdi>، وبعدها أصفار:' + L("y1 = synth(440, 1/440, 0.9, 22050, 'sine') ; 22050/440 = 50.1 → 50 samples") },
+      { en: '<b>Wave 2</b>: y2 = synth(500, 1/500, 0.9, 22050, \'saw\'), one period of a 500 Hz sawtooth: 22050/500 = 44.1, so <b>44 samples</b>, placed after Wave 1.', ar: 'الـ <b>Wave 2</b> هي period واحد من sawtooth بتاعة <bdi dir="ltr">500 Hz</bdi>، متحطوطة بعد الـ Wave 1:' + L("y2 = synth(500, 1/500, 0.9, 22050, 'saw') ; 22050/500 = 44.1 → 44 samples") },
       { en: '<b>Crossfade masks</b>: xfadewidth = floor(22050/(440 × 2)) = 25. Mask 1 (green) stays at 1, then ramps down over 26 samples centred on the join; mask 2 (red) ramps up: ramp2 = 1 − ramp1.', ar: 'الـ <b>Crossfade masks</b>: الـ mask الأول (الأخضر) بيفضل 1 وبعدين بينزل على 26 sample حوالين نقطة اللحام، والتاني (الأحمر) بيطلع:' + L('xfadewidth = floor(22050/(440 × 2)) = 25 ; ramp2 = 1 − ramp1') },
       { en: '<b>WaveTable Synthesis</b>: ywave2 = xramp1 .* ywave2 + xramp2 .* ytemp. The sine fades into the saw across the join. Note: this sort of technique is useful to create an <b>ADSR envelope</b> in MATLAB.', ar: 'الـ <b>WaveTable Synthesis</b>: الـ sine بتعمل fade جوه الـ saw عند نقطة اللحام:' + L('ywave2 = xramp1 .* ywave2 + xramp2 .* ytemp') + 'ملحوظة: التكنيك ده مفيد عشان نعمل <b>ADSR envelope</b> في MATLAB.' }
     ];
@@ -4296,7 +4296,7 @@
     const ex = mode === 'ex', w = useMemo(() => wtSynth(ex ? 440 : f1, ex ? 500 : f2), [ex, f1, f2]);
     const n = w.out.length, X0 = 4, X1 = 316;
     const P = (ys, col, lo = -1, hi = 1, h = 64, extra) => html`<${Svg} h=${h}><path d=${`M${X0} ${sy(0, lo, hi, 4, h - 4)} H${X1}`} stroke="var(--faint)" />${extra}<path d=${line(ys, X0, X0 + (X1 - X0) * (n - 1) / Math.max(n - 1, 99), 4, h - 4, lo, hi)} stroke=${col} strokeWidth="2" fill="none" /><//>`;
-    const cap = ex ? steps[i] : { en: `<b>Try your own</b>: f1 = ${f1} Hz gives ${w.n1} samples of sine, f2 = ${f2} Hz gives ${w.n2} samples of saw; xfadewidth = floor(22050/(${f1} × 2)) = ${w.xw}, so the crossfade runs from sample ${w.a} to ${w.a + w.xw}.`, ar: `<b>جرّب بنفسك</b>: الـ f1 بيدّي <bdi>${w.n1}</bdi> sample من الـ sine، والـ f2 بيدّي <bdi>${w.n2}</bdi> sample من الـ saw، والـ crossfade من sample <bdi>${w.a}</bdi> لحد <bdi>${w.a + w.xw}</bdi>:` + L(`f1 = ${f1} Hz ; f2 = ${f2} Hz ; xfadewidth = floor(22050/(${f1} × 2)) = ${w.xw}`) };
+    const cap = ex ? steps[i] : { en: `<b>Try your own</b>: f1 = ${f1} Hz gives ${w.n1} samples of sine, f2 = ${f2} Hz gives ${w.n2} samples of saw; xfadewidth = floor(22050/(${f1} × 2)) = ${w.xw}, so the crossfade runs from sample ${w.a} to ${w.a + w.xw}.`, ar: `<b>جرّب بنفسك</b>: الـ f1 بيدّي <bdi dir="ltr">${w.n1}</bdi> sample من الـ sine، والـ f2 بيدّي <bdi dir="ltr">${w.n2}</bdi> sample من الـ saw، والـ crossfade من sample <bdi dir="ltr">${w.a}</bdi> لحد <bdi dir="ltr">${w.a + w.xw}</bdi>:` + L(`f1 = ${f1} Hz ; f2 = ${f2} Hz ; xfadewidth = floor(22050/(${f1} × 2)) = ${w.xw}`) };
     return html`<${Fig} ar=${ar} cap=${cap} bar=${ex ? html`<${Bar} steps=${steps} i=${i} ctl=${ctl} />` : null}>
       <${Modes} list=${[['ex', 'Example from the notes'], ['own', 'Try your own']]} mode=${mode} set=${setMode} />
       ${!ex && html`<div><${Slider} label="f1 (sine)" min=${200} max=${800} step=${10} v=${f1} set=${setF1} out=${f1 + ' Hz'} /><${Slider} label="f2 (saw)" min=${200} max=${800} step=${10} v=${f2} set=${setF2} out=${f2 + ' Hz'} /></div>`}
@@ -4325,7 +4325,7 @@
     }, [env, dur, ct]);
     const name = { q: '1/4 Dur', h: '1/2 Dur', s: '1/16 Dur' }[env];
     const cap = { en: `A grain = <b>envelope</b> × <b>contents</b>. ${dur} ms = ${d.Lg} samples at 44.1 kHz; the ${name} envelope ${env === 'h' ? 'rises for half the grain and falls for the other half (a triangle)' : `ramps over ${d.a} samples at each end`}, so there are no clicks or distortion at the beginning and end. ${ct === 'sine' ? `Spectrum width at −20 dB around 1 kHz: <b>${Math.round(d.bw)} Hz</b>. Sharper attacks (1/16 Dur) and shorter grains give <b>broader bandwidths</b>.` : 'The contents can come from any source: basic waveforms or samples.'}`,
-      ar: `الـ grain عبارة عن <b>envelope</b> مضروب في <b>contents</b>. الـ <bdi>${dur} ms</bdi> تساوي <bdi>${d.Lg}</bdi> sample على <bdi>44.1 kHz</bdi>، والـ envelope بتاع <bdi>${name}</bdi> ${env === 'h' ? 'بيطلع نص الـ grain وينزل النص التاني (مثلث)' : `بيطلع وينزل على <bdi>${d.a}</bdi> sample في كل طرف`}، فمفيش clicks أو تشويش في الأول والآخر. ${ct === 'sine' ? `عرض الـ spectrum عند <bdi>−20 dB</bdi> حوالين <bdi>1 kHz</bdi> قده <b><bdi>${Math.round(d.bw)} Hz</bdi></b>. الـ attacks الأحدّ (<bdi>1/16 Dur</bdi>) والـ grains الأقصر بيدّوا <b>bandwidth أعرض</b>.` : 'والـ contents ممكن تيجي من أي مصدر: waveforms بسيطة أو samples.'}` };
+      ar: `الـ grain عبارة عن <b>envelope</b> مضروب في <b>contents</b>. الـ <bdi dir="ltr">${dur} ms</bdi> تساوي <bdi dir="ltr">${d.Lg}</bdi> sample على <bdi dir="ltr">44.1 kHz</bdi>، والـ envelope بتاع <bdi dir="ltr">${name}</bdi> ${env === 'h' ? 'بيطلع نص الـ grain وينزل النص التاني (مثلث)' : `بيطلع وينزل على <bdi dir="ltr">${d.a}</bdi> sample في كل طرف`}، فمفيش clicks أو تشويش في الأول والآخر. ${ct === 'sine' ? `عرض الـ spectrum عند <bdi dir="ltr">−20 dB</bdi> حوالين <bdi dir="ltr">1 kHz</bdi> قده <b><bdi dir="ltr">${Math.round(d.bw)} Hz</bdi></b>. الـ attacks الأحدّ (<bdi dir="ltr">1/16 Dur</bdi>) والـ grains الأقصر بيدّوا <b>bandwidth أعرض</b>.` : 'والـ contents ممكن تيجي من أي مصدر: waveforms بسيطة أو samples.'}` };
     const X = f => 10 + f / 3000 * 300;
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['q', '1/4 Dur'], ['h', '1/2 Dur'], ['s', '1/16 Dur']]} mode=${env} set=${setEnv} />
@@ -4351,9 +4351,9 @@
       return { G: [G.filter((_, k) => k % 2 === 0), G.filter((_, k) => k % 2 === 1)], out: N(n, j => { const t = j / n; return G.reduce((s, [a, w]) => s + hann((t - a) / w), 0) * wv(t); }), wv };
     }, [m, seed]);
     const pk = Math.max(1, peak(d.out));
-    const cap = m === 'quasi' ? { en: '<b>Quasi-synchronous</b>: a grain stream of <b>equal duration grains</b> at regular intervals. With grains shorter than 50 ms this produces <b>amplitude modulation</b>. Grain streams with variable delays between grains, summed, resemble asynchronous synthesis.', ar: 'الـ <b>Quasi-synchronous</b>: سلسلة grains <b>كلها نفس المدة</b> على مسافات منتظمة. ولو الـ grains أقصر من <bdi>50 ms</bdi> ده بيطلع <b>amplitude modulation</b>. ولو الـ streams فيها تأخير متغير بين الـ grains، مجموعها بيشبه الـ asynchronous.' }
+    const cap = m === 'quasi' ? { en: '<b>Quasi-synchronous</b>: a grain stream of <b>equal duration grains</b> at regular intervals. With grains shorter than 50 ms this produces <b>amplitude modulation</b>. Grain streams with variable delays between grains, summed, resemble asynchronous synthesis.', ar: 'الـ <b>Quasi-synchronous</b>: سلسلة grains <b>كلها نفس المدة</b> على مسافات منتظمة. ولو الـ grains أقصر من <bdi dir="ltr">50 ms</bdi> ده بيطلع <b>amplitude modulation</b>. ولو الـ streams فيها تأخير متغير بين الـ grains، مجموعها بيشبه الـ asynchronous.' }
       : m === 'async' ? { en: '<b>Asynchronous</b>: grains are distributed <b>stochastically</b> with no quasi regularity (random start, duration and amplitude). Thousands of such grains give a cloud, a soundscape rather than a single tone.', ar: 'الـ <b>Asynchronous</b>: الـ grains متوزعة <b>عشوائيًا</b> من غير أي انتظام (بداية ومدة و amplitude عشوائيين). آلاف من الـ grains دي بتعمل سحابة، soundscape مش نغمة واحدة.' }
-      : { en: '<b>Pitch/Tempo-synchronous</b>: overlapping grain envelopes are <b>synchronous with the frequency of the grain waveform</b> (here each grain is two periods long and a new one starts every period), producing fewer artefacts. Used to preserve pitch or tempo while changing playback speed (e.g. Intakt, Kontakt).', ar: 'الـ <b>Pitch/Tempo-synchronous</b>: الـ envelopes المتداخلة بتاعة الـ grains <b>متزامنة مع الـ frequency بتاعة الـ waveform</b> (هنا كل grain طولها two periods وكل period بتبدأ واحدة جديدة)، فالـ artefacts بتقل. بتُستخدم عشان نحافظ على الـ pitch أو الـ tempo وإحنا بنغيّر سرعة التشغيل (زي Intakt و Kontakt).' };
+      : { en: '<b>Pitch/Tempo-synchronous</b>: overlapping grain envelopes are <b>synchronous with the frequency of the grain waveform</b> (here each grain is two periods long and a new one starts every period), producing fewer artefacts. Used to preserve pitch or tempo while changing playback speed (e.g. Intakt, Kontakt).', ar: 'الـ <b><bdi dir="ltr">Pitch/Tempo-synchronous</bdi></b>: الـ envelopes المتداخلة بتاعة الـ grains <b>متزامنة مع الـ frequency بتاعة الـ waveform</b> (هنا كل grain طولها two periods وكل period بتبدأ واحدة جديدة)، فالـ artefacts بتقل. بتُستخدم عشان نحافظ على الـ pitch أو الـ tempo وإحنا بنغيّر سرعة التشغيل (زي Intakt و Kontakt).' };
     const lanes = d.G.length, LH = 30;
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['quasi', 'Quasi-synchronous'], ['async', 'Asynchronous'], ['pitch', 'Pitch-synchronous']]} mode=${m} set=${setM} />
@@ -4384,7 +4384,7 @@
     }, [nEv, seed]);
     const py = peak(d.y);
     const cap = { en: `granulation.m: <b>nEv = ${nEv}</b> grains, each of random length L between minL = fs × 0.01 = 441 and maxL = fs × 0.02 = 882 samples (10 to 20 ms), cut from a random place in the input (initIn) and added at a random place in the output (initOut). grainLn.m fades each grain in and out with a <b>Hanning</b> window of Lw = fs × 0.01 = 441 samples. ${nEv < 60 ? 'Few grains: they are separated by silences.' : 'Many overlapping grains: a sound texture, a cloud.'}`,
-      ar: `في granulation.m عندنا <b><bdi>nEv = ${nEv}</bdi></b> grain، كل واحدة طولها L عشوائي بين <bdi>441</bdi> و <bdi>882</bdi> sample (من <bdi>10</bdi> لـ <bdi>20 ms</bdi>):` + L('minL = fs × 0.01 = 441 ; maxL = fs × 0.02 = 882') + `كل grain بتتقطع من مكان عشوائي في الـ input (initIn) وتتجمع في مكان عشوائي في الـ output (initOut). والـ grainLn.m بيعمل fade in و fade out لكل grain بـ <b>Hanning</b> window طولها <bdi>Lw = 441</bdi> sample. ${nEv < 60 ? 'الـ grains قليلة، فبينها فترات سكوت.' : 'فيه grains كتير متداخلة، فبيطلع sound texture، سحابة.'}` };
+      ar: `في granulation.m عندنا <b><bdi dir="ltr">nEv = ${nEv}</bdi></b> grain، كل واحدة طولها L عشوائي بين <bdi dir="ltr">441</bdi> و <bdi dir="ltr">882</bdi> sample (من <bdi dir="ltr">10</bdi> لـ <bdi dir="ltr">20 ms</bdi>):` + L('minL = fs × 0.01 = 441 ; maxL = fs × 0.02 = 882') + `كل grain بتتقطع من مكان عشوائي في الـ input (initIn) وتتجمع في مكان عشوائي في الـ output (initOut). والـ grainLn.m بيعمل fade in و fade out لكل grain بـ <b>Hanning</b> window طولها <bdi dir="ltr">Lw = 441</bdi> sample. ${nEv < 60 ? 'الـ grains قليلة، فبينها فترات سكوت.' : 'فيه grains كتير متداخلة، فبيطلع sound texture، سحابة.'}` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Slider} label="Grains nEv" min=${10} max=${400} step=${10} v=${nEv} set=${setNEv} />
       <div className="mv5-row"><button className="fig-btn" onClick=${() => setSeed(s => s + 1)}>New random grains</button></div>
@@ -4411,7 +4411,7 @@
     const pitch = P0 / Pn, rep = C > M ? 'some segments are <b>repeated</b> (longer)' : C < M ? 'some segments are <b>eliminated</b> (shorter)' : 'each segment used once';
     const repA = C > M ? 'بعض الـ segments <b>بتتكرر</b> (أطول)' : C < M ? 'بعض الـ segments <b>بتتشال</b> (أقصر)' : 'كل segment مستخدمة مرة واحدة';
     const cap = { en: `PSOLA divides the waveform into <b>small overlapping segments</b> (two periods each, one per pitch period of ${P0} samples). Segments moved ${Pn > P0 ? '<b>further apart</b>' : Pn < P0 ? '<b>closer together</b>' : 'the same distance apart'} (every ${Pn} samples) → pitch × ${fx(pitch, 2)}, ${Pn > P0 ? 'lower' : Pn < P0 ? 'higher' : 'unchanged'}. ${C} segments from ${M}: ${rep}. They are recombined by <b>overlap-add</b>; unlike the phase vocoder there is no STFT. ${Pn > 2 * P0 ? 'Grains this far apart are separated by silences.' : ''}`,
-      ar: `الـ PSOLA بيقسم الـ waveform لـ <b>segments صغيرة متداخلة</b> (كل واحدة two periods، واحدة لكل pitch period طوله <bdi>${P0}</bdi> sample). لما الـ segments ${Pn > P0 ? '<b>تبعد عن بعض</b>' : Pn < P0 ? '<b>تقرب من بعض</b>' : 'تفضل على نفس المسافة'} (كل <bdi>${Pn}</bdi> sample) الـ pitch بيتضرب في <bdi>${fx(pitch, 2)}</bdi>، يعني ${Pn > P0 ? 'بيوطى' : Pn < P0 ? 'بيعلى' : 'مبيتغيرش'}. عندنا <bdi>${C}</bdi> segment من <bdi>${M}</bdi>، يعني ${repA}. وبعدين بتتجمع بالـ <b>overlap-add</b>، ومن غير STFT عكس الـ phase vocoder. ${Pn > 2 * P0 ? 'ولما الـ grains تبعد كده بيبقى بينها سكوت.' : ''}` };
+      ar: `الـ PSOLA بيقسم الـ waveform لـ <b>segments صغيرة متداخلة</b> (كل واحدة two periods، واحدة لكل pitch period طوله <bdi dir="ltr">${P0}</bdi> sample). لما الـ segments ${Pn > P0 ? '<b>تبعد عن بعض</b>' : Pn < P0 ? '<b>تقرب من بعض</b>' : 'تفضل على نفس المسافة'} (كل <bdi dir="ltr">${Pn}</bdi> sample) الـ pitch بيتضرب في <bdi dir="ltr">${fx(pitch, 2)}</bdi>، يعني ${Pn > P0 ? 'بيوطى' : Pn < P0 ? 'بيعلى' : 'مبيتغيرش'}. عندنا <bdi dir="ltr">${C}</bdi> segment من <bdi dir="ltr">${M}</bdi>، يعني ${repA}. وبعدين بتتجمع بالـ <b>overlap-add</b>، ومن غير STFT عكس الـ phase vocoder. ${Pn > 2 * P0 ? 'ولما الـ grains تبعد كده بيبقى بينها سكوت.' : ''}` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Slider} label="Spacing" min=${.5} max=${2.5} step=${.05} v=${sp} set=${setSp} out=${Pn + ' smp'} />
       <${Slider} label="Duration" min=${.5} max=${2} step=${.25} v=${du} set=${setDu} out=${'× ' + du} />
@@ -4471,7 +4471,7 @@
     const snap = d.snaps[Math.round(n / 2000)], pk = 1, zoom = n >= 3 * D ? Array.from(d.y.slice(n - 3 * D, n)) : null;
     const F1 = fs / D;
     const cap = { en: `Tuning: the period of the signal is the delay-line length plus the average group delay of the filter, and the fundamental is its reciprocal, so <b>D = Fs / F1</b>. With D = ${D}: F1 = 44100 / ${D} = <b>${fmt(F1, 2)} Hz</b>${mode === '200' ? ' (karplus.m)' : mode === '100' ? ', the A = 441 Hz case (D = 44100 / 441 = 100)' : ''}. The filter averages neighbouring samples with gain 0.99 &lt; 1, so at step n = ${n.toLocaleString('en-US')} the delay line is ${n ? 'smoother and smaller' : 'still white noise'}: high partials die first, like a plucked string.`,
-      ar: `الضبط (tuning): الـ period بتاع الإشارة = طول الـ delay line زائد متوسط الـ group delay بتاع الـ filter، والـ fundamental هو مقلوبه، فبيطلع <bdi>D = Fs / F1</bdi>:` + L(`D = ${D} → F1 = 44100 / ${D} = ${fmt(F1, 2)} Hz`) + (mode === '200' ? 'ودي حالة karplus.m. ' : mode === '100' ? 'ودي حالة <bdi>A = 441 Hz</bdi> اللي محتاجة <bdi>D = 100</bdi>. ' : '') + `الـ filter بياخد متوسط الـ samples اللي جنب بعض بـ gain قده <bdi>0.99</bdi> (أقل من 1)، فعند الـ step رقم <bdi>${n.toLocaleString('en-US')}</bdi> الـ delay line ${n ? 'بقى أنعم وأصغر' : 'لسه white noise'}: الـ partials العالية بتموت الأول زي الوتر لما يتشد.` };
+      ar: `الضبط (tuning): الـ period بتاع الإشارة = طول الـ delay line زائد متوسط الـ group delay بتاع الـ filter، والـ fundamental هو مقلوبه، فبيطلع <bdi dir="ltr">D = Fs / F1</bdi>:` + L(`D = ${D} → F1 = 44100 / ${D} = ${fmt(F1, 2)} Hz`) + (mode === '200' ? 'ودي حالة karplus.m. ' : mode === '100' ? 'ودي حالة <bdi dir="ltr">A = 441 Hz</bdi> اللي محتاجة <bdi dir="ltr">D = 100</bdi>. ' : '') + `الـ filter بياخد متوسط الـ samples اللي جنب بعض بـ gain قده <bdi dir="ltr">0.99</bdi> (أقل من 1)، فعند الـ step رقم <bdi dir="ltr">${n.toLocaleString('en-US')}</bdi> الـ delay line ${n ? 'بقى أنعم وأصغر' : 'لسه white noise'}: الـ partials العالية بتموت الأول زي الوتر لما يتشد.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['200', 'D = 200 (karplus.m)'], ['100', 'D = 100 (A 441 Hz)'], ['own', 'Try your own']]} mode=${mode} set=${m => { setMode(m); setPlay(false); }} />
       ${mode === 'own' && html`<${Slider} label="Delay D" min=${20} max=${400} v=${own} set=${setOwn} out=${own + ' smp'} />`}
@@ -4505,7 +4505,7 @@
     }, [p, b, env]);
     const nm = { string: 'String', snare: 'Snare', crash: 'Crash cymbal', plink: 'Metallic plink' }[pre];
     const cap = { en: `Start with a wavetable X of length <b>p = ${p}</b> (here random). For t &gt; p, X(t) = +½(X(t − p) + X(t − p + 1)) with probability <b>b = ${fx(b, 2)}</b>, else −½(…). p sets the decay (big = long) and the pitch somewhat (big = low); b is the <b>blend factor</b> (b = ½ makes the best snare). ${pre !== 'own' ? `<b>${nm}</b> preset: ${pre === 'crash' ? 'b &gt; 0.98, p = 200 to 800, random table, decaying envelope.' : pre === 'plink' ? 'b &gt; 0.98, p = 5 to 50, random table, envelope decay.' : pre === 'string' ? 'b &lt; 0.05, p = 20 to 400, random table.' : 'b = ½, p in 150 to 500.'} ` : ''}It falls to 1% of its start level after <b>${d.dec == null ? 'more than 0.5 s' : fx(d.dec, 2) + ' s'}</b>.`,
-      ar: `بنبدأ بـ wavetable اسمه X طوله <bdi>p = ${p}</bdi> (هنا عشوائي). ولكل t أكبر من p بنحسب المتوسط بالموجب باحتمال <bdi>b = ${fx(b, 2)}</bdi> وبالسالب غير كده:` + L('X(t) = ±½(X(t − p) + X(t − p + 1))') + `الـ p بيحدد الـ decay (كبير يعني طويل) وشوية الـ pitch (كبير يعني واطي)، والـ b هو الـ <b>blend factor</b> (لما <bdi>b = ½</bdi> بيطلع أحسن snare). ${pre !== 'own' ? `الـ preset بتاع الـ <b>${nm}</b>:` + L(pre === 'crash' ? 'b > 0.98, p = 200–800, random table, decaying envelope' : pre === 'plink' ? 'b > 0.98, p = 5–50, random table, envelope decay' : pre === 'string' ? 'b < 0.05, p = 20–400, random table' : 'b = ½, p = 150–500') : ''}الصوت بينزل لـ 1% من مستواه الأول بعد <b><bdi>${d.dec == null ? '> 0.5 s' : fx(d.dec, 2) + ' s'}</bdi></b>.` };
+      ar: `بنبدأ بـ wavetable اسمه X طوله <bdi dir="ltr">p = ${p}</bdi> (هنا عشوائي). ولكل t أكبر من p بنحسب المتوسط بالموجب باحتمال <bdi dir="ltr">b = ${fx(b, 2)}</bdi> وبالسالب غير كده:` + L('X(t) = ±½(X(t − p) + X(t − p + 1))') + `الـ p بيحدد الـ decay (كبير يعني طويل) وشوية الـ pitch (كبير يعني واطي)، والـ b هو الـ <b>blend factor</b> (لما <bdi dir="ltr">b = ½</bdi> بيطلع أحسن snare). ${pre !== 'own' ? `الـ preset بتاع الـ <b>${nm}</b>:` + L(pre === 'crash' ? 'b > 0.98, p = 200–800, random table, decaying envelope' : pre === 'plink' ? 'b > 0.98, p = 5–50, random table, envelope decay' : pre === 'string' ? 'b < 0.05, p = 20–400, random table' : 'b = ½, p = 150–500') : ''}الصوت بينزل لـ 1% من مستواه الأول بعد <b><bdi dir="ltr">${d.dec == null ? '> 0.5 s' : fx(d.dec, 2) + ' s'}</bdi></b>.` };
     return html`<${Fig} ar=${ar} cap=${cap}>
       <${Modes} list=${[['snare', 'Snare'], ['crash', 'Crash cymbal'], ['plink', 'Metallic plink'], ['string', 'String']]} mode=${pre} set=${pick} />
       <${Slider} label="Length p" min=${5} max=${800} v=${p} set=${own(setP)} />
@@ -4723,9 +4723,9 @@
   function Instr({ ar }) {
     const steps = [
       { en: '<b>Recorded audio</b> sends the sound itself: samples, one after the other. One second of stereo CD audio is 44100 × 16 × 2 / 8 = <b>176,400 bytes</b>.', ar: 'الـ <b>audio المتسجل</b> بيبعت الصوت نفسه: samples ورا بعض. ثانية واحدة من الـ stereo CD audio حجمها<span class="ltr">44100 × 16 × 2 / 8 = 176,400 bytes</span>' },
-      { en: '<b>MIDI</b> sends <b>instructions</b> instead of audio samples: which note, how loud, which channel (what sound). A Note On is just <b>3 bytes</b>: 9C 50 7F.', ar: 'الـ <b>MIDI</b> بيبعت <b>تعليمات</b> بدل الـ audio samples: أنهي note، بصوت عالي قد إيه، وعلى أنهي channel (أنهي صوت). الـ Note On عبارة عن <b>3 bytes</b> بس: <bdi>9C 50 7F</bdi>.' },
+      { en: '<b>MIDI</b> sends <b>instructions</b> instead of audio samples: which note, how loud, which channel (what sound). A Note On is just <b>3 bytes</b>: 9C 50 7F.', ar: 'الـ <b>MIDI</b> بيبعت <b>تعليمات</b> بدل الـ audio samples: أنهي note، بصوت عالي قد إيه، وعلى أنهي channel (أنهي صوت). الـ Note On عبارة عن <b>3 bytes</b> بس: <bdi dir="ltr">9C 50 7F</bdi>.' },
       { en: 'The <b>responsibility of producing the sound is moved to the client</b>: a synthesiser module, sampler, soundcard or software synth turns the instructions into sound.', ar: '<b>مسؤولية إنتاج الصوت بتتنقل للـ client</b>: الـ synthesiser module أو الـ sampler أو الـ soundcard أو الـ software synth بيحوّل التعليمات لصوت.' },
-      { en: 'So a MIDI file needs only a few 100K bytes and very low bandwidth: MIDI works as a <b>compression tool</b> (and a compression control language in MPEG-4 and HTML5).', ar: 'عشان كده ملف الـ MIDI محتاج كام 100K bytes بس و bandwidth قليلة جدًا: الـ MIDI بيشتغل كـ <b>compression tool</b> (وكـ compression control language في الـ MPEG-4 والـ HTML5).' }
+      { en: 'So a MIDI file needs only a few 100K bytes and very low bandwidth: MIDI works as a <b>compression tool</b> (and a compression control language in MPEG-4 and HTML5).', ar: 'عشان كده ملف الـ MIDI محتاج كام 100K bytes بس و bandwidth قليلة جدًا: الـ MIDI بيشتغل كـ <b>compression tool</b> (وكـ compression control language في الـ <bdi dir="ltr">MPEG-4</bdi> والـ HTML5).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3200);
     const W = 300, wave = N(61, k => { const t = k / 60; return [10 + t * 280, 46 - 30 * Math.sin(2 * Math.PI * 4 * t) * Math.exp(-t * 1.6)]; });
@@ -4765,8 +4765,8 @@
       { en: '<b>MIDI control input devices</b>: usually a keyboard with extra controls (sustain, pitch bend, modulation, aftertouch), or another instrument (customised guitar, wind controller), a bunch of controllers, motion capture, even "mind control".', ar: 'الـ <b>MIDI control input devices</b>: غالبًا keyboard عليه controls زيادة (sustain و pitch bend و modulation و aftertouch)، أو آلة تانية (guitar متعدّلة أو wind controller)، أو مجموعة controllers، أو motion capture، وحتى "mind control".' },
       { en: '<b>MIDI interfaces</b> connect MIDI devices to the computer, wired or wireless: MIDI cable, USB, Ethernet, Bluetooth or WiFi. Often bundled into the keyboard or an audio interface.', ar: 'الـ <b>MIDI interfaces</b> بتوصّل أجهزة الـ MIDI بالكمبيوتر، سلكي أو لاسلكي: MIDI cable أو USB أو Ethernet أو Bluetooth أو WiFi. وغالبًا بتبقى جوّه الـ keyboard أو الـ audio interface.' },
       { en: 'The <b>computer</b> is the heart of the system: it controls scheduling, synchronisation and recording of all data. The <b>sequencer</b> (hardware or software) now lives inside Digital Audio Workstations (Cubase, Logic, Sonar, Live, Reason).', ar: 'الـ <b>computer</b> هو قلب الـ system: بيتحكم في الـ scheduling والـ synchronisation وتسجيل كل الـ data. والـ <b>sequencer</b> (hardware أو software) بقى جوّه الـ Digital Audio Workstations زي Cubase و Logic و Sonar و Live و Reason.' },
-      { en: 'The <b>synthesiser / sampler</b> is the tone generation unit: it makes the sound (pitch, loudness, tone colour). It has MIDI IN/OUT and/or USB/Bluetooth/WiFi, and can be software (softsynths such as VSTi, Audio Units).', ar: 'الـ <b>synthesiser / sampler</b> هو الـ tone generation unit: بيطلّع الصوت (pitch و loudness و tone colour). عنده MIDI IN/OUT و/أو USB/Bluetooth/WiFi، وممكن يبقى software (softsynths زي VSTi و Audio Units).' },
-      { en: '<b>MIDI control output devices</b>: MIDI controls more than sound: lighting, robotics (Pat Metheny\'s Orchestrion), video systems (video DJing), MPEG-4 compression, even "hamster control".', ar: 'الـ <b>MIDI control output devices</b>: الـ MIDI بيتحكم في حاجات غير الصوت: الإضاءة، والـ robotics (الـ Orchestrion بتاع Pat Metheny)، والـ video systems (الـ video DJing)، والـ MPEG-4 compression، وحتى "hamster control".' }
+      { en: 'The <b>synthesiser / sampler</b> is the tone generation unit: it makes the sound (pitch, loudness, tone colour). It has MIDI IN/OUT and/or USB/Bluetooth/WiFi, and can be software (softsynths such as VSTi, Audio Units).', ar: 'الـ <b>synthesiser أو الـ sampler</b> هو الـ tone generation unit: بيطلّع الصوت (pitch و loudness و tone colour). عنده <bdi dir="ltr">MIDI IN/OUT</bdi> و/أو <bdi dir="ltr">USB/Bluetooth/WiFi</bdi>، وممكن يبقى software (softsynths زي VSTi و Audio Units).' },
+      { en: '<b>MIDI control output devices</b>: MIDI controls more than sound: lighting, robotics (Pat Metheny\'s Orchestrion), video systems (video DJing), MPEG-4 compression, even "hamster control".', ar: 'الـ <b>MIDI control output devices</b>: الـ MIDI بيتحكم في حاجات غير الصوت: الإضاءة، والـ robotics (الـ Orchestrion بتاع Pat Metheny)، والـ video systems (الـ video DJing)، والـ <bdi dir="ltr">MPEG-4</bdi> compression، وحتى "hamster control".' }
     ];
     const [i, ctl] = useSteps(steps.length, 3200);
     const c = k => 'mv6-card' + (i === 0 ? '' : i === k ? ' hi' : ' lo');
@@ -4823,12 +4823,12 @@
   /* ── slide 15: MIDI IN, OUT and THROUGH in a chain ── */
   function Ports({ ar }) {
     const steps = [
-      { en: 'Older MIDI units have <b>three 5-pin ports</b> on the back: <b>MIDI IN</b>, <b>MIDI OUT</b> and <b>MIDI THROUGH</b> (THRU). The slide\'s set-up: a master keyboard, a MIDI interface / sound card and two modules.', ar: 'أجهزة الـ MIDI القديمة عليها <b>3 ports بـ 5 pins</b> من ورا: الـ <b>MIDI IN</b> والـ <b>MIDI OUT</b> والـ <b>MIDI THROUGH</b> (THRU). الـ set-up اللي في الـ slide: master keyboard و MIDI interface / sound card و 2 modules.' },
+      { en: 'Older MIDI units have <b>three 5-pin ports</b> on the back: <b>MIDI IN</b>, <b>MIDI OUT</b> and <b>MIDI THROUGH</b> (THRU). The slide\'s set-up: a master keyboard, a MIDI interface / sound card and two modules.', ar: 'أجهزة الـ MIDI القديمة عليها <b>3 ports بـ 5 pins</b> من ورا: الـ <b>MIDI IN</b> والـ <b>MIDI OUT</b> والـ <b>MIDI THROUGH</b> <bdi dir="ltr">(THRU)</bdi>. الـ set-up اللي في الـ slide فيه master keyboard و <bdi dir="ltr">MIDI interface / sound card</bdi> و 2 modules.' },
       { en: '<b>MIDI OUT</b> transmits all the MIDI data the device <b>generates itself</b>: the keys played on the master keyboard go to the interface\'s IN.', ar: 'الـ <b>MIDI OUT</b> بيبعت كل الـ MIDI data اللي الجهاز <b>بيطلّعها بنفسه</b>: الـ keys اللي بتتعزف على الـ master keyboard بتروح للـ IN بتاع الـ interface.' },
       { en: '<b>MIDI IN</b> receives all MIDI data: the interface\'s OUT feeds the keyboard\'s IN.', ar: 'الـ <b>MIDI IN</b> بيستقبل كل الـ MIDI data: الـ OUT بتاع الـ interface داخل على الـ IN بتاع الـ keyboard.' },
       { en: '<b>MIDI THROUGH</b> echoes the data received at MIDI IN: the keyboard passes it on to Module A.', ar: 'الـ <b>MIDI THROUGH</b> بيعيد الـ data اللي وصلت على الـ MIDI IN: الـ keyboard بيعدّيها لـ Module A.' },
       { en: 'Module A echoes it again from its THRU to Module B, and so on (etc.): one stream reaches every module in the chain.', ar: 'الـ Module A بيعيدها تاني من الـ THRU بتاعه لـ Module B، وهكذا (etc.): نفس الـ stream بتوصل لكل module في السلسلة.' },
-      { en: '<b>Modern interfaces</b>: many devices bundle IN/OUT/THROUGH and connect directly to the computer, wired (USB/Ethernet) or wireless (Bluetooth/WiFi).', ar: 'الـ <b>Modern interfaces</b>: أجهزة كتير بتجمع الـ IN/OUT/THROUGH في وصلة واحدة وبتتوصل بالكمبيوتر على طول، سلكي (USB/Ethernet) أو لاسلكي (Bluetooth/WiFi).' }
+      { en: '<b>Modern interfaces</b>: many devices bundle IN/OUT/THROUGH and connect directly to the computer, wired (USB/Ethernet) or wireless (Bluetooth/WiFi).', ar: 'الـ <b>Modern interfaces</b>: أجهزة كتير بتجمع الـ <bdi dir="ltr">IN/OUT/THROUGH</bdi> في وصلة واحدة وبتتوصل بالكمبيوتر على طول، سلكي (<bdi dir="ltr">USB/Ethernet</bdi>) أو لاسلكي (<bdi dir="ltr">Bluetooth/WiFi</bdi>).' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
     const mv = !calm();
@@ -4869,9 +4869,9 @@
       { en: 'Each hex digit is 4 bits, so each byte is 8 bits.', ar: 'كل hex digit عبارة عن 4 bits، فكل byte عبارة عن 8 bits.' },
       { en: 'The <b>most significant bit</b> tells the byte type: <b>1 = status byte</b>, <b>0 = data byte</b>. A message = one status byte + up to two data bytes.', ar: 'الـ <b>most significant bit</b> بيقول نوع الـ byte: الـ <b>1 يبقى status byte</b> والـ <b>0 يبقى data byte</b>. الـ message عبارة عن status byte واحد وبعده لحد 2 data bytes.' },
       { en: 'In the status byte, the <b>3 bits after the MSB</b> identify the message: 001, so the first hex digit is 9 = <b>Note On</b>.', ar: 'في الـ status byte، الـ <b>3 bits اللي بعد الـ MSB</b> بيحددوا الـ message: هنا 001، فأول hex digit بيبقى 9 يعني <b>Note On</b>.' },
-      { en: 'The <b>4 low-order bits</b> are the channel: 1100 = C = 12. Musicians count channels 1 to 16, so this is <b>channel 12 + 1 = 13</b> (4 bits give 16 channels).', ar: 'الـ <b>4 low-order bits</b> هما الـ channel: 1100 يعني C يعني 12. الموسيقيين بيعدّوا الـ channels من 1 لـ 16، فده <b>channel 13</b> (يعني 12 + 1)، والـ 4 bits بيدّوا 16 channel.' },
+      { en: 'The <b>4 low-order bits</b> are the channel: 1100 = C = 12. Musicians count channels 1 to 16, so this is <b>channel 12 + 1 = 13</b> (4 bits give 16 channels).', ar: 'الـ <b>4 low-order bits</b> هما الـ channel وقيمتهم 1100 يعني C يعني 12. الموسيقيين بيعدّوا الـ channels من 1 لـ 16، فده <b>channel 13</b> (يعني <bdi dir="ltr">12&nbsp;+&nbsp;1</bdi>)، والـ 4 bits بيدّوا 16 channel.' },
       { en: 'Data byte 1: MSB 0, so 7 bits of value (0 to 127). 50 = 5×16 + 0 = <b>80</b>: the key (note) number.', ar: 'الـ data byte الأول: الـ MSB بـ 0، فالقيمة 7 bits (من 0 لـ 127). هنا<span class="ltr">50 = 5×16 + 0 = 80</span>وده رقم الـ key (الـ note).' },
-      { en: 'Data byte 2: 7F = 7×16 + 15 = <b>127</b>, the largest 7-bit value: maximum velocity. <b>9C 50 7F = Note On, channel 13, key 80, velocity 127.</b>', ar: 'الـ data byte التاني:<span class="ltr">7F = 7×16 + 15 = 127</span>وده أكبر قيمة في 7 bits يعني أقصى velocity. يعني الـ message دي <b>Note On على channel 13، key 80، velocity 127</b>.' }
+      { en: 'Data byte 2: 7F = 7×16 + 15 = <b>127</b>, the largest 7-bit value: maximum velocity. <b>9C 50 7F = Note On, channel 13, key 80, velocity 127.</b>', ar: 'الـ data byte التاني:<span class="ltr">7F = 7×16 + 15 = 127</span>وده أكبر قيمة في 7 bits يعني أقصى velocity. يعني الـ message دي <b>Note On على channel 13 و key 80 و velocity 127</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
     const BY = [0x9C, 0x50, 0x7F];
@@ -4897,10 +4897,10 @@
   function Classes({ ar }) {
     const steps = [
       { en: '<b>MIDI messages</b> fall into two families.', ar: 'الـ <b>MIDI messages</b> بتتقسم لعيلتين.' },
-      { en: '<b>Channel messages</b> carry a channel number in the status byte (status 8x to Ex).', ar: 'الـ <b>Channel messages</b> شايلة رقم channel في الـ status byte (الـ status من <bdi>8x</bdi> لـ <bdi>Ex</bdi>).' },
-      { en: 'They are <b>voice messages</b> (play and shape notes) and <b>mode messages</b> (Control Change Bx with first data byte 121 to 127: how an instrument processes voice messages).', ar: 'وبتتقسم لـ <b>voice messages</b> (بتشغّل الـ notes وتغيّر صوتها) و <b>mode messages</b> (الـ Control Change <bdi>Bx</bdi> لما أول data byte يبقى من 121 لـ 127: بتحدد الآلة تتعامل إزاي مع الـ voice messages).' },
-      { en: '<b>System messages</b> are not channel specific (status Fx).', ar: 'الـ <b>System messages</b> مش خاصة بـ channel معيّن (الـ status <bdi>Fx</bdi>).' },
-      { en: 'They are <b>common</b> (unrelated messages, e.g. Song Select F3), <b>real-time</b> (timing and synchronisation, e.g. Timing Clock F8) and <b>exclusive</b> (Sysex, bracketed by F0 and F7).', ar: 'وبتتقسم لـ <b>common</b> (رسايل ملهاش علاقة ببعض، زي الـ Song Select <bdi>F3</bdi>)، و <b>real-time</b> (للـ timing والـ synchronisation، زي الـ Timing Clock <bdi>F8</bdi>)، و <b>exclusive</b> (الـ Sysex، محصورة بين <bdi>F0</bdi> و <bdi>F7</bdi>).' }
+      { en: '<b>Channel messages</b> carry a channel number in the status byte (status 8x to Ex).', ar: 'الـ <b>Channel messages</b> شايلة رقم channel في الـ status byte (الـ status من <bdi dir="ltr">8x</bdi> لـ <bdi dir="ltr">Ex</bdi>).' },
+      { en: 'They are <b>voice messages</b> (play and shape notes) and <b>mode messages</b> (Control Change Bx with first data byte 121 to 127: how an instrument processes voice messages).', ar: 'وبتتقسم لـ <b>voice messages</b> (بتشغّل الـ notes وتغيّر صوتها) و <b>mode messages</b> (الـ Control Change <bdi dir="ltr">Bx</bdi> لما أول data byte يبقى من 121 لـ 127: بتحدد الآلة تتعامل إزاي مع الـ voice messages).' },
+      { en: '<b>System messages</b> are not channel specific (status Fx).', ar: 'الـ <b>System messages</b> مش خاصة بـ channel معيّن (الـ status <bdi dir="ltr">Fx</bdi>).' },
+      { en: 'They are <b>common</b> (unrelated messages, e.g. Song Select F3), <b>real-time</b> (timing and synchronisation, e.g. Timing Clock F8) and <b>exclusive</b> (Sysex, bracketed by F0 and F7).', ar: 'وبتتقسم لـ <b>common</b> (رسايل ملهاش علاقة ببعض، زي الـ Song Select <bdi dir="ltr">F3</bdi>)، و <b>real-time</b> (للـ timing والـ synchronisation، زي الـ Timing Clock <bdi dir="ltr">F8</bdi>)، و <b>exclusive</b> (الـ Sysex، محصورة بين <bdi dir="ltr">F0</bdi> و <bdi dir="ltr">F7</bdi>).' }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
     const li = (show, hi, name, sub, kids) => html`<li className=${show ? '' : 'off'}><span className=${'nd' + (hi ? ' hi' : '')}>${name}${sub && html`<small>${sub}</small>`}</span>${kids}</li>`;
@@ -4991,7 +4991,7 @@
     const [src, setSrc] = useState('9C 50 7F'), [ex, setEx] = useState(0);
     const r = decode(src);
     const en = '<b>Decode any MIDI bytes.</b> Rule: MSB 1 = status byte, first hex digit = message type, second hex digit = channel − 1; data bytes are 00 to 7F. Pick one of the notes\' examples or type your own (several messages in a row work too).';
-    const a = '<b>فُك أي MIDI bytes.</b> القاعدة: لو الـ MSB بـ 1 يبقى status byte، أول hex digit هو نوع الـ message، وتاني hex digit هو الـ channel ناقص 1؛ والـ data bytes من <bdi>00</bdi> لـ <bdi>7F</bdi>. اختار مثال من الـ notes أو اكتب bytes من عندك (ينفع كذا message ورا بعض).';
+    const a = '<b>فُك أي MIDI bytes.</b> القاعدة: لو الـ MSB بـ 1 يبقى status byte، أول hex digit هو نوع الـ message، وتاني hex digit هو الـ channel ناقص 1؛ والـ data bytes من <bdi dir="ltr">00</bdi> لـ <bdi dir="ltr">7F</bdi>. اختار مثال من الـ notes أو اكتب bytes من عندك (ينفع كذا message ورا بعض).';
     return html`<figure className="fig mv6"><div className="fig-stage">
       <div className="mv6-chips">${DEX.map((x, k) => html`<button key=${k} className=${'fig-btn' + (ex === k ? ' sel' : '')} onClick=${() => { setEx(k); setSrc(x[0]); }}>${x[0]}</button>`)}</div>
       <div style=${{ maxWidth: '440px', margin: '0 auto' }}><input className="mv6-in" aria-label="MIDI bytes in hex" value=${src} spellCheck="false" autoComplete="off" onInput=${e => { setEx(null); setSrc(e.target.value); }} /></div>
@@ -5057,10 +5057,10 @@
     const y = SYS[s];
     const enInfo = y ? (y[1] === 'ex' ? `<b>${H2(s)} = ${y[0]}</b> (system exclusive). Sysex carries things that cannot be standardised (system-dependent creation and organisation of sounds): a stream of bytes with high bits 0, bracketed by F0 and F7. Its format is system dependent.`
       : `<b>${H2(s)} = ${y[0]}</b> (${GRP[y[1]][0]}${y[1] === 'rt' ? ': timing and synchronisation' : ': unrelated messages'}).${y[1] === 'co' ? ` Data bytes: <b>${y[2] || 'none'}</b>.` : ''}`) : `<b>${H2(s)}</b> is not one of the system messages listed on the slides.`;
-    const arInfo = y ? (y[1] === 'ex' ? `الـ <b>${y[0]}</b> هو <bdi>${H2(s)}</bdi> (system exclusive). الـ Sysex بيشيل الحاجات اللي ماينفعش تتعمل لها standard (طريقة عمل وتنظيم الأصوات الخاصة بكل system): stream من bytes الـ high bit بتاعها 0، محصورة بين <bdi>F0</bdi> و <bdi>F7</bdi>. والـ format بتاعها بيعتمد على الـ system.`
-      : `الـ <b>${y[0]}</b> هو <bdi>${H2(s)}</bdi> (${GRP[y[1]][1]}${y[1] === 'rt' ? ': للـ timing والـ synchronisation' : ': رسايل ملهاش علاقة ببعض'}).${y[1] === 'co' ? ` عدد الـ data bytes: <b>${y[2] || 'مفيش'}</b>.` : ''}`) : `الـ byte <bdi>${H2(s)}</bdi> مش من الـ system messages اللي في الـ slides.`;
+    const arInfo = y ? (y[1] === 'ex' ? `الـ <b>${y[0]}</b> هو <bdi dir="ltr">${H2(s)}</bdi> (system exclusive). الـ Sysex بيشيل الحاجات اللي ماينفعش تتعمل لها standard (طريقة عمل وتنظيم الأصوات الخاصة بكل system)، وهو stream من bytes الـ high bit بتاعها 0، محصورة بين <bdi dir="ltr">F0</bdi> و <bdi dir="ltr">F7</bdi>. والـ format بتاعها بيعتمد على الـ system.`
+      : `الـ <b>${y[0]}</b> هو <bdi dir="ltr">${H2(s)}</bdi> (${GRP[y[1]][1]}${y[1] === 'rt' ? ': للـ timing والـ synchronisation' : ': رسايل ملهاش علاقة ببعض'}).${y[1] === 'co' ? ` عدد الـ data bytes: <b>${y[2] || 'مفيش'}</b>.` : ''}`) : `الـ byte <bdi dir="ltr">${H2(s)}</bdi> مش من الـ system messages اللي في الـ slides.`;
     const en = 'System messages carry information that is not channel specific: their status bytes are F0 to FF. <b>Tap a byte.</b> ' + enInfo;
-    const a = 'الـ System messages بتشيل معلومات مش خاصة بـ channel: الـ status bytes بتاعتها من <bdi>F0</bdi> لـ <bdi>FF</bdi>. <b>دوس على byte.</b> ' + arInfo;
+    const a = 'الـ System messages بتشيل معلومات مش خاصة بـ channel: الـ status bytes بتاعتها من <bdi dir="ltr">F0</bdi> لـ <bdi dir="ltr">FF</bdi>. <b>دوس على byte.</b> ' + arInfo;
     return html`<figure className="fig mv6"><div className="fig-stage">
       <div className="mv6-sys">${N(16, k => { const b = 0xF0 + k, g = SYS[b]; return html`<button key=${k} className=${(g ? g[1] : 'un') + (b === s ? ' sel' : '')} aria-pressed=${b === s} onClick=${() => setS(b)}>${H2(b)}</button>`; })}</div>
       <div className="mv6-leg"><span><i style=${{ background: 'color-mix(in srgb, var(--ok) 24%, var(--paper))' }}></i>real-time</span><span><i style=${{ background: 'color-mix(in srgb, var(--k-mm) 22%, var(--paper))' }}></i>common</span><span><i style=${{ background: 'color-mix(in srgb, var(--pen) 22%, var(--paper))' }}></i>exclusive</span></div>
@@ -5101,7 +5101,7 @@
     const [hi, setHi] = useState(1), [lo, setLo] = useState(44);
     const v = hi * 256 + lo;
     const en = `Most MIDI numbers are <b>8-bit</b>: only 256 steps (0 to 255). Some manufacturers use <b>two values as the Most and Least Significant Bytes</b>: value = MSB × 256 + LSB, a <b>16-bit range</b> of 65,536 steps (0 to 65,535). Now: ${hi} × 256 + ${lo} = <b>${fmt(v)}</b>.`;
-    const a = `معظم أرقام الـ MIDI <b>8-bit</b>: يعني 256 خطوة بس (من 0 لـ 255). بعض الشركات بتستخدم <b>قيمتين كـ Most و Least Significant Bytes</b>: يعني <b>16-bit range</b> فيه 65,536 خطوة (من 0 لـ 65,535). دلوقتي:<span class="ltr">value = MSB × 256 + LSB = ${hi} × 256 + ${lo} = ${fmt(v)}</span>`;
+    const a = `معظم أرقام الـ MIDI <b><bdi dir="ltr">8-bit</bdi></b>، يعني 256 خطوة بس (من 0 لـ 255). بعض الشركات بتستخدم <b>قيمتين كـ Most و Least Significant Bytes</b>: يعني <b><bdi dir="ltr">16-bit</bdi> range</b> فيه 65,536 خطوة (من 0 لـ 65,535). دلوقتي:<span class="ltr">value = MSB × 256 + LSB = ${hi} × 256 + ${lo} = ${fmt(v)}</span>`;
     return html`<figure className="fig mv6"><div className="fig-stage">
       <div className="mv6-form">
         <label>MSB <span className="v">${hi} (${H2(hi)})</span><input type="range" min="0" max="255" value=${hi} onInput=${e => setHi(+e.target.value)} /></label>
@@ -5119,11 +5119,11 @@
   /* ── slides 35–45: the six MPEG-4 Structured Audio tools working together ── */
   function SaTools({ ar }) {
     const steps = [
-      { en: '<b>MPEG-4 Structured Audio</b> combines compression, synthesis and MIDI: encode <b>what note to play and how to play it</b> with a small number of parameters, and let the generation side create the audio.', ar: 'الـ <b>MPEG-4 Structured Audio</b> بيجمع الـ compression والـ synthesis والـ MIDI: بنعمل encode لـ <b>أنهي note تتعزف وتتعزف إزاي</b> بعدد صغير من الـ parameters، والـ generation side هو اللي بيعمل الصوت.' },
+      { en: '<b>MPEG-4 Structured Audio</b> combines compression, synthesis and MIDI: encode <b>what note to play and how to play it</b> with a small number of parameters, and let the generation side create the audio.', ar: 'الـ <b><bdi dir="ltr">MPEG-4</bdi> Structured Audio</b> بيجمع الـ compression والـ synthesis والـ MIDI: بنعمل encode لـ <b>أنهي note تتعزف وتتعزف إزاي</b> بعدد صغير من الـ parameters، والـ generation side هو اللي بيعمل الصوت.' },
       { en: '<b>SAOL</b> ("sail"), the Structured Audio Orchestra Language: the central part, a software-synthesis language that describes the synthesisers (instruments). Any method: FM, physical modelling, sample-based, granular, subtractive, FOF, hybrids.', ar: 'الـ <b>SAOL</b> (بتتنطق "sail")، الـ Structured Audio Orchestra Language: الجزء الأساسي، لغة software synthesis بتوصف الـ synthesisers (الـ instruments). أي طريقة: FM و physical modelling و sample-based و granular و subtractive و FOF والـ hybrids.' },
       { en: '<b>SASL</b>, the Score Language: tells the SAOL instruments what notes to play, how loud, what tempo, how long. Like MIDI but without its limits on time resolution and bandwidth; no looping, sections, repeats or expressions.', ar: 'الـ <b>SASL</b>، الـ Score Language: بتقول للـ SAOL instruments تعزف أنهي notes، وبصوت عالي قد إيه، وبأنهي tempo، ولمدة قد إيه. زي الـ MIDI بس من غير حدوده في الـ time resolution والـ bandwidth؛ ومافيهاش looping ولا sections ولا repeats ولا expressions.' },
       { en: '<b>SASBF</b>, the Sample Bank Format: efficiently transmits banks of samples for wavetable or sample-based synthesis (partly compatible with MIDI DLS).', ar: 'الـ <b>SASBF</b>، الـ Sample Bank Format: بيبعت banks من الـ samples بكفاءة للـ wavetable أو الـ sample-based synthesis (متوافق جزئيًا مع الـ MIDI DLS).' },
-      { en: '<b>MIDI semantics</b>: SAOL can also be driven by MIDI, the most common score format, using a subset of MIDI with some semantics redefined for MPEG-4.', ar: 'الـ <b>MIDI semantics</b>: الـ SAOL ممكن كمان يتحرك بالـ MIDI، أشهر format للـ score، باستخدام subset من الـ MIDI وبعض الـ semantics متعرّفة من جديد للـ MPEG-4.' },
+      { en: '<b>MIDI semantics</b>: SAOL can also be driven by MIDI, the most common score format, using a subset of MIDI with some semantics redefined for MPEG-4.', ar: 'الـ <b>MIDI semantics</b>: الـ SAOL ممكن كمان يتحرك بالـ MIDI، أشهر format للـ score، باستخدام subset من الـ MIDI وبعض الـ semantics متعرّفة من جديد للـ <bdi dir="ltr">MPEG-4</bdi>.' },
       { en: 'The <b>Scheduler</b>, the main body of Structured Audio: defines how SAOL creates sound when driven by MIDI or SASL.', ar: 'الـ <b>Scheduler</b>، الجزء الرئيسي في الـ Structured Audio: بيحدد الـ SAOL بيعمل الصوت إزاي لما يتحرك بالـ MIDI أو الـ SASL.' },
       { en: '<b>AudioBIFS</b> (part of BIFS) mixes and post-produces the audio scene at playback with tools and effects, to make the soundtrack.', ar: 'الـ <b>AudioBIFS</b> (جزء من الـ BIFS) بيعمل mixing و post-production للـ audio scene وقت التشغيل بأدوات و effects، عشان يطلع الـ soundtrack.' }
     ];
@@ -5152,7 +5152,7 @@
     const steps = [
       { en: 'Three <b>elementary sound streams</b> arrive: Piano, Bass and Vocal.', ar: 'بيوصل 3 <b>elementary sound streams</b>: الـ Piano والـ Bass والـ Vocal.' },
       { en: 'Each stream enters the scene through an <b>AudioSource</b> node.', ar: 'كل stream بيدخل الـ scene عن طريق node اسمها <b>AudioSource</b>.' },
-      { en: 'Effects are applied: an <b>AudioFX</b> on the Piano and on the Bass, an <b>AudioDelay</b> on the Vocal.', ar: 'بيتطبق عليهم effects: <b>AudioFX</b> على الـ Piano وعلى الـ Bass، و <b>AudioDelay</b> على الـ Vocal.' },
+      { en: 'Effects are applied: an <b>AudioFX</b> on the Piano and on the Bass, an <b>AudioDelay</b> on the Vocal.', ar: 'بيتطبق عليهم effects: الـ <b>AudioFX</b> على الـ Piano وعلى الـ Bass، والـ <b>AudioDelay</b> على الـ Vocal.' },
       { en: 'An <b>AudioMix</b> mixes Piano and Bass; the delayed Vocal gets another <b>AudioFX</b>.', ar: 'الـ <b>AudioMix</b> بيعمل mix للـ Piano والـ Bass؛ والـ Vocal بعد الـ delay بياخد <b>AudioFX</b> تاني.' },
       { en: 'The top <b>AudioMix</b> combines both branches into one sound: the scene describes the mixing and post-production at playback (e.g. voice over background music, fading after 10 s, new music with reverb).', ar: 'الـ <b>AudioMix</b> اللي فوق بيجمع الفرعين في صوت واحد: الـ scene بتوصف الـ mixing والـ post-production وقت التشغيل (زي صوت فوق background music، وبعدين fade بعد 10 ثواني، ومزيكا جديدة عليها reverb).' }
     ];
@@ -5317,8 +5317,8 @@
     const steps = [
       { en: 'In <b>series</b>, each effect feeds the next one: x(n) → effect 1 → effect 2 → y(n).', ar: 'في الـ <b>series</b> كل effect بيدخل في اللي بعده:<span class="ltr">x(n) → effect 1 → effect 2 → y(n)</span>' },
       { en: 'In a <b>parallel</b> audio chain the signal is split, each branch gets its own effect, and the branches are mixed (+).', ar: 'في الـ audio chain الـ <b>parallel</b> الإشارة بتتقسم، كل فرع ليه effect، وبعدين الفروع بتتجمع (+).' },
-      { en: 'Order matters. <b>Tremolo then Overdrive</b> (the lecture\'s tremolo1.m, 5 Hz, α = 0.5, then symclip.m) on a 0.9 sine: the clipping flattens the tremolo, the peaks only swing between <b>__A__</b>.', ar: 'الترتيب بيفرق. <b>Tremolo وبعده Overdrive</b> (الـ tremolo1.m بتاع المحاضرة على <bdi>5 Hz</bdi> و<bdi>α = 0.5</bdi> وبعده الـ symclip.m) على sine ارتفاعها 0.9: الـ clipping بيفرد الـ tremolo، والقمم بتتحرك بس بين<span class="ltr">__A__</span>' },
-      { en: '<b>Overdrive then Tremolo</b>: the same two effects, swapped. Now the tremolo comes after the clipping, so the peaks swing fully between <b>__B__</b>.', ar: '<b>Overdrive وبعده Tremolo</b>: نفس الـ effects بس بالعكس. دلوقتي الـ tremolo جاي بعد الـ clipping، فالقمم بتتحرك على الآخر بين<span class="ltr">__B__</span>' },
+      { en: 'Order matters. <b>Tremolo then Overdrive</b> (the lecture\'s tremolo1.m, 5 Hz, α = 0.5, then symclip.m) on a 0.9 sine: the clipping flattens the tremolo, the peaks only swing between <b>__A__</b>.', ar: 'الترتيب بيفرق. <b>Tremolo وبعده Overdrive</b> (الـ tremolo1.m بتاع المحاضرة على <bdi dir="ltr">5 Hz</bdi> و<bdi dir="ltr">α = 0.5</bdi> وبعده الـ symclip.m) على sine ارتفاعها 0.9: الـ clipping بيفرد الـ tremolo، والقمم بتتحرك بس بين<span class="ltr">__A__</span>' },
+      { en: '<b>Overdrive then Tremolo</b>: the same two effects, swapped. Now the tremolo comes after the clipping, so the peaks swing fully between <b>__B__</b>.', ar: 'الـ <b>Overdrive وبعده Tremolo</b>: نفس الـ effects بس بالعكس. دلوقتي الـ tremolo جاي بعد الـ clipping، فالقمم بتتحرك على الآخر بين<span class="ltr">__B__</span>' },
       { en: 'Same effects, drastically different output. There is <b>no absolute rule</b> for the order: it depends on the sound you want.', ar: 'نفس الـ effects والـ output مختلف خالص. ومفيش <b>قاعدة ثابتة</b> للترتيب: ده بيعتمد على الصوت اللي انت عايزه.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
@@ -5352,7 +5352,7 @@
   /* ── slide 3: the standard order and the Zoom G1/G1X pedal's 8 serial modules ── */
   const MODS = [['COMP/EFX', 'Compression', ['Compressor', 'Auto Wah', 'Booster', 'Tremolo', 'Phaser', '…']], ['DRIVE', 'Distortion', ['FD Clean', 'VX Clean', 'HW Clean', 'US Blues', 'BG Crunch', '…']], ['EQ', 'EQ', []], ['ZNR', 'Noise Redux', ['ZNR']], ['AMP', 'Amp Sim', ['AMP Sim.']], ['MODULATION', 'Modulation', ['Chorus', 'Ensemble', 'Flanger', 'Step', 'Pitch Shift', '…']], ['DELAY', 'Delay', ['Delay', 'Tape Echo', 'Analog Delay', 'Ping Pong Delay']], ['REVERB', 'Reverb', ['Hall', 'Room', 'Spring', 'Arena', 'Tiled Room']]];
   function FxPedal({ ar }) {
-    const steps = [{ en: 'A standard order: <b>Compression → Distortion → EQ → Noise Redux → Amp Sim → Modulation → Delay → Reverb</b>. The Zoom G1/G1X pedal links <b>8 modules in series</b> in this order. Tap a module.', ar: 'ترتيب standard:<span class="ltr">Compression → Distortion → EQ → Noise Redux → Amp Sim → Modulation → Delay → Reverb</span>والـ pedal بتاع Zoom G1/G1X بيوصل <b>8 modules ورا بعض</b> بنفس الترتيب ده. دوس على أي module.' }]
+    const steps = [{ en: 'A standard order: <b>Compression → Distortion → EQ → Noise Redux → Amp Sim → Modulation → Delay → Reverb</b>. The Zoom G1/G1X pedal links <b>8 modules in series</b> in this order. Tap a module.', ar: 'ترتيب standard:<span class="ltr">Compression → Distortion → EQ → Noise Redux → Amp Sim → Modulation → Delay → Reverb</span>والـ pedal بتاع <bdi dir="ltr">Zoom G1/G1X</bdi> بيوصل <b>8 modules ورا بعض</b> بنفس الترتيب ده. دوس على أي module.' }]
       .concat(MODS.map(([m, s, t], j) => ({ en: `Module ${j + 1}: <b>${m}</b> (${s}). ${t.length ? 'You pick one effect type from several: ' + t.join(', ') + '.' : 'The slide lists no types under it.'}`, ar: `الـ module رقم ${j + 1} هو <b>${m}</b> (${s}). ${t.length ? 'بتختار effect type واحد من كذا اختيار (تحت).' : 'الـ slide مش كاتبة types تحته.'}` })));
     const [i, ctl] = useSteps(steps.length, 1700);
     const cur = i - 1;
@@ -5437,17 +5437,17 @@
   function EqFlow({ ar }) {
     const [kind, setKind] = useState('shelf');
     const S = kind === 'shelf' ? [
-      { en: '<b>x(n)</b> enters and is split three ways: into A(z), into the ± node, and straight past everything to the last +.', ar: 'الـ <b>x(n)</b> بتدخل وبتتقسم 3 طرق: لـ A(z)، وللـ ± node، وطريق مباشر لآخر +.' },
-      { en: '<b>A(z)</b> is a first-order <b>allpass</b>: it passes all frequencies but modifies their phase. y1(n) = a·x(n) + x(n−1) − a·y1(n−1), with a = a<sub>B</sub> (boost) or a<sub>C</sub> (cut).', ar: 'الـ <b>A(z)</b> ده <b>allpass</b> من الدرجة الأولى: بيعدّي كل الترددات بس بيغيّر الـ phase بتاعها.<span class="ltr">y1(n) = a·x(n) + x(n−1) − a·y1(n−1)</span>' },
-      { en: '<b>±</b>: + for the LF (bass) shelf, − for the HF (treble) shelf. For the bass shelf, low frequencies leave A(z) in phase (A ≈ +1) so x + y1 ≈ 2x; high frequencies leave inverted (A ≈ −1) and cancel.', ar: 'الـ <b>±</b> بتبقى + للـ LF shelf و − للـ HF shelf. في الـ bass shelf الترددات الواطية بتطلع من A(z) بنفس الـ phase يعني <bdi>A ≈ +1</bdi>، فالمجموع تقريبًا 2x؛ والعالية بتطلع مقلوبة يعني <bdi>A ≈ −1</bdi> فبتلغي بعض.' },
-      { en: '<b>× H0/2</b> scales that band, with H0 = V0 − 1 and V0 = 10^(G/20).', ar: 'الـ <b>× H0/2</b> بيكبّر الـ band دي، والـ H0 هي <bdi>V0 − 1</bdi> والـ V0 هي <bdi>10^(G/20)</bdi>.' },
-      { en: 'The direct x(n) is added: <b>y(n) = (H0/2)(x(n) ± y1(n)) + x(n)</b>. In the shelf band y ≈ (1 + H0)·x = V0·x; elsewhere y ≈ x.', ar: 'الـ x(n) المباشرة بتتجمع:<span class="ltr">y(n) = (H0/2)(x(n) ± y1(n)) + x(n)</span>في الـ band بتاعة الـ shelf الناتج تقريبًا <bdi>V0·x</bdi>، وفي الباقي تقريبًا x.' }
+      { en: '<b>x(n)</b> enters and is split three ways: into A(z), into the ± node, and straight past everything to the last +.', ar: 'الـ <b><bdi dir="ltr">x(n)</bdi></b> بتدخل وبتتقسم 3 طرق: لـ <bdi dir="ltr">A(z)</bdi>، وللـ ± node، وطريق مباشر لآخر +.' },
+      { en: '<b>A(z)</b> is a first-order <b>allpass</b>: it passes all frequencies but modifies their phase. y1(n) = a·x(n) + x(n−1) − a·y1(n−1), with a = a<sub>B</sub> (boost) or a<sub>C</sub> (cut).', ar: 'الـ <b><bdi dir="ltr">A(z)</bdi></b> ده <b>allpass</b> من الدرجة الأولى: بيعدّي كل الترددات بس بيغيّر الـ phase بتاعها.<span class="ltr">y1(n) = a·x(n) + x(n−1) − a·y1(n−1)</span>' },
+      { en: '<b>±</b>: + for the LF (bass) shelf, − for the HF (treble) shelf. For the bass shelf, low frequencies leave A(z) in phase (A ≈ +1) so x + y1 ≈ 2x; high frequencies leave inverted (A ≈ −1) and cancel.', ar: 'الـ <b>±</b> بتبقى + للـ LF shelf و − للـ HF shelf. في الـ bass shelf الترددات الواطية بتطلع من <bdi dir="ltr">A(z)</bdi> بنفس الـ phase يعني <bdi dir="ltr">A ≈ +1</bdi>، فالمجموع تقريبًا 2x؛ والعالية بتطلع مقلوبة يعني <bdi dir="ltr">A ≈ −1</bdi> فبتلغي بعض.' },
+      { en: '<b>× H0/2</b> scales that band, with H0 = V0 − 1 and V0 = 10^(G/20).', ar: 'الـ <b><bdi dir="ltr">× H0/2</bdi></b> بيكبّر الـ band دي، والـ H0 هي <bdi dir="ltr">V0 − 1</bdi> والـ V0 هي <bdi dir="ltr">10^(G/20)</bdi>.' },
+      { en: 'The direct x(n) is added: <b>y(n) = (H0/2)(x(n) ± y1(n)) + x(n)</b>. In the shelf band y ≈ (1 + H0)·x = V0·x; elsewhere y ≈ x.', ar: 'الـ <bdi dir="ltr">x(n)</bdi> المباشرة بتتجمع:<span class="ltr">y(n) = (H0/2)(x(n) ± y1(n)) + x(n)</span>في الـ band بتاعة الـ shelf الناتج تقريبًا <bdi dir="ltr">V0·x</bdi>، وفي الباقي تقريبًا x.' }
     ] : [
-      { en: '<b>x(n)</b> enters and is split three ways, as in the shelving filter.', ar: 'الـ <b>x(n)</b> بتدخل وبتتقسم 3 طرق زي الـ shelving filter.' },
-      { en: '<b>A2(z)</b> is a second-order <b>allpass</b>; its centre is set by d = −cos(2πfc/fs) and its width by a<sub>B</sub>/a<sub>C</sub> (from the bandwidth fb).', ar: 'الـ <b>A2(z)</b> ده <b>allpass</b> من الدرجة التانية؛ المركز بتاعه بيتحدد بـ <bdi>d = −cos(2πfc/fs)</bdi> والعرض بـ a<sub>B</sub> أو a<sub>C</sub> (من الـ bandwidth اللي هي fb).' },
-      { en: '<b>× (−1)</b> then + gives x(n) − y1(n). At fc, A2 = −1 so x − y1 = 2x; far from fc, A2 ≈ +1 and they cancel.', ar: 'الـ <b>× (−1)</b> وبعدها + بيدّوا <bdi>x(n) − y1(n)</bdi>. عند fc الـ A2 بتساوي −1 فالناتج 2x؛ وبعيد عن fc الـ A2 تقريبًا +1 فبيلغوا بعض.' },
-      { en: '<b>× H0/2</b> scales the band around fc (H0 = V0 − 1).', ar: 'الـ <b>× H0/2</b> بيكبّر الـ band اللي حوالين fc.' },
-      { en: 'Add the direct x(n): <b>y(n) = (H0/2)(x(n) − y1(n)) + x(n)</b>, i.e. H(z) = 1 + (H0/2)(1 − A2(z)). At fc the gain is V0; far away it is 1.', ar: 'نجمع الـ x(n) المباشرة:<span class="ltr">y(n) = (H0/2)(x(n) − y1(n)) + x(n)</span>يعني عند fc الـ gain بيبقى V0، وبعيد عنها بيبقى 1.' }
+      { en: '<b>x(n)</b> enters and is split three ways, as in the shelving filter.', ar: 'الـ <b><bdi dir="ltr">x(n)</bdi></b> بتدخل وبتتقسم 3 طرق زي الـ shelving filter.' },
+      { en: '<b>A2(z)</b> is a second-order <b>allpass</b>; its centre is set by d = −cos(2πfc/fs) and its width by a<sub>B</sub>/a<sub>C</sub> (from the bandwidth fb).', ar: 'الـ <b><bdi dir="ltr">A2(z)</bdi></b> ده <b>allpass</b> من الدرجة التانية؛ المركز بتاعه بيتحدد بـ <bdi dir="ltr">d = −cos(2πfc/fs)</bdi> والعرض بـ a<sub>B</sub> أو a<sub>C</sub> (من الـ bandwidth اللي هي fb).' },
+      { en: '<b>× (−1)</b> then + gives x(n) − y1(n). At fc, A2 = −1 so x − y1 = 2x; far from fc, A2 ≈ +1 and they cancel.', ar: 'الـ <b><bdi dir="ltr">× (−1)</bdi></b> وبعدها الـ + بيدّوا <bdi dir="ltr">x(n) − y1(n)</bdi>. عند fc الـ A2 بتساوي <bdi dir="ltr">−1</bdi> فالناتج 2x؛ وبعيد عن fc الـ A2 تقريبًا <bdi dir="ltr">+1</bdi> فبيلغوا بعض.' },
+      { en: '<b>× H0/2</b> scales the band around fc (H0 = V0 − 1).', ar: 'الـ <b><bdi dir="ltr">× H0/2</bdi></b> بيكبّر الـ band اللي حوالين fc.' },
+      { en: 'Add the direct x(n): <b>y(n) = (H0/2)(x(n) − y1(n)) + x(n)</b>, i.e. H(z) = 1 + (H0/2)(1 − A2(z)). At fc the gain is V0; far away it is 1.', ar: 'نجمع الـ <bdi dir="ltr">x(n)</bdi> المباشرة:<span class="ltr">y(n) = (H0/2)(x(n) − y1(n)) + x(n)</span>يعني عند fc الـ gain بيبقى V0، وبعيد عنها بيبقى 1.' }
     ];
     const [i, ctl] = useSteps(S.length, 2600);
     const on = k => i >= k ? 'var(--k-mm)' : 'var(--faint)', pk = kind === 'peak';
@@ -5476,7 +5476,7 @@
     const [G, setG] = useState(4);
     const V0 = Math.pow(10, G / 20), H0 = V0 - 1, top = Math.max(1, V0) * 1.1, H = 70;
     const s = N(201, k => Math.sin(2 * Math.PI * 2 * k / 200));
-    const ex = { 4: ['G = 4 dB is the EQ demo: V0 = 1.585, H0 = 0.585.', 'الـ <bdi>G = 4 dB</bdi> هو الـ demo بتاع الـ EQ:<span class="ltr">V0 = 1.585, H0 = 0.585</span>'], 20: ['G = 20 dB: V0 = 10, H0 = 9 (ten times the amplitude).', 'الـ <bdi>G = 20 dB</bdi> يعني الـ amplitude بتتضرب في 10:<span class="ltr">V0 = 10, H0 = 9</span>'], 6: ['G = 6 dB: V0 ≈ 1.995, about doubling the amplitude.', 'الـ <bdi>G = 6 dB</bdi> يعني الـ amplitude تقريبًا بتتضاعف:<span class="ltr">V0 ≈ 1.995</span>'] }[G];
+    const ex = { 4: ['G = 4 dB is the EQ demo: V0 = 1.585, H0 = 0.585.', 'الـ <bdi dir="ltr">G = 4 dB</bdi> هو الـ demo بتاع الـ EQ:<span class="ltr">V0 = 1.585, H0 = 0.585</span>'], 20: ['G = 20 dB: V0 = 10, H0 = 9 (ten times the amplitude).', 'الـ <bdi dir="ltr">G = 20 dB</bdi> يعني الـ amplitude بتتضرب في 10:<span class="ltr">V0 = 10, H0 = 9</span>'], 6: ['G = 6 dB: V0 ≈ 1.995, about doubling the amplitude.', 'الـ <bdi dir="ltr">G = 6 dB</bdi> يعني الـ amplitude تقريبًا بتتضاعف:<span class="ltr">V0 ≈ 1.995</span>'] }[G];
     const en = (ex ? ex[0] + ' ' : '') + (G < 0 ? 'A negative G is a <b>cut</b>: V0 < 1 and H0 is negative.' : G === 0 ? 'G = 0 dB: V0 = 1 and H0 = 0, the signal is unchanged.' : 'The coloured wave is the input (dashed, amplitude 1) multiplied by V0.');
     const a = (ex ? ex[1] : '') + (G < 0 ? 'لو الـ G بالسالب يبقى <b>cut</b>: الـ V0 أقل من 1 والـ H0 بالسالب.' : G === 0 ? 'لما الـ G بصفر الإشارة مش بتتغير.' : 'الموجة الملوّنة هي الـ input (المتقطعة، ارتفاعها 1) مضروبة في V0.');
     return html`<figure className="fig mv7"><div className="fig-stage">
@@ -5508,7 +5508,7 @@
     const out = filt.map(h => cabs([.5 + .5 * h[0], .5 * h[1]]));
     const en = mode === 'bp' ? '<b>Wah-wah</b>: a <b>bandpass</b> filter (BP) with a small bandwidth whose centre frequency is varied in time (here swept 500 ↔ 3000 Hz). The filtered signal (wah-mix) is added to the direct signal (direct-mix); 0.5 and 0.5 are example mixes.'
       : '<b>Phaser</b>: the same structure with a <b>notch</b> (band-reject) filter replacing the bandpass, so a moving dip is cut into the spectrum instead of a moving peak.';
-    const a = mode === 'bp' ? 'الـ <b>Wah-wah</b>: <b>bandpass</b> filter عرضه صغير والـ centre frequency بتاعته بتتغير مع الوقت (هنا من 500 لـ 3000 Hz ورجوع). الإشارة المفلترة (wah-mix) بتتجمع مع الإشارة المباشرة (direct-mix)؛ والـ 0.5 و0.5 قيم مثال.'
+    const a = mode === 'bp' ? 'الـ <b>Wah-wah</b> هو <b>bandpass</b> filter عرضه صغير والـ centre frequency بتاعته بتتغير مع الوقت (هنا من 500 لـ 3000 Hz ورجوع). الإشارة المفلترة (wah-mix) بتتجمع مع الإشارة المباشرة (direct-mix)؛ والـ 0.5 و0.5 قيم مثال.'
       : 'الـ <b>Phaser</b>: نفس التركيبة بس بـ <b>notch</b> filter بدل الـ bandpass، فبيتعمل وادي بيتحرك في الـ spectrum بدل قمة بتتحرك.';
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Chips} opts=${[['bp', 'Wah-wah (BP)'], ['notch', 'Phaser (notch)']]} v=${mode} set=${setMode} />
@@ -5561,7 +5561,7 @@
       { en: 'The <b>State Variable Filter</b> gives independent control of the cut-off (through F1) and the damping (through Q1), and outputs <b>lowpass yl, bandpass yb and highpass yh</b> at the same time. Example: fc = 1000 Hz, fs = 44100 Hz, d = 0.05.', ar: 'الـ <b>State Variable Filter</b> بيدّي تحكم مستقل في الـ cut-off (عن طريق F1) والـ damping (عن طريق Q1)، وبيطلّع <b>lowpass وbandpass وhighpass</b> في نفس الوقت. مثال:<span class="ltr">fc = 1000 Hz, fs = 44100 Hz, d = 0.05</span>' },
       { en: `Tuning coefficients: F1 = 2 sin(π·1000/44100) = 2 sin(0.07124) = <b>${fx(F1, 4)}</b>, Q1 = 2d = <b>${fx(Q1, 1)}</b>.`, ar: `معاملات الضبط:<span class="ltr">F1 = 2 sin(π·1000/44100) = ${fx(F1, 4)}<br>Q1 = 2d = ${fx(Q1, 1)}</span>` },
       { en: `First sample of a unit impulse (as wah_wah.m starts): yh(1) = x(1) = 1, yb(1) = F1·yh(1) = ${r(0)[1]}, yl(1) = F1·yb(1) = ${r(0)[2]}.`, ar: `أول sample من unit impulse (زي ما wah_wah.m بيبدأ):<span class="ltr">yh(1) = 1, yb(1) = ${r(0)[1]}, yl(1) = ${r(0)[2]}</span>` },
-      { en: `n = 2 (x = 0): yh = x − yl(1) − Q1·yb(1) = ${r(1)[0]}; yb = F1·yh + yb(1) = ${r(1)[1]}; yl = F1·yb + yl(1) = ${r(1)[2]}.`, ar: `عند n = 2 والـ x بصفر:<span class="ltr">yh = x − yl(1) − Q1·yb(1) = ${r(1)[0]}<br>yb = F1·yh + yb(1) = ${r(1)[1]}<br>yl = F1·yb + yl(1) = ${r(1)[2]}</span>` },
+      { en: `n = 2 (x = 0): yh = x − yl(1) − Q1·yb(1) = ${r(1)[0]}; yb = F1·yh + yb(1) = ${r(1)[1]}; yl = F1·yb + yl(1) = ${r(1)[2]}.`, ar: `عند <bdi dir="ltr">n&nbsp;=&nbsp;2</bdi> والـ x بصفر:<span class="ltr">yh = x − yl(1) − Q1·yb(1) = ${r(1)[0]}<br>yb = F1·yh + yb(1) = ${r(1)[1]}<br>yl = F1·yb + yl(1) = ${r(1)[2]}</span>` },
       { en: 'Each output feeds the next through ×F1 and an accumulator (T), and the highpass node subtracts the delayed lowpass and Q1 × the delayed bandpass. A lower damping d gives a smaller pass band.', ar: 'كل output بيدخل في اللي بعده عن طريق ×F1 وaccumulator (T)، والـ highpass node بتطرح الـ lowpass المتأخر و Q1 مضروبة في الـ bandpass المتأخر. والـ damping الأقل بيدّي pass band أصغر.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
@@ -5597,7 +5597,7 @@
     const R = F.map(f => svf(fc, d, fs, 2 * Math.PI * f / fs)), H = 110, lo = -40, hi = 40;
     const tt = N(201, k => k * 5 / 200), Ht = 50;
     const en = `wah_wah.m sweeps fc as a <b>triangle wave</b> between 500 and 3000 Hz at Fw = 2000 Hz per second, damping 0.05. <b>F1 must be recalculated every time fc changes</b>: now fc = ${Math.round(fc)} Hz, F1 = 2 sin(π fc/fs) = ${fx(F1, 4)}, Q1 = 2d = ${fx(2 * d, 3)}. The bandpass output (yb) is the wah. A lower damping gives a smaller pass band.`;
-    const a = `الـ wah_wah.m بيحرّك الـ fc كـ <b>triangle wave</b> بين 500 و3000 Hz بسرعة <bdi>Fw = 2000 Hz</bdi> في الثانية، والـ damping قيمته 0.05. <b>لازم نحسب F1 من جديد كل ما الـ fc تتغير</b>:<span class="ltr">fc = ${Math.round(fc)} Hz, F1 = 2 sin(π fc/fs) = ${fx(F1, 4)}, Q1 = 2d = ${fx(2 * d, 3)}</span>والـ bandpass output (yb) هو الـ wah. والـ damping الأقل بيدّي pass band أصغر.`;
+    const a = `الـ wah_wah.m بيحرّك الـ fc كـ <b>triangle wave</b> بين 500 و3000 Hz بسرعة <bdi dir="ltr">Fw = 2000 Hz</bdi> في الثانية، والـ damping قيمته 0.05. <b>لازم نحسب F1 من جديد كل ما الـ fc تتغير</b>:<span class="ltr">fc = ${Math.round(fc)} Hz, F1 = 2 sin(π fc/fs) = ${fx(F1, 4)}, Q1 = 2d = ${fx(2 * d, 3)}</span>والـ bandpass output (yb) هو الـ wah. والـ damping الأقل بيدّي pass band أصغر.`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Plot} h=${Ht} title="fc over 5 s: 500 ↔ 3000 Hz" right=${Math.round(fc) + ' Hz'}>
         <path d=${line(tt.map(tri), Ht, 400, 3100)} stroke="var(--graphite)" strokeWidth="1.6" fill="none" />
@@ -5620,15 +5620,15 @@
   function CombFlow({ ar, kind }) {
     const fir = kind === 'fir';
     const steps = fir ? [
-      { en: 'The input <b>x(n)</b> goes straight to the output, multiplied by 1.', ar: 'الـ input <b>x(n)</b> بيروح على طول للـ output مضروب في 1.' },
-      { en: 'A copy waits in the delay <b>T<sup>M</sup></b>: after M samples (a time τ) it comes out as <b>x(n − M)</b>.', ar: 'نسخة بتستنى في الـ delay <b>T<sup>M</sup></b>: بعد M samples (وقت τ) بتطلع <b>x(n − M)</b>.' },
+      { en: 'The input <b>x(n)</b> goes straight to the output, multiplied by 1.', ar: 'الـ input <b><bdi dir="ltr">x(n)</bdi></b> بيروح على طول للـ output مضروب في 1.' },
+      { en: 'A copy waits in the delay <b>T<sup>M</sup></b>: after M samples (a time τ) it comes out as <b>x(n − M)</b>.', ar: 'نسخة بتستنى في الـ delay <b>T<sup>M</sup></b>: بعد M samples (وقت τ) بتطلع <b><bdi dir="ltr">x(n&nbsp;−&nbsp;M)</bdi></b>.' },
       { en: 'The delayed copy is multiplied by the gain <b>g</b>.', ar: 'النسخة المتأخرة بتتضرب في الـ gain اللي هو <b>g</b>.' },
-      { en: 'And added to the input: <b>y(n) = x(n) + g·x(n − M)</b>, H(z) = 1 + g·z<sup>−M</sup>. A single delay: one echo (here M = 10, g = 0.5).', ar: 'وبتتجمع على الـ input:<span class="ltr">y(n) = x(n) + g·x(n − M)<br>H(z) = 1 + g·z^−M</span>يعني delay واحد: echo واحد بس (هنا <bdi>M = 10</bdi> و<bdi>g = 0.5</bdi>).' }
+      { en: 'And added to the input: <b>y(n) = x(n) + g·x(n − M)</b>, H(z) = 1 + g·z<sup>−M</sup>. A single delay: one echo (here M = 10, g = 0.5).', ar: 'وبتتجمع على الـ input:<span class="ltr">y(n) = x(n) + g·x(n − M)<br>H(z) = 1 + g·z^−M</span>يعني delay واحد: echo واحد بس (هنا <bdi dir="ltr">M = 10</bdi> و<bdi dir="ltr">g = 0.5</bdi>).' }
     ] : [
-      { en: 'The input <b>x(n)</b> is scaled by <b>c</b> (sometimes used to compensate the structure\'s high amplification).', ar: 'الـ input <b>x(n)</b> بيتضرب في <b>c</b> (ساعات بنستخدمه عشان نعوّض التكبير العالي بتاع التركيبة).' },
-      { en: 'The <b>output</b> y(n) (not the input) goes into the delay line <b>T<sup>M</sup></b> and comes back M samples later as <b>y(n − M)</b>.', ar: 'الـ <b>output</b> اللي هو y(n) (مش الـ input) بيدخل الـ delay line اللي هي <b>T<sup>M</sup></b> ويرجع بعد M samples كـ <b>y(n − M)</b>.' },
+      { en: 'The input <b>x(n)</b> is scaled by <b>c</b> (sometimes used to compensate the structure\'s high amplification).', ar: 'الـ input <b><bdi dir="ltr">x(n)</bdi></b> بيتضرب في <b>c</b> (ساعات بنستخدمه عشان نعوّض التكبير العالي بتاع التركيبة).' },
+      { en: 'The <b>output</b> y(n) (not the input) goes into the delay line <b>T<sup>M</sup></b> and comes back M samples later as <b>y(n − M)</b>.', ar: 'الـ <b>output</b> اللي هو <bdi dir="ltr">y(n)</bdi> (مش الـ input) بيدخل الـ delay line اللي هي <b>T<sup>M</sup></b> ويرجع بعد M samples كـ <b><bdi dir="ltr">y(n&nbsp;−&nbsp;M)</bdi></b>.' },
       { en: 'It is attenuated by <b>g</b> on each pass.', ar: 'وبيضعف بـ <b>g</b> في كل لفة.' },
-      { en: '<b>y(n) = c·x(n) + g·y(n − M)</b>: the signal circulates in the loop, giving an <b>endless</b> series of echoes, like reflections at both ends of a cylinder (here c = 1, M = 10, g = 0.5).', ar: 'المعادلة:<span class="ltr">y(n) = c·x(n) + g·y(n − M)</span>الإشارة بتلف في الـ loop، فبيطلع عدد <b>مالوش آخر</b> من الـ echoes، زي الانعكاسات على طرفين أسطوانة (هنا <bdi>c = 1</bdi> و<bdi>M = 10</bdi> و<bdi>g = 0.5</bdi>).' }
+      { en: '<b>y(n) = c·x(n) + g·y(n − M)</b>: the signal circulates in the loop, giving an <b>endless</b> series of echoes, like reflections at both ends of a cylinder (here c = 1, M = 10, g = 0.5).', ar: 'المعادلة:<span class="ltr">y(n) = c·x(n) + g·y(n − M)</span>الإشارة بتلف في الـ loop، فبيطلع عدد <b>مالوش آخر</b> من الـ echoes، زي الانعكاسات على طرفين أسطوانة (هنا <bdi dir="ltr">c = 1</bdi> و<bdi dir="ltr">M = 10</bdi> و<bdi dir="ltr">g = 0.5</bdi>).' }
     ];
     const [i, ctl] = useSteps(steps.length, 2400);
     const on = k => i >= k ? 'var(--k-mm)' : 'var(--faint)', g = 'var(--graphite)';
@@ -5666,7 +5666,7 @@
     const M = tau / 1000 * fs, Mr = Math.round(M), hits = RANGES.filter(r => inRange(tau, r)).map(r => r[0]);
     const ex = [[100, 44100, '100 ms @ 44.1 kHz'], [1.25, 8000, '1.25 ms @ 8 kHz'], [100, 8000, '100 ms @ 8 kHz'], [3, 44100, '3 ms @ 44.1 kHz']];
     const en = `The slides write M = τ/fs, but numerically the delay in samples is <b>M = τ × fs</b> (τ divided by the sampling period 1/fs): ${f2(tau, 3)} ms × ${f2(fs, 0)} Hz = ${f2(tau / 1000, 5)} × ${f2(fs, 0)} = <b>${f2(M, 2)}</b>${Math.abs(M - Mr) > 1e-9 ? ', rounded to ' + Mr + ' samples' : ' samples'}.${hits.length ? ' In the delay table, ' + f2(tau, 3) + ' ms falls in: ' + hits.join(', ') + '.' : ''}`;
-    const a = `الـ slides كاتبة <bdi>M = τ/fs</bdi>، بس بالأرقام عدد الـ samples هو <b>τ × fs</b> (يعني τ مقسومة على الـ sampling period):<span class="ltr">M = ${f2(tau / 1000, 5)} × ${f2(fs, 0)} = ${f2(M, 2)}${Math.abs(M - Mr) > 1e-9 ? ' → ' + Mr : ''} samples</span>${hits.length ? 'وفي جدول الـ delay القيمة دي تبع:<span class="ltr">' + hits.join(', ') + '</span>' : ''}`;
+    const a = `الـ slides كاتبة <bdi dir="ltr">M = τ/fs</bdi>، بس بالأرقام عدد الـ samples هو <b>τ × fs</b> (يعني τ مقسومة على الـ sampling period):<span class="ltr">M = ${f2(tau / 1000, 5)} × ${f2(fs, 0)} = ${f2(M, 2)}${Math.abs(M - Mr) > 1e-9 ? ' → ' + Mr : ''} samples</span>${hits.length ? 'وفي جدول الـ delay القيمة دي تبع:<span class="ltr">' + hits.join(', ') + '</span>' : ''}`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <div className="mv7-row">${ex.map(([t, f, l], k) => html`<button key=${k} className=${'fig-btn' + (tau === t && fs === f ? ' sel' : '')} onClick=${() => { setTau(t); setFs(f); }}>${l}</button>`)}</div>
       <div className="mv7-in"><label>τ (ms)<input type="number" min="0" step="0.05" value=${tau} onInput=${e => setTau(Math.max(0, +e.target.value || 0))} /></label>
@@ -5718,7 +5718,7 @@
     const s = sim.lines[n], Hs = 70;
     const echo = sim.out.map((v, k) => [k, v]).filter(([k, v]) => v && k <= n);
     const en = `${mode === 'fir' ? '<b>FIR comb</b> (fircomb.m)' : '<b>IIR comb</b> (iircomb.m, c = 1)'}, unit impulse, g = 0.5, M = 10. n = ${n}: Delayline(10) = ${f2(s.last, 4)}, so y(${n}) = x(${n}) + 0.5 × ${f2(s.last, 4)} = <b>${f2(s.y, 4)}</b>. ${mode === 'fir' ? 'The delay line is fed with the <b>input</b>: only one echo, y(10) = 0.5.' : 'The delay line is fed with the <b>output</b>: y(10) = 0.5, y(20) = 0.25, y(30) = 0.125, y(40) = 0.0625 … each pass × g.'} At fs = 8000 Hz, M = 10 samples is 10/8000 = 1.25 ms (resonator range); a 100 ms echo would need M = 800.`;
-    const a = `${mode === 'fir' ? 'الـ <b>FIR comb</b> (fircomb.m)' : 'الـ <b>IIR comb</b> (iircomb.m)'} على unit impulse.<span class="ltr">g = 0.5, M = 10, n = ${n}<br>y(${n}) = x(${n}) + 0.5 × ${f2(s.last, 4)} = ${f2(s.y, 4)}</span>${mode === 'fir' ? 'الـ delay line بيتغذى من الـ <b>input</b>: echo واحد بس عند n = 10.' : 'الـ delay line بيتغذى من الـ <b>output</b>: كل لفة بتتضرب في g، فالـ echoes مالهاش آخر.'} وعند <bdi>fs = 8000 Hz</bdi> الـ 10 samples دول يساووا <bdi>1.25 ms</bdi> (مدى الـ resonator)؛ والـ echo بتاع <bdi>100 ms</bdi> محتاج 800 sample.`;
+    const a = `${mode === 'fir' ? 'الـ <b>FIR comb</b> (fircomb.m)' : 'الـ <b>IIR comb</b> (iircomb.m)'} على unit impulse.<span class="ltr">g = 0.5, M = 10, n = ${n}<br>y(${n}) = x(${n}) + 0.5 × ${f2(s.last, 4)} = ${f2(s.y, 4)}</span>${mode === 'fir' ? 'الـ delay line بيتغذى من الـ <b>input</b>: echo واحد بس عند <bdi dir="ltr">n&nbsp;=&nbsp;10</bdi>.' : 'الـ delay line بيتغذى من الـ <b>output</b>: كل لفة بتتضرب في g، فالـ echoes مالهاش آخر.'} وعند <bdi dir="ltr">fs = 8000 Hz</bdi> الـ 10 samples دول يساووا <bdi dir="ltr">1.25 ms</bdi> (مدى الـ resonator)؛ والـ echo بتاع <bdi dir="ltr">100 ms</bdi> محتاج 800 sample.`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Chips} opts=${[['fir', 'FIR comb'], ['iir', 'IIR comb']]} v=${mode} set=${m => { setMode(m); setN(calm() ? 49 : 0); setRun(false); }} />
       <div className="mv7-cells">${s.D.map((v, k) => html`<div key=${k} className=${k === M - 1 ? 'last' : ''} style=${{ background: v ? `color-mix(in srgb, var(--k-mm) ${Math.round(25 + 75 * Math.abs(v))}%, var(--paper))` : '' }}></div>`)}</div>
@@ -5764,7 +5764,7 @@
     const hits = RANGES.filter(r => inRange(ms, r));
     const desc = { Resonator: ['', ''], Flanger: ['<b>Flanging</b> = a continuously varying LFO of the delay.', 'الـ <b>Flanging</b> هو LFO بيغيّر الـ delay باستمرار.'], Chorus: ['<b>Chorus</b> = multiple copies of the sound delayed by small random delays.', 'الـ <b>Chorus</b> هو كذا نسخة من الصوت متأخرة بـ delays صغيرة عشوائية.'], Slapback: ['<b>Slapback</b> (doubling) = a quick repetition of the sound.', 'الـ <b>Slapback</b> (doubling) هو تكرار سريع للصوت.'], Echo: ['<b>Echo</b>: a distinct repeat, more than 50 ms later.', 'الـ <b>Echo</b>: تكرار واضح بعد أكتر من 50 ms.'] };
     const en = `Flanger, chorus, slapback and echo all use a comb filter (FIR or IIR) plus some modulation; they differ in the <b>delay range</b>. A delay of <b>${ms} ms</b> falls in: ${hits.map(h => h[0] + ' (modulation: ' + h[3] + ')').join(', ') || 'none'}. ${hits.map(h => desc[h[0]][0]).join(' ')}`;
-    const a = `الـ flanger والـ chorus والـ slapback والـ echo كلهم بيستخدموا comb filter (FIR أو IIR) مع شوية modulation؛ والفرق في <b>مدى الـ delay</b>. الـ delay بتاع <bdi>${ms} ms</bdi> بيقع في:<span class="ltr">${hits.map(h => h[0]).join(', ') || 'none'}</span>${hits.map(h => desc[h[0]][1]).join(' ')}`;
+    const a = `الـ flanger والـ chorus والـ slapback والـ echo كلهم بيستخدموا comb filter (FIR أو IIR) مع شوية modulation؛ والفرق في <b>مدى الـ delay</b>. الـ delay بتاع <bdi dir="ltr">${ms} ms</bdi> بيقع في:<span class="ltr">${hits.map(h => h[0]).join(', ') || 'none'}</span>${hits.map(h => desc[h[0]][1]).join(' ')}`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <div className="mv7-gantt">${RANGES.map((r, k) => { const on = hits.includes(r); return html`<${React.Fragment} key=${k}><div className=${'nm' + (on ? ' on' : '')}>${r[0]}<small>${r[2] === Infinity ? '> 50' : r[1] + ' … ' + r[2]} ms · ${r[3]}</small></div>
         <div className=${'tr' + (on ? ' on' : '')}><i style=${{ left: P(r[1]) + '%', width: (P(r[2] === Infinity ? max : r[2]) - P(r[1])) + '%' }}></i><span className="cur" style=${{ left: 'calc(' + P(ms) + '% - 1px)' }}></span></div><//>`; })}
@@ -5782,7 +5782,7 @@
     const n1 = cur ? fs / (2 * cur) : null, H = 90, Hd = 46;
     const curve = N(201, k => Math.abs(Math.sin(2 * Math.PI * rate * k * 2 / 200)) * msd);
     const en = `flanger.m: y(i) = 0.7·x(i) + 0.7·x(i − cur_delay), cur_delay = ceil(|sin(2π·rate·t)| × max_samp_delay). Max delay ${mx} ms → round(${mx / 1000} × 44100) = round(${f2(mx / 1000 * fs, 1)}) = <b>${msd}</b> samples. Now cur_delay = <b>${cur}</b> samples (${f2(cur / fs * 1000, 2)} ms)${n1 ? `: the comb has notches at ${f2(n1, 0)} Hz, ${f2(3 * n1, 0)} Hz, …, and they sweep up and down as the delay oscillates` : ''}.`;
-    const a = `الـ flanger.m:<span class="ltr">y(i) = 0.7·x(i) + 0.7·x(i − cur_delay)<br>max_samp_delay = round(${mx / 1000} × 44100) = ${msd}</span>دلوقتي الـ cur_delay بيساوي <bdi>${cur}</bdi> sample${n1 ? `، والـ comb فيه notches عند<span class="ltr">${f2(n1, 0)} Hz, ${f2(3 * n1, 0)} Hz, …</span>وبتتحرك فوق وتحت مع تذبذب الـ delay.` : '.'}`;
+    const a = `الـ flanger.m:<span class="ltr">y(i) = 0.7·x(i) + 0.7·x(i − cur_delay)<br>max_samp_delay = round(${mx / 1000} × 44100) = ${msd}</span>دلوقتي الـ cur_delay بيساوي <bdi dir="ltr">${cur}</bdi> sample${n1 ? `، والـ comb فيه notches عند<span class="ltr">${f2(n1, 0)} Hz, ${f2(3 * n1, 0)} Hz, …</span>وبتتحرك فوق وتحت مع تذبذب الـ delay.` : '.'}`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Chips} opts=${[[3, '0–3 ms (demo)'], [15, '0–15 ms']]} v=${mx} set=${setMx} />
       <${Plot} h=${Hd} title="cur_delay over 2 s (samples)" right=${cur + ' / ' + msd}><path d=${line(curve, Hd, -msd * .05, msd * 1.05)} stroke="var(--graphite)" strokeWidth="1.6" fill="none" />
@@ -5830,8 +5830,8 @@
     const env = N(L, trem), H = 100, lim = 1.6;
     const en = kind === 'sin' ? `<b>Tremolo</b> = amplitude modulation with a modulation frequency <b>below 20 Hz</b>. tremolo1.m: trem = 1 + α·sin(2π·Fc·n/Fs) with Fc = ${fm} Hz and α = ${f2(al, 2)}, so the gain goes between <b>${f2(1 - al, 2)} and ${f2(1 + al, 2)}</b>; y = trem·x. ${fm === 5 && al === .5 ? '(The notes\' demo: 5 Hz, α = 0.5, gain 0.5 to 1.5.)' : ''}`
       : `<b>Tremolo via ring modulation</b> (tremolo2.m): multiply x by a <b>triangular wave</b> LFO going from −0.5 to 0.5 in steps of 5×10⁻⁴ per sample (2000 samples per ramp, so at 44.1 kHz about ${f2(triF, 1)} triangles per second). The loudness follows |trem|.`;
-    const a = kind === 'sin' ? `الـ <b>Tremolo</b> هو amplitude modulation بتردد modulation <b>أقل من 20 Hz</b>. في tremolo1.m:<span class="ltr">trem = 1 + α·sin(2π·Fc·n/Fs), Fc = ${fm} Hz, α = ${f2(al, 2)}</span>فالـ gain بيتحرك بين <bdi>${f2(1 - al, 2)}</bdi> و<bdi>${f2(1 + al, 2)}</bdi>. ${fm === 5 && al === .5 ? '(ده الـ demo بتاع النوتس.)' : ''}`
-      : `الـ <b>Tremolo بالـ ring modulation</b> (tremolo2.m): بنضرب x في LFO على شكل <b>مثلث</b> من −0.5 لـ 0.5، وكل sample بيزيد <bdi>5×10⁻⁴</bdi> (يعني 2000 sample في كل طلعة، فعلى <bdi>44.1 kHz</bdi> حوالي ${f2(triF, 1)} مثلث في الثانية). وعلو الصوت بيمشي مع قيمة الـ trem المطلقة.`;
+    const a = kind === 'sin' ? `الـ <b>Tremolo</b> هو amplitude modulation بتردد modulation <b>أقل من 20 Hz</b>. في tremolo1.m:<span class="ltr">trem = 1 + α·sin(2π·Fc·n/Fs), Fc = ${fm} Hz, α = ${f2(al, 2)}</span>فالـ gain بيتحرك بين <bdi dir="ltr">${f2(1 - al, 2)}</bdi> و<bdi dir="ltr">${f2(1 + al, 2)}</bdi>. ${fm === 5 && al === .5 ? '(ده الـ demo بتاع النوتس.)' : ''}`
+      : `الـ <b>Tremolo بالـ ring modulation</b> (tremolo2.m): بنضرب x في LFO على شكل <b>مثلث</b> من <bdi dir="ltr">−0.5</bdi> لـ 0.5، وكل sample بيزيد <bdi dir="ltr">5×10⁻⁴</bdi> (يعني 2000 sample في كل طلعة، فعلى <bdi dir="ltr">44.1 kHz</bdi> حوالي ${f2(triF, 1)} مثلث في الثانية). وعلو الصوت بيمشي مع قيمة الـ trem المطلقة.`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Chips} opts=${[['sin', 'tremolo1.m (AM)'], ['tri', 'tremolo2.m (RM, triangle)']]} v=${kind} set=${setKind} />
       <${Leg} items=${[['var(--k-mm)', 'y = trem · x'], ['var(--pen)', 'trem (gain)']]} />
@@ -5852,7 +5852,7 @@
       return { x, xd, f, y }; }, [th]);
     const H = 56, ymax = Math.max(...R.y.map(Math.abs));
     const en = `limiter.m: a sine at 0.2 for 220 samples, then at 1. <b>xd</b> records the peaks (attack at = 0.4 reacts very quickly, release rt = 0.01 lets go slowly). When xd goes above the threshold ${f2(th, 2)}, the gain f = 10^(−slope·(log10 xd − log10 thresh)) = thresh/xd pulls the peaks down, so the output stays near ${f2(th, 2)} (max |y| = ${f2(ymax, 3)}) while the quiet part is untouched. Lowering peaks lets the overall signal be boosted.`;
-    const a = `الـ limiter.m بيشتغل على sine ارتفاعها 0.2 لمدة 220 sample، وبعدين ارتفاعها 1. الـ <b>xd</b> بيسجل الـ peaks (الـ attack بـ 0.4 بيرد بسرعة جدًا، والـ release بـ 0.01 بيسيب ببطء). لما الـ xd يعدّي الـ threshold الـ gain بيوطّي الـ peaks:<span class="ltr">f = 10^(−slope·(log10 xd − log10 thresh)) = thresh / xd</span>فالـ output بيفضل قريب من الـ threshold (أقصى قيمة <bdi>${f2(ymax, 3)}</bdi>) والجزء الهادي مش بيتلمس. وتوطية الـ peaks بتخلينا نعلّي الإشارة كلها.`;
+    const a = `الـ limiter.m بيشتغل على sine ارتفاعها 0.2 لمدة 220 sample، وبعدين ارتفاعها 1. الـ <b>xd</b> بيسجل الـ peaks (الـ attack بـ 0.4 بيرد بسرعة جدًا، والـ release بـ 0.01 بيسيب ببطء). لما الـ xd يعدّي الـ threshold الـ gain بيوطّي الـ peaks:<span class="ltr">f = 10^(−slope·(log10 xd − log10 thresh)) = thresh / xd</span>فالـ output بيفضل قريب من الـ threshold (أقصى قيمة <bdi dir="ltr">${f2(ymax, 3)}</bdi>) والجزء الهادي مش بيتلمس. وتوطية الـ peaks بتخلينا نعلّي الإشارة كلها.`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Plot} h=${H} title="Input signal x(n)"><path d=${'M0 ' + H / 2 + 'H300'} stroke="var(--line)" /><path d=${line(R.x, H, -1.1, 1.1)} stroke="var(--graphite)" strokeWidth="1.2" fill="none" /><//>
       <${Plot} h=${H} title="Peak level xd(n) and the threshold"><path d=${'M0 ' + Yv(th, H, 0, 1.1) + 'H300'} stroke="var(--pen)" strokeDasharray="4 3" /><path d=${line(R.xd, H, 0, 1.1)} stroke="var(--k-mm)" strokeWidth="1.8" fill="none" /><//>
@@ -5873,8 +5873,8 @@
     const q = [lvl(x, 0, .3), lvl(y, .05, .3)], H = 100;
     const en = comp < 0 ? `<b>Compressor</b> (comp = ${f2(comp, 2)}): the envelope h = filter(|x|) is raised to the power comp, so loud parts are reduced and, after normalising back to the input peak, quiet parts come up: the quiet start goes from ${f2(q[0], 2)} to <b>${f2(q[1], 2)}</b>. The dynamics are reduced, used to boost overall level in mastering, often on vocals and guitar.`
       : comp > 0 ? `<b>Expander</b> (comp = ${f2(comp, 2)}): the quiet start goes from ${f2(q[0], 2)} to <b>${f2(q[1], 2)}</b>: low levels are pushed further down relative to the loud part, so the dynamics are boosted, a more lively sound.` : 'comp = 0: h⁰ = 1, the signal is unchanged.';
-    const ar2 = comp < 0 ? `الـ <b>Compressor</b>: الـ envelope بيترفع لأُس comp السالب، فالأجزاء العالية بتوطى، وبعد ما نرجّع الـ peak زي الـ input الأجزاء الهادية بتعلى: البداية الهادية راحت من <bdi>${f2(q[0], 2)}</bdi> لـ <bdi>${f2(q[1], 2)}</bdi>. يعني الـ dynamics قلت، وبيستخدموه يعلّوا المستوى كله في الـ mastering، وكتير على الـ vocals والـ guitar.`
-      : comp > 0 ? `الـ <b>Expander</b>: البداية الهادية راحت من <bdi>${f2(q[0], 2)}</bdi> لـ <bdi>${f2(q[1], 2)}</bdi>: المستويات الواطية بتوطى أكتر جنب الجزء العالي، فالـ dynamics بتزيد والصوت بيبقى أحيى.` : 'لما comp بصفر الإشارة مش بتتغير.';
+    const ar2 = comp < 0 ? `الـ <b>Compressor</b>: الـ envelope بيترفع لأُس comp السالب، فالأجزاء العالية بتوطى، وبعد ما نرجّع الـ peak زي الـ input الأجزاء الهادية بتعلى: البداية الهادية راحت من <bdi dir="ltr">${f2(q[0], 2)}</bdi> لـ <bdi dir="ltr">${f2(q[1], 2)}</bdi>. يعني الـ dynamics قلت، وبيستخدموه يعلّوا المستوى كله في الـ mastering، وكتير على الـ vocals والـ guitar.`
+      : comp > 0 ? `الـ <b>Expander</b>: البداية الهادية راحت من <bdi dir="ltr">${f2(q[0], 2)}</bdi> لـ <bdi dir="ltr">${f2(q[1], 2)}</bdi>: المستويات الواطية بتوطى أكتر جنب الجزء العالي، فالـ dynamics بتزيد والصوت بيبقى أحيى.` : 'لما comp بصفر الإشارة مش بتتغير.';
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Leg} items=${[['var(--faint)', 'input x (quiet, loud, medium)'], ['var(--k-mm)', 'output y']]} />
       <${Plot} h=${H} title="1 s test signal (30 Hz tone)"><path d=${'M0 ' + H / 2 + 'H300'} stroke="var(--line)" />
@@ -5896,8 +5896,8 @@
     const cv = chk == null ? null : symclip(chk);
     const en = mode === 'od' ? `<b>Overdrive</b> = symmetrical soft clipping: f(x) = 2x for 0 ≤ x &lt; 1/3 (linear ×2), (3 − (2 − 3x)²)/3 for 1/3 ≤ x &lt; 2/3 (quadratic), 1 above 2/3 (saturated)${cv != null ? `. Check: x = ${chk} → <b>${f2(cv, 3)}</b>` : ''}. A sine of amplitude ${f2(A, 2)} comes out ${A <= 1 / 3 ? 'just doubled, with no new harmonics' : 'flattened: the clipping <b>creates odd harmonics</b> (3, 5, 7…) that were not in the input'}.`
       : `<b>Distortion/Fuzz</b>: a non-linear exponential amplification. fuzzexp.m computes q = x·gain/max|x| and 1 − e^(−|q|) with the sign of x (the slide prints the exponent as αx²/|x|; |x| = x²/|x|, and the code makes it negative so the curve saturates at ±1). The gain α = ${gain} sets the amount; mix = ${f2(mix, 2)} blends the distorted and the original signal. Harder clipping, more harmonics.`;
-    const a = mode === 'od' ? `الـ <b>Overdrive</b> هو symmetrical soft clipping: خطي ×2 في التلت الأول، وبعدين quadratic في التلت التاني، وبعد 2/3 بيثبت على 1.<span class="ltr">f(x) = 2x, (3 − (2 − 3x)²)/3, 1</span>${cv != null ? 'التحقق:<span class="ltr">x = ' + chk + ' → ' + f2(cv, 3) + '</span>' : ''}والـ sine اللي ارتفاعها <bdi>${f2(A, 2)}</bdi> ${A <= 1 / 3 ? 'بتطلع متضاعفة بس من غير harmonics جديدة.' : 'بتطلع مفرودة: الـ clipping <b>بيعمل odd harmonics</b> (3 و5 و7) مكانتش في الـ input.'}`
-      : `الـ <b>Distortion/Fuzz</b>: تكبير non-linear أُسّي. الـ fuzzexp.m بيحسب<span class="ltr">q = x·gain/max|x|, 1 − e^(−|q|)</span>بإشارة x (الـ slide كاتبة الأُس <bdi>αx²/|x|</bdi>، والكود بيخليه سالب عشان المنحنى يثبت عند ±1). الـ gain بيحدد كمية الـ distortion، والـ mix بيخلط الإشارة المشوهة بالأصلية. كل ما الـ clipping يبقى أقوى الـ harmonics بتزيد.`;
+    const a = mode === 'od' ? `الـ <b>Overdrive</b> هو symmetrical soft clipping: خطي <bdi dir="ltr">×2</bdi> في التلت الأول، وبعدين quadratic في التلت التاني، وبعد <bdi dir="ltr">2/3</bdi> بيثبت على 1.<span class="ltr">f(x) = 2x, (3 − (2 − 3x)²)/3, 1</span>${cv != null ? 'التحقق:<span class="ltr">x = ' + chk + ' → ' + f2(cv, 3) + '</span>' : ''}والـ sine اللي ارتفاعها <bdi dir="ltr">${f2(A, 2)}</bdi> ${A <= 1 / 3 ? 'بتطلع متضاعفة بس من غير harmonics جديدة.' : 'بتطلع مفرودة: الـ clipping <b>بيعمل odd harmonics</b> (3 و5 و7) مكانتش في الـ input.'}`
+      : `الـ <b><bdi dir="ltr">Distortion/Fuzz</bdi></b>: تكبير non-linear أُسّي. الـ fuzzexp.m بيحسب<span class="ltr">q = x·gain/max|x|, 1 − e^(−|q|)</span>بإشارة x (الـ slide كاتبة الأُس <bdi dir="ltr">αx²/|x|</bdi>، والكود بيخليه سالب عشان المنحنى يثبت عند ±1). الـ gain بيحدد كمية الـ distortion، والـ mix بيخلط الإشارة المشوهة بالأصلية. كل ما الـ clipping يبقى أقوى الـ harmonics بتزيد.`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Chips} opts=${[['od', 'Overdrive (symclip.m)'], ['fz', 'Fuzz (fuzzexp.m)']]} v=${mode} set=${setMode} />
       <${Plot} h=${H} title="Transfer curve f(x), x from −1 to 1" right=${mode === 'od' ? 'thresholds 1/3, 2/3' : 'gain ' + gain}>
@@ -5948,7 +5948,7 @@
     const r = th * Math.PI / 180, gL = Math.cos(r) + Math.sin(r), gR = Math.cos(r) - Math.sin(r);
     const sx = 150 - 110 * Math.sin(r), sy = 150 - 110 * Math.cos(r);
     const en = `Mapping a mono source across the stereo image: the gains come from a 2D rotation A<sub>θ</sub> = [cos θ, sin θ; −sin θ, cos θ] applied to the same mono x in both rows: g<sub>L</sub> = (cos θ + sin θ)x = <b>${f2(gL, 3)}x</b>, g<sub>R</sub> = (cos θ − sin θ)x = <b>${f2(gR, 3)}x</b>. ${th === 0 ? 'θ = 0: equal gains, the sound is in the centre.' : Math.abs(th) === 45 ? 'θ = ±45° (θl = 45°): one speaker gets 1.414x, the other 0.' : ''} The demo (matpan.m) sweeps −40° to 40° in 32 segments, moving the sound from R to L.`;
-    const a = `بنوزّع مصدر mono على الـ stereo image: الـ gains جاية من 2D rotation على نفس الـ x في الصفين:<span class="ltr">gL = (cos θ + sin θ)x = ${f2(gL, 3)}x<br>gR = (cos θ − sin θ)x = ${f2(gR, 3)}x</span>${th === 0 ? 'لما θ بصفر الـ gains متساوية والصوت في النص.' : Math.abs(th) === 45 ? 'عند ±45 درجة سماعة بتاخد 1.414x والتانية صفر.' : ''} والـ demo (matpan.m) بيلف من −40 لـ 40 درجة على 32 segment، فالصوت بيتنقل من R لـ L.`;
+    const a = `بنوزّع مصدر mono على الـ stereo image: الـ gains جاية من 2D rotation على نفس الـ x في الصفين:<span class="ltr">gL = (cos θ + sin θ)x = ${f2(gL, 3)}x<br>gR = (cos θ − sin θ)x = ${f2(gR, 3)}x</span>${th === 0 ? 'لما θ بصفر الـ gains متساوية والصوت في النص.' : Math.abs(th) === 45 ? 'عند ±45 درجة سماعة بتاخد 1.414x والتانية صفر.' : ''} والـ demo (matpan.m) بيلف من <bdi dir="ltr">−40</bdi> لـ 40 درجة على 32 segment، فالصوت بيتنقل من R لـ L.`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <svg viewBox="0 0 300 172" role="img" aria-label="Listener between two speakers">
         <path d="M72 72 A110 110 0 0 1 228 72" stroke="var(--line)" strokeWidth="2" strokeDasharray="4 4" fill="none" />
@@ -6010,7 +6010,7 @@
     const tmax = 250, H = 80;
     const steps = [
       { en: 'A <b>delay with feedback</b> (an IIR comb, here every 25 ms, × 0.7 each time) can sound similar, but it only gives reflections at a <b>fixed interval</b>.', ar: 'الـ <b>delay بالـ feedback</b> (IIR comb، هنا كل 25 ms ومضروب في 0.7 كل مرة) ممكن يطلع صوت شبهه، بس بيدّي انعكاسات على <b>فترات ثابتة</b> بس.' },
-      { en: 'In a real room (an 8 × 6 × 4 m box, computed with image sources): first a few <b>early reflections</b>, well defined and directional, set by the room\'s shape and size and the positions of source and listener. __E__', ar: 'في أوضة حقيقية (صندوق <bdi>8 × 6 × 4 m</bdi>، محسوب بالـ image sources): الأول شوية <b>early reflections</b> واضحة وليها اتجاه، بتتحدد بشكل الأوضة وحجمها ومكان المصدر والمستمع. __E__' },
+      { en: 'In a real room (an 8 × 6 × 4 m box, computed with image sources): first a few <b>early reflections</b>, well defined and directional, set by the room\'s shape and size and the positions of source and listener. __E__', ar: 'في أوضة حقيقية (صندوق <bdi dir="ltr">8 × 6 × 4 m</bdi>، محسوب بالـ image sources): الأول شوية <b>early reflections</b> واضحة وليها اتجاه، بتتحدد بشكل الأوضة وحجمها ومكان المصدر والمستمع. __E__' },
       { en: 'Then the rate of arriving reflections <b>increases greatly</b>: the <b>diffuse reverberation</b> (late reflections), more random, which gives the spaciousness and decays exponentially in good halls. __L__', ar: 'بعد كده معدّل وصول الانعكاسات <b>بيزيد جدًا</b>: ده الـ <b>diffuse reverberation</b> (late reflections)، عشوائي أكتر، وهو اللي بيدّي الاتساع وبيقل بشكل exponential في القاعات الكويسة. __L__' },
       { en: 'Reverb v. echo: an <b>echo</b> is a distinct delayed copy, heard with a delay of more than about one or two tenths of a second (the red line at 200 ms). In reverb each reflection arrives so quickly that we hear only the combined effect.', ar: 'الفرق بين الـ reverb والـ echo: الـ <b>echo</b> نسخة متأخرة واضحة، بتتسمع لما الـ delay يبقى أكتر من عُشر أو عُشرين من الثانية (الخط الأحمر عند 200 ms). في الـ reverb كل انعكاس بيوصل بسرعة جدًا فبنسمع الأثر المجمّع بس.' }
     ];
@@ -6048,7 +6048,7 @@
     const steps = [
       { en: 'Schroeder (1961) used IIR filters so the output decays gradually. First a bank of <b>4 comb filters in parallel</b>, each with its own delay (here 29.7, 37.1, 41.1 and 43.7 ms, gain 0.75; example values): each gives echoes at its own fixed interval.', ar: 'الـ Schroeder (1961) استخدم IIR filters عشان الـ output يقل بالتدريج. الأول bank من <b>4 comb filters على التوازي</b>، كل واحد بـ delay مختلف (هنا 29.7 و37.1 و41.1 و43.7 ms، والـ gain بـ 0.75؛ قيم مثال): كل واحد بيدّي echoes على فترة ثابتة بتاعته.' },
       { en: 'The four comb outputs are <b>summed</b>: their echoes interleave.', ar: 'الـ outputs الأربعة بتتـ<b>جمع</b>: الـ echoes بتاعتهم بتتداخل.' },
-      { en: 'Then the first <b>allpass filter</b> (5 ms, g = 0.7) in series: it spreads every echo into more reflections.', ar: 'بعدين أول <b>allpass filter</b> (5 ms و<bdi>g = 0.7</bdi>) على التوالي: بيفرّد كل echo لانعكاسات أكتر.' },
+      { en: 'Then the first <b>allpass filter</b> (5 ms, g = 0.7) in series: it spreads every echo into more reflections.', ar: 'بعدين أول <b>allpass filter</b> (5 ms و<bdi dir="ltr">g = 0.7</bdi>) على التوالي: بيفرّد كل echo لانعكاسات أكتر.' },
       { en: 'And the second allpass (1.7 ms): denser still. This is the classic 4 comb + 2 allpass design. It does <b>not</b> create the increasing arrival rate of reflections of a real room, so it is primitive by today\'s standards.', ar: 'وبعده الـ allpass التاني (1.7 ms): كثافة أكتر. ده التصميم الكلاسيكي 4 comb و2 allpass. بس <b>مش</b> بيعمل الزيادة في معدّل وصول الانعكاسات اللي في الأوضة الحقيقية، فبيعتبر بدائي بمقاييس النهارده.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
@@ -6077,9 +6077,9 @@
       const nolp = add(...cd.map(D => fbcomb(x, .84, D))), lp = add(...cd.map(D => lpcomb(x, .5, .42, D))), ap = allpass(lp, .7, ms(6)), late = new Float64Array(L), dd = ms(30); for (let n = dd; n < L; n++) late[n] = .25 * ap[n - dd];
       return { early, nolp, lp, full: add(early, late) }; }, []);
     const steps = [
-      { en: '(a) A <b>tapped delay line</b> simulates the <b>early reflections</b>: a few taps, each a delayed and scaled copy (example taps up to 30 ms). They are forwarded to (b).', ar: 'الجزء (a): <b>tapped delay line</b> بيعمل الـ <b>early reflections</b>: شوية taps، كل واحد نسخة متأخرة ومتصغّرة (taps مثال لحد 30 ms). وبتتبعت للجزء (b).' },
-      { en: '(b) <b>Parallel comb filters with different delay lengths</b> (here 50 to 78 ms) simulate the modes of the room and sound reflecting between parallel walls.', ar: 'الجزء (b): <b>comb filters على التوازي بأطوال delay مختلفة</b> (هنا من 50 لـ 78 ms) بتمثل الـ modes بتاعة الأوضة والصوت اللي بيترد بين الحيطان المتوازية.' },
-      { en: '<b>Lowpass filters in the feedback loops</b> (g1 = 0.5 as in the demo; feedback set so g2/(1 − g1) < 1 for stability) make the reverb time shorter at high frequencies, like air absorption and wall reflectivity: the tail gets smoother.', ar: 'الـ <b>lowpass filters جوه الـ feedback loops</b> (الـ g1 بـ 0.5 زي الـ demo، والـ feedback متظبط بحيث <bdi>g2/(1 − g1) < 1</bdi> عشان الاستقرار) بتخلي الـ reverb time أقصر في الترددات العالية، زي امتصاص الهوا وانعكاس الحيطان: الذيل بيبقى أنعم.' },
+      { en: '(a) A <b>tapped delay line</b> simulates the <b>early reflections</b>: a few taps, each a delayed and scaled copy (example taps up to 30 ms). They are forwarded to (b).', ar: 'الجزء <bdi dir="ltr">(a)</bdi> فيه <b>tapped delay line</b> بيعمل الـ <b>early reflections</b>: شوية taps، كل واحد نسخة متأخرة ومتصغّرة (taps مثال لحد 30 ms). وبتتبعت للجزء (b).' },
+      { en: '(b) <b>Parallel comb filters with different delay lengths</b> (here 50 to 78 ms) simulate the modes of the room and sound reflecting between parallel walls.', ar: 'الجزء <bdi dir="ltr">(b)</bdi> فيه <b>comb filters على التوازي بأطوال delay مختلفة</b> (هنا من 50 لـ 78 ms) بتمثل الـ modes بتاعة الأوضة والصوت اللي بيترد بين الحيطان المتوازية.' },
+      { en: '<b>Lowpass filters in the feedback loops</b> (g1 = 0.5 as in the demo; feedback set so g2/(1 − g1) < 1 for stability) make the reverb time shorter at high frequencies, like air absorption and wall reflectivity: the tail gets smoother.', ar: 'الـ <b>lowpass filters جوه الـ feedback loops</b> (الـ g1 بـ 0.5 زي الـ demo، والـ feedback متظبط بحيث <bdi dir="ltr">g2/(1 − g1) < 1</bdi> عشان الاستقرار) بتخلي الـ reverb time أقصر في الترددات العالية، زي امتصاص الهوا وانعكاس الحيطان: الذيل بيبقى أنعم.' },
       { en: 'An <b>allpass</b> increases the reflection density (diffusion), the result is delayed and added back to the early reflections. The demo uses <b>6 lowpass combs + 1 allpass</b>.', ar: 'الـ <b>allpass</b> بيزوّد كثافة الانعكاسات (diffusion)، والناتج بيتأخر ويتجمع على الـ early reflections. والـ demo بيستخدم <b>6 lowpass combs و1 allpass</b>.' }
     ];
     const [i, ctl] = useSteps(steps.length, 3000);
@@ -6113,7 +6113,7 @@
     const direct = x.length * h.length, fftOps = Math.round(3 * (n / 2) * Math.log2(n) + n);
     const nm = { room: 'Living room', cat: 'Cathedral', rev: 'Reverse cathedral' }[ir];
     const en = `<b>Convolution reverb</b>: convolve the input with the room's impulse response, y(n) = Σ x(k)·h(n − k), the most faithful method. Record the impulse with a gun shot, drum hit or hand clap (or simulate it; these ${nm.toLowerCase()} responses are simulated). The response is long, so a direct filter is too costly: here ${f2(x.length, 0)} × ${f2(h.length, 0)} ≈ <b>${f2(direct / 1e6, 1)} million</b> multiplications. fconv.m uses the <b>convolution theorem</b> instead: y = IFFT(FFT(x)·FFT(h)) with ${f2(n, 0)}-point FFTs, about <b>${f2(fftOps / 1e6, 2)} million</b> operations.${ir === 'rev' ? ' You can convolve with anything: a reversed cathedral makes the sound swell in before it.' : ''}`;
-    const a = `الـ <b>Convolution reverb</b>: بنعمل convolution للـ input مع الـ impulse response بتاع الأوضة، ودي أدق طريقة:<span class="ltr">y(n) = Σ x(k)·h(n − k)</span>بنسجل الـ impulse بطلقة أو خبطة drum أو تصقيفة (أو نعمله simulation؛ والـ responses هنا متعملة simulation). الـ response طويل، فالـ filter المباشر مكلف: هنا حوالي <bdi>${f2(direct / 1e6, 1)}</bdi> مليون عملية ضرب. الـ fconv.m بيستخدم <b>convolution theorem</b> بدل كده:<span class="ltr">y = IFFT(FFT(x)·FFT(h))</span>وده حوالي <bdi>${f2(fftOps / 1e6, 2)}</bdi> مليون عملية بس.${ir === 'rev' ? ' وتقدر تعمل convolution مع أي حاجة: الكاتدرائية المعكوسة بتخلي الصوت يعلى قبله.' : ''}`;
+    const a = `الـ <b>Convolution reverb</b>: بنعمل convolution للـ input مع الـ impulse response بتاع الأوضة، ودي أدق طريقة:<span class="ltr">y(n) = Σ x(k)·h(n − k)</span>بنسجل الـ impulse بطلقة أو خبطة drum أو تصقيفة (أو نعمله simulation؛ والـ responses هنا متعملة simulation). الـ response طويل، فالـ filter المباشر مكلف: هنا حوالي <bdi dir="ltr">${f2(direct / 1e6, 1)}</bdi> مليون عملية ضرب. الـ fconv.m بيستخدم <b>convolution theorem</b> بدل كده:<span class="ltr">y = IFFT(FFT(x)·FFT(h))</span>وده حوالي <bdi dir="ltr">${f2(fftOps / 1e6, 2)}</bdi> مليون عملية بس.${ir === 'rev' ? ' وتقدر تعمل convolution مع أي حاجة: الكاتدرائية المعكوسة بتخلي الصوت يعلى قبله.' : ''}`;
     return html`<figure className="fig mv7"><div className="fig-stage">
       <${Chips} opts=${[['room', 'Living room'], ['cat', 'Cathedral'], ['rev', 'Reverse cathedral']]} v=${ir} set=${setIr} />
       <${Plot} h=${H} title="x(n): dry input (3 hits)" foot=${null}><path d=${band(pad(x), H, -1.05, 1.05)} stroke="var(--graphite)" strokeWidth="1" /><//>
