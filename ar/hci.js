@@ -43,14 +43,14 @@ AR.hci = {
      "pts": [
       "فيه مصطلحات بتتقال بنفس المعنى:<br>• الـ <b>HCI</b> (Human Computer Interaction)<br>• الـ <b>HMI</b> (Human Machine Interaction)<br>• الـ <b>MMI</b> (Man Machine Interaction)",
       "الـ HCI بيتعامل مع الـ <b>Design</b> والـ <b>Implementation</b> والـ <b>Evaluation</b> بتاع الـ interactive systems.",
-      "فيه 3 أجزاء بيتقابلوا في الـ HCI:<br>• الـ <b>User</b> (قدراته العقلية والجسدية)<br>• الـ <b>Computer / Machine</b> (أجهزة الـ input/output)<br>• الـ <b>Interaction</b> (الـ interfaces والـ HCI patterns والـ design والـ usability evaluation)"
+      "فيه 3 أجزاء بيتقابلوا في الـ HCI:<br>• الـ <b>User</b> (قدراته العقلية والجسدية)<br>• الـ <b><bdi dir=\"ltr\">Computer&nbsp;/&nbsp;Machine</bdi></b> (أجهزة الـ <bdi dir=\"ltr\">input/output</bdi>)<br>• الـ <b>Interaction</b> (الـ interfaces والـ HCI patterns والـ design والـ usability evaluation)"
      ]
     },
     {
      "h": "يعني إيه interaction design؟",
      "pts": [
-      "\"Designing interactive products to support the way people communicate and interact in their everyday and working lives.\" <b>Sharp, Rogers, and Preece (2019)</b>",
-      "\"The design of spaces for human communication and interaction.\" <b>Winograd (1997)</b>"
+      "تعريف <b>Sharp, Rogers, and Preece (2019)</b>:<span class=\"ltr\">\"Designing interactive products to support the way people communicate and interact in their everyday and working lives.\"</span>",
+      "تعريف <b>Winograd (1997)</b>:<span class=\"ltr\">\"The design of spaces for human communication and interaction.\"</span>"
      ]
     },
     {
@@ -66,7 +66,7 @@ AR.hci = {
       "نصمم عشان <b>الناس</b>، وعشان <b>الـ tasks</b>، وعشان <b>البيئات</b> اللي الـ users عايشين وشغالين فيها (زي organization مثلاً).",
       "نخلي التفاعل أسهل: نصمم systems <b>سهلة وطبيعية و intuitive</b> عشان <b>نوفر وقت</b> و<b>نقلل التكلفة</b>.",
       "نصمم GUIs (إزاي نتعلمها، ونستخدمها بكفاءة، ونقيّمها ونقارن بينها) وكمان web interfaces.",
-      "نستكشف paradigms/prototypes جديدة للتفاعل، ونطوّر models و theories للتفاعل."
+      "نستكشف <bdi dir=\"ltr\">paradigms/prototypes</bdi> جديدة للتفاعل، ونطوّر models و theories للتفاعل."
      ]
     },
     {
@@ -93,7 +93,7 @@ AR.hci = {
      "h": "مثال على design وحش و design كويس: أزرار الأسانسير",
      "pts": [
       "الـ controls والـ labels بتوع الأسانسير في <b>الصف اللي تحت شكلهم كلهم واحد</b>، فسهل تدوس على label بالغلط بدل زرار الـ control.",
-      "صورة (www.baddesigns.com):<br>• الصف اللي فوق فيه أرقام الأدوار 1 و 2 و 3، وجنب كل رقم زرار.<br>• الصف اللي تحت فيه DOOR OPEN، وزرار، وعلامة X، و STOP/RUN، وجرس، وزرار، و DOOR CLOSE وزرار، والـ labels والزراير كلهم نفس المربعات.<br>• وفيه سهم أحمر بيشاور على label في الصف اللي تحت.",
+      "صورة (www.baddesigns.com):<br>• الصف اللي فوق فيه أرقام الأدوار 1 و 2 و 3، وجنب كل رقم زرار.<br>• الصف اللي تحت فيه DOOR OPEN، وزرار، وعلامة X، و <bdi dir=\"ltr\">STOP/RUN</bdi>، وجرس، وزرار، و DOOR CLOSE وزرار، والـ labels والزراير كلهم نفس المربعات.<br>• وفيه سهم أحمر بيشاور على label في الصف اللي تحت.",
       "الناس مش بتغلط نفس الغلطة مع الـ labels والزراير في <b>الصف اللي فوق</b>. ليه؟ (سؤال للمناقشة؛ الـ slide مش بتدّي إجابة)"
      ],
      "figH": {
@@ -107,7 +107,7 @@ AR.hci = {
       "<b>في العادي</b> بتحط الفلوس (الـ bill) الأول قبل ما تختار.",
       "فالمكنة <b>بتخالف convention معروف</b>.",
       "صورة: الـ labels اللي على المكنة مكتوب فيها \"STEP 1 PUSH ANY BUTTON TO START UNIT\" و \"STEP 2 FOLLOW DIRECTIONS ON DISPLAY\" و \"STEP 3 TAKE RECEIPT PLACE ON DASH\"؛ وفيه سهم بيشاور على فتحة الفلوس.",
-      "صورة: لافتة 'REQUIRED' فيها مواعيد الشغل (7:00 a.m. - 10:00 p.m.)؛ وسهم بيشاور على فتحة الفلوس، وهي منفصلة عن الـ label بتاع STEP 1 'PUSH ANY BUTTON TO START UNIT'."
+      "صورة: لافتة 'REQUIRED' فيها مواعيد الشغل (<bdi dir=\"ltr\">7:00&nbsp;a.m.&nbsp;-&nbsp;10:00&nbsp;p.m.</bdi>)؛ وسهم بيشاور على فتحة الفلوس، وهي منفصلة عن الـ label بتاع <bdi dir=\"ltr\">STEP 1 'PUSH ANY BUTTON TO START UNIT'</bdi>."
      ],
      "figH": {
       "vending": "تصميم وحش: ماكينة بيع بتكسر الترتيب المعتاد"
@@ -176,7 +176,7 @@ AR.hci = {
       "برامج الـ productivity الكاملة فيها features كتير عشان تغطي كل الاحتياجات الممكنة.",
       "الـ features الأكتر معناها:<br>• البرنامج يحسسك إنه معقد<br>• الحاجات أصعب في إنك تلاقيها أو تتعلمها<br>• التركيز يبقى على الأداة أكتر من الـ task",
       "الـ <b>Bloatware</b>: منتج فيه features كتير أوي، أو megabytes كتير أوي، أو بطيء أوي، أو صعب أوي في الاستخدام، أو ببساطة \"كتير أوي\".",
-      "في Office 97–2003:<br>• الصحافة سمّته \"bloated\"<br>• كان فيه list طويلة جداً من الـ feature requests<br>• الناس حسّت إنها متحكمة أقل<br>• الـ menus والـ toolbars كانت مليانة ومش scalable<br>• الناس مكانتش بتاخد بالها من الـ features الجديدة ولا بتستخدمها"
+      "في Office <bdi dir=\"ltr\">97–2003</bdi>:<br>• الصحافة سمّته \"bloated\"<br>• كان فيه list طويلة جداً من الـ feature requests<br>• الناس حسّت إنها متحكمة أقل<br>• الـ menus والـ toolbars كانت مليانة ومش scalable<br>• الناس مكانتش بتاخد بالها من الـ features الجديدة ولا بتستخدمها"
      ]
     },
     {
@@ -185,14 +185,14 @@ AR.hci = {
       "الـ <b>Adaptive (personalized) menus</b>: الـ menu الرئيسية بتعرض list قصيرة بالـ commands الأكتر احتمال تستخدمها؛ وفيه <b>chevron</b> في الآخر بيفتح الـ menu كاملة.",
       "الـ <b>Rafted toolbars</b>: اتنين toolbars أو أكتر بيتشاركوا سطر واحد؛ وفيه algorithm بيتوقع الزراير الأقل استخداماً وبينقلها لـ <b>overflow</b> area.",
       "ليه فشلت: الـ customization مكانش سهل ولا دقيق. الـ short menus الغلط كانت بتجبر الـ user يعمل scan تاني للـ menu الكاملة، فالـ <b>scanning خد ضعف الوقت</b>. وبعدين اتقفلوا by default.",
-      "القاعدة: <b>\"Auto-customization, unless it does a perfect job, is usually worse than no customization at all.\"</b> يعني الـ auto-customization لو مش شغال perfect، غالباً بيبقى أوحش من إنك متعملش customization خالص."
+      "القاعدة:<span class=\"ltr\"><b>\"Auto-customization, unless it does a perfect job, is usually worse than no customization at all.\"</b></span>يعني الـ auto-customization لو مش شغال perfect، غالباً بيبقى أوحش من إنك متعملش customization خالص."
      ]
     },
     {
      "h": "من التخمين للـ data",
      "pts": [
       "قبل 2003، القرارات كانت في الغالب <b>تخمين</b>: \"based on feel, estimation, and guess work\" يعني بالإحساس والتقدير والتخمين.",
-      "Office 2003 قدّم الـ <b>CEIP</b> (Customer Experience Improvement Program): balloon مكتوب فيها \"Help make Office better\" بتسجّل الـ users وبتجمع usage data و hardware data <b>anonymous</b>.",
+      "الـ Office 2003 قدّم الـ <b>CEIP</b> (Customer Experience Improvement Program)، وهي balloon مكتوب فيها <bdi dir=\"ltr\">\"Help make Office better\"</bdi> بتسجّل الـ users وبتجمع usage data و hardware data <b>anonymous</b>.",
       "لـ Office 2007 الفريق كان عنده data لأكتر من <b>1.3 billion sessions</b>. جالهم data من Word و Outlook كتير لدرجة إن <b>70% منها اترمى</b>.",
       "اتعلموا:<br>• أنهي commands بتتستخدم كتير<br>• أنهي بتتستخدم ورا بعض<br>• أنهي بتتستخدم <b>7x أكتر بالـ keyboard</b> من الماوس<br>• الناس بتفتح كام document في نفس الوقت<br>• الشاشات حجمها قد إيه"
      ]
@@ -201,7 +201,7 @@ AR.hci = {
      "h": "مثال: البحث في مكتبة كتب أونلاين",
      "pts": [
       "تصميم الـ search feature لمكتبة كتب أونلاين.",
-      "أول mock-up: [header and menus] فوق؛ وبعدين صف فيه [Search box]، و drop-down [by Title]، وزرار [Go]؛ وبعدين 4 مربعات كتب ([Book 1]، [Book 2]، [Book 3]، [Book 3]).",
+      "أول mock-up فيه [header and menus] فوق؛ وبعدين صف فيه [Search box]، و drop-down [by Title]، وزرار [Go]؛ وبعدين 4 مربعات كتب:<span class=\"ltr\">[Book 1], [Book 2], [Book 3], [Book 3]</span>",
       "تاني mock-up: نفس الـ layout بألوان فاقعة (header أصفر، search box أزرق، drop-down أخضر، زرار Go برتقاني)، و 3 كتب، ووش smiley كارتون وجنبه speech bubble مكتوب فيها \"Reading Rox\".",
       "الـ <b>Design وحش</b>: <b>الـ user research component تقريباً مش موجود</b>."
      ],
@@ -212,8 +212,8 @@ AR.hci = {
     {
      "h": "مثال: الـ International Children's Digital Library (ICDL)",
      "pts": [
-      "<b>HCIL</b> هي اللي صممت الـ <b>international children digital library</b>.",
-      "صورة (screenshot) للـ home page (University of Maryland):<br>• العنوان: \"International Children's Digital Library, A Library for the World's Children\".<br>• لينكات The Foundation:<span class=\"ltr\">Mission, Board of Advisors, Foundation Team, Sponsors, For Researchers &amp; Librarians</span>• فيه partnership مع الـ Human-Computer Interaction Lab بتاع University of Maryland، بدعم من الـ iSchool والـ Computer Science Department بتوع UMD.<br>• زرار READ BOOKS!<br>• قوايم كتب حسب اللغة، واللون، والشكل، والـ format، والـ genre (أنواع مختلفة)، والشخصية، والحقيقي ضد الخيالي (true vs. make believe).<br>• الـ Our Mission: الـ ICDL Foundation بتنشر التسامح واحترام الثقافات المختلفة عن طريق إنها توفر الوصول لأحسن أدب أطفال من كل حتة في العالم.<br>• وفيه labels تانية: لينك <b>Book list</b> و <b>Library News and Notes (June 2, 2021)</b>.",
+      "الـ <b>HCIL</b> هي اللي صممت الـ <b>international children digital library</b>.",
+      "صورة (screenshot) للـ home page (University of Maryland):<br>• العنوان:<span class=\"ltr\">\"International Children's Digital Library, A Library for the World's Children\"</span>• لينكات The Foundation:<span class=\"ltr\">Mission, Board of Advisors, Foundation Team, Sponsors, For Researchers &amp; Librarians</span>• فيه partnership مع الـ Human-Computer Interaction Lab بتاع University of Maryland، بدعم من الـ iSchool والـ Computer Science Department بتوع UMD.<br>• زرار READ BOOKS!<br>• قوايم كتب حسب اللغة، واللون، والشكل، والـ format، والـ genre (أنواع مختلفة)، والشخصية، والحقيقي ضد الخيالي (true vs. make believe).<br>• الـ Our Mission: الـ ICDL Foundation بتنشر التسامح واحترام الثقافات المختلفة عن طريق إنها توفر الوصول لأحسن أدب أطفال من كل حتة في العالم.<br>• وفيه labels تانية: لينك <b>Book list</b> و <b>Library News and Notes (June 2, 2021)</b>.",
       "صورة (screenshot) لصفحة الـ Simple Search: زراير كبيرة بالصور عشان تدور بيها:<br>• حسب لون الغلاف:<span class=\"ltr\">Rainbow, Red, Orange, Yellow, Green, Blue Covers</span>• حسب السن:<span class=\"ltr\">Three to Five, Six to Nine, Ten to Thirteen</span>• وزراير تانية:<span class=\"ltr\">Make Believe Books, True Books, Short/Medium/Long Books, Recently Added Books, Award Winning Books, Fairy Tales and Folk Tales, Kid Characters, Real Animal Characters, Imaginary Creature Characters, Picture Books, Chapter Books</span>• وكمان search box للـ Keywords.<br>وفيها كمان صفوف <b>Featured Books</b> و <b>From Our Shelves</b>، و filter <b>Show Any Language books</b>، و <b>More Choices</b>، و <b>Search By Collections</b> و <b>Browse Exhibitions</b>.",
       "صفحة الـ search بتاعة الـ ICDL <b>design كويس</b>: <b>أكتر من 3 مليون unique visitors</b>، والـ users فضّلوا الـ <b>visual search</b> (<b>71% من عمليات البحث</b>)."
      ],
@@ -222,7 +222,7 @@ AR.hci = {
      }
     },
     {
-     "h": "Case studies",
+     "h": "الـ Case studies",
      "pts": [
       "الدروس: الـ designer الشاطر بيفهم المشاكل من <b>وجهة نظر الـ user</b> و<b>بيشتغل مع الـ users بدل ما يخمّن</b>."
      ]
@@ -309,14 +309,14 @@ AR.hci = {
     "الـ Toolbars بتتشارك سطر واحد؛ والزراير الأقل استخداماً بتروح overflow area.",
     "لو مش شغال perfect، غالباً بيبقى أوحش من إنك متعملش customization خالص.",
     "الـ Customer Experience Improvement Program: بيجمع usage data anonymous من users بتوع Office 2003.",
-    "أكتر من 1.3 billion sessions؛ و70% من data الـ Word/Outlook اترمت.",
+    "أكتر من 1.3 billion sessions؛ و70% من data الـ <bdi dir=\"ltr\">Word/Outlook</bdi> اترمت.",
     "ده field متعدد التخصصات (multidisciplinary) بيركز على تصميم الـ computer technology، وبالذات التفاعل بين البني آدمين (الـ users) والكمبيوتر. واتوسع من الكمبيوتر لتقريباً كل أشكال الـ information technology design.",
     "البني آدمين (احتياجاتهم، قدراتهم، حدودهم)، والـ computer technologies اللي ممكن تحسّن التفاعل بين الـ user والكمبيوتر، والطرق والتفضيلات والصعوبات اللي بتقابل الـ users بتوع الأنظمة الحالية أو القديمة.",
     "الـ Human والـ Computer والـ Interaction.",
     "الـ communication theory والـ industrial design والـ social science والـ cognitive psychology والـ human factors.",
     "الـ computer graphic والـ operating system والـ programming language. والجزء بتاع الـ Interaction هو الـ interaction design.",
-    "\"Designing interactive products to support the way people communicate and interact in their everyday and working lives.\"",
-    "\"The design of spaces for human communication and interaction.\"",
+    "التعريف:<span class=\"ltr\">\"Designing interactive products to support the way people communicate and interact in their everyday and working lives.\"</span>",
+    "التعريف:<span class=\"ltr\">\"The design of spaces for human communication and interaction.\"</span>",
     "نطوّر products تبقى usable، ونشرك الـ users في الـ design process.",
     "سهل تتعلمه، effective في الاستخدام، وبيدّي تجربة ممتعة.",
     "الـ labels والـ controls في الصف اللي تحت شكلهم كلهم واحد، فسهل تدوس على label بالغلط بدل زرار الـ control.",
@@ -326,9 +326,9 @@ AR.hci = {
     "الـ pecking على grid keyboard عن طريق ريموت؛ swiping على صفين alphanumeric على touchpad في الريموت؛ voice control باستخدام ريموت أو smart speaker.",
     "الـ Design وحش: الـ user research component تقريباً مش موجود.",
     "صممتها HCIL. Design كويس: أكتر من 3 مليون unique visitors؛ والـ users فضّلوا الـ visual search (71% من عمليات البحث).",
-    "أكتر من 30 دقيقة، والعنوان والتليفون والإيميل والـ SSN اتطلبوا في المتوسط 3 مرات لـ 10 أشخاص وجهات على الأقل، وبعدين \"Internal server error\": user experience وحشة.",
+    "أكتر من 30 دقيقة، والعنوان والتليفون والإيميل والـ SSN اتطلبوا في المتوسط 3 مرات لـ 10 أشخاص وجهات على الأقل، وبعدين <bdi dir=\"ltr\">\"Internal server error\"</bdi>، يعني user experience وحشة.",
     "ناخد في اعتبارنا مين الـ users، وإيه الـ activities اللي بتتعمل، والتفاعل بيحصل فين؛ ونعمل optimize للتفاعلات عشان تناسب الـ activities والاحتياجات بتاعة الـ users.",
-    "Interaction design.",
+    "الـ Interaction design.",
     "الـ psychology والـ social sciences والـ computing sciences والـ engineering والـ ergonomics والـ informatics.",
     "الـ graphic design والـ product design والـ artist-design والـ industrial design والـ film industry.",
     "المجالات دي هي:<span class=\"ltr\">Human Factors (HF), Cognitive Engineering, Human-Computer Interaction (HCI), Cognitive Ergonomics, Computer-Supported Cooperative Work (CSCW), Information Systems</span>"
@@ -346,7 +346,7 @@ AR.hci = {
     "التعريفات:<br>(1) تعريف Sharp و Rogers و Preece (2019):<span class=\"ltr\">\"Designing interactive products to support the way people communicate and interact in their everyday and working lives\"</span>(2) تعريف Winograd (1997):<span class=\"ltr\">\"The design of spaces for human communication and interaction\"</span>الأهداف:<br>(1) نطوّر products تبقى usable، والـ usability معناها سهل تتعلمه، و effective في الاستخدام، وبيدّي تجربة ممتعة.<br>(2) نشرك الـ users في الـ design process.",
     "(1) بنخلي الـ interface invisible على قد ما نقدر عشان الـ users يقضوا وقت قليل مركزين في الـ interface، ويركزوا بدل كده في الـ task اللي بيحاولوا يخلصوها.<br>(2) هدف الـ designer إنه يخلي البني آدمين يحسوا إنهم بيتفاعلوا مع الـ task على طول، والـ interface يختفي في نص التفاعل ده.<br>(3) الـ user المفروض يفكر في الـ task مش في الأداة (tool).",
     "(1) النسخة الأولى من جهاز Qualcomm لسواقين التريلات كان فيها زراير صغيرة.<br>(2) الـ User interface (الـ user research) اكتشف findings مفاجئة: السواقين غالباً إيديهم كبيرة وغالباً لابسين جوانتي.<br>(3) الـ design الأحسن استخدم touch screen كبيرة و stylus pen.",
-    "الـ Vending machine: 1) لازم تدوس على زرار الأول عشان تشغّل الـ reader 2) في العادي بتحط الفلوس الأول قبل ما تختار 3) فهي بتخالف convention معروف. الـ Marble answering machine (Bishop, 1995): 1) مبنية على الطريقة اللي الحاجات اليومية بتتصرف بيها 2) سهلة و intuitive وممتعة في الاستخدام 3) محتاجة بس one-step actions عشان تعمل الـ core tasks.",
+    "الـ Vending machine:<br>(1) لازم تدوس على زرار الأول عشان تشغّل الـ reader<br>(2) في العادي بتحط الفلوس الأول قبل ما تختار<br>(3) فهي بتخالف convention معروف.<br>الـ Marble answering machine <bdi dir=\"ltr\">(Bishop, 1995)</bdi>:<br>(1) مبنية على الطريقة اللي الحاجات اليومية بتتصرف بيها<br>(2) سهلة و intuitive وممتعة في الاستخدام<br>(3) محتاجة بس one-step actions عشان تعمل الـ core tasks.",
     "(1) الـ search بتاع مكتبة الكتب الأونلاين كان design وحش، عشان الـ user research component كان تقريباً مش موجود.<br>(2) الـ International Children's Digital Library، اللي صممتها HCIL، صفحة الـ search بتاعتها design كويس: أكتر من 3 مليون unique visitors، والـ users فضّلوا الـ visual search (71% من عمليات البحث).",
     "(1) مين الـ users<br>(2) إيه الـ activities اللي بتتعمل<br>(3) التفاعل بيحصل فين. وكمان لازم نعمل optimize للتفاعلات اللي الـ users بيعملوها مع الـ product عشان تناسب الـ activities والاحتياجات بتاعة الـ users.",
     "فيه مصطلحات كتير بتركز على الحاجة اللي بتتصمم زي الـ user interface design والـ software design والـ user-centered design والـ product design والـ web design والـ experience design (UX)؛ والـ interaction design هو الـ umbrella term اللي بيغطي كل الجوانب دي، وهو أساسي لكل الـ disciplines والـ fields والـ approaches اللي بتهتم بالبحث وتصميم computer-based systems للناس. <br>الـ academic disciplines هي:<span class=\"ltr\">Psychology, Social Sciences, Computing Sciences, Engineering, Ergonomics, Informatics</span>والـ design practices هي:<span class=\"ltr\">Graphic design, Product design, Artist-design, Industrial design, Film industry</span>",
@@ -354,9 +354,9 @@ AR.hci = {
    ],
    "quiz": [
     [
-     "الـ Human Computer Interaction ده الاسم الكامل للـ HCI نفسه، بس المحاضرة بتقول إن الـ HMI والـ MMI كمان مصطلحات بنفس المعنى، فلو اخترت دي بس هتفوّت اتنين <bdi>(L1, What is HCI?)</bdi>.",
-     "الـ HMI واحد من المصطلحات اللي بتتقال بالتبادل، بس الـ HCI والـ MMI كمان بيوصفوا نفس المجال، فالإجابة الكاملة هي \"All the above\" <bdi>(L1, What is HCI?)</bdi>.",
-     "الـ MMI مصطلح منهم فعلاً، بس كمان الـ HCI والـ HMI؛ والسؤال عايز الكل، يعني \"All the above\" <bdi>(L1, What is HCI?)</bdi>.",
+     "الـ Human Computer Interaction ده الاسم الكامل للـ HCI نفسه، بس المحاضرة بتقول إن الـ HMI والـ MMI كمان مصطلحات بنفس المعنى، فلو اخترت دي بس هتفوّت اتنين <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "الـ HMI واحد من المصطلحات اللي بتتقال بالتبادل، بس الـ HCI والـ MMI كمان بيوصفوا نفس المجال، فالإجابة الكاملة هي \"All the above\" <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "الـ MMI مصطلح منهم فعلاً، بس كمان الـ HCI والـ HMI؛ والسؤال عايز الكل، يعني \"All the above\" <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
      "صح. الـ HCI والـ HMI والـ MMI كلهم بيتقالوا على نفس المجال."
     ],
     [
@@ -372,33 +372,33 @@ AR.hci = {
      "نوع الـ modality ملوش علاقة؛ أي interface ممكن يحاول يبقى invisible."
     ],
     [
-     "قليل أوي: الإنسان بيقدر يفرّق بين حوالي 30 درجة رمادي، يعني عشر أضعاف الرقم ده، وده برضه رقم صغير جداً جنب ملايين الألوان <bdi>(L1, HCI hierarchy)</bdi>.",
+     "قليل أوي: الإنسان بيقدر يفرّق بين حوالي 30 درجة رمادي، يعني عشر أضعاف الرقم ده، وده برضه رقم صغير جداً جنب ملايين الألوان <bdi dir=\"ltr\">(L1, HCI hierarchy)</bdi>.",
      "صح. مثال حدود الإنسان في المحاضرة هو حوالي 30 درجة رمادي.",
-     "كتير بعشر أضعاف. مثال حدود الإنسان في المحاضرة بيقارن ملايين الألوان بحوالي 30 درجة رمادي بس <bdi>(L1, HCI hierarchy)</bdi>.",
-     "كتير جداً. الفكرة من المثال إننا بنفرّق بين درجات رمادي قليلة أوي: حوالي 30 بس، قصاد ملايين الألوان <bdi>(L1, HCI hierarchy)</bdi>."
+     "كتير بعشر أضعاف. مثال حدود الإنسان في المحاضرة بيقارن ملايين الألوان بحوالي 30 درجة رمادي بس <bdi dir=\"ltr\">(L1, HCI hierarchy)</bdi>.",
+     "كتير جداً. الفكرة من المثال إننا بنفرّق بين درجات رمادي قليلة أوي: حوالي 30 بس، قصاد ملايين الألوان <bdi dir=\"ltr\">(L1, HCI hierarchy)</bdi>."
     ],
     [
      "صح. الترتيب هو:<span class=\"ltr\">user research → design and prototyping → evaluation</span>",
-     "الـ Evaluation (improvement) هو الجزء التالت والأخير: مش هتقدر تقيّم الـ interface غير بعد ما تعمل research على الـ users وتصممه <bdi>(L1, UI design process)</bdi>.",
-     "الـ Design and prototyping هو الجزء التاني؛ بييجي بعد الـ user research، لأنك لازم تفهم الـ users والـ tasks بتاعتهم قبل ما تصمم <bdi>(L1, UI design process)</bdi>.",
+     "الـ Evaluation (improvement) هو الجزء التالت والأخير: مش هتقدر تقيّم الـ interface غير بعد ما تعمل research على الـ users وتصممه <bdi dir=\"ltr\">(L1, UI design process)</bdi>.",
+     "الـ Design and prototyping هو الجزء التاني؛ بييجي بعد الـ user research، لأنك لازم تفهم الـ users والـ tasks بتاعتهم قبل ما تصمم <bdi dir=\"ltr\">(L1, UI design process)</bdi>.",
      "الـ Implementation مش واحد من الـ 3 أجزاء المذكورين."
     ],
     [
-     "الـ 17% دي نفس الرقم الصح بس مقلوب: الـ visual search اتستخدم في 71% من عمليات البحث، وده بيوضح إن المستخدمين فضّلوه <bdi>(L1, Case studies)</bdi>.",
-     "الـ 50% معناها إن مفيش تفضيل واضح، بس المحاضرة بتقول إن الـ visual search اتستخدم في 71% من عمليات البحث، يعني أغلبية واضحة <bdi>(L1, Case studies)</bdi>.",
+     "الـ 17% دي نفس الرقم الصح بس مقلوب: الـ visual search اتستخدم في 71% من عمليات البحث، وده بيوضح إن المستخدمين فضّلوه <bdi dir=\"ltr\">(L1, Case studies)</bdi>.",
+     "الـ 50% معناها إن مفيش تفضيل واضح، بس المحاضرة بتقول إن الـ visual search اتستخدم في 71% من عمليات البحث، يعني أغلبية واضحة <bdi dir=\"ltr\">(L1, Case studies)</bdi>.",
      "صح. نسبة 71% من عمليات البحث استخدمت الـ visual search.",
-     "كتير. الـ International Children's Digital Library قالت إن الـ visual search اتستخدم في 71% من عمليات البحث، مش 91% <bdi>(L1, Case studies)</bdi>."
+     "كتير. الـ International Children's Digital Library قالت إن الـ visual search اتستخدم في 71% من عمليات البحث، مش 91% <bdi dir=\"ltr\">(L1, Case studies)</bdi>."
     ],
     [
-     "العكس: الأجهزة زمان كانت غالية، فالمهندسين كانوا بيعملوا optimize للـ software عشان الماكينة وبيتجاهلوا الـ usability خالص <bdi>(L1, UI vs UX vs HCI)</bdi>.",
+     "العكس: الأجهزة زمان كانت غالية، فالمهندسين كانوا بيعملوا optimize للـ software عشان الماكينة وبيتجاهلوا الـ usability خالص <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
      "صح. المهندسين كانوا بيعملوا optimize للجهاز الغالي، مش لتجربة الـ user.",
-     "الـ User-centric design ده بيوصف الأنظمة النهارده، اللي نجاحها معتمد على الـ usability. الأنظمة القديمة كانت machine-centric، تركيزها على software كفء <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "الـ invisible interface دي فكرة مثالية حديثة، المستخدم فيها بيركز على الـ task. الأنظمة القديمة كانت متجاهلة الـ usability أصلاً، فكانت بعيدة عنها خالص <bdi>(L1, Invisible interface)</bdi>."
+     "الـ User-centric design ده بيوصف الأنظمة النهارده، اللي نجاحها معتمد على الـ usability. الأنظمة القديمة كانت machine-centric، تركيزها على software كفء <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "الـ invisible interface دي فكرة مثالية حديثة، المستخدم فيها بيركز على الـ task. الأنظمة القديمة كانت متجاهلة الـ usability أصلاً، فكانت بعيدة عنها خالص <bdi dir=\"ltr\">(L1, Invisible interface)</bdi>."
     ],
     [
      "صح. الاتنين بيصبّوا في الـ human factors engineering في رسمة الـ hierarchy.",
      "دول تحت الـ human factors engineering، مش فوقه.",
-     "الـ Art والـ Marketing مش موجودين في رسمة الـ hierarchy أصلاً. الـ Human factors engineering جاي من Engineering + Psychology <bdi>(L1, HCI hierarchy)</bdi>.",
+     "الـ Art والـ Marketing مش موجودين في رسمة الـ hierarchy أصلاً. الـ Human factors engineering جاي من Engineering + Psychology <bdi dir=\"ltr\">(L1, HCI hierarchy)</bdi>.",
      "دول فروع من الـ human factors engineering، مش مصادره."
     ],
     [
@@ -406,93 +406,93 @@ AR.hci = {
      "الجملة متاخدة من المحاضرة بالنص، فهي صح."
     ],
     [
-     "التجربة الكاملة مع المنتج أو الموقع دي تعريف الـ UX design. الـ UI design هو بس الـ interactivity والـ look and feel بتاع الشاشة أو الصفحة <bdi>(L1, UI vs UX vs HCI)</bdi>.",
+     "التجربة الكاملة مع المنتج أو الموقع دي تعريف الـ UX design. الـ UI design هو بس الـ interactivity والـ look and feel بتاع الشاشة أو الصفحة <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
      "صح. الـ UI هو الـ look والـ feel والـ interactivity؛ الـ UX هو التجربة الكاملة."
     ],
     [
      "الزراير الصغيرة كانت هي المشكلة، مش حاجة بيفضلوها.",
      "الـ design الأحسن أصلاً استخدم touch screen كبيرة.",
      "صح. وده السبب إن الزراير الصغيرة فشلت.",
-     "الـ Voice systems مش جزء من case الـ Qualcomm أصلاً. الـ research لقى إن سواقين التريلات إيديهم كبيرة ولابسين جوانتيات، فالحل كان touch screen كبيرة مع stylus <bdi>(L1, Qualcomm device)</bdi>."
+     "الـ Voice systems مش جزء من case الـ Qualcomm أصلاً. الـ research لقى إن سواقين التريلات إيديهم كبيرة ولابسين جوانتيات، فالحل كان touch screen كبيرة مع stylus <bdi dir=\"ltr\">(L1, Qualcomm device)</bdi>."
     ],
     [
-     "حالة سواقين التريلات مفيهاش أي ذكر للـ voice input. مشكلة الجهاز الأولاني كانت زراير صغيرة الإيدين الكبيرة اللابسة جوانتيات مش قادرة تدوس عليها <bdi>(L1, Qualcomm device)</bdi>.",
-     "صح. جهاز الـ Qualcomm الأولاني كان فيه زراير صغيرة، وفشل عشان الـ user research بيّن إن السواقين غالباً إيديهم كبيرة ولابسين جوانتيات <bdi>(L1, Qualcomm device)</bdi>.",
-     "الـ touch screen الكبيرة مع الـ stylus pen دي كانت التصميم المحسّن اللي جه بعد الـ user research، مش النسخة الأولانية <bdi>(L1, Qualcomm device)</bdi>.",
-     "الجهاز كان ليه interface فعلاً؛ مشكلته كانت الزراير الصغيرة. والحل خلّى فيه شاشة وخلاها touch screen كبيرة <bdi>(L1, Qualcomm device)</bdi>."
+     "حالة سواقين التريلات مفيهاش أي ذكر للـ voice input. مشكلة الجهاز الأولاني كانت زراير صغيرة الإيدين الكبيرة اللابسة جوانتيات مش قادرة تدوس عليها <bdi dir=\"ltr\">(L1, Qualcomm device)</bdi>.",
+     "صح. جهاز الـ Qualcomm الأولاني كان فيه زراير صغيرة، وفشل عشان الـ user research بيّن إن السواقين غالباً إيديهم كبيرة ولابسين جوانتيات <bdi dir=\"ltr\">(L1, Qualcomm device)</bdi>.",
+     "الـ touch screen الكبيرة مع الـ stylus pen دي كانت التصميم المحسّن اللي جه بعد الـ user research، مش النسخة الأولانية <bdi dir=\"ltr\">(L1, Qualcomm device)</bdi>.",
+     "الجهاز كان ليه interface فعلاً؛ مشكلته كانت الزراير الصغيرة. والحل خلّى فيه شاشة وخلاها touch screen كبيرة <bdi dir=\"ltr\">(L1, Qualcomm device)</bdi>."
     ],
     [
-     "صح. الـ adaptive menu بيعرض الأول list قصيرة بالـ commands اللي غالباً هتستخدمها؛ ولما تدوس على الـ chevron اللي في آخرها بتفتح الـ menu كلها <bdi>(L1, Office 2000 mechanisms)</bdi>.",
-     "الـ double right-click مش جزء من الـ adaptive menus. المحاضرة بتقول إن الـ chevron اللي في آخر الـ menu القصيرة هو اللي بيفتحها <bdi>(L1, Office 2000 mechanisms)</bdi>.",
+     "صح. الـ adaptive menu بيعرض الأول list قصيرة بالـ commands اللي غالباً هتستخدمها؛ ولما تدوس على الـ chevron اللي في آخرها بتفتح الـ menu كلها <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>.",
+     "الـ double right-click مش جزء من الـ adaptive menus. المحاضرة بتقول إن الـ chevron اللي في آخر الـ menu القصيرة هو اللي بيفتحها <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>.",
      "الـ overflow area تبع الـ rafted toolbars.",
-     "مفيش في المحاضرة حاجة اسمها تفضل دايس فتتفتح. الـ adaptive menu الكاملة بتتفتح بالضغط على الـ chevron اللي في آخرها <bdi>(L1, Office 2000 mechanisms)</bdi>."
+     "مفيش في المحاضرة حاجة اسمها تفضل دايس فتتفتح. الـ adaptive menu الكاملة بتتفتح بالضغط على الـ chevron اللي في آخرها <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>."
     ],
     [
-     "الأيقونات عمرها ما كانت المشكلة. المشكلة إن لو الـ short menu غلط، المستخدم بيضطر يعمل scan للـ full menu كمان <bdi>(L1, Office 2000 mechanisms)</bdi>.",
-     "صح. لما الـ short menu المتوقعة متكونش فيها الـ command، المستخدم بيعملها scan، وبعدين يفتحها ويعمل scan للـ full menu تاني، فالـ scanning بياخد حوالي ضعف الوقت <bdi>(L1, Office 2000 mechanisms)</bdi>.",
-     "الـ CEIP ملوش علاقة بـ Office 2000: ده جه بعدين في Office 2003 عشان يجمع usage data، ومكانش بيبطّأ الـ menu scanning <bdi>(L1, From guesswork to data)</bdi>.",
-     "الـ Toolbars مااتشالتش: الـ rafted toolbars كانت بتشارك سطر واحد وبتنقل الزراير المتوقع إنها أقل استخدام لـ overflow area <bdi>(L1, Office 2000 mechanisms)</bdi>."
+     "الأيقونات عمرها ما كانت المشكلة. المشكلة إن لو الـ short menu غلط، المستخدم بيضطر يعمل scan للـ full menu كمان <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>.",
+     "صح. لما الـ short menu المتوقعة متكونش فيها الـ command، المستخدم بيعملها scan، وبعدين يفتحها ويعمل scan للـ full menu تاني، فالـ scanning بياخد حوالي ضعف الوقت <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>.",
+     "الـ CEIP ملوش علاقة بـ Office 2000: ده جه بعدين في Office 2003 عشان يجمع usage data، ومكانش بيبطّأ الـ menu scanning <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "الـ Toolbars مااتشالتش: الـ rafted toolbars كانت بتشارك سطر واحد وبتنقل الزراير المتوقع إنها أقل استخدام لـ overflow area <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>."
     ],
     [
-     "أصغر بألف مرة: الفريق كان عنده أكتر من 1.3 billion session، مش million <bdi>(L1, From guesswork to data)</bdi>.",
-     "الـ 13 million أقل بكتير من الرقم الحقيقي. في Office 2007 الفريق كان عنده أكتر من 1.3 billion session من الـ usage data <bdi>(L1, From guesswork to data)</bdi>.",
-     "صح. الـ CEIP إدّى فريق Office 2007 أكتر من 1.3 billion session؛ والـ data بتاعة Word وOutlook كانت كتير لدرجة إن 70% منها اترمى <bdi>(L1, From guesswork to data)</bdi>.",
-     "الـ 70 جاية من معلومة تانية: 70% من data الـ Word والـ Outlook اترمت. الإجمالي كان أكتر من 1.3 billion session <bdi>(L1, From guesswork to data)</bdi>."
+     "أصغر بألف مرة: الفريق كان عنده أكتر من 1.3 billion session، مش million <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "الـ 13 million أقل بكتير من الرقم الحقيقي. في Office 2007 الفريق كان عنده أكتر من 1.3 billion session من الـ usage data <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "صح. الـ CEIP إدّى فريق Office 2007 أكتر من 1.3 billion session؛ والـ data بتاعة Word وOutlook كانت كتير لدرجة إن 70% منها اترمى <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "الـ 70 جاية من معلومة تانية: 70% من data الـ Word والـ Outlook اترمت. الإجمالي كان أكتر من 1.3 billion session <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>."
     ],
     [
-     "الـ Usage data بقت متاحة بس مع الـ CEIP في Office 2003. قبل كده الفريق مكانش عنده data حقيقية يبني عليها قراراته <bdi>(L1, From guesswork to data)</bdi>.",
-     "صح. فريق Office اعترف إن القرارات قبل 2003 كانت \"based on feel, estimation, and guess work\"، لحد ما الـ CEIP جاب usage data حقيقية <bdi>(L1, From guesswork to data)</bdi>.",
-     "المحاضرة مقالتش إن القرارات كانت جاية من usability labs. قالت إنها كانت مبنية على الإحساس والتقدير والتخمين <bdi>(L1, From guesswork to data)</bdi>.",
-     "الـ Competitor analysis مش مذكور خالص. القرارات قبل 2003 كانت مبنية على الإحساس والتقدير والتخمين، واللي اتستبدل بعدين بـ data الـ CEIP <bdi>(L1, From guesswork to data)</bdi>."
+     "الـ Usage data بقت متاحة بس مع الـ CEIP في Office 2003. قبل كده الفريق مكانش عنده data حقيقية يبني عليها قراراته <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "صح. فريق Office اعترف إن القرارات قبل 2003 كانت \"based on feel, estimation, and guess work\"، لحد ما الـ CEIP جاب usage data حقيقية <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "المحاضرة مقالتش إن القرارات كانت جاية من usability labs. قالت إنها كانت مبنية على الإحساس والتقدير والتخمين <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
+     "الـ Competitor analysis مش مذكور خالص. القرارات قبل 2003 كانت مبنية على الإحساس والتقدير والتخمين، واللي اتستبدل بعدين بـ data الـ CEIP <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>."
     ],
     [
      "الـ HCI عن التفاعل أو العلاقة بين الـ users والكمبيوتر، مش عن أداء الـ hardware.",
-     "صح. ده تعريف الـ HCI اللي في الـ slide <bdi>(L1, What is HCI?)</bdi>.",
+     "صح. ده تعريف الـ HCI اللي في الـ slide <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
      "الـ programming language مجرد item واحد في جزء الـ Computer في الـ pie chart بتاع الـ HCI.",
      "الـ Computer graphic item واحد في جزء الـ Computer؛ والـ HCI بيغطي الـ human والـ computer والـ interaction."
     ],
     [
-     "صح. الـ slide بتقول إن الـ HCI هو multidisciplinary field اتوسع من الكمبيوتر لتقريباً كل أشكال الـ IT design <bdi>(L1, What is HCI?)</bdi>.",
+     "صح. الـ slide بتقول إن الـ HCI هو multidisciplinary field اتوسع من الكمبيوتر لتقريباً كل أشكال الـ IT design <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
      "غلط. الـ slide بتقول التوسع ده بالظبط."
     ],
     [
      "الـ Operating system في جزء الـ Computer.",
      "الـ Interaction design هو الـ item الوحيد في جزء الـ Interaction.",
-     "صح. جزء الـ Human فيه communication theory و industrial design و social science و cognitive psychology و human factors <bdi>(L1, The three parts of HCI (pie chart))</bdi>.",
+     "صح. جزء الـ Human فيه communication theory و industrial design و social science و cognitive psychology و human factors <bdi dir=\"ltr\">(L1, The three parts of HCI (pie chart))</bdi>.",
      "الـ Programming language في جزء الـ Computer."
     ],
     [
-     "Winograd (1997) عرّفه إنه \"the design of spaces for human communication and interaction\".",
-     "صح. الـ slide بتنسب الـ quote ده لـ Sharp و Rogers و Preece (2019) <bdi>(L1, What is interaction design?)</bdi>.",
-     "Bishop (1995) هو بتاع الـ marble answering machine.",
-     "HCIL هي اللي صممت الـ International Children's Digital Library."
+     "الـ Winograd (1997) عرّفه إنه:<span class=\"ltr\">\"the design of spaces for human communication and interaction\".</span>",
+     "صح. الـ slide بتنسب الـ quote ده لـ Sharp و Rogers و Preece (2019) <bdi dir=\"ltr\">(L1, What is interaction design?)</bdi>.",
+     "الـ Bishop (1995) هو بتاع الـ marble answering machine.",
+     "الـ HCIL هي اللي صممت الـ International Children's Digital Library."
     ],
     [
      "الـ slides بتعرّف الـ usability إنها سهل تتعلمه، و effective في الاستخدام، وممتع.",
-     "صح. ده معنى الـ usability في الـ slide تحت هدف \"develop usable products\" <bdi>(L1, Goals of interaction design)</bdi>.",
+     "صح. ده معنى الـ usability في الـ slide تحت هدف \"develop usable products\" <bdi dir=\"ltr\">(L1, Goals of interaction design)</bdi>.",
      "الـ features مش جزء من تعريف الـ usability في الـ slide.",
      "الشكل والألوان مش جزء من التعريف اللي في الـ slide؛ الـ usability معناها سهل تتعلمه، effective في الاستخدام، وبيدّي تجربة ممتعة."
     ],
     [
      "الـ slide بتقول العكس: نشرك الـ users في الـ design process.",
-     "صح. الأهداف هي إننا نطوّر products تبقى usable ونشرك الـ users في الـ design process <bdi>(L1, Goals of interaction design)</bdi>.",
+     "صح. الأهداف هي إننا نطوّر products تبقى usable ونشرك الـ users في الـ design process <bdi dir=\"ltr\">(L1, Goals of interaction design)</bdi>.",
      "فكرة الـ invisible interface هدفها إن الـ interface يبقى invisible على قد ما نقدر.",
      "ده مش مذكور في الـ slides."
     ],
     [
      "دي كانت مشكلة جهاز Qualcomm بتاع سواقين التريلات.",
-     "صح. ده الشرح اللي في الـ slide <bdi>(L1, Example of bad and good design: elevator controls)</bdi>.",
+     "صح. ده الشرح اللي في الـ slide <bdi dir=\"ltr\">(L1, Example of bad and good design: elevator controls)</bdi>.",
      "ده وصف الـ vending machine.",
      "الـ slide بتقول إن الناس مش بتغلط نفس الغلطة في الصف اللي فوق."
     ],
     [
      "الزراير الـ color-coded كانت ميزة في ريموت TiVo؛ والـ slide مش بتقول كده عن الـ vending machine.",
      "دي كانت الـ form بتاعة عيادة الدكتور.",
-     "صح. في العادي بتحط الفلوس قبل ما تختار <bdi>(L1, Why is this vending machine so bad?)</bdi>.",
+     "صح. في العادي بتحط الفلوس قبل ما تختار <bdi dir=\"ltr\">(L1, Why is this vending machine so bad?)</bdi>.",
      "الرسالة دي كانت في آخر مثال الـ form بتاعة عيادة الدكتور."
     ],
     [
-     "صح. وكمان هي سهلة و intuitive وممتعة في الاستخدام <bdi>(L1, Good design: marble answering machine)</bdi>.",
+     "صح. وكمان هي سهلة و intuitive وممتعة في الاستخدام <bdi dir=\"ltr\">(L1, Good design: marble answering machine)</bdi>.",
      "ده وصف ريموت TiVo.",
      "ده كان الـ design الأحسن لجهاز Qualcomm بتاع السواقين.",
      "الـ Visual search كان في صفحة الـ search بتاعة الـ ICDL."
@@ -501,28 +501,28 @@ AR.hci = {
      "اختيار غلط. ده موجود على الـ slide كسبب.",
      "اختيار غلط. ده موجود على الـ slide كسبب.",
      "اختيار غلط. ده موجود على الـ slide كسبب.",
-     "صح. الـ Voice control جه بس كاختيار واحد في الـ smart TV dilemma، مش كسبب لـ TiVo <bdi>(L1, Good and bad design: TiVo remote)</bdi>."
+     "صح. الـ Voice control جه بس كاختيار واحد في الـ smart TV dilemma، مش كسبب لـ TiVo <bdi dir=\"ltr\">(L1, Good and bad design: TiVo remote)</bdi>."
     ],
     [
      "ده الـ pecking.",
-     "صح. ده الاختيار التاني في الـ slide <bdi>(L1, Dilemma: interacting with a smart TV)</bdi>.",
+     "صح. ده الاختيار التاني في الـ slide <bdi dir=\"ltr\">(L1, Dilemma: interacting with a smart TV)</bdi>.",
      "ده الـ voice control.",
      "الـ stylus pen كان في جهاز السواقين."
     ],
     [
      "عدد الزوار (3 مليون) اتذكر للـ design الكويس بتاع الـ ICDL.",
-     "صح. ده حكم الـ slide <bdi>(L1, Example case: online book library search)</bdi>.",
+     "صح. ده حكم الـ slide <bdi dir=\"ltr\">(L1, Example case: online book library search)</bdi>.",
      "الـ Visual search كان الميزة الكويسة في الـ ICDL.",
      "الـ mock-ups الاتنين فيهم search box و drop-down بـ by-Title وزرار Go."
     ],
     [
      "كان فيها أكتر من 3 مليون unique visitors والـ visual search هو اللي اتفضّل.",
-     "صح. دي الأرقام اللي في الـ slide <bdi>(L1, Example case: International Children's Digital Library (ICDL))</bdi>.",
+     "صح. دي الأرقام اللي في الـ slide <bdi dir=\"ltr\">(L1, Example case: International Children's Digital Library (ICDL))</bdi>.",
      "الـ slide بتقول 71%، مش 17%.",
      "ده حصل مع الـ form بتاعة عيادة الدكتور."
     ],
     [
-     "صح. خدت 30 دقيقة على الأقل وخلصت بـ \"Internal server error\" <bdi>(L1, Bad user experience: the doctor's office form)</bdi>.",
+     "صح. خدت 30 دقيقة على الأقل وخلصت بـ \"Internal server error\" <bdi dir=\"ltr\">(L1, Bad user experience: the doctor's office form)</bdi>.",
      "الأرقام معكوسة: في المتوسط 3 مرات لـ 10 أشخاص وجهات على الأقل.",
      "الـ 30 دي الدقايق اللي اتقضت، مش عدد الناس.",
      "الـ 71% هي نسبة عمليات الـ visual search في الـ ICDL."
@@ -531,155 +531,155 @@ AR.hci = {
      "اختيار غلط. ده مذكور.",
      "اختيار غلط. ده مذكور.",
      "اختيار غلط. ده مذكور.",
-     "صح. الاعتبارات المذكورة هي مين، وإيه الـ activities، وفين؛ والتكلفة مش واحدة منهم <bdi>(L1, Design considerations)</bdi>."
+     "صح. الاعتبارات المذكورة هي مين، وإيه الـ activities، وفين؛ والتكلفة مش واحدة منهم <bdi dir=\"ltr\">(L1, Design considerations)</bdi>."
     ],
     [
      "الـ Web design واحد من المصطلحات اللي تحت الـ umbrella.",
-     "صح. الـ slide بتقول إن الـ interaction design هو الـ umbrella term اللي بيغطي كل دول <bdi>(L1, Which kind of design?)</bdi>.",
+     "صح. الـ slide بتقول إن الـ interaction design هو الـ umbrella term اللي بيغطي كل دول <bdi dir=\"ltr\">(L1, Which kind of design?)</bdi>.",
      "الـ Graphic design هو design practice بتساهم في الـ ID.",
      "الـ Software design واحد من المصطلحات اللي تحت الـ umbrella."
     ],
     [
      "الـ Ergonomics هي academic discipline.",
      "الـ Informatics هي academic discipline.",
-     "صح. الـ design practices هي graphic design و product design و artist-design و industrial design و film industry <bdi>(L1, Relationship between ID, HCI and other fields)</bdi>.",
+     "صح. الـ design practices هي graphic design و product design و artist-design و industrial design و film industry <bdi dir=\"ltr\">(L1, Relationship between ID, HCI and other fields)</bdi>.",
      "الـ Psychology هي academic discipline."
     ],
     [
-     "الـ academic disciplines هي ergonomics و psychology/cognitive science و informatics و engineering و computer science/software engineering و social sciences.",
+     "الـ academic disciplines هي ergonomics و <bdi dir=\"ltr\">psychology/cognitive science</bdi> و informatics و engineering و <bdi dir=\"ltr\">computer science/software engineering</bdi> و social sciences.",
      "الـ design practices هي graphic و product و artist-design و industrial design و film industry.",
-     "صح. الـ CSCW متذكرة مع الـ HF والـ cognitive engineering والـ HCI والـ cognitive ergonomics والـ information systems <bdi>(L1, Interaction design and other fields (diagram))</bdi>.",
+     "صح. الـ CSCW متذكرة مع الـ HF والـ cognitive engineering والـ HCI والـ cognitive ergonomics والـ information systems <bdi dir=\"ltr\">(L1, Interaction design and other fields (diagram))</bdi>.",
      "الجزء ده فيه computer graphic و operating system و programming language."
     ],
     [
-     "الـ HCI هدفه العكس: إنه يصمم computer systems سهلة وطبيعية و intuitive تسهّل التفاعل بتاع الـ user <bdi>(L1, Objective of HCI)</bdi>.",
-     "الـ Security مش مذكورة في أهداف الـ HCI؛ الأهداف عن التصميم للناس وللـ tasks وللبيئات، وتسهيل التفاعل <bdi>(L1, Objective of HCI)</bdi>.",
-     "كفاءة الماكينة كانت تركيز الأنظمة القديمة، لما الـ usability مكانتش في دماغ حد. الـ HCI عن تفاعل الـ user، مش عن سرعة الماكينة <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "صح. النهارده نجاح أي system محتاج design يكون user-centric، مركّز على الـ <b>usability</b> وعلى <b>user experience</b> لطيفة (smooth) <bdi>(L1, UI vs UX vs HCI)</bdi>."
+     "الـ HCI هدفه العكس: إنه يصمم computer systems سهلة وطبيعية و intuitive تسهّل التفاعل بتاع الـ user <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>.",
+     "الـ Security مش مذكورة في أهداف الـ HCI؛ الأهداف عن التصميم للناس وللـ tasks وللبيئات، وتسهيل التفاعل <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>.",
+     "كفاءة الماكينة كانت تركيز الأنظمة القديمة، لما الـ usability مكانتش في دماغ حد. الـ HCI عن تفاعل الـ user، مش عن سرعة الماكينة <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "صح. النهارده نجاح أي system محتاج design يكون user-centric، مركّز على الـ <b>usability</b> وعلى <b>user experience</b> لطيفة (smooth) <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>."
     ],
     [
-     "الـ HCI عن التفاعل بين الـ users والكمبيوتر وإزاي نسهّله، مش عن مدى تعقيد الـ code <bdi>(L1, What is HCI?)</bdi>.",
-     "صح. الـ HCI هو التفاعل بين الـ user والكمبيوتر، أو <b>العلاقة بين الـ users والـ computer systems</b> <bdi>(L1, What is HCI?)</bdi>.",
-     "أداء الـ hardware مش هو التركيز؛ الـ HCI بيدرس البني آدمين (احتياجاتهم وقدراتهم وحدودهم) والتكنولوجيا اللي بتحسّن تفاعلهم مع الكمبيوتر <bdi>(L1, What is HCI?)</bdi>.",
-     "الـ HCI دايماً فيه إنسان: هو التفاعل بين الـ <b>user</b> والكمبيوتر، مش كمبيوتر مع كمبيوتر <bdi>(L1, What is HCI?)</bdi>."
+     "الـ HCI عن التفاعل بين الـ users والكمبيوتر وإزاي نسهّله، مش عن مدى تعقيد الـ code <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "صح. الـ HCI هو التفاعل بين الـ user والكمبيوتر، أو <b>العلاقة بين الـ users والـ computer systems</b> <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "أداء الـ hardware مش هو التركيز؛ الـ HCI بيدرس البني آدمين (احتياجاتهم وقدراتهم وحدودهم) والتكنولوجيا اللي بتحسّن تفاعلهم مع الكمبيوتر <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "الـ HCI دايماً فيه إنسان: هو التفاعل بين الـ <b>user</b> والكمبيوتر، مش كمبيوتر مع كمبيوتر <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>."
     ],
     [
-     "ده مش مصطلح من الكورس. في المحاضرة الـ UX مكتوب UX Design (User Experience) <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "الـ U في UX معناها User مش Unified: الـ UX Design (User Experience) بيغطي التجربة الكاملة بتاعة الـ user مع المنتج <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "صح. المحاضرة كاتباه <b>UX Design (User Experience)</b>: بيغطي التجربة الكاملة بتاعة الـ user مع المنتج أو الـ website <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "الـ X معناها Experience مش Execution: الـ UX عن التجربة الكاملة بتاعة الـ user مع المنتج أو الـ website <bdi>(L1, UI vs UX vs HCI)</bdi>."
+     "ده مش مصطلح من الكورس. في المحاضرة الـ UX مكتوب UX Design (User Experience) <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "الـ U في UX معناها User مش Unified: الـ UX Design (User Experience) بيغطي التجربة الكاملة بتاعة الـ user مع المنتج <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "صح. المحاضرة كاتباه <b>UX Design (User Experience)</b>: بيغطي التجربة الكاملة بتاعة الـ user مع المنتج أو الـ website <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "الـ X معناها Experience مش Execution: الـ UX عن التجربة الكاملة بتاعة الـ user مع المنتج أو الـ website <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>."
     ],
     [
-     "ده مش مصطلح من الكورس. المحاضرة كاتبة الـ UI كده: UI Design (User Interface) <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "الـ I معناها Interface: الـ UI design هو الـ interactivity والـ look and feel بتاع شاشة المنتج أو صفحة الـ web <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "صح. المحاضرة كاتباه <b>UI Design (User Interface)</b>: الـ interactivity والـ look and feel بتاع شاشة المنتج أو صفحة الـ web <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "ده خالط المصطلحات ببعض: الـ Experience تبع الـ UX (User Experience)، والـ U معناها User مش Unified <bdi>(L1, UI vs UX vs HCI)</bdi>."
+     "ده مش مصطلح من الكورس. المحاضرة كاتبة الـ UI كده: UI Design (User Interface) <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "الـ I معناها Interface: الـ UI design هو الـ interactivity والـ look and feel بتاع شاشة المنتج أو صفحة الـ web <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "صح. المحاضرة كاتباه <b>UI Design (User Interface)</b>: الـ interactivity والـ look and feel بتاع شاشة المنتج أو صفحة الـ web <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "ده خالط المصطلحات ببعض: الـ Experience تبع الـ UX (User Experience)، والـ U معناها User مش Unified <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>."
     ],
     [
-     "الـ UI Design فرع من فروع الـ HCI في رسمة الـ hierarchy of fields اللي في المحاضرة، فهو جزء أساسي من الـ HCI <bdi>(L1, HCI in a broader hierarchy of fields)</bdi>.",
-     "المحاضرة بتقول إن نجاح أي system النهارده محتاج design مركّز على الـ <b>usability</b>، فالـ usability في قلب الـ HCI <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "صح. الـ Machine learning مش جزء من الـ HCI في الكورس؛ الـ HCI بيتفرع لـ UI design و UX design و interaction design، وتركيزه على الـ usability والـ user experience <bdi>(L1, HCI in a broader hierarchy of fields)</bdi>.",
-     "الـ UX Design فرع من فروع الـ HCI في الـ hierarchy اللي في المحاضرة، والـ user experience اللطيفة شرط للنجاح <bdi>(L1, HCI in a broader hierarchy of fields)</bdi>."
+     "الـ UI Design فرع من فروع الـ HCI في رسمة الـ hierarchy of fields اللي في المحاضرة، فهو جزء أساسي من الـ HCI <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy of fields)</bdi>.",
+     "المحاضرة بتقول إن نجاح أي system النهارده محتاج design مركّز على الـ <b>usability</b>، فالـ usability في قلب الـ HCI <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "صح. الـ Machine learning مش جزء من الـ HCI في الكورس؛ الـ HCI بيتفرع لـ UI design و UX design و interaction design، وتركيزه على الـ usability والـ user experience <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy of fields)</bdi>.",
+     "الـ UX Design فرع من فروع الـ HCI في الـ hierarchy اللي في المحاضرة، والـ user experience اللطيفة شرط للنجاح <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy of fields)</bdi>."
     ],
     [
-     "الـ HCI مش دراسة الماكينة لوحدها؛ هو التفاعل بين الـ user والكمبيوتر، وكمان بيدرس البني آدمين (احتياجاتهم وقدراتهم وحدودهم) <bdi>(L1, What is HCI?)</bdi>.",
-     "أداء الـ algorithms ده موضوع كفاءة software، وده كان تركيز الأنظمة القديمة لما الـ usability مكانتش في دماغ حد؛ الـ HCI عن تفاعل الـ user <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "الـ Networking والـ databases مش جزء من تعريف الـ HCI؛ الـ HCI هو العلاقة بين الـ users والـ computer systems <bdi>(L1, What is HCI?)</bdi>.",
-     "صح. الـ HCI هو التفاعل بين الـ user والكمبيوتر، وبيتعامل مع الـ <b>design والـ implementation والـ evaluation</b> بتاع الـ interactive systems اللي الـ users بتوعها بياخدوا أقصى استفادة بسهولة <bdi>(L1, What is HCI?)</bdi>."
+     "الـ HCI مش دراسة الماكينة لوحدها؛ هو التفاعل بين الـ user والكمبيوتر، وكمان بيدرس البني آدمين (احتياجاتهم وقدراتهم وحدودهم) <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "أداء الـ algorithms ده موضوع كفاءة software، وده كان تركيز الأنظمة القديمة لما الـ usability مكانتش في دماغ حد؛ الـ HCI عن تفاعل الـ user <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "الـ Networking والـ databases مش جزء من تعريف الـ HCI؛ الـ HCI هو العلاقة بين الـ users والـ computer systems <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "صح. الـ HCI هو التفاعل بين الـ user والكمبيوتر، وبيتعامل مع الـ <b>design والـ implementation والـ evaluation</b> بتاع الـ interactive systems اللي الـ users بتوعها بياخدوا أقصى استفادة بسهولة <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>."
     ],
     [
-     "ده هدف فعلاً: الـ HCI بيصمم للناس، ومنهم الـ users اللي عندهم احتياجات خاصة زي الأطفال وكبار السن وذوي الإعاقة، وهدفه إنه يسهّل التفاعل مع الكمبيوتر <bdi>(L1, Objectives of HCI; User research)</bdi>.",
-     "ده هدف فعلاً: المحاضرة بتقول إن نجاح أي system النهارده محتاج design يكون user-centric و<b>مركّز على الـ usability</b> <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "صح. الـ HCI هدفه العكس: إنه <b>يصمم systems سهلة وطبيعية و intuitive</b> توفّر الوقت وتقلل التكاليف <bdi>(L1, Objectives of HCI)</bdi>. وL1 كمان بتوضح إن الـ features لما تزيد وتزيد بتخلي الـ app يبان معقد.",
-     "ده هدف فعلاً: المحاضرة بتقول إن النجاح محتاج user experience لطيفة (smooth)، والـ UX design فرع من فروع الـ HCI <bdi>(L1, UI vs UX vs HCI)</bdi>."
+     "ده هدف فعلاً: الـ HCI بيصمم للناس، ومنهم الـ users اللي عندهم احتياجات خاصة زي الأطفال وكبار السن وذوي الإعاقة، وهدفه إنه يسهّل التفاعل مع الكمبيوتر <bdi dir=\"ltr\">(L1, Objectives of HCI; User research)</bdi>.",
+     "ده هدف فعلاً: المحاضرة بتقول إن نجاح أي system النهارده محتاج design يكون user-centric و<b>مركّز على الـ usability</b> <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "صح. الـ HCI هدفه العكس: إنه <b>يصمم systems سهلة وطبيعية و intuitive</b> توفّر الوقت وتقلل التكاليف <bdi dir=\"ltr\">(L1, Objectives of HCI)</bdi>. وL1 كمان بتوضح إن الـ features لما تزيد وتزيد بتخلي الـ app يبان معقد.",
+     "ده هدف فعلاً: المحاضرة بتقول إن النجاح محتاج user experience لطيفة (smooth)، والـ UX design فرع من فروع الـ HCI <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>."
     ],
     [
-     "صح. الـ UI design هو \"interactivity, look and feel of product screen or web page\"، أما الـ UX design فهو \"covers a user's <b>overall experience</b> with the product or website\" <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "المحاضرة بتعرّف كل واحد لوحده: الـ UI هو الـ look and feel بتاع الشاشة، والـ UX هو التجربة الكاملة، وهما فرعين منفصلين تحت الـ HCI <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "ولا تعريف فيهم عن الـ coding. الـ UI عن إنك تصمم الحاجات بشكل حلو للشاشة، والـ UX عن التجربة الكاملة وتحديد (dictating) التفاعلات <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "المحاضرة بتوري الـ UI design والـ UX design كفرعين منفصلين من الـ HCI؛ واحد مش بيحل محل التاني <bdi>(L1, HCI in a broader hierarchy of fields)</bdi>."
+     "صح. الـ UI design هو:<span class=\"ltr\">\"interactivity, look and feel of product screen or web page\"</span>أما الـ UX design فهو:<span class=\"ltr\">\"covers a user's <b>overall experience</b> with the product or website\"</span>ده في <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "المحاضرة بتعرّف كل واحد لوحده: الـ UI هو الـ look and feel بتاع الشاشة، والـ UX هو التجربة الكاملة، وهما فرعين منفصلين تحت الـ HCI <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "ولا تعريف فيهم عن الـ coding. الـ UI عن إنك تصمم الحاجات بشكل حلو للشاشة، والـ UX عن التجربة الكاملة وتحديد (dictating) التفاعلات <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "المحاضرة بتوري الـ UI design والـ UX design كفرعين منفصلين من الـ HCI؛ واحد مش بيحل محل التاني <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy of fields)</bdi>."
     ],
     [
-     "التركيز على software كفء ده كان طريقة بناء الأنظمة القديمة، لما \"usability was not thought of\"؛ النهارده الـ design لازم يكون user-centric <bdi>(L1, UI vs UX vs HCI)</bdi>.",
-     "صح. الـ HCI هدفه \"design easy, natural and intuitive computer systems\"، والنجاح محتاج design \"focused on usability and pleasant (smooth) user experience\" <bdi>(L1, Objectives of HCI; UI vs UX vs HCI)</bdi>.",
-     "الـ process بيبدأ بالـ user research وبيخلص بالـ user interface evaluation؛ والمحاضرة بتقول اشتغل مع الـ users بدل ما تخمّن <bdi>(L1, UI design process; Case studies)</bdi>.",
-     "الهدف العكس: systems سهلة وطبيعية و intuitive توفّر الوقت وتقلل التكاليف <bdi>(L1, Objectives of HCI)</bdi>."
+     "التركيز على software كفء ده كان طريقة بناء الأنظمة القديمة، لما \"usability was not thought of\"؛ النهارده الـ design لازم يكون user-centric <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "صح. الـ HCI هدفه:<span class=\"ltr\">\"design easy, natural and intuitive computer systems\"</span>والنجاح محتاج design:<span class=\"ltr\">\"focused on usability and pleasant (smooth) user experience\"</span>ده في <bdi dir=\"ltr\">(L1, Objectives of HCI; UI vs UX vs HCI)</bdi>.",
+     "الـ process بيبدأ بالـ user research وبيخلص بالـ user interface evaluation؛ والمحاضرة بتقول اشتغل مع الـ users بدل ما تخمّن <bdi dir=\"ltr\">(L1, UI design process; Case studies)</bdi>.",
+     "الهدف العكس: systems سهلة وطبيعية و intuitive توفّر الوقت وتقلل التكاليف <bdi dir=\"ltr\">(L1, Objectives of HCI)</bdi>."
     ],
     [
-     "صح. الـ 3 components هما 1- user research، 2- <b>design and prototyping of the interface</b>، 3- user interface evaluation (improvement) <bdi>(L1, UI design process)</bdi>.",
-     "الـ Marketing مش واحد من الـ 3 components بتوع الـ UI design process <bdi>(L1, UI design process)</bdi>.",
-     "الـ Coding مش مذكور كـ component؛ الـ 3 components هما user research، و design and prototyping، و evaluation <bdi>(L1, UI design process)</bdi>.",
-     "الـ Evaluation (improvement) هو الـ component التالت، اللي بييجي بعد الـ design and prototyping، مش بعد الـ user research على طول <bdi>(L1, UI design process)</bdi>."
+     "صح. الـ 3 components هما:<br>(1) الـ user research<br>(2) الـ <b>design and prototyping of the interface</b><br>(3) الـ user interface evaluation (improvement)<br>ده في <bdi dir=\"ltr\">(L1, UI design process)</bdi>.",
+     "الـ Marketing مش واحد من الـ 3 components بتوع الـ UI design process <bdi dir=\"ltr\">(L1, UI design process)</bdi>.",
+     "الـ Coding مش مذكور كـ component؛ الـ 3 components هما user research، و design and prototyping، و evaluation <bdi dir=\"ltr\">(L1, UI design process)</bdi>.",
+     "الـ Evaluation (improvement) هو الـ component التالت، اللي بييجي بعد الـ design and prototyping، مش بعد الـ user research على طول <bdi dir=\"ltr\">(L1, UI design process)</bdi>."
     ],
     [
-     "الـ Animations مش جزء من الـ user research. الـ User research عن إنك تتعلم عن الـ users والـ tasks بتاعتهم قبل ما تصمم <bdi>(L1, User Research)</bdi>.",
-     "إنك تختبر الـ interface وتحسّنه ده الـ component التالت، الـ user interface evaluation، مش الـ user research اللي بييجي الأول <bdi>(L1, UI Design Process)</bdi>.",
-     "الـ Coding مش مذكور في الـ UI design process خالص. الـ components بتوعه هما user research، و design and prototyping، و evaluation <bdi>(L1, UI Design Process)</bdi>.",
-     "صح. في الـ user research بتتعلم عن الـ <b>users</b> (مهاراتهم، واللي بيشتتهم، واحتياجاتهم الخاصة) والـ <b>tasks</b> اللي بيحاولوا يخلّصوها، عشان الـ design يتبني عليهم <bdi>(L1, User Research)</bdi>."
+     "الـ Animations مش جزء من الـ user research. الـ User research عن إنك تتعلم عن الـ users والـ tasks بتاعتهم قبل ما تصمم <bdi dir=\"ltr\">(L1, User Research)</bdi>.",
+     "إنك تختبر الـ interface وتحسّنه ده الـ component التالت، الـ user interface evaluation، مش الـ user research اللي بييجي الأول <bdi dir=\"ltr\">(L1, UI Design Process)</bdi>.",
+     "الـ Coding مش مذكور في الـ UI design process خالص. الـ components بتوعه هما user research، و design and prototyping، و evaluation <bdi dir=\"ltr\">(L1, UI Design Process)</bdi>.",
+     "صح. في الـ user research بتتعلم عن الـ <b>users</b> (مهاراتهم، واللي بيشتتهم، واحتياجاتهم الخاصة) والـ <b>tasks</b> اللي بيحاولوا يخلّصوها، عشان الـ design يتبني عليهم <bdi dir=\"ltr\">(L1, User Research)</bdi>."
     ],
     [
-     "المحاضرة بتذكر نتيجة من نوع عكس كده: الـ users فضّلوا الـ <b>visual</b> search، اللي اتستخدم في 71% من عمليات البحث <bdi>(L1, Example Case)</bdi>.",
-     "صح. صفحة البحث بتاعة الـ ICDL اللي صممها الـ HCIL كانت design كويس وزارها أكتر من 3 مليون unique visitor، والـ <b>visual search كان مفضّل عند الـ users (71% من عمليات البحث)</b> <bdi>(L1, Example Case)</bdi>.",
-     "مفيش حاجة في المحاضرة بتأيد ده. الـ visual search الـ interactive بتاع الـ ICDL كان الطريقة المفضّلة للبحث <bdi>(L1, Example Case)</bdi>.",
-     "المحاضرة بتقدّم الـ ICDL كـ design كويس الـ users حبوه، والـ HCI هدفه systems سهلة وطبيعية و intuitive <bdi>(L1, Objective of HCI)</bdi>."
+     "المحاضرة بتذكر نتيجة من نوع عكس كده: الـ users فضّلوا الـ <b>visual</b> search، اللي اتستخدم في 71% من عمليات البحث <bdi dir=\"ltr\">(L1, Example Case)</bdi>.",
+     "صح. صفحة البحث بتاعة الـ ICDL اللي صممها الـ HCIL كانت design كويس وزارها أكتر من 3 مليون unique visitor، والـ <b>visual search كان مفضّل عند الـ users (71% من عمليات البحث)</b> <bdi dir=\"ltr\">(L1, Example Case)</bdi>.",
+     "مفيش حاجة في المحاضرة بتأيد ده. الـ visual search الـ interactive بتاع الـ ICDL كان الطريقة المفضّلة للبحث <bdi dir=\"ltr\">(L1, Example Case)</bdi>.",
+     "المحاضرة بتقدّم الـ ICDL كـ design كويس الـ users حبوه، والـ HCI هدفه systems سهلة وطبيعية و intuitive <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>."
     ],
     [
-     "صح. المحاضرة بتقول إن هدفنا إننا نساعد البني آدمين <b>يحسّوا إنهم بيتفاعلوا مع الـ task مباشرة</b> والـ interface يختفي في نص التفاعل ده <bdi>(L1, Invisible Interface)</bdi>.",
-     "\"Invisible\" مش معناها إنك تخبي الـ functions. معناها إن الـ users بيقضوا وقت قليل مركزين على الـ interface وبيركزوا على الـ task بتاعتهم <bdi>(L1, Invisible Interface)</bdi>.",
-     "الـ prompts اللي على طول بتشد الانتباه للـ interface، أما الـ invisible interface فهو اللي الـ user بينساه، زي حكم الماتش اللي محدش واخد باله منه <bdi>(L1, Human-Computer or Human-Task interaction)</bdi>.",
-     "الـ input الكتير بيخلي الـ user يفكر في الأداة. والمحاضرة بتقول إن الـ user المفروض يفكر في الـ task مش في الأداة <bdi>(L1, Invisible Interface)</bdi>."
+     "صح. المحاضرة بتقول إن هدفنا إننا نساعد البني آدمين <b>يحسّوا إنهم بيتفاعلوا مع الـ task مباشرة</b> والـ interface يختفي في نص التفاعل ده <bdi dir=\"ltr\">(L1, Invisible Interface)</bdi>.",
+     "كلمة <bdi dir=\"ltr\">\"Invisible\"</bdi> مش معناها إنك تخبي الـ functions. معناها إن الـ users بيقضوا وقت قليل مركزين على الـ interface وبيركزوا على الـ task بتاعتهم <bdi dir=\"ltr\">(L1, Invisible Interface)</bdi>.",
+     "الـ prompts اللي على طول بتشد الانتباه للـ interface، أما الـ invisible interface فهو اللي الـ user بينساه، زي حكم الماتش اللي محدش واخد باله منه <bdi dir=\"ltr\">(L1, Human-Computer or Human-Task interaction)</bdi>.",
+     "الـ input الكتير بيخلي الـ user يفكر في الأداة. والمحاضرة بتقول إن الـ user المفروض يفكر في الـ task مش في الأداة <bdi dir=\"ltr\">(L1, Invisible Interface)</bdi>."
     ],
     [
-     "الـ Installation مش واحد من الـ components. التلاتة هما user research، و design and prototyping، و user interface evaluation <bdi>(L1, UI Design Process)</bdi>.",
-     "الـ Marketing مش جزء من الـ UI design process. الـ 3 components بتوعه هما user research، و design and prototyping، و evaluation <bdi>(L1, UI Design Process)</bdi>.",
-     "صح. الـ 3 components المتنصوح بيهم هما 1- user research، 2- design and prototyping of the interface، 3- <b>user interface evaluation (improvement)</b> <bdi>(L1, UI Design Process)</bdi>.",
-     "الـ Data entry مش component في الـ UI design process؛ الـ component التالت هو الـ user interface evaluation <bdi>(L1, UI Design Process)</bdi>."
+     "الـ Installation مش واحد من الـ components. التلاتة هما user research، و design and prototyping، و user interface evaluation <bdi dir=\"ltr\">(L1, UI Design Process)</bdi>.",
+     "الـ Marketing مش جزء من الـ UI design process. الـ 3 components بتوعه هما user research، و design and prototyping، و evaluation <bdi dir=\"ltr\">(L1, UI Design Process)</bdi>.",
+     "صح. الـ 3 components المتنصوح بيهم هما:<br>(1) الـ user research<br>(2) الـ design and prototyping of the interface<br>(3) الـ <b>user interface evaluation (improvement)</b><br>ده في <bdi dir=\"ltr\">(L1, UI Design Process)</bdi>.",
+     "الـ Data entry مش component في الـ UI design process؛ الـ component التالت هو الـ user interface evaluation <bdi dir=\"ltr\">(L1, UI Design Process)</bdi>."
     ],
     [
-     "صح. الـ slide بتقول \"<b>The user should think about the task rather than thinking about the tool</b>\" <bdi>(L1, Invisible Interface)</bdi>.",
-     "الهدف العكس: الـ users المفروض يقضوا وقت قليل مركزين على الـ interface ويركزوا على الـ task بدل كده <bdi>(L1, Invisible Interface)</bdi>.",
-     "إنك تتشيك على الـ updates ده انتباه للأداة. في الـ invisible interface الـ user بينسى الـ interface وبيشتغل على الـ task <bdi>(L1, Human-Computer or Human-Task interaction)</bdi>.",
-     "الزراير والـ menus دي الأداة. المحاضرة عايزة الـ users يركزوا على الـ task اللي بيحاولوا يخلّصوها، مش على الـ interface <bdi>(L1, Invisible Interface)</bdi>."
+     "صح. الـ slide بتقول:<span class=\"ltr\">\"<b>The user should think about the task rather than thinking about the tool</b>\"</span>ده في <bdi dir=\"ltr\">(L1, Invisible Interface)</bdi>.",
+     "الهدف العكس: الـ users المفروض يقضوا وقت قليل مركزين على الـ interface ويركزوا على الـ task بدل كده <bdi dir=\"ltr\">(L1, Invisible Interface)</bdi>.",
+     "إنك تتشيك على الـ updates ده انتباه للأداة. في الـ invisible interface الـ user بينسى الـ interface وبيشتغل على الـ task <bdi dir=\"ltr\">(L1, Human-Computer or Human-Task interaction)</bdi>.",
+     "الزراير والـ menus دي الأداة. المحاضرة عايزة الـ users يركزوا على الـ task اللي بيحاولوا يخلّصوها، مش على الـ interface <bdi dir=\"ltr\">(L1, Invisible Interface)</bdi>."
     ],
     [
-     "الـ HCI مش عن تصميم الـ hardware. هو التفاعل (العلاقة) بين الـ users والـ computer systems، وبيتعامل مع الـ design والـ implementation والـ evaluation بتاع الـ <b>interactive systems</b> <bdi>(L1, What is HCI?)</bdi>.",
-     "صح. الـ HCI هو <b>التفاعل بين الـ user والكمبيوتر</b>، أو العلاقة بين الـ users والـ computer systems. بيتعامل مع الـ design والـ implementation والـ evaluation بتاع الـ interactive systems، زي الـ GUIs والـ web interfaces <bdi>(L1, What is HCI? / Objective of HCI)</bdi>."
+     "الـ HCI مش عن تصميم الـ hardware. هو التفاعل (العلاقة) بين الـ users والـ computer systems، وبيتعامل مع الـ design والـ implementation والـ evaluation بتاع الـ <b>interactive systems</b> <bdi dir=\"ltr\">(L1, What is HCI?)</bdi>.",
+     "صح. الـ HCI هو <b>التفاعل بين الـ user والكمبيوتر</b>، أو العلاقة بين الـ users والـ computer systems. بيتعامل مع الـ design والـ implementation والـ evaluation بتاع الـ interactive systems، زي الـ GUIs والـ web interfaces <bdi dir=\"ltr\">(L1, What is HCI? / Objective of HCI)</bdi>."
     ],
     [
-     "صح. الـ HCI عن التفاعل بين الـ user والكمبيوتر، ومن أهدافه '<b>How to make the user interaction with computer easier?</b>' عن طريق إننا نصمم systems سهلة وطبيعية و intuitive <bdi>(L1, What is HCI? / Objective of HCI)</bdi>.",
-     "أهداف الـ HCI في المحاضرة متمركزة حوالين إننا نسهّل تفاعل الـ user مع الكمبيوتر، والـ HCI بيدرس تكنولوجيا الكمبيوتر اللي ممكن تحسّن التفاعل بين الـ users والكمبيوتر <bdi>(L1, Objective of HCI)</bdi>."
+     "صح. الـ HCI عن التفاعل بين الـ user والكمبيوتر، ومن أهدافه '<b>How to make the user interaction with computer easier?</b>' عن طريق إننا نصمم systems سهلة وطبيعية و intuitive <bdi dir=\"ltr\">(L1, What is HCI? / Objective of HCI)</bdi>.",
+     "أهداف الـ HCI في المحاضرة متمركزة حوالين إننا نسهّل تفاعل الـ user مع الكمبيوتر، والـ HCI بيدرس تكنولوجيا الكمبيوتر اللي ممكن تحسّن التفاعل بين الـ users والكمبيوتر <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>."
     ],
     [
-     "صح. المحاضرة بتقول إن نجاح أي computer system النهارده محتاج الـ design يبقى <b>user-centric ومركّز على الـ usability</b> وعلى user experience سلسة، والـ HCI هدفه systems سهلة وطبيعية و intuitive واستخدام efficient للـ interfaces <bdi>(L1, UI vs UX vs HCI / Objective of HCI)</bdi>.",
-     "المحاضرة بتقول العكس: الـ systems الأولانية كانت بتتجاهل الـ usability، بس النهارده النجاح محتاج design مركّز على الـ usability، والـ HCI هدفه استخدام سهل و efficient <bdi>(L1, UI vs UX vs HCI)</bdi>."
+     "صح. المحاضرة بتقول إن نجاح أي computer system النهارده محتاج الـ design يبقى <b>user-centric ومركّز على الـ usability</b> وعلى user experience سلسة، والـ HCI هدفه systems سهلة وطبيعية و intuitive واستخدام efficient للـ interfaces <bdi dir=\"ltr\">(L1, UI vs UX vs HCI / Objective of HCI)</bdi>.",
+     "المحاضرة بتقول العكس: الـ systems الأولانية كانت بتتجاهل الـ usability، بس النهارده النجاح محتاج design مركّز على الـ usability، والـ HCI هدفه استخدام سهل و efficient <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>."
     ],
     [
-     "أهداف الـ HCI عن إننا نسهّل تفاعل الـ user بـ systems سهلة وطبيعية و intuitive، والنجاح محتاج design مركّز على الـ <b>usability</b>. الـ Privacy والـ security بيظهروا بس كقاعدة للتعامل مع data الـ users في الـ research <bdi>(L1, Objective of HCI; L5, Privacy and Security)</bdi>.",
-     "صح. أهداف الـ HCI إننا نسهّل تفاعل الـ user مع الكمبيوتر ونصمم systems سهلة وطبيعية و intuitive؛ والنجاح محتاج design يبقى user-centric و<b>مركّز على الـ usability</b> <bdi>(L1, Objective of HCI / UI vs UX vs HCI)</bdi>."
+     "أهداف الـ HCI عن إننا نسهّل تفاعل الـ user بـ systems سهلة وطبيعية و intuitive، والنجاح محتاج design مركّز على الـ <b>usability</b>. الـ Privacy والـ security بيظهروا بس كقاعدة للتعامل مع data الـ users في الـ research <bdi dir=\"ltr\">(L1, Objective of HCI; L5, Privacy and Security)</bdi>.",
+     "صح. أهداف الـ HCI إننا نسهّل تفاعل الـ user مع الكمبيوتر ونصمم systems سهلة وطبيعية و intuitive؛ والنجاح محتاج design يبقى user-centric و<b>مركّز على الـ usability</b> <bdi dir=\"ltr\">(L1, Objective of HCI / UI vs UX vs HCI)</bdi>."
     ],
     [
-     "صح. في الـ hierarchy بتاع المجالات، الـ <b>Engineering + Psychology</b> بيكوّنوا الـ Human Factors Engineering، والـ HCI فرع منه، والـ HCI بيتفرع لـ UI و UX و interaction <b>design</b>. والـ HCI كمان بيدرس البني آدمين (احتياجاتهم وقدراتهم وحدودهم) وتكنولوجيا الكمبيوتر <bdi>(L1, HCI in a broader hierarchy of fields)</bdi>.",
-     "المحاضرة حاطة الـ HCI تحت الـ Human Factors Engineering (Engineering + Psychology)، وبتقول إن الـ HCI بيتعامل مع design الـ interactive systems، وإنه بيدرس البني آدمين وتكنولوجيا الكمبيوتر الاتنين، فهو فعلاً واخد من التلاتة <bdi>(L1, HCI in a broader hierarchy of fields / What is HCI?)</bdi>."
+     "صح. في الـ hierarchy بتاع المجالات، الـ <b>Engineering + Psychology</b> بيكوّنوا الـ Human Factors Engineering، والـ HCI فرع منه، والـ HCI بيتفرع لـ UI و UX و interaction <b>design</b>. والـ HCI كمان بيدرس البني آدمين (احتياجاتهم وقدراتهم وحدودهم) وتكنولوجيا الكمبيوتر <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy of fields)</bdi>.",
+     "المحاضرة حاطة الـ HCI تحت الـ Human Factors Engineering (Engineering + Psychology)، وبتقول إن الـ HCI بيتعامل مع design الـ interactive systems، وإنه بيدرس البني آدمين وتكنولوجيا الكمبيوتر الاتنين، فهو فعلاً واخد من التلاتة <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy of fields / What is HCI?)</bdi>."
     ],
     [
-     "الـ HCI هدفه العكس. من أهداف الـ HCI إنه يسهّل التفاعل عن طريق تصميم systems <b>سهلة وطبيعية و intuitive</b> بتوفر الوقت وبتقلل التكاليف <bdi>(L1, Objective of HCI)</bdi>.",
-     "صح. المحاضرة بتقول إن الـ HCI لازم يسهّل تفاعل الـ user مع الكمبيوتر ويصمم systems <b>سهلة وطبيعية و intuitive</b> عشان توفر الوقت وتقلل التكاليف، مش systems معقدة <bdi>(L1, Objective of HCI)</bdi>."
+     "الـ HCI هدفه العكس. من أهداف الـ HCI إنه يسهّل التفاعل عن طريق تصميم systems <b>سهلة وطبيعية و intuitive</b> بتوفر الوقت وبتقلل التكاليف <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>.",
+     "صح. المحاضرة بتقول إن الـ HCI لازم يسهّل تفاعل الـ user مع الكمبيوتر ويصمم systems <b>سهلة وطبيعية و intuitive</b> عشان توفر الوقت وتقلل التكاليف، مش systems معقدة <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>."
     ],
     [
-     "واحد من أهداف الـ HCI المذكورة هو <b>designing web interfaces</b>، فالـ HCI واضح إنه بينطبق على الـ web design <bdi>(L1, Objective of HCI)</bdi>.",
-     "صح. المحاضرة بتذكر <b>designing web interfaces</b> كهدف من أهداف الـ HCI، جنب تصميم الـ GUIs <bdi>(L1, Objective of HCI)</bdi>. والـ guidelines بتاعة الـ forms والـ layout والـ navigation لصفحات الويب كمان جزء من الكورس <bdi>(L9, L10)</bdi>."
+     "واحد من أهداف الـ HCI المذكورة هو <b>designing web interfaces</b>، فالـ HCI واضح إنه بينطبق على الـ web design <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>.",
+     "صح. المحاضرة بتذكر <b>designing web interfaces</b> كهدف من أهداف الـ HCI، جنب تصميم الـ GUIs <bdi dir=\"ltr\">(L1, Objective of HCI)</bdi>. والـ guidelines بتاعة الـ forms والـ layout والـ navigation لصفحات الويب كمان جزء من الكورس <bdi dir=\"ltr\">(L9, L10)</bdi>."
     ],
     [
-     "صح. ده تعريف المحاضرة: الـ <b>UX Design</b> (User Experience) بيغطي التجربة الكاملة بتاعة الـ user مع الـ product أو الـ website <bdi>(L1, UI vs UX)</bdi>.",
-     "الجملة دي هي تعريف الـ slide نفسها للـ UX Design. الـ <b>UI Design</b> هو اللي بيتكلم عن الـ interactivity والـ look and feel بتاع شاشة الـ product أو صفحة الويب <bdi>(L1, UI vs UX)</bdi>."
+     "صح. ده تعريف المحاضرة: الـ <b>UX Design</b> (User Experience) بيغطي التجربة الكاملة بتاعة الـ user مع الـ product أو الـ website <bdi dir=\"ltr\">(L1, UI vs UX)</bdi>.",
+     "الجملة دي هي تعريف الـ slide نفسها للـ UX Design. الـ <b>UI Design</b> هو اللي بيتكلم عن الـ interactivity والـ look and feel بتاع شاشة الـ product أو صفحة الويب <bdi dir=\"ltr\">(L1, UI vs UX)</bdi>."
     ],
     [
-     "صح. المحاضرة بتوري 3 أجزاء بيتقابلوا في الـ HCI: الـ <b>User</b> (قدراته العقلية والجسدية)، والـ <b>Computer / Machine</b> (أجهزة الـ input/output)، والـ <b>Interaction</b> (الـ interfaces والـ HCI patterns والـ design والـ usability evaluation) <bdi>(L1, What is HCI)</bdi>.",
-     "الـ figure بتاع الـ HCI في المحاضرة فيه الـ 3 أجزاء دول بالظبط: الـ User، والـ Computer / Machine، والـ Interaction اللي بينهم <bdi>(L1, What is HCI)</bdi>."
+     "صح. المحاضرة بتوري 3 أجزاء بيتقابلوا في الـ HCI: الـ <b>User</b> (قدراته العقلية والجسدية)، والـ <b><bdi dir=\"ltr\">Computer&nbsp;/&nbsp;Machine</bdi></b> (أجهزة الـ <bdi dir=\"ltr\">input/output</bdi>)، والـ <b>Interaction</b> (الـ interfaces والـ HCI patterns والـ design والـ usability evaluation) <bdi dir=\"ltr\">(L1, What is HCI)</bdi>.",
+     "الـ figure بتاع الـ HCI في المحاضرة فيه الـ 3 أجزاء دول بالظبط: الـ User، والـ <bdi dir=\"ltr\">Computer&nbsp;/&nbsp;Machine</bdi>، والـ Interaction اللي بينهم <bdi dir=\"ltr\">(L1, What is HCI)</bdi>."
     ],
     [
-     "الكورس بيطبّق الـ HCI على حاجات أكتر بكتير من الـ desktops: جهاز الـ touch-screen بتاع Qualcomm لسواقين التريلات (L1)، وأنشطة تصميم mobile app <bdi>(L1, Activity)</bdi>، والملاحظة إن الفرق بين الـ HCI والـ human factors engineering بيقل لأن <b>أجهزة أكتر وأكتر بقت computerized</b> (L1).",
-     "صح. الـ HCI بيغطي كل الأجهزة الـ computerized. المحاضرة بتقول إن <b>أجهزة أكتر وأكتر بقت computerized</b> <bdi>(L1, HCI in a broader hierarchy)</bdi>، والكورس بيستخدم أمثلة زي جهاز الـ touch-screen بتاع Qualcomm لسواقين التريلات و mobile app لمحبين الكورة (L1)."
+     "الكورس بيطبّق الـ HCI على حاجات أكتر بكتير من الـ desktops: جهاز الـ touch-screen بتاع Qualcomm لسواقين التريلات (L1)، وأنشطة تصميم mobile app <bdi dir=\"ltr\">(L1, Activity)</bdi>، والملاحظة إن الفرق بين الـ HCI والـ human factors engineering بيقل لأن <b>أجهزة أكتر وأكتر بقت computerized</b> (L1).",
+     "صح. الـ HCI بيغطي كل الأجهزة الـ computerized. المحاضرة بتقول إن <b>أجهزة أكتر وأكتر بقت computerized</b> <bdi dir=\"ltr\">(L1, HCI in a broader hierarchy)</bdi>، والكورس بيستخدم أمثلة زي جهاز الـ touch-screen بتاع Qualcomm لسواقين التريلات و mobile app لمحبين الكورة (L1)."
     ]
    ],
    "extra": [
@@ -696,14 +696,14 @@ AR.hci = {
      "الـ Product Design واحد من الـ 3 فروع بتوع الـ Human Factors Engineering."
     ],
     [
-     "النصّين مقلوبين: المحاضرة بتقول إن الفجوة بتقل، عشان أجهزة أكتر (مش أقل) بقت computerized <bdi>(L1, HCI hierarchy)</bdi>.",
+     "النصّين مقلوبين: المحاضرة بتقول إن الفجوة بتقل، عشان أجهزة أكتر (مش أقل) بقت computerized <bdi dir=\"ltr\">(L1, HCI hierarchy)</bdi>.",
      "صح. الفرق بـ<b>يقل</b>، عشان أجهزة أكتر بقت computerized."
     ],
     [
      "العكس هو الصح: الـ UX بيحدد (dictates) والـ HCI بيفهم.",
      "الـ look and feel ده الـ UI design. الـ UX هو التجربة الكاملة والـ HCI عن فهم التفاعلات.",
      "صح. المحاضرة بتقول إن الـ UX عن تحديد (dictating) التفاعلات، والـ HCI في الأساس عن فهم التفاعل بين البني آدمين والكمبيوتر.",
-     "أجهزة الـ input/output هي جزء الـ \"computer\" بس. الـ HCI بيغطي كمان الـ user والـ interaction."
+     "أجهزة الـ <bdi dir=\"ltr\">input/output</bdi> هي جزء الـ <bdi dir=\"ltr\">\"computer\"</bdi> بس. الـ HCI بيغطي كمان الـ user والـ interaction."
     ],
     [
      "لسه محدش بيعمل design أو prototype؛ الفريق بيتعلم عن الـ users.",
@@ -724,7 +724,7 @@ AR.hci = {
     [
      "جزء الـ User عن القدرات العقلية والجسدية.",
      "صح. جزء الـ Interaction بيغطي الـ interfaces والـ HCI patterns والـ design والـ usability evaluation.",
-     "جزء الـ Computer/Machine عن أجهزة الـ input/output.",
+     "جزء الـ <bdi dir=\"ltr\">Computer/Machine</bdi> عن أجهزة الـ <bdi dir=\"ltr\">input/output</bdi>.",
      "الـ Human Factors Engineering هو المجال الأب للـ HCI، مش واحد من أجزاءه التلاتة."
     ],
     [
@@ -747,11 +747,11 @@ AR.hci = {
      "صح. ده تعريف المحاضرة للـ bloatware.",
      "ده وصف الـ CEIP، اللي Microsoft استخدمته عشان تستبدل التخمين بالـ data.",
      "دي الـ adaptive (personalized) menu.",
-     "إن اتنين toolbars أو أكتر يشاركوا سطر واحد ده الـ rafted toolbar، واحدة من mechanisms الـ Office 2000. الـ Bloatware هو منتج فيه features كتير زيادة عن اللزوم أو ببساطة حاجات كتير أوي <bdi>(L1, Full-featured systems)</bdi>."
+     "إن اتنين toolbars أو أكتر يشاركوا سطر واحد ده الـ rafted toolbar، واحدة من mechanisms الـ Office 2000. الـ Bloatware هو منتج فيه features كتير زيادة عن اللزوم أو ببساطة حاجات كتير أوي <bdi dir=\"ltr\">(L1, Full-featured systems)</bdi>."
     ],
     [
      "دي الـ adaptive (personalized) menu.",
-     "صح. الـ Rafted toolbars بتحط اتنين toolbars أو أكتر على سطر واحد، وفيه algorithm بيتوقع الزراير الأقل استخدام وبينقلها لـ overflow area <bdi>(L1, Office 2000 mechanisms)</bdi>.",
+     "صح. الـ Rafted toolbars بتحط اتنين toolbars أو أكتر على سطر واحد، وفيه algorithm بيتوقع الزراير الأقل استخدام وبينقلها لـ overflow area <bdi dir=\"ltr\">(L1, Office 2000 mechanisms)</bdi>.",
      "الـ toolbars فضلت موجودة؛ بس اتشاركت سطر وخبّت شوية زراير.",
      "المحاضرة مقالتش كده؛ استخدام الـ keyboard كان finding من الـ CEIP."
     ],
@@ -762,11 +762,11 @@ AR.hci = {
     [
      "ده مذكور كنتيجة لزيادة الـ features.",
      "ده مذكور كنتيجة لزيادة الـ features.",
-     "صح. اللي حصل العكس: مع Office 97–2003 الناس حسّت إنها متحكمة <b>أقل</b>.",
+     "صح. اللي حصل العكس: مع Office <bdi dir=\"ltr\">97–2003</bdi> الناس حسّت إنها متحكمة <b>أقل</b>.",
      "ده مذكور كنتيجة لزيادة الـ features."
     ],
     [
-     "الـ CEIP مكانش بيجمع أسامي ولا emails: الـ usage والـ hardware data بتاعته كانت anonymous، من المستخدمين اللي اشتركوا عن طريق بالونة \"Help make Office better\" <bdi>(L1, From guesswork to data)</bdi>.",
+     "الـ CEIP مكانش بيجمع أسامي ولا emails: الـ usage والـ hardware data بتاعته كانت anonymous، من المستخدمين اللي اشتركوا عن طريق بالونة \"Help make Office better\" <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
      "المحاضرة مذكرتش فيديو؛ الـ CEIP جمع usage و hardware data.",
      "رأي الصحافة كان جزء من المشكلة، مش data من الـ CEIP.",
      "صح. الـ balloon سجّلت الـ users والـ CEIP جمع usage و hardware data بشكل anonymous."
@@ -778,7 +778,7 @@ AR.hci = {
      "الـ 1.3 مرتبطة بالـ 1.3+ billion sessions، مش باستخدام الـ keyboard."
     ],
     [
-     "مااحتفظوش بيها كلها: جالهم data من Word وOutlook كتير لدرجة إن 70% منها اترمى <bdi>(L1, From guesswork to data)</bdi>.",
+     "مااحتفظوش بيها كلها: جالهم data من Word وOutlook كتير لدرجة إن 70% منها اترمى <bdi dir=\"ltr\">(L1, From guesswork to data)</bdi>.",
      "صح. جالهم data من Word و Outlook كتير لدرجة إن <b>70% منها اترمى</b>."
     ],
     [
@@ -788,8 +788,8 @@ AR.hci = {
      "ده حل الـ Qualcomm truckers، مش درس الـ auto-customization."
     ],
     [
-     "صح. دي من المشاكل المذكورة لـ Office 97–2003.",
-     "المحاضرة بتذكر المشاكل دي بالظبط لـ Office 97–2003."
+     "صح. دي من المشاكل المذكورة لـ Office <bdi dir=\"ltr\">97–2003</bdi>.",
+     "المحاضرة بتذكر المشاكل دي بالظبط لـ Office <bdi dir=\"ltr\">97–2003</bdi>."
     ]
    ]
   },
@@ -808,7 +808,7 @@ AR.hci = {
     {
      "h": "افتكر: الـ interaction design process",
      "pts": [
-      "الـ interaction design process فيه <b>3 components</b>:<br>(1) <b>User research</b><br>(2) الـ <b>Design and prototyping</b><br>(3) <b>Evaluation (improvement)</b>.",
+      "الـ interaction design process فيه <b>3 components</b>:<br>(1) الـ <b>User research</b><br>(2) الـ <b>Design and prototyping</b><br>(3) الـ <b>Evaluation (improvement)</b>.",
       "الـ User research معناه <b>إنك تشتغل مع الـ users بدل ما تخمّن</b> (<b>user-centric design</b>). تجاهل الـ user research حاجة منتشرة. دخّل الـ users عشان القرارات تبقى مبنية على الواقع مش على التخمين.",
       "الـ User research: يعني <b>invisible interfaces</b> (<b>task-oriented design</b>)."
      ]
@@ -824,7 +824,7 @@ AR.hci = {
      "h": "الـ double diamond of design",
      "pts": [
       "الـ <b>double diamond of design</b> فيه 4 phases:<span class=\"ltr\"><b>Discover</b> → <b>Define</b> → <b>Develop</b> → <b>Deliver</b></span>• الـ <b>Discover</b>: فهم للمشكلة (insight into the problem).<br>• الـ <b>Define</b>: المنطقة اللي هنركز عليها.<br>• الـ <b>Develop</b>: حلول محتملة.<br>• الـ <b>Deliver</b>: حلول شغالة فعلاً.",
-      "الرسمة: 2 diamonds جنب بعض. الـ diamond الأولانية بتبدأ من نقطة اسمها <b>Problem</b>، وبتوسع في الـ Discover وبتضيق في الـ Define لحد نقطة اسمها <b>Problem Definition</b> / <b>Design Brief</b>.",
+      "الرسمة: 2 diamonds جنب بعض. الـ diamond الأولانية بتبدأ من نقطة اسمها <b>Problem</b>، وبتوسع في الـ Discover وبتضيق في الـ Define لحد نقطة اسمها <bdi dir=\"ltr\"><b>Problem Definition</b> / <b>Design Brief</b></bdi>.",
       "الـ diamond التانية بتبدأ من النقطة دي، وبتوسع في الـ Develop وبتضيق في الـ Deliver لحد نقطة اسمها <b>Solution</b>."
      ],
      "figH": {
@@ -838,7 +838,7 @@ AR.hci = {
      ]
     },
     {
-     "h": "A simple interaction design lifecycle model",
+     "h": "الـ simple interaction design lifecycle model",
      "pts": [
       "الـ lifecycle model البسيط ده <b>مثال على user-centered design approach</b>.",
       "الرسمة: الـ process بيدخل من <b>Discovering requirements</b>. وبين الـ Discovering requirements والـ <b>Designing alternatives</b> فيه أسهم رايحة جاية في الاتجاهين.",
@@ -891,10 +891,10 @@ AR.hci = {
      ]
     },
     {
-     "h": "مين بيعمل الـ UI/UX design؟",
+     "h": "مين بيعمل الـ <bdi dir=\"ltr\">UI/UX design</bdi>؟",
      "pts": [
       "الـ <b>Software engineer</b> بيصمم الـ system كله، وغالباً يعرف حاجة بسيطة عن الـ HCI.",
-      "أو <b>UI/UX designer</b> في فريق الـ development، وده بقى منتشر أكتر في الشركات الصغيرة والمتوسطة.",
+      "أو <b><bdi dir=\"ltr\">UI/UX designer</bdi></b> في فريق الـ development، وده بقى منتشر أكتر في الشركات الصغيرة والمتوسطة.",
       "أو <b>specialists</b> لكل دور، زي الـ UX researcher والـ UX designer والـ visual designer والـ UX engineer، في الشركات الكبيرة زي Google."
      ]
     },
@@ -910,7 +910,7 @@ AR.hci = {
      ]
     },
     {
-     "h": "مين الـ users/stakeholders؟",
+     "h": "مين الـ <bdi dir=\"ltr\">users/stakeholders</bdi>؟",
      "pts": [
       "مين هم الـ users ده <b>مش حاجة واضحة</b>:",
       "فيه <b>382 نوع مختلف (distinct types) من الـ users للـ smartphone apps</b> (<b>Sha Zhao et al, 2016</b>).",
@@ -930,7 +930,7 @@ AR.hci = {
     {
      "h": "أنواع الـ user research حسب إمتى (WHEN)",
      "pts": [
-      "<b>(1) الـ Foundational (strategic / generative)</b>: بيحصل <b>قبل ما أي حاجة تتصمم</b>. الهدف إنك تحدد مشاكل الـ users وإيه اللي هنبنيه. بتتكلم مع الـ users عن الـ pain points بتاعتهم، وبيطلّعلك فرص الفريق مكانش هيفكر فيها.",
+      "<b>(1) الـ <bdi dir=\"ltr\">Foundational (strategic / generative)</bdi></b>: بيحصل <b>قبل ما أي حاجة تتصمم</b>. الهدف إنك تحدد مشاكل الـ users وإيه اللي هنبنيه. بتتكلم مع الـ users عن الـ pain points بتاعتهم، وبيطلّعلك فرص الفريق مكانش هيفكر فيها.",
       "<b>(2) الـ Tactical (design)</b>: بيحصل <b>أثناء مرحلة الـ design</b>. بيقولك المنتج المفروض يتبني إزاي، ومحتاج user feedback على الـ prototypes.",
       "<b>(3) الـ Post-launch</b>: هل نجحنا؟ هل الـ system بيلبّي احتياجات الـ users؟"
      ]
@@ -941,7 +941,7 @@ AR.hci = {
       "الـ <b>Primary research</b>: ده research إنت بتعمله بنفسك. الطرق زي الـ interviews والـ focus groups والـ surveys والـ usability studies والـ participant observations.",
       "الـ <b>Secondary research</b>: ده research حد تاني عمله. ومصادره زي الكتب والـ journals وحاجات شبه كده.",
       "الـ Secondary research مهم في الأول عشان تجمع statistics وحقائق وأرقام. بيوفر مجهود ووقت وبيدعم الـ primary findings. وغالباً بيعمله researchers عندهم خبرة في organizations موثوقة، وده صعب تكرره.",
-      "ناس كتير من الـ practitioners مش عارفين يستخدموه إزاي. الكورسات (زي الـ psychology والـ cognition) ومجتمعات الـ HCI/UX بتساعد."
+      "ناس كتير من الـ practitioners مش عارفين يستخدموه إزاي. الكورسات (زي الـ psychology والـ cognition) ومجتمعات الـ <bdi dir=\"ltr\">HCI/UX</bdi> بتساعد."
      ]
     },
     {
@@ -950,7 +950,7 @@ AR.hci = {
       "<b>البني آدمين بيميلوا إنهم يفضلوا ماسكين في الحاجة اللي شغالة.</b>",
       "<b>إنك تفكر في alternatives بيساعدك تلاقي designs أحسن.</b>",
       "الـ alternative designs بتيجي منين؟",
-      "<b>'Flair and creativity'</b>: research و synthesis.",
+      "الـ <b>'Flair and creativity'</b>، يعني research و synthesis.",
       "الـ <b>Cross-fertilization of ideas</b>: تلاقح الأفكار من وجهات نظر مختلفة.",
       "<b>الـ users نفسهم ممكن يطلّعوا designs مختلفة.</b>",
       "<b>دوّر على inspiration</b>: من منتجات و domain شبه بعض، أو من منتجات و domain مختلفين."
@@ -977,9 +977,9 @@ AR.hci = {
    ],
    "cards": [
     "ده design بياخد احتياجات الـ user في الاعتبار في كل خطوة.",
-    "Need finding ← Design alternatives ← Prototyping ← Evaluation (iterative).",
+    "الـ design life cycle بتاع Joyner:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation (iterative).</span>",
     "المراحل:<span class=\"ltr\">Understand → Specify → Design → Evaluate</span>والـ iteration هو الأساس.",
-    "\"You need users early and often.\" يعني محتاج الـ users من بدري وكتير.",
+    "الجملة:<span class=\"ltr\">\"You need users early and often.\"</span>يعني محتاج الـ users من بدري وكتير.",
     "اسمه كمان strategic أو generative. بيحصل قبل ما أي حاجة تتصمم؛ بيلاقي مشاكل الـ users وإيه اللي هنبنيه.",
     "اسمه كمان design research. بيحصل أثناء مرحلة الـ design؛ بيستخدم feedback على الـ prototype عشان نقرر هنبني إزاي.",
     "بعد الـ release: هل نجحنا وهل بيلبّي احتياجات الـ users؟",
@@ -987,38 +987,38 @@ AR.hci = {
     "ده research حد تاني عمله، ومصادره زي الكتب والـ journals وحاجات شبه كده.",
     "اكتشاف الـ requirements، والتصميم اللي يحقق الـ requirements، وعمل prototypes وتقييمها؛ والـ users وأهدافهم؛ وإزاي توازن بين الـ requirements اللي بتتعارض مع بعض.",
     "إنك تطلّع alternatives وتختار من بينها.",
-    "1) User research 2) Design and prototyping 3) Evaluation (improvement).",
+    "(1) الـ User research<br>(2) الـ Design and prototyping<br>(3) الـ Evaluation (improvement).",
     "إنك تشتغل مع الـ users بدل ما تخمّن (user-centric design)؛ و invisible interfaces (task-oriented design).",
     "المراحل:<span class=\"ltr\">Discover → Define → Develop → Deliver</span>(1) الـ Discover: فهم للمشكلة.<br>(2) الـ Define: المنطقة اللي هنركز عليها.<br>(3) الـ Develop: حلول محتملة.<br>(4) الـ Deliver: حلول شغالة فعلاً.",
     "الترتيب:<span class=\"ltr\">Problem → Problem Definition / Design Brief → Solution</span>الـ Problem في البداية، والـ Problem Definition أو الـ Design Brief في النص، والـ Solution في النهاية.",
-    "1) Discovering requirements 2) Designing alternatives 3) Prototyping alternative designs 4) Evaluating product and its user experience throughout.",
-    "User-centered design approach.",
+    "(1) الـ Discovering requirements<br>(2) الـ Designing alternatives<br>(3) الـ Prototyping alternative designs<br>(4) الـ Evaluating product and its user experience throughout.",
+    "الـ User-centered design approach.",
     "الـ Evaluating (الـ cycle هي Discovering requirements، و Designing alternatives، و Prototyping، و Evaluating، وبعدين الـ Final product).",
     "من Knapp et al. (2016)، والخطوات:<span class=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</span>وبعدين iterate.",
     "مين الـ users؟ إيه احتياجات الـ users؟ إزاي نطلّع alternative designs؟ إزاي نختار من بين الـ alternatives؟ إزاي ندمج الـ interaction design activities مع الـ lifecycle models التانية؟",
-    "382 (Sha Zhao et al, 2016).",
+    "عددهم 382 <bdi dir=\"ltr\">(Sha Zhao et al, 2016)</bdi>.",
     "عشان منتجات كتير معمولة عشان يستخدمها قطاعات كبيرة من الناس.",
     "مجموعة أكبر من مجموعة الـ direct users؛ وتحديدهم بيساعد تحدد المجموعات اللي لازم تدخّلها في الـ interaction design activities.",
     "استكشف الـ problem space، وادرس مين الـ users، وادرس الـ user activities عشان تشوف إيه اللي ممكن يتحسن.",
     "أهداف الناس (goals)، والـ usability، والـ user experience goals.",
     "البني آدمين بيميلوا إنهم يفضلوا ماسكين في الحاجة اللي شغالة؛ وإنك تفكر في alternatives بيساعدك تلاقي designs أحسن.",
-    "'Flair and creativity' (research و synthesis)؛ cross-fertilization of ideas من وجهات نظر مختلفة؛ الـ users ممكن يطلّعوا designs مختلفة؛ دوّر على inspiration (منتجات و domain شبه بعض أو مختلفين).",
+    "الـ 'Flair and creativity' (research و synthesis)؛ والـ cross-fertilization of ideas من وجهات نظر مختلفة؛ الـ users ممكن يطلّعوا designs مختلفة؛ دوّر على inspiration (منتجات و domain شبه بعض أو مختلفين).",
     "الـ behavior اللي باين من برة واللي يتقاس (externally-visible and measurable)؛ الـ technical feasibility؛ الـ evaluation مع الـ users أو الـ peers؛ الـ quality thresholds.",
     "عشان الـ behavior هو المفتاح.",
     "كل مجموعة stakeholders ليها quality thresholds مختلفة؛ والـ usability والـ user experience goals بيوصلوك للـ criteria المناسبة."
    ],
    "qa": [
-    "(1) الـ Foundational (strategic/generative): قبل ما أي حاجة تتصمم، عشان نلاقي مشاكل الـ users وإيه اللي هنبنيه.<br>(2) الـ Tactical (design): أثناء الـ design، بنستخدم feedback على الـ prototype عشان نقرر هنبني إزاي.<br>(3) الـ Post-launch: بعد الـ launch، عشان نشوف نجحنا ولا لأ والـ system بيلبّي احتياجات الـ users ولا لأ.",
+    "(1) الـ <bdi dir=\"ltr\">Foundational (strategic/generative)</bdi>: قبل ما أي حاجة تتصمم، عشان نلاقي مشاكل الـ users وإيه اللي هنبنيه.<br>(2) الـ Tactical (design): أثناء الـ design، بنستخدم feedback على الـ prototype عشان نقرر هنبني إزاي.<br>(3) الـ Post-launch: بعد الـ launch، عشان نشوف نجحنا ولا لأ والـ system بيلبّي احتياجات الـ users ولا لأ.",
     "لأنهم شايفينه جزء أساسي من كل مرحلة، وعايزين يتجنبوا الفكرة الغلط إنه خطوة واحدة في الأول. وشركة Google بتقول إنه بيحصل قبل وأثناء وبعد الـ design.",
-    "(1) الـ software engineer بيصمم الـ system كله.<br>(2) أو UI/UX designer في فريق الـ development، وده منتشر في الشركات الصغيرة والمتوسطة.<br>(3) أو كذا specialist في الشركات الكبيرة، زي الـ UX researcher والـ UX designer والـ visual designer والـ UX engineer.",
-    "الـ interaction design عبارة عن process: (1) بيركز على اكتشاف الـ requirements، والتصميم اللي يحقق الـ requirements، وعمل prototypes وتقييمها<br>(2) بيركز على الـ users وأهدافهم<br>(3) بيشمل إزاي توازن بين الـ requirements اللي بتتعارض مع بعض. وإنك تطلّع alternatives وتختار من بينها ده المفتاح.",
-    "فيه 4 phases: (1) Discover: فهم للمشكلة (insight into the problem)<br>(2) Define: المنطقة اللي هنركز عليها<br>(3) Develop: حلول محتملة<br>(4) Deliver: حلول شغالة فعلاً. الـ diamond الأولانية بتروح من الـ Problem للـ Problem Definition / Design Brief؛ والتانية بتروح من هناك للـ Solution.",
+    "(1) الـ software engineer بيصمم الـ system كله.<br>(2) أو <bdi dir=\"ltr\">UI/UX designer</bdi> في فريق الـ development، وده منتشر في الشركات الصغيرة والمتوسطة.<br>(3) أو كذا specialist في الشركات الكبيرة، زي الـ UX researcher والـ UX designer والـ visual designer والـ UX engineer.",
+    "الـ interaction design عبارة عن process:<br>(1) بيركز على اكتشاف الـ requirements، والتصميم اللي يحقق الـ requirements، وعمل prototypes وتقييمها<br>(2) بيركز على الـ users وأهدافهم<br>(3) بيشمل إزاي توازن بين الـ requirements اللي بتتعارض مع بعض. وإنك تطلّع alternatives وتختار من بينها ده المفتاح.",
+    "فيه 4 phases:<br>(1) الـ Discover: فهم للمشكلة <bdi dir=\"ltr\">(insight into the problem)</bdi><br>(2) الـ Define: المنطقة اللي هنركز عليها<br>(3) الـ Develop: حلول محتملة<br>(4) الـ Deliver: حلول شغالة فعلاً.<br>الـ diamond الأولانية بتروح من الـ Problem للـ <bdi dir=\"ltr\">Problem Definition / Design Brief</bdi>؛ والتانية بتروح من هناك للـ Solution.",
     "الـ 4 activities:<br>(1) الـ Discovering requirements<br>(2) الـ Designing alternatives<br>(3) الـ Prototyping alternative designs<br>(4) الـ Evaluating product and its user experience throughout<br>والـ simple lifecycle model مثال على user-centered design approach: بيدخل من الـ Discovering requirements، اللي مربوطة في الاتجاهين بالـ Designing alternatives؛ والـ Designing alternatives بتودّي للـ Prototyping (ورجوع)؛ والـ Prototyping بيودّي للـ Evaluating؛ والـ Evaluating بيرجع تاني للـ Discovering requirements والـ Designing alternatives، أو بيطلع للـ Final product.",
     "الـ Google Design Sprints (Knapp et al., 2016):<span class=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</span>وبعدين iterate.<br>والـ design life cycle بتاع Joyner هو iterative process فيه 4 phases:<span class=\"ltr\">Need finding → Design alternative → Prototyping → Evaluation</span>والاتنين iterative cycles.",
     "(1) مين الـ users؟<br>(2) إيه احتياجات الـ users؟<br>(3) إزاي نطلّع alternative designs؟<br>(4) إزاي نختار من بين الـ alternatives؟<br>(5) إزاي ندمج الـ interaction design activities مع الـ lifecycle models التانية؟",
     "الـ users مش واضحين: فيه 382 نوع مختلف من الـ users للـ smartphone apps (Sha Zhao et al, 2016)، ومنتجات كتير معمولة لقطاعات كبيرة من الناس، فالـ user بيبقى \"everybody\". الـ Stakeholders أكبر من مجموعة الـ direct users، وتحديدهم بيساعد تحدد المجموعات اللي لازم تدخّلها في الـ interaction design activities. الـ users نادراً ما بيعرفوا إيه الممكن، فبدل كده: (1) استكشف الـ problem space<br>(2) ادرس مين الـ users<br>(3) ادرس الـ user activities عشان تشوف إيه اللي ممكن يتحسن. وركز على أهداف الناس (goals)، والـ usability، والـ user experience goals.",
-    "البني آدمين بيميلوا إنهم يفضلوا ماسكين في الحاجة اللي شغالة، وإنك تفكر في alternatives بيساعدك تلاقي designs أحسن. المصادر: 1) 'flair and creativity': research و synthesis 2) cross-fertilization of ideas من وجهات نظر مختلفة 3) الـ users ممكن يطلّعوا designs مختلفة 4) دوّر على inspiration: من منتجات و domain شبه بعض، أو من منتجات و domain مختلفين. الاختيار: 1) الـ interaction design بيركز على الـ behavior اللي باين من برة واللي يتقاس (externally-visible and measurable) 2) الـ technical feasibility 3) الـ evaluation مع الـ users أو الـ peers، باستخدام prototypes مش static documentation، عشان الـ behavior هو المفتاح 4) الـ quality thresholds: كل مجموعة stakeholders ليها quality thresholds مختلفة، والـ usability والـ user experience goals بيوصلوك للـ criteria المناسبة.",
-    "الـ design life cycle بتاع Joyner هو <b>iterative process فيه 4 phases</b>: (1) Need finding<br>(2) Design alternatives<br>(3) Prototyping<br>(4) Evaluation، وبعدين ترجع للـ need finding تاني. مفيش phase منفصلة اسمها \"user research\" لأن الـ user research جزء أساسي من كل phase (Joyner: \"you need users early and often\").",
+    "البني آدمين بيميلوا إنهم يفضلوا ماسكين في الحاجة اللي شغالة، وإنك تفكر في alternatives بيساعدك تلاقي designs أحسن.<br>المصادر:<br>(1) الـ 'flair and creativity'، يعني research و synthesis<br>(2) الـ cross-fertilization of ideas من وجهات نظر مختلفة<br>(3) الـ users ممكن يطلّعوا designs مختلفة<br>(4) دوّر على inspiration: من منتجات و domain شبه بعض، أو من منتجات و domain مختلفين.<br>الاختيار:<br>(1) الـ interaction design بيركز على الـ behavior اللي باين من برة واللي يتقاس (externally-visible and measurable)<br>(2) الـ technical feasibility<br>(3) الـ evaluation مع الـ users أو الـ peers، باستخدام prototypes مش static documentation، عشان الـ behavior هو المفتاح<br>(4) الـ quality thresholds: كل مجموعة stakeholders ليها quality thresholds مختلفة، والـ usability والـ user experience goals بيوصلوك للـ criteria المناسبة.",
+    "الـ design life cycle بتاع Joyner هو <b>iterative process فيه 4 phases</b>:<br>(1) الـ Need finding<br>(2) الـ Design alternatives<br>(3) الـ Prototyping<br>(4) الـ Evaluation، وبعدين ترجع للـ need finding تاني.<br>مفيش phase منفصلة اسمها <bdi dir=\"ltr\">\"user research\"</bdi> لأن الـ user research جزء أساسي من كل phase، وزي ما Joyner بيقول:<span class=\"ltr\">\"you need users early and often\"</span>",
     "المراحل هي الـ Understand والـ Specify والـ Design والـ Evaluate، و<b>الـ iteration هي الأساس</b> وإنت ماشي في الـ process.<br>(1) الـ <b>Understand</b>: الـ users بيجرّبوا الـ product إزاي (research كتير).<br>(2) الـ <b>Specify</b>: أهم مشكلة عند الـ user محتاجين نحلها.<br>(3) الـ <b>Design</b>: حلول لمشكلة الـ user، ونبدأ نبني.<br>(4) الـ <b>Evaluate</b>: بنعمل test مع users حقيقيين.",
     "(1) الـ <b>Primary research</b>: ده research إنت بتعمله بنفسك. والـ methods المشهورة زي الـ interviews والـ focus groups والـ surveys والـ usability studies والـ participant observations.<br>(2) الـ <b>Secondary research</b>: ده research حد تاني عمله. مصادر المعلومات المشهورة: الكتب والـ journals والحاجات اللي شبههم.",
     "(1) مهم خصوصاً <b>في أول الـ project</b> عشان تجمع statistics و facts و figures مفيدة عن الـ users.<br>(2) لو المعلومات دي موجودة، <b>بتوفر مجهود ووقت كبير جداً</b> و<b>بتدعم نتايج الـ primary research</b>.<br>(3) نتايجه غالباً بيعملها researchers عندهم خبرة ومتخصصين في research organizations موثوقة، فصعب عليك تعمل زيها.<br>(4) فيه practitioners كتير مش عارفين عنه أو مش عارفين يستفيدوا إزاي من المعلومات المتاحة اللي ليها علاقة بـ users الـ project بتاعهم. الكورسات والـ training في حاجات زي الـ psychology والـ cognition، وإنك تبقى عضو في HCI و UX communities، بيساعدوا."
@@ -1026,8 +1026,8 @@ AR.hci = {
    "quiz": [
     [
      "الـ Usability tests تبع الـ tactical أو الـ post-launch.",
-     "الـ research اللي بيحصل بعد ما المنتج يتصمم وينزل ده الـ post-launch research (نجحنا ولا لأ؟). الـ Foundational research بيحصل قبل ما أي حاجة تتصمم <bdi>(L2, Types by WHEN)</bdi>.",
-     "الـ Marketing campaigns مش توقيت من توقيتات الـ research. التلاتة هما foundational (قبل الـ design)، وtactical (أثناء الـ design)، وpost-launch <bdi>(L2, Types by WHEN)</bdi>.",
+     "الـ research اللي بيحصل بعد ما المنتج يتصمم وينزل ده الـ post-launch research (نجحنا ولا لأ؟). الـ Foundational research بيحصل قبل ما أي حاجة تتصمم <bdi dir=\"ltr\">(L2, Types by WHEN)</bdi>.",
+     "الـ Marketing campaigns مش توقيت من توقيتات الـ research. التلاتة هما foundational (قبل الـ design)، وtactical (أثناء الـ design)، وpost-launch <bdi dir=\"ltr\">(L2, Types by WHEN)</bdi>.",
      "صح. بيحدد المشاكل وإيه اللي هنبنيه."
     ],
     [
@@ -1036,19 +1036,19 @@ AR.hci = {
     ],
     [
      "ده الـ user-centered design process بتاع Google.",
-     "صح. الـ iterative design life cycle بتاع Joyner هو:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span>وبعدين يرجع للـ need finding تاني <bdi>(L2, Design life cycle)</bdi>.",
-     "الـ Plan و Build و Test و Deploy دول software development cycle عام. أما الـ cycle بتاع Joyner فهو:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span> <bdi>(L2, Design life cycle)</bdi>.",
-     "دي مش مراحل Joyner؛ Joyner معندوش مرحلة coding ولا launch. والـ cycle بتاعه هو:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span> <bdi>(L2, Design life cycle)</bdi>."
+     "صح. الـ iterative design life cycle بتاع Joyner هو:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span>وبعدين يرجع للـ need finding تاني <bdi dir=\"ltr\">(L2, Design life cycle)</bdi>.",
+     "الـ Plan و Build و Test و Deploy دول software development cycle عام. أما الـ cycle بتاع Joyner فهو:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span>ده في <bdi dir=\"ltr\">(L2, Design life cycle)</bdi>.",
+     "دي مش مراحل Joyner، لأن Joyner معندوش مرحلة coding ولا launch. والـ cycle بتاعه هو:<span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span>ده في <bdi dir=\"ltr\">(L2, Design life cycle)</bdi>."
     ],
     [
-     "الـ research اللي حد تاني عمله (كتب، journals) ده الـ secondary research. الـ Primary research هو اللي إنت بتعمله بنفسك، زي الـ interviews أو الـ surveys <bdi>(L2, Types by WHO)</bdi>.",
+     "الـ research اللي حد تاني عمله (كتب، journals) ده الـ secondary research. الـ Primary research هو اللي إنت بتعمله بنفسك، زي الـ interviews أو الـ surveys <bdi dir=\"ltr\">(L2, Types by WHO)</bdi>.",
      "صح. الـ Primary research هو اللي إنت بتعمله بنفسك."
     ],
     [
      "صح. قراية الـ literature الموجودة دي secondary research.",
-     "الـ Focus groups دي primary research: إنت اللي بتعملها بنفسك مع الـ users. المحاضرة حاطاها مع الـ interviews والـ surveys والـ usability studies والـ observations <bdi>(L2, Types by WHO)</bdi>.",
-     "الـ Interviews طريقة primary، عشان إنت اللي بتعملها بنفسك. الوحيدة اللي معتمدة على research حد تاني عمله هي الـ literature review <bdi>(L2, Types by WHO)</bdi>.",
-     "الـ Surveys طريقة primary: إنت اللي بتصممها وتنفذها بنفسك. قراية الـ literature الموجودة هي الطريقة الـ secondary هنا <bdi>(L2, Types by WHO)</bdi>."
+     "الـ Focus groups دي primary research: إنت اللي بتعملها بنفسك مع الـ users. المحاضرة حاطاها مع الـ interviews والـ surveys والـ usability studies والـ observations <bdi dir=\"ltr\">(L2, Types by WHO)</bdi>.",
+     "الـ Interviews طريقة primary، عشان إنت اللي بتعملها بنفسك. الوحيدة اللي معتمدة على research حد تاني عمله هي الـ literature review <bdi dir=\"ltr\">(L2, Types by WHO)</bdi>.",
+     "الـ Surveys طريقة primary: إنت اللي بتصممها وتنفذها بنفسك. قراية الـ literature الموجودة هي الطريقة الـ secondary هنا <bdi dir=\"ltr\">(L2, Types by WHO)</bdi>."
     ],
     [
      "صح. الاتنين مذكورين كطرق primary منتشرة.",
@@ -1063,20 +1063,20 @@ AR.hci = {
      "الـ Surveys واحدة من الطرق الـ primary المذكورة."
     ],
     [
-     "ضيق أوي: \"before design\" ده الـ foundational research بس. وشركة Google بتقول إن الـ user research مستمر: قبل وأثناء وبعد الـ design <bdi>(L2, Where is user research?)</bdi>.",
-     "ضيق أوي: بعد الـ launch ده الـ post-launch research بس. وشركة Google بتقول إن الـ user research بيحصل قبل وأثناء وبعد مرحلة الـ design <bdi>(L2, Where is user research?)</bdi>.",
+     "ضيق أوي: \"before design\" ده الـ foundational research بس. وشركة Google بتقول إن الـ user research مستمر: قبل وأثناء وبعد الـ design <bdi dir=\"ltr\">(L2, Where is user research?)</bdi>.",
+     "ضيق أوي: بعد الـ launch ده الـ post-launch research بس. وشركة Google بتقول إن الـ user research بيحصل قبل وأثناء وبعد مرحلة الـ design <bdi dir=\"ltr\">(L2, Where is user research?)</bdi>.",
      "صح. وشركة Google بتسميه جزء مستمر من الـ life cycle.",
-     "المحاضرة عمرها ما ربطت الـ research بالـ budget. Google بيعتبره جزء مستمر من الـ life cycle، قبل وأثناء وبعد الـ design <bdi>(L2, Where is user research?)</bdi>."
+     "المحاضرة عمرها ما ربطت الـ research بالـ budget. Google بيعتبره جزء مستمر من الـ life cycle، قبل وأثناء وبعد الـ design <bdi dir=\"ltr\">(L2, Where is user research?)</bdi>."
     ],
     [
-     "صح. الـ Discover هي أول phase وبتدّي فهم للمشكلة (insight into the problem) <bdi>(L2, The double diamond of design)</bdi>.",
+     "صح. الـ Discover هي أول phase وبتدّي فهم للمشكلة (insight into the problem) <bdi dir=\"ltr\">(L2, The double diamond of design)</bdi>.",
      "الـ Define هي الـ phase اللي بتحدد المنطقة اللي هنركز عليها، مش الـ insight into the problem.",
      "الـ Develop هي الـ phase بتاعة الحلول المحتملة.",
      "الـ Deliver هي آخر phase، وبتدّي حلول شغالة فعلاً."
     ],
     [
      "الـ Problem هو الاسم اللي في بداية الـ diamond الأولانية.",
-     "صح. النقطة اللي في النص بين الـ 2 diamonds اسمها Problem Definition و Design Brief <bdi>(L2, The double diamond of design)</bdi>.",
+     "صح. النقطة اللي في النص بين الـ 2 diamonds اسمها Problem Definition و Design Brief <bdi dir=\"ltr\">(L2, The double diamond of design)</bdi>.",
      "الـ Solution هو الاسم اللي في آخر الـ diamond التانية.",
      "الـ Final product هو المخرج بتاع الـ simple lifecycle model، مش اسم في الـ double diamond."
     ],
@@ -1084,10 +1084,10 @@ AR.hci = {
      "دي activity رقم 1 من الـ 4 basic activities.",
      "دي activity رقم 3 من الـ 4 basic activities.",
      "دي activity رقم 4 من الـ 4 basic activities.",
-     "صح. الـ 4 activities هم discovering requirements، و designing alternatives، و prototyping alternative designs، و evaluating؛ والـ user manual مش واحدة منهم <bdi>(L2, Four basic activities of interaction design)</bdi>."
+     "صح. الـ 4 activities هم discovering requirements، و designing alternatives، و prototyping alternative designs، و evaluating؛ والـ user manual مش واحدة منهم <bdi dir=\"ltr\">(L2, Four basic activities of interaction design)</bdi>."
     ],
     [
-     "صح. الـ slide بتقول إن الـ model ده مثال على user-centered design approach <bdi>(L2, A simple interaction design lifecycle model)</bdi>.",
+     "صح. الـ slide بتقول إن الـ model ده مثال على user-centered design approach <bdi dir=\"ltr\">(L2, A simple interaction design lifecycle model)</bdi>.",
      "الـ slide بتقول user-centered، مش technology-centered.",
      "الرسمة مليانة loops راجعة لـ activities قبلها، يعني هو iterative.",
      "الـ Google Design Sprints متقدمة كـ lifecycle model تاني منفصل."
@@ -1096,151 +1096,151 @@ AR.hci = {
      "الـ Discovering requirements هي المكان اللي الـ process بيدخل منه، مش اللي بيطلع منه.",
      "الـ Designing alternatives بتودّي للـ prototyping، مش للـ final product.",
      "الـ Prototyping بيودّي للـ evaluating، مش للـ final product على طول.",
-     "صح. السهم اللي رايح للـ final product طالع من الـ Evaluating؛ والأسهم التانية اللي طالعة من الـ Evaluating بترجع لورا <bdi>(L2, A simple interaction design lifecycle model)</bdi>."
+     "صح. السهم اللي رايح للـ final product طالع من الـ Evaluating؛ والأسهم التانية اللي طالعة من الـ Evaluating بترجع لورا <bdi dir=\"ltr\">(L2, A simple interaction design lifecycle model)</bdi>."
     ],
     [
      "الـ Discover و Define و Develop و Deliver دول الـ phases بتوع الـ double diamond.",
-     "صح. الـ steps بتوع الـ Google Design Sprint هم 1 Unpack، 2 Sketch، 3 Decide، 4 Prototype، 5 Test، وبعدين iterate <bdi>(L2, Another lifecycle model: Google Design Sprints)</bdi>.",
+     "صح. الـ steps بتوع الـ Google Design Sprint هم:<span class=\"ltr\">1 Unpack, 2 Sketch, 3 Decide, 4 Prototype, 5 Test</span>وبعدين iterate <bdi dir=\"ltr\">(L2, Another lifecycle model: Google Design Sprints)</bdi>.",
      "أول 4 دول الـ phases بتوع Joyner، مش Google Design Sprints.",
      "دي الكلمات الصح بس بترتيب غلط؛ الـ Unpack بتيجي الأول، والـ Decide بتيجي قبل الـ Prototype."
     ],
     [
      "3 ده عدد الـ components بتوع الـ interaction design process (user research، و design and prototyping، و evaluation).",
-     "صح. الـ cycle بتاع Joyner فيه 4 phases، هما الـ need finding والـ design alternative والـ prototyping والـ evaluation <bdi>(L2, Design life cycle (according to Joyner))</bdi>.",
+     "صح. الـ cycle بتاع Joyner فيه 4 phases، هما الـ need finding والـ design alternative والـ prototyping والـ evaluation <bdi dir=\"ltr\">(L2, Design life cycle (according to Joyner))</bdi>.",
      "5 ده عدد الـ steps في الـ Google Design Sprints.",
      "2 ده عدد الـ diamonds في الـ double diamond."
     ],
     [
-     "صح. الـ slide بتذكر 382 نوع مختلف من الـ users للـ smartphone apps <bdi>(L2, Who are the users/stakeholders?)</bdi>.",
+     "صح. الـ slide بتذكر 382 نوع مختلف من الـ users للـ smartphone apps <bdi dir=\"ltr\">(L2, Who are the users/stakeholders?)</bdi>.",
      "الرقم اللي على الـ slide هو 382، مش 38.",
      "2016 دي سنة الدراسة، مش عدد أنواع الـ users.",
      "الرقم اللي على الـ slide هو 382، مش 3,820."
     ],
     [
      "الـ slide بتقول العكس: الـ stakeholders أكبر من مجموعة الـ direct users.",
-     "صح. الـ stakeholders أكبر من مجموعة الـ direct users <bdi>(L2, Who are the users/stakeholders?)</bdi>."
+     "صح. الـ stakeholders أكبر من مجموعة الـ direct users <bdi dir=\"ltr\">(L2, Who are the users/stakeholders?)</bdi>."
     ],
     [
      "الـ slide بتقول إن الـ users نادراً ما بيعرفوا إيه الممكن؛ وده مالوش علاقة.",
-     "صح. ده السبب اللي الـ slide بتقوله <bdi>(L2, Who are the users/stakeholders?)</bdi>.",
+     "صح. ده السبب اللي الـ slide بتقوله <bdi dir=\"ltr\">(L2, Who are the users/stakeholders?)</bdi>.",
      "382 ده عدد أنواع الـ users المختلفة للـ smartphone apps، مش سبب إن الـ user بيبقى everybody.",
      "الـ stakeholders أكبر من مجموعة الـ direct users، فهم مش نفس المجموعة."
     ],
     [
      "ده بيتجاهل نقطة الـ slide إن الـ users نادراً ما بيعرفوا إيه الممكن.",
-     "صح. دول الـ 3 حاجات اللي الـ slide بتذكرهم تحت \"Instead\" <bdi>(L2, What are the users' needs?)</bdi>.",
+     "صح. دول الـ 3 حاجات اللي الـ slide بتذكرهم تحت \"Instead\" <bdi dir=\"ltr\">(L2, What are the users' needs?)</bdi>.",
      "المحاضرة بتأكد على الشغل مع الـ users بدل التخمين.",
      "الـ slide بتذكر إنك تدوّر على inspiration من منتجات شبه بعض كمصدر للـ alternatives، مش إنك تنسخ، وده مش الإجابة بتاعة إزاي نلاقي الـ needs."
     ],
     [
-     "صح. النقطتين موجودين على الـ slide بتاعة توليد الـ alternatives <bdi>(L2, How to generate alternatives)</bdi>.",
+     "صح. النقطتين موجودين على الـ slide بتاعة توليد الـ alternatives <bdi dir=\"ltr\">(L2, How to generate alternatives)</bdi>.",
      "الـ slide بتقول النقطتين: البني آدمين بيميلوا إنهم يفضلوا ماسكين في الحاجة اللي شغالة، وإنك تفكر في alternatives بيساعدك تلاقي designs أحسن."
     ],
     [
      "دي مذكورة كمصدر للـ alternative designs.",
      "دي مذكورة كمصدر للـ alternative designs.",
      "دي مذكورة كمصدر للـ alternative designs.",
-     "صح. الـ Technical feasibility دي criterion لاختيار بين الـ alternatives <bdi>(L2, How to choose among alternatives)</bdi>، مش واحدة من المصادر المذكورة تحت 'Where do alternative designs come from?' <bdi>(L2, How to generate alternatives)</bdi>."
+     "صح. الـ Technical feasibility دي criterion لاختيار بين الـ alternatives <bdi dir=\"ltr\">(L2, How to choose among alternatives)</bdi>، مش واحدة من المصادر المذكورة تحت 'Where do alternative designs come from?' <bdi dir=\"ltr\">(L2, How to generate alternatives)</bdi>."
     ],
     [
      "الـ slide كمان بتضيف منتجات و domain مختلفين.",
-     "صح. الـ slide بتقول دوّر على inspiration من منتجات و domain شبه بعض، أو من منتجات و domain مختلفين <bdi>(L2, How to generate alternatives)</bdi>.",
+     "صح. الـ slide بتقول دوّر على inspiration من منتجات و domain شبه بعض، أو من منتجات و domain مختلفين <bdi dir=\"ltr\">(L2, How to generate alternatives)</bdi>.",
      "الـ static documentation اتذكرت في اختيار الـ alternatives (والـ prototypes هي المفضلة)، مش كمصدر inspiration.",
      "الـ slide بتذكر إنك تدوّر على inspiration من منتجات و domains، وكمان بتقول إن الـ users ممكن يطلّعوا designs."
     ],
     [
      "التكلفة مش هي السبب اللي على الـ slide.",
-     "صح. الـ slide بتقول prototypes، مش static documentation، عشان الـ behavior هو المفتاح <bdi>(L2, How to choose among alternatives)</bdi>.",
+     "صح. الـ slide بتقول prototypes، مش static documentation، عشان الـ behavior هو المفتاح <bdi dir=\"ltr\">(L2, How to choose among alternatives)</bdi>.",
      "دي النقطة بتاعة إزاي نلاقي احتياجات الـ users، مش بتاعة تقييم الـ alternatives.",
      "الـ Technical feasibility دي criterion منفصل؛ والسبب المذكور إن الـ behavior هو المفتاح."
     ],
     [
      "الـ slide بتقول إن كل مجموعة stakeholders ليها quality thresholds مختلفة.",
-     "صح. النقطتين مذكورين تحت الـ quality thresholds <bdi>(L2, How to choose among alternatives)</bdi>.",
+     "صح. النقطتين مذكورين تحت الـ quality thresholds <bdi dir=\"ltr\">(L2, How to choose among alternatives)</bdi>.",
      "الـ slide بتربط الـ thresholds بمجموعات الـ stakeholders وبالـ usability والـ user experience goals، مش بالـ technical team بس.",
      "الـ Quality thresholds مذكورة جنب الـ evaluation مع الـ users أو الـ peers، مش بديل ليها."
     ],
     [
      "الـ slide بتقول externally-visible behavior، مش الـ internal structure.",
-     "صح. الـ slide بتقول إن الـ interaction design بيركز على الـ behavior اللي باين من برة واللي يتقاس (externally-visible and measurable) <bdi>(L2, How to choose among alternatives)</bdi>.",
+     "صح. الـ slide بتقول إن الـ interaction design بيركز على الـ behavior اللي باين من برة واللي يتقاس (externally-visible and measurable) <bdi dir=\"ltr\">(L2, How to choose among alternatives)</bdi>.",
      "ده عكس اللي الـ slide بتقوله.",
      "الـ slide بتتكلم عن behavior باين ويتقاس، مش الألوان بس."
     ],
     [
-     "صح. دول الـ 3 components اللي على الـ Remember slide <bdi>(L2, Remember: the interaction design process)</bdi>.",
+     "صح. دول الـ 3 components اللي على الـ Remember slide <bdi dir=\"ltr\">(L2, Remember: the interaction design process)</bdi>.",
      "دول 3 من الـ 4 phases بتوع الـ double diamond.",
      "دول 3 من الـ 5 steps بتوع الـ Google Design Sprint.",
      "الـ Need finding دي phase عند Joyner؛ والـ coding والـ deployment مش موجودين على الـ slides."
     ],
     [
-     "صح. الـ slide بتقول إن توليد الـ alternatives والاختيار من بينها هو المفتاح <bdi>(L2, What is involved in interaction design?)</bdi>.",
+     "صح. الـ slide بتقول إن توليد الـ alternatives والاختيار من بينها هو المفتاح <bdi dir=\"ltr\">(L2, What is involved in interaction design?)</bdi>.",
      "الـ slide بتأكد على الـ alternatives؛ وإن البني آدمين بيفضلوا ماسكين في حاجة واحدة شغالة ده متقدم كميل لازم نتغلب عليه.",
      "الـ slide بتقول إن الـ interaction design بيشمل إزاي توازن بين الـ requirements اللي بتتعارض، مش إنك تتجنبها.",
      "الـ prototypes مفضلة على الـ static documentation عشان الـ behavior هو المفتاح."
     ],
     [
-     "الـ Journals مذكورة في المحاضرة كمصدر شائع للـ secondary research، اللي هو research عمله حد تاني <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الـ research papers المنشورة دي research عمله حد تاني، فهي secondary research، زي الكتب والـ journals اللي المحاضرة بتذكرها <bdi>(L2, Types of user research by Who)</bdi>.",
-     "صح. الـ interview ده research إنت اللي بتعمله بنفسك، فهو <b>primary</b> research method، مش مصدر secondary <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الكتب مذكورة في المحاضرة كمصدر شائع للـ secondary research <bdi>(L2, Types of user research by Who)</bdi>."
+     "الـ Journals مذكورة في المحاضرة كمصدر شائع للـ secondary research، اللي هو research عمله حد تاني <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الـ research papers المنشورة دي research عمله حد تاني، فهي secondary research، زي الكتب والـ journals اللي المحاضرة بتذكرها <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "صح. الـ interview ده research إنت اللي بتعمله بنفسك، فهو <b>primary</b> research method، مش مصدر secondary <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الكتب مذكورة في المحاضرة كمصدر شائع للـ secondary research <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>."
     ],
     [
-     "صح. الـ Secondary research هو research عمله حد تاني، وبتلاقيه في مصادر زي الكتب والـ journals <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الـ Focus groups دي research إنت اللي بتعمله بنفسك، ومذكورة كـ <b>primary</b> research method <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الـ Usability studies مذكورة كـ <b>primary</b> research method، لأنك إنت اللي بتعملها بنفسك <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الـ Participant observation مذكورة كـ <b>primary</b> research method، لأنك إنت اللي بتجمع الـ data بنفسك <bdi>(L2, Types of user research by Who)</bdi>."
+     "صح. الـ Secondary research هو research عمله حد تاني، وبتلاقيه في مصادر زي الكتب والـ journals <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الـ Focus groups دي research إنت اللي بتعمله بنفسك، ومذكورة كـ <b>primary</b> research method <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الـ Usability studies مذكورة كـ <b>primary</b> research method، لأنك إنت اللي بتعملها بنفسك <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الـ Participant observation مذكورة كـ <b>primary</b> research method، لأنك إنت اللي بتجمع الـ data بنفسك <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>."
     ],
     [
-     "الـ Interviews دي research إنت اللي بتعمله بنفسك، فهي <b>primary</b> research method <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الـ case study ممكن يبقى أي نوع فيهم: لو إنت اللي عامله يبقى primary، ولو بتقرا واحد حد تاني نشره يبقى secondary. بس المصادر اللي المحاضرة فعلاً بتذكرها للـ secondary research هي الكتب والـ journals، فدي أحسن إجابة <bdi>(L2, Types of user research by Who)</bdi>.",
-     "إنك تختبر prototype مع الـ users ده research إنت اللي بتعمله بنفسك، زي الـ usability studies المذكورة تحت الـ <b>primary</b> research <bdi>(L2, Types of user research by Who)</bdi>.",
-     "صح. الـ Secondary research هو research عمله حد تاني، ومصادر المعلومات الشائعة بتاعته هي <b>الكتب والـ journals</b> <bdi>(L2, Types of user research by Who)</bdi>."
+     "الـ Interviews دي research إنت اللي بتعمله بنفسك، فهي <b>primary</b> research method <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الـ case study ممكن يبقى أي نوع فيهم: لو إنت اللي عامله يبقى primary، ولو بتقرا واحد حد تاني نشره يبقى secondary. بس المصادر اللي المحاضرة فعلاً بتذكرها للـ secondary research هي الكتب والـ journals، فدي أحسن إجابة <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "إنك تختبر prototype مع الـ users ده research إنت اللي بتعمله بنفسك، زي الـ usability studies المذكورة تحت الـ <b>primary</b> research <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "صح. الـ Secondary research هو research عمله حد تاني، ومصادر المعلومات الشائعة بتاعته هي <b>الكتب والـ journals</b> <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>."
     ],
     [
-     "الـ Secondary research هو research عمله حد تاني وبيستخدم data موجودة، وممكن كمان تكون قديمة أوي؛ مش بيدّيك feedback لايف من الـ users بتوعك <bdi>(L2, Types of user research by Who; L5, Primary vs secondary research)</bdi>.",
-     "الـ Secondary research <b>بيدعم</b> (backs up) نتايج الـ primary research؛ مش بيحل محلها <bdi>(L2, Secondary research)</bdi>.",
-     "صح. في أول المشروع بيجمع statistics و facts و figures مفيدة عن الـ users، وغالباً رخيص وسريع، فبيوفّر مجهود ووقت ضخم <bdi>(L2, Secondary research; L5, Primary vs secondary research)</bdi>.",
-     "الـ Secondary research بيجاوب على أسئلة عن قدرات الإنسان وحدوده (زي معلومات عن عمى الألوان) وعن مجموعات users عندها مشاكل مشتركة، مش عن التكنولوجيا بس <bdi>(L5, Secondary research benefits)</bdi>."
+     "الـ Secondary research هو research عمله حد تاني وبيستخدم data موجودة، وممكن كمان تكون قديمة أوي؛ مش بيدّيك feedback لايف من الـ users بتوعك <bdi dir=\"ltr\">(L2, Types of user research by Who; L5, Primary vs secondary research)</bdi>.",
+     "الـ Secondary research <b>بيدعم</b> (backs up) نتايج الـ primary research؛ مش بيحل محلها <bdi dir=\"ltr\">(L2, Secondary research)</bdi>.",
+     "صح. في أول المشروع بيجمع statistics و facts و figures مفيدة عن الـ users، وغالباً رخيص وسريع، فبيوفّر مجهود ووقت ضخم <bdi dir=\"ltr\">(L2, Secondary research; L5, Primary vs secondary research)</bdi>.",
+     "الـ Secondary research بيجاوب على أسئلة عن قدرات الإنسان وحدوده (زي معلومات عن عمى الألوان) وعن مجموعات users عندها مشاكل مشتركة، مش عن التكنولوجيا بس <bdi dir=\"ltr\">(L5, Secondary research benefits)</bdi>."
     ],
     [
-     "صح. الـ Secondary research هو research عمله حد تاني، ومصادره الشائعة هي <b>الكتب والـ journals</b> <bdi>(L2, Types of user research by Who)</bdi>.",
-     "إنك تراقب الـ users بنفسك ده participant observation، وهو <b>primary</b> research method <bdi>(L2, Types of user research by Who)</bdi>.",
-     "إنك تشتغل مع الـ users مباشرة (زي الـ interviews والـ focus groups والـ usability studies) ده research إنت اللي بتعمله بنفسك، فهو <b>primary</b> research <bdi>(L2, Types of user research by Who)</bdi>.",
-     "الـ Experiments اللي بتعملها بنفسك مذكورة كأمثلة للـ <b>primary</b> research، اللي إنت فيه اللي بتجمع الـ data <bdi>(L5, Primary vs secondary research)</bdi>."
+     "صح. الـ Secondary research هو research عمله حد تاني، ومصادره الشائعة هي <b>الكتب والـ journals</b> <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "إنك تراقب الـ users بنفسك ده participant observation، وهو <b>primary</b> research method <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "إنك تشتغل مع الـ users مباشرة (زي الـ interviews والـ focus groups والـ usability studies) ده research إنت اللي بتعمله بنفسك، فهو <b>primary</b> research <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "الـ Experiments اللي بتعملها بنفسك مذكورة كأمثلة للـ <b>primary</b> research، اللي إنت فيه اللي بتجمع الـ data <bdi dir=\"ltr\">(L5, Primary vs secondary research)</bdi>."
     ],
     [
-     "الـ Interviews اللي بتعملها بنفسك دي <b>primary</b> research؛ الـ secondary research هو research عمله حد تاني <bdi>(L2, Types of user research by Who)</bdi>.",
-     "المحاضرة عمرها ما قالت كده. الـ Secondary research بيجمع statistics و facts و figures وبيدعم نتايج الـ primary؛ مش بيلغي الحاجة لتحليل الـ data <bdi>(L2, Secondary research)</bdi>.",
-     "صح. الـ Secondary research بيدوّر على <b>existing data</b>؛ \"if such information exists, it saves enormous effort and time\" <bdi>(L2, Secondary research; L5, Primary vs secondary table)</bdi>.",
-     "إنك تجمع الـ data بنفسك ده primary research (\"research that you conduct yourself\")؛ الـ secondary data حد تاني اللي جمعها <bdi>(L2, Types of user research by Who)</bdi>."
+     "الـ Interviews اللي بتعملها بنفسك دي <b>primary</b> research؛ الـ secondary research هو research عمله حد تاني <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>.",
+     "المحاضرة عمرها ما قالت كده. الـ Secondary research بيجمع statistics و facts و figures وبيدعم نتايج الـ primary؛ مش بيلغي الحاجة لتحليل الـ data <bdi dir=\"ltr\">(L2, Secondary research)</bdi>.",
+     "صح. الـ Secondary research بيدوّر على <b>existing data</b>، والمحاضرة بتقول:<span class=\"ltr\">\"if such information exists, it saves enormous effort and time\"</span>ده في <bdi dir=\"ltr\">(L2, Secondary research; L5, Primary vs secondary table)</bdi>.",
+     "إنك تجمع الـ data بنفسك ده primary research (\"research that you conduct yourself\")؛ الـ secondary data حد تاني اللي جمعها <bdi dir=\"ltr\">(L2, Types of user research by Who)</bdi>."
     ],
     [
-     "الـ Foundational research بيحصل قبل ما أي حاجة تتصمم، فلسه مفيش interface تختبره؛ الاختبار بالـ prototypes تبع الـ tactical (design) research <bdi>(L2, Types of user research by When)</bdi>.",
-     "الـ User research عن فهم الـ users ومشاكلهم، مش عن سرعة الـ coding <bdi>(L2, Types of user research by When)</bdi>.",
-     "صح. الـ Foundational (strategic/generative) research له \"goal to <b>identify user problems and what should we build</b> to solve them\" <bdi>(L2, Types of user research by When)</bdi>.",
-     "المحاضرة بتوصف الـ foundational research إنه كلام مع الـ users وتحديد الـ pain points بتاعتهم، مش دراسة الـ marketing بتاع المنافسين <bdi>(L2, Types of user research by When)</bdi>."
+     "الـ Foundational research بيحصل قبل ما أي حاجة تتصمم، فلسه مفيش interface تختبره؛ الاختبار بالـ prototypes تبع الـ tactical (design) research <bdi dir=\"ltr\">(L2, Types of user research by When)</bdi>.",
+     "الـ User research عن فهم الـ users ومشاكلهم، مش عن سرعة الـ coding <bdi dir=\"ltr\">(L2, Types of user research by When)</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">Foundational (strategic/generative) research</bdi> له:<span class=\"ltr\">\"goal to <b>identify user problems and what should we build</b> to solve them\"</span>ده في <bdi dir=\"ltr\">(L2, Types of user research by When)</bdi>.",
+     "المحاضرة بتوصف الـ foundational research إنه كلام مع الـ users وتحديد الـ pain points بتاعتهم، مش دراسة الـ marketing بتاع المنافسين <bdi dir=\"ltr\">(L2, Types of user research by When)</bdi>."
     ],
     [
-     "الـ Experiments متصنفة تحت الـ primary research (data إنت اللي بتجمعها بنفسك). الـ Secondary research بيستخدم data حد تاني جمعها <bdi>(L5, Primary vs secondary table)</bdi>.",
-     "الـ Secondary research هو research حد تاني عمله من مصادر زي الكتب والـ journals، فهو مش original data <bdi>(L2, Types of user research based on Who)</bdi>.",
-     "صح. الـ Secondary research بيستخدم شغل موجود عمله ناس تانيين، والمحاضرة بتقول إنه بيوفر مجهود ووقت و<b>بيدعم نتايج الـ primary research</b> <bdi>(L2, Secondary Research)</bdi>.",
-     "دي مش فايدة، والمحاضرة مقالتهاش: نتايج الـ secondary research غالباً بيعملها researchers عندهم خبرة ومتخصصين، وصعب إنك تعمل زيها. العيب اللي المحاضرة ذكرته هو إن الـ data ممكن تبقى قديمة أوي أو مش specific كفاية <bdi>(L2, Secondary Research; L5 table)</bdi>."
+     "الـ Experiments متصنفة تحت الـ primary research (data إنت اللي بتجمعها بنفسك). الـ Secondary research بيستخدم data حد تاني جمعها <bdi dir=\"ltr\">(L5, Primary vs secondary table)</bdi>.",
+     "الـ Secondary research هو research حد تاني عمله من مصادر زي الكتب والـ journals، فهو مش original data <bdi dir=\"ltr\">(L2, Types of user research based on Who)</bdi>.",
+     "صح. الـ Secondary research بيستخدم شغل موجود عمله ناس تانيين، والمحاضرة بتقول إنه بيوفر مجهود ووقت و<b>بيدعم نتايج الـ primary research</b> <bdi dir=\"ltr\">(L2, Secondary Research)</bdi>.",
+     "دي مش فايدة، والمحاضرة مقالتهاش: نتايج الـ secondary research غالباً بيعملها researchers عندهم خبرة ومتخصصين، وصعب إنك تعمل زيها. العيب اللي المحاضرة ذكرته هو إن الـ data ممكن تبقى قديمة أوي أو مش specific كفاية <bdi dir=\"ltr\">(L2, Secondary Research; L5 table)</bdi>."
     ],
     [
-     "الـ Usability studies والـ participant observations متذكورين كـ methods للـ <b>primary</b> research، وهو الـ research اللي إنت بتعمله بنفسك <bdi>(L2, Types of user research based on Who)</bdi>.",
-     "صح. إنك تراقب الـ users في usability study ده research إنت بتعمله بنفسك، فهو <b>primary</b> research. المحاضرة بتذكر الـ usability studies والـ participant observations كـ primary methods؛ والـ secondary research هو research حد تاني عمله، زي الكتب والـ journals <bdi>(L2, Types of user research based on Who)</bdi>."
+     "الـ Usability studies والـ participant observations متذكورين كـ methods للـ <b>primary</b> research، وهو الـ research اللي إنت بتعمله بنفسك <bdi dir=\"ltr\">(L2, Types of user research based on Who)</bdi>.",
+     "صح. إنك تراقب الـ users في usability study ده research إنت بتعمله بنفسك، فهو <b>primary</b> research. المحاضرة بتذكر الـ usability studies والـ participant observations كـ primary methods؛ والـ secondary research هو research حد تاني عمله، زي الكتب والـ journals <bdi dir=\"ltr\">(L2, Types of user research based on Who)</bdi>."
     ],
     [
-     "صح. الـ Secondary research بيستخدم <b>data موجودة</b> حد تاني جمعها (كتب و journals وحاجات شبههم). مهم في أول الـ project عشان تجمع statistics و facts و figures عن الـ users، وبيوفر مجهود ووقت كبير جداً <bdi>(L2, Secondary research; L5, Primary vs secondary)</bdi>.",
-     "الـ Secondary research هو بالظبط استخدام data موجودة حد تاني عملها: statistics و facts و figures من كتب و journals و research organizations <bdi>(L2, Secondary research)</bdi>. والعيب المعروف بتاعه إن الـ data الموجودة دي ممكن تبقى قديمة أوي، وده بيأكد إنها data من الماضي <bdi>(L5, Primary vs secondary)</bdi>."
+     "صح. الـ Secondary research بيستخدم <b>data موجودة</b> حد تاني جمعها (كتب و journals وحاجات شبههم). مهم في أول الـ project عشان تجمع statistics و facts و figures عن الـ users، وبيوفر مجهود ووقت كبير جداً <bdi dir=\"ltr\">(L2, Secondary research; L5, Primary vs secondary)</bdi>.",
+     "الـ Secondary research هو بالظبط استخدام data موجودة حد تاني عملها: statistics و facts و figures من كتب و journals و research organizations <bdi dir=\"ltr\">(L2, Secondary research)</bdi>. والعيب المعروف بتاعه إن الـ data الموجودة دي ممكن تبقى قديمة أوي، وده بيأكد إنها data من الماضي <bdi dir=\"ltr\">(L5, Primary vs secondary)</bdi>."
     ],
     [
-     "الـ Interviews متذكورة كـ method للـ <b>primary</b> research، يعني research إنت بتعمله بنفسك، مش secondary research <bdi>(L2, Types of user research based on Who)</bdi>.",
-     "صح. إنك تعمل interviews بنفسك ده <b>primary</b> research؛ والمحاضرة حاطة الـ interviews أول واحدة في الـ primary methods. الـ Secondary research هو research حد تاني عمله، زي الكتب والـ journals <bdi>(L2, Types of user research based on Who)</bdi>."
+     "الـ Interviews متذكورة كـ method للـ <b>primary</b> research، يعني research إنت بتعمله بنفسك، مش secondary research <bdi dir=\"ltr\">(L2, Types of user research based on Who)</bdi>.",
+     "صح. إنك تعمل interviews بنفسك ده <b>primary</b> research؛ والمحاضرة حاطة الـ interviews أول واحدة في الـ primary methods. الـ Secondary research هو research حد تاني عمله، زي الكتب والـ journals <bdi dir=\"ltr\">(L2, Types of user research based on Who)</bdi>."
     ],
     [
-     "الـ Secondary research واحد من نوعين الـ user research حسب \"Who\" في الكورس، ومهم في أول الـ project عشان تجمع statistics و facts و figures عن الـ users <bdi>(L2, Secondary research; L5, Secondary research benefits)</bdi>.",
-     "صح. الـ <b>Secondary research</b> (research حد تاني عمله، زي الكتب والـ journals) نوع من أنواع الـ user research في الكورس. بيوفر مجهود ووقت، وبيدعم نتايج الـ primary، وبيجاوب على أسئلة عن قدرات الإنسان وحدوده، زي عمى الألوان <bdi>(L2, Secondary research; L5, Secondary research benefits)</bdi>."
+     "الـ Secondary research واحد من نوعين الـ user research حسب \"Who\" في الكورس، ومهم في أول الـ project عشان تجمع statistics و facts و figures عن الـ users <bdi dir=\"ltr\">(L2, Secondary research; L5, Secondary research benefits)</bdi>.",
+     "صح. الـ <b>Secondary research</b> (research حد تاني عمله، زي الكتب والـ journals) نوع من أنواع الـ user research في الكورس. بيوفر مجهود ووقت، وبيدعم نتايج الـ primary، وبيجاوب على أسئلة عن قدرات الإنسان وحدوده، زي عمى الألوان <bdi dir=\"ltr\">(L2, Secondary research; L5, Secondary research benefits)</bdi>."
     ]
    ],
    "extra": [
@@ -1251,9 +1251,9 @@ AR.hci = {
      "إنك تصمم قبل ما تفهم الـ users هو بالظبط اللي الـ user-centered design بيتجنبه."
     ],
     [
-     "الـ Testing مع users حقيقيين ده الـ Evaluate step، آخر خطوة في:<span class=\"ltr\">Understand → Specify → Design → Evaluate</span> <bdi>(L2, Google UCD process)</bdi>.",
-     "تصميم الحلول والبدء في البناء ده الـ Design step، واللي بييجي بعد ما الـ Specify يختار المشكلة اللي هنحلها <bdi>(L2, Google UCD process)</bdi>.",
-     "إنك تفهم الـ users بيعيشوا تجربة المنتج إزاي ده الـ Understand step، أول خطوة وأكتر خطوة فيها research <bdi>(L2, Google UCD process)</bdi>.",
+     "الـ Testing مع users حقيقيين ده الـ Evaluate step، آخر خطوة في:<span class=\"ltr\">Understand → Specify → Design → Evaluate</span>ده في <bdi dir=\"ltr\">(L2, Google UCD process)</bdi>.",
+     "تصميم الحلول والبدء في البناء ده الـ Design step، واللي بييجي بعد ما الـ Specify يختار المشكلة اللي هنحلها <bdi dir=\"ltr\">(L2, Google UCD process)</bdi>.",
+     "إنك تفهم الـ users بيعيشوا تجربة المنتج إزاي ده الـ Understand step، أول خطوة وأكتر خطوة فيها research <bdi dir=\"ltr\">(L2, Google UCD process)</bdi>.",
      "صح. الـ Specify معناها إنك تختار أهم user problem محتاج تتحل."
     ],
     [
@@ -1313,8 +1313,8 @@ AR.hci = {
      "h": "نشاط: أنهي حاجة فيها fast thinking وأنهي فيها slow thinking؟",
      "pts": [
       "الـ slide بتسأل أنهي من دول فيه fast thinking وأنهي فيه slow thinking:",
-      "2 + 2 =",
-      "21 × 29 =",
+      "<span class=\"ltr\">2 + 2 =</span>",
+      "<span class=\"ltr\">21 × 29 =</span>",
       "لون عينيك إيه؟",
       "كام لون في قوس قزح؟",
       "كام شهر في السنة فيه 31 يوم؟",
@@ -1336,12 +1336,12 @@ AR.hci = {
     {
      "h": "الـ Cognitive processes",
      "pts": [
-      "(1) Attention",
-      "(2) Perception",
-      "(3) Memory",
-      "(4) Learning",
-      "(5) Reading, speaking and listening",
-      "(6) Problem-solving, planning, reasoning and decision-making"
+      "(1) الـ Attention",
+      "(2) الـ Perception",
+      "(3) الـ Memory",
+      "(4) الـ Learning",
+      "(5) الـ Reading والـ speaking والـ listening",
+      "(6) الـ Problem-solving والـ planning والـ reasoning والـ decision-making"
      ]
     },
     {
@@ -1394,7 +1394,7 @@ AR.hci = {
       "البني آدمين بيميلوا إنهم يمسكوا في الحاجة اللي شغالة.",
       "إنك تفكر في alternatives بيساعدك تلاقي designs أحسن.",
       "الـ alternative designs بتيجي منين؟",
-      "(1) <b>'Flair and creativity'</b>: research و synthesis.",
+      "(1) الـ <b>'Flair and creativity'</b>، يعني research و synthesis.",
       "(2) الـ <b>Cross-fertilization of ideas</b> من وجهات نظر مختلفة.",
       "(3) <b>الـ Users ممكن يطلّعوا designs مختلفة</b>.",
       "(4) الـ <b>Seek inspiration</b>: منتجات و domain شبه بعض، أو منتجات و domain مختلفين."
@@ -1449,8 +1449,8 @@ AR.hci = {
     {
      "h": "نشاط: الـ color contrast ضد الـ borders والـ white space",
      "pts": [
-      "<b>الشاشة الأولى: \"Is color contrast good? Find Italian\"</b>: فيها grid مقاسه 4 × 4 من المجموعات، كل مجموعة list فيها ست أسامي.<br>• مثال على مجموعة:<span class=\"ltr\">Black Hills Forest, Cheyenne River, Social Science, South San Jose, Badlands Park, Juvenile Justice</span>• المجموعات مفصولة عن بعض بالـ <b>color contrast</b> بس (خلفيات لبني فاتح وأبيض بالتبادل).<br>• الكلمة \"Italian\" هي تاني item في المجموعة اللي في الصف التالت، العمود الأول:<span class=\"ltr\">Performing Arts, Italian, Coaches, McKees Rocks, Glenwood Springs, Urban Affairs</span>",
-      "<b>الشاشة التانية: \"Are borders and white space better? Find French\"</b>: فيها grid مقاسه 4 × 4 من مجموعات فيها ست أسامي.<br>• مثال على مجموعة:<span class=\"ltr\">Webmaster, Russian, Athletics, Go Shockers, Degree Options, Newsletter</span>• كل مجموعة جوه <b>border</b> ومفصولة عن الباقي بـ <b>white space</b>.<br>• الكلمة \"French\" في المجموعة اللي في الصف التالت، العمود التالت:<span class=\"ltr\">Staff, Aerospace, Choral Dept., Alberg Hall, French, Spanish</span>",
+      "<b>الشاشة الأولى: <bdi dir=\"ltr\">\"Is color contrast good? Find Italian\"</bdi></b>: فيها grid مقاسه <bdi dir=\"ltr\">4&nbsp;×&nbsp;4</bdi> من المجموعات، كل مجموعة list فيها ست أسامي.<br>• مثال على مجموعة:<span class=\"ltr\">Black Hills Forest, Cheyenne River, Social Science, South San Jose, Badlands Park, Juvenile Justice</span>• المجموعات مفصولة عن بعض بالـ <b>color contrast</b> بس (خلفيات لبني فاتح وأبيض بالتبادل).<br>• الكلمة <bdi dir=\"ltr\">\"Italian\"</bdi> هي تاني item في المجموعة اللي في الصف التالت، العمود الأول:<span class=\"ltr\">Performing Arts, Italian, Coaches, McKees Rocks, Glenwood Springs, Urban Affairs</span>",
+      "<b>الشاشة التانية: <bdi dir=\"ltr\">\"Are borders and white space better? Find French\"</bdi></b>: فيها grid مقاسه <bdi dir=\"ltr\">4&nbsp;×&nbsp;4</bdi> من مجموعات فيها ست أسامي.<br>• مثال على مجموعة:<span class=\"ltr\">Webmaster, Russian, Athletics, Go Shockers, Degree Options, Newsletter</span>• كل مجموعة جوه <b>border</b> ومفصولة عن الباقي بـ <b>white space</b>.<br>• الكلمة <bdi dir=\"ltr\">\"French\"</bdi> في المجموعة اللي في الصف التالت، العمود التالت:<span class=\"ltr\">Staff, Aerospace, Choral Dept., Alberg Hall, French, Spanish</span>",
       "الباحث <b>Weller (2004)</b> لقى إن الناس أخدوا وقت أقل عشان يلاقوا الـ items لما المعلومات كانت متجمعة باستخدام <b>border</b> (الشاشة التانية) مقارنة باستخدام <b>color contrast</b> (الشاشة الأولى).",
       "فيه ناس بتقول إن الـ white space الكتير أوي في صفحات الويب بيضر عملية التدوير (search): بيخلي صعب تلاقي المعلومة.",
       "إنت موافق؟ (سؤال للمناقشة؛ الـ slide مش بتدي إجابة)"
@@ -1488,12 +1488,12 @@ AR.hci = {
    ],
    "cards": [
     "التفكير، والتذكر، والتعلم، والسرحان (daydreaming)، واتخاذ القرارات، والرؤية، والقراية، والكلام، والكتابة…",
-    "Fast vs slow thinking (Kahneman, 2011).",
+    "الـ Fast vs slow thinking <bdi dir=\"ltr\">(Kahneman, 2011)</bdi>.",
     "(1) معرفة بالحاجات اللي نقدر نتوقع إن الـ users يعملوها واللي منقدرش.<br>(2) بيحدد ويشرح طبيعة وأسباب المشاكل اللي الـ users بيقابلوها.<br>(3) بيوفر theories و modeling tools و guidance و methods بتوصل لـ interactive products أحسن.",
     "الـ cognitive processes هي:<span class=\"ltr\">Attention; perception; memory; learning; reading, speaking and listening; problem-solving, planning, reasoning and decision-making</span>",
     "بيخلينا نركز على المعلومات اللي ليها علاقة باللي بنعمله. بيشمل الحواس السمعية و/أو البصرية. فيه focused و divided attention.",
     "نظّم المعلومات اللي على الـ interface بشكل يشد الـ attention بتاع الـ users، مثلاً perceptual boundaries (windows) وألوان.",
-    "الشاشة الأولى (المعلومات لازقة في بعض): في المتوسط 5.5 ثانية للتدوير. الشاشة التانية (متجمعة في vertical categories): 3.2 ثانية.",
+    "الشاشة الأولى (المعلومات لازقة في بعض): في المتوسط 5.5 ثانية للتدوير. الشاشة التانية (متجمعة في vertical categories): في المتوسط 3.2 ثانية.",
     "الـ Spacing: المعلومات في الشاشة الأولى لازقة في بعض (bunched up)؛ والتانية بتجمّع الحروف في vertical categories من المعلومات.",
     "قارنوا بين الـ heavy والـ light multitaskers: الـ heavy multitaskers كانوا أكتر عرضة للتشتت ولقوا صعوبة في إنهم يفلتروا المعلومات اللي ملهاش لازمة.",
     "الناس بيتوهوا من حبل أفكارهم (train of thought)، وبيغلطوا، وبيحتاجوا يبدأوا من الأول.",
@@ -1513,61 +1513,61 @@ AR.hci = {
    ],
    "qa": [
     "الـ Cognition هو التفكير، والتذكر، والتعلم، والسرحان (daydreaming)، واتخاذ القرارات، والرؤية، والقراية، والكلام، والكتابة… وممكن يتصنف على مستوى أعلى لـ fast vs slow thinking (Kahneman, 2011). فهمه بيساعد لأنه: (1) بيدينا معرفة بالحاجات اللي نقدر نتوقع إن الـ users يعملوها واللي منقدرش نتوقعها منهم<br>(2) بيحدد ويشرح طبيعة وأسباب المشاكل اللي الـ users بيقابلوها<br>(3) بيوفر theories، و modeling tools، و guidance، و methods ممكن توصلنا لـ design أحسن للـ interactive products.",
-    "1) Attention 2) Perception 3) Memory 4) Learning 5) Reading, speaking and listening 6) Problem-solving, planning, reasoning and decision-making.",
+    "(1) الـ Attention<br>(2) الـ Perception<br>(3) الـ Memory<br>(4) الـ Learning<br>(5) الـ Reading والـ speaking والـ listening<br>(6) الـ Problem-solving والـ planning والـ reasoning والـ decision-making.",
     "الباحث Tullis قارن بين شاشتين فيهم معلومات عن أوتيلات وليهم نفس الـ density من المعلومات. الشاشة الأولى أخدت في المتوسط 5.5 ثانية للتدوير والتانية أخدت 3.2 ثانية. السبب هو الـ spacing: في الشاشة الأولى المعلومات لازقة في بعض (bunched up)، وده بيخلي التدوير صعب؛ وفي التانية الحروف متجمعة في vertical categories من المعلومات، وده بيخليه أسهل.",
     "الـ Multitasking ممكن يخلي الناس يتوهوا من حبل أفكارهم (train of thought)، ويغلطوا، ويحتاجوا يبدأوا من الأول. والباحثين Ophir et al. (2009) قارنوا بين الـ heavy والـ light multitaskers: الـ heavy multitaskers كانوا أكتر عرضة للتشتت من اللي نادراً ما بيعملوا multitasking، وبيتشتتوا بسهولة وبيلاقوا صعوبة في إنهم يفلتروا المعلومات اللي ملهاش لازمة. في الشغل، الـ multitasking بقى منتشر أكتر وأكتر، مثلاً الناس اللي شغالين في المستشفيات بيتابعوا كذا شاشة فيها معلومات real-time في أوضة العمليات، وده محتاج attention مستمر عشان يشوفوا لو فيه data غريبة أو شاذة، فمحتاجين attention and scanning strategies جديدة.",
     "لأ.<br>(1) السواقة متطلبة جداً.<br>(2) السواقين عرضة إنهم يتشتتوا.<br>(3) فيه احتمال كبير إنهم يعملوا حوادث.<br>(4) الـ reaction times للأحداث الخارجية بتبقى أطول لما يكونوا بيتكلموا في التليفون (Caird et al., 2018).<br>(5) السواقين اللي على التليفون بيعتمدوا أكتر على توقعاتهم للي هيحصل بعد كده، عشان المكالمة واخدة الـ attention بتاعهم.<br>(6) الـ Response time بيبقى أبطأ للأحداث اللي مش متوقعة (Briggs et al., 2018).<br>(7) السواقين بيتخيلوا وش الشخص التاني، وده بينافس على الـ processing resources اللي محتاجينها عشان ياخدوا بالهم من اللي قدامهم ويتصرفوا. الـ Hands-free phones مش أأمن، لأن نفس نوع الـ cognitive processing بيحصل وإنت بتتكلم. الكلام مع راكب قاعد قدام أقل خطورة، لأن الاتنين يقدروا يوقفوا في نص الجملة لما يشوفوا خطر، أما الشخص البعيد فمش شايف اللي السواق شايفه وبيكمل كلام، وده بيصعّب على السواق إنه يحوّل كل الـ attention بتاعه على الطريق.",
     "(1) الـ Context: خلّي المعلومة salient لما يكون لازم ننتبه لها في مرحلة معينة من الـ task.<br>(2) استخدم techniques زي اللون، والـ ordering، والـ spacing، والـ underlining، والـ sequencing، والـ animation.<br>(3) متزحمش الـ visual interfaces بمعلومات كتير أوي.<br>(4) فكّر تصمم طرق مختلفة تدعم الـ switching الفعال والرجوع للـ interface.",
     "الـ Perception هو إزاي المعلومات بتتاخد من العالم وبتتحول لـ experiences. الـ Representations لازم تكون سهل إنها تتدرك، مثلاً الـ text يكون مقروء والـ icons سهل نفرّق بينها ونقراها. والباحث Weller (2004) لقى إن الناس لقوا الـ items أسرع لما المعلومات كانت متجمعة باستخدام border عن لما كانت باستخدام color contrast. الـ Design implications:<br>(1) الـ icons لازم تخلي الـ users يفرّقوا معناها بسهولة<br>(2) الـ bordering والـ spacing طرق بصرية فعالة لتجميع المعلومات<br>(3) الأصوات لازم تكون مسموعة وسهل نفرّق بينها<br>(4) اعمل research على techniques الـ color contrast الصح: الأصفر على أسود أو أزرق تمام، والأصفر على أخضر أو أبيض ممنوع خالص (a no-no).",
-    "البني آدمين بيميلوا إنهم يمسكوا في الحاجة اللي شغالة، بس إنك تفكر في alternatives بيساعدك تلاقي designs أحسن. الـ Alternatives بتيجي من: (1) 'Flair and creativity': research و synthesis<br>(2) Cross-fertilization of ideas من وجهات نظر مختلفة<br>(3) الـ Users ممكن يطلّعوا designs مختلفة<br>(4) Seek inspiration: منتجات و domain شبه بعض، أو منتجات و domain مختلفين."
+    "البني آدمين بيميلوا إنهم يمسكوا في الحاجة اللي شغالة، بس إنك تفكر في alternatives بيساعدك تلاقي designs أحسن. الـ Alternatives بتيجي من:<br>(1) الـ 'Flair and creativity'، يعني research و synthesis<br>(2) الـ Cross-fertilization of ideas من وجهات نظر مختلفة<br>(3) الـ Users ممكن يطلّعوا designs مختلفة<br>(4) الـ Seek inspiration: منتجات و domain شبه بعض، أو منتجات و domain مختلفين."
    ],
    "quiz": [
     [
-     "صح. الـ slide بتصنّف الـ cognition على مستوى أعلى لـ fast vs slow thinking، وبتستشهد بـ Kahneman (2011). <bdi>(L3, What is cognition?)</bdi>",
+     "صح. الـ slide بتصنّف الـ cognition على مستوى أعلى لـ fast vs slow thinking، وبتستشهد بـ Kahneman (2011). <bdi dir=\"ltr\">(L3, What is cognition?)</bdi>",
      "الباحثين Ophir et al. (2009) قارنوا بين الـ heavy والـ light multitaskers في جزء الـ multitasking؛ ده مش طريقة لتصنيف الـ cognition.",
      "الـ Focused والـ divided دول أنواع الـ attention، و Tullis (1987) هي دراسة التدوير في الشاشات، مش تصنيف للـ cognition.",
      "الباحث Weller (2004) قارن بين التجميع بالـ border والتجميع بالـ color contrast في الـ perception؛ ده مش تصنيف للـ cognition."
     ],
     [
      "الـ Memory هي تالت cognitive process في الـ slide.",
-     "صح. الـ cognitive processes هي الـ attention، والـ perception، والـ memory، والـ learning، والـ reading/speaking/listening، والـ problem-solving/planning/reasoning/decision-making؛ والـ prototyping مش منهم. <bdi>(L3, Cognitive processes)</bdi>",
+     "صح. الـ cognitive processes هي الـ attention، والـ perception، والـ memory، والـ learning، والـ <bdi dir=\"ltr\">reading/speaking/listening</bdi>، والـ <bdi dir=\"ltr\">problem-solving/planning/reasoning/decision-making</bdi>؛ والـ prototyping مش منهم. <bdi dir=\"ltr\">(L3, Cognitive processes)</bdi>",
      "الـ Perception هي تاني cognitive process في الـ slide.",
      "دي سادس cognitive process في الـ slide."
     ],
     [
-     "صح. دي واحدة من التلات طرق اللي فهم الـ cognition بيساعد بيها، جنب إننا نعرف الـ users يقدروا يعملوا إيه وميقدروش يعملوا إيه، وإنه بيوفر theories و tools و methods. <bdi>(L3, How can understanding cognition help?)</bdi>",
+     "صح. دي واحدة من التلات طرق اللي فهم الـ cognition بيساعد بيها، جنب إننا نعرف الـ users يقدروا يعملوا إيه وميقدروش يعملوا إيه، وإنه بيوفر theories و tools و methods. <bdi dir=\"ltr\">(L3, How can understanding cognition help?)</bdi>",
      "الـ slide حاطة الكلام ده بالظبط كواحدة من الطرق اللي فهم الـ cognition بيساعد بيها."
     ],
     [
      "ده تعريف الـ perception، مش الـ attention.",
      "الـ slide بتقول إن الـ attention بيشمل الحواس السمعية و/أو البصرية، مش البصرية بس.",
-     "صح. ده تعريف الـ attention في الـ slide، وهو بيشمل الحواس السمعية و/أو البصرية وممكن يكون focused أو divided. <bdi>(L3, Attention)</bdi>",
+     "صح. ده تعريف الـ attention في الـ slide، وهو بيشمل الحواس السمعية و/أو البصرية وممكن يكون focused أو divided. <bdi dir=\"ltr\">(L3, Attention)</bdi>",
      "المحاضرة بتسأل هل ده ممكن أصلاً، وبتقول إن الـ multitasking بيسبب أخطاء وإن الواحد يتوه من حبل أفكاره؛ ده مش تعريف الـ attention."
     ],
     [
      "الـ 5.5 ثانية كانت المتوسط بتاع الشاشة الأولى، اللي المعلومات فيها كانت لازقة في بعض.",
-     "صح. الشاشة الأولى أخدت في المتوسط 5.5 ثانية والشاشة التانية أخدت 3.2 ثانية. <bdi>(L3, Activity: find the hotel price (two screens))</bdi>",
+     "صح. الشاشة الأولى أخدت في المتوسط 5.5 ثانية والشاشة التانية أخدت 3.2 ثانية. <bdi dir=\"ltr\">(L3, Activity: find the hotel price (two screens))</bdi>",
      "الرقم ده مش موجود في الـ slides؛ الشاشة التانية أخدت 3.2 ثانية.",
      "الرقم ده مش موجود في الـ slides؛ الوقتين كانوا 5.5 s و 3.2 s."
     ],
     [
      "الـ slide مش بتذكر اللون كسبب؛ السبب اللي بتديه هو الـ spacing.",
      "الشاشتين كان فيهم نفس الـ density من المعلومات؛ والسبب المذكور هو الـ spacing.",
-     "صح. الشاشة الأولى بتلزّق المعلومات في بعض، أما التانية فبتجمّع الحروف في vertical categories، وده بيخلي التدوير أسهل. <bdi>(L3, Activity: find the hotel price (two screens))</bdi>",
+     "صح. الشاشة الأولى بتلزّق المعلومات في بعض، أما التانية فبتجمّع الحروف في vertical categories، وده بيخلي التدوير أسهل. <bdi dir=\"ltr\">(L3, Activity: find the hotel price (two screens))</bdi>",
      "الـ Borders هي طريقة التجميع في الـ activity بتاع Weller (2004)، مش في شاشات Tullis."
     ],
     [
      "العكس: الـ heavy multitaskers بيلاقوا صعوبة في إنهم يفلتروا المعلومات اللي ملهاش لازمة.",
      "الدراسة لقت إن الـ heavy multitaskers كانوا أكتر عرضة للتشتت.",
      "الـ heavy multitaskers هم اللي كانوا أكتر عرضة للتشتت، مش الـ light.",
-     "صح. الـ heavy multitaskers بيتشتتوا بسهولة وبيلاقوا صعوبة في إنهم يفلتروا المعلومات اللي ملهاش لازمة. <bdi>(L3, Multitasking and attention)</bdi>"
+     "صح. الـ heavy multitaskers بيتشتتوا بسهولة وبيلاقوا صعوبة في إنهم يفلتروا المعلومات اللي ملهاش لازمة. <bdi dir=\"ltr\">(L3, Multitasking and attention)</bdi>"
     ],
     [
-     "صح. الـ slide بتقول التأثيرات دي بالظبط للـ multitasking. <bdi>(L3, Multitasking and attention)</bdi>",
+     "صح. الـ slide بتقول التأثيرات دي بالظبط للـ multitasking. <bdi dir=\"ltr\">(L3, Multitasking and attention)</bdi>",
      "الـ slide بتقول إن الـ multitasking ممكن يسبب المشاكل دي بالظبط."
     ],
     [
-     "صح. لازم يدّوا attention مستمر للمعلومات الـ real-time عشان يشوفوا لو فيه أي data غريبة أو شاذة. <bdi>(L3, Multitasking at work)</bdi>",
+     "صح. لازم يدّوا attention مستمر للمعلومات الـ real-time عشان يشوفوا لو فيه أي data غريبة أو شاذة. <bdi dir=\"ltr\">(L3, Multitasking at work)</bdi>",
      "ده مش المثال اللي في الـ slide؛ مثال الـ multitasking في الشغل هو الناس اللي شغالين في المستشفى في أوضة العمليات.",
      "الطيارين مش مذكورين في المحاضرة؛ المثال هو الناس اللي شغالين في المستشفى.",
      "الطلبة مش هم المثال اللي في الـ slide؛ المثال هو الناس اللي شغالين في المستشفى في أوضة العمليات."
@@ -1575,33 +1575,33 @@ AR.hci = {
     [
      "ده أول مصدر مذكور في الـ slide.",
      "ده تاني مصدر مذكور في الـ slide.",
-     "صح. الـ slide بتقول إن البني آدمين بيميلوا إنهم يمسكوا في الحاجة اللي شغالة، بس التفكير في alternatives بيساعد نلاقي designs أحسن؛ فده مش مذكور كمصدر. الـ alternative designs بتيجي من 'flair and creativity'، والـ cross-fertilization of ideas، وإن الـ users يطلّعوا designs مختلفة، والـ seek inspiration. <bdi>(L3, How to generate alternatives)</bdi>",
+     "صح. الـ slide بتقول إن البني آدمين بيميلوا إنهم يمسكوا في الحاجة اللي شغالة، بس التفكير في alternatives بيساعد نلاقي designs أحسن؛ فده مش مذكور كمصدر. الـ alternative designs بتيجي من 'flair and creativity'، والـ cross-fertilization of ideas، وإن الـ users يطلّعوا designs مختلفة، والـ seek inspiration. <bdi dir=\"ltr\">(L3, How to generate alternatives)</bdi>",
      "ده رابع مصدر مذكور في الـ slide."
     ],
     [
      "الباحث Tullis (1987) درس وقت التدوير في شاشتين فيهم معلومات عن أوتيلات.",
-     "صح. الـ slide بتستشهد بـ Caird et al. (2018) إن الـ reaction times بتبقى أطول لما السواق بيتكلم في التليفون في العربية. <bdi>(L3, Is it OK to use a phone when driving? No!)</bdi>",
+     "صح. الـ slide بتستشهد بـ Caird et al. (2018) إن الـ reaction times بتبقى أطول لما السواق بيتكلم في التليفون في العربية. <bdi dir=\"ltr\">(L3, Is it OK to use a phone when driving? No!)</bdi>",
      "الباحث Weller (2004) درس تجميع المعلومات بالـ borders مقابل الـ color contrast.",
      "الباحثين Ophir et al. (2009) قارنوا بين الـ heavy والـ light multitaskers."
     ],
     [
      "الـ slide بتقول لأ: نفس نوع الـ cognitive processing بيحصل وإنت بتتكلم، فالـ hands-free مش بيخليها أأمن.",
-     "صح. الـ Hands-free phones مش أأمن، لأن نفس نوع الـ cognitive processing بيحصل وإنت بتتكلم. <bdi>(L3, Are hands-free phones safer to use when driving?)</bdi>"
+     "صح. الـ Hands-free phones مش أأمن، لأن نفس نوع الـ cognitive processing بيحصل وإنت بتتكلم. <bdi dir=\"ltr\">(L3, Are hands-free phones safer to use when driving?)</bdi>"
     ],
     [
      "علو الصوت مش مذكور؛ السبب إن الراكب يقدر يشوف الخطر ويبطّل كلام.",
      "الـ slide بتقول إن نفس الحاجة (نفس الـ processing) بتحصل لما تتكلم مع راكب قاعد قدام.",
-     "صح. الشخص البعيد بيكمل المكالمة وقت الخطر، وده بيصعّب على السواق إنه يحوّل كل الـ attention بتاعه على الطريق. <bdi>(L3, Are hands-free phones safer to use when driving?)</bdi>",
+     "صح. الشخص البعيد بيكمل المكالمة وقت الخطر، وده بيصعّب على السواق إنه يحوّل كل الـ attention بتاعه على الطريق. <bdi dir=\"ltr\">(L3, Are hands-free phones safer to use when driving?)</bdi>",
      "ده مش مذكور؛ السبب إن الراكب يقدر يوقف في نص الجملة لما يشوف خطر."
     ],
     [
      "الـ slide بتقول العكس: متزحمش الـ visual interfaces بمعلومات كتير أوي.",
-     "صح. استخدم techniques زي اللون، والـ ordering، والـ spacing، والـ underlining، والـ sequencing، والـ animation. <bdi>(L3, Design implications for attention)</bdi>",
+     "صح. استخدم techniques زي اللون، والـ ordering، والـ spacing، والـ underlining، والـ sequencing، والـ animation. <bdi dir=\"ltr\">(L3, Design implications for attention)</bdi>",
      "اللون والـ animation مذكورين كـ techniques عشان تخلي المعلومة salient.",
      "الـ slide بتقول ادعم الـ switching الفعال والرجوع للـ interface."
     ],
     [
-     "صح. ده تعريف الـ slide؛ والـ implication الواضحة إننا نصمم representations سهل إنها تتدرك. <bdi>(L3, Perception)</bdi>",
+     "صح. ده تعريف الـ slide؛ والـ implication الواضحة إننا نصمم representations سهل إنها تتدرك. <bdi dir=\"ltr\">(L3, Perception)</bdi>",
      "ده تعريف الـ attention.",
      "دي أمثلة على الـ cognition بشكل عام.",
      "ده الـ multitasking."
@@ -1609,17 +1609,17 @@ AR.hci = {
     [
      "ده عكس النتيجة: الـ borders (الشاشة التانية) كانت أسرع من الـ color contrast (الشاشة الأولى).",
      "ده رأي 'some' بيقولوه، وبعده سؤال \"Do you agree?\"؛ مش نتيجة Weller.",
-     "صح. الباحث Weller (2004) لقى إن التجميع بالـ border (الشاشة التانية) كسب الـ color contrast (الشاشة الأولى). <bdi>(L3, Activity: color contrast vs borders and white space)</bdi>",
+     "صح. الباحث Weller (2004) لقى إن التجميع بالـ border (الشاشة التانية) كسب الـ color contrast (الشاشة الأولى). <bdi dir=\"ltr\">(L3, Activity: color contrast vs borders and white space)</bdi>",
      "دي نتيجة Tullis (1987) للشاشة الأولى بتاعة الأوتيلات."
     ],
     [
      "الـ slide بتقول إن الأصفر على أسود تمام.",
      "الـ slide بتقول إن الأصفر على أزرق تمام.",
-     "صح. الأصفر على أخضر أو أبيض ممنوع خالص (a no-no)، أما الأصفر على أسود أو أزرق فتمام. <bdi>(L3, Design implications for perception)</bdi>",
+     "صح. الأصفر على أخضر أو أبيض ممنوع خالص (a no-no)، أما الأصفر على أسود أو أزرق فتمام. <bdi dir=\"ltr\">(L3, Design implications for perception)</bdi>",
      "الـ slide مش بتقول إن الأسود على أبيض a no-no؛ التركيبات الممنوعة هي الأصفر على أخضر أو أبيض."
     ],
     [
-     "صح. دي واحدة من الـ design implications للـ perception. <bdi>(L3, Design implications for perception)</bdi>",
+     "صح. دي واحدة من الـ design implications للـ perception. <bdi dir=\"ltr\">(L3, Design implications for perception)</bdi>",
      "الـ slide حاطة الجملة دي كـ design implication."
     ]
    ],
@@ -1710,7 +1710,7 @@ AR.hci = {
      ]
     },
     {
-     "h": "Applications",
+     "h": "الـ Applications",
      "pts": [
       "الـ <b>Voice user interfaces</b> بتخلي الـ users يتفاعلوا معاها بإنهم يسألوا أسئلة، زي Google Voice و Siri و Alexa.",
       "الـ <b>Speech-output systems</b> بتستخدم speech متولد صناعياً (artificially-generated)، زي الـ written text-to-speech systems للناس ضعاف البصر (visually impaired).",
@@ -1741,7 +1741,7 @@ AR.hci = {
     "لأ. الـ memory فيها filtering و processing للحاجات اللي بنركز معاها.",
     "إحنا بنعمل recognize للحاجات أحسن بكتير من إننا نعملها recall.",
     "بنفتكر حاجات أقل عن الأشياء اللي صورناها عن لما بنشوفها بعينينا على طول.",
-    "قد إيه المعلومة ممكن نعملها retrieve بعد كده. (الـ Context = فين، وإمتى، وإزاي، وهكذا؛ وممكن يبقى صعب تفتكر معلومة اتعملها encode في context مختلف.)",
+    "قد إيه المعلومة ممكن نعملها retrieve بعد كده. (الـ Context يعني فين، وإمتى، وإزاي، وهكذا؛ وممكن يبقى صعب تفتكر معلومة اتعملها encode في context مختلف.)",
     "جار إنت متعود تشوفه في طرقة العمارة بس سلّم عليك في القطر؛ وهو out of context بيبقى صعب تعرفه في الأول.",
     "الـ Visual cues: لون الحاجات، ومكان الأشياء، والعلامات اللي على أي حاجة.",
     "الـ Arbitrary material، زي أعياد الميلاد وأرقام التليفونات.",
@@ -1757,7 +1757,7 @@ AR.hci = {
     "بتخلي الـ users يتفاعلوا بإنهم يسألوا أسئلة، زي Google Voice و Siri و Alexa.",
     "بتستخدم speech متولد صناعياً، زي الـ written text-to-speech systems للناس ضعاف البصر.",
     "بتخلي الـ users يكتبوا أسئلة وبترد بردود نصية، زي الـ chatbots.",
-    "(1) menus و instructions بالصوت تكون قصيرة<br>(2) نبرز الـ intonation بتاع الأصوات المتولدة صناعياً (أصعب في الفهم من الأصوات البشرية)<br>(3) نسمح بتكبير النص على الشاشة.",
+    "(1) الـ menus والـ instructions بالصوت تكون قصيرة<br>(2) نبرز الـ intonation بتاع الأصوات المتولدة صناعياً (أصعب في الفهم من الأصوات البشرية)<br>(3) نسمح بتكبير النص على الشاشة.",
     "الـ Reflective cognition: إنك تفكر هتعمل إيه، وإيه الـ options، وإيه العواقب.",
     "الخرايط، والكتب، والورقة والقلم."
    ],
@@ -1802,7 +1802,7 @@ AR.hci = {
     [
      "أعياد الميلاد متقالة كـ arbitrary material، والناس بتلاقيها أصعب في إنها تتعلمها وتفتكرها.",
      "أرقام التليفونات متقالة كـ arbitrary material، وده أصعب في الحفظ.",
-     "صح. الناس شاطرة جداً في إنها تفتكر الـ visual cues زي لون الحاجات، ومكان الأشياء، والعلامات اللي على أي حاجة (L4, Activity: what is easy to remember).",
+     "صح. الناس شاطرة جداً في إنها تفتكر الـ visual cues زي لون الحاجات، ومكان الأشياء، والعلامات اللي على أي حاجة <bdi dir=\"ltr\">(L4, Activity: what is easy to remember)</bdi>.",
      "السلايدز بتقول إن الناس بتلاقي صعوبة إنها تتعلم من إنها تمشي ورا instructions في manual."
     ],
     [
@@ -1843,7 +1843,7 @@ AR.hci = {
      "دي واحدة من الـ design implications التلاتة للـ learning.",
      "دي واحدة من الـ design implications التلاتة للـ learning.",
      "دي واحدة من الـ design implications التلاتة للـ learning، عشان تسهّل تعلم الحاجات المعقدة.",
-     "صح. تكبير النص ده design implication للقراية والكلام والسماع، مش للـ learning (L4, Design implications for reading, speaking, and listening)."
+     "صح. تكبير النص ده design implication للقراية والكلام والسماع، مش للـ learning <bdi dir=\"ltr\">(L4, Design implications for reading, speaking, and listening)</bdi>."
     ],
     [
      "السلايد بتقول إن السماع محتاج cognitive effort أقل من القراية أو الكلام.",
@@ -1871,14 +1871,14 @@ AR.hci = {
     ],
     [
      "كلمة Incidental نوع من أنواع الـ learning في السلايدز، مش الـ cognition اللي العمليات دي فيها.",
-     "صح. كل العمليات دي فيها reflective cognition، زي إنك تفكر هتعمل إيه، والـ options، والعواقب (L4, Problem-solving, planning, reasoning, and decision-making).",
+     "صح. كل العمليات دي فيها reflective cognition، زي إنك تفكر هتعمل إيه، والـ options، والعواقب <bdi dir=\"ltr\">(L4, Problem-solving, planning, reasoning, and decision-making)</bdi>.",
      "كلمة Arbitrary بتتقال على الحاجات الصعب نفتكرها، زي أعياد الميلاد وأرقام التليفونات.",
      "الـ Visual cues عن الحاجات اللي الناس بتفتكرها كويس، مش الـ cognition بتاعة العمليات دي."
     ],
     [
      "دول أمثلة على الـ voice user interfaces.",
      "دول طرق للـ labelling بتاع الـ digital information (design implication للـ memory).",
-     "صح. السلايد بتذكر الخرايط، والكتب، والورقة والقلم كـ artifacts (L4, Problem-solving, planning, reasoning, and decision-making).",
+     "صح. السلايد بتذكر الخرايط، والكتب، والورقة والقلم كـ artifacts <bdi dir=\"ltr\">(L4, Problem-solving, planning, reasoning, and decision-making)</bdi>.",
      "دي technologies اتعملت عشان تساعد في الـ intentional learning."
     ]
    ],
@@ -1904,7 +1904,7 @@ AR.hci = {
      }
     },
     {
-     "h": "Primary ضد secondary research",
+     "h": "الـ Primary ضد الـ secondary research",
      "figH": {
       "hc-primary-secondary": "الـ research ده primary ولا secondary؟ صنّف الـ methods وقارن بينهم"
      }
@@ -1924,7 +1924,7 @@ AR.hci = {
      "pts": [
       "• اجمع بس الـ data اللي محتاجها.<br>• متربطش الـ data اللي جمعتها بـ PII أو SPII.<br>• ومتحتفظش بالـ data بعد ما متبقاش محتاجها.",
       "الـ <b>PII (Personally Identifiable Information)</b>: تفاصيل ممكن تعرّف بيها الـ user: <b>الأسامي، عنوان البيت، الـ email، رقم التليفون</b>.",
-      "الـ <b>SPII (Sensitive PII)</b>: data لو ضاعت أو اتسرقت ممكن تعمل ضرر مالي أو إحراج أو تمييز: <b>الـ social security number، رخصة السواقة، أرقام الباسبور، أرقام الحسابات المالية، تاريخ الميلاد</b>."
+      "الـ <b>SPII (Sensitive PII)</b>، وهي data لو ضاعت أو اتسرقت ممكن تعمل ضرر مالي أو إحراج أو تمييز: <b>الـ social security number، رخصة السواقة، أرقام الباسبور، أرقام الحسابات المالية، تاريخ الميلاد</b>."
      ],
      "figH": {
       "hc-pii-spii": "الـ data دي PII ولا sensitive PII؟ صنّفها"
@@ -1943,22 +1943,22 @@ AR.hci = {
     }
    ],
    "cards": [
-    "data أرقام: قياسات وعدّ. أسهل للناس الـ technical.",
+    "الـ data أرقام: قياسات وعدّ. أسهل للناس الـ technical.",
     "ملاحظات عن ليه وإزاي الحاجات بتحصل، غالباً من interviews.",
     "الأسامي، عنوان البيت، الـ email، رقم التليفون.",
     "الـ SSN، رخصة السواقة، رقم الباسبور، أرقام الحسابات المالية، تاريخ الميلاد.",
-    "specific لاحتياجاتك وإنت متحكم في الـ quality / بيكلّف أكتر وبياخد وقت أطول.",
+    "الميزة: specific لاحتياجاتك وإنت متحكم في الـ quality.<br>العيب: بيكلّف أكتر وبياخد وقت أطول.",
     "رخيص وسريع / ممكن يكون قديم أوي أو مش specific كفاية.",
     "خطط من بدري، بس خليك flexible أثناء الـ activity.",
-    "users كتير، وقت قصير، أونلاين، رخيص؛ نظرة عامة واسعة."
+    "الـ users كتير، وقت قصير، أونلاين، رخيص؛ نظرة عامة واسعة."
    ],
    "qa": [
-    "الـ Primary إنت اللي بتجمعه، زي الـ surveys والـ focus groups والـ interviews والـ observations والـ experiments؛ specific لاحتياجاتك وإنت متحكم في الـ quality، بس بيكلّف أكتر وبياخد وقت أطول. الـ Secondary حد تاني جمعه (data موجودة زي الكتب والـ journals)؛ رخيص وسريع، بس ممكن يكون قديم أوي أو مش specific كفاية. والاتنين ممكن يبقوا qualitative أو quantitative.",
+    "الـ Primary إنت اللي بتجمعه، زي الـ surveys والـ focus groups والـ interviews والـ observations والـ experiments؛ وهو specific لاحتياجاتك وإنت متحكم في الـ quality، بس بيكلّف أكتر وبياخد وقت أطول. الـ Secondary حد تاني جمعه (data موجودة زي الكتب والـ journals)؛ رخيص وسريع، بس ممكن يكون قديم أوي أو مش specific كفاية. والاتنين ممكن يبقوا qualitative أو quantitative.",
     "اجمع بس اللي محتاجه، متربطش الـ data اللي جمعتها بـ PII أو SPII، ومتسيبش الـ data متخزنة بعد ما متبقاش محتاجها.",
     "خطط من بدري (زي script للـ interview)؛ خليك flexible (الـ script مش كتاب مقدس)؛ اعمل combination من الـ methods بترتيب مناسب؛ حسّن بالـ testing والـ iteration؛ واحمي الـ privacy والـ security بتاعة data الـ users.",
     "خليها صغيرة على قد ما تقدر، لأن الأسئلة الكتير بتقلل الـ response rate والـ reliability. اسأل أقل عدد أسئلة للـ data اللي هتستخدمها. خلي بالك من الـ bias. وخد feedback من المشاركين عن الـ survey.",
     "الـ <b>Quantitative research</b>: فيه data طبيعتها أرقام، زي الـ measures والـ counts. أسهل على الـ engineers والناس الـ technical إنهم يتعاملوا معاه.<br>الـ <b>Qualitative research</b>: بيركّز على ملاحظات عن ليه وإزاي الحاجات بتحصل، وغالباً مبني على interviews. الـ Qualitative analysis أصعب على الناس الـ technical، بس هو اللي محتاجينه عشان نفهم بجد.",
-    "الـ <b>PII</b> (Personally Identifiable Information): تفاصيل معينة ممكن تتستخدم عشان تعرّف الـ user، زي الأسامي، وعنوان البيت، والـ email address، ورقم التليفون.<br>الـ <b>SPII</b> (Sensitive Personally Identifiable Information): data لو ضاعت أو اتكشفت أو اتسرقت ممكن تسبب للـ users بتوعك ضرر مالي أو إحراج أو تمييز، زي الـ social security number، ورخصة السواقة، وأرقام الباسبور، وأرقام الحسابات المالية، وتاريخ الميلاد.",
+    "الـ <b>PII</b> (Personally Identifiable Information): تفاصيل معينة ممكن تتستخدم عشان تعرّف الـ user، زي الأسامي، وعنوان البيت، والـ email address، ورقم التليفون.<br>الـ <b>SPII</b> (Sensitive Personally Identifiable Information)، وهي data لو ضاعت أو اتكشفت أو اتسرقت ممكن تسبب للـ users بتوعك ضرر مالي أو إحراج أو تمييز، زي الـ social security number، ورخصة السواقة، وأرقام الباسبور، وأرقام الحسابات المالية، وتاريخ الميلاد.",
     "الـ survey طريقة قوية إنك تجمع ردود سريعة في وقت قصير من عدد كبير من الـ users (<b>نظرة واسعة</b>).<br>(1) غالباً بيتعمل أونلاين وسهل تعمله.<br>(2) هو من <b>أرخص</b> methods الـ user research.<br>(3) ممكن يبقى خطوة أولى عشان تجمع insights عامة عن دوافع الـ users وتفضيلاتهم وأولوياتهم والـ pain points بتاعتهم؛ ونتايجه بتساعد في التخطيط لأنشطة بعد كده زي الـ interviews.<br>(4) وممكن كمان ييجي بعد activity تانية (interview أو usability study)، وتستخدم نتايج الـ method اللي قبله عشان تخطط للـ survey."
    ],
    "quiz": [
@@ -1989,9 +1989,9 @@ AR.hci = {
      "الأطفال ملهمش أي علاقة بالنقطة دي. الـ Quantitative research متقال عليه إنه أسهل على الـ engineers والناس الـ technical (L5, Types by WHAT)."
     ],
     [
-     "صح. الـ Privacy والـ security بتوع الـ user data حاجة أساسية: اجمع اللي محتاجه بس، متربطوش بـ PII/SPII، وامسحه لما متبقاش محتاجه (L5, General tips).",
+     "صح. الـ Privacy والـ security بتوع الـ user data حاجة أساسية: اجمع اللي محتاجه بس، متربطوش بـ <bdi dir=\"ltr\">PII/SPII</bdi>، وامسحه لما متبقاش محتاجه <bdi dir=\"ltr\">(L5, General tips)</bdi>.",
      "الـ Privacy بتزوّد الحرص؛ مش بتسرّع الحاجات.",
-     "العكس: الـ privacy guidelines بتحدد إنت بتجمع إيه، وبتفصله عن الـ PII/SPII، وبتمسحه بعد الاستخدام، فمفيش حاجة بتتنشر للعامة (L5, Privacy and security).",
+     "العكس: الـ privacy guidelines بتحدد إنت بتجمع إيه، وبتفصله عن الـ <bdi dir=\"ltr\">PII/SPII</bdi>، وبتمسحه بعد الاستخدام، فمفيش حاجة بتتنشر للعامة <bdi dir=\"ltr\">(L5, Privacy and security)</bdi>.",
      "الـ Privacy مش بديل لأي method؛ الـ interviews لسه بتستخدم. الـ Privacy مهمة عشان بتحمي الـ user data (L5, Privacy and security)."
     ],
     [
@@ -2036,7 +2036,7 @@ AR.hci = {
      "صح. الـ Surveys طريقة قوية تجمع بيها ردود سريعة في وقت قصير من <b>عدد كبير من الـ users</b> (نظرة عامة واسعة) (L5, Surveys).",
      "الإجابات على الأسئلة ممكن يبقى فيها recall bias و reporting bias، يعني الناس تدّي إجابات مثالية أكتر من الواقع (L7, Challenges of data gathered by asking questions).",
      "الكورس بيوصف الـ secondary research إنه هو اللي \"usually cheap and quick\"؛ والـ survey ده primary research، اللي غالباً بيكلّف أكتر وبياخد وقت أطول (L5, Primary vs secondary research).",
-     "الـ methods مش بدايل لبعض: استخدم combination منهم بترتيب مناسب، ونتايج الـ survey بتساعد تخطط للأنشطة اللي بعده زي الـ interviews (L5, General tips; Surveys)."
+     "الـ methods مش بدايل لبعض: استخدم combination منهم بترتيب مناسب، ونتايج الـ survey بتساعد تخطط للأنشطة اللي بعده زي الـ interviews <bdi dir=\"ltr\">(L5, General tips; Surveys)</bdi>."
     ],
     [
      "مش مصطلح الكورس. المحاضرة كاتبة الـ PII كـ Personally Identifiable Information: تفاصيل معينة ممكن تتستخدم عشان تعرف الـ user مين (L5, Privacy and security).",
@@ -2051,7 +2051,7 @@ AR.hci = {
      "الـ email address ده PII، بس كمان رقم التليفون وعنوان البيت، فالإجابة الكاملة \"All of the following\" (L5, Privacy and security)."
     ],
     [
-     "صح. الميزة الأساسية للـ secondary research إنه <b>غالباً رخيص وسريع</b>؛ لو المعلومة موجودة، بيوفّر مجهود ووقت ضخم (L5, Primary vs secondary research; L2, Secondary research).",
+     "صح. الميزة الأساسية للـ secondary research إنه <b>غالباً رخيص وسريع</b>؛ لو المعلومة موجودة، بيوفّر مجهود ووقت ضخم <bdi dir=\"ltr\">(L5, Primary vs secondary research; L2, Secondary research)</bdi>.",
      "إنه يكون specific لاحتياجاتك دي ميزة الـ <b>primary</b> research؛ الـ secondary data ممكن تكون مش specific كفاية (L5, Primary vs secondary research).",
      "الكورس بيقول إن الـ secondary data ممكن تكون قديمة أوي و/أو مش specific كفاية، أما في الـ primary research فإنت اللي بتتحكم في الـ quality (L5, Primary vs secondary research).",
      "الـ Secondary research بيدعم (backs up) نتايج الـ primary research؛ مش بيحل محلها (L2, Secondary research). والـ methods المفروض تتجمع مع بعض، مش تتستخدم كبدايل (L5, General tips)."
@@ -2065,8 +2065,8 @@ AR.hci = {
     [
      "صح. الـ Surveys غالباً بتتعمل online وبتجمع ردود سريعة في وقت قصير من <b>عدد كبير من الـ users</b> (نظرة عامة واسعة) (L5, Surveys).",
      "الـ data بتاعة الـ survey بتتجمع عشان تتستخدم: الكورس بيقول اسأل بس أقل عدد من الأسئلة يجيب الـ data اللي محتاجها وعارف إنك هتستخدمها (L5, Tips for a good survey design).",
-     "الـ methods مش بدايل لبعض؛ استخدم combination. والـ Surveys غالباً بتساعد تخطط لأنشطة qualitative بعدها زي الـ interviews (L5, General tips; Surveys).",
-     "الكورس بيقول العكس عن طريقة إنك تسأل أسئلة: الإجابات ممكن يبقى فيها recall bias و reporting bias، والحل إنك تجمعها مع الـ usability studies والـ observation (L7, Challenges of data gathered by asking questions)."
+     "الـ methods مش بدايل لبعض؛ استخدم combination. والـ Surveys غالباً بتساعد تخطط لأنشطة qualitative بعدها زي الـ interviews <bdi dir=\"ltr\">(L5, General tips; Surveys)</bdi>.",
+     "الكورس بيقول العكس عن طريقة إنك تسأل أسئلة: الإجابات ممكن يبقى فيها recall bias و reporting bias، والحل إنك تجمعها مع الـ usability studies والـ observation <bdi dir=\"ltr\">(L7, Challenges of data gathered by asking questions)</bdi>."
     ],
     [
      "صح. الـ SPII هي data لو ضاعت أو اتكشفت (compromised) أو اتسرقت ممكن تسبب للـ users <b>ضرر مادي أو إحراج أو تمييز</b>، فمحتاجة حماية زيادة عن الـ PII العادية (L5, Privacy and security).",
@@ -2078,7 +2078,7 @@ AR.hci = {
      "توفير الوقت والتكلفة ده ميزة الـ <b>secondary</b> research (غالباً رخيص وسريع)؛ الـ primary research غالباً بيكلّف أكتر وبياخد وقت أطول (L5, Primary vs secondary research).",
      "صح. الـ Primary research إنت اللي بتعمله مع الـ users بتوعك (زي الـ interviews والـ surveys والـ observations)، فهو <b>specific لاحتياجاتك وإنت اللي بتتحكم في الـ quality</b> (L5, Primary vs secondary research).",
      "مفيش حاجة في الكورس بتقول كده؛ الـ secondary research متنصوح بيه، خصوصاً في أول المشروع (L2, Secondary research).",
-     "الكورس بيقول إن الـ secondary research قيّم: غالباً بيعمله researchers عندهم خبرة في organizations موثوقة، وبيدعم نتايج الـ primary. نقطة ضعفه إن الـ data ممكن تكون قديمة أوي أو مش specific كفاية (L2, Secondary research; L5, Primary vs secondary research)."
+     "الكورس بيقول إن الـ secondary research قيّم: غالباً بيعمله researchers عندهم خبرة في organizations موثوقة، وبيدعم نتايج الـ primary. نقطة ضعفه إن الـ data ممكن تكون قديمة أوي أو مش specific كفاية <bdi dir=\"ltr\">(L2, Secondary research; L5, Primary vs secondary research)</bdi>."
     ],
     [
      "الكورس مقالش إن الـ primary research دايماً biased؛ بالعكس، من مميزاته إنك إنت اللي بتتحكم في الـ quality (L5, Primary vs secondary research).",
@@ -2088,55 +2088,55 @@ AR.hci = {
     ],
     [
      "الحسابات بتشتغل على أرقام، وده <b>quantitative</b> research (يعني data of numeric nature، زي الـ measures والـ counts) (L5, Types of user research by What).",
-     "صح. الـ Qualitative research \"focuses on <b>observations</b> about why and how things happen\" وهو \"often based on <b>interviews</b>\" (L5, Types of user research by What).",
-     "الـ usage data اللي بتتسجل (logged)، زي الـ counts اللي Microsoft جمعتها عن طريق الـ CEIP، دي أرقام، فهي quantitative مش qualitative (L5, Types of user research by What; L1, CEIP).",
+     "صح. الـ Qualitative research:<span class=\"ltr\">\"focuses on <b>observations</b> about why and how things happen\"</span>وهو:<span class=\"ltr\">\"often based on <b>interviews</b>\"</span>ده في <bdi dir=\"ltr\">(L5, Types of user research by What)</bdi>.",
+     "الـ usage data اللي بتتسجل (logged)، زي الـ counts اللي Microsoft جمعتها عن طريق الـ CEIP، دي أرقام، فهي quantitative مش qualitative <bdi dir=\"ltr\">(L5, Types of user research by What; L1, CEIP)</bdi>.",
      "الـ Numeric ratings دي data of numeric nature، وده quantitative research (L5, Types of user research by What)."
     ],
     [
      "الـ Observations عن ليه وإزاي الحاجات بتحصل دي بتوصف الـ <b>qualitative</b> research (L5, Types of user research by What).",
-     "صح. الـ Quantitative research \"involves <b>data of numeric nature</b>. Examples: measures and counts\" (L5, Types of user research by What).",
-     "نص الـ interviews ده qualitative data؛ الـ qualitative research \"often based on interviews\" (L5, Types of user research by What).",
+     "صح. الـ Quantitative research:<span class=\"ltr\">\"involves <b>data of numeric nature</b>. Examples: measures and counts\"</span>ده في <bdi dir=\"ltr\">(L5, Types of user research by What)</bdi>.",
+     "نص الـ interviews ده qualitative data؛ الـ <bdi dir=\"ltr\">qualitative research \"often based on interviews\"</bdi> <bdi dir=\"ltr\">(L5, Types of user research by What)</bdi>.",
      "الـ User stories وصفية مش أرقام، والمحاضرة بتعرّف الـ quantitative data إنها measures و counts (L5, Types of user research by What)."
     ],
     [
      "الـ Measures والـ counts هما أمثلة المحاضرة للـ <b>quantitative</b> research (L5, Types of user research by What).",
      "الـ Automated analytics بتطلّع data أرقام، وده quantitative research مش qualitative (L5, Types of user research by What).",
      "الـ data الأرقام بتوصف الـ quantitative research؛ الـ qualitative research عن ليه وإزاي الحاجات بتحصل (L5, Types of user research by What).",
-     "صح. الـ Qualitative research \"focuses on <b>observations about why and how things happen</b>\"، وغالباً مبني على الـ interviews (L5, Types of user research by What)."
+     "صح. الـ Qualitative research:<span class=\"ltr\">\"focuses on <b>observations about why and how things happen</b>\"</span>وغالباً مبني على الـ interviews <bdi dir=\"ltr\">(L5, Types of user research by What)</bdi>."
     ],
     [
-     "صح. من الـ general tips: \"Testing and iteration is your way to <b>improve any technique</b>\" (L5, General tips for research methods).",
-     "الـ User research عن إنك تشرك الـ users وتشتغل معاهم بدل ما تخمّن؛ والـ testing والـ iteration مش بيقللوا ده (L2, User-centered design; L5, General tips).",
-     "الـ tips بتقول العكس: الـ methods مش بدايل لبعض، فـ \"use a combination of methods in a relevant order\" (L5, General tips for research methods).",
-     "الـ Planning ahead \"does not mean to be strict\"؛ الـ flexibility مطلوبة و\"the script is not bible\" (L5, General tips for research methods)."
+     "صح. من الـ general tips:<span class=\"ltr\">\"Testing and iteration is your way to <b>improve any technique</b>\"</span>ده في <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>.",
+     "الـ User research عن إنك تشرك الـ users وتشتغل معاهم بدل ما تخمّن؛ والـ testing والـ iteration مش بيقللوا ده <bdi dir=\"ltr\">(L2, User-centered design; L5, General tips)</bdi>.",
+     "الـ tips بتقول العكس: الـ methods مش بدايل لبعض، فـ <bdi dir=\"ltr\">\"use a combination of methods in a relevant order\"</bdi> <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>.",
+     "الـ <bdi dir=\"ltr\">Planning ahead \"does not mean to be strict\"</bdi>؛ الـ flexibility مطلوبة و<bdi dir=\"ltr\">\"the script is not bible\"</bdi> <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>."
     ],
     [
      "المحاضرة بتقول العكس: الـ methods مش بدايل لبعض، فالمفروض تستخدم combination منهم (L5, General tips for research methods).",
-     "صح. المحاضرة بتقول إن الـ methods المختلفة مش بدايل لبعض في one-step process، والصح هو:<span class=\"ltr\"><b>use a combination of methods in a relevant order</b></span> (L5, General tips for research methods).",
+     "صح. المحاضرة بتقول إن الـ methods المختلفة مش بدايل لبعض في one-step process، والصح هو:<span class=\"ltr\"><b>use a combination of methods in a relevant order</b></span>ده في <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>.",
      "النصيحة بتقول إن الـ combination لازم يكون بـ <b>relevant order</b>، وإن الـ research لازم يتخطط له من بدري، مش عشوائي (L5, General tips for research methods).",
-     "ده بالظبط اللي الـ slide بترفضه: \"Different methods are not alternatives in a one step process\" (L5, General tips for research methods)."
+     "ده بالظبط اللي الـ slide بترفضه:<span class=\"ltr\">\"Different methods are not alternatives in a one step process\"</span>ده في <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>."
     ],
     [
      "صح. المحاضرة بتقول خلّي الـ survey صغير على قد ما تقدر لأن <b>الأسئلة الكتير بتأثر على الـ response rate وعلى الـ reliability بتاعة الـ data</b>؛ اسأل أقل عدد من الأسئلة محتاجه (L5, Tips for a good survey design).",
      "الـ survey القصير أسهل في إنك تكمّله، مش أصعب. الفكرة من إنه يفضل صغير إنك تحافظ على الـ response rate (L5, Tips for a good survey design).",
      "العكس: النصيحة إنك تسأل أقل عدد من الأسئلة يجيب الـ data اللي محتاجها وعارف إنك هتستخدمها (L5, Tips for a good survey design).",
-     "إنه يفضل قصير الهدف منه إجابات واضحة و reliable. ولخبطة اللي بيجاوبوا ضد principles الـ L6 اللي هي Be Clear و Be Concise (L6, Be Clear / Be Concise)."
+     "إنه يفضل قصير الهدف منه إجابات واضحة و reliable. ولخبطة اللي بيجاوبوا ضد principles الـ L6 اللي هي Be Clear و Be Concise <bdi dir=\"ltr\">(L6, Be Clear / Be Concise)</bdi>."
     ],
     [
-     "المحاضرة بتقول العكس: الـ planning ahead مش معناه إنك تبقى strict، لأن <b>\"script is not a bible\"</b> (L5, General tips for research methods).",
+     "المحاضرة بتقول العكس: الـ planning ahead مش معناه إنك تبقى strict، لأن <b><bdi dir=\"ltr\">\"script is not a bible\"</bdi></b> <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>.",
      "المحاضرة بتذكر الاتنين: اعمل plan من بدري، وكمان \"testing and iteration is your way to improve any technique\". الـ Planning مش بيحل محل الـ iteration (L5, General tips for research methods).",
-     "صح. \"Planning ahead does not mean to be strict, <b>flexibility is required during the activity</b> (script is not bible)\" (L5, General tips for research methods).",
+     "صح. المحاضرة بتقول:<span class=\"ltr\">\"Planning ahead does not mean to be strict, <b>flexibility is required during the activity</b> (script is not bible)\"</span>ده في <bdi dir=\"ltr\">(L5, General tips for research methods)</bdi>.",
      "غلط: الـ slide بتقول إن الـ flexibility مطلوبة أثناء الـ activity، فإنت بتتأقلم حسب الحاجة (L5, General tips for research methods)."
     ],
     [
      "صح. جدول الـ primary vs secondary بيذكر إن الميزة الأساسية للـ secondary research إنه <b>غالباً رخيص وسريع</b> (L5, The difference between Primary and Secondary Research).",
      "الـ Secondary research بيستخدم data موجودة حد تاني جمعها (\"looking for existing data\")، فمش بيدّي data جديدة (L5, Primary vs secondary table).",
      "التكلفة دي عيب الـ primary research (\"usually costs more and takes longer\"). الـ Secondary research غالباً رخيص (L5, Primary vs secondary table).",
-     "إنه ياخد وقت أطول ده العيب الأساسي للـ primary research. الـ Secondary research سريع وبيوفّر مجهود ووقت ضخم (L5 table; L2, Secondary Research)."
+     "إنه ياخد وقت أطول ده العيب الأساسي للـ primary research. الـ Secondary research سريع وبيوفّر مجهود ووقت ضخم <bdi dir=\"ltr\">(L5 table; L2, Secondary Research)</bdi>."
     ],
     [
      "صح. في جدول المقارنة، الـ primary data <b>إنت اللي بتجمعها</b> (زي الـ surveys والـ focus groups والـ interviews والـ observations والـ experiments)، أما الـ secondary research معناه <b>إنك تدور على data موجودة</b> حد تاني جمعها (L5, Primary vs secondary table).",
-     "الجملة مطابقة للمحاضرة: الـ primary research هو research إنت بتعمله بنفسك، والـ secondary research هو research حد تاني عمله، وبيستخدم data موجودة (L2, Types of user research based on Who; L5 table)."
+     "الجملة مطابقة للمحاضرة: الـ primary research هو research إنت بتعمله بنفسك، والـ secondary research هو research حد تاني عمله، وبيستخدم data موجودة <bdi dir=\"ltr\">(L2, Types of user research based on Who; L5 table)</bdi>."
     ],
     [
      "صح. في جدول الـ primary vs secondary، العيب الأساسي للـ primary research إنه <b>غالباً بيكلّف أكتر وبياخد وقت أطول</b>، أما الـ secondary research فغالباً رخيص وسريع (L5, Primary vs secondary research).",
@@ -2207,7 +2207,7 @@ AR.hci = {
   "6": {
    "notes": [
     {
-     "h": "6 مبادئ: Clear · Concise · Specific · Expressive · Unbiased · Usable",
+     "h": "6 مبادئ: Clear و Concise و Specific و Expressive و Unbiased و Usable",
      "pts": [
       "كل مبدأ ليه أمثلة \"متسألش كده… / اسأل كده بدلها…\". والممتحنين كتير بيطلبوا منك تقيّم سؤال بيها."
      ],
@@ -2216,37 +2216,37 @@ AR.hci = {
      }
     },
     {
-     "h": "Be Clear (خليك واضح)",
+     "h": "خليك واضح (Be Clear)",
      "pts": [
-      "<b>اكتب labels للـ numeric scales</b>: مش \"1–5\" وخلاص، لكن \"1 = Highly dissatisfied … 5 = Highly satisfied\".",
+      "<b>اكتب labels للـ numeric scales</b>: مش <bdi dir=\"ltr\">\"1–5\"</bdi> وخلاص، لكن:<span class=\"ltr\">\"1 = Highly dissatisfied … 5 = Highly satisfied\"</span>",
       "<b>تجنب الـ ranges اللي بتتداخل</b>، زي:<span class=\"ltr\">0-2, 2-5, 5-10</span>دول متداخلين. واستخدم بدلهم:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>",
       "<b>لو شاكك، زوّد تفاصيل</b>: \"tablet computer (يعني أي كمبيوتر بـ touchscreen و keyboard بيتفك)\".",
-      "<b>حط إطار زمني (timebox) لأسئلة التكرار</b>: بدل \"Never / Rarely / Often…\"، اسأل \"في آخر 7 أيام، اتمرنت كام مرة؟\" والاختيارات: 0 و 1-2 و 3-4 و 5-7 و \"7 أو أكتر\"."
+      "<b>حط إطار زمني (timebox) لأسئلة التكرار</b>: بدل <bdi dir=\"ltr\">\"Never / Rarely / Often…\"</bdi>، اسأل \"في آخر 7 أيام، اتمرنت كام مرة؟\" والاختيارات:<span class=\"ltr\">0, 1-2, 3-4, 5-7</span>أو \"7 أو أكتر\"."
      ],
      "figH": {
       "hc-clear-ranges": "الـ ranges المتداخلة والـ scale من غير labels: جرّب قيمة"
      }
     },
     {
-     "h": "Be Concise (خليك مختصر)",
+     "h": "خليك مختصر (Be Concise)",
      "pts": [
-      "<b>لغة بسيطة</b>: \"What was the overall level of cleanliness that you observed within the car?\" تبقى \"How clean was the car?\""
+      "<b>لغة بسيطة</b>: السؤال:<span class=\"ltr\">\"What was the overall level of cleanliness that you observed within the car?\"</span>تبقى:<span class=\"ltr\">\"How clean was the car?\"</span>"
      ]
     },
     {
-     "h": "Be Specific (خليك محدد)",
+     "h": "خليك محدد (Be Specific)",
      "pts": [
       "<b>تجنب الأفكار الكبيرة أوي</b>: \"How satisfied were you with the interface?\" تبقى \"…with how quickly the interface responded?\" ومعاها follow-up questions.",
-      "<b>تجنب الـ double-barrel questions</b> (حاجتين في سؤال واحد): \"speed and availability of your connection\" المفروض تتقسم لسؤالين.",
-      "<b>تجنب التعارض الداخلي (internal conflict)</b>: \"How satisfied with your food?\" المفروض تتقسم لـ temperature و appearance و flavor."
+      "<b>تجنب الـ double-barrel questions</b> (حاجتين في سؤال واحد): السؤال عن <bdi dir=\"ltr\">\"speed and availability of your connection\"</bdi> المفروض يتقسم لسؤالين.",
+      "<b>تجنب التعارض الداخلي (internal conflict)</b>: السؤال <bdi dir=\"ltr\">\"How satisfied with your food?\"</bdi> المفروض يتقسم لـ temperature و appearance و flavor."
      ]
     },
     {
-     "h": "Be Expressive (خلّي الـ user يعبّر)",
+     "h": "خلّي الـ user يعبّر (Be Expressive)",
      "pts": [
-      "<b>ركّز على رأي الـ user</b>: \"Is our price too high?\" تبقى \"Do you feel our price is too high, too low, or about right?\"",
-      "<b>استخدم ranges بدل yes/no</b>: \"Do you use social media?\" تبقى \"في آخر 7 أيام، قضيت قد إيه على الـ social media؟ 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ ساعات\".",
-      "<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل Dissatisfied/Satisfied.",
+      "<b>ركّز على رأي الـ user</b>: السؤال <bdi dir=\"ltr\">\"Is our price too high?\"</bdi> تبقى:<span class=\"ltr\">\"Do you feel our price is too high, too low, or about right?\"</span>",
+      "<b>استخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi></b>: السؤال <bdi dir=\"ltr\">\"Do you use social media?\"</bdi> تبقى \"في آخر 7 أيام، قضيت قد إيه على الـ social media؟\" والاختيارات بالساعات:<span class=\"ltr\">0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+</span>",
+      "<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل <bdi dir=\"ltr\">Dissatisfied/Satisfied</bdi>.",
       "<b>اسمح بأكتر من اختيار</b> لما ينفع (checkboxes بدل radio buttons)."
      ],
      "figH": {
@@ -2254,16 +2254,16 @@ AR.hci = {
      }
     },
     {
-     "h": "Be Unbiased (خليك محايد)",
+     "h": "خليك محايد (Be Unbiased)",
      "pts": [
       "<b>اسمح للـ users يضيفوا nominal categories</b>: ضيف \"Other: ____\".",
       "<b>سيب الأسئلة المفتوحة مفتوحة</b>: \"Why did you choose our service?\" متجبرهوش على options ثابتة.",
-      "<b>تجنب الـ leading questions</b>: \"Did our brand-new AI-based interface generate better recommendations?\" تبقى \"How satisfied were you with the recommendations?\"",
-      "<b>تجنب الـ loaded questions</b>: \"how much time have you <i>wasted</i> on social media?\" تبقى \"…<i>spent</i>…\"."
+      "<b>تجنب الـ leading questions</b>: السؤال:<span class=\"ltr\">\"Did our brand-new AI-based interface generate better recommendations?\"</span>تبقى:<span class=\"ltr\">\"How satisfied were you with the recommendations?\"</span>",
+      "<b>تجنب الـ loaded questions</b>: السؤال:<span class=\"ltr\">\"how much time have you <i>wasted</i> on social media?\"</span>تبقى <bdi dir=\"ltr\">\"…<i>spent</i>…\"</bdi>."
      ]
     },
     {
-     "h": "Be Usable (خلّي الـ survey سهل الاستخدام)",
+     "h": "خلّي الـ survey سهل الاستخدام (Be Usable)",
      "pts": [
       "• حط <b>progress bar</b>.<br>• خلي <b>أطوال الصفحات ثابتة</b>.<br>• <b>رتّب الأسئلة بشكل منطقي</b>.<br>• <b>نبّه الـ users على الأسئلة اللي متجاوبتش</b>.<br>• و<b>اعمل preview للـ survey بنفسك</b>."
      ],
@@ -2274,10 +2274,10 @@ AR.hci = {
     {
      "h": "تمرين: قيّم أسئلة الـ survey دي",
      "pts": [
-      "السؤال \"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\" ده <b>scale مش واضح / معكوس</b>.",
+      "السؤال ده <b>scale مش واضح / معكوس</b>:<span class=\"ltr\">\"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\"</span>",
       "السؤال \"Why do you like to exercise?\" ده <b>leading question</b> لأنه بيفترض إنك بتحبه.",
       "السؤال \"On a scale of 1 to 6 with 1 meaning 'not at all'…\" فيه <b>عدد options بيتغير</b> (4 ضد 6) و<b>scale معكوس</b> مقارنة بالسؤال اللي قبله.",
-      "السؤال \"Have you listened to an audiobook this year?\" ده <b>سؤال yes/no</b>. استخدم ranges."
+      "السؤال <bdi dir=\"ltr\">\"Have you listened to an audiobook this year?\"</bdi> ده <b>سؤال <bdi dir=\"ltr\">yes/no</bdi></b>. استخدم ranges."
      ],
      "figH": {
       "hc-evaluate-questions": "تمرين: اعرف إيه الغلط في كل سؤال"
@@ -2289,21 +2289,21 @@ AR.hci = {
     "بيسأل عن حاجتين في نفس الوقت، زي \"speed and availability\". قسّمه (Be Specific).",
     "بيزقّ الـ user ناحية إجابة معينة (\"our brand-new AI interface…\"). الحل: صياغة محايدة (Be Unbiased).",
     "فيه كلمة فيها حكم (\"wasted\"). الحل: كلمة محايدة (\"spent\").",
-    "0-2، 3-5، 6-10، 11-19، 20+ (Be Clear).",
-    "اسأل بـ ranges (Be Expressive): \"In the past 7 days, how much time…\".",
+    "الـ ranges الصح <bdi dir=\"ltr\">(Be Clear)</bdi> هي:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>",
+    "اسأل بـ ranges <bdi dir=\"ltr\">(Be Expressive)</bdi>، زي <bdi dir=\"ltr\">\"In the past 7 days, how much time…\"</bdi>.",
     "ضيف option \"Other: ___\" (Be Unbiased).",
-    "Progress bar، أطوال صفحات ثابتة، ترتيب منطقي، تنبيه على اللي متجاوبش، preview بنفسك.",
-    "\"In the past seven days, how many times…\" بدل \"Rarely/Often\" (Be Clear)."
+    "الـ Progress bar، أطوال صفحات ثابتة، ترتيب منطقي، تنبيه على اللي متجاوبش، preview بنفسك.",
+    "اسأل <bdi dir=\"ltr\">\"In the past seven days, how many times…\"</bdi> بدل <bdi dir=\"ltr\">\"Rarely/Often\"</bdi> <bdi dir=\"ltr\">(Be Clear)</bdi>."
    ],
    "qa": [
-    "Be Clear (labels للـ scales، من غير ranges متداخلة، تفاصيل زيادة، timebox للتكرار)؛ Be Concise (لغة بسيطة: \"How clean was the car?\")؛ Be Specific (من غير أفكار كبيرة أوي، من غير double-barrel، من غير internal conflict)؛ Be Expressive (ركّز على الآراء، ranges بدل yes/no، مستويات موافقة، أكتر من اختيار)؛ Be Unbiased (ضيف \"Other\"، سيب الأسئلة المفتوحة مفتوحة، تجنب الكلمات الـ leading والـ loaded)؛ Be Usable (progress bar، صفحات ثابتة، ترتيب منطقي، تنبيه على اللي متجاوبش، preview).",
+    "(1) الـ Be Clear (labels للـ scales، من غير ranges متداخلة، تفاصيل زيادة، timebox للتكرار)<br>(2) الـ Be Concise (لغة بسيطة: <bdi dir=\"ltr\">\"How clean was the car?\"</bdi>)<br>(3) الـ Be Specific (من غير أفكار كبيرة أوي، من غير double-barrel، من غير internal conflict)<br>(4) الـ Be Expressive (ركّز على الآراء، ranges بدل <bdi dir=\"ltr\">yes/no</bdi>، مستويات موافقة، أكتر من اختيار)<br>(5) الـ Be Unbiased (ضيف <bdi dir=\"ltr\">\"Other\"</bdi>، سيب الأسئلة المفتوحة مفتوحة، تجنب الكلمات الـ leading والـ loaded)<br>(6) الـ Be Usable (progress bar، صفحات ثابتة، ترتيب منطقي، تنبيه على اللي متجاوبش، preview).",
     "ده loaded question: كلمة \"wasted\" فيها حكم على اللي بيجاوب. اسأل \"…how much time have you spent on social media?\"",
-    "ده سؤال yes/no بيدّي معلومات قليلة. استخدم ranges: \"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\".",
+    "ده سؤال <bdi dir=\"ltr\">yes/no</bdi> بيدّي معلومات قليلة. استخدم ranges:<span class=\"ltr\">\"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\"</span>",
     "ده double-barrel question: بيسأل عن حاجتين. قسّمه لسؤال عن الـ speed وسؤال عن الـ availability."
    ],
    "quiz": [
     [
-     "الـ Overlapping ranges (زي 0-2، 2-5) دي rule من Be Clear عن اختيارات الإجابة الرقمية. السؤال ده مفيهوش ranges خالص؛ هو بيجمع الـ speed والـ availability في سؤال واحد (L6, Be Specific).",
+     "الـ Overlapping ranges (زي <bdi dir=\"ltr\">0‑2,&nbsp;2‑5</bdi>) دي rule من Be Clear عن اختيارات الإجابة الرقمية. السؤال ده مفيهوش ranges خالص؛ هو بيجمع الـ speed والـ availability في سؤال واحد <bdi dir=\"ltr\">(L6, Be Specific)</bdi>.",
      "صح. بيسأل عن حاجتين في نفس الوقت، فقسّمه.",
      "السماح بـ multiple selections (checkboxes) دي نصيحة من Be Expressive عن الـ answer controls. العيب هنا إنه بيسأل عن حاجتين مرة واحدة، الـ speed والـ availability (L6, Be Specific).",
      "ده عن الـ usability بتاعة الـ survey، مش عن السؤال ده."
@@ -2317,8 +2317,8 @@ AR.hci = {
     [
      "الـ ranges دي بتشترك في حدودها: الـ 2 و5 و10 و20 كل واحد فيهم واقع في range-ين، فاللي إجابته 5 بالظبط عنده اختيارين صح (L6, Be Clear).",
      "صح. كل قيمة تبع range واحد بس.",
-     "الـ 5 والـ 10 كل واحد فيهم ظاهر في range-ين (0-5 و5-10، و5-10 و10+)، يعني الـ ranges متداخلة، وده اللي Be Clear بيقول تبعد عنه (L6, Be Clear).",
-     "الـ Some / Many / A lot دي كلمات مبهمة من غير أرقام، فهي مش ranges أصلاً، وكل واحد بيفهمها بشكل مختلف (L6, Be Clear)."
+     "الـ 5 والـ 10 كل واحد فيهم ظاهر في range-ين:<span class=\"ltr\">(0-5, 5-10), (5-10, 10+)</span>يعني الـ ranges متداخلة، وده اللي Be Clear بيقول تبعد عنه <bdi dir=\"ltr\">(L6, Be Clear)</bdi>.",
+     "الـ <bdi dir=\"ltr\">Some / Many / A lot</bdi> دي كلمات مبهمة من غير أرقام، فهي مش ranges أصلاً، وكل واحد بيفهمها بشكل مختلف <bdi dir=\"ltr\">(L6, Be Clear)</bdi>."
     ],
     [
      "الموضوع عن العدل مع كل الإجابات، مش عن الاختصار.",
@@ -2327,7 +2327,7 @@ AR.hci = {
      "الـ Be Clear بيغطي إنك تعمل label للـ scales، وranges مش متداخلة، وتفاصيل زيادة، والـ timeboxing. إضافة \"Other: ____\" بتخلي الـ users يضيفوا nominal categories، ودي rule من Be Unbiased (L6, Be Unbiased)."
     ],
     [
-     "مش yes/no: كلمة \"why\" بتستدعي إجابة مفتوحة. العيب إنه مفترض إنك بتحب الرياضة، وده بيخليه leading (L6, Exercise).",
+     "مش <bdi dir=\"ltr\">yes/no</bdi>: كلمة \"why\" بتستدعي إجابة مفتوحة. العيب إنه مفترض إنك بتحب الرياضة، وده بيخليه leading <bdi dir=\"ltr\">(L6, Exercise)</bdi>.",
      "صح. بيفترض إن الشخص بيحب التمرين.",
      "الـ Overlapping ranges بتنطبق بس على اختيارات الإجابة الرقمية، والسؤال ده مفيهوش. عيبه إنه مفترض إن الشخص بيحب الرياضة (L6, Exercise).",
      "إنه قصير ده حاجة كويسة (Be Concise). المشكلة إنه مفترض إن اللي بيجاوب بيحب الرياضة، فبيوجّهه (L6, Exercise)."
@@ -2339,44 +2339,44 @@ AR.hci = {
      "تجنب الكلمات الـ loaded زي \"wasted\" ده rule من Be Unbiased، مش Be Usable (L6, Be Unbiased)."
     ],
     [
-     "سؤال yes/no بيدّي معلومات أقل كمان؛ الـ Be Expressive بيقول استخدم ranges بدل yes/no (L6, Be Expressive).",
+     "سؤال <bdi dir=\"ltr\">yes/no</bdi> بيدّي معلومات أقل كمان؛ الـ Be Expressive بيقول استخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi> <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
      "صح. الـ Be Clear بيقول اعمل timebox لأسئلة التكرار: كلمات زي Rarely أو Often معناها بيختلف من شخص للتاني، لكن \"in the past seven days\" مع أعداد بتبقى مظبوطة (L6, Be Clear).",
      "ده بيسأل عن حاجة تانية (الأسباب، مش التكرار)، وكمان \"Why do you…\" مفترض إن الشخص بيتمرن، فبيبقى leading (L6, Be Unbiased).",
-     "الـ scale من 1-5 من غير labels بيكسر rule الـ Be Clear بتاعة \"label numeric scales\"، وكمان لسه مش بيقيس الشخص بيتمرن قد إيه (L6, Be Clear)."
+     "الـ scale من <bdi dir=\"ltr\">1‑5</bdi> من غير labels بيكسر rule الـ Be Clear بتاعة <bdi dir=\"ltr\">\"label numeric scales\"</bdi>، وكمان لسه مش بيقيس الشخص بيتمرن قد إيه <bdi dir=\"ltr\">(L6, Be Clear)</bdi>."
     ],
     [
-     "ده عكس النصايح: الـ surveys لازم تبقى صغيرة على قد ما تقدر والأسئلة مختصرة وواضحة، لأن الـ surveys الطويلة بتضر الـ response rate والـ reliability (L5, Surveys; L6).",
-     "صح. خلي الـ survey صغير على قد ما تقدر، واكتب الأسئلة بوضوح، وابعد عن الـ bias، وخد feedback من المشاركين عن الـ survey نفسه (L5, Surveys; L6, six principles).",
+     "ده عكس النصايح: الـ surveys لازم تبقى صغيرة على قد ما تقدر والأسئلة مختصرة وواضحة، لأن الـ surveys الطويلة بتضر الـ response rate والـ reliability <bdi dir=\"ltr\">(L5, Surveys; L6)</bdi>.",
+     "صح. خلي الـ survey صغير على قد ما تقدر، واكتب الأسئلة بوضوح، وابعد عن الـ bias، وخد feedback من المشاركين عن الـ survey نفسه <bdi dir=\"ltr\">(L5, Surveys; L6, six principles)</bdi>.",
      "الـ User research لازم يتخطط له بدري؛ survey من غير تخطيط بيكسر الـ general tips والـ six question principles (L5, General tips).",
      "الـ methods لازم تتجمع مع بعض، والمحاضرة بتقول سيب الأسئلة المفتوحة مفتوحة، فالأسئلة الـ quantitative بس مش هي المبدأ (L6, Be Unbiased)."
     ],
     [
-     "المبدأ هو \"Be UNbiased\". (الـ answer sheet بتاع 2024/25 حاطط الإجابة True، وده شكله typo في السؤال. جاوب من المحاضرة.)",
+     "المبدأ هو <bdi dir=\"ltr\">\"Be UNbiased\"</bdi>. (الـ answer sheet بتاع <bdi dir=\"ltr\">2024/25</bdi> حاطط الإجابة True، وده شكله typo في السؤال. جاوب من المحاضرة.)",
      "صح حسب المحاضرة: المبدأ هو Be Unbiased."
     ],
     [
      "الكورس بيقول العكس: خلّي الـ survey صغير على قد ما تقدر، لأن الأسئلة الكتير بتأثر على الـ response rate وعلى الـ reliability بتاعة الـ data (L5, Tips for a good survey design).",
-     "صح. أسئلة الـ survey الكويسة لازم تكون <b>Be Clear</b> و<b>Be Concise</b>، وبلغة بسيطة زي \"How clean was the car?\" (L6, How to ask good survey questions).",
+     "صح. أسئلة الـ survey الكويسة لازم تكون <b>Be Clear</b> و<b>Be Concise</b>، وبلغة بسيطة زي <bdi dir=\"ltr\">\"How clean was the car?\"</bdi> <bdi dir=\"ltr\">(L6, How to ask good survey questions)</bdi>.",
      "الكورس بيقول اسأل أقل عدد من الأسئلة يجيب الـ data اللي محتاجها وعارف إنك هتستخدمها، فالأسئلة اللي ملهاش علاقة لازم تتشال (L5, Tips for a good survey design).",
      "ده بيكسر الـ <b>Be Concise</b>: الأسئلة لازم تكون بلغة بسيطة، مش كلام كتير أو technical (L6, Be Concise). والـ survey بيجمع آراء الـ users، مش بيمتحنهم."
     ],
     [
      "الكورس عايز الـ surveys تبقى سريعة في الإجابة: خليها صغيرة على قد ما تقدر، والـ survey المتصمم كويس مش المفروض ياخد وقت طويل (L5, Tips for a good survey design).",
-     "صح. تحت <b>Be Usable</b> الكورس بيقول \"Preview the survey yourself\"، وبيطلب feedback من المشاركين على الـ survey، فالمشاكل اللي ضد قواعد الـ Be Clear والـ Be Specific بتتمسك قبل ما الـ survey ينزل (L6, Be Usable; L5, Tips for a good survey design).",
+     "صح. تحت <b>Be Usable</b> الكورس بيقول <bdi dir=\"ltr\">\"Preview the survey yourself\"</bdi>، وبيطلب feedback من المشاركين على الـ survey، فالمشاكل اللي ضد قواعد الـ Be Clear والـ Be Specific بتتمسك قبل ما الـ survey ينزل <bdi dir=\"ltr\">(L6, Be Usable; L5, Tips for a good survey design)</bdi>.",
      "الـ Surveys معمولة عشان تجمع ردود سريعة من عدد كبير من الـ users؛ واختبار الـ survey مش بيغيّر عدد الردود اللي محتاجها (L5, Surveys).",
      "الكورس بينصح بأسئلة الاختيارات زي الـ ranges ومستويات الموافقة والسماح بأكتر من اختيار (L6, Be Expressive)، فالاختبار مش هدفه إنه يشيلها."
     ],
     [
      "صح. اتنين من الـ 6 principles بتوع أسئلة الـ survey الكويسة هما <b>Be Clear</b> و<b>Be Unbiased</b> (ابعد عن الـ leading والـ loaded questions)، عشان الإجابات تعكس رأي الـ user الحقيقي (L6, How to ask good survey questions).",
-     "ده بيكسر الـ <b>Be Clear</b> والـ <b>Be Concise</b>: الأسئلة لازم تكون بلغة بسيطة، ولو مش متأكد بتزوّد تفاصيل زيادة عشان الـ users يفهموا (L6, Be Clear; Be Concise).",
-     "الكورس مقالش كده. تحت <b>Be Usable</b> بيقول نبّه الـ users على الأسئلة اللي متجاوبتش، ونصايح الـ survey بتاعته عن إن الـ survey يفضل صغير و unbiased (L6, Be Usable; L5, Tips for a good survey design).",
+     "ده بيكسر الـ <b>Be Clear</b> والـ <b>Be Concise</b>: الأسئلة لازم تكون بلغة بسيطة، ولو مش متأكد بتزوّد تفاصيل زيادة عشان الـ users يفهموا <bdi dir=\"ltr\">(L6, Be Clear; Be Concise)</bdi>.",
+     "الكورس مقالش كده. تحت <b>Be Usable</b> بيقول نبّه الـ users على الأسئلة اللي متجاوبتش، ونصايح الـ survey بتاعته عن إن الـ survey يفضل صغير و unbiased <bdi dir=\"ltr\">(L6, Be Usable; L5, Tips for a good survey design)</bdi>.",
      "الكورس بينصح بالـ ranges ومستويات التكرار أو الموافقة والـ multiple selections (L6, Be Expressive). وبيقول بس إن الأسئلة اللي هي open-ended بطبيعتها تفضل open."
     ],
     [
-     "صح. اتنين من الـ 6 principles بتوع أسئلة الـ survey الكويسة هما <b>Be Clear</b> و<b>Be Concise</b> (لغة بسيطة، زي \"How clean was the car?\") (L6, How to ask good survey questions).",
+     "صح. اتنين من الـ 6 principles بتوع أسئلة الـ survey الكويسة هما <b>Be Clear</b> و<b>Be Concise</b> (لغة بسيطة، زي <bdi dir=\"ltr\">\"How clean was the car?\"</bdi>) <bdi dir=\"ltr\">(L6, How to ask good survey questions)</bdi>.",
      "ده بيكسر الـ \"Be Clear\"، اللي بيقولك اعمل labels للـ scales، وابعد عن الـ ranges اللي بتتداخل، وزوّد تفاصيل لو مش متأكد (L6, Be Clear).",
      "ده <b>double-barrel</b> question، والـ \"Be Specific\" بيقولك ابعد عنه وقسّمه لأسئلة منفصلة (L6, Be Specific).",
-     "ده بيكسر الـ \"Be Concise\": \"What was the overall level of cleanliness that you observed within the car?\" لازم تبقى \"How clean was the car?\" (L6, Be Concise)."
+     "ده بيكسر الـ <bdi dir=\"ltr\">\"Be Concise\"</bdi>، لأن السؤال:<span class=\"ltr\">\"What was the overall level of cleanliness that you observed within the car?\"</span>لازم تبقى:<span class=\"ltr\">\"How clean was the car?\"</span>ده في <bdi dir=\"ltr\">(L6, Be Concise)</bdi>."
     ],
     [
      "الـ \"Order your questions logically\" مذكورة تحت <b>Be Usable</b>، وده principle هدفه يخلي الـ survey أسهل في إنك تكمّله، مش إنه يبعّد الناس عنه (L6, Be Usable).",
@@ -2385,27 +2385,27 @@ AR.hci = {
      "الـ principles بتاعة الـ survey في المحاضرة هدفها إجابات واضحة و reliable؛ والترتيب المنطقي ده guideline من الـ \"Be Usable\"، مش حاجة بتضر الدقة (L6, Be Usable)."
     ],
     [
-     "صح. تحت <b>Be Unbiased</b> المحاضرة بتقول ابعد عن الـ leading questions (زي \"Did our brand-new AI-based interface generate better recommendations?\") والـ loaded questions (زي \"wasted\") (L6, Be Unbiased).",
-     "الثبات (consistency) متنصوح بيه مش حاجة نبعد عنها: الـ Be Usable بيقول خلّي أطوال الصفحات ثابتة، والـ exercise بتاع L6 بينتقد الـ scales اللي عدد اختياراتها واتجاهها بيتغير من سؤال للتاني (L6, Be Usable / Exercise).",
+     "صح. تحت <b>Be Unbiased</b> المحاضرة بتقول ابعد عن الـ leading questions، زي:<span class=\"ltr\">\"Did our brand-new AI-based interface generate better recommendations?\"</span>والـ loaded questions (زي <bdi dir=\"ltr\">\"wasted\"</bdi>) <bdi dir=\"ltr\">(L6, Be Unbiased)</bdi>.",
+     "الثبات (consistency) متنصوح بيه مش حاجة نبعد عنها: الـ Be Usable بيقول خلّي أطوال الصفحات ثابتة، والـ exercise بتاع L6 بينتقد الـ scales اللي عدد اختياراتها واتجاهها بيتغير من سؤال للتاني <bdi dir=\"ltr\">(L6, Be Usable / Exercise)</bdi>.",
      "ترتيب الأسئلة بشكل منطقي واحد من نصايح الـ Be Usable، فالمفروض يتعمل مش نبعد عنه (L6, Be Usable).",
      "الصياغة المحايدة (neutral wording) هي الحل اللي المحاضرة بتديه للـ loaded والـ leading questions، زي \"spent\" بدل \"wasted\" (L6, Be Unbiased)."
     ],
     [
-     "المحاضرة بتعتبر أسئلة الـ yes/no مشكلة: تحت <b>Be Expressive</b> بتقول استخدم ranges بدل yes/no، لأن إجابة yes/no بتدي معلومات قليلة (L6, Be Expressive).",
-     "صح. أسئلة الـ yes/no بتدي معلومات قليلة. مبدأ الـ <b>Be Expressive</b> بيقول استخدم ranges بدالها، مثلاً بدل \"Do you use social media?\" تقول \"In the past seven days, how much time have you spent on social media?\" (L6, Be Expressive)."
+     "المحاضرة بتعتبر أسئلة الـ <bdi dir=\"ltr\">yes/no</bdi> مشكلة: تحت <b>Be Expressive</b> بتقول استخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi>، لأن إجابة <bdi dir=\"ltr\">yes/no</bdi> بتدي معلومات قليلة <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
+     "صح. أسئلة الـ <bdi dir=\"ltr\">yes/no</bdi> بتدي معلومات قليلة. مبدأ الـ <b>Be Expressive</b> بيقول استخدم ranges بدالها، مثلاً بدل <bdi dir=\"ltr\">\"Do you use social media?\"</bdi> تقول:<span class=\"ltr\">\"In the past seven days, how much time have you spent on social media?\"</span>ده في <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>."
     ],
     [
-     "الـ Qualitative research بيركّز على ملاحظات عن <b>ليه وإزاي</b> الحاجات بتحصل (L5, Types of user research based on What). إجابة الـ yes/no مبتشرحش لا ده ولا ده، والمحاضرة بتقول استبدل أسئلة الـ yes/no بـ ranges (L6, Be Expressive).",
-     "صح. الـ Qualitative data عن <b>ليه وإزاي</b> الحاجات بتحصل، وغالباً بتيجي من interviews (L5). أسئلة الـ yes/no بتدي معلومات قليلة، فالمحاضرة بتقول استخدم ranges بدالها، وسيب الأسئلة الـ open-ended زي \"Why did you choose our service?\" مفتوحة (L6, Be Expressive; Be Unbiased)."
+     "الـ Qualitative research بيركّز على ملاحظات عن <b>ليه وإزاي</b> الحاجات بتحصل <bdi dir=\"ltr\">(L5, Types of user research based on What)</bdi>. إجابة الـ <bdi dir=\"ltr\">yes/no</bdi> مبتشرحش لا ده ولا ده، والمحاضرة بتقول استبدل أسئلة الـ <bdi dir=\"ltr\">yes/no</bdi> بـ ranges <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
+     "صح. الـ Qualitative data عن <b>ليه وإزاي</b> الحاجات بتحصل، وغالباً بتيجي من interviews <bdi dir=\"ltr\">(L5)</bdi>. أسئلة الـ <bdi dir=\"ltr\">yes/no</bdi> بتدي معلومات قليلة، فالمحاضرة بتقول استخدم ranges بدالها، وسيب الأسئلة الـ open-ended زي <bdi dir=\"ltr\">\"Why did you choose our service?\"</bdi> مفتوحة <bdi dir=\"ltr\">(L6, Be Expressive; Be Unbiased)</bdi>."
     ],
     [
-     "الكورس مش بيطلب أسئلة yes/no خالص. تحت <b>Be Expressive</b> بيقول استخدم ranges بدل yes/no، وبيدي \"Have you listened to an audiobook this year?\" كمثال لسؤال yes/no ضعيف تستبدله بـ ranges (L6, Be Expressive; Exercise).",
-     "صح. المحاضرة عمرها ما قالت إن الـ surveys لازم دايماً تخلط معاها أسئلة yes/no؛ هي بتقولك <b>استبدل أسئلة الـ yes/no بـ ranges</b> (Be Expressive) وخلي الـ survey صغير على قد ما تقدر، واسأل بس اللي محتاجه (L6, Be Expressive; L5, Tips for a good survey design)."
+     "الكورس مش بيطلب أسئلة <bdi dir=\"ltr\">yes/no</bdi> خالص. تحت <b>Be Expressive</b> بيقول استخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi>، وبيدي <bdi dir=\"ltr\">\"Have you listened to an audiobook this year?\"</bdi> كمثال لسؤال <bdi dir=\"ltr\">yes/no</bdi> ضعيف تستبدله بـ ranges <bdi dir=\"ltr\">(L6, Be Expressive; Exercise)</bdi>.",
+     "صح. المحاضرة عمرها ما قالت إن الـ surveys لازم دايماً تخلط معاها أسئلة <bdi dir=\"ltr\">yes/no</bdi>؛ هي بتقولك <b>استبدل أسئلة الـ <bdi dir=\"ltr\">yes/no</bdi> بـ ranges</b> (Be Expressive) وخلي الـ survey صغير على قد ما تقدر، واسأل بس اللي محتاجه <bdi dir=\"ltr\">(L6, Be Expressive; L5, Tips for a good survey design)</bdi>."
     ]
    ],
    "extra": [
     [
-     "صح. الـ Scales لازم يبقى ليها labels، زي \"1 = Highly dissatisfied … 5 = Highly satisfied\".",
+     "صح. الـ Scales لازم يبقى ليها labels، زي:<span class=\"ltr\">\"1 = Highly dissatisfied … 5 = Highly satisfied\"</span>",
      "السؤال قصير أصلاً؛ المشكلة إن الـ scale ملوش labels.",
      "مفيش كلمة loaded فيها مشاعر في السؤال.",
      "الـ progress bar عن الـ survey كله، مش عن scale واحد من غير labels."
@@ -2418,9 +2418,9 @@ AR.hci = {
     ],
     [
      "مفيهوش كلمة loaded زي \"wasted\".",
-     "الـ Overlapping ranges محتاجة اختيارات رقمية زي 0-2، 2-5؛ والسؤال ده مفيهوش. عيبه إنه بيخلط الـ temperature والشكل والطعم (L6, Be Specific).",
+     "الـ Overlapping ranges محتاجة اختيارات رقمية زي <bdi dir=\"ltr\">0‑2,&nbsp;2‑5</bdi>؛ والسؤال ده مفيهوش. عيبه إنه بيخلط الـ temperature والشكل والطعم <bdi dir=\"ltr\">(L6, Be Specific)</bdi>.",
      "صح. ده مثال \"avoid internal conflict\" تحت Be Specific: ممكن حد يحب الطعم ومش عاجباه الحرارة.",
-     "بيسأل عن مستوى رضا، مش yes/no."
+     "بيسأل عن مستوى رضا، مش <bdi dir=\"ltr\">yes/no</bdi>."
     ],
     [
      "الـ Radio buttons بتسمح باختيار واحد بس.",
@@ -2435,13 +2435,13 @@ AR.hci = {
     [
      "صح. ده مثال المحاضرة على التركيز على رأي الـ user.",
      "الترتيب عن تسلسل الأسئلة، مش عن الصياغة دي.",
-     "الـ Overlapping ranges ليها علاقة باختيارات الإجابة الرقمية، والسؤال ده مفيهوش. إعادة الصياغة بتضيف \"too low / about right\" عشان تلقط رأي الـ user (L6, Be Expressive).",
+     "الـ Overlapping ranges ليها علاقة باختيارات الإجابة الرقمية، والسؤال ده مفيهوش. إعادة الصياغة بتضيف <bdi dir=\"ltr\">\"too low / about right\"</bdi> عشان تلقط رأي الـ user <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
      "النسخة الجديدة أطول أصلاً؛ الهدف إنك تاخد رأي الـ user."
     ],
     [
      "مش بيفترض إجابة ولا بيمدح حاجة.",
-     "صح. تمرين المحاضرة بيعتبره yes/no؛ والـ ranges (زي في \"Be Expressive\") بتدي إجابات أغنى.",
-     "الـ loaded question فيه كلمة حكم زي \"wasted\"؛ السؤال ده محايد. عيبه هو شكل الـ yes/no (L6, Exercise).",
+     "صح. تمرين المحاضرة بيعتبره <bdi dir=\"ltr\">yes/no</bdi>؛ والـ ranges (زي في <bdi dir=\"ltr\">\"Be Expressive\"</bdi>) بتدي إجابات أغنى.",
+     "الـ loaded question فيه كلمة حكم زي <bdi dir=\"ltr\">\"wasted\"</bdi>؛ السؤال ده محايد. عيبه هو شكل الـ <bdi dir=\"ltr\">yes/no</bdi> <bdi dir=\"ltr\">(L6, Exercise)</bdi>.",
      "مفيهوش ranges خالص، وده هو المشكلة الحقيقية."
     ],
     [
@@ -2487,7 +2487,7 @@ AR.hci = {
      }
     },
     {
-     "h": "Interview لأفراد ضد groups",
+     "h": "الـ Interview لأفراد ضد groups",
      "figH": {
       "hc-indiv-group": "الـ interview مع أفراد أو مع groups: كل واحد بيدّيك إيه"
      }
@@ -2508,8 +2508,8 @@ AR.hci = {
     {
      "h": "الـ Design: أقدر أعمله؟",
      "pts": [
-      "بيقول Scott Klemmer: \"Designing great user interfaces requires enormous creativity and a lot of hard work…\" يعني الـ interfaces العظيمة محتاجة إبداع ضخم وشغل كتير، بس الـ interfaces الكويسة سهلة لو عارف الـ methods والـ techniques والـ principles الأساسية.",
-      "بيقول Joyner: \"design is very hard\"، يعني الـ design صعب جداً.",
+      "بيقول Scott Klemmer:<span class=\"ltr\">\"Designing great user interfaces requires enormous creativity and a lot of hard work…\"</span>يعني الـ interfaces العظيمة محتاجة إبداع ضخم وشغل كتير، بس الـ interfaces الكويسة سهلة لو عارف الـ methods والـ techniques والـ principles الأساسية.",
+      "بيقول Joyner إن <bdi dir=\"ltr\">\"design is very hard\"</bdi>، يعني الـ design صعب جداً.",
       "الـ Designers بيقولوا: \"إحنا مش فنانين؛ وفي أغلب الحالات مش موهوبين في الرسم كمان.\" الـ Design مش بيطلّع لوحات تتعلق على الحيطة.",
       "الموهبة والإبداع ميزة. متقفلش الإبداع؛ امشي على النصايح وتجنب أكبر أخطاء الـ design."
      ]
@@ -2523,7 +2523,7 @@ AR.hci = {
     "إجابات مش دقيقة عن حاجات حصلت زمان.",
     "الناس بتدّي إجابات مثالية أكتر من الواقع.",
     "وقت أكتر لكل شخص، logistics أسهل، privacy أكتر.",
-    "feedback أكتر؛ والنقاش بيطلّع الـ assumptions على السطح."
+    "الـ feedback أكتر؛ والنقاش بيطلّع الـ assumptions على السطح."
    ],
    "qa": [
     "خطط من بدري وجهّز الأسئلة قبل الـ interview. وأثناءه، اسمع كويس عشان الـ user يتكلم أغلب الوقت، واكتب notes (واحد يسأل وواحد يكتب؛ الـ audio مش كفاية؛ اكتب المشاعر وردود الفعل). وسيب شوية وقت بين الـ interviews.",
@@ -2608,8 +2608,8 @@ AR.hci = {
      "صح. دي المشاكل المذكورة للـ group interviews."
     ],
     [
-     "Joyner بيقول العكس: \"design is very hard\". اللي بيضيف إن الـ interfaces الكويسة نسبياً سهلة لو تعرف الـ methods والـ principles الأساسية هو Klemmer (L7, Design: can I?).",
-     "صح. جملة Joyner هي \"design is very hard\". وKlemmer بيضيف إن الـ UIs العظيمة محتاجة creativity وشغل جامد، أما الكويسة نسبياً فسهلة بالـ basic methods (L7, Design: can I?)."
+     "الـ Joyner بيقول العكس: <bdi dir=\"ltr\">\"design is very hard\"</bdi>. اللي بيضيف إن الـ interfaces الكويسة نسبياً سهلة لو تعرف الـ methods والـ principles الأساسية هو Klemmer <bdi dir=\"ltr\">(L7, Design: can I?)</bdi>.",
+     "صح. جملة Joyner هي <bdi dir=\"ltr\">\"design is very hard\"</bdi>. وKlemmer بيضيف إن الـ UIs العظيمة محتاجة creativity وشغل جامد، أما الكويسة نسبياً فسهلة بالـ basic methods <bdi dir=\"ltr\">(L7, Design: can I?)</bdi>."
     ],
     [
      "صح. \"Listen well\": الـ user المفروض يتكلم أغلب الوقت.",
@@ -2658,11 +2658,11 @@ AR.hci = {
      "h": "الـ Prototyping",
      "pts": [
       "أغلب الناس فاكرة إن الـ prototype نسخة سريعة أو صغيرة من الحاجة الحقيقية. والفهم ده مش مفيد.",
-      "بالنسبة للـ designers: <b>\"Rapidly creating an approximation of a design so that you can quickly get feedback.\"</b> يعني تعمل بسرعة نسخة تقريبية من الـ design عشان تاخد feedback بسرعة.",
-      "بيقول Klemmer: <b>\"A prototype is not about the artifact, it's about feedback and iteration.\"</b> يعني الـ prototype مش عن الحاجة نفسها، هو عن الـ feedback والـ iteration.",
+      "بالنسبة للـ designers:<span class=\"ltr\"><b>\"Rapidly creating an approximation of a design so that you can quickly get feedback.\"</b></span>يعني تعمل بسرعة نسخة تقريبية من الـ design عشان تاخد feedback بسرعة.",
+      "بيقول Klemmer:<span class=\"ltr\"><b>\"A prototype is not about the artifact, it's about feedback and iteration.\"</b></span>يعني الـ prototype مش عن الحاجة نفسها، هو عن الـ feedback والـ iteration.",
       "بيقول Joyner إن الـ design هو process iterative فيه brainstorming وتجميع وسيب وتعديل وتحسين للأفكار، وده محتاج كذا فكرة تبدأ بيهم.",
       "الـ prototype الكويس بيخليك تاخد <b>feedback مفيد (constructive)</b> وتعمل iteration. ومش لازم يشبه المنتج النهائي.",
-      "الـ Prototypes اللي مش بتدّيك معرفة جديدة بتضيّع الـ design process. وبيقول Klemmer: <b>\"prototypes are questions, ask a lot of them.\"</b> يعني الـ prototypes أسئلة، اسأل كتير منها."
+      "الـ Prototypes اللي مش بتدّيك معرفة جديدة بتضيّع الـ design process. وبيقول Klemmer:<span class=\"ltr\"><b>\"prototypes are questions, ask a lot of them.\"</b></span>يعني الـ prototypes أسئلة، اسأل كتير منها."
      ],
      "figH": {
       "hc-prototype-loop": "الـ prototyping: نسخة تقريبية سريعة عشان الـ feedback والـ iteration"
@@ -2705,7 +2705,7 @@ AR.hci = {
     [
      "الـ Prototypes عكس الـ final products: هي approximations للـ design بتتعمل بسرعة عشان تجيب feedback سريع (L8, Prototyping).",
      "صح. \"Prototypes are questions, ask a lot of them.\"",
-     "Klemmer بيقول \"a prototype is not about the artifact, it's about feedback and iteration\"، فهي مش حاجات للعرض والتفاخر (L8, Prototyping).",
+     "الـ Klemmer بيقول:<span class=\"ltr\">\"a prototype is not about the artifact, it's about feedback and iteration\"</span>فهي مش حاجات للعرض والتفاخر <bdi dir=\"ltr\">(L8, Prototyping)</bdi>.",
      "لو شفت الـ prototype كمجرد mock-up بسيط هتفوّت الهدف منه، لأن Klemmer بيعامل الـ prototypes كأسئلة بتجمع feedback (L8, Prototyping)."
     ],
     [
@@ -2715,8 +2715,8 @@ AR.hci = {
     [
      "المحاضرة بتقول مش لازم يشبه المنتج النهائي.",
      "صح. الـ prototype الكويس بيسمح بـ feedback مفيد وconstructive وبالـ iteration؛ ومش لازم يشبه الـ final product (L8, Prototyping).",
-     "\"A quick or small version of the real thing\" ده الفهم الشائع اللي المحاضرة بتقول عليه مش مفيد. الـ prototype هو approximation بيتعمل عشان تجيب feedback (L8, Prototyping).",
-     "الـ Polish مش هو الهدف: الـ prototype مش لازم يشبه الـ final product، واللي شكلها مخلّص بتجيب feedback constructive أقل من الـ sketches (L8; L9, Lo-fi)."
+     "الجملة <bdi dir=\"ltr\">\"A quick or small version of the real thing\"</bdi> ده الفهم الشائع اللي المحاضرة بتقول عليه مش مفيد. الـ prototype هو approximation بيتعمل عشان تجيب feedback <bdi dir=\"ltr\">(L8, Prototyping)</bdi>.",
+     "الـ Polish مش هو الهدف: الـ prototype مش لازم يشبه الـ final product، واللي شكلها مخلّص بتجيب feedback constructive أقل من الـ sketches <bdi dir=\"ltr\">(L8; L9, Lo-fi)</bdi>."
     ],
     [
      "إنك تثبت على واحد ده تاني أكبر غلطة.",
@@ -2725,24 +2725,24 @@ AR.hci = {
      "الـ Design alternatives مرحلة كاملة في الـ cycle بتاع Joyner، ولو نطّيتها يبقى ثبّت على فكرة واحدة بدري، ودي تاني أكبر غلطة (L8, Design alternatives)."
     ],
     [
-     "ده الفهم الشائع بس اللي مش مفيد واللي المحاضرة بترفضه: \"a quick / small version of the real thing\" (L8, Prototyping).",
-     "صح. بالنسبة للـ designers، الـ prototyping هو \"rapidly creating an approximation of a design so that you can quickly <b>get feedback</b>\"، وKlemmer بيقول إن الـ prototype عن الـ <b>feedback والـ iteration</b> (L8, Prototyping).",
-     "الـ Prototypes هي الطريقة اللي بتاخد بيها feedback من الـ users، مش بديل عنه؛ الـ tactical research \"requires user feedback through use of prototype\" (L2, Types of user research; L8, Prototyping).",
+     "ده الفهم الشائع بس اللي مش مفيد واللي المحاضرة بترفضه:<span class=\"ltr\">\"a quick / small version of the real thing\"</span>ده في <bdi dir=\"ltr\">(L8, Prototyping)</bdi>.",
+     "صح. بالنسبة للـ designers، الـ prototyping هو:<span class=\"ltr\">\"rapidly creating an approximation of a design so that you can quickly <b>get feedback</b>\"</span>والـ Klemmer بيقول إن الـ prototype عن الـ <b>feedback والـ iteration</b> <bdi dir=\"ltr\">(L8, Prototyping)</bdi>.",
+     "الـ Prototypes هي الطريقة اللي بتاخد بيها feedback من الـ users، مش بديل عنه؛ الـ tactical research:<span class=\"ltr\">\"requires user feedback through use of prototype\"</span>ده في <bdi dir=\"ltr\">(L2, Types of user research; L8, Prototyping)</bdi>.",
      "المحاضرة بتوصف الـ design كـ iterative process فيه brainstorming وإنك تجمع أفكار وتسيب أفكار وتراجعها وتحسّنها، فالـ prototype عشان تعمل iteration، مش عشان تقفل الـ design مرة واحدة (L8, Prototyping)."
     ],
     [
      "ده عكس النصيحة: إنك تتحبس في الـ interface الحالي غلطة شائعة جداً، فالمفروض تبعد نفسك عن الحلول الموجودة (L8, Design alternatives).",
-     "صح. نصيحة المحاضرة هي \"try to <b>distance yourself from the existing solutions</b>, at least initially during the brainstorming sessions\" (L8, Design alternatives).",
-     "إنك تثبت على فكرة design واحدة بدري أوي دي تاني أكبر غلطة عند Joyner؛ الـ brainstorming هدفه إنه يطلّع أفكار كتير (L8, Biggest mistakes; L9, Brainstorming).",
-     "الـ design process معتمد على الـ feedback: الـ prototypes موجودة عشان تاخد feedback وتعمل iteration، وفي الـ team sessions الناس بتشارك أفكار وتزوّد عليها (L8, Prototyping; L9, Brainstorming). مفيش حاجة بتقول ابعد عن الـ feedback."
+     "صح. نصيحة المحاضرة هي:<span class=\"ltr\">\"try to <b>distance yourself from the existing solutions</b>, at least initially during the brainstorming sessions\"</span>ده في <bdi dir=\"ltr\">(L8, Design alternatives)</bdi>.",
+     "إنك تثبت على فكرة design واحدة بدري أوي دي تاني أكبر غلطة عند Joyner؛ الـ brainstorming هدفه إنه يطلّع أفكار كتير <bdi dir=\"ltr\">(L8, Biggest mistakes; L9, Brainstorming)</bdi>.",
+     "الـ design process معتمد على الـ feedback: الـ prototypes موجودة عشان تاخد feedback وتعمل iteration، وفي الـ team sessions الناس بتشارك أفكار وتزوّد عليها <bdi dir=\"ltr\">(L8, Prototyping; L9, Brainstorming)</bdi>. مفيش حاجة بتقول ابعد عن الـ feedback."
     ],
     [
      "صح. حسب Joyner، <b>أكبر غلطة</b> إنك تنط على طول لتصميم interface من غير ما تفهم الـ users أو تفهم الـ task (L8, Biggest mistakes a designer can make).",
      "دي بالظبط أكبر غلطة عند Joyner. إنك تثبت على فكرة design واحدة بدري أوي دي <b>تاني</b> أكبر غلطة عنده، مش الأكبر (L8, Biggest mistakes a designer can make)."
     ],
     [
-     "Joyner بيسمي ده <b>تاني أكبر غلطة</b>: إنك تثبت على فكرة design واحدة أو نوع واحد من أفكار الـ design بدري أوي (L8, Biggest mistakes a designer can make).",
-     "صح. إنك تثبت على فكرة design واحدة بدري أوي دي <b>تاني أكبر غلطة</b> عند Joyner. بدل كده، استكشف مجموعة أوسع من الـ design alternatives، على قد ما تقدر (L8, Biggest mistakes; Design alternatives)."
+     "الـ Joyner بيسمي ده <b>تاني أكبر غلطة</b>: إنك تثبت على فكرة design واحدة أو نوع واحد من أفكار الـ design بدري أوي <bdi dir=\"ltr\">(L8, Biggest mistakes a designer can make)</bdi>.",
+     "صح. إنك تثبت على فكرة design واحدة بدري أوي دي <b>تاني أكبر غلطة</b> عند Joyner. بدل كده، استكشف مجموعة أوسع من الـ design alternatives، على قد ما تقدر <bdi dir=\"ltr\">(L8, Biggest mistakes; Design alternatives)</bdi>."
     ],
     [
      "صح. المحاضرة بتقول: عشان توصل لـ design كويس، <b>استكشف مجموعة أوسع من الـ design alternatives الممكنة</b> (L8, Design alternatives).",
@@ -2753,7 +2753,7 @@ AR.hci = {
      "المحاضرة بتسمي التركيز الجامد على alternative واحد من الأول غلطة كبيرة، وبتقول إن الغلطة دي <b>منتشرة جداً</b> لما تحسّن system موجود (L8, Design alternatives)."
     ],
     [
-     "صح. نصيحة المحاضرة إنك \"try to <b>distance yourself from the existing solutions</b>, at least initially during the brainstorming sessions\"، عشان متبقاش محبوس في الـ interface الحالي (L8, Design alternatives).",
+     "صح. نصيحة المحاضرة إنك:<span class=\"ltr\">\"try to <b>distance yourself from the existing solutions</b>, at least initially during the brainstorming sessions\"</span>عشان متبقاش محبوس في الـ interface الحالي <bdi dir=\"ltr\">(L8, Design alternatives)</bdi>.",
      "الـ slide بتقول ده كنصيحة: ابعد نفسك عن الحلول الموجودة، على الأقل أثناء الـ brainstorming، لأن إنك تبقى محبوس في الـ interface الحالي غلطة منتشرة جداً (L8, Design alternatives)."
     ],
     [
@@ -2770,14 +2770,14 @@ AR.hci = {
     ],
     [
      "المحاضرة بتقول إن أغلب الناس فاكرين الـ prototype نسخة سريعة أو صغيرة من الحاجة الحقيقية، بس <b>ده مش فهم مفيد</b>. بالنسبة للـ designers، هو إنك تعمل بسرعة approximation للـ design عشان تاخد feedback بسرعة (L8, Prototyping).",
-     "صح. الـ slide بتقول إن نظرة \"quick / small version of the real thing\" <b>مش فهم مفيد</b>. بالنسبة للـ designers، الـ prototyping هو \"rapidly creating an approximation of a design so that you can quickly get feedback\" (L8, Prototyping)."
+     "صح. الـ slide بتقول إن النظرة دي:<span class=\"ltr\">\"quick / small version of the real thing\"</span><b>مش فهم مفيد</b>. بالنسبة للـ designers، الـ prototyping هو:<span class=\"ltr\">\"rapidly creating an approximation of a design so that you can quickly get feedback\"</span>ده في <bdi dir=\"ltr\">(L8, Prototyping)</bdi>."
     ],
     [
      "صح. بيقول Klemmer:<span class=\"ltr\">\"prototype is not about the artifact, it's about <b>feedback and iteration</b>\"</span>يعني الـ prototype الكويس هو اللي بيخليك تاخد feedback مفيد وتعمل iteration على الـ design بتاعك (L8, Prototyping).",
      "المحاضرة بتقول إن قيمة الـ prototype هي بالظبط الـ feedback والـ iteration (Klemmer)، وبتعرّف الـ prototyping بإنه إنك تاخد feedback بسرعة (L8, Prototyping)."
     ],
     [
-     "الـ slide بتقول إن الـ prototype الكويس هو اللي بيخليك تاخد feedback مفيد وتعمل iteration، <b>\"not a one that resembles your final product\"</b> (L8, Prototyping).",
+     "الـ slide بتقول إن الـ prototype الكويس هو اللي بيخليك تاخد feedback مفيد وتعمل iteration، وبتكمّل:<span class=\"ltr\"><b>\"not a one that resembles your final product\"</b></span>ده في <bdi dir=\"ltr\">(L8, Prototyping)</bdi>.",
      "صح. الـ prototype الكويس هو اللي بيخليك تاخد feedback مفيد وتعمل iteration على الـ design بتاعك، <b>مش اللي شبه الـ final product</b> (L8, Prototyping)."
     ],
     [
@@ -2785,13 +2785,13 @@ AR.hci = {
      "المحاضرة بتقول إن هدف الـ prototype إنك تاخد feedback مفيد و constructive؛ والـ prototypes اللي مبتديش أي معرفة جديدة بتضيّع الـ design process (L8, Prototyping)."
     ],
     [
-     "صح. بيقول Klemmer:<span class=\"ltr\"><b>\"prototypes are questions, ask a lot of them\"</b></span> (L8, Prototyping).",
+     "صح. بيقول Klemmer:<span class=\"ltr\"><b>\"prototypes are questions, ask a lot of them\"</b></span>ده في <bdi dir=\"ltr\">(L8, Prototyping)</bdi>.",
      "دي نصيحة Klemmer نفسه: الـ prototypes أسئلة، ولازم تسأل كتير منها (L8, Prototyping)."
     ]
    ],
    "extra": [
     [
-     "Joyner عايز alternatives أكتر ما تقدر؛ الفريق عمل قليل أوي.",
+     "الـ Joyner عايز alternatives أكتر ما تقدر؛ الفريق عمل قليل أوي.",
      "إنك تبعد نفسك دي النصيحة، مش الغلطة.",
      "صح. الـ 3 variations من نفس الـ layout دول نوع واحد من الأفكار، واتختار بدري أوي.",
      "السيناريو بيقول إنهم عملوا user research الأول؛ ودي أكبر غلطة، مش دي."
@@ -2816,12 +2816,12 @@ AR.hci = {
      "المحاضرة بتقول إن الفهم المنتشر ده مش مفيد.",
      "صح. ده التعريف بالنسبة للـ designers.",
      "الـ prototype نسخة تقريبية عشان الـ feedback، مش المنتج النهائي.",
-     "Klemmer بيقول الـ prototype مش عن الـ artifact."
+     "الـ Klemmer بيقول الـ prototype مش عن الـ artifact."
     ],
     [
      "الـ Polish ده عن الـ artifact، واللي Klemmer بيقول إنه مش المقصود.",
      "الجملة ملهاش علاقة بالـ code.",
-     "صح. \"A prototype is not about the artifact, it's about feedback and iteration.\"",
+     "صح. الجملة:<span class=\"ltr\">\"A prototype is not about the artifact, it's about feedback and iteration.\"</span>",
      "الـ prototype الكويس مش لازم يشبه المنتج النهائي."
     ],
     [
@@ -2832,7 +2832,7 @@ AR.hci = {
      "الـ prototype الكويس مش لازم يشبه المنتج النهائي.",
      "الـ prototype مش عن الـ artifact.",
      "المفروض تستكشف alternatives أكتر ما تقدر.",
-     "صح. الـ Prototypes اللي مبتدّيش معرفة جديدة بتضيّع الـ process؛ \"prototypes are questions, ask a lot of them.\""
+     "صح. الـ Prototypes اللي مبتدّيش معرفة جديدة بتضيّع الـ process، وزي ما اتقال:<span class=\"ltr\">\"prototypes are questions, ask a lot of them.\"</span>"
     ],
     [
      "صح. الـ Joyner بيقول الـ process ده محتاج كذا فكرة تبدأ بيهم.",
@@ -2952,7 +2952,7 @@ AR.hci = {
     "الـ Handoff: الـ design بيخلص ويتسلّم للـ development، واحد ورا التاني. الـ Handshake: الـ design والـ development ماشيين بالتوازي مع sync points كتير.",
     "ابدأ فردي. اكتب أفكار أكتر ما تقدر، كل واحدة كلمتين أو جملة. خلي هدفك 20. متقيّمش ومتستبعدش أفكار. خد breaks أو اعمل كذا session. والـ team sessions للمشاركة وإضافة أفكار، مش لتضييق الاختيارات.",
     "الـ text كخطوط أفقية أو placeholder text؛ الصور كمستطيلات أو دواير فيها X؛ الـ calls to action كمستطيلات أو دواير؛ و text annotations مظبوطة.",
-    "الـ Prototypes بتستخدم كطريقة <b>للتواصل مع الـ stakeholders</b>. وبتخدم 4 audiences مختلفين: (1) Colleagues<br>(2) Clients<br>(3) Users<br>(4) Yourself.",
+    "الـ Prototypes بتستخدم كطريقة <b>للتواصل مع الـ stakeholders</b>. وبتخدم 4 audiences مختلفين:<br>(1) الـ Colleagues<br>(2) الـ Clients<br>(3) الـ Users<br>(4) الـ Yourself.",
     "(1) ابدأ بـ <b>pen and paper</b>.<br>(2) أول هدف: <b>إنك توصل لـ design، مش إنك تعرض design</b>.<br>(3) لكل شاشة، ارسم wireframe versions بديلة (5 versions على الأقل).<br>(4) عدّي على كام iteration بـ feedback لو متاح.<br>(5) تاني هدف: الـ wireframe بينقل الفكرة من دماغك للورق بأسرع وأسهل طريقة، فمتركزش في المرحلة دي على تفاصيل بتبطّأ الـ process، زي الخطوط المستقيمة والـ spacing والـ alignment.<br>(6) استخدم الـ tools بعد الـ iterations الأولانية بتاعة الـ paper wireframes. والـ tools المشهورة هي:<span class=\"ltr\">Figma, Adobe XD, Sketch, Balsamiq, Pencil</span>"
    ],
    "quiz": [
@@ -3016,29 +3016,29 @@ AR.hci = {
     ],
     [
      "الـ Wireframes مش فن: هي من غير ألوان ولا font styles عن قصد عشان التركيز يفضل على الـ structure (L9, Wireframes).",
-     "صح. \"A good wireframe is not about artistic drawing, it is all about <b>organizing and communicating information clearly</b> to colleagues\" (L9, Wireframes are not art).",
+     "صح. المحاضرة بتقول:<span class=\"ltr\">\"A good wireframe is not about artistic drawing, it is all about <b>organizing and communicating information clearly</b> to colleagues\"</span>ده في <bdi dir=\"ltr\">(L9, Wireframes are not art)</bdi>.",
      "الـ wireframe بيحدد الـ structure الأساسي للصفحة <b>قبل</b> ما الحاجات الـ visual زي الألوان تتضاف، وهو من غير ألوان عن قصد (L9, Wireframes).",
      "الـ Wireframes بتوجّه الـ stakeholders والـ users إنهم يدّوا feedback على المستوى الصح، فهي بتجيب feedback مش بتحل محله (L9, Wireframes are not art)."
     ],
     [
-     "الـ Tools زي Figma و Adobe XD و Sketch و Balsamiq و Pencil بييجوا بعدين: \"make use of tools after initial iterations of paper wireframes\" (L9, Wireframing process).",
+     "الـ Tools زي Figma و Adobe XD و Sketch و Balsamiq و Pencil بييجوا بعدين:<span class=\"ltr\">\"make use of tools after initial iterations of paper wireframes\"</span>ده في <bdi dir=\"ltr\">(L9, Wireframing process)</bdi>.",
      "صح. الـ process بيبدأ \"with <b>pen and paper</b>\"، وإنت بترسم نسخ بديلة (alternative versions) لكل شاشة (5 على الأقل) (L9, Wireframing process).",
      "أول هدف هو \"reaching a design, not showing a design\"؛ إنت بتعمل iteration على كذا نسخة، فمفيش حاجة final في الأول (L9, Wireframing process).",
-     "الـ Feedback بييجي بعد ما يبقى عندك sketches: إنت \"go through some iterations with feedback if available\" (L9, Wireframing process). الـ Testing مش أول خطوة في الـ wireframing."
+     "الـ Feedback بييجي بعد ما يبقى عندك sketches: إنت <bdi dir=\"ltr\">\"go through some iterations with feedback if available\"</bdi> <bdi dir=\"ltr\">(L9, Wireframing process)</bdi>. الـ Testing مش أول خطوة في الـ wireframing."
     ],
     [
-     "الـ Word ده word processor ومش موجود في لستة أدوات الـ wireframing اللي في المحاضرة:<span class=\"ltr\">Figma, Adobe XD, Sketch, Balsamiq, Pencil</span> (L9, Wireframing process).",
+     "الـ Word ده word processor ومش موجود في لستة أدوات الـ wireframing اللي في المحاضرة، وهي:<span class=\"ltr\">Figma, Adobe XD, Sketch, Balsamiq, Pencil</span>ده في <bdi dir=\"ltr\">(L9, Wireframing process)</bdi>.",
      "الـ Photoshop مش في لستة المحاضرة؛ أداة Adobe المذكورة للـ wireframing هي <b>Adobe XD</b> (L9, Wireframing process).",
-     "صح. الـ <b>Figma</b> أول واحدة في لستة المحاضرة لأدوات الـ wireframing الشائعة:<span class=\"ltr\">Figma, Adobe XD, Sketch, Balsamiq, Pencil</span> (L9, Wireframing process).",
+     "صح. الـ <b>Figma</b> أول واحدة في لستة المحاضرة لأدوات الـ wireframing الشائعة، وهي:<span class=\"ltr\">Figma, Adobe XD, Sketch, Balsamiq, Pencil</span>ده في <bdi dir=\"ltr\">(L9, Wireframing process)</bdi>.",
      "الـ PowerPoint ده برنامج presentations ومش من أدوات الـ wireframing اللي المحاضرة بتذكرها (L9, Wireframing process)."
     ],
     [
-     "صح. الـ guidelines بتاعة الـ forms والـ navigation كلها بتدي الـ users feedback واضح على اللي عملوه: الـ form لما يتبعت بنجاح بيتأكد بـ <b>confirmation page</b>، ورسايل الـ error بتظهر جنب الـ field اللي حصل فيه الغلط، وأي حاجة بتتداس عليها بيبان عليها تغيير واضح لما تعدي عليها بالماوس (hover) (L9, Form design guidelines; L10, Navigation).",
-     "الـ guidelines بتقول العكس: أكّد الـ submission الناجح بـ confirmation page، واعرض الـ errors جنب الـ field، وخلي فيه تغيير واضح على الـ hover، عشان الـ users يشوفوا نتيجة اللي عملوه على طول (L9, Form design guidelines; L10, Navigation)."
+     "صح. الـ guidelines بتاعة الـ forms والـ navigation كلها بتدي الـ users feedback واضح على اللي عملوه: الـ form لما يتبعت بنجاح بيتأكد بـ <b>confirmation page</b>، ورسايل الـ error بتظهر جنب الـ field اللي حصل فيه الغلط، وأي حاجة بتتداس عليها بيبان عليها تغيير واضح لما تعدي عليها بالماوس (hover) <bdi dir=\"ltr\">(L9, Form design guidelines; L10, Navigation)</bdi>.",
+     "الـ guidelines بتقول العكس: أكّد الـ submission الناجح بـ confirmation page، واعرض الـ errors جنب الـ field، وخلي فيه تغيير واضح على الـ hover، عشان الـ users يشوفوا نتيجة اللي عملوه على طول <bdi dir=\"ltr\">(L9, Form design guidelines; L10, Navigation)</bdi>."
     ],
     [
      "المحاضرة بتقول إن <b>الـ wireframes مش فن</b>: الـ wireframe الكويس مش عن الرسم الفني، هو عن تنظيم المعلومات وتوصيلها بوضوح. ومقصود إن مفيهوش ألوان ولا font styles، عشان التركيز يبقى على الـ structure (L9, Wireframes are not art).",
-     "صح. الـ wireframe الكويس <b>مش عن الرسم الفني</b>؛ هو كله عن تنظيم المعلومات وتوصيلها بوضوح للزملاء، ومقصود إنه يسيب الألوان والـ font styles عشان يركّز على الـ structure (L9, Wireframes; Wireframes are not art)."
+     "صح. الـ wireframe الكويس <b>مش عن الرسم الفني</b>؛ هو كله عن تنظيم المعلومات وتوصيلها بوضوح للزملاء، ومقصود إنه يسيب الألوان والـ font styles عشان يركّز على الـ structure <bdi dir=\"ltr\">(L9, Wireframes; Wireframes are not art)</bdi>."
     ],
     [
      "صح. في مرحلة الـ pen-and-paper، أول هدف هو <b>إنك توصل لـ design، مش إنك تعرض design</b>، والهدف التاني إنك تنقل الفكرة من دماغك للورق بأسرع ما يمكن، فمفيش تركيز على تفاصيل زي الخطوط المستقيمة والـ spacing والـ alignment (L9, Wireframing process).",
@@ -3091,7 +3091,7 @@ AR.hci = {
      "صح. الـ commands المهمة تبقى buttons مش links، بس <b>متعرضش</b> كل الـ commands كـ buttons."
     ],
     [
-     "version واحدة معناها إنك ثبتّ على فكرة واحدة.",
+     "الـ version الواحدة معناها إنك ثبتّ على فكرة واحدة.",
      "صح. الـ process بيقول ارسم 5 versions على الأقل لكل شاشة.",
      "الـ 20 ده عدد الأفكار في الـ brainstorming.",
      "الـ 3 قليلين: الـ wireframing process بيقول ارسم 5 versions على الأقل لكل شاشة بالورقة والقلم (L9, Wireframing process)."
@@ -3136,7 +3136,7 @@ AR.hci = {
       "أهم معلومات تبقى <b>above the fold</b> (الجزء اللي باين من غير scroll).",
       "<b>المعلومات المرتبطة ببعض تتجمع</b> بـ <b>frame</b> أو <b>separator</b>.",
       "<b>اللون بيجمّع وينظّم العناصر</b> (زي fields الـ HR والـ Technical والـ Payroll).",
-      "<b>العناصر المرتبطة تبقى مترتبة منطقياً</b> (First/Middle/Last name؛ Start/End date؛ Origin/Destination).",
+      "<b>العناصر المرتبطة تبقى مترتبة منطقياً</b>، زي:<span class=\"ltr\">First/Middle/Last name; Start/End date; Origin/Destination</span>",
       "الـ <b>logo بتاعك في نفس المكان في كل صفحة</b> (من غير ما يتحرك).",
       "الـ <b>background مش معقد</b> ومش بيشتت عن المحتوى."
      ],
@@ -3162,10 +3162,10 @@ AR.hci = {
    ],
    "cards": [
     "التزم بـ color palette بسيطة من 3 ألوان.",
-    "\"Close\".",
-    "\"Cancel\" (مش \"Close\"): على اليمين ومش لافت للنظر.",
+    "الـ label هو <bdi dir=\"ltr\">\"Close\"</bdi>.",
+    "الـ label هو <bdi dir=\"ltr\">\"Cancel\"</bdi> (مش <bdi dir=\"ltr\">\"Close\"</bdi>)، ويكون على اليمين ومش لافت للنظر.",
     "المشكلة في الـ title؛ حصلت ليه؛ link يكمّل أو يرجع؛ recommendations للخطوة الجاية.",
-    "Action، و\"Remind me later\"، و\"Don't show again\".",
+    "الـ Action، و<bdi dir=\"ltr\">\"Remind me later\"</bdi>، و<bdi dir=\"ltr\">\"Don't show again\"</bdi>.",
     "الجزء من الصفحة اللي باين من غير scroll؛ حط فيه أهم المعلومات.",
     "بـ frame أو separator أو لون.",
     "سلسلة الصفحات أو الـ actions اللي العملاء بيستخدموها أكتر حاجة عشان يخلصوا الـ tasks.",
@@ -3174,8 +3174,8 @@ AR.hci = {
    "qa": [
     "اكتب المشكلة في الـ title؛ اشرح باختصار حصلت ليه؛ ولو ينفع حط link يكمّل الـ task أو يرجع للحالة اللي قبلها؛ وادّي recommendations للخطوة الجاية.",
     "أهم المعلومات above the fold؛ جمّع المعلومات المرتبطة (frame أو separator)؛ استخدم اللون للتجميع؛ رتّب العناصر المرتبطة منطقياً؛ خلي الـ logo في نفس المكان في كل صفحة؛ وخلي الـ background بسيط.",
-    "CTA واضح للي يتعمل بعد كده؛ وضّح الـ users فين (breadcrumbs)؛ links للـ Home والـ categories في كل صفحة؛ الـ tabs فوق؛ تغيير واضح في الـ hover على الحاجات اللي بتتداس؛ الـ logo بيودّي للـ homepage؛ وارسم الـ Red Routes.",
-    "button واحد بس: \"Close\". اتنين buttons (action وواحد للقفل): \"Cancel\"، وغالباً على اليمين ومش لافت للنظر."
+    "الـ CTA واضح للي يتعمل بعد كده؛ وضّح الـ users فين (breadcrumbs)؛ والـ links للـ Home والـ categories في كل صفحة؛ الـ tabs فوق؛ تغيير واضح في الـ hover على الحاجات اللي بتتداس؛ الـ logo بيودّي للـ homepage؛ وارسم الـ Red Routes.",
+    "لو فيه button واحد بس بنستخدم <bdi dir=\"ltr\">\"Close\"</bdi>.<br>لو فيه اتنين buttons (action وواحد للقفل) بنستخدم <bdi dir=\"ltr\">\"Cancel\"</bdi>، وغالباً على اليمين ومش لافت للنظر."
    ],
    "quiz": [
     [
@@ -3185,10 +3185,10 @@ AR.hci = {
      "الـ \"Abort\" مش label بتستخدمه الـ guideline؛ وكمان شكله حاد وtechnical. الـ dismiss button الوحيد لازم يقول \"Close\" (L10, Close vs Cancel)."
     ],
     [
-     "صح. الـ form guideline بتقول التزم بـ 3-color palette بسيطة، لأن أكتر من 3 primary colors بيبقى صعب وبيلخبط الـ users (L10, Forms).",
-     "الألوان الكتير بتكسر الـ guideline: أكتر من 3 primary colors صعب وبيلخبط الـ users، فخليك على 3-color palette بسيطة (L10, Forms).",
-     "لون واحد مش هو الـ rule. الـ guideline هي 3-color palette بسيطة؛ الحد إنك متعديش 3 (L10, Forms).",
-     "الـ 7 أكتر من ضعف الحد. أكتر من 3 primary colors بيلخبط الـ users، فالـ guideline بتقول 3-color palette بسيطة (L10, Forms)."
+     "صح. الـ form guideline بتقول التزم بـ <bdi dir=\"ltr\">3-color</bdi> palette بسيطة، لأن أكتر من 3 primary colors بيبقى صعب وبيلخبط الـ users (L10, Forms).",
+     "الألوان الكتير بتكسر الـ guideline: أكتر من 3 primary colors صعب وبيلخبط الـ users، فخليك على <bdi dir=\"ltr\">3-color</bdi> palette بسيطة (L10, Forms).",
+     "لون واحد مش هو الـ rule. الـ guideline هي <bdi dir=\"ltr\">3-color</bdi> palette بسيطة؛ الحد إنك متعديش 3 (L10, Forms).",
+     "الـ 7 أكتر من ضعف الحد. أكتر من 3 primary colors بيلخبط الـ users، فالـ guideline بتقول <bdi dir=\"ltr\">3-color</bdi> palette بسيطة (L10, Forms)."
     ],
     [
      "ضيق أوي: \"above the fold\" هو كل اللي باين من غير scrolling، مش الـ header بس. المعلومات الأهم بتتحط هناك (L10, Layout).",
@@ -3206,7 +3206,7 @@ AR.hci = {
      "صح. واحدة من الـ navigation guidelines إن الـ company logo يبقى link للـ homepage (والـ layout rule بتخليه في نفس المكان في كل صفحة) (L10, Navigation).",
      "الـ Navigation tabs مكانها فوق في الصفحة، مش تحت (L10, Navigation).",
      "الـ guideline بتقول العكس: لازم يبقى فيه تغيير واضح في الـ hover على أي حاجة clickable، عشان الـ users يعرفوا إنها بتتداس (L10, Navigation).",
-     "links الـ Home والـ categories مكانها في كل صفحة."
+     "الـ links بتاعة الـ Home والـ categories مكانها في كل صفحة."
     ],
     [
      "صح. أول error-message guideline إنك تقول المشكلة في الـ title، وبعدين تقول باختصار حصلت ليه، وتحط link تكمّل بيه أو ترجع، وتقترح الخطوة الجاية (L10, Forms).",
@@ -3224,7 +3224,7 @@ AR.hci = {
    "extra": [
     [
      "صح. لما يكون فيه اتنين buttons (action وواحد للقفل)، استخدم \"Cancel\" مش \"Close\".",
-     "\"Close\" بتتستخدم بس لما يكون فيه button واحد.",
+     "الـ <bdi dir=\"ltr\">\"Close\"</bdi> بتتستخدم بس لما يكون فيه button واحد.",
      "قاعدة المحاضرة إنها \"Cancel\" جنب الـ action button.",
      "الـ button ده تبع الـ system notice، مش confirmation dialog."
     ],
@@ -3248,7 +3248,7 @@ AR.hci = {
      "المشكلة في ترتيب الـ fields، مش في إنها باينة ولا لأ.",
      "مفيش حاجة في السيناريو عن الألوان.",
      "مفيش حاجة في السيناريو عن الـ logo.",
-     "صح. الأسامي لازم تترتب First/Middle/Last، مش تتلخبط مع fields تانية."
+     "صح. الأسامي لازم تترتب <bdi dir=\"ltr\">First/Middle/Last</bdi>، مش تتلخبط مع fields تانية."
     ],
     [
      "صح. الـ logo مينفعش يتحرك من صفحة للتانية.",
@@ -3334,9 +3334,9 @@ AR.hci = {
        ]
       },
       {
-       "why": "الكورس كله عن الـ user-centered design: دخّل الـ users من بدري وكتير، والـ prototypes معمولة أصلاً عشان تاخد feedback (L2، L8).",
+       "why": "الكورس كله عن الـ user-centered design: دخّل الـ users من بدري وكتير، والـ prototypes معمولة أصلاً عشان تاخد feedback <bdi>(L2، L8)</bdi>.",
        "ow": [
-        "الـ User-centered design محتاج الـ users في كل خطوة: \"you need users early and often\"، والـ prototypes معمولة أصلاً عشان تجيب feedback وتعمل iterate (L2; L8).",
+        "الـ User-centered design محتاج الـ users في كل خطوة: <bdi dir=\"ltr\">\"you need users early and often\"</bdi>، والـ prototypes معمولة أصلاً عشان تجيب feedback وتعمل iterate <bdi dir=\"ltr\">(L2; L8)</bdi>.",
         null
        ]
       },
@@ -3362,8 +3362,8 @@ AR.hci = {
        "why": "الـ Privacy بتحمي الـ PII والـ SPII بتوع الـ users. باقي الاختيارات ملهاش علاقة أو عكس الـ privacy.",
        "ow": [
         null,
-        "الـ Privacy مش بتسرّع الـ research: الـ guidelines بتضيف حرص (اجمع اللي محتاجه بس، متربطوش بـ PII/SPII، امسحه بعد الاستخدام) (L5).",
-        "ده عكس الـ privacy: المفروض تجمع الـ data اللي محتاجها بس، وتفصلها عن الـ PII/SPII، وتمسحها لما متبقاش محتاجها (L5).",
+        "الـ Privacy مش بتسرّع الـ research: الـ guidelines بتضيف حرص (اجمع اللي محتاجه بس، متربطوش بـ <bdi dir=\"ltr\">PII/SPII</bdi>، امسحه بعد الاستخدام) <bdi dir=\"ltr\">(L5)</bdi>.",
+        "ده عكس الـ privacy: المفروض تجمع الـ data اللي محتاجها بس، وتفصلها عن الـ <bdi dir=\"ltr\">PII/SPII</bdi>، وتمسحها لما متبقاش محتاجها <bdi dir=\"ltr\">(L5)</bdi>.",
         "الـ Privacy مش بديل لأي research method؛ الـ interviews لسه مطلوبة. هي مهمة عشان بتحمي الـ user data (L5)."
        ]
       },
@@ -3377,7 +3377,7 @@ AR.hci = {
        ]
       },
       {
-       "why": "L5: الـ quantitative (data أرقام) \"easier for engineers and technical people to handle\" يعني أسهل للـ engineers والناس الـ technical.",
+       "why": "في <bdi dir=\"ltr\">L5</bdi>: الـ quantitative (data أرقام) هي:<span class=\"ltr\">\"easier for engineers and technical people to handle\"</span>يعني أسهل للـ engineers والناس الـ technical.",
        "ow": [
         "المحاضرة مخصّتش الـ designers؛ قالت إن الـ quantitative research (الرقمي) أسهل على الـ engineers والناس الـ technical (L5).",
         null,
@@ -3388,7 +3388,7 @@ AR.hci = {
       {
        "why": "خليه صغير، وواضح، وخلي بالك من الـ bias، وخد feedback من المشاركين.",
        "ow": [
-        "ده عكس النصايح: خلي الـ surveys صغيرة على قد ما تقدر والأسئلة مختصرة، لأن الـ surveys الطويلة بتضر الـ response rate والـ reliability (L5; L6).",
+        "ده عكس النصايح: خلي الـ surveys صغيرة على قد ما تقدر والأسئلة مختصرة، لأن الـ surveys الطويلة بتضر الـ response rate والـ reliability <bdi dir=\"ltr\">(L5; L6)</bdi>.",
         null,
         "الـ Research لازم يتخطط له بدري؛ survey من غير تخطيط بيكسر الـ general research tips (L5, General tips).",
         "المحاضرة بتقول سيب الأسئلة المفتوحة مفتوحة واعمل combination من الـ methods، فالأسئلة الـ quantitative بس مش هي المبدأ (L6, Be Unbiased)."
@@ -3398,8 +3398,8 @@ AR.hci = {
        "why": "نفس سؤال رقم 1، متطبع مرتين في الورقة.",
        "ow": [
         null,
-        "الـ Privacy مش بتسرّع الـ research: الـ guidelines بتضيف حرص (اجمع اللي محتاجه بس، متربطوش بـ PII/SPII، امسحه بعد الاستخدام) (L5).",
-        "ده عكس الـ privacy: المفروض تجمع الـ data اللي محتاجها بس، وتفصلها عن الـ PII/SPII، وتمسحها لما متبقاش محتاجها (L5).",
+        "الـ Privacy مش بتسرّع الـ research: الـ guidelines بتضيف حرص (اجمع اللي محتاجه بس، متربطوش بـ <bdi dir=\"ltr\">PII/SPII</bdi>، امسحه بعد الاستخدام) <bdi dir=\"ltr\">(L5)</bdi>.",
+        "ده عكس الـ privacy: المفروض تجمع الـ data اللي محتاجها بس، وتفصلها عن الـ <bdi dir=\"ltr\">PII/SPII</bdi>، وتمسحها لما متبقاش محتاجها <bdi dir=\"ltr\">(L5)</bdi>.",
         "الـ Privacy مش بديل لأي research method؛ الـ interviews لسه مطلوبة. هي مهمة عشان بتحمي الـ user data (L5)."
        ]
       },
@@ -3440,7 +3440,7 @@ AR.hci = {
        ]
       },
       {
-       "why": "L5: \"effort should be done before the interview to write a script of the questions\" يعني لازم تتعب قبل الـ interview وتكتب script بالأسئلة.",
+       "why": "المحاضرة <bdi dir=\"ltr\">L5</bdi> بتقول:<span class=\"ltr\">\"effort should be done before the interview to write a script of the questions\"</span>يعني لازم تتعب قبل الـ interview وتكتب script بالأسئلة.",
        "ow": [
         "المحاضرة بتقول خطط بدري واكتب script بالأسئلة بدل ما تسأل أسئلة عشوائية (L5, General tips).",
         null,
@@ -3454,19 +3454,19 @@ AR.hci = {
      "items": [
       {
        "why": "الجدول اللي في L5 slide 6 هو بالظبط المطلوب. ارسمه.",
-       "ans": "<table><tr><th></th><th>Primary</th><th>Secondary</th></tr><tr><td>مين بيجمعه</td><td>إنت (أو حد إنت مأجّره)</td><td>حد تاني</td></tr><tr><td>أمثلة</td><td>Surveys, focus groups, interviews, observations, experiments</td><td>بتبص على data موجودة، زي الكتب والـ journals والـ reports</td></tr><tr><td>qualitative ولا quantitative؟</td><td>أي واحد فيهم</td><td>أي واحد فيهم</td></tr><tr><td>الميزة</td><td>specific لاحتياجاتك؛ وإنت متحكم في الـ quality</td><td>غالباً رخيص وسريع</td></tr><tr><td>العيب</td><td>بيكلّف أكتر وبياخد وقت أطول</td><td>ممكن يكون قديم أوي أو مش specific كفاية</td></tr></table>"
+       "ans": "<table><tr><th></th><th dir=\"ltr\">Primary</th><th dir=\"ltr\">Secondary</th></tr><tr><td>مين بيجمعه</td><td>إنت (أو حد إنت مأجّره)</td><td>حد تاني</td></tr><tr><td>أمثلة</td><td dir=\"ltr\">Surveys, focus groups, interviews, observations, experiments</td><td>بتبص على data موجودة، زي الكتب والـ journals والـ reports</td></tr><tr><td>qualitative ولا quantitative؟</td><td>أي واحد فيهم</td><td>أي واحد فيهم</td></tr><tr><td>الميزة</td><td>specific لاحتياجاتك؛ وإنت متحكم في الـ quality</td><td>غالباً رخيص وسريع</td></tr><tr><td>العيب</td><td>بيكلّف أكتر وبياخد وقت أطول</td><td>ممكن يكون قديم أوي أو مش specific كفاية</td></tr></table>"
       },
       {
        "why": "اذكر الـ 6 principles وادّي مثال \"متسألش كده / اسأل كده بدلها\" لكل واحد. كده تغطي الدرجات.",
-       "ans": "<b>Be Clear</b>: اكتب labels للـ numeric scales، زي:<span class=\"ltr\">1 = Highly dissatisfied … 5 = Highly satisfied</span>وكمان تجنب الـ ranges المتداخلة (زي 0-2 و 3-5 و 6-10)؛ زوّد تفاصيل لو شاكك؛ اعمل timebox للتكرار (\"in the past seven days…\").<br><b>Be Concise</b>: لغة بسيطة (\"How clean was the car?\").<br><b>Be Specific</b>: تجنب الأفكار الكبيرة أوي؛ تجنب الـ double-barrel questions (قسّم \"speed and availability\")؛ تجنب الـ internal conflict (قسّم \"food\" لـ temperature و appearance و flavor).<br><b>Be Expressive</b>: ركّز على الآراء (\"too high, too low, or about right?\")؛ ranges بدل yes/no؛ مستويات موافقة؛ اسمح بأكتر من اختيار.<br><b>Be Unbiased</b>: ضيف \"Other: ___\"؛ سيب الأسئلة المفتوحة مفتوحة؛ تجنب الـ leading questions؛ تجنب الكلمات الـ loaded (\"wasted\" تبقى \"spent\").<br><b>Be Usable</b>: الـ progress bar، وطول صفحات ثابت، وترتيب منطقي، وتنبيه على الأسئلة اللي متجاوبتش، اعمل preview للـ survey."
+       "ans": "<b>الـ Be Clear</b>: اكتب labels للـ numeric scales، زي:<span class=\"ltr\">1 = Highly dissatisfied … 5 = Highly satisfied</span>وكمان تجنب الـ ranges المتداخلة (زي <bdi dir=\"ltr\">0‑2,&nbsp;3‑5,&nbsp;6‑10</bdi>)؛ زوّد تفاصيل لو شاكك؛ اعمل timebox للتكرار <bdi dir=\"ltr\">(\"in the past seven days…\")</bdi>.<br><b>الـ Be Concise</b>: لغة بسيطة <bdi dir=\"ltr\">(\"How clean was the car?\")</bdi>.<br><b>الـ Be Specific</b>: تجنب الأفكار الكبيرة أوي؛ تجنب الـ double-barrel questions (قسّم <bdi dir=\"ltr\">\"speed and availability\"</bdi>)؛ تجنب الـ internal conflict (قسّم <bdi dir=\"ltr\">\"food\"</bdi> لـ temperature و appearance و flavor).<br><b>الـ Be Expressive</b>: ركّز على الآراء <bdi dir=\"ltr\">(\"too high, too low, or about right?\")</bdi>؛ واستخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi>؛ مستويات موافقة؛ اسمح بأكتر من اختيار.<br><b>الـ Be Unbiased</b>: ضيف <bdi dir=\"ltr\">\"Other: ___\"</bdi>؛ سيب الأسئلة المفتوحة مفتوحة؛ تجنب الـ leading questions؛ تجنب الكلمات الـ loaded (<bdi dir=\"ltr\">\"wasted\"</bdi> تبقى <bdi dir=\"ltr\">\"spent\"</bdi>).<br><b>الـ Be Usable</b>: الـ progress bar، وطول صفحات ثابت، وترتيب منطقي، وتنبيه على الأسئلة اللي متجاوبتش، اعمل preview للـ survey."
       },
       {
-       "why": "من L2 slides 11–12.",
-       "ans": "<b>(1) Foundational (strategic / generative)</b>: قبل ما أي حاجة تتصمم. بيحدد مشاكل الـ users وإيه اللي هيتبني عن طريق الكلام مع الـ users عن الـ pain points بتاعتهم، وبيطلّع فرص الفريق مكانش هيفكر فيها.<br><b><br>(2) Tactical (design)</b>: أثناء مرحلة الـ design. بيقول المنتج يتبني إزاي، باستخدام user feedback على الـ prototypes.<br><b><br>(3) Post-launch</b>: بعد الـ release. هل نجحنا؟ هل الـ system بيلبّي احتياجات الـ users؟"
+       "why": "من L2 slides <bdi dir=\"ltr\">11–12</bdi>.",
+       "ans": "<b>(1) الـ <bdi dir=\"ltr\">Foundational (strategic / generative)</bdi></b>: قبل ما أي حاجة تتصمم. بيحدد مشاكل الـ users وإيه اللي هيتبني عن طريق الكلام مع الـ users عن الـ pain points بتاعتهم، وبيطلّع فرص الفريق مكانش هيفكر فيها.<br><b>(2) الـ Tactical (design)</b>: أثناء مرحلة الـ design. بيقول المنتج يتبني إزاي، باستخدام user feedback على الـ prototypes.<br><b>(3) الـ Post-launch</b>: بعد الـ release. هل نجحنا؟ هل الـ system بيلبّي احتياجات الـ users؟"
       },
       {
        "why": "من L9 slide 11 (رسمة الـ timeline: نقطة تسليم واحدة ضد sync points كتير).",
-       "ans": "<b>Handoff process</b>: مرحلة الـ design بتخلص خالص، وبعدين الـ design بيتسلّم للـ development (ورا بعض، نقطة تسليم واحدة).<br><b>Handshake process</b>: الـ design والـ development ماشيين <b>بالتوازي</b> وبيعملوا sync في نقط كتير أثناء المشروع، فالمشاكل بتتمسك بدري."
+       "ans": "<b>الـ Handoff process</b>: مرحلة الـ design بتخلص خالص، وبعدين الـ design بيتسلّم للـ development (ورا بعض، نقطة تسليم واحدة).<br><b>الـ Handshake process</b>: الـ design والـ development ماشيين <b>بالتوازي</b> وبيعملوا sync في نقط كتير أثناء المشروع، فالمشاكل بتتمسك بدري."
       }
      ]
     },
@@ -3474,7 +3474,7 @@ AR.hci = {
      "items": [
       {
        "why": "الدرجات بتيجي من إنك تطبّق guidelines المحاضرات، زي الـ user research والـ wireframes والـ forms والـ layout والـ navigation (L9–L10). اذكر اسم الـ guideline جنب كل قرار design.",
-       "ans": "<b>(1) ابدأ من الـ user research.</b> كبار السن محتاجين <b>text كبير و touch targets كبيرة</b> (زي case الـ truckers). خلي عدد الخطوات قليل واللغة بسيطة.<br><b><br>(2) الـ Home screen (above the fold):</b> الـ logo فوق على الشمال (في نفس المكان في كل شاشة، وبيودّي للـ home)؛ <b>search bar</b> كبير (\"Search doctor, specialty…\")؛ أيقونات الـ specialties في grid (زي Cardiology و Dentistry…)؛ card \"My upcoming appointment\"؛ و<b>tab bar</b> تحت فيه:<span class=\"ltr\">Home · Search · Appointments · Profile</span><br><b><br>(3) قايمة الدكاترة:</b> filters (زي الـ specialty والمنطقة والسعر والـ rating)؛ وكل card فيها صورة واسم والـ specialty والـ rating وأقرب ميعاد فاضي، و<b>primary CTA \"Book\"</b>.<br><b><br>(4) الـ Booking flow</b> path ثابت، فاستخدم <b>progress bar</b>:<span class=\"ltr\">Doctor → Date/Time → Details → Confirm</span> افتكر data المريض (<b>remove repetitive actions</b>)؛ fields فيها <b>hints و formats</b>؛ و<b>الـ errors جنب الـ field</b> مع border أحمر.<br><b><br>(5) الـ Confirmation page</b> بعد الحجز (\"Appointment booked with Dr. X, Sun 10:00\") مع \"Add to calendar\".<br><b><br>(6) إلغاء الميعاد:</b> dialog فيه action button \"Cancel appointment\" و button \"Keep\" secondary مش لافت للنظر على اليمين؛ و alert style ثابت.<br><b><br>(7) القواعد الـ visual:</b> الـ palette من 3 ألوان، background بسيط، المعلومات المرتبطة متجمعة بـ frames، وفرق واضح بين الـ primary والـ secondary CTA.<br><b><br>(8) الأدوار التانية:</b> الدكاترة والـ admins ليهم schedule view (يوم/أسبوع) وشاشة manage-slots.<br><b><br>(9) الـ Process:</b> ارسم 5+ paper wireframes لكل شاشة، اختبر مع المرضى وكبار السن، اعمل iteration، وبعدين اعمل hi-fi على Figma."
+       "ans": "<b>(1) ابدأ من الـ user research.</b> كبار السن محتاجين <b>text كبير و touch targets كبيرة</b> (زي case الـ truckers). خلي عدد الخطوات قليل واللغة بسيطة.<br><b>(2) الـ Home screen (above the fold):</b> الـ logo فوق على الشمال (في نفس المكان في كل شاشة، وبيودّي للـ home)؛ وفيه <b>search bar</b> كبير <bdi dir=\"ltr\">(\"Search doctor, specialty…\")</bdi>؛ أيقونات الـ specialties في grid (زي Cardiology و Dentistry…)؛ وفيه card بعنوان <bdi dir=\"ltr\">\"My upcoming appointment\"</bdi>؛ و<b>tab bar</b> تحت فيه:<span class=\"ltr\">Home · Search · Appointments · Profile</span><b>(3) قايمة الدكاترة:</b> filters (زي الـ specialty والمنطقة والسعر والـ rating)؛ وكل card فيها صورة واسم والـ specialty والـ rating وأقرب ميعاد فاضي، و<b><bdi dir=\"ltr\">primary CTA \"Book\"</bdi></b>.<br><b>(4) الـ Booking flow</b> path ثابت، فاستخدم <b>progress bar</b>:<span class=\"ltr\">Doctor → Date/Time → Details → Confirm</span>افتكر data المريض (<b>remove repetitive actions</b>)؛ والـ fields فيها <b>hints و formats</b>؛ و<b>الـ errors جنب الـ field</b> مع border أحمر.<br><b>(5) الـ Confirmation page</b> بعد الحجز، زي:<span class=\"ltr\">\"Appointment booked with Dr. X, Sun 10:00\"</span>ومعاها <bdi dir=\"ltr\">\"Add to calendar\"</bdi>.<br><b>(6) إلغاء الميعاد:</b> dialog فيه action button اسمه <bdi dir=\"ltr\">\"Cancel appointment\"</bdi> و button اسمه <bdi dir=\"ltr\">\"Keep\"</bdi> يكون secondary مش لافت للنظر على اليمين؛ و alert style ثابت.<br><b>(7) القواعد الـ visual:</b> الـ palette من 3 ألوان، background بسيط، المعلومات المرتبطة متجمعة بـ frames، وفرق واضح بين الـ primary والـ secondary CTA.<br><b>(8) الأدوار التانية:</b> الدكاترة والـ admins ليهم schedule view (يوم/أسبوع) وشاشة manage-slots.<br><b>(9) الـ Process:</b> ارسم 5+ paper wireframes لكل شاشة، اختبر مع المرضى وكبار السن، اعمل iteration، وبعدين اعمل hi-fi على Figma."
       }
      ]
     }
@@ -3492,7 +3492,7 @@ AR.hci = {
        ]
       },
       {
-       "why": "L2 بتقول إن الـ tactical research \"takes place during the design phase\" يعني أثناء الـ design. اللي بعد الـ design phase يبقى post-launch research. الـ key غالباً كاتب \"after\" بشكل مش دقيق؛ جاوب من المحاضرة إلا لو الدكتور قال غير كده.",
+       "why": "الـ <bdi dir=\"ltr\">L2</bdi> بتقول إن الـ <bdi dir=\"ltr\">tactical research \"takes place during the design phase\"</bdi> يعني أثناء الـ design. اللي بعد الـ design phase يبقى post-launch research. الـ key غالباً كاتب <bdi dir=\"ltr\">\"after\"</bdi> بشكل مش دقيق؛ جاوب من المحاضرة إلا لو الدكتور قال غير كده.",
        "ow": [
         "الـ Tactical (design) research بيحصل <b>أثناء</b> مرحلة الـ design، باستخدام feedback على الـ prototypes. اللي بييجي بعدها اسمه post-launch research (L2, Types by WHEN).",
         null
@@ -3550,7 +3550,7 @@ AR.hci = {
       {
        "why": "الـ Surveys من أرخص الطرق؛ الـ interviews محتاجة وقت لكل شخص و incentives.",
        "ow": [
-        "مقلوبة: الـ surveys من أرخص الطرق، أما الـ interviews فأغلى عشان هي synchronous واللي بنعملهم interview بيستنوا incentives (L5; L7).",
+        "مقلوبة: الـ surveys من أرخص الطرق، أما الـ interviews فأغلى عشان هي synchronous واللي بنعملهم interview بيستنوا incentives <bdi dir=\"ltr\">(L5; L7)</bdi>.",
         null
        ]
       },
@@ -3569,7 +3569,7 @@ AR.hci = {
        ]
       },
       {
-       "why": "L1 بتقول \"software development is research\": يعني مش بس إنك تعمل software، لكن كمان إنك تتعلم إزاي تعمل الـ software الأنسب للغرض بتاعه (L1, UI design process).",
+       "why": "الـ <bdi dir=\"ltr\">L1</bdi> بتقول <bdi dir=\"ltr\">\"software development is research\"</bdi>، يعني مش بس إنك تعمل software، لكن كمان إنك تتعلم إزاي تعمل الـ software الأنسب للغرض بتاعه <bdi dir=\"ltr\">(L1, UI design process)</bdi>.",
        "ow": [
         null,
         "الجملة مأخوذة من نقطة المحاضرة إن \"software development is research\": إنك تتعلم إزاي تبني الـ software الأنسب للغرض بتاعه (L1)."
@@ -3612,12 +3612,12 @@ AR.hci = {
        ]
       },
       {
-       "why": "\"Tips for good interview\" في L7 بتبدأ بـ \"Plan ahead and prepare your questions before the interview time\"، و L5 بتقول اكتب interview script. كلام المحاضرة بيطابق \"Interview\". الـ key معلّم على Survey، فاذكر جملة المحاضرة لو اتسألت.",
+       "why": "الـ <bdi dir=\"ltr\">\"Tips for good interview\"</bdi> في <bdi dir=\"ltr\">L7</bdi> بتبدأ بـ:<span class=\"ltr\">\"Plan ahead and prepare your questions before the interview time\"</span>و <bdi dir=\"ltr\">L5</bdi> بتقول اكتب interview script. كلام المحاضرة بيطابق <bdi dir=\"ltr\">\"Interview\"</bdi>. الـ key معلّم على Survey، فاذكر جملة المحاضرة لو اتسألت.",
        "ow": [
         null,
-        "الـ Surveys لازم يتخطط لها برضه، بس الجملة دي نصيحة الـ interview: \"Plan ahead and prepare your questions before the interview\" (L7). وبيتقال إن الـ key الرسمي معلّم على الاختيار ده.",
+        "الـ Surveys لازم يتخطط لها برضه، بس الجملة دي نصيحة الـ interview <bdi dir=\"ltr\">(L7)</bdi> اللي بتقول:<span class=\"ltr\">\"Plan ahead and prepare your questions before the interview\"</span>وبيتقال إن الـ key الرسمي معلّم على الاختيار ده.",
         "الـ Observation مش موضوع الجملة دي. النصيحة المقتبسة من tips الـ interview: حضّر أسئلتك قبل الـ interview (L7).",
-        "الإجابة موجودة في المحاضرة: tips الـ interview بتبدأ بـ \"Plan ahead and prepare your questions before the interview\" (L7)."
+        "الإجابة موجودة في المحاضرة: tips الـ interview بتبدأ بـ <bdi dir=\"ltr\">\"Plan ahead and prepare your questions before the interview\"</bdi> <bdi dir=\"ltr\">(L7)</bdi>."
        ]
       },
       {
@@ -3644,19 +3644,19 @@ AR.hci = {
      "items": [
       {
        "why": "جدول المقارنة في L5.",
-       "ans": "الـ Primary إنت اللي بتجمعه، زي الـ surveys والـ focus groups والـ interviews والـ observations والـ experiments؛ specific لاحتياجاتك وإنت متحكم في الـ quality؛ بيكلّف أكتر وبياخد وقت أطول.<br>الـ Secondary حد تاني جمعه، زي الـ data الموجودة والكتب والـ journals؛ رخيص وسريع؛ ممكن يكون قديم أوي أو مش specific كفاية.<br>والاتنين ممكن يبقوا qualitative أو quantitative."
+       "ans": "الـ Primary إنت اللي بتجمعه، زي الـ surveys والـ focus groups والـ interviews والـ observations والـ experiments؛ وهو specific لاحتياجاتك وإنت متحكم في الـ quality؛ بيكلّف أكتر وبياخد وقت أطول.<br>الـ Secondary حد تاني جمعه، زي الـ data الموجودة والكتب والـ journals؛ رخيص وسريع؛ ممكن يكون قديم أوي أو مش specific كفاية.<br>والاتنين ممكن يبقوا qualitative أو quantitative."
       },
       {
        "why": "ده تمرين L6. والـ labels بتاعة إجاباته كانت:<span class=\"ltr\">ambiguous scale, changing number of options, reversing scale, leading questions, yes/no questions</span>",
-       "ans": "<b>(i)</b> <b>سؤال yes/no</b> (مش expressive). استخدم ranges: \"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\".<br><b>(ii)</b> <b>Leading question</b>: بيفترض إن الشخص بيحب التمرين. اسأل \"How do you feel about exercising?\" أو اسأل الأول هو بيتمرن ولا لأ.<br><b>(iii)</b> <b>Loaded question</b>: كلمة \"wasted\" فيها حكم. استخدم \"spent\".<br><b>(iv)</b> <b>Scale مش واضح / معكوس</b>: إن 1 = \"a lot\" ماشي عكس الاتجاه المعتاد من الصغير للكبير، والـ scale من 4 نقط مفيهوش نص محايد.<br><b>(v)</b> <b>عدد الـ options بيتغير</b> (6 هنا ضد 4 في iv) و<b>اتجاه الـ scale معكوس</b> مقارنة بـ (iv). خلي طول الـ scale واتجاهه ثابتين في الـ survey كله."
+       "ans": "السؤال <b>(i)</b>: ده <b>سؤال <bdi dir=\"ltr\">yes/no</bdi></b> (مش expressive). استخدم ranges:<span class=\"ltr\">\"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\"</span>السؤال <b>(ii)</b>: ده <b>Leading question</b>: بيفترض إن الشخص بيحب التمرين. اسأل <bdi dir=\"ltr\">\"How do you feel about exercising?\"</bdi> أو اسأل الأول هو بيتمرن ولا لأ.<br>السؤال <b>(iii)</b>: ده <b>Loaded question</b>: كلمة <bdi dir=\"ltr\">\"wasted\"</bdi> فيها حكم. استخدم <bdi dir=\"ltr\">\"spent\"</bdi>.<br>السؤال <b>(iv)</b>: ده <b>Scale مش واضح / معكوس</b>: إن <bdi dir=\"ltr\">1&nbsp;=&nbsp;\"a lot\"</bdi> ماشي عكس الاتجاه المعتاد من الصغير للكبير، والـ scale من 4 نقط مفيهوش نص محايد.<br>السؤال <b>(v)</b>: هنا <b>عدد الـ options بيتغير</b> (6 هنا ضد 4 في iv) و<b>اتجاه الـ scale معكوس</b> مقارنة بـ (iv). خلي طول الـ scale واتجاهه ثابتين في الـ survey كله."
       },
       {
-       "why": "L7 slide 4، وهي كمان الإجابة الرسمية.",
+       "why": "الـ <bdi dir=\"ltr\">L7 slide 4</bdi>، وهي كمان الإجابة الرسمية.",
        "ans": "خطط من بدري وجهّز أسئلتك قبل الـ interview.<br>أثناء الـ interview، فيه مفتاحين للنجاح:<br>• اسمع كويس: الـ user هو اللي المفروض يتكلم أغلب الوقت.<br>• اكتب notes: واحد يسأل والتاني يكتب (الـ audio recording مش كفاية)؛ اكتب المشاعر وردود الفعل ونبرة الصوت.<br>سيب شوية وقت بين الـ interviews."
       },
       {
-       "why": "L9 slides 5–6.",
-       "ans": "• الـ Lo-fi prototypes أسرع وأسهل وأرخص في إنك تعملها.<br>• الـ Hi-fi مش عملي في الأول لأن القرارات عن تفاصيل كتير لسه متاخدتش.<br>• الناس بتبقى مستعدة تتكلم أكتر بكتير لما تديهم sketch من حاجة شكلها خلصان.<br>• Konstan: الـ prototype اللي باين إنه بمجهود قليل (مرسوم بالإيد) بيطلّع constructive feedback أهم وأكتر.<br>• التفاصيل الكتير بتخلي الناس تدّي feedback في مستوى أقل من المطلوب.<br>• Google: في الأول اعرض أفكار high-level؛ وبعدين ركّز على التفاصيل زي شاشات الـ app."
+       "why": "الـ <bdi dir=\"ltr\">L9 slides 5–6</bdi>.",
+       "ans": "• الـ Lo-fi prototypes أسرع وأسهل وأرخص في إنك تعملها.<br>• الـ Hi-fi مش عملي في الأول لأن القرارات عن تفاصيل كتير لسه متاخدتش.<br>• الناس بتبقى مستعدة تتكلم أكتر بكتير لما تديهم sketch من حاجة شكلها خلصان.<br>• بيقول Konstan إن الـ prototype اللي باين إنه بمجهود قليل (مرسوم بالإيد) بيطلّع constructive feedback أهم وأكتر.<br>• التفاصيل الكتير بتخلي الناس تدّي feedback في مستوى أقل من المطلوب.<br>• نصيحة Google: في الأول اعرض أفكار high-level؛ وبعدين ركّز على التفاصيل زي شاشات الـ app."
       }
      ]
     },
@@ -3664,11 +3664,11 @@ AR.hci = {
      "items": [
       {
        "why": "الإجابة الرسمية (L9 slide 13). لو زوّدت الـ 4 purposes تاخد الدرجة كاملة.",
-       "ans": "رسم تخطيطي (schematic) للهيكل الأساسي لشاشة في system.<br>• معمول بخطوط وأشكال بسيطة (مستطيلات، دواير…) مع شوية text؛ والخطوط شكلها كأنها معمولة من سلوك (wires).<br>• مفيهوش ألوان ولا font styles عن قصد، عشان نركز على الـ structure.<br>• الـ Wireframe = هيكل (skeleton) فيه placeholders."
+       "ans": "رسم تخطيطي (schematic) للهيكل الأساسي لشاشة في system.<br>• معمول بخطوط وأشكال بسيطة (مستطيلات، دواير…) مع شوية text؛ والخطوط شكلها كأنها معمولة من سلوك (wires).<br>• مفيهوش ألوان ولا font styles عن قصد، عشان نركز على الـ structure.<br>• الـ Wireframe يعني هيكل (skeleton) فيه placeholders."
       },
       {
        "why": "الممتحنين بيدّوا درجات على تطبيق guidelines بأساميها من L9–L10. اكتب جنب كل قرار القاعدة اللي ماشي عليها.",
-       "ans": "<b>الـ Research الأول:</b> مين بيشتري (الأعمار والأجهزة، وهل الموبايلات low-end؟) وأهم الـ tasks بتاعتهم، زي الـ search والـ compare والـ buy والـ track order، ودول الـ <b>red routes</b>.<br><b>الـ Home (above the fold):</b> logo فوق على الشمال وبيودّي للـ home؛ search bar؛ category chips؛ banner للعروض؛ tab bar تحت فيه:<span class=\"ltr\">Home · Categories · Cart · Orders · Account</span><br><b>قايمة المنتجات:</b> grid cards (فيها صورة واسم وسعر و rating) مع filters و sort؛ و breadcrumbs بتوري الـ user هو فين، زي:<span class=\"ltr\">Home › Men › Shoes</span><b>صفحة المنتج:</b> صور، سعر، اختيار المقاس/اللون؛ الـ primary CTA \"Add to cart\" باين أكتر و\"Add to wishlist\" secondary.<br><b>الـ Checkout</b> path ثابت، فاستخدم <b>progress bar</b>:<span class=\"ltr\">Cart → Shipping → Payment → Confirm</span> عنوان و card محفوظين (remove repetitive actions)، hints/formats في الـ fields، والـ errors جنب الـ field.<br><b>الـ Confirmation page</b> فيها رقم الأوردر والـ tracking.<br><b>القواعد الـ visual:</b> الـ palette من 3 ألوان، والـ background بسيط، والتجميع بـ frames، والـ alerts ثابتة، وحالات الـ hover/press واضحة، والـ Cancel على اليمين ومش لافت للنظر.<br><b>الـ Process:</b> الخطوات بالترتيب، مع 5+ versions لكل شاشة، والـ test بيبقى مع الـ users:<span class=\"ltr\">paper wireframes → feedback → Figma hi-fi → test → iterate</span>"
+       "ans": "<b>الـ Research الأول:</b> مين بيشتري (الأعمار والأجهزة، وهل الموبايلات low-end؟) وأهم الـ tasks بتاعتهم، زي الـ search والـ compare والـ buy والـ track order، ودول الـ <b>red routes</b>.<br><b>الـ Home (above the fold):</b> فيها logo فوق على الشمال وبيودّي للـ home؛ وفيها search bar؛ والـ category chips؛ والـ banner للعروض؛ والـ tab bar تحت فيه:<span class=\"ltr\">Home · Categories · Cart · Orders · Account</span><b>قايمة المنتجات:</b> grid cards (فيها صورة واسم وسعر و rating) مع filters و sort؛ و breadcrumbs بتوري الـ user هو فين، زي:<span class=\"ltr\">Home › Men › Shoes</span><b>صفحة المنتج:</b> صور، سعر، اختيار المقاس/اللون؛ الـ <bdi dir=\"ltr\">primary CTA \"Add to cart\"</bdi> باين أكتر و<bdi dir=\"ltr\">\"Add to wishlist\"</bdi> يكون secondary.<br><b>الـ Checkout</b> path ثابت، فاستخدم <b>progress bar</b>:<span class=\"ltr\">Cart → Shipping → Payment → Confirm</span>عنوان و card محفوظين (remove repetitive actions)، و <bdi dir=\"ltr\">hints/formats</bdi> في الـ fields، والـ errors جنب الـ field.<br><b>الـ Confirmation page</b> فيها رقم الأوردر والـ tracking.<br><b>القواعد الـ visual:</b> الـ palette من 3 ألوان، والـ background بسيط، والتجميع بـ frames، والـ alerts ثابتة، وحالات الـ <bdi dir=\"ltr\">hover/press</bdi> واضحة، والـ Cancel على اليمين ومش لافت للنظر.<br><b>الـ Process:</b> الخطوات بالترتيب، مع 5+ versions لكل شاشة، والـ test بيبقى مع الـ users:<span class=\"ltr\">paper wireframes → feedback → Figma hi-fi → test → iterate</span>"
       }
      ]
     }

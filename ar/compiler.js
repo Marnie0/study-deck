@@ -752,7 +752,7 @@ AR.compiler = {
      "الـ ∅ معناها إن مفيش state ليها move على 1، بس الـ state 3 ليها اتنين: الـ loop لـ 3 والـ edge لـ 2."
     ],
     [
-     "صح. خد الـ union بتاع الـ 0-moves لكل عضو: <bdi dir=\"ltr\" style=\"white-space:nowrap\">2 –0→ 3</bdi> و<bdi dir=\"ltr\" style=\"white-space:nowrap\">3 –0→ 1</bdi>، فيطلع <bdi dir=\"ltr\" style=\"white-space:nowrap\">{1,3}</bdi>، وده row جديد في الـ DFA (<bdi dir=\"ltr\" style=\"white-space:nowrap\">L3, subset construction</bdi>).",
+     "صح. خد الـ union بتاع الـ <bdi dir=\"ltr\">0-moves</bdi> لكل عضو: <bdi dir=\"ltr\" style=\"white-space:nowrap\">2 –0→ 3</bdi> و<bdi dir=\"ltr\" style=\"white-space:nowrap\">3 –0→ 1</bdi>، فيطلع <bdi dir=\"ltr\" style=\"white-space:nowrap\">{1,3}</bdi>، وده row جديد في الـ DFA (<bdi dir=\"ltr\" style=\"white-space:nowrap\">L3, subset construction</bdi>).",
      "كده خدت <bdi dir=\"ltr\" style=\"white-space:nowrap\">2 –0→ 3</bdi> بس ونسيت إن الـ state 3 كمان بتتحرك على 0، لـ state 1.",
      "كده خدت <bdi dir=\"ltr\" style=\"white-space:nowrap\">3 –0→ 1</bdi> بس ونسيت إن الـ state 2 كمان بتتحرك على 0، لـ state 3.",
      "الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">{2,3}</bdi> دي نتيجة <bdi dir=\"ltr\" style=\"white-space:nowrap\">{2,3}</bdi> على input 1 (<bdi dir=\"ltr\" style=\"white-space:nowrap\">3 –1→ 3</bdi> و<bdi dir=\"ltr\" style=\"white-space:nowrap\">3 –1→ 2</bdi>)، مش على input 0."
@@ -2981,7 +2981,7 @@ AR.compiler = {
        ]
       },
       {
-       "why": "الـ DFA ممكن يبقى فيه loops؛ مثلًا الـ DFA بتاعة <bdi dir=\"ltr\">1*01(0|⁠1)*</bdi> فيها 1-loop على q0 و0,1-loop على الـ final state (L2, L3).",
+       "why": "الـ DFA ممكن يبقى فيه loops؛ مثلًا الـ DFA بتاعة <bdi dir=\"ltr\">1*01(0|⁠1)*</bdi> فيها <bdi dir=\"ltr\">1-loop</bdi> على q0 و0,1-loop على الـ final state (L2, L3).",
        "ow": [
         null,
         "الـ Loops مش بتخلّي الـ automaton nondeterministic؛ الـ DFA بتاعة <bdi dir=\"ltr\">1*01(0|⁠1)*</bdi> فيها two loops (L2, L3)."
@@ -3071,7 +3071,7 @@ AR.compiler = {
        ]
       },
       {
-       "why": "الـ CFG هي 4-tuple <bdi dir=\"ltr\">(V, Σ, P, S)</bdi>، يعني الـ non-terminals والـ terminals والـ productions والـ start symbol. مفيش حاجة اسمها \"end symbol\" (L4).",
+       "why": "الـ CFG هي <bdi dir=\"ltr\">4-tuple</bdi> <bdi dir=\"ltr\">(V, Σ, P, S)</bdi>، يعني الـ non-terminals والـ terminals والـ productions والـ start symbol. مفيش حاجة اسمها \"end symbol\" (L4).",
        "ow": [
         "الـ start symbol S واحد من الأربع أجزاء بتوع الـ CFG (V, Σ, P, S).",
         "الـ non-terminals V واحد من الأربع أجزاء بتوع الـ CFG (V, Σ, P, S).",
