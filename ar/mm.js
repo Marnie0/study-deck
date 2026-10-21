@@ -1420,7 +1420,7 @@ AR.mm = {
     "فيه beat لما الـ instant energy (~0.05 s) تعدّي الـ average energy (~1 s).",
     "الـ table بيشيل period واحد من waveform عامة؛ والـ tables بيتعملها <bdi dir=\"ltr\">crossfade/envelope</bdi> مع الوقت. بيخزن attack sample + looped sustain.",
     "حوالي <bdi dir=\"ltr\">1‑50&nbsp;ms</bdi> (غالبًا <bdi dir=\"ltr\">10‑50&nbsp;ms</bdi>)؛ والـ grain مكوّن من:<span class=\"ltr\">grain = envelope + contents</span>",
-    "القانون:<span class=\"ltr\">D = Fs / F1</span>مثال:<span class=\"ltr\">44100 / 200 = 220.5 Hz</span>"
+    "القانون:<span class=\"ltr\">D = Fs / F1  ⇒  F1 = Fs / D</span>مثال، لو الـ D بـ 200:<span class=\"ltr\">F1 = 44100 / 200 = 220.5 Hz</span>"
    ],
    "qa": [
     "الآلات الحقيقية الـ volume بتاعها بيتغير مع الوقت بطرق مميزة (الـ organ ثابت وبعدين بيقف بسرعة، الجيتار عالي وبعدين بيخفت). الـ ADSR بيعمل model للكلام ده: الـ Attack يعني الصوت بيوصل لأعلى volume بسرعة قد إيه، والـ Decay يعني بينزل للـ sustain level بسرعة قد إيه، والـ Sustain هو الـ level الثابت اللي بيفضل طول ما الزرار متداس، والـ Release يعني بيخفت بسرعة قد إيه بعد ما تسيب الزرار. وممكن كمان يتحكم في الـ filter frequency أو الـ pitch.",
@@ -2806,11 +2806,11 @@ AR.mm = {
        "ans": "شوف الأجزاء a–c تحت."
       },
       {
-       "why": "حسب Multimedia Summary 2026، ص. 15 (scan مكتوب بخط اليد، فمش هتعرف تعمل search فيه):<span class=\"ltr\">CR = size of compressed (I′) / size of original (I) × 100</span>وفي ص. <bdi dir=\"ltr\">16–17</bdi> حالّين نفس الصورة الـ <bdi dir=\"ltr\">5×5</bdi> دي بالظبط وطلعت 40.96 %، و<bdi dir=\"ltr\">1&nbsp;KB&nbsp;=&nbsp;1024&nbsp;B</bdi>، ومعادلة الـ CR هي هي سواء الـ scheme كان lossy أو lossless. ومعروض كمان convention الكتاب (original ÷ compressed).",
+       "why": "حسب Multimedia Summary 2026، ص. 15 (scan مكتوب بخط اليد، فمش هتعرف تعمل search فيه):<span class=\"ltr\">CR = size of compressed (I′) / size of original (I) × 100</span>وفي ص. <bdi dir=\"ltr\">16–17</bdi> حالّين نفس الصورة الـ <bdi dir=\"ltr\">5×5</bdi> بس متضغوطة لـ <bdi dir=\"ltr\">0.01&nbsp;KB</bdi> (<bdi dir=\"ltr\">10.24&nbsp;B</bdi>) وطلعت 40.96 %؛ هنا الحجم <bdi dir=\"ltr\">0.001&nbsp;KB</bdi>، فبتطلع 4.096 %، و<bdi dir=\"ltr\">1&nbsp;KB&nbsp;=&nbsp;1024&nbsp;B</bdi>، ومعادلة الـ CR هي هي سواء الـ scheme كان lossy أو lossless. ومعروض كمان convention الكتاب (original ÷ compressed).",
        "ans": "<b>الحجم الأصلي (Original size)</b> بيساوي:<span class=\"ltr\">colour depth × rows × columns</span><span class=\"ltr\">= 1 byte (8-bit grey) × 5 × 5 = <b>25 bytes</b></span>والـ Compressed بيساوي:<span class=\"ltr\">0.001 KB × 1024 = 1.024 B</span>والـ CR بيساوي:<span class=\"ltr\">1.024 / 25 × 100 = <b>4.096 %</b></span>وبصيغة الكتاب:<span class=\"ltr\">25 / 1.024 ≈ <b>24.41 : 1</b></span>"
       },
       {
-       "why": "حسب Multimedia Summary 2026، ص. 15 (scan مكتوب بخط اليد، فمش هتعرف تعمل search فيه):<span class=\"ltr\">CR = size of compressed (I′) / size of original (I) × 100</span>وفي ص. <bdi dir=\"ltr\">16–17</bdi> حالّين نفس الصورة الـ <bdi dir=\"ltr\">5×5</bdi> دي بالظبط وطلعت 40.96 %، و<bdi dir=\"ltr\">1&nbsp;KB&nbsp;=&nbsp;1024&nbsp;B</bdi>، ومعادلة الـ CR هي هي سواء الـ scheme كان lossy أو lossless. ومعروض كمان convention الكتاب (original ÷ compressed). (في الواقع مفيش lossless coder يصغّر 25 byte لحوالي 1 byte، بس الامتحان بيختبر المعادلة بس.)",
+       "why": "حسب Multimedia Summary 2026، ص. 15 (scan مكتوب بخط اليد، فمش هتعرف تعمل search فيه):<span class=\"ltr\">CR = size of compressed (I′) / size of original (I) × 100</span>وفي ص. <bdi dir=\"ltr\">16–17</bdi> حالّين نفس الصورة الـ <bdi dir=\"ltr\">5×5</bdi> بس متضغوطة لـ <bdi dir=\"ltr\">0.01&nbsp;KB</bdi> (<bdi dir=\"ltr\">10.24&nbsp;B</bdi>) وطلعت 40.96 %؛ هنا الحجم <bdi dir=\"ltr\">0.001&nbsp;KB</bdi>، فبتطلع 4.096 %، و<bdi dir=\"ltr\">1&nbsp;KB&nbsp;=&nbsp;1024&nbsp;B</bdi>، ومعادلة الـ CR هي هي سواء الـ scheme كان lossy أو lossless. ومعروض كمان convention الكتاب (original ÷ compressed). (في الواقع مفيش lossless coder يصغّر 25 byte لحوالي 1 byte، بس الامتحان بيختبر المعادلة بس.)",
        "ans": "نفس الحسبة:<span class=\"ltr\">CR = (0.001 × 1024) / 25 × 100 = <b>4.096 %</b> (≈ 24.41 : 1)</span>كون الـ scheme lossy أو lossless مش بيغيّر معادلة الـ CR؛ الفرق بس هل الصورة اللي اتعملها reconstruct هتساوي الأصلية ولا لأ."
       },
       {

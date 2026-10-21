@@ -2596,7 +2596,7 @@ COURSES.mm = {
     ],
     [
      "Karplus-Strong tuning",
-     "D = Fs / F1. Example: 44100 / 200 = 220.5 Hz."
+     "D = Fs / F1, so F1 = Fs / D. Example: D = 200 gives F1 = 44100 / 200 = 220.5 Hz."
     ]
    ],
    "qa": [
@@ -5298,13 +5298,13 @@ COURSES.mm = {
        "type": "written",
        "q": "a) If the image is passed through a lossy compression scheme with a final size equal to 0.001 Kilo Bytes. What is the Compression Ratio?",
        "ans": "<b>Original size</b> = colour depth × rows × columns = 1 byte (8-bit grey) × 5 × 5 = <b>25 bytes</b>.<br>Compressed = 0.001 KB × 1024 = 1.024 B.<br>CR = 1.024 / 25 × 100 = <b>4.096 %</b><br>(Textbook form: 25 / 1.024 ≈ <b>24.41 : 1</b>.)",
-       "why": "Per Multimedia Summary 2026, p. 15 (handwritten scan, so not text-searchable): CR = size of compressed (I′) / size of original (I) × 100; its pp. 16–17 solve this exact 5×5 image to 40.96 %, 1 KB = 1024 B, and the CR formula is the same whether the scheme is lossy or lossless. Textbook convention (original ÷ compressed) is also shown."
+       "why": "Per Multimedia Summary 2026, p. 15 (handwritten scan, so not text-searchable): CR = size of compressed (I′) / size of original (I) × 100; its pp. 16–17 solve the same 5×5 image compressed to 0.01 KB (10.24 B), giving 40.96 %; here it is 0.001 KB, so 4.096 %, 1 KB = 1024 B, and the CR formula is the same whether the scheme is lossy or lossless. Textbook convention (original ÷ compressed) is also shown."
       },
       {
        "type": "written",
        "q": "b) If the image is passed through a lossless compression scheme with a final size equal to 0.001 Kilo Bytes. What is the Compression Ratio?",
        "ans": "Same calculation: CR = (0.001 × 1024) / 25 × 100 = <b>4.096 %</b> (≈ 24.41 : 1). Lossy or lossless does not change the CR formula; it only changes whether the reconstructed image equals the original.",
-       "why": "Per Multimedia Summary 2026, p. 15 (handwritten scan, so not text-searchable): CR = size of compressed (I′) / size of original (I) × 100; its pp. 16–17 solve this exact 5×5 image to 40.96 %, 1 KB = 1024 B, and the CR formula is the same whether the scheme is lossy or lossless. Textbook convention (original ÷ compressed) is also shown. (Realistically no lossless coder shrinks 25 bytes to about 1 byte, but the exam only tests the formula.)"
+       "why": "Per Multimedia Summary 2026, p. 15 (handwritten scan, so not text-searchable): CR = size of compressed (I′) / size of original (I) × 100; its pp. 16–17 solve the same 5×5 image compressed to 0.01 KB (10.24 B), giving 40.96 %; here it is 0.001 KB, so 4.096 %, 1 KB = 1024 B, and the CR formula is the same whether the scheme is lossy or lossless. Textbook convention (original ÷ compressed) is also shown. (Realistically no lossless coder shrinks 25 bytes to about 1 byte, but the exam only tests the formula.)"
       },
       {
        "type": "written",
