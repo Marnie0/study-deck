@@ -837,6 +837,9 @@ input[type="checkbox"]{ width:18px; height:18px; accent-color:var(--s); margin:0
 .fmode .srcbadge.extra, .fmode .srcbadge.summary{ color:#C7D2FE; }
 .f-q{ font-size:clamp(1.35rem, 3.2vw, 2.1rem); font-weight:600; line-height:1.28; text-align:center; margin:0 auto 30px; max-width:36em; letter-spacing:-.01em; overflow-x:auto; }
 .f-q table{ margin:12px auto; border-collapse:collapse; font-size:1rem; font-weight:400; } .f-q td, .f-q th{ border:1px solid rgba(255,255,255,.3); padding:4px 10px; }
+/* inline code takes the colour of the text around it: white on the dark focus screen, dark on the answer tiles */
+.fmode code{ background:rgba(127,127,127,.2); border-color:rgba(127,127,127,.35); color:inherit; }
+.f-q{ padding:3px 0; } .f-q code{ padding:0 .3em; }
 .f-opts{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; align-items:start; }
 .f-opts.one{ grid-template-columns:minmax(0, 1fr); }
 .f-opt{ width:100%; display:flex; align-items:center; gap:14px; text-align:left; font:inherit; font-size:1.1rem; font-weight:500; line-height:1.35; padding:15px 18px; border:0; border-radius:18px; background:var(--tile-bg); color:var(--tile-ink); cursor:pointer; box-shadow:0 5px 0 rgba(0,0,0,.28); transition:transform .1s ease; }
