@@ -257,8 +257,8 @@
     let out;
     if (i === 0) out = html`<span className="cf1-oh">Source code</span><div className="cf1-src">a[index]=4+2</div>`;
     else if (i === 1) out = html`<span className="cf1-oh">Tokens</span><div className="cf1-toks">${TOKS.map(([l, k], j) => html`<span key=${j} className="cf1-tok"><span className="lx">${l}</span>${k}</span>`)}</div>`;
-    else if (i === 2) out = html`<span className="cf1-oh">Syntax tree</span><${Tree} all=${SYN_PLAIN} show=${() => true} label="Syntax tree of a[index]=4+2" />`;
-    else if (i === 3) out = html`<span className="cf1-oh">Annotated tree</span><${Tree} all=${SYN} show=${() => true} label="Annotated syntax tree of a[index]=4+2" />`;
+    else if (i === 2) out = html`<span className="cf1-oh">Syntax tree</span><${Tree} key="syn" all=${SYN_PLAIN} show=${() => true} label="Syntax tree of a[index]=4+2" />`;
+    else if (i === 3) out = html`<span className="cf1-oh">Annotated tree</span><${Tree} key="ann" all=${SYN} show=${() => true} label="Annotated syntax tree of a[index]=4+2" />`;
     else if (i === 4) out = html`<span className="cf1-oh">Intermediate code</span><div className="cf1-src">a[index]=6</div>`;
     else if (i === 5) out = html`<span className="cf1-oh">Target code</span><div className="cf1-code">${GEN.map((l, j) => html`<span key=${j} className="cf1-ln">${l}</span>`)}</div>`;
     else if (i === 6) out = html`<span className="cf1-oh">Target code (optimized)</span><div className="cf1-code">${OPT.map((l, j) => html`<span key=${j} className=${'cf1-ln' + (j ? ' new' : '')}>${l}</span>`)}</div>`;
