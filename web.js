@@ -6111,7 +6111,22 @@ COURSES.web = {
       "Concatenation with +: <code>1 + 1</code> is 2, but <code>\"1\" + 1</code> is \"11\".",
       "<b>split(delim)</b> breaks a string into an array (can use regular expressions); <b>join(delim)</b> merges an array into a string: <code>\"the quick brown fox\".split(\" \")</code> → reverse → join(\"!\") = \"fox!brown!quick!the\".",
       "Other methods: indexOf, lastIndexOf, search, replace, substring, substr, toLowerCase, toUpperCase, trim."
-     ]
+     ],
+     "fig": [
+      "wb-js3-chars",
+      "wb-js3-plus",
+      "wb-js3-split"
+     ],
+     "figAt": {
+      "wb-js3-chars": 1,
+      "wb-js3-plus": 2,
+      "wb-js3-split": 3
+     },
+     "figH": {
+      "wb-js3-chars": "A string letter by letter: indexes, length, charAt and charCodeAt",
+      "wb-js3-plus": "Does + add or join? It depends on the types of the two sides",
+      "wb-js3-split": "split, reverse, join: from a string to an array and back"
+     }
     },
     {
      "h": "String search and extraction",
@@ -6156,7 +6171,13 @@ COURSES.web = {
        "characters at 2 and 3",
        "\"al\""
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js3-search"
+     ],
+     "figH": {
+      "wb-js3-search": "Each search or extraction method marked on the string's indexes"
+     }
     },
     {
      "h": "Data type conversions",
@@ -6165,7 +6186,22 @@ COURSES.web = {
       "Number to string: <b>String(x)</b> (the slide writes \"string(x)\"; JS is case sensitive so it must be String) and <b>x.toString()</b>; literal form needs two dots: <code>999..toString()</code>.",
       "Any type to string and back: <b>JSON.stringify(x)</b> returns a string (serialization); <b>JSON.parse(x)</b> returns the original type.",
       "L9 Example 1 output: <code>typeof +x</code> → number; <code>Number('23')</code> → 23 number; parseInt(7.5) → 7; parseFloat(7.5) → 7.5; isNaN(289) → false; String(289) → \"289\" string; num.toString() → \"289\" string; 999..toString() → \"999\" string; typeof obj → object; typeof JSON.stringify(obj) → string; typeof JSON.parse(JSON.stringify(obj)) → object."
-     ]
+     ],
+     "fig": [
+      "wb-js3-convert",
+      "wb-js3-json",
+      "wb-js3-example1"
+     ],
+     "figAt": {
+      "wb-js3-convert": 1,
+      "wb-js3-json": 2,
+      "wb-js3-example1": 3
+     },
+     "figH": {
+      "wb-js3-convert": "Conversions tried live: how parseInt reads a string and where it stops",
+      "wb-js3-json": "JSON.stringify turns an object into text, JSON.parse turns it back",
+      "wb-js3-example1": "L9 Example 1 run line by line, with its console output"
+     }
     },
     {
      "h": "Objects",
@@ -6175,7 +6211,25 @@ COURSES.web = {
       "<b>Object.create(proto, descriptors)</b> creates a new object whose prototype is proto: <code>let S2 = Object.create(S1, {class:{value:1}});</code> (S2 inherits name, age, getName; the descriptor property \"class\" is non-enumerable).",
       "<b>Object.assign(target, src1, src2...)</b> copies the values and (own, enumerable) properties from sources into the target and returns the target; used to merge objects: <code>Object.assign(S1, S2, {status:'m'})</code>.",
       "Objects are compared <b>by reference</b>: two objects with the same content are not === equal. Duplicate keys in a literal keep the <b>last</b> value. The <b>in</b> keyword checks whether a property exists: <code>\"name\" in S1</code>."
-     ]
+     ],
+     "fig": [
+      "wb-js3-object",
+      "wb-js3-proto",
+      "wb-js3-assign",
+      "wb-js3-ref"
+     ],
+     "figAt": {
+      "wb-js3-object": 1,
+      "wb-js3-proto": 2,
+      "wb-js3-assign": 3,
+      "wb-js3-ref": 4
+     },
+     "figH": {
+      "wb-js3-object": "S1 built from the literal: dot and bracket access, this, delete",
+      "wb-js3-proto": "Object.create: S2 borrows from S1 through its prototype (Ali or Ahmed?)",
+      "wb-js3-assign": "Object.assign copies own enumerable properties into the target",
+      "wb-js3-ref": "Same content, different objects: === compares references"
+     }
     },
     {
      "h": "Math object",
@@ -6228,7 +6282,15 @@ COURSES.web = {
        "E, PI",
        "Properties; Math.floor(Math.PI) = 3"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js3-math",
+      "wb-js3-random"
+     ],
+     "figH": {
+      "wb-js3-math": "floor, ceil, round and abs on a number line, with every Math method",
+      "wb-js3-random": "Math.floor(Math.random() * 10 + 1), roll by roll"
+     }
     },
     {
      "h": "Functions",
@@ -6239,7 +6301,31 @@ COURSES.web = {
       "<b>Default parameters</b>: <code>function calc(x = 0, y = 0)</code> → calc() = 0, calc(2, 4) = 6.",
       "<b>Rest parameter</b> (pass any number of arguments as an array): <code>function calc(...A) { let sum = 0; for (let i = 0; i &lt; A.length; i++) sum += A[i]; return sum; }</code>. Careful: the slide's loop uses <code>i &lt;= A.length</code>, which adds A[A.length] = undefined and returns <b>NaN</b>.",
       "<b>Closures</b>: an inner function keeps access to the variables of the outer function."
-     ]
+     ],
+     "fig": [
+      "wb-js3-call",
+      "wb-js3-builtin",
+      "wb-js3-forms",
+      "wb-js3-default",
+      "wb-js3-rest",
+      "wb-js3-closure"
+     ],
+     "figAt": {
+      "wb-js3-call": 0,
+      "wb-js3-builtin": 1,
+      "wb-js3-forms": 2,
+      "wb-js3-default": 3,
+      "wb-js3-rest": 4,
+      "wb-js3-closure": 5
+     },
+     "figH": {
+      "wb-js3-call": "total = calc(8, 9) traced: arguments, a local variable, return",
+      "wb-js3-builtin": "escape encodes characters as %xx; eval reads a string as code",
+      "wb-js3-forms": "The same calc written as declaration, expression, self-invoked and arrow",
+      "wb-js3-default": "Default parameters fill in what the call leaves out",
+      "wb-js3-rest": "The rest parameter loop traced, and why i &lt;= A.length gives NaN",
+      "wb-js3-closure": "A closure: the inner function prints the outer a (the quiz's 21)"
+     }
     },
     {
      "h": "Event-driven programming",
@@ -6247,11 +6333,29 @@ COURSES.web = {
       "Types of events: <b>User interface events</b> (onload, onfocus, onblur, onchange), <b>Mouse events</b> (click, dblclick, mouseenter, mouseleave, mousemove), <b>Keyboard events</b> (onkeydown, onkeypress, onkeyup).",
       "<b>onload</b> (usually on &lt;body&gt;) waits until all page elements are loaded before running the script. <b>onclick</b> fires on a click; <b>ondblclick</b> on a double-click. <b>onkeyup</b> fires when the user releases a key (e.g. copy what is typed into a paragraph). <b>onunload</b> when the user leaves the page.",
       "Others: onabort, onblur (loses focus), onchange (element changed), ondragdrop, onerror, onfocus, onkeydown, onkeypress, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup, onmove, onreset, onresize, onselect, onsubmit."
-     ]
+     ],
+     "fig": [
+      "wb-js3-evtypes",
+      "wb-js3-onload"
+     ],
+     "figAt": {
+      "wb-js3-evtypes": 0,
+      "wb-js3-onload": 1
+     },
+     "figH": {
+      "wb-js3-evtypes": "Fire real events and see which kind each one is",
+      "wb-js3-onload": "onload: the page content loads first, then the script runs"
+     }
     },
     {
      "h": "Events example",
-     "code": "<body onload=\"init()\">\n<h2 ondblclick=\"alert('h2 double-clicked')\">Double-click me</h2>\n<button onclick=\"alert('button clicked')\">Click me</button>\n<input id=\"in\" onkeyup=\"document.getElementById('res').innerHTML = this.value\">\n<p id=\"res\"></p>\n<h1 onmouseover=\"this.style.backgroundColor='red'\"\n    onmouseout=\"this.style.backgroundColor='blue'\">Hover me</h1>\n<script>\nfunction init() { console.log(\"page loaded\"); }\ndocument.getElementById(\"in\").addEventListener(\"keydown\", function(e) {\n  if (\"aeiou\".includes(e.key)) alert(\"vowel is pressed\");\n});\n</script>\n</body>"
+     "code": "<body onload=\"init()\">\n<h2 ondblclick=\"alert('h2 double-clicked')\">Double-click me</h2>\n<button onclick=\"alert('button clicked')\">Click me</button>\n<input id=\"in\" onkeyup=\"document.getElementById('res').innerHTML = this.value\">\n<p id=\"res\"></p>\n<h1 onmouseover=\"this.style.backgroundColor='red'\"\n    onmouseout=\"this.style.backgroundColor='blue'\">Hover me</h1>\n<script>\nfunction init() { console.log(\"page loaded\"); }\ndocument.getElementById(\"in\").addEventListener(\"keydown\", function(e) {\n  if (\"aeiou\".includes(e.key)) alert(\"vowel is pressed\");\n});\n</script>\n</body>",
+     "fig": [
+      "wb-js3-events"
+     ],
+     "figH": {
+      "wb-js3-events": "The events example running: double-click, click, type, hover"
+     }
     },
     {
      "h": "localStorage and sessionStorage",
@@ -6260,7 +6364,19 @@ COURSES.web = {
       "Methods: <b>setItem(\"name\", value)</b>, <b>getItem(\"name\")</b>, <b>removeItem(\"name\")</b>, <b>clear()</b>, <b>key(index)</b>; property <b>length</b>. Shorthand: <code>localStorage.name = value</code>, <code>value = localStorage.name</code>. Values are stored as <b>strings</b> (store objects with JSON.stringify).",
       "In Chrome, data is in an SQLite file in the user profile (\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Local Storage); view it with Inspect &gt; Application &gt; Local Storage.",
       "L9 Example 3 (change background color) saves the clicked color with <code>localStorage.setItem('color', color)</code>. Note the slide's bug: <code>localStorage.lenght</code> (misspelled) is undefined, so the saved color is never restored on reload; it should be <code>localStorage.length</code>."
-     ]
+     ],
+     "fig": [
+      "wb-js3-storage",
+      "wb-js3-color"
+     ],
+     "figAt": {
+      "wb-js3-storage": 2,
+      "wb-js3-color": 3
+     },
+     "figH": {
+      "wb-js3-storage": "localStorage and sessionStorage side by side: methods, reload, closing the browser",
+      "wb-js3-color": "L9 Example 3: why the saved colour never comes back (lenght)"
+     }
     }
    ],
    "cards": [
@@ -6981,7 +7097,19 @@ COURSES.web = {
       "Server-side pages are programs written in web languages/frameworks: <b>PHP, Java/JSP, Ruby on Rails, ASP.NET, Python, Perl</b>.",
       "<b>Characteristics</b> (server-side scripting): (1) <b>dynamically edit, change or add</b> any content to a web page; (2) <b>respond to user queries</b> or data submitted from HTML forms; (3) <b>access any data or databases</b> and return the results to a browser; (4) <b>customize</b> a web page to make it more useful for individual users; (5) <b>provide security</b> since your server code cannot be viewed from a browser.",
       "The <b>web server</b> contains software that allows it to run server-side programs and sends back their output as responses. Each language has pros and cons; the course uses PHP."
-     ]
+     ],
+     "fig": [
+      "wb-php-url",
+      "wb-php-arch"
+     ],
+     "figAt": {
+      "wb-php-url": 1,
+      "wb-php-arch": 2
+     },
+     "figH": {
+      "wb-php-url": "Typing a URL: DNS, the request, the server grabs a file or runs a program, the response",
+      "wb-php-arch": "Browsers, the Web/Application server and the database"
+     }
     },
     {
      "h": "What is PHP and why PHP?",
@@ -6989,7 +7117,16 @@ COURSES.web = {
       "<b>PHP</b> = \"<b>PHP Hypertext Preprocessor</b>\" (recursive acronym): an open-source <b>server-side scripting language</b> used to make pages <b>dynamic</b>: provide different content depending on context, interface with other services (<b>database, e-mail</b>), <b>authenticate users</b>, <b>process form information</b>. PHP code can be embedded in (X)HTML.",
       "<b>Why PHP?</b> <b>Free and open source</b>; <b>Compatible</b> (as of November 2006 more than <b>19 million websites</b> used PHP); <b>Simple</b>.",
       "Lifecycle of a PHP request: the browser requests Hello.php → the server runs the PHP code → only the resulting HTML (\"Hello world!\") is sent to the user's computer."
-     ]
+     ],
+     "fig": [
+      "wb-php-cycle"
+     ],
+     "figAt": {
+      "wb-php-cycle": 2
+     },
+     "figH": {
+      "wb-php-cycle": "Lifecycle of a PHP request: only the HTML output reaches the browser"
+     }
     },
     {
      "h": "Basic syntax, output, comments",
@@ -6997,7 +7134,13 @@ COURSES.web = {
       "Code between <code>&lt;?php</code> and <code>?&gt;</code> is executed as PHP; everything else is output as pure HTML. You can switch back and forth between HTML and PHP modes.",
       "Output: <code>print \"text\";</code> or <code>echo \"a\", \"b\";</code>. Escape characters are the same as Java (<code>\\\"</code>, <code>\\n</code>). Strings may span lines.",
       "Comments: <code># single-line</code>, <code>// single-line</code>, <code>/* multi-line */</code> (like Java, but # is also allowed)."
-     ]
+     ],
+     "fig": [
+      "wb-php-modes"
+     ],
+     "figH": {
+      "wb-php-modes": "A .php file run line by line: HTML is copied, PHP code is executed"
+     }
     },
     {
      "h": "Variables, types, constants",
@@ -7007,7 +7150,21 @@ COURSES.web = {
       "Basic types: <b>int, float, boolean, string, array, object, NULL</b>. Test with <b>is_type</b> functions (is_string, is_int, is_numeric...), <b>gettype()</b> returns the type as a string, <b>var_dump()</b> dumps type and value: <code>var_dump(\"Harry\")</code> → <code>string(5) \"Harry\"</code>, <code>var_dump(28)</code> → <code>int(28)</code>, <code>var_dump(null)</code> → <code>NULL</code>.",
       "Automatic conversion: string → int on <b>+</b> (<code>5 + \"7\"</code> is 12); int → float on <b>/</b> (<code>7 / 2</code> = 3.5). Type-cast with <code>(int)</code>, e.g. <code>$age = (int) \"21\";</code>, <code>(int) 3.5</code> = 3, <code>round(3.5)</code> = 4 (float).",
       "<b>Constants</b>: <code>define(\"DB_NAME\", \"mySchool\");</code> then use <code>DB_NAME</code> <b>without $</b>. Writing <code>$DB_NAME</code> refers to an (undefined) variable instead."
-     ]
+     ],
+     "fig": [
+      "wb-php-varname",
+      "wb-php-dump",
+      "wb-php-vars"
+     ],
+     "figAt": {
+      "wb-php-varname": 1,
+      "wb-php-dump": 3
+     },
+     "figH": {
+      "wb-php-varname": "Valid variable name or not? Checked character by character",
+      "wb-php-dump": "var_dump and automatic conversion, worked out step by step",
+      "wb-php-vars": "Variables and constants traced: values and types after each line"
+     }
     },
     {
      "h": "Operators, strings and NULL",
@@ -7021,7 +7178,25 @@ COURSES.web = {
       "Strings in <b>single quotes are not interpreted</b>: <code>'You are $age years old.\\n'</code> prints the text literally, including \\n.",
       "Use braces to avoid ambiguity: <code>\"Today is your $ageth birthday\"</code> looks for $ageth (not found); <code>\"Today is your {$age}th birthday\"</code> works.",
       "A variable is <b>NULL</b> if it has not been set (undefined), has been assigned <code>NULL</code>, or was deleted with <b>unset()</b>. <b>isset()</b> tests whether it is not NULL. NULL prints as an empty string."
-     ]
+     ],
+     "fig": [
+      "wb-php-plusdot",
+      "wb-php-strindex",
+      "wb-php-strfn",
+      "wb-php-quotes"
+     ],
+     "figAt": {
+      "wb-php-plusdot": 1,
+      "wb-php-strindex": 2,
+      "wb-php-strfn": 4,
+      "wb-php-quotes": 7
+     },
+     "figH": {
+      "wb-php-plusdot": "+ adds numbers, . joins strings",
+      "wb-php-strindex": "A string as numbered cells: [index] from 0, and . to join",
+      "wb-php-strfn": "String functions on \"Mohammed AbdelFattah\", one character at a time",
+      "wb-php-quotes": "Double vs single quotes, and {$age}th: what gets printed"
+     }
     },
     {
      "h": "Booleans, control structures, math",
@@ -7030,7 +7205,21 @@ COURSES.web = {
       "<code>if (...) {...} elseif (...) {...} else {...}</code> (note <b>elseif</b>); <b>for</b>, <b>while</b>, <b>do...while</b> are the same as Java; <b>foreach ($arr as $key =&gt; $value)</b> iterates arrays.",
       "Math functions: abs, ceil, cos, floor, log, log10, max, min, pow, rand, round, sin, sqrt, tan; constants <b>M_PI, M_E, M_LN2</b>. <code>sqrt(pow(3,2) + pow(4,2))</code> = 5. int and float types: division of two ints can give a float.",
       "Functions: <code>function name($param) { ... return $value; }</code> (keyword \"function\", no return type)."
-     ]
+     ],
+     "fig": [
+      "wb-php-truthy",
+      "wb-php-math",
+      "wb-php-loop"
+     ],
+     "figAt": {
+      "wb-php-truthy": 0,
+      "wb-php-math": 2
+     },
+     "figH": {
+      "wb-php-truthy": "TRUE or FALSE? Sort the values and see what echo prints",
+      "wb-php-math": "Math functions, int and float, worked out step by step",
+      "wb-php-loop": "A for loop, a function and isset traced line by line"
+     }
     },
     {
      "h": "Arrays (sheet 3 and exams)",
@@ -7038,11 +7227,23 @@ COURSES.web = {
       "<code>$XX = array(\"MM\", \"BB\");</code> or <code>[\"MM\", \"BB\"]</code>; <code>count($XX)</code> gives the size; <code>print_r($XX)</code> prints <code>Array ( [0] =&gt; MM [1] =&gt; BB )</code>.",
       "<b>array_push($a, v)</b> add to end; <b>array_pop($a)</b> remove last and return it; <b>array_shift($a)</b> remove first and return it (re-indexes); <b>array_unshift</b> add to front; <b>sort($a)</b> ascending (uppercase letters sort before lowercase); <b>array_slice($a, offset, length)</b> returns <b>length</b> elements starting at offset (not an end index).",
       "<b>explode(' ', \"10 12 3\")</b> → [\"10\",\"12\",\"3\"]; <b>implode(' ', $arr)</b> joins. <b>str_pad($s, n, \" \", STR_PAD_LEFT)</b> pads on the left to width n."
-     ]
+     ],
+     "fig": [
+      "wb-php-arrays"
+     ],
+     "figH": {
+      "wb-php-arrays": "Array functions tried live: push, pop, shift, unshift, sort, slice, explode"
+     }
     },
     {
      "h": "Forms with PHP (L10 login example)",
-     "code": "<?php\necho \"welcome in myform\";\necho '<BR>';\nif ($_SERVER[\"REQUEST_METHOD\"] == \"POST\") {          // POST METHOD / GET METHOD\n    if (empty($_POST[\"username\"])) {\n        echo \"USERNAME is required\" . \"<br/>\";\n    } elseif (empty($_POST[\"password\"])) {\n        echo \"PASSWORD is required\" . \"<br/>\";\n    } else {\n        $username = $_POST[\"username\"];\n        $password = $_POST[\"password\"];\n        echo \"Welcome, \" . $username . \"!\";\n    }\n}\n?>\n<form action=\"\" method=\"POST\">       <!-- action=\"\" posts back to the same page -->\n  <label for=\"username\">Username:</label>\n  <input type=\"text\" name=\"username\" id=\"username\"><br/>\n  <label for=\"password\">Password:</label>\n  <input type=\"password\" name=\"password\" id=\"password\"><br/>\n  <input type=\"submit\" value=\"Login\">\n</form>"
+     "code": "<?php\necho \"welcome in myform\";\necho '<BR>';\nif ($_SERVER[\"REQUEST_METHOD\"] == \"POST\") {          // POST METHOD / GET METHOD\n    if (empty($_POST[\"username\"])) {\n        echo \"USERNAME is required\" . \"<br/>\";\n    } elseif (empty($_POST[\"password\"])) {\n        echo \"PASSWORD is required\" . \"<br/>\";\n    } else {\n        $username = $_POST[\"username\"];\n        $password = $_POST[\"password\"];\n        echo \"Welcome, \" . $username . \"!\";\n    }\n}\n?>\n<form action=\"\" method=\"POST\">       <!-- action=\"\" posts back to the same page -->\n  <label for=\"username\">Username:</label>\n  <input type=\"text\" name=\"username\" id=\"username\"><br/>\n  <label for=\"password\">Password:</label>\n  <input type=\"password\" name=\"password\" id=\"password\"><br/>\n  <input type=\"submit\" value=\"Login\">\n</form>",
+     "fig": [
+      "wb-php-login"
+     ],
+     "figH": {
+      "wb-php-login": "Submit the login form and follow the PHP branch by branch"
+     }
     },
     {
      "h": "GET vs POST",
@@ -7067,11 +7268,23 @@ COURSES.web = {
        "$_SERVER[\"REQUEST_METHOD\"] == \"GET\"",
        "$_SERVER[\"REQUEST_METHOD\"] == \"POST\""
       ]
-     ]
+     ],
+     "fig": [
+      "wb-php-getpost"
+     ],
+     "figH": {
+      "wb-php-getpost": "The same form data sent with GET and with POST"
+     }
     },
     {
      "h": "PHP exercises (L10, solved in Sheet 3)",
-     "code": "<?php\n// Ex2: equations with $x = 10, $y = 7\n$x = 10; $y = 7;\necho \"$x + $y = \" . ($x + $y) . \"<br>\";   // 10 + 7 = 17\necho \"$x / $y = \" . ($x / $y) . \"<br>\";   // 10 / 7 = 1.4285714285714\necho \"$x % $y = \" . ($x % $y) . \"<br>\";   // 10 % 7 = 3\n// Ex3: one variable, assignment operators only\n$v = 8;  echo \"Value is now $v.<br>\";\n$v += 2; echo \"Add 2. Value is now $v.<br>\";        // 10\n$v -= 4; echo \"Subtract 4. Value is now $v.<br>\";   // 6\n$v *= 5; echo \"Multiply by 5. Value is now $v.<br>\"; // 30\n$v /= 3; echo \"Divide by 3. Value is now $v.<br>\";  // 10\n$v++;    echo \"Increment value by one. Value is now $v.<br>\"; // 11\n$v--;    echo \"Decrement value by one. Value is now $v.<br>\"; // 10\n// Ex5: single quotes + concatenation\n$around = \"around\";\necho 'What goes ' . $around . ', comes ' . $around . '.';\n// Ex6: month check\nif (date('F', time()) == \"August\") echo \"It's August, so it's really hot.\";\nelse echo \"Not August, so at least not in the peak of the heat.\";\n// Ex7: nested loops multiplication table 7x7\necho \"<table border='1'>\";\nfor ($i = 1; $i <= 7; $i++) {\n  echo \"<tr>\";\n  for ($j = 1; $j <= 7; $j++) echo \"<td>\" . ($i * $j) . \"</td>\";\n  echo \"</tr>\";\n}\necho \"</table>\";\n?>"
+     "code": "<?php\n// Ex2: equations with $x = 10, $y = 7\n$x = 10; $y = 7;\necho \"$x + $y = \" . ($x + $y) . \"<br>\";   // 10 + 7 = 17\necho \"$x / $y = \" . ($x / $y) . \"<br>\";   // 10 / 7 = 1.4285714285714\necho \"$x % $y = \" . ($x % $y) . \"<br>\";   // 10 % 7 = 3\n// Ex3: one variable, assignment operators only\n$v = 8;  echo \"Value is now $v.<br>\";\n$v += 2; echo \"Add 2. Value is now $v.<br>\";        // 10\n$v -= 4; echo \"Subtract 4. Value is now $v.<br>\";   // 6\n$v *= 5; echo \"Multiply by 5. Value is now $v.<br>\"; // 30\n$v /= 3; echo \"Divide by 3. Value is now $v.<br>\";  // 10\n$v++;    echo \"Increment value by one. Value is now $v.<br>\"; // 11\n$v--;    echo \"Decrement value by one. Value is now $v.<br>\"; // 10\n// Ex5: single quotes + concatenation\n$around = \"around\";\necho 'What goes ' . $around . ', comes ' . $around . '.';\n// Ex6: month check\nif (date('F', time()) == \"August\") echo \"It's August, so it's really hot.\";\nelse echo \"Not August, so at least not in the peak of the heat.\";\n// Ex7: nested loops multiplication table 7x7\necho \"<table border='1'>\";\nfor ($i = 1; $i <= 7; $i++) {\n  echo \"<tr>\";\n  for ($j = 1; $j <= 7; $j++) echo \"<td>\" . ($i * $j) . \"</td>\";\n  echo \"</tr>\";\n}\necho \"</table>\";\n?>",
+     "fig": [
+      "wb-php-ex"
+     ],
+     "figH": {
+      "wb-php-ex": "The exercises run step by step: equations, assignment operators, quotes, the month check, the 7×7 table"
+     }
     }
    ],
    "cards": [

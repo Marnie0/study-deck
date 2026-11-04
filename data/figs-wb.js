@@ -4883,3 +4883,1909 @@ textarea.wbv6-inp{ resize:vertical; min-height:96px; line-height:1.45; }
   });
   if (window.WBV8_TEST) window.WBV8_TEST = { trace, progRun, ifRun, swRun, loopRun, cmpRun, carsRun, makeArr, callM, parseLits, AEX, MD };
 })();
+/* ── part L9 ── */
+// Web Programming visuals, Lecture 9 (JavaScript part 3): string indexes, charAt / charCodeAt, + with strings, split / reverse / join,
+// search and extraction methods, type conversions, Example 1 replayed in a console, JSON round trip, object literals, Object.create,
+// Object.assign, comparing by reference, the Math methods and random, a function call traced, escape / eval, the four function forms,
+// default and rest parameters, a closure, the event types and onload, the events example live, localStorage / sessionStorage and
+// Example 3 (LEC_7_Javascript_P3 slides 3 to 41). Every label and number comes from the site's notes or is computed with JavaScript's own rules.
+// Nothing typed by the student is executed: expressions go through small parsers here; alert, console and storage are mocked inside the figure.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.wbv9 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.wbv9 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.wbv9-chips{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.wbv9-chips .fig-btn{ font-size:.8rem; padding:4px 10px; min-height:30px; }
+.wbv9-m, .wbv9 code, .wbv9-code, .wbv9-in, .wbv9-kv, .wbv9-con, .wbv9-obj{ font-variant-ligatures:none font-feature-settings:"liga" 0, "calt" 0, "clig" 0; }
+.wbv9-m{ font-family:var(--mono); }
+.wbv9-lab{ font-size:.75rem; color:var(--graphite); text-align:center; margin:8px 0 4px; }
+.wbv9-row{ display:flex; flex-wrap:wrap; gap:6px; align-items:center; justify-content:center; margin:0 0 10px; font:.82rem var(--mono); direction:ltr; color:var(--ink); }
+.wbv9-in{ font:.85rem var(--mono); border:1px solid var(--line); border-radius:6px; padding:5px 8px; background:var(--paper); color:var(--ink); direction:ltr; min-width:0; box-sizing:border-box; }
+.wbv9-in.wbv9-w{ width:100%; max-width:250px; } .wbv9-ta{ width:100%; max-width:340px; resize:none; line-height:1.4; overflow-wrap:anywhere; white-space:pre-wrap; display:block; margin:0 auto; }
+.wbv9-kv > div > code{ font:inherit; font-size:inherit; background:none; padding:0; color:var(--ink); border:0; } .wbv9-in.wbv9-s{ width:62px; } .wbv9-in.wbv9-n{ width:92px; }
+.wbv9-code{ font:.78rem/1.5 var(--mono); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:7px 5px; white-space:pre-wrap; overflow-wrap:anywhere; direction:ltr; text-align:left; color:var(--ink); max-width:560px; margin:0 auto; box-sizing:border-box; }
+.wbv9-code.wbv9-tall{ max-height:210px; overflow-y:auto; }
+.wbv9-ln{ display:block; border-radius:4px; padding:0 3px; transition:background .4s, opacity .4s; min-height:1.5em; }
+.wbv9-ln.wbv9-on{ background:color-mix(in srgb, var(--fig-k) 24%, transparent); }
+.wbv9-ln.wbv9-dim{ opacity:.45; }
+.wbv9-fname{ font:600 .75rem var(--mono); color:var(--graphite); margin:8px auto 2px; direction:ltr; text-align:left; max-width:560px; }
+.wbv9-con{ max-width:560px; margin:8px auto 0; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:.78rem/1.45 var(--mono); direction:ltr; text-align:left; color:var(--ink); overflow:hidden; box-sizing:border-box; }
+.wbv9-con > div{ padding:2px 8px; border-top:1px solid var(--line); white-space:pre-wrap; overflow-wrap:anywhere; transition:background .4s; }
+.wbv9-con > div.wbv9-conh{ border-top:0; font:600 .75rem var(--body); color:var(--graphite); background:var(--paper-2); }
+.wbv9-con > div.wbv9-new{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.wbv9-nm{ color:var(--fig-k); } .wbv9-sg{ color:var(--ok); } .wbv9-er{ color:var(--pen); }
+.wbv9-cells{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; direction:ltr; max-width:560px; margin:0 auto; }
+.wbv9-cell{ display:flex; flex-direction:column; align-items:center; min-width:22px; font:inherit; background:none; border:0; padding:0; color:var(--ink); }
+button.wbv9-cell{ cursor:pointer; }
+.wbv9-cell b{ display:block; box-sizing:border-box; min-width:22px; width:100%; padding:0 3px; font:600 .95rem/1.7 var(--mono); border:1.5px solid var(--line); background:var(--paper); color:var(--ink); border-radius:4px; white-space:pre; text-align:center; transition:background .35s, border-color .35s, opacity .35s, box-shadow .35s; }
+.wbv9-cell small{ font:.75rem/1.3 var(--mono); color:var(--graphite); }
+.wbv9-cell small.wbv9-tag{ color:var(--fig-k); font-weight:600; }
+.wbv9-cell.wbv9-hit b{ background:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); border-color:var(--fig-k); }
+.wbv9-cell.wbv9-may b{ border-style:dashed; border-color:var(--fig-k); }
+.wbv9-cell.wbv9-cur b{ box-shadow:0 0 0 2px var(--fig-k); }
+.wbv9-cell.wbv9-ok b{ background:color-mix(in srgb, var(--ok) 24%, var(--paper)); border-color:var(--ok); }
+.wbv9-cell.wbv9-bad b{ border-color:var(--pen); color:var(--pen); border-width:2px; }
+.wbv9-cell.wbv9-off b{ opacity:.35; }
+.wbv9-sp{ color:var(--graphite); font-weight:400; }
+.wbv9-kv{ display:grid; gap:4px; max-width:440px; margin:10px auto 0; font:.82rem var(--mono); direction:ltr; text-align:left; }
+.wbv9-kv.wbv9-g2{ grid-template-columns:repeat(2, minmax(0,1fr)); max-width:520px; }
+.wbv9-kv > div{ display:flex; flex-wrap:wrap; gap:2px 8px; align-items:baseline; padding:3px 8px; border-radius:6px; background:var(--paper); border:1px solid var(--line); transition:background .4s, opacity .4s; color:var(--ink); }
+.wbv9-kv > div > span{ color:var(--graphite); }
+.wbv9-kv > div > b{ color:var(--fig-k); overflow-wrap:anywhere; }
+.wbv9-kv > div.wbv9-on{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.wbv9-kv > div.wbv9-bad > b{ color:var(--pen); }
+.wbv9-ty{ font:600 .75rem var(--body); color:var(--graphite); border:1px solid var(--line); border-radius:99px; padding:0 6px; white-space:nowrap; }
+.wbv9-arr{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; direction:ltr; }
+.wbv9-arr > span{ display:flex; flex-direction:column; align-items:center; transition:opacity .4s; }
+.wbv9-arr > span > b{ font:600 .88rem/1.7 var(--mono); padding:0 6px; border:1.5px solid var(--fig-k); border-radius:4px; background:var(--paper); color:var(--ink); white-space:pre; }
+.wbv9-arr > span > small{ font:.75rem var(--mono); color:var(--graphite); }
+.wbv9-str{ display:inline-block; max-width:100%; font:600 .92rem/1.6 var(--mono); padding:2px 8px; border:1.5px solid var(--ok); border-radius:6px; background:var(--paper); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; direction:ltr; }
+.wbv9-mid{ text-align:center; margin:8px 0; }
+.wbv9-down{ text-align:center; color:var(--fig-k); font:600 .78rem var(--mono); margin:6px 0; direction:ltr; }
+.wbv9-objs{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:flex-start; }
+.wbv9-obj{ min-width:132px; max-width:100%; border:2px solid var(--fig-k); border-radius:8px; background:var(--paper); font:.82rem/1.55 var(--mono); direction:ltr; text-align:left; overflow:hidden; transition:opacity .4s, box-shadow .4s; color:var(--ink); box-sizing:border-box; }
+.wbv9-obj.wbv9-on{ box-shadow:0 0 0 3px color-mix(in srgb, var(--fig-k) 45%, transparent); }
+.wbv9-obj.wbv9-fr{ border-style:dashed; }
+.wbv9-obj.wbv9-off{ opacity:.35; }
+.wbv9-objh{ font:600 .78rem/1.5 var(--body); background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); padding:2px 8px; color:var(--ink); }
+.wbv9-prop{ display:flex; justify-content:space-between; gap:12px; padding:1px 8px; border-top:1px solid var(--line); transition:background .4s, opacity .4s; }
+.wbv9-prop b{ font-weight:600; color:var(--fig-k); }
+.wbv9-prop.wbv9-on{ background:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); }
+.wbv9-prop.wbv9-ne{ font-style:italic; color:var(--graphite); }
+.wbv9-prop.wbv9-gone{ opacity:.35; text-decoration:line-through; }
+.wbv9-prop.wbv9-new{ background:color-mix(in srgb, var(--ok) 22%, var(--paper)); }
+.wbv9-prop.wbv9-skip{ background:color-mix(in srgb, var(--pen) 14%, var(--paper)); }
+.wbv9-proto{ font:.75rem/1.5 var(--mono); color:var(--graphite); padding:2px 8px; border-top:1px dashed var(--line); }
+.wbv9-empty{ padding:1px 8px; color:var(--graphite); font-style:italic; border-top:1px solid var(--line); }
+.wbv9-vars{ display:grid; gap:4px; font:.82rem var(--mono); direction:ltr; }
+.wbv9-vars > div{ display:flex; gap:6px; align-items:center; padding:2px 8px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); transition:background .4s, opacity .4s; }
+.wbv9-vars > div.wbv9-on{ background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.wbv9-vars > div > span{ color:var(--fig-k); font-weight:600; }
+.wbv9-two{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px; max-width:560px; margin:0 auto; }
+@media (min-width:640px){ .wbv9-two{ grid-template-columns:repeat(2, minmax(0,1fr)); align-items:start; } }
+.wbv9-nl{ display:block; width:100%; max-width:440px; height:auto; margin:0 auto; }
+.wbv9-nl text{ font-family:var(--mono); }
+.wbv9-hist{ display:grid; grid-template-columns:repeat(10, minmax(0,1fr)); gap:3px; align-items:end; height:118px; max-width:420px; margin:8px auto 0; direction:ltr; }
+.wbv9-hist > div{ display:flex; flex-direction:column; justify-content:flex-end; align-items:center; height:100%; font:.75rem var(--mono); color:var(--ink); min-width:0; }
+.wbv9-hist i{ display:block; width:100%; background:color-mix(in srgb, var(--fig-k) 55%, var(--paper)); border-radius:3px 3px 0 0; transition:height .3s; min-height:1px; }
+.wbv9-hist > div.wbv9-on i{ background:var(--fig-s); }
+.wbv9-hist small{ font-size:.75rem; color:var(--graphite); }
+.wbv9-cats{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; max-width:560px; margin:0 auto; }
+@media (max-width:520px){ .wbv9-cats{ grid-template-columns:minmax(0,1fr); } }
+.wbv9-cat{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:5px 8px; color:var(--ink); }
+.wbv9-cat > b{ display:block; font-size:.8rem; margin-bottom:2px; }
+.wbv9-cat > span{ display:inline-block; font:.75rem/1.5 var(--mono); border-radius:99px; padding:0 6px; margin:2px; border:1px solid var(--line); transition:background .3s, color .3s; }
+.wbv9-cat > span.wbv9-on{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.wbv9-pad{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; max-width:440px; margin:0 auto 10px; }
+.wbv9-zone{ border:2px dashed var(--fig-k); border-radius:10px; min-height:74px; display:grid; place-items:center; text-align:center; font-size:.8rem; color:var(--ink); background:var(--paper); user-select:none; -webkit-user-select:none; padding:4px; cursor:pointer; touch-action:manipulation; }
+.wbv9-zone.wbv9-on{ background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.wbv9-pad .wbv9-in{ width:100%; }
+.wbv9-log{ max-width:440px; margin:0 auto; display:grid; gap:3px; }
+.wbv9-log > div{ display:flex; gap:8px; align-items:center; font:.78rem var(--mono); padding:2px 8px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); direction:ltr; }
+.wbv9-log > div:first-child{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.wbv9-log em{ font:600 .75rem var(--body); font-style:normal; color:var(--graphite); margin-left:auto; }
+.wbv9-win{ max-width:520px; margin:0 auto; border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--paper-2); position:relative; box-sizing:border-box; }
+.wbv9-tab{ font:.75rem var(--mono); color:var(--ink); padding:3px 8px; border-bottom:1px solid var(--line); direction:ltr; text-align:left; overflow-wrap:anywhere; display:flex; gap:6px; flex-wrap:wrap; }
+.wbv9-tab span{ color:var(--graphite); }
+.wbv9-pg{ background:#fff; color:#111; font-family:"Times New Roman", Times, serif; font-size:16px; line-height:1.3; padding:8px 10px; text-align:left; direction:ltr; overflow-wrap:anywhere; min-height:56px; transition:background-color .4s; }
+.wbv9-pg h1, .wbv9-pg h2, .wbv9-pg p{ margin:.3em 0; } .wbv9-pg h1{ font-size:1.6em; line-height:1.15; transition:background-color .3s; } .wbv9-pg h2{ font-size:1.3em; }
+.wbv9-pg button{ font:13.5px Arial, sans-serif; padding:2px 8px; color:#111; background:#efefef; border:1px solid #767676; border-radius:3px; cursor:pointer; }
+.wbv9-pg input{ font:13.5px Arial, sans-serif; color:#111; background:#fff; border:1px solid #767676; padding:2px 4px; width:160px; max-width:100%; box-sizing:border-box; }
+.wbv9-pg p.wbv9-res{ min-height:1.3em; }
+.wbv9-alert{ position:absolute; left:50%; top:34px; transform:translateX(-50%); width:min(250px, 88%); background:#fff; color:#111; border-radius:8px; box-shadow:0 6px 24px rgba(0,0,0,.4); padding:10px 12px 8px; font:14px Arial, sans-serif; z-index:2; box-sizing:border-box; text-align:left; direction:ltr; }
+.wbv9-alert small{ display:block; color:#444; font-size:12px; margin-bottom:4px; }
+.wbv9-alert div{ text-align:right; margin-top:8px; } .wbv9-alert button{ background:#1a73e8; color:#fff; border:0; border-radius:4px; padding:4px 16px; font:13px Arial, sans-serif; cursor:pointer; }
+.wbv9-sq{ display:flex; flex-wrap:wrap; gap:6px; }
+.wbv9-sq div{ width:62px; height:56px; cursor:pointer; font-size:14px; }
+.wbv9-dt{ border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--paper); font:.78rem var(--mono); direction:ltr; text-align:left; color:var(--ink); min-width:0; }
+.wbv9-dt > div{ font:600 .75rem var(--body); color:var(--graphite); background:var(--paper-2); padding:3px 8px; }
+.wbv9-dt table{ width:100%; border-collapse:collapse; table-layout:fixed; }
+.wbv9-dt th, .wbv9-dt td{ padding:2px 6px; border-top:1px solid var(--line); overflow-wrap:anywhere; text-align:left; vertical-align:top; }
+.wbv9-dt th{ font:600 .75rem var(--body); color:var(--graphite); }
+.wbv9-dt tr.wbv9-on td{ background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.wbv9-dt td.wbv9-none{ color:var(--graphite); font-style:italic; }
+.wbv9-note{ font-size:.78rem; color:var(--graphite); text-align:center; margin:6px 0 0; }
+.wbv9-big{ font:700 1.1rem var(--mono); color:var(--fig-k); }
+`;
+  if (!document.getElementById('wbv9-css')) { const s = document.createElement('style'); s.id = 'wbv9-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ── helpers ── */
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const C = s => '<code>' + esc(s) + '</code>';
+  const Bd = s => '<bdi dir="ltr">' + esc(s).replace(/ /g, '&nbsp;') + '</bdi>';
+  const Ls = s => '<span class="ltr">' + esc(s) + '</span>';
+  const fv = v => typeof v === 'string' ? '"' + v + '"' : Array.isArray(v) ? '[' + v.map(fv).join(', ') + ']' : typeof v === 'function' ? 'ƒ' : Object.is(v, -0) ? '0' : String(v);
+  const tyOf = v => v === null ? 'object' : Array.isArray(v) ? 'object' : typeof v;
+  const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+  // a value the student types: "text" / 'text', a number, true / false / null / undefined / NaN / Infinity (nothing else is run)
+  function lit(src) {
+    const t = String(src).trim(); let m;
+    if ((m = t.match(/^"([^"]*)"$/)) || (m = t.match(/^'([^']*)'$/))) return { ok: true, v: m[1] };
+    if (/^[+-]?(\d+\.?\d*|\.\d+)(e[+-]?\d+)?$/i.test(t)) return { ok: true, v: Number(t) };
+    const K = { true: true, false: false, null: null, undefined: undefined, NaN: NaN, Infinity: Infinity, '-Infinity': -Infinity };
+    if (own(K, t)) return { ok: true, v: K[t] };
+    return { ok: false };
+  }
+  const num4 = v => Number.isFinite(v) ? String(Number(v.toFixed(4))) : String(v);
+  const Chips = ({ items, sel, on, mono, label }) => html`<div className="wbv9-chips" role="group" aria-label=${label || 'Options'}>${items.map(([k, t]) => html`<button key=${k} className=${'fig-btn' + (mono ? ' wbv9-m' : '')} aria-pressed=${String(sel === k)} onClick=${() => on(k)}>${t}</button>`)}</div>`;
+  const Code = ({ lines, on, dim, tall, label }) => {
+    const ref = useRef(null), isOn = j => Array.isArray(on) ? on.includes(j) : on === j;
+    useEffect(() => { const el = ref.current; if (!el || !tall) return; const k = el.querySelector('.wbv9-on'); if (k) el.scrollTop = Math.max(0, k.offsetTop - el.offsetTop - 40); }, [JSON.stringify(on)]);
+    return html`<pre ref=${ref} className=${'wbv9-code' + (tall ? ' wbv9-tall' : '')} aria-label=${label || 'JavaScript code'}>${lines.map((l, j) => { const ind = typeof l === 'string' ? l.match(/^ */)[0].length : 0; return html`<span key=${j} className=${'wbv9-ln' + (isOn(j) ? ' wbv9-on' : '') + (dim && dim(j) ? ' wbv9-dim' : '')} style=${ind ? { paddingLeft: 'calc(' + ind + 'ch + 3px)' } : null}>${ind ? l.slice(ind) : l}</span>`; })}</pre>`;
+  };
+  const Cells = ({ s, cls, pick, tag }) => html`<div className="wbv9-cells">${s.split('').map((ch, j) => {
+    const inner = html`<b>${ch === ' ' ? html`<span className="wbv9-sp">␣</span>` : ch}</b><small className=${tag && tag(j) ? 'wbv9-tag' : ''}>${tag && tag(j) ? tag(j) : j}</small>`;
+    return pick ? html`<button key=${j} className=${'wbv9-cell ' + (cls ? cls(j) : '')} onClick=${() => pick(j)} aria-label=${'index ' + j}>${inner}</button>` : html`<span key=${j} className=${'wbv9-cell ' + (cls ? cls(j) : '')}>${inner}</span>`;
+  })}</div>`;
+  const KV = ({ rows, cols }) => html`<div className=${'wbv9-kv' + (cols ? ' wbv9-g2' : '')}>${rows.map(([e, v, cls], j) => html`<div key=${j} className=${cls || ''}><code>${e}</code><span>→</span><b>${v}</b></div>`)}</div>`;
+  const Con = ({ lines, fresh, head }) => html`<div className="wbv9-con" aria-label="Console"><div className="wbv9-conh">${head || 'Console'}</div>${lines.length ? lines.map((l, j) => html`<div key=${j} className=${j >= lines.length - (fresh || 0) ? 'wbv9-new' : ''}>${l}</div>`) : html`<div style=${{ color: 'var(--graphite)' }}> </div>`}</div>`;
+  const Obj = ({ name, rows, hl, proto, cls, empty }) => html`<div className=${'wbv9-obj ' + (cls || '')}><div className="wbv9-objh">${name}</div>
+    ${rows.length ? rows.map(r => html`<div key=${r.k} className=${'wbv9-prop' + (hl === r.k || (Array.isArray(hl) && hl.includes(r.k)) ? ' wbv9-on' : '') + (r.ne ? ' wbv9-ne' : '') + (r.gone ? ' wbv9-gone' : '') + (r.isNew ? ' wbv9-new' : '') + (r.skip ? ' wbv9-skip' : '')}><span>${r.k}${r.ne ? ' *' : ''}</span><b>${r.v}</b></div>`) : html`<div className="wbv9-empty">${empty || '(empty)'}</div>`}
+    ${proto && html`<div className="wbv9-proto">[[Prototype]]: ${proto}</div>`}</div>`;
+  const Steps = (steps, i, ctl, ar) => html`<${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+
+  /* ── [0.0], [0.1] slide 3: a string's indexes, length, charAt and charCodeAt ── */
+  function Chars({ ar }) {
+    const EX = 'Connie Client';
+    const [s, setS] = useState(EX), [i, setI] = useState(0);
+    const k = Math.min(i, Math.max(0, s.length - 1)), ch = s.charAt(k), code = s.charCodeAt(k), has = s.length > 0;
+    const en = has ? `${C('s.length')} is <b>${s.length}</b>: a property, no brackets. At index ${k}, ${C(`s.charAt(${k})`)} gives ${C(fv(ch))}, a one-letter <b>String</b> (there is no char type), and ${C(`s.charCodeAt(${k})`)} gives its Unicode (ASCII) code <b>${code}</b>. Tap another letter.` : 'Type a string to see its letters.';
+    const a = has ? `الـ ${Bd('s.length')} بيساوي <b>${Bd(s.length)}</b>، وده property من غير أقواس. عند الـ index رقم ${Bd(k)} الـ ${Bd(`s.charAt(${k})`)} بترجع ${Bd(fv(ch))}، وده <b>String</b> فيه حرف واحد (مفيش char type)، والـ ${Bd(`s.charCodeAt(${k})`)} بترجع الـ Unicode (ASCII) code بتاعه <b>${Bd(code)}</b>. دوس على حرف تاني.` : 'اكتب string عشان تشوف حروفه.';
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <div className="wbv9-row"><span>var s = "</span><input className="wbv9-in wbv9-w" value=${s} maxLength="22" aria-label="The string" onChange=${e => setS(e.target.value)} /><span>";</span></div>
+      <${Cells} s=${s} pick=${setI} cls=${j => j === k ? 'wbv9-hit wbv9-cur' : ''} />
+      ${has && html`<${KV} rows=${[['s.length', s.length], [`s.charAt(${k})`, fv(ch)], [`typeof s.charAt(${k})`, '"string"'], [`s.charCodeAt(${k})`, code]]} />`}
+      <div className="wbv9-chips" style=${{ marginTop: '10px' }}><button className="fig-btn" onClick=${() => { setS(EX); setI(0); }}>Example from the notes</button></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [0.2]: + joins as soon as one side is a string ── */
+  const PLUS_EX = [['1', '+', '1'], ['"1"', '+', '1'], ['1', '+', '"1"'], ['"h"', '-', '"a"']];
+  function PlusCalc({ l, op, r, ar }) {
+    const pl = lit(l), pr = lit(r);
+    const steps = (() => {
+      if (!pl.ok || !pr.ok) { const bad = !pl.ok ? l : r; return [{ en: `${C(bad)} is not a value this demo understands. Type a number like ${C('1')} or a string in quotes like ${C('"1"')}.`, ar: `الـ ${Bd(bad)} مش قيمة الديمو ده يفهمها. اكتب رقم زي ${Bd('1')} أو string بين علامتين تنصيص زي ${Bd('"1"')}.`, bad: 1 }]; }
+      const a = pl.v, b = pr.v, str = op === '+' && (typeof a === 'string' || typeof b === 'string');
+      const res = str ? String(a) + String(b) : (() => { const x = Number(a), y = Number(b); return op === '+' ? x + y : op === '-' ? x - y : op === '*' ? x * y : x / y; })();
+      const e = `${fv(a)} ${op} ${fv(b)}`;
+      const s0 = { en: `${C(e)}: the left side is a <b>${tyOf(a)}</b>, the right side is a <b>${tyOf(b)}</b>.`, ar: `في ${Bd(e)} الناحية الشمال <b>${tyOf(a)}</b> واليمين <b>${tyOf(b)}</b>.` };
+      const s1 = str ? { en: `With ${C('+')}, as soon as one side is a string, JavaScript turns the other side into a string too and <b>joins</b> them (concatenation).`, ar: `مع الـ ${Bd('+')} أول ما يبقى فيه string في أي ناحية، الـ JavaScript بتحوّل الناحية التانية لـ string وبتلزقهم (concatenation).` }
+        : op === '+' ? { en: `No string on either side, so ${C('+')} <b>adds</b> the two numbers.`, ar: `مفيش string في أي ناحية، فالـ ${Bd('+')} بتجمع الرقمين.` }
+          : { en: `${C(op)} only works on numbers, so both sides are converted to numbers: ${C(fv(a))} becomes ${C(fv(Number(a)))} and ${C(fv(b))} becomes ${C(fv(Number(b)))}.`, ar: `الـ ${Bd(op)} شغالة على أرقام بس، فالناحيتين بيتحولوا لأرقام. الـ ${Bd(fv(a))} بيبقى ${Bd(fv(Number(a)))} والـ ${Bd(fv(b))} بيبقى ${Bd(fv(Number(b)))}.` };
+      const s2 = { en: `Result: ${C(fv(res))}, a <b>${tyOf(res)}</b>.${Number.isNaN(res) ? ' NaN means "Not a Number".' : ''}`, ar: `النتيجة ${Bd(fv(res))} ونوعها <b>${tyOf(res)}</b>.${Number.isNaN(res) ? ' والـ NaN معناها Not a Number.' : ''}` };
+      return [Object.assign(s0, { a, b }), Object.assign(s1, { a, b, str }), Object.assign(s2, { a, b, str, res })];
+    })();
+    const [i, ctl] = useSteps(steps.length, 1700), s = steps[i];
+    if (s.bad) return html`<${Cap} ...${s} showAr=${ar} />`;
+    const conv = v => s.str ? String(v) : Number(v);
+    const Box = ({ v, show }) => html`<span style=${{ display: 'inline-flex', flexDirection: 'column', alignItems: 'center', gap: '2px' }}><span className="wbv9-str" style=${{ borderColor: typeof v === 'string' ? 'var(--ok)' : 'var(--fig-k)' }}>${fv(v)}</span><span className="wbv9-ty">${show}</span></span>`;
+    return html`<div className="fig-stage" style=${{ paddingTop: 0 }}>
+      <div className="wbv9-row" style=${{ alignItems: 'flex-start', fontSize: '.9rem' }}><${Box} v=${s.a} show=${tyOf(s.a)} /><b style=${{ paddingTop: '4px' }}>${op}</b><${Box} v=${s.b} show=${tyOf(s.b)} /></div>
+      <div className=${pop(i >= 1)}><div className="wbv9-down">↓ ${i >= 1 ? (s.str ? 'join as strings' : 'convert to numbers') : ''}</div>
+        <div className="wbv9-row" style=${{ alignItems: 'flex-start', fontSize: '.9rem' }}><${Box} v=${conv(s.a)} show=${tyOf(conv(s.a))} /><b style=${{ paddingTop: '4px' }}>${op}</b><${Box} v=${conv(s.b)} show=${tyOf(conv(s.b))} /></div></div>
+      <div className=${pop(i >= 2)}><div className="wbv9-down">↓</div><div className="wbv9-row"><${Box} v=${s.res} show=${tyOf(s.res)} /></div></div></div>
+      ${Steps(steps, i, ctl, ar)}`;
+  }
+  function Plus({ ar }) {
+    const [e, setE] = useState(PLUS_EX[1]), [l, op, r] = e;
+    return html`<figure className="fig wbv9"><div className="fig-stage" style=${{ paddingBottom: '4px' }}>
+      <p className="wbv9-lab">Examples from the notes</p>
+      <${Chips} mono=${true} label="Examples" items=${PLUS_EX.map(x => [x.join(' '), x.join(' ')])} sel=${e.join(' ')} on=${k => setE(PLUS_EX.find(x => x.join(' ') === k))} />
+      <p className="wbv9-lab">Try your own</p>
+      <div className="wbv9-row"><input className="wbv9-in wbv9-n" value=${l} aria-label="Left value" onChange=${ev => setE([ev.target.value, op, r])} />
+        <select className="wbv9-in" value=${op} aria-label="Operator" onChange=${ev => setE([l, ev.target.value, r])}>${['+', '-', '*', '/'].map(o => html`<option key=${o} value=${o}>${o}</option>`)}</select>
+        <input className="wbv9-in wbv9-n" value=${r} aria-label="Right value" onChange=${ev => setE([l, op, ev.target.value])} /></div></div>
+      <${PlusCalc} key=${e.join('\u0001')} l=${l} op=${op} r=${r} ar=${ar} /></figure>`;
+  }
+
+  /* ── [0.3] slide 4: split, reverse, join ── */
+  function SplitRun({ s, d1, d2, ar }) {
+    const a = s.split(d1), r = a.slice().reverse(), out = r.join(d2);
+    const lines = [`var s = ${fv(s)};`, `var a = s.split(${fv(d1)});`, 'a.reverse();', `s = a.join(${fv(d2)});`];
+    const steps = [
+      { en: `Start with the string ${C(fv(s))}.`, ar: `بنبدأ بالـ string ده ${Bd(fv(s))}.` },
+      { en: `${C(`split(${fv(d1)})`)} cuts the string at every ${C(fv(d1))} and returns an <b>array</b> of ${a.length} pieces.`, ar: `الـ ${Bd('split(' + (fv(d1)) + ')')} بتقطع الـ string عند كل ${Bd(fv(d1))} وبترجع <b>array</b> فيها ${Bd(a.length)} حتة.` },
+      { en: `${C('a.reverse()')} turns the same array around: the last element is now first.`, ar: `الـ ${Bd('a.reverse()')} بتقلب نفس الـ array، فآخر عنصر بقى الأول.` },
+      { en: `${C(`join(${fv(d2)})`)} glues the elements back into one string with ${C(fv(d2))} between them: ${C(fv(out))}.`, ar: `الـ ${Bd('join(' + (fv(d2)) + ')')} بتلزق العناصر تاني في string واحد وبينهم ${Bd(fv(d2))}، والنتيجة:${Ls(fv(out))}` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 1900), arr = i >= 2 ? r : a;
+    return html`<div className="fig-stage" style=${{ paddingTop: 0 }}>
+      <${Code} lines=${lines} on=${i} dim=${j => j > i} label="split and join" />
+      <div className="wbv9-mid"><span className="wbv9-str">${fv(s)}</span></div>
+      <div className=${pop(i >= 1)}><div className="wbv9-down">↓ ${i >= 2 ? 'a.reverse()' : `split(${fv(d1)})`}</div>
+        <div className="wbv9-arr">${arr.map((p, j) => html`<span key=${j + ':' + p}><b>${fv(p)}</b><small>[${j}]</small></span>`)}</div></div>
+      <div className=${pop(i >= 3)}><div className="wbv9-down">↓ join(${fv(d2)})</div><div className="wbv9-mid" style=${{ margin: 0 }}><span className="wbv9-str">${fv(out)}</span></div></div></div>
+      ${Steps(steps, i, ctl, ar)}`;
+  }
+  function SplitJoin({ ar }) {
+    const EX = ['the quick brown fox', ' ', '!'];
+    const [v, setV] = useState(EX), [s, d1, d2] = v;
+    return html`<figure className="fig wbv9"><div className="fig-stage" style=${{ paddingBottom: '4px' }}>
+      <div className="wbv9-row"><span>s =</span><input className="wbv9-in wbv9-w" value=${s} maxLength="30" aria-label="String" onChange=${e => setV([e.target.value, d1, d2])} /></div>
+      <div className="wbv9-row"><span>split(</span><input className="wbv9-in wbv9-s" value=${d1} maxLength="3" aria-label="Split delimiter" onChange=${e => setV([s, e.target.value, d2])} /><span>) join(</span><input className="wbv9-in wbv9-s" value=${d2} maxLength="3" aria-label="Join delimiter" onChange=${e => setV([s, d1, e.target.value])} /><span>)</span></div>
+      <div className="wbv9-chips"><button className="fig-btn" onClick=${() => setV(EX)}>Example from the notes</button></div></div>
+      <${SplitRun} key=${v.join('\u0001')} s=${s} d1=${d1} d2=${d2} ar=${ar} /></figure>`;
+  }
+
+  /* ── [1] slide 5: indexOf, lastIndexOf, search, substring, substr ── */
+  const PL = "Please locate where 'locate' occurs!";
+  const SX = [
+    { id: 'io', s: PL, m: 'indexOf', a: 'locate', t: 'indexOf("locate")' },
+    { id: 'lj', s: PL, m: 'lastIndexOf', a: 'John', t: 'lastIndexOf("John")' },
+    { id: 'll', s: PL, m: 'lastIndexOf', a: 'locate', t: 'lastIndexOf("locate")' },
+    { id: 'se', s: PL, m: 'search', a: 'locate', t: 'search("locate")' },
+    { id: 'sg', s: 'Apple, Banana, Kiwi', m: 'substring', a: '6', b: '13', t: 'substring(6, 13)' },
+    { id: 'sr', s: 'Apple, Banana,Kiwi', m: 'substr', a: '6', b: '10', t: 'substr(6, 10)' },
+    { id: 'cn', s: 'Connie Client', m: 'substring', a: '0', b: '6', via: 1, t: 'substring(0, s.indexOf(" "))' },
+    { id: 'sc', s: 'Scaler', m: 'substring', a: '2', b: '4', t: '"Scaler".substring(2, 4)' }
+  ];
+  function Search({ ar }) {
+    const [st, setSt] = useState(Object.assign({}, SX[0])), { s, m, a, b } = st, ex = SX.find(x => x.s === s && x.m === m && x.a === a && (x.b || '') === (b || ''));
+    const isNumM = m === 'substring' || m === 'substr', toI = x => { const n = parseInt(x, 10); return Number.isNaN(n) ? 0 : n; };
+    let res, lo = -1, hi = -1, all = [], en, arr, exprTxt;
+    if (!isNumM) {
+      for (let p = a ? s.indexOf(a) : -1; p >= 0; p = s.indexOf(a, p + 1)) all.push(p);
+      res = m === 'lastIndexOf' ? s.lastIndexOf(a) : s.indexOf(a); // search() with a plain string finds the first match like indexOf
+      if (res >= 0) { lo = res; hi = res + a.length; }
+      exprTxt = `str.${m}(${fv(a)})`;
+      const found = res >= 0;
+      en = !found ? `${C(exprTxt)} returns <b>-1</b>: ${C(fv(a))} does not occur in the string.` : m === 'lastIndexOf' ? `${C(exprTxt)} returns <b>${res}</b>: the <b>last</b> occurrence starts at index ${res} (indexes count from 0).${all.length > 1 ? ` The first one is at ${all[0]}.` : ''}` : `${C(exprTxt)} returns <b>${res}</b>: the <b>first</b> occurrence starts at index ${res} (indexes count from 0).${m === 'search' ? ' search() gives the same here, and it also accepts a regular expression.' : ''}`;
+      arr = !found ? `الـ ${Bd(exprTxt)} بترجع <b>${Bd('-1')}</b> لأن ${Bd(fv(a))} مش موجودة في الـ string.` : m === 'lastIndexOf' ? `الـ ${Bd(exprTxt)} بترجع <b>${Bd(res)}</b>، يعني <b>آخر</b> مرة بتبدأ عند الـ index رقم ${Bd(res)} (العد بيبدأ من الصفر).${all.length > 1 ? ` وأول مرة عند ${Bd(all[0])}.` : ''}` : `الـ ${Bd(exprTxt)} بترجع <b>${Bd(res)}</b>، يعني <b>أول</b> مرة بتبدأ عند الـ index رقم ${Bd(res)} (العد بيبدأ من الصفر).${m === 'search' ? ' والـ search بتدي نفس النتيجة هنا، وكمان بتقبل regular expression.' : ''}`;
+    } else {
+      const A = toI(a), Bn = b === '' || b == null ? undefined : toI(b), L = s.length;
+      if (m === 'substring') { let x = Math.min(Math.max(A, 0), L), y = Bn === undefined ? L : Math.min(Math.max(Bn, 0), L); if (x > y) [x, y] = [y, x]; lo = x; hi = y; res = s.substring(A, Bn); }
+      else { let x = A < 0 ? Math.max(L + A, 0) : Math.min(A, L), n = Bn === undefined ? L - x : Math.max(Bn, 0); lo = x; hi = Math.min(x + n, L); res = s.substr(A, Bn); }
+      exprTxt = `str.${m}(${A}${Bn === undefined ? '' : ', ' + Bn})`;
+      const via = ex && ex.via ? { en: `First ${C('s.indexOf(" ")')} finds the space at index 6, so this is ${C('s.substring(0, 6)')}. `, ar: `الأول الـ ${Bd('s.indexOf(" ")')} بتلاقي المسافة عند الـ index رقم ${Bd(6)}، فده نفس ${Bd('s.substring(0, 6)')}. ` } : { en: '', ar: '' };
+      en = via.en + (m === 'substring' ? `${C(exprTxt)} takes the characters from index <b>${lo}</b> up to index <b>${hi}</b>, but <b>not including</b> ${hi}: ${C(fv(res))} (${res.length} characters).` : `${C(exprTxt)} takes <b>${hi - lo}</b> characters starting at index <b>${lo}</b>: ${C(fv(res))}.`);
+      arr = via.ar + (m === 'substring' ? `الـ ${Bd(exprTxt)} بتاخد الحروف من الـ index رقم <b>${Bd(lo)}</b> لحد الـ index رقم <b>${Bd(hi)}</b> من غير ما تاخده هو، والنتيجة ${Bd(fv(res))} (عدد الحروف ${Bd(res.length)}).` : `الـ ${Bd(exprTxt)} بتاخد <b>${Bd(hi - lo)}</b> حرف بادئة من الـ index رقم <b>${Bd(lo)}</b>، والنتيجة ${Bd(fv(res))}.`);
+    }
+    const cls = j => (j >= lo && j < hi ? 'wbv9-hit' : all.includes(j) || (!isNumM && all.some(p => j >= p && j < p + a.length)) ? 'wbv9-may' : '') + (isNumM && j === hi && m === 'substring' ? ' wbv9-bad' : '');
+    const tag = j => isNumM ? (j === lo && lo < hi ? String(j) : j === hi && m === 'substring' && hi < s.length ? String(j) : null) : null;
+    const set = (k, v) => setSt(Object.assign({}, st, { [k]: v }));
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <p className="wbv9-lab">Examples from the notes</p>
+      <${Chips} mono=${true} label="Examples" items=${SX.map(x => [x.id, x.t])} sel=${ex && ex.id} on=${k => setSt(Object.assign({}, SX.find(x => x.id === k)))} />
+      <p className="wbv9-lab">Try your own</p>
+      <${Chips} mono=${true} label="Method" items=${['indexOf', 'lastIndexOf', 'search', 'substring', 'substr'].map(x => [x, x])} sel=${m} on=${k => setSt(Object.assign({}, st, { m: k }, (k === 'substring' || k === 'substr') !== isNumM ? ((k === 'substring' || k === 'substr') ? { a: '0', b: '4' } : { a: s.slice(0, 3), b: '' }) : {}))} />
+      <div className="wbv9-row"><span>str =</span><textarea className="wbv9-in wbv9-ta" rows="2" value=${s} maxLength="40" aria-label="String" onChange=${e => set('s', e.target.value.replace(/\n/g, ' '))}></textarea></div>
+      <div className="wbv9-row"><span>${m}(</span>${isNumM ? html`<input className="wbv9-in wbv9-s" type="number" value=${a} aria-label="start" onChange=${e => set('a', e.target.value)} /><span>,</span><input className="wbv9-in wbv9-s" type="number" value=${b} aria-label=${m === 'substr' ? 'count' : 'end'} onChange=${e => set('b', e.target.value)} />` : html`<input className="wbv9-in wbv9-n" value=${a} maxLength="20" aria-label="Value to find" onChange=${e => set('a', e.target.value)} />`}<span>)</span></div>
+      <${Cells} s=${s} cls=${cls} tag=${tag} />
+      <${KV} rows=${[[exprTxt, fv(res), res === -1 ? 'wbv9-bad' : 'wbv9-on']]} /></div>
+      <${Cap} en=${en} ar=${arr} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [2.0], [2.1] slide 6: string to number and number to string ── */
+  const CV = [['plus', '+x'], ['num', 'Number(x)'], ['pi', 'parseInt(x)'], ['pf', 'parseFloat(x)'], ['nan', 'isNaN(x)'], ['str', 'String(x)'], ['ts', 'x.toString()']];
+  const CV_EX = [['plus', "'27'"], ['num', '123'], ['pi', '"123"'], ['pi', '7.5'], ['pi', '"123Hello"'], ['pi', '"Hello123"'], ['pf', '"12.75"'], ['nan', '289'], ['str', '333'], ['ts', '456']];
+  const CV_EXP = { plus: v => '+' + v, num: v => `Number(${v})`, pi: v => `parseInt(${v})`, pf: v => `parseFloat(${v})`, nan: v => `isNaN(${v})`, str: v => `String(${v})`, ts: v => /^\d+$/.test(v) ? v + '..toString()' : `(${v}).toString()` };
+  // the part of the string parseInt / parseFloat read: optional spaces and sign, then digits (and for parseFloat one dot)
+  function scan(s, float) {
+    let j = 0; while (j < s.length && /\s/.test(s[j])) j++; const from = j;
+    if (s[j] === '+' || s[j] === '-') j++;
+    let dot = false; while (j < s.length && (/\d/.test(s[j]) || (float && s[j] === '.' && !dot && (dot = true)))) j++;
+    return { from, to: j };
+  }
+  function Convert({ ar }) {
+    const [st, setSt] = useState({ f: 'pi', x: '"123Hello"' }), { f, x } = st, p = lit(x);
+    const exprTxt = CV_EXP[f](x.trim());
+    let res, err = null;
+    if (p.ok) {
+      const v = p.v;
+      if (f === 'plus' || f === 'num') res = Number(v); else if (f === 'pi') res = parseInt(v); else if (f === 'pf') res = parseFloat(v); else if (f === 'nan') res = isNaN(v); else if (f === 'str') res = String(v);
+      else if (v == null) err = 'TypeError'; else res = v.toString();
+    }
+    const v = p.ok ? p.v : undefined, sv = String(v), isScan = f === 'pi' || f === 'pf', sc = isScan ? scan(sv, f === 'pf') : null;
+    const scanOk = isScan && (sc.to > sc.from) && /\d/.test(sv.slice(sc.from, sc.to));
+    const cls = j => isScan ? (j >= sc.from && j < sc.to && scanOk ? 'wbv9-ok' : j === sc.to || (!scanOk && j === sc.from) ? 'wbv9-bad' : 'wbv9-off') : (f === 'plus' || f === 'num' || f === 'nan') ? (Number.isNaN(Number(v)) ? 'wbv9-bad' : 'wbv9-ok') : '';
+    let en, a;
+    if (!p.ok) { en = `${C(x)} is not a value this demo understands. Type a number like ${C('7.5')} or a string in quotes like ${C('"123Hello"')}.`; a = `الـ ${Bd(x)} مش قيمة الديمو ده يفهمها. اكتب رقم زي ${Bd('7.5')} أو string بين علامتين تنصيص زي ${Bd('"123Hello"')}.`; }
+    else if (err) { en = `${C(fv(v))} has no toString method: this throws a <b>TypeError</b>.`; a = `الـ ${Bd(fv(v))} مالهاش toString method، فبيحصل <b>TypeError</b>.`; }
+    else {
+      const R = C(fv(res)), RA = Bd(fv(res)), first = typeof v === 'number' && isScan ? { en: `The number ${C(fv(v))} is first turned into the string ${C(fv(sv))}. `, ar: `الرقم ${Bd(fv(v))} بيتحول الأول للـ string ده ${Bd(fv(sv))}. ` } : { en: '', ar: '' };
+      if (isScan) {
+        en = first.en + (scanOk ? `${C(f === 'pi' ? 'parseInt' : 'parseFloat')} reads from the left while it sees ${f === 'pi' ? 'digits' : 'digits and one decimal point'} and stops at the first character it cannot use${sc.to < sv.length ? ` (${C(fv(sv[sc.to]))})` : ''}: ${R}.` : `${C(f === 'pi' ? 'parseInt' : 'parseFloat')} needs a digit at the start, but the string starts with ${C(fv(sv[sc.from] || ''))}: ${R}.`);
+        a = first.ar + (scanOk ? `الـ ${Bd(f === 'pi' ? 'parseInt' : 'parseFloat')} بتقرا من الشمال طول ما بتشوف ${f === 'pi' ? 'أرقام' : 'أرقام ونقطة عشرية واحدة'}، وبتقف عند أول حرف مش هتعرف تستخدمه${sc.to < sv.length ? ` (${Bd(fv(sv[sc.to]))})` : ''}، والنتيجة ${RA}.` : `الـ ${Bd(f === 'pi' ? 'parseInt' : 'parseFloat')} محتاجة رقم في الأول، بس الـ string بيبدأ بـ ${Bd(fv(sv[sc.from] || ''))}، فالنتيجة ${RA}.`);
+      } else if (f === 'plus' || f === 'num') {
+        en = `${C(f === 'plus' ? 'Unary +' : 'Number()')} converts the <b>whole</b> value; if any part is not a number the result is NaN: ${R}, a <b>${tyOf(res)}</b>.`;
+        a = `الـ ${Bd(f === 'plus' ? 'unary +' : 'Number()')} بتحوّل القيمة <b>كلها</b>، ولو أي جزء مش رقم النتيجة بتبقى NaN. النتيجة ${RA} ونوعها <b>${tyOf(res)}</b>.`;
+      } else if (f === 'nan') {
+        en = `${C('isNaN(x)')} answers true or false: is x Not a Number? Here ${R}.`;
+        a = `الـ ${Bd('isNaN(x)')} بترد true أو false على سؤال هل x مش رقم. هنا الإجابة ${RA}.`;
+      } else {
+        en = `${C(f === 'str' ? 'String(x)' : 'x.toString()')} turns the value into text: ${R}, now a <b>string</b>.${f === 'ts' && /^\d+$/.test(x.trim()) ? ` A number literal needs two dots (${C(x.trim() + '..toString()')}): the first dot belongs to the number.` : ''}`;
+        a = `الـ ${Bd(f === 'str' ? 'String(x)' : 'x.toString()')} بتحوّل القيمة لـ text، والنتيجة ${RA} وبقت <b>string</b>.${f === 'ts' && /^\d+$/.test(x.trim()) ? ` والرقم الـ literal محتاج نقطتين ${Bd(x.trim() + '..toString()')} لأن أول نقطة بتتحسب من الرقم.` : ''}`;
+      }
+    }
+    const exK = CV_EX.findIndex(([g, y]) => g === f && y === x);
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <p className="wbv9-lab">Examples from the notes</p>
+      <${Chips} mono=${true} label="Examples" items=${CV_EX.map(([g, y], j) => [j, CV_EXP[g](y)])} sel=${exK} on=${j => setSt({ f: CV_EX[j][0], x: CV_EX[j][1] })} />
+      <p className="wbv9-lab">Try your own</p>
+      <${Chips} mono=${true} label="Function" items=${CV} sel=${f} on=${g => setSt({ f: g, x })} />
+      <div className="wbv9-row"><span>x =</span><input className="wbv9-in wbv9-w" value=${x} maxLength="24" aria-label="Value of x" onChange=${e => setSt({ f, x: e.target.value })} />${p.ok && html`<span className="wbv9-ty">${tyOf(v)}</span>`}</div>
+      ${p.ok && (isScan || f === 'plus' || f === 'num' || f === 'nan') && html`<${Cells} s=${sv} cls=${cls} />`}
+      ${p.ok && html`<${KV} rows=${[[exprTxt, err ? 'TypeError' : html`${fv(res)} <span className="wbv9-ty">${tyOf(res)}</span>`, Number.isNaN(res) || err ? 'wbv9-bad' : 'wbv9-on']]} />`}</div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [2.2]: JSON.stringify and JSON.parse ── */
+  function JsonTrip({ ar }) {
+    const obj = { name: 'Ali', age: 20 }, js = JSON.stringify(obj);
+    const lines = ['var obj = { name: "Ali", age: 20 };', 'var s = JSON.stringify(obj);', 'var o = JSON.parse(s);', 'console.log(typeof obj, typeof s, typeof o);'];
+    const steps = [
+      { en: `${C('obj')} is an <b>object</b> with two properties: ${C('typeof obj')} is "object".`, ar: `الـ ${Bd('obj')} ده <b>object</b> فيه اتنين properties، والـ ${Bd('typeof obj')} بيطلع "object".` },
+      { en: `${C('JSON.stringify(obj)')} writes the object out as <b>text</b>: ${C(js)}. This is <b>serialization</b>: now it can be stored or sent over a network. ${C('typeof s')} is "string".`, ar: `الـ ${Bd('JSON.stringify(obj)')} بتكتب الـ object كـ <b>text</b> بالشكل ده:${Ls(js)}وده اسمه <b>serialization</b>، كده ينفع يتخزن أو يتبعت على network. والـ ${Bd('typeof s')} بيطلع "string".` },
+      { en: `${C('JSON.parse(s)')} reads the text back and returns the original type: an <b>object</b> again with ${C('o.name')} = "Ali" and ${C('o.age')} = 20.`, ar: `الـ ${Bd('JSON.parse(s)')} بتقرا الـ text تاني وبترجّع الـ type الأصلي، يعني <b>object</b> تاني فيه ${Bd('o.name')} بقيمة "Ali" و${Bd('o.age')} بقيمة ${Bd(20)}.` },
+      { en: 'The console shows the three types: object, string, object (like the end of Example 1).', ar: 'الـ console بيطبع التلات types دول: object و string و object (زي آخر الـ Example 1).' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2200);
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${i} dim=${j => j > i} />
+      <div style=${{ marginTop: '10px' }}><div className="wbv9-objs"><${Obj} name="obj (object)" rows=${[{ k: 'name', v: '"Ali"' }, { k: 'age', v: '20' }]} cls=${i === 0 ? 'wbv9-on' : ''} /></div>
+        <div className=${pop(i >= 1)}><div className="wbv9-down">↓ JSON.stringify(obj)</div><div className="wbv9-mid" style=${{ margin: 0 }}><span className="wbv9-str">'${js}'</span> <span className="wbv9-ty">string</span></div></div>
+        <div className=${pop(i >= 2)}><div className="wbv9-down">↓ JSON.parse(s)</div><div className="wbv9-objs"><${Obj} name="o (object)" rows=${[{ k: 'name', v: '"Ali"' }, { k: 'age', v: '20' }]} cls=${i === 2 ? 'wbv9-on' : ''} /></div></div></div>
+      ${i >= 3 && html`<${Con} lines=${['object string object']} fresh=${1} />`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [2.3] slides 8 to 10: L9 Example 1 replayed line by line ── */
+  function Example1({ ar }) {
+    const lines = ["var x='23';", `console.log("1)Add +'23': " + x + ' type:' + typeof +x);`, `console.log("2)Number(x): " + Number(x) + ' type:' + typeof Number(x));`, 'console.log("3)parseInt(7.5): " + parseInt(7.5));', 'console.log("4)parseFloat(7.5): " + parseFloat(7.5));', 'var num=289;', 'console.log("5) isNaN(num): " + isNaN(num));', 'console.log("String(num): " + String(num) + " Type: " + typeof String(num));', 'console.log("num.toString(): " + num.toString() + " Type: " + typeof num.toString());', 'console.log("999..toString(): " + 999..toString() + " Type: " + typeof 999..toString());', 'var obj={ id:22, name:"Ahmed", class:6, age:20, grade: function(){ … } };', 'console.log(obj);', 'console.log(typeof obj);', 'console.log(typeof JSON.stringify(obj));', 'console.log(typeof JSON.parse(JSON.stringify(obj)));'];
+    const OBJ = html`<span>▼ Object<br />  age: <span className="wbv9-nm">20</span><br />  class: <span className="wbv9-nm">6</span><br />  ▶ grade: ƒ ()<br />  id: <span className="wbv9-nm">22</span><br />  name: <span className="wbv9-sg">"Ahmed"</span><br />  ▶ [[Prototype]]: Object</span>`;
+    const S = [
+      [0, null, `${C("x = '23'")} is a <b>string</b> (it is in quotes).`, `الـ ${Bd("x = '23'")} ده <b>string</b> لأنه بين علامتين تنصيص.`],
+      [1, "1)Add +'23': 23 type:number", `The unary ${C('+')} in ${C('typeof +x')} turns '23' into the <b>number</b> 23.`, `الـ unary ${Bd('+')} في ${Bd('typeof +x')} بتحوّل '23' للـ <b>number</b> ${Bd(23)}.`],
+      [2, '2)Number(x): 23 type:number', `${C('Number(x)')} does the same: 23, type number.`, `الـ ${Bd('Number(x)')} بتعمل نفس الحاجة، والنتيجة ${Bd(23)} ونوعها number.`],
+      [3, '3)parseInt(7.5): 7', `${C('parseInt(7.5)')} keeps only the integer part: 7.`, `الـ ${Bd('parseInt(7.5)')} بتاخد الجزء الصحيح بس، والنتيجة ${Bd(7)}.`],
+      [4, '4)parseFloat(7.5): 7.5', `${C('parseFloat(7.5)')} keeps the fraction: 7.5.`, `الـ ${Bd('parseFloat(7.5)')} بتحافظ على الكسر، والنتيجة ${Bd(7.5)}.`],
+      [5, null, `${C('num')} is the <b>number</b> 289.`, `الـ ${Bd('num')} هو الـ <b>number</b> ${Bd(289)}.`],
+      [6, '5) isNaN(num): false', `289 is a number, so ${C('isNaN(num)')} is <b>false</b>.`, `الـ ${Bd(289)} رقم، فالـ ${Bd('isNaN(num)')} بتطلع <b>false</b>.`],
+      [7, 'String(num): 289 Type: string', `${C('String(num)')} gives the text "289": type string.`, `الـ ${Bd('String(num)')} بتدي الـ text ده "289" ونوعه string.`],
+      [8, 'num.toString(): 289 Type: string', `${C('num.toString()')} gives the same "289" string.`, `الـ ${Bd('num.toString()')} بتدي نفس الـ string "289".`],
+      [9, '999..toString(): 999 Type: string', `${C('999..toString()')}: a number literal needs two dots, the first one belongs to 999.`, `في ${Bd('999..toString()')} الرقم الـ literal محتاج نقطتين، وأول نقطة بتاعة الـ ${Bd(999)}.`],
+      [10, null, `An object literal with properties and a method (grade).`, `ده object literal فيه properties وmethod اسمها grade.`],
+      [11, OBJ, `${C('console.log(obj)')} shows the object with its properties (the console lists them in alphabetical order).`, `الـ ${Bd('console.log(obj)')} بيعرض الـ object بالـ properties بتاعته (الـ console بيرتبهم أبجديًا).`],
+      [12, 'object', `${C('typeof obj')} is "object".`, `الـ ${Bd('typeof obj')} بيطلع "object".`],
+      [13, 'string', `${C('JSON.stringify(obj)')} turns it into a string.`, `الـ ${Bd('JSON.stringify(obj)')} بتحوله لـ string.`],
+      [14, 'object', `${C('JSON.parse(...)')} turns that string back into an object.`, `الـ ${Bd('JSON.parse(...)')} بترجّع الـ string ده object تاني.`]
+    ];
+    const steps = S.map(([, , en, a]) => ({ en, ar: a }));
+    const [i, ctl] = useSteps(steps.length, 1600);
+    const out = S.slice(0, i + 1).filter(r => r[1] != null).map(r => r[1]), fresh = S[i][1] != null ? 1 : 0;
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <p className="wbv9-fname">L9 Example 1 (script)</p>
+      <${Code} lines=${lines} on=${S[i][0]} dim=${j => j > S[i][0]} tall=${true} />
+      <${Con} lines=${out} fresh=${fresh} /></div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [3.0], [3.1] slide 7: object literal, property access, this, delete ── */
+  function ObjLit({ ar }) {
+    const lines = ['var S1 = {', '  name: "Ali",', '  age: 20,', '  getName: function(){ return this.name; }', '};', 'S1.name', 'S1["age"]', 'S1.getName()', 'delete S1.age;', 'S1.age'];
+    const steps = [
+      { ln: [0, 1, 2, 3, 4], en: `The object literal creates ${C('S1')} with two properties (name, age) and one method (getName).`, ar: `الـ object literal بيعمل ${Bd('S1')} فيه اتنين properties (name و age) و method واحدة (getName).` },
+      { ln: 5, hl: 'name', r: '"Ali"', en: `${C('objectName.property')}: ${C('S1.name')} reads the name property, "Ali".`, ar: `الوصول بالشكل ده ${Bd('objectName.property')}، يعني ${Bd('S1.name')} بيقرا الـ name وقيمتها "Ali".` },
+      { ln: 6, hl: 'age', r: '20', en: `${C('objectName["property"]')} does the same with the name as a string: ${C('S1["age"]')} is 20.`, ar: `الشكل ده ${Bd('objectName["property"]')} بيعمل نفس الحاجة بس اسم الـ property بيبقى string، فالـ ${Bd('S1["age"]')} قيمته ${Bd(20)}.` },
+      { ln: 7, hl: ['getName', 'name'], r: '"Ali"', th: 1, en: `${C('S1.getName()')} calls the method. Inside it, ${C('this')} refers to the object the method is called on, S1, so ${C('this.name')} is "Ali".`, ar: `الـ ${Bd('S1.getName()')} بتنادي الـ method. وجواها الـ ${Bd('this')} بتشاور على الـ object اللي الـ method اتنادت عليه وهو S1، فالـ ${Bd('this.name')} قيمتها "Ali".` },
+      { ln: 8, del: 1, r: 'true', en: `${C('delete S1.age')} removes the age property from the object.`, ar: `الـ ${Bd('delete S1.age')} بتشيل الـ property اللي اسمها age من الـ object.` },
+      { ln: 9, del: 2, r: 'undefined', en: `Now ${C('S1.age')} is <b>undefined</b>: the property is gone.`, ar: `دلوقتي الـ ${Bd('S1.age')} بقت <b>undefined</b> لأن الـ property اتشالت.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2100), s = steps[i];
+    const rows = [{ k: 'name', v: '"Ali"' }, s.del === 2 ? null : { k: 'age', v: '20', gone: s.del === 1 }, { k: 'getName', v: 'ƒ' }].filter(Boolean);
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${s.ln} dim=${j => j > (Array.isArray(s.ln) ? 4 : s.ln)} />
+      <div className="wbv9-objs" style=${{ marginTop: '10px', alignItems: 'center' }}>
+        ${s.th ? html`<div className="wbv9-vars"><div className="wbv9-on"><span>this</span> → S1</div></div>` : null}
+        <${Obj} name="S1" rows=${rows} hl=${s.hl} cls=${s.th ? 'wbv9-on' : ''} /></div>
+      ${s.r && html`<${KV} rows=${[[lines[s.ln].replace(/;$/, ''), s.r, 'wbv9-on']]} />`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [3.2] slide 7: Object.create and the prototype ── */
+  function Proto({ ar }) {
+    const lines = ['var S1 = { name: "Ali", age: 20,', '  getName: function(){ return this.name; } };', 'let S2 = Object.create(S1, {class:{value:1}});', 'console.log(S2.getName());', 'S2.name = "Ahmed";', 'console.log(S2.getName());'];
+    const steps = [
+      { ln: [0, 1], en: `${C('S1')} has name, age and getName.`, ar: `الـ ${Bd('S1')} فيه name و age و getName.` },
+      { ln: 2, s2: 1, en: `${C('Object.create(S1, …)')} makes a new object S2 whose <b>prototype</b> is S1. S2 itself only owns ${C('class')} (from the descriptor, so it is <b>non-enumerable</b>, marked *).`, ar: `الـ ${Bd('Object.create(S1, …)')} بتعمل object جديد اسمه S2 والـ <b>prototype</b> بتاعه هو S1. والـ S2 نفسه فيه ${Bd('class')} بس، ودي جاية من الـ descriptor فبتبقى <b>non-enumerable</b> (عليها علامة *).` },
+      { ln: 3, s2: 1, h1: ['getName', 'name'], up: 1, out: ['Ali'], en: `${C('S2.getName()')}: S2 has no getName, so JavaScript follows the prototype link to S1 and finds it there. ${C('this')} is S2, and S2 has no name either, so ${C('this.name')} also comes from S1: <b>Ali</b>.`, ar: `في ${Bd('S2.getName()')} الـ S2 مفيهوش getName، فالـ JavaScript بتمشي ورا الـ prototype لحد S1 وبتلاقيها هناك. والـ ${Bd('this')} هنا هو S2، وهو كمان مفيهوش name، فالـ ${Bd('this.name')} بتيجي من S1 وقيمتها <b>Ali</b>.` },
+      { ln: 4, s2: 2, h2: 'name', out: ['Ali'], en: `${C('S2.name = "Ahmed"')} creates S2's <b>own</b> name property. S1 is not changed: S1.name is still "Ali".`, ar: `الـ ${Bd('S2.name = "Ahmed"')} بتعمل property اسمها name <b>خاصة بالـ S2</b>. والـ S1 مااتغيرش، لسه الـ S1.name قيمتها "Ali".` },
+      { ln: 5, s2: 2, h2: 'name', h1: 'getName', up: 1, out: ['Ali', 'Ahmed'], en: `Now ${C('S2.getName()')} still borrows getName from S1, but ${C('this.name')} finds S2's own name first: <b>Ahmed</b>. That answers the slide's "Ali / Ahmed?".`, ar: `دلوقتي الـ ${Bd('S2.getName()')} لسه بتستلف getName من S1، بس الـ ${Bd('this.name')} بتلاقي الـ name بتاعة S2 الأول، فالنتيجة <b>Ahmed</b>. وده رد سؤال الـ slide (هل Ali ولا Ahmed؟).` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600), s = steps[i];
+    const r2 = [{ k: 'class', v: '1', ne: 1 }].concat(s.s2 === 2 ? [{ k: 'name', v: '"Ahmed"', isNew: i === 3 }] : []);
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${s.ln} dim=${j => j > (Array.isArray(s.ln) ? 1 : s.ln)} />
+      <div style=${{ marginTop: '10px' }}>
+        <div className=${'wbv9-objs ' + pop(s.s2)}><${Obj} name="S2" rows=${r2} hl=${s.h2} proto="S1" cls=${s.up ? 'wbv9-on' : ''} /></div>
+        <div className=${'wbv9-down ' + pop(s.s2)}>↓ prototype link${s.up ? ' (lookup goes up)' : ''}</div>
+        <div className="wbv9-objs"><${Obj} name="S1" rows=${[{ k: 'name', v: '"Ali"' }, { k: 'age', v: '20' }, { k: 'getName', v: 'ƒ' }]} hl=${s.h1} /></div></div>
+      ${s.out && html`<${Con} lines=${s.out} fresh=${i === 3 ? 0 : 1} />`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  const STM = "{status:'m'}", OB50 = '{first: 50, second: 30}';
+  /* ── [3.3] slide 7: Object.assign merges objects ── */
+  function Assign({ ar }) {
+    const lines = ['// S1 = { name:"Ali", age:20, getName }', '// S2 owns name:"Ahmed" and class:1 (non-enumerable)', "let Sclass = Object.assign(S1, S2, {status:'m'});", 'console.log(Sclass === S1);'];
+    const steps = [
+      { ln: [0, 1], en: `Before the call: the target ${C('S1')} and the two sources, ${C('S2')} and ${C("{status:'m'}")}.`, ar: `قبل الـ call عندنا الـ target وهو ${Bd('S1')}، واتنين sources هما ${Bd('S2')} و${Bd(STM)}.` },
+      { ln: 2, k2: 'class', en: `Object.assign copies only <b>own, enumerable</b> properties. S2's ${C('class')} is non-enumerable, so it is <b>skipped</b>.`, ar: `الـ Object.assign بتنسخ الـ properties الـ <b>own والـ enumerable</b> بس. والـ ${Bd('class')} بتاعة S2 مش enumerable، فبتتساب ومش بتتنسخ.` },
+      { ln: 2, k2: 'name', name: 1, en: `S2's own ${C('name')} is copied into S1, replacing "Ali" with "Ahmed".`, ar: `الـ ${Bd('name')} اللي بتاعة S2 بتتنسخ في S1، فالـ "Ali" بتتبدل بـ "Ahmed".` },
+      { ln: 2, k3: 1, name: 1, st: 1, en: `From the third object, ${C('status')} is added to S1. All sources are now <b>merged</b> into one object.`, ar: `ومن الـ object التالت بتتضاف ${Bd('status')} للـ S1. كده كل الـ sources اتدمجوا في object واحد.` },
+      { ln: 3, name: 1, st: 1, ret: 1, en: `Object.assign <b>returns the target</b>: ${C('Sclass')} points to the same object as S1, so ${C('Sclass === S1')} is true.`, ar: `الـ Object.assign <b>بترجع الـ target</b> نفسه، فالـ ${Bd('Sclass')} بيشاور على نفس الـ object بتاع S1، والـ ${Bd('Sclass === S1')} بتطلع true.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2300), s = steps[i];
+    const r1 = [{ k: 'name', v: s.name ? '"Ahmed"' : '"Ali"', isNew: i === 2 }, { k: 'age', v: '20' }, { k: 'getName', v: 'ƒ' }].concat(s.st ? [{ k: 'status', v: "'m'", isNew: i === 3 }] : []);
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${s.ln} dim=${j => j > (Array.isArray(s.ln) ? 1 : s.ln)} />
+      <p className="wbv9-lab">Sources</p>
+      <div className="wbv9-objs"><${Obj} name="S2" rows=${[{ k: 'class', v: '1', ne: 1, skip: s.k2 === 'class' }, { k: 'name', v: '"Ahmed"' }]} hl=${s.k2 === 'name' ? 'name' : null} proto="S1" />
+        <${Obj} name="{status:'m'}" rows=${[{ k: 'status', v: "'m'" }]} hl=${s.k3 ? 'status' : null} /></div>
+      <div className="wbv9-down">↓ copy own enumerable properties</div>
+      <div className="wbv9-objs" style=${{ alignItems: 'center' }}>${s.ret ? html`<div className="wbv9-vars"><div className="wbv9-on"><span>Sclass</span> → S1</div></div>` : null}<${Obj} name="S1 (target)" rows=${r1} cls=${s.ret ? 'wbv9-on' : ''} /></div>
+      ${s.ret && html`<${Con} lines=${['true']} fresh=${1} />`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [3.4]: compared by reference, duplicate keys, the in keyword ── */
+  function RefCmp({ ar }) {
+    const lines = ['let A = { name: "Ali" };', 'let B = { name: "Ali" };', 'console.log(A === B);', 'let C = A;', 'console.log(C === A);', 'const obj1 = { first: 20, second: 30, first: 50 };', 'console.log(obj1);', 'console.log("name" in A);', 'console.log("age" in A);'];
+    const steps = [
+      { ln: [0, 1], en: `${C('A')} and ${C('B')} are two <b>different</b> objects with the same content. Each variable holds a <b>reference</b> (an arrow) to its own object.`, ar: `الـ ${Bd('A')} والـ ${Bd('B')} اتنين objects <b>مختلفين</b> بنفس المحتوى. وكل variable شايل <b>reference</b> (سهم) للـ object بتاعه.` },
+      { ln: 2, cmp: ['A', 'B'], out: ['false'], en: `${C('A === B')} compares the references, not the content: they point to two different objects, so <b>false</b>.`, ar: `الـ ${Bd('A === B')} بتقارن الـ references مش المحتوى، والاتنين بيشاوروا على objects مختلفة، فالنتيجة <b>false</b>.` },
+      { ln: 3, c: 1, out: ['false'], en: `${C('let C = A')} copies the reference: C now points to the <b>same</b> object as A.`, ar: `الـ ${Bd('let C = A')} بتنسخ الـ reference، فالـ C بقى بيشاور على <b>نفس</b> الـ object بتاع A.` },
+      { ln: 4, c: 1, cmp: ['C', 'A'], out: ['false', 'true'], en: `${C('C === A')} is <b>true</b>: same reference, same object.`, ar: `الـ ${Bd('C === A')} بتطلع <b>true</b> لأنه نفس الـ reference ونفس الـ object.` },
+      { ln: 5, c: 1, dup: 1, out: ['false', 'true'], en: `In ${C('obj1')} the key ${C('first')} appears twice. The literal is read left to right, so the <b>last value wins</b>: first becomes 50.`, ar: `في ${Bd('obj1')} الـ key اللي اسمه ${Bd('first')} متكرر مرتين. الـ literal بيتقري من الشمال لليمين، فـ <b>آخر قيمة هي اللي بتفضل</b> وتبقى first قيمتها ${Bd(50)}.` },
+      { ln: 6, c: 1, dup: 1, out: ['false', 'true', '{first: 50, second: 30}'], en: `So the console prints ${C('{first: 50, second: 30}')}.`, ar: `فالـ console بيطبع:${Ls(OB50)}` },
+      { ln: 7, c: 1, dup: 1, inK: 'name', out: ['false', 'true', '{first: 50, second: 30}', 'true'], en: `The ${C('in')} keyword checks whether a property exists: ${C('"name" in A')} is <b>true</b>.`, ar: `الـ keyword ${Bd('in')} بتشيك الـ property موجودة ولا لأ، والـ ${Bd('"name" in A')} بتطلع <b>true</b>.` },
+      { ln: 8, c: 1, dup: 1, out: ['false', 'true', '{first: 50, second: 30}', 'true', 'false'], en: `${C('"age" in A')} is <b>false</b>: A has no age property.`, ar: `الـ ${Bd('"age" in A')} بتطلع <b>false</b> لأن A مفيهوش property اسمها age.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2200), s = steps[i], on = v => s.cmp && s.cmp.includes(v) ? 'wbv9-on' : '';
+    const dupRows = i === 4 ? [{ k: 'first', v: '20 → 50', isNew: 1 }, { k: 'second', v: '30' }] : [{ k: 'first', v: '50' }, { k: 'second', v: '30' }];
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${s.ln} dim=${j => j > (Array.isArray(s.ln) ? 1 : s.ln)} />
+      <div className="wbv9-objs" style=${{ marginTop: '10px', alignItems: 'center' }}>
+        <div className="wbv9-vars"><div className=${on('A')}><span>A</span> → object #1</div><div className=${on('B')}><span>B</span> → object #2</div><div className=${on('C') + ' ' + pop(s.c)}><span>C</span> → object #1</div></div>
+        <div style=${{ display: 'grid', gap: '6px' }}><${Obj} name="object #1" rows=${[{ k: 'name', v: '"Ali"' }]} hl=${s.inK} cls=${s.cmp && (s.cmp.includes('A') || s.cmp.includes('C')) ? 'wbv9-on' : ''} /><${Obj} name="object #2" rows=${[{ k: 'name', v: '"Ali"' }]} cls=${s.cmp && s.cmp.includes('B') ? 'wbv9-on' : ''} /></div>
+        <div className=${pop(s.dup)}><${Obj} name="obj1" rows=${dupRows} /></div></div>
+      ${s.out && html`<${Con} lines=${s.out} fresh=${i === 2 ? 0 : 1} />`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [4] slides 11, 12: ceil, floor, round, abs and the other Math methods ── */
+  const MX = [['4.2', '4.2'], ['4.8', '4.8'], ['4.5', '4.5'], ['-4.2', '-4.2'], ['81', '81'], ['PI', 'Math.PI']];
+  function MathRound({ ar }) {
+    const [t, setT] = useState('4.2'), x = t === 'PI' ? Math.PI : Number(t), ok = t !== '' && Number.isFinite(x);
+    const fl = Math.floor(x), ce = Math.ceil(x), ro = Math.round(x);
+    const lo = fl - 1, hi = Math.max(ce, fl + 1) + 1, X = v => 22 + (v - lo) / (hi - lo) * 256;
+    const ticks = []; if (ok) for (let k = lo; k <= hi; k++) ticks.push(k);
+    const xs = num4(x);
+    const en = ok ? `For x = ${xs}: ${C('Math.floor')} goes <b>down</b> to ${fl}, ${C('Math.ceil')} goes <b>up</b> to ${ce}, ${C('Math.round')} goes to the <b>closest</b> integer, ${ro}${x - fl === .5 ? ' (a .5 goes up)' : ''}. ${C('Math.abs')} drops the sign: ${num4(Math.abs(x))}.${t === 'PI' ? ' So Math.floor(Math.PI) = 3.' : ''}` : 'Type a number.';
+    const a = ok ? `لما x بيساوي ${Bd(xs)} الـ ${Bd('Math.floor')} بتنزل <b>لتحت</b> لـ ${Bd(fl)}، والـ ${Bd('Math.ceil')} بتطلع <b>لفوق</b> لـ ${Bd(ce)}، والـ ${Bd('Math.round')} بتروح لـ <b>أقرب</b> integer وهو ${Bd(ro)}${x - fl === .5 ? ' (الـ .5 بتطلع لفوق)' : ''}. والـ ${Bd('Math.abs')} بتشيل الإشارة فتبقى ${Bd(num4(Math.abs(x)))}.${t === 'PI' ? ` عشان كده الـ ${Bd('Math.floor(Math.PI)')} بيساوي ${Bd(3)}.` : ''}` : 'اكتب رقم.';
+    const rows = ok ? [['Math.abs(x)', num4(Math.abs(x))], ['Math.ceil(x)', ce], ['Math.floor(x)', fl], ['Math.round(x)', ro], ['Math.sqrt(x)', num4(Math.sqrt(x))], ['Math.pow(x, 2)', num4(Math.pow(x, 2))], ['Math.exp(x)', num4(Math.exp(x))], ['Math.log(x)', num4(Math.log(x))], ['Math.sin(x)', num4(Math.sin(x))], ['Math.cos(x)', num4(Math.cos(x))], ['Math.tan(x)', num4(Math.tan(x))], ['Math.max()', '-Infinity'], ['Math.min()', 'Infinity']].map(([e, v]) => [e, String(v), /NaN/.test(String(v)) ? 'wbv9-bad' : /floor|ceil|round/.test(e) ? 'wbv9-on' : '']) : [];
+    const same = fl === ce;
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Chips} mono=${true} label="x" items=${MX} sel=${t} on=${setT} />
+      <div className="wbv9-row"><span>x =</span><input className="wbv9-in wbv9-n" type="number" step="0.1" value=${t === 'PI' ? '' : t} placeholder=${t === 'PI' ? 'Math.PI' : ''} aria-label="x" onChange=${e => setT(e.target.value)} /></div>
+      ${ok && html`<svg className="wbv9-nl" viewBox="0 0 300 100" style=${{ width: '100%', maxWidth: '440px' }} role="img" aria-label=${`Number line: floor ${fl}, x ${xs}, ceil ${ce}, round ${ro}`}>
+        <line x1="10" y1="50" x2="290" y2="50" stroke="var(--graphite)" strokeWidth="1.5" />
+        ${ticks.map(k => html`<g key=${k}><line x1=${X(k)} y1="44" x2=${X(k)} y2="56" stroke="var(--graphite)" strokeWidth="1.5" /><text x=${X(k)} y="72" textAnchor="middle" fontSize="14" style=${{ fill: k === ro ? 'var(--fig-k)' : 'var(--ink)', fontWeight: k === ro ? 700 : 400 }}>${k}</text></g>`)}
+        <circle cx=${X(ro)} cy="50" r="8" fill="none" stroke="var(--fig-k)" strokeWidth="2.5" />
+        <circle cx=${X(x)} cy="50" r="5" style=${{ fill: 'var(--pen)' }} />
+        <text x=${X(x)} y="30" textAnchor="middle" fontSize="14" style=${{ fill: 'var(--pen)', fontWeight: 700 }}>x = ${xs}</text>
+        ${same ? html`<text x=${X(fl)} y="92" textAnchor="middle" fontSize="13.5" style=${{ fill: 'var(--fig-k)' }}>floor = ceil = round</text>` : html`<g>
+          <text x=${X(fl)} y="92" textAnchor="middle" fontSize="13.5" style=${{ fill: 'var(--fig-k)' }}>${'floor' + (ro === fl ? ', round' : '')}</text>
+          <text x=${X(ce)} y="92" textAnchor="middle" fontSize="13.5" style=${{ fill: 'var(--fig-k)' }}>${'ceil' + (ro === ce ? ', round' : '')}</text></g>`}
+      </svg>`}
+      <${KV} rows=${rows} cols=${2} />
+      <p className="wbv9-note">Math.max() with no arguments is -Infinity and Math.min() is Infinity, so ${'Math.max() < Math.min()'} is true.</p></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [4] slide 11: Math.floor(Math.random() * 10 + 1) gives 1 to 10 ── */
+  function RandomRoll({ ar }) {
+    const [cnt, setCnt] = useState(Array(10).fill(0)), [last, setLast] = useState(null);
+    const roll = n => { const c = cnt.slice(); let r = 0, v = 0; for (let k = 0; k < n; k++) { r = Math.random(); v = Math.floor(r * 10 + 1); c[v - 1]++; } setCnt(c); setLast({ r, v }); };
+    const tot = cnt.reduce((p, q) => p + q, 0), mx = Math.max(1, ...cnt);
+    const L = last, rows = [['Math.random()', L ? num4(L.r) : '?'], ['Math.random() * 10', L ? num4(L.r * 10) : '?'], ['Math.random() * 10 + 1', L ? num4(L.r * 10 + 1) : '?'], ['Math.floor(…)', L ? L.v : '?', 'wbv9-on']];
+    const en = L ? `${C('Math.random()')} gave ${num4(L.r)}, a number in [0, 1). Times 10 it is in [0, 10), plus 1 in [1, 11), and ${C('Math.floor')} cuts it down to the integer <b>${L.v}</b>. After ${tot} rolls every value from 1 to 10 shows up, none is 0 or 11.` : `${C('Math.random()')} returns a number in [0, 1). Roll to see each step of ${C('Math.floor(Math.random() * 10 + 1)')}.`;
+    const a = L ? `الـ ${Bd('Math.random()')} طلّعت ${Bd(num4(L.r))}، ودي رقم في الفترة ${Bd('[0, 1)')}. ولما نضربها في ${Bd(10)} تبقى في ${Bd('[0, 10)')}، ونزود ${Bd(1)} تبقى في ${Bd('[1, 11)')}، والـ ${Bd('Math.floor')} بتقصها للـ integer ده <b>${Bd(L.v)}</b>. وبعد ${Bd(tot)} مرة هتلاقي كل القيم من ${Bd(1)} لـ ${Bd(10)} ظهرت، ومفيش ${Bd(0)} ولا ${Bd(11)}.` : `الـ ${Bd('Math.random()')} بترجع رقم في الفترة ${Bd('[0, 1)')}. اعمل roll عشان تشوف كل خطوة في الـ expression ده:${Ls('Math.floor(Math.random() * 10 + 1)')}`;
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <p className="wbv9-fname" style=${{ textAlign: 'center' }}>var rand1to10 = Math.floor(Math.random() * 10 + 1);</p>
+      <div className="wbv9-chips"><button className="fig-btn solid" onClick=${() => roll(1)}>Roll once</button><button className="fig-btn" onClick=${() => roll(100)}>Roll 100 times</button><button className="fig-btn" onClick=${() => { setCnt(Array(10).fill(0)); setLast(null); }}>Reset</button></div>
+      <${KV} rows=${rows} />
+      <div className="wbv9-hist" aria-label="How often each value came out">${cnt.map((c, k) => html`<div key=${k} className=${L && L.v === k + 1 ? 'wbv9-on' : ''}><small>${c}</small><i style=${{ height: (c / mx * 78) + 'px' }}></i><span>${k + 1}</span></div>`)}</div>
+      <p className="wbv9-note">rolls: ${tot}</p></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [5.0] slide 16: calling a declared function, local variables ── */
+  function CallTrace({ ar }) {
+    const lines = ['function calc(x1, x2) {', '  let sum;', '  sum = x1 + x2;', '  return sum;', '}', 'var total;', 'total = calc(8, 9); // function call'];
+    const steps = [
+      { ln: [0, 1, 2, 3, 4, 5], g: { total: 'undefined' }, en: `The function is created once. It has not run yet; ${C('total')} is still undefined.`, ar: `الـ function بتتعمل مرة واحدة ولسه ماشتغلتش، والـ ${Bd('total')} لسه undefined.` },
+      { ln: 6, g: { total: 'undefined' }, f: { x1: '8', x2: '9' }, en: `${C('calc(8, 9)')} runs the block: a new call starts with ${C('x1 = 8')} and ${C('x2 = 9')}.`, ar: `الـ ${Bd('calc(8, 9)')} بتشغّل الـ block، وبيبدأ call جديد فيه ${Bd('x1 = 8')} و${Bd('x2 = 9')}.` },
+      { ln: 1, g: { total: 'undefined' }, f: { x1: '8', x2: '9', sum: 'undefined' }, en: `${C('let sum')} declares a <b>local</b> variable: it exists only inside this call.`, ar: `الـ ${Bd('let sum')} بتعرّف variable <b>local</b>، يعني موجود جوه الـ call ده بس.` },
+      { ln: 2, g: { total: 'undefined' }, f: { x1: '8', x2: '9', sum: '17' }, en: `${C('sum = x1 + x2')} = 8 + 9 = 17.`, ar: `الـ ${Bd('sum = x1 + x2')} بيحسب:${Ls('8 + 9 = 17')}` },
+      { ln: 3, g: { total: 'undefined' }, f: { x1: '8', x2: '9', sum: '17' }, ret: 1, en: `${C('return sum')} sends 17 back to the place of the call.`, ar: `الـ ${Bd('return sum')} بترجّع ${Bd(17)} للمكان اللي اتنادت منه.` },
+      { ln: 6, g: { total: '17' }, gone: 1, en: `${C('total')} = 17. The call is over and its local variables x1, x2 and sum are gone: outside the function they are not known. Call calc again and a fresh call starts.`, ar: `الـ ${Bd('total')} بقى ${Bd(17)}. والـ call خلص والـ local variables بتاعته (x1 و x2 و sum) اختفت، وبرا الـ function محدش يعرفها. ولو ناديت calc تاني بيبدأ call جديد.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2100), s = steps[i];
+    const fr = s.f || { x1: '8', x2: '9', sum: '17' };
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${s.ln} />
+      <div className="wbv9-objs" style=${{ marginTop: '10px' }}>
+        <${Obj} name="Global" rows=${[{ k: 'calc', v: 'ƒ' }, { k: 'total', v: s.g.total, isNew: i === 5 }]} />
+        <div className=${pop(s.f || s.gone)} style=${{ opacity: s.gone ? .35 : undefined }}><${Obj} name=${'calc(8, 9) call: local' + (s.gone ? ' (gone)' : '')} cls="wbv9-fr" rows=${Object.keys(fr).map(k => ({ k, v: fr[k], gone: s.gone }))} hl=${i === 3 || s.ret ? 'sum' : null} /></div></div>
+      ${s.ret && html`<div className="wbv9-down">return 17 → total</div>`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [5.1] slide 14: escape and eval (eval done by a small calculator, never by eval) ── */
+  const ESC_OK = /[A-Za-z0-9@*_+\-./]/;
+  const esc1 = ch => { const c = ch.charCodeAt(0); return ESC_OK.test(ch) ? ch : c < 256 ? '%' + c.toString(16).toUpperCase().padStart(2, '0') : '%u' + c.toString(16).toUpperCase().padStart(4, '0'); };
+  // numbers, x, y, + - * / and brackets only
+  function arith(src, env) {
+    const re = /\s*(?:(\d+(?:\.\d*)?|\.\d+)|([A-Za-z_$][\w$]*)|([-+*/()]))/y, T = []; let p = 0;
+    while (p < src.length) { if (/^\s*$/.test(src.slice(p))) break; re.lastIndex = p; const m = re.exec(src); if (!m) return { err: 'only numbers, x, y, + - * / and ( )' }; p = re.lastIndex; T.push(m[1] ? { n: Number(m[1]) } : m[2] ? { id: m[2] } : { op: m[3] }); }
+    let k = 0; const peek = () => T[k], take = () => T[k++];
+    function prim() { const t = take(); if (!t) throw 'unexpected end'; if (t.n != null) return t.n; if (t.id) { if (!own(env, t.id)) throw t.id + ' is not defined'; return env[t.id]; } if (t.op === '(') { const v = expr(); if (!peek() || peek().op !== ')') throw 'missing )'; take(); return v; } if (t.op === '-') return -prim(); if (t.op === '+') return +prim(); throw 'unexpected ' + t.op; }
+    function term() { let v = prim(); while (peek() && (peek().op === '*' || peek().op === '/')) { const o = take().op, w = prim(); v = o === '*' ? v * w : v / w; } return v; }
+    function expr() { let v = term(); while (peek() && (peek().op === '+' || peek().op === '-')) { const o = take().op, w = term(); v = o === '+' ? v + w : v - w; } return v; }
+    try { if (!T.length) return { err: 'empty' }; const v = expr(); if (k < T.length) return { err: 'unexpected ' + (T[k].op || T[k].id || T[k].n) }; return { v, sub: T.map(t => t.n != null ? t.n : t.id ? env[t.id] : t.op).join('') }; } catch (e) { return { err: String(e) }; }
+  }
+  function Builtins({ ar }) {
+    const [tab, setTab] = useState('eval'), [s, setS] = useState('Connie Client'), [ev, setEv] = useState({ e: 'x+y', x: '12', y: '8' });
+    let stage, en, a;
+    if (tab === 'escape') {
+      const out = s.split('').map(esc1).join(''), changed = s.split('').filter(ch => !ESC_OK.test(ch));
+      stage = html`<div className="wbv9-row"><span>escape("</span><input className="wbv9-in wbv9-w" value=${s} maxLength="24" aria-label="Text to escape" onChange=${e => setS(e.target.value)} /><span>")</span></div>
+        <${Cells} s=${s} cls=${j => ESC_OK.test(s[j]) ? '' : 'wbv9-hit'} tag=${j => ESC_OK.test(s[j]) ? null : esc1(s[j])} />
+        <${KV} rows=${[[`escape(${fv(s)})`, fv(out), 'wbv9-on']]} />`;
+      en = `${C('escape')} keeps letters and digits and replaces every other (extended) character by its code in hexadecimal, ${C('%xx')}. ${changed.includes(' ') ? `The space (code 32, hex 20) becomes ${C('%20')}.` : changed.length ? `Here ${changed.length} character(s) were encoded.` : 'Nothing here needs encoding.'}`;
+      a = `الـ ${Bd('escape')} بتسيب الحروف والأرقام زي ما هي، وأي حرف تاني (extended) بتبدله بالـ code بتاعه بالـ hexadecimal على شكل ${Bd('%xx')}. ${changed.includes(' ') ? `المسافة (الـ code بتاعها ${Bd(32)} وبالـ hex ${Bd(20)}) بتبقى ${Bd('%20')}.` : changed.length ? `هنا اتعمل encode لـ ${Bd(changed.length)} حرف.` : 'هنا مفيش حاجة محتاجة encode.'}`;
+    } else {
+      const nx = Number(ev.x), ny = Number(ev.y), okN = ev.x.trim() !== '' && ev.y.trim() !== '' && Number.isFinite(nx) && Number.isFinite(ny);
+      const r = okN ? arith(ev.e, { x: nx, y: ny }) : { err: 'x and y must be numbers' };
+      stage = html`<div className="wbv9-row"><span>var x =</span><input className="wbv9-in wbv9-s" value=${ev.x} aria-label="x" onChange=${e => setEv(Object.assign({}, ev, { x: e.target.value }))} /><span>; var y =</span><input className="wbv9-in wbv9-s" value=${ev.y} aria-label="y" onChange=${e => setEv(Object.assign({}, ev, { y: e.target.value }))} /><span>;</span></div>
+        <div className="wbv9-row"><span>eval("</span><input className="wbv9-in wbv9-n" value=${ev.e} maxLength="24" aria-label="Expression" onChange=${e => setEv(Object.assign({}, ev, { e: e.target.value }))} /><span>")</span></div>
+        <${KV} rows=${r.err ? [['eval(' + fv(ev.e) + ')', r.err, 'wbv9-bad']] : [['the string', fv(ev.e)], ['read as code', r.sub], ['value', num4(r.v), 'wbv9-on']]} />
+        <p className="wbv9-note">This demo understands numbers, x, y, + - * / and ( ). It does not run your text.</p>`;
+      en = r.err ? `This expression cannot be worked out here (${esc(r.err)}).` : `${C('eval')} parses the string ${C(fv(ev.e))} as JavaScript code, so x and y are read as the variables: ${C(r.sub)} = <b>${num4(r.v)}</b>, the value of the last statement.${ev.e.replace(/\s/g, '') === 'x+y' && nx === 12 && ny === 8 ? ' This is the quiz: eval("x+y") = 20.' : ''}`;
+      a = r.err ? `الـ expression ده مينفعش يتحسب هنا (${Bd(r.err)}).` : `الـ ${Bd('eval')} بتعمل parse للـ string ده ${Bd(fv(ev.e))} كأنه JavaScript code، فالـ x والـ y بيتقروا كـ variables:${Ls(r.sub + ' = ' + num4(r.v))}وده قيمة آخر statement.${ev.e.replace(/\s/g, '') === 'x+y' && nx === 12 && ny === 8 ? ' وده سؤال الـ quiz اللي إجابته 20.' : ''}`;
+    }
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Chips} mono=${true} label="Function" items=${[['escape', 'escape'], ['eval', 'eval']]} sel=${tab} on=${setTab} />
+      ${stage}
+      <div className="wbv9-chips" style=${{ marginTop: '10px' }}><button className="fig-btn" onClick=${() => tab === 'escape' ? setS('Connie Client') : setEv({ e: 'x+y', x: '12', y: '8' })}>Example from the notes</button></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [5.2] slides 15 to 20: the four kinds of user-defined function ── */
+  function FnForms({ ar }) {
+    const steps = [
+      { k: '1 Declaration', code: ['function calc(x1, x2) {', '  return x1 + x2;', '}', 'var total = calc(8, 9);'], out: ['total', '17'], en: `<b>(1) Declaration</b>: the ${C('function')} keyword, a name and a block. Call it by name: ${C('calc(8, 9)')} returns 17.`, ar: `<b>(1) الـ Declaration</b>: الـ keyword ${Bd('function')} واسم و block. وبتناديها باسمها، والـ ${Bd('calc(8, 9)')} بترجع ${Bd(17)}.` },
+      { k: '2 Expression', code: ['let calc = function(x1, x2) {', '  return x1 + x2;', '};', 'var total = calc(8, 9);'], out: ['total', '17'], en: `<b>(2) Expression</b>: the same function without a name, stored in a variable. ${C('calc(8, 9)')} still returns 17 (after the declaration line).`, ar: `<b>(2) الـ Expression</b>: نفس الـ function من غير اسم ومتخزنة في variable. والـ ${Bd('calc(8, 9)')} لسه بترجع ${Bd(17)} (بعد سطر التعريف).` },
+      { k: '3 Self-invoked', code: ['(function(){', '  let sum = 7 + 6;', "  console.log('sum=' + sum);", '})();'], out: ['console', 'sum=13'], en: `<b>(3) Self-invoked</b>: wrapped in brackets and followed by ${C('()')}, so it runs <b>immediately</b>, once, without a call: it prints ${C('sum=13')}.`, ar: `<b>(3) الـ Self-invoked</b>: متحطة بين أقواس ووراها ${Bd('()')}، فبتشتغل <b>على طول</b> مرة واحدة من غير ما حد يناديها، وبتطبع ${Bd('sum=13')}.` },
+      { k: '4 Arrow', code: ['let calc = (x1, x2) => {', '  let sum; sum = x1 + x2; return sum;', '};', 'var total = calc(8, 9);'], out: ['total', '17'], en: `<b>(4) Arrow</b>: drop the word function and put ${C('=>')} after the arguments. ${C('calc(8, 9)')} returns 17.`, ar: `<b>(4) الـ Arrow</b>: بنشيل كلمة function ونحط ${Bd('=>')} بعد الـ arguments. والـ ${Bd('calc(8, 9)')} بترجع ${Bd(17)}.` },
+      { k: '4 one statement', code: ['let calc = (x, y) => x + y;', 'var total = calc(8, 9);'], out: ['total', '17'], en: `Arrow with <b>one statement</b>: no braces and no return; the value of ${C('x + y')} is returned.`, ar: `الـ Arrow اللي فيها <b>statement واحد</b> مالهاش braces ولا return، وقيمة ${Bd('x + y')} هي اللي بترجع.` },
+      { k: '4 one argument', code: ['let addten = x => x + 10;', 'var add = addten(5);'], out: ['add', '15'], en: `<b>One argument</b>: the brackets around it can go too. ${C('addten(5)')} = 5 + 10 = 15.`, ar: `لو فيه <b>argument واحد</b> ممكن نشيل الأقواس اللي حواليه كمان. والـ ${Bd('addten(5)')} بتحسب ${Bd('5 + 10 = 15')}.` },
+      { k: '4 no argument', code: ['let calc = _ => {', '  let sum; sum = 6 + 5; return sum;', '};', 'var total = calc();'], out: ['total', '11'], en: `<b>No argument</b>: write ${C('_')} (or empty brackets). ${C('calc()')} returns 6 + 5 = 11.`, ar: `لو <b>مفيش arguments</b> بنكتب ${Bd('_')} (أو أقواس فاضية). والـ ${Bd('calc()')} بترجع ${Bd('6 + 5 = 11')}.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600), s = steps[i];
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <div className="wbv9-chips">${steps.map((t, j) => html`<button key=${j} className="fig-btn" aria-pressed=${String(j === i)} onClick=${() => ctl.go(j)}>${t.k}</button>`)}</div>
+      <${Code} lines=${s.code} on=${s.code.length - 1} key=${i} />
+      <${KV} rows=${[[s.out[0], s.out[1], 'wbv9-on']]} /></div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [5.3] slide 21: default parameters ── */
+  function Defaults({ ar }) {
+    const EX = [['', ''], ['2', ''], ['2', '4']];
+    const [v, setV] = useState(['2', '4']), [p, q] = v;
+    const pa = p.trim() === '' ? null : Number(p), pb = q.trim() === '' ? null : Number(q), bad = (pa != null && !Number.isFinite(pa)) || (pb != null && !Number.isFinite(pb)) || (pa == null && pb != null);
+    const x = pa == null ? 0 : pa, y = pb == null ? 0 : pb, call = `calc(${[pa, pb].filter(t => t != null).join(', ')})`;
+    const en = bad ? 'Type numbers; leave the second box empty to pass one argument, both empty for none.' : `${C(call)}: x = ${x}${pa == null ? ' (not passed, so the <b>default</b> 0)' : ' (passed)'}, y = ${y}${pb == null ? ' (not passed, so the <b>default</b> 0)' : ' (passed)'}. It returns ${x} + ${y} = <b>${x + y}</b>.`;
+    const a = bad ? 'اكتب أرقام. سيب الخانة التانية فاضية عشان تبعت argument واحد، وسيب الاتنين فاضيين عشان ماتبعتش حاجة.' : `في ${Bd(call)} الـ x قيمته ${Bd(x)}${pa == null ? ' (ماتبعتش فأخد الـ <b>default</b> وهو صفر)' : ' (اتبعت)'}، والـ y قيمته ${Bd(y)}${pb == null ? ' (ماتبعتش فأخد الـ <b>default</b> وهو صفر)' : ' (اتبعت)'}. والنتيجة:${Ls(`${x} + ${y} = ${x + y}`)}`;
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${['function calc(x = 0, y = 0) {', '  let sum = x + y;', '  return sum;', '}']} on=${[0]} />
+      <div className="wbv9-chips" style=${{ marginTop: '10px' }}>${EX.map((e, j) => html`<button key=${j} className="fig-btn wbv9-m" aria-pressed=${String(e[0] === p && e[1] === q)} onClick=${() => setV(e)}>${`calc(${e.filter(t => t !== '').join(', ')})`}</button>`)}</div>
+      <div className="wbv9-row"><span>calc(</span><input className="wbv9-in wbv9-s" value=${p} aria-label="First argument" onChange=${e => setV([e.target.value, q])} /><span>,</span><input className="wbv9-in wbv9-s" value=${q} aria-label="Second argument" onChange=${e => setV([p, e.target.value])} /><span>)</span></div>
+      ${!bad && html`<${KV} rows=${[['x', x + (pa == null ? '  (default)' : ''), pa == null ? '' : 'wbv9-on'], ['y', y + (pb == null ? '  (default)' : ''), pb == null ? '' : 'wbv9-on'], [call, x + y, 'wbv9-on']]} />`}</div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [5.4] slides 21, 22: the rest parameter, with the slide's i <= A.length bug ── */
+  function RestRun({ A, le, ar }) {
+    const n = A.length + (le ? 1 : 0), rows = []; let sum = 0;
+    for (let k = 0; k < n; k++) { const v = A[k]; sum = sum + v; rows.push({ k, v, sum }); }
+    const steps = [{ en: `${C(`calc(${A.join(', ')})`)}: the rest parameter ${C('...A')} collects all the arguments into one array, A = [${A.join(', ')}] (typeof A is "object"). ${C('A.length')} = ${A.length}.`, ar: `في ${Bd('calc(' + (A.join(', ')) + ')')} الـ rest parameter ${Bd('...A')} بيلم كل الـ arguments في array واحدة:${Ls('A = [' + (A.join(', ')) + ']')}والـ typeof A بيطلع "object"، والـ ${Bd('A.length')} بيساوي ${Bd(A.length)}.` }]
+      .concat(rows.map(r => r.v === undefined ? { en: `i = ${r.k}: the condition ${C(`${r.k} <= ${A.length}`)} is still true, but A[${r.k}] does not exist: it is <b>undefined</b>, and ${C('number + undefined')} is <b>NaN</b>. This is the slide's bug; use ${C('i < A.length')}.`, ar: `عند i بيساوي ${Bd(r.k)} الشرط ${Bd((r.k) + ' <= ' + (A.length))} لسه true، بس الـ ${Bd('A[' + (r.k) + ']')} مش موجود فقيمته <b>undefined</b>، والـ ${Bd('number + undefined')} بيطلع <b>NaN</b>. ده الـ bug اللي في الـ slide، والصح ${Bd('i < A.length')}.` }
+        : { en: `i = ${r.k}: sum += A[${r.k}] → ${r.sum - r.v} + ${r.v} = <b>${r.sum}</b>.`, ar: `عند i بيساوي ${Bd(r.k)} بنعمل ${Bd('sum += A[' + (r.k) + ']')} والحساب:${Ls((r.sum - r.v) + ' + ' + (r.v) + ' = ' + (r.sum))}` }))
+      .concat([{ en: le ? `The loop ends and ${C('calc')} returns <b>NaN</b>.` : `${C(`i = ${A.length}`)} fails ${C('i < A.length')}, the loop ends and calc returns <b>${sum}</b>. Any number of arguments works.`, ar: le ? `الـ loop بيخلص والـ ${Bd('calc')} بترجع <b>NaN</b>.` : `لما i بيساوي ${Bd(A.length)} الشرط ${Bd('i < A.length')} بيبقى false، فالـ loop بيخلص والـ calc بترجع <b>${Bd(sum)}</b>. وتقدر تبعت أي عدد من الـ arguments.` }]);
+    const [i, ctl] = useSteps(steps.length, 1500), shown = Math.min(Math.max(i, 0), rows.length);
+    const done = i === steps.length - 1;
+    return html`<div className="fig-stage" style=${{ paddingTop: 0 }}>
+      <${Code} lines=${['function calc(...A) {', '  let sum = 0;', `  for (let i = 0; i ${le ? '<=' : '<'} A.length; i++)`, '    sum += A[i];', '  return sum;', '}']} on=${i === 0 ? 0 : done ? 4 : [2, 3]} />
+      <div className="wbv9-arr" style=${{ marginTop: '10px' }}>${A.map((v, k) => html`<span key=${k} style=${{ opacity: i > 0 && rows[i - 1] && rows[i - 1].k === k ? 1 : .75 }}><b>${v}</b><small>A[${k}]</small></span>`)}${le && html`<span style=${{ opacity: i - 1 === A.length ? 1 : .45 }}><b style=${{ borderStyle: 'dashed', borderColor: 'var(--pen)' }}>undefined</b><small>A[${A.length}]</small></span>`}</div>
+      <${KV} rows=${rows.slice(0, shown).map(r => [`i=${r.k}  A[i]=${fv(r.v)}`, 'sum = ' + r.sum, Number.isNaN(r.sum) ? 'wbv9-bad' : r.k === shown - 1 ? 'wbv9-on' : '']).concat(done ? [[`calc(${A.join(', ')})`, String(sum), Number.isNaN(sum) ? 'wbv9-bad' : 'wbv9-on']] : [])} /></div>
+      ${Steps(steps, i, ctl, ar)}`;
+  }
+  function Rest({ ar }) {
+    const [txt, setTxt] = useState('8, 3, 9'), [le, setLe] = useState(false);
+    const parts = txt.split(',').map(t => t.trim()).filter(t => t !== ''), A = parts.map(Number), ok = A.length > 0 && A.length <= 6 && A.every(Number.isFinite);
+    return html`<figure className="fig wbv9"><div className="fig-stage" style=${{ paddingBottom: '4px' }}>
+      <div className="wbv9-chips"><button className="fig-btn wbv9-m" aria-pressed=${String(!le)} onClick=${() => setLe(false)}>${'i < A.length (correct)'}</button><button className="fig-btn wbv9-m" aria-pressed=${String(le)} onClick=${() => setLe(true)}>${'i <= A.length (slide)'}</button></div>
+      <div className="wbv9-row"><span>calc(</span><input className="wbv9-in wbv9-w" value=${txt} aria-label="Arguments, separated by commas" onChange=${e => setTxt(e.target.value)} /><span>)</span></div>
+      <div className="wbv9-chips"><button className="fig-btn" onClick=${() => setTxt('8, 3, 9')}>Example from the notes</button></div></div>
+      ${ok ? html`<${RestRun} key=${A.join(',') + le} A=${A} le=${le} ar=${ar} />` : html`<${Cap} en="Type 1 to 6 numbers separated by commas." ar="اكتب من 1 لـ 6 أرقام بينهم فواصل." showAr=${ar} />`}</figure>`;
+  }
+
+  /* ── [5.5] quiz: the inner function still sees the outer a ── */
+  function Closure({ ar }) {
+    const lines = ['(function (a) {', '  return (function () {', '    console.log(a);', '    a = 6;', '  })()', '})(21);'];
+    const steps = [
+      { ln: [0, 5], a: '21', en: `The outer function is self-invoked with 21, so its variable ${C('a')} = 21.`, ar: `الـ function اللي برّه بتشتغل لوحدها (self-invoked) بـ ${Bd(21)}، فالـ variable ${Bd('a')} جواها قيمته ${Bd(21)}.` },
+      { ln: [1, 4], a: '21', inner: 1, en: 'Inside it, an inner function is created and invoked at once. It has no variable of its own named a, but it keeps a link to the outer function\'s variables: that is a <b>closure</b>.', ar: 'وجواها بتتعمل function تانية وبتشتغل على طول. الـ function دي مفيهاش variable اسمه a، بس بتفضل شايفة الـ variables بتاعة الـ function اللي برّه، وده اسمه <b>closure</b>.' },
+      { ln: 2, a: '21', inner: 1, look: 1, out: ['21'], en: `${C('console.log(a)')}: a is not in the inner function, so it is looked up in the outer one: it prints <b>21</b>.`, ar: `في ${Bd('console.log(a)')} الـ a مش موجود في الـ function اللي جوه، فبيدوّر عليه في اللي برّه، وبيطبع <b>${Bd(21)}</b>.` },
+      { ln: 3, a: '6', inner: 1, look: 1, out: ['21'], en: `${C('a = 6')} changes the <b>outer</b> a through the same link. The output was already printed, so the answer is <b>21</b>.`, ar: `الـ ${Bd('a = 6')} بيغيّر الـ a اللي <b>برّه</b> عن طريق نفس الرابط. بس الطباعة حصلت قبلها، فالإجابة <b>${Bd(21)}</b>.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2400), s = steps[i];
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Code} lines=${lines} on=${s.ln} />
+      <div style=${{ marginTop: '10px' }}>
+        <div className=${'wbv9-objs ' + pop(s.inner)}><${Obj} name="inner function: own variables" cls=${'wbv9-fr' + (s.look ? ' wbv9-on' : '')} rows=${[]} empty="(none)" proto=${null} /></div>
+        <div className=${'wbv9-down ' + pop(s.inner)}>↓ can see the outer variables</div>
+        <div className="wbv9-objs"><${Obj} name="outer function: variables" cls="wbv9-fr" rows=${[{ k: 'a', v: s.a, isNew: i === 3 }]} hl=${s.look && i === 2 ? 'a' : null} /></div></div>
+      ${s.out && html`<${Con} lines=${s.out} fresh=${i === 2 ? 1 : 0} />`}</div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [6.0] slide 24: the three kinds of event, fired for real on this little pad ── */
+  const EV_CAT = { ui: ['User interface', ['onload', 'onfocus', 'onblur', 'onchange']], mouse: ['Mouse', ['onclick', 'ondblclick', 'onmouseenter', 'onmouseleave', 'onmousemove']], kb: ['Keyboard', ['onkeydown', 'onkeypress', 'onkeyup']] };
+  const EV_TXT = {
+    onload: ['the page finished loading', 'الصفحة خلصت تحميل'], onfocus: ['the input received focus', 'الـ input خد الـ focus'], onblur: ['the input lost focus', 'الـ input فقد الـ focus'], onchange: ['the value changed and you left the field (or pressed Enter)', 'القيمة اتغيرت وانت سبت الخانة (أو دوست Enter)'],
+    onclick: ['a click', 'حصل click'], ondblclick: ['a double-click', 'حصل double-click'], onmouseenter: ['the pointer entered the box', 'الـ pointer دخل الـ box'], onmouseleave: ['the pointer left the box', 'الـ pointer خرج من الـ box'], onmousemove: ['the pointer moved over the box', 'الـ pointer اتحرك فوق الـ box'],
+    onkeydown: ['a key went down', 'زرار اتداس'], onkeypress: ['a key that types a character was pressed', 'زرار بيكتب حرف اتداس'], onkeyup: ['a key was released', 'زرار اتساب']
+  };
+  function EvTypes({ ar }) {
+    const [log, setLog] = useState([]), inRef = useRef(null), boxRef = useRef(null);
+    const add = name => { const cat = Object.keys(EV_CAT).find(c => EV_CAT[c][1].includes(name)); setLog(L => L[0] && L[0].name === name ? [Object.assign({}, L[0], { n: L[0].n + 1 })].concat(L.slice(1)) : [{ name, cat, n: 1, id: Date.now() + Math.random() }].concat(L).slice(0, 6)); };
+    useEffect(() => {
+      const I = inRef.current, X = boxRef.current, offs = [];
+      const on = (el, e) => { const f = () => add('on' + e); el.addEventListener(e, f); offs.push(() => el.removeEventListener(e, f)); };
+      ['focus', 'blur', 'change', 'keydown', 'keypress', 'keyup'].forEach(e => on(I, e)); ['click', 'dblclick', 'mouseenter', 'mouseleave', 'mousemove'].forEach(e => on(X, e));
+      return () => offs.forEach(f => f());
+    }, []);
+    const seen = new Set(log.map(l => l.name)), L0 = log[0];
+    const en = L0 ? `<b>${L0.name}</b>: ${EV_TXT[L0.name][0]}. It is a <b>${EV_CAT[L0.cat][0].toLowerCase()}</b> event.` : 'Type in the input, click or double-click the box, move the pointer over it, or press "Load page": each event that fires is listed with its kind.';
+    const a = L0 ? `الـ <b>${Bd(L0.name)}</b> اشتغل لأن ${EV_TXT[L0.name][1]}. وده من الـ <b>${EV_CAT[L0.cat][0]}</b> events.` : 'اكتب في الـ input، أو اعمل click أو double-click على الـ box، أو حرّك الـ pointer فوقه، أو دوس "Load page"، وكل event بيشتغل هيظهر في الليستة مع نوعه.';
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <div className="wbv9-pad"><input ref=${inRef} className="wbv9-in" placeholder="Type here" aria-label="Input to try keyboard and focus events" /><div ref=${boxRef} className=${'wbv9-zone' + (L0 && L0.cat === 'mouse' ? ' wbv9-on' : '')} role="button" tabIndex="-1">Mouse box: click, double-click, hover</div>
+        <button className="fig-btn" style=${{ gridColumn: '1 / -1', justifySelf: 'center' }} onClick=${() => add('onload')}>Load page (onload)</button></div>
+      <div className="wbv9-log" aria-live="polite">${log.map(l => html`<div key=${l.id}><b>${l.name}</b>${l.n > 1 ? ' ×' + l.n : ''}<em>${EV_CAT[l.cat][0]}</em></div>`)}</div>
+      <div className="wbv9-cats" style=${{ marginTop: '10px' }}>${Object.keys(EV_CAT).map(c => html`<div key=${c} className="wbv9-cat"><b>${EV_CAT[c][0]} events</b>${EV_CAT[c][1].map(e => html`<span key=${e} className=${seen.has(e) ? 'wbv9-on' : ''}>${e}</span>`)}</div>`)}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => setLog([])}>Clear</button></div></figure>`;
+  }
+
+  /* ── [6.1] slides 27 to 29: onload waits for the page, then the script runs ── */
+  function Onload({ ar }) {
+    const H = ['<!DOCTYPE html>', '<html lang="en">', '<head>', '  <title>JS Tutorials</title>', '</head>', '<body>', '  <h2>Welcome JS</h2>', '  <script src="./file.js"></script>', '</body>', '</html>'];
+    const J = ['window.onload = function(){', '  //write your js script here for safe usage', "  console.log('The Page is Loaded Successfully....');", '}'];
+    const steps = [
+      { h: [0, 1, 2, 3, 4], j: null, en: 'The browser reads test.html from the top: the head gives the tab its title.', ar: 'الـ browser بيقرا الـ test.html من فوق، والـ head بيدي الـ tab العنوان بتاعه.' },
+      { h: [5, 6], j: null, h2: 1, en: `The body starts: ${C('<h2>Welcome JS</h2>')} is drawn.`, ar: `الـ body بيبدأ، والـ ${Bd('<h2>Welcome JS</h2>')} بيترسم.` },
+      { h: 7, j: [0, 3], h2: 1, reg: 1, en: `${C('<script src="./file.js">')} loads the external script and runs it. It only <b>assigns</b> a function to ${C('window.onload')}: nothing is printed yet.`, ar: `الـ ${Bd('<script src="./file.js">')} بيحمّل الـ external script ويشغّله، وهو كل اللي بيعمله إنه بيحط function في ${Bd('window.onload')}، ولسه مفيش حاجة اتطبعت.` },
+      { h: [8, 9], j: null, h2: 1, reg: 1, en: 'The rest of the page is read. When <b>all</b> page elements are loaded, the browser fires the <b>load</b> event.', ar: 'باقي الصفحة بيتقري. ولما <b>كل</b> عناصر الصفحة تتحمّل، الـ browser بيطلق الـ event اللي اسمه <b>load</b>.' },
+      { h: null, j: [1, 2], h2: 1, reg: 1, out: 1, en: 'Now the onload function runs and the console shows its message: <b>page content is loaded first, then the script is executed</b> (slide 29).', ar: 'دلوقتي الـ onload function بتشتغل والـ console بيطبع الرسالة. يعني <b>محتوى الصفحة بيتحمّل الأول وبعدين الـ script بيتنفذ</b>، زي ما في الـ slide رقم 29.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2300), s = steps[i];
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <div className="wbv9-two"><div><p className="wbv9-fname">test.html</p><${Code} lines=${H} on=${s.h} label="test.html" /><p className="wbv9-fname">file.js</p><${Code} lines=${J} on=${s.j} dim=${j => !s.reg} label="file.js" /></div>
+        <div style=${{ alignSelf: 'start' }}><p className="wbv9-fname">Browser</p><div className="wbv9-win"><div className="wbv9-tab"><b>JS Tutorials</b><span>127.0.0.1:5501/test.html</span></div>
+          <div className="wbv9-pg">${s.h2 ? html`<h2 className=${pop(true)}>Welcome JS</h2>` : html`<p> </p>`}</div></div>
+          <${Con} lines=${s.out ? ['The Page is Loaded Successfully....'] : []} fresh=${s.out ? 1 : 0} />
+          <p className="wbv9-note">${s.reg ? 'window.onload = ƒ (waiting for load)' : ' '}</p></div></div></div>
+      ${Steps(steps, i, ctl, ar)}</figure>`;
+  }
+
+  /* ── [7]: the events example from the notes, live (alert and console are mocked inside the figure) ── */
+  function EvDemo({ ar }) {
+    const lines = ['<body onload="init()">', `<h2 ondblclick="alert('h2 double-clicked')">Double-click me</h2>`, `<button onclick="alert('button clicked')">Click me</button>`, `<input id="in" onkeyup="document.getElementById('res').innerHTML = this.value">`, '<p id="res"></p>', `<h1 onmouseover="this.style.backgroundColor='red'"`, `    onmouseout="this.style.backgroundColor='blue'">Hover me</h1>`, '<script>', 'function init() { console.log("page loaded"); }', 'document.getElementById("in").addEventListener("keydown", function(e) {', '  if ("aeiou".includes(e.key)) alert("vowel is pressed");', '});', '</script>', '</body>'];
+    const [st, setSt] = useState({ res: '', bg: '', alert: null, con: ['page loaded'], ln: [0, 8], ev: 'onload', n: 0 });
+    const fire = (patch, ln, ev) => setSt(S => Object.assign({}, S, patch, { ln, ev, n: S.n + 1 }));
+    const reload = () => setSt({ res: '', bg: '', alert: null, con: ['page loaded'], ln: [0, 8], ev: 'onload', n: st.n + 1 });
+    const M = {
+      onload: ['The page loaded, so onload called init(), which printed "page loaded" in the console.', 'الصفحة اتحمّلت، فالـ onload نادت <bdi dir="ltr">init()</bdi> اللي طبعت "page loaded" في الـ console.'],
+      ondblclick: ['Double-click on the h2: its ondblclick shows the alert.', 'الـ double-click على الـ h2 شغّل الـ ondblclick فظهر الـ alert.'],
+      onclick: ['Click on the button: its onclick shows the alert.', 'الـ click على الزرار شغّل الـ onclick فظهر الـ alert.'],
+      onkeyup: ['Each time a key is released, onkeyup copies the input\'s value into the paragraph #res.', 'كل ما زرار يتساب، الـ onkeyup بتنسخ قيمة الـ input في الـ paragraph اللي الـ id بتاعها res.'],
+      vowel: ['A vowel key went down: the keydown listener (added with addEventListener) shows "vowel is pressed"; when the key is released, onkeyup copies the text into #res.', 'اتداس على حرف vowel، فالـ keydown listener (اللي اتضاف بالـ addEventListener) طلّع "vowel is pressed"، ولما الزرار يتساب الـ onkeyup بتنسخ الكلام في الـ paragraph اللي الـ id بتاعها res.'],
+      onmouseover: ['The pointer is over the h1: onmouseover makes its background red.', 'الـ pointer فوق الـ h1، فالـ onmouseover خلّت الخلفية حمرا.'],
+      onmouseout: ['The pointer left the h1: onmouseout makes its background blue.', 'الـ pointer خرج من الـ h1، فالـ onmouseout خلّت الخلفية زرقا.']
+    };
+    const m = M[st.ev] || M.onload;
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <div className="wbv9-two">
+        <div><p className="wbv9-fname">Page (try it)</p><div className="wbv9-win"><div className="wbv9-tab"><b>Events example</b></div>
+          <div className="wbv9-pg">
+            <h2 onDoubleClick=${() => fire({ alert: 'h2 double-clicked' }, 1, 'ondblclick')} style=${{ cursor: 'pointer', userSelect: 'none' }}>Double-click me</h2>
+            <button onClick=${() => fire({ alert: 'button clicked' }, 2, 'onclick')}>Click me</button>
+            <p style=${{ margin: '6px 0 0' }}><input aria-label="Input with onkeyup" onKeyUp=${e => { const val = e.target.value, vw = e.key && e.key.length === 1 && 'aeiou'.includes(e.key); fire({ res: val }, vw ? [3, 9, 10, 11] : 3, vw ? 'vowel' : 'onkeyup'); }} onKeyDown=${e => { if (e.key && e.key.length === 1 && 'aeiou'.includes(e.key)) fire({ alert: 'vowel is pressed' }, [9, 10, 11], 'vowel'); }} /></p>
+            <p className="wbv9-res">${st.res}</p>
+            <h1 onMouseOver=${() => fire({ bg: 'red' }, 5, 'onmouseover')} onMouseOut=${() => fire({ bg: 'blue' }, 6, 'onmouseout')} style=${{ backgroundColor: st.bg || 'transparent' }}>Hover me</h1></div>
+          ${st.alert && html`<div className="wbv9-alert" role="alertdialog" aria-label="Alert"><small>This page says</small>${st.alert}<div><button onClick=${() => setSt(S => Object.assign({}, S, { alert: null }))}>OK</button></div></div>`}</div>
+          <${Con} lines=${st.con} fresh=${st.ev === 'onload' ? 1 : 0} />
+          <div className="wbv9-chips" style=${{ marginTop: '8px' }}><button className="fig-btn" onClick=${reload}>↻ Reload page</button></div></div>
+        <div><p className="wbv9-fname">Source</p><${Code} lines=${lines} on=${st.ln} tall=${true} label="Events example source" /></div></div></div>
+      <${Cap} en=${m[0]} ar=${m[1]} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [8.0] to [8.2] slides 39, 40: localStorage and sessionStorage, mocked inside the figure ── */
+  function Storage({ ar }) {
+    const [S, setS] = useState({ local: [], session: [] }), [which, setWhich] = useState('local'), [k, setK] = useState('name'), [v, setV] = useState('Ali'), [con, setCon] = useState([]), [msg, setMsg] = useState(null), [hl, setHl] = useState(null);
+    const st = S[which], obj = which === 'local' ? 'localStorage' : 'sessionStorage';
+    const put = (arr, key, val) => { const j = arr.findIndex(e => e[0] === key); const c = arr.slice(); if (j >= 0) c[j] = [key, val]; else c.push([key, val]); return c; };
+    const log = (cmd, out) => setCon(L => L.concat([cmd + '  →  ' + out]).slice(-4));
+    const val = (() => { const p = lit(v); return p.ok && typeof p.v === 'number' ? p.v : p.ok && typeof p.v === 'string' ? p.v : v; })();
+    const act = a => {
+      if (a === 'set') { const sv = String(val); setS(Object.assign({}, S, { [which]: put(st, k, sv) })); log(`${obj}.setItem(${fv(k)}, ${fv(val)})`, 'undefined'); setHl(k); setMsg(typeof val === 'number' ? ['num', sv] : ['set']); }
+      if (a === 'get') { const e = st.find(x => x[0] === k); log(`${obj}.getItem(${fv(k)})`, e ? fv(e[1]) : 'null'); setHl(e ? k : null); setMsg(['get', e ? e[1] : null]); }
+      if (a === 'rm') { setS(Object.assign({}, S, { [which]: st.filter(x => x[0] !== k) })); log(`${obj}.removeItem(${fv(k)})`, 'undefined'); setHl(null); setMsg(['rm']); }
+      if (a === 'clear') { setS(Object.assign({}, S, { [which]: [] })); log(`${obj}.clear()`, 'undefined'); setHl(null); setMsg(['clear']); }
+      if (a === 'key') { log(`${obj}.key(0)`, st[0] ? fv(st[0][0]) : 'null'); setHl(st[0] ? st[0][0] : null); setMsg(['key', st[0] ? st[0][0] : null]); }
+      if (a === 'len') { log(`${obj}.length`, String(st.length)); setHl(null); setMsg(['len', st.length]); }
+      if (a === 'obj') { setS(Object.assign({}, S, { [which]: put(put(st, 'user', '[object Object]'), 'user2', '{"name":"Ali","age":20}') })); log(`${obj}.setItem("user", {name:"Ali", age:20})`, 'undefined'); log(`${obj}.setItem("user2", JSON.stringify({name:"Ali", age:20}))`, 'undefined'); setHl('user2'); setMsg(['obj']); }
+      if (a === 'reload') { setCon(L => L.concat(['(page reloaded)']).slice(-4)); setHl(null); setMsg(['reload']); }
+      if (a === 'close') { setS(Object.assign({}, S, { session: [] })); setCon(['(browser closed and opened again)']); setHl(null); setMsg(['close']); }
+    };
+    const T = {
+      set: [`${C('setItem')} adds the key and its value to ${C(obj)} (or replaces the value if the key exists).`, `الـ ${Bd('setItem')} بتضيف الـ key وقيمته للـ ${Bd(obj)} (ولو الـ key موجود بتغيّر قيمته).`],
+      num: [`Values are stored as <b>strings</b>: the number ${C(String(msg && msg[1]))} is kept as ${C(fv(String(msg && msg[1])))}.`, `القيم بتتخزن كـ <b>strings</b>، فالرقم ${Bd(String(msg && msg[1]))} بيتحفظ كده ${Bd(fv(String(msg && msg[1])))}.`],
+      get: msg && msg[0] === 'get' && msg[1] == null ? [`${C('getItem')} returns <b>null</b>: there is no such key.`, `الـ ${Bd('getItem')} بترجع <b>null</b> لأن الـ key ده مش موجود.`] : [`${C('getItem')} reads the value back: ${C(fv(msg && msg[1]))}.`, `الـ ${Bd('getItem')} بتقرا القيمة تاني، وهي ${Bd(fv(msg && msg[1]))}.`],
+      rm: [`${C('removeItem')} deletes that one item.`, `الـ ${Bd('removeItem')} بتمسح الـ item ده بس.`],
+      clear: [`${C('clear()')} deletes all the items of ${C(obj)}.`, `الـ ${Bd('clear()')} بتمسح كل الـ items اللي في ${Bd(obj)}.`],
+      key: [`${C('key(0)')} returns the name of the key at index 0: ${C(msg && msg[1] != null ? fv(msg[1]) : 'null')}.`, `الـ ${Bd('key(0)')} بترجع اسم الـ key اللي عند index صفر، وهو ${Bd(msg && msg[1] != null ? fv(msg[1]) : 'null')}.`],
+      len: [`The ${C('length')} property is the number of items: ${msg && msg[1]}.`, `الـ property اللي اسمها ${Bd('length')} هي عدد الـ items، وهنا ${Bd(msg && msg[1])}.`],
+      obj: [`An object stored directly becomes the useless string ${C('"[object Object]"')}. Store it with ${C('JSON.stringify')} (and read it back with JSON.parse).`, `لو خزنت object على طول بيتحول للـ string ده ${Bd('"[object Object]"')} ومالوش لازمة. خزّنه بالـ ${Bd('JSON.stringify')} واقراه تاني بالـ JSON.parse.`],
+      reload: ['After a <b>reload</b> both storages still have their data: sessionStorage lives as long as the browser/tab is open.', 'بعد الـ <b>reload</b> الاتنين لسه فيهم الداتا، لأن الـ sessionStorage بتعيش طول ما الـ browser أو الـ tab مفتوح.'],
+      close: ['The browser was <b>closed</b>: sessionStorage is empty (one session only), while localStorage keeps its data (no expiration date).', 'الـ browser <b>اتقفل</b>، فالـ sessionStorage فضيت (session واحدة بس)، أما الـ localStorage فلسه محتفظة بالداتا (من غير expiration date).']
+    };
+    const cap = msg ? T[msg[0]] : [`Pick ${C('localStorage')} or ${C('sessionStorage')}, then try the methods. The tables look like Chrome's Inspect &gt; Application panel. Then reload, or close the browser, and compare.`, `اختار ${Bd('localStorage')} أو ${Bd('sessionStorage')} وجرّب الـ methods. الجداول شكلها زي <bdi dir="ltr">Inspect &gt; Application</bdi> في الـ Chrome. وبعدين اعمل reload أو اقفل الـ browser وقارن.`];
+    const Tbl = ({ name, rows, id }) => html`<div className="wbv9-dt" style=${{ boxShadow: which === id ? '0 0 0 2px var(--fig-k)' : 'none' }}><div>Application › ${name} › file://</div><table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody>${rows.length ? rows.map(([a, b]) => html`<tr key=${a} className=${which === id && hl === a ? 'wbv9-on' : ''}><td>${a}</td><td>${b}</td></tr>`) : html`<tr><td className="wbv9-none" colSpan="2">(empty)</td></tr>`}</tbody></table></div>`;
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Chips} mono=${true} label="Storage" items=${[['local', 'localStorage'], ['session', 'sessionStorage']]} sel=${which} on=${setWhich} />
+      <div className="wbv9-row"><span>key</span><input className="wbv9-in wbv9-n" value=${k} maxLength="12" aria-label="Key" onChange=${e => setK(e.target.value)} /><span>value</span><input className="wbv9-in wbv9-n" value=${v} maxLength="16" aria-label="Value" onChange=${e => setV(e.target.value)} /></div>
+      <div className="wbv9-chips">${[['set', 'setItem'], ['get', 'getItem'], ['rm', 'removeItem'], ['clear', 'clear()'], ['key', 'key(0)'], ['len', 'length']].map(([a, t]) => html`<button key=${a} className="fig-btn wbv9-m" onClick=${() => act(a)}>${t}</button>`)}<button className="fig-btn" onClick=${() => act('obj')}>Store an object</button></div>
+      <div className="wbv9-chips"><button className="fig-btn" onClick=${() => act('reload')}>↻ Reload page</button><button className="fig-btn" onClick=${() => act('close')}>Close browser, open again</button></div>
+      <div className="wbv9-two"><${Tbl} name="Local Storage" rows=${S.local} id="local" /><${Tbl} name="Session Storage" rows=${S.session} id="session" /></div>
+      <${Con} lines=${con} fresh=${con.length ? 1 : 0} /></div>
+      <${Cap} en=${cap[0]} ar=${cap[1]} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [8.3] slide 41: L9 Example 3, the saved background colour and the lenght bug ── */
+  function ColorEx({ ar }) {
+    const [store, setStore] = useState({}), [bg, setBg] = useState(''), [fix, setFix] = useState(false), [con, setCon] = useState(['0']), [ev, setEv] = useState({ t: 'start' });
+    const n = Object.keys(store).length;
+    const lines = ['console.log(localStorage.length);', `if(localStorage.${fix ? 'length' : 'lenght'}>0){`, '  document.body.style.background= localStorage.color;', '}', 'function setColor(color){', "  localStorage.setItem('color',color);", '  document.body.style.background=color;', '}'];
+    const click = c => { setStore(Object.assign({}, store, { color: c })); setBg(c); setEv({ t: 'click', c }); };
+    const reload = () => { const go = fix && n > 0; setBg(go ? store.color : ''); setCon(L => L.concat([String(n)]).slice(-4)); setEv({ t: 'reload', go, n }); };
+    const on = ev.t === 'click' ? [4, 5, 6, 7] : ev.t === 'reload' ? (ev.go ? [0, 1, 2] : [0, 1]) : [0, 1];
+    let en, a;
+    if (ev.t === 'click') { en = `${C(`setColor("${ev.c}")`)} saves ${C(`color = "${ev.c}"`)} in localStorage and paints the body. Now press Reload.`; a = `الـ ${Bd(`setColor("${ev.c}")`)} بتحفظ ${Bd(`color = "${ev.c}"`)} في الـ localStorage وبتلوّن الـ body. دوس Reload دلوقتي.`; }
+    else if (ev.t === 'reload') {
+      en = fix ? (ev.go ? `After the reload ${C('localStorage.length')} is ${ev.n}, so ${C(`${ev.n} > 0`)} is true and the saved colour <b>${store.color}</b> comes back.` : `localStorage is empty, so the condition is false and the page stays white.`) : `The console prints ${ev.n}, but the condition reads ${C('localStorage.lenght')} (misspelled): that property does not exist, it is <b>undefined</b>, and ${C('undefined > 0')} is false. So the saved colour is <b>never</b> restored. Switch to the fixed code.`;
+      a = fix ? (ev.go ? `بعد الـ reload الـ ${Bd('localStorage.length')} بقت ${Bd(ev.n)}، فالـ ${Bd(`${ev.n} > 0`)} بتطلع true واللون المحفوظ <b>${Bd(store.color)}</b> بيرجع.` : 'الـ localStorage فاضية، فالشرط false والصفحة بتفضل بيضا.') : `الـ console بيطبع ${Bd(ev.n)}، بس الشرط بيقرا ${Bd('localStorage.lenght')} (مكتوبة غلط)، والـ property دي مش موجودة فقيمتها <b>undefined</b>، والـ ${Bd('undefined > 0')} بتطلع false. عشان كده اللون المحفوظ <b>عمره ما بيرجع</b>. جرّب الكود المتصلح.`;
+    } else { en = `Click a colour square: ${C('setColor(this.id)')} runs. Then reload the page and see whether the colour is restored.`; a = `دوس على مربع لون عشان الـ ${Bd('setColor(this.id)')} تشتغل. وبعدين اعمل reload للصفحة وشوف اللون هيرجع ولا لأ.`; }
+    return html`<figure className="fig wbv9"><div className="fig-stage">
+      <${Chips} mono=${true} label="Code version" items=${[[false, 'lenght (slide)'], [true, 'length (fixed)']]} sel=${fix} on=${f => { setFix(f); setEv({ t: 'start' }); }} />
+      <div className="wbv9-two">
+        <div><div className="wbv9-win"><div className="wbv9-tab"><b>CHANGE bACKGROUNd COLOR</b></div>
+          <div className="wbv9-pg" style=${{ background: bg || '#fff' }}><div className="wbv9-sq">${['green', 'red', 'black', 'cyan'].map(c => html`<div key=${c} role="button" tabIndex="0" aria-label=${c} onClick=${() => click(c)} onKeyDown=${e => { if (e.key === 'Enter') click(c); }} style=${{ background: c }}>${c}</div>`)}</div></div></div>
+          <div className="wbv9-chips" style=${{ marginTop: '8px' }}><button className="fig-btn solid" onClick=${reload}>↻ Reload page</button><button className="fig-btn" onClick=${() => { setStore({}); setEv({ t: 'start' }); }}>localStorage.clear()</button></div>
+          <div className="wbv9-dt"><div>Application › Local Storage</div><table><tbody>${n ? Object.keys(store).map(key => html`<tr key=${key}><td>${key}</td><td>${store[key]}</td></tr>`) : html`<tr><td className="wbv9-none">(empty)</td></tr>`}</tbody></table></div>
+          <${Con} lines=${con} fresh=${ev.t === 'reload' ? 1 : 0} />
+          ${ev.t === 'reload' && html`<${KV} rows=${[[`localStorage.${fix ? 'length' : 'lenght'} > 0`, `${fix ? ev.n : 'undefined'} > 0 → ${fix ? String(ev.n > 0) : 'false'}`, ev.go ? 'wbv9-on' : 'wbv9-bad']]} />`}</div>
+        <div><p className="wbv9-fname">script (L9 Example 3)</p><${Code} lines=${lines} on=${on} /></div></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'wb-js3-chars': Chars, 'wb-js3-plus': Plus, 'wb-js3-split': SplitJoin, 'wb-js3-search': Search,
+    'wb-js3-convert': Convert, 'wb-js3-json': JsonTrip, 'wb-js3-example1': Example1,
+    'wb-js3-object': ObjLit, 'wb-js3-proto': Proto, 'wb-js3-assign': Assign, 'wb-js3-ref': RefCmp,
+    'wb-js3-math': MathRound, 'wb-js3-random': RandomRoll,
+    'wb-js3-call': CallTrace, 'wb-js3-builtin': Builtins, 'wb-js3-forms': FnForms, 'wb-js3-default': Defaults, 'wb-js3-rest': Rest, 'wb-js3-closure': Closure,
+    'wb-js3-evtypes': EvTypes, 'wb-js3-onload': Onload, 'wb-js3-events': EvDemo,
+    'wb-js3-storage': Storage, 'wb-js3-color': ColorEx
+  });
+})();
+/* ── part L10 ── */
+// Web Programming visuals, Lecture 10 (PHP: server-side basics): typing a URL and the server architecture, the PHP request lifecycle,
+// a line-by-line tracer for the lecture's PHP (HTML/PHP modes, variables, constants, loops, a function, the exercises), variable names,
+// expressions reduced step by step with var_dump, strings as cells and the string functions, quotes, TRUE/FALSE, array functions,
+// the login form and GET vs POST (Lec_8_PHP_Intro slides 2 to 40). Every label and number comes from the site's notes and the slides.
+// Nothing typed by the student is ever eval'ed: a small interpreter below runs only the PHP subset the notes cover.
+(function () {
+  const { useState, useEffect, useRef, useMemo } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.wbv10, .wbv10 *{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "calt" 0; }
+.wbv10 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.wbv10 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.wbv10-chips{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.wbv10-chips .fig-btn{ font-size:.8rem; padding:4px 10px; min-height:30px; }
+.wbv10-chips .fig-btn.m{ font-family:var(--mono); font-variant-ligatures:none; }
+.wbv10-lbl{ font-size:.75rem; color:var(--graphite); margin:8px 0 3px; text-align:left; }
+.wbv10-cnt{ font-size:.8rem; color:var(--graphite); }
+.wbv10-mono{ font-family:var(--mono); font-variant-ligatures:none; }
+@keyframes wbv10in{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
+.wbv10-in{ animation:wbv10in .45s ease both; }
+.wbv10-code{ position:relative; font:.8rem/1.5 var(--mono); font-variant-ligatures:none; background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:5px 3px; margin:0; direction:ltr; text-align:left; color:var(--ink); max-height:330px; overflow-y:auto; overflow-x:hidden; }
+.wbv10-ln{ display:grid; grid-template-columns:1.9em minmax(0,1fr); border-radius:4px; transition:background .3s; }
+.wbv10-ln > i{ font-style:normal; color:var(--graphite); text-align:right; padding-right:5px; user-select:none; }
+.wbv10-ln > span{ white-space:pre-wrap; overflow-wrap:anywhere; }
+.wbv10-ln.h > span{ color:var(--graphite); }
+.wbv10-ln.on{ background:color-mix(in srgb, var(--fig-k) 26%, transparent); }
+.wbv10-ln.bad{ background:color-mix(in srgb, var(--pen) 22%, transparent); }
+.wbv10-v{ color:var(--fig-k); font-weight:600; } .wbv10-cm{ color:var(--graphite); font-style:italic; }
+.wbv10-two{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px; max-width:640px; margin:0 auto; }
+@media (min-width:640px){ .wbv10-two{ grid-template-columns:repeat(2, minmax(0,1fr)); align-items:start; } }
+.wbv10-vars{ display:flex; flex-wrap:wrap; gap:5px; min-height:24px; }
+.wbv10-var{ font:.8rem var(--mono); font-variant-ligatures:none; border:1.3px solid var(--fig-k); border-radius:99px; padding:1px 8px; background:color-mix(in srgb, var(--fig-k) 12%, var(--paper)); color:var(--ink); overflow-wrap:anywhere; direction:ltr; }
+.wbv10-var small{ font-family:var(--body); font-size:.75rem; color:var(--graphite); margin-left:4px; }
+.wbv10-var.c{ border-style:dashed; }
+.wbv10-none{ font-size:.8rem; color:var(--graphite); font-style:italic; }
+.wbv10-out{ font:.8rem/1.45 var(--mono); font-variant-ligatures:none; white-space:pre-wrap; overflow-wrap:anywhere; background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:6px 8px; margin:0; min-height:1.6em; max-height:150px; overflow-y:auto; overflow-x:hidden; direction:ltr; text-align:left; color:var(--ink); }
+.wbv10-web{ background:#fff; color:#111; border:1px solid var(--line); border-radius:8px; padding:6px 9px; min-height:1.6em; font-family:"Times New Roman", Times, serif; font-size:1rem; line-height:1.35; direction:ltr; text-align:left; overflow-wrap:anywhere; overflow-x:hidden; }
+.wbv10-web h1{ font-size:1.4rem; margin:.2em 0; } .wbv10-web p{ margin:.4em 0; }
+.wbv10-web table{ border-collapse:separate; border-spacing:2px; font-size:.9rem; }
+.wbv10-web table.wbv10-bt, .wbv10-web table.wbv10-bt td, .wbv10-web table.wbv10-bt th{ border:1px solid #777; }
+.wbv10-web td{ padding:1px 4px; text-align:right; }
+.wbv10-inp{ font:.85rem var(--mono); font-variant-ligatures:none; width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:6px; padding:5px 8px; background:var(--paper); color:var(--ink); direction:ltr; }
+textarea.wbv10-inp{ resize:vertical; min-height:150px; line-height:1.45; }
+.wbv10-row{ display:flex; gap:6px; align-items:center; flex-wrap:wrap; margin:6px 0 0; font-size:.8rem; color:var(--ink); }
+.wbv10-row .wbv10-inp{ flex:1 1 120px; width:auto; }
+.wbv10-row select{ font:inherit; font-size:.8rem; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); padding:3px 5px; }
+.wbv10-hot{ background:color-mix(in srgb, var(--fig-k) 32%, transparent); color:inherit; border-radius:4px; padding:0 2px; animation:wbv10in .45s ease both; display:inline-block; }
+.wbv10-expr{ font:600 1.05rem/1.5 var(--mono); font-variant-ligatures:none; text-align:center; padding:12px 8px; border:1.5px solid var(--fig-k); border-radius:10px; background:var(--paper); color:var(--ink); overflow-wrap:anywhere; direction:ltr; max-width:520px; margin:0 auto; }
+.wbv10-res{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:3px 10px; max-width:520px; margin:8px auto 0; font-size:.8rem; color:var(--ink); }
+.wbv10-res span{ color:var(--graphite); } .wbv10-res code{ font:600 .85rem var(--mono); overflow-wrap:anywhere; direction:ltr; text-align:left; }
+/* url flow */
+.wbv10-bar{ font:.8rem var(--mono); border:1px solid var(--line); border-radius:99px; background:var(--paper); color:var(--ink); padding:4px 10px; max-width:440px; margin:0 auto 10px; overflow-wrap:anywhere; direction:ltr; text-align:left; }
+.wbv10-net{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:10px; max-width:440px; margin:0 auto; }
+.wbv10-node{ border:1.5px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); padding:8px 6px; text-align:center; font-size:.85rem; line-height:1.3; opacity:.45; transition:opacity .4s, box-shadow .4s, border-color .4s; }
+.wbv10-node b{ display:block; font-size:.9rem; } .wbv10-node small{ display:block; font-size:.75rem; color:var(--graphite); }
+.wbv10-node.on{ opacity:1; border-color:var(--fig-k); box-shadow:0 0 0 2px color-mix(in srgb, var(--fig-k) 40%, transparent); }
+.wbv10-ic{ font-size:1.3rem; line-height:1.1; display:block; }
+.wbv10-msg{ text-align:center; margin:10px auto 0; max-width:440px; min-height:1.8em; }
+.wbv10-msg span{ display:inline-block; font:.8rem var(--mono); font-variant-ligatures:none; padding:3px 10px; border-radius:99px; background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); border:1px solid var(--fig-k); color:var(--ink); animation:wbv10in .45s ease both; overflow-wrap:anywhere; }
+/* lifecycle */
+.wbv10-cyc{ display:grid; grid-template-columns:minmax(0,1fr); gap:6px; max-width:640px; margin:0 auto; align-items:stretch; }
+@media (min-width:600px){ .wbv10-cyc{ grid-template-columns:minmax(0,1fr) 90px minmax(0,1fr); } }
+.wbv10-win{ border:2px solid var(--graphite); border-radius:8px; background:var(--paper); color:var(--ink); padding:6px; }
+.wbv10-win > b{ display:block; text-align:center; font-size:.9rem; margin:0 0 5px; }
+.wbv10-win > small{ display:block; text-align:center; font-size:.75rem; color:var(--graphite); margin-top:4px; }
+.wbv10-paper{ background:#fff; color:#111; border:1px solid var(--line); border-radius:4px; min-height:54px; padding:6px 8px; font-family:"Times New Roman", serif; font-size:1rem; }
+.wbv10-src{ background:#fffbe0; color:#222; border:1px solid #c9b860; border-radius:4px; padding:4px 6px; font:.8rem/1.4 var(--mono); font-variant-ligatures:none; white-space:pre-wrap; overflow-wrap:anywhere; transition:opacity .4s, box-shadow .4s; opacity:.5; }
+.wbv10-src.on{ opacity:1; box-shadow:0 0 0 2px var(--fig-k); }
+.wbv10-mid{ display:flex; flex-direction:column; justify-content:center; gap:8px; text-align:center; font:600 .8rem var(--mono); color:var(--fig-k); }
+.wbv10-mid > div{ transition:opacity .4s; } .wbv10-mid .v{ display:inline; } .wbv10-mid .h{ display:none; }
+@media (min-width:600px){ .wbv10-mid .v{ display:none; } .wbv10-mid .h{ display:inline; } }
+.wbv10-ex{ text-align:center; font-size:.75rem; color:var(--graphite); margin:4px 0; }
+/* name checker / cells */
+.wbv10-cells{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; margin:6px auto; max-width:560px; direction:ltr; }
+.wbv10-cell{ display:flex; flex-direction:column; align-items:center; min-width:1.6em; }
+.wbv10-cell > b{ display:grid; place-items:center; min-width:1.45em; height:1.75em; padding:0 2px; font:600 1rem var(--mono); border:1.3px solid var(--line); border-radius:5px; background:var(--paper); color:var(--ink); transition:background .3s, border-color .3s, opacity .3s, transform .3s; }
+.wbv10-cell > i{ font:normal .75rem var(--mono); color:var(--graphite); }
+.wbv10-cell.k > b{ border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); }
+.wbv10-cell.ok > b{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 20%, var(--paper)); }
+.wbv10-cell.no > b{ border-color:var(--pen); background:color-mix(in srgb, var(--pen) 20%, var(--paper)); }
+.wbv10-cell.gone > b{ opacity:.25; text-decoration:line-through; }
+.wbv10-cell.new > b{ border-color:var(--fig-k); border-style:dashed; animation:wbv10in .45s ease both; }
+.wbv10-cell.ptr > b{ transform:translateY(-3px); box-shadow:0 3px 0 var(--fig-k); }
+.wbv10-verd{ text-align:center; font-weight:700; margin:6px 0 0; font-size:1rem; }
+.wbv10-verd.ok{ color:var(--ok); } .wbv10-verd.no{ color:var(--pen); }
+/* quotes */
+.wbv10-qline{ font:600 .95rem/1.6 var(--mono); font-variant-ligatures:none; text-align:center; overflow-wrap:anywhere; direction:ltr; color:var(--ink); }
+.wbv10-tok{ border-radius:4px; padding:0 2px; background:color-mix(in srgb, var(--fig-k) 22%, transparent); }
+.wbv10-tok.no{ background:color-mix(in srgb, var(--pen) 22%, transparent); text-decoration:line-through; }
+.wbv10-printed{ font:600 1rem/1.5 var(--mono); font-variant-ligatures:none; text-align:left; direction:ltr; white-space:pre-wrap; overflow-wrap:anywhere; border:1.5px solid var(--fig-k); border-radius:10px; padding:8px 10px; background:var(--paper); color:var(--ink); max-width:520px; margin:6px auto 0; min-height:1.5em; }
+.wbv10-printed .nl{ color:var(--fig-k); font-size:.8rem; }
+.wbv10-printed .val{ background:color-mix(in srgb, var(--ok) 22%, transparent); border-radius:3px; animation:wbv10in .45s ease both; display:inline-block; }
+.wbv10-printed .miss{ display:inline-block; min-width:1.2em; border-bottom:2px dashed var(--pen); }
+/* truthy */
+.wbv10-q{ text-align:center; margin:0 0 10px; }
+.wbv10-q .big{ font:700 1.2rem var(--mono); font-variant-ligatures:none; color:var(--ink); display:inline-block; padding:4px 14px; border-radius:10px; border:1.5px solid var(--fig-k); background:var(--paper); margin:4px 0 8px; }
+.wbv10-q .r{ display:flex; gap:8px; justify-content:center; flex-wrap:wrap; } .wbv10-q .r .fig-btn{ min-width:100px; }
+.wbv10-q.shake .big{ animation:wbv10sh .4s ease; } @keyframes wbv10sh{ 25%{ transform:translateX(-5px); } 75%{ transform:translateX(5px); } }
+.wbv10-cols{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; max-width:440px; margin:0 auto; }
+.wbv10-col{ border:1.5px solid var(--line); border-radius:8px; padding:5px; background:var(--paper); min-height:70px; }
+.wbv10-col > b{ display:block; font-size:.8rem; color:var(--fig-k); text-align:center; }
+.wbv10-col > small{ display:block; font-size:.75rem; color:var(--graphite); text-align:center; margin:0 0 4px; }
+.wbv10-slot{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; }
+.wbv10-it{ font:600 .8rem var(--mono); font-variant-ligatures:none; padding:2px 7px; border-radius:99px; border:1.3px solid var(--fig-k); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); color:var(--ink); animation:wbv10in .45s ease both; }
+.wbv10-score{ text-align:center; font-size:.8rem; color:var(--graphite); margin:6px 0 0; }
+/* arrays */
+.wbv10-ops{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; }
+.wbv10-ops .fig-btn{ font:.75rem var(--mono); font-variant-ligatures:none; padding:4px 8px; min-height:30px; }
+.wbv10-arr{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; min-height:52px; margin:8px 0 4px; direction:ltr; }
+.wbv10-el{ display:flex; flex-direction:column; align-items:center; }
+.wbv10-el > b{ font:600 .9rem var(--mono); min-width:2.2em; padding:5px 6px; text-align:center; border:1.5px solid var(--fig-k); border-radius:6px; background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); color:var(--ink); }
+.wbv10-el > i{ font:normal .75rem var(--mono); color:var(--graphite); }
+.wbv10-el.new > b{ animation:wbv10in .45s ease both; border-style:dashed; }
+.wbv10-el.sel > b{ background:color-mix(in srgb, var(--ok) 26%, var(--paper)); border-color:var(--ok); }
+.wbv10-gone{ text-align:center; font:.8rem var(--mono); color:var(--pen); min-height:1.3em; }
+/* login / get-post */
+.wbv10-form{ display:grid; gap:4px; margin-top:6px; font-family:"Times New Roman", serif; font-size:.95rem; color:#111; }
+.wbv10-form input{ font:.9rem var(--body); border:1px solid #888; border-radius:2px; padding:2px 4px; background:#fff; color:#111; width:100%; box-sizing:border-box; }
+.wbv10-form button{ justify-self:start; font:.9rem var(--body); padding:2px 10px; border:1px solid #888; border-radius:3px; background:#eee; color:#111; cursor:pointer; min-height:28px; }
+.wbv10-req{ font:.8rem/1.45 var(--mono); font-variant-ligatures:none; text-align:center; color:var(--ink); margin:6px 0; min-height:1.4em; overflow-wrap:anywhere; }
+.wbv10-req span{ display:inline-block; padding:2px 9px; border-radius:8px; border:1px solid var(--fig-k); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); animation:wbv10in .45s ease both; }
+.wbv10-gp{ border:1.5px solid var(--line); border-radius:10px; background:var(--paper); padding:7px; color:var(--ink); }
+.wbv10-gp > b{ display:block; text-align:center; font-size:.9rem; margin:0 0 4px; color:var(--fig-k); }
+.wbv10-part{ border-radius:6px; padding:3px 5px; margin:3px 0; transition:background .4s, box-shadow .4s; font-size:.8rem; }
+.wbv10-part.on{ background:color-mix(in srgb, var(--fig-k) 18%, transparent); box-shadow:0 0 0 1.5px var(--fig-k); }
+.wbv10-part .wbv10-pre{ margin:0; font:.8rem/1.4 var(--mono); font-variant-ligatures:none; white-space:pre-wrap; overflow-wrap:anywhere; direction:ltr; text-align:left; }
+.wbv10-part small{ display:block; font-size:.75rem; color:var(--graphite); }
+.wbv10-warn{ color:var(--pen); font-weight:600; }
+`;
+  if (!document.getElementById('wbv10-css')) { const s = document.createElement('style'); s.id = 'wbv10-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const B = s => '<bdi dir="ltr">' + s + '</bdi>', L = s => '<span class="ltr">' + s + '</span>';
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  /* ---------- a tiny PHP subset (only what the notes cover); nothing is eval'ed ---------- */
+  const I = v => ({ t: 'int', v }), F = v => ({ t: 'float', v }), S = v => ({ t: 'string', v }), BO = v => ({ t: 'bool', v: !!v }), NUL = { t: 'null', v: null };
+  class Fatal extends Error { constructor(m, line) { super(m); this.line = line; } }
+  class Ret { constructor(v) { this.v = v; } }
+  const fmtF = x => !isFinite(x) ? (isNaN(x) ? 'NAN' : (x < 0 ? '-INF' : 'INF')) : Number.isInteger(x) && Math.abs(x) < 1e15 ? String(x) : String(Number(x.toPrecision(14)));
+  const toStr = v => v.t === 'string' ? v.v : v.t === 'int' ? String(v.v) : v.t === 'float' ? fmtF(v.v) : v.t === 'bool' ? (v.v ? '1' : '') : '';
+  const toBool = v => v.t === 'bool' ? v.v : v.t === 'null' ? false : v.t === 'string' ? !(v.v === '' || v.v === '0') : v.v !== 0;
+  const NUMRE = /^[ \t\n\r\v\f]*[+-]?(\d+(\.\d*)?|\.\d+)([eE][+-]?\d+)?/;
+  const numOf = s => { const m = NUMRE.exec(s); if (!m) return null; const x = Number(m[0].trim()); return { v: /[.eE]/.test(m[0]) ? F(x) : I(x), full: /^\s*$/.test(s.slice(m[0].length)) }; };
+  const isNumStr = s => { const m = numOf(s); return !!(m && m.full); };
+  const qs = s => '"' + s.replace(/\\/g, '\\\\').replace(/"/g, '\\"').replace(/\n/g, '\\n').replace(/\t/g, '\\t') + '"';
+  const lit = v => v.t === 'string' ? qs(v.v) : v.t === 'int' ? String(v.v) : v.t === 'float' ? (Number.isInteger(v.v) && isFinite(v.v) ? v.v + '.0' : fmtF(v.v)) : v.t === 'bool' ? (v.v ? 'TRUE' : 'FALSE') : 'NULL';
+  const u8 = s => new TextEncoder().encode(s).length;
+  const dump = v => v.t === 'string' ? 'string(' + u8(v.v) + ') "' + v.v + '"' : v.t === 'int' ? 'int(' + v.v + ')' : v.t === 'float' ? 'float(' + (isFinite(v.v) ? String(v.v) : fmtF(v.v)) + ')' : v.t === 'bool' ? 'bool(' + v.v + ')' : 'NULL';
+  const TYPE = { int: 'int', float: 'float', string: 'string', bool: 'bool', null: 'NULL' };
+  const substrS = (s, st, len) => { const n = s.length; if (st < 0) st = Math.max(0, n + st); if (st > n) return ''; let e = len == null ? n : len < 0 ? n + len : st + len; e = Math.min(e, n); return e <= st ? '' : s.slice(st, e); };
+  const trimS = (s, ch) => { let a = 0, b = s.length; while (a < b && ch.includes(s[a])) a++; while (b > a && ch.includes(s[b - 1])) b--; return s.slice(a, b); };
+  const phpRound = (x, p) => { const m = Math.pow(10, p), y = Math.abs(x) * m, r = Math.floor(y + 0.5 + 1e-9) / m; return x < 0 ? -r : r; };
+  const perlInc = s => { if (s === '') return '1'; const a = s.split(''); for (let i = a.length - 1; i >= 0; i--) { const c = a[i]; if (c === 'z') a[i] = 'a'; else if (c === 'Z') a[i] = 'A'; else if (c === '9') a[i] = '0'; else if (/[a-yA-Y0-8]/.test(c)) { a[i] = String.fromCharCode(c.charCodeAt(0) + 1); return a.join(''); } else return a.join(''); } const f = s[0]; return (f === 'z' ? 'a' : f === 'Z' ? 'A' : '1') + a.join(''); };
+
+  function lex(src) {
+    const T = []; let i = 0, line = 1, php = false; const n = src.length;
+    const nl = s => (s.match(/\n/g) || []).length;
+    while (i < n) {
+      if (!php) {
+        let j = src.indexOf('<?php', i); if (j < 0) j = n;
+        if (j > i) { const h = src.slice(i, j); T.push({ k: 'html', v: h, line, end: line + nl(h.replace(/\n$/, '')) }); line += nl(h); }
+        i = j; if (i < n) { i += 5; php = true; }
+        continue;
+      }
+      const c = src[i];
+      if (c === '\n') { line++; i++; continue; }
+      if (/\s/.test(c)) { i++; continue; }
+      if (src.startsWith('?>', i)) { T.push({ k: 'op', v: ';', line }); i += 2; php = false; if (src[i] === '\n') { i++; line++; } continue; }
+      if (c === '#' || src.startsWith('//', i)) { while (i < n && src[i] !== '\n' && !src.startsWith('?>', i)) i++; continue; }
+      if (src.startsWith('/*', i)) { const j = src.indexOf('*/', i + 2), e = j < 0 ? n : j + 2; line += nl(src.slice(i, e)); i = e; continue; }
+      if (c === '$') {
+        let j = i + 1; while (j < n && /\w/.test(src[j])) j++;
+        const name = src.slice(i + 1, j);
+        if (!name) throw new Fatal('Parse error: "$" must be followed by a name', line);
+        if (/^\d/.test(name)) throw new Fatal('Parse error: $' + name + ' is not a valid name (it cannot start with a digit)', line);
+        T.push({ k: 'var', v: name, line }); i = j; continue;
+      }
+      if (/\d/.test(c) || (c === '.' && /\d/.test(src[i + 1] || ''))) { const t = /^(\d+(\.\d+)?([eE][+-]?\d+)?|\.\d+)/.exec(src.slice(i))[0]; T.push({ k: 'num', v: Number(t), f: /[.eE]/.test(t), line }); i += t.length; continue; }
+      if (c === '"' || c === "'") {
+        let j = i + 1, raw = '';
+        while (j < n && src[j] !== c) { if (src[j] === '\\' && j + 1 < n) { raw += src[j] + src[j + 1]; j += 2; } else raw += src[j++]; }
+        if (j >= n) throw new Fatal('Parse error: a string is never closed', line);
+        T.push({ k: 'str', v: raw, q: c, line }); line += nl(raw); i = j + 1; continue;
+      }
+      const cm = /^\(\s*(int|integer|float|double|bool|boolean|string)\s*\)/i.exec(src.slice(i, i + 20));
+      if (cm) { const w = cm[1].toLowerCase(); T.push({ k: 'cast', v: { integer: 'int', double: 'float', boolean: 'bool' }[w] || w, line }); i += cm[0].length; continue; }
+      if (/[A-Za-z_]/.test(c)) { let j = i; while (j < n && /\w/.test(src[j])) j++; T.push({ k: 'id', v: src.slice(i, j), line }); i = j; continue; }
+      const o = ['===', '!==', '==', '!=', '<>', '<=', '>=', '&&', '||', '++', '--', '+=', '-=', '*=', '/=', '%=', '.=', '+', '-', '*', '/', '%', '.', '<', '>', '!', '=', '(', ')', '{', '}', '[', ']', ';', ','].find(o => src.startsWith(o, i));
+      if (!o) throw new Fatal('Parse error: unexpected "' + c + '"', line);
+      T.push({ k: 'op', v: o, line }); i += o.length;
+    }
+    T.push({ k: 'eof', v: null, line }); return T;
+  }
+
+  function parse(T) {
+    let p = 0;
+    const next = () => T[p++], isOp = v => T[p].k === 'op' && T[p].v === v, isId = v => T[p].k === 'id' && T[p].v.toLowerCase() === v;
+    const bad = t => new Fatal('Parse error: unexpected ' + (t.k === 'eof' ? 'end of the code' : '"' + (t.k === 'var' ? '$' : '') + (t.k === 'str' ? t.q + t.v + t.q : t.v) + '"'), t.line);
+    const want = v => { if (!isOp(v)) throw new Fatal('Parse error: "' + v + '" expected' + (T[p].k === 'eof' ? ' before the end' : ''), T[p].line); return next(); };
+    function stmts(inner) { const out = []; while (T[p].k !== 'eof' && !(inner && isOp('}'))) { const s = stmt(); if (s) out.push(s); } return out; }
+    function block() { if (isOp('{')) { next(); const b = stmts(true); want('}'); return b; } const s = stmt(); return s ? [s] : []; }
+    function cond() { want('('); const c = expr(); want(')'); return c; }
+    function stmt() {
+      const t = T[p], line = t.line;
+      if (t.k === 'html') { next(); return { k: 'html', v: t.v, line, end: t.end }; }
+      if (isOp(';')) { next(); return null; }
+      if (isOp('{')) { next(); const b = stmts(true); want('}'); return { k: 'block', b, line }; }
+      if (isId('echo') || isId('print')) { const pr = isId('print'); next(); const args = [expr()]; while (!pr && isOp(',')) { next(); args.push(expr()); } want(';'); return { k: 'echo', args, line, kw: pr ? 'print' : 'echo' }; }
+      if (isId('if')) {
+        next(); const c = cond(), th = block(), alts = []; let el = null;
+        for (;;) {
+          if (isId('elseif') || (isId('else') && T[p + 1].k === 'id' && T[p + 1].v.toLowerCase() === 'if')) { const l2 = T[p].line; p += isId('elseif') ? 1 : 2; const c2 = cond(); alts.push({ c: c2, b: block(), line: l2 }); }
+          else if (isId('else')) { next(); el = block(); break; } else break;
+        }
+        return { k: 'if', c, th, alts, el, line };
+      }
+      if (isId('for')) { next(); want('('); const init = isOp(';') ? [] : list(); want(';'); const c = isOp(';') ? null : expr(); want(';'); const up = isOp(')') ? [] : list(); want(')'); return { k: 'for', init, c, up, b: block(), line }; }
+      if (isId('while')) { next(); const c = cond(); return { k: 'while', c, b: block(), line }; }
+      if (isId('do')) { next(); const b = block(); if (!isId('while')) throw bad(T[p]); const l2 = T[p].line; next(); const c = cond(); want(';'); return { k: 'do', c, b, line: l2 }; }
+      if (isId('function')) {
+        next(); const nm = next(); if (nm.k !== 'id') throw bad(nm); want('('); const ps = [];
+        while (!isOp(')')) { const v = next(); if (v.k !== 'var') throw bad(v); ps.push(v.v); if (isOp(',')) next(); else break; }
+        want(')'); want('{'); const b = stmts(true); want('}'); return { k: 'func', name: nm.v, ps, b, line };
+      }
+      if (isId('return')) { next(); const e = isOp(';') ? null : expr(); want(';'); return { k: 'ret', e, line }; }
+      const e = expr(); want(';'); return { k: 'expr', e, line };
+    }
+    function list() { const a = [expr()]; while (isOp(',')) { next(); a.push(expr()); } return a; }
+    function expr() {
+      const l = or();
+      if (T[p].k === 'op' && ['=', '+=', '-=', '*=', '/=', '%=', '.='].includes(T[p].v)) { const t = T[p]; if (l.k !== 'var') throw new Fatal('Parse error: only a $variable can be assigned to', t.line); next(); return { k: 'asg', op: t.v, name: l.name, r: expr() }; }
+      return l;
+    }
+    const bin = (sub, ops) => () => { let l = sub(); while (T[p].k === 'op' && ops.includes(T[p].v)) { const op = next().v; l = { k: 'bin', op, l, r: sub() }; } return l; };
+    function unary() {
+      const t = T[p];
+      if (t.k === 'op' && t.v === '!') { next(); return { k: 'not', e: unary() }; }
+      if (t.k === 'op' && (t.v === '-' || t.v === '+')) { next(); return { k: 'neg', op: t.v, e: unary() }; }
+      if (t.k === 'cast') { next(); return { k: 'cast', to: t.v, e: unary() }; }
+      if (t.k === 'op' && (t.v === '++' || t.v === '--')) { next(); const v = next(); if (v.k !== 'var') throw bad(v); return { k: 'inc', op: t.v, pre: true, name: v.v }; }
+      return postfix();
+    }
+    function postfix() {
+      let e = primary();
+      for (;;) {
+        if (isOp('[')) { next(); const i = expr(); want(']'); e = { k: 'idx', e, i }; }
+        else if ((isOp('++') || isOp('--')) && e.k === 'var') e = { k: 'inc', op: next().v, pre: false, name: e.name };
+        else return e;
+      }
+    }
+    function primary() {
+      const t = next();
+      if (t.k === 'num') return { k: 'lit', v: t.f ? F(t.v) : I(t.v) };
+      if (t.k === 'str') return t.q === "'" ? { k: 'lit', v: S(t.v.replace(/\\([\\'])/g, '$1')), q: "'", raw: t.v } : { k: 'dq', raw: t.v };
+      if (t.k === 'var') return { k: 'var', name: t.v };
+      if (t.k === 'op' && t.v === '(') { const e = expr(); want(')'); return { k: 'par', e }; }
+      if (t.k === 'id') {
+        const w = t.v.toLowerCase();
+        if (w === 'true' || w === 'false') return { k: 'lit', v: BO(w === 'true'), w: t.v };
+        if (w === 'null') return { k: 'lit', v: NUL, w: t.v };
+        if (isOp('(')) { next(); const args = []; while (!isOp(')')) { args.push(expr()); if (isOp(',')) next(); else break; } want(')'); return { k: 'call', name: t.v, args }; }
+        return { k: 'const', name: t.v };
+      }
+      throw bad(t);
+    }
+    const mul = bin(unary, ['*', '/', '%']), add = bin(mul, ['+', '-']), cat = bin(add, ['.']), cmp = bin(cat, ['<', '>', '<=', '>=']), eq = bin(cmp, ['==', '!=', '===', '!==', '<>']), and = bin(eq, ['&&']), or = bin(and, ['||']);
+    return { stmts: () => stmts(false), expr: () => { const e = expr(); return e; }, atEnd: () => T[p].k === 'eof' || (isOp(';') && T[p + 1].k === 'eof') };
+  }
+
+  // the source of an expression (values already worked out shown in place, the newest one marked)
+  function pr(e, hot) {
+    if (e.__v) { const s = esc(lit(e.__v)); return e === hot ? '<mark class="wbv10-hot">' + s + '</mark>' : s; }
+    switch (e.k) {
+      case 'lit': return esc(e.q === "'" ? "'" + e.raw + "'" : e.w || lit(e.v));
+      case 'dq': return esc('"' + e.raw + '"');
+      case 'var': return esc('$' + e.name);
+      case 'const': return esc(e.name);
+      case 'par': return '(' + pr(e.e, hot) + ')';
+      case 'asg': return esc('$' + e.name) + ' ' + esc(e.op) + ' ' + pr(e.r, hot);
+      case 'inc': return e.pre ? e.op + esc('$' + e.name) : esc('$' + e.name) + e.op;
+      case 'not': return '!' + pr(e.e, hot);
+      case 'neg': return e.op + pr(e.e, hot);
+      case 'cast': return '(' + e.to + ') ' + pr(e.e, hot);
+      case 'idx': return pr(e.e, hot) + '[' + pr(e.i, hot) + ']';
+      case 'bin': return pr(e.l, hot) + ' ' + esc(e.op) + ' ' + pr(e.r, hot);
+      case 'call': return esc(e.name) + '(' + e.args.map(a => pr(a, hot)).join(', ') + ')';
+    }
+    return '';
+  }
+
+  // the parts of a double-quoted string: literal text, escapes, $variables
+  function dqParts(raw) {
+    const out = []; let i = 0, buf = '';
+    const flush = () => { if (buf) { out.push({ t: buf }); buf = ''; } };
+    while (i < raw.length) {
+      const c = raw[i];
+      if (c === '\\') { const m = { n: '\n', t: '\t', r: '\r', '"': '"', '\\': '\\', $: '$' }[raw[i + 1]]; if (m !== undefined) { if (m === '\n' || m === '\t') { flush(); out.push({ e: '\\' + raw[i + 1], t: m }); } else buf += m; i += 2; } else { buf += c; i++; } continue; }
+      if (c === '{' && raw[i + 1] === '$') { const j = raw.indexOf('}', i); const nm = j < 0 ? '' : raw.slice(i + 2, j); if (/^[A-Za-z_]\w*$/.test(nm)) { flush(); out.push({ v: nm, src: raw.slice(i, j + 1), br: true }); i = j + 1; continue; } }
+      if (c === '$' && /[A-Za-z_]/.test(raw[i + 1] || '')) {
+        let j = i + 1; while (j < raw.length && /\w/.test(raw[j])) j++;
+        const part = { v: raw.slice(i + 1, j), src: raw.slice(i, j) };
+        const m = /^\[(\d+)\]/.exec(raw.slice(j)); if (m) { part.ix = +m[1]; part.src += m[0]; j += m[0].length; }
+        flush(); out.push(part); i = j; continue;
+      }
+      buf += c; i++;
+    }
+    flush(); return out;
+  }
+
+  // a machine for one run: o.onVal(node, value, notes) is called after each sub-expression (for the step-by-step reductions)
+  function machine(o = {}) {
+    const M = { out: '', vars: {}, consts: {}, funcs: {}, steps: [], pend: [], depth: 0 };
+    const note = (en, ar) => M.pend.push({ en, ar });
+    const take = () => { const p = M.pend; M.pend = []; return p; };
+    const undef = nm => { note('<span class="wbv10-warn">Warning: Undefined variable $' + esc(nm) + '</span> (it is NULL and prints nothing).', 'تحذير: الـ variable ' + B('$' + esc(nm)) + ' مش متعرّف (قيمته NULL ومش بيطبع حاجة).'); return NUL; };
+    const getVar = nm => nm in M.vars ? M.vars[nm] : undef(nm);
+    function toNum(v, op) {
+      if (v.t === 'int' || v.t === 'float') return v;
+      if (v.t === 'bool') return I(v.v ? 1 : 0);
+      if (v.t === 'null') return I(0);
+      const m = numOf(v.v);
+      if (!m) throw new Fatal('"' + v.v + '" is not a number, so ' + (op || 'math') + ' cannot use it: this tracer stops here');
+      if (!m.full) note('<span class="wbv10-warn">' + esc(qs(v.v)) + ' is only partly a number</span>: PHP 8 uses the ' + esc(toStr(m.v)) + ' at its start and shows a warning.', 'الـ string ده جزء منه بس رقم، فالـ PHP 8 بياخد الرقم اللي في أوله وبيطلّع warning:' + L(esc(qs(v.v)) + ' → ' + esc(toStr(m.v))));
+      else note('<code>' + esc(op) + '</code> needs numbers: the string ' + esc(qs(v.v)) + ' becomes ' + esc(toStr(m.v)) + '.', 'الـ ' + B(esc(op)) + ' محتاج أرقام، فالـ string بيتحوّل لرقم:' + L(esc(qs(v.v)) + ' → ' + esc(toStr(m.v))));
+      return m.v;
+    }
+    const toInt = v => { const x = v.t === 'string' ? (numOf(v.v) ? numOf(v.v).v.v : 0) : v.t === 'null' ? 0 : v.t === 'bool' ? +v.v : v.v; return isFinite(x) ? Math.trunc(x) : 0; };
+    function arith(op, a, b) {
+      const x = toNum(a, op), y = toNum(b, op);
+      if (op === '%') { const q = Math.trunc(y.v); if (q === 0) throw new Fatal('Modulo by zero'); return I(Math.trunc(x.v) % q); }
+      if (op === '/') {
+        if (y.v === 0) throw new Fatal('Division by zero');
+        const r = x.v / y.v;
+        if (x.t === 'int' && y.t === 'int') { if (Number.isInteger(r)) return I(r); note('int / int that does not divide evenly gives a <b>float</b>.', 'قسمة int على int مش بتقبل القسمة بالظبط بتطلع <b>float</b>.'); }
+        return F(r);
+      }
+      const r = op === '+' ? x.v + y.v : op === '-' ? x.v - y.v : x.v * y.v;
+      return x.t === 'int' && y.t === 'int' ? I(r) : F(r);
+    }
+    function concat(a, b) {
+      [a, b].forEach(v => { if (v.t === 'int' || v.t === 'float') note('<code>.</code> joins strings: ' + esc(lit(v)) + ' becomes ' + esc(qs(toStr(v))) + '.', 'الـ ' + B('.') + ' بيلزق strings، فالرقم بيتحوّل لـ string:' + L(esc(lit(v)) + ' → ' + esc(qs(toStr(v))))); });
+      return S(toStr(a) + toStr(b));
+    }
+    function loose(a, b) {
+      if (a.t === 'null' && b.t === 'string') return b.v === ''; if (b.t === 'null' && a.t === 'string') return a.v === '';
+      if (['null', 'bool'].includes(a.t) || ['null', 'bool'].includes(b.t)) return toBool(a) === toBool(b);
+      const na = a.t !== 'string' || isNumStr(a.v), nb = b.t !== 'string' || isNumStr(b.v);
+      if (na && nb) return Number(a.t === 'string' ? numOf(a.v).v.v : a.v) === Number(b.t === 'string' ? numOf(b.v).v.v : b.v);
+      return toStr(a) === toStr(b);
+    }
+    function cmpv(a, b) {
+      if (['null', 'bool'].includes(a.t) || ['null', 'bool'].includes(b.t)) return +toBool(a) - +toBool(b);
+      const na = a.t !== 'string' || isNumStr(a.v), nb = b.t !== 'string' || isNumStr(b.v);
+      if (na && nb) { const x = a.t === 'string' ? numOf(a.v).v.v : a.v, y = b.t === 'string' ? numOf(b.v).v.v : b.v; return x < y ? -1 : x > y ? 1 : 0; }
+      const x = toStr(a), y = toStr(b); return x < y ? -1 : x > y ? 1 : 0;
+    }
+    function cast(to, v) {
+      if (to === 'bool') return BO(toBool(v));
+      if (to === 'string') return S(toStr(v));
+      if (to === 'int') { const r = I(toInt(v)); if (v.t === 'float' && !Number.isInteger(v.v)) note('<code>(int)</code> drops the fraction.', 'الـ ' + B('(int)') + ' بيشيل الكسر.'); return r; }
+      const x = v.t === 'string' ? (numOf(v.v) ? numOf(v.v).v.v : 0) : v.t === 'null' ? 0 : v.t === 'bool' ? +v.v : v.v; return F(x);
+    }
+    function incr(cur, op) {
+      if (cur.t === 'int') return I(cur.v + (op === '++' ? 1 : -1));
+      if (cur.t === 'float') return F(cur.v + (op === '++' ? 1 : -1));
+      if (cur.t === 'null') return op === '++' ? I(1) : NUL;
+      if (cur.t === 'bool') return cur;
+      if (isNumStr(cur.v)) { const m = numOf(cur.v).v; return incr(m, op); }
+      return op === '++' ? S(perlInc(cur.v)) : cur;
+    }
+    const sv = (a, i) => toStr(a[i] || NUL), nv = (a, i) => toNum(a[i] || NUL, 'math');
+    const BI = {
+      strlen: a => I(u8(sv(a, 0))), strtoupper: a => S(sv(a, 0).toUpperCase()), strtolower: a => S(sv(a, 0).toLowerCase()),
+      strpos: a => { const k = sv(a, 0).indexOf(sv(a, 1)); return k < 0 ? BO(false) : I(k); },
+      substr: a => S(substrS(sv(a, 0), toInt(a[1] || NUL), a.length > 2 ? toInt(a[2]) : null)),
+      trim: a => S(trimS(sv(a, 0), a.length > 1 ? sv(a, 1) : ' \t\n\r\0\x0B')),
+      strcmp: a => { const x = sv(a, 0), y = sv(a, 1); return I(x < y ? -1 : x > y ? 1 : 0); },
+      sqrt: a => F(Math.sqrt(nv(a, 0).v)),
+      pow: a => { const x = nv(a, 0), y = nv(a, 1), r = Math.pow(x.v, y.v); return x.t === 'int' && y.t === 'int' && y.v >= 0 && Number.isSafeInteger(r) ? I(r) : F(r); },
+      abs: a => { const x = nv(a, 0); return x.t === 'int' ? I(Math.abs(x.v)) : F(Math.abs(x.v)); },
+      ceil: a => F(Math.ceil(nv(a, 0).v)), floor: a => F(Math.floor(nv(a, 0).v)),
+      round: a => { note('<code>round()</code> gives a <b>float</b>.', 'الـ ' + B('round()') + ' بترجّع <b>float</b>.'); return F(phpRound(nv(a, 0).v, a.length > 1 ? toInt(a[1]) : 0)); },
+      max: a => a.reduce((m, x) => cmpv(x, m) > 0 ? x : m), min: a => a.reduce((m, x) => cmpv(x, m) < 0 ? x : m),
+      var_dump: a => { a.forEach(x => { M.out += dump(x) + '\n'; }); return NUL; },
+      gettype: a => S({ int: 'integer', float: 'double', string: 'string', bool: 'boolean', null: 'NULL' }[(a[0] || NUL).t]),
+      is_string: a => BO((a[0] || NUL).t === 'string'), is_int: a => BO((a[0] || NUL).t === 'int'), is_float: a => BO((a[0] || NUL).t === 'float'),
+      is_bool: a => BO((a[0] || NUL).t === 'bool'), is_null: a => BO((a[0] || NUL).t === 'null'),
+      is_numeric: a => { const v = a[0] || NUL; return BO(v.t === 'int' || v.t === 'float' || (v.t === 'string' && isNumStr(v.v))); },
+      define: a => { M.consts[sv(a, 0)] = a[1] || NUL; return BO(true); },
+      time: () => I(Math.floor(Date.now() / 1000)),
+      date: a => { if (sv(a, 0) !== 'F') throw new Fatal("This tracer only knows date('F', time())"); return S(o.month || MONTHS[new Date().getMonth()]); }
+    };
+    function call(e) {
+      const nm = e.name.toLowerCase();
+      if (nm === 'isset') return BO(e.args.every(a => a.k === 'var' && a.name in M.vars && M.vars[a.name].t !== 'null'));
+      if (nm === 'unset') { e.args.forEach(a => { if (a.k === 'var') delete M.vars[a.name]; }); return NUL; }
+      if (nm === 'empty') { const a = e.args[0]; return BO(!(a && (a.k !== 'var' || a.name in M.vars) && toBool(ev(a)))); }
+      const f = M.funcs[nm];
+      const args = e.args.map(ev);
+      if (f) return userCall(f, args);
+      if (!BI[nm]) throw new Fatal('Call to undefined function ' + e.name + '()' + (nm === 'array' || nm === 'explode' ? ': arrays are not part of this tracer' : ''));
+      return BI[nm](args);
+    }
+    function userCall(f, args) {
+      if (M.depth > 25) throw new Fatal('Too many nested calls');
+      const saved = M.vars; M.vars = {}; f.ps.forEach((p, i) => { M.vars[p] = args[i] || NUL; }); M.depth++;
+      snap(f.line, 'Call <code>' + esc(f.name) + '()</code>: its parameters get the values passed in.', 'نادينا الـ function ' + B(esc(f.name)) + '، والـ parameters بتاخد القيم اللي اتبعتت.');
+      let rv = NUL;
+      try { execList(f.b); } catch (x) { if (x instanceof Ret) rv = x.v; else { M.vars = saved; M.depth--; throw x; } }
+      M.vars = saved; M.depth--; return rv;
+    }
+    function ev0(e) {
+      switch (e.k) {
+        case 'lit': return e.v;
+        case 'dq': return S(dqParts(e.raw).map(p => p.v ? (p.ix != null ? (toStr(getVar(p.v))[p.ix] || '') : toStr(getVar(p.v))) : p.t).join(''));
+        case 'par': return ev(e.e);
+        case 'var': return getVar(e.name);
+        case 'const':
+          if (e.name in M.consts) return M.consts[e.name];
+          if (/^M_(PI|E|LN2)$/.test(e.name)) return F({ M_PI: Math.PI, M_E: Math.E, M_LN2: Math.LN2 }[e.name]);
+          throw new Fatal('Error: Undefined constant "' + e.name + '"');
+        case 'asg': {
+          let v = ev(e.r);
+          if (e.op !== '=') { const cur = getVar(e.name); v = e.op === '.=' ? concat(cur, v) : arith(e.op[0], cur, v); }
+          M.vars[e.name] = v; return v;
+        }
+        case 'inc': { const cur = e.name in M.vars ? M.vars[e.name] : undef(e.name), nv2 = incr(cur, e.op); M.vars[e.name] = nv2; return e.pre ? nv2 : cur; }
+        case 'not': return BO(!toBool(ev(e.e)));
+        case 'neg': { const v = toNum(ev(e.e), e.op); return e.op === '-' ? (v.t === 'int' ? I(-v.v) : F(-v.v)) : v; }
+        case 'cast': return cast(e.to, ev(e.e));
+        case 'idx': {
+          const s = ev(e.e), i = toInt(ev(e.i));
+          if (s.t !== 'string') throw new Fatal('Only string indexing is part of this tracer');
+          const k = i < 0 ? s.v.length + i : i;
+          if (k < 0 || k >= s.v.length) { note('<span class="wbv10-warn">Warning: Uninitialized string offset ' + i + '</span> (past the end of the string).', 'تحذير: الـ index ده بره الـ string.'); return S(''); }
+          return S(s.v[k]);
+        }
+        case 'bin': {
+          const op = e.op;
+          if (op === '&&') return BO(toBool(ev(e.l)) && toBool(ev(e.r)));
+          if (op === '||') return BO(toBool(ev(e.l)) || toBool(ev(e.r)));
+          const a = ev(e.l), b = ev(e.r);
+          if (op === '.') return concat(a, b);
+          if ('+-*/%'.includes(op)) return arith(op, a, b);
+          if (op === '==') return BO(loose(a, b)); if (op === '!=' || op === '<>') return BO(!loose(a, b));
+          if (op === '===') return BO(a.t === b.t && a.v === b.v); if (op === '!==') return BO(!(a.t === b.t && a.v === b.v));
+          const c = cmpv(a, b); return BO(op === '<' ? c < 0 : op === '>' ? c > 0 : op === '<=' ? c <= 0 : c >= 0);
+        }
+        case 'call': return call(e);
+      }
+      throw new Fatal('Not supported here');
+    }
+    function ev(e) {
+      const v = ev0(e);
+      if (o.onVal && e.k !== 'lit' && e.k !== 'par' && !(e.k === 'dq' && !/[$\\]/.test(e.raw))) o.onVal(e, v, take());
+      return v;
+    }
+    function snap(line, en, ar, extra) {
+      if (M.steps.length >= 700) throw new Fatal('Stopped after 700 steps (an endless loop?)', line);
+      const ns = take();
+      M.steps.push(Object.assign({ line, out: M.out, vars: Object.entries(M.vars), consts: Object.entries(M.consts), en: en + (ns.length ? ' ' + ns.map(n => n.en).join(' ') : ''), ar: ar + (ns.length ? ' ' + ns.map(n => n.ar).join(' ') : '') }, extra));
+    }
+    const shown = t => esc(qs(t));
+    function condStep(line, c, kw) {
+      const v = toBool(ev(c));
+      snap(line, '<code>' + kw + '</code>: ' + pr(c) + ' is <b>' + (v ? 'TRUE' : 'FALSE') + '</b>' + (kw === 'if' || kw === 'elseif' ? (v ? ', so its block runs.' : ', so its block is skipped.') : (v ? ', so the loop body runs.' : ', so the loop ends.')),
+        'الشرط بتاع الـ ' + kw + ' اتحسب:' + L(pr(c) + ' → ' + (v ? 'TRUE' : 'FALSE')) + (kw === 'if' || kw === 'elseif' ? (v ? 'فالـ block بتاعه بيتنفذ.' : 'فالـ block بتاعه بيتنط.') : (v ? 'فالـ loop body بيتنفذ.' : 'فالـ loop بيخلص.')));
+      return v;
+    }
+    let iters = 0;
+    const loopGuard = line => { if (++iters > 300) throw new Fatal('Stopped after 300 loop turns (an endless loop?)', line); };
+    function describe(e, v, line) {
+      if (e.k === 'asg' || e.k === 'inc') { const now = esc('$' + e.name) + ' = ' + esc(lit(M.vars[e.name])); return snap(line, pr(e) + (e.k === 'asg' && e.op === '=' ? '' : ': now ' + now) + ' (' + TYPE[M.vars[e.name].t] + ').', 'الـ variable اتغيّر:' + L(e.k === 'asg' && e.op === '=' ? now : pr(e) + ' → ' + now)); }
+      if (e.k === 'call' && e.name.toLowerCase() === 'define') { const k = Object.keys(M.consts).pop(); return snap(line, '<b>' + esc(k) + '</b> is now a constant = ' + esc(lit(M.consts[k])) + '; use it without $.', 'بقى عندنا constant (بنستخدمه من غير الـ ' + B('$') + ') وقيمته:' + L(esc(k) + ' = ' + esc(lit(M.consts[k])))); }
+      return snap(line, pr(e) + ' runs.', 'السطر ده اتنفذ:' + L(pr(e)));
+    }
+    function exec(s) {
+      switch (s.k) {
+        case 'html':
+          M.out += s.v;
+          if (s.v.trim()) snap(s.line, 'HTML outside <code>&lt;?php ?&gt;</code> goes to the output as it is.', 'الـ HTML اللي بره ' + B('&lt;?php ?&gt;') + ' بيروح للـ output زي ما هو.', { end: s.end });
+          return;
+        case 'echo': {
+          const t = s.args.map(a => toStr(ev(a))).join(''); M.out += t;
+          return t ? snap(s.line, '<code>' + s.kw + '</code> sends ' + shown(t) + ' to the output.', 'الـ ' + s.kw + ' بعت للـ output:' + L(shown(t))) : snap(s.line, '<code>' + s.kw + '</code> sends nothing (an empty string).', 'الـ ' + s.kw + ' مابعتش حاجة (string فاضي).');
+        }
+        case 'expr': { const v = ev(s.e); return describe(s.e, v, s.line); }
+        case 'block': return execList(s.b);
+        case 'if': {
+          if (condStep(s.line, s.c, 'if')) return execList(s.th);
+          for (const a of s.alts) if (condStep(a.line, a.c, 'elseif')) return execList(a.b);
+          if (s.el) { snap(s.el.length ? s.el[0].line : s.line, '<code>else</code>: nothing above was TRUE, so the else block runs.', 'مفيش شرط فوق طلع TRUE، فالـ block بتاع الـ else بيتنفذ.'); execList(s.el); }
+          return;
+        }
+        case 'for': {
+          s.init.forEach(e => ev(e)); if (s.init.length) snap(s.line, '<code>for</code> starts: ' + s.init.map(e => pr(e)).join(', ') + '.', 'الـ for بيبدأ:' + L(s.init.map(e => pr(e)).join(', ')));
+          for (;;) { loopGuard(s.line); if (s.c && !condStep(s.line, s.c, 'for')) break; execList(s.b); s.up.forEach(e => ev(e)); }
+          return;
+        }
+        case 'while': for (;;) { loopGuard(s.line); if (!condStep(s.line, s.c, 'while')) break; execList(s.b); } return;
+        case 'do': for (;;) { loopGuard(s.line); execList(s.b); if (!condStep(s.line, s.c, 'while')) break; } return;
+        case 'func': M.funcs[s.name.toLowerCase()] = s; return snap(s.line, 'The function <code>' + esc(s.name) + '</code> is defined; it runs only when it is called.', 'الـ function ' + B(esc(s.name)) + ' اتعرّفت، ومش بتشتغل غير لما تتنادى.');
+        case 'ret': { const v = s.e ? ev(s.e) : NUL; snap(s.line, '<code>return</code> sends back ' + esc(lit(v)) + '.', 'الـ function رجّعت القيمة:' + L('return ' + esc(lit(v)))); throw new Ret(v); }
+      }
+    }
+    function execList(list) { for (const s of list) exec(s); }
+    return { M, ev, execList, snap, take };
+  }
+
+  // run a whole file and record every step
+  function runPhp(src, opts) {
+    let m;
+    try {
+      const prog = parse(lex(src)).stmts();
+      m = machine(opts);
+      m.snap(0, 'The server starts running the file from the top.', 'الـ server بيبدأ يشغّل الملف من أوله.');
+      m.M.vars = {}; m.execList(prog);
+      m.snap(0, 'Done: this HTML is what the browser receives.', 'خلصنا، والـ HTML ده هو اللي بيوصل للـ browser.');
+      return m.M.steps;
+    } catch (x) {
+      if (!(x instanceof Fatal) && !(x instanceof Ret)) throw x;
+      const steps = m ? m.M.steps : [];
+      const msg = x instanceof Ret ? 'return outside a function' : x.message;
+      const last = steps[steps.length - 1];
+      steps.push({ line: x.line || (last ? last.line : 0), err: true, out: m ? m.M.out : '', vars: m ? Object.entries(m.M.vars) : [], consts: m ? Object.entries(m.M.consts) : [], en: '<span class="wbv10-warn">Stopped:</span> ' + esc(msg), ar: 'الكود وقف هنا:' + L(esc(msg)) });
+      return steps;
+    }
+  }
+
+  // one expression reduced step by step (innermost first), ending with var_dump
+  function reducePhp(src) {
+    let s = src.trim().replace(/;+\s*$/, '').replace(/^(echo|print)\s+/i, '');
+    if (!s) return { frames: [{ h: '', en: 'Type an expression.', ar: 'اكتب expression.' }] };
+    try {
+      const P = parse(lex('<?php ' + s + ';'));
+      let root = P.expr(); if (!P.atEnd()) throw new Fatal('Type one expression only');
+      const h0 = pr(root);
+      if (root.k === 'call' && root.name.toLowerCase() === 'var_dump' && root.args.length === 1) root = root.args[0];
+      const frames = [{ h: h0, en: 'The expression as written.', ar: 'الـ expression زي ما هو مكتوب.' }];
+      const m = machine({ onVal: (e, v, ns) => {
+        const before = pr(e); e.__v = v;
+        frames.push({ h: pr(root, e), en: '<code>' + before + '</code> → <code>' + esc(lit(v)) + '</code>' + (ns.length ? ' ' + ns.map(n => n.en).join(' ') : ''), ar: 'الجزء ده اتحسب:' + L(before + ' → ' + esc(lit(v))) + (ns.length ? ns.map(n => n.ar).join(' ') : '') });
+      } });
+      const v = m.ev(root); const ns = m.take();
+      const t = toStr(v), d = dump(v);
+      frames.push({ h: pr(root, root), v, en: (ns.length ? ns.map(n => n.en).join(' ') + ' ' : '') + 'Result: <b>' + TYPE[v.t] + '</b>. <code>var_dump</code> shows ' + esc(d) + '; <code>echo</code> prints ' + (t ? esc(qs(t).slice(1, -1)) : 'nothing (an empty string)') + '.', ar: (ns.length ? ns.map(n => n.ar).join(' ') + ' ' : '') + 'النتيجة نوعها <b>' + TYPE[v.t] + '</b>، والـ var_dump بيطلّع:' + L(esc(d)) + (t ? 'والـ echo بيطبع:' + L(esc(t)) : 'والـ echo مابيطبعش حاجة (string فاضي).') });
+      return { frames, v };
+    } catch (x) {
+      if (!(x instanceof Fatal)) throw x;
+      return { frames: [{ h: esc(s), err: true, en: '<span class="wbv10-warn">Stopped:</span> ' + esc(x.message), ar: 'الحساب وقف هنا:' + L(esc(x.message)) }] };
+    }
+  }
+
+  /* ---------- shared pieces ---------- */
+  function useWalk(n, ms, dep) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [dep]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    useEffect(() => { if (!play) return; if (j >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => Math.min(n - 1, x + 1)), ms); return () => clearTimeout(t); }, [j, play, n, dep]);
+    return [j, { play, go: k => { setPlay(false); setI(Math.max(0, Math.min(n - 1, k))); }, toggle: () => { if (j >= n - 1) { setI(0); setPlay(true); } else setPlay(p => !p); }, end: () => { setPlay(false); setI(n - 1); } }];
+  }
+  const WBar = ({ i, n, ctl }) => html`<div className="fig-bar"><span className="wbv10-cnt">Step ${i + 1} / ${n}</span><span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(i - 1)} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(i + 1)} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.toggle}>${ctl.play ? '❚❚ Pause' : '▶ Play'}</button>
+    ${n > 12 && html`<button className="fig-btn" onClick=${ctl.end} disabled=${i >= n - 1}>⏭ End</button>`}</div>`;
+
+  function lineKinds(lines) { let m = false; return lines.map(l => { const st = m; if (l.includes('<?php')) m = true; if (l.lastIndexOf('?>') > l.lastIndexOf('<?php')) m = false; return !st && !l.includes('<?php'); }); }
+  const paint = l => l.split(/(\$\w+|(?<![:"'])\/\/.*$|#.*$)/).map((p, j) => /^\$\w/.test(p) ? html`<b key=${j} className="wbv10-v">${p}</b>` : /^(\/\/|#)/.test(p) ? html`<em key=${j} className="wbv10-cm">${p}</em>` : p);
+  function CodePane({ code, hl, end, err }) {
+    const ref = useRef(null), lines = code.split('\n'), kinds = lineKinds(lines);
+    useEffect(() => { const el = ref.current; if (!el) return; const r = el.querySelector('.on, .bad'); if (r) el.scrollTop = Math.max(0, r.offsetTop - el.clientHeight / 3); }, [hl, code]);
+    return html`<div className="wbv10-code" ref=${ref}>${lines.map((l, j) => { const n = j + 1, on = hl && n >= hl && n <= (end || hl); return html`<div key=${j} className=${'wbv10-ln' + (kinds[j] ? ' h' : '') + (on ? (err ? ' bad' : ' on') : '')}><i>${n}</i><span>${l ? paint(l) : ' '}</span></div>`; })}</div>`;
+  }
+
+  // the browser's view of an output: parsed inertly, only plain formatting tags are kept (no attributes, no scripts)
+  const OKTAG = new Set(['br', 'b', 'i', 'u', 'strong', 'em', 'small', 'p', 'h1', 'h2', 'h3', 'h4', 'table', 'thead', 'tbody', 'tr', 'td', 'th', 'hr', 'ul', 'ol', 'li', 'span', 'div', 'label']);
+  function toReact(n, key) {
+    if (n.nodeType === 3) return n.nodeValue;
+    if (n.nodeType !== 1) return null;
+    const t = n.tagName.toLowerCase();
+    const kids = [...n.childNodes].filter(c => !(/^(table|thead|tbody|tr)$/.test(t) && c.nodeType === 3)).map((c, j) => toReact(c, j));
+    if (!OKTAG.has(t)) return React.createElement(React.Fragment, { key }, ...kids);
+    if (t === 'br' || t === 'hr') return React.createElement(t, { key });
+    const props = { key }; if (t === 'table' && n.getAttribute('border') && n.getAttribute('border') !== '0') props.className = 'wbv10-bt';
+    return React.createElement(t, props, ...kids);
+  }
+  function Web({ src }) {
+    const nodes = useMemo(() => { const d = new DOMParser().parseFromString('<!doctype html><body>' + src, 'text/html'); return [...d.body.childNodes].map((c, j) => toReact(c, j)); }, [src]);
+    return html`<div className="wbv10-web">${nodes}</div>`;
+  }
+  const OutPane = ({ out }) => {
+    const ref = useRef(null);
+    useEffect(() => { if (ref.current) ref.current.scrollTop = ref.current.scrollHeight; }, [out]);
+    return html`<div className="wbv10-out" ref=${ref}>${out}</div>`;
+  };
+
+  /* ── slide 2 + slide 4: typing a URL; a file or a program ── */
+  function UrlFlow({ ar }) {
+    const [m, setM] = useState(0), file = m === 0;
+    const url = file ? 'http://server/path/file' : 'http://www.facebook.com/home.php';
+    const steps = [
+      { en: 'You type <b>' + url + '</b> in your browser.', ar: 'بتكتب الـ URL ده في الـ browser:' + L(url) },
+      { en: '(1) Your computer looks up the server’s <b>IP address</b> using <b>DNS</b>.', ar: '(1) الكمبيوتر بتاعك بيدوّر على الـ <b>IP address</b> بتاع الـ server عن طريق الـ <b>DNS</b>.' },
+      { en: '(2) Your browser connects to that IP address and requests the given ' + (file ? 'file.' : 'URL, <b>home.php</b>.'), ar: '(2) الـ browser بيتصل بالـ IP ده ويطلب ' + (file ? 'الملف.' : B('home.php') + '.') },
+      file ? { en: '(3) The web server software (e.g. <b>Apache</b>) grabs that file from the server’s local file system.', ar: '(3) الـ web server software (زي <b>Apache</b>) بيجيب الملف ده من الـ file system بتاع الـ server.' }
+        : { en: '(3) This URL names a <b>program</b>: facebook.com runs <b>home.php</b>.', ar: '(3) الـ URL ده بيحدد <b>برنامج</b>، فالـ facebook.com بيشغّل ' + B('home.php') + '.' },
+      file ? { en: '(4) The server sends back the file’s contents to you.', ar: '(4) الـ server بيبعتلك محتوى الملف.' }
+        : { en: '(4) The server sends back the program’s <b>output</b>, not its code.', ar: '(4) الـ server بيبعتلك الـ <b>output</b> بتاع البرنامج، مش الـ code بتاعه.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2300, m);
+    const on = { 0: [0], 1: [0, 1], 2: [0, 2], 3: [2, 3], 4: [2, 0] }[i];
+    const msg = [null, 'browser → DNS: IP of server? → IP address', 'browser → server: ' + (file ? '/path/file' : '/home.php'), file ? 'Apache ← file system: file' : 'server runs home.php', file ? 'server → browser: contents' : 'server → browser: output (HTML)'][i];
+    const node = (k, ic, t, sub) => html`<div className=${'wbv10-node' + (on.includes(k) ? ' on' : '')}><span className="wbv10-ic" aria-hidden="true">${ic}</span><b>${t}</b><small>${sub}</small></div>`;
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips"><button className="fig-btn m" aria-pressed=${file} onClick=${() => setM(0)}>/path/file</button><button className="fig-btn m" aria-pressed=${!file} onClick=${() => setM(1)}>home.php</button></div>
+      <div className="wbv10-bar">${url}</div>
+      <div className="wbv10-net">
+        ${node(0, '🖥', 'Your browser', 'your computer')}${node(1, '📖', 'DNS', 'name → IP address')}
+        ${node(2, '🗄', 'Web server', 'software, e.g. Apache')}${file ? node(3, '📁', 'File system', "server's local files") : node(3, '⚙', 'home.php', 'a program the server runs')}
+      </div>
+      <div className="wbv10-msg">${msg && html`<span key=${m + '-' + i}>${msg}</span>`}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${WBar} i=${i} n=${steps.length} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 3: browsers, Web/Application server, database ── */
+  function Arch({ ar }) {
+    const steps = [
+      { en: 'Many browsers talk to one <b>Web/Application server</b>, which talks to a <b>Database</b>.', ar: 'فيه browsers كتير بتكلم <b><bdi dir="ltr">Web/Application</bdi> server</b> واحد، وهو بيكلم الـ <b>Database</b>.' },
+      { en: 'Each browser sends its request to the server.', ar: 'كل browser بيبعت الـ request بتاعه للـ server.' },
+      { en: 'The server software handles it: <b>Apache, WebSphere</b>; SW such as Java Servlets and XML files.', ar: 'الـ software اللي على الـ server بيتعامل معاه، زي <b>Apache</b> و<b>WebSphere</b>، ومعاهم الـ Java Servlets والـ XML files.' },
+      { en: 'When it needs data, the server asks the database and gets the results back.', ar: 'لما يحتاج داتا، الـ server بيسأل الـ database ويرجعله النتايج.' },
+      { en: 'The server sends each browser its response.', ar: 'الـ server بيبعت لكل browser الـ response بتاعه.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2300, 0);
+    const ys = [22, 100, 178, 256];
+    const arrow = (x1, y1, x2, y2, act, k) => html`<line key=${k} x1=${x1} y1=${y1} x2=${x2} y2=${y2} stroke=${act ? 'var(--fig-k)' : 'var(--ink)'} strokeWidth=${act ? 3 : 2} markerEnd=${act ? 'url(#wbv10-ahk)' : 'url(#wbv10-ah)'} className=${act && !calm() ? 'flow' : ''} style=${{ opacity: i === 0 || act ? 1 : .35, transition: 'opacity .4s' }} />`;
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <svg viewBox="0 0 340 330" style=${{ width: '100%', maxWidth: '440px' }} role="img" aria-label="Four users' computers send requests to a Web/Application server running Apache or WebSphere, which reads a database">
+        <defs><marker id="wbv10-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--ink)" /></marker>
+          <marker id="wbv10-ahk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="var(--fig-k)" /></marker></defs>
+        ${ys.map((y, k) => html`<g key=${'c' + k}><rect x="6" y=${y + 8} width="40" height="30" rx="3" fill="var(--paper)" stroke="var(--graphite)" strokeWidth="2" /><rect x="20" y=${y + 38} width="12" height="7" fill="var(--graphite)" /><circle cx="54" cy=${y + 10} r="9" fill="color-mix(in srgb, var(--fig-k) 45%, var(--paper))" stroke="var(--graphite)" strokeWidth="1.5" /><path d=${'M42 ' + (y + 40) + ' q12 -22 24 0 Z'} fill="color-mix(in srgb, var(--fig-k) 45%, var(--paper))" stroke="var(--graphite)" strokeWidth="1.5" /></g>`)}
+        ${ys.map((y, k) => arrow(72, y + 14, 118, 170 + k * 12, i === 1, 'q' + k))}
+        ${ys.map((y, k) => arrow(118, 182 + k * 12, 72, y + 30, i === 4, 'r' + k))}
+        <rect x="108" y="6" width="172" height="80" rx="3" fill="color-mix(in srgb, var(--fig-k) 18%, var(--paper))" stroke="var(--fig-k)" strokeWidth="2" style=${{ opacity: i === 0 || i === 2 ? 1 : .5, transition: 'opacity .4s' }} />
+        <text x="194" y="30" textAnchor="middle" fontSize="16">Apache, Websphere</text><text x="194" y="52" textAnchor="middle" fontSize="16">SW(Java Servlets,</text><text x="194" y="74" textAnchor="middle" fontSize="16">XML Files)</text>
+        ${arrow(158, 128, 158, 92, i === 2, 'u')}${arrow(180, 92, 180, 128, i === 2, 'd')}
+        <rect x="125" y="130" width="92" height="120" fill="color-mix(in srgb, var(--fig-k) 30%, var(--paper))" stroke="var(--ink)" strokeWidth="1.5" />
+        <line x1="166" y1="130" x2="166" y2="250" stroke="var(--ink)" strokeWidth="1.2" /><line x1="125" y1="160" x2="166" y2="160" stroke="var(--ink)" strokeWidth="1.2" /><line x1="166" y1="215" x2="217" y2="215" stroke="var(--ink)" strokeWidth="1.2" />
+        ${[145, 165, 185].map(y => html`<line key=${y} x1="172" y1=${y} x2="211" y2=${y} stroke="var(--ink)" strokeWidth="1.5" />`)}
+        ${arrow(219, 182, 256, 182, i === 3, 'b1')}${arrow(256, 200, 219, 200, i === 3, 'b2')}
+        <g style=${{ opacity: i === 0 || i === 3 ? 1 : .5, transition: 'opacity .4s' }}>
+          <path d="M260 160 v70 a38 12 0 0 0 76 0 v-70" fill="color-mix(in srgb, var(--fig-k) 22%, var(--paper))" stroke="var(--fig-k)" strokeWidth="2" />
+          <ellipse cx="298" cy="160" rx="38" ry="12" fill="color-mix(in srgb, var(--fig-k) 35%, var(--paper))" stroke="var(--fig-k)" strokeWidth="2" />
+          <path d="M260 184 a38 12 0 0 0 76 0 M260 208 a38 12 0 0 0 76 0" fill="none" stroke="var(--fig-k)" strokeWidth="1.5" /></g>
+        <text x="171" y="276" textAnchor="middle" fontSize="16">Web/Application</text><text x="171" y="296" textAnchor="middle" fontSize="16">Server</text>
+        <text x="298" y="268" textAnchor="middle" fontSize="16">Database</text>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${WBar} i=${i} n=${steps.length} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 9: lifecycle of a PHP web request ── */
+  function Cycle({ ar }) {
+    const steps = [
+      { en: 'The user types <b>http://example.com/hello.php</b>.', ar: 'الـ user بيكتب الـ URL:' + L('http://example.com/hello.php') },
+      { en: 'The browser sends a <b>GET</b> request for Hello.php to the web server.', ar: 'الـ browser بيبعت <b>GET</b> request للـ web server يطلب ' + B('Hello.php') + '.' },
+      { en: 'The server <b>executes the PHP script</b>.', ar: 'الـ server بينفّذ الـ <b>PHP script</b>.' },
+      { en: 'The script’s result is plain HTML: <b>Hello world!</b>', ar: 'نتيجة الـ script عبارة عن HTML عادي فيه <b>' + B('Hello world!') + '</b>' },
+      { en: 'Only that HTML is sent back to the user’s computer, and the browser shows it.', ar: 'الـ HTML ده بس هو اللي بيرجع لكمبيوتر الـ user، والـ browser بيعرضه.' },
+      { en: '<b>View source</b> in the browser: only the HTML is there. The PHP code never leaves the server, so it cannot be viewed from a browser (security).', ar: 'لو عملت <b>View source</b> في الـ browser هتلاقي الـ HTML بس. الـ PHP code عمره ما بيطلع من الـ server، فمحدش يقدر يشوفه من الـ browser (ودي الـ security).' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2300, 0);
+    const php = '<?php\nprint "Hello world!";\n?>';
+    return html`<figure className="fig wbv10"><div className="fig-stage"><div className="wbv10-cyc">
+      <div className="wbv10-win"><b>Web Browser</b><div className="wbv10-bar" style=${{ margin: '0 0 6px' }}>http://example.com/hello.php</div>
+        <div className="wbv10-paper">${i >= 4 && html`<span className="wbv10-in">Hello world!</span>`}</div>
+        ${i >= 5 && html`<div className="wbv10-in" style=${{ marginTop: '6px' }}><div className="wbv10-lbl">View source</div><div className="wbv10-src on">Hello world!</div></div>`}
+        <small>User’s computer</small></div>
+      <div className="wbv10-mid">
+        <div style=${{ opacity: i >= 1 ? 1 : .25 }}>GET Hello.php <span className="v">↓</span><span className="h">→</span></div>
+        <div style=${{ opacity: i >= 4 ? 1 : .25 }}><span className="v">↑</span><span className="h">←</span> HTML only</div></div>
+      <div className="wbv10-win"><b>Web Server</b>
+        <div className="wbv10-lbl">PHP Script</div><div className=${'wbv10-src' + (i === 2 ? ' on' : '')}>${php}</div>
+        <div className="wbv10-ex" style=${{ opacity: i >= 2 ? 1 : .3 }}>↓ Execute script</div>
+        <div className="wbv10-lbl">HTML Output</div><div className=${'wbv10-src' + (i === 3 ? ' on' : '')}>${i >= 3 ? 'Hello world!' : ' '}</div>
+        <small>Server computer</small></div>
+      </div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${WBar} i=${i} n=${steps.length} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── the tracer: a .php file run line by line ── */
+  function Runner({ ar, ex }) {
+    const [k, setK] = useState(0), [own, setOwn] = useState(null), [draft, setDraft] = useState(''), [month, setMonth] = useState(MONTHS[new Date().getMonth()]);
+    const code = own != null ? own : ex[k].code;
+    const steps = useMemo(() => runPhp(code, { month }), [code, month]);
+    const n = steps.length, [i, ctl] = useWalk(n, n > 60 ? 380 : n > 25 ? 800 : 1300, steps);
+    const st = steps[i];
+    const lineEn = st.line ? 'Line ' + st.line + ': ' : '', lineAr = st.line ? 'السطر ' + st.line + ': ' : '';
+    const vars = st.vars.concat(st.consts.map(([a, b]) => ['#' + a, b]));
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips">${ex.map((x, j) => html`<button key=${j} className="fig-btn" aria-pressed=${own == null && k === j} onClick=${() => { setOwn(null); setK(j); }}>${x.label}</button>`)}
+        <button className="fig-btn" aria-pressed=${own != null} onClick=${() => { setDraft(code); setOwn(code); }}>✎ Try your own</button></div>
+      ${own != null && html`<div style=${{ marginBottom: '8px' }}><textarea className="wbv10-inp" value=${draft} spellCheck=${false} aria-label="Your PHP code" onChange=${e => setDraft(e.target.value)}></textarea>
+        <div className="wbv10-row"><button className="fig-btn solid" onClick=${() => setOwn(draft)}>▶ Run</button><span style=${{ color: 'var(--graphite)' }}>echo, print, variables, if, for, while, functions, strings and math from the notes</span></div></div>`}
+      ${/date\s*\(/.test(code) && html`<div className="wbv10-row" style=${{ margin: '0 0 8px' }}><label>Pretend the month is <select value=${month} onChange=${e => setMonth(e.target.value)}>${MONTHS.map(x => html`<option key=${x}>${x}</option>`)}</select></label></div>`}
+      <div className="wbv10-two">
+        <div><div className="wbv10-lbl" style=${{ marginTop: 0 }}>${own != null ? 'Your code' : ex[k].src}</div><${CodePane} code=${code} hl=${st.line} end=${st.end} err=${st.err} /></div>
+        <div>
+          <div className="wbv10-lbl" style=${{ marginTop: 0 }}>Variables and constants</div>
+          <div className="wbv10-vars">${vars.length ? vars.map(([nm, v]) => html`<span key=${nm} className=${'wbv10-var' + (nm[0] === '#' ? ' c' : '')}>${nm[0] === '#' ? nm.slice(1) : '$' + nm} = ${lit(v)}<small>${TYPE[v.t]}</small></span>`) : html`<span className="wbv10-none">none yet</span>`}</div>
+          <div className="wbv10-lbl">HTML sent to the browser</div><${OutPane} out=${st.out} />
+          <div className="wbv10-lbl">The browser shows</div><${Web} src=${st.out} />
+        </div></div></div>
+      <${Cap} en=${lineEn + st.en} ar=${lineAr + st.ar} showAr=${ar} /><${WBar} i=${i} n=${n} ctl=${ctl} /></figure>`;
+  }
+  const RUN = {
+    modes: [
+      { label: 'Hello world', src: 'Slide 11', code: '<?php\nprint "Hello, world!";\n?>' },
+      { label: 'HTML and PHP modes', src: 'Slide 14: the syntax template', code: '<h1>HTML content</h1>\n<?php\nprint "PHP code<br>";\n?>\n<p>HTML content</p>\n<?php\necho "a", "b";\n?>\n<p>HTML content ...</p>' },
+      { label: 'print and escapes', src: 'Slide 15', code: '<?php\nprint "Hello, World!\\n";\nprint "Escape \\"chars\\" are the SAME as in Java!\\n";\nprint "You can have\nline breaks in a string.";\nprint \'A string can use "single-quotes". It\\\'s cool!\';\n?>' },
+      { label: 'Comments', src: 'Slide 19', code: '<?php\n# single-line comment\n// single-line comment\n/*\nmulti-line comment\n*/\necho "a", "b";\n?>' }
+    ],
+    vars: [
+      { label: 'Variables', src: 'Slide 16', code: '<?php\n$user_name = "mundruid78";\n$age = 16;\n$drinking_age = $age + 5;\n$this_class_rocks = TRUE;\n?>' },
+      { label: 'var_dump', src: 'Notes [3.2]', code: '<?php\nvar_dump("Harry");\necho "<br>";\nvar_dump(28);\necho "<br>";\nvar_dump(null);\n?>' },
+      { label: 'int and float', src: 'Slide 31', code: '<?php\n$a = 7 / 2; # float: 3.5\n$b = (int) $a; # int: 3\n$c = round($a); # float: 4.0\n$d = "123"; # string: "123"\n$e = (int) $d; # int: 123\n?>' },
+      { label: 'define (quiz)', src: 'Quiz: what is the output?', code: '<?php\ndefine("GREETING", "PHP is a scripting language");\necho $GREETING;\n?>' },
+      { label: 'Constant without $', src: 'Notes [3.4]', code: '<?php\ndefine("DB_NAME", "mySchool");\necho DB_NAME;\n?>' }
+    ],
+    loop: [
+      { label: 'for loop', src: 'Slide 26', code: '<?php\nfor ($i = 0; $i < 10; $i++) {\n  print "$i squared is " . $i * $i . ".\\n";\n}\n?>' },
+      { label: 'Function MXX (quiz)', src: 'Quiz: what is the output?', code: '<?php\nfunction MXX($m, $n) {\n  $ds = (int)($m / $n);\n  return $m - $n * $ds;\n}\necho MXX(13,2) . "\\n";\necho MXX(81,3) . "\\n";\n?>' },
+      { label: "'A00' loop (quiz)", src: 'Quiz: first and last line?', code: "<?php\n$d = 'A00';\nfor ($n=0; $n<5; $n++)\n  echo ++$d . \"\\n\";\n?>" },
+      { label: 'isset and NULL', src: 'Slide 25', code: '<?php\n$name = "Mona";\n$name = NULL;\nif (isset($name)) {\n  print "This line isn\'t going to be reached.\\n";\n}\n?>' }
+    ],
+    ex: [
+      { label: 'Ex2 equations', src: 'Exercise 2 (slide 34)', code: '<?php\n$x = 10;\n$y = 7;\necho "$x + $y = " . ($x + $y) . "<br>";\necho "$x - $y = " . ($x - $y) . "<br>";\necho "$x * $y = " . ($x * $y) . "<br>";\necho "$x / $y = " . ($x / $y) . "<br>";\necho "$x % $y = " . ($x % $y) . "<br>";\n?>' },
+      { label: 'Ex3 one variable', src: 'Exercise 3 (slide 35)', code: '<?php\n$v = 8;\necho "Value is now $v.<br>";\n$v += 2;\necho "Add 2. Value is now $v.<br>";\n$v -= 4;\necho "Subtract 4. Value is now $v.<br>";\n$v *= 5;\necho "Multiply by 5. Value is now $v.<br>";\n$v /= 3;\necho "Divide by 3. Value is now $v.<br>";\n$v++;\necho "Increment value by one. Value is now $v.<br>";\n$v--;\necho "Decrement value by one. Value is now $v.<br>";\n?>' },
+      { label: 'Ex5 quotes', src: 'Exercise 5 (slide 37)', code: "<?php\n$around = \"around\";\necho 'What goes ' . $around . ', comes ' . $around . '.';\n?>" },
+      { label: 'Ex6 month', src: 'Exercise (slide 38)', code: "<?php\nif (date('F', time()) == \"August\")\n  echo \"It's August, so it's really hot.\";\nelse\n  echo \"Not August, so at least not in the peak of the heat.\";\n?>" },
+      { label: 'Ex7 7×7 table', src: 'Exercise 7 (slide 40)', code: "<?php\necho \"<table border='1'>\";\nfor ($i = 1; $i <= 7; $i++) {\n  echo \"<tr>\";\n  for ($j = 1; $j <= 7; $j++)\n    echo \"<td>\" . ($i * $j) . \"</td>\";\n  echo \"</tr>\";\n}\necho \"</table>\";\n?>" }
+    ]
+  };
+
+  /* ── notes [3.1]: valid and invalid variable names ── */
+  function nameCheck(s) {
+    if (!s) return { st: [], en: 'Type a variable name, starting with $.', ar: 'اكتب اسم variable يبدأ بـ ' + B('$') + '.' };
+    const st = s.split('').map(() => 'ok');
+    if (s[0] !== '$') { st[0] = 'no'; return { st, bad: true, en: 'Invalid: a PHP variable name always begins with <b>$</b>.', ar: 'غلط: اسم الـ variable في الـ PHP لازم يبدأ بـ ' + B('$') + '.' }; }
+    st[0] = 'k';
+    if (s.length === 1) return { st, bad: true, en: 'Invalid: a name must follow the $.', ar: 'غلط: لازم يبقى فيه اسم بعد الـ ' + B('$') + '.' };
+    if (/\d/.test(s[1])) { st[1] = 'no'; return { st, bad: true, en: 'Invalid: after $ a name <b>cannot start with a digit</b>.', ar: 'غلط: بعد الـ ' + B('$') + ' الاسم <b>مينفعش يبدأ برقم</b>.' }; }
+    let badAt = -1; for (let j = 1; j < s.length; j++) if (!/[A-Za-z0-9_]/.test(s[j]) || (j === 1 && !/[A-Za-z_]/.test(s[j]))) { st[j] = 'no'; if (badAt < 0) badAt = j; }
+    if (badAt >= 0) return { st, bad: true, en: 'Invalid: after $ use only letters, digits and _ (and start with a letter or _).', ar: 'غلط: بعد الـ ' + B('$') + ' مسموح بس بالحروف والأرقام والـ ' + B('_') + ' (والبداية حرف أو ' + B('_') + ').' };
+    if (s === '$this') { st.fill('no'); st[0] = 'k'; return { st, bad: true, en: 'Invalid: <b>$this</b> is reserved.', ar: 'غلط: الاسم ' + B('$this') + ' محجوز.' }; }
+    const alt = s.replace(/[A-Za-z]/, c => c === c.toLowerCase() ? c.toUpperCase() : c.toLowerCase());
+    return { st, en: 'Valid. Names are case sensitive: <b>' + esc(s) + '</b> and <b>' + esc(alt) + '</b> are two different variables.', ar: 'صح. والأسماء case sensitive، يعني ' + B(esc(s)) + ' و ' + B(esc(alt)) + ' اتنين variables مختلفين.' };
+  }
+  function VarName({ ar }) {
+    const EX = ['$_hello', '$hello3', '$3hello', '$this', '$5_Hello'];
+    const [v, setV] = useState('$3hello'), r = nameCheck(v);
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips">${EX.map(x => html`<button key=${x} className="fig-btn m" aria-pressed=${v === x} onClick=${() => setV(x)}>${x}</button>`)}</div>
+      <div className="wbv10-row" style=${{ maxWidth: '360px', margin: '0 auto 6px' }}><span>Try your own</span><input className="wbv10-inp" value=${v} maxLength="24" spellCheck=${false} aria-label="Variable name" onChange=${e => setV(e.target.value.replace(/\s/g, ''))} /></div>
+      <div className="wbv10-cells" key=${v}>${v.split('').map((c, j) => html`<div key=${j} className=${'wbv10-cell ' + r.st[j] + ' wbv10-in'} style=${{ animationDelay: j * 60 + 'ms' }}><b>${c}</b></div>`)}</div>
+      ${v && html`<p className=${'wbv10-verd ' + (r.bad ? 'no' : 'ok')}>${r.bad ? '✗ invalid' : '✓ valid'}</p>`}</div>
+      <${Cap} en=${r.en} ar=${r.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── expressions reduced step by step, with var_dump ── */
+  function Reduce({ ar, pre }) {
+    const [src, setSrc] = useState(pre[0]), [draft, setDraft] = useState(pre[0]);
+    const r = useMemo(() => reducePhp(src), [src]);
+    const n = r.frames.length, [i, ctl] = useWalk(n, 1500, r), f = r.frames[i];
+    const go = s => { setDraft(s); setSrc(s); };
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips">${pre.map(x => html`<button key=${x} className="fig-btn m" aria-pressed=${src === x} onClick=${() => go(x)}>${x}</button>`)}</div>
+      <div className="wbv10-row" style=${{ maxWidth: '440px', margin: '0 auto 10px' }}><span>Try your own</span><input className="wbv10-inp" value=${draft} spellCheck=${false} aria-label="A PHP expression" onChange=${e => setDraft(e.target.value)} onKeyDown=${e => { if (e.key === 'Enter') setSrc(draft); }} /><button className="fig-btn solid" onClick=${() => setSrc(draft)}>▶</button></div>
+      <div className="wbv10-expr" key=${i} dangerouslySetInnerHTML=${{ __html: f.h || '&nbsp;' }}></div>
+      ${i === n - 1 && r.v && html`<div className="wbv10-res wbv10-in"><span>var_dump</span><code>${dump(r.v)}</code><span>echo</span><code>${toStr(r.v) || '(nothing)'}</code></div>`}</div>
+      <${Cap} en=${f.en} ar=${f.ar} showAr=${ar} /><${WBar} i=${i} n=${n} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── strings as cells: [index], ., and the string functions ── */
+  function strFrames(op, s, a) {
+    const n = s.length, base = st => s.split('').map((c, j) => ({ c, st: st ? st(j) : '' })), fr = [];
+    const Q = x => esc(qs(x));
+    if (op === 'idx') {
+      const k = a.i; for (let j = 0; j <= Math.min(k, n - 1); j++) fr.push({ cells: base(x => x === j ? 'ptr k' : x < j ? 'ok' : ''), en: 'Index ' + j + '…', ar: 'الـ index رقم ' + B(j) + '…' });
+      if (k >= n) fr.push({ cells: base(), res: '""', en: '<span class="wbv10-warn">Index ' + k + ' is past the end</span>: PHP warns (uninitialized string offset) and gives an empty string.', ar: 'الـ index ده بعد آخر الـ string، فالـ PHP بيطلّع warning ويدّي string فاضي.' });
+      else fr.push({ cells: base(x => x === k ? 'k ptr' : ''), res: Q(s[k]), en: '<b>' + esc(a.v) + '[' + k + ']</b> = ' + Q(s[k]) + ': indexing starts at 0, and there is no char type, so each letter is itself a string.', ar: 'الـ indexing بيبدأ من صفر، ومفيش char type، فكل حرف هو string لوحده:' + L(esc(a.v) + '[' + k + '] = ' + Q(s[k])) });
+      return fr;
+    }
+    if (op === 'cat') {
+      const add = a.t, all = s + add;
+      fr.push({ cells: base(), en: esc(a.v) + ' = ' + Q(s) + '.', ar: 'الـ variable فيه:' + L(esc(a.v) + ' = ' + Q(s)) });
+      fr.push({ cells: all.split('').map((c, j) => ({ c, st: j >= n ? 'new' : '' })), res: Q(all), en: '<b>.</b> (period, not +) joins strings: ' + Q(s) + ' . ' + Q(add) + ' = ' + Q(all) + '.', ar: 'الـ ' + B('.') + ' (النقطة، مش ' + B('+') + ') بيلزق الـ strings:' + L(Q(s) + ' . ' + Q(add) + ' = ' + Q(all)) });
+      return fr;
+    }
+    if (op === 'len') {
+      for (let j = 1; j <= n; j++) fr.push({ cells: base(x => x < j ? 'ok' : ''), en: 'Counting characters: ' + j, ar: 'بنعدّ الحروف:' + L(String(j)) });
+      const r = u8(s);
+      fr.push({ cells: base(() => 'ok'), res: String(r), en: '<b>strlen($name) = ' + r + '</b> (Java: length).', ar: 'النتيجة:' + L('strlen($name) = ' + r) + 'وده زي الـ length في الـ Java.' });
+      return fr;
+    }
+    if (op === 'pos') {
+      const nd = a.nd, m = nd.length;
+      if (!m) return [{ cells: base(), en: 'Type the text to look for.', ar: 'اكتب الحاجة اللي هتدوّر عليها.' }];
+      for (let j = 0; j + m <= n; j++) {
+        const hit = s.substr(j, m) === nd;
+        fr.push({ cells: base(x => x >= j && x < j + m ? (hit ? 'ok ptr' : 'no') : ''), en: hit ? 'Index ' + j + ': found it.' : 'Index ' + j + ': ' + Q(s.substr(j, m)) + ' is not ' + Q(nd) + '.', ar: hit ? 'عند الـ index ' + B(j) + ' لقيناه.' : 'عند الـ index ' + B(j) + ' مش هو.' });
+        if (hit) { fr.push({ cells: base(x => x >= j && x < j + m ? 'ok' : ''), res: String(j), en: '<b>strpos($name, ' + Q(nd) + ') = ' + j + '</b>: the index of the first match (Java: indexOf).', ar: 'النتيجة هي الـ index بتاع أول مكان لقيناه فيه، وده زي الـ indexOf في الـ Java:' + L('strpos($name, ' + Q(nd) + ') = ' + j) }); return fr; }
+      }
+      fr.push({ cells: base(), res: 'FALSE', en: 'Not found: <b>strpos returns FALSE</b>.', ar: 'مش موجود، فالـ strpos بترجّع FALSE.' });
+      return fr;
+    }
+    if (op === 'sub') {
+      const st0 = a.st < 0 ? Math.max(0, n + a.st) : a.st, e = Math.min(n, a.ln < 0 ? n + a.ln : st0 + a.ln), out = substrS(s, a.st, a.ln);
+      fr.push({ cells: base(x => x === st0 ? 'k ptr' : ''), en: 'Start at index ' + st0 + '.', ar: 'نبدأ من الـ index رقم ' + B(st0) + '.' });
+      for (let j = st0; j < e; j++) fr.push({ cells: base(x => x >= st0 && x <= j ? 'ok' : ''), en: 'Take ' + (j - st0 + 1) + ' of ' + a.ln + '…', ar: 'خدنا ' + B((j - st0 + 1) + '/' + a.ln) + '…' });
+      fr.push({ cells: base(x => x >= st0 && x < e ? 'ok' : ''), res: Q(out), en: '<b>substr($name, ' + a.st + ', ' + a.ln + ') = ' + Q(out) + '</b>: ' + a.ln + ' characters starting at index ' + a.st + ' (a length, not an end index; Java: substring).', ar: 'الـ substr بتاخد عدد حروف (length مش end index) بادئة من الـ index، وده زي الـ substring في الـ Java:' + L('substr($name, ' + a.st + ', ' + a.ln + ') = ' + Q(out)) });
+      return fr;
+    }
+    if (op === 'up') {
+      for (let j = 0; j < n; j++) fr.push({ cells: s.split('').map((c, x) => ({ c: x <= j ? c.toUpperCase() : c, st: x === j ? 'k ptr' : x < j ? 'ok' : '' })), en: 'Letter by letter to uppercase…', ar: 'حرف حرف بيتحوّل لـ uppercase…' });
+      fr.push({ cells: s.toUpperCase().split('').map(c => ({ c, st: 'ok' })), res: Q(s.toUpperCase()), en: '<b>strtoupper($name) = ' + Q(s.toUpperCase()) + '</b> (strtolower does the opposite).', ar: 'النتيجة (والـ strtolower بتعمل العكس):' + L('strtoupper($name) = ' + Q(s.toUpperCase())) });
+      return fr;
+    }
+    if (op === 'trim') {
+      const ch = a.ch; let l = 0, r = n;
+      const cells = () => s.split('').map((c, x) => ({ c, st: x < l || x >= r ? 'gone' : '' }));
+      while (l < r) { const c = s[l]; if (ch.includes(c)) { l++; fr.push({ cells: cells(), en: Q(c) + ' is in the list ' + Q(ch) + ': removed from the left.', ar: 'الحرف ' + B(Q(c)) + ' موجود في القايمة، فاتشال من الشمال.' }); } else { fr.push({ cells: cells().map((x, j) => j === l ? Object.assign(x, { st: 'no ptr' }) : x), en: Q(c) + ' is not in the list: stop on the left.', ar: 'الحرف ' + B(Q(c)) + ' مش في القايمة، فنقف من الشمال.' }); break; } }
+      while (r > l) { const c = s[r - 1]; if (ch.includes(c)) { r--; fr.push({ cells: cells(), en: Q(c) + ' is in the list: removed from the right.', ar: 'الحرف ' + B(Q(c)) + ' موجود في القايمة، فاتشال من اليمين.' }); } else { fr.push({ cells: cells().map((x, j) => j === r - 1 ? Object.assign(x, { st: 'no ptr' }) : x), en: Q(c) + ' is not in the list: stop on the right.', ar: 'الحرف ' + B(Q(c)) + ' مش في القايمة، فنقف من اليمين.' }); break; } }
+      const out = s.slice(l, r);
+      fr.push({ cells: cells(), res: Q(out), en: '<b>trim(' + Q(s) + ', ' + Q(ch) + ') = ' + Q(out) + '</b>: those characters are removed from both ends only.', ar: 'الحروف دي بتتشال من الطرفين بس:' + L('trim(' + Q(s) + ', ' + Q(ch) + ') = ' + Q(out)) });
+      return fr;
+    }
+    return [{ cells: base(), en: '', ar: '' }];
+  }
+  function StrCells({ ar, fn }) {
+    const [op, setOp] = useState(fn ? 'pos' : 'idx');
+    const [s, setS] = useState(fn ? 'Mohammed AbdelFattah' : 'Ethiopian'), [ts, setTs] = useState('Hello World!');
+    const [ix, setIx] = useState(2), [nd, setNd] = useState('e'), [st, setSt] = useState(9), [ln, setLn] = useState(5), [ch, setCh] = useState('Hed!');
+    const vn = fn ? '$name' : '$favorite_food';
+    const subj = op === 'trim' ? ts : s;
+    const frames = useMemo(() => strFrames(op, subj.slice(0, 40), { i: ix, v: vn, t: ' cuisine', nd, st, ln, ch }), [op, subj, ix, nd, st, ln, ch]);
+    const n = frames.length, [i, ctl] = useWalk(n, op === 'len' || op === 'up' ? 260 : 900, frames), f = frames[i];
+    const OPS = fn ? [['len', 'strlen($name)'], ['pos', 'strpos($name, "' + nd + '")'], ['sub', 'substr($name, ' + st + ', ' + ln + ')'], ['up', 'strtoupper($name)'], ['trim', 'trim("' + ts + '", "' + ch + '")']]
+      : [['idx', vn + '[' + ix + ']'], ['cat', vn + ' . " cuisine"']];
+    const reset = () => { setS(fn ? 'Mohammed AbdelFattah' : 'Ethiopian'); setTs('Hello World!'); setIx(2); setNd('e'); setSt(9); setLn(5); setCh('Hed!'); };
+    const num = (v, set, lbl, min) => html`<label>${lbl} <input className="wbv10-inp" type="number" min=${min} max="40" value=${v} style=${{ width: '4.2em', flex: 'none' }} onChange=${e => set(Math.max(min, Math.min(40, parseInt(e.target.value, 10) || 0)))} /></label>`;
+    const txt = (v, set, lbl, w) => html`<label style=${{ display: 'flex', gap: '4px', alignItems: 'center', flex: '1 1 ' + w }}>${lbl}<input className="wbv10-inp" value=${v} maxLength="40" spellCheck=${false} onChange=${e => set(e.target.value)} /></label>`;
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips">${OPS.map(([k, t]) => html`<button key=${k} className="fig-btn m" aria-pressed=${op === k} onClick=${() => setOp(k)}>${t}</button>`)}</div>
+      <div className="wbv10-lbl" style=${{ textAlign: 'center' }}>${op === 'trim' ? 'the string "' + ts + '"' : vn + ' = "' + s + '"'}</div>
+      <div className="wbv10-cells">${f.cells.map((c, j) => html`<div key=${j} className=${'wbv10-cell ' + c.st}><b>${c.c === ' ' ? '␣' : c.c}</b><i>${j}</i></div>`)}</div>
+      ${f.res != null && html`<p className="wbv10-verd ok wbv10-mono" style=${{ direction: 'ltr' }}>→ ${f.res.replace(/&quot;/g, '"').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')}</p>`}
+      <details style=${{ marginTop: '8px' }}><summary className="wbv10-cnt" style=${{ cursor: 'pointer' }}>✎ Try your own</summary>
+        <div className="wbv10-row">${op === 'trim' ? txt(ts, setTs, 'string', '150px') : txt(s, setS, vn, '170px')}</div>
+        <div className="wbv10-row">${op === 'idx' && num(ix, setIx, 'index', 0)}${op === 'pos' && txt(nd, setNd, 'find', '90px')}${op === 'sub' && html`${num(st, setSt, 'offset', 0)}${num(ln, setLn, 'length', 0)}`}${op === 'trim' && txt(ch, setCh, 'chars', '90px')}
+          <button className="fig-btn" onClick=${reset}>Example from the notes</button></div></details></div>
+      <${Cap} en=${f.en} ar=${f.ar} showAr=${ar} /><${WBar} i=${i} n=${n} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── notes [4.5] to [4.7]: double vs single quotes, and braces ── */
+  function Quotes({ ar }) {
+    const EX = [['"', 'You are $age years old.\\n'], ["'", 'You are $age years old.\\n'], ['"', 'Today is your $ageth birthday.\\n'], ['"', 'Today is your {$age}th birthday.\\n']];
+    const [q, setQ] = useState('"'), [t, setT] = useState(EX[0][1]), [age, setAge] = useState('16');
+    const ageV = /^-?\d+$/.test(age.trim()) ? age.trim() : age;
+    const parts = useMemo(() => q === "'" ? [{ t: t.replace(/\\([\\'])/g, '$1') }] : dqParts(t), [q, t]);
+    const subs = parts.filter(p => p.v || p.e);
+    const n = subs.length + 1, [i, ctl] = useWalk(n, 1600, q + t + age);
+    let k = 0;
+    const out = parts.map((p, j) => {
+      if (!p.v && !p.e) return html`<span key=${j}>${p.t}</span>`;
+      const done = ++k <= i;
+      if (p.e) return done ? (p.t === '\n' ? html`<span key=${j} className="nl">↵ new line${'\n'}</span>` : html`<span key=${j} className="val">${'⇥'}</span>`) : html`<span key=${j}>${p.e}</span>`;
+      if (!done) return html`<span key=${j}>${p.src}</span>`;
+      if (p.v !== 'age') return html`<span key=${j} className="miss" title="undefined"></span>`;
+      return html`<span key=${j} className="val">${p.ix != null ? (String(ageV)[p.ix] || '') : String(ageV)}</span>`;
+    });
+    const fin = i === n - 1 && n > 1, vs = subs.filter(p => p.v);
+    const cur = fin && vs.length ? (vs.find(p => p.v !== 'age') || vs.find(p => p.br) || vs[0]) : i > 0 ? subs[i - 1] : null;
+    let en, a;
+    if (q === "'") { en = 'Single quotes are <b>not interpreted</b>: $age and \\n are printed exactly as written.'; a = 'الـ single quotes <b>مش بتتفسّر</b>، فالـ ' + B('$age') + ' والـ ' + B('\\n') + ' بيتطبعوا زي ما هما بالظبط.'; }
+    else if (!cur) { en = 'Double quotes are <b>interpreted</b>: PHP looks inside for $variables and escapes.'; a = 'الـ double quotes <b>بتتفسّر</b>، يعني الـ PHP بيدوّر جواها على الـ variables والـ escapes.'; }
+    else if (cur.e) { en = '<b>' + cur.e + '</b> is an escape: it becomes ' + (cur.t === '\n' ? 'a new line' : 'a tab') + '.'; a = 'الـ ' + B(cur.e) + ' ده escape وبيتحوّل لـ ' + (cur.t === '\n' ? 'سطر جديد.' : 'tab.'); }
+    else if (cur.v !== 'age') { en = 'PHP reads the longest name it can: <b>' + esc(cur.src) + '</b>. There is no such variable, so nothing is printed (with a warning). Use <b>{$age}</b> instead.'; a = 'الـ PHP بياخد أطول اسم ممكن، يعني ' + B(esc(cur.src)) + '. ومفيش variable بالاسم ده، فمش بيطبع حاجة (ومعاها warning). استخدم ' + B('{$age}') + ' بداله.'; }
+    else if (cur.br) { en = 'The braces in <b>{$age}</b> mark where the name ends, so it is replaced by ' + esc(ageV) + ' and the letters after it stay.'; a = 'الـ braces في ' + B('{$age}') + ' بتحدد الاسم بيخلص فين، فبيتبدل بقيمته ' + B(esc(ageV)) + ' والحروف اللي بعده بتفضل.'; }
+    else { en = '<b>$age</b> is replaced by its value, ' + esc(ageV) + '.'; a = 'الـ ' + B('$age') + ' بيتبدل بقيمته ' + B(esc(ageV)) + '.'; }
+    if (fin && q === '"' && subs.some(p => p.e)) { en += ' The \\n escape becomes a new line.'; a += ' والـ ' + B('\\n') + ' بيتحوّل لسطر جديد.'; }
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips">${EX.map(([qq, tt], j) => html`<button key=${j} className="fig-btn m" aria-pressed=${q === qq && t === tt} onClick=${() => { setQ(qq); setT(tt); }}>${qq + tt.replace('\\n', '') + qq}</button>`)}</div>
+      <div className="wbv10-qline">$age = ${/^-?\d+$/.test(age.trim()) ? ageV : '"' + age + '"'};</div>
+      <div className="wbv10-qline">print ${q}${q === '"' ? dqParts(t).map((p, j) => p.v ? html`<span key=${j} className=${'wbv10-tok' + (p.v !== 'age' ? ' no' : '')}>${p.src}</span>` : p.e ? html`<span key=${j} className="wbv10-tok">${p.e}</span>` : p.t) : t}${q};</div>
+      <div className="wbv10-lbl" style=${{ textAlign: 'center' }}>prints</div>
+      <div className="wbv10-printed">${out}</div>
+      <details style=${{ marginTop: '8px' }}><summary className="wbv10-cnt" style=${{ cursor: 'pointer' }}>✎ Try your own</summary>
+        <div className="wbv10-row"><label>$age = <input className="wbv10-inp" value=${age} maxLength="12" style=${{ width: '5em' }} onChange=${e => setAge(e.target.value)} /></label>
+          <button className="fig-btn" aria-pressed=${q === '"'} onClick=${() => setQ('"')}>" "</button><button className="fig-btn" aria-pressed=${q === "'"} onClick=${() => setQ("'")}>' '</button></div>
+        <div className="wbv10-row"><input className="wbv10-inp" value=${t} maxLength="60" spellCheck=${false} aria-label="String text" onChange=${e => setT(e.target.value.split(q).join(''))} /></div></details></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><${WBar} i=${i} n=${n} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── notes [5.0]: which values are FALSE ── */
+  const TF = [
+    ['7', true, 'Any other number is TRUE: (bool) 7 is TRUE.', 'أي رقم غير الصفر قيمته TRUE:' + L('(bool) 7 → TRUE')],
+    ['"0"', false, 'The string "0" is FALSE.', 'الـ string ' + B('"0"') + ' قيمته FALSE.'],
+    ['"0.00"', true, '"0.00" is a string that is not "" and not "0", so it is TRUE.', 'الـ ' + B('"0.00"') + ' ده string مش فاضي ومش ' + B('"0"') + '، فقيمته TRUE.'],
+    ['0', false, 'The integer 0 is FALSE.', 'الرقم ' + B('0') + ' قيمته FALSE.'],
+    ['NULL', false, 'NULL is FALSE.', 'الـ NULL قيمته FALSE.'],
+    ['""', false, 'The empty string is FALSE.', 'الـ string الفاضي قيمته FALSE.'],
+    ['0.0', false, 'The float 0.0 is FALSE.', 'الـ float ' + B('0.0') + ' قيمته FALSE.'],
+    ['array()', false, 'An array with 0 elements is FALSE.', 'الـ array اللي فيها 0 عناصر قيمتها FALSE.'],
+    ['"0.000"', true, '"0.000" is a non-empty string other than "0", so it is TRUE.', 'الـ ' + B('"0.000"') + ' string مش فاضي ومش ' + B('"0"') + '، فقيمته TRUE.'],
+    ['$x (unset)', false, 'An unset variable is NULL, so it is FALSE.', 'الـ variable اللي ملوش قيمة بيبقى NULL، فقيمته FALSE.']
+  ];
+  function Truthy({ ar }) {
+    const [done, setDone] = useState([]), [miss, setMiss] = useState(0), [last, setLast] = useState(null), [shake, setShake] = useState(false);
+    const k = done.length, cur = TF[k];
+    const pick = v => { if (!cur) return; if (v === cur[1]) { setDone(d => d.concat(k)); setLast({ k, ok: true }); } else { setMiss(m => m + 1); setLast({ k, ok: false }); setShake(true); setTimeout(() => setShake(false), 420); } };
+    const echoEn = v => v ? ' echo of TRUE prints <b>1</b>.' : ' echo of FALSE prints nothing (an empty string).', echoAr = v => v ? ' والـ echo بتاع الـ TRUE بيطبع ' + B('1') + '.' : ' والـ echo بتاع الـ FALSE مابيطبعش حاجة (string فاضي).';
+    let en, a;
+    if (!last) { en = 'Is each value TRUE or FALSE when PHP needs a boolean? Tap your answer.'; a = 'كل قيمة من دول بتبقى TRUE ولا FALSE لما الـ PHP يحتاج boolean؟ دوس على إجابتك.'; }
+    else { const it = TF[last.k]; en = (last.ok ? 'Right. ' : 'Not quite. ') + it[2] + (last.ok ? echoEn(it[1]) : ''); a = (last.ok ? 'صح. ' : 'مش بالظبط. ') + it[3] + (last.ok ? echoAr(it[1]) : ''); }
+    if (!cur) { en += ' All sorted. FALSE: 0, 0.0, "", "0", NULL (and unset variables), empty arrays; everything else is TRUE.'; a += ' خلصت. القيم الـ FALSE هي:' + L('0, 0.0, "", "0", NULL, empty array') + 'وأي حاجة تانية TRUE.'; }
+    const col = v => TF.filter((x, j) => done.includes(j) && x[1] === v);
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className=${'wbv10-q' + (shake ? ' shake' : '')}>${cur ? html`<div className="big">${cur[0]}</div><div className="r"><button className="fig-btn" onClick=${() => pick(false)}>FALSE</button><button className="fig-btn" onClick=${() => pick(true)}>TRUE</button></div>` : html`<div className="big">✓</div>`}</div>
+      <div className="wbv10-cols">
+        <div className="wbv10-col"><b>FALSE</b><small>echo prints nothing</small><div className="wbv10-slot">${col(false).map(x => html`<span key=${x[0]} className="wbv10-it">${x[0]}</span>`)}</div></div>
+        <div className="wbv10-col"><b>TRUE</b><small>echo prints 1</small><div className="wbv10-slot">${col(true).map(x => html`<span key=${x[0]} className="wbv10-it">${x[0]}</span>`)}</div></div></div>
+      <p className="wbv10-score">${k} / ${TF.length} sorted · ${miss} wrong tries</p></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => { setDone(TF.map((_, j) => j)); setLast(null); }} disabled=${!cur}>Show all</button><button className="fig-btn" onClick=${() => { setDone([]); setMiss(0); setLast(null); }}>↻ Start over</button></div></figure>`;
+  }
+
+  /* ── notes [6.0] to [6.2]: array functions ── */
+  const phpSort = (x, y) => { const a = isNumStr(x), b = isNumStr(y); if (a && b) return Number(x) - Number(y); return x < y ? -1 : x > y ? 1 : 0; };
+  function Arrays({ ar }) {
+    const [arr, setArr] = useState(['MM', 'BB']), [val, setVal] = useState('CC'), [off, setOff] = useState(1), [len, setLen] = useState(2), [txt, setTxt] = useState('10 12 3');
+    const [ev, setEv] = useState({ code: '$XX = array("MM", "BB");', en: 'The array from the notes: <b>$XX = array("MM", "BB");</b> (or ["MM", "BB"]). print_r shows its indexes and values.', ar: 'دي الـ array من الـ notes، والـ print_r بتطبعها بالـ indexes والقيم:' + L('$XX = array("MM", "BB");'), fresh: [0, 1], key: 0 });
+    const Q = v => esc(qs(v));
+    const act = (next, e) => { setArr(next); setEv(Object.assign({ key: ev.key + 1, fresh: [] }, e)); };
+    const v = val.slice(0, 8) || 'CC';
+    const ops = [
+      ['array_push($XX, "' + v + '")', () => arr.length < 12 && act(arr.concat(v), { code: 'array_push($XX, "' + v + '");', fresh: [arr.length], en: '<b>array_push</b> adds ' + Q(v) + ' at the end.', ar: 'الـ array_push ضافت ' + B(Q(v)) + ' في الآخر.' })],
+      ['array_pop($XX)', () => act(arr.slice(0, -1), { code: 'array_pop($XX);', gone: arr.length ? Q(arr[arr.length - 1]) : 'NULL', en: arr.length ? '<b>array_pop</b> removes the last element and returns it: ' + Q(arr[arr.length - 1]) + '.' : 'The array is empty: array_pop returns NULL.', ar: arr.length ? 'الـ array_pop شالت آخر عنصر ورجّعته:' + L(Q(arr[arr.length - 1])) : 'الـ array فاضية، فالـ array_pop بترجّع NULL.' })],
+      ['array_shift($XX)', () => act(arr.slice(1), { code: 'array_shift($XX);', gone: arr.length ? Q(arr[0]) : 'NULL', en: arr.length ? '<b>array_shift</b> removes the first element and returns it (' + Q(arr[0]) + '); the rest are re-indexed from 0.' : 'The array is empty: array_shift returns NULL.', ar: arr.length ? 'الـ array_shift شالت أول عنصر ' + B(Q(arr[0])) + ' ورجّعته، والباقي اتعاد ترقيمه من 0.' : 'الـ array فاضية، فالـ array_shift بترجّع NULL.' })],
+      ['array_unshift($XX, "' + v + '")', () => arr.length < 12 && act([v].concat(arr), { code: 'array_unshift($XX, "' + v + '");', fresh: [0], en: '<b>array_unshift</b> adds ' + Q(v) + ' at the front; the others move up one index.', ar: 'الـ array_unshift ضافت ' + B(Q(v)) + ' في الأول، والباقي كل واحد اتزق index لقدام.' })],
+      ['sort($XX)', () => act(arr.slice().sort(phpSort), { code: 'sort($XX);', fresh: arr.map((_, j) => j), en: '<b>sort</b> puts them in ascending order (numbers by value; uppercase letters before lowercase).', ar: 'الـ sort رتّبتهم تصاعدي (الأرقام بقيمتها، والحروف الـ uppercase قبل الـ lowercase).' })],
+      ['array_slice($XX, ' + off + ', ' + len + ')', () => act(arr, { code: 'array_slice($XX, ' + off + ', ' + len + ');', sel: [off, off + len], slice: arr.slice(off, off + len), en: '<b>array_slice($XX, ' + off + ', ' + len + ')</b> returns ' + len + ' elements starting at index ' + off + ' (offset, then length, not an end index); $XX itself is unchanged.', ar: 'الـ array_slice بترجع عدد ' + B(len) + ' عنصر بادئة من الـ index ' + B(off) + ' (الأول offset وبعده length، مش end index)، والـ ' + B('$XX') + ' نفسها مش بتتغير.' })],
+      ['count($XX)', () => act(arr, { code: 'count($XX);', ret: String(arr.length), en: '<b>count($XX) = ' + arr.length + '</b>: the size of the array.', ar: 'الـ count بتدّي حجم الـ array:' + L('count($XX) = ' + arr.length) })]
+    ];
+    const load = () => { const a = txt.trim().split(' ').slice(0, 12); act(a, { code: "$XX = explode(' ', \"" + txt.trim() + '");', fresh: a.map((_, j) => j), en: '<b>explode(\' \', "' + esc(txt.trim()) + '")</b> splits the string at each space into an array.', ar: 'الـ explode بتقطّع الـ string عند كل مسافة وتعمل منه array:' + L("explode(' ', " + Q(txt.trim()) + ')') }); };
+    const pr_r = 'Array ( ' + arr.map((x, j) => '[' + j + '] => ' + x).join(' ') + (arr.length ? ' ' : '') + ')';
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-ops">${ops.map(([t, f]) => html`<button key=${t} className="fig-btn" onClick=${f}>${t}</button>`)}</div>
+      <div className="wbv10-req" style=${{ marginTop: '10px' }}><span key=${ev.key}>${ev.code}</span></div>
+      <div className="wbv10-arr" key=${ev.key}>${arr.length ? arr.map((x, j) => html`<div key=${j} className=${'wbv10-el' + ((ev.fresh || []).includes(j) ? ' new' : '') + (ev.sel && j >= ev.sel[0] && j < ev.sel[1] ? ' sel' : '')}><b>${x}</b><i>[${j}]</i></div>`) : html`<span className="wbv10-none">empty array</span>`}</div>
+      <div className="wbv10-gone">${ev.gone ? 'returned ' + ev.gone.replace(/&quot;/g, '"') : ev.ret ? 'returned ' + ev.ret : ev.slice ? 'returned [' + ev.slice.map(x => '"' + x + '"').join(', ') + ']' : ' '}</div>
+      <div className="wbv10-res"><span>print_r($XX)</span><code>${pr_r}</code><span>implode(' ', $XX)</span><code>${arr.join(' ')}</code></div>
+      <details style=${{ marginTop: '8px' }}><summary className="wbv10-cnt" style=${{ cursor: 'pointer' }}>✎ Try your own</summary>
+        <div className="wbv10-row"><label>value <input className="wbv10-inp" value=${val} maxLength="8" style=${{ width: '6em' }} onChange=${e => setVal(e.target.value.replace(/\s/g, ''))} /></label>
+          <label>offset <input className="wbv10-inp" type="number" min="0" max="11" value=${off} style=${{ width: '4em' }} onChange=${e => setOff(Math.max(0, Math.min(11, parseInt(e.target.value, 10) || 0)))} /></label>
+          <label>length <input className="wbv10-inp" type="number" min="0" max="12" value=${len} style=${{ width: '4em' }} onChange=${e => setLen(Math.max(0, Math.min(12, parseInt(e.target.value, 10) || 0)))} /></label></div>
+        <div className="wbv10-row"><span>explode(' ',</span><input className="wbv10-inp" value=${txt} maxLength="40" onChange=${e => setTxt(e.target.value)} /><span>)</span><button className="fig-btn" onClick=${load}>Load</button></div>
+        <div className="wbv10-row"><button className="fig-btn" onClick=${() => act(['MM', 'BB'], { code: '$XX = array("MM", "BB");', fresh: [0, 1], en: 'Back to the array from the notes.', ar: 'رجعنا للـ array بتاعة الـ notes.' })}>Example from the notes</button></div></details></div>
+      <${Cap} en=${ev.en} ar=${ev.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── notes [7]: the L10 login example ── */
+  const loginCode = m => '<?php\necho "welcome in myform";\necho \'<BR>\';\n// POST METHOD / GET METHOD\nif ($_SERVER["REQUEST_METHOD"] == "POST") {\n  if (empty($_POST["username"])) {\n    echo "USERNAME is required" . "<br/>";\n  } elseif (empty($_POST["password"])) {\n    echo "PASSWORD is required" . "<br/>";\n  } else {\n    $username = $_POST["username"];\n    $password = $_POST["password"];\n    echo "Welcome, " . $username . "!";\n  }\n}\n?>\n<form action="" method="' + m + '">\n  <label for="username">Username:</label>\n  <input type="text" name="username" id="username"><br/>\n  <label for="password">Password:</label>\n  <input type="password" name="password" id="password"><br/>\n  <input type="submit" value="Login">\n</form>';
+  const enc = s => encodeURIComponent(s).replace(/%20/g, '+');
+  function loginTrace(req) {
+    const S2 = []; let out = '';
+    const add = (line, en, ar, o) => S2.push(Object.assign({ line, out, en, ar }, o));
+    const isEmpty = v => v === '' || v === '0';
+    if (!req.sent) add(0, 'The page is opened: the browser asks for it with a <b>GET</b> request. Nothing has been submitted yet.', 'الصفحة اتفتحت، فالـ browser طلبها بـ <b>GET</b> request، ولسه مفيش حاجة اتبعتت.');
+    else if (req.m === 'POST') add(0, 'Login pressed: <b>action=""</b> sends the form back to the <b>same page</b> with <b>POST</b>; the data travels in the request body.', 'دوسنا Login، والـ ' + B('action=""') + ' بيبعت الـ form لـ <b>نفس الصفحة</b> بالـ <b>POST</b>، والداتا بتتبعت في الـ request body.');
+    else add(0, 'Login pressed with <b>method="GET"</b>: the data is added to the URL as name=value pairs.', 'دوسنا Login والـ method هي <b>GET</b>، فالداتا بتتلزق في الـ URL كأزواج ' + B('name=value') + '.');
+    out += 'welcome in myform'; add(2, '<code>echo</code> sends "welcome in myform".', 'الـ echo بعت للـ output:' + L('"welcome in myform"'));
+    out += '<BR>'; add(3, '<code>echo</code> sends a line break, &lt;BR&gt;.', 'الـ echo بعت ' + B('&lt;BR&gt;') + ' عشان سطر جديد.');
+    const meth = req.sent ? req.m : 'GET';
+    if (meth !== 'POST') { add(5, '$_SERVER["REQUEST_METHOD"] is "' + meth + '", so <b>== "POST" is FALSE</b>: the whole block is skipped.', 'الـ REQUEST_METHOD قيمتها ' + meth + '، فالشرط <b>FALSE</b> والـ block كله بيتنط.'); }
+    else {
+      add(5, '$_SERVER["REQUEST_METHOD"] is "POST", so the condition is <b>TRUE</b>: PHP checks the fields.', 'الـ REQUEST_METHOD قيمتها POST، فالشرط <b>TRUE</b> والـ PHP بيشيّك على الخانات.');
+      if (isEmpty(req.u)) { add(6, '<code>empty($_POST["username"])</code> is <b>TRUE</b>: the username was left empty.', 'الـ username فاضي، فالشرط <b>TRUE</b>.'); out += 'USERNAME is required<br/>'; add(7, '<code>echo</code> sends "USERNAME is required" . "&lt;br/&gt;".', 'الـ echo بعت للـ output:' + L('"USERNAME is required&lt;br/&gt;"')); }
+      else {
+        add(6, '<code>empty($_POST["username"])</code> is <b>FALSE</b>: a username was typed.', 'الـ username مش فاضي، فالشرط <b>FALSE</b>.');
+        if (isEmpty(req.p)) { add(8, '<code>elseif</code>: <code>empty($_POST["password"])</code> is <b>TRUE</b>.', 'الـ password فاضي، فشرط الـ elseif <b>TRUE</b>.'); out += 'PASSWORD is required<br/>'; add(9, '<code>echo</code> sends "PASSWORD is required" . "&lt;br/&gt;".', 'الـ echo بعت للـ output:' + L('"PASSWORD is required&lt;br/&gt;"')); }
+        else {
+          add(8, '<code>elseif</code>: the password is not empty either, so the <b>else</b> block runs.', 'الـ password كمان مش فاضي، فالـ block بتاع الـ <b>else</b> بيتنفذ.');
+          add(11, '$username = $_POST["username"]; gets ' + esc(qs(req.u)) + '.', 'الـ ' + B('$username') + ' خد قيمته من الـ form:' + L(esc('$username = ' + qs(req.u))));
+          add(12, '$password = $_POST["password"]; gets the password.', 'الـ ' + B('$password') + ' خد الـ password من الـ form.');
+          out += 'Welcome, ' + req.u + '!'; add(13, '<code>echo</code> sends ' + esc(qs('Welcome, ' + req.u + '!')) + ' (joined with .).', 'الـ echo بعت للـ output، والأجزاء متلزقة بالـ ' + B('.') + ' والنتيجة:' + L(esc(qs('Welcome, ' + req.u + '!'))));
+        }
+      }
+    }
+    add(17, 'After <b>?&gt;</b> the form is plain HTML, sent as it is. The browser shows the output, then the form again.', 'بعد ' + B('?&gt;') + ' الـ form ده HTML عادي وبيتبعت زي ما هو، والـ browser بيعرض الـ output وبعده الـ form تاني.', { end: 23, form: true });
+    return S2;
+  }
+  function Login({ ar }) {
+    const [m, setM] = useState('POST'), [u, setU] = useState(''), [p, setP] = useState(''), [req, setReq] = useState({ sent: false, m: 'GET', u: '', p: '', n: 0 });
+    const steps = useMemo(() => loginTrace(req), [req]);
+    const n = steps.length, [i, ctl] = useWalk(n, 1400, req), st = steps[i];
+    const send = (uu, pp) => { setU(uu); setP(pp); setReq({ sent: true, m, u: uu, p: pp, n: req.n + 1 }); };
+    const url = 'myform.php' + (req.sent && req.m === 'GET' && i >= 0 ? '?username=' + enc(req.u) + '&password=' + enc(req.p) : '');
+    const outText = st.out.split(/<BR>|<br\/>/i);
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-chips"><button className="fig-btn m" aria-pressed=${m === 'POST'} onClick=${() => setM('POST')}>method="POST"</button><button className="fig-btn m" aria-pressed=${m === 'GET'} onClick=${() => setM('GET')}>method="GET"</button></div>
+      <div className="wbv10-chips"><button className="fig-btn" onClick=${() => send('', '')}>Empty username</button><button className="fig-btn" onClick=${() => send('Mona', '')}>No password</button><button className="fig-btn" onClick=${() => send('Mona', '1234')}>Both filled</button></div>
+      <div className="wbv10-two">
+        <${CodePane} code=${loginCode(m)} hl=${st.line} end=${st.end} />
+        <div><div className="wbv10-win"><div className="wbv10-bar" style=${{ margin: '0 0 6px' }}>${url}</div>
+          <div className="wbv10-web" style=${{ minHeight: '150px' }}>
+            ${outText.map((t, j) => html`<span key=${j}>${t}${j < outText.length - 1 && html`<br />`}</span>`)}
+            ${(st.form || !req.sent) && html`<form className="wbv10-form" onSubmit=${e => { e.preventDefault(); send(u, p); }}>
+              <label>Username: <input type="text" value=${u} maxLength="20" autoComplete="off" onChange=${e => setU(e.target.value)} /></label>
+              <label>Password: <input type="password" value=${p} maxLength="20" autoComplete="off" onChange=${e => setP(e.target.value)} /></label>
+              <button type="submit">Login</button></form>`}</div></div>
+          <div className="wbv10-req">${req.sent && html`<span key=${req.n}>${req.m === 'POST' ? 'POST body: username=' + enc(req.u) + '&password=' + '•'.repeat(enc(req.p).length) : 'GET: the data is in the URL above'}</span>`}</div></div></div></div>
+      <${Cap} en=${(st.line ? 'Line ' + st.line + ': ' : '') + st.en} ar=${(st.line ? 'السطر ' + st.line + ': ' : '') + st.ar} showAr=${ar} /><${WBar} i=${i} n=${n} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── notes [8]: GET vs POST ── */
+  function GetPost({ ar }) {
+    const [u, setU] = useState('Mona'), [p, setP] = useState('1234');
+    const steps = [
+      { en: '<b>GET</b>: the data is appended to the URL as name=value pairs. <b>POST</b>: the data is sent in the HTTP request body.', ar: 'في الـ <b>GET</b> الداتا بتتلزق في الـ URL كأزواج ' + B('name=value') + '. وفي الـ <b>POST</b> الداتا بتتبعت في الـ HTTP request body.' },
+      { en: 'GET is <b>visible</b> in the address bar (even the password), can be bookmarked and is length-limited. POST is not visible in the URL and has no practical size limit.', ar: 'الـ GET <b>باينة</b> في الـ address bar (حتى الـ password)، وينفع تتعمل bookmark، وطولها محدود. أما الـ POST فمش باينة في الـ URL ومفيش حد عملي لحجمها.' },
+      { en: 'Use GET for non-sensitive requests such as a search; POST for passwords and forms that change data.', ar: 'استخدم الـ GET للطلبات اللي مش حساسة زي الـ search، والـ POST للـ passwords والـ forms اللي بتغيّر داتا.' },
+      { en: 'In PHP: $_SERVER["REQUEST_METHOD"] is "GET" or "POST", and the fields are read from $_GET or $_POST.', ar: 'في الـ PHP الـ REQUEST_METHOD بتبقى GET أو POST، والخانات بتتقري من ' + B('$_GET') + ' أو ' + B('$_POST') + '.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 3200, 0);
+    const q = 'username=' + enc(u) + '&password=' + enc(p);
+    const part = (k, body) => html`<div className=${'wbv10-part' + (i === k ? ' on' : '')}>${body}</div>`;
+    const card = get => html`<div className="wbv10-gp"><b>${get ? 'GET ($_GET)' : 'POST ($_POST)'}</b>
+      ${part(0, html`<small>the request</small><div className="wbv10-pre">${get ? 'GET /myform.php?' + q + ' HTTP/1.1\n\n(no body)' : 'POST /myform.php HTTP/1.1\n\nbody: ' + q}</div>`)}
+      ${part(1, html`<small>address bar</small><div className="wbv10-pre">${get ? 'myform.php?' + q : 'myform.php'}</div>${get && html`<small className="wbv10-warn">password visible · bookmarkable · length-limited</small>`}${!get && html`<small>not in the URL · no practical size limit</small>`}`)}
+      ${part(2, html`<small>use it for</small>${get ? 'non-sensitive requests (search)' : 'passwords, forms that change data'}`)}
+      ${part(3, html`<small>in PHP</small><div className="wbv10-pre">${'$_SERVER["REQUEST_METHOD"]\n  == "' + (get ? 'GET' : 'POST') + '"\n$' + (get ? '_GET' : '_POST') + '["username"] → "' + u + '"'}</div>`)}</div>`;
+    return html`<figure className="fig wbv10"><div className="fig-stage">
+      <div className="wbv10-row" style=${{ justifyContent: 'center', margin: '0 0 8px' }}><label>Username <input className="wbv10-inp" value=${u} maxLength="16" style=${{ width: '7em' }} onChange=${e => setU(e.target.value)} /></label><label>Password <input className="wbv10-inp" value=${p} maxLength="16" style=${{ width: '7em' }} onChange=${e => setP(e.target.value)} /></label></div>
+      <div className="wbv10-two">${card(true)}${card(false)}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${WBar} i=${i} n=${steps.length} ctl=${ctl} /></figure>`;
+  }
+
+  const mk = (C, props) => function (p) { return html`<${C} ...${p} ...${props} />`; };
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'wb-php-url': UrlFlow, 'wb-php-arch': Arch, 'wb-php-cycle': Cycle,
+    'wb-php-modes': mk(Runner, { ex: RUN.modes }), 'wb-php-varname': VarName,
+    'wb-php-dump': mk(Reduce, { pre: ['var_dump("Harry")', 'var_dump(28)', 'var_dump(null)', '5 + "7"', '7 / 2', '(int) 3.5', 'round(3.5)', '(int) "21"'] }),
+    'wb-php-vars': mk(Runner, { ex: RUN.vars }),
+    'wb-php-plusdot': mk(Reduce, { pre: ['5 + "2 turtle doves"', '5 . "2 turtle doves"', '5 + "7"', '"Ethiopian" . " cuisine"'] }),
+    'wb-php-strindex': mk(StrCells, { fn: false }), 'wb-php-strfn': mk(StrCells, { fn: true }), 'wb-php-quotes': Quotes,
+    'wb-php-truthy': Truthy,
+    'wb-php-math': mk(Reduce, { pre: ['sqrt(pow(3,2) + pow(4,2))', '(int)(13/2)', '7 / 2', '(int) (7 / 2)', 'round(7 / 2)', '(bool) 7'] }),
+    'wb-php-loop': mk(Runner, { ex: RUN.loop }), 'wb-php-arrays': Arrays, 'wb-php-login': Login, 'wb-php-getpost': GetPost,
+    'wb-php-ex': mk(Runner, { ex: RUN.ex })
+  });
+})();

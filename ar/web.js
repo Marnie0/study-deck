@@ -2417,10 +2417,18 @@ AR.web = {
       "الـ Concatenation بالـ <code>+</code>: الـ <bdi dir=\"ltr\">1&nbsp;+&nbsp;1</bdi> بتدي 2، لكن <bdi dir=\"ltr\">\"1\"&nbsp;+&nbsp;1</bdi> بتدي \"11\" (أول ما يبقى فيه string بيلزقهم).",
       "الـ <b><code>split(delim)</code></b> بتكسّر الـ string لـ array (وممكن تستخدم regular expressions)؛ والـ <b><code>join(delim)</code></b> بتلم الـ array في string:<span class=\"ltr\">\"the quick brown fox\".split(\" \") → reverse → join(\"!\") = \"fox!brown!quick!the\"</span>",
       "فيه methods تانية:<span class=\"ltr\">indexOf, lastIndexOf, search, replace, substring, substr, toLowerCase, toUpperCase, trim</span>"
-     ]
+     ],
+     "figH": {
+      "wb-js3-chars": "الـ string حرف حرف: الـ indexes والـ length والـ charAt والـ charCodeAt",
+      "wb-js3-plus": "هل الـ + بتجمع ولا بتلزق؟ ده بيعتمد على نوع الناحيتين",
+      "wb-js3-split": "الـ split والـ reverse والـ join: من string لـ array والعكس"
+     }
     },
     {
-     "h": "البحث في الـ string واستخراج أجزاء منه"
+     "h": "البحث في الـ string واستخراج أجزاء منه",
+     "figH": {
+      "wb-js3-search": "كل method للبحث أو الاستخراج متعلّمة على الـ indexes بتاعة الـ string"
+     }
     },
     {
      "h": "تحويل أنواع الداتا (Data type conversions)",
@@ -2429,7 +2437,12 @@ AR.web = {
       "من Number لـ string: الـ <b><code>String(x)</code></b> (الـ slide كاتبها <code>string(x)</code>، بس الـ JS case sensitive فلازم تبقى String) والـ <b><code>x.toString()</code></b>؛ ولو رقم literal محتاج نقطتين:<pre>999..toString()</pre>",
       "أي type لـ string والعكس: الـ <b><bdi dir=\"ltr\">JSON.stringify(x)</bdi></b> بترجع string (ده اسمه serialization)؛ والـ <b><code>JSON.parse(x)</code></b> بترجّع الـ type الأصلي.",
       "الـ output بتاع الـ Example 1 في L9:<pre>typeof +x       → number\nNumber('23')    → 23 number\nparseInt(7.5)   → 7\nparseFloat(7.5) → 7.5\nisNaN(289)      → false\nString(289)     → \"289\" string\nnum.toString()  → \"289\" string\n999..toString() → \"999\" string\ntypeof obj      → object\ntypeof JSON.stringify(obj)\n  → string\ntypeof JSON.parse(\n  JSON.stringify(obj))\n  → object</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-js3-convert": "جرّب التحويلات بنفسك، وشوف الـ parseInt بتقرا الـ string إزاي وبتقف فين",
+      "wb-js3-json": "الـ JSON.stringify بتحوّل الـ object لـ text، والـ JSON.parse بترجّعه",
+      "wb-js3-example1": "الـ Example 1 في L9 بيشتغل سطر سطر مع الـ console output بتاعه"
+     }
     },
     {
      "h": "الـ Objects",
@@ -2439,10 +2452,20 @@ AR.web = {
       "الـ <b>Object.create</b> بالشكل ده:<span class=\"ltr\">Object.create(proto, descriptors)</span>بتعمل object جديد الـ prototype بتاعه هو proto:<pre>let S2 = Object.create(S1,\n  {class:{value:1}});</pre>(الـ S2 بيورث name وage وgetName؛ والـ property \"class\" اللي جاية من الـ descriptor بتبقى non-enumerable).",
       "الـ <b>Object.assign</b> بالشكل ده:<span class=\"ltr\">Object.assign(target, src1, src2...)</span>بتنسخ القيم والـ properties (الـ own والـ enumerable) من الـ sources للـ target وبترجع الـ target؛ بتستخدم عشان تدمج objects:<pre>Object.assign(S1, S2,\n  {status:'m'})</pre>",
       "الـ Objects بتتقارن <b>بالـ reference</b>: اتنين objects نفس المحتوى مش === لبعض. لو فيه key متكرر في الـ literal بيفضل <b>آخر</b> قيمة. والـ keyword <b>in</b> بتشيك الـ property موجودة ولا لأ:<pre>\"name\" in S1</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-js3-object": "الـ S1 من الـ literal: الوصول بالنقطة وبالأقواس، والـ this، والـ delete",
+      "wb-js3-proto": "الـ Object.create: الـ S2 بيستلف من الـ S1 عن طريق الـ prototype (هل Ali ولا Ahmed؟)",
+      "wb-js3-assign": "الـ Object.assign بتنسخ الـ properties الـ own والـ enumerable للـ target",
+      "wb-js3-ref": "نفس المحتوى بس objects مختلفة، والـ === بتقارن الـ references"
+     }
     },
     {
-     "h": "الـ Math object"
+     "h": "الـ Math object",
+     "figH": {
+      "wb-js3-math": "الـ floor والـ ceil والـ round والـ abs على خط الأعداد، ومعاهم كل الـ Math methods",
+      "wb-js3-random": "الـ expression ده بيطلّع رقم من 1 لـ 10، جرّبه مرة بمرة"
+     }
     },
     {
      "h": "الـ Functions",
@@ -2453,7 +2476,15 @@ AR.web = {
       "الـ <b>Default parameters</b>:<pre>function calc(x = 0, y = 0)</pre>فبتبقى:<span class=\"ltr\">calc() = 0, calc(2, 4) = 6</span>",
       "الـ <b>Rest parameter</b> (تبعت أي عدد arguments ويوصلوا كـ array):<pre>function calc(...A) {\n  let sum = 0;\n  for (let i = 0;\n       i &lt; A.length; i++)\n    sum += A[i];\n  return sum;\n}</pre>خلي بالك: الـ loop اللي في الـ slide كاتب <bdi dir=\"ltr\">i&nbsp;&lt;=&nbsp;A.length</bdi>، وده بيجمع <bdi dir=\"ltr\">A[A.length]&nbsp;=&nbsp;undefined</bdi> فالنتيجة بتطلع <b>NaN</b>.",
       "الـ <b>Closures</b>: الـ function اللي جوه بتفضل شايفة الـ variables بتاعة الـ function اللي برّه."
-     ]
+     ],
+     "figH": {
+      "wb-js3-call": "تتبّع الـ call ده خطوة خطوة: الـ arguments، والـ local variable، والـ return",
+      "wb-js3-builtin": "الـ escape بتحوّل الحروف لـ %xx، والـ eval بتقرا الـ string كأنه code",
+      "wb-js3-forms": "نفس الـ calc مكتوبة declaration و expression و self-invoked و arrow",
+      "wb-js3-default": "الـ default parameters بتكمّل اللي الـ call ماتبعتوش",
+      "wb-js3-rest": "تتبّع الـ loop بتاع الـ rest parameter، وليه الشرط <bdi dir=\"ltr\">i&nbsp;&lt;=&nbsp;A.length</bdi> بيطلّع NaN",
+      "wb-js3-closure": "الـ closure: الـ function اللي جوه بتطبع الـ a اللي برّه (إجابة الـ quiz هي 21)"
+     }
     },
     {
      "h": "الـ Event-driven programming",
@@ -2461,10 +2492,17 @@ AR.web = {
       "أنواع الـ events:<br>الـ <b>User interface events</b>:<span class=\"ltr\">onload, onfocus, onblur, onchange</span>والـ <b>Mouse events</b>:<span class=\"ltr\">click, dblclick, mouseenter, mouseleave, mousemove</span>والـ <b>Keyboard events</b>:<span class=\"ltr\">onkeydown, onkeypress, onkeyup</span>",
       "الـ <b>onload</b> (غالبًا على الـ <code>&lt;body&gt;</code>) بيستنى لحد ما كل عناصر الصفحة تتحمّل وبعدين يشغّل الـ script. الـ <b>onclick</b> بيشتغل مع الـ click؛ والـ <b>ondblclick</b> مع الـ double-click. الـ <b>onkeyup</b> بيشتغل لما الـ user يسيب الزرار (زي إنك تنسخ اللي بيكتبه في paragraph). والـ <b>onunload</b> لما الـ user يسيب الصفحة.",
       "فيه events تانية، منهم الـ <b>onblur</b> (العنصر فقد الـ focus) والـ <b>onchange</b> (العنصر اتغير)، وكمان:<span class=\"ltr\">onabort, ondragdrop, onerror, onfocus, onkeydown, onkeypress, onmousedown, onmousemove, onmouseout, onmouseover, onmouseup, onmove, onreset, onresize, onselect, onsubmit</span>"
-     ]
+     ],
+     "figH": {
+      "wb-js3-evtypes": "شغّل events حقيقية وشوف كل واحد منهم من أنهي نوع",
+      "wb-js3-onload": "الـ onload: محتوى الصفحة بيتحمّل الأول وبعدين الـ script بيشتغل"
+     }
     },
     {
-     "h": "مثال على الـ Events"
+     "h": "مثال على الـ Events",
+     "figH": {
+      "wb-js3-events": "مثال الـ events شغال: double-click و click وكتابة و hover"
+     }
     },
     {
      "h": "الـ localStorage والـ sessionStorage",
@@ -2473,7 +2511,11 @@ AR.web = {
       "الـ Methods:<span class=\"ltr\">setItem(\"name\", value), getItem(\"name\"), removeItem(\"name\"), clear(), key(index)</span>والـ property <b>length</b>. وفيه اختصار:<pre>localStorage.name = value\nvalue = localStorage.name</pre>القيم بتتخزن كـ <b>strings</b> (لو عايز تخزن objects استخدم <bdi dir=\"ltr\">JSON.stringify</bdi>).",
       "في الـ Chrome الداتا بتتحفظ في ملف SQLite جوه الـ user profile، في المسار ده:<span class=\"ltr\">\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Local Storage</span>وتقدر تشوفها من:<span class=\"ltr\">Inspect &gt; Application &gt; Local Storage</span>",
       "الـ Example 3 في L9 (تغيير لون الخلفية) بيحفظ اللون اللي اتداس عليه بـ:<pre>localStorage.setItem('color',\n  color)</pre>خلي بالك من الـ bug اللي في الـ slide: الـ <bdi dir=\"ltr\">localStorage.lenght</bdi> (مكتوبة غلط) قيمتها undefined، فاللون المحفوظ عمره ما بيرجع بعد الـ reload؛ الصح <bdi dir=\"ltr\">localStorage.length</bdi>."
-     ]
+     ],
+     "figH": {
+      "wb-js3-storage": "الـ localStorage والـ sessionStorage جنب بعض: الـ methods، والـ reload، وقفل الـ browser",
+      "wb-js3-color": "الـ Example 3 في L9: ليه اللون المحفوظ مش بيرجع (بسبب lenght)"
+     }
     }
    ],
    "cards": [
@@ -2737,7 +2779,11 @@ AR.web = {
       "الـ Server-side pages هي برامج مكتوبة بلغات أو frameworks للويب:<span class=\"ltr\"><b>PHP, Java/JSP, Ruby on Rails, ASP.NET, Python, Perl</b></span>",
       "<b>الـ Characteristics</b> بتاعة الـ server-side scripting:<br>(1) <b>تعدّل أو تغير أو تضيف</b> أي محتوى للصفحة بشكل dynamic.<br>(2) <b>ترد على استعلامات الـ user</b> أو الداتا اللي جاية من HTML forms.<br>(3) <b>توصل لأي داتا أو databases</b> وترجّع النتايج للـ browser.<br>(4) <b>تعمل customize</b> للصفحة عشان تبقى مفيدة أكتر لكل user.<br>(5) <b>توفر security</b> لأن الـ server code مش ممكن يتشاف من الـ browser.",
       "الـ <b>web server</b> عليه software بيخليه يشغّل الـ server-side programs ويبعت الـ output بتاعها كـ responses. كل لغة ليها مميزات وعيوب؛ والكورس بيستخدم PHP."
-     ]
+     ],
+     "figH": {
+      "wb-php-url": "لما تكتب URL بيحصل إيه: الـ DNS، والـ request، والـ server بيجيب ملف أو بيشغّل برنامج، والـ response",
+      "wb-php-arch": "الـ browsers والـ <bdi dir=\"ltr\">Web/Application</bdi> server والـ database"
+     }
     },
     {
      "h": "يعني إيه PHP؟ وليه PHP؟",
@@ -2745,7 +2791,10 @@ AR.web = {
       "الـ <b>PHP</b> معناها:<span class=\"ltr\"><b>PHP</b> = \"<b>PHP Hypertext Preprocessor</b>\"</span>(اختصار recursive، يعني الاسم جواه نفسه): لغة <b>server-side scripting</b> open-source بتستخدم عشان تخلي الصفحات <b>dynamic</b>: تعرض محتوى مختلف حسب الموقف، تتعامل مع services تانية (<b>الـ database والـ e-mail</b>)، <b>تعمل authenticate للـ users</b>، و<b>تعالج بيانات الـ forms</b>. والـ PHP code ممكن يتحط جوه الـ <bdi dir=\"ltr\">(X)HTML</bdi>.",
       "<b>ليه PHP؟</b><br>أولاً، <b>Free و open source</b>.<br>ثانياً، <b>Compatible</b> (لحد November 2006 أكتر من <b>19 مليون website</b> كانوا بيستخدموا PHP).<br>ثالثاً، <b>Simple</b>.",
       "دورة حياة الـ PHP request: الـ browser بيطلب Hello.php ← الـ server بيشغّل الـ PHP code ← الـ HTML الناتج بس (\"Hello world!\") هو اللي بيوصل لكمبيوتر الـ user."
-     ]
+     ],
+     "figH": {
+      "wb-php-cycle": "دورة حياة الـ PHP request، والـ HTML الناتج بس هو اللي بيوصل للـ browser"
+     }
     },
     {
      "h": "الـ Basic syntax والـ output والـ comments",
@@ -2753,7 +2802,10 @@ AR.web = {
       "الـ code اللي بين <code>&lt;?php</code> و<code>?&gt;</code> بيتنفذ كـ PHP؛ وأي حاجة تانية بتطلع HTML عادي. وتقدر تنقل بين الـ HTML والـ PHP رايح جاي.",
       "الـ Output بيتعمل بالشكلين دول:<pre>print \"text\";\necho \"a\", \"b\";</pre>والـ escape characters نفس الـ Java (<code>\\\"</code> و <code>\\n</code>). والـ strings ممكن تكمل على أكتر من سطر.",
       "الـ Comments (زي الـ Java، بس الـ # مسموحة كمان):<pre># single-line\n// single-line\n/* multi-line */</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-php-modes": "ملف <bdi dir=\"ltr\">.php</bdi> بيتنفذ سطر بسطر، الـ HTML بيتنسخ والـ PHP code بيتنفذ"
+     }
     },
     {
      "h": "الـ Variables والـ types والـ constants",
@@ -2763,7 +2815,12 @@ AR.web = {
       "الـ Basic types هي:<span class=\"ltr\"><b>int, float, boolean, string, array, object, NULL</b></span>تختبرها بالـ functions بتاعة <b>is_type</b> (زي <bdi dir=\"ltr\">is_string, is_int, is_numeric...</bdi>)، والـ <b><bdi dir=\"ltr\">gettype()</bdi></b> بترجع الـ type كـ string، والـ <b><bdi dir=\"ltr\">var_dump()</bdi></b> بتطبع الـ type والقيمة:<pre>var_dump(\"Harry\") → string(5) \"Harry\"\nvar_dump(28)      → int(28)\nvar_dump(null)    → NULL</pre>",
       "التحويل الأوتوماتيك: string لـ int مع الـ <b>+</b>، و int لـ float مع الـ <b>/</b>:<pre>5 + \"7\"     // 12\n7 / 2       // 3.5</pre>والـ Type-cast بـ <code>(int)</code>، زي:<pre>$age = (int) \"21\";\n(int) 3.5   // 3\nround(3.5)  // 4 (float)</pre>",
       "الـ <b>Constants</b> بتتعرّف كده:<pre>define(\"DB_NAME\", \"mySchool\");</pre>وبعدين تستخدم <code>DB_NAME</code> <b>من غير $</b>. لو كتبت <code>$DB_NAME</code> كده انت بتشاور على variable (مش متعرّف)."
-     ]
+     ],
+     "figH": {
+      "wb-php-varname": "الاسم ده ينفع يبقى variable ولا لأ؟ بنشيّك حرف بحرف",
+      "wb-php-dump": "الـ var_dump والتحويل الأوتوماتيك، بيتحسبوا خطوة بخطوة",
+      "wb-php-vars": "تتبّع الـ variables والـ constants، القيم والـ types بعد كل سطر"
+     }
     },
     {
      "h": "الـ Operators والـ strings والـ NULL",
@@ -2777,7 +2834,13 @@ AR.web = {
       "الـ strings اللي بين <b>single quotes مش بتتفسّر</b>:<pre>'You are $age years old.\\n'</pre>بتطبع النص زي ما هو بالحرف، حتى الـ <code>\\n</code>.",
       "استخدم الـ braces عشان تمنع اللبس. ده هيدوّر على <code>$ageth</code> (مش موجود):<pre>\"Today is your $ageth birthday\"</pre>لكن ده هيشتغل:<pre>\"Today is your {$age}th birthday\"</pre>",
       "الـ variable بيبقى <b>NULL</b> لو ماتحطلوش قيمة (undefined)، أو اتحطله <code>NULL</code>، أو اتمسح بـ <b><code>unset()</code></b>. والـ <b><code>isset()</code></b> بتختبر إنه مش NULL. والـ NULL بتتطبع كـ string فاضي."
-     ]
+     ],
+     "figH": {
+      "wb-php-plusdot": "الـ <bdi dir=\"ltr\">+</bdi> بيجمع أرقام، والـ <bdi dir=\"ltr\">.</bdi> بيلزق strings",
+      "wb-php-strindex": "الـ string كخانات مترقمة، الـ <bdi dir=\"ltr\">[index]</bdi> بيبدأ من صفر، والـ <bdi dir=\"ltr\">.</bdi> للّزق",
+      "wb-php-strfn": "الـ string functions على الاسم ده حرف بحرف <bdi dir=\"ltr\">\"Mohammed AbdelFattah\"</bdi>",
+      "wb-php-quotes": "الـ double quotes مقابل الـ single quotes، والـ <bdi dir=\"ltr\">{$age}th</bdi>، وإيه اللي بيتطبع"
+     }
     },
     {
      "h": "الـ Booleans والـ control structures والـ math",
@@ -2786,7 +2849,12 @@ AR.web = {
       "الـ if في PHP شكلها كده:<pre>if (...) {...}\nelseif (...) {...}\nelse {...}</pre>(خلي بالك: <b>elseif</b> كلمة واحدة)؛ والـ <b>for</b> والـ <b>while</b> والـ <b>do...while</b> نفس الـ Java؛ والـ foreach بتلف على الـ arrays:<pre><b>foreach ($arr as $key =&gt; $value)</b></pre>",
       "الـ Math functions:<span class=\"ltr\">abs, ceil, cos, floor, log, log10, max, min, pow, rand, round, sin, sqrt, tan</span>والـ constants:<span class=\"ltr\"><b>M_PI, M_E, M_LN2</b></span>مثال:<span class=\"ltr\">sqrt(pow(3,2) + pow(4,2)) = 5</span>الـ types هي int و float: قسمة اتنين int ممكن تطلع float.",
       "الـ Functions (بالـ keyword \"function\"، ومن غير return type):<pre>function name($param) {\n  ...\n  return $value;\n}</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-php-truthy": "صنّف القيم TRUE ولا FALSE، وشوف الـ echo بيطبع إيه",
+      "wb-php-math": "الـ math functions والـ int والـ float بيتحسبوا خطوة بخطوة",
+      "wb-php-loop": "تتبّع الـ for loop والـ function والـ isset سطر بسطر"
+     }
     },
     {
      "h": "الـ Arrays (الشيت 3 والامتحانات)",
@@ -2794,16 +2862,28 @@ AR.web = {
       "الـ array بتتعمل كده:<pre>$XX = array(\"MM\", \"BB\");</pre>أو:<pre>$XX = [\"MM\", \"BB\"];</pre>والـ <code>count($XX)</code> بيدّي الحجم؛ والـ <code>print_r($XX)</code> بتطبع:<pre>Array ( [0] =&gt; MM [1] =&gt; BB )</pre>",
       "الـ <b><bdi dir=\"ltr\">array_push($a,&nbsp;v)</bdi></b> بتضيف في الآخر؛<br>والـ <b><bdi dir=\"ltr\">array_pop($a)</bdi></b> بتشيل الأخير وترجّعه؛<br>والـ <b><bdi dir=\"ltr\">array_shift($a)</bdi></b> بتشيل الأول وترجّعه (وتعيد ترقيم الـ indexes)؛<br>والـ <b>array_unshift</b> بتضيف في الأول؛<br>والـ <b><bdi dir=\"ltr\">sort($a)</bdi></b> ترتيب تصاعدي (الحروف الـ uppercase بتيجي قبل الـ lowercase)؛<br>والـ array_slice:<pre><b>array_slice($a, offset, length)</b></pre>بترجع عدد <b>length</b> عنصر بادئًا من الـ offset (مش end index).",
       "الـ explode بتقسم:<pre><b>explode(' ', \"10 12 3\")</b>\n// → [\"10\",\"12\",\"3\"]</pre>والـ <b><bdi dir=\"ltr\">implode('&nbsp;',&nbsp;$arr)</bdi></b> بتلم. والـ str_pad:<pre><b>str_pad($s, n, \" \", STR_PAD_LEFT)</b></pre>بتكمّل من الشمال لحد ما العرض يبقى n."
-     ]
+     ],
+     "figH": {
+      "wb-php-arrays": "جرّب الـ array functions بنفسك: push وpop وshift وunshift وsort وslice وexplode"
+     }
     },
     {
-     "h": "الـ Forms مع PHP (مثال الـ login في L10)"
+     "h": "الـ Forms مع PHP (مثال الـ login في L10)",
+     "figH": {
+      "wb-php-login": "ابعت الـ login form وتابع الـ PHP بيمشي في أنهي branch"
+     }
     },
     {
-     "h": "الـ GET مقابل الـ POST"
+     "h": "الـ GET مقابل الـ POST",
+     "figH": {
+      "wb-php-getpost": "نفس داتا الـ form متبعتة بالـ GET وبالـ POST"
+     }
     },
     {
-     "h": "تمارين PHP (L10، متحلولة في الشيت 3)"
+     "h": "تمارين PHP (L10، متحلولة في الشيت 3)",
+     "figH": {
+      "wb-php-ex": "التمارين بتتنفذ خطوة بخطوة: المعادلات، والـ assignment operators، والـ quotes، وشرط الشهر، وجدول الضرب <bdi dir=\"ltr\">7×7</bdi>"
+     }
     }
    ],
    "cards": [
