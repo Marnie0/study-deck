@@ -11,13 +11,20 @@ AR.dm = {
       "تقدر تعرّف الـ set <b>بطريقتين</b>: (1) بالـ <b>listing</b> (roster): تكتب الـ elements بين أقواس <code>{ }</code> وبينهم فواصل، زي:<span class=\"ltr\">{1, 2, 3, 4, 5}</span>(2) باستخدام <b>property</b> بتحدد الـ elements (الـ set-builder)، زي:<span class=\"ltr\">{x | x is odd and 0 &lt; x &lt; 100}</span>",
       "لو x عنصر في A بنكتب <b>x ∈ A</b>؛ ولو x مش عنصر في A بنكتب <b>x ∉ A</b>.",
       "كلمة <b>Well defined</b> يعني دايمًا واضح الحاجة دي تنتمي للـ set ولا لأ. <bdi dir=\"ltr\">\"The set of all even numbers less than 10\"</bdi> دي well defined؛ إنما \"tall students\" و\"good teachers\" و\"beautiful cities\" <b>مش</b> well defined لأنها رأي شخصي <bdi dir=\"ltr\">(Midterm 2025/26 Q7)</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-set-builder": "الـ listing قصاد الـ set-builder: الـ property بتختار الـ elements، وتقدر تجرّب أي x هل هو في A ولا لأ",
+      "dm-well-defined": "يا ترى well defined ولا لأ؟ صنّف أمثلة المحاضرة"
+     }
     },
     {
      "h": "الرموز والـ sets الخاصة"
     },
     {
-     "h": "مثال 1.1 (الـ elements)"
+     "h": "مثال 1.1 (الـ elements)",
+     "figH": {
+      "dm-ex11-elements": "الـ Example 1.1 خطوة بخطوة: كل علاقة ∈ و∉ بنتأكد منها، وليه <bdi dir=\"ltr\">B&nbsp;=&nbsp;C</bdi> وليه D فاضية"
+     }
     },
     {
      "h": "أنواع الـ sets",
@@ -28,7 +35,12 @@ AR.dm = {
       "الـ <b>Finite set</b>: فيها عدد محدد من الـ elements. والـ empty set كمان finite. أمثلة: ألوان قوس قزح، و<bdi dir=\"ltr\">{x&nbsp;:&nbsp;x&nbsp;∈&nbsp;N,&nbsp;x&nbsp;&lt;&nbsp;7}</bdi>، والـ primes لحد 97.",
       "الـ <b>Infinite set</b>: الـ elements مش ممكن تتعد كلها (مالهاش آخر). أمثلة: النقط في الـ plane، و<bdi dir=\"ltr\">{x&nbsp;:&nbsp;x&nbsp;∈&nbsp;N,&nbsp;x&nbsp;&gt;&nbsp;1}</bdi>، وكل الـ prime numbers.",
       "الـ <b>Universal set</b> U (أو ξ): هي set فيها كل الـ elements بتاعة الـ sets التانية اللي معانا. لو:<span class=\"ltr\">A = {1,2,3}, B = {2,3,4}, C = {3,5,7}</span>يبقى:<span class=\"ltr\">U = {1,2,3,4,5,7}</span>ولو P هي الـ whole numbers وQ هي الـ negative numbers، يبقى U هي كل الـ integers."
-     ]
+     ],
+     "figH": {
+      "dm-subset-equal": "الـ subset والـ equal sets: بنتأكد من كل element في الاتجاهين، وبعدين نشوف الـ Venn diagram",
+      "dm-set-types": "يا ترى empty ولا finite ولا infinite؟ صنّف أمثلة المحاضرة",
+      "dm-universal-set": "بناء الـ universal set: كل element من A وB وC بيتكتب مرة واحدة"
+     }
     },
     {
      "h": "الـ Power set",
@@ -39,7 +51,10 @@ AR.dm = {
       "مثال:<span class=\"ltr\">P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}} → 8 elements</span>",
       "<b>القاعدة: لو <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi></b> (كل element يا إما جوه الـ subset يا إما برّه، يعني اختيارين لكل واحد). الـ slide كاتبة:<span class=\"ltr\">n[P(A)] = 4 = 2²</span>",
       "الـ ∅ والـ S نفسها دايمًا members في <bdi dir=\"ltr\">P(S)</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-power-set": "بناء الـ power set element ورا element: كل element بيضاعف عدد الـ subsets، وعشان كده العدد بيطلع أُس للرقم 2"
+     }
     },
     {
      "h": "الفرق بين ∈ و ⊆ (فخ مشهور في الامتحان)",
@@ -49,7 +64,10 @@ AR.dm = {
       "الـ <bdi dir=\"ltr\">{2}</bdi> هي subset من <bdi dir=\"ltr\">{1,2,3}</bdi>؛ إنما الرقم 2 نفسه element، مش subset.",
       "الـ <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;A</bdi> دايمًا صح (أي set هي subset من نفسها). إنما <bdi dir=\"ltr\">A&nbsp;∈&nbsp;A</bdi> غلط للـ sets العادية.",
       "مثال <bdi dir=\"ltr\">(Exam 2021/22)</bdi> فيه:<span class=\"ltr\">A = {0, {0}}, B = {0}</span>الـ <bdi dir=\"ltr\">B&nbsp;∈&nbsp;A</bdi> صح (الـ <bdi dir=\"ltr\">{0}</bdi> مكتوبة كـ element). والـ <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi> صح (لأن <bdi dir=\"ltr\">0&nbsp;∈&nbsp;A</bdi>). إنما دي <b>غلط</b>:<span class=\"ltr\">P(B) = {∅, {0}} ⊆ A</span>لأن ∅ مش element في A."
-     ]
+     ],
+     "figH": {
+      "dm-in-vs-subset": "الـ ∈ ولا الـ ⊆؟ جرّب كل جملة من النوتس، أو اكتب جملتك"
+     }
     },
     {
      "h": "مقدمة للـ operations في Lecture 1",
@@ -60,10 +78,17 @@ AR.dm = {
       "الـ Complement: لو U هي الـ universal set اللي فيها A، يبقى U − A هي الـ complement بتاع A.",
       "الـ Difference:<span class=\"ltr\">A \\ B = {x | x ∈ A, x ∉ B}</span>وبتتقري \"A minus B\" (وبتتكتب كمان <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi> أو <bdi dir=\"ltr\">A&nbsp;~&nbsp;B</bdi>).",
       "مثال: الـ U هي الطلبة، والـ M هي الولاد، والـ F هي البنات: يبقى U هي <b>disjoint union</b> لـ M وF، يعني:<span class=\"ltr\">U = M ∪ F, M ∩ F = ∅</span>"
-     ]
+     ],
+     "figH": {
+      "dm-venn-ops": "رسومات الـ Venn للـ union والـ intersection والـ complement والـ difference والـ disjoint sets",
+      "dm-disjoint-union": "الـ students اتقسموا لـ M وF من غير أي تداخل، يعني disjoint union"
+     }
     },
     {
-     "h": "مثال محلول من المحاضرة"
+     "h": "مثال محلول من المحاضرة",
+     "figH": {
+      "dm-ops-example": "المثال المحلول: كل ناتج للـ union والـ intersection والـ difference بنطلّعه element ورا element"
+     }
     }
    ],
    "cards": [
@@ -272,10 +297,17 @@ AR.dm = {
       "<b>3. الـ Complement</b> (بنكتبه A′ أو Aᶜ أو Ā):<span class=\"ltr\">A′ = {x : x ∈ U but x ∉ A} = U − A</span>فكّر فيها كـ <bdi dir=\"ltr\">\"not A\"</bdi>. في الـ Venn: كل حاجة جوه المستطيل U بس برّه الدايرة A.",
       "<b>4. الـ Cartesian product</b>:<span class=\"ltr\">A × B = {(a, b) | a ∈ A, b ∈ B}</span>يعني كل الـ ordered pairs؛ و:<span class=\"ltr\">|A × B| = |A|·|B|</span>مثلًا:<span class=\"ltr\">|A| = 4, |B| = 3 → |A × B| = 12</span>",
       "الـ <b>Difference</b>:<span class=\"ltr\">B − A = {x | x ∈ B and x ∉ A}</span>يعني الـ elements اللي في B ومش في A (بنضلّل الجزء من B اللي برّه A)."
-     ]
+     ],
+     "figH": {
+      "dm-ops-product": "الـ A × B بيتملا pair ورا pair، ولما يكون <bdi dir=\"ltr\">|A|&nbsp;=&nbsp;4</bdi> و <bdi dir=\"ltr\">|B|&nbsp;=&nbsp;3</bdi> بيطلع 12 ordered pair",
+      "dm-ops-venn": "الـ union والـ intersection والـ complement والـ difference متضلّلين على نفس الـ Venn"
+     }
     },
     {
-     "h": "الـ Ex 1 من المحاضرة (بعد التصحيح)"
+     "h": "الـ Ex 1 من المحاضرة (بعد التصحيح)",
+     "figH": {
+      "dm-ops-ex1": "حل Ex 1 جزء جزء على Venn فيه A وB وC"
+     }
     },
     {
      "h": "أمثلة زيادة",
@@ -284,16 +316,29 @@ AR.dm = {
       "قاعدة: لو <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> يبقى <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;A</bdi> و<bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;B</bdi>.",
       "أمثلة:<span class=\"ltr\">U = {1,2,3,4,5}, A = {1,2} → A′ = {3,4,5}</span><span class=\"ltr\">U = {1,…,6}, A = {2,4,6} → A′ = {1,3,5}</span>",
       "مثال:<span class=\"ltr\">{2,4,6,8} ∩ {4,8,10,12} = {4,8}</span>"
-     ]
+     ],
+     "figH": {
+      "dm-ops-subset": "لما S تبقى جوه T يبقى الـ intersection هو S والـ union هو T، والفرق <bdi dir=\"ltr\">T&nbsp;−&nbsp;S&nbsp;=&nbsp;{2}</bdi>",
+      "dm-ops-compl": "الـ A′ هي اللي فاضل من U برّه A، في المثالين"
+     }
     },
     {
-     "h": "الـ Set identities (القوانين)"
+     "h": "الـ Set identities (القوانين)",
+     "figH": {
+      "dm-identity-laws": "اتأكد من كل law: الطرفين بيتبنوا على Venn وبيضلّلوا نفس الأجزاء"
+     }
     },
     {
-     "h": "عمليات الـ sets شبه الـ logic بالظبط"
+     "h": "عمليات الـ sets شبه الـ logic بالظبط",
+     "figH": {
+      "dm-identity-logic": "كل حتة في الـ Venn هي صف في الـ truth table، فالـ ∪ هو ∨ والـ ∩ هو ∧ والـ complement هو ¬"
+     }
     },
     {
-     "h": "طريقة الامتحان: إزاي تحسب Aᶜ ∩ B وأخواتها"
+     "h": "طريقة الامتحان: إزاي تحسب Aᶜ ∩ B وأخواتها",
+     "figH": {
+      "dm-ops-calc": "اكتب الـ complements الأول، وبعدين امشي element element، من امتحان <bdi dir=\"ltr\">2023/24</bdi>"
+     }
     }
    ],
    "cards": [
@@ -473,13 +518,23 @@ AR.dm = {
       "الـ <b>Negation</b> بتاع p، بنكتبه <b><bdi dir=\"ltr\">¬p</bdi></b> (أو <bdi dir=\"ltr\">~p</bdi>) وبنقراه \"not p\": يعني \"مش صحيح إن p\". والـ truth value بتاعه <b>عكس</b> p.",
       "أمثلة:<span class=\"ltr\">p: Today is Thursday → ¬p: Today is not Thursday</span><span class=\"ltr\">p: At least a foot of snow falls in Boulder on Fridays → ¬p: <b>Less than a foot</b> of snow falls in Boulder on Fridays</span>",
       "خلي بالك: نفي \"at least a foot\" هو \"less than a foot\"، مش \"no snow\"، واليوم بيفضل Fridays زي ما هو."
-     ]
+     ],
+     "figH": {
+      "dm-l3-prop": "الجملة <bdi dir=\"ltr\">2 + 2 = 4</bdi> دي proposition، إنما <bdi dir=\"ltr\">x + 1 = 2</bdi> مش بتبقى proposition غير لما الـ x ياخد قيمة",
+      "dm-l3-neg": "الـ p والـ <bdi dir=\"ltr\">¬p</bdi> دايمًا عكس بعض، وعلشان كده \"less than a foot\" هي النفي و \"no snow\" لأ"
+     }
     },
     {
-     "h": "الـ Connectives"
+     "h": "الـ Connectives",
+     "figH": {
+      "dm-l3-conn-sw": "غيّر الـ p والـ q وشوف الـ connectives الستة"
+     }
     },
     {
-     "h": "الـ Truth tables بتاعة الـ connectives"
+     "h": "الـ Truth tables بتاعة الـ connectives",
+     "figH": {
+      "dm-l3-conn-tt": "الـ truth table بتاع الـ connectives بيتبني عمود عمود، والـ rows المهمة في كل rule متعلّم عليها"
+     }
     },
     {
      "h": "مصطلحات مهمة",
@@ -490,23 +545,39 @@ AR.dm = {
       "الـ truth table اللي فيها n variables فيها <b><bdi dir=\"ltr\">2ⁿ</bdi> rows</b>: لو variable واحد يبقى 2 rows، ولو 2 يبقى 4، ولو 3 يبقى 8 <bdi dir=\"ltr\">(Midterm&nbsp;2025/26&nbsp;Q21)</bdi>.",
       "في <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>، الـ p هو الـ <b><bdi dir=\"ltr\">hypothesis&nbsp;/&nbsp;antecedent</bdi></b> والـ q هو الـ <b><bdi dir=\"ltr\">conclusion&nbsp;/&nbsp;consequent</bdi></b>.",
       "الـ <b>Tautology</b> (صح منطقيًا دايمًا): كل الحالات بتطلع true، زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-l3-rows": "كل variable جديد بيضاعف عدد الـ rows، يعني <bdi dir=\"ltr\">2ⁿ</bdi>",
+      "dm-l3-taut": "الـ <bdi dir=\"ltr\">p ∨ ¬p</bdi> كل حالاتها true يعني tautology (وتقدر تبني أي truth table خانة خانة)"
+     }
     },
     {
-     "h": "مثال: الـ truth table بتاع <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;(P&nbsp;→&nbsp;Q)</bdi>"
+     "h": "مثال: الـ truth table بتاع <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;(P&nbsp;→&nbsp;Q)</bdi>",
+     "figH": {
+      "dm-l3-tt-ex5": "الـ truth table بتاع <bdi dir=\"ltr\">¬P ∧ (P → Q)</bdi> بيتملا خانة خانة"
+     }
     },
     {
-     "h": "مثال: الـ <bdi dir=\"ltr\">(P&nbsp;→&nbsp;Q)&nbsp;∨&nbsp;(Q&nbsp;→&nbsp;P)</bdi> هي tautology"
+     "h": "مثال: الـ <bdi dir=\"ltr\">(P&nbsp;→&nbsp;Q)&nbsp;∨&nbsp;(Q&nbsp;→&nbsp;P)</bdi> هي tautology",
+     "figH": {
+      "dm-l3-tt-ex6": "لما أي implication فيهم تبقى false التانية بتبقى true، فالعمود الأخير كله T"
+     }
     },
     {
-     "h": "مثال: الـ truth table بتاع <bdi dir=\"ltr\">(P&nbsp;→&nbsp;Q)&nbsp;∧&nbsp;(Q&nbsp;→&nbsp;R)</bdi>"
+     "h": "مثال: الـ truth table بتاع <bdi dir=\"ltr\">(P&nbsp;→&nbsp;Q)&nbsp;∧&nbsp;(Q&nbsp;→&nbsp;R)</bdi>",
+     "figH": {
+      "dm-l3-tt-ex7": "تلات variables يعني 8 rows: الـ <bdi dir=\"ltr\">(P → Q) ∧ (Q → R)</bdi> خانة خانة"
+     }
     },
     {
      "h": "نفي جمل \"all\" (الـ quantifiers)",
      "pts": [
       "نفي \"All animals can fly\" هو \"<b>Some animals cannot fly</b>\" (يعني فيه واحد على الأقل مابيطيرش). مش \"All animals cannot fly\".",
       "بشكل عام:<span class=\"ltr\">¬(∀x P(x)) ≡ ∃x ¬P(x)</span><span class=\"ltr\">¬(∃x P(x)) ≡ ∀x ¬P(x)</span>"
-     ]
+     ],
+     "figH": {
+      "dm-l3-quant": "نفي \"All animals can fly\" هو \"Some animals cannot fly\" مش \"All animals cannot fly\""
+     }
     }
    ],
    "cards": [
@@ -707,22 +778,41 @@ AR.dm = {
       "الـ compound propositions اللي ليها نفس الـ truth values في كل الحالات الممكنة اسمها <b>logically equivalent</b>: يعني <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> معناها إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هي tautology.",
       "<b>ملحوظة</b>: الـ ≡ مش logical connective، والـ <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> مش compound proposition؛ هي مجرد عبارة بتقول إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هي tautology. وساعات بيستخدموا الرمز ⇔ بدل ≡.",
       "الـ statements الاتنين بيبقوا equivalent <b>if and only if</b> الأعمدة بتاعتهم في الـ truth table متطابقة."
-     ]
+     ],
+     "figH": {
+      "dm-taut-classify": "الـ tautology ولا الـ contradiction؟ املا الـ truth table row ورا row واقرا آخر عمود",
+      "dm-equiv-compare": "متساويين ولا لأ؟ قارن العمودين row ورا row، والـ <bdi dir=\"ltr\">A&nbsp;≡&nbsp;B</bdi> بس لما الـ <bdi dir=\"ltr\">A&nbsp;↔&nbsp;B</bdi> تبقى كلها T"
+     }
     },
     {
-     "h": "الـ Examples <bdi dir=\"ltr\">1.1.13</bdi> و <bdi dir=\"ltr\">1.1.14</bdi> (الرمز <bdi dir=\"ltr\">t&nbsp;=&nbsp;tautology</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;contradiction</bdi>)"
+     "h": "الـ Examples <bdi dir=\"ltr\">1.1.13</bdi> و <bdi dir=\"ltr\">1.1.14</bdi> (الرمز <bdi dir=\"ltr\">t&nbsp;=&nbsp;tautology</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;contradiction</bdi>)",
+     "figH": {
+      "dm-taut-table113": "جدول الـ Examples <bdi dir=\"ltr\">1.1.13</bdi> و <bdi dir=\"ltr\">1.1.14</bdi> بيتملا عمود عمود"
+     }
     },
     {
-     "h": "الـ Logical Equivalences في <bdi dir=\"ltr\">Theorem&nbsp;1.1.1</bdi> (الرمز <bdi dir=\"ltr\">t&nbsp;=&nbsp;tautology</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;contradiction</bdi>)"
+     "h": "الـ Logical Equivalences في <bdi dir=\"ltr\">Theorem&nbsp;1.1.1</bdi> (الرمز <bdi dir=\"ltr\">t&nbsp;=&nbsp;tautology</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;contradiction</bdi>)",
+     "figH": {
+      "dm-laws-check": "اختار قانون من Theorem <bdi dir=\"ltr\">1.1.1</bdi> واتأكد منه بالـ truth table"
+     }
     },
     {
-     "h": "إثبات قانون De Morgan بالـ truth table <bdi dir=\"ltr\">(Table&nbsp;3)</bdi>"
+     "h": "إثبات قانون De Morgan بالـ truth table <bdi dir=\"ltr\">(Table&nbsp;3)</bdi>",
+     "figH": {
+      "dm-equiv-demorgan": "الـ Table 3 بيتبني عمود عمود، وعمود الـ <bdi dir=\"ltr\">¬(p&nbsp;∨&nbsp;q)</bdi> بيطلع زي عمود الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>"
+     }
     },
     {
-     "h": "إثبات إن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;4)</bdi>"
+     "h": "إثبات إن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;4)</bdi>",
+     "figH": {
+      "dm-equiv-implication": "الـ Table 4 بيتبني عمود عمود، وعمود الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi> بيطلع زي عمود الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>"
+     }
     },
     {
-     "h": "إثبات باستخدام القوانين إن:<span class=\"ltr\">~(~p ∧ q) ∧ (p ∨ q) ≡ p</span>"
+     "h": "إثبات باستخدام القوانين إن:<span class=\"ltr\">~(~p ∧ q) ∧ (p ∨ q) ≡ p</span>",
+     "figH": {
+      "dm-laws-proof": "الإثبات قانون قانون: الجزء اللي بيتبدّل واللي بييجي مكانه في كل خطوة"
+     }
     },
     {
      "h": "الـ truth tables ولا القوانين؟",
@@ -731,10 +821,16 @@ AR.dm = {
       "بس <b>ماتقدرش</b> تستخدمها عشان تثبت إنهم <b>مش</b> equivalent؛ في الحالة دي لازم تطلّع row في الـ truth table بيختلفوا فيه.",
       "مهارة تبسيط الـ statement forms مفيدة في بناء <b>برامج كمبيوتر efficient منطقيًا</b> وفي <b>تصميم الـ digital logic circuits</b>.",
       "مثال جدول: <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~q&nbsp;→&nbsp;~p</bdi>. الـ Hypothesis هو <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~q</bdi>، والـ conclusion هو <bdi dir=\"ltr\">~p</bdi>. الـ Rows:<span class=\"ltr\">TT: T → F = F</span><span class=\"ltr\">TF: T → F = F</span><span class=\"ltr\">FT: F → T = T</span><span class=\"ltr\">FF: T → T = T</span>"
-     ]
+     ],
+     "figH": {
+      "dm-taut-hypconc": "جدول الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~q&nbsp;→&nbsp;~p</bdi> row ورا row، الـ hypothesis والـ conclusion والنتيجة"
+     }
     },
     {
-     "h": "الـ Division into cases (<bdi dir=\"ltr\">Example&nbsp;1.2.2</bdi>) بتقول:<span class=\"ltr\">p ∨ q → r ≡ (p → r) ∧ (q → r)</span>"
+     "h": "الـ Division into cases (<bdi dir=\"ltr\">Example&nbsp;1.2.2</bdi>) بتقول:<span class=\"ltr\">p ∨ q → r ≡ (p → r) ∧ (q → r)</span>",
+     "figH": {
+      "dm-equiv-cases": "الـ Example <bdi dir=\"ltr\">1.2.2</bdi> بيتبني عمود عمود، والـ 2 forms متطابقين في الـ 8 rows"
+     }
     }
    ],
    "cards": [
@@ -973,19 +1069,36 @@ AR.dm = {
       "الاشتقاق من <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;~p&nbsp;∨&nbsp;q</bdi> بيمشي كده:<span class=\"ltr\">~(p → q) ≡ ~(~p ∨ q)</span><span class=\"ltr\">≡ ~(~p) ∧ (~q) [De Morgan]</span><span class=\"ltr\">≡ p ∧ ~q [double negative]</span>",
       "مثال <bdi dir=\"ltr\">Example&nbsp;1.2.4</bdi>:<br>(أ) الجملة: <bdi dir=\"ltr\">\"If my car is in the repair shop, then I cannot get to class.\"</bdi><br>النفي: <bdi dir=\"ltr\">\"My car is in the repair shop <b>and</b> I can get to class.\"</bdi><br>(ب) الجملة: <bdi dir=\"ltr\">\"If Sara lives in Athens, then she lives in Greece.\"</bdi><br>النفي: <bdi dir=\"ltr\">\"Sara lives in Athens and she does not live in Greece.\"</bdi><br>(ممكن تكون عايشة في Athens اللي في Georgia أو Ohio أو Wisconsin.)",
       "غلطة مشهورة: نفي الـ if-then <b>مش</b> if-then تانية؛ ده جملة فيها \"and\"."
-     ]
+     ],
+     "figH": {
+      "dm-l5-neg-table": "الـ truth table بيوضّح إن نفي الـ conditional هو \"p and not q\" في كل الصفوف",
+      "dm-l5-neg-derive": "اشتقاق نفي الـ conditional قانون قانون",
+      "dm-l5-neg-sentence": "نفي جمل الـ if-then: النفي جملة فيها \"and\" مش if-then تانية"
+     }
     },
     {
-     "h": "ترتيب العمليات (order of operations) للـ logical operators"
+     "h": "ترتيب العمليات (order of operations) للـ logical operators",
+     "figH": {
+      "dm-l5-ops-order": "تطبيق الـ order of operations: النفي الأول، وبعده الـ and والـ or، وفي الآخر الـ conditional والـ biconditional"
+     }
     },
     {
-     "h": "الـ Biconditional:<span class=\"ltr\">p ↔ q ≡ (p → q) ∧ (q → p)</span>"
+     "h": "الـ Biconditional:<span class=\"ltr\">p ↔ q ≡ (p → q) ∧ (q → p)</span>",
+     "figH": {
+      "dm-l5-bicond-table": "الـ truth table بتاع الـ biconditional، صف صف"
+     }
     },
     {
-     "h": "جدول <bdi dir=\"ltr\">Table&nbsp;7</bdi>: الـ equivalences اللي فيها conditional statements"
+     "h": "جدول <bdi dir=\"ltr\">Table&nbsp;7</bdi>: الـ equivalences اللي فيها conditional statements",
+     "figH": {
+      "dm-l5-t7-check": "اتأكد من أي equivalence في Table 7 (أو واحدة من عندك) بالـ truth table"
+     }
     },
     {
-     "h": "جدول <bdi dir=\"ltr\">Table&nbsp;8</bdi>: الـ equivalences اللي فيها biconditionals"
+     "h": "جدول <bdi dir=\"ltr\">Table&nbsp;8</bdi>: الـ equivalences اللي فيها biconditionals",
+     "figH": {
+      "dm-l5-t8-check": "اتأكد من أي equivalence في Table 8 (أو واحدة من عندك) بالـ truth table"
+     }
     },
     {
      "h": "الـ Converse والـ contrapositive والـ inverse و\"if and only if\"",
@@ -994,19 +1107,35 @@ AR.dm = {
       "الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi> هو <b><bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi></b> (بس بدّل الـ hypothesis والـ conclusion؛ من امتحان <bdi dir=\"ltr\">2020/21</bdi>، سؤال <bdi dir=\"ltr\">Q8</bdi>).",
       "من تعريف <i>if</i> و<i>only if</i> كل واحدة لوحدها، \"p if, and only if, q\" معناها الاتنين: \"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi> و\"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi>.",
       "الجدول اللي فوق بيوضح إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> و <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)&nbsp;∧&nbsp;(q&nbsp;→&nbsp;p)</bdi> ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (من امتحان <bdi dir=\"ltr\">2024/25&nbsp;Q2b</bdi> وامتحان <bdi dir=\"ltr\">2023/24&nbsp;Q3b</bdi>)."
-     ]
+     ],
+     "figH": {
+      "dm-l5-variants": "الـ converse والـ contrapositive والـ inverse، وأنهي أزواج منهم equivalent",
+      "dm-l5-iff-parts": "جملة \"p if q\" مع \"p only if q\" بيدّوا الـ biconditional"
+     }
     },
     {
-     "h": "الإثبات بسلسلة equivalences:<span class=\"ltr\">¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬q</span>"
+     "h": "الإثبات بسلسلة equivalences:<span class=\"ltr\">¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬q</span>",
+     "figH": {
+      "dm-l5-proof-neg-or": "الإثبات خطوة خطوة، كل قانون ومعاه truth check"
+     }
     },
     {
-     "h": "إثبات: <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;(p&nbsp;∨&nbsp;q)</bdi> هي tautology"
+     "h": "إثبات: <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;(p&nbsp;∨&nbsp;q)</bdi> هي tautology",
+     "figH": {
+      "dm-l5-proof-taut-and-or": "الإثبات خطوة خطوة لحد ما نوصل لـ T"
+     }
     },
     {
-     "h": "إثبات: <bdi dir=\"ltr\">[¬p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)]&nbsp;→&nbsp;q</bdi> هي tautology (بالقوانين)"
+     "h": "إثبات: <bdi dir=\"ltr\">[¬p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)]&nbsp;→&nbsp;q</bdi> هي tautology (بالقوانين)",
+     "figH": {
+      "dm-l5-proof-taut-ds": "الإثبات خطوة خطوة لحد ما نوصل لـ T"
+     }
     },
     {
-     "h": "تمارين من الـ slides (كلها tautologies)"
+     "h": "تمارين من الـ slides (كلها tautologies)",
+     "figH": {
+      "dm-l5-taut-ex": "كل تمرين بنتأكد منه بالـ truth table صف صف"
+     }
     }
    ],
    "cards": [
@@ -1216,10 +1345,16 @@ AR.dm = {
       "في حالة عدد الـ heads في 3 رميات، الـ range بتاع X هو <bdi dir=\"ltr\">{0,&nbsp;1,&nbsp;2,&nbsp;3}</bdi>.",
       "الـ <b>Discrete sample space</b>: فيها عدد محدود (finite) من الاحتمالات، أو سلسلة مالهاش آخر بس عدد عناصرها زي عدد الـ whole numbers (يعني تتعد).",
       "الـ <b>Continuous sample space</b>: فيها عدد لانهائي من الاحتمالات زي عدد النقط اللي على line segment (مش بتتعد)."
-     ]
+     ],
+     "figH": {
+      "dm-rv-map": "الـ X كأسهم: كل outcome من الـ 3 رميات بيروح لرقم حقيقي واحد على محور الـ R"
+     }
     },
     {
-     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;1</bdi>: الـ X هو عدد الـ heads ناقص عدد الـ tails (3 رميات)"
+     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;1</bdi>: الـ X هو عدد الـ heads ناقص عدد الـ tails (3 رميات)",
+     "figH": {
+      "dm-rv-diff-table": "الجدول بيتملا صف صف، وبعدين بنجمّع القيم في الـ range"
+     }
     },
     {
      "h": "مثال <bdi dir=\"ltr\">Example&nbsp;2</bdi>: مجموع رقمين الزهر",
@@ -1228,7 +1363,10 @@ AR.dm = {
       "المجاميع والـ pairs:<span class=\"ltr\">2: (1,1)</span><span class=\"ltr\">3: (1,2),(2,1)</span><span class=\"ltr\">4: (3,1),(2,2),(1,3)</span><span class=\"ltr\">5: 4 pairs. 6: 5 pairs.</span><span class=\"ltr\">7: (4,3),(3,4),(2,5),(1,6),(6,1),(5,2)</span>يعني المجموع 7 ليه 6 pairs.<span class=\"ltr\">8: 5 pairs. 9: 4 pairs. 10: 3 pairs.</span><span class=\"ltr\">11: 2 pairs. 12: (6,6)</span>",
       "الـ Range:<span class=\"ltr\">X = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}</span>والخطوط المايلة في الجدول (\"lateral shape\") بتطلّع نفس النتيجة.",
       "يبقى:<span class=\"ltr\">P(X = 7) = 6/36 = 1/6</span><span class=\"ltr\">P(X = 2) = 1/36</span>"
-     ]
+     ],
+     "figH": {
+      "dm-dist-dice-sum": "الـ 36 outcome في شبكة: كل خط مايل بيجمّع مجموع واحد"
+     }
     },
     {
      "h": "الـ Probability distribution function",
@@ -1236,19 +1374,34 @@ AR.dm = {
       "لو X هو discrete random variable والـ range بتاعه <bdi dir=\"ltr\">{x₁,&nbsp;x₂,&nbsp;…,&nbsp;xᵣ}</bdi>، يبقى الـ function f اللي متعرّفة بـ:<span class=\"ltr\"><b>f(xᵣ) = P(X = xᵣ)</b></span>لكل <bdi dir=\"ltr\">r&nbsp;=&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;…</bdi> هي الـ <b>probability distribution function</b> بتاعة X.",
       "بنكتبها كـ set من الـ ordered pairs:<span class=\"ltr\">X = {(x₁, f(x₁)), (x₂, f(x₂)), …, (xₙ, f(xₙ))}</span>أو كجدول فيه صف للـ <bdi dir=\"ltr\">xᵣ</bdi> وصف للـ <bdi dir=\"ltr\">f(xᵣ)</bdi>.",
       "الـ set بتاعة الـ ordered pairs <bdi dir=\"ltr\">(x,&nbsp;f(x))</bdi> تبقى <b>probability function أو probability mass function أو probability distribution</b> لـ X لو لكل outcome ممكن x:<span class=\"ltr\"><b>1.</b> f(x) ≥ 0</span><span class=\"ltr\"><b>2.</b> Σ f(x) = 1</span><span class=\"ltr\"><b>3.</b> P(X = x) = f(x)</span>"
-     ]
+     ],
+     "figH": {
+      "dm-dist-pmf-check": "الجدول والـ ordered pairs والشروط التلاتة، بنتأكد منهم على توزيعات المحاضرة أو على توزيع تكتبه انت"
+     }
     },
     {
-     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;3</bdi>: عدد الـ heads (العملة اترمت مرتين)"
+     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;3</bdi>: عدد الـ heads (العملة اترمت مرتين)",
+     "figH": {
+      "dm-dist-two-coins": "من الأسهم اللي من S لـ R لحد قيم الـ <bdi dir=\"ltr\">f(x)</bdi> والـ distribution table"
+     }
     },
     {
-     "h": "حاول تحل: heads − tails لرميتين"
+     "h": "حاول تحل: heads − tails لرميتين",
+     "figH": {
+      "dm-dist-two-coins-diff": "نفس الأسهم بس للـ heads ناقص الـ tails، والقيم بتبقى <bdi dir=\"ltr\">−2, 0, 2</bdi>"
+     }
     },
     {
-     "h": "مثال: أصغر رقم على كارتين متسحبين من غير إرجاع"
+     "h": "مثال: أصغر رقم على كارتين متسحبين من غير إرجاع",
+     "figH": {
+      "dm-dist-least-card": "الـ 20 سحبة الممكنة: كل خط على شكل L بيجمّع أصغر رقم واحد"
+     }
     },
     {
-     "h": "حاول تحل: أكبر رقم على زهرتين"
+     "h": "حاول تحل: أكبر رقم على زهرتين",
+     "figH": {
+      "dm-dist-dice-max": "كل L بيعدّي على النقطة <bdi dir=\"ltr\">(k,&nbsp;k)</bdi> فيه <bdi dir=\"ltr\">2k&nbsp;−&nbsp;1</bdi> outcome أكبر رقم فيهم k"
+     }
     }
    ],
    "cards": [
@@ -1389,7 +1542,13 @@ AR.dm = {
       "لو X هو discrete والـ distribution بتاعه f والـ range بتاعه <bdi dir=\"ltr\">{x₁,&nbsp;…,&nbsp;xₙ}</bdi> باحتمالات <bdi dir=\"ltr\">f(x₁),&nbsp;…,&nbsp;f(xₙ)</bdi>، يبقى:<span class=\"ltr\"><b>μ = E(X) = Σ xᵣ · f(xᵣ)</b></span><span class=\"ltr\">= x₁·f(x₁) + x₂·f(x₂) + … + xₙ·f(xₙ)</span>يعني كل قيمة في الاحتمال بتاعها وتجمع.",
       "لو X هو continuous، على <bdi dir=\"ltr\">(−∞,&nbsp;∞)</bdi>، يبقى:<span class=\"ltr\"><b>μ = E(X) = ∫ x f(x) dx</b></span>",
       "الـ <b>Theorem</b>: الـ expected value بتاعة <bdi dir=\"ltr\">g(X)</bdi> هي:<span class=\"ltr\">E[g(X)] = Σ g(x) f(x)  (discrete)</span>أو:<span class=\"ltr\">E[g(X)] = ∫ g(x) f(x) dx  (continuous)</span>ولو <bdi dir=\"ltr\">g(x)&nbsp;=&nbsp;x²</bdi> يطلعلك <bdi dir=\"ltr\">E(X²)</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-mean-balance": "الـ mean هو النقطة اللي التوزيع بيتوازن عليها: حرّك المحور لحد الـ μ",
+      "dm-mean-table": "حساب الـ <bdi dir=\"ltr\">E(X)</bdi> قيمة قيمة لكل مثال في الـ notes، أو للجدول بتاعك",
+      "dm-mean-strips": "من الـ Σ للـ ∫: كل ما الشرايح تحت الـ <bdi dir=\"ltr\">f(x)</bdi> تضيق، المجموع بيبقى integral",
+      "dm-mean-gx": "الـ <bdi dir=\"ltr\">E[g(X)]</bdi> بنفس الاحتمالات وقيم جديدة، ومع <bdi dir=\"ltr\">g(x) = x²</bdi> بيطلع <bdi dir=\"ltr\">E(X²)</bdi>"
+     }
     },
     {
      "h": "الـ Variance والـ standard deviation",
@@ -1397,25 +1556,47 @@ AR.dm = {
       "الـ <b>Variance</b>:<span class=\"ltr\">σ² = E[(X − μ)²] = Σ (x − μ)² f(x)  (discrete)</span>أو:<span class=\"ltr\">σ² = ∫ (x − μ)² f(x) dx  (continuous)</span>",
       "<b>الطريقة المختصرة</b>:<span class=\"ltr\"><b>σ² = E(X²) − μ²</b></span>ودي اللي هتستخدمها في الامتحان غالبًا.",
       "الجذر التربيعي الموجب للـ variance، يعني <b>σ</b>، هو الـ <b>standard deviation</b> بتاع X."
-     ]
+     ],
+     "figH": {
+      "dm-var-squares": "الـ variance هو مربعات المسافات عن الـ μ، كل واحد مضروب في الاحتمال بتاعه",
+      "dm-var-shortcut": "حساب الـ <bdi dir=\"ltr\">σ²</bdi> بالطريقة المختصرة، ومراجعته بالتعريف، وبعدين الـ σ"
+     }
     },
     {
-     "h": "مثال 1: عملة fair اترمت مرتين (عدد الـ heads)"
+     "h": "مثال 1: عملة fair اترمت مرتين (عدد الـ heads)",
+     "figH": {
+      "dm-mean-coins": "من الأربع نتايج لحد <bdi dir=\"ltr\">μ = 1</bdi>، وبعدين ارمي العملتين بنفسك"
+     }
     },
     {
-     "h": "مثال 2: هات a، وبعدين الـ expectation"
+     "h": "مثال 2: هات a، وبعدين الـ expectation",
+     "figH": {
+      "dm-mean-find-a": "الـ Example 2 خطوة خطوة: الـ a من مجموع الاحتمالات، وبعدين الـ μ والـ <bdi dir=\"ltr\">E(X²)</bdi> والـ <bdi dir=\"ltr\">σ²</bdi>"
+     }
     },
     {
-     "h": "حاول تحل (وجه كمان في <bdi dir=\"ltr\">Exam&nbsp;2023/24&nbsp;Q2b</bdi>)"
+     "h": "حاول تحل (وجه كمان في <bdi dir=\"ltr\">Exam&nbsp;2023/24&nbsp;Q2b</bdi>)",
+     "figH": {
+      "dm-var-try": "سؤال الامتحان محلول خطوة خطوة:<span class=\"ltr\">a = 0.6 , μ = 2.8 , σ² = 1.16</span>"
+     }
     },
     {
-     "h": "مثال 3: الـ expectation لـ continuous variable (عمر جهاز)"
+     "h": "مثال 3: الـ expectation لـ continuous variable (عمر جهاز)",
+     "figH": {
+      "dm-mean-device": "الـ integral خطوة خطوة: المساحة تحت المنحنى بتكبر لحد <bdi dir=\"ltr\">μ = 200</bdi> ساعة"
+     }
     },
     {
-     "h": "مثال 4: الـ variance لعدد القطع البايظة (defective parts)"
+     "h": "مثال 4: الـ variance لعدد القطع البايظة (defective parts)",
+     "figH": {
+      "dm-var-defects": "الـ Example 4 خطوة خطوة:<span class=\"ltr\">μ = 0.61 , E(X²) = 0.87 , σ² = 0.4979</span>"
+     }
     },
     {
-     "h": "مثال 5: الـ mean والـ variance لـ continuous variable (الطلب على المية)"
+     "h": "مثال 5: الـ mean والـ variance لـ continuous variable (الطلب على المية)",
+     "figH": {
+      "dm-var-water": "الـ density اللي على شكل مثلث: الـ mean والـ <bdi dir=\"ltr\">E(X²)</bdi> والـ variance والمنطقة <bdi dir=\"ltr\">μ ± σ</bdi>"
+     }
     }
    ],
    "cards": [
@@ -2336,19 +2517,34 @@ AR.dm = {
       "<b>2. الـ Inductive hypothesis</b>: <b>افترض إن <bdi dir=\"ltr\">P(k)</bdi> صح</b> لأي <bdi dir=\"ltr\">k&nbsp;≥&nbsp;n₀</bdi> (افترضها صح عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi>).",
       "<b>3. الـ Inductive step</b>: باستخدام الفرض ده، <b>اثبت <bdi dir=\"ltr\">P(k&nbsp;+&nbsp;1)</bdi></b> (اثبتها عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>).",
       "النتيجة: <bdi dir=\"ltr\">P(n)</bdi> صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;n₀</bdi> (زي قطع الدومينو لما توقع ورا بعض)."
-     ]
+     ],
+     "figH": {
+      "dm-induction-domino": "الـ induction زي الدومينو: الـ basis بيوقّع أول واحدة، والـ inductive step بيخلي كل واحدة توقّع اللي بعدها"
+     }
     },
     {
-     "h": "إثبات:<span class=\"ltr\">1 + 2 + 3 + … + n = n(n + 1)/2</span>"
+     "h": "إثبات:<span class=\"ltr\">1 + 2 + 3 + … + n = n(n + 1)/2</span>",
+     "figH": {
+      "dm-induction-sum-n": "الإثبات سطر سطر والحدود مرسومة أعمدة: الـ inductive step بيزوّد عمود جديد هو <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)</bdi>"
+     }
     },
     {
-     "h": "إثبات:<span class=\"ltr\">2 + 4 + … + 2n = n(n + 1)</span>"
+     "h": "إثبات:<span class=\"ltr\">2 + 4 + … + 2n = n(n + 1)</span>",
+     "figH": {
+      "dm-induction-sum-even": "الإثبات سطر سطر، وبعدين جرّبه على أي n: الـ <bdi dir=\"ltr\">k(k&nbsp;+&nbsp;1)</bdi> زائد العمود الجديد <bdi dir=\"ltr\">2(k&nbsp;+&nbsp;1)</bdi>"
+     }
     },
     {
-     "h": "إثبات:<span class=\"ltr\">1 + 4 + 7 + … + (3n − 2) = n(3n − 1)/2</span>"
+     "h": "إثبات:<span class=\"ltr\">1 + 4 + 7 + … + (3n − 2) = n(3n − 1)/2</span>",
+     "figH": {
+      "dm-induction-sum-3n": "الإثبات سطر سطر: هات الحد اللي بعده <bdi dir=\"ltr\">3k&nbsp;+&nbsp;1</bdi> وزوّده وحلّل وقارن"
+     }
     },
     {
-     "h": "إثبات <bdi dir=\"ltr\">2ⁿ&nbsp;&gt;&nbsp;n</bdi> لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>"
+     "h": "إثبات <bdi dir=\"ltr\">2ⁿ&nbsp;&gt;&nbsp;n</bdi> لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>",
+     "figH": {
+      "dm-induction-pow2": "المضاعفة بتخلي الـ <bdi dir=\"ltr\">2ⁿ</bdi> سابقة دايمًا، والسلسلة دي مرسومة أعمدة:<span class=\"ltr\">2ᵏ⁺¹ = 2 · 2ᵏ &gt; 2k ≥ k + 1</span>"
+     }
     },
     {
      "h": "الـ Binary relations",
@@ -2359,10 +2555,17 @@ AR.dm = {
       "الـ relation <b>on a set A</b> هي relation من A لـ A (يعني subset من A × A).",
       "الـ <b>identity relation</b> <bdi dir=\"ltr\">I_A</bdi> على A هي الـ set:<span class=\"ltr\"><b>{(a, a) | a ∈ A}</b></span>",
       "مثال:<span class=\"ltr\">A = {1, 2}, B = {x, y}</span><span class=\"ltr\">A × B = {(1,x), (1,y), (2,x), (2,y)}</span>والـ <bdi dir=\"ltr\">R&nbsp;=&nbsp;{(1,x),&nbsp;(2,y)}</bdi> هي relation من A لـ B؛ و:<span class=\"ltr\">I_A = {(1,1), (2,2)}</span>"
-     ]
+     ],
+     "figH": {
+      "dm-relation-product": "الـ <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> بيتبني pair ورا pair: عدد الـ rows في عدد الـ columns يدّي <bdi dir=\"ltr\">|A|·|B|</bdi> pairs",
+      "dm-relation-arrows": "مثال الـ notes بالأسهم: الـ R من A لـ B، والـ <bdi dir=\"ltr\">I_A</bdi> هي قطر الـ <bdi dir=\"ltr\">A&nbsp;×&nbsp;A</bdi>"
+     }
     },
     {
-     "h": "خصائص الـ relations على A (التعريفات القياسية)"
+     "h": "خصائص الـ relations على A (التعريفات القياسية)",
+     "figH": {
+      "dm-relation-props": "ابني relation على A وشوف أنهي خصائص متحققة، والـ pair اللي بيبوّظ كل خاصية"
+     }
     }
    ],
    "cards": [

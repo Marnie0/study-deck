@@ -20,7 +20,19 @@ COURSES.ds = {
       "Examples: <b>boolean</b>: domain 0,1, operations and, or, =. <b>char</b>: domain ASCII, operations =, &lt;&gt;, &lt;. <b>integer</b>: domain -maxint to +maxint, operations +, -, =, ==, &lt;&gt;, &lt;.",
       "<b>Data structure</b>: a particular way of <b>storing and organizing data</b> in a computer so that it can be used <b>efficiently and effectively</b>. It is the <b>logical or mathematical model</b> of a particular organization of data, a group of data elements grouped together under one name (e.g. an array). Data structures make code cleaner and easier to understand.",
       "<b>The need for data structures</b>: Goal: to organize data. Criteria: to facilitate efficient <b>storage</b>, <b>retrieval</b> and <b>manipulation</b> of data. Design issue: select and design appropriate data types (the main motivation to learn data structures)."
-     ]
+     ],
+     "fig": [
+      "ds-data-flow",
+      "ds-data-type"
+     ],
+     "figAt": {
+      "ds-data-flow": 1,
+      "ds-data-type": 3
+     },
+     "figH": {
+      "ds-data-flow": "Data in, information out: read, store, process, output",
+      "ds-data-type": "A data type is a domain plus operations: try a wrong one"
+     }
     },
     {
      "h": "Classification of data structures (lecture + Lab 1)",
@@ -50,7 +62,13 @@ COURSES.ds = {
        "Elements are not in a single sequence (hierarchy / network)",
        "Trees, Graphs"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-classify"
+     ],
+     "figH": {
+      "ds-classify": "The classification tree of slide 10, built up"
+     }
     },
     {
      "h": "Operations and Abstract Data Types (ADT)",
@@ -61,7 +79,19 @@ COURSES.ds = {
       "<b>ADT</b>: an <b>abstraction of a data structure</b> which provides <b>only the interface</b> to which a data structure must adhere. The interface gives no details about how it is implemented or in which programming language (it lets us think abstractly about the data).",
       "ADTs are <b>purely theoretical entities</b>: used to simplify the description of abstract algorithms and to classify and evaluate data structures. An ADT is a collection of data and a set of operations on this data.",
       "ADT → implementation examples: <b>List</b> → dynamic array, linked list. <b>Queue</b> → linked-list based queue, array based queue. <b>Map</b> → tree map, hash map / hash table. Analogy: <b>Vehicle</b> (ADT) → golf car, bicycle, smart car (implementations)."
-     ]
+     ],
+     "fig": [
+      "ds-ops",
+      "ds-adt"
+     ],
+     "figAt": {
+      "ds-ops": 2,
+      "ds-adt": 5
+     },
+     "figH": {
+      "ds-ops": "The six operations on the list 5 2 4 8 1",
+      "ds-adt": "One ADT, several implementations"
+     }
     },
     {
      "h": "Arrays (lecture + Lab 1)",
@@ -87,7 +117,25 @@ COURSES.ds = {
       "C++ passes <b>whole arrays by reference</b> to functions, but <b>individual elements are passed by value</b> like simple variables.",
       "Size in memory = number of elements × size of type, e.g. <code>int arr[15]</code> with 4-byte int = <b>60 bytes</b>.",
       "Advantage: easy to store elements of the same type, direct access by index. <b>Disadvantage: fixed size</b> (declared at design time, cannot grow)."
-     ]
+     ],
+     "fig": [
+      "ds-array-loc",
+      "ds-array-init",
+      "ds-array-pass",
+      "ds-array-size"
+     ],
+     "figAt": {
+      "ds-array-loc": 1,
+      "ds-array-init": 3,
+      "ds-array-pass": 4,
+      "ds-array-size": 5
+     },
+     "figH": {
+      "ds-array-loc": "Array-based representation: location(i) = i - 1",
+      "ds-array-init": "Four ways to put data in an array",
+      "ds-array-pass": "Whole array by reference, one element by value",
+      "ds-array-size": "Consecutive cells: size = elements × size of type"
+     }
     },
     {
      "h": "Array insert and delete (professor's code)",
@@ -110,7 +158,15 @@ COURSES.ds = {
     },
     {
      "h": "Array operations: sum, average, sort",
-     "code": "// Sum  (output is 12206)\nint billy[] = {16, 2, 77, 40, 12071};\nint n, result = 0;\nint main() {\n   for (n = 0; n < 5; n++) result += billy[n];\n   cout << result;\n   return 0;\n}\n\n// Average (prints average = 10)\nconst int size = 3;\nint nums[size] = {5, 10, 15};\ndouble average = 0;\nfor (int i = 0; i < size; ++i) average += nums[i];\ncout << \"average = \" << average / size;\n\n// Sort (descending, because of billy[n] < billy[m])\nint billy[5] = {16, 2, 77, 40, 12};\nfor (n = 0; n < 4; n++)\n   for (m = n+1; m < 5; m++)\n      if (billy[n] < billy[m])\n      { temp = billy[n]; billy[n] = billy[m]; billy[m] = temp; }\nfor (m = 0; m < 5; m++) cout << billy[m] << \"\\n\";   // 77 40 16 12 2"
+     "code": "// Sum  (output is 12206)\nint billy[] = {16, 2, 77, 40, 12071};\nint n, result = 0;\nint main() {\n   for (n = 0; n < 5; n++) result += billy[n];\n   cout << result;\n   return 0;\n}\n\n// Average (prints average = 10)\nconst int size = 3;\nint nums[size] = {5, 10, 15};\ndouble average = 0;\nfor (int i = 0; i < size; ++i) average += nums[i];\ncout << \"average = \" << average / size;\n\n// Sort (descending, because of billy[n] < billy[m])\nint billy[5] = {16, 2, 77, 40, 12};\nfor (n = 0; n < 4; n++)\n   for (m = n+1; m < 5; m++)\n      if (billy[n] < billy[m])\n      { temp = billy[n]; billy[n] = billy[m]; billy[m] = temp; }\nfor (m = 0; m < 5; m++) cout << billy[m] << \"\\n\";   // 77 40 16 12 2",
+     "fig": [
+      "ds-sum-avg",
+      "ds-sort-trace"
+     ],
+     "figH": {
+      "ds-sum-avg": "Sum and average traced loop by loop",
+      "ds-sort-trace": "The descending sort traced comparison by comparison"
+     }
     },
     {
      "h": "2D arrays and matrices",
@@ -121,11 +177,38 @@ COURSES.ds = {
       "<b>Transpose</b>: an m×n matrix becomes n×m with M<sup>T</sup>(j,i) = M(i,j).",
       "<b>Addition</b>: only for matrices of the <b>same dimensions</b>: C(i,j) = A(i,j) + B(i,j).",
       "<b>Multiplication</b>: only defined when <b>columns of A = rows of B</b>. A (m×n) × B (n×q) = C (m×q) with C(i,j) = Σ<sub>k=1..n</sub> A(i,k)·B(k,j)."
-     ]
+     ],
+     "fig": [
+      "ds-2d-grid",
+      "ds-row-major",
+      "ds-transpose",
+      "ds-mat-add",
+      "ds-mat-dims"
+     ],
+     "figAt": {
+      "ds-2d-grid": 0,
+      "ds-row-major": 2,
+      "ds-transpose": 3,
+      "ds-mat-add": 4,
+      "ds-mat-dims": 5
+     },
+     "figH": {
+      "ds-2d-grid": "int a[3][4] as a table: rows and columns",
+      "ds-row-major": "Locating x[i][j] in row-major order: i·c + j",
+      "ds-transpose": "Transpose, element by element",
+      "ds-mat-add": "Matrix addition, cell by cell",
+      "ds-mat-dims": "When is A×B defined, and what size is it?"
+     }
     },
     {
      "h": "Matrix multiplication (professor's code, core)",
-     "code": "int a[10][10], b[10][10], mult[10][10], r1, c1, r2, c2, i, j, k;\ndo {\n   cout << \"column of first matrix must equal rows of second.\";\n   cin >> r1 >> c1;          // rows, columns of first\n   cin >> r2 >> c2;          // rows, columns of second\n} while (c1 != r2);\n// ... read a and b ...\nfor (i = 0; i < r1; ++i)\n   for (j = 0; j < c2; ++j) {\n      mult[i][j] = 0;\n      for (k = 0; k < c1; ++k)\n         mult[i][j] += a[i][k] * b[k][j];\n   }\n\n// Matrix summation (global result c)\nvoid Sum(int a[][cols], int b[][cols])\n{ for (int i = 0; i < rows; i++)\n     for (int j = 0; j < cols; j++)\n        c[i][j] = a[i][j] + b[i][j]; }"
+     "code": "int a[10][10], b[10][10], mult[10][10], r1, c1, r2, c2, i, j, k;\ndo {\n   cout << \"column of first matrix must equal rows of second.\";\n   cin >> r1 >> c1;          // rows, columns of first\n   cin >> r2 >> c2;          // rows, columns of second\n} while (c1 != r2);\n// ... read a and b ...\nfor (i = 0; i < r1; ++i)\n   for (j = 0; j < c2; ++j) {\n      mult[i][j] = 0;\n      for (k = 0; k < c1; ++k)\n         mult[i][j] += a[i][k] * b[k][j];\n   }\n\n// Matrix summation (global result c)\nvoid Sum(int a[][cols], int b[][cols])\n{ for (int i = 0; i < rows; i++)\n     for (int j = 0; j < cols; j++)\n        c[i][j] = a[i][j] + b[i][j]; }",
+     "fig": [
+      "ds-mat-mult"
+     ],
+     "figH": {
+      "ds-mat-mult": "The multiplication code traced: i, j, k"
+     }
     },
     {
      "h": "Structs",
@@ -136,11 +219,35 @@ COURSES.ds = {
       "<b>Array of structs</b>: <code>struct StudentRec { string name; int mark; } Student[2];</code> then <code>Student[i].name</code>, <code>Student[i].mark</code>.",
       "<b>Passing a struct to a function</b>: <code>void printInfo(Employee emp) { cout&lt;&lt;emp.id; cout&lt;&lt;emp.salary; }</code> called as <code>Employee e1 = {1, 1000}; printInfo(e1);</code> (passed by value, a copy).",
       "This is a favourite final-exam question: \"Using an <b>array of struct</b> write a program to take a table from the user and calculate totals/averages\" (see the past papers)."
-     ]
+     ],
+     "fig": [
+      "ds-struct-vs-array",
+      "ds-struct-objects",
+      "ds-struct-array",
+      "ds-struct-pass"
+     ],
+     "figAt": {
+      "ds-struct-vs-array": 1,
+      "ds-struct-objects": 2,
+      "ds-struct-array": 3,
+      "ds-struct-pass": 4
+     },
+     "figH": {
+      "ds-struct-vs-array": "Array vs struct: same type vs different types and lengths",
+      "ds-struct-objects": "Two ways to declare the objects, members with the dot",
+      "ds-struct-array": "Arrays of structs filled member by member",
+      "ds-struct-pass": "Passing a struct: the function gets a copy"
+     }
     },
     {
      "h": "Array of struct example (exam pattern)",
-     "code": "#include <iostream>\n#include <string>\nusing namespace std;\nstruct Employee {\n    string name;\n    float salary, bonus, deduction, total;\n};\nint main()\n{\n    const int N = 4;\n    Employee e[N];\n    for (int i = 0; i < N; i++)\n    {\n        cout << \"Enter name, salary, bonus, deduction: \";\n        cin >> e[i].name >> e[i].salary >> e[i].bonus >> e[i].deduction;\n        e[i].total = e[i].salary + e[i].bonus - e[i].deduction;\n    }\n    for (int i = 0; i < N; i++)\n        cout << e[i].name << \" total salary = \" << e[i].total << endl;\n    return 0;\n}\n// Note: the lectures use Visual Studio style (#include \"stdafx.h\", void main()).\n// With g++ use int main() and drop stdafx.h."
+     "code": "#include <iostream>\n#include <string>\nusing namespace std;\nstruct Employee {\n    string name;\n    float salary, bonus, deduction, total;\n};\nint main()\n{\n    const int N = 4;\n    Employee e[N];\n    for (int i = 0; i < N; i++)\n    {\n        cout << \"Enter name, salary, bonus, deduction: \";\n        cin >> e[i].name >> e[i].salary >> e[i].bonus >> e[i].deduction;\n        e[i].total = e[i].salary + e[i].bonus - e[i].deduction;\n    }\n    for (int i = 0; i < N; i++)\n        cout << e[i].name << \" total salary = \" << e[i].total << endl;\n    return 0;\n}\n// Note: the lectures use Visual Studio style (#include \"stdafx.h\", void main()).\n// With g++ use int main() and drop stdafx.h.",
+     "fig": [
+      "ds-emp-table"
+     ],
+     "figH": {
+      "ds-emp-table": "Run the exam program: totals for 4 employees"
+     }
     }
    ],
    "cards": [
@@ -523,7 +630,22 @@ COURSES.ds = {
       "Technique: the stack <b>base remains fixed</b>; adding an element <b>increments</b> top, removing the top element <b>decrements</b> top.",
       "Real-life examples: <b>books and clothes</b> piled on each other; <b>mobile call logs</b>; <b>browsers</b> (back button returns to the previous site); <b>text editors</b> (undo/redo).",
       "Applications (Lab 3): <b>backtracking</b> (maze path), <b>function calls</b> (keeping information about active functions), <b>string reversal</b> (push each character, then pop)."
-     ]
+     ],
+     "fig": [
+      "ds-stack-slide-pics",
+      "ds-stack-real-life",
+      "ds-stack-reverse"
+     ],
+     "figAt": {
+      "ds-stack-slide-pics": 2,
+      "ds-stack-real-life": 3,
+      "ds-stack-reverse": 4
+     },
+     "figH": {
+      "ds-stack-slide-pics": "Slides 4–5: adding 10 and 20, then removing them",
+      "ds-stack-real-life": "Undo/redo and the back button are stacks",
+      "ds-stack-reverse": "Reverse a string: push every character, then pop"
+     }
     },
     {
      "h": "Operations and terminology",
@@ -547,7 +669,16 @@ COURSES.ds = {
       "<b>MAXSIZE</b>: not a standard term; the maximum size of the stack.",
       "<b>TOP</b>: refers to the top of the stack; used to check overflow/underflow. <b>Initially TOP = -1</b>, so on push top is <b>first incremented</b> and then the item is stored at <code>stack[top]</code>.",
       "<b>Underflow</b>: stack contains no element (top at the bottom, top == -1). <b>Overflow</b>: stack is full (top == MAXSIZE-1, top at the highest location)."
-     ]
+     ],
+     "fig": [
+      "ds-stack-limits"
+     ],
+     "figAt": {
+      "ds-stack-limits": 4
+     },
+     "figH": {
+      "ds-stack-limits": "Where top sits at underflow and at overflow"
+     }
     },
     {
      "h": "Static vs dynamic implementation",
@@ -572,7 +703,13 @@ COURSES.ds = {
        "Not efficient in memory utilization",
        "Uses only the memory it needs (plus a pointer per node)"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-stack-static-dynamic"
+     ],
+     "figH": {
+      "ds-stack-static-dynamic": "Array vs linked list: push past 4 and see"
+     }
     },
     {
      "h": "isEmpty, isFull, push, pop (professor's code)",
@@ -580,7 +717,13 @@ COURSES.ds = {
     },
     {
      "h": "display, count, search, get (professor's code)",
-     "code": "void display()      // items in LIFO order\n{\n   if (isEmpty(top)) cout << \"Nothing to display, stack is empty\\n\";\n   else\n      for (int j = top; j >= 0; j--)\n         cout << \"Item number \" << j << \" is \" << Stack[j] << \"\\n\";\n}\nint count()         // from top to bottom\n{\n   int c = 0, index = top;\n   while (index >= 0) { c++; index--; }\n   return c;        // (simply top + 1)\n}\nvoid search(int item)   // from top to bottom\n{\n   int temp = top, flag = 0;\n   while (temp >= 0)\n   {\n      if (Stack[temp] == item)\n      { flag = 1; cout << \"Item found at location\" << temp << \"\\n\"; break; }\n      else temp--;       // slide writes temp=temp--; which is undefined/buggy, use temp--\n   }\n   if (flag == 0) cout << \"Not Found\\n\";\n}\nvoid get()          // show top element without popping (peek)\n{\n   if (top != -1) cout << Stack[top] << \" is the element at the top of the stack\";\n   else cout << \"Stack is Empty\";\n}"
+     "code": "void display()      // items in LIFO order\n{\n   if (isEmpty(top)) cout << \"Nothing to display, stack is empty\\n\";\n   else\n      for (int j = top; j >= 0; j--)\n         cout << \"Item number \" << j << \" is \" << Stack[j] << \"\\n\";\n}\nint count()         // from top to bottom\n{\n   int c = 0, index = top;\n   while (index >= 0) { c++; index--; }\n   return c;        // (simply top + 1)\n}\nvoid search(int item)   // from top to bottom\n{\n   int temp = top, flag = 0;\n   while (temp >= 0)\n   {\n      if (Stack[temp] == item)\n      { flag = 1; cout << \"Item found at location\" << temp << \"\\n\"; break; }\n      else temp--;       // slide writes temp=temp--; which is undefined/buggy, use temp--\n   }\n   if (flag == 0) cout << \"Not Found\\n\";\n}\nvoid get()          // show top element without popping (peek)\n{\n   if (top != -1) cout << Stack[top] << \" is the element at the top of the stack\";\n   else cout << \"Stack is Empty\";\n}",
+     "fig": [
+      "ds-stack-funcs"
+     ],
+     "figH": {
+      "ds-stack-funcs": "display, count, search and get traced line by line"
+     }
     },
     {
      "h": "Lab 3: stack using a dynamic array",
@@ -589,7 +732,22 @@ COURSES.ds = {
       "The menu uses (i) push, (o) pop, (t) traverse (display from top down to index 0), (e) exit.",
       "Assignments: reverse a string using a stack; sum and average of a full stack; bonus <code>Stack_Copy()</code> from s1 to empty s2 (pop into a temp stack, then pop from temp into s2 to keep the order).",
       "Exam pattern for the statements of push: <code>top++; stack[top] = item;</code> (increment first, then store) because top starts at -1."
-     ]
+     ],
+     "fig": [
+      "ds-stack-lab-menu",
+      "ds-stack-copy-sum",
+      "ds-stack-push-order"
+     ],
+     "figAt": {
+      "ds-stack-lab-menu": 1,
+      "ds-stack-copy-sum": 2,
+      "ds-stack-push-order": 3
+     },
+     "figH": {
+      "ds-stack-lab-menu": "Pick the size at run time, then use the i/o/t/e menu",
+      "ds-stack-copy-sum": "Stack_Copy through a temp stack, and sum/average",
+      "ds-stack-push-order": "Why push is top++ first, then store"
+     }
     }
    ],
    "cards": [
@@ -972,7 +1130,16 @@ COURSES.ds = {
       "Like a line waiting to buy tickets: the first person in line is served first.",
       "<b>Front (head)</b>: position of the entry ready to be served (the first to be removed). <b>Rear (tail)</b>: position of the last entry, the one most recently added.",
       "<b>enqueue()</b> inserts at the rear; <b>dequeue()</b> removes from the front. Initially head = tail = -1."
-     ]
+     ],
+     "fig": [
+      "ds-l3-fifo-line"
+     ],
+     "figAt": {
+      "ds-l3-fifo-line": 3
+     },
+     "figH": {
+      "ds-l3-fifo-line": "Slide 3's line: dequeue at the front, enqueue at the rear"
+     }
     },
     {
      "h": "Linear queue: enqueue and dequeue (professor's code)",
@@ -1009,7 +1176,19 @@ COURSES.ds = {
       "In the slide trace (array 0..7) the rear moves right on every insert and the front moves right on every delete.",
       "When the rear reaches the last index (<b>rear == MAX-1</b>) the queue reports full, <b>even if elements were dequeued</b> and the cells at the start are empty (\"NO SPACE HERE\" at the end while there is \"SPACE HERE\" at the front).",
       "So after some insertions and deletions there is <b>non-usable empty space</b>; dequeuing moves the front forward and reduces the usable size of the queue. This memory wastage is the <b>need for the circular queue</b>."
-     ]
+     ],
+     "fig": [
+      "ds-l3-slide-trace",
+      "ds-l3-wasted"
+     ],
+     "figAt": {
+      "ds-l3-slide-trace": 1,
+      "ds-l3-wasted": 2
+     },
+     "figH": {
+      "ds-l3-slide-trace": "Slides 6 to 13: rear reaches index 7 while 0 and 1 sit empty",
+      "ds-l3-wasted": "Queue is full, even after removing 2 elements"
+     }
     },
     {
      "h": "Circular queue",
@@ -1035,7 +1214,22 @@ COURSES.ds = {
       "<b>Enqueue</b>: check full with two cases: (1) <b>head == 0 &amp;&amp; tail == SIZE-1</b>; (2) <b>tail is just one less than head</b> (the slide writes <code>tail == (head-1) % (MAXSIZE-1)</code>; the standard single test is <code>(tail+1) % SIZE == head</code>). For the first element set head = 0. Circularly increase tail: <code>tail = (tail+1) % SIZE</code>. Store the element at tail.",
       "<b>Dequeue</b>: check empty (head == -1). Return the value at head. Circularly increase head: <code>head = (head+1) % SIZE</code>. For the <b>last element</b> (head == tail) reset head and tail to -1.",
       "Slide example: after 2 dequeues both queues have front at 72 and rear at 24; inserting 100 is <b>not possible in the linear queue</b> (rear at the end) but <b>possible in the circular queue</b> (rear wraps to index 0)."
-     ]
+     ],
+     "fig": [
+      "ds-l3-ring",
+      "ds-l3-full-check",
+      "ds-l3-insert-100"
+     ],
+     "figAt": {
+      "ds-l3-ring": 0,
+      "ds-l3-full-check": 2,
+      "ds-l3-insert-100": 4
+     },
+     "figH": {
+      "ds-l3-ring": "The last cell connected back to the first",
+      "ds-l3-full-check": "The two full cases checked on any head and tail",
+      "ds-l3-insert-100": "Inserting 100: fails in the linear queue, wraps to index 0 in the circular"
+     }
     },
     {
      "h": "Linear vs circular queue",
@@ -1064,7 +1258,13 @@ COURSES.ds = {
        "Empty when front == -1 or front > rear",
        "Empty when front == -1 (reset to -1 after removing the last element)"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-l3-vs-sim"
+     ],
+     "figH": {
+      "ds-l3-vs-sim": "Same operations on both queues, with the table row that explains each"
+     }
     },
     {
      "h": "Circular queue enQueue / deQueue (professor's code)",
@@ -1080,7 +1280,13 @@ COURSES.ds = {
       "x = dequeue(): x = 20, front = 2",
       "print \"Head = 2 Tail = 2\" (one element, 30, is left)",
       "(If the slide's deQueue/enQueue with their own cout messages are used, \"Enqueued element: …\" and \"Dequeued element: …\" lines also appear; checked with g++.)"
-     ]
+     ],
+     "fig": [
+      "ds-l3-exam-trace"
+     ],
+     "figH": {
+      "ds-l3-exam-trace": "The exam trace statement by statement"
+     }
     }
    ],
    "cards": [

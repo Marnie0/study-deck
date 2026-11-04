@@ -11,7 +11,10 @@ AR.or = {
       "<b>البداية (Origins)</b>: الـ OR بشكل رسمي بدأ في <b>إنجلترا أيام الحرب العالمية التانية</b>، لما فريق علماء بريطانيين اشتغلوا على قرارات أحسن استخدام لمعدات الحرب. وبعد الحرب الأفكار دي اتنقلت لـ <b>القطاع المدني (civilian sector)</b> عشان تحسّن الكفاءة والإنتاجية. والنهارده الـ OR أداة أساسية في اتخاذ القرار.",
       "<b>التعريف (بصيغة الامتحان)</b>: الـ Operations research بيهتم بـ <b>إننا نقرر بشكل علمي إزاي نصمم ونشغّل الـ man-machine systems بأحسن طريقة</b>، وغالبًا ده بيحتاج <b>allocation of scarce resources</b>.",
       "خلي بالك من الفخ: أسئلة الـ <bdi dir=\"ltr\">T/F</bdi> في الامتحان بتلزق التعريف ده على \"linear programming\" أو \"formulation problem\" أو \"dynamic programming\". الجملة دي بتاعة <b>operations research</b> بس."
-     ]
+     ],
+     "figH": {
+      "or-model-deftrap": "تعريف الامتحان وفخ أسئلة الصح والغلط: الجملة دي بتاعة الـ operations research بس"
+     }
     },
     {
      "h": "الـ Linear programming والـ optimization problems",
@@ -21,13 +24,22 @@ AR.or = {
       "الـ <b>mathematical program</b> هو optimization problem الـ objective والـ constraints فيه مكتوبين كـ mathematical functions وعلاقات رياضية.",
       "الـ <b>Linear programming problem (LPP)</b>: إنك تلاقي الـ optimal value (max أو min) لـ function <b>linear</b> (الـ objective function) في كذا variable، بشرط إن الـ variables تبقى <b><bdi dir=\"ltr\">non-negative</bdi></b> وتحقق مجموعة <b>linear inequalities</b> (الـ linear constraints).",
       "كلمة <b>linear</b> معناها إن كل العلاقات الرياضية في المسألة linear. وكلمة <b>programming</b> معناها طريقة تحديد <b>program أو خطة عمل (plan of action)</b> معينة."
-     ]
+     ],
+     "figH": {
+      "or-model-family": "الـ optimization problem جواه الـ mathematical program، وجواه الـ LPP، ومعنى كلمة linear وكلمة programming"
+     }
     },
     {
-     "h": "الشكل العام للـ mathematical program"
+     "h": "الشكل العام للـ mathematical program",
+     "figH": {
+      "or-model-general": "الشكل العام بيتبني جزء جزء، وبعدين الـ Example 1 بنفس الشكل"
+     }
     },
     {
-     "h": "أهم التعريفات (Revision 1)"
+     "h": "أهم التعريفات (Revision 1)",
+     "figH": {
+      "or-model-terms": "دوس على أي مصطلح وشوف هو أنهي جزء في الـ model بتاع الـ Example 1"
+     }
     },
     {
      "h": "خطوات الـ formulation الأربعة",
@@ -38,19 +50,34 @@ AR.or = {
       "الـ <b>Step IV</b>: اكتب الـ <b>constraints</b> والـ <b><bdi dir=\"ltr\">non-negativity</bdi> condition</b>.",
       "<b>الكلمات المفتاحية</b> (ملخص طلبة): الكلمات <i>profit و sold و sales و revenue</i> بتدّي <b>Max</b>؛ وكلمة <i>cost</i> بتدّي <b>Min</b>؛ والكلمات <i>available و has و at most و no more than و can use</i> بتدّي <b>≤</b>؛ والكلمات <i>at least و contains و minimum needs و must deliver</i> بتدّي <b>≥</b>.",
       "<b>الـ constraints المستخبية (Hidden constraints)</b>: مثلًا \"عدد أيام الأسبوع\" بيدّيك x ≤ 7، و\"أيام شهر سبتمبر\" بتدّيك x ≤ 30، و\"بيتدفعله يوم كامل حتى لو اشتغل جزء من اليوم\" معناها إن الـ variables لازم تبقى <b>integer</b>."
-     ]
+     ],
+     "figH": {
+      "or-formulate-keywords": "الكلمات المفتاحية: صنّف جمل المحاضرة لـ Max أو Min أو constraint نوعه أصغر من أو أكبر من (ومعاهم المستخبي)"
+     }
     },
     {
-     "h": "الـ Example 1: ماكينتين و revenue (من Lecture 1)"
+     "h": "الـ Example 1: ماكينتين و revenue (من Lecture 1)",
+     "figH": {
+      "or-formulate-steps": "الـ Example 1 بالـ 4 steps: الكلام بيتحول لجدول، والجدول بيتحول لـ model"
+     }
     },
     {
-     "h": "الـ Examples من 2 لـ 5 (من Lecture 1)"
+     "h": "الـ Examples من 2 لـ 5 (من Lecture 1)",
+     "figH": {
+      "or-formulate-builder": "ورشة الـ formulation: جدول كل مثال والـ model اللي بيطلع منه، أو اكتب مسألتك أنت"
+     }
     },
     {
-     "h": "تمارين المحاضرة Q1 و Q2 (محلولة)"
+     "h": "تمارين المحاضرة Q1 و Q2 (محلولة)",
+     "figH": {
+      "or-model-check": "جرّب plan في الـ Q1 والـ Q2: أنهي constraints متحققة، وإيه اللي فاضل، وقيمة الـ Z"
+     }
     },
     {
-     "h": "الـ formulations من الامتحانات فيها شروط خاصة"
+     "h": "الـ formulations من الامتحانات فيها شروط خاصة",
+     "figH": {
+      "or-formulate-hidden": "الـ constraints المستخبية: أيام الأسبوع أو أيام سبتمبر، والأيام الكاملة (integer)"
+     }
     }
    ],
    "cards": [
@@ -225,7 +252,10 @@ AR.or = {
   "2": {
    "notes": [
     {
-     "h": "تعريفات الـ graphical method"
+     "h": "تعريفات الـ graphical method",
+     "figH": {
+      "or-lp-terms": "التعريفات على رسمة حقيقية: اختار المصطلح، أو دوس على أي نقطة علشان تختبرها"
+     }
     },
     {
      "h": "الخطوات: الـ geometric method لما يبقى عندك variablين",
@@ -236,19 +266,36 @@ AR.or = {
       "الـ <b>Step 4</b>: لو المسألة تطبيقية، <b>فسّر (interpret)</b> الـ optimal solution بلغة المسألة الأصلية.",
       "عشان تجيب corner جاي من تقاطع خطين، حل المعادلتين مع بعض (اضرب معادلة في رقم عشان variable يتشال، وبعدين اجمع).",
       "خطوط زي <bdi dir=\"ltr\">x2&nbsp;=&nbsp;2</bdi> أفقية، و <bdi dir=\"ltr\">x1&nbsp;=&nbsp;1</bdi> رأسية؛ الـ <bdi dir=\"ltr\">x2&nbsp;≥&nbsp;2</bdi> معناها فوق الخط الأفقي، والـ <bdi dir=\"ltr\">x1&nbsp;≤&nbsp;1</bdi> معناها شمال الخط الرأسي."
-     ]
+     ],
+     "figH": {
+      "or-lp-steps": "الخطوات الأربعة للـ geometric method على Example 2",
+      "or-lp-intersect": "إزاي نجيب corner من تقاطع خطين: نضرب ونجمع ونحل سطر بسطر",
+      "or-lp-shade": "قيد واحد: الخط بتاعه والـ intercepts وأنهي ناحية نظلّلها"
+     }
     },
     {
-     "h": "الـ Example 1 (من Lecture 2):<span class=\"ltr\">Max Z = 200x1 + 175x2</span>"
+     "h": "الـ Example 1 (من Lecture 2):<span class=\"ltr\">Max Z = 200x1 + 175x2</span>",
+     "figH": {
+      "or-lp-ex1": "حل Example 1 بالرسم خطوة بخطوة"
+     }
     },
     {
-     "h": "الـ Example 2: محل Jay للحلويات،<span class=\"ltr\">Max Z = 25x1 + 20x2</span>"
+     "h": "الـ Example 2: محل Jay للحلويات،<span class=\"ltr\">Max Z = 25x1 + 20x2</span>",
+     "figH": {
+      "or-lp-ex2": "حل Example 2 بتاع الـ Jay بالرسم خطوة بخطوة"
+     }
     },
     {
-     "h": "الـ Example 5: الـ Diet،<span class=\"ltr\">Min Z = 1.20x1 + 0.80x2</span>"
+     "h": "الـ Example 5: الـ Diet،<span class=\"ltr\">Min Z = 1.20x1 + 0.80x2</span>",
+     "figH": {
+      "or-lp-ex5": "حل Example 5 بتاع الـ diet: مسألة MIN على منطقة مفتوحة خطوة بخطوة"
+     }
     },
     {
-     "h": "مسائل graphical محلولة زيادة (السكاشن والشيتات)"
+     "h": "مسائل graphical محلولة زيادة (السكاشن والشيتات)",
+     "figH": {
+      "or-lp-solver": "حلّال بالرسم: مسائل السكاشن والشيتات أو مسألة من عندك"
+     }
     },
     {
      "h": "الحالات الخاصة اللي لازم تعرفها من الرسمة",
@@ -257,7 +304,10 @@ AR.or = {
       "الـ <b>Unbounded</b>: في مسألة MAX المنطقة بتمتد من غير نهاية في الاتجاه اللي بيزوّد Z، فـ <bdi dir=\"ltr\">Z&nbsp;→&nbsp;∞</bdi>.",
       "الـ <b>Multiple optima</b>: خط الـ objective موازي لـ binding constraint؛ فيه اتنين corners جنب بعض بيدّوا نفس أحسن Z.",
       "الـ <b>Redundant constraint</b>: ده constraint مش بيلمس الـ feasible region أصلًا (لو شلته مفيش حاجة هتتغير)."
-     ]
+     ],
+     "figH": {
+      "or-lp-special": "الحالات الخاصة الأربعة على الرسمة: الـ infeasible والـ unbounded والـ multiple optima والـ redundant"
+     }
     }
    ],
    "cards": [
@@ -418,7 +468,10 @@ AR.or = {
   "3": {
    "notes": [
     {
-     "h": "ليه الـ simplex method؟ أهم التعريفات"
+     "h": "ليه الـ simplex method؟ أهم التعريفات",
+     "figH": {
+      "or-simplex-terms": "كل مصطلح متعلّم عليه في الـ initial tableau بتاع المحاضرة"
+     }
     },
     {
      "h": "خطوات الـ Simplex (مسألة max، وكل الـ constraints ≤)",
@@ -431,22 +484,42 @@ AR.or = {
       "الـ <b>Step 6</b>: استخدم الـ elementary row operations: اقسم الـ pivot row على الـ pivot عشان الـ pivot يبقى 1، وبعدين خلّي كل رقم تاني في الـ pivot column يبقى 0. الـ entering variable بياخد مكان الـ exiting variable في عمود الـ basis.",
       "الـ <b>Step 7</b>: كرر لحد ما <b>مايبقاش فيه أرقام سالبة في الصف الأخير</b> (من غير آخر عمود). وبعدين اقرا الحل: الـ basic variables بتساوي الـ RHS، والـ <bdi dir=\"ltr\">non-basic</bdi> بتساوي 0، والـ Z بتساوي الرقم اللي تحت خالص على اليمين.",
       "تأثير الـ pivot الواحد: الـ non-basic variable اللي داخل بيبقى basic، والـ basic variable اللي خارج بيبقى non-basic، و Z بيزيد (أو في حالات بيفضل زي ما هو)."
-     ]
+     ],
+     "figH": {
+      "or-simplex-slack": "الـ slack variables هي ساعات المكنة اللي مش مستخدمة: حرّك الـ x1 والـ x2 وشوف الـ s1 والـ s2",
+      "or-simplex-loop": "الخطوات السبعة كـ loop، ماشيين بيها على مثال المحاضرة",
+      "or-simplex-corner-move": "الـ pivot الواحد بينقل الحل من الـ corner اللي عند <bdi dir=\"ltr\">(0,&nbsp;0)</bdi> للي عند <bdi dir=\"ltr\">(4,&nbsp;0)</bdi>، فالـ x1 بيدخل والـ s1 بيخرج والـ Z بيزيد من 0 لـ 12"
+     }
     },
     {
-     "h": "معادلات الـ row operations (طريقة المحاضرة واختصار السكشن)"
+     "h": "معادلات الـ row operations (طريقة المحاضرة واختصار السكشن)",
+     "figH": {
+      "or-simplex-rectangle": "دوس على أي رقم وشوف قيمته الجديدة باختصار المستطيل"
+     }
     },
     {
-     "h": "مثال المحاضرة (الـ initial tableau):<span class=\"ltr\">Max Z = 3x1 + x2</span><span class=\"ltr\">2x1 + x2 ≤ 8</span><span class=\"ltr\">2x1 + 3x2 ≤ 12</span>"
+     "h": "مثال المحاضرة (الـ initial tableau):<span class=\"ltr\">Max Z = 3x1 + x2</span><span class=\"ltr\">2x1 + x2 ≤ 8</span><span class=\"ltr\">2x1 + 3x2 ≤ 12</span>",
+     "figH": {
+      "or-simplex-pivot-pick": "الـ slide رقم 13: الـ pivot column وبعده الـ ratios والـ pivot row والـ pivot element"
+     }
     },
     {
-     "h": "مثال المحاضرة بعد pivot واحد (optimal)"
+     "h": "مثال المحاضرة بعد pivot واحد (optimal)",
+     "figH": {
+      "or-simplex-read": "إزاي نقرا الـ optimal tableau: الـ basic قيمته من الـ b، والـ non-basic بصفر، والـ Z تحت على اليمين"
+     }
     },
     {
-     "h": "خطوات حل الـ pivot بتاع المحاضرة"
+     "h": "خطوات حل الـ pivot بتاع المحاضرة",
+     "figH": {
+      "or-simplex-lecture-run": "الـ pivot بتاع المحاضرة صف صف، والـ tableau الجديد بيتملا"
+     }
     },
     {
-     "h": "مثال الـ Revision:<span class=\"ltr\">Max Z = 8x1 + 5x2</span><span class=\"ltr\">x1 + 4x2 ≤ 4</span><span class=\"ltr\">3x1 + 5x2 ≤ 24</span>"
+     "h": "مثال الـ Revision:<span class=\"ltr\">Max Z = 8x1 + 5x2</span><span class=\"ltr\">x1 + 4x2 ≤ 4</span><span class=\"ltr\">3x1 + 5x2 ≤ 24</span>",
+     "figH": {
+      "or-simplex-revision-run": "مثال الـ revision خطوة خطوة: الـ x1 بيدخل والـ s1 بيخرج والـ Z بتطلع 32"
+     }
     },
     {
      "h": "مثال الـ Revision: إجابات الـ MCQs",
@@ -457,7 +530,10 @@ AR.or = {
      ]
     },
     {
-     "h": "نتايج الـ tableaux اللي في الامتحانات (متراجعة)"
+     "h": "نتايج الـ tableaux اللي في الامتحانات (متراجعة)",
+     "figH": {
+      "or-simplex-sim": "محاكي الـ simplex: أي tableau من الامتحانات أو مسألتك إنت، pivot ورا pivot"
+     }
     },
     {
      "h": "الـ Duality (جت مرة واحدة، <bdi dir=\"ltr\">Final&nbsp;2021/22</bdi>)",
@@ -465,7 +541,10 @@ AR.or = {
       "كل LP (اسمه الـ <b>primal</b>) ليه <b>dual</b>. لو الـ primal مسألة MAX في الـ canonical form (كله ≤): الـ dual بيبقى مسألة MIN؛ كل constraint في الـ primal بيدّي dual variable واحد yi؛ قيم الـ RHS بتبقى معاملات الـ dual objective؛ ومعاملات الـ objective بتبقى الـ dual RHS؛ والـ coefficient matrix بتتعملها transpose؛ والـ dual constraints بتبقى ≥.",
       "قواعد الإشارة (primal max):<span class=\"ltr\">constraint ≤ → yi ≥ 0</span><span class=\"ltr\">constraint ≥ → yi ≤ 0</span>(أو اضربه في <bdi dir=\"ltr\">−1</bdi> الأول)؛ ولو الـ constraint من نوع = يبقى <bdi dir=\"ltr\">yi</bdi> <b>unrestricted</b> في الإشارة. الـ primal variable <bdi dir=\"ltr\">xj&nbsp;≥&nbsp;0</bdi> ← الـ dual constraint رقم j بيبقى ≥.",
       "عند الـ optimum، الـ Z بتاع الـ primal بيساوي الـ W بتاع الـ dual (strong duality). الموضوع ده مش في الـ slides بتاعة <bdi dir=\"ltr\">2024</bdi>؛ ده كلام كتب معروف."
-     ]
+     ],
+     "figH": {
+      "or-simplex-dual": "بناء الـ dual بتاع مسألة الـ Final <bdi dir=\"ltr\">2021/22</bdi> خطوة خطوة"
+     }
     }
    ],
    "cards": [
@@ -711,7 +790,11 @@ AR.or = {
       "شكل الـ Network: الـ sources على الشمال، والـ destinations على اليمين، وفيه arc (i, j) لكل route بتكلفة c<sub>ij</sub> و flow x<sub>ij</sub>.",
       "مسألة <b>Balanced</b>: إجمالي الـ supply بيساوي إجمالي الـ demand (كل أمثلة الكورس كده). لو مش كده، ضيف dummy source أو dummy destination تكاليفه صفر عشان ياخد الفرق (قاعدة الكتب).",
       "الـ basic feasible solution فيها <b><bdi dir=\"ltr\">m&nbsp;+&nbsp;n&nbsp;−&nbsp;1</bdi></b> خانة متوزع فيها (مثلًا 3 sources × 4 destinations يبقى 6 خانات). طرق الـ initial BFS: الـ <b>Northwest corner rule</b>، والـ <b>Least cost (minimum cost) method</b>، والـ <b>Vogel's approximation method</b>."
-     ]
+     ],
+     "figH": {
+      "or-tp-network": "الـ network: الـ sources بالـ supply، والـ destinations بالـ demand، و arc لكل route عليه تكلفة وكمية",
+      "or-tp-balance": "المسألة Balanced ولا لأ؟ الـ dummy بياخد الفرق، والـ BFS فيها خانات متوزع فيها عددها <bdi dir=\"ltr\">m&nbsp;+&nbsp;n&nbsp;−&nbsp;1</bdi>"
+     }
     },
     {
      "h": "بيانات المحاضرة (البسلة المعلبة، بالـ truckloads)"
@@ -722,7 +805,10 @@ AR.or = {
       "أول allocation بيتعمل في الخانة اللي في <b>الركن الشمال فوق (upper <bdi dir=\"ltr\">left-hand</bdi> corner)</b> من الـ tableau. حط <b>أكبر كمية ممكنة</b>، وهي <bdi dir=\"ltr\">min(supply,&nbsp;demand)</bdi>، اشطب الصف أو العمود اللي اتقفل، وبعدين اتحرك <b>يمين</b> (لو الصف لسه فيه supply) أو <b>تحت</b> (لو العمود لسه فيه demand). التكاليف مش بتفرق هنا خالص.",
       "في المحاضرة (بالترتيب):<span class=\"ltr\">C1W1 = 75 (C1 خلص)</span><span class=\"ltr\">→ C2W1 = 5 (W1 خلص)</span><span class=\"ltr\">→ C2W2 = 65</span><span class=\"ltr\">→ C2W3 = 55 (C2 خلص)</span><span class=\"ltr\">→ C3W3 = 15</span><span class=\"ltr\">→ C3W4 = 85</span>",
       "<b><span class=\"ltr\">Z = 464×75 + 352×5 + 216×65</span><span class=\"ltr\">+ 690×55 + 388×15 + 685×85</span><span class=\"ltr\">= $152,595</span></b>"
-     ]
+     ],
+     "figH": {
+      "or-tp-nwc": "الـ Northwest corner rule خانة خانة: الـ tableau بتاع المحاضرة لحد <bdi dir=\"ltr\">Z&nbsp;=&nbsp;$152,595</bdi>"
+     }
     },
     {
      "h": "الـ Least cost (minimum cost) method",
@@ -730,7 +816,10 @@ AR.or = {
       "أول allocation بيتعمل في الخانة اللي فيها <b>أقل تكلفة</b> في الـ tableau كله؛ حط <bdi dir=\"ltr\">min(supply,&nbsp;demand)</bdi>، اشطب الصف/العمود اللي اتقفل، وكرر مع أقل تكلفة فاضلة.",
       "في المحاضرة (بالترتيب):<span class=\"ltr\">216 (C2W2) = 65</span><span class=\"ltr\">→ 352 (C2W1) = 60 (C2 خلص)</span><span class=\"ltr\">→ 388 (C3W3) = 70</span><span class=\"ltr\">→ 464 (C1W1) = 20 (W1 خلص)</span><span class=\"ltr\">→ 685 (C3W4) = 30 (C3 خلص)</span><span class=\"ltr\">→ 867 (C1W4) = 55</span>",
       "<b><span class=\"ltr\">Z = 464×20 + 867×55 + 352×60</span><span class=\"ltr\">+ 216×65 + 388×70 + 685×30</span><span class=\"ltr\">= $139,835</span></b>(أرخص من الـ NWC، وفي البيانات دي هو optimal أصلًا)."
-     ]
+     ],
+     "figH": {
+      "or-tp-lcm": "الـ Least cost method خانة خانة: دايمًا أرخص خانة مفتوحة، لحد <bdi dir=\"ltr\">Z&nbsp;=&nbsp;$139,835</bdi>"
+     }
     },
     {
      "h": "الـ Vogel's approximation method (VAM)",
@@ -743,7 +832,10 @@ AR.or = {
      ]
     },
     {
-     "h": "مثال الـ VAM في المحاضرة (الـ supplies <bdi dir=\"ltr\">200,&nbsp;350,&nbsp;150,&nbsp;90</bdi>؛ والـ demands <bdi dir=\"ltr\">100,&nbsp;140,&nbsp;300,&nbsp;250</bdi>)"
+     "h": "مثال الـ VAM في المحاضرة (الـ supplies <bdi dir=\"ltr\">200,&nbsp;350,&nbsp;150,&nbsp;90</bdi>؛ والـ demands <bdi dir=\"ltr\">100,&nbsp;140,&nbsp;300,&nbsp;250</bdi>)",
+     "figH": {
+      "or-tp-vam": "الـ Vogel خطوة بخطوة: الـ penalties، وأعلى واحد، وأرخص خانة فيه، لحد <bdi dir=\"ltr\">$10,330</bdi>"
+     }
     },
     {
      "h": "التكلفة الكلية بالـ VAM"
@@ -755,13 +847,22 @@ AR.or = {
       "الـ <b>Improvement index</b> بيساوي مجموع تكاليف خانات الـ <bdi dir=\"ltr\">+</bdi> ناقص مجموع تكاليف خانات الـ <bdi dir=\"ltr\">−</bdi>. ده معناه التغيير في التكلفة الكلية لكل وحدة بتنقلها للخانة الفاضية.",
       "لو كل الـ indices ≥ 0، يبقى الحل <b>optimal</b> (في الـ minimization). غير كده اختار <b>أكتر index سالب</b>، وانقل θ = <b>أصغر allocation في خانات الـ −</b> على المسار (زوّد θ في الـ + واطرحه من الـ −). الخانة اللي توصل 0 بتخرج. وكرر.",
       "التكلفة الجديدة = التكلفة القديمة + (الـ index × θ)."
-     ]
+     ],
+     "figH": {
+      "or-tp-loop": "مسار مقفول واحد ركن ركن: العلامات، والـ improvement index، والـ θ، والتكلفة الجديدة"
+     }
     },
     {
-     "h": "الـ <bdi dir=\"ltr\">Final&nbsp;2025/26</bdi> محلول: الـ LCM وبعدين الـ stepping stone"
+     "h": "الـ <bdi dir=\"ltr\">Final&nbsp;2025/26</bdi> محلول: الـ LCM وبعدين الـ stepping stone",
+     "figH": {
+      "or-tp-stone": "محاكي الـ stepping stone: الـ index لكل خانة فاضية، ودخّل أكتر واحد سالب، وكرر لحد ما كلهم يبقوا مش سالبين"
+     }
     },
     {
-     "h": "مثال الـ Revision:<span class=\"ltr\">S1: 100 140 75 | 300</span><span class=\"ltr\">S2: 90 20 110 | 320</span><span class=\"ltr\">S3: 60 130 220 | 380</span><span class=\"ltr\">demand 250 550 200</span>"
+     "h": "مثال الـ Revision:<span class=\"ltr\">S1: 100 140 75 | 300</span><span class=\"ltr\">S2: 90 20 110 | 320</span><span class=\"ltr\">S3: 60 130 220 | 380</span><span class=\"ltr\">demand 250 550 200</span>",
+     "figH": {
+      "or-tp-compare": "مقارنة الـ NWC والـ least cost والـ VAM على نفس البيانات، قصاد الـ optimum"
+     }
     }
    ],
    "cards": [
@@ -987,7 +1088,10 @@ AR.or = {
       "المسألة دي بتطلع لأن الـ resources (ناس، ماكينات...) كفاءتها بتختلف من activity للتانية، فالتكلفة أو الربح أو الخسارة بتختلف.",
       "كل صف (شخص أو job) بياخد عمود واحد بالظبط (ماكينة أو programmer)، وكل عمود بياخد صف واحد بالظبط. المسألة <bdi dir=\"ltr\">n&nbsp;×&nbsp;n</bdi> فيها n assignments.",
       "امتدادات من الكتب: مسألة <b>maximization</b> بنحوّلها بإننا نطرح كل خانة من أكبر خانة؛ والـ matrix الـ <b>unbalanced</b> بنضيفلها dummy row أو dummy column كله أصفار."
-     ]
+     ],
+     "figH": {
+      "or-assign-model": "الـ transportation model لما الـ supply والـ demand يبقوا وحدة واحدة: كل صف بياخد عمود واحد بالظبط"
+     }
     },
     {
      "h": "الـ Hungarian method (خطوات المحاضرة)",
@@ -999,10 +1103,19 @@ AR.or = {
       "<b>الخطوة 4 (Step 4، الـ marking، لو أقل من n)</b>: علّم (√) الصفوف اللي مافيهاش assignment؛ علّم الأعمدة اللي فيها صفر في صف متعلّم؛ علّم الصفوف اللي فيها assigned zero في عمود متعلّم؛ وكرر. ارسم خطوط على <b>الصفوف اللي مش متعلّمة</b> و<b>الأعمدة المتعلّمة</b>.",
       "<b>الخطوة 5 (Step 5)</b>: الـ θ هي أصغر رقم <b>مش متغطي (uncovered)</b>. الأرقام اللي مش متغطية تبقى <bdi dir=\"ltr\">C&nbsp;−&nbsp;θ</bdi>، واللي عليها خط واحد تفضل C زي ما هي، واللي عند تقاطع خطين تبقى <bdi dir=\"ltr\">C&nbsp;+&nbsp;θ</bdi>. وارجع لـ step 3.",
       "اختصار السكشن: ارسم الخطوط على الصفوف/الأعمدة اللي فيها أكتر أصفار؛ لو عدد الخطوط = عدد الصفوف، اعمل assign؛ غير كده عدّل بـ θ وارسم تاني."
-     ]
+     ],
+     "figH": {
+      "or-hungarian-scan": "الـ Step 3 خطوة بخطوة: الـ row scanning وبعدين الـ column scanning، مع الـ box والشطب للأصفار",
+      "or-hungarian-mark": "الـ Step 4 (الـ marking): العلامات بتبدأ من الصف اللي مفيهوش assignment، وبعدين بنرسم الخطوط",
+      "or-hungarian-theta": "الـ Step 5: الـ θ بتتطرح من الأرقام اللي مش متغطية وبتتجمع عند تقاطع خطين",
+      "or-hungarian-flow": "الـ Hungarian method كـ flowchart، ومعاه الرجوع لـ step 3"
+     }
     },
     {
-     "h": "مثال المحاضرة (صفحة <bdi dir=\"ltr\">107</bdi>): الأعمدة <bdi dir=\"ltr\">D,&nbsp;E,&nbsp;F</bdi>"
+     "h": "مثال المحاضرة (صفحة <bdi dir=\"ltr\">107</bdi>): الأعمدة <bdi dir=\"ltr\">D,&nbsp;E,&nbsp;F</bdi>",
+     "figH": {
+      "or-hungarian-p107": "مثال Page 107 متحلول خطوة بخطوة، والتكلفة <bdi dir=\"ltr\">$950</bdi>"
+     }
     },
     {
      "h": "نتيجة مثال المحاضرة"
@@ -1011,10 +1124,16 @@ AR.or = {
      "h": "مثال المحاضرة 2: الـ jobs <bdi dir=\"ltr\">J1..J4</bdi> على الـ persons <bdi dir=\"ltr\">P1..P4</bdi>"
     },
     {
-     "h": "الـ marking والإجابة في Example 2"
+     "h": "الـ marking والإجابة في Example 2",
+     "figH": {
+      "or-hungarian-ex2": "الـ Example 2 من الـ matrix الأصلية لحد الحل الـ optimal بتكلفة <bdi dir=\"ltr\">$234</bdi>، مرحلة مرحلة"
+     }
     },
     {
-     "h": "من الـ <bdi dir=\"ltr\">Sheet 1 / Final Aug 2022/23 Q2</bdi> (متراجعة)"
+     "h": "من الـ <bdi dir=\"ltr\">Sheet 1 / Final Aug 2022/23 Q2</bdi> (متراجعة)",
+     "figH": {
+      "or-hungarian-solver": "حلّال الـ Hungarian method: مصفوفات الشيت والامتحانات، أو مصفوفتك انت"
+     }
     },
     {
      "h": "امتحانات assignment تانية محلولة"
@@ -1184,7 +1303,10 @@ AR.or = {
   "6": {
    "notes": [
     {
-     "h": "التعريفات"
+     "h": "التعريفات",
+     "figH": {
+      "or-ip-kinds": "الـ LP relaxation والـ pure والـ mixed والـ binary على نفس القيود: أنهي نقط تنفع، وأحسن Z في كل واحدة"
+     }
     },
     {
      "h": "ليه مانقرّبش إجابة الـ LP وخلاص؟",
@@ -1192,7 +1314,10 @@ AR.or = {
       "تقريب الـ LP optimum ممكن يدّيك نقطة <b>infeasible</b> أو نقطة <b>مش optimal</b>. مثال (من الـ Sheet 2): الـ LP optimum هو <bdi dir=\"ltr\">(2.75,&nbsp;1.25)</bdi>؛ ولو قرّبته لـ <bdi dir=\"ltr\">(3,&nbsp;1)</bdi> هيكسر القيد:<span class=\"ltr\">10x1 + 6x2 ≤ 35   (36 &gt; 35)</span>",
       "في مسألة MAX، الـ Z بتاع الـ LP relaxation هو <b>upper bound</b> لأحسن Z integer؛ وكل branch ممكن بس يقلله.",
       "مسائل الـ Integer بتظهر لما الوحدات ماينفعش تتقسم: عدد الأيام اللي المصنع بيشتغلها (بيتدفع يوم كامل)، عدد الماكينات، الناس، العربيات."
-     ]
+     ],
+     "figH": {
+      "or-ip-round": "تقريب النقطة <bdi dir=\"ltr\">(2.75,&nbsp;1.25)</bdi> بيدّي نقطة infeasible أو مش optimal، ودوس على أي نقطة integer علشان تختبرها"
+     }
     },
     {
      "h": "خطوات الـ Branch and bound (بالرسم)",
@@ -1203,16 +1328,31 @@ AR.or = {
       "<b>4.</b> الـ node بيبقى <b>fathomed</b> (نوقف الـ branching عنده) لما: الحل بتاعه يطلع integer (ويبقى الـ incumbent لو أحسن)، أو يطلع <b>infeasible</b>، أو الـ Z بتاعه مش أحسن من أحسن Z integer لقيناه لحد دلوقتي.",
       "<b>5.</b> كمّل branching على الـ nodes اللي فيها كسور لحد ما مايفضلش ولا live node. وأحسن integer solution لقيتها هي الـ optimal.",
       "ملحوظة:<span class=\"ltr\">x ≥ y and x ≤ y ⇒ x = y</span>يعني لو branch ضاف <bdi dir=\"ltr\">x1&nbsp;≥&nbsp;3</bdi> فوق <bdi dir=\"ltr\">x1&nbsp;≤&nbsp;3</bdi>، يبقى <bdi dir=\"ltr\">x1&nbsp;=&nbsp;3</bdi> وده خط."
-     ]
+     ],
+     "figH": {
+      "or-bb-branch": "الـ branching على <bdi dir=\"ltr\">x1&nbsp;=&nbsp;2.75</bdi> بيشيل الشريط اللي بين 2 و 3، وكل sub-problem بيتحل بالرسم",
+      "or-bb-fathom": "التلات حالات اللي الـ node فيها بتبقى fathomed، على الـ nodes بتاعة الـ Sheet 2",
+      "or-bb-flow": "الخطوات كـ flowchart ماشية على الـ Sheet 2، ومعاها الرجوع للخطوة 2",
+      "or-bb-equal": "لما القيدين <bdi dir=\"ltr\">x1&nbsp;≥&nbsp;3</bdi> و <bdi dir=\"ltr\">x1&nbsp;≤&nbsp;3</bdi> يجتمعوا مايفضلش غير الخط <bdi dir=\"ltr\">x1&nbsp;=&nbsp;3</bdi>"
+     }
     },
     {
-     "h": "مسألة الـ <bdi dir=\"ltr\">Sheet 2 / Final 2021/22 Q4</bdi> هي:<span class=\"ltr\">Max Z = 40x1 + 30x2</span><span class=\"ltr\">10x1 + 6x2 ≤ 35; x1 + x2 ≤ 4</span>"
+     "h": "مسألة الـ <bdi dir=\"ltr\">Sheet 2 / Final 2021/22 Q4</bdi> هي:<span class=\"ltr\">Max Z = 40x1 + 30x2</span><span class=\"ltr\">10x1 + 6x2 ≤ 35; x1 + x2 ≤ 4</span>",
+     "figH": {
+      "or-bb-sheet2": "حل الـ Sheet 2 بالـ branch and bound نود نود: المنطقة والـ corner table والـ tree وهي بتكبر"
+     }
     },
     {
-     "h": "مسألة الـ <bdi dir=\"ltr\">Sheet 1 / Final Aug 2022/23 Q4</bdi> هي:<span class=\"ltr\">Max Z = 3x1 + 4x2</span><span class=\"ltr\">x1 + 3x2 ≤ 13; 5x1 + 2x2 ≤ 20</span>"
+     "h": "مسألة الـ <bdi dir=\"ltr\">Sheet 1 / Final Aug 2022/23 Q4</bdi> هي:<span class=\"ltr\">Max Z = 3x1 + 4x2</span><span class=\"ltr\">x1 + 3x2 ≤ 13; 5x1 + 2x2 ≤ 20</span>",
+     "figH": {
+      "or-bb-sheet1": "حل الـ Sheet 1 بالـ branch and bound نود نود لحد الإجابة دي <bdi dir=\"ltr\">x1&nbsp;=&nbsp;1,&nbsp;x2&nbsp;=&nbsp;4,&nbsp;Z&nbsp;=&nbsp;19</bdi>"
+     }
     },
     {
-     "h": "مسائل branch-and-bound محلولة زيادة"
+     "h": "مسائل branch-and-bound محلولة زيادة",
+     "figH": {
+      "or-bb-solver": "الـ branch and bound على كل مسألة في الجدول، أو على مسألة من عندك"
+     }
     }
    ],
    "cards": [
@@ -1635,25 +1775,47 @@ AR.or = {
       "الـ <b>Most likely time</b> (<bdi dir=\"ltr\">M, t<sub>m</sub></bdi>): التقدير في الظروف <b>العادية (normal)</b>.",
       "الـ <b>Pessimistic time</b> (<bdi dir=\"ltr\">P, t<sub>p</sub></bdi>): التقدير في <b>أسوأ</b> الظروف.",
       "الأسئلة المعتادة: ارسم الـ network؛ الـ expected duration والـ variance لكل activity؛ الـ critical path ووقت انتهاء الـ project؛ واحتمال إن الـ project يخلص في تاريخ معين أو قبله."
-     ]
+     ],
+     "figH": {
+      "or-pert-three": "كل activity ليها تلات تقديرات: الـ O والـ M والـ P على خط الوقت، وبعدين الـ te والـ σ²"
+     }
     },
     {
-     "h": "معادلات الـ PERT"
+     "h": "معادلات الـ PERT",
+     "figH": {
+      "or-pert-formula": "حاسبة الـ te والـ σ²: activities من الـ notes أو تلات تقديرات من عندك",
+      "or-pert-prob": "من الـ μ والـ σ² والـ X للاحتمال: الـ z والـ normal table والمساحة المظللة"
+     }
     },
     {
-     "h": "مثال المحاضرة: الـ expected times والـ variances"
+     "h": "مثال المحاضرة: الـ expected times والـ variances",
+     "figH": {
+      "or-pert-table-lec": "جدول المحاضرة بيتملي صف صف: الـ te والـ σ² من A لـ J"
+     }
     },
     {
-     "h": "مثال المحاضرة: الـ critical path والاحتمال (في 22 أسبوع أو قبلها)"
+     "h": "مثال المحاضرة: الـ critical path والاحتمال (في 22 أسبوع أو قبلها)",
+     "figH": {
+      "or-pert-net": "الـ network بتاعة المحاضرة: كل مسار والـ critical path والـ σ واحتمال إنه يخلص في 22 أسبوع"
+     }
     },
     {
-     "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2021/22</bdi> والـ Revision: مشروع بناء، سنتين (104 أسابيع)"
+     "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2021/22</bdi> والـ Revision: مشروع بناء، سنتين (104 أسابيع)",
+     "figH": {
+      "or-pert-table-rev": "جدول مشروع البناء بيتملي صف صف"
+     }
     },
     {
-     "h": "إجابة الـ 104 أسبوع"
+     "h": "إجابة الـ 104 أسبوع",
+     "figH": {
+      "or-pert-paths-rev": "المسارات الستة كأعمدة، والـ critical path، وبعدين الـ σ² واحتمال إنه يخلص في 104 أسبوع"
+     }
     },
     {
-     "h": "إجابات PERT تانية من الامتحانات (متراجعة)"
+     "h": "إجابات PERT تانية من الامتحانات (متراجعة)",
+     "figH": {
+      "or-pert-solver": "حلّال PERT: مشاريع الامتحانات أو جدول من عندك"
+     }
     }
    ],
    "cards": [
@@ -1875,22 +2037,42 @@ AR.or = {
       "الـ <b>Backward approach</b>: ابدأ من آخر stage (الـ nodes اللي جنب الـ destination) وارجع لورا لحد الـ source؛ وعند كل node احتفظ بس بـ <b>أقل</b> مسافة للـ destination.",
       "الـ Recursion: الـ <bdi dir=\"ltr\">d(node,&nbsp;T)</bdi> بتساوي الـ min على كل الـ arcs <bdi dir=\"ltr\">(node&nbsp;→&nbsp;next)</bdi> لـ:<span class=\"ltr\">[ length(node → next) + d(next, T) ]</span>سجّل الـ next node اللي بيدّي الـ minimum، وبعدين اقرا الـ path من الأول للآخر.",
       "اختصار معيد: اكتب كل الـ paths وخد أقصرهم؛ بس الامتحان بيطلب الشغل الـ backward stage بـ stage، فلازم توضح الـ stages."
-     ]
+     ],
+     "figH": {
+      "or-dp-stages": "الـ network بتاعة الـ slide متقسمة stages، وبتتحل backward من الـ destination لحد الـ source",
+      "or-dp-node": "الـ Recursion عند node واحدة: طول الـ arc زائد الـ d بتاع الـ node اللي بعدها لكل arc، وناخد الأقل",
+      "or-dp-allpaths": "الاختصار: كل الـ paths مكتوبة ومتجمعة، قصاد الـ stages الـ backward"
+     }
     },
     {
-     "h": "امتحان الـ Final <bdi dir=\"ltr\">2021/22</bdi> والـ Sheet 2: من M1 لـ M7"
+     "h": "امتحان الـ Final <bdi dir=\"ltr\">2021/22</bdi> والـ Sheet 2: من M1 لـ M7",
+     "figH": {
+      "or-dp-m1m7": "من الـ M1 للـ M7 بالـ backward node بـ node، لحد الـ path ده:<span class=\"ltr\">M1-M2-M4-M6-M7 = 25</span>"
+     }
     },
     {
-     "h": "امتحان الـ Final <bdi dir=\"ltr\">2019/20</bdi>: من S لـ T"
+     "h": "امتحان الـ Final <bdi dir=\"ltr\">2019/20</bdi>: من S لـ T",
+     "figH": {
+      "or-dp-st": "من الـ S للـ T بالـ backward stage بـ stage، لحد الـ path ده:<span class=\"ltr\">S-A-E-T = 9</span>وبعدها جرّب network بتاعتك"
+     }
     },
     {
-     "h": "امتحانات الـ Final <bdi dir=\"ltr\">2023/24</bdi> (الورقتين): من node 1 لـ node 10"
+     "h": "امتحانات الـ Final <bdi dir=\"ltr\">2023/24</bdi> (الورقتين): من node 1 لـ node 10",
+     "figH": {
+      "or-dp-n10": "من الـ node 1 للـ node 10 بالـ backward في الورقتين: الـ arcs مختلفة بس نفس الـ path:<span class=\"ltr\">1-2-5-8-10 = 15</span>"
+     }
     },
     {
-     "h": "امتحان الـ Final <bdi dir=\"ltr\">2025/26</bdi>: من J1 لـ J8"
+     "h": "امتحان الـ Final <bdi dir=\"ltr\">2025/26</bdi>: من J1 لـ J8",
+     "figH": {
+      "or-dp-j8": "من الـ J1 للـ J8 بالـ backward node بـ node، لحد الـ path ده:<span class=\"ltr\">J1-J2-J6-J8 = 16</span>"
+     }
     },
     {
-     "h": "سؤال الـ MCQ رقم 21 في الـ Revision: من N1 لـ N6"
+     "h": "سؤال الـ MCQ رقم 21 في الـ Revision: من N1 لـ N6",
+     "figH": {
+      "or-dp-n6": "من الـ N1 للـ N6 بالـ backward، والنتيجة:<span class=\"ltr\">d(N1) = 7: N1, N3, N5, N6</span>ودي الإجابة D."
+     }
     }
    ],
    "cards": [

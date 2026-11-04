@@ -591,7 +591,13 @@ COURSES.web = {
     },
     {
      "h": "A simple HTML document",
-     "code": "<!DOCTYPE html>          <!-- declares an HTML5 document -->\n<html>                   <!-- beginning of the html document -->\n<head>                   <!-- meta information about the page -->\n  <title>Page Title</title>   <!-- title shown in the browser tab -->\n</head>\n<body>                   <!-- the visible page content -->\n  <h1>My First Heading</h1>   <!-- a large heading -->\n  <p>My first paragraph.</p>  <!-- a paragraph -->\n</body>\n</html>"
+     "code": "<!DOCTYPE html>          <!-- declares an HTML5 document -->\n<html>                   <!-- beginning of the html document -->\n<head>                   <!-- meta information about the page -->\n  <title>Page Title</title>   <!-- title shown in the browser tab -->\n</head>\n<body>                   <!-- the visible page content -->\n  <h1>My First Heading</h1>   <!-- a large heading -->\n  <p>My first paragraph.</p>  <!-- a paragraph -->\n</body>\n</html>",
+     "fig": [
+      "wb-doc"
+     ],
+     "figH": {
+      "wb-doc": "The simple HTML document line by line, and what the browser shows"
+     }
     },
     {
      "h": "Elements, tags and nesting",
@@ -603,7 +609,19 @@ COURSES.web = {
       "All web pages share a common structure and should contain the pair tags <code>&lt;HTML&gt;</code>, <code>&lt;HEAD&gt;</code>, <code>&lt;TITLE&gt;</code> and <code>&lt;BODY&gt;</code>.",
       "<b>Never skip the end tag</b>: some elements (like <code>&lt;p&gt;</code>) display correctly without it, but you should not rely on that.",
       "<b>HTML is not case sensitive</b>: <code>&lt;P&gt;</code> means the same as <code>&lt;p&gt;</code> (W3C recommends lowercase, and XHTML requires it)."
-     ]
+     ],
+     "fig": [
+      "wb-element",
+      "wb-nest"
+     ],
+     "figAt": {
+      "wb-element": 1,
+      "wb-nest": 3
+     },
+     "figH": {
+      "wb-element": "An element: start tag, content, end tag; and empty elements",
+      "wb-nest": "Nesting checked tag by tag: close the nearest open tag first"
+     }
     },
     {
      "h": "Document rules: DOCTYPE, html, head, title, body",
@@ -612,7 +630,16 @@ COURSES.web = {
       "The document begins with <code>&lt;html&gt;</code> and ends with <code>&lt;/html&gt;</code> (the first tag after the DOCTYPE).",
       "The <b>visible part</b> of the document is between <code>&lt;body&gt;</code> and <code>&lt;/body&gt;</code>. Metadata lives in <code>&lt;head&gt;</code> (title, meta, link, style, script), never visible content like tables.",
       "<b>&lt;title&gt;</b>: choose carefully; the title determines the page's <b>ranking in certain search engines</b> and appears in Favorites, History and Bookmark lists."
-     ]
+     ],
+     "fig": [
+      "wb-headbody"
+     ],
+     "figAt": {
+      "wb-headbody": 2
+     },
+     "figH": {
+      "wb-headbody": "Head or body? Put each tag where it belongs"
+     }
     },
     {
      "h": "Headings, paragraphs, links",
@@ -622,7 +649,22 @@ COURSES.web = {
       "Links use the <code>&lt;a&gt;</code> (anchor) tag; the <b>href</b> attribute gives the destination: <code>&lt;a href=\"https://www.google.com\"&gt;This is a link&lt;/a&gt;</code>.",
       "<b>target=\"_blank\"</b> opens the link in a new window/tab (<code>_self</code> = same frame, the default; <code>_parent</code>, <code>_top</code> are other values). An image link is <code>&lt;a href=\"url\"&gt;&lt;img src=\"logo.png\"&gt;&lt;/a&gt;</code>.",
       "<b>View source</b>: right-click then \"View Page Source\" (Chrome) or \"View Source\" (Edge). \"Inspect\" shows the HTML and CSS of an element and lets you edit them on the fly."
-     ]
+     ],
+     "fig": [
+      "wb-headings",
+      "wb-link",
+      "wb-viewsrc"
+     ],
+     "figAt": {
+      "wb-headings": 0,
+      "wb-link": 3,
+      "wb-viewsrc": 4
+     },
+     "figH": {
+      "wb-headings": "&lt;h1&gt; to &lt;h6&gt;, from the most to the least important",
+      "wb-link": "Click the link: the target decides same tab or new tab",
+      "wb-viewsrc": "The page, View Page Source, and Inspect with edits on the fly"
+     }
     },
     {
      "h": "Attributes",
@@ -635,7 +677,22 @@ COURSES.web = {
       "<b>style</b>: adds styles such as color, font, size: <code>&lt;p style=\"color:red;\"&gt;</code>.",
       "<b>lang</b>: declare the language in <code>&lt;html lang=\"en\"&gt;</code> to assist search engines and browsers. <code>lang=\"en-US\"</code>: first two characters = language, last two = country.",
       "<b>title</b>: extra information shown as a <b>tooltip</b> when the mouse is over the element."
-     ]
+     ],
+     "fig": [
+      "wb-attr",
+      "wb-img",
+      "wb-pattrs"
+     ],
+     "figAt": {
+      "wb-attr": 0,
+      "wb-img": 4,
+      "wb-pattrs": 7
+     },
+     "figH": {
+      "wb-attr": "Attributes: name=\"value\" pairs inside the start tag",
+      "wb-img": "&lt;img&gt; with src, width, height and alt: break the src and see alt",
+      "wb-pattrs": "style, title and lang tried live"
+     }
     },
     {
      "h": "Absolute vs relative URLs (src / href)",
@@ -665,7 +722,13 @@ COURSES.web = {
        "Relative URLs",
        "Link other pages within the same site"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-url"
+     ],
+     "figH": {
+      "wb-url": "Where each URL points: absolute, relative to the page, relative to the domain"
+     }
     }
    ],
    "cards": [

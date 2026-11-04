@@ -18,7 +18,16 @@ COURSES.micro = {
       "<b>Computer software</b> translates concepts and directions that people can understand into something that can actually be done on the hardware. It tells the computer <b>what to do and where to do it</b>. These commands are called <b>source code</b>.",
       "A <b>compiler</b> is another program used on the source code, transforming the commands into a language the computer understands. The result is an <b>executable program</b> (another name for software).",
       "<b>Three categories of software</b>: <b>System software</b> (programs that allow the hardware to run properly), <b>Application software</b> (programs that let users do something besides simply running the hardware), <b>Programming software</b> (allows programmers to build software)."
-     ]
+     ],
+     "fig": [
+      "mp-l1-source-to-binary"
+     ],
+     "figAt": {
+      "mp-l1-source-to-binary": 2
+     },
+     "figH": {
+      "mp-l1-source-to-binary": "From people's directions to on and off: source code, compiler, executable"
+     }
     },
     {
      "h": "Three categories of programming languages",
@@ -39,7 +48,13 @@ COURSES.micro = {
        "High-level language",
        "<b>Machine-independent</b> (C, FORTRAN, Java). Closer to human languages and further from machine languages."
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l1-language-stack"
+     ],
+     "figH": {
+      "mp-l1-language-stack": "The slide's staircase: hardware, machine, assembly and high-level languages"
+     }
     },
     {
      "h": "Assembly language and the assembler",
@@ -49,7 +64,19 @@ COURSES.micro = {
       "To run, an assembly program must be translated into machine code by an <b>assembler</b>: a program that translates a program written in a low-level language (<b>\"source code\"</b>) into executable code (<b>\"object code\"</b>). Figure: Source code (.ASM) → ASSEMBLER → Object code (.OBJ) → Hardware.",
       "File extensions (revision sheet): every assembly program is saved as <b>.ASM</b>; the coded object modules are in the <b>.OBJ</b> file; the linker then produces the <b>.EXE</b>.",
       "A <b>debugger</b> lets the programmer run the program <b>step by step</b> to find the exact location of an error."
-     ]
+     ],
+     "fig": [
+      "mp-l1-cpu-assembler-match",
+      "mp-l1-asm-obj-exe"
+     ],
+     "figAt": {
+      "mp-l1-cpu-assembler-match": 0,
+      "mp-l1-asm-obj-exe": 2
+     },
+     "figH": {
+      "mp-l1-cpu-assembler-match": "Hardware dependent: a program runs only on the CPU type its assembler targets",
+      "mp-l1-asm-obj-exe": "Source code (.ASM) → assembler → object code (.OBJ) → linker → .EXE → hardware"
+     }
     },
     {
      "h": "Debugger vs. Assembler (very frequent exam question)",
@@ -74,7 +101,13 @@ COURSES.micro = {
        "Good on short programs",
        "Good on long programs"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l1-debugger-assembler-sort"
+     ],
+     "figH": {
+      "mp-l1-debugger-assembler-sort": "Sort each statement: debugger or assembler?"
+     }
     },
     {
      "h": "Microcomputer block diagram",
@@ -86,7 +119,16 @@ COURSES.micro = {
       "<b>CU</b>: coordinates the sequencing of steps involved in executing machine instructions.",
       "<b>Clock</b>: synchronizes the internal operations of the CPU with other system components (it provides the basic timing for processor operation and bus control activity).",
       "<b>Memory storage unit</b>: where instructions and data are held while a program is running. It receives requests for data from the CPU, transfers data from RAM to the CPU, and from the CPU into memory."
-     ]
+     ],
+     "fig": [
+      "mp-l1-block-diagram"
+     ],
+     "figAt": {
+      "mp-l1-block-diagram": 1
+     },
+     "figH": {
+      "mp-l1-block-diagram": "The microcomputer block diagram, drawn part by part"
+     }
     },
     {
      "h": "Buses",
@@ -95,7 +137,13 @@ COURSES.micro = {
       "<b>Data bus</b>: transfers <b>instructions and data</b> between the CPU and memory.",
       "<b>Control bus</b>: uses <b>binary signals</b> to synchronize the actions of all devices attached to the system bus.",
       "<b>Address bus</b>: holds the <b>addresses</b> of instructions and data when the currently executing instruction transfers data between the CPU and memory."
-     ]
+     ],
+     "fig": [
+      "mp-l1-bus-read-write"
+     ],
+     "figH": {
+      "mp-l1-bus-read-write": "One read or write between CPU and memory: address, control, then data bus"
+     }
     },
     {
      "h": "Types of memory",
@@ -124,7 +172,13 @@ COURSES.micro = {
        "EEPROM (Electrically Erasable PROM)",
        "Rewritten <b>electrically while the chip is on the circuit board</b>, but the writing process is <b>slow</b>. Holds <b>firmware</b> such as the <b>BIOS</b> so it can be updated."
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l1-memory-chip-lab"
+     ],
+     "figH": {
+      "mp-l1-memory-chip-lab": "Memory chip lab: write, power off, UV-erase or program each type"
+     }
     },
     {
      "h": "Registers (preview) and Lab 1",
@@ -132,7 +186,16 @@ COURSES.micro = {
       "A <b>register</b> is a <b>high speed temporary storage area built into a CPU</b>. (Lab: \"a high-speed memory\"; each register has a specific length.)",
       "Lab 1: assembly language is a low-level language that works on the memory of the processor. We work on the model of the <b>Intel 8086</b> processor, using the <b>emu8086</b> emulator (New → empty workspace → write code → <b>emulate</b>; <b>single step</b> runs line by line, <b>run</b> runs the whole program).",
       "Lab register types: <b>1. General purpose</b> (AX, BX, CX, DX, SI, DI, SP, BP), <b>2. Special purpose</b> (IP, FLAGS), <b>3. Segment</b> (CS, DS, ES, SS). Details in Lecture 2."
-     ]
+     ],
+     "fig": [
+      "mp-l1-register-map"
+     ],
+     "figAt": {
+      "mp-l1-register-map": 2
+     },
+     "figH": {
+      "mp-l1-register-map": "The slide's register map: five groups, or the lab's three types"
+     }
     }
    ],
    "cards": [
@@ -1916,7 +1979,16 @@ COURSES.micro = {
      "pts": [
       "An addressing mode is <b>the approach in which data is addressed in memory</b>. Modes include register, immediate, direct and displacement addressing (this lecture), then register indirect, indexed, base plus index and base plus index plus displacement (Lecture 4).",
       "The MOV instruction is used to show the differences among the modes."
-     ]
+     ],
+     "fig": [
+      "mp-modes-overview"
+     ],
+     "figAt": {
+      "mp-modes-overview": 1
+     },
+     "figH": {
+      "mp-modes-overview": "One MOV, four modes: where the source data comes from"
+     }
     },
     {
      "h": "Register addressing and its restrictions",
@@ -1928,7 +2000,18 @@ COURSES.micro = {
       "<b>4. Memory to memory moves are not allowed</b> (except string instructions): <code>MOV [DI], [SI]</code>, <code>MOV [AX], [5000H]</code> are incorrect.",
       "<b>5. The destination cannot be immediate data</b>: <code>MOV 55H, BL</code>, <code>MOV 100, [DI]</code> are impossible. The destination can be a register or a memory location.",
       "Copying between any general registers of the same size is allowed: <code>MOV EAX, ESP</code> copies ESP into EAX (the source keeps its value; MOV never deletes the source)."
-     ]
+     ],
+     "fig": [
+      "mp-seg-detour",
+      "mp-mov-check"
+     ],
+     "figAt": {
+      "mp-seg-detour": 2
+     },
+     "figH": {
+      "mp-seg-detour": "Segment to segment: MOV AX, CS then MOV DS, AX",
+      "mp-mov-check": "MOV checker: is the instruction legal, and which rule does it break?"
+     }
     },
     {
      "h": "Immediate addressing",
@@ -1937,7 +2020,13 @@ COURSES.micro = {
       "<code>MOV BL, 44</code> (8 bits), <code>MOV AX, 44H</code> (16 bits), <code>MOV CH, 100</code> (8 bits), <code>MOV EAX, 12</code> (32 bits), <code>MOV EBX, 100B</code> (32 bits, binary 100).",
       "<code>MOV AX, 0005H</code> belongs to <b>immediate</b> addressing; <code>MOV AX, BX</code> belongs to <b>register</b> addressing.",
       "Number suffixes: H = hexadecimal, B = binary (e.g. <code>MOV AX, 1001b</code>), no suffix = decimal."
-     ]
+     ],
+     "fig": [
+      "mp-immediate"
+     ],
+     "figH": {
+      "mp-immediate": "Immediate data: the suffix decides the value, the register its size"
+     }
     },
     {
      "h": "Direct and displacement addressing",
@@ -1945,7 +2034,16 @@ COURSES.micro = {
       "<b>Direct addressing</b>: MOV transfers data between a memory location in the data segment and <b>AL, AX or EAX</b>. <code>MOV AL, [123H]</code> (default segment DS); <code>MOV EAX, ES:[123H]</code> (segment forced to ES).",
       "<b>Displacement addressing</b>: same idea but between memory and <b>all other registers</b>. <code>MOV CL, [123H]</code> (DS); <code>MOV EBX, ES:[123H]</code> (ES).",
       "(Exams also call <code>MOV EAX, [DI]</code> \"direct addressing environment\"; it is really register indirect, see Lecture 4, but the address calculation is the same: DS×10 + DI.)"
-     ]
+     ],
+     "fig": [
+      "mp-direct-disp"
+     ],
+     "figAt": {
+      "mp-direct-disp": 1
+     },
+     "figH": {
+      "mp-direct-disp": "Direct or displacement? It depends on the register"
+     }
     },
     {
      "h": "Segment:offset and the physical address",
@@ -1956,7 +2054,13 @@ COURSES.micro = {
       "\"× 10\" in hex = shift one hex digit left = × 16 decimal",
       "Example: DS = 1000  →  segment base = 10000",
       "Example: DS = 20A0  →  base = 20A00"
-     ]
+     ],
+     "fig": [
+      "mp-phys-addr"
+     ],
+     "figH": {
+      "mp-phys-addr": "Physical address = segment × 10H + offset, digit by digit"
+     }
     },
     {
      "h": "Lecture examples (DS=1000, ES=1400, DI=150, EAX=1234)",
@@ -1967,18 +2071,36 @@ COURSES.micro = {
       "MOV BL, ES:[1234H]  (segment override):",
       "  address = ES×10 + 1234 = 14000 + 1234 = 15234",
       "  the byte at 15234 (e.g. 33) is copied into BL"
-     ]
+     ],
+     "fig": [
+      "mp-lec3-figure"
+     ],
+     "figH": {
+      "mp-lec3-figure": "The slides' figure: segment × 10 + offset points to the byte that goes to AL or BL"
+     }
     },
     {
      "h": "Segment overriding",
      "pts": [
       "<b>Segment overriding</b>: when a default offset register is not used with its default base segment register but with a different one, by writing the segment before the offset. Example: <code>MOV BL, ES:[1234H]</code>, <code>MOV AL, CS:[BX]</code>, <code>MOV AX, DS:[BP]</code>.",
       "A default segment <b>can</b> be overridden. <code>MOV ES:SI, CX</code> is <b>illegal</b> (the brackets are missing: SI is a register, not a memory operand); <code>MOV ES:[SI], CX</code> would be correct."
-     ]
+     ],
+     "fig": [
+      "mp-override"
+     ],
+     "figH": {
+      "mp-override": "Segment override: the prefix replaces the default segment"
+     }
     },
     {
      "h": "Lab 3: first programs in emu8086",
-     "code": "; ADD 5 , 6           -> AX = 11 (0Bh)\nMOV AX, 5\nADD AX, 6\n\n; SUB 11 , 7           -> AX = 4\nMOV AX, 11\nSUB AX, 7\n\n; exchange AX and BX   -> AX = 3, BX = 5\nMOV AX, 5\nMOV BX, 3\nXCHG AX, BX\n\n; (5 + 3 - 2) in CX    -> CX = 6\nMOV AX, 5\nADD AX, 3\nSUB AX, 2\nMOV CX, AX\n\n; INC / DEC change a value by 1\nMOV AX, 5\nINC AX                 ; AX = 6\nMOV AX, 3\nDEC AX                 ; AX = 2"
+     "code": "; ADD 5 , 6           -> AX = 11 (0Bh)\nMOV AX, 5\nADD AX, 6\n\n; SUB 11 , 7           -> AX = 4\nMOV AX, 11\nSUB AX, 7\n\n; exchange AX and BX   -> AX = 3, BX = 5\nMOV AX, 5\nMOV BX, 3\nXCHG AX, BX\n\n; (5 + 3 - 2) in CX    -> CX = 6\nMOV AX, 5\nADD AX, 3\nSUB AX, 2\nMOV CX, AX\n\n; INC / DEC change a value by 1\nMOV AX, 5\nINC AX                 ; AX = 6\nMOV AX, 3\nDEC AX                 ; AX = 2",
+     "fig": [
+      "mp-lab3"
+     ],
+     "figH": {
+      "mp-lab3": "Lab 3 programs run line by line, or write your own"
+     }
     }
    ],
    "cards": [

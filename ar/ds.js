@@ -13,10 +13,17 @@ AR.ds = {
       "أمثلة: الـ <b>boolean</b>: الـ domain هو <bdi dir=\"ltr\">0,1</bdi>، والـ operations هي:<span class=\"ltr\">and, or, =</span>والـ <b>char</b>: الـ domain هو ASCII، والـ operations هي:<span class=\"ltr\">=, &lt;&gt;, &lt;</span>والـ <b>integer</b>: الـ domain من <bdi dir=\"ltr\">-⁠maxint</bdi> لـ <bdi dir=\"ltr\">+maxint</bdi>، والـ operations هي:<span class=\"ltr\">+, -, =, ==, &lt;&gt;, &lt;</span>",
       "الـ <b>Data structure</b>: طريقة معينة لـ <b>تخزين وتنظيم الداتا</b> في الكمبيوتر عشان نستخدمها <b>بكفاءة وفاعلية (efficiently and effectively)</b>. هو الـ <b>logical أو mathematical model</b> لتنظيم معين للداتا، يعني مجموعة data elements متجمعة تحت اسم واحد (زي الـ array). الـ data structures بتخلي الكود أنضف وأسهل في الفهم.",
       "<b>ليه محتاجين data structures؟</b> الهدف (Goal): تنظيم الداتا. المعايير (Criteria): تسهيل <b>التخزين (storage)</b> و<b>الاسترجاع (retrieval)</b> و<b>التعديل (manipulation)</b> للداتا بكفاءة. مسألة التصميم (Design issue): إنك تختار وتصمم الـ data types المناسبة (وده أهم سبب بنذاكر عشانه data structures)."
-     ]
+     ],
+     "figH": {
+      "ds-data-flow": "الداتا بتدخل والـ information بتطلع: قراية وتخزين ومعالجة وإخراج",
+      "ds-data-type": "الـ data type هو domain ومعاه operations: جرّب operation غلط"
+     }
     },
     {
-     "h": "تقسيم الـ data structures (المحاضرة + Lab 1)"
+     "h": "تقسيم الـ data structures (المحاضرة + Lab 1)",
+     "figH": {
+      "ds-classify": "شجرة تقسيم الـ data structures من slide 10 خطوة بخطوة"
+     }
     },
     {
      "h": "الـ operations والـ Abstract Data Types (ADT)",
@@ -27,7 +34,11 @@ AR.ds = {
       "الـ <b>ADT</b>: <b>تجريد (abstraction) للـ data structure</b> بيدّيك <b>الـ interface بس</b> اللي الـ data structure لازم يلتزم بيه. الـ interface مش بيقول أي تفاصيل عن الـ implementation ولا بأنهي programming language (يعني بيخليك تفكر في الداتا بشكل مجرد).",
       "الـ ADTs <b>حاجات نظرية بحتة (purely theoretical)</b>: بنستخدمها عشان نبسّط وصف الـ abstract algorithms ونصنّف ونقيّم الـ data structures. الـ ADT هو مجموعة داتا + set of operations على الداتا دي.",
       "أمثلة ADT والـ implementation بتاعه:<span class=\"ltr\"><b>List</b> → dynamic array, linked list</span><span class=\"ltr\"><b>Queue</b> → linked-list based queue, array based queue</span><span class=\"ltr\"><b>Map</b> → tree map, hash map / hash table</span>التشبيه: الـ <b>Vehicle</b> (ADT) والـ implementations بتاعته:<span class=\"ltr\">golf car, bicycle, smart car</span>"
-     ]
+     ],
+     "figH": {
+      "ds-ops": "العمليات الست على الـ list اللي في slide 16",
+      "ds-adt": "الـ ADT الواحد وليه أكتر من implementation"
+     }
     },
     {
      "h": "الـ Arrays (المحاضرة + Lab 1)",
@@ -39,13 +50,23 @@ AR.ds = {
       "الـ <bdi dir=\"ltr\">C++</bdi> بتبعت <b>الـ array كله by reference</b> للـ functions، بس <b>العنصر الواحد بيتبعت by value</b> زي أي variable عادي.",
       "الحجم في الـ memory بيساوي عدد العناصر × حجم الـ type، مثلًا <bdi dir=\"ltr\">int&nbsp;arr[15]</bdi> والـ int بـ 4 bytes:<span class=\"ltr\">15 × 4 bytes = <b>60 bytes</b></span>",
       "الميزة: سهل تخزن عناصر من نفس النوع، والـ access مباشر بالـ index. <b>العيب: الحجم ثابت (fixed size)</b> (بيتحدد وقت الـ design ومايكبرش)."
-     ]
+     ],
+     "figH": {
+      "ds-array-loc": "تمثيل الـ list بـ array ومعادلة مكان العنصر",
+      "ds-array-init": "أربع طرق تدخّل بيها داتا في الـ array",
+      "ds-array-pass": "الـ array كله by reference والعنصر الواحد by value",
+      "ds-array-size": "أماكن متتالية في الـ memory وحساب حجم الـ array"
+     }
     },
     {
      "h": "الـ insert والـ delete في الـ array (كود الدكتورة)"
     },
     {
-     "h": "عمليات على الـ array: الـ sum والـ average والـ sort"
+     "h": "عمليات على الـ array: الـ sum والـ average والـ sort",
+     "figH": {
+      "ds-sum-avg": "الـ sum والـ average خطوة بخطوة جوه الـ loop",
+      "ds-sort-trace": "الـ sort التنازلي مقارنة بمقارنة"
+     }
     },
     {
      "h": "الـ 2D arrays والـ matrices",
@@ -56,10 +77,20 @@ AR.ds = {
       "الـ <b>Transpose</b>: الـ matrix اللي <bdi dir=\"ltr\">m×n</bdi> بتبقى <bdi dir=\"ltr\">n×m</bdi> و:<span class=\"ltr\">M<sup>T</sup>(j,i) = M(i,j)</span>",
       "الـ <b>Addition</b>: بس للـ matrices اللي <b>ليها نفس الأبعاد</b>:<span class=\"ltr\">C(i,j) = A(i,j) + B(i,j)</span>",
       "الـ <b>Multiplication</b>: بيتعمل بس لما <b>عدد columns بتاع A يساوي عدد rows بتاع B</b>:<span class=\"ltr\">A (m×n) × B (n×q) = C (m×q)</span><span class=\"ltr\">C(i,j) = Σ<sub>k=1..n</sub> A(i,k)·B(k,j)</span>"
-     ]
+     ],
+     "figH": {
+      "ds-2d-grid": "الـ 2D array كجدول فيه rows و columns",
+      "ds-row-major": "إزاي نلاقي مكان العنصر في الـ row-major",
+      "ds-transpose": "الـ transpose عنصر بعنصر",
+      "ds-mat-add": "جمع الـ matrices خانة بخانة",
+      "ds-mat-dims": "إمتى ينفع نضرب A في B، والناتج مقاسه كام؟"
+     }
     },
     {
-     "h": "ضرب الـ matrices (كود الدكتورة، الجزء الأساسي)"
+     "h": "ضرب الـ matrices (كود الدكتورة، الجزء الأساسي)",
+     "figH": {
+      "ds-mat-mult": "كود الضرب خطوة بخطوة مع الـ i والـ j والـ k"
+     }
     },
     {
      "h": "الـ Structs",
@@ -70,10 +101,19 @@ AR.ds = {
       "الـ <b>Array of structs</b>:<pre>struct StudentRec {\n  string name;\n  int mark;\n} Student[2];</pre>وبعدين:<pre>Student[i].name\nStudent[i].mark</pre>",
       "<b>إنك تبعت struct لـ function</b>:<pre>void printInfo(Employee emp) {\n  cout&lt;&lt;emp.id;\n  cout&lt;&lt;emp.salary;\n}</pre>وبتتنادي كده:<pre>Employee e1 = {1, 1000};\nprintInfo(e1);</pre>(بيتبعت by value، يعني نسخة).",
       "خلي بالك ده سؤال بيحبوه جدًا في الـ final: \"باستخدام <b>array of struct</b> اكتب برنامج ياخد جدول من الـ user ويحسب الـ <bdi dir=\"ltr\">totals/⁠averages</bdi>\" (شوف الامتحانات القديمة)."
-     ]
+     ],
+     "figH": {
+      "ds-struct-vs-array": "الـ array والـ struct: نفس النوع مقابل أنواع وأطوال مختلفة",
+      "ds-struct-objects": "طريقتين تعرّف بيهم الـ objects، والـ members بالـ dot",
+      "ds-struct-array": "الـ array of structs بيتملي member بعد member",
+      "ds-struct-pass": "لما تبعت struct لـ function بتاخد نسخة منه"
+     }
     },
     {
-     "h": "مثال array of struct (شكل سؤال الامتحان)"
+     "h": "مثال array of struct (شكل سؤال الامتحان)",
+     "figH": {
+      "ds-emp-table": "شغّل برنامج الامتحان واحسب الـ total لـ 4 موظفين"
+     }
     }
    ],
    "cards": [
@@ -249,7 +289,12 @@ AR.ds = {
       "الفكرة: الـ <b>base بتاع الـ stack ثابت</b>؛ لما تضيف عنصر الـ top <b>بيزيد</b>، ولما تشيل العنصر اللي فوق الـ top <b>بيقل</b>.",
       "أمثلة من الحياة: <b>الكتب والهدوم</b> اللي متكومة فوق بعض؛ الـ <b>call logs في الموبايل</b>؛ الـ <b>browsers</b> (زرار الـ back بيرجعك للموقع اللي قبله)؛ الـ <b>text editors</b> (الـ <bdi dir=\"ltr\">undo/⁠redo</bdi>).",
       "التطبيقات (Lab 3): الـ <b>backtracking</b> (طريق في متاهة maze)، الـ <b>function calls</b> (بيحتفظ بمعلومات الـ functions الشغالة)، و<b>عكس الـ string</b> (تعمل push لكل حرف وبعدين pop)."
-     ]
+     ],
+     "figH": {
+      "ds-stack-slide-pics": "صور slide 4 و slide 5: بنضيف 10 و 20 وبعدين نشيلهم",
+      "ds-stack-real-life": "الـ undo والـ redo وزرار الـ back كلهم stacks",
+      "ds-stack-reverse": "عكس الـ string بـ push لكل حرف وبعدين pop"
+     }
     },
     {
      "h": "الـ operations والمصطلحات",
@@ -259,16 +304,25 @@ AR.ds = {
       "الـ <b>MAXSIZE</b>: مش مصطلح standard؛ هو أقصى حجم للـ stack.",
       "الـ <b>TOP</b>: بيشاور على أعلى الـ stack؛ بنستخدمه عشان نشيك على الـ <bdi dir=\"ltr\">overflow/⁠underflow</bdi>. <b>في الأول <bdi dir=\"ltr\">TOP&nbsp;=&nbsp;-⁠1</bdi></b>، فلما تعمل push الـ top <b>بيزيد الأول</b> وبعدين العنصر يتخزن في <code>stack[top]</code>.",
       "الـ <b>Underflow</b>: الـ stack مفيهوش ولا عنصر (الـ top تحت خالص، <bdi dir=\"ltr\">top&nbsp;==&nbsp;-⁠1</bdi>). الـ <b>Overflow</b>: الـ stack مليان (<bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE-⁠1</bdi>، الـ top في أعلى مكان)."
-     ]
+     ],
+     "figH": {
+      "ds-stack-limits": "الـ top بيبقى فين في الـ underflow وفين في الـ overflow"
+     }
     },
     {
-     "h": "الـ implementation الـ static مقابل الـ dynamic"
+     "h": "الـ implementation الـ static مقابل الـ dynamic",
+     "figH": {
+      "ds-stack-static-dynamic": "الـ array والـ linked list: اعمل push بعد 4 عناصر وشوف"
+     }
     },
     {
      "h": "الـ isEmpty والـ isFull والـ push والـ pop (كود الدكتورة)"
     },
     {
-     "h": "الـ display والـ count والـ search والـ get (كود الدكتورة)"
+     "h": "الـ display والـ count والـ search والـ get (كود الدكتورة)",
+     "figH": {
+      "ds-stack-funcs": "الـ display والـ count والـ search والـ get سطر بسطر"
+     }
     },
     {
      "h": "الـ Lab 3: الـ stack باستخدام dynamic array",
@@ -277,7 +331,12 @@ AR.ds = {
       "الـ menu فيها (i) للـ push، و(o) للـ pop، و(t) للـ traverse (بيعرض من الـ top نازل لحد index 0)، و(e) للـ exit.",
       "الـ Assignments: اعكس string باستخدام stack؛ الـ sum والـ average لـ stack مليان؛ والـ bonus <code>Stack_Copy()</code> من s1 لـ s2 الفاضي (اعمل pop في temp stack، وبعدين pop من الـ temp لـ s2 عشان الترتيب يفضل زي ما هو).",
       "شكل سؤال الامتحان عن جمل الـ push:<pre>top++;\nstack[top] = item;</pre>(زوّد الأول وبعدين خزّن) لأن الـ top بيبدأ من <bdi dir=\"ltr\">-⁠1</bdi>."
-     ]
+     ],
+     "figH": {
+      "ds-stack-lab-menu": "اختار الـ size وقت الـ run time وبعدين استخدم الـ menu",
+      "ds-stack-copy-sum": "الـ Stack_Copy عن طريق temp stack، والـ sum والـ average",
+      "ds-stack-push-order": "ليه الـ push بيزوّد الـ top الأول وبعدين يخزّن"
+     }
     }
    ],
    "cards": [
@@ -453,7 +512,10 @@ AR.ds = {
       "زي طابور التذاكر بالظبط: أول واحد في الطابور هو اللي بيخلص الأول.",
       "الـ <b>Front (head)</b>: مكان العنصر اللي جاهز يتخدم (أول واحد هيتشال). الـ <b>Rear (tail)</b>: مكان آخر عنصر، يعني أحدث واحد اتضاف.",
       "الـ <b><code>enqueue()</code></b> بتضيف عند الـ rear؛ والـ <b><code>dequeue()</code></b> بتشيل من الـ front. في الأول:<span class=\"ltr\">head = tail = -1</span>"
-     ]
+     ],
+     "figH": {
+      "ds-l3-fifo-line": "طابور slide 3: الـ dequeue من الـ front والـ enqueue عند الـ rear"
+     }
     },
     {
      "h": "الـ linear queue: الـ enqueue والـ dequeue (كود الدكتورة)"
@@ -464,7 +526,11 @@ AR.ds = {
       "في الـ trace اللي في الـ slide (array من 0 لـ 7) الـ rear بيتحرك يمين مع كل insert، والـ front بيتحرك يمين مع كل delete.",
       "لما الـ rear يوصل لآخر index (<b><bdi dir=\"ltr\">rear&nbsp;==&nbsp;MAX-⁠1</bdi></b>) الـ queue بيقول إنه full، <b>حتى لو فيه عناصر اتعملها dequeue</b> والخانات اللي في الأول فاضية (<bdi dir=\"ltr\">\"NO&nbsp;SPACE&nbsp;HERE\"</bdi> في الآخر وفي نفس الوقت فيه <bdi dir=\"ltr\">\"SPACE&nbsp;HERE\"</bdi> في الأول).",
       "يعني بعد شوية insertions وdeletions بيبقى فيه <b>مساحة فاضية مش قادر تستخدمها (non-usable)</b>؛ الـ dequeue بيزق الـ front لقدام وبيقلل الحجم اللي ينفع تستخدمه في الـ queue. ضياع الـ memory ده هو <b>السبب اللي محتاجين عشانه الـ circular queue</b>."
-     ]
+     ],
+     "figH": {
+      "ds-l3-slide-trace": "الـ trace بتاع الـ slides: الـ rear وصل لآخر index والخانات الأولانية فاضية",
+      "ds-l3-wasted": "الـ queue لسه full حتى بعد ما شيلنا عنصرين"
+     }
     },
     {
      "h": "الـ Circular queue",
@@ -474,16 +540,27 @@ AR.ds = {
       "الـ <b>Enqueue</b>: شيك على الـ full في حالتين: الأولى (1):<span class=\"ltr\"><b>head == 0 &amp;&amp; tail == SIZE-1</b></span>والتانية (2) <b>الـ tail أقل من الـ head بواحد بالظبط</b>. الـ slide كاتبة:<pre>tail == (head-1) % (MAXSIZE-1)</pre>والـ test الـ standard الواحد هو:<pre>(tail+1) % SIZE == head</pre>لأول عنصر خلي <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi>. زوّد الـ tail بشكل دايري:<pre>tail = (tail+1) % SIZE</pre>وخزّن العنصر عند الـ tail.",
       "الـ <b>Dequeue</b>: شيك على الـ empty (<bdi dir=\"ltr\">head&nbsp;==&nbsp;-⁠1</bdi>). رجّع القيمة اللي عند الـ head. زوّد الـ head بشكل دايري:<pre>head = (head+1) % SIZE</pre>ولو ده <b>آخر عنصر</b> (<bdi dir=\"ltr\">head&nbsp;==&nbsp;tail</bdi>) رجّع الـ head والـ tail لـ <bdi dir=\"ltr\">-⁠1</bdi>.",
       "مثال الـ slide: بعد 2 dequeue الـ queues الاتنين الـ front عندهم عند 72 والـ rear عند 24؛ إضافة 100 <b>مش ممكنة في الـ linear queue</b> (الـ rear في الآخر) بس <b>ممكنة في الـ circular queue</b> (الـ rear بيلف لـ index 0)."
-     ]
+     ],
+     "figH": {
+      "ds-l3-ring": "آخر خانة بتتوصل بأول خانة فبيبقى دايرة",
+      "ds-l3-full-check": "حالتين الـ full متجربين على أي head وأي tail",
+      "ds-l3-insert-100": "إضافة الـ 100 بتفشل في الـ linear وبتلف لأول خانة في الـ circular"
+     }
     },
     {
-     "h": "الـ linear queue مقابل الـ circular queue"
+     "h": "الـ linear queue مقابل الـ circular queue",
+     "figH": {
+      "ds-l3-vs-sim": "نفس العمليات على الـ queues الاتنين، ومعاها سطر الجدول اللي بيشرحها"
+     }
     },
     {
      "h": "الـ enQueue والـ deQueue في الـ circular queue (كود الدكتورة)"
     },
     {
-     "h": "الـ trace محلول (امتحان <bdi dir=\"ltr\">2022/⁠23</bdi>، والـ size بـ 5)"
+     "h": "الـ trace محلول (امتحان <bdi dir=\"ltr\">2022/⁠23</bdi>، والـ size بـ 5)",
+     "figH": {
+      "ds-l3-exam-trace": "الـ trace بتاع الامتحان سطر بسطر"
+     }
     }
    ],
    "cards": [

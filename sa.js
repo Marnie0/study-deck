@@ -1770,7 +1770,16 @@ COURSES.sa = {
       "<b>Process modeling</b>: graphically representing the processes that <b>capture, manipulate, store and distribute data</b> between a system and its environment and among system components. A common form is the DFD. You also model processing logic, timing, and data structures.",
       "Deliverables: <b>context DFD</b> (scope: which elements are inside and outside the system); <b>DFDs of the current physical and logical system</b> (to understand the current system); <b>DFDs of the new logical system</b> (technology independent; data flows, structure and functional requirements); <b>thorough description of each DFD component</b>.",
       "<b>DFD</b>: a picture of the <b>movement of data between external entities and the processes and data stores</b> within a system. Unlike system flowcharts, DFDs depict <b>logical</b> data flow independent of technology; flowcharts depict details of <b>physical</b> systems."
-     ]
+     ],
+     "fig": [
+      "sa-dfd-sdlc"
+     ],
+     "figAt": {
+      "sa-dfd-sdlc": 0
+     },
+     "figH": {
+      "sa-dfd-sdlc": "Where DFDs fit: the analysis phase of the SDLC (Figure 7-1)"
+     }
     },
     {
      "h": "The four DFD symbols",
@@ -1805,7 +1814,13 @@ COURSES.sa = {
        "Arrow (arrowhead gives direction)",
        "Noun phrase"
       ]
-     ]
+     ],
+     "fig": [
+      "sa-dfd-symbols"
+     ],
+     "figH": {
+      "sa-dfd-symbols": "The four symbols in both notations, DeMarco and Yourdon vs Gane and Sarson (Figure 7-2)"
+     }
     },
     {
      "h": "DFD diagramming rules (emphasised slides 8 to 13: the \"errors\" question)",
@@ -1816,7 +1831,19 @@ COURSES.sa = {
       "<b>Data flow</b>: bidirectional flow between a process and a data store is drawn as <b>two separate arrows</b>. A <b>forked</b> flow (one source, many destinations) and a <b>joined</b> flow (many sources, one destination) must refer to the <b>exact same data item</b>. A data flow <b>cannot go directly from a process to itself</b>; it must go through intervening processes. Flow labels are noun phrases.",
       "<b>Update vs retrieve</b>: a flow <b>from a process to a data store means update</b> (insert, delete or change); a flow <b>from a data store to a process means retrieve or use</b>.",
       "From the DFD deck: use double-headed arrows only when a process reads and updates the same table or file; a process name is verb-adjective-noun; the whole system process is numbered 0."
-     ]
+     ],
+     "fig": [
+      "sa-dfd-rules",
+      "sa-dfd-check"
+     ],
+     "figAt": {
+      "sa-dfd-rules": 3,
+      "sa-dfd-check": 4
+     },
+     "figH": {
+      "sa-dfd-rules": "Each rule drawn: not allowed vs allowed (slides 9 to 13)",
+      "sa-dfd-check": "Rule checker: add flows and see which rules they break, and which flows are update or retrieve"
+     }
     },
     {
      "h": "Decomposition and DFD levels",
@@ -1827,7 +1854,16 @@ COURSES.sa = {
       "<b>Level-1 DFD</b>: sub-processes of one Level-0 process; for process 4.0 they are labeled <b>4.1, 4.2, ...</b>. <b>Level-n</b>: sub-processes of a Level n-1 process, e.g. 4.3.1, 4.3.2. Child diagram number = parent process number.",
       "External entities are usually <b>not shown on child diagrams below Diagram 0</b>; a child may include a data store its parent connects to, and may contain data stores not shown on the parent. An <b>interface data flow</b> is an input or output of a child diagram matching the parent's flow.",
       "<b>Primitive DFD</b>: the <b>lowest logical level of decomposition</b>; processes that do not create a child diagram are called primitive."
-     ]
+     ],
+     "fig": [
+      "sa-dfd-levels"
+     ],
+     "figAt": {
+      "sa-dfd-levels": 3
+     },
+     "figH": {
+      "sa-dfd-levels": "Hoosier Burger decomposed: context, Level 0, Level 1 for 4.0, Level 2 for 4.3"
+     }
     },
     {
      "h": "Balancing and data flow splitting (emphasised slide 22)",
@@ -1837,7 +1873,19 @@ COURSES.sa = {
       "Unbalanced example (Fig 7-10): context process has <b>1 input, 1 output</b> but the Level-0 diagram has <b>2 inputs</b> (Source One A and Source Two C) and 1 output.",
       "Balanced examples: context 1 input / 3 outputs = Level-0 1 input / 3 outputs; Process 1.0 with 1 input / 4 outputs = its Level-1 diagram.",
       "<b>Data flow splitting</b>: a <b>composite</b> flow at a higher level may be split into parts (disaggregated flows) going to different processes in the lower level; the diagram stays balanced because the same data is involved."
-     ]
+     ],
+     "fig": [
+      "sa-dfd-balance",
+      "sa-dfd-split"
+     ],
+     "figAt": {
+      "sa-dfd-balance": 3,
+      "sa-dfd-split": 4
+     },
+     "figH": {
+      "sa-dfd-balance": "Counting inputs and outputs: the unbalanced Figure 7-10 and the two balanced Hoosier Burger pairs",
+      "sa-dfd-split": "Payment and Coupon split into Payment and Coupon (Figure 7-11)"
+     }
     },
     {
      "h": "Guidelines and rules for stopping decomposition (emphasised slides 30, 31)",
@@ -1857,7 +1905,19 @@ COURSES.sa = {
       "<b>Level 1</b>: 2.1 Compute Gross Pay, 2.2 Compute Net Pay, 2.3 Create Payroll Check; 3.1 Sort Payroll Records by Employee, 3.2 Print Weekly Payroll Summary; 4.1 Calculate Payroll Deductions, 4.2 Print Employee Tax Form.",
       "<b>Level 2 (functional primitives)</b>: 4.1.1 Calculate Payroll Tax Deductions, 4.1.2 Calculate Non-tax Deductions, 4.1.3 Calculate Retirement Allowance, 4.2.1 Calculate Employee Vacation Pay, 4.2.2 Print Employee Tax Form.",
       "Other worked cases in the slides: Hoosier Burger food ordering (Level-0, Level-1 for process 1.0), Hoosier Burger inventory logical DFD, video rental (context + physical DFD), order processing, PVF WebStore (6 high-level processes: browse catalog, select item, display cart, check out, add/modify profile, order status)."
-     ]
+     ],
+     "fig": [
+      "sa-payroll-dfd",
+      "sa-dfd-cases"
+     ],
+     "figAt": {
+      "sa-payroll-dfd": 3,
+      "sa-dfd-cases": 4
+     },
+     "figH": {
+      "sa-payroll-dfd": "The payroll DFDs level by level (slides 33 to 36)",
+      "sa-dfd-cases": "Other cases: inventory logical DFD, video rental context, WebStore processes"
+     }
     },
     {
      "h": "How to answer \"list at least 10 errors in these DFDs\"",
@@ -1865,7 +1925,16 @@ COURSES.sa = {
       "Check each diagram for: more than one process or any data store on the <b>context</b>; processes with <b>only inputs</b> or <b>only outputs</b>; data stores with only inputs or only outputs, or connected directly to entities/stores; flows directly between entities; duplicated process numbers or data-store names; the <b>same flow label</b> used for different flows; forked/joined flows with <b>different labels</b>; double-headed arrows between two processes; wrong child numbering (e.g. P1.5.1 under P1.4).",
       "Then check <b>balancing between levels</b>: the inputs/outputs of P1 on Level 0 must equal the external flows of the Level-1 diagram, and the flows of P1.4 on Level 1 must equal the external flows of its Level-2 diagram; data stores used must also be consistent.",
       "Write each error as: <i>where</i> (level, symbol) + <i>which rule</i> + <i>the fix</i>. The full worked answer is in the 2023/24, 2025/26 and 2021/22 exams below."
-     ]
+     ],
+     "fig": [
+      "sa-dfd-errors"
+     ],
+     "figAt": {
+      "sa-dfd-errors": 1
+     },
+     "figH": {
+      "sa-dfd-errors": "The 2023/24 exam DFDs: 15 errors, one at a time"
+     }
     }
    ],
    "cards": [

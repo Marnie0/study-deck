@@ -18,7 +18,19 @@ COURSES.dm = {
       "A set can be defined in <b>two ways</b>: (1) <b>listing</b> (roster) the elements between curly braces <code>{ }</code> separated by commas, e.g. {1, 2, 3, 4, 5}; (2) using a <b>property</b> that defines the elements (set-builder), e.g. {x | x is odd and 0 &lt; x &lt; 100}.",
       "If x is an element of A we write <b>x ∈ A</b>; if x is not an element of A we write <b>x ∉ A</b>.",
       "<b>Well defined</b> means it is always clear whether an object belongs or not. \"The set of all even numbers less than 10\" is well defined; \"tall students\", \"good teachers\", \"beautiful cities\" are <b>not</b> (Midterm 2025/26 Q7)."
-     ]
+     ],
+     "fig": [
+      "dm-set-builder",
+      "dm-well-defined"
+     ],
+     "figAt": {
+      "dm-set-builder": 2,
+      "dm-well-defined": 3
+     },
+     "figH": {
+      "dm-set-builder": "Listing vs set-builder: the property picks the elements, and x ∈ A or x ∉ A",
+      "dm-well-defined": "Well defined or not? Sort the lecture's examples"
+     }
     },
     {
      "h": "Symbols and special sets",
@@ -78,7 +90,13 @@ COURSES.dm = {
       "8 ∈ C (8 = 2³)",
       "9 ∉ C (9 is not a power of 2)",
       "Note: B = C (same elements). D: the numbers strictly between 7 and 11 are 8, 9, 10, all composite, so D = ∅ (if \"between\" includes the ends, D = {7, 11})."
-     ]
+     ],
+     "fig": [
+      "dm-ex11-elements"
+     ],
+     "figH": {
+      "dm-ex11-elements": "Example 1.1 checked element by element: 5 ∈ A, 5 ∉ B, 8 ∈ C, 9 ∉ C, B = C, D = ∅"
+     }
     },
     {
      "h": "Types of sets",
@@ -89,7 +107,22 @@ COURSES.dm = {
       "<b>Finite set</b>: contains a definite number of elements. The empty set is also finite. Examples: colours of the rainbow, {x : x ∈ N, x &lt; 7}, primes up to 97.",
       "<b>Infinite set</b>: elements cannot all be listed (never-ending). Examples: points in a plane, {x : x ∈ N, x &gt; 1}, all prime numbers.",
       "<b>Universal set</b> U (or ξ): a set that contains all elements of the other given sets. If A = {1,2,3}, B = {2,3,4}, C = {3,5,7} then U = {1,2,3,4,5,7}. If P = whole numbers and Q = negative numbers, U = all integers."
-     ]
+     ],
+     "fig": [
+      "dm-subset-equal",
+      "dm-set-types",
+      "dm-universal-set"
+     ],
+     "figAt": {
+      "dm-subset-equal": 1,
+      "dm-set-types": 4,
+      "dm-universal-set": 5
+     },
+     "figH": {
+      "dm-subset-equal": "Subset and equal sets: check each element both ways, then see the Venn diagram",
+      "dm-set-types": "Empty, finite or infinite? Sort the lecture's examples",
+      "dm-universal-set": "Building the universal set: every element of A, B and C written once"
+     }
     },
     {
      "h": "Power set",
@@ -100,7 +133,16 @@ COURSES.dm = {
       "P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}} → 8 elements.",
       "<b>Rule: if |S| = n then |P(S)| = 2ⁿ</b> (each element is either in or out of a subset). The slide writes \"n[P(A)] = 4 = 2²\".",
       "∅ and S itself are always members of P(S)."
-     ]
+     ],
+     "fig": [
+      "dm-power-set"
+     ],
+     "figAt": {
+      "dm-power-set": 4
+     },
+     "figH": {
+      "dm-power-set": "The power set built element by element: each element doubles the subsets, so |P(S)| = 2ⁿ"
+     }
     },
     {
      "h": "∈ versus ⊆ (common exam trap)",
@@ -110,7 +152,16 @@ COURSES.dm = {
       "{2} is a subset of {1,2,3}; the number 2 is an element, not a subset.",
       "A ⊆ A is always true (every set is a subset of itself). A ∈ A is false for ordinary sets.",
       "Example (Exam 2021/22): A = {0, {0}}, B = {0}. B ∈ A is true ({0} is listed). B ⊆ A is true (0 ∈ A). P(B) = {∅, {0}} ⊆ A is <b>false</b> because ∅ is not an element of A."
-     ]
+     ],
+     "fig": [
+      "dm-in-vs-subset"
+     ],
+     "figAt": {
+      "dm-in-vs-subset": 4
+     },
+     "figH": {
+      "dm-in-vs-subset": "∈ or ⊆? Test each statement from the notes, or type your own"
+     }
     },
     {
      "h": "Lecture 1 operations preview",
@@ -121,7 +172,19 @@ COURSES.dm = {
       "Complement: if U is the universal set containing A, then U − A is the complement of A.",
       "Difference A \\ B = {x | x ∈ A, x ∉ B}, read \"A minus B\" (also written A − B or A ~ B).",
       "Example: U = students, M = male, F = female: U is the <b>disjoint union</b> of M and F, U = M ∪ F and M ∩ F = ∅."
-     ]
+     ],
+     "fig": [
+      "dm-venn-ops",
+      "dm-disjoint-union"
+     ],
+     "figAt": {
+      "dm-venn-ops": 4,
+      "dm-disjoint-union": 5
+     },
+     "figH": {
+      "dm-venn-ops": "The Venn figures: union, intersection, complement, difference and disjoint sets",
+      "dm-disjoint-union": "U = M ∪ F with M ∩ F = ∅: a disjoint union"
+     }
     },
     {
      "h": "Worked example from the lecture",
@@ -131,7 +194,13 @@ COURSES.dm = {
       "A ∩ B = {3,4}   A ∩ C = {2,3}   B ∩ C = {3}",
       "A \\ B = {1,2}   A \\ C = {1,4}   B \\ C = {4,5,6,7}",
       "A \\ E = {1,3} (remove the even numbers 2 and 4)"
-     ]
+     ],
+     "fig": [
+      "dm-ops-example"
+     ],
+     "figH": {
+      "dm-ops-example": "The worked example: each ∪, ∩ and \\ result found element by element"
+     }
     }
    ],
    "cards": [
@@ -643,7 +712,19 @@ COURSES.dm = {
       "<b>3. Complement</b> A′ (also Aᶜ or Ā) = {x : x ∈ U but x ∉ A} = U − A. Think \"not A\". Venn: everything inside the rectangle U but outside the circle A.",
       "<b>4. Cartesian product</b> A × B = {(a, b) | a ∈ A, b ∈ B}: all ordered pairs; |A × B| = |A|·|B| (e.g. |A| = 4, |B| = 3 → |A × B| = 12).",
       "<b>Difference</b> B − A = {x | x ∈ B and x ∉ A}: elements in B but not in A (shade the part of B outside A)."
-     ]
+     ],
+     "fig": [
+      "dm-ops-product",
+      "dm-ops-venn"
+     ],
+     "figAt": {
+      "dm-ops-product": 3,
+      "dm-ops-venn": 4
+     },
+     "figH": {
+      "dm-ops-product": "A × B filled pair by pair: |A| = 4 and |B| = 3 give 12 ordered pairs",
+      "dm-ops-venn": "Union, intersection, complement and difference shaded on the same Venn diagram"
+     }
     },
     {
      "h": "Ex 1 from the lecture (corrected)",
@@ -658,7 +739,13 @@ COURSES.dm = {
       "n) Aᶜ ∩ Bᶜ = {4,5,6,7,8,9,10} ∩ {1,2,5,7,8,9,10} = {5,7,8,9,10} (= (A ∪ B)ᶜ, De Morgan)",
       "s) Aᶜ ∪ Bᶜ = {1,2,4,5,6,7,8,9,10} (= (A ∩ B)ᶜ, De Morgan)",
       "Slide error: the slide writes \"A ∩ B = {1,2,3,4,6}\" and \"(A ∩ B)ᶜ = {5,7,8,9,10}\"; those are the union and its complement. The correct (A ∩ B)ᶜ is shown above."
-     ]
+     ],
+     "fig": [
+      "dm-ops-ex1"
+     ],
+     "figH": {
+      "dm-ops-ex1": "Ex 1 part by part on a Venn diagram of A, B and C"
+     }
     },
     {
      "h": "More examples",
@@ -667,7 +754,19 @@ COURSES.dm = {
       "Rule: if A ⊆ B then A ∩ B = A and A ∪ B = B.",
       "U = {1,2,3,4,5}, A = {1,2} → A′ = {3,4,5}. U = {1,…,6}, A = {2,4,6} → A′ = {1,3,5}.",
       "{2,4,6,8} ∩ {4,8,10,12} = {4,8}."
-     ]
+     ],
+     "fig": [
+      "dm-ops-subset",
+      "dm-ops-compl"
+     ],
+     "figAt": {
+      "dm-ops-subset": 1,
+      "dm-ops-compl": 2
+     },
+     "figH": {
+      "dm-ops-subset": "S inside T: the intersection is S, the union is T, T − S = {2}",
+      "dm-ops-compl": "A′ is what is left of U outside A, for both examples"
+     }
     },
     {
      "h": "Set identities (laws)",
@@ -716,7 +815,13 @@ COURSES.dm = {
        "A ∪ Aᶜ = U,  A ∩ Aᶜ = ∅",
        "Complement"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-identity-laws"
+     ],
+     "figH": {
+      "dm-identity-laws": "Check every law: both sides built up on Venn diagrams shade the same regions"
+     }
     },
     {
      "h": "Set operations mirror logic",
@@ -749,7 +854,13 @@ COURSES.dm = {
        "(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ",
        "¬(p ∧ q) ≡ ¬p ∨ ¬q"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-identity-logic"
+     ],
+     "figH": {
+      "dm-identity-logic": "Each Venn region is one truth-table row: ∪ is ∨, ∩ is ∧, complement is ¬"
+     }
     },
     {
      "h": "Exam-style method: computing Aᶜ ∩ B etc.",
@@ -761,7 +872,13 @@ COURSES.dm = {
       "Aᶜ = {3,6,7,8,9,10} → Aᶜ ∩ B = {3,7,8,9}",
       "A ∪ B = {1,2,3,4,5,7,8,9} → Aᶜ ∩ Bᶜ = {6,10}",
       "Bᶜ = {2,4,5,6,10} → A ∪ Bᶜ = {1,2,4,5,6,10}"
-     ]
+     ],
+     "fig": [
+      "dm-ops-calc"
+     ],
+     "figH": {
+      "dm-ops-calc": "Write the complements, then go element by element (Exam 2023/24)"
+     }
     }
    ],
    "cards": [
@@ -1142,7 +1259,19 @@ COURSES.dm = {
       "<b>Negation</b> of p, written <b>¬p</b> (or ~p), pronounced \"not p\": \"it is not the case that p\". Its truth value is the <b>opposite</b> of p.",
       "Examples: p: Today is Thursday → ¬p: Today is not Thursday. p: At least a foot of snow falls in Boulder on Fridays → ¬p: <b>Less than a foot</b> of snow falls in Boulder on Fridays.",
       "Negating \"at least a foot\" gives \"less than a foot\", not \"no snow\", and the day stays Fridays."
-     ]
+     ],
+     "fig": [
+      "dm-l3-prop",
+      "dm-l3-neg"
+     ],
+     "figAt": {
+      "dm-l3-prop": 1,
+      "dm-l3-neg": 4
+     },
+     "figH": {
+      "dm-l3-prop": "2 + 2 = 4 is a proposition; x + 1 = 2 becomes one only when x has a value",
+      "dm-l3-neg": "p and ¬p always have opposite truth values: why \"less than a foot\" is the negation and \"no snow\" is not"
+     }
     },
     {
      "h": "Connectives",
@@ -1182,7 +1311,13 @@ COURSES.dm = {
        "p ↔ q (also p ≡ q)",
        "p and q have equal (\"equivalent\") truth values: both true or both false"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l3-conn-sw"
+     ],
+     "figH": {
+      "dm-l3-conn-sw": "Flip p and q and watch all six connectives"
+     }
     },
     {
      "h": "Truth tables of the connectives",
@@ -1237,7 +1372,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l3-conn-tt"
+     ],
+     "figH": {
+      "dm-l3-conn-tt": "The connectives' truth table built column by column, with the row each rule hinges on boxed"
+     }
     },
     {
      "h": "Vocabulary",
@@ -1248,7 +1389,19 @@ COURSES.dm = {
       "A truth table with n variables has <b>2ⁿ rows</b>: 1 variable → 2 rows, 2 → 4, 3 → 8 (Midterm 2025/26 Q21).",
       "In p → q, p is the <b>hypothesis / antecedent</b> and q the <b>conclusion / consequent</b>.",
       "<b>Tautology</b> (logically true): every case is true, e.g. p ∨ ¬p."
-     ]
+     ],
+     "fig": [
+      "dm-l3-rows",
+      "dm-l3-taut"
+     ],
+     "figAt": {
+      "dm-l3-rows": 3,
+      "dm-l3-taut": 5
+     },
+     "figH": {
+      "dm-l3-rows": "Each new variable doubles the rows: 2ⁿ",
+      "dm-l3-taut": "p ∨ ¬p: every case is true, a tautology (build any truth table cell by cell)"
+     }
     },
     {
      "h": "Example: truth table of ¬P ∧ (P → Q)",
@@ -1288,7 +1441,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l3-tt-ex5"
+     ],
+     "figH": {
+      "dm-l3-tt-ex5": "The truth table of ¬P ∧ (P → Q), filled cell by cell"
+     }
     },
     {
      "h": "Example: (P → Q) ∨ (Q → P) is a tautology",
@@ -1328,7 +1487,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l3-tt-ex6"
+     ],
+     "figH": {
+      "dm-l3-tt-ex6": "Whenever one implication is false the other is true: the last column is all T"
+     }
     },
     {
      "h": "Example: truth table for (P → Q) ∧ (Q → R)",
@@ -1405,14 +1570,29 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l3-tt-ex7"
+     ],
+     "figH": {
+      "dm-l3-tt-ex7": "Three variables, eight rows: (P → Q) ∧ (Q → R) cell by cell"
+     }
     },
     {
      "h": "Negating \"all\" statements (quantifiers)",
      "pts": [
       "The negation of \"All animals can fly\" is \"<b>Some animals cannot fly</b>\" (there exists at least one that cannot). It is not \"All animals cannot fly\".",
       "In general ¬(∀x P(x)) ≡ ∃x ¬P(x) and ¬(∃x P(x)) ≡ ∀x ¬P(x)."
-     ]
+     ],
+     "fig": [
+      "dm-l3-quant"
+     ],
+     "figAt": {
+      "dm-l3-quant": 1
+     },
+     "figH": {
+      "dm-l3-quant": "The negation of \"All animals can fly\" is \"Some animals cannot fly\", not \"All animals cannot fly\""
+     }
     }
    ],
    "cards": [
@@ -1891,7 +2071,19 @@ COURSES.dm = {
       "Compound propositions with the same truth values in all possible cases are <b>logically equivalent</b>: p ≡ q means p ↔ q is a tautology.",
       "<b>Remark</b>: ≡ is not a logical connective and p ≡ q is not a compound proposition; it is the statement that p ↔ q is a tautology. The symbol ⇔ is sometimes used instead of ≡.",
       "Two statements are equivalent <b>if and only if</b> the columns of their truth tables agree."
-     ]
+     ],
+     "fig": [
+      "dm-taut-classify",
+      "dm-equiv-compare"
+     ],
+     "figAt": {
+      "dm-taut-classify": 1,
+      "dm-equiv-compare": 5
+     },
+     "figH": {
+      "dm-taut-classify": "Tautology or contradiction? Fill the truth table row by row and read the last column",
+      "dm-equiv-compare": "Equivalent or not? Compare the two columns row by row: A ≡ B exactly when A ↔ B is all T"
+     }
     },
     {
      "h": "Example 1.1.13 and 1.1.14 (t = tautology, c = contradiction)",
@@ -1936,7 +2128,13 @@ COURSES.dm = {
        "",
        "same as c: p ∧ c ≡ c"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-taut-table113"
+     ],
+     "figH": {
+      "dm-taut-table113": "The table of Examples 1.1.13 and 1.1.14 filled column by column"
+     }
     },
     {
      "h": "Theorem 1.1.1 Logical Equivalences (t = tautology, c = contradiction)",
@@ -2013,7 +2211,13 @@ COURSES.dm = {
        "~t ≡ c",
        "~c ≡ t"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-laws-check"
+     ],
+     "figH": {
+      "dm-laws-check": "Pick a law of Theorem 1.1.1 and check it with a truth table"
+     }
     },
     {
      "h": "De Morgan's law by truth table (Table 3)",
@@ -2063,7 +2267,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-equiv-demorgan"
+     ],
+     "figH": {
+      "dm-equiv-demorgan": "Table 3 built column by column: ¬(p ∨ q) and ¬p ∧ ¬q agree"
+     }
     },
     {
      "h": "p → q ≡ ¬p ∨ q (Table 4)",
@@ -2103,7 +2313,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-equiv-implication"
+     ],
+     "figH": {
+      "dm-equiv-implication": "Table 4 built column by column: ¬p ∨ q and p → q agree"
+     }
     },
     {
      "h": "Verify ~(~p ∧ q) ∧ (p ∨ q) ≡ p using the laws",
@@ -2115,7 +2331,13 @@ COURSES.dm = {
       "≡ p ∨ c                                           by the negation law",
       "≡ p                                               by the identity law  ■",
       "(Asked in Exam 2025/26 Q3b and Exam 2024/25 Q4b.)"
-     ]
+     ],
+     "fig": [
+      "dm-laws-proof"
+     ],
+     "figH": {
+      "dm-laws-proof": "The proof law by law: the part replaced and its replacement at each step"
+     }
     },
     {
      "h": "Using truth tables vs laws",
@@ -2124,7 +2346,16 @@ COURSES.dm = {
       "They <b>cannot</b> be used to prove that two forms are <b>not</b> equivalent; for that you exhibit a row of the truth table where they differ.",
       "Skill in simplifying statement forms is useful in constructing <b>logically efficient computer programs</b> and in <b>designing digital logic circuits</b>.",
       "A table example: p ∨ ~q → ~p. Hypothesis p ∨ ~q, conclusion ~p. Rows TT: T → F = F; TF: T → F = F; FT: F → T = T; FF: T → T = T."
-     ]
+     ],
+     "fig": [
+      "dm-taut-hypconc"
+     ],
+     "figAt": {
+      "dm-taut-hypconc": 3
+     },
+     "figH": {
+      "dm-taut-hypconc": "p ∨ ~q → ~p row by row: hypothesis, conclusion, result"
+     }
     },
     {
      "h": "Division into cases: p ∨ q → r ≡ (p → r) ∧ (q → r) (Example 1.2.2)",
@@ -2219,7 +2450,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-equiv-cases"
+     ],
+     "figH": {
+      "dm-equiv-cases": "Example 1.2.2 built column by column: the two forms agree in all eight rows"
+     }
     }
    ],
    "cards": [
@@ -2846,7 +3083,22 @@ COURSES.dm = {
       "Derivation from p → q ≡ ~p ∨ q: ~(p → q) ≡ ~(~p ∨ q) ≡ ~(~p) ∧ (~q) [De Morgan] ≡ p ∧ ~q [double negative].",
       "Example 1.2.4: (a) \"If my car is in the repair shop, then I cannot get to class.\" Negation: \"My car is in the repair shop <b>and</b> I can get to class.\" (b) \"If Sara lives in Athens, then she lives in Greece.\" Negation: \"Sara lives in Athens and she does not live in Greece.\" (She might live in Athens, Georgia; Athens, Ohio; or Athens, Wisconsin.)",
       "Common mistake: the negation of an if-then is <b>not</b> another if-then; it is an \"and\" statement."
-     ]
+     ],
+     "fig": [
+      "dm-l5-neg-table",
+      "dm-l5-neg-derive",
+      "dm-l5-neg-sentence"
+     ],
+     "figAt": {
+      "dm-l5-neg-table": 1,
+      "dm-l5-neg-derive": 2,
+      "dm-l5-neg-sentence": 4
+     },
+     "figH": {
+      "dm-l5-neg-table": "Truth table: ~(p → q) and p ∧ ~q agree in every row",
+      "dm-l5-neg-derive": "The derivation of ~(p → q) ≡ p ∧ ~q, law by law",
+      "dm-l5-neg-sentence": "Negating if-then sentences: the negation is an \"and\", not another if-then"
+     }
     },
     {
      "h": "Order of operations for logical operators",
@@ -2871,7 +3123,13 @@ COURSES.dm = {
        "→, ↔",
        "Evaluate → and ↔ third. When both are present, parentheses may be needed."
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l5-ops-order"
+     ],
+     "figH": {
+      "dm-l5-ops-order": "Applying the order of operations: ~, then ∧ ∨, then → ↔"
+     }
     },
     {
      "h": "Biconditional: p ↔ q ≡ (p → q) ∧ (q → p)",
@@ -2916,7 +3174,13 @@ COURSES.dm = {
        "T",
        "T"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l5-bicond-table"
+     ],
+     "figH": {
+      "dm-l5-bicond-table": "The biconditional truth table, filled row by row"
+     }
     },
     {
      "h": "Table 7: equivalences involving conditional statements",
@@ -2961,7 +3225,13 @@ COURSES.dm = {
        "(p → r) ∨ (q → r) ≡ (p ∧ q) → r",
        ""
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l5-t7-check"
+     ],
+     "figH": {
+      "dm-l5-t7-check": "Check any Table 7 equivalence (or your own) with a truth table"
+     }
     },
     {
      "h": "Table 8: equivalences involving biconditionals",
@@ -2981,7 +3251,13 @@ COURSES.dm = {
       [
        "¬(p ↔ q) ≡ p ↔ ¬q"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l5-t8-check"
+     ],
+     "figH": {
+      "dm-l5-t8-check": "Check any Table 8 equivalence (or your own) with a truth table"
+     }
     },
     {
      "h": "Converse, contrapositive, inverse and \"if and only if\"",
@@ -2990,7 +3266,19 @@ COURSES.dm = {
       "The converse of ¬p → q is <b>q → ¬p</b> (swap hypothesis and conclusion; Exam 2020/21 Q8).",
       "By the separate definitions of <i>if</i> and <i>only if</i>, \"p if, and only if, q\" means both \"p if q\" (q → p) and \"p only if q\" (p → q).",
       "The table above shows p ↔ q and (p → q) ∧ (q → p) always have the same truth values, so they are logically equivalent (Exam 2024/25 Q2b, Exam 2023/24 Q3b)."
-     ]
+     ],
+     "fig": [
+      "dm-l5-variants",
+      "dm-l5-iff-parts"
+     ],
+     "figAt": {
+      "dm-l5-variants": 1,
+      "dm-l5-iff-parts": 2
+     },
+     "figH": {
+      "dm-l5-variants": "Converse, contrapositive and inverse, and which pairs are equivalent",
+      "dm-l5-iff-parts": "\"p if q\" plus \"p only if q\" gives p ↔ q"
+     }
     },
     {
      "h": "Proof by a series of equivalences: ¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬q",
@@ -3003,7 +3291,13 @@ COURSES.dm = {
       "≡ (¬p ∧ ¬q) ∨ F                        by the commutative law for disjunction",
       "≡ ¬p ∧ ¬q                              by the identity law for F  ■",
       "(Asked in Midterm 2021/22, Exam 2020/21 Q3a, 2021/22 Q4b, Summer 2023/24 Q3.)"
-     ]
+     ],
+     "fig": [
+      "dm-l5-proof-neg-or"
+     ],
+     "figH": {
+      "dm-l5-proof-neg-or": "The proof step by step, each law applied with a truth check"
+     }
     },
     {
      "h": "Proof: (p ∧ q) → (p ∨ q) is a tautology",
@@ -3013,7 +3307,13 @@ COURSES.dm = {
       "≡ (¬p ∨ p) ∨ (¬q ∨ q)                       by the associative and commutative laws for disjunction",
       "≡ T ∨ T                                     by the negation law and commutative law",
       "≡ T                                         by the domination law  ■"
-     ]
+     ],
+     "fig": [
+      "dm-l5-proof-taut-and-or"
+     ],
+     "figH": {
+      "dm-l5-proof-taut-and-or": "The proof step by step, down to T"
+     }
     },
     {
      "h": "Proof: [¬p ∧ (p ∨ q)] → q is a tautology (by laws)",
@@ -3025,7 +3325,13 @@ COURSES.dm = {
       "≡ [T ∧ (p ∨ ¬q)] ∨ q ≡ (p ∨ ¬q) ∨ q               negation, identity",
       "≡ p ∨ (¬q ∨ q) ≡ p ∨ T ≡ T                        associative, negation, domination  ■",
       "(Asked in Exam 2021/22 Q3b and the Aug 2024 paper Q2b.)"
-     ]
+     ],
+     "fig": [
+      "dm-l5-proof-taut-ds"
+     ],
+     "figH": {
+      "dm-l5-proof-taut-ds": "The proof step by step, down to T"
+     }
     },
     {
      "h": "Exercises from the slides (all are tautologies)",
@@ -3074,7 +3380,13 @@ COURSES.dm = {
        "[(p ∨ q) ∧ (p → r) ∧ (q → r)] → r",
        "proof by cases"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-l5-taut-ex"
+     ],
+     "figH": {
+      "dm-l5-taut-ex": "Each exercise checked by a truth table, row by row"
+     }
     }
    ],
    "cards": [
@@ -3587,7 +3899,16 @@ COURSES.dm = {
       "For the number of heads in 3 tosses, the range of X is {0, 1, 2, 3}.",
       "<b>Discrete sample space</b>: contains a finite number of possibilities, or an unending sequence with as many elements as there are whole numbers.",
       "<b>Continuous sample space</b>: contains an infinite number of possibilities equal to the number of points on a line segment."
-     ]
+     ],
+     "fig": [
+      "dm-rv-map"
+     ],
+     "figAt": {
+      "dm-rv-map": 1
+     },
+     "figH": {
+      "dm-rv-map": "X : S → R as arrows: each outcome of three tosses goes to one real number"
+     }
     },
     {
      "h": "Example 1: X = number of heads − number of tails (3 tosses)",
@@ -3622,7 +3943,13 @@ COURSES.dm = {
        "",
        "{−3, −1, 1, 3}"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-rv-diff-table"
+     ],
+     "figH": {
+      "dm-rv-diff-table": "The table filled row by row, then grouped into the range {−3, −1, 1, 3}"
+     }
     },
     {
      "h": "Example 2: sum of two dice",
@@ -3631,7 +3958,13 @@ COURSES.dm = {
       "Sum 2: (1,1). 3: (1,2),(2,1). 4: (3,1),(2,2),(1,3). 5: 4 pairs. 6: 5 pairs. 7: (4,3),(3,4),(2,5),(1,6),(6,1),(5,2), 6 pairs. 8: 5 pairs. 9: 4 pairs. 10: 3 pairs. 11: 2 pairs. 12: (6,6).",
       "Range X = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}. The diagonal lines of the grid (\"lateral shape\") give the same result.",
       "So P(X = 7) = 6/36 = 1/6 and P(X = 2) = 1/36."
-     ]
+     ],
+     "fig": [
+      "dm-dist-dice-sum"
+     ],
+     "figH": {
+      "dm-dist-dice-sum": "The 36 outcomes as a grid: each slanted line collects one sum"
+     }
     },
     {
      "h": "Probability distribution function",
@@ -3639,7 +3972,13 @@ COURSES.dm = {
       "If X is a discrete random variable whose range is {x₁, x₂, …, xᵣ}, then the function f defined by <b>f(xᵣ) = P(X = xᵣ)</b> for each r = 1, 2, 3, … is the <b>probability distribution function</b> of X.",
       "It is expressed as a set of ordered pairs X = {(x₁, f(x₁)), (x₂, f(x₂)), …, (xₙ, f(xₙ))}, or as a table with rows xᵣ and f(xᵣ).",
       "The set of ordered pairs (x, f(x)) is a <b>probability function, probability mass function, or probability distribution</b> of X if for each possible outcome x: <b>1.</b> f(x) ≥ 0; <b>2.</b> Σ f(x) = 1; <b>3.</b> P(X = x) = f(x)."
-     ]
+     ],
+     "fig": [
+      "dm-dist-pmf-check"
+     ],
+     "figH": {
+      "dm-dist-pmf-check": "Table, ordered pairs and the three conditions, checked on the lecture's distributions or your own"
+     }
     },
     {
      "h": "Example 3: number of heads (coin tossed twice)",
@@ -3650,7 +3989,13 @@ COURSES.dm = {
       "f(2) = P(X = 2) = n(HH)/n(S) = 1/4",
       "Check: 1/4 + 2/4 + 1/4 = 1 ✓",
       "Note: the slide says \"three consecutive times\" but its sample space and answer are for two tosses."
-     ]
+     ],
+     "fig": [
+      "dm-dist-two-coins"
+     ],
+     "figH": {
+      "dm-dist-two-coins": "From the arrows S → R to f(0), f(1), f(2) and the distribution table"
+     }
     },
     {
      "h": "Try to solve: heads − tails for two tosses",
@@ -3658,7 +4003,13 @@ COURSES.dm = {
       "HH → 2 − 0 = 2;  HT, TH → 1 − 1 = 0;  TT → 0 − 2 = −2",
       "x:     −2    0     2",
       "f(x):  1/4   2/4   1/4"
-     ]
+     ],
+     "fig": [
+      "dm-dist-two-coins-diff"
+     ],
+     "figH": {
+      "dm-dist-two-coins-diff": "The same arrows for heads − tails: values −2, 0, 2"
+     }
     },
     {
      "h": "Example: least number on two cards drawn without replacement",
@@ -3670,7 +4021,13 @@ COURSES.dm = {
       "X = 3: pairs from {3,4,5} containing 3 → 2 + 2 = 4 → f(3) = 4/20",
       "X = 4: (4,5), (5,4) → f(4) = 2/20",
       "Check: (8 + 6 + 4 + 2)/20 = 1 ✓"
-     ]
+     ],
+     "fig": [
+      "dm-dist-least-card"
+     ],
+     "figH": {
+      "dm-dist-least-card": "The 20 possible draws: each L-shaped line collects one least number"
+     }
     },
     {
      "h": "Try to solve: greatest number on two dice",
@@ -3679,7 +4036,13 @@ COURSES.dm = {
       "x:     1     2     3     4     5     6",
       "f(x):  1/36  3/36  5/36  7/36  9/36  11/36",
       "Check: 1 + 3 + 5 + 7 + 9 + 11 = 36 ✓"
-     ]
+     ],
+     "fig": [
+      "dm-dist-dice-max"
+     ],
+     "figH": {
+      "dm-dist-dice-max": "Each L through (k, k) holds 2k − 1 outcomes with greatest number k"
+     }
     }
    ],
    "cards": [
@@ -3933,7 +4296,25 @@ COURSES.dm = {
       "If X is discrete with distribution f and range {x₁, …, xₙ} with probabilities f(x₁), …, f(xₙ): <b>μ = E(X) = Σ xᵣ · f(xᵣ)</b> = x₁·f(x₁) + x₂·f(x₂) + … + xₙ·f(xₙ).",
       "If X is continuous: <b>μ = E(X) = ∫ x f(x) dx</b> over (−∞, ∞).",
       "<b>Theorem</b>: the expected value of g(X) is E[g(X)] = Σ g(x) f(x) (discrete) or ∫ g(x) f(x) dx (continuous). With g(x) = x² this gives E(X²)."
-     ]
+     ],
+     "fig": [
+      "dm-mean-balance",
+      "dm-mean-table",
+      "dm-mean-strips",
+      "dm-mean-gx"
+     ],
+     "figAt": {
+      "dm-mean-balance": 0,
+      "dm-mean-table": 1,
+      "dm-mean-strips": 2,
+      "dm-mean-gx": 3
+     },
+     "figH": {
+      "dm-mean-balance": "The mean is where the distribution balances: slide the pivot to μ",
+      "dm-mean-table": "E(X) = Σ x·f(x), filled value by value for every example in the notes, or your own table",
+      "dm-mean-strips": "From Σ to ∫: thinner strips under f(x) turn Σ x·f(x)·Δx into ∫ x f(x) dx",
+      "dm-mean-gx": "E[g(X)]: same probabilities, new values g(x); g(x) = x² gives E(X²)"
+     }
     },
     {
      "h": "Variance and standard deviation",
@@ -3941,7 +4322,19 @@ COURSES.dm = {
       "<b>Variance</b>: σ² = E[(X − μ)²] = Σ (x − μ)² f(x) (discrete) or ∫ (x − μ)² f(x) dx (continuous).",
       "<b>Shortcut</b>: <b>σ² = E(X²) − μ²</b>.",
       "The positive square root of the variance, <b>σ</b>, is the <b>standard deviation</b> of X."
-     ]
+     ],
+     "fig": [
+      "dm-var-squares",
+      "dm-var-shortcut"
+     ],
+     "figAt": {
+      "dm-var-squares": 0,
+      "dm-var-shortcut": 1
+     },
+     "figH": {
+      "dm-var-squares": "The variance as squared distances from μ, each weighted by its probability",
+      "dm-var-shortcut": "σ² by the shortcut E(X²) − μ², checked against the definition, then σ"
+     }
     },
     {
      "h": "Example 1: fair coin tossed twice (number of heads)",
@@ -3950,7 +4343,13 @@ COURSES.dm = {
       "μ = E(X) = (0)(1/4) + (1)(1/2) + (2)(1/4) = 0 + 0.5 + 0.5 = 1",
       "Meaning: a person who tosses 2 coins over and over will, on average, get 1 head per toss.",
       "(Extra) E(X²) = 0 + 1/2 + 4/4 = 3/2 → σ² = 3/2 − 1 = 1/2"
-     ]
+     ],
+     "fig": [
+      "dm-mean-coins"
+     ],
+     "figH": {
+      "dm-mean-coins": "From the four outcomes to μ = 1, then toss the coins yourself"
+     }
     },
     {
      "h": "Example 2: find a, then the expectation",
@@ -3961,7 +4360,13 @@ COURSES.dm = {
       "Second: μ = (−1)(0.3) + (0)(0.1) + (1)(0.1) + (2)(0.3) + (3)(0.2) = −0.3 + 0 + 0.1 + 0.6 + 0.6 = 1",
       "(Extra) E(X²) = 0.3 + 0 + 0.1 + 1.2 + 1.8 = 3.4 → σ² = 3.4 − 1² = 2.4",
       "(The table was blank on the slide; the values are read from the solution.)"
-     ]
+     ],
+     "fig": [
+      "dm-mean-find-a"
+     ],
+     "figH": {
+      "dm-mean-find-a": "Example 2 step by step: a from Σ f = 1, then μ, E(X²) and σ²"
+     }
     },
     {
      "h": "Try to solve (also Exam 2023/24 Q2b)",
@@ -3972,7 +4377,13 @@ COURSES.dm = {
       "μ = 0(0.1) + 2(0.1) + 3(0.6) + 4(0.2) = 0 + 0.2 + 1.8 + 0.8 = 2.8",
       "E(X²) = 0 + 4(0.1) + 9(0.6) + 16(0.2) = 0.4 + 5.4 + 3.2 = 9.0",
       "σ² = 9.0 − 2.8² = 9.0 − 7.84 = 1.16"
-     ]
+     ],
+     "fig": [
+      "dm-var-try"
+     ],
+     "figH": {
+      "dm-var-try": "The exam question solved step by step: a = 0.6, μ = 2.8, σ² = 1.16"
+     }
     },
     {
      "h": "Example 3: continuous expectation (device life)",
@@ -3980,7 +4391,13 @@ COURSES.dm = {
       "f(x) = 20000 / x³ for x ≥ 100, 0 otherwise",
       "μ = ∫₁₀₀^∞ x · 20000/x³ dx = ∫₁₀₀^∞ 20000/x² dx = [−20000/x]₁₀₀^∞ = 0 − (−200) = 200",
       "We expect this type of device to last, on average, 200 hours."
-     ]
+     ],
+     "fig": [
+      "dm-mean-device"
+     ],
+     "figH": {
+      "dm-mean-device": "The improper integral built up: the area under 20000/x² grows to μ = 200 hours"
+     }
     },
     {
      "h": "Example 4: variance of defective parts",
@@ -3990,7 +4407,13 @@ COURSES.dm = {
       "μ = 0(0.51) + 1(0.38) + 2(0.10) + 3(0.01) = 0.38 + 0.20 + 0.03 = 0.61",
       "E(X²) = 0(0.51) + 1(0.38) + 4(0.10) + 9(0.01) = 0.38 + 0.40 + 0.09 = 0.87",
       "σ² = E(X²) − μ² = 0.87 − 0.61² = 0.87 − 0.3721 = 0.4979"
-     ]
+     ],
+     "fig": [
+      "dm-var-defects"
+     ],
+     "figH": {
+      "dm-var-defects": "Example 4 step by step: μ = 0.61, E(X²) = 0.87, σ² = 0.4979"
+     }
     },
     {
      "h": "Example 5: continuous mean and variance (water demand)",
@@ -4000,7 +4423,13 @@ COURSES.dm = {
       "E(X²) = ∫₁² x² · 2(x − 1) dx = 2[x⁴/4 − x³/3]₁² = 2[(4 − 8/3) − (1/4 − 1/3)] = 2[4/3 + 1/12] = 2 · 17/12 = 17/6",
       "σ² = 17/6 − (5/3)² = 51/18 − 50/18 = 1/18",
       "(Asked in Exam 2023/24 Q3a.)"
-     ]
+     ],
+     "fig": [
+      "dm-var-water"
+     ],
+     "figH": {
+      "dm-var-water": "The triangle density: μ = 5/3, E(X²) = 17/6, σ² = 1/18 and the μ ± σ band"
+     }
     }
    ],
    "cards": [
@@ -5995,7 +6424,16 @@ COURSES.dm = {
       "<b>2. Inductive hypothesis</b>: <b>assume P(k) is true</b> for an arbitrary k ≥ n₀ (assume true for n = k).",
       "<b>3. Inductive step</b>: using the hypothesis, <b>prove P(k + 1)</b> (prove it for n = k + 1).",
       "Conclusion: P(n) is true for all n ≥ n₀ (like falling dominoes)."
-     ]
+     ],
+     "fig": [
+      "dm-induction-domino"
+     ],
+     "figAt": {
+      "dm-induction-domino": 4
+     },
+     "figH": {
+      "dm-induction-domino": "Induction as falling dominoes: the basis knocks over the first one, the inductive step makes each one knock over the next"
+     }
     },
     {
      "h": "Proof: 1 + 2 + 3 + … + n = n(n + 1)/2",
@@ -6005,7 +6443,13 @@ COURSES.dm = {
       "Step (n = k + 1): 1 + 2 + … + k + (k + 1) = k(k + 1)/2 + (k + 1)",
       "= [k(k + 1) + 2(k + 1)]/2 = (k + 1)(k + 2)/2 = (k + 1)((k + 1) + 1)/2 ✓",
       "Hence true for all n ≥ 1.  ■  (Exam 2024/25 Q3a)"
-     ]
+     ],
+     "fig": [
+      "dm-induction-sum-n"
+     ],
+     "figH": {
+      "dm-induction-sum-n": "The proof line by line, with the terms as columns: the inductive step adds one new column (k + 1)"
+     }
     },
     {
      "h": "Proof: 2 + 4 + … + 2n = n(n + 1)",
@@ -6014,7 +6458,13 @@ COURSES.dm = {
       "Hypothesis: 2 + 4 + … + 2k = k(k + 1)",
       "Step: 2 + 4 + … + 2k + 2(k + 1) = k(k + 1) + 2(k + 1) = (k + 1)(k + 2) ✓",
       "■  (Exam 2025/26 Q3a-i)"
-     ]
+     ],
+     "fig": [
+      "dm-induction-sum-even"
+     ],
+     "figH": {
+      "dm-induction-sum-even": "The proof line by line, then check it for any n: k(k + 1) plus the new column 2(k + 1)"
+     }
     },
     {
      "h": "Proof: 1 + 4 + 7 + … + (3n − 2) = n(3n − 1)/2",
@@ -6025,7 +6475,13 @@ COURSES.dm = {
       "k(3k − 1)/2 + (3k + 1) = (3k² − k + 6k + 2)/2 = (3k² + 5k + 2)/2 = (k + 1)(3k + 2)/2",
       "and (k + 1)(3(k + 1) − 1)/2 = (k + 1)(3k + 2)/2 ✓",
       "■  (Exam 2025/26 Q3a-ii)"
-     ]
+     ],
+     "fig": [
+      "dm-induction-sum-3n"
+     ],
+     "figH": {
+      "dm-induction-sum-3n": "The proof line by line: find the next term 3k + 1, add it, factor, compare"
+     }
     },
     {
      "h": "Proof: 2ⁿ &gt; n for all n ≥ 1",
@@ -6033,7 +6489,13 @@ COURSES.dm = {
       "Basis (n = 1): 2¹ = 2 > 1 ✓",
       "Hypothesis: 2ᵏ > k",
       "Step: 2ᵏ⁺¹ = 2 · 2ᵏ > 2k = k + k ≥ k + 1 (since k ≥ 1) ✓  ■"
-     ]
+     ],
+     "fig": [
+      "dm-induction-pow2"
+     ],
+     "figH": {
+      "dm-induction-pow2": "Doubling keeps 2ⁿ ahead: 2ᵏ⁺¹ = 2 · 2ᵏ > 2k ≥ k + 1 shown as bars"
+     }
     },
     {
      "h": "Binary relations",
@@ -6044,7 +6506,19 @@ COURSES.dm = {
       "A relation <b>on a set A</b> is a relation from A to A (a subset of A × A).",
       "The <b>identity relation</b> I_A on A is the set <b>{(a, a) | a ∈ A}</b>.",
       "Example: A = {1, 2}, B = {x, y}: A × B = {(1,x), (1,y), (2,x), (2,y)}; R = {(1,x), (2,y)} is a relation from A to B; I_A = {(1,1), (2,2)}."
-     ]
+     ],
+     "fig": [
+      "dm-relation-product",
+      "dm-relation-arrows"
+     ],
+     "figAt": {
+      "dm-relation-product": 0,
+      "dm-relation-arrows": 5
+     },
+     "figH": {
+      "dm-relation-product": "A × B built pair by pair: |A| rows times |B| columns gives |A|·|B| pairs",
+      "dm-relation-arrows": "The notes' example as arrows: R = {(1,x), (2,y)} from A to B, and I_A as the diagonal of A × A"
+     }
     },
     {
      "h": "Properties of relations on A (standard)",
@@ -6073,7 +6547,13 @@ COURSES.dm = {
        "Equivalence relation",
        "reflexive + symmetric + transitive (e.g. congruence mod n, L8)"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-relation-props"
+     ],
+     "figH": {
+      "dm-relation-props": "Build a relation on A and see which properties hold, with the pair that breaks each one"
+     }
     }
    ],
    "cards": [

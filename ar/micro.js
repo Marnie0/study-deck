@@ -11,10 +11,16 @@ AR.micro = {
       "الـ <b>Computer software</b> بيترجم الأفكار والأوامر اللي البني آدم بيفهمها لحاجة الـ hardware يقدر ينفذها فعلًا. بيقول للكمبيوتر <b>يعمل إيه ويعمله فين</b>. الأوامر دي اسمها <b>source code</b>.",
       "الـ <b>compiler</b> برنامج تاني بيشتغل على الـ source code ويحوّل الأوامر للغة الكمبيوتر بيفهمها. والناتج اسمه <b>executable program</b> (اسم تاني للـ software).",
       "<b>تلات أنواع software</b>: الـ <b>System software</b> (برامج بتخلي الـ hardware يشتغل صح)، الـ <b>Application software</b> (برامج بتخلي الـ user يعمل حاجة غير مجرد تشغيل الـ hardware)، والـ <b>Programming software</b> (بتخلي المبرمجين يبنوا software)."
-     ]
+     ],
+     "figH": {
+      "mp-l1-source-to-binary": "من أوامر البني آدم لحد الـ on والـ off: الـ source code ثم الـ compiler ثم الـ executable"
+     }
     },
     {
-     "h": "تلات أنواع programming languages"
+     "h": "تلات أنواع programming languages",
+     "figH": {
+      "mp-l1-language-stack": "سلّم الـ slide: الـ hardware ثم الـ machine ثم الـ assembly ثم الـ high-level languages"
+     }
     },
     {
      "h": "الـ Assembly language والـ assembler",
@@ -24,10 +30,17 @@ AR.micro = {
       "عشان برنامج الـ assembly يشتغل، لازم يتترجم لـ machine code عن طريق <b>assembler</b>: برنامج بيترجم البرنامج المكتوب بـ low-level language (<b>\"source code\"</b>) لكود executable (<b>\"object code\"</b>). الرسمة:<span class=\"ltr\">Source code (.ASM) → ASSEMBLER → Object code (.OBJ) → Hardware</span>",
       "الـ File extensions (من الـ revision sheet): أي برنامج assembly بيتحفظ <b>.ASM</b>؛ والـ coded object modules بتبقى في ملف <b>.OBJ</b>؛ وبعدين الـ linker بيطلّع الـ <b>.EXE</b>.",
       "الـ <b>debugger</b> بيخلي المبرمج يشغّل البرنامج <b>step by step</b> عشان يلاقي المكان بالظبط اللي فيه الـ error."
-     ]
+     ],
+     "figH": {
+      "mp-l1-cpu-assembler-match": "يعني إيه hardware dependent: البرنامج بيشتغل بس على نوع الـ CPU اللي الـ assembler بتاعه معمول له",
+      "mp-l1-asm-obj-exe": "رحلة البرنامج من الـ source code للـ hardware:<span class=\"ltr\">.ASM → ASSEMBLER → .OBJ → LINKER → .EXE</span>"
+     }
     },
     {
-     "h": "الـ Debugger مقابل الـ Assembler (سؤال بييجي كتير جدًا في الامتحان)"
+     "h": "الـ Debugger مقابل الـ Assembler (سؤال بييجي كتير جدًا في الامتحان)",
+     "figH": {
+      "mp-l1-debugger-assembler-sort": "صنّف كل جملة: بتاعة الـ debugger ولا الـ assembler؟"
+     }
     },
     {
      "h": "الـ block diagram بتاع الـ microcomputer",
@@ -39,7 +52,10 @@ AR.micro = {
       "الـ <b>CU</b>: بينظّم ترتيب الخطوات اللي محتاجينها عشان ننفذ الـ machine instructions.",
       "الـ <b>Clock</b>: بيعمل synchronize للعمليات الداخلية للـ CPU مع باقي أجزاء السيستم (بيدّي التوقيت الأساسي لشغل الـ processor ولنشاط التحكم في الـ bus).",
       "الـ <b>Memory storage unit</b>: المكان اللي الـ instructions والداتا بتفضل فيه وهو البرنامج شغال. بيستقبل طلبات الداتا من الـ CPU، وبينقل الداتا من الـ RAM للـ CPU، ومن الـ CPU للـ memory."
-     ]
+     ],
+     "figH": {
+      "mp-l1-block-diagram": "الـ block diagram بتاع الـ microcomputer بيترسم جزء جزء"
+     }
     },
     {
      "h": "الـ Buses",
@@ -48,10 +64,16 @@ AR.micro = {
       "الـ <b>Data bus</b>: بينقل <b>الـ instructions والداتا</b> بين الـ CPU والـ memory.",
       "الـ <b>Control bus</b>: بيستخدم <b>binary signals</b> عشان يعمل synchronize لتصرفات كل الأجهزة المتوصلة بالـ system bus.",
       "الـ <b>Address bus</b>: شايل <b>الـ addresses</b> بتاعة الـ instructions والداتا لما الـ instruction اللي شغالة دلوقتي تنقل داتا بين الـ CPU والـ memory."
-     ]
+     ],
+     "figH": {
+      "mp-l1-bus-read-write": "نقلة read أو write بين الـ CPU والـ memory: الـ address bus ثم الـ control bus ثم الـ data bus"
+     }
     },
     {
-     "h": "أنواع الـ memory"
+     "h": "أنواع الـ memory",
+     "figH": {
+      "mp-l1-memory-chip-lab": "جرّب كل نوع memory: تكتب فيه، تشيل الكهربا، تمسحه بالـ UV، أو تبرمجه"
+     }
     },
     {
      "h": "الـ Registers (مقدمة) والـ Lab 1",
@@ -59,7 +81,10 @@ AR.micro = {
       "الـ <b>register</b> هو <b>مكان تخزين مؤقت سريع جدًا جوه الـ CPU</b>. (في الـ Lab بيتقال عليه <bdi dir=\"ltr\">\"a&nbsp;high-speed&nbsp;memory\"</bdi>؛ وكل register ليه طول معين.)",
       "في <bdi dir=\"ltr\">Lab 1</bdi>: الـ assembly language هي low-level language بتشتغل على الـ memory بتاعة الـ processor. إحنا شغالين على موديل الـ processor <b>Intel 8086</b>، باستخدام الـ emulator <b>emu8086</b>. الخطوات:<span class=\"ltr\">New → empty workspace → write code → <b>emulate</b></span>والـ <b>single step</b> بيشغّل سطر سطر، والـ <b>run</b> بيشغّل البرنامج كله.",
       "أنواع الـ registers في الـ Lab:<br>(1) الـ <b>General purpose</b>: <bdi dir=\"ltr\">AX, BX, CX, DX, SI, DI, SP, BP</bdi><br>(2) الـ <b>Special purpose</b>: <bdi dir=\"ltr\">IP, FLAGS</bdi><br>(3) الـ <b>Segment</b>: <bdi dir=\"ltr\">CS, DS, ES, SS</bdi><br>التفاصيل في <bdi dir=\"ltr\">Lecture 2</bdi>."
-     ]
+     ],
+     "figH": {
+      "mp-l1-register-map": "خريطة الـ registers في الـ slide: خمس مجموعات، أو التلات أنواع بتوع الـ Lab"
+     }
     }
    ],
    "cards": [
@@ -678,7 +703,10 @@ AR.micro = {
      "pts": [
       "الـ addressing mode هو <b>الطريقة اللي بنوصل بيها للداتا في الـ memory</b>. الأنواع: register و immediate و direct و displacement addressing (المحاضرة دي)، وبعدها register indirect و indexed و base plus index و base plus index plus displacement (Lecture 4).",
       "بنستخدم الـ MOV instruction عشان نوضّح الفرق بين الـ modes دي."
-     ]
+     ],
+     "figH": {
+      "mp-modes-overview": "نفس الـ MOV بأربع modes: الداتا بتاعة الـ source جاية منين"
+     }
     },
     {
      "h": "الـ Register addressing وقيوده",
@@ -690,7 +718,11 @@ AR.micro = {
       "<b>(4) النقل من memory لـ memory مش مسموح</b> (إلا في الـ string instructions)، فدول غلط:<pre>MOV [DI], [SI]\nMOV [AX], [5000H]</pre>",
       "<b>(5) الـ destination ماينفعش يبقى immediate data</b>، فدول مستحيلين:<pre>MOV 55H, BL\nMOV 100, [DI]</pre>الـ destination يا register يا memory location.",
       "النسخ بين أي general registers من نفس الحجم مسموح: الأمر <bdi dir=\"ltr\" style=\"white-space:nowrap\">MOV EAX, ESP</bdi> بينسخ ESP في EAX (والـ source بيفضل بقيمته؛ الـ MOV عمرها ما بتمسح الـ source)."
-     ]
+     ],
+     "figH": {
+      "mp-seg-detour": "من segment لـ segment: الحل إننا نعدّي على الـ AX في خطوتين",
+      "mp-mov-check": "مراجعة الـ MOV: الـ instruction صح ولا غلط، وبتكسر أنهي قاعدة؟"
+     }
     },
     {
      "h": "الـ Immediate addressing",
@@ -699,7 +731,10 @@ AR.micro = {
       "أمثلة، والحجم جنب كل واحدة:<pre>MOV BL, 44     ; 8 bits\nMOV AX, 44H    ; 16 bits\nMOV CH, 100    ; 8 bits\nMOV EAX, 12    ; 32 bits\nMOV EBX, 100B  ; 32 bits</pre>والأخيرة يعني 100 binary.",
       "الأمر ده تبع الـ <b>immediate</b> addressing:<pre>MOV AX, 0005H</pre>وده تبع الـ <b>register</b> addressing:<pre>MOV AX, BX</pre>",
       "اللواحق بتاعة الأرقام:<span class=\"ltr\">H = hexadecimal, B = binary</span>(زي <bdi dir=\"ltr\" style=\"white-space:nowrap\">MOV AX, 1001b</bdi>)، ومن غير لاحقة يبقى decimal."
-     ]
+     ],
+     "figH": {
+      "mp-immediate": "الـ immediate data: اللاحقة بتحدد القيمة، والـ register بيحدد الحجم"
+     }
     },
     {
      "h": "الـ Direct والـ displacement addressing",
@@ -707,23 +742,38 @@ AR.micro = {
       "الـ <b>Direct addressing</b>: الـ MOV بتنقل داتا بين memory location في الـ data segment وبين <b>AL أو AX أو EAX</b>. هنا الـ segment الـ default هو DS:<pre>MOV AL, [123H]</pre>وهنا الـ segment اتغيّر غصب لـ ES:<pre>MOV EAX, ES:[123H]</pre>",
       "الـ <b>Displacement addressing</b>: نفس الفكرة بس بين الـ memory و<b>كل الـ registers التانية</b>:<pre>MOV CL, [123H]       ; DS\nMOV EBX, ES:[123H]   ; ES</pre>",
       "ملحوظة: الامتحانات ساعات بتسمّي <bdi dir=\"ltr\" style=\"white-space:nowrap\">MOV EAX, [DI]</bdi> بـ <bdi dir=\"ltr\">\"direct addressing environment\"</bdi>؛ هي في الحقيقة register indirect، شوف <bdi dir=\"ltr\" style=\"white-space:nowrap\">Lecture 4</bdi>، بس حساب العنوان هو هو:<span class=\"ltr\">DS×10 + DI</span>"
-     ]
+     ],
+     "figH": {
+      "mp-direct-disp": "الـ direct ولا الـ displacement؟ ده بيعتمد على الـ register"
+     }
     },
     {
-     "h": "الـ <bdi dir=\"ltr\">Segment:offset</bdi> والـ physical address"
+     "h": "الـ <bdi dir=\"ltr\">Segment:offset</bdi> والـ physical address",
+     "figH": {
+      "mp-phys-addr": "حساب الـ physical address خانة خانة بالـ segment والـ offset"
+     }
     },
     {
-     "h": "أمثلة المحاضرة <bdi dir=\"ltr\">(DS=1000, ES=1400, DI=150, EAX=1234)</bdi>"
+     "h": "أمثلة المحاضرة <bdi dir=\"ltr\">(DS=1000, ES=1400, DI=150, EAX=1234)</bdi>",
+     "figH": {
+      "mp-lec3-figure": "رسمة الـ slides: الـ segment في 10 زائد الـ offset بيشاور على الـ byte اللي بيروح للـ AL أو الـ BL"
+     }
     },
     {
      "h": "الـ Segment overriding",
      "pts": [
       "الـ <b>Segment overriding</b>: لما الـ offset register مايتستخدمش مع الـ segment register الـ default بتاعه، وتستخدم segment تاني بإنك تكتبه قبل الـ offset. أمثلة:<pre>MOV BL, ES:[1234H]\nMOV AL, CS:[BX]\nMOV AX, DS:[BP]</pre>",
       "الـ default segment <b>ينفع</b> يتعمله override. بس ده <b>غلط (illegal)</b>:<pre>MOV ES:SI, CX</pre>(الأقواس ناقصة: SI هنا register مش memory operand)؛ الصح:<pre>MOV ES:[SI], CX</pre>"
-     ]
+     ],
+     "figH": {
+      "mp-override": "الـ segment override: الـ prefix بياخد مكان الـ default segment"
+     }
     },
     {
-     "h": "الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Lab 3</bdi>: أول برامج على الـ emu8086"
+     "h": "الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Lab 3</bdi>: أول برامج على الـ emu8086",
+     "figH": {
+      "mp-lab3": "برامج الـ Lab 3 بتتنفذ سطر سطر، أو اكتب برنامجك"
+     }
     }
    ],
    "cards": [

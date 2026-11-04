@@ -791,10 +791,16 @@ AR.sa = {
       "الـ <b>Process modeling</b>: تمثيل graphical للـ processes اللي <b>بتجمع وتعالج وتخزن وتوزّع الداتا (capture, manipulate, store and distribute)</b> بين السيستم والـ environment بتاعه وبين components السيستم وبعضها. أشهر شكل ليه هو الـ DFD. وكمان بتعمل model للـ processing logic والـ timing والـ data structures.",
       "الـ Deliverables هي: الـ <b>context DFD</b> (الـ scope: أنهي عناصر جوه السيستم وأنهي برّاه)؛ والـ <b>DFDs للسيستم الحالي الـ physical والـ logical</b> (عشان نفهم السيستم الحالي)؛ والـ <b>DFDs للسيستم الجديد الـ logical</b> (مستقلة عن التكنولوجيا؛ الـ data flows والـ structure والـ functional requirements)؛ و<b>وصف كامل لكل component في الـ DFD</b>.",
       "الـ <b>DFD</b>: صورة لـ <b>حركة الداتا بين الـ external entities والـ processes والـ data stores</b> جوه السيستم. على عكس الـ system flowcharts، الـ DFDs بتوضح الـ data flow الـ <b>logical</b> بشكل مستقل عن التكنولوجيا؛ إنما الـ flowcharts بتوضح تفاصيل الـ systems الـ <b>physical</b>."
-     ]
+     ],
+     "figH": {
+      "sa-dfd-sdlc": "مكان الـ DFDs: مرحلة الـ analysis في الـ SDLC (الـ <bdi dir=\"ltr\">Figure&nbsp;7-1</bdi>)"
+     }
     },
     {
-     "h": "الأربع symbols بتوع الـ DFD"
+     "h": "الأربع symbols بتوع الـ DFD",
+     "figH": {
+      "sa-dfd-symbols": "الأربع symbols بالشكلين، الـ DeMarco and Yourdon قصاد الـ Gane and Sarson (الـ <bdi dir=\"ltr\">Figure&nbsp;7-2</bdi>)"
+     }
     },
     {
      "h": "قواعد رسم الـ DFD (متأكد عليها slides 8 لـ 13: سؤال الـ \"errors\")",
@@ -805,7 +811,11 @@ AR.sa = {
       "الـ <b>Data flow</b>: الـ flow اللي في الاتجاهين بين process و data store بيترسم <b>سهمين منفصلين</b>. الـ flow الـ <b>forked</b> (مصدر واحد، كذا destination) والـ flow الـ <b>joined</b> (كذا مصدر، destination واحد) لازم يشيروا لـ <b>نفس الـ data item بالظبط</b>. الـ data flow <b>ماينفعش يطلع من process ويرجع لنفس الـ process مباشرة</b>؛ لازم يعدّي على processes في النص. والـ flow labels بتبقى noun phrases.",
       "<b>الـ Update مقابل الـ retrieve</b>: الـ flow <b>من process لـ data store معناه update</b> (insert أو delete أو change)؛ والـ flow <b>من data store لـ process معناه retrieve أو use</b>.",
       "من الـ DFD deck: استخدم الأسهم اللي براسين (double-headed) بس لما الـ process بيقرا ويعدّل في نفس الـ table أو الـ file؛ اسم الـ process بيبقى verb-adjective-noun؛ والـ process بتاع السيستم كله رقمه 0."
-     ]
+     ],
+     "figH": {
+      "sa-dfd-rules": "كل rule مترسومة: الممنوع قصاد المسموح (slides 9 لـ 13)",
+      "sa-dfd-check": "جرّب الـ rules: ضيف flows وشوف أنهي rules بتكسرها، وأنهي flows تبقى update أو retrieve"
+     }
     },
     {
      "h": "الـ Decomposition ومستويات الـ DFD",
@@ -816,7 +826,10 @@ AR.sa = {
       "الـ <b><bdi dir=\"ltr\">Level-1</bdi> DFD</b>: الـ sub-processes بتوع process واحد من الـ <bdi dir=\"ltr\">Level-0</bdi>؛ لو الـ process هو 4.0 يبقى بيترقموا <b><bdi dir=\"ltr\">4.1,&nbsp;4.2,&nbsp;...</bdi></b>. الـ <b>Level-n</b>: الـ sub-processes بتوع process في <bdi dir=\"ltr\">Level&nbsp;n-1</bdi>، زي <bdi dir=\"ltr\">4.3.1,&nbsp;4.3.2</bdi>. رقم الـ child diagram هو نفس رقم الـ parent process.",
       "الـ External entities عادةً <b>مابتظهرش في الـ child diagrams اللي تحت الـ Diagram 0</b>؛ الـ child ممكن يبقى فيه data store الـ parent متوصل بيه، وممكن يبقى فيه data stores مش ظاهرة في الـ parent. والـ <b>interface data flow</b> هو input أو output للـ child diagram بيقابل flow في الـ parent.",
       "الـ <b>Primitive DFD</b>: <b>أقل مستوى logical للـ decomposition</b>؛ والـ processes اللي مابيتعملهاش child diagram اسمها primitive."
-     ]
+     ],
+     "figH": {
+      "sa-dfd-levels": "الـ decomposition بتاع Hoosier Burger: الـ context وبعده الـ Level 0 والـ Level 1 للـ <bdi dir=\"ltr\">4.0</bdi> والـ Level 2 للـ <bdi dir=\"ltr\">4.3</bdi>"
+     }
     },
     {
      "h": "الـ Balancing والـ data flow splitting (متأكد عليه slide 22)",
@@ -826,7 +839,11 @@ AR.sa = {
       "مثال unbalanced في <bdi dir=\"ltr\">Fig&nbsp;7-10</bdi>: الـ context process ليه <b>input واحد و output واحد</b> بس الـ <bdi dir=\"ltr\">Level-0</bdi> diagram فيه <b>2 inputs</b> (الـ Source One A والـ Source Two C) و output واحد.",
       "أمثلة balanced: الـ context فيه input واحد و 3 outputs، وده نفس الـ <bdi dir=\"ltr\">Level-0</bdi> اللي فيه input واحد و 3 outputs؛ والـ Process 1.0 اللي ليه input واحد و 4 outputs، وده نفس الـ <bdi dir=\"ltr\">Level-1</bdi> diagram بتاعه.",
       "الـ <b>Data flow splitting</b>: الـ flow الـ <b>composite</b> في المستوى الأعلى ممكن يتقسم لأجزاء (disaggregated flows) رايحة لـ processes مختلفة في المستوى الأقل؛ والرسمة بتفضل balanced لأن نفس الداتا هي اللي موجودة."
-     ]
+     ],
+     "figH": {
+      "sa-dfd-balance": "عدّ الـ inputs والـ outputs: الـ <bdi dir=\"ltr\">Figure&nbsp;7-10</bdi> اللي unbalanced والاتنين balanced بتوع Hoosier Burger",
+      "sa-dfd-split": "الـ Payment and Coupon بيتقسم لـ Payment و Coupon (الـ <bdi dir=\"ltr\">Figure&nbsp;7-11</bdi>)"
+     }
     },
     {
      "h": "الـ Guidelines وقواعد وقف الـ decomposition (متأكد عليها في الـ slides 30 و 31)",
@@ -846,7 +863,11 @@ AR.sa = {
       "الـ <b>Level 1</b>:<span class=\"ltr\">2.1 Compute Gross Pay<br>2.2 Compute Net Pay<br>2.3 Create Payroll Check</span><span class=\"ltr\">3.1 Sort Payroll Records by Employee<br>3.2 Print Weekly Payroll Summary</span><span class=\"ltr\">4.1 Calculate Payroll Deductions<br>4.2 Print Employee Tax Form</span>",
       "الـ <b>Level 2</b> (الـ functional primitives):<span class=\"ltr\">4.1.1 Calculate Payroll Tax Deductions<br>4.1.2 Calculate Non-tax Deductions<br>4.1.3 Calculate Retirement Allowance<br>4.2.1 Calculate Employee Vacation Pay<br>4.2.2 Print Employee Tax Form</span>",
       "فيه Cases تانية محلولة في الـ slides: الـ Hoosier Burger food ordering (الـ <bdi dir=\"ltr\">Level-0</bdi>، والـ <bdi dir=\"ltr\">Level-1</bdi> للـ process 1.0)، والـ Hoosier Burger inventory logical DFD، والـ video rental (الـ context والـ physical DFD)، والـ order processing، والـ PVF WebStore (فيه 6 processes high-level: الـ browse catalog، والـ select item، والـ display cart، والـ check out، والـ <bdi dir=\"ltr\">add/modify&nbsp;profile</bdi>، والـ order status)."
-     ]
+     ],
+     "figH": {
+      "sa-payroll-dfd": "الـ DFDs بتوع الـ payroll مستوى ورا مستوى (slides 33 لـ 36)",
+      "sa-dfd-cases": "أمثلة تانية: الـ inventory logical DFD والـ video rental context والـ processes بتوع الـ WebStore"
+     }
     },
     {
      "h": "إزاي تجاوب سؤال \"طلّع 10 errors على الأقل في الـ DFDs دي\"",
@@ -854,7 +875,10 @@ AR.sa = {
       "شيّك على كل diagram: أكتر من process أو أي data store في الـ <b>context</b>؛ أو processes ليها <b>inputs بس</b> أو <b>outputs بس</b>؛ data stores ليها inputs بس أو outputs بس، أو متوصلة مباشرة بـ entities أو stores؛ أو flows مباشرة بين entities؛ أو أرقام processes أو أسامي data stores متكررة؛ أو <b>نفس الـ flow label</b> مستخدم لـ flows مختلفة؛ أو flows forked أو joined بـ <b>labels مختلفة</b>؛ أو أسهم براسين بين اتنين processes؛ أو ترقيم child غلط (زي إن <bdi dir=\"ltr\">P1.5.1</bdi> يبقى تحت <bdi dir=\"ltr\">P1.4</bdi>).",
       "وبعدين شيّك على <b>الـ balancing بين المستويات</b>: الـ inputs والـ outputs بتوع P1 في الـ Level 0 لازم تساوي الـ flows الخارجية في الـ <bdi dir=\"ltr\">Level-1</bdi> diagram، والـ flows بتوع P1.4 في الـ Level 1 لازم تساوي الـ flows الخارجية في الـ <bdi dir=\"ltr\">Level-2</bdi> diagram بتاعه؛ والـ data stores المستخدمة لازم تبقى consistent كمان.",
       "اكتب كل error كده: <i>فين</i> (المستوى، الـ symbol) + <i>أنهي rule</i> + <i>التصليح</i>. الإجابة الكاملة المحلولة موجودة في امتحانات <bdi dir=\"ltr\">2023/24</bdi> و <bdi dir=\"ltr\">2025/26</bdi> و <bdi dir=\"ltr\">2021/22</bdi> تحت."
-     ]
+     ],
+     "figH": {
+      "sa-dfd-errors": "الـ DFDs بتوع امتحان <bdi dir=\"ltr\">2023/24</bdi>: 15 error واحد واحد"
+     }
     }
    ],
    "cards": [

@@ -18,7 +18,16 @@ COURSES.or = {
       "<b>Origins</b>: formal OR activities began in <b>England during World War II</b>, when a team of British scientists set out to make decisions about the best utilization of war material. After the war, the ideas were adapted to improve efficiency and productivity in the <b>civilian sector</b>. Today OR is a dominant decision-making tool.",
       "<b>Definition (exam wording)</b>: Operations research is concerned with <b>scientifically deciding how to best design and operate man-machine systems</b>, usually requiring the <b>allocation of scarce resources</b>.",
       "Watch the traps: exam T/F statements swap this definition onto \"linear programming\", \"formulation problem\" or \"dynamic programming\". Only <b>operations research</b> owns this sentence."
-     ]
+     ],
+     "fig": [
+      "or-model-deftrap"
+     ],
+     "figAt": {
+      "or-model-deftrap": 3
+     },
+     "figH": {
+      "or-model-deftrap": "The exam definition and its T/F trap: only operations research owns this sentence"
+     }
     },
     {
      "h": "Linear programming and optimization problems",
@@ -28,7 +37,16 @@ COURSES.or = {
       "A <b>mathematical program</b> is an optimization problem in which the objective and constraints are given as mathematical functions and functional relationships.",
       "<b>Linear programming problem (LPP)</b>: finding the optimal value (max or min) of a <b>linear</b> function (objective function) of several variables, subject to the variables being <b>non-negative</b> and satisfying a set of <b>linear inequalities</b> (linear constraints).",
       "The term <b>linear</b> means all mathematical relations used in the problem are linear relations. The term <b>programming</b> refers to the method of determining a particular <b>program or plan of action</b>."
-     ]
+     ],
+     "fig": [
+      "or-model-family"
+     ],
+     "figAt": {
+      "or-model-family": 4
+     },
+     "figH": {
+      "or-model-family": "Optimization problem ⊃ mathematical program ⊃ LPP, and what linear and programming mean"
+     }
     },
     {
      "h": "General form of a mathematical program",
@@ -39,7 +57,13 @@ COURSES.or = {
       "             ...",
       "             gm(x1, ..., xn)  (≤ or = or ≥)  bm",
       "Non-negativity:  x1, x2, ..., xn ≥ 0"
-     ]
+     ],
+     "fig": [
+      "or-model-general"
+     ],
+     "figH": {
+      "or-model-general": "The general form built part by part, then Example 1 in the same form"
+     }
     },
     {
      "h": "Key definitions (Revision 1)",
@@ -68,7 +92,13 @@ COURSES.or = {
        "Decision variables",
        "The unknown quantities we decide on (x1, x2, ...), e.g. the number of units of each product."
       ]
-     ]
+     ],
+     "fig": [
+      "or-model-terms"
+     ],
+     "figH": {
+      "or-model-terms": "Tap a term: which part of Example 1's model it names"
+     }
     },
     {
      "h": "The 4-step formulation procedure",
@@ -79,7 +109,16 @@ COURSES.or = {
       "<b>Step IV</b>: Write the <b>constraints</b> and the <b>non-negativity condition</b>.",
       "<b>Key words</b> (student summary): <i>profit, sold, sales, revenue</i> → <b>Max</b>; <i>cost</i> → <b>Min</b>; <i>available, has, at most, no more than, can use</i> → <b>≤</b>; <i>at least, contains, minimum needs, must deliver</i> → <b>≥</b>.",
       "<b>Hidden constraints</b>: e.g. \"number of days in a week\" gives x ≤ 7, \"days in September\" gives x ≤ 30, and \"paid for the whole day / fraction of a day\" means the variables must be <b>integer</b>."
-     ]
+     ],
+     "fig": [
+      "or-formulate-keywords"
+     ],
+     "figAt": {
+      "or-formulate-keywords": 5
+     },
+     "figH": {
+      "or-formulate-keywords": "Key words: sort the lecture's phrases into Max, Min, ≤ and ≥ (and the hidden ones)"
+     }
     },
     {
      "h": "Example 1: two machines, revenue (Lecture 1)",
@@ -93,7 +132,13 @@ COURSES.or = {
       "S.T.  10x1 + 22x2 ≤ 2640",
       "      15x1 + 18x2 ≤ 2500",
       "      x1, x2 ≥ 0"
-     ]
+     ],
+     "fig": [
+      "or-formulate-steps"
+     ],
+     "figH": {
+      "or-formulate-steps": "Example 1 with the 4 steps: the words become the table, the table becomes the model"
+     }
     },
     {
      "h": "Examples 2 to 5 (Lecture 1)",
@@ -123,7 +168,13 @@ COURSES.or = {
        "x1 = units of food A, x2 = units of food B",
        "Min Z = 1.20x1 + 0.80x2; 2x1 + 2x2 ≥ 16; 4x1 + x2 ≥ 20; x1, x2 ≥ 0"
       ]
-     ]
+     ],
+     "fig": [
+      "or-formulate-builder"
+     ],
+     "figH": {
+      "or-formulate-builder": "Formulation workbench: each example's table and the model it gives, or type your own"
+     }
     },
     {
      "h": "Lecture exercises Q1 and Q2 (solved)",
@@ -134,7 +185,13 @@ COURSES.or = {
       "Q2 Small manufacturer: x1 = units of A, x2 = units of B",
       "   Max Z = 6x1 + 5x2;  x1 + x2 ≤ 5 (R1);  3x1 + 2x2 ≤ 12 (R2);  x1, x2 ≥ 0",
       "   (graphical optimum: (2, 3), Z = 27)"
-     ]
+     ],
+     "fig": [
+      "or-model-check"
+     ],
+     "figH": {
+      "or-model-check": "Check a plan for Q1 and Q2: which constraints hold, what is left, and Z"
+     }
     },
     {
      "h": "Exam formulations with special conditions",
@@ -159,7 +216,13 @@ COURSES.or = {
        "Pet store hamster feed (≥70 protein, ≥100 carbs; A 20/50 $2, B 30/30 $3, C 40/20 $5)",
        "Min Z = 2x1 + 3x2 + 5x3; 20x1 + 30x2 + 40x3 ≥ 70; 50x1 + 30x2 + 20x3 ≥ 100; x ≥ 0"
       ]
-     ]
+     ],
+     "fig": [
+      "or-formulate-hidden"
+     ],
+     "figH": {
+      "or-formulate-hidden": "Hidden constraints: days in a week or in September, and whole days (integer)"
+     }
     }
    ],
    "cards": [
@@ -596,7 +659,13 @@ COURSES.or = {
        "Unbounded solution",
        "The objective function is infinite (the region is open in the direction of improvement)."
       ]
-     ]
+     ],
+     "fig": [
+      "or-lp-terms"
+     ],
+     "figH": {
+      "or-lp-terms": "The definitions on a real graph: tap a term, or tap any point to test it"
+     }
     },
     {
      "h": "Procedure: geometric method for two variables",
@@ -607,7 +676,22 @@ COURSES.or = {
       "<b>Step 4</b>: For an applied problem, <b>interpret</b> the optimal solution in terms of the original problem.",
       "To find an intersection corner, solve the two line equations simultaneously (multiply one equation so a variable cancels, then add).",
       "Lines like x2 = 2 are horizontal, x1 = 1 is vertical; x2 ≥ 2 means above the horizontal line, x1 ≤ 1 left of the vertical line."
-     ]
+     ],
+     "fig": [
+      "or-lp-steps",
+      "or-lp-intersect",
+      "or-lp-shade"
+     ],
+     "figAt": {
+      "or-lp-steps": 3,
+      "or-lp-intersect": 4,
+      "or-lp-shade": 5
+     },
+     "figH": {
+      "or-lp-steps": "The four steps of the geometric method, walked on Example 2",
+      "or-lp-intersect": "Finding an intersection corner: multiply, add, solve, line by line",
+      "or-lp-shade": "One constraint: its line, its intercepts and which side to shade"
+     }
     },
     {
      "h": "Example 1: Max Z = 200x1 + 175x2 (Lecture 2)",
@@ -623,7 +707,13 @@ COURSES.or = {
       "               C(49.87, 97.33): Z ≈ 27,007 (lecture prints C(49.91, 97.3), $27,015.5)",
       "               D(0, 120): Z = 175 × 120 = 21,000",
       "Interpretation: make about 166.7 units of A and 0 units of B."
-     ]
+     ],
+     "fig": [
+      "or-lp-ex1"
+     ],
+     "figH": {
+      "or-lp-ex1": "Example 1 solved graphically, step by step"
+     }
     },
     {
      "h": "Example 2: Jay's pastry, Max Z = 25x1 + 20x2",
@@ -632,7 +722,13 @@ COURSES.or = {
       "C: −(x1 + 2x2 = 22) + (4x1 + 2x2 = 40) → 3x1 = 18 → x1 = 6, x2 = 8",
       "A(0,0): 0    B(10,0): 250    C(6,8): 25(6) + 20(8) = 310 ← OPTIMAL    D(0,11): 220",
       "Jay should make 6 cupcake orders and 8 personal cakes for $310."
-     ]
+     ],
+     "fig": [
+      "or-lp-ex2"
+     ],
+     "figH": {
+      "or-lp-ex2": "Example 2 (Jay's pastry) solved graphically, step by step"
+     }
     },
     {
      "h": "Example 5: Diet, Min Z = 1.20x1 + 0.80x2",
@@ -643,7 +739,13 @@ COURSES.or = {
       "A(0,20): Z = 16    B(4,4): Z = 4.8 + 3.2 = 8 ← OPTIMAL (minimum)    C(8,0): Z = 9.6",
       "Minimum cost $8 with 4 units of food A and 4 units of food B.",
       "(An unbounded region is fine for a MIN problem: the minimum still occurs at a corner.)"
-     ]
+     ],
+     "fig": [
+      "or-lp-ex5"
+     ],
+     "figH": {
+      "or-lp-ex5": "Example 5 (diet): a MIN problem on an unbounded region, step by step"
+     }
     },
     {
      "h": "More solved graphical problems (sections and sheets)",
@@ -683,7 +785,13 @@ COURSES.or = {
        "(0,6)=60, (15/7, 30/7)=68.57, (15,0)=180",
        "(0, 6), Z = 60"
       ]
-     ]
+     ],
+     "fig": [
+      "or-lp-solver"
+     ],
+     "figH": {
+      "or-lp-solver": "Graphical solver: the section and sheet problems, or your own"
+     }
     },
     {
      "h": "Special cases to recognise on a graph",
@@ -692,7 +800,13 @@ COURSES.or = {
       "<b>Unbounded</b>: in a MAX problem the region extends without limit in the direction that increases Z, so Z → ∞.",
       "<b>Multiple optima</b>: the objective line is parallel to a binding constraint; two adjacent corners give the same best Z.",
       "<b>Redundant constraint</b>: a constraint that does not touch the feasible region (removing it changes nothing)."
-     ]
+     ],
+     "fig": [
+      "or-lp-special"
+     ],
+     "figH": {
+      "or-lp-special": "The four special cases on a graph: infeasible, unbounded, multiple optima, redundant"
+     }
     }
    ],
    "cards": [
@@ -1072,7 +1186,13 @@ COURSES.or = {
        "Pivot (pivot element)",
        "The element in the intersection of the pivot column and pivot row. It must be positive (never zero or negative)."
       ]
-     ]
+     ],
+     "fig": [
+      "or-simplex-terms"
+     ],
+     "figH": {
+      "or-simplex-terms": "Each term pointed out on the lecture's initial tableau"
+     }
     },
     {
      "h": "Simplex procedure (max problem, all ≤ constraints)",
@@ -1085,7 +1205,22 @@ COURSES.or = {
       "<b>Step 6</b>: Use elementary row operations: divide the pivot row by the pivot so the pivot becomes 1, then make every other entry of the pivot column 0. The entering variable replaces the exiting variable in the basis column.",
       "<b>Step 7</b>: Repeat until there are <b>no negative numbers in the bottom row</b> (excluding the last column). Then read the solution: basic variables = RHS, non-basic = 0, Z = bottom-right entry.",
       "Effects of one pivot: the entering non-basic variable becomes basic, the exiting basic variable becomes non-basic, and Z increases (or in some cases stays the same)."
-     ]
+     ],
+     "fig": [
+      "or-simplex-slack",
+      "or-simplex-loop",
+      "or-simplex-corner-move"
+     ],
+     "figAt": {
+      "or-simplex-slack": 0,
+      "or-simplex-loop": 6,
+      "or-simplex-corner-move": 7
+     },
+     "figH": {
+      "or-simplex-slack": "Slack variables are the unused machine hours: move x1 and x2 and watch s1 and s2",
+      "or-simplex-loop": "The seven steps as a loop, followed on the lecture example",
+      "or-simplex-corner-move": "One pivot moves the solution from corner (0, 0) to corner (4, 0): x1 enters, s1 exits, Z rises from 0 to 12"
+     }
     },
     {
      "h": "Row operation formulas (lecture way and section shortcut)",
@@ -1095,7 +1230,13 @@ COURSES.or = {
       "Section shortcut for any element not in the pivot row/column:",
       "   new element = old element − (corresponding element in pivot row × corresponding element in pivot column) ÷ pivot element",
       "A column whose entry in the pivot row is 0 is copied unchanged (section tip)."
-     ]
+     ],
+     "fig": [
+      "or-simplex-rectangle"
+     ],
+     "figH": {
+      "or-simplex-rectangle": "Tap any number to get its new value with the rectangle shortcut"
+     }
     },
     {
      "h": "Lecture example: Max Z = 3x1 + x2, 2x1 + x2 ≤ 8, 2x1 + 3x2 ≤ 12 (initial tableau)",
@@ -1136,7 +1277,13 @@ COURSES.or = {
        "0",
        "pivot column = x1 (−3)"
       ]
-     ]
+     ],
+     "fig": [
+      "or-simplex-pivot-pick"
+     ],
+     "figH": {
+      "or-simplex-pivot-pick": "Slide 13: pivot column, ratios, pivot row and pivot element found in turn"
+     }
     },
     {
      "h": "Lecture example after one pivot (optimal)",
@@ -1173,7 +1320,13 @@ COURSES.or = {
        "0",
        "12"
       ]
-     ]
+     ],
+     "fig": [
+      "or-simplex-read"
+     ],
+     "figH": {
+      "or-simplex-read": "Reading the optimal tableau: basic = b, non-basic = 0, Z bottom-right"
+     }
     },
     {
      "h": "Working of the lecture pivot",
@@ -1182,7 +1335,13 @@ COURSES.or = {
       "R2 − 2·R1(new):  (2, 3, 0, 1 | 12) − (2, 1, 1, 0 | 8) = (0, 2, −1, 1 | 4)",
       "Z + 3·R1(new):   (−3, −1, 0, 0 | 0) + (3, 3/2, 3/2, 0 | 12) = (0, 1/2, 3/2, 0 | 12)",
       "No negatives in the Z row → optimal: x1 = 4, x2 = 0, s2 = 4, Z = 12 (same as the graph)."
-     ]
+     ],
+     "fig": [
+      "or-simplex-lecture-run"
+     ],
+     "figH": {
+      "or-simplex-lecture-run": "The lecture pivot row by row, the new tableau filling in"
+     }
     },
     {
      "h": "Revision example: Max Z = 8x1 + 5x2, x1 + 4x2 ≤ 4, 3x1 + 5x2 ≤ 24",
@@ -1250,7 +1409,13 @@ COURSES.or = {
        "0",
        "32"
       ]
-     ]
+     ],
+     "fig": [
+      "or-simplex-revision-run"
+     ],
+     "figH": {
+      "or-simplex-revision-run": "The revision example pivot by pivot: x1 enters, s1 exits, Z = 32"
+     }
     },
     {
      "h": "Revision example: answers to the MCQs",
@@ -1298,7 +1463,13 @@ COURSES.or = {
        "col x1, ratios 20, 17.5, (−3 skipped), pivot 2",
        "s1: 0, 0.5, 1, −0.5, 0 | 2.5; x1: 1, 0.5, 0, 0.5, 0 | 17.5; s3: 0, 2.5, 0, 1.5, 1 | 64.5; Z: 0, −1.5, 0, 2.5, 0 | 87.5"
       ]
-     ]
+     ],
+     "fig": [
+      "or-simplex-sim"
+     ],
+     "figH": {
+      "or-simplex-sim": "Simplex simulator: every exam tableau, or your own problem, pivot by pivot"
+     }
     },
     {
      "h": "Duality (asked once, Final 2021/22)",
@@ -1306,7 +1477,16 @@ COURSES.or = {
       "Every LP (the <b>primal</b>) has a <b>dual</b>. For a MAX primal in canonical form (all ≤): the dual is a MIN problem; each primal constraint gives one dual variable yi; the RHS values become the dual objective coefficients; the objective coefficients become the dual RHS; the coefficient matrix is transposed; dual constraints are ≥.",
       "Sign rules (max primal): a ≤ constraint → yi ≥ 0; a ≥ constraint → yi ≤ 0 (or multiply it by −1 first); an = constraint → yi <b>unrestricted</b> in sign. A primal variable xj ≥ 0 → the j-th dual constraint is ≥.",
       "At the optimum, primal Z = dual W (strong duality). This topic is not in the 2024 slides; it is standard textbook material."
-     ]
+     ],
+     "fig": [
+      "or-simplex-dual"
+     ],
+     "figAt": {
+      "or-simplex-dual": 1
+     },
+     "figH": {
+      "or-simplex-dual": "Building the dual of the Final 2021/22 problem step by step"
+     }
     }
    ],
    "cards": [
@@ -1952,7 +2132,19 @@ COURSES.or = {
       "Network view: sources on the left, destinations on the right, an arc (i, j) for every route with cost c<sub>ij</sub> and flow x<sub>ij</sub>.",
       "<b>Balanced</b> problem: total supply = total demand (all course examples). If not, add a dummy source or destination with zero costs to absorb the difference (textbook rule).",
       "A basic feasible solution has <b>m + n − 1</b> allocated cells (e.g. 3 sources × 4 destinations → 6 cells). Methods for an initial BFS: <b>Northwest corner rule</b>, <b>Least cost (minimum cost) method</b>, <b>Vogel's approximation method</b>."
-     ]
+     ],
+     "fig": [
+      "or-tp-network",
+      "or-tp-balance"
+     ],
+     "figAt": {
+      "or-tp-network": 3,
+      "or-tp-balance": 5
+     },
+     "figH": {
+      "or-tp-network": "The network: sources with supplies, destinations with demands, an arc with cost c ij and flow x ij for every route",
+      "or-tp-balance": "Balanced or not? A dummy takes the difference, and a BFS has m + n − 1 allocated cells"
+     }
     },
     {
      "h": "Lecture data (canned peas, truckloads)",
@@ -2005,7 +2197,16 @@ COURSES.or = {
       "The initial allocation is made to the cell in the <b>upper left-hand corner</b> of the tableau. Allocate the <b>most possible</b> = min(supply, demand), cross out the satisfied row or column, then move <b>right</b> (if the row still has supply) or <b>down</b> (if the column still has demand). Costs are ignored.",
       "Lecture: C1W1 = 75 (C1 done) → C2W1 = 5 (W1 done) → C2W2 = 65 → C2W3 = 55 (C2 done) → C3W3 = 15 → C3W4 = 85.",
       "<b>Z = 464×75 + 352×5 + 216×65 + 690×55 + 388×15 + 685×85 = $152,595</b>"
-     ]
+     ],
+     "fig": [
+      "or-tp-nwc"
+     ],
+     "figAt": {
+      "or-tp-nwc": 2
+     },
+     "figH": {
+      "or-tp-nwc": "Northwest corner rule, cell by cell: the lecture's tableau down to Z = $152,595"
+     }
     },
     {
      "h": "Least cost (minimum cost) method",
@@ -2013,7 +2214,16 @@ COURSES.or = {
       "The initial allocation is made to the cell with the <b>lowest cost</b> in the whole tableau; allocate min(supply, demand), cross out the satisfied row/column, then repeat with the lowest remaining cost.",
       "Lecture: 216 (C2W2) = 65 → 352 (C2W1) = 60 (C2 done) → 388 (C3W3) = 70 → 464 (C1W1) = 20 (W1 done) → 685 (C3W4) = 30 (C3 done) → 867 (C1W4) = 55.",
       "<b>Z = 464×20 + 867×55 + 352×60 + 216×65 + 388×70 + 685×30 = $139,835</b> (cheaper than NWC, and for this data it is already optimal)."
-     ]
+     ],
+     "fig": [
+      "or-tp-lcm"
+     ],
+     "figAt": {
+      "or-tp-lcm": 2
+     },
+     "figH": {
+      "or-tp-lcm": "Least cost method, cell by cell: always the cheapest open cell, down to Z = $139,835"
+     }
     },
     {
      "h": "Vogel's approximation method (VAM)",
@@ -2070,7 +2280,13 @@ COURSES.or = {
        "remaining",
        "S2D3 = 210, S2D4 = 140"
       ]
-     ]
+     ],
+     "fig": [
+      "or-tp-vam"
+     ],
+     "figH": {
+      "or-tp-vam": "Vogel step by step: penalties, the highest one, its cheapest cell, down to $10,330"
+     }
     },
     {
      "h": "VAM total cost",
@@ -2087,7 +2303,16 @@ COURSES.or = {
       "<b>Improvement index</b> = sum of costs at + cells − sum of costs at − cells. It is the change in total cost per unit moved into the empty cell.",
       "If every index is ≥ 0, the solution is <b>optimal</b> (minimization). Otherwise choose the <b>most negative</b> index, move θ = the <b>smallest allocation among the − cells</b> around the path (add θ at +, subtract at −). The cell that drops to 0 leaves. Repeat.",
       "New cost = old cost + (index × θ)."
-     ]
+     ],
+     "fig": [
+      "or-tp-loop"
+     ],
+     "figAt": {
+      "or-tp-loop": 3
+     },
+     "figH": {
+      "or-tp-loop": "One closed path, corner by corner: signs, improvement index, θ and the new cost"
+     }
     },
     {
      "h": "Final 2025/26 worked: LCM then stepping stone",
@@ -2099,7 +2324,13 @@ COURSES.or = {
       "         Q3D2: path (Q3,D2)+ → (Q3,D3)− → (Q2,D3)+ → (Q2,D2)−  = 3 − 2 + 4 − 8 = −3  ← improve",
       "θ = min(Q3D3 = 300, Q2D2 = 200) = 200 → Q3D2 = 200, Q3D3 = 100, Q2D3 = 300, Q2D2 = 0",
       "New Z = 5200 − 3 × 200 = $4600. New indices: Q1D1 = 3, Q1D3 = 2, Q2D2 = 3, Q3D1 = 10 (all ≥ 0) → optimal."
-     ]
+     ],
+     "fig": [
+      "or-tp-stone"
+     ],
+     "figH": {
+      "or-tp-stone": "Stepping stone simulator: indices of every empty cell, enter the most negative, repeat until all ≥ 0"
+     }
     },
     {
      "h": "Revision example (S1: 100 140 75 | 300, S2: 90 20 110 | 320, S3: 60 130 220 | 380; demand 250 550 200)",
@@ -2119,7 +2350,13 @@ COURSES.or = {
        "S1D1 = 250, S1D2 = 50, S2D2 = 320, S3D2 = 180, S3D3 = 200",
        "$105,800"
       ]
-     ]
+     ],
+     "fig": [
+      "or-tp-compare"
+     ],
+     "figH": {
+      "or-tp-compare": "NWC vs least cost vs VAM on the same data, against the optimum"
+     }
     }
    ],
    "cards": [
@@ -2688,7 +2925,16 @@ COURSES.or = {
       "It arises because resources (men, machines...) have varying degrees of efficiency for different activities, so the cost, profit or loss differs.",
       "Each row (person/job) gets exactly one column (machine/programmer) and each column exactly one row. An n × n problem has n assignments.",
       "Textbook extensions: a <b>maximization</b> problem is converted by subtracting every entry from the largest entry; an <b>unbalanced</b> matrix gets a dummy row/column of zeros."
-     ]
+     ],
+     "fig": [
+      "or-assign-model"
+     ],
+     "figAt": {
+      "or-assign-model": 3
+     },
+     "figH": {
+      "or-assign-model": "A transportation model with supply and demand of one unit: each row gets exactly one column"
+     }
     },
     {
      "h": "Hungarian method (lecture steps)",
@@ -2700,7 +2946,25 @@ COURSES.or = {
       "<b>Step 4 (marking, if fewer than n)</b>: tick (√) rows without an assignment; tick columns having a zero in a ticked row; tick rows having an assigned zero in a ticked column; repeat. Draw lines through <b>unticked rows</b> and <b>ticked columns</b>.",
       "<b>Step 5</b>: θ = smallest <b>uncovered</b> element. C − θ for uncovered elements, C unchanged for elements with one line, C + θ for elements at the intersection of two lines. Return to step 3.",
       "Section shortcut: draw lines through the rows/columns with the most zeros; if lines = number of rows, assign; else modify with θ and redraw."
-     ]
+     ],
+     "fig": [
+      "or-hungarian-scan",
+      "or-hungarian-mark",
+      "or-hungarian-theta",
+      "or-hungarian-flow"
+     ],
+     "figAt": {
+      "or-hungarian-scan": 2,
+      "or-hungarian-mark": 4,
+      "or-hungarian-theta": 5,
+      "or-hungarian-flow": 6
+     },
+     "figH": {
+      "or-hungarian-scan": "Step 3 by hand: row scanning, then column scanning, boxing and crossing zeros",
+      "or-hungarian-mark": "Step 4, the marking: ticks spread from the unassigned row, then the lines are drawn",
+      "or-hungarian-theta": "Step 5: θ is subtracted from uncovered entries and added where two lines cross",
+      "or-hungarian-flow": "The Hungarian method as a flowchart, with its loop back to step 3"
+     }
     },
     {
      "h": "Lecture example (Page 107): D, E, F",
@@ -2735,7 +2999,13 @@ COURSES.or = {
        "B → F (350)",
        "C → D (200)"
       ]
-     ]
+     ],
+     "fig": [
+      "or-hungarian-p107"
+     ],
+     "figH": {
+      "or-hungarian-p107": "The page-107 example solved step by step: $950"
+     }
     },
     {
      "h": "Lecture example result",
@@ -2806,7 +3076,13 @@ COURSES.or = {
       "Lines through unticked rows J2, J4 and ticked column P4. Smallest uncovered = 1 (J3, P3).",
       "Subtract 1 from uncovered, add 1 at intersections (J2,P4) and (J4,P4).",
       "Optimal: J1 → P4, J2 → P1, J3 → P3, J4 → P2.  Total = 44 + 56 + 90 + 44 = $234"
-     ]
+     ],
+     "fig": [
+      "or-hungarian-ex2"
+     ],
+     "figH": {
+      "or-hungarian-ex2": "Example 2 from the original matrix to the optimal $234, one stage at a time"
+     }
     },
     {
      "h": "Sheet 1 / Final Aug 2022/23 Q2 (verified)",
@@ -2853,7 +3129,13 @@ COURSES.or = {
        "3 → B (5)",
        "4 → D (5)"
       ]
-     ]
+     ],
+     "fig": [
+      "or-hungarian-solver"
+     ],
+     "figH": {
+      "or-hungarian-solver": "Hungarian method solver: the sheet and exam matrices, or your own"
+     }
     },
     {
      "h": "Other solved assignment exams",
@@ -3285,7 +3567,13 @@ COURSES.or = {
        "0-1 (binary) integer programming",
        "An integer program in which all the variables must equal 0 or 1."
       ]
-     ]
+     ],
+     "fig": [
+      "or-ip-kinds"
+     ],
+     "figH": {
+      "or-ip-kinds": "LP relaxation, pure, mixed and 0-1 integer programs on the same constraints: which points count, and the best Z of each"
+     }
     },
     {
      "h": "Why not just round the LP answer?",
@@ -3293,7 +3581,16 @@ COURSES.or = {
       "Rounding the LP optimum can give an <b>infeasible</b> point or a <b>non-optimal</b> one. Example (Sheet 2): LP optimum (2.75, 1.25); rounding to (3, 1) violates 10x1 + 6x2 ≤ 35 (36 > 35).",
       "For a MAX problem, the LP relaxation's Z is an <b>upper bound</b> on the best integer Z; every branch can only lower it.",
       "Integer problems appear whenever units are indivisible: days a plant operates (full-day pay), number of machines, people, trucks."
-     ]
+     ],
+     "fig": [
+      "or-ip-round"
+     ],
+     "figAt": {
+      "or-ip-round": 0
+     },
+     "figH": {
+      "or-ip-round": "Rounding (2.75, 1.25): infeasible or not optimal; tap any integer point to test it"
+     }
     },
     {
      "h": "Branch and bound (graphical) procedure",
@@ -3304,7 +3601,25 @@ COURSES.or = {
       "<b>4.</b> A node is <b>fathomed</b> (stop branching) when: its solution is integer (it becomes the incumbent if better), it is <b>infeasible</b>, or its Z is not better than the best integer Z found so far.",
       "<b>5.</b> Keep branching on fractional nodes until no live node remains. The best integer solution found is optimal.",
       "Note \"x ≥ y and x ≤ y ⇒ x = y\": if a branch adds x1 ≥ 3 on top of x1 ≤ 3, then x1 = 3 is a line."
-     ]
+     ],
+     "fig": [
+      "or-bb-branch",
+      "or-bb-fathom",
+      "or-bb-flow",
+      "or-bb-equal"
+     ],
+     "figAt": {
+      "or-bb-branch": 2,
+      "or-bb-fathom": 3,
+      "or-bb-flow": 4,
+      "or-bb-equal": 5
+     },
+     "figH": {
+      "or-bb-branch": "Branching on x1 = 2.75: the strip 2 < x1 < 3 is removed and each sub-problem is solved graphically",
+      "or-bb-fathom": "The three ways a node is fathomed, on Sheet 2's nodes",
+      "or-bb-flow": "The procedure as a flowchart, walked on Sheet 2 with the loop back to step 2",
+      "or-bb-equal": "x1 ≥ 3 and x1 ≤ 3 together leave only the line x1 = 3"
+     }
     },
     {
      "h": "Sheet 2 / Final 2021/22 Q4: Max Z = 40x1 + 30x2; 10x1 + 6x2 ≤ 35; x1 + x2 ≤ 4",
@@ -3316,7 +3631,13 @@ COURSES.or = {
       "    Node 4 (x1 ≥ 3, x2 ≥ 1): 10(3) + 6(1) = 36 > 35 → INFEASIBLE",
       "    Node 5 (x1 ≥ 3, x2 ≤ 0): (3.5, 0), Z = 140 → not better than 140 (further branches give (3,0) = 120, x1 ≥ 4 infeasible)",
       "Optimal integer solution: x1 = 2, x2 = 2, Z = 140."
-     ]
+     ],
+     "fig": [
+      "or-bb-sheet2"
+     ],
+     "figH": {
+      "or-bb-sheet2": "Sheet 2 by branch and bound, node by node: region, corner table and the growing tree"
+     }
     },
     {
      "h": "Sheet 1 / Final Aug 2022/23 Q4: Max Z = 3x1 + 4x2; x1 + 3x2 ≤ 13; 5x1 + 2x2 ≤ 20",
@@ -3326,7 +3647,13 @@ COURSES.or = {
       "Node 3 → x2 ≤ 3: (2,3), Z = 18 (integer).  x2 ≥ 4: (1,4), Z = 19 (integer, best so far)",
       "Node 2 → x2 ≤ 2: (3.2, 2), Z = 17.6 < 19 (prune).  x2 ≥ 3: infeasible",
       "Optimal: x1 = 1, x2 = 4, Z = 19."
-     ]
+     ],
+     "fig": [
+      "or-bb-sheet1"
+     ],
+     "figH": {
+      "or-bb-sheet1": "Sheet 1 by branch and bound, node by node, down to x1 = 1, x2 = 4, Z = 19"
+     }
     },
     {
      "h": "More solved branch-and-bound problems",
@@ -3379,7 +3706,13 @@ COURSES.or = {
        "x2 ≤ 2 → (1,2) 11; x2 ≥ 3 → (0,3) 12",
        "(0, 3), Z = 12"
       ]
-     ]
+     ],
+     "fig": [
+      "or-bb-solver"
+     ],
+     "figH": {
+      "or-bb-solver": "Branch and bound on every problem in the table, or on your own"
+     }
     }
    ],
    "cards": [
@@ -4615,7 +4948,16 @@ COURSES.or = {
       "<b>Most likely time (M, t<sub>m</sub>)</b>: estimate under <b>normal</b> conditions.",
       "<b>Pessimistic time (P, t<sub>p</sub>)</b>: estimate under the <b>worst</b> conditions.",
       "Typical questions: construct the network; expected duration and variance of each activity; critical path and project completion time; probability of completing the project on or before a date."
-     ]
+     ],
+     "fig": [
+      "or-pert-three"
+     ],
+     "figAt": {
+      "or-pert-three": 3
+     },
+     "figH": {
+      "or-pert-three": "One activity, three estimates: O, M and P on a time line, then te and σ²"
+     }
     },
     {
      "h": "PERT formulas",
@@ -4627,7 +4969,15 @@ COURSES.or = {
       "z = (X − μ) / σ,  where X is the target date given in the question",
       "\"in / on / before X\" → P(T ≤ X);  \"after X\" → P(T ≥ X)",
       "Table gives area from 0 to z:  z > 0 → P(T ≤ X) = 0.5 + area;  z < 0 → P(T ≤ X) = 0.5 − area"
-     ]
+     ],
+     "fig": [
+      "or-pert-formula",
+      "or-pert-prob"
+     ],
+     "figH": {
+      "or-pert-formula": "te and σ² calculator: the notes' activities, or your own three estimates",
+      "or-pert-prob": "From μ, σ² and X to a probability: z, the normal table and the shaded area"
+     }
     },
     {
      "h": "Lecture example: expected times and variances",
@@ -4731,7 +5081,13 @@ COURSES.or = {
        "3",
        "1"
       ]
-     ]
+     ],
+     "fig": [
+      "or-pert-table-lec"
+     ],
+     "figH": {
+      "or-pert-table-lec": "The lecture table filled row by row: te and σ² for A to J"
+     }
     },
     {
      "h": "Lecture example: critical path and probability (on or before 22 weeks)",
@@ -4740,7 +5096,13 @@ COURSES.or = {
       "Critical path C-F-H-J, project completion time μ = 17 weeks",
       "σ² = 1 + 1.78 + 1 + 1 = 4.78,  σ = √4.78 = 2.19",
       "P(X ≤ 22) = P(z ≤ (22 − 17)/2.19) = P(z ≤ 2.28) = 0.5 + 0.4887 = 0.9887 (about 98.9%)"
-     ]
+     ],
+     "fig": [
+      "or-pert-net"
+     ],
+     "figH": {
+      "or-pert-net": "The lecture network: each path, the critical path, σ and P(finish by 22 weeks)"
+     }
     },
     {
      "h": "Final 2021/22 & Revision: construction project, two years (104 weeks)",
@@ -4844,7 +5206,13 @@ COURSES.or = {
        "13",
        "4"
       ]
-     ]
+     ],
+     "fig": [
+      "or-pert-table-rev"
+     ],
+     "figH": {
+      "or-pert-table-rev": "The construction project table filled row by row"
+     }
     },
     {
      "h": "104-week answer",
@@ -4853,7 +5221,13 @@ COURSES.or = {
       "Critical path A-C-E-G-H-J, μ = 16.5 + 18.5 + 20.33 + 8.5 + 23 + 13 = 99.83 weeks",
       "σ² = 12.25 + 20.25 + 11.11 + 6.25 + 36 + 4 = 89.86,  σ = 9.48",
       "P(X ≤ 104) = P(z ≤ (104 − 99.83)/9.48) = P(z ≤ 0.44) = 0.5 + 0.1700 = 0.67"
-     ]
+     ],
+     "fig": [
+      "or-pert-paths-rev"
+     ],
+     "figH": {
+      "or-pert-paths-rev": "The six paths as bars, the critical one, then σ² and P(within 104 weeks)"
+     }
     },
     {
      "h": "Other PERT exam answers (verified)",
@@ -4888,7 +5262,13 @@ COURSES.or = {
        "0.44 + 0.44 + 0.44 + 0.11 + 0.11 + 0.11 = 1.67 (σ = 1.29)",
        "P(≤ 22): z = 1.55 → 0.5 + 0.4394 = 0.9394"
       ]
-     ]
+     ],
+     "fig": [
+      "or-pert-solver"
+     ],
+     "figH": {
+      "or-pert-solver": "PERT solver: the exam projects, or your own table"
+     }
     }
    ],
    "cards": [
@@ -5441,7 +5821,22 @@ COURSES.or = {
       "<b>Backward approach</b>: start from the last stage (nodes next to the destination) and move back to the source; at each node keep only the <b>minimum</b> distance to the destination.",
       "Recursion: d(node, T) = min over arcs (node → next) of [ length(node → next) + d(next, T) ]. Record the next node that achieves the minimum, then read the path forward.",
       "A tutor's shortcut: list all paths and take the shortest; the exam asks for the stage-by-stage backward work, so show stages."
-     ]
+     ],
+     "fig": [
+      "or-dp-stages",
+      "or-dp-node",
+      "or-dp-allpaths"
+     ],
+     "figAt": {
+      "or-dp-stages": 2,
+      "or-dp-node": 3,
+      "or-dp-allpaths": 4
+     },
+     "figH": {
+      "or-dp-stages": "The slide's network cut into stages, solved backward from the destination to the source",
+      "or-dp-node": "The recursion at one node: arc length + d(next) for every arc, keep the minimum",
+      "or-dp-allpaths": "The shortcut: every path listed and added up, against the backward stages"
+     }
     },
     {
      "h": "Final 2021/22 & Sheet 2: M1 → M7",
@@ -5453,7 +5848,13 @@ COURSES.or = {
       "Stage 2: d(M2, M7) = min{7 + 17, 9 + 11} = min{24, 20} = 20  (via M4)",
       "Stage 1: d(M1, M7) = 5 + 20 = 25",
       "Shortest path: M1 → M2 → M4 → M6 → M7, length 25"
-     ]
+     ],
+     "fig": [
+      "or-dp-m1m7"
+     ],
+     "figH": {
+      "or-dp-m1m7": "M1 to M7 backward, node by node, down to the path M1-M2-M4-M6-M7 = 25"
+     }
     },
     {
      "h": "Final 2019/20: S → T",
@@ -5463,7 +5864,13 @@ COURSES.or = {
       "Stage 2: d(A, T) = min{3 + 8, 6 + 2} = 8 (via E);  d(B, T) = min{4 + 8, 10 + 2} = 12;  d(C, T) = min{10, 3 + 2} = 5 (via E)",
       "Stage 1: d(S, T) = min{1 + 8, 2 + 12, 7 + 5} = min{9, 14, 12} = 9",
       "Shortest path: S → A → E → T, length 9"
-     ]
+     ],
+     "fig": [
+      "or-dp-st"
+     ],
+     "figH": {
+      "or-dp-st": "S to T backward, stage by stage, to S-A-E-T = 9; then try your own network"
+     }
     },
     {
      "h": "Finals 2023/24 (both papers): node 1 → node 10",
@@ -5475,7 +5882,13 @@ COURSES.or = {
       "Stage 1: d(1) = min{4 + 11, 6 + 15, 4 + 20} = 15 → path 1 → 2 → 5 → 8 → 10 (4 + 3 + 6 + 2 = 15)",
       "2nd-year arcs differ (2→5 3; 3→5 7, 3→6 8, 3→7 7; 4→7 7; 5→8 6, 5→9 7; 6→9 8; 7→8 9, 7→9 7; 8→10 2; 9→10 6):",
       "   d(5) = 8, d(6) = 14, d(7) = 11, d(2) = 11, d(3) = 15, d(4) = 18, d(1) = 15 → same path 1-2-5-8-10 = 15"
-     ]
+     ],
+     "fig": [
+      "or-dp-n10"
+     ],
+     "figH": {
+      "or-dp-n10": "Node 1 to node 10 backward on both papers: different arcs, same path 1-2-5-8-10 = 15"
+     }
     },
     {
      "h": "Final 2025/26: J1 → J8",
@@ -5485,7 +5898,13 @@ COURSES.or = {
       "Stage 2: d(J2) = min{12 + 13, 8 + 4} = 12;  d(J3) = 10 + 4 = 14;  d(J4) = 9 + 15 = 24",
       "Stage 1: d(J1) = min{4 + 12, 9 + 14, 11 + 24} = 16",
       "Shortest path: J1 → J2 → J6 → J8, length 16"
-     ]
+     ],
+     "fig": [
+      "or-dp-j8"
+     ],
+     "figH": {
+      "or-dp-j8": "J1 to J8 backward, node by node, to J1-J2-J6-J8 = 16"
+     }
     },
     {
      "h": "Revision MCQ 21: N1 → N6",
@@ -5493,7 +5912,13 @@ COURSES.or = {
       "Arcs: N1→N2 4, N1→N3 2; N2→N4 3, N2→N5 2; N3→N5 3; N4→N6 2; N5→N6 2",
       "d(N4) = 2, d(N5) = 2;  d(N2) = min{3 + 2, 2 + 2} = 4;  d(N3) = 3 + 2 = 5",
       "d(N1) = min{4 + 4, 2 + 5} = 7 → N1, N3, N5, N6 (answer D)"
-     ]
+     ],
+     "fig": [
+      "or-dp-n6"
+     ],
+     "figH": {
+      "or-dp-n6": "N1 to N6 backward: d(N1) = 7 through N1, N3, N5, N6 (answer D)"
+     }
     }
    ],
    "cards": [

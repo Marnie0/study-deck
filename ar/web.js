@@ -283,7 +283,10 @@ AR.web = {
      ]
     },
     {
-     "h": "الـ HTML document البسيط"
+     "h": "الـ HTML document البسيط",
+     "figH": {
+      "wb-doc": "الـ HTML document البسيط سطر بسطر، والـ browser بيعرض إيه"
+     }
     },
     {
      "h": "الـ Elements والـ tags والـ nesting",
@@ -295,7 +298,11 @@ AR.web = {
       "كل الـ web pages ليها structure مشترك ولازم يبقى فيها الـ pair tags دول: <code>&lt;HTML&gt;</code> و<code>&lt;HEAD&gt;</code> و<code>&lt;TITLE&gt;</code> و<code>&lt;BODY&gt;</code>.",
       "<b>ماتنساش الـ end tag أبدًا</b>: فيه elements (زي <code>&lt;p&gt;</code>) بتتعرض صح من غيره، بس ماينفعش تعتمد على كده.",
       "<b>الـ HTML مش case sensitive</b>: <code>&lt;P&gt;</code> زي <code>&lt;p&gt;</code> بالظبط (الـ W3C بينصح بالـ lowercase، والـ XHTML بيفرضه)."
-     ]
+     ],
+     "figH": {
+      "wb-element": "الـ element عبارة عن start tag وcontent وend tag، والـ empty elements",
+      "wb-nest": "الـ nesting بيتراجع tag بـ tag، واقفل أقرب tag مفتوح الأول"
+     }
     },
     {
      "h": "قواعد الـ document: الـ DOCTYPE والـ html والـ head والـ title والـ body",
@@ -304,7 +311,10 @@ AR.web = {
       "الـ document بيبدأ بـ <code>&lt;html&gt;</code> وبيخلص بـ <code>&lt;/html&gt;</code> (أول tag بعد الـ DOCTYPE).",
       "<b>الجزء اللي بيظهر</b> من الـ document هو اللي بين <code>&lt;body&gt;</code> و<code>&lt;/body&gt;</code>. الـ Metadata مكانها في <code>&lt;head&gt;</code> (الـ title والـ meta والـ link والـ style والـ script)، وعمر ما يبقى فيها محتوى ظاهر زي الـ tables.",
       "الـ <b><code>&lt;title&gt;</code></b> اختاره بعناية؛ الـ title بيحدد <b>ترتيب الصفحة (ranking) في بعض الـ search engines</b> وبيظهر في الـ Favorites والـ History والـ Bookmark lists."
-     ]
+     ],
+     "figH": {
+      "wb-headbody": "الـ head ولا الـ body؟ حط كل tag في مكانه"
+     }
     },
     {
      "h": "الـ Headings والـ paragraphs والـ links",
@@ -314,7 +324,12 @@ AR.web = {
       "الـ Links بتستخدم الـ <code>&lt;a&gt;</code> (anchor) tag؛ والـ attribute اللي اسمه <b>href</b> بيحدد الوجهة:<pre>&lt;a href=\"https://www.google.com\"&gt;\n  This is a link\n&lt;/a&gt;</pre>",
       "الـ <b><bdi dir=\"ltr\">target=\"_blank\"</bdi></b> بيفتح الـ link في window أو tab جديدة (الـ <code>_self</code> معناها نفس الـ frame، وده الـ default؛ والـ <code>_parent</code> والـ <code>_top</code> قيم تانية). والـ image link بيبقى كده:<pre>&lt;a href=\"url\"&gt;\n  &lt;img src=\"logo.png\"&gt;\n&lt;/a&gt;</pre>",
       "الـ <b>View source</b>: كليك يمين وبعدين \"View Page Source\" (Chrome) أو \"View Source\" (Edge). والـ \"Inspect\" بيوريك الـ HTML والـ CSS بتوع أي element وبيخليك تعدّلهم على طول."
-     ]
+     ],
+     "figH": {
+      "wb-headings": "الـ headings من <bdi dir=\"ltr\">&lt;h1&gt;</bdi> لـ <bdi dir=\"ltr\">&lt;h6&gt;</bdi>، من الأهم للأقل أهمية",
+      "wb-link": "دوس على الـ link، والـ target بيحدد نفس الـ tab ولا tab جديدة",
+      "wb-viewsrc": "الصفحة والـ View Page Source والـ Inspect اللي بيعدّل على طول"
+     }
     },
     {
      "h": "الـ Attributes",
@@ -327,10 +342,18 @@ AR.web = {
       "الـ <b>style</b>: بيضيف styles زي اللون والـ font والحجم:<pre>&lt;p style=\"color:red;\"&gt;</pre>",
       "الـ <b>lang</b>: حدد اللغة في الـ html tag عشان تساعد الـ search engines والـ browsers:<pre>&lt;html lang=\"en\"&gt;</pre>في <code>lang=\"en-US\"</code>: أول حرفين هما اللغة، وآخر حرفين هما البلد.",
       "الـ <b>title</b>: معلومات زيادة بتظهر كـ <b>tooltip</b> لما الماوس يقف على الـ element."
-     ]
+     ],
+     "figH": {
+      "wb-attr": "الـ attributes عبارة عن أزواج من name و value جوه الـ start tag",
+      "wb-img": "الـ <bdi dir=\"ltr\">&lt;img&gt;</bdi> بالـ src والـ width والـ height والـ alt، بوّظ الـ src وشوف الـ alt",
+      "wb-pattrs": "جرّب الـ style والـ title والـ lang بنفسك"
+     }
     },
     {
-     "h": "الـ Absolute مقابل الـ relative URLs (في الـ src والـ href)"
+     "h": "الـ Absolute مقابل الـ relative URLs (في الـ src والـ href)",
+     "figH": {
+      "wb-url": "كل URL بيشاور على فين: absolute، ولا relative للصفحة، ولا relative للـ domain"
+     }
     }
    ],
    "cards": [
