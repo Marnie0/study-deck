@@ -7,10 +7,10 @@ AR.ds = {
     {
      "h": "الـ data والـ data types والـ data structures",
      "pts": [
-      "الـ <b>Data</b>: مجموعة حقائق (facts) نقدر نطلع منها باستنتاج. <i>الداتا: الحرارة 35°C؛ الاستنتاج: الجو حر.</i> أنواع الداتا: <b>textual</b> (اسمك)، <b>numeric</b> (الـ ID بتاعك)، <b>audio</b> (صوتك)، <b>video</b> (صوتك وصورتك).",
+      "الـ <b>Data</b>: مجموعة حقائق (facts) نقدر نطلع منها باستنتاج. <i>الداتا: الحرارة 35°C؛ الاستنتاج: الجو حر.</i> أنواع الداتا: الـ <b>textual</b> (اسمك)، والـ <b>numeric</b> (الـ ID بتاعك)، والـ <b>audio</b> (صوتك)، والـ <b>video</b> (صوتك وصورتك).",
       "البرامج بت<b>قرا</b> الداتا، وب<b>تخزنها</b> مؤقتًا، وب<b>تعالجها</b> (process)، وفي الآخر بت<b>طلّع</b> النتايج (output).",
-      "الـ <b>Data types</b> (اسمها كمان <b>atomic</b> data types) <b>مالهاش أجزاء جواها</b>، زي <code>int</code> و<code>char</code> و<code>float</code>. الـ data type عبارة عن حاجتين: <b>(i) domain من القيم المسموحة</b> و<b>(ii) set of operations</b> على القيم دي. الـ compiler بيطلّع error لو عملت operation غلط، يعني <code>char x,y,z; z=x*y;</code> مش مسموح.",
-      "أمثلة: <b>boolean</b>: الـ domain هو 0,1، والـ operations هي and, or, =. <b>char</b>: الـ domain هو ASCII، والـ operations هي =, &lt;&gt;, &lt;. <b>integer</b>: الـ domain من -maxint لـ +maxint، والـ operations هي +, -, =, ==, &lt;&gt;, &lt;.",
+      "الـ <b>Data types</b> (اسمها كمان <b>atomic</b> data types) <b>مالهاش أجزاء جواها</b>، زي <code>int</code> و<code>char</code> و<code>float</code>. الـ data type عبارة عن حاجتين: <b>(i) domain من القيم المسموحة</b> و<b>(ii) set of operations</b> على القيم دي. الـ compiler بيطلّع error لو عملت operation غلط، يعني الكود ده مش مسموح:<pre>char x,y,z;\nz=x*y;</pre>",
+      "أمثلة: الـ <b>boolean</b>: الـ domain هو <bdi dir=\"ltr\">0,1</bdi>، والـ operations هي:<span class=\"ltr\">and, or, =</span>والـ <b>char</b>: الـ domain هو ASCII، والـ operations هي:<span class=\"ltr\">=, &lt;&gt;, &lt;</span>والـ <b>integer</b>: الـ domain من <bdi dir=\"ltr\">-⁠maxint</bdi> لـ <bdi dir=\"ltr\">+maxint</bdi>، والـ operations هي:<span class=\"ltr\">+, -, =, ==, &lt;&gt;, &lt;</span>",
       "الـ <b>Data structure</b>: طريقة معينة لـ <b>تخزين وتنظيم الداتا</b> في الكمبيوتر عشان نستخدمها <b>بكفاءة وفاعلية (efficiently and effectively)</b>. هو الـ <b>logical أو mathematical model</b> لتنظيم معين للداتا، يعني مجموعة data elements متجمعة تحت اسم واحد (زي الـ array). الـ data structures بتخلي الكود أنضف وأسهل في الفهم.",
       "<b>ليه محتاجين data structures؟</b> الهدف (Goal): تنظيم الداتا. المعايير (Criteria): تسهيل <b>التخزين (storage)</b> و<b>الاسترجاع (retrieval)</b> و<b>التعديل (manipulation)</b> للداتا بكفاءة. مسألة التصميم (Design issue): إنك تختار وتصمم الـ data types المناسبة (وده أهم سبب بنذاكر عشانه data structures)."
      ]
@@ -26,18 +26,18 @@ AR.ds = {
       "الـ <b>Sorting</b>: ترتيب العناصر ترتيب منطقي (تصاعدي/تنازلي). الـ <b>Merging</b>: دمج عناصر من two or more data structures في structure واحد.",
       "الـ <b>ADT</b>: <b>تجريد (abstraction) للـ data structure</b> بيدّيك <b>الـ interface بس</b> اللي الـ data structure لازم يلتزم بيه. الـ interface مش بيقول أي تفاصيل عن الـ implementation ولا بأنهي programming language (يعني بيخليك تفكر في الداتا بشكل مجرد).",
       "الـ ADTs <b>حاجات نظرية بحتة (purely theoretical)</b>: بنستخدمها عشان نبسّط وصف الـ abstract algorithms ونصنّف ونقيّم الـ data structures. الـ ADT هو مجموعة داتا + set of operations على الداتا دي.",
-      "أمثلة ADT ← implementation: <b>List</b> ← dynamic array، linked list. <b>Queue</b> ← queue مبني على linked list، queue مبني على array. <b>Map</b> ← tree map، hash map / hash table. التشبيه: الـ <b>Vehicle</b> (ADT) ← golf car، bicycle، smart car (implementations)."
+      "أمثلة ADT والـ implementation بتاعه:<span class=\"ltr\"><b>List</b> → dynamic array, linked list</span><span class=\"ltr\"><b>Queue</b> → linked-list based queue, array based queue</span><span class=\"ltr\"><b>Map</b> → tree map, hash map / hash table</span>التشبيه: الـ <b>Vehicle</b> (ADT) والـ implementations بتاعته:<span class=\"ltr\">golf car, bicycle, smart car</span>"
      ]
     },
     {
      "h": "الـ Arrays (المحاضرة + Lab 1)",
      "pts": [
       "الـ <b>array</b> هو data structure بنستخدمه عشان نعالج عناصر كتير <b>من نفس الـ data type</b> لما عددهم يبقى معروف؛ يعني مجموعة عناصر من نفس النوع متخزنة في <b>أماكن متتالية في الـ memory (consecutive)</b>.",
-      "مكان العنصر بيتحدد بمعادلة: <b>location(i) = i - 1</b>، يعني العنصر رقم i في الـ list موجود في position i-1 في الـ array (الـ index بيبدأ من <b>صفر (zero-based)</b>: من 0 لـ size-1).",
-      "الـ Syntax: <code>dataType arrayName[arraySize];</code> الـ size لازم يبقى <b>integer constant أكبر من صفر</b> ولازم يتحدد مسبقًا. والـ subscript (الـ index) لازم يبقى integer.",
-      "طرق إدخال الداتا: <code>int arr[5]={10,20,30,40,50};</code> (كله)، <code>char arr[5]={'a','b','c'};</code> (أول 3 بس)، <code>arr[0]=10;</code> (index معين)، <code>cin&gt;&gt;arr[2];</code> (وقت الـ run time).",
-      "الـ C++ بتبعت <b>الـ array كله by reference</b> للـ functions، بس <b>العنصر الواحد بيتبعت by value</b> زي أي variable عادي.",
-      "الحجم في الـ memory = عدد العناصر × حجم الـ type، مثلًا <code>int arr[15]</code> والـ int بـ 4 bytes = <b>60 bytes</b>.",
+      "مكان العنصر بيتحدد بمعادلة:<span class=\"ltr\"><b>location(i) = i - 1</b></span>يعني العنصر رقم i في الـ list موجود في <bdi dir=\"ltr\">position&nbsp;i-⁠1</bdi> في الـ array (الـ index بيبدأ من <b>صفر (zero-based)</b>: من 0 لـ <bdi dir=\"ltr\">size-⁠1</bdi>).",
+      "الـ Syntax:<pre>dataType arrayName[arraySize];</pre>الـ size لازم يبقى <b>integer constant أكبر من صفر</b> ولازم يتحدد مسبقًا. والـ subscript (الـ index) لازم يبقى integer.",
+      "طرق إدخال الداتا: كله:<pre>int arr[5]={10,20,30,40,50};</pre>أول 3 بس:<pre>char arr[5]={'a','b','c'};</pre>في index معين:<pre>arr[0]=10;</pre>وقت الـ run time:<pre>cin&gt;&gt;arr[2];</pre>",
+      "الـ <bdi dir=\"ltr\">C++</bdi> بتبعت <b>الـ array كله by reference</b> للـ functions، بس <b>العنصر الواحد بيتبعت by value</b> زي أي variable عادي.",
+      "الحجم في الـ memory بيساوي عدد العناصر × حجم الـ type، مثلًا <bdi dir=\"ltr\">int&nbsp;arr[15]</bdi> والـ int بـ 4 bytes:<span class=\"ltr\">15 × 4 bytes = <b>60 bytes</b></span>",
       "الميزة: سهل تخزن عناصر من نفس النوع، والـ access مباشر بالـ index. <b>العيب: الحجم ثابت (fixed size)</b> (بيتحدد وقت الـ design ومايكبرش)."
      ]
     },
@@ -50,12 +50,12 @@ AR.ds = {
     {
      "h": "الـ 2D arrays والـ matrices",
      "pts": [
-      "الداتا اللي على شكل جدول (زي الـ <b>matrix</b>) بنمثلها بـ 2-dimensional array: <code>int a[3][4];</code> فيه 3 rows (0..2) و4 columns (0..3)، والعناصر من a[0][0] لـ a[2][3].",
-      "الـ Matrices عادةً الـ index بتاعها بيبدأ من <b>1</b>، وبتدعم الجمع والضرب والـ transpose، ودول <b>مش</b> مدعومين مباشرة في الـ 2D array بتاع C++.",
-      "<b>إزاي نلاقي x[i][j]</b> (row-major): لو x فيه r rows وc columns، كل row فيه c عناصر، وقبل row رقم i فيه i rows، يعني فيه <b>i·c</b> عنصر قبل x[i][0]؛ فـ x[i][j] بيتحط في position <b>i·c + j</b> في الـ 1D array.",
-      "الـ <b>Transpose</b>: الـ matrix اللي m×n بتبقى n×m و M<sup>T</sup>(j,i) = M(i,j).",
-      "الـ <b>Addition</b>: بس للـ matrices اللي <b>ليها نفس الأبعاد</b>: C(i,j) = A(i,j) + B(i,j).",
-      "الـ <b>Multiplication</b>: بيتعمل بس لما <b>عدد columns بتاع A = عدد rows بتاع B</b>. A (m×n) × B (n×q) = C (m×q) و C(i,j) = Σ<sub>k=1..n</sub> A(i,k)·B(k,j)."
+      "الداتا اللي على شكل جدول (زي الـ <b>matrix</b>) بنمثلها بـ <bdi dir=\"ltr\">2‑dimensional&nbsp;array</bdi>، زي:<pre>int a[3][4];</pre>فيه 3 rows <bdi dir=\"ltr\">(0..2)</bdi> و4 columns <bdi dir=\"ltr\">(0..3)</bdi>، والعناصر من <bdi dir=\"ltr\">a[0][0]</bdi> لـ <bdi dir=\"ltr\">a[2][3]</bdi>.",
+      "الـ Matrices عادةً الـ index بتاعها بيبدأ من <b>1</b>، وبتدعم الجمع والضرب والـ transpose، ودول <b>مش</b> مدعومين مباشرة في الـ 2D array بتاع <bdi dir=\"ltr\">C++</bdi>.",
+      "<b>إزاي نلاقي <bdi dir=\"ltr\">x[i][j]</bdi></b> (بالـ row-major): لو x فيه r rows وc columns، كل row فيه c عناصر، وقبل row رقم i فيه i rows، يعني فيه <b><bdi dir=\"ltr\">i·c</bdi></b> عنصر قبل <bdi dir=\"ltr\">x[i][0]</bdi>؛ فـ <bdi dir=\"ltr\">x[i][j]</bdi> بيتحط في الـ position ده في الـ 1D array:<span class=\"ltr\"><b>i·c + j</b></span>",
+      "الـ <b>Transpose</b>: الـ matrix اللي <bdi dir=\"ltr\">m×n</bdi> بتبقى <bdi dir=\"ltr\">n×m</bdi> و:<span class=\"ltr\">M<sup>T</sup>(j,i) = M(i,j)</span>",
+      "الـ <b>Addition</b>: بس للـ matrices اللي <b>ليها نفس الأبعاد</b>:<span class=\"ltr\">C(i,j) = A(i,j) + B(i,j)</span>",
+      "الـ <b>Multiplication</b>: بيتعمل بس لما <b>عدد columns بتاع A يساوي عدد rows بتاع B</b>:<span class=\"ltr\">A (m×n) × B (n×q) = C (m×q)</span><span class=\"ltr\">C(i,j) = Σ<sub>k=1..n</sub> A(i,k)·B(k,j)</span>"
      ]
     },
     {
@@ -66,10 +66,10 @@ AR.ds = {
      "pts": [
       "الـ <b>struct</b> هو data structure فيه مجموعة data elements متجمعة تحت اسم واحد. العناصر دي اسمها <b>members</b>، وممكن يبقوا <b>أنواع مختلفة وأطوال مختلفة</b>. الـ structs اسمها كمان <b>records</b> والـ members اسمها <b>fields</b>.",
       "على عكس الـ arrays (نفس النوع)، الـ structs هي types <b>بيعرّفها الـ user (user-defined)</b> وبتخزن عناصر من data types <b>مختلفة (non-similar)</b>.",
-      "فيه طريقتين تعمل بيهم objects: (1) بعد القوس اللي بيقفل على طول: <code>struct product { int weight; float price; } apple, banana, melon;</code> (2) لوحدهم: <code>product apple; product banana, melon;</code>. والـ members بنوصلها بالـ dot: <code>apple.weight</code>، <code>apple.price</code>.",
-      "الـ <b>Array of structs</b>: <code>struct StudentRec { string name; int mark; } Student[2];</code> وبعدين <code>Student[i].name</code>، <code>Student[i].mark</code>.",
-      "<b>إنك تبعت struct لـ function</b>: <code>void printInfo(Employee emp) { cout&lt;&lt;emp.id; cout&lt;&lt;emp.salary; }</code> وبتتنادي كده <code>Employee e1 = {1, 1000}; printInfo(e1);</code> (بيتبعت by value، يعني نسخة).",
-      "خلي بالك ده سؤال بيحبوه جدًا في الـ final: \"باستخدام <b>array of struct</b> اكتب برنامج ياخد جدول من الـ user ويحسب الـ totals/averages\" (شوف الامتحانات القديمة)."
+      "فيه طريقتين تعمل بيهم objects: الأولى (1) بعد القوس اللي بيقفل على طول:<pre>struct product {\n  int weight;\n  float price;\n} apple, banana, melon;</pre>والتانية (2) لوحدهم:<pre>product apple;\nproduct banana, melon;</pre>والـ members بنوصلها بالـ dot:<pre>apple.weight\napple.price</pre>",
+      "الـ <b>Array of structs</b>:<pre>struct StudentRec {\n  string name;\n  int mark;\n} Student[2];</pre>وبعدين:<pre>Student[i].name\nStudent[i].mark</pre>",
+      "<b>إنك تبعت struct لـ function</b>:<pre>void printInfo(Employee emp) {\n  cout&lt;&lt;emp.id;\n  cout&lt;&lt;emp.salary;\n}</pre>وبتتنادي كده:<pre>Employee e1 = {1, 1000};\nprintInfo(e1);</pre>(بيتبعت by value، يعني نسخة).",
+      "خلي بالك ده سؤال بيحبوه جدًا في الـ final: \"باستخدام <b>array of struct</b> اكتب برنامج ياخد جدول من الـ user ويحسب الـ <bdi dir=\"ltr\">totals/⁠averages</bdi>\" (شوف الامتحانات القديمة)."
      ]
     },
     {
@@ -78,8 +78,8 @@ AR.ds = {
    ],
    "cards": [
     "مجموعة حقائق (facts) نقدر نطلع منها باستنتاج.",
-    "(i) domain من القيم المسموحة و(ii) set of operations على القيم دي.",
-    "data types مالهاش أجزاء جواها، زي int وchar وfloat.",
+    "حاجتين: (i) domain من القيم المسموحة و(ii) set of operations على القيم دي.",
+    "الـ data types اللي مالهاش أجزاء جواها، زي int وchar وfloat.",
     "طريقة معينة لتخزين وتنظيم الداتا في الكمبيوتر عشان نستخدمها efficiently and effectively.",
     "تسهيل الـ storage والـ retrieval والـ manipulation للداتا بكفاءة.",
     "الـ Array (static)؛ الـ stack والـ queue والـ linked list (dynamic).",
@@ -87,11 +87,11 @@ AR.ds = {
     "إنك توصل لكل data element مرة واحدة بالظبط عشان تعالج عناصر معينة.",
     "دمج data elements من two or more data structures في structure واحد.",
     "تجريد (abstraction) للـ data structure بيدّيك الـ interface بس، من غير تفاصيل implementation ولا لغة.",
-    "i - 1: العنصر رقم i موجود عند index i-1 (zero-based).",
-    "i·c + j (row-major).",
-    "عدد columns بتاع A = عدد rows بتاع B؛ m×n في n×q يطلع m×q.",
+    "بيساوي <bdi dir=\"ltr\">i&nbsp;-⁠&nbsp;1</bdi>: العنصر رقم i موجود عند <bdi dir=\"ltr\">index&nbsp;i-⁠1</bdi> (zero-based).",
+    "مكانه <bdi dir=\"ltr\">i·c&nbsp;+&nbsp;j</bdi> (row-major).",
+    "عدد columns بتاع A لازم يساوي عدد rows بتاع B؛ والـ <bdi dir=\"ltr\">m×n</bdi> في <bdi dir=\"ltr\">n×q</bdi> يطلع <bdi dir=\"ltr\">m×q</bdi>.",
     "نفس الأبعاد.",
-    "60 bytes.",
+    "حجمه <bdi dir=\"ltr\">60&nbsp;bytes</bdi>.",
     "مجموعة data elements (members) ممكن تبقى أنواع مختلفة متجمعة تحت اسم واحد. اسمه كمان record؛ والـ members اسمها fields.",
     "الـ array كله by reference؛ والعنصر الواحد by value.",
     "الحجم ثابت (fixed size)."
@@ -99,23 +99,23 @@ AR.ds = {
    "qa": [
     "الـ data structure هو طريقة معينة لتخزين وتنظيم الداتا في الكمبيوتر عشان نستخدمها efficiently and effectively؛ يعني الـ logical أو mathematical model لتنظيم معين للداتا. الهدف (goal) هو تنظيم الداتا. والمعايير (criteria) إنه يسهّل الـ storage والـ retrieval والـ manipulation للداتا بكفاءة. ومسألة التصميم (design issue) هي إنك تختار وتصمم الـ data types المناسبة.",
     "الـ Navigating: توصل لكل عنصر مرة واحدة بالظبط. الـ Searching: تلاقي مكان key. الـ Insertion: تضيف عنصر جديد. الـ Deletion: تمسح عنصر. الـ Sorting: ترتب العناصر تصاعدي/تنازلي. الـ Merging: تدمج عناصر من two or more structures في واحد.",
-    "الـ abstract data type هو abstraction للـ data structure بيدّي الـ interface بس اللي الـ structure لازم يلتزم بيه، من غير ما يقول اتعمل إزاي ولا بأنهي لغة. هو مجموعة داتا + set of operations. أمثلة: List ← dynamic array أو linked list؛ Queue ← queue مبني على array أو على linked list؛ Map ← tree map أو hash map.",
-    "الـ Primitive: int وfloat وchar (والـ pointers). الـ Non-primitive: يا linear (static: arrays؛ dynamic: stack وqueue وlinked list) يا non-linear (trees وgraphs).",
-    "بالـ Row-major order: كل row فيه c عناصر، وقبل row رقم i فيه i rows كاملين، يعني فيه i·c عنصر قبل x[i][0]. عشان كده x[i][j] بيبقى في position i·c + j في الـ 1D array المكافئ. مثال: int a[3][4]، a[2][1] ← 2·4+1 = 9.",
+    "الـ abstract data type هو abstraction للـ data structure بيدّي الـ interface بس اللي الـ structure لازم يلتزم بيه، من غير ما يقول اتعمل إزاي ولا بأنهي لغة. هو مجموعة داتا + set of operations. أمثلة: الـ List ← dynamic array أو linked list؛ والـ Queue ← queue مبني على array أو على linked list؛ والـ Map ← tree map أو hash map.",
+    "الـ Primitive: زي int وfloat وchar (والـ pointers). الـ Non-primitive: يا linear (الـ static زي arrays؛ والـ dynamic زي stack وqueue وlinked list) يا non-linear (trees وgraphs).",
+    "بالـ Row-major order: كل row فيه c عناصر، وقبل row رقم i فيه i rows كاملين، يعني فيه <bdi dir=\"ltr\">i·c</bdi> عنصر قبل <bdi dir=\"ltr\">x[i][0]</bdi>. عشان كده <bdi dir=\"ltr\">x[i][j]</bdi> بيبقى في <bdi dir=\"ltr\">position&nbsp;i·c&nbsp;+&nbsp;j</bdi> في الـ 1D array المكافئ. مثال: في <bdi dir=\"ltr\">int&nbsp;a[3][4]</bdi> العنصر <bdi dir=\"ltr\">a[2][1]</bdi> مكانه:<span class=\"ltr\">2·4+1 = 9</span>",
     "الـ array بيجمع عناصر من نفس الـ data type وبنوصلها بـ integer index؛ الـ struct بيجمع members من أنواع وأطوال مختلفة وبنوصلها بالاسم عن طريق الـ dot operator. الاتنين بيجمعوا داتا تحت اسم واحد؛ والـ array of structs بيجمع الاتنين (زي array من employee records)."
    ],
    "quiz": [
     [
      "الـ 15 ده عدد العناصر، مش عدد الـ bytes.",
-     "الـ 19 ده جاي من إنك جمعت عدد العناصر على حجم العنصر (15 + 4). حجم الـ array بالـ bytes = عدد العناصر × حجم العنصر الواحد، يعني ضرب مش جمع.",
+     "الـ 19 ده جاي من إنك جمعت عدد العناصر على حجم العنصر <bdi dir=\"ltr\">(15&nbsp;+&nbsp;4)</bdi>. حجم الـ array بالـ bytes بيساوي عدد العناصر × حجم العنصر الواحد، يعني ضرب مش جمع.",
      "ده طرح 4 من 15، وده مالوش أي معنى.",
-     "صح. الـ array بياخد مساحة = عدد العناصر × حجم كل عنصر: 15 × 4 bytes = 60 bytes (L1, Array-based representation)."
+     "صح. الـ array بياخد مساحة بتساوي عدد العناصر × حجم كل عنصر:<span class=\"ltr\">15 × 4 bytes = 60 bytes</span>(من <bdi dir=\"ltr\">L1</bdi>، الـ Array-based representation)."
     ],
     [
-     "الـ Matrices في الرياضة بتبدأ من 1، بس الـ arrays في C++ بتبدأ من صفر (zero-based).",
-     "صح. الـ arrays في C++ zero-based: الـ indices من 0 لـ size-1.",
-     "مفيش array في C++ بيبدأ من index 2. العنصر رقم i مكانه i − 1، فأول عنصر بيبقى عند index 0 (L1, location(i) = i − 1).",
-     "الـ -1 بنستخدمه كقيمة \"فاضي\" للـ TOP/front، مش index في array."
+     "الـ Matrices في الرياضة بتبدأ من 1، بس الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من صفر (zero-based).",
+     "صح. الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من صفر (zero-based): الـ indices من 0 لـ <bdi dir=\"ltr\">size-⁠1</bdi>.",
+     "مفيش array في <bdi dir=\"ltr\">C++</bdi> بيبدأ من index 2. العنصر رقم i مكانه <bdi dir=\"ltr\">i&nbsp;−⁠&nbsp;1</bdi>، فأول عنصر بيبقى عند index 0 (الـ L1):<span class=\"ltr\">location(i) = i − 1</span>",
+     "الـ <bdi dir=\"ltr\">-⁠1</bdi> بنستخدمه كقيمة \"فاضي\" للـ <bdi dir=\"ltr\">TOP/⁠front</bdi>، مش index في array."
     ],
     [
      "الـ graph ده non-linear: العناصر بتاعته عاملة شبكة (network)، مش متسلسلة ورا بعض. الأمثلة الـ linear في المحاضرة هي الـ array والـ stack والـ queue والـ linked list.",
@@ -138,11 +138,11 @@ AR.ds = {
     [
      "صح. الـ Arrays بتشيل عناصر كتير من نوع واحد تحت اسم واحد والـ access بالـ index.",
      "غلط: الـ arrays ينفع تتعملها sort (المحاضرة فيها مثال sort)، وده أصلًا مش هيبقى ميزة.",
-     "غلط: الـ arrays في C++ بتبدأ من صفر (zero-based)، فأول عنصر عند index 0 (location(i) = i − 1). المصفوفات في الرياضة هي اللي بتبدأ من 1، مش الـ arrays.",
+     "غلط: الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من صفر (zero-based)، فأول عنصر عند index 0:<span class=\"ltr\">location(i) = i − 1</span>المصفوفات في الرياضة هي اللي بتبدأ من 1، مش الـ arrays.",
      "غلط: ده وصف الـ struct، مش الـ array."
     ],
     [
-     "صح. الـ Linear search بيشيك على العناصر واحد واحد من الأول (Lab 1/Lab 2).",
+     "صح. الـ Linear search بيشيك على العناصر واحد واحد من الأول (<bdi dir=\"ltr\">Lab&nbsp;1/⁠Lab&nbsp;2</bdi>).",
      "الـ Binary search بيقسم list مترتبة نصين كل مرة؛ مش بيشيك على كل عنصر.",
      "الـ Hash search بيحسب المكان على طول بـ hash function.",
      "الـ BST search بيمشي شمال أو يمين من الـ root، مش بيعدّي على كل العناصر."
@@ -155,7 +155,7 @@ AR.ds = {
      "صح (الإجابة النموذجية الرسمية). الحجم لازم يتحدد وقت الـ design ومايتغيرش.",
      "الـ access بالـ index ده ميزة الـ array مش عيب: أي عنصر بتوصله على طول بالـ index بتاعه (بيتحسب بـ formula)، من غير ما تعدي على عناصر تانية.",
      "الـ memory الزيادة للـ pointers دي تمن الـ linked list، اللي كل node فيها شايلة next pointer. الـ array بيخزن الداتا بس.",
-     "الـ array يقدر يشيل عناصر من أي data type (int، float، char، structs…)؛ الشرط الوحيد إن كل العناصر تبقى من نفس النوع."
+     "الـ array يقدر يشيل عناصر من أي data type (زي int وfloat وchar والـ structs…)؛ الشرط الوحيد إن كل العناصر تبقى من نفس النوع."
     ],
     [
      "الـ Searching معناه إنك تلاقي مكان عنصر واحد (الـ key) في الـ structure، مش إنك تزور كل عنصر مرة.",
@@ -164,16 +164,16 @@ AR.ds = {
      "الـ Sorting معناه إنك ترتب العناصر بترتيب منطقي (ascending أو descending)، مش إنك تزور كل واحد مرة."
     ],
     [
-     "ده استخدم i·r + j = 2·3 + 1؛ بس المعادلة بتستخدم عدد الـ columns اللي هو c.",
-     "صح. في الـ row-major storage فيه i·c عنصر قبل الـ row رقم i، فـ x[i][j] مكانه i·c + j. ومع c = 4 columns: 2·4 + 1 = 9 (L1, Locating element x[i][j]).",
-     "الـ 6 ده بدّل i وj: j·c + i = 1·4 + 2. اللي بيتضرب في عدد الـ columns هو الـ row index: 2·4 + 1 = 9.",
-     "الـ 11 ده مكان آخر عنصر a[2][3] (2·4 + 3). الـ a[2][1] قبله بخانتين: 2·4 + 1 = 9."
+     "ده استخدم:<span class=\"ltr\">i·r + j = 2·3 + 1</span>بس المعادلة بتستخدم عدد الـ columns اللي هو c.",
+     "صح. في الـ row-major storage فيه <bdi dir=\"ltr\">i·c</bdi> عنصر قبل الـ row رقم i، فـ <bdi dir=\"ltr\">x[i][j]</bdi> مكانه <bdi dir=\"ltr\">i·c&nbsp;+&nbsp;j</bdi>. ومع <bdi dir=\"ltr\">c&nbsp;=&nbsp;4&nbsp;columns</bdi> بيبقى:<span class=\"ltr\">2·4 + 1 = 9</span>(من <bdi dir=\"ltr\">L1</bdi>، الـ <bdi dir=\"ltr\">Locating&nbsp;element&nbsp;x[i][j]</bdi>).",
+     "الـ 6 ده بدّل i وj:<span class=\"ltr\">j·c + i = 1·4 + 2</span>اللي بيتضرب في عدد الـ columns هو الـ row index:<span class=\"ltr\">2·4 + 1 = 9</span>",
+     "الـ 11 ده مكان آخر عنصر <bdi dir=\"ltr\">a[2][3]&nbsp;(2·4&nbsp;+&nbsp;3)</bdi>. الـ <bdi dir=\"ltr\">a[2][1]</bdi> قبله بخانتين:<span class=\"ltr\">2·4 + 1 = 9</span>"
     ],
     [
-     "هو defined: عدد columns بتاع A (3) = عدد rows بتاع B (3).",
-     "الـ 3×3 ده استخدم الـ inner dimension (3)، ودي لازم تتطابق وبس. الناتج بياخد الـ rows بتاعة A والـ columns بتاعة B: 2×4.",
-     "صح. A×B متعرّف لأن الـ columns بتاعة A (3) = الـ rows بتاعة B (3)، والـ m×n في n×q يطلع m×q، فـ 2×3 · 3×4 = 2×4 (L1, Matrix multiplication).",
-     "الـ 4×2 ده عكس الترتيب: ده حجم الـ transpose بتاع A×B. الـ A×B بياخد rows بتاعة A (2) وcolumns بتاعة B (4)، فيطلع 2×4."
+     "هو defined: عدد columns بتاع A <bdi dir=\"ltr\">(3)</bdi> بيساوي عدد rows بتاع B <bdi dir=\"ltr\">(3)</bdi>.",
+     "الـ <bdi dir=\"ltr\">3×3</bdi> ده استخدم الـ inner dimension (3)، ودي لازم تتطابق وبس. الناتج بياخد الـ rows بتاعة A والـ columns بتاعة B، فيطلع <bdi dir=\"ltr\">2×4</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">A×B</bdi> متعرّف لأن الـ columns بتاعة A <bdi dir=\"ltr\">(3)</bdi> بتساوي الـ rows بتاعة B <bdi dir=\"ltr\">(3)</bdi>، والـ <bdi dir=\"ltr\">m×n</bdi> في <bdi dir=\"ltr\">n×q</bdi> يطلع <bdi dir=\"ltr\">m×q</bdi>، فـ:<span class=\"ltr\">2×3 · 3×4 = 2×4</span>(من <bdi dir=\"ltr\">L1</bdi>، الـ Matrix multiplication).",
+     "الـ <bdi dir=\"ltr\">4×2</bdi> ده عكس الترتيب: ده حجم الـ transpose بتاع <bdi dir=\"ltr\">A×B</bdi>. الـ <bdi dir=\"ltr\">A×B</bdi> بياخد rows بتاعة A (2) وcolumns بتاعة B (4)، فيطلع <bdi dir=\"ltr\">2×4</bdi>."
     ]
    ],
    "extra": [
@@ -191,39 +191,39 @@ AR.ds = {
     ],
     [
      "ده ترتيب تصاعدي؛ والشرط &lt; بيجيب القيمة الأكبر لقدام.",
-     "ده الـ array الأصلي. الـ nested loops بتعمل swap لـ billy[n] وbilly[m] كل ما billy[n] يبقى أصغر، فالـ array بيخلص متترتب descending.",
+     "ده الـ array الأصلي. الـ nested loops بتعمل swap لـ <bdi dir=\"ltr\">billy[n]</bdi> و<bdi dir=\"ltr\">billy[m]</bdi> كل ما <bdi dir=\"ltr\">billy[n]</bdi> يبقى أصغر، فالـ array بيخلص متترتب descending.",
      "مش مترتب كله؛ الـ nested loops بتكمّل الـ sort للآخر.",
-     "صح. لما تعمل swap كل ما billy[n] &lt; billy[m] بيطلع ترتيب تنازلي."
+     "صح. لما تعمل swap كل ما يكون:<span class=\"ltr\">billy[n] &lt; billy[m]</span>بيطلع ترتيب تنازلي."
     ],
     [
-     "صح. العناصر من index 2 بتتزق يمين والـ 9 بيتحط في element[2] (بعد العنصر التاني). اتجرب بـ g++.",
-     "الـ 5 9 2 4 8 1 ده insertion بعد أول عنصر (k = 1). مع k = 2، العناصر من index 2 بتتزق يمين والـ 9 بتتحط في element[2].",
-     "الـ 9 في الأول خالص ده insertion بـ k = 0. مع k = 2 الـ loop بيزق element[2..4] بس يمين وبيحط element[2] = 9.",
-     "كده الـ 9 اتحطت بعد العنصر التالت (k = 3). مع k = 2، الكود بيكتب element[2] = 9، فالـ 9 تيجي بعد الـ 2 وقبل الـ 4."
+     "صح. العناصر من index 2 بتتزق يمين والـ 9 بيتحط في <bdi dir=\"ltr\">element[2]</bdi> (بعد العنصر التاني). اتجرب بـ <bdi dir=\"ltr\">g++</bdi>.",
+     "الـ <bdi dir=\"ltr\">5&nbsp;9&nbsp;2&nbsp;4&nbsp;8&nbsp;1</bdi> ده insertion بعد أول عنصر <bdi dir=\"ltr\">(k&nbsp;=&nbsp;1)</bdi>. مع <bdi dir=\"ltr\">k&nbsp;=&nbsp;2</bdi>، العناصر من index 2 بتتزق يمين والـ 9 بتتحط في <bdi dir=\"ltr\">element[2]</bdi>.",
+     "الـ 9 في الأول خالص ده insertion بـ <bdi dir=\"ltr\">k&nbsp;=&nbsp;0</bdi>. مع <bdi dir=\"ltr\">k&nbsp;=&nbsp;2</bdi> الـ loop بيزق <bdi dir=\"ltr\">element[2..4]</bdi> بس يمين وبيحط <bdi dir=\"ltr\">element[2]&nbsp;=&nbsp;9</bdi>.",
+     "كده الـ 9 اتحطت بعد العنصر التالت <bdi dir=\"ltr\">(k&nbsp;=&nbsp;3)</bdi>. مع <bdi dir=\"ltr\">k&nbsp;=&nbsp;2</bdi>، الكود بيكتب <bdi dir=\"ltr\">element[2]&nbsp;=&nbsp;9</bdi>، فالـ 9 تيجي بعد الـ 2 وقبل الـ 4."
     ],
     [
-     "شيل الـ 4 ده deletion للعنصر التالت (k = 3). مع k = 2 الـ loop بينسخ element[2] في element[1]، فبيكتب فوق الـ 2.",
-     "صح. element[i-1] = element[i] لـ i = 2..4 بيزق 4 و8 و1 شمال فوق الـ 2؛ والـ length يبقى 4.",
-     "شيل الـ 5 ده deletion للعنصر الأول (k = 1). مع k = 2 الـ loop بيبدأ من i = 2 وبيكتب فوق element[1]، اللي هو الـ 2.",
-     "شيل الـ 1 ده deletion لآخر عنصر (k = 5)، وده بس بينقّص الـ length. الـ k = 2 بيشيل الـ 2 عن طريق إنه يزق 4 و8 و1 شمال."
+     "شيل الـ 4 ده deletion للعنصر التالت <bdi dir=\"ltr\">(k&nbsp;=&nbsp;3)</bdi>. مع <bdi dir=\"ltr\">k&nbsp;=&nbsp;2</bdi> الـ loop بينسخ <bdi dir=\"ltr\">element[2]</bdi> في <bdi dir=\"ltr\">element[1]</bdi>، فبيكتب فوق الـ 2.",
+     "صح. الكود ده، لـ <bdi dir=\"ltr\">i&nbsp;=&nbsp;2..4</bdi> بالترتيب،<pre>element[i-1] = element[i];</pre>بيزق 4 و8 و1 شمال فوق الـ 2؛ والـ length يبقى 4.",
+     "شيل الـ 5 ده deletion للعنصر الأول <bdi dir=\"ltr\">(k&nbsp;=&nbsp;1)</bdi>. مع <bdi dir=\"ltr\">k&nbsp;=&nbsp;2</bdi> الـ loop بيبدأ من <bdi dir=\"ltr\">i&nbsp;=&nbsp;2</bdi> وبيكتب فوق <bdi dir=\"ltr\">element[1]</bdi>، اللي هو الـ 2.",
+     "شيل الـ 1 ده deletion لآخر عنصر <bdi dir=\"ltr\">(k&nbsp;=&nbsp;5)</bdi>، وده بس بينقّص الـ length. الـ <bdi dir=\"ltr\">k&nbsp;=&nbsp;2</bdi> بيشيل الـ 2 عن طريق إنه يزق 4 و8 و1 شمال."
     ],
     [
-     "الـ 14 = 3·4 + 2 ده ضرب في عدد الـ rows (4). كل row فيه c = 5 عناصر، فالـ formula هي i·c + j.",
-     "الـ 11 = 3 + 2·4 ده بدّل دور i وj واستخدم الـ rows. مكان الـ row-major هو i·c + j = 3·5 + 2 = 17.",
-     "صح. في الـ row-major order فيه i·c عنصر قبل الـ row رقم i، فـ x[i][j] مكانه i·c + j = 3·5 + 2 = 17 (L1, Locating element x[i][j]).",
-     "الـ 20 = 4 × 5 ده العدد الكلي للعناصر؛ الأماكن رايحة من 0 لـ 19 بس، فالـ 20 مش position موجود أصلًا."
+     "الـ 14 ده جاي من:<span class=\"ltr\">14 = 3·4 + 2</span>يعني ضرب في عدد الـ rows (4). كل row فيه <bdi dir=\"ltr\">c&nbsp;=&nbsp;5</bdi> عناصر، فالـ formula هي <bdi dir=\"ltr\">i·c&nbsp;+&nbsp;j</bdi>.",
+     "الـ 11 ده جاي من:<span class=\"ltr\">11 = 3 + 2·4</span>يعني بدّل دور i وj واستخدم الـ rows. مكان الـ row-major هو:<span class=\"ltr\">i·c + j = 3·5 + 2 = 17</span>",
+     "صح. في الـ row-major order فيه <bdi dir=\"ltr\">i·c</bdi> عنصر قبل الـ row رقم i، فـ <bdi dir=\"ltr\">x[i][j]</bdi> مكانه:<span class=\"ltr\">i·c + j = 3·5 + 2 = 17</span>(من <bdi dir=\"ltr\">L1</bdi>، الـ <bdi dir=\"ltr\">Locating&nbsp;element&nbsp;x[i][j]</bdi>).",
+     "الـ 20 ده <bdi dir=\"ltr\">4&nbsp;×&nbsp;5</bdi>، يعني العدد الكلي للعناصر؛ الأماكن رايحة من 0 لـ 19 بس، فالـ 20 مش position موجود أصلًا."
     ],
     [
-     "صح. المحاضرة بتذكر tree map وhash map / hash table كـ implementations للـ Map.",
+     "صح. المحاضرة بتذكر الـ tree map والـ <bdi dir=\"ltr\">hash&nbsp;map&nbsp;/⁠&nbsp;hash&nbsp;table</bdi> كـ implementations للـ Map.",
      "الـ Queues بتتعمل بـ arrays أو linked lists.",
      "الـ Lists بتتعمل كـ dynamic arrays أو linked lists.",
      "في التشبيه، الـ implementations بتاعة الـ vehicle هي golf car وbicycle وsmart car."
     ],
     [
      "العناصر الفردية بس هي اللي بتتبعت by value. الـ array كله بيتبعت by reference، فالـ function تقدر تغيّر الـ array بتاع اللي ناداها.",
-     "صح. الـ C++ بتبعت الـ array كله by reference (الـ function بتشتغل على نفس الـ array بتاع الـ caller)، أما عنصر واحد زي a[2] فبيتبعت by value زي أي متغير عادي (L1 notes; Lab 1).",
+     "صح. الـ <bdi dir=\"ltr\">C++</bdi> بتبعت الـ array كله by reference (الـ function بتشتغل على نفس الـ array بتاع الـ caller)، أما عنصر واحد زي <bdi dir=\"ltr\">a[2]</bdi> فبيتبعت by value زي أي متغير عادي (من الـ L1 notes والـ Lab 1).",
      "ده العكس. الـ arrays كاملة بتتبعت by reference والعناصر الفردية by value.",
-     "الـ arrays ممكن تتبعت للـ functions عادي: Lab 2 بيبعت array لـ LinearSearch، والـ function بتاعة Sum للـ matrix بتاخد int a[][cols]."
+     "الـ arrays ممكن تتبعت للـ functions عادي: الـ Lab 2 بيبعت array لـ LinearSearch، والـ function بتاعة Sum للـ matrix بتاخد <bdi dir=\"ltr\">int&nbsp;a[][cols]</bdi>."
     ],
     [
      "الـ Sorting بيرتب عناصر structure واحد بترتيب منطقي (ascending أو descending)؛ مش بيدمج structures مع بعض.",
@@ -233,9 +233,9 @@ AR.ds = {
     ],
     [
      "صح. أسماء الـ objects بتيجي بعد القوس اللي بيقفل.",
-     "ناقصها الكلمة struct: الـ definition لازم تبدأ بـ struct، زي struct product { … } apple;.",
-     "الـ member list اللي بين الـ braces لازم تيجي على طول بعد اسم الـ struct، وأسماء الـ objects تيجي بعد القوس اللي بيقفل: struct product { … } apple, banana, melon;.",
-     "ده syntax بتاع array initializer من غير type ولا members، فمش بيعرّف أي struct. الـ objects بتتعمل بعد القوس اللي بيقفل أو كده: product apple;."
+     "ناقصها الكلمة struct: الـ definition لازم تبدأ بـ struct، زي:<pre>struct product { … } apple;</pre>",
+     "الـ member list اللي بين الـ braces لازم تيجي على طول بعد اسم الـ struct، وأسماء الـ objects تيجي بعد القوس اللي بيقفل:<pre>struct product { … }\n  apple, banana, melon;</pre>",
+     "ده syntax بتاع array initializer من غير type ولا members، فمش بيعرّف أي struct. الـ objects بتتعمل بعد القوس اللي بيقفل أو كده:<pre>product apple;</pre>"
     ]
    ]
   },
@@ -247,7 +247,7 @@ AR.ds = {
       "الـ stack هو data structure من نوع <b>non-primitive linear</b>: يعني <b>ordered list</b> الإضافة والمسح فيها بيحصلوا من <b>طرف واحد بس</b>، اسمه الـ <b>top</b> (TOP).",
       "بما إن كل الإضافة والمسح بيحصلوا عند الـ top، فـ <b>آخر عنصر دخل هو أول عنصر يطلع</b>: ده الـ <b>LIFO</b> (Last-In-First-Out)، وبيتكتب كمان <b>FILO</b> (First-In-Last-Out).",
       "الفكرة: الـ <b>base بتاع الـ stack ثابت</b>؛ لما تضيف عنصر الـ top <b>بيزيد</b>، ولما تشيل العنصر اللي فوق الـ top <b>بيقل</b>.",
-      "أمثلة من الحياة: <b>الكتب والهدوم</b> اللي متكومة فوق بعض؛ الـ <b>call logs في الموبايل</b>؛ الـ <b>browsers</b> (زرار الـ back بيرجعك للموقع اللي قبله)؛ الـ <b>text editors</b> (undo/redo).",
+      "أمثلة من الحياة: <b>الكتب والهدوم</b> اللي متكومة فوق بعض؛ الـ <b>call logs في الموبايل</b>؛ الـ <b>browsers</b> (زرار الـ back بيرجعك للموقع اللي قبله)؛ الـ <b>text editors</b> (الـ <bdi dir=\"ltr\">undo/⁠redo</bdi>).",
       "التطبيقات (Lab 3): الـ <b>backtracking</b> (طريق في متاهة maze)، الـ <b>function calls</b> (بيحتفظ بمعلومات الـ functions الشغالة)، و<b>عكس الـ string</b> (تعمل push لكل حرف وبعدين pop)."
      ]
     },
@@ -257,8 +257,8 @@ AR.ds = {
       "الـ <b>PUSH</b>: إضافة عنصر جديد عند الـ top. بعد كل push الـ top <b>بيزيد واحد</b>. لو الـ array مليان دي حالة <b>STACK-FULL</b>، ولو عملت push ساعتها يحصل <b>STACK OVERFLOW</b>.",
       "الـ <b>POP</b>: مسح العنصر اللي عند الـ top. بعد كل pop الـ top <b>بيقل واحد</b>. لو عملت pop ومفيش عناصر يحصل <b>STACK UNDERFLOW</b>.",
       "الـ <b>MAXSIZE</b>: مش مصطلح standard؛ هو أقصى حجم للـ stack.",
-      "الـ <b>TOP</b>: بيشاور على أعلى الـ stack؛ بنستخدمه عشان نشيك على الـ overflow/underflow. <b>في الأول TOP = -1</b>، فلما تعمل push الـ top <b>بيزيد الأول</b> وبعدين العنصر يتخزن في <code>stack[top]</code>.",
-      "الـ <b>Underflow</b>: الـ stack مفيهوش ولا عنصر (الـ top تحت خالص، top == -1). الـ <b>Overflow</b>: الـ stack مليان (top == MAXSIZE-1، الـ top في أعلى مكان)."
+      "الـ <b>TOP</b>: بيشاور على أعلى الـ stack؛ بنستخدمه عشان نشيك على الـ <bdi dir=\"ltr\">overflow/⁠underflow</bdi>. <b>في الأول <bdi dir=\"ltr\">TOP&nbsp;=&nbsp;-⁠1</bdi></b>، فلما تعمل push الـ top <b>بيزيد الأول</b> وبعدين العنصر يتخزن في <code>stack[top]</code>.",
+      "الـ <b>Underflow</b>: الـ stack مفيهوش ولا عنصر (الـ top تحت خالص، <bdi dir=\"ltr\">top&nbsp;==&nbsp;-⁠1</bdi>). الـ <b>Overflow</b>: الـ stack مليان (<bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE-⁠1</bdi>، الـ top في أعلى مكان)."
      ]
     },
     {
@@ -271,46 +271,46 @@ AR.ds = {
      "h": "الـ display والـ count والـ search والـ get (كود الدكتورة)"
     },
     {
-     "h": "Lab 3: stack باستخدام dynamic array",
+     "h": "الـ Lab 3: الـ stack باستخدام dynamic array",
      "pts": [
-      "في الـ lab الـ size بيتقري وقت الـ run time: <code>cin&gt;&gt;size; stack_arr = new int[size];</code> و<code>isFull()</code> بتشيك على <code>top == size-1</code>.",
-      "الـ menu فيها (i) push، (o) pop، (t) traverse (بيعرض من الـ top نازل لحد index 0)، (e) exit.",
+      "في الـ lab الـ size بيتقري وقت الـ run time:<pre>cin&gt;&gt;size;\nstack_arr = new int[size];</pre>والـ <code>isFull()</code> بتشيك على <bdi dir=\"ltr\">top&nbsp;==&nbsp;size-⁠1</bdi>.",
+      "الـ menu فيها (i) للـ push، و(o) للـ pop، و(t) للـ traverse (بيعرض من الـ top نازل لحد index 0)، و(e) للـ exit.",
       "الـ Assignments: اعكس string باستخدام stack؛ الـ sum والـ average لـ stack مليان؛ والـ bonus <code>Stack_Copy()</code> من s1 لـ s2 الفاضي (اعمل pop في temp stack، وبعدين pop من الـ temp لـ s2 عشان الترتيب يفضل زي ما هو).",
-      "شكل سؤال الامتحان عن جمل الـ push: <code>top++; stack[top] = item;</code> (زوّد الأول وبعدين خزّن) لأن الـ top بيبدأ من -1."
+      "شكل سؤال الامتحان عن جمل الـ push:<pre>top++;\nstack[top] = item;</pre>(زوّد الأول وبعدين خزّن) لأن الـ top بيبدأ من <bdi dir=\"ltr\">-⁠1</bdi>."
      ]
     }
    ],
    "cards": [
-    "structure من نوع non-primitive linear الإضافة والمسح فيه بيحصلوا من طرف واحد (الـ top). LIFO.",
-    "Last-In-First-Out (هو نفسه FILO): آخر عنصر اتعمله push هو أول واحد يتعمله pop.",
+    "الـ structure من نوع non-primitive linear الإضافة والمسح فيه بيحصلوا من طرف واحد (الـ top). LIFO.",
+    "يعني Last-In-First-Out (هو نفسه FILO): آخر عنصر اتعمله push هو أول واحد يتعمله pop.",
     "إضافة عنصر عند الـ top؛ والـ top بيزيد واحد.",
     "مسح العنصر اللي عند الـ top؛ والـ top بيقل واحد.",
     "-1",
-    "top == -1",
-    "top == MAXSIZE - 1",
+    "الشرط:<span class=\"ltr\">top == -1</span>",
+    "الشرط:<span class=\"ltr\">top == MAXSIZE - 1</span>",
     "إنك تعمل push والـ stack مليان.",
     "إنك تعمل pop والـ stack فاضي.",
-    "top++; stack[top] = item;",
-    "item = stack[top]; top--;",
+    "الجمل:<pre>top++;\nstack[top] = item;</pre>",
+    "الجمل:<pre>item = stack[top];\ntop--;</pre>",
     "بيستخدم array؛ الحجم ثابت من وقت الـ design؛ ومش efficient في الـ memory.",
     "تمثيل بـ linked list باستخدام pointers.",
-    "الكتب/الهدوم المتكومة، الـ call logs، زرار الـ back في الـ browser، الـ undo/redo.",
+    "الكتب/الهدوم المتكومة، الـ call logs، زرار الـ back في الـ browser، الـ <bdi dir=\"ltr\">undo/⁠redo</bdi>.",
     "الـ Backtracking، الـ function calls، عكس الـ string.",
-    "top + 1 (بنعدّ من الـ top نازلين لحد 0)."
+    "بترجع <bdi dir=\"ltr\">top&nbsp;+&nbsp;1</bdi> (بنعدّ من الـ top نازلين لحد 0)."
    ],
    "qa": [
     "الـ stack هو data structure من نوع non-primitive linear، يعني ordered list الإضافة والمسح فيها بيحصلوا من طرف واحد بس اسمه الـ top. وبما إن كل الإضافة والمسح بيحصلوا عند الـ top، فآخر عنصر اتضاف هو أول عنصر يتشال، عشان كده اسمه Last-In-First-Out list.",
-    "الـ Overflow بيحصل لما الـ stack يبقى مليان (top == MAXSIZE-1) وتحاول تعمل push: مفيش مكان لعنصر جديد. الـ Underflow بيحصل لما الـ stack مفيهوش ولا عنصر (top == -1) وتحاول تعمل pop.",
-    "bool isEmpty(int top){ if (top == -1) return true; else return false; }<br>int pop(){ if (isEmpty(top)) { cout&lt;&lt;\"Stack underflow\"; return -1; } else { int item = stack_arr[top]; top = top-1; return item; } }<br>الفكرة: لو الـ stack فاضي اطبع underflow، غير كده خد العنصر اللي فوق وقلّل الـ top.",
-    "bool isFull(int top){ if (top == MAXSIZE-1) return true; else return false; }<br>void push(int item){ if (isFull(top)) cout&lt;&lt;\"Stack overflow\"; else { top = top+1; stack_arr[top] = item; } }<br>الفكرة: لو الـ stack مليان اطبع overflow، غير كده زوّد الـ top الأول وبعدين خزّن العنصر.",
+    "الـ Overflow بيحصل لما الـ stack يبقى مليان (<bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE-⁠1</bdi>) وتحاول تعمل push: مفيش مكان لعنصر جديد. الـ Underflow بيحصل لما الـ stack مفيهوش ولا عنصر (<bdi dir=\"ltr\">top&nbsp;==&nbsp;-⁠1</bdi>) وتحاول تعمل pop.",
+    "الكود:<pre>bool isEmpty(int top){\n  if (top == -1) return true;\n  else return false;\n}\nint pop(){\n  if (isEmpty(top)) {\n    cout&lt;&lt;\"Stack underflow\";\n    return -1;\n  } else {\n    int item = stack_arr[top];\n    top = top-1;\n    return item;\n  }\n}</pre>الفكرة: لو الـ stack فاضي اطبع underflow، غير كده خد العنصر اللي فوق وقلّل الـ top.",
+    "الكود:<pre>bool isFull(int top){\n  if (top == MAXSIZE-1)\n    return true;\n  else return false;\n}\nvoid push(int item){\n  if (isFull(top))\n    cout&lt;&lt;\"Stack overflow\";\n  else {\n    top = top+1;\n    stack_arr[top] = item;\n  }\n}</pre>الفكرة: لو الـ stack مليان اطبع overflow، غير كده زوّد الـ top الأول وبعدين خزّن العنصر.",
     "الـ Static بيستخدم array: بسيط جدًا بس مش flexible لأن الحجم بيتحدد وقت تصميم البرنامج ومايتغيرش، ومش efficient في استخدام الـ memory. الـ Dynamic بيستخدم linked list بالـ pointers: بيشتغل مع عدد قيم مش محدود (متغير) ومش محتاج حجم ثابت.",
-    "أمثلة: الكتب/الهدوم المتكومة فوق بعض، الـ call logs في الموبايل، الـ history في الـ browser (زرار الـ back)، الـ undo/redo في الـ text editors. تطبيقات: الـ backtracking (المتاهة)، الـ function calls، عكس الـ string."
+    "أمثلة: الكتب/الهدوم المتكومة فوق بعض، الـ call logs في الموبايل، الـ history في الـ browser (زرار الـ back)، الـ <bdi dir=\"ltr\">undo/⁠redo</bdi> في الـ text editors. تطبيقات: الـ backtracking (المتاهة)، الـ function calls، عكس الـ string."
    ],
    "quiz": [
     [
-     "الـ \"Crash\" ده مش حالة من حالات الـ stack أصلاً. إنك تعمل push والـ top == MAXSIZE − 1 ده اسمه حالة الـ STACK-FULL، واللي المحاضرة بتسميها stack overflow.",
-     "صح. إنك تعمل push على stack مليان (top == MAXSIZE-1) ده stack overflow.",
-     "الـ Underflow هو العكس بالظبط: إنك تعمل pop من stack فاضي (top == −1). هنا الـ stack مليان، فالـ push هو اللي بيعمل overflow.",
+     "الـ \"Crash\" ده مش حالة من حالات الـ stack أصلاً. إنك تعمل push والـ <bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE&nbsp;−⁠&nbsp;1</bdi> ده اسمه حالة الـ STACK-FULL، واللي المحاضرة بتسميها stack overflow.",
+     "صح. إنك تعمل push على stack مليان (<bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE-⁠1</bdi>) ده stack overflow.",
+     "الـ Underflow هو العكس بالظبط: إنك تعمل pop من stack فاضي (<bdi dir=\"ltr\">top&nbsp;==&nbsp;−⁠1</bdi>). هنا الـ stack مليان، فالـ push هو اللي بيعمل overflow.",
      "الـ \"User flow\" ده مش مصطلح stack خالص. الـ push على stack مليان (5 من 5 عناصر) اسمه stack overflow."
     ],
     [
@@ -321,19 +321,19 @@ AR.ds = {
     ],
     [
      "صح. الـ top بيبدأ من -1، فبيزيد الأول وبعدين العنصر يتخزن مكانه.",
-     "إنك تقرا stack[top] وبعدين تنقّص الـ top ده الـ pop؛ يعني بيشيل عنصر مش بيضيف.",
-     "ده بيستخدم الـ item كـ index في الـ array ويحط فيه الـ top، فالقيمة عمرها ما بتتحط فوق. الـ push الصح هو top = top + 1; stack[top] = item.",
-     "والـ top بادئ من -1 ده هيكتب في stack[-1] الأول."
+     "إنك تقرا <code>stack[top]</code> وبعدين تنقّص الـ top ده الـ pop؛ يعني بيشيل عنصر مش بيضيف.",
+     "ده بيستخدم الـ item كـ index في الـ array ويحط فيه الـ top، فالقيمة عمرها ما بتتحط فوق. الـ push الصح هو:<pre>top = top + 1;\nstack[top] = item;</pre>",
+     "والـ top بادئ من <bdi dir=\"ltr\">-⁠1</bdi> ده هيكتب في <code>stack[-1]</code> الأول."
     ],
     [
-     "الـ Create بيجهّز stack جديد فاضي (top = −1)؛ مش بيشيل حاجة. شيل العنصر اللي فوق اسمه pop.",
+     "الـ Create بيجهّز stack جديد فاضي (<bdi dir=\"ltr\">top&nbsp;=&nbsp;−⁠1</bdi>)؛ مش بيشيل حاجة. شيل العنصر اللي فوق اسمه pop.",
      "الـ Push هو العكس: بيضيف عنصر جديد فوق ويزوّد الـ top. الشيل اسمه pop.",
      "الـ Evaluation مش من الـ operations بتاعة الـ stack. الـ operations الأساسية في المحاضرة هي push (إضافة) وpop (مسح).",
      "صح. الـ Pop هو عملية مسح العنصر اللي فوق في الـ stack؛ وبعد كل pop الـ top بيقل بواحد (L2, Operations on stack)."
     ],
     [
-     "الـ Create بيجهّز stack فاضي بس بـ top = −1؛ لكن إضافة عنصر فوق اسمها push.",
-     "صح. الـ Push هو عملية إضافة عنصر جديد فوق الـ stack: الأول الـ top بيزيد، وبعدين الـ item بيتحط في stack[top] (L2, Operations on stack).",
+     "الـ Create بيجهّز stack فاضي بس بـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;−⁠1</bdi>؛ لكن إضافة عنصر فوق اسمها push.",
+     "صح. الـ Push هو عملية إضافة عنصر جديد فوق الـ stack: الأول الـ top بيزيد، وبعدين الـ item بيتحط في <code>stack[top]</code> (من الـ L2، الـ Operations on stack).",
      "الـ Evaluation مش من الـ operations بتاعة الـ stack. الـ operations الأساسية في المحاضرة هي push (إضافة) وpop (مسح).",
      "الـ Pop هو العملية العكسية: بيمسح العنصر اللي فوق وينقّص الـ top. الإضافة اسمها push."
     ],
@@ -342,32 +342,32 @@ AR.ds = {
      "صح. الإضافة والمسح في الـ stack الاتنين بيحصلوا عند الـ top، فآخر عنصر دخل هو أول واحد يطلع: يعني LIFO مش FIFO (L2, What is a stack?)."
     ],
     [
-     "الـ push() بتضيف item فوق (top = top + 1; stack[top] = item). مسح العنصر اللي فوق ده شغل الـ pop().",
-     "صح. الـ push() بتضيف item جديد فوق الـ stack؛ ومسح العنصر اللي فوق بيتعمل بالـ pop() (L2, Push and Pop functions)."
+     "الـ <code>push()</code> بتضيف item فوق:<pre>top = top + 1;\nstack[top] = item;</pre>مسح العنصر اللي فوق ده شغل الـ <code>pop()</code>.",
+     "صح. الـ <code>push()</code> بتضيف item جديد فوق الـ stack؛ ومسح العنصر اللي فوق بيتعمل بالـ <code>pop()</code> (من الـ L2، الـ Push and Pop functions)."
     ],
     [
      "صح. الـ First-In-Last-Out هي نفس قاعدة الـ LIFO.",
      "الـ FILO والـ LIFO بيوصفوا نفس الترتيب."
     ],
     [
-     "الـ pop() بتمسح العنصر اللي فوق وتنقّص الـ top؛ مش بتضيف حاجة.",
-     "صح (الإجابة النموذجية الرسمية). الـ push() بتضيف item جديد فوق: بتشيك على isFull الأول، وبعدين تعمل top = top + 1; stack_arr[top] = item (L2, Push function).",
+     "الـ <code>pop()</code> بتمسح العنصر اللي فوق وتنقّص الـ top؛ مش بتضيف حاجة.",
+     "صح (الإجابة النموذجية الرسمية). الـ <code>push()</code> بتضيف item جديد فوق: بتشيك على isFull الأول، وبعدين تعمل:<pre>top = top + 1;\nstack_arr[top] = item;</pre>(من الـ L2، الـ Push function).",
      "الـ get بتعرض الـ top من غير ما تغير الـ stack.",
-     "الـ count() بترجع بس عدد العناصر المتخزنة (top + 1)؛ مش بتغيّر في الـ stack."
+     "الـ <code>count()</code> بترجع بس عدد العناصر المتخزنة (<bdi dir=\"ltr\">top&nbsp;+&nbsp;1</bdi>)؛ مش بتغيّر في الـ stack."
     ],
     [
-     "الـ push() بتضيف item فوق؛ مش بتمسح أي حاجة.",
-     "الـ search() بتلف من الـ top لحد 0 بتدوّر على item وتقولك مكانه؛ لكن مش بتشيله.",
-     "صح (الإجابة النموذجية الرسمية B). الـ pop() بتمسح العنصر اللي فوق: بتشيك على isEmpty الأول، وبعدين تقرا stack_arr[top] وتعمل top = top − 1 (L2, Pop function).",
-     "الـ display() بتطبع العناصر بس من الـ top لحد 0 بترتيب الـ LIFO؛ والـ stack بيفضل زي ما هو."
+     "الـ <code>push()</code> بتضيف item فوق؛ مش بتمسح أي حاجة.",
+     "الـ <code>search()</code> بتلف من الـ top لحد 0 بتدوّر على item وتقولك مكانه؛ لكن مش بتشيله.",
+     "صح (الإجابة النموذجية الرسمية B). الـ <code>pop()</code> بتمسح العنصر اللي فوق: بتشيك على isEmpty الأول، وبعدين تقرا <code>stack_arr[top]</code> وتعمل <bdi dir=\"ltr\">top&nbsp;=&nbsp;top&nbsp;−⁠&nbsp;1</bdi> (من الـ L2، الـ Pop function).",
+     "الـ <code>display()</code> بتطبع العناصر بس من الـ top لحد 0 بترتيب الـ LIFO؛ والـ stack بيفضل زي ما هو."
     ],
     [
      "صح (الإجابة النموذجية A): آخر واحد يدخل أول واحد يطلع.",
      "الجملة دي صح: علشان كل الإضافة والمسح بيحصلوا عند الـ top، آخر عنصر دخل هو أول واحد يطلع، فالـ stack هو LIFO list."
     ],
     [
-     "الـ FIFO دي قاعدة الـ queue (الإضافة عند الـ rear والمسح عند الـ front). الـ stack بيضيف ويمسح عند الـ top، فهو LIFO/FILO.",
-     "صح. الإجابة النموذجية بتصححها لـ FILO (= LIFO)."
+     "الـ FIFO دي قاعدة الـ queue (الإضافة عند الـ rear والمسح عند الـ front). الـ stack بيضيف ويمسح عند الـ top، فهو <bdi dir=\"ltr\">LIFO/⁠FILO</bdi>.",
+     "صح. الإجابة النموذجية بتصححها لـ <bdi dir=\"ltr\">FILO&nbsp;(=&nbsp;LIFO)</bdi>."
     ],
     [
      "صح (الإجابة النموذجية B). الاتنين بيحصلوا عند الـ top.",
@@ -375,65 +375,65 @@ AR.ds = {
     ],
     [
      "عدّ تاني: بعد العمليات دي فيه أربع عناصر متخزنة.",
-     "صح. العناصر 1,3,4,5 قاعدين في indices من 0 لـ 3، فـ top = 3 (والـ stack بقى مليان).",
-     "الـ top هو index العنصر اللي فوق ومينفعش يعدّي MAXSIZE − 1 = 3؛ أربع عناصر متخزنة يعني top = 3 مش 4.",
-     "الـ −1 معناه إن الـ stack فاضي. بعد العمليات دي فيه أربع عناصر متخزنة (1, 3, 4, 5)، فالـ top = 3."
+     "صح. العناصر <bdi dir=\"ltr\">1,3,4,5</bdi> قاعدين في indices من 0 لـ 3، فـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;3</bdi> (والـ stack بقى مليان).",
+     "الـ top هو index العنصر اللي فوق ومينفعش يعدّي <bdi dir=\"ltr\">MAXSIZE&nbsp;−⁠&nbsp;1&nbsp;=&nbsp;3</bdi>؛ أربع عناصر متخزنة يعني <bdi dir=\"ltr\">top&nbsp;=&nbsp;3</bdi> مش 4.",
+     "الـ <bdi dir=\"ltr\">−⁠1</bdi> معناه إن الـ stack فاضي. بعد العمليات دي فيه أربع عناصر متخزنة (<bdi dir=\"ltr\">1,&nbsp;3,&nbsp;4,&nbsp;5</bdi>)، فالـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;3</bdi>."
     ]
    ],
    "extra": [
     [
-     "الـ stack ميشيلش أكتر من MAXSIZE = 4 عناصر، فالـ top مينفعش يعدّي 3؛ الـ push(60) هتلاقي الـ stack مليان وتطبع stack overflow.",
+     "الـ stack ميشيلش أكتر من <bdi dir=\"ltr\">MAXSIZE&nbsp;=&nbsp;4</bdi> عناصر، فالـ top مينفعش يعدّي 3؛ الـ <code>push(60)</code> هتلاقي الـ stack مليان وتطبع stack overflow.",
      "بعد الـ pop فيه 3 عناصر (10, 20, 40)، فالـ 50 بيدخل كعنصر رابع عادي.",
-     "صح. بعد الـ 50 الـ stack بيتملي (top = 3)، فالـ 60 بيعمل overflow.",
-     "الـ Underflow بيحصل بس لما تعمل pop من stack فاضي. وقت ما الـ pop() اتنفذت كان الـ stack فيه 10, 20, 30، فشالت الـ 30 عادي."
+     "صح. بعد الـ 50 الـ stack بيتملي (<bdi dir=\"ltr\">top&nbsp;=&nbsp;3</bdi>)، فالـ 60 بيعمل overflow.",
+     "الـ Underflow بيحصل بس لما تعمل pop من stack فاضي. وقت ما الـ <code>pop()</code> اتنفذت كان الـ stack فيه <bdi dir=\"ltr\">10,&nbsp;20,&nbsp;30</bdi>، فشالت الـ 30 عادي."
     ],
     [
      "الـ display بتلف من الـ top نازلة لـ 0، يعني بالعكس.",
-     "صح. for (j = top; j &gt;= 0; j--) بتطبع بترتيب الـ LIFO.",
-     "الـ display() بتطبع الـ indices من top, top−1, … لحد 0 في loop مستقيم، فالترتيب الوحيد الممكن هو 50 40 20 10؛ عمرها ما تنط من 50 للآخر.",
-     "طباعة العنصر اللي فوق بس ده شغل الـ get(). الـ display() بتلف j = top لحد 0 وتطبع كل العناصر."
+     "صح. الـ loop ده:<pre>for (j = top; j &gt;= 0; j--)</pre>بيطبع بترتيب الـ LIFO.",
+     "الـ <code>display()</code> بتطبع الـ indices من <bdi dir=\"ltr\">top,&nbsp;top−⁠1,&nbsp;…</bdi> لحد 0 في loop مستقيم، فالترتيب الوحيد الممكن هو <bdi dir=\"ltr\">50&nbsp;40&nbsp;20&nbsp;10</bdi>؛ عمرها ما تنط من 50 للآخر.",
+     "طباعة العنصر اللي فوق بس ده شغل الـ <code>get()</code>. الـ <code>display()</code> بتلف من <bdi dir=\"ltr\">j&nbsp;=&nbsp;top</bdi> لحد 0 وتطبع كل العناصر."
     ],
     [
      "إنك ترجع DATA زي ما هي كان محتاج ترتيب FIFO (يعني queue). الـ stack بيطلّع آخر حرف دخل الأول، فبيعكس الـ string.",
-     "صح. الـ LIFO بيعكس الـ string (اتجرب بـ g++).",
+     "صح. الـ LIFO بيعكس الـ string (اتجرب بـ <bdi dir=\"ltr\">g++</bdi>).",
      "الـ ADAT مش عكس DATA. الـ pops بتطلع بعكس ترتيب الـ push بالظبط: A, T, A, D.",
      "الـ TADA مش عكس DATA. آخر حرف اتعمله push (A) هو اللي بيطلع الأول، فيبقى A, T, A, D."
     ],
     [
-     "الـ 6 ده index العنصر اللي فوق. الـ indices من 0 لـ 6 فيهم 7 عناصر، فالـ count() بترجع top + 1 = 7.",
-     "الـ 5 ناقصة اتنين. لما top = 6 العناصر بتبقى في الـ indices من 0..6، يعني 7 عناصر.",
-     "الـ count() بترجع 0 (مش −1) لو الـ stack فاضي، وهنا الـ stack مش فاضي أصلاً: top = 6 يعني 7 عناصر.",
-     "صح. الـ count() بتبدأ من index = top وتعد لتحت لحد 0، فبترجع top + 1 = 6 + 1 = 7 عناصر (L2, count function)."
+     "الـ 6 ده index العنصر اللي فوق. الـ indices من 0 لـ 6 فيهم 7 عناصر، فالـ <code>count()</code> بترجع:<span class=\"ltr\">top + 1 = 7</span>",
+     "الـ 5 ناقصة اتنين. لما <bdi dir=\"ltr\">top&nbsp;=&nbsp;6</bdi> العناصر بتبقى في الـ indices من <bdi dir=\"ltr\">0..6</bdi>، يعني 7 عناصر.",
+     "الـ <code>count()</code> بترجع 0 (مش <bdi dir=\"ltr\">−⁠1</bdi>) لو الـ stack فاضي، وهنا الـ stack مش فاضي أصلاً: الـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;6</bdi> يعني 7 عناصر.",
+     "صح. الـ <code>count()</code> بتبدأ من <bdi dir=\"ltr\">index&nbsp;=&nbsp;top</bdi> وتعد لتحت لحد 0، فبترجع 7 عناصر:<span class=\"ltr\">top + 1 = 6 + 1 = 7</span>(من الـ L2، الـ count function)."
     ],
     [
-     "صح. المحاضرة بتقول إن الـ TOP بيبدأ بـ −1 علشان في كل push الـ TOP يزيد الأول وبعدين الـ item يتحط في المكان ده؛ فأول item بيقع في index 0 (L2, Stack terminologies).",
-     "الـ arrays في C++ بتبدأ من index 0 مش −1. الـ −1 ده مجرد قيمة الـ \"empty\" بتاعة الـ TOP، فأول push بتنقله لـ 0.",
-     "الـ −1 معناه إن الـ stack فاضي (isEmpty: top == −1). الـ stack بيبقى full لما top == MAXSIZE − 1.",
+     "صح. المحاضرة بتقول إن الـ TOP بيبدأ بـ <bdi dir=\"ltr\">−1</bdi> علشان في كل push الـ TOP يزيد الأول وبعدين الـ item يتحط في المكان ده؛ فأول item بيقع في index 0 (L2, Stack terminologies).",
+     "الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من index 0 مش <bdi dir=\"ltr\">−⁠1</bdi>. الـ <bdi dir=\"ltr\">−⁠1</bdi> ده مجرد قيمة الـ \"empty\" بتاعة الـ TOP، فأول push بتنقله لـ 0.",
+     "الـ <bdi dir=\"ltr\">−⁠1</bdi> معناه إن الـ stack فاضي (الـ isEmpty بتشيك على <bdi dir=\"ltr\">top&nbsp;==&nbsp;−⁠1</bdi>). الـ stack بيبقى full لما <bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE&nbsp;−⁠&nbsp;1</bdi>.",
      "الـ pop بترجع -1 في حالة الـ underflow، بس ده مش سبب إن الـ top بيبدأ من -1."
     ],
     [
-     "الـ Undo/redo في الـ text editors ده من أمثلة الـ stack في المحاضرة: آخر action عملته هو أول واحد يتعمله undo.",
+     "الـ <bdi dir=\"ltr\">Undo/⁠redo</bdi> في الـ text editors ده من أمثلة الـ stack في المحاضرة: آخر action عملته هو أول واحد يتعمله undo.",
      "الـ history بتاع زرار الـ back في الـ browser ده من أمثلة الـ stack في المحاضرة: الـ back بيفتحلك آخر site زرته الأول.",
-     "صح. في طابور التذاكر أول واحد يوصل هو أول واحد يتخدم، وده FIFO، يعني queue. أمثلة الـ stack في المحاضرة هي كومة الكتب والـ call logs والـ browser history والـ undo/redo (L2, What is a stack?).",
+     "صح. في طابور التذاكر أول واحد يوصل هو أول واحد يتخدم، وده FIFO، يعني queue. أمثلة الـ stack في المحاضرة هي كومة الكتب والـ call logs والـ browser history والـ <bdi dir=\"ltr\">undo/⁠redo</bdi> (من الـ L2، الـ What is a stack?).",
      "كومة الكتب (أو الهدوم) دي أول مثال stack في المحاضرة: مينفعش تحط أو تاخد غير اللي فوق."
     ],
     [
      "صح. الـ static implementation بيستخدم array: بسيط جداً، بس مش flexible، لأن الـ size بيتحدد وقت الـ program design ومينفعش يتغير، واستخدام الـ memory مش efficient (L2, Stack implementation).",
      "استخدام الـ pointers ده الـ dynamic (linked list) implementation. الـ static هو array بـ MAXSIZE ثابت.",
      "الـ stack بيضيف ويمسح من طرف واحد بس، اللي هو الـ top. الإضافة من الطرفين دي مش خاصية stack.",
-     "الـ array stack بيعمل overflow لما top == MAXSIZE-1."
+     "الـ array stack بيعمل overflow لما <bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE-⁠1</bdi>."
     ],
     [
-     "الـ 2 كان فوق، فأول pop() شالته؛ يعني مبقاش في الـ stack خالص.",
-     "الـ 9 اتشالت بتاني pop()، وفضل الـ 4 بس قبل ما الـ 6 تتعمل push.",
-     "الـ 4 لسه في الـ stack، بس تحت: الـ push(6) حطت الـ 6 فوقها، والـ get() بتعرض اللي فوق.",
+     "الـ 2 كان فوق، فأول <code>pop()</code> شالته؛ يعني مبقاش في الـ stack خالص.",
+     "الـ 9 اتشالت بتاني <code>pop()</code>، وفضل الـ 4 بس قبل ما الـ 6 تتعمل push.",
+     "الـ 4 لسه في الـ stack، بس تحت: الـ <code>push(6)</code> حطت الـ 6 فوقها، والـ <code>get()</code> بتعرض اللي فوق.",
      "صح. بعد اتنين pop فاضل 4 بس؛ ولما تعمل push لـ 6 يبقى هو الـ top."
     ],
     [
      "الـ search بيمشي من الـ top نازل لـ 0، فالـ temp لازم يقل.",
-     "صح. temp = temp--; مش بتقلل الـ temp بشكل مضمون، فممكن تلف للأبد (infinite loop).",
-     "الـ top-- هيحرّك الـ top بتاع الـ stack نفسه وكأنك ضيّعت عناصر. الـ search() المفروض تحرّك النسخة بتاعتها بس، اللي هي temp، لحد 0.",
-     "الـ temp = top بيرجّع الـ index للـ top في كل لفة، فالـ loop هيفضل يشيك على نفس العنصر للأبد. المطلوب temp--."
+     "صح. الجملة دي:<pre>temp = temp--;</pre>مش بتقلل الـ temp بشكل مضمون، فممكن تلف للأبد (infinite loop).",
+     "الـ <code>top--</code> هيحرّك الـ top بتاع الـ stack نفسه وكأنك ضيّعت عناصر. الـ <code>search()</code> المفروض تحرّك النسخة بتاعتها بس، اللي هي temp، لحد 0.",
+     "الـ <bdi dir=\"ltr\">temp&nbsp;=&nbsp;top</bdi> بيرجّع الـ index للـ top في كل لفة، فالـ loop هيفضل يشيك على نفس العنصر للأبد. المطلوب <code>temp--</code>."
     ],
     [
      "الـ Backtracking بيستخدم stack عشان يرجع في طريق المتاهة.",
@@ -452,7 +452,7 @@ AR.ds = {
       "كل الـ <b>insertions</b> بتحصل عند طرف واحد، اسمه الـ <b>tail أو rear</b>، وكل الـ <b>deletions</b> بتحصل عند الطرف التاني، اسمه الـ <b>head أو front</b>.",
       "زي طابور التذاكر بالظبط: أول واحد في الطابور هو اللي بيخلص الأول.",
       "الـ <b>Front (head)</b>: مكان العنصر اللي جاهز يتخدم (أول واحد هيتشال). الـ <b>Rear (tail)</b>: مكان آخر عنصر، يعني أحدث واحد اتضاف.",
-      "الـ <b>enqueue()</b> بتضيف عند الـ rear؛ والـ <b>dequeue()</b> بتشيل من الـ front. في الأول head = tail = -1."
+      "الـ <b><code>enqueue()</code></b> بتضيف عند الـ rear؛ والـ <b><code>dequeue()</code></b> بتشيل من الـ front. في الأول:<span class=\"ltr\">head = tail = -1</span>"
      ]
     },
     {
@@ -462,7 +462,7 @@ AR.ds = {
      "h": "مشكلة الـ linear queue",
      "pts": [
       "في الـ trace اللي في الـ slide (array من 0 لـ 7) الـ rear بيتحرك يمين مع كل insert، والـ front بيتحرك يمين مع كل delete.",
-      "لما الـ rear يوصل لآخر index (<b>rear == MAX-1</b>) الـ queue بيقول إنه full، <b>حتى لو فيه عناصر اتعملها dequeue</b> والخانات اللي في الأول فاضية (\"NO SPACE HERE\" في الآخر وفي نفس الوقت فيه \"SPACE HERE\" في الأول).",
+      "لما الـ rear يوصل لآخر index (<b><bdi dir=\"ltr\">rear&nbsp;==&nbsp;MAX-⁠1</bdi></b>) الـ queue بيقول إنه full، <b>حتى لو فيه عناصر اتعملها dequeue</b> والخانات اللي في الأول فاضية (<bdi dir=\"ltr\">\"NO&nbsp;SPACE&nbsp;HERE\"</bdi> في الآخر وفي نفس الوقت فيه <bdi dir=\"ltr\">\"SPACE&nbsp;HERE\"</bdi> في الأول).",
       "يعني بعد شوية insertions وdeletions بيبقى فيه <b>مساحة فاضية مش قادر تستخدمها (non-usable)</b>؛ الـ dequeue بيزق الـ front لقدام وبيقلل الحجم اللي ينفع تستخدمه في الـ queue. ضياع الـ memory ده هو <b>السبب اللي محتاجين عشانه الـ circular queue</b>."
      ]
     },
@@ -471,8 +471,8 @@ AR.ds = {
      "pts": [
       "الـ circular queue هو نسخة متطورة من الـ queue العادي، فيها <b>آخر عنصر متوصل بأول عنصر</b>، فبيبقى شكلها زي الدايرة. بيحل أكبر مشكلة في الـ linear queue (المساحة الفاضية اللي مش بتتستخدم).",
       "فيه اتنين pointers: الـ <b>head</b> بيتابع أول عنصر، والـ <b>tail</b> بيتابع آخر عنصر. في الأول الاتنين بـ <b>-1</b> (الـ queue فاضي).",
-      "الـ <b>Enqueue</b>: شيك على الـ full في حالتين: (1) <b>head == 0 &amp;&amp; tail == SIZE-1</b>؛ (2) <b>الـ tail أقل من الـ head بواحد بالظبط</b> (الـ slide كاتبة <code>tail == (head-1) % (MAXSIZE-1)</code>؛ والـ test الـ standard الواحد هو <code>(tail+1) % SIZE == head</code>). لأول عنصر خلي head = 0. زوّد الـ tail بشكل دايري: <code>tail = (tail+1) % SIZE</code>. وخزّن العنصر عند الـ tail.",
-      "الـ <b>Dequeue</b>: شيك على الـ empty (head == -1). رجّع القيمة اللي عند الـ head. زوّد الـ head بشكل دايري: <code>head = (head+1) % SIZE</code>. ولو ده <b>آخر عنصر</b> (head == tail) رجّع الـ head والـ tail لـ -1.",
+      "الـ <b>Enqueue</b>: شيك على الـ full في حالتين: الأولى (1):<span class=\"ltr\"><b>head == 0 &amp;&amp; tail == SIZE-1</b></span>والتانية (2) <b>الـ tail أقل من الـ head بواحد بالظبط</b>. الـ slide كاتبة:<pre>tail == (head-1) % (MAXSIZE-1)</pre>والـ test الـ standard الواحد هو:<pre>(tail+1) % SIZE == head</pre>لأول عنصر خلي <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi>. زوّد الـ tail بشكل دايري:<pre>tail = (tail+1) % SIZE</pre>وخزّن العنصر عند الـ tail.",
+      "الـ <b>Dequeue</b>: شيك على الـ empty (<bdi dir=\"ltr\">head&nbsp;==&nbsp;-⁠1</bdi>). رجّع القيمة اللي عند الـ head. زوّد الـ head بشكل دايري:<pre>head = (head+1) % SIZE</pre>ولو ده <b>آخر عنصر</b> (<bdi dir=\"ltr\">head&nbsp;==&nbsp;tail</bdi>) رجّع الـ head والـ tail لـ <bdi dir=\"ltr\">-⁠1</bdi>.",
       "مثال الـ slide: بعد 2 dequeue الـ queues الاتنين الـ front عندهم عند 72 والـ rear عند 24؛ إضافة 100 <b>مش ممكنة في الـ linear queue</b> (الـ rear في الآخر) بس <b>ممكنة في الـ circular queue</b> (الـ rear بيلف لـ index 0)."
      ]
     },
@@ -480,42 +480,42 @@ AR.ds = {
      "h": "الـ linear queue مقابل الـ circular queue"
     },
     {
-     "h": "الـ enQueue / deQueue في الـ circular queue (كود الدكتورة)"
+     "h": "الـ enQueue والـ deQueue في الـ circular queue (كود الدكتورة)"
     },
     {
-     "h": "trace محلول (امتحان 2022/23، size 5)"
+     "h": "الـ trace محلول (امتحان <bdi dir=\"ltr\">2022/⁠23</bdi>، والـ size بـ 5)"
     }
    ],
    "cards": [
-    "structure من نوع non-primitive linear مفتوح من الطرفين؛ FIFO.",
-    "First In First Out: أول عنصر يدخل هو أول عنصر يطلع.",
+    "الـ structure من نوع non-primitive linear مفتوح من الطرفين؛ FIFO.",
+    "يعني First In First Out: أول عنصر يدخل هو أول عنصر يطلع.",
     "عند الـ rear (tail).",
     "من الـ front (head).",
-    "rear == MAX - 1",
-    "head == -1 || head > tail",
+    "الشرط:<span class=\"ltr\">rear == MAX - 1</span>",
+    "الشرط:<span class=\"ltr\">head == -1 || head &gt; tail</span>",
     "-1 و -1",
     "الخانات اللي فضيت بالـ dequeue مش بتتستخدم تاني؛ الـ rear بيفضل في الآخر فالـ queue يبان كأنه full (ضياع memory).",
-    "queue آخر مكان فيه متوصل بأول مكان، فبيرجع يستخدم الخانات اللي فضيت.",
-    "rear = (rear + 1) % MAX_SIZE",
-    "front == rear == -1",
-    "front == 0 && rear == MAX-1، أو الـ rear أقل من الـ front بواحد.",
+    "الـ queue اللي آخر مكان فيه متوصل بأول مكان، فبيرجع يستخدم الخانات اللي فضيت.",
+    "بنعمل:<span class=\"ltr\">rear = (rear + 1) % MAX_SIZE</span>",
+    "الشرط:<span class=\"ltr\">front == rear == -1</span>",
+    "الحالة الأولى:<span class=\"ltr\">front == 0 &amp;&amp; rear == MAX-1</span>أو الـ rear أقل من الـ front بواحد.",
     "رجّع الـ front والـ rear لـ -1.",
     "عشان نتجنب ضياع الـ memory."
    ],
    "qa": [
-    "الـ queue هو data structure من نوع non-primitive linear مفتوح من الطرفين، وبيشتغل بترتيب FIFO. كل الـ insertions بتحصل عند طرف واحد (tail/rear) وكل الـ deletions عند الطرف التاني (head/front). الـ front هو مكان العنصر الجاهز يتخدم؛ والـ rear هو مكان أحدث عنصر اتضاف.",
-    "في الـ linear queue، الـ dequeue بيزق الـ front لقدام، ولما الـ rear يوصل MAX-1 مش هتقدر تعمل enqueue لأي عنصر حتى لو الخانات اللي في الأول فاضية، فالمساحة بتضيع. الـ circular queue بيوصّل آخر مكان بأول مكان: rear = (rear+1) % MAX بيلف لـ index 0 ويرجع يستخدم الخانات اللي فضيت.",
-    "bool isFull(int tail){ if (tail == maxsize-1) return true; else return false; }<br>void enqueue(int item){ if (isFull(tail)) { cout&lt;&lt;\"Queue is full\"; return; } else { if (head == -1) head = 0; tail = tail+1; queue[tail] = item; } }<br>الفكرة: لو مليان اطبع رسالة، غير كده لو ده أول عنصر خلي head = 0، وزوّد الـ tail وخزّن.",
-    "bool isEmpty(int head){ if (head == -1 || head &gt; tail) return true; else return false; }<br>int dequeue(){ int element; if (isEmpty(head)) { cout&lt;&lt;\"Queue Underflow\"; return -1; } else { element = queue[head]; head++; } return element; }<br>الفكرة: لو فاضي اطبع underflow، غير كده خد العنصر اللي عند الـ head وزوّد الـ head.",
-    "الـ Enqueue: شيك على الـ full (head == 0 وtail == SIZE-1، أو الـ tail أقل من الـ head بواحد)؛ لأول عنصر خلي head = 0؛ زوّد الـ tail بواحد بشكل دايري (لو وصل للآخر يرجع 0)؛ وخزّن العنصر عند الـ tail. الـ Dequeue: شيك على الـ empty (head == -1)؛ خد القيمة اللي عند الـ head؛ لو كان آخر عنصر (head == tail) رجّع الـ head والـ tail لـ -1، غير كده زوّد الـ head بواحد بشكل دايري.",
-    "الـ Linear: خط مستقيم، بيبقى full لما rear == MAX-1، الخانات اللي فضيت بتضيع، وrear = rear+1. الـ Circular: آخر خانة متوصلة بأول خانة، بيبقى full لما front == 0 وrear == MAX-1 أو الـ rear ورا الـ front بواحد، الخانات اللي فضيت بترجع تتستخدم، وrear = (rear+1) % MAX، وبيرجع لـ -1 لما آخر عنصر يتشال."
+    "الـ queue هو data structure من نوع non-primitive linear مفتوح من الطرفين، وبيشتغل بترتيب FIFO. كل الـ insertions بتحصل عند طرف واحد (<bdi dir=\"ltr\">tail/⁠rear</bdi>) وكل الـ deletions عند الطرف التاني (<bdi dir=\"ltr\">head/⁠front</bdi>). الـ front هو مكان العنصر الجاهز يتخدم؛ والـ rear هو مكان أحدث عنصر اتضاف.",
+    "في الـ linear queue، الـ dequeue بيزق الـ front لقدام، ولما الـ rear يوصل <bdi dir=\"ltr\">MAX-⁠1</bdi> مش هتقدر تعمل enqueue لأي عنصر حتى لو الخانات اللي في الأول فاضية، فالمساحة بتضيع. الـ circular queue بيوصّل آخر مكان بأول مكان، والجملة دي:<pre>rear = (rear+1) % MAX</pre>بتلف لـ index 0 وترجع تستخدم الخانات اللي فضيت.",
+    "الكود:<pre>bool isFull(int tail){\n  if (tail == maxsize-1)\n    return true;\n  else return false;\n}\nvoid enqueue(int item){\n  if (isFull(tail)) {\n    cout&lt;&lt;\"Queue is full\";\n    return;\n  } else {\n    if (head == -1) head = 0;\n    tail = tail+1;\n    queue[tail] = item;\n  }\n}</pre>الفكرة: لو مليان اطبع رسالة، غير كده لو ده أول عنصر خلي <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi>، وزوّد الـ tail وخزّن.",
+    "الكود:<pre>bool isEmpty(int head){\n  if (head == -1 ||\n      head &gt; tail)\n    return true;\n  else return false;\n}\nint dequeue(){\n  int element;\n  if (isEmpty(head)) {\n    cout&lt;&lt;\"Queue Underflow\";\n    return -1;\n  } else {\n    element = queue[head];\n    head++;\n  }\n  return element;\n}</pre>الفكرة: لو فاضي اطبع underflow، غير كده خد العنصر اللي عند الـ head وزوّد الـ head.",
+    "الـ Enqueue: شيك على الـ full (<bdi dir=\"ltr\">head&nbsp;==&nbsp;0</bdi> و<bdi dir=\"ltr\">tail&nbsp;==&nbsp;SIZE-⁠1</bdi>، أو الـ tail أقل من الـ head بواحد)؛ لأول عنصر خلي <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi>؛ زوّد الـ tail بواحد بشكل دايري (لو وصل للآخر يرجع 0)؛ وخزّن العنصر عند الـ tail. الـ Dequeue: شيك على الـ empty (<bdi dir=\"ltr\">head&nbsp;==&nbsp;-⁠1</bdi>)؛ خد القيمة اللي عند الـ head؛ لو كان آخر عنصر (<bdi dir=\"ltr\">head&nbsp;==&nbsp;tail</bdi>) رجّع الـ head والـ tail لـ <bdi dir=\"ltr\">-⁠1</bdi>، غير كده زوّد الـ head بواحد بشكل دايري.",
+    "الـ Linear: خط مستقيم، بيبقى full لما <bdi dir=\"ltr\">rear&nbsp;==&nbsp;MAX-⁠1</bdi>، الخانات اللي فضيت بتضيع، و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;rear+1</bdi>. الـ Circular: آخر خانة متوصلة بأول خانة، بيبقى full لما <bdi dir=\"ltr\">front&nbsp;==&nbsp;0</bdi> و<bdi dir=\"ltr\">rear&nbsp;==&nbsp;MAX-⁠1</bdi> أو الـ rear ورا الـ front بواحد، الخانات اللي فضيت بترجع تتستخدم، وبنعمل:<span class=\"ltr\">rear = (rear+1) % MAX</span>وبيرجع لـ <bdi dir=\"ltr\">-⁠1</bdi> لما آخر عنصر يتشال."
    ],
    "quiz": [
     [
-     "الـ front == (rear + 1) mod MAX ده test الـ full بتاع الـ circular queue، اللي الـ rear فيه بيلف. الـ linear queue عمره ما بيلف؛ بيتملي لما الـ rear يوصل لـ MAX − 1.",
-     "في كود المحاضرة front > rear معناها empty، مش full.",
-     "صح. الـ isFull بتاعة المحاضرة بترجع true لما tail == maxsize − 1: الـ rear وصل لآخر خانة، والـ linear queue مايقدرش يعدّيها (L3, C++ enqueue function).",
-     "rear == front معناها إن الـ head والـ tail واقفين على نفس الخانة، يعني فيه عنصر واحد بالظبط، مش queue مليان."
+     "الـ test ده:<span class=\"ltr\">front == (rear + 1) mod MAX</span>هو test الـ full بتاع الـ circular queue، اللي الـ rear فيه بيلف. الـ linear queue عمره ما بيلف؛ بيتملي لما الـ rear يوصل لـ <bdi dir=\"ltr\">MAX&nbsp;−⁠&nbsp;1</bdi>.",
+     "في كود المحاضرة <bdi dir=\"ltr\">front&nbsp;>&nbsp;rear</bdi> معناها empty، مش full.",
+     "صح. الـ isFull بتاعة المحاضرة بترجع true لما <bdi dir=\"ltr\">tail&nbsp;==&nbsp;maxsize&nbsp;−⁠&nbsp;1</bdi>، يعني الـ rear وصل لآخر خانة، والـ linear queue مايقدرش يعدّيها (من الـ L3، الـ enqueue function بتاعة <bdi dir=\"ltr\">C++</bdi>).",
+     "الـ <bdi dir=\"ltr\">rear&nbsp;==&nbsp;front</bdi> معناها إن الـ head والـ tail واقفين على نفس الخانة، يعني فيه عنصر واحد بالظبط، مش queue مليان."
     ],
     [
      "صح. الـ linear queue مش بيقدر يرجع يستخدم الخانات اللي فضيت بالـ dequeue.",
@@ -524,35 +524,35 @@ AR.ds = {
      "فيه سبب: الـ circular queue معمول عشان يعيد استخدام الخانات اللي الـ linear queue بيضيعها بعد الـ dequeues (الاختيار a)."
     ],
     [
-     "front = rear = 0 معناها فيه عنصر واحد عند index 0.",
-     "الـ front == rear + 1 مش test الـ empty بتاع الـ circular queue؛ الـ isEmpty بتاعة المحاضرة بتشيك على front == −1، بعد ما الاتنين يرجعوا −1.",
-     "صح. المحاضرة بتبدأ الاتنين وبترجعهم لـ -1؛ والـ isEmpty بتشيك على front == -1.",
-     "فيه اختيار صح: المحاضرة بتبدأ بـ front = rear = −1 وبترجّع الاتنين −1 لما آخر عنصر يخرج (الاختيار c)."
+     "الـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;0</bdi> معناها فيه عنصر واحد عند index 0.",
+     "الـ <bdi dir=\"ltr\">front&nbsp;==&nbsp;rear&nbsp;+&nbsp;1</bdi> مش test الـ empty بتاع الـ circular queue؛ الـ isEmpty بتاعة المحاضرة بتشيك على <bdi dir=\"ltr\">front&nbsp;==&nbsp;−⁠1</bdi>، بعد ما الاتنين يرجعوا <bdi dir=\"ltr\">−⁠1</bdi>.",
+     "صح. المحاضرة بتبدأ الاتنين وبترجعهم لـ <bdi dir=\"ltr\">-⁠1</bdi>؛ والـ isEmpty بتشيك على <bdi dir=\"ltr\">front&nbsp;==&nbsp;-⁠1</bdi>.",
+     "فيه اختيار صح: المحاضرة بتبدأ بـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;−⁠1</bdi> وبترجّع الاتنين <bdi dir=\"ltr\">−⁠1</bdi> لما آخر عنصر يخرج (الاختيار c)."
     ],
     [
      "الشرط ده بيغطي Case 1 بس (الـ front عند 0 والـ rear في الآخر). ناقصه Case 2: الـ rear لفّ وبقى ورا الـ front بخانة واحدة بالظبط.",
      "صح. الـ queue بيبقى full كمان لما الـ rear يبقى أقل من الـ front بواحد (الـ rear لف)."
     ],
     [
-     "صح. الـ enqueue بتعمل tail = tail + 1 (بشكل دايري في الـ circular queue).",
-     "الجملة صح: الـ enqueue بتعمل tail = tail + 1 (أو (rear + 1) % MAX_SIZE في الـ circular queue) قبل ما تخزن العنصر."
+     "صح. الـ enqueue بتعمل <bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi> (بشكل دايري في الـ circular queue).",
+     "الجملة صح: الـ enqueue بتعمل <bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi> قبل ما تخزن العنصر، أو في الـ circular queue:<span class=\"ltr\">(rear + 1) % MAX_SIZE</span>"
     ],
     [
      "الـ stack بيضيف ويمسح من طرف واحد بس، اللي هو الـ top؛ مش مفتوح من الطرفين.",
      "صح (الإجابة المتوقعة). المحاضرة بتقول إن الـ queue \"open at both ends\": إضافة عند الـ rear ومسح عند الـ front. بالدقة، الإضافة والمسح من الطرفين الاتنين ده الـ deque، وهو مش موجود في الاختيارات.",
      "الـ linked list يقدر يضيف/يمسح في أي مكان، بس السؤال قاصد تعريف الـ queue \"both ends\".",
-     "الـ array العادي مالوش أطراف محددة للـ insertion أو الـ deletion؛ الـ stacks والـ queues بتتبني فوقه باستخدام الـ TOP أو الـ front/rear indices."
+     "الـ array العادي مالوش أطراف محددة للـ insertion أو الـ deletion؛ الـ stacks والـ queues بتتبني فوقه باستخدام الـ TOP أو الـ <bdi dir=\"ltr\">front/⁠rear&nbsp;indices</bdi>."
     ],
     [
      "بيختلفوا في طريقة تقدّم الـ indices وإعادة استخدام المساحة.",
      "صح. الـ circular queue بيوصّل آخر مكان بأول مكان وبيرجع يستخدم الخانات اللي فضيت."
     ],
     [
-     "صح. كل الإضافات بتحصل عند طرف واحد، الـ tail (الـ rear): الـ enqueue بتعمل tail = tail + 1 وبتخزن العنصر في queue[tail] (L3, What is a queue?).",
+     "صح. كل الإضافات بتحصل عند طرف واحد، الـ tail (الـ rear): الـ enqueue بتعمل <bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi> وبتخزن العنصر في <code>queue[tail]</code> (من الـ L3، الـ What is a queue?).",
      "الجملة صح: الـ queue بيضيف عند الـ rear (الـ tail) بس، وبيمسح من الـ front (الـ head) بس."
     ],
     [
-     "صح. كل المسح بيحصل عند الـ head (الـ front): الـ dequeue بتقرا queue[head] وبعدين تزق الـ head لقدام (L3, C++ dequeue function).",
+     "صح. كل المسح بيحصل عند الـ head (الـ front): الـ dequeue بتقرا <code>queue[head]</code> وبعدين تزق الـ head لقدام (من الـ L3، الـ dequeue function بتاعة <bdi dir=\"ltr\">C++</bdi>).",
      "الجملة صح: الـ dequeue دايمًا بتشيل العنصر اللي عند الـ front (الـ head)، اللي هو أقدم واحد (FIFO)."
     ],
     [
@@ -564,7 +564,7 @@ AR.ds = {
     [
      "الـ front (الـ head) ده المكان اللي العناصر بتخرج منه بالـ dequeue، مش المكان اللي بتتضاف فيه.",
      "الـ Top ده الطرف الوحيد بتاع الـ stack. الـ queue ليه طرفين: الـ rear للإضافة والـ front للمسح.",
-     "صح (الإجابة النموذجية الرسمية B). الـ enqueue بتضيف العنصر الجديد عند الـ rear (الـ tail): tail = tail + 1; queue[tail] = item (L3, C++ enqueue function).",
+     "صح (الإجابة النموذجية الرسمية B). الـ enqueue بتضيف العنصر الجديد عند الـ rear (الـ tail):<pre>tail = tail + 1;\nqueue[tail] = item;</pre>(من الـ L3، الـ enqueue function بتاعة <bdi dir=\"ltr\">C++</bdi>).",
      "الـ Head ده اسم تاني للـ front، المكان اللي العناصر بتتشال منه. الإضافة بتحصل عند الـ tail (الـ rear)."
     ],
     [
@@ -572,60 +572,60 @@ AR.ds = {
      "صح. الإجابة النموذجية: الإضافة عند الـ rear والمسح عند الـ front."
     ],
     [
-     "الـ head = 0 كده إنت ناسي الـ dequeues. كل dequeue بتزق الـ head خطوة لقدام، فاتنين dequeue بيودّوه من 0 لـ 2.",
-     "صح. الـ enqueues بتملا الـ indices 0 و1 و2 (head = 0، tail = 2). كل dequeue بتعمل head = (head + 1) % 5، فالـ head = 2؛ وفاضل 30 بس، عند head = tail = 2 (L3, Circular queue deQueue).",
-     "الاتنين بيرجعوا −1 بس لما آخر عنصر يتشال. لسه فيه عنصر واحد (30) جوه الـ queue.",
-     "الـ head = 1 دي الحالة بعد dequeue واحدة بس. الـ dequeue التانية بتشيل الـ 20 وبتودّي الـ head لـ 2."
+     "الـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi> كده إنت ناسي الـ dequeues. كل dequeue بتزق الـ head خطوة لقدام، فاتنين dequeue بيودّوه من 0 لـ 2.",
+     "صح. الـ enqueues بتملا الـ indices 0 و1 و2 (<bdi dir=\"ltr\">head&nbsp;=&nbsp;0,&nbsp;tail&nbsp;=&nbsp;2</bdi>). كل dequeue بتعمل:<span class=\"ltr\">head = (head + 1) % 5</span>فالـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;2</bdi>؛ وفاضل 30 بس، عند <bdi dir=\"ltr\">head&nbsp;=&nbsp;tail&nbsp;=&nbsp;2</bdi> (من الـ L3، الـ Circular queue deQueue).",
+     "الاتنين بيرجعوا <bdi dir=\"ltr\">−1</bdi> بس لما آخر عنصر يتشال. لسه فيه عنصر واحد (30) جوه الـ queue.",
+     "الـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;1</bdi> دي الحالة بعد dequeue واحدة بس. الـ dequeue التانية بتشيل الـ 20 وبتودّي الـ head لـ 2."
     ]
    ],
    "extra": [
     [
      "تخزين الـ 6 في index 0 ده اللي الـ circular queue بيعمله. الـ tail بتاع الـ linear queue بيزيد بس، فمايقدرش يرجع لـ index 0.",
-     "index 5 مش موجود في queue حجمه 5 (الـ indices من 0 لـ 4)؛ الـ isFull بتوقف الإضافة عشان tail == maxsize − 1.",
-     "صح. \"Queue is full\" لأن tail == maxsize-1 رغم إن indices 0 و1 فاضيين. ودي بالظبط مشكلة الـ linear queue.",
+     "الـ index 5 مش موجود في queue حجمه 5 (الـ indices من 0 لـ 4)؛ الـ isFull بتوقف الإضافة عشان <bdi dir=\"ltr\">tail&nbsp;==&nbsp;maxsize&nbsp;−⁠&nbsp;1</bdi>.",
+     "صح. \"Queue is full\" لأن <bdi dir=\"ltr\">tail&nbsp;==&nbsp;maxsize-⁠1</bdi> رغم إن indices 0 و1 فاضيين. ودي بالظبط مشكلة الـ linear queue.",
      "الـ Queue Underflow بتطبعها الـ dequeue لما الـ queue يكون فاضي. هنا دي enqueue، والـ isFull هي اللي بتمنعها."
     ],
     [
-     "صح. rear = (4 + 1) % 5 = 0، خانة فضيت بالـ dequeue.",
-     "index 5 مش موجود (الـ indices من 0 لـ 4). الـ circular queue بيحسب rear = (4 + 1) % 5 = 0 بدل 5.",
+     "صح. الحساب:<span class=\"ltr\">rear = (4 + 1) % 5 = 0</span>يعني خانة فضيت بالـ dequeue.",
+     "الـ index 5 مش موجود (الـ indices من 0 لـ 4). الـ circular queue بيحسب بدل 5:<span class=\"ltr\">rear = (4 + 1) % 5 = 0</span>",
      "خانتين فضيوا، فالـ circular queue مش full.",
-     "index 2 ده مكان الـ front دلوقتي (العنصر 3). الـ rear الجديد هو الخانة اللي بعد 4، وبيلف لـ (4 + 1) % 5 = 0."
+     "الـ index 2 ده مكان الـ front دلوقتي (العنصر 3). الـ rear الجديد هو الخانة اللي بعد 4، وبيلف لـ:<span class=\"ltr\">(4 + 1) % 5 = 0</span>"
     ],
     [
-     "head == tail معناها إن الـ head والـ tail على نفس الخانة، يعني فيه عنصر واحد بالظبط.",
-     "صح. الـ isEmpty بتاعة المحاضرة بترجع true لما head == −1 (مفيش حاجة اتضافت أصلًا) أو head &gt; tail (كل العناصر اللي اتضافت اتعملها dequeue) (L3, C++ dequeue function).",
-     "tail == maxsize − 1 ده test الـ full (isFull) بتاع الـ linear queue، مش test الـ empty.",
-     "ده عاكس الـ head والـ tail. الـ empty بيعتمد على الـ head: يا head == −1 يا الـ head عدّى الـ tail (head &gt; tail)."
+     "الـ <bdi dir=\"ltr\">head&nbsp;==&nbsp;tail</bdi> معناها إن الـ head والـ tail على نفس الخانة، يعني فيه عنصر واحد بالظبط.",
+     "صح. الـ isEmpty بتاعة المحاضرة بترجع true لما <bdi dir=\"ltr\">head&nbsp;==&nbsp;−⁠1</bdi> (مفيش حاجة اتضافت أصلًا) أو <bdi dir=\"ltr\">head&nbsp;&gt;&nbsp;tail</bdi> (كل العناصر اللي اتضافت اتعملها dequeue) (من الـ L3، الـ dequeue function بتاعة <bdi dir=\"ltr\">C++</bdi>).",
+     "الـ <bdi dir=\"ltr\">tail&nbsp;==&nbsp;maxsize&nbsp;−⁠&nbsp;1</bdi> ده test الـ full (isFull) بتاع الـ linear queue، مش test الـ empty.",
+     "ده عاكس الـ head والـ tail. الـ empty بيعتمد على الـ head: يا <bdi dir=\"ltr\">head&nbsp;==&nbsp;−⁠1</bdi> يا الـ head عدّى الـ tail (<bdi dir=\"ltr\">head&nbsp;&gt;&nbsp;tail</bdi>)."
     ],
     [
      "إنك تزق الـ front بـ (front + 1) % MAX_SIZE ده الـ else branch، اللي بيتنفذ لما يكون فاضل أكتر من عنصر.",
-     "العنصر بيتشال وبيرجع عادي. وعشان كان الوحيد (front == rear)، الـ queue بيبقى فاضي.",
-     "المحاضرة عمرها ما بتعمل rear = front − 1. لما آخر عنصر يتشال، الـ front والـ rear الاتنين بيرجعوا −1.",
+     "العنصر بيتشال وبيرجع عادي. وعشان كان الوحيد (<bdi dir=\"ltr\">front&nbsp;==&nbsp;rear</bdi>)، الـ queue بيبقى فاضي.",
+     "المحاضرة عمرها ما بتعمل <bdi dir=\"ltr\">rear&nbsp;=&nbsp;front&nbsp;−⁠&nbsp;1</bdi>. لما آخر عنصر يتشال، الـ front والـ rear الاتنين بيرجعوا <bdi dir=\"ltr\">−⁠1</bdi>.",
      "صح. آخر عنصر اتشال، فالـ queue بقى فاضي."
     ],
     [
-     "index 4 برة الـ range لما MAX_SIZE = 4 (الـ indices من 0 لـ 3). الـ modulo بيلفّه: (3 + 1) % 4 = 0.",
-     "صح. الـ enQueue بتحرك الـ rear بشكل دائري: rear = (rear + 1) % MAX_SIZE = (3 + 1) % 4 = 0، فبتعيد استخدام الخانة اللي في الأول (L3, Circular queue enQueue).",
+     "الـ index 4 برة الـ range لما <bdi dir=\"ltr\">MAX_SIZE&nbsp;=&nbsp;4</bdi> (الـ indices من 0 لـ 3). الـ modulo بيلفّه:<span class=\"ltr\">(3 + 1) % 4 = 0</span>",
+     "صح. الـ enQueue بتحرك الـ rear بشكل دائري:<span class=\"ltr\">rear = (rear + 1) % MAX_SIZE<br>= (3 + 1) % 4 = 0</span>فبتعيد استخدام الخانة اللي في الأول (من الـ L3، الـ Circular queue enQueue).",
      "الـ rear لازم يتحرك لخانة جديدة قبل ما يخزن الـ x، وإلا الـ x هيكتب فوق العنصر اللي في index 3.",
-     "الـ 1 ده على بعد خطوتين من 3 (3 → 0 → 1). الـ enQueue بتزق الـ rear خطوة واحدة بالظبط: (3 + 1) % 4 = 0."
+     "الـ 1 ده على بعد خطوتين من 3:<span class=\"ltr\">3 → 0 → 1</span>الـ enQueue بتزق الـ rear خطوة واحدة بالظبط:<span class=\"ltr\">(3 + 1) % 4 = 0</span>"
     ],
     [
      "ده queue، والـ queue مش full بجد أصلًا.",
      "الـ Underflow معناه إنك بتشيل من queue فاضي. هنا الـ queue لسه فيه عناصر؛ الخانات الفاضية بس مش قادرين نوصلها.",
      "صح. بعد الـ dequeues الـ front بيتحرك لقدام، بس الـ tail بتاع الـ linear queue لسه في الآخر، فالخانات اللي فضيت في الأول بتبقى non-usable empty space؛ والـ circular queue هو اللي بيحل المشكلة دي (L3, Problem of linear queue).",
-     "الـ Collision ده مصطلح hashing (لما اتنين keys يطلعوا نفس الـ slot، L10)؛ مالوش أي علاقة بالـ queues."
+     "الـ Collision ده مصطلح hashing (لما اتنين keys يطلعوا نفس الـ slot، في الـ L10)؛ مالوش أي علاقة بالـ queues."
     ],
     [
-     "صح. الـ head اتحرك من 0 لـ 1 بعد dequeue واحدة؛ والـ tail راح 0، 1، 2، 3.",
-     "الـ head = 0 كده إنت ناسي الـ dequeue. الـ dequeue بتقرا queue[head] وبتعمل head++، فالـ head بيبقى 1.",
-     "الـ tail = 2 دي الحالة قبل enqueue(3). الـ enqueue دي بتعمل tail = tail + 1، فالـ tail بيبقى 3.",
-     "حصل 4 enqueues بس، فالـ tail مشي 0، 1، 2، 3؛ والـ dequeue حرّكت الـ head لـ 1، مش 0."
+     "صح. الـ head اتحرك من 0 لـ 1 بعد dequeue واحدة؛ والـ tail راح <bdi dir=\"ltr\">0,&nbsp;1,&nbsp;2,&nbsp;3</bdi>.",
+     "الـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi> كده إنت ناسي الـ dequeue. الـ dequeue بتقرا <code>queue[head]</code> وبتعمل <code>head++</code>، فالـ head بيبقى 1.",
+     "الـ <bdi dir=\"ltr\">tail&nbsp;=&nbsp;2</bdi> دي الحالة قبل <code>enqueue(3)</code>. الـ enqueue دي بتعمل <bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi>، فالـ tail بيبقى 3.",
+     "حصل 4 enqueues بس، فالـ tail مشي <bdi dir=\"ltr\">0,&nbsp;1,&nbsp;2,&nbsp;3</bdi>؛ والـ dequeue حرّكت الـ head لـ 1، مش 0."
     ],
     [
-     "الـ rear == MAX_SIZE − 1 لوحده ده test الـ full بتاع الـ linear queue. في الـ circular queue ممكن الـ rear يبقى في الآخر وفيه خانات فاضية في الأول.",
-     "الـ front == −1 ده test الـ empty (isEmpty) بتاع الـ circular queue، يعني عكس الـ full.",
-     "الـ front == rear معناها إن فيه عنصر واحد متخزن، مش queue مليان.",
-     "صح. بيغطي حالتين المحاضرة (front 0 / rear MAX-1، والـ rear ورا الـ front على طول)."
+     "الـ <bdi dir=\"ltr\">rear&nbsp;==&nbsp;MAX_SIZE&nbsp;−⁠&nbsp;1</bdi> لوحده ده test الـ full بتاع الـ linear queue. في الـ circular queue ممكن الـ rear يبقى في الآخر وفيه خانات فاضية في الأول.",
+     "الـ <bdi dir=\"ltr\">front&nbsp;==&nbsp;−⁠1</bdi> ده test الـ empty (isEmpty) بتاع الـ circular queue، يعني عكس الـ full.",
+     "الـ <bdi dir=\"ltr\">front&nbsp;==&nbsp;rear</bdi> معناها إن فيه عنصر واحد متخزن، مش queue مليان.",
+     "صح. بيغطي حالتين المحاضرة (الـ front بـ 0 والـ rear بـ <bdi dir=\"ltr\">MAX-⁠1</bdi>، والـ rear ورا الـ front على طول)."
     ],
     [
      "مش ممكن في الـ linear queue: الـ rear بتاعه في آخر خانة، فالـ isFull بترجع true حتى لو الخانات اللي في الأول فاضية.",
@@ -648,7 +648,7 @@ AR.ds = {
      "pts": [
       "الـ <b>pointer هو data type</b>؛ تقدر تعمل variables من النوع ده زي أي type تاني. الـ pointer variable <b>جواه memory address</b> و<b>بيشاور على data type معين</b>.",
       "تعريف الـ Lab: الـ <b>pointer variable</b> هو variable المحتوى بتاعه <b>address</b> (عنوان في الـ memory).",
-      "مثال: <code>int x; int *pointer1 = &amp;x;</code> الـ pointer1 شايل الـ address بتاع x (مثلًا 0x2000)، مش القيمة بتاعته."
+      "مثال:<pre>int x;\nint *pointer1 = &amp;x;</pre>الـ pointer1 شايل الـ address بتاع x (مثلًا 0x2000)، مش القيمة بتاعته."
      ]
     },
     {
@@ -661,37 +661,37 @@ AR.ds = {
      "h": "ليه الـ fakeSwap مش بتشتغل (memory trace من الـ slides)"
     },
     {
-     "h": "Lab: برنامج pointers"
+     "h": "الـ Lab: برنامج pointers"
     },
     {
      "h": "الـ dynamic arrays والـ memory segments (Lab)",
      "pts": [
-      "الـ array العادي لازم الـ size بتاعه يبقى <b>constant expression</b> متحدد وقت الـ design. الـ <code>new</code> بتحجز memory <b>وقت الـ run time</b> وتقدر تستخدم أي قيمة variable كـ size: <code>int *arr; cin&gt;&gt;size; arr = new int[size]; ... delete[] arr;</code>",
-      "الـ <code>new</code> بتحجز الـ memory اللي الـ object/array محتاجها، والـ pointer بيخزن الـ address بتاع الـ block ده.",
-      "كل برنامج ليه تلات memory segments: الـ <b>code segment</b> (الـ machine code بعد الـ compile)، الـ <b>stack segment</b> (الـ local/temporary variables)، والـ <b>heap segment</b> (الـ dynamic memory allocation بالـ new).",
+      "الـ array العادي لازم الـ size بتاعه يبقى <b>constant expression</b> متحدد وقت الـ design. الـ <code>new</code> بتحجز memory <b>وقت الـ run time</b> وتقدر تستخدم أي قيمة variable كـ size:<pre>int *arr;\ncin&gt;&gt;size;\narr = new int[size];\n...\ndelete[] arr;</pre>",
+      "الـ <code>new</code> بتحجز الـ memory اللي الـ <bdi dir=\"ltr\">object/⁠array</bdi> محتاجها، والـ pointer بيخزن الـ address بتاع الـ block ده.",
+      "كل برنامج ليه تلات memory segments: الـ <b>code segment</b> (الـ machine code بعد الـ compile)، الـ <b>stack segment</b> (الـ <bdi dir=\"ltr\">local/⁠temporary&nbsp;variables</bdi>)، والـ <b>heap segment</b> (الـ dynamic memory allocation بالـ new).",
       "الـ linked lists والـ linked stacks والـ linked queues بيستخدموا <b>dynamic</b> memory allocation: كل node بتتعمل بـ <code>new</code> وقت الـ run time."
      ]
     }
    ],
    "cards": [
-    "data type الـ variables بتاعته جواها memory address وبتشاور على data type معين.",
+    "الـ data type اللي الـ variables بتاعته جواها memory address وبتشاور على data type معين.",
     "الـ address بتاع x.",
     "القيمة المتخزنة عند الـ address اللي في p (dereference).",
-    "هي هي (*p).member.",
-    "x وy مش بيتغيروا (الـ pass by value بيبدّل النسخ بس).",
-    "x وy بيتبدلوا (الـ pointers بتخلي الـ function تغيّر الأصل).",
+    "هي هي <code>(*p).member</code>.",
+    "الـ x والـ y مش بيتغيروا (الـ pass by value بيبدّل النسخ بس).",
+    "الـ x والـ y بيتبدلوا (الـ pointers بتخلي الـ function تغيّر الأصل).",
     "بتحجز memory وقت الـ run time (في الـ heap) وبترجع الـ address بتاعها.",
-    "بتفضّي dynamic array اتحجز بـ new[].",
+    "بتفضّي dynamic array اتحجز بـ <code>new[]</code>.",
     "الـ Code segment، الـ stack segment (الـ local variables)، الـ heap segment (الـ dynamic allocation).",
     "العادي: constant وقت الـ design. الـ Dynamic: أي قيمة وقت الـ run time.",
     "24",
     "في الـ stack segment."
    ],
    "qa": [
-    "الـ pointer هو data type الـ variables بتاعته شايلة memory address لـ variable من type معين. &amp;x بتدّيك الـ address بتاع x؛ و*p بتوصلك للقيمة اللي عند الـ address اللي في p. مثال: int x = 5, *ptr; ptr = &amp;x; *ptr = 24; دلوقتي x بقت 24 لأن ptr بيشاور على x.",
-    "الـ fakeSwap(int a, int b) بتاخد نسخ (copies) من x وy في أماكن جديدة في الـ memory؛ فلما تبدّل a وb مش بتلمس x وy خالص. الـ trueSwap(int* a, int* b) بتاخد الـ addresses بتاعة x وy، فـ *a و*b هما x وy نفسهم؛ tmp = *a; *a = *b; *b = tmp; بتبدّل الأصل (x = 2، y = 1).",
-    "الـ array العادي لازم الـ size بتاعه يبقى constant expression بيتحدد وقت الـ design، وبيتخزن في الـ stack segment (لو local). الـ dynamic array بيتحجز بـ new وقت الـ run time بأي size من variable (في الـ heap segment)، وبنوصله عن طريق pointer، ولازم يتفضّى بـ delete[].",
-    "الـ Code segment: الـ machine code بعد الـ compile. الـ Stack segment: الـ local/temporary variables. الـ Heap segment: الـ memory اللي بتتحجز dynamic (new/delete)."
+    "الـ pointer هو data type الـ variables بتاعته شايلة memory address لـ variable من type معين. الـ <code>&amp;x</code> بتدّيك الـ address بتاع x؛ والـ <code>*p</code> بتوصلك للقيمة اللي عند الـ address اللي في p. مثال:<pre>int x = 5, *ptr;\nptr = &amp;x;\n*ptr = 24;</pre>دلوقتي x بقت 24 لأن ptr بيشاور على x.",
+    "الـ function دي:<pre>fakeSwap(int a, int b)</pre>بتاخد نسخ (copies) من x وy في أماكن جديدة في الـ memory؛ فلما تبدّل a وb مش بتلمس x وy خالص. أما دي:<pre>trueSwap(int* a, int* b)</pre>فبتاخد الـ addresses بتاعة x وy، فـ <code>*a</code> و<code>*b</code> هما x وy نفسهم؛ والكود ده:<pre>tmp = *a;\n*a = *b;\n*b = tmp;</pre>بيبدّل الأصل (<bdi dir=\"ltr\">x&nbsp;=&nbsp;2,&nbsp;y&nbsp;=&nbsp;1</bdi>).",
+    "الـ array العادي لازم الـ size بتاعه يبقى constant expression بيتحدد وقت الـ design، وبيتخزن في الـ stack segment (لو local). الـ dynamic array بيتحجز بـ new وقت الـ run time بأي size من variable (في الـ heap segment)، وبنوصله عن طريق pointer، ولازم يتفضّى بـ <code>delete[]</code>.",
+    "الـ Code segment: الـ machine code بعد الـ compile. الـ Stack segment: الـ <bdi dir=\"ltr\">local/⁠temporary&nbsp;variables</bdi>. الـ Heap segment: الـ memory اللي بتتحجز dynamic (<bdi dir=\"ltr\">new/⁠delete</bdi>)."
    ],
    "quiz": [
     [
@@ -701,95 +701,95 @@ AR.ds = {
      "الـ nodes فعلًا بتتخزن في الـ heap، بس نوع الـ allocation المطلوب هو dynamic."
     ],
     [
-     "الـ 5 دي كانت قيمة x قبل آخر جملة. الـ ptr شايل &x، فالـ *ptr = 24 بتكتب 24 في x نفسه.",
-     "صح. ptr بيشاور على x، فـ *ptr = 24 بتغيّر x.",
-     "الـ address بتاع x هو اللي الـ ptr شايله (ptr = &x). إنما x نفسه شايل قيمة، والـ *ptr = 24 غيّرتها لـ 24.",
-     "الـ 29 معناها إن 24 اتجمعت على 5. لكن الـ *ptr = 24 دي assignment عن طريق الـ pointer: بتحط 24 مكان قيمة x القديمة، مفيش جمع."
+     "الـ 5 دي كانت قيمة x قبل آخر جملة. الـ ptr شايل <code>&amp;x</code>، فالـ <bdi dir=\"ltr\">*ptr&nbsp;=&nbsp;24</bdi> بتكتب 24 في x نفسه.",
+     "صح. ptr بيشاور على x، فـ <bdi dir=\"ltr\">*ptr&nbsp;=&nbsp;24</bdi> بتغيّر x.",
+     "الـ address بتاع x هو اللي الـ ptr شايله (<bdi dir=\"ltr\">ptr&nbsp;=&nbsp;&amp;x</bdi>). إنما x نفسه شايل قيمة، والـ <bdi dir=\"ltr\">*ptr&nbsp;=&nbsp;24</bdi> غيّرتها لـ 24.",
+     "الـ 29 معناها إن 24 اتجمعت على 5. لكن الـ <bdi dir=\"ltr\">*ptr&nbsp;=&nbsp;24</bdi> دي assignment عن طريق الـ pointer: بتحط 24 مكان قيمة x القديمة، مفيش جمع."
     ],
     [
-     "الـ x= 2 y= 1 ده ناتج trueSwap(&x, &y)، اللي بتبدّل عن طريق الـ pointers. إنما fakeSwap بتاخد نسخ (copies)، فـ x وy بيفضلوا 1 و2.",
+     "الـ <bdi dir=\"ltr\">x=&nbsp;2&nbsp;y=&nbsp;1</bdi> ده ناتج <bdi dir=\"ltr\">trueSwap(&amp;x,&nbsp;&amp;y)</bdi>، اللي بتبدّل عن طريق الـ pointers. إنما fakeSwap بتاخد نسخ (copies)، فـ x وy بيفضلوا 1 و2.",
      "صح. الـ pass by value بيبدّل النسخ a وb بس.",
-     "الـ fakeSwap عمرها ما بتعمل assign لـ x أو y؛ هي بتغيّر النسخ بتاعتها a وb بس. فالاتنين بيفضلوا زي ما هم: x = 1 وy = 2.",
-     "الكود بيعمل compile عادي: الـ fakeSwap(int a, int b) بتتنادى باتنين int. كل الحكاية إنها مش بتأثر على x وy."
+     "الـ fakeSwap عمرها ما بتعمل assign لـ x أو y؛ هي بتغيّر النسخ بتاعتها a وb بس. فالاتنين بيفضلوا زي ما هم: الـ <bdi dir=\"ltr\">x&nbsp;=&nbsp;1</bdi> والـ <bdi dir=\"ltr\">y&nbsp;=&nbsp;2</bdi>.",
+     "الكود بيعمل compile عادي: الـ function دي بتتنادى باتنين int:<pre>fakeSwap(int a, int b)</pre> كل الحكاية إنها مش بتأثر على x وy."
     ],
     [
-     "من غير أقواس الـ . بتتنفذ الأول: *(p.price)، وده غلط.",
+     "من غير أقواس الـ . بتتنفذ الأول، فبتبقى <code>*(p.price)</code>، وده غلط.",
      "صح. الـ arrow operator بيعمل dereference وبعدين يختار الـ member.",
-     "الـ &p.price بتحاول تجيب الـ address بتاع p.price؛ لا هي بتعمل dereference لـ p ولا بتقرا قيمة الـ member. الـ p->price هي هي (*p).price.",
-     "الـ p ده pointer، مش struct object، فمينفعش تستخدم الـ dot عليه على طول. لازم تعمل dereference الأول: (*p).price."
+     "الـ <code>&amp;p.price</code> بتحاول تجيب الـ address بتاع <code>p.price</code>؛ لا هي بتعمل dereference لـ p ولا بتقرا قيمة الـ member. الـ <code>p-&gt;price</code> هي هي <code>(*p).price</code>.",
+     "الـ p ده pointer، مش struct object، فمينفعش تستخدم الـ dot عليه على طول. لازم تعمل dereference الأول، يعني <code>(*p).price</code>."
     ],
     [
      "الـ code segment فيه الكود المترجم (الـ machine code) بتاع البرنامج، مش الداتا اللي بتتحجز بـ new.",
      "الـ stack segment فيه الـ local والـ temporary variables. إنما الميموري اللي بتطلبها بـ new بتيجي من الـ heap.",
-     "صح. أي برنامج ليه تلات segments: الـ code (الـ machine code)، والـ stack (الـ local/temporary variables)، والـ heap، وده اللي بيتستخدم في الـ dynamic memory allocation بـ new (Lab 3, Dynamic array).",
-     "الـ data register ده register جوه الـ CPU، مش واحد من التلات memory segments بتوع البرنامج (code، stack، heap)."
+     "صح. أي برنامج ليه تلات segments: الـ code (الـ machine code)، والـ stack (الـ <bdi dir=\"ltr\">local/⁠temporary&nbsp;variables</bdi>)، والـ heap، وده اللي بيتستخدم في الـ dynamic memory allocation بـ new (من الـ Lab 3، الـ Dynamic array).",
+     "الـ data register ده register جوه الـ CPU، مش واحد من التلات memory segments بتوع البرنامج (الـ code والـ stack والـ heap)."
     ],
     [
-     "الـ arrays اللي اتحجزت بـ new[] بنستخدم معاها delete[].",
-     "الـ free arr; ده مش syntax صح في C++ (الـ free دي function من C). الميموري اللي جاية من new[] لازم تتفضّى بـ delete[].",
-     "صح. البلوك اللي اتحجز بـ new int[size] بيتفضّى بـ delete[] arr;، بالظبط زي ما برنامج الـ dynamic array في Lab 3 بيعمل في الآخر (Lab 3, Dynamic array).",
+     "الـ arrays اللي اتحجزت بـ <code>new[]</code> بنستخدم معاها <code>delete[]</code>.",
+     "الـ <bdi dir=\"ltr\">free&nbsp;arr;</bdi> ده مش syntax صح في <bdi dir=\"ltr\">C++</bdi> (الـ free دي function من C). الميموري اللي جاية من <code>new[]</code> لازم تتفضّى بـ <code>delete[]</code>.",
+     "صح. البلوك اللي اتحجز بـ <bdi dir=\"ltr\">new&nbsp;int[size]</bdi> بيتفضّى بالجملة دي:<pre>delete[] arr;</pre>بالظبط زي ما برنامج الـ dynamic array في Lab 3 بيعمل في الآخر (من الـ Lab 3، الـ Dynamic array).",
      "ده بيضيّع الـ address من غير ما يفضّي الـ memory (memory leak)."
     ]
    ],
    "extra": [
     [
-     "الـ b = 14 دي على أساس إن q لسه بيشاور على b (2 · 7). لكن q = p خلّت q يشاور على a، فالمضاعفة بتغيّر a: 2 · 8 = 16.",
-     "صح. *p = 7 + 1 بتخلي a = 8؛ والـ q دلوقتي بيشاور على a؛ *q = 2 · 8 = 16. والـ b ماتغيرش (اتجرب بـ g++).",
-     "الـ a مينفعش يفضل 3: الـ *p = *q + 1 بتكتب 7 + 1 = 8 في a عن طريق p. والـ b عمره ما اتكتب فيه، فبيفضل 7.",
-     "الـ a = 8 دي القيمة بعد أول assignment بس. بعد q = p، الـ *q = 2 · (*q) بتضاعف a لـ 16."
+     "الـ <bdi dir=\"ltr\">b&nbsp;=&nbsp;14</bdi> دي على أساس إن q لسه بيشاور على b <bdi dir=\"ltr\">(2&nbsp;·&nbsp;7)</bdi>. لكن <bdi dir=\"ltr\">q&nbsp;=&nbsp;p</bdi> خلّت q يشاور على a، فالمضاعفة بتغيّر a:<span class=\"ltr\">2 · 8 = 16</span>",
+     "صح. الجملة <bdi dir=\"ltr\">*p&nbsp;=&nbsp;7&nbsp;+&nbsp;1</bdi> بتخلي <bdi dir=\"ltr\">a&nbsp;=&nbsp;8</bdi>؛ والـ q دلوقتي بيشاور على a؛ وبعدين:<span class=\"ltr\">*q = 2 · 8 = 16</span>والـ b ماتغيرش (اتجرب بـ <bdi dir=\"ltr\">g++</bdi>).",
+     "الـ a مينفعش يفضل 3: الـ <bdi dir=\"ltr\">*p&nbsp;=&nbsp;*q&nbsp;+&nbsp;1</bdi> بتكتب في a عن طريق p:<span class=\"ltr\">7 + 1 = 8</span>والـ b عمره ما اتكتب فيه، فبيفضل 7.",
+     "الـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;8</bdi> دي القيمة بعد أول assignment بس. بعد <bdi dir=\"ltr\">q&nbsp;=&nbsp;p</bdi>، الـ <bdi dir=\"ltr\">*q&nbsp;=&nbsp;2&nbsp;·&nbsp;(*q)</bdi> بتضاعف a لـ 16."
     ],
     [
-     "الـ *x بتعمل dereference لـ pointer (بتقرا القيمة اللي بيشاور عليها)؛ مش بتجيب الـ address بتاع x.",
-     "الـ x* ده مش expression صح أصلًا. الـ * بتيجي في الـ declaration قبل الاسم (int *p) أو قبل pointer عشان تعمله dereference.",
-     "صح. الـ address-of operator & بيجيب الـ memory address بتاع المتغير، يعني ptr = &x بتخزن الـ address بتاع x في ptr (L4, Pointer operations).",
-     "الـ -> بتوصل لـ member في struct عن طريق pointer (aPtr->member)؛ مش بتجيب address."
+     "الـ <code>*x</code> بتعمل dereference لـ pointer (بتقرا القيمة اللي بيشاور عليها)؛ مش بتجيب الـ address بتاع x.",
+     "الـ <code>x*</code> ده مش expression صح أصلًا. الـ * بتيجي في الـ declaration قبل الاسم (<code>int *p</code>) أو قبل pointer عشان تعمله dereference.",
+     "صح. الـ address-of operator <code>&amp;</code> بيجيب الـ memory address بتاع المتغير، يعني <bdi dir=\"ltr\">ptr&nbsp;=&nbsp;&amp;x</bdi> بتخزن الـ address بتاع x في ptr (من الـ L4، الـ Pointer operations).",
+     "الـ <code>-&gt;</code> بتوصل لـ member في struct عن طريق pointer (<code>aPtr-&gt;member</code>)؛ مش بتجيب address."
     ],
     [
      "صح. الـ pass by value بيدّي الـ function variables خاصة بيها.",
-     "الـ tmp بياخد قيمة (tmp = a) قبل ما يتستخدم، يعني مش uninitialized. الـ swap بيحصل فعلًا، بس على النسخ a وb بس.",
+     "الـ tmp بياخد قيمة (<bdi dir=\"ltr\">tmp&nbsp;=&nbsp;a</bdi>) قبل ما يتستخدم، يعني مش uninitialized. الـ swap بيحصل فعلًا، بس على النسخ a وb بس.",
      "الـ return statement مش هتفرق: الـ void function اللي مش بترجّع حاجة مش بتغيّر حاجة، والـ a والـ b نسخ منفصلة عن x وy.",
-     "الـ x وy متغيرات int عادية (int x = 1, y = 2)، مش constants. هم ما اتغيروش عشان اللي اتبعت نسخ بس."
+     "الـ x وy متغيرات int عادية (<bdi dir=\"ltr\">int&nbsp;x&nbsp;=&nbsp;1,&nbsp;y&nbsp;=&nbsp;2</bdi>)، مش constants. هم ما اتغيروش عشان اللي اتبعت نسخ بس."
     ],
     [
-     "الـ trueSwap بتاخد parameters من نوع int*، فمحتاجة الـ addresses &x و&y؛ لو بعت x وy كده انت بتبعت القيم بتاعتهم.",
-     "الـ x وy دول ints، مش pointers، فمينفعش تعملهم dereference بـ *x و*y. الـ function محتاجة &x و&y.",
-     "الاتنين parameters من نوع int*، فالاتنين arguments لازم يبقوا addresses؛ هنا الـ y اتبعت by value.",
-     "صح. الـ trueSwap(int* a, int* b) بتاخد addresses، فبنناديها بـ &x و&y؛ وساعتها الـ *a والـ *b بيوصلوا لـ x وy نفسهم والـ swap بيحصل بجد (L4, Solution 2)."
+     "الـ trueSwap بتاخد parameters من نوع <code>int*</code>، فمحتاجة الـ addresses <code>&amp;x</code> و<code>&amp;y</code>؛ لو بعت x وy كده انت بتبعت القيم بتاعتهم.",
+     "الـ x وy دول ints، مش pointers، فمينفعش تعملهم dereference بـ <code>*x</code> و<code>*y</code>. الـ function محتاجة <code>&amp;x</code> و<code>&amp;y</code>.",
+     "الاتنين parameters من نوع <code>int*</code>، فالاتنين arguments لازم يبقوا addresses؛ هنا الـ y اتبعت by value.",
+     "صح. الـ function دي:<pre>trueSwap(int* a, int* b)</pre>بتاخد addresses، فبنناديها بـ <code>&amp;x</code> و<code>&amp;y</code>؛ وساعتها الـ <code>*a</code> والـ <code>*b</code> بيوصلوا لـ x وy نفسهم والـ swap بيحصل بجد (من الـ L4، الـ Solution 2)."
     ],
     [
-     "القيمة 5 بتتطبع بـ cout &lt;&lt; *ptr (القيمة اللي بيشاور عليها) أو cout &lt;&lt; x. إنما الـ ptr نفسه شايل address.",
-     "صح. الـ ptr = &x بتخزن الـ address بتاع x في ptr، فلما تطبع ptr بيظهر الـ address ده (001DFAD8 في الـ lab)، مش القيمة (Lab 3, Program #1).",
-     "الـ address بتاع ptr نفسه بيتطبع بـ cout &lt;&lt; &ptr (001DFACC في الـ lab)؛ إنما الـ ptr شايل الـ address بتاع x.",
-     "الـ 24 بتتحط بعدين عن طريق *ptr = 24، وهي قيمة لـ x، مش اللي الـ ptr شايله."
+     "القيمة 5 بتتطبع بـ <bdi dir=\"ltr\">cout&nbsp;&lt;&lt;&nbsp;*ptr</bdi> (القيمة اللي بيشاور عليها) أو <bdi dir=\"ltr\">cout&nbsp;&lt;&lt;&nbsp;x</bdi>. إنما الـ ptr نفسه شايل address.",
+     "صح. الـ <bdi dir=\"ltr\">ptr&nbsp;=&nbsp;&amp;x</bdi> بتخزن الـ address بتاع x في ptr، فلما تطبع ptr بيظهر الـ address ده (001DFAD8 في الـ lab)، مش القيمة (من الـ Lab 3، الـ Program #1).",
+     "الـ address بتاع ptr نفسه بيتطبع بـ <bdi dir=\"ltr\">cout&nbsp;&lt;&lt;&nbsp;&amp;ptr</bdi> (الـ 001DFACC في الـ lab)؛ إنما الـ ptr شايل الـ address بتاع x.",
+     "الـ 24 بتتحط بعدين عن طريق <bdi dir=\"ltr\">*ptr&nbsp;=&nbsp;24</bdi>، وهي قيمة لـ x، مش اللي الـ ptr شايله."
     ],
     [
-     "الاتنين بيتعملهم index بنفس الطريقة، arr[i]؛ الفرق في الـ lab هو إمتى الحجم بيتحدد، مش سرعة الـ indexing.",
+     "الاتنين بيتعملهم index بنفس الطريقة، <code>arr[i]</code>؛ الفرق في الـ lab هو إمتى الحجم بيتحدد، مش سرعة الـ indexing.",
      "الاتنين بيخزنوا ints. الفرق إن new بتسمحلك تختار الحجم وقت الـ run time.",
      "صح. الـ array العادية حجمها لازم يكون constant expression متحدد وقت تصميم البرنامج، إنما new بتحجز الميموري وقت الـ run time وتقدر تستخدم أي قيمة متغير كحجم (Lab 3, Dynamic array).",
-     "الميموري اللي جاية من new[] ينفع، ولازم كمان، تتفضّى بـ delete[] arr; زي ما برنامج الـ lab بيعمل."
+     "الميموري اللي جاية من <code>new[]</code> ينفع، ولازم كمان، تتفضّى بـ <bdi dir=\"ltr\">delete[]&nbsp;arr;</bdi> زي ما برنامج الـ lab بيعمل."
     ],
     [
-     "صح. الـ lab بيقول فيه تلات segments: الـ code (الـ machine code)، والـ stack (الـ local/temporary variables)، والـ heap (الـ dynamic allocation) (Lab 3, Dynamic array).",
+     "صح. الـ lab بيقول فيه تلات segments: الـ code (الـ machine code)، والـ stack (الـ <bdi dir=\"ltr\">local/⁠temporary&nbsp;variables</bdi>)، والـ heap (الـ dynamic allocation) (من الـ Lab 3، الـ Dynamic array).",
      "الـ heap segment بيتستخدم للـ dynamic memory allocation بـ new، مش للـ local variables.",
-     "الـ code segment فيه الـ object/machine code المترجم، مش المتغيرات.",
+     "الـ code segment فيه الـ <bdi dir=\"ltr\">object/⁠machine&nbsp;code</bdi> المترجم، مش المتغيرات.",
      "مفيش حاجة اسمها register segment؛ التلات segments في الـ lab هم code وstack وheap، والـ locals بتروح على الـ stack."
     ],
     [
-     "الـ ptr ده pointer، مش object، فـ ptr.w غلط. لازم تعمل dereference: ptr->w أو (*ptr).w.",
-     "الـ dot أولويتها أعلى من الـ *، فدي بتتفهم كـ *(ptr.w)، وده غلط. لازم أقواس: (*ptr).w = 5.",
-     "الـ &ptr->w ده الـ address بتاع w، والـ address مينفعش تعمله assign. عشان تحط قيمة في الـ member بتكتب ptr->w = 5.",
-     "صح. لو ptr بيشاور على structure، فالـ ptr->w هي هي (*ptr).w، يعني ptr->w = 5 بتخلي item.w بـ 5 (L4, Pointer operations)."
+     "الـ ptr ده pointer، مش object، فـ <code>ptr.w</code> غلط. لازم تعمل dereference، يعني <code>ptr-&gt;w</code> أو <code>(*ptr).w</code>.",
+     "الـ dot أولويتها أعلى من الـ *، فدي بتتفهم كـ <code>*(ptr.w)</code>، وده غلط. لازم أقواس:<pre>(*ptr).w = 5;</pre>",
+     "الـ <code>&amp;ptr-&gt;w</code> ده الـ address بتاع w، والـ address مينفعش تعمله assign. عشان تحط قيمة في الـ member بتكتب <bdi dir=\"ltr\">ptr-⁠&gt;w&nbsp;=&nbsp;5</bdi>.",
+     "صح. لو ptr بيشاور على structure، فالـ <code>ptr-&gt;w</code> هي هي <code>(*ptr).w</code>، يعني <bdi dir=\"ltr\">ptr-⁠&gt;w&nbsp;=&nbsp;5</bdi> بتخلي <code>item.w</code> بـ 5 (من الـ L4، الـ Pointer operations)."
     ],
     [
-     "صح. الـ lab بيعرّف الـ pointer variable إنه variable المحتوى بتاعه address (memory address)؛ وبيشاور على data type معين (Lab 3, Pointers; L4).",
-     "الـ pointer شايل memory address، مش قيمة int؛ الـ int *p معناها بس إنه بيشاور على int.",
+     "صح. الـ lab بيعرّف الـ pointer variable إنه variable المحتوى بتاعه address (memory address)؛ وبيشاور على data type معين (من الـ Lab 3 Pointers، والـ L4).",
+     "الـ pointer شايل memory address، مش قيمة int؛ الـ <code>int *p</code> معناها بس إنه بيشاور على int.",
      "الـ pointer ده variable (من نوع pointer data type)، مش function. والمحتوى بتاعه address.",
      "الـ pointer الواحد بيشيل address واحد. الـ array of addresses دي تبقى array of pointers."
     ],
     [
-     "الـ 1 دي قيمة x، اللي الـ trueSwap بتوصلها كـ *a. إنما الـ parameter a نفسه شايل الـ address بتاع x.",
+     "الـ 1 دي قيمة x، اللي الـ trueSwap بتوصلها كـ <code>*a</code>. إنما الـ parameter a نفسه شايل الـ address بتاع x.",
      "الـ 0x2038 ده المكان اللي المتغير a نفسه متخزن فيه، مش المحتوى بتاعه. الـ a شايل الـ address بتاع x.",
-     "صح. النداء trueSwap(&x, &y) بينسخ الـ address بتاع x في a، فالـ a شايل 0x2000 (\"addr of x\" في الـ slide) والـ *a هو x نفسه (L4, Solution 2).",
+     "صح. النداء <bdi dir=\"ltr\">trueSwap(&amp;x,&nbsp;&amp;y)</bdi> بينسخ الـ address بتاع x في a، فالـ a شايل 0x2000 (\"addr of x\" في الـ slide) والـ <code>*a</code> هو x نفسه (من الـ L4، الـ Solution 2).",
      "الـ 0x2010 ده الـ address بتاع y، واللي بيتبعت كـ argument تاني وشايله b."
     ]
    ]
@@ -799,7 +799,7 @@ AR.ds = {
     {
      "h": "يعني إيه linked list؟",
      "pts": [
-      "data structure من نوع <b>linear</b> بيخزن مجموعة عناصر بشكل <b>dynamic</b>. هو سلسلة <b>nodes</b> متوصلة ببعض؛ كل node بتخزن الـ <b>data</b> والـ <b>address بتاع الـ node اللي بعدها</b>.",
+      "الـ data structure من نوع <b>linear</b> بيخزن مجموعة عناصر بشكل <b>dynamic</b>. هو سلسلة <b>nodes</b> متوصلة ببعض؛ كل node بتخزن الـ <b>data</b> والـ <b>address بتاع الـ node اللي بعدها</b>.",
       "كل node فيها field-ين: الـ <b>data</b> والـ <b>pointer (next)</b> اللي بيشاور على الـ node اللي بعدها. <b>آخر node فيها NULL</b> في الـ field التاني لأنها مش بتشاور على أي node.",
       "بنوصل للـ list عن طريق الـ <b>head</b>، اللي بيشاور على أول node؛ وآخر node (اللي بتشاور على NULL) اسمها الـ <b>tail</b>. الـ linked list تقدر <b>تكبر وتصغر</b> حسب الحاجة.",
       "العناصر <b>متفرقة عشوائي في الـ memory</b> (مش ورا بعض contiguous). وسهل تضيف أو تمسح عنصر: بس غيّر الـ links."
@@ -813,7 +813,7 @@ AR.ds = {
      "pts": [
       "<b>المميزات</b>: (1) <b>Dynamic size</b>: بتكبر/تصغر لأن الـ memory بتتحجز وقت الـ run time. (2) الـ <b>Insertion والـ deletion</b> efficient، خصوصًا في الـ lists الكبيرة. (3) <b>Flexibility</b>: سهل تعيد ترتيبها من غير ما تحتاج block متصل من الـ memory.",
       "<b>العيوب</b>: (1) <b>Linear access</b>: مفيش access مباشر بالـ index؛ لازم تعمل traversal عشان توصل لـ node. (2) <b>memory زيادة</b> عشان تخزن الـ pointers.",
-      "الـ Operations: <b>insertion</b> (في الأول، في الآخر، في أي مكان)، <b>deletion</b> (من الأول، من الآخر، من أي مكان)، <b>searching</b> (تمشي من الـ head لحد ما تلاقيه أو توصل للآخر)."
+      "الـ Operations: الـ <b>insertion</b> (في الأول، في الآخر، في أي مكان)، والـ <b>deletion</b> (من الأول، من الآخر، من أي مكان)، والـ <b>searching</b> (تمشي من الـ head لحد ما تلاقيه أو توصل للآخر)."
      ]
     },
     {
@@ -825,13 +825,13 @@ AR.ds = {
     {
      "h": "الإضافة بالترتيب (sorted list)",
      "pts": [
-      "الخطوات: (1) حدد الـ node اللي <b>قبل</b> مكان الإضافة (current بيشاور عليها)؛ (2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة (<code>newnode-&gt;next = current-&gt;next</code>)؛ (3) خلي current تشاور على الـ new node (<code>current-&gt;next = newnode</code>). خلي بالك ترتيب خطوة 2 و3 مهم: لو عملت 3 الأول هتضيّع باقي الـ list.",
-      "الـ loop بتاع <code>insertsorted</code> في الـ slide هو <code>while ((temp1-&gt;data &gt; item &amp;&amp; temp1-&gt;next-&gt;data &gt; item) || (temp1-&gt;data &lt; item &amp;&amp; temp1-&gt;next-&gt;data &lt; item) &amp;&amp; temp1!=NULL)</code>. اتجرب بـ g++: بيشتغل مع قيمة <b>بين</b> اتنين nodes (10,20,30 + 25 ← 10 20 25 30) بس <b>بيعمل crash</b> مع قيمة أصغر من الـ head أو أكبر من آخر node (الـ temp1-&gt;next بيبقى NULL).",
+      "الخطوات: (1) حدد الـ node اللي <b>قبل</b> مكان الإضافة (current بيشاور عليها)؛ و(2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة:<pre>newnode-&gt;next = current-&gt;next;</pre>و(3) خلي current تشاور على الـ new node:<pre>current-&gt;next = newnode;</pre>خلي بالك ترتيب خطوة 2 و3 مهم: لو عملت 3 الأول هتضيّع باقي الـ list.",
+      "الـ loop بتاع <code>insertsorted</code> في الـ slide هو:<pre>while ((temp1-&gt;data &gt; item &amp;&amp;\n        temp1-&gt;next-&gt;data &gt; item)\n    || (temp1-&gt;data &lt; item &amp;&amp;\n        temp1-&gt;next-&gt;data &lt; item)\n    &amp;&amp; temp1!=NULL)</pre>اتجرب بـ <bdi dir=\"ltr\">g++</bdi>: بيشتغل مع قيمة <b>بين</b> اتنين nodes، مثلًا:<span class=\"ltr\">10,20,30 + 25 → 10 20 25 30</span>بس <b>بيعمل crash</b> مع قيمة أصغر من الـ head أو أكبر من آخر node (الـ <code>temp1-&gt;next</code> بيبقى NULL).",
       "في الامتحان اكتب النسخة الآمنة اللي تحت: بتتعامل مع الـ list الفاضية، ومع قيمة جديدة أصغر من الكل، ومع قيمة جديدة أكبر من الكل."
      ]
     },
     {
-     "h": "الـ insertsorted الآمنة (اتجربت بـ g++)"
+     "h": "الـ insertsorted الآمنة (اتجربت بـ <bdi dir=\"ltr\">g++</bdi>)"
     },
     {
      "h": "مسح أول node، وآخر node، وعنصر معين (كود الدكتورة)"
@@ -840,34 +840,34 @@ AR.ds = {
      "h": "الـ search والـ count والـ get والـ update (كود الدكتورة)"
     },
     {
-     "h": "Lab 5: list مبنية على struct والإضافة في position معين"
+     "h": "الـ Lab 5: الـ list مبنية على struct والإضافة في position معين"
     }
    ],
    "cards": [
-    "structure من نوع linear مكوّن من nodes متخزنة dynamic؛ كل node شايلة data والـ address بتاع الـ node اللي بعدها.",
+    "الـ structure من نوع linear مكوّن من nodes متخزنة dynamic؛ كل node شايلة data والـ address بتاع الـ node اللي بعدها.",
     "الـ data والـ next (pointer للـ node اللي بعدها).",
-    "NULL، لأنها مش بتشاور على أي node.",
-    "pointer بيشاور على أول node في الـ list.",
+    "بيبقى NULL، لأنها مش بتشاور على أي node.",
+    "الـ pointer اللي بيشاور على أول node في الـ list.",
     "لقدام بس (forward).",
     "الـ nodes فيها next وprev؛ تمشي في الاتجاهين؛ وفيه memory زيادة للـ prev.",
     "آخر node بتشاور تاني على الـ head node.",
-    "Dynamic size، insertion/deletion efficient، flexibility (مش محتاجة memory متصلة).",
-    "Linear access (مفيش index) وmemory زيادة للـ pointers.",
-    "newnode->next = head; head = newnode;",
-    "روح لآخر node؛ last->next = newnode؛ newnode->next = NULL.",
-    "temp = head; head = head->next; delete temp;",
-    "previous->next = current->next; delete current;",
+    "الـ Dynamic size، والـ insertion والـ deletion efficient، والـ flexibility (مش محتاجة memory متصلة).",
+    "الـ Linear access (مفيش index) وmemory زيادة للـ pointers.",
+    "الخطوتين:<pre>newnode-&gt;next = head;\nhead = newnode;</pre>",
+    "روح لآخر node، وبعدين:<pre>last-&gt;next = newnode;\nnewnode-&gt;next = NULL;</pre>",
+    "الكود:<pre>temp = head;\nhead = head-&gt;next;\ndelete temp;</pre>",
+    "الكود:<pre>previous-&gt;next = current-&gt;next;\ndelete current;</pre>",
     "بترجع true بس لو الـ new فشلت تحجز memory (رجعت NULL).",
     "امشي من الـ head لحد NULL وزوّد counter.",
-    "الأول newnode->next = current->next، وبعدين current->next = newnode."
+    "الأول:<pre>newnode-&gt;next = current-&gt;next;</pre>وبعدين:<pre>current-&gt;next = newnode;</pre>"
    ],
    "qa": [
     "الـ linked list هو data structure من نوع linear بيخزن مجموعة data elements بشكل dynamic كسلسلة nodes متوصلة ببعض. كل node فيها data field (القيمة) وnext pointer بيخزن الـ address بتاع الـ node اللي بعدها. الـ head بيشاور على أول node؛ وآخر node (الـ tail) فيها NULL في الـ next. وتقدر تكبر وتصغر حسب الحاجة.",
     "الـ Singly linked list: كل node بتشاور على اللي بعدها؛ تمشي لقدام بس. الـ Doubly linked list: كل node بتشاور على next وprevious؛ تمشي في الاتجاهين بس بـ memory زيادة. الـ Circular linked list: آخر node بتشاور تاني على الـ head؛ وممكن تبقى singly أو doubly.",
-    "المميزات: dynamic size (الحجز وقت الـ run time)، insertion وdeletion efficient، وflexibility من غير ما تحتاج memory متصلة. العيوب: linear access (لازم تعمل traverse، مفيش index) وmemory زيادة للـ pointers.",
-    "1) حدد الـ node اللي قبل مكان الإضافة (current). 2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة: newnode->next = current->next. 3) خلي current تشاور على الـ new node: current->next = newnode. حالات خاصة: الـ list فاضية أو القيمة أصغر من الـ head، وساعتها الـ new node بتبقى هي الـ head.",
-    "امشي في الـ list لحد ما current يشاور على الـ node اللي عايز تمسحها وprevious يشاور على اللي قبلها؛ هات الـ node اللي بعد current (current->next)؛ خلي previous يشاور عليها (previous->next = current->next)؛ وبعدين اعمل delete لـ current.",
-    "class Node{ public: int data; Node *next; Node(){ data=0; next=NULL; } };<br>class Linkedlist{ public: Node *head; Linkedlist(){ head=NULL; } bool isEmpty(){ return head==NULL; }<br>void insertatend(int item){ Node *newnode=new Node(); newnode->data=item; newnode->next=NULL; if(isEmpty()){ head=newnode; return; } Node *temp1=head; while(temp1->next!=NULL) temp1=temp1->next; temp1->next=newnode; } };<br>main: Linkedlist list; list.insertatend(7); list.insertatend(5);<br>الفكرة: الـ insertatend لو الـ list فاضية بتخلي الـ head هو الـ node الجديدة، غير كده بتمشي لآخر node وتوصّل الجديدة بعدها، فيطلع head ← 7 ← 5 ← NULL."
+    "المميزات: الـ dynamic size (الحجز وقت الـ run time)، والـ insertion والـ deletion efficient، والـ flexibility من غير ما تحتاج memory متصلة. العيوب: الـ linear access (لازم تعمل traverse، مفيش index) وmemory زيادة للـ pointers.",
+    "أولاً (1) حدد الـ node اللي قبل مكان الإضافة (current). ثانيًا (2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة:<pre>newnode-&gt;next = current-&gt;next;</pre>ثالثًا (3) خلي current تشاور على الـ new node:<pre>current-&gt;next = newnode;</pre>حالات خاصة: الـ list فاضية أو القيمة أصغر من الـ head، وساعتها الـ new node بتبقى هي الـ head.",
+    "امشي في الـ list لحد ما current يشاور على الـ node اللي عايز تمسحها وprevious يشاور على اللي قبلها؛ هات الـ node اللي بعد current (<code>current-&gt;next</code>)؛ خلي previous يشاور عليها:<pre>previous-&gt;next = current-&gt;next;</pre>وبعدين اعمل delete لـ current.",
+    "الكود:<pre>class Node{\npublic:\n  int data;\n  Node *next;\n  Node(){ data=0; next=NULL; }\n};\nclass Linkedlist{\npublic:\n  Node *head;\n  Linkedlist(){ head=NULL; }\n  bool isEmpty(){\n    return head==NULL;\n  }\n  void insertatend(int item){\n    Node *newnode=new Node();\n    newnode-&gt;data=item;\n    newnode-&gt;next=NULL;\n    if(isEmpty()){\n      head=newnode; return;\n    }\n    Node *temp1=head;\n    while(temp1-&gt;next!=NULL)\n      temp1=temp1-&gt;next;\n    temp1-&gt;next=newnode;\n  }\n};</pre>وفي الـ main:<pre>Linkedlist list;\nlist.insertatend(7);\nlist.insertatend(5);</pre>الفكرة: الـ insertatend لو الـ list فاضية بتخلي الـ head هو الـ node الجديدة، غير كده بتمشي لآخر node وتوصّل الجديدة بعدها، فيطلع:<span class=\"ltr\">head → 7 → 5 → NULL</span>"
    ],
    "quiz": [
     [
@@ -883,69 +883,69 @@ AR.ds = {
      "ده تعريف الـ circular linked list بالظبط."
     ],
     [
-     "غلط، الكود ده مش valid: الـ next لازم يبقى pointer (<code>Node *next;</code>)، والـ members بيتفصلوا بـ ; مش بـ comma، والـ class محتاجة ; في الآخر (وكمان public:).",
-     "صح. الـ next لازم يبقى pointer (Node *next;)، والـ members لازم يتفصلوا بـ ;، والـ class محتاج ; في الآخر (ومحتاج public: عشان تستخدمه من برة)."
+     "غلط، الكود ده مش valid: الـ next لازم يبقى pointer (<bdi dir=\"ltr\">Node&nbsp;*next;</bdi>)، والـ members بيتفصلوا بـ <code>;</code> مش بـ comma، والـ class محتاجة <code>;</code> في الآخر (وكمان <code>public:</code>).",
+     "صح. الـ next لازم يبقى pointer (<bdi dir=\"ltr\">Node&nbsp;*next;</bdi>)، والـ members لازم يتفصلوا بـ <code>;</code>، والـ class محتاج <code>;</code> في الآخر (ومحتاج <code>public:</code> عشان تستخدمه من برة)."
     ],
     [
      "الـ fixed size ده عيب الـ array. الـ linked list بتكبر وتصغر وقت الـ run time.",
      "صح (الإجابة النموذجية الرسمية B). المحاضرة بتقول عيبين: الـ linear access (مفيش وصول مباشر بالـ index، لازم تعمل traversal) والـ extra memory اللي بتروح على تخزين الـ pointers (L5, Advantages and disadvantages).",
-     "الإضافة في الأول سريعة: <code>newnode->next = head; head = newnode;</code> من غير traversal ولا shifting.",
+     "الإضافة في الأول سريعة:<pre>newnode-&gt;next = head;\nhead = newnode;</pre>من غير traversal ولا shifting.",
      "الـ linked list بتكبر وتصغر على حسب الحاجة، لأن الـ nodes بتتعمل allocate وقت الـ run time بـ new. الـ dynamic size هي أول ميزة ليها أصلًا."
     ],
     [
-     "ترتيب غلط: الـ newnode->next هيشاور على نفسه والـ list هتضيع.",
+     "ترتيب غلط: الـ <code>newnode-&gt;next</code> هيشاور على نفسه والـ list هتضيع.",
      "صح. اربط بأول node القديمة، وبعدين حرّك الـ head.",
-     "لو عملت <code>newnode->next = NULL</code> كده إنت قطعت الـ node الجديدة عن الـ nodes القديمة، فبعد <code>head = newnode</code> باقي الـ list بيضيع. ده يمشي بس لو الـ list فاضية.",
+     "لو عملت:<pre>newnode-&gt;next = NULL;</pre>كده إنت قطعت الـ node الجديدة عن الـ nodes القديمة، فبعد <bdi dir=\"ltr\">head&nbsp;=&nbsp;newnode</bdi> باقي الـ list بيضيع. ده يمشي بس لو الـ list فاضية.",
      "ده بيحط الـ new node تانية ويضيّع الـ node اللي كانت تانية."
     ],
     [
      "صح. 10 ← 10,30 ← 5,10,30 ← إضافة 20 في position 2 ← 5,20,10,30.",
      "الـ InsertAt مش بترتب؛ بتضيف في position 2.",
-     "الـ InsertB(5) بتضيف في الأول، فالـ 5 بتبقى أول node مش آخر واحدة. وبعدين InsertAt(20, 2) بتحط 20 تاني واحدة: 5 20 10 30.",
-     "إن 20 تبقى الأولى ده يبقى InsertAt(20, 1). مع pos = 2 الـ loop بيقف عند node 1 (اللي هي 5) ويربط 20 بعدها: 5 20 10 30."
+     "الـ <code>InsertB(5)</code> بتضيف في الأول، فالـ 5 بتبقى أول node مش آخر واحدة. وبعدين <bdi dir=\"ltr\">InsertAt(20,&nbsp;2)</bdi> بتحط 20 تاني واحدة:<span class=\"ltr\">5 20 10 30</span>",
+     "إن 20 تبقى الأولى ده يبقى <bdi dir=\"ltr\">InsertAt(20,&nbsp;1)</bdi>. مع <bdi dir=\"ltr\">pos&nbsp;=&nbsp;2</bdi> الـ loop بيقف عند node 1 (اللي هي 5) ويربط 20 بعدها:<span class=\"ltr\">5 20 10 30</span>"
     ],
     [
-     "الـ 2 دي الـ data بتاعة آخر node، مش عدد الـ nodes. الـ count() بتزوّد c مرة لكل node: يعني 3.",
-     "صح. الـ count() بتبدأ temp من الـ head وتعمل c++ لكل node لحد ما temp يبقى NULL: الـ 4 والـ 9 والـ 2 يدّوا c = 3 (L5, Find the size of the list).",
-     "الـ 4 كده إنت عدّيت الـ NULL كأنه node. الـ loop بيقف لما temp == NULL، فبيتعدّ بس التلات nodes الحقيقيين.",
-     "الـ 15 = 4 + 9 + 2 ده مجموع الـ data. الـ count() بتزوّد 1 لكل node، مش قيمة الـ node."
+     "الـ 2 دي الـ data بتاعة آخر node، مش عدد الـ nodes. الـ <code>count()</code> بتزوّد c مرة لكل node: يعني 3.",
+     "صح. الـ <code>count()</code> بتبدأ temp من الـ head وتعمل <code>c++</code> لكل node لحد ما temp يبقى NULL: الـ 4 والـ 9 والـ 2 يدّوا <bdi dir=\"ltr\">c&nbsp;=&nbsp;3</bdi> (من الـ L5، الـ Find the size of the list).",
+     "الـ 4 كده إنت عدّيت الـ NULL كأنه node. الـ loop بيقف لما <bdi dir=\"ltr\">temp&nbsp;==&nbsp;NULL</bdi>، فبيتعدّ بس التلات nodes الحقيقيين.",
+     "الـ 15 ده مجموع الـ data:<span class=\"ltr\">15 = 4 + 9 + 2</span>الـ <code>count()</code> بتزوّد 1 لكل node، مش قيمة الـ node."
     ],
     [
      "الإضافة في الأول رخيصة في الـ linked list (تغيير اتنين pointers بس)، إنما الـ array كانت هتضطر تزق كل العناصر.",
      "صح. الـ Linked lists فيها linear access؛ لازم تعمل traverse.",
-     "مسح أول node رخيص: <code>head = head->next; delete temp</code>. الـ array كانت هتضطر تزق كل العناصر الباقية شمال.",
+     "مسح أول node رخيص:<pre>head = head-&gt;next;\ndelete temp;</pre>الـ array كانت هتضطر تزق كل العناصر الباقية شمال.",
      "الكِبر ده نقطة قوة الـ linked list: الـ memory بتتعمل allocate وقت الـ run time، إنما حجم الـ array بيتحدد ثابت وقت الـ declaration."
     ]
    ],
    "extra": [
     [
      "الـ 9 اتضاف في الآخر والـ 7 اتمسح من الأول.",
-     "صح. 3 ← insertatbeginning(7) تدّي 7, 3 ← insertatend(9) تدّي 7, 3, 9 ← deletefrombeginning بتشيل الـ head (7)، فيفضل 3, 9 (L5, Insertion and deletion).",
+     "صح. الـ list بتمشي كده:<span class=\"ltr\">3<br>insertatbeginning(7) → 7, 3<br>insertatend(9) → 7, 3, 9</span>والـ deletefrombeginning بتشيل الـ head (7)، فيفضل <bdi dir=\"ltr\">3,&nbsp;9</bdi> (من الـ L5، الـ Insertion and deletion).",
      "الـ 7 3 9 دي الـ list قبل آخر call. الـ deletefrombeginning بتنقل الـ head للـ node التانية وتمسح الـ 7.",
-     "الـ insertatbeginning(7) بتحط 7 قبل 3 (<code>newnode->next = head</code>)، فالـ 7 كانت أول node، وهي اللي اتمسحت."
+     "الـ <bdi dir=\"ltr\">insertatbeginning(7)</bdi> بتحط 7 قبل 3 (<bdi dir=\"ltr\">newnode-⁠&gt;next&nbsp;=&nbsp;head</bdi>)، فالـ 7 كانت أول node، وهي اللي اتمسحت."
     ],
     [
-     "temp1 = head بيبقى NULL، فـ temp1->next بتعمل crash.",
+     "الـ <bdi dir=\"ltr\">temp1&nbsp;=&nbsp;head</bdi> بيبقى NULL، فـ <code>temp1-&gt;next</code> بتعمل crash.",
      "الـ insertatend دي void function، مش بترجع حاجة خالص. على list فاضية بتعمل dereference لـ head بـ NULL والبرنامج بيعمل crash.",
-     "صح. ضيف check بـ isEmpty() يخلي head = newnode.",
-     "الـ insertatend مفيهاش branch للـ isEmpty (عكس الـ insertatbeginning)، فعمرها ما بترجع تضيف في الأول؛ هي بتقرا NULL->next."
+     "صح. ضيف check بـ <code>isEmpty()</code> يخلي <bdi dir=\"ltr\">head&nbsp;=&nbsp;newnode</bdi>.",
+     "الـ insertatend مفيهاش branch للـ isEmpty (عكس الـ insertatbeginning)، فعمرها ما بترجع تضيف في الأول؛ هي بتقرا <code>NULL-&gt;next</code>."
     ],
     [
-     "الـ newnode->next هيشاور على نفسه وباقي الـ list هيضيع.",
-     "الـ <code>newnode->next = current</code> بتخلي الـ node الجديدة تشاور ورا على current، فبيتعمل loop، والـ nodes اللي بعد current بتضيع.",
+     "الـ <code>newnode-&gt;next</code> هيشاور على نفسه وباقي الـ list هيضيع.",
+     "الجملة دي:<pre>newnode-&gt;next = current;</pre>بتخلي الـ node الجديدة تشاور ورا على current، فبيتعمل loop، والـ nodes اللي بعد current بتضيع.",
      "صح. اربط الـ new node بالـ node اللي بعدها الأول.",
      "ده بينقل الـ head للـ node الجديدة فبتبقى أول node؛ مش إضافة بعد current، والـ nodes اللي قبل current بتضيع."
     ],
     [
-     "صح. الـ linked list مالهاش حجم ثابت، فالـ isFull() بتجرب <code>new Node()</code>؛ لو الـ new رجّعت NULL يبقى مفيش memory فاضلة والـ list تعتبر \"full\" (L5, The linked-list class).",
-     "عدّ الـ nodes ده شغل الـ count() اللي بتلف على الـ list؛ الـ isFull() بتجرب تعمل allocate للـ memory بس.",
-     "الـ node بتاعة التجربة عمرها ما بتتربط في الـ list؛ الـ isFull() بتشيك بس هل الـ new رجّعت NULL ولا لأ.",
-     "الـ linked list مالهاش حجم ثابت؛ بتكبر طول ما فيه memory. وعشان كده الـ isFull() بتختبر هل الـ new لسه تقدر تعمل allocate."
+     "صح. الـ linked list مالهاش حجم ثابت، فالـ <code>isFull()</code> بتجرب <bdi dir=\"ltr\">new&nbsp;Node()</bdi>؛ لو الـ new رجّعت NULL يبقى مفيش memory فاضلة والـ list تعتبر \"full\" (من الـ L5، الـ The linked-list class).",
+     "عدّ الـ nodes ده شغل الـ <code>count()</code> اللي بتلف على الـ list؛ الـ <code>isFull()</code> بتجرب تعمل allocate للـ memory بس.",
+     "الـ node بتاعة التجربة عمرها ما بتتربط في الـ list؛ الـ <code>isFull()</code> بتشيك بس هل الـ new رجّعت NULL ولا لأ.",
+     "الـ linked list مالهاش حجم ثابت؛ بتكبر طول ما فيه memory. وعشان كده الـ <code>isFull()</code> بتختبر هل الـ new لسه تقدر تعمل allocate."
     ],
     [
      "دول مش الـ head والـ tail: الاتنين بيبدأوا من الأول ويمشوا على الـ list وهما بيدوروا على القيمة.",
      "صح. الـ temp2 ماشي ورا الـ temp1 بـ node واحدة عشان نقدر نعيد الربط.",
-     "الـ deleteitem بتحرّك pointers على nodes، مش قيم. تغيير قيمة قديمة بقيمة جديدة ده شغل <code>update(old_item, new_item)</code>.",
+     "الـ deleteitem بتحرّك pointers على nodes، مش قيم. تغيير قيمة قديمة بقيمة جديدة ده شغل:<pre>update(old_item, new_item)</pre>",
      "الاتنين pointers بيلفوا على نفس الـ list؛ الـ temp2 بس ماشي ورا الـ temp1 بـ node واحدة عشان <code>temp2->next</code> يقدر ينط فوق الـ node اللي هتتمسح."
     ],
     [
@@ -962,21 +962,21 @@ AR.ds = {
     ],
     [
      "الـ temp2 بيقف عند الـ node اللي قبل الأخيرة. وده يبقى الـ head بس لو الـ list فيها اتنين nodes بالظبط.",
-     "الـ temp1 هو اللي بيقف عند آخر node (<code>temp1->next == NULL</code>)؛ الـ temp2 ماشي وراه بـ node واحدة.",
-     "الـ temp2 بيفضل NULL بس في list فيها node واحدة (ووقتها <code>temp2->next = NULL</code> هتعمل crash). غير كده بيبقى الـ node اللي قبل الأخيرة.",
-     "صح. وبعدين temp2->next = NULL بيخليها آخر node الجديدة."
+     "الـ temp1 هو اللي بيقف عند آخر node (<bdi dir=\"ltr\">temp1-⁠&gt;next&nbsp;==&nbsp;NULL</bdi>)؛ الـ temp2 ماشي وراه بـ node واحدة.",
+     "الـ temp2 بيفضل NULL بس في list فيها node واحدة (ووقتها <bdi dir=\"ltr\">temp2-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> هتعمل crash). غير كده بيبقى الـ node اللي قبل الأخيرة.",
+     "صح. وبعدين <bdi dir=\"ltr\">temp2-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> بيخليها آخر node الجديدة."
     ],
     [
      "صح. الـ p بيتحرك لـ position 2 (node الـ 10)، وبعدين الـ 20 بيتربط بعدها.",
-     "الـ 5 → 20 → 10 → 30 دي نتيجة InsertAt(20, 2). مع pos = 3 الـ p بيتحرك لـ node 2 (اللي هي 10) والـ 20 بتتحط بعدها.",
-     "إن 20 تبقى في الأول ده حالة pos == 1 (<code>temp->next = head; head = temp</code>). هنا pos = 3.",
-     "إن 20 تيجي بعد 30 ده position 4. مع pos = 3 الـ loop بيقف عند تاني node (10) والـ 20 بتتربط بعدها."
+     "الـ <bdi dir=\"ltr\">5&nbsp;→&nbsp;20&nbsp;→&nbsp;10&nbsp;→&nbsp;30</bdi> دي نتيجة <bdi dir=\"ltr\">InsertAt(20,&nbsp;2)</bdi>. مع <bdi dir=\"ltr\">pos&nbsp;=&nbsp;3</bdi> الـ p بيتحرك لـ node 2 (اللي هي 10) والـ 20 بتتحط بعدها.",
+     "إن 20 تبقى في الأول ده حالة <bdi dir=\"ltr\">pos&nbsp;==&nbsp;1</bdi>، واللي الكود بتاعها:<pre>temp-&gt;next = head;\nhead = temp;</pre>هنا <bdi dir=\"ltr\">pos&nbsp;=&nbsp;3</bdi>.",
+     "إن 20 تيجي بعد 30 ده position 4. مع <bdi dir=\"ltr\">pos&nbsp;=&nbsp;3</bdi> الـ loop بيقف عند تاني node (10) والـ 20 بتتربط بعدها."
     ],
     [
-     "مش بتعمل crash: شرط الـ loop هو <code>while (temp != NULL)</code>، فبيقف بأمان بعد آخر node.",
-     "الـ search بترجع true بس لما <code>temp->data == item</code>. لو مفيش node طابقت، الـ loop بيخلص وبترجع false.",
-     "صح. الـ search بتمشي <code>temp = temp->next</code> من الـ head؛ لو مفيش node الـ data بتاعتها بتساوي item، الـ temp بيبقى NULL، الـ while loop بيقف والـ function بترجع false (L5, search).",
-     "الـ search بترجع bool (true/false)، مش pointer لـ node؛ ولما الـ item مش موجود بترجع false."
+     "مش بتعمل crash: شرط الـ loop هو:<pre>while (temp != NULL)</pre>فبيقف بأمان بعد آخر node.",
+     "الـ search بترجع true بس لما <bdi dir=\"ltr\">temp-⁠&gt;data&nbsp;==&nbsp;item</bdi>. لو مفيش node طابقت، الـ loop بيخلص وبترجع false.",
+     "صح. الـ search بتمشي من الـ head بالجملة دي:<pre>temp = temp-&gt;next;</pre>لو مفيش node الـ data بتاعتها بتساوي item، الـ temp بيبقى NULL، الـ while loop بيقف والـ function بترجع false (من الـ L5، الـ search).",
+     "الـ search بترجع bool (<bdi dir=\"ltr\">true/⁠false</bdi>)، مش pointer لـ node؛ ولما الـ item مش موجود بترجع false."
     ]
    ]
   },
@@ -989,17 +989,17 @@ AR.ds = {
       "أكبر مشكلة في الـ array stack: بيشتغل مع <b>عدد ثابت</b> من القيم بس، ولازم يتحدد من الأول.",
       "الـ linked stack بيشتغل مع <b>عدد مش محدود</b> من القيم (size متغير)؛ ومش محتاج تحدد الحجم من الأول.",
       "كل عنصر جديد بيتضاف كـ <b>top</b> (الـ top بيشاور عليه). وعشان تشيل، امسح الـ node اللي الـ top بيشاور عليها و<b>حرّك الـ top للـ node اللي بعدها</b>.",
-      "الرسمة: العناصر اتضافت بالترتيب 25، 32، 50، 99 ← top ← 99 ← 50 ← 32 ← 25 ← NULL. آخر واحد اتضاف = 99، وأول واحد اتضاف = 25.",
-      "محتاج <b>pointer واحد بس (top)</b> وlist واحدة؛ الـ push = إضافة في الأول، والـ pop = مسح من الأول."
+      "الرسمة: العناصر اتضافت بالترتيب <bdi dir=\"ltr\">25,&nbsp;32,&nbsp;50,&nbsp;99</bdi>، فالـ list بتبقى:<span class=\"ltr\">top → 99 → 50 → 32 → 25 → NULL</span>آخر واحد اتضاف هو <bdi dir=\"ltr\">99</bdi>، وأول واحد اتضاف هو <bdi dir=\"ltr\">25</bdi>.",
+      "محتاج <b>pointer واحد بس (top)</b> وlist واحدة؛ الـ push معناها إضافة في الأول، والـ pop معناها مسح من الأول."
      ]
     },
     {
      "h": "خطوات الـ creation والـ push والـ pop",
      "pts": [
-      "الـ <b>Creation</b>: Step 1: عرّف Node class فيها الـ members دول data وnext. Step 2: عرّف Node pointer <b>top = NULL</b>. Step 3: الـ main بتعرض menu وبتنادي الـ functions.",
-      "الـ <b>Push</b>: (1) اعمل newNode بالقيمة؛ (2) شيك الـ stack فاضي ولا لأ (top == NULL)؛ (3) لو فاضي، newNode→next = NULL؛ (4) لو مش فاضي، newNode→next = top؛ (5) وفي الآخر top = newNode.",
-      "الـ <b>Pop</b>: (1) شيك فاضي ولا لأ (top == NULL)؛ (2) لو فاضي، اخرج من الـ function؛ (3) لو لأ، عرّف Node pointer temp = top؛ (4) top = top→next؛ (5) delete temp.",
-      "الـ <b>Display</b>: لو فاضي اطبع \"Stack is Empty\"؛ غير كده temp = top، اطبع temp→data واتحرك للـ next لحد أول node اتضافت؛ وفي الآخر اطبع \"--->NULL\"."
+      "الـ <b>Creation</b>: الـ Step 1 هي إنك تعرّف Node class فيها الـ members دول: الـ data والـ next. الـ Step 2: عرّف Node pointer <bdi dir=\"ltr\">top&nbsp;=&nbsp;NULL</bdi>. الـ Step 3: الـ main بتعرض menu وبتنادي الـ functions.",
+      "خطوات الـ <b>Push</b>:<br>(1) اعمل <code>newNode</code> بالقيمة.<br>(2) شيك الـ stack فاضي ولا لأ (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>).<br>(3) لو فاضي، <bdi dir=\"ltr\">newNode→next&nbsp;=&nbsp;NULL</bdi>.<br>(4) لو مش فاضي، <bdi dir=\"ltr\">newNode→next&nbsp;=&nbsp;top</bdi>.<br>(5) وفي الآخر <bdi dir=\"ltr\">top&nbsp;=&nbsp;newNode</bdi>.",
+      "خطوات الـ <b>Pop</b>:<br>(1) شيك فاضي ولا لأ (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>).<br>(2) لو فاضي، اخرج من الـ function.<br>(3) لو لأ، عرّف Node pointer <bdi dir=\"ltr\">temp&nbsp;=&nbsp;top</bdi>.<br>(4) بعدها <bdi dir=\"ltr\">top&nbsp;=&nbsp;top→next</bdi>.<br>(5) وفي الآخر <bdi dir=\"ltr\">delete&nbsp;temp</bdi>.",
+      "الـ <b>Display</b>: لو فاضي اطبع \"Stack is Empty\"؛ غير كده خلي <bdi dir=\"ltr\">temp&nbsp;=&nbsp;top</bdi>، واطبع <bdi dir=\"ltr\">temp→data</bdi> واتحرك للـ next لحد أول node اتضافت؛ وفي الآخر اطبع <bdi dir=\"ltr\">\"---⁠&gt;NULL\"</bdi>."
      ]
     },
     {
@@ -1009,93 +1009,93 @@ AR.ds = {
      "h": "الـ display والـ get والـ count والـ search (كود الدكتورة)"
     },
     {
-     "h": "شكل سؤال الامتحان: push لـ 50 و70، pop لواحد، وشيل الكل (اتجرب)"
+     "h": "شكل سؤال الامتحان: الـ push لـ 50 و70، والـ pop لواحد، وشيل الكل (اتجرب)"
     },
     {
-     "h": "Lab 7: linked stack مبني على struct"
+     "h": "الـ Lab 7: الـ linked stack مبني على struct"
     }
    ],
    "cards": [
-    "stack معمول بـ linked list؛ كل node جديدة بتبقى هي الـ top.",
+    "الـ stack معمول بـ linked list؛ كل node جديدة بتبقى هي الـ top.",
     "الـ array stack بيشتغل مع عدد ثابت من القيم بس.",
-    "top = NULL",
-    "top == NULL",
-    "newnode->next = top; top = newnode;",
-    "temp = top; top = top->next; delete temp;",
+    "قيمته في الأول: <span class=\"ltr\">top = NULL</span>",
+    "بيبقى فاضي لما: <span class=\"ltr\">top == NULL</span>",
+    "الكود:<pre>newnode-&gt;next = top;\ntop = newnode;</pre>",
+    "الكود:<pre>temp = top;\ntop = top-&gt;next;\ndelete temp;</pre>",
     "الإضافة في الأول (insert at beginning).",
     "المسح من الأول (delete from beginning).",
     "واحد بس: top.",
     "99 50 32 25",
     "بس لو الـ new فشلت تحجز memory (isFull).",
-    "عرّف Node (data, next)؛ عرّف top = NULL؛ والـ main menu تنادي الـ functions."
+    "عرّف Node فيها <bdi dir=\"ltr\">(data,&nbsp;next)</bdi>؛ وعرّف <bdi dir=\"ltr\">top&nbsp;=&nbsp;NULL</bdi>؛ والـ main menu تنادي الـ functions."
    ],
    "qa": [
     "الـ array stack بيشتغل مع عدد ثابت من القيم بس، ولازم يتحدد من الأول. الـ linked stack بيشتغل مع عدد مش محدود ومتغير من القيم، فمش محتاج تثبّت الحجم؛ والـ memory بتتحجز لكل node وقت الـ run time.",
-    "1) اعمل newNode بالقيمة المطلوبة. 2) شيك الـ stack فاضي ولا لأ (top == NULL). 3) لو فاضي، خلي newNode->next = NULL. 4) لو مش فاضي، خلي newNode->next = top. 5) خلي top = newNode.",
-    "1) شيك الـ stack فاضي ولا لأ (top == NULL). 2) لو فاضي، اخرج من الـ function. 3) لو لأ، عرّف Node pointer اسمه temp وخليه = top. 4) خلي top = top->next. 5) اعمل delete لـ temp.",
-    "class Node{ public: int data; Node *next; Node(){ data=0; next=NULL; } };<br>class Stack{ Node *top; public: Stack(){ top=NULL; } bool isEmpty(){ return top==NULL; } void push(int item){ Node *n=new Node(); n->data=item; n->next=top; top=n; } int pop(){ if(isEmpty()){ cout&lt;&lt;\"Empty\"; return 0; } Node *temp=top; int value=top->data; top=top->next; delete temp; return value; } };<br>int main(){ Stack s; s.push(10); s.push(20); cout&lt;&lt;s.pop(); }  // prints 20<br>الفكرة: الـ pop بتشيك الأول لو فاضي، وبعدين تحفظ قيمة الـ top وتحرّك الـ top للي بعده وتعمل delete للقديمة؛ فالـ main بتطبع 20 لأنه آخر واحد اتعمله push.",
-    "void removeAll(){ while(top != NULL){ Node *temp = top; top = top->next; delete temp; } }  (أو: while(!isEmpty()) pop();)<br>يعني طول ما الـ stack مش فاضي، شيل الـ top وفضّي الـ memory بتاعته."
+    "(1) اعمل <code>newNode</code> بالقيمة المطلوبة.<br>(2) شيك الـ stack فاضي ولا لأ (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>).<br>(3) لو فاضي، خلي <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi>.<br>(4) لو مش فاضي، خلي <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;top</bdi>.<br>(5) خلي <bdi dir=\"ltr\">top&nbsp;=&nbsp;newNode</bdi>.",
+    "(1) شيك الـ stack فاضي ولا لأ (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>).<br>(2) لو فاضي، اخرج من الـ function.<br>(3) لو لأ، عرّف Node pointer اسمه <code>temp</code> وخليه يساوي <code>top</code>.<br>(4) خلي <bdi dir=\"ltr\">top&nbsp;=&nbsp;top-⁠&gt;next</bdi>.<br>(5) اعمل delete لـ <code>temp</code>.",
+    "الكود:<pre>class Node{\npublic:\n  int data;\n  Node *next;\n  Node(){ data=0; next=NULL; }\n};\nclass Stack{\n  Node *top;\npublic:\n  Stack(){ top=NULL; }\n  bool isEmpty(){\n    return top==NULL;\n  }\n  void push(int item){\n    Node *n=new Node();\n    n-&gt;data=item;\n    n-&gt;next=top;\n    top=n;\n  }\n  int pop(){\n    if(isEmpty()){\n      cout&lt;&lt;\"Empty\"; return 0;\n    }\n    Node *temp=top;\n    int value=top-&gt;data;\n    top=top-&gt;next;\n    delete temp;\n    return value;\n  }\n};\nint main(){\n  Stack s;\n  s.push(10); s.push(20);\n  cout&lt;&lt;s.pop();\n}  // prints 20</pre>الفكرة: الـ pop بتشيك الأول لو فاضي، وبعدين تحفظ قيمة الـ top وتحرّك الـ top للي بعده وتعمل delete للقديمة؛ فالـ main بتطبع 20 لأنه آخر واحد اتعمله push.",
+    "الكود:<pre>void removeAll(){\n  while(top != NULL){\n    Node *temp = top;\n    top = top-&gt;next;\n    delete temp;\n  }\n}</pre>أو:<pre>while(!isEmpty()) pop();</pre>يعني طول ما الـ stack مش فاضي، شيل الـ top وفضّي الـ memory بتاعته."
    ],
    "quiz": [
     [
-     "list واحدة بـ pointer واحد (top) كفاية.",
-     "صح. الـ linked stack هو singly linked list واحدة والـ push/pop بيحصلوا عند الـ top (أول الـ list)."
+     "الـ list واحدة بـ pointer واحد (top) كفاية.",
+     "صح. الـ linked stack هو singly linked list واحدة والـ push والـ pop بيحصلوا عند الـ top (أول الـ list)."
     ],
     [
      "الـ front ده pointer بتاع الـ queue (الحذف بيحصل عنده). الـ linked stack فيه pointer واحد بس هو الـ top، والـ push هو اللي بيحرّكه.",
-     "الـ rear ده pointer الإضافة في الـ queue. الـ linked stack بيضيف عند الـ top: newnode->next = top; top = newnode.",
-     "صح. top = newnode بعد ما تربط newnode->next = top.",
+     "الـ rear ده pointer الإضافة في الـ queue. الـ linked stack بيضيف عند الـ top:<span class=\"ltr\">newnode-&gt;next = top; top = newnode;</span>",
+     "صح. بنعمل <bdi dir=\"ltr\">top&nbsp;=&nbsp;newnode</bdi> بعد ما تربط <bdi dir=\"ltr\">newnode-⁠&gt;next&nbsp;=&nbsp;top</bdi>.",
      "الـ linked stack في المحاضرة singly linked (الـ Node فيها data و next بس)، فمفيش prev pointer أصلًا عشان يتغيّر."
     ],
     [
      "ده ترتيب الإضافة (الـ queue هو اللي هيطبع كده).",
      "صح. الـ Display بيبدأ من الـ top، اللي هو آخر node اتعملها push.",
-     "الـ display() بيمشي temp = temp->next من الـ top واحدة واحدة من غير ما ينطّ، فالترتيب لازم يبقى عكس ترتيب الـ push بالظبط: 99 50 32 25.",
-     "الـ nodes متوصّلة من الـ top لتحت بعكس ترتيب الـ push، والـ display() بيمشي ورا الـ next واحدة واحدة، فالـ 25 مينفعش تطلع غير في الآخر."
+     "الـ <code>display()</code> بيمشي بـ <bdi dir=\"ltr\">temp&nbsp;=&nbsp;temp-⁠&gt;next</bdi> من الـ top واحدة واحدة من غير ما ينطّ، فالترتيب لازم يبقى عكس ترتيب الـ push بالظبط: <bdi dir=\"ltr\">99&nbsp;50&nbsp;32&nbsp;25</bdi>.",
+     "الـ nodes متوصّلة من الـ top لتحت بعكس ترتيب الـ push، والـ <code>display()</code> بيمشي ورا الـ next واحدة واحدة، فالـ 25 مينفعش تطلع غير في الآخر."
     ],
     [
-     "الـ top == −1 ده شرط الـ array stack، اللي فيه الـ top عبارة عن index. في الـ linked stack الـ top ده pointer، فالفاضي معناه top == NULL.",
-     "صح. الـ linked stack بيبدأ بـ top = NULL، والـ isEmpty() بترجع true لما top == NULL: يعني مفيش ولا node يشاور عليها (L6, Pop from linked stack).",
-     "الـ top->next == NULL معناه إن الـ top node هي الـ node الوحيدة: يعني فيه عنصر واحد بالظبط، مش stack فاضي.",
-     "الـ front والـ rear دول بتوع الـ queue. الـ linked stack فيه top بس، وبيبقى فاضي لما top == NULL."
+     "الـ <bdi dir=\"ltr\">top&nbsp;==&nbsp;−1</bdi> ده شرط الـ array stack، اللي فيه الـ top عبارة عن index. في الـ linked stack الـ top ده pointer، فالفاضي معناه <bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>.",
+     "صح. الـ linked stack بيبدأ بـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;NULL</bdi>، والـ <code>isEmpty()</code> بترجع true لما <bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>: يعني مفيش ولا node يشاور عليها <bdi dir=\"ltr\">(L6,&nbsp;Pop&nbsp;from&nbsp;linked&nbsp;stack)</bdi>.",
+     "الـ <bdi dir=\"ltr\">top-⁠&gt;next&nbsp;==&nbsp;NULL</bdi> معناه إن الـ top node هي الـ node الوحيدة: يعني فيه عنصر واحد بالظبط، مش stack فاضي.",
+     "الـ front والـ rear دول بتوع الـ queue. الـ linked stack فيه top بس، وبيبقى فاضي لما <bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>."
     ],
     [
-     "الـ array stack ينفع نعمله traverse عادي: الـ display() بيلفّ بـ j من الـ top لحد 0. مشكلته الحقيقية إن حجمه ثابت.",
+     "الـ array stack ينفع نعمله traverse عادي: الـ <code>display()</code> بيلفّ بـ j من الـ top لحد 0. مشكلته الحقيقية إن حجمه ثابت.",
      "صح. المحاضرة بتقول إن المشكلة الكبيرة في الـ array stack إنه بيشتغل لعدد ثابت من القيم بيتحدد من الأول، أما الـ linked stack فبيشتغل لعدد غير محدود (L6, Stack revised).",
      "الاتنين implementations بتوع الـ stack بيمشوا بـ LIFO؛ الـ FIFO ده قانون الـ queue، فده مش مشكلة في الـ array stack.",
      "الـ array stack محتاج index واحد بس هو الـ top. الاتنين pointers (front و rear) دول بتوع الـ queue."
     ],
     [
-     "لو عملت delete للـ temp الأول، كده انت فضّيت الـ node اللي الـ top لسه بيشاور عليها، فالـ top->next هيقرا من memory اتفضّت.",
+     "لو عملت delete للـ temp الأول، كده انت فضّيت الـ node اللي الـ top لسه بيشاور عليها، فالـ <code>top-⁠&gt;next</code> هيقرا من memory اتفضّت.",
      "صح. حرّك الـ top الأول، وبعدين فضّي الـ top القديم عن طريق temp.",
-     "الـ top = NULL بيرمي كل الـ nodes اللي تحت الـ top القديم، فباقي الـ stack بيضيع (ويعمل leak). الصح إن الـ top يتحرك لـ top->next.",
-     "ده بيفضّي الـ node اللي الـ top لسه بيشاور عليها ويسيب الـ top dangling؛ المحاضرة بتعمل top = top->next الأول وبعدين delete temp."
+     "الـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;NULL</bdi> بيرمي كل الـ nodes اللي تحت الـ top القديم، فباقي الـ stack بيضيع (ويعمل leak). الصح إن الـ top يتحرك لـ <code>top-⁠&gt;next</code>.",
+     "ده بيفضّي الـ node اللي الـ top لسه بيشاور عليها ويسيب الـ top dangling؛ المحاضرة بتعمل <bdi dir=\"ltr\">top&nbsp;=&nbsp;top-⁠&gt;next</bdi> الأول وبعدين <bdi dir=\"ltr\">delete&nbsp;temp</bdi>."
     ]
    ],
    "extra": [
     [
-     "الـ 1 2 4 ده الترتيب من تحت لفوق. الـ display() بيبدأ من الـ top (آخر node اتعملها push، يعني 4) ويمشي ورا الـ next لحد 1.",
-     "صح. بعد الـ pushes الـ stack بيبقى 3 2 1 (الـ top الأول). الـ pop() بيشيل الـ 3، والـ push(4) بيخلي الـ 4 هي الـ top، والـ display() بيطبع من الـ top: 4 2 1 (L6, Display).",
-     "الـ 3 اتشالت بالـ pop() (top = top->next; delete temp)، فمش هتتطبع.",
+     "الـ <bdi dir=\"ltr\">1&nbsp;2&nbsp;4</bdi> ده الترتيب من تحت لفوق. الـ <code>display()</code> بيبدأ من الـ top (آخر node اتعملها push، يعني 4) ويمشي ورا الـ next لحد 1.",
+     "صح. بعد الـ pushes الـ stack بيبقى <bdi dir=\"ltr\">3&nbsp;2&nbsp;1</bdi> (الـ top الأول). الـ <code>pop()</code> بيشيل الـ 3، والـ <code>push(4)</code> بيخلي الـ 4 هي الـ top، والـ <code>display()</code> بيطبع من الـ top: <bdi dir=\"ltr\">4&nbsp;2&nbsp;1</bdi> (من <bdi dir=\"ltr\">L6,&nbsp;Display</bdi>).",
+     "الـ 3 اتشالت بالـ <code>pop()</code> اللي بتعمل:<span class=\"ltr\">top = top-&gt;next; delete temp;</span>فمش هتتطبع.",
      "الـ 4 اتعملها push في الآخر، فهي الـ top وبتتطبع الأول؛ وكمان الـ 3 كانت اتعملها pop خلاص."
     ],
     [
      "الـ array stack هو اللي بيرجع -1؛ الـ linked stack بيرجع 0.",
-     "الـ pop() بترجع قيمة int، مش pointer؛ ولو الـ stack فاضي كود المحاضرة بيطبع \"Empty\" ويرجع 0.",
-     "صح. لو الـ isEmpty() طلعت true، الـ pop() في المحاضرة بتطبع \"Empty\"، وتسيب top = NULL وترجع 0 (الـ array stack كان بيرجع −1) (L6, Pop from linked stack).",
-     "الـ linked stack مش بيحتفظ بأي حاجة عن الـ pops اللي فاتت؛ لو الـ stack فاضي الـ pop() بتطبع \"Empty\" وترجع 0 وخلاص."
+     "الـ <code>pop()</code> بترجع قيمة int، مش pointer؛ ولو الـ stack فاضي كود المحاضرة بيطبع \"Empty\" ويرجع 0.",
+     "صح. لو الـ <code>isEmpty()</code> طلعت true، الـ <code>pop()</code> في المحاضرة بتطبع \"Empty\"، وتسيب <bdi dir=\"ltr\">top&nbsp;=&nbsp;NULL</bdi> وترجع 0 (الـ array stack كان بيرجع <bdi dir=\"ltr\">−1</bdi>) <bdi dir=\"ltr\">(L6,&nbsp;Pop&nbsp;from&nbsp;linked&nbsp;stack)</bdi>.",
+     "الـ linked stack مش بيحتفظ بأي حاجة عن الـ pops اللي فاتت؛ لو الـ stack فاضي الـ <code>pop()</code> بتطبع \"Empty\" وترجع 0 وخلاص."
     ],
     [
-     "صح. الـ step 3: لو الـ stack فاضي (top == NULL)، بنعمل newNode->next = NULL، عشان الـ node الجديدة هتبقى الوحيدة؛ وبعدين الـ step 5 بتعمل top = newNode (L6, Push).",
-     "لما الـ stack يبقى فاضي الـ top بيبقى NULL، فقراية top->next هتعمل crash. في الحالة دي بنعمل newNode->next = NULL.",
-     "الـ top بيبقى NULL لما الـ stack فاضي، فمينفعش نعمل assign لـ top->next؛ وكمان الـ push عمره ما بيربط الـ top بالـ node الجديدة بالشكل ده.",
-     "الـ top أصلًا NULL لما الـ stack فاضي؛ والـ step 5 بتخلي top = newNode مش NULL. الـ step 3 بتعمل newNode->next = NULL."
+     "صح. في الـ step 3: لو الـ stack فاضي (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>)، بنعمل <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi>، عشان الـ node الجديدة هتبقى الوحيدة؛ وبعدين الـ step 5 بتعمل <bdi dir=\"ltr\">top&nbsp;=&nbsp;newNode</bdi> (من <bdi dir=\"ltr\">L6,&nbsp;Push</bdi>).",
+     "لما الـ stack يبقى فاضي الـ top بيبقى NULL، فقراية <code>top-⁠&gt;next</code> هتعمل crash. في الحالة دي بنعمل <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi>.",
+     "الـ top بيبقى NULL لما الـ stack فاضي، فمينفعش نعمل assign لـ <code>top-⁠&gt;next</code>؛ وكمان الـ push عمره ما بيربط الـ top بالـ node الجديدة بالشكل ده.",
+     "الـ top أصلًا NULL لما الـ stack فاضي؛ والـ step 5 بتخلي <bdi dir=\"ltr\">top&nbsp;=&nbsp;newNode</bdi> مش NULL. الـ step 3 بتعمل <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi>."
     ],
     [
-     "الـ 3 ده العدد قبل الـ pop(). الـ pop() بيشيل الـ top node (30)، فالـ count() بعدها بيعدّ على اتنين nodes بس.",
-     "إحنا عملنا pop() مرة واحدة بس، شالت الـ 30؛ فاضل الـ 20 والـ 10، فالـ count() بترجع 2.",
-     "الـ 0 معناه stack فاضي (top == NULL). بعد pop واحدة، الـ 20 والـ 10 لسه متوصّلين.",
-     "صح. التلات pushes بيدّوا 30 → 20 → 10؛ الـ pop() بيشيل الـ 30، والـ count() بتعمل c++ لكل node فاضلة لحد ما توصل NULL: يبقى 2 (L6, Counting elements)."
+     "الـ 3 ده العدد قبل الـ <code>pop()</code>. الـ <code>pop()</code> بيشيل الـ top node (30)، فالـ <code>count()</code> بعدها بيعدّ على اتنين nodes بس.",
+     "إحنا عملنا <code>pop()</code> مرة واحدة بس، شالت الـ 30؛ فاضل الـ 20 والـ 10، فالـ <code>count()</code> بترجع 2.",
+     "الـ 0 معناه stack فاضي (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>). بعد pop واحدة، الـ 20 والـ 10 لسه متوصّلين.",
+     "صح. التلات pushes بيدّوا:<span class=\"ltr\">30 → 20 → 10</span>الـ <code>pop()</code> بيشيل الـ 30، والـ <code>count()</code> بتعمل <code>c++</code> لكل node فاضلة لحد ما توصل NULL: يبقى 2 <bdi dir=\"ltr\">(L6,&nbsp;Counting&nbsp;elements)</bdi>."
     ],
     [
      "زيارة واحدة هتلاقي الـ top بس، اللي هو 99. الـ search بيبدأ من الـ top، والـ 25 هي الـ node اللي تحت خالص، الرابعة.",
@@ -1105,21 +1105,21 @@ AR.ds = {
     ],
     [
      "الـ MAXSIZE ده بتاع الـ array stack. الـ linked stack بيشتغل لعدد غير محدود من القيم، من غير حجم ثابت.",
-     "الـ nodes الجديدة بتتضاف كـ top، يعني في أول الـ list (newnode->next = top)، مش في آخرها.",
+     "الـ nodes الجديدة بتتضاف كـ top، يعني في أول الـ list (<bdi dir=\"ltr\">newnode-⁠&gt;next&nbsp;=&nbsp;top</bdi>)، مش في آخرها.",
      "صح. المحاضرة بتقول إن كل عنصر جديد بيتضاف كـ top element، فكل عنصر لسه داخل بيبقى الـ top بيشاور عليه؛ والـ pop بيشيل الـ node اللي الـ top بيشاور عليها (L6, Linked stack).",
      "الـ front والـ rear دول pointers بتوع الـ queue. الـ linked stack بيستخدم pointer واحد بس هو الـ top."
     ],
     [
      "ده بيضيّع الـ nodes من غير ما يفضّيها (memory leak).",
-     "صح. في كل لفة بنحفظ الـ top node في t، ونحرّك الـ top للـ node اللي بعدها، ونفضّي الـ t بـ delete، لحد ما الـ top يبقى NULL؛ كده كل node اتفضّت والـ stack خلص فاضي (نفس فكرة الـ pop، L6).",
+     "صح. في كل لفة بنحفظ الـ top node في t، ونحرّك الـ top للـ node اللي بعدها، ونفضّي الـ t بـ delete، لحد ما الـ top يبقى NULL؛ كده كل node اتفضّت والـ stack خلص فاضي (نفس فكرة الـ pop، <bdi dir=\"ltr\">L6</bdi>).",
      "الـ delete top بيفضّي الـ top node بس ويسيب الـ top بيشاور على memory اتفضّت؛ والـ nodes اللي تحتها عمرها ما بتتفضّى.",
      "ده بينزّل الـ top لحد NULL من غير delete، فالـ stack شكله فاضي بس كل الـ nodes لسه محجوزة في الـ memory (memory leak)."
     ],
     [
-     "إنك تشيل الـ top وترجّعه ده شغل الـ pop(). الـ get() بتقرا الـ top->data بس وبتسيب الـ stack زي ما هو.",
-     "الـ get() بتقرا الـ top->data، يعني آخر عنصر اتعمله push، مش العنصر اللي تحت خالص.",
-     "عدّ الـ nodes ده شغل الـ count(). الـ get() بترجع الـ data بتاعة الـ top node.",
-     "صح. الـ get() بترجع top->data لو top != NULL (غير كده بتطبع \"Empty\" وترجع 0)؛ ومش بتحرّك الـ top ولا بتمسح أي حاجة (L6, Get the first node)."
+     "إنك تشيل الـ top وترجّعه ده شغل الـ <code>pop()</code>. الـ <code>get()</code> بتقرا الـ <code>top-⁠&gt;data</code> بس وبتسيب الـ stack زي ما هو.",
+     "الـ <code>get()</code> بتقرا الـ <code>top-⁠&gt;data</code>، يعني آخر عنصر اتعمله push، مش العنصر اللي تحت خالص.",
+     "عدّ الـ nodes ده شغل الـ <code>count()</code>. الـ <code>get()</code> بترجع الـ data بتاعة الـ top node.",
+     "صح. الـ <code>get()</code> بترجع <code>top-⁠&gt;data</code> لو <bdi dir=\"ltr\">top&nbsp;!=&nbsp;NULL</bdi> (غير كده بتطبع \"Empty\" وترجع 0)؛ ومش بتحرّك الـ top ولا بتمسح أي حاجة <bdi dir=\"ltr\">(L6,&nbsp;Get&nbsp;the&nbsp;first&nbsp;node)</bdi>."
     ],
     [
      "صح. الـ new node بتبقى أول node (الـ top).",
@@ -1131,7 +1131,7 @@ AR.ds = {
      "الـ 99 اتعملها push في الآخر، فهي الـ top؛ والـ next بتاعها بيشاور على 50، الـ node اللي تحتها.",
      "الـ 50 في النص؛ والـ next بتاعها بيشاور على 32، الـ node اللي اتعملها push قبلها.",
      "صح. أول node اتعملها push بتبقى تحت خالص وبتشاور على NULL.",
-     "الـ next بتاع الـ 32 بيشاور على 25، أول node اتعملها push، وهي اللي تحت خالص واللي الـ next بتاعها = NULL."
+     "الـ next بتاع الـ 32 بيشاور على 25، أول node اتعملها push، وهي اللي تحت خالص واللي الـ next بتاعها بيساوي NULL."
     ]
    ]
   },
@@ -1143,16 +1143,16 @@ AR.ds = {
       "الـ queue بيمشي بـ <b>First In First Out</b> عند <b>نقطتين</b>: الـ <b>tail (rear) للإضافة</b>، والـ <b>head (front) للسحب</b>. ليه implementation-ين: static (array) وdynamic (linked list).",
       "الـ array queue بيشتغل مع <b>عدد ثابت</b> من القيم بس. الـ linked queue بيشتغل مع عدد <b>مش محدود (متغير)</b>؛ ومفيش حجم ثابت.",
       "<b>آخر node اتضافت الـ rear دايمًا بيشاور عليها</b> و<b>أول node الـ front بيشاور عليها</b>.",
-      "الرسمة: اتضاف 10، 15، 22، 50 ← front ← 10 ← 15 ← 22 ← 50 والـ rear عند 50، و50 ← NULL.",
-      "الـ <b>Creation</b>: (1) عرّف Node class فيها data وnext؛ (2) عرّف اتنين Node pointers هما <b>front وrear، الاتنين بـ NULL</b>؛ (3) الـ main بتعرض menu وبتنادي الـ functions."
+      "الرسمة: اتضاف <bdi dir=\"ltr\">10,&nbsp;15,&nbsp;22,&nbsp;50</bdi>، فالـ list بتبقى:<span class=\"ltr\">front → 10 → 15 → 22 → 50 ← rear</span>والـ rear عند 50، و<bdi dir=\"ltr\">50&nbsp;→&nbsp;NULL</bdi>.",
+      "الـ <b>Creation</b>:<br>(1) عرّف Node class فيها الـ data والـ next.<br>(2) عرّف اتنين Node pointers هما <b>الـ front والـ rear، الاتنين بـ NULL</b>.<br>(3) الـ main بتعرض menu وبتنادي الـ functions."
      ]
     },
     {
      "h": "خطوات الـ enqueue والـ dequeue والـ display",
      "pts": [
-      "الـ <b>Enqueue</b>: (1) اعمل newNode بالقيمة وخلي newNode→next = NULL؛ (2) شيك الـ queue فاضي ولا لأ (rear == NULL)؛ (3) لو فاضي، خلي <b>front = newNode وrear = newNode</b>؛ (4) لو لأ، خلي <b>rear→next = newNode وrear = newNode</b>.",
-      "الـ <b>Dequeue</b>: (1) شيك على الـ empty (front == NULL)؛ (2) لو فاضي اعرض \"Queue is Empty!!! Deletion is not possible\" واخرج؛ (3) غير كده temp = front؛ (4) front = front→next واعمل delete لـ temp.",
-      "الـ <b>Display</b>: لو فاضي اعرض \"Queue is Empty\"؛ غير كده temp = front؛ اعرض temp→data واتحرك للـ node اللي بعدها لحد ما temp يوصل للـ rear؛ وفي الآخر اعرض \"temp→data ---&gt; NULL\".",
+      "خطوات الـ <b>Enqueue</b>:<br>(1) اعمل <code>newNode</code> بالقيمة وخلي <bdi dir=\"ltr\">newNode→next&nbsp;=&nbsp;NULL</bdi>.<br>(2) شيك الـ queue فاضي ولا لأ (<bdi dir=\"ltr\">rear&nbsp;==&nbsp;NULL</bdi>).<br>(3) لو فاضي، خلي <b><bdi dir=\"ltr\">front&nbsp;=&nbsp;newNode</bdi> و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newNode</bdi></b>.<br>(4) لو لأ، خلي <b><bdi dir=\"ltr\">rear→next&nbsp;=&nbsp;newNode</bdi> و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newNode</bdi></b>.",
+      "خطوات الـ <b>Dequeue</b>:<br>(1) شيك على الـ empty (<bdi dir=\"ltr\">front&nbsp;==&nbsp;NULL</bdi>).<br>(2) لو فاضي اعرض \"Queue is Empty!!! Deletion is not possible\" واخرج.<br>(3) غير كده <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi>.<br>(4) بعدها <bdi dir=\"ltr\">front&nbsp;=&nbsp;front→next</bdi> واعمل delete لـ <code>temp</code>.",
+      "الـ <b>Display</b>: لو فاضي اعرض \"Queue is Empty\"؛ غير كده <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi>؛ اعرض <bdi dir=\"ltr\">temp→data</bdi> واتحرك للـ node اللي بعدها لحد ما الـ temp يوصل للـ rear؛ وفي الآخر اعرض:<span class=\"ltr\">\"temp→data ---&gt; NULL\"</span>",
       "الإضافة بتبقى عند الـ <b>rear (آخر الـ list)</b>؛ والمسح من الـ <b>front (أول الـ list)</b>."
      ]
     },
@@ -1166,32 +1166,32 @@ AR.ds = {
      "h": "شكل سؤال الامتحان: إضافة 30 و50، وشيل كل العناصر (اتجرب)"
     },
     {
-     "h": "Lab 7: الـ dequeue في linked queue مبني على struct"
+     "h": "الـ Lab 7: الـ dequeue في linked queue مبني على struct"
     }
    ],
    "cards": [
-    "queue معمول بـ linked list؛ الإضافة عند الـ rear والمسح عند الـ front.",
+    "الـ queue معمول بـ linked list؛ الإضافة عند الـ rear والمسح عند الـ front.",
     "الـ front (head) والـ rear (tail)، والاتنين بـ NULL في الأول.",
-    "rear->next = newnode; rear = newnode;",
-    "front = newnode; rear = newnode;",
-    "temp = front; front = front->next; delete temp;",
-    "front == NULL (في المحاضرة: front == NULL && rear == NULL)",
+    "الكود:<pre>rear-&gt;next = newnode;\nrear = newnode;</pre>",
+    "الكود:<pre>front = newnode;\nrear = newnode;</pre>",
+    "الكود:<pre>temp = front;\nfront = front-&gt;next;\ndelete temp;</pre>",
+    "الشرط:<span class=\"ltr\">front == NULL</span>وفي المحاضرة:<span class=\"ltr\">front == NULL &amp;&amp; rear == NULL</span>",
     "الـ 10 (والـ rear بيشاور على 50).",
     "عند الـ rear (آخر الـ list).",
-    "لازم تخلي rear = NULL كمان (front = rear = NULL).",
+    "لازم تخلي <bdi dir=\"ltr\">rear&nbsp;=&nbsp;NULL</bdi> كمان:<span class=\"ltr\">front = rear = NULL</span>",
     "مفيش حجم ثابت؛ بيشتغل مع عدد مش محدود من القيم.",
     "من الـ front للـ rear (بترتيب الإضافة).",
-    "NULL، لأن الـ new node بتبقى آخر node."
+    "بتبقى NULL، لأن الـ new node بتبقى آخر node."
    ],
    "qa": [
-    "1) اعمل newNode بالقيمة وخلي newNode->next = NULL. 2) شيك الـ queue فاضي ولا لأ (rear == NULL). 3) لو فاضي، خلي front = newNode وrear = newNode. 4) لو مش فاضي، خلي rear->next = newNode وrear = newNode.",
-    "1) شيك الـ queue فاضي ولا لأ (front == NULL). 2) لو فاضي، اعرض \"Queue is Empty!!! Deletion is not possible\" واخرج. 3) لو لأ، عرّف temp = front. 4) خلي front = front->next واعمل delete لـ temp (ولو الـ front بقى NULL، خلي rear = NULL).",
-    "class Node{ public: int data; Node *next; Node(){ data=0; next=NULL; } };<br>class Queue{ Node *front, *rear; public: Queue(){ front=rear=NULL; } bool isEmpty(){ return front==NULL; } void enqueue(int item){ Node *n=new Node(); n->data=item; n->next=NULL; if(isEmpty()){ front=rear=n; } else { rear->next=n; rear=n; } } };<br>int main(){ Queue q; q.enqueue(25); q.enqueue(20); }  // front -> 25 -> 20 &lt;- rear<br>الفكرة: أول enqueue الـ queue فاضي فالـ front والـ rear الاتنين بيشاوروا على 25، والتانية بتتربط بعد الـ rear وتبقى هي الـ rear الجديد.",
-    "الـ Linked stack: pointer واحد (top)؛ الـ push والـ pop الاتنين في الأول؛ LIFO. الـ Linked queue: اتنين pointers (front وrear)؛ الـ enqueue عند الـ rear (الآخر)، والـ dequeue عند الـ front (الأول)؛ FIFO. والاتنين مالهمش حجم ثابت."
+    "(1) اعمل <code>newNode</code> بالقيمة وخلي <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi>.<br>(2) شيك الـ queue فاضي ولا لأ (<bdi dir=\"ltr\">rear&nbsp;==&nbsp;NULL</bdi>).<br>(3) لو فاضي، خلي <bdi dir=\"ltr\">front&nbsp;=&nbsp;newNode</bdi> و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newNode</bdi>.<br>(4) لو مش فاضي، خلي <bdi dir=\"ltr\">rear-⁠&gt;next&nbsp;=&nbsp;newNode</bdi> و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newNode</bdi>.",
+    "(1) شيك الـ queue فاضي ولا لأ (<bdi dir=\"ltr\">front&nbsp;==&nbsp;NULL</bdi>).<br>(2) لو فاضي، اعرض \"Queue is Empty!!! Deletion is not possible\" واخرج.<br>(3) لو لأ، عرّف <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi>.<br>(4) خلي <bdi dir=\"ltr\">front&nbsp;=&nbsp;front-⁠&gt;next</bdi> واعمل delete لـ <code>temp</code> (ولو الـ front بقى NULL، خلي <bdi dir=\"ltr\">rear&nbsp;=&nbsp;NULL</bdi>).",
+    "الكود:<pre>class Node{\npublic:\n  int data;\n  Node *next;\n  Node(){ data=0; next=NULL; }\n};\nclass Queue{\n  Node *front, *rear;\npublic:\n  Queue(){ front=rear=NULL; }\n  bool isEmpty(){\n    return front==NULL;\n  }\n  void enqueue(int item){\n    Node *n=new Node();\n    n-&gt;data=item;\n    n-&gt;next=NULL;\n    if(isEmpty()){\n      front=rear=n;\n    } else {\n      rear-&gt;next=n;\n      rear=n;\n    }\n  }\n};\nint main(){\n  Queue q;\n  q.enqueue(25);\n  q.enqueue(20);\n}\n// front -&gt; 25 -&gt; 20 &lt;- rear</pre>الفكرة: أول enqueue الـ queue فاضي فالـ front والـ rear الاتنين بيشاوروا على 25، والتانية بتتربط بعد الـ rear وتبقى هي الـ rear الجديد.",
+    "الـ Linked stack: فيه pointer واحد (top)؛ الـ push والـ pop الاتنين في الأول؛ ونوعه LIFO.<br>الـ Linked queue: فيه اتنين pointers (الـ front والـ rear)؛ الـ enqueue عند الـ rear (الآخر)، والـ dequeue عند الـ front (الأول)؛ ونوعه FIFO.<br>والاتنين مالهمش حجم ثابت."
    ],
    "quiz": [
     [
-     "الجملة غلط: الـ enqueue بيربط الـ node الجديدة بعد الـ rear (rear->next = newnode; rear = newnode). الـ front ده المكان اللي الـ dequeue بيمسح منه.",
+     "الجملة غلط: الـ enqueue بيربط الـ node الجديدة بعد الـ rear:<span class=\"ltr\">rear-&gt;next = newnode; rear = newnode;</span>الـ front ده المكان اللي الـ dequeue بيمسح منه.",
      "صح. الـ Enqueue بتضيف عند الـ rear؛ والمسح عند الـ front."
     ],
     [
@@ -1202,7 +1202,7 @@ AR.ds = {
     ],
     [
      "إنك تربط الـ node الجديدة قبل الـ front وتحرّك الـ front معناه إنك بتضيف في الأول، وده push بتاع stack، مش enqueue.",
-     "صح. خطوة 4 في الـ enqueue: لو الـ queue مش فاضي، اربط آخر node قديمة بالجديدة (rear->next = newnode) وبعدين حرّك الـ rear عليها (rear = newnode) (L7, Enqueue).",
+     "صح. خطوة 4 في الـ enqueue: لو الـ queue مش فاضي، اربط آخر node قديمة بالجديدة (<bdi dir=\"ltr\">rear-⁠&gt;next&nbsp;=&nbsp;newnode</bdi>) وبعدين حرّك الـ rear عليها (<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newnode</bdi>) <bdi dir=\"ltr\">(L7,&nbsp;Enqueue)</bdi>.",
      "ترتيب غلط: آخر node القديمة عمرها ما بتتربط والـ newnode بتشاور على نفسها.",
      "ده بيربط الـ node الجديدة بعد أول node على طول وبيضيّع الـ link بتاع الـ node التانية القديمة، فـ nodes بتضيع؛ والـ rear عمره ما بيتحدّث."
     ],
@@ -1210,51 +1210,51 @@ AR.ds = {
      "صح. الـ 10 والـ 15 بيخرجوا الأول (FIFO)، والـ 7 بيدخل عند الـ rear.",
      "الـ enqueue بيضيف عند الـ rear، فالـ 7 بتيجي بعد الـ 22 والـ 50، مش قبلهم.",
      "الـ Dequeue بتشيل من الـ front، يعني 10 و15.",
-     "الـ queue بيحافظ على ترتيب الإضافة من الـ front للـ rear: 22 وبعدين 50 وبعدين 7. الترتيب المعكوس ده طريقة عرض الـ stack."
+     "الـ queue بيحافظ على ترتيب الإضافة من الـ front للـ rear، يعني 22 وبعدين 50 وبعدين 7. الترتيب المعكوس ده طريقة عرض الـ stack."
     ],
     [
-     "pointer واحد اسمه top ده الـ linked stack. الـ queue بيشتغل من طرفين، فمحتاج front وrear.",
+     "الـ pointer الواحد اللي اسمه top ده الـ linked stack. الـ queue بيشتغل من طرفين، فمحتاج الـ front والـ rear.",
      "صح. خطوة 2 في إنشاء الـ linked queue بتعرّف اتنين Node pointers، الـ front والـ rear، والاتنين بـ NULL: الـ front للـ dequeue والـ rear للـ enqueue (L7, Linked queue creation).",
      "مفيش top في الـ queue؛ الـ top ده بتاع الـ stack. الـ linked queue فيه front وrear بس.",
      "الـ linked structure مش بتوصلها غير عن طريق pointers؛ والـ queue شايل اتنين، الـ front والـ rear (والاتنين NULL لما يكون فاضي)."
     ],
     [
      "الـ rear ماتغيرش، فلسه بيشاور على الـ node اللي اتمسحت.",
-     "صح. خلي rear = NULL لما الـ front يبقى NULL (Lab 7 بيعمل front = rear = NULL).",
-     "الـ isEmpty() بتقارن الـ front والـ rear بـ NULL وخلاص؛ مش بتعمل dereference لأي حاجة، فمش هتعمل crash. هي بس بترجع إجابة غلط.",
-     "الـ front فعلًا بيبقى NULL: الـ front = front->next بتنسخ الـ next بتاع الـ node اللي اتمسحت، وكان NULL. المشكلة في الـ rear."
+     "صح. خلي <bdi dir=\"ltr\">rear&nbsp;=&nbsp;NULL</bdi> لما الـ front يبقى NULL (الـ Lab 7 بيعمل <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;NULL</bdi>).",
+     "الـ <code>isEmpty()</code> بتقارن الـ front والـ rear بـ NULL وخلاص؛ مش بتعمل dereference لأي حاجة، فمش هتعمل crash. هي بس بترجع إجابة غلط.",
+     "الـ front فعلًا بيبقى NULL: الـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;front-⁠&gt;next</bdi> بتنسخ الـ next بتاع الـ node اللي اتمسحت، وكان NULL. المشكلة في الـ rear."
     ]
    ],
    "extra": [
     [
-     "صح. بعد الـ enqueues: 5، 6، 7؛ الـ dequeue بيشيل الـ front (5)؛ والـ enqueue(8) بيضيف عند الـ rear → 6، 7، 8. يبقى count() = 3 والـ get() بترجع front->data = 6 (L7).",
-     "الـ 5 اتشالت بالـ dequeue، فمينفعش الـ get() ترجعها، وفاضل 3 nodes بس (6، 7، 8).",
-     "الـ count صح، بس الـ get() بترجع front->data (6)، مش قيمة الـ rear اللي هي 8.",
-     "فاضل تلات nodes (6، 7، 8): dequeue واحد بعد تلات enqueues وبعدين enqueue كمان. والـ get() بترجع 6، اللي هي الـ front."
+     "صح. بعد الـ enqueues الـ queue فيه <bdi dir=\"ltr\">5,&nbsp;6,&nbsp;7</bdi>؛ الـ dequeue بيشيل الـ front (5)؛ والـ <code>enqueue(8)</code> بيضيف عند الـ rear، فيبقى <bdi dir=\"ltr\">6,&nbsp;7,&nbsp;8</bdi>. يبقى:<span class=\"ltr\">count() = 3, get() = front-&gt;data = 6</span>(من <bdi dir=\"ltr\">L7</bdi>)",
+     "الـ 5 اتشالت بالـ dequeue، فمينفعش الـ <code>get()</code> ترجعها، وفاضل 3 nodes بس (<bdi dir=\"ltr\">6,&nbsp;7,&nbsp;8</bdi>).",
+     "الـ count صح، بس الـ <code>get()</code> بترجع <code>front-⁠&gt;data</code> (6)، مش قيمة الـ rear اللي هي 8.",
+     "فاضل تلات nodes (<bdi dir=\"ltr\">6,&nbsp;7,&nbsp;8</bdi>)، لأن فيه dequeue واحد بعد تلات enqueues وبعدين enqueue كمان. والـ <code>get()</code> بترجع 6، اللي هي الـ front."
     ],
     [
      "الـ node الجديدة بتنضم عند الـ rear، يعني هي آخر node مش أول واحدة. والـ next بتاعها لازم يبقى NULL عشان يقفل الـ list.",
-     "صح. خطوة 1 في الـ enqueue بتعمل newNode->next = NULL لأن الـ node الجديدة بتتربط بعد الـ rear وبتبقى آخر node، واللي الـ next بتاعها لازم يبقى NULL (L7, Enqueue).",
-     "إنك تعمل newnode->next = NULL مش بيمسح أي حاجة؛ الـ enqueue عمره ما بيمسح. هو بس بيعلّم إن الـ node الجديدة هي آخر الـ list.",
+     "صح. خطوة 1 في الـ enqueue بتعمل <bdi dir=\"ltr\">newNode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> لأن الـ node الجديدة بتتربط بعد الـ rear وبتبقى آخر node، واللي الـ next بتاعها لازم يبقى NULL <bdi dir=\"ltr\">(L7,&nbsp;Enqueue)</bdi>.",
+     "إنك تعمل <bdi dir=\"ltr\">newnode-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> مش بيمسح أي حاجة؛ الـ enqueue عمره ما بيمسح. هو بس بيعلّم إن الـ node الجديدة هي آخر الـ list.",
      "دي لازمة: الـ display والـ count والـ search بيقفوا عند الـ NULL، فالـ next بتاع آخر node لازم يبقى NULL (والـ Node constructor بيعملها كمان)."
     ],
     [
-     "لما الـ queue يكون فاضي الـ rear بيبقى NULL، فمينفعش تستخدم rear->next. خطوة 3 بتعمل front = newNode وrear = newNode.",
-     "لو سبت الـ front بـ NULL، الـ dequeue والـ display مش هيشوفوا أي node. الـ node الواحدة هي الأولى والأخيرة في نفس الوقت، فـ front = rear = newNode.",
-     "صح. خطوة 3: لو الـ queue فاضي، الـ node الجديدة بتبقى أول node وآخر node في نفس الوقت، فـ front = newNode وrear = newNode (L7, Enqueue).",
+     "لما الـ queue يكون فاضي الـ rear بيبقى NULL، فمينفعش تستخدم <code>rear-⁠&gt;next</code>. خطوة 3 بتعمل <bdi dir=\"ltr\">front&nbsp;=&nbsp;newNode</bdi> و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newNode</bdi>.",
+     "لو سبت الـ front بـ NULL، الـ dequeue والـ display مش هيشوفوا أي node. الـ node الواحدة هي الأولى والأخيرة في نفس الوقت، فـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;newNode</bdi>.",
+     "صح. خطوة 3: لو الـ queue فاضي، الـ node الجديدة بتبقى أول node وآخر node في نفس الوقت، فـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;newNode</bdi> و<bdi dir=\"ltr\">rear&nbsp;=&nbsp;newNode</bdi> <bdi dir=\"ltr\">(L7,&nbsp;Enqueue)</bdi>.",
      "الـ top ده pointer بتاع الـ stack؛ الـ linked queue فيه front وrear بس."
     ],
     [
      "الـ 50 22 15 10 ده عكس ترتيب الإضافة، وده اللي الـ linked stack بيعرضه. الـ queue بيعرض من الـ front للـ rear.",
-     "الـ display() بتمشي ورا الـ next من الـ front من غير ما تنط على حاجة، فالترتيب لازم يبقى ترتيب الإضافة 10 15 22 50.",
-     "لو بدأت من الـ 22 تبقى نطّيت على الـ front. الـ display() بتبدأ من الـ front (10) وتمشي ورا الـ next لحد الـ rear.",
-     "صح. الـ display() بتبدأ بـ temp = front (أول واحدة اتضافت، 10) وتمشي ورا الـ next لحد الـ NULL، فبتطبع بترتيب الإضافة FIFO (L7, Display)."
+     "الـ <code>display()</code> بتمشي ورا الـ next من الـ front من غير ما تنط على حاجة، فالترتيب لازم يبقى ترتيب الإضافة <bdi dir=\"ltr\">10&nbsp;15&nbsp;22&nbsp;50</bdi>.",
+     "لو بدأت من الـ 22 تبقى نطّيت على الـ front. الـ <code>display()</code> بتبدأ من الـ front (10) وتمشي ورا الـ next لحد الـ rear.",
+     "صح. الـ <code>display()</code> بتبدأ بـ <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi> (أول واحدة اتضافت، 10) وتمشي ورا الـ next لحد الـ NULL، فبتطبع بترتيب الإضافة FIFO <bdi dir=\"ltr\">(L7,&nbsp;Display)</bdi>."
     ],
     [
-     "المسح في الـ queue بيبقى من الـ front. وكمان rear->next بيبقى NULL، فـ rear = rear->next هتضيّع آخر الـ queue وخلاص.",
-     "صح. الـ dequeue بتاع المحاضرة: اتأكد إنه مش فاضي (front == NULL)؛ خلي temp = front؛ حرّك front = front->next؛ وبعدين delete temp (L7, Dequeue).",
+     "المسح في الـ queue بيبقى من الـ front. وكمان <code>rear-⁠&gt;next</code> بيبقى NULL، فـ <bdi dir=\"ltr\">rear&nbsp;=&nbsp;rear-⁠&gt;next</bdi> هتضيّع آخر الـ queue وخلاص.",
+     "صح. الـ dequeue بتاع المحاضرة: اتأكد إنه مش فاضي (<bdi dir=\"ltr\">front&nbsp;==&nbsp;NULL</bdi>)؛ خلي <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi>؛ حرّك <bdi dir=\"ltr\">front&nbsp;=&nbsp;front-⁠&gt;next</bdi>؛ وبعدين <bdi dir=\"ltr\">delete&nbsp;temp</bdi> <bdi dir=\"ltr\">(L7,&nbsp;Dequeue)</bdi>.",
      "الـ Dequeue بتشيك على الـ empty، والـ front لازم يتحرك الأول.",
-     "لو عملت delete للـ temp الأول، الـ front node بتتمسح من الـ memory، وبعدين الـ front->next هيتقري من memory اتفضّت. لازم الـ front يتحرك قبل الـ delete."
+     "لو عملت delete للـ temp الأول، الـ front node بتتمسح من الـ memory، وبعدين الـ <code>front-⁠&gt;next</code> هيتقري من memory اتفضّت. لازم الـ front يتحرك قبل الـ delete."
     ],
     [
      "صح. الـ array queue بيشتغل مع عدد ثابت من القيم بيتحدد من الأول بس؛ إنما الـ linked queue بيشتغل مع عدد مش محدود (variable) من غير size ثابت (L7, Linked queue).",
@@ -1264,15 +1264,15 @@ AR.ds = {
     ],
     [
      "لو مسحت الـ rear بس، الـ front هيفضل بيشاور على memory اتفضّت. لما يكون فيه item واحد، لازم الاتنين pointers يرجعوا NULL.",
-     "الـ node في الـ singly linked مالهاش prev pointer، فالـ rear مينفعش يرجع لورا؛ ولما يكون فيه item واحد الـ queue ببساطة بيفضى (front = rear = NULL).",
-     "صح. لما front->next == NULL (يعني item واحد بس)، الـ dequeue بتاع Lab 7 بيطبعه وبيعمل front = rear = NULL، فالـ queue بيبقى فاضي صح والـ isEmpty() ترجع تشتغل تاني (Lab 7, Linked queue).",
-     "الـ dequeue عمره ما بينادي enqueue. في حالة الـ item الواحد، Lab 7 بيطبعه وبيعمل front = rear = NULL."
+     "الـ node في الـ singly linked مالهاش prev pointer، فالـ rear مينفعش يرجع لورا؛ ولما يكون فيه item واحد الـ queue ببساطة بيفضى (<bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;NULL</bdi>).",
+     "صح. لما <bdi dir=\"ltr\">front-⁠&gt;next&nbsp;==&nbsp;NULL</bdi> (يعني item واحد بس)، الـ dequeue بتاع الـ Lab 7 بيطبعه وبيعمل <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;NULL</bdi>، فالـ queue بيبقى فاضي صح والـ <code>isEmpty()</code> ترجع تشتغل تاني <bdi dir=\"ltr\">(Lab&nbsp;7,&nbsp;Linked&nbsp;queue)</bdi>.",
+     "الـ dequeue عمره ما بينادي enqueue. في حالة الـ item الواحد، الـ Lab 7 بيطبعه وبيعمل <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;NULL</bdi>."
     ],
     [
      "الاتنين dequeue شالوا nodes من الـ front: الأول 1، وبعدين 2. مفضلش غير 3.",
      "الـ dequeue التاني شال الـ 2 هي كمان، فالـ queue فضي قبل ما الـ 3 تتضاف.",
-     "الـ queue كان فاضي بعد الاتنين dequeue، بس الـ enqueue(3) بعدها خلّى الـ 3 هي الـ node الوحيدة (front = rear = newnode).",
-     "صح. بعد اتنين dequeue الـ queue بيبقى فاضي (front = rear = NULL)؛ والـ 3 بتبقى الـ node الوحيدة."
+     "الـ queue كان فاضي بعد الاتنين dequeue، بس الـ <code>enqueue(3)</code> بعدها خلّى الـ 3 هي الـ node الوحيدة (<bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;newnode</bdi>).",
+     "صح. بعد اتنين dequeue الـ queue بيبقى فاضي (<bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;NULL</bdi>)؛ والـ 3 بتبقى الـ node الوحيدة."
     ],
     [
      "صح. الـ enqueue بيربط الـ node الجديدة بعد الـ rear (آخر الـ list) والـ dequeue بيشيل الـ node اللي عند الـ front (أول الـ list)، فاللي يدخل الأول يطلع الأول (L7, Linked queue).",
@@ -1282,8 +1282,8 @@ AR.ds = {
     ],
     [
      "زيارة واحدة بتشيك على الـ front بس (10). والـ 22 هي التالتة من الـ front.",
-     "الـ search بترجع true أول ما temp->data == 22، فعمرها ما بتوصل للـ 50.",
-     "صح. الـ search بتبدأ من الـ front وتشيك على 10، وبعدين 15، وبعدين 22 اللي عندها temp->data == item فترجع true: يبقى 3 nodes (L7, Searching).",
+     "الـ search بترجع true أول ما <bdi dir=\"ltr\">temp-⁠&gt;data&nbsp;==&nbsp;22</bdi>، فعمرها ما بتوصل للـ 50.",
+     "صح. الـ search بتبدأ من الـ front وتشيك على 10، وبعدين 15، وبعدين 22 اللي عندها <bdi dir=\"ltr\">temp-⁠&gt;data&nbsp;==&nbsp;item</bdi> فترجع true: يبقى 3 nodes <bdi dir=\"ltr\">(L7,&nbsp;Searching)</bdi>.",
      "زيارتين بيشيكوا على 10 و15 بس؛ والـ 22 هي الـ node التالتة."
     ]
    ]
@@ -1296,7 +1296,7 @@ AR.ds = {
       "الـ linked list مكوّن من nodes متوصلة ببعض. في الـ <b>singly</b> linked list كل node فيها data وpointer للـ node اللي بعدها بس، فبنمشي في <b>اتجاه واحد</b> (لقدام).",
       "الـ node في الـ <b>doubly linked list</b> فيها <b>data</b>، وpointer للـ node اللي <b>بعدها (next)</b>، وpointer للـ node اللي <b>قبلها (previous)</b>، فنقدر نمشي في <b>الاتجاهين</b>، لقدام ولورا.",
       "الـ fields بتاعة الـ node: الـ <b>Data</b> (القيمة)، الـ <b>prev</b> (pointer للـ node اللي قبلها)، الـ <b>next</b> (pointer للـ node اللي بعدها). الـ prev بتاع أول node والـ next بتاع آخر node بيبقوا NULL.",
-      "التمن: memory زيادة للـ prev pointer، وكل insert/delete لازم يعدّل الـ links <b>الاتنين</b> next وprev."
+      "التمن: memory زيادة للـ prev pointer، وكل insert أو delete لازم يعدّل الـ links <b>الاتنين</b>: الـ next والـ prev."
      ]
     },
     {
@@ -1306,7 +1306,7 @@ AR.ds = {
      "h": "الـ Insertion: في الأول وفي الآخر (كود الدكتورة)"
     },
     {
-     "h": "الإضافة بالترتيب (نسخة آمنة، اتجربت بـ g++)"
+     "h": "الإضافة بالترتيب (نسخة آمنة، اتجربت بـ <code>g++</code>)"
     },
     {
      "h": "الـ Deletion (كود الدكتورة)"
@@ -1315,125 +1315,125 @@ AR.ds = {
      "h": "شيل كل العناصر (شكل سؤال الامتحان، اتجرب)"
     },
     {
-     "h": "Lab 8: list فيها head وtail",
+     "h": "الـ Lab 8: الـ list فيها head وtail",
      "pts": [
-      "الـ lab بيحتفظ بـ <b>اتنين pointers، head وtail</b>، فالـ <code>insertLast</code> مش محتاجة loop: <code>newnode-&gt;prev = tail; tail-&gt;next = newnode; tail = newnode;</code>",
-      "الـ <code>removeLast</code>: <code>delnode = tail; tail-&gt;prev-&gt;next = NULL; tail = tail-&gt;prev; delete delnode;</code>",
-      "الـ <code>displayBackward</code> بتبدأ من الـ tail وبتمشي ورا الـ prev؛ وده ممكن بس عشان فيه prev pointers.",
-      "الـ main بتاع الـ lab: insertFirst(10)، insertLast(20)، insertLast(30)، insertFirst(100)، insertFirst(200) ← 200 100 10 20 30؛ removeFirst ← 100 10 20 30؛ removeLast ← 100 10 20؛ insertAtPosition(1000,2) ← 100 1000 10 20؛ insertAtPosition(2000,4) ← 100 1000 10 2000 20؛ insertAtPosition(5,1) ← 5 100 1000 10 2000 20 (على فرض إن <code>current</code> بيبدأ من 1؛ كود الـ lab ناسي يعمله initialize)."
+      "الـ lab بيحتفظ بـ <b>اتنين pointers، الـ head والـ tail</b>، فالـ <code>insertLast</code> مش محتاجة loop:<pre>newnode-&gt;prev = tail;\ntail-&gt;next = newnode;\ntail = newnode;</pre>",
+      "الـ <code>removeLast</code> بتعمل:<pre>delnode = tail;\ntail-&gt;prev-&gt;next = NULL;\ntail = tail-&gt;prev;\ndelete delnode;</pre>",
+      "الـ <bdi dir=\"ltr\">displayBackward</bdi> بتبدأ من الـ tail وبتمشي ورا الـ prev؛ وده ممكن بس عشان فيه prev pointers.",
+      "الـ main بتاع الـ lab، وبعد كل خطوة الـ list بتبقى:<pre>insertFirst(10), insertLast(20),\ninsertLast(30), insertFirst(100),\ninsertFirst(200)\n  → 200 100 10 20 30\nremoveFirst\n  → 100 10 20 30\nremoveLast\n  → 100 10 20\ninsertAtPosition(1000,2)\n  → 100 1000 10 20\ninsertAtPosition(2000,4)\n  → 100 1000 10 2000 20\ninsertAtPosition(5,1)\n  → 5 100 1000 10 2000 20</pre>(على فرض إن <code>current</code> بيبدأ من 1؛ كود الـ lab ناسي يعمله initialize)."
      ]
     }
    ],
    "cards": [
     "الـ data والـ prev والـ next.",
     "تقدر تمشي في الاتجاهين (لقدام ولورا).",
-    "memory زيادة للـ prev pointer؛ وlinks أكتر لازم تتعدل.",
-    "newnode->next = head; newnode->prev = NULL; head->prev = newnode; head = newnode;",
-    "last->next = newnode; newnode->prev = last; newnode->next = NULL;",
-    "newnode->next = temp->next; newnode->prev = temp; temp->next->prev = newnode; temp->next = newnode;",
-    "head = head->next; head->prev = NULL; واعمل delete للـ head القديم.",
-    "temp2->next = temp1->next; temp1->next->prev = temp1->prev; delete temp1;",
-    "NULL",
+    "الـ memory زيادة للـ prev pointer؛ وlinks أكتر لازم تتعدل.",
+    "الكود:<pre>newnode-&gt;next = head;\nnewnode-&gt;prev = NULL;\nhead-&gt;prev = newnode;\nhead = newnode;</pre>",
+    "الكود:<pre>last-&gt;next = newnode;\nnewnode-&gt;prev = last;\nnewnode-&gt;next = NULL;</pre>",
+    "الكود:<pre>newnode-&gt;next = temp-&gt;next;\nnewnode-&gt;prev = temp;\ntemp-&gt;next-&gt;prev = newnode;\ntemp-&gt;next = newnode;</pre>",
+    "الكود:<pre>head = head-&gt;next;\nhead-&gt;prev = NULL;</pre>واعمل delete للـ head القديم.",
+    "الكود:<pre>temp2-&gt;next = temp1-&gt;next;\ntemp1-&gt;next-&gt;prev = temp1-&gt;prev;\ndelete temp1;</pre>",
+    "بيبقى NULL",
     "في الأول، في الآخر، في position جوه الـ list.",
     "من الأول، من الآخر، node معينة.",
     "عشان تضيف/تشيل من الآخر وتعرض بالعكس من غير traversal."
    ],
    "qa": [
-    "الـ doubly linked list مكوّن من nodes كل واحدة فيها data وpointer للـ node اللي بعدها وpointer للـ node اللي قبلها، فتقدر تمشي فيه لقدام ولورا. الـ node في الـ singly linked list فيها data وnext بس، فبتمشي لقدام بس. الـ doubly بياخد memory زيادة للـ prev ومحتاج تعديلات pointers أكتر في الـ insert/delete.",
-    "void insertatbeginning(int item){ Node *newnode=new Node(); newnode->data=item; if(isEmpty()){ newnode->next=NULL; newnode->prev=NULL; head=newnode; } else { newnode->next=head; newnode->prev=NULL; head->prev=newnode; head=newnode; } }<br>الفكرة: لو الـ list فاضية الـ node الجديدة بتبقى الـ head والـ next والـ prev بتوعها NULL؛ غير كده بتربطها قبل الـ head القديم في الاتجاهين وتحرّك الـ head.",
-    "لو فاضية: head = newnode. ولو item &lt; head->data: newnode->next = head; head->prev = newnode; head = newnode. غير كده: temp = head; while(temp->next != NULL &amp;&amp; temp->next->data &lt; item) temp = temp->next; newnode->next = temp->next; newnode->prev = temp; if(temp->next != NULL) temp->next->prev = newnode; temp->next = newnode;",
-    "امشي لحد ما temp1 يبقى الـ node اللي عايز تمسحها وtemp2 الـ node اللي قبلها. اربط حواليها في الاتجاهين: temp2->next = temp1->next و temp1->next->prev = temp1->prev (= temp2). وبعدين اعمل delete لـ temp1. لو temp1 هي آخر node، محتاج temp2->next = NULL بس.",
-    "void removeAll(){ if(isEmpty()){ cout&lt;&lt;\"List is empty\"; return; } while(head != NULL){ Node *temp = head; head = head->next; if(head != NULL) head->prev = NULL; delete temp; } }<br>الفكرة: لو الـ list فاضية اطبع رسالة، غير كده امسح من الأول node node لحد ما الـ head يبقى NULL، وظبّط الـ prev بتاع الـ head الجديد لـ NULL."
+    "الـ doubly linked list مكوّن من nodes كل واحدة فيها data وpointer للـ node اللي بعدها وpointer للـ node اللي قبلها، فتقدر تمشي فيه لقدام ولورا. الـ node في الـ singly linked list فيها الـ data والـ next بس، فبتمشي لقدام بس. الـ doubly بياخد memory زيادة للـ prev ومحتاج تعديلات pointers أكتر في الـ insert والـ delete.",
+    "الكود:<pre>void insertatbeginning(int item){\n  Node *newnode=new Node();\n  newnode-&gt;data=item;\n  if(isEmpty()){\n    newnode-&gt;next=NULL;\n    newnode-&gt;prev=NULL;\n    head=newnode;\n  } else {\n    newnode-&gt;next=head;\n    newnode-&gt;prev=NULL;\n    head-&gt;prev=newnode;\n    head=newnode;\n  }\n}</pre>الفكرة: لو الـ list فاضية الـ node الجديدة بتبقى الـ head والـ next والـ prev بتوعها NULL؛ غير كده بتربطها قبل الـ head القديم في الاتجاهين وتحرّك الـ head.",
+    "لو فاضية:<pre>head = newnode;</pre>ولو <bdi dir=\"ltr\">item&nbsp;&lt;&nbsp;head-⁠&gt;data</bdi> يبقى:<pre>newnode-&gt;next = head;\nhead-&gt;prev = newnode;\nhead = newnode;</pre>غير كده:<pre>temp = head;\nwhile(temp-&gt;next != NULL &amp;&amp;\n      temp-&gt;next-&gt;data &lt; item)\n  temp = temp-&gt;next;\nnewnode-&gt;next = temp-&gt;next;\nnewnode-&gt;prev = temp;\nif(temp-&gt;next != NULL)\n  temp-&gt;next-&gt;prev = newnode;\ntemp-&gt;next = newnode;</pre>",
+    "امشي لحد ما <code>temp1</code> يبقى الـ node اللي عايز تمسحها و<code>temp2</code> الـ node اللي قبلها. اربط حواليها في الاتجاهين:<pre>temp2-&gt;next = temp1-&gt;next;\ntemp1-&gt;next-&gt;prev = temp1-&gt;prev;\n// (= temp2)</pre>وبعدين اعمل delete لـ <code>temp1</code>. لو <code>temp1</code> هي آخر node، محتاج <bdi dir=\"ltr\">temp2-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> بس.",
+    "الكود:<pre>void removeAll(){\n  if(isEmpty()){\n    cout&lt;&lt;\"List is empty\";\n    return;\n  }\n  while(head != NULL){\n    Node *temp = head;\n    head = head-&gt;next;\n    if(head != NULL)\n      head-&gt;prev = NULL;\n    delete temp;\n  }\n}</pre>الفكرة: لو الـ list فاضية اطبع رسالة، غير كده امسح من الأول node node لحد ما الـ head يبقى NULL، وظبّط الـ prev بتاع الـ head الجديد لـ NULL."
    ],
    "quiz": [
     [
-     "غلط. الـ N->next = NULL محتاجينها بس لما N تبقى آخر node (لو بنضيف في الآخر أو الـ list فاضية). لو بنضيف في الأول، الـ N->next = head.",
-     "صح. لما تضيف في الأول أو في النص، الـ N->next بيشاور على الـ node اللي بعدها؛ وبيبقى NULL بس لما تضيف في الآخر (أو في list فاضية)."
+     "غلط. الـ <bdi dir=\"ltr\">N-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> محتاجينها بس لما N تبقى آخر node (لو بنضيف في الآخر أو الـ list فاضية). لو بنضيف في الأول، بيبقى <bdi dir=\"ltr\">N-⁠&gt;next&nbsp;=&nbsp;head</bdi>.",
+     "صح. لما تضيف في الأول أو في النص، الـ <code>N-⁠&gt;next</code> بيشاور على الـ node اللي بعدها؛ وبيبقى NULL بس لما تضيف في الآخر (أو في list فاضية)."
     ],
     [
      "الـ data والـ next بس دي node بتاعة singly linked list، ودي بتتمشي لقدام بس. الـ doubly linked node بتزود عليها الـ prev.",
      "صح. كل node في الـ doubly linked list بتشيل الـ data والـ prev (pointer على الـ node اللي قبلها) والـ next (pointer على اللي بعدها)، فتقدر تمشي في الـ list في الاتجاهين (L8, Representation).",
      "من غير next مش هتقدر تمشي في الـ list لقدام. الـ doubly linked node فيها الـ prev والـ next الاتنين، وكمان الـ data.",
-     "الـ node لازم تشيل قيمة الـ data؛ الـ next والـ prev دول مجرد links. الـ node class فيها int data وNode *next وNode *prev."
+     "الـ node لازم تشيل قيمة الـ data؛ الـ next والـ prev دول مجرد links. الـ node class فيها <bdi dir=\"ltr\">int&nbsp;data</bdi> و<bdi dir=\"ltr\">Node&nbsp;*next</bdi> و<bdi dir=\"ltr\">Node&nbsp;*prev</bdi>."
     ],
     [
      "ده هيخلي الـ head القديم يشاور لقدام على الـ node الجديدة.",
      "صح. أول node القديمة لازم تشاور لورا على الـ node الجديدة.",
-     "الـ newnode->next هي الـ head القديمة؛ لو خليت الـ next بتاعها NULL هتقطع كل الـ nodes اللي بعدها. الخطوة الناقصة إنك تربط الـ head القديمة لورا: head->prev = newnode.",
-     "الـ head = NULL مش بتعمل حاجة (الـ head = newnode هتكتب فوقها)، والـ prev بتاع أول node قديمة هيفضل NULL. الـ link الناقص هو head->prev = newnode."
+     "الـ <code>newnode-⁠&gt;next</code> هي الـ head القديمة؛ لو خليت الـ next بتاعها NULL هتقطع كل الـ nodes اللي بعدها. الخطوة الناقصة إنك تربط الـ head القديمة لورا: <bdi dir=\"ltr\">head-⁠&gt;prev&nbsp;=&nbsp;newnode</bdi>.",
+     "الـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;NULL</bdi> مش بتعمل حاجة (الـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;newnode</bdi> هتكتب فوقها)، والـ prev بتاع أول node قديمة هيفضل NULL. الـ link الناقص هو <bdi dir=\"ltr\">head-⁠&gt;prev&nbsp;=&nbsp;newnode</bdi>."
     ],
     [
      "المشي لقدام من الـ head شغال في الاتنين، لأن الاتنين فيهم next pointers.",
      "صح. الـ singly linked node فيها next بس، فبتمشي لقدام بس؛ إنما الـ prev pointer في الـ doubly linked node بيخليك تمشي لورا من آخر node كمان (L8, Doubly linked list).",
-     "العدّ ده traversal لقدام بتعمل فيه c++ لكل node، والاتنين بيدعموه.",
+     "العدّ ده traversal لقدام بتعمل فيه <code>c++</code> لكل node، والاتنين بيدعموه.",
      "الـ search بيمشي لقدام ويقارن الـ data، وده شغال في الـ singly والـ doubly linked lists الاتنين."
     ],
     [
-     "صح. الـ temp2->next = temp1->next بتخلي الـ node اللي قبل تعدّي temp1 لقدام، والـ temp1->next->prev = temp1->prev بتخلي الـ node اللي بعدها تشاور لورا على temp2؛ وبعدين نعمل delete لـ temp1 (L8, Deleting within a doubly linked list).",
+     "صح. الـ <bdi dir=\"ltr\">temp2-⁠&gt;next&nbsp;=&nbsp;temp1-⁠&gt;next</bdi> بتخلي الـ node اللي قبل تعدّي temp1 لقدام، والـ <bdi dir=\"ltr\">temp1-⁠&gt;next-⁠&gt;prev&nbsp;=&nbsp;temp1-⁠&gt;prev</bdi> بتخلي الـ node اللي بعدها تشاور لورا على temp2؛ وبعدين نعمل delete لـ temp1 <bdi dir=\"ltr\">(L8,&nbsp;Deleting&nbsp;within&nbsp;a&nbsp;doubly&nbsp;linked&nbsp;list)</bdi>.",
      "السطرين دول بيخلوا temp2 تشاور لورا على temp1 وtemp1 تشاور لورا على temp2، يعني temp1 لسه جوه السلسلة ومحدش عدّاها.",
-     "الـ temp2->next = NULL بتنهي الـ list عند temp2، فبتضيّع كل الـ nodes اللي بعد temp1 بدل ما تعدّي temp1 بس.",
-     "تحريك الـ head بنستخدمه بس لما الـ node اللي هنمسحها هي الأولى (head->data == value)؛ وهنا temp1 node في النص."
+     "الـ <bdi dir=\"ltr\">temp2-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> بتنهي الـ list عند temp2، فبتضيّع كل الـ nodes اللي بعد temp1 بدل ما تعدّي temp1 بس.",
+     "تحريك الـ head بنستخدمه بس لما الـ node اللي هنمسحها هي الأولى (<bdi dir=\"ltr\">head-⁠&gt;data&nbsp;==&nbsp;value</bdi>)؛ وهنا temp1 node في النص."
     ]
    ],
    "extra": [
     [
-     "الـ removeFirst() مسحت الـ head (200)، فالـ 200 راحت؛ والـ removeLast() مسحت الـ 30.",
+     "الـ <code>removeFirst()</code> مسحت الـ head (200)، فالـ 200 راحت؛ والـ <code>removeLast()</code> مسحت الـ 30.",
      "صح. 200 100 10 20 30 ← شيل الأول ← 100 10 20 30 ← شيل الآخر ← 100 10 20.",
-     "الـ removeLast() بتمسح الـ tail node (30): tail->prev->next = NULL; tail = tail->prev.",
-     "الـ 100 اتضافت في الأول بعد الـ 10 ومحدش شالها: الـ removeFirst() شالت الـ 200 بس."
+     "الـ <code>removeLast()</code> بتمسح الـ tail node (30):<span class=\"ltr\">tail-&gt;prev-&gt;next = NULL; tail = tail-&gt;prev;</span>",
+     "الـ 100 اتضافت في الأول بعد الـ 10 ومحدش شالها: الـ <code>removeFirst()</code> شالت الـ 200 بس."
     ],
     [
      "ده الترتيب لقدام (displayForward). الـ displayBackward بتبدأ من الـ tail وتمشي على الـ prev، فبتطبع بالعكس.",
      "الـ 2000 اتضافت في position 4، بعد الـ 10، فلما نمشي لورا بتيجي بعد الـ 20 على طول وقبل الـ 10.",
-     "صح. لقدام بتبقى 5 100 1000 10 2000 20 (اتشغلت بـ g++، والـ current معموله initialize بـ 1).",
+     "صح. لقدام بتبقى <bdi dir=\"ltr\">5&nbsp;100&nbsp;1000&nbsp;10&nbsp;2000&nbsp;20</bdi> (اتشغلت بـ <code>g++</code>، والـ current معموله initialize بـ 1).",
      "الـ 1000 اتضافت في position 2، بعد الـ 100 على طول، فلما نمشي لورا بتيجي قبل الـ 100 مباشرة: … 10 1000 100 5."
     ],
     [
-     "الـ head->next = NULL هتقطع أول node الجديدة عن باقي الـ list.",
+     "الـ <bdi dir=\"ltr\">head-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> هتقطع أول node الجديدة عن باقي الـ list.",
      "مسح أول node مش بيحرّك الـ tail (طالما فيه أكتر من node)؛ اللي بيتغير بس الـ head والـ prev بتاع الـ head الجديدة.",
-     "الـ prev بتاع أول node لازم يبقى NULL، مش يشاور على نفسه؛ الـ head->prev = head هتعمل self-loop لما تمشي لورا.",
+     "الـ prev بتاع أول node لازم يبقى NULL، مش يشاور على نفسه؛ الـ <bdi dir=\"ltr\">head-⁠&gt;prev&nbsp;=&nbsp;head</bdi> هتعمل self-loop لما تمشي لورا.",
      "صح. أول node الجديدة مينفعش تشاور لورا على الـ node اللي اتمسحت."
     ],
     [
-     "صح. شيك إن head != NULL قبل ما تظبّط الـ prev.",
-     "لو فيه node واحدة، الـ head = head->next بتخلي الـ head بـ NULL، وبعدين الـ head->prev = NULL بتعمل dereference لـ NULL والبرنامج يعمل crash.",
-     "فيه node واحدة بس أصلًا، واللي بيتمسح هو temp بس؛ المشكلة في الوصول لـ head->prev والـ head بقت NULL.",
-     "الـ value = head->data بتتقري صح قبل ما الـ head يتحرك؛ المشكلة هي الـ crash عند head->prev = NULL."
+     "صح. شيك إن <bdi dir=\"ltr\">head&nbsp;!=&nbsp;NULL</bdi> قبل ما تظبّط الـ prev.",
+     "لو فيه node واحدة، الـ <bdi dir=\"ltr\">head&nbsp;=&nbsp;head-⁠&gt;next</bdi> بتخلي الـ head بـ NULL، وبعدين الـ <bdi dir=\"ltr\">head-⁠&gt;prev&nbsp;=&nbsp;NULL</bdi> بتعمل dereference لـ NULL والبرنامج يعمل crash.",
+     "فيه node واحدة بس أصلًا، واللي بيتمسح هو temp بس؛ المشكلة في الوصول لـ <code>head-⁠&gt;prev</code> والـ head بقت NULL.",
+     "الـ <bdi dir=\"ltr\">value&nbsp;=&nbsp;head-⁠&gt;data</bdi> بتتقري صح قبل ما الـ head يتحرك؛ المشكلة هي الـ crash عند <bdi dir=\"ltr\">head-⁠&gt;prev&nbsp;=&nbsp;NULL</bdi>."
     ],
     [
      "كل node بتخزن الـ data مرة واحدة، زي الـ singly linked node بالظبط. الـ memory الزيادة هي الـ reference اللي بيرجع لورا.",
-     "صح. غير الـ data والـ next، كل doubly linked node فيها prev pointer؛ والمحاضرة بتقول إن ده بيسمح بالمشي لورا بس محتاج memory زيادة (L5/L8, Doubly linked list).",
-     "الـ nodes بتتعمل واحدة واحدة بـ new Node()، مش كـ array؛ والـ memory الزيادة في كل node هي الـ prev pointer.",
+     "صح. غير الـ data والـ next، كل doubly linked node فيها prev pointer؛ والمحاضرة بتقول إن ده بيسمح بالمشي لورا بس محتاج memory زيادة <bdi dir=\"ltr\">(L5/L8,&nbsp;Doubly&nbsp;linked&nbsp;list)</bdi>.",
+     "الـ nodes بتتعمل واحدة واحدة بـ <bdi dir=\"ltr\">new&nbsp;Node()</bdi>، مش كـ array؛ والـ memory الزيادة في كل node هي الـ prev pointer.",
      "الـ nodes مش بتخزن الـ head؛ الـ head ده pointer واحد بس في الـ list class. كل node فيها data وnext وprev بس."
     ],
     [
-     "الـ temp->next هي 20؛ والـ prev بتاع 15 لازم يشاور على الـ node اللي قبلها، اللي هي temp (10).",
+     "الـ <code>temp-⁠&gt;next</code> هي 20؛ والـ prev بتاع 15 لازم يشاور على الـ node اللي قبلها، اللي هي temp (10).",
      "الـ prev بتاع 10 بيشاور على الـ node اللي قبل 10 ومش بيتغير؛ اللي لازم يبقى 15 هو الـ prev بتاع 20.",
-     "صح. الـ temp->next هي 20، والـ 20 لازم تشاور لورا على الـ node الجديدة، فالـ prev بتاعها يبقى 15؛ المحاضرة كاتباها newnode->next->prev = newnode، مع newnode->prev = temp وnewnode->next = 20 (L8, insertsorted).",
-     "الـ newnode->next = temp هتخلي 15 تشاور لورا على 10. الـ next بتاعها لازم يبقى الـ node اللي بعدها، 20."
+     "صح. الـ <code>temp-⁠&gt;next</code> هي 20، والـ 20 لازم تشاور لورا على الـ node الجديدة، فالـ prev بتاعها يبقى 15؛ المحاضرة كاتباها:<span class=\"ltr\">newnode-&gt;next-&gt;prev = newnode</span>مع <bdi dir=\"ltr\">newnode-⁠&gt;prev&nbsp;=&nbsp;temp</bdi> و<bdi dir=\"ltr\">newnode-⁠&gt;next&nbsp;=&nbsp;20</bdi> <bdi dir=\"ltr\">(L8,&nbsp;insertsorted)</bdi>.",
+     "الـ <bdi dir=\"ltr\">newnode-⁠&gt;next&nbsp;=&nbsp;temp</bdi> هتخلي 15 تشاور لورا على 10. الـ next بتاعها لازم يبقى الـ node اللي بعدها، 20."
     ],
     [
-     "الـ prev = NULL دي لأول node بس. الـ node اللي بتتضاف في الآخر فيه node قبلها، اللي هي آخر node قديمة.",
+     "الـ <bdi dir=\"ltr\">prev&nbsp;=&nbsp;NULL</bdi> دي لأول node بس. الـ node اللي بتتضاف في الآخر فيه node قبلها، اللي هي آخر node قديمة.",
      "الـ prev يبقى head بس لو الـ list كان فيها node واحدة. في العموم هو temp1، آخر node قديمة اللي الـ loop وصلها.",
-     "الـ node عمرها ما بتشاور لورا على نفسها؛ الـ newnode->prev لازم يبقى الـ node اللي قبلها، temp1.",
-     "صح. الـ insertatend بتمشي بـ temp1 لحد آخر node، تربط temp1->next = newnode، وبعدين newnode->prev = temp1 عشان آخر node الجديدة تشاور لورا على القديمة (L8, Inserting at the end)."
+     "الـ node عمرها ما بتشاور لورا على نفسها؛ الـ <code>newnode-⁠&gt;prev</code> لازم يبقى الـ node اللي قبلها، temp1.",
+     "صح. الـ insertatend بتمشي بـ temp1 لحد آخر node، تربط <bdi dir=\"ltr\">temp1-⁠&gt;next&nbsp;=&nbsp;newnode</bdi>، وبعدين <bdi dir=\"ltr\">newnode-⁠&gt;prev&nbsp;=&nbsp;temp1</bdi> عشان آخر node الجديدة تشاور لورا على القديمة <bdi dir=\"ltr\">(L8,&nbsp;Inserting&nbsp;at&nbsp;the&nbsp;end)</bdi>."
     ],
     [
-     "صح. الـ Lab 8 شايل tail pointer: احفظ delnode = tail، اقطع الـ link من الـ node اللي قبلها (tail->prev->next = NULL)، رجّع الـ tail خطوة لورا عليها، واعمل delete لـ delnode (Lab 8, removeLast).",
-     "الـ tail = NULL بترمي الـ pointer الوحيد على آخر node، وبعدها delete tail بتمسح NULL؛ والـ node اللي قبلها لسه بتشاور عليها.",
+     "صح. الـ Lab 8 شايل tail pointer: احفظ <bdi dir=\"ltr\">delnode&nbsp;=&nbsp;tail</bdi>، اقطع الـ link من الـ node اللي قبلها (<bdi dir=\"ltr\">tail-⁠&gt;prev-⁠&gt;next&nbsp;=&nbsp;NULL</bdi>)، رجّع الـ tail خطوة لورا عليها، واعمل delete لـ delnode <bdi dir=\"ltr\">(Lab&nbsp;8,&nbsp;removeLast)</bdi>.",
+     "الـ <bdi dir=\"ltr\">tail&nbsp;=&nbsp;NULL</bdi> بترمي الـ pointer الوحيد على آخر node، وبعدها <bdi dir=\"ltr\">delete&nbsp;tail</bdi> بتمسح NULL؛ والـ node اللي قبلها لسه بتشاور عليها.",
      "ده بيحرّك الـ head لقدام، يعني شغال على أول node، وكمان بيمسح الـ head الجديدة بدل القديمة.",
-     "الـ tail->next هو أصلًا NULL؛ الـ node اللي قبله هي اللي لازم تتعدل."
+     "الـ <code>tail-⁠&gt;next</code> هو أصلًا NULL؛ الـ node اللي قبله هي اللي لازم تتعدل."
     ],
     [
-     "الـ head->next هي 6، بس السؤال بيرجع خطوة لورا بالـ prev، فبنرجع لـ 3.",
+     "الـ <code>head-⁠&gt;next</code> هي 6، بس السؤال بيرجع خطوة لورا بالـ prev، فبنرجع لـ 3.",
      "صح. لما تروح لقدام وترجع لورا بترجع للـ head (3).",
-     "الـ 9 هي آخر node، وبنوصلها بـ head->next->next. إنك تمشي خطوة لقدام وخطوة لورا بيرجّعك للـ head.",
+     "الـ 9 هي آخر node، وبنوصلها بـ <bdi dir=\"ltr\">head-⁠&gt;next-⁠&gt;next</bdi>. إنك تمشي خطوة لقدام وخطوة لورا بيرجّعك للـ head.",
      "الـ prev بتاع أول node بس هو اللي NULL. الـ 6 قبلها node، اللي هي 3."
     ],
     [
      "لو غيّرت pointer واحد بس، الـ node الجديدة هتفضل مش مربوطة من ناحية. الجارين الاتنين والـ fields الاتنين بتوع الـ node الجديدة بيتغيروا.",
-     "الـ 2 تغييرات (newnode->next وprevious->next) دي حالة الـ singly linked. الـ doubly list لازم كمان تظبط 2 prev pointers.",
-     "صح. newnode->next وnewnode->prev وprevious->next وfollowing->prev.",
+     "الـ 2 تغييرات (الـ <code>newnode-⁠&gt;next</code> والـ <bdi dir=\"ltr\">previous-⁠&gt;next</bdi>) دي حالة الـ singly linked. الـ doubly list لازم كمان تظبط 2 prev pointers.",
+     "صح. الأربعة هما:<span class=\"ltr\">newnode-&gt;next, newnode-&gt;prev, previous-&gt;next, following-&gt;prev</span>",
      "أربع links بس هي اللي بتتغير: الـ next والـ prev بتوع الـ node الجديدة، والـ next بتاع الـ node اللي قبل، والـ prev بتاع الـ node اللي بعد."
     ]
    ]
@@ -1444,16 +1444,16 @@ AR.ds = {
      "h": "أجزاء الـ tree",
      "pts": [
       "الـ tree هو data structure من نوع <b>non-linear (hierarchical)</b> مكوّن من <b>nodes</b>.",
-      "الـ <b>Root node</b>: الـ node اللي فوق خالص ومالهاش parent. الـ <b>Parent</b> node والـ <b>child</b> nodes بتوعها. الـ <b>Leaf (terminal) nodes</b>: nodes مالهاش children. الـ <b>Internal node</b>: node ليها child واحد على الأقل. الـ <b>Sub-tree</b>: node ومعاها كل الـ descendants بتوعها.",
+      "الـ <b>Root node</b>: الـ node اللي فوق خالص ومالهاش parent. الـ <b>Parent</b> node والـ <b>child</b> nodes بتوعها. الـ <b>Leaf (terminal) nodes</b> هي الـ nodes اللي مالهاش children. الـ <b>Internal node</b> هي node ليها child واحد على الأقل. الـ <b>Sub-tree</b> هو node ومعاها كل الـ descendants بتوعها.",
       "الـ <b>Binary tree</b>: كل node ليها <b>2 children بالكتير</b> (left وright).",
-      "الـ <b>Binary Search Tree (BST)</b>: binary tree فيه (1) كل node ليها <b>key مش متكرر (unique)</b>؛ (2) كل الـ keys اللي في الـ <b>left subtree</b> بتاع أي node <b>أصغر</b> من الـ key بتاعها؛ (3) كل الـ keys اللي في الـ <b>right subtree</b> <b>أكبر</b>."
+      "الـ <b>Binary Search Tree (BST)</b> هو binary tree فيه:<br>(1) كل node ليها <b>key مش متكرر (unique)</b>.<br>(2) كل الـ keys اللي في الـ <b>left subtree</b> بتاع أي node <b>أصغر</b> من الـ key بتاعها.<br>(3) كل الـ keys اللي في الـ <b>right subtree</b> <b>أكبر</b>."
      ]
     },
     {
      "h": "الـ Traversals"
     },
     {
-     "h": "الـ trees اللي في أمثلة المحاضرة (اتجربت بـ g++)"
+     "h": "الـ trees اللي في أمثلة المحاضرة (اتجربت بـ <code>g++</code>)"
     },
     {
      "h": "كود الـ Node والـ Tree والـ traversals (كود الدكتورة)"
@@ -1463,8 +1463,8 @@ AR.ds = {
      "pts": [
       "الخطوات: اعمل node جديدة للعنصر؛ دوّر على الـ parent المناسب؛ واربط الـ node الجديدة كـ <b>leaf</b> (left أو right حسب الـ key بتاعها).",
       "النسخة الـ recursive: الـ parameters هي pointer للـ node الحالية (في الأول الـ root) والعنصر. لو الـ node الحالية NULL، اعمل node جديدة ورجّعها. غير كده لو العنصر أصغر (أكبر) من الـ key الحالي، اعمل recursion على الـ left (right) child وخلي الـ left (right) link بتاع الـ parent يساوي الناتج.",
-      "مثال: إضافة 57 في tree 1: 57 &gt; 43 ← يمين؛ 57 &lt; 64 ← شمال؛ 57 &gt; 56 ← يمين؛ 57 &lt; 59 ← بتبقى <b>الـ left child بتاع 59</b>.",
-      "مثال: إضافة 0.9 في الـ tree اللي الـ root بتاعه 1.0: 0.9 &lt; 1.0 ← شمال (0.6)؛ 0.9 &gt; 0.6 ← يمين (0.8)؛ 0.9 &gt; 0.8 ← الـ right child بتاع 0.8.",
+      "مثال: إضافة 57 في tree 1:<br>لأن <bdi dir=\"ltr\">57&nbsp;&gt;&nbsp;43</bdi> يبقى يمين؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&lt;&nbsp;64</bdi> يبقى شمال؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&gt;&nbsp;56</bdi> يبقى يمين؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&lt;&nbsp;59</bdi> بتبقى <b>الـ left child بتاع 59</b>.",
+      "مثال: إضافة 0.9 في الـ tree اللي الـ root بتاعه 1.0:<br>لأن <bdi dir=\"ltr\">0.9&nbsp;&lt;&nbsp;1.0</bdi> يبقى شمال (0.6)؛<br>ولأن <bdi dir=\"ltr\">0.9&nbsp;&gt;&nbsp;0.6</bdi> يبقى يمين (0.8)؛<br>ولأن <bdi dir=\"ltr\">0.9&nbsp;&gt;&nbsp;0.8</bdi> بتبقى الـ right child بتاع 0.8.",
       "<b>شكل</b> الـ tree بيعتمد على ترتيب الإضافة؛ لو ضفت keys مترتبة أصلًا هيطلع degenerate tree (شبه الـ linked list)."
      ]
     },
@@ -1474,21 +1474,21 @@ AR.ds = {
     {
      "h": "الـ Searching والـ deletion",
      "pts": [
-      "الـ <b>Search</b>: لو الـ key اللي بتدور عليه أصغر من الـ key الحالي، دوّر في الـ left subtree؛ لو أكبر، دوّر في الـ right subtree؛ لو مساوي، لقيته (رجّع الـ node / true)؛ ولو وصلت NULL، يبقى مش موجود.",
-      "دوّر على 0.7 في tree الـ 1.0: 1.0 ← 0.6 ← 0.8 ← 0.7 لقيناه. دوّر على 0.5: 1.0 ← 0.6 ← 0.3 ← 0.4 ← NULL، مش موجود.",
-      "حالات الـ <b>Delete</b>: (1) leaf: شيلها على طول؛ (2) ليها child واحد: حط الـ child مكانها؛ (3) ليها اتنين children: حط مكان الـ key بتاعها الـ inorder successor (أصغر قيمة في الـ right subtree) أو الـ predecessor (أكبر قيمة في الـ left subtree)، وبعدين امسح الـ node دي.",
+      "الـ <b>Search</b>: لو الـ key اللي بتدور عليه أصغر من الـ key الحالي، دوّر في الـ left subtree؛ لو أكبر، دوّر في الـ right subtree؛ لو مساوي، لقيته (رجّع الـ node أو <bdi dir=\"ltr\">true</bdi>)؛ ولو وصلت NULL، يبقى مش موجود.",
+      "دوّر على 0.7 في tree الـ 1.0:<span class=\"ltr\">1.0 → 0.6 → 0.8 → 0.7</span>لقيناه. دوّر على 0.5:<span class=\"ltr\">1.0 → 0.6 → 0.3 → 0.4 → NULL</span>يبقى مش موجود.",
+      "حالات الـ <b>Delete</b>:<br>(1) الـ leaf: شيلها على طول.<br>(2) ليها child واحد: حط الـ child مكانها.<br>(3) ليها اتنين children: حط مكان الـ key بتاعها الـ inorder successor (أصغر قيمة في الـ right subtree) أو الـ predecessor (أكبر قيمة في الـ left subtree)، وبعدين امسح الـ node دي.",
       "الـ <code>deleteitem</code> اللي في الـ slide بتتعامل مع الـ leaf ومع الـ node اللي ليها child واحد إنها تنسخ داتا الـ child وتمسح الـ child (وده صح بس لو الـ child ده leaf)؛ ومش بتتعامل مع حالة الاتنين children. في الامتحان، اشرح التلات حالات الـ standard."
      ]
     }
    ],
    "cards": [
     "أعلى node في الـ tree، ومالهاش parent.",
-    "node مالهاش children (terminal node).",
+    "الـ node اللي مالهاش children (terminal node).",
     "كل node ليها 2 children بالكتير.",
-    "الـ keys في الـ left subtree &lt; key الـ node &lt; الـ keys في الـ right subtree؛ والـ keys مش بتتكرر.",
-    "Left، parent، right.",
-    "Parent، left، right.",
-    "Left، right، parent.",
+    "القاعدة:<span class=\"ltr\">left subtree keys &lt; node key &lt; right subtree keys</span>والـ keys مش بتتكرر.",
+    "الترتيب:<span class=\"ltr\">Left, parent, right</span>",
+    "الترتيب:<span class=\"ltr\">Parent, left, right</span>",
+    "الترتيب:<span class=\"ltr\">Left, right, parent</span>",
     "الـ keys مترتبة تصاعدي (sorted).",
     "ترتيب تنازلي.",
     "لما الـ tree يبقى فيه node واحدة بس.",
@@ -1496,23 +1496,23 @@ AR.ds = {
     "أبعد node على الشمال (leftmost).",
     "أبعد node على اليمين (rightmost).",
     "الـ data والـ left والـ right.",
-    "1.0 ← 0.6 ← 0.3 ← 0.4 ← NULL (مش موجود).",
+    "المسار:<span class=\"ltr\">1.0 → 0.6 → 0.3 → 0.4 → NULL</span>(مش موجود).",
     "حط مكانها الـ inorder successor (أصغر قيمة في الـ right subtree) أو الـ predecessor، وبعدين امسح الـ node دي."
    ],
    "qa": [
-    "binary tree (كل node ليها اتنين children بالكتير) كل node فيه ليها key مش متكرر، وكل الـ keys في الـ left subtree بتاع أي node أصغر من الـ key بتاعها، وكل الـ keys في الـ right subtree أكبر.",
-    "الـ Inorder: left، parent، right ← 12 25 33 50 53 55 60 65 70. الـ Preorder: parent، left، right ← 50 25 12 33 65 55 53 60 70. الـ Postorder: left، right، parent ← 12 33 25 53 60 55 70 65 50. الاسم بيتحدد حسب إمتى بنزور الـ parent.",
-    "اعمل node جديدة للعنصر، ودوّر على الـ parent المناسب بإنك تقارن بالـ keys من الـ root (روح شمال لو أصغر، ويمين لو أكبر)، واربط الـ node الجديدة كـ leaf. بالـ recursion: لو current بـ NULL اعمل node جديدة ورجّعها؛ غير كده خلي current->left = insert(current->left, item) أو current->right = insert(current->right, item) ورجّع current.",
-    "void preorder(Node *t){ if(t==NULL) return; cout&lt;&lt;t->data; preorder(t->left); preorder(t->right); }<br>void inorder(Node *t){ if(t==NULL) return; inorder(t->left); cout&lt;&lt;t->data; inorder(t->right); }<br>void postorder(Node *t){ if(t==NULL) return; postorder(t->left); postorder(t->right); cout&lt;&lt;t->data; }<br>خلي بالك الفرق الوحيد بينهم هو مكان الـ cout: قبل الـ recursion (preorder)، في النص (inorder)، أو في الآخر (postorder).",
-    "قارن الـ key بالـ node الحالية: مساوي ← لقيته؛ أصغر ← دوّر في الـ left subtree؛ أكبر ← دوّر في الـ right subtree؛ NULL ← مش موجود. الـ Minimum: فضل امشي شمال لحد ما الـ left يبقى NULL. الـ Maximum: فضل امشي يمين لحد ما الـ right يبقى NULL.",
+    "هو binary tree (كل node ليها اتنين children بالكتير) كل node فيه ليها key مش متكرر، وكل الـ keys في الـ left subtree بتاع أي node أصغر من الـ key بتاعها، وكل الـ keys في الـ right subtree أكبر.",
+    "الـ Inorder (left, parent, right):<span class=\"ltr\">12 25 33 50 53 55 60 65 70</span>الـ Preorder (parent, left, right):<span class=\"ltr\">50 25 12 33 65 55 53 60 70</span>الـ Postorder (left, right, parent):<span class=\"ltr\">12 33 25 53 60 55 70 65 50</span>الاسم بيتحدد حسب إمتى بنزور الـ parent.",
+    "اعمل node جديدة للعنصر، ودوّر على الـ parent المناسب بإنك تقارن بالـ keys من الـ root (روح شمال لو أصغر، ويمين لو أكبر)، واربط الـ node الجديدة كـ leaf. بالـ recursion: لو الـ current بـ NULL اعمل node جديدة ورجّعها؛ غير كده خلي:<pre>current-&gt;left =\n  insert(current-&gt;left, item);</pre>أو:<pre>current-&gt;right =\n  insert(current-&gt;right, item);</pre>ورجّع الـ current.",
+    "الكود:<pre>void preorder(Node *t){\n  if(t==NULL) return;\n  cout&lt;&lt;t-&gt;data;\n  preorder(t-&gt;left);\n  preorder(t-&gt;right);\n}\nvoid inorder(Node *t){\n  if(t==NULL) return;\n  inorder(t-&gt;left);\n  cout&lt;&lt;t-&gt;data;\n  inorder(t-&gt;right);\n}\nvoid postorder(Node *t){\n  if(t==NULL) return;\n  postorder(t-&gt;left);\n  postorder(t-&gt;right);\n  cout&lt;&lt;t-&gt;data;\n}</pre>خلي بالك الفرق الوحيد بينهم هو مكان الـ cout: قبل الـ recursion (preorder)، في النص (inorder)، أو في الآخر (postorder).",
+    "قارن الـ key بالـ node الحالية: لو مساوي يبقى لقيته؛ لو أصغر دوّر في الـ left subtree؛ لو أكبر دوّر في الـ right subtree؛ ولو وصلت NULL يبقى مش موجود. الـ Minimum: فضل امشي شمال لحد ما الـ left يبقى NULL. الـ Maximum: فضل امشي يمين لحد ما الـ right يبقى NULL.",
     "الـ Leaf: شيلها وخلي الـ link بتاع الـ parent بـ NULL. child واحد: اربط الـ parent بالـ child ده على طول. اتنين children: انسخ الـ inorder successor (أصغر key في الـ right subtree) في الـ node وامسح الـ successor (اللي ليه child واحد بالكتير)."
    ],
    "quiz": [
     [
-     "الترتيب التصاعدي بييجي من الـ inorder (left، root، right)، لأن الـ keys الأصغر بتبقى في الـ left subtree. لما تزور الـ right الأول بتعكس الترتيب ده.",
+     "الترتيب التصاعدي بييجي من الـ inorder (<bdi dir=\"ltr\">left,&nbsp;root,&nbsp;right</bdi>)، لأن الـ keys الأصغر بتبقى في الـ left subtree. لما تزور الـ right الأول بتعكس الترتيب ده.",
      "صح. الـ keys الأكبر على اليمين، فلما تزور اليمين الأول بيطلع ترتيب تنازلي.",
-     "خاصية الـ BST (الـ keys اللي على الشمال أصغر واللي على اليمين أكبر) بتثبّت الترتيب: right، root، left دايمًا بيطلّع الـ keys من الأكبر للأصغر.",
-     "أي ترتيب زيارة ينفع يتكتب recursive؛ الـ right، root، left ده ببساطة الـ inorder بعد ما بدّلنا الـ recursive calls الاتنين (الـ reverse inorder)."
+     "خاصية الـ BST (الـ keys اللي على الشمال أصغر واللي على اليمين أكبر) بتثبّت الترتيب: الـ <bdi dir=\"ltr\">right,&nbsp;root,&nbsp;left</bdi> دايمًا بيطلّع الـ keys من الأكبر للأصغر.",
+     "أي ترتيب زيارة ينفع يتكتب recursive؛ الـ <bdi dir=\"ltr\">right,&nbsp;root,&nbsp;left</bdi> ده ببساطة الـ inorder بعد ما بدّلنا الـ recursive calls الاتنين (الـ reverse inorder)."
     ],
     [
      "مع اتنين nodes الـ root بيبقى الأول في الـ preorder والأخير في الـ postorder، فبيختلفوا.",
@@ -1521,9 +1521,9 @@ AR.ds = {
      "من أول 2 nodes وطالع، الـ root بييجي الأول في الـ preorder والآخر في الـ postorder، فالناتج بيختلف؛ الحالة الوحيدة اللي بتدي نفس الناتج هي node واحدة (أو tree فاضي)."
     ],
     [
-     "8 و5 ده عدّ غلط. الـ keys الأصغر من 45 (الـ left subtree): 15، 8، 5، 12، 18، 10، 16 = 7؛ والأكبر (الـ right): 56، 65، 47، 73، 50، 61 = 6.",
+     "الـ 8 و5 ده عدّ غلط. الـ keys الأصغر من 45 (الـ left subtree):<span class=\"ltr\">15, 8, 5, 12, 18, 10, 16 = 7</span>والأكبر (الـ right):<span class=\"ltr\">56, 65, 47, 73, 50, 61 = 6</span>",
      "6 و7 ده عكس العددين: فيه 7 keys أصغر من 45 (الـ left subtree) و6 أكبر منها (الـ right subtree).",
-     "صح. أصغر من 45: 15، 8، 5، 12، 18، 10، 16 (7). أكبر: 56، 65، 47، 73، 50، 61 (6). اتجرب بـ g++.",
+     "صح. أصغر من 45:<span class=\"ltr\">15, 8, 5, 12, 18, 10, 16 (7)</span>أكبر:<span class=\"ltr\">56, 65, 47, 73, 50, 61 (6)</span>اتجرب بـ <code>g++</code>.",
      "5 و8 ده عدّ غلط. كل الـ keys الأصغر من الـ root (45) بتروح شمال (وهما 7)، وكل الأكبر بتروح يمين (6)."
     ],
     [
@@ -1532,40 +1532,40 @@ AR.ds = {
     ],
     [
      "صح. اسم الـ traversal بييجي من إمتى بنزور الـ parent: الـ postorder بيلف على الـ left subtree، وبعدين الـ right subtree، وبيزور الـ parent في الآخر (L9, Postorder traversal).",
-     "الجملة صح: الـ postorder = لف على الـ left subtree، وبعدين الـ right subtree، وبعدين زور الـ parent (L R P)."
+     "الجملة صح: الـ postorder معناه لف على الـ left subtree، وبعدين الـ right subtree، وبعدين زور الـ parent (<bdi dir=\"ltr\">L&nbsp;R&nbsp;P</bdi>)."
     ],
     [
-     "صح. الـ preorder بيزور الـ parent الأول، وبعدين الـ left subtree، وبعدين الـ right: 43، بعدها 31 20 28 40 33، بعدها 64 56 47 59 89 — وده مثال المحاضرة نفسه (L9, Preorder).",
-     "ده ناتج الـ inorder (left، parent، right)، اللي بيطلع مترتب في الـ BST. الـ preorder لازم يبدأ بالـ root اللي هو 43.",
-     "ده ناتج الـ postorder (left، right، parent)، وعشان كده خلصان بالـ root 43. الـ preorder بيبدأ بـ 43.",
+     "صح. الـ preorder بيزور الـ parent الأول، وبعدين الـ left subtree، وبعدين الـ right: الأول 43، بعدها <bdi dir=\"ltr\">31&nbsp;20&nbsp;28&nbsp;40&nbsp;33</bdi>، بعدها <bdi dir=\"ltr\">64&nbsp;56&nbsp;47&nbsp;59&nbsp;89</bdi>؛ وده مثال المحاضرة نفسه <bdi dir=\"ltr\">(L9,&nbsp;Preorder)</bdi>.",
+     "ده ناتج الـ inorder (<bdi dir=\"ltr\">left,&nbsp;parent,&nbsp;right</bdi>)، اللي بيطلع مترتب في الـ BST. الـ preorder لازم يبدأ بالـ root اللي هو 43.",
+     "ده ناتج الـ postorder (<bdi dir=\"ltr\">left,&nbsp;right,&nbsp;parent</bdi>)، وعشان كده خلصان بالـ root 43. الـ preorder بيبدأ بـ 43.",
      "ده بيعرض الـ tree مستوى مستوى (الـ level order)، وده مش متدرّس في المحاضرة. الـ preorder بينزل في الـ left subtree لتحت الأول: 43 31 20 28 …"
     ],
     [
-     "ده الـ inorder (left، parent، right)، اللي بيطلع مترتب في الـ BST. الـ postorder لازم يخلص بالـ root اللي هو 50.",
+     "ده الـ inorder (<bdi dir=\"ltr\">left,&nbsp;parent,&nbsp;right</bdi>)، اللي بيطلع مترتب في الـ BST. الـ postorder لازم يخلص بالـ root اللي هو 50.",
      "ده الـ preorder (الـ parent الأول، والـ root 50 في البداية). الـ postorder بيزور الـ parent في الآخر.",
-     "صح. left، right، وبعدين الـ parent؛ والـ root 50 في الآخر.",
+     "صح. الأول الـ left، وبعدين الـ right، وبعدين الـ parent؛ والـ root 50 في الآخر.",
      "هنا الـ 50 جاية في النص، زي الـ inorder. في الـ postorder الـ root بيتطبع بعد الـ subtrees الاتنين، فالـ 50 لازم تبقى الآخر."
     ],
     [
-     "A B C … I ده ناتج الـ inorder (left، parent، right)، اللي هنا طالع بالترتيب الأبجدي. الـ postorder بيخلص بالـ root اللي هو F.",
-     "ده الـ preorder (parent، left، right)، وعشان كده بادئ بالـ root F. الـ postorder بيطبع F في الآخر.",
-     "صح. الـ left subtree بتاع F: الأول A، وبعدين الـ children بتوع D اللي هما C وE، وبعدين D، وبعدين B. الـ right subtree: الـ G ليها right child بس اللي هو I، والـ left بتاع I هو H: يعني H، I، G. وفي الآخر الـ root: A C E D B H I G F (L9, Postorder).",
-     "ده بيطبع D قبل الـ right child بتاعها E. في الـ postorder الـ parent بييجي بعد الـ children الاتنين: C، E، وبعدين D."
+     "الترتيب <bdi dir=\"ltr\">A&nbsp;B&nbsp;C&nbsp;…&nbsp;I</bdi> ده ناتج الـ inorder (<bdi dir=\"ltr\">left,&nbsp;parent,&nbsp;right</bdi>)، اللي هنا طالع بالترتيب الأبجدي. الـ postorder بيخلص بالـ root اللي هو F.",
+     "ده الـ preorder (<bdi dir=\"ltr\">parent,&nbsp;left,&nbsp;right</bdi>)، وعشان كده بادئ بالـ root F. الـ postorder بيطبع F في الآخر.",
+     "صح. الـ left subtree بتاع F: الأول A، وبعدين الـ children بتوع D اللي هما C وE، وبعدين D، وبعدين B. الـ right subtree: الـ G ليها right child بس اللي هو I، والـ left بتاع I هو H، يعني <bdi dir=\"ltr\">H,&nbsp;I,&nbsp;G</bdi>. وفي الآخر الـ root، فالناتج:<span class=\"ltr\">A C E D B H I G F</span>(من <bdi dir=\"ltr\">L9,&nbsp;Postorder</bdi>)",
+     "ده بيطبع D قبل الـ right child بتاعها E. في الـ postorder الـ parent بييجي بعد الـ children الاتنين: الأول C وE، وبعدين D."
     ],
     [
      "الـ 56 عندها right child أصلًا (59)، فبنكمل ننزل لـ 59.",
-     "صح. 57 &gt; 43 ← 64؛ 57 &lt; 64 ← 56؛ 57 &gt; 56 ← 59؛ 57 &lt; 59 ← شمال 59.",
+     "صح.<br>لأن <bdi dir=\"ltr\">57&nbsp;&gt;&nbsp;43</bdi> نروح لـ 64؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&lt;&nbsp;64</bdi> نروح لـ 56؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&gt;&nbsp;56</bdi> نروح لـ 59؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&lt;&nbsp;59</bdi> بتبقى شمال 59.",
      "الـ 89 موجودة في الـ right subtree بتاع 64؛ وبما إن 57 أصغر من 64، الـ search بيروح شمال لـ 56 وعمره ما يوصل لـ 89.",
      "الـ insertion في tree مش فاضية عمره ما يغيّر الـ root: الـ node الجديدة بتتعلّق كـ leaf في المكان اللي الـ search بيوصل فيه لـ NULL (L9, Insertion). أول insert في tree فاضية بس هو اللي بيعمل الـ root."
     ],
     [
      "الـ root بيبقى الـ minimum بس لو مالوش left child.",
-     "صح. الـ minimum() بتفضل تمشي شمال لحد ما الـ left يبقى NULL.",
-     "أبعد node على اليمين هي اللي فيها الـ maximum، لأن الـ keys الأكبر بتبقى على اليمين؛ والـ maximum() بتمشي ورا الـ right links.",
-     "الـ leaves ممكن يبقى فيها أي key (في tree المحاضرة 28، 33، 47، 59 و89 كلهم leaves)؛ الوحيدة المضمونة إنها الـ minimum هي أبعد node على الشمال."
+     "صح. الـ <code>minimum()</code> بتفضل تمشي شمال لحد ما الـ left يبقى NULL.",
+     "أبعد node على اليمين هي اللي فيها الـ maximum، لأن الـ keys الأكبر بتبقى على اليمين؛ والـ <code>maximum()</code> بتمشي ورا الـ right links.",
+     "الـ leaves ممكن يبقى فيها أي key (في tree المحاضرة <bdi dir=\"ltr\">28,&nbsp;33,&nbsp;47,&nbsp;59</bdi> و89 كلهم leaves)؛ الوحيدة المضمونة إنها الـ minimum هي أبعد node على الشمال."
     ],
     [
-     "Exactly 2 ده شرط زيادة عن اللزوم: الـ leaves مالهاش children خالص، وفيه nodes ليها child واحد بس. القاعدة هي at most 2.",
+     "الـ Exactly 2 ده شرط زيادة عن اللزوم: الـ leaves مالهاش children خالص، وفيه nodes ليها child واحد بس. القاعدة هي <bdi dir=\"ltr\">at&nbsp;most&nbsp;2</bdi>.",
      "صح. المحاضرة بتعرّف الـ binary tree إنه tree كل node فيه ليها 2 children على الأكثر (left child وright child، وأي واحد فيهم ممكن يبقى NULL) (L9, Binary tree).",
      "الـ leaves مالهاش children خالص، فـ\"at least 2\" مستحيل تتحقق في أي tree محدود.",
      "أي عدد من الـ children ده وصف الـ general tree؛ الـ binary tree بيحدد كل node بـ 2 children على الأكثر."
@@ -1574,12 +1574,12 @@ AR.ds = {
    "extra": [
     [
      "ده ناتج الـ inorder، اللي بيطلع مترتب في الـ BST. الـ preorder بيطبع الـ root اللي هو 30 الأول.",
-     "صح. الـ root، وبعدين الـ left subtree (20، 10، 25)، وبعدين الـ right subtree (40، 35، 50).",
-     "ده ناتج الـ postorder (left، right، parent)، وعشان كده خلصان بالـ root 30. الـ preorder بيبدأ بـ 30.",
-     "ده بيعرض الـ tree مستوى مستوى، واللي صدفة طلع نفس ترتيب الإضافة. الـ preorder بيخلّص الـ left subtree كله (20، 10، 25) قبل ما يوصل لـ 40."
+     "صح. الـ root، وبعدين الـ left subtree (<bdi dir=\"ltr\">20,&nbsp;10,&nbsp;25</bdi>)، وبعدين الـ right subtree (<bdi dir=\"ltr\">40,&nbsp;35,&nbsp;50</bdi>).",
+     "ده ناتج الـ postorder (<bdi dir=\"ltr\">left,&nbsp;right,&nbsp;parent</bdi>)، وعشان كده خلصان بالـ root 30. الـ preorder بيبدأ بـ 30.",
+     "ده بيعرض الـ tree مستوى مستوى، واللي صدفة طلع نفس ترتيب الإضافة. الـ preorder بيخلّص الـ left subtree كله (<bdi dir=\"ltr\">20,&nbsp;10,&nbsp;25</bdi>) قبل ما يوصل لـ 40."
     ],
     [
-     "صح. الـ tree هو 30 وليه children هما 20 (10، 25) و40 (35، 50). الـ postorder: الـ left subtree يطلع 10 25 20، والـ right subtree يطلع 35 50 40، وبعدين الـ root 30 (L9, Postorder).",
+     "صح. الـ tree هو 30 وليه children هما <bdi dir=\"ltr\">20&nbsp;(10,&nbsp;25)</bdi> و<bdi dir=\"ltr\">40&nbsp;(35,&nbsp;50)</bdi>. الـ postorder: الـ left subtree يطلع <bdi dir=\"ltr\">10&nbsp;25&nbsp;20</bdi>، والـ right subtree يطلع <bdi dir=\"ltr\">35&nbsp;50&nbsp;40</bdi>، وبعدين الـ root 30 <bdi dir=\"ltr\">(L9,&nbsp;Postorder)</bdi>.",
      "ده بادئ بالـ root 30، بس الـ postorder بيطبع الـ root في الآخر. ده في الحقيقة preorder بس بيزور الـ right قبل الـ left.",
      "ده ناتج الـ inorder (الـ keys مترتبة). الـ postorder بيطبع كل parent بعد الـ children بتوعه، فالـ 30 بتيجي في الآخر.",
      "جوه أي subtree الـ left child بييجي قبل الـ right."
@@ -1587,37 +1587,37 @@ AR.ds = {
     [
      "أول key اتضاف، اللي هو 1، بيبقى الـ root، وكل key بعده أكبر منه، فالـ tree مش balanced.",
      "كل key أكبر من كل اللي قبله، فكل node بتاخد right child بس؛ مفيش ولا node ليها 2 children.",
-     "الـ insert() بتقبل الـ keys بأي ترتيب؛ الـ input المترتب كل اللي بيعمله إنه بيطلع tree طويل ومش balanced.",
-     "صح. الـ 1 هو الـ root؛ 2 &gt; 1 فبتروح يمين؛ 3 بتروح يمين 2، وهكذا. كل node ليها right child بس، فالـ BST بيتحول لسلسلة شبه الـ linked list (L9, Insertion)."
+     "الـ <code>insert()</code> بتقبل الـ keys بأي ترتيب؛ الـ input المترتب كل اللي بيعمله إنه بيطلع tree طويل ومش balanced.",
+     "صح. الـ 1 هو الـ root؛ و<bdi dir=\"ltr\">2&nbsp;&gt;&nbsp;1</bdi> فبتروح يمين؛ والـ 3 بتروح يمين 2، وهكذا. كل node ليها right child بس، فالـ BST بيتحول لسلسلة شبه الـ linked list <bdi dir=\"ltr\">(L9,&nbsp;Insertion)</bdi>."
     ],
     [
-     "الـ 64 مش الـ maximum: ليها right child اللي هو 89، والـ maximum() بتفضل تمشي يمين لحد ما الـ right يبقى NULL.",
-     "الـ 59 موجودة في الـ left subtree بتاع 64 (child لـ 56)، يعني أصغر من 64؛ والـ maximum() بتمشي ورا الـ right links بس.",
-     "صح. الـ maximum() بتنادي نفسها على temp->right لحد ما الـ right يبقى NULL: 43 → 64 → 89، والـ 89 مالهاش right child، فهي أكبر key (L9, Get maximum & minimum).",
+     "الـ 64 مش الـ maximum: ليها right child اللي هو 89، والـ <code>maximum()</code> بتفضل تمشي يمين لحد ما الـ right يبقى NULL.",
+     "الـ 59 موجودة في الـ left subtree بتاع 64 (child لـ 56)، يعني أصغر من 64؛ والـ <code>maximum()</code> بتمشي ورا الـ right links بس.",
+     "صح. الـ <code>maximum()</code> بتنادي نفسها على <code>temp-⁠&gt;right</code> لحد ما الـ right يبقى NULL:<span class=\"ltr\">43 → 64 → 89</span>والـ 89 مالهاش right child، فهي أكبر key <bdi dir=\"ltr\">(L9,&nbsp;Get&nbsp;maximum&nbsp;&amp;&nbsp;minimum)</bdi>.",
      "الـ 43 هو الـ root؛ وليه right child اللي هو 64، فمش هو الـ maximum."
     ],
     [
      "الـ root فيه 1.0 مش 0.5. وبما إن 0.5 أصغر من 1.0، الـ search بيروح للـ left subtree.",
-     "صح. 0.5 &lt; 1.0 → شمال لـ 0.6؛ 0.5 &lt; 0.6 → شمال لـ 0.3؛ 0.5 &gt; 0.3 → يمين لـ 0.4؛ 0.5 &gt; 0.4 → الـ right child بتاعها NULL، فالـ search بترجع false (L9, Searching example).",
+     "صح.<br>لأن <bdi dir=\"ltr\">0.5&nbsp;&lt;&nbsp;1.0</bdi> نروح شمال لـ 0.6؛<br>ولأن <bdi dir=\"ltr\">0.5&nbsp;&lt;&nbsp;0.6</bdi> نروح شمال لـ 0.3؛<br>ولأن <bdi dir=\"ltr\">0.5&nbsp;&gt;&nbsp;0.3</bdi> نروح يمين لـ 0.4؛<br>ولأن <bdi dir=\"ltr\">0.5&nbsp;&gt;&nbsp;0.4</bdi> نروح للـ right child بتاعها وهو NULL، فالـ search بترجع false <bdi dir=\"ltr\">(L9,&nbsp;Searching&nbsp;example)</bdi>.",
      "الـ 1.9 هي الـ right child، وبنروحلها بس لو الـ key أكبر من 1.0. الـ 0.5 أصغر، فالـ search بيروح شمال.",
      "عند 0.6 الـ key اللي هو 0.5 أصغر، فالـ search بيروح شمال لـ 0.3، مش يمين لـ 0.8."
     ],
     [
      "صح. اللي نادى الـ function بيربطها كـ left أو right child.",
-     "الـ insert بترجع Node* (الـ root بتاع الـ subtree)، مش bool؛ وعند الـ NULL بترجع الـ node الجديدة اللي اتعملت.",
+     "الـ insert بترجع <bdi dir=\"ltr\">Node*</bdi> (الـ root بتاع الـ subtree)، مش bool؛ وعند الـ NULL بترجع الـ node الجديدة اللي اتعملت.",
      "الـ NULL ده بالظبط المكان اللي الـ item الجديد مكانه فيه: بيتعمل node هناك وبترجع عشان تتربط كـ leaf.",
      "الـ insert عمرها ما بتمسح حاجة. الوصول لـ NULL معناه إننا لقينا المكان الصح، والـ node الجديدة بتتعمل هناك."
     ],
     [
-     "الموضوع مش موضوع سرعة: من غير return الـ recursive call بتشتغل برضه، بس الناتج بتاعها (true/false) بيترمي.",
+     "الموضوع مش موضوع سرعة: من غير return الـ recursive call بتشتغل برضه، بس الناتج بتاعها (<bdi dir=\"ltr\">true/false</bdi>) بيترمي.",
      "الـ recursion مسموحة وبتشتغل عادي من غير return؛ المشكلة إن الناتج بتاعها بيضيع.",
-     "صح. في الـ slide، search(temp->left, item) بتتنادى بس الناتج بتاعها مش بيترجع، فالـ call اللي برّه بتوصل لآخر function نوعها bool من غير return وبترجع قيمة undefined؛ لما تكتب return search(…) الإجابة بتطلع لفوق (L9, Searching).",
+     "صح. في الـ slide، الـ <bdi dir=\"ltr\">search(temp-⁠&gt;left,&nbsp;item)</bdi> بتتنادى بس الناتج بتاعها مش بيترجع، فالـ call اللي برّه بتوصل لآخر function نوعها bool من غير return وبترجع قيمة undefined؛ لما تكتب <bdi dir=\"ltr\">return&nbsp;search(…)</bdi> الإجابة بتطلع لفوق <bdi dir=\"ltr\">(L9,&nbsp;Searching)</bdi>.",
      "الـ return بترجّع القيمة للـ caller؛ مش بتطبع أي حاجة. الطباعة بيعملها الـ main بالـ cout."
     ],
     [
      "الـ Inorder بيلف على الـ left subtree الأول، وبيزور الـ parent في النص.",
      "الـ Postorder بيزور الـ parent في الآخر، بعد الـ subtrees الاتنين.",
-     "الـ Reverse inorder (right، root، left) بيلف على الـ right subtree قبل الـ root.",
+     "الـ Reverse inorder (<bdi dir=\"ltr\">right,&nbsp;root,&nbsp;left</bdi>) بيلف على الـ right subtree قبل الـ root.",
      "صح. أسماء الـ traversals جاية من إمتى بنزور الـ parent؛ الـ preorder بيزور الـ parent الأول، وبعدين الـ left subtree، وبعدين الـ right (L9, Preorder traversal)."
     ],
     [
@@ -1627,10 +1627,10 @@ AR.ds = {
      "التبديل مع الـ root بيحط keys في الناحية الغلط وبيكسر قاعدة الـ BST (الشمال أصغر، اليمين أكبر)."
     ],
     [
-     "3 كده ناقص leaves. الـ tree هو 50؛ 25(12، 33)؛ 65(55(53، 60)، 70): الـ nodes اللي مالهاش children هي 12، 33، 53، 60، 70.",
-     "4 كده ناسي الـ 70: هي الـ right child بتاع 65 ومالهاش children، فهي كمان leaf (مع 12، 33، 53، 60).",
+     "الـ 3 كده ناقص leaves. الـ tree هو:<span class=\"ltr\">50; 25(12, 33); 65(55(53, 60), 70)</span>والـ nodes اللي مالهاش children هي <bdi dir=\"ltr\">12,&nbsp;33,&nbsp;53,&nbsp;60,&nbsp;70</bdi>.",
+     "الـ 4 كده ناسي الـ 70: هي الـ right child بتاع 65 ومالهاش children، فهي كمان leaf (مع <bdi dir=\"ltr\">12,&nbsp;33,&nbsp;53,&nbsp;60</bdi>).",
      "صح. 12 و33 و53 و60 و70 مالهمش children.",
-     "9 ده العدد الكلي للـ nodes. الـ leaves هي بس الـ nodes اللي مالهاش children: 12، 33، 53، 60، 70."
+     "الـ 9 ده العدد الكلي للـ nodes. الـ leaves هي بس الـ nodes اللي مالهاش children: <bdi dir=\"ltr\">12,&nbsp;33,&nbsp;53,&nbsp;60,&nbsp;70</bdi>."
     ]
    ]
   },
@@ -1643,7 +1643,7 @@ AR.ds = {
       "كل key بيتحوّل لـ hash number في الـ range من 0 لـ (table size - 1) وبيتحط في الخانة دي. الـ mapping ده هو الـ <b>hash function H</b>؛ والمفروض يدّي keys مختلفة خانات مختلفة و<b>يوزّع العناصر بالتساوي</b>.",
       "الـ hash function H بتاخد <b>key كـ input</b> وبتحوّله لـ <b>index</b> في الـ hash table. ونفس الـ hash value بتتستخدم في <b>التخزين والاسترجاع</b> الاتنين.",
       "الـ <b>Collision</b>: لما الـ hash function تودّي اتنين keys مختلفين k وj على <b>نفس الخانة</b>.",
-      "الـ Hash tables <b>مش</b> بتحافظ على الـ keys مترتبة: الأماكن بتعتمد على الـ hash function (عنوان Lecture 10 هو \"Searching Techniques: Hashing\")."
+      "الـ Hash tables <b>مش</b> بتحافظ على الـ keys مترتبة: الأماكن بتعتمد على الـ hash function (عنوان الـ Lecture 10 هو <bdi dir=\"ltr\">\"Searching&nbsp;Techniques:&nbsp;Hashing\"</bdi>)."
      ]
     },
     {
@@ -1652,51 +1652,51 @@ AR.ds = {
     {
      "h": "طرق حل الـ collision (collision resolution)",
      "pts": [
-      "خمس طرق: <b>linear probing</b>، <b>quadratic probing</b>، <b>double hashing</b>، <b>rehashing</b>، <b>extendible hashing</b> (أول تلاتة هما اللي بنذاكرهم)، وكمان الـ <b>separate chaining</b>.",
-      "الـ <b>Linear probing</b>: حط الـ record اللي عمل collision في <b>أول خانة فاضية بعده</b>، وبتدور بالترتيب: <b>h(k, i) = (h1(k) + i) mod m</b>، i = 0, 1, 2, … حيث m = حجم الـ table وh1 = الـ primary hash function. وعشان تدوّر، ابدأ من الـ hash address وكمّل بالترتيب.",
-      "الـ <b>Quadratic probing</b>: في أول collision بص على h+1، والتاني h+4، والتالت h+9 … (h + i²). المعادلة والمثال المحلول في المحاضرة بيستخدموا <b>h(k, i) = (h1(k) + i + i²) mod m</b> (i = 1 ← +2، i = 2 ← +6). خلي بالك: في الامتحان استخدم معادلة المحاضرة واكتبها.",
-      "الـ <b>Double hashing</b>: اتنين hash functions؛ لما الأولى تعمل collision التانية بتحلها: <b>h(k, i) = (h1(k) + i·h2(k)) mod m</b>. مثال المحاضرة: h1 = k mod 13، h2 = 1 + (k mod 11).",
-      "الـ <b>Separate chaining</b>: <b>array of pointers</b>؛ كل pointer بيشاور على <b>linked list</b> فيها الـ keys اللي ليها نفس الـ hash address. لما يحصل collision بنضيف link جديد في الـ chain. بيتعامل مع <b>عدد مش محدود من الـ collisions</b> ومش محتاج <b>تعرف مسبقًا</b> هتخزن كام عنصر."
+      "خمس طرق: الـ <b>linear probing</b>، والـ <b>quadratic probing</b>، والـ <b>double hashing</b>، والـ <b>rehashing</b>، والـ <b>extendible hashing</b> (أول تلاتة هما اللي بنذاكرهم)، وكمان الـ <b>separate chaining</b>.",
+      "الـ <b>Linear probing</b>: حط الـ record اللي عمل collision في <b>أول خانة فاضية بعده</b>، وبتدور بالترتيب:<span class=\"ltr\">h(k, i) = (h1(k) + i) mod m,  i = 0, 1, 2, …</span>حيث <bdi dir=\"ltr\">m</bdi> هو حجم الـ table و<bdi dir=\"ltr\">h1</bdi> هي الـ primary hash function. وعشان تدوّر، ابدأ من الـ hash address وكمّل بالترتيب.",
+      "الـ <b>Quadratic probing</b>: في أول collision بص على <bdi dir=\"ltr\">h+1</bdi>، والتاني <bdi dir=\"ltr\">h+4</bdi>، والتالت <bdi dir=\"ltr\">h+9</bdi> … يعني (<bdi dir=\"ltr\">h&nbsp;+&nbsp;i²</bdi>). المعادلة والمثال المحلول في المحاضرة بيستخدموا:<span class=\"ltr\">h(k, i) = (h1(k) + i + i²) mod m</span><span class=\"ltr\">i = 1 → +2,  i = 2 → +6</span>خلي بالك: في الامتحان استخدم معادلة المحاضرة واكتبها.",
+      "الـ <b>Double hashing</b>: اتنين hash functions؛ لما الأولى تعمل collision التانية بتحلها:<span class=\"ltr\">h(k, i) = (h1(k) + i·h2(k)) mod m</span>مثال المحاضرة:<span class=\"ltr\">h1 = k mod 13,  h2 = 1 + (k mod 11)</span>",
+      "الـ <b>Separate chaining</b>: عبارة عن <b>array of pointers</b>؛ كل pointer بيشاور على <b>linked list</b> فيها الـ keys اللي ليها نفس الـ hash address. لما يحصل collision بنضيف link جديد في الـ chain. بيتعامل مع <b>عدد مش محدود من الـ collisions</b> ومش محتاج <b>تعرف مسبقًا</b> هتخزن كام عنصر."
      ]
     },
     {
-     "h": "مثال linear probing (الـ keys 18، 72، 65، 34، 13؛ size 7)"
+     "h": "مثال linear probing (الـ keys <bdi dir=\"ltr\">18,&nbsp;72,&nbsp;65,&nbsp;34,&nbsp;13</bdi>؛ والـ size <bdi dir=\"ltr\">7</bdi>)"
     },
     {
      "h": "مثال quadratic probing (نفس الـ keys، بمعادلة المحاضرة h1 + i + i²)"
     },
     {
-     "h": "مثال double hashing (69، 79، 72، 98، 14؛ size 13)"
+     "h": "مثال double hashing (<bdi dir=\"ltr\">69,&nbsp;79,&nbsp;72,&nbsp;98,&nbsp;14</bdi>؛ والـ size <bdi dir=\"ltr\">13</bdi>)"
     },
     {
-     "h": "مثال separate chaining (18، 72، 65، 34، 13؛ size 7)"
+     "h": "مثال separate chaining (<bdi dir=\"ltr\">18,&nbsp;72,&nbsp;65,&nbsp;34,&nbsp;13</bdi>؛ والـ size <bdi dir=\"ltr\">7</bdi>)"
     }
    ],
    "cards": [
-    "array حجمه ثابت كل key بيتخزن فيه عند الـ index اللي الـ hash function بتحسبه (اسمه كمان scatter table).",
-    "function H بتحوّل الـ key لـ index في الـ table من 0 لـ size-1.",
+    "هو array حجمه ثابت كل key بيتخزن فيه عند الـ index اللي الـ hash function بتحسبه (اسمه كمان scatter table).",
+    "هي function اسمها H بتحوّل الـ key لـ index في الـ table من 0 لـ <bdi dir=\"ltr\">size-1</bdi>.",
     "لما الـ hash function تودّي اتنين keys مختلفين على نفس الخانة.",
-    "Truncation، folding، mid square، division.",
+    "الأنواع الأربعة: الـ Truncation، والـ folding، والـ mid square، والـ division.",
     "استخدم جزء من الـ key بس (زي آخر 3 أرقام). بيعمل collisions أكتر.",
     "قسّم الـ key لمجموعات أرقام واجمعهم: 143765980 ← 1888.",
     "ربّع الـ key وخد الأرقام اللي في النص: 456 ← 207936 ← 79.",
-    "الـ Address = key mod table size؛ ودي من أحسن الطرق.",
-    "h(k,i) = (h1(k) + i) mod m",
-    "h(k,i) = (h1(k) + i + i²) mod m",
-    "h(k,i) = (h1(k) + i·h2(k)) mod m",
-    "Linear probing، quadratic probing، double hashing، rehashing، extendible hashing.",
-    "array of pointers بيشاوروا على linked lists؛ الـ keys اللي ليها نفس الـ address بتتربط في chain.",
+    "الـ Address بيتحسب كده:<span class=\"ltr\">Address = key mod table size</span>ودي من أحسن الطرق.",
+    "المعادلة:<span class=\"ltr\">h(k,i) = (h1(k) + i) mod m</span>",
+    "المعادلة:<span class=\"ltr\">h(k,i) = (h1(k) + i + i²) mod m</span>",
+    "المعادلة:<span class=\"ltr\">h(k,i) = (h1(k) + i·h2(k)) mod m</span>",
+    "الطرق الخمسة: الـ Linear probing، والـ quadratic probing، والـ double hashing، والـ rehashing، والـ extendible hashing.",
+    "هو array of pointers بيشاوروا على linked lists؛ الـ keys اللي ليها نفس الـ address بتتربط في chain.",
     "عدد collisions مش محدود لكل address؛ ومش محتاج تعرف عدد العناصر مسبقًا.",
     "بيوزّع الـ keys بالتساوي أكتر مع الـ mod.",
     "لأ؛ الأماكن بتعتمد على الـ hash function."
    ],
    "qa": [
-    "الـ Hashing بيخزن العناصر في array حجمه ثابت (hash table، scatter table) عند index بيتحسب من الـ key. الـ hash function H بتاخد key وتحوّله لـ index من 0 لـ table size - 1، والمثالي إنها توزّع الـ keys بالتساوي؛ ونفس الـ function بتتستخدم في التخزين والاسترجاع. الـ collision بيحصل لما الـ hash function تودّي اتنين keys مختلفين على نفس الخانة.",
-    "الـ Truncation: خد جزء من الـ key (987456 ← 456 لـ size 1000)، بسيطة بس collisions كتير. الـ Folding: قسّم لمجموعات واجمع (143765980 ← 143+765+980 = 1888). الـ Mid square: ربّع وخد الأرقام اللي في النص (456² = 207936 ← 79). الـ Division: key mod table size (17 mod 9 = 8)، ودي من أحسن الطرق.",
-    "Linear probing، quadratic probing، double hashing، rehashing، extendible hashing (وكمان separate chaining). الـ Linear probing بيحط الـ key اللي عمل collision في أول خانة فاضية بعده بالترتيب: h(k,i) = (h1(k)+i) mod m، i = 0,1,2,…؛ والـ search برضه بيبدأ من الـ hash address ويكمّل بالترتيب.",
-    "التلاتة open addressing. الـ Linear probing بيتحرك 1، 2، 3 … خانات لقدام ((h1+i) mod m)، وده بيعمل clustering (تكتّل). الـ Quadratic probing بينط أبعد كل مرة (المحاضرة: (h1+i+i²) mod m)، فبيقلل الـ clustering. الـ Double hashing بيستخدم hash function تانية لحجم الخطوة ((h1 + i·h2) mod m)، فالـ keys المختلفة بتاخد probe sequences مختلفة.",
+    "الـ Hashing بيخزن العناصر في array حجمه ثابت (الـ hash table، أو الـ scatter table) عند index بيتحسب من الـ key. الـ hash function H بتاخد key وتحوّله لـ index من 0 لـ <bdi dir=\"ltr\">table&nbsp;size&nbsp;-&nbsp;1</bdi>، والمثالي إنها توزّع الـ keys بالتساوي؛ ونفس الـ function بتتستخدم في التخزين والاسترجاع. الـ collision بيحصل لما الـ hash function تودّي اتنين keys مختلفين على نفس الخانة.",
+    "الـ Truncation: خد جزء من الـ key، بسيطة بس collisions كتير:<span class=\"ltr\">987456 → 456  (size 1000)</span>الـ Folding: قسّم لمجموعات واجمع:<span class=\"ltr\">143765980 → 143+765+980 = 1888</span>الـ Mid square: ربّع وخد الأرقام اللي في النص:<span class=\"ltr\">456² = 207936 → 79</span>الـ Division: الـ key mod table size، ودي من أحسن الطرق:<span class=\"ltr\">17 mod 9 = 8</span>",
+    "الطرق: الـ Linear probing، والـ quadratic probing، والـ double hashing، والـ rehashing، والـ extendible hashing (وكمان الـ separate chaining). الـ Linear probing بيحط الـ key اللي عمل collision في أول خانة فاضية بعده بالترتيب:<span class=\"ltr\">h(k,i) = (h1(k)+i) mod m,  i = 0,1,2,…</span>والـ search برضه بيبدأ من الـ hash address ويكمّل بالترتيب.",
+    "التلاتة open addressing. الـ Linear probing بيتحرك <bdi dir=\"ltr\">1,&nbsp;2,&nbsp;3&nbsp;…</bdi> خانات لقدام (<bdi dir=\"ltr\">(h1+i)&nbsp;mod&nbsp;m</bdi>)، وده بيعمل clustering (تكتّل). الـ Quadratic probing بينط أبعد كل مرة (المحاضرة: <bdi dir=\"ltr\">(h1+i+i²)&nbsp;mod&nbsp;m</bdi>)، فبيقلل الـ clustering. الـ Double hashing بيستخدم hash function تانية لحجم الخطوة (<bdi dir=\"ltr\">(h1&nbsp;+&nbsp;i·h2)&nbsp;mod&nbsp;m</bdi>)، فالـ keys المختلفة بتاخد probe sequences مختلفة.",
     "الـ table عبارة عن array of pointers، كل واحد بيشاور على linked list فيها كل الـ keys اللي ليها الـ hash address ده. لما يحصل collision الـ key بيتضاف للـ chain دي. بيتعامل مع عدد مش محدود من الـ collisions عند نفس الـ address ومش محتاج تعرف مسبقًا هتخزن كام عنصر.",
-    "5 mod 9 = 5، 17 mod 9 = 8، 37 mod 9 = 1، 20 mod 9 = 2، 42 mod 9 = 6، 3 mod 9 = 3. الـ Table: [1]=37، [2]=20، [3]=3، [5]=5، [6]=42، [8]=17. 11 mod 9 = 2 والخانة دي فيها 20: يبقى collision، ولازم يتحل (مثلًا الـ linear probing يحط 11 في slot 4؛ والـ chaining يربطه بعد 20)."
+    "الحساب:<span class=\"ltr\">5 mod 9 = 5, 17 mod 9 = 8, 37 mod 9 = 1,</span><span class=\"ltr\">20 mod 9 = 2, 42 mod 9 = 6, 3 mod 9 = 3</span>الـ Table:<span class=\"ltr\">[1]=37, [2]=20, [3]=3, [5]=5, [6]=42, [8]=17</span>وبعدين <bdi dir=\"ltr\">11&nbsp;mod&nbsp;9&nbsp;=&nbsp;2</bdi> والخانة دي فيها 20: يبقى collision، ولازم يتحل (مثلًا الـ linear probing يحط 11 في <bdi dir=\"ltr\">slot&nbsp;4</bdi>؛ والـ chaining يربطه بعد 20)."
    ],
    "quiz": [
     [
@@ -1708,39 +1708,39 @@ AR.ds = {
      "نفس المكان لـ keys مختلفة ده collision."
     ],
     [
-     "الـ 2 ده خارج القسمة مش الباقي: 25 = 2 × 11 + 3، يعني 25 mod 11 = 3.",
-     "صح. الـ division method بتاخد key mod table size: 25 mod 11 = 25 − 2 × 11 = 3، فالـ 25 بتروح index 3 (L10, Division method).",
+     "الـ 2 ده خارج القسمة مش الباقي:<span class=\"ltr\">25 = 2 × 11 + 3 → 25 mod 11 = 3</span>",
+     "صح. الـ division method بتاخد الـ key mod table size:<span class=\"ltr\">25 mod 11 = 25 − 2 × 11 = 3</span>فالـ 25 بتروح <bdi dir=\"ltr\">index&nbsp;3</bdi> <bdi dir=\"ltr\">(L10,&nbsp;Division&nbsp;method)</bdi>.",
      "الـ 11 ده حجم الـ table نفسه؛ الـ indices الصالحة من 0 لـ 10، والـ key mod 11 عمره ما يطلع 11.",
-     "الـ 25 ده الـ key نفسه، وهو برة الـ table أصلًا (الـ indices من 0..10). الـ address الصح هو 25 mod 11 = 3."
+     "الـ 25 ده الـ key نفسه، وهو برة الـ table أصلًا (الـ indices من <bdi dir=\"ltr\">0..10</bdi>). الـ address الصح هو <bdi dir=\"ltr\">25&nbsp;mod&nbsp;11&nbsp;=&nbsp;3</bdi>."
     ],
     [
-     "16 mod 11 = 5 دي أول محاولة بس: الـ 37 قاعدة في slot 5 من الأول (37 ← 4 اللي خدها 25 ← 5)، فالـ 16 لازم يكمل probing.",
-     "slot 6 دي تاني محاولة، بس فيها 17 (17 mod 11 = 6). الـ linear probing بيكمل لـ slot 7 اللي فاضية.",
-     "صح. 5 (37) و6 (17) مشغولين، فـ i = 2 بتدّي slot 7.",
-     "ده كان هيبقى الـ quadratic probing الـ standard (5 + 4)."
+     "الـ <bdi dir=\"ltr\">16&nbsp;mod&nbsp;11&nbsp;=&nbsp;5</bdi> دي أول محاولة بس: الـ 37 قاعدة في <bdi dir=\"ltr\">slot&nbsp;5</bdi> من الأول (الـ 37 راحت لـ 4 اللي خدها 25، فاتنقلت لـ 5)، فالـ 16 لازم يكمل probing.",
+     "الـ <bdi dir=\"ltr\">slot&nbsp;6</bdi> دي تاني محاولة، بس فيها 17 (<bdi dir=\"ltr\">17&nbsp;mod&nbsp;11&nbsp;=&nbsp;6</bdi>). الـ linear probing بيكمل لـ <bdi dir=\"ltr\">slot&nbsp;7</bdi> اللي فاضية.",
+     "صح. الـ <bdi dir=\"ltr\">5&nbsp;(37)</bdi> والـ <bdi dir=\"ltr\">6&nbsp;(17)</bdi> مشغولين، فـ <bdi dir=\"ltr\">i&nbsp;=&nbsp;2</bdi> بتدّي <bdi dir=\"ltr\">slot&nbsp;7</bdi>.",
+     "ده كان هيبقى الـ quadratic probing الـ standard (<bdi dir=\"ltr\">5&nbsp;+&nbsp;4</bdi>)."
     ],
     [
-     "31 mod 9 = 4 دي أول محاولة، بس الـ 21 واخدها (21 ← 3 خبط في 12 ← اتنقل لـ 4). فنكمل probing لـ 5.",
-     "صح. 12←3، 15←6، 21←3 collision ← 4، 31←4 collision ← 5.",
-     "slot 3 فيها 12 (12 mod 9 = 3)، وكمان الـ 31 الـ hash بتاعه 4 أصلًا؛ والـ linear probing بيمشي لقدام بس من هناك.",
-     "الـ linear probing للـ 31 بيبدأ من 4 ويمشي لقدام فيلاقي 5 فاضية؛ أما slot 0 فبعدين الـ 90 بياخدها (90 mod 9 = 0)."
+     "الـ <bdi dir=\"ltr\">31&nbsp;mod&nbsp;9&nbsp;=&nbsp;4</bdi> دي أول محاولة، بس الـ 21 واخدها (الـ 21 الـ hash بتاعه 3 وخبط في 12 فاتنقل لـ 4). فنكمل probing لـ 5.",
+     "صح. الخطوات:<span class=\"ltr\">12 → 3, 15 → 6,</span><span class=\"ltr\">21 → 3 collision → 4,</span><span class=\"ltr\">31 → 4 collision → 5</span>",
+     "الـ <bdi dir=\"ltr\">slot&nbsp;3</bdi> فيها 12 (<bdi dir=\"ltr\">12&nbsp;mod&nbsp;9&nbsp;=&nbsp;3</bdi>)، وكمان الـ 31 الـ hash بتاعه 4 أصلًا؛ والـ linear probing بيمشي لقدام بس من هناك.",
+     "الـ linear probing للـ 31 بيبدأ من 4 ويمشي لقدام فيلاقي 5 فاضية؛ أما <bdi dir=\"ltr\">slot&nbsp;0</bdi> فبعدين الـ 90 بياخدها (<bdi dir=\"ltr\">90&nbsp;mod&nbsp;9&nbsp;=&nbsp;0</bdi>)."
     ],
     [
-     "key واحد معناه إن key واحد بس باقيه 2، لكن 42 و102 و162 و197 كلهم بيدوا 2 mod 5.",
-     "الـ 2 ده عدّ 42 و102 بس. خلي بالك إن 162 mod 5 = 2 و197 mod 5 = 2 برضه، فالـ chain فيها 4 nodes.",
+     "الـ key الواحد معناه إن key واحد بس باقيه 2، لكن 42 و102 و162 و197 كلهم بيدوا <bdi dir=\"ltr\">2&nbsp;mod&nbsp;5</bdi>.",
+     "الـ 2 ده عدّ 42 و102 بس. خلي بالك إن <bdi dir=\"ltr\">162&nbsp;mod&nbsp;5&nbsp;=&nbsp;2</bdi> و<bdi dir=\"ltr\">197&nbsp;mod&nbsp;5&nbsp;=&nbsp;2</bdi> برضه، فالـ chain فيها 4 nodes.",
      "صح. 42 و102 و162 و197 كلهم الباقي بتاعهم 2.",
-     "الـ 3 ناقصه key: 197 = 39 × 5 + 2، يعني هو كمان بيدخل index 2 مع 42 و102 و162."
+     "الـ 3 ناقصه key، لأن <bdi dir=\"ltr\">197&nbsp;=&nbsp;39&nbsp;×&nbsp;5&nbsp;+&nbsp;2</bdi>، يعني هو كمان بيدخل <bdi dir=\"ltr\">index&nbsp;2</bdi> مع 42 و102 و162."
     ],
     [
-     "slot 6 دي الـ home address بتاع 13 (13 mod 7 = 6)، بس الـ 34 قاعد فيها (34 mod 7 = 6)، فالـ 13 لازم يعمل probing.",
-     "صح. 13 mod 7 = 6 فيه collision، و(6+1) mod 7 = 0.",
-     "الـ 5 ده المكان اللي الـ quadratic probing بتاع المحاضرة بيحط فيه 13 (6 + 1 + 1 = 8 ← 1 مشغولة، وبعدين 6 + 2 + 4 = 12 ← 5). لكن الـ linear probing بيجرب (6 + 1) mod 7 = 0.",
-     "الـ linear probing بيجرب h + 1 الأول: (6 + 1) mod 7 = 0، وslot 0 فاضية، فبيقف عندها قبل ما يوصل لـ 1."
+     "الـ <bdi dir=\"ltr\">slot&nbsp;6</bdi> دي الـ home address بتاع 13 (<bdi dir=\"ltr\">13&nbsp;mod&nbsp;7&nbsp;=&nbsp;6</bdi>)، بس الـ 34 قاعد فيها (<bdi dir=\"ltr\">34&nbsp;mod&nbsp;7&nbsp;=&nbsp;6</bdi>)، فالـ 13 لازم يعمل probing.",
+     "صح. <bdi dir=\"ltr\">13&nbsp;mod&nbsp;7&nbsp;=&nbsp;6</bdi> فيه collision، و<bdi dir=\"ltr\">(6+1)&nbsp;mod&nbsp;7&nbsp;=&nbsp;0</bdi>.",
+     "الـ 5 ده المكان اللي الـ quadratic probing بتاع المحاضرة بيحط فيه 13:<span class=\"ltr\">6 + 1 + 1 = 8 → 1</span>ودي مشغولة، وبعدين:<span class=\"ltr\">6 + 2 + 4 = 12 → 5</span>لكن الـ linear probing بيجرب <bdi dir=\"ltr\">(6&nbsp;+&nbsp;1)&nbsp;mod&nbsp;7&nbsp;=&nbsp;0</bdi>.",
+     "الـ linear probing بيجرب <bdi dir=\"ltr\">h&nbsp;+&nbsp;1</bdi> الأول: <bdi dir=\"ltr\">(6&nbsp;+&nbsp;1)&nbsp;mod&nbsp;7&nbsp;=&nbsp;0</bdi>، والـ <bdi dir=\"ltr\">slot&nbsp;0</bdi> فاضية، فبيقف عندها قبل ما يوصل لـ 1."
     ],
     [
      "الـ Truncation بتاخد الأرقام اللي على اليمين (أو الشمال) من الـ key على طول، من غير أي تربيع.",
-     "الـ Folding بتقسم الـ key لمجموعات أرقام وتجمعها (زي 143 + 765 + 980 = 1888)؛ مفيهاش تربيع.",
-     "صح. الـ mid square method بتربّع الـ key وتاخد الـ 2 أو 3 أرقام اللي في النص كـ address: 456² = 207936 ← الأرقام اللي في النص 79 (L10, Mid square method).",
+     "الـ Folding بتقسم الـ key لمجموعات أرقام وتجمعها (زي <bdi dir=\"ltr\">143&nbsp;+&nbsp;765&nbsp;+&nbsp;980&nbsp;=&nbsp;1888</bdi>)؛ مفيهاش تربيع.",
+     "صح. الـ mid square method بتربّع الـ key وتاخد الـ 2 أو 3 أرقام اللي في النص كـ address:<span class=\"ltr\">456² = 207936 → 79</span>يعني الأرقام اللي في النص 79 <bdi dir=\"ltr\">(L10,&nbsp;Mid&nbsp;square&nbsp;method)</bdi>.",
      "الـ division method بتستخدم الباقي key mod table size؛ مش بتربّع الـ key."
     ],
     [
@@ -1758,28 +1758,28 @@ AR.ds = {
      "الـ 34 دول الأرقام اللي في نص 123456؛ الـ truncation بتاخد الأرقام اللي على اليمين (56) مش اللي في النص."
     ],
     [
-     "صح. الـ Folding بتقسم الـ key لمجموعات كل واحدة 3 أرقام وتجمعهم: 123 + 456 + 789 = 1368 (L10, Folding method).",
-     "الـ 1888 ده ناتج الـ folding في المحاضرة لـ key تاني خالص، 143765980 (143 + 765 + 980). هنا الحساب 123 + 456 + 789.",
-     "579 = 123 + 456 يعني جمعت أول مجموعتين بس؛ لازم تجمع المجموعة التالتة 789 كمان: 1368.",
-     "الـ 369 ده آخر رقم من كل مجموعة (3، 6، 9). الـ Folding بتجمع المجموعات كاملة: 123 + 456 + 789 = 1368."
+     "صح. الـ Folding بتقسم الـ key لمجموعات كل واحدة 3 أرقام وتجمعهم:<span class=\"ltr\">123 + 456 + 789 = 1368</span>(من <bdi dir=\"ltr\">L10,&nbsp;Folding&nbsp;method</bdi>)",
+     "الـ 1888 ده ناتج الـ folding في المحاضرة لـ key تاني خالص، 143765980 (<bdi dir=\"ltr\">143&nbsp;+&nbsp;765&nbsp;+&nbsp;980</bdi>). هنا الحساب <bdi dir=\"ltr\">123&nbsp;+&nbsp;456&nbsp;+&nbsp;789</bdi>.",
+     "الـ <bdi dir=\"ltr\">579&nbsp;=&nbsp;123&nbsp;+&nbsp;456</bdi> يعني جمعت أول مجموعتين بس؛ لازم تجمع المجموعة التالتة 789 كمان، فيطلع 1368.",
+     "الـ 369 ده آخر رقم من كل مجموعة (<bdi dir=\"ltr\">3,&nbsp;6,&nbsp;9</bdi>). الـ Folding بتجمع المجموعات كاملة:<span class=\"ltr\">123 + 456 + 789 = 1368</span>"
     ],
     [
      "الـ 11 دول أول رقمين في 119025؛ الـ mid square بتاخد الأرقام اللي في النص.",
      "الـ 25 دول آخر رقمين (ودي تبقى truncation). الـ Mid square بتاخد الرقمين اللي في النص: 90.",
      "الـ 19 ده متزحزح خانة على شمال النص. 119025 فيه ست أرقام، فالرقمين اللي في النص هما التالت والرابع: 9 و0.",
-     "صح. 11|90|25: الرقمين اللي في النص هما 90."
+     "صح. لما تقسم <bdi dir=\"ltr\">11|90|25</bdi>، الرقمين اللي في النص هما 90."
     ],
     [
-     "slot 3 دي الـ home address بتاع 24 (24 mod 7 = 3)، بس الـ 10 واخدها (10 mod 7 = 3).",
-     "slot 5 دي محاولة i = 1 (3 + 1 + 1)، بس الـ 17 اتحط فيها بعد ما خبط في 3. فالـ 24 بيكمل لـ i = 2.",
-     "صح. i=0 ← 3 مشغولة، i=1 ← 5 مشغولة، i=2 ← (3 + 2 + 4) mod 7 = 2.",
-     "الـ 4 ده h + 1، يعني خطوة الـ linear probing. معادلة الـ quadratic بتاعة المحاضرة بتزود i + i²، فالمحاولات هي 3، 5، وبعدين 2."
+     "الـ <bdi dir=\"ltr\">slot&nbsp;3</bdi> دي الـ home address بتاع 24 (<bdi dir=\"ltr\">24&nbsp;mod&nbsp;7&nbsp;=&nbsp;3</bdi>)، بس الـ 10 واخدها (<bdi dir=\"ltr\">10&nbsp;mod&nbsp;7&nbsp;=&nbsp;3</bdi>).",
+     "الـ <bdi dir=\"ltr\">slot&nbsp;5</bdi> دي محاولة <bdi dir=\"ltr\">i&nbsp;=&nbsp;1</bdi> (<bdi dir=\"ltr\">3&nbsp;+&nbsp;1&nbsp;+&nbsp;1</bdi>)، بس الـ 17 اتحط فيها بعد ما خبط في 3. فالـ 24 بيكمل لـ <bdi dir=\"ltr\">i&nbsp;=&nbsp;2</bdi>.",
+     "صح.<br>مع <bdi dir=\"ltr\">i=0&nbsp;→&nbsp;3</bdi> مشغولة،<br>ومع <bdi dir=\"ltr\">i=1&nbsp;→&nbsp;5</bdi> مشغولة،<br>ومع <bdi dir=\"ltr\">i=2</bdi> بتبقى:<span class=\"ltr\">(3 + 2 + 4) mod 7 = 2</span>",
+     "الـ 4 ده <bdi dir=\"ltr\">h&nbsp;+&nbsp;1</bdi>، يعني خطوة الـ linear probing. معادلة الـ quadratic بتاعة المحاضرة بتزود <bdi dir=\"ltr\">i&nbsp;+&nbsp;i²</bdi>، فالمحاولات هي <bdi dir=\"ltr\">3,&nbsp;5</bdi>، وبعدين 2."
     ],
     [
-     "slot 1 دي الـ primary address بتاع 40 (40 mod 13 = 1)، بس الـ 27 فيها (27 mod 13 = 1)، فالـ double hashing لازم ياخد خطوة.",
-     "slot 2 = 1 + 1 دي خطوة الـ linear probing. الـ double hashing بيتحرك بـ h2 = 1 + (40 mod 11) = 8.",
-     "الـ 8 ده حجم الخطوة h2(40) = 1 + 7، مش الـ slot. الـ slot هي (h1 + 1 · h2) mod 13 = (1 + 8) mod 13 = 9.",
-     "صح. h2 = 1 + 40 mod 11 = 8؛ (1 + 1·8) mod 13 = 9."
+     "الـ <bdi dir=\"ltr\">slot&nbsp;1</bdi> دي الـ primary address بتاع 40 (<bdi dir=\"ltr\">40&nbsp;mod&nbsp;13&nbsp;=&nbsp;1</bdi>)، بس الـ 27 فيها (<bdi dir=\"ltr\">27&nbsp;mod&nbsp;13&nbsp;=&nbsp;1</bdi>)، فالـ double hashing لازم ياخد خطوة.",
+     "الـ <bdi dir=\"ltr\">slot&nbsp;2&nbsp;=&nbsp;1&nbsp;+&nbsp;1</bdi> دي خطوة الـ linear probing. الـ double hashing بيتحرك بـ:<span class=\"ltr\">h2 = 1 + (40 mod 11) = 8</span>",
+     "الـ 8 ده حجم الخطوة <bdi dir=\"ltr\">h2(40)&nbsp;=&nbsp;1&nbsp;+&nbsp;7</bdi>، مش الـ slot. الـ slot هي:<span class=\"ltr\">(h1 + 1 · h2) mod 13 = (1 + 8) mod 13 = 9</span>",
+     "صح. الحساب:<span class=\"ltr\">h2 = 1 + 40 mod 11 = 8</span><span class=\"ltr\">(1 + 1·8) mod 13 = 9</span>"
     ],
     [
      "صح. المحاضرة بتقول إن الـ separate chaining بيستحمل عدد غير محدود من الـ collisions في نفس الـ address ومش محتاج تعرف مسبقًا هتخزن كام element، لأن الـ chains دي linked lists بتكبر (L10, Separate chaining).",
@@ -1797,7 +1797,7 @@ AR.ds = {
      "صح. كلهم بيروحوا لـ 0؛ الـ 14 بيتحرك لـ 1، والـ 21 بيتحرك لـ 2.",
      "الـ Open addressing بيخزن key واحد في كل خانة؛ الـ keys اللي بتخبط بتتنقل لأول خانة فاضية بعدها (1، وبعدين 2)، مش بيشتركوا في 0.",
      "7 و14 و21 دول الـ keys مش الـ addresses؛ الـ table الـ indices بتاعتها من 0..6، والتلاتة keys الـ hash بتاعهم 0.",
-     "0، 2، 4 دي بتتحرك بخطوة 2. الـ Linear probing بيتحرك خطوة واحدة: (0 + 1) mod 7 = 1 للـ 14، وبعدين 2 للـ 21."
+     "الـ <bdi dir=\"ltr\">0,&nbsp;2,&nbsp;4</bdi> دي بتتحرك بخطوة 2. الـ Linear probing بيتحرك خطوة واحدة: <bdi dir=\"ltr\">(0&nbsp;+&nbsp;1)&nbsp;mod&nbsp;7&nbsp;=&nbsp;1</bdi> للـ 14، وبعدين 2 للـ 21."
     ],
     [
      "لو بصيت على الـ hash address بس هتفوّت الـ keys اللي خبطت واتحطت بعدها. الـ search بيكمل linearly.",
@@ -1820,22 +1820,22 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Employee {\n    string name;\n    float salary, bonus, deduction, total;\n};\nint main()\n{\n    const int N = 3;\n    Employee e[N];\n    for (int i = 0; i &lt; N; i++)\n    {\n        cout &lt;&lt; \"Enter name, salary, bonus, deduction: \";\n        cin &gt;&gt; e[i].name &gt;&gt; e[i].salary &gt;&gt; e[i].bonus &gt;&gt; e[i].deduction;\n        e[i].total = e[i].salary + e[i].bonus - e[i].deduction;\n    }\n    for (int i = 0; i &lt; N; i++)\n        cout &lt;&lt; e[i].name &lt;&lt; \" total salary = \" &lt;&lt; e[i].total &lt;&lt; endl;\n    return 0;\n}</pre>الناتج: Dina 1050، Mohamed 2000، Hoda 2800 (1000+100-50 = 1050؛ 2000+0-0 = 2000؛ 3000+0-200 = 2800). وممكن كمان تدّي الـ array قيمه على طول من غير cin: <code>Employee e[3] = {{\"Dina\",1000,100,50},{\"Mohamed\",2000,0,0},{\"Hoda\",3000,0,200}};</code> (L1)."
+       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Employee {\n  string name;\n  float salary, bonus,\n        deduction, total;\n};\nint main()\n{\n  const int N = 3;\n  Employee e[N];\n  for (int i = 0; i &lt; N; i++)\n  {\n    cout &lt;&lt; \"Enter name, salary, \"\n            \"bonus, deduction: \";\n    cin &gt;&gt; e[i].name\n        &gt;&gt; e[i].salary\n        &gt;&gt; e[i].bonus\n        &gt;&gt; e[i].deduction;\n    e[i].total = e[i].salary\n               + e[i].bonus\n               - e[i].deduction;\n  }\n  for (int i = 0; i &lt; N; i++)\n    cout &lt;&lt; e[i].name\n         &lt;&lt; \" total salary = \"\n         &lt;&lt; e[i].total &lt;&lt; endl;\n  return 0;\n}</pre>الناتج:<span class=\"ltr\">Dina 1050, Mohamed 2000, Hoda 2800</span>والحساب:<span class=\"ltr\">1000+100-50 = 1050</span><span class=\"ltr\">2000+0-0 = 2000</span><span class=\"ltr\">3000+0-200 = 2800</span>وممكن كمان تدّي الـ array قيمه على طول من غير cin:<pre>Employee e[3] = {\n  {\"Dina\",1000,100,50},\n  {\"Mohamed\",2000,0,0},\n  {\"Hoda\",3000,0,200}};</pre>(من <bdi dir=\"ltr\">L1</bdi>)"
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Queue\n{\n    Node *front, *rear;\npublic:\n    Queue() { front = NULL; rear = NULL; }\n    bool isEmpty() { return (front == NULL &amp;&amp; rear == NULL); }\n    void enqueue(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = NULL;\n        if (isEmpty()) { front = newnode; rear = newnode; }\n        else { rear-&gt;next = newnode; rear = newnode; }\n    }\n    void display()\n    {\n        for (Node *t = front; t != NULL; t = t-&gt;next) cout &lt;&lt; t-&gt;data &lt;&lt; \" \";\n        cout &lt;&lt; endl;\n    }\n};\nint main()\n{\n    Queue q;\n    q.enqueue(25);\n    q.enqueue(20);\n    q.display();      // 25 20   (front -&gt; 25 -&gt; 20 &lt;- rear)\n    return 0;\n}</pre>(L7) الفكرة: أول enqueue الـ queue فاضي فالـ front والـ rear الاتنين بيشاوروا على 25؛ والتانية بتتربط بعد الـ rear وتبقى هي الـ rear الجديد، فالـ display بتطبع 25 20 (FIFO)."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Queue\n{\n  Node *front, *rear;\npublic:\n  Queue() {\n    front = NULL; rear = NULL;\n  }\n  bool isEmpty() {\n    return (front == NULL &amp;&amp;\n            rear == NULL);\n  }\n  void enqueue(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = NULL;\n    if (isEmpty()) {\n      front = newnode;\n      rear = newnode;\n    }\n    else {\n      rear-&gt;next = newnode;\n      rear = newnode;\n    }\n  }\n  void display()\n  {\n    for (Node *t = front;\n         t != NULL; t = t-&gt;next)\n      cout &lt;&lt; t-&gt;data &lt;&lt; \" \";\n    cout &lt;&lt; endl;\n  }\n};\nint main()\n{\n  Queue q;\n  q.enqueue(25);\n  q.enqueue(20);\n  q.display();  // 25 20\n  // (front -&gt; 25 -&gt; 20 &lt;- rear)\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L7</bdi>) الفكرة: أول enqueue الـ queue فاضي فالـ front والـ rear الاتنين بيشاوروا على 25؛ والتانية بتتربط بعد الـ rear وتبقى هي الـ rear الجديد، فالـ display بتطبع <bdi dir=\"ltr\">25&nbsp;20</bdi> (FIFO)."
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Stack\n{\n    Node *top;\npublic:\n    Stack() { top = NULL; }\n    bool isEmpty() { return top == NULL; }\n    void push(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = top;\n        top = newnode;\n    }\n    int pop()                       // delete an item\n    {\n        if (isEmpty()) { cout &lt;&lt; \"Stack is empty\" &lt;&lt; endl; return 0; }\n        Node *temp = top;\n        int value = top-&gt;data;\n        top = top-&gt;next;\n        delete temp;\n        return value;\n    }\n};\nint main()\n{\n    Stack s;\n    s.push(10);\n    s.push(20);\n    cout &lt;&lt; \"Deleted \" &lt;&lt; s.pop() &lt;&lt; endl;   // Deleted 20\n    return 0;\n}</pre>(L6) الـ Pop بتشيل الـ node اللي عند الـ top (آخر واحدة اتعملها push): LIFO، عشان كده بيطبع Deleted 20."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Stack\n{\n  Node *top;\npublic:\n  Stack() { top = NULL; }\n  bool isEmpty() {\n    return top == NULL;\n  }\n  void push(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = top;\n    top = newnode;\n  }\n  int pop()   // delete an item\n  {\n    if (isEmpty()) {\n      cout &lt;&lt; \"Stack is empty\"\n           &lt;&lt; endl;\n      return 0;\n    }\n    Node *temp = top;\n    int value = top-&gt;data;\n    top = top-&gt;next;\n    delete temp;\n    return value;\n  }\n};\nint main()\n{\n  Stack s;\n  s.push(10);\n  s.push(20);\n  cout &lt;&lt; \"Deleted \" &lt;&lt; s.pop()\n       &lt;&lt; endl;   // Deleted 20\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L6</bdi>) الـ Pop بتشيل الـ node اللي عند الـ top (آخر واحدة اتعملها push): ده الـ LIFO، عشان كده بيطبع <bdi dir=\"ltr\">Deleted&nbsp;20</bdi>."
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next, *prev;\n    Node() { data = 0; next = NULL; prev = NULL; }\n};\nclass DList\n{\npublic:\n    Node *head;\n    DList() { head = NULL; }\n    bool isEmpty() { return head == NULL; }\n    void insertsorted(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        if (isEmpty())\n            head = newnode;\n        else if (item &lt; head-&gt;data)           // new first node\n        {\n            newnode-&gt;next = head;\n            head-&gt;prev = newnode;\n            head = newnode;\n        }\n        else\n        {\n            Node *temp = head;\n            while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)\n                temp = temp-&gt;next;\n            newnode-&gt;next = temp-&gt;next;\n            newnode-&gt;prev = temp;\n            if (temp-&gt;next != NULL) temp-&gt;next-&gt;prev = newnode;\n            temp-&gt;next = newnode;\n        }\n    }\n    void display()\n    {\n        for (Node *t = head; t != NULL; t = t-&gt;next) cout &lt;&lt; t-&gt;data &lt;&lt; \" \";\n        cout &lt;&lt; endl;\n    }\n};\nint main()\n{\n    DList d;\n    d.insertsorted(30); d.insertsorted(10); d.insertsorted(20);\n    d.insertsorted(5);  d.insertsorted(40);\n    d.display();          // 5 10 20 30 40\n    return 0;\n}</pre>(L8) اتجرب بـ g++؛ بيتعامل مع الـ list الفاضية، ومع قيمة جديدة أصغر من الكل، وقيمة في النص، وقيمة جديدة أكبر من الكل. خلي بالك في الـ doubly لازم تظبط الـ prev كمان مع الـ next."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next, *prev;\n  Node() {\n    data = 0;\n    next = NULL; prev = NULL;\n  }\n};\nclass DList\n{\npublic:\n  Node *head;\n  DList() { head = NULL; }\n  bool isEmpty() {\n    return head == NULL;\n  }\n  void insertsorted(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    if (isEmpty())\n      head = newnode;\n    else if (item &lt; head-&gt;data)\n    { // new first node\n      newnode-&gt;next = head;\n      head-&gt;prev = newnode;\n      head = newnode;\n    }\n    else\n    {\n      Node *temp = head;\n      while (temp-&gt;next != NULL &amp;&amp;\n       temp-&gt;next-&gt;data &lt; item)\n        temp = temp-&gt;next;\n      newnode-&gt;next = temp-&gt;next;\n      newnode-&gt;prev = temp;\n      if (temp-&gt;next != NULL)\n       temp-&gt;next-&gt;prev = newnode;\n      temp-&gt;next = newnode;\n    }\n  }\n  void display()\n  {\n    for (Node *t = head;\n         t != NULL; t = t-&gt;next)\n      cout &lt;&lt; t-&gt;data &lt;&lt; \" \";\n    cout &lt;&lt; endl;\n  }\n};\nint main()\n{\n  DList d;\n  d.insertsorted(30);\n  d.insertsorted(10);\n  d.insertsorted(20);\n  d.insertsorted(5);\n  d.insertsorted(40);\n  d.display(); // 5 10 20 30 40\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L8</bdi>) اتجرب بـ <code>g++</code>؛ بيتعامل مع الـ list الفاضية، ومع قيمة جديدة أصغر من الكل، وقيمة في النص، وقيمة جديدة أكبر من الكل. خلي بالك في الـ doubly لازم تظبط الـ prev كمان مع الـ next."
       },
       {
-       "ans": "<b>Inorder</b> (left, root, right): A B C D E F G H I<br><b>Preorder</b> (root, left, right): F B A D C E G I H<br><b>Postorder</b> (left, right, root): A C E D B H I G F<br>(L9؛ اتجرب بـ g++. نصيحة: في الـ postorder الـ root اللي هو F بييجي في الآخر، وفي الـ preorder بييجي في الأول.)"
+       "ans": "الـ <b>Inorder</b> (left, root, right):<span class=\"ltr\">A B C D E F G H I</span>الـ <b>Preorder</b> (root, left, right):<span class=\"ltr\">F B A D C E G I H</span>الـ <b>Postorder</b> (left, right, root):<span class=\"ltr\">A C E D B H I G F</span>(من <bdi dir=\"ltr\">L9</bdi>؛ اتجرب بـ <code>g++</code>. نصيحة: في الـ postorder الـ root اللي هو F بييجي في الآخر، وفي الـ preorder بييجي في الأول.)"
       },
       {
-       "ans": "h(k) = k mod 5: 25→0, 42→2, 96→1, 101→1, 102→2, 162→2, 197→2.<br><table><tr><th>Index</th><th>Chain</th></tr><tr><td>0</td><td>25 → NULL</td></tr><tr><td>1</td><td>96 → 101 → NULL</td></tr><tr><td>2</td><td>42 → 102 → 162 → 197 → NULL</td></tr><tr><td>3</td><td>NULL</td></tr><tr><td>4</td><td>NULL</td></tr></table>الـ Collisions: الـ 101 (مع 96)، والـ 102 والـ 162 والـ 197 (مع 42). كل واحد بيتضاف في آخر الـ linked list بتاعة الخانة بتاعته (L10)."
+       "ans": "الـ hash function هي <bdi dir=\"ltr\">h(k)&nbsp;=&nbsp;k&nbsp;mod&nbsp;5</bdi> وبتدّي:<span class=\"ltr\">25→0, 42→2, 96→1, 101→1,</span><span class=\"ltr\">102→2, 162→2, 197→2</span><table><tr><th dir=\"ltr\">Index</th><th dir=\"ltr\">Chain</th></tr><tr><td>0</td><td dir=\"ltr\">25 → NULL</td></tr><tr><td>1</td><td dir=\"ltr\">96 → 101 → NULL</td></tr><tr><td>2</td><td dir=\"ltr\">42 → 102 → 162 → 197 → NULL</td></tr><tr><td>3</td><td dir=\"ltr\">NULL</td></tr><tr><td>4</td><td dir=\"ltr\">NULL</td></tr></table>الـ Collisions: الـ 101 (مع 96)، والـ 102 والـ 162 والـ 197 (مع 42). كل واحد بيتضاف في آخر الـ linked list بتاعة الخانة بتاعته (<bdi dir=\"ltr\">L10</bdi>)."
       }
      ]
     },
@@ -1847,25 +1847,25 @@ AR.ds = {
         "الـ stack بيضيف ويمسح من طرف واحد بس، اللي هو الـ top (L2)، فمش مفتوح من الطرفين.",
         null,
         "الـ linked list ينفع تضيف وتمسح فيها من أي مكان، بس الإجابة المتوقعة هي الـ queue، اللي المحاضرة بتقول عليه \"open at both ends\".",
-        "الـ array العادي مالوش أطراف للإضافة والمسح أصلًا؛ الـ stacks والـ queues هي اللي بتتبني عليه باستخدام الـ TOP أو الـ front/rear indices."
+        "الـ array العادي مالوش أطراف للإضافة والمسح أصلًا؛ الـ stacks والـ queues هي اللي بتتبني عليه باستخدام الـ TOP أو الـ <bdi dir=\"ltr\">front/rear</bdi> indices."
        ]
       },
       {
-       "why": "الـ array بياخد مساحة = عدد العناصر × حجم العنصر الواحد: 15 × 4 bytes = 60 bytes (L1، Array-based representation).",
+       "why": "الـ array بياخد مساحة بتساوي عدد العناصر × حجم العنصر الواحد:<span class=\"ltr\">15 × 4 bytes = 60 bytes</span>(من <bdi dir=\"ltr\">L1,&nbsp;Array-based&nbsp;representation</bdi>)",
        "ow": [
         "الـ 15 ده عدد العناصر، مش عدد الـ bytes؛ كل int بياخد 4 bytes.",
-        "الـ 19 ده جمع العدد على حجم العنصر (15 + 4)؛ إنما الحجم = العدد × حجم العنصر.",
-        "الـ 11 ده طرح حجم العنصر من العدد (15 − 4)، وده مالوش أي معنى؛ الحجم هو 15 × 4.",
+        "الـ 19 ده جمع العدد على حجم العنصر (<bdi dir=\"ltr\">15&nbsp;+&nbsp;4</bdi>)؛ إنما الحجم بيساوي العدد × حجم العنصر.",
+        "الـ 11 ده طرح حجم العنصر من العدد (<bdi dir=\"ltr\">15&nbsp;−&nbsp;4</bdi>)، وده مالوش أي معنى؛ الحجم هو <bdi dir=\"ltr\">15&nbsp;×&nbsp;4</bdi>.",
         null
        ]
       },
       {
-       "why": "الـ arrays في C++ بتبدأ من صفر (zero-based): العنصر رقم i بيبقى في الـ position i − 1، فالـ indices بتمشي من 0 لحد size − 1، وأول عنصر عند الـ index 0 (L1، Array-based representation).",
+       "why": "الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من صفر (zero-based): العنصر رقم i بيبقى في الـ position <bdi dir=\"ltr\">i&nbsp;−&nbsp;1</bdi>، فالـ indices بتمشي من 0 لحد <bdi dir=\"ltr\">size&nbsp;−&nbsp;1</bdi>، وأول عنصر عند الـ index 0 <bdi dir=\"ltr\">(L1,&nbsp;Array-based&nbsp;representation)</bdi>.",
        "ow": [
-        "الـ matrices في الرياضة بتترقم من 1، بس الـ arrays في C++ بتبدأ من صفر (zero-based): location(i) = i − 1.",
+        "الـ matrices في الرياضة بتترقم من 1، بس الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من صفر (zero-based):<span class=\"ltr\">location(i) = i − 1</span>",
         null,
-        "مفيش array في C++ بيبدأ من الـ index 2؛ أول عنصر دايمًا عند الـ index 0.",
-        "الـ −1 دي قيمة \"فاضي\" للـ TOP أو الـ front/rear في الـ stacks والـ queues، مش index صالح في الـ array."
+        "مفيش array في <bdi dir=\"ltr\">C++</bdi> بيبدأ من الـ index 2؛ أول عنصر دايمًا عند الـ index 0.",
+        "الـ <bdi dir=\"ltr\">−1</bdi> دي قيمة \"فاضي\" للـ TOP أو الـ <bdi dir=\"ltr\">front/rear</bdi> في الـ stacks والـ queues، مش index صالح في الـ array."
        ]
       },
       {
@@ -1878,16 +1878,16 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ Pop هي عملية مسح العنصر اللي فوق خالص في الـ stack؛ وبعد كل pop الـ top بيقل بواحد (L2، Operations on stack).",
+       "why": "الـ Pop هي عملية مسح العنصر اللي فوق خالص في الـ stack؛ وبعد كل pop الـ top بيقل بواحد <bdi dir=\"ltr\">(L2,&nbsp;Operations&nbsp;on&nbsp;stack)</bdi>.",
        "ow": [
-        "الـ Create بتعمل stack جديد فاضي (top = −1)؛ مش بتشيل أي حاجة.",
+        "الـ Create بتعمل stack جديد فاضي (<bdi dir=\"ltr\">top&nbsp;=&nbsp;−1</bdi>)؛ مش بتشيل أي حاجة.",
         "الـ Push عكسها بالظبط: بتضيف عنصر جديد عند الـ top وبتزوّد الـ top.",
         "الـ Evaluation مش من عمليات الـ stack أصلًا؛ العمليات الأساسية هي push وpop.",
         null
        ]
       },
       {
-       "why": "في الـ tree العناصر مش مترتبة في تسلسل واحد، لأ مترتبة hierarchy (root وchildren وsubtrees)، فهو non-linear زي الـ graph؛ إنما الـ arrays والـ stacks والـ queues دول linear (L1، L9).",
+       "why": "في الـ tree العناصر مش مترتبة في تسلسل واحد، لأ مترتبة hierarchy (root وchildren وsubtrees)، فهو non-linear زي الـ graph؛ إنما الـ arrays والـ stacks والـ queues دول linear <bdi dir=\"ltr\">(L1,&nbsp;L9)</bdi>.",
        "ow": [
         "الـ array ده linear (وstatic): عناصره قاعدة في تسلسل واحد.",
         "الـ stack ده linear dynamic structure: تسلسل واحد، والوصول ليه من الـ top.",
@@ -1900,21 +1900,21 @@ AR.ds = {
        "ow": [
         null,
         "غلط: الـ arrays ينفع تترتب (في L1 فيه مثال sort)، وأصلًا دي مش هتبقى ميزة.",
-        "غلط: الـ arrays في C++ بتبدأ من الـ index 0، مش 1.",
+        "غلط: الـ arrays في <bdi dir=\"ltr\">C++</bdi> بتبدأ من الـ index 0، مش 1.",
         "غلط: تخزين data types مختلفة تحت اسم واحد ده وصف الـ struct، مش الـ array."
        ]
       },
       {
-       "why": "الـ Push هي عملية إضافة عنصر جديد فوق الـ stack: الأول الـ top بيزيد واحد، وبعدين العنصر بيتخزن في stack[top] (L2، Operations on stack).",
+       "why": "الـ Push هي عملية إضافة عنصر جديد فوق الـ stack: الأول الـ top بيزيد واحد، وبعدين العنصر بيتخزن في <code>stack[top]</code> (من <bdi dir=\"ltr\">L2,&nbsp;Operations&nbsp;on&nbsp;stack</bdi>).",
        "ow": [
-        "الـ Create بتعمل stack فاضي بس بـ top = −1؛ مش بتضيف حاجة.",
+        "الـ Create بتعمل stack فاضي بس بـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;−1</bdi>؛ مش بتضيف حاجة.",
         null,
         "الـ Evaluation مش من عمليات الـ stack؛ الإضافة اسمها push.",
         "الـ Pop عكسها: بتمسح العنصر اللي فوق وبتقلل الـ top."
        ]
       },
       {
-       "why": "الـ Linear (sequential) search بيشيك على العناصر واحد واحد من الأول (Lab 1، Lab 2).",
+       "why": "الـ Linear (sequential) search بيشيك على العناصر واحد واحد من الأول <bdi dir=\"ltr\">(Lab&nbsp;1,&nbsp;Lab&nbsp;2)</bdi>.",
        "ow": [
         null,
         "الـ binary search مش بيشيك على كل العناصر من الأول؛ هو بيقسم list مترتبة نصين كل مرة بمقارنة العنصر اللي في النص.",
@@ -1923,7 +1923,7 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ Nodes بتتعمل بـ new وقت الـ run time: يعني dynamic allocation (L4، L5).",
+       "why": "الـ Nodes بتتعمل بـ new وقت الـ run time: يعني dynamic allocation <bdi dir=\"ltr\">(L4,&nbsp;L5)</bdi>.",
        "ow": [
         "الـ static allocation بيثبّت الحجم قبل ما البرنامج يشتغل، زي الـ arrays؛ إنما الـ nodes بتاعة الـ linked list بتتعمل وقت الـ run time.",
         null,
@@ -1950,10 +1950,10 @@ AR.ds = {
        ]
       },
       {
-       "why": "كل الإضافات في الـ queue بتحصل عند طرف واحد، اللي هو الـ tail (rear): الـ enqueue بيزوّد الـ tail ويخزن العنصر في queue[tail] (L3، What is a queue?).",
+       "why": "كل الإضافات في الـ queue بتحصل عند طرف واحد، اللي هو الـ tail (rear): الـ enqueue بيزوّد الـ tail ويخزن العنصر في <code>queue[tail]</code> (من <bdi dir=\"ltr\">L3,&nbsp;What&nbsp;is&nbsp;a&nbsp;queue?</bdi>).",
        "ow": [
         null,
-        "الجملة صح: الـ queue بيضيف عند الـ rear (tail) بس: tail = tail + 1; queue[tail] = item."
+        "الجملة صح: الـ queue بيضيف عند الـ rear (tail) بس:<span class=\"ltr\">tail = tail + 1; queue[tail] = item;</span>"
        ]
       },
       {
@@ -1964,7 +1964,7 @@ AR.ds = {
        ]
       },
       {
-       "why": "كل عمليات المسح في الـ queue بتحصل عند الـ head (front): الـ dequeue بيقرا queue[head] ويحرّك الـ head لقدام، فأول عنصر دخل هو أول واحد يطلع (L3).",
+       "why": "كل عمليات المسح في الـ queue بتحصل عند الـ head (front): الـ dequeue بيقرا <code>queue[head]</code> ويحرّك الـ head لقدام، فأول عنصر دخل هو أول واحد يطلع (<bdi dir=\"ltr\">L3</bdi>).",
        "ow": [
         null,
         "الجملة صح: الـ dequeue دايمًا بيشيل العنصر اللي عند الـ front (head)، اللي هو أقدم واحد (FIFO)."
@@ -1978,9 +1978,9 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ push() بتضيف عنصر جديد فوق الـ stack؛ إنما مسح العنصر اللي فوق ده شغل الـ pop()، فالجملة غلط (L2، Push and Pop functions).",
+       "why": "الـ <code>push()</code> بتضيف عنصر جديد فوق الـ stack؛ إنما مسح العنصر اللي فوق ده شغل الـ <code>pop()</code>، فالجملة غلط <bdi dir=\"ltr\">(L2,&nbsp;Push&nbsp;and&nbsp;Pop&nbsp;functions)</bdi>.",
        "ow": [
-        "الـ push() بتضيف عنصر عند الـ top (top = top + 1; stack[top] = item). المسح ده الـ pop().",
+        "الـ <code>push()</code> بتضيف عنصر عند الـ top:<span class=\"ltr\">top = top + 1; stack[top] = item;</span>أما المسح فده الـ <code>pop()</code>.",
         null
        ]
       },
@@ -1999,7 +1999,7 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ stack بيضيف ويمسح عند الـ top بس، فأول عنصر اتعمله push بيقعد في القاع ويبقى آخر واحد يطلع بالـ pop: First-In-Last-Out، وده هو نفسه الـ LIFO (L2).",
+       "why": "الـ stack بيضيف ويمسح عند الـ top بس، فأول عنصر اتعمله push بيقعد في القاع ويبقى آخر واحد يطلع بالـ pop: يعني First-In-Last-Out، وده هو نفسه الـ LIFO (<bdi dir=\"ltr\">L2</bdi>).",
        "ow": [
         null,
         "الجملة صح: First-In-Last-Out معناها إن أول عنصر اتعمله push هو آخر واحد يتعمله pop، وده نفس الـ LIFO."
@@ -2014,22 +2014,22 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Employee {\n    string name;\n    float salary, bonus, deduction, total;\n};\nint main()\n{\n    const int N = 4;\n    Employee e[N];\n    for (int i = 0; i &lt; N; i++)\n    {\n        cout &lt;&lt; \"Enter name, salary, bonus, deduction: \";\n        cin &gt;&gt; e[i].name &gt;&gt; e[i].salary &gt;&gt; e[i].bonus &gt;&gt; e[i].deduction;\n        e[i].total = e[i].salary + e[i].bonus - e[i].deduction;\n    }\n    for (int i = 0; i &lt; N; i++)\n        cout &lt;&lt; e[i].name &lt;&lt; \" total salary = \" &lt;&lt; e[i].total &lt;&lt; endl;\n    return 0;\n}</pre>بقيم الجدول: Dina 1000+50-30 = <b>1020</b>، Mohamed 2000+70-0 = <b>2070</b>، Abas 2000+40-20 = <b>2020</b>، Hoda 3000+0-300 = <b>2700</b> (اتشغل بـ g++) (L1)."
+       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Employee {\n  string name;\n  float salary, bonus,\n        deduction, total;\n};\nint main()\n{\n  const int N = 4;\n  Employee e[N];\n  for (int i = 0; i &lt; N; i++)\n  {\n    cout &lt;&lt; \"Enter name, salary, \"\n            \"bonus, deduction: \";\n    cin &gt;&gt; e[i].name\n        &gt;&gt; e[i].salary\n        &gt;&gt; e[i].bonus\n        &gt;&gt; e[i].deduction;\n    e[i].total = e[i].salary\n               + e[i].bonus\n               - e[i].deduction;\n  }\n  for (int i = 0; i &lt; N; i++)\n    cout &lt;&lt; e[i].name\n         &lt;&lt; \" total salary = \"\n         &lt;&lt; e[i].total &lt;&lt; endl;\n  return 0;\n}</pre>بقيم الجدول:<span class=\"ltr\">Dina 1000+50-30 = 1020</span><span class=\"ltr\">Mohamed 2000+70-0 = 2070</span><span class=\"ltr\">Abas 2000+40-20 = 2020</span><span class=\"ltr\">Hoda 3000+0-300 = 2700</span>(اتشغل بـ <code>g++</code>) (من <bdi dir=\"ltr\">L1</bdi>)"
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next, *prev;\n    Node() { data = 0; next = NULL; prev = NULL; }\n};\nclass DList\n{\npublic:\n    Node *head;\n    DList() { head = NULL; }\n    bool isEmpty() { return head == NULL; }\n    void insertatbeginning(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = head;\n        newnode-&gt;prev = NULL;\n        if (!isEmpty()) head-&gt;prev = newnode;\n        head = newnode;\n    }\n    void removeAll()\n    {\n        if (isEmpty()) { cout &lt;&lt; \"List is empty\" &lt;&lt; endl; return; }\n        while (head != NULL)\n        {\n            Node *temp = head;\n            head = head-&gt;next;\n            if (head != NULL) head-&gt;prev = NULL;\n            cout &lt;&lt; \"Deleted \" &lt;&lt; temp-&gt;data &lt;&lt; endl;\n            delete temp;\n        }\n    }\n};\nint main()\n{\n    DList d;\n    d.insertatbeginning(10); d.insertatbeginning(20); d.insertatbeginning(30);\n    d.removeAll();      // Deleted 30, Deleted 20, Deleted 10\n    d.removeAll();      // List is empty\n    return 0;\n}</pre>(L8) الفكرة: لو الـ list فاضية اطبع رسالة واخرج؛ غير كده امسح من الأول node node، وبعد كل خطوة خلي الـ prev بتاع الـ head الجديد NULL، لحد ما الـ head يبقى NULL."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next, *prev;\n  Node() {\n    data = 0;\n    next = NULL; prev = NULL;\n  }\n};\nclass DList\n{\npublic:\n  Node *head;\n  DList() { head = NULL; }\n  bool isEmpty() {\n    return head == NULL;\n  }\n  void insertatbeginning(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = head;\n    newnode-&gt;prev = NULL;\n    if (!isEmpty())\n      head-&gt;prev = newnode;\n    head = newnode;\n  }\n  void removeAll()\n  {\n    if (isEmpty()) {\n      cout &lt;&lt; \"List is empty\"\n           &lt;&lt; endl;\n      return;\n    }\n    while (head != NULL)\n    {\n      Node *temp = head;\n      head = head-&gt;next;\n      if (head != NULL)\n        head-&gt;prev = NULL;\n      cout &lt;&lt; \"Deleted \"\n           &lt;&lt; temp-&gt;data &lt;&lt; endl;\n      delete temp;\n    }\n  }\n};\nint main()\n{\n  DList d;\n  d.insertatbeginning(10);\n  d.insertatbeginning(20);\n  d.insertatbeginning(30);\n  d.removeAll();\n  // Deleted 30, Deleted 20,\n  // Deleted 10\n  d.removeAll();\n  // List is empty\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L8</bdi>) الفكرة: لو الـ list فاضية اطبع رسالة واخرج؛ غير كده امسح من الأول node node، وبعد كل خطوة خلي الـ prev بتاع الـ head الجديد NULL، لحد ما الـ head يبقى NULL."
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Stack\n{\n    Node *top;\npublic:\n    Stack() { top = NULL; }\n    bool isEmpty() { return top == NULL; }\n    void push(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        if (isEmpty()) newnode-&gt;next = NULL;\n        else newnode-&gt;next = top;\n        top = newnode;\n    }\n    int pop()\n    {\n        if (isEmpty()) { cout &lt;&lt; \"Stack is empty\" &lt;&lt; endl; return 0; }\n        Node *temp = top;\n        int value = top-&gt;data;\n        top = top-&gt;next;\n        delete temp;\n        return value;\n    }\n};\nint main()\n{\n    Stack s;\n    if (s.isEmpty()) cout &lt;&lt; \"Stack is empty\" &lt;&lt; endl;\n    s.push(50);\n    s.push(70);                                // top -&gt; 70 -&gt; 50 -&gt; NULL\n    cout &lt;&lt; \"Removed \" &lt;&lt; s.pop() &lt;&lt; endl;    // Removed 70\n    return 0;\n}</pre>(L6) الفكرة: بنشيك الأول إن الـ stack فاضي، وبعدين push لـ 50 و70 فالـ top بيبقى 70، والـ pop بتشيل 70 (LIFO)."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Stack\n{\n  Node *top;\npublic:\n  Stack() { top = NULL; }\n  bool isEmpty() {\n    return top == NULL;\n  }\n  void push(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    if (isEmpty())\n      newnode-&gt;next = NULL;\n    else newnode-&gt;next = top;\n    top = newnode;\n  }\n  int pop()\n  {\n    if (isEmpty()) {\n      cout &lt;&lt; \"Stack is empty\"\n           &lt;&lt; endl;\n      return 0;\n    }\n    Node *temp = top;\n    int value = top-&gt;data;\n    top = top-&gt;next;\n    delete temp;\n    return value;\n  }\n};\nint main()\n{\n  Stack s;\n  if (s.isEmpty())\n    cout &lt;&lt; \"Stack is empty\"\n         &lt;&lt; endl;\n  s.push(50);\n  s.push(70);\n  // top -&gt; 70 -&gt; 50 -&gt; NULL\n  cout &lt;&lt; \"Removed \" &lt;&lt; s.pop()\n       &lt;&lt; endl;   // Removed 70\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L6</bdi>) الفكرة: بنشيك الأول إن الـ stack فاضي، وبعدين push لـ 50 و70 فالـ top بيبقى 70، والـ pop بتشيل 70 (LIFO)."
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Queue\n{\n    Node *front, *rear;\npublic:\n    Queue() { front = rear = NULL; }\n    bool isEmpty() { return front == NULL; }\n    void enqueue(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = NULL;\n        if (isEmpty()) { front = newnode; rear = newnode; }\n        else { rear-&gt;next = newnode; rear = newnode; }\n    }\n    int dequeue()\n    {\n        if (isEmpty()) { cout &lt;&lt; \"Queue is empty\" &lt;&lt; endl; return 0; }\n        Node *temp = front;\n        int value = front-&gt;data;\n        front = front-&gt;next;\n        if (front == NULL) rear = NULL;      // queue became empty\n        delete temp;\n        return value;\n    }\n    void removeAll()\n    {\n        while (!isEmpty())\n            cout &lt;&lt; \"Dequeued \" &lt;&lt; dequeue() &lt;&lt; endl;\n    }\n};\nint main()\n{\n    Queue q;\n    if (q.isEmpty()) cout &lt;&lt; \"Queue is empty\" &lt;&lt; endl;\n    q.enqueue(30);\n    q.enqueue(50);\n    q.removeAll();       // Dequeued 30, Dequeued 50 (FIFO)\n    return 0;\n}</pre>(L7) الفكرة: الـ removeAll بتعمل dequeue لحد ما الـ queue يفضى، فبيطلع 30 الأول وبعدين 50 (FIFO). وخلي بالك لما آخر node تتشال لازم rear = NULL."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Queue\n{\n  Node *front, *rear;\npublic:\n  Queue() { front = rear = NULL; }\n  bool isEmpty() {\n    return front == NULL;\n  }\n  void enqueue(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = NULL;\n    if (isEmpty()) {\n      front = newnode;\n      rear = newnode;\n    }\n    else {\n      rear-&gt;next = newnode;\n      rear = newnode;\n    }\n  }\n  int dequeue()\n  {\n    if (isEmpty()) {\n      cout &lt;&lt; \"Queue is empty\"\n           &lt;&lt; endl;\n      return 0;\n    }\n    Node *temp = front;\n    int value = front-&gt;data;\n    front = front-&gt;next;\n    if (front == NULL)\n      rear = NULL;\n      // queue became empty\n    delete temp;\n    return value;\n  }\n  void removeAll()\n  {\n    while (!isEmpty())\n      cout &lt;&lt; \"Dequeued \"\n           &lt;&lt; dequeue() &lt;&lt; endl;\n  }\n};\nint main()\n{\n  Queue q;\n  if (q.isEmpty())\n    cout &lt;&lt; \"Queue is empty\"\n         &lt;&lt; endl;\n  q.enqueue(30);\n  q.enqueue(50);\n  q.removeAll();\n  // Dequeued 30, Dequeued 50\n  // (FIFO)\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L7</bdi>) الفكرة: الـ removeAll بتعمل dequeue لحد ما الـ queue يفضى، فبيطلع 30 الأول وبعدين 50 (FIFO). وخلي بالك لما آخر node تتشال لازم <bdi dir=\"ltr\">rear&nbsp;=&nbsp;NULL</bdi>."
       },
       {
-       "ans": "<b>Inorder</b> (L, root, R): G D H B E I A C F<br><b>Preorder</b> (root, L, R): A B D G H E I C F<br><b>Postorder</b> (L, R, root): G H D I E B F C A<br>(L9؛ اتجرب بـ g++.)"
+       "ans": "الـ <b>Inorder</b> (L, root, R):<span class=\"ltr\">G D H B E I A C F</span>الـ <b>Preorder</b> (root, L, R):<span class=\"ltr\">A B D G H E I C F</span>الـ <b>Postorder</b> (L, R, root):<span class=\"ltr\">G H D I E B F C A</span>(من <bdi dir=\"ltr\">L9</bdi>؛ اتجرب بـ <code>g++</code>.)"
       },
       {
-       "ans": "الـ Division: h1(k) = k mod 7 ← 18→4, 72→2, 65→2, 34→6, 13→6.<br><b>Linear probing</b> h(k,i) = (h1(k)+i) mod 7:<br>18: i=0 ← 4. 72: i=0 ← 2. 65: i=0 ← 2 فيه collision، i=1 ← 3. 34: i=0 ← 6. 13: i=0 ← 6 فيه collision، i=1 ← (6+1) mod 7 = 0.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr><tr><td>13</td><td>–</td><td>72</td><td>65</td><td>18</td><td>–</td><td>34</td></tr></table><b>Separate chaining</b>: [0] NULL, [1] NULL, [2] 72 → 65, [3] NULL, [4] 18, [5] NULL, [6] 34 → 13. (ده مثال المحاضرة بالظبط، L10.)"
+       "ans": "الـ Division:<span class=\"ltr\">h1(k) = k mod 7 → 18→4, 72→2, 65→2, 34→6, 13→6</span>الـ <b>Linear probing</b> بالمعادلة:<span class=\"ltr\">h(k,i) = (h1(k)+i) mod 7</span><span class=\"ltr\">18: i=0 → 4</span><span class=\"ltr\">72: i=0 → 2</span><span class=\"ltr\">65: i=0 → 2 collision, i=1 → 3</span><span class=\"ltr\">34: i=0 → 6</span><span class=\"ltr\">13: i=0 → 6 collision, i=1 → (6+1) mod 7 = 0</span><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th></tr><tr><td>13</td><td dir=\"ltr\">–</td><td>72</td><td>65</td><td>18</td><td dir=\"ltr\">–</td><td>34</td></tr></table>الـ <b>Separate chaining</b>:<span class=\"ltr\">[0] NULL, [1] NULL, [2] 72 → 65, [3] NULL, [4] 18, [5] NULL, [6] 34 → 13</span>(ده مثال المحاضرة بالظبط، <bdi dir=\"ltr\">L10</bdi>.)"
       }
      ]
     }
@@ -2040,22 +2040,22 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Student {\n    string name;\n    float sub1, sub2;\n};\nint main()\n{\n    const int N = 4;\n    Student s[N];\n    float sum1 = 0, sum2 = 0;\n    for (int i = 0; i &lt; N; i++)\n    {\n        cout &lt;&lt; \"Enter name, sub1, sub2: \";\n        cin &gt;&gt; s[i].name &gt;&gt; s[i].sub1 &gt;&gt; s[i].sub2;\n        sum1 += s[i].sub1;\n        sum2 += s[i].sub2;\n        cout &lt;&lt; s[i].name &lt;&lt; \" average = \" &lt;&lt; (s[i].sub1 + s[i].sub2) / 2 &lt;&lt; endl;\n    }\n    cout &lt;&lt; \"Average of sub1 = \" &lt;&lt; sum1 / N &lt;&lt; endl;\n    cout &lt;&lt; \"Average of sub2 = \" &lt;&lt; sum2 / N &lt;&lt; endl;\n    return 0;\n}</pre>متوسط كل مادة: sub1 = (60+80+50+70.5)/4 = 260.5/4 = <b>65.125</b>; sub2 = (70+60+40.5+75)/4 = 245.5/4 = <b>61.375</b>. وبما إن السؤال ممكن يتفهم كمان إنه متوسط كل طالب، البرنامج بيطبع كمان Ahmed 65، Mohamed 70، Abas 45.25، Hoda 72.75 (L1)."
+       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Student {\n  string name;\n  float sub1, sub2;\n};\nint main()\n{\n  const int N = 4;\n  Student s[N];\n  float sum1 = 0, sum2 = 0;\n  for (int i = 0; i &lt; N; i++)\n  {\n    cout &lt;&lt; \"Enter name, sub1, \"\n            \"sub2: \";\n    cin &gt;&gt; s[i].name\n        &gt;&gt; s[i].sub1\n        &gt;&gt; s[i].sub2;\n    sum1 += s[i].sub1;\n    sum2 += s[i].sub2;\n    cout &lt;&lt; s[i].name\n         &lt;&lt; \" average = \"\n         &lt;&lt; (s[i].sub1\n             + s[i].sub2) / 2\n         &lt;&lt; endl;\n  }\n  cout &lt;&lt; \"Average of sub1 = \"\n       &lt;&lt; sum1 / N &lt;&lt; endl;\n  cout &lt;&lt; \"Average of sub2 = \"\n       &lt;&lt; sum2 / N &lt;&lt; endl;\n  return 0;\n}</pre>متوسط كل مادة:<span class=\"ltr\">sub1 = (60+80+50+70.5)/4 = 260.5/4 = 65.125</span><span class=\"ltr\">sub2 = (70+60+40.5+75)/4 = 245.5/4 = 61.375</span>وبما إن السؤال ممكن يتفهم كمان إنه متوسط كل طالب، البرنامج بيطبع كمان:<span class=\"ltr\">Ahmed 65, Mohamed 70, Abas 45.25, Hoda 72.75</span>(من <bdi dir=\"ltr\">L1</bdi>)"
       },
       {
        "ans": "<pre>// inside class Linkedlist (Node has data and next)\nint deletefrombeginning()\n{\n    if (isEmpty()) { cout &lt;&lt; \"Empty\" &lt;&lt; endl; return 0; }\n    Node *temp = head;\n    int value = head-&gt;data;\n    head = head-&gt;next;\n    delete temp;\n    return value;\n}\nvoid removeAll()\n{\n    if (isEmpty()) { cout &lt;&lt; \"List is empty\" &lt;&lt; endl; return; }\n    while (!isEmpty())\n        cout &lt;&lt; \"Deleted \" &lt;&lt; deletefrombeginning() &lt;&lt; endl;\n}</pre>كل خطوة بتحرّك الـ head للـ node اللي بعدها وبتفضّي أول node القديمة، لحد ما الـ head يبقى NULL (L5)."
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Stack\n{\n    Node *top;\npublic:\n    Stack() { top = NULL; }\n    bool isEmpty() { return top == NULL; }\n    void push(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = top;\n        top = newnode;\n    }\n    int pop()\n    {\n        if (isEmpty()) { cout &lt;&lt; \"Empty\" &lt;&lt; endl; return 0; }\n        Node *temp = top;\n        int value = top-&gt;data;\n        top = top-&gt;next;\n        delete temp;\n        return value;\n    }\n    void removeAll()\n    {\n        while (!isEmpty())\n            cout &lt;&lt; \"Popped \" &lt;&lt; pop() &lt;&lt; endl;\n    }\n};\nint main()\n{\n    Stack s;\n    s.push(1); s.push(2); s.push(3);\n    s.removeAll();      // Popped 3, Popped 2, Popped 1\n    return 0;\n}</pre>(L6) الفكرة: الـ removeAll بتعمل pop لحد ما الـ stack يفضى، فبيطلع 3 ثم 2 ثم 1 (LIFO)."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Stack\n{\n  Node *top;\npublic:\n  Stack() { top = NULL; }\n  bool isEmpty() {\n    return top == NULL;\n  }\n  void push(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = top;\n    top = newnode;\n  }\n  int pop()\n  {\n    if (isEmpty()) {\n      cout &lt;&lt; \"Empty\" &lt;&lt; endl;\n      return 0;\n    }\n    Node *temp = top;\n    int value = top-&gt;data;\n    top = top-&gt;next;\n    delete temp;\n    return value;\n  }\n  void removeAll()\n  {\n    while (!isEmpty())\n      cout &lt;&lt; \"Popped \" &lt;&lt; pop()\n           &lt;&lt; endl;\n  }\n};\nint main()\n{\n  Stack s;\n  s.push(1); s.push(2); s.push(3);\n  s.removeAll();\n  // Popped 3, Popped 2, Popped 1\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L6</bdi>) الفكرة: الـ removeAll بتعمل pop لحد ما الـ stack يفضى، فبيطلع 3 ثم 2 ثم 1 (LIFO)."
       },
       {
-       "ans": "<pre>// Node class as in L7 (data, next)\nclass Queue\n{\n    Node *front, *rear;\npublic:\n    Queue() { front = rear = NULL; }\n    bool isEmpty() { return front == NULL; }\n    void enqueue(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = NULL;\n        if (isEmpty()) { front = newnode; rear = newnode; }\n        else { rear-&gt;next = newnode; rear = newnode; }\n    }\n    int dequeue()\n    {\n        if (isEmpty()) { cout &lt;&lt; \"Empty\" &lt;&lt; endl; return 0; }\n        Node *temp = front;\n        int value = front-&gt;data;\n        front = front-&gt;next;\n        if (front == NULL) rear = NULL;\n        delete temp;\n        return value;\n    }\n};\nint main()\n{\n    Queue q;\n    q.enqueue(50);\n    q.enqueue(70);\n    cout &lt;&lt; \"Removed \" &lt;&lt; q.dequeue() &lt;&lt; endl;   // Removed 50 (FIFO)\n    return 0;\n}</pre>(L7) الفكرة: enqueue لـ 50 و70، والـ dequeue بتشيل 50 لأنه أول واحد دخل (FIFO)."
+       "ans": "<pre>// Node class as in L7\n// (data, next)\nclass Queue\n{\n  Node *front, *rear;\npublic:\n  Queue() { front = rear = NULL; }\n  bool isEmpty() {\n    return front == NULL;\n  }\n  void enqueue(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = NULL;\n    if (isEmpty()) {\n      front = newnode;\n      rear = newnode;\n    }\n    else {\n      rear-&gt;next = newnode;\n      rear = newnode;\n    }\n  }\n  int dequeue()\n  {\n    if (isEmpty()) {\n      cout &lt;&lt; \"Empty\" &lt;&lt; endl;\n      return 0;\n    }\n    Node *temp = front;\n    int value = front-&gt;data;\n    front = front-&gt;next;\n    if (front == NULL)\n      rear = NULL;\n    delete temp;\n    return value;\n  }\n};\nint main()\n{\n  Queue q;\n  q.enqueue(50);\n  q.enqueue(70);\n  cout &lt;&lt; \"Removed \"\n       &lt;&lt; q.dequeue() &lt;&lt; endl;\n  // Removed 50 (FIFO)\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L7</bdi>) الفكرة: enqueue لـ 50 و70، والـ dequeue بتشيل 50 لأنه أول واحد دخل (FIFO)."
       },
       {
-       "ans": "<b>Inorder</b>: 12, 25, 33, 50, 53, 55, 60, 65, 70<br><b>Preorder</b>: 50, 25, 12, 33, 65, 55, 53, 60, 70<br><b>Postorder</b>: 12, 33, 25, 53, 60, 55, 70, 65, 50<br>(مثال Lecture 9؛ اتجرب بـ g++.)"
+       "ans": "الـ <b>Inorder</b>:<span class=\"ltr\">12, 25, 33, 50, 53, 55, 60, 65, 70</span>الـ <b>Preorder</b>:<span class=\"ltr\">50, 25, 12, 33, 65, 55, 53, 60, 70</span>الـ <b>Postorder</b>:<span class=\"ltr\">12, 33, 25, 53, 60, 55, 70, 65, 50</span>(مثال <bdi dir=\"ltr\">Lecture&nbsp;9</bdi>؛ اتجرب بـ <code>g++</code>.)"
       },
       {
-       "ans": "h(k,i) = ((k mod 9) + i) mod 9<br>12: i=0 ← 3.<br>15: i=0 ← 6.<br>21: i=0 ← 3 فيه collision (مع 12)؛ i=1 ← 4.<br>31: i=0 ← 4 فيه collision (مع 21)؛ i=1 ← 5.<br>90: i=0 ← 0.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr><tr><td>90</td><td>–</td><td>–</td><td>12</td><td>21</td><td>31</td><td>15</td><td>–</td><td>–</td></tr></table>(L10؛ اتحسب بـ script.)"
+       "ans": "المعادلة:<span class=\"ltr\">h(k,i) = ((k mod 9) + i) mod 9</span><span class=\"ltr\">12: i=0 → 3</span><span class=\"ltr\">15: i=0 → 6</span><span class=\"ltr\">21: i=0 → 3 collision (12); i=1 → 4</span><span class=\"ltr\">31: i=0 → 4 collision (21); i=1 → 5</span><span class=\"ltr\">90: i=0 → 0</span><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th></tr><tr><td>90</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td><td>12</td><td>21</td><td>31</td><td>15</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td></tr></table>(من <bdi dir=\"ltr\">L10</bdi>؛ اتحسب بـ script.)"
       }
      ]
     }
@@ -2066,22 +2066,22 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "نفس برنامج Final 2024/25 Q1 (struct Employee {name, salary, bonus, deduction, total}؛ loop بيقرا N = 4 records؛ total = salary + bonus - deduction؛ واطبع).<br>النتايج: Dina 1000+100-50 = <b>1050</b>؛ Mohamed <b>2000</b>؛ Abas 2000+100-0 = <b>2100</b>؛ Hoda 3000-200 = <b>2800</b> (اتشغل بـ g++) (L1)."
+       "ans": "نفس برنامج الـ <bdi dir=\"ltr\">Final&nbsp;2024/25&nbsp;Q1</bdi>، وفيه:<span class=\"ltr\">struct Employee {name, salary, bonus, deduction, total}</span>والـ loop بيقرا <bdi dir=\"ltr\">N&nbsp;=&nbsp;4</bdi> records، وبيحسب:<span class=\"ltr\">total = salary + bonus - deduction</span>واطبع.<br>النتايج:<span class=\"ltr\">Dina 1000+100-50 = 1050</span><span class=\"ltr\">Mohamed 2000</span><span class=\"ltr\">Abas 2000+100-0 = 2100</span><span class=\"ltr\">Hoda 3000-200 = 2800</span>(اتشغل بـ <code>g++</code>) (من <bdi dir=\"ltr\">L1</bdi>)"
       },
       {
-       "ans": "<pre>void insertsorted(int item)             // ascending order\n{\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    if (isEmpty() || item &lt; head-&gt;data)   // empty list or new smallest\n    {\n        newnode-&gt;next = head;\n        head = newnode;\n    }\n    else\n    {\n        Node *temp = head;                  // find node before insertion point\n        while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)\n            temp = temp-&gt;next;\n        newnode-&gt;next = temp-&gt;next;         // new node points to the following node\n        temp-&gt;next = newnode;               // previous node points to new node\n    }\n}</pre>الخطوات (L5): حدد الـ node اللي قبل مكان الإضافة، خلي الـ new node تشاور على الـ node اللي بعده، وبعدين خلي الـ node اللي قبله تشاور على الـ new node. نسخة الـ loop اللي في الـ slide بتعمل crash لما القيمة تبقى أصغر من الـ head أو أكبر من آخر node، فالنسخة الآمنة دي أحسن (اتجربت بـ g++: 10، 20، 30 + 25، 5، 40 ← 5 10 20 25 30 40)."
+       "ans": "<pre>// ascending order\nvoid insertsorted(int item)\n{\n  Node *newnode = new Node();\n  newnode-&gt;data = item;\n  // empty list or new smallest\n  if (isEmpty() ||\n      item &lt; head-&gt;data)\n  {\n    newnode-&gt;next = head;\n    head = newnode;\n  }\n  else\n  {\n    // find node before\n    // insertion point\n    Node *temp = head;\n    while (temp-&gt;next != NULL &amp;&amp;\n       temp-&gt;next-&gt;data &lt; item)\n      temp = temp-&gt;next;\n    // new node points to\n    // the following node\n    newnode-&gt;next = temp-&gt;next;\n    // previous node points\n    // to new node\n    temp-&gt;next = newnode;\n  }\n}</pre>الخطوات (من <bdi dir=\"ltr\">L5</bdi>): حدد الـ node اللي قبل مكان الإضافة، خلي الـ new node تشاور على الـ node اللي بعده، وبعدين خلي الـ node اللي قبله تشاور على الـ new node. نسخة الـ loop اللي في الـ slide بتعمل crash لما القيمة تبقى أصغر من الـ head أو أكبر من آخر node، فالنسخة الآمنة دي أحسن (اتجربت بـ <code>g++</code>)، والتجربة:<span class=\"ltr\">10, 20, 30 + 25, 5, 40 → 5 10 20 25 30 40</span>"
       },
       {
-       "ans": "استخدم الـ linked stack class بتاع L6 (الـ push: newnode->next = top; top = newnode; الـ pop: temp = top; top = top->next; delete temp).<pre>int main()\n{\n    Stack s;\n    s.push(50);\n    s.push(70);                               // top -&gt; 70 -&gt; 50\n    cout &lt;&lt; \"Removed \" &lt;&lt; s.pop() &lt;&lt; endl;   // Removed 70\n    return 0;\n}</pre>الـ class كامل موجود في Final 2024/25 Q3. الـ pop بتطلّع 70 لأنه آخر واحد اتعمله push (LIFO)."
+       "ans": "استخدم الـ linked stack class بتاع <bdi dir=\"ltr\">L6</bdi>. الـ push:<pre>newnode-&gt;next = top;\ntop = newnode;</pre>والـ pop:<pre>temp = top;\ntop = top-&gt;next;\ndelete temp;</pre>والـ main:<pre>int main()\n{\n  Stack s;\n  s.push(50);\n  s.push(70); // top -&gt; 70 -&gt; 50\n  cout &lt;&lt; \"Removed \" &lt;&lt; s.pop()\n       &lt;&lt; endl;   // Removed 70\n  return 0;\n}</pre>الـ class كامل موجود في <bdi dir=\"ltr\">Final&nbsp;2024/25&nbsp;Q3</bdi>. الـ pop بتطلّع 70 لأنه آخر واحد اتعمله push (LIFO)."
       },
       {
-       "ans": "<pre>void removeAll()            // inside class Queue (front, rear)\n{\n    if (front == NULL) { cout &lt;&lt; \"Queue is empty\" &lt;&lt; endl; return; }\n    while (front != NULL)\n    {\n        Node *temp = front;\n        cout &lt;&lt; \"Deleted \" &lt;&lt; temp-&gt;data &lt;&lt; endl;\n        front = front-&gt;next;\n        delete temp;\n    }\n    rear = NULL;            // queue is now empty\n}</pre>العناصر بتتشال من الـ front بترتيب FIFO (L7). وفي الآخر rear = NULL لأن الـ queue فضي. الـ class كامل: شوف Final 2024/25 Q4."
+       "ans": "<pre>// inside class Queue\n// (front, rear)\nvoid removeAll()\n{\n  if (front == NULL) {\n    cout &lt;&lt; \"Queue is empty\"\n         &lt;&lt; endl;\n    return;\n  }\n  while (front != NULL)\n  {\n    Node *temp = front;\n    cout &lt;&lt; \"Deleted \"\n         &lt;&lt; temp-&gt;data &lt;&lt; endl;\n    front = front-&gt;next;\n    delete temp;\n  }\n  rear = NULL;\n  // queue is now empty\n}</pre>العناصر بتتشال من الـ front بترتيب FIFO (من <bdi dir=\"ltr\">L7</bdi>). وفي الآخر <bdi dir=\"ltr\">rear&nbsp;=&nbsp;NULL</bdi> لأن الـ queue فضي. الـ class كامل: شوف <bdi dir=\"ltr\">Final&nbsp;2024/25&nbsp;Q4</bdi>."
       },
       {
-       "ans": "<b>Inorder</b>: 20 28 31 33 40 43 47 56 59 64 89<br><b>Preorder</b>: 43 31 20 28 40 33 64 56 47 59 89<br><b>Postorder</b>: 28 20 33 40 31 47 59 56 89 64 43<br>(مثال Lecture 9؛ اتجرب بـ g++.)"
+       "ans": "الـ <b>Inorder</b>:<span class=\"ltr\">20 28 31 33 40 43 47 56 59 64 89</span>الـ <b>Preorder</b>:<span class=\"ltr\">43 31 20 28 40 33 64 56 47 59 89</span>الـ <b>Postorder</b>:<span class=\"ltr\">28 20 33 40 31 47 59 56 89 64 43</span>(مثال <bdi dir=\"ltr\">Lecture&nbsp;9</bdi>؛ اتجرب بـ <code>g++</code>.)"
       },
       {
-       "ans": "h(k,i) = ((k mod 11) + i) mod 11<br>14 ← 3. 17 ← 6. 25 ← 3 فيه collision؛ i=1 ← 4. 37 ← 4 فيه collision؛ i=1 ← 5. 34 ← 1. 16 ← 5 فيه collision؛ i=1 ← 6 فيه collision؛ i=2 ← 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table>(L10)"
+       "ans": "المعادلة:<span class=\"ltr\">h(k,i) = ((k mod 11) + i) mod 11</span><span class=\"ltr\">14 → 3</span><span class=\"ltr\">17 → 6</span><span class=\"ltr\">25 → 3 collision; i=1 → 4</span><span class=\"ltr\">37 → 4 collision; i=1 → 5</span><span class=\"ltr\">34 → 1</span><span class=\"ltr\">16 → 5 collision; i=1 → 6 collision; i=2 → 7</span><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td dir=\"ltr\">–</td><td>34</td><td dir=\"ltr\">–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td></tr></table>(من <bdi dir=\"ltr\">L10</bdi>)"
       }
      ]
     }
@@ -2092,7 +2092,7 @@ AR.ds = {
     {
      "items": [
       {
-       "why": "الـ queue بيمسح من الـ head (front): أول عنصر جاهز يتخدم، اللي هو أول واحد دخل (FIFO)؛ الـ dequeue بيقرا queue[head] ويحرّك الـ head لقدام (L3).",
+       "why": "الـ queue بيمسح من الـ head (front): أول عنصر جاهز يتخدم، اللي هو أول واحد دخل (FIFO)؛ الـ dequeue بيقرا <code>queue[head]</code> ويحرّك الـ head لقدام (<bdi dir=\"ltr\">L3</bdi>).",
        "ow": [
         null,
         "الـ rear (tail) ده المكان اللي الـ enqueue بيضيف فيه عناصر جديدة؛ المسح بيحصل من الطرف التاني، الـ front.",
@@ -2101,7 +2101,7 @@ AR.ds = {
        ]
       },
       {
-       "why": "الإجابة النموذجية: fixed size. أما الـ linear access والـ extra memory فدول عيوب الـ linked list (L1، L5).",
+       "why": "الإجابة النموذجية: fixed size. أما الـ linear access والـ extra memory فدول عيوب الـ linked list <bdi dir=\"ltr\">(L1,&nbsp;L5)</bdi>.",
        "ow": [
         null,
         "الـ linear access (يعني مفيش وصول مباشر بالـ index) ده عيب الـ linked list؛ الـ array بيوصل لأي عنصر على طول بالـ index.",
@@ -2110,12 +2110,12 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ push() بتضيف عنصر جديد فوق الـ stack: بتشيك على isFull، وبعدين بتعمل top = top + 1; stack_arr[top] = item (L2، Push function).",
+       "why": "الـ <code>push()</code> بتضيف عنصر جديد فوق الـ stack: بتشيك على <code>isFull</code>، وبعدين بتعمل:<span class=\"ltr\">top = top + 1; stack_arr[top] = item;</span>(من <bdi dir=\"ltr\">L2,&nbsp;Push&nbsp;function</bdi>)",
        "ow": [
-        "الـ pop() بتمسح العنصر اللي فوق وبتقلل الـ top؛ مش بتضيف.",
+        "الـ <code>pop()</code> بتمسح العنصر اللي فوق وبتقلل الـ top؛ مش بتضيف.",
         null,
-        "الـ get() بتعرض العنصر اللي فوق بس من غير ما تغيّر الـ stack.",
-        "الـ count() بترجع عدد العناصر المتخزنة بس (top + 1)."
+        "الـ <code>get()</code> بتعرض العنصر اللي فوق بس من غير ما تغيّر الـ stack.",
+        "الـ <code>count()</code> بترجع عدد العناصر المتخزنة بس (<bdi dir=\"ltr\">top&nbsp;+&nbsp;1</bdi>)."
        ]
       },
       {
@@ -2137,10 +2137,10 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "<pre>bool isEmpty(int top)\n{\n    if (top == -1) return true;\n    else return false;\n}\nint pop()\n{\n    if (isEmpty(top)) { cout &lt;&lt; \"Stack underflow\"; return -1; }\n    else\n    { int item = stack_arr[top]; top = top - 1; return item; }\n}</pre>(الإجابة النموذجية الرسمية، L2.) الفكرة: لو top == -1 يبقى فاضي (underflow)، غير كده خد stack_arr[top] وقلّل الـ top."
+       "ans": "<pre>bool isEmpty(int top)\n{\n  if (top == -1) return true;\n  else return false;\n}\nint pop()\n{\n  if (isEmpty(top)) {\n    cout &lt;&lt; \"Stack underflow\";\n    return -1;\n  }\n  else\n  {\n    int item = stack_arr[top];\n    top = top - 1;\n    return item;\n  }\n}</pre>(الإجابة النموذجية الرسمية، <bdi dir=\"ltr\">L2</bdi>.) الفكرة: لو <bdi dir=\"ltr\">top&nbsp;==&nbsp;-1</bdi> يبقى فاضي (underflow)، غير كده خد <code>stack_arr[top]</code> وقلّل الـ top."
       },
       {
-       "ans": "<pre>bool isFull(int tail)\n{\n    if (tail == maxsize - 1) return true;\n    else return false;\n}\nvoid enqueue(int item)\n{\n    if (isFull(tail)) { cout &lt;&lt; \"\\nQueue is full\"; return; }\n    else\n    {\n        if (head == -1) head = 0;\n        tail = tail + 1;\n        queue[tail] = item;\n    }\n}</pre>(الإجابة النموذجية الرسمية، L3.) الفكرة: لو tail == maxsize - 1 يبقى full، غير كده لو ده أول عنصر خلي head = 0، وزوّد الـ tail وخزّن."
+       "ans": "<pre>bool isFull(int tail)\n{\n  if (tail == maxsize - 1)\n    return true;\n  else return false;\n}\nvoid enqueue(int item)\n{\n  if (isFull(tail)) {\n    cout &lt;&lt; \"\\nQueue is full\";\n    return;\n  }\n  else\n  {\n    if (head == -1) head = 0;\n    tail = tail + 1;\n    queue[tail] = item;\n  }\n}</pre>(الإجابة النموذجية الرسمية، <bdi dir=\"ltr\">L3</bdi>.) الفكرة: لو <bdi dir=\"ltr\">tail&nbsp;==&nbsp;maxsize&nbsp;-&nbsp;1</bdi> يبقى full، غير كده لو ده أول عنصر خلي <bdi dir=\"ltr\">head&nbsp;=&nbsp;0</bdi>، وزوّد الـ tail وخزّن."
       },
       {
        "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Linkedlist\n{\npublic:\n    Node *head;\n    Linkedlist() { head = NULL; }\n    bool isEmpty() { return head == NULL; }\n    void insertatend(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        newnode-&gt;next = NULL;\n        if (isEmpty()) { head = newnode; return; }   // first node\n        Node *temp1 = head;\n        while (temp1-&gt;next != NULL) temp1 = temp1-&gt;next;\n        temp1-&gt;next = newnode;\n    }\n};\nint main()\n{\n    Linkedlist list;\n    list.insertatend(7);\n    list.insertatend(5);       // head -&gt; 7 -&gt; 5 -&gt; NULL\n    return 0;\n}</pre>ملحوظة: الإجابة الرسمية بتنادي insertatbeginning في الـ main (مش متطابقة مع السؤال) ومفيهاش check للـ list الفاضية في insertatend (L5)."
@@ -2150,7 +2150,7 @@ AR.ds = {
     {
      "items": [
       {
-       "why": "كل الإضافات في الـ queue بتحصل عند الـ tail (rear): الـ enqueue بيعمل tail = tail + 1 ويخزن العنصر في queue[tail]؛ والمسح بيحصل عند الـ front (L3).",
+       "why": "كل الإضافات في الـ queue بتحصل عند الـ tail (rear): الـ enqueue بيعمل <bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi> ويخزن العنصر في <code>queue[tail]</code>؛ والمسح بيحصل عند الـ front (<bdi dir=\"ltr\">L3</bdi>).",
        "ow": [
         "الـ front (head) ده المكان اللي الـ dequeue بيشيل منه العناصر، مش اللي بنضيف فيه.",
         null,
@@ -2168,16 +2168,16 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ pop() بتمسح العنصر اللي فوق في الـ stack: بتشيك على isEmpty، وبعدين بتقرا stack_arr[top] وتعمل top = top − 1، وترجّع العنصر (L2، Pop function).",
+       "why": "الـ <code>pop()</code> بتمسح العنصر اللي فوق في الـ stack: بتشيك على <code>isEmpty</code>، وبعدين بتقرا <bdi dir=\"ltr\">stack_arr[top]</bdi> وتعمل <bdi dir=\"ltr\">top&nbsp;=&nbsp;top&nbsp;−&nbsp;1</bdi>، وترجّع العنصر (من <bdi dir=\"ltr\">L2,&nbsp;Pop&nbsp;function</bdi>).",
        "ow": [
-        "الـ push() بتضيف عنصر عند الـ top؛ مش بتمسح.",
+        "الـ <code>push()</code> بتضيف عنصر عند الـ top؛ مش بتمسح.",
         null,
-        "الـ enqueue() دي عملية بتاعة الـ queue بتضيف عند الـ rear؛ الـ stack مفيهوش enqueue.",
-        "الـ search() بتدوّر على العنصر من فوق لتحت بس؛ مش بتشيله."
+        "الـ <code>enqueue()</code> دي عملية بتاعة الـ queue بتضيف عند الـ rear؛ الـ stack مفيهوش enqueue.",
+        "الـ <code>search()</code> بتدوّر على العنصر من فوق لتحت بس؛ مش بتشيله."
        ]
       },
       {
-       "why": "في الـ stack إضافة العناصر الجديدة ومسح الموجودة الاتنين بيحصلوا من طرف واحد بس، اللي هو الـ top؛ وده اللي بيخليه LIFO (L2، What is a stack?).",
+       "why": "في الـ stack إضافة العناصر الجديدة ومسح الموجودة الاتنين بيحصلوا من طرف واحد بس، اللي هو الـ top؛ وده اللي بيخليه LIFO <bdi dir=\"ltr\">(L2,&nbsp;What&nbsp;is&nbsp;a&nbsp;stack?)</bdi>.",
        "ow": [
         null,
         "الجملة صح: الـ stack بيضيف ويشيل العناصر من طرف واحد بس، الـ top."
@@ -2186,7 +2186,7 @@ AR.ds = {
       {
        "why": "الـ stack هو LIFO (الإجابة الرسمية كاتبة FILO، ونفس المعنى)؛ الـ FIFO ده الـ queue (L2).",
        "ow": [
-        "الـ FIFO دي قاعدة الـ queue (إضافة عند الـ rear ومسح من الـ front). الـ stack بيضيف ويمسح عند الـ top، فهو LIFO/FILO.",
+        "الـ FIFO دي قاعدة الـ queue (إضافة عند الـ rear ومسح من الـ front). الـ stack بيضيف ويمسح عند الـ top، فهو <bdi dir=\"ltr\">LIFO/FILO</bdi>.",
         null
        ]
       }
@@ -2195,13 +2195,13 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "<pre>bool isFull(int top)\n{\n    if (top == MAXSIZE - 1) return true;\n    else return false;\n}\nvoid push(int item)\n{\n    if (isFull(top)) cout &lt;&lt; \"Stack overflow\";\n    else { top = top + 1; stack_arr[top] = item; }\n}</pre>(الإجابة النموذجية الرسمية، L2.) الفكرة: لو top == MAXSIZE - 1 يبقى overflow، غير كده زوّد الـ top الأول وبعدين خزّن."
+       "ans": "<pre>bool isFull(int top)\n{\n  if (top == MAXSIZE - 1)\n    return true;\n  else return false;\n}\nvoid push(int item)\n{\n  if (isFull(top))\n    cout &lt;&lt; \"Stack overflow\";\n  else {\n    top = top + 1;\n    stack_arr[top] = item;\n  }\n}</pre>(الإجابة النموذجية الرسمية، <bdi dir=\"ltr\">L2</bdi>.) الفكرة: لو <bdi dir=\"ltr\">top&nbsp;==&nbsp;MAXSIZE&nbsp;-&nbsp;1</bdi> يبقى overflow، غير كده زوّد الـ top الأول وبعدين خزّن."
       },
       {
-       "ans": "<pre>bool isEmpty(int head)\n{\n    if (head == -1 || head &gt; tail) return true;\n    else return false;\n}\nint dequeue()\n{\n    int element;\n    if (isEmpty(head)) { cout &lt;&lt; \"Queue Underflow \"; return -1; }\n    else { element = queue[head]; head++; }\n    return element;\n}</pre>(الإجابة النموذجية الرسمية، L3.) الفكرة: لو head == -1 أو head &gt; tail يبقى فاضي (underflow)، غير كده خد queue[head] وزوّد الـ head."
+       "ans": "<pre>bool isEmpty(int head)\n{\n  if (head == -1 || head &gt; tail)\n    return true;\n  else return false;\n}\nint dequeue()\n{\n  int element;\n  if (isEmpty(head)) {\n    cout &lt;&lt; \"Queue Underflow \";\n    return -1;\n  }\n  else {\n    element = queue[head];\n    head++;\n  }\n  return element;\n}</pre>(الإجابة النموذجية الرسمية، <bdi dir=\"ltr\">L3</bdi>.) الفكرة: لو <bdi dir=\"ltr\">head&nbsp;==&nbsp;-1</bdi> أو <bdi dir=\"ltr\">head&nbsp;&gt;&nbsp;tail</bdi> يبقى فاضي (underflow)، غير كده خد <code>queue[head]</code> وزوّد الـ head."
       },
       {
-       "ans": "<pre>class Node\n{\npublic:\n    float data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Linkedlist\n{\npublic:\n    Node *head;\n    Linkedlist() { head = NULL; }\n    bool isEmpty() { return head == NULL; }\n    void insertatbeginning(float item)      // float, not int\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        if (isEmpty()) { newnode-&gt;next = NULL; head = newnode; }\n        else { newnode-&gt;next = head; head = newnode; }\n    }\n};\nint main()\n{\n    Linkedlist list;\n    list.insertatbeginning(8.5);\n    list.insertatbeginning(5.3);   // head -&gt; 5.3 -&gt; 8.5 -&gt; NULL\n    return 0;\n}</pre>الإجابة الرسمية بتستخدم <code>insertatbeginning(int item)</code> (وده كان هيخزن 8 و5) وبتنادي insertatend في الـ main؛ والاتنين اتصلحوا هنا (L5). خلي بالك: بنضيف 8.5 الأول وبعدين 5.3 في الأول، فالـ 5.3 بتبقى الـ head."
+       "ans": "<pre>class Node\n{\npublic:\n  float data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Linkedlist\n{\npublic:\n  Node *head;\n  Linkedlist() { head = NULL; }\n  bool isEmpty() {\n    return head == NULL;\n  }\n  // float, not int\n  void insertatbeginning(\n                     float item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    if (isEmpty()) {\n      newnode-&gt;next = NULL;\n      head = newnode;\n    }\n    else {\n      newnode-&gt;next = head;\n      head = newnode;\n    }\n  }\n};\nint main()\n{\n  Linkedlist list;\n  list.insertatbeginning(8.5);\n  list.insertatbeginning(5.3);\n  // head -&gt; 5.3 -&gt; 8.5 -&gt; NULL\n  return 0;\n}</pre>الإجابة الرسمية بتستخدم:<span class=\"ltr\">insertatbeginning(int item)</span>(وده كان هيخزن 8 و5) وبتنادي <code>insertatend</code> في الـ main؛ والاتنين اتصلحوا هنا (<bdi dir=\"ltr\">L5</bdi>). خلي بالك: بنضيف 8.5 الأول وبعدين 5.3 في الأول، فالـ 5.3 بتبقى الـ head."
       }
      ]
     }
@@ -2212,16 +2212,16 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Student {\n    string name;\n    float degree[4];\n    float total;\n};\nint main()\n{\n    Student s[6];\n    float avg[4] = {0, 0, 0, 0};\n    for (int i = 0; i &lt; 6; i++)\n    {\n        cout &lt;&lt; \"Enter name and 4 degrees of student \" &lt;&lt; i + 1 &lt;&lt; \": \";\n        cin &gt;&gt; s[i].name;\n        s[i].total = 0;\n        for (int j = 0; j &lt; 4; j++)\n        {\n            cin &gt;&gt; s[i].degree[j];\n            s[i].total += s[i].degree[j];   // total of each student\n            avg[j] += s[i].degree[j];       // sum of each subject\n        }\n    }\n    for (int j = 0; j &lt; 4; j++)\n        cout &lt;&lt; \"Average of subject \" &lt;&lt; j + 1 &lt;&lt; \" = \" &lt;&lt; avg[j] / 6 &lt;&lt; endl;\n    for (int i = 0; i &lt; 6; i++)\n        cout &lt;&lt; \"Total of \" &lt;&lt; s[i].name &lt;&lt; \" = \" &lt;&lt; s[i].total &lt;&lt; endl;\n    return 0;\n}</pre>الناتج بقيم الجدول (اتشغل بـ g++): متوسطات المواد 62.5، 73.8333، 70، 66.6667؛ والمجاميع Ahmed 292، Mohamed 309، Halaa 236.5، Dina 290، Abas 240، Hoda 270.5 (L1)."
+       "ans": "<pre>#include &lt;iostream&gt;\n#include &lt;string&gt;\nusing namespace std;\nstruct Student {\n  string name;\n  float degree[4];\n  float total;\n};\nint main()\n{\n  Student s[6];\n  float avg[4] = {0, 0, 0, 0};\n  for (int i = 0; i &lt; 6; i++)\n  {\n    cout &lt;&lt; \"Enter name and 4 \"\n            \"degrees of student \"\n         &lt;&lt; i + 1 &lt;&lt; \": \";\n    cin &gt;&gt; s[i].name;\n    s[i].total = 0;\n    for (int j = 0; j &lt; 4; j++)\n    {\n      cin &gt;&gt; s[i].degree[j];\n      // total of each student\n      s[i].total +=\n        s[i].degree[j];\n      // sum of each subject\n      avg[j] += s[i].degree[j];\n    }\n  }\n  for (int j = 0; j &lt; 4; j++)\n    cout &lt;&lt; \"Average of subject \"\n         &lt;&lt; j + 1 &lt;&lt; \" = \"\n         &lt;&lt; avg[j] / 6 &lt;&lt; endl;\n  for (int i = 0; i &lt; 6; i++)\n    cout &lt;&lt; \"Total of \"\n         &lt;&lt; s[i].name &lt;&lt; \" = \"\n         &lt;&lt; s[i].total &lt;&lt; endl;\n  return 0;\n}</pre>الناتج بقيم الجدول (اتشغل بـ <code>g++</code>): متوسطات المواد:<span class=\"ltr\">62.5, 73.8333, 70, 66.6667</span>والمجاميع:<span class=\"ltr\">Ahmed 292, Mohamed 309, Halaa 236.5, Dina 290, Abas 240, Hoda 270.5</span>(من <bdi dir=\"ltr\">L1</bdi>)"
       },
       {
-       "ans": "استخدم الـ classes بتوع Node وQueue من L7 (الـ dequeue بتشيل من الـ front، والـ enqueue(50) بتضيف عند الـ rear):<pre>void enqueue(int item)\n{\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = NULL;\n    if (front == NULL) { front = newnode; rear = newnode; }\n    else { rear-&gt;next = newnode; rear = newnode; }\n}\nint dequeue()\n{\n    if (front == NULL) { cout &lt;&lt; \"Queue is empty\" &lt;&lt; endl; return 0; }\n    Node *temp = front;\n    int value = front-&gt;data;\n    front = front-&gt;next;\n    if (front == NULL) rear = NULL;\n    delete temp;\n    return value;\n}\nint main()\n{\n    Queue q;\n    q.enqueue(10); q.enqueue(20);                // some existing items\n    cout &lt;&lt; \"Removed \" &lt;&lt; q.dequeue() &lt;&lt; endl;  // removes 10 (front)\n    q.enqueue(50);                               // 50 joins at the rear: 20 50\n    return 0;\n}</pre>"
+       "ans": "استخدم الـ classes بتوع Node وQueue من <bdi dir=\"ltr\">L7</bdi> (الـ dequeue بتشيل من الـ front، والـ <code>enqueue(50)</code> بتضيف عند الـ rear):<pre>void enqueue(int item)\n{\n  Node *newnode = new Node();\n  newnode-&gt;data = item;\n  newnode-&gt;next = NULL;\n  if (front == NULL) {\n    front = newnode;\n    rear = newnode;\n  }\n  else {\n    rear-&gt;next = newnode;\n    rear = newnode;\n  }\n}\nint dequeue()\n{\n  if (front == NULL) {\n    cout &lt;&lt; \"Queue is empty\"\n         &lt;&lt; endl;\n    return 0;\n  }\n  Node *temp = front;\n  int value = front-&gt;data;\n  front = front-&gt;next;\n  if (front == NULL) rear = NULL;\n  delete temp;\n  return value;\n}\nint main()\n{\n  Queue q;\n  // some existing items\n  q.enqueue(10); q.enqueue(20);\n  // removes 10 (front)\n  cout &lt;&lt; \"Removed \"\n       &lt;&lt; q.dequeue() &lt;&lt; endl;\n  // 50 joins at the rear: 20 50\n  q.enqueue(50);\n  return 0;\n}</pre>"
       },
       {
-       "ans": "الـ linked stack class بتاع L6؛ والـ main: <code>s.push(50); s.push(70); cout &lt;&lt; s.pop();</code> بتطبع 70 لأن آخر node اتعملها push هي اللي فوق (top ← 70 ← 50 ← NULL، وبعد الـ pop الـ top ← 50). الكود كامل: شوف Final 2024/25 Q3."
+       "ans": "الـ linked stack class بتاع <bdi dir=\"ltr\">L6</bdi>؛ والـ main:<pre>s.push(50);\ns.push(70);\ncout &lt;&lt; s.pop();</pre>بتطبع 70 لأن آخر node اتعملها push هي اللي فوق:<span class=\"ltr\">top → 70 → 50 → NULL</span>وبعد الـ pop:<span class=\"ltr\">top → 50</span>الكود كامل: شوف <bdi dir=\"ltr\">Final&nbsp;2024/25&nbsp;Q3</bdi>."
       },
       {
-       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n    int data;\n    Node *next;\n    Node() { data = 0; next = NULL; }\n};\nclass Linkedlist\n{\npublic:\n    Node *head;\n    Linkedlist() { head = NULL; }\n    bool isEmpty() { return head == NULL; }\n    void insertsorted(int item)\n    {\n        Node *newnode = new Node();\n        newnode-&gt;data = item;\n        if (isEmpty() || item &lt; head-&gt;data)\n        { newnode-&gt;next = head; head = newnode; }\n        else\n        {\n            Node *temp = head;\n            while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)\n                temp = temp-&gt;next;\n            newnode-&gt;next = temp-&gt;next;\n            temp-&gt;next = newnode;\n        }\n    }\n    void display()\n    {\n        for (Node *t = head; t != NULL; t = t-&gt;next) cout &lt;&lt; t-&gt;data &lt;&lt; \" \";\n        cout &lt;&lt; endl;\n    }\n};\nint main()\n{\n    Linkedlist list;\n    list.insertsorted(10); list.insertsorted(20); list.insertsorted(30);\n    list.insertsorted(25);\n    list.display();          // 10 20 25 30\n    return 0;\n}</pre>(L5؛ اتجرب بـ g++.) الفكرة: لو الـ list فاضية أو القيمة أصغر من الـ head ضيفها في الأول، غير كده امشي لحد الـ node اللي قبل مكانها واربطها؛ فإضافة 25 بتدّي 10 20 25 30."
+       "ans": "<pre>#include &lt;iostream&gt;\nusing namespace std;\nclass Node\n{\npublic:\n  int data;\n  Node *next;\n  Node() {\n    data = 0; next = NULL;\n  }\n};\nclass Linkedlist\n{\npublic:\n  Node *head;\n  Linkedlist() { head = NULL; }\n  bool isEmpty() {\n    return head == NULL;\n  }\n  void insertsorted(int item)\n  {\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    if (isEmpty() ||\n        item &lt; head-&gt;data)\n    {\n      newnode-&gt;next = head;\n      head = newnode;\n    }\n    else\n    {\n      Node *temp = head;\n      while (temp-&gt;next != NULL &amp;&amp;\n       temp-&gt;next-&gt;data &lt; item)\n        temp = temp-&gt;next;\n      newnode-&gt;next = temp-&gt;next;\n      temp-&gt;next = newnode;\n    }\n  }\n  void display()\n  {\n    for (Node *t = head;\n         t != NULL; t = t-&gt;next)\n      cout &lt;&lt; t-&gt;data &lt;&lt; \" \";\n    cout &lt;&lt; endl;\n  }\n};\nint main()\n{\n  Linkedlist list;\n  list.insertsorted(10);\n  list.insertsorted(20);\n  list.insertsorted(30);\n  list.insertsorted(25);\n  list.display(); // 10 20 25 30\n  return 0;\n}</pre>(من <bdi dir=\"ltr\">L5</bdi>؛ اتجرب بـ <code>g++</code>.) الفكرة: لو الـ list فاضية أو القيمة أصغر من الـ head ضيفها في الأول، غير كده امشي لحد الـ node اللي قبل مكانها واربطها؛ فإضافة 25 بتدّي <bdi dir=\"ltr\">10&nbsp;20&nbsp;25&nbsp;30</bdi>."
       }
      ]
     }
@@ -2236,17 +2236,17 @@ AR.ds = {
        "ow": [
         "الـ «Crash» دي مش اسم حالة في الـ stack أصلًا؛ إنك تعمل push على stack مليان اسمها stack overflow.",
         null,
-        "الـ Underflow ده لما تعمل pop من stack فاضي (top == −1)؛ إنما هنا الـ stack مليان.",
-        "«User flow» مش مصطلح في الـ stack خالص؛ الـ push على stack مليان اسمه overflow."
+        "الـ Underflow ده لما تعمل pop من stack فاضي (<bdi dir=\"ltr\">top&nbsp;==&nbsp;−1</bdi>)؛ إنما هنا الـ stack مليان.",
+        "الـ «User flow» مش مصطلح في الـ stack خالص؛ الـ push على stack مليان اسمه overflow."
        ]
       },
       {
-       "why": "الـ isFull في المحاضرة بترجع true لما tail == maxsize − 1: يعني الـ rear وصل لآخر خانة، والـ linear queue مش بيقدر يعدّي بعدها، حتى لو فيه خانات فاضية في الأول (L3).",
+       "why": "الـ <code>isFull</code> في المحاضرة بترجع true لما <bdi dir=\"ltr\">tail&nbsp;==&nbsp;maxsize&nbsp;−&nbsp;1</bdi>: يعني الـ rear وصل لآخر خانة، والـ linear queue مش بيقدر يعدّي بعدها، حتى لو فيه خانات فاضية في الأول (<bdi dir=\"ltr\">L3</bdi>).",
        "ow": [
-        "الـ front == (rear + 1) mod MAX ده اختبار الـ full بتاع الـ circular queue، اللي فيه الـ rear بيلف؛ إنما الـ linear queue عمره ما بيلف.",
-        "في الـ linear queue بتاع المحاضرة، لما الـ head يعدّي الـ tail (head &gt; tail) ده معناه إن الـ queue فاضي، مش مليان.",
+        "الشرط:<span class=\"ltr\">front == (rear + 1) mod MAX</span>ده اختبار الـ full بتاع الـ circular queue، اللي فيه الـ rear بيلف؛ إنما الـ linear queue عمره ما بيلف.",
+        "في الـ linear queue بتاع المحاضرة، لما الـ head يعدّي الـ tail (<bdi dir=\"ltr\">head&nbsp;&gt;&nbsp;tail</bdi>) ده معناه إن الـ queue فاضي، مش مليان.",
         null,
-        "الـ rear == front معناها إن الـ head والـ tail على نفس الخانة: يعني فيه element واحد بس، مش full."
+        "الـ <bdi dir=\"ltr\">rear&nbsp;==&nbsp;front</bdi> معناها إن الـ head والـ tail على نفس الخانة: يعني فيه element واحد بس، مش full."
        ]
       },
       {
@@ -2259,7 +2259,7 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ tree بيخزن الـ elements بتاعته في hierarchy (root وchildren وsubtrees)، مش في sequence واحدة، فهو non-linear زي الـ graph؛ أما الـ linked lists والـ stacks والـ queues فدول linear (L1، L9).",
+       "why": "الـ tree بيخزن الـ elements بتاعته في hierarchy (root وchildren وsubtrees)، مش في sequence واحدة، فهو non-linear زي الـ graph؛ أما الـ linked lists والـ stacks والـ queues فدول linear <bdi dir=\"ltr\">(L1,&nbsp;L9)</bdi>.",
        "ow": [
         "الـ linked list ده linear: كل node بتشاور على اللي بعدها، فبيطلعوا sequence واحدة.",
         "الـ stack ده linear: الـ elements بتاعته sequence واحدة وبنوصلها من الـ top.",
@@ -2288,10 +2288,10 @@ AR.ds = {
       {
        "why": "المحاضرة بتبدأ الـ front والـ rear بـ -1 وبترجعهم لـ -1 (L3).",
        "ow": [
-        "الـ front = rear = 0 معناها إن فيه element واحد متخزن في index 0، مش queue فاضي.",
-        "الـ front = rear + 1 مش هو الاختبار بتاع الـ circular في المحاضرة؛ الـ isEmpty بتاعها بتشيك على front == −1.",
+        "الـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;0</bdi> معناها إن فيه element واحد متخزن في <bdi dir=\"ltr\">index&nbsp;0</bdi>، مش queue فاضي.",
+        "الـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;+&nbsp;1</bdi> مش هو الاختبار بتاع الـ circular في المحاضرة؛ الـ isEmpty بتاعها بتشيك على <bdi dir=\"ltr\">front&nbsp;==&nbsp;−1</bdi>.",
         null,
-        "فيه اختيار صح: المحاضرة بتبدأ بـ front = rear = −1 وبترجعلها تاني."
+        "فيه اختيار صح: المحاضرة بتبدأ بـ <bdi dir=\"ltr\">front&nbsp;=&nbsp;rear&nbsp;=&nbsp;−1</bdi> وبترجعلها تاني."
        ]
       },
       {
@@ -2307,13 +2307,13 @@ AR.ds = {
        "why": "الـ Top بيبدأ من -1، فزوّد الأول وبعدين خزّن (L2).",
        "ow": [
         null,
-        "إنك تقرا stack[top] وبعدين تنقّص الـ top ده الـ pop، مش الإضافة.",
+        "إنك تقرا <code>stack[top]</code> وبعدين تنقّص الـ top ده الـ pop، مش الإضافة.",
         "ده بيستخدم الـ item كـ index وبيخزن فيه الـ top، فالـ item عمره ما بيتحط في الـ stack.",
-        "لما الـ top يبدأ من −1، ده هيكتب في stack[−1] الأول؛ لازم تزوّد الـ top قبل ما تخزّن."
+        "لما الـ top يبدأ من <bdi dir=\"ltr\">−1</bdi>، ده هيكتب في <code>stack[−1]</code> الأول؛ لازم تزوّد الـ top قبل ما تخزّن."
        ]
       },
       {
-       "why": "الـ Keys اللي &lt; 45: 15، 8، 5، 12، 18، 10، 16 (7). والـ Keys اللي &gt; 45: 56، 65، 47، 73، 50، 61 (6). اتجرب بـ g++ (L9).",
+       "why": "الـ Keys اللي <bdi dir=\"ltr\">&lt;&nbsp;45</bdi> هي:<span class=\"ltr\">15, 8, 5, 12, 18, 10, 16 (7)</span>والـ Keys اللي <bdi dir=\"ltr\">&gt;&nbsp;45</bdi> هي:<span class=\"ltr\">56, 65, 47, 73, 50, 61 (6)</span>اتجرب بـ <code>g++</code> (من <bdi dir=\"ltr\">L9</bdi>).",
        "ow": [
         "الـ 8 و5 دي غلطة في العد: فيه 7 keys أصغر من 45 و6 أكبر.",
         "الـ 6 و7 دي قالبة العددين: 7 keys بيروحوا شمال (أصغر من 45) و6 يمين.",
@@ -2340,16 +2340,16 @@ AR.ds = {
        ]
       },
       {
-       "why": "كل إضافة بتحصل عند الـ rear: الـ enqueue بتزوّده (tail = tail + 1، أو (rear + 1) % MAX_SIZE في الـ circular queue) وبتخزن الـ item هناك (L3).",
+       "why": "كل إضافة بتحصل عند الـ rear: الـ enqueue بتزوّده (<bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi>، أو <bdi dir=\"ltr\">(rear&nbsp;+&nbsp;1)&nbsp;%&nbsp;MAX_SIZE</bdi> في الـ circular queue) وبتخزن الـ item هناك (<bdi dir=\"ltr\">L3</bdi>).",
        "ow": [
         null,
-        "الجملة صح: الـ enqueue بتعمل tail = tail + 1 (بشكل circular في الـ circular queue) قبل ما تخزن الـ item."
+        "الجملة صح: الـ enqueue بتعمل <bdi dir=\"ltr\">tail&nbsp;=&nbsp;tail&nbsp;+&nbsp;1</bdi> (بشكل circular في الـ circular queue) قبل ما تخزن الـ item."
        ]
       },
       {
-       "why": "الـ next لازم يبقى pointer (Node *next;)، والـ members محتاجة ; بينهم، والـ class محتاج ; في الآخر (وpublic:) (L5).",
+       "why": "الـ next لازم يبقى pointer (<bdi dir=\"ltr\">Node&nbsp;*next;</bdi>)، والـ members محتاجة <code>;</code> بينهم، والـ class محتاج <code>;</code> في الآخر (و<code>public:</code>) (<bdi dir=\"ltr\">L5</bdi>).",
        "ow": [
-        "الكود ده مش valid: الـ next لازم يبقى pointer (Node *next;)، والـ members بيتفصلوا بـ ; مش comma، والـ class محتاج ; في الآخر.",
+        "الكود ده مش valid: الـ next لازم يبقى pointer (<bdi dir=\"ltr\">Node&nbsp;*next;</bdi>)، والـ members بيتفصلوا بـ <code>;</code> مش comma، والـ class محتاج <code>;</code> في الآخر.",
         null
        ]
       },
@@ -2368,16 +2368,16 @@ AR.ds = {
        ]
       },
       {
-       "why": "الـ linked stack ده linked list واحدة: كل node جديدة بتتضاف على إنها الـ top (newnode->next = top; top = newnode) والـ pop بيشيل الـ node اللي الـ top بيشاور عليها، فـ list واحدة وpointer واحد كفاية (L6).",
+       "why": "الـ linked stack ده linked list واحدة: كل node جديدة بتتضاف على إنها الـ top:<span class=\"ltr\">newnode-&gt;next = top; top = newnode;</span>والـ pop بيشيل الـ node اللي الـ top بيشاور عليها، فـ list واحدة وpointer واحد كفاية (<bdi dir=\"ltr\">L6</bdi>).",
        "ow": [
         "الـ linked stack ده singly linked list واحدة بـ pointer واحد بس هو الـ top؛ الـ push والـ pop الاتنين شغالين عند الـ top.",
         null
        ]
       },
       {
-       "why": "الـ N->next بيبقى NULL بس لما N تبقى آخر node (لو بنضيف في الآخر أو في list فاضية). لو بنضيف في الأول بنعمل N->next = head، ولو في النص بيشاور على الـ node اللي بعدها (L8).",
+       "why": "الـ <code>N-⁠&gt;next</code> بيبقى NULL بس لما N تبقى آخر node (لو بنضيف في الآخر أو في list فاضية). لو بنضيف في الأول بنعمل <bdi dir=\"ltr\">N-⁠&gt;next&nbsp;=&nbsp;head</bdi>، ولو في النص بيشاور على الـ node اللي بعدها (<bdi dir=\"ltr\">L8</bdi>).",
        "ow": [
-        "الـ N->next = NULL محتاجينها بس لما N تبقى آخر node (إضافة في الآخر أو في list فاضية)؛ في الأول بيبقى N->next = head.",
+        "الـ <bdi dir=\"ltr\">N-⁠&gt;next&nbsp;=&nbsp;NULL</bdi> محتاجينها بس لما N تبقى آخر node (إضافة في الآخر أو في list فاضية)؛ في الأول بيبقى <bdi dir=\"ltr\">N-⁠&gt;next&nbsp;=&nbsp;head</bdi>.",
         null
        ]
       },
@@ -2391,7 +2391,7 @@ AR.ds = {
       {
        "why": "الإضافة عند الـ rear؛ والمسح عند الـ front (L7).",
        "ow": [
-        "الـ enqueue بيربط الـ node الجديدة بعد الـ rear (rear->next = newnode; rear = newnode)؛ أما الـ front فده المكان اللي الـ dequeue بيمسح منه.",
+        "الـ enqueue بيربط الـ node الجديدة بعد الـ rear:<span class=\"ltr\">rear-&gt;next = newnode; rear = newnode;</span>أما الـ front فده المكان اللي الـ dequeue بيمسح منه.",
         null
        ]
       }
@@ -2400,22 +2400,22 @@ AR.ds = {
     {
      "items": [
       {
-       "ans": "الـ Home addresses بـ k mod 11: 14→3, 17→6, 25→3, 37→4, 34→1, 16→5.<br><b>Linear probing</b> (h1 + i) mod 11: 14→3؛ 17→6؛ 25: الـ 3 مشغولة ← 4؛ 37: الـ 4 مشغولة ← 5؛ 34→1؛ 16: الـ 5 مشغولة، والـ 6 مشغولة ← 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table><b>Quadratic probing</b> (معادلة المحاضرة (h1 + i + i²) mod 11): 14→3؛ 17→6؛ 25: i=0 ← 3 مشغولة، i=1 ← 3+1+1 = 5؛ 37: i=0 ← 4 (فاضية)؛ 34→1؛ 16: i=0 ← 5 مشغولة (بـ 25)، i=1 ← 5+2 = 7.<br><table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td>–</td><td>34</td><td>–</td><td>14</td><td>37</td><td>25</td><td>17</td><td>16</td><td>–</td><td>–</td><td>–</td></tr></table>لو استخدمت شكل الكتاب (h1 + i²) بدلها: 25 ← 4، 37 ← 4 مشغولة ← 5، 16 ← 5 مشغولة، 6 مشغولة، 5+4 = 9 ← slot 9 (الـ table: 1:34، 3:14، 4:25، 5:37، 6:17، 9:16). خلي بالك: اكتب المعادلة اللي انت مستخدمها (L10)."
+       "ans": "الـ Home addresses بـ <bdi dir=\"ltr\">k&nbsp;mod&nbsp;11</bdi> هي:<span class=\"ltr\">14→3, 17→6, 25→3, 37→4, 34→1, 16→5</span>الـ <b>Linear probing</b> بالمعادلة <bdi dir=\"ltr\">(h1&nbsp;+&nbsp;i)&nbsp;mod&nbsp;11</bdi>:<br>الـ 14 بتروح لـ 3، والـ 17 لـ 6؛<br>والـ 25: الـ 3 مشغولة، فبتروح لـ 4؛<br>والـ 37: الـ 4 مشغولة، فبتروح لـ 5؛<br>والـ 34 بتروح لـ 1؛<br>والـ 16: الـ 5 مشغولة، والـ 6 مشغولة، فبتروح لـ 7.<table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td dir=\"ltr\">–</td><td>34</td><td dir=\"ltr\">–</td><td>14</td><td>25</td><td>37</td><td>17</td><td>16</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td></tr></table>الـ <b>Quadratic probing</b> (معادلة المحاضرة <bdi dir=\"ltr\">(h1&nbsp;+&nbsp;i&nbsp;+&nbsp;i²)&nbsp;mod&nbsp;11</bdi>):<br>الـ 14 بتروح لـ 3، والـ 17 لـ 6؛<br>والـ 25: مع <bdi dir=\"ltr\">i=0&nbsp;→&nbsp;3</bdi> مشغولة، ومع <bdi dir=\"ltr\">i=1&nbsp;→&nbsp;3+1+1&nbsp;=&nbsp;5</bdi>؛<br>والـ 37: مع <bdi dir=\"ltr\">i=0&nbsp;→&nbsp;4</bdi> (فاضية)؛<br>والـ 34 بتروح لـ 1؛<br>والـ 16: مع <bdi dir=\"ltr\">i=0&nbsp;→&nbsp;5</bdi> مشغولة (بـ 25)، ومع <bdi dir=\"ltr\">i=1&nbsp;→&nbsp;5+2&nbsp;=&nbsp;7</bdi>.<table><tr><th>0</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr><tr><td dir=\"ltr\">–</td><td>34</td><td dir=\"ltr\">–</td><td>14</td><td>37</td><td>25</td><td>17</td><td>16</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td><td dir=\"ltr\">–</td></tr></table>لو استخدمت شكل الكتاب (<bdi dir=\"ltr\">h1&nbsp;+&nbsp;i²</bdi>) بدلها:<br>الـ 25 بتروح لـ 4؛<br>والـ 37: الـ 4 مشغولة، فبتروح لـ 5؛<br>والـ 16: الـ 5 مشغولة، والـ 6 مشغولة، و<bdi dir=\"ltr\">5+4&nbsp;=&nbsp;9</bdi>، فبتروح لـ <bdi dir=\"ltr\">slot&nbsp;9</bdi>.<br>والـ table:<span class=\"ltr\">1:34, 3:14, 4:25, 5:37, 6:17, 9:16</span>خلي بالك: اكتب المعادلة اللي انت مستخدمها (<bdi dir=\"ltr\">L10</bdi>)."
       },
       {
-       "ans": "(i) <b>Inorder</b>: D H B L K A P R M X Z<br><b>Postorder</b>: H D L K B P R Z X M A<br>(الـ Preorder للمراجعة: A B D H K L M R P X Z؛ اتجرب بـ g++.)<br>(ii)<pre>void preorder(Node *temp)\n{\n    if (temp == NULL) { return; }\n    cout &lt;&lt; temp-&gt;data &lt;&lt; \"\\t\";   // visit parent\n    preorder(temp-&gt;left);           // then left subtree\n    preorder(temp-&gt;right);          // then right subtree\n}</pre>(L9) الفكرة: زور الـ parent الأول (اطبعه)، وبعدين الـ left subtree، وبعدين الـ right subtree."
+       "ans": "الجزء (i): الـ <b>Inorder</b>:<span class=\"ltr\">D H B L K A P R M X Z</span>الـ <b>Postorder</b>:<span class=\"ltr\">H D L K B P R Z X M A</span>الـ Preorder للمراجعة:<span class=\"ltr\">A B D H K L M R P X Z</span>(اتجرب بـ <code>g++</code>.)<br>الجزء (ii)، الكود:<pre>void preorder(Node *temp)\n{\n  if (temp == NULL) { return; }\n  // visit parent\n  cout &lt;&lt; temp-&gt;data &lt;&lt; \"\\t\";\n  // then left subtree\n  preorder(temp-&gt;left);\n  // then right subtree\n  preorder(temp-&gt;right);\n}</pre>(من <bdi dir=\"ltr\">L9</bdi>) الفكرة: زور الـ parent الأول (اطبعه)، وبعدين الـ left subtree، وبعدين الـ right subtree."
       },
       {
-       "ans": "الـ Trace: enqueue(10) ← head = 0، tail = 0. enqueue(20) ← tail = 1. بيطبع <b>Head = 0Tail = 1</b>. enqueue(30) ← tail = 2. الـ dequeue() بترجع 10، وhead = 1 ← بيطبع <b>10</b>. x = dequeue() = 20، وhead = 2. بيطبع <b>Head = 2Tail = 2</b>.<br>الـ Output:<pre>Head = 0Tail = 1\n10\nHead = 2Tail = 2</pre>لو استخدمت الـ enQueue/deQueue بتوع المحاضرة (اللي بيطبعوا رسايل خاصة بيهم)، الـ output كامل هيبقى (اتشغل بـ g++):<pre>Enqueued element: 10\nEnqueued element: 20\nHead = 0Tail = 1\nEnqueued element: 30\nDequeued element: 10\n10\nDequeued element: 20\nHead = 2Tail = 2</pre>(L3)"
+       "ans": "الـ Trace:<span class=\"ltr\">enqueue(10) → head = 0, tail = 0</span><span class=\"ltr\">enqueue(20) → tail = 1</span>بيطبع:<span class=\"ltr\"><b>Head = 0Tail = 1</b></span>وبعدين:<span class=\"ltr\">enqueue(30) → tail = 2</span>الـ <code>dequeue()</code> بترجع 10، و<bdi dir=\"ltr\">head&nbsp;=&nbsp;1</bdi>، فبيطبع <b>10</b>. وبعدين:<span class=\"ltr\">x = dequeue() = 20, head = 2</span>وبيطبع:<span class=\"ltr\"><b>Head = 2Tail = 2</b></span>الـ Output:<pre>Head = 0Tail = 1\n10\nHead = 2Tail = 2</pre>لو استخدمت الـ <bdi dir=\"ltr\">enQueue/deQueue</bdi> بتوع المحاضرة (اللي بيطبعوا رسايل خاصة بيهم)، الـ output كامل هيبقى (اتشغل بـ <code>g++</code>)، وهو:<pre>Enqueued element: 10\nEnqueued element: 20\nHead = 0Tail = 1\nEnqueued element: 30\nDequeued element: 10\n10\nDequeued element: 20\nHead = 2Tail = 2</pre>(من <bdi dir=\"ltr\">L3</bdi>)"
       },
       {
-       "ans": "<pre>void enqueue(int item)              // call enqueue(50)\n{\n    Node *newnode = new Node();\n    newnode-&gt;data = item;\n    newnode-&gt;next = NULL;\n    if (front == NULL &amp;&amp; rear == NULL) { front = newnode; rear = newnode; }\n    else { rear-&gt;next = newnode; rear = newnode; }\n}\nint dequeue()\n{\n    if (front == NULL) { cout &lt;&lt; \"Queue is empty\" &lt;&lt; endl; return 0; }\n    Node *temp = front;\n    int value = front-&gt;data;\n    front = front-&gt;next;\n    if (front == NULL) rear = NULL;\n    delete temp;\n    return value;\n}</pre>(L7) الفكرة: الـ dequeue بتشيل من الـ front ولو الـ queue فضي بتخلي rear = NULL؛ والـ enqueue(50) بتضيف عند الـ rear."
+       "ans": "<pre>// call enqueue(50)\nvoid enqueue(int item)\n{\n  Node *newnode = new Node();\n  newnode-&gt;data = item;\n  newnode-&gt;next = NULL;\n  if (front == NULL &amp;&amp;\n      rear == NULL) {\n    front = newnode;\n    rear = newnode;\n  }\n  else {\n    rear-&gt;next = newnode;\n    rear = newnode;\n  }\n}\nint dequeue()\n{\n  if (front == NULL) {\n    cout &lt;&lt; \"Queue is empty\"\n         &lt;&lt; endl;\n    return 0;\n  }\n  Node *temp = front;\n  int value = front-&gt;data;\n  front = front-&gt;next;\n  if (front == NULL)\n    rear = NULL;\n  delete temp;\n  return value;\n}</pre>(من <bdi dir=\"ltr\">L7</bdi>) الفكرة: الـ dequeue بتشيل من الـ front ولو الـ queue فضي بتخلي <bdi dir=\"ltr\">rear&nbsp;=&nbsp;NULL</bdi>؛ والـ <code>enqueue(50)</code> بتضيف عند الـ rear."
       },
       {
-       "ans": "<pre>void insertsorted(int item)\n{\n    Node *newnode = new Node();     // Node has data, next, prev\n    newnode-&gt;data = item;\n    if (head == NULL)\n        head = newnode;\n    else if (item &lt; head-&gt;data)\n    {\n        newnode-&gt;next = head;\n        head-&gt;prev = newnode;\n        head = newnode;\n    }\n    else\n    {\n        Node *temp = head;\n        while (temp-&gt;next != NULL &amp;&amp; temp-&gt;next-&gt;data &lt; item)\n            temp = temp-&gt;next;\n        newnode-&gt;next = temp-&gt;next;\n        newnode-&gt;prev = temp;\n        if (temp-&gt;next != NULL) temp-&gt;next-&gt;prev = newnode;\n        temp-&gt;next = newnode;\n    }\n}</pre>(L8؛ اتجربت بـ g++.) الفكرة: نفس الـ singly بس لازم تظبط الـ prev: الـ newnode->prev = temp، والـ node اللي بعدها (لو موجودة) الـ prev بتاعها يشاور على الـ newnode."
+       "ans": "<pre>void insertsorted(int item)\n{\n  // Node has data, next, prev\n  Node *newnode = new Node();\n  newnode-&gt;data = item;\n  if (head == NULL)\n    head = newnode;\n  else if (item &lt; head-&gt;data)\n  {\n    newnode-&gt;next = head;\n    head-&gt;prev = newnode;\n    head = newnode;\n  }\n  else\n  {\n    Node *temp = head;\n    while (temp-&gt;next != NULL &amp;&amp;\n     temp-&gt;next-&gt;data &lt; item)\n      temp = temp-&gt;next;\n    newnode-&gt;next = temp-&gt;next;\n    newnode-&gt;prev = temp;\n    if (temp-&gt;next != NULL)\n     temp-&gt;next-&gt;prev = newnode;\n    temp-&gt;next = newnode;\n  }\n}</pre>(من <bdi dir=\"ltr\">L8</bdi>؛ اتجربت بـ <code>g++</code>.) الفكرة: نفس الـ singly بس لازم تظبط الـ prev: الـ <bdi dir=\"ltr\">newnode-⁠&gt;prev&nbsp;=&nbsp;temp</bdi>، والـ node اللي بعدها (لو موجودة) الـ prev بتاعها يشاور على الـ newnode."
       },
       {
-       "ans": "<pre>void removeAll()            // inside class Stack\n{\n    if (top == NULL) { cout &lt;&lt; \"Stack is empty\" &lt;&lt; endl; return; }\n    while (top != NULL)\n    {\n        Node *temp = top;\n        cout &lt;&lt; \"Popped \" &lt;&lt; temp-&gt;data &lt;&lt; endl;\n        top = top-&gt;next;\n        delete temp;\n    }\n}</pre>الـ class كامل بالـ push والـ main: شوف Summer 2023/24 (60 marks) Q3 (L6). الفكرة: لو فاضي اطبع رسالة، غير كده فضل اعمل pop للـ top وفضّي الـ memory لحد ما الـ top يبقى NULL."
+       "ans": "<pre>// inside class Stack\nvoid removeAll()\n{\n  if (top == NULL) {\n    cout &lt;&lt; \"Stack is empty\"\n         &lt;&lt; endl;\n    return;\n  }\n  while (top != NULL)\n  {\n    Node *temp = top;\n    cout &lt;&lt; \"Popped \"\n         &lt;&lt; temp-&gt;data &lt;&lt; endl;\n    top = top-&gt;next;\n    delete temp;\n  }\n}</pre>الـ class كامل بالـ push والـ main: شوف <bdi dir=\"ltr\">Summer&nbsp;2023/24&nbsp;(60&nbsp;marks)&nbsp;Q3</bdi> (من <bdi dir=\"ltr\">L6</bdi>). الفكرة: لو فاضي اطبع رسالة، غير كده فضل اعمل pop للـ top وفضّي الـ memory لحد ما الـ top يبقى NULL."
       }
      ]
     }
