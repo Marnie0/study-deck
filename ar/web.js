@@ -2129,16 +2129,28 @@ AR.web = {
   "8": {
    "notes": [
     {
-     "h": "الـ Arithmetic operators <bdi dir=\"ltr\">(y&nbsp;=&nbsp;4)</bdi>"
+     "h": "الـ Arithmetic operators <bdi dir=\"ltr\">(y&nbsp;=&nbsp;4)</bdi>",
+     "figH": {
+      "wb-js2-arith": "كل سطر في الجدول بيتحسب خطوة بخطوة، وبعدين جرّب الـ expression بتاعك"
+     }
     },
     {
-     "h": "الـ Assignment operators <bdi dir=\"ltr\">(x&nbsp;=&nbsp;10)</bdi>"
+     "h": "الـ Assignment operators <bdi dir=\"ltr\">(x&nbsp;=&nbsp;10)</bdi>",
+     "figH": {
+      "wb-js2-assign": "الـ <bdi dir=\"ltr\">x&nbsp;+=&nbsp;5</bdi> هي نفسها <bdi dir=\"ltr\">x&nbsp;=&nbsp;x&nbsp;+&nbsp;5</bdi>، وكل assignment operator بيتحسب قدامك"
+     }
     },
     {
-     "h": "الـ Comparison والـ logical operators <bdi dir=\"ltr\">(x&nbsp;=&nbsp;10,&nbsp;y&nbsp;=&nbsp;5)</bdi>"
+     "h": "الـ Comparison والـ logical operators <bdi dir=\"ltr\">(x&nbsp;=&nbsp;10,&nbsp;y&nbsp;=&nbsp;5)</bdi>",
+     "figH": {
+      "wb-js2-compare": "الـ <bdi dir=\"ltr\">==</bdi> بيحوّل النوع والـ <bdi dir=\"ltr\">===</bdi> لأ، والـ <bdi dir=\"ltr\">&amp;&amp;</bdi> والـ <bdi dir=\"ltr\">||</bdi> بيقفوا بدري"
+     }
     },
     {
-     "h": "الـ Trace: مثال <bdi dir=\"ltr\">L8</bdi> رقم (1) <bdi dir=\"ltr\">(a&nbsp;=&nbsp;33,&nbsp;b&nbsp;=&nbsp;10,&nbsp;c&nbsp;=&nbsp;\"Test\")</bdi>"
+     "h": "الـ Trace: مثال <bdi dir=\"ltr\">L8</bdi> رقم (1) <bdi dir=\"ltr\">(a&nbsp;=&nbsp;33,&nbsp;b&nbsp;=&nbsp;10,&nbsp;c&nbsp;=&nbsp;\"Test\")</bdi>",
+     "figH": {
+      "wb-js2-examples": "أمثلة الـ L8 رقم (1) و(2) و(3) بتتنفذ سطر بسطر، وبالقيم بتاعتك كمان"
+     }
     },
     {
      "h": "الـ Control structures والـ loops",
@@ -2147,7 +2159,13 @@ AR.web = {
       "الـ <b>switch</b>: بيقارن بـ <b>strict equality <bdi dir=\"ltr\">(===)</bdi></b>، يعني القيمة والنوع مع بعض. كل case لازم تخلص بـ <b>break</b>، وإلا التنفيذ بيكمّل في اللي بعدها (fall through)؛ والـ <b>default</b> بيتنفذ لما مفيش حاجة تطابق. الـ Example 5 <bdi dir=\"ltr\">(grade&nbsp;'A')</bdi> بيطبع:<span class=\"ltr\">\"Entering switch block\", \"Good job\", \"Exiting switch block\"</span>",
       "الـ <b>while</b> (بيختبر الأول)، والـ <b>do...while</b> (الـ body بيتنفذ مرة على الأقل والاختبار بعدها)، والـ <b>for</b> <bdi dir=\"ltr\">(init;&nbsp;condition;&nbsp;update)</bdi>، والـ <b>for...in</b> (بيلف على الـ keys أو الـ indexes بتاعة object أو array)، والـ <b>for...of</b> (بيلف على القيم نفسها).",
       "الـ Example 6 بيطبع كل عربية في سطر لوحدها:<pre>for (let i = 0;\n     i &lt; cars.length; i++)\n  text += cars[i] + \"&lt;br&gt;\";</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-js2-ifelse": "مثال 4: الـ chain بتاعة الـ if والـ else if بتختبر شرط شرط",
+      "wb-js2-switch": "مثال 5: الـ switch بيطابق بالـ <bdi dir=\"ltr\">===</bdi>، ومن غير break بيكمّل في اللي بعده",
+      "wb-js2-loops": "الـ loops بتاعة الـ slides (الـ while والـ do...while والـ for...in والـ for...of) خطوة بخطوة",
+      "wb-js2-cars": "مثال 6: الـ text بيتبني عربية عربية، بالـ for أو الـ while أو الـ do...while"
+     }
     },
     {
      "h": "الـ Arrays",
@@ -2155,20 +2173,32 @@ AR.web = {
       "الـ arrays في الـ JS نسخة أريح من الـ arrays بتاعة الـ Java: <b>الحجم ممكن يتغير</b> و<b>الداتا ممكن تبقى أنواع مختلطة</b>؛ وبتستخدم indexes بس (مفيش keys على مزاجك زي الـ PHP).",
       "الإنشاء: لو كذا argument يبقوا هم العناصر:<pre>new Array(1, 2, 3)</pre>ولو argument رقمي واحد يبقى هو <b>الحجم</b>:<pre>new Array(5)</pre>أو literal بالأقواس المربعة:<pre>[1, 2, 3]</pre>",
       "الـ <code>length</code> بيدّيك عدد العناصر."
-     ]
+     ],
+     "figH": {
+      "wb-js2-newarray": "الفرق بين الـ <bdi dir=\"ltr\">new&nbsp;Array(1,&nbsp;2,&nbsp;3)</bdi> والـ <bdi dir=\"ltr\">new&nbsp;Array(5)</bdi> والـ literal، وarray بتكبر"
+     }
     },
     {
-     "h": "الـ Array methods"
+     "h": "الـ Array methods",
+     "figH": {
+      "wb-js2-methods": "شغّل كل array method على الـ nums أو الـ x وشوف إيه اللي اتغير وإيه اللي رجع"
+     }
     },
     {
-     "h": "الـ Trace بتاع <bdi dir=\"ltr\">ArrayEx(7)</bdi> (متجرّب فعلًا بالتشغيل)"
+     "h": "الـ Trace بتاع <bdi dir=\"ltr\">ArrayEx(7)</bdi> (متجرّب فعلًا بالتشغيل)",
+     "figH": {
+      "wb-js2-arrayex": "الـ <bdi dir=\"ltr\">ArrayEx(7)</bdi> سطر بسطر مع الـ nums والـ x والـ console"
+     }
     },
     {
      "h": "الـ Date object",
      "pts": [
       "بيتعمل بالطرق دي. التاريخ والوقت دلوقتي:<pre>new Date()</pre>عدد الـ ms من نص الليل يوم <bdi dir=\"ltr\">1/1/1970</bdi> كده:<pre>new Date(milliseconds)</pre>مثلًا الـ 5000 يعني خمس ثواني بعد نص الليل يوم <bdi dir=\"ltr\">1/1/70</bdi>، زي اللي بيرجّعه الـ <code>getTime()</code>. وبـ datestring بفورمات يقبله الـ <code>Date.parse()</code> كده:<pre>new Date(datestring)</pre>أو:<pre>new Date(year, month, date\n  [, hour, minute, second,\n   millisecond])</pre>",
       "الـ Getters:<span class=\"ltr\">getFullYear(), getMonth(), getDate(), getDay(), getHours(), getMinutes(), getSeconds(), getTime()</span>والـ <code>getMonth()</code> بيرجّع من 0 لـ 11."
-     ]
+     ],
+     "figH": {
+      "wb-js2-date": "الـ <bdi dir=\"ltr\">new&nbsp;Date(5000)</bdi> والتواريخ بتاعتك، مقرية بالـ getters"
+     }
     }
    ],
    "cards": [

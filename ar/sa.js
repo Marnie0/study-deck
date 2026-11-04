@@ -583,7 +583,11 @@ AR.sa = {
       "الـ <b>System Service Request (SSR)</b> هو <b>form قياسي (standard form) لطلب أو اقتراح شغل systems development</b> جوه المنظمة. فيه <b>الـ contact person، والـ problem statement، والـ service request statement، وبيانات الـ liaison</b>.",
       "الـ <b>Project management</b> هو <b>controlled process للـ initiating والـ planning والـ executing والـ closing down</b> للمشروع. الـ Process بتمشي كده: أولاً الـ initiating، ثانياً الـ planning، ثالثاً الـ executing، رابعاً الـ closing down.",
       "الـ Case هي <b>Pine Valley Furniture (PVF)</b>، سيستم الـ purchasing fulfillment؛ الـ project managers هما <b>Juanita Lopez</b> (ممثلة الـ users) و<b>Chris Martin</b> (من جروب تطوير الـ IS، الـ liaison)."
-     ]
+     ],
+     "figH": {
+      "sa-pm-ssr": "الـ SSR بتاع سيستم الـ Purchasing Fulfillment جزء جزء (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-2</bdi>)",
+      "sa-pm-process": "الـ project management process: أربع phases بالترتيب"
+     }
     },
     {
      "h": "الأنشطة والمهارات الشائعة للـ project manager <bdi dir=\"ltr\">(Table&nbsp;3-1)</bdi>"
@@ -596,7 +600,12 @@ AR.sa = {
       "الـ <b>Project workbook</b> هو <b>repository</b> أونلاين أو ورقي <b>لكل مراسلات المشروع والـ inputs والـ outputs والـ deliverables والـ procedures والـ standards</b>. الـ workbook بتاع PVF كان فيه 9 مستندات: الـ overview، والـ initiation plan والـ SSR، والـ scope and risks، والـ management procedures، والـ data descriptions، والـ process descriptions، والـ team correspondence، والـ statement of work، والـ project schedule.",
       "الـ <b>Project charter</b> (متأكد عليه في slide 25): <b>مستند قصير و high-level</b> معمول لـ <b>الـ stakeholders الداخليين والخارجيين الاتنين</b>؛ <b>بيعلن رسميًا إن المشروع اتعمل</b> وبيوصف باختصار <b>الـ objectives والـ key assumptions والـ stakeholders</b>.",
       "خطوات الـ initiation في PVF <bdi dir=\"ltr\">(Fig&nbsp;3-3)</bdi>: الأول Juanita لاحظت مشاكل، وبعدين كلّمت Chris عشان يبدأوا SSR، وبعدين الـ SSR اتراجع واتوافق عليه من الـ Systems Priority Board، وبعدين اتعيّنت steering committee، وفي الآخر اتعملت project plan تفصيلية واتنفذت."
-     ]
+     ],
+     "figH": {
+      "sa-pm-init-acts": "الخمس أنشطة بتوع الـ project initiation (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-5</bdi>)",
+      "sa-pm-workbook": "الـ project workbook بتاع PVF ومستنداته التسعة (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-6</bdi>)",
+      "sa-pm-pvf-init": "خطوات الـ initiation الخمسة في PVF واحدة واحدة (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-3</bdi>)"
+     }
     },
     {
      "h": "المرحلة 2: تخطيط المشروع (Planning) (10 أنشطة، <bdi dir=\"ltr\">Fig&nbsp;3-8</bdi>)",
@@ -608,7 +617,12 @@ AR.sa = {
       "<b>خصائص الـ task</b>: بيعملها شخص واحد أو جروب محدد كويس؛ ليها deliverable واحد واضح؛ ليها method أو technique معروفة؛ خطوات قبلها وبعدها (predecessor and successor) متفق عليها؛ وتتقاس عشان تعرف نسبة الإنجاز.",
       "الـ <b>COCOMO</b>: طريقة منتشرة بتستخدم parameters مأخوذة من مشاريع قديمة بدرجات تعقيد مختلفة عشان تتوقع الـ human resources المطلوبة للـ systems الـ basic والـ intermediate والمعقدة جدًا (شوف Lecture 5).",
       "أسئلة الـ communication plan: مين الـ stakeholders؛ كل واحد محتاج information إيه؛ إمتى وكل قد إيه؛ من أنهي مصادر؛ مين بيجمعها ويخزنها ويتأكد منها؛ مين بيجهزها؛ مين الـ contact person؛ الـ format؛ وأنهي وسيلة أكفأ."
-     ]
+     ],
+     "figH": {
+      "sa-pm-plan-acts": "العشر أنشطة بتوع الـ project planning (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-8</bdi>)",
+      "sa-pm-budget": "الـ cost-benefit analysis بتاع الـ preliminary budget، الـ NPV والـ ROI والـ break-even خطوة بخطوة (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-12</bdi>)",
+      "sa-pm-wbs": "الـ WBS بيتبني task بعد task كـ Gantt chart، وبعدين كـ network diagram (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figures&nbsp;3-9&nbsp;and&nbsp;3-11</bdi>)"
+     }
     },
     {
      "h": "المرحلة 3: تنفيذ المشروع (Executing) (5 أنشطة)",
@@ -616,17 +630,27 @@ AR.sa = {
       "الـ <b>Project execution</b>: التالت phase، وفيها الخطط اللي اتعملت في الـ initiation والـ planning <b>بتتنفذ فعلًا (put into action)</b>.",
       "(1) الـ <b>Executing the BPP</b>: ابدأ الأنشطة، هات الـ resources ووزّعها، عرّف ودرّب الأعضاء الجداد، امشي على الـ schedule، واضمن جودة الـ deliverables.<br>(2) الـ <b>Monitoring progress against the BPP</b>.<br>(3) الـ <b>Managing changes to the BPP</b>: معاد خلصان نشاط اتأخر، نشاط اتعمل غلط ولازم يتعاد، نشاط جديد ظهر بعدين، تغيير مش متوقع في الأفراد (مرض، استقالة، فصل).<br>(4) الـ <b>Maintaining the project workbook</b>.<br>(5) الـ <b>Communicating the project status</b>.",
       "طرق التواصل: الـ meetings، والـ status reports، والـ minutes، والـ seminars and workshops، والـ bulletin boards، والـ memos، والـ specification documents، والـ brown-bag lunches، والـ hallway discussions، والـ newsletters، والـ project workbook."
-     ]
+     ],
+     "figH": {
+      "sa-pm-exec-acts": "الخمس أنشطة بتوع الـ project execution (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-13</bdi>)",
+      "sa-pm-progress": "متابعة التقدم: نسبة الإنجاز على الـ Gantt chart (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-14</bdi>)"
+     }
     },
     {
-     "h": "طرق التواصل في الـ project team <bdi dir=\"ltr\">(Table&nbsp;3-2)</bdi>"
+     "h": "طرق التواصل في الـ project team <bdi dir=\"ltr\">(Table&nbsp;3-2)</bdi>",
+     "figH": {
+      "sa-pm-comm-table": "الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Table&nbsp;3-2</bdi> كرسمة: الـ formality والـ use لكل طريقة"
+     }
     },
     {
      "h": "المرحلة 4: قفل المشروع (Closing down) (متأكد عليها)",
      "pts": [
       "الـ <b>Project closedown</b>: <b>آخر phase</b>، بتركز على <b>إنهاء المشروع</b>.",
       "تلات أنشطة للـ closedown، هما: (1) الـ <b>closing down the project</b>، و(2) الـ <b>conducting post-project reviews</b>، و(3) الـ <b>closing the customer contract</b>."
-     ]
+     ],
+     "figH": {
+      "sa-pm-close-acts": "التلات أنشطة بتوع الـ project closedown (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-15</bdi>)"
+     }
     },
     {
      "h": "تمثيل وجدولة خطط المشروع",
@@ -638,10 +662,19 @@ AR.sa = {
       "<b>الـ Gantt مقابل الـ network</b> (slide 52): الـ Gantt charts بتوضح <b>مدة الـ tasks</b>، وبتوضح <b>التداخل في الوقت (time overlap)</b>، وبتوضح <b>الـ slack time في الـ duration</b>. الـ Network diagrams بتوضح <b>الـ dependencies بين الـ tasks</b>، <b>مابتوضحش الـ time overlap بس بتوضح الـ parallelism</b>، وبتوضح <b>الـ slack time في الـ boxes</b>.",
       "الـ Network diagramming هو critical path scheduling technique بيُستخدم لما الـ tasks: تبقى <b>محددة كويس (well-defined)</b> ليها بداية ونهاية واضحين؛ ينفع تتعمل <b>مستقلة (independently)</b> عن الـ tasks التانية؛ <b>مترتبة (ordered)</b>؛ و<b>بتخدم هدف</b> المشروع.",
       "الـ <b>Slack time</b> (متأكد عليه slide 68): الوقت اللي النشاط ممكن يتأخره <b>من غير ما يأخر المشروع</b>. الـ <b>Free slack</b>: تأخير من غير ما يأخر الـ early start لأي task جاية بعده على طول. الـ <b>Total slack</b>: تأخير من غير ما يأخر خلصان المشروع."
-     ]
+     ],
+     "figH": {
+      "sa-pm-abcde-net": "الـ network diagram: الأنشطة دواير والترتيب أسهم (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-18</bdi>)",
+      "sa-pm-gantt-net": "الـ Gantt chart قصاد الـ network diagram لنفس مشروع الـ SPTS (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-16</bdi>، slide 52)",
+      "sa-pm-slack": "جرّب: أخّر نشاط في الـ SPTS وشوف معاد خلصان المشروع هيتحرك ولا لأ"
+     }
     },
     {
-     "h": "تقدير الـ PERT ومثال الـ <bdi dir=\"ltr\">PVF&nbsp;/&nbsp;SPTS</bdi>"
+     "h": "تقدير الـ PERT ومثال الـ <bdi dir=\"ltr\">PVF&nbsp;/&nbsp;SPTS</bdi>",
+     "figH": {
+      "sa-pm-pert": "الـ expected time بالـ PERT لأنشطة الـ SPTS صف صف (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figure&nbsp;3-19</bdi>)، ومعاه calculator",
+      "sa-pm-spts-cpm": "الـ critical path بتاع الـ SPTS: الـ forward pass والـ backward pass والـ slack (الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Figures&nbsp;3-22&nbsp;to&nbsp;3-24</bdi>)"
+     }
     },
     {
      "h": "استخدام برامج الـ project management (الـ MS Project)",
@@ -649,7 +682,10 @@ AR.sa = {
       "بيساعد في: تحديد <b>معاد بداية أو نهاية</b> المشروع؛ <b>إدخال الـ tasks وتحديد العلاقات بينها</b>؛ و<b>اختيار طريقة scheduling</b> عشان تراجع الـ project reports.",
       "في الـ Gantt chart: <b>الخط الأسود اللي فوق معناه summary activity</b> (متكوّن من subtasks)؛ و<b>الـ diamond معناه milestone</b>.",
       "في الـ Network diagram: <b>الـ hexagon معناه milestone</b>؛ و<b>الـ boxes والأسهم الحمرا هي الـ critical path</b> (مفيش slack)."
-     ]
+     ],
+     "figH": {
+      "sa-pm-msproject": "رموز الـ MS Project: الـ summary bar والـ diamond في الـ Gantt chart، والـ hexagon والـ critical path الأحمر في الـ network"
+     }
     }
    ],
    "cards": [
@@ -1450,7 +1486,10 @@ AR.sa = {
       "الـ <b>project</b> هو مجموعة أنشطة مرتبطة ببعض، كل نشاط بيستهلك وقت و resources. وهدف الـ CPM والـ PERT إنهم يدّوا طريقة تحليلية لجدولة الأنشطة دي.",
       "المراحل: أولاً، تحديد الـ <b>activities</b> وعلاقات الأسبقية (precedence) بينها والوقت اللي محتاجاه؛ تانيًا، تحويل المشروع لـ <b>network</b>؛ تالتًا، <b>حسابات الـ network</b> اللي بتبني عليها الـ <b>time schedule</b>؛ رابعًا، وقت التنفيذ ممكن الـ schedule مايتحققش زي ما هو، فبيتحدّث: يعني فيه <b>feedback loop</b> من الـ time schedule راجع للـ network.",
       "الفرق: <b>الـ CPM بيفترض إن مدد الأنشطة deterministic</b> (ثابتة ومعروفة)، و<b>الـ PERT بيفترض إنها probabilistic</b> (احتمالية). والاتنين اتعملوا كل واحد لوحده."
-     ]
+     ],
+     "figH": {
+      "sa-l6-phases": "مراحل تخطيط المشروع بالـ CPM والـ PERT، ومعاها الـ feedback loop (الـ slide رقم 3)"
+     }
     },
     {
      "h": "قواعد تمثيل الـ network والـ dummy activities",
@@ -1460,28 +1499,54 @@ AR.sa = {
       "الـ <b>dummy activity</b> (سهم متقطع) <b>مابتستهلكش وقت ولا resources</b>. بتدّي الـ activities اللي بتحصل في نفس الوقت (زي A و B) end nodes unique (فيه أربع طرق لرسمها)، فـ rule 2 تتحقق.",
       "الـ <b>Rule 3</b>: عشان تحافظ على الأسبقية الصح، جاوب لكل activity على الأسئلة دي: (أ) أنهي activities لازم <b>تسبقها على طول</b>؟ (ب) أنهي activities لازم <b>تيجي بعدها</b>؟ (ج) أنهي activities لازم تحصل <b>في نفس الوقت</b> معاها؟",
       "مثال: C بتبدأ بعد A و B؛ و E بتبدأ بعد B بس. لو جمعت A و B في node واحدة قبل C و E الاتنين يبقى ده <b>غلط</b> (لأنه بيجبر E تستنى A). التصليح: B تنتهي عند node لوحدها، وdummy D يطلع من الـ end node بتاعة B للـ start node بتاعة C."
-     ]
+     ],
+     "figH": {
+      "sa-l6-dummy-ways": "الـ Rule 2 والأربع طرق لإضافة dummy للـ A والـ B اللي بيحصلوا في نفس الوقت (الـ slide رقم 11)",
+      "sa-l6-dummy-fix": "جرّب: خلّص A أو B وشوف أنهي رسمة بتحافظ على الأسبقية الصح (الـ slide رقم 15)"
+     }
     },
     {
-     "h": "الـ Forward pass والـ backward pass (إزاي تحسب كل حاجة)"
+     "h": "الـ Forward pass والـ backward pass (إزاي تحسب كل حاجة)",
+     "figH": {
+      "sa-l6-cpm-calc": "حاسبة الـ CPM: الـ ES والـ EF والـ LS والـ LF والـ slack والـ free slack والـ Gantt chart والـ team، لأمثلة المحاضرة أو لمثال من عندك"
+     }
     },
     {
-     "h": "مثال المحاضرة: 13 activity (من A لـ M)، مع إجابة الدكتور"
+     "h": "مثال المحاضرة: 13 activity (من A لـ M)، مع إجابة الدكتور",
+     "figH": {
+      "sa-l6-net13": "الـ network بتاع الـ 13 activity: الـ forward pass والـ backward pass والـ critical path خطوة بخطوة"
+     }
     },
     {
-     "h": "مثال الـ 13 activity: الـ critical path والـ Gantt والـ team"
+     "h": "مثال الـ 13 activity: الـ critical path والـ Gantt والـ team",
+     "figH": {
+      "sa-l6-gantt13": "الـ Gantt chart وحدة زمن ورا التانية: أكبر عدد bars شغالة مع بعض هو أقل team"
+     }
     },
     {
-     "h": "مسألة المحاضرة 2 (10 activities، بالأسابيع)"
+     "h": "مسألة المحاضرة 2 (10 activities، بالأسابيع)",
+     "figH": {
+      "sa-l6-problem2": "مسألة 2: غيّر الـ activity 6 من أسبوع لـ 6 أسابيع وشوف الـ critical path بيتنقل إزاي"
+     }
     },
     {
-     "h": "مسألة المحاضرة 3 (من A لـ G) ومسألة 1 (الـ expected times)"
+     "h": "مسألة المحاضرة 3 (من A لـ G) ومسألة 1 (الـ expected times)",
+     "figH": {
+      "sa-l6-problem3": "مسألة 3 activity ورا التانية: الـ EF والـ LF والـ slack والـ critical path",
+      "sa-l6-pert-et": "مسألة 1: الـ expected time لكل task، أو لتقديرات من عندك"
+     }
     },
     {
-     "h": "أمثلة Lab 3 (tasks مرحلة الـ planning)"
+     "h": "أمثلة Lab 3 (tasks مرحلة الـ planning)",
+     "figH": {
+      "sa-l6-lab3": "الـ Ex 1 والـ Ex 2 بتوع Lab 3 كـ networks: كل path وطوله"
+     }
     },
     {
-     "h": "برّه الـ slides: الـ PERT variance والاحتمالات (من الكتاب)"
+     "h": "برّه الـ slides: الـ PERT variance والاحتمالات (من الكتاب)",
+     "figH": {
+      "sa-l6-pert-prob": "الـ variance بتاع الـ critical path واحتمال إن المشروع يخلص قبل وقت معين (مشروع الـ SPTS)"
+     }
     }
    ],
    "cards": [

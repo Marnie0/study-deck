@@ -1274,7 +1274,19 @@ COURSES.sa = {
       "<b>System Service Request (SSR)</b>: a <b>standard form for requesting or proposing systems development work</b> within an organization. It includes the <b>contact person, a problem statement, a service request statement, and liaison contact information</b>.",
       "<b>Project management</b>: a <b>controlled process of initiating, planning, executing and closing down</b> a project. Process: (1) initiating, (2) planning, (3) executing, (4) closing down.",
       "Case: <b>Pine Valley Furniture (PVF)</b>, purchasing fulfillment system; project managers <b>Juanita Lopez</b> (user representative) and <b>Chris Martin</b> (IS development group, liaison)."
-     ]
+     ],
+     "fig": [
+      "sa-pm-ssr",
+      "sa-pm-process"
+     ],
+     "figAt": {
+      "sa-pm-ssr": 3,
+      "sa-pm-process": 4
+     },
+     "figH": {
+      "sa-pm-ssr": "The SSR for the Purchasing Fulfillment System, part by part (Figure 3-2)",
+      "sa-pm-process": "The project management process: four phases in order"
+     }
     },
     {
      "h": "Common activities and skills of a project manager (Table 3-1)",
@@ -1321,7 +1333,22 @@ COURSES.sa = {
       "<b>Project workbook</b>: an online or hard-copy <b>repository for all project correspondence, inputs, outputs, deliverables, procedures and standards</b>. PVF workbook had 9 documents: overview, initiation plan and SSR, scope and risks, management procedures, data descriptions, process descriptions, team correspondence, statement of work, project schedule.",
       "<b>Project charter</b> (emphasised slide 25): a <b>short, high-level document</b> prepared for <b>both internal and external stakeholders</b>; it <b>formally announces the establishment of the project</b> and briefly describes its <b>objectives, key assumptions and stakeholders</b>.",
       "PVF initiation steps (Fig 3-3): Juanita observed problems → contacted Chris to initiate an SSR → SSR reviewed and approved by the Systems Priority Board → steering committee assigned → detailed project plan developed and executed."
-     ]
+     ],
+     "fig": [
+      "sa-pm-init-acts",
+      "sa-pm-workbook",
+      "sa-pm-pvf-init"
+     ],
+     "figAt": {
+      "sa-pm-init-acts": 1,
+      "sa-pm-workbook": 2,
+      "sa-pm-pvf-init": 4
+     },
+     "figH": {
+      "sa-pm-init-acts": "The five project initiation activities (Figure 3-5)",
+      "sa-pm-workbook": "The PVF project workbook and its nine documents (Figure 3-6)",
+      "sa-pm-pvf-init": "PVF's five initiation steps, one by one (Figure 3-3)"
+     }
     },
     {
      "h": "Phase 2: Planning the project (10 activities, Fig 3-8)",
@@ -1333,7 +1360,22 @@ COURSES.sa = {
       "<b>Characteristics of a task</b>: done by one person or a well-defined group; a single identifiable deliverable; a known method or technique; well-accepted predecessor and successor steps; measurable so percent completed can be determined.",
       "<b>COCOMO</b>: a widely used method using parameters derived from prior projects of differing complexity to predict human resource requirements for basic, intermediate and very complex systems (see Lecture 5).",
       "Communication plan questions: who are the stakeholders; what information each needs; when and how often; what sources; who collects, stores and verifies; who packages it; contact person; format; most effective medium."
-     ]
+     ],
+     "fig": [
+      "sa-pm-plan-acts",
+      "sa-pm-budget",
+      "sa-pm-wbs"
+     ],
+     "figAt": {
+      "sa-pm-plan-acts": 2,
+      "sa-pm-budget": 2,
+      "sa-pm-wbs": 3
+     },
+     "figH": {
+      "sa-pm-plan-acts": "The ten project planning activities (Figure 3-8)",
+      "sa-pm-budget": "The preliminary budget's cost-benefit analysis: NPV, ROI and break-even step by step (Figure 3-12)",
+      "sa-pm-wbs": "A WBS built task by task as a Gantt chart, then as a network diagram (Figures 3-9 and 3-11)"
+     }
     },
     {
      "h": "Phase 3: Executing the project (5 activities)",
@@ -1341,7 +1383,19 @@ COURSES.sa = {
       "<b>Project execution</b>: the third phase, in which the plans created in initiation and planning are <b>put into action</b>.",
       "(1) <b>Executing the BPP</b>: initiate activities, acquire and assign resources, orient and train new members, keep on schedule, ensure quality of deliverables. (2) <b>Monitoring progress against the BPP</b>. (3) <b>Managing changes to the BPP</b>: slipped completion date, bungled activity that must be redone, a new activity found later, unforeseen change in personnel (sickness, resignation, termination). (4) <b>Maintaining the project workbook</b>. (5) <b>Communicating the project status</b>.",
       "Communication methods: meetings, status reports, minutes, seminars and workshops, bulletin boards, memos, specification documents, brown-bag lunches, hallway discussions, newsletters, project workbook."
-     ]
+     ],
+     "fig": [
+      "sa-pm-exec-acts",
+      "sa-pm-progress"
+     ],
+     "figAt": {
+      "sa-pm-exec-acts": 1,
+      "sa-pm-progress": 1
+     },
+     "figH": {
+      "sa-pm-exec-acts": "The five project execution activities (Figure 3-13)",
+      "sa-pm-progress": "Monitoring progress: percent complete on the Gantt chart (Figure 3-14)"
+     }
     },
     {
      "h": "Project team communication methods (Table 3-2)",
@@ -1406,14 +1460,29 @@ COURSES.sa = {
        "Low",
        "Inform, resolve issues"
       ]
-     ]
+     ],
+     "fig": [
+      "sa-pm-comm-table"
+     ],
+     "figH": {
+      "sa-pm-comm-table": "Table 3-2 as a picture: each method's formality and use"
+     }
     },
     {
      "h": "Phase 4: Closing down the project (emphasised)",
      "pts": [
       "<b>Project closedown</b>: the <b>final phase</b> that focuses on <b>bringing a project to an end</b>.",
       "Three closedown activities: (1) <b>closing down the project</b>, (2) <b>conducting post-project reviews</b>, (3) <b>closing the customer contract</b>."
-     ]
+     ],
+     "fig": [
+      "sa-pm-close-acts"
+     ],
+     "figAt": {
+      "sa-pm-close-acts": 1
+     },
+     "figH": {
+      "sa-pm-close-acts": "The three project closedown activities (Figure 3-15)"
+     }
     },
     {
      "h": "Representing and scheduling project plans",
@@ -1425,7 +1494,22 @@ COURSES.sa = {
       "<b>Gantt vs network</b> (slide 52): Gantt charts show <b>task durations</b>, show <b>time overlap</b>, show <b>slack time in duration</b>. Network diagrams show <b>task dependencies</b>, <b>do not show time overlap but show parallelism</b>, show <b>slack time in boxes</b>.",
       "Network diagramming is a critical path scheduling technique used when tasks: are <b>well-defined</b> with a clear beginning and end; can be worked on <b>independently</b> of other tasks; are <b>ordered</b>; <b>serve the purpose</b> of the project.",
       "<b>Slack time</b> (emphasised slide 68): the amount of time an activity can be delayed <b>without delaying the project</b>. <b>Free slack</b>: delay without delaying the early start of any immediately following task. <b>Total slack</b>: delay without delaying project completion."
-     ]
+     ],
+     "fig": [
+      "sa-pm-abcde-net",
+      "sa-pm-gantt-net",
+      "sa-pm-slack"
+     ],
+     "figAt": {
+      "sa-pm-abcde-net": 3,
+      "sa-pm-gantt-net": 4,
+      "sa-pm-slack": 6
+     },
+     "figH": {
+      "sa-pm-abcde-net": "A network diagram: activities as circles, sequence as arrows (Figure 3-18)",
+      "sa-pm-gantt-net": "Gantt chart vs network diagram on the same SPTS project (Figure 3-16, slide 52)",
+      "sa-pm-slack": "Try it: delay an SPTS activity and see whether the project end moves"
+     }
     },
     {
      "h": "PERT estimate and the PVF / SPTS example",
@@ -1440,7 +1524,15 @@ COURSES.sa = {
       "TE: 1=5, 2=11, 3=11, 4=13, 6=18, 7=21, 5=18.5, 8=22 → project = 22 weeks",
       "Critical path 1-2-4-6-7-8 and 1-3-4-6-7-8 (all except 5). Slack(5) = 21 - 18.5 = 2.5",
       "Check: (3 + 4*6 + 7)/6 = 34/6 = 5.67, not 5.5 (a known textbook slip). With 5.67, TE5 = 18.67 and slack = 2.33. Quote 2.5 if asked about the slide."
-     ]
+     ],
+     "fig": [
+      "sa-pm-pert",
+      "sa-pm-spts-cpm"
+     ],
+     "figH": {
+      "sa-pm-pert": "PERT expected times for SPTS row by row (Figure 3-19), and a calculator",
+      "sa-pm-spts-cpm": "SPTS critical path: forward pass, backward pass and slack (Figures 3-22 to 3-24)"
+     }
     },
     {
      "h": "Using project management software (MS Project)",
@@ -1448,7 +1540,16 @@ COURSES.sa = {
       "Helps with: establishing a project <b>starting or ending date</b>; <b>entering tasks and assigning task relationships</b>; <b>selecting a scheduling method</b> to review project reports.",
       "Gantt chart: <b>black line at top = summary activity</b> (composed of subtasks); <b>diamond = milestone</b>.",
       "Network diagram: <b>hexagon = milestone</b>; <b>red boxes and arrows = critical path</b> (no slack)."
-     ]
+     ],
+     "fig": [
+      "sa-pm-msproject"
+     ],
+     "figAt": {
+      "sa-pm-msproject": 2
+     },
+     "figH": {
+      "sa-pm-msproject": "MS Project symbols: summary bar and diamond on the Gantt chart, hexagon and red critical path on the network"
+     }
     }
    ],
    "cards": [
@@ -3376,7 +3477,16 @@ COURSES.sa = {
       "A <b>project</b> is a collection of interrelated activities, each consuming time and resources. The objective of CPM and PERT is to provide analytic means for scheduling the activities.",
       "Phases: (1) define the <b>activities</b>, their precedence relationships and time requirements; (2) translate the project into a <b>network</b>; (3) <b>network computations</b> that form the basis of the <b>time schedule</b>; (4) during execution the schedule may not be realized, so it is updated: a <b>feedback loop</b> from the time schedule back to the network.",
       "Difference: <b>CPM assumes deterministic</b> activity durations, <b>PERT assumes probabilistic</b> durations. They were developed independently."
-     ]
+     ],
+     "fig": [
+      "sa-l6-phases"
+     ],
+     "figAt": {
+      "sa-l6-phases": 2
+     },
+     "figH": {
+      "sa-l6-phases": "Phases for project planning with CPM-PERT, with the feedback loop (slide 3)"
+     }
     },
     {
      "h": "Network representation rules and dummy activities",
@@ -3386,7 +3496,19 @@ COURSES.sa = {
       "A <b>dummy activity</b> (dashed arc) <b>consumes no time or resources</b>. It gives concurrent activities A and B unique end nodes (four possible ways), satisfying rule 2.",
       "<b>Rule 3</b>: to keep the correct precedence, answer for every activity: (a) which activities must <b>immediately precede</b> it? (b) which must <b>follow</b> it? (c) which must occur <b>concurrently</b>?",
       "Example: C starts after A and B; E starts after B only. Drawing A and B into one node before both C and E is <b>wrong</b> (it forces E to wait for A). Fix: B ends at its own node, a dummy D goes from B's end node to C's start node."
-     ]
+     ],
+     "fig": [
+      "sa-l6-dummy-ways",
+      "sa-l6-dummy-fix"
+     ],
+     "figAt": {
+      "sa-l6-dummy-ways": 2,
+      "sa-l6-dummy-fix": 4
+     },
+     "figH": {
+      "sa-l6-dummy-ways": "Rule 2 and the four ways to insert a dummy for concurrent A and B (slide 11)",
+      "sa-l6-dummy-fix": "Try it: finish A or B and see which drawing keeps the right precedence (slide 15)"
+     }
     },
     {
      "h": "Forward and backward pass (how to compute everything)",
@@ -3399,7 +3521,13 @@ COURSES.sa = {
       "Critical activities: slack = 0. Critical path = the zero-slack chain from start to end",
       "Gantt (bar) chart: each activity is a bar from ES to EF; the slack can be drawn as a dotted tail up to LF",
       "Minimum team (no one person does 2 activities at the same time): under every time unit of the Gantt chart write how many bars are running; the team needed is the LARGEST of these numbers (the lecture example's answer is read this way)"
-     ]
+     ],
+     "fig": [
+      "sa-l6-cpm-calc"
+     ],
+     "figH": {
+      "sa-l6-cpm-calc": "CPM calculator: ES, EF, LS, LF, slack, free slack, Gantt chart and team for the lecture examples or your own"
+     }
     },
     {
      "h": "Lecture example: 13 activities (A to M), with the professor's answer",
@@ -3544,11 +3672,23 @@ COURSES.sa = {
        "40",
        "8"
       ]
-     ]
+     ],
+     "fig": [
+      "sa-l6-net13"
+     ],
+     "figH": {
+      "sa-l6-net13": "The 13-activity network: forward pass, backward pass and the critical path, step by step"
+     }
     },
     {
      "h": "13-activity example: critical path, Gantt and team",
-     "code": "Project duration = 40, critical path B-E-F-J-L (10+10+9+7+4 = 40)\n\nGantt (ES schedule; = critical, # non-critical, . slack)\n     0    5    10   15   20   25   30   35   40\nA    #####............................\nB    ==========\nC    ###..........................\nD              ########...............\nE              ==========\nF                        =========\nG                      ###...............\nH              ####......................\nI                        #####...........\nJ                                 =======\nK                      ####..................\nL                                        ====\nM                                 ###........\nteam 3332211111333322223343222111122211111111\n\nLargest number of parallel activities = 4 (time 20-21: F, G, I, K)\n-> minimum project team = 4 (the professor's answer on the slide)"
+     "code": "Project duration = 40, critical path B-E-F-J-L (10+10+9+7+4 = 40)\n\nGantt (ES schedule; = critical, # non-critical, . slack)\n     0    5    10   15   20   25   30   35   40\nA    #####............................\nB    ==========\nC    ###..........................\nD              ########...............\nE              ==========\nF                        =========\nG                      ###...............\nH              ####......................\nI                        #####...........\nJ                                 =======\nK                      ####..................\nL                                        ====\nM                                 ###........\nteam 3332211111333322223343222111122211111111\n\nLargest number of parallel activities = 4 (time 20-21: F, G, I, K)\n-> minimum project team = 4 (the professor's answer on the slide)",
+     "fig": [
+      "sa-l6-gantt13"
+     ],
+     "figH": {
+      "sa-l6-gantt13": "The Gantt chart swept time unit by time unit: the largest count of running bars is the minimum team"
+     }
     },
     {
      "h": "Lecture Problem 2 (10 activities, weeks)",
@@ -3561,7 +3701,13 @@ COURSES.sa = {
       "If activity 6 takes 6 weeks: path 1-2-4-6-8-10 = 2+3+7+6+4+2 = 24 > 23",
       "→ project delayed 1 week (to 24); new critical path 1-2-4-6-8-10; activity 7 now has 1 week slack",
       "(6 had only 4 weeks slack; the 5-week increase exceeds it by 1)"
-     ]
+     ],
+     "fig": [
+      "sa-l6-problem2"
+     ],
+     "figH": {
+      "sa-l6-problem2": "Problem 2: change activity 6 from 1 to 6 weeks and watch the critical path move"
+     }
     },
     {
      "h": "Lecture Problem 3 (A to G) and Problem 1 (expected times)",
@@ -3571,7 +3717,15 @@ COURSES.sa = {
       "Slack: B = 4, E = 3, others 0 → critical path A-C-D-F-G, T = 21",
       "Problem 1 ET = (o+4m+p)/6: A (3,7,11)=7; B (5,9,13)=9; C (1,2,9)=3; D (2,3,16)=5; E (2,4,18)=6",
       "F (3,4,11)=5; G (1,4,7)=4; H (3,4,5)=4; I (2,4,12)=5; J (4,7,9)=41/6=6.83"
-     ]
+     ],
+     "fig": [
+      "sa-l6-problem3",
+      "sa-l6-pert-et"
+     ],
+     "figH": {
+      "sa-l6-problem3": "Problem 3 activity by activity: EF, LF, slack and the critical path",
+      "sa-l6-pert-et": "Problem 1: the expected time of each task, or of your own estimates"
+     }
     },
     {
      "h": "Lab 3 examples (planning-phase tasks)",
@@ -3580,7 +3734,13 @@ COURSES.sa = {
       "Paths: A-D = 5, B-C-D = 12 → minimum duration 12, critical path B → C → D, A has 7 slack",
       "Ex 2: A 2 (-), B 4 (-), C 2 (B), D 3 (A,C), E 2 (C), F 5 (C), G 2 (D,E,F)",
       "Paths: B-C-F-G = 13 (critical), B-C-D-G = 11, B-C-E-G = 10, A-D-G = 7; dummies are needed because D, E, F share the predecessor C and G needs all three"
-     ]
+     ],
+     "fig": [
+      "sa-l6-lab3"
+     ],
+     "figH": {
+      "sa-l6-lab3": "Lab 3 Ex 1 and Ex 2 as networks: every path and its length"
+     }
     },
     {
      "h": "Beyond the slides: PERT variance and probability (textbook)",
@@ -3592,7 +3752,13 @@ COURSES.sa = {
       "σ = √2.556 = 1.599 weeks; T = 22 weeks",
       "P(T ≤ 24) : Z = (24 - 22)/1.599 = 1.25 → Φ(1.25) ≈ 0.894 (89.4%)",
       "P(T ≤ 22) = 0.5; P(T ≤ 20): Z = -1.25 → 0.106"
-     ]
+     ],
+     "fig": [
+      "sa-l6-pert-prob"
+     ],
+     "figH": {
+      "sa-l6-pert-prob": "Critical-path variance and the chance of finishing by a target time (SPTS)"
+     }
     }
    ],
    "cards": [

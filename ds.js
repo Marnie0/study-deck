@@ -3316,7 +3316,19 @@ COURSES.ds = {
       "<b>Root node</b>: the top node with no parent. <b>Parent</b> node and its <b>child</b> nodes. <b>Leaf (terminal) nodes</b>: nodes with no children. <b>Internal node</b>: a node with at least one child. <b>Sub-tree</b>: a node together with all its descendants.",
       "<b>Binary tree</b>: each node has <b>at most 2 children</b> (left and right).",
       "<b>Binary Search Tree (BST)</b>: a binary tree such that (1) every node has a <b>unique key</b>; (2) all keys in the <b>left subtree</b> of a node are <b>less</b> than the node's key; (3) all keys in the <b>right subtree</b> are <b>greater</b>."
-     ]
+     ],
+     "fig": [
+      "ds-l9-parts",
+      "ds-l9-bst-rule"
+     ],
+     "figAt": {
+      "ds-l9-parts": 2,
+      "ds-l9-bst-rule": 3
+     },
+     "figH": {
+      "ds-l9-parts": "Slides 3–11: nodes, root, parent and child, leaves, sub-trees, binary tree",
+      "ds-l9-bst-rule": "The BST rule checked at each node of tree 1: change a key and see it break"
+     }
     },
     {
      "h": "Traversals",
@@ -3365,7 +3377,13 @@ COURSES.ds = {
        "Right → parent → left",
        "On a BST gives descending order"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-l9-traverse"
+     ],
+     "figH": {
+      "ds-l9-traverse": "Inorder, preorder, postorder and reverse inorder on the slides' trees, node by node"
+     }
     },
     {
      "h": "Lecture example trees (checked with g++)",
@@ -3378,11 +3396,23 @@ COURSES.ds = {
       "Preorder:  50 25 12 33 65 55 53 60 70",
       "Inorder:   12 25 33 50 53 55 60 65 70",
       "Postorder: 12 33 25 53 60 55 70 65 50"
-     ]
+     ],
+     "fig": [
+      "ds-l9-build"
+     ],
+     "figH": {
+      "ds-l9-build": "A BST from an insertion order: subtree sizes and the three traversals"
+     }
     },
     {
      "h": "Node, Tree and traversal code (professor's code)",
-     "code": "class Node\n{\npublic:\n   int data;\n   Node *left;\n   Node *right;\n   Node() { data = 0; left = right = NULL; }\n};\nclass Tree\n{\npublic:\n   Node *root;\n   Tree() { root = NULL; }\n};\nvoid inorder(Node *temp)      // sorted order for a BST\n{\n   if (temp == NULL) { return; }\n   inorder(temp->left);\n   cout << temp->data << \"\\t\";\n   inorder(temp->right);\n}\nvoid preorder(Node *temp)\n{\n   if (temp == NULL) { return; }\n   cout << temp->data << \"\\t\";\n   preorder(temp->left);\n   preorder(temp->right);\n}\nvoid postorder(Node *temp)\n{\n   if (temp == NULL) { return; }\n   postorder(temp->left);\n   postorder(temp->right);\n   cout << temp->data << \"\\t\";\n}"
+     "code": "class Node\n{\npublic:\n   int data;\n   Node *left;\n   Node *right;\n   Node() { data = 0; left = right = NULL; }\n};\nclass Tree\n{\npublic:\n   Node *root;\n   Tree() { root = NULL; }\n};\nvoid inorder(Node *temp)      // sorted order for a BST\n{\n   if (temp == NULL) { return; }\n   inorder(temp->left);\n   cout << temp->data << \"\\t\";\n   inorder(temp->right);\n}\nvoid preorder(Node *temp)\n{\n   if (temp == NULL) { return; }\n   cout << temp->data << \"\\t\";\n   preorder(temp->left);\n   preorder(temp->right);\n}\nvoid postorder(Node *temp)\n{\n   if (temp == NULL) { return; }\n   postorder(temp->left);\n   postorder(temp->right);\n   cout << temp->data << \"\\t\";\n}",
+     "fig": [
+      "ds-l9-node-boxes"
+     ],
+     "figH": {
+      "ds-l9-node-boxes": "The Node and Tree classes as boxes and pointers"
+     }
     },
     {
      "h": "Insertion",
@@ -3398,11 +3428,32 @@ COURSES.ds = {
       "Example: inserting 57 into tree 1: 57 &gt; 43 → right; 57 &lt; 64 → left; 57 &gt; 56 → right; 57 &lt; 59 → becomes the <b>left child of 59</b>.",
       "Example: inserting 0.9 into the tree with root 1.0: 0.9 &lt; 1.0 → left (0.6); 0.9 &gt; 0.6 → right (0.8); 0.9 &gt; 0.8 → right child of 0.8.",
       "The <b>shape</b> depends on the insertion order; inserting already sorted keys gives a degenerate (linked-list-like) tree."
-     ]
+     ],
+     "fig": [
+      "ds-l9-insert-57",
+      "ds-l9-insert-09",
+      "ds-l9-shape"
+     ],
+     "figAt": {
+      "ds-l9-insert-57": 2,
+      "ds-l9-insert-09": 3,
+      "ds-l9-shape": 4
+     },
+     "figH": {
+      "ds-l9-insert-57": "Inserting 57 into tree 1, with the insert code line by line",
+      "ds-l9-insert-09": "Slides 32–36: inserting 0.9 into the 1.0 tree",
+      "ds-l9-shape": "Same keys, different order: a short tree or a degenerate one"
+     }
     },
     {
      "h": "insert, search, minimum, maximum (professor's code)",
-     "code": "Node* insert(Node *temp, int item)\n{\n   if (temp == NULL)\n   {\n      Node *newnode = new Node();\n      newnode->data = item;\n      temp = newnode;\n   }\n   else if (item < temp->data) temp->left = insert(temp->left, item);\n   else temp->right = insert(temp->right, item);\n   return temp;\n}\n// call: list.root = list.insert(list.root, a[i]);\n\nbool search(Node *temp, int item)\n{\n   if (temp == NULL) return false;\n   else if (item == temp->data) return true;\n   else if (item < temp->data) return search(temp->left, item);\n   else return search(temp->right, item);\n}   // (the slide omits \"return\" before the recursive calls; it is needed)\n\nNode* minimum(Node *temp)       // leftmost node\n{\n   if (temp == NULL) return NULL;\n   else if (temp->left == NULL) return temp;\n   else return minimum(temp->left);\n}\nNode* maximum(Node *temp)       // rightmost node\n{\n   if (temp == NULL) return NULL;\n   else if (temp->right == NULL) return temp;\n   else return maximum(temp->right);\n}"
+     "code": "Node* insert(Node *temp, int item)\n{\n   if (temp == NULL)\n   {\n      Node *newnode = new Node();\n      newnode->data = item;\n      temp = newnode;\n   }\n   else if (item < temp->data) temp->left = insert(temp->left, item);\n   else temp->right = insert(temp->right, item);\n   return temp;\n}\n// call: list.root = list.insert(list.root, a[i]);\n\nbool search(Node *temp, int item)\n{\n   if (temp == NULL) return false;\n   else if (item == temp->data) return true;\n   else if (item < temp->data) return search(temp->left, item);\n   else return search(temp->right, item);\n}   // (the slide omits \"return\" before the recursive calls; it is needed)\n\nNode* minimum(Node *temp)       // leftmost node\n{\n   if (temp == NULL) return NULL;\n   else if (temp->left == NULL) return temp;\n   else return minimum(temp->left);\n}\nNode* maximum(Node *temp)       // rightmost node\n{\n   if (temp == NULL) return NULL;\n   else if (temp->right == NULL) return temp;\n   else return maximum(temp->right);\n}",
+     "fig": [
+      "ds-l9-minmax"
+     ],
+     "figH": {
+      "ds-l9-minmax": "minimum() and maximum() walking to the leftmost and rightmost node"
+     }
     },
     {
      "h": "Searching and deletion",
@@ -3432,7 +3483,22 @@ COURSES.ds = {
       "Find 0.7 in the 1.0 tree: 1.0 → 0.6 → 0.8 → 0.7 found. Find 0.5: 1.0 → 0.6 → 0.3 → 0.4 → NULL, not found.",
       "<b>Delete</b> cases: (1) leaf: just remove it; (2) one child: replace the node by its child; (3) two children: replace the key by its inorder successor (minimum of the right subtree) or predecessor (maximum of the left subtree), then delete that node.",
       "The slide's <code>deleteitem</code> handles a leaf and a node with one child by copying the child's data and deleting the child (correct only if that child is a leaf); it does not handle two children. In an exam, describe the three standard cases."
-     ]
+     ],
+     "fig": [
+      "ds-l9-search",
+      "ds-l9-delete",
+      "ds-l9-slide-delete"
+     ],
+     "figAt": {
+      "ds-l9-search": 1,
+      "ds-l9-delete": 2,
+      "ds-l9-slide-delete": 3
+     },
+     "figH": {
+      "ds-l9-search": "Slides 39–47: find 0.7 (found) and find 0.5 (not found)",
+      "ds-l9-delete": "The three delete cases on tree 1: leaf, one child, two children",
+      "ds-l9-slide-delete": "Slide 48's deleteitem run on real trees, next to the standard delete"
+     }
     }
    ],
    "cards": [
@@ -3777,7 +3843,19 @@ COURSES.ds = {
       "A hash function H takes a <b>key as input</b> and transforms it into a hash table <b>index</b>. The same hash value is used for both <b>storing and retrieving</b>.",
       "<b>Collision</b>: when the hash function maps two different keys k and j to the <b>same cell</b>.",
       "Hash tables do <b>not</b> keep keys in sorted order: positions depend on the hash function (Lecture 10 is titled \"Searching Techniques: Hashing\")."
-     ]
+     ],
+     "fig": [
+      "ds-l10-pipeline",
+      "ds-l10-collision"
+     ],
+     "figAt": {
+      "ds-l10-pipeline": 2,
+      "ds-l10-collision": 3
+     },
+     "figH": {
+      "ds-l10-pipeline": "Slide 3's key → hash function → index, used to store and to retrieve",
+      "ds-l10-collision": "Slide 4's collision: keys k and j sent to the same cell"
+     }
     },
     {
      "h": "Types of hash function",
@@ -3807,7 +3885,15 @@ COURSES.ds = {
        "Key mod table size (remainder) is the address; one of the best methods",
        "5, 17, 37, 20, 42, 3 mod 9 → 5, 8, 1, 2, 6, 3"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-l10-methods",
+      "ds-l10-division"
+     ],
+     "figH": {
+      "ds-l10-methods": "The four hash functions worked on the slides' keys",
+      "ds-l10-division": "The division exercise filled key by key, then the collision of 11"
+     }
     },
     {
      "h": "Collision resolution techniques",
@@ -3817,7 +3903,22 @@ COURSES.ds = {
       "<b>Quadratic probing</b>: on the 1st collision look h+1 ahead, 2nd h+4, 3rd h+9 … (h + i²). The lecture's formula and worked example use <b>h(k, i) = (h1(k) + i + i²) mod m</b> (i = 1 → +2, i = 2 → +6). Use the lecture's formula in the exam and state it.",
       "<b>Double hashing</b>: two hash functions; when the first collides the second resolves it: <b>h(k, i) = (h1(k) + i·h2(k)) mod m</b>. Lecture example: h1 = k mod 13, h2 = 1 + (k mod 11).",
       "<b>Separate chaining</b>: an <b>array of pointers</b>; each points to a <b>linked list</b> of the keys with the same hash address. On a collision a new link is added to the chain. Handles an <b>unlimited number of collisions</b> and needs <b>no prior knowledge</b> of how many elements will be stored."
-     ]
+     ],
+     "fig": [
+      "ds-l10-quad-formulas",
+      "ds-l10-probe-seq",
+      "ds-l10-full-table"
+     ],
+     "figAt": {
+      "ds-l10-quad-formulas": 2,
+      "ds-l10-probe-seq": 3,
+      "ds-l10-full-table": 4
+     },
+     "figH": {
+      "ds-l10-quad-formulas": "The lecture's quadratic formula next to h + i²: different tables",
+      "ds-l10-probe-seq": "One key's probe sequence: linear, quadratic and double hashing",
+      "ds-l10-full-table": "Keep inserting: linear probing runs out of cells, chaining does not"
+     }
     },
     {
      "h": "Linear probing example (keys 18, 72, 65, 34, 13; size 7)",
@@ -3841,7 +3942,13 @@ COURSES.ds = {
       "34: h(34,0) = 6 → slot 6",
       "13: h(13,0) = 6 collision; h(13,1) = (6+1) mod 7 = 0 → slot 0",
       "Table: [0]=13, [1]=–, [2]=72, [3]=65, [4]=18, [5]=–, [6]=34"
-     ]
+     ],
+     "fig": [
+      "ds-l10-lin-search"
+     ],
+     "figH": {
+      "ds-l10-lin-search": "Slide 17: searching the finished table, probe by probe"
+     }
     },
     {
      "h": "Quadratic probing example (same keys, lecture formula h1 + i + i²)",

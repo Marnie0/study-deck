@@ -2134,3 +2134,1246 @@
     'sa-cocomo-hierarchy': Hierarchy, 'sa-cocomo-accuracy': Accuracy, 'sa-cocomo-prob-b': ProbB
   });
 })();
+/* ── part L3 ── */
+// Systems Analysis and Design visuals, Lecture 3 (Managing the Information Systems Project): the four-phase process, the SSR form, PVF initiation steps, the activity figures of each phase, the project workbook, the WBS Gantt and network, the cost-benefit analysis, progress tracking, Table 3-2, network diagrams, Gantt vs network, slack, PERT and the SPTS critical path, and the MS Project symbols (CH_03 slides 14 to 75). Every label and number comes from the slides and the site's notes.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, useSteps, Cap, Bar, pop, calm, useClock, useFit, sec } = window.FIGKIT;
+  const CSS = `
+.sav3 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.sav3 .fig-btn.sav3-on{ border-color:var(--fig-k); box-shadow:0 0 0 1px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); }
+.sav3-tabs{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.sav3-tabs .fig-btn{ font-size:.84rem; padding:4px 10px; min-height:30px; }
+.sav3-note{ text-align:center; font-size:.84rem; color:var(--graphite); margin:8px 0 0; line-height:1.4; }
+.sav3-note b{ color:var(--ink); }
+/* process */
+.sav3-proc{ display:grid; max-width:420px; margin:0 auto; }
+.sav3-ph{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:7px 10px; opacity:.45; transition:opacity .4s, background .4s, box-shadow .4s; color:var(--ink); }
+.sav3-ph.on{ opacity:1; } .sav3-ph.cur{ opacity:1; box-shadow:0 0 0 2px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 12%, var(--paper)); }
+.sav3-ph > b{ display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:.95rem; }
+.sav3-ph > b small{ font-weight:600; font-size:.8rem; color:var(--graphite); white-space:nowrap; }
+.sav3-ph p{ margin:3px 0 0; font-size:.84rem; line-height:1.35; color:var(--graphite); }
+.sav3-dn{ text-align:center; color:var(--fig-k); font-size:1rem; line-height:1.4; }
+/* phase strip + activity box */
+.sav3-strip{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; align-items:center; margin:0 0 10px; font-size:.8rem; color:var(--graphite); }
+.sav3-strip span{ border:1px solid var(--line); border-radius:99px; padding:1px 8px; background:var(--paper); }
+.sav3-strip span.on{ border-color:var(--fig-k); color:var(--ink); font-weight:700; background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.sav3-box{ max-width:440px; margin:0 auto; border:1.5px solid var(--fig-k); border-radius:10px; background:color-mix(in srgb, var(--fig-k) 7%, var(--paper)); padding:8px 10px 10px; }
+.sav3-box > b{ display:block; text-align:center; font-size:.92rem; margin:0 0 6px; color:var(--ink); }
+.sav3-acts{ list-style:none; margin:0; padding:0; display:grid; gap:3px; }
+.sav3-acts li{ display:grid; grid-template-columns:28px minmax(0,1fr); gap:8px; align-items:center; font-size:.88rem; line-height:1.3; color:var(--ink); padding:3px 4px; border-radius:8px; opacity:.45; transition:opacity .4s, background .4s; }
+.sav3-acts li.on{ opacity:1; } .sav3-acts li.cur{ opacity:1; background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.sav3-acts li i{ font-style:normal; width:26px; height:26px; border-radius:50%; border:2px solid var(--fig-k); display:grid; place-items:center; font-weight:700; font-size:.8rem; background:var(--paper); }
+/* SSR form */
+.sav3-form{ max-width:460px; margin:0 auto; border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:6px 8px; font-size:.8rem; line-height:1.35; color:var(--ink); display:grid; gap:3px; }
+.sav3-form > div{ border-radius:6px; padding:3px 5px; transition:background .4s, box-shadow .4s, opacity .4s; }
+.sav3-form > div.cur{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); box-shadow:0 0 0 2px var(--fig-k); }
+.sav3-form > div.dim{ opacity:.4; }
+.sav3-form small{ display:block; font-weight:700; font-size:.76rem; color:var(--graphite); }
+.sav3-form .sav3-fh{ font-weight:700; border-bottom:1px solid var(--line); border-radius:0; }
+.sav3-form .sav3-kv{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:0 8px; }
+.sav3-form .sav3-kv small{ display:inline; }
+/* PVF steps */
+.sav3-tl{ list-style:none; margin:0 auto; padding:0; max-width:440px; display:grid; gap:6px; }
+.sav3-tl li{ display:grid; grid-template-columns:28px minmax(0,1fr); gap:8px; align-items:start; transition:opacity .4s; }
+.sav3-tl li.off{ opacity:.2; }
+.sav3-tl li > i{ font-style:normal; width:26px; height:26px; border-radius:50%; border:2px solid var(--fig-k); display:grid; place-items:center; font-weight:700; font-size:.8rem; background:var(--paper); color:var(--ink); }
+.sav3-tl li > div{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:5px 8px; font-size:.86rem; line-height:1.35; color:var(--ink); transition:box-shadow .4s, background .4s; }
+.sav3-tl li.cur > div{ box-shadow:0 0 0 2px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 12%, var(--paper)); }
+.sav3-who{ display:block; font-size:.78rem; font-weight:700; color:var(--graphite); }
+.sav3-doc{ display:inline-block; margin-left:6px; border:1px solid var(--fig-k); border-radius:4px; padding:0 6px; font-size:.78rem; font-weight:700; color:var(--ink); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); }
+/* workbook */
+.sav3-wb{ display:grid; grid-template-columns:minmax(0,.9fr) minmax(0,1.3fr); gap:10px; max-width:440px; margin:0 auto; align-items:start; }
+.sav3-cover{ border-radius:4px 10px 10px 4px; background:color-mix(in srgb, var(--fig-k) 34%, var(--paper)); border:1px solid var(--fig-k); padding:10px 8px; display:grid; gap:10px; text-align:center; font-size:.8rem; line-height:1.3; color:var(--ink); }
+.sav3-cover span{ background:var(--paper); border-radius:4px; padding:4px; }
+.sav3-tablist{ list-style:none; margin:0; padding:0; display:grid; gap:3px; }
+.sav3-tablist li{ display:grid; grid-template-columns:24px minmax(0,1fr); gap:6px; align-items:center; font-size:.84rem; line-height:1.25; color:var(--ink); opacity:.3; transition:opacity .4s; }
+.sav3-tablist li.on{ opacity:1; }
+.sav3-tablist li b{ border:1px solid var(--fig-k); border-radius:3px; text-align:center; font-size:.8rem; background:var(--paper); transition:background .4s; }
+.sav3-tablist li.cur b{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.sav3-online{ grid-column:1 / -1; text-align:center; font-size:.84rem; color:var(--ink); border:1px dashed var(--fig-k); border-radius:8px; padding:5px 8px; }
+/* gantt */
+.sav3-gantt{ max-width:460px; margin:0 auto; display:grid; gap:2px; color:var(--ink); }
+.sav3-gr{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px; align-items:center; transition:opacity .4s; }
+.sav3-gr.mid{ grid-template-columns:minmax(0,1fr) 46px minmax(0,.9fr); }
+.sav3-gr.dim{ opacity:.28; }
+.sav3-gr.hide{ visibility:hidden; }
+.sav3-gl{ font-size:.8rem; line-height:1.2; min-width:0; overflow-wrap:anywhere; padding:2px 0; }
+.sav3-gl small{ color:var(--graphite); font-size:.76rem; white-space:nowrap; }
+.sav3-gl.sum{ font-weight:700; }
+.sav3-gt{ position:relative; height:22px; border-right:1px solid var(--line); background-repeat:repeat-x; }
+.sav3-gh .sav3-gt{ border:0; height:18px; }
+.sav3-gh .sav3-gt i{ position:absolute; top:0; font-style:normal; font-size:.76rem; color:var(--graphite); white-space:nowrap; }
+.sav3-gh > span{ font-size:.76rem; color:var(--graphite); font-weight:700; }
+.sav3-bar{ position:absolute; top:5px; height:12px; border-radius:2px; background:color-mix(in srgb, var(--fig-k) 62%, var(--paper)); transition:left .5s, width .5s, background .4s, box-shadow .4s; }
+.sav3-bar.nc{ background:color-mix(in srgb, var(--graphite) 42%, var(--paper)); }
+.sav3-bar.crit{ background:color-mix(in srgb, var(--pen) 62%, var(--paper)); }
+.sav3-bar.hot{ box-shadow:0 0 0 2px var(--ink); }
+.sav3-done{ position:absolute; left:0; top:4px; height:4px; background:var(--ink); transition:width .4s; }
+.sav3-sum{ position:absolute; top:7px; height:6px; background:var(--ink); }
+.sav3-sum::before, .sav3-sum::after{ content:''; position:absolute; top:6px; border-left:4px solid transparent; border-right:4px solid transparent; border-top:5px solid var(--ink); }
+.sav3-sum::before{ left:0; } .sav3-sum::after{ right:0; }
+.sav3-ms{ position:absolute; top:5px; width:11px; height:11px; margin-left:-6px; background:var(--ink); transform:rotate(45deg); }
+.sav3-slk{ position:absolute; top:8px; height:6px; background:repeating-linear-gradient(90deg, var(--fig-k) 0 3px, transparent 3px 6px); }
+.sav3-xtra{ position:absolute; top:5px; height:12px; border-radius:2px; background:repeating-linear-gradient(135deg, var(--pen) 0 3px, transparent 3px 6px); border:1px solid var(--pen); box-sizing:border-box; transition:left .5s, width .5s; }
+.sav3-mark{ position:absolute; top:-1px; bottom:-1px; width:0; border-left:2px dashed var(--graphite); }
+.sav3-mark.end{ border-left:2px solid var(--pen); }
+.sav3-pct{ font:inherit; font-size:.8rem; font-weight:700; border:1px solid var(--line); border-radius:99px; background:var(--paper); color:var(--ink); padding:2px 0; min-height:28px; width:44px; text-align:center; }
+button.sav3-pct{ cursor:pointer; border-color:var(--fig-k); }
+span.sav3-pct{ border-color:transparent; background:none; display:inline-grid; place-items:center; }
+/* svg */
+.sav3-svg{ display:block; width:100%; height:auto; margin:0 auto; max-width:420px; }
+.sav3 svg text{ fill:var(--ink); font-family:var(--body); font-size:13.5px; }
+.sav3 svg text.sav3-nn{ font-weight:700; font-size:15px; }
+.sav3 svg text.sav3-lb{ font-size:13.5px; paint-order:stroke; stroke:var(--paper-2); stroke-width:4px; stroke-linejoin:round; }
+.sav3 svg text.sav3-bt{ font-weight:700; }
+.sav3 svg text.sav3-gt2{ fill:var(--graphite); }
+.sav3 svg text.sav3-kt{ fill:var(--fig-k); font-weight:700; }
+.sav3 svg text.sav3-pt{ fill:var(--pen); font-weight:700; }
+.sav3 .sav3-nc{ fill:var(--paper); stroke:var(--graphite); stroke-width:1.6; transition:fill .4s, stroke .4s, stroke-width .4s; }
+.sav3 .sav3-nc.hot{ fill:color-mix(in srgb, var(--fig-k) 24%, var(--paper)); stroke:var(--fig-k); stroke-width:2.8; }
+.sav3 .sav3-nc.crit{ stroke:var(--pen); stroke-width:2.6; }
+.sav3 .sav3-nc.slk{ stroke:var(--fig-k); stroke-width:2.6; stroke-dasharray:5 3; }
+.sav3 .sav3-nc.cb{ fill:color-mix(in srgb, var(--pen) 8%, var(--paper)); stroke:var(--pen); stroke-width:2; }
+.sav3 .sav3-nc.bb{ fill:color-mix(in srgb, var(--fig-k) 12%, var(--paper)); stroke:var(--fig-k); stroke-width:2; }
+.sav3 .sav3-ed{ fill:none; stroke:var(--graphite); stroke-width:1.6; transition:stroke .4s, stroke-width .4s, opacity .4s; }
+.sav3 .sav3-ed.hot{ stroke:var(--fig-k); stroke-width:2.8; }
+.sav3 .sav3-ed.crit{ stroke:var(--pen); stroke-width:2.6; }
+.sav3 .sav3-mk{ fill:var(--graphite); } .sav3 .sav3-mkk{ fill:var(--fig-k); } .sav3 .sav3-mkp{ fill:var(--pen); }
+.sav3 .sav3-fade{ transition:opacity .5s; }
+/* tables */
+.sav3-tbl{ width:100%; max-width:460px; margin:8px auto 0; border-collapse:collapse; font-size:.8rem; color:var(--ink); }
+.sav3-tbl th, .sav3-tbl td{ border-bottom:1px solid var(--line); padding:3px 3px; text-align:right; line-height:1.3; font-variant-numeric:tabular-nums; }
+.sav3-tbl th:first-child, .sav3-tbl td:first-child{ text-align:left; }
+.sav3-tbl th{ font-size:.76rem; color:var(--graphite); vertical-align:bottom; }
+.sav3-tbl tr.cur td{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.sav3-tbl td.k{ color:var(--fig-k); font-weight:700; } .sav3-tbl td.p{ color:var(--pen); font-weight:700; }
+.sav3-tbl tfoot td{ font-weight:700; border-top:2px solid var(--line); border-bottom:0; }
+.sav3-tbl td small{ display:block; font-size:.76rem; color:var(--pen); font-weight:600; }
+/* inputs */
+.sav3-in{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px 10px; max-width:440px; margin:0 auto 10px; font-size:.82rem; color:var(--ink); }
+.sav3-in.n3{ grid-template-columns:repeat(3, minmax(0,1fr)); }
+.sav3-in.n4{ grid-template-columns:repeat(4, minmax(0,1fr)); }
+.sav3-in label{ display:grid; gap:2px; font-weight:600; }
+.sav3-in input{ font:inherit; font-size:.92rem; width:100%; box-sizing:border-box; padding:4px 6px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); min-height:32px; }
+.sav3-in input[type=range]{ padding:0; border:0; background:none; }
+.sav3-res{ text-align:center; font-size:1rem; color:var(--ink); margin:8px 0 0; }
+.sav3-res b{ color:var(--fig-k); font-size:1.15rem; }
+/* comm table */
+.sav3-comm{ max-width:460px; margin:0 auto; display:grid; gap:3px; color:var(--ink); }
+.sav3-cr{ display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,1fr); gap:6px; align-items:center; transition:opacity .4s; }
+.sav3-cr.dim{ opacity:.25; }
+.sav3-cr > span{ font-size:.8rem; line-height:1.2; }
+.sav3-cr > span small{ display:block; font-size:.76rem; color:var(--graphite); }
+.sav3-ct{ position:relative; height:20px; background:linear-gradient(to right, var(--line) 1px, transparent 1px) 0 0 / 33.333% 100% repeat-x; border-right:1px solid var(--line); }
+.sav3-ct i{ position:absolute; top:4px; height:12px; border-radius:6px; background:color-mix(in srgb, var(--fig-k) 62%, var(--paper)); }
+.sav3-ch{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); font-size:.76rem; color:var(--graphite); text-align:center; font-weight:700; }
+@media (prefers-reduced-motion: reduce){ .sav3 *, .sav3 *::before{ transition:none !important; } }
+`;
+  if (!document.getElementById('sav3-css')) { const s = document.createElement('style'); s.id = 'sav3-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const L = s => '<span class="ltr">' + s + '</span>';
+  const D = s => '<bdi dir="ltr">' + String(s).replace(/ /g, '&nbsp;') + '</bdi>';
+  const fx = x => String(Math.round(x * 100) / 100);
+  const Tabs = ({ items, cur, set }) => html`<div className="sav3-tabs" role="group">${items.map(([k, t]) => html`<button key=${k} className=${'fig-btn' + (cur === k ? ' sav3-on' : '')} aria-pressed=${String(cur === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
+
+  /* ── generic Gantt (HTML, so text stays readable on phones) ── */
+  // rows: { id, name, dur, lvl, kind: 'sum'|'ms'|undefined, s, f, crit, hot, dim, hide, done (0..1), slk: [s, f], xtra: [s, f] }
+  function Gantt({ rows, span, ticks, grid, mid, midHead, marks = [] }) {
+    const P = x => (x / span * 100) + '%';
+    const bg = grid ? { backgroundImage: 'linear-gradient(to right, var(--line) 1px, transparent 1px)', backgroundSize: (grid / span * 100) + '% 100%' } : null;
+    const cls = 'sav3-gr' + (mid ? ' mid' : '');
+    return html`<div className="sav3-gantt" role="img" aria-label="Gantt chart">
+      <div className=${cls + ' sav3-gh'}><span>Task</span>${mid && html`<span>${midHead}</span>`}<div className="sav3-gt">${ticks.map((t, k) => html`<i key=${k} style=${{ left: P(t.at), transform: t.at <= 0 ? 'none' : t.at >= span ? 'translateX(-100%)' : 'translateX(-50%)' }}>${t.l}</i>`)}</div></div>
+      ${rows.map(r => html`<div key=${r.id} className=${cls + (r.dim ? ' dim' : '') + (r.hide ? ' hide' : '')}>
+        <span className=${'sav3-gl' + (r.kind === 'sum' ? ' sum' : '')} style=${{ paddingLeft: (r.lvl || 0) * 9 + 'px' }}>${r.k != null && html`<b>${r.k} </b>`}${r.name} <small>${r.dur}</small></span>
+        ${mid && html`<span>${mid(r)}</span>`}
+        <div className="sav3-gt" style=${bg}>
+          ${r.kind === 'sum' ? html`<div className="sav3-sum" style=${{ left: P(r.s), width: P(r.f - r.s) }}></div>`
+            : r.kind === 'ms' ? html`<div className="sav3-ms" style=${{ left: P(r.s) }}></div>`
+            : html`<div className=${'sav3-bar' + (r.crit ? ' crit' : r.crit === 0 ? ' nc' : '') + (r.hot ? ' hot' : '')} style=${{ left: P(r.s), width: P(r.f - r.s) }}>${r.done != null && html`<div className="sav3-done" style=${{ width: (r.done * 100) + '%' }}></div>`}</div>`}
+          ${r.slk && html`<div className="sav3-slk" style=${{ left: P(r.slk[0]), width: P(r.slk[1] - r.slk[0]) }}></div>`}
+          ${r.xtra && r.xtra[1] > r.xtra[0] && html`<div className="sav3-xtra" style=${{ left: P(r.xtra[0]), width: P(r.xtra[1] - r.xtra[0]) }}></div>`}
+          ${marks.map((m, k) => html`<div key=${k} className=${'sav3-mark' + (m.end ? ' end' : '')} style=${{ left: P(m.at) }}></div>`)}
+        </div></div>`)}
+    </div>`;
+  }
+
+  /* ── arrow markers ── */
+  const Marks = () => html`<defs>
+    <marker id="sav3-a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto"><path d="M0,1 L10,5 L0,9 z" className="sav3-mk" /></marker>
+    <marker id="sav3-ak" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,1 L10,5 L0,9 z" className="sav3-mkk" /></marker>
+    <marker id="sav3-ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.5" markerHeight="5.5" orient="auto"><path d="M0,1 L10,5 L0,9 z" className="sav3-mkp" /></marker></defs>`;
+  const mk = c => c === 'crit' ? 'url(#sav3-ap)' : c === 'hot' ? 'url(#sav3-ak)' : 'url(#sav3-a)';
+  // arrow between two circles (centres a, b; radius r)
+  const link = (a, b, r) => { const dx = b[0] - a[0], dy = b[1] - a[1], d = Math.hypot(dx, dy), ux = dx / d, uy = dy / d; return `M${a[0] + ux * r} ${a[1] + uy * r} L${b[0] - ux * (r + 2)} ${b[1] - uy * (r + 2)}`; };
+
+  /* ════════ [0.4] the project management process ════════ */
+  const PHASES = [
+    { n: 'Initiating', c: 5, d: 'Assess the size, scope and complexity; establish procedures to support later activities.' },
+    { n: 'Planning', c: 10, d: 'Define clear, discrete activities and the work needed to complete each one.' },
+    { n: 'Executing', c: 5, d: 'Put the plans from initiation and planning into action.' },
+    { n: 'Closing down', c: 3, d: 'Bring the project to an end.' }];
+  function Process({ ar }) {
+    const steps = [
+      { en: '<b>Project management</b> is a controlled process of four phases, in order: initiating, planning, executing and closing down. The project manager is responsible for all four.', ar: 'الـ <b>Project management</b> هو controlled process من 4 phases بالترتيب: الـ initiating، والـ planning، والـ executing، والـ closing down. والـ project manager مسؤول عن الأربعة.' },
+      { en: 'Phase 1, <b>initiating</b>: activities assess the size, scope and complexity of the project and establish procedures to support later activities (5 activities).', ar: 'أول phase هي الـ <b>initiating</b>: الأنشطة بتقيّم حجم ونطاق وتعقيد المشروع، وبتحط procedures تدعم الأنشطة اللي بعد كده (5 أنشطة).' },
+      { en: 'Phase 2, <b>planning</b>: define clear, discrete activities and the work needed to complete each activity within the project (10 activities).', ar: 'تاني phase هي الـ <b>planning</b>: بنحدد أنشطة واضحة ومنفصلة، والشغل المطلوب عشان كل نشاط يخلص جوه المشروع (10 أنشطة).' },
+      { en: 'Phase 3, <b>executing</b>: the plans created in initiation and planning are put into action (5 activities).', ar: 'تالت phase هي الـ <b>executing</b>: الخطط اللي اتعملت في الـ initiation والـ planning بتتنفذ فعلًا (5 أنشطة).' },
+      { en: 'Phase 4, <b>closing down</b>: the final phase brings the project to an end (3 activities).', ar: 'رابع وآخر phase هي الـ <b>closing down</b>: بتنهي المشروع (3 أنشطة).' }];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    return html`<figure className="fig sav3"><div className="fig-stage"><div className="sav3-proc">
+      ${PHASES.flatMap((p, k) => [k > 0 && html`<div key=${'a' + k} className="sav3-dn" aria-hidden="true">↓</div>`,
+        html`<div key=${'p' + k} className=${'sav3-ph' + (i === k + 1 ? ' cur' : i === 0 || i > k + 1 ? ' on' : '')}><b><span>${k + 1}. ${p.n}</span><small>${p.c} activities</small></b><p>${p.d}</p></div>`])}
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ [0.3] Figure 3-2: the SSR for the Purchasing Fulfillment System ════════ */
+  function Ssr({ ar }) {
+    const steps = [
+      { en: 'Figure 3-2: the SSR Juanita Lopez filed for the Purchasing Fulfillment System. An SSR is a standard form for requesting or proposing systems development work. This one asks for a <b>New System</b>; urgency: business losses can be tolerated until the new system is installed.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-2</bdi>: الـ SSR اللي Juanita Lopez قدمته لسيستم الـ Purchasing Fulfillment. الـ SSR هو standard form لطلب أو اقتراح شغل systems development. الطلب هنا <b>New System</b>، والـ urgency إن الـ business losses ممكن تتحمل لحد ما السيستم الجديد يتركب.' },
+      { en: 'It includes the <b>contact person</b>: who requests it, the department, the location and how to reach her.', ar: 'فيه الـ <b>contact person</b>: مين اللي طالب، والـ department، والـ location، وإزاي توصلها.' },
+      { en: 'The <b>problem statement</b>: why the current systems support no longer fits the business conditions.', ar: 'الـ <b>problem statement</b>: ليه الـ systems support الحالي مابقاش مناسب لظروف الشغل.' },
+      { en: 'The <b>service request statement</b>: what is asked for, here a thorough analysis and a completely new information system.', ar: 'الـ <b>service request statement</b>: المطلوب إيه، وهنا تحليل كامل وسيستم معلومات جديد خالص.' },
+      { en: 'The <b>liaison contact information</b>: Chris Martin of the IS development group (the sponsor is listed too).', ar: 'بيانات الـ <b>liaison</b>، وهو Chris Martin من جروب تطوير الـ IS (ومكتوب كمان الـ sponsor).' },
+      { en: 'The bottom part is completed by the <b>Systems Priority Board</b>, which reviews and approves the SSR (step 3 of Figure 3-3).', ar: 'الجزء اللي تحت بيكمّله الـ <b>Systems Priority Board</b>، اللي بيراجع الـ SSR ويوافق عليه (الخطوة 3 في الـ <bdi dir="ltr">Figure&nbsp;3-3</bdi>).' }];
+    const [i, ctl] = useSteps(steps.length, 3200);
+    const c = k => i === 0 ? '' : i === k ? 'cur' : 'dim';
+    return html`<figure className="fig sav3"><div className="fig-stage"><div className="sav3-form">
+      <div className=${'sav3-fh ' + (i === 0 ? '' : 'dim')}>Pine Valley Furniture<br />System Service Request</div>
+      <div className=${c(1)}><div className="sav3-kv"><small>REQUESTED BY</small><span>Juanita Lopez</span><small>DATE</small><span>November 1, 2004</span><small>DEPARTMENT</small><span>Purchasing, Manufacturing Support</span><small>LOCATION</small><span>Headquarters, 1-322</span><small>CONTACT</small><span>Tel: 4-3267 FAX: 4-3270 e-mail: jlopez</span></div></div>
+      <div className=${i === 0 ? '' : 'dim'}><small>TYPE OF REQUEST</small>[X] New System · [ ] System Enhancement · [ ] System Error Correction<small>URGENCY</small>[ ] Immediate – Operations are impaired or opportunity lost · [ ] Problems exist, but can be worked around · [X] Business losses can be tolerated until new system installed</div>
+      <div className=${c(2)}><small>PROBLEM STATEMENT</small>Sales growth at PVF has caused greater volume of work for the manufacturing support unit within Purchasing. Further, more concentration on customer service has reduced manufacturing lead times, which puts more pressure on purchasing activities. In addition, cost-cutting measures force Purchasing to be more aggressive in negotiating terms with vendors, improving delivery times, and lowering our investments in inventory. The current modest systems support for Manufacturing/Purchasing is not responsive to these new business conditions. Data are not available, information cannot be summarized, supplier orders cannot be adequately tracked, and commodity buying is not well supported. PVF is spending too much on raw materials and not being responsive to manufacturing needs.</div>
+      <div className=${c(3)}><small>SERVICE REQUEST</small>I request a thorough analysis of our current operations with the intent to design and build a completely new information system. This system should handle all purchasing transactions, support display and reporting of critical purchasing data, and assist purchasing agents in commodity buying.</div>
+      <div className=${c(4)}><div className="sav3-kv"><small>IS LIAISON</small><span>Chris Martin (Tel: 4-6204 FAX: 4-6200 e-mail: cmartin)</span><small>SPONSOR</small><span>Sal Divario, Director, Purchasing</span></div></div>
+      <div className=${c(5)}><small>TO BE COMPLETED BY SYSTEMS PRIORITY BOARD</small>[ ] Request approved · Assigned to ____ · Start date ____<br />[ ] Recommend revision · [ ] Suggest user development · [ ] Reject for reason ____</div>
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ [2.4] Figure 3-3: the five initiation steps at PVF ════════ */
+  function PvfInit({ ar }) {
+    const steps = [
+      { en: 'Figure 3-3: the five steps followed during the project initiation of the Purchasing Fulfillment System.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-3</bdi>: الخمس خطوات اللي اتعملت في الـ project initiation بتاع سيستم الـ Purchasing Fulfillment.' },
+      { en: '(1) <b>Juanita</b> observed problems with the existing purchasing system.', ar: 'أولًا <b>Juanita</b> لاحظت مشاكل في سيستم الـ purchasing الحالي.' },
+      { en: '(2) Juanita contacted <b>Chris</b> within the IS development group to initiate a <b>System Service Request</b>.', ar: 'تانيًا Juanita كلّمت <b>Chris</b> في جروب تطوير الـ IS عشان يبدأوا <b>System Service Request</b> (الـ SSR).' },
+      { en: '(3) The SSR was reviewed and approved by the <b>Systems Priority Board</b>.', ar: 'تالتًا الـ SSR اتراجع واتوافق عليه من الـ <b>Systems Priority Board</b>.' },
+      { en: '(4) A <b>steering committee</b> was assigned to oversee the project.', ar: 'رابعًا اتعيّنت <b>steering committee</b> تشرف على المشروع.' },
+      { en: '(5) A detailed <b>project plan</b> was developed and executed.', ar: 'خامسًا اتعملت <b>project plan</b> تفصيلية واتنفذت.' }];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const S = [
+      ['Juanita Lopez (user representative)', 'Juanita observed problems with existing purchasing system.'],
+      ['Juanita → Chris Martin (IS development group)', 'Juanita contacted Chris within the IS development group to initiate a System Service Request.', 'SSR'],
+      ['Systems Priority Board', 'SSR was reviewed and approved by Systems Priority Board.', 'SSR ✓ approved'],
+      ['Steering committee', 'Steering committee was assigned to oversee project.'],
+      [null, 'Detailed project plan was developed and executed.']];
+    return html`<figure className="fig sav3"><div className="fig-stage"><ol className="sav3-tl">
+      ${S.map(([who, t, doc], k) => html`<li key=${k} className=${i === 0 || i > k + 1 ? '' : i === k + 1 ? 'cur' : 'off'}><i>${k + 1}</i><div>${who && html`<span className="sav3-who">${who}</span>`}${t}${doc && html`<span className="sav3-doc">${doc}</span>`}</div></li>`)}
+      </ol></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ phase activity figures 3-5, 3-8, 3-13, 3-15 ════════ */
+  const PH4 = ['Initiating', 'Planning', 'Executing', 'Closing down'];
+  function makeActs(ph, title, list, intro) {
+    return function Acts({ ar }) {
+      const steps = [intro].concat(list.map(a => ({ en: '<b>(' + a.n + ') ' + a.t + '</b>: ' + a.en, ar: a.ar })));
+      const [i, ctl] = useSteps(steps.length, 3000);
+      return html`<figure className="fig sav3"><div className="fig-stage">
+        <div className="sav3-strip" aria-hidden="true">${PH4.map((p, k) => html`<span key=${k} className=${k === ph ? 'on' : ''}>${k + 1}. ${p}</span>`)}</div>
+        <div className="sav3-box"><b>${title}</b><ol className="sav3-acts">
+          ${list.map((a, k) => html`<li key=${k} className=${i === k + 1 ? 'cur' : i === 0 || i > k + 1 ? 'on' : ''}><i>${a.n}</i><span>${a.t}</span></li>`)}
+        </ol></div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+    };
+  }
+  const InitActs = makeActs(0, 'Figure 3-5 · Project Initiation', [
+    { n: 1, t: 'Establishing the Project Initiation Team', en: 'an initial core of project team members. At PVF: Juanita Lopez (user representative) and Chris Martin (IS development group).', ar: '<b>(1)</b> الـ <b>initiation team</b>: نواة أولية من أعضاء الـ team. في PVF كانوا Juanita Lopez (ممثلة الـ users) و Chris Martin (من جروب تطوير الـ IS).' },
+    { n: 2, t: 'Establishing a Relationship with the Customer', en: 'understanding the customer builds partnership and trust; a liaison (Chris) is assigned between the business unit (purchasing) and IS.', ar: '<b>(2)</b> الـ <b>relationship with the customer</b>: فهم الـ customer بيبني شراكة وثقة، وبيتعيّن liaison (هنا Chris) بين الـ business unit (هنا الـ purchasing) والـ IS.' },
+    { n: 3, t: 'Establishing the Project Initiation Plan', en: 'activities to organize the team while it defines the goals and scope: how to communicate, deliverables, project steps, deadlines, meeting agendas.', ar: '<b>(3)</b> الـ <b>project initiation plan</b>: أنشطة تنظيم الـ team وهما بيحددوا الـ goals والـ scope، يعني هنتواصل إزاي، والـ deliverables، وخطوات المشروع، والـ deadlines، وأجندة الاجتماعات.' },
+    { n: 4, t: 'Establishing Management Procedures', en: 'team communication and reporting procedures.', ar: '<b>(4)</b> الـ <b>management procedures</b>: يعني procedures التواصل والـ reporting جوه الـ team.' },
+    { n: 5, t: 'Establishing the Project Management Environment and Project Workbook', en: 'collect and organize the tools used to manage the project; the workbook holds all project documents (Figure 3-6).', ar: '<b>(5)</b> الـ <b>project management environment</b> والـ <b>project workbook</b>: تجميع وتنظيم الـ tools اللي هتدير بيها المشروع، والـ workbook بيشيل كل مستندات المشروع (الـ <bdi dir="ltr">Figure&nbsp;3-6</bdi>).' }],
+    { en: 'Figure 3-5: project initiation, the first phase, has five activities. They assess the size, scope and complexity of the project and set up procedures for later.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-5</bdi>: الـ project initiation، أول phase، فيها 5 أنشطة بتقيّم حجم ونطاق وتعقيد المشروع وبتجهز procedures للي بعد كده.' });
+  const PlanActs = makeActs(1, 'Figure 3-8 · Project Planning', [
+    { n: 1, t: 'Describing Project Scope, Alternatives, and Feasibility', en: 'understand the content and complexity; agree on what problems or opportunities, what quantifiable results, what needs to be done, how success is measured and how we know we are finished; then identify alternatives and assess their feasibility.', ar: '<b>(1)</b> الـ <b>scope</b> والبدائل والـ <b>feasibility</b>: افهم المحتوى والتعقيد، واتفقوا على إيه المشاكل أو الفرص، وإيه النتايج اللي تتقاس، وإيه اللي لازم يتعمل، والنجاح هيتقاس إزاي، وهنعرف إننا خلصنا إزاي؛ وبعدين حدد البدائل وقيّم الـ feasibility بتاعتها.' },
+    { n: 2, t: 'Dividing the Project into Manageable Tasks', en: 'the <b>Work Breakdown Structure (WBS)</b>: divide the project into manageable tasks and order them logically (Figure 3-9).', ar: '<b>(2)</b> الـ <b>WBS</b> (الـ Work Breakdown Structure): تقسيم المشروع لـ tasks يتحكم فيها وترتيبها منطقيًا (الـ <bdi dir="ltr">Figure&nbsp;3-9</bdi>).' },
+    { n: 3, t: 'Estimating Resources and Creating a Resource Plan', en: 'for example with <b>COCOMO</b> (Lecture 5).', ar: '<b>(3)</b> تقدير الـ resources وعمل resource plan، مثلًا بالـ <b>COCOMO</b> (شوف Lecture 5).' },
+    { n: 4, t: 'Developing a Preliminary Schedule', en: 'with Gantt charts and network diagrams.', ar: '<b>(4)</b> جدول مبدئي (preliminary schedule) بالـ Gantt chart والـ network diagram.' },
+    { n: 5, t: 'Developing a Communication Plan', en: 'who are the stakeholders, what information each needs, when and how often, from what sources, who collects, stores, verifies and packages it, the contact person, the format and the most effective medium.', ar: '<b>(5)</b> الـ <b>communication plan</b>: مين الـ stakeholders، وكل واحد محتاج information إيه، وإمتى وكل قد إيه، ومن أنهي مصادر، ومين بيجمعها ويخزنها ويتأكد منها ويجهزها، ومين الـ contact person، والـ format، وأنهي وسيلة أكفأ.' },
+    { n: 6, t: 'Determining Project Standards and Procedures', en: 'tools, SDLC methods, documentation styles, status reporting.', ar: '<b>(6)</b> الـ <b>standards and procedures</b>: الـ tools، وطرق الـ SDLC، وأسلوب الـ documentation، والـ status reporting.' },
+    { n: 7, t: 'Identifying and Assessing Risk', en: 'identify the sources of project risk and estimate their consequences.', ar: '<b>(7)</b> تحديد الـ <b>risk</b> وتقييمه: مصادر الـ risk في المشروع ونتايجها.' },
+    { n: 8, t: 'Creating a Preliminary Budget', en: 'planned expenses and revenues (Figure 3-12: cost-benefit analysis with NPV, ROI and break-even, next visual).', ar: '<b>(8)</b> الـ <b>preliminary budget</b>: المصاريف والإيرادات المتخطط لها (الـ <bdi dir="ltr">Figure&nbsp;3-12</bdi> فيها الـ cost-benefit بالـ NPV والـ ROI والـ break-even، في الـ visual اللي جاي).' },
+    { n: 9, t: 'Developing a Statement of Work', en: 'for the customer: the work to be done, what will be delivered, size, duration and outcomes.', ar: '<b>(9)</b> الـ <b>Statement of Work</b>: للـ customer، فيه الشغل اللي هيتعمل وإيه اللي هيتسلّم والحجم والمدة والنتايج.' },
+    { n: 10, t: 'Setting a Baseline Project Plan', en: 'an estimate of the tasks and resources, used to guide the next phase, execution.', ar: '<b>(10)</b> الـ <b>Baseline Project Plan</b> (الـ BPP): تقدير للـ tasks والـ resources بيُستخدم كدليل في الـ phase اللي بعدها، الـ execution.' }],
+    { en: 'Figure 3-8: project planning, the second phase, has ten activities. It defines clear, discrete activities and the work needed to complete each.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-8</bdi>: الـ project planning، تاني phase، فيها 10 أنشطة بتحدد أنشطة واضحة ومنفصلة والشغل المطلوب لكل واحد.' });
+  const ExecActs = makeActs(2, 'Figure 3-13 · Project Execution', [
+    { n: 1, t: 'Executing the Baseline Project Plan', en: 'initiate activities, acquire and assign resources, orient and train new members, keep the project on schedule, ensure the quality of deliverables.', ar: '<b>(1)</b> تنفيذ الـ <b>BPP</b>: ابدأ الأنشطة، وهات الـ resources ووزّعها، وعرّف ودرّب الأعضاء الجداد، وامشي على الـ schedule، واضمن جودة الـ deliverables.' },
+    { n: 2, t: 'Monitoring Project Progress against the Baseline Project Plan', en: 'a Gantt chart can show the percent complete of each task (Figure 3-14, next visual).', ar: '<b>(2)</b> متابعة التقدم قصاد الـ <b>BPP</b>، والـ Gantt chart ممكن يوضح نسبة الإنجاز لكل task (الـ <bdi dir="ltr">Figure&nbsp;3-14</bdi> في الـ visual اللي جاي).' },
+    { n: 3, t: 'Managing Changes to the Baseline Project Plan', en: 'a slipped completion date, a bungled activity that must be redone, a new activity found later, an unforeseen change in personnel (sickness, resignation, termination).', ar: '<b>(3)</b> إدارة التغييرات في الـ <b>BPP</b>: معاد خلصان نشاط اتأخر، أو نشاط اتعمل غلط ولازم يتعاد، أو نشاط جديد ظهر بعدين، أو تغيير مش متوقع في الأفراد (مرض، استقالة، فصل).' },
+    { n: 4, t: 'Maintaining the Project Workbook', en: 'the repository of all project correspondence, inputs, outputs, deliverables, procedures and standards.', ar: '<b>(4)</b> الحفاظ على الـ <b>project workbook</b>، الـ repository بتاع كل مراسلات المشروع والـ inputs والـ outputs والـ deliverables.' },
+    { n: 5, t: 'Communicating the Project Status', en: 'meetings, status reports, minutes, seminars and workshops, bulletin boards, memos, specification documents, brown-bag lunches, hallway discussions, newsletters, project workbook (Table 3-2).', ar: '<b>(5)</b> توصيل الـ <b>project status</b> بطرق زي الـ meetings، والـ status reports، والـ minutes، والـ seminars and workshops، والـ bulletin boards، والـ memos، والـ specification documents، والـ brown-bag lunches، والـ hallway discussions، والـ newsletters، والـ project workbook (شوف الـ <bdi dir="ltr">Table&nbsp;3-2</bdi>).' }],
+    { en: 'Figure 3-13: project execution, the third phase, has five activities. The plans from initiation and planning are put into action.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-13</bdi>: الـ project execution، التالت phase، فيها 5 أنشطة، وفيها الخطط اللي اتعملت قبل كده بتتنفذ فعلًا.' });
+  const CloseActs = makeActs(3, 'Figure 3-15 · Project Closedown', [
+    { n: 1, t: 'Closing Down the Project', en: 'end the project itself.', ar: '<b>(1)</b> الـ <b>closing down the project</b>: قفل المشروع نفسه.' },
+    { n: 2, t: 'Conducting Postproject Reviews', en: 'review the project after it ends.', ar: '<b>(2)</b> الـ <b>post-project reviews</b>: مراجعة المشروع بعد ما يخلص.' },
+    { n: 3, t: 'Closing the Customer Contract', en: 'close the contract with the customer.', ar: '<b>(3)</b> الـ <b>closing the customer contract</b>: قفل العقد مع الـ customer.' }],
+    { en: 'Figure 3-15: project closedown, the final phase, focuses on bringing the project to an end. It has three activities.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-15</bdi>: الـ project closedown، آخر phase، بتركز على إنهاء المشروع، وفيها 3 أنشطة.' });
+
+  /* ════════ [2.2] Figure 3-6: the project workbook ════════ */
+  const WB = ['Project overview', 'Initiation plan and SSR', 'Project scope and risks', 'Management procedures', 'Data descriptions', 'Process descriptions', 'Team correspondence', 'Statement of work', 'Project schedule'];
+  function Workbook({ ar }) {
+    const steps = [{ en: 'Figure 3-6: the project workbook of the Purchasing Fulfillment System is a repository for all project correspondence, inputs, outputs, deliverables, procedures and standards. It holds nine key documents in hard-copy and electronic form.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-6</bdi>: الـ project workbook بتاع سيستم الـ Purchasing Fulfillment هو repository لكل مراسلات المشروع والـ inputs والـ outputs والـ deliverables والـ procedures والـ standards. فيه 9 مستندات أساسية ورقي وإلكتروني.' }]
+      .concat(WB.map((w, k) => ({ en: 'Tab ' + (k + 1) + ': <b>' + w + '</b>.', ar: 'التاب رقم ' + (k + 1) + ' فيه الـ <b>' + w + '</b>.' })))
+      .concat([{ en: 'Besides the binder: <b>online copies</b> of the data dictionary, diagrams, schedules, reports, etc.', ar: 'وجنب الـ binder فيه <b>نسخ أونلاين</b> (online copies) من الـ data dictionary والـ diagrams والـ schedules والـ reports وغيرهم.' }]);
+    const [i, ctl] = useSteps(steps.length, 1500);
+    return html`<figure className="fig sav3"><div className="fig-stage"><div className="sav3-wb">
+      <div className="sav3-cover"><span>Pine Valley Furniture Information Systems Development Group</span><span><b>Purchasing Fulfillment System</b></span><span>Manager: Chris Martin</span></div>
+      <ol className="sav3-tablist">${WB.map((w, k) => html`<li key=${k} className=${(i === 0 || i > k ? 'on' : '') + (i === k + 1 ? ' cur' : '')}><b>${k + 1}</b><span>${w}</span></li>`)}</ol>
+      <div className=${'sav3-online ' + pop(i === 0 || i === steps.length - 1)}>Online copies of data dictionary, diagrams, schedules, reports, etc.</div>
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ the "Defining Requirements" schedule (Figures 3-9, 3-11, 3-14), in working days from Mon May 24 ════════ */
+  const REQ = [
+    { id: 1, name: 'Defining Requirements', dur: '6 days', lvl: 0, kind: 'sum', s: 0, f: 6 },
+    { id: 2, name: 'Interviewing', dur: '6 days', lvl: 1, kind: 'sum', s: 0, f: 6, kids: [3, 4, 5] },
+    { id: 3, name: 'Designing Interview Form', dur: '1 day', d: 1, lvl: 2, s: 0, f: 1, crit: 1 },
+    { id: 4, name: 'Schedule Appointments', dur: '1 day · 3', d: 1, lvl: 2, s: 1, f: 2, crit: 1 },
+    { id: 5, name: 'Conduct Interviews', dur: '4 days · 4', d: 4, lvl: 2, s: 2, f: 6, crit: 1 },
+    { id: 6, name: 'Review Current Reports', dur: '2.5 days', lvl: 1, kind: 'sum', s: 0, f: 2.5, kids: [7, 8] },
+    { id: 7, name: 'Collect Reports', dur: '0.5 days', d: .5, lvl: 2, s: 0, f: .5, crit: 0 },
+    { id: 8, name: 'Review Reports', dur: '2 days · 7', d: 2, lvl: 2, s: .5, f: 2.5, crit: 0 },
+    { id: 9, name: 'Summarize Results', dur: '2 days · 5,8', d: 2, lvl: 0, s: 6, f: 8, crit: 1 }];
+  REQ[0].kids = [3, 4, 5, 7, 8];
+  const DAYS = ['24', '25', '26', '27', '28', '31', '1', '2'];
+  const dayTicks = DAYS.map((l, k) => ({ at: k + .5, l }));
+  const RNET = [ // Figure 3-11 boxes
+    { id: 3, x: 1, y: 4, t: ['Designing', 'Interview Form'], d: 'ID 3 · 1 day', w: '5/24 – 5/24' },
+    { id: 4, x: 1, y: 98, t: ['Schedule', 'Appointments'], d: 'ID 4 · 1 day', w: '5/25 – 5/25' },
+    { id: 5, x: 1, y: 192, t: ['Conduct', 'Interviews'], d: 'ID 5 · 4 days', w: '5/26 – 5/31' },
+    { id: 7, x: 164, y: 4, t: ['Collect', 'Reports'], d: 'ID 7 · 0.5 days', w: '5/24 – 5/24' },
+    { id: 8, x: 164, y: 98, t: ['Review', 'Reports'], d: 'ID 8 · 2 days', w: '5/24 – 5/26' },
+    { id: 9, x: 164, y: 192, t: ['Summarize', 'Results'], d: 'ID 9 · 2 days', w: '6/1 – 6/2' }];
+  function ReqNet() {
+    const W = 135, H = 74, B = Object.fromEntries(RNET.map(b => [b.id, b]));
+    const E = [[3, 4, 'v'], [4, 5, 'v'], [7, 8, 'v'], [8, 9, 'v'], [5, 9, 'h']];
+    return html`<svg viewBox="0 0 300 270" className="sav3-svg" role="img" aria-label="Network diagram of the Defining Requirements tasks"><${Marks} />
+      ${E.map(([a, b, o]) => { const A = B[a], C = B[b], cr = REQ[a - 1].crit && REQ[b - 1].crit, d = o === 'h' ? `M${A.x + W} ${A.y + H / 2} L${C.x - 2} ${C.y + H / 2}` : `M${A.x + W / 2} ${A.y + H} L${C.x + W / 2} ${C.y - 2}`;
+        return html`<path key=${a + '-' + b} d=${d} className=${'sav3-ed' + (cr ? ' crit' : ' hot')} markerEnd=${mk(cr ? 'crit' : 'hot')} />`; })}
+      ${RNET.map(b => { const cr = REQ[b.id - 1].crit; return html`<g key=${b.id}><rect x=${b.x} y=${b.y} width=${W} height=${H} rx="4" className=${'sav3-nc ' + (cr ? 'cb' : 'bb')} />
+        ${b.t.map((s, k) => html`<text key=${k} x=${b.x + 6} y=${b.y + 17 + k * 15} className="sav3-bt">${s}</text>`)}
+        <text x=${b.x + 6} y=${b.y + 50} className="sav3-gt2">${b.d}</text><text x=${b.x + 6} y=${b.y + 66} className="sav3-gt2">${b.w}</text></g>`; })}
+    </svg>`;
+  }
+
+  /* ════════ [3.3] WBS: Figure 3-9 built task by task, then Figure 3-11 ════════ */
+  function Wbs({ ar }) {
+    const steps = [
+      { en: 'Figure 3-9: the WBS of <b>Defining Requirements</b> as a Gantt chart. It is broken into two summary tasks, <b>Interviewing</b> (6 days) and <b>Review Current Reports</b> (2.5 days). Each row: task, duration and predecessors.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-9</bdi>: الـ WBS بتاع الـ <b>Defining Requirements</b> في Gantt chart. الـ task متقسمة لـ 2 summary tasks، الـ <b>Interviewing</b> (6 أيام) والـ <b>Review Current Reports</b> (<bdi dir="ltr">2.5</bdi> يوم). كل صف فيه الـ task والمدة والـ predecessors.' },
+      { en: '<b>Interviewing</b>: Designing Interview Form (1 day) → Schedule Appointments (1 day, after 3) → Conduct Interviews (4 days, after 4). These follow one another <b>sequentially</b>: each needs the deliverable of the one before.', ar: 'الـ <b>Interviewing</b> متقسمة لـ 3 tasks ورا بعض (<b>sequential</b>)، وكل واحدة محتاجة الـ deliverable اللي قبلها:' + L('3 Designing Interview Form (1 day) → 4 Schedule Appointments (1 day) → 5 Conduct Interviews (4 days)') },
+      { en: '<b>Review Current Reports</b>: Collect Reports (0.5 days) → Review Reports (2 days, after 7). It runs <b>in parallel</b> with Interviewing: both start on May 24.', ar: 'الـ <b>Review Current Reports</b> فيها الـ Collect Reports (نص يوم) وبعدها الـ Review Reports (يومين). دي بتمشي <b>بالتوازي</b> (parallel) مع الـ Interviewing، والاتنين بيبدأوا يوم <bdi dir="ltr">May&nbsp;24</bdi>.' },
+      { en: '<b>Summarize Results</b> (2 days) has predecessors <b>5,8</b>: it starts only when both deliverables exist, after Conduct Interviews ends on May 31. The task sequence depends on which tasks produce deliverables needed by others.', ar: 'الـ <b>Summarize Results</b> (يومين) الـ predecessors بتوعها هما 5 و 8، يعني مش هتبدأ غير لما الـ deliverables الاتنين يبقوا جاهزين، بعد ما الـ Conduct Interviews تخلص يوم <bdi dir="ltr">May&nbsp;31</bdi>. ترتيب الـ tasks بيعتمد على أنهي tasks بتطلّع deliverables محتاجاها tasks تانية.' },
+      { en: 'Figure 3-11: the same tasks as a <b>network diagram</b>, boxes for tasks and arrows for their sequence. The red boxes (3, 4, 5, 9) are the critical path; Collect and Review Reports (blue) are not critical.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-11</bdi>: نفس الـ tasks في <b>network diagram</b>، الـ tasks في boxes والترتيب بالأسهم. الـ boxes الحمرا (3 و 4 و 5 و 9) هي الـ critical path، والـ Collect Reports والـ Review Reports (الزرقا) مش critical.' }];
+    const [i, ctl] = useSteps(steps.length, 3600);
+    const show = [[1, 2, 6], [1, 2, 3, 4, 5, 6], [1, 2, 3, 4, 5, 6, 7, 8], [1, 2, 3, 4, 5, 6, 7, 8, 9]][Math.min(i, 3)];
+    const hot = [[], [3, 4, 5], [7, 8], [9]][Math.min(i, 3)];
+    const rows = REQ.map(r => Object.assign({}, r, { k: r.id, hide: !show.includes(r.id), hot: hot.includes(r.id) }));
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      ${i < 4 ? html`<${Gantt} rows=${rows} span=${8} grid=${1} ticks=${dayTicks} /><p className="sav3-note">Working days, Mon May 24 to Wed Jun 2. Red = critical path, grey = not critical.</p>` : html`<${ReqNet} />`}
+      </div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ [4.1] Figure 3-14: percent complete rolls up ════════ */
+  const PCT0 = { 3: 100, 4: 0, 5: 0, 7: 100, 8: 5, 9: 0 };
+  function Progress({ ar }) {
+    const [mode, setMode] = useState('ex'), [own, setOwn] = useState(PCT0);
+    const pc = mode === 'ex' ? PCT0 : own;
+    const roll = r => { const k = r.kids.map(j => REQ[j - 1]), tot = k.reduce((a, t) => a + t.d, 0), done = k.reduce((a, t) => a + t.d * pc[t.id] / 100, 0); return { tot, done, p: Math.round(done / tot * 100) }; };
+    const R = { 1: roll(REQ[0]), 2: roll(REQ[1]), 6: roll(REQ[5]) };
+    const rows = REQ.map(r => Object.assign({}, r, { k: r.id, done: r.kind ? null : pc[r.id] / 100 }));
+    const cyc = id => setOwn(o => Object.assign({}, o, { [id]: (o[id] >= 100 ? 0 : Math.floor(o[id] / 25) * 25 + 25) }));
+    const mid = r => r.kind ? html`<span className="sav3-pct">${R[r.id].p}%</span>` : mode === 'try' ? html`<button className="sav3-pct" onClick=${() => cyc(r.id)} aria-label=${'Percent complete of ' + r.name}>${pc[r.id]}%</button>` : html`<span className="sav3-pct">${pc[r.id]}%</span>`;
+    const F = `Interviewing: ${fx(R[2].done)} / ${fx(R[2].tot)} = ${R[2].p}%<br>Review Current Reports: ${fx(R[6].done)} / ${fx(R[6].tot)} = ${R[6].p}%<br>Defining Requirements: ${fx(R[1].done)} / ${fx(R[1].tot)} = ${R[1].p}%`;
+    const en = (mode === 'ex' ? 'Figure 3-14: tasks 3 and 7 are <b>completed</b> (100%) and Review Reports is 5% done. ' : 'Tap a task’s percentage to change it (0, 25, 50, 75, 100%). ')
+      + `Each summary task rolls up the days of work done under it: Interviewing ${fx(R[2].done)} of ${fx(R[2].tot)} days = <b>${R[2].p}%</b>, Review Current Reports ${fx(R[6].done)} of ${fx(R[6].tot)} = <b>${R[6].p}%</b>, Defining Requirements ${fx(R[1].done)} of ${fx(R[1].tot)} = <b>${R[1].p}%</b>. The black line inside a bar is the part done.`;
+    const a = (mode === 'ex' ? 'الـ <bdi dir="ltr">Figure&nbsp;3-14</bdi>: الـ tasks 3 و 7 <b>خلصوا</b> (100%)، والـ Review Reports خلص منها 5%. ' : 'دوس على النسبة جنب أي task عشان تغيّرها. ')
+      + 'كل summary task بتجمع أيام الشغل اللي خلصت تحتها على أيام الشغل كلها:' + L(F) + 'والخط الأسود جوه الـ bar هو الجزء اللي خلص.';
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Tabs} items=${[['ex', 'Example from the notes'], ['try', 'Try your own']]} cur=${mode} set=${m => { setMode(m); setOwn(PCT0); }} />
+      <${Gantt} rows=${rows} span=${8} grid=${1} ticks=${dayTicks.filter((t, k) => k % 2 === 0)} mid=${mid} midHead="%" />
+      <p className="sav3-note">Working days from Mon May 24 · red = critical path</p>
+      </div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ════════ [3.2] Figure 3-12: cost and benefit analysis ════════ */
+  const BUD0 = { B: 85000, C0: 75000, R: 35000, rate: 12 };
+  const money = x => (x < 0 ? '−' : '') + Math.round(Math.abs(x)).toLocaleString('en-US');
+  function budget({ B, C0, R, rate }) {
+    const r = rate / 100, Y = [0, 1, 2, 3, 4, 5].map(t => { const f = 1 / Math.pow(1 + r, t); return { t, f, b: t ? B * f : 0, c: t ? R * f : C0 }; });
+    let cum = 0; Y.forEach(y => { y.y = y.b - y.c; cum += y.y; y.cum = cum; });
+    const nb = Y.reduce((a, y) => a + y.b, 0), nc = Y.reduce((a, y) => a + y.c, 0), npv = nb - nc;
+    const k = Y.findIndex(y => y.cum >= 0);
+    let be = null; if (k === 0) be = { Y: 0, ratio: 0, v: 0 }; else if (k > 0) { const ratio = (Y[k].y - Y[k].cum) / Y[k].y; be = { Y: k, ratio, v: k - 1 + ratio }; }
+    return { Y, nb, nc, npv, roi: nc ? npv / nc * 100 : 0, be };
+  }
+  function Budget({ ar }) {
+    const [mode, setMode] = useState('ex'), [own, setOwn] = useState(BUD0);
+    const v = mode === 'ex' ? BUD0 : own, x = budget(v), Yr = x.Y;
+    const r1 = Yr[1], be = x.be, ex = mode === 'ex';
+    const steps = [
+      { en: `Figure 3-12 (economic feasibility): the new system brings benefits of <b>$${money(v.B)}</b> a year for 5 years. Each year’s amount is multiplied by its discount factor at <b>${v.rate}%</b>: 1 / (1 + ${fx(v.rate / 100)})<sup>t</sup>.`, ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-12</bdi> (الـ economic feasibility): السيستم الجديد بيجيب benefits قيمتها ' + D('$' + money(v.B)) + ' كل سنة لمدة 5 سنين. قيمة كل سنة بتتضرب في الـ discount factor بتاعها بنسبة ' + D(v.rate + '%') + ' كده:' + L(`factor = 1 / (1 + ${fx(v.rate / 100)})^t`) },
+      { en: `PV of benefits = benefit × factor (year 1: ${money(v.B)} × ${r1.f.toFixed(4)} = ${money(r1.b)}). Their sum is the <b>NPV of building the new system: $${money(x.nb)}</b>.`, ar: 'الـ PV of benefits بيساوي الـ benefit مضروب في الـ factor، ومجموعهم هو الـ <b>NPV</b> بتاع بناء السيستم الجديد:' + L(`year 1: ${money(v.B)} × ${r1.f.toFixed(4)} = ${money(r1.b)}<br>NPV of benefits = ${money(x.nb)}`) },
+      { en: `Costs: a one-time cost of <b>$${money(v.C0)}</b> now (year 0), plus recurring costs of <b>$${money(v.R)}</b> a year to keep the system running, discounted the same way.`, ar: 'الـ costs هي one-time cost قيمتها ' + D('$' + money(v.C0)) + ' دلوقتي (سنة صفر)، وكمان recurring costs قيمتها ' + D('$' + money(v.R)) + ' كل سنة، وبتتعمل لها discount بنفس الطريقة.' },
+      { en: `NPV of all costs = one-time cost + PV of the recurring costs = ${money(v.C0)} + ${money(x.nc - v.C0)} = <b>$${money(x.nc)}</b>.`, ar: 'الـ NPV of all costs هو الـ one-time cost زائد الـ PV بتاع الـ recurring costs:' + L(`${money(v.C0)} + ${money(x.nc - v.C0)} = ${money(x.nc)}`) },
+      { en: `<b>Overall NPV</b> = NPV of benefits − NPV of costs = ${money(x.nb)} − ${money(x.nc)} = <b>$${money(x.npv)}</b>.`, ar: 'الـ <b>Overall NPV</b> هو الـ NPV بتاع الـ benefits ناقص الـ NPV بتاع الـ costs:' + L(`${money(x.nb)} − ${money(x.nc)} = ${money(x.npv)}`) },
+      { en: `<b>ROI</b> = overall NPV / NPV of costs = ${money(x.npv)} / ${money(x.nc)} = <b>${x.roi.toFixed(2)}%</b>.`, ar: 'الـ <b>ROI</b> هو الـ overall NPV مقسوم على الـ NPV بتاع الـ costs:' + L(`ROI = ${money(x.npv)} / ${money(x.nc)} = ${x.roi.toFixed(2)}%`) },
+      be && be.Y > 0
+        ? { en: `<b>Break-even</b>: the cumulative overall NPV cash flow turns positive in year <b>${be.Y}</b>. Ratio = (yearly NPV cash flow − overall NPV cash flow) / yearly NPV cash flow = (${money(Yr[be.Y].y)} − ${money(Yr[be.Y].cum)}) / ${money(Yr[be.Y].y)} = ${be.ratio.toFixed(2)}, so break-even occurs in ${be.Y - 1} + ${be.ratio.toFixed(2)} ≈ <b>${be.v.toFixed(1)} years</b>.` + (ex ? ' (The slide prints 76,867 for year 4; rounding the exact value gives 76,868.)' : ''),
+            ar: 'الـ <b>break-even</b>: الـ cumulative overall NPV cash flow بيبقى موجب في سنة ' + D(be.Y) + '، والـ ratio بيطلع كده:' + L(`(${money(Yr[be.Y].y)} − ${money(Yr[be.Y].cum)}) / ${money(Yr[be.Y].y)} = ${be.ratio.toFixed(2)}`) + 'يعني الـ break-even بيحصل بعد:' + L(`${be.Y - 1} + ${be.ratio.toFixed(2)} ≈ ${be.v.toFixed(1)} years`) + (ex ? 'الـ slide كاتبة ' + D('76,867') + ' في سنة 4، والتقريب المظبوط بيدّي ' + D('76,868') + '.' : '') }
+        : be ? { en: 'With no one-time cost the cumulative cash flow is never negative: break-even at year 0.', ar: 'من غير one-time cost الـ cumulative cash flow عمره ما بيبقى سالب، يعني الـ break-even من أول سنة صفر.' }
+        : { en: 'The cumulative overall NPV cash flow never turns positive within the 5 years: no break-even in this period.', ar: 'الـ cumulative overall NPV cash flow مابيبقاش موجب خلال الـ 5 سنين، يعني مفيش break-even في الفترة دي.' }];
+    const [i, ctl] = useSteps(steps.length, 3600);
+    const set = (k, val) => setOwn(o => Object.assign({}, o, { [k]: Math.max(0, Math.min(k === 'rate' ? 50 : 9999999, +val || 0)) }));
+    const cB = i >= 1, cC = i >= 2, cCum = i >= 6;
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Tabs} items=${[['ex', 'Example from the notes'], ['try', 'Try your own']]} cur=${mode} set=${m => { setMode(m); if (m === 'ex') ctl.replay(); else ctl.go(6); }} />
+      ${!ex && html`<div className="sav3-in">${[['B', 'Benefit / year ($)'], ['C0', 'One-time cost ($)'], ['R', 'Recurring cost / year ($)'], ['rate', 'Discount rate (%)']].map(([k, t]) => html`<label key=${k}>${t}<input type="number" min="0" value=${own[k]} onChange=${e => set(k, e.target.value)} /></label>`)}</div>`}
+      <table className="sav3-tbl"><thead><tr><th>Year</th><th>Factor</th><th>PV benefits</th><th>PV costs</th><th>Cumul. NPV</th></tr></thead>
+        <tbody>${Yr.map(y => html`<tr key=${y.t} className=${(i === 1 && y.t === 1) || (cCum && be && y.t === be.Y) ? 'cur' : ''}><td>${y.t}</td><td>${y.f.toFixed(4)}</td><td>${cB ? money(y.b) : ''}</td><td>${cC ? money(y.c) : ''}</td><td className=${cCum ? (y.cum < 0 ? 'p' : 'k') : ''}>${cCum ? money(y.cum) : ''}</td></tr>`)}</tbody>
+        <tfoot><tr><td>NPV</td><td></td><td>${cB ? money(x.nb) : ''}</td><td>${i >= 3 ? money(x.nc) : ''}</td><td>${i >= 4 ? money(x.npv) : ''}</td></tr></tfoot></table>
+      ${i >= 5 && html`<p className="sav3-note">ROI <b>${x.roi.toFixed(2)}%</b>${i >= 6 && be ? html` · break-even <b>${be.v.toFixed(1)} years</b>` : ''}</p>`}
+      </div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ [5] Table 3-2: communication procedures by formality and use ════════ */
+  const COMM = [['Project workbook', [2, 2], 'IP'], ['Meetings', [1, 2], 'R'], ['Seminars and workshops', [0, 1], 'I'], ['Project newsletters', [1, 2], 'I'], ['Status reports', [2, 2], 'I'], ['Specification documents', [2, 2], 'IP'], ['Minutes of meetings', [2, 2], 'IP'], ['Bulletin boards', [0, 0], 'I'], ['Memos', [1, 2], 'I'], ['Brown bag lunches', [0, 0], 'I'], ['Hallway discussions', [0, 0], 'IR']];
+  const FN = ['Low', 'Medium', 'High'], UN = { I: 'inform', R: 'resolve issues', P: 'permanent record' };
+  function CommTable({ ar }) {
+    const [f, setF] = useState('all');
+    const C = {
+      all: { en: 'Table 3-2: each project team communication procedure with its <b>formality</b> (the bar: low, medium or high, or a range) and its <b>use</b>. Pick a use to filter.', ar: 'الـ <bdi dir="ltr">Table&nbsp;3-2</bdi>: كل طريقة تواصل في الـ project team ودرجة الـ <b>formality</b> بتاعتها (الـ bar، قليلة أو متوسطة أو عالية أو مدى بينهم) واستخدامها (الـ <b>use</b>). اختار use عشان تفلتر.' },
+      I: { en: 'Every procedure except meetings is used to <b>inform</b>, from low formality (bulletin boards, brown bag lunches, hallway discussions) to high (workbook, status reports, specification documents, minutes).', ar: 'كل الطرق ما عدا الـ meetings بتُستخدم عشان <b>inform</b>، من formality قليلة (الـ bulletin boards والـ brown bag lunches والـ hallway discussions) لحد عالية (الـ workbook والـ status reports والـ specification documents والـ minutes).' },
+      R: { en: 'Only <b>meetings</b> (medium to high) and <b>hallway discussions</b> (low) are used to resolve issues.', ar: 'اللي بيُستخدموا عشان يحلوا المشاكل (resolve issues) هما الـ <b>meetings</b> بس (medium to high) والـ <b>hallway discussions</b> (low).' },
+      P: { en: 'A <b>permanent record</b> comes from the project workbook, specification documents and minutes of meetings, all of <b>high</b> formality.', ar: 'الـ <b>permanent record</b> بييجي من الـ project workbook والـ specification documents والـ minutes of meetings، وكلهم formality <b>High</b>.' }}[f];
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Tabs} items=${[['all', 'All'], ['I', 'Inform'], ['R', 'Resolve issues'], ['P', 'Permanent record']]} cur=${f} set=${setF} />
+      <div className="sav3-comm" role="img" aria-label="Communication procedures by formality">
+        <div className="sav3-cr"><span></span><div className="sav3-ch"><span>Low</span><span>Medium</span><span>High</span></div></div>
+        ${COMM.map(([n, [a, b], u]) => html`<div key=${n} className=${'sav3-cr' + (f !== 'all' && !u.includes(f) ? ' dim' : '')}><span>${n}<small>${a === b ? FN[a] : FN[a] + ' to ' + FN[b].toLowerCase()} · ${u.split('').map(c => UN[c]).join(', ')}</small></span>
+          <div className="sav3-ct"><i style=${{ left: (a / 3 * 100 + 2) + '%', width: ((b - a + 1) / 3 * 100 - 4) + '%' }}></i></div></div>`)}
+      </div></div><${Cap} ...${C} showAr=${ar} /></figure>`;
+  }
+
+  /* ════════ [7.3] Figure 3-18: activities as circles, sequence as arrows ════════ */
+  function Abcde({ ar }) {
+    const steps = [
+      { en: 'Figure 3-18: a network diagram shows activities as <b>circles</b> and their sequence as <b>arrows</b>. It starts with A, Design System.', ar: 'الـ <bdi dir="ltr">Figure&nbsp;3-18</bdi>: الـ network diagram بيوضح الأنشطة كـ <b>دواير</b> وترتيبها كـ <b>أسهم</b>. بيبدأ بـ A، الـ Design System.' },
+      { en: 'After A come Write Programs (B) and then Test Programs (C): a sequence.', ar: 'بعد A بييجي الـ Write Programs (يعني B) وبعده الـ Test Programs (يعني C)، ودول ورا بعض.' },
+      { en: 'Write Documentation (D) also follows A and runs <b>in parallel</b> with B and C.', ar: 'الـ Write Documentation (يعني D) برضه بعد A، وبيمشي <b>بالتوازي</b> مع B و C.' },
+      { en: 'Install System (E) waits for both C and D. The diagram shows the interrelationships between the tasks.', ar: 'الـ Install System (يعني E) بيستنى C و D الاتنين. الـ diagram كده بيوضح العلاقات بين الـ tasks.' }];
+    const [i, ctl] = useSteps(steps.length, 2400);
+    const N = { A: [40, 100, ['Design', 'System'], 'u', 0], B: [116, 50, ['Write', 'Programs'], 'u', 1], C: [196, 50, ['Test', 'Programs'], 'u', 1], D: [156, 150, ['Write', 'Documentation'], 'd', 2], E: [266, 100, ['Install', 'System'], 'd', 3] };
+    const E = [['A', 'B', 1], ['B', 'C', 1], ['A', 'D', 2], ['C', 'E', 3], ['D', 'E', 3]];
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <svg viewBox="0 0 300 206" className="sav3-svg" role="img" aria-label="Network diagram A to E"><${Marks} />
+        ${E.map(([a, b, at]) => html`<path key=${a + b} d=${link(N[a], N[b], 17)} className=${'sav3-ed ' + (i === at ? 'hot ' : '') + pop(i >= at)} markerEnd=${mk(i === at ? 'hot' : '')} />`)}
+        ${Object.entries(N).map(([k, [x, y, t, s, at]]) => html`<g key=${k} className=${pop(i >= at)}><circle cx=${x} cy=${y} r="17" className=${'sav3-nc' + (i === at ? ' hot' : '')} /><text x=${x} y=${y + 5} textAnchor="middle" className="sav3-nn">${k}</text>
+          ${t.map((l, j) => html`<text key=${j} x=${x} y=${s === 'u' ? y - 38 + j * 15 : y + 34 + j * 15} textAnchor="middle" className="sav3-lb">${l}</text>`)}</g>`)}
+      </svg></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ the SPTS project (Figures 3-16, 3-19 to 3-24) ════════ */
+  const SPTS = [
+    { n: 1, nm: 'Requirements Collection', o: 1, r: 5, p: 9, et: 5, pre: [] },
+    { n: 2, nm: 'Screen Design', o: 5, r: 6, p: 7, et: 6, pre: [1] },
+    { n: 3, nm: 'Report Design', o: 3, r: 6, p: 9, et: 6, pre: [1] },
+    { n: 4, nm: 'Database Design', o: 1, r: 2, p: 3, et: 2, pre: [2, 3] },
+    { n: 5, nm: 'User Documentation', o: 3, r: 6, p: 7, et: 5.5, pre: [4] },
+    { n: 6, nm: 'Programming', o: 4, r: 5, p: 6, et: 5, pre: [4] },
+    { n: 7, nm: 'Testing', o: 1, r: 3, p: 5, et: 3, pre: [6] },
+    { n: 8, nm: 'Installation', o: 1, r: 1, p: 1, et: 1, pre: [5, 7] }];
+  const BOOK = Object.fromEntries(SPTS.map(a => [a.n, a.et]));
+  const EXACT = Object.assign({}, BOOK, { 5: 34 / 6 });
+  const SE = [[1, 2], [1, 3], [2, 4], [3, 4], [4, 5], [4, 6], [6, 7], [5, 8], [7, 8]];
+  const succ = i => SPTS.filter(a => a.pre.includes(i)).map(a => a.n);
+  const eq = (a, b) => Math.abs(a - b) < 1e-9;
+  function cpm(et) {
+    const TE = {}, TL = {}, SL = {}, FS = {}, ids = SPTS.map(a => a.n);
+    ids.forEach(i => { const pr = SPTS[i - 1].pre; TE[i] = (pr.length ? Math.max(...pr.map(p => TE[p])) : 0) + et[i]; });
+    const T = Math.max(...ids.map(i => TE[i]));
+    [...ids].reverse().forEach(i => { const s = succ(i); TL[i] = s.length ? Math.min(...s.map(k => TL[k] - et[k])) : T; });
+    ids.forEach(i => { SL[i] = TL[i] - TE[i]; const s = succ(i); FS[i] = (s.length ? Math.min(...s.map(k => TE[k] - et[k])) : T) - TE[i]; });
+    const crit = ids.filter(i => eq(SL[i], 0));
+    const ce = SE.filter(([a, b]) => crit.includes(a) && crit.includes(b) && eq(TE[b] - et[b], TE[a])).map(e => e.join('-'));
+    const paths = [], walk = (n, p) => { const nx = SE.filter(([a, b]) => a === n && ce.includes(a + '-' + b)).map(e => e[1]); if (!nx.length) { if (eq(TE[n], T)) paths.push(p); return; } nx.forEach(m => walk(m, p.concat(m))); };
+    ids.filter(i => !SPTS[i - 1].pre.length && crit.includes(i)).forEach(i => walk(i, [i]));
+    return { TE, TL, SL, FS, T, crit, ce, paths };
+  }
+  const SP = { 1: [24, 105], 2: [86, 50], 3: [86, 160], 4: [148, 105], 5: [210, 50], 6: [210, 160], 7: [274, 160], 8: [274, 50] };
+  const UP = { 2: 1, 5: 1, 8: 1 };
+  // network of Figure 3-22 / 3-23; te / tl: values to print (or null); hot: node ids; crit: show critical colouring
+  function SptsNet({ te = {}, tl = {}, hot = [], R, eHot = false, slk = [] }) {
+    return html`<svg viewBox="0 0 300 212" className="sav3-svg" role="img" aria-label="SPTS network diagram"><${Marks} />
+      ${SE.map(([a, b]) => { const k = a + '-' + b, c = R && R.ce.includes(k) ? 'crit' : eHot || (hot.includes(a) && hot.includes(b)) ? 'hot' : '';
+        return html`<path key=${k} d=${link(SP[a], SP[b], 15)} className=${'sav3-ed ' + c} markerEnd=${mk(c)} />`; })}
+      ${SPTS.map(({ n }) => { const [x, y] = SP[n], L2 = [te[n] != null ? 'TE=' + fx(te[n]) : null, tl[n] != null ? 'TL=' + fx(tl[n]) : null].filter(Boolean);
+        const c = hot.includes(n) ? ' hot' : slk.includes(n) ? ' slk' : R && R.crit.includes(n) ? ' crit' : '';
+        return html`<g key=${n}><circle cx=${x} cy=${y} r="15" className=${'sav3-nc' + c} /><text x=${x} y=${y + 5} textAnchor="middle" className="sav3-nn">${n}</text>
+          ${L2.map((s, j) => html`<text key=${j} x=${x} y=${UP[n] ? y - 20 - (L2.length - 1 - j) * 14 : y + 30 + j * 14} textAnchor="middle" className=${'sav3-lb' + (j === 1 ? ' sav3-kt' : '')}>${s}</text>`)}</g>`; })}
+    </svg>`;
+  }
+  const wkTicks = span => [0, 5, 10, 15, 20, 25].filter(t => t <= span).map(t => ({ at: t, l: String(t) }));
+
+  /* ════════ [7.4] Gantt vs network for SPTS (Figure 3-16a and b) ════════ */
+  function GanttNet({ ar }) {
+    const R = cpm(BOOK);
+    const steps = [
+      { en: 'The SPTS project both ways. <b>Gantt chart</b> (Figure 3-16a): each task is a bar whose length shows its <b>duration</b>. <b>Network diagram</b> (Figure 3-16b): arrows show the <b>task dependencies</b>.', ar: 'مشروع الـ SPTS بالطريقتين. في الـ <b>Gantt chart</b> (الـ <bdi dir="ltr">Figure&nbsp;3-16a</bdi>) كل task عبارة عن bar طوله بيوضح الـ <b>duration</b>. وفي الـ <b>network diagram</b> (الـ <bdi dir="ltr">Figure&nbsp;3-16b</bdi>) الأسهم بتوضح الـ <b>dependencies</b> بين الـ tasks.' },
+      { en: 'Gantt charts show <b>time overlap</b>: Screen and Report Design (2, 3) share weeks 5 to 11; User Documentation and Programming (5, 6) overlap from week 13. Network diagrams <b>do not show time overlap, but show parallelism</b>: 2 and 3 are parallel branches between 1 and 4.', ar: 'الـ Gantt charts بتوضح الـ <b>time overlap</b>: الـ Screen Design والـ Report Design (2 و 3) بيشتغلوا في نفس الأسابيع من 5 لـ 11، والـ User Documentation والـ Programming (5 و 6) متداخلين من أسبوع 13. أما الـ network diagrams <b>مابتوضحش الـ time overlap، بس بتوضح الـ parallelism</b>: الفرعين 2 و 3 متوازيين بين 1 و 4.' },
+      { en: 'Slack: the Gantt chart shows it <b>in duration</b>, the dotted gap after User Documentation (ends week 18.5, Installation starts at 21). The network shows it <b>in the boxes</b>: activity 5 has TE = 18.5 and TL = 21, slack 2.5.', ar: 'الـ slack: الـ Gantt chart بيوضحه <b>في الـ duration</b>، يعني الفراغ المنقط بعد الـ User Documentation (بتخلص أسبوع <bdi dir="ltr">18.5</bdi> والـ Installation بتبدأ عند 21). والـ network بيوضحه <b>في الـ boxes</b>: النشاط 5 عنده' + L('TE = 18.5, TL = 21 → slack = 2.5') }];
+    const [i, ctl] = useSteps(steps.length, 4200);
+    const hot = i === 1 ? [2, 3, 5, 6] : i === 2 ? [5] : [];
+    const rows = SPTS.map(a => ({ id: a.n, k: a.n, name: a.nm, dur: fx(a.et) + ' wks', s: R.TE[a.n] - a.et, f: R.TE[a.n], hot: hot.includes(a.n), dim: i > 0 && !hot.includes(a.n), slk: i === 2 && a.n === 5 ? [R.TE[5], R.TL[5]] : null }));
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Gantt} rows=${rows} span=${22} grid=${5} ticks=${wkTicks(22)} />
+      <p className="sav3-note">Weeks · Figure 3-16a</p>
+      <${SptsNet} hot=${i === 1 ? [1, 2, 3, 4] : i === 2 ? [5] : []} eHot=${i === 0} te=${i === 2 ? R.TE : {}} tl=${i === 2 ? R.TL : {}} />
+      <p className="sav3-note">Figure 3-16b as circles (Figure 3-22)</p>
+      </div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ [7.6] slack: delay an SPTS activity and watch the finish ════════ */
+  function Slack({ ar }) {
+    const [a, setA] = useState(5), [d, setD] = useState(2);
+    const R0 = cpm(BOOK), et = Object.assign({}, BOOK, { [a]: BOOK[a] + d }), R = cpm(et), A = SPTS[a - 1];
+    const ts = R0.SL[a], fs = R0.FS[a], end = R.T, late = end - R0.T;
+    const rows = SPTS.map(x => ({ id: x.n, k: x.n, name: x.nm, dur: fx(x.et) + ' wks', s: R.TE[x.n] - et[x.n], f: R.TE[x.n] - (x.n === a ? d : 0), crit: R0.crit.includes(x.n) ? 1 : 0, hot: x.n === a, xtra: x.n === a ? [R.TE[a] - d, R.TE[a]] : null }));
+    const en = (d === 0 ? `Pick an activity and drag the delay. Activity ${a}, <b>${A.nm}</b>. ` : `Delaying <b>${A.nm}</b> (${a}) by ${fx(d)} weeks: ` + (eq(late, 0) ? `the project still ends at week <b>${fx(end)}</b>; the delay fits in its slack. ` : `the project now ends at week <b>${fx(end)}</b>, ${fx(late)} weeks late. `))
+      + `Its <b>total slack</b> (delay without delaying project completion) is ${fx(ts)} weeks; its <b>free slack</b> (delay without delaying the early start of any immediately following task) is ${fx(fs)} weeks.`;
+    const ar2 = (d === 0 ? 'اختار نشاط وحرّك الـ delay. النشاط ' + a + ' (الـ ' + A.nm + ')' : 'لو أخّرنا النشاط ' + a + ' (الـ ' + A.nm + ') ' + D(fx(d)) + ' أسبوع، ' + (eq(late, 0) ? 'المشروع لسه بيخلص في أسبوع ' + D(fx(end)) + '، لأن التأخير جوه الـ slack بتاعه' : 'المشروع هيخلص في أسبوع ' + D(fx(end)) + '، يعني متأخر ' + D(fx(late)) + ' أسبوع'))
+      + '. الـ <b>total slack</b> بتاعه (التأخير من غير ما يأخر خلصان المشروع) ' + D(fx(ts)) + ' أسبوع، والـ <b>free slack</b> بتاعه (التأخير من غير ما يأخر الـ early start لأي task جاية بعده على طول) ' + D(fx(fs)) + ' أسبوع.';
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <div className="sav3-tabs" role="group">${SPTS.map(x => html`<button key=${x.n} className=${'fig-btn' + (a === x.n ? ' sav3-on' : '')} aria-pressed=${String(a === x.n)} onClick=${() => setA(x.n)} style=${{ minWidth: '36px' }}>${x.n}</button>`)}</div>
+      <div className="sav3-in" style=${{ gridTemplateColumns: '1fr' }}><label>Delay of activity ${a}: ${fx(d)} weeks<input type="range" min="0" max="4" step="0.5" value=${d} onChange=${e => setD(+e.target.value)} /></label></div>
+      <${Gantt} rows=${rows} span=${26} grid=${5} ticks=${wkTicks(26)} marks=${[{ at: 22 }, { at: end, end: 1 }]} />
+      <p className="sav3-note">Dashed line: week 22 (planned end) · solid red line: new end, week <b>${fx(end)}</b> · red bars = critical path, grey = slack · hatched = delay</p>
+      </div><${Cap} en=${en} ar=${ar2} showAr=${ar} /></figure>`;
+  }
+
+  /* ════════ [8] PERT: Figure 3-19 row by row, and a calculator ════════ */
+  function Pert({ ar }) {
+    const [mode, setMode] = useState('ex'), [o, setO] = useState(3), [r, setR] = useState(7), [p, setP] = useState(11);
+    const steps = [{ en: 'PERT uses three time estimates per activity: optimistic <b>o</b>, realistic <b>r</b> and pessimistic <b>p</b>. Expected time: ET = (o + 4r + p) / 6. Figure 3-19 applies it to the eight SPTS activities (weeks).', ar: 'الـ PERT بيستخدم 3 تقديرات للوقت لكل نشاط، الـ optimistic <b>o</b> والـ realistic <b>r</b> والـ pessimistic <b>p</b>، والـ expected time بيتحسب كده:' + L('ET = (o + 4r + p) / 6') + 'والـ <bdi dir="ltr">Figure&nbsp;3-19</bdi> بيطبقها على الـ 8 أنشطة بتوع الـ SPTS (بالأسابيع).' }]
+      .concat(SPTS.map(a => { const s = a.o + 4 * a.r + a.p, F = `ET = (${a.o} + 4×${a.r} + ${a.p}) / 6 = ${s}/6 = ${fx(s / 6)}`;
+        return { en: `${a.n}. ${a.nm}: ${F}` + (a.n === 5 ? '. The book prints <b>5.5</b>, a known slip (34/6 = 5.67). Quote 5.5 if asked about the slide.' : '.'),
+          ar: 'النشاط ' + a.n + ' (الـ ' + a.nm + ') بيطلع كده:' + L(F) + (a.n === 5 ? 'الكتاب كاتب <b>5.5</b>، ودي غلطة معروفة لأن 34 على 6 بتساوي ' + D('5.67') + '. قول 5.5 لو السؤال عن الـ slide.' : '') }; }));
+    const [i, ctl] = useSteps(steps.length, 2400);
+    const s = (+o) + 4 * (+r) + (+p), F = `ET = (${+o} + 4×${+r} + ${+p}) / 6 = ${s}/6 = ${fx(s / 6)}`;
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Tabs} items=${[['ex', 'Example from the notes'], ['try', 'Try your own']]} cur=${mode} set=${m => { setMode(m); if (m === 'ex') ctl.replay(); }} />
+      ${mode === 'ex' ? html`<table className="sav3-tbl"><thead><tr><th>Activity</th><th>o</th><th>r</th><th>p</th><th>ET</th></tr></thead><tbody>
+          ${SPTS.map(a => html`<tr key=${a.n} className=${i === a.n ? 'cur' : ''}><td>${a.n}. ${a.nm}</td>${i >= a.n ? html`<td>${a.o}</td><td>${a.r}</td><td>${a.p}</td><td className="k">${fx((a.o + 4 * a.r + a.p) / 6)}${a.n === 5 && html`<small>book 5.5</small>`}</td>` : html`<td></td><td></td><td></td><td></td>`}</tr>`)}</tbody></table>`
+        : html`<div className="sav3-in n3">${[['o', o, setO], ['r', r, setR], ['p', p, setP]].map(([k, val, f]) => html`<label key=${k}>${k}<input type="number" min="0" step="0.5" value=${val} onChange=${e => f(e.target.value)} /></label>`)}</div>
+          <p className="sav3-res">ET = (${+o} + 4×${+r} + ${+p}) / 6 = <b>${fx(s / 6)}</b></p>`}
+      </div>${mode === 'ex' ? html`<${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`
+        : html`<${Cap} en=${'Type your own estimates (starts with Problem 1, activity A: o = 3, r = 7, p = 11). ' + F + '.'} ar=${'اكتب التقديرات بتاعتك (بادئين بـ Problem 1، النشاط A). بالأرقام دي الـ ET بيطلع:' + L(F)} showAr=${ar} />`}</figure>`;
+  }
+
+  /* ════════ [8] SPTS critical path: forward pass, backward pass, slack (Figures 3-20 to 3-24) ════════ */
+  function Cpm({ ar }) {
+    const [mode, setMode] = useState('ex'), [own, setOwn] = useState(BOOK);
+    const et = mode === 'ex' ? BOOK : mode === 'exact' ? EXACT : own, R = cpm(et);
+    const fwd = [1, 2, 3, 4, 5, 6, 7, 8], bwd = [8, 7, 6, 5, 4, 3, 2, 1];
+    const fF = n => { const pr = SPTS[n - 1].pre; return !pr.length ? `TE${n} = ET${n} = ${fx(et[n])}`
+      : pr.length === 1 ? `TE${n} = TE${pr[0]} + ET${n} = ${fx(R.TE[pr[0]])} + ${fx(et[n])} = ${fx(R.TE[n])}`
+      : `TE${n} = max(${pr.map(q => 'TE' + q).join(', ')}) + ET${n} = max(${pr.map(q => fx(R.TE[q])).join(', ')}) + ${fx(et[n])} = ${fx(R.TE[n])}`; };
+    const bF = n => { const s = succ(n); return !s.length ? `TL${n} = TE${n} = ${fx(R.T)} (total project time)`
+      : s.length === 1 ? `TL${n} = TL${s[0]} − ET${s[0]} = ${fx(R.TL[s[0]])} − ${fx(et[s[0]])} = ${fx(R.TL[n])}`
+      : `TL${n} = min(${s.map(q => 'TL' + q + ' − ET' + q).join(', ')}) = min(${s.map(q => fx(R.TL[q]) + ' − ' + fx(et[q])).join(', ')}) = ${fx(R.TL[n])}`; };
+    const non = SPTS.map(a => a.n).filter(n => !R.crit.includes(n));
+    const pathTxt = R.paths.map(p => p.join('-')).join(' and ');
+    const slTxt = non.map(n => `slack(${n}) = ${fx(R.TL[n])} − ${fx(R.TE[n])} = ${fx(R.SL[n])}`).join(', ');
+    const steps = [{ en: 'Figures 3-20 and 3-22: the SPTS activities and their precedence as a network (circles = activities, arrows = sequence). 2 and 3 follow 1; 4 follows 2 and 3; 5 and 6 follow 4; 7 follows 6; 8 follows 5 and 7. ET values are from Figure 3-19.', ar: 'الـ <bdi dir="ltr">Figures&nbsp;3-20&nbsp;and&nbsp;3-22</bdi>: أنشطة الـ SPTS وترتيبها مترسومين كـ network (الدواير أنشطة والأسهم ترتيب)، والترتيب كالآتي:' + L('1 → 2, 3 ; 2, 3 → 4 ; 4 → 5, 6 ; 6 → 7 ; 5, 7 → 8') + 'وقيم الـ ET جاية من الـ <bdi dir="ltr">Figure&nbsp;3-19</bdi>.' }]
+      .concat(fwd.map(n => ({ en: `<b>Forward pass</b>, activity ${n} (${SPTS[n - 1].nm}): the earliest time TE is the sum of activity times on the <b>longest</b> path to it. ${fF(n)}.`, ar: 'الـ <b>forward pass</b> للنشاط ' + n + ' (الـ ' + SPTS[n - 1].nm + '): أقرب وقت يخلص فيه (الـ TE) هو مجموع أوقات الأنشطة على <b>أطول</b> path لحد عنده:' + L(fF(n)) })))
+      .concat(bwd.map(n => ({ en: `<b>Backward pass</b>, activity ${n}: the latest time TL is the total time minus the activity times on the path following it. ${bF(n)}.`, ar: 'الـ <b>backward pass</b> للنشاط ' + n + ': آخر وقت ممكن يخلص فيه (الـ TL) هو الوقت الكلي ناقص أوقات الأنشطة اللي بعده:' + L(bF(n)) })))
+      .concat([{ en: `Slack = TL − TE (Figure 3-24). Zero slack = <b>critical path</b>: ${pathTxt}, project time <b>${fx(R.T)} weeks</b>.` + (non.length ? ` Not critical: ${slTxt}.` : '') + (mode === 'ex' ? ' The book uses ET5 = 5.5; the exact (3 + 4×6 + 7)/6 = 5.67 gives slack 2.33. Quote 2.5 if asked about the slide.' : ''),
+        ar: 'الـ slack بيساوي TL ناقص TE (الـ <bdi dir="ltr">Figure&nbsp;3-24</bdi>)، وأي نشاط الـ slack بتاعه صفر بيبقى على الـ <b>critical path</b>:' + L(`critical path: ${pathTxt} ; T = ${fx(R.T)} weeks` + (non.length ? '<br>' + slTxt : '')) + (mode === 'ex' ? 'الكتاب واخد الـ ET بتاع النشاط 5 بـ 5.5، والحساب المظبوط بيدّي ' + D('5.67') + ' فالـ slack يبقى ' + D('2.33') + ' (قول 2.5 لو السؤال عن الـ slide).' : '') }]);
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const nf = Math.max(0, Math.min(8, i)), nb = Math.max(0, Math.min(8, i - 8)), fin = i === steps.length - 1;
+    const te = {}, tl = {}; fwd.slice(0, nf).forEach(n => te[n] = R.TE[n]); bwd.slice(0, nb).forEach(n => tl[n] = R.TL[n]);
+    const cur = i >= 1 && i <= 8 ? fwd[i - 1] : i >= 9 && i <= 16 ? bwd[i - 9] : null;
+    const setM = m => { setMode(m); ctl.replay(); };
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Tabs} items=${[['ex', 'Example from the notes'], ['exact', 'Exact ET5 = 5.67'], ['try', 'Try your own']]} cur=${mode} set=${setM} />
+      ${mode === 'try' && html`<div className="sav3-in n4">${SPTS.map(a => html`<label key=${a.n}>ET${a.n}<input type="number" min="0" step="0.5" value=${own[a.n]} onChange=${e => { const v = Math.max(0, +e.target.value || 0); setOwn(o => Object.assign({}, o, { [a.n]: v })); }} /></label>`)}</div>`}
+      <${SptsNet} te=${te} tl=${tl} hot=${cur ? [cur] : []} R=${fin ? R : null} slk=${fin ? non : []} />
+      <table className="sav3-tbl"><thead><tr><th>Activity</th><th>ET</th><th>TE</th><th>TL</th><th>Slack</th><th>Critical</th></tr></thead><tbody>
+        ${SPTS.map(a => html`<tr key=${a.n} className=${cur === a.n ? 'cur' : ''}><td>${a.n}. ${a.nm}</td><td>${fx(et[a.n])}</td><td>${te[a.n] != null ? fx(te[a.n]) : ''}</td><td>${tl[a.n] != null ? fx(tl[a.n]) : ''}</td>
+          <td className=${fin && !R.crit.includes(a.n) ? 'k' : ''}>${fin ? fx(R.SL[a.n]) : ''}</td><td className="p">${fin && R.crit.includes(a.n) ? '✓' : ''}</td></tr>`)}</tbody></table>
+      ${fin && html`<p className="sav3-note">Critical path <b>${pathTxt}</b> · ${fx(R.T)} weeks</p>`}
+      </div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ════════ [9.1] [9.2] Microsoft Project symbols (Figures 3-25, 3-27, 3-28), calendar days from Mon Nov 1, 2004 ════════ */
+  const MSP = [
+    { id: 1, name: 'Start Analysis Phase', dur: '52 days', kind: 'sum', s: 0, f: 71 },
+    { id: 2, name: 'Overview of Purchasing', dur: '5 days', lvl: 1, s: 0, f: 5 },
+    { id: 3, name: 'Develop Physical DFDs', dur: '12 days', lvl: 1, s: 7, f: 23 },
+    { id: 4, name: 'Develop Logical DFDs', dur: '11 days', lvl: 1, s: 21, f: 36 },
+    { id: 5, name: 'Develop ER Diagrams', dur: '7 days', lvl: 1, s: 25, f: 36 },
+    { id: 6, name: 'Integration & Problem ID', dur: '5 days', lvl: 1, s: 35, f: 40 },
+    { id: 7, name: 'Interviews', dur: '6 days', lvl: 1, s: 42, f: 50 },
+    { id: 8, name: 'JAD Session', dur: '2 days', lvl: 1, s: 44, f: 46 },
+    { id: 9, name: 'Develop Alternative Directions', dur: '6 days', lvl: 1, s: 50, f: 58 },
+    { id: 10, name: 'Selection & Justification', dur: '5 days', lvl: 1, s: 58, f: 65 },
+    { id: 11, name: 'Prepare for Review Meeting', dur: '4 days', lvl: 1, s: 65, f: 71 },
+    { id: 12, name: 'Review Meeting', dur: '0 days', lvl: 1, kind: 'ms', s: 71, f: 71 }];
+  const MNET = [
+    { id: 6, x: 10, y: 4, w: 280, t: 'Integration & Problem ID', d: 'ID 6 · 5 days', w2: '12/6/04 – 12/10/04', c: 1 },
+    { id: 7, x: 2, y: 84, w: 140, t: 'Interviews', d: 'ID 7 · 6 days', w2: '12/13 – 12/20/04', c: 1 },
+    { id: 8, x: 158, y: 84, w: 140, t: 'JAD Session', d: 'ID 8 · 2 days', w2: '12/15 – 12/16/04', c: 0 },
+    { id: 9, x: 10, y: 164, w: 280, t: 'Develop Alternative Directions', d: 'ID 9 · 6 days', w2: '12/21/04 – 12/28/04', c: 1 },
+    { id: 10, x: 10, y: 244, w: 280, t: 'Selection & Justification', d: 'ID 10 · 5 days', w2: '12/29/04 – 1/4/05', c: 1 },
+    { id: 11, x: 10, y: 324, w: 280, t: 'Prepare for Review Meeting', d: 'ID 11 · 4 days', w2: '1/5/05 – 1/10/05', c: 1 }];
+  function MsProject({ ar }) {
+    const [v, setV] = useState('g');
+    const H = 56, B = Object.fromEntries(MNET.map(b => [b.id, b]));
+    const E = [[6, 7], [6, 8], [7, 9], [8, 9], [9, 10], [10, 11]];
+    const C = v === 'g'
+      ? { en: 'Microsoft Project Gantt chart (Figure 3-28): the <b>black line at the top</b> is a summary activity, made of the subtasks under it (Start Analysis Phase, 52 days). The <b>diamond</b> is a milestone: Review Meeting, 0 days, on 1/11/05.', ar: 'في الـ Gantt chart بتاع الـ Microsoft Project (الـ <bdi dir="ltr">Figure&nbsp;3-28</bdi>)، <b>الخط الأسود اللي فوق</b> هو summary activity متكوّن من الـ subtasks اللي تحته (الـ Start Analysis Phase، مدته 52 يوم). والـ <b>diamond</b> هو milestone، وهو الـ Review Meeting اللي مدته صفر يوم في' + L('Review Meeting: 0 days, 1/11/05') }
+      : { en: 'Microsoft Project network diagram (Figure 3-27, tasks 6 to 12): the <b>hexagon</b> is a milestone (Review Meeting) and the <b>red boxes and arrows</b> are the critical path, which has no slack. JAD Session is not critical: it ends 12/16, but Develop Alternative Directions also waits for Interviews until 12/20.', ar: 'في الـ network diagram بتاع الـ Microsoft Project (الـ <bdi dir="ltr">Figure&nbsp;3-27</bdi>، الـ tasks من 6 لـ 12)، الـ <b>hexagon</b> هو الـ milestone (الـ Review Meeting)، والـ <b>boxes والأسهم الحمرا</b> هي الـ critical path اللي مفيهاش slack. الـ JAD Session مش critical لأنها بتخلص ' + D('12/16') + '، بس الـ Develop Alternative Directions مستنية الـ Interviews كمان لحد ' + D('12/20') + '.' };
+    const hx = (cx, y, w, h) => `M${cx - w / 2} ${y + h / 2} L${cx - w / 2 + 18} ${y} L${cx + w / 2 - 18} ${y} L${cx + w / 2} ${y + h / 2} L${cx + w / 2 - 18} ${y + h} L${cx - w / 2 + 18} ${y + h} Z`;
+    return html`<figure className="fig sav3"><div className="fig-stage">
+      <${Tabs} items=${[['g', 'Gantt chart'], ['n', 'Network diagram']]} cur=${v} set=${setV} />
+      ${v === 'g' ? html`<${Gantt} rows=${MSP.map(r => Object.assign({}, r, { hot: r.kind === 'sum' }))} span=${73} ticks=${[{ at: 0, l: 'Nov 1' }, { at: 30, l: 'Dec 1' }, { at: 61, l: 'Jan 1' }]} />
+          <p className="sav3-note">Black bar with ends = <b>summary activity</b> · ◆ = <b>milestone</b></p>`
+        : html`<svg viewBox="0 0 300 456" className="sav3-svg" role="img" aria-label="Network diagram with the critical path and a milestone hexagon"><${Marks} />
+          ${E.map(([a, b]) => { const A = B[a], Z = B[b], cr = A.c && Z.c, x1 = A.x + A.w / 2, x2 = Z.x + Z.w / 2, xs = a === 6 ? x2 : x1, xe = b === 9 ? x1 : x2;
+            return html`<path key=${a + '-' + b} d=${`M${xs} ${A.y + H} L${xe} ${Z.y - 2}`} className=${'sav3-ed ' + (cr ? 'crit' : 'hot')} markerEnd=${mk(cr ? 'crit' : 'hot')} />`; })}
+          <path d="M150 380 L150 402" className="sav3-ed crit" markerEnd=${mk('crit')} />
+          ${MNET.map(b => html`<g key=${b.id}><rect x=${b.x} y=${b.y} width=${b.w} height=${H} rx="3" className=${'sav3-nc ' + (b.c ? 'cb' : 'bb')} />
+            <text x=${b.x + 7} y=${b.y + 18} className="sav3-bt">${b.t}</text><text x=${b.x + 7} y=${b.y + 34} className="sav3-gt2">${b.d}</text><text x=${b.x + 7} y=${b.y + 50} className="sav3-gt2">${b.w2}</text></g>`)}
+          <path d=${hx(150, 404, 240, 48)} className="sav3-nc cb" /><text x="150" y="424" textAnchor="middle" className="sav3-bt">Review Meeting</text><text x="150" y="441" textAnchor="middle" className="sav3-gt2">Milestone · 1/11/05 · ID 12</text>
+        </svg><p className="sav3-note">Red = critical path (no slack) · blue = not critical · hexagon = <b>milestone</b></p>`}
+      </div><${Cap} ...${C} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'sa-pm-process': Process, 'sa-pm-ssr': Ssr, 'sa-pm-init-acts': InitActs, 'sa-pm-workbook': Workbook, 'sa-pm-pvf-init': PvfInit,
+    'sa-pm-plan-acts': PlanActs, 'sa-pm-budget': Budget, 'sa-pm-wbs': Wbs, 'sa-pm-exec-acts': ExecActs, 'sa-pm-progress': Progress,
+    'sa-pm-comm-table': CommTable, 'sa-pm-close-acts': CloseActs, 'sa-pm-abcde-net': Abcde, 'sa-pm-gantt-net': GanttNet,
+    'sa-pm-slack': Slack, 'sa-pm-pert': Pert, 'sa-pm-spts-cpm': Cpm, 'sa-pm-msproject': MsProject });
+})();
+/* ── part L6 ── */
+// Systems Analysis and Design visuals, Lecture 6 (CPM and PERT): the planning phases with the feedback loop, rule 2 and the four dummy drawings, the dummy that keeps precedence, a CPM calculator (ES/EF/LS/LF, slack, free slack, Gantt, team), the 13-activity network with its forward and backward pass, its Gantt chart and team count, Problem 2 (activity 6 revised), Problem 3 pass by pass, Problem 1 expected times, the Lab 3 networks and the textbook PERT probability (CH_05 slides 3 to 40, the lab and the site's notes). Every label and number comes from the slides and the site's notes, or is computed with their formulas.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.sav6 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.sav6 .fig-btn.sav6-on{ border-color:var(--fig-k); box-shadow:0 0 0 1px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); }
+.sav6-svg{ display:block; width:100%; height:auto; margin:0 auto; max-width:460px; }
+.sav6 svg text{ fill:var(--ink); font-family:var(--body); }
+.sav6 svg text.sav6-lab{ paint-order:stroke; stroke:var(--paper-2); stroke-width:4px; stroke-linejoin:round; font-weight:600; }
+.sav6 svg text.sav6-kt{ fill:var(--fig-k); font-weight:700; }
+.sav6 svg text.sav6-pt{ fill:var(--pen); font-weight:700; }
+.sav6 svg text.sav6-gt{ fill:var(--graphite); }
+.sav6-arc{ fill:none; stroke:var(--graphite); stroke-width:2; transition:stroke .4s, stroke-width .4s, opacity .4s; }
+.sav6-ah{ fill:var(--graphite); transition:fill .4s, opacity .4s; }
+.sav6-arc.sav6-dum{ stroke-dasharray:6 5; }
+.sav6-arc.sav6-done{ stroke:var(--ink); } .sav6-ah.sav6-done{ fill:var(--ink); }
+.sav6-arc.sav6-cur{ stroke:var(--pen); stroke-width:3.4; } .sav6-ah.sav6-cur{ fill:var(--pen); }
+.sav6-arc.sav6-crit{ stroke:var(--fig-k); stroke-width:4; } .sav6-ah.sav6-crit{ fill:var(--fig-k); }
+.sav6-arc.sav6-ok{ stroke:var(--ok); stroke-width:3.4; } .sav6-ah.sav6-ok{ fill:var(--ok); }
+.sav6-arc.sav6-bad{ stroke:var(--pen); stroke-width:3.4; } .sav6-ah.sav6-bad{ fill:var(--pen); }
+.sav6-dim{ opacity:.3; }
+.sav6-nd{ fill:var(--paper); stroke:var(--ink); stroke-width:1.8; transition:fill .4s, stroke .4s; }
+.sav6-nd.sav6-cur{ stroke:var(--pen); stroke-width:3; fill:color-mix(in srgb, var(--pen) 12%, var(--paper)); }
+.sav6-nd.sav6-crit{ stroke:var(--fig-k); stroke-width:3; }
+.sav6-box{ fill:var(--paper); stroke:var(--line); stroke-width:1.6; transition:stroke .4s, fill .4s, opacity .4s; }
+.sav6-box.sav6-on{ stroke:var(--fig-k); stroke-width:2.6; fill:color-mix(in srgb, var(--fig-k) 12%, var(--paper)); }
+.sav6-gl{ fill:none; stroke:var(--graphite); stroke-width:2; }
+.sav6-fb{ fill:none; stroke:var(--fig-k); stroke-width:2.6; }
+.sav6-mini{ fill:none; stroke:var(--fig-k); stroke-width:1.6; }
+.sav6-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.sav6-row .fig-btn{ font-size:.84rem; padding:4px 10px; min-height:30px; }
+.sav6-h{ text-align:center; font-size:.86rem; font-weight:700; color:var(--graphite); margin:6px 0; }
+.sav6-sum{ text-align:center; font-size:.92rem; color:var(--ink); margin:8px auto; line-height:1.45; max-width:460px; }
+.sav6-sum b{ color:var(--fig-k); }
+.sav6-tw{ max-width:460px; margin:10px auto 0; }
+.sav6-tbl{ width:100%; border-collapse:collapse; font-size:.8rem; color:var(--ink); font-variant-numeric:tabular-nums; }
+.sav6-tbl th, .sav6-tbl td{ border-bottom:1px solid var(--line); padding:3px 2px; text-align:center; line-height:1.3; }
+.sav6-tbl th{ font-size:.76rem; color:var(--graphite); font-weight:700; }
+.sav6-tbl td.sav6-l{ text-align:left; }
+.sav6-tbl td.sav6-new{ background:color-mix(in srgb, var(--pen) 14%, var(--paper)); font-weight:700; }
+.sav6-tbl tr.sav6-crit td:first-child{ color:var(--fig-k); font-weight:700; }
+.sav6-tbl tr.sav6-crit td.sav6-z{ color:var(--fig-k); font-weight:700; }
+.sav6-tbl tr.sav6-sel td{ background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); }
+.sav6-tbl tbody tr.sav6-tap{ cursor:pointer; }
+.sav6-tbl td.sav6-chg{ color:var(--pen); font-weight:700; }
+.sav6-det{ max-width:460px; margin:8px auto 0; border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:6px 8px; font:.82rem/1.5 var(--mono); color:var(--ink); }
+.sav6-det div{ white-space:normal; overflow-wrap:anywhere; }
+.sav6-det b{ font-family:var(--body); color:var(--fig-k); }
+.sav6-in{ display:grid; gap:6px; max-width:460px; margin:10px auto 0; }
+.sav6-in label{ font-size:.84rem; font-weight:700; color:var(--graphite); }
+.sav6-in textarea{ width:100%; box-sizing:border-box; font:.86rem/1.4 var(--mono); padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); resize:vertical; }
+.sav6-err{ color:var(--pen); font-weight:700; font-size:.86rem; text-align:center; margin:6px 0 0; }
+.sav6-key{ display:flex; flex-wrap:wrap; gap:4px 12px; justify-content:center; font-size:.8rem; color:var(--graphite); margin:6px 0 0; }
+.sav6-key i{ display:inline-block; width:16px; height:8px; border-radius:2px; margin-right:4px; vertical-align:middle; }
+.sav6-key i.sav6-kc{ background:var(--fig-k); } .sav6-key i.sav6-kn{ background:var(--graphite); } .sav6-key i.sav6-ks{ height:0; border-top:2px dotted var(--graphite); border-radius:0; }
+.sav6-gbar{ transition:opacity .3s; }
+.sav6-gc{ fill:var(--fig-k); } .sav6-gn{ fill:var(--graphite); }
+.sav6-gs{ stroke:var(--graphite); stroke-width:2; stroke-dasharray:2 3; }
+.sav6-run{ stroke:var(--pen); stroke-width:2.4; }
+.sav6-cursor{ fill:var(--pen); opacity:.16; }
+.sav6-hist{ fill:color-mix(in srgb, var(--fig-k) 45%, var(--paper)); }
+.sav6-hist.sav6-pk{ fill:var(--fig-k); } .sav6-hist.sav6-at{ fill:var(--pen); }
+.sav6-tick{ stroke:var(--line); stroke-width:1; }
+.sav6-play{ display:flex; flex-wrap:wrap; gap:8px; align-items:center; padding:0 14px 12px; }
+.sav6-play input[type=range]{ flex:1 1 140px; min-width:120px; accent-color:var(--fig-k); }
+.sav6-play b{ font:700 .9rem var(--mono); color:var(--ink); min-width:3.5em; }
+.sav6-two{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; max-width:460px; margin:0 auto; }
+.sav6-two > div{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:4px; }
+.sav6-two .sav6-st{ font-size:.8rem; line-height:1.4; text-align:center; color:var(--ink); }
+.sav6-two .sav6-st > span{ display:block; }
+.sav6-two .sav6-st .sav6-y{ color:var(--ok); font-weight:700; } .sav6-two .sav6-st .sav6-w{ color:var(--graphite); }
+.sav6-two .sav6-st .sav6-x{ color:var(--pen); font-weight:700; }
+.sav6-two > div.sav6-wrong{ border-color:var(--pen); box-shadow:0 0 0 1px var(--pen); }
+.sav6-four{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; max-width:420px; margin:8px auto 0; }
+.sav6-four > div{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:2px; transition:opacity .4s, box-shadow .4s; }
+.sav6-four > div.sav6-off{ opacity:.35; } .sav6-four > div.sav6-on{ box-shadow:0 0 0 2px var(--fig-k); }
+.sav6-four small{ display:block; text-align:center; font-size:.8rem; color:var(--graphite); }
+.sav6-pre{ display:flex; flex-wrap:wrap; gap:4px 14px; justify-content:center; font-size:.84rem; color:var(--ink); margin:0 0 8px; }
+.sav6-et{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; max-width:460px; margin:10px auto 0; font-size:.86rem; color:var(--ink); }
+.sav6-et input{ width:4.2em; font:.9rem var(--mono); padding:4px 6px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); }
+.sav6-f{ display:block; text-align:center; font:700 .92rem/1.5 var(--mono); color:var(--ink); margin:8px auto 0; max-width:460px; overflow-wrap:anywhere; }
+.sav6-paths{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:8px 0 0; }
+.sav6-paths .fig-btn{ font:600 .82rem var(--mono); padding:3px 9px; min-height:30px; }
+.sav6-paths .fig-btn.sav6-cp{ border-color:var(--fig-k); }
+.sav6-names{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:2px 10px; max-width:460px; margin:8px auto 0; font-size:.8rem; color:var(--graphite); }
+.sav6-names b{ color:var(--ink); }
+.sav6-step{ display:flex; gap:6px; align-items:center; justify-content:center; flex-wrap:wrap; margin:0 0 8px; font-size:.86rem; color:var(--ink); }
+.sav6-step b{ font:700 1rem var(--mono); min-width:1.6em; text-align:center; }
+.sav6-norm{ fill:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); }
+.sav6-curve{ fill:none; stroke:var(--ink); stroke-width:2; }
+.sav6-tl{ stroke:var(--pen); stroke-width:2.4; }
+.sav6-ax{ stroke:var(--graphite); stroke-width:1.4; }
+@media (prefers-reduced-motion: reduce){ .sav6-arc, .sav6-ah, .sav6-nd, .sav6-box, .sav6-four > div, .sav6-gbar{ transition:none; } }`;
+  if (!document.getElementById('sav6-css')) { const s = document.createElement('style'); s.id = 'sav6-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ── CPM engine (the notes' formulas) ── */
+  // acts: [{ id, dur, pred: [] }] → { T, r: { id: { es, ef, ls, lf, sl, fs } }, order, succ, team: [counts per time unit] }
+  function cpm(acts) {
+    const by = {}; acts.forEach(a => { by[a.id] = a; });
+    const order = [], seen = {};
+    const visit = id => { if (seen[id] === 2) return; if (seen[id] === 1) throw new Error('cycle'); seen[id] = 1; by[id].pred.forEach(visit); seen[id] = 2; order.push(id); };
+    acts.forEach(a => visit(a.id));
+    const r = {}, succ = {};
+    acts.forEach(a => { succ[a.id] = acts.filter(b => b.pred.includes(a.id)).map(b => b.id); });
+    order.forEach(id => { const a = by[id], es = a.pred.length ? Math.max(...a.pred.map(p => r[p].ef)) : 0; r[id] = { es, ef: es + a.dur }; });
+    const T = Math.max(0, ...order.map(i => r[i].ef));
+    order.slice().reverse().forEach(id => { const s = succ[id], lf = s.length ? Math.min(...s.map(x => r[x].ls)) : T; r[id].lf = lf; r[id].ls = lf - by[id].dur; r[id].sl = r[id].ls - r[id].es; r[id].fs = (s.length ? Math.min(...s.map(x => r[x].es)) : T) - r[id].ef; });
+    const team = []; for (let t = 0; t < T; t++) team.push(acts.filter(a => r[a.id].es <= t && t < r[a.id].ef).length);
+    return { T, r, order, succ, by, team };
+  }
+  // every start-to-end chain of activities; crit = only zero-slack chains with no gaps
+  function chains(acts, c, crit) {
+    const out = [], starts = acts.filter(a => !a.pred.length);
+    const go = (id, path) => { const p = path.concat(id), s = c.succ[id].filter(x => !crit || (c.r[x].sl === 0 && c.r[x].es === c.r[id].ef));
+      if (!c.succ[id].length) { if (!crit || c.r[id].ef === c.T) out.push(p); return; } s.forEach(x => go(x, p)); };
+    starts.forEach(a => { if (!crit || (c.r[a.id].sl === 0)) go(a.id, []); });
+    return out;
+  }
+  const P = s => s.split(';').map(x => { const [id, d, p] = x.trim().split(/\s+/); return { id, dur: +d, pred: p && p !== '-' ? p.split(',') : [] }; });
+  const EX = {
+    L13: { n: '13 activities', d: 'A 5 -;B 10 -;C 3 -;D 8 B;E 10 B;F 9 E;G 3 A,D;H 4 B;I 5 E;J 7 C,F;K 4 A,D;L 4 G,H,I,J;M 3 C,F' },
+    P2: { n: 'Problem 2', d: '1 2 -;2 3 1;3 3 2;4 7 2;5 6 2;6 1 3,4;7 5 4,5;8 4 6,7;9 8 2;10 2 8,9' },
+    P3: { n: 'Problem 3', d: 'A 5 -;B 3 A;C 4 A;D 6 C;E 4 B,C;F 1 D;G 5 D,E,F' },
+    E1: { n: 'Lab Ex 1', d: 'A 2 -;B 4 -;C 5 B;D 3 A,C' },
+    E2: { n: 'Lab Ex 2', d: 'A 2 -;B 4 -;C 2 B;D 3 A,C;E 2 C;F 5 C;G 2 D,E,F' }
+  };
+  const toText = d => P(d).map(a => `${a.id} ${a.dur} ${a.pred.length ? a.pred.join(',') : '-'}`).join('\n');
+
+  /* ── activity-on-arc network drawing ── */
+  // net: { w, h, r, fs, nodes: { k: [x, y] }, arcs: [{ id, f, t, lab, c: [cx, cy] (curve control), lx, ly (label offset), dum }] }
+  function geo(net, a) {
+    const [x1, y1] = net.nodes[a.f], [x2, y2] = net.nodes[a.t], c = a.c || [(x1 + x2) / 2, (y1 + y2) / 2], R = net.r;
+    const u = (ax, ay, bx, by) => { const d = Math.hypot(bx - ax, by - ay) || 1; return [(bx - ax) / d, (by - ay) / d]; };
+    const [sx, sy] = u(x1, y1, c[0], c[1]), [ex, ey] = u(c[0], c[1], x2, y2);
+    const A = [x1 + sx * R, y1 + sy * R], B = [x2 - ex * (R + 1), y2 - ey * (R + 1)];
+    const d = `M${A[0].toFixed(1)},${A[1].toFixed(1)} Q${c[0]},${c[1]} ${(B[0] - ex * 6).toFixed(1)},${(B[1] - ey * 6).toFixed(1)}`;
+    const head = `${B[0].toFixed(1)},${B[1].toFixed(1)} ${(B[0] - ex * 11 - ey * 5.5).toFixed(1)},${(B[1] - ey * 11 + ex * 5.5).toFixed(1)} ${(B[0] - ex * 11 + ey * 5.5).toFixed(1)},${(B[1] - ey * 11 - ex * 5.5).toFixed(1)}`;
+    const m = [.25 * x1 + .5 * c[0] + .25 * x2, .25 * y1 + .5 * c[1] + .25 * y2];
+    return { d, head, lx: m[0] + (a.lx || 0), ly: m[1] + (a.ly || 0) };
+  }
+  function Net({ net, arcCls, nodeCls, nodeTxt, labOf, label }) {
+    return html`<svg className="sav6-svg" viewBox=${`0 0 ${net.w} ${net.h}`} role="img" aria-label=${label}>
+      ${net.arcs.map(a => { const g = geo(net, a), k = (arcCls ? arcCls(a) : '') || ''; const lab = a.dum ? a.lab : (labOf ? labOf(a) : a.lab);
+        return html`<g key=${'a' + a.id + a.f + a.t}>
+          <path d=${g.d} className=${'sav6-arc' + (a.dum ? ' sav6-dum' : '') + (k ? ' ' + k : '')} />
+          <polygon points=${g.head} className=${'sav6-ah' + (k ? ' ' + k : '')} />
+          ${lab && html`<text x=${g.lx} y=${g.ly} textAnchor="middle" dominantBaseline="middle" fontSize=${net.fs} className="sav6-lab">${lab}</text>`}</g>`; })}
+      ${Object.keys(net.nodes).map(k => { const [x, y] = net.nodes[k], t = nodeTxt ? nodeTxt(k) : '', c = nodeCls ? nodeCls(k) : '';
+        return html`<g key=${'n' + k}><circle cx=${x} cy=${y} r=${net.r} className=${'sav6-nd' + (c ? ' ' + c : '')} />
+          ${t !== '' && t != null && html`<text x=${x} y=${y + 1} textAnchor="middle" dominantBaseline="middle" fontSize=${net.fs} fontWeight="700">${t}</text>`}</g>`; })}
+    </svg>`;
+  }
+  // arcs on a chain of activities (with the dummies between consecutive ones)
+  function chainArcs(net, ids) {
+    const on = new Set(ids), out = new Set(), end = {}, start = {};
+    net.arcs.forEach(a => { if (!a.dum) { end[a.id] = a.t; start[a.id] = a.f; } });
+    for (let i = 0; i + 1 < ids.length; i++) { const e = end[ids[i]], s = start[ids[i + 1]]; if (e !== s) net.arcs.forEach(a => { if (a.dum && a.f === e && a.t === s) out.add(a); }); }
+    net.arcs.forEach(a => { if (!a.dum && on.has(a.id)) out.add(a); });
+    return out;
+  }
+
+  /* ── 0.2: phases of project planning with CPM-PERT (slide 3) ── */
+  function Phases({ ar }) {
+    const steps = [
+      { en: '<b>(1) Project activities:</b> define the activities of the project, their precedence relationships and their time requirements.', ar: '<b>(1) الـ Project activities:</b> نحدد الـ activities بتاعة المشروع، وعلاقات الأسبقية (precedence) بينها، والوقت اللي محتاجاه.' },
+      { en: '<b>(2) Network:</b> the project is translated into a network that shows the precedence relationships among the activities.', ar: '<b>(2) الـ Network:</b> نحوّل المشروع لـ network بيوضح علاقات الأسبقية بين الـ activities.' },
+      { en: '<b>(3) Network calculation:</b> specific network computations that form the basis for the time schedule.', ar: '<b>(3) الـ Network calculation:</b> حسابات على الـ network هي الأساس اللي بنبني عليه الـ time schedule.' },
+      { en: '<b>(4) Time schedule:</b> the activities laid out along the time axis.', ar: '<b>(4) الـ Time schedule:</b> الـ activities مترتبة على محور الوقت.' },
+      { en: '<b>Feedback loop:</b> during execution the schedule may not be realized as planned (activities expedited or delayed), so it is updated: the loop goes from the time schedule back to the network.', ar: '<b>الـ Feedback loop:</b> وقت التنفيذ ممكن الـ schedule مايتحققش زي ما اتخطط (activities تخلص بدري أو تتأخر)، فبيتحدّث: الـ loop راجع من الـ time schedule للـ network.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    const box = (k, y, h, on) => html`<rect x="14" y=${y} width="216" height=${h} rx="8" className=${'sav6-box' + (on ? ' sav6-on' : '')} style=${{ opacity: i >= k ? 1 : .3 }} />`;
+    const down = (y, k) => html`<g style=${{ opacity: i >= k ? 1 : .25 }} className="fade"><line x1="122" y1=${y} x2="122" y2=${y + 18} className="sav6-gl" /><polygon points=${`122,${y + 26} 116,${y + 16} 128,${y + 16}`} fill="var(--graphite)" /></g>`;
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <svg className="sav6-svg" viewBox="0 0 300 432" role="img" aria-label="Phases for project planning with CPM-PERT: project activities, network, network calculation, time schedule, and a feedback loop from the time schedule to the network" style=${{ maxWidth: '340px' }}>
+        ${box(0, 6, 52, i === 0)}
+        <text x="122" y="38" textAnchor="middle" fontSize="18" fontWeight="700" style=${{ opacity: i >= 0 ? 1 : .3 }}>Project Activities</text>
+        ${down(60, 1)}
+        ${box(1, 90, 112, i === 1)}
+        <g style=${{ opacity: i >= 1 ? 1 : .3 }} className="fade">
+          <text x="122" y="114" textAnchor="middle" fontSize="18" fontWeight="700">Network</text>
+          <path d="M64 162 L98 134 M64 162 L98 186 M98 134 L98 186 M98 134 L146 158 M98 186 L146 158 M146 158 L180 158 M98 134 L180 158" className="sav6-mini" />
+          ${[[64, 162], [98, 134], [98, 186], [146, 158], [180, 158]].map(([x, y], k) => html`<circle key=${k} cx=${x} cy=${y} r="8" fill="var(--paper)" stroke="var(--fig-k)" strokeWidth="1.6" />`)}
+        </g>
+        ${down(204, 2)}
+        ${box(2, 234, 52, i === 2)}
+        <text x="122" y="266" textAnchor="middle" fontSize="18" fontWeight="700" style=${{ opacity: i >= 2 ? 1 : .3 }}>Network Calculation</text>
+        ${down(288, 3)}
+        ${box(3, 318, 108, i === 3)}
+        <g style=${{ opacity: i >= 3 ? 1 : .3 }} className="fade">
+          <text x="122" y="342" textAnchor="middle" fontSize="18" fontWeight="700">Time Schedule</text>
+          <line x1="40" y1="352" x2="40" y2="418" className="sav6-gl" />
+          ${[[40, 120, 360], [40, 96, 371], [70, 140, 382], [58, 128, 393], [110, 170, 404], [138, 196, 415]].map(([a, b, y], k) => html`<line key=${k} x1=${a} y1=${y} x2=${b} y2=${y} stroke="var(--fig-k)" strokeWidth="2.4" />`)}
+          <text x="214" y="366" textAnchor="end" fontSize="16" className="sav6-gt">Time</text>
+        </g>
+        <g className=${pop(i >= 4)}>
+          <path d="M230 372 H270 V146 H240" className=${'sav6-fb' + (calm() ? '' : ' flow')} />
+          <polygon points="232,146 244,140 244,152" fill="var(--fig-k)" />
+          <text x="282" y="262" textAnchor="middle" fontSize="16" fontWeight="700" className="sav6-kt" transform="rotate(-90 282 262)">feedback</text>
+        </g>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 1.1-1.2: rule 2 and the four ways to insert a dummy for concurrent A and B (slide 11) ── */
+  const WAYS = [
+    { n: { 1: [26, 92], 2: [80, 30], 3: [134, 92] }, a: [{ id: 'A', f: 1, t: 2, lab: 'A', lx: -14, ly: -6 }, { id: 'd', f: 2, t: 3, dum: 1 }, { id: 'B', f: 1, t: 3, lab: 'B', ly: 14 }] },
+    { n: { 1: [26, 92], 2: [80, 30], 3: [134, 92] }, a: [{ id: 'd', f: 1, t: 2, dum: 1 }, { id: 'A', f: 2, t: 3, lab: 'A', lx: 14, ly: -6 }, { id: 'B', f: 1, t: 3, lab: 'B', ly: 14 }] },
+    { n: { 1: [26, 34], 2: [80, 96], 3: [134, 34] }, a: [{ id: 'A', f: 1, t: 3, lab: 'A', ly: -13 }, { id: 'd', f: 1, t: 2, dum: 1 }, { id: 'B', f: 2, t: 3, lab: 'B', lx: 14, ly: 6 }] },
+    { n: { 1: [26, 34], 2: [80, 96], 3: [134, 34] }, a: [{ id: 'A', f: 1, t: 3, lab: 'A', ly: -13 }, { id: 'B', f: 1, t: 2, lab: 'B', lx: -14, ly: 6 }, { id: 'd', f: 2, t: 3, dum: 1 }] }
+  ];
+  function DummyWays({ ar }) {
+    const steps = [
+      { en: 'A and B are <b>concurrent</b>: both start at the same node and end at the same node. Then both arcs are identified by the <b>same two end nodes</b>, which breaks <b>rule 2</b> (each activity must be identified by two distinct end nodes).', ar: 'الـ A والـ B بيحصلوا <b>في نفس الوقت</b>: الاتنين بيبدأوا من نفس الـ node وبيخلصوا عند نفس الـ node. كده الاتنين متعرّفين بـ <b>نفس الـ end nodes</b>، وده بيكسر <b>الـ rule 2</b> (كل activity لازم تتعرّف بـ اتنين end nodes مختلفين).' },
+      { en: '<b>Way 1:</b> A ends at node 2 and a dashed <b>dummy</b> goes from 2 to 3. Now A is (1, 2) and B is (1, 3).', ar: '<b>الطريقة الأولى:</b> الـ A بتخلص عند الـ node 2، و<b>dummy</b> متقطع رايح من 2 لـ 3. كده الـ A بقت <bdi dir="ltr">(1,&nbsp;2)</bdi> والـ B بقت <bdi dir="ltr">(1,&nbsp;3)</bdi>.' },
+      { en: '<b>Way 2:</b> the dummy comes first, from 1 to 2, then A from 2 to 3. A is (2, 3), B is (1, 3).', ar: '<b>الطريقة التانية:</b> الـ dummy الأول من 1 لـ 2، وبعده الـ A من 2 لـ 3. الـ A بقت <bdi dir="ltr">(2,&nbsp;3)</bdi> والـ B بقت <bdi dir="ltr">(1,&nbsp;3)</bdi>.' },
+      { en: '<b>Way 3:</b> the same with B: dummy from 1 to 2, then B from 2 to 3. A is (1, 3), B is (2, 3).', ar: '<b>الطريقة التالتة:</b> نفس الفكرة مع الـ B، الـ dummy من 1 لـ 2 وبعده الـ B من 2 لـ 3. الـ A بقت <bdi dir="ltr">(1,&nbsp;3)</bdi> والـ B بقت <bdi dir="ltr">(2,&nbsp;3)</bdi>.' },
+      { en: '<b>Way 4:</b> B ends at node 2 and the dummy goes from 2 to 3. A is (1, 3), B is (1, 2).', ar: '<b>الطريقة الرابعة:</b> الـ B بتخلص عند الـ node 2، والـ dummy من 2 لـ 3. الـ A بقت <bdi dir="ltr">(1,&nbsp;3)</bdi> والـ B بقت <bdi dir="ltr">(1,&nbsp;2)</bdi>.' },
+      { en: 'In all four, the dummy <b>consumes no time or resources</b>: A and B stay concurrent, and each gets <b>unique end nodes</b>, so rule 2 holds.', ar: 'في الأربع طرق الـ dummy <b>مابيستهلكش وقت ولا resources</b>، فالـ A والـ B فاضلين بيحصلوا في نفس الوقت، وكل واحدة ليها <b>end nodes unique</b>، فالـ rule 2 اتحققت.' }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2500);
+    const bad = { w: 300, h: 104, r: 15, fs: 17, nodes: { 1: [44, 52], 2: [256, 52] }, arcs: [{ id: 'A', f: 1, t: 2, lab: 'A', c: [150, 2], ly: -8 }, { id: 'B', f: 1, t: 2, lab: 'B', c: [150, 102], ly: 8 }] };
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <div style=${{ maxWidth: '300px', margin: '0 auto' }}><${Net} net=${bad} arcCls=${() => i === 0 ? 'sav6-bad' : 'sav6-dim'} label="A and B drawn between the same two nodes" /></div>
+      <p className="sav6-h">${i === 0 ? 'Same end nodes for A and B: breaks rule 2' : 'Use of a dummy: four ways'}</p>
+      <div className="sav6-four">${WAYS.map((w, k) => { const net = { w: 160, h: 126, r: 14, fs: 16, nodes: w.n, arcs: w.a };
+        return html`<div key=${k} className=${i === 0 ? 'sav6-off' : i === k + 1 ? 'sav6-on' : i === 5 ? '' : 'sav6-off'}>
+          <${Net} net=${net} nodeTxt=${n => n} arcCls=${a => a.dum ? 'sav6-cur' : 'sav6-done'} label=${'Way ' + (k + 1) + ' of inserting a dummy'} /><small>way ${k + 1}</small></div>`; })}</div></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 1.3-1.4: rule 3 and the dummy that keeps the right precedence (slides 12 to 16) ── */
+  const FIX_CAP = {
+    none: { en: 'Rule 3 for this segment: <b>C</b> must be immediately preceded by <b>A and B</b>; <b>E</b> by <b>B only</b>. Mark which activities have finished and see what may start in each drawing.', ar: 'الـ Rule 3 هنا: الـ <b>C</b> لازم يسبقها <b>A و B</b> على طول، والـ <b>E</b> يسبقها <b>B بس</b>. علّم الـ activities اللي خلصت وشوف مين يقدر يبدأ في كل رسمة.' },
+    a: { en: 'A has finished, B is still running. C and E both need B, so both wait, in both drawings. Correct so far.', ar: 'الـ A خلصت والـ B لسه شغالة. الـ C والـ E الاتنين محتاجين B، فالاتنين مستنيين في الرسمتين. لحد هنا الرسمتين صح.' },
+    b: { en: 'B has finished, A is still running. E needs only B, so it should start. In <b>(a)</b> E leaves the node that A also enters, so E waits for A: <b>wrong</b>. In <b>(b)</b> B ends at its own node, E starts, and the dummy D passes B\'s finish on to C\'s node: <b>correct</b>.', ar: 'الـ B خلصت والـ A لسه شغالة. الـ E محتاجة B بس، فالمفروض تبدأ. في <b>(a)</b> الـ E طالعة من نفس الـ node اللي الـ A داخلة فيها، فالـ E بتستنى A، وده <b>غلط</b>. في <b>(b)</b> الـ B بتخلص عند node لوحدها، فالـ E تبدأ، والـ dummy D بيوصّل نهاية B لـ node الـ C، وده <b>صح</b>.' },
+    ab: { en: 'A and B have both finished: C and E may start in both drawings. The difference shows only when B finishes before A: the dummy D (no time, no resources) fixes drawing (a).', ar: 'الـ A والـ B خلصوا الاتنين، فالـ C والـ E يقدروا يبدأوا في الرسمتين. الفرق بيبان بس لما B تخلص قبل A، والـ dummy D (من غير وقت ولا resources) هو اللي بيصلّح الرسمة (a).' }
+  };
+  function DummyFix({ ar }) {
+    const [A, setA] = useState(false), [B, setB] = useState(false);
+    const key = A && B ? 'ab' : A ? 'a' : B ? 'b' : 'none';
+    const st = (can, need) => can ? 'sav6-ok' : need ? 'sav6-bad' : '';
+    const done = x => x ? 'sav6-done' : '';
+    const ar1 = (x1, y1, x2, y2, cls, dum) => { const d = Math.hypot(x2 - x1, y2 - y1), ux = (x2 - x1) / d, uy = (y2 - y1) / d, bx = x2 - ux, by = y2 - uy;
+      return html`<g><path d=${`M${x1},${y1} L${(bx - ux * 6).toFixed(1)},${(by - uy * 6).toFixed(1)}`} className=${'sav6-arc' + (dum ? ' sav6-dum' : '') + (cls ? ' ' + cls : '')} />
+        <polygon points=${`${bx.toFixed(1)},${by.toFixed(1)} ${(bx - ux * 11 - uy * 5.5).toFixed(1)},${(by - uy * 11 + ux * 5.5).toFixed(1)} ${(bx - ux * 11 + uy * 5.5).toFixed(1)},${(by - uy * 11 - ux * 5.5).toFixed(1)}`} className=${'sav6-ah' + (cls ? ' ' + cls : '')} /></g>`; };
+    const T = (x, y, t) => html`<text x=${x} y=${y} textAnchor="middle" dominantBaseline="middle" fontSize="20" className="sav6-lab">${t}</text>`;
+    // (a): one node for A, B → C, E
+    const aC = A && B, aE = A && B, bC = A && B, bE = B;
+    const lineFor = (can, need) => can ? html`<span className="sav6-y">may start</span>` : need ? html`<span className="sav6-x">waits for A ✗</span>` : html`<span className="sav6-w">waits</span>`;
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <div className="sav6-row">
+        <button className=${'fig-btn' + (A ? ' sav6-on' : '')} aria-pressed=${String(A)} onClick=${() => setA(!A)}>A finished</button>
+        <button className=${'fig-btn' + (B ? ' sav6-on' : '')} aria-pressed=${String(B)} onClick=${() => setB(!B)}>B finished</button>
+      </div>
+      <div className="sav6-two">
+        <div className=${B && !A ? 'sav6-wrong' : ''}><p className="sav6-h">(a) one node</p>
+          <svg className="sav6-svg" viewBox="0 0 190 178" role="img" aria-label="Drawing (a): A and B enter one node, C and E leave it">
+            ${ar1(18, 18, 76, 72, done(A))}${ar1(18, 160, 76, 106, done(B))}${ar1(114, 72, 172, 18, st(aC))}${ar1(114, 106, 172, 160, st(aE, B && !A))}
+            <circle cx="95" cy="89" r="24" className="sav6-nd" />
+            ${T(36, 58, 'A')}${T(36, 120, 'B')}${T(154, 58, 'C')}${T(154, 120, 'E')}
+          </svg>
+          <div className="sav6-st"><span>C: ${lineFor(aC)}</span><span>E: ${lineFor(aE, B && !A)}</span></div></div>
+        <div><p className="sav6-h">(b) with dummy D</p>
+          <svg className="sav6-svg" viewBox="0 0 190 178" role="img" aria-label="Drawing (b): A and the dummy D enter C's node; B ends at its own node where E starts">
+            ${ar1(6, 40, 74, 40, done(A))}${ar1(116, 40, 184, 40, st(bC))}${ar1(6, 140, 74, 140, done(B))}${ar1(116, 140, 184, 140, st(bE))}
+            ${ar1(95, 119, 95, 61, B ? 'sav6-done' : '', true)}
+            <circle cx="95" cy="40" r="20" className="sav6-nd" /><circle cx="95" cy="140" r="20" className="sav6-nd" />
+            ${T(40, 24, 'A')}${T(150, 24, 'C')}${T(40, 124, 'B')}${T(150, 124, 'E')}${T(112, 90, 'D')}
+          </svg>
+          <div className="sav6-st"><span>C: ${lineFor(bC)}</span><span>E: ${lineFor(bE)}</span></div></div>
+      </div></div>
+      <${Cap} ...${FIX_CAP[key]} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => { setA(false); setB(false); }}>↻ Reset</button></div></figure>`;
+  }
+
+  /* ── 2: CPM calculator (forward pass, backward pass, slack, free slack, Gantt, team) ── */
+  function parse(txt) {
+    const lines = txt.split('\n').map(l => l.trim()).filter(Boolean), acts = [], ids = {};
+    if (!lines.length) return { err: 'empty' };
+    if (lines.length > 26) return { err: 'many' };
+    for (let k = 0; k < lines.length; k++) {
+      const p = lines[k].split(/\s+/);
+      if (p.length < 2 || p.length > 3 || !/^[A-Za-z0-9]{1,3}$/.test(p[0])) return { err: 'line', at: k + 1 };
+      if (!/^\d{1,2}$/.test(p[1]) || +p[1] < 1) return { err: 'dur', at: k + 1 };
+      if (ids[p[0]]) return { err: 'dup', at: k + 1 };
+      ids[p[0]] = 1; acts.push({ id: p[0], dur: +p[1], pred: p[2] && p[2] !== '-' ? p[2].split(',').filter(Boolean) : [] });
+    }
+    for (const a of acts) for (const q of a.pred) if (!ids[q] || q === a.id) return { err: 'pred', at: acts.indexOf(a) + 1 };
+    try { return { acts, c: cpm(acts) }; } catch (e) { return { err: 'cycle' }; }
+  }
+  const ERR = {
+    empty: { en: 'Type one activity per line: name, duration, predecessors (or -).', ar: 'اكتب activity في كل سطر: الاسم، والـ duration، والـ predecessors (أو شرطة لو مفيش).' },
+    many: { en: 'At most 26 activities.', ar: 'الحد الأقصى <bdi dir="ltr">26</bdi> activity.' },
+    line: { en: 'Line {n} should look like <b>G 3 A,D</b> (name, duration, predecessors).', ar: 'السطر رقم <bdi dir="ltr">{n}</bdi> لازم يبقى بالشكل ده (الاسم والـ duration والـ predecessors):<span class="ltr">G 3 A,D</span>' },
+    dur: { en: 'Line {n}: the duration must be a whole number from 1 to 99.', ar: 'في السطر رقم <bdi dir="ltr">{n}</bdi> الـ duration لازم تبقى رقم صحيح من <bdi dir="ltr">1</bdi> لـ <bdi dir="ltr">99</bdi>.' },
+    dup: { en: 'Line {n}: that activity name is used twice.', ar: 'في السطر رقم <bdi dir="ltr">{n}</bdi> اسم الـ activity متكرر.' },
+    pred: { en: 'Line {n}: a predecessor is not in the list.', ar: 'في السطر رقم <bdi dir="ltr">{n}</bdi> فيه predecessor مش موجود في الليستة.' },
+    cycle: { en: 'The predecessors go round in a loop: a network cannot have one.', ar: 'الـ predecessors عاملين دايرة (loop)، والـ network ماينفعش يبقى فيه loop.' }
+  };
+  function Gantt({ acts, c, cur, label }) {
+    const n = acts.length, T = c.T, x0 = 44, x1 = 332, k = (x1 - x0) / T, rh = 19, top = 30;
+    const max = Math.max(...c.team), hb = 8, hy = top + n * rh + 12, hh = max * hb, H = hy + hh + 26;
+    const step = T <= 20 ? 2 : T <= 40 ? 5 : 10, ticks = []; for (let t = 0; t <= T; t += step) ticks.push(t);
+    const X = t => x0 + t * k, run = cur != null ? acts.filter(a => c.r[a.id].es <= cur && cur < c.r[a.id].ef).map(a => a.id) : [];
+    const peak = c.team.indexOf(max);
+    return html`<svg className="sav6-svg" viewBox=${`0 0 340 ${H}`} role="img" aria-label=${label}>
+      ${ticks.map(t => html`<g key=${'t' + t}><line x1=${X(t)} y1=${top - 6} x2=${X(t)} y2=${hy + hh} className="sav6-tick" /><text x=${X(t)} y=${top - 12} textAnchor="middle" fontSize="15" className="sav6-gt">${t}</text></g>`)}
+      ${cur != null && html`<rect x=${X(cur)} y=${top - 6} width=${k} height=${hy + hh - top + 6} className="sav6-cursor" />`}
+      ${acts.map((a, j) => { const r = c.r[a.id], y = top + j * rh, crit = r.sl === 0, on = run.includes(a.id);
+        return html`<g key=${a.id} className="sav6-gbar">
+          <text x="6" y=${y + 10} dominantBaseline="middle" fontSize="15" fontWeight="700" className=${crit ? 'sav6-kt' : ''}>${a.id}</text>
+          ${r.sl > 0 && html`<line x1=${X(r.ef)} y1=${y + 10} x2=${X(r.lf)} y2=${y + 10} className="sav6-gs" />`}
+          <rect x=${X(r.es)} y=${y + 3} width=${Math.max(1, X(r.ef) - X(r.es))} height="14" rx="2" className=${(crit ? 'sav6-gc' : 'sav6-gn') + (on ? ' sav6-run' : '')} /></g>`; })}
+      ${c.team.map((v, t) => html`<rect key=${'h' + t} x=${X(t) + .5} y=${hy + hh - v * hb} width=${Math.max(1, k - 1)} height=${v * hb} className=${'sav6-hist' + (cur === t ? ' sav6-at' : cur == null && v === max ? ' sav6-pk' : '')} />`)}
+      <text x="6" y=${hy + hh - 4} fontSize="15" fontWeight="700" className="sav6-gt">team</text>
+      ${cur != null ? html`<text x=${Math.min(326, Math.max(14, X(cur) + k / 2))} y=${hy + hh + 18} textAnchor="middle" fontSize="16" fontWeight="700" className="sav6-pt">${c.team[cur]}</text>`
+        : html`<text x=${Math.min(300, Math.max(30, X(peak) + k / 2))} y=${hy + hh + 18} textAnchor="middle" fontSize="16" fontWeight="700" className="sav6-kt">max ${max}</text>`}
+    </svg>`;
+  }
+  const Key = () => html`<div className="sav6-key"><span><i className="sav6-kc"></i>critical</span><span><i className="sav6-kn"></i>non-critical</span><span><i className="sav6-ks"></i>slack up to LF</span></div>`;
+  function detail(a, c) {
+    const r = c.r[a.id], s = c.succ[a.id], pe = a.pred.map(p => c.r[p].ef), sl = s.map(x => c.r[x].ls), se = s.map(x => c.r[x].es);
+    return [
+      a.pred.length ? `ES = max(EF of ${a.pred.join(', ')}) = ${pe.length > 1 ? `max(${pe.join(', ')}) = ` : ''}${r.es}` : 'ES = 0 (no predecessor)',
+      `EF = ES + ${a.dur} = ${r.es} + ${a.dur} = ${r.ef}`,
+      s.length ? `LF = min(LS of ${s.join(', ')}) = ${sl.length > 1 ? `min(${sl.join(', ')}) = ` : ''}${r.lf}` : `LF = T = ${r.lf} (end activity)`,
+      `LS = LF − ${a.dur} = ${r.lf} − ${a.dur} = ${r.ls}`,
+      `Slack = LS − ES = ${r.ls} − ${r.es} = ${r.sl}${r.sl === 0 ? ' → critical' : ''}`,
+      s.length ? `Free slack = min(ES of ${s.join(', ')}) − EF = ${se.length > 1 ? `min(${se.join(', ')})` : se[0]} − ${r.ef} = ${r.fs}` : `Free slack = T − EF = ${c.T} − ${r.ef} = ${r.fs}`
+    ];
+  }
+  function CpmCalc({ ar }) {
+    const [txt, setTxt] = useState(toText(EX.L13.d)), [sel, setSel] = useState(null);
+    const p = parse(txt), which = Object.keys(EX).find(k => toText(EX[k].d) === txt.trim());
+    let cap;
+    if (p.err) { const e = ERR[p.err]; cap = { en: e.en.replace('{n}', p.at), ar: e.ar.replace('{n}', p.at) }; }
+    else {
+      const cps = chains(p.acts, p.c, true).map(x => x.join('-')), team = Math.max(...p.c.team);
+      cap = { en: `${which ? 'Example from the notes, <b>' + EX[which].n + '</b>' : '<b>Your network</b>'}: project duration <b>T = ${p.c.T}</b> (the longest path), critical path <b>${cps.join(' and ')}</b>, minimum team <b>${team}</b> (the most bars running at once). Tap a row for its calculation.`,
+        ar: `في ${which ? 'المثال ده من الـ notes' : 'الـ network بتاعك'}، مدة المشروع هي طول أطول path:<span class="ltr">T = ${p.c.T}</span>والـ critical path:<span class="ltr">${cps.join(' , ')}</span>وأقل team هو <bdi dir="ltr">${team}</bdi> (أكبر عدد bars شغالين مع بعض). دوس على أي صف عشان تشوف الحساب بتاعه.` };
+    }
+    const s = !p.err && sel && p.acts.find(a => a.id === sel);
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <p className="sav6-h">Examples from the notes</p>
+      <div className="sav6-row">${Object.keys(EX).map(k => html`<button key=${k} className=${'fig-btn' + (which === k ? ' sav6-on' : '')} onClick=${() => { setTxt(toText(EX[k].d)); setSel(null); }}>${EX[k].n}</button>`)}</div>
+      ${!p.err && html`<div>
+        <div className="sav6-tw"><table className="sav6-tbl"><thead><tr><th>Act</th><th>Dur</th><th>ES</th><th>EF</th><th>LS</th><th>LF</th><th>Slack</th><th>Free</th></tr></thead><tbody>
+          ${p.acts.map(a => { const r = p.c.r[a.id]; return html`<tr key=${a.id} className=${'sav6-tap' + (r.sl === 0 ? ' sav6-crit' : '') + (sel === a.id ? ' sav6-sel' : '')} onClick=${() => setSel(sel === a.id ? null : a.id)} tabIndex="0" onKeyDown=${e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSel(sel === a.id ? null : a.id); } }}>
+            <td>${a.id}</td><td>${a.dur}</td><td>${r.es}</td><td>${r.ef}</td><td>${r.ls}</td><td>${r.lf}</td><td className="sav6-z">${r.sl}</td><td>${r.fs}</td></tr>`; })}</tbody></table></div>
+        ${s && html`<div className="sav6-det"><b>${s.id}</b> (duration ${s.dur}${s.pred.length ? ', after ' + s.pred.join(', ') : ''})${detail(s, p.c).map((l, j) => html`<div key=${j}>${l}</div>`)}</div>`}
+        <p className="sav6-h">Gantt chart (each bar from ES to EF) and bars running per time unit</p>
+        <${Gantt} acts=${p.acts} c=${p.c} label="Gantt chart of the activities with the number of activities running in each time unit" /><${Key} />
+      </div>`}
+      ${p.err && html`<p className="sav6-err">Check the input.</p>`}
+      <div className="sav6-in"><label htmlFor="sav6-calc-in">Try your own: one activity per line (name, duration, predecessors or -)</label>
+        <textarea id="sav6-calc-in" rows="6" spellCheck="false" value=${txt} onInput=${e => { setTxt(e.target.value); setSel(null); }}></textarea></div></div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 3: the 13-activity network, forward and backward pass ── */
+  const N13 = { w: 380, h: 300, r: 16, fs: 17,
+    nodes: { 1: [20, 150], 2: [100, 150], 4: [180, 50], 3: [180, 232], 5: [262, 232], 6: [292, 150], 7: [362, 150] },
+    arcs: [
+      { id: 'A', f: 1, t: 4, lab: 'A=5', lx: -20, ly: -6 }, { id: 'B', f: 1, t: 2, lab: 'B=10', ly: -13 }, { id: 'C', f: 1, t: 5, lab: 'C=3', c: [44, 318], ly: -14 },
+      { id: 'D', f: 2, t: 4, lab: 'D=8', lx: 20, ly: 8 }, { id: 'E', f: 2, t: 3, lab: 'E=10', lx: -22, ly: 6 }, { id: 'H', f: 2, t: 6, lab: 'H=4', ly: -12 },
+      { id: 'F', f: 3, t: 5, lab: 'F=9', ly: -12 }, { id: 'I', f: 3, t: 6, lab: 'I=5', lx: 14, ly: 12 }, { id: 'G', f: 4, t: 6, lab: 'G=3', lx: 14, ly: -10 },
+      { id: 'K', f: 4, t: 7, lab: 'K=4', c: [330, 22], ly: -12 }, { id: 'J', f: 5, t: 6, lab: 'J=7', lx: 20, ly: 4 }, { id: 'M', f: 5, t: 7, lab: 'M=3', lx: 18, ly: 12 },
+      { id: 'L', f: 6, t: 7, lab: 'L=4', ly: -12 }
+    ] };
+  const T13 = [['A', 5, '-', 0, 5, 28, 33, 28], ['B', 10, '-', 0, 10, 0, 10, 0], ['C', 3, '-', 0, 3, 26, 29, 26], ['D', 8, 'B', 10, 18, 25, 33, 15], ['E', 10, 'B', 10, 20, 10, 20, 0], ['F', 9, 'E', 20, 29, 20, 29, 0], ['G', 3, 'A,D', 18, 21, 33, 36, 15], ['H', 4, 'B', 10, 14, 32, 36, 22], ['I', 5, 'E', 20, 25, 31, 36, 11], ['J', 7, 'C,F', 29, 36, 29, 36, 0], ['K', 4, 'A,D', 18, 22, 36, 40, 18], ['L', 4, 'G,H,I,J', 36, 40, 36, 40, 0], ['M', 3, 'C,F', 29, 32, 37, 40, 8]];
+  const S13 = [
+    { en: 'The 13 activities as a network: each activity is an arc labelled with its duration in days, starting from the node on the left. The table follows the notes.', ar: 'الـ 13 activity مترسومين كـ network: كل activity عبارة عن arc مكتوب عليه الـ duration بتاعها بالأيام، والبداية من الـ node اللي على الشمال. والجدول زي اللي في الـ notes.', fw: [] },
+    { en: '<b>Forward pass.</b> A, B and C have no predecessors, so ES = 0 and EF = ES + duration: A 0 to 5, B 0 to 10, C 0 to 3.', ar: '<b>الـ Forward pass.</b> الـ A والـ B والـ C مالهمش predecessors، فالـ ES بتاعهم صفر، والـ EF هو الـ ES زائد الـ duration:<span class="ltr">A: 0 → 5,  B: 0 → 10,  C: 0 → 3</span>', fw: ['A', 'B', 'C'], nd: 1 },
+    { en: 'D, E and H follow B only: ES = EF(B) = 10, so D 10 to 18, E 10 to 20, H 10 to 14.', ar: 'الـ D والـ E والـ H بييجوا بعد B بس، فالـ ES بتاعهم هو الـ EF بتاع B:<span class="ltr">ES = EF(B) = 10</span><span class="ltr">D: 10 → 18,  E: 10 → 20,  H: 10 → 14</span>', fw: ['D', 'E', 'H'], nd: 2 },
+    { en: 'F and I follow E: ES = EF(E) = 20, so F 20 to 29, I 20 to 25.', ar: 'الـ F والـ I بييجوا بعد E:<span class="ltr">ES = EF(E) = 20</span><span class="ltr">F: 20 → 29,  I: 20 → 25</span>', fw: ['F', 'I'], nd: 3 },
+    { en: 'G and K need both A and D, so take the largest: ES = max(EF A, EF D) = max(5, 18) = 18; G 18 to 21, K 18 to 22.', ar: 'الـ G والـ K محتاجين A و D الاتنين، فناخد الأكبر:<span class="ltr">ES = max(EF A, EF D) = max(5, 18) = 18</span><span class="ltr">G: 18 → 21,  K: 18 → 22</span>', fw: ['G', 'K'], nd: 4 },
+    { en: 'J and M need C and F: ES = max(3, 29) = 29; J 29 to 36, M 29 to 32.', ar: 'الـ J والـ M محتاجين C و F:<span class="ltr">ES = max(3, 29) = 29</span><span class="ltr">J: 29 → 36,  M: 29 → 32</span>', fw: ['J', 'M'], nd: 5 },
+    { en: 'L needs G, H, I and J: ES = max(21, 14, 25, 36) = 36; L 36 to 40.', ar: 'الـ L محتاجة G و H و I و J:<span class="ltr">ES = max(21, 14, 25, 36) = 36</span><span class="ltr">L: 36 → 40</span>', fw: ['L'], nd: 6 },
+    { en: 'The project ends when K, L and M are all done: <b>T = largest EF = max(22, 40, 32) = 40 days</b>, the length of the longest path.', ar: 'المشروع بيخلص لما K و L و M يخلصوا كلهم، فمدة المشروع هي أكبر EF، يعني طول أطول path:<span class="ltr">T = max(22, 40, 32) = 40</span>', fw: [], nd: 7 },
+    { en: '<b>Backward pass.</b> K, L and M are end activities: LF = T = 40 and LS = LF − duration: K 36, L 36, M 37.', ar: '<b>الـ Backward pass.</b> الـ K والـ L والـ M آخر activities، فالـ LF بتاعهم هو T والـ LS هو الـ LF ناقص الـ duration:<span class="ltr">LF = 40;  LS: K 36, L 36, M 37</span>', bw: ['K', 'L', 'M'] },
+    { en: 'G, H, I and J are followed only by L: LF = LS(L) = 36, so LS: G 33, H 32, I 31, J 29.', ar: 'الـ G والـ H والـ I والـ J مفيش بعدهم غير L:<span class="ltr">LF = LS(L) = 36</span><span class="ltr">LS: G 33, H 32, I 31, J 29</span>', bw: ['G', 'H', 'I', 'J'] },
+    { en: 'C and F are followed by J and M, so take the smallest: LF = min(LS J, LS M) = min(29, 37) = 29; LS: C 26, F 20.', ar: 'الـ C والـ F بعدهم J و M، فناخد الأصغر:<span class="ltr">LF = min(LS J, LS M) = min(29, 37) = 29</span><span class="ltr">LS: C 26, F 20</span>', bw: ['C', 'F'] },
+    { en: 'A and D are followed by G and K: LF = min(33, 36) = 33; LS: A 28, D 25.', ar: 'الـ A والـ D بعدهم G و K:<span class="ltr">LF = min(33, 36) = 33</span><span class="ltr">LS: A 28, D 25</span>', bw: ['A', 'D'] },
+    { en: 'E is followed by F and I: LF = min(20, 31) = 20; LS = 10.', ar: 'الـ E بعدها F و I:<span class="ltr">LF = min(20, 31) = 20,  LS = 10</span>', bw: ['E'] },
+    { en: 'B is followed by D, E and H: LF = min(25, 10, 32) = 10; LS = 0.', ar: 'الـ B بعدها D و E و H:<span class="ltr">LF = min(25, 10, 32) = 10,  LS = 0</span>', bw: ['B'] },
+    { en: '<b>Slack = LS − ES.</b> Zero slack: B, E, F, J, L, the <b>critical path B-E-F-J-L</b> (10 + 10 + 9 + 7 + 4 = 40). The others: A 28, C 26, D 15, G 15, H 22, I 11, K 18, M 8.', ar: '<b>الـ Slack هو LS ناقص ES.</b> الـ activities اللي الـ slack بتاعها صفر هي B و E و F و J و L، ودول <b>الـ critical path</b>:<span class="ltr">B-E-F-J-L = 10 + 10 + 9 + 7 + 4 = 40</span>والباقيين:<span class="ltr">A 28, C 26, D 15, G 15, H 22, I 11, K 18, M 8</span>', sl: 1 }
+  ];
+  const NT13 = { 1: 0, 2: 10, 3: 20, 4: 18, 5: 29, 6: 36, 7: 40 };
+  function Net13({ ar }) {
+    const [i, ctl] = useSteps(S13.length, 2900);
+    const s = S13[i], fwd = new Set(), bwd = new Set();
+    S13.slice(0, i + 1).forEach(x => { (x.fw || []).forEach(a => fwd.add(a)); (x.bw || []).forEach(a => bwd.add(a)); });
+    const cur = new Set(s.fw || s.bw || []), crit = s.sl ? chainArcs(N13, ['B', 'E', 'F', 'J', 'L']) : new Set();
+    const nodeDone = k => S13.slice(0, i + 1).some(x => x.nd === +k);
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <${Net} net=${N13} label="Network of the 13 activities A to M"
+        arcCls=${a => crit.has(a) ? 'sav6-crit' : cur.has(a.id) ? 'sav6-cur' : s.sl ? 'sav6-dim' : (fwd.has(a.id) ? 'sav6-done' : '')}
+        nodeCls=${k => s.nd === +k ? 'sav6-cur' : ''} nodeTxt=${k => +k === 1 ? 'S' : nodeDone(k) ? NT13[k] : ''} />
+      <div className="sav6-tw"><table className="sav6-tbl"><thead><tr><th>Act</th><th>Dur</th><th>Pred</th><th>ES</th><th>EF</th><th>LS</th><th>LF</th><th>Slack</th></tr></thead><tbody>
+        ${T13.map(([a, d, p, es, ef, ls, lf, sl]) => { const f = fwd.has(a), b = bwd.has(a), nw = cur.has(a);
+          return html`<tr key=${a} className=${s.sl && sl === 0 ? 'sav6-crit' : ''}><td>${a}</td><td>${d}</td><td>${p.replace(/,/g, ',​')}</td>
+            <td className=${nw && s.fw ? 'sav6-new' : ''}>${f ? es : ''}</td><td className=${nw && s.fw ? 'sav6-new' : ''}>${f ? ef : ''}</td>
+            <td className=${nw && s.bw ? 'sav6-new' : ''}>${b ? ls : ''}</td><td className=${nw && s.bw ? 'sav6-new' : ''}>${b ? lf : ''}</td>
+            <td className=${'sav6-z' + (s.sl ? ' sav6-new' : '')}>${s.sl ? sl : ''}</td></tr>`; })}</tbody></table></div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${S13} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 4: Gantt chart of the 13-activity example and the minimum team ── */
+  const A13 = P(EX.L13.d), C13 = cpm(A13);
+  function Gantt13({ ar }) {
+    const n = C13.T + 2, [k, setK] = useState(calm() ? n - 1 : 0), [on, setOn] = useState(!calm());
+    useEffect(() => { if (!on) return; if (k >= n - 1) { setOn(false); return; } const t = setTimeout(() => setK(x => x + 1), k === 0 ? 2600 : 520); return () => clearTimeout(t); }, [k, on]);
+    const go = j => { setOn(false); setK(Math.max(0, Math.min(n - 1, j))); };
+    const t = k === 0 ? null : k === n - 1 ? 20 : k - 1;
+    const run = t == null ? [] : A13.filter(a => C13.r[a.id].es <= t && t < C13.r[a.id].ef).map(a => a.id), cnt = run.length;
+    let cap;
+    if (k === 0) cap = { en: 'The earliest-start Gantt chart: each activity is a bar from ES to EF (critical bars in colour), its slack dotted up to LF. Under every time unit we count how many bars are running.', ar: 'الـ Gantt chart على أبدر بداية: كل activity عبارة عن bar من الـ ES للـ EF (الـ critical ملونين)، والـ slack متنقط لحد الـ LF. وتحت كل وحدة زمن بنعد الـ bars اللي شغالة.' };
+    else if (k === n - 1) cap = { en: 'The largest count is <b>4</b>, at time 20 to 21 (F, G, I and K run together), so the <b>minimum project team is 4</b>: the professor\'s answer.', ar: 'أكبر رقم هو <b>4</b>، في الفترة من 20 لـ 21 (الـ F والـ G والـ I والـ K شغالين مع بعض)، فـ <b>أقل project team هو 4</b>، وده إجابة الدكتور.' };
+    else cap = { en: `Time ${t} to ${t + 1}: <b>${run.join(', ')}</b> running, count <b>${cnt}</b>.${cnt === 4 ? ' This is the largest number.' : ''}`,
+      ar: `في الفترة من <bdi dir="ltr">${t}</bdi> لـ <bdi dir="ltr">${t + 1}</bdi> ${cnt === 4 ? '(وده أكبر رقم) ' : ''}الشغالين وعددهم:<span class="ltr">${run.join(', ')} → ${cnt}</span>` };
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <${Gantt} acts=${A13} c=${C13} cur=${t} label="Gantt chart of the 13 activities with the number of activities running per day" /><${Key} /></div>
+      <${Cap} ...${cap} showAr=${ar} />
+      <div className="sav6-play">
+        <button className="fig-btn" onClick=${() => go(k - 1)} disabled=${k === 0} aria-label="Previous time unit">‹</button>
+        <input type="range" min="0" max=${n - 1} value=${k} onInput=${e => go(+e.target.value)} onChange=${e => go(+e.target.value)} aria-label="Time unit" />
+        <button className="fig-btn" onClick=${() => go(k + 1)} disabled=${k === n - 1} aria-label="Next time unit">›</button>
+        <button className="fig-btn" onClick=${() => { setK(0); setOn(!calm()); }}>↻ Replay</button>
+      </div></figure>`;
+  }
+
+  /* ── 5: Problem 2, activity 6 revised ── */
+  const NP2 = { w: 380, h: 300, r: 15, fs: 17,
+    nodes: { a: [18, 140], b: [68, 140], c: [118, 140], d: [190, 44], f: [190, 140], e: [190, 222], h: [254, 140], i: [308, 140], j: [362, 140] },
+    arcs: [
+      { id: '1', f: 'a', t: 'b', lab: '1 (2)', ly: -26 }, { id: '2', f: 'b', t: 'c', lab: '2 (3)', ly: -26 },
+      { id: '3', f: 'c', t: 'd', lab: '3 (3)', lx: -22, ly: -8 }, { id: '4', f: 'c', t: 'f', lab: '4 (7)', lx: -8, ly: -14 }, { id: '5', f: 'c', t: 'e', lab: '5 (6)', lx: -22, ly: 8 },
+      { id: 'x1', f: 'f', t: 'd', dum: 1 }, { id: 'x2', f: 'f', t: 'e', dum: 1 },
+      { id: '6', f: 'd', t: 'h', lab: '6 (1)', lx: 26, ly: -8 }, { id: '7', f: 'e', t: 'h', lab: '7 (5)', lx: 26, ly: 8 },
+      { id: '8', f: 'h', t: 'i', lab: '8 (4)', ly: -26 }, { id: '9', f: 'c', t: 'i', lab: '9 (8)', c: [212, 400], ly: 16 }, { id: '10', f: 'i', t: 'j', lab: '10 (2)', ly: -26 }
+    ] };
+  const NAMES2 = ['collect requirements', 'analyze processes', 'analyze data', 'design processes', 'design data', 'design screens', 'design reports', 'programs', 'test and document', 'install'];
+  function Problem2({ ar }) {
+    const [d6, setD6] = useState(1);
+    const acts = P(EX.P2.d).map(a => a.id === '6' ? { ...a, dur: d6 } : a), c = cpm(acts), base = cpm(P(EX.P2.d));
+    const cps = chains(acts, c, true), crit = new Set(); cps.forEach(p => chainArcs(NP2, p).forEach(a => crit.add(a)));
+    let cap;
+    if (d6 === 1) cap = { en: 'The lecture data, activity 6 = <b>1 week</b>: earliest expected completion <b>23 weeks</b>, critical path <b>1-2-4-7-8-10</b> (2 + 3 + 7 + 5 + 4 + 2 = 23). Activity 6 has <b>4 weeks</b> of slack. Labels are activity (weeks); dashed arcs are dummies, needed because 6 follows 3 and 4 while 7 follows 4 and 5.', ar: 'بيانات المحاضرة، الـ activity 6 مدتها <b>أسبوع واحد</b>: أبدر وقت للخلاص <b>23 أسبوع</b>، والـ critical path:<span class="ltr">1-2-4-7-8-10 = 2 + 3 + 7 + 5 + 4 + 2 = 23</span>والـ activity 6 عندها <b>4 أسابيع</b> slack. المكتوب على كل arc هو رقم الـ activity ومدتها بالأسابيع، والأسهم المتقطعة dummies، محتاجينها عشان الـ 6 بعد 3 و 4 والـ 7 بعد 4 و 5.' };
+    else if (d6 === 6) cap = { en: 'Activity 6 revised to <b>6 weeks</b>: the increase of 5 exceeds its 4 weeks of slack by 1. Path 1-2-4-6-8-10 = 2 + 3 + 7 + 6 + 4 + 2 = <b>24 &gt; 23</b>: the project is <b>delayed 1 week</b>, the new critical path is <b>1-2-4-6-8-10</b>, and activity 7 now has <b>1 week</b> of slack.', ar: 'لو الـ activity 6 بقت <b>6 أسابيع</b>، الزيادة 5 أسابيع وده أكتر من الـ slack بتاعها (4) بأسبوع:<span class="ltr">1-2-4-6-8-10 = 2 + 3 + 7 + 6 + 4 + 2 = 24 &gt; 23</span>يعني المشروع <b>بيتأخر أسبوع</b>، والـ critical path الجديد هو <bdi dir="ltr">1-2-4-6-8-10</bdi>، والـ activity 7 بقى عندها <b>أسبوع</b> slack.' };
+    else { const lst = cps.map(p => p.join('-')).join(' and '), dl = c.T - 23;
+      cap = { en: `Try your own: activity 6 = <b>${d6} weeks</b>. T = <b>${c.T}</b> weeks (${dl > 0 ? 'delayed ' + dl : 'no delay'}), critical path ${lst}; activity 6 slack ${c.r['6'].sl}.`,
+        ar: `جرّب بنفسك: الـ activity 6 مدتها <bdi dir="ltr">${d6}</bdi> أسابيع. مدة المشروع والتأخير:<span class="ltr">T = ${c.T},  delay = ${Math.max(0, dl)}</span>والـ critical path:<span class="ltr">${cps.map(p => p.join('-')).join(' , ')}</span>والـ slack بتاع الـ activity 6:<span class="ltr">${c.r['6'].sl}</span>` }; }
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <div className="sav6-step"><span>Activity 6:</span>
+        <button className="fig-btn" onClick=${() => setD6(Math.max(1, d6 - 1))} disabled=${d6 <= 1} aria-label="One week less">−</button><b>${d6}</b>
+        <button className="fig-btn" onClick=${() => setD6(Math.min(12, d6 + 1))} disabled=${d6 >= 12} aria-label="One week more">+</button><span>weeks</span></div>
+      <div className="sav6-row"><button className=${'fig-btn' + (d6 === 1 ? ' sav6-on' : '')} onClick=${() => setD6(1)}>Lecture: 1 week</button><button className=${'fig-btn' + (d6 === 6 ? ' sav6-on' : '')} onClick=${() => setD6(6)}>Revised: 6 weeks</button></div>
+      <${Net} net=${NP2} label="Network of Problem 2, activities 1 to 10, with two dummies" labOf=${a => a.id === '6' ? `6 (${d6})` : a.lab}
+        arcCls=${a => crit.has(a) ? 'sav6-crit' : a.id === '6' && d6 !== 1 ? 'sav6-cur' : 'sav6-done'} nodeTxt=${k => k === 'a' ? 'S' : ''} />
+      <p className="sav6-sum">T = <b>${c.T}</b> weeks${c.T !== 23 ? html` (was 23)` : ''}</p>
+      <div className="sav6-tw"><table className="sav6-tbl"><thead><tr><th>#</th><th>Activity</th><th>Wk</th><th>ES</th><th>EF</th><th>Slack</th></tr></thead><tbody>
+        ${acts.map((a, j) => { const r = c.r[a.id], b = base.r[a.id], ch = x => x !== undefined && r[x] !== b[x] ? 'sav6-chg' : '';
+          return html`<tr key=${a.id} className=${r.sl === 0 ? 'sav6-crit' : ''}><td>${a.id}</td><td className="sav6-l">${NAMES2[j]}</td><td className=${a.id === '6' && d6 !== 1 ? 'sav6-chg' : ''}>${a.dur}</td><td className=${ch('es')}>${r.es}</td><td className=${ch('ef')}>${r.ef}</td><td className=${'sav6-z ' + ch('sl')}>${r.sl}</td></tr>`; })}</tbody></table></div></div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 6: Problem 3, EF / LF / slack activity by activity ── */
+  const NP3 = { w: 380, h: 250, r: 16, fs: 17,
+    nodes: { 1: [20, 125], 2: [96, 125], 3: [176, 44], 4: [176, 206], 5: [266, 44], 6: [296, 125], 7: [362, 125] },
+    arcs: [
+      { id: 'A', f: 1, t: 2, lab: 'A=5', ly: -14 }, { id: 'C', f: 2, t: 3, lab: 'C=4', lx: -20, ly: -6 }, { id: 'B', f: 2, t: 4, lab: 'B=3', lx: -20, ly: 6 },
+      { id: 'x', f: 3, t: 4, dum: 1 }, { id: 'D', f: 3, t: 5, lab: 'D=6', ly: -14 }, { id: 'E', f: 4, t: 6, lab: 'E=4', lx: 16, ly: 12 },
+      { id: 'F', f: 5, t: 6, lab: 'F=1', lx: 18, ly: -2 }, { id: 'G', f: 6, t: 7, lab: 'G=5', ly: -14 }
+    ] };
+  const T3 = [['A', '-', 5, 5, 5, 0], ['B', 'A', 3, 8, 12, 4], ['C', 'A', 4, 9, 9, 0], ['D', 'C', 6, 15, 15, 0], ['E', 'B,C', 4, 13, 16, 3], ['F', 'D', 1, 16, 16, 0], ['G', 'D,E,F', 5, 21, 21, 0]];
+  const S3 = [
+    { en: 'Problem 3 drawn as a network (begin at time 0). The dashed arc is a dummy: E follows B and C, but D follows C only.', ar: 'مسألة 3 مترسومة كـ network (بنبدأ من الوقت صفر). السهم المتقطع dummy، لأن الـ E بعد B و C، لكن الـ D بعد C بس.' },
+    { en: '<b>Forward pass</b> (EF = latest EF of the predecessors + duration). A starts at 0: EF = 0 + 5 = 5.', ar: '<b>الـ Forward pass:</b> الـ EF هو أكبر EF للـ predecessors زائد الـ duration. الـ A بتبدأ من صفر:<span class="ltr">EF(A) = 0 + 5 = 5</span>', f: 'A' },
+    { en: 'B after A: EF = 5 + 3 = 8.', ar: 'الـ B بعد A:<span class="ltr">EF(B) = 5 + 3 = 8</span>', f: 'B' },
+    { en: 'C after A: EF = 5 + 4 = 9.', ar: 'الـ C بعد A:<span class="ltr">EF(C) = 5 + 4 = 9</span>', f: 'C' },
+    { en: 'D after C: EF = 9 + 6 = 15.', ar: 'الـ D بعد C:<span class="ltr">EF(D) = 9 + 6 = 15</span>', f: 'D' },
+    { en: 'E after B and C: EF = max(8, 9) + 4 = 13.', ar: 'الـ E بعد B و C، فناخد الأكبر:<span class="ltr">EF(E) = max(8, 9) + 4 = 13</span>', f: 'E' },
+    { en: 'F after D: EF = 15 + 1 = 16.', ar: 'الـ F بعد D:<span class="ltr">EF(F) = 15 + 1 = 16</span>', f: 'F' },
+    { en: 'G after D, E and F: EF = max(15, 13, 16) + 5 = 21, so <b>T = 21</b>.', ar: 'الـ G بعد D و E و F:<span class="ltr">EF(G) = max(15, 13, 16) + 5 = 21</span>يعني مدة المشروع <bdi dir="ltr">T&nbsp;=&nbsp;21</bdi>.', f: 'G' },
+    { en: '<b>Backward pass</b> (LF = smallest LS of the successors, LS = LF − duration). G is the end activity: LF = T = 21.', ar: '<b>الـ Backward pass:</b> الـ LF هو أصغر LS للـ successors، والـ LS هو الـ LF ناقص الـ duration. الـ G آخر activity:<span class="ltr">LF(G) = T = 21</span>', b: 'G' },
+    { en: 'F is followed by G: LF = 21 − 5 = 16.', ar: 'الـ F بعدها G:<span class="ltr">LF(F) = 21 − 5 = 16</span>', b: 'F' },
+    { en: 'E is followed by G: LF = 21 − 5 = 16.', ar: 'الـ E بعدها G:<span class="ltr">LF(E) = 21 − 5 = 16</span>', b: 'E' },
+    { en: 'D is followed by F and G: LF = min(16 − 1, 21 − 5) = min(15, 16) = 15.', ar: 'الـ D بعدها F و G، فناخد الأصغر:<span class="ltr">LF(D) = min(16 − 1, 21 − 5) = min(15, 16) = 15</span>', b: 'D' },
+    { en: 'C is followed by D and E: LF = min(15 − 6, 16 − 4) = min(9, 12) = 9.', ar: 'الـ C بعدها D و E:<span class="ltr">LF(C) = min(15 − 6, 16 − 4) = min(9, 12) = 9</span>', b: 'C' },
+    { en: 'B is followed by E: LF = 16 − 4 = 12.', ar: 'الـ B بعدها E:<span class="ltr">LF(B) = 16 − 4 = 12</span>', b: 'B' },
+    { en: 'A is followed by B and C: LF = min(12 − 3, 9 − 4) = min(9, 5) = 5.', ar: 'الـ A بعدها B و C:<span class="ltr">LF(A) = min(12 − 3, 9 − 4) = min(9, 5) = 5</span>', b: 'A' },
+    { en: '<b>Slack = LF − EF:</b> B = 4, E = 3, the others 0. <b>Critical path A-C-D-F-G</b>, T = 21.', ar: '<b>الـ Slack هو LF ناقص EF:</b> الـ B عندها 4، والـ E عندها 3، والباقي صفر. فالـ <b>critical path</b>:<span class="ltr">A-C-D-F-G,  T = 21</span>', sl: 1 }
+  ];
+  function Problem3({ ar }) {
+    const [i, ctl] = useSteps(S3.length, 2600);
+    const s = S3[i], F = new Set(S3.slice(0, i + 1).map(x => x.f).filter(Boolean)), B = new Set(S3.slice(0, i + 1).map(x => x.b).filter(Boolean));
+    const crit = s.sl ? chainArcs(NP3, ['A', 'C', 'D', 'F', 'G']) : new Set();
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <${Net} net=${NP3} label="Network of Problem 3, activities A to G, with one dummy" nodeTxt=${k => +k === 1 ? 'S' : ''}
+        arcCls=${a => crit.has(a) ? 'sav6-crit' : (a.id === s.f || a.id === s.b) ? 'sav6-cur' : s.sl ? 'sav6-dim' : F.has(a.id) ? 'sav6-done' : ''} />
+      <div className="sav6-tw"><table className="sav6-tbl"><thead><tr><th>Task</th><th>Pred</th><th>Dur</th><th>EF</th><th>LF</th><th>Slack</th><th>Critical</th></tr></thead><tbody>
+        ${T3.map(([a, p, d, ef, lf, sl]) => html`<tr key=${a} className=${s.sl && sl === 0 ? 'sav6-crit' : ''}><td>${a}</td><td>${p.replace(/,/g, ',​')}</td><td>${d}</td>
+          <td className=${s.f === a ? 'sav6-new' : ''}>${F.has(a) ? ef : ''}</td><td className=${s.b === a ? 'sav6-new' : ''}>${B.has(a) ? lf : ''}</td>
+          <td className=${'sav6-z' + (s.sl ? ' sav6-new' : '')}>${s.sl ? sl : ''}</td><td className="sav6-z">${s.sl && sl === 0 ? '✓' : ''}</td></tr>`)}</tbody></table></div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${S3} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 6: Problem 1, PERT expected time ET = (o + 4r + p) / 6 ── */
+  const PR1 = [['A', 3, 7, 11], ['B', 5, 9, 13], ['C', 1, 2, 9], ['D', 2, 3, 16], ['E', 2, 4, 18], ['F', 3, 4, 11], ['G', 1, 4, 7], ['H', 3, 4, 5], ['I', 2, 4, 12], ['J', 4, 7, 9]];
+  const r2 = x => String(Math.round(x * 100) / 100);
+  const etLine = (o, r, p) => { const s = o + 4 * r + p, v = s / 6; return `ET = (${o} + 4×${r} + ${p}) / 6 = ${s} / 6 = ${r2(v)}`; };
+  function PertET({ ar }) {
+    const [shown, setShown] = useState({}), [sel, setSel] = useState(null), [own, setOwn] = useState({ o: '4', r: '7', p: '9' });
+    const num = v => /^\d{1,3}(\.\d{1,2})?$/.test(String(v).trim()) ? +v : null;
+    const o = num(own.o), r = num(own.r), p = num(own.p), okOwn = o != null && r != null && p != null;
+    const row = sel != null && sel !== 'own' ? PR1[sel] : null;
+    let cap;
+    if (row) cap = { en: `Task <b>${row[0]}</b>: o = ${row[1]}, r = ${row[2]}, p = ${row[3]}, so ${etLine(row[1], row[2], row[3])}.`, ar: `الـ task <bdi dir="ltr">${row[0]}</bdi> الـ expected time بتاعها:<span class="ltr">${etLine(row[1], row[2], row[3])}</span>` };
+    else if (sel === 'own') cap = okOwn ? { en: `Your estimates: ${etLine(o, r, p)}.`, ar: `التقديرات بتاعتك:<span class="ltr">${etLine(o, r, p)}</span>` } : { en: 'Type numbers for o, r and p.', ar: 'اكتب أرقام للـ o والـ r والـ p.' };
+    else cap = { en: 'Problem 1: the expected time of each task is <b>ET = (o + 4r + p) / 6</b> (o optimistic, r realistic or most likely, p pessimistic). Tap a task to compute it, or show all.', ar: 'مسألة 1: الـ expected time لكل task بيتحسب كده (الـ o هو الـ optimistic، والـ r هو الـ realistic يعني الـ most likely، والـ p هو الـ pessimistic):<span class="ltr">ET = (o + 4r + p) / 6</span>دوس على أي task عشان تحسبها، أو اعرضهم كلهم.' };
+    const set = (k, v) => { setOwn({ ...own, [k]: v }); setSel('own'); };
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <div className="sav6-tw" style=${{ maxWidth: '380px' }}><table className="sav6-tbl"><thead><tr><th>Task</th><th>o</th><th>r</th><th>p</th><th>ET</th></tr></thead><tbody>
+        ${PR1.map(([t, a, b, c], j) => html`<tr key=${t} className=${'sav6-tap' + (sel === j ? ' sav6-sel' : '')} tabIndex="0" onClick=${() => { setSel(j); setShown({ ...shown, [j]: 1 }); }} onKeyDown=${e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSel(j); setShown({ ...shown, [j]: 1 }); } }}>
+          <td>${t}</td><td>${a}</td><td>${b}</td><td>${c}</td><td className=${sel === j ? 'sav6-new' : ''}>${shown[j] ? r2((a + 4 * b + c) / 6) : '?'}</td></tr>`)}</tbody></table></div>
+      <div className="sav6-row" style=${{ marginTop: '8px' }}><button className="fig-btn" onClick=${() => { const a = {}; PR1.forEach((_, j) => { a[j] = 1; }); setShown(a); setSel(null); }}>Show all</button><button className="fig-btn" onClick=${() => { setShown({}); setSel(null); }}>↻ Hide</button></div>
+      ${row && html`<span className="sav6-f">${etLine(row[1], row[2], row[3])}</span>`}
+      <p className="sav6-h" style=${{ marginTop: '12px' }}>Try your own</p>
+      <div className="sav6-et">
+        <label>o <input type="text" inputMode="decimal" value=${own.o} onInput=${e => set('o', e.target.value)} aria-label="Optimistic time o" /></label>
+        <label>r <input type="text" inputMode="decimal" value=${own.r} onInput=${e => set('r', e.target.value)} aria-label="Realistic time r" /></label>
+        <label>p <input type="text" inputMode="decimal" value=${own.p} onInput=${e => set('p', e.target.value)} aria-label="Pessimistic time p" /></label>
+      </div>
+      ${sel === 'own' && okOwn && html`<span className="sav6-f">${etLine(o, r, p)}</span>`}</div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 7: Lab 3 examples, paths and the critical path ── */
+  const LABS = {
+    E1: { net: { w: 380, h: 212, r: 16, fs: 17, nodes: { 1: [22, 110], 2: [130, 176], 3: [240, 110], 4: [350, 110] },
+        arcs: [{ id: 'A', f: 1, t: 3, lab: 'A=2', ly: -14 }, { id: 'B', f: 1, t: 2, lab: 'B=4', lx: -18, ly: 10 }, { id: 'C', f: 2, t: 3, lab: 'C=5', lx: 18, ly: 10 }, { id: 'D', f: 3, t: 4, lab: 'D=3', ly: -14 }] },
+      names: [['A', 'System Request'], ['B', 'Feasibility'], ['C', 'Methodology'], ['D', 'Time Estimation']] },
+    E2: { net: { w: 380, h: 300, r: 16, fs: 17, nodes: { 1: [22, 120], 2: [96, 200], 3: [176, 200], 4: [176, 56], 5: [250, 270], 6: [294, 150], 7: [362, 150] },
+        arcs: [{ id: 'A', f: 1, t: 4, lab: 'A=2', lx: -18, ly: -8 }, { id: 'B', f: 1, t: 2, lab: 'B=4', lx: -18, ly: 8 }, { id: 'C', f: 2, t: 3, lab: 'C=2', ly: 14 }, { id: 'x1', f: 3, t: 4, dum: 1 },
+          { id: 'D', f: 4, t: 6, lab: 'D=3', lx: 16, ly: -10 }, { id: 'E', f: 3, t: 5, lab: 'E=2', lx: -16, ly: 10 }, { id: 'F', f: 3, t: 6, lab: 'F=5', lx: -6, ly: -14 }, { id: 'x2', f: 5, t: 6, dum: 1 }, { id: 'G', f: 6, t: 7, lab: 'G=2', ly: -14 }] } }
+  };
+  const LCAP = {
+    E1: { en: '<b>Ex 1</b> (planning-phase tasks): paths A-D = 5 and B-C-D = 12, so the minimum duration is <b>12</b> and the critical path is <b>B → C → D</b>; A has 7 slack. Tap a path.', ar: '<b>الـ Ex 1</b> (tasks مرحلة الـ planning): الـ paths هي:<span class="ltr">A-D = 5,  B-C-D = 12</span>فأقل مدة <b>12</b>، والـ critical path هو <bdi dir="ltr">B → C → D</bdi>، والـ A عندها 7 slack. دوس على أي path.' },
+    E2: { en: '<b>Ex 2</b>: two dummies are needed because D, E and F share the predecessor C, and G needs all three. Longest path <b>B-C-F-G = 13</b> (critical). Tap a path.', ar: '<b>الـ Ex 2</b>: محتاجين اتنين dummies لأن الـ D والـ E والـ F ليهم نفس الـ predecessor (C)، والـ G محتاجاهم التلاتة. أطول path هو الـ critical:<span class="ltr">B-C-F-G = 13</span>دوس على أي path.' }
+  };
+  function Lab3({ ar }) {
+    const [ex, setEx] = useState('E1'), [pi, setPi] = useState(null);
+    const acts = P(EX[ex].d), c = cpm(acts), all = chains(acts, c, false).map(p => ({ p, len: p.reduce((s, a) => s + c.by[a].dur, 0) })).sort((x, y) => y.len - x.len);
+    const net = LABS[ex].net, sel = pi != null ? all[pi] : null, hl = sel ? chainArcs(net, sel.p) : new Set(), T = c.T;
+    const crit = sel ? new Set() : chainArcs(net, chains(acts, c, true)[0]);
+    let cap = LCAP[ex];
+    if (sel) { const sum = sel.p.map(a => c.by[a].dur).join(' + '), isC = sel.len === T, tail = isC ? 'أطول path، يعني هو الـ critical path.' : 'أقصر من الـ critical path بـ <bdi dir="ltr">' + (T - sel.len) + '</bdi>.';
+      cap = { en: `Path <b>${sel.p.join('-')}</b> = ${sum} = <b>${sel.len}</b>${isC ? ': the longest, so it is the critical path.' : `, ${T - sel.len} shorter than the critical path (${T}).`}`,
+        ar: `طول الـ path ده:<span class="ltr">${sel.p.join('-')} = ${sum} = ${sel.len}</span>وده ${tail}` }; }
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <div className="sav6-row">${['E1', 'E2'].map(k => html`<button key=${k} className=${'fig-btn' + (ex === k ? ' sav6-on' : '')} onClick=${() => { setEx(k); setPi(null); }}>${k === 'E1' ? 'Ex 1' : 'Ex 2'}</button>`)}</div>
+      <${Net} net=${net} label=${ex === 'E1' ? 'Network of Lab 3 Ex 1' : 'Network of Lab 3 Ex 2 with two dummies'} nodeTxt=${k => +k === 1 ? 'S' : ''}
+        arcCls=${a => sel ? (hl.has(a) ? (sel.len === T ? 'sav6-crit' : 'sav6-cur') : 'sav6-dim') : crit.has(a) ? 'sav6-crit' : 'sav6-done'} />
+      <div className="sav6-paths">${all.map((x, j) => html`<button key=${j} className=${'fig-btn' + (x.len === T ? ' sav6-cp' : '') + (pi === j ? ' sav6-on' : '')} onClick=${() => setPi(pi === j ? null : j)}>${x.p.join('-')} = ${x.len}</button>`)}</div>
+      ${ex === 'E1' && html`<div className="sav6-names">${LABS.E1.names.map(([a, n]) => html`<span key=${a}><b>${a}</b> ${n}</span>`)}</div>`}</div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 8: PERT variance and the probability of finishing by a target (textbook SPTS) ── */
+  const SPTS = [['1', 'Requirements Collection', 1, 9], ['2', 'Screen Design', 5, 7], ['4', 'Database Design', 1, 3], ['6', 'Programming', 4, 6], ['7', 'Testing', 1, 5], ['8', 'Installation', 1, 1]];
+  const VAR = SPTS.reduce((s, x) => s + ((x[3] - x[2]) / 6) ** 2, 0), SIG = Math.sqrt(VAR), TE = 22;
+  const phi = z => { const t = 1 / (1 + .3275911 * Math.abs(z) / Math.SQRT2), y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - .284496736) * t + .254829592) * t * Math.exp(-z * z / 2); return z >= 0 ? (1 + y) / 2 : (1 - y) / 2; };
+  const zOf = x => Math.round((x - TE) / SIG * 100) / 100;
+  const f3 = x => x.toFixed(3), mi = x => String(x).replace('-', '−');
+  const S8 = [
+    { en: 'Textbook SPTS project (not in the professor\'s slides): expected time <b>T = 22 weeks</b> along the critical path <b>1-2-4-6-7-8</b>. Each activity has an optimistic o and a pessimistic p estimate.', ar: 'مشروع الـ SPTS من الكتاب (مش في slides الدكتور): الـ expected time هو <bdi dir="ltr">T&nbsp;=&nbsp;22</bdi> أسبوع على الـ critical path:<span class="ltr">1-2-4-6-7-8</span>ولكل activity تقدير optimistic (o) وتقدير pessimistic (p).', t: null },
+    { en: 'Variance of each activity: <b>σ² = ((p − o) / 6)²</b>. For activity 1: (8/6)² = 1.778.', ar: 'الـ variance لكل activity:<span class="ltr">σ² = ((p − o) / 6)²</span>مثلاً الـ activity 1:<span class="ltr">(8/6)² = 1.778</span>', t: null, v: 1 },
+    { en: 'Path variance = sum along the critical path = 1.778 + 0.111×3 + 0.444 + 0 = <b>2.556</b>, so <b>σ = √2.556 = 1.599 weeks</b>.', ar: 'الـ variance بتاع الـ path هو مجموعهم على الـ critical path:<span class="ltr">1.778 + 0.111×3 + 0.444 + 0 = 2.556</span>والـ σ:<span class="ltr">σ = √2.556 = 1.599</span>', t: null, v: 1, s: 1 },
+    { en: '<b>P(T ≤ 24)</b>: Z = (24 − 22) / 1.599 = 1.25, and from the normal table Φ(1.25) ≈ <b>0.894 (89.4%)</b>.', ar: 'احتمال إن المشروع يخلص في 24 أسبوع أو أقل:<span class="ltr">Z = (24 − 22) / 1.599 = 1.25  →  Φ(1.25) ≈ 0.894 (89.4%)</span>', t: 24, v: 1, s: 1 },
+    { en: '<b>P(T ≤ 22) = 0.5</b>: the target equals the expected time, Z = 0.', ar: 'لو الـ target هو نفس الـ expected time يبقى الاحتمال النص:<span class="ltr">Z = 0  →  P(T ≤ 22) = 0.5</span>', t: 22, v: 1, s: 1 },
+    { en: '<b>P(T ≤ 20)</b>: Z = −1.25 → <b>0.106</b>. Drag the target to try your own.', ar: 'احتمال إنه يخلص في 20 أسبوع أو أقل:<span class="ltr">Z = −1.25  →  0.106</span>حرّك الـ target وجرّب بنفسك.', t: 20, v: 1, s: 1 }
+  ];
+  function PertProb({ ar }) {
+    const [i, ctl] = useSteps(S8.length, 2800), [own, setOwn] = useState(null);
+    const s = S8[i], tgt = own != null ? own : s.t, z = tgt != null ? zOf(tgt) : null, pr = z != null ? phi(z) : null;
+    const lo = 16, hi = 28, X = w => 14 + (w - lo) / (hi - lo) * 312, pdf = w => Math.exp(-(((w - TE) / SIG) ** 2) / 2), Y = v => 120 - v * 96;
+    const pts = []; for (let w = lo; w <= hi + 1e-9; w += .1) pts.push([X(w), Y(pdf(w))]);
+    const line = 'M' + pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L');
+    const area = tgt != null ? 'M' + X(lo) + ',120 L' + pts.filter(p => p[0] <= X(tgt) + .01).map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' L') + ` L${X(tgt).toFixed(1)},${Y(pdf(tgt)).toFixed(1)} L${X(tgt).toFixed(1)},120 Z` : '';
+    const cap = own != null ? { en: `Your target: <b>P(T ≤ ${own})</b>: Z = (${own} − 22) / 1.599 = ${mi(z.toFixed(2))} → Φ ≈ <b>${f3(pr)}</b> (${(pr * 100).toFixed(1)}%).`,
+      ar: `احتمال إن المشروع يخلص في <bdi dir="ltr">${own}</bdi> أسبوع أو أقل:<span class="ltr">Z = (${own} − 22) / 1.599 = ${mi(z.toFixed(2))}  →  Φ ≈ ${f3(pr)} (${(pr * 100).toFixed(1)}%)</span>` } : s;
+    return html`<figure className="fig sav6"><div className="fig-stage">
+      <div className="sav6-tw" style=${{ maxWidth: '400px' }}><table className="sav6-tbl"><thead><tr><th>#</th><th>Activity</th><th>o</th><th>p</th><th>σ²</th></tr></thead><tbody>
+        ${SPTS.map(([n, a, o, p]) => html`<tr key=${n}><td>${n}</td><td className="sav6-l">${a}</td><td>${o}</td><td>${p}</td><td className=${i === 1 ? 'sav6-new' : ''}>${s.v || own != null ? f3(((p - o) / 6) ** 2) : ''}</td></tr>`)}
+        <tr><td></td><td className="sav6-l"><b>path</b></td><td></td><td></td><td className=${i === 2 ? 'sav6-new' : ''}><b>${s.s || own != null ? f3(VAR) : ''}</b></td></tr></tbody></table></div>
+      ${(s.s || own != null) && html`<p className="sav6-sum">σ = √${f3(VAR)} = <b>${f3(SIG)}</b> weeks, T = <b>22</b> weeks</p>`}
+      <svg className="sav6-svg" viewBox="0 0 340 152" role="img" aria-label="Normal curve of the project time with the probability of finishing by the target shaded" style=${{ maxWidth: '400px' }}>
+        ${area && html`<path d=${area} className="sav6-norm" />`}
+        <path d=${line} className="sav6-curve" /><line x1="14" y1="120" x2="326" y2="120" className="sav6-ax" />
+        ${[18, 20, 22, 24, 26].map(w => html`<g key=${w}><line x1=${X(w)} y1="120" x2=${X(w)} y2="126" className="sav6-ax" /><text x=${X(w)} y="143" textAnchor="middle" fontSize="15" className="sav6-gt">${w}</text></g>`)}
+        ${tgt != null && html`<line x1=${X(tgt)} y1="14" x2=${X(tgt)} y2="120" className="sav6-tl" />`}
+        ${tgt != null && html`<text x=${Math.min(300, Math.max(40, X(tgt)))} y="14" textAnchor="middle" fontSize="15" fontWeight="700" className="sav6-pt">${f3(pr)}</text>`}
+      </svg></div>
+      <${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${S8} i=${i} ctl=${{ go: j => { setOwn(null); ctl.go(j); }, replay: () => { setOwn(null); ctl.replay(); } }} />
+      <div className="sav6-play"><span style=${{ fontSize: '.86rem' }}>Target</span><input type="range" min="18" max="26" step="0.5" value=${tgt != null ? tgt : 22} onInput=${e => setOwn(+e.target.value)} onChange=${e => setOwn(+e.target.value)} aria-label="Target time in weeks" /><b>${tgt != null ? tgt : '–'} wk</b></div></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'sa-l6-phases': Phases, 'sa-l6-dummy-ways': DummyWays, 'sa-l6-dummy-fix': DummyFix, 'sa-l6-cpm-calc': CpmCalc,
+    'sa-l6-net13': Net13, 'sa-l6-gantt13': Gantt13, 'sa-l6-problem2': Problem2, 'sa-l6-problem3': Problem3,
+    'sa-l6-pert-et': PertET, 'sa-l6-lab3': Lab3, 'sa-l6-pert-prob': PertProb
+  });
+})();

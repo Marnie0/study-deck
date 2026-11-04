@@ -1627,16 +1627,29 @@ AR.ds = {
       "الـ <b>Root node</b>: الـ node اللي فوق خالص ومالهاش parent. الـ <b>Parent</b> node والـ <b>child</b> nodes بتوعها. الـ <b>Leaf (terminal) nodes</b> هي الـ nodes اللي مالهاش children. الـ <b>Internal node</b> هي node ليها child واحد على الأقل. الـ <b>Sub-tree</b> هو node ومعاها كل الـ descendants بتوعها.",
       "الـ <b>Binary tree</b>: كل node ليها <b>2 children بالكتير</b> (left وright).",
       "الـ <b>Binary Search Tree (BST)</b> هو binary tree فيه:<br>(1) كل node ليها <b>key مش متكرر (unique)</b>.<br>(2) كل الـ keys اللي في الـ <b>left subtree</b> بتاع أي node <b>أصغر</b> من الـ key بتاعها.<br>(3) كل الـ keys اللي في الـ <b>right subtree</b> <b>أكبر</b>."
-     ]
+     ],
+     "figH": {
+      "ds-l9-parts": "رسومات الـ slides من 3 لـ 11: الـ nodes والـ root والـ parent والـ child والـ leaves والـ sub-trees والـ binary tree",
+      "ds-l9-bst-rule": "قاعدة الـ BST متجربة على كل node في tree 1، وغيّر key وشوف إمتى تبوظ"
+     }
     },
     {
-     "h": "الـ Traversals"
+     "h": "الـ Traversals",
+     "figH": {
+      "ds-l9-traverse": "الـ inorder والـ preorder والـ postorder والـ reverse inorder على trees الـ slides خطوة بخطوة"
+     }
     },
     {
-     "h": "الـ trees اللي في أمثلة المحاضرة (اتجربت بـ <code>g++</code>)"
+     "h": "الـ trees اللي في أمثلة المحاضرة (اتجربت بـ <code>g++</code>)",
+     "figH": {
+      "ds-l9-build": "الـ BST من ترتيب الإضافة، وعدد الـ nodes في كل subtree والـ traversals التلاتة"
+     }
     },
     {
-     "h": "كود الـ Node والـ Tree والـ traversals (كود الدكتورة)"
+     "h": "كود الـ Node والـ Tree والـ traversals (كود الدكتورة)",
+     "figH": {
+      "ds-l9-node-boxes": "الـ Node والـ Tree classes مترسومين صناديق وpointers"
+     }
     },
     {
      "h": "الـ Insertion",
@@ -1646,10 +1659,18 @@ AR.ds = {
       "مثال: إضافة 57 في tree 1:<br>لأن <bdi dir=\"ltr\">57&nbsp;&gt;&nbsp;43</bdi> يبقى يمين؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&lt;&nbsp;64</bdi> يبقى شمال؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&gt;&nbsp;56</bdi> يبقى يمين؛<br>ولأن <bdi dir=\"ltr\">57&nbsp;&lt;&nbsp;59</bdi> بتبقى <b>الـ left child بتاع 59</b>.",
       "مثال: إضافة 0.9 في الـ tree اللي الـ root بتاعه 1.0:<br>لأن <bdi dir=\"ltr\">0.9&nbsp;&lt;&nbsp;1.0</bdi> يبقى شمال (0.6)؛<br>ولأن <bdi dir=\"ltr\">0.9&nbsp;&gt;&nbsp;0.6</bdi> يبقى يمين (0.8)؛<br>ولأن <bdi dir=\"ltr\">0.9&nbsp;&gt;&nbsp;0.8</bdi> بتبقى الـ right child بتاع 0.8.",
       "<b>شكل</b> الـ tree بيعتمد على ترتيب الإضافة؛ لو ضفت keys مترتبة أصلًا هيطلع degenerate tree (شبه الـ linked list)."
-     ]
+     ],
+     "figH": {
+      "ds-l9-insert-57": "إضافة 57 في tree 1، مع كود الـ insert سطر بسطر",
+      "ds-l9-insert-09": "الـ slides من 32 لـ 36، وإضافة 0.9 في tree الـ 1.0",
+      "ds-l9-shape": "نفس الـ keys بترتيب مختلف، يطلع tree قصير أو degenerate"
+     }
     },
     {
-     "h": "الـ insert والـ search والـ minimum والـ maximum (كود الدكتورة)"
+     "h": "الـ insert والـ search والـ minimum والـ maximum (كود الدكتورة)",
+     "figH": {
+      "ds-l9-minmax": "الـ minimum والـ maximum ماشيين لآخر node على الشمال وآخر node على اليمين"
+     }
     },
     {
      "h": "الـ Searching والـ deletion",
@@ -1658,7 +1679,12 @@ AR.ds = {
       "دوّر على 0.7 في tree الـ 1.0:<span class=\"ltr\">1.0 → 0.6 → 0.8 → 0.7</span>لقيناه. دوّر على 0.5:<span class=\"ltr\">1.0 → 0.6 → 0.3 → 0.4 → NULL</span>يبقى مش موجود.",
       "حالات الـ <b>Delete</b>:<br>(1) الـ leaf: شيلها على طول.<br>(2) ليها child واحد: حط الـ child مكانها.<br>(3) ليها اتنين children: حط مكان الـ key بتاعها الـ inorder successor (أصغر قيمة في الـ right subtree) أو الـ predecessor (أكبر قيمة في الـ left subtree)، وبعدين امسح الـ node دي.",
       "الـ <code>deleteitem</code> اللي في الـ slide بتتعامل مع الـ leaf ومع الـ node اللي ليها child واحد إنها تنسخ داتا الـ child وتمسح الـ child (وده صح بس لو الـ child ده leaf)؛ ومش بتتعامل مع حالة الاتنين children. في الامتحان، اشرح التلات حالات الـ standard."
-     ]
+     ],
+     "figH": {
+      "ds-l9-search": "الـ slides من 39 لـ 47، ودوّر على 0.7 (موجودة) و0.5 (مش موجودة)",
+      "ds-l9-delete": "حالات الـ delete التلاتة على tree 1، الـ leaf والـ child الواحد والاتنين children",
+      "ds-l9-slide-delete": "الـ deleteitem بتاعة slide 48 متجربة على trees حقيقية، جنب الـ delete الـ standard"
+     }
     }
    ],
    "cards": [
@@ -1824,10 +1850,18 @@ AR.ds = {
       "الـ hash function H بتاخد <b>key كـ input</b> وبتحوّله لـ <b>index</b> في الـ hash table. ونفس الـ hash value بتتستخدم في <b>التخزين والاسترجاع</b> الاتنين.",
       "الـ <b>Collision</b>: لما الـ hash function تودّي اتنين keys مختلفين k وj على <b>نفس الخانة</b>.",
       "الـ Hash tables <b>مش</b> بتحافظ على الـ keys مترتبة: الأماكن بتعتمد على الـ hash function (عنوان الـ Lecture 10 هو <bdi dir=\"ltr\">\"Searching&nbsp;Techniques:&nbsp;Hashing\"</bdi>)."
-     ]
+     ],
+     "figH": {
+      "ds-l10-pipeline": "الـ key بيدخل الـ hash function ويطلع index زي slide 3، ونفس الطريقة للتخزين والاسترجاع",
+      "ds-l10-collision": "الـ collision في slide 4: الـ key k والـ key j رايحين على نفس الخانة"
+     }
     },
     {
-     "h": "أنواع الـ hash function"
+     "h": "أنواع الـ hash function",
+     "figH": {
+      "ds-l10-methods": "الأربع hash functions متحلولة على الـ keys بتاعة الـ slides",
+      "ds-l10-division": "تمرين الـ division بيتملي key ورا key، وبعدين الـ collision بتاع 11"
+     }
     },
     {
      "h": "طرق حل الـ collision (collision resolution)",
@@ -1837,10 +1871,18 @@ AR.ds = {
       "الـ <b>Quadratic probing</b>: في أول collision بص على <bdi dir=\"ltr\">h+1</bdi>، والتاني <bdi dir=\"ltr\">h+4</bdi>، والتالت <bdi dir=\"ltr\">h+9</bdi> … يعني (<bdi dir=\"ltr\">h&nbsp;+&nbsp;i²</bdi>). المعادلة والمثال المحلول في المحاضرة بيستخدموا:<span class=\"ltr\">h(k, i) = (h1(k) + i + i²) mod m</span><span class=\"ltr\">i = 1 → +2,  i = 2 → +6</span>خلي بالك: في الامتحان استخدم معادلة المحاضرة واكتبها.",
       "الـ <b>Double hashing</b>: اتنين hash functions؛ لما الأولى تعمل collision التانية بتحلها:<span class=\"ltr\">h(k, i) = (h1(k) + i·h2(k)) mod m</span>مثال المحاضرة:<span class=\"ltr\">h1 = k mod 13,  h2 = 1 + (k mod 11)</span>",
       "الـ <b>Separate chaining</b>: عبارة عن <b>array of pointers</b>؛ كل pointer بيشاور على <b>linked list</b> فيها الـ keys اللي ليها نفس الـ hash address. لما يحصل collision بنضيف link جديد في الـ chain. بيتعامل مع <b>عدد مش محدود من الـ collisions</b> ومش محتاج <b>تعرف مسبقًا</b> هتخزن كام عنصر."
-     ]
+     ],
+     "figH": {
+      "ds-l10-quad-formulas": "معادلة الـ quadratic بتاعة المحاضرة جنب معادلة <bdi dir=\"ltr\">h&nbsp;+&nbsp;i²</bdi> وإزاي بيطلّعوا tables مختلفة",
+      "ds-l10-probe-seq": "ترتيب الخانات اللي key واحد بيجربها في الـ linear والـ quadratic والـ double hashing",
+      "ds-l10-full-table": "كمّل إضافة: الـ linear probing خاناته بتخلص، والـ chaining لأ"
+     }
     },
     {
-     "h": "مثال linear probing (الـ keys <bdi dir=\"ltr\">18,&nbsp;72,&nbsp;65,&nbsp;34,&nbsp;13</bdi>؛ والـ size <bdi dir=\"ltr\">7</bdi>)"
+     "h": "مثال linear probing (الـ keys <bdi dir=\"ltr\">18,&nbsp;72,&nbsp;65,&nbsp;34,&nbsp;13</bdi>؛ والـ size <bdi dir=\"ltr\">7</bdi>)",
+     "figH": {
+      "ds-l10-lin-search": "الـ search في الـ table بتاع slide 17 محاولة ورا محاولة"
+     }
     },
     {
      "h": "مثال quadratic probing (نفس الـ keys، بمعادلة المحاضرة h1 + i + i²)"

@@ -4053,3 +4053,833 @@ textarea.wbv6-inp{ resize:vertical; min-height:96px; line-height:1.45; }
     'wb-js1-typeof': Typeof, 'wb-js1-plus': Plus, 'wb-js1-comments': Comments, 'wb-js1-output': Output, 'wb-js1-ex5': Example5, 'wb-js1-dom': Dom, 'wb-js1-listen': Listen
   });
 })();
+/* ── part L8 ── */
+// Web Programming visuals, Lecture 8 (JavaScript P2: operators, control structures, arrays, the Date object): the operator tables
+// evaluated step by step, L8 Examples (1) to (6) run line by line, the loops traced, array creation, the array methods playground,
+// ArrayEx(7) step by step and a Date explorer (slides 2 to 23). Student input is never run as code: a small tracer below evaluates it.
+// Every label and number comes from the site's notes.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.wbv8 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.wbv8 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.wbv8 .fig-cap .ltr{ display:block; direction:ltr; unicode-bidi:isolate; text-align:left; font-family:var(--mono); font-size:.86rem; margin:3px 0; overflow-wrap:anywhere; color:var(--ink); }
+.wbv8 code, .wbv8 pre, .wbv8 .ltr, .wbv8-m, .wbv8-in, .wbv8-expr, .wbv8-out, .wbv8-var, .wbv8-cell, .wbv8-ret, .wbv8-get, .wbv8-lbl{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "calt" 0; }
+.wbv8-chips{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin:0 0 8px; }
+.wbv8-chips .fig-btn{ font-size:.8rem; padding:4px 9px; min-height:30px; }
+.wbv8-chips .fig-btn.m{ font-family:var(--mono); font-size:.78rem; }
+.wbv8-grp{ margin:0 0 4px; } .wbv8-grp > small{ display:block; text-align:center; font-size:.75rem; color:var(--graphite); margin:0 0 3px; }
+.wbv8-code{ font:.78rem/1.5 var(--mono); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:6px 5px; white-space:pre-wrap; overflow-wrap:anywhere; direction:ltr; text-align:left; color:var(--ink); margin:0; }
+.wbv8-code .ln{ display:block; border-radius:4px; padding:0 3px 0 1.4em; text-indent:-1.1em; min-height:1.5em; transition:background .35s; }
+.wbv8-code .ln.on{ background:color-mix(in srgb, var(--fig-k) 26%, transparent); }
+.wbv8-kw{ color:var(--fig-k); font-weight:600; } .wbv8-st{ color:var(--ok); } .wbv8-cm{ color:var(--graphite); font-style:italic; } .wbv8-nu{ color:var(--pen); }
+.wbv8-expr{ font:600 1rem/1.6 var(--mono); text-align:center; direction:ltr; padding:9px 8px; border:1px solid var(--line); border-radius:10px; background:var(--paper); color:var(--ink); overflow-wrap:anywhere; min-height:2.4em; margin:0 auto; max-width:560px; }
+.wbv8-expr.sm{ font-size:.86rem; text-align:left; font-weight:500; }
+.wbv8-hi{ background:color-mix(in srgb, var(--fig-k) 30%, transparent); color:var(--ink); border-radius:4px; padding:0 2px; }
+.wbv8-vars{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:8px 0 0; direction:ltr; }
+.wbv8-var{ font:.82rem var(--mono); border:1px solid var(--line); border-radius:99px; padding:2px 10px; background:var(--paper); color:var(--ink); transition:box-shadow .3s, background .3s; overflow-wrap:anywhere; max-width:100%; box-sizing:border-box; }
+.wbv8-var.ch{ box-shadow:0 0 0 2px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); }
+.wbv8-own{ max-width:460px; margin:0 auto 8px; display:grid; gap:6px; }
+.wbv8-own label{ display:grid; gap:2px; font-size:.78rem; color:var(--graphite); }
+.wbv8-in{ font:.85rem var(--mono); width:100%; box-sizing:border-box; border:1px solid var(--line); border-radius:6px; padding:5px 8px; background:var(--paper); color:var(--ink); direction:ltr; }
+.wbv8-in:disabled{ opacity:.6; }
+.wbv8-row{ display:grid; grid-template-columns:repeat(auto-fit, minmax(80px, 1fr)); gap:6px; }
+.wbv8-run{ display:flex; gap:6px; align-items:end; } .wbv8-run label{ flex:1; }
+.wbv8-err{ color:var(--pen); font-size:.85rem; text-align:center; margin:6px 0 0; }
+.wbv8-two{ display:grid; grid-template-columns:minmax(0,1fr); gap:8px; max-width:640px; margin:0 auto; }
+@media (min-width:640px){ .wbv8-two{ grid-template-columns:repeat(2, minmax(0,1fr)); align-items:start; } }
+.wbv8-panel{ border:1px solid var(--line); border-radius:8px; background:var(--paper); overflow:hidden; }
+.wbv8-panel > b{ display:block; font-size:.75rem; font-weight:600; color:var(--graphite); padding:3px 8px; background:var(--paper-2); border-bottom:1px solid var(--line); }
+.wbv8-out{ font:.8rem/1.45 var(--mono); padding:5px 8px; min-height:2.2em; direction:ltr; text-align:left; color:var(--ink); overflow-wrap:anywhere; max-height:190px; overflow-y:auto; }
+.wbv8-out div{ border-bottom:1px dashed var(--line); padding:1px 2px; } .wbv8-out div:last-child{ border-bottom:0; }
+.wbv8-out div.new{ background:color-mix(in srgb, var(--fig-k) 18%, transparent); }
+.wbv8-page{ font-family:"Times New Roman", Times, serif; font-size:1rem; line-height:1.35; padding:6px 10px; min-height:2.2em; direction:ltr; text-align:left; color:var(--ink); overflow-wrap:anywhere; }
+.wbv8-cnt{ font:.8rem var(--mono); color:var(--graphite); }
+.wbv8-faint{ color:var(--graphite); }
+.wbv8-arr{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; direction:ltr; margin:3px 0; }
+.wbv8-cell{ min-width:34px; text-align:center; border:1.5px solid var(--line); border-radius:6px; background:var(--paper); padding:2px 4px 1px; transition:border-color .3s, background .3s; box-sizing:border-box; max-width:100%; }
+.wbv8-cell span{ display:block; font:600 .86rem var(--mono); color:var(--ink); overflow-wrap:anywhere; }
+.wbv8-cell small{ display:block; font:.75rem var(--mono); color:var(--graphite); }
+.wbv8-cell.add{ border-color:var(--ok); background:color-mix(in srgb, var(--ok) 16%, var(--paper)); }
+.wbv8-cell.hit{ border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.wbv8-cell.del{ border-color:var(--pen); border-style:dashed; background:color-mix(in srgb, var(--pen) 10%, var(--paper)); }
+.wbv8-cell.hole span{ color:var(--graphite); font-weight:400; font-style:italic; }
+.wbv8-lbl{ text-align:center; font:.8rem var(--mono); color:var(--graphite); margin:6px 0 0; direction:ltr; overflow-wrap:anywhere; }
+.wbv8-ret{ text-align:center; font:.86rem var(--mono); margin:8px auto 0; padding:5px 8px; border-radius:8px; border:1px dashed var(--fig-k); max-width:460px; color:var(--ink); direction:ltr; overflow-wrap:anywhere; }
+@keyframes wbv8in{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
+.wbv8-pop{ animation:wbv8in .4s ease both; }
+.wbv8-cal{ display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:3px; direction:ltr; margin:4px 0 8px; }
+.wbv8-cal.d7{ grid-template-columns:repeat(7, minmax(0,1fr)); }
+.wbv8-cal div{ text-align:center; border:1px solid var(--line); border-radius:5px; padding:2px 0; font:.75rem var(--mono); color:var(--graphite); background:var(--paper); transition:background .3s, border-color .3s; }
+.wbv8-cal div b{ display:block; color:var(--ink); font-weight:600; }
+.wbv8-cal div.on{ border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); color:var(--ink); }
+.wbv8-get{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:2px 10px; font:.82rem/1.45 var(--mono); direction:ltr; text-align:left; color:var(--ink); max-width:460px; margin:6px auto 0; }
+.wbv8-get b{ color:var(--fig-k); font-weight:600; } .wbv8-get span{ overflow-wrap:anywhere; }
+.wbv8-sub{ text-align:center; font-size:.78rem; color:var(--graphite); margin:6px 0 2px; }
+@media (prefers-reduced-motion: reduce){ .wbv8-pop{ animation:none; } .wbv8-code .ln, .wbv8-var, .wbv8-cell, .wbv8-cal div{ transition:none; } }`;
+  if (!document.getElementById('wbv8-css')) { const s = document.createElement('style'); s.id = 'wbv8-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ── helpers ── */
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  const B = s => `<bdi dir="ltr">${esc(s).replace(/ /g, '&nbsp;')}</bdi>`;     // short code inside Arabic
+  const L = s => `<span class="ltr">${esc(s)}</span>`;                          // a formula on its own line
+  const C = s => `<code>${esc(s)}</code>`;
+  const fmt = v => Array.isArray(v) ? '[' + v.map(fmt).join(', ') + ']' : typeof v === 'string' ? '"' + v + '"' : String(v);
+  const E = (en, ar) => { const e = new Error(en); e.en = en; e.ar = ar; return e; };
+  const KW = /^(var|let|const|if|else|switch|case|break|default|while|do|for|in|of|function|return|new|true|false|undefined)$/;
+  function hjs(line) {
+    let out = ''; const re = /(\/\/.*$)|("(?:[^"\\]|\\.)*"?|'(?:[^'\\]|\\.)*'?)|([A-Za-z_$][\w$]*)|(\d+(?:\.\d+)?)|([\s\S])/g; let m;
+    while ((m = re.exec(line))) {
+      if (m[1]) out += `<span class="wbv8-cm">${esc(m[1])}</span>`;
+      else if (m[2]) out += `<span class="wbv8-st">${esc(m[2])}</span>`;
+      else if (m[3]) out += KW.test(m[3]) ? `<span class="wbv8-kw">${m[3]}</span>` : esc(m[3]);
+      else if (m[4]) out += `<span class="wbv8-nu">${m[4]}</span>`;
+      else out += esc(m[5]);
+    }
+    return out;
+  }
+  const Code = ({ lines, on, label }) => html`<pre className="wbv8-code" aria-label=${label || 'JavaScript code'}>${lines.map((l, j) => html`<span key=${j}
+    className=${'ln' + (on && on.includes(j) ? ' on' : '')} dangerouslySetInnerHTML=${{ __html: hjs(l) || ' ' }}></span>`)}</pre>`;
+  const Chips = ({ items, sel, on, mono, label }) => html`<div className="wbv8-chips" role="group" aria-label=${label || 'Choose'}>${items.map(([k, t]) => html`<button key=${k}
+    className=${'fig-btn' + (mono ? ' m' : '')} aria-pressed=${String(sel === k)} onClick=${() => on(k)}>${t}</button>`)}</div>`;
+  const Fig = ({ children }) => html`<figure className="fig wbv8">${children}</figure>`;
+  const Vars = ({ vars, ch }) => html`<div className="wbv8-vars" aria-label="variables">${Object.entries(vars).map(([n, v]) => html`<span key=${n}
+    className=${'wbv8-var' + (ch && ch.includes(n) ? ' ch' : '')}>${n} = ${v}</span>`)}</div>`;
+  const Panel = ({ title, children }) => html`<div className="wbv8-panel"><b>${title}</b>${children}</div>`;
+  function Out({ lines, nw, page }) {
+    const ref = useRef(null);
+    useEffect(() => { const el = ref.current; if (el) el.scrollTop = el.scrollHeight; }, [lines.length]);
+    return html`<div className=${page ? 'wbv8-page' : 'wbv8-out'} ref=${ref}>${lines.length ? lines.map((l, j) => html`<div key=${j}
+      className=${nw && j === lines.length - 1 ? 'new wbv8-pop' : ''} dangerouslySetInnerHTML=${{ __html: page ? l : esc(l) }}></div>`) : html`<span className="wbv8-faint">(empty)</span>`}</div>`;
+  }
+
+  // a step-through whose steps change with the chosen example; restarts when key changes
+  function useRun(key, n, ms, toEnd) {
+    const init = () => ({ key, i: (calm() || toEnd) ? n - 1 : 0, play: !calm() && !toEnd });
+    const [st, setSt] = useState(init);
+    const cur = st.key === key ? st : init();
+    useEffect(() => { if (st.key !== key) setSt(init()); }, [key]);
+    useEffect(() => {
+      if (st.key !== key || !st.play) return;
+      if (st.i >= n - 1) { setSt(s => Object.assign({}, s, { play: false })); return; }
+      const t = setTimeout(() => setSt(s => s.key === key ? Object.assign({}, s, { i: s.i + 1 }) : s), ms); return () => clearTimeout(t);
+    }, [st, key, n]);
+    const i = Math.max(0, Math.min(cur.i, n - 1));
+    return [i, { go: j => setSt({ key, i: j, play: false }), replay: () => setSt({ key, i: 0, play: !calm() }) }];
+  }
+  const Nav = ({ n, i, ctl }) => html`<div className="fig-bar">
+    ${n <= 12 ? html`<div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>`
+      : html`<span className="wbv8-cnt">${i + 1} / ${n}</span>`}
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+
+  /* ── a small expression tracer (no eval): the operators of the notes only ── */
+  const OPS = ['===', '!==', '==', '!=', '<=', '>=', '&&', '||', '++', '--', '+=', '-=', '*=', '/=', '%=', '+', '-', '*', '/', '%', '<', '>', '!', '=', '(', ')', '[', ']', ','];
+  function lex(src) {
+    const s = String(src).replace(/[“”]/g, '"').replace(/[‘’]/g, "'"), out = []; let i = 0, m;
+    while (i < s.length) {
+      const c = s[i], rest = s.slice(i);
+      if (/\s/.test(c)) { i++; continue; }
+      if ((m = /^\d+(\.\d+)?/.exec(rest))) { out.push({ k: 'num', v: parseFloat(m[0]) }); i += m[0].length; continue; }
+      if (c === '"' || c === "'") { const j = s.indexOf(c, i + 1); if (j < 0) throw E('A string is not closed: add the closing quote.', 'فيه string مش مقفول، ضيف علامة التنصيص اللي بتقفله.'); out.push({ k: 'str', v: s.slice(i + 1, j) }); i = j + 1; continue; }
+      if ((m = /^[A-Za-z_$][\w$]*/.exec(rest))) { const w = m[0]; out.push(w === 'true' || w === 'false' ? { k: 'bool', v: w === 'true' } : w === 'undefined' ? { k: 'undef' } : { k: 'id', v: w }); i += w.length; continue; }
+      const op = OPS.find(o => s.startsWith(o, i));
+      if (!op) throw E(`The character ${C(c)} is not one of the operators of this lecture.`, `الحرف ${B(c)} مش من الـ operators بتاعة المحاضرة دي.`);
+      out.push({ k: 'op', v: op }); i += op.length;
+    }
+    return out;
+  }
+  let NID = 0;
+  const mk = o => (o.id = ++NID, o);
+  const BAD = () => E('This expression could not be read: check the operators and brackets.', 'الـ expression ده مش مفهوم، راجع الـ operators والأقواس.');
+  function parse(src) {
+    const t = lex(src); let p = 0;
+    if (!t.length) throw E('Type an expression first.', 'اكتب expression الأول.');
+    const isOp = v => t[p] && t[p].k === 'op' && t[p].v === v;
+    const LV = [['||'], ['&&'], ['==', '!=', '===', '!=='], ['<', '>', '<=', '>='], ['+', '-'], ['*', '/', '%']];
+    function asg() {
+      if (t[p] && t[p].k === 'id' && t[p + 1] && t[p + 1].k === 'op' && ['=', '+=', '-=', '*=', '/=', '%='].includes(t[p + 1].v)) { const name = t[p].v, op = t[p + 1].v; p += 2; return mk({ t: 'asg', name, op, r: asg() }); }
+      return bin(0);
+    }
+    function bin(l) {
+      if (l === LV.length) return un();
+      let a = bin(l + 1);
+      while (t[p] && t[p].k === 'op' && LV[l].includes(t[p].v)) { const op = t[p++].v; a = mk({ t: 'bin', op, a, b: bin(l + 1) }); }
+      return a;
+    }
+    function un() {
+      if (isOp('!') || isOp('-')) { const op = t[p++].v; return mk({ t: 'un', op, a: un() }); }
+      if (isOp('++') || isOp('--')) { const op = t[p++].v; if (!t[p] || t[p].k !== 'id') throw E(`${C(op)} must be followed by a variable name.`, `الـ ${B(op)} لازم يجي بعده اسم متغير.`); return mk({ t: 'pre', op, name: t[p++].v }); }
+      const e = prim();
+      if (e.t === 'var' && (isOp('++') || isOp('--'))) return mk({ t: 'post', op: t[p++].v, name: e.name });
+      return e;
+    }
+    function prim() {
+      const k = t[p]; if (!k) throw BAD();
+      if (k.k === 'num' || k.k === 'str' || k.k === 'bool') { p++; return mk({ t: 'lit', v: k.v }); }
+      if (k.k === 'undef') { p++; return mk({ t: 'lit', v: undefined }); }
+      if (k.k === 'id') { p++; return mk({ t: 'var', name: k.v }); }
+      if (isOp('(')) { p++; const e = asg(); if (!isOp(')')) throw E('A closing bracket ) is missing.', 'فيه قوس ) ناقص.'); p++; return mk({ t: 'par', e }); }
+      throw BAD();
+    }
+    const e = asg(); if (p < t.length) throw BAD(); return e;
+  }
+  const toNum = v => typeof v === 'number' ? v : typeof v === 'boolean' ? (v ? 1 : 0) : typeof v === 'string' ? (v.trim() === '' ? 0 : Number(v)) : NaN;
+  const toStr = v => String(v);
+  const truthy = v => !!v;
+  function looseEq(a, b) {
+    const ta = typeof a, tb = typeof b;
+    if (ta === tb) return a === b;
+    if (a === undefined || b === undefined) return false;
+    if (ta === 'boolean') return looseEq(toNum(a), b);
+    if (tb === 'boolean') return looseEq(a, toNum(b));
+    return toNum(a) === toNum(b);
+  }
+  // raw text of the tree; \u0001…\u0002 marks the part just computed
+  function pr(n, hi) {
+    let s;
+    if (n.done) s = fmt(n.val);
+    else switch (n.t) {
+      case 'lit': s = fmt(n.v); break;
+      case 'var': s = n.name; break;
+      case 'par': s = '(' + pr(n.e, hi) + ')'; break;
+      case 'bin': s = pr(n.a, hi) + ' ' + n.op + ' ' + pr(n.b, hi); break;
+      case 'un': s = n.op + pr(n.a, hi); break;
+      case 'pre': s = n.op + n.name; break;
+      case 'post': s = n.name + n.op; break;
+      case 'asg': s = n.name + ' ' + n.op + ' ' + pr(n.r, hi); break;
+    }
+    return n.id === hi ? '\u0001' + s + '\u0002' : s;
+  }
+  const hiHtml = raw => esc(raw).replace(/\u0001/g, '<mark class="wbv8-hi">').replace(/\u0002/g, '</mark>');
+  const plain = raw => raw.replace(/[\u0001\u0002]/g, '');
+  const TN = v => typeof v;
+  function apply(op, a, b) {
+    const show = v => `${fmt(a)} ${op} ${fmt(b)} → ${fmt(v)}`;
+    const conv = [a, b].filter(x => typeof x !== 'number').map(x => `${fmt(x)} → ${toNum(x)}`);
+    const NM = { '-': ['Subtraction', 'طرح'], '*': ['Multiplication', 'ضرب'], '/': ['Division', 'قسمة'], '%': ['Modulo (the remainder of the division)', 'باقي القسمة (modulo)'] };
+    if (op === '+') {
+      if (typeof a === 'string' || typeof b === 'string') { const v = toStr(a) + toStr(b); return [v, `<b>+</b> with a string joins text (concatenation): ${C(show(v))}`, `لما يكون فيه string الـ + بيلزق النص (concatenation):${L(show(v))}`]; }
+      const v = toNum(a) + toNum(b);
+      return [v, `Addition${conv.length ? ' (first ' + C(conv.join(', ')) + ')' : ''}: ${C(show(v))}`, `جمع${conv.length ? '، والأول القيم بتتحول لأرقام' : ''}:${L((conv.length ? conv.join(', ') + ' ; ' : '') + show(v))}`];
+    }
+    if (NM[op]) {
+      const x = toNum(a), y = toNum(b), v = op === '-' ? x - y : op === '*' ? x * y : op === '/' ? x / y : x % y;
+      return [v, `${NM[op][0]}${conv.length ? ' (first ' + C(conv.join(', ')) + ')' : ''}: ${C(show(v))}`, `${NM[op][1]}${conv.length ? '، والأول القيم بتتحول لأرقام' : ''}:${L((conv.length ? conv.join(', ') + ' ; ' : '') + show(v))}`];
+    }
+    if (op === '==' || op === '!=') {
+      const eq = looseEq(a, b), v = op === '==' ? eq : !eq;
+      if (TN(a) === TN(b)) return [v, `<b>${op}</b> compares the values: ${C(show(v))}`, `الـ ${B(op)} بيقارن القيم:${L(show(v))}`];
+      if (a === undefined || b === undefined) return [v, `<b>${op}</b>: undefined is only equal to undefined (or null): ${C(show(v))}`, `الـ undefined مبيساويش غير undefined (أو null):${L(show(v))}`];
+      const cv = conv.filter((_, j) => true).join(', ');
+      return [v, `<b>${op}</b> compares the <b>value only</b>, so the types are converted first (${C(cv)}): ${C(show(v))}`, `الـ ${B(op)} بيقارن القيمة بس، فبيحوّل النوع الأول:${L(cv + ' ; ' + show(v))}`];
+    }
+    if (op === '===' || op === '!==') {
+      const v = op === '===' ? a === b : a !== b;
+      if (TN(a) !== TN(b)) return [v, `<b>${op}</b> checks the <b>type</b> too: ${TN(a)} and ${TN(b)} are different types, so no value comparison is needed: ${C(show(v))}`, `الـ ${B(op)} بيبص على النوع كمان، ودول نوعين مختلفين (${TN(a)} و ${TN(b)}):${L(show(v))}`];
+      return [v, `<b>${op}</b>: same type (${TN(a)}), so it compares the values: ${C(show(v))}`, `الـ ${B(op)} والنوع واحد (${TN(a)})، فبيقارن القيم:${L(show(v))}`];
+    }
+    // < > <= >=
+    let x = a, y = b, both = typeof a === 'string' && typeof b === 'string';
+    if (!both) { x = toNum(a); y = toNum(b); }
+    const v = op === '<' ? x < y : op === '>' ? x > y : op === '<=' ? x <= y : x >= y;
+    if (both) return [v, `Both are strings, so they are compared as text, letter by letter: ${C(show(v))}`, `الاتنين strings، فبيتقارنوا كنص حرف بحرف:${L(show(v))}`];
+    return [v, `Comparison${conv.length ? ' (first ' + C(conv.join(', ')) + ')' : ''}: ${C(show(v))}`, `مقارنة${conv.length ? '، والأول القيم بتتحول لأرقام' : ''}:${L((conv.length ? conv.join(', ') + ' ; ' : '') + show(v))}`];
+  }
+  function trace(src, init) {
+    const root = parse(src), vars = Object.assign({}, init), steps = [];
+    let chg = [];
+    const push = (hi, en, ar, kind, meta) => { const raw = pr(root, hi); steps.push({ raw, expr: hiHtml(raw), en, ar, kind, meta, hi, vars: Object.assign({}, vars), ch: chg }); chg = []; };
+    const get = name => {
+      if (!(name in vars)) throw E(`${C(name)} is not defined (JavaScript stops with a ReferenceError).`, `المتغير ${B(name)} مش متعرّف (الـ JavaScript بيقف بـ ReferenceError).`);
+      return vars[name];
+    };
+    const done = (n, v) => { n.done = true; n.val = v; return v; };
+    const known = Object.entries(init).filter(([, v]) => v !== undefined).map(([k, v]) => `${k} = ${fmt(v)}`).join(', ');
+    push(0, `Start${known ? ' with ' + C(known) : ''}: JavaScript works through ${C(src.trim())} one operation at a time, left to right (* / % before + -).`,
+      `بنبدأ${known ? ' بالقيم دي' : ''}، والـ JavaScript بيحسب عملية عملية من الشمال لليمين (والضرب والقسمة والباقي قبل الجمع والطرح):${L(src.trim() + (known ? '   (' + known + ')' : ''))}`, 'start');
+    let guard = 0;
+    function ev(n) {
+      if (++guard > 400) throw E('This expression is too long for the tracer.', 'الـ expression ده طويل على الأداة دي.');
+      if (n.done) return n.val;
+      switch (n.t) {
+        case 'lit': return n.v;
+        case 'var': { const v = get(n.name); done(n, v); push(n.id, '', '', 'var', { name: n.name, v }); return v; }
+        case 'par': {
+          const v = ev(n.e); done(n, v);
+          const l = steps[steps.length - 1]; if (l && l.hi === n.e.id) { l.raw = pr(root, n.id); l.expr = hiHtml(l.raw); l.hi = n.id; }
+          return v;
+        }
+        case 'un': {
+          const a = ev(n.a);
+          if (n.op === '!') { const v = done(n, !truthy(a)); push(n.id, `<b>!</b> (not) flips it: ${C('!' + fmt(a) + ' → ' + v)}`, `الـ ! (not) بيعكس القيمة:${L('!' + fmt(a) + ' → ' + v)}`); return v; }
+          const v = done(n, -toNum(a)); push(n.id, `The minus sign: ${C('-' + fmt(a) + ' → ' + fmt(v))}`, `علامة السالب:${L('-' + fmt(a) + ' → ' + fmt(v))}`); return v;
+        }
+        case 'pre': case 'post': {
+          const o = toNum(get(n.name)), nv = n.op === '++' ? o + 1 : o - 1; vars[n.name] = nv; chg = [n.name];
+          const kind = n.op === '++' ? 'increment' : 'decrement';
+          if (n.t === 'pre') { done(n, nv); push(n.id, `${C(n.op + n.name)} is a <b>pre-${kind}</b>: it changes ${n.name} first (${n.name} becomes ${nv}), then gives the new value <b>${nv}</b>.`, `الـ ${B(n.op + n.name)} (pre-${kind}) بيغيّر الـ ${n.name} الأول وبعدين بياخد القيمة الجديدة:${L(`${n.op}${n.name} → ${nv}, ${n.name} = ${nv}`)}`); return nv; }
+          done(n, o); push(n.id, `${C(n.name + n.op)} is a <b>post-${kind}</b>: it gives the old value <b>${o}</b> first, then ${n.name} becomes ${nv}.`, `الـ ${B(n.name + n.op)} (post-${kind}) بيدّي القيمة القديمة الأول، وبعدين الـ ${n.name} بتتغير:${L(`${n.name}${n.op} → ${o}, ${n.name} = ${nv}`)}`); return o;
+        }
+        case 'bin': {
+          const a = ev(n.a);
+          if (n.op === '&&' || n.op === '||') {
+            const stop = n.op === '&&' ? !truthy(a) : truthy(a);
+            if (stop) { done(n, a); push(n.id, `<b>${n.op}</b>: the left side is ${C(fmt(a))}, so the answer is already <b>${fmt(a)}</b> and the right side is not even evaluated.`, `الـ ${B(n.op)} شمالها ${B(fmt(a))}، فالإجابة اتعرفت ومش محتاج يحسب اليمين أصلًا:${L(`${fmt(a)} ${n.op} … → ${fmt(a)}`)}`); return a; }
+            const b = ev(n.b); done(n, b); push(n.id, `<b>${n.op}</b>: the left side is ${C(fmt(a))}, so the result is the right side: ${C(`${fmt(a)} ${n.op} ${fmt(b)} → ${fmt(b)}`)}`, `الـ ${B(n.op)} شمالها ${B(fmt(a))}، فالنتيجة هي اللي على اليمين:${L(`${fmt(a)} ${n.op} ${fmt(b)} → ${fmt(b)}`)}`); return b;
+          }
+          const b = ev(n.b); const [v, en, ar] = apply(n.op, a, b); done(n, v); push(n.id, en, ar); return v;
+        }
+        case 'asg': {
+          if (n.op !== '=') {
+            const op = n.op[0], was = `${n.name} ${n.op} ${plain(pr(n.r, 0))}`;
+            n.r = mk({ t: 'bin', op, a: mk({ t: 'var', name: n.name }), b: n.r }); n.op = '=';
+            push(n.id, `${C(was)} is short for ${C(plain(pr(n, 0)))}.`, `الـ ${B(was)} اختصار لـ:${L(plain(pr(n, 0)))}`, 'rw');
+          }
+          const v = ev(n.r); vars[n.name] = v; chg = [n.name]; if (n !== root) done(n, v);
+          push(n.id, `Assign: <b>${esc(n.name)}</b> now holds ${C(fmt(v))}.`, `الـ ${B(n.name)} بتاخد القيمة:${L(n.name + ' = ' + fmt(v))}`, 'asg');
+          return v;
+        }
+      }
+      throw BAD();
+    }
+    const value = ev(root);
+    // merge runs of variable reads into one step
+    const out = [];
+    for (const s of steps) {
+      if (s.kind === 'var') {
+        const l = out[out.length - 1];
+        if (l && l.kind === 'var') { l.reads.push(s.meta); Object.assign(l, { raw: s.raw, expr: s.expr, vars: s.vars }); }
+        else out.push(Object.assign({}, s, { reads: [s.meta] }));
+      } else out.push(s);
+    }
+    for (const s of out) if (s.kind === 'var') {
+      const r = s.reads.map(m => `${m.name} = ${fmt(m.v)}`).join(', ');
+      s.en = `Read the variable${s.reads.length > 1 ? 's' : ''}: ${C(r)}`; s.ar = `بنحط قيمة المتغير مكانه:${L(r)}`;
+    }
+    if (root.t !== 'asg') { const l = out[out.length - 1]; l.en += ` The result is <b>${esc(fmt(value))}</b>.`; l.ar += `النتيجة:${L(fmt(value))}`; }
+    return { steps: out, value, vars };
+  }
+  function lit(src, what) {
+    const t = lex(src);
+    if (t.length === 1 && ['num', 'str', 'bool'].includes(t[0].k)) return t[0].v;
+    if (t.length === 1 && t[0].k === 'undef') return undefined;
+    if (t.length === 2 && t[0].k === 'op' && t[0].v === '-' && t[1].k === 'num') return -t[1].v;
+    throw E(`The value of ${C(what)} must be a number, a "string", true or false.`, `قيمة الـ ${B(what)} لازم تبقى رقم أو "string" أو true أو false.`);
+  }
+  function parseLits(src) {
+    const t = lex(src); let p = 0;
+    const bad = () => E('Only values go here: numbers, "strings", true, false or [ … ], separated by commas.', 'هنا قيم بس، يعني أرقام أو "strings" أو true أو false أو [ … ] وبينهم فواصل.');
+    const one = () => {
+      const k = t[p]; if (!k) throw bad();
+      if (k.k === 'op' && k.v === '-' && t[p + 1] && t[p + 1].k === 'num') { p += 2; return -t[p - 1].v; }
+      if (k.k === 'num' || k.k === 'str' || k.k === 'bool') { p++; return k.v; }
+      if (k.k === 'op' && k.v === '[') {
+        p++; const a = []; if (t[p] && t[p].v === ']') { p++; return a; }
+        for (;;) { a.push(one()); const s = t[p++]; if (s && s.v === ']') return a; if (!s || s.v !== ',') throw bad(); }
+      }
+      throw bad();
+    };
+    const out = []; if (!t.length) return out;
+    for (;;) { out.push(one()); if (p >= t.length) return out; if (t[p].v !== ',') throw bad(); p++; if (out.length > 12) throw bad(); }
+  }
+
+  /* ── [0], [1], [2] the operator tables, evaluated step by step ── */
+  function ExprLab({ ar, init, groups, ownDef, note }) {
+    const first = groups[0].items[0];
+    const [k, setK] = useState(first), [own, setOwn] = useState(ownDef);
+    const [ov, setOv] = useState(() => Object.fromEntries(Object.entries(init).filter(([, v]) => v !== undefined).map(([n, v]) => [n, fmt(v)])));
+    const isOwn = k === '#own';
+    let res = null, err = null;
+    try {
+      let vars0 = init;
+      if (isOwn) { vars0 = Object.assign({}, init); for (const [n, s] of Object.entries(ov)) vars0[n] = lit(s, n); }
+      res = trace(isOwn ? own : k, vars0);
+    } catch (e) { err = e; }
+    const steps = res ? res.steps : [];
+    const [i, ctl] = useRun(isOwn ? 'own|' + own + '|' + JSON.stringify(ov) : k, Math.max(1, steps.length), 1700, isOwn);
+    const s = steps[i];
+    const show = s ? Object.fromEntries(Object.entries(s.vars).map(([n, v]) => [n, fmt(v)])) : {};
+    return html`<${Fig}><div className="fig-stage">
+      ${groups.map((g, j) => html`<div className="wbv8-grp" key=${j}>${g.label && html`<small>${g.label}</small>`}<${Chips} mono=${true} label=${g.label || 'Example'} items=${g.items.map(x => [x, x])} sel=${k} on=${setK} /></div>`)}
+      <${Chips} label="Your own" items=${[['#own', 'Try your own']]} sel=${k} on=${setK} />
+      ${isOwn && html`<div className="wbv8-own">
+        <label>Your expression (${note})<input className="wbv8-in" value=${own} maxLength="70" spellCheck="false" autoCapitalize="off" autoComplete="off" onInput=${e => setOwn(e.target.value)} /></label>
+        <div className="wbv8-row">${Object.keys(ov).map(n => html`<label key=${n}>${n} starts as<input className="wbv8-in" value=${ov[n]} maxLength="14" spellCheck="false" autoCapitalize="off" onInput=${e => { const v = e.target.value; setOv(o => Object.assign({}, o, { [n]: v })); }} /></label>`)}</div></div>`}
+      ${s && html`<div className="wbv8-expr" aria-live="polite" dangerouslySetInnerHTML=${{ __html: s.expr }}></div><${Vars} vars=${show} ch=${s.ch} />`}
+      ${err && html`<div className="wbv8-err" dangerouslySetInnerHTML=${{ __html: err.en || 'Error' }}></div>`}
+    </div>
+    ${s ? html`<${Cap} en=${s.en} ar=${s.ar} showAr=${ar} />` : html`<${Cap} en=${err ? err.en : ''} ar=${err ? err.ar : ''} showAr=${ar} />`}
+    ${s && html`<${Nav} n=${steps.length} i=${i} ctl=${ctl} />`}<//>`;
+  }
+  const Arith = ({ ar }) => html`<${ExprLab} ar=${ar} init=${{ x: undefined, y: 4 }} note="x, y; + - * / % ++ --"
+    groups=${[{ label: 'From the table, y = 4 each time', items: ['x = y + 5', 'x = y + "5"', 'x = "Four" + y + "4"', 'x = y - 2', 'x = y++', 'x = ++y', 'x = y--', 'x = --y', 'x = y * 4', 'x = 10 / y', 'x = y % 3'] }]} ownDef='x = 1 + "2" + "2"' />`;
+  const Assign = ({ ar }) => html`<${ExprLab} ar=${ar} init=${{ x: 10 }} note="x; = += -= *= /= %="
+    groups=${[{ label: 'From the table, x = 10 each time', items: ['x = 5', 'x += 5', 'x -= 5', 'x *= 5', 'x /= 5', 'x %= 5'] }]} ownDef='x += "5"' />`;
+  const Compare = ({ ar }) => html`<${ExprLab} ar=${ar} init=${{ x: 10, y: 5 }} note="x, y; == === != !== < > <= >= && || !"
+    groups=${[
+      { label: 'Equal: value only, or value and type (x = 10)', items: ['x == 8', 'x == 10', 'x == "10"', 'x === 10', 'x === "10"'] },
+      { label: 'Not equal', items: ['x != 5', 'x !== "10"', 'x !== 10'] },
+      { label: 'Greater / less', items: ['x > 5', 'x >= 10', 'x < 5', 'x <= 10'] },
+      { label: 'Logical (x = 10, y = 5)', items: ['(x == 10 && y > x)', '(x >= 10 || y > x)', '!(x == y)', '!(x > y)'] },
+      { label: 'Mix', items: ['(x >= 10 && y < x || x == y)', '((x < y || x >= 10) && y >= 5)', '(!(x == y) && y >= 10)'] }]} ownDef='true + true + true * 3' />`;
+
+  /* ── [3] L8 Examples (1), (2), (3) run line by line ── */
+  const PROGS = {
+    e1: { v: [['a', '33'], ['b', '10'], ['c', '"Test"']], s: [['result = a + b', 'a + b = '], ['result = a - b', 'a - b = '], ['result = a / b', 'a / b = '], ['result = a % b', 'a % b = '], ['result = a + b + c', 'a + b + c = '], ['a = ++a', null], ['result = ++a', '++a = '], ['b = --b', null], ['result = --b', '--b = ']] },
+    e2: { v: [['a', '10'], ['b', '20']], s: [['result = (a == b)', '(a == b) => '], ['result = (a < b)', '(a < b) => '], ['result = (a > b)', '(a > b) => '], ['result = (a != b)', '(a != b) => '], ['result = (a >= b)', '(a >= b) => '], ['result = (a <= b)', '(a <= b) => ']] },
+    e3: { v: [['a', 'true'], ['b', 'false']], s: [['result = (a && b)', '(a && b) => '], ['result = (a || b)', '(a || b) => '], ['result = (!(a && b))', '!(a && b) => ']] }
+  };
+  function progRun(key, vals) {
+    const P = PROGS[key], vars = {}, page = [], steps = [];
+    const code = P.v.map(([n], j) => `var ${n} = ${vals[j]};`).concat(['var linebreak = "<br />";'], P.s.map(([src]) => src + ';'));
+    P.v.forEach(([n], j) => { vars[n] = lit(vals[j], n); });
+    const show = () => Object.fromEntries(Object.entries(vars).map(([n, v]) => [n, fmt(v)]));
+    const dl = P.v.map(([n, ], j) => `${n} = ${fmt(vars[n])}`).join(', ');
+    steps.push({ ln: P.v.map((_, j) => j).concat(P.v.length), chain: esc(dl), vars: show(), ch: P.v.map(([n]) => n), page: [], en: `The variables start as ${C(dl)}. Each <code>result = …</code> line below is printed with <code>document.write(label)</code>, <code>document.write(result)</code> and <code>document.write(linebreak)</code>.`, ar: `المتغيرات بتبدأ كده:${L(dl)}وكل سطر ${B('result = …')} تحت بيتطبع بالـ ${B('document.write')} (الـ label، وبعدين الـ result، وبعدين الـ linebreak).` });
+    P.s.forEach(([src, label], j) => {
+      const r = trace(src, vars); Object.assign(vars, r.vars);
+      const raws = []; for (const s of r.steps) { const p = plain(s.raw); if (raws[raws.length - 1] !== p) raws.push(p); }
+      const notes = r.steps.filter(s => s.kind !== 'start' && s.kind !== 'var');
+      if (label) page.push(esc(label + toStr(r.value)));
+      const ch = Object.keys(r.vars).filter(n => r.steps.some(s => s.ch.includes(n)));
+      steps.push({ ln: [P.v.length + 1 + j], chain: raws.map((x, q) => q === raws.length - 1 ? `<mark class="wbv8-hi">${esc(x)}</mark>` : esc(x)).join(' <span class="wbv8-faint">→</span> '), vars: show(), ch, page: page.slice(), nw: !!label,
+        en: notes.map(s => s.en).join(' ') + (label ? ` The page shows <b>${esc(label + toStr(r.value))}</b>.` : ' (Nothing is written for this line.)'),
+        ar: notes.map(s => s.ar).join('') + (label ? `وبيكتب في الصفحة:${L(label + toStr(r.value))}` : 'والسطر ده مبيكتبش حاجة في الصفحة.') });
+    });
+    return { code, steps };
+  }
+  function Examples({ ar }) {
+    const [k, setK] = useState('e1'), [own, setOwn] = useState(false);
+    const [vals, setVals] = useState(() => Object.fromEntries(Object.entries(PROGS).map(([n, P]) => [n, P.v.map(v => v[1])])));
+    const cur = own ? vals[k] : PROGS[k].v.map(v => v[1]);
+    let run = null, err = null; try { run = progRun(k, cur); } catch (e) { err = e; }
+    const n = run ? run.steps.length : 1;
+    const [i, ctl] = useRun(k + (own ? '|' + cur.join('|') : ''), n, 1900, own);
+    const s = run && run.steps[i];
+    return html`<${Fig}><div className="fig-stage">
+      <${Chips} label="Example" items=${[['e1', 'Example (1)'], ['e2', 'Example (2)'], ['e3', 'Example (3)']]} sel=${k} on=${setK} />
+      <${Chips} label="Values" items=${[['n', 'Values from the notes'], ['y', 'Try your own values']]} sel=${own ? 'y' : 'n'} on=${x => setOwn(x === 'y')} />
+      ${own && html`<div className="wbv8-own"><div className="wbv8-row">${PROGS[k].v.map(([vn], j) => html`<label key=${k + vn}>var ${vn} =<input className="wbv8-in" value=${vals[k][j]} maxLength="14" spellCheck="false" autoCapitalize="off"
+        onInput=${e => { const v = e.target.value; setVals(o => Object.assign({}, o, { [k]: o[k].map((x, q) => q === j ? v : x) })); }} /></label>`)}</div></div>`}
+      ${run && html`<div className="wbv8-two"><${Code} lines=${run.code} on=${s.ln} />
+        <div><div className="wbv8-expr sm" aria-live="polite" dangerouslySetInnerHTML=${{ __html: s.chain }}></div><${Vars} vars=${s.vars} ch=${s.ch} />
+        <div style=${{ marginTop: '8px' }}><${Panel} title="The page (document.write)"><${Out} lines=${s.page} nw=${s.nw} /><//></div></div></div>`}
+      ${err && html`<div className="wbv8-err" dangerouslySetInnerHTML=${{ __html: err.en }}></div>`}
+    </div>
+    ${s ? html`<${Cap} en=${s.en} ar=${s.ar} showAr=${ar} />` : html`<${Cap} en=${err.en} ar=${err.ar} showAr=${ar} />`}
+    ${s && html`<${Nav} n=${n} i=${i} ctl=${ctl} />`}<//>`;
+  }
+
+  /* generic: code with the running line lit, variables, an output panel */
+  function Runner({ ar, code, steps, rkey, title, page, ms, toEnd, children }) {
+    const [i, ctl] = useRun(rkey, steps.length, ms || 1500, toEnd);
+    const s = steps[i];
+    return html`<${Fig}><div className="fig-stage">${children}
+      <div className="wbv8-two"><${Code} lines=${code} on=${s.ln} />
+        <div>${s.vars && Object.keys(s.vars).length > 0 && html`<${Vars} vars=${s.vars} ch=${s.ch} />`}
+          <div style=${{ marginTop: '8px' }}><${Panel} title=${title}><${Out} lines=${s.out} nw=${s.nw} page=${page} /><//></div></div></div>
+      </div><${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Nav} n=${steps.length} i=${i} ctl=${ctl} /><//>`;
+  }
+  const clean = (s, n) => String(s).replace(/["'\\<>`]/g, '').slice(0, n);
+  function stepper() {
+    const steps = []; let out = [], vars = {}, prev = {};
+    const S = (ln, en, ar, o) => {
+      if (o != null) out = out.concat(o);
+      const ch = Object.keys(vars).filter(k => vars[k] !== prev[k]); prev = Object.assign({}, vars);
+      steps.push({ ln: [].concat(ln), vars: Object.assign({}, vars), ch, out, nw: o != null, en, ar });
+    };
+    return { steps, S, set: (k, v) => { vars[k] = v; } };
+  }
+
+  /* ── [4.0] Example 4: if / else if / else ── */
+  const BOOKS = [['history', 1, 2, 'History Book'], ['maths', 4, 5, 'Maths Book'], ['economics', 7, 8, 'Economics Book']];
+  function ifRun(book) {
+    const code = [`var book = "${book}";`, 'if (book == "history") {', '  document.write("<b>History Book</b>");', '}', 'else if (book == "maths") {', '  document.write("<b>Maths Book</b>");', '}',
+      'else if (book == "economics") {', '  document.write("<b>Economics Book</b>");', '}', 'else {', '  document.write("<b>Unknown Book</b>");', '}'];
+    const { steps, S, set } = stepper();
+    set('book', fmt(book)); S(0, `${C('book')} is set to ${C(fmt(book))}.`, `الـ book بتاخد القيمة:${L('book = ' + fmt(book))}`);
+    for (const [w, lc, lw, txt] of BOOKS) {
+      const t = book === w, cs = !t && book.toLowerCase() === w;
+      S(lc, `Test ${C(`book == "${w}"`)}: ${C(`${fmt(book)} == "${w}" → ${t}`)}${t ? ', so this block runs.' : cs ? ' (strings are case-sensitive), so JavaScript moves on to the next test.' : ', so JavaScript moves on to the next test.'}`,
+        `بنختبر الشرط:${L(`${fmt(book)} == "${w}" → ${t}`)}${t ? 'الشرط اتحقق، فالـ block ده هو اللي هيتنفذ.' : cs ? 'الشرط متحققش (الـ strings بتفرّق بين الـ capital والـ small)، فبنروح للشرط اللي بعده.' : 'الشرط متحققش، فبنروح للشرط اللي بعده.'}`);
+      if (t) { S(lw, `It writes <b>${txt}</b> (bold, because of the &lt;b&gt; tag). The rest of the chain is skipped.`, `بيكتب ${B(txt)} بالـ bold (بسبب الـ tag ${B('<b>')})، وباقي الـ chain بيتساب خالص.`, `<b>${txt}</b>`); return { code, steps }; }
+    }
+    S(10, `No test was true, so the ${C('else')} block runs.`, 'ولا شرط اتحقق، فالـ block بتاع الـ else هو اللي بيتنفذ.');
+    S(11, 'It writes <b>Unknown Book</b>.', `بيكتب ${B('Unknown Book')} بالـ bold.`, '<b>Unknown Book</b>');
+    return { code, steps };
+  }
+  function IfElse({ ar }) {
+    const [k, setK] = useState('maths'), [own, setOwn] = useState('Maths');
+    const book = k === '#own' ? clean(own, 16) : k, r = ifRun(book);
+    return html`<${Runner} ar=${ar} code=${r.code} steps=${r.steps} rkey=${'if|' + book} title="The page" page=${true} toEnd=${k === '#own'}>
+      <${Chips} mono=${true} label="book" items=${[['history', '"history"'], ['maths', '"maths" (notes)'], ['economics', '"economics"'], ['#own', 'Try your own']]} sel=${k} on=${setK} />
+      ${k === '#own' && html`<div className="wbv8-own"><label>var book =<input className="wbv8-in" value=${own} maxLength="16" spellCheck="false" autoCapitalize="off" onInput=${e => setOwn(e.target.value)} /></label></div>`}
+    <//>`;
+  }
+
+  /* ── [4.1] Example 5: switch ── */
+  const GRADES = [['A', 'Good job'], ['B', 'Pretty good'], ['C', 'Passed'], ['D', 'Not so good'], ['F', 'Failed']];
+  function swRun(g, brk) {
+    const code = [`var grade = '${g}';`, 'document.write("Entering switch block<br />");', 'switch (grade) {'], at = {};
+    for (const [c, t] of GRADES) { at[c] = code.length; code.push(`  case '${c}':`, `    document.write("${t}<br />");`); if (brk) { at[c + 'b'] = code.length; code.push('    break;'); } }
+    at.def = code.length; code.push('  default:', '    document.write("Unknown grade<br />")'); code.push('}'); at.end = code.length; code.push('document.write("Exiting switch block");');
+    const { steps, S, set } = stepper();
+    set('grade', `'${g}'`); S(0, `${C('grade')} is set to ${C(`'${g}'`)}.`, `الـ grade بتاخد القيمة:${L(`grade = '${g}'`)}`);
+    S(1, 'It writes <b>Entering switch block</b>.', `بيكتب ${B('Entering switch block')}.`, 'Entering switch block');
+    S(2, `${C('switch')} compares ${C('grade')} with each case in turn, using <b>strict equality ===</b> (value and type).`, `الـ switch بيقارن الـ grade بكل case بالترتيب، بالـ strict equality ${B('===')} (القيمة والنوع).`);
+    const idx = GRADES.findIndex(([c]) => c === g);
+    for (let j = 0; j < GRADES.length; j++) {
+      const [c, t] = GRADES[j];
+      if (idx < 0 || j < idx) { S(at[c], `${C(`'${g}' === '${c}'`)} is false: skip this case.`, `المقارنة دي false، فبنعدّي الـ case ده:${L(`'${g}' === '${c}' → false`)}`); continue; }
+      if (j === idx) S([at[c], at[c] + 1], `${C(`'${g}' === '${c}'`)} is <b>true</b>: this case runs and writes <b>${t}</b>.`, `المقارنة دي true:${L(`'${g}' === '${c}' → true`)}فالـ case ده بيتنفذ وبيكتب ${B(t)}.`, t);
+      else S([at[c], at[c] + 1], `No break before it, so execution <b>falls through</b> into case '${c}' without testing it, and writes <b>${t}</b>.`, `مفيش break قبله، فالتنفيذ بيكمّل (fall through) في الـ case ده من غير ما يختبره، وبيكتب ${B(t)}.`, t);
+      if (brk) { S(at[c + 'b'], `${C('break')} jumps out of the switch: no other case runs.`, 'الـ break بيخرج من الـ switch على طول، ومفيش case تاني بيتنفذ.'); break; }
+    }
+    if (idx < 0) S([at.def, at.def + 1], 'No case matched, so <b>default</b> runs and writes <b>Unknown grade</b>.', `ولا case طابق، فالـ default بيتنفذ وبيكتب ${B('Unknown grade')}.`, 'Unknown grade');
+    else if (!brk) S([at.def, at.def + 1], 'Still no break: it falls through into <b>default</b> too and writes <b>Unknown grade</b>.', `ولسه مفيش break، فبيكمّل كمان في الـ default وبيكتب ${B('Unknown grade')}.`, 'Unknown grade');
+    S(at.end, 'After the switch it writes <b>Exiting switch block</b>.', `بعد الـ switch بيكتب ${B('Exiting switch block')}.`, 'Exiting switch block');
+    return { code, steps };
+  }
+  function Switch({ ar }) {
+    const [k, setK] = useState('A'), [own, setOwn] = useState('a'), [brk, setBrk] = useState(true);
+    const g = k === '#own' ? clean(own, 6) : k, r = swRun(g, brk);
+    return html`<${Runner} ar=${ar} code=${r.code} steps=${r.steps} rkey=${'sw|' + g + brk} title="The page" page=${true} ms=${1400} toEnd=${k === '#own'}>
+      <${Chips} mono=${true} label="grade" items=${GRADES.map(([c]) => [c, `'${c}'` + (c === 'A' ? ' (notes)' : '')]).concat([['#own', 'Try your own']])} sel=${k} on=${setK} />
+      <${Chips} label="break" items=${[['y', 'With break (as in the notes)'], ['n', 'Remove every break']]} sel=${brk ? 'y' : 'n'} on=${x => setBrk(x === 'y')} />
+      ${k === '#own' && html`<div className="wbv8-own"><label>var grade =<input className="wbv8-in" value=${own} maxLength="6" spellCheck="false" autoCapitalize="off" onInput=${e => setOwn(e.target.value)} /></label></div>`}
+    <//>`;
+  }
+
+  /* ── [4.2] the loops of the slides: while, do...while, for...in, for...of ── */
+  const DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  const DAYS_L = ['var days = ["Monday", "Tuesday",', '  "Wednesday", "Thursday", "Friday"];'];
+  function loopRun(kind) {
+    const { steps, S, set } = stepper(); let code;
+    if (kind === 'while') {
+      code = ['var i = 1;', 'while (i < 5) {', '  // code to execute', '  i++;', '}'];
+      let i = 1, runs = 0; set('i', '1'); S(0, `${C('i')} starts at 1.`, 'الـ i بتبدأ بـ 1.');
+      for (;;) {
+        const t = i < 5;
+        S(1, `<b>while</b> tests first: ${C(`${i} < 5`)} is <b>${t}</b>${t ? ', so the body runs.' : ', so the loop stops.'}`, `الـ while بتختبر الأول:${L(`${i} < 5 → ${t}`)}${t ? 'الشرط true، فالـ body هيتنفذ.' : 'الشرط false، فالـ loop بتقف.'}`);
+        if (!t) break;
+        runs++; S(2, `The body runs (time ${runs}, with i = ${i}).`, `الـ body بيتنفذ (المرة رقم ${runs}، والـ i قيمتها ${i}).`, `// code to execute   (i = ${i})`);
+        i++; set('i', String(i)); S(3, `${C('i++')} is the update that ends the loop one day: i becomes ${i}.`, `الـ ${B('i++')} هو الـ update اللي هيخلّص الـ loop في الآخر، والـ i بقت ${i}.`);
+      }
+      S(4, `Done: the body ran ${runs} times, for i = 1, 2, 3 and 4.`, `خلصنا، والـ body اتنفذ ${runs} مرات:${L('i = 1, 2, 3, 4')}`);
+    } else if (kind === 'do') {
+      code = DAYS_L.concat(['var i = 0;', 'do {', '  var day = days[i++];', '  console.log("It\'s " + day);', '} while (day != "Wednesday");']);
+      S([0, 1], `${C('days')} holds five day names, at indexes 0 to 4.`, `الـ days فيها 5 أيام، والـ indexes من 0 لـ 4.`);
+      let i = 0; set('i', '0'); S(2, `${C('i')} starts at 0.`, 'الـ i بتبدأ بـ 0.');
+      S(3, `<b>do</b> enters the body straight away, without testing anything.`, 'الـ do بتدخل الـ body على طول من غير ما تختبر أي حاجة.');
+      for (;;) {
+        const day = DAYS[i]; i++; set('day', fmt(day)); set('i', String(i));
+        S(4, `${C(`day = days[${i - 1}]`)} is ${C(fmt(day))}, then ${C('i++')} makes i ${i}.`, `الـ day بتاخد ${B(`days[${i - 1}]`)} يعني ${B(fmt(day))}، وبعدين الـ ${B('i++')} بتخلّي الـ i تبقى ${i}.`);
+        S(5, `It logs <b>It's ${day}</b>.`, `بيطبع في الـ console:${L("It's " + day)}`, "It's " + day);
+        const t = day !== 'Wednesday';
+        S(6, `Now the test, <b>after</b> the body: ${C(`"${day}" != "Wednesday"`)} is <b>${t}</b>${t ? ', so it goes round again.' : ', so the loop stops. Thursday and Friday are never printed.'}`, `دلوقتي الاختبار، بعد الـ body:${L(`"${day}" != "Wednesday" → ${t}`)}${t ? 'لسه true، فبيلف تاني.' : 'بقت false، فالـ loop بتقف، والـ Thursday والـ Friday مش بيتطبعوا خالص.'}`);
+        if (!t) break;
+      }
+    } else {
+      const isIn = kind === 'in';
+      code = DAYS_L.concat(isIn ? ['for (var idx in days) {', '  console.log("It\'s " + days[idx] + "<br />");', '}'] : ['for (var day of days) {', '  console.log("It\'s " + day);', '}']);
+      S([0, 1], `${C('days')} holds five day names, at indexes 0 to 4.`, `الـ days فيها 5 أيام، والـ indexes من 0 لـ 4.`);
+      DAYS.forEach((d, k) => {
+        if (isIn) {
+          set('idx', `"${k}"`);
+          S(2, `<b>for...in</b> gives the next <b>key</b>: ${C(`idx = "${k}"`)} (the index, as a string).`, `الـ for...in بتدّي الـ key اللي بعده، يعني الـ index كـ string:${L(`idx = "${k}"`)}`);
+          S(3, `${C(`days[${k}]`)} is ${C(fmt(d))}; it logs <b>It's ${d}&lt;br /&gt;</b> (in the console the &lt;br /&gt; is plain text).`, `الـ ${B(`days[${k}]`)} قيمتها ${B(fmt(d))}، وبيطبع السطر ده (وفي الـ console الـ ${B('<br />')} بيطلع كنص عادي):${L(`It's ${d}<br />`)}`, `It's ${d}<br />`);
+        } else {
+          set('day', fmt(d));
+          S(2, `<b>for...of</b> gives the next <b>value</b> itself: ${C(`day = ${fmt(d)}`)}.`, `الـ for...of بتدّي القيمة نفسها على طول:${L(`day = ${fmt(d)}`)}`);
+          S(3, `It logs <b>It's ${d}</b>.`, `بيطبع في الـ console:${L("It's " + d)}`, "It's " + d);
+        }
+      });
+      S(4, isIn ? 'No keys left: the loop ends. for...in walked the indexes "0" to "4".' : 'No values left: the loop ends. for...of walked the five values.', isIn ? `مفيش keys تانية، فالـ loop خلصت بعد ما لفت على الـ indexes من ${B('"0"')} لحد ${B('"4"')}.` : 'مفيش قيم تانية، فالـ loop خلصت بعد ما لفت على الـ 5 قيم.');
+    }
+    return { code, steps };
+  }
+  function cmpRun(n0) {
+    const w = [], d = []; let i = n0, rw = 0, rd = 0;
+    for (;;) { const t = i < 5; w.push(`test ${i} < 5 → ${t}`); if (!t || w.length > 40) break; i++; rw++; w.push(`body: i++ → i = ${i}`); }
+    i = n0;
+    for (;;) { i++; rd++; d.push(`body: i++ → i = ${i}`); const t = i < 5; d.push(`test ${i} < 5 → ${t}`); if (!t || d.length > 40) break; }
+    return { w, d, rw, rd };
+  }
+  function Loops({ ar }) {
+    const [k, setK] = useState('while'), [n0, setN0] = useState('7');
+    const chips = html`<${Chips} label="Loop" items=${[['while', 'while'], ['do', 'do...while'], ['in', 'for...in'], ['of', 'for...of'], ['cmp', 'Try your own: while vs do...while']]} sel=${k} on=${setK} />`;
+    if (k !== 'cmp') { const r = loopRun(k); return html`<${Runner} ar=${ar} code=${r.code} steps=${r.steps} rkey=${'loop|' + k} title=${k === 'while' ? 'Body runs' : 'Console'} ms=${1300}>${chips}<//>`; }
+    let n = Math.trunc(Number(n0)); if (!isFinite(n) || n < -5 || n > 9 || String(n0).trim() === '') n = 7;
+    const cmp = cmpRun(n), tm = c => c + ' time' + (c === 1 ? '' : 's');
+    return html`<${Fig}><div className="fig-stage">${chips}
+      <div className="wbv8-own"><label>Start value of i (from -5 to 9)<input className="wbv8-in" type="number" min="-5" max="9" value=${n0} onInput=${e => setN0(e.target.value)} /></label></div>
+      <div className="wbv8-two">
+        <div><${Code} lines=${[`var i = ${n};`, 'while (i < 5) {', '  i++;', '}']} on=${[1]} /><div style=${{ marginTop: '6px' }}><${Panel} title=${'while: the body runs ' + tm(cmp.rw)}><${Out} lines=${cmp.w} /><//></div></div>
+        <div><${Code} lines=${[`var i = ${n};`, 'do {', '  i++;', '} while (i < 5);']} on=${[3]} /><div style=${{ marginTop: '6px' }}><${Panel} title=${'do...while: the body runs ' + tm(cmp.rd)}><${Out} lines=${cmp.d} /><//></div></div>
+      </div></div>
+      <${Cap} en=${`Same body, same test ${C('i < 5')}, starting at i = ${n}: <b>while</b> tests first, so its body runs ${tm(cmp.rw)}; <b>do...while</b> runs the body before its first test, so it runs ${tm(cmp.rd)}${n >= 5 ? ' (at least once, even though the test is false from the start)' : ''}.`}
+        ar=${`نفس الـ body ونفس الشرط ${B('i < 5')} والبداية ${B(`i = ${n}`)}: الـ while بتختبر الأول فالـ body بيتنفذ ${cmp.rw} مرة، والـ do...while بتنفذ الـ body قبل أول اختبار فبيتنفذ ${cmp.rd} مرة${n >= 5 ? ' (مرة على الأقل حتى لو الشرط false من الأول)' : ''}.`} showAr=${ar} /><//>`;
+  }
+
+  /* ── [4.3] Example 6: the cars loop, and the same loop as while / do...while ── */
+  const CARS = ['BMW', 'Volvo', 'FAIT', 'FORD', 'Audi'];
+  function carsRun(kind, cars) {
+    const head = [`var cars = [${cars.map(c => `"${c}"`).join(', ')}];`, 'var text = "";'], W = 'document.writeln(" <br/> Cars= " + text);';
+    let code, LI, LT, LB, LU, LW;
+    if (kind === 'for') { code = head.concat(['for (let i = 0; i < cars.length; i++) {', '  text += cars[i] + "<br>";', '}', W]); LI = 2; LT = 2; LB = 3; LU = 2; LW = 5; }
+    else if (kind === 'while') { code = head.concat(['let i = 0;', 'while (i < cars.length) {', '  text += cars[i] + "<br>";', '  i++;', '}', W]); LI = 2; LT = 3; LB = 4; LU = 5; LW = 7; }
+    else { code = head.concat(['let i = 0;', 'do {', '  text += cars[i] + "<br>";', '  i++;', '} while (i < cars.length);', W]); LI = 2; LT = 6; LB = 4; LU = 5; LW = 7; }
+    const { steps, S, set } = stepper(), n = cars.length; let i = 0, text = '', html_ = '';
+    set('text', '""'); S([0, 1], `${C('cars')} holds ${n} name${n === 1 ? '' : 's'} (${C('cars.length')} is ${n}); ${C('text')} starts empty.`, `الـ cars فيها ${n} أسامي، يعني الـ ${B('cars.length')} قيمتها ${n}، والـ text بيبدأ فاضي.`);
+    set('i', '0'); S(LI, `${kind === 'for' ? 'The <b>init</b> part of the for: ' : ''}${C('let i = 0')}.`, `الـ i بتبدأ بـ 0${kind === 'for' ? ' (ده الـ init بتاع الـ for)' : ''}.`);
+    const test = () => { const t = i < n; S(LT, `${kind === 'for' ? 'The <b>condition</b>: ' : kind === 'do' ? 'The test, after the body: ' : 'The test: '}${C(`i < cars.length → ${i} < ${n} → ${t}`)}${t ? '' : ', so the loop ends.'}`, `بنختبر الشرط${kind === 'do' ? ' بعد الـ body' : ''}:${L(`i < cars.length → ${i} < ${n} → ${t}`)}${t ? '' : 'الشرط false، فالـ loop بتقف.'}`); return t; };
+    const body = () => {
+      const v = cars[i], add = (v === undefined ? 'undefined' : v) + '<br>'; text += add; html_ += esc(v === undefined ? 'undefined' : v) + '<br>'; set('text', fmt(text));
+      S(LB, `${C(`text += cars[${i}] + "<br>"`)} adds ${C(fmt(add))}${v === undefined ? ` (there is no cars[${i}], so it is undefined)` : ''}.`, `الـ text بيزيد عليه:${L(`cars[${i}] + "<br>" → ${fmt(add)}`)}${v === undefined ? `لأن مفيش عنصر عند الـ index ده فقيمته undefined.` : ''}`);
+    };
+    const upd = () => { i++; set('i', String(i)); S(LU, `${kind === 'for' ? 'The <b>update</b> part: ' : ''}${C('i++')}, so i is now ${i}.`, `الـ ${B('i++')} خلّت الـ i تبقى ${i}${kind === 'for' ? ' (ده الـ update بتاع الـ for)' : ''}.`); };
+    let guard = 0;
+    if (kind === 'do') { do { body(); upd(); } while (test() && ++guard < 20); } else { while (test() && ++guard < 20) { body(); upd(); } }
+    S(LW, `${C('document.writeln')} puts " &lt;br/&gt; Cars= " + text on the page: every &lt;br&gt; starts a new line, so each car shows on its own line.`, `الـ ${B('document.writeln')} بيكتب الـ text في الصفحة، وكل ${B('<br>')} بيبدأ سطر جديد، فكل عربية بتظهر في سطر لوحدها.`, ' <br/> Cars= ' + html_);
+    return { code, steps };
+  }
+  function Cars({ ar }) {
+    const [k, setK] = useState('for'), [own, setOwn] = useState(false), [list, setList] = useState('BMW, Volvo, Saab');
+    const cars = own ? list.split(',').map(s => clean(s.trim(), 12)).filter(Boolean).slice(0, 8) : CARS, r = carsRun(k, cars);
+    return html`<${Runner} ar=${ar} code=${r.code} steps=${r.steps} rkey=${'cars|' + k + '|' + cars.join(',')} title="The page" page=${true} ms=${1100} toEnd=${own}>
+      <${Chips} label="Loop" items=${[['for', 'for (Example 6)'], ['while', 'as while'], ['do', 'as do...while']]} sel=${k} on=${setK} />
+      <${Chips} label="cars" items=${[['n', 'Cars from the notes'], ['y', 'Try your own cars']]} sel=${own ? 'y' : 'n'} on=${x => setOwn(x === 'y')} />
+      ${own && html`<div className="wbv8-own"><label>Car names, separated by commas (up to 8; leave it empty to see an empty array)<input className="wbv8-in" value=${list} maxLength="90" spellCheck="false" autoCapitalize="off" onInput=${e => setList(e.target.value)} /></label></div>`}
+    <//>`;
+  }
+
+  /* ── [5] creating arrays, length, size can change, mixed data ── */
+  function makeArr(form, args) {
+    if (form === '[') return { a: args.slice(), how: 'lit' };
+    if (args.length === 1 && typeof args[0] === 'number') {
+      const n = args[0]; if (!(Number.isInteger(n) && n >= 0)) throw E(`${C(`new Array(${n})`)}: one number must be a whole number of 0 or more (otherwise JavaScript throws a RangeError).`, `الرقم الواحد لازم يبقى عدد صحيح من 0 أو أكتر (وإلا الـ JavaScript بيرمي RangeError).`);
+      if (n > 20) throw E('Keep the size at 20 or less here, so the boxes fit.', 'خلّي الحجم 20 أو أقل هنا عشان الخانات تكفي.');
+      return { a: new Array(n), how: 'size' };
+    }
+    return { a: args.slice(), how: args.length === 1 ? 'one' : 'many' };
+  }
+  const Cells = ({ a, marks, name }) => html`<div className="wbv8-arr" aria-label=${name || 'array'}>${a.length ? Array.from({ length: a.length }, (_, j) => {
+    const has = j in a, m = (marks && marks[j]) || '';
+    return html`<div key=${j} className=${'wbv8-cell ' + m + (has ? '' : ' hole')}><span>${has ? fmt(a[j]) : 'empty'}</span><small>${j}</small></div>`; }) : html`<span className="wbv8-faint">[ ] (no elements)</span>`}</div>`;
+  function NewArray({ ar }) {
+    const [k, setK] = useState('many'), [form, setForm] = useState('new'), [args, setArgs] = useState('"JS", 2, true'), [ops, setOps] = useState([]);
+    const pick = x => { setK(x); setOps([]); };
+    const PRE = { many: ['new', '1, 2, 3'], size: ['new', '5'], lit: ['[', '1, 2, 3'] };
+    const [f, a] = k === '#own' ? [form, args] : PRE[k];
+    let made = null, err = null;
+    try { made = makeArr(f, parseLits(a)); } catch (e) { err = e; }
+    const arr = made ? made.a.slice() : []; if (made) arr.length = made.a.length;
+    const marks = {};
+    ops.forEach(o => { if (o === 'len') { marks[arr.length] = 'add'; arr[arr.length] = 'JS'; } else { marks[7] = 'add'; arr[7] = true; } });
+    const call = f === '[' ? `[${a}]` : `new Array(${a})`;
+    const code = [`var a = ${call};`].concat(ops.map(o => o === 'len' ? 'a[a.length] = "JS";' : 'a[7] = true;'));
+    let en = '', arx = '';
+    if (made) {
+      const H = {
+        many: [`Several arguments: each one becomes an element, so ${C('a.length')} is ${made.a.length}.`, `كذا argument، فكل واحد بيبقى عنصر، والـ ${B('a.length')} قيمتها ${made.a.length}.`],
+        size: [`One numeric argument is the <b>size</b>: ${made.a.length} empty slots, and ${C('a.length')} is ${made.a.length}.`, `الـ argument الرقمي الواحد معناه الحجم، فبيعمل ${made.a.length} خانات فاضية، والـ ${B('a.length')} قيمتها ${made.a.length}.`],
+        lit: [`Square brackets make a <b>literal</b>: the elements are written out, and ${C('a.length')} is ${made.a.length}.`, `الأقواس المربعة بتعمل literal فيه العناصر مكتوبة على طول، والـ ${B('a.length')} قيمتها ${made.a.length}.`],
+        one: [`One argument that is not a number becomes the only element, so ${C('a.length')} is 1.`, `الـ argument الواحد اللي مش رقم بيبقى العنصر الوحيد، فالـ ${B('a.length')} قيمتها 1.`]
+      }[made.how];
+      en = H[0]; arx = H[1];
+      if (ops.length) {
+        const types = [...new Set(Array.from({ length: arr.length }, (_, j) => j in arr ? typeof arr[j] : null).filter(Boolean))];
+        en += ` After ${ops.length === 1 ? 'the new line' : 'the new lines'} the array <b>grew</b> to ${C('a.length')} = ${arr.length}${types.length > 1 ? ' and it mixes ' + types.join(', ') + ' values' : ''}: a JS array can change size and mix data.`;
+        arx += `وبعد ${ops.length === 1 ? 'السطر الجديد' : 'السطور الجديدة'} الـ array كبرت والـ length بقى ${arr.length}${types.length > 1 ? '، وفيها أنواع مختلطة' : ''}، لأن الـ array في الـ JS ممكن حجمها يتغير وداتاها تبقى مختلطة.`;
+      }
+    }
+    return html`<${Fig}><div className="fig-stage">
+      <${Chips} mono=${true} label="Create" items=${[['many', 'new Array(1, 2, 3)'], ['size', 'new Array(5)'], ['lit', '[1, 2, 3]'], ['#own', 'Try your own']]} sel=${k} on=${pick} />
+      ${k === '#own' && html`<div className="wbv8-own"><${Chips} mono=${true} label="Form" items=${[['new', 'new Array( … )'], ['[', '[ … ]']]} sel=${form} on=${x => { setForm(x); setOps([]); }} />
+        <label>The values inside, separated by commas<input className="wbv8-in" value=${args} maxLength="60" spellCheck="false" autoCapitalize="off" onInput=${e => { setArgs(e.target.value); setOps([]); }} /></label></div>`}
+      <${Code} lines=${code} on=${[code.length - 1]} />
+      ${made && html`<${Cells} a=${arr} marks=${marks} name="a" /><div className="wbv8-lbl">a.length → ${arr.length}</div>`}
+      ${err && html`<div className="wbv8-err" dangerouslySetInnerHTML=${{ __html: err.en }}></div>`}
+      ${made && html`<div className="wbv8-chips" style=${{ marginTop: '8px' }}>
+        <button className="fig-btn m" onClick=${() => setOps(o => o.concat('len'))} disabled=${arr.length >= 20}>a[a.length] = "JS"</button>
+        <button className="fig-btn m" onClick=${() => setOps(o => o.concat('seven'))}>a[7] = true</button>
+        ${ops.length > 0 && html`<button className="fig-btn" onClick=${() => setOps([])}>↻ Undo</button>`}</div>`}
+    </div><${Cap} en=${made ? en : err.en} ar=${made ? arx : err.ar} showAr=${ar} /><//>`;
+  }
+
+  /* ── [6] array methods playground ── */
+  const MD = {
+    push: ['22, 33', true, 'Adds the values to the <b>end</b>; returns the new length.', 'بيضيف القيم في الآخر وبيرجّع الـ length الجديد.'],
+    unshift: ['55, 66', true, 'Adds the values to the <b>front</b>; returns the new length.', 'بيضيف القيم في الأول وبيرجّع الـ length الجديد.'],
+    pop: ['', true, 'Removes the <b>last</b> element; returns that element.', 'بيشيل آخر عنصر وبيرجّعه.'],
+    shift: ['', true, 'Removes the <b>first</b> element; returns that element.', 'بيشيل أول عنصر وبيرجّعه.'],
+    splice: ['0, 2, 111, 222', true, '<code>splice(i, n, e1..)</code> removes n elements from index i and inserts e1..; returns an array of the removed elements (the array changes).', 'بيشيل n عناصر من الـ index رقم i وبيحط مكانهم العناصر الجديدة، وبيرجّع array فيها اللي اتشال (والـ array نفسها بتتغير).'],
+    slice: ['0, 3', false, '<code>slice(start, end)</code> copies from start up to (not including) end into a <b>new</b> array; the original is unchanged.', 'بينسخ من الـ start لحد قبل الـ end في array جديدة، والأصلية مبتتغيرش.'],
+    indexOf: ['33, 2', false, '<code>indexOf(v, from)</code>: the first index of v at or after from, or -1.', 'بيرجّع أول index للقيمة v من عند الـ from ورايح، أو <bdi dir="ltr">-1</bdi> لو مش موجودة.'],
+    lastIndexOf: ['33, -1', false, '<code>lastIndexOf(v, from)</code>: the last index of v, searching backwards from from (-1 = the last element), or -1.', 'بيدوّر من الـ from لورا (والـ <bdi dir="ltr">-1</bdi> يعني آخر عنصر) وبيرجّع آخر index للقيمة v، أو <bdi dir="ltr">-1</bdi>.'],
+    includes: ['33, 2', false, '<code>includes(v, from)</code>: is v there, from position from on? true or false.', 'بيقولك القيمة v موجودة من الـ from ورايح ولا لأ، يعني true أو false.'],
+    concat: ['[99, 77, 88]', false, 'Joins arrays and values into a <b>new</b> array.', 'بيلزق arrays أو قيم في array جديدة.'],
+    reverse: ['', true, 'Reverses the array <b>in place</b> and returns it.', 'بيقلب ترتيب الـ array نفسها وبيرجّعها.'],
+    sort: ['', true, 'Sorts <b>in place</b>, comparing the elements <b>as strings</b> by default.', 'بيرتّب الـ array نفسها، وبشكل افتراضي بيقارن العناصر كـ strings.'],
+    join: ["'-'", false, 'Joins the elements into one string (the default separator is a comma).', 'بيجمع العناصر في string واحد (والفاصل الافتراضي هو الـ comma).'],
+    forEach: ['getSum', false, 'Calls the function for each element and returns undefined. Here it is <code>getSum</code> from the quiz: <code>sum += ele</code>.', 'بينادي الـ function على كل عنصر وبيرجّع undefined. هنا هي الـ getSum من الـ quiz:<span class="ltr">function getSum(ele) { sum += ele; }</span>']
+  };
+  const ARRS = { nums: [3, 5, 7, 9, 11], x: [22, 66, 11, 77, 33, 55, 44], numbers: [33, 2, 8] };
+  const nIdx = (v, len, def) => { let s = v === undefined ? def : Math.trunc(toNum(v)) || 0; if (s < 0) s = Math.max(0, len + s); return Math.min(s, len); };
+  function callM(arr, m, a) {
+    const before = arr.slice(), w = arr.slice(), mb = {}, ma = {}, len = before.length; let ret, extra = null;
+    switch (m) {
+      case 'push': ret = w.push(...a); a.forEach((_, j) => { ma[len + j] = 'add'; }); break;
+      case 'unshift': ret = w.unshift(...a); a.forEach((_, j) => { ma[j] = 'add'; }); break;
+      case 'pop': if (len) mb[len - 1] = 'del'; ret = w.pop(); break;
+      case 'shift': if (len) mb[0] = 'del'; ret = w.shift(); break;
+      case 'splice': {
+        const s = nIdx(a[0], len, 0), cnt = a.length === 0 ? 0 : a.length === 1 ? len - s : Math.max(0, Math.min(Math.trunc(toNum(a[1])) || 0, len - s));
+        for (let j = 0; j < cnt; j++) mb[s + j] = 'del';
+        ret = w.splice(...a); for (let j = 0; j < a.length - 2; j++) ma[s + j] = 'add'; break;
+      }
+      case 'slice': { const s = nIdx(a[0], len, 0), e = nIdx(a[1], len, len); for (let j = s; j < e; j++) mb[j] = 'hit'; ret = w.slice(...a); break; }
+      case 'indexOf': case 'lastIndexOf': ret = w[m](...a); if (ret >= 0) mb[ret] = 'hit'; break;
+      case 'includes': { ret = w.includes(...a); const j = w.indexOf(a[0], a[1]); if (j >= 0) mb[j] = 'hit'; break; }
+      case 'concat': ret = w.concat(...a); break;
+      case 'reverse': case 'sort': w[m](); ret = w; w.forEach((_, j) => { ma[j] = 'hit'; }); break;
+      case 'join': ret = w.join(...a); break;
+      case 'forEach': { let sum = 0; const tr = [0]; w.forEach(e => { sum += e; tr.push(sum); }); extra = tr; ret = undefined; break; }
+    }
+    return { m, a, before, after: w, ret, mb, ma, extra, changes: MD[m][1] };
+  }
+  const argText = (m, a) => m === 'forEach' ? 'getSum' : a.map(fmt).join(', ');
+  const M0 = callM(ARRS.nums, 'push', [22, 33]);
+  function Methods({ ar }) {
+    const [pre, setPre] = useState('nums'), [own, setOwn] = useState('4, 1, 3, "b", "a"');
+    const [arr, setArr] = useState(M0.after), [m, setM] = useState('push'), [args, setArgs] = useState(MD.push[0]);
+    const [last, setLast] = useState(M0), [err, setErr] = useState(null);
+    const name = pre === '#own' ? 'a' : pre;
+    const load = (k, src) => { let a; try { a = k === '#own' ? parseLits(src) : ARRS[k].slice(); } catch (e) { setErr(e); return; } setErr(null); setArr(a); setLast(null); };
+    const choose = x => { setM(x); setArgs(MD[x][0]); };
+    const run = () => { try { const a = m === 'forEach' ? [] : parseLits(args); const r = callM(arr, m, a); setArr(r.after); setLast(r); setErr(null); } catch (e) { setErr(e); } };
+    let en, arx;
+    if (err) { en = err.en; arx = err.ar; }
+    else if (!last) { en = `Pick a method, check its arguments and press <b>Run</b>. The array keeps the changes, so you can chain them like the notes do.`; arx = 'اختار method وراجع الـ arguments بتوعها ودوس Run. الـ array بتحتفظ بالتغييرات، فتقدر تكمّل عليها زي الـ notes.'; }
+    else {
+      const call = `${name}.${last.m}(${argText(last.m, last.a)})`, rv = last.m === 'reverse' || last.m === 'sort' ? `${name} (now ${fmt(last.ret)})` : fmt(last.ret);
+      en = MD[last.m][2] + ` ${C(call)} returned ${C(rv)}.` + (last.changes ? ` The array <b>${name}</b> itself changed.` : ` The array <b>${name}</b> is unchanged.`);
+      arx = MD[last.m][3] + `<br>والـ method رجّعت:${L(call + ' → ' + rv)}` + (last.changes ? `والـ array نفسها اتغيرت.` : 'والـ array نفسها متغيرتش.');
+      if (last.m === 'sort') { const ks = last.after.map(v => fmt(String(v))).join(' < '); en += ` As strings: ${C(ks)}.`; arx += `كـ strings بتترتب كده:${L(ks)}`; }
+      if (last.m === 'forEach') { const tr = last.extra.map(fmt).join(' → '); en += ` sum goes ${C(tr)}.`; arx += `والـ sum بتمشي كده:${L('sum: ' + tr)}`; }
+    }
+    const shown = last && last.after === arr;
+    return html`<${Fig}><div className="fig-stage">
+      <${Chips} mono=${true} label="Array" items=${[['nums', 'nums'], ['x', 'x'], ['numbers', 'numbers'], ['#own', 'Try your own']]} sel=${pre} on=${k => { setPre(k); load(k, own); }} />
+      ${pre === '#own' && html`<div className="wbv8-own"><label>let a = [ … ] (values separated by commas)<input className="wbv8-in" value=${own} maxLength="60" spellCheck="false" autoCapitalize="off" onInput=${e => { setOwn(e.target.value); load('#own', e.target.value); }} /></label></div>`}
+      <${Chips} mono=${true} label="Method" items=${Object.keys(MD).map(x => [x, x])} sel=${m} on=${choose} />
+      <div className="wbv8-own"><div className="wbv8-run"><label>${name}.${m}( … )<input className="wbv8-in" value=${m === 'forEach' ? 'getSum' : args} disabled=${m === 'forEach' || ['pop', 'shift', 'reverse', 'sort'].includes(m)} maxLength="60" spellCheck="false" autoCapitalize="off" onInput=${e => setArgs(e.target.value)} onKeyDown=${e => { if (e.key === 'Enter') run(); }} /></label>
+        <button className="fig-btn solid" onClick=${run}>Run</button><button className="fig-btn" onClick=${() => load(pre, own)}>↻ Reset</button></div></div>
+      ${shown && last.changes ? html`<div className="wbv8-sub">before</div><${Cells} a=${last.before} marks=${last.mb} name="before" /><div className="wbv8-sub">after</div><${Cells} a=${last.after} marks=${last.ma} name="after" />`
+        : html`<div className="wbv8-sub">${name}</div><${Cells} a=${arr} marks=${shown ? last.mb : null} name=${name} />`}
+      ${shown && html`<div className="wbv8-ret wbv8-pop" key=${JSON.stringify([last.m, last.a, last.before])}>returns ${last.m === 'reverse' || last.m === 'sort' ? 'the same array' : fmt(last.ret)}</div>`}
+    </div><${Cap} en=${en} ar=${arx} showAr=${ar} /><//>`;
+  }
+
+  /* ── [7] ArrayEx(7) step by step ── */
+  function arrayEx() {
+    const S = [], out = []; let nums = [], x = null;
+    const st = (code, en, ar, o, hn, hx) => { if (o != null) out.push(o); S.push({ code, nums: nums.slice(), x: x && x.slice(), out: out.slice(), nw: o != null, en, ar, hn: hn || [], hx: hx || [] }); };
+    const all = a => a.map((_, j) => j);
+    nums = [3, 5, 7, 9, 11]; st(['let nums = [3, 5, 7, 9, 11];'], 'nums starts with five numbers.', 'الـ nums بتبدأ بخمس أرقام.');
+    nums.push(22, 33); st(['nums.push(22, 33);', "console.log('push:' + nums);"], `${C('push(22, 33)')} adds 22 and 33 at the end. Joined to a string, an array prints its elements with commas.`, `الـ ${B('push(22, 33)')} بتضيف 22 و 33 في الآخر. ولما الـ array تتلزق في string بتطبع عناصرها وبينهم commas.`, 'push:' + nums, [5, 6]);
+    nums.unshift(55, 66); st(['nums.unshift(55, 66);', "console.log('unshift:' + nums);"], `${C('unshift(55, 66)')} adds 55 and 66 at the front.`, `الـ ${B('unshift(55, 66)')} بتضيف 55 و 66 في الأول.`, 'unshift:' + nums, [0, 1]);
+    let r = nums.pop(); st(['nums.pop();'], `${C('pop()')} removes the last element (${r}); nothing is printed because its return value is not used.`, `الـ ${B('pop()')} بتشيل آخر عنصر (${r})، ومفيش طباعة لأن القيمة اللي رجعت مش مستخدمة.`);
+    r = nums.pop(); st(["console.log('pop:' + nums.pop());"], `A second ${C('pop()')} removes and returns ${r}, so it prints <b>pop:${r}</b>.`, `الـ ${B('pop()')} التانية بتشيل الـ ${r} وبترجّعها، فبيطبع:${L('pop:' + r)}`, 'pop:' + r);
+    st(["console.log('pop:' + nums);"], 'nums is now 55,66,3,5,7,9,11.', `الـ nums بقت كده:${L(nums.join(','))}`, 'pop:' + nums);
+    st(["console.log('shift:' + nums);"], 'This line only prints nums (no shift yet).', 'السطر ده بيطبع الـ nums بس (لسه مفيش shift).', 'shift:' + nums);
+    r = nums.shift(); st(["console.log('shift:' + nums.shift());"], `${C('shift()')} removes and returns the first element, ${r}.`, `الـ ${B('shift()')} بتشيل أول عنصر وبترجّعه، وهو ${r}.`, 'shift:' + r);
+    st(["console.log('shift:' + nums);"], 'nums lost its first element.', 'الـ nums راح منها أول عنصر.', 'shift:' + nums);
+    r = nums.shift(); st(["console.log('shift:' + nums.shift());"], `Another ${C('shift()')} removes ${r}.`, `الـ ${B('shift()')} تاني بتشيل الـ ${r}.`, 'shift:' + r);
+    st(["console.log('slice:' + nums.slice(0,3));"], `${C('slice(0,3)')} copies indexes 0, 1, 2 (3 is not included) into a new array.`, `الـ ${B('slice(0,3)')} بتنسخ الـ indexes 0 و 1 و 2 (من غير الـ 3) في array جديدة.`, 'slice:' + nums.slice(0, 3), [0, 1, 2]);
+    st(["console.log('slice:' + nums);"], 'nums is unchanged by slice.', 'الـ nums متغيرتش بسبب الـ slice.', 'slice:' + nums);
+    nums.reverse(); st(["console.log('reverse:' + nums.reverse());"], `${C('reverse()')} turns nums around in place.`, `الـ ${B('reverse()')} بتقلب الـ nums نفسها.`, 'reverse:' + nums, all(nums));
+    r = nums.splice(0, 1); st(["console.log('splice: ' + nums.splice(0,1));"], `${C('splice(0,1)')} removes 1 element at index 0 and returns [${r}].`, `الـ ${B('splice(0,1)')} بتشيل عنصر واحد من index 0 وبترجّع array فيها ${r}.`, 'splice: ' + r);
+    r = nums.splice(0, 2, 111, 222); st(["console.log('splice(0,2,111,222): '", '  + nums.splice(0,2,111,222));'], `${C('splice(0,2,111,222)')} removes ${r.join(' and ')} from index 0, puts 111 and 222 there and returns [${r.join(',')}].`, `الـ ${B('splice(0,2,111,222)')} بتشيل الـ ${r.join(' والـ ')} من index 0 وبتحط مكانهم 111 و 222، وبترجّع اللي اتشال:${L('[' + r.join(',') + ']')}`, 'splice(0,2,111,222): ' + r, [0, 1]);
+    st(["console.log('slice(0,3): ' + nums.slice(0,3));"], `${C('slice(0,3)')} of the new nums.`, `الـ ${B('slice(0,3)')} من الـ nums الجديدة.`, 'slice(0,3): ' + nums.slice(0, 3), [0, 1, 2]);
+    x = [22, 66, 11, 77, 33, 55, 44]; st(['let x = [22,66,11,77,33,55,44];', 'console.log(x);'], 'Now a second array x. (The slide\'s screenshot shows x already sorted and reversed, because the console expands the array later, after those lines ran.)', 'دلوقتي array تانية اسمها x. (صورة الـ slide بتبيّن الـ x متقلوبة ومترتبة، لأن الـ console بيفتح الـ array بعدين بعد ما السطور دي اتنفذت.)', '(7) [' + x.join(', ') + ']');
+    st(["console.log('indexOf(33,2): ' + x.indexOf(33, 2));"], `${C('indexOf(33, 2)')} searches from index 2: x[2]=11, x[3]=77, x[4]=33, so 4.`, `الـ ${B('indexOf(33, 2)')} بتدوّر من index 2:${L('x[2]=11, x[3]=77, x[4]=33 → 4')}`, 'indexOf(33,2): ' + x.indexOf(33, 2), null, [4]);
+    st(["console.log('lastIndexOf(33,-1): '", '  + x.lastIndexOf(33, -1));'], `${C('lastIndexOf(33, -1)')} searches backwards from the last element and meets 33 at index 4.`, `الـ ${B('lastIndexOf(33, -1)')} بتدوّر لورا من آخر عنصر وبتلاقي الـ 33 عند index 4.`, 'lastIndexOf(33,-1): ' + x.lastIndexOf(33, -1), null, [4]);
+    st(["console.log('includes(33, 2): ' + x.includes(33, 2));"], `33 is there at or after index 2: <b>true</b>.`, `الـ 33 موجودة من index 2 ورايح، فالنتيجة true.`, 'includes(33, 2): ' + x.includes(33, 2), null, [4]);
+    st(["console.log('includes(88, 0): ' + x.includes(88, 0));"], '88 is nowhere in x: <b>false</b>.', 'الـ 88 مش موجودة في الـ x خالص، فالنتيجة false.', 'includes(88, 0): ' + x.includes(88, 0));
+    const y = [99, 77, 88]; st(['let y = [99,77,88];', "console.log('x.concat(nums,y): ' + x.concat(nums,y));"], `${C('concat')} makes a new array: x, then nums (111,222,5,3), then y. x itself is unchanged.`, `الـ concat بتعمل array جديدة فيها الـ x وبعدها الـ nums وبعدها الـ y، والـ x نفسها متغيرتش.`, 'x.concat(nums,y): ' + x.concat(nums, y));
+    x.sort(); st(["console.log('x.sort(): ' + x.sort());"], `${C('sort()')} sorts x in place (as strings; all these numbers have two digits, so the order is also numeric).`, `الـ ${B('sort()')} بترتّب الـ x نفسها (كـ strings، وكل الأرقام دي رقمين فالترتيب طالع زي الأرقام).`, 'x.sort(): ' + x, null, all(x));
+    x.reverse(); st(["console.log('x.reverse(): ' + x.reverse());"], `${C('reverse()')} turns the sorted x around.`, `الـ ${B('reverse()')} بتقلب الـ x المترتبة.`, 'x.reverse(): ' + x, null, all(x));
+    st(["console.log('x.join(): ' + x.join());"], `${C('join()')} with no separator uses commas.`, `الـ ${B('join()')} من غير فاصل بتستخدم الـ commas.`, 'x.join(): ' + x.join());
+    st(["console.log(\"x.join('-'): \" + x.join('-'));"], `${C("join('-')")} puts a dash between the elements.`, `الـ ${B("join('-')")} بتحط شرطة بين العناصر.`, "x.join('-'): " + x.join('-'));
+    return S;
+  }
+  const AEX = arrayEx();
+  function ArrayEx({ ar }) {
+    const [i, ctl] = useRun('aex', AEX.length, 1800);
+    const s = AEX[i], hn = {}, hx = {}; (s.hn || []).forEach(j => { hn[j] = 'hit'; }); (s.hx || []).forEach(j => { hx[j] = 'hit'; });
+    return html`<${Fig}><div className="fig-stage">
+      <${Code} lines=${s.code} on=${s.code.map((_, j) => j)} />
+      <div className="wbv8-sub">nums</div><${Cells} a=${s.nums} marks=${hn} name="nums" />
+      ${s.x && html`<div className="wbv8-sub">x</div><${Cells} a=${s.x} marks=${hx} name="x" />`}
+      <div style=${{ marginTop: '8px' }}><${Panel} title="Console"><${Out} lines=${s.out} nw=${s.nw} /><//></div>
+    </div><${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Nav} n=${AEX.length} i=${i} ctl=${ctl} /><//>`;
+  }
+
+  /* ── [8] the Date object ── */
+  const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], DAYN = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const MONL = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'], DAYL = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const p2 = n => String(n).padStart(2, '0');
+  function DateFig({ ar }) {
+    const [k, setK] = useState('ex'), [ms, setMs] = useState('86400000'), [ds, setDs] = useState('2025-01-15T10:30:00Z');
+    const [pt, setPt] = useState({ year: '2025', month: '0', date: '15', hour: '10', minute: '30', second: '0' });
+    let t = NaN, call = '', bad = null;
+    if (k === 'ex') { t = 5000; call = 'new Date(5000)'; }
+    else if (k === 'now') { t = Date.now(); call = 'new Date()'; }
+    else if (k === 'ms') { const v = Number(ms); if (ms.trim() === '' || !Number.isInteger(v) || Math.abs(v) > 8.64e15) bad = 'ms'; else t = v; call = `new Date(${ms.trim() || '…'})`; }
+    else if (k === 'str') { t = Date.parse(ds); call = `new Date("${clean(ds, 40)}")`; if (isNaN(t)) bad = 'str'; }
+    else { const v = Object.values(pt).map(s => Math.trunc(Number(s))); if (v.some(x => !isFinite(x)) || Math.abs(v[0]) > 9999) bad = 'parts'; else { t = Date.UTC(...v); if (isNaN(t)) bad = 'parts'; } call = `new Date(${Object.values(pt).map(s => s.trim() || '…').join(', ')})`; }
+    const D = isNaN(t) ? null : new Date(t);
+    const g = D && { y: D.getUTCFullYear(), mo: D.getUTCMonth(), d: D.getUTCDate(), wd: D.getUTCDay(), h: D.getUTCHours(), mi: D.getUTCMinutes(), s: D.getUTCSeconds(), ms: D.getUTCMilliseconds() };
+    let en, arx;
+    if (!D) { en = bad === 'str' ? 'Date.parse() cannot read this string: try the form 2025-01-15T10:30:00Z.' : 'Type whole numbers (milliseconds up to 8.64e15).'; arx = bad === 'str' ? `الـ ${B('Date.parse()')} مش قادر يقرأ الـ string ده، جرّب الشكل ده:${L('2025-01-15T10:30:00Z')}` : 'اكتب أرقام صحيحة (والـ milliseconds لحد 8.64e15).'; }
+    else {
+      const when = `${p2(g.h)}:${p2(g.mi)}:${p2(g.s)} on ${DAYL[g.wd]} ${g.d} ${MONL[g.mo]} ${g.y}`;
+      const lead = {
+        ex: [`${C('new Date(5000)')} counts 5000 ms (5 seconds) from midnight on 1/1/1970, the value ${C('getTime()')} returns: ${when}.`, `الـ ${B('new Date(5000)')} بيعدّ 5000 ms (يعني 5 ثواني) من نص الليل يوم ${B('1/1/1970')}، ودي القيمة اللي الـ ${B('getTime()')} بيرجّعها:${L(when)}`],
+        now: ['With no argument, new Date() is the current date and time.', `من غير arguments الـ ${B('new Date()')} بيبقى التاريخ والوقت دلوقتي.`],
+        ms: [`One number is milliseconds since midnight on 1/1/1970: ${when}.`, `الرقم الواحد هو عدد الـ milliseconds من نص الليل يوم ${B('1/1/1970')}:${L(when)}`],
+        str: ['One string is read by Date.parse() (the Z at the end means UTC).', `الـ string الواحد بيتقري بالـ ${B('Date.parse()')} (والـ Z في الآخر معناها UTC).`],
+        parts: [`year, month, date, …: the month is counted <b>from 0</b>, so month ${pt.month.trim()} is ${MONL[g.mo]}${Number(pt.month) > 11 || Number(pt.month) < 0 ? ' (an out-of-range month rolls over into the next or previous year)' : ''}.`, `الـ year والـ month والـ date وهكذا، والـ month بيتعدّ من 0، فالشهر رقم ${B(pt.month.trim())} هو ${MONL[g.mo]}${Number(pt.month) > 11 || Number(pt.month) < 0 ? ' (والشهر اللي برّه المدى بيلف على السنة اللي بعدها أو قبلها)' : ''}.`]
+      }[k];
+      en = lead[0] + ` getMonth() gives ${g.mo} for ${MONL[g.mo]} (months run 0 to 11) and getDay() gives ${g.wd} for ${DAYL[g.wd]} (0 = Sunday). Clock shown in UTC, the time zone of that 1/1/1970 midnight; a browser elsewhere shows its local hour.`;
+      arx = lead[1] + `والـ ${B('getMonth()')} بترجّع ${g.mo} لشهر ${MONL[g.mo]} (الشهور من 0 لـ 11)، والـ ${B('getDay()')} بترجّع ${g.wd} ليوم ${DAYL[g.wd]} (والـ 0 هو الـ Sunday). الساعة هنا بتوقيت UTC، وده توقيت نص الليل بتاع ${B('1/1/1970')}، والـ browser في مكان تاني بيوري الساعة المحلية.`;
+    }
+    const F = (n, lbl) => html`<label key=${n}>${lbl}<input className="wbv8-in" value=${pt[n]} maxLength="6" inputMode="numeric" onInput=${e => { const v = e.target.value; setPt(o => Object.assign({}, o, { [n]: v })); }} /></label>`;
+    return html`<${Fig}><div className="fig-stage">
+      <${Chips} mono=${true} label="Constructor" items=${[['ex', 'new Date(5000)'], ['now', 'new Date()'], ['ms', 'milliseconds'], ['str', 'datestring'], ['parts', 'year, month, …']]} sel=${k} on=${setK} />
+      ${k === 'ms' && html`<div className="wbv8-own"><label>new Date(milliseconds)<input className="wbv8-in" value=${ms} maxLength="17" inputMode="numeric" onInput=${e => setMs(e.target.value)} /></label></div>`}
+      ${k === 'str' && html`<div className="wbv8-own"><label>new Date(datestring)<input className="wbv8-in" value=${ds} maxLength="40" spellCheck="false" autoCapitalize="off" onInput=${e => setDs(e.target.value)} /></label></div>`}
+      ${k === 'parts' && html`<div className="wbv8-own"><div className="wbv8-row">${F('year', 'year')}${F('month', 'month (0 to 11)')}${F('date', 'date')}${F('hour', 'hour')}${F('minute', 'minute')}${F('second', 'second')}</div></div>`}
+      <div className="wbv8-expr sm" style=${{ textAlign: 'center' }}>${call}</div>
+      ${D && html`<div className="wbv8-sub">getMonth() → ${g.mo}</div>
+        <div className="wbv8-cal">${MON.map((m, j) => html`<div key=${m} className=${j === g.mo ? 'on' : ''}><b>${j}</b>${m}</div>`)}</div>
+        <div className="wbv8-sub">getDay() → ${g.wd}</div>
+        <div className="wbv8-cal d7">${DAYN.map((d, j) => html`<div key=${d} className=${j === g.wd ? 'on' : ''}><b>${j}</b>${d}</div>`)}</div>
+        <div className="wbv8-get">
+          <b>getFullYear()</b><span>${g.y}</span><b>getMonth()</b><span>${g.mo}</span><b>getDate()</b><span>${g.d}</span><b>getDay()</b><span>${g.wd}</span>
+          <b>getHours()</b><span>${g.h}</span><b>getMinutes()</b><span>${g.mi}</span><b>getSeconds()</b><span>${g.s}</span><b>getTime()</b><span>${t} ms</span></div>`}
+    </div><${Cap} en=${en} ar=${arx} showAr=${ar} /><//>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'wb-js2-arith': Arith, 'wb-js2-assign': Assign, 'wb-js2-compare': Compare, 'wb-js2-examples': Examples,
+    'wb-js2-ifelse': IfElse, 'wb-js2-switch': Switch, 'wb-js2-loops': Loops, 'wb-js2-cars': Cars,
+    'wb-js2-newarray': NewArray, 'wb-js2-methods': Methods, 'wb-js2-arrayex': ArrayEx, 'wb-js2-date': DateFig
+  });
+  if (window.WBV8_TEST) window.WBV8_TEST = { trace, progRun, ifRun, swRun, loopRun, cmpRun, carsRun, makeArr, callM, parseLits, AEX, MD };
+})();

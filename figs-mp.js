@@ -2935,3 +2935,1135 @@
     'mp-l7-lodsw': Lodsw, 'mp-l7-stosd': Stosd, 'mp-l7-outsb': Outsb, 'mp-l7-insd': Insd, 'mp-l7-les-stosw': LesStosw
   });
 })();
+/* ── part L8 ── */
+// Microprocessors visuals, Lecture 8 (Jump instructions, interrupts, LOOP and procedures): CS/IP after short, near and far jumps, the three jump formats, the slides' short/near/far memory figures, a jump-address calculator for the revision and final questions, the interrupt handling sequence, maskable vs NMI, the interrupt classes, LOOP/LOOPE/LOOPNE decisions, the Lab 7 LOOP programs traced, CALL/RET with the stack and the Lab 8 procedures traced. Every label and number comes from the site's notes (slides Lec08, Labs 7 and 8).
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, pop } = window.FIGKIT;
+  const CSS = `
+.mpv8-f .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.mpv8-tabs{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.mpv8-chip{ font:600 .82rem/1.2 var(--body); padding:6px 10px; border-radius:99px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; min-height:32px; }
+.mpv8-chip[aria-pressed="true"]{ border-color:var(--fig-k); box-shadow:0 0 0 1px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.mpv8-lbl{ font-size:.8rem; color:var(--graphite); width:100%; text-align:center; }
+.mpv8-in{ display:flex; gap:6px 10px; align-items:center; justify-content:center; flex-wrap:wrap; margin:0 0 10px; font-size:.86rem; color:var(--ink); }
+.mpv8-in input{ font:600 .9rem var(--mono); padding:5px 7px; border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); min-width:0; box-sizing:border-box; max-width:100%; }
+.mpv8-in input:focus{ outline:2px solid var(--fig-k); outline-offset:1px; }
+.mpv8-in label{ display:inline-flex; gap:4px; align-items:center; font-size:.84rem; color:var(--graphite); }
+.mpv8-regs{ display:grid; grid-template-columns:repeat(var(--n, 2), minmax(0,1fr)); gap:6px; max-width:420px; margin:0 auto 8px; }
+.mpv8-card{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:6px; text-align:center; min-width:0; transition:background .4s, box-shadow .4s, opacity .4s; }
+.mpv8-card small{ display:block; font-size:.78rem; color:var(--graphite); line-height:1.3; }
+.mpv8-card b{ display:block; font:700 1rem/1.3 var(--mono); color:var(--ink); overflow-wrap:anywhere; }
+.mpv8-card.mpv8-on{ background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); box-shadow:0 0 0 2px var(--fig-k); }
+.mpv8-card.mpv8-sg{ background:color-mix(in srgb, var(--fig-s) 20%, var(--paper)); box-shadow:0 0 0 2px var(--fig-s); }
+.mpv8-card.mpv8-dim{ opacity:.45; }
+.mpv8-tag{ display:inline-block; margin-top:3px; padding:1px 8px; border-radius:99px; font-size:.76rem; font-weight:700; background:var(--paper-2); color:var(--graphite); border:1px solid var(--line); }
+.mpv8-tag.mpv8-on{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.mpv8-segs{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; max-width:420px; margin:0 auto; }
+.mpv8-seg{ border:2px dashed var(--line); border-radius:10px; padding:6px; min-height:84px; text-align:center; font-size:.8rem; color:var(--graphite); transition:border-color .4s, background .4s; }
+.mpv8-seg.mpv8-on{ border-style:solid; border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 10%, var(--paper)); color:var(--ink); }
+.mpv8-dot{ display:inline-block; margin-top:6px; padding:3px 8px; border-radius:8px; background:var(--fig-s); color:#fff; font:700 .9rem var(--mono); }
+.mpv8-bytes{ display:grid; grid-template-columns:repeat(5, minmax(0,1fr)); gap:4px; max-width:420px; margin:0 auto 8px; }
+.mpv8-byte{ border:1px solid var(--line); border-radius:8px; padding:5px 2px; text-align:center; background:var(--paper); min-width:0; transition:opacity .4s, background .4s; }
+.mpv8-byte small{ display:block; font:.72rem/1.25 var(--mono); color:var(--graphite); }
+.mpv8-byte b{ display:block; font:700 .8rem/1.25 var(--body); color:var(--ink); }
+.mpv8-byte.mpv8-k{ background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); border-color:var(--fig-k); }
+.mpv8-byte.mpv8-s{ background:color-mix(in srgb, var(--fig-s) 22%, var(--paper)); border-color:var(--fig-s); }
+.mpv8-byte.mpv8-x{ opacity:.18; }
+.mpv8-facts{ max-width:420px; margin:0 auto; display:grid; gap:4px; font-size:.86rem; color:var(--ink); }
+.mpv8-facts div{ display:grid; grid-template-columns:86px minmax(0,1fr); gap:6px; border-top:1px solid var(--line); padding-top:4px; }
+.mpv8-facts div span{ color:var(--graphite); font-size:.8rem; } .mpv8-facts div b{ font-family:var(--mono); font-size:.86rem; overflow-wrap:anywhere; }
+.mpv8-mem{ border:1px solid var(--line); border-radius:8px; background:var(--paper); overflow:hidden; font:600 .9rem/1.2 var(--mono); color:var(--ink); max-width:240px; margin:0 auto; }
+.mpv8-mem > div{ display:grid; grid-template-columns:minmax(0,1fr) 54px; border-top:1px solid var(--line); transition:background .4s; }
+.mpv8-mem > div:first-child{ border-top:0; }
+.mpv8-mem > div span{ padding:4px 8px; color:var(--graphite); font-weight:500; white-space:nowrap; }
+.mpv8-mem > div b{ padding:4px 0; text-align:center; border-left:1px solid var(--line); }
+.mpv8-mem > div.mpv8-k{ background:color-mix(in srgb, var(--fig-k) 24%, var(--paper)); }
+.mpv8-mem > div.mpv8-s{ background:color-mix(in srgb, var(--fig-s) 24%, var(--paper)); }
+.mpv8-mem > div.mpv8-t{ background:color-mix(in srgb, var(--ok) 26%, var(--paper)); }
+.mpv8-mem > div.mpv8-k span, .mpv8-mem > div.mpv8-s span, .mpv8-mem > div.mpv8-t span{ color:var(--ink); }
+.mpv8-mh{ font-size:.78rem; color:var(--graphite); text-align:center; margin:0 0 3px; }
+.mpv8-calc{ max-width:420px; margin:8px auto 0; font:600 .88rem/1.55 var(--mono); color:var(--ink); text-align:center; overflow-wrap:anywhere; }
+.mpv8-calc div{ transition:opacity .4s; }
+.mpv8-calc div.mpv8-cur{ color:var(--fig-k); }
+.mpv8-res{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:6px; max-width:420px; margin:8px auto 0; }
+.mpv8-res .mpv8-card b{ font-size:.95rem; }
+.mpv8-res .mpv8-card i{ display:block; font:500 .74rem/1.35 var(--mono); font-style:normal; color:var(--graphite); overflow-wrap:anywhere; }
+.mpv8-err{ text-align:center; color:var(--pen); font-size:.88rem; margin:6px auto 0; max-width:420px; border:2px solid var(--pen); border-radius:10px; padding:8px; }
+.mpv8-two{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:8px; max-width:440px; margin:0 auto 8px; align-items:start; }
+.mpv8-box{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:6px; min-width:0; transition:box-shadow .4s; }
+.mpv8-box.mpv8-on{ box-shadow:0 0 0 2px var(--fig-k); }
+.mpv8-box > b{ display:block; text-align:center; font-size:.82rem; color:var(--graphite); margin-bottom:4px; }
+.mpv8-lines{ font:600 .82rem/1.45 var(--mono); color:var(--ink); }
+.mpv8-lines div{ padding:1px 6px; border-radius:5px; transition:background .3s, opacity .3s; white-space:pre; overflow:hidden; text-overflow:ellipsis; }
+.mpv8-lines div.mpv8-cur{ background:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); }
+.mpv8-lines div.mpv8-done{ opacity:.55; }
+.mpv8-lines div.mpv8-dir{ color:var(--graphite); }
+.mpv8-stack{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:6px; min-height:70px; display:flex; flex-direction:column; gap:4px; justify-content:flex-end; }
+.mpv8-stack > b{ text-align:center; font-size:.8rem; color:var(--graphite); margin-bottom:auto; }
+.mpv8-stack > div{ border-radius:7px; padding:3px 6px; text-align:center; font-size:.8rem; line-height:1.3; background:color-mix(in srgb, var(--fig-s) 22%, var(--paper)); border:1px solid var(--fig-s); color:var(--ink); }
+.mpv8-stack > i{ font-style:normal; text-align:center; font-size:.78rem; color:var(--graphite); }
+.mpv8-sig{ text-align:center; margin:0 auto 8px; max-width:440px; }
+.mpv8-sig span{ display:inline-block; padding:4px 12px; border-radius:99px; font-weight:700; font-size:.86rem; background:var(--pen); color:var(--paper); }
+.mpv8-lane{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:8px; max-width:440px; margin:0 auto 8px; }
+.mpv8-lane > div{ display:flex; gap:8px; align-items:center; flex-wrap:wrap; }
+.mpv8-lane > div > b{ font-size:.9rem; color:var(--ink); }
+.mpv8-gate{ font-size:.8rem; padding:2px 8px; border-radius:99px; border:1px solid var(--line); color:var(--graphite); }
+.mpv8-gate.mpv8-on{ border-color:var(--pen); color:var(--pen); font-weight:700; }
+.mpv8-out{ margin-top:6px; font-size:.86rem; line-height:1.4; color:var(--ink); border-radius:8px; padding:6px 8px; background:var(--paper-2); min-height:1.4em; }
+.mpv8-out.mpv8-ok{ background:color-mix(in srgb, var(--ok) 18%, var(--paper)); }
+.mpv8-out.mpv8-no{ background:color-mix(in srgb, var(--pen) 14%, var(--paper)); }
+.mpv8-tree{ max-width:440px; margin:0 auto; display:grid; gap:8px; }
+.mpv8-root{ text-align:center; } .mpv8-root span{ display:inline-block; padding:5px 14px; border-radius:99px; background:var(--fig-s); color:#fff; font-weight:700; font-size:.92rem; }
+.mpv8-pair{ border:1px solid var(--line); border-radius:10px; padding:6px; background:var(--paper-2); }
+.mpv8-pair > b{ display:block; font-size:.8rem; color:var(--graphite); text-align:center; margin-bottom:4px; }
+.mpv8-pair > div{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px; }
+.mpv8-pair .mpv8-card{ text-align:left; font-size:.82rem; line-height:1.35; color:var(--ink); }
+.mpv8-pair .mpv8-card b{ font:700 .88rem/1.3 var(--body); margin-bottom:2px; }
+.mpv8-flow{ max-width:300px; margin:0 auto; display:grid; gap:4px; justify-items:center; }
+.mpv8-node{ border:1px solid var(--line); background:var(--paper); border-radius:8px; padding:6px 10px; text-align:center; font:600 .9rem/1.35 var(--mono); color:var(--ink); transition:background .4s, box-shadow .4s, opacity .4s; width:100%; box-sizing:border-box; }
+.mpv8-node small{ display:block; font:500 .78rem var(--body); color:var(--graphite); }
+.mpv8-node.mpv8-dec{ border-radius:18px; border-style:dashed; }
+.mpv8-node.mpv8-on{ background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); box-shadow:0 0 0 2px var(--fig-k); }
+.mpv8-node.mpv8-ok{ background:color-mix(in srgb, var(--ok) 22%, var(--paper)); box-shadow:0 0 0 2px var(--ok); }
+.mpv8-node.mpv8-dim{ opacity:.4; }
+.mpv8-down{ color:var(--fig-k); font-weight:700; line-height:1; }
+.mpv8-split{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:6px; width:100%; }
+.mpv8-split .mpv8-node{ font-size:.82rem; }
+.mpv8-prog{ max-width:300px; margin:0 auto 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:4px 0; }
+.mpv8-ctl{ display:flex; gap:6px; flex-wrap:wrap; justify-content:center; padding:0 14px 12px; }
+.mpv8-cnt{ text-align:center; font-size:.8rem; color:var(--graphite); margin:0 0 6px; }`;
+  if (!document.getElementById('mpv8-css')) { const s = document.createElement('style'); s.id = 'mpv8-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* shared helpers */
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const bdi = s => `<bdi dir="ltr">${esc(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const ltr = s => `<span class="ltr">${esc(s)}</span>`;
+  const hx = (v, d) => v.toString(16).toUpperCase().padStart(d, '0');
+  const hexv = (t, max) => { t = String(t).trim().toUpperCase().replace(/H$/, ''); if (!/^[0-9A-F]{1,4}$/.test(t)) return null; const v = parseInt(t, 16); return v <= max ? v : null; };
+  const pressed = on => String(!!on);
+
+  /* ── 0.0-0.2: CS and IP before and after each jump (the lecture's numbers) ── */
+  function JmpScope({ ar }) {
+    const S = [
+      { cs: '1000', ip: '0002', seg: 0, at: '10002', chg: [],
+        en: 'Before the jump: <b>CS</b> holds the segment of the code (1000) and <b>IP</b> holds the address of the next instruction (0002).',
+        ar: 'قبل الـ jump، الـ <b>CS</b> شايل الـ segment بتاع الكود والـ <b>IP</b> شايل عنوان الـ instruction الجاية:' + ltr('CS = 1000, IP = 0002') },
+      { cs: '1000', ip: '0006', seg: 0, at: '10006', chg: ['IP'],
+        en: '<b>Short jump</b> (lecture example, [CS+1] = 04): only IP changes, IP = 002 + 004 = 006. CS stays 1000, so the jump stays in the same code segment: 10006.',
+        ar: 'في الـ <b>Short jump</b> (مثال المحاضرة) الـ IP بس هو اللي بيتغير، والـ CS فاضل 1000 فبنفضل في نفس الـ code segment:' + ltr('IP = 002 + 004 = 006 → 10006') },
+      { cs: '1000', ip: '0104', seg: 0, at: '10104', chg: ['IP'],
+        en: '<b>Near jump</b> ([CS+2][CS+1] = 0102): again only IP changes, IP = 002 + 0102 = 104. Same code segment: 10104.',
+        ar: 'في الـ <b>Near jump</b> برضه الـ IP بس هو اللي بيتغير، وفي نفس الـ code segment:' + ltr('IP = 002 + 0102 = 104 → 10104') },
+      { cs: 'A300', ip: '0127', seg: 1, at: 'A3127', chg: ['CS', 'IP'],
+        en: '<b>Far jump</b>: the only jump that changes <b>both CS and IP</b>: CS = A300 (bytes 4, 5) and IP = 0127 (bytes 2, 3), so it can land in another segment: A3127.',
+        ar: 'الـ <b>Far jump</b> هو الوحيد اللي بيغيّر <b>الـ CS والـ IP الاتنين</b>، فممكن ينط على segment تاني:' + ltr('CS = A300, IP = 0127 → A3127') }];
+    const [i, ctl] = useSteps(S.length, 2600);
+    const s = S[i], reg = (n, v) => html`<div className=${'mpv8-card' + (s.chg.includes(n) ? ' mpv8-on' : '')}><small>${n}</small><b>${v}</b><span className=${'mpv8-tag' + (s.chg.includes(n) ? ' mpv8-on' : '')}>${i === 0 ? 'before' : s.chg.includes(n) ? 'changed' : 'same'}</span></div>`;
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-regs">${reg('CS', s.cs)}${reg('IP', s.ip)}</div>
+      <div className="mpv8-segs">
+        <div className=${'mpv8-seg' + (s.seg === 0 ? ' mpv8-on' : '')}>Code segment<br />CS = 1000${s.seg === 0 ? html`<br /><span className="mpv8-dot">${s.at}</span>` : null}</div>
+        <div className=${'mpv8-seg' + (s.seg === 1 ? ' mpv8-on' : '')}>Segment A300<br />(another segment)${s.seg === 1 ? html`<br /><span className="mpv8-dot">${s.at}</span>` : null}</div></div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 1: the three jump formats: bytes, range, new address ── */
+  function JmpBytes({ ar }) {
+    const T = [
+      { n: 'Short', bytes: [['CS+0', 'JMP', ''], ['CS+1', 'disp', 'k']], size: '2 bytes', range: '+127 to −128 bytes', addr: 'IPnew = IP + [CS+1]', regs: 'IP only',
+        en: '<b>Short jump</b>: 2 bytes, the opcode and a 1-byte displacement. It reaches +127 to −128 bytes from the jump. IPnew = IP + [CS+1]. Only IP changes.',
+        ar: 'الـ <b>Short jump</b> طوله 2 bytes، الـ opcode وبعده displacement من byte واحد، وبيوصل لحد ' + bdi('+127') + ' أو ' + bdi('−128') + ' byte من الـ jump. والـ IP بس هو اللي بيتغير:' + ltr('IPnew = IP + [CS+1]') },
+      { n: 'Near', bytes: [['CS+0', 'JMP', ''], ['CS+1', 'disp low', 'k'], ['CS+2', 'disp high', 'k']], size: '3 bytes', range: '+32K to −32K bytes', addr: 'IPnew = IP + [CS+2][CS+1]', regs: 'IP only',
+        en: '<b>Near jump</b>: 3 bytes, the opcode and a 2-byte displacement. Range +32K to −32K bytes. IPnew = IP + [CS+2][CS+1]: byte 3 followed by byte 2 (the high byte is read last). Only IP changes.',
+        ar: 'الـ <b>Near jump</b> طوله 3 bytes، الـ opcode وبعده displacement من 2 bytes، والمدى بتاعه ' + bdi('±32K') + ' byte. والـ displacement بنقراه byte 3 وبعده byte 2، والـ IP بس هو اللي بيتغير:' + ltr('IPnew = IP + [CS+2][CS+1]') },
+      { n: 'Far', bytes: [['CS+0', 'JMP', ''], ['CS+1', 'offset low', 'k'], ['CS+2', 'offset high', 'k'], ['CS+3', 'seg low', 's'], ['CS+4', 'seg high', 's']], size: '5 bytes', range: 'any location in real memory', addr: 'offset = [CS+2][CS+1], segment = [CS+4][CS+3]', regs: 'CS and IP',
+        en: '<b>Far jump</b>: 5 bytes, the opcode, then the offset (bytes 2, 3) and the segment (bytes 4, 5). It reaches any location in real memory. Both CS and IP change.',
+        ar: 'الـ <b>Far jump</b> طوله 5 bytes، الـ opcode وبعده الـ offset في byte 2 و 3 والـ segment في byte 4 و 5، وبيوصل لأي مكان في الـ real memory. والـ CS والـ IP الاتنين بيتغيروا:' + ltr('offset = [CS+2][CS+1], segment = [CS+4][CS+3]') }];
+    const [i, ctl] = useSteps(T.length, 3200), t = T[i];
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-tabs">${T.map((x, j) => html`<button key=${x.n} className="mpv8-chip" aria-pressed=${pressed(i === j)} onClick=${() => ctl.go(j)}>${x.n} jump</button>`)}</div>
+      <div className="mpv8-bytes">${[0, 1, 2, 3, 4].map(k => { const b = t.bytes[k]; return b ? html`<div key=${k} className=${'mpv8-byte' + (b[2] ? ' mpv8-' + b[2] : '')}><small>byte ${k + 1}</small><b>${b[1]}</b><small>${b[0]}</small></div>` : html`<div key=${k} className="mpv8-byte mpv8-x"><small>byte ${k + 1}</small><b>·</b><small>CS+${k}</small></div>`; })}</div>
+      <div className="mpv8-facts">
+        <div><span>Size</span><b>${t.size}</b></div>
+        <div><span>Range</span><b>${t.range}</b></div>
+        <div><span>New address</span><b>${t.addr}</b></div>
+        <div><span>Changes</span><b>${t.regs}</b></div></div></div>
+      <${Cap} ...${t} showAr=${ar} /><${Bar} steps=${T} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 2: the slides' memory figures (CS=1000, IP=0002, JMP at 10000) ── */
+  const SLIDE = {
+    Short: {
+      rows: [['10006', ''], ['10005', ''], ['10004', ''], ['10003', ''], ['10002', ''], ['10001', '04'], ['10000', 'JMP']],
+      calc: ['IPnew = IP + [CS+1]', 'IPnew = 002 + 004 = 006', 'CS×10 + 006 = 10006'],
+      steps: [
+        { hi: { '10000': 'k', '10001': 'k' }, c: 0,
+          en: 'Lecture example: CS = 1000, IP = 0002, [CS+1] = 04. The short jump is a 2-byte instruction: JMP at 10000 and the displacement 04 at 10001.',
+          ar: 'مثال المحاضرة، والـ short jump هنا instruction من 2 bytes، الـ JMP عند 10000 والـ displacement عند 10001:' + ltr('CS = 1000, IP = 0002, [CS+1] = 04') },
+        { hi: { '10001': 'k' }, c: 2,
+          en: 'IPnew = IP + [CS+1] = 002 + 004 = 006.', ar: 'نحسب الـ IP الجديد:' + ltr('IPnew = IP + [CS+1] = 002 + 004 = 006') },
+        { hi: { '10006': 't' }, c: 3,
+          en: 'Memory location = CS×10 + IPnew = 10000 + 006 = 10006. Jump address = 10006.', ar: 'الـ memory location بيبقى:' + ltr('CS×10 + 006 = 10006') + 'يعني الـ jump address هو 10006.' }] },
+    Near: {
+      rows: [['10104', ''], ['…', ''], ['10002', '01'], ['10001', '02'], ['10000', 'JMP']],
+      calc: ['IPnew = IP + [CS+2][CS+1]', 'IPnew = 002 + 0102 = 104', 'CS×10 + 104 = 10104'],
+      steps: [
+        { hi: { '10000': 'k', '10001': 'k', '10002': 'k' }, c: 0,
+          en: 'Lecture example: CS = 1000, IP = 0002, [CS+1] = 02, [CS+2] = 01. The near jump is a 3-byte instruction from 10000 to 10002.',
+          ar: 'مثال المحاضرة، والـ near jump هنا instruction من 3 bytes من 10000 لحد 10002:' + ltr('CS = 1000, IP = 0002, [CS+1] = 02, [CS+2] = 01') },
+        { hi: { '10001': 'k', '10002': 'k' }, c: 2,
+          en: 'Read the displacement as [CS+2][CS+1] = 01 then 02 = 0102. IPnew = 002 + 0102 = 104.', ar: 'بنقرا الـ displacement بالشكل ده، الـ 01 الأول وبعده الـ 02:' + ltr('[CS+2][CS+1] = 0102 → IPnew = 002 + 0102 = 104') },
+        { hi: { '10104': 't' }, c: 3,
+          en: 'Memory location = CS×10 + IPnew = 10000 + 104 = 10104. Jump address = 10104.', ar: 'الـ memory location بيبقى:' + ltr('CS×10 + 104 = 10104') + 'يعني الـ jump address هو 10104.' }] },
+    Far: {
+      rows: [['A3127', ''], ['…', ''], ['10004', 'A3'], ['10003', '00'], ['10002', '01'], ['10001', '27'], ['10000', 'JMP']],
+      calc: ['offset = [CS+2][CS+1] = 0127', 'segment = [CS+4][CS+3] = A300', 'A300×10 + 0127 = A3127'],
+      steps: [
+        { hi: { '10000': 'k', '10001': 'k', '10002': 'k', '10003': 's', '10004': 's' }, c: 0,
+          en: 'Lecture example: CS = 1000, IP = 0002, [CS+1] = 27, [CS+2] = 01, [CS+3] = 00, [CS+4] = A3. The far jump is a 5-byte instruction.',
+          ar: 'مثال المحاضرة، والـ far jump هنا instruction من 5 bytes:' + ltr('CS = 1000, IP = 0002, [CS+1] = 27, [CS+2] = 01, [CS+3] = 00, [CS+4] = A3') },
+        { hi: { '10001': 'k', '10002': 'k' }, c: 1,
+          en: 'Offset: bytes 2, 3 = [CS+2][CS+1] = 0127.', ar: 'الـ offset هو byte 2 و 3:' + ltr('[CS+2][CS+1] = 0127') },
+        { hi: { '10003': 's', '10004': 's' }, c: 2,
+          en: 'Segment: bytes 4, 5 = [CS+4][CS+3] = A300.', ar: 'الـ segment هو byte 4 و 5:' + ltr('[CS+4][CS+3] = A300') },
+        { hi: { 'A3127': 't' }, c: 3,
+          en: 'Memory location = Segment×10 + offset = A300×10 + 0127 = A3127. Jump address = A3127, in another segment (CS and IP both change).',
+          ar: 'الـ memory location بيبقى:' + ltr('A300×10 + 0127 = A3127') + 'يعني الـ jump address هو A3127 في segment تاني، والـ CS والـ IP الاتنين اتغيروا.' }] } };
+  function SlideJump({ t, ar }) {
+    const d = SLIDE[t], S = d.steps, [i, ctl] = useSteps(S.length, 2600), s = S[i];
+    return html`<div><div className="fig-stage" style=${{ paddingTop: 0 }}>
+      <p className="mpv8-mh">Memory (${t.toLowerCase()} jump = ${t === 'Short' ? 2 : t === 'Near' ? 3 : 5} bytes from 10000)</p>
+      <div className="mpv8-mem">${d.rows.map(([a, v], k) => html`<div key=${k} className=${s.hi[a] ? 'mpv8-' + s.hi[a] : ''}><span>${a}${s.hi[a] === 't' ? ' ← jump address' : ''}</span><b>${v}</b></div>`)}</div>
+      <div className="mpv8-calc">${d.calc.map((l, k) => html`<div key=${k} className=${(k < s.c ? '' : 'pop off') + (k === s.c - 1 ? ' mpv8-cur' : '')}>${l}</div>`)}</div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></div>`;
+  }
+  function JmpSlides({ ar }) {
+    const [t, setT] = useState('Short');
+    return html`<figure className="fig mpv8-f"><div className="fig-stage" style=${{ paddingBottom: '6px' }}>
+      <div className="mpv8-tabs" style=${{ marginBottom: 0 }}>${['Short', 'Near', 'Far'].map(x => html`<button key=${x} className="mpv8-chip" aria-pressed=${pressed(t === x)} onClick=${() => setT(x)}>${x} jump</button>`)}</div></div>
+      <${SlideJump} key=${t} t=${t} ar=${ar} /></figure>`;
+  }
+
+  /* ── 3, 4, 5: jump-address calculator (course method: IPnew = IP + displacement, address = CS×10 + IPnew; far = segment×10 + offset) ── */
+  const JEX = [
+    { k: 'Q12 / Final 2023/24', cs: '1000', ip: '300', bytes: '04 02 30 A4' },
+    { k: 'Q13 / Final 2024/25', cs: '2000', ip: '300', bytes: '1C 20 A0 2D' },
+    { k: 'Final 2023/24 (3000H)', cs: '3000', ip: '400', bytes: '10 43 1C 20' }];
+  function jcalc(st) {
+    const cs = hexv(st.cs, 0xFFFF), ip = hexv(st.ip, 0xFFFF), by = st.bytes.trim().split(/[\s,]+/).map(b => /^[0-9A-Fa-f]{1,2}$/.test(b) ? parseInt(b, 16) : null);
+    if (cs === null || ip === null || by.length !== 4 || by.includes(null)) return null;
+    const B = by.map(b => hx(b, 2)), base = cs * 16, IP = hx(ip, 3), BASE = hx(base, 5);
+    const sgn = (v, bits) => v >= (1 << (bits - 1)) ? v - (1 << bits) : v;
+    const add = (d, dt, bits) => { const s = sgn(d, bits), n = (ip + s) & 0xFFFF; return { n, txt: s < 0 ? `${IP} − ${hx(-s, bits / 4)} = ${hx(n, 3)}` : `${IP} + ${dt} = ${hx(n, 3)}`, neg: s < 0 }; };
+    const sh = add(by[0], B[0], 8), nr = add(by[1] * 256 + by[0], B[1] + B[0], 16);
+    const off = by[1] * 256 + by[0], seg = by[3] * 256 + by[2], OFF = hx(off, 4), SEG = hx(seg, 4);
+    const P = v => hx((base + v) & 0xFFFFF, 5);
+    return { B, BASE, IP, adr: [0, 1, 2, 3, 4].map(k => hx((base + k) & 0xFFFFF, 5)),
+      short: { ip: sh.txt, a: `${BASE} + ${hx(sh.n, 3)} = ${P(sh.n)}`, r: P(sh.n), neg: sh.neg },
+      near: { ip: nr.txt, a: `${BASE} + ${hx(nr.n, 3)} = ${P(nr.n)}`, r: P(nr.n), neg: nr.neg },
+      far: { o: `offset = ${OFF}, segment = ${SEG}`, a: `${hx(seg * 16, 5)} + ${OFF} = ${hx((seg * 16 + off) & 0xFFFFF, 5)}`, r: hx((seg * 16 + off) & 0xFFFFF, 5) } };
+  }
+  function JmpCalc({ ar, ex }) {
+    const [st, setSt] = useState(JEX[ex]), r = jcalc(st);
+    const S = r ? [
+      { en: `Starting address = CS×10 = ${r.BASE}: the JMP opcode. The bytes after it are ${r.B.join(', ')}.`,
+        ar: 'عنوان البداية هو مكان الـ JMP opcode، وبعده الـ bytes:' + ltr(`CS×10 = ${r.BASE}; bytes = ${r.B.join(', ')}`) },
+      { en: `<b>Short</b> (2 bytes, displacement = byte 2 = ${r.B[0]}${r.short.neg ? ', a negative byte: the jump goes back' : ''}): IP = ${r.short.ip}, address = ${r.short.a}.`,
+        ar: `الـ <b>Short</b> بياخد الـ displacement من byte 2 بس` + (r.short.neg ? ' (وده byte سالب فالـ jump بيرجع لورا)' : '') + ':' + ltr(`IP = ${r.short.ip} → ${r.short.a}`) },
+      { en: `<b>Near</b> (3 bytes, displacement = bytes 3, 2 = ${r.B[1]}${r.B[0]}${r.near.neg ? ', negative: the jump goes back' : ''}): IP = ${r.near.ip}, address = ${r.near.a}.`,
+        ar: `الـ <b>Near</b> بياخد الـ displacement من byte 3 وبعده byte 2` + (r.near.neg ? ' (وده رقم سالب فالـ jump بيرجع لورا)' : '') + ':' + ltr(`IP = ${r.near.ip} → ${r.near.a}`) },
+      { en: `<b>Far</b> (5 bytes): bytes 2, 3 are the offset and bytes 4, 5 the segment: ${r.far.o}, address = ${r.far.a}. CS and IP both change.`,
+        ar: 'الـ <b>Far</b> بياخد الـ offset من byte 2 و 3 والـ segment من byte 4 و 5، والـ CS والـ IP الاتنين بيتغيروا:' + ltr(`${r.far.o} → ${r.far.a}`) }] : [];
+    const [i, ctl] = useSteps(4, 2600);
+    const set = (k, v) => { setSt(Object.assign({}, st, { [k]: v })); ctl.go(3); };
+    const hi = k => i === 1 ? (k <= 1 ? 'mpv8-k' : '') : i === 2 ? (k <= 2 ? 'mpv8-k' : '') : i === 3 ? (k === 0 ? 'mpv8-k' : k <= 2 ? 'mpv8-k' : 'mpv8-s') : (k === 0 ? 'mpv8-k' : '');
+    const card = (n, j, v, l1, l2) => html`<div className=${'mpv8-card' + (i === j ? ' mpv8-on' : i < j ? ' mpv8-dim' : '')}><small>${n}</small><b className=${pop(i >= j)}>${v}</b><i className=${pop(i >= j)}>${l1}</i><i className=${pop(i >= j)}>${l2}</i></div>`;
+    const cap = r ? S[i] : { en: 'Write CS and IP as hex numbers of up to 4 digits and exactly four bytes after JMP, like <code>04 02 30 A4</code>.', ar: 'اكتب الـ CS والـ IP كأرقام hex لحد 4 digits، واكتب 4 bytes بالظبط بعد الـ JMP زي ' + bdi('04 02 30 A4') + '.' };
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-tabs"><span className="mpv8-lbl">Examples from the notes</span>${JEX.map(x => html`<button key=${x.k} className="mpv8-chip" aria-pressed=${pressed(st === x)} onClick=${() => { setSt(x); ctl.replay(); }}>${x.k}</button>`)}</div>
+      <div className="mpv8-in"><span className="mpv8-lbl">Try your own (hex)</span>
+        <label>CS <input aria-label="CS in hex" value=${st.cs} onInput=${e => set('cs', e.target.value)} onChange=${e => set('cs', e.target.value)} spellCheck="false" style=${{ width: '62px' }} /></label>
+        <label>IP <input aria-label="IP in hex" value=${st.ip} onInput=${e => set('ip', e.target.value)} onChange=${e => set('ip', e.target.value)} spellCheck="false" style=${{ width: '62px' }} /></label>
+        <label>bytes after JMP <input aria-label="Four bytes after JMP in hex" value=${st.bytes} onInput=${e => set('bytes', e.target.value)} onChange=${e => set('bytes', e.target.value)} spellCheck="false" style=${{ width: '112px' }} /></label></div>
+      ${r ? html`<div>
+        <div className="mpv8-mem">${[4, 3, 2, 1, 0].map(k => html`<div key=${k} className=${hi(k)}><span>${r.adr[k]}</span><b>${k === 0 ? 'JMP' : r.B[k - 1]}</b></div>`)}</div>
+        <div className="mpv8-res">
+          ${card('Short', 1, r.short.r, 'IP = ' + r.short.ip, '')}
+          ${card('Near', 2, r.near.r, 'IP = ' + r.near.ip, '')}
+          ${card('Far', 3, r.far.r, r.far.o.replace(', ', ' '), '')}</div></div>` : html`<p className="mpv8-err">✗ Check the inputs</p>`}</div>
+      <${Cap} ...${cap} showAr=${ar} />${r ? html`<${Bar} steps=${S} i=${i} ctl=${ctl} />` : null}</figure>`;
+  }
+  const JmpQ12 = p => html`<${JmpCalc} ...${p} ex=${0} />`, JmpQ13 = p => html`<${JmpCalc} ...${p} ex=${1} />`, JmpF = p => html`<${JmpCalc} ...${p} ex=${2} />`;
+
+  /* ── 6.0-6.2: the interrupt handling sequence ── */
+  function IntHandle({ ar }) {
+    const MAIN = ['instruction 1', 'instruction 2', 'instruction 3', 'instruction 4'], ISR = ['ISR start', '…', 'return'];
+    const S = [
+      { m: 1, r: -1, pc: 'instruction 3', stk: [], sig: false, box: 0,
+        en: 'The CPU executes the current program in its normal sequence. The PC holds the address of the next instruction.',
+        ar: 'الـ CPU بينفّذ البرنامج الحالي بالترتيب العادي، والـ PC شايل عنوان الـ instruction الجاية.' },
+      { m: 1, r: -1, pc: 'instruction 3', stk: [], sig: true, box: 0,
+        en: 'An <b>interrupt</b> arrives from a program with higher priority: it breaks the normal sequence of execution.',
+        ar: 'جه <b>interrupt</b> من برنامج الـ priority بتاعه أعلى، فبيكسر الترتيب العادي للتنفيذ.' },
+      { m: 1, r: -1, pc: 'instruction 3', stk: ['PC (→ instruction 3)', 'flags', 'registers'], sig: true, box: 2,
+        en: '(1) Save the PC content and the current state (flags, registers) in the <b>stack</b>.',
+        ar: '(1) نحفظ محتوى الـ PC والحالة الحالية (الـ flags والـ registers) في الـ <b>stack</b>.' },
+      { m: -1, r: 0, pc: 'ISR start', stk: ['PC (→ instruction 3)', 'flags', 'registers'], sig: false, box: 1,
+        en: '(2) Load the PC with the beginning address of the <b>ISR</b> and start executing it.',
+        ar: '(2) نحمّل الـ PC بعنوان بداية الـ <b>ISR</b> ونبدأ ننفذه.' },
+      { m: -1, r: 2, pc: 'return', stk: ['PC (→ instruction 3)', 'flags', 'registers'], sig: false, box: 1,
+        en: '(3) The ISR finishes when its <b>return instruction</b> is executed.',
+        ar: '(3) الـ ISR بيخلص لما الـ <b>return instruction</b> بتاعته تتنفذ.' },
+      { m: 2, r: -1, pc: 'instruction 3', stk: [], sig: false, box: 0,
+        en: '(4) Return to the point in the interrupted program where execution was interrupted: execution goes on with instruction 3.',
+        ar: '(4) نرجع للنقطة اللي التنفيذ اتقطع عندها في البرنامج، فالتنفيذ بيكمّل من instruction 3.' }];
+    const [i, ctl] = useSteps(S.length, 2600), s = S[i];
+    const lines = (L, cur, doneTo) => html`<div className="mpv8-lines">${L.map((l, k) => html`<div key=${k} className=${k === cur ? 'mpv8-cur' : k < doneTo ? 'mpv8-done' : ''}>${l}</div>`)}</div>`;
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-sig"><span className=${pop(s.sig)}>⚡ interrupt</span></div>
+      <div className="mpv8-two">
+        <div className=${'mpv8-box' + (s.box === 0 ? ' mpv8-on' : '')}><b>Current program</b>${lines(MAIN, s.m, i >= 5 ? 2 : 2)}</div>
+        <div className=${'mpv8-box' + (s.box === 1 ? ' mpv8-on' : '')}><b>ISR</b>${lines(ISR, s.r, i >= 5 ? 3 : s.r)}</div></div>
+      <div className="mpv8-two">
+        <div className=${'mpv8-card' + (i === 3 || i === 5 ? ' mpv8-on' : '')}><small>PC → next</small><b style=${{ fontSize: '.88rem' }}>${s.pc}</b></div>
+        <div className=${'mpv8-stack' + (s.box === 2 ? ' mpv8-on' : '')} style=${s.box === 2 ? { boxShadow: '0 0 0 2px var(--fig-k)' } : null}><b>Stack</b>${s.stk.length ? s.stk.slice().reverse().map(x => html`<div key=${x}>${x}</div>`) : html`<i>empty</i>`}</div></div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 6.4: maskable interrupts can be blocked by the mask bit; NMI cannot ── */
+  function IntMask({ ar }) {
+    const [mask, setMask] = useState(true), [out, setOut] = useState(null);
+    const send = k => setOut({ k, mask });
+    let o = { en: 'Set or clear the <b>interrupt mask bit</b>, then send each kind of interrupt.', ar: 'شغّل أو اقفل الـ <b>interrupt mask bit</b>، وبعدين ابعت كل نوع من الـ interrupts.' }, cls = '';
+    if (out && out.k === 'm' && out.mask) { o = { en: 'Mask bit set: the <b>maskable</b> interrupt is <b>blocked</b> (inhibited). The CPU keeps running the current program.', ar: 'الـ mask bit شغالة، فالـ <b>maskable</b> interrupt <b>اتمنع</b> والـ CPU كمّل في البرنامج الحالي.' }; cls = ' mpv8-no'; }
+    else if (out && out.k === 'm') { o = { en: 'Mask bit clear: the <b>maskable</b> interrupt is accepted and control goes to its ISR.', ar: 'الـ mask bit مقفولة، فالـ <b>maskable</b> interrupt اتقبل والتحكم راح للـ ISR بتاعه.' }; cls = ' mpv8-ok'; }
+    else if (out && out.k === 'n') { o = { en: `<b>NMI</b>: cannot be masked or ignored, whatever the mask bit${out.mask ? ' (it is set now)' : ''}. It has absolute priority: the CPU finishes the current memory cycle, then branches to the NMI handler. Used for high-priority tasks like memory parity or bus faults.`, ar: 'الـ <b>NMI</b> ماينفعش يتعمله mask ولا يتجاهل مهما كانت الـ mask bit، وليه priority مطلقة: الـ CPU بيخلص الـ memory cycle الحالية وبعدين ينط على الـ handler. وبيستخدم للحاجات المهمة زي الـ memory parity أو الـ bus faults.' }; cls = ' mpv8-ok'; }
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-in"><button className="fig-btn" aria-pressed=${pressed(mask)} onClick=${() => { setMask(!mask); setOut(null); }}>Interrupt mask bit: ${mask ? 'set (1)' : 'clear (0)'}</button></div>
+      <div className="mpv8-lane"><div><b>Maskable interrupt</b><span className=${'mpv8-gate' + (mask ? ' mpv8-on' : '')}>${mask ? 'mask bit blocks it' : 'mask bit open'}</span><span style=${{ flex: 1 }}></span><button className="fig-btn solid" onClick=${() => send('m')}>Send</button></div>
+        <div className=${'mpv8-out' + (out && out.k === 'm' ? cls : '')}>${out && out.k === 'm' ? (out.mask ? '✗ blocked, the program continues' : '✓ accepted → ISR') : '·'}</div></div>
+      <div className="mpv8-lane"><div><b>Non-maskable (NMI)</b><span className="mpv8-gate">no mask bit</span><span style=${{ flex: 1 }}></span><button className="fig-btn solid" onClick=${() => send('n')}>Send</button></div>
+        <div className=${'mpv8-out' + (out && out.k === 'n' ? cls : '')}>${out && out.k === 'n' ? '✓ finish memory cycle → NMI handler' : '·'}</div></div></div>
+      <${Cap} ...${o} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 6.3-6.5: the three ways to classify interrupts ── */
+  function IntTypes({ ar }) {
+    const P = [
+      { t: 'I. Vectored and non-vectored', a: ['Vectored', 'Fixed vector address (start of the subroutine); control goes to that address.'], b: ['Non-vectored', 'Vector address not predefined.'],
+        en: '<b>Vectored</b> interrupts have a fixed vector address (the starting address of the subroutine); <b>non-vectored</b> ones have a vector address that is not predefined.',
+        ar: 'الـ <b>Vectored</b> ليها vector address ثابت هو بداية الـ subroutine، أما الـ <b>non-vectored</b> فالـ vector address بتاعها مش متحدد مسبقًا.' },
+      { t: 'II. Maskable and non-maskable', a: ['Maskable', 'Can be blocked by an interrupt mask bit.'], b: ['Non-maskable (NMI)', 'Cannot be masked or ignored; absolute priority (memory parity, bus faults).'],
+        en: '<b>Maskable</b> interrupts can be blocked with the interrupt mask bit; <b>non-maskable</b> (NMI) cannot be masked or ignored and have absolute priority.',
+        ar: 'الـ <b>Maskable</b> ينفع تتمنع بالـ interrupt mask bit، أما الـ <b>non-maskable</b> أو الـ NMI فماينفعش تتعمل mask ولا تتجاهل وليها priority مطلقة.' },
+      { t: 'III. Software and hardware', a: ['Software', 'Special instructions (INT) that transfer control to a predefined ISR.'], b: ['Hardware', 'Signals given to the processor, recognised as an interrupt to run the ISR.'],
+        en: '<b>Software</b> interrupts are special instructions (INT) that transfer control to a predefined ISR; <b>hardware</b> interrupts are signals given to the processor.',
+        ar: 'الـ <b>Software</b> interrupts هي instructions خاصة زي الـ INT بتنقل التحكم لـ ISR متحدد مسبقًا، أما الـ <b>hardware</b> interrupts فهي signals بتتبعت للـ processor.' }];
+    const S = [{ en: 'Interrupts are classified in three ways, each a pair. (Quiz: "Interrupts can be classified into" → all of the mentioned.)', ar: 'الـ interrupts بتتقسم بـ 3 طرق، وكل طريقة فيها نوعين. (في الـ quiz الإجابة هي all of the mentioned.)' }].concat(P);
+    const [i, ctl] = useSteps(S.length, 2800);
+    return html`<figure className="fig mpv8-f"><div className="fig-stage"><div className="mpv8-tree">
+      <div className="mpv8-root"><span>Interrupts</span></div>
+      ${P.map((p, j) => html`<div key=${j} className=${'mpv8-pair ' + pop(i >= j + 1)}><b>${p.t}</b><div>
+        <div className=${'mpv8-card' + (i === j + 1 ? ' mpv8-on' : '')}><b>${p.a[0]}</b>${p.a[1]}</div>
+        <div className=${'mpv8-card' + (i === j + 1 ? ' mpv8-sg' : '')}><b>${p.b[0]}</b>${p.b[1]}</div></div></div>`)}</div></div>
+      <${Cap} ...${S[i]} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 7.0-7.1: how LOOP, LOOPE/LOOPZ and LOOPNE/LOOPNZ decide ── */
+  function LoopFlow({ ar }) {
+    const [ins, setIns] = useState('LOOP'), [cx, setCx] = useState('10'), [zf, setZf] = useState(1);
+    const n = /^\d{1,3}$/.test(cx.trim()) ? +cx : NaN, ok = n >= 1 && n <= 100;
+    const c2 = n - 1, needZ = ins === 'LOOPE' ? 1 : ins === 'LOOPNE' ? 0 : null;
+    const jump = ok && c2 !== 0 && (needZ === null || zf === needZ);
+    const cond = needZ === null ? 'CX ≠ 0 ?' : `CX ≠ 0 and ZF = ${needZ} ?`;
+    const why = !ok ? '' : c2 === 0 ? 'CX = 0' : needZ !== null && zf !== needZ ? `ZF = ${zf}, not ${needZ}` : needZ === null ? `CX = ${c2} ≠ 0` : `CX = ${c2} ≠ 0 and ZF = ${zf}`;
+    const nm = ins === 'LOOPE' ? 'LOOPE / LOOPZ' : ins === 'LOOPNE' ? 'LOOPNE / LOOPNZ' : 'LOOP';
+    const S = ok ? [
+      { en: `<code>${nm}</code> with CX = ${n}${needZ !== null ? ` and ZF = ${zf}` : ''}. CX is automatically the counter.`,
+        ar: `الـ ${bdi(nm)} بتستخدم الـ CX كعدّاد أوتوماتيك، والقيم دلوقتي:` + ltr(`CX = ${n}` + (needZ !== null ? `, ZF = ${zf}` : '')) },
+      { en: `(1) CX = CX − 1 = ${n} − 1 = ${c2}.`, ar: '(1) الأول بتقلل الـ CX بواحد:' + ltr(`CX = CX − 1 = ${n} − 1 = ${c2}`) },
+      { en: `(2) Test: ${cond.replace(' ?', '')}? Here ${why}.`, ar: '(2) بعدين بتختبر الشرط:' + ltr(cond.replace(' ?', '') + ' ?  →  ' + why) },
+      jump ? { en: `Condition true: <b>jump to the label</b> and repeat the block.`, ar: 'الشرط اتحقق، فبتنط على الـ <b>label</b> وتكرر الـ block.' }
+        : { en: `Condition false: <b>continue with the next instruction</b> after ${ins}.`, ar: 'الشرط ماتحققش، فبتكمّل على الـ <b>instruction اللي بعدها</b>.' }] : [];
+    const [i, ctl] = useSteps(4, 2200);
+    const set = (f, v) => { f(v); ctl.replay(); };
+    const cap = ok ? S[i] : { en: 'Write a starting CX from 1 to 100.', ar: 'اكتب قيمة بداية للـ CX من 1 لحد 100.' };
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-tabs">${['LOOP', 'LOOPE', 'LOOPNE'].map(x => html`<button key=${x} className="mpv8-chip" aria-pressed=${pressed(ins === x)} onClick=${() => set(setIns, x)}>${x === 'LOOPE' ? 'LOOPE / LOOPZ' : x === 'LOOPNE' ? 'LOOPNE / LOOPNZ' : 'LOOP'}</button>`)}</div>
+      <div className="mpv8-in"><label>CX <input aria-label="Starting CX (decimal)" value=${cx} onInput=${e => set(setCx, e.target.value)} onChange=${e => set(setCx, e.target.value)} inputMode="numeric" spellCheck="false" style=${{ width: '56px' }} /></label>
+        ${ins !== 'LOOP' ? html`<button className="fig-btn" aria-pressed=${pressed(zf === 1)} onClick=${() => set(setZf, 1 - zf)}>ZF = ${zf}</button>` : null}
+        <button className="mpv8-chip" aria-pressed=${pressed(ins === 'LOOP' && cx === '10')} onClick=${() => { setIns('LOOP'); setCx('10'); ctl.replay(); }}>Lab 7 (CX = 10)</button></div>
+      ${ok ? html`<div className="mpv8-flow">
+        <div className=${'mpv8-node' + (i === 1 ? ' mpv8-on' : '')}>CX = CX − 1<small className=${pop(i >= 1)}>${n} → ${c2}</small></div>
+        <div className="mpv8-down">↓</div>
+        <div className=${'mpv8-node mpv8-dec' + (i === 2 ? ' mpv8-on' : '')}>${cond}<small className=${pop(i >= 2)}>${why}</small></div>
+        <div className="mpv8-split">
+          <div><div className="mpv8-down" style=${{ textAlign: 'center' }}>↓ yes</div><div className=${'mpv8-node' + (i === 3 ? (jump ? ' mpv8-ok' : ' mpv8-dim') : '')}>jump to label</div></div>
+          <div><div className="mpv8-down" style=${{ textAlign: 'center' }}>↓ no</div><div className=${'mpv8-node' + (i === 3 ? (!jump ? ' mpv8-ok' : ' mpv8-dim') : '')}>next instruction</div></div></div></div>` : html`<p className="mpv8-err">✗ CX from 1 to 100</p>`}</div>
+      <${Cap} ...${cap} showAr=${ar} />${ok ? html`<${Bar} steps=${S} i=${i} ctl=${ctl} />` : null}</figure>`;
+  }
+
+  /* ── 8: the Lab 7 LOOP programs, traced instruction by instruction ── */
+  const PROGS = [
+    { k: 'Increment AX', title: ([n]) => `increment AX ${n} times`, ins: [['n', 'CX count', 10]], build: ([n]) => [
+      ['', 'MOV', 'AX', '0'], ['', 'MOV', 'CX', String(n)], ['L', 'INC', 'AX'], ['', 'LOOP', 'L']], regs: ['AX', 'CX'],
+      end: (R, [n]) => ({ en: `Done: INC AX ran ${n} times, AX = ${R.AX}.`, ar: `خلصنا، الـ ${bdi('INC AX')} اتنفذت ${n} مرة، والنتيجة:` + ltr(`AX = ${R.AX}`) }) },
+    { k: 'Nested', title: ([n, m]) => `nested loop, AX ${n} times and BX ${m} times for each`, ins: [['n', 'outer CX', 10], ['m', 'inner CX', 20]], build: ([n, m]) => [
+      ['', 'MOV', 'AX', '0'], ['', 'MOV', 'BX', '0'], ['', 'MOV', 'CX', String(n)], ['L1', 'INC', 'AX'], ['', 'MOV', 'count', 'CX'], ['', 'MOV', 'CX', String(m)],
+      ['L2', 'INC', 'BX'], ['', 'LOOP', 'L2'], ['', 'MOV', 'CX', 'count'], ['', 'LOOP', 'L1']], regs: ['AX', 'BX', 'CX', 'count'],
+      end: (R, [n, m]) => ({ en: `Done: AX = ${R.AX} (outer ${n} times) and BX = ${R.BX} (${m} for each: ${n} × ${m}).`, ar: 'خلصنا، الـ AX زاد مع كل لفة خارجية، والـ BX زاد مع كل لفة داخلية:' + ltr(`AX = ${R.AX}, BX = ${n} × ${m} = ${R.BX}`) }) },
+    { k: 'Sum 1..10', title: ([n]) => `sum 1..${n} in AX, then increment`, ins: [['n', 'CX count', 10]], build: ([n]) => [
+      ['', 'MOV', 'AX', '0'], ['', 'MOV', 'CX', String(n)], ['L', 'ADD', 'AX', 'CX'], ['', 'LOOP', 'L'], ['', 'INC', 'AX']], regs: ['AX', 'CX'],
+      end: (R, [n]) => ({ en: `Done: AX = ${n} + … + 1 = ${n * (n + 1) / 2}, then INC AX gives ${R.AX}.`, ar: 'خلصنا، الـ AX اتجمع فيه من الـ CX لحد 1 وبعدين الـ INC زودته واحد:' + ltr(`AX = ${n * (n + 1) / 2} + 1 = ${R.AX}`) }) }];
+  const ltxt = l => (l[0] ? (l[0] + ':').padEnd(4) : '    ') + l[1] + ' ' + l.slice(2).join(', ');
+  function lstep(P, st) {
+    const L = P[st.pc], R = Object.assign({}, st.R), v = x => x in R ? R[x] : +x, old = L[2] in R ? R[L[2]] : null;
+    let pc = st.pc + 1, en, a;
+    const code = ltxt(L).trim();
+    if (L[1] === 'MOV') { R[L[2]] = v(L[3]); en = `<code>${code}</code>: ${L[2]} = ${R[L[2]]}${L[2] === 'count' ? ' (save the outer counter)' : L[3] === 'count' ? ' (restore the outer counter)' : ''}.`;
+      a = `الـ ${bdi(code)}` + (L[2] === 'count' ? ' بتحفظ العدّاد الخارجي:' : L[3] === 'count' ? ' بترجّع العدّاد الخارجي:' : ' بتحط القيمة:') + ltr(`${L[2]} = ${R[L[2]]}`); }
+    else if (L[1] === 'INC') { R[L[2]] = (R[L[2]] + 1) & 0xFFFF; en = `<code>${code}</code>: ${L[2]} = ${old} + 1 = ${R[L[2]]}.`; a = `الـ ${bdi(code)} بتزود واحد:` + ltr(`${L[2]} = ${old} + 1 = ${R[L[2]]}`); }
+    else if (L[1] === 'ADD') { R[L[2]] = (R[L[2]] + v(L[3])) & 0xFFFF; en = `<code>${code}</code>: ${L[2]} = ${old} + ${v(L[3])} = ${R[L[2]]}.`; a = `الـ ${bdi(code)} بتجمع:` + ltr(`${L[2]} = ${old} + ${v(L[3])} = ${R[L[2]]}`); }
+    else { const c = R.CX; R.CX = (c - 1) & 0xFFFF;
+      if (R.CX !== 0) { pc = P.findIndex(x => x[0] === L[2]); en = `<code>${code}</code>: CX = ${c} − 1 = ${R.CX} ≠ 0, so jump back to ${L[2]}.`; a = `الـ ${bdi(code)} بتقلل الـ CX، وبما إنه مش صفر بتنط تاني على الـ ${L[2]}:` + ltr(`CX = ${c} − 1 = ${R.CX} ≠ 0`); }
+      else { en = `<code>${code}</code>: CX = ${c} − 1 = 0, so continue with the next instruction.`; a = `الـ ${bdi(code)} بتقلل الـ CX فبقى صفر، فبتكمّل على اللي بعدها:` + ltr(`CX = ${c} − 1 = 0`); } }
+    return { pc, R, last: st.pc, n: st.n + 1, en, ar: a };
+  }
+  function LoopTrace({ ar }) {
+    const [p, setP] = useState(0), [vals, setVals] = useState(PROGS.map(x => x.ins.map(y => String(y[2]))));
+    const D = PROGS[p], V = vals[p], nums = V.map(x => /^\d{1,2}$/.test(x.trim()) ? +x : NaN), ok = nums.every(x => x >= 1 && x <= 50);
+    const prog = ok ? D.build(nums) : [];
+    const init = () => ({ pc: 0, R: { AX: null, BX: null, CX: null, count: null }, last: -1, n: 0, en: null, ar: null });
+    const [st, setSt] = useState(init);
+    const done = ok && st.pc >= prog.length;
+    const step = () => { if (!done) setSt(lstep(prog, st)); };
+    const run = () => { let s = st, g = 0; while (s.pc < prog.length && g++ < 20000) s = lstep(prog, s); setSt(s); };
+    const reset = () => setSt(init());
+    const pick = j => { setP(j); setSt(init()); };
+    const setV = (k, x) => { const nv = vals.map(r => r.slice()); nv[p][k] = x; setVals(nv); setSt(init()); };
+    const isEx = V.every((x, k) => +x === D.ins[k][2]);
+    let cap;
+    if (!ok) cap = { en: 'Write each count as a whole number from 1 to 50.', ar: 'اكتب كل عدد كرقم صحيح من 1 لحد 50.' };
+    else if (done) { const e = D.end(st.R, nums); cap = { en: st.en + ' ' + e.en, ar: st.ar + e.ar }; }
+    else if (st.en) cap = { en: st.en, ar: st.ar };
+    else cap = { en: `Lab 7 program: ${D.title(nums)}. Press <b>Step</b> to run one instruction, or <b>Run to end</b>.`, ar: 'برنامج من الـ Lab 7، دوس <b>Step</b> عشان تنفّذ instruction واحدة، أو <b>Run to end</b> عشان يخلص على طول.' };
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-tabs">${PROGS.map((x, j) => html`<button key=${x.k} className="mpv8-chip" aria-pressed=${pressed(p === j)} onClick=${() => pick(j)}>${x.k}</button>`)}</div>
+      <div className="mpv8-in"><span className="mpv8-lbl">${isEx ? 'Example from the notes · try your own counts' : 'Your own counts'}</span>
+        ${D.ins.map((x, k) => html`<label key=${k}>${x[1]} <input aria-label=${x[1]} value=${V[k]} onInput=${e => setV(k, e.target.value)} onChange=${e => setV(k, e.target.value)} inputMode="numeric" spellCheck="false" style=${{ width: '48px' }} /></label>`)}
+        ${!isEx ? html`<button className="mpv8-chip" onClick=${() => { const nv = vals.map(r => r.slice()); nv[p] = D.ins.map(y => String(y[2])); setVals(nv); setSt(init()); }}>Example</button>` : null}</div>
+      ${ok ? html`<div>
+        <div className="mpv8-prog mpv8-lines">${p === 1 ? html`<div className="mpv8-dir">count DW ?</div>` : null}${prog.map((l, k) => html`<div key=${k} className=${k === st.pc ? 'mpv8-cur' : k === st.last ? 'mpv8-done' : ''}>${ltxt(l)}</div>`)}${done ? html`<div className="mpv8-cur">(end)</div>` : null}</div>
+        <div className="mpv8-regs" style=${{ '--n': D.regs.length }}>${D.regs.map(r => html`<div key=${r} className=${'mpv8-card' + (st.last >= 0 && prog[st.last] && prog[st.last][2] === r || (r === 'CX' && st.last >= 0 && prog[st.last] && prog[st.last][1] === 'LOOP') ? ' mpv8-on' : '')}><small>${r}</small><b>${st.R[r] === null ? '?' : st.R[r]}</b></div>`)}</div>
+        <p className="mpv8-cnt">${st.n} instructions executed (values in decimal)</p></div>` : html`<p className="mpv8-err">✗ Counts from 1 to 50</p>`}</div>
+      <${Cap} ...${cap} showAr=${ar} />
+      ${ok ? html`<div className="mpv8-ctl"><button className="fig-btn solid" onClick=${step} disabled=${done}>Step ›</button><button className="fig-btn" onClick=${run} disabled=${done}>Run to end</button><button className="fig-btn" onClick=${reset}>↻ Reset</button></div>` : null}</figure>`;
+  }
+
+  /* ── 9.0-9.2: CALL pushes the offset of the next instruction, RET pops it into IP (Lab 8 getSquare) ── */
+  function CallRet({ ar }) {
+    const CODE = ['main PROC', '    CALL getSquare', '    RET', 'main ENDP', 'getSquare PROC', '    MOV AX, Number', '    MUL AX', '    MOV Square, AX', '    RET', 'getSquare ENDP'];
+    const RA = 'offset of next instr. (RET in main)';
+    const S = [
+      { c: 1, ip: 'CALL getSquare', stk: [], ax: '?', sq: '?',
+        en: 'main starts. IP points to <code>CALL getSquare</code>. Data: Number = 4h, Square = ?.', ar: 'الـ main بيبدأ والـ IP بيشاور على الـ ' + bdi('CALL getSquare') + '، والداتا:' + ltr('Number = 4h, Square = ?') },
+      { c: 4, ip: 'getSquare', stk: [RA], ax: '?', sq: '?', hot: 'stk',
+        en: '<b>CALL</b> pushes the offset of the next instruction (the RET in main) on the stack and copies the address of getSquare into IP.', ar: 'الـ <b>CALL</b> بتعمل push للـ offset بتاع الـ instruction الجاية (الـ RET اللي في الـ main) على الـ stack، وبتنسخ عنوان الـ getSquare في الـ IP.' },
+      { c: 5, ip: 'MOV AX, Number', stk: [RA], ax: '0004', sq: '?', hot: 'ax',
+        en: '<code>MOV AX, Number</code>: AX = 4.', ar: 'الـ ' + bdi('MOV AX, Number') + ' بتحط الـ Number في الـ AX:' + ltr('AX = 4') },
+      { c: 6, ip: 'MUL AX', stk: [RA], ax: '0010', sq: '?', hot: 'ax',
+        en: '<code>MUL AX</code>: AX = 4 × 4 = 16 (0010h).', ar: 'الـ ' + bdi('MUL AX') + ' بتضرب الـ AX في نفسه:' + ltr('AX = 4 × 4 = 16 = 0010h') },
+      { c: 7, ip: 'MOV Square, AX', stk: [RA], ax: '0010', sq: '0010', hot: 'sq',
+        en: '<code>MOV Square, AX</code>: Square = 16.', ar: 'الـ ' + bdi('MOV Square, AX') + ' بتخزن النتيجة:' + ltr('Square = 16') },
+      { c: 8, ip: 'RET (in getSquare)', stk: [], ax: '0010', sq: '0010', hot: 'stk',
+        en: '<b>RET</b> pops the top of the stack into IP: the saved offset of the RET in main. Every procedure must end with RET.', ar: 'الـ <b>RET</b> بتعمل pop لقمة الـ stack في الـ IP، يعني الـ offset اللي اتحفظ بتاع الـ RET اللي في الـ main. وأي procedure لازم يخلص بـ RET.' },
+      { c: 2, ip: 'RET (in main)', stk: [], ax: '0010', sq: '0010',
+        en: 'Execution is back in main, at the instruction right after the CALL.', ar: 'التنفيذ رجع للـ main، عند الـ instruction اللي بعد الـ CALL على طول.' }];
+    const [i, ctl] = useSteps(S.length, 2600), s = S[i];
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-prog mpv8-lines">${CODE.map((l, k) => html`<div key=${k} className=${k === s.c ? 'mpv8-cur' : /PROC|ENDP/.test(l) ? 'mpv8-dir' : ''}>${l}</div>`)}</div>
+      <div className="mpv8-regs" style=${{ '--n': 3 }}>
+        <div className=${'mpv8-card' + (i === 1 || i >= 5 ? ' mpv8-on' : '')}><small>Now at</small><b style=${{ fontSize: '.8rem' }}>${s.ip}</b></div>
+        <div className=${'mpv8-card' + (s.hot === 'ax' ? ' mpv8-on' : '')}><small>AX</small><b>${s.ax}</b></div>
+        <div className=${'mpv8-card' + (s.hot === 'sq' ? ' mpv8-on' : '')}><small>Square</small><b>${s.sq}</b></div></div>
+      <div className="mpv8-stack" style=${{ maxWidth: '300px', margin: '0 auto', boxShadow: s.hot === 'stk' ? '0 0 0 2px var(--fig-k)' : 'none' }}><b>Stack</b>${s.stk.length ? s.stk.map(x => html`<div key=${x}>${x}</div>`) : html`<i>${i >= 5 ? 'empty (popped into IP)' : 'empty'}</i>`}</div></div>
+      <${Cap} ...${s} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 10: Triangle_Area traced (Lab 8): area = (base × hight) / 2 ── */
+  function TriArea({ ar }) {
+    const [bs, setBs] = useState('5'), [ht, setHt] = useState('10');
+    const b = /^\d{1,3}$/.test(bs.trim()) ? +bs : NaN, h = /^\d{1,3}$/.test(ht.trim()) ? +ht : NaN, ok = b >= 0 && b <= 255 && h >= 0 && h <= 255;
+    const CODE = ['Triangle_Area PROC', '    MOV AX, base', '    MUL hight', '    MOV BX, 2', '    DIV BX', '    MOV area, AX', '    RET', 'Triangle_Area ENDP'];
+    const p = b * h, q = Math.floor(p / 2), rm = p % 2;
+    const S = ok ? [
+      { c: -1, R: { AX: '?', BX: '?', DX: '?', area: '?' },
+        en: `Data: base DW ${b}, hight DW ${h}, area DW ?. The procedure computes area = (base × hight) / 2.`, ar: 'الـ procedure بتحسب مساحة المثلث، والداتا:' + ltr(`base = ${b}, hight = ${h}, area = (base × hight) / 2`) },
+      { c: 1, R: { AX: b, BX: '?', DX: '?', area: '?' }, hot: 'AX',
+        en: `<code>MOV AX, base</code>: AX = ${b}.`, ar: 'الـ ' + bdi('MOV AX, base') + ' بتحط الـ base في الـ AX:' + ltr(`AX = ${b}`) },
+      { c: 2, R: { AX: p, BX: '?', DX: 0, area: '?' }, hot: 'AX',
+        en: `<code>MUL hight</code>: DX:AX = AX × hight = ${b} × ${h} = ${p}, so AX = ${p} and DX = 0.`, ar: 'الـ ' + bdi('MUL hight') + ' بتضرب الـ AX في الـ hight، والنتيجة في الـ DX:AX:' + ltr(`AX = ${b} × ${h} = ${p}, DX = 0`) },
+      { c: 3, R: { AX: p, BX: 2, DX: 0, area: '?' }, hot: 'BX',
+        en: '<code>MOV BX, 2</code>: BX = 2.', ar: 'الـ ' + bdi('MOV BX, 2') + ' بتحط القاسم:' + ltr('BX = 2') },
+      { c: 4, R: { AX: q, BX: 2, DX: rm, area: '?' }, hot: 'AX',
+        en: `<code>DIV BX</code>: DX:AX ÷ BX = ${p} ÷ 2, so AX = ${q} (quotient) and DX = ${rm} (remainder).`, ar: 'الـ ' + bdi('DIV BX') + ' بتقسم الـ DX:AX على الـ BX، والناتج في الـ AX والباقي في الـ DX:' + ltr(`${p} ÷ 2 → AX = ${q}, DX = ${rm}`) },
+      { c: 5, R: { AX: q, BX: 2, DX: rm, area: q }, hot: 'area',
+        en: `<code>MOV area, AX</code>: area = ${q}.`, ar: 'الـ ' + bdi('MOV area, AX') + ' بتخزن النتيجة:' + ltr(`area = ${q}`) },
+      { c: 6, R: { AX: q, BX: 2, DX: rm, area: q },
+        en: '<code>RET</code> pops the return address into IP and goes back to the caller.', ar: 'الـ ' + bdi('RET') + ' بتعمل pop لعنوان الرجوع في الـ IP وترجع للي ناداها.' }] : [];
+    const [i, ctl] = useSteps(7, 2300);
+    const set = (f, v) => { f(v); ctl.go(6); };
+    const s = ok ? S[i] : null;
+    const cap = ok ? s : { en: 'Write base and hight as whole numbers from 0 to 255.', ar: 'اكتب الـ base والـ hight كأرقام صحيحة من 0 لحد 255.' };
+    const hex = v => typeof v === 'number' ? hx(v, 4) + 'h' : '';
+    return html`<figure className="fig mpv8-f"><div className="fig-stage">
+      <div className="mpv8-in"><button className="mpv8-chip" aria-pressed=${pressed(bs === '5' && ht === '10')} onClick=${() => { setBs('5'); setHt('10'); ctl.replay(); }}>Example from the notes</button></div>
+      <div className="mpv8-in"><span className="mpv8-lbl">Try your own (decimal)</span>
+        <label>base <input aria-label="base" value=${bs} onInput=${e => set(setBs, e.target.value)} onChange=${e => set(setBs, e.target.value)} inputMode="numeric" spellCheck="false" style=${{ width: '54px' }} /></label>
+        <label>hight <input aria-label="hight" value=${ht} onInput=${e => set(setHt, e.target.value)} onChange=${e => set(setHt, e.target.value)} inputMode="numeric" spellCheck="false" style=${{ width: '54px' }} /></label></div>
+      ${ok ? html`<div>
+        <div className="mpv8-prog mpv8-lines">${CODE.map((l, k) => html`<div key=${k} className=${k === s.c ? 'mpv8-cur' : /PROC|ENDP/.test(l) ? 'mpv8-dir' : ''}>${l}</div>`)}</div>
+        <div className="mpv8-regs" style=${{ '--n': 4 }}>${['AX', 'BX', 'DX', 'area'].map(r => html`<div key=${r} className=${'mpv8-card' + (s.hot === r ? ' mpv8-on' : '')}><small>${r}</small><b>${s.R[r]}</b><small>${hex(s.R[r])}</small></div>`)}</div></div>` : html`<p className="mpv8-err">✗ base and hight from 0 to 255</p>`}</div>
+      <${Cap} ...${cap} showAr=${ar} />${ok ? html`<${Bar} steps=${S} i=${i} ctl=${ctl} />` : null}</figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'mp-l8-jmp-scope': JmpScope, 'mp-l8-jmp-bytes': JmpBytes, 'mp-l8-jmp-slides': JmpSlides,
+    'mp-l8-jmp-q12': JmpQ12, 'mp-l8-jmp-q13': JmpQ13, 'mp-l8-jmp-f2324': JmpF,
+    'mp-l8-int-handle': IntHandle, 'mp-l8-int-mask': IntMask, 'mp-l8-int-types': IntTypes,
+    'mp-l8-loop-flow': LoopFlow, 'mp-l8-loop-trace': LoopTrace, 'mp-l8-call-ret': CallRet, 'mp-l8-tri-area': TriArea });
+})();
+/* ── part L9 ── */
+// Microprocessors visuals, Lecture 9 (Lab: arithmetic, logic, shift and rotate instructions): an 8-bit arithmetic simulator (ADD to XCHG with CF and ZF), MUL/DIV traced through AX/DX, MUL vs ADD programs side by side, the five lab formula programs run line by line, AND/OR/XOR/TEST bit by bit on the truth table, NOT/NEG/TEST, number suffixes, the define directives as bytes, and SHL/SHR/SAR/ROL/ROR/RCL/RCR bit by bit with CF (lab sheets, no slides). Every label and number comes from the site's notes or is computed with the course's rules.
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, pop } = window.FIGKIT;
+  const CSS = `
+.mpv9 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.mpv9-in{ display:flex; gap:6px; align-items:center; justify-content:center; flex-wrap:wrap; margin:10px 0 0; font-size:.86rem; color:var(--ink); }
+.mpv9-in input, .mpv9-in select{ font:600 .9rem var(--mono); padding:5px 7px; border:1px solid var(--line); border-radius:7px; background:var(--paper); color:var(--ink); min-width:0; box-sizing:border-box; max-width:100%; }
+.mpv9-in input{ width:6.4em; } .mpv9-in input:focus, .mpv9-in select:focus{ outline:2px solid var(--fig-k); outline-offset:1px; }
+.mpv9-in label{ display:inline-flex; gap:4px; align-items:center; font:600 .84rem var(--mono); color:var(--graphite); }
+.mpv9-lbl{ font-size:.8rem; color:var(--graphite); width:100%; text-align:center; }
+.mpv9-err{ text-align:center; color:var(--pen); font-size:.86rem; margin:6px 0 0; }
+.mpv9-tabs{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.mpv9-prog{ max-width:420px; margin:0 auto 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:4px 0; font:600 .86rem/1.5 var(--mono); color:var(--ink); }
+.mpv9-prog div{ padding:0 10px; transition:background .3s, opacity .3s; white-space:pre; }
+.mpv9-prog div.mpv9-cur{ background:color-mix(in srgb, var(--fig-k) 24%, var(--paper)); } .mpv9-prog div.mpv9-done{ opacity:.6; }
+.mpv9-prog div.mpv9-bad{ background:transparent; box-shadow:inset 3px 0 0 var(--pen); color:var(--pen); } .mpv9-prog div.mpv9-skip{ opacity:.35; text-decoration:line-through; }
+.mpv9-regs{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; max-width:420px; margin:0 auto; }
+.mpv9-reg{ border:1px solid var(--line); border-radius:8px; padding:3px 7px; background:var(--paper); color:var(--ink); transition:background .4s, box-shadow .4s; min-width:0; display:grid; grid-template-columns:auto 1fr; align-items:baseline; gap:0 6px; }
+.mpv9-reg small{ font:700 .8rem var(--mono); color:var(--graphite); } .mpv9-reg b{ font:700 .92rem var(--mono); text-align:right; }
+.mpv9-reg b span + span{ margin-left:3px; } .mpv9-reg i{ grid-column:1 / -1; text-align:right; font:.8rem var(--mono); font-style:normal; color:var(--graphite); }
+.mpv9-reg.mpv9-on{ background:color-mix(in srgb, var(--fig-k) 24%, var(--paper)); box-shadow:0 0 0 2px var(--fig-k); }
+.mpv9-vars{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin:8px 0 0; }
+.mpv9-vars span{ font:600 .82rem var(--mono); padding:2px 8px; border-radius:99px; border:1px solid var(--line); background:var(--paper); color:var(--ink); transition:background .4s; }
+.mpv9-vars span.mpv9-on{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); border-color:var(--fig-k); }
+.mpv9-sub{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; margin:10px auto 0; max-width:420px; font:700 .84rem var(--mono); color:var(--ink); }
+.mpv9-sub span{ padding:2px 6px; border-radius:6px; border:1px solid var(--line); background:var(--paper); animation:mpv9pop .4s ease both; }
+.mpv9-sub span.mpv9-k{ border-color:var(--fig-k); }
+.mpv9-note{ text-align:center; font-size:.82rem; color:var(--graphite); margin:4px 0 0; }
+@keyframes mpv9pop{ from{ opacity:0; transform:translateY(5px); } to{ opacity:1; transform:none; } }
+.mpv9-two{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:8px; max-width:440px; margin:0 auto; }
+.mpv9-two > div > b{ display:block; text-align:center; font-size:.84rem; color:var(--ink); margin:0 0 4px; }
+.mpv9-two .mpv9-prog{ margin:0 0 6px; font-size:.8rem; } .mpv9-two .mpv9-prog div{ padding:0 6px; }
+.mpv9-two .mpv9-reg{ padding:2px 5px; margin:0 0 3px; } .mpv9-two .mpv9-reg b{ font-size:.84rem; }
+.mpv9-cnt{ text-align:center; font-size:.8rem; color:var(--graphite); margin:4px 0 0; } .mpv9-cnt b{ color:var(--ink); }
+.mpv9-rows{ display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:3px 8px; align-items:center; max-width:360px; margin:0 auto; font:700 .9rem var(--mono); color:var(--ink); }
+.mpv9-rows > small{ font:700 .82rem var(--mono); color:var(--graphite); } .mpv9-rows > i{ font-style:normal; text-align:right; font-size:.84rem; color:var(--graphite); }
+.mpv9-rows > .mpv9-ln{ grid-column:1 / -1; border-top:2px solid var(--ink); height:0; }
+.mpv9-cells{ display:grid; grid-template-columns:repeat(8, minmax(0,1fr)); gap:2px; }
+.mpv9-cells > span{ text-align:center; border:1px solid var(--line); border-radius:3px; background:var(--paper); font:700 .86rem/1.6 var(--mono); color:var(--ink); transition:background .3s, box-shadow .3s; }
+.mpv9-cells > span.mpv9-one{ background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.mpv9-cells > span.mpv9-col{ box-shadow:0 0 0 2px var(--fig-k); } .mpv9-cells > span.mpv9-blank{ color:transparent; }
+.mpv9-cells.mpv9-c16{ grid-template-columns:repeat(16, minmax(0,1fr)); gap:1px; } .mpv9-cells.mpv9-c16 > span{ font-size:.75rem; border-radius:2px; }
+.mpv9-flags{ display:flex; gap:8px; justify-content:center; margin:10px 0 0; }
+.mpv9-flags div{ min-width:64px; border:1px solid var(--line); border-radius:8px; background:var(--paper); text-align:center; padding:3px 6px; color:var(--ink); transition:background .4s; }
+.mpv9-flags small{ display:block; font-size:.75rem; color:var(--graphite); } .mpv9-flags b{ display:block; font:700 1.05rem var(--mono); }
+.mpv9-flags div.mpv9-on{ background:var(--fig-s); border-color:transparent; } .mpv9-flags div.mpv9-on small, .mpv9-flags div.mpv9-on b{ color:#fff; }
+.mpv9-tt{ border-collapse:collapse; margin:0 auto 12px; font:700 .86rem var(--mono); color:var(--ink); }
+.mpv9-tt th, .mpv9-tt td{ border:1px solid var(--line); padding:2px 9px; text-align:center; background:var(--paper); transition:background .3s; }
+.mpv9-tt th{ color:var(--graphite); font-size:.8rem; } .mpv9-tt .mpv9-op{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.mpv9-tt tr.mpv9-row td{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); } .mpv9-tt tr.mpv9-row td.mpv9-op{ background:var(--fig-s); color:#fff; }
+.mpv9-big{ text-align:center; font:700 1.5rem var(--mono); color:var(--ink); margin:6px 0 2px; overflow-wrap:anywhere; }
+.mpv9-res{ display:grid; grid-template-columns:auto minmax(0,1fr); gap:3px 10px; max-width:320px; margin:8px auto 0; font-size:.88rem; color:var(--ink); }
+.mpv9-res span{ color:var(--graphite); } .mpv9-res b{ font-family:var(--mono); overflow-wrap:anywhere; }
+.mpv9-res .mpv9-x{ grid-column:1 / -1; color:var(--pen); font-weight:700; text-align:center; }
+.mpv9-chips{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 8px; }
+.mpv9-chip{ font:600 .84rem/1.2 var(--mono); padding:5px 9px; border-radius:8px; border:1px solid var(--line); background:var(--paper); color:var(--ink); cursor:pointer; }
+.mpv9-chip[aria-pressed="true"]{ border-color:var(--fig-k); box-shadow:0 0 0 1px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.mpv9-dir{ display:grid; gap:8px; max-width:420px; margin:0 auto; }
+.mpv9-drow{ border:0; background:transparent; padding:0; text-align:left; cursor:pointer; font:inherit; color:var(--ink); }
+.mpv9-drow > div:first-child{ display:flex; justify-content:space-between; gap:6px; font-size:.84rem; margin:0 0 2px; }
+.mpv9-drow > div:first-child b{ font-family:var(--mono); } .mpv9-drow > div:first-child small{ color:var(--graphite); font-size:.8rem; }
+.mpv9-strip{ display:grid; grid-template-columns:repeat(10, minmax(0,1fr)); gap:2px; }
+.mpv9-strip > span{ height:20px; border:1.5px solid var(--fig-k); border-radius:3px; background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); animation:mpv9pop .35s ease both; }
+.mpv9-drow.mpv9-sel .mpv9-strip > span{ background:var(--fig-s); }
+.mpv9-flow{ display:flex; align-items:flex-end; gap:4px; max-width:400px; margin:0 auto; }
+.mpv9-flow .mpv9-bits{ flex:1; min-width:0; }
+.mpv9-flow.mpv9-w16{ flex-wrap:wrap; } .mpv9-flow.mpv9-w16 .mpv9-bits{ order:-1; flex-basis:100%; } .mpv9-flow.mpv9-w16 .mpv9-side{ flex:1; } .mpv9-flow.mpv9-w16 .mpv9-side:first-child{ text-align:left; } .mpv9-flow.mpv9-w16 .mpv9-side:last-child{ text-align:right; }
+.mpv9-bits{ display:grid; gap:2px; }
+.mpv9-bits > small{ text-align:center; font:.75rem var(--mono); color:var(--graphite); }
+.mpv9-bits > span{ text-align:center; border:1.5px solid var(--ink); border-radius:3px; background:var(--paper); font:700 .9rem/1.9 var(--mono); color:var(--ink); overflow:hidden; }
+.mpv9-bits > span > i{ display:block; font-style:normal; }
+.mpv9-bits > span.mpv9-one{ background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.mpv9-bits > span.mpv9-new{ box-shadow:0 0 0 2px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 40%, var(--paper)); }
+.mpv9-bits > span.mpv9-sign{ border-style:dashed; }
+.mpv9-bits > span > i.mpv9-sl{ animation:mpv9sl .5s ease both; } .mpv9-bits > span > i.mpv9-sr{ animation:mpv9sr .5s ease both; }
+@keyframes mpv9sl{ from{ transform:translateX(100%); opacity:.3; } to{ transform:none; opacity:1; } }
+@keyframes mpv9sr{ from{ transform:translateX(-100%); opacity:.3; } to{ transform:none; opacity:1; } }
+.mpv9-side{ text-align:center; min-width:0; }
+.mpv9-side small{ display:block; font:600 .75rem var(--mono); color:var(--graphite); white-space:nowrap; }
+.mpv9-box{ display:inline-block; min-width:30px; border:1.5px solid var(--fig-k); border-radius:6px; background:var(--paper); font:700 .9rem/1.9 var(--mono); color:var(--ink); padding:0 5px; transition:background .4s; }
+.mpv9-box.mpv9-cf{ border-color:var(--ink); } .mpv9-box.mpv9-hot{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.mpv9-loop{ height:10px; margin:3px 18px 0; border:2px solid var(--fig-k); border-top:0; border-radius:0 0 8px 8px; position:relative; }
+.mpv9-loop::after{ content:""; position:absolute; top:-7px; border:5px solid transparent; border-bottom:7px solid var(--fig-k); }
+.mpv9-loop.mpv9-tol::after{ right:-7px; } .mpv9-loop.mpv9-tor::after{ left:-7px; }
+.mpv9-loopnote{ text-align:center; font-size:.78rem; color:var(--graphite); margin:2px 0 0; }
+.mpv9-val{ text-align:center; font:600 .84rem var(--mono); color:var(--ink); margin:8px 0 0; overflow-wrap:anywhere; }
+.mpv9-val small{ color:var(--graphite); font-family:var(--body); font-size:.8rem; }
+@media (prefers-reduced-motion: reduce){ .mpv9-sub span, .mpv9-strip > span{ animation:none; } .mpv9-bits > span > i.mpv9-sl, .mpv9-bits > span > i.mpv9-sr{ animation:none; } }`;
+  if (!document.getElementById('mpv9-css')) { const s = document.createElement('style'); s.id = 'mpv9-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* shared helpers */
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const bdi = s => `<bdi dir="ltr">${esc(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const ltr = s => `<span class="ltr">${esc(s)}</span>`;
+  const hx = (v, d) => v.toString(16).toUpperCase().padStart(d, '0');
+  const bn = (v, d) => v.toString(2).padStart(d, '0').slice(-d);
+  const sg = (v, w) => v >= 2 ** (w - 1) ? v - 2 ** w : v;
+  const SUP = { 1: '¹', 2: '²', 3: '³', 4: '⁴', 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸' };
+  // course number forms: 1001b binary, 0FFh hex (must start with a digit), plain decimal (a minus sign is allowed)
+  function parseNum(t, w) {
+    t = String(t).trim(); let m, v;
+    if (/^-?\d+$/.test(t)) v = parseInt(t, 10);
+    else if ((m = /^([01]+)b$/i.exec(t))) v = parseInt(m[1], 2);
+    else if ((m = /^([0-9][0-9a-f]*)h$/i.exec(t))) v = parseInt(m[1], 16);
+    else return null;
+    const M = 2 ** w; if (v < -(M / 2) || v >= M) return null;
+    return (v + M) % M;
+  }
+  const withCtl = (ctl, reset) => ({ go: j => { reset(); ctl.go(j); }, replay: () => { reset(); ctl.replay(); } });
+
+  /* ── a tiny 16-bit interpreter for the lab programs: MOV, ADD, SUB, NEG, MUL, DIV on AX..DX, their halves and DW variables ── */
+  const R16 = ['AX', 'BX', 'CX', 'DX'], R8 = { AL: ['AX', 0], AH: ['AX', 8], BL: ['BX', 0], BH: ['BX', 8], CL: ['CX', 0], CH: ['CX', 8], DL: ['DX', 0], DH: ['DX', 8] };
+  function opnd(t, st) {
+    t = String(t || '').trim(); const u = t.toUpperCase();
+    if (R16.includes(u)) return { k: 'r', w: 16, name: u, v: st.r[u] };
+    if (R8[u]) { const [p, s] = R8[u]; return { k: 'r', w: 8, name: u, v: (st.r[p] >> s) & 255 }; }
+    if (Object.prototype.hasOwnProperty.call(st.m, t)) return { k: 'm', w: 16, name: t, v: st.m[t] };
+    const v = parseNum(t, 16); if (v != null) return { k: 'i', w: 16, name: t, v };
+    return null;
+  }
+  function put(st, o, v) {
+    if (o.k === 'm') st.m[o.name] = v & 0xFFFF;
+    else if (o.w === 16) st.r[o.name] = v & 0xFFFF;
+    else { const [p, s] = R8[o.name]; st.r[p] = (st.r[p] & (0xFFFF ^ (255 << s))) | ((v & 255) << s); }
+  }
+  const dn = (v, w) => { w = w || 16; return v >= 2 ** (w - 1) ? `${hx(v, w / 4)}h = ${v - 2 ** w}` : String(v); };
+  function exec(st0, line) {
+    const st = { r: Object.assign({}, st0.r), m: Object.assign({}, st0.m) };
+    const mm = /^(\w+)\s*(.*)$/.exec(line.trim()), op = mm[1].toUpperCase(), args = mm[2] ? mm[2].split(',').map(s => s.trim()) : [];
+    const B = '<b>' + esc(line) + '</b>', L = bdi(line);
+    const fail = (en, ar) => ({ st: st0, err: true, en, ar });
+    if (op === 'MOV' || op === 'ADD' || op === 'SUB') {
+      const d = opnd(args[0], st), s = opnd(args[1], st), a = d.v, b = s.v, w = d.w;
+      const r = op === 'MOV' ? b : op === 'ADD' ? (a + b) % 2 ** w : (a - b + 2 ** w) % 2 ** w;
+      put(st, d, r);
+      if (op === 'MOV') {
+        const f = `${d.name} = ` + (s.k === 'i' ? dn(r, w) : `${s.name} = ${dn(r, w)}`);
+        return { st, en: `${B}: ${esc(f)}.`, ar: `الـ ${L} بتنسخ القيمة:` + ltr(f) };
+      }
+      const f = `${d.name} = ${dn(a, w)} ${op === 'ADD' ? '+' : '-'} ${dn(b, w)} = ${dn(r, w)}`;
+      return { st, en: `${B}: ${esc(f)}.`, ar: `الـ ${L} ${op === 'ADD' ? 'بتجمع' : 'بتطرح'} وتحط النتيجة في الـ ${d.name}:` + ltr(f) };
+    }
+    if (op === 'NEG') {
+      const d = opnd(args[0], st), a = d.v, r = (2 ** d.w - a) % 2 ** d.w; put(st, d, r);
+      const f = `${d.name} = 0 - ${dn(a, d.w)} = ${dn(r, d.w)}`;
+      return { st, en: `${B} takes the 2's complement: ${esc(f)}.`, ar: `الـ ${L} بتجيب الـ <bdi dir=\"ltr\">2's&nbsp;complement</bdi>، يعني:` + ltr(f) };
+    }
+    if (op === 'MUL' || op === 'DIV') {
+      const s = opnd(args[0], st);
+      if (!s || s.k === 'i') return fail(`${B} is not allowed: MUL and DIV take one operand, a register or memory, never an immediate. The other operand is always AX, so load the number into a register first (e.g. MOV BX, ${esc(args[0])}).`,
+        `الـ ${L} مش مسموحة: الـ MUL والـ DIV بياخدوا operand واحد بس، register أو memory، عمره ما يبقى immediate، والتاني دايمًا الـ AX. يعني لازم تحط الرقم في register الأول، زي ${bdi('MOV BX, ' + args[0])}.`);
+      const v = s.v, AX = st.r.AX, DX = st.r.DX;
+      if (op === 'MUL') {
+        if (s.w === 8) {
+          const al = AX & 255, p = al * v; st.r.AX = p;
+          const f = `AX = AL × ${s.name} = ${al} × ${v} = ${p}`;
+          return { st, en: `${B}: a byte operand, so ${esc(f)}.`, ar: `الـ ${L} الـ operand بتاعها byte، فالنتيجة في الـ AX:` + ltr(f) };
+        }
+        const p = AX * v; st.r.AX = p % 65536; st.r.DX = Math.floor(p / 65536);
+        const f = `DX:AX = AX × ${s.name} = ${AX} × ${v} = ${p}`, g = `AX = ${st.r.AX}, DX = ${st.r.DX}`;
+        return { st, en: `${B}: a word operand, so ${esc(f)}: ${g} (DX holds the high word).`, ar: `الـ ${L} الـ operand بتاعها word، فالنتيجة في الـ ${bdi('DX:AX')} كالتالي:` + ltr(f) + 'يعني' + ltr(g) + 'والـ DX فيه الـ high word.' };
+      }
+      if (v === 0) return fail(`${B}: the divisor ${esc(s.name)} is 0, a divide error.`, `الـ ${L} مش هتنفع لأن الـ ${esc(s.name)} قيمته 0، والقسمة على 0 بتعمل divide error.`);
+      if (s.w === 8) {
+        const q = Math.floor(AX / v), rm = AX % v;
+        if (q > 255) return fail(`${B}: AX ÷ ${esc(s.name)} = ${AX} ÷ ${v} = ${q}, too big for AL (more than 255): divide overflow.`, `الـ ${L} خارج القسمة فيها ${bdi(String(q))} وده أكبر من ${bdi('255')} ومش هيكفي في الـ AL، فبيحصل divide overflow.`);
+        st.r.AX = rm * 256 + q;
+        const f = `AX ÷ ${s.name} = ${AX} ÷ ${v} → AL = ${q}, AH = ${rm}`;
+        return { st, div: { n: AX, d: v, q, rm }, en: `${B}: a byte divisor, so ${esc(f)} (AL = quotient, AH = remainder).`, ar: `الـ ${L} الـ divisor بتاعها byte، فبتقسم الـ AX، والـ AL بياخد خارج القسمة والـ AH بياخد الباقي:` + ltr(f) };
+      }
+      const n = DX * 65536 + AX, q = Math.floor(n / v), rm = n % v;
+      if (q > 65535) return fail(`${B}: DX:AX ÷ ${esc(s.name)} = ${n} ÷ ${v} = ${q}, too big for AX (more than 65535): divide overflow. DX must hold only the high part of the dividend (normally 0).`, `الـ ${L} خارج القسمة فيها ${bdi(String(q))} وده أكبر من ${bdi('65535')} ومش هيكفي في الـ AX، فبيحصل divide overflow. والـ DX لازم يبقى فيه الجزء العالي من المقسوم بس (عادةً 0).`);
+      st.r.AX = q; st.r.DX = rm;
+      const f = `DX:AX ÷ ${s.name} = ${n} ÷ ${v} → AX = ${q}, DX = ${rm}`;
+      const hi = DX ? ` DX was ${DX} (the high word), so the dividend is ${n}.` : '', hiA = DX ? `والـ DX كان فيه ${bdi(String(DX))} (الـ high word)، فالمقسوم بقى ${bdi(String(n))}.` : '';
+      return { st, div: { n, d: v, q, rm }, en: `${B}: ${esc(f)} (AX = quotient, DX = remainder).${hi}`, ar: `الـ ${L} بتقسم الـ ${bdi('DX:AX')} على الـ ${s.name}، والـ AX بياخد خارج القسمة والـ DX بياخد الباقي:` + ltr(f) + hiA };
+    }
+    return fail(`${B}: not supported here.`, `الـ ${L} مش موجودة هنا.`);
+  }
+  function trace(lines, init) {
+    let st = init; const fr = [{ st, line: -1 }];
+    for (let k = 0; k < lines.length; k++) { const x = exec(st, lines[k]); fr.push(Object.assign({}, x, { line: k, prev: st, st: x.st })); if (x.err) break; st = x.st; }
+    return fr;
+  }
+  const changed = f => { if (!f.prev) return []; const o = []; R16.forEach(r => { if (f.st.r[r] !== f.prev.r[r]) o.push(r); }); Object.keys(f.st.m).forEach(k => { if (f.st.m[k] !== f.prev.m[k]) o.push(k); }); return o; };
+  const Listing = ({ lines, cur, bad }) => html`<div className="mpv9-prog">${lines.map((l, k) => html`<div key=${k} className=${bad != null && k === bad ? 'mpv9-bad' : bad != null && k > bad ? 'mpv9-skip' : k === cur ? 'mpv9-cur' : k < cur ? 'mpv9-done' : ''}>${l}</div>`)}</div>`;
+  const RegBox = ({ name, v, on, signed }) => html`<div className=${'mpv9-reg' + (on ? ' mpv9-on' : '')}><small>${name}</small><b><span>${hx(v >> 8, 2)}</span><span>${hx(v & 255, 2)}</span>h</b><i>${v}${signed && v >= 0x8000 ? ' (' + (v - 65536) + ')' : ''}</i></div>`;
+  const Regs = ({ f, names, signed }) => { const ch = changed(f); return html`<div className="mpv9-regs">${(names || R16).map(r => html`<${RegBox} key=${r} name=${r} v=${f.st.r[r]} on=${ch.includes(r)} signed=${signed} />`)}</div>`; };
+  const Vars = ({ f }) => { const ch = changed(f), ks = Object.keys(f.st.m); return ks.length ? html`<div className="mpv9-vars">${ks.map(k => html`<span key=${k} className=${ch.includes(k) ? 'mpv9-on' : ''}>${k} = ${f.st.m[k] >= 0x8000 ? f.st.m[k] - 65536 : f.st.m[k]}</span>`)}</div>` : null; };
+  // the lab explains DIV as repeated subtraction
+  function SubChain({ d }) {
+    if (!d || d.q > 12) return null;
+    const parts = [String(d.n)]; for (let k = 0; k < d.q; k++) parts.push('− ' + d.d);
+    return html`<div><div className="mpv9-sub">${parts.map((p, k) => html`<span key=${k} className=${k ? 'mpv9-k' : ''} style=${{ animationDelay: (k * .18) + 's' }}>${p}</span>`)}<span style=${{ animationDelay: (parts.length * .18) + 's' }}>= ${d.rm}</span></div>
+      <p className="mpv9-note">Repeated subtraction: ${d.q} subtractions → quotient ${d.q}, remainder ${d.rm}</p></div>`;
+  }
+  const zero = () => ({ AX: 0, BX: 0, CX: 0, DX: 0 });
+
+  /* ── [0] the arithmetic instructions on AL and BL: result, CF and ZF ── */
+  const AOPS = {
+    ADD: { en: 'adds: dest = dest + src.', ar: 'بتجمع:' + ltr('dest = dest + src') },
+    ADC: { en: 'adds with the carry: dest = dest + src + CF.', ar: 'بتجمع ومعاها الـ carry:' + ltr('dest = dest + src + CF') },
+    SUB: { en: 'subtracts: dest = dest - src.', ar: 'بتطرح:' + ltr('dest = dest - src') },
+    SBB: { en: 'subtracts with borrow: dest = dest - src - CF (CF acts as the borrow flag).', ar: 'بتطرح ومعاها الـ borrow، والـ CF هنا هو الـ borrow flag:' + ltr('dest = dest - src - CF') },
+    INC: { en: 'adds 1: dest + 1.', ar: 'بتزوّد 1 على الـ dest.' },
+    DEC: { en: 'subtracts 1: dest - 1.', ar: 'بتنقص 1 من الـ dest.' },
+    NEG: { en: "takes the 2's complement: dest = 0 - dest.", ar: "بتجيب الـ <bdi dir=\"ltr\">2's&nbsp;complement</bdi>، يعني:" + ltr('dest = 0 - dest') },
+    CMP: { en: 'computes AL - BL only to set the flags: the result is not stored.', ar: 'بتحسب الطرح عشان الـ flags بس، والنتيجة مابتتخزنش.' },
+    XCHG: { en: 'swaps the two operands.', ar: 'بتبدّل الاتنين ببعض.' }
+  };
+  function arith(op, a, b, c) {
+    let s, r, cf = c, zf, al = a, bl = b, f, kind;
+    if (op === 'XCHG') return { al: b, bl: a, cf: c, zf: null, f: `AL ↔ BL: AL = ${b}, BL = ${a}`, r: b };
+    if (op === 'ADD' || op === 'ADC') { s = a + b + (op === 'ADC' ? c : 0); r = s % 256; cf = s > 255 ? 1 : 0; kind = 'add'; f = `AL = ${a} + ${b}${op === 'ADC' ? ' + ' + c : ''} = ${s}` + (s > 255 ? ` → ${r} (8 bits)` : ''); }
+    else if (op === 'SUB' || op === 'SBB' || op === 'CMP') { s = a - b - (op === 'SBB' ? c : 0); r = (s + 512) % 256; cf = s < 0 ? 1 : 0; kind = 'sub'; f = `${op === 'CMP' ? 'AL - BL' : 'AL'} = ${a} - ${b}${op === 'SBB' ? ' - ' + c : ''} = ${s}` + (s < 0 ? ` → ${r} (borrow)` : ''); }
+    else if (op === 'INC' || op === 'DEC') { s = op === 'INC' ? a + 1 : a - 1; r = (s + 256) % 256; kind = 'incdec'; f = `AL = ${a} ${op === 'INC' ? '+' : '-'} 1 = ${s}` + (s !== r ? ` → ${r}` : ''); }
+    else { r = (256 - a) % 256; cf = a ? 1 : 0; kind = 'neg'; f = `AL = 0 - ${a} = ${-a} → ${hx(r, 2)}h = ${r}`; }
+    zf = r === 0 ? 1 : 0; if (op !== 'CMP') al = r;
+    return { al, bl, cf, zf, f, r, s, kind };
+  }
+  function ArithSim({ ar }) {
+    const [op, setOp] = useState('ADC'), [t, setT] = useState({ a: '5', b: '2' }), [v, setV] = useState({ a: 5, b: 2 }), [c, setC] = useState(1), [err, setErr] = useState('');
+    const steps = [0, 1, 2], [i, ctl] = useSteps(3, 1900);
+    const x = arith(op, v.a, v.b, c), useB = !['INC', 'DEC', 'NEG'].includes(op), useC = op === 'ADC' || op === 'SBB';
+    const ins = op + ' AL' + (useB ? ', BL' : '');
+    const edit = (k, s) => { setT(Object.assign({}, t, { [k]: s })); const n = parseNum(s, 8); if (n == null) { setErr('Use a value from 0 to 255 (or −128 to −1), as decimal, …b or …h.'); return; } setErr(''); setV(Object.assign({}, v, { [k]: n })); ctl.replay(); };
+    const given = `AL = ${v.a}` + (useB ? `, BL = ${v.b}` : '') + (useC ? `, CF = ${c}` : '');
+    const cfWhy = x.kind === 'add' ? (x.cf ? { en: 'CF = 1 because the result passed 255: it does not fit in 8 bits.', ar: 'الـ CF بقى 1 لأن النتيجة عدّت الـ 255 ومش هتكفي في ' + bdi('8 bits') + '.' } : { en: 'CF = 0: the result fits in 8 bits.', ar: 'الـ CF بقى 0 لأن النتيجة كفّت في ' + bdi('8 bits') + '.' })
+      : x.kind === 'sub' ? (x.cf ? { en: 'CF = 1: a borrow was needed (the subtracted part is bigger).', ar: 'الـ CF بقى 1 لأننا احتجنا borrow (اللي بنطرحه أكبر).' } : { en: 'CF = 0: no borrow was needed.', ar: 'الـ CF بقى 0 لأن مفيش borrow.' })
+      : x.kind === 'neg' ? { en: 'NEG sets CF = 1 unless the operand is 0.', ar: 'الـ NEG بتخلي الـ CF يبقى 1 إلا لو الرقم 0.' }
+      : x.kind === 'incdec' ? { en: 'INC and DEC leave CF as it was.', ar: 'الـ INC والـ DEC مابيغيروش الـ CF.' } : { en: 'XCHG does not change the flags.', ar: 'الـ XCHG مابتغيرش الـ flags.' };
+    const zfWhy = x.zf == null ? { en: '', ar: '' } : x.zf ? { en: ' ZF = 1 because the result is 0.', ar: ' والـ ZF بقى 1 لأن النتيجة 0.' } : { en: ' ZF = 0 because the result is not 0.', ar: ' والـ ZF بقى 0 لأن النتيجة مش 0.' };
+    const cmpN = op === 'CMP' ? { en: ` AL keeps ${v.a}: only the flags changed.`, ar: ' والـ AL فضل زي ما هو، الـ flags بس اللي اتغيرت.' } : { en: '', ar: '' };
+    const caps = [
+      { en: `<b>${ins}</b> ${AOPS[op].en} Here ${esc(given)}.`, ar: `الـ ${bdi(ins)} ${AOPS[op].ar} والقيم هنا:` + ltr(given) },
+      { en: `The calculation: ${esc(x.f)}.`, ar: 'الحساب:' + ltr(x.f) },
+      { en: `${x.zf == null ? '' : `Flags: CF = ${x.cf}, ZF = ${x.zf}. `}${cfWhy.en}${zfWhy.en}${cmpN.en}`, ar: (x.zf == null ? '' : 'الـ flags بعدها:' + ltr(`CF = ${x.cf}, ZF = ${x.zf}`)) + cfWhy.ar + zfWhy.ar + cmpN.ar }
+    ];
+    const cells = (n, on) => html`<div className="mpv9-cells">${bn(n, 8).split('').map((d, k) => html`<span key=${k} className=${(d === '1' ? 'mpv9-one' : '') + (on ? '' : ' mpv9-blank')}>${d}</span>`)}</div>`;
+    const resName = op === 'CMP' ? 'AL−BL' : 'AL';
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <div className="mpv9-tabs">${Object.keys(AOPS).map(k => html`<button key=${k} className="fig-btn" aria-pressed=${op === k} onClick=${() => { setOp(k); ctl.replay(); }}>${k}</button>`)}</div>
+      <div className="mpv9-rows">
+        <small>AL</small>${cells(v.a, true)}<i>${v.a}</i>
+        ${useB ? html`<small>BL</small>${cells(v.b, true)}<i>${v.b}</i>` : null}
+        ${useC || op === 'INC' || op === 'DEC' || op === 'NEG' ? html`<small>${useC ? 'CF' : op === 'NEG' ? '0 −' : '± 1'}</small><span style=${{ font: '700 .9rem var(--mono)' }}>${useC ? c : op === 'NEG' ? 'AL' : '1'}</span><i></i>` : null}
+        <div className="mpv9-ln"></div>
+        ${op === 'XCHG' ? html`<small className=${pop(i >= 1)}>AL</small><div className=${pop(i >= 1)}>${cells(x.al, i >= 1)}</div><i className=${pop(i >= 1)}>${x.al}</i><small className=${pop(i >= 1)}>BL</small><div className=${pop(i >= 1)}>${cells(x.bl, i >= 1)}</div><i className=${pop(i >= 1)}>${x.bl}</i>`
+          : html`<small className=${pop(i >= 1)}>${resName}</small><div className=${pop(i >= 1)}>${cells(x.r, i >= 1)}</div><i className=${pop(i >= 1)}>${x.r}</i>`}
+      </div>
+      ${op === 'CMP' ? html`<p className=${'mpv9-note ' + pop(i >= 1)}>Not stored: AL is still ${v.a}</p>` : null}
+      <div className=${'mpv9-flags ' + pop(i >= 2)}>
+        <div className=${x.cf ? 'mpv9-on' : ''}><small>CF</small><b>${x.cf}</b></div>
+        <div className=${x.zf ? 'mpv9-on' : ''}><small>ZF</small><b>${x.zf == null ? 'same' : x.zf}</b></div></div>
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own (decimal, …b or …h)</span>
+        <label>AL <input aria-label="AL" value=${t.a} onInput=${e => edit('a', e.target.value)} onChange=${e => edit('a', e.target.value)} spellCheck="false" /></label>
+        ${useB ? html`<label>BL <input aria-label="BL" value=${t.b} onInput=${e => edit('b', e.target.value)} onChange=${e => edit('b', e.target.value)} spellCheck="false" /></label>` : null}
+        ${useC || op === 'INC' || op === 'DEC' ? html`<label>CF <select aria-label="CF before" value=${c} onChange=${e => { setC(+e.target.value); ctl.replay(); }}><option value="0">0</option><option value="1">1</option></select></label>` : null}</div>
+      ${err && html`<p className="mpv9-err">${err}</p>`}
+      </div><${Cap} ...${caps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.0-1.3] MUL and DIV: the implicit AX, the result registers, and why MUL 3 is wrong ── */
+  const MD_EX = [
+    { k: 'mul', label: 'MUL BX: 5 × 3', lines: ['MOV AX, 5', 'MOV BX, 3', 'MUL BX'] },
+    { k: 'bad', label: 'Wrong: MUL 3', lines: ['MOV CX, 5', 'MUL 3'] },
+    { k: 'div', label: 'DIV CX: 5 ÷ 2', lines: ['MOV AX, 5', 'MOV CX, 2', 'DIV CX'] },
+    { k: 'div2', label: 'DIV BX: 10 ÷ 2', lines: ['MOV AX, 10', 'MOV BX, 2', 'DIV BX'] }
+  ];
+  function MulDiv({ ar }) {
+    const [ex, setEx] = useState(0), [own, setOwn] = useState(null), [form, setForm] = useState({ op: 'DIV', size: 'word', ax: '100', dx: '0', src: '7' }), [err, setErr] = useState('');
+    const lines = own || MD_EX[ex].lines, fr = trace(lines, { r: zero(), m: {} });
+    const steps = fr.concat(fr[fr.length - 1].err ? [] : [{ end: true }]);
+    const [i0, ctl0] = useSteps(steps.length, 1900), i = Math.min(i0, steps.length - 1), ctl = ctl0;
+    const last = fr[fr.length - 1], f = steps[i].end ? last : steps[i], bad = last.err ? last.line : null;
+    const build = fm => {
+      const ax = parseNum(fm.ax, 16), dx = parseNum(fm.dx, 16), src = parseNum(fm.src, fm.size === 'word' ? 16 : 8);
+      if (ax == null || src == null || (fm.op === 'DIV' && fm.size === 'word' && dx == null)) { setErr(fm.size === 'word' ? 'Values must fit 16 bits (0 to 65535).' : 'AX fits 16 bits; the byte source fits 8 bits (0 to 255).'); return; }
+      setErr(''); const r = fm.size === 'word' ? 'BX' : 'BL';
+      setOwn(['MOV AX, ' + ax].concat(fm.op === 'DIV' && fm.size === 'word' ? ['MOV DX, ' + dx] : []).concat(['MOV ' + r + ', ' + src, fm.op + ' ' + r])); ctl0.replay();
+    };
+    const upd = (k, val) => { const fm = Object.assign({}, form, { [k]: val }); setForm(fm); build(fm); };
+    let cap;
+    if (i === 0) cap = { en: 'MUL and DIV take only <b>one operand</b> (a register or memory, never an immediate); the other operand is always <b>AX</b>. All registers start at 0 here, so DX = 0, as a word DIV needs.', ar: 'الـ MUL والـ DIV بياخدوا <b>operand واحد بس</b> (register أو memory، عمره ما يبقى immediate)، والتاني دايمًا هو الـ <b>AX</b>. كل الـ registers هنا بتبدأ بـ 0، فالـ DX بـ 0 زي ما الـ DIV بـ word محتاجة.' };
+    else if (steps[i].end) {
+      const k = own ? null : MD_EX[ex].k;
+      cap = k === 'mul' ? { en: 'Result: <b>AX = 15</b>, the high word DX = 0. You must MOV AX, 5 then MOV BX, 3 and MUL BX.', ar: 'النتيجة:' + ltr('AX = 15, DX = 0') + 'يعني لازم تعمل ' + bdi('MOV AX, 5') + ' وبعدين ' + bdi('MOV BX, 3') + ' و ' + bdi('MUL BX') + '.' }
+        : k === 'div' ? { en: 'Result: <b>AX = 2</b> (the integer part of 5 ÷ 2) and <b>DX = 1</b> (the remainder).', ar: 'النتيجة:' + ltr('AX = 2, DX = 1') + 'الـ AX فيه الجزء الصحيح من القسمة والـ DX فيه الباقي.' }
+        : k === 'div2' ? { en: 'Result: <b>AX = 5</b>, <b>DX = 0</b>. The lab explains it as repeated subtraction: 10 - 2 - 2 - 2 - 2 - 2 = 0 in 5 steps.', ar: 'النتيجة:' + ltr('AX = 5, DX = 0') + 'والـ lab بيشرحها كطرح متكرر:' + ltr('10-2-2-2-2-2 = 0') + 'في 5 خطوات.' }
+        : { en: `Result: AX = ${last.st.r.AX}, DX = ${last.st.r.DX}.`, ar: 'النتيجة:' + ltr(`AX = ${last.st.r.AX}, DX = ${last.st.r.DX}`) };
+    } else cap = { en: steps[i].en, ar: steps[i].ar };
+    const div = !steps[i].end && steps[i].div ? steps[i].div : steps[i].end && last.div ? last.div : null;
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <${Listing} lines=${lines} cur=${steps[i].end ? lines.length : f.line} bad=${i >= fr.length - 1 ? bad : null} />
+      <${Regs} f=${f} />
+      ${div ? html`<${SubChain} key=${i} d=${div} />` : null}
+      <div className="mpv9-in"><span className="mpv9-lbl">Example from the notes</span>
+        ${MD_EX.map((e, k) => html`<button key=${k} className="fig-btn" aria-pressed=${!own && ex === k} onClick=${() => { setOwn(null); setErr(''); setEx(k); ctl0.replay(); }}>${e.label}</button>`)}</div>
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own</span>
+        <select aria-label="Instruction" value=${form.op} onChange=${e => upd('op', e.target.value)}><option>MUL</option><option>DIV</option></select>
+        <select aria-label="Operand size" value=${form.size} onChange=${e => upd('size', e.target.value)}><option value="word">word (BX)</option><option value="byte">byte (BL)</option></select>
+        <label>AX <input aria-label="AX" value=${form.ax} onInput=${e => upd('ax', e.target.value)} onChange=${e => upd('ax', e.target.value)} spellCheck="false" /></label>
+        ${form.op === 'DIV' && form.size === 'word' ? html`<label>DX <input aria-label="DX" value=${form.dx} onInput=${e => upd('dx', e.target.value)} onChange=${e => upd('dx', e.target.value)} spellCheck="false" /></label>` : null}
+        <label>${form.size === 'word' ? 'BX' : 'BL'} <input aria-label="Source" value=${form.src} onInput=${e => upd('src', e.target.value)} onChange=${e => upd('src', e.target.value)} spellCheck="false" /></label></div>
+      ${err && html`<p className="mpv9-err">${err}</p>`}
+      </div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.4] and the Q&A: the same formula with MUL and with repeated ADD ── */
+  const MVA = [
+    { k: '5x', label: 'C = 5x + 7', vars: ['X'], mul: ['MOV AX, X', 'MOV BX, 5', 'MUL BX', 'ADD AX, 7', 'MOV C, AX'], add: ['MOV AX, X', 'ADD AX, X', 'ADD AX, X', 'ADD AX, X', 'ADD AX, X', 'ADD AX, 7', 'MOV C, AX'], rm: ['AX', 'BX'], ra: ['AX'], nm: 2, na: 1 },
+    { k: '3x', label: 'C = (3x + 4y) - 14', vars: ['x', 'y'], mul: ['MOV AX, 3', 'MOV BX, x', 'MUL BX', 'MOV BX, AX', 'MOV CX, 4', 'MOV AX, y', 'MUL CX', 'ADD BX, AX', 'SUB BX, 14', 'MOV C, BX'], add: ['MOV AX, x', 'ADD AX, x', 'ADD AX, x', 'ADD AX, y', 'ADD AX, y', 'ADD AX, y', 'ADD AX, y', 'SUB AX, 14', 'MOV C, AX'], rm: ['AX', 'BX', 'CX'], ra: ['AX'], nm: 3, na: 1 }
+  ];
+  function MulVsAdd({ ar }) {
+    const [p, setP] = useState(1), [t, setT] = useState({ X: '4', x: '6', y: '5' }), [err, setErr] = useState('');
+    const P = MVA[p], vals = {}; P.vars.forEach(k => { vals[k] = parseNum(t[k], 16) || 0; });
+    const init = () => { const m = Object.assign({ C: 0 }, vals); return { r: zero(), m }; };
+    const fm = trace(P.mul, init()), fa = trace(P.add, init()), n = Math.max(P.mul.length, P.add.length);
+    const steps = Array.from({ length: n + 2 }, (_, k) => k);
+    const [i0, ctl] = useSteps(steps.length, 1700), i = Math.min(i0, steps.length - 1);
+    const at = (fr, k) => fr[Math.min(k, fr.length - 1)];
+    const edit = (k, s) => { setT(Object.assign({}, t, { [k]: s })); const v = parseNum(s, 16); setErr(v == null || v > 1000 ? 'Use whole numbers from 0 to 1000 here.' : ''); ctl.replay(); };
+    const cm = fm[fm.length - 1].st.m.C, ca = fa[fa.length - 1].st.m.C, given = P.vars.map(k => `${k} = ${vals[k]}`).join(', ');
+    const side = (fr, k, lines) => k <= lines.length ? fr[k] : null;
+    let cap;
+    if (i === 0) cap = { en: `<b>${P.label}</b> with ${esc(given)}: the left program uses MUL, the right one only ADD. Both run one line per step.`, ar: `الـ ${bdi(P.label)} بالقيم:` + ltr(given) + 'البرنامج الشمال بيستخدم الـ MUL، واليمين الـ ADD بس. الاتنين بيمشوا سطر في كل خطوة.' };
+    else if (i === n + 1) cap = { en: `Both give <b>C = ${cm}</b>. The MUL version uses ${P.nm} registers and ${P.mul.length} instructions; the ADD version uses 1 register and ${P.add.length} instructions. Not every time is MUL better: it is a trade-off.`, ar: 'الاتنين بيطلّعوا نفس النتيجة:' + ltr(`C = ${cm}`) + `نسخة الـ MUL فيها ${P.nm} registers و ${P.mul.length} instructions، ونسخة الـ ADD فيها register واحد و ${P.add.length} instructions. يعني مش كل مرة الـ MUL أحسن، ده trade-off.` };
+    else {
+      const a = side(fm, i, P.mul), b = side(fa, i, P.add), short = x => changed(x).map(r => `${r} = ${R16.includes(r) ? x.st.r[r] : x.st.m[r]}`).join(', ');
+      const en = (a ? `MUL side: <b>${esc(P.mul[i - 1])}</b> → ${short(a)}. ` : 'MUL side: done. ') + (b ? `ADD side: <b>${esc(P.add[i - 1])}</b> → ${short(b)}.` : 'ADD side: done.');
+      const one = (x, l) => x ? ltr(l + ' → ' + short(x)) : '';
+      const ar2 = (a ? 'نسخة الـ MUL:' + one(a, P.mul[i - 1]) : 'نسخة الـ MUL خلصت.') + (b ? ' ونسخة الـ ADD:' + one(b, P.add[i - 1]) : ' ونسخة الـ ADD خلصت.');
+      cap = { en, ar: ar2 };
+    }
+    const col = (title, lines, fr, regs, nr) => { const f = at(fr, Math.min(i, lines.length)); return html`<div>
+      <b>${title}</b><${Listing} lines=${lines} cur=${i === 0 ? -1 : Math.min(i, lines.length + 1) - 1} />
+      ${regs.map(r => html`<${RegBox} key=${r} name=${r} v=${f.st.r[r]} on=${i > 0 && i <= lines.length && changed(f).includes(r)} />`)}
+      <p className="mpv9-cnt"><b>${nr}</b> register${nr > 1 ? 's' : ''} · <b>${lines.length}</b> instructions</p>
+      <p className=${'mpv9-cnt ' + pop(i > lines.length)}>C = <b>${f.st.m.C}</b></p></div>`; };
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <div className="mpv9-tabs">${MVA.map((q, k) => html`<button key=${k} className="fig-btn" aria-pressed=${p === k} onClick=${() => { setP(k); ctl.replay(); }}>${q.label}</button>`)}</div>
+      <div className="mpv9-two">${col('using MUL', P.mul, fm, P.rm, P.nm)}${col('using ADD', P.add, fa, P.ra, P.na)}</div>
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own values</span>
+        ${P.vars.map(k => html`<label key=${k}>${k} <input aria-label=${k} value=${t[k]} onInput=${e => edit(k, e.target.value)} onChange=${e => edit(k, e.target.value)} spellCheck="false" /></label>`)}</div>
+      ${err && html`<p className="mpv9-err">${err}</p>`}
+      </div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [2] the five lab formula programs, run line by line ── */
+  const PROGS = [
+    { label: 'C = 5x + 7', vars: { X: 4 }, out: { C: 0 }, lines: ['MOV AX, X', 'MOV BX, 5', 'MUL BX', 'ADD AX, 7', 'MOV C, AX'], res: f => `C = 5 × ${f.m.X} + 7 = ${f.m.C}` },
+    { label: '(A * 35 + B) / (C - D)', vars: { A: 2, B: 5, C: 9, D: 4 }, out: {}, lines: ['MOV AX, A', 'MOV BX, 35', 'MUL BX', 'ADD AX, B', 'MOV BX, C', 'SUB BX, D', 'DIV BX'], res: (f, m0) => `(${m0.A} × 35 + ${m0.B}) / (${m0.C} - ${m0.D}) → AX = ${f.r.AX}, DX = ${f.r.DX}` },
+    { label: '(4A + 18) / 6B', vars: { A: 3, B: 1 }, out: {}, lines: ['MOV AX, 4', 'MOV BX, A', 'MUL BX', 'ADD AX, 18', 'MOV CX, AX', 'MOV AX, B', 'MOV BX, 6', 'MUL BX', 'MOV BX, AX', 'MOV AX, CX', 'DIV BX'], res: (f, m0) => `(4 × ${m0.A} + 18) / (6 × ${m0.B}) → AX = ${f.r.AX}, DX = ${f.r.DX}` },
+    { label: '[9C / 5] + 32', vars: { C: 100 }, out: {}, lines: ['MOV AX, C', 'MOV BX, 9', 'MUL BX', 'MOV BX, 5', 'DIV BX', 'ADD AX, 32'], res: (f, m0) => `[9 × ${m0.C} / 5] + 32 → AX = ${f.r.AX}` },
+    { label: 'AX = (-val2 + BX) - val4', vars: { val2: 5, val4: 3 }, bx: 12, out: {}, lines: ['MOV AX, val2', 'NEG AX', 'ADD AX, BX', 'SUB AX, val4'], res: (f, m0, bx) => `AX = (-${m0.val2} + ${bx}) - ${m0.val4} = ${sg(f.r.AX, 16)}` }
+  ];
+  function Formula({ ar }) {
+    const [p, setP] = useState(0), [t, setT] = useState(null), [err, setErr] = useState('');
+    const P = PROGS[p], keys = Object.keys(P.vars).concat(P.bx != null ? ['BX'] : []);
+    const txt = t || Object.fromEntries(keys.map(k => [k, String(k === 'BX' ? P.bx : P.vars[k])]));
+    const val = {}; keys.forEach(k => { const v = parseNum(txt[k], 16); val[k] = v == null ? (k === 'BX' ? P.bx : P.vars[k]) : v; });
+    const m0 = {}; Object.keys(P.vars).forEach(k => { m0[k] = val[k]; }); const regs = zero(); if (P.bx != null) regs.BX = val.BX;
+    const fr = trace(P.lines, { r: regs, m: Object.assign({}, m0, P.out) }), last = fr[fr.length - 1];
+    const steps = fr.concat(last.err ? [] : [{ end: true }]);
+    const [i0, ctl] = useSteps(steps.length, 1700), i = Math.min(i0, steps.length - 1), f = steps[i].end ? last : steps[i];
+    const edit = (k, s) => { const n = Object.assign({}, txt, { [k]: s }); setT(n); setErr(parseNum(s, 16) == null ? 'Each value must fit a 16-bit word (decimal, …b or …h).' : ''); ctl.replay(); };
+    const given = Object.keys(m0).map(k => `${k} = ${sg(m0[k], 16)}`).concat(P.bx != null ? [`BX = ${val.BX}`] : []).join(', ');
+    let cap;
+    if (i === 0) cap = { en: `<b>${esc(P.label)}</b>, the lab's program. The variables are words (DW): ${esc(given)}. Step through it line by line.`, ar: `برنامج الـ lab لـ ${bdi(P.label)}، والـ variables هنا words (الـ DW) وقيمها:` + ltr(given) + 'امشي فيه سطر سطر.' };
+    else if (steps[i].end) { const r = P.res(last.st, m0, val.BX); cap = { en: `Done: ${esc(r)}.`, ar: 'خلصنا، والنتيجة:' + ltr(r) }; }
+    else cap = { en: steps[i].en, ar: steps[i].ar };
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <div className="mpv9-in" style=${{ margin: '0 0 10px' }}><select aria-label="Program" value=${p} onChange=${e => { setP(+e.target.value); setT(null); setErr(''); ctl.replay(); }}>${PROGS.map((q, k) => html`<option key=${k} value=${k}>${q.label}</option>`)}</select></div>
+      <${Listing} lines=${P.lines} cur=${steps[i].end ? P.lines.length : f.line} bad=${last.err && i >= fr.length - 1 ? last.line : null} />
+      <${Regs} f=${f} signed=${p === 4} /><${Vars} f=${f} />
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own values</span>
+        ${keys.map(k => html`<label key=${k}>${k} <input aria-label=${k} value=${txt[k]} onInput=${e => edit(k, e.target.value)} onChange=${e => edit(k, e.target.value)} spellCheck="false" /></label>`)}</div>
+      ${err && html`<p className="mpv9-err">${err}</p>`}
+      </div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3] the truth table, used bit by bit on two bytes ── */
+  const LOP = { AND: (a, b) => a & b, OR: (a, b) => a | b, XOR: (a, b) => a ^ b, TEST: (a, b) => a & b };
+  function LogicSim({ ar }) {
+    const [op, setOp] = useState('AND'), [t, setT] = useState({ a: '00000101b', b: '00000011b' }), [v, setV] = useState({ a: 5, b: 3 }), [err, setErr] = useState('');
+    const steps = Array.from({ length: 10 }, (_, k) => k), [i, ctl] = useSteps(10, 900);
+    const r = LOP[op](v.a, v.b) & 255, col = op === 'TEST' ? 'AND' : op;
+    const j = i >= 1 && i <= 8 ? 8 - i : null, abit = j != null ? (v.a >> j) & 1 : null, bbit = j != null ? (v.b >> j) & 1 : null;
+    const edit = (k, s) => { setT(Object.assign({}, t, { [k]: s })); const n = parseNum(s, 8); if (n == null) { setErr('Use an 8-bit value: decimal, …b or …h.'); return; } setErr(''); setV(Object.assign({}, v, { [k]: n })); ctl.replay(); };
+    const ins = op + ' AL, BL', z = r === 0 ? 1 : 0;
+    let cap;
+    if (i === 0) cap = { en: `<b>${ins}</b> works on each bit pair separately, using the ${col} column of the truth table${op === 'TEST' ? ' (TEST has the same table as AND)' : ''}.`, ar: `الـ ${bdi(ins)} بتشتغل على كل bit لوحده، وبتستخدم عمود الـ ${col} في الـ truth table` + (op === 'TEST' ? ' (الـ TEST ليها نفس جدول الـ AND).' : '.') };
+    else if (j != null) { const s = `${abit} ${col} ${bbit} = ${LOP[op](abit, bbit)}`; cap = { en: `Bit ${j}: A = ${abit}, B = ${bbit}, so ${s} (the lit row).`, ar: `الـ bit ${j} فيه` + ltr(`A = ${abit}, B = ${bbit} → ${s}`) + 'وده الصف المنوّر في الجدول.' }; }
+    else if (op === 'TEST') cap = { en: `The AND result is ${bn(r, 8)}b, so ZF = ${z}. TEST only affects the flags: the result is not stored and AL stays ${bn(v.a, 8)}b.`, ar: 'نتيجة الـ AND هي' + ltr(`${bn(r, 8)}b → ZF = ${z}`) + 'والـ TEST بتأثر على الـ flags بس، النتيجة مابتتخزنش والـ AL بيفضل زي ما هو.' };
+    else cap = { en: `AL = ${bn(r, 8)}b = ${hx(r, 2)}h, and ZF = ${z} (${z ? 'the result is 0' : 'the result is not 0'}).`, ar: 'النتيجة:' + ltr(`AL = ${bn(r, 8)}b = ${hx(r, 2)}h, ZF = ${z}`) };
+    const row = (n, show, lab) => html`<small>${lab}</small><div className="mpv9-cells">${bn(n, 8).split('').map((d, k) => { const bit = 7 - k, vis = show(bit); return html`<span key=${k} className=${(vis && d === '1' ? 'mpv9-one' : '') + (vis ? '' : ' mpv9-blank') + (bit === j ? ' mpv9-col' : '')}>${d}</span>`; })}</div><i>${show(0) ? hx(n, 2) + 'h' : ''}</i>`;
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <div className="mpv9-tabs">${Object.keys(LOP).map(k => html`<button key=${k} className="fig-btn" aria-pressed=${op === k} onClick=${() => { setOp(k); ctl.replay(); }}>${k}</button>`)}</div>
+      <table className="mpv9-tt"><thead><tr><th>A</th><th>B</th>${['AND', 'OR', 'XOR'].map(c => html`<th key=${c} className=${c === col ? 'mpv9-op' : ''}>${c}</th>`)}</tr></thead><tbody>
+        ${[[0, 0], [0, 1], [1, 0], [1, 1]].map(([a, b]) => html`<tr key=${a + '' + b} className=${abit === a && bbit === b ? 'mpv9-row' : ''}><td>${a}</td><td>${b}</td>${['AND', 'OR', 'XOR'].map(c => html`<td key=${c} className=${c === col ? 'mpv9-op' : ''}>${LOP[c](a, b)}</td>`)}</tr>`)}</tbody></table>
+      <div className="mpv9-rows">${row(v.a, () => true, 'AL')}${row(v.b, () => true, 'BL')}<div className="mpv9-ln"></div>${row(r, bit => i >= 9 || (j != null && bit >= j), op === 'TEST' ? 'temp' : 'AL')}</div>
+      <div className=${'mpv9-flags ' + pop(i >= 9)}><div className=${z ? 'mpv9-on' : ''}><small>ZF</small><b>${z}</b></div>${op === 'TEST' ? html`<div><small>AL after</small><b>${hx(v.a, 2)}h</b></div>` : null}</div>
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own (decimal, …b or …h)</span>
+        <label>AL <input aria-label="AL" value=${t.a} onInput=${e => edit('a', e.target.value)} onChange=${e => edit('a', e.target.value)} spellCheck="false" style=${{ width: '7.6em' }} /></label>
+        <label>BL <input aria-label="BL" value=${t.b} onInput=${e => edit('b', e.target.value)} onChange=${e => edit('b', e.target.value)} spellCheck="false" style=${{ width: '7.6em' }} /></label></div>
+      ${err && html`<p className="mpv9-err">${err}</p>`}
+      </div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4.0-4.2] NOT, NEG and TEST on the notes' examples ── */
+  function NotNegTest({ ar }) {
+    const [tab, setTab] = useState('NOT'), [t, setT] = useState({ v: '5', a: '1', b: '0' }), [v, setV] = useState({ v: 5, a: 1, b: 0 }), [err, setErr] = useState('');
+    const n = tab === 'NOT' ? 2 : 3, steps = Array.from({ length: n }, (_, k) => k), [i0, ctl] = useSteps(n, 1900), i = Math.min(i0, n - 1);
+    const w = tab === 'TEST' ? 16 : 8;
+    const edit = (k, s) => { setT(Object.assign({}, t, { [k]: s })); const x = parseNum(s, k === 'v' ? 8 : 16); if (x == null) { setErr(k === 'v' ? 'Use an 8-bit value: decimal, …b or …h.' : 'Use a 16-bit value: decimal, …b or …h.'); return; } setErr(''); setV(Object.assign({}, v, { [k]: x })); ctl.replay(); };
+    const notes = () => { setT({ v: '5', a: '1', b: '0' }); setV({ v: 5, a: 1, b: 0 }); setErr(''); ctl.replay(); };
+    const inv = (~v.v) & 255, neg = (inv + 1) & 255, tr = v.a & v.b, z = tr === 0 ? 1 : 0;
+    const cells = (x, cls) => html`<div className=${'mpv9-cells' + (w === 16 ? ' mpv9-c16' : '')}>${bn(x, w).split('').map((d, k) => html`<span key=${k} className=${(d === '1' ? 'mpv9-one' : '') + (cls ? ' ' + cls : '')}>${d}</span>`)}</div>`;
+    const sv = sg(neg, 8), vb = bn(v.v, 8), ib = bn(inv, 8), nb = bn(neg, 8), mv = `MOV AL, ${v.v}`;
+    let rows, cap;
+    if (tab === 'NOT') {
+      rows = html`<small>AL</small>${cells(v.v)}<i>${hx(v.v, 2)}h</i><div className="mpv9-ln"></div><small className=${pop(i >= 1)}>NOT</small><div className=${pop(i >= 1)}>${cells(inv)}</div><i className=${pop(i >= 1)}>${hx(inv, 2)}h</i>`;
+      cap = i === 0 ? { en: `<b>${mv}</b>: AL = ${vb}b.`, ar: `الـ ${bdi(mv)} بتحط` + ltr(`AL = ${vb}b`) }
+        : { en: `<b>NOT AL</b> converts every 1 to 0 and every 0 to 1 (1's complement): ${vb} → ${ib} (${hx(inv, 2)}h).`, ar: "الـ " + bdi('NOT AL') + " بتقلب كل 1 لـ 0 وكل 0 لـ 1 (الـ <bdi dir=\"ltr\">1's&nbsp;complement</bdi>)، يعني:" + ltr(`${vb} → ${ib} (${hx(inv, 2)}h)`) };
+    } else if (tab === 'NEG') {
+      rows = html`<small>AL</small>${cells(v.v)}<i>${v.v}</i><small className=${pop(i >= 1)}>invert</small><div className=${pop(i >= 1)}>${cells(inv)}</div><i className=${pop(i >= 1)}>${hx(inv, 2)}h</i>
+        <small className=${pop(i >= 2)}>+ 1</small><span className=${pop(i >= 2)}></span><i></i><div className=${'mpv9-ln ' + pop(i >= 2)}></div>
+        <small className=${pop(i >= 2)}>NEG</small><div className=${pop(i >= 2)}>${cells(neg)}</div><i className=${pop(i >= 2)}>${hx(neg, 2)}h</i>`;
+      cap = i === 0 ? { en: `<b>${mv}</b>: AL = ${vb}b. NEG gets the 2's complement in two moves.`, ar: `الـ ${bdi(mv)} بتحط` + ltr(`AL = ${vb}b`) + "والـ NEG بتجيب الـ <bdi dir=\"ltr\">2's&nbsp;complement</bdi> على خطوتين." }
+        : i === 1 ? { en: `First invert every bit: ${vb} → ${ib}.`, ar: 'الأول بتقلب كل الـ bits:' + ltr(`${vb} → ${ib}`) }
+        : { en: `Then add 1: ${ib} + 1 = ${nb} (${hx(neg, 2)}h = ${sv}).`, ar: 'وبعدين بتزوّد 1:' + ltr(`${ib} + 1 = ${nb} (${hx(neg, 2)}h = ${sv})`) };
+    } else {
+      rows = html`<small>AX</small>${cells(v.a)}<i></i><small>BX</small>${cells(v.b)}<i></i><div className=${'mpv9-ln ' + pop(i >= 1)}></div><small className=${pop(i >= 1)}>AND</small><div className=${pop(i >= 1)}>${cells(tr)}</div><i></i>`;
+      const tt = `${hx(v.a, 4)}h AND ${hx(v.b, 4)}h = ${hx(tr, 4)}h`;
+      cap = i === 0 ? { en: `<b>MOV AX, ${v.a}</b> and <b>MOV BX, ${v.b}</b>, then <b>TEST AX, BX</b>.`, ar: 'بنحط القيم وبعدين بنعمل الـ TEST:' + ltr(`MOV AX, ${v.a} / MOV BX, ${v.b} / TEST AX, BX`) }
+        : i === 1 ? { en: `TEST has the same truth table as AND: ${tt}.`, ar: 'الـ TEST ليها نفس الـ truth table بتاعة الـ AND:' + ltr(tt) }
+        : { en: `The result is ${z ? '0, so <b>ZF = 1</b>' : 'not 0, so <b>ZF = 0</b>'}. It is not stored: <b>AX is unchanged</b> (still ${v.a}).`, ar: (z ? 'النتيجة 0، يبقى ' + bdi('ZF = 1') : 'النتيجة مش 0، يبقى ' + bdi('ZF = 0')) + '. والنتيجة مابتتخزنش، والـ <b>AX مابيتغيرش</b>.' };
+    }
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <div className="mpv9-tabs">${['NOT', 'NEG', 'TEST'].map(k => html`<button key=${k} className="fig-btn" aria-pressed=${tab === k} onClick=${() => { setTab(k); ctl.replay(); }}>${k === 'TEST' ? 'TEST AX, BX' : k + ' AL'}</button>`)}</div>
+      <div className="mpv9-rows">${rows}</div>
+      ${tab === 'TEST' ? html`<div className=${'mpv9-flags ' + pop(i >= 2)}><div className=${z ? 'mpv9-on' : ''}><small>ZF</small><b>${z}</b></div><div><small>AX after</small><b>${hx(v.a, 4)}h</b></div></div>` : null}
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own</span>
+        ${tab === 'TEST' ? html`<label>AX <input aria-label="AX" value=${t.a} onInput=${e => edit('a', e.target.value)} onChange=${e => edit('a', e.target.value)} spellCheck="false" /></label><label>BX <input aria-label="BX" value=${t.b} onInput=${e => edit('b', e.target.value)} onChange=${e => edit('b', e.target.value)} spellCheck="false" /></label>`
+          : html`<label>AL <input aria-label="AL" value=${t.v} onInput=${e => edit('v', e.target.value)} onChange=${e => edit('v', e.target.value)} spellCheck="false" /></label>`}
+        <button className="fig-btn" onClick=${notes}>Example from the notes</button></div>
+      ${err && html`<p className="mpv9-err">${err}</p>`}
+      </div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4.3] number suffixes: b for binary, h for hex (leading 0 before a letter) ── */
+  function readLit(s) {
+    const t = String(s).trim(); let m;
+    if (!t) return { k: 'empty' };
+    if ((m = /^([01]+)b$/i.exec(t))) return { k: 'bin', v: parseInt(m[1], 2), t };
+    if (/^[0-9]+b$/i.test(t)) return { k: 'badbin', t };
+    if ((m = /^([0-9][0-9a-f]*)h$/i.exec(t))) return { k: 'hex', v: parseInt(m[1], 16), t };
+    if (/^[a-f][0-9a-f]*h$/i.test(t)) return { k: 'letter', t, fix: '0' + t };
+    if (/^[0-9]+$/.test(t)) return { k: 'dec', v: parseInt(t, 10), t };
+    return { k: 'other', t };
+  }
+  function Suffix({ ar }) {
+    const CH = ['1001b', '1001', '0FFh', 'FFh', '102b'];
+    const [s, setS] = useState('1001b'), x = readLit(s), big = x.v != null && x.v > 65535, mv = 'MOV AX, ' + x.t;
+    let cap;
+    if (x.k === 'bin') cap = { en: `Ends with <b>b</b>: a binary number. ${esc(mv)} puts ${x.v} into AX.`, ar: 'بيخلص بـ <b>b</b> يبقى رقم binary، والـ ' + bdi(mv) + ' بتحط' + ltr(`AX = ${x.v}`) };
+    else if (x.k === 'hex') cap = { en: `Ends with <b>h</b> and starts with a digit: a hex number. ${esc(mv)} puts ${x.v} into AX.`, ar: 'بيخلص بـ <b>h</b> وبيبدأ برقم يبقى hex، والـ ' + bdi(mv) + ' بتحط' + ltr(`AX = ${x.v}`) };
+    else if (x.k === 'dec') cap = { en: `No suffix: a decimal number. ${esc(x.t)} is not the same as ${esc(x.t)}b${/^[01]+$/.test(x.t) ? ' (= ' + parseInt(x.t, 2) + ')' : ''}.`, ar: 'من غير لاحقة يبقى رقم decimal، وده غير نفس الأرقام لو خلصت بـ b.' };
+    else if (x.k === 'letter') cap = { en: `<b>${esc(x.t)}</b> starts with a letter, so it would be read as a name, not a number. A hex number starting with a letter needs a leading 0: <b>${esc(x.fix)}</b>.`, ar: 'الـ ' + bdi(x.t) + ' بيبدأ بحرف فمش هيتقري كرقم. رقم الـ hex اللي بيبدأ بحرف لازم تحط 0 قبله:' + ltr(x.fix) };
+    else if (x.k === 'badbin') cap = { en: `<b>${esc(x.t)}</b> is not binary: a binary number has only the digits 0 and 1 before its b.`, ar: 'الـ ' + bdi(x.t) + ' مش binary، لأن الرقم الـ binary فيه 0 و 1 بس قبل الـ b.' };
+    else cap = { en: 'Type a number: binary ends with b, hex ends with h, decimal has no suffix.', ar: 'اكتب رقم، الـ binary بيخلص بـ b والـ hex بيخلص بـ h والـ decimal من غير حاجة.' };
+    return html`<figure className="fig mpv9"><div className="fig-stage">
+      <div className="mpv9-chips">${CH.map(c => html`<button key=${c} className="mpv9-chip" aria-pressed=${s === c} onClick=${() => setS(c)}>${c}</button>`)}</div>
+      <div className="mpv9-big">MOV AX, ${x.t || '…'}</div>
+      <div className="mpv9-res">${x.v != null ? (big ? html`<span className="mpv9-x">Too big for AX (16 bits: 0 to 65535)</span>` : html`
+        <span>read as</span><b>${x.k === 'bin' ? 'binary' : x.k === 'hex' ? 'hexadecimal' : 'decimal'}</b>
+        <span>decimal</span><b>${x.v}</b><span>hex</span><b>${hx(x.v, 4)}h</b><span>binary</span><b>${bn(x.v, 16)}b</b>`)
+        : html`<span className="mpv9-x">${x.k === 'letter' ? 'Not a number: write ' + x.fix : x.k === 'badbin' ? 'Not binary: only 0 and 1' : x.k === 'empty' ? '' : 'Not a number'}</span>`}</div>
+      <div className="mpv9-in"><span className="mpv9-lbl">Try your own</span><input aria-label="Number" value=${s} onInput=${e => setS(e.target.value)} onChange=${e => setS(e.target.value)} spellCheck="false" style=${{ width: '10em' }} /></div>
+      </div><${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [5] the define directives drawn as bytes ── */
+  const DIRS = [['DB', 'Define Byte', 1, '8-bit', 'integer', 'integer'], ['DW', 'Define Word', 2, '16-bit', 'integer', 'integer'], ['DD', 'Define Doubleword', 4, '32-bit', 'integer or real', 'integer أو real'], ['DQ', 'Define Quadword', 8, '64-bit', 'integer or real', 'integer أو real'], ['DT', 'Define Ten Bytes', 10, '80-bit', 'integer or real', 'integer أو real']];
+  function Defines({ ar }) {
+    const steps = DIRS.concat([null]), [i, ctl0] = useSteps(steps.length, 1600), [sel, setSel] = useState(null), ctl = withCtl(ctl0, () => setSel(null));
+    const d = sel != null ? DIRS[sel] : steps[i];
+    const cap = d ? { en: `<b>${d[0]}</b>, ${d[1]}: ${d[2]} byte${d[2] > 1 ? 's' : ''} (${d[3]}), ${d[4]}.`, ar: `الـ <b>${d[0]}</b> (الـ ${d[1]}) بتحجز ${bdi(d[2] + (d[2] > 1 ? ' bytes' : ' byte'))} يعني ${bdi(d[3])}، وبتشيل ${d[5]}.` }
+      : { en: 'Side by side: each directive reserves a fixed number of bytes for its variable: 1, 2, 4, 8 and 10. Tap one.', ar: 'جنب بعض، كل directive بتحجز عدد ثابت من الـ bytes للـ variable بتاعها:' + ltr('1, 2, 4, 8, 10') + 'دوس على أي واحدة.' };
+    return html`<figure className="fig mpv9"><div className="fig-stage"><div className="mpv9-dir">
+      ${DIRS.map((r, k) => html`<button key=${r[0]} className=${'mpv9-drow ' + pop(sel != null || i >= k) + (sel === k || (sel == null && i === k) ? ' mpv9-sel' : '')} aria-pressed=${sel === k} onClick=${() => setSel(sel === k ? null : k)}>
+        <div><b>${r[0]}</b><small>${r[2]} byte${r[2] > 1 ? 's' : ''} · ${r[3]}</small></div>
+        <div className="mpv9-strip">${Array.from({ length: r[2] }, (_, c) => html`<span key=${c} style=${{ animationDelay: (c * .05) + 's' }}></span>`)}</div></button>`)}
+      </div></div><${Cap} ...${cap} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [6] and [7]: shifts and rotates bit by bit with CF ── */
+  const LEFT = { SHL: 1, SAL: 1, ROL: 1, RCL: 1 };
+  function bitStep(op, val, cf, w) {
+    const M = 2 ** w - 1, msb = (val >> (w - 1)) & 1, lsb = val & 1;
+    switch (op) {
+      case 'SHL': case 'SAL': return { val: (val << 1) & M, cf: msb, out: msb, inPos: 0, inVal: 0 };
+      case 'SHR': return { val: val >>> 1, cf: lsb, out: lsb, inPos: w - 1, inVal: 0 };
+      case 'SAR': return { val: (val >>> 1) | (msb << (w - 1)), cf: lsb, out: lsb, inPos: w - 1, inVal: msb };
+      case 'ROL': return { val: ((val << 1) & M) | msb, cf: msb, out: msb, inPos: 0, inVal: msb };
+      case 'ROR': return { val: (val >>> 1) | (lsb << (w - 1)), cf: lsb, out: lsb, inPos: w - 1, inVal: lsb };
+      case 'RCL': return { val: ((val << 1) & M) | cf, cf: msb, out: msb, inPos: 0, inVal: cf };
+      default: return { val: (val >>> 1) | (cf << (w - 1)), cf: lsb, out: lsb, inPos: w - 1, inVal: cf }; // RCR
+    }
+  }
+  const insTxt = (x, w) => x.t === 'MOV' ? `MOV ${x.r}, ${x.src}` : x.t === 'CLC' || x.t === 'STC' ? x.t : `${x.t} ${x.r}, ${x.n}`;
+  function bitFrames(prog, w) {
+    let val = 0, cf = null; const fr = [];
+    prog.forEach((x, k) => {
+      if (x.t === 'MOV') { val = x.lo ? (val & 0xFF00) | x.v : x.v; fr.push({ k, x, val, cf }); }
+      else if (x.t === 'CLC' || x.t === 'STC') { cf = x.t === 'STC' ? 1 : 0; fr.push({ k, x, val, cf, cfHot: true }); }
+      else { const start = val; for (let j = 1; j <= x.n; j++) { const s = bitStep(x.t, val, cf, w); val = s.val; cf = s.cf; fr.push(Object.assign({ k, x, j, start, last: j === x.n, cfHot: true }, s)); } }
+    });
+    return fr;
+  }
+  const BW = { 8: 'bit 7', 16: 'bit 15' };
+  function bitCap(f, w, reg) {
+    const x = f.x, ins = insTxt(x, w), B = `<b>${esc(ins)}</b>`, L = bdi(ins), top = BW[w], hi = w - 1;
+    const valTxt = `${reg} = ${bn(f.val, w)}b = ${hx(f.val, w / 4)}h`;
+    if (x.t === 'MOV') { const shown = x.lo ? `AL = ${bn(x.v, 8)}b = ${hx(x.v, 2)}h` : valTxt + ` = ${/^\s*-/.test(x.src) ? sg(f.val, w) : f.val}`; return { en: `${B}: ${esc(shown)}.` + (x.lo ? ' AH is shifted out next, so its old bits do not matter.' : ''), ar: `الـ ${L} بتحط القيمة:` + ltr(shown) + (x.lo ? 'والـ AH هيطلع برّه في الـ shift الجاي، فمش مهم كان فيه إيه.' : '') }; }
+    if (x.t === 'CLC') return { en: `${B} clears the carry flag: CF = 0.`, ar: 'الـ CLC بتصفّر الـ carry flag، يعني ' + bdi('CF = 0') + '.' };
+    if (x.t === 'STC') return { en: `${B} sets the carry flag: CF = 1.`, ar: 'الـ STC بتخلي الـ carry flag يبقى 1، يعني ' + bdi('CF = 1') + '.' };
+    const o = f.out, iv = f.inVal, word = /RO|RC/.test(x.t) ? 'rotate' : 'shift';
+    const D = {
+      SHL: [`every bit moves one place left; ${top} (${o}) goes to CF and bit 0 is filled with 0`, `كل bit بيتحرك خانة شمال، والـ ${top} (قيمته ${o}) بيروح الـ CF، والـ bit 0 بيتملا بـ 0.`],
+      SHR: [`every bit moves one place right; bit 0 (${o}) goes to CF and ${top} is filled with 0`, `كل bit بيتحرك خانة يمين، والـ bit 0 (قيمته ${o}) بيروح الـ CF، والـ ${top} بيتملا بـ 0.`],
+      SAR: [`every bit moves one place right; bit 0 (${o}) goes to CF and ${top} is filled with a copy of the sign bit (${iv})`, `كل bit بيتحرك خانة يمين، والـ bit 0 (قيمته ${o}) بيروح الـ CF، والـ ${top} بيتملا بنسخة من الـ sign bit (قيمتها ${iv}).`],
+      ROL: [`every bit moves one place left; ${top} (${o}) goes to CF and to bit 0`, `كل bit بيتحرك خانة شمال، والـ ${top} (قيمته ${o}) بيروح الـ CF وكمان الـ bit 0.`],
+      ROR: [`every bit moves one place right; bit 0 (${o}) goes to CF and to ${top}`, `كل bit بيتحرك خانة يمين، والـ bit 0 (قيمته ${o}) بيروح الـ CF وكمان الـ ${top}.`],
+      RCL: [`every bit moves one place left; the old CF (${iv}) enters bit 0 and ${top} (${o}) goes to CF`, `كل bit بيتحرك خانة شمال، والـ CF القديم (قيمته ${iv}) بيدخل الـ bit 0، والـ ${top} (قيمته ${o}) بيروح الـ CF.`],
+      RCR: [`every bit moves one place right; the old CF (${iv}) enters ${top} and bit 0 (${o}) goes to CF`, `كل bit بيتحرك خانة يمين، والـ CF القديم (قيمته ${iv}) بيدخل الـ ${top}، والـ bit 0 (قيمته ${o}) بيروح الـ CF.`]
+    }[x.t === 'SAL' ? 'SHL' : x.t];
+    const res = `${valTxt}, CF = ${f.cf}`;
+    let en = `${B}${x.n > 1 ? `, ${word} ${f.j} of ${x.n}` : ''}: ${D[0]}${x.t === 'SAL' ? ' (SAL is the same as SHL)' : ''}. Now ${esc(res)}.`;
+    let a = `الـ ${L}` + (x.n > 1 ? ` (خطوة ${f.j} من ${x.n})` : '') + ': ' + D[1] + ' والنتيجة:' + ltr(res);
+    if (f.last) {
+      const p = 2 ** x.n, s = f.start, ss = sg(s, w), rs = sg(f.val, w);
+      let m = null;
+      if ((x.t === 'SHL' || x.t === 'SAL') && s * p < 2 ** w) m = [`Shifting left ${x.n} bit${x.n > 1 ? 's' : ''} multiplies by 2${SUP[x.n] || '^' + x.n}`, `${s} × ${p} = ${f.val}`, 'يعني الـ shift لليسار ضرب في'];
+      else if (x.t === 'SHR' && s % p === 0) m = [`Shifting right ${x.n} bit${x.n > 1 ? 's' : ''} divides the unsigned number by 2${SUP[x.n] || '^' + x.n}`, `${s} ÷ ${p} = ${f.val}`, 'يعني الـ shift لليمين قسمة على'];
+      else if (x.t === 'SAR' && ss % p === 0 && ss < 0 && w === 8) m = [`SAR keeps the sign: it divides the signed number by 2${SUP[x.n] || '^' + x.n}`, `${ss} ÷ ${p} = ${rs}`, 'يعني الـ SAR بتحافظ على الإشارة، وبتقسم على'];
+      else if ((x.t === 'ROL' || x.t === 'ROR') && x.n === 4 && w === 8) m = ['The upper half (bits 4-7) and the lower half (bits 0-3) swapped places', `${hx(s, 2)}h → ${hx(f.val, 2)}h`, null];
+      if (x.t === 'SAR' && w === 16 && x.n === 8) { en += ` The sign bit of AL now fills all of AH: AL is sign-extended into AX.`; a += 'يعني الـ sign bit بتاع الـ AL مالي الـ AH كله، وده الـ sign-extend للـ AL في الـ AX.'; }
+      if (m) { en += ` ${m[0]}: ${esc(m[1])}.`; a += m[2] ? m[2] + ' ' + bdi('2' + (SUP[x.n] || '^' + x.n)) + '، والحساب:' + ltr(m[1]) : 'النص العالي والنص الواطي في الـ byte اتبدّلوا:' + ltr(m[1]); }
+    }
+    return { en, ar: a };
+  }
+  const sideInfo = (op, w) => {
+    const top = String(w - 1);
+    return LEFT[op] ? { left: ['CF ←', 'cf'], right: [{ SHL: '← 0', SAL: '← 0', ROL: '← b' + top, RCL: '← CF' }[op], 'in'] }
+      : { left: [{ SHR: '0 →', SAR: 'sign →', ROR: 'b0 →', RCR: 'CF →' }[op], 'in'], right: ['→ CF', 'cf'] };
+  };
+  function BitView({ f, fi, w, op, reg }) {
+    const si = sideInfo(op, w), isOp = f.x.t === op || (f.x.t !== 'MOV' && f.x.t !== 'CLC' && f.x.t !== 'STC'), anim = isOp ? (LEFT[f.x.t] ? 'mpv9-sl' : 'mpv9-sr') : '';
+    const box = ([lab, kind]) => html`<div className="mpv9-side"><small>${lab}</small><span className=${'mpv9-box' + (kind === 'cf' ? ' mpv9-cf' + (f.cfHot ? ' mpv9-hot' : '') : '')}>${kind === 'cf' ? (f.cf == null ? '–' : f.cf) : isOp ? f.inVal : '·'}</span></div>`;
+    const rot = /^R/.test(op);
+    return html`<div>
+      <div className=${'mpv9-flow mpv9-w' + w}>${box(si.left)}
+        <div className="mpv9-bits" style=${{ gridTemplateColumns: `repeat(${w}, minmax(0,1fr))` }}>
+          ${Array.from({ length: w }, (_, k) => html`<small key=${'i' + k}>${w - 1 - k}</small>`)}
+          ${bn(f.val, w).split('').map((d, k) => { const pos = w - 1 - k; return html`<span key=${fi + '-' + k} className=${(d === '1' ? 'mpv9-one' : '') + (isOp && pos === f.inPos ? ' mpv9-new' : '') + (op === 'SAR' && pos === w - 1 ? ' mpv9-sign' : '')}><i className=${anim}>${d}</i></span>`; })}
+        </div>${box(si.right)}</div>
+      ${rot ? html`<div className=${'mpv9-loop ' + (LEFT[op] ? 'mpv9-tor' : 'mpv9-tol')}></div><p className="mpv9-loopnote">${{ ROL: `bit ${w - 1} → CF and bit 0`, ROR: `bit 0 → CF and bit ${w - 1}`, RCL: `CF → bit 0, bit ${w - 1} → CF`, RCR: `CF → bit ${w - 1}, bit 0 → CF` }[op]}</p>` : null}
+      <p className="mpv9-val">${reg} = ${hx(f.val, w / 4)}h <small>·</small> ${f.val} <small>unsigned</small>${f.val >= 2 ** (w - 1) ? html` <small>·</small> ${sg(f.val, w)} <small>signed</small>` : null} <small>·</small> CF = ${f.cf == null ? '–' : f.cf}</p></div>`;
+  }
+  function makeBitSim(cfg) {
+    return function BitSim({ ar }) {
+      const [ex, setEx] = useState(0), [own, setOwn] = useState(null), [form, setForm] = useState(cfg.form), [err, setErr] = useState('');
+      const E = own || cfg.ex[ex], w = E.w || 8, reg = E.reg || 'DL', fr = bitFrames(E.prog, w);
+      const op = (E.prog.find(x => !['MOV', 'CLC', 'STC'].includes(x.t)) || {}).t;
+      const [i0, ctl] = useSteps(fr.length, 1300), i = Math.min(i0, fr.length - 1), f = fr[i];
+      const shownOp = f.x.t !== 'MOV' && f.x.t !== 'CLC' && f.x.t !== 'STC' ? f.x.t : op;
+      const lines = E.prog.map(x => insTxt(x, w));
+      const build = fm => {
+        const v = parseNum(fm.v, 8); if (v == null) { setErr('Use an 8-bit value: decimal (−128 to 255), …b or …h.'); return; } setErr('');
+        setOwn(cfg.own(fm, v)); ctl.replay();
+      };
+      const upd = (k, val) => { const fm = Object.assign({}, form, { [k]: val }); setForm(fm); build(fm); };
+      return html`<figure className="fig mpv9"><div className="fig-stage">
+        <${Listing} lines=${lines} cur=${f.k} />
+        <${BitView} f=${f} fi=${i} w=${w} op=${shownOp} reg=${reg} />
+        <div className="mpv9-in"><span className="mpv9-lbl">Example from the notes</span>
+          ${cfg.ex.map((e, k) => html`<button key=${k} className="fig-btn" aria-pressed=${!own && ex === k} onClick=${() => { setOwn(null); setErr(''); setEx(k); ctl.replay(); }}>${e.label}</button>`)}</div>
+        <div className="mpv9-in"><span className="mpv9-lbl">Try your own</span>
+          ${cfg.ops ? html`<select aria-label="Instruction" value=${form.op} onChange=${e => upd('op', e.target.value)}>${cfg.ops.map(o => html`<option key=${o}>${o}</option>`)}</select>` : null}
+          <label>${cfg.ops ? 'DL' : 'AL'} <input aria-label="Value" value=${form.v} onInput=${e => upd('v', e.target.value)} onChange=${e => upd('v', e.target.value)} spellCheck="false" style=${{ width: '7.6em' }} /></label>
+          ${cfg.ops ? html`<label>count <select aria-label="Count" value=${form.n} onChange=${e => upd('n', e.target.value)}>${[1, 2, 3, 4, 5, 6, 7, 8].map(n => html`<option key=${n}>${n}</option>`)}</select></label>` : null}
+          ${cfg.carry ? html`<select aria-label="Carry before" value=${form.c} onChange=${e => upd('c', e.target.value)}><option value="CLC">CLC (CF = 0)</option><option value="STC">STC (CF = 1)</option></select>` : null}</div>
+        ${err && html`<p className="mpv9-err">${err}</p>`}
+        </div><${Cap} ...${bitCap(f, w, reg)} showAr=${ar} /><${Bar} steps=${fr} i=${i} ctl=${ctl} /></figure>`;
+    };
+  }
+  const M8 = (r, src) => { const v = parseNum(src, 8); return { t: 'MOV', r, v, src }; };
+  const ownOp = (fm, v) => ({ label: 'own', reg: 'DL', prog: [].concat(fm.c && /^RC/.test(fm.op) ? [{ t: fm.c }] : []).concat([{ t: 'MOV', r: 'DL', v, src: fm.v.trim() }, { t: fm.op, r: 'DL', n: +fm.n }]) });
+  const ShiftSim = makeBitSim({
+    ops: ['SHL', 'SAL', 'SHR', 'SAR'], form: { op: 'SAR', v: '-80', n: '1' }, own: ownOp,
+    ex: [
+      { label: 'SHL DL,1: 5 → 10', prog: [M8('DL', '5'), { t: 'SHL', r: 'DL', n: 1 }] },
+      { label: 'SHL DL,2: 5 → 20', prog: [M8('DL', '5'), { t: 'SHL', r: 'DL', n: 2 }] },
+      { label: 'SHR: 80 → 40 → 10', prog: [M8('DL', '80'), { t: 'SHR', r: 'DL', n: 1 }, { t: 'SHR', r: 'DL', n: 2 }] },
+      { label: 'SAR: −80 → −40 → −10', prog: [M8('DL', '-80'), { t: 'SAR', r: 'DL', n: 1 }, { t: 'SAR', r: 'DL', n: 2 }] }
+    ]
+  });
+  const SignExt = makeBitSim({
+    form: { v: '80h' }, own: (fm, v) => ({ label: 'own', w: 16, reg: 'AX', prog: [{ t: 'MOV', r: 'AL', v, src: fm.v.trim(), lo: true }, { t: 'SHL', r: 'AX', n: 8 }, { t: 'SAR', r: 'AX', n: 8 }] }),
+    ex: [{ label: 'AL = 80h → AX = FF80h', w: 16, reg: 'AX', prog: [{ t: 'MOV', r: 'AL', v: 0x80, src: '80h', lo: true }, { t: 'SHL', r: 'AX', n: 8 }, { t: 'SAR', r: 'AX', n: 8 }] }]
+  });
+  const RotSim = makeBitSim({
+    ops: ['ROL', 'ROR'], form: { op: 'ROL', v: '3Fh', n: '4' }, own: ownOp,
+    ex: [
+      { label: 'ROL AL,1 on 11110000b', reg: 'AL', prog: [{ t: 'MOV', r: 'AL', v: 0xF0, src: '11110000b' }, { t: 'ROL', r: 'AL', n: 1 }] },
+      { label: 'ROR AL,1 on 11110000b', reg: 'AL', prog: [{ t: 'MOV', r: 'AL', v: 0xF0, src: '11110000b' }, { t: 'ROR', r: 'AL', n: 1 }] },
+      { label: 'ROL DL,4: 3Fh → F3h', prog: [{ t: 'MOV', r: 'DL', v: 0x3F, src: '3Fh' }, { t: 'ROL', r: 'DL', n: 4 }] },
+      { label: 'ROR DL,4: 3Fh → F3h', prog: [{ t: 'MOV', r: 'DL', v: 0x3F, src: '3Fh' }, { t: 'ROR', r: 'DL', n: 4 }] }
+    ]
+  });
+  const RotCarry = makeBitSim({
+    ops: ['RCL', 'RCR'], carry: true, form: { op: 'RCL', v: '88h', n: '1', c: 'STC' }, own: ownOp,
+    ex: [
+      { label: 'CLC, BL = 88h, RCL ×2', reg: 'BL', prog: [{ t: 'CLC' }, { t: 'MOV', r: 'BL', v: 0x88, src: '88h' }, { t: 'RCL', r: 'BL', n: 1 }, { t: 'RCL', r: 'BL', n: 1 }] },
+      { label: 'STC, AH = 10h, RCR', reg: 'AH', prog: [{ t: 'STC' }, { t: 'MOV', r: 'AH', v: 0x10, src: '10h' }, { t: 'RCR', r: 'AH', n: 1 }] }
+    ]
+  });
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'mp-l9-arith': ArithSim, 'mp-l9-muldiv': MulDiv, 'mp-l9-mul-vs-add': MulVsAdd, 'mp-l9-formulas': Formula, 'mp-l9-logic': LogicSim, 'mp-l9-not-neg-test': NotNegTest, 'mp-l9-suffix': Suffix, 'mp-l9-defines': Defines, 'mp-l9-shift': ShiftSim, 'mp-l9-sign-extend': SignExt, 'mp-l9-rotate': RotSim, 'mp-l9-rotate-carry': RotCarry });
+})();

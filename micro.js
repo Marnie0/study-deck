@@ -5017,7 +5017,16 @@ COURSES.micro = {
       "Unconditional transfer instructions let the programmer <b>skip sections</b> of a program and branch to any part of memory for the next instruction.",
       "Three types: <b>short</b>, <b>near</b>, <b>far</b>. Remember: <b>IP</b> holds the address of the next instruction; <b>CS</b> holds the segment of the code.",
       "Short and near jumps change <b>IP only</b> (same code segment). Only the far jump changes <b>both CS and IP</b>."
-     ]
+     ],
+     "fig": [
+      "mp-l8-jmp-scope"
+     ],
+     "figAt": {
+      "mp-l8-jmp-scope": 2
+     },
+     "figH": {
+      "mp-l8-jmp-scope": "CS and IP after each jump: short and near change IP only, far changes both"
+     }
     },
     {
      "h": "The three jump types",
@@ -5046,7 +5055,13 @@ COURSES.micro = {
        "Any location in real memory",
        "offset = bytes 2,3 = [CS+2][CS+1]; segment = bytes 4,5 = [CS+4][CS+3]"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l8-jmp-bytes"
+     ],
+     "figH": {
+      "mp-l8-jmp-bytes": "The three jump instructions byte by byte: size, range and new address"
+     }
     },
     {
      "h": "Lecture examples (CS=1000, IP=0002, JMP at 10000)",
@@ -5056,7 +5071,13 @@ COURSES.micro = {
       "Far, [CS+1]=27, [CS+2]=01, [CS+3]=00, [CS+4]=A3:",
       "   offset = 0127, segment = A300 → A300×10 + 0127 = A3127",
       "Bytes are read high byte last: [CS+2][CS+1] means \"byte 3 followed by byte 2\"."
-     ]
+     ],
+     "fig": [
+      "mp-l8-jmp-slides"
+     ],
+     "figH": {
+      "mp-l8-jmp-slides": "The slides' memory figures for the short, near and far jump, step by step"
+     }
     },
     {
      "h": "Revision Q12 / Final 2023/24 (CS=1000, IP=300; bytes JMP, 04, 02, 30, A4)",
@@ -5065,7 +5086,13 @@ COURSES.micro = {
       "Short: IP = 300 + 04 = 304 → 10000 + 304 = 10304",
       "Near:  IP = 300 + 0204 = 504 → 10504",
       "Far:   offset = 0204, segment = A430 → A4300 + 0204 = A4504"
-     ]
+     ],
+     "fig": [
+      "mp-l8-jmp-q12"
+     ],
+     "figH": {
+      "mp-l8-jmp-q12": "Jump address calculator: short 10304, near 10504, far A4504"
+     }
     },
     {
      "h": "Revision Q13 / Final 2024/25 (CS=2000, IP=300; bytes JMP, 1C, 20, A0, 2D)",
@@ -5074,7 +5101,13 @@ COURSES.micro = {
       "Near:  IP = 300 + 201C = 231C → 2231C",
       "Far:   offset = 201C, segment = 2DA0 → 2DA00 + 201C = 2FA1C",
       "SS, DS, BP in the question are distractors."
-     ]
+     ],
+     "fig": [
+      "mp-l8-jmp-q13"
+     ],
+     "figH": {
+      "mp-l8-jmp-q13": "The same calculator on Q13: short 2031C, near 2231C, far 2FA1C"
+     }
     },
     {
      "h": "Final 2023/24 (CS=3000H, IP=400H; bytes JMP, 10, 43, 1C, 20)",
@@ -5083,7 +5116,13 @@ COURSES.micro = {
       "Far:  offset = 4310, segment = 201C → 201C0 + 4310 = 244D0",
       "(Short, if asked: IP = 400 + 10 = 410 → 30410)",
       "Real 8086 note: the CPU adds the displacement to the IP of the NEXT instruction; the course formula adds it to the given IP."
-     ]
+     ],
+     "fig": [
+      "mp-l8-jmp-f2324"
+     ],
+     "figH": {
+      "mp-l8-jmp-f2324": "The same calculator on this final: near 34710, far 244D0 (short 30410)"
+     }
     },
     {
      "h": "Interrupts",
@@ -5094,7 +5133,22 @@ COURSES.micro = {
       "<b>Vectored</b> interrupts have a fixed vector address (start of the subroutine); <b>non-vectored</b> interrupts have a vector address that is not predefined.",
       "<b>Maskable</b> interrupts can be blocked (inhibited by an interrupt mask bit). <b>Non-maskable</b> (NMI) cannot be masked or ignored; used for high-priority tasks like memory parity or bus faults; absolute priority: the CPU finishes the current memory cycle then branches to the handler.",
       "<b>Software</b> interrupts are special instructions (INT) that transfer control to a predefined ISR. <b>Hardware</b> interrupts are signals given to the processor."
-     ]
+     ],
+     "fig": [
+      "mp-l8-int-handle",
+      "mp-l8-int-mask",
+      "mp-l8-int-types"
+     ],
+     "figAt": {
+      "mp-l8-int-handle": 2,
+      "mp-l8-int-mask": 4,
+      "mp-l8-int-types": 5
+     },
+     "figH": {
+      "mp-l8-int-handle": "Interrupt handling: save PC and state, run the ISR, return",
+      "mp-l8-int-mask": "Try it: the mask bit blocks a maskable interrupt, never the NMI",
+      "mp-l8-int-types": "The three ways to classify interrupts"
+     }
     },
     {
      "h": "LOOP (Lab 7)",
@@ -5102,11 +5156,26 @@ COURSES.micro = {
       "LOOP repeats a block a specific number of times. <b>CX</b> is automatically the counter: (1) CX = CX - 1; (2) if CX ≠ 0 jump to the label, else continue with the next instruction.",
       "<b>LOOPE/LOOPZ</b>: decrement CX, jump if CX ≠ 0 <b>and ZF = 1</b>. <b>LOOPNE/LOOPNZ</b>: jump if CX ≠ 0 <b>and ZF = 0</b>.",
       "For a nested loop, save the outer CX in a variable (or on the stack) before setting the inner count, and restore it before the outer LOOP."
-     ]
+     ],
+     "fig": [
+      "mp-l8-loop-flow"
+     ],
+     "figAt": {
+      "mp-l8-loop-flow": 1
+     },
+     "figH": {
+      "mp-l8-loop-flow": "LOOP, LOOPE and LOOPNE: decrement CX, then jump or go on"
+     }
     },
     {
      "h": "LOOP programs (Lab 7)",
-     "code": "; increment AX 10 times\nMOV AX, 0\nMOV CX, 10\nL:  INC AX\n    LOOP L          ; AX = 10\n\n; nested: AX 10 times, BX 20 times for each -> AX = 10, BX = 200\ncount DW ?\nMOV AX, 0\nMOV BX, 0\nMOV CX, 10\nL1: INC AX\n    MOV count, CX   ; save outer counter\n    MOV CX, 20\nL2: INC BX\n    LOOP L2\n    MOV CX, count   ; restore outer counter\n    LOOP L1\n\n; sum 1..10 in AX then increment -> AX = 55 + 1 = 56\nMOV AX, 0\nMOV CX, 10\nL:  ADD AX, CX\n    LOOP L\nINC AX"
+     "code": "; increment AX 10 times\nMOV AX, 0\nMOV CX, 10\nL:  INC AX\n    LOOP L          ; AX = 10\n\n; nested: AX 10 times, BX 20 times for each -> AX = 10, BX = 200\ncount DW ?\nMOV AX, 0\nMOV BX, 0\nMOV CX, 10\nL1: INC AX\n    MOV count, CX   ; save outer counter\n    MOV CX, 20\nL2: INC BX\n    LOOP L2\n    MOV CX, count   ; restore outer counter\n    LOOP L1\n\n; sum 1..10 in AX then increment -> AX = 55 + 1 = 56\nMOV AX, 0\nMOV CX, 10\nL:  ADD AX, CX\n    LOOP L\nINC AX",
+     "fig": [
+      "mp-l8-loop-trace"
+     ],
+     "figH": {
+      "mp-l8-loop-trace": "Run the three Lab 7 LOOP programs instruction by instruction"
+     }
     },
     {
      "h": "Procedures: CALL and RET (Lab 8)",
@@ -5115,11 +5184,26 @@ COURSES.micro = {
       "<b>CALL</b> pushes the offset of the next instruction on the stack and copies the address of the called procedure into (E)IP.",
       "<b>RET</b> pops the top of the stack into (E)IP, returning to the main program. Every procedure must end with RET.",
       "Directives: <b>END</b> marks the end of the program; <b>ENDS</b> marks the end of a logical segment; <b>ENDP</b> ends a procedure."
-     ]
+     ],
+     "fig": [
+      "mp-l8-call-ret"
+     ],
+     "figAt": {
+      "mp-l8-call-ret": 2
+     },
+     "figH": {
+      "mp-l8-call-ret": "CALL pushes the return offset and jumps; RET pops it back into IP"
+     }
     },
     {
      "h": "Procedure examples (Lab 8)",
-     "code": ".data\nNumber DW 4h\nSquare DW ?\n.code\nmain PROC\n    CALL getSquare\n    RET\nmain ENDP\ngetSquare PROC\n    MOV AX, Number\n    MUL AX          ; AX = 4 * 4 = 16\n    MOV Square, AX\n    RET\ngetSquare ENDP\n\n; area of triangle = (base * hight) / 2\nTriangle_Area PROC\n    MOV AX, base\n    MUL hight       ; AX = 5 * 10 = 50\n    MOV BX, 2\n    DIV BX          ; AX = 25\n    MOV area, AX\n    RET\nTriangle_Area ENDP\nbase  DW 5\nhight DW 10\narea  DW ?\nEND"
+     "code": ".data\nNumber DW 4h\nSquare DW ?\n.code\nmain PROC\n    CALL getSquare\n    RET\nmain ENDP\ngetSquare PROC\n    MOV AX, Number\n    MUL AX          ; AX = 4 * 4 = 16\n    MOV Square, AX\n    RET\ngetSquare ENDP\n\n; area of triangle = (base * hight) / 2\nTriangle_Area PROC\n    MOV AX, base\n    MUL hight       ; AX = 5 * 10 = 50\n    MOV BX, 2\n    DIV BX          ; AX = 25\n    MOV area, AX\n    RET\nTriangle_Area ENDP\nbase  DW 5\nhight DW 10\narea  DW ?\nEND",
+     "fig": [
+      "mp-l8-tri-area"
+     ],
+     "figH": {
+      "mp-l8-tri-area": "Triangle_Area traced: MUL then DIV, area = 25"
+     }
     }
    ],
    "cards": [
@@ -5656,7 +5740,13 @@ COURSES.micro = {
        "DIV src",
        "Word src (e.g. CX): DX:AX ÷ src → <b>AX = quotient (integer part), DX = remainder</b>. Byte src: AX ÷ src → AL = quotient, AH = remainder"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l9-arith"
+     ],
+     "figH": {
+      "mp-l9-arith": "The arithmetic instructions on AL and BL: the result, CF and ZF"
+     }
     },
     {
      "h": "MUL and DIV rules",
@@ -5666,11 +5756,29 @@ COURSES.micro = {
       "<code>MOV AX, 5 / MOV CX, 2 / DIV CX</code> → AX = 2, DX = 1. <code>MOV AX, 10 / MOV BX, 2 / DIV BX</code> → AX = 5, DX = 0 (the lab explains division as repeated subtraction: 10-2-2-2-2-2 = 0 in 5 steps).",
       "Before a word DIV, DX must hold the high part of the dividend (normally 0).",
       "Multiplication vs addition (trade-off): <code>C = 5x + 7</code> with MUL uses 2 registers and 5 instructions; with repeated ADD uses 1 register and 7 instructions. <code>C = (3x + 4y) - 14</code>: MUL version 3 registers, 10 instructions; ADD version 1 register, 9 instructions. Not every time is MUL better."
-     ]
+     ],
+     "fig": [
+      "mp-l9-muldiv",
+      "mp-l9-mul-vs-add"
+     ],
+     "figAt": {
+      "mp-l9-muldiv": 2,
+      "mp-l9-mul-vs-add": 4
+     },
+     "figH": {
+      "mp-l9-muldiv": "MUL and DIV through AX and DX, and why MUL 3 is wrong",
+      "mp-l9-mul-vs-add": "The same formula with MUL and with repeated ADD: registers and instructions"
+     }
     },
     {
      "h": "Lab formula programs",
-     "code": "; C = 5x + 7  (using MUL)\nMOV AX, X\nMOV BX, 5\nMUL BX          ; AX = 5x\nADD AX, 7\nMOV C, AX\n\n; (A * 35 + B) / (C - D)\nMOV AX, A\nMOV BX, 35\nMUL BX\nADD AX, B\nMOV BX, C\nSUB BX, D\nDIV BX          ; AX = quotient, DX = remainder\n\n; (4A + 18) / 6B\nMOV AX, 4\nMOV BX, A\nMUL BX          ; AX = 4A\nADD AX, 18\nMOV CX, AX      ; CX = 4A + 18\nMOV AX, B\nMOV BX, 6\nMUL BX          ; AX = 6B\nMOV BX, AX\nMOV AX, CX\nDIV BX          ; AX = (4A + 18) / 6B\n\n; [9C / 5] + 32\nMOV AX, C\nMOV BX, 9\nMUL BX\nMOV BX, 5\nDIV BX\nADD AX, 32\n\n; AX = (-val2 + BX) - val4\nMOV AX, val2\nNEG AX\nADD AX, BX\nSUB AX, val4"
+     "code": "; C = 5x + 7  (using MUL)\nMOV AX, X\nMOV BX, 5\nMUL BX          ; AX = 5x\nADD AX, 7\nMOV C, AX\n\n; (A * 35 + B) / (C - D)\nMOV AX, A\nMOV BX, 35\nMUL BX\nADD AX, B\nMOV BX, C\nSUB BX, D\nDIV BX          ; AX = quotient, DX = remainder\n\n; (4A + 18) / 6B\nMOV AX, 4\nMOV BX, A\nMUL BX          ; AX = 4A\nADD AX, 18\nMOV CX, AX      ; CX = 4A + 18\nMOV AX, B\nMOV BX, 6\nMUL BX          ; AX = 6B\nMOV BX, AX\nMOV AX, CX\nDIV BX          ; AX = (4A + 18) / 6B\n\n; [9C / 5] + 32\nMOV AX, C\nMOV BX, 9\nMUL BX\nMOV BX, 5\nDIV BX\nADD AX, 32\n\n; AX = (-val2 + BX) - val4\nMOV AX, val2\nNEG AX\nADD AX, BX\nSUB AX, val4",
+     "fig": [
+      "mp-l9-formulas"
+     ],
+     "figH": {
+      "mp-l9-formulas": "Run the lab's formula programs line by line with your own values"
+     }
     },
     {
      "h": "Logical instructions (Labs 4 and 5)",
@@ -5710,7 +5818,13 @@ COURSES.micro = {
        "1",
        "0"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l9-logic"
+     ],
+     "figH": {
+      "mp-l9-logic": "AND, OR, XOR and TEST bit by bit on the truth table"
+     }
     },
     {
      "h": "NOT, NEG, TEST",
@@ -5719,7 +5833,19 @@ COURSES.micro = {
       "<b>NEG</b> gets the <b>2's complement</b>: invert then add 1: <code>MOV AL, 5 / NEG AL</code> → 11111011 (FBh = -5).",
       "<b>TEST</b> has the same truth table as AND but <b>only affects the flags (ZF)</b>; the result is not stored. If the result = 0 → ZF = 1; if the result ≠ 0 → ZF = 0. <code>MOV AX,1 / MOV BX,0 / TEST AX,BX</code> → ZF = 1, AX unchanged.",
       "Binary numbers must end with <b>b</b>: <code>MOV AX, 1001b</code>. Hex ends with h; a hex number starting with a letter needs a leading 0 (0FFh)."
-     ]
+     ],
+     "fig": [
+      "mp-l9-not-neg-test",
+      "mp-l9-suffix"
+     ],
+     "figAt": {
+      "mp-l9-not-neg-test": 2,
+      "mp-l9-suffix": 3
+     },
+     "figH": {
+      "mp-l9-not-neg-test": "NOT 5 = FAh, NEG 5 = FBh, and TEST setting ZF without storing",
+      "mp-l9-suffix": "How the assembler reads 1001b, 1001, 0FFh and FFh"
+     }
     },
     {
      "h": "Variables (define directives)",
@@ -5754,7 +5880,13 @@ COURSES.micro = {
        "Define Ten Bytes",
        "10 bytes (80-bit) integer or real"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l9-defines"
+     ],
+     "figH": {
+      "mp-l9-defines": "DB, DW, DD, DQ and DT drawn as the bytes they reserve"
+     }
     },
     {
      "h": "Shift instructions",
@@ -5765,7 +5897,19 @@ COURSES.micro = {
       "<b>SHR</b>: shift right, highest bit filled with 0, lowest bit goes to CF. Divides an unsigned number by 2ⁿ: DL = 80 (01010000b) → SHR 1 = 40 → SHR 2 = 10.",
       "<b>SAR</b>: shift right keeping the sign: DL = -80 (10110000b) → SAR 1 = 11011000b = -40 → SAR 2 = 11110110b = -10, CF = 0.",
       "Sign-extend AL into AX: <code>MOV AL,80h / SHL AX,8</code> (AX = 8000h) <code>/ SAR AX,8</code> → AX = FF80h."
-     ]
+     ],
+     "fig": [
+      "mp-l9-shift",
+      "mp-l9-sign-extend"
+     ],
+     "figAt": {
+      "mp-l9-shift": 4,
+      "mp-l9-sign-extend": 5
+     },
+     "figH": {
+      "mp-l9-shift": "SHL, SHR and SAR bit by bit with CF on the notes' examples",
+      "mp-l9-sign-extend": "Sign-extending AL into AX: SHL AX,8 then SAR AX,8 gives FF80h"
+     }
     },
     {
      "h": "Rotate instructions",
@@ -5776,7 +5920,19 @@ COURSES.micro = {
       "<b>RCL</b>: shift left, <b>CF goes into the LSB</b>, MSB goes into CF. <code>CLC / MOV BL,88h / RCL BL,1</code> → BL = 00010000b, CF = 1; <code>RCL BL,1</code> again → BL = 00100001b, CF = 0.",
       "<b>RCR</b>: shift right, CF goes into the MSB, LSB goes into CF. <code>STC / MOV AH,10h / RCR AH,1</code> → AH = 10001000b, CF = 0.",
       "<b>CLC</b> clears CF; <b>STC</b> sets CF. ROL/ROR/RCL/RCR are not arithmetic instructions."
-     ]
+     ],
+     "fig": [
+      "mp-l9-rotate",
+      "mp-l9-rotate-carry"
+     ],
+     "figAt": {
+      "mp-l9-rotate": 2,
+      "mp-l9-rotate-carry": 4
+     },
+     "figH": {
+      "mp-l9-rotate": "ROL and ROR bit by bit: no bits lost, and the nibble swap 3Fh → F3h",
+      "mp-l9-rotate-carry": "RCL and RCR through the carry, after CLC or STC"
+     }
     }
    ],
    "cards": [

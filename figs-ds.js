@@ -3517,3 +3517,1016 @@
     'ds-l8-tail-ops': L8TailOps, 'ds-l8-lab-main': L8LabMain
   });
 })();
+/* ── part L10 ── */
+// Data Structures visuals, Lecture 10 (Searching Techniques: Hashing): slide 3's key → hash function → index pipeline (store and retrieve), slide 4's collision figure, the four hash function types (slides 6–9), the division exercise and its collision (slides 10–12, with the quiz tables), the two quadratic formulas side by side (slides 18–20), probe sequences of linear / quadratic / double hashing (slides 14, 18, 21), the linear probing search (slide 17), and open addressing vs separate chaining when the table fills up (slide 24). The insertion animations themselves are viz.js's (not redone here). Every label and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv10 *{ font-variant-ligatures:none; }
+.dsv10 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv10 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv10-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dsv10-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv10-row{ display:flex; flex-wrap:wrap; gap:6px 8px; justify-content:center; align-items:center; margin:10px 0 0; }
+.dsv10-in{ font:.9rem var(--mono); width:72px; padding:4px 6px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; box-sizing:border-box; }
+.dsv10-in.sm{ width:50px; } .dsv10-in.wide{ width:170px; } .dsv10-in.keys{ width:100%; max-width:280px; font-size:.8rem; }
+.dsv10-lbl{ font-size:.82rem; color:var(--graphite); }
+.dsv10-wrap{ display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:flex-start; }
+.dsv10-tbl{ display:grid; grid-template-columns:34px 52px; border:1px solid var(--line); border-radius:6px; overflow:hidden; background:var(--paper); font:.82rem/1 var(--mono); color:var(--ink); flex:none; }
+.dsv10-tbl > b{ grid-column:1 / -1; font:700 .78rem/1.3 var(--body); color:var(--graphite); text-align:center; padding:4px 2px; background:var(--paper-2); border-bottom:1px solid var(--line); }
+.dsv10-tbl > i{ font:600 .76rem/22px var(--body); font-style:normal; color:var(--graphite); text-align:center; border-bottom:1px solid var(--line); }
+.dsv10-tr{ display:contents; }
+.dsv10-tr span{ height:24px; display:grid; place-items:center; border-bottom:1px solid var(--line); transition:background .35s, box-shadow .35s; }
+.dsv10-tr span:first-child{ color:var(--graphite); border-right:1px solid var(--line); background:var(--paper-2); }
+.dsv10-tr span:last-child{ font-weight:700; }
+.dsv10-tr:last-child span{ border-bottom:0; }
+.dsv10-tr.new span:last-child{ background:color-mix(in srgb, var(--ok) 30%, var(--paper)); }
+.dsv10-tr.hit span:last-child{ background:color-mix(in srgb, var(--pen) 22%, var(--paper)); box-shadow:inset 0 0 0 2px var(--pen); }
+.dsv10-tr.look span:last-child{ box-shadow:inset 0 0 0 2px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.dsv10-tr.dim span:last-child{ color:var(--faint); }
+.dsv10-pt{ display:block; font:700 .8rem/1.3 var(--body); color:var(--graphite); margin:0 0 4px; text-align:center; }
+.dsv10-ch{ flex:1 1 200px; max-width:330px; min-width:0; border:1px solid var(--line); border-radius:6px; background:var(--paper); padding:5px 6px; }
+.dsv10-cr{ display:flex; flex-wrap:wrap; align-items:center; gap:2px 0; min-height:26px; border-radius:4px; padding:1px 2px; transition:background .35s; }
+.dsv10-cr.look{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); }
+.dsv10-ci{ font:.78rem var(--mono); color:var(--graphite); width:30px; flex:none; }
+.dsv10-cn{ display:inline-flex; align-items:center; }
+.dsv10-cn i, .dsv10-nl i{ font-style:normal; color:var(--fig-k); padding:0 3px; font-size:.85rem; }
+.dsv10-nb{ min-width:26px; height:22px; padding:0 4px; box-sizing:border-box; display:grid; place-items:center; border:2px solid var(--fig-k); border-radius:4px; font:700 .8rem var(--mono); color:var(--ink); background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.dsv10-nb.new{ box-shadow:0 0 0 2px var(--ok); }
+.dsv10-nl{ display:inline-flex; align-items:center; font:600 .76rem var(--mono); color:var(--graphite); }
+.dsv10-calc{ flex:1 1 120px; max-width:300px; min-width:0; margin:0; padding:0; list-style:none; display:grid; gap:3px; align-content:start; font:.8rem/1.35 var(--mono); color:var(--ink); text-align:left; direction:ltr; }
+.dsv10-calc li{ padding:2px 6px; border-radius:5px; border:1px solid var(--line); background:var(--paper); overflow-wrap:anywhere; }
+.dsv10-calc li.cur{ background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); }
+.dsv10-calc li.bad{ color:var(--pen); font-weight:700; }
+.dsv10-calc li.good{ color:var(--ok); font-weight:700; }
+.dsv10-calc li.head{ border:0; background:transparent; font:700 .78rem var(--body); color:var(--graphite); padding:0 2px; }
+.dsv10-msg{ font-size:.82rem; line-height:1.35; margin:6px 0 0; min-height:1.3em; color:var(--graphite); text-align:center; }
+.dsv10-msg.bad{ color:var(--pen); font-weight:700; } .dsv10-msg.good{ color:var(--ok); font-weight:700; }
+.dsv10-pair{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:10px; max-width:620px; margin:0 auto; }
+.dsv10-panel{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:8px 6px; color:var(--ink); min-width:0; }
+.dsv10-panel > b{ display:block; font-size:.84rem; margin-bottom:6px; text-align:center; }
+.dsv10-panel > b bdi{ font-family:var(--mono); font-weight:600; }
+.dsv10-pipe{ display:grid; grid-template-columns:1fr 20px 1fr 20px 1fr; align-items:stretch; max-width:460px; margin:0 auto 12px; }
+.dsv10-pb{ border:1.5px solid var(--ink); background:var(--paper); padding:6px 4px; text-align:center; display:flex; flex-direction:column; justify-content:center; gap:4px; min-width:0; }
+.dsv10-pb small{ font:.76rem/1.2 var(--body); color:var(--graphite); }
+.dsv10-pb strong{ font:700 1rem var(--mono); color:var(--ink); }
+.dsv10-pb em{ font:normal .78rem var(--mono); color:var(--ink); overflow-wrap:anywhere; }
+.dsv10-pa{ display:grid; place-items:center; color:var(--fig-k); font-size:1.15rem; }
+.dsv10-flow .dsv10-pb{ animation:dsv10-lit .6s ease both; }
+.dsv10-flow .dsv10-pa{ animation:dsv10-fade .4s ease both; }
+.dsv10-flow > :nth-child(2){ animation-delay:.35s; } .dsv10-flow > :nth-child(3){ animation-delay:.6s; } .dsv10-flow > :nth-child(4){ animation-delay:.95s; } .dsv10-flow > :nth-child(5){ animation-delay:1.2s; }
+@keyframes dsv10-lit{ from{ opacity:.25; box-shadow:0 0 0 0 var(--fig-k); } 60%{ opacity:1; box-shadow:0 0 0 4px color-mix(in srgb, var(--fig-k) 45%, transparent); } to{ opacity:1; box-shadow:none; } }
+@keyframes dsv10-fade{ from{ opacity:0; } to{ opacity:1; } }
+.dsv10-op{ display:inline-block; font:700 .78rem var(--mono); color:#fff; background:var(--fig-s); border-radius:99px; padding:2px 8px; margin:0 auto 8px; }
+.dsv10-center{ text-align:center; }
+.dsv10-svg text{ font-family:var(--mono); }
+.dsv10-svg .dsv10-lb{ fill:var(--graphite); }
+.dsv10-svg .dsv10-show{ transition:opacity .45s; } .dsv10-svg .dsv10-show.off{ opacity:0; }
+.dsv10-digits{ display:flex; flex-wrap:wrap; justify-content:center; gap:3px; margin:4px 0 8px; direction:ltr; }
+.dsv10-dg{ width:24px; height:30px; display:grid; place-items:center; border:1px solid var(--line); border-radius:5px; background:var(--paper); font:700 .95rem var(--mono); color:var(--faint); transition:background .35s, color .35s; }
+.dsv10-dg.on{ color:var(--ink); background:color-mix(in srgb, var(--fig-k) 28%, var(--paper)); border-color:var(--fig-k); }
+.dsv10-dg.g2{ color:var(--ink); background:color-mix(in srgb, var(--ok) 24%, var(--paper)); border-color:var(--ok); }
+.dsv10-dg.gap{ margin-right:8px; }
+.dsv10-lines{ max-width:360px; margin:0 auto; display:grid; gap:4px; font:.84rem/1.4 var(--mono); color:var(--ink); text-align:center; direction:ltr; }
+.dsv10-lines > div{ padding:3px 8px; border-radius:6px; background:var(--paper); border:1px solid var(--line); overflow-wrap:anywhere; animation:dsv10-up .45s ease both; }
+.dsv10-lines > div:nth-child(2){ animation-delay:.5s; } .dsv10-lines > div:nth-child(3){ animation-delay:1s; } .dsv10-lines > div:nth-child(4){ animation-delay:1.5s; }
+.dsv10-lines > div.out{ font-weight:700; border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+@keyframes dsv10-up{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+.dsv10-strip{ display:grid; gap:2px; margin:2px 0 0; direction:ltr; }
+.dsv10-strip span{ height:24px; display:grid; place-items:center; border:1px solid var(--line); border-radius:4px; background:var(--paper-2); font:700 .76rem var(--mono); color:var(--ink); min-width:0; transition:background .3s, box-shadow .3s; }
+.dsv10-strip span.v{ background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); }
+.dsv10-strip span.cur{ box-shadow:inset 0 0 0 2px var(--pen); }
+.dsv10-strip.ix span{ height:auto; border:0; background:transparent; font:.76rem var(--mono); color:var(--graphite); }
+.dsv10-seq{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:6px; margin:0 0 8px; }
+.dsv10-seq > b{ display:block; font-size:.82rem; color:var(--ink); }
+.dsv10-seq > code{ display:block; font:.78rem/1.4 var(--mono); color:var(--graphite); margin-top:3px; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv10-seq > p{ margin:3px 0 0; font-size:.78rem; color:var(--graphite); }
+@media (max-width:420px){ .dsv10-pipe{ grid-template-columns:1fr 16px 1fr 16px 1fr; } }
+@media (prefers-reduced-motion: reduce){ .dsv10-flow .dsv10-pb, .dsv10-flow .dsv10-pa, .dsv10-lines > div{ animation:none; } .dsv10-tr span, .dsv10-cr, .dsv10-dg, .dsv10-strip span, .dsv10-svg .dsv10-show{ transition:none; } }`;
+  if (!document.getElementById('dsv10-css')) { const s = document.createElement('style'); s.id = 'dsv10-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* helpers */
+  const L = s => `<span class="ltr">${s}</span>`;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const D = s => `<bdi dir="ltr">${esc(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const nums = (t, max) => (String(t).match(/\d+/g) || []).slice(0, max || 10).map(x => Math.min(99999, parseInt(x, 10)));
+  const isPrime = n => { if (n < 2) return false; for (let d = 2; d * d <= n; d++) if (n % d === 0) return false; return true; };
+  const primeBelow = m => { for (let p = m - 1; p >= 2; p--) if (isPrime(p)) return p; return 1; };
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    <div className="fig-dots" aria-hidden="true">${n <= 16 && Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  // the slides' vertical "Index | Value" table; cls: { [row]: 'new' | 'hit' | 'look' }
+  const Tbl = ({ m, vals, cls, title }) => html`<div className="dsv10-tbl">${title && html`<b>${title}</b>`}<i>Index</i><i>Value</i>
+    ${Array.from({ length: m }, (_, k) => html`<div key=${k} className=${'dsv10-tr ' + ((cls && cls[k]) || '')}><span>${k}</span><span>${vals[k] == null ? '' : vals[k]}</span></div>`)}</div>`;
+  // separate chaining: [r] → a → b → NULL; nw = [row, position] of the newest node
+  const Chains = ({ m, ch, hot, nw, title }) => html`<div className="dsv10-ch">${title && html`<b className="dsv10-pt">${title}</b>`}
+    ${Array.from({ length: m }, (_, r) => html`<div key=${r} className=${'dsv10-cr' + (hot === r ? ' look' : '')}><span className="dsv10-ci">[${r}]</span>
+      ${(ch[r] || []).map((v, j) => html`<span key=${j} className="dsv10-cn"><i>→</i><span className=${'dsv10-nb' + (nw && nw[0] === r && nw[1] === j ? ' new' : '')}>${v}</span></span>`)}
+      <span className="dsv10-nl"><i>→</i>NULL</span></div>`)}</div>`;
+
+  /* ── [0.2] slide 3: key → hash function → index, used to store and to retrieve ── */
+  const PM = 7, PIPE_EX = [{ op: 'store', k: 18 }, { op: 'store', k: 72 }, { op: 'store', k: 34 }, { op: 'find', k: 72 }];
+  function pipeMsg(o) {
+    if (!o) return { en: `A hash table of size ${PM}: indexes 0 to ${PM - 1}. Here the hash function is H(k) = k mod ${PM} (the division method, as in the lecture's examples). It turns every key into one of these indexes.`, ar: `ده hash table حجمه ${D(PM)}، يعني indexes من ${D(0)} لـ ${D(PM - 1)}. والـ hash function هنا هي` + L(`H(k) = k mod ${PM}`) + `(الـ division method زي أمثلة المحاضرة)، وبتحوّل أي key لـ index من دول.` };
+    const { op, k, idx, v, res } = o, calc = `H(${k}) = ${k} mod ${PM} = ${idx}`;
+    if (res === 'stored') return { en: `Store ${k}: ${calc}, so ${k} goes into cell ${idx}.`, ar: `نخزّن ${D(k)}، والـ hash function بتحسب` + L(calc) + `فالـ key ده بيتحط في الخانة ${D(idx)}.` };
+    if (res === 'same') return { en: `Store ${k}: ${calc}, and cell ${idx} already holds ${k}.`, ar: `نخزّن ${D(k)}، والحساب` + L(calc) + `والخانة ${D(idx)} فيها ${D(k)} أصلًا.` };
+    if (res === 'coll') return { en: `Store ${k}: ${calc}, but cell ${idx} already holds ${v}. Two different keys, same cell: a <b>collision</b> (next visual). This plain table cannot store ${k}.`, ar: `نحاول نخزّن ${D(k)}، والحساب` + L(calc) + `لكن الخانة ${D(idx)} فيها ${D(v)} أصلًا. يعني اتنين keys مختلفين على نفس الخانة، وده اسمه <b>collision</b> (الرسمة اللي جاية). والـ table البسيط ده مش هيقدر يخزّن ${D(k)}.` };
+    if (res === 'found') return { en: `Retrieve ${k}: the <b>same</b> hash function gives ${calc}. Cell ${idx} holds ${k}: found at once, no need to look anywhere else.`, ar: `نسترجع ${D(k)}، ونفس الـ hash function بالظبط بتدّي` + L(calc) + `والخانة ${D(idx)} فيها ${D(k)}، يعني لقيناه على طول من غير ما ندوّر في أي مكان تاني.` };
+    if (res === 'empty') return { en: `Retrieve ${k}: ${calc}. Cell ${idx} is empty, so ${k} was never stored.`, ar: `نسترجع ${D(k)}، والحساب` + L(calc) + `والخانة ${D(idx)} فاضية، يعني ${D(k)} عمره ما اتخزن.` };
+    return { en: `Retrieve ${k}: ${calc}. Cell ${idx} holds ${v}, not ${k}, so ${k} is not in this table.`, ar: `نسترجع ${D(k)}، والحساب` + L(calc) + `والخانة ${D(idx)} فيها ${D(v)} مش ${D(k)}، يعني ${D(k)} مش في الـ table ده.` };
+  }
+  function buildPipe(ops) {
+    const vals = Array(PM).fill(null), S = [{ o: null, vals: vals.slice(), ...pipeMsg(null) }];
+    for (const x of ops) {
+      const idx = x.k % PM, v = vals[idx]; let res;
+      if (x.op === 'store') { if (v == null) { vals[idx] = x.k; res = 'stored'; } else res = v === x.k ? 'same' : 'coll'; }
+      else res = v === x.k ? 'found' : v == null ? 'empty' : 'other';
+      const o = { ...x, idx, v, res };
+      S.push({ o, vals: vals.slice(), ...pipeMsg(o) });
+    }
+    return S;
+  }
+  function Pipeline({ ar }) {
+    const [ops, setOps] = useState(PIPE_EX), [txt, setTxt] = useState('25');
+    const S = buildPipe(ops), [i, ctl] = useWalk(S.length, 2400, 0), st = S[i], o = st.o;
+    const add = op => { const k = nums(txt, 1)[0]; if (k == null || ops.length >= 14) return; const nx = ops.concat({ op, k }); setOps(nx); ctl.go(nx.length); };
+    const cls = o ? { [o.idx]: o.res === 'stored' || o.res === 'found' ? 'new' : o.res === 'empty' ? 'look' : o.res === 'same' ? 'new' : 'hit' } : {};
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <div className=${'dsv10-pipe' + (o ? ' dsv10-flow' : '')} key=${i}>
+        <div className="dsv10-pb"><small>KEY or Element</small><strong>${o ? o.k : 'k'}</strong></div><span className="dsv10-pa">⇒</span>
+        <div className="dsv10-pb"><small>HASH FUNCTION</small><em>${o ? o.k + ' mod ' + PM : 'k mod ' + PM}</em></div><span className="dsv10-pa">⇒</span>
+        <div className="dsv10-pb"><small>Hash Address or Hash Table Index</small><strong>${o ? o.idx : '0…' + (PM - 1)}</strong></div></div>
+      <div className="dsv10-center">${o && html`<span className="dsv10-op">${o.op === 'store' ? 'store ' + o.k : 'retrieve ' + o.k}</span>`}</div>
+      <div className="dsv10-wrap"><${Tbl} m=${PM} vals=${st.vals} cls=${cls} /></div>
+      <div className="dsv10-row"><span className="dsv10-lbl">Try your own key</span><input className="dsv10-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="key" />
+        <button className="fig-btn solid" onClick=${() => add('store')}>Store</button><button className="fig-btn" onClick=${() => add('find')}>Retrieve</button>
+        <button className="fig-btn" onClick=${() => { setOps(PIPE_EX); ctl.replay(); }}>↻ Example</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.3] slide 4: keys k and j mapped to the same cell ── */
+  const COLL = [
+    { en: 'Slide 4\'s picture: three records with keys <b>k</b>, <b>j</b> and <b>i</b>, and a hash table whose cells are empty.', ar: 'رسمة slide 4: تلات records بالـ keys دي <b>k</b> و<b>j</b> و<b>i</b>، وhash table كل خاناته فاضية.' },
+    { en: 'The hash function h maps k to cell <b>h(k)</b>; it is empty, so k is stored there.', ar: 'الـ hash function h بتودّي k على الخانة <b><bdi dir="ltr">h(k)</bdi></b>، وهي فاضية، فالـ k بيتخزن فيها.' },
+    { en: 'h maps i to cell <b>h(i)</b>; it is empty too, so i is stored there.', ar: 'والـ h بتودّي i على الخانة <b><bdi dir="ltr">h(i)</bdi></b>، وهي كمان فاضية، فالـ i بيتخزن فيها.' },
+    { en: 'h maps j to the <b>same cell as k</b>: h(j) = h(k). Two different keys, one cell: this situation is called a <b>collision</b>.', ar: 'الـ h بتودّي j على <b>نفس خانة الـ k</b>، يعني' + L('h(j) = h(k)') + 'اتنين keys مختلفين على خانة واحدة، والحالة دي اسمها <b>collision</b>.' },
+    { en: 'The slide then sends j on: the next try, <b>h1(j)</b>, lands on i\'s cell, which is taken too.', ar: 'وبعدين الـ slide بتبعت j لمكان تاني: المحاولة اللي بعدها <b><bdi dir="ltr">h1(j)</bdi></b> بتيجي على خانة الـ i، وهي كمان مش فاضية.' },
+    { en: 'One more try, <b>h2(j)</b>, finds an empty cell and j is stored. Finding another cell for a colliding key is what the collision resolution techniques (below) do.', ar: 'ومحاولة كمان <b><bdi dir="ltr">h2(j)</bdi></b> بتلاقي خانة فاضية فالـ j بيتخزن. والدوّارة دي على خانة تانية للـ key اللي عمل collision هي شغل الـ collision resolution techniques (تحت).' }
+  ];
+  function CollisionFig({ ar }) {
+    const [i, ctl] = useWalk(COLL.length, 2300, 0);
+    const RY = r => 14 + r * 32, RC = r => RY(r) + 16, show = on => 'dsv10-show' + (on ? '' : ' off');
+    const cell = { 1: i >= 1 ? 'k' : '', 3: i >= 2 ? 'i' : '', 5: i >= 5 ? 'j' : '' };
+    const hit = { 1: i === 3, 3: i === 4 }, newR = { 1: i === 1, 3: i === 2, 5: i === 5 };
+    const fillOf = r => hit[r] ? 'color-mix(in srgb, var(--pen) 24%, var(--paper))' : newR[r] ? 'color-mix(in srgb, var(--ok) 30%, var(--paper))' : cell[r] ? 'color-mix(in srgb, var(--fig-k) 16%, var(--paper))' : 'var(--paper)';
+    const key = (y, t) => html`<g><rect x="4" y=${y - 13} width="26" height="26" fill="var(--paper)" stroke="var(--pen)" strokeWidth="1.5" /><rect x="30" y=${y - 13} width="38" height="26" fill="var(--paper)" stroke="var(--fig-k)" strokeWidth="1.5" /><text x="17" y=${y + 5} textAnchor="middle" fontSize="15" fontWeight="700">${t}</text></g>`;
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <svg className="dsv10-svg" viewBox="0 0 300 248" role="img" aria-label="Keys k and j hashed to the same cell: a collision">
+        <defs><marker id="dsv10-ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--fig-k)" /></marker>
+          <marker id="dsv10-ahr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--pen)" /></marker></defs>
+        ${key(24, 'k')}${key(120, 'j')}${key(214, 'i')}
+        ${Array.from({ length: 7 }, (_, r) => html`<g key=${r}><rect x="150" y=${RY(r)} width="80" height="32" fill=${fillOf(r)} stroke=${hit[r] ? 'var(--pen)' : 'var(--line)'} strokeWidth=${hit[r] ? 2.5 : 1} /><line x1="178" y1=${RY(r)} x2="178" y2=${RY(r) + 32} stroke="var(--line)" strokeDasharray="3 3" /><text x="164" y=${RC(r) + 5} textAnchor="middle" fontSize="15" fontWeight="700">${cell[r] || ''}</text></g>`)}
+        <text x="146" y=${RC(1) + 5} textAnchor="end" fontSize="13" className=${'dsv10-lb ' + show(i >= 1)}>h(k)</text>
+        <text x="146" y=${RC(3) + 5} textAnchor="end" fontSize="13" className=${'dsv10-lb ' + show(i >= 2)}>h(i)</text>
+        <line x1="70" y1="30" x2="110" y2=${RC(1) - 4} stroke="var(--fig-k)" strokeWidth="2" markerEnd="url(#dsv10-ah)" className=${show(i >= 1)} />
+        <line x1="70" y1="208" x2="110" y2=${RC(3) + 4} stroke="var(--fig-k)" strokeWidth="2" markerEnd="url(#dsv10-ah)" className=${show(i >= 2)} />
+        <line x1="70" y1="114" x2="110" y2=${RC(1) + 4} stroke="var(--pen)" strokeWidth="2" markerEnd="url(#dsv10-ahr)" className=${show(i >= 3)} />
+        <path d=${`M234,${RC(1)} Q264,${(RC(1) + RC(3)) / 2} 234,${RC(3)}`} fill="none" stroke="var(--pen)" strokeWidth="2" markerEnd="url(#dsv10-ahr)" className=${show(i >= 4)} />
+        <text x="256" y=${(RC(1) + RC(3)) / 2 + 5} fontSize="13" className=${show(i >= 4)}>h1(j)</text>
+        <path d=${`M234,${RC(3)} Q264,${(RC(3) + RC(5)) / 2} 234,${RC(5)}`} fill="none" stroke="var(--pen)" strokeWidth="2" markerEnd="url(#dsv10-ahr)" className=${show(i >= 5)} />
+        <text x="256" y=${(RC(3) + RC(5)) / 2 + 5} fontSize="13" className=${show(i >= 5)}>h2(j)</text>
+        <text x="190" y=${RC(1) + 5} fontSize="13" fontWeight="700" fill="var(--pen)" style=${{ fill: 'var(--pen)' }} className=${show(i === 3)}>j?</text>
+        <text x="190" y=${RC(3) + 5} fontSize="13" fontWeight="700" style=${{ fill: 'var(--pen)' }} className=${show(i === 4)}>j?</text>
+      </svg>
+      <p className=${'dsv10-msg' + (i === 3 ? ' bad' : '')}>${i === 3 ? 'h(j) = h(k): collision' : i >= 4 ? 'j looks for another cell' : ' '}</p></div>
+      <${Cap} en=${COLL[i].en} ar=${COLL[i].ar} showAr=${ar} /><${SBar} n=${COLL.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1] slides 6–9: truncation, folding, mid square, division ── */
+  const METH = [
+    { id: 'trunc', t: 'Truncation', ex: ['987456', '125978', '963294'] },
+    { id: 'fold', t: 'Folding', ex: ['143765980'] },
+    { id: 'mid', t: 'Mid square', ex: ['456', '978'] },
+    { id: 'div', t: 'Division', ex: ['5', '17', '37', '20', '42', '3'] }
+  ];
+  function methodCalc(id, raw, opt) {
+    const s = String(raw).replace(/\D/g, '').replace(/^0+(?=\d)/, '').slice(0, id === 'mid' ? 5 : 12) || '0';
+    const o = opt || {};
+    if (id === 'trunc') {
+      const left = o.side === 'left', short = s.length <= 3, t = short ? s : left ? s.slice(0, 3) : s.slice(-3), a = parseInt(t, 10);
+      const on = s.split('').map((_, j) => short || (left ? j < 3 : j >= s.length - 3) ? 'on' : '');
+      const lines = short ? [`${s} has 3 digits or fewer`, `hash address = ${a}`] : [`table size 1000 → keep 3 digits`, `${left ? 'leftmost' : 'rightmost'} 3 digits of ${s} = ${t}`, `hash address = ${a}`];
+      const en = short ? `${s} has 3 digits or fewer, so for a table of size 1000 the whole key is the hash address: ${a}.` : `The table has size 1000, so only 3 digits are kept: the ${left ? 'leftmost' : 'rightmost'} 3 digits of ${s} are ${t}, hash address ${a}. Simplest method, but only part of the key counts, so different keys that share those digits collide: more collisions.`;
+      const arr = short ? `الـ key ${D(s)} فيه 3 أرقام أو أقل، فلو الـ table حجمه ${D(1000)} الـ key كله هو الـ hash address، يعني ${D(a)}.` : `الـ table حجمه ${D(1000)}، فبناخد 3 أرقام بس. ${left ? 'أول' : 'آخر'} 3 أرقام من ${D(s)} هما ${D(t)}، يعني الـ hash address هو ${D(a)}. دي أسهل طريقة، لكن جزء بس من الـ key هو اللي بيفرق، فأي keys بتشترك في الأرقام دي بتعمل collision، يعني الـ collisions بتبقى أكتر.`;
+      return { s, digits: s.split(''), on, lines, en, ar: arr };
+    }
+    if (id === 'fold') {
+      const g = s.match(/.{1,3}/g), sum = g.reduce((x, y) => x + parseInt(y, 10), 0);
+      const on = []; g.forEach((p, j) => p.split('').forEach((_, q) => on.push((j % 2 ? 'g2' : 'on') + (q === p.length - 1 && j < g.length - 1 ? ' gap' : ''))));
+      const lines = [`groups: ${g.map(p => '(' + p + ')').join(' + ')}`, `${g.join(' + ')} = ${sum}`, `hash address = ${sum}`];
+      if (sum > 999) lines.push(`small table (size 1000): last 3 digits = ${sum % 1000}`);
+      const en = `Break ${s} into groups of 3 digits and add them: ${g.join(' + ')} = ${sum}. ` + (sum > 999 ? `You can use ${sum} as it is; if the table is small (say size 1000), truncate to the last 3 digits: ${sum % 1000}.` : `${sum} is the hash address.`);
+      const arr = `قسّم ${D(s)} لمجموعات كل واحدة 3 أرقام، واجمعهم:` + L(`${g.join(' + ')} = ${sum}`) + (sum > 999 ? `وممكن تستخدم الناتج زي ما هو كـ hash address، ولو الـ table صغير (حجمه ${D(1000)} مثلًا) خد آخر 3 أرقام بس، يعني ${D(sum % 1000)}.` : `والناتج ده هو الـ hash address.`);
+      return { s, digits: s.split(''), on, lines, en, ar: arr };
+    }
+    if (id === 'mid') {
+      const k = parseInt(s, 10), sq = String(k * k), n = sq.length, st = n <= 2 ? 0 : Math.floor((n - 2) / 2), mid = sq.slice(st, st + 2), a = parseInt(mid, 10), odd = n > 2 && n % 2 === 1;
+      const lines = [`${k}² = ${k} × ${k} = ${sq}`, `middle 2 digits of ${sq} = ${mid}`, `hash address = ${a}`];
+      const en = `Square the key: ${k}² = ${sq}. Take the middle 2 digits: ${mid}, the hash address.` + (odd ? ` (${sq} has an odd number of digits, so there is no exact middle pair: this takes digits ${st + 1} and ${st + 2}.)` : '') + ' The slide allows 2 or 3 middle digits; its examples take 2.';
+      const arr = `ربّع الـ key:` + L(`${k}² = ${sq}`) + `وخد الرقمين اللي في النص، يعني ${D(mid)}، وده الـ hash address.` + (odd ? ` (عدد أرقام ${D(sq)} فردي فمفيش رقمين في النص بالظبط، فهنا خدنا الرقم رقم ${D(st + 1)} والرقم رقم ${D(st + 2)}.)` : '') + ' والـ slide بتقول رقمين أو تلاتة، وأمثلتها بتاخد رقمين.';
+      return { s: String(k), digits: sq.split(''), on: sq.split('').map((_, j) => j >= st && j < st + 2 ? 'on' : ''), lines, en, ar: arr };
+    }
+    const k = parseInt(s, 10), m = Math.max(2, Math.min(99, o.m || 9)), q = Math.floor(k / m), r = k % m;
+    const lines = [`${k} = ${q} × ${m} + ${r}`, `${k} mod ${m} = ${r}`, `hash address = ${r}`];
+    return { s: String(k), m, digits: String(k).split(''), on: String(k).split('').map(() => 'on'), lines, en: `Divide by the table size ${m} and keep the remainder: ${k} = ${q} × ${m} + ${r}, so ${k} mod ${m} = ${r} is the hash address. One of the best methods.`, ar: `بنقسم على حجم الـ table ${D(m)} وناخد الباقي:` + L(`${k} = ${q} × ${m} + ${r}`) + `يعني` + L(`${k} mod ${m} = ${r}`) + `والباقي ده هو الـ hash address. ودي من أحسن الطرق.` };
+  }
+  function Methods({ ar }) {
+    const [mi, setMi] = useState(0), [txt, setTxt] = useState('987456'), [key, setKey] = useState('987456'), [side, setSide] = useState('right'), [m, setM] = useState(9), [mt, setMt] = useState('9');
+    const M = METH[mi], c = methodCalc(M.id, key, { side, m });
+    const pick = j => { setMi(j); setTxt(METH[j].ex[0]); setKey(METH[j].ex[0]); if (METH[j].id === 'div') { setM(9); setMt('9'); } };
+    const load = v => { setTxt(v); setKey(v); };
+    const run = () => { const d = String(txt).replace(/\D/g, ''); if (d) setKey(d); if (M.id === 'div') { const z = nums(mt, 1)[0]; if (z >= 2 && z <= 99) setM(z); } };
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <div className="dsv10-modes">${METH.map((x, j) => html`<button key=${x.id} className="fig-btn" aria-pressed=${mi === j} onClick=${() => pick(j)}>${x.t}</button>`)}</div>
+      <div className="dsv10-modes"><span className="dsv10-lbl">Slide keys:</span>${M.ex.map(v => html`<button key=${v} className="fig-btn" aria-pressed=${key === v && (M.id !== 'div' || m === 9)} onClick=${() => { load(v); if (M.id === 'div') { setM(9); setMt('9'); } }}>${v}</button>`)}
+        ${M.id === 'trunc' && html`<button className="fig-btn" aria-pressed=${side === 'left'} onClick=${() => setSide(side === 'left' ? 'right' : 'left')}>${side === 'left' ? 'leftmost' : 'rightmost'} 3</button>`}</div>
+      <div className="dsv10-center"><span className="dsv10-lbl">${M.id === 'mid' ? 'key ' + c.s + ' squared:' : 'key:'}</span></div>
+      <div className="dsv10-digits" key=${M.id + key + side + m}>${c.digits.map((d, j) => html`<span key=${j} className=${'dsv10-dg ' + (c.on[j] || '')}>${d}</span>`)}</div>
+      <div className="dsv10-lines" key=${'l' + M.id + key + side + m}>${c.lines.map((t, j) => html`<div key=${j} className=${/^hash address/.test(t) ? 'out' : ''}>${t}</div>`)}</div>
+      <div className="dsv10-row"><span className="dsv10-lbl">Try your own key</span><input className="dsv10-in wide" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="key" />
+        ${M.id === 'div' && html`<span className="dsv10-lbl">size</span><input className="dsv10-in sm" inputMode="numeric" value=${mt} onChange=${e => setMt(e.target.value)} aria-label="table size" />`}
+        <button className="fig-btn solid" onClick=${run}>Hash</button></div></div>
+      <${Cap} en=${c.en} ar=${c.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [1] slides 10–12 (and the quiz tables): division method, then a collision ── */
+  const DIV_MODES = [
+    { t: 'Slides 10–12 (size 9)', keys: [5, 17, 37, 20, 42, 3, 11], m: 9 },
+    { t: 'Quiz: size 11', keys: [14, 17, 25, 37, 34, 16], m: 11 },
+    { t: 'Quiz: size 5', keys: [25, 42, 96, 101, 102, 162, 197], m: 5 }
+  ];
+  function buildDiv(keys, m) {
+    const tb = Array(m).fill(null), ch = Array.from({ length: m }, () => []), calc = [], S = [];
+    let coll = false;
+    const snap = (x) => S.push({ tb: tb.slice(), ch: ch.map(c => c.slice()), calc: calc.slice(), coll, ...x });
+    snap({ en: `Store ${keys.join(', ')} in an array of size ${m} using the division method: address = k mod ${m}.`, ar: `عايزين نخزّن القيم دي في array حجمها ${D(m)} بالـ division method:` + L(keys.join(', ')) + `والعنوان هو` + L(`k mod ${m}`) });
+    keys.forEach(k => {
+      const a = k % m, v = tb[a], c = `${k} mod ${m} = ${a}`;
+      if (v == null) {
+        tb[a] = k; ch[a].push(k); calc.push({ t: c });
+        snap({ cls: { [a]: 'new' }, hot: a, nw: [a, 0], en: `${c}: cell ${a} is empty, so ${k} goes there.`, ar: `الحساب:` + L(c) + `والخانة ${D(a)} فاضية، فالـ ${D(k)} بيتحط فيها.` });
+        return;
+      }
+      const first = !coll; coll = true; calc.push({ t: c + ' → collision', bad: true });
+      snap({ cls: { [a]: 'hit' }, hot: a, en: `${c}, but cell ${a} already holds ${v}: a <b>collision situation</b>.` + (first ? ' The division method alone cannot store it: a collision resolution technique is needed. Two of them are shown next.' : ''), ar: `الحساب:` + L(c) + `لكن الخانة ${D(a)} فيها ${D(v)} أصلًا، ودي <b>collision situation</b>.` + (first ? ' الـ division method لوحدها مش هتعرف تخزّنه، ومحتاجين collision resolution technique، واتنين منهم جايين دلوقتي.' : '') });
+      const probes = []; let slot = null;
+      for (let i = 1; i < m; i++) { const p = (a + i) % m; probes.push(p); if (tb[p] == null) { slot = p; break; } }
+      const last = ch[a][ch[a].length - 1]; ch[a].push(k);
+      if (slot != null) tb[slot] = k;
+      calc.push({ t: slot != null ? `linear: ${probes.join(', ')} → ${slot}` : 'linear: table full', good: slot != null, bad: slot == null });
+      const cls = { [a]: 'hit' }; probes.forEach(p => { cls[p] = p === slot ? 'new' : 'look'; });
+      snap({ cls, hot: a, nw: [a, ch[a].length - 1],
+        en: (slot != null ? `<b>Linear probing</b> tries the next cells ${probes.join(', ')} and puts ${k} in cell ${slot}.` : `<b>Linear probing</b> tries every other cell (${probes.join(', ')}): the table is full, so ${k} cannot be stored.`) + ` <b>Separate chaining</b> just links ${k} into chain [${a}], after ${last}.`,
+        ar: (slot != null ? `الـ <b>linear probing</b> بيجرب الخانات اللي بعدها` + L(probes.join(', ')) + `وبيحط ${D(k)} في الخانة ${D(slot)}.` : `الـ <b>linear probing</b> بيجرب كل الخانات التانية` + L(probes.join(', ')) + `والـ table مليان، فمش هيقدر يخزّن ${D(k)}.`) + ` أما الـ <b>separate chaining</b> فبيربط ${D(k)} في الـ chain بتاعة الخانة ${D(a)} بعد ${D(last)}.` });
+    });
+    const order = tb.filter(v => v != null), sorted = order.every((v, j) => !j || order[j - 1] <= v);
+    snap({ fin: true, en: `Done. Reading the ${coll ? 'linear probing ' : ''}table from index 0 gives ${order.join(', ')}. ` + (sorted ? 'Here they happen to be in order, but in general a hash table does not keep keys sorted.' : 'Not in sorted order: a hash table does not keep keys in order, positions depend on the hash function.'), ar: `خلصنا. لو قرينا الـ table${coll ? ' بتاع الـ linear probing' : ''} من أول index ${D(0)} هنلاقي:` + L(order.join(', ')) + (sorted ? 'وهنا بالصدفة طلعوا مترتبين، لكن الـ hash table عمومًا مش بيحافظ على ترتيب الـ keys.' : 'ومش مترتبين: الـ hash table مش بيحافظ على ترتيب الـ keys، والأماكن بتعتمد على الـ hash function.') });
+    return S;
+  }
+  function DivisionEx({ ar }) {
+    const [cfg, setCfg] = useState({ keys: DIV_MODES[0].keys, m: 9 }), [kt, setKt] = useState(DIV_MODES[0].keys.join(', ')), [mt, setMt] = useState('9');
+    const S = buildDiv(cfg.keys, cfg.m), [i, ctl] = useWalk(S.length, 2100, cfg.keys.join() + '/' + cfg.m), st = S[i];
+    const load = c => { setCfg({ keys: c.keys, m: c.m }); setKt(c.keys.join(', ')); setMt(String(c.m)); };
+    const run = () => { const ks = nums(kt, 10), m = nums(mt, 1)[0]; if (!ks.length || !(m >= 2 && m <= 13)) return; setCfg({ keys: ks, m }); };
+    const n = st.calc.length;
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <div className="dsv10-modes">${DIV_MODES.map(c => html`<button key=${c.t} className="fig-btn" aria-pressed=${cfg.m === c.m && cfg.keys.join() === c.keys.join()} onClick=${() => load(c)}>${c.t}</button>`)}</div>
+      <div className="dsv10-wrap">
+        <ul className="dsv10-calc"><li className="head">use k mod ${cfg.m}</li>${st.calc.map((c, j) => html`<li key=${j} className=${(j === n - 1 && !st.fin ? 'cur ' : '') + (c.bad ? 'bad' : c.good ? 'good' : '')}>${c.t}</li>`)}</ul>
+        <${Tbl} m=${cfg.m} vals=${st.tb} cls=${st.cls} title=${st.coll ? 'Linear probing' : 'Division'} />
+        ${st.coll && html`<${Chains} m=${cfg.m} ch=${st.ch} hot=${st.hot} nw=${st.nw} title="Separate chaining" />`}</div>
+      <div className="dsv10-row"><span className="dsv10-lbl">Try your own keys</span><input className="dsv10-in keys" inputMode="numeric" value=${kt} onChange=${e => setKt(e.target.value)} aria-label="keys" />
+        <span className="dsv10-lbl">size</span><input className="dsv10-in sm" inputMode="numeric" value=${mt} onChange=${e => setMt(e.target.value)} aria-label="table size (2 to 13)" />
+        <button className="fig-btn solid" onClick=${run}>Run</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [2.2] quadratic probing: the lecture's (h1 + i + i²) vs h + i² ── */
+  function quadRun(keys, m, lect) {
+    const tb = Array(m).fill(null);
+    return keys.map(k => {
+      const h = k % m, tries = []; let slot = null;
+      for (let i = 0; i < m; i++) { const off = lect ? i + i * i : i * i, p = (h + off) % m; const ok = tb[p] == null; tries.push({ i, off, p, ok }); if (ok) { slot = p; break; } }
+      if (slot != null) tb[slot] = k;
+      return { k, h, tries, slot, tb: tb.slice() };
+    });
+  }
+  const qLine = (t, h, m, lect) => `i=${t.i}: ` + (t.i === 0 ? `${h}` : `(${h}+${lect ? t.i + '+' + t.i * t.i : t.i * t.i}) mod ${m} = ${t.p}`) + (t.ok ? ' ✓' : ' ✗');
+  const qDesc = (r, ar) => {
+    const bad = r.tries.filter(t => !t.ok).map(t => t.p);
+    if (r.slot == null) return ar ? `مش لاقي خانة فاضية في ${D(r.tries.length)} محاولات` : `finds no empty cell in ${r.tries.length} tries`;
+    if (!bad.length) return ar ? `بيروح الخانة ${D(r.slot)} على طول` : `goes straight to slot ${r.slot}`;
+    return ar ? `بيعمل collision في ${D(bad.join(', '))} وبعدين بيروح الخانة ${D(r.slot)}` : `collides at ${bad.join(', ')}, then goes to slot ${r.slot}`;
+  };
+  function buildQuad(keys, m) {
+    const A = quadRun(keys, m, true), B = quadRun(keys, m, false), S = [];
+    S.push({ j: -1, en: `Keys ${keys.join(', ')} into a table of size ${m}, run with both formulas. The lecture's h(k, i) = (h1(k) + i + i²) mod m adds +2, +6, +12 … after the first try; "h + i²" (h+1, h+4, h+9 …) adds +1, +4, +9 ….`, ar: `نفس الـ keys دي في table حجمه ${D(m)} بالمعادلتين:` + L(keys.join(', ')) + `معادلة المحاضرة بتزوّد على الـ h1 بعد أول محاولة` + L('h(k, i) = (h1(k) + i + i²) mod m → +2, +6, +12, …') + `والمعادلة التانية ${D('h + i²')} بتزوّد` + L('h+1, h+4, h+9, …') });
+    keys.forEach((k, j) => {
+      const a = A[j], b = B[j], same = a.slot === b.slot && a.tries.length === b.tries.length;
+      S.push({ j, en: `Insert ${k} (h1 = ${k} mod ${m} = ${a.h}). Lecture formula: ${qDesc(a)}. h + i²: ${qDesc(b)}.` + (same ? '' : ' <b>Different cells.</b>'), ar: `نضيف ${D(k)} والـ h1 بتاعه` + L(`${k} mod ${m} = ${a.h}`) + `بمعادلة المحاضرة ${qDesc(a, 1)}، وبالمعادلة التانية ${qDesc(b, 1)}.` + (same ? '' : ' <b>خانات مختلفة.</b>') });
+    });
+    const fa = A[A.length - 1].tb, fb = B[B.length - 1].tb, diff = fa.join() !== fb.join();
+    S.push({ j: keys.length - 1, fin: true, en: diff ? 'All keys in, and the two formulas give different tables. So in the exam use the lecture\'s formula, h(k, i) = (h1(k) + i + i²) mod m, and write it down.' : 'All keys in: here both formulas happen to give the same table, but in general they differ. In the exam use the lecture\'s formula, h(k, i) = (h1(k) + i + i²) mod m, and write it down.', ar: (diff ? 'كل الـ keys دخلت، والمعادلتين طلّعوا tables مختلفة. ' : 'كل الـ keys دخلت، وهنا بالصدفة المعادلتين طلّعوا نفس الـ table، لكن عمومًا بيختلفوا. ') + 'فخلي بالك: في الامتحان استخدم معادلة المحاضرة واكتبها:' + L('h(k, i) = (h1(k) + i + i²) mod m') });
+    return { S, A, B };
+  }
+  function QuadPanel({ title, runs, j, m, lect }) {
+    const r = j >= 0 ? runs[j] : null, tb = r ? r.tb : Array(m).fill(null), cls = {};
+    if (r) { r.tries.forEach(t => { cls[t.p] = t.ok ? 'new' : 'hit'; }); }
+    return html`<div className="dsv10-panel"><b>${title}</b><div className="dsv10-wrap">
+      <${Tbl} m=${m} vals=${tb} cls=${cls} />
+      <ul className="dsv10-calc">${r ? html`<li className="head">key ${r.k}, h1 = ${r.h}</li>` : html`<li className="head">empty table</li>`}${r && r.tries.map((t, q) => html`<li key=${q} className=${t.ok ? 'good' : 'bad'}>${qLine(t, r.h, m, lect)}</li>`)}</ul></div></div>`;
+  }
+  function QuadFormulas({ ar }) {
+    const EX = { keys: [18, 72, 65, 34, 13], m: 7 };
+    const [cfg, setCfg] = useState(EX), [kt, setKt] = useState(EX.keys.join(', ')), [mt, setMt] = useState('7');
+    const { S, A, B } = buildQuad(cfg.keys, cfg.m), [i, ctl] = useWalk(S.length, 2600, cfg.keys.join() + '/' + cfg.m), st = S[i];
+    const run = () => { const ks = nums(kt, 8), m = nums(mt, 1)[0]; if (!ks.length || !(m >= 2 && m <= 13)) return; setCfg({ keys: ks, m }); };
+    const isEx = cfg.m === 7 && cfg.keys.join() === EX.keys.join();
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <div className="dsv10-modes"><button className="fig-btn" aria-pressed=${isEx} onClick=${() => { setCfg(EX); setKt(EX.keys.join(', ')); setMt('7'); }}>Example from the notes</button></div>
+      <div className="dsv10-pair">
+        <${QuadPanel} title=${html`Lecture: <bdi>(h1 + i + i²) mod ${cfg.m}</bdi>`} runs=${A} j=${st.j} m=${cfg.m} lect=${true} />
+        <${QuadPanel} title=${html`<bdi>h + i²</bdi> (h+1, h+4, h+9 …)`} runs=${B} j=${st.j} m=${cfg.m} lect=${false} /></div>
+      <div className="dsv10-row"><span className="dsv10-lbl">Try your own keys</span><input className="dsv10-in keys" inputMode="numeric" value=${kt} onChange=${e => setKt(e.target.value)} aria-label="keys" />
+        <span className="dsv10-lbl">size</span><input className="dsv10-in sm" inputMode="numeric" value=${mt} onChange=${e => setMt(e.target.value)} aria-label="table size (2 to 13)" />
+        <button className="fig-btn solid" onClick=${run}>Run</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [2.3] probe sequences of one key: linear, quadratic (lecture), double hashing ── */
+  function seqCalc(k, m) {
+    const P = primeBelow(m), h1 = k % m, h2 = 1 + (k % P);
+    const rows = [
+      { t: 'Linear probing', f: i => (h1 + i) % m, s: i => `(${h1} + ${i}) mod ${m}` },
+      { t: 'Quadratic (lecture)', f: i => (h1 + i + i * i) % m, s: i => `(${h1} + ${i} + ${i * i}) mod ${m}` },
+      { t: 'Double hashing', f: i => (h1 + i * h2) % m, s: i => `(${h1} + ${i}·${h2}) mod ${m}` }
+    ].map(r => ({ ...r, seq: Array.from({ length: m }, (_, i) => r.f(i)) }));
+    rows.forEach(r => { r.reach = new Set(r.seq).size; });
+    return { P, h1, h2, rows };
+  }
+  function seqMsg(k, m, i) {
+    const { P, h1, h2, rows } = seqCalc(k, m);
+    if (i === 0) return { en: `i = 0: all three start at the same cell, h1(${k}) = ${k} mod ${m} = ${h1}. Double hashing's step is h2(${k}) = 1 + ${k} mod ${P} = ${h2} (${P} is a prime smaller than ${m}${m === 13 ? ', as in the lecture' : ''}). Each later probe is shown as it happens.`, ar: `عند ${D('i = 0')} التلاتة بيبدأوا من نفس الخانة:` + L(`h1(${k}) = ${k} mod ${m} = ${h1}`) + `والـ step بتاع الـ double hashing هو` + L(`h2(${k}) = 1 + ${k} mod ${P} = ${h2}`) + `(والـ ${D(P)} ده prime أصغر من ${D(m)}${m === 13 ? ' زي المحاضرة' : ''}).` };
+    if (i < m - 1) return { en: `i = ${i}: linear probing moves 1 cell on, quadratic jumps ${i + i * i} from h1, double hashing jumps ${i}·${h2} = ${i * h2}.`, ar: `عند ${D('i = ' + i)} الـ linear probing بيتحرك خانة واحدة، والـ quadratic بيقفز ${D(i + i * i)} من الـ h1، والـ double hashing بيقفز ${D(i + '·' + h2 + ' = ' + i * h2)}.` };
+    const [a, b, c] = rows.map(r => r.reach);
+    return { en: `After ${m} probes (i = 0 … ${m - 1}): linear probing reached ${a} of ${m} cells, one after another (neighbouring cells, which is how clusters form); quadratic reached ${b} (bigger and bigger jumps); double hashing reached ${c}, in steps of ${h2} that depend on the key, so different keys follow different sequences.`, ar: `بعد ${D(m)} محاولات (من ${D('i = 0')} لـ ${D('i = ' + (m - 1))}) الـ linear probing وصل لـ ${D(a)} خانات من ${D(m)} ورا بعض (خانات جنب بعض، ودي اللي بتعمل clusters)، والـ quadratic وصل لـ ${D(b)} (قفزات بتكبر)، والـ double hashing وصل لـ ${D(c)} بقفزات قدها ${D(h2)} بتعتمد على الـ key، فكل key ليه ترتيب مختلف.` };
+  }
+  function ProbeSeq({ ar }) {
+    const EXS = [{ t: '14 in size 13 (double hashing example)', k: 14, m: 13 }, { t: '13 in size 7 (linear and quadratic examples)', k: 13, m: 7 }];
+    const [cfg, setCfg] = useState(EXS[0]), [kt, setKt] = useState('14'), [mt, setMt] = useState('13');
+    const { k, m } = cfg, C = seqCalc(k, m), [i, ctl] = useWalk(m, 1300, k + '/' + m), msg = seqMsg(k, m, i);
+    const run = () => { const kk = nums(kt, 1)[0], mm = nums(mt, 1)[0]; if (kk == null || !(mm >= 3 && mm <= 13)) return; setCfg({ k: kk, m: mm }); };
+    const cols = { gridTemplateColumns: `repeat(${m}, minmax(0, 1fr))` };
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <div className="dsv10-modes">${EXS.map(x => html`<button key=${x.t} className="fig-btn" aria-pressed=${x.k === k && x.m === m} onClick=${() => { setCfg(x); setKt(String(x.k)); setMt(String(x.m)); }}>${x.t}</button>`)}</div>
+      <div className="dsv10-strip ix" style=${cols} aria-hidden="true">${Array.from({ length: m }, (_, c) => html`<span key=${c}>${c}</span>`)}</div>
+      ${C.rows.map(r => {
+        const first = {}; r.seq.slice(0, i + 1).forEach((p, q) => { if (first[p] == null) first[p] = q; });
+        return html`<div key=${r.t} className="dsv10-seq"><b>${r.t}</b>
+          <div className="dsv10-strip" style=${cols}>${Array.from({ length: m }, (_, c) => html`<span key=${c} className=${(first[c] != null ? 'v' : '') + (r.seq[i] === c ? ' cur' : '')}>${first[c] != null ? first[c] : ''}</span>`)}</div>
+          <code>i = ${i}: ${r.s(i)} = ${r.seq[i]}</code>
+          <code>order: ${r.seq.slice(0, i + 1).join(', ')}</code>
+          ${i === m - 1 && html`<p>cells reached: ${r.reach} of ${m}</p>`}</div>`;
+      })}
+      <p className="dsv10-msg">Each cell shows the i of the first probe that reached it.</p>
+      <div className="dsv10-row"><span className="dsv10-lbl">Try your own key</span><input className="dsv10-in" inputMode="numeric" value=${kt} onChange=${e => setKt(e.target.value)} aria-label="key" />
+        <span className="dsv10-lbl">size</span><input className="dsv10-in sm" inputMode="numeric" value=${mt} onChange=${e => setMt(e.target.value)} aria-label="table size (3 to 13)" />
+        <button className="fig-btn solid" onClick=${run}>Run</button></div></div>
+      <${Cap} en=${msg.en} ar=${msg.ar} showAr=${ar} /><${SBar} n=${m} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [2.4] open addressing fills up; separate chaining does not ── */
+  const FULL_EX = [18, 72, 65, 34, 13], FM = 7, FMAX = 14;
+  function fullState(keys) {
+    const tb = Array(FM).fill(null), ch = Array.from({ length: FM }, () => []), rej = [];
+    let last = null;
+    keys.forEach(k => {
+      const a = k % FM, probes = []; let slot = null;
+      for (let i = 0; i < FM; i++) { const p = (a + i) % FM; probes.push(p); if (tb[p] == null) { slot = p; break; } }
+      if (slot != null) tb[slot] = k; else rej.push(k);
+      ch[a].push(k); last = { k, a, slot, probes, len: ch[a].length };
+    });
+    return { tb, ch, rej, last };
+  }
+  function fullMsg(keys) {
+    const { last, rej } = fullState(keys);
+    if (keys.length <= FULL_EX.length) return { en: `The lecture's keys ${FULL_EX.join(', ')} in a table of size ${FM}: one table with linear probing, one with separate chaining. Keep inserting keys and watch what happens when the ${FM} cells run out.`, ar: `الـ keys بتاعة المحاضرة في table حجمه ${D(FM)}، الـ linear probing في ناحية والـ separate chaining في الناحية التانية:` + L(FULL_EX.join(', ')) + `كمّل ضيف keys وشوف إيه اللي بيحصل لما الـ ${D(FM)} خانات يخلصوا.` };
+    const { k, a, slot, len } = last, c = `${k} mod ${FM} = ${a}`;
+    const lpEn = slot != null ? (slot === a ? `goes to cell ${a}` : `probes on to cell ${slot}`) : `finds <b>no empty cell</b>: all ${FM} are used, so ${k} cannot be stored`;
+    const lpAr = slot != null ? (slot === a ? `بيروح الخانة ${D(a)}` : `بيكمّل لحد الخانة ${D(slot)}`) : `مش لاقي <b>ولا خانة فاضية</b> لأن الـ ${D(FM)} خانات اتملوا، فمش هيقدر يخزّن ${D(k)}`;
+    return { en: `${c}. Linear probing ${lpEn}. Separate chaining adds ${k} to chain [${a}], now ${len} long.` + (rej.length ? ' Chaining handles an unlimited number of collisions at the same address and needs no prior knowledge of how many keys will be stored.' : ''),
+      ar: `الحساب:` + L(c) + `الـ linear probing ${lpAr}، والـ separate chaining بيضيف ${D(k)} للـ chain بتاعة الخانة ${D(a)} وطولها بقى ${D(len)}.` + (rej.length ? ' والـ chaining بيتعامل مع عدد مش محدود من الـ collisions على نفس الـ address ومش محتاج تعرف مسبقًا هتخزن كام key.' : '') };
+  }
+  function FullTable({ ar }) {
+    const [keys, setKeys] = useState(FULL_EX), [txt, setTxt] = useState('20');
+    const { tb, ch, rej, last } = fullState(keys), m = fullMsg(keys), full = keys.length >= FMAX, fresh = keys.length > FULL_EX.length;
+    const add = () => { const v = nums(txt, 1)[0]; if (v == null || full) return; setKeys(keys.concat(v)); setTxt(String(v + 7)); };
+    const cls = {}; if (fresh && last) { last.probes.forEach(p => { cls[p] = p === last.slot ? 'new' : 'hit'; }); }
+    return html`<figure className="fig dsv10"><div className="fig-stage"><div className="dsv10-pair">
+      <div className="dsv10-panel"><b>Linear probing (size ${FM})</b><div className="dsv10-wrap"><${Tbl} m=${FM} vals=${tb} cls=${cls} /></div>
+        <p className=${'dsv10-msg' + (rej.length ? ' bad' : '')}>${rej.length ? 'Table full: ' + rej.join(', ') + ' not stored' : tb.filter(v => v != null).length + ' of ' + FM + ' cells used'}</p></div>
+      <div className="dsv10-panel"><b>Separate chaining (size ${FM})</b><div className="dsv10-wrap"><${Chains} m=${FM} ch=${ch} hot=${fresh && last ? last.a : null} nw=${fresh && last ? [last.a, last.len - 1] : null} /></div>
+        <p className=${'dsv10-msg' + (rej.length ? ' good' : '')}>${keys.length} keys stored</p></div></div>
+      <div className="dsv10-row"><span className="dsv10-lbl">key</span><input className="dsv10-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="key to insert" />
+        <button className="fig-btn solid" onClick=${add} disabled=${full}>Insert</button>
+        <button className="fig-btn" onClick=${() => { setKeys(FULL_EX); setTxt('20'); }}>↻ Reset</button></div></div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [3] slide 17: searching the linear probing table ── */
+  const LT = [13, null, 72, 65, 18, null, 34], LM = 7;
+  function buildSearch(k) {
+    const h = k % LM, S = [{ p: null, done: [], en: `Search ${k} in slide 17's table. Start at its hash address: h1(${k}) = ${k} mod ${LM} = ${h}.`, ar: `ندوّر على ${D(k)} في الـ table بتاع slide 17، ونبدأ من الـ hash address بتاعه:` + L(`h1(${k}) = ${k} mod ${LM} = ${h}`) }];
+    const done = [];
+    for (let i = 0; i < LM; i++) {
+      const p = (h + i) % LM, v = LT[p];
+      if (v === k) { S.push({ p, done: done.slice(), res: 'new', en: `Cell ${p} holds ${k}: <b>found</b> after ${i + 1} probe${i ? 's' : ''}.`, ar: `الخانة ${D(p)} فيها ${D(k)}، يعني <b>لقيناه</b> بعد ${D(i + 1)} ${i ? 'محاولات' : 'محاولة'}.` }); return S; }
+      if (v == null) { S.push({ p, done: done.slice(), res: 'look', en: `Cell ${p} is empty: ${k} is <b>not in the table</b> (when inserted it would have been placed here, at the first empty cell).`, ar: `الخانة ${D(p)} فاضية، يعني ${D(k)} <b>مش موجود في الـ table</b> (لو كان اتضاف كان هيتحط هنا، في أول خانة فاضية).` }); return S; }
+      const nx = (h + i + 1) % LM;
+      S.push({ p, done: done.slice(), res: 'hit', en: `Cell ${p} holds ${v}, not ${k}: continue linearly to the next cell, (${h} + ${i + 1}) mod ${LM} = ${nx}.`, ar: `الخانة ${D(p)} فيها ${D(v)} مش ${D(k)}، فنكمّل بالترتيب للخانة اللي بعدها:` + L(`(${h} + ${i + 1}) mod ${LM} = ${nx}`) });
+      done.push(p);
+    }
+    S.push({ p: null, done: done.slice(), en: `All ${LM} cells checked: ${k} is not in the table.`, ar: `اتشيّكنا على الـ ${D(LM)} خانات كلهم، و${D(k)} مش موجود في الـ table.` });
+    return S;
+  }
+  function LinSearch({ ar }) {
+    const [k, setK] = useState(13), [txt, setTxt] = useState('13');
+    const S = buildSearch(k), [i, ctl] = useWalk(S.length, 2000, k), st = S[i];
+    const cls = {}; st.done.forEach(p => { cls[p] = 'dim'; }); if (st.p != null) cls[st.p] = st.res;
+    const calc = S.slice(1, i + 1).map(x => x.p != null ? `cell ${x.p}: ` + (x.res === 'new' ? 'found' : x.res === 'look' ? 'empty → stop' : LT[x.p] + ' ≠ ' + k) : 'all cells checked');
+    return html`<figure className="fig dsv10"><div className="fig-stage">
+      <div className="dsv10-modes">${[[13, '13'], [65, '65'], [27, '27 (not stored)']].map(([v, t]) => html`<button key=${v} className="fig-btn" aria-pressed=${k === v} onClick=${() => { setK(v); setTxt(String(v)); }}>${t}</button>`)}</div>
+      <div className="dsv10-wrap"><${Tbl} m=${LM} vals=${LT} cls=${cls} title="slide 17" />
+        <ul className="dsv10-calc"><li className="head">search ${k}: h1 = ${k} mod ${LM} = ${k % LM}</li>${calc.map((t, j) => html`<li key=${j} className=${(j === calc.length - 1 ? 'cur ' : '') + (/found/.test(t) ? 'good' : /stop|checked/.test(t) ? 'bad' : '')}>${t}</li>`)}</ul></div>
+      <div className="dsv10-row"><span className="dsv10-lbl">Try your own key</span><input className="dsv10-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="key to search" />
+        <button className="fig-btn solid" onClick=${() => { const v = nums(txt, 1)[0]; if (v != null) setK(v); }}>Search</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  // step builders kept on the components so the Arabic built at run time can be checked
+  Object.assign(Pipeline, { build: buildPipe }); Object.assign(CollisionFig, { STEPS: COLL }); Object.assign(Methods, { build: methodCalc });
+  Object.assign(DivisionEx, { build: buildDiv }); Object.assign(QuadFormulas, { build: buildQuad }); Object.assign(ProbeSeq, { build: seqMsg });
+  Object.assign(FullTable, { build: fullMsg }); Object.assign(LinSearch, { build: buildSearch });
+  window.FIGS = Object.assign(window.FIGS || {}, { 'ds-l10-pipeline': Pipeline, 'ds-l10-collision': CollisionFig, 'ds-l10-methods': Methods, 'ds-l10-division': DivisionEx, 'ds-l10-quad-formulas': QuadFormulas, 'ds-l10-probe-seq': ProbeSeq, 'ds-l10-full-table': FullTable, 'ds-l10-lin-search': LinSearch });
+})();
+/* ── part L9 ── */
+// Data Structures visuals, Lecture 9 (Trees and Binary Search Trees): the parts of a tree (slides 3–11), the BST rule checked node by node (slide 12), traversals of the slides' trees (slides 15–21 and the quiz tree), a tree built from an insertion order with its subtree sizes (quiz), the Node/Tree classes as boxes and pointers (slides 22–23), inserting 57 (slides 28–29) and 0.9 (slides 32–36) with the insert code, sorted insertion giving a degenerate tree, minimum/maximum (slide 49), find 0.7 / 0.5 (slides 39–47), the three delete cases, and slide 48's deleteitem run on real trees. The viz.js animations on the page (tree 2's traversals, inserts, search 60/30, delete 12/25/65) are not redone here. Every label and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv9 *{ font-variant-ligatures:none; }
+.dsv9 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv9 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv9 .fig-cap .ltr{ font-family:var(--mono); font-size:.86rem; margin:2px 0; overflow-wrap:anywhere; }
+.dsv9-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 8px; }
+.dsv9-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv9-row{ display:flex; flex-wrap:wrap; gap:6px 8px; justify-content:center; align-items:center; margin:8px 0 0; }
+.dsv9-lbl{ font-size:.82rem; color:var(--graphite); }
+.dsv9-in{ font:.9rem var(--mono); width:70px; padding:4px 6px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; box-sizing:border-box; }
+.dsv9-in.dsv9-wide{ flex:1 1 180px; width:auto; min-width:0; max-width:330px; resize:vertical; white-space:pre-wrap; overflow-wrap:anywhere; overflow-x:hidden; }
+.dsv9-tree{ position:relative; max-width:520px; margin:0 auto; }
+.dsv9-tree svg{ position:absolute; left:0; top:0; width:100%; height:100%; overflow:visible; }
+.dsv9-e{ stroke:var(--graphite); stroke-width:1.6; fill:none; }
+.dsv9-e.dsv9-hi{ stroke:var(--ink); stroke-width:3.6; }
+.dsv9-e.dsv9-path{ stroke:var(--fig-k); stroke-width:3.6; }
+.dsv9-st{ stroke:var(--graphite); stroke-width:1.3; fill:none; opacity:.8; }
+.dsv9-st.dsv9-hi{ stroke:var(--ink); stroke-width:3; opacity:1; }
+.dsv9-st.dsv9-nul{ stroke:var(--pen); stroke-width:3; opacity:1; }
+.dsv9-nd{ position:absolute; width:30px; height:30px; margin-left:-15px; box-sizing:border-box; border-radius:50%; border:2px solid var(--graphite); background:var(--paper); color:var(--ink); font:700 12px/26px var(--mono); letter-spacing:-.04em; text-align:center; padding:0; transition:background .3s, box-shadow .3s, border-color .3s, opacity .3s; }
+button.dsv9-nd{ cursor:pointer; }
+button.dsv9-nd:focus-visible{ outline:2px solid var(--fig-k); outline-offset:2px; }
+.dsv9-nd.dsv9-k{ background:color-mix(in srgb, var(--fig-k) 45%, var(--paper)); border-color:var(--fig-k); }
+.dsv9-nd.dsv9-s{ background:color-mix(in srgb, var(--fig-s) 55%, var(--paper)); border-color:var(--fig-s); }
+.dsv9-nd.dsv9-red{ background:color-mix(in srgb, var(--pen) 40%, var(--paper)); border-color:var(--pen); }
+.dsv9-nd.dsv9-grn{ background:color-mix(in srgb, var(--ok) 40%, var(--paper)); border-color:var(--ok); }
+.dsv9-nd.dsv9-sub{ background:color-mix(in srgb, var(--fig-k) 38%, var(--paper)); border:3px solid var(--ink); line-height:24px; }
+.dsv9-nd.dsv9-lo{ background:color-mix(in srgb, var(--ok) 32%, var(--paper)); border-color:var(--ok); }
+.dsv9-nd.dsv9-hi{ background:color-mix(in srgb, var(--fig-k) 32%, var(--paper)); border-color:var(--fig-k); }
+.dsv9-nd.dsv9-path{ border:3px solid var(--fig-k); line-height:24px; }
+.dsv9-nd.dsv9-done{ background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); }
+.dsv9-nd.dsv9-cur{ background:color-mix(in srgb, var(--fig-k) 50%, var(--paper)); border:3px solid var(--fig-k); line-height:24px; box-shadow:0 0 0 3px color-mix(in srgb, var(--fig-k) 40%, transparent); }
+.dsv9-nd.dsv9-found{ background:color-mix(in srgb, var(--ok) 45%, var(--paper)); border:3px solid var(--ok); line-height:24px; box-shadow:0 0 0 3px color-mix(in srgb, var(--ok) 35%, transparent); }
+.dsv9-nd.dsv9-new{ border:3px solid var(--ok); line-height:24px; animation:dsv9-in .5s ease both; }
+.dsv9-nd.dsv9-bad{ background:color-mix(in srgb, var(--pen) 38%, var(--paper)); border:3px solid var(--pen); line-height:24px; }
+.dsv9-nd.dsv9-gone{ border-style:dashed; opacity:.55; }
+.dsv9-nd.dsv9-dim{ opacity:.4; }
+.dsv9-tg{ position:absolute; transform:translateX(-50%); font:700 12px/15px var(--mono); color:var(--ink); background:var(--paper-2); padding:0 2px; border-radius:4px; white-space:nowrap; pointer-events:none; }
+.dsv9-tg.dsv9-k{ color:var(--fig-k); } .dsv9-tg.dsv9-pen{ color:var(--pen); } .dsv9-tg.dsv9-ok{ color:var(--ok); }
+.dsv9-code{ margin:8px auto 0; max-width:440px; padding:7px 9px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:12px/1.42 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv9-code small{ display:block; font:700 .75rem var(--body); color:var(--graphite); margin-bottom:2px; }
+.dsv9-code span{ display:block; border-radius:3px; padding:0 3px; transition:background .3s; }
+.dsv9-code span.dsv9-cur{ background:color-mix(in srgb, var(--fig-k) 26%, transparent); }
+.dsv9-code span.dsv9-gap{ color:var(--graphite); }
+.dsv9-box{ max-width:440px; margin:8px auto 0; padding:6px 10px; border:1px solid var(--line); border-left:4px solid var(--fig-k); border-radius:6px; background:var(--paper); font:600 12px/1.5 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; min-height:1.5em; }
+.dsv9-box small{ display:block; font:600 .75rem var(--body); color:var(--graphite); }
+.dsv9-out{ display:flex; flex-wrap:wrap; gap:3px; justify-content:center; margin:8px auto 0; max-width:440px; direction:ltr; }
+.dsv9-out span{ min-width:28px; height:28px; box-sizing:border-box; padding:0 3px; display:grid; place-items:center; border:1px solid var(--line); border-radius:4px; background:var(--paper); font:700 12px var(--mono); color:var(--ink); }
+.dsv9-out span.dsv9-on{ background:color-mix(in srgb, var(--ok) 32%, var(--paper)); border-color:var(--ok); }
+.dsv9-out span.dsv9-last{ box-shadow:0 0 0 2px var(--fig-k); }
+.dsv9-note{ text-align:center; font-size:.8rem; line-height:1.35; color:var(--graphite); margin:6px 0 0; }
+.dsv9-note.dsv9-bad{ color:var(--pen); font-weight:700; } .dsv9-note.dsv9-good{ color:var(--ok); font-weight:700; }
+.dsv9-mem{ display:flex; flex-direction:column; align-items:center; gap:2px; min-height:200px; }
+.dsv9-ptr{ font:700 12px var(--mono); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:3px 8px; background:var(--paper); }
+.dsv9-ptr b{ color:var(--fig-k); }
+.dsv9-arw{ font:700 15px/1 var(--mono); color:var(--fig-k); height:16px; }
+.dsv9-bx{ display:flex; border:2px solid var(--fig-k); border-radius:6px; overflow:hidden; background:var(--paper); }
+.dsv9-bx > span{ width:40px; display:flex; flex-direction:column; align-items:center; padding:2px 0 3px; }
+.dsv9-bx > span + span{ border-left:1px solid var(--line); }
+.dsv9-bx i{ font:normal 11.5px/1.2 var(--mono); color:var(--graphite); }
+.dsv9-bx b{ font:700 12px/1.4 var(--mono); color:var(--ink); }
+.dsv9-bx > span.dsv9-d{ background:color-mix(in srgb, var(--fig-k) 24%, var(--paper)); }
+.dsv9-bx.dsv9-new{ box-shadow:0 0 0 3px var(--ok); animation:dsv9-in .5s ease both; }
+.dsv9-kids{ display:flex; gap:10px; justify-content:center; }
+.dsv9-kid{ display:flex; flex-direction:column; align-items:center; gap:2px; min-width:124px; }
+.dsv9-show{ transition:opacity .45s; } .dsv9-show.dsv9-off{ opacity:0; }
+.dsv9-pair{ display:flex; flex-wrap:wrap; gap:6px 14px; justify-content:center; margin:6px 0 0; font-size:.82rem; color:var(--ink); }
+.dsv9-pair b{ font-family:var(--mono); }
+.dsv9-key{ display:inline-block; width:12px; height:12px; border-radius:50%; vertical-align:-1px; margin-right:4px; border:2px solid; box-sizing:border-box; }
+@keyframes dsv9-in{ from{ opacity:0; transform:scale(.6); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .dsv9-nd, .dsv9-bx, .dsv9-code span, .dsv9-show{ transition:none; animation:none; } }`;
+  if (!document.getElementById('dsv9-css')) { const s = document.createElement('style'); s.id = 'dsv9-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ── helpers ── */
+  const L = s => `<span class="ltr">${esc(s)}</span>`;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const D = s => `<bdi dir="ltr">${esc(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const P = s => (s || '').split(' ').filter(Boolean).map(w => 'dsv9-' + w).join(' ');
+  const SIDE = { l: 'left', r: 'right' }, GO = { l: 'شمال', r: 'يمين' };
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    <div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  const Code = ({ title, lines, cur }) => html`<div className="dsv9-code">${title && html`<small>${title}</small>`}${lines.map((t, k) => html`<span key=${k} className=${t === '…' ? 'dsv9-gap' : (cur || []).includes(k) ? 'dsv9-cur' : ''}>${t || ' '}</span>`)}</div>`;
+  const Box = ({ label, text }) => html`<div className="dsv9-box"><small>${label}</small>${text || ' '}</div>`;
+
+  /* ── BST model: nodes keyed by id; lab is what is drawn, v what is compared ── */
+  const val = lab => { const x = Number(lab); return lab !== '' && !isNaN(x) ? x : lab; };
+  const cmp = (a, b) => typeof a === 'number' && typeof b === 'number' ? a - b : (String(a) < String(b) ? -1 : String(a) > String(b) ? 1 : 0);
+  const cp = t => JSON.parse(JSON.stringify(t));
+  function add(t, lab) {
+    lab = String(lab); const v = val(lab);
+    if (Object.values(t.n).some(x => cmp(x.v, v) === 0)) return false;
+    let id = lab; while (t.n[id]) id += "'";
+    let p = t.root, par = null, side = null;
+    while (p != null) { par = p; side = cmp(v, t.n[p].v) < 0 ? 'l' : 'r'; p = t.n[p][side]; }
+    t.n[id] = { v, lab, l: null, r: null };
+    if (par == null) t.root = id; else t.n[par][side] = id;
+    return id;
+  }
+  const mk = labs => { const t = { root: null, n: {} }; labs.forEach(l => add(t, l)); return t; };
+  function order(t, kind, from) {
+    const out = [], go = id => { if (id == null) return; const x = t.n[id];
+      if (kind === 'pre') out.push(id); go(kind === 'rev' ? x.r : x.l); if (kind === 'in' || kind === 'rev') out.push(id); go(kind === 'rev' ? x.l : x.r); if (kind === 'post') out.push(id); };
+    go(from === undefined ? t.root : from); return out;
+  }
+  const subOf = (t, id) => id == null ? [] : order(t, 'pre', id);
+  const parentOf = (t, id) => Object.keys(t.n).find(k => t.n[k].l === id || t.n[k].r === id) || null;
+  const sideOf = (t, par, id) => t.n[par].l === id ? 'l' : 'r';
+  const pathTo = (t, id) => { const p = []; let x = id; while (x != null) { p.unshift(x); x = parentOf(t, x); } return p; };
+  const labs = (t, ids) => ids.map(id => t.n[id].lab);
+  function lay(t) {
+    const ids = order(t, 'in'), pos = {}; let md = 0;
+    const dep = (id, d) => { if (id == null) return; pos[id] = { d }; md = Math.max(md, d); dep(t.n[id].l, d + 1); dep(t.n[id].r, d + 1); };
+    dep(t.root, 0); ids.forEach((id, k) => { pos[id].x = (k + .5) / ids.length * 100; });
+    return { pos, md, n: ids.length };
+  }
+  const levels = t => t.root == null ? 0 : lay(t).md + 1;
+
+  // the slides' trees
+  const T1 = ['43', '31', '20', '28', '40', '33', '64', '56', '47', '59', '89'];
+  const T2 = ['50', '25', '65', '12', '33', '70', '55', '60', '53'];
+  const T10 = ['1.0', '0.6', '0.3', '0.4', '0.8', '0.7', '1.9', '1.4', '1.1', '1.8', '2.7'];
+  const TF = ['F', 'B', 'A', 'D', 'C', 'E', 'G', 'I', 'H'];
+  const QUIZ = ['45', '15', '8', '56', '5', '65', '47', '12', '18', '10', '73', '50', '16', '61'];
+  const SORTED = T2.slice().sort((a, b) => a - b);
+
+  /* ── the tree drawing: nodes are HTML (readable on phones), links are one SVG ── */
+  const R = 15, TOP = 22;
+  function TreeView({ t, cls = {}, tags = {}, stubs, hiE, stubCls = {}, stubTag = {}, onTap, blank, rh = 46, label }) {
+    if (t.root == null) return html`<div className="dsv9-tree" style=${{ height: '60px' }}><p className="dsv9-note">The tree is empty (root = NULL).</p></div>`;
+    const { pos, md, n } = lay(t), yc = id => TOP + pos[id].d * rh + R, sw = 100 / n * .3;
+    const H = TOP + md * rh + 2 * R + (stubs ? 30 : 6);
+    const lines = [], ticks = [], stags = [];
+    Object.keys(t.n).forEach(id => { const x = t.n[id];
+      ['l', 'r'].forEach(sd => { const c = x[sd];
+        if (c != null) lines.push(html`<line key=${id + sd} className=${'dsv9-e ' + P(hiE && hiE[c])} x1=${pos[id].x} y1=${yc(id)} x2=${pos[c].x} y2=${yc(c)} vectorEffect="non-scaling-stroke" />`);
+        else if (stubs) { const x2 = pos[id].x + (sd === 'l' ? -sw : sw), y2 = yc(id) + R + 11, k = id + ':' + sd, c2 = 'dsv9-st ' + P(stubCls[k]);
+          ticks.push(html`<g key=${k}><line className=${c2} x1=${pos[id].x} y1=${yc(id)} x2=${x2} y2=${y2} vectorEffect="non-scaling-stroke" /><line className=${c2} x1=${x2 - sw * .35} y1=${y2} x2=${x2 + sw * .35} y2=${y2} vectorEffect="non-scaling-stroke" /></g>`);
+          if (stubTag[k]) stags.push(html`<span key=${'t' + k} className="dsv9-tg dsv9-pen" style=${{ left: x2 + '%', top: (y2 + 2) + 'px' }}>${stubTag[k]}</span>`); }
+      }); });
+    const tg = id => tags[id] && html`<span key=${'g' + id} className=${'dsv9-tg ' + P(tags[id].c || 'k')} style=${{ left: pos[id].x + '%', top: (yc(id) - R - 16) + 'px' }}>${tags[id].t}</span>`;
+    return html`<div className="dsv9-tree" style=${{ height: H + 'px' }} role="img" aria-label=${label || 'A binary tree'}>
+      <svg viewBox=${`0 0 100 ${H}`} preserveAspectRatio="none" aria-hidden="true">${lines}${ticks}</svg>
+      ${Object.keys(t.n).map(id => { const st = { left: pos[id].x + '%', top: (yc(id) - R) + 'px' }, c = 'dsv9-nd ' + P(cls[id]), lab = blank ? '' : t.n[id].lab;
+        return onTap ? html`<button key=${id} className=${c} style=${st} onClick=${() => onTap(id)} aria-label=${'node ' + (blank ? (pos[id].d ? 'at depth ' + pos[id].d : 'root') : lab)}>${lab}</button>`
+          : html`<span key=${id} className=${c} style=${st}>${lab}</span>`; })}
+      ${Object.keys(tags).filter(id => pos[id]).map(tg)}${stags}</div>`;
+  }
+
+  /* ── [0.1–0.2] slides 3–11: the parts of a tree ── */
+  const PT = mk(T1), ALL = Object.keys(PT.n);
+  const each = (ids, c) => Object.fromEntries(ids.map(id => [id, c]));
+  const LEAVES = ALL.filter(id => !PT.n[id].l && !PT.n[id].r), INNER = ALL.filter(id => !LEAVES.includes(id));
+  const subSet = id => { const s = subOf(PT, id), e = {}, st = {}; s.forEach(x => { if (x !== id) e[x] = 'hi'; st[x + ':l'] = 'hi'; st[x + ':r'] = 'hi'; }); return { cls: each(s, 'sub'), hiE: e, stubCls: st }; };
+  const PARTS = [
+    { cls: each(ALL, 'k'), en: 'A tree is a non-linear (hierarchical) data structure made of <b>nodes</b> (the circles), with links from each node down to its children.', ar: 'الـ tree هو data structure من نوع non-linear (hierarchical) مكوّن من <b>nodes</b> (الدواير)، وكل node ليها links نازلة للـ children بتوعها.' },
+    { cls: { 43: 'red', 31: 'grn', 64: 'grn' }, tags: { 43: { t: 'root', c: 'pen' }, 31: { t: 'child', c: 'ok' }, 64: { t: 'child', c: 'ok' } }, en: 'The <b>root node</b> is the top node: it has no parent. The nodes right under it are its <b>child nodes</b>.', ar: 'الـ <b>root node</b> هي الـ node اللي فوق خالص ومالهاش parent. والـ nodes اللي تحتها على طول هي الـ <b>child nodes</b> بتاعتها.' },
+    { cls: { 31: 'red', 64: 'red', 20: 'grn', 40: 'grn', 56: 'grn', 89: 'grn' }, tags: { 31: { t: 'parent', c: 'pen' }, 64: { t: 'parent', c: 'pen' } }, en: 'A node with children is the <b>parent node</b> of those <b>child nodes</b>: each red node is the parent of the green nodes right under it.', ar: 'أي node ليها children تبقى الـ <b>parent node</b> بتاعة الـ <b>child nodes</b> دي. وهنا كل node حمرا هي الـ parent بتاع الـ nodes الخضرا اللي تحتها على طول.' },
+    { cls: each(LEAVES, 's'), en: '<b>Leaf (terminal) nodes</b> have no children: both of their links are NULL (the short end marks).', ar: 'الـ <b>Leaf (terminal) nodes</b> مالهاش children، والـ links الاتنين بتوعها NULL (العلامات القصيرة اللي في الآخر).' },
+    { cls: each(INNER, 'k'), en: 'An <b>internal node</b> has at least one child: every node that is not a leaf (here 6 of the 11).', ar: 'الـ <b>internal node</b> ليها child واحد على الأقل، يعني أي node مش leaf (هنا 6 من الـ 11).' },
+    Object.assign(subSet('31'), { en: 'A <b>sub-tree</b> is a node together with all its descendants: here the root\'s left child and everything under it.', ar: 'الـ <b>sub-tree</b> هو node ومعاها كل الـ descendants بتوعها، وهنا الـ left child بتاع الـ root وكل اللي تحته.' }),
+    Object.assign(subSet('64'), { en: 'Another sub-tree: the root\'s right child with all its descendants.', ar: 'وده sub-tree تاني، الـ right child بتاع الـ root ومعاه كل الـ descendants بتوعه.' }),
+    Object.assign(subSet('56'), { en: 'A sub-tree can start at any node; this one has 3 nodes. Each sub-tree is a tree itself.', ar: 'الـ sub-tree ممكن يبدأ من أي node، وده فيه 3 nodes. وكل sub-tree هو نفسه tree.' }),
+    { cls: {}, stubCls: Object.fromEntries(ALL.flatMap(id => ['l', 'r'].filter(s => !PT.n[id][s]).map(s => [id + ':' + s, 'nul']))), en: 'This is a <b>binary tree</b>: each node has at most 2 children, a left one and a right one; a missing child is a NULL link (red). Tap any node to see its parent, children and sub-tree.', ar: 'ده <b>binary tree</b>، يعني كل node ليها 2 children بالكتير (left وright)، والـ child اللي مش موجود بيبقى NULL link (الأحمر). دوس على أي node عشان تشوف الـ parent والـ children والـ sub-tree بتوعها.' }
+  ];
+  function partsTap(id) {
+    const x = PT.n[id], par = parentOf(PT, id), kids = [x.l, x.r].filter(c => c != null), s = subOf(PT, id), k = kids.length, m = s.length;
+    const cls = Object.assign(each(s, 'sub'), each(kids, 'grn'), { [id]: 'red' }), tags = { [id]: { t: 'this', c: 'pen' } };
+    if (par) { cls[par] = 'k'; tags[par] = { t: 'parent', c: 'k' }; }
+    kids.forEach(c => { tags[c] = { t: 'child', c: 'ok' }; });
+    const hiE = {}; s.forEach(c => { if (c !== id) hiE[c] = 'hi'; });
+    const en = (par ? 'This node\'s parent is marked <b>parent</b>. ' : 'This node is the <b>root</b>: it has no parent. ') + (k ? `It has ${k} ${k === 1 ? 'child' : 'children'}, so it is an <b>internal node</b>.` : 'It has no children, so it is a <b>leaf</b>.') + ` Its sub-tree (bold outline) has ${m} node${m > 1 ? 's' : ''}.`;
+    const ar = (par ? 'الـ parent بتاع الـ node دي متعلّم عليه <b>parent</b>. ' : 'الـ node دي هي الـ <b>root</b> ومالهاش parent. ') + (k ? `ليها ${D(k)} ${k === 1 ? 'child' : 'children'}، فهي <b>internal node</b>.` : 'مالهاش children، فهي <b>leaf</b>.') + ` والـ sub-tree بتاعها (الحدود التخينة) فيه ${D(m)} ${m > 1 ? 'nodes' : 'node'}.`;
+    return { cls, tags, hiE, en, ar };
+  }
+  function Parts({ ar }) {
+    const [i, ctl] = useWalk(PARTS.length, 2600, 0), [tap, setTap] = useState(null);
+    const st = tap ? partsTap(tap) : PARTS[i];
+    const go = { replay: () => { setTap(null); ctl.replay(); }, go: k => { setTap(null); ctl.go(k); } };
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <${TreeView} t=${PT} blank=${true} stubs=${true} cls=${st.cls} tags=${st.tags || {}} hiE=${st.hiE} stubCls=${st.stubCls || {}} onTap=${id => { ctl.go(PARTS.length - 1); setTap(id); }} label="The slides' tree of 11 nodes" />
+      <p className="dsv9-note">Tap a node to explore it</p></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${PARTS.length} i=${tap ? PARTS.length - 1 : i} ctl=${go} /></figure>`;
+  }
+  Parts.build = () => PARTS.concat(ALL.map(partsTap));
+
+  /* ── [0.3] slide 12: the BST rule, node by node ── */
+  function bstFirstBad(t) {
+    const ids = order(t, 'pre');
+    for (const a of ids) for (const sd of ['l', 'r']) for (const x of subOf(t, t.n[a][sd])) { const c = cmp(t.n[x].v, t.n[a].v); if (sd === 'l' ? c >= 0 : c <= 0) return { a, x, sd, eq: c === 0 }; }
+    return null;
+  }
+  function bstMsg(t, id) {
+    const x = t.n[id], lo = subOf(t, x.l), hi = subOf(t, x.r);
+    const lBad = lo.filter(c => cmp(t.n[c].v, x.v) >= 0), rBad = hi.filter(c => cmp(t.n[c].v, x.v) <= 0), k = x.lab;
+    const part = (ids, bad, sd) => {
+      const w = sd === 'l' ? 'less' : 'greater', wa = sd === 'l' ? 'أصغر' : 'أكبر';
+      if (!ids.length) return { en: `no ${SIDE[sd]} subtree`, ar: `ومالهاش ${SIDE[sd]} subtree.` };
+      return { en: `${SIDE[sd]} subtree (${labs(t, ids).join(', ')}) ` + (bad.length ? `has ${labs(t, bad).join(', ')}, not ${w} than ${k}` : `all ${w} than ${k}`),
+        ar: `والـ ${SIDE[sd]} subtree بتاعها فيه` + L(labs(t, ids).join(', ')) + (bad.length ? `وفيه ${D(labs(t, bad).join(', '))} مش ${wa} من ${D(k)}.` : `وكلهم ${wa} من ${D(k)}.`) };
+    };
+    const a = part(lo, lBad, 'l'), b = part(hi, rBad, 'r'), f = bstFirstBad(t);
+    let en = `Node <b>${esc(k)}</b>: ${a.en}; ${b.en}. `, ar = `دي الـ node ${D(k)}. ` + a.ar + ' ' + b.ar + ' ';
+    if (!f) { en += 'Every node passes, and all keys are unique: <b>this is a BST</b>.'; ar += 'وكل الـ nodes بتعدّي القاعدتين والـ keys مش متكررة، فـ<b>ده BST</b>.'; }
+    else { const A = t.n[f.a].lab, X = t.n[f.x].lab, rel = f.eq ? '=' : f.sd === 'l' ? '>' : '<';
+      en += `<b>Not a BST</b>: ${esc(X)} is in the ${SIDE[f.sd]} subtree of ${esc(A)}, but ${esc(X + ' ' + rel + ' ' + A)}` + (f.eq ? ' (keys must be unique).' : '.');
+      ar += `<b>ده مش BST</b>، لأن ${D(X)} موجودة في الـ ${SIDE[f.sd]} subtree بتاع ${D(A)}، مع إن` + L(X + ' ' + rel + ' ' + A) + (f.eq ? 'والـ keys لازم تبقى unique.' : ''); }
+    return { en, ar, lBad, rBad, lo, hi, bad: f };
+  }
+  function BstRule({ ar }) {
+    const [t, setT] = useState(() => mk(T1)), [sel, setSel] = useState('43'), [txt, setTxt] = useState('45');
+    const m = bstMsg(t, sel), cls = Object.assign(each(m.lo, 'lo'), each(m.hi, 'hi'), each(m.lBad.concat(m.rBad), 'bad'), { [sel]: 'cur' });
+    if (m.bad && !cls[m.bad.x]) cls[m.bad.x] = 'bad';
+    const set = () => { const v = parseInt(txt, 10); if (isNaN(v)) return; const t2 = cp(t); t2.n[sel].v = Math.max(-99, Math.min(999, v)); t2.n[sel].lab = String(t2.n[sel].v); setT(t2); };
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <${TreeView} t=${t} cls=${cls} tags=${{ [sel]: { t: 'node', c: 'k' } }} onTap=${setSel} label="Tree 1 with the selected node's left and right subtrees coloured" />
+      <div className="dsv9-pair"><span><i className="dsv9-key" style=${{ borderColor: 'var(--ok)' }}></i>left subtree: must be less</span><span><i className="dsv9-key" style=${{ borderColor: 'var(--fig-k)' }}></i>right subtree: must be greater</span></div>
+      <p className="dsv9-note">Tap a node to check it. Try your own: give it a new key.</p>
+      <div className="dsv9-row"><span className="dsv9-lbl">new key for ${t.n[sel].lab}</span><input className="dsv9-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="new key for the selected node" />
+        <button className="fig-btn solid" onClick=${set}>Set</button><button className="fig-btn" onClick=${() => { setT(mk(T1)); setSel('43'); }}>↻ Reset</button></div></div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} /></figure>`;
+  }
+  BstRule.build = () => { const out = []; const t = mk(T1); Object.keys(t.n).forEach(id => out.push(bstMsg(t, id)));
+    [['33', 45], ['59', 43], ['20', 28], ['89', 60], ['28', 10]].forEach(([id, v]) => { const t2 = cp(t); t2.n[id].v = v; t2.n[id].lab = String(v); Object.keys(t2.n).forEach(k => out.push(bstMsg(t2, k))); }); return out; };
+
+  /* ── [1] slides 13–21: the traversals of the slides' trees ── */
+  const TRAV_TREES = [{ k: 't1', b: 'Tree 1 (slides 15–19)', keys: T1 }, { k: 't2', b: 'Tree 2 (slide 20)', keys: T2 }, { k: 'tf', b: 'Quiz tree F…', keys: TF }, { k: 'one', b: 'One node', keys: ['43'] }];
+  const ORD = { in: { b: 'Inorder', f: 'inorder', rule: 'Left → Parent → Right', en: 'left subtree, then the parent, then the right subtree' }, pre: { b: 'Preorder', f: 'preorder', rule: 'Parent → Left → Right', en: 'the parent, then its left subtree, then its right subtree' },
+    post: { b: 'Postorder', f: 'postorder', rule: 'Left → Right → Parent', en: 'left subtree, then right subtree, then the parent' }, rev: { b: 'Reverse inorder', f: 'reverse', rule: 'Right → Parent → Left', en: 'right subtree, then the parent, then the left subtree' } };
+  function travSteps(t, kind, single) {
+    const o = ORD[kind], seq = order(t, kind), rt = t.n[t.root].lab, S = [];
+    S.push({ k: 0, cur: null, en: `<b>${o.b}</b>: ${o.en}. Start with ${o.f}(root), at ${esc(rt)}.`, ar: `ترتيب الـ <b>${o.b}</b> هو` + L(o.rule) + `ونبدأ بالـ call على الـ root (${D(rt)}).` });
+    seq.forEach((id, j) => { const x = t.n[id], lab = x.lab, leaf = !x.l && !x.r; let en, ar;
+      if (kind === 'in') { en = `Print <b>${esc(lab)}</b>: ${x.l ? 'its left subtree is finished' : 'its left link is NULL'}, so the parent comes now; next, its right subtree${x.r ? '' : ' (NULL)'}.`; ar = `نطبع <b>${D(lab)}</b>، لأن ${x.l ? 'الـ left subtree بتاعها خلص' : 'الـ left link بتاعها NULL'}، فده دور الـ parent، وبعده الـ right subtree${x.r ? '' : ' (NULL)'}.`; }
+      else if (kind === 'pre') { en = `Print <b>${esc(lab)}</b> as soon as its call starts (parent first); then its left subtree, then its right${leaf ? ' (both NULL)' : ''}.`; ar = `نطبع <b>${D(lab)}</b> أول ما الـ call بتاعها تبدأ (الـ parent الأول)، وبعدين الـ left subtree، وبعدين الـ right${leaf ? ' (الاتنين NULL)' : ''}.`; }
+      else if (kind === 'post') { en = `Print <b>${esc(lab)}</b> only after both its subtrees are finished${leaf ? ' (it is a leaf: both NULL)' : ''}: the parent comes last.`; ar = `نطبع <b>${D(lab)}</b> بعد ما الـ subtrees الاتنين بتوعها يخلصوا${leaf ? ' (هي leaf والاتنين NULL)' : ''}، فالـ parent بييجي في الآخر.`; }
+      else { en = `Print <b>${esc(lab)}</b>: ${x.r ? 'its right subtree is finished' : 'its right link is NULL'}, so the parent comes now; next, its left subtree.`; ar = `نطبع <b>${D(lab)}</b>، لأن ${x.r ? 'الـ right subtree بتاعها خلص' : 'الـ right link بتاعها NULL'}، فده دور الـ parent، وبعده الـ left subtree.`; }
+      if (j === seq.length - 1) {
+        if (single) { en += ' With only one node, preorder and postorder print the same output.'; ar += ' ومع node واحدة بس، الـ preorder والـ postorder بيطلّعوا نفس الـ output.'; }
+        else if (kind === 'in') { en += ' Done: on a BST, inorder gives the keys in ascending (sorted) order.'; ar += ' وكده خلصنا، والـ inorder على BST بيطلّع الـ keys مترتبة تصاعدي (ascending).'; }
+        else if (kind === 'rev') { en += ' Done: right, root, left on a BST gives descending order.'; ar += ' وكده خلصنا، والترتيب ده على BST بيطلّع الـ keys تنازلي (descending).'; }
+        else if (kind === 'pre') { en += ` Done: the root (${esc(rt)}) was printed first.`; ar += ` وكده خلصنا، والـ root (${D(rt)}) اتطبع الأول.`; }
+        else { en += ` Done: the root (${esc(rt)}) was printed last.`; ar += ` وكده خلصنا، والـ root (${D(rt)}) اتطبع في الآخر.`; }
+      }
+      S.push({ k: j + 1, cur: id, en, ar }); });
+    return { S, seq };
+  }
+  function Traverse({ ar }) {
+    const [tk, setTk] = useState('t1'), [kind, setKind] = useState('in');
+    const tr = TRAV_TREES.find(x => x.k === tk), t = mk(tr.keys), { S, seq } = travSteps(t, kind, tk === 'one');
+    const [i, ctl] = useWalk(S.length, 1500, tk + kind), st = S[i], done = seq.slice(0, st.k);
+    const cls = Object.assign(each(done, 'done'), st.cur ? { [st.cur]: 'found' } : {});
+    const stack = st.cur ? pathTo(t, st.cur).map(id => ORD[kind].f + '(' + t.n[id].lab + ')') : [ORD[kind].f + '(' + t.n[t.root].lab + ')'];
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-modes">${TRAV_TREES.map(x => html`<button key=${x.k} className="fig-btn" aria-pressed=${tk === x.k} onClick=${() => setTk(x.k)}>${x.b}</button>`)}</div>
+      <div className="dsv9-modes">${Object.keys(ORD).map(k => html`<button key=${k} className="fig-btn" aria-pressed=${kind === k} onClick=${() => setKind(k)}>${ORD[k].b}</button>`)}</div>
+      <${TreeView} t=${t} cls=${cls} stubs=${true} tags=${st.cur ? { [st.cur]: { t: 'print', c: 'ok' } } : {}} label=${tr.b} />
+      <div className="dsv9-out" aria-label="output">${seq.map((id, j) => html`<span key=${j} className=${j < st.k ? 'dsv9-on' + (j === st.k - 1 ? ' dsv9-last' : '') : ''}>${j < st.k ? t.n[id].lab : ''}</span>`)}</div>
+      <${Box} label="Calls open now (the current node and its ancestors)" text=${stack.join(' → ')} /></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+  Traverse.build = () => TRAV_TREES.flatMap(x => Object.keys(ORD).flatMap(k => travSteps(mk(x.keys), k, x.k === 'one').S));
+
+  /* ── [2] a tree from an insertion order: subtree sizes and the three traversals (quiz) ── */
+  const parseKeys = (s, dec) => (String(s).match(dec ? /-?\d+(\.\d+)?/g : /-?\d+/g) || []).slice(0, 15).map(x => dec ? Number(x).toFixed(1) : String(Math.max(-99, Math.min(999, parseInt(x, 10)))));
+  const BUILDS = [{ k: 't2', b: 'Tree 2', keys: T2 }, { k: 'quiz', b: 'Quiz: 45, 15, 8, …', keys: QUIZ }, { k: 't1', b: 'Tree 1', keys: T1 }];
+  function buildMsg(keys, isQuiz) {
+    const t = { root: null, n: {} }, dup = []; keys.forEach(k => { if (!add(t, k)) dup.push(k); });
+    if (t.root == null) return { t, en: 'Type some keys (numbers separated by commas or spaces).', ar: 'اكتب شوية keys (أرقام بينها فواصل أو مسافات).' };
+    const r = t.n[t.root], nl = subOf(t, r.l).length, nr = subOf(t, r.r).length, lv = levels(t);
+    let en = `Root <b>${esc(r.lab)}</b>: its left subtree has <b>${nl}</b> node${nl === 1 ? '' : 's'} and its right subtree <b>${nr}</b>; the tree has ${lv} level${lv === 1 ? '' : 's'}.`;
+    let ar = `الـ root هو <b>${D(r.lab)}</b>، والـ left subtree بتاعه فيه <b>${D(nl)}</b> ${nl === 1 ? 'node' : 'nodes'}، والـ right subtree فيه <b>${D(nr)}</b>، والـ tree كله ${D(lv)} ${lv === 1 ? 'level' : 'levels'}.`;
+    if (isQuiz) { en += ' This is the quiz answer: 7 left and 6 right.'; ar += ' ودي إجابة سؤال الـ quiz (7 في الـ left و6 في الـ right).'; }
+    if (dup.length) { en += ` ${esc(dup.join(', '))} skipped: BST keys are unique.`; ar += ' واتشال المكرر' + L(dup.join(', ')) + 'لأن الـ keys في الـ BST لازم تبقى unique.'; }
+    return { t, en, ar };
+  }
+  function Build({ ar }) {
+    const [txt, setTxt] = useState(T2.join(', ')), [keys, setKeys] = useState(T2);
+    const m = buildMsg(keys, keys.join() === QUIZ.join()), t = m.t, r = t.root;
+    const cls = r == null ? {} : Object.assign(each(subOf(t, t.n[r].l), 'lo'), each(subOf(t, t.n[r].r), 'hi'), { [r]: 'cur' });
+    const tl = k => labs(t, order(t, k)).join(' ');
+    const load = k => { setKeys(k); setTxt(k.join(', ')); };
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-modes">${BUILDS.map(x => html`<button key=${x.k} className="fig-btn" aria-pressed=${keys.join() === x.keys.join()} onClick=${() => load(x.keys)}>${x.b}</button>`)}</div>
+      <${TreeView} t=${t} cls=${cls} tags=${r == null ? {} : { [r]: { t: 'root', c: 'k' } }} rh=${42} label="BST built from the insertion order" />
+      <div className="dsv9-pair"><span><i className="dsv9-key" style=${{ borderColor: 'var(--ok)' }}></i>left subtree</span><span><i className="dsv9-key" style=${{ borderColor: 'var(--fig-k)' }}></i>right subtree</span></div>
+      ${r != null && html`<${Box} label="Traversals" text=${'Preorder:  ' + tl('pre') + '\nInorder:   ' + tl('in') + '\nPostorder: ' + tl('post')} />`}
+      <div className="dsv9-row"><span className="dsv9-lbl">Try your own insertion order</span><textarea className="dsv9-in dsv9-wide" rows="2" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="keys in insertion order"></textarea>
+        <button className="fig-btn solid" onClick=${() => setKeys(parseKeys(txt))}>Build</button></div></div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} /></figure>`;
+  }
+  Build.build = () => [buildMsg(T2), buildMsg(QUIZ, true), buildMsg(T1), buildMsg(['5', '5', '3']), buildMsg([]), buildMsg(['7'])];
+
+  /* ── [3] slides 22–23: the Node and Tree classes as boxes and pointers ── */
+  const NCODE = ['class Node', '{', 'public:', '   int data;', '   Node *left;', '   Node *right;', '   Node() { data = 0;', '            left = right = NULL; }', '};', 'class Tree', '{', 'public:', '   Node *root;', '   Tree() { root = NULL; }', '};', '// in main:', 'Tree list;', 'list.root = list.insert(list.root, a[i]);'];
+  const NM = [
+    { cur: [3, 4, 5], box: 'blank', en: 'Each tree node stores three things: its <b>data</b> and two pointers, <b>left</b> and <b>right</b>, one for each child.', ar: 'كل node في الـ tree شايلة 3 حاجات، الـ <b>data</b> بتاعتها و2 pointers هما الـ <b>left</b> والـ <b>right</b>، واحد لكل child.' },
+    { cur: [6, 7], box: 'new', en: 'The constructor Node() sets data = 0 and left = right = NULL: a new node starts with no children.', ar: 'الـ constructor بتاع الـ Node بيخلّي القيم دي، يعني الـ node الجديدة بتبدأ من غير children:' + L('data = 0, left = right = NULL') },
+    { cur: [12, 13, 16], root: 'NULL', en: 'The Tree class keeps only <b>root</b>, a pointer to the top node. Tree() sets root = NULL: the tree starts empty.', ar: 'الـ Tree class شايلة <b>root</b> بس، وده pointer على الـ node اللي فوق. والـ constructor بتاعها بيخلّي الـ root بـ NULL، يعني الـ tree بيبدأ فاضي.' },
+    { cur: [17], root: 43, en: 'Insert 43: insert(list.root, 43) finds temp == NULL, creates a node with data 43 and returns it; main stores it in list.root.', ar: 'نضيف 43، فالـ insert بتلاقي الـ temp بـ NULL، فتعمل node فيها 43 وترجّعها، والـ main بتحطها في الـ root:' + L('list.root = list.insert(list.root, 43);') },
+    { cur: [17], root: 43, kids: ['31'], en: 'Insert 31: 31 &lt; 43, so the new node is stored in 43\'s <b>left</b> pointer.', ar: 'نضيف 31، ولأن ' + D('31 < 43') + ' فالـ node الجديدة بتتحط في الـ <b>left</b> pointer بتاع 43.' },
+    { cur: [17], root: 43, kids: ['31', '64'], en: 'Insert 64: 64 &gt; 43, so it goes in 43\'s <b>right</b> pointer. Every circle in the tree drawings is one of these boxes; each NULL pointer is an empty subtree (an end mark).', ar: 'نضيف 64، ولأن ' + D('64 > 43') + ' فبتتحط في الـ <b>right</b> pointer بتاع 43. وكل دايرة في رسومات الـ tree هي صندوق من دول، وكل NULL pointer هو subtree فاضي (علامة النهاية).' }
+  ];
+  const NBox = ({ l, d, r, cls }) => html`<div className=${'dsv9-bx ' + P(cls)}><span><i>left</i><b>${l}</b></span><span className="dsv9-d"><i>data</i><b>${d}</b></span><span><i>right</i><b>${r}</b></span></div>`;
+  function NodeMem({ ar }) {
+    const [i, ctl] = useWalk(NM.length, 2600, 0), st = NM[i], kids = st.kids || [];
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-mem">
+        ${st.box && html`<div className="dsv9-ptr">${st.box === 'blank' ? 'Node' : 'new Node()'}</div>`}
+        ${st.box && html`<${NBox} l=${st.box === 'blank' ? '?' : 'NULL'} d=${st.box === 'blank' ? '?' : 0} r=${st.box === 'blank' ? '?' : 'NULL'} cls=${st.box === 'new' ? 'new' : ''} />`}
+        ${st.root != null && html`<div className="dsv9-ptr">list.root = <b>${st.root === 'NULL' ? 'NULL' : '•'}</b></div>`}
+        ${st.root != null && st.root !== 'NULL' && html`<span className="dsv9-arw">↓</span>`}
+        ${st.root != null && st.root !== 'NULL' && html`<${NBox} l=${kids.includes('31') ? '•' : 'NULL'} d=${43} r=${kids.includes('64') ? '•' : 'NULL'} cls=${kids.length ? '' : 'new'} />`}
+        ${kids.length > 0 && html`<div className="dsv9-kids">
+          <div className="dsv9-kid"><span className="dsv9-arw">↙</span><${NBox} l="NULL" d=${31} r="NULL" cls=${kids.length === 1 ? 'new' : ''} /></div>
+          <div className=${'dsv9-kid dsv9-show' + (kids.includes('64') ? '' : ' dsv9-off')}><span className="dsv9-arw">↘</span><${NBox} l="NULL" d=${64} r="NULL" cls="new" /></div></div>`}
+      </div>
+      <${Code} title="Slides 22–23" lines=${NCODE} cur=${st.cur} /></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${NM.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+  NodeMem.build = () => NM;
+
+  /* ── insert / search / minimum / maximum walked with the professor's code ── */
+  const C_INS = ['Node* insert(Node *temp, int item)', '{', '   if (temp == NULL)', '   {', '      Node *newnode = new Node();', '      newnode->data = item;', '      temp = newnode;', '   }', '   else if (item < temp->data)', '      temp->left = insert(temp->left, item);', '   else', '      temp->right = insert(temp->right, item);', '   return temp;', '}'];
+  const C_SRCH = ['bool search(Node *temp, int item)', '{', '   if (temp == NULL) return false;', '   else if (item == temp->data)', '      return true;', '   else if (item < temp->data)', '      return search(temp->left, item);', '   else', '      return search(temp->right, item);', '}'];
+  const C_MIN = ['Node* minimum(Node *temp)', '{', '   if (temp == NULL) return NULL;', '   else if (temp->left == NULL)', '      return temp;', '   else return minimum(temp->left);', '}'];
+  const C_MAX = ['Node* maximum(Node *temp)', '{', '   if (temp == NULL) return NULL;', '   else if (temp->right == NULL)', '      return temp;', '   else return maximum(temp->right);', '}'];
+  function walkSteps(t, mode, key) {
+    const S = [], stack = [], path = [], fn = mode === 'ins' ? 'insert' : mode === 'find' ? 'search' : mode;
+    if (mode === 'ins' || mode === 'find') {
+      const v = val(key), ex = Object.keys(t.n).find(id => cmp(t.n[id].v, v) === 0);
+      if (mode === 'ins' && ex) return { S: [{ t, cls: { [ex]: 'bad' }, lines: [], stack: [], en: `${esc(key)} is already in the tree. BST keys are unique, so it is not inserted again.`, ar: `الـ ${D(key)} موجودة في الـ tree أصلًا، والـ keys في الـ BST مش بتتكرر، فمش هنضيفها تاني.` }], tEnd: t };
+      let p = t.root, last = null, side = null;
+      while (p != null) {
+        const x = t.n[p], c = cmp(v, x.v); stack.push(fn + '(' + x.lab + ')');
+        if (mode === 'find' && c === 0) {
+          S.push({ t, cur: p, path: path.slice(), lines: [3, 4], stack: stack.slice(), found: p, en: `${esc(key)} == ${esc(x.lab)}: <b>found</b>, return true. Path: ${esc(labs(t, path.concat(p)).join(' → '))}.`, ar: `لقيناها لأن ${D(key + ' == ' + x.lab)}، فبنرجّع true. والطريق كان:` + L(labs(t, path.concat(p)).join(' → ')) });
+          return { S, tEnd: t };
+        }
+        side = c < 0 ? 'l' : 'r'; const op = c < 0 ? '<' : '>', call = `${mode === 'ins' ? 'temp->' + SIDE[side] + ' = ' : 'return '}${fn}(temp->${SIDE[side]}, ${key})`;
+        S.push({ t, cur: p, path: path.slice(), lines: mode === 'ins' ? (c < 0 ? [8, 9] : [10, 11]) : (c < 0 ? [5, 6] : [7, 8]), stack: stack.slice(),
+          en: `${esc(key + ' ' + op + ' ' + x.lab)}, so go ${SIDE[side]}: ${esc(call)}.`, ar: `نقارن ${D(key + ' ' + op + ' ' + x.lab)}، فنروح ${GO[side]}، يعني` + L(call + ';') });
+        path.push(p); last = p; p = x[side];
+      }
+      stack.push(fn + '(NULL)');
+      const nul = last == null ? {} : { [last + ':' + side]: 'nul' }, ntag = last == null ? {} : { [last + ':' + side]: 'NULL' };
+      if (mode === 'find') {
+        S.push({ t, path: path.slice(), nul, ntag, lines: [2], stack: stack.slice(), en: `temp is NULL (${esc(t.n[last].lab)} has no ${SIDE[side]} child): return false, ${esc(key)} is <b>not found</b>. Path: ${esc(labs(t, path).join(' → '))} → NULL.`,
+          ar: `الـ temp بقى NULL (مفيش ${SIDE[side]} child لـ ${D(t.n[last].lab)})، فبنرجّع false، يعني ${D(key)} <b>مش موجودة</b>. والطريق كان:` + L(labs(t, path).join(' → ') + ' → NULL') });
+        return { S, tEnd: t };
+      }
+      const t2 = cp(t), nid = add(t2, key), where = last == null ? 'the tree is empty' : `${esc(t.n[last].lab)} has no ${SIDE[side]} child`;
+      S.push({ t, path: path.slice(), nul, ntag, lines: [2], stack: stack.slice(), en: `temp is NULL (${where}): this is where ${esc(key)} goes.`, ar: last == null ? `الـ temp بقى NULL لأن الـ tree فاضي، وده مكان ${D(key)}.` : `الـ temp بقى NULL (مفيش ${SIDE[side]} child لـ ${D(t.n[last].lab)})، وده المكان اللي ${D(key)} هتتحط فيه.` });
+      S.push({ t: t2, path: path.slice(), cls: { [nid]: 'new' }, tags: { [nid]: { t: 'newnode', c: 'ok' } }, lines: [4, 5, 6], stack: stack.slice(), en: `Create a new node: newnode->data = ${esc(key)}, temp = newnode, and return it.`, ar: 'نعمل node جديدة ونحط فيها القيمة، ونرجّعها:' + L(`newnode->data = ${key}; temp = newnode;`) });
+      const fin = last == null ? { en: `The returned node becomes the root.`, ar: 'والـ node اللي رجعت بقت هي الـ root.' }
+        : { en: `Back in ${fn}(${esc(t.n[last].lab)}): temp->${SIDE[side]} = the new node, so <b>${esc(key)} is the ${SIDE[side]} child of ${esc(t.n[last].lab)}</b>. Every other call returns its own temp, so the links above stay the same.`,
+          ar: `نرجع للـ call بتاعة ${D(t.n[last].lab)}، والـ ${SIDE[side]} link بتاعها بياخد الـ node الجديدة، فـ<b>الـ ${D(key)} بقت الـ ${SIDE[side]} child بتاع ${D(t.n[last].lab)}</b>. وباقي الـ calls كل واحدة بترجّع الـ temp بتاعها، فالـ links اللي فوق مش بتتغير.` };
+      S.push(Object.assign({ t: t2, path: path.slice(), cls: { [nid]: 'found' }, lines: [12], stack: stack.slice() }, fin));
+      return { S, tEnd: t2 };
+    }
+    // minimum / maximum: keep going left (right) until that link is NULL
+    const sd = mode === 'minimum' ? 'l' : 'r'; let p = t.root;
+    while (p != null) { const x = t.n[p], nx = x[sd]; stack.push(fn + '(' + x.lab + ')');
+      if (nx == null) { S.push({ t, cur: p, path: path.slice(), found: p, nul: { [p + ':' + sd]: 'nul' }, ntag: { [p + ':' + sd]: 'NULL' }, lines: [3, 4], stack: stack.slice(),
+        en: `temp->${SIDE[sd]} is NULL, so return temp: the <b>${mode} is ${esc(x.lab)}</b>, the ${sd === 'l' ? 'leftmost' : 'rightmost'} node. Path: ${esc(labs(t, path.concat(p)).join(' → '))}.`,
+        ar: `الـ ${SIDE[sd]} بتاع ${D(x.lab)} بـ NULL، فبنرجّع الـ temp، يعني الـ <b>${mode} هو ${D(x.lab)}</b>، وهو آخر node ${sd === 'l' ? 'على الشمال (leftmost)' : 'على اليمين (rightmost)'}. والطريق كان:` + L(labs(t, path.concat(p)).join(' → ')) }); break; }
+      S.push({ t, cur: p, path: path.slice(), lines: [5], stack: stack.slice(), en: `${esc(x.lab)} has a ${SIDE[sd]} child (${esc(t.n[nx].lab)}), so return ${fn}(temp->${SIDE[sd]}).`, ar: `الـ ${D(x.lab)} ليها ${SIDE[sd]} child (${D(t.n[nx].lab)})، فبنرجّع الـ call على الـ ${SIDE[sd]}:` + L(`return ${fn}(temp->${SIDE[sd]});`) });
+      path.push(p); p = nx; }
+    return { S, tEnd: t };
+  }
+  const CODES = { ins: C_INS, find: C_SRCH, minimum: C_MIN, maximum: C_MAX };
+  function Walk({ ar, presets, input, title }) {
+    const [job, setJob] = useState({ ...presets[0], t: mk(presets[0].base), n: 0 }), [txt, setTxt] = useState(input ? input.start : '');
+    const { S, tEnd } = walkSteps(job.t, job.mode, job.key), [i, ctl] = useWalk(S.length, 1900, job.n), st = S[i];
+    const cls = Object.assign(each(st.path || [], 'path'), st.cur ? { [st.cur]: 'cur' } : {}, st.found ? { [st.found]: 'found' } : {}, st.cls || {});
+    const hiE = {}; (st.path || []).concat(st.cur || st.found ? [st.cur || st.found] : []).forEach((id, k) => { if (k) hiE[id] = 'path'; });
+    const tags = Object.assign({}, st.cur ? { [st.cur]: { t: 'temp', c: 'k' } } : {}, st.tags || {});
+    if (st.t.root != null && !tags[st.t.root]) tags[st.t.root] = { t: 'root', c: 'pen' };
+    const run = (p, keep) => setJob({ ...p, t: keep ? tEnd : mk(p.base), n: job.n + 1 });
+    const fromInput = () => { const k = parseKeys(txt, input.dec)[0]; if (k == null) return; run({ mode: input.mode, key: k, base: presets[0].base }, input.mode === 'ins'); };
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-modes">${presets.map((p, k) => html`<button key=${k} className="fig-btn" aria-pressed=${job.b === p.b} onClick=${() => run(p)}>${p.b}</button>`)}</div>
+      <${TreeView} t=${st.t} cls=${cls} tags=${tags} hiE=${hiE} stubs=${true} stubCls=${st.nul || {}} stubTag=${st.ntag || {}} label=${title} />
+      <${Box} label="Calls" text=${st.stack.join(' → ')} />
+      <${Code} lines=${CODES[job.mode]} cur=${st.lines} />
+      ${input && html`<div className="dsv9-row"><span className="dsv9-lbl">Try your own</span><input className="dsv9-in" inputMode="decimal" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label=${input.b + ' value'} />
+        <button className="fig-btn solid" onClick=${fromInput}>${input.b}</button>${input.mode === 'ins' && html`<button className="fig-btn" onClick=${() => run(presets[0])}>↻ Reset</button>`}</div>`}</div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+  const Insert57 = ({ ar }) => html`<${Walk} ar=${ar} title="Tree 1, inserting 57" presets=${[{ b: 'Insert 57 (slides 28–29)', base: T1, mode: 'ins', key: '57' }]} input=${{ mode: 'ins', b: 'insert', start: '30' }} />`;
+  const Insert09 = ({ ar }) => html`<${Walk} ar=${ar} title="The 1.0 tree, inserting 0.9" presets=${[{ b: 'Insert 0.9 (slides 32–36)', base: T10, mode: 'ins', key: '0.9' }]} input=${{ mode: 'ins', b: 'insert', start: '1.5', dec: true }} />`;
+  const Search = ({ ar }) => html`<${Walk} ar=${ar} title="The 1.0 tree, searching" presets=${[{ b: 'Find 0.7', base: T10, mode: 'find', key: '0.7' }, { b: 'Find 0.5', base: T10, mode: 'find', key: '0.5' }]} input=${{ mode: 'find', b: 'find', start: '1.8', dec: true }} />`;
+  const MinMax = ({ ar }) => html`<${Walk} ar=${ar} title="Minimum and maximum" presets=${[{ b: 'Tree 1: minimum', base: T1, mode: 'minimum' }, { b: 'Tree 1: maximum', base: T1, mode: 'maximum' }, { b: '1.0 tree: minimum', base: T10, mode: 'minimum' }, { b: '1.0 tree: maximum', base: T10, mode: 'maximum' }]} />`;
+  Insert57.build = () => ['57', '30', '43', '100', '-5', '29'].flatMap(k => walkSteps(mk(T1), 'ins', k).S).concat(walkSteps({ root: null, n: {} }, 'ins', '7').S);
+  Insert09.build = () => ['0.9', '1.5', '0.1', '3.0'].flatMap(k => walkSteps(mk(T10), 'ins', k).S);
+  Search.build = () => ['0.7', '0.5', '1.8', '2.9', '1.0', '0.0'].flatMap(k => walkSteps(mk(T10), 'find', k).S);
+  MinMax.build = () => [T1, T10, ['5']].flatMap(b => ['minimum', 'maximum'].flatMap(m => walkSteps(mk(b), m).S));
+
+  /* ── [4.4] the insertion order decides the shape: sorted keys give a degenerate tree ── */
+  const SHAPES = [{ k: 'mix', b: "Tree 2's order", keys: T2 }, { k: 'sort', b: 'Same keys, sorted', keys: SORTED }];
+  function shapeSteps(keys) {
+    const S = [], t = { root: null, n: {} }; let added = [];
+    keys.forEach(k => { const id = add(t, k); if (id === false) return; added = added.concat(id);
+      S.push({ t: cp(t), last: id, en: `Insert ${esc(k)} (key ${added.length} of ${keys.length}).`, ar: `نضيف ${D(k)} (الـ key رقم ${D(added.length)} من ${D(keys.length)}).` }); });
+    if (!S.length) return [{ t, en: 'Type some keys.', ar: 'اكتب شوية keys.' }];
+    const lv = levels(t), n = added.length, deep = order(t, 'pre').find(id => lay(t).pos[id].d === lv - 1), st = S[S.length - 1];
+    st.en = `${n} keys, <b>${lv} levels</b>. Reaching the deepest key (${esc(t.n[deep].lab)}) takes ${lv} comparison${lv === 1 ? '' : 's'}.`;
+    st.ar = `فيه ${D(n)} keys في <b>${D(lv)} levels</b>، والوصول لأعمق key (${D(t.n[deep].lab)}) محتاج ${D(lv)} مقارنات.`;
+    if (n > 2 && lv === n) { st.en += ' Every node has one child: the tree is <b>degenerate</b>, like a linked list.'; st.ar += ' وكل node ليها child واحد بس، فالـ tree بقى <b>degenerate</b> زي الـ linked list.'; }
+    else if (n > 2) { st.en += ' The same keys in sorted order would need ' + n + ' levels.'; st.ar += ` ونفس الـ keys لو مترتبة كانت هتعمل ${D(n)} levels.`; }
+    return S;
+  }
+  function Shape({ ar }) {
+    const [keys, setKeys] = useState(T2), [txt, setTxt] = useState(SORTED.slice().reverse().join(', '));
+    const S = shapeSteps(keys), [i, ctl] = useWalk(S.length, 700, keys.join()), st = S[i];
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-modes">${SHAPES.map(x => html`<button key=${x.k} className="fig-btn" aria-pressed=${keys.join() === x.keys.join()} onClick=${() => setKeys(x.keys)}>${x.b}</button>`)}</div>
+      <${Box} label="Insertion order" text=${keys.join(', ')} />
+      <div style=${{ marginTop: '8px' }}><${TreeView} t=${st.t} cls=${st.last ? { [st.last]: 'new' } : {}} rh=${36} label="BST built from the insertion order" /></div>
+      <div className="dsv9-row"><span className="dsv9-lbl">Try your own order</span><textarea className="dsv9-in dsv9-wide" rows="2" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="keys in insertion order"></textarea>
+        <button className="fig-btn solid" onClick=${() => { const k = parseKeys(txt).slice(0, 12); if (k.length) setKeys(k); }}>Build</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+  Shape.build = () => [T2, SORTED, SORTED.slice().reverse(), ['5'], ['3', '1'], ['5', '5']].flatMap(shapeSteps);
+
+  /* ── [6.2] the three delete cases ── */
+  function delSteps(t, id) {
+    const x = t.n[id], lab = x.lab, path = pathTo(t, id), par = parentOf(t, id), S = [], kids = [x.l, x.r].filter(c => c != null);
+    const pl = labs(t, path).join(' → '), kindEn = kids.length === 0 ? 'a leaf (no children)' : kids.length === 1 ? `has one child (${esc(t.n[kids[0]].lab)})` : 'has two children';
+    const kindAr = kids.length === 0 ? 'leaf (مالهاش children)' : kids.length === 1 ? `ليها child واحد (${D(t.n[kids[0]].lab)})` : 'ليها اتنين children';
+    S.push({ t, cls: Object.assign(each(path.slice(0, -1), 'path'), { [id]: 'bad' }), tags: { [id]: { t: 'delete', c: 'pen' } }, en: `Delete ${esc(lab)}: search for it (${esc(pl)}). It is ${kindEn}.`, ar: `هنمسح ${D(lab)}، فبندوّر عليها الأول:` + L(pl) + `وهي ${kindAr}.` });
+    const t2 = cp(t), fin = (s) => { const ino = labs(s.t, order(s.t, 'in')).join(' '); s.en += ` Inorder is still sorted: ${esc(ino || '(empty)')}.`; s.ar += ' والـ inorder لسه مترتب:' + L(ino || '(empty)'); return s; };
+    if (kids.length < 2) {
+      const c = kids[0] != null ? kids[0] : null;
+      if (par == null) t2.root = c; else t2.n[par][sideOf(t, par, id)] = c; delete t2.n[id];
+      const sd = par != null ? sideOf(t, par, id) : null;
+      if (!kids.length) S.push(fin({ t: t2, cls: {}, nul: par ? { [par + ':' + sd]: 'nul' } : {}, ntag: par ? { [par + ':' + sd]: 'NULL' } : {},
+        en: par ? `Case 1, leaf: just remove it; ${esc(t.n[par].lab)}'s ${SIDE[sd]} link becomes NULL.` : 'Case 1, leaf: it was the only node, so root becomes NULL.',
+        ar: par ? `دي الحالة (1) لأنها leaf، فبنشيلها على طول، والـ ${SIDE[sd]} link بتاع ${D(t.n[par].lab)} بيبقى NULL.` : 'دي الحالة (1) لأنها leaf، وكانت الـ node الوحيدة، فالـ root بقى NULL.' }));
+      else { const cs = subOf(t2, c), hiE = {}; hiE[c] = 'path';
+        S.push(fin({ t: t2, cls: Object.assign(each(cs, 'done'), { [c]: 'found' }), hiE,
+          en: par ? `Case 2, one child: replace ${esc(lab)} by its child ${esc(t.n[c].lab)}; ${esc(t.n[par].lab)}'s ${SIDE[sd]} link now points to ${esc(t.n[c].lab)}${cs.length > 1 ? ' (with its whole sub-tree)' : ''}.` : `Case 2, one child: ${esc(lab)} was the root, so its child ${esc(t.n[c].lab)} becomes the new root.`,
+          ar: par ? `دي الحالة (2) لأن ليها child واحد، فبنحط الـ child ${D(t.n[c].lab)} مكانها، والـ ${SIDE[sd]} link بتاع ${D(t.n[par].lab)} بقى بيشاور على ${D(t.n[c].lab)}${cs.length > 1 ? ' ومعاه الـ sub-tree بتاعه كله' : ''}.` : `دي الحالة (2) لأن ليها child واحد، وكانت الـ root، فالـ child ${D(t.n[c].lab)} بقى الـ root الجديد.` })); }
+      return { S, tEnd: t2 };
+    }
+    let s = x.r; const walk = [s]; while (t.n[s].l) { s = t.n[s].l; walk.push(s); }
+    let p = x.l; while (t.n[p].r) p = t.n[p].r;
+    const sl = t.n[s].lab, rs = subOf(t, x.r);
+    S.push({ t, cls: Object.assign(each(rs, 'hi'), each(walk, 'path'), { [id]: 'bad', [s]: 'found', [p]: 'lo' }), tags: { [id]: { t: 'delete', c: 'pen' }, [s]: { t: 'succ', c: 'ok' }, [p]: { t: 'pred', c: 'k' } },
+      en: `Case 3, two children: find the inorder successor, the minimum of ${esc(lab)}'s right subtree: go right to ${esc(t.n[x.r].lab)}, then left as far as possible: <b>${esc(sl)}</b>. (The predecessor, the maximum of the left subtree, is ${esc(t.n[p].lab)}; either one works.)`,
+      ar: `دي الحالة (3) لأن ليها اتنين children. بندوّر على الـ inorder successor، يعني أصغر قيمة في الـ right subtree بتاعها، فبنروح يمين لـ ${D(t.n[x.r].lab)} وبعدين شمال لحد الآخر، فنوصل لـ <b>${D(sl)}</b>. (والـ predecessor، أكبر قيمة في الـ left subtree، هو ${D(t.n[p].lab)}، وأي واحد فيهم ينفع.)` });
+    const tm = cp(t); tm.n[id].lab = sl; tm.n[id].v = t.n[s].v;
+    S.push({ t: tm, cls: { [id]: 'found', [s]: 'bad gone' }, tags: { [id]: { t: 'copy', c: 'ok' } }, en: `Copy ${esc(sl)} into the node being deleted. Now ${esc(sl)} appears twice; the old ${esc(sl)} node has no left child, so it is easy to remove.`, ar: `بننسخ ${D(sl)} في الـ node اللي بنمسحها، فبقت ${D(sl)} موجودة مرتين. والـ node القديمة بتاعة ${D(sl)} مالهاش left child، فشيلها سهل.` });
+    const sp = parentOf(t, s); t2.n[id].lab = sl; t2.n[id].v = t.n[s].v; t2.n[sp][sideOf(t, sp, s)] = t.n[s].r; delete t2.n[s];
+    const c2 = t.n[s].r != null;
+    S.push(fin({ t: t2, cls: { [id]: 'found' }, en: `Delete the old ${esc(sl)} node with case ${c2 ? '2 (its right child moves up)' : '1 (it is a leaf)'}.`, ar: `بنمسح الـ node القديمة بتاعة ${D(sl)} بالحالة ${c2 ? '(2)، والـ right child بتاعها بيطلع مكانها' : '(1)، لأنها leaf'}.` }));
+    return { S, tEnd: t2 };
+  }
+  const DEL_P = [{ b: 'Leaf: 28', id: '28' }, { b: 'One child: 40', id: '40' }, { b: 'Two children: 31', id: '31' }];
+  function DeleteCases({ ar }) {
+    const [job, setJob] = useState({ t: mk(T1), id: '28', b: DEL_P[0].b, n: 0 });
+    const { S, tEnd } = delSteps(job.t, job.id), [i, ctl] = useWalk(S.length, 2600, job.n), st = S[i];
+    const tap = id => { const base = i === S.length - 1 ? tEnd : job.t; if (!base.n[id]) return; setJob({ t: base, id, b: null, n: job.n + 1 }); };
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-modes">${DEL_P.map(p => html`<button key=${p.id} className="fig-btn" aria-pressed=${job.b === p.b} onClick=${() => setJob({ t: mk(T1), id: p.id, b: p.b, n: job.n + 1 })}>${p.b}</button>`)}</div>
+      <${TreeView} t=${st.t} cls=${st.cls} tags=${st.tags || {}} hiE=${st.hiE} stubs=${true} stubCls=${st.nul || {}} stubTag=${st.ntag || {}} onTap=${tap} label="Tree 1, deleting a node" />
+      <p className="dsv9-note">Try your own: tap any node to delete it${i === S.length - 1 ? '' : ' (from the tree as it was before this delete)'}.</p>
+      <div className="dsv9-row"><button className="fig-btn" onClick=${() => setJob({ t: mk(T1), id: '28', b: DEL_P[0].b, n: job.n + 1 })}>↻ Reset tree</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+  DeleteCases.build = () => { const out = []; [mk(T1), mk(T2), mk(['5']), mk(['5', '8']), mk(['5', '8', '7', '9'])].forEach(t => Object.keys(t.n).forEach(id => out.push(...delSteps(t, id).S))); return out; };
+
+  /* ── [6.3] slide 48's deleteitem run on real trees ── */
+  const SD_FIND = ['Node* deleteitem(Node *temp, int item)', '{', '  if (temp == NULL) return NULL;', '  …', '  else if (item < temp->data)', '    temp->left = deleteitem(temp->left, item);', '  else if (item > temp->data)', '    temp->right = deleteitem(temp->right, item);', '  else {   // temp is the node to delete', '  …'];
+  const SD_CASE = {
+    root: ['  else if (root->left == NULL &&', '           root->right == NULL &&', '           item == root->data)', '    { root = NULL; delete temp; }'],
+    leaf: ['  else {', '    if (temp->left == NULL &&', '        temp->right == NULL &&', '        item == temp->data)', '      temp = NULL;', '  …', '  return temp;'],
+    r: ['  else {', '  …', '    else if (temp->left == NULL &&', '             temp->right != NULL)', '    { temp->data = temp->right->data;', '      delete temp->right;', '      temp->right = NULL; }', '  …', '  return temp;'],
+    l: ['  else {', '  …', '    else if (temp->left != NULL &&', '             temp->right == NULL)', '    { temp->data = temp->left->data;', '      delete temp->left;', '      temp->left = NULL; }', '  …', '  return temp;'],
+    two: ['  else {', '    if (left == NULL && right == NULL) …', '    else if (left == NULL && right != NULL) …', '    else if (left != NULL && right == NULL) …', '  }   // no branch for two children', '  return temp;']
+  };
+  function slideDel(t, id) {
+    const t2 = cp(t), x = t2.n[id], par = parentOf(t, id);
+    if (t.root === id && !x.l && !x.r) { t2.root = null; delete t2.n[id]; return { t: t2, kind: 'root', lost: [] }; }
+    if (!x.l && !x.r) { t2.n[par][sideOf(t, par, id)] = null; delete t2.n[id]; return { t: t2, kind: 'leaf', lost: [] }; }
+    if (x.l && x.r) return { t: t2, kind: 'two', lost: [] };
+    const sd = x.l ? 'l' : 'r', c = x[sd], gone = subOf(t, c);
+    x.lab = t.n[c].lab; x.v = t.n[c].v; x[sd] = null; gone.forEach(g => delete t2.n[g]);
+    return { t: t2, kind: sd, lost: gone.slice(1), child: c };
+  }
+  function stdDel(t, id) { return delSteps(t, id).tEnd; }
+  function sdSteps(t, id) {
+    const lab = t.n[id].lab, path = pathTo(t, id), r = slideDel(t, id), std = stdDel(t, id), S = [];
+    const pl = labs(t, path).join(' → ');
+    S.push({ t, code: SD_FIND, cur: path.length > 1 ? [4, 5, 6, 7] : [8], cls: Object.assign(each(path.slice(0, -1), 'path'), { [id]: 'bad' }), tags: { [id]: { t: 'temp', c: 'pen' } },
+      en: `deleteitem(root, ${esc(lab)}) moves left or right (${esc(pl)}) until temp is the node holding ${esc(lab)}.`, ar: `الـ deleteitem بتمشي شمال أو يمين لحد ما الـ temp يوصل للـ node اللي فيها ${D(lab)}، والطريق هو:` + L(pl) });
+    let en, ar; const lost = labs(t, r.lost).join(', ');
+    if (r.kind === 'root') { en = 'The tree has only this node: root = NULL and the node is deleted. Correct.'; ar = 'الـ tree فيه الـ node دي بس، فالـ root بيبقى NULL والـ node بتتمسح، وده صح.'; }
+    else if (r.kind === 'leaf') { en = 'Both links are NULL: temp = NULL is returned, so the parent\'s link becomes NULL. The leaf leaves the tree (the code never runs delete on it). Same tree as the standard case 1.'; ar = 'الـ links الاتنين NULL، فبيرجع الـ temp بـ NULL، والـ link بتاع الـ parent بيبقى NULL. الـ leaf خرجت من الـ tree (مع إن الكود مش بيعمل delete ليها)، ونفس نتيجة الحالة (1) الـ standard.'; }
+    else if (r.kind === 'two') { en = `${esc(lab)} has two children and no branch handles that: <b>nothing changes</b>, ${esc(lab)} stays in the tree.`; ar = `الـ ${D(lab)} ليها اتنين children ومفيش فرع بيتعامل مع الحالة دي، فـ<b>مفيش حاجة بتتغير</b> والـ ${D(lab)} فاضلة في الـ tree.`; }
+    else { const cl = t.n[r.child].lab;
+      en = `One ${SIDE[r.kind]} child: copy ${esc(cl)} into this node, delete the ${esc(cl)} node, and set temp->${SIDE[r.kind]} = NULL.` + (r.lost.length ? ` But ${esc(cl)} had its own children, so <b>${esc(lost)} are cut off and lost</b>.` : ` ${esc(cl)} was a leaf, so the result is correct.`);
+      ar = `ليها ${SIDE[r.kind]} child واحد، فبننسخ ${D(cl)} في الـ node دي، ونمسح الـ node بتاعة ${D(cl)}، ونخلّي الـ ${SIDE[r.kind]} بـ NULL.` + (r.lost.length ? ` لكن ${D(cl)} كان ليها children، فـ<b>دول اتقطعوا وضاعوا</b>:` + L(lost) : ` ولأن ${D(cl)} كانت leaf، النتيجة صح.`); }
+    S.push({ t: r.t, code: SD_CASE[r.kind], cur: { root: [0, 1, 2, 3], leaf: [1, 2, 3, 4, 6], r: [2, 3, 4, 5, 6], l: [2, 3, 4, 5, 6], two: [4, 5] }[r.kind], cls: r.t.n[id] ? { [id]: r.kind === 'two' ? 'bad' : 'found' } : {}, title: "Slide 48's deleteitem: result", en, ar });
+    const ino = labs(std, order(std, 'in')).join(' ');
+    S.push({ t: std, std: true, cls: {}, title: 'The standard delete: result', en: 'For comparison, the standard delete (the three cases) gives this tree. Inorder: ' + esc(ino || '(empty)') + '. In an exam, describe the three standard cases.', ar: 'وللمقارنة، الـ delete الـ standard (التلات حالات) بيدّي الـ tree ده. والـ inorder بتاعه:' + L(ino || '(empty)') + 'وفي الامتحان، اشرح التلات حالات الـ standard.' });
+    return S;
+  }
+  const SD_P = [{ b: 'Tree 1: delete 40', keys: T1, id: '40' }, { b: 'Tree 1: delete 31', keys: T1, id: '31' }, { b: 'Sorted keys: delete 25', keys: SORTED, id: '25' }];
+  function SlideDelete({ ar }) {
+    const [job, setJob] = useState({ ...SD_P[2], n: 0 }), t = mk(job.keys);
+    const S = sdSteps(t, job.id), [i, ctl] = useWalk(S.length, 3000, job.n), st = S[i];
+    return html`<figure className="fig dsv9"><div className="fig-stage">
+      <div className="dsv9-modes">${SD_P.map(p => html`<button key=${p.b} className="fig-btn" aria-pressed=${job.b === p.b} onClick=${() => setJob({ ...p, n: job.n + 1 })}>${p.b}</button>`)}</div>
+      ${st.title && html`<p className="dsv9-note dsv9-good">${st.title}</p>`}
+      <${TreeView} t=${st.t} cls=${st.cls} tags=${st.tags || {}} stubs=${true} rh=${job.keys === SORTED ? 34 : 46} onTap=${i === 0 ? (id => setJob({ ...job, b: null, id, n: job.n + 1 })) : null} label="Running slide 48's deleteitem" />
+      <p className="dsv9-note">Try your own: on the first step, tap any node to delete it instead.</p>
+      ${st.code ? html`<${Code} title="Slide 48" lines=${st.code} cur=${st.cur} />` : null}</div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+  SlideDelete.build = () => { const out = []; [mk(T1), mk(SORTED), mk(['5']), mk(T2)].forEach(t => Object.keys(t.n).forEach(id => out.push(...sdSteps(t, id)))); return out; };
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'ds-l9-parts': Parts, 'ds-l9-bst-rule': BstRule, 'ds-l9-traverse': Traverse, 'ds-l9-build': Build, 'ds-l9-node-boxes': NodeMem, 'ds-l9-insert-57': Insert57, 'ds-l9-insert-09': Insert09, 'ds-l9-shape': Shape, 'ds-l9-minmax': MinMax, 'ds-l9-search': Search, 'ds-l9-delete': DeleteCases, 'ds-l9-slide-delete': SlideDelete });
+})();

@@ -1983,22 +1983,40 @@ AR.micro = {
       "الـ Unconditional transfer instructions بتخلي المبرمج <b>يتخطى أجزاء</b> من البرنامج وينط لأي حتة في الـ memory عشان ياخد الـ instruction الجاية منها.",
       "تلات أنواع: <b>short</b> و <b>near</b> و <b>far</b>. افتكر: الـ <b>IP</b> شايل عنوان الـ instruction الجاية؛ والـ <b>CS</b> شايل الـ segment بتاع الكود.",
       "الـ Short والـ near jumps بيغيّروا <b>IP بس</b> (نفس الـ code segment). الـ far jump بس هو اللي بيغيّر <b>CS و IP الاتنين</b>."
-     ]
+     ],
+     "figH": {
+      "mp-l8-jmp-scope": "الـ CS والـ IP بعد كل jump: الـ short والـ near بيغيّروا الـ IP بس، والـ far بيغيّر الاتنين"
+     }
     },
     {
-     "h": "أنواع الـ jump التلاتة"
+     "h": "أنواع الـ jump التلاتة",
+     "figH": {
+      "mp-l8-jmp-bytes": "أنواع الـ jump التلاتة byte بـ byte: الطول والمدى والعنوان الجديد"
+     }
     },
     {
-     "h": "أمثلة المحاضرة، لما <bdi dir=\"ltr\">CS=1000, IP=0002</bdi> والـ JMP عند 10000"
+     "h": "أمثلة المحاضرة، لما <bdi dir=\"ltr\">CS=1000, IP=0002</bdi> والـ JMP عند 10000",
+     "figH": {
+      "mp-l8-jmp-slides": "رسومات الـ memory في الـ slides للـ short والـ near والـ far jump خطوة بخطوة"
+     }
     },
     {
-     "h": "سؤال الـ Revision Q12 والـ Final <bdi dir=\"ltr\">2023/24</bdi>، لما <bdi dir=\"ltr\">CS=1000, IP=300</bdi> والـ bytes هي <bdi dir=\"ltr\">JMP, 04, 02, 30, A4</bdi>"
+     "h": "سؤال الـ Revision Q12 والـ Final <bdi dir=\"ltr\">2023/24</bdi>، لما <bdi dir=\"ltr\">CS=1000, IP=300</bdi> والـ bytes هي <bdi dir=\"ltr\">JMP, 04, 02, 30, A4</bdi>",
+     "figH": {
+      "mp-l8-jmp-q12": "حاسبة الـ jump address، والنتايج هنا:<span class=\"ltr\">short = 10304, near = 10504, far = A4504</span>"
+     }
     },
     {
-     "h": "سؤال الـ Revision Q13 والـ Final <bdi dir=\"ltr\">2024/25</bdi>، لما <bdi dir=\"ltr\">CS=2000, IP=300</bdi> والـ bytes هي <bdi dir=\"ltr\">JMP, 1C, 20, A0, 2D</bdi>"
+     "h": "سؤال الـ Revision Q13 والـ Final <bdi dir=\"ltr\">2024/25</bdi>، لما <bdi dir=\"ltr\">CS=2000, IP=300</bdi> والـ bytes هي <bdi dir=\"ltr\">JMP, 1C, 20, A0, 2D</bdi>",
+     "figH": {
+      "mp-l8-jmp-q13": "نفس الحاسبة على سؤال Q13، والنتايج:<span class=\"ltr\">short = 2031C, near = 2231C, far = 2FA1C</span>"
+     }
     },
     {
-     "h": "سؤال الـ Final <bdi dir=\"ltr\">2023/24</bdi>، لما <bdi dir=\"ltr\">CS=3000H, IP=400H</bdi> والـ bytes هي <bdi dir=\"ltr\">JMP, 10, 43, 1C, 20</bdi>"
+     "h": "سؤال الـ Final <bdi dir=\"ltr\">2023/24</bdi>، لما <bdi dir=\"ltr\">CS=3000H, IP=400H</bdi> والـ bytes هي <bdi dir=\"ltr\">JMP, 10, 43, 1C, 20</bdi>",
+     "figH": {
+      "mp-l8-jmp-f2324": "نفس الحاسبة على سؤال الـ final ده، والنتايج:<span class=\"ltr\">near = 34710, far = 244D0, short = 30410</span>"
+     }
     },
     {
      "h": "الـ Interrupts",
@@ -2009,7 +2027,12 @@ AR.micro = {
       "الـ <b>Vectored</b> interrupts ليها vector address ثابت (بداية الـ subroutine)؛ أما الـ <b>non-vectored</b> فالـ vector address بتاعها مش متحدد مسبقًا.",
       "الـ <b>Maskable</b> interrupts ينفع تتمنع (تتعطل بـ interrupt mask bit). الـ <b>Non-maskable</b> (NMI) ماينفعش تتعمل mask ولا تتجاهل؛ بتستخدم للحاجات المهمة جدًا زي الـ memory parity أو الـ bus faults؛ وليها priority مطلقة: الـ CPU بيخلص الـ memory cycle الحالية وبعدين ينط على الـ handler.",
       "الـ <b>Software</b> interrupts هي instructions خاصة (INT) بتنقل التحكم لـ ISR متحدد مسبقًا. والـ <b>Hardware</b> interrupts هي signals بتتبعت للـ processor."
-     ]
+     ],
+     "figH": {
+      "mp-l8-int-handle": "التعامل مع الـ interrupt: نحفظ الـ PC والحالة، ننفّذ الـ ISR، ونرجع",
+      "mp-l8-int-mask": "جرّب بنفسك: الـ mask bit بتمنع الـ maskable interrupt، لكن عمرها ما تمنع الـ NMI",
+      "mp-l8-int-types": "الـ 3 طرق اللي بنقسم بيها الـ interrupts"
+     }
     },
     {
      "h": "الـ LOOP (Lab 7)",
@@ -2017,10 +2040,16 @@ AR.micro = {
       "الـ LOOP بتكرر block عدد مرات معين. الـ <b>CX</b> بيبقى العدّاد أوتوماتيك: (1) <bdi dir=\"ltr\">CX&nbsp;=&nbsp;CX&nbsp;-&nbsp;1</bdi>؛ (2) لو <bdi dir=\"ltr\">CX&nbsp;≠&nbsp;0</bdi> ينط على الـ label، غير كده يكمّل على الـ instruction اللي بعدها.",
       "الـ <b><bdi dir=\"ltr\">LOOPE/LOOPZ</bdi></b>: تقلل CX، وتنط لو <bdi dir=\"ltr\">CX&nbsp;≠&nbsp;0</bdi> <b>و <bdi dir=\"ltr\">ZF&nbsp;=&nbsp;1</bdi></b>. والـ <b><bdi dir=\"ltr\">LOOPNE/LOOPNZ</bdi></b>: تنط لو <bdi dir=\"ltr\">CX&nbsp;≠&nbsp;0</bdi> <b>و <bdi dir=\"ltr\">ZF&nbsp;=&nbsp;0</bdi></b>.",
       "في الـ nested loop: احفظ الـ CX بتاع الـ loop الخارجي في variable (أو على الـ stack) قبل ما تحط العدد بتاع الـ loop الداخلي، ورجّعه قبل الـ LOOP الخارجية."
-     ]
+     ],
+     "figH": {
+      "mp-l8-loop-flow": "الـ LOOP والـ LOOPE والـ LOOPNE: تقلل الـ CX وبعدين تنط أو تكمّل"
+     }
     },
     {
-     "h": "برامج الـ LOOP (Lab 7)"
+     "h": "برامج الـ LOOP (Lab 7)",
+     "figH": {
+      "mp-l8-loop-trace": "شغّل برامج الـ LOOP التلاتة بتاعة الـ Lab 7 instruction بـ instruction"
+     }
     },
     {
      "h": "الـ Procedures: الـ CALL والـ RET (Lab 8)",
@@ -2029,10 +2058,16 @@ AR.micro = {
       "الـ <b>CALL</b> بتعمل push للـ offset بتاع الـ instruction الجاية على الـ stack، وبتنسخ عنوان الـ procedure المطلوب في (E)IP.",
       "الـ <b>RET</b> بتعمل pop لقمة الـ stack في (E)IP، فترجع للبرنامج الرئيسي. وأي procedure لازم يخلص بـ RET.",
       "الـ Directives: الـ <b>END</b> بتعلّم نهاية البرنامج؛ الـ <b>ENDS</b> بتعلّم نهاية logical segment؛ والـ <b>ENDP</b> بتقفل الـ procedure."
-     ]
+     ],
+     "figH": {
+      "mp-l8-call-ret": "الـ CALL بتعمل push لعنوان الرجوع وتنط، والـ RET بتعمله pop تاني في الـ IP"
+     }
     },
     {
-     "h": "أمثلة الـ Procedures (Lab 8)"
+     "h": "أمثلة الـ Procedures (Lab 8)",
+     "figH": {
+      "mp-l8-tri-area": "تتبّع الـ Triangle_Area، الـ MUL وبعدها الـ DIV، والنتيجة:<span class=\"ltr\">area = 25</span>"
+     }
     }
    ],
    "cards": [
@@ -2231,7 +2266,10 @@ AR.micro = {
   "9": {
    "notes": [
     {
-     "h": "الـ Arithmetic instructions (Labs 3 و 4)"
+     "h": "الـ Arithmetic instructions (Labs 3 و 4)",
+     "figH": {
+      "mp-l9-arith": "الـ arithmetic instructions على الـ AL والـ BL، والنتيجة والـ CF والـ ZF"
+     }
     },
     {
      "h": "قواعد الـ MUL والـ DIV",
@@ -2241,13 +2279,23 @@ AR.micro = {
       "المثال الأول:<pre>MOV AX, 5\nMOV CX, 2\nDIV CX</pre>النتيجة:<span class=\"ltr\">AX = 2, DX = 1</span>والمثال التاني:<pre>MOV AX, 10\nMOV BX, 2\nDIV BX</pre>النتيجة:<span class=\"ltr\">AX = 5, DX = 0</span>(الـ lab بيشرح القسمة كطرح متكرر: <bdi dir=\"ltr\">10-2-2-2-2-2&nbsp;=&nbsp;0</bdi> في 5 خطوات).",
       "قبل الـ DIV بـ word، الـ DX لازم يبقى فيه الجزء العالي من المقسوم (عادةً 0).",
       "الضرب مقابل الجمع (trade-off): الـ <bdi dir=\"ltr\">C&nbsp;=&nbsp;5x&nbsp;+&nbsp;7</bdi> بالـ MUL بتستخدم 2 registers و 5 instructions؛ وبالـ ADD المتكرر بتستخدم register واحد و 7 instructions. والـ <bdi dir=\"ltr\">C&nbsp;=&nbsp;(3x&nbsp;+&nbsp;4y)&nbsp;-&nbsp;14</bdi>: نسخة الـ MUL فيها 3 registers و 10 instructions؛ ونسخة الـ ADD فيها register واحد و 9 instructions. يعني مش كل مرة الـ MUL أحسن."
-     ]
+     ],
+     "figH": {
+      "mp-l9-muldiv": "الـ MUL والـ DIV من خلال الـ AX والـ DX، وليه الـ <bdi dir=\"ltr\">MUL&nbsp;3</bdi> غلط",
+      "mp-l9-mul-vs-add": "نفس المعادلة بالـ MUL وبالـ ADD المتكرر، وعدد الـ registers والـ instructions"
+     }
     },
     {
-     "h": "برامج المعادلات في الـ Lab"
+     "h": "برامج المعادلات في الـ Lab",
+     "figH": {
+      "mp-l9-formulas": "شغّل برامج المعادلات بتاعة الـ lab سطر سطر بقيمك"
+     }
     },
     {
-     "h": "الـ Logical instructions (Labs 4 و 5)"
+     "h": "الـ Logical instructions (Labs 4 و 5)",
+     "figH": {
+      "mp-l9-logic": "الـ AND والـ OR والـ XOR والـ TEST bit ورا bit على الـ truth table"
+     }
     },
     {
      "h": "الـ NOT والـ NEG والـ TEST",
@@ -2256,10 +2304,17 @@ AR.micro = {
       "الـ <b>NEG</b> بتجيب الـ <b><bdi dir=\"ltr\">2's&nbsp;complement</bdi></b>: تقلب الـ bits وبعدين تزوّد 1:<pre>MOV AL, 5\nNEG AL</pre>النتيجة:<span class=\"ltr\">11111011 (FBh = -5)</span>",
       "الـ <b>TEST</b> ليها نفس الـ truth table بتاعة الـ AND بس <b>بتأثر على الـ flags بس (ZF)</b>؛ النتيجة مابتتخزنش. لو النتيجة بـ 0 يبقى <bdi dir=\"ltr\">ZF&nbsp;=&nbsp;1</bdi>؛ ولو النتيجة مش 0 يبقى <bdi dir=\"ltr\">ZF&nbsp;=&nbsp;0</bdi>. مثال:<pre>MOV AX,1\nMOV BX,0\nTEST AX,BX</pre>النتيجة <bdi dir=\"ltr\">ZF&nbsp;=&nbsp;1</bdi>، والـ AX مابيتغيرش.",
       "الأرقام الـ binary لازم تخلص بـ <b>b</b>:<pre>MOV AX, 1001b</pre>والـ hex بيخلص بـ h؛ ولو رقم الـ hex بيبدأ بحرف لازم تحط 0 قبله (0FFh)."
-     ]
+     ],
+     "figH": {
+      "mp-l9-not-neg-test": "الـ NOT والـ NEG على الـ 5، والـ TEST اللي بتغيّر الـ ZF من غير ما تخزن:<span class=\"ltr\">NOT 5 = FAh, NEG 5 = FBh</span>",
+      "mp-l9-suffix": "الـ assembler بيقرا الأرقام دي إزاي:<span class=\"ltr\">1001b, 1001, 0FFh, FFh</span>"
+     }
     },
     {
-     "h": "الـ Variables (الـ define directives)"
+     "h": "الـ Variables (الـ define directives)",
+     "figH": {
+      "mp-l9-defines": "الـ DB والـ DW والـ DD والـ DQ والـ DT مترسومين بعدد الـ bytes اللي بيحجزوها"
+     }
     },
     {
      "h": "الـ Shift instructions",
@@ -2270,7 +2325,11 @@ AR.micro = {
       "الـ <b>SHR</b> بتعمل shift لليمين، أعلى bit بيتملا بـ 0، وأقل bit بيروح الـ CF. بيقسم الرقم الـ unsigned على <bdi dir=\"ltr\">2ⁿ</bdi>، مثال:<span class=\"ltr\">DL = 80 (01010000b) → SHR 1 = 40 → SHR 2 = 10</span>",
       "الـ <b>SAR</b> بتعمل shift لليمين مع الحفاظ على الإشارة:<span class=\"ltr\">DL = -80 (10110000b) → SAR 1 = 11011000b = -40 → SAR 2 = 11110110b = -10</span>والـ <bdi dir=\"ltr\">CF&nbsp;=&nbsp;0</bdi>.",
       "عشان تعمل sign-extend لـ AL في AX:<pre>MOV AL,80h\nSHL AX,8   ; AX = 8000h\nSAR AX,8   ; AX = FF80h</pre>"
-     ]
+     ],
+     "figH": {
+      "mp-l9-shift": "الـ SHL والـ SHR والـ SAR bit ورا bit مع الـ CF على أمثلة الشرح",
+      "mp-l9-sign-extend": "الـ sign-extend للـ AL في الـ AX، والنتيجة:<span class=\"ltr\">SHL AX,8 / SAR AX,8 → AX = FF80h</span>"
+     }
     },
     {
      "h": "الـ Rotate instructions",
@@ -2281,7 +2340,11 @@ AR.micro = {
       "الـ <b>RCL</b> بتعمل shift شمال، <b>الـ CF بيدخل الـ LSB</b>، والـ MSB بيروح الـ CF. مثال:<pre>CLC\nMOV BL,88h\nRCL BL,1   ; BL = 00010000b\n           ; CF = 1</pre>ولو عملت <bdi dir=\"ltr\">RCL&nbsp;BL,1</bdi> تاني:<span class=\"ltr\">BL = 00100001b, CF = 0</span>",
       "الـ <b>RCR</b> بتعمل shift يمين، الـ CF بيدخل الـ MSB، والـ LSB بيروح الـ CF. مثال:<pre>STC\nMOV AH,10h\nRCR AH,1   ; AH = 10001000b\n           ; CF = 0</pre>",
       "الـ <b>CLC</b> بتصفّر الـ CF؛ والـ <b>STC</b> بتخليه 1. والـ ROL والـ ROR والـ RCL والـ RCR مش arithmetic instructions."
-     ]
+     ],
+     "figH": {
+      "mp-l9-rotate": "الـ ROL والـ ROR bit ورا bit، مفيش bits بتضيع، وتبديل النصين في الـ byte:<span class=\"ltr\">3Fh → F3h</span>",
+      "mp-l9-rotate-carry": "الـ RCL والـ RCR من خلال الـ carry، بعد الـ CLC أو الـ STC"
+     }
     }
    ],
    "cards": [

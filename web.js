@@ -5245,7 +5245,13 @@ COURSES.web = {
        "x = y % 3",
        "1"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js2-arith"
+     ],
+     "figH": {
+      "wb-js2-arith": "Each row of the table worked out step by step, then your own expression"
+     }
     },
     {
      "h": "Assignment operators (x = 10)",
@@ -5292,7 +5298,13 @@ COURSES.web = {
        "x = x % 5",
        "0"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js2-assign"
+     ],
+     "figH": {
+      "wb-js2-assign": "x += 5 is x = x + 5: each assignment operator worked out"
+     }
     },
     {
      "h": "Comparison and logical operators (x = 10, y = 5)",
@@ -5357,7 +5369,13 @@ COURSES.web = {
        "(!(x == y) &amp;&amp; y &gt;= 10)",
        "false"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js2-compare"
+     ],
+     "figH": {
+      "wb-js2-compare": "== converts the type, === does not; &amp;&amp; and || stop early"
+     }
     },
     {
      "h": "Trace: L8 Example (1) (a = 33, b = 10, c = \"Test\")",
@@ -5368,7 +5386,13 @@ COURSES.web = {
       "b = --b  → b becomes 9;   then result = --b → --b = 8",
       "L8 Example (2) with a = 10, b = 20: (a == b) false, (a < b) true, (a > b) false, (a != b) true, (a >= b) false, (a <= b) true",
       "L8 Example (3) with a = true, b = false: (a && b) false, (a || b) true, !(a && b) true"
-     ]
+     ],
+     "fig": [
+      "wb-js2-examples"
+     ],
+     "figH": {
+      "wb-js2-examples": "L8 Examples (1), (2) and (3) run line by line, with your own values"
+     }
     },
     {
      "h": "Control structures and loops",
@@ -5377,7 +5401,25 @@ COURSES.web = {
       "<b>switch</b>: compares with <b>strict equality (===)</b>, i.e. value and type. Each case ends with <b>break</b>, otherwise execution falls through; <b>default</b> runs when nothing matches. Example 5 (grade 'A'): \"Entering switch block\", \"Good job\", \"Exiting switch block\".",
       "<b>while</b> (test first), <b>do...while</b> (body runs at least once, test after), <b>for</b> (init; condition; update), <b>for...in</b> (loops over the keys/indexes of an object or array), and <b>for...of</b> (loops over values).",
       "Example 6: <code>for (let i = 0; i &lt; cars.length; i++) text += cars[i] + \"&lt;br&gt;\";</code> prints each car on its own line."
-     ]
+     ],
+     "fig": [
+      "wb-js2-ifelse",
+      "wb-js2-switch",
+      "wb-js2-loops",
+      "wb-js2-cars"
+     ],
+     "figAt": {
+      "wb-js2-ifelse": 0,
+      "wb-js2-switch": 1,
+      "wb-js2-loops": 2,
+      "wb-js2-cars": 3
+     },
+     "figH": {
+      "wb-js2-ifelse": "Example 4: the if / else if chain tested one condition at a time",
+      "wb-js2-switch": "Example 5: switch matches with ===, and falls through without break",
+      "wb-js2-loops": "The slides' while, do...while, for...in and for...of loops traced",
+      "wb-js2-cars": "Example 6: text built car by car, with for, while or do...while"
+     }
     },
     {
      "h": "Arrays",
@@ -5385,7 +5427,16 @@ COURSES.web = {
       "JS arrays are a more relaxed version of Java arrays: <b>size can change</b> and <b>data can be mixed</b>; indexes only (no arbitrary keys like PHP).",
       "Creating: <code>new Array(1, 2, 3)</code> (several arguments = elements); <code>new Array(5)</code> (single numeric argument = <b>size</b>); literal <code>[1, 2, 3]</code> with square brackets.",
       "<code>length</code> gives the number of elements."
-     ]
+     ],
+     "fig": [
+      "wb-js2-newarray"
+     ],
+     "figAt": {
+      "wb-js2-newarray": 2
+     },
+     "figH": {
+      "wb-js2-newarray": "new Array(1, 2, 3), new Array(5) and [1, 2, 3], and a growing array"
+     }
     },
     {
      "h": "Array methods",
@@ -5465,7 +5516,13 @@ COURSES.web = {
        "Calls f for each element",
        "undefined"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js2-methods"
+     ],
+     "figH": {
+      "wb-js2-methods": "Run each array method on nums or x and see what changes and what it returns"
+     }
     },
     {
      "h": "Trace: ArrayEx(7) (verified by running it)",
@@ -5481,14 +5538,29 @@ COURSES.web = {
       "x.concat(nums, y) with y = [99,77,88] → 22,66,11,77,33,55,44,111,222,5,3,99,77,88",
       "x.sort() → 11,22,33,44,55,66,77; x.reverse() → 77,66,55,44,33,22,11; join() → 77,66,55,44,33,22,11; join('-') → 77-66-55-44-33-22-11",
       "(The slide's own sample results are simplified and not all match a real run; trust the values above.)"
-     ]
+     ],
+     "fig": [
+      "wb-js2-arrayex"
+     ],
+     "figH": {
+      "wb-js2-arrayex": "ArrayEx(7) line by line: nums, x and the console"
+     }
     },
     {
      "h": "The Date object",
      "pts": [
       "Created with <code>new Date()</code> (current date and time), <code>new Date(milliseconds)</code> (ms since midnight 1/1/1970, e.g. 5000 = five seconds past midnight on 1/1/70, as returned by getTime()), <code>new Date(datestring)</code> (format accepted by Date.parse()), <code>new Date(year, month, date[, hour, minute, second, millisecond])</code>.",
       "Getters: getFullYear(), getMonth() (0 to 11), getDate(), getDay(), getHours(), getMinutes(), getSeconds(), getTime()."
-     ]
+     ],
+     "fig": [
+      "wb-js2-date"
+     ],
+     "figAt": {
+      "wb-js2-date": 1
+     },
+     "figH": {
+      "wb-js2-date": "new Date(5000) and your own dates, read with the getters"
+     }
     }
    ],
    "cards": [
