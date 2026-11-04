@@ -1434,3 +1434,2086 @@
     'ds-l3-full-check': FullCheck, 'ds-l3-insert-100': Insert100, 'ds-l3-vs-sim': VsSim, 'ds-l3-exam-trace': ExamTrace
   });
 })();
+/* ── part L4 ── */
+// Data Structures visuals, Lecture 4 (Pointers and dynamic allocation): the pointer box-and-arrow of slide 2, the pointer operations of slide 3 (plus new/delete), the swap goal of slide 4, the fakeSwap/trueSwap memory traces of slides 6–19, the Lab pointer program, normal vs dynamic arrays, the three memory segments and linked nodes made with new. Every label, address and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv4 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv4 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv4 *{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "calt" 0; }
+.dsv4-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dsv4-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv4-chips .fig-btn{ font:.8rem var(--mono); padding:3px 8px; min-height:30px; }
+.dsv4-row{ display:flex; flex-wrap:wrap; gap:6px 10px; justify-content:center; align-items:center; margin:6px 0; }
+.dsv4-code{ margin:0 auto 8px; max-width:440px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:.8rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv4-code span{ display:block; border-radius:3px; padding:0 3px; transition:background .3s; }
+.dsv4-code span.cur{ background:color-mix(in srgb, var(--fig-k) 24%, transparent); }
+.dsv4-code i{ font-style:normal; color:var(--graphite); }
+.dsv4-out{ max-width:440px; margin:8px auto 0; padding:6px 10px; border:1px solid var(--line); border-left:4px solid var(--fig-k); border-radius:6px; background:var(--paper); font:600 .82rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; min-height:1.5em; text-align:left; direction:ltr; }
+.dsv4-out small{ display:block; font:600 .75rem var(--body); color:var(--graphite); }
+.dsv4-out div.new{ background:color-mix(in srgb, var(--fig-k) 22%, transparent); border-radius:3px; }
+.dsv4-in{ font:.9rem var(--mono); padding:4px 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; width:64px; box-sizing:border-box; }
+.dsv4-lbl{ font-size:.85rem; color:var(--graphite); display:inline-flex; gap:6px; align-items:center; }
+.dsv4-note{ font-size:.8rem; color:var(--graphite); text-align:center; margin:6px 0 0; line-height:1.4; }
+.dsv4-cnt{ font-size:.85rem; color:var(--graphite); }
+.dsv4-svg{ width:100%; max-width:340px; height:auto; display:block; margin:0 auto; }
+.dsv4-svg text{ fill:var(--ink); font-family:var(--mono); font-size:15px; }
+.dsv4-svg text.ad{ fill:var(--graphite); font-size:14px; }
+.dsv4-svg text.nm{ font-weight:700; }
+.dsv4-svg text.it{ font-style:italic; font-weight:700; font-size:14px; }
+.dsv4-svg text.sg{ fill:var(--graphite); font-family:var(--body); font-size:14px; }
+.dsv4-svg .bx{ fill:var(--paper); stroke:var(--ink); stroke-width:2; transition:fill .35s, stroke .35s, opacity .35s; }
+.dsv4-svg .bx.hot{ stroke:var(--fig-k); stroke-width:3.5; fill:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.dsv4-svg .bx.free{ stroke-dasharray:6 4; opacity:.55; }
+.dsv4-svg .ln{ fill:none; stroke:var(--fig-k); stroke-width:2.6; }
+.dsv4-svg .ln.dim{ stroke-dasharray:5 4; opacity:.45; }
+.dsv4-svg .ah{ fill:var(--fig-k); }
+.dsv4-svg .dv{ stroke:var(--line); stroke-width:1.5; stroke-dasharray:4 4; }
+.dsv4-svg .gr{ transition:opacity .4s; }
+.dsv4-swap{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; align-items:center; }
+.dsv4-pair{ display:grid; gap:6px; }
+.dsv4-var{ display:flex; align-items:center; gap:6px; font:700 .95rem var(--mono); color:var(--ink); }
+.dsv4-var span{ min-width:42px; height:36px; display:grid; place-items:center; border:2px solid var(--ink); border-radius:4px; background:var(--paper); transition:background .35s, border-color .35s; }
+.dsv4-var span.hot{ border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.dsv4-mid{ display:flex; flex-direction:column; align-items:center; font:700 .85rem var(--body); color:var(--fig-k); }
+.dsv4-mid b{ font-size:1.5rem; line-height:1; }
+.dsv4-mark{ font:700 .9rem var(--body); text-align:center; margin-top:8px; min-height:1.3em; }
+.dsv4-mark.ok{ color:var(--ok); } .dsv4-mark.bad{ color:var(--pen); }
+.dsv4-mem{ display:grid; grid-template-columns:minmax(0, 1fr) minmax(0, 1.25fr); gap:8px; max-width:460px; margin:0 auto; }
+.dsv4-seg{ border:1px solid var(--line); border-top:3px solid var(--fig-k); border-radius:8px; background:var(--paper); padding:6px; color:var(--ink); min-width:0; }
+.dsv4-seg > b{ display:block; font-size:.82rem; margin-bottom:4px; }
+.dsv4-seg > small{ display:block; font-size:.75rem; color:var(--graphite); margin-bottom:4px; line-height:1.3; }
+.dsv4-slot{ display:flex; align-items:center; gap:5px; margin:4px 0; font:600 .82rem var(--mono); }
+.dsv4-slot > span{ flex:1; min-width:0; min-height:30px; display:grid; place-items:center; border:2px solid var(--ink); border-radius:4px; padding:0 3px; font-size:.78rem; text-align:center; transition:background .35s, border-color .35s; }
+.dsv4-slot > span.hot{ border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.dsv4-blk{ display:flex; flex-wrap:wrap; gap:3px; padding:4px; border:2px solid var(--fig-k); border-radius:6px; transition:opacity .4s; }
+.dsv4-blk.free{ border-style:dashed; opacity:.45; }
+.dsv4-blk div{ display:flex; flex-direction:column; align-items:center; }
+.dsv4-blk span{ width:30px; height:28px; display:grid; place-items:center; border:1px solid var(--line); border-radius:4px; background:var(--paper); font:600 .78rem var(--mono); transition:background .35s; }
+.dsv4-blk span.on{ background:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); }
+.dsv4-blk small{ font:.75rem var(--mono); color:var(--graphite); }
+.dsv4-empty{ font-size:.78rem; color:var(--graphite); font-style:italic; }
+.dsv4-segs{ display:grid; gap:8px; max-width:440px; margin:10px auto 0; }
+.dsv4-segs .dsv4-seg{ min-height:56px; transition:box-shadow .35s; }
+.dsv4-segs .dsv4-seg.hot{ box-shadow:0 0 0 2px var(--fig-k); }
+.dsv4-tag{ display:inline-block; margin:2px 4px 2px 0; padding:2px 8px; border-radius:99px; background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); font:.78rem var(--mono); color:var(--ink); }
+.dsv4-list{ display:flex; flex-wrap:wrap; gap:8px 4px; align-items:center; }
+.dsv4-node{ display:flex; border:2px solid var(--ink); border-radius:5px; overflow:hidden; font:600 .78rem var(--mono); }
+.dsv4-node span{ padding:5px 6px; background:var(--paper); }
+.dsv4-node span + span{ border-left:2px solid var(--ink); min-width:22px; text-align:center; color:var(--fig-k); }
+.dsv4-node.hot{ border-color:var(--fig-k); }
+.dsv4-to{ color:var(--fig-k); font-weight:700; }
+.dsv4-pop{ animation:dsv4-in .45s ease both; }
+@keyframes dsv4-in{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .dsv4-pop{ animation:none; } .dsv4-code span, .dsv4-svg .bx, .dsv4-svg .gr, .dsv4-var span, .dsv4-slot > span, .dsv4-blk{ transition:none; } }`;
+  if (!document.getElementById('dsv4-css')) { const s = document.createElement('style'); s.id = 'dsv4-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* helpers */
+  const L = s => `<span class="ltr">${s}</span>`;
+  const D = s => `<bdi dir="ltr">${String(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const int = (s, d) => { const v = parseInt(s, 10); return Number.isFinite(v) && Math.abs(v) < 1e6 ? v : d; };
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    ${n <= 14 ? html`<div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>` : html`<span className="dsv4-cnt">Step ${i + 1} / ${n}</span>`}
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  const Modes = ({ list, mode, set }) => html`<div className="dsv4-modes" role="group">${list.map(([k, l]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => set(k)}>${l}</button>`)}</div>`;
+  const Code = ({ lines, cur }) => html`<pre className="dsv4-code">${lines.map((l, k) => html`<span key=${k} className=${(Array.isArray(cur) ? cur.includes(k) : k === cur) ? 'cur' : ''}>${l || ' '}</span>`)}</pre>`;
+  // arrowhead with its tip at (x, y), pointing l / r / u / d
+  const tri = (x, y, d) => { const s = 8, w = 5.5, P = { l: [[x + s, y - w], [x + s, y + w]], r: [[x - s, y - w], [x - s, y + w]], u: [[x - w, y + s], [x + w, y + s]], d: [[x - w, y - s], [x + w, y - s]] }[d];
+    return html`<polygon className="ah" points=${[[x, y]].concat(P).map(p => p.join(',')).join(' ')} />`; };
+  // a memory row as on the slides: address, name, box with the value
+  const MemRow = ({ y, addr, name, val, hot, free, ital, ax = 4, nx = 94, bx = 100, bw = 112, h = 34, fs }) => html`<g>
+    <text className="ad" x=${ax} y=${y + h / 2 + 5}>${addr}</text>
+    <text className="nm" x=${nx} y=${y + h / 2 + 5} textAnchor="end">${name}</text>
+    <rect className=${'bx' + (hot ? ' hot' : '') + (free ? ' free' : '')} x=${bx} y=${y} width=${bw} height=${h} rx="3" />
+    <text className=${ital ? 'it' : ''} x=${bx + bw / 2} y=${y + h / 2 + 5} textAnchor="middle" style=${fs ? { fontSize: fs + 'px' } : null}>${val}</text></g>`;
+  const ToolIn = ({ label, v, set }) => html`<label className="dsv4-lbl">${label}<input className="dsv4-in" inputMode="numeric" value=${v} onChange=${e => set(e.target.value)} aria-label=${label} /></label>`;
+
+  /* ── [0.0]–[0.2] slide 2: int *pointer1 = &x; box and arrow ── */
+  function L4PointerBox({ ar }) {
+    const steps = [
+      { en: '<code>int x;</code> is an ordinary int variable. On slide 2 it holds <b>1</b> and its place in memory is address <b>0x9060</b>.', ar: 'المتغير ' + D('int x;') + ' هو variable عادي من نوع int. في slide 2 جواه القيمة <b>1</b> ومكانه في الـ memory هو الـ address ' + D('0x9060') + '.' },
+      { en: '<code>int *pointer1</code>: a pointer is a <b>data type</b>, so you create a variable of it like any other type. pointer1 gets its own place in memory, <b>0x2000</b>.', ar: 'الـ pointer هو <b>data type</b>، فبنعمل منه variable زي أي type تاني. الـ pointer1 ليه مكان خاص بيه في الـ memory هو ' + D('0x2000') + '.' },
+      { en: '<code>= &x</code> stores the <b>address of x</b> (& = address-of) in pointer1. Its content is an address, <b>addr of x = 0x9060</b>, not the value 1. The arrow: pointer1 <b>points to</b> x.', ar: 'الجزء ' + D('= &x') + ' بيخزن <b>الـ address بتاع x</b> جوه الـ pointer1 (الـ & معناها address-of). يعني المحتوى بتاعه address وهو ' + D('0x9060') + '، مش القيمة 1. والسهم معناه إن الـ pointer1 <b>بيشاور</b> على x.' },
+      { en: '<code>*pointer1</code> follows the arrow: it reads the int stored at 0x9060, the value <b>1</b>. A pointer points to a <b>specific data type</b>: pointer1 is an int*, so what it points to is read as an int.', ar: 'الـ ' + D('*pointer1') + ' بيمشي ورا السهم ويقرا الـ int اللي في ' + D('0x9060') + '، يعني القيمة <b>1</b>. والـ pointer بيشاور على <b>data type معين</b>: الـ pointer1 نوعه ' + D('int*') + ' فاللي بيشاور عليه بيتقري كـ int.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2400, 0);
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <${Code} lines=${['int x;', 'int *pointer1 = &x;', 'cout << *pointer1;   // 1']} cur=${i === 0 ? 0 : i < 3 ? 1 : 2} />
+      <svg className="dsv4-svg" viewBox="0 0 300 176" role="img" aria-label="pointer1 at 0x2000 holds the address of x; x at 0x9060 holds 1">
+        <g className="gr" style=${{ opacity: i >= 1 ? 1 : .15 }}>
+          <text className="nm" x="70" y="24" textAnchor="middle">pointer1</text>
+          <rect className=${'bx' + (i === 2 ? ' hot' : '')} x="10" y="32" width="120" height="50" rx="3" />
+          <text className="it" x="70" y="53" textAnchor="middle">${i >= 2 ? 'addr of x' : '?'}</text>
+          ${i >= 2 && html`<text className="ad" x="70" y="73" textAnchor="middle">= 0x9060</text>`}
+          <text className="ad" x="70" y="100" textAnchor="middle">0x2000</text></g>
+        <g className="gr" style=${{ opacity: i >= 2 ? 1 : 0 }}><path className="ln" d="M130 57 C 168 57, 140 131, 164 131" />${tri(170, 131, 'r')}</g>
+        <text className="nm" x="230" y="104" textAnchor="middle">int x;</text>
+        <rect className=${'bx' + (i === 0 || i === 3 ? ' hot' : '')} x="170" y="112" width="120" height="38" rx="3" />
+        <text x="230" y="136" textAnchor="middle">1</text>
+        <text className="ad" x="230" y="168" textAnchor="middle">0x9060</text>
+      </svg></div>
+      <${Cap} ...${steps[i]} showAr=${ar} /><${SBar} n=${steps.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1] slide 3 + table: the pointer operations, one by one ── */
+  const OPS = [
+    { k: 'Type* aPtr;', en: '<code>Type object; Type* aPtr;</code> declares an object and a <b>pointer to Type</b>. aPtr exists but holds no address yet.', ar: 'السطرين دول بيعرّفوا object وكمان <b>pointer to Type</b> اسمه aPtr:' + L('Type object; Type* aPtr;') + 'الـ aPtr موجود بس لسه مفيهوش address.' },
+    { k: 'aPtr = &object;', en: '<code>aPtr = &object;</code> assigns the <b>address of object</b> to aPtr (& = address-of). Now aPtr points to object.', ar: 'السطر ده بيحط <b>الـ address بتاع الـ object</b> في الـ aPtr (الـ & معناها address-of)، فالـ aPtr بقى بيشاور على الـ object:' + L('aPtr = &object;') },
+    { k: '*aPtr', en: '<code>*aPtr</code> <b>accesses the object through the pointer</b> (dereference): follow the arrow and you reach object itself.', ar: 'الـ ' + D('*aPtr') + ' بيوصل <b>للـ object عن طريق الـ pointer</b> (ده الـ dereference)، يعني تمشي ورا السهم توصل للـ object نفسه.' },
+    { k: '(*aPtr).member', en: 'If aPtr points to a structure, <code>(*aPtr).member</code> is a member of it: first *aPtr reaches the structure, then <b>.member</b> picks the field.', ar: 'لو الـ aPtr بيشاور على structure، يبقى الـ ' + D('(*aPtr).member') + ' هو member فيه: الأول ' + D('*aPtr') + ' يوصل للـ structure، وبعدين ' + D('.member') + ' تختار الـ field.' },
+    { k: 'aPtr->member', en: '<code>aPtr->member</code> (the arrow operator) is <b>the same as</b> <code>(*aPtr).member</code>: the same field is reached.', ar: 'الـ arrow operator هو <b>نفس الحاجة</b> بالظبط ويوصل لنفس الـ field:' + L('aPtr->member  ≡  (*aPtr).member') },
+    { k: 'p = new Type;', en: '<code>new Type</code> (or <code>new Type[n]</code>) <b>allocates memory on the heap at run time</b> and returns its address, which p stores.', ar: 'الـ ' + D('new Type') + ' (أو ' + D('new Type[n]') + ') <b>بتحجز memory في الـ heap وقت الـ run time</b> وترجّع الـ address بتاعها، والـ p بيخزنه.' },
+    { k: 'delete p;', en: '<code>delete p</code> <b>frees</b> the memory allocated with new (<code>delete[] p</code> for memory from new[]).', ar: 'الـ ' + D('delete p') + ' <b>بتحرر</b> الـ memory اللي اتحجزت بالـ new، واللي اتحجز بـ ' + D('new[]') + ' بيتحرر بـ ' + D('delete[] p') + '.' }
+  ];
+  function L4PtrOps({ ar }) {
+    const [i, ctl] = useWalk(OPS.length, 2600, 0), O = OPS[i];
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <div className="dsv4-modes dsv4-chips" role="group">${OPS.map((o, k) => html`<button key=${k} className="fig-btn" aria-pressed=${String(i === k)} onClick=${() => ctl.go(k)}>${o.k}</button>`)}</div>
+      <svg className="dsv4-svg" viewBox="0 0 300 226" role="img" aria-label="object, aPtr and p on the stack side; the block from new on the heap side">
+        <text className="sg" x="76" y="14" textAnchor="middle">local variables</text><text className="sg" x="230" y="14" textAnchor="middle">heap</text>
+        <line className="dv" x1="160" y1="4" x2="160" y2="222" />
+        <text className="nm" x="75" y="36" textAnchor="middle">object</text>
+        <rect className=${'bx' + (i === 2 ? ' hot' : '')} x="12" y="42" width="126" height="58" rx="4" />
+        <text className="ad" x="75" y="60" textAnchor="middle">Type</text>
+        <rect className=${'bx' + (i === 3 || i === 4 ? ' hot' : '')} x="22" y="68" width="106" height="26" rx="3" />
+        <text x="75" y="86" textAnchor="middle">member</text>
+        <text className="nm" x="75" y="122" textAnchor="middle">aPtr</text>
+        <rect className=${'bx' + (i === 1 ? ' hot' : '')} x="12" y="128" width="126" height="34" rx="3" />
+        <text className=${i >= 1 ? 'it' : ''} x="75" y="150" textAnchor="middle" style=${{ fontSize: '13.5px' }}>${i >= 1 ? 'addr of object' : '?'}</text>
+        <g className="gr" style=${{ opacity: i >= 1 ? 1 : 0 }}><path className="ln" d="M138 145 H152 V71 H147" />${tri(139, 71, 'l')}</g>
+        <g className="gr" style=${{ opacity: i >= 5 ? 1 : 0 }}>
+          <text className="nm" x="75" y="184" textAnchor="middle">p</text>
+          <rect className=${'bx' + (i === 5 ? ' hot' : '')} x="12" y="190" width="126" height="34" rx="3" />
+          <text className="it" x="75" y="212" textAnchor="middle" style=${{ fontSize: '13.5px' }}>addr of block</text>
+          <path className=${'ln' + (i === 6 ? ' dim' : '')} d="M138 207 H150 C 160 207, 152 178, 164 178" />${tri(172, 178, 'r')}
+          <text className="nm" x="230" y="150" textAnchor="middle">${i === 6 ? 'freed' : 'new Type'}</text>
+          <rect className=${'bx' + (i === 5 ? ' hot' : '') + (i === 6 ? ' free' : '')} x="172" y="158" width="116" height="40" rx="4" />
+          <text x="230" y="183" textAnchor="middle" style=${{ opacity: i === 6 ? .5 : 1 }}>Type</text></g>
+      </svg></div>
+      <${Cap} en=${O.en} ar=${O.ar} showAr=${ar} /><${SBar} n=${OPS.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [2] slide 4: the goal, and what each solution really prints ── */
+  function L4SwapGoal({ ar }) {
+    const [m, setM] = useState('goal');
+    const after = m === 'fake' ? [1, 2] : [2, 1];
+    const C = {
+      goal: { en: 'Slide 4: the goal is a function that <b>swaps</b> x and y, so x: 1, y: 2 becomes x: 2, y: 1. Try the two solutions.', ar: 'في slide 4 الهدف function <b>تبدّل</b> قيمة x مع y، يعني من' + L('x: 1, y: 2') + 'تبقى' + L('x: 2, y: 1') + 'جرّب الحلّين.', mark: '' },
+      fake: { en: '<b>Solution 1</b>, <code>fakeSwap(x, y)</code>, passes the <b>values</b>: the function swaps its own copies a and b, so main still prints <b>x= 1 y= 2</b>.', ar: 'الحل الأول بيبعت <b>القيم</b> بس، فالـ function بتبدّل النسخ بتاعتها a و b، والـ main بتطبع برضه:' + L('x= 1 y= 2'), mark: '✕ not swapped' },
+      tru: { en: '<b>Solution 2</b>, <code>trueSwap(&x, &y)</code>, passes the <b>addresses</b>: through *a and *b the function changes x and y themselves, so main prints <b>x= 2 y= 1</b>.', ar: 'الحل التاني بيبعت <b>الـ addresses</b>، فالـ function عن طريق ' + D('*a') + ' و ' + D('*b') + ' بتغيّر x و y نفسهم، والـ main بتطبع:' + L('x= 2 y= 1'), mark: '✓ swapped' }
+    }[m];
+    const V = (n, v, hot) => html`<div className="dsv4-var">${n}:<span className=${hot ? 'hot' : ''}>${v}</span></div>`;
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <${Modes} list=${[['goal', 'Goal (slide 4)'], ['fake', 'fakeSwap(x, y)'], ['tru', 'trueSwap(&x, &y)']]} mode=${m} set=${setM} />
+      <div className="dsv4-swap">
+        <div className="dsv4-pair">${V('x', 1)}${V('y', 2)}</div>
+        <div className="dsv4-mid"><span>${m === 'goal' ? 'swap' : m === 'fake' ? 'fakeSwap' : 'trueSwap'}</span><b>→</b></div>
+        <div className="dsv4-pair dsv4-pop" key=${m}>${V('x', after[0], m !== 'fake')}${V('y', after[1], m !== 'fake')}</div>
+      </div>
+      <div className=${'dsv4-mark ' + (m === 'fake' ? 'bad' : 'ok')}>${C.mark}</div>
+      ${m !== 'goal' && html`<div className="dsv4-out"><small>Output</small>x= ${after[0]} y= ${after[1]}</div>`}</div>
+      <${Cap} en=${C.en} ar=${C.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [3] slides 6–19: the memory traces of fakeSwap and trueSwap ── */
+  const FAKE = ['void fakeSwap(int a, int b)', '{', '   int tmp;', '   tmp = a;', '   a = b;', '   b = tmp;', '}', 'int main()', '{', '   int x = X, y = Y;', '   fakeSwap(x, y);', '   cout << "x= " << x', '        << " y= " << y;', '}'];
+  const TRUE = ['void trueSwap(int* a, int* b)', '{', '   int tmp;', '   tmp = *a;', '   *a = *b;', '   *b = tmp;', '}', 'int main()', '{', '   int x = X, y = Y;', '   trueSwap(&x, &y);', '   cout << "x= " << x', '        << " y= " << y;', '}'];
+  function swapSteps(mode, X, Y) {
+    const S = [], f = mode === 'fake';
+    const st = (o, en, a) => S.push(Object.assign({ x: X, y: Y, a: null, b: null, tmp: null, frame: 0, hot: [], en, ar: a }, o));
+    st({ cur: 9 }, `main: <code>int x = ${X}, y = ${Y};</code> puts x = ${X} at <b>0x2000</b> and y = ${Y} at <b>0x2010</b>.`, 'الـ main بتعرّف x و y، فالـ x بيتحط في ' + D('0x2000') + ' والـ y في ' + D('0x2010') + ':' + L(`x = ${X}, y = ${Y}`), {});
+    S[0].hot = ['x', 'y'];
+    if (f) {
+      st({ cur: [10, 0, 2], frame: 1, a: X, b: Y, hot: ['a', 'b', 'tmp'] }, `<code>fakeSwap(x, y)</code> creates <b>new variables</b>: a = ${X} (0x2038) and b = ${Y} (0x2040) are <b>copies</b> of x and y; tmp is at 0x2060.`, 'الـ ' + D('fakeSwap(x, y)') + ' بتعمل <b>variables جديدة</b>: الـ a والـ b <b>نسخ</b> من x و y، والـ tmp في ' + D('0x2060') + ':' + L(`a = ${X} (0x2038), b = ${Y} (0x2040)`));
+      st({ cur: 3, frame: 1, a: X, b: Y, tmp: X, hot: ['tmp'] }, `<code>tmp = a;</code> → tmp = ${X}.`, 'السطر ده بيحط قيمة a في tmp:' + L(`tmp = a → tmp = ${X}`));
+      st({ cur: 4, frame: 1, a: Y, b: Y, tmp: X, hot: ['a'] }, `<code>a = b;</code> → a = ${Y}. Only the copy a changes; x is still ${X}.`, 'السطر ده بيغيّر النسخة a بس، والـ x لسه زي ما هو:' + L(`a = b → a = ${Y}`));
+      st({ cur: 5, frame: 1, a: Y, b: X, tmp: X, hot: ['b'] }, `<code>b = tmp;</code> → b = ${X}. a and b are swapped, but x and y were never touched.`, 'السطر ده بيكمّل التبديل بين a و b، بس x و y محدش لمسهم:' + L(`b = tmp → b = ${X}`));
+      st({ cur: [6, 11, 12], frame: 2, a: Y, b: X, tmp: X, hot: ['x', 'y'], out: `x= ${X} y= ${Y}` }, `The function returns: a, b and tmp <b>disappear</b>. x and y are unchanged, so it prints <b>x= ${X} y= ${Y}</b>.`, 'الـ function بترجع والـ a والـ b والـ tmp <b>بيختفوا</b>. الـ x والـ y متغيروش، فبيطبع:' + L(`x= ${X} y= ${Y}`));
+    } else {
+      st({ cur: [10, 0, 2], frame: 1, a: 'addr of x', b: 'addr of y', hot: ['a', 'b'] }, `<code>trueSwap(&x, &y)</code>: a (0x2038) holds the <b>address of x</b> and b (0x2040) the <b>address of y</b>; the arrows show where they point.`, 'في الـ ' + D('trueSwap(&x, &y)') + ' الـ a بيشيل <b>الـ address بتاع x</b> والـ b <b>الـ address بتاع y</b>، والأسهم بتوضح بيشاوروا على إيه:' + L('a = &x (0x2038), b = &y (0x2040)'));
+      st({ cur: 3, frame: 1, a: 'addr of x', b: 'addr of y', tmp: X, hot: ['tmp', 'x'], arr: 'a' }, `<code>tmp = *a;</code> follows a to x: tmp = ${X}.`, 'السطر ده بيمشي ورا a لحد x:' + L(`tmp = *a → tmp = ${X}`));
+      st({ cur: 4, frame: 1, a: 'addr of x', b: 'addr of y', tmp: X, x: Y, hot: ['x', 'y'], arr: 'ab' }, `<code>*a = *b;</code> writes y's value into x itself: <b>x = ${Y}</b>.`, 'السطر ده بيكتب قيمة y في x نفسه:' + L(`*a = *b → x = ${Y}`));
+      st({ cur: 5, frame: 1, a: 'addr of x', b: 'addr of y', tmp: X, x: Y, y: X, hot: ['y'], arr: 'b' }, `<code>*b = tmp;</code> writes tmp into y itself: <b>y = ${X}</b>.`, 'السطر ده بيكتب tmp في y نفسه:' + L(`*b = tmp → y = ${X}`));
+      st({ cur: [6, 11, 12], frame: 2, a: 'addr of x', b: 'addr of y', tmp: X, x: Y, y: X, hot: ['x', 'y'], out: `x= ${Y} y= ${X}` }, `The function returns; its variables disappear but x and y <b>stay swapped</b>: it prints <b>x= ${Y} y= ${X}</b>.`, 'الـ function بترجع والـ variables بتاعتها بتختفي، بس x و y <b>فضلوا متبدلين</b>، فبيطبع:' + L(`x= ${Y} y= ${X}`));
+    }
+    return S;
+  }
+  function L4SwapTrace({ ar }) {
+    const [mode, setMode] = useState('fake'), [xs, setXs] = useState('1'), [ys, setYs] = useState('2');
+    const X = int(xs, 1), Y = int(ys, 2), S = swapSteps(mode, X, Y), [i, ctl] = useWalk(S.length, 2300, mode + X + '|' + Y), s = S[i];
+    const lines = (mode === 'fake' ? FAKE : TRUE).map(l => l.replace('X', X).replace('Y', Y));
+    const h = k => s.hot.includes(k), fr = s.frame === 1 ? 1 : s.frame === 2 ? .2 : 0, tru = mode === 'tru', ptr = v => typeof v === 'string';
+    const arrA = tru && s.frame === 1, arrHot = c => s.arr && s.arr.includes(c);
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <${Modes} list=${[['fake', 'Solution 1: fakeSwap'], ['tru', 'Solution 2: trueSwap']]} mode=${mode} set=${setMode} />
+      <div className="dsv4-row"><${ToolIn} label="x =" v=${xs} set=${setXs} /><${ToolIn} label="y =" v=${ys} set=${setYs} />
+        <button className="fig-btn" onClick=${() => { setXs('1'); setYs('2'); }}>Example from the slides</button></div>
+      <${Code} lines=${lines} cur=${s.cur} />
+      <svg className="dsv4-svg" viewBox="0 0 300 258" role="img" aria-label=${(tru ? 'trueSwap' : 'fakeSwap') + ' memory: tmp, a, b of the function, x and y of main'}>
+        <g className="gr" style=${{ opacity: fr }}>
+          <text className="sg" x="4" y="14">${tru ? 'trueSwap' : 'fakeSwap'}: ${s.frame === 2 ? 'gone after return' : 'new variables'}</text>
+          <${MemRow} y=${22} addr="0x2060" name="tmp:" val=${s.tmp == null ? '' : s.tmp} hot=${h('tmp')} free=${s.frame === 2} />
+          <${MemRow} y=${64} addr="0x2038" name="a:" val=${s.a == null ? '' : s.a} hot=${h('a')} free=${s.frame === 2} ital=${ptr(s.a)} />
+          <${MemRow} y=${106} addr="0x2040" name="b:" val=${s.b == null ? '' : s.b} hot=${h('b')} free=${s.frame === 2} ital=${ptr(s.b)} />
+        </g>
+        <g className="gr" style=${{ opacity: arrA ? 1 : 0 }}>
+          <path className=${'ln' + (s.arr && !arrHot('a') ? ' dim' : '')} d="M212 81 H248 V189 H222" />${tri(214, 189, 'l')}
+          <path className=${'ln' + (s.arr && !arrHot('b') ? ' dim' : '')} d="M212 123 H272 V231 H222" />${tri(214, 231, 'l')}</g>
+        <text className="sg" x="4" y="164">main</text>
+        <${MemRow} y=${172} addr="0x2000" name="x:" val=${s.x} hot=${h('x')} />
+        <${MemRow} y=${214} addr="0x2010" name="y:" val=${s.y} hot=${h('y')} />
+      </svg>
+      <div className="dsv4-out"><small>Output</small>${s.out || ' '}</div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4] Lab: int x = 5, *ptr; ptr = &x; … *ptr = 24; ── */
+  const AX = '001DFAD8', AP = '001DFACC';
+  function L4LabPtr({ ar }) {
+    const [xs, setXs] = useState('5'), [ns, setNs] = useState('24');
+    const X = int(xs, 5), N = int(ns, 24);
+    const lines = [`int x = ${X}, *ptr;`, 'ptr = &x;', 'cout << x;', 'cout << &x;', 'cout << ptr;', 'cout << *ptr;', 'cout << &ptr;', `*ptr = ${N};`, 'cout << x;'];
+    const OUT = [null, null, `The Value of X =${X}`, `The Address of X =${AX}`, `The Value of ptr =${AX}`, `The Value pointed by pointer ptr ${X}`, `The Address of ptr =${AP}`, null, `The Value of X after changes =${N}`];
+    const S = [
+      { en: `<code>int x = ${X}, *ptr;</code> makes an int x = ${X} and a pointer ptr (no address in it yet).`, ar: 'السطر الأول بيعمل int اسمه x وpointer اسمه ptr لسه مفيهوش address:' + L(`int x = ${X}, *ptr;`), hot: ['x'] },
+      { en: '<code>ptr = &x;</code> stores the <b>address of x</b> in ptr: ptr now points to x.', ar: 'السطر ده بيخزن <b>الـ address بتاع x</b> في الـ ptr، فالـ ptr بقى بيشاور على x:' + L('ptr = &x;'), hot: ['p'] },
+      { en: `<code>x</code> is the value of x: <b>${X}</b>.`, ar: 'الـ x لوحده هو القيمة بتاعته، يعني ' + D(X) + '.', hot: ['x'] },
+      { en: `<code>&x</code> is the address of x, e.g. <b>${AX}</b>.`, ar: 'الـ ' + D('&x') + ' هو الـ address بتاع x، مثلًا ' + D(AX) + '.', hot: ['x'] },
+      { en: `<code>ptr</code> is the value of ptr: the <b>same address</b> as &x (${AX}).`, ar: 'الـ ptr قيمته هي <b>نفس الـ address</b> بتاع ' + D('&x') + '، يعني ' + D(AX) + '.', hot: ['p'] },
+      { en: `<code>*ptr</code> is the value ptr points to: follow the arrow to x, <b>${X}</b>.`, ar: 'الـ ' + D('*ptr') + ' هو القيمة اللي الـ ptr بيشاور عليها، تمشي ورا السهم لحد x فتلاقي ' + D(X) + '.', hot: ['x'], arr: 1 },
+      { en: `<code>&ptr</code> is the address of ptr itself, e.g. <b>${AP}</b>: the pointer is a variable with its own place in memory.`, ar: 'الـ ' + D('&ptr') + ' هو الـ address بتاع الـ ptr نفسه، مثلًا ' + D(AP) + '، لأن الـ pointer هو variable ليه مكانه في الـ memory.', hot: ['p'] },
+      { en: `<code>*ptr = ${N};</code> writes ${N} <b>through the pointer</b> into x.`, ar: 'السطر ده بيكتب ' + D(N) + ' في x <b>عن طريق الـ pointer</b>:' + L(`*ptr = ${N};`), hot: ['x'], arr: 1, nx: 1 },
+      { en: `So x itself changed: it prints <b>The Value of X after changes =${N}</b>.`, ar: 'يعني x نفسه اتغيّر، والبرنامج بيطبع:' + L(`The Value of X after changes =${N}`), hot: ['x'], nx: 1 }
+    ];
+    const [i, ctl] = useWalk(S.length, 2200, X + '|' + N), s = S[i], xv = s.nx ? N : X;
+    const out = OUT.slice(0, i + 1).map((o, k) => o && html`<div key=${k} className=${k === i ? 'new' : ''}>${o}</div>`).filter(Boolean);
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <div className="dsv4-row"><${ToolIn} label="x =" v=${xs} set=${setXs} /><${ToolIn} label="*ptr =" v=${ns} set=${setNs} />
+        <button className="fig-btn" onClick=${() => { setXs('5'); setNs('24'); }}>Example from the notes</button></div>
+      <${Code} lines=${lines} cur=${i} />
+      <svg className="dsv4-svg" viewBox="0 0 300 120" role="img" aria-label="ptr holds the address of x and points to it">
+        <${MemRow} y=${14} addr=${AP} name="ptr:" val=${i >= 1 ? AX : '?'} hot=${s.hot.includes('p')} ax=${2} nx=${118} bx=${124} bw=${116} fs=${14} />
+        <g className="gr" style=${{ opacity: i >= 1 ? 1 : 0 }}><path className=${'ln' + (s.arr || i === 1 ? '' : ' dim')} d="M240 31 H272 V89 H250" />${tri(242, 89, 'l')}</g>
+        <${MemRow} y=${72} addr=${AX} name="x:" val=${xv} hot=${s.hot.includes('x')} ax=${2} nx=${118} bx=${124} bw=${116} />
+      </svg>
+      <p className="dsv4-note">Each cout also prints its label (see Output). Addresses are the notes' example run: they change from run to run.</p>
+      <div className="dsv4-out"><small>Output</small>${out.length ? out : ' '}</div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5.0]–[5.1] normal array vs dynamic array with new / delete[] ── */
+  function L4DynArray({ ar }) {
+    const [mode, setMode] = useState('dyn'), [ns, setNs] = useState('5');
+    const n = Math.max(1, Math.min(10, int(ns, 5)));
+    const lines = ['int size;', 'int *arr;', 'cin >> size;', 'arr = new int[size];', '...   // use arr[i]', 'delete[] arr;'];
+    const S = [
+      { cur: [0, 1], en: '<code>int size; int *arr;</code> are ordinary local variables. arr is a pointer with no block yet.', ar: 'الـ size والـ arr هما local variables عادية، والـ arr هو pointer لسه مش بيشاور على أي block.' },
+      { cur: 2, en: `<code>cin >> size;</code> the size is known only <b>at run time</b>: here the user types <b>${n}</b>.`, ar: 'الـ size بيتعرف <b>وقت الـ run time</b> بس، وهنا الـ user كتب ' + D(n) + ':' + L(`cin >> size;  // size = ${n}`) },
+      { cur: 3, en: `<code>arr = new int[size];</code> new allocates the memory the array needs (${n} ints) and <b>arr stores the address</b> of this block.`, ar: 'الـ new بتحجز الـ memory اللي الـ array محتاجها، يعني ' + D(n) + ' من الـ int، والـ <b>arr بيخزن الـ address</b> بتاع الـ block ده:' + L('arr = new int[size];') },
+      { cur: 4, en: `The block is used like a normal array through the pointer: arr[0] .. arr[${n - 1}].`, ar: 'الـ block بيتستخدم زي الـ array العادي عن طريق الـ pointer:' + L(`arr[0] .. arr[${n - 1}]`) },
+      { cur: 5, en: '<code>delete[] arr;</code> frees the dynamic array that new[] allocated.', ar: 'السطر ده بيحرر الـ dynamic array اللي اتحجز بـ ' + D('new[]') + ':' + L('delete[] arr;') }
+    ];
+    const [i, ctl] = useWalk(S.length, 2200, mode + n), s = S[i];
+    if (mode === 'norm') {
+      return html`<figure className="fig dsv4"><div className="fig-stage">
+        <${Modes} list=${[['norm', 'Normal array'], ['dyn', 'Dynamic array (new)']]} mode=${mode} set=${setMode} />
+        <pre className="dsv4-code"><span>int arr[5];          <b style=${{ color: 'var(--ok)' }}>✓</b></span><span> </span><span>int size;</span><span>cin >> size;</span><span>int arr[size];       <b style=${{ color: 'var(--pen)' }}>✕</b></span></pre></div>
+        <${Cap} en="A <b>normal array</b>'s size must be a <b>constant expression</b> fixed at design time: <code>int arr[5];</code> is fine, but a size read with cin is not a constant expression."
+          ar=${'الـ <b>array العادي</b> لازم الـ size بتاعه يبقى <b>constant expression</b> متحدد وقت الـ design. يعني ' + D('int arr[5];') + ' تمام، لكن الـ size اللي بيتقري بالـ cin مش constant expression.'} showAr=${ar} /></figure>`;
+    }
+    const blk = i >= 2;
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <${Modes} list=${[['norm', 'Normal array'], ['dyn', 'Dynamic array (new)']]} mode=${mode} set=${setMode} />
+      <div className="dsv4-row"><${ToolIn} label="size (cin) =" v=${ns} set=${setNs} /><span className="dsv4-cnt">1 to 10</span></div>
+      <${Code} lines=${lines} cur=${s.cur} />
+      <div className="dsv4-mem">
+        <div className="dsv4-seg"><b>Stack segment</b><small>local variables</small>
+          <div className="dsv4-slot">size<span className=${i === 1 ? 'hot' : ''}>${i >= 1 ? n : '?'}</span></div>
+          <div className="dsv4-slot">arr<span className=${i === 2 ? 'hot' : ''}>${blk ? (i === 4 ? '(freed)' : 'addr of block →') : '?'}</span></div></div>
+        <div className="dsv4-seg"><b>Heap segment</b><small>allocated with new at run time</small>
+          ${blk ? html`<div className=${'dsv4-blk dsv4-pop' + (i === 4 ? ' free' : '')} key=${n}>${Array.from({ length: n }, (_, k) => html`<div key=${k}><span className=${i === 3 ? 'on' : ''}></span><small>[${k}]</small></div>`)}</div>
+            ${i === 4 && html`<div className="dsv4-empty">freed by delete[]</div>`}` : html`<div className="dsv4-empty">nothing allocated yet</div>`}</div>
+      </div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5.2] the three memory segments: where does each thing live? ── */
+  const SEGS = [['code', 'Code segment', 'compiled machine code'], ['stack', 'Stack segment', 'local / temporary variables'], ['heap', 'Heap segment', 'dynamic memory allocation (new)']];
+  const ITEMS = [
+    { k: 'machine code of main()', s: 'code', en: 'The <b>compiled machine code</b> of the program (main and the functions) is in the <b>code segment</b>.', ar: 'الـ <b>machine code</b> بتاع البرنامج بعد الـ compile (الـ main والـ functions) مكانه في الـ <b>code segment</b>.' },
+    { k: 'int size;', s: 'stack', en: '<code>int size;</code> is a <b>local variable</b>: <b>stack segment</b>.', ar: 'الـ size هو <b>local variable</b>، فمكانه في الـ <b>stack segment</b>.' },
+    { k: 'int *arr;', s: 'stack', en: 'The pointer <code>arr</code> itself is a local variable too: <b>stack segment</b> (only what it points to is on the heap).', ar: 'الـ pointer اللي اسمه arr نفسه local variable برضه، فمكانه في الـ <b>stack segment</b>، واللي بيشاور عليه بس هو اللي في الـ heap.' },
+    { k: "fakeSwap's a, b, tmp", s: 'stack', en: 'The temporary variables of a call (fakeSwap\'s a, b, tmp) are in the <b>stack segment</b>; they disappear when the function returns.', ar: 'الـ temporary variables بتاعة الـ function call (زي a و b و tmp في الـ fakeSwap) مكانها في الـ <b>stack segment</b>، وبتختفي لما الـ function ترجع.' },
+    { k: 'new int[size]', s: 'heap', en: 'The block made by <code>new int[size]</code> is <b>dynamic memory allocation</b>: <b>heap segment</b>.', ar: 'الـ block اللي بتعمله ' + D('new int[size]') + ' ده <b>dynamic memory allocation</b>، فمكانه في الـ <b>heap segment</b>.' },
+    { k: 'a linked-list node', s: 'heap', en: 'A <b>linked list node</b> is created with new at run time: <b>heap segment</b>.', ar: 'الـ <b>node</b> بتاعة الـ linked list بتتعمل بالـ new وقت الـ run time، فمكانها في الـ <b>heap segment</b>.' }
+  ];
+  function L4Segments({ ar }) {
+    const [put, setPut] = useState([]), [last, setLast] = useState(null);
+    const tap = k => { setPut(p => p.includes(k) ? p : p.concat(k)); setLast(k); };
+    const all = () => { setPut(ITEMS.map((_, k) => k)); setLast(null); };
+    const I = last == null ? null : ITEMS[last];
+    const en = I ? I.en : put.length === ITEMS.length ? 'Every program has <b>three memory segments</b>: code (machine code), stack (local / temporary variables) and heap (new).' : 'Every program has <b>three memory segments</b>. Tap a piece of the Lab program to see which segment it lives in.';
+    const a = I ? I.ar : put.length === ITEMS.length ? 'كل برنامج ليه <b>تلات memory segments</b>: الـ code للـ machine code، والـ stack للـ local والـ temporary variables، والـ heap للي بيتحجز بالـ new.' : 'كل برنامج ليه <b>تلات memory segments</b>. دوس على أي حتة من برنامج الـ Lab عشان تشوف مكانها في أنهي segment.';
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <div className="dsv4-modes dsv4-chips" role="group">${ITEMS.map((it, k) => html`<button key=${k} className="fig-btn" aria-pressed=${String(last === k)} onClick=${() => tap(k)}>${it.k}</button>`)}</div>
+      <div className="dsv4-row"><button className="fig-btn" onClick=${all}>Place all</button><button className="fig-btn" onClick=${() => { setPut([]); setLast(null); }}>↻ Reset</button></div>
+      <div className="dsv4-segs">${SEGS.map(([id, name, what]) => html`<div key=${id} className=${'dsv4-seg' + (I && I.s === id ? ' hot' : '')}><b>${name}</b><small>${what}</small>
+        <div>${put.filter(k => ITEMS[k].s === id).map(k => html`<span key=${k} className="dsv4-tag dsv4-pop">${ITEMS[k].k}</span>`)}</div></div>`)}</div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [5.3] linked structures: each node created with new at run time ── */
+  function L4LinkedNew({ ar }) {
+    const [n, setN] = useState(0), MAX = 5;
+    const en = n === 0 ? 'A linked list starts with only a pointer on the stack (head = NULL). Press <b>new node</b>: each node is made with <code>new</code> while the program runs.'
+      : `Node ${n} was created with <code>new</code> at run time on the heap and linked to the list: it now has <b>${n}</b> node${n > 1 ? 's' : ''}. The number of nodes was never fixed at design time: this is <b>dynamic memory allocation</b>, used by linked lists, linked stacks and linked queues.`;
+    const a = n === 0 ? 'الـ linked list بتبدأ بـ pointer بس في الـ stack قيمته NULL. دوس <b>new node</b>، وكل node هتتعمل بالـ new والبرنامج شغال.'
+      : 'الـ node رقم ' + D(n) + ' اتعملت بالـ new وقت الـ run time في الـ heap واتربطت بالـ list، فبقى فيها ' + D(n) + ' من الـ nodes. عدد الـ nodes عمره ما اتحدد وقت الـ design، وده الـ <b>dynamic memory allocation</b> اللي بتستخدمه الـ linked lists والـ linked stacks والـ linked queues.';
+    return html`<figure className="fig dsv4"><div className="fig-stage">
+      <div className="dsv4-row"><button className="fig-btn" onClick=${() => setN(Math.min(MAX, n + 1))} disabled=${n >= MAX}>+ new node</button><button className="fig-btn" onClick=${() => setN(0)} disabled=${n === 0}>↻ Reset</button></div>
+      ${n > 0 && html`<pre className="dsv4-code" style=${{ maxWidth: '300px' }}><span className="cur">Node *p = new Node;   // node ${n}</span></pre>`}
+      <div className="dsv4-mem" style=${{ gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1.7fr)' }}>
+        <div className="dsv4-seg"><b>Stack</b><div className="dsv4-slot">head<span>${n ? '→' : 'NULL'}</span></div></div>
+        <div className="dsv4-seg"><b>Heap</b>${n === 0 ? html`<div className="dsv4-empty">no nodes yet</div>` : html`<div className="dsv4-list">${Array.from({ length: n }, (_, k) => html`<span key=${k} style=${{ display: 'contents' }}><span className=${'dsv4-node dsv4-pop' + (k === n - 1 ? ' hot' : '')}><span>node ${k + 1}</span><span>${k < n - 1 ? '•' : '/'}</span></span>${k < n - 1 && html`<span className="dsv4-to">→</span>`}</span>`)}</div>`}</div>
+      </div>
+      <p className="dsv4-note">/ = NULL (end of the list)</p></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'ds-l4-pointer-box': L4PointerBox, 'ds-l4-ptr-ops': L4PtrOps, 'ds-l4-swap-goal': L4SwapGoal, 'ds-l4-swap-trace': L4SwapTrace,
+    'ds-l4-lab-ptr': L4LabPtr, 'ds-l4-dyn-array': L4DynArray, 'ds-l4-segments': L4Segments, 'ds-l4-linked-new': L4LinkedNew
+  });
+})();
+/* ── part L6 ── */
+// Data Structures visuals, Lecture 6 (Linked Stacks): the slide 4 figure built push by push, the creation steps (Node, top = NULL, menu), the pop statement order compared with wrong orders, display/get/count/search traced with temp, the exam main traced with its output, and the Lab 7 struct version next to the class version. push/pop themselves are already animated on the page (viz.js) and are not redone. Every label and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv6 *{ font-variant-ligatures:none; }
+.dsv6 bdi{ white-space:nowrap; }
+.dsv6 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv6 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv6-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dsv6-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv6-row{ display:flex; flex-wrap:wrap; gap:8px 12px; justify-content:center; align-items:center; margin:6px 0; }
+.dsv6-chain{ display:grid; grid-template-columns:auto 74px minmax(0, 118px); column-gap:8px; align-items:center; justify-content:center; margin:4px auto; }
+.dsv6-pt{ font:700 .8rem var(--mono); color:var(--fig-k); text-align:right; white-space:nowrap; }
+.dsv6-sd{ font-size:.78rem; line-height:1.25; color:var(--graphite); }
+.dsv6-sd.dsv6-k{ color:var(--fig-k); font-weight:700; }
+.dsv6-sd.dsv6-p{ color:var(--pen); font-weight:700; }
+.dsv6-node{ display:grid; grid-template-columns:44px 30px; border:2px solid var(--ink); border-radius:4px; background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); font:600 .92rem var(--mono); color:var(--ink); transition:background .35s, box-shadow .35s, opacity .35s; }
+.dsv6-node > span{ display:grid; place-items:center; height:30px; }
+.dsv6-node > span + span{ border-left:2px solid var(--ink); font-size:.8rem; }
+.dsv6-node .dsv6-n{ color:var(--pen); font-weight:700; }
+.dsv6-node.dsv6-new{ background:color-mix(in srgb, var(--fig-k) 42%, var(--paper)); box-shadow:0 0 0 2px var(--fig-k); }
+.dsv6-node.dsv6-hot{ box-shadow:0 0 0 3px var(--fig-k); }
+.dsv6-node.dsv6-ok{ box-shadow:0 0 0 3px var(--ok); }
+.dsv6-node.dsv6-gone{ border-style:dashed; border-color:var(--pen); background:var(--paper); opacity:.75; }
+.dsv6-node.dsv6-gone > span + span{ border-left-style:dashed; border-left-color:var(--pen); }
+.dsv6-node.dsv6-lost{ border-style:dashed; opacity:.6; }
+.dsv6-dn{ height:16px; position:relative; }
+.dsv6-dn::before{ content:""; position:absolute; left:58px; top:-15px; width:2px; height:26px; background:var(--pen); }
+.dsv6-dn::after{ content:""; position:absolute; left:54px; top:10px; border:5px solid transparent; border-top:6px solid var(--pen); }
+.dsv6-nul{ display:inline-block; font:700 .8rem var(--mono); color:var(--pen); border:1px dashed var(--pen); border-radius:4px; padding:3px 8px; }
+.dsv6-empty{ font:600 .84rem var(--mono); color:var(--graphite); }
+.dsv6-lab{ font-size:.86rem; font-weight:700; text-align:center; color:var(--ink); margin:2px 0 4px; }
+.dsv6-sub{ font-size:.78rem; color:var(--graphite); text-align:center; }
+.dsv6-chip{ display:inline-block; padding:3px 10px; border-radius:99px; border:1px solid var(--line); background:var(--paper); font:600 .84rem var(--mono); color:var(--ink); }
+.dsv6-chip.dsv6-k{ border-color:var(--fig-k); color:var(--fig-k); }
+.dsv6-chip.dsv6-p{ border-color:var(--pen); color:var(--pen); }
+.dsv6-in-a{ animation:dsv6-in .45s ease both; }
+@keyframes dsv6-in{ from{ opacity:0; transform:translateY(-8px); } to{ opacity:1; transform:none; } }
+.dsv6-code{ margin:0 auto 8px; max-width:440px; padding:8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:.75rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv6-code > span{ display:block; border-radius:3px; padding:0 3px; transition:background .3s; }
+.dsv6-code > span.dsv6-cur{ background:color-mix(in srgb, var(--fig-k) 24%, transparent); }
+.dsv6-code > span.dsv6-bad{ background:color-mix(in srgb, var(--pen) 20%, transparent); }
+.dsv6-code > span.dsv6-skip{ opacity:.45; }
+.dsv6-ct{ font:600 .78rem var(--body); color:var(--graphite); max-width:440px; margin:6px auto 3px; }
+.dsv6-out{ max-width:440px; margin:8px auto 0; padding:6px 10px; border:1px solid var(--line); border-left:4px solid var(--fig-k); border-radius:6px; background:var(--paper); font:600 .84rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; min-height:1.5em; text-align:left; direction:ltr; }
+.dsv6-out small{ display:block; font:600 .75rem var(--body); color:var(--graphite); }
+.dsv6-err{ max-width:440px; margin:8px auto 0; padding:6px 10px; border:2px solid var(--pen); border-radius:8px; color:var(--pen); font-weight:700; font-size:.86rem; text-align:center; }
+.dsv6-vars{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:6px 0 0; }
+.dsv6-in{ font:.9rem var(--mono); padding:4px 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; max-width:100%; box-sizing:border-box; }
+.dsv6-lbl{ font-size:.85rem; color:var(--graphite); display:inline-flex; gap:6px; align-items:center; flex-wrap:wrap; justify-content:center; }
+.dsv6-cnt{ font-size:.85rem; color:var(--graphite); white-space:nowrap; }
+.dsv6-try{ border-top:1px dashed var(--line); margin-top:10px; padding-top:8px; }
+.dsv6-msg{ font-size:.82rem; color:var(--pen); text-align:center; min-height:1.2em; margin-top:4px; }
+.dsv6-steps{ display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:6px; max-width:440px; margin:0 auto 10px; }
+.dsv6-steps > div{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:5px 4px; text-align:center; font-size:.8rem; line-height:1.25; color:var(--ink); opacity:.45; transition:opacity .35s, box-shadow .35s; }
+.dsv6-steps > div b{ display:block; color:var(--fig-k); font-size:.78rem; }
+.dsv6-steps > div.dsv6-on{ opacity:1; box-shadow:0 0 0 2px var(--fig-k); }
+.dsv6-obj{ border:2px solid var(--fig-k); border-radius:8px; padding:6px 10px; background:var(--paper); text-align:center; color:var(--ink); }
+.dsv6-obj > b{ display:block; font:700 .8rem var(--mono); color:var(--fig-k); margin-bottom:4px; }
+.dsv6-fld{ display:grid; grid-template-columns:auto auto; gap:2px 8px; font:600 .84rem var(--mono); justify-content:center; }
+.dsv6-fld i{ font-style:normal; color:var(--graphite); text-align:right; }
+.dsv6-menu{ display:grid; gap:4px; max-width:300px; margin:0 auto; }
+.dsv6-menu > div{ display:grid; grid-template-columns:minmax(0, 1fr) auto; gap:8px; align-items:center; border:1px solid var(--line); border-radius:6px; padding:3px 8px; background:var(--paper); font:600 .84rem var(--mono); color:var(--ink); }
+.dsv6-menu > div span + span{ color:var(--fig-k); }
+@media (prefers-reduced-motion: reduce){ .dsv6-in-a{ animation:none; } .dsv6-node, .dsv6-code > span, .dsv6-steps > div{ transition:none; } }`;
+  if (!document.getElementById('dsv6-css')) { const s = document.createElement('style'); s.id = 'dsv6-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* helpers */
+  const L = s => `<span class="ltr">${s}</span>`;
+  const D = s => `<bdi dir="ltr">${String(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const ints = s => String(s).split(/[\s,]+/).filter(Boolean).map(x => parseInt(x, 10)).filter(Number.isFinite);
+  const chainTxt = (p, vals) => [p].concat(vals, ['NULL']).join(' → ');
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    ${n <= 14 ? html`<div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>` : html`<span className="dsv6-cnt">Step ${i + 1} / ${n}</span>`}
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  const Modes = ({ list, mode, set }) => html`<div className="dsv6-modes" role="group">${list.map(([k, l]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => set(k)}>${l}</button>`)}</div>`;
+  const has = (cur, k) => Array.isArray(cur) ? cur.includes(k) : k === cur;
+  const Code = ({ lines, cur, bad, skip }) => html`<pre className="dsv6-code">${lines.map((l, k) => html`<span key=${k} className=${has(bad, k) ? 'dsv6-bad' : has(cur, k) ? 'dsv6-cur' : has(skip, k) ? 'dsv6-skip' : ''}>${l || ' '}</span>`)}</pre>`;
+  // a linked stack drawn top-down as on slide 4: pointer names on the left, node (data | next), red arrows down, N in the last next
+  // nodes: [{ v, c (class), side: [text, cls], nul (next shown as N even if not last) }]; ptr: { index: [names] }; ptr index = nodes.length means NULL
+  const Chain = ({ nodes, ptr = {}, anim }) => {
+    const out = [];
+    if (!nodes.length) {
+      out.push(html`<span key="p" className="dsv6-pt">${(ptr[0] || ['top']).join(', ')} →</span>`, html`<span key="n"><span className="dsv6-nul">NULL</span></span>`, html`<span key="s"></span>`);
+    }
+    nodes.forEach((nd, k) => {
+      const last = k === nodes.length - 1, nul = last || nd.nul, nx = nd.nx || (nul ? 'N' : '•');
+      if (k) out.push(html`<span key=${'a' + k}></span>`, nodes[k - 1].nul ? html`<span key=${'d' + k} style=${{ height: '16px' }}></span>` : html`<div key=${'d' + k} className="dsv6-dn"></div>`, html`<span key=${'b' + k}></span>`);
+      out.push(html`<span key=${'p' + k} className="dsv6-pt">${ptr[k] ? ptr[k].join(', ') + ' →' : ''}</span>`,
+        html`<div key=${'n' + k + (anim && k === 0 ? 'x' + nd.v + nodes.length : '')} className=${'dsv6-node ' + (nd.c || '') + (anim && k === 0 ? ' dsv6-in-a' : '')}><span>${nd.v}</span><span className=${nul ? 'dsv6-n' : ''}>${nx}</span></div>`,
+        html`<span key=${'s' + k} className=${'dsv6-sd ' + ((nd.side && nd.side[1]) || '')}>${nd.side ? nd.side[0] : ''}</span>`);
+    });
+    if (nodes.length && ptr[nodes.length]) out.push(html`<span key="pa"></span>`, html`<span key="pb" style=${{ height: '6px' }}></span>`, html`<span key="pc"></span>`,
+      html`<span key="pn" className="dsv6-pt">${ptr[nodes.length].join(', ')} →</span>`, html`<span key="nn"><span className="dsv6-nul">NULL</span></span>`, html`<span key="sn"></span>`);
+    return html`<div className="dsv6-chain">${out}</div>`;
+  };
+
+  /* ── [0.4] slide 4: the linked stack 25, 32, 50, 99 built push by push ── */
+  function L6SlideStack({ ar }) {
+    const EX = [25, 32, 50, 99];
+    const [order, setOrder] = useState(EX), [txt, setTxt] = useState(EX.join(' ')), [msg, setMsg] = useState('');
+    const S = [{ k: 0 }].concat(order.map((_, j) => ({ k: j + 1 })), [{ k: order.length, fin: true }]);
+    const [i, ctl] = useWalk(S.length, 1700, order.join(','));
+    const s = S[i], inStack = order.slice(0, s.k).reverse(), top = inStack[0], first = order[0], last = order[order.length - 1];
+    const nodes = inStack.map((v, j) => ({ v, c: !s.fin && j === 0 && s.k ? 'dsv6-new' : '',
+      side: s.fin ? (j === 0 ? ['last inserted', 'dsv6-k'] : j === inStack.length - 1 ? ['first inserted', 'dsv6-k'] : null) : (j === 0 && s.k ? ['new top', 'dsv6-k'] : null) }));
+    let en, a;
+    if (s.k === 0) { en = 'Before any push the stack is empty: <b>top = NULL</b>.'; a = 'قبل أي push الـ stack بيبقى فاضي، والـ top بيساوي ' + D('NULL') + '.'; }
+    else if (s.fin) {
+      en = `Inserted in the order ${order.join(', ')}: ${chainTxt('top', inStack)}. Last inserted = <b>${last}</b> (pointed to by top), first inserted = <b>${first}</b> (its next is NULL, the N). display() prints <b>${inStack.join(' ')}</b>.`;
+      a = 'العناصر اتضافت بالترتيب ده:' + L(order.join(', ')) + 'والسلسلة بقت:' + L(chainTxt('top', inStack)) + `آخر واحد اتضاف هو ${D(last)} (والـ top بيشاور عليه)، وأول واحد اتضاف هو ${D(first)} (والـ next بتاعه NULL، يعني الـ N). والـ <bdi dir="ltr">display()</bdi> بتطبع:` + L(inStack.join(' '));
+    } else if (s.k === 1) {
+      en = `push(${top}): the stack was empty, so the new node's next = NULL (the N) and top points at ${top}.`;
+      a = `بنعمل ${D('push(' + top + ')')} والـ stack فاضي، فالـ next بتاع الـ node الجديدة بيبقى NULL (الـ N في الرسمة)، والـ top بيشاور عليها.`;
+    } else {
+      en = `push(${top}): the new node points at the old top (${inStack[1]}), then top moves to ${top}. Every new element is inserted as the top element.`;
+      a = `بنعمل ${D('push(' + top + ')')} فالـ node الجديدة بتشاور على الـ top القديم (${D(inStack[1])})، وبعدين الـ top بيتحرك لـ ${D(top)}. كل عنصر جديد بيدخل كـ top.`;
+    }
+    const load = () => { const v = ints(txt); if (v.length < 1 || v.length > 6) { setMsg('Type 1 to 6 whole numbers, in the order they are pushed.'); return; } setMsg(''); setOrder(v); };
+    return html`<figure className="fig dsv6"><div className="fig-stage">
+      <div className="dsv6-lab">${s.k === 0 ? 'Empty stack' : s.fin ? 'Slide 4: linked stack' : 'push(' + top + ')'}</div>
+      <${Chain} nodes=${nodes} ptr=${{ 0: ['top'] }} anim=${!s.fin} />
+      <div className="dsv6-vars"><span className="dsv6-chip">inserted: ${order.slice(0, s.k).join(', ') || 'nothing yet'}</span></div>
+      <div className="dsv6-try"><div className="dsv6-row">
+        <button className="fig-btn" onClick=${() => { setTxt(EX.join(' ')); setOrder(EX.slice()); setMsg(''); }}>Example from the notes</button>
+        <label className="dsv6-lbl">Try your own (push order) <input className="dsv6-in" style=${{ width: '128px' }} value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="Values in push order" /></label>
+        <button className="fig-btn solid" onClick=${load}>Build</button></div>
+        <div className="dsv6-msg">${msg}</div></div></div>
+      <${Cap} en=${en} ar=${a} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.0] creation: Step 1 Node class, Step 2 top = NULL, Step 3 main with a menu ── */
+  function L6Creation({ ar }) {
+    const CODES = [
+      ['class Node', '{', 'public:', '   int data;', '   Node *next;', '   Node()', '   { data = 0;', '     next = NULL; }', '};'],
+      ['class Stack', '{', '   Node *top;', 'public:', '   Stack() { top = NULL; }', '   // isEmpty, push, pop, ...', '};'],
+      ['int main()', '{', '   Stack s;', '   // show the menu, read a choice', '   // call s.push(item), s.pop(),', '   // s.display(), ...', '}']
+    ];
+    const CUR = [[3, 4, 6, 7], [2, 4], [2, 3, 4, 5]];
+    const T = [
+      { en: '<b>Step 1</b>: define a <b>Node</b> class with two members, <b>data</b> and <b>next</b>. Its constructor Node() makes data = 0 and next = NULL, so a new node starts as 0 | N.', ar: '(1) أول خطوة نعرّف Node class فيها member اسمه data وmember اسمه next. والـ constructor بتاعها (<bdi dir="ltr">Node()</bdi>) بيخلّي:' + L('data = 0, next = NULL') + 'فأي node جديدة بتبدأ كده (0 و N).' },
+      { en: '<b>Step 2</b>: define a Node pointer <b>top</b> and set it to <b>NULL</b>. In the class, the Stack() constructor does it, so <b>Stack s;</b> starts empty.', ar: '(2) تاني خطوة نعرّف Node pointer اسمه top ونخليه NULL. في الـ class الـ constructor بتاع الـ Stack هو اللي بيعمل كده، فلما نكتب ' + D('Stack s;') + ' الـ stack بيبدأ فاضي.' },
+      { en: '<b>Step 3</b>: main displays a <b>menu</b> with the list of operations and calls the matching function on the stack object.', ar: '(3) تالت خطوة الـ main بتعرض menu فيها الـ operations، وبتنادي الـ function المناسبة على الـ stack object.' }
+    ];
+    const [i, ctl] = useWalk(3, 2600, 0);
+    let pic;
+    if (i === 0) pic = html`<div className="dsv6-row"><div className="dsv6-obj"><b>new Node()</b>
+        <div className="dsv6-row" style=${{ margin: '0', gap: '0' }}><div style=${{ display: 'grid', gridTemplateColumns: '44px 30px', font: '600 .75rem var(--mono)', color: 'var(--graphite)', textAlign: 'center' }}><span>data</span><span>next</span></div></div>
+        <div className="dsv6-row" style=${{ margin: '2px 0 0' }}><div className="dsv6-node dsv6-new"><span>0</span><span className="dsv6-n">N</span></div></div></div></div>`;
+    else if (i === 1) pic = html`<div className="dsv6-row"><div className="dsv6-obj"><b>Stack s</b><div className="dsv6-fld"><i>top</i><span>NULL</span></div></div></div>
+      <${Chain} nodes=${[]} ptr=${{ 0: ['top'] }} />`;
+    else pic = html`<div className="dsv6-menu">${[['1. Push', 's.push(item)'], ['2. Pop', 's.pop()'], ['3. Display', 's.display()'], ['4. Get top', 's.get()'], ['5. Count', 's.count()'], ['6. Search', 's.search(item)'], ['7. Exit', 'return 0']].map(([m, f]) => html`<div key=${m}><span>${m}</span><span>${f}</span></div>`)}</div>`;
+    return html`<figure className="fig dsv6"><div className="fig-stage">
+      <div className="dsv6-steps">${['Node class', 'top = NULL', 'main + menu'].map((t, k) => html`<div key=${k} className=${k === i ? 'dsv6-on' : ''}><b>Step ${k + 1}</b>${t}</div>`)}</div>
+      <${Code} lines=${CODES[i]} cur=${CUR[i]} />
+      ${pic}</div>
+      <${Cap} en=${T[i].en} ar=${T[i].ar} showAr=${ar} /><${SBar} n=${3} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.2] pop: why "temp = top; top = top->next; delete temp;" in this order ── */
+  function L6PopOrder({ ar }) {
+    const [mode, setMode] = useState('ok');
+    const V = [99, 50, 32, 25];
+    const base = V.map(v => ({ v }));
+    const M = {
+      ok: { code: ['Node *temp = top;', 'top = top->next;', 'delete temp;'], S: [
+        { cur: -1, nodes: base, ptr: { 0: ['top'] }, en: 'The slide 4 stack: top → 99 → 50 → 32 → 25 → NULL. pop() must remove 99.', ar: 'ده الـ stack بتاع slide 4، والمفروض الـ <bdi dir="ltr">pop()</bdi> تشيل الـ 99:' + L(chainTxt('top', V)) },
+        { cur: 0, nodes: base, ptr: { 0: ['top', 'temp'] }, en: '<b>temp = top</b>: temp keeps the address of the node with 99.', ar: 'بنعمل ' + D('temp = top') + ' فالـ temp بيمسك عنوان الـ node اللي فيها 99.' },
+        { cur: 1, nodes: [{ v: 99, c: 'dsv6-hot' }].concat(base.slice(1)), ptr: { 0: ['temp'], 1: ['top'] }, en: '<b>top = top->next</b>: top moves to 50. The node 99 is out of the stack but temp still holds it.', ar: 'بنعمل ' + D('top = top->next') + ' فالـ top بيتحرك للـ 50. الـ node بتاعة 99 خرجت من الـ stack، بس الـ temp لسه ماسكها.' },
+        { cur: 2, nodes: [{ v: 99, c: 'dsv6-gone', side: ['deleted', 'dsv6-p'], nul: true, nx: '?' }].concat(base.slice(1).map(n => ({ v: n.v, c: 'dsv6-ok' }))), ptr: { 0: ['temp'], 1: ['top'] }, en: '<b>delete temp</b>: the memory of 99 is freed. Result: top → 50 → 32 → 25 → NULL. Correct.', ar: 'بنعمل ' + D('delete temp') + ' فالـ memory بتاعة الـ 99 بتتمسح، والنتيجة صح:' + L(chainTxt('top', V.slice(1))) }
+      ] },
+      del: { code: ['Node *temp = top;', 'delete temp;', 'top = top->next;'], S: [
+        { cur: -1, nodes: base, ptr: { 0: ['top'] }, en: 'Same stack, but the last two statements swapped: delete first, then move top.', ar: 'نفس الـ stack، بس هنبدّل آخر سطرين: نعمل delete الأول وبعدين نحرّك الـ top.' },
+        { cur: 0, nodes: base, ptr: { 0: ['top', 'temp'] }, en: '<b>temp = top</b>: temp and top both point at 99.', ar: 'بنعمل ' + D('temp = top') + ' فالـ temp والـ top الاتنين بيشاوروا على 99.' },
+        { cur: 1, nodes: [{ v: '?', c: 'dsv6-gone', side: ['deleted', 'dsv6-p'], nul: true, nx: '?' }].concat(base.slice(1)), ptr: { 0: ['top', 'temp'] }, en: '<b>delete temp</b>: the node is freed, but <b>top still points at it</b>. Its data and next are gone.', ar: 'بنعمل ' + D('delete temp') + ' فالـ node بتتمسح، بس الـ top لسه بيشاور عليها، والـ data والـ next بتوعها راحوا.' },
+        { cur: 2, bad: 2, nodes: [{ v: '?', c: 'dsv6-gone', side: ['deleted', 'dsv6-p'], nul: true, nx: '?' }].concat(base.slice(1).map(n => ({ v: n.v, c: 'dsv6-lost' }))), ptr: { 0: ['top', 'temp'] }, err: 'top->next is read from a deleted node', en: '<b>top = top->next</b> reads next from memory that was already deleted: undefined behaviour (a crash or a wrong address). The rest of the stack may be lost.', ar: 'الـ ' + D('top = top->next') + ' بيقرا الـ next من memory اتمسحت خلاص، وده undefined behaviour (ممكن crash أو عنوان غلط)، وباقي الـ stack ممكن يضيع.' }
+      ] },
+      leak: { code: ['top = top->next;', '// no temp, no delete'], S: [
+        { cur: -1, nodes: base, ptr: { 0: ['top'] }, en: 'Same stack, but pop only moves top and never keeps or deletes the old node.', ar: 'نفس الـ stack، بس الـ pop هنا بتحرّك الـ top بس، ومش بتمسك الـ node القديمة ولا بتمسحها.' },
+        { cur: 0, bad: 1, nodes: [{ v: 99, c: 'dsv6-lost', side: ['nothing points here', 'dsv6-p'] }].concat(base.slice(1)), ptr: { 1: ['top'] }, err: 'memory leak: node 99 can never be deleted', en: '<b>top = top->next</b>: the stack looks right (top → 50), but node 99 is still in memory and no pointer reaches it, so it can never be deleted: a <b>memory leak</b>. That is why pop keeps it in temp first.', ar: 'بنعمل ' + D('top = top->next') + ' فالـ stack شكله صح (الـ top على 50)، بس الـ node بتاعة 99 لسه في الـ memory ومفيش pointer بيوصلها، فمش هينفع تتمسح أبداً، وده اسمه memory leak. عشان كده الـ pop بتمسكها في الـ temp الأول.' }
+      ] }
+    };
+    const m = M[mode], [i, ctl] = useWalk(m.S.length, 2200, mode), s = m.S[i];
+    return html`<figure className="fig dsv6"><div className="fig-stage">
+      <${Modes} list=${[['ok', 'Lecture order'], ['del', 'delete first'], ['leak', 'no temp']]} mode=${mode} set=${setMode} />
+      <${Code} lines=${m.code} cur=${s.cur} bad=${s.bad != null && s.bad < m.code.length ? s.bad : -1} />
+      <${Chain} nodes=${s.nodes} ptr=${s.ptr} />
+      ${s.err && html`<div className="dsv6-err">${s.err}</div>`}</div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${m.S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3] display, get, count, search traced with temp ── */
+  const WCODE = {
+    display: ['void display()', '{', '   if (isEmpty())', '      cout << "Empty Stack";', '   else', '   { Node *temp = top;', '     while (temp != NULL)', '     { cout<<temp->data<<" ";', '       temp = temp->next; }', '     cout<<endl<<"END"<<endl;', '   }', '}'],
+    get: ['int get()', '{', '   if (top != NULL)', '      return (top->data);', '   else', '   { cout << "Empty";', '     return 0; }', '}'],
+    count: ['int count()', '{', '   int c = 0;', '   Node *temp = top;', '   while (temp != NULL)', '   { c++;', '     temp = temp->next; }', '   return (c);', '}'],
+    search: ['bool search(int item)', '{', '   Node *temp = top;', '   while (temp != NULL)', '   { if (temp->data == item)', '        return (true);', '     else temp = temp->next; }', '   return (false);', '}']
+  };
+  function walkSteps(mode, st, item) {
+    const n = st.length, S = [];
+    const add = (l, t, en, a, x) => S.push(Object.assign({ l, t, en, ar: a }, x));
+    const tv = t => t >= n ? 'NULL' : st[t];
+    if (mode === 'display') {
+      if (!n) { add(2, null, 'isEmpty() is true (top == NULL).', 'الـ <bdi dir="ltr">isEmpty()</bdi> بترجع true لأن ' + D('top == NULL') + '.'); add(3, null, 'So display prints <b>Empty Stack</b> and ends.', 'فالـ display بتطبع ' + D('Empty Stack') + ' وتخلص.', { out: 'Empty Stack' }); return S; }
+      add(2, null, 'isEmpty() is false: top points at a node.', 'الـ <bdi dir="ltr">isEmpty()</bdi> بترجع false لأن الـ top بيشاور على node.', { out: '' });
+      add(5, 0, `<b>temp = top</b>: temp starts at the top node (${st[0]}).`, `بنعمل ${D('temp = top')} فالـ temp بيبدأ من الـ top node (${D(st[0])}).`, { out: '' });
+      let out = '';
+      for (let k = 0; k < n; k++) {
+        out += st[k] + ' ';
+        add([6, 7], k, `temp != NULL, so print temp->data: <b>${st[k]}</b>.`, `الـ temp مش NULL، فبنطبع الـ <bdi dir="ltr">temp->data</bdi> اللي هي ${D(st[k])}.`, { out });
+        add(8, k + 1, `<b>temp = temp->next</b>: temp moves to ${k + 1 < n ? st[k + 1] : 'NULL'}.`, `بنعمل ${D('temp = temp->next')} فالـ temp بيروح لـ ${D(tv(k + 1))}.`, { out });
+      }
+      add(6, n, 'temp == NULL: the loop stops after the first-inserted node.', 'الـ temp بقى NULL فالـ loop بتقف بعد أول node اتضافت.', { out });
+      add(9, n, `Then a new line and <b>END</b>. Printed top first: ${st.join(' ')}.`, 'وبعدين سطر جديد وكلمة END. الطباعة بتبدأ من الـ top:' + L(st.join(' ')), { out: out + '\nEND' });
+    } else if (mode === 'get') {
+      if (!n) { add(2, null, 'top == NULL, so the stack is empty.', 'الـ top بيساوي NULL، فالـ stack فاضي.'); add([5, 6], null, 'get() prints <b>Empty</b> and returns 0.', 'الـ <bdi dir="ltr">get()</bdi> بتطبع Empty وبترجع ' + D('0') + '.', { out: 'Empty', ret: '0' }); return S; }
+      add(2, null, 'top != NULL: there is a top node.', 'الـ top مش NULL، يعني فيه top node.', { hot: 0 });
+      add(3, null, `get() returns top->data = <b>${st[0]}</b> without removing it. The stack is unchanged.`, `الـ <bdi dir="ltr">get()</bdi> بترجع الـ <bdi dir="ltr">top->data</bdi> من غير ما تشيله، وقيمته ${D(st[0])}. والـ stack زي ما هو.`, { hot: 0, ret: st[0] });
+    } else if (mode === 'count') {
+      add(2, null, '<b>c = 0</b>.', 'بنبدأ بـ ' + D('c = 0') + '.', { c: 0 });
+      add(3, 0, 'temp = top.', 'بنعمل ' + D('temp = top') + '.', { c: 0 });
+      for (let k = 0; k < n; k++) {
+        add([4, 5], k, `temp != NULL (node ${st[k]}), so c++: <b>c = ${k + 1}</b>.`, `الـ temp مش NULL (الـ node بتاعة ${D(st[k])})، فبنعمل <bdi dir="ltr">c++</bdi> والـ c بقى ${D(k + 1)}.`, { c: k + 1, ok: k });
+        add(6, k + 1, `temp = temp->next: temp moves to ${k + 1 < n ? st[k + 1] : 'NULL'}.`, `بنعمل ${D('temp = temp->next')} فالـ temp بيروح لـ ${D(tv(k + 1))}.`, { c: k + 1, ok: k });
+      }
+      add(4, n, 'temp == NULL: the loop stops.', 'الـ temp بقى NULL فالـ loop بتقف.', { c: n, ok: n - 1 });
+      add(7, n, `count() returns <b>${n}</b>.`, `الـ <bdi dir="ltr">count()</bdi> بترجع ${D(n)}.`, { c: n, ret: n, ok: n - 1 });
+    } else {
+      add(2, 0, `temp = top. Looking for ${item}.`, `بنعمل ${D('temp = top')} وبندوّر على ${D(item)}.`);
+      for (let k = 0; k < n; k++) {
+        if (st[k] === item) {
+          add([3, 4], k, `temp->data = ${st[k]} equals ${item}.`, `الـ <bdi dir="ltr">temp->data</bdi> بيساوي ${D(st[k])} وده هو الـ item.`, { ok: k, hot: k });
+          add(5, k, `search(${item}) returns <b>true</b>.`, `الـ search بترجع true، يعني الـ ${D(item)} موجود.`, { ok: k, ret: 'true' });
+          return S;
+        }
+        add([3, 4], k, `temp->data = ${st[k]} is not ${item}.`, `الـ <bdi dir="ltr">temp->data</bdi> بيساوي ${D(st[k])} ومش هو الـ item.`, { hot: k });
+        add(6, k + 1, `temp = temp->next: temp moves to ${k + 1 < n ? st[k + 1] : 'NULL'}.`, `بنعمل ${D('temp = temp->next')} فالـ temp بيروح لـ ${D(tv(k + 1))}.`);
+      }
+      add(3, n, 'temp == NULL: every node was checked.', 'الـ temp بقى NULL، يعني كل الـ nodes اتشافت.');
+      add(7, n, `search(${item}) returns <b>false</b>.`, `الـ search بترجع false، يعني الـ ${D(item)} مش موجود.`, { ret: 'false' });
+    }
+    return S;
+  }
+  function L6Walk({ ar }) {
+    const EX = [25, 32, 50, 99];
+    const [mode, setMode] = useState('display'), [order, setOrder] = useState(EX), [item, setItem] = useState(32);
+    const [txt, setTxt] = useState(EX.join(' ')), [itxt, setItxt] = useState('32'), [msg, setMsg] = useState('');
+    const st = order.slice().reverse();
+    const S = walkSteps(mode, st, item);
+    const [i, ctl] = useWalk(S.length, 1500, mode + order.join(',') + '|' + item), s = S[i];
+    const ptr = { 0: ['top'] };
+    if (s.t != null) { if (s.t === 0) ptr[0] = ['top', 'temp']; else ptr[s.t] = ['temp']; }
+    const nodes = st.map((v, k) => ({ v, c: s.ok != null && (mode === 'count' ? k <= s.ok : k === s.ok) ? 'dsv6-ok' : s.hot === k || (s.t === k && mode !== 'count') ? 'dsv6-hot' : '' }));
+    const load = () => {
+      const v = ints(txt), it = ints(itxt);
+      if (v.length > 6) { setMsg('Use at most 6 values.'); return; }
+      if (mode === 'search' && it.length !== 1) { setMsg('Type one whole number to search for.'); return; }
+      setMsg(''); setOrder(v); if (it.length === 1) setItem(it[0]);
+    };
+    const vars = [];
+    if (s.t != null) vars.push('temp → ' + (s.t >= st.length ? 'NULL' : st[s.t]));
+    if (s.c != null) vars.push('c = ' + s.c);
+    if (s.ret != null) vars.push('returns ' + s.ret);
+    return html`<figure className="fig dsv6"><div className="fig-stage">
+      <${Modes} list=${[['display', 'display()'], ['get', 'get()'], ['count', 'count()'], ['search', 'search(' + item + ')']]} mode=${mode} set=${setMode} />
+      <${Code} lines=${WCODE[mode]} cur=${s.l} />
+      <${Chain} nodes=${nodes} ptr=${ptr} />
+      <div className="dsv6-vars">${vars.map(v => html`<span key=${v} className="dsv6-chip dsv6-k">${v}</span>`)}</div>
+      ${s.out != null && html`<div className="dsv6-out"><small>output</small>${s.out}</div>`}
+      <div className="dsv6-try"><div className="dsv6-row">
+        <button className="fig-btn" onClick=${() => { setTxt(EX.join(' ')); setItxt('32'); setOrder(EX.slice()); setItem(32); setMsg(''); }}>Example from the notes</button>
+        <label className="dsv6-lbl">Push order <input className="dsv6-in" style=${{ width: '120px' }} value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="Values in push order" /></label>
+        <label className="dsv6-lbl">item <input className="dsv6-in" style=${{ width: '56px' }} value=${itxt} onChange=${e => setItxt(e.target.value)} aria-label="Item to search for" /></label>
+        <button className="fig-btn solid" onClick=${load}>Run</button></div>
+        <div className="dsv6-msg">${msg}</div></div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4] exam pattern: main traced with its output ── */
+  const MCODE = ['int main()', '{', '  Stack s;', '  if (s.isEmpty())', '    cout<<"Stack is empty"<<endl;', '  s.push(A);', '  s.push(B);', '  cout << "Removed "', '       << s.pop() << endl;', '  s.removeAll();', '  return 0;', '}', '', 'void removeAll()', '{', '  while (!isEmpty())', '    cout<<"popped "<<pop()<<endl;', '}'];
+  function L6ExamMain({ ar }) {
+    const EX = [50, 70];
+    const [vals, setVals] = useState(EX), [txt, setTxt] = useState(EX.join(' ')), [msg, setMsg] = useState('');
+    // code: one push line per value
+    const code = MCODE.slice(0, 5).concat(vals.map(v => `  s.push(${v});`), MCODE.slice(7));
+    const P = vals.length, at = k => k < 5 ? k : k - 2 + P; // MCODE line index → index in code (P push lines replace MCODE 5–6)
+    const S = [];
+    let out = '', st = [];
+    S.push({ l: at(2), st: [], out, en: '<b>Stack s;</b> the constructor sets top = NULL.', ar: 'الـ ' + D('Stack s;') + ' بتنادي الـ constructor اللي بيخلّي الـ top بـ NULL.' });
+    out += 'Stack is empty\n';
+    S.push({ l: [at(3), at(4)], st: [], out, en: 'isEmpty() is true, so it prints <b>Stack is empty</b>.', ar: 'الـ <bdi dir="ltr">isEmpty()</bdi> بترجع true، فبيطبع ' + D('Stack is empty') + '.' });
+    vals.forEach((v, j) => { st = [v].concat(st); S.push({ l: 5 + j, st: st.slice(), nw: 0, out, en: `s.push(${v}): ${chainTxt('top', st)}.`, ar: `بعد ${D('s.push(' + v + ')')} الـ stack بقى:` + L(chainTxt('top', st)) }); });
+    const r = st[0]; st = st.slice(1); out += 'Removed ' + r + '\n';
+    S.push({ l: [at(7), at(8)], st: st.slice(), out, en: `s.pop() removes the top (${r}) and returns it: prints <b>Removed ${r}</b>. Now ${chainTxt('top', st)}.`, ar: `الـ <bdi dir="ltr">s.pop()</bdi> بتشيل الـ top (${D(r)}) وبترجعه، فبيطبع ${D('Removed ' + r)}. والـ stack بقى:` + L(chainTxt('top', st)) });
+    S.push({ l: [at(9), at(15)], st: st.slice(), out, en: 's.removeAll(): pop until the stack is empty.', ar: 'الـ <bdi dir="ltr">s.removeAll()</bdi> بتعمل pop لحد ما الـ stack يفضى.' });
+    while (st.length) {
+      const v = st[0]; st = st.slice(1); out += 'popped ' + v + '\n';
+      S.push({ l: [at(15), at(16)], st: st.slice(), out, en: `!isEmpty() is true, so pop() returns ${v}: prints <b>popped ${v}</b>.`, ar: `الـ <bdi dir="ltr">!isEmpty()</bdi> بترجع true، فالـ <bdi dir="ltr">pop()</bdi> بترجع ${D(v)} وبيطبع ${D('popped ' + v)}.` });
+    }
+    S.push({ l: [at(15), at(10)], st: [], out, en: 'isEmpty() is now true: the loop ends, top = NULL, and main returns 0.', ar: 'الـ <bdi dir="ltr">isEmpty()</bdi> بقت true فالـ loop بتخلص، والـ top بقى NULL، والـ main بترجع ' + D('0') + '.' });
+    const [i, ctl] = useWalk(S.length, 1800, vals.join(',')), s = S[i];
+    const load = () => { const v = ints(txt); if (v.length < 1 || v.length > 5) { setMsg('Type 1 to 5 whole numbers to push.'); return; } setMsg(''); setVals(v); };
+    return html`<figure className="fig dsv6"><div className="fig-stage">
+      <${Code} lines=${code} cur=${s.l} />
+      <${Chain} nodes=${s.st.map((v, k) => ({ v, c: s.nw === k ? 'dsv6-new' : '' }))} ptr=${{ 0: ['top'] }} />
+      <div className="dsv6-out"><small>output</small>${s.out}</div>
+      <div className="dsv6-try"><div className="dsv6-row">
+        <button className="fig-btn" onClick=${() => { setTxt(EX.join(' ')); setVals(EX.slice()); setMsg(''); }}>Example from the notes</button>
+        <label className="dsv6-lbl">Try your own (values pushed) <input className="dsv6-in" style=${{ width: '110px' }} value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="Values pushed in main" /></label>
+        <button className="fig-btn solid" onClick=${load}>Run</button></div>
+        <div className="dsv6-msg">${msg}</div></div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5] Lab 7 struct version next to the class version ── */
+  const CPUSH = ['void push(int item)', '{ Node *newnode = new Node();', '  newnode->data = item;', '  if (isEmpty())', '  { newnode->next = NULL;', '    top = newnode; }', '  else', '  { newnode->next = top;', '    top = newnode; }', '}'];
+  const SPUSH = ['void push(int item)', '{ node *newnode = new node;', '  newnode->data = item;', '  newnode->next = top;', '  top = newnode;', '}'];
+  const CPOP = ['int pop()', '{ int value;', '  Node *temp = top;', '  if (isEmpty())', '  { cout << "Empty" << endl;', '    return 0; }', '  else', '  { value = top->data;', '    top = top->next;', '    delete(temp);', '    return (value); }', '}'];
+  const SPOP = ['void pop()', '{ node *delnode = top;', '  if (top == NULL)', '    cout << "Stack Underflow\\n";', '  else', '  {cout<<"The popped element is "', '        <<top->data<<endl;', '    top = top->next;', '    delete delnode; }', '}'];
+  function L6Lab7Compare({ ar }) {
+    const [mode, setMode] = useState('pe');
+    const M = {
+      pe: { before: [], after: [50], cc: CPUSH, cl: [1, 2, 3, 4, 5], cs: [6, 7, 8], sc: SPUSH, sl: [1, 2, 3, 4], co: '', so: '',
+        en: 'push(50) on an empty stack. The class version tests isEmpty() and sets next = NULL. Lab 7 just sets <b>newnode->next = top</b>, and top is NULL anyway, so both give top → 50 → NULL.',
+        ar: 'بنعمل ' + D('push(50)') + ' على stack فاضي. نسخة الـ class بتشيك الـ <bdi dir="ltr">isEmpty()</bdi> وبتحط الـ next بـ NULL. أما Lab 7 فبتعمل ' + D('newnode->next = top') + ' على طول، والـ top أصلاً NULL، فالاتنين بيدّوا نفس النتيجة:' + L('top → 50 → NULL') },
+      pn: { before: [50], after: [70, 50], cc: CPUSH, cl: [1, 2, 3, 6, 7, 8], cs: [4, 5], sc: SPUSH, sl: [1, 2, 3, 4], co: '', so: '',
+        en: 'push(70) on top → 50. Both set newnode->next = top, then top = newnode: top → 70 → 50 → NULL. Push = insert at the beginning.',
+        ar: 'بنعمل ' + D('push(70)') + ' والـ top على 50. الاتنين بيعملوا ' + D('newnode->next = top') + ' وبعدين ' + D('top = newnode') + '، والنتيجة:' + L('top → 70 → 50 → NULL') + 'يعني الـ push هو إضافة في الأول.' },
+      on: { before: [70, 50], after: [50], cc: CPOP, cl: [1, 2, 3, 7, 8, 9, 10], cs: [4, 5], sc: SPOP, sl: [1, 2, 5, 6, 7, 8], co: 'pop() returns 70', so: 'The popped element is 70',
+        en: 'pop() on top → 70 → 50. The class version <b>returns</b> 70 (main prints it); Lab 7 <b>prints</b> "The popped element is 70" and returns nothing. Both delete the old top: top → 50 → NULL.',
+        ar: 'بنعمل <bdi dir="ltr">pop()</bdi> والـ stack فيه 70 فوق 50. نسخة الـ class بترجع الـ 70 (والـ main هي اللي تطبعه)، أما Lab 7 فبتطبع الجملة بنفسها ومش بترجع حاجة. والاتنين بيمسحوا الـ top القديم، والنتيجة:' + L('top → 50 → NULL') },
+      oe: { before: [], after: [], cc: CPOP, cl: [1, 2, 3, 4, 5], cs: [7, 8, 9, 10], sc: SPOP, sl: [1, 2, 3], co: 'Empty  (returns 0)', so: 'Stack Underflow',
+        en: 'pop() on an empty stack (top == NULL). The class version prints <b>Empty</b> and returns 0; Lab 7 prints <b>Stack Underflow</b>. Nothing is deleted.',
+        ar: 'بنعمل <bdi dir="ltr">pop()</bdi> على stack فاضي (' + D('top == NULL') + '). نسخة الـ class بتطبع Empty وبترجع ' + D('0') + '، وLab 7 بتطبع ' + D('Stack Underflow') + '. ومفيش حاجة بتتمسح.' }
+    }[mode];
+    const allC = M.cc.map((_, k) => k), allS = M.sc.map((_, k) => k);
+    return html`<figure className="fig dsv6"><div className="fig-stage">
+      <${Modes} list=${[['pe', 'push(50), empty'], ['pn', 'push(70)'], ['on', 'pop()'], ['oe', 'pop(), empty']]} mode=${mode} set=${setMode} />
+      <div className="dsv6-row" style=${{ alignItems: 'flex-start' }}>
+        <div><div className="dsv6-lab">before</div><${Chain} nodes=${M.before.map(v => ({ v }))} ptr=${{ 0: ['top'] }} /></div>
+        <div><div className="dsv6-lab">after</div><${Chain} key=${mode} nodes=${M.after.map((v, k) => ({ v, c: mode[0] === 'p' && k === 0 ? 'dsv6-new' : '' }))} ptr=${{ 0: ['top'] }} anim=${mode[0] === 'p'} /></div></div>
+      <div className="dsv6-ct">Lecture class (Stack)</div>
+      <${Code} lines=${M.cc} cur=${M.cl} skip=${M.cs} />
+      ${M.co && html`<div className="dsv6-out" style=${{ margin: '0 auto 8px' }}><small>class output</small>${M.co}</div>`}
+      <div className="dsv6-ct">Lab 7 (struct node, global top)</div>
+      <${Code} lines=${M.sc} cur=${M.sl} skip=${allS.filter(k => k && k < M.sc.length - 1 && !M.sl.includes(k))} />
+      ${M.so && html`<div className="dsv6-out"><small>Lab 7 output</small>${M.so}</div>`}</div>
+      <${Cap} en=${M.en} ar=${M.ar} showAr=${ar} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'ds-l6-slide-stack': L6SlideStack,
+    'ds-l6-creation': L6Creation,
+    'ds-l6-pop-order': L6PopOrder,
+    'ds-l6-walk': L6Walk,
+    'ds-l6-exam-main': L6ExamMain,
+    'ds-l6-lab7-compare': L6Lab7Compare
+  });
+})();
+/* ── part L7 ── */
+// Data Structures visuals, Lecture 7 (Linked Queues): slide 4's queue built node by node with its addresses, fixed-size array queue vs linked queue, the creation steps (slides 5–7), slide 12's display steps, the professor's display/get/count/search traced, linked stack vs linked queue (quiz sequence), the exam pattern main traced, and Lab 7's dequeue branches. The enqueue/dequeue pointer animations are viz.js's (not redone here). Every label and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv7 *{ font-variant-ligatures:none; }
+.dsv7 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv7 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv7-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dsv7-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv7-row{ display:flex; flex-wrap:wrap; gap:6px 8px; justify-content:center; align-items:center; margin:8px 0 0; }
+.dsv7-chain{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-start; row-gap:8px; min-height:66px; margin:2px 0; }
+.dsv7-item{ display:flex; align-items:flex-start; }
+.dsv7-n{ display:flex; flex-direction:column; align-items:center; }
+.dsv7-top{ height:17px; font:.75rem/17px var(--mono); color:var(--graphite); white-space:nowrap; }
+.dsv7-box{ display:flex; height:30px; box-sizing:border-box; border:2px solid var(--fig-k); border-radius:5px; overflow:hidden; background:var(--paper); transition:box-shadow .35s, opacity .35s; }
+.dsv7-d{ display:grid; place-items:center; padding:0 6px; min-width:20px; font:700 .85rem var(--mono); color:var(--ink); background:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); }
+.dsv7-x{ display:grid; place-items:center; padding:0 5px; min-width:12px; font:600 .78rem var(--mono); color:var(--ink); border-left:1px solid var(--line); transition:background .35s; }
+.dsv7-x.chg{ background:color-mix(in srgb, var(--ok) 30%, var(--paper)); }
+.dsv7-box.new{ box-shadow:0 0 0 3px var(--ok); }
+.dsv7-box.hot{ box-shadow:0 0 0 3px var(--fig-k); }
+.dsv7-box.gone{ border-style:dashed; border-color:var(--faint); opacity:.6; }
+.dsv7-box.gone .dsv7-d{ background:transparent; color:var(--faint); text-decoration:line-through; }
+.dsv7-bot{ display:flex; flex-direction:column; align-items:center; min-height:17px; }
+.dsv7-tag{ font:700 .75rem/1.25 var(--mono); color:var(--fig-k); white-space:nowrap; }
+.dsv7-tag.t2{ color:var(--pen); }
+.dsv7-arw{ display:flex; align-items:center; height:30px; margin-top:17px; padding:0 3px; color:var(--fig-k); font-size:1rem; }
+.dsv7-null{ display:flex; align-items:center; height:30px; margin-top:17px; font:600 .78rem var(--mono); color:var(--graphite); }
+.dsv7-empty{ align-self:center; font:.82rem var(--mono); color:var(--graphite); }
+.dsv7-vars{ display:flex; flex-wrap:wrap; justify-content:center; gap:6px; margin:6px 0 0; }
+.dsv7-vars span{ font:600 .78rem var(--mono); color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:2px 7px; background:var(--paper); transition:background .35s; }
+.dsv7-vars span.chg{ background:color-mix(in srgb, var(--ok) 26%, var(--paper)); }
+.dsv7-code{ margin:0 auto 8px; max-width:420px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:.78rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv7-code small{ display:block; font:700 .75rem var(--body); color:var(--graphite); margin-bottom:2px; }
+.dsv7-code span{ display:block; border-radius:3px; padding:0 3px; transition:background .3s; }
+.dsv7-code span.cur{ background:color-mix(in srgb, var(--fig-k) 24%, transparent); }
+.dsv7-out{ max-width:420px; margin:8px auto 0; padding:6px 10px; border:1px solid var(--line); border-left:4px solid var(--fig-k); border-radius:6px; background:var(--paper); font:600 .8rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; min-height:1.5em; text-align:left; direction:ltr; }
+.dsv7-out small{ display:block; font:600 .75rem var(--body); color:var(--graphite); }
+.dsv7-pop{ animation:dsv7-in .45s ease both; }
+@keyframes dsv7-in{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+.dsv7-pair{ display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:10px; max-width:600px; margin:0 auto; }
+.dsv7-panel{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:8px 6px; color:var(--ink); text-align:center; min-width:0; }
+.dsv7-panel > b{ display:block; font-size:.86rem; margin-bottom:4px; }
+.dsv7-panel .dsv7-chain{ min-height:66px; }
+.dsv7-msg{ font-size:.8rem; line-height:1.35; margin-top:4px; min-height:1.3em; color:var(--graphite); }
+.dsv7-msg.bad{ color:var(--pen); font-weight:700; } .dsv7-msg.good{ color:var(--ok); font-weight:700; }
+.dsv7-arr{ display:flex; justify-content:center; gap:3px; margin:4px 0; }
+.dsv7-cell{ display:flex; flex-direction:column; align-items:center; gap:2px; width:38px; }
+.dsv7-cell i{ font:normal .75rem var(--mono); color:var(--graphite); }
+.dsv7-cell span{ width:100%; height:32px; box-sizing:border-box; display:grid; place-items:center; border:1px solid var(--line); border-radius:5px; background:var(--paper-2); font:700 .82rem var(--mono); color:var(--ink); }
+.dsv7-cell span.on{ background:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); }
+.dsv7-cell span.bad{ box-shadow:0 0 0 2px var(--pen); }
+.dsv7-in{ font:.9rem var(--mono); width:64px; padding:4px 6px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; box-sizing:border-box; }
+.dsv7-in.wide{ width:150px; }
+.dsv7-lbl{ font-size:.82rem; color:var(--graphite); }
+.dsv7-steps{ max-width:420px; margin:0 auto 8px; padding:0; list-style:none; display:grid; gap:3px; }
+.dsv7-steps li{ font-size:.82rem; line-height:1.35; padding:3px 8px; border-radius:6px; border:1px solid var(--line); background:var(--paper); color:var(--ink); opacity:.55; transition:opacity .3s, background .3s; }
+.dsv7-steps li.cur{ opacity:1; background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); }
+.dsv7-steps li b{ font-family:var(--mono); }
+.dsv7-menu{ max-width:240px; margin:8px auto 0; border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:6px 10px; font:.8rem/1.5 var(--mono); color:var(--ink); text-align:left; direction:ltr; }
+.dsv7-menu b{ display:block; font-family:var(--body); font-size:.8rem; color:var(--graphite); }
+.dsv7-show{ transition:opacity .45s, transform .45s; } .dsv7-show.off{ opacity:0; transform:translateY(6px); pointer-events:none; }
+@media (prefers-reduced-motion: reduce){ .dsv7-pop{ animation:none; } .dsv7-show, .dsv7-box, .dsv7-x, .dsv7-code span, .dsv7-steps li, .dsv7-vars span{ transition:none; } }`;
+  if (!document.getElementById('dsv7-css')) { const s = document.createElement('style'); s.id = 'dsv7-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* helpers */
+  const L = s => `<span class="ltr">${s}</span>`;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const D = s => `<bdi dir="ltr">${esc(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const parseVals = t => (String(t).match(/-?\d+/g) || []).slice(0, 8).map(x => Math.max(-999, Math.min(999, parseInt(x, 10))));
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    <div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  // a chain of nodes: [data | next], address above, pointer tags below
+  // nodes: [{ id, v, nx, top, tags:[{t, c}], cls, xc }]; nul: draw "→ NULL" after the last node
+  const Chain = ({ nodes, nul, empty }) => html`<div className="dsv7-chain">
+    ${!nodes.length && html`<span className="dsv7-empty">${empty || 'empty'}</span>`}
+    ${nodes.map((n, k) => html`<div key=${n.id != null ? n.id : k} className="dsv7-item dsv7-pop">
+      <div className="dsv7-n"><span className="dsv7-top">${n.top || ''}</span>
+        <span className=${'dsv7-box ' + (n.cls || '')}><span className="dsv7-d">${n.v}</span><span className=${'dsv7-x' + (n.xc ? ' chg' : '')}>${n.nx != null ? n.nx : '•'}</span></span>
+        <span className="dsv7-bot">${(n.tags || []).map((g, j) => html`<span key=${j} className=${'dsv7-tag' + (g.c ? ' ' + g.c : '')}>↑${g.t}</span>`)}</span></div>
+      ${(k < nodes.length - 1 || nul) && html`<span className="dsv7-arw">→</span>`}</div>`)}
+    ${nul && nodes.length > 0 && html`<span className="dsv7-null">NULL</span>`}</div>`;
+  const Vars = ({ list }) => html`<div className="dsv7-vars">${list.map(([t, chg], k) => html`<span key=${k} className=${chg ? 'chg' : ''}>${t}</span>`)}</div>`;
+  const Code = ({ title, lines, cur }) => html`<div className="dsv7-code">${title && html`<small>${title}</small>`}${lines.map((t, k) => html`<span key=${k} className=${cur.includes(k) ? 'cur' : ''}>${t || ' '}</span>`)}</div>`;
+  const Out = ({ label, text }) => html`<div className="dsv7-out"><small>${label || 'Output'}</small>${text || ' '}</div>`;
+  // queue tags: front on the first node, rear on the last, extra tags by index
+  const qTags = (n, k, extra) => [...(k === 0 ? [{ t: 'front' }] : []), ...(k === n - 1 ? [{ t: 'rear' }] : []), ...((extra && extra[k]) || [])];
+
+  /* ── [0.3] slide 4: 10, 15, 22, 50 inserted, with the slide's addresses ── */
+  const S4 = [[10, 1001], [15, 1004], [22, 1008], [50, 1012]];
+  function buildSlideFig() {
+    const steps = [{ k: 0, en: 'Before any insertion the queue is empty: both pointers are NULL.', ar: 'قبل أي إضافة الـ queue فاضي، والـ pointers الاتنين بـ NULL:' + L('front = NULL, rear = NULL') }];
+    S4.forEach(([v, a], j) => {
+      if (j === 0) steps.push({ k: 1, en: `Insert ${v}: a node at address ${a} with next = NULL. It is the only node, so front and rear both hold ${a}.`, ar: `نضيف ${D(v)}، فبتتعمل node في العنوان ${D(a)} والـ next بتاعها بـ NULL. هي الـ node الوحيدة، فالـ front والـ rear الاتنين شايلين ${D(a)}.` });
+      else steps.push({ k: j + 1, en: `Insert ${v} at ${a}: the old last node's next changes from NULL to ${a}, and rear moves to ${a}. front stays at 1001.` + (j === 3 ? ' This is the slide\'s figure: rear points to the last inserted node (50) and front to the first (10); the order of insertion is 10, 15, 22, 50.' : ''),
+        ar: `نضيف ${D(v)} في العنوان ${D(a)}، فالـ next بتاع آخر node قديمة بيتغير من NULL لـ ${D(a)}، والـ rear بيتنقل لـ ${D(a)}. والـ front فاضل عند ${D(1001)}.` + (j === 3 ? ' ودي رسمة الـ slide: الـ rear بيشاور على آخر node اتضافت (50) والـ front على أول واحدة (10)، وترتيب الإضافة:' + L('10, 15, 22, 50') : '') });
+    });
+    return steps;
+  }
+  function SlideFig({ ar }) {
+    const steps = buildSlideFig(), [i, ctl] = useWalk(steps.length, 2300, 0), st = steps[i], k = st.k;
+    const nodes = S4.slice(0, k).map(([v, a], j) => ({ id: a, v, top: a, nx: j < k - 1 ? S4[j + 1][1] : 'NULL', xc: j === k - 2, cls: j === k - 1 && i > 0 ? 'new' : '', tags: qTags(k, j) }));
+    return html`<figure className="fig dsv7"><div className="fig-stage">
+      <${Chain} nodes=${nodes} empty="front = NULL, rear = NULL" />
+      <${Vars} list=${[['front = ' + (k ? 1001 : 'NULL'), k === 1], ['rear = ' + (k ? S4[k - 1][1] : 'NULL'), k > 0]]} />
+      <p className="dsv7-msg">Each box: data | next (the next node's address)</p></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${steps.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.1] fixed-size array queue vs linked queue ── */
+  const AQ = 5, LMAX = 10;
+  function fixedMsg(vals) {
+    const n = vals.length;
+    if (!n) return { en: `An array queue is declared with a fixed size (here ${AQ} cells); the linked queue has no size. Type a value and press enqueue.`, ar: `الـ array queue بيتعرّف بحجم ثابت (هنا ${D(AQ)} خانات)، والـ linked queue ملوش حجم. اكتب قيمة ودوس enqueue.` };
+    const v = vals[n - 1], call = 'enqueue(' + v + ')';
+    if (n <= AQ) return { en: `${call}: the array stores it in cell [${n - 1}] of its ${AQ}; the linked queue creates a new node (new Node()) and links it after rear.`, ar: `الـ ${D(call)} بتحطها في الـ array في خانة رقم ${D(n - 1)} من الـ ${D(AQ)}، والـ linked queue بيعمل node جديدة بـ ${D('new Node()')} ويربطها بعد الـ rear.` };
+    if (n < LMAX) return { en: `${call}: the array queue is full (all ${AQ} cells are used), so ${v} cannot go in. The linked queue just creates node number ${n}: it works for a variable number of values.`, ar: `الـ ${D(call)} مش هتدخل الـ array queue لأنه full (الـ ${D(AQ)} خانات اتملوا). لكن الـ linked queue بيعمل node رقم ${D(n)} عادي، لأنه بيشتغل مع عدد متغير من القيم.` };
+    return { en: `${call}: still no limit for the linked queue (node number ${n}). This picture stops at ${LMAX} nodes, but the linked queue itself has no fixed size.`, ar: `الـ ${D(call)} برضه مفيش حد للـ linked queue (دي node رقم ${D(n)}). الرسمة هنا بتقف عند ${D(LMAX)} nodes، لكن الـ linked queue نفسه ملوش حجم ثابت.` };
+  }
+  function FixedVsLinked({ ar }) {
+    const [vals, setVals] = useState([]), [txt, setTxt] = useState('10');
+    const n = vals.length, full = n >= LMAX;
+    const add = () => { const v = parseVals(txt)[0]; if (v == null || full) return; setVals(vals.concat(v)); setTxt(String(v + 5)); };
+    const m = fixedMsg(vals), rej = vals.slice(AQ);
+    return html`<figure className="fig dsv7"><div className="fig-stage"><div className="dsv7-pair">
+      <div className="dsv7-panel"><b>Array queue (size ${AQ})</b>
+        <div className="dsv7-arr">${Array.from({ length: AQ }, (_, k) => html`<div key=${k} className="dsv7-cell"><i>[${k}]</i><span className=${(k < n ? 'on' : '') + (n > AQ ? ' bad' : '')}>${k < n ? vals[k] : ''}</span></div>`)}</div>
+        <p className=${'dsv7-msg' + (rej.length ? ' bad' : '')}>${rej.length ? 'Queue is full: ' + rej.join(', ') + ' rejected' : n + ' of ' + AQ + ' cells used'}</p></div>
+      <div className="dsv7-panel"><b>Linked queue (no fixed size)</b>
+        <${Chain} nodes=${vals.map((v, k) => ({ id: k, v, cls: k === n - 1 ? 'new' : '', tags: qTags(n, k) }))} nul=${true} empty="front = rear = NULL" />
+        <p className=${'dsv7-msg' + (n > AQ ? ' good' : '')}>${n} node${n === 1 ? '' : 's'}</p></div></div>
+      <div className="dsv7-row"><span className="dsv7-lbl">value</span><input className="dsv7-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="value to enqueue" />
+        <button className="fig-btn solid" onClick=${add} disabled=${full}>enqueue</button>
+        <button className="fig-btn" onClick=${() => { setVals([]); setTxt('10'); }}>↻ Reset</button></div></div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [0.4] slides 5–7: the three creation steps ── */
+  const C_NODE = ['class Node', '{', 'public:', '   int data;', '   Node *next;', '   Node() { data = 0;', '            next = NULL; }', '};'];
+  const C_Q = ['class Queue', '{', '   Node *front;', '   Node *rear;', 'public:', '   Queue() { front = NULL;', '             rear = NULL; }', '};'];
+  const C_MAIN = ['int main()', '{', '   Queue q;', '   // show the menu, read a choice,', '   // call the chosen function', '}'];
+  const MENU = ['1. enqueue', '2. dequeue', '3. display', '4. get', '5. count', '6. search'];
+  const CREATE = [
+    { code: C_NODE, cur: [3, 4], title: 'Step 1: the Node class', en: 'Step 1: define a <b>Node</b> class with two members, <b>data</b> and <b>next</b> (a pointer to the next node).', ar: 'الخطوة 1: عرّف <b>Node</b> class فيها member-ين، الـ <b>data</b> والـ <b>next</b> (pointer على الـ node اللي بعدها).' },
+    { code: C_NODE, cur: [5, 6], title: 'Step 1: the Node class', node: true, en: 'Its constructor <b>Node()</b> sets data = 0 and next = NULL, so every new node starts like this box.', ar: 'الـ constructor بتاعها <b><bdi dir="ltr">Node()</bdi></b> بيخلي القيم دي، فأي node جديدة بتبدأ زي الصندوق ده:' + L('data = 0, next = NULL') },
+    { code: C_Q, cur: [2, 3], title: 'Step 2: the Queue class', node: true, ptr: true, en: 'Step 2: define two Node pointers, <b>front</b> and <b>rear</b>.', ar: 'الخطوة 2: عرّف اتنين Node pointers هما الـ <b>front</b> والـ <b>rear</b>.' },
+    { code: C_Q, cur: [5, 6], title: 'Step 2: the Queue class', node: true, ptr: true, nul: true, en: 'The Queue() constructor sets both to <b>NULL</b>: an empty queue.', ar: 'الـ constructor بتاع الـ Queue بيخلي الاتنين بـ <b>NULL</b>، يعني queue فاضي.' },
+    { code: C_MAIN, cur: [2, 3, 4], title: 'Step 3: main', node: true, ptr: true, nul: true, menu: true, en: 'Step 3: main displays a menu of the operations and calls the function the user picks (they are traced in the visuals below).', ar: 'الخطوة 3: الـ main بتعرض menu فيها العمليات وبتنادي الـ function اللي المستخدم يختارها (متتبعة في الرسومات اللي تحت).' }
+  ];
+  function Creation({ ar }) {
+    const [i, ctl] = useWalk(CREATE.length, 2600, 0), st = CREATE[i];
+    return html`<figure className="fig dsv7"><div className="fig-stage">
+      <${Code} title=${st.title} lines=${st.code} cur=${st.cur} />
+      <div className="dsv7-pair" style=${{ gridTemplateColumns: 'repeat(auto-fit, minmax(130px, 1fr))' }}>
+        <div className=${'dsv7-panel dsv7-show' + (st.node ? '' : ' off')}><b>new Node()</b><${Chain} nodes=${[{ v: 0, nx: 'NULL' }]} /><p className="dsv7-msg">data | next</p></div>
+        <div className=${'dsv7-panel dsv7-show' + (st.ptr ? '' : ' off')}><b>Queue q</b><${Vars} list=${[['front = ' + (st.nul ? 'NULL' : '?'), i === 3], ['rear = ' + (st.nul ? 'NULL' : '?'), i === 3]]} /></div></div>
+      <div className=${'dsv7-menu dsv7-show' + (st.menu ? '' : ' off')}><b>Menu</b>${MENU.map(t => html`<div key=${t}>${t}</div>`)}</div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${CREATE.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.2] slide 12: the display steps ── */
+  const SL12 = ['Step 1: empty? (front == NULL)', 'Step 2: if empty, display "Queue is Empty", stop', 'Step 3: temp = front', 'Step 4: display temp→data, move to the next node, until temp reaches rear (temp→next == NULL)', 'Step 5: display "temp→data ---> NULL"'];
+  function buildDisplay(vals) {
+    const n = vals.length, S = [];
+    if (!n) {
+      S.push({ s: 0, t: null, out: '', en: 'Step 1: is the queue empty? front == NULL: <b>yes</b>.', ar: 'الخطوة 1: الـ queue فاضي؟ الـ front بـ NULL، يعني <b>آه</b>.' });
+      S.push({ s: 1, t: null, out: 'Queue is Empty', en: 'Step 2: it is empty, so display "Queue is Empty" and terminate the function.', ar: 'الخطوة 2: هو فاضي، فبنعرض "Queue is Empty" ونخرج من الـ function.' });
+      return S;
+    }
+    S.push({ s: 0, t: null, out: '', en: 'Step 1: is the queue empty? front == NULL: <b>no</b>.', ar: 'الخطوة 1: الـ queue فاضي؟ الـ front مش NULL، يعني <b>لأ</b>.' });
+    S.push({ s: 2, t: 0, out: '', en: `Step 3: define temp and set it to front (the node ${vals[0]}).`, ar: `الخطوة 3: عرّف temp وخليه يساوي الـ front، يعني على الـ node اللي فيها ${D(vals[0])}.` });
+    let out = '';
+    for (let k = 0; k < n - 1; k++) {
+      out += vals[k] + ' ';
+      S.push({ s: 3, t: k + 1, out, en: `Step 4: display ${vals[k]}, then move temp to the next node (${vals[k + 1]}). temp→next is not NULL yet, so repeat.`, ar: `الخطوة 4: اعرض ${D(vals[k])} وبعدين حرّك الـ temp للـ node اللي بعدها (${D(vals[k + 1])}). الـ ${D('temp→next')} لسه مش NULL، فبنكرر.` });
+    }
+    S.push({ s: 3, t: n - 1, out, stop: true, en: `temp has reached rear (${vals[n - 1]}): temp→next == NULL, so the loop stops.`, ar: `الـ temp وصل للـ rear عند ${D(vals[n - 1])}، والـ next بتاعه بـ NULL، فالـ loop بتقف.` });
+    out += vals[n - 1] + ' ---> NULL';
+    S.push({ s: 4, t: n - 1, out, en: `Step 5: finally display "${vals[n - 1]} ---> NULL". The whole queue is shown from front to rear.`, ar: 'الخطوة 5: في الآخر اعرض ' + D(vals[n - 1] + ' ---> NULL') + '. كده الـ queue كله اتعرض من الـ front للـ rear.' });
+    return S;
+  }
+  function DisplaySteps({ ar }) {
+    const [txt, setTxt] = useState('10, 15, 22, 50'), [vals, setVals] = useState([10, 15, 22, 50]);
+    const S = buildDisplay(vals), [i, ctl] = useWalk(S.length, 2000, vals.join(',')), st = S[i];
+    const nodes = vals.map((v, k) => ({ id: k + ':' + v, v, cls: k === st.t ? 'hot' : '', tags: qTags(vals.length, k, { [st.t]: [{ t: 'temp', c: 't2' }] }) }));
+    const load = v => { setVals(v); setTxt(v.join(', ')); };
+    return html`<figure className="fig dsv7"><div className="fig-stage">
+      <div className="dsv7-modes"><button className="fig-btn" aria-pressed=${vals.join() === '10,15,22,50'} onClick=${() => load([10, 15, 22, 50])}>Slide 4's queue</button><button className="fig-btn" aria-pressed=${!vals.length} onClick=${() => load([])}>Empty queue</button></div>
+      <ul className="dsv7-steps">${SL12.map((t, k) => html`<li key=${k} className=${k === st.s ? 'cur' : ''}>${t}</li>`)}</ul>
+      <${Chain} nodes=${nodes} nul=${true} empty="front = NULL" />
+      <${Out} text=${st.out} />
+      <div className="dsv7-row"><span className="dsv7-lbl">Try your own</span><input className="dsv7-in wide" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="queue values, front first" /><button className="fig-btn" onClick=${() => setVals(parseVals(txt))}>Load</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3] the professor's display, get, count, search traced ── */
+  const FCODE = {
+    display: ['void display()', '{', '   Node *temp = front;', '   while (temp != NULL)', '   {  cout << temp->data << " ";', '      temp = temp->next; }', '   cout << endl << "END" << endl;', '}'],
+    get: ['int get()          // first node', '{', '   if (front != NULL)', '      return front->data;', '   else { cout << "Empty";', '          return 0; }', '}'],
+    count: ['int count()', '{', '   int c = 0;', '   Node *temp = front;', '   while (temp != NULL)', '   {  c++;', '      temp = temp->next; }', '   return (c);', '}'],
+    search: ['bool search(int item)', '{', '   Node *temp = front;', '   while (temp != NULL)', '   {  if (temp->data == item)', '         return (true);', '      else temp = temp->next; }', '   return (false);', '}']
+  };
+  function buildFn(fn, vals, item) {
+    const n = vals.length, S = [], tn = t => t == null || t >= n ? 'NULL' : 'node ' + vals[t];
+    const tA = t => t == null || t >= n ? 'NULL' : D(vals[t]);
+    if (fn === 'display') {
+      let out = '';
+      S.push({ cur: [2], t: 0, out, en: `temp = front: temp points to ${tn(0)}.`, ar: `الـ temp بياخد قيمة الـ front، فبيشاور على ${n ? 'الـ node ' + tA(0) : 'NULL'}.` });
+      for (let k = 0; k < n; k++) {
+        out += vals[k] + ' ';
+        S.push({ cur: [3, 4, 5], t: k + 1, out, en: `temp != NULL, so print ${vals[k]} and a space, then temp = temp->next (now ${tn(k + 1)}).`, ar: `الـ temp مش NULL، فبنطبع ${D(vals[k])} ومسافة، وبعدين ${D('temp = temp->next')} فبقى على ${k + 1 < n ? 'الـ node ' + tA(k + 1) : 'NULL'}.` });
+      }
+      out += '\nEND';
+      S.push({ cur: [3, 6], t: n, out, en: (n ? 'temp is NULL (past the rear), so the loop ends' : 'The queue is empty: temp is NULL at once, so the loop never runs') + '; print a new line and END.', ar: (n ? 'الـ temp بقى NULL (عدّى الـ rear)، فالـ loop خلصت' : 'الـ queue فاضي، فالـ temp بـ NULL من الأول والـ loop مش بتلف خالص') + '، وبنطبع سطر جديد وبعده END.' });
+    } else if (fn === 'get') {
+      if (n) S.push({ cur: [2, 3], t: null, g: true, out: 'returns ' + vals[0], en: `front != NULL, so get() returns front->data = ${vals[0]}, the head (first node). Nothing is removed.`, ar: `الـ front مش NULL، فالـ ${D('get()')} بترجّع الـ data بتاعة الـ head (أول node) وهي ${D(vals[0])}. ومفيش حاجة بتتشال.` });
+      else S.push({ cur: [4, 5], t: null, out: 'Empty\nreturns 0', en: 'front is NULL, so get() prints "Empty" and returns 0.', ar: 'الـ front بـ NULL، فالـ ' + D('get()') + ' بتطبع "Empty" وبترجّع صفر.' });
+    } else if (fn === 'count') {
+      S.push({ cur: [2, 3], t: 0, c: 0, out: '', en: `c = 0 and temp = front (${tn(0)}).`, ar: `الـ c بيبدأ بصفر والـ temp على الـ front (${n ? 'الـ node ' + tA(0) : 'NULL'}).` });
+      for (let k = 0; k < n; k++) S.push({ cur: [4, 5, 6], t: k + 1, c: k + 1, out: '', en: `temp != NULL: c++ makes c = ${k + 1}, then temp moves on (now ${tn(k + 1)}).`, ar: `الـ temp مش NULL، فالـ ${D('c++')} بتخلي الـ c بـ ${D(k + 1)}، وبعدين الـ temp بيتحرك (بقى على ${k + 1 < n ? 'الـ node ' + tA(k + 1) : 'NULL'}).` });
+      S.push({ cur: [4, 7], t: n, c: n, out: 'returns ' + n, en: `temp is NULL, so the loop ends and count() returns ${n}.`, ar: `الـ temp بقى NULL، فالـ loop خلصت والـ ${D('count()')} بترجّع ${D(n)}.` });
+    } else {
+      S.push({ cur: [2], t: 0, out: '', en: `Looking for item = ${item}. temp = front (${tn(0)}).`, ar: `بندوّر على الـ item وهو ${D(item)}. الـ temp بيبدأ من الـ front (${n ? 'الـ node ' + tA(0) : 'NULL'}).` });
+      let found = false;
+      for (let k = 0; k < n; k++) {
+        if (vals[k] === item) { S.push({ cur: [3, 4, 5], t: k, hit: true, out: 'returns true', en: `temp->data == ${item}: found, so search() returns true (after ${k + 1} node${k ? 's' : ''}).`, ar: `الـ data بتاعة الـ temp بتساوي ${D(item)}، يعني لقيناه بعد ما عدّينا على ${D(k + 1)} ${k ? 'nodes' : 'node'}، فالـ ${D('search()')} بترجّع true.` }); found = true; break; }
+        S.push({ cur: [3, 4, 6], t: k + 1, out: '', en: `${vals[k]} is not ${item}, so temp = temp->next (now ${tn(k + 1)}).`, ar: `الـ ${D(vals[k])} مش هو الـ ${D(item)}، فبنعمل ${D('temp = temp->next')} وبقى على ${k + 1 < n ? 'الـ node ' + tA(k + 1) : 'NULL'}.` });
+      }
+      if (!found) S.push({ cur: [3, 7], t: n, out: 'returns false', en: `temp is NULL: the whole queue was checked without finding ${item}, so search() returns false.`, ar: `الـ temp بقى NULL، يعني لفّينا على الـ queue كله ومالقيناش ${D(item)}، فالـ ${D('search()')} بترجّع false.` });
+    }
+    return S;
+  }
+  function Funcs({ ar }) {
+    const [fn, setFn] = useState('search'), [txt, setTxt] = useState('10, 15, 22, 50'), [vals, setVals] = useState([10, 15, 22, 50]), [itx, setItx] = useState('22'), [item, setItem] = useState(22);
+    const S = buildFn(fn, vals, item), [i, ctl] = useWalk(S.length, 1900, fn + vals.join(',') + '|' + item), st = S[i];
+    const nodes = vals.map((v, k) => ({ id: k + ':' + v, v, cls: st.hit && k === st.t ? 'new' : (k === st.t || (st.g && k === 0)) ? 'hot' : '', tags: qTags(vals.length, k, { [st.t]: [{ t: 'temp', c: 't2' }] }) }));
+    const vars = [[st.t == null ? 'temp: -' : st.t >= vals.length ? 'temp = NULL' : 'temp → ' + vals[st.t], false]];
+    if (fn === 'count') vars.push(['c = ' + st.c, i > 0]);
+    if (fn === 'search') vars.push(['item = ' + item, false]);
+    if (fn === 'get') vars.length = 0;
+    const loadItem = () => { const v = parseVals(itx)[0]; if (v != null) setItem(v); };
+    return html`<figure className="fig dsv7"><div className="fig-stage">
+      <div className="dsv7-modes">${['display', 'get', 'count', 'search'].map(f => html`<button key=${f} className="fig-btn" aria-pressed=${fn === f} onClick=${() => setFn(f)}>${f}()</button>`)}</div>
+      <${Code} lines=${FCODE[fn]} cur=${st.cur} />
+      <${Chain} nodes=${nodes} nul=${true} empty="front = NULL" />
+      ${vars.length > 0 && html`<${Vars} list=${vars} />`}
+      <${Out} label=${fn === 'display' ? 'Output' : 'Output / return value'} text=${st.out} />
+      <div className="dsv7-row"><span className="dsv7-lbl">queue</span><input className="dsv7-in wide" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="queue values, front first" /><button className="fig-btn" onClick=${() => setVals(parseVals(txt))}>Load</button></div>
+      ${fn === 'search' && html`<div className="dsv7-row"><span className="dsv7-lbl">item</span><input className="dsv7-in" inputMode="numeric" value=${itx} onChange=${e => setItx(e.target.value)} aria-label="item to search for" /><button className="fig-btn" onClick=${loadItem}>Search</button></div>`}
+      <div className="dsv7-row"><button className="fig-btn" onClick=${() => { setTxt('10, 15, 22, 50'); setVals([10, 15, 22, 50]); setItx('22'); setItem(22); }}>Example: slide 4's queue</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.3] linked stack vs linked queue, same values (quiz: 10, 15, 22, 50, two removals, 7) ── */
+  const QUIZ = [{ t: 'in', v: 10 }, { t: 'in', v: 15 }, { t: 'in', v: 22 }, { t: 'in', v: 50 }, { t: 'out' }, { t: 'out' }, { t: 'in', v: 7 }];
+  function buildSQ(ops) {
+    let s = [], q = []; const S = [{ s: [], q: [], en: 'Same operations on a linked stack (one pointer, top) and a linked queue (two pointers, front and rear).', ar: 'نفس العمليات على linked stack (فيه pointer واحد هو الـ top) وعلى linked queue (فيه اتنين هما الـ front والـ rear).' }];
+    for (const o of ops) {
+      let en, a, ns = null, nq = null;
+      if (o.t === 'in') {
+        s = [o.v].concat(s); q = q.concat(o.v); ns = 0; nq = q.length - 1;
+        en = `push(${o.v}) puts ${o.v} at the <b>beginning</b> of the stack (new top); enqueue(${o.v}) puts it at the <b>end</b> of the queue (new rear).`;
+        a = `الـ ${D('push(' + o.v + ')')} بتحط ${D(o.v)} في <b>أول</b> الـ stack (بقت الـ top)، والـ ${D('enqueue(' + o.v + ')')} بتحطها في <b>آخر</b> الـ queue (بقت الـ rear).`;
+      } else {
+        if (!s.length) { en = 'Both are empty: pop() and dequeue() have nothing to remove.'; a = 'الاتنين فاضيين، فالـ pop والـ dequeue مش لاقيين حاجة يشيلوها.'; }
+        else {
+          const ps = s[0], pq = q[0]; s = s.slice(1); q = q.slice(1);
+          en = `pop() removes ${ps} from the beginning (the top, the last one in: LIFO); dequeue() removes ${pq} from the front (the first one in: FIFO).`;
+          a = `الـ ${D('pop()')} بتشيل ${D(ps)} من الأول، يعني الـ top اللي دخل آخر واحد (LIFO). والـ ${D('dequeue()')} بتشيل ${D(pq)} من الـ front، يعني اللي دخل الأول (FIFO).`;
+        }
+      }
+      S.push({ s, q, ns, nq, en, ar: a });
+    }
+    const last = S[S.length - 1];
+    if (ops.length === QUIZ.length && ops.every((o, k) => o.t === QUIZ[k].t && o.v === QUIZ[k].v)) {
+      last.en += ' The quiz answer: display prints <b>22 50 7</b> for the queue (front to rear); the stack would show 7 15 10 from the top.';
+      last.ar += ' إجابة الـ quiz إن الـ display بيطبع للـ queue من الـ front للـ rear:' + L('22 50 7') + 'أما الـ stack فبيبان من الـ top كده:' + L('7 15 10');
+    }
+    return S;
+  }
+  function StackVsQueue({ ar }) {
+    const [ops, setOps] = useState(QUIZ), [txt, setTxt] = useState('30');
+    const S = buildSQ(ops), [i, ctl] = useWalk(S.length, 1800, ops.length + ':' + ops.map(o => o.t + (o.v != null ? o.v : '')).join()), st = S[i];
+    const add = o => { const keep = ops.slice(0, i); if (o.t === 'in' && S[i].q.length >= 6) return; const nx = keep.concat(o); setOps(nx); };
+    const stk = st.s.map((v, k) => ({ id: 's' + k + ':' + v, v, cls: k === st.ns ? 'new' : '', tags: k === 0 ? [{ t: 'top' }] : [] }));
+    const que = st.q.map((v, k) => ({ id: 'q' + k + ':' + v, v, cls: k === st.nq ? 'new' : '', tags: qTags(st.q.length, k) }));
+    // after a manual add, show the new last step
+    useEffect(() => { if (ops !== QUIZ) ctl.go(ops.length); }, [ops]);
+    return html`<figure className="fig dsv7"><div className="fig-stage"><div className="dsv7-pair">
+      <div className="dsv7-panel"><b>Linked stack: push / pop at the beginning</b><${Chain} nodes=${stk} nul=${true} empty="top = NULL" /><p className="dsv7-msg">display (top first): ${st.s.join(' ') || '-'}</p></div>
+      <div className="dsv7-panel"><b>Linked queue: enqueue at the rear, dequeue at the front</b><${Chain} nodes=${que} nul=${true} empty="front = rear = NULL" /><p className="dsv7-msg">display (front to rear): ${st.q.join(' ') || '-'}</p></div></div>
+      <div className="dsv7-row"><span className="dsv7-lbl">value</span><input className="dsv7-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="value to insert" />
+        <button className="fig-btn solid" onClick=${() => { const v = parseVals(txt)[0]; if (v != null) add({ t: 'in', v }); }}>push / enqueue</button>
+        <button className="fig-btn" onClick=${() => add({ t: 'out' })}>pop / dequeue</button></div>
+      <div className="dsv7-row"><button className="fig-btn" onClick=${() => setOps(QUIZ)}>Example from the quiz</button><button className="fig-btn" onClick=${() => setOps([])}>Start empty</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4] the exam pattern: main with enqueue(30), enqueue(50), removeAll() ── */
+  const E_MAIN = ['int main()', '{', '   Queue q;', '   if (q.isEmpty())', '      cout << "Queue is empty" << endl;', '   q.enqueue(A);', '   q.enqueue(B);', '   q.removeAll();', '   return 0;', '}'];
+  const E_RA = ['void removeAll()', '{', '   while (!isEmpty())', '      cout << "dequeued "', '           << dequeue() << endl;', '}'];
+  const E_DQ = ['int dequeue()', '{', '   if (isEmpty())', '   { cout << "Queue is empty" << endl;', '     return 0; }', '   Node *temp = front;', '   int value = front->data;', '   front = front->next;', '   if (front == NULL) rear = NULL;', '   delete temp;', '   return value;', '}'];
+  function buildExam(a, b) {
+    const S = [], q = (list, extra) => ({ list, extra: extra || {} });
+    S.push({ f: 'main', cur: [2], ...q([]), fr: 'NULL', rr: 'NULL', out: '', en: 'Queue q: the constructor sets front = NULL and rear = NULL.', ar: 'الـ Queue q بيتعمل، والـ constructor بيخلي:' + L('front = NULL, rear = NULL') });
+    S.push({ f: 'main', cur: [3, 4], ...q([]), fr: 'NULL', rr: 'NULL', out: 'Queue is empty', en: 'q.isEmpty() is true (front and rear are NULL), so main prints "Queue is empty".', ar: 'الـ ' + D('q.isEmpty()') + ' بترجّع true لأن الـ front والـ rear بـ NULL، فالـ main بتطبع "Queue is empty".' });
+    S.push({ f: 'main', cur: [5], ...q([{ v: a, n: 1 }]), fr: a, rr: a, out: 'Queue is empty', en: `q.enqueue(${a}): the queue was empty, so front = rear = the new node ${a}.`, ar: `الـ ${D('q.enqueue(' + a + ')')} والـ queue كان فاضي، فالـ front والـ rear الاتنين بقوا على الـ node الجديدة ${D(a)}.` });
+    S.push({ f: 'main', cur: [6], ...q([{ v: a }, { v: b, n: 1 }]), fr: a, rr: b, out: 'Queue is empty', en: `q.enqueue(${b}): rear->next = the new node, then rear = it. Now front → ${a} → ${b} ← rear.`, ar: `الـ ${D('q.enqueue(' + b + ')')} بتخلي الـ next بتاع الـ rear يشاور على الـ node الجديدة، وبعدين الـ rear نفسه يبقى عليها. دلوقتي:` + L(`front → ${a} → ${b} ← rear`) });
+    const o1 = 'Queue is empty\ndequeued ' + a, o2 = o1 + '\ndequeued ' + b;
+    S.push({ f: 'removeAll', cur: [2], ...q([{ v: a }, { v: b }]), fr: a, rr: b, out: 'Queue is empty', en: 'q.removeAll(): !isEmpty() is true, so the loop body runs and calls dequeue().', ar: 'الـ ' + D('q.removeAll()') + ' بتشيك، والـ queue مش فاضي، فالـ loop بتلف وبتنادي الـ ' + D('dequeue()') + '.' });
+    S.push({ f: 'dequeue', cur: [5, 6], ...q([{ v: a, temp: 1 }, { v: b }]), fr: a, rr: b, val: a, out: 'Queue is empty', en: `dequeue(): not empty, so temp = front (node ${a}) and value = ${a}.`, ar: `الـ ${D('dequeue()')} بتلاقي الـ queue مش فاضي، فالـ temp بيشاور على الـ front (الـ node ${D(a)}) والـ value بتبقى ${D(a)}.` });
+    S.push({ f: 'dequeue', cur: [7, 8], ...q([{ v: a, temp: 1, gone: 1, off: 1 }, { v: b }]), fr: b, rr: b, val: a, out: 'Queue is empty', en: `front = front->next: front moves to ${b}. front is not NULL, so rear stays on ${b}.`, ar: `الـ ${D('front = front->next')} بيحرّك الـ front لـ ${D(b)}. والـ front مش NULL، فالـ rear فاضل على ${D(b)}.` });
+    S.push({ f: 'dequeue', cur: [9, 10], ...q([{ v: b }]), fr: b, rr: b, out: o1, en: `delete temp frees node ${a}; dequeue returns ${a} and removeAll prints "dequeued ${a}".`, ar: `الـ ${D('delete temp')} بيمسح الـ node ${D(a)}، والـ dequeue بترجّع ${D(a)}، والـ removeAll بتطبع "dequeued ${esc(a)}".` });
+    S.push({ f: 'dequeue', cur: [5, 6], ...q([{ v: b, temp: 1 }]), fr: b, rr: b, val: b, out: o1, en: `The loop checks again: still not empty, so dequeue() runs: temp = front (node ${b}), value = ${b}.`, ar: `الـ loop بتشيك تاني، ولسه مش فاضي، فالـ ${D('dequeue()')} بتشتغل. الـ temp على الـ front (الـ node ${D(b)}) والـ value بتبقى ${D(b)}.` });
+    S.push({ f: 'dequeue', cur: [7, 8], ...q([{ v: b, temp: 1, gone: 1, off: 1 }]), fr: 'NULL', rr: 'NULL', val: b, out: o1, en: 'front = front->next makes front NULL: the queue became empty, so <b>rear = NULL</b> too (the safe line the lecture\'s dequeue was missing).', ar: 'الـ ' + D('front = front->next') + ' بيخلي الـ front بـ NULL، يعني الـ queue فضي، فبنخلي الـ <b>rear</b> كمان بـ NULL (ده السطر الآمن اللي كان ناقص في الـ dequeue بتاع المحاضرة).' });
+    S.push({ f: 'dequeue', cur: [9, 10], ...q([]), fr: 'NULL', rr: 'NULL', out: o2, en: `delete temp frees node ${b}; dequeue returns ${b} and removeAll prints "dequeued ${b}".`, ar: `الـ ${D('delete temp')} بيمسح الـ node ${D(b)}، والـ dequeue بترجّع ${D(b)}، والـ removeAll بتطبع "dequeued ${esc(b)}".` });
+    S.push({ f: 'main', cur: [7, 8], ...q([]), fr: 'NULL', rr: 'NULL', out: o2, en: 'Back in the loop: isEmpty() is now true (front and rear are both NULL), so removeAll ends and main returns 0.', ar: 'نرجع للـ loop، والـ ' + D('isEmpty()') + ' بقت true لأن الـ front والـ rear الاتنين بـ NULL، فالـ removeAll بتخلص والـ main بترجّع صفر.' });
+    return S;
+  }
+  function ExamTrace({ ar }) {
+    const [ab, setAb] = useState([30, 50]), [ta, setTa] = useState('30'), [tb, setTb] = useState('50');
+    const [a, b] = ab, S = buildExam(a, b), [i, ctl] = useWalk(S.length, 2300, ab.join()), st = S[i];
+    const live = st.list.filter(x => !x.off);
+    const nodes = st.list.map((x, k) => { const idx = live.indexOf(x); return { id: k + ':' + x.v, v: x.v, cls: x.gone ? 'gone' : x.n ? 'new' : x.temp ? 'hot' : '', tags: [...(idx === 0 ? [{ t: 'front' }] : []), ...(idx >= 0 && idx === live.length - 1 ? [{ t: 'rear' }] : []), ...(x.temp ? [{ t: 'temp', c: 't2' }] : [])] }; });
+    const code = { main: E_MAIN.map(t => t.replace('A', a).replace('B', b)), removeAll: E_RA, dequeue: E_DQ }[st.f];
+    const load = (x, y) => { setTa(String(x)); setTb(String(y)); setAb([x, y]); };
+    const vars = [[st.fr === 'NULL' ? 'front = NULL' : 'front → ' + st.fr, false], [st.rr === 'NULL' ? 'rear = NULL' : 'rear → ' + st.rr, st.f === 'dequeue' && st.rr === 'NULL' && st.list.length > 0]];
+    if (st.val != null) vars.push(['value = ' + st.val, false]);
+    return html`<figure className="fig dsv7"><div className="fig-stage">
+      <div className="dsv7-modes"><button className="fig-btn" aria-pressed=${a === 30 && b === 50} onClick=${() => load(30, 50)}>30 and 50 (the pattern)</button><button className="fig-btn" aria-pressed=${a === 25 && b === 20} onClick=${() => load(25, 20)}>25 and 20 (Exam 2025/26)</button></div>
+      <${Code} title=${st.f + '()'} lines=${code} cur=${st.cur} />
+      <${Chain} nodes=${nodes} nul=${true} empty="front = NULL, rear = NULL" />
+      <${Vars} list=${vars} />
+      <${Out} text=${st.out} />
+      <div className="dsv7-row"><span className="dsv7-lbl">Try your own</span><input className="dsv7-in" inputMode="numeric" value=${ta} onChange=${e => setTa(e.target.value)} aria-label="first value" /><input className="dsv7-in" inputMode="numeric" value=${tb} onChange=${e => setTb(e.target.value)} aria-label="second value" />
+        <button className="fig-btn" onClick=${() => { const x = parseVals(ta)[0], y = parseVals(tb)[0]; if (x != null && y != null) setAb([x, y]); }}>Run</button></div></div>
+      <${Cap} en=${st.en} ar=${st.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5] Lab 7: the struct-based dequeue and its three branches ── */
+  const LAB = ['void dequeue()', '{', '  if (front == NULL && rear == NULL)', '    cout << "Queue Underflow\\n";', '  else', '  { node *temp;', '    if (front->next != NULL) // >1 item', '    { temp = front;', '      front = front->next;', '      cout << "The deleted element is "', '           << temp->data << endl;', '      delete (temp); }', '    else              // only one item', '    { cout << "The deleted element is "', '           << front->data << endl;', '      front = rear = NULL; }', '  }', '}'];
+  function labMsg(ev) {
+    if (!ev) return { cur: [], en: 'Lab 7\'s dequeue() on slide 4\'s queue. Press dequeue() to see which branch runs; enqueue adds at the rear.', ar: 'الـ ' + D('dequeue()') + ' بتاعة Lab 7 على الـ queue بتاع slide 4. دوس dequeue عشان تشوف أنهي فرع بيشتغل، والـ enqueue بتضيف عند الـ rear.' };
+    if (ev.k === 'under') return { cur: [2, 3], en: 'front and rear are both NULL: "Queue Underflow", nothing to delete.', ar: 'الـ front والـ rear الاتنين بـ NULL، فبيطبع "Queue Underflow" ومفيش حاجة تتمسح.' };
+    if (ev.k === 'many') return { cur: [6, 7, 8, 9, 10, 11], en: `front->next != NULL (more than 1 item): temp = front, front moves to ${ev.nx}, prints "The deleted element is ${ev.v}" and deletes temp.`, ar: `الـ next بتاع الـ front مش NULL، يعني فيه أكتر من item. الـ temp بياخد الـ front، والـ front بيتنقل لـ ${D(ev.nx)}، وبيطبع "The deleted element is ${esc(ev.v)}" ويمسح الـ temp.` };
+    if (ev.k === 'one') return { cur: [12, 13, 14, 15], en: `front->next == NULL (only one item): prints "The deleted element is ${ev.v}" and sets front = rear = NULL, so the queue is empty again.`, ar: `الـ next بتاع الـ front بـ NULL، يعني فيه item واحد بس. بيطبع "The deleted element is ${esc(ev.v)}" وبيخلي الـ front والـ rear الاتنين بـ NULL، فالـ queue يرجع فاضي.` };
+    return { cur: [], en: `enqueue(${ev.v}): ${ev.v} joins at the rear.`, ar: `الـ ${D('enqueue(' + ev.v + ')')} بتضيف ${D(ev.v)} عند الـ rear.` };
+  }
+  function LabDequeue({ ar }) {
+    const [q, setQ] = useState([10, 15, 22, 50]), [ev, setEv] = useState(null), [log, setLog] = useState([]), [txt, setTxt] = useState('7');
+    const deq = () => {
+      if (!q.length) { setEv({ k: 'under' }); setLog(log.concat('Queue Underflow').slice(-4)); return; }
+      const v = q[0]; setEv(q.length > 1 ? { k: 'many', v, nx: q[1] } : { k: 'one', v }); setQ(q.slice(1)); setLog(log.concat('The deleted element is ' + v).slice(-4));
+    };
+    const enq = () => { const v = parseVals(txt)[0]; if (v == null || q.length >= 6) return; setQ(q.concat(v)); setEv({ k: 'in', v }); };
+    const m = labMsg(ev);
+    const nodes = q.map((v, k) => ({ id: k + ':' + v, v, cls: ev && ev.k === 'in' && k === q.length - 1 ? 'new' : '', tags: qTags(q.length, k) }));
+    return html`<figure className="fig dsv7"><div className="fig-stage">
+      <${Code} lines=${LAB} cur=${m.cur} />
+      <${Chain} nodes=${nodes} nul=${true} empty="front = rear = NULL" />
+      <${Out} text=${log.join('\n')} />
+      <div className="dsv7-row"><button className="fig-btn solid" onClick=${deq}>dequeue()</button>
+        <input className="dsv7-in" inputMode="numeric" value=${txt} onChange=${e => setTxt(e.target.value)} aria-label="value to enqueue" /><button className="fig-btn" onClick=${enq} disabled=${q.length >= 6}>enqueue</button>
+        <button className="fig-btn" onClick=${() => { setQ([10, 15, 22, 50]); setEv(null); setLog([]); }}>↻ Reset</button></div></div>
+      <${Cap} en=${m.en} ar=${m.ar} showAr=${ar} /></figure>`;
+  }
+
+  // step builders kept on the components so the Arabic built at run time can be checked
+  Object.assign(SlideFig, { build: buildSlideFig }); Object.assign(FixedVsLinked, { build: fixedMsg }); Object.assign(DisplaySteps, { build: buildDisplay });
+  Object.assign(Funcs, { build: buildFn }); Object.assign(StackVsQueue, { build: buildSQ, QUIZ }); Object.assign(ExamTrace, { build: buildExam }); Object.assign(LabDequeue, { build: labMsg });
+  window.FIGS = Object.assign(window.FIGS || {}, { 'ds-l7-slide-fig': SlideFig, 'ds-l7-fixed-vs-linked': FixedVsLinked, 'ds-l7-creation': Creation, 'ds-l7-display-steps': DisplaySteps, 'ds-l7-funcs': Funcs, 'ds-l7-stack-vs-queue': StackVsQueue, 'ds-l7-exam-trace': ExamTrace, 'ds-l7-lab-dequeue': LabDequeue });
+})();
+/* ── part L5 ── */
+// Data Structures visuals, Lecture 5 (Linked Lists): the node and chain of slides 2–3, the scattered memory of slides 4–7, the three types of slides 9–11, linear access, the Node/Linkedlist classes of slides 14–17, the pictures of slides 19, 21–22, 27 and 29 with what goes wrong if the two link steps are swapped, search/count/get/update traced, and Lab 5's InsertAt. Every label and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv5 *{ font-variant-ligatures:none; }
+.dsv5 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv5 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv5-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dsv5-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv5-row{ display:flex; flex-wrap:wrap; gap:6px 8px; justify-content:center; align-items:center; margin:8px 0 0; }
+.dsv5-svg{ display:block; width:100%; max-width:430px; height:auto; margin:0 auto; overflow:visible; }
+.dsv5 svg text{ font-family:var(--body); font-size:14px; dominant-baseline:central; }
+.dsv5 svg text.m{ text-anchor:middle; } .dsv5 svg text.e{ text-anchor:end; }
+.dsv5 svg text.lb{ font-weight:700; }
+.dsv5 svg text.v{ font:700 14px var(--mono); text-anchor:middle; }
+.dsv5 svg text.k{ fill:var(--fig-k); } .dsv5 svg text.p{ fill:var(--pen); } .dsv5 svg text.g{ fill:var(--graphite); }
+.dsv5 svg text.x{ font:700 18px var(--body); fill:var(--pen); text-anchor:middle; }
+.dsv5-f{ transition:opacity .45s; } .dsv5-f.off{ opacity:0; } .dsv5-f.dim{ opacity:.3; }
+.dsv5-a path{ fill:none; stroke:var(--ink); stroke-width:1.7; transition:stroke .35s; }
+.dsv5-a polygon{ fill:var(--ink); transition:fill .35s; }
+.dsv5-a.k path{ stroke:var(--fig-k); stroke-width:2.4; } .dsv5-a.k polygon{ fill:var(--fig-k); }
+.dsv5-a.p path{ stroke:var(--pen); stroke-width:2.4; } .dsv5-a.p polygon{ fill:var(--pen); }
+.dsv5-a.ok path{ stroke:var(--ok); stroke-width:2.4; } .dsv5-a.ok polygon{ fill:var(--ok); }
+.dsv5-a.dash path{ stroke-dasharray:5 4; }
+.dsv5-sn rect{ fill:var(--paper); stroke:var(--ink); stroke-width:1.5; transition:fill .35s, stroke .35s; }
+.dsv5-sn.hot rect{ stroke:var(--fig-k); stroke-width:3; }
+.dsv5-sn.new rect{ fill:color-mix(in srgb, var(--fig-k) 26%, var(--paper)); }
+.dsv5-sn.bad rect{ stroke:var(--pen); stroke-width:2.5; }
+.dsv5-sq{ stroke:var(--ink); stroke-width:1.2; transition:stroke .35s, opacity .45s; }
+.dsv5-sq.hot{ stroke:var(--fig-k); stroke-width:3.5; } .dsv5-sq.bad{ stroke:var(--pen); stroke-width:3; }
+.dsv5-ell{ fill:none; stroke:var(--ok); stroke-width:1.5; stroke-dasharray:4 3; }
+.dsv5-dot{ fill:var(--ink); }
+.dsv5-order{ font:600 .82rem/1.45 var(--mono); color:var(--ink); text-align:center; margin:6px 0 0; overflow-wrap:anywhere; direction:ltr; }
+.dsv5-order .n{ color:var(--pen); }
+.dsv5-legend{ font-size:.8rem; color:var(--graphite); text-align:center; margin:0 0 6px; }
+.dsv5-legend b{ color:var(--fig-k); font-family:var(--mono); }
+.dsv5-code{ margin:0 auto 8px; max-width:420px; padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:.75rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv5-code span{ display:block; border-radius:3px; padding:0 3px; transition:background .3s; }
+.dsv5-code span.cur{ background:color-mix(in srgb, var(--fig-k) 26%, transparent); }
+.dsv5-code small{ display:block; font:600 .75rem var(--body); color:var(--graphite); margin-bottom:2px; }
+.dsv5-out{ max-width:420px; margin:8px auto 0; padding:6px 10px; border:1px solid var(--line); border-left:4px solid var(--fig-k); border-radius:6px; background:var(--paper); font:600 .8rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; min-height:1.5em; text-align:left; direction:ltr; }
+.dsv5-out .y{ color:var(--ok); } .dsv5-out .n{ color:var(--pen); }
+.dsv5-chain{ display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:center; gap:4px 0; margin:4px auto; max-width:440px; color:var(--ink); direction:ltr; }
+.dsv5-unit{ display:inline-flex; align-items:flex-start; }
+.dsv5-hd{ font:700 .8rem/30px var(--body); color:var(--fig-k); padding-right:2px; }
+.dsv5-ar{ font:700 .9rem/30px var(--body); color:var(--ink); width:18px; text-align:center; }
+.dsv5-nd{ display:inline-grid; grid-template-columns:auto 15px; }
+.dsv5-dv{ min-width:30px; height:30px; box-sizing:border-box; display:grid; place-items:center; padding:0 3px; border:1.5px solid var(--ink); border-right-width:1px; border-radius:5px 0 0 5px; background:var(--paper); font:700 .85rem var(--mono); transition:background .35s, box-shadow .35s, opacity .35s; }
+.dsv5-pv{ height:30px; box-sizing:border-box; border:1.5px solid var(--ink); border-left:0; border-radius:0 5px 5px 0; background:var(--paper); display:grid; place-items:center; }
+.dsv5-pv::after{ content:""; width:5px; height:5px; border-radius:50%; background:var(--ink); }
+.dsv5-dv.hot{ box-shadow:0 0 0 3px var(--fig-k); }
+.dsv5-dv.new{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); }
+.dsv5-dv.ok{ box-shadow:0 0 0 3px var(--ok); }
+.dsv5-mk{ grid-column:1 / -1; font:700 .75rem/1.3 var(--mono); color:var(--fig-k); text-align:center; min-height:1.3em; white-space:nowrap; }
+.dsv5-null{ display:inline-flex; flex-direction:column; align-items:center; font:700 .8rem/30px var(--mono); color:var(--graphite); }
+.dsv5-null .dsv5-mk{ line-height:1.3; }
+.dsv5-null.hot{ color:var(--fig-k); }
+.dsv5-tmp{ display:flex; justify-content:center; align-items:flex-start; gap:2px; min-height:46px; font:700 .8rem/30px var(--body); color:var(--graphite); flex-wrap:wrap; direction:ltr; }
+.dsv5-tmp .t{ font-family:var(--mono); color:var(--pen); line-height:30px; }
+.dsv5-arr{ display:flex; justify-content:center; gap:3px; margin:2px 0 8px; direction:ltr; }
+.dsv5-ac{ display:flex; flex-direction:column; align-items:center; }
+.dsv5-ac .dsv5-dv{ border-radius:5px; border-right-width:1.5px; }
+.dsv5-ix{ font:.75rem/1.3 var(--mono); color:var(--graphite); }
+.dsv5-cap{ font-size:.8rem; font-weight:700; color:var(--graphite); text-align:center; margin:6px 0 2px; }
+.dsv5-in{ font:.9rem var(--mono); width:64px; padding:4px 6px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; box-sizing:border-box; }
+.dsv5-in.wide{ width:120px; }
+.dsv5-lbl{ display:inline-flex; align-items:center; gap:4px; font-size:.82rem; color:var(--ink); }
+.dsv5-step{ display:inline-flex; align-items:center; gap:4px; font-size:.82rem; color:var(--ink); }
+.dsv5-step .fig-btn{ min-width:32px; padding:2px 8px; }
+.dsv5-step b{ font-family:var(--mono); min-width:1.4em; text-align:center; }
+.dsv5-err{ color:var(--pen); font-weight:700; font-size:.82rem; text-align:center; margin:6px 0 0; }
+.dsv5-var{ display:flex; justify-content:center; align-items:center; gap:6px; flex-wrap:wrap; margin:4px 0; font:700 .82rem var(--mono); color:var(--ink); direction:ltr; }
+.dsv5-var .box{ border:1.5px solid var(--ink); border-radius:5px; padding:4px 8px; background:var(--paper); min-width:44px; text-align:center; }
+.dsv5-var .nm{ color:var(--fig-k); }
+.dsv5-fld{ display:inline-grid; grid-template-columns:auto auto; }
+.dsv5-fld span{ border:1.5px solid var(--fig-k); padding:3px 8px; text-align:center; background:var(--paper); }
+.dsv5-fld span:first-child{ border-right-width:0; border-radius:5px 0 0 5px; } .dsv5-fld span:last-child{ border-radius:0 5px 5px 0; }
+.dsv5-fld i{ display:block; font:italic 700 .75rem var(--body); color:var(--pen); }
+.dsv5-show{ transition:opacity .45s, transform .45s; } .dsv5-show.off{ opacity:0; transform:translateY(6px); }
+@media (prefers-reduced-motion: reduce){ .dsv5-f, .dsv5-a path, .dsv5-a polygon, .dsv5-sn rect, .dsv5-sq, .dsv5-dv, .dsv5-code span, .dsv5-show{ transition:none; } }`;
+  if (!document.getElementById('dsv5-css')) { const s = document.createElement('style'); s.id = 'dsv5-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* helpers */
+  const L = s => `<span class="ltr">${s}</span>`;
+  const D = s => `<bdi dir="ltr">${String(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    <div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  const Code = ({ title, lines, cur }) => html`<div className="dsv5-code">${title && html`<small>${title}</small>`}${lines.map((t, k) => html`<span key=${k} className=${(cur || []).includes(k) ? 'cur' : ''}>${t || ' '}</span>`)}</div>`;
+  // SVG arrow: path d, ending at e, arriving from the direction of p
+  const r1 = v => Math.round(v * 10) / 10;
+  function Arr({ d, e, p, c, on }) {
+    const dx = e[0] - p[0], dy = e[1] - p[1], l = Math.hypot(dx, dy) || 1, ux = dx / l, uy = dy / l, bx = e[0] - ux * 8, by = e[1] - uy * 8;
+    return html`<g className=${'dsv5-a dsv5-f ' + (c || '') + (on === false ? ' off' : '')}><path d=${d} /><polygon points=${`${r1(e[0])},${r1(e[1])} ${r1(bx - uy * 4.2)},${r1(by + ux * 4.2)} ${r1(bx + uy * 4.2)},${r1(by - ux * 4.2)}`} /></g>`;
+  }
+  const Ln = (x1, y1, x2, y2, c, on) => html`<${Arr} d=${`M${x1} ${y1} L${x2} ${y2}`} e=${[x2, y2]} p=${[x1, y1]} c=${c} on=${on} />`;
+  // SVG node: data cell + pointer cell
+  const SN = ({ x, y, v, w1 = 30, w2 = 22, h = 26, c, on, dot }) => html`<g className=${'dsv5-sn dsv5-f ' + (c || '') + (on === false ? ' off' : '')}>
+    <rect x=${x} y=${y} width=${w1} height=${h} /><rect x=${x + w1} y=${y} width=${w2} height=${h} />
+    ${v != null && html`<text className="v" x=${x + w1 / 2} y=${y + h / 2}>${v}</text>`}${dot && html`<circle className="dsv5-dot" cx=${x + w1 + w2 / 2} cy=${y + h / 2} r="2.6" />`}</g>`;
+  // HTML chain: head → [v|•] → … → NULL, with pointer names under nodes
+  const Chain = ({ vals, marks = {}, cls = {}, nul, noHead }) => html`<div className="dsv5-chain">
+    ${!noHead && html`<span className="dsv5-hd">head</span><span className="dsv5-ar">→</span>`}
+    ${vals.map((v, k) => html`<span key=${k} className="dsv5-unit"><span className="dsv5-nd"><span className=${'dsv5-dv ' + (cls[k] || '')}>${v}</span><span className="dsv5-pv"></span><span className="dsv5-mk">${marks[k] || ''}</span></span><span className="dsv5-ar">→</span></span>`)}
+    <span className=${'dsv5-null ' + (nul || '')}>NULL<span className="dsv5-mk">${marks.N || ''}</span></span></div>`;
+  const parseList = s => { const t = String(s).trim(); if (!t) return []; const a = t.split(/[\s,]+/).map(Number); return a.every(n => Number.isInteger(n) && Math.abs(n) < 1000) ? a : null; };
+
+  /* ── [0.0]–[0.2] slides 2–3: node, chain, NULL, head, tail ── */
+  function L5NodeChain({ ar }) {
+    const steps = [
+      { en: 'One <b>node</b> has two fields: <b>data</b> (the value) and <b>next</b> (a pointer that stores the address of the next node).', ar: 'الـ <b>node</b> الواحدة فيها field-ين: الـ <b>data</b> (القيمة) والـ <b>next</b> (pointer بيخزن الـ address بتاع الـ node اللي بعدها).' },
+      { en: 'A linked list is a <b>series of connected nodes</b>: each next field leads to the following node.', ar: 'الـ linked list عبارة عن <b>سلسلة nodes متوصلة ببعض</b>، وكل next بيوصّلك للـ node اللي بعدها.' },
+      { en: 'The <b>last node contains NULL</b> in its second field, because it points to no node.', ar: 'آخر node فيها <b>NULL</b> في الـ field التاني، لأنها مش بتشاور على أي node.' },
+      { en: 'The list is accessed through the <b>head</b>, which points to the first node.', ar: 'بنوصل للـ list عن طريق الـ <b>head</b>، اللي بيشاور على أول node.' },
+      { en: 'The last node (the one pointing to NULL) is the <b>tail</b>. The list grows and shrinks by adding or removing nodes and changing links.', ar: 'آخر node (اللي بتشاور على NULL) اسمها الـ <b>tail</b>. والـ list بتكبر وتصغر لما نضيف أو نشيل nodes ونغيّر الـ links.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2600, 0);
+    const X = [6, 90, 174], Y = 56, W1 = 34, W2 = 32, H = 28, cy = Y + H / 2;
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <svg className="dsv5-svg" viewBox="0 0 300 150" role="img" aria-label="head, three nodes with data and next fields, NULL">
+        ${X.map((x, k) => html`<g key=${k} className=${'dsv5-f' + (k > 0 && i < 1 ? ' off' : '')}>
+          <ellipse className="dsv5-ell" cx=${x + 33} cy=${cy} rx="38" ry="25" />
+          <rect className="dsv5-sq" x=${x} y=${Y} width=${W1} height=${H} style=${{ fill: 'color-mix(in srgb, var(--ok) 22%, var(--paper))' }} />
+          <rect className="dsv5-sq" x=${x + W1} y=${Y} width=${W2} height=${H} style=${{ fill: 'color-mix(in srgb, var(--ok) 22%, var(--paper))' }} />
+          <text className="m" x=${x + W1 / 2} y=${cy}>data</text><text className="m" x=${x + W1 + W2 / 2} y=${cy}>next</text>
+          ${Ln(x + 33, 121, x + 33, 98, 'ok')}<text className="m lb" x=${x + 33} y="136">Node</text>
+          ${k < 2 && Ln(x + 66, cy, X[k + 1], cy, '', i >= 1)}</g>`)}
+        ${Ln(240, cy, 256, cy, '', i >= 2)}<text className=${'lb dsv5-f' + (i >= 2 ? '' : ' off')} x="258" y=${cy}>NULL</text>
+        <text className=${'m lb k dsv5-f' + (i >= 3 ? '' : ' off')} x="39" y="14">head</text>${Ln(39, 22, 39, Y - 1, 'k', i >= 3)}
+        <text className=${'m lb dsv5-f' + (i >= 4 ? '' : ' off')} x="207" y="14">tail</text>${Ln(207, 22, 207, Y - 1, '', i >= 4)}
+      </svg></div>
+      <${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${SBar} n=${steps.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.3] slides 4–7: scattered through memory; add 5, delete 5 by changing links ── */
+  function L5Scatter({ ar }) {
+    const steps = [
+      { o: [1, 2, 3, 4], en: 'Slide 4: the nodes 1, 2, 3, 4 are <b>scattered randomly through memory</b>, not side by side. Only the links give the order.', ar: 'ده slide 4: الـ nodes اللي فيها 1 و2 و3 و4 <b>متفرقة عشوائي في الـ memory</b>، مش ورا بعض. الـ links بس هي اللي بتحدد الترتيب.' },
+      { o: [1, 2, 3, 4], en: 'Slide 5, <b>easy to add</b>: node 5 is created anywhere in memory and first points to 3.', ar: 'ده slide 5، <b>الإضافة سهلة</b>: الـ node اللي فيها 5 بتتعمل في أي مكان في الـ memory، وأول حاجة بتشاور على 3.' },
+      { o: [1, 2, 3, 4], en: 'Then 2\'s link is changed to point to 5 (the old link 2 → 3 is replaced). No node moves.', ar: 'وبعدين بنغيّر الـ link بتاع 2 يشاور على 5 بدل 3. ومفيش ولا node بتتحرك من مكانها.' },
+      { o: [1, 2, 5, 3, 4], en: 'Slide 6: the order is now 1, 2, 5, 3, 4, only by changing links.', ar: 'ده slide 6: الترتيب بقى 1 و2 و5 و3 و4، بتغيير الـ links بس.' },
+      { o: [1, 2, 3, 4], en: 'Slide 7, <b>easy to delete</b>: 2 links straight to 3 again, so 5 is no longer in the list.', ar: 'ده slide 7، <b>المسح سهل</b>: الـ 2 بيرجع يشاور على 3 على طول، فالـ 5 خرجت من الـ list.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2600, 0);
+    const P = { 1: [48, 16], 4: [150, 16], 3: [236, 76], 2: [100, 172], 5: [146, 98] };
+    const node = k => html`<${SN} key=${k} x=${P[k][0]} y=${P[k][1]} w1=${30} w2=${24} v=${k} c=${k === 5 && i >= 1 && i <= 3 ? 'new' : ''} on=${k !== 5 || (i >= 1 && i <= 3)} />`;
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <svg className="dsv5-svg" viewBox="0 0 300 206" role="img" aria-label="Nodes 1 to 4 scattered in memory, node 5 added then deleted">
+        <text className="lb p" x="2" y="29">head</text>${Ln(38, 29, 48, 29, 'p')}
+        ${Ln(90, 29, 112, 172)}
+        ${Ln(142, 185, 240, 102, i === 2 ? 'dash' : i === 4 ? 'k' : '', i === 0 || i === 2 || i === 4)}
+        ${Ln(142, 185, 160, 124, 'k', i >= 2 && i <= 3)}
+        ${Ln(188, 111, 236, 92, 'k', i >= 1 && i <= 3)}
+        ${Ln(278, 89, 190, 42)}
+        ${Ln(204, 29, 220, 29)}<text className="lb g" x="222" y="29">NULL</text>
+        ${[1, 2, 3, 4, 5].map(node)}
+      </svg>
+      <p className="dsv5-order">head → ${steps[i].o.join(' → ')} → NULL</p></div>
+      <${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${SBar} n=${steps.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1] slides 9–11: singly, doubly, circular, with a traversal ── */
+  const TY = {
+    s: { name: 'Singly linked list', en: 'Each node references the <b>next</b> node only: traversal goes <b>forward</b> only.', ar: 'كل node بتشاور على الـ <b>next</b> بس، فالـ traversal بيمشي <b>لقدّام</b> بس.' },
+    d: { name: 'Doubly linked list', en: 'Each node references both the <b>next</b> and the <b>previous</b> node: traversal goes forward and backward, but the backward reference costs extra memory.', ar: 'كل node بتشاور على الـ <b>next</b> وعلى الـ <b>previous</b>، فالـ traversal بيمشي لقدّام ولورا، بس الـ reference اللي لورا بياخد memory زيادة.' },
+    c: { name: 'Circular linked list', en: 'The <b>last node points back to the head node</b>, making a circle (it can be singly or doubly linked; this one is singly).', ar: 'آخر node <b>بترجع تشاور على أول node</b> فبتعمل دايرة (ممكن تبقى singly أو doubly، واللي هنا singly).' }
+  };
+  function L5Types({ ar }) {
+    const [t, setT] = useState('s'), [run, setRun] = useState(null), [k, setK] = useState(0);
+    const seq = run === 'f' ? (t === 'c' ? [0, 1, 2, 0, 1, 2, 0] : [0, 1, 2, 'N']) : run === 'b' ? [2, 1, 0, 'P'] : [];
+    useEffect(() => { if (!run || run === 'x') return; if (calm()) { setK(seq.length - 1); return; } if (k >= seq.length - 1) return; const tm = setTimeout(() => setK(k + 1), 900); return () => clearTimeout(tm); }, [run, k, t]);
+    const go = r => { if (r === 'b' && t !== 'd') { setRun('x'); setK(0); return; } setRun(r); setK(0); };
+    const pick = v => { setT(v); setRun(null); setK(0); };
+    const cur = seq.length ? seq[Math.min(k, seq.length - 1)] : null, done = seq.length && k >= seq.length - 1;
+    const vis = seq.slice(0, k + 1).filter(x => typeof x === 'number').map(x => [10, 20, 30][x]);
+    const d = t === 'd', Y = 52, H = 26;
+    const X = d ? [8, 111, 214] : [14, 114, 214], W = d ? 70 : 54;
+    let msg = { en: TY[t].en, ar: TY[t].ar };
+    if (run === 'x') msg = { en: TY[t].en + ' <b>Backward is not possible</b>: a node has no reference to the previous one.', ar: TY[t].ar + ' <b>الرجوع لورا مش ممكن</b> لأن الـ node مفيهاش reference للي قبلها.' };
+    else if (run && done) {
+      const seen = vis.join(' → ');
+      if (run === 'f' && t === 'c') msg = { en: 'Forward: ' + seen + ' … the last node\'s next leads back to the head, so a traversal never meets NULL: it stops when it is back at the head.', ar: 'لقدّام بالترتيب ده:' + L(seen + ' …') + 'الـ next بتاع آخر node بيرجّعك للـ head، فالـ traversal عمره ما يقابل NULL، وبيقف لما يرجع للـ head.' };
+      else if (run === 'f') msg = { en: 'Forward from the head: ' + seen + ', then next is NULL: the end.', ar: 'لقدّام من الـ head بالترتيب ده:' + L(seen) + 'وبعدها الـ next بقى NULL، يعني خلصنا.' };
+      else msg = { en: 'Backward from the last node using prev: ' + seen + ', then prev is NULL: the start.', ar: 'لورا من آخر node باستخدام الـ prev بالترتيب ده:' + L(seen) + 'وبعدها الـ prev بقى NULL، يعني وصلنا للأول.' };
+    }
+    const hot = j => cur === j ? 'hot' : '';
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <div className="dsv5-modes">${['s', 'd', 'c'].map(v => html`<button key=${v} className="fig-btn" aria-pressed=${String(t === v)} onClick=${() => pick(v)}>${TY[v].name.replace(' linked list', '')}</button>`)}</div>
+      <p className="dsv5-legend">${TY[t].name}: each box is <b>${d ? 'prev | data | next' : 'data | next'}</b></p>
+      <svg className="dsv5-svg" viewBox="0 0 300 126" role="img" aria-label=${TY[t].name}>
+        <text className="m lb k" x=${X[0] + (d ? 35 : 27)} y="12">head</text>${Ln(X[0] + (d ? 35 : 27), 19, X[0] + (d ? 35 : 27), Y - 1, 'k')}
+        ${X.map((x, j) => d ? html`<g key=${j} className=${'dsv5-sn ' + hot(j)}><rect x=${x} y=${Y} width="18" height=${H} /><rect x=${x + 18} y=${Y} width="34" height=${H} /><rect x=${x + 52} y=${Y} width="18" height=${H} />
+            <circle className="dsv5-dot" cx=${x + 9} cy=${Y + 13} r="2.6" /><text className="v" x=${x + 35} y=${Y + 13}>${[10, 20, 30][j]}</text><circle className="dsv5-dot" cx=${x + 61} cy=${Y + 13} r="2.6" /></g>`
+          : html`<${SN} key=${j} x=${x} y=${Y} w1=${34} w2=${20} v=${[10, 20, 30][j]} dot=${true} c=${hot(j)} />`)}
+        ${[0, 1].map(j => d ? html`<g key=${'l' + j}>${Ln(X[j] + W - 9, Y + 7, X[j + 1], Y + 7)}${Ln(X[j + 1] + 9, Y + 19, X[j] + W, Y + 19)}</g>` : html`<g key=${'l' + j}>${Ln(X[j] + 44, Y + 13, X[j + 1], Y + 13)}</g>`)}
+        ${t === 'c' ? html`<${Arr} d=${`M258 ${Y + 13} H272 V104 H4 V${Y + 13} H14`} e=${[14, Y + 13]} p=${[4, Y + 13]} c=${cur === 0 && k > 0 ? 'k' : ''} />`
+          : html`<g>${Ln(X[2] + W - 9, Y + 13, X[2] + W - 9, 92)}<text className=${'m lb ' + (cur === 'N' ? 'k' : 'g')} x=${d ? 268 : 259} y="104">NULL</text>
+            ${d && html`<g>${Ln(X[0] + 9, Y + 13, X[0] + 9, 92)}<text className=${'m lb ' + (cur === 'P' ? 'k' : 'g')} x="26" y="104">NULL</text></g>`}</g>`}
+        ${typeof cur === 'number' && html`<text className="m lb k" x=${X[cur] + W / 2} y="120">temp</text>`}
+      </svg>
+      <div className="dsv5-row"><button className="fig-btn" onClick=${() => go('f')}>traverse forward</button><button className="fig-btn" onClick=${() => go('b')}>traverse backward</button></div></div>
+      <${Cap} en=${msg.en} ar=${msg.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [2.1] linear access vs direct access by index ── */
+  const ACC = [5, 20, 10, 30];
+  function L5Access({ ar }) {
+    const [k, setK] = useState(3), [h, setH] = useState(calm() ? 3 : 0);
+    useEffect(() => { if (calm() || h >= k) return; const t = setTimeout(() => setH(h + 1), 800); return () => clearTimeout(t); }, [h, k]);
+    const pick = v => { setK(v); setH(calm() ? v : 0); };
+    const marks = { [Math.min(h, k)]: 'temp' }, cls = { [Math.min(h, k)]: h >= k ? 'ok' : 'hot' };
+    const en = `Element number ${k + 1}: the array reads <b>a[${k}]</b> directly in one step. The list starts at head and follows next ${k} time${k === 1 ? '' : 's'} (${h >= k ? 'done' : h + ' so far'}). For the 500th element: a[499] directly, but 499 hops in a list. Also every node stores a next pointer next to its data (extra memory).`;
+    const arT = `العنصر رقم ${D(k + 1)}: الـ array بيقرا ${D('a[' + k + ']')} على طول في خطوة واحدة. أما الـ list فبتبدأ من الـ head وتمشي ورا الـ next عدد مرات قدّه ${D(k)} (${h >= k ? 'خلصت' : 'لحد دلوقتي ' + D(h)}). ولو عايز العنصر رقم 500 فالـ array بيقرا ${D('a[499]')} على طول، والـ list محتاجة 499 خطوة. وكمان كل node بتخزن pointer اسمه next جنب الـ data، وده memory زيادة.`;
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <p className="dsv5-cap">array: direct access by index</p>
+      <div className="dsv5-arr">${ACC.map((v, j) => html`<div key=${j} className="dsv5-ac"><span className="dsv5-ix">${j}</span><span className=${'dsv5-dv' + (j === k ? ' ok' : '')}>${v}</span></div>`)}</div>
+      <p className="dsv5-cap">linked list: traversal from head</p>
+      <${Chain} vals=${ACC} marks=${marks} cls=${cls} />
+      <div className="dsv5-row">${ACC.map((_, j) => html`<button key=${j} className="fig-btn" aria-pressed=${String(j === k)} onClick=${() => pick(j)}>#${j + 1}</button>`)}</div></div>
+      <${Cap} en=${en} ar=${arT} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [3] slides 14–17: Linkedlist(), isEmpty, isFull and the new node ── */
+  function L5Classes({ ar }) {
+    const main = ['Linkedlist list;', 'list.isEmpty();', 'list.isFull();'];
+    const steps = [
+      { m: 0, run: 'Linkedlist() { head = NULL; }', en: '<b>Linkedlist list;</b> runs the constructor: <b>head = NULL</b>. The list is empty.', ar: 'السطر ده بيشغّل الـ constructor، فالـ head بيبقى NULL والـ list فاضية:' + L('Linkedlist list; → head = NULL') },
+      { m: 1, run: 'if (head == NULL) return true;', out: 'true', en: '<b>isEmpty()</b> checks head == NULL: true, so it returns <b>true</b>.', ar: 'الـ <bdi dir="ltr">isEmpty()</bdi> بتشيك على الشرط ده ولقيته true، فبترجّع <b>true</b>:' + L('head == NULL') },
+      { m: 2, nn: true, run: 'Node *newnode = new Node();', en: '<b>isFull()</b> tries <b>new Node()</b>. The Node() constructor sets <b>data = 0</b> and <b>next = NULL</b> (slide 14 calls the two fields element and next).', ar: 'الـ <bdi dir="ltr">isFull()</bdi> بتجرّب تعمل <bdi dir="ltr">new&nbsp;Node()</bdi>. والـ constructor بتاع الـ Node بيخلي الـ data بصفر والـ next بـ NULL (في slide 14 اسم الـ field-ين element و next).' },
+      { m: 2, nn: true, run: 'if (newnode == NULL) return true; else return false;', out: 'false', en: 'new found memory, so newnode is not NULL: isFull returns <b>false</b>. A linked list is full only when new cannot allocate memory.', ar: 'الـ new لقت memory، فالـ newnode مش NULL والـ isFull بترجّع <b>false</b>. الـ linked list مش بتبقى full غير لما الـ new متلاقيش memory تحجزها.' }
+    ];
+    const [i, ctl] = useWalk(steps.length, 2800, 0), s = steps[i];
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <${Code} title="main" lines=${main} cur=${[s.m]} />
+      <div className="dsv5-var"><span className="nm">head</span><span className="box">NULL</span></div>
+      <div className=${'dsv5-var dsv5-show' + (s.nn ? '' : ' off')}><span className="nm">newnode</span><span>→</span>
+        <span className="dsv5-fld"><span><i>element</i>data = 0</span><span><i>next</i>NULL</span></span></div>
+      <div className="dsv5-out">runs: ${s.run}${s.out ? '\nreturns ' : ''}${s.out && html`<span className=${s.out === 'true' ? 'y' : 'n'}>${s.out}</span>`}</div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${steps.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4] slide 19: insert E at the beginning, and the wrong order ── */
+  function L5FrontInsert({ ar }) {
+    const [wrong, setWrong] = useState(false);
+    const R = [
+      { hd: 'A', en: 'Slide 19: head → A → B → C → D → NULL, and a new node <b>E</b> (newnode->data = item).', ar: 'ده رسم slide 19: الـ list فيها A وB وC وD والـ head بيشاور على A، وعندنا node جديدة فيها <b>E</b>.' },
+      { hd: 'A', eA: true, en: 'Step 1: <b>newnode->next = head;</b> E now points at the old first node A.', ar: 'الخطوة الأولى خلّت E تشاور على أول node قديمة اللي هي A:' + L('newnode-&gt;next = head;') },
+      { hd: 'E', eA: true, x: true, en: 'Step 2: <b>head = newnode;</b> the old head link to A is crossed out; head points at E.', ar: 'الخطوة التانية شالت الـ link القديم من الـ head لـ A، وخلّت الـ head يشاور على E:' + L('head = newnode;') },
+      { hd: 'E', eA: true, o: 'E A B C D', en: 'Done: head → E → A → B → C → D → NULL. Nothing was lost.', ar: 'خلصنا والترتيب بقى زي ما تحت، ومفيش حاجة ضاعت.' }
+    ];
+    const W = [
+      R[0],
+      { hd: 'E', lost: true, en: 'Wrong order, <b>head = newnode;</b> first: head points at E, and <b>nothing points to A any more</b>.', ar: 'لو عملنا الخطوة دي الأول، الـ head هيشاور على E و<b>مفيش حاجة بقت بتشاور على A</b>:' + L('head = newnode;') },
+      { hd: 'E', self: true, lost: true, o: 'E E E …', en: 'Then <b>newnode->next = head;</b> head is already E, so E points to itself. A, B, C, D are lost.', ar: 'وبعدها الـ head أصلًا بقى E، فالـ E بتشاور على نفسها، والـ A وB وC وD ضاعوا:' + L('newnode-&gt;next = head;') }
+    ];
+    const S = wrong ? W : R, [i, ctl] = useWalk(S.length, 2600, wrong), s = S[i];
+    const X = [18, 78, 138, 198], Y = 40;
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <div className="dsv5-modes"><button className="fig-btn" aria-pressed=${String(!wrong)} onClick=${() => setWrong(false)}>slide's order</button><button className="fig-btn" aria-pressed=${String(wrong)} onClick=${() => setWrong(true)}>steps swapped</button></div>
+      <svg className="dsv5-svg" viewBox="0 0 300 150" role="img" aria-label="Insert E at the beginning of A, B, C, D">
+        <text className="m lb k" x="41" y="10">head</text>
+        ${Ln(41, 17, 41, Y - 1, s.x ? 'p dash' : 'k', s.hd === 'A' || !!s.x)}${s.x && html`<text className="x" x="52" y="27">X</text>`}
+        <${Arr} d=${`M21 10 H6 V${Y + 73} H18`} e=${[18, Y + 73]} p=${[6, Y + 73]} c="k" on=${s.hd === 'E'} />
+        <g className=${'dsv5-f' + (s.lost ? ' dim' : '')}>
+          ${X.map((x, j) => html`<${SN} key=${j} x=${x} y=${Y} w1=${28} w2=${18} v=${'ABCD'[j]} dot=${true} />`)}
+          ${[0, 1, 2].map(j => html`<g key=${'l' + j}>${Ln(X[j] + 46, Y + 13, X[j + 1], Y + 13)}</g>`)}
+          ${Ln(244, Y + 13, 258, Y + 13)}<text className="lb g" x="260" y=${Y + 13}>NULL</text></g>
+        ${s.lost && html`<text className="m lb p" x="150" y="86">A, B, C, D lost</text>`}
+        <${SN} x=${18} y=${Y + 60} w1=${28} w2=${18} v="E" c="new" dot=${true} />
+        <${Arr} d=${`M55 ${Y + 73} Q72 ${Y + 50} 48 ${Y + 26}`} e=${[48, Y + 26]} p=${[72, Y + 50]} c="k" on=${!!s.eA} />
+        <${Arr} d=${`M59 ${Y + 73} C92 ${Y + 73} 82 ${Y + 108} 33 ${Y + 87}`} e=${[33, Y + 87]} p=${[82, Y + 108]} c="p" on=${!!s.self} />
+      </svg>
+      <p className="dsv5-order">${s.o ? html`head → ${s.o.split(' ').join(' → ')}${s.self ? '' : ' → NULL'}` : ' '}</p></div>
+      <${Cap} en=${s.en.replace(/->/g, '-&gt;')} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5.0] slides 21–22: insert after the third node, and the wrong order ── */
+  function L5OrderInsert({ ar }) {
+    const [wrong, setWrong] = useState(false);
+    const R = [
+      { en: 'Slide 21: insert the new <b>node</b> after the <b>third</b> node; the insertion point is between the third and the fourth.', ar: 'ده slide 21: عايزين نضيف الـ <b>node</b> الجديدة بعد الـ node <b>التالتة</b>، ومكان الإضافة بين التالتة والرابعة.' },
+      { cur: true, en: 'Step 1: locate the node <b>preceding the insertion point</b> and make <b>current</b> point to it.', ar: 'الخطوة (1): نحدد الـ node اللي <b>قبل مكان الإضافة</b> ونخلي الـ <b>current</b> يشاور عليها.' },
+      { cur: true, s2: true, en: 'Step 2: <b>newnode->next = current->next;</b> the new node points to the node after the insertion point.', ar: 'الخطوة (2): الـ node الجديدة بتشاور على الـ node اللي بعد مكان الإضافة:' + L('newnode-&gt;next = current-&gt;next;') },
+      { cur: true, s2: true, s3: true, x: true, en: 'Step 3: <b>current->next = newnode;</b> the third node points to the new node; its old link is crossed out.', ar: 'الخطوة (3): الـ node التالتة بتشاور على الـ node الجديدة، والـ link القديم بتاعها بيتشطب:' + L('current-&gt;next = newnode;') },
+      { cur: true, s2: true, s3: true, gone: true, o: true, en: 'Done: head → 1st → 2nd → 3rd → node → 4th → NULL.', ar: 'خلصنا، والـ node الجديدة بقت بين التالتة والرابعة.' }
+    ];
+    const W = [
+      R[1],
+      { cur: true, s3: true, gone: true, lost: true, en: 'Swapped, step 3 first: <b>current->next = newnode;</b> the link to the fourth node is gone, and <b>nothing points to it any more</b>.', ar: 'لو بدّلنا وعملنا الخطوة (3) الأول، الـ link اللي رايح للـ node الرابعة بيروح، و<b>مفيش حاجة بقت بتشاور عليها</b>:' + L('current-&gt;next = newnode;') },
+      { cur: true, s3: true, gone: true, lost: true, self: true, en: 'Then <b>newnode->next = current->next;</b> but current->next is now the new node itself, so it points to itself. The rest of the list is lost.', ar: 'وبعدها الـ <bdi dir="ltr">current-&gt;next</bdi> بقى هو الـ node الجديدة نفسها، فبتشاور على نفسها وباقي الـ list ضاع:' + L('newnode-&gt;next = current-&gt;next;') }
+    ];
+    const S = wrong ? W : R, [i, ctl] = useWalk(S.length, 2700, wrong), s = S[i];
+    const X = [40, 96, 152, 246], Y = 86, fills = [55, 25, 40, 70];
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <div className="dsv5-modes"><button className="fig-btn" aria-pressed=${String(!wrong)} onClick=${() => setWrong(false)}>slide's order</button><button className="fig-btn" aria-pressed=${String(wrong)} onClick=${() => setWrong(true)}>steps 2 and 3 swapped</button></div>
+      <svg className="dsv5-svg" viewBox="0 0 300 172" role="img" aria-label="Inserting a node after the third node">
+        <text className="lb" x="4" y="80">head</text>${Ln(4, Y + 15, X[0], Y + 15, 'k')}
+        ${X.map((x, j) => html`<rect key=${j} className=${'dsv5-sq dsv5-f' + (j === 2 && s.cur ? ' hot' : '') + (j === 3 && s.lost ? ' dim' : '')} x=${x} y=${Y} width="30" height="30" style=${{ fill: `color-mix(in srgb, var(--fig-k) ${fills[j]}%, var(--paper))` }} />`)}
+        ${Ln(70, Y + 15, 96, Y + 15, 'k')}${Ln(126, Y + 15, 152, Y + 15, 'k')}
+        ${Ln(182, Y + 15, 246, Y + 15, s.x ? 'p dash' : 'k', !s.gone)}${s.x && html`<text className="x" x="214" y=${Y + 15}>X</text>`}
+        <g className=${'dsv5-f' + (i === 0 && !wrong ? '' : ' off')}><text className="m p" x="214" y="62">insertion point</text>${Ln(214, 70, 214, Y + 10, 'p')}</g>
+        ${Ln(276, Y + 15, 290, Y + 15, '', true)}
+        <text className="lb e" x="206" y="35">node</text>${Ln(210, 35, 246, 35, 'k')}
+        <rect className="dsv5-sq" x="246" y="20" width="30" height="30" style=${{ fill: 'color-mix(in srgb, var(--fig-k) 35%, var(--paper))' }} />
+        ${Ln(261, 50, 261, Y - 1, 'p', !!s.s2)}
+        ${Ln(182, Y + 4, 246, 46, 'p', !!s.s3)}
+        <${Arr} d="M276 30 C298 30 296 2 266 3 C254 4 252 10 254 19" e=${[254, 19]} p=${[252, 10]} c="p" on=${!!s.self} />
+        <g className=${'dsv5-f' + (s.cur ? '' : ' off')}><text className="lb p" x="4" y="158">current</text><${Arr} d="M62 156 Q140 162 165 118" e=${[165, 118]} p=${[140, 162]} c="p" /></g>
+        ${s.lost && html`<text className="m lb p" x="261" y="136">lost</text>`}
+      </svg>
+      <p className="dsv5-order">${s.o ? 'head → 1st → 2nd → 3rd → node → 4th → NULL' : s.self ? 'head → 1st → 2nd → 3rd → node → node → …' : ' '}</p></div>
+      <${Cap} en=${s.en.replace(/->/g, '-&gt;')} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [7] slides 27 and 29: deleting the first node, deleting an interior node ── */
+  function L5DeletePics({ ar }) {
+    const [m, setM] = useState('b');
+    const B = [
+      { en: 'Slide 27: <b>head</b> points to the first node, which points to the second.', ar: 'ده slide 27: الـ <b>head</b> بيشاور على أول node، وهي بتشاور على التانية.' },
+      { tmp: true, en: '<b>Node *temp = head;</b> and <b>value = head->data;</b> keep the first node so it can be deleted.', ar: 'بنمسك أول node في الـ temp وناخد قيمتها في الـ value عشان نقدر نمسحها:' + L('Node *temp = head; value = head-&gt;data;') },
+      { tmp: true, jump: true, en: '<b>head = head->next;</b> head points to the second node (the node pointed to by the first node).', ar: 'الـ head بقى بيشاور على التانية، اللي هي الـ node اللي الأولى بتشاور عليها:' + L('head = head-&gt;next;') },
+      { jump: true, del: true, en: '<b>delete(temp);</b> the old first node is freed and value is returned. The list starts at the second node.', ar: 'الـ node الأولى القديمة اتمسحت والـ value اترجعت، والـ list بقت بتبدأ من التانية:' + L('delete(temp); return (value);') }
+    ];
+    const N = [
+      { en: 'Slide 29: delete the <b>fourth</b> node, an interior node.', ar: 'ده slide 29: عايزين نمسح الـ node <b>الرابعة</b>، ودي node في النص.' },
+      { pc: true, en: 'Step 1: traverse so that <b>current</b> points to the node to delete and <b>previous</b> to the node before it (in deleteitem: temp1 and temp2).', ar: 'الخطوة (1): نمشي لحد ما الـ <b>current</b> يشاور على الـ node اللي هتتمسح والـ <b>previous</b> على اللي قبلها (في الـ deleteitem اسمهم temp1 وtemp2).' },
+      { pc: true, fol: true, en: 'Step 2: get at the node <b>following</b> the one to delete: <b>current->next</b>.', ar: 'الخطوة (2): نوصل للـ node اللي <b>بعد</b> اللي هتتمسح، اللي هي <bdi dir="ltr">current-&gt;next</bdi>.' },
+      { pc: true, fol: true, jump: true, en: 'Step 3: <b>previous->next = current->next;</b> previous now points past current; the old link is crossed out.', ar: 'الخطوة (3): الـ previous بقى بيشاور على اللي بعد الـ current، والـ link القديم اتشطب:' + L('previous-&gt;next = current-&gt;next;') },
+      { pc: true, jump: true, del: true, en: '<b>delete(current);</b> the node is freed: the list is 1st → 2nd → 3rd → 5th.', ar: 'الـ node اتمسحت بالسطر ده والـ list بقت الأولى والتانية والتالتة والخامسة:' + L('delete(current);') }
+    ];
+    const S = m === 'b' ? B : N, [i, ctl] = useWalk(S.length, 2700, m), s = S[i];
+    const X = [52, 100, 148, 196, 244], Y = 62, fills = [70, 20, 8, 45, 75], dn = m === 'b' ? 0 : 3;
+    const sq = j => html`<rect key=${j} className=${'dsv5-sq dsv5-f' + (j === dn && s.del ? ' off' : '') + (j === dn && (s.tmp || s.pc) && !s.del ? ' bad' : '') + (m === 'n' && j === 2 && s.pc ? ' hot' : '') + (m === 'n' && j === 4 && s.fol ? ' hot' : '')} x=${X[j]} y=${Y} width="28" height="28" style=${{ fill: `color-mix(in srgb, var(--fig-k) ${fills[j]}%, var(--paper))` }} />`;
+    const lnk = j => { const gone = j === dn && s.jump; return html`<g key=${'l' + j}>${Ln(X[j] + 28, Y + 14, X[j + 1], Y + 14, gone ? 'p dash' : 'k', !(j === dn && s.del))}${gone && !s.del && m === 'n' && html`<text className="x" x=${X[j] - 10} y=${Y + 14}>X</text>`}</g>`; };
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <div className="dsv5-modes"><button className="fig-btn" aria-pressed=${String(m === 'b')} onClick=${() => setM('b')}>first node (slide 27)</button><button className="fig-btn" aria-pressed=${String(m === 'n')} onClick=${() => setM('n')}>interior node (slide 29)</button></div>
+      <svg className="dsv5-svg" viewBox="0 0 300 150" role="img" aria-label=${m === 'b' ? 'Deleting the first node' : 'Deleting an interior node'}>
+        ${m === 'b' ? html`<g><text className="lb" x="4" y="44">head</text><rect className="dsv5-sq" x="4" y=${Y + 4} width="24" height="20" style=${{ fill: 'var(--paper)' }} />
+            ${Ln(16, Y + 14, 52, Y + 14, s.jump ? 'p dash' : 'k', !s.del)}${s.jump && !s.del && html`<text className="x" x="38" y=${Y + 2}>X</text>`}
+            <${Arr} d=${`M18 ${Y + 6} Q60 6 112 ${Y - 1}`} e=${[112, Y - 1]} p=${[90, 12]} c="p" on=${!!s.jump} />
+            <g className=${'dsv5-f' + (s.tmp ? '' : ' off')}><text className="m lb p" x="66" y="126">temp</text>${Ln(66, 116, 66, Y + 31, 'p')}</g></g>`
+          : html`<g><text className="lb" x="4" y="44">head</text>${Ln(10, Y + 14, 52, Y + 14, 'k')}
+            <${Arr} d=${`M170 ${Y - 2} Q216 6 254 ${Y - 1}`} e=${[254, Y - 1]} p=${[234, 12]} c="p" on=${!!s.jump} />
+            <g className=${'dsv5-f' + (s.pc ? '' : ' off')}><text className="m lb p" x="150" y="128">previous</text>${Ln(158, 116, 162, Y + 31, 'p')}
+              <text className="m lb p" x="236" y="128">current</text>${Ln(220, 116, 212, Y + 31, 'p', !s.del)}</g>
+            <g className=${'dsv5-f' + (s.fol && !s.del ? '' : ' off')}><text className="m lb k" x="262" y="108">next</text></g></g>`}
+        ${X.map((_, j) => sq(j))}${[0, 1, 2, 3].map(lnk)}
+      </svg></div>
+      <${Cap} en=${s.en.replace(/->/g, '-&gt;')} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [8] search, count, get, update traced ── */
+  const FN5 = {
+    search: ['bool search(int item)', '{', '   Node *temp = head;', '   while (temp != NULL)', '   {', '      if (temp->data == item)', '         return (true);', '      else temp = temp->next;', '   }', '   return (false);', '}'],
+    count: ['int count()', '{', '   int c = 0;', '   Node *temp = head;', '   while (temp != NULL)', '   { c++; temp = temp->next; }', '   return (c);', '}'],
+    get: ['int get()', '{', '   if (head != NULL)', '      return head->data;', '   else', '   { cout << "Empty";', '     return 0; }', '}'],
+    update: ['bool update(int old_item,', '            int new_item)', '{', '   Node *temp = head;', '   while (temp != NULL)', '   {', '      if (temp->data == old_item)', '      { temp->data = new_item;', '        return true; }', '      else temp = temp->next;', '   }', '   return false;', '}']
+  };
+  const NX = 'temp = temp-&gt;next';
+  function funcSteps(fn, list, a, b) {
+    const S = [], v = list.slice(), n = v.length;
+    const st = (o) => S.push(Object.assign({ vals: v.slice(), t: null }, o));
+    if (fn === 'get') {
+      if (n) st({ t: 0, line: [2, 3], ret: v[0], en: `head != NULL, so get() returns head->data = <b>${v[0]}</b>, the first element.`, ar: 'الـ head مش NULL، فالـ <bdi dir="ltr">get()</bdi> بترجّع أول عنصر:' + L(`head-&gt;data = ${v[0]}`) });
+      else st({ t: 'N', line: [2, 4, 5, 6], ret: 0, print: 'Empty', en: 'head is NULL: get() prints <b>Empty</b> and returns 0.', ar: 'الـ head بـ NULL، فالـ <bdi dir="ltr">get()</bdi> بتطبع <b>Empty</b> وترجّع صفر.' });
+      return S;
+    }
+    const isC = fn === 'count', isU = fn === 'update', key = a, item = isU ? 'old_item' : 'item';
+    const t0 = n ? 0 : 'N', first = isU ? [3] : isC ? [2, 3] : [2];
+    st({ t: t0, c: isC ? 0 : undefined, line: first, en: (isC ? 'c = 0, ' : '') + `temp = head${n ? ` (the node ${v[0]})` : ' = NULL (empty list)'}.`, ar: (isC ? 'الـ c بيبدأ بصفر، و' : '') + `الـ temp بيبدأ من الـ head` + (n ? ` اللي هو الـ node اللي فيها ${D(v[0])}.` : '، والـ list فاضية فهو NULL.') });
+    const W = isU ? 4 : isC ? 4 : 3, IF = isU ? 6 : 5, ELSE = isU ? 9 : 7;
+    for (let k = 0; k < n; k++) {
+      const nx = k + 1 < n ? v[k + 1] : 'NULL';
+      if (isC) { st({ t: k, c: k + 1, line: [4, 5], en: `temp at ${v[k]}: c++ makes c = ${k + 1}, then temp moves to ${nx}.`, ar: `الـ temp واقف عند ${D(v[k])}، فالـ ${D('c++')} بتخلي الـ c قيمته ${D(k + 1)}، وبعدين الـ temp بيروح على ${D(nx)}.` }); continue; }
+      if (v[k] === key) {
+        if (isU) { v[k] = b; st({ t: k, hit: k, line: [W, IF, 7, 8], ret: 'true', en: `${key} == ${key}: temp->data = new_item, the node now holds <b>${b}</b>; return true.`, ar: `الـ node دي فيها ${D(key)} وهي الـ old_item، فبتتغيّر لـ <b>${D(b)}</b> والدالة بترجّع true:` + L(`temp-&gt;data = ${b}`) }); }
+        else st({ t: k, hit: k, line: [W, IF, 6], ret: 'true', en: `temp->data == item: ${v[k]} == ${key}, so search returns <b>true</b>.`, ar: `الشرط ده اتحقق، فالـ search بترجّع <b>true</b>:` + L(`temp-&gt;data == item → ${v[k]} == ${key}`) });
+        return S;
+      }
+      st({ t: k, line: [W, IF, ELSE], en: `${v[k]} != ${key} (${item}), so temp = temp->next: now ${nx}.`, ar: `القيمة ${D(v[k])} مش هي الـ ${item} اللي هي ${D(key)}، فبنعمل ${D(NX)} ويروح على ${D(nx)}.` });
+    }
+    if (isC) st({ t: 'N', c: n, line: [4, 6], ret: n, en: `temp is NULL: the loop ends and count() returns <b>${n}</b>.`, ar: `الـ temp بقى NULL فالـ loop خلص، والـ <bdi dir="ltr">count()</bdi> بترجّع <b>${D(n)}</b>.` });
+    else st({ t: 'N', line: [W, isU ? 11 : 9], ret: 'false', en: `temp is NULL: ${key} is not in the list, so ${fn} returns <b>false</b>${isU ? ' and nothing changes' : ''}.`, ar: `الـ temp بقى NULL، يعني ${D(key)} مش موجود في الـ list، فالـ ${fn} بترجّع <b>false</b>${isU ? ' ومفيش حاجة بتتغيّر' : ''}.` });
+    return S;
+  }
+  function L5Funcs({ ar }) {
+    const [cfg, setCfg] = useState({ fn: 'count', list: [4, 9, 2], a: 9, b: 7, key: 0 });
+    const [txt, setTxt] = useState('4 9 2'), [ta, setTa] = useState('9'), [tb, setTb] = useState('7'), [err, setErr] = useState('');
+    const S = funcSteps(cfg.fn, cfg.list, cfg.a, cfg.b), [i, ctl] = useWalk(S.length, 1700, cfg.key + cfg.fn), s = S[i];
+    const runFn = fn => { const l = parseList(txt), a = parseInt(ta, 10), b = parseInt(tb, 10);
+      if (!l || l.length > 6) { setErr('List: up to 6 whole numbers separated by spaces.'); return; }
+      if ((fn === 'search' || fn === 'update') && !Number.isInteger(a) || fn === 'update' && !Number.isInteger(b)) { setErr('Type whole numbers for the arguments.'); return; }
+      setErr(''); setCfg({ fn, list: l, a, b, key: cfg.key + 1 }); };
+    const ex = () => { setTxt('4 9 2'); setTa('9'); setTb('7'); setErr(''); setCfg({ fn: 'count', list: [4, 9, 2], a: 9, b: 7, key: cfg.key + 1 }); };
+    const call = cfg.fn === 'search' ? `search(${cfg.a})` : cfg.fn === 'update' ? `update(${cfg.a}, ${cfg.b})` : cfg.fn + '()';
+    const marks = s.t === null ? {} : { [s.t]: 'temp' }, cls = s.t === null || s.t === 'N' ? {} : { [s.t]: s.hit === s.t ? 'ok' : 'hot' };
+    const done = i === S.length - 1;
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <div className="dsv5-modes">${['search', 'count', 'get', 'update'].map(f => html`<button key=${f} className="fig-btn" aria-pressed=${String(cfg.fn === f)} onClick=${() => runFn(f)}>${f}</button>`)}</div>
+      <${Chain} vals=${s.vals} marks=${marks} cls=${cls} nul=${s.t === 'N' ? 'hot' : ''} />
+      <${Code} title=${call} lines=${FN5[cfg.fn]} cur=${s.line} />
+      <div className="dsv5-out">${s.c !== undefined ? `c = ${s.c}\n` : ''}${s.print ? `prints: ${s.print}\n` : ''}${done && s.ret !== undefined ? html`returns <span className=${s.ret === 'false' ? 'n' : 'y'}>${String(s.ret)}</span>` : 'running…'}</div>
+      <div className="dsv5-row"><label className="dsv5-lbl">list <input className="dsv5-in wide" value=${txt} onInput=${e => setTxt(e.target.value)} aria-label="list values" /></label>
+        <label className="dsv5-lbl">item / old <input className="dsv5-in" value=${ta} onInput=${e => setTa(e.target.value)} aria-label="item or old_item" /></label>
+        <label className="dsv5-lbl">new <input className="dsv5-in" value=${tb} onInput=${e => setTb(e.target.value)} aria-label="new_item" /></label></div>
+      <p className="dsv5-legend" style=${{ marginTop: '6px' }}>Try your own: edit the list or the values, then pick a function.</p>
+      ${err && html`<p className="dsv5-err">${err}</p>`}</div>
+      <${Cap} en=${s.en.replace(/->/g, '-&gt;')} ar=${s.ar} showAr=${ar} />
+      <${SBar} n=${S.length} i=${i} ctl=${ctl} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${ex}>Example from the notes</button></div></figure>`;
+  }
+  L5Funcs.gen = funcSteps;
+
+  /* ── [9] Lab 5: InsertB, InsertE, InsertAt traced ── */
+  const INSB = ['void InsertB(int item)', '{', '   node *temp = new node;', '   temp->data = item;', '   temp->next = head;', '   head = temp;', '}'];
+  const INSAT = ['void InsertAt(int item, int pos)', '{', '   int curr = 1;', '   node *temp = new node;', '   temp->data = item;', '   temp->next = NULL;', '   if (head == NULL) head = temp;', '   else if (pos == 1)', '   { temp->next = head;', '     head = temp; }', '   else', '   {', '      node *p = head;', '      while (curr < pos-1)', '      { curr++; p = p->next; }', '      temp->next = p->next;', '      p->next = temp;', '   }', '}'];
+  function insAtSteps(list, item, pos, mi) {
+    const S = [], st = o => S.push(Object.assign({ vals: list, fn: 'at', mi }, o));
+    st({ tmp: [item, 'NULL'], line: [2, 3, 4, 5], en: `InsertAt(${item}, ${pos}): curr = 1, and temp is a new node with data ${item} and next NULL.`, ar: `في الـ ${D('InsertAt(' + item + ', ' + pos + ')')} الـ curr بيبدأ بـ 1، والـ temp بقت node جديدة فيها ${D(item)} والـ next بتاعها NULL.` });
+    if (!list.length) { st({ vals: [item], nw: 0, line: [6], en: `head == NULL, so head = temp: the list is just ${item} (pos is not used).`, ar: `الـ head كان NULL، فالـ head بقى الـ temp والـ list فيها ${D(item)} بس (والـ pos مش بيتستخدم هنا).` }); return S; }
+    if (pos === 1) {
+      st({ tmp: [item, list[0]], line: [7, 8], en: `pos == 1: temp->next = head, so ${item} points to ${list[0]}.`, ar: `الـ pos بيساوي 1، فالـ temp بتشاور على ${D(list[0])} اللي هو الـ head، بالسطر ده:` + L('temp-&gt;next = head;') });
+      st({ vals: [item].concat(list), nw: 0, line: [9], en: `head = temp: the list is ${[item].concat(list).join(' ')}.`, ar: 'الـ head بقى بيشاور على الـ temp، والـ list بقت:' + L([item].concat(list).join(' ')) });
+      return S;
+    }
+    let curr = 1, p = 0;
+    st({ tmp: [item, 'NULL'], mk: { 0: 'p' }, line: [12], en: `pos is ${pos}, so the else part runs: p = head (${list[0]}).`, ar: `الـ pos قيمته ${D(pos)}، فبيدخل في الـ else، والـ p بيبدأ من الـ head اللي هو ${D(list[0])}.` });
+    while (curr < pos - 1) {
+      curr++; p++;
+      st({ tmp: [item, 'NULL'], mk: { [p]: 'p' }, line: [13, 14], en: `curr < pos-1 (${curr - 1} < ${pos - 1}): curr becomes ${curr}, p moves to ${list[p]}.`, ar: `الشرط ${D((curr - 1) + ' < ' + (pos - 1))} صح، فالـ curr بقى ${D(curr)} والـ p راح على ${D(list[p])}.` });
+    }
+    st({ tmp: [item, 'NULL'], mk: { [p]: 'p' }, line: [13], en: `curr < pos-1 is false (${curr} < ${pos - 1}): p stops at position ${pos - 1}, the node ${list[p]}.`, ar: `الشرط ${D(curr + ' < ' + (pos - 1))} غلط، فالـ p بيقف عند الـ position رقم ${D(pos - 1)}، اللي هو الـ node اللي فيها ${D(list[p])}.` });
+    const nx = p + 1 < list.length ? list[p + 1] : 'NULL';
+    st({ tmp: [item, nx], mk: { [p]: 'p' }, line: [15], en: `temp->next = p->next: ${item} now points to ${nx}.`, ar: `الـ temp بقت بتشاور على ${D(nx)} اللي بعد الـ p، بالسطر ده:` + L('temp-&gt;next = p-&gt;next;') });
+    const out = list.slice(0, p + 1).concat(item, list.slice(p + 1));
+    st({ vals: out, nw: p + 1, mk: { [p]: 'p' }, line: [16], en: `p->next = temp: ${list[p]} now points to ${item}. The list is ${out.join(' ')}.`, ar: `الـ p بقت بتشاور على الـ temp، والـ list بقت:` + L(out.join(' ')) });
+    return S;
+  }
+  function exampleSteps() {
+    const S = [{ vals: [], mi: 0, en: 'main: node *head = NULL; the list is empty.', ar: 'في الـ main الـ head بيبدأ بـ NULL، يعني الـ list فاضية.' },
+      { vals: [10], nw: 0, mi: 1, fn: 'b', line: [2, 3, 4, 5], en: 'InsertB(10): new node 10, temp->next = head (NULL), head = temp. List: 10.', ar: 'الـ <bdi dir="ltr">InsertB(10)</bdi> بتعمل node فيها 10 تشاور على الـ head القديم (NULL)، والـ head يشاور عليها. الـ list بقت 10.' },
+      { vals: [10, 30], nw: 1, mi: 2, en: 'InsertE(30): 30 is added at the end. List: 10 30.', ar: 'الـ <bdi dir="ltr">InsertE(30)</bdi> بتضيف 30 في الآخر، فالـ list بقت:' + L('10 30') },
+      { vals: [5, 10, 30], nw: 0, mi: 3, fn: 'b', line: [2, 3, 4, 5], en: 'InsertB(5): 5 goes in front of 10. List: 5 10 30.', ar: 'الـ <bdi dir="ltr">InsertB(5)</bdi> بتحط 5 قبل الـ 10، فالـ list بقت:' + L('5 10 30') }];
+    return S.concat(insAtSteps([5, 10, 30], 20, 2, 4));
+  }
+  function L5InsertAt({ ar }) {
+    const [run, setRun] = useState({ S: exampleSteps(), key: 0, ex: true }), [item, setItem] = useState('40'), [pos, setPos] = useState(2), [err, setErr] = useState('');
+    const S = run.S, [i, ctl] = useWalk(S.length, 2200, run.key), s = S[i];
+    const now = S[S.length - 1].vals, n = now.length, P = Math.min(pos, n + 1);
+    const go = () => { const v = parseInt(item, 10); if (!Number.isInteger(v) || Math.abs(v) > 999) { setErr('Type a whole number for item.'); return; } if (n >= 7) { setErr('The picture holds 7 nodes: empty the list first.'); return; }
+      setErr(''); setRun({ S: insAtSteps(now, v, P, 0), key: run.key + 1, ex: false, call: `InsertAt(${v}, ${P});` }); };
+    const empty = () => { setErr(''); setRun({ S: [{ vals: [], mi: 0, en: 'head = NULL: the list is empty. InsertAt now takes the head == NULL branch.', ar: 'الـ head بقى NULL والـ list فاضية، فالـ InsertAt هتدخل في أول if.' }], key: run.key + 1, ex: false, call: 'node *head = NULL;' }); setPos(1); };
+    const ex = () => { setErr(''); setRun({ S: exampleSteps(), key: run.key + 1, ex: true }); };
+    const main = run.ex ? ['node *head = NULL;', 'InsertB(10);', 'InsertE(30);', 'InsertB(5);', 'InsertAt(20,2);'] : [run.call];
+    const mk = s.mk || {}, cls = s.nw != null ? { [s.nw]: 'new' } : {};
+    return html`<figure className="fig dsv5"><div className="fig-stage">
+      <${Code} title="main" lines=${main} cur=${[s.mi]} />
+      <${Chain} vals=${s.vals} marks=${mk} cls=${cls} />
+      <div className="dsv5-tmp">${s.tmp ? html`<span>temp →</span><span className="dsv5-nd"><span className="dsv5-dv new">${s.tmp[0]}</span><span className="dsv5-pv"></span></span><span>→</span><span className="t">${s.tmp[1]}</span>` : ''}</div>
+      ${s.fn && html`<${Code} title=${s.fn === 'b' ? 'InsertB' : 'InsertAt (positions start at 1)'} lines=${s.fn === 'b' ? INSB : INSAT} cur=${s.line} />`}
+      <div className="dsv5-row"><label className="dsv5-lbl">item <input className="dsv5-in" value=${item} onInput=${e => setItem(e.target.value)} aria-label="item" /></label>
+        <span className="dsv5-step">pos<button className="fig-btn" onClick=${() => setPos(Math.max(1, P - 1))} disabled=${P <= 1} aria-label="pos minus">−</button><b>${P}</b><button className="fig-btn" onClick=${() => setPos(Math.min(n + 1, P + 1))} disabled=${P >= n + 1} aria-label="pos plus">+</button></span>
+        <button className="fig-btn" onClick=${go}>InsertAt</button><button className="fig-btn" onClick=${empty}>empty list</button></div>
+      <p className="dsv5-legend" style=${{ marginTop: '6px' }}>Try your own: InsertAt on the list as it ends (pos 1 to ${n + 1}).</p>
+      ${err && html`<p className="dsv5-err">${err}</p>`}</div>
+      <${Cap} en=${s.en.replace(/->/g, '-&gt;')} ar=${s.ar} showAr=${ar} />
+      <${SBar} n=${S.length} i=${i} ctl=${ctl} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${ex}>Example from the notes</button></div></figure>`;
+  }
+  L5InsertAt.gen = [insAtSteps, exampleSteps];
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'ds-l5-node-chain': L5NodeChain,
+    'ds-l5-scatter': L5Scatter,
+    'ds-l5-types': L5Types,
+    'ds-l5-access': L5Access,
+    'ds-l5-classes': L5Classes,
+    'ds-l5-front-insert': L5FrontInsert,
+    'ds-l5-order-insert': L5OrderInsert,
+    'ds-l5-delete-pics': L5DeletePics,
+    'ds-l5-funcs': L5Funcs,
+    'ds-l5-insert-at': L5InsertAt
+  });
+})();
+/* ── part L8 ── */
+// Data Structures visuals, Lecture 8 (Doubly linked lists): the slide 3 list travelled forward and backward (singly vs doubly), the slide 4 node fields, the cost of the extra prev links, the Node/Linkedlist classes of slides 5–7, insertsorted on the notes' example, deletefrombeginning / deletefromend (slides 13–14), removeAll, and the Lab 8 head/tail list (insertLast, removeLast, displayBackward, the lab main). Every label and number comes from the site's notes and the slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dsv8 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dsv8 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.dsv8 *{ font-variant-ligatures:none; font-feature-settings:"liga" 0, "calt" 0; }
+.dsv8-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dsv8-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dsv8-mono .fig-btn{ font:.8rem var(--mono); padding:3px 9px; min-height:30px; }
+.dsv8-row{ display:flex; flex-wrap:wrap; gap:6px 10px; justify-content:center; align-items:center; margin:6px 0 10px; }
+.dsv8-code{ margin:0 auto 10px; max-width:440px; padding:8px 10px; border:1px solid var(--line); border-radius:8px; background:var(--paper); font:.78rem/1.45 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv8-code span{ display:block; border-radius:3px; padding:0 3px; transition:background .3s; }
+.dsv8-code span.cur{ background:color-mix(in srgb, var(--fig-k) 24%, transparent); }
+.dsv8-code span.bad{ background:color-mix(in srgb, var(--pen) 22%, transparent); }
+.dsv8-out{ max-width:440px; margin:10px auto 0; padding:6px 10px; border:1px solid var(--line); border-left:4px solid var(--fig-k); border-radius:6px; background:var(--paper); font:600 .82rem/1.5 var(--mono); color:var(--ink); white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; direction:ltr; }
+.dsv8-out small{ font:600 .75rem var(--body); color:var(--graphite); margin-right:6px; }
+.dsv8-out.bad{ border-left-color:var(--pen); color:var(--pen); }
+.dsv8-in{ resize:none; overflow-wrap:anywhere; font:.85rem var(--mono); padding:5px 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); min-height:32px; width:100%; max-width:420px; box-sizing:border-box; }
+.dsv8-lbl{ display:grid; gap:4px; width:100%; max-width:420px; font-size:.8rem; color:var(--graphite); }
+.dsv8-note{ font-size:.78rem; color:var(--graphite); text-align:center; margin:8px 0 0; line-height:1.4; }
+.dsv8-cnt{ font-size:.85rem; color:var(--graphite); }
+.dsv8-list{ display:flex; flex-wrap:wrap; justify-content:center; align-items:flex-end; row-gap:8px; }
+.dsv8-grp{ display:flex; align-items:flex-end; }
+.dsv8-nd{ display:flex; flex-direction:column; align-items:center; transition:opacity .35s; }
+.dsv8-tg{ min-height:20px; display:flex; flex-wrap:wrap; gap:2px; justify-content:center; margin-bottom:2px; }
+.dsv8-tg span{ font:600 .75rem var(--mono); color:#fff; background:var(--fig-s); border-radius:4px; padding:0 4px; line-height:18px; }
+.dsv8-box{ display:flex; border:2px solid var(--ink); border-radius:5px; overflow:hidden; background:var(--paper); transition:border-color .35s, box-shadow .35s; }
+.dsv8-box > span{ min-width:28px; padding:6px 4px; text-align:center; font:600 .75rem/1.2 var(--mono); color:var(--graphite); transition:background .35s, color .35s; }
+.dsv8-box > span + span{ border-left:1.5px solid var(--ink); }
+.dsv8-box > span.dv{ min-width:30px; font-size:.9rem; color:var(--ink); background:var(--paper-2); }
+.dsv8-box > span.hot{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); color:var(--ink); }
+.dsv8-box > span.lab{ min-width:40px; font:600 .75rem var(--body); color:var(--ink); }
+.dsv8-nd.on .dsv8-box{ border-color:var(--fig-k); box-shadow:0 0 0 2px color-mix(in srgb, var(--fig-k) 45%, transparent); }
+.dsv8-nd.gone{ opacity:.45; } .dsv8-nd.gone .dsv8-box{ border-style:dashed; }
+.dsv8-nd.gone .dsv8-tg::after{ content:"deleted"; font:600 .75rem var(--body); color:var(--pen); }
+.dsv8-cn{ display:flex; flex-direction:column; align-items:center; width:20px; margin-bottom:4px; font:700 .9rem/1 var(--mono); color:var(--fig-k); }
+.dsv8-cn i{ font-style:normal; transition:opacity .3s; } .dsv8-cn i.off{ opacity:.12; }
+.dsv8-cn.sg{ margin-bottom:9px; }
+.dsv8-dots{ align-self:center; padding:0 4px; color:var(--graphite); font:700 1rem var(--mono); margin-top:18px; }
+.dsv8-nulls{ text-align:center; font:600 .78rem var(--mono); color:var(--graphite); margin-top:6px; min-height:1.2em; }
+.dsv8-leg{ text-align:center; font-size:.75rem; color:var(--graphite); margin:0 0 6px; line-height:1.35; }
+.dsv8-emp{ text-align:center; font:600 .85rem var(--mono); color:var(--graphite); padding:12px 0; }
+.dsv8-big{ display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); gap:6px; align-items:center; max-width:360px; margin:0 auto; }
+.dsv8-big .side{ font-size:.8rem; color:var(--graphite); line-height:1.25; text-align:center; transition:color .3s; }
+.dsv8-big .side.on{ color:var(--fig-k); font-weight:700; }
+.dsv8-big .side b{ display:block; font-size:1.1rem; color:var(--fig-k); }
+.dsv8-big .dsv8-box > span{ min-width:44px; padding:10px 6px; font-size:.82rem; }
+.dsv8-big .dsv8-box > span.dv{ min-width:54px; font-size:.95rem; }
+.dsv8-slots{ display:flex; flex-wrap:wrap; gap:8px 14px; justify-content:center; margin:0 0 10px; }
+.dsv8-slot{ display:flex; align-items:center; gap:6px; font:700 .85rem var(--mono); color:var(--ink); }
+.dsv8-slot span{ min-width:54px; min-height:30px; display:grid; place-items:center; border:2px solid var(--ink); border-radius:4px; background:var(--paper); padding:0 6px; font-size:.8rem; transition:background .35s, border-color .35s; }
+.dsv8-slot span.hot{ border-color:var(--fig-k); background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); }
+.dsv8-tally{ text-align:center; font:700 .88rem var(--body); color:var(--fig-k); margin-top:8px; }
+.dsv8-pop{ animation:dsv8-in .45s ease both; }
+@keyframes dsv8-in{ from{ opacity:0; transform:translateY(6px); } to{ opacity:1; transform:none; } }
+@media (prefers-reduced-motion: reduce){ .dsv8-pop{ animation:none; } .dsv8-code span, .dsv8-box, .dsv8-box > span, .dsv8-nd, .dsv8-cn i, .dsv8-slot span{ transition:none; } }`;
+  if (!document.getElementById('dsv8-css')) { const s = document.createElement('style'); s.id = 'dsv8-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* helpers */
+  const L = s => `<span class="ltr">${s}</span>`;
+  const D = s => `<bdi dir="ltr">${String(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const esc = s => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const LC = s => L(esc(s));
+  const DC = s => D(esc(s));
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => x + 1), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  const SBar = ({ n, i, ctl }) => html`<div className="fig-bar">
+    ${n <= 14 ? html`<div className="fig-dots" aria-hidden="true">${Array.from({ length: n }, (_, j) => html`<i key=${j} className=${j <= i ? 'on' : ''}></i>`)}</div>` : html`<span className="dsv8-cnt">Step ${i + 1} / ${n}</span>`}
+    <span className="grow"></span>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i >= n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+  const Modes = ({ list, mode, set, mono }) => html`<div className=${'dsv8-modes' + (mono ? ' dsv8-mono' : '')} role="group">${list.map(([k, l]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => set(k)}>${l}</button>`)}</div>`;
+  const Code = ({ lines, cur, bad }) => html`<pre className="dsv8-code">${lines.map((l, k) => html`<span key=${k} className=${(bad != null && bad === k) ? 'bad' : (Array.isArray(cur) ? cur.includes(k) : k === cur) ? 'cur' : ''}>${l || ' '}</span>`)}</pre>`;
+  const Out = ({ rows, bad }) => html`<div className=${'dsv8-out' + (bad ? ' bad' : '')}>${rows.map((r, k) => html`<div key=${k}>${r[0] ? html`<small>${r[0]}</small>` : null}${r[1]}</div>`)}</div>`;
+
+  /* the list model: nodes in display order, each { id, v, p, n } (p / n = id of the node pointed to, or null);
+     a p / n that is not an id of a shown node is a label of a node outside the window (e.g. '10'). */
+  let UID = 0;
+  const mkList = vals => { const ids = vals.map(() => 'k' + (UID++)); return { nodes: vals.map((v, k) => ({ id: ids[k], v, p: k ? ids[k - 1] : null, n: k < vals.length - 1 ? ids[k + 1] : null })), tags: { head: ids.length ? ids[0] : null } }; };
+  const clone = st => JSON.parse(JSON.stringify(st));
+  const get = (st, id) => st.nodes.find(x => x.id === id);
+  const lab = (st, ref) => ref == null ? 'NULL' : (get(st, ref) || { v: ref }).v;
+  const fwd = st => { const r = []; let id = st.tags.head, g = 0; while (id != null && g++ < 40) { const x = get(st, id); if (!x) break; r.push(x.v); id = x.n; } return r; };
+  const lastId = st => { let id = st.tags.head, g = 0; while (id != null && g++ < 40) { const x = get(st, id); if (x.n == null) return id; id = x.n; } return null; };
+  const bwd = (st, from) => { const r = []; let id = from === undefined ? lastId(st) : from, g = 0; while (id != null && g++ < 40) { const x = get(st, id); if (!x) break; r.push(x.v); id = x.p; } return r; };
+  const order = st => { const r = []; let id = st.tags.head, g = 0; while (id != null && g++ < 40) { const x = get(st, id); r.push(x); id = x.n; } st.nodes = r; return st; };
+  const diffHot = (a, b) => { const H = []; b.nodes.forEach(x => { const o = get(a, x.id); if (!o) H.push(x.id + '.p', x.id + '.v', x.id + '.n'); else { if (o.p !== x.p) H.push(x.id + '.p'); if (o.n !== x.n) H.push(x.id + '.n'); } }); return H; };
+
+  // draws the list: [prev | data | next] boxes, ⇄ between neighbours (→ when a.next is b, ← when b.prev is a), pointer names on top
+  function DList({ st, hot = [], on = [], single, dots, gone = [] }) {
+    const N = st.nodes, T = st.tags || {};
+    const names = id => Object.keys(T).filter(k => T[k] === id);
+    const nulls = Object.keys(T).filter(k => T[k] == null);
+    if (!N.length) return html`<div><div className="dsv8-emp">${nulls.map(k => k + ' = NULL').join('   ') || 'empty list'}</div></div>`;
+    const cell = (x, f) => html`<span className=${hot.includes(x.id + '.' + f) ? 'hot' : ''}>${lab(st, x[f])}</span>`;
+    return html`<div>
+      <div className="dsv8-list">
+        ${dots && html`<span className="dsv8-dots">…</span>`}
+        ${N.map((x, k) => { const a = N[k - 1];
+          return html`<div key=${x.id} className="dsv8-grp">
+            ${k > 0 && html`<span className=${'dsv8-cn' + (single ? ' sg' : '')} aria-hidden="true"><i className=${a.n === x.id ? '' : 'off'}>→</i>${!single && html`<i className=${x.p === a.id ? '' : 'off'}>←</i>`}</span>`}
+            <div className=${'dsv8-nd' + (on.includes(x.id) ? ' on' : '') + (gone.includes(x.id) ? ' gone' : '')}>
+              <div className="dsv8-tg">${names(x.id).map(k2 => html`<span key=${k2}>${k2}</span>`)}</div>
+              <div className="dsv8-box">${!single && cell(x, 'p')}<span className=${'dv' + (hot.includes(x.id + '.v') ? ' hot' : '')}>${x.v}</span>${cell(x, 'n')}</div>
+            </div></div>`; })}
+        ${dots && html`<span className="dsv8-dots">…</span>`}
+      </div>
+      <div className="dsv8-nulls">${nulls.map(k => k + ' = NULL').join('   ')}</div></div>`;
+  }
+  const Legend = ({ single }) => html`<p className="dsv8-leg">${single ? 'Each node: data | next.' : 'Each node: prev | data | next.'} A pointer cell shows the node it points to.</p>`;
+
+  /* ── [0.0]–[0.1] slide 3: the list 1 2 3, travelled forward and backward; singly vs doubly ── */
+  function travelSteps(kind, dir) {
+    const base = mkList([1, 2, 3]), ids = base.nodes.map(x => x.id), S = [];
+    const at = (k, o) => { const st = clone(base); st.tags = { head: ids[0], temp: k == null ? null : ids[k] }; S.push(Object.assign({ st }, o)); };
+    if (dir === 'fw') {
+      at(0, { on: [ids[0]], out: '1', en: 'Forward: start at <b>head</b>, node 1. Print its data and follow its <b>next</b> pointer.', ar: 'لقدام: نبدأ من الـ <b>head</b> يعني أول node، نطبع الـ data بتاعتها ونمشي ورا الـ <b>next</b>.' });
+      at(1, { on: [ids[1]], hot: [ids[0] + '.n'], out: '1 2', en: '<code>temp = temp->next</code>: node 2. Print it.', ar: 'الـ temp بيمشي للـ node التانية ونطبعها:' + LC('temp = temp->next;') });
+      at(2, { on: [ids[2]], hot: [ids[1] + '.n'], out: '1 2 3', en: 'Next again: node 3, the last one. Print it.', ar: 'ونمشي تاني ورا الـ next لحد التالتة، ودي آخر node، ونطبعها.' });
+      at(null, { hot: [ids[2] + '.n'], out: '1 2 3', en: 'The last node\'s next is <b>NULL</b>, so temp becomes NULL and the walk stops. ' + (kind === 'sg' ? 'A singly list can do this: it only needs next.' : 'Forward works the same in both lists.'), ar: 'الـ next بتاع آخر node قيمته <b>NULL</b>، فالـ temp بيبقى NULL والمشي بيقف. ' + (kind === 'sg' ? 'والـ singly list تقدر تعمل كده لأنها محتاجة الـ next بس.' : 'والمشي لقدام واحد في النوعين.') });
+    } else if (kind === 'sg') {
+      at(2, { on: [ids[2]], out: '3', en: 'Backward in a <b>singly</b> list: we are at the last node (3), but a node has <b>only data and next</b>. There is no pointer back to node 2.', ar: 'لورا في الـ <b>singly</b> list: إحنا عند آخر node، بس الـ node فيها <b>data وnext بس</b>، ومفيش pointer يرجّعنا للـ node اللي قبلها.' });
+      at(2, { on: [ids[2]], out: '3   (stuck)', bad: 1, en: 'So we can travel in <b>only one direction</b>, forward: that is why it is called singly linked. Going back means starting again from head.', ar: 'عشان كده بنمشي في <b>اتجاه واحد بس</b> وهو لقدام، وده سبب اسم الـ singly. ولو عايز ترجع لازم تبدأ من الـ head من الأول.' });
+    } else {
+      at(2, { on: [ids[2]], out: '3', en: 'Backward: start at the <b>last node</b>, 3. Print it and follow its <b>prev</b> pointer.', ar: 'لورا: نبدأ من <b>آخر node</b>، نطبعها ونمشي ورا الـ <b>prev</b> بتاعها.' });
+      at(1, { on: [ids[1]], hot: [ids[2] + '.p'], out: '3 2', en: '<code>temp = temp->prev</code>: node 2. Print it.', ar: 'الـ temp بيرجع للـ node اللي قبلها ونطبعها:' + LC('temp = temp->prev;') });
+      at(0, { on: [ids[0]], hot: [ids[1] + '.p'], out: '3 2 1', en: 'prev again: node 1, the first one. Print it.', ar: 'ونرجع تاني ورا الـ prev لحد أول node ونطبعها.' });
+      at(null, { hot: [ids[0] + '.p'], out: '3 2 1', en: 'The first node\'s prev is <b>NULL</b>: the walk stops. With prev pointers we travel in <b>both directions</b>, forward and backward.', ar: 'الـ prev بتاع أول node قيمته <b>NULL</b>، فالمشي بيقف. وبالـ prev pointers بنقدر نمشي في <b>الاتجاهين</b>، لقدام ولورا.' });
+    }
+    return S;
+  }
+  function L8Travel({ ar }) {
+    const [kind, setKind] = useState('db'), [dir, setDir] = useState('fw');
+    const S = travelSteps(kind, dir), [i, ctl] = useWalk(S.length, 1700, kind + dir), s = S[i];
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <${Modes} list=${[['sg', 'Singly linked list'], ['db', 'Doubly linked list']]} mode=${kind} set=${setKind} />
+      <${Modes} list=${[['fw', '→ Forward'], ['bw', '← Backward']]} mode=${dir} set=${setDir} />
+      <${Legend} single=${kind === 'sg'} />
+      <${DList} st=${s.st} single=${kind === 'sg'} hot=${s.hot || []} on=${s.on || []} />
+      <${Out} rows=${[['Printed', s.out]]} bad=${s.bad} /></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.2] slide 4: the node, Data / prev / next; NULL at both ends ── */
+  const ANAT = [
+    { f: '', en: 'Slide 4: a doubly linked list is made of <b>connected nodes</b>, and each node contains three things.', ar: 'في slide 4: الـ doubly linked list مكوّنة من <b>nodes متوصلة ببعض</b>، وكل node فيها تلات حاجات.' },
+    { f: 'v', en: '<b>Data</b>: the value that the node contains.', ar: 'الـ <b>Data</b> هي القيمة اللي جوه الـ node.' },
+    { f: 'p', en: '<b>prev</b>: a pointer to the <b>previous node</b>.', ar: 'الـ <b>prev</b> هو pointer للـ <b>node اللي قبلها</b>.' },
+    { f: 'n', en: '<b>next</b>: a pointer to the <b>next node</b>.', ar: 'الـ <b>next</b> هو pointer للـ <b>node اللي بعدها</b>.' },
+    { f: 'ends', en: 'In a list (slide 3: 1, 2, 3) the <b>first node\'s prev</b> and the <b>last node\'s next</b> are <b>NULL</b>: nothing before the first, nothing after the last.', ar: 'وفي الـ list (زي slide 3) الـ <b>prev بتاع أول node</b> والـ <b>next بتاع آخر node</b> قيمتهم <b>NULL</b>، لأن مفيش حاجة قبل الأولى ولا بعد الأخيرة.' }
+  ];
+  function L8NodeAnatomy({ ar }) {
+    const [i, ctl] = useWalk(ANAT.length, 2200, 0), A = ANAT[i];
+    const st = mkList([1, 2, 3]); st.tags = {};
+    const c = f => A.f === f ? 'hot' : '';
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      ${A.f !== 'ends' ? html`<div className="dsv8-big">
+          <div className=${'side' + (A.f === 'p' ? ' on' : '')}><b>←</b>Previous node</div>
+          <div className="dsv8-box"><span className=${c('p')}>prev</span><span className=${'dv ' + c('v')}>Data</span><span className=${c('n')}>next</span></div>
+          <div className=${'side' + (A.f === 'n' ? ' on' : '')}><b>→</b>Next node</div></div>`
+        : html`<div className="dsv8-pop"><${DList} st=${st} hot=${[st.nodes[0].id + '.p', st.nodes[2].id + '.n']} /></div>`}
+      <pre className="dsv8-code" style=${{ maxWidth: '260px', marginTop: '12px' }}><span className=${c('v')}>int data;</span><span className=${c('n')}>Node *next;</span><span className=${c('p')}>Node *prev;</span></pre></div>
+      <${Cap} en=${A.en} ar=${A.ar} showAr=${ar} /><${SBar} n=${ANAT.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.3] the cost: linking 25 in between 20 and 30 (the notes' insertsorted example), singly vs doubly ── */
+  function costSteps(kind) {
+    const st = { nodes: [{ id: 't', v: 20, p: '10', n: 'b' }, { id: 'w', v: 25, p: null, n: null }, { id: 'b', v: 30, p: 't', n: '40' }], tags: { temp: 't', newnode: 'w' } };
+    const S = [], push = (o, f) => { if (f) f(st); S.push(Object.assign({ st: clone(st) }, o)); };
+    const first = { cur: -1, k: 0, hot: ['w.v'], en: 'From the notes\' example: 25 goes between <b>20</b> (temp) and <b>30</b>. newnode = new Node() with data 25, not linked yet.', ar: 'من مثال الـ notes: الـ 25 هتتحط بين الـ 20 (الـ temp) والـ 30. الـ newnode اتعملت بالـ new وفيها 25 ولسه مش متوصلة.' };
+    if (kind === 'sg') {
+      st.nodes.forEach(x => { delete x.p; }); push(first);
+      push({ cur: 0, k: 1, hot: ['w.n'], en: '<code>newnode->next = temp->next;</code> 25 now points on to 30.', ar: 'الـ 25 بقت بتشاور على الـ 30:' + LC('newnode->next = temp->next;') }, s => { get(s, 'w').n = 'b'; });
+      push({ cur: 1, k: 2, hot: ['t.n'], en: '<code>temp->next = newnode;</code> 20 now points to 25. Done: a singly list changes <b>2 links</b>.', ar: 'الـ 20 بقت بتشاور على الـ 25، وكده خلصنا. الـ singly list بتغيّر <b>2 links</b> بس:' + LC('temp->next = newnode;') }, s => { get(s, 't').n = 'w'; });
+      return S;
+    }
+    push(first);
+    push({ cur: 0, k: 1, hot: ['w.n'], en: '<code>newnode->next = temp->next;</code> 25\'s next points to 30.', ar: 'الـ next بتاع الـ 25 بقى بيشاور على الـ 30:' + LC('newnode->next = temp->next;') }, s => { get(s, 'w').n = 'b'; });
+    push({ cur: 1, k: 2, hot: ['w.p'], en: '<code>newnode->prev = temp;</code> 25\'s prev points back to 20: a link the singly list does not have.', ar: 'الـ prev بتاع الـ 25 بقى بيشاور على الـ 20، وده link مش موجود في الـ singly list:' + LC('newnode->prev = temp;') }, s => { get(s, 'w').p = 't'; });
+    push({ cur: 2, k: 3, hot: ['b.p'], en: '<code>temp->next->prev = newnode;</code> 30\'s prev, which pointed to 20, now points back to 25.', ar: 'الـ prev بتاع الـ 30 كان بيشاور على الـ 20، دلوقتي بقى بيشاور على الـ 25:' + LC('temp->next->prev = newnode;') }, s => { get(s, 'b').p = 'w'; });
+    push({ cur: 3, k: 4, hot: ['t.n'], en: '<code>temp->next = newnode;</code> 20 now points to 25. A doubly list changes <b>4 links</b>, both next and prev; and every node pays the <b>extra memory</b> of its prev pointer.', ar: 'الـ 20 بقت بتشاور على الـ 25. الـ doubly list بتغيّر <b>4 links</b>، الـ next والـ prev، وكمان كل node بتدفع <b>memory زيادة</b> للـ prev pointer بتاعها:' + LC('temp->next = newnode;') }, s => { get(s, 't').n = 'w'; });
+    return S;
+  }
+  function L8LinkCost({ ar }) {
+    const [kind, setKind] = useState('db');
+    const S = costSteps(kind), [i, ctl] = useWalk(S.length, 2300, kind), s = S[i];
+    const lines = kind === 'sg' ? ['newnode->next = temp->next;', 'temp->next = newnode;'] : ['newnode->next = temp->next;', 'newnode->prev = temp;', 'temp->next->prev = newnode;', 'temp->next = newnode;'];
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <${Modes} list=${[['sg', 'Singly: insert after temp'], ['db', 'Doubly: insert after temp']]} mode=${kind} set=${setKind} />
+      <${Code} lines=${lines} cur=${s.cur} />
+      <${Legend} single=${kind === 'sg'} />
+      <${DList} st=${s.st} single=${kind === 'sg'} hot=${s.hot} dots=${true} />
+      <div className="dsv8-tally">Links changed: ${s.k} of ${lines.length}</div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1] slides 5–7: Node(), Linkedlist(), isEmpty, isFull ── */
+  const CLS = ['Linkedlist() { head = NULL; }', 'bool isEmpty()', '{ if (head == NULL) return true;', '  else return false; }', 'bool isFull()', '{ Node *newnode = new Node();', '  if (newnode == NULL) return true;', '  else return false; }', 'Node() { data = 0;', '         next = NULL;', '         prev = NULL; }'];
+  const CLS_S = [
+    { cur: 0, head: 1, en: '<code>Linkedlist L;</code> runs the constructor: <code>head = NULL</code>. The list starts with no nodes.', ar: 'لما نعمل object من الـ Linkedlist الـ constructor بيشتغل ويخلي الـ head قيمته NULL، فالـ list بتبدأ من غير nodes:' + LC('Linkedlist() { head = NULL; }') },
+    { cur: [1, 2], head: 1, ret: 'isEmpty() → true', en: '<code>isEmpty()</code>: head == NULL, so it returns <b>true</b>.', ar: 'الـ ' + DC('isEmpty()') + ' بتلاقي الـ head قيمته NULL فبترجّع <b>true</b>.' },
+    { cur: [4, 5, 8, 9, 10], node: 1, en: '<code>isFull()</code> tries <code>new Node()</code>. The Node constructor sets <b>data = 0</b>, <b>next = NULL</b>, <b>prev = NULL</b>.', ar: 'الـ ' + DC('isFull()') + ' بتجرّب تعمل node جديدة بالـ new، والـ constructor بتاع الـ Node بيحط القيم دي:' + L('data = 0, next = NULL, prev = NULL') },
+    { cur: [6, 7], node: 1, ret: 'isFull() → false', en: 'newnode is not NULL (memory was available), so <code>isFull()</code> returns <b>false</b>. It would be true only if new failed.', ar: 'الـ newnode مش NULL لأن الـ memory كانت متاحة، فالـ ' + DC('isFull()') + ' بترجّع <b>false</b>. وكانت هترجّع true بس لو الـ new فشلت.' }
+  ];
+  function L8NodeClass({ ar }) {
+    const [i, ctl] = useWalk(CLS_S.length, 2400, 0), s = CLS_S[i];
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <${Code} lines=${CLS} cur=${s.cur} />
+      <div className="dsv8-slots">
+        <div className="dsv8-slot">head<span className=${i === 0 ? 'hot' : ''}>NULL</span></div>
+        ${s.node && html`<div className="dsv8-slot dsv8-pop">newnode<span>→</span></div>`}</div>
+      ${s.node && html`<div className="dsv8-pop"><p className="dsv8-leg">prev | data | next</p><div className="dsv8-list"><div className="dsv8-nd"><div className="dsv8-box"><span className=${i === 2 ? 'hot' : ''}>NULL</span><span className=${'dv' + (i === 2 ? ' hot' : '')}>0</span><span className=${i === 2 ? 'hot' : ''}>NULL</span></div></div></div></div>`}
+      ${s.ret && html`<${Out} rows=${[['returns', s.ret]]} />`}</div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${CLS_S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3] insertsorted (safe version) on the notes' example 30, 10, 20, 5, 40, 25 ── */
+  const SORT_CODE = ['if (isEmpty())', '   head = newnode;', 'else if (item < head->data)', '{  newnode->next = head;', '   head->prev = newnode;', '   head = newnode;  }', 'else', '{  Node *temp = head;', '   while (temp->next != NULL &&', '      temp->next->data < item)', '      temp = temp->next;', '   newnode->next = temp->next;', '   newnode->prev = temp;', '   if (temp->next != NULL)', '      temp->next->prev = newnode;', '   temp->next = newnode;  }'];
+  const SORT_EX = '30, 10, 20, 5, 40, 25';
+  const parseNums = (s, max) => (String(s).match(/-?\d+/g) || []).slice(0, max).map(x => Math.max(-999, Math.min(9999, parseInt(x, 10))));
+  function sortedSteps(vals) {
+    let st = { nodes: [], tags: { head: null } }; const S = [];
+    const outs = s => [['Forward', fwd(s).join(' ') || '(empty)'], ['Backward', bwd(s).join(' ') || '(empty)']];
+    S.push({ st: clone(st), cur: -1, out: outs(st), en: `Start: an empty list (head = NULL). Next inserts ${vals.join(', ')} one by one, each in its order.`, ar: 'البداية: list فاضية والـ head قيمته NULL. كل Next بيضيف رقم من دول في مكانه بالترتيب:' + L(vals.join(', ')) });
+    vals.forEach(x => {
+      const before = clone(st), id = 'k' + (UID++), nn = { id, v: x, p: null, n: null }, h = get(st, st.tags.head);
+      let o;
+      if (!h) {
+        st.nodes.push(nn); st.tags.head = id;
+        o = { cur: [0, 1], en: `insertsorted(${x}): the list is empty, so <code>head = newnode</code>.`, ar: 'نضيف ' + D(x) + '. الـ list فاضية، فالـ head بيشاور على الـ newnode على طول:' + LC('head = newnode;') };
+      } else if (x < h.v) {
+        nn.n = h.id; h.p = id; st.tags.head = id; st.nodes.unshift(nn);
+        o = { cur: [2, 3, 4, 5], slide: 1, en: `insertsorted(${x}): ${x} &lt; ${h.v} (head's data), so it becomes the <b>new first node</b>: its next is the old head, the old head's prev points back to it, head moves to it. <b>The slide's version fails here</b> (it never changes head).`, ar: 'نضيف ' + D(x) + '، وهو أصغر من الـ data بتاعة الـ head اللي هي ' + D(h.v) + '، فبيبقى <b>أول node</b>:' + LC('newnode->next = head; head->prev = newnode; head = newnode;') + '<b>ونسخة الـ slide بتبوظ هنا</b> لأنها عمرها ما بتغيّر الـ head.' };
+      } else {
+        let t = h; const path = [h.v];
+        while (t.n != null && get(st, t.n).v < x) { t = get(st, t.n); path.push(t.v); }
+        const nx = t.n == null ? null : get(st, t.n);
+        nn.n = t.n; nn.p = t.id; if (nx) nx.p = id; t.n = id; st.nodes.splice(st.nodes.indexOf(t) + 1, 0, nn);
+        const walk = path.length > 1 ? 'الـ temp بيمشي من الـ head:' + L(path.join(' → ')) + 'ويقف عند ' + D(t.v) : 'الـ temp بيفضل عند الـ head اللي هو ' + D(t.v);
+        const walkEn = path.length > 1 ? `temp walks ${path.join(' → ')} and stops at ${t.v}` : `temp stays at head (${t.v})`;
+        o = nx
+          ? { cur: [7, 8, 9, 10, 11, 12, 13, 14, 15], temp: t.id, en: `insertsorted(${x}): ${walkEn}, because the next node (${nx.v}) is not smaller than ${x}. ${x} goes between ${t.v} and ${nx.v}: <b>4 links</b> change.`, ar: 'نضيف ' + D(x) + '. ' + walk + ' لأن الـ node اللي بعده قيمتها ' + D(nx.v) + ' ومش أصغر من ' + D(x) + '. فالـ ' + D(x) + ' بتدخل بين ' + D(t.v) + ' و ' + D(nx.v) + ' وبيتغيّر <b>4 links</b>.' }
+          : { cur: [7, 8, 9, 10, 11, 12, 13, 15], temp: t.id, slide: 1, en: `insertsorted(${x}): ${walkEn}, the last node. ${x} becomes the <b>last node</b>: its next stays NULL, so the <code>if</code> skips <code>temp->next->prev</code>. <b>The slide's version fails here</b> (newnode->next->prev on NULL).`, ar: 'نضيف ' + D(x) + '. ' + walk + ' وده آخر node، فالـ ' + D(x) + ' بتبقى <b>آخر node</b> والـ next بتاعها بيفضل NULL، فالـ if بتمنع السطر ' + DC('temp->next->prev') + '. <b>ونسخة الـ slide بتبوظ هنا</b> لأنها بتكتب في ' + DC('NULL->prev') + '.' };
+      }
+      order(st);
+      const snap = clone(st); if (o.temp) snap.tags = Object.assign({}, snap.tags, { temp: o.temp });
+      S.push(Object.assign({ st: snap, hot: diffHot(before, st), out: outs(st) }, o));
+    });
+    const L1 = S[S.length - 1];
+    if (vals.length) S.push(Object.assign({}, L1, { cur: -1, hot: [], slide: 0, st: clone(st), en: `Done. Forward: <b>${fwd(st).join(' ')}</b>; backward (following prev): <b>${bwd(st).join(' ')}</b>.`, ar: 'خلصنا. لقدام بتطبع:' + L(fwd(st).join(' ')) + 'ولورا بالـ prev بتطبع:' + L(bwd(st).join(' ')) }));
+    return S;
+  }
+  function L8InsertSorted({ ar }) {
+    const [txt, setTxt] = useState(SORT_EX);
+    const vals = parseNums(txt, 7), S = sortedSteps(vals), [i, ctl] = useWalk(S.length, 2600, vals.join(',')), s = S[i];
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <div className="dsv8-row"><label className="dsv8-lbl">Values to insert (up to 7)<input className="dsv8-in" value=${txt} onChange=${e => setTxt(e.target.value)} /></label>
+        <button className="fig-btn" onClick=${() => setTxt(SORT_EX)}>Example from the notes</button></div>
+      <${Code} lines=${SORT_CODE} cur=${s.cur} />
+      <${Legend} />
+      <${DList} st=${s.st} hot=${s.hot || []} />
+      <${Out} rows=${s.out} /></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4] slides 13–14: deletefrombeginning, deletefromend, and the one-node case ── */
+  const DEL_CODE = {
+    beg: ['Node *temp = head;', 'value = head->data;', 'head = head->next;', 'head->prev = NULL;', 'delete(temp);', 'return (value);'],
+    end: ['Node *temp1 = head;', 'while (temp1->next != NULL)', '   temp1 = temp1->next;', 'value = temp1->data;', 'temp1->prev->next = NULL;', 'delete temp1;', 'return (value);'],
+    one: ['Node *temp = head;', 'value = head->data;', 'head = head->next;', 'head->prev = NULL;  // slide', 'if (head != NULL)   // safe', '   head->prev = NULL;', 'delete(temp);', 'return (value);']
+  };
+  function delSteps(m) {
+    const st = mkList(m === 'one' ? [1] : [1, 2, 3]), ids = st.nodes.map(x => x.id), S = [];
+    const push = (o, f) => { if (f) f(st); S.push(Object.assign({ st: clone(st), gone: [] }, o)); };
+    if (m === 'beg') {
+      push({ cur: 0, en: 'deletefrombeginning() on the slide 3 list 1, 2, 3. <code>temp = head</code> keeps the first node so it can be deleted later.', ar: 'الـ ' + DC('deletefrombeginning()') + ' على الـ list بتاعة slide 3. الـ temp بيمسك أول node عشان نمسحها بعدين:' + LC('Node *temp = head;') }, s => { s.tags.temp = ids[0]; });
+      push({ cur: 1, val: 1, on: [ids[0]], en: '<code>value = head->data;</code> value = 1.', ar: 'الـ value بتاخد الـ data بتاعة أول node، يعني 1:' + LC('value = head->data;') });
+      push({ cur: 2, hot: [], en: '<code>head = head->next;</code> head moves to node 2. Node 2\'s prev still points to node 1.', ar: 'الـ head بيتنقل للـ node التانية، بس الـ prev بتاعها لسه بيشاور على الأولى:' + LC('head = head->next;') }, s => { s.tags.head = ids[1]; });
+      push({ cur: 3, hot: [ids[1] + '.p'], en: '<code>head->prev = NULL;</code> the new first node\'s prev becomes NULL: the step a singly list does not need.', ar: 'الـ prev بتاع أول node جديدة بقى NULL، ودي الخطوة اللي الـ singly list مش محتاجاها:' + LC('head->prev = NULL;') }, s => { get(s, ids[1]).p = null; });
+      push({ cur: 4, gone: [ids[0]], en: '<code>delete(temp);</code> frees the old first node.', ar: 'الـ ' + DC('delete(temp)') + ' بتحرر الـ node اللي كانت أولى.' });
+      push({ cur: 5, val: 1, ret: 1, en: '<code>return (value);</code> returns <b>1</b>. The list is now 2, 3 (backward 3, 2).', ar: 'الـ function بترجّع <b>1</b>، والـ list بقت كده:' + L('2 3') + 'ولورا بتتقري:' + L('3 2') }, s => { s.nodes.shift(); delete s.tags.temp; });
+    } else if (m === 'end') {
+      push({ cur: 0, en: 'deletefromend() (slide 14) on the list 1, 2, 3. <code>temp1 = head</code>.', ar: 'الـ ' + DC('deletefromend()') + ' من slide 14 على نفس الـ list، والـ temp1 بيبدأ من الـ head:' + LC('Node *temp1 = head;') }, s => { s.tags.temp1 = ids[0]; });
+      push({ cur: [1, 2], en: 'temp1->next is not NULL: <code>temp1 = temp1->next</code>, node 2.', ar: 'الـ next بتاع الـ temp1 مش NULL، فالـ temp1 بيمشي للتانية:' + LC('temp1 = temp1->next;') }, s => { s.tags.temp1 = ids[1]; });
+      push({ cur: [1, 2], en: 'Again: temp1 reaches node 3. Its next is NULL, so the loop stops at the <b>last node</b>.', ar: 'وتاني، الـ temp1 بيوصل للتالتة، والـ next بتاعها NULL فالـ loop بيقف عند <b>آخر node</b>.' }, s => { s.tags.temp1 = ids[2]; });
+      push({ cur: 3, val: 3, on: [ids[2]], en: '<code>value = temp1->data;</code> value = 3.', ar: 'الـ value بتاخد الـ data بتاعة آخر node، يعني 3:' + LC('value = temp1->data;') });
+      push({ cur: 4, hot: [ids[1] + '.n'], en: '<code>temp1->prev->next = NULL;</code> thanks to prev, we reach node 2 directly from temp1 and cut its next. (A singly list needs a second pointer, temp2, for this.)', ar: 'بفضل الـ prev بنوصل للـ node التانية من الـ temp1 على طول ونخلي الـ next بتاعها NULL. والـ singly list كانت محتاجة pointer تاني اسمه temp2 عشان كده:' + LC('temp1->prev->next = NULL;') }, s => { get(s, ids[1]).n = null; });
+      push({ cur: 5, gone: [ids[2]], en: '<code>delete temp1;</code> frees the last node.', ar: 'الـ ' + DC('delete temp1') + ' بتحرر آخر node.' });
+      push({ cur: 6, val: 3, ret: 3, en: '<code>return (value);</code> returns <b>3</b>. The list is now 1, 2.', ar: 'الـ function بترجّع <b>3</b>، والـ list بقت كده:' + L('1 2') }, s => { s.nodes.pop(); delete s.tags.temp1; });
+    } else {
+      push({ cur: [0, 1], val: 1, en: 'deletefrombeginning() when the list has <b>only one node</b> (1): temp = head, value = 1.', ar: 'الـ ' + DC('deletefrombeginning()') + ' لما الـ list فيها <b>node واحدة بس</b>، والـ value بقت 1:' + LC('Node *temp = head; value = head->data;') }, s => { s.tags.temp = ids[0]; });
+      push({ cur: 2, en: '<code>head = head->next;</code> the only node\'s next is NULL, so head becomes <b>NULL</b>.', ar: 'الـ next بتاع الـ node الوحيدة NULL، فالـ head بقى <b>NULL</b>:' + LC('head = head->next;') }, s => { s.tags.head = null; });
+      push({ cur: -1, bad: 3, crash: 1, en: '<code>head->prev = NULL;</code> as on the slide would now use a NULL pointer: the program <b>crashes</b>. The notes add a check.', ar: 'السطر بتاع الـ slide ده دلوقتي بيستخدم NULL pointer فالبرنامج <b>بيقع</b>، وعشان كده الـ notes زوّدت check:' + LC('head->prev = NULL;') });
+      push({ cur: [4, 5], en: 'Safe version: <code>if (head != NULL) head->prev = NULL;</code> head is NULL, so the line is skipped.', ar: 'النسخة الآمنة بتشيّك الأول، والـ head هنا NULL فالسطر بيتنط:' + LC('if (head != NULL) head->prev = NULL;') });
+      push({ cur: 6, gone: [ids[0]], en: '<code>delete(temp);</code> frees the node.', ar: 'الـ ' + DC('delete(temp)') + ' بتحرر الـ node.' });
+      push({ cur: 7, val: 1, ret: 1, en: 'Returns <b>1</b>; the list is empty again (head = NULL).', ar: 'الـ function بترجّع <b>1</b> والـ list رجعت فاضية والـ head قيمته NULL.' }, s => { s.nodes = []; delete s.tags.temp; });
+    }
+    return S;
+  }
+  function L8DeleteEnds({ ar }) {
+    const [m, setM] = useState('beg');
+    const S = delSteps(m), [i, ctl] = useWalk(S.length, 2300, m), s = S[i];
+    const vk = S.slice(0, i + 1).filter(x => x.val != null).pop(), rows = [['value', vk ? String(vk.val) : '?']]; if (s.ret != null) rows.push(['returns', String(s.ret)]);
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <${Modes} list=${[['beg', 'deletefrombeginning()'], ['end', 'deletefromend()'], ['one', 'only one node']]} mode=${m} set=${setM} mono=${true} />
+      <${Code} lines=${DEL_CODE[m]} cur=${s.cur} bad=${s.bad} />
+      <${Legend} />
+      <${DList} st=${s.st} hot=${s.hot || []} on=${s.on || []} gone=${s.gone} />
+      ${s.crash ? html`<${Out} rows=${[['', 'crash: head is NULL, so head->prev does not exist']]} bad=${true} />` : html`<${Out} rows=${rows} />`}</div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [5] removeAll (exam 2024/25 pattern) ── */
+  const RA_CODE = ['if (isEmpty())', '{ cout << "List is empty" << endl;', '  return; }', 'while (head != NULL)', '{  Node *temp = head;', '   head = head->next;', '   if (head != NULL) head->prev = NULL;', '   delete temp;  }'];
+  function raSteps(m) {
+    const S = [];
+    if (m === 'empty') {
+      const st = { nodes: [], tags: { head: null } };
+      S.push({ st, cur: [0, 1, 2], out: 'List is empty', en: 'On an empty list <code>isEmpty()</code> is true: it prints <b>List is empty</b> and returns. The exam asks for this check.', ar: 'لو الـ list فاضية الـ ' + DC('isEmpty()') + ' بترجّع true، فبتطبع الرسالة دي وترجع. والامتحان طالب الـ check ده:' + L('List is empty') });
+      return S;
+    }
+    const st = mkList([1, 2, 3]), ids = st.nodes.map(x => x.id);
+    const push = (o, f) => { if (f) f(st); S.push(Object.assign({ st: clone(st), gone: [] }, o)); };
+    push({ cur: [0, 3], en: 'removeAll() on the list 1, 2, 3: not empty, and head != NULL, so the loop starts.', ar: 'الـ ' + DC('removeAll()') + ' على الـ list دي: مش فاضية والـ head مش NULL، فالـ loop بيبدأ.' });
+    ids.forEach((id, k) => {
+      const nx = ids[k + 1];
+      push({ cur: [4, 5], en: `<code>temp = head; head = head->next;</code> temp keeps node ${k + 1}, head moves ${nx ? 'to node ' + (k + 2) : 'to NULL'}.`, ar: 'الـ temp بيمسك الـ node رقم ' + D(k + 1) + ' والـ head بيتنقل ' + (nx ? 'للي بعدها' : 'لـ NULL') + ':' + LC('temp = head; head = head->next;') }, s => { s.tags.temp = id; s.tags.head = nx || null; });
+      if (nx) push({ cur: 6, hot: [nx + '.p'], en: `<code>if (head != NULL) head->prev = NULL;</code> the new first node (${k + 2}) must not point back to the node being deleted.`, ar: 'الـ node اللي بقت أولى مينفعش تفضل بتشاور على الـ node اللي هتتمسح، فالـ prev بتاعها بيبقى NULL:' + LC('if (head != NULL) head->prev = NULL;') }, s => { get(s, nx).p = null; });
+      else push({ cur: 6, en: 'head is NULL now, so the <code>if</code> skips <code>head->prev</code> (without this check the program would crash).', ar: 'الـ head بقى NULL، فالـ if بتنط السطر ده، ومن غير الـ check ده البرنامج كان هيقع:' + LC('head->prev = NULL;') });
+      push({ cur: 7, gone: [id], en: `<code>delete temp;</code> frees node ${k + 1}.`, ar: 'الـ ' + DC('delete temp') + ' بتحرر الـ node رقم ' + D(k + 1) + '.' }, null);
+      st.nodes = st.nodes.filter(x => x.id !== id); delete st.tags.temp;
+    });
+    push({ cur: 3, en: 'head == NULL: the loop stops. Every node was deleted and the list is empty.', ar: 'الـ head بقى NULL فالـ loop وقف، وكل الـ nodes اتمسحت والـ list بقت فاضية.' });
+    return S;
+  }
+  function L8RemoveAll({ ar }) {
+    const [m, setM] = useState('ex');
+    const S = raSteps(m), [i, ctl] = useWalk(S.length, 1900, m), s = S[i];
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <${Modes} list=${[['ex', 'List 1, 2, 3'], ['empty', 'Empty list']]} mode=${m} set=${setM} />
+      <${Code} lines=${RA_CODE} cur=${s.cur} />
+      <${DList} st=${s.st} hot=${s.hot || []} gone=${s.gone || []} />
+      ${s.out && html`<${Out} rows=${[['Output', s.out]]} />`}</div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [6.0]–[6.2] Lab 8 with a tail pointer: insertLast, removeLast, displayBackward ── */
+  const TAIL_CODE = {
+    ins: ['Node *newnode = new Node();', 'newnode->data = 30;', 'newnode->prev = tail;', 'tail->next = newnode;', 'tail = newnode;'],
+    rem: ['Node *delnode = tail;', 'tail->prev->next = NULL;', 'tail = tail->prev;', 'delete delnode;'],
+    back: ['Node *temp = tail;', 'while (temp != NULL)', '{  cout << temp->data << " ";', '   temp = temp->prev;  }']
+  };
+  function tailSteps(m) {
+    const S = [];
+    if (m === 'ins') {
+      const st = mkList([10, 20]), ids = st.nodes.map(x => x.id); st.tags.tail = ids[1];
+      const push = (o, f) => { if (f) f(st); S.push(Object.assign({ st: clone(st) }, o)); };
+      push({ cur: -1, en: 'Lab main, third call: <code>insertLast(30)</code> on the list 10, 20. head and tail point to the two ends.', ar: 'تالت سطر في الـ main بتاع الـ lab بيضيف 30 في الآخر على الـ list دي، والـ head والـ tail بيشاوروا على الطرفين:' + LC('insertLast(30);') });
+      push({ cur: [0, 1], hot: ['w.v', 'w.p', 'w.n'], en: 'A new node with data 30, prev and next NULL.', ar: 'فيه node جديدة فيها 30، والـ prev والـ next بتوعها NULL.' }, s => { s.nodes.push({ id: 'w', v: 30, p: null, n: null }); s.tags.newnode = 'w'; });
+      push({ cur: 2, hot: ['w.p'], en: '<code>newnode->prev = tail;</code> 30 points back to 20. No loop: tail <b>already</b> points to the last node.', ar: 'الـ 30 بقت بتشاور لورا على الـ 20، ومن غير loop لأن الـ tail <b>أصلًا</b> بيشاور على آخر node:' + LC('newnode->prev = tail;') }, s => { get(s, 'w').p = ids[1]; });
+      push({ cur: 3, hot: [ids[1] + '.n'], en: '<code>tail->next = newnode;</code> 20 points on to 30.', ar: 'الـ 20 بقت بتشاور لقدام على الـ 30:' + LC('tail->next = newnode;') }, s => { get(s, ids[1]).n = 'w'; });
+      push({ cur: 4, en: '<code>tail = newnode;</code> tail moves to 30. The list is 10 20 30.', ar: 'الـ tail اتنقل للـ 30، والـ list بقت كده:' + L('10 20 30') }, s => { s.tags.tail = 'w'; delete s.tags.newnode; });
+    } else if (m === 'rem') {
+      const st = mkList([100, 10, 20, 30]), ids = st.nodes.map(x => x.id); st.tags.tail = ids[3];
+      const push = (o, f) => { if (f) f(st); S.push(Object.assign({ st: clone(st), gone: [] }, o)); };
+      push({ cur: -1, en: 'Lab main: <code>removeLast</code> on the list 100, 10, 20, 30.', ar: 'في الـ main بتاع الـ lab بنشيل آخر node بالـ ' + DC('removeLast') + ' من الـ list دي:' + L('100 10 20 30') });
+      push({ cur: 0, en: '<code>delnode = tail;</code> delnode keeps the last node, 30.', ar: 'الـ delnode بيمسك آخر node اللي هي 30:' + LC('Node *delnode = tail;') }, s => { s.tags.delnode = ids[3]; });
+      push({ cur: 1, hot: [ids[2] + '.n'], en: '<code>tail->prev->next = NULL;</code> through prev we reach 20 at once and cut its next. No walk from head.', ar: 'عن طريق الـ prev بنوصل للـ 20 على طول ونخلي الـ next بتاعها NULL، من غير ما نمشي من الـ head:' + LC('tail->prev->next = NULL;') }, s => { get(s, ids[2]).n = null; });
+      push({ cur: 2, en: '<code>tail = tail->prev;</code> tail moves back to 20.', ar: 'الـ tail بيرجع خطوة للـ 20:' + LC('tail = tail->prev;') }, s => { s.tags.tail = ids[2]; });
+      push({ cur: 3, gone: [ids[3]], en: '<code>delete delnode;</code> frees 30. The list is 100 10 20.', ar: 'الـ ' + DC('delete delnode') + ' بتحرر الـ 30، والـ list بقت كده:' + L('100 10 20') });
+    } else {
+      const st = mkList([100, 10, 20]), ids = st.nodes.map(x => x.id); st.tags.tail = ids[2];
+      const out = [];
+      S.push({ st: clone(st), cur: -1, out: '', en: 'displayBackward on the list 100, 10, 20: it starts at <b>tail</b>, not head.', ar: 'الـ ' + DC('displayBackward') + ' على الـ list دي بتبدأ من الـ <b>tail</b> مش من الـ head:' + L('100 10 20') });
+      [2, 1, 0].forEach((k, j) => {
+        out.push(st.nodes[k].v); const s2 = clone(st); s2.tags.temp = ids[k];
+        S.push({ st: s2, cur: j ? [2, 3] : [0, 2], on: [ids[k]], hot: j ? [ids[k + 1] + '.p'] : [], out: out.join(' '), en: j ? `<code>temp = temp->prev</code>: ${st.nodes[k].v}. Print it.` : 'temp = tail: 20. Print it.', ar: j ? 'الـ temp بيرجع ورا الـ prev للـ ' + D(st.nodes[k].v) + ' ونطبعها.' : 'الـ temp بيبدأ من الـ tail، يعني 20، ونطبعها.' });
+      });
+      const s3 = clone(st); s3.tags.temp = null;
+      S.push({ st: s3, cur: 1, hot: [ids[0] + '.p'], out: out.join(' '), en: 'The first node\'s prev is NULL: the loop stops. Output <b>20 10 100</b>. This is only possible because every node has a <b>prev</b> pointer.', ar: 'الـ prev بتاع أول node قيمته NULL فالـ loop بيقف، والناتج' + L('20 10 100') + 'وده ممكن بس عشان كل node فيها <b>prev</b> pointer.' });
+    }
+    return S;
+  }
+  function L8TailOps({ ar }) {
+    const [m, setM] = useState('ins');
+    const S = tailSteps(m), [i, ctl] = useWalk(S.length, 2200, m), s = S[i];
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <${Modes} list=${[['ins', 'insertLast(30)'], ['rem', 'removeLast()'], ['back', 'displayBackward()']]} mode=${m} set=${setM} mono=${true} />
+      <${Code} lines=${TAIL_CODE[m]} cur=${s.cur} />
+      <${DList} st=${s.st} hot=${s.hot || []} on=${s.on || []} gone=${s.gone || []} />
+      ${m === 'back' && html`<${Out} rows=${[['Printed', s.out || ' ']]} />`}</div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [6.3] the Lab 8 main, call by call, with head and tail ── */
+  const LAB_EX = 'insertFirst(10), insertLast(20), insertLast(30), insertFirst(100), insertFirst(200), removeFirst(), removeLast(), insertAtPosition(1000,2), insertAtPosition(2000,4), insertAtPosition(5,1)';
+  const parseOps = s => [...String(s).matchAll(/(insertFirst|insertLast|removeFirst|removeLast|insertAtPosition)\s*\(([^)]*)\)/g)].slice(0, 12).map(m => ({ f: m[1], a: parseNums(m[2], 2) }));
+  function labSteps(ops) {
+    const st = { nodes: [], tags: { head: null, tail: null } }, S = [];
+    const outs = s => [['displayForward', fwd(s).join(' ') || '(empty)'], ['displayBackward', bwd(s, s.tags.tail).join(' ') || '(empty)']];
+    S.push({ st: clone(st), out: outs(st), call: 'start', en: 'An empty list: head = NULL and tail = NULL. Each Next runs one call of the Lab main.', ar: 'دي list فاضية، والـ head والـ tail الاتنين NULL. كل Next بينفّذ سطر من الـ main بتاع الـ lab.' });
+    const link = (a, nn, b) => { nn.p = a ? a.id : null; nn.n = b ? b.id : null; if (a) a.n = nn.id; else st.tags.head = nn.id; if (b) b.p = nn.id; else st.tags.tail = nn.id; st.nodes.push(nn); };
+    ops.forEach(op => {
+      const before = clone(st), x = op.a[0], N = fwd(st).length, H = get(st, st.tags.head), T = get(st, st.tags.tail);
+      const call = op.f + '(' + op.a.join(',') + ')'; let en, a, warn = 0;
+      const mk = () => ({ id: 'k' + (UID++), v: x == null ? 0 : x, p: null, n: null });
+      if ((op.f === 'insertFirst' || op.f === 'insertLast' || op.f === 'insertAtPosition') && x == null) { en = `${call}: no value given, skipped.`; a = 'السطر ده مفيهوش قيمة فاتنط.'; warn = 1; }
+      else if (op.f === 'insertFirst' || (op.f === 'insertAtPosition' && op.a[1] === 1)) {
+        link(null, mk(), H);
+        en = `${call}: ${x} becomes the first node${H ? `; the old first node (${H.v}) points back to it with prev` : '; it is also the last, so tail points to it too'}; head moves to it.`;
+        a = H ? 'الـ ' + D(x) + ' بقت أول node، والـ prev بتاع الـ ' + D(H.v) + ' بقى بيشاور عليها، والـ head اتنقل لها.' : 'الـ ' + D(x) + ' بقت أول node وآخر node، فالـ head والـ tail الاتنين بيشاوروا عليها.';
+      } else if (op.f === 'insertLast' || (op.f === 'insertAtPosition' && op.a[1] === N + 1)) {
+        link(T, mk(), null);
+        if (T) { en = `${call}: ${x} goes after the tail (${T.v}) with no loop: newnode->prev = tail; tail->next = newnode; tail = newnode.`;
+          a = 'الـ ' + D(x) + ' بتتحط في الآخر من غير loop، والـ tail بيتنقل لها:' + LC('newnode->prev = tail; tail->next = newnode; tail = newnode;'); }
+        else { en = `${call}: the list is empty, so ${x} becomes the only node: head and tail both point to it.`;
+          a = 'الـ list فاضية، فالـ ' + D(x) + ' بقت الـ node الوحيدة والـ head والـ tail الاتنين بيشاوروا عليها.'; }
+      } else if (op.f === 'insertAtPosition') {
+        const p = op.a[1], ord = order(clone(st)).nodes;
+        if (p == null || p < 1 || p > N + 1) { en = `${call}: position ${p} is outside 1 to ${N + 1}, nothing is inserted.`; a = 'الـ position ده بره الـ list فمفيش حاجة اتضافت.'; warn = 1; }
+        else { const A = get(st, ord[p - 2].id), B = get(st, ord[p - 1].id); link(A, mk(), B);
+          en = `${call}: walk to node ${p - 1} (${A.v}), counting current from 1, and link ${x} between ${A.v} and ${B.v}, so it becomes node ${p}.`;
+          a = 'بنمشي لحد الـ node رقم ' + D(p - 1) + ' (عدّ الـ current من 1)، ونحط الـ ' + D(x) + ' بين ' + D(A.v) + ' و ' + D(B.v) + '، فتبقى الـ node رقم ' + D(p) + '.'; }
+      } else if (op.f === 'removeFirst') {
+        if (!H) { en = `${call}: the list is empty.`; a = 'الـ list فاضية فمفيش حاجة تتشال.'; warn = 1; }
+        else { const nx = get(st, H.n); st.nodes = st.nodes.filter(y => y !== H); st.tags.head = nx ? nx.id : null; if (nx) nx.p = null; else st.tags.tail = null;
+          en = `${call}: ${H.v} is removed; head moves to ${nx ? nx.v + ' and its prev becomes NULL' : 'NULL'}.`; a = 'الـ ' + D(H.v) + ' اتشالت والـ head اتنقل ' + (nx ? 'للـ ' + D(nx.v) + ' والـ prev بتاعها بقى NULL.' : 'لـ NULL.'); }
+      } else {
+        if (!T) { en = `${call}: the list is empty.`; a = 'الـ list فاضية فمفيش حاجة تتشال.'; warn = 1; }
+        else { const pv = get(st, T.p); st.nodes = st.nodes.filter(y => y !== T); st.tags.tail = pv ? pv.id : null; if (pv) pv.n = null; else st.tags.head = null;
+          en = `${call}: tail->prev->next = NULL; tail = tail->prev; ${T.v} is deleted and tail moves back to ${pv ? pv.v : 'NULL'}.` + (pv ? '' : ' (With one node tail->prev is NULL: the lab code needs a check here.)');
+          a = 'الـ ' + D(T.v) + ' اتمسحت والـ tail رجع ' + (pv ? 'للـ ' + D(pv.v) + '.' : 'لـ NULL، ومع node واحدة الـ prev بتاع الـ tail بيبقى NULL فكود الـ lab محتاج check هنا.'); }
+      }
+      order(st);
+      const res = fwd(st).join(' ');
+      S.push({ st: clone(st), hot: diffHot(before, st), out: outs(st), call, warn, en: en + (warn ? '' : ` List: <b>${res || '(empty)'}</b>.`), ar: a + (warn ? '' : ' الـ list بقت:' + L(res || 'NULL')) });
+    });
+    return S;
+  }
+  function L8LabMain({ ar }) {
+    const [txt, setTxt] = useState(LAB_EX);
+    const ops = parseOps(txt), S = labSteps(ops), [i, ctl] = useWalk(S.length, 2300, JSON.stringify(ops)), s = S[i];
+    const chip = html`<${Code} lines=${[s.call === 'start' ? 'Linkedlist list;' : 'list.' + s.call + ';']} cur=${0} />`;
+    return html`<figure className="fig dsv8"><div className="fig-stage">
+      <div className="dsv8-row"><label className="dsv8-lbl">Calls (insertFirst, insertLast, removeFirst, removeLast, insertAtPosition)<textarea className="dsv8-in" rows="4" spellCheck="false" value=${txt} onChange=${e => setTxt(e.target.value)}></textarea></label>
+        <button className="fig-btn" onClick=${() => setTxt(LAB_EX)}>Example from the notes</button></div>
+      ${chip}
+      <${Legend} />
+      <${DList} st=${s.st} hot=${s.hot || []} />
+      <${Out} rows=${s.out} bad=${s.warn} /></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${SBar} n=${S.length} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'ds-l8-travel': L8Travel, 'ds-l8-node-anatomy': L8NodeAnatomy, 'ds-l8-link-cost': L8LinkCost, 'ds-l8-node-class': L8NodeClass,
+    'ds-l8-insert-sorted': L8InsertSorted, 'ds-l8-delete-ends': L8DeleteEnds, 'ds-l8-remove-all': L8RemoveAll,
+    'ds-l8-tail-ops': L8TailOps, 'ds-l8-lab-main': L8LabMain
+  });
+})();

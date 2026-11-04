@@ -343,7 +343,10 @@ AR.micro = {
       "الـ User-visible هي الـ <b>General purpose</b>، والـ <b>Special purpose</b>، والـ <b>Segment registers</b>. الـ User-invisible هي الـ <b>Program Counter (PC)</b>، والـ <b>MAR</b>، والـ <b>MBR</b>، والـ <b>Instruction Register (IR)</b>.",
       "الـ User-visible registers ممكن تبقى general purpose أو ليها استخدام خاص (أرقام fixed أو floating-point، والـ addresses، والـ indexes، والـ segment pointers). أما الـ User-invisible registers فبتستخدم عشان <b>تتحكم في شغل الـ CPU</b>.",
       "الـ <b>user-visible register</b> هو اللي الـ machine language اللي الـ CPU بينفذها تقدر تشاور عليه (reference). فايدتها إنها بتخلي المبرمج <b>يقلل الرجوع للـ main memory</b> بإنه يستخدم الـ registers صح."
-     ]
+     ],
+     "figH": {
+      "mp-l2-reg-tree": "الـ Registers بتتقسم لـ user-visible و user-invisible، الشجرة اللي في الـ slide خطوة بخطوة"
+     }
     },
     {
      "h": "الـ General purpose registers",
@@ -352,10 +355,17 @@ AR.micro = {
       "كل واحد ممكن تتعامل معاه كقيمة <b><bdi dir=\"ltr\">32-bit</bdi></b> أو كقيمة <b><bdi dir=\"ltr\">16-bit</bdi></b>؛ وبعضهم كمان كأجزاء <b><bdi dir=\"ltr\">8-bit</bdi></b>. الـ EAX حجمه 32 bits؛ والـ 16 bit اللي تحت منه هما <b>AX</b>؛ والـ 8 bits العليا من AX هما <b>AH</b>، والـ 8 bits اللي تحت هما <b>AL</b>.",
       "خلي بالك: <b><bdi dir=\"ltr\">AX, BX, CX, DX</bdi></b> بس هما اللي ليهم أنصاص <bdi dir=\"ltr\" style=\"white-space:nowrap\">8-bit</bdi>، وهي:<span class=\"ltr\">AH/AL, BH/BL, CH/CL, DH/DL</span>أما <b><bdi dir=\"ltr\">SI, DI, SP, BP</bdi></b> <b>مالهمش</b> أنصاص <bdi dir=\"ltr\" style=\"white-space:nowrap\">8-bit</bdi>: مفيش حاجة اسمها <bdi dir=\"ltr\">SH/SL</bdi>، فالـ ESP أو الـ ESI تستخدمهم <bdi dir=\"ltr\" style=\"white-space:nowrap\">16</bdi> أو <bdi dir=\"ltr\" style=\"white-space:nowrap\">32 bits</bdi> بس.",
       "مثال الـ Lab: لو<span class=\"ltr\">AX = 0011000000111001b</span>يبقى<span class=\"ltr\">AH = 00110000b, AL = 00111001b</span>ولو غيّرت نص الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">8-bit</bdi>، الـ register الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">16-bit</bdi> بيتغير معاه."
-     ]
+     ],
+     "figH": {
+      "mp-l2-eax-parts": "إزاي EAX و AX و AH و AL جوه register واحد، وليه الـ SI مالوش أنصاص <bdi dir=\"ltr\">8-bit</bdi>",
+      "mp-l2-ax-halves": "مثال الـ Lab bit بـ bit: اكتب في الـ AX أو الـ AH أو الـ AL وشوف الباقي بيتغير إزاي"
+     }
     },
     {
-     "h": "دور كل register (Lab 1 + الـ programming model)"
+     "h": "دور كل register (Lab 1 + الـ programming model)",
+     "figH": {
+      "mp-l2-prog-model": "الـ programming model اللي في الـ slide: دوس على أي register تعرف اسمه وبيستخدم في إيه"
+     }
     },
     {
      "h": "الـ Segment registers",
@@ -366,7 +376,10 @@ AR.micro = {
       "الـ <b>ES</b> (Extra Segment) ده data segment تاني إضافي.",
       "الـ <b>SS</b> (Stack Segment): شايل عنوان البداية بتاع الـ stack segment الشغال دلوقتي. (وفيه كمان FS و GS في الـ 80386 وبعده.)",
       "الـ Segment registers هي registers <b><bdi dir=\"ltr\">16-bit</bdi> user-visible</b>. خلي بالك إن DI و SI <b>مش</b> segment registers. والـ Segment registers ماينفعش تستخدمها كـ operands في الـ arithmetic والـ logical instructions."
-     ]
+     ],
+     "figH": {
+      "mp-l2-seg-map": "رسمة الـ segments اللي في الـ slide: الـ segment <bdi dir=\"ltr\">8000</bdi> في الـ memory والمكان <bdi dir=\"ltr\">8000:0250</bdi>"
+     }
     },
     {
      "h": "الـ Special purpose registers (EIP, EFLAGS)",
@@ -377,10 +390,18 @@ AR.micro = {
      ]
     },
     {
-     "h": "الـ bits بتاعة الـ EFLAGS"
+     "h": "الـ bits بتاعة الـ EFLAGS",
+     "figH": {
+      "mp-l2-eflags": "الـ <bdi dir=\"ltr\">32 bits</bdi> بتوع الـ EFLAGS متقسمين: status و control و system flags",
+      "mp-l2-zsco": "الـ Z والـ S والـ C والـ O محسوبين لعملية جمع أو طرح <bdi dir=\"ltr\">8-bit</bdi> انت تختارها"
+     }
     },
     {
-     "h": "الـ User-invisible registers"
+     "h": "الـ User-invisible registers",
+     "figH": {
+      "mp-l2-fetch": "الـ PC والـ MAR والـ MBR والـ IR وهي بتجيب (fetch) instruction",
+      "mp-l2-reg-drill": "تمرين: الـ register ده general purpose ولا special purpose ولا segment ولا user-invisible ولا مش موجود أصلًا؟"
+     }
     },
     {
      "h": "الـ MOV instruction",
@@ -388,7 +409,10 @@ AR.micro = {
       "الـ MOV بتنسخ محتوى register أو memory location (أو immediate data) لـ register أو memory location تاني. الـ Syntax:<pre>MOV destination, source</pre>",
       "الأمر ده بينسخ 100 decimal في EAX:<pre>MOV EAX, 100</pre>وده بينسخ 10 hexadecimal في BL:<pre>MOV BL, 10H</pre>وده بينسخ محتوى CX في DX:<pre>MOV DX, CX</pre>",
       "الـ <b>word</b> حجمه <b><bdi dir=\"ltr\" style=\"white-space:nowrap\">2 bytes</bdi></b> (<bdi dir=\"ltr\" style=\"white-space:nowrap\">16 bits</bdi>)؛ والـ double word حجمه <bdi dir=\"ltr\" style=\"white-space:nowrap\">4 bytes</bdi>."
-     ]
+     ],
+     "figH": {
+      "mp-l2-mov": "الـ MOV خطوة بخطوة بالـ 3 أمثلة اللي في الـ slide، وبعدين جرّب MOV بنفسك"
+     }
     }
    ],
    "cards": [
@@ -1010,10 +1034,16 @@ AR.micro = {
       "<b>الـ default segment لـ BP هو SS</b>: الأمر <bdi dir=\"ltr\" style=\"white-space:nowrap\">MOV AL, [BP]</bdi> بيستخدم SS.",
       "النقل من memory لـ memory مش مسموح إلا في الـ string instructions، فده غلط:<pre>MOV [DI], [SI]</pre>",
       "الـ Segment overriding بيخليك توصل لـ segments تانية، زي:<pre>MOV AL, CS:[BX]\nMOV AX, DS:[BP]</pre>"
-     ]
+     ],
+     "figH": {
+      "mp-ri-pointers": "الـ pointers الأربعة: الـ BX والـ DI والـ SI بيشاوروا جوه الـ DS، والـ BP جوه الـ SS"
+     }
     },
     {
-     "h": "قاعدة الـ default segment (احفظها)"
+     "h": "قاعدة الـ default segment (احفظها)",
+     "figH": {
+      "mp-seg-rule": "أنهي segment؟ اكتب instruction وشوف القاعدة اللي بتحدده"
+     }
     },
     {
      "h": "الـ Indexed addressing (register + displacement)",
@@ -1021,7 +1051,10 @@ AR.micro = {
       "الـ offset هنا = <b>مجموع displacement ثابت + الـ register المحدد</b>. بيستخدم BX و SI و DI (الـ default هو DS) و BP (الـ default هو SS).",
       "أمثلة، والـ segment جنب كل واحدة:<pre>MOV AL, 20[BX]        ; DS\nMOV AX, 1000[BP]      ; SS\nMOV AX, AB[SI]\nMOV EAX, ES:100[DI]   ; ES</pre>والأخيرة فيها override لـ ES.",
       "الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">20[BX]</bdi> هي هي <bdi dir=\"ltr\" style=\"white-space:nowrap\">[BX+20]</bdi>؛ والـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">[BP-2]</bdi> والـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">[BP+200H]</bdi> سليمين."
-     ]
+     ],
+     "figH": {
+      "mp-indexed-forms": "الـ Indexed addressing: الـ displacement زائد الـ register، وبيتكتب بطريقتين"
+     }
     },
     {
      "h": "الـ Base plus index والـ base plus index plus displacement",
@@ -1030,16 +1063,25 @@ AR.micro = {
       "الـ Offset بيتحسب كده:<span class=\"ltr\">Offset = base + index</span>وبعدين تجمع <bdi dir=\"ltr\" style=\"white-space:nowrap\">segment×10</bdi>، زي:<pre>MOV AL, [BX][SI]        ; DS\nMOV EAX, ES:[BX][SI]    ; ES</pre>",
       "الـ <b>Base indexed plus displacement</b>، الشكل:<pre>MOV AL, disp[BX][SI]</pre>زي <bdi dir=\"ltr\" style=\"white-space:nowrap\">100[BX][DI]</bdi> (DS).",
       "خلي بالك: اتنين base (<bdi dir=\"ltr\" style=\"white-space:nowrap\">[BX][BP]</bdi>) أو اتنين index (<bdi dir=\"ltr\" style=\"white-space:nowrap\">[SI][DI]</bdi>) ماينفعش يتجمعوا على الـ 8086 الحقيقي. بس لما الامتحان يسأل عن الـ segment بتاع <bdi dir=\"ltr\" style=\"white-space:nowrap\">MOV [BX][BP], AX</bdi>، الإجابة المقصودة SS (عشان فيه BP)."
-     ]
+     ],
+     "figH": {
+      "mp-array-walk": "الـ Base plus index بيمشي على الـ array: الـ BX ثابت على البداية والـ DI بيتحرك"
+     }
     },
     {
-     "h": "أمثلة المحاضرة"
+     "h": "أمثلة المحاضرة",
+     "figH": {
+      "mp-lec4-figure": "رسومات الـ memory state بتاعة الـ slides لأمثلة المحاضرة الأربعة، خطوة خطوة"
+     }
     },
     {
      "h": "حل الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Sheet 1</bdi> لما <bdi dir=\"ltr\">(DS=1100H, BX=0200H, SI=0500H)</bdi>"
     },
     {
-     "h": "سؤال Q14 من الـ Revision sheet <bdi dir=\"ltr\">(SS=2000H, DS=2200H, SI=1200H, BP=0101H)</bdi>"
+     "h": "سؤال Q14 من الـ Revision sheet <bdi dir=\"ltr\">(SS=2000H, DS=2200H, SI=1200H, BP=0101H)</bdi>",
+     "figH": {
+      "mp-ea-calc": "حاسبة الـ address: اختار الـ segment، وزقه خانة، واجمع أجزاء الـ offset بالـ hex"
+     }
     },
     {
      "h": "إزاي ترسم رسمة الـ \"memory state\"",
@@ -1047,7 +1089,10 @@ AR.micro = {
       "على الشمال: مربعات الـ registers وقيمها، وهي:<span class=\"ltr\">EAX, EBX, ECX, EDI/ESI, DS</span>قيمة الـ segment بتعدّي على \"<bdi dir=\"ltr\" style=\"white-space:nowrap\">×10</bdi>\" وتدخل دايرة فيها <b>+</b>؛ والـ offset register (والـ displacement) بيدخلوا الـ adder هما كمان.",
       "سهم خارج من الـ adder بيشاور على العنوان اللي اتحسب في عمود memory على اليمين (اكتب العنوان، زي 1CE51).",
       "وسهم من خانة (أو خانات) الـ memory راجع للـ destination register (الـ AL لـ byte واحد، والـ AX لـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">2 bytes</bdi>، والـ EAX لـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">4 bytes</bdi>). لو word، الـ byte اللي في العنوان الأصغر بيروح للنص الواطي (little-endian)."
-     ]
+     ],
+     "figH": {
+      "mp-mem-draw": "ارسم الـ memory state لأي سؤال في الـ sheet، والـ bytes بترتيب الـ little-endian"
+     }
     }
    ],
    "cards": [
@@ -1218,7 +1263,10 @@ AR.micro = {
       "الوصول للـ stack بيبقى بـ <b>SS و SP مع بعض</b>. والـ stack بيكبر <b>لتحت</b>: من العناوين العالية للعناوين الأقل.",
       "الـ Stack instructions بتنقل <b>2 أو 4 bytes</b> حسب حجم الـ register: <code>PUSH AX</code> (2 bytes)، <code>PUSH EAX</code> (4 bytes)، <code>POP BX</code> (2 bytes من الـ stack لـ BX).",
       "في البرنامج (الـ lab): السطر ده بيعرّف stack حجمه 100h:<pre>.stack 100h</pre>والـ stack كمان بيخزن الـ return addresses بتاعة الـ subroutines، فعدد الـ PUSH والـ POP جوه الـ subroutine لازم يبقى متساوي."
-     ]
+     ],
+     "figH": {
+      "mp-l5-stack-sim": "محاكي الـ stack: الـ PUSH والـ POP بيحرّكوا الـ SP عند <bdi dir=\"ltr\">SS:[SP]</bdi>، وآخر حاجة تدخل أول حاجة تطلع"
+     }
     },
     {
      "h": "الـ PUSH",
@@ -1228,7 +1276,11 @@ AR.micro = {
       "الـ push الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">32-bit</bdi>: بيتخزن أربع bytes (الـ MSB الأول، من <bdi dir=\"ltr\" style=\"white-space:nowrap\">SP-1</bdi> لحد <bdi dir=\"ltr\" style=\"white-space:nowrap\">SP-4</bdi>)، وبعدين <bdi dir=\"ltr\" style=\"white-space:nowrap\">SP = SP - 4</bdi>. مثال: لو <bdi dir=\"ltr\" style=\"white-space:nowrap\">ESP = 00FFFFE8</bdi>، الأمر <bdi dir=\"ltr\" style=\"white-space:nowrap\">PUSH EAX</bdi> بيخلي <bdi dir=\"ltr\" style=\"white-space:nowrap\">ESP = 00FFFFE4</bdi> ويخزن EAX عند <bdi dir=\"ltr\" style=\"white-space:nowrap\">00FFFFE4</bdi>.",
       "الـ <b>PUSHA</b> بتعمل push للـ registers الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">16-bit</bdi> بالترتيب ده:<span class=\"ltr\"><b>AX, CX, DX, BX, SP, BP, SI, DI</b></span>(يعني <bdi dir=\"ltr\" style=\"white-space:nowrap\">8 words = 16 bytes</bdi>، فالـ SP بيقل 16). والـ <b>PUSHAD</b> بتعمل push لـ:<span class=\"ltr\">EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI</span>(يعني <bdi dir=\"ltr\" style=\"white-space:nowrap\">8 double words = 32 bytes</bdi>).",
       "الـ <b>PUSHF</b> بتعمل push للـ FLAGS register الـ <bdi dir=\"ltr\">16-bit</bdi>؛ والـ <b>POPF</b> بتعمل pop من الـ stack للـ FLAGS."
-     ]
+     ],
+     "figH": {
+      "mp-l5-esp-push": "الـ <bdi dir=\"ltr\">PUSH EAX</bdi> من الـ slide: الـ ESP بينزل من <bdi dir=\"ltr\">00FFFFE8</bdi> لـ <bdi dir=\"ltr\">00FFFFE4</bdi> وبعدين الـ EAX بيتخزن",
+      "mp-l5-pusha-popa": "الـ PUSHA بتحفظ الـ 8 registers بالترتيب، والـ POPA بترجّعهم بالترتيب العكسي"
+     }
     },
     {
      "h": "الـ POP",
@@ -1237,19 +1289,34 @@ AR.micro = {
       "مثال: لو <bdi dir=\"ltr\" style=\"white-space:nowrap\">ESP = 00FFFFE4</bdi>، الأمر <bdi dir=\"ltr\" style=\"white-space:nowrap\">POP EAX</bdi> بيخلي <bdi dir=\"ltr\" style=\"white-space:nowrap\">ESP = 00FFFFE8</bdi> وبينسخ <bdi dir=\"ltr\" style=\"white-space:nowrap\">4 bytes</bdi> من الـ stack لـ EAX.",
       "الـ <b>POPA</b> بتعمل pop بالترتيب العكسي <b>DI, SI, BP, SP, BX, DX, CX, AX</b>، فبترجّع اللي الـ PUSHA حفظته؛ والـ SP بيزيد 16. والـ <b>POPAD</b> بتعمل pop لـ 8 double words (32 bytes).",
       "الـ PUSH أو الـ POP عمرهم ما بيغيّروا SS؛ الـ SP بس هو اللي بيتغير."
-     ]
+     ],
+     "figH": {
+      "mp-l5-esp-pop": "الـ <bdi dir=\"ltr\">POP EAX</bdi> من الـ slide: الـ 4 bytes بيروحوا للـ EAX وبعدين الـ ESP بيطلع لـ <bdi dir=\"ltr\">00FFFFE8</bdi>"
+     }
     },
     {
-     "h": "مثال المحاضرة: PUSH AX"
+     "h": "مثال المحاضرة: PUSH AX",
+     "figH": {
+      "mp-l5-push-ax-figure": "رسمة الـ slide بتاعة الـ <bdi dir=\"ltr\">PUSH AX</bdi> خطوة بخطوة"
+     }
     },
     {
-     "h": "مثال الـ Revision: <bdi dir=\"ltr\" style=\"white-space:nowrap\">POP EAX</bdi>"
+     "h": "مثال الـ Revision: <bdi dir=\"ltr\" style=\"white-space:nowrap\">POP EAX</bdi>",
+     "figH": {
+      "mp-l5-pop-eax-figure": "رسمة الـ slide بتاعة الـ <bdi dir=\"ltr\">POP EAX</bdi> خطوة بخطوة"
+     }
     },
     {
-     "h": "سؤال Q5 من الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Sheet 1</bdi>: الأمر <bdi dir=\"ltr\" style=\"white-space:nowrap\">PUSH EAX</bdi> مع <bdi dir=\"ltr\">(EAX=ABCD, SP=0100H, SS=0200H)</bdi>"
+     "h": "سؤال Q5 من الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">Sheet 1</bdi>: الأمر <bdi dir=\"ltr\" style=\"white-space:nowrap\">PUSH EAX</bdi> مع <bdi dir=\"ltr\">(EAX=ABCD, SP=0100H, SS=0200H)</bdi>",
+     "figH": {
+      "mp-l5-stack-calc": "حاسبة الـ PUSH والـ POP: العنوان والـ bytes في الـ memory والـ SP الجديد"
+     }
     },
     {
-     "h": "أمثلة كود Lab 6"
+     "h": "أمثلة كود Lab 6",
+     "figH": {
+      "mp-l5-lab6": "برامج الـ Lab 6 بتتنفذ سطر سطر والـ stack جنبها"
+     }
     }
    ],
    "cards": [
@@ -1490,10 +1557,16 @@ AR.micro = {
       "الـ LEA بتحسب الـ source operand بتاعها <b>بنفس طريقة الـ MOV بالظبط</b>، بس بدل ما تحمّل <b>المحتوى</b> اللي في العنوان ده في الـ destination، بتحمّل <b>العنوان نفسه (الـ offset)</b>.",
       "الـ instruction دي:<pre>LEA BX, [DI]</pre>بتحط الـ offset address اللي <bdi dir=\"ltr\">[DI]</bdi> بيشاور عليه (يعني قيمة DI نفسها) في BX.",
       "أما دي:<pre>MOV BX, [DI]</pre>فبتحط <b>الداتا المتخزنة</b> في الـ memory location اللي <bdi dir=\"ltr\">[DI]</bdi> بيشاور عليه في BX."
-     ]
+     ],
+     "figH": {
+      "mp-l6-lea-mov": "نفس الـ operand وهو <bdi dir=\"ltr\">[DI]</bdi>: الـ LEA بتحمّل العنوان، والـ MOV بتحمّل الداتا اللي فيه"
+     }
     },
     {
-     "h": "الـ LEA مقابل الـ OFFSET"
+     "h": "الـ LEA مقابل الـ OFFSET",
+     "figH": {
+      "mp-l6-offset-lea": "نفس النتيجة بس مين اللي بيحسب: الـ assembler مع الـ OFFSET، والـ microprocessor مع الـ LEA"
+     }
     },
     {
      "h": "الـ LDS والـ LES والـ LSS",
@@ -1502,19 +1575,34 @@ AR.micro = {
       "بيقروا <b>4 bytes</b> من الـ memory بادئين من العنوان اللي اتحسب (الـ default هو DS×10 + offset): <b>أول اتنين bytes</b> (العناوين الأصغر) بيروحوا للـ register (الـ offset)، و<b>الاتنين اللي بعدهم</b> بيروحوا للـ segment register.",
       "يعني الـ instruction دي:<pre>LES AX, [DI]</pre>بتنسخ <bdi dir=\"ltr\">[DI]</bdi> و <bdi dir=\"ltr\">[DI+1]</bdi> في AX، و <bdi dir=\"ltr\">[DI+2]</bdi> و <bdi dir=\"ltr\">[DI+3]</bdi> في ES. والـ instruction دي:<pre>LDS AX, [DI]</pre>بتغيّر <b>AX و DS الاتنين</b> (مش AX بس).",
       "مفيش حاجة اسمها \"LCS\" (الـ CS ماينفعش يتحمّل بالطريقة دي)."
-     ]
+     ],
+     "figH": {
+      "mp-l6-lxs-sim": "محاكي الـ LDS والـ LES والـ LSS: أول word للـ register، وتاني word للـ segment register"
+     }
     },
     {
-     "h": "مثال المحاضرة: LES BX, [DI]"
+     "h": "مثال المحاضرة: LES BX, [DI]",
+     "figH": {
+      "mp-l6-les-figure": "رسمة الـ slide بتاعة <bdi dir=\"ltr\">LES BX, [DI]</bdi> خطوة بخطوة"
+     }
     },
     {
-     "h": "مثال المحاضرة: LDS BX, [DI]"
+     "h": "مثال المحاضرة: LDS BX, [DI]",
+     "figH": {
+      "mp-l6-lds-figure": "نفس الرسمة مع <bdi dir=\"ltr\">LDS BX, [DI]</bdi>، والـ DS بيتغيّر بعد ما اتحسب بيه العنوان"
+     }
     },
     {
-     "h": "مراجعة الـ Revision والـ Final <bdi dir=\"ltr\">2023/24</bdi>، مثال <bdi dir=\"ltr\">LDS&nbsp;BX,&nbsp;[DI]</bdi> لما <bdi dir=\"ltr\">(DS=1000H, BX=6F2AH, DI=1000H)</bdi>"
+     "h": "مراجعة الـ Revision والـ Final <bdi dir=\"ltr\">2023/24</bdi>، مثال <bdi dir=\"ltr\">LDS&nbsp;BX,&nbsp;[DI]</bdi> لما <bdi dir=\"ltr\">(DS=1000H, BX=6F2AH, DI=1000H)</bdi>",
+     "figH": {
+      "mp-l6-rev-lds": "سؤال الـ Revision بالرسمة، والعنوان والنتيجة:<span class=\"ltr\">address = 11000, BX = 127A, DS = 3000</span>"
+     }
     },
     {
-     "h": "سؤال الـ Final <bdi dir=\"ltr\">2024/25&nbsp;(e)</bdi> و <bdi dir=\"ltr\">2023/24&nbsp;(e)</bdi>، الـ LSS أو الـ LES وبعدها stack أو string instruction"
+     "h": "سؤال الـ Final <bdi dir=\"ltr\">2024/25&nbsp;(e)</bdi> و <bdi dir=\"ltr\">2023/24&nbsp;(e)</bdi>، الـ LSS أو الـ LES وبعدها stack أو string instruction",
+     "figH": {
+      "mp-l6-final-chain": "تنفيذ 2 instructions ورا بعض، والتانية بتستخدم الـ SS أو الـ ES الجديد"
+     }
     }
    ],
    "cards": [
@@ -1668,7 +1756,10 @@ AR.micro = {
   "7": {
    "notes": [
     {
-     "h": "ملخص الـ String instructions"
+     "h": "ملخص الـ String instructions",
+     "figH": {
+      "mp-l7-sim": "محاكي الـ string instructions: اختار الـ LODS أو STOS أو OUTS أو INS والحجم والـ D"
+     }
     },
     {
      "h": "القواعد الأساسية",
@@ -1678,22 +1769,41 @@ AR.micro = {
       "الـ LODS والـ STOS <b>مابيأثروش على الـ flags</b> (الـ LODSW مابتأثرش على ZF).",
       "الـ String manipulation instructions هي LODS و STOS و INS و OUTS (وكمان MOVS و CMPS و SCAS). خلي بالك: الـ <b>MOV</b> العادية <b>مش</b> string instruction.",
       "القراية من input port والكتابة على output port بيستخدموا <b>IN</b> و <b>OUT</b>."
-     ]
+     ],
+     "figH": {
+      "mp-l7-flow": "الـ source بيتقري من <bdi dir=\"ltr\">DS:[SI]</bdi> والـ destination بيتكتب في <bdi dir=\"ltr\">ES:[DI]</bdi>",
+      "mp-l7-dflag": "الـ direction flag: الـ CLD والـ STD بيغيّروا الـ D، والـ LODSB بتمشي عليه بس"
+     }
     },
     {
-     "h": "مثال: LODSW"
+     "h": "مثال: LODSW",
+     "figH": {
+      "mp-l7-lodsw": "الـ LODSW خطوة بخطوة، والنتيجة:<span class=\"ltr\">address = 11000, AX = CDAB, SI = 1002</span>"
+     }
     },
     {
-     "h": "مثال: STOSD (وملحوظة الـ hex)"
+     "h": "مثال: STOSD (وملحوظة الـ hex)",
+     "figH": {
+      "mp-l7-stosd": "الـ STOSD خطوة بخطوة، والـ EAX بيتخزن عند <bdi dir=\"ltr\">2100</bdi> والـ DI بيبقى <bdi dir=\"ltr\">0FCH</bdi> (الـ slide كاتبة 96)"
+     }
     },
     {
-     "h": "مثال: OUTSB"
+     "h": "مثال: OUTSB",
+     "figH": {
+      "mp-l7-outsb": "الـ OUTSB خطوة بخطوة، وبتبعت byte واحد (AB) للـ output device والـ SI بيبقى <bdi dir=\"ltr\">1001</bdi>"
+     }
     },
     {
-     "h": "مثال: INSD (بييجي تقريبًا في كل final)"
+     "h": "مثال: INSD (بييجي تقريبًا في كل final)",
+     "figH": {
+      "mp-l7-insd": "الـ INSD خطوة بخطوة، والـ bytes بتتخزن عند <bdi dir=\"ltr\">ES:[DI]</bdi> يعني <bdi dir=\"ltr\">2100</bdi> والـ DI بيبقى <bdi dir=\"ltr\">0FCH</bdi>"
+     }
     },
     {
-     "h": "مراجعة الـ Revision، الـ STOSW بعد الـ LES (من <bdi dir=\"ltr\">Final 2023/24</bdi>)"
+     "h": "مراجعة الـ Revision، الـ STOSW بعد الـ LES (من <bdi dir=\"ltr\">Final 2023/24</bdi>)",
+     "figH": {
+      "mp-l7-les-stosw": "الـ STOSW بعد الـ LES، والـ AX بيتخزن عند <bdi dir=\"ltr\">12540</bdi> والـ byte الصغير الأول، والـ DI بيبقى <bdi dir=\"ltr\">202</bdi>"
+     }
     }
    ],
    "cards": [

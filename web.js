@@ -25,7 +25,25 @@ COURSES.web = {
       "<b>Web site</b>: a collection of web pages grouped together and usually connected together in various ways.",
       "<b>Static website</b>: web pages are stored on the server <b>in the same form</b> as the user will view them.",
       "<b>Dynamic website</b>: pages are <b>not</b> stored in the form the user sees; content changes automatically and/or frequently based on criteria. Two meanings: (1) the page code is <b>constructed dynamically, piece by piece</b>; (2) the <b>content displayed varies</b> based on criteria (pre-defined rules or variable user input)."
-     ]
+     ],
+     "fig": [
+      "wb-l1-services",
+      "wb-l1-proscons",
+      "wb-l1-pagesite",
+      "wb-l1-staticdyn"
+     ],
+     "figAt": {
+      "wb-l1-services": 2,
+      "wb-l1-proscons": 4,
+      "wb-l1-pagesite": 8,
+      "wb-l1-staticdyn": 10
+     },
+     "figH": {
+      "wb-l1-services": "The Internet carries many services; the Web is only one of them",
+      "wb-l1-proscons": "Internet advantages and disadvantages, the two figures",
+      "wb-l1-pagesite": "A web page with its links to resources, then a web site of connected pages",
+      "wb-l1-staticdyn": "Request a static page and a dynamic page: stored as seen vs built piece by piece"
+     }
     },
     {
      "h": "URL (Uniform Resource Locator)",
@@ -35,7 +53,19 @@ COURSES.web = {
       "<b>Domain name / host name</b>: the server address, e.g. <code>www.example.com</code>; <code>example.com</code> is the domain and <code>www.</code> is the particular host at that domain (there could also be <code>development.example.com</code>, <code>clients.example.com</code>).",
       "<b>File name / path</b> (optional): e.g. <code>/2012/samples/first.html</code>, directories separated by slashes starting from the root directory of the host.",
       "Example <code>http://www.icci.org/studies/ips.html</code>: protocol = http; host computer name = www; second-level domain = icci; top-level domain = org; directory = studies; file name = ips.html."
-     ]
+     ],
+     "fig": [
+      "wb-l1-urlparts",
+      "wb-l1-urlsplit"
+     ],
+     "figAt": {
+      "wb-l1-urlparts": 3,
+      "wb-l1-urlsplit": 4
+     },
+     "figH": {
+      "wb-l1-urlparts": "The three components of a URL: protocol, name of site, absolute path",
+      "wb-l1-urlsplit": "Split a URL part by part, with the top-level domain's meaning"
+     }
     },
     {
      "h": "Top-level domains",
@@ -87,7 +117,19 @@ COURSES.web = {
       "<b>HTTP</b> (Hypertext Transfer Protocol): ensures the exchange of almost all types of resources on the web (files, pages, images, search results); the browser's language to send requests to the server. <b>HTTPS</b> is the secure, encrypted version.",
       "<b>FTP</b> (File Transfer Protocol): uploads or downloads files between client and server or between two computers; responsible for file transfer.",
       "<b>ISP</b> (Internet Service Provider): an organization that provides individuals and companies access to the Internet and related services such as e-mail."
-     ]
+     ],
+     "fig": [
+      "wb-l1-search",
+      "wb-l1-protocols"
+     ],
+     "figAt": {
+      "wb-l1-search": 1,
+      "wb-l1-protocols": 5
+     },
+     "figH": {
+      "wb-l1-search": "A search engine searches its own indexed database, not the whole Internet",
+      "wb-l1-protocols": "What TCP/IP, HTTP, HTTPS, FTP, the ISP and web hosting each do"
+     }
     },
     {
      "h": "Client-server architecture",
@@ -98,7 +140,19 @@ COURSES.web = {
       "<b>Client</b> (front end): the user side, typically the web browser; may also mean plug-ins/helper apps or a handheld device.",
       "<b>Client-side technologies</b>: HTML / XHTML, CSS (Cascading Style Sheets), JavaScript / VBScript.",
       "<b>Web browser</b>: software for retrieving, displaying and traversing information resources on the WWW. A resource is identified by a <b>URI</b> (Uniform Resource Identifier)."
-     ]
+     ],
+     "fig": [
+      "wb-l1-csexample",
+      "wb-l1-arch"
+     ],
+     "figAt": {
+      "wb-l1-csexample": 1,
+      "wb-l1-arch": 5
+     },
+     "figH": {
+      "wb-l1-csexample": "Client-server example: request, web server and database, response",
+      "wb-l1-arch": "Web architecture: sort the client-side and server-side technologies"
+     }
     },
     {
      "h": "How the Web works (5 steps)",
@@ -108,7 +162,13 @@ COURSES.web = {
       "<b>3.</b> After receiving the IP address, the browser sends a request for the page to the web server using <b>HTTP</b>, which specifies how browser and server communicate. (An IP address is an identifying number associated with a specific computer or network.)",
       "<b>4.</b> The web server receives the request and searches for the page. If found, it returns it to the browser and <b>closes the HTTP connection</b>.",
       "<b>5.</b> The browser receives the page, <b>interprets</b> it and displays its contents in the window."
-     ]
+     ],
+     "fig": [
+      "wb-l1-webworks"
+     ],
+     "figH": {
+      "wb-l1-webworks": "The 5 steps from typing a URL to seeing the page (browser, DNS, web server)"
+     }
     },
     {
      "h": "Site structure, hyperlinks and how browsers display pages",
@@ -116,7 +176,22 @@ COURSES.web = {
       "Recommended site structure: (1) a <b>root folder</b> containing the site; (2) a page named <b>index.htm / index.html</b> in the root as the default homepage; (3) maybe an <b>images</b> folder; (4) additional folders to organize content.",
       "<b>Hyperlinks</b> are the primary method to navigate between pages and sites. Four types: <b>Text</b> hyperlink (word or phrase), <b>Image</b> hyperlink, <b>Bookmark</b> hyperlink (to another part of the same page), <b>E-mail</b> hyperlink (send e-mail to the displayed address).",
       "When a page opens, the browser reads and interprets the HTML file and formats it. External files (images, multimedia) are downloaded from the server; HTML files only contain <b>references</b> to external files, they do not \"embed\" them."
-     ]
+     ],
+     "fig": [
+      "wb-l1-sitetree",
+      "wb-l1-links",
+      "wb-l1-display"
+     ],
+     "figAt": {
+      "wb-l1-sitetree": 0,
+      "wb-l1-links": 1,
+      "wb-l1-display": 2
+     },
+     "figH": {
+      "wb-l1-sitetree": "The recommended site structure, folder by folder",
+      "wb-l1-links": "The four hyperlink types, working in a small page",
+      "wb-l1-display": "The browser reads index.htm and downloads the images it only references"
+     }
     },
     {
      "h": "Types of web sites",
@@ -160,7 +235,16 @@ COURSES.web = {
       "<b>4. Web accessibility</b>: accessible to all, including people with disabilities (visual, audio, physical, speech).",
       "<b>5. User-friendly site</b>: built on what the audience requires (UI/UX).",
       "<b>6. Download speed</b>: cannot be determined by the designer; optimize graphics (images not larger than <b>10 KB</b>), make smaller pages, avoid nested tables."
-     ]
+     ],
+     "fig": [
+      "wb-l1-linkcolors"
+     ],
+     "figAt": {
+      "wb-l1-linkcolors": 2
+     },
+     "figH": {
+      "wb-l1-linkcolors": "Standard link colors live: blue link, violet visited, red active"
+     }
     },
     {
      "h": "Website security",
@@ -170,7 +254,19 @@ COURSES.web = {
       "<b>Threats</b>: mobile worms, malware, PC and mobile ransomware, large scale attacks like <b>Stuxnet</b>, hacking as a service, spam, phishing.",
       "<b>Email phishing</b>: emails claiming to be from a legitimate enterprise to steal usernames, passwords, credit card details; links lead to fake look-alike sites. Symptoms: <b>spelling and bad grammar</b>, <b>suspicious links</b>, <b>threats</b> (\"your account will be closed\"), <b>spoofing popular websites or companies</b>.",
       "<b>Security considerations</b>: (1) <b>Updated software</b>; (2) <b>SQL injection</b> (hackers insert rogue code into your query to change tables, get information or delete data); (3) <b>XSS</b> cross site scripting (attackers inject client side script; check, encode or strip HTML from submitted data); (4) <b>Error messages</b> (do not reveal whether username or password was wrong); (5) <b>Validation of data</b> on both server side and client side; (6) <b>Passwords</b> (minimum 8 characters with upper, lower and special characters); (7) <b>Upload files</b> (may contain a script); (8) <b>SSL</b> when passing personal information."
-     ]
+     ],
+     "fig": [
+      "wb-l1-phish",
+      "wb-l1-seclab"
+     ],
+     "figAt": {
+      "wb-l1-phish": 3,
+      "wb-l1-seclab": 4
+     },
+     "figH": {
+      "wb-l1-phish": "Spot the four symptoms of a phishing email",
+      "wb-l1-seclab": "Security considerations hands-on: passwords, error messages, SQL injection, XSS"
+     }
     }
    ],
    "cards": [
@@ -1487,14 +1583,35 @@ COURSES.web = {
       "Double quotes around attribute values are most common, but single quotes also work. When the value itself contains double quotes, use single quotes: <code>&lt;p title='John \"ShotGun\" Nelson'&gt;</code> (or the reverse: <code>title=\"John 'ShotGun' Nelson\"</code>).",
       "<code>&lt;hr&gt;</code> defines a <b>thematic break</b>, usually displayed as a <b>horizontal rule</b>, to separate content (or define a change). It is an empty element.",
       "<code>&lt;br&gt;</code> defines a <b>line break</b> (a new line without starting a new paragraph). It is an <b>empty tag</b> with no end tag: <code>&lt;p&gt;This is&lt;br&gt;a paragraph&lt;br&gt;with line breaks.&lt;/p&gt;</code>."
-     ]
+     ],
+     "fig": [
+      "wb-quotes",
+      "wb-breaks"
+     ],
+     "figAt": {
+      "wb-quotes": 0,
+      "wb-breaks": 2
+     },
+     "figH": {
+      "wb-quotes": "Single or double quotes: which quote ends the title value?",
+      "wb-breaks": "&lt;hr&gt; separates the content, &lt;br&gt; starts a new line"
+     }
     },
     {
      "h": "The poem problem and &lt;pre&gt;",
      "pts": [
       "Browsers collapse extra spaces and line breaks inside <code>&lt;p&gt;</code>, so a poem written on several lines shows as one line (\"the poem problem\").",
       "<b>Solution</b>: <code>&lt;pre&gt;</code> defines <b>preformatted text</b>, displayed in a <b>fixed-width font (usually Courier)</b>, and it <b>preserves both spaces and line breaks</b>."
-     ]
+     ],
+     "fig": [
+      "wb-poem"
+     ],
+     "figAt": {
+      "wb-poem": 1
+     },
+     "figH": {
+      "wb-poem": "The poem in &lt;p&gt; collapses to one line; &lt;pre&gt; keeps it as typed"
+     }
     },
     {
      "h": "The style attribute and basic CSS properties",
@@ -1506,7 +1623,16 @@ COURSES.web = {
       "<b>font-size</b>: text size, e.g. <code>style=\"font-size:300%;\"</code> or <code>50px</code>.",
       "<b>text-align</b>: horizontal alignment, e.g. <code>style=\"text-align:center;\"</code>.",
       "<b>border</b>: e.g. <code>style=\"border:2px solid Tomato;\"</code> sets border width, style and color."
-     ]
+     ],
+     "fig": [
+      "wb-styleprops"
+     ],
+     "figAt": {
+      "wb-styleprops": 6
+     },
+     "figH": {
+      "wb-styleprops": "Each CSS property in the style attribute, from the slides, then your own mix"
+     }
     },
     {
      "h": "Text formatting elements",
@@ -1571,14 +1697,29 @@ COURSES.web = {
        "Underline",
        "Listed with B, I, P, BR"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-format"
+     ],
+     "figH": {
+      "wb-format": "Each formatting tag and what the browser makes of it"
+     }
     },
     {
      "h": "Comments",
      "pts": [
       "HTML comments are not displayed but document the source: <code>&lt;!-- Write your comments here --&gt;</code>.",
       "Comment syntaxes to remember: HTML <code>&lt;!-- --&gt;</code>; CSS <code>/* */</code>; JavaScript <code>//</code> and <code>/* */</code>; PHP <code>#</code>, <code>//</code>, <code>/* */</code>."
-     ]
+     ],
+     "fig": [
+      "wb-comments"
+     ],
+     "figAt": {
+      "wb-comments": 1
+     },
+     "figH": {
+      "wb-comments": "A comment stays in the source and never shows; its syntax in each language"
+     }
     },
     {
      "h": "Colors",
@@ -1587,11 +1728,32 @@ COURSES.web = {
       "Colors can be applied to <b>background</b> (background-color), <b>text</b> (color) and <b>borders</b> (border:2px solid Violet).",
       "\"Tomato\" written 5 ways: <code>rgb(255, 99, 71)</code>, <code>#ff6347</code>, <code>hsl(9, 100%, 64%)</code>; 50% transparent: <code>rgba(255, 99, 71, 0.5)</code>, <code>hsla(9, 100%, 64%, 0.5)</code>. The last value (alpha) is opacity from 0 to 1.",
       "<b>Shades of gray</b> use <b>equal values</b> for all three RGB parameters, e.g. <code>rgb(60,60,60)</code> ... <code>rgb(240,240,240)</code>. \"Gray with level 200\" = <code>rgb(200, 200, 200)</code>."
-     ]
+     ],
+     "fig": [
+      "wb-colornames",
+      "wb-colorways",
+      "wb-grays"
+     ],
+     "figAt": {
+      "wb-colornames": 1,
+      "wb-colorways": 2,
+      "wb-grays": 3
+     },
+     "figH": {
+      "wb-colornames": "Colour names on the background, the text and the border",
+      "wb-colorways": "Tomato written 5 ways, and a converter for your own colour",
+      "wb-grays": "Shades of gray: the same value for R, G and B"
+     }
     },
     {
      "h": "Example: inline styles",
-     "code": "<p>I am normal</p>\n<p style=\"color:red;\">I am red</p>\n<p style=\"color:blue;\">I am blue</p>\n<p style=\"font-size:50px;\">I am big</p>\n<h1 style=\"background-color:rgb(255, 99, 71);\">rgb(255, 99, 71)</h1>\n<h1 style=\"background-color:#ff6347;\">#ff6347</h1>\n<h1 style=\"background-color:hsla(9, 100%, 64%, 0.5);\">50% transparent</h1>\n<p>Water is H<sub>2</sub>O and E = mc<sup>2</sup></p>\n<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>"
+     "code": "<p>I am normal</p>\n<p style=\"color:red;\">I am red</p>\n<p style=\"color:blue;\">I am blue</p>\n<p style=\"font-size:50px;\">I am big</p>\n<h1 style=\"background-color:rgb(255, 99, 71);\">rgb(255, 99, 71)</h1>\n<h1 style=\"background-color:#ff6347;\">#ff6347</h1>\n<h1 style=\"background-color:hsla(9, 100%, 64%, 0.5);\">50% transparent</h1>\n<p>Water is H<sub>2</sub>O and E = mc<sup>2</sup></p>\n<p>My favorite color is <del>blue</del> <ins>red</ins>.</p>",
+     "fig": [
+      "wb-inline"
+     ],
+     "figH": {
+      "wb-inline": "The inline-styles example run line by line"
+     }
     }
    ],
    "cards": [
@@ -2175,7 +2337,16 @@ COURSES.web = {
       "With CSS you control the color, font, size of text, spacing between elements, how elements are positioned and laid out, background images or colors, different displays for different devices and screen sizes, and much more.",
       "Lab 4: CSS describes how HTML elements are displayed on screen, paper or other media; it <b>saves a lot of work</b> because it can control the layout of multiple pages at once. It solves two problems: <b>presentation</b> of specific elements and <b>layout</b>.",
       "How the layers fit (L7): HTML = <b>content layer</b> (structure and semantics), CSS = <b>presentation layer</b>, JavaScript = <b>behavior layer</b>."
-     ]
+     ],
+     "fig": [
+      "wb-css-layers"
+     ],
+     "figAt": {
+      "wb-css-layers": 3
+     },
+     "figH": {
+      "wb-css-layers": "One page, three layers: HTML content, CSS presentation, JavaScript behavior"
+     }
     },
     {
      "h": "Three ways to add CSS",
@@ -2200,7 +2371,13 @@ COURSES.web = {
        "&lt;link rel=\"stylesheet\" href=\"styles.css\"&gt; in &lt;head&gt;",
        "Styles for many pages; the .css file contains no HTML and must be saved with a .css extension"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-css-ways"
+     ],
+     "figH": {
+      "wb-css-ways": "Inline, internal, external: how much each one styles"
+     }
     },
     {
      "h": "Internal and external examples",
@@ -2217,7 +2394,19 @@ COURSES.web = {
       "<b>Grouping selector</b> <code>p, h1</code>: selects all &lt;p&gt; and all &lt;h1&gt;.",
       "<b>Universal selector</b> <code>*</code>: selects all elements.",
       "Also used in labs/exams: descendant <code>li a</code>, pseudo-classes <code>a:hover</code>, <code>a:visited</code>, <code>a:active</code>, <code>tr:nth-child(even)</code>."
-     ]
+     ],
+     "fig": [
+      "wb-css-rule",
+      "wb-css-select"
+     ],
+     "figAt": {
+      "wb-css-rule": 1,
+      "wb-css-select": 7
+     },
+     "figH": {
+      "wb-css-rule": "A rule piece by piece: selector, declaration block, property, value",
+      "wb-css-select": "Pick a selector and see which elements it selects"
+     }
     },
     {
      "h": "Colors, fonts and sizes",
@@ -2225,7 +2414,22 @@ COURSES.web = {
       "<b>color</b>: text color. <b>font-family</b>: the font. <b>font-size</b>: text size (e.g. 300%, 16px).",
       "<b>font-weight: bold</b> makes text bold; <b>font-style: italic</b> makes it italic; <b>text-decoration</b> adds underline/overline/line-through (none removes link underlines).",
       "Background properties (Lab 4): <b>background-color</b>, <b>background-image</b> (repeated by default to cover the element), <b>background-repeat</b>, <b>background-attachment</b> (scroll or fixed), <b>background-position</b>."
-     ]
+     ],
+     "fig": [
+      "wb-css-fonts",
+      "wb-css-text",
+      "wb-css-bg"
+     ],
+     "figAt": {
+      "wb-css-fonts": 0,
+      "wb-css-text": 1,
+      "wb-css-bg": 2
+     },
+     "figH": {
+      "wb-css-fonts": "color, font-family and font-size switched on and off",
+      "wb-css-text": "font-weight, font-style and text-decoration tried live",
+      "wb-css-bg": "A small background image: repeat, attachment and position"
+     }
     },
     {
      "h": "The CSS box model",
@@ -2234,7 +2438,16 @@ COURSES.web = {
       "<b>border</b>: a border around the element, e.g. <code>border: 2px solid powderblue;</code> (width, style, color).",
       "<b>padding</b>: space <b>between the text and the border</b> (inside the border).",
       "<b>margin</b>: space <b>outside the border</b>."
-     ]
+     ],
+     "fig": [
+      "wb-css-box"
+     ],
+     "figAt": {
+      "wb-css-box": 3
+     },
+     "figH": {
+      "wb-css-box": "The box built from the inside out: content, padding, border, margin"
+     }
     },
     {
      "h": "Margin / padding / border-width shorthand (Lab 5)",
@@ -2267,7 +2480,13 @@ COURSES.web = {
        "margin-left / padding-left",
        "Single side"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-css-sides"
+     ],
+     "figH": {
+      "wb-css-sides": "1, 2, 3 or 4 values: which side gets which"
+     }
     },
     {
      "h": "Positioning and layout (labs, exam essay)",
@@ -2276,7 +2495,25 @@ COURSES.web = {
       "<b>float</b> (left/right) pushes an element to one side so text wraps around it; used to build horizontal navigation bars (<code>li {float:left;}</code>).",
       "<b>display</b>: block, inline, none, flex, grid. Lab 6: <b>Grid</b> divides a page into regions (<code>grid-template-columns: auto auto;</code>, <code>repeat(3,300px)</code>), <b>Flexbox</b> lays items in a row or column.",
       "Navigation bar = list of links: <code>ul {list-style-type:none; margin:0; padding:0; overflow:hidden;}</code>, <code>li {float:left;}</code>, <code>li a {display:block; padding:14px 16px; text-decoration:none;}</code>, <code>li a:hover {background-color:#111;}</code>."
-     ]
+     ],
+     "fig": [
+      "wb-css-position",
+      "wb-css-float",
+      "wb-css-display",
+      "wb-css-navbar"
+     ],
+     "figAt": {
+      "wb-css-position": 0,
+      "wb-css-float": 1,
+      "wb-css-display": 2,
+      "wb-css-navbar": 3
+     },
+     "figH": {
+      "wb-css-position": "The five position values on a real box, inside a page you can scroll",
+      "wb-css-float": "float: the text wraps around the image",
+      "wb-css-display": "display: block, inline, none, then Flexbox and Grid on the parent",
+      "wb-css-navbar": "The navigation bar built rule by rule"
+     }
     }
    ],
    "cards": [
@@ -2814,7 +3051,22 @@ COURSES.web = {
       "Each item in &lt;ul&gt; or &lt;ol&gt; starts with <code>&lt;li&gt;</code>. Unordered items are marked with <b>bullets (small black circles)</b> by default; ordered items with <b>numbers</b>.",
       "Lists can be <b>nested</b> (a list inside an &lt;li&gt;).",
       "A <b>navigation bar</b> is a list of links: <code>&lt;ul&gt;&lt;li&gt;&lt;a href=\"#home\"&gt;Home&lt;/a&gt;&lt;/li&gt;...&lt;/ul&gt;</code> styled with CSS."
-     ]
+     ],
+     "fig": [
+      "wb-list-kinds",
+      "wb-list-nested",
+      "wb-list-navbar"
+     ],
+     "figAt": {
+      "wb-list-kinds": 1,
+      "wb-list-nested": 2,
+      "wb-list-navbar": 3
+     },
+     "figH": {
+      "wb-list-kinds": "&lt;ul&gt; or &lt;ol&gt;: the same &lt;li&gt; items, bullets or numbers",
+      "wb-list-nested": "A nested list: a whole &lt;ul&gt; inside the Tea &lt;li&gt;",
+      "wb-list-navbar": "One list of links, three looks: plain, vertical and horizontal navigation bar"
+     }
     },
     {
      "h": "list-style-type (unordered list marker)",
@@ -2839,7 +3091,13 @@ COURSES.web = {
        "none",
        "No marker"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-list-marker"
+     ],
+     "figH": {
+      "wb-list-marker": "Pick a list-style-type and see the marker change"
+     }
     },
     {
      "h": "Ordered list: type and start attributes",
@@ -2872,11 +3130,23 @@ COURSES.web = {
        "start=\"50\"",
        "Start counting from 50 instead of 1"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-list-ol"
+     ],
+     "figH": {
+      "wb-list-ol": "type and start on &lt;ol&gt;: try any numbering"
+     }
     },
     {
      "h": "Description list",
-     "code": "<dl>\n  <dt>Coffee</dt>          <!-- term (name) -->\n  <dd>- black hot drink</dd> <!-- description of the term -->\n  <dt>Milk</dt>\n  <dd>- white cold drink</dd>\n</dl>\n\n<ul style=\"list-style-type:square;\">  <!-- square bullets -->\n  <li>Coffee</li>\n  <li>Tea\n    <ul><li>Black tea</li><li>Green tea</li></ul>  <!-- nested -->\n  </li>\n</ul>\n<ol type=\"A\" start=\"3\"> <li>Coffee</li> <li>Tea</li> </ol>  <!-- C, D -->"
+     "code": "<dl>\n  <dt>Coffee</dt>          <!-- term (name) -->\n  <dd>- black hot drink</dd> <!-- description of the term -->\n  <dt>Milk</dt>\n  <dd>- white cold drink</dd>\n</dl>\n\n<ul style=\"list-style-type:square;\">  <!-- square bullets -->\n  <li>Coffee</li>\n  <li>Tea\n    <ul><li>Black tea</li><li>Green tea</li></ul>  <!-- nested -->\n  </li>\n</ul>\n<ol type=\"A\" start=\"3\"> <li>Coffee</li> <li>Tea</li> </ol>  <!-- C, D -->",
+     "fig": [
+      "wb-list-dl"
+     ],
+     "figH": {
+      "wb-list-dl": "The code above, rendered step by step: &lt;dl&gt;, square bullets with a nested list, type=\"A\" start=\"3\""
+     }
     },
     {
      "h": "Tables: basic tags",
@@ -2885,7 +3155,19 @@ COURSES.web = {
       "<code>&lt;table&gt;</code> creates the table; <code>&lt;tr&gt;</code> defines a row; <code>&lt;td&gt;</code> defines a data cell; <code>&lt;th&gt;</code> defines a <b>header cell</b> (bold and centered by default).",
       "Other table tags: <code>&lt;caption&gt;</code> (table caption), <code>&lt;thead&gt;</code>, <code>&lt;tbody&gt;</code>, <code>&lt;tfoot&gt;</code>. The valid set \"all table elements\" is &lt;table&gt;&lt;tr&gt;&lt;td&gt;.",
       "<b>colspan</b> makes a cell span several <b>columns</b>; <b>rowspan</b> makes it span several <b>rows</b>."
-     ]
+     ],
+     "fig": [
+      "wb-table-build",
+      "wb-table-parts"
+     ],
+     "figAt": {
+      "wb-table-build": 1,
+      "wb-table-parts": 2
+     },
+     "figH": {
+      "wb-table-build": "A table built row by row: &lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;",
+      "wb-table-parts": "Each table tag and the part of the table it makes"
+     }
     },
     {
      "h": "Table borders and sizes (CSS)",
@@ -2897,11 +3179,38 @@ COURSES.web = {
       "<b>border-style: dotted;</b> (also dashed, solid, double...), <b>border-color</b>.",
       "Sizes: <code>&lt;table style=\"width:100%\"&gt;</code>; column width on a &lt;th&gt;/&lt;td&gt; (<code>style=\"width:70%\"</code>); row height on a &lt;tr&gt; (<code>style=\"height:200px\"</code>).",
       "Zebra/striped rows: <code>tr:nth-child(even) {background-color: #f2f2f2;}</code>. A <b>responsive table</b> shows a horizontal scroll bar on small screens (wrap it in a div with <code>overflow-x:auto</code>)."
-     ]
+     ],
+     "fig": [
+      "wb-table-collapse",
+      "wb-table-style",
+      "wb-table-sizes",
+      "wb-table-zebra",
+      "wb-table-responsive"
+     ],
+     "figAt": {
+      "wb-table-collapse": 1,
+      "wb-table-style": 4,
+      "wb-table-sizes": 5,
+      "wb-table-zebra": 6,
+      "wb-table-responsive": 6
+     },
+     "figH": {
+      "wb-table-collapse": "Why borders come out double, and border-collapse making them single",
+      "wb-table-style": "Rounded, no outer border, border-style, border-color and the invisible look",
+      "wb-table-sizes": "Table width, column width and row height switched on and off",
+      "wb-table-zebra": "Zebra stripes: which rows nth-child(even) picks",
+      "wb-table-responsive": "A wide table on a small screen, with and without overflow-x:auto"
+     }
     },
     {
      "h": "colspan and rowspan example",
-     "code": "<style>\ntable, th, td { border: 1px solid black; border-collapse: collapse; }\n</style>\n<table style=\"width:100%\">\n  <tr> <th colspan=\"2\">Name</th> <th>Age</th> </tr>   <!-- Name spans 2 columns -->\n  <tr> <td>Jill</td> <td>Smith</td> <td>43</td> </tr>\n</table>\n\n<table>\n  <tr> <th>Name</th> <td>Jill</td> </tr>\n  <tr> <th rowspan=\"2\">Phone</th> <td>555-1234</td> </tr>  <!-- Phone spans 2 rows -->\n  <tr> <td>555-8745</td> </tr>\n</table>"
+     "code": "<style>\ntable, th, td { border: 1px solid black; border-collapse: collapse; }\n</style>\n<table style=\"width:100%\">\n  <tr> <th colspan=\"2\">Name</th> <th>Age</th> </tr>   <!-- Name spans 2 columns -->\n  <tr> <td>Jill</td> <td>Smith</td> <td>43</td> </tr>\n</table>\n\n<table>\n  <tr> <th>Name</th> <td>Jill</td> </tr>\n  <tr> <th rowspan=\"2\">Phone</th> <td>555-1234</td> </tr>  <!-- Phone spans 2 rows -->\n  <tr> <td>555-8745</td> </tr>\n</table>",
+     "fig": [
+      "wb-table-span"
+     ],
+     "figH": {
+      "wb-table-span": "Switch colspan / rowspan off and see where the cells go"
+     }
     },
     {
      "h": "How to build an irregular table (exam method)",
@@ -2910,7 +3219,13 @@ COURSES.web = {
       "2) Write each row as a &lt;tr&gt;; for each cell starting in that row, write a &lt;td&gt; with colspan = number of unit columns it covers and rowspan = number of rows it covers.",
       "3) In later rows, <b>skip</b> the positions already occupied by a cell with rowspan from above.",
       "4) Check: in every row, (sum of colspans of new cells) + (columns still covered by rowspans from above) = total columns."
-     ]
+     ],
+     "fig": [
+      "wb-table-irregular"
+     ],
+     "figH": {
+      "wb-table-irregular": "The exam method row by row, on the notes' question or a table you merge yourself"
+     }
     }
    ],
    "cards": [
@@ -3364,7 +3679,15 @@ COURSES.web = {
        "address, article, aside, blockquote, canvas, dd, div, dl, dt, fieldset, figure, footer, form, h1-h6, header, hr, li, main, nav, noscript, ol, p, pre, section, table, ul, video",
        "a, abbr, b, br, button, cite, code, em, i, img, input, label, q, script, select, small, span, strong, sub, sup, textarea, time"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-l6-flow",
+      "wb-l6-sort"
+     ],
+     "figH": {
+      "wb-l6-flow": "A block &lt;div&gt; and an inline &lt;span&gt;: new line or not, full width or fit, width/height and margins",
+      "wb-l6-sort": "Block-level or inline? Sort the elements"
+     }
     },
     {
      "h": "&lt;div&gt; and &lt;span&gt;",
@@ -3372,7 +3695,19 @@ COURSES.web = {
       "<b>&lt;div&gt;</b>: a block-level element often used as a <b>container for other HTML elements</b>; no required attributes (style, class, id are common); with CSS it styles <b>blocks of content</b>.",
       "<b>&lt;span&gt;</b>: an <b>inline container</b> used to mark up a part of a text or document; with CSS it styles <b>parts of the text</b>: <code>My mother has &lt;span style=\"color:blue;font-weight:bold\"&gt;blue&lt;/span&gt; eyes</code>.",
       "Every element has a default <b>display</b> value (block or inline) which CSS can change (display: block / inline / flex / grid)."
-     ]
+     ],
+     "fig": [
+      "wb-l6-span",
+      "wb-l6-display"
+     ],
+     "figAt": {
+      "wb-l6-span": 1,
+      "wb-l6-display": 2
+     },
+     "figH": {
+      "wb-l6-span": "&lt;span&gt; marks up part of a text, and CSS styles just that part",
+      "wb-l6-display": "A &lt;div&gt; container with four blocks: change display to block, inline, flex or grid"
+     }
     },
     {
      "h": "Iframes",
@@ -3381,11 +3716,26 @@ COURSES.web = {
       "Size: <code>height=\"200\" width=\"300\"</code> (pixels by default) or CSS <code>style=\"height:200px;width:300px\"</code>. Always add a <b>title</b> for screen readers.",
       "By default an iframe has a border; remove it with <code>style=\"border:none;\"</code> or change it: <code>style=\"border:2px solid red;\"</code>.",
       "<b>Iframe as a link target</b>: the link's <b>target</b> attribute must refer to the iframe's <b>name</b> attribute."
-     ]
+     ],
+     "fig": [
+      "wb-l6-iframe"
+     ],
+     "figAt": {
+      "wb-l6-iframe": 2
+     },
+     "figH": {
+      "wb-l6-iframe": "An iframe's height, width and border, with attributes or CSS"
+     }
     },
     {
      "h": "Iframe target example",
-     "code": "<iframe src=\"demo_iframe.htm\" name=\"iframe_a\" height=\"300px\" width=\"100%\"\n        title=\"Iframe Example\"></iframe>\n<p><a href=\"https://www.google.com\" target=\"iframe_a\">Google.com</a></p>\n<!-- clicking the link opens Google inside the iframe -->"
+     "code": "<iframe src=\"demo_iframe.htm\" name=\"iframe_a\" height=\"300px\" width=\"100%\"\n        title=\"Iframe Example\"></iframe>\n<p><a href=\"https://www.google.com\" target=\"iframe_a\">Google.com</a></p>\n<!-- clicking the link opens Google inside the iframe -->",
+     "fig": [
+      "wb-l6-target"
+     ],
+     "figH": {
+      "wb-l6-target": "Click the link: target = the iframe's name opens it inside the iframe"
+     }
     },
     {
      "h": "HTML symbols (entities) and emojis",
@@ -3394,7 +3744,13 @@ COURSES.web = {
       "Euro sign three ways: <code>&amp;euro;</code>, <code>&amp;#8364;</code>, <code>&amp;#x20AC;</code>. Copyright: <code>&amp;copy;</code>; less-than <code>&amp;lt;</code>; greater-than <code>&amp;gt;</code>; ampersand <code>&amp;amp;</code>; non-breaking space <code>&amp;nbsp;</code>.",
       "Math entities: &forall; <code>&amp;forall;</code> (8704), &part; <code>&amp;part;</code> (8706), &exist; <code>&amp;exist;</code> (8707), &empty; <code>&amp;empty;</code> (8709), &nabla; <code>&amp;nabla;</code> (8711), &isin; <code>&amp;isin;</code> (8712), &notin; <code>&amp;notin;</code> (8713), &ni; <code>&amp;ni;</code> (8715), &prod; <code>&amp;prod;</code> (8719), &sum; <code>&amp;sum;</code> (8721).",
       "<b>Emojis</b> look like images but are <b>characters from the UTF-8 (Unicode) character set</b>. Use <code>&lt;meta charset=\"UTF-8\"&gt;</code> and a decimal reference, e.g. <code>&amp;#128512;</code> (&#128512;), 128516 = &#128516;, 128525 = &#128525;, 128151 = &#128151;."
-     ]
+     ],
+     "fig": [
+      "wb-l6-entity"
+     ],
+     "figH": {
+      "wb-l6-entity": "One symbol three ways: entity name, decimal and hexadecimal; emojis are characters"
+     }
     },
     {
      "h": "XHTML vs HTML",
@@ -3403,7 +3759,16 @@ COURSES.web = {
       "<b>Why XHTML?</b> To make HTML more extensible and flexible to work with other data formats (XML), and because browsers ignore errors in HTML, XHTML comes with <b>much stricter error handling</b>.",
       "<b>Most important differences</b>: (1) &lt;!DOCTYPE&gt; is mandatory; (2) the <b>xmlns</b> attribute in &lt;html&gt; is mandatory; (3) &lt;html&gt;, &lt;head&gt;, &lt;title&gt;, &lt;body&gt; are mandatory; (4) elements must always be <b>properly nested</b>; (5) elements must always be <b>closed</b>; (6) elements must be in <b>lowercase</b>; (7) attribute names must be in <b>lowercase</b>; (8) attribute values must always be <b>quoted</b>.",
       "Empty elements must be closed too: <code>&lt;br /&gt;</code>, <code>&lt;hr /&gt;</code>, <code>&lt;img src=\"happy.gif\" alt=\"Happy face\" /&gt;</code>. Wrong nesting: <code>&lt;b&gt;&lt;i&gt;Some text&lt;/b&gt;&lt;/i&gt;</code>."
-     ]
+     ],
+     "fig": [
+      "wb-l6-xhtml"
+     ],
+     "figAt": {
+      "wb-l6-xhtml": 3
+     },
+     "figH": {
+      "wb-l6-xhtml": "The eight XHTML rules checked on the slides' wrong and correct examples"
+     }
     },
     {
      "h": "Forms and input types",
@@ -3413,11 +3778,29 @@ COURSES.web = {
       "<b>type=\"text\"</b>: single-line text field. <b>type=\"password\"</b>: masked text. <b>type=\"radio\"</b>: select <b>ONE</b> of a limited number of choices (same name groups them). <b>type=\"checkbox\"</b>: select <b>ZERO or MORE</b> options. <b>type=\"submit\"</b>: sends form data to a <b>form-handler</b> given in the form's <b>action</b> attribute. Also <b>button</b>, <b>reset</b>, <b>number</b>, <b>email</b>, <b>date</b>, <b>month</b> (month and year), <b>week</b> (week and year), <b>color</b> (color picker), <b>file</b> (file-select field), <b>image</b> (image as submit button), <b>tel</b>, <b>range</b>.",
       "<b>&lt;label&gt;</b> defines a label; clicking its text toggles the radio/checkbox (helps users who struggle with small regions). The label's <b>for</b> must equal the input's <b>id</b>.",
       "Form attributes: <b>action</b> (where to send data, e.g. /action_page.php), <b>method</b> (GET or POST). Other controls: <code>&lt;textarea&gt;</code> (multi-line text), <code>&lt;select&gt;</code> with <code>&lt;option&gt;</code> (drop-down; attribute <b>multiple</b>, option attribute <b>selected</b>), <code>&lt;button&gt;</code>, <code>&lt;fieldset&gt;</code>."
-     ]
+     ],
+     "fig": [
+      "wb-l6-inputs",
+      "wb-l6-choice"
+     ],
+     "figAt": {
+      "wb-l6-inputs": 2,
+      "wb-l6-choice": 3
+     },
+     "figH": {
+      "wb-l6-inputs": "Every input type and form control, live",
+      "wb-l6-choice": "Radio vs checkbox, and &lt;label for&gt; bound to the input's id"
+     }
     },
     {
      "h": "Form example",
-     "code": "<form action=\"/action_page.php\" method=\"post\">\n  <label for=\"fname\">First name:</label><br>\n  <input type=\"text\" id=\"fname\" name=\"fname\" value=\"Mohamed\"><br>\n  <input type=\"radio\" id=\"html\" name=\"fav_language\" value=\"HTML\">\n  <label for=\"html\">HTML</label><br>\n  <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n  <label for=\"vehicle1\"> I have a bike</label><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>"
+     "code": "<form action=\"/action_page.php\" method=\"post\">\n  <label for=\"fname\">First name:</label><br>\n  <input type=\"text\" id=\"fname\" name=\"fname\" value=\"Mohamed\"><br>\n  <input type=\"radio\" id=\"html\" name=\"fav_language\" value=\"HTML\">\n  <label for=\"html\">HTML</label><br>\n  <input type=\"checkbox\" id=\"vehicle1\" name=\"vehicle1\" value=\"Bike\">\n  <label for=\"vehicle1\"> I have a bike</label><br>\n  <input type=\"submit\" value=\"Submit\">\n</form>",
+     "fig": [
+      "wb-l6-submit"
+     ],
+     "figH": {
+      "wb-l6-submit": "Submit the form: name=value pairs sent to /action_page.php with POST or GET"
+     }
     },
     {
      "h": "Multimedia: video and audio",
@@ -3427,7 +3810,13 @@ COURSES.web = {
       "<b>controls</b> adds play, pause, volume. Always include <b>width and height</b>, otherwise the page might <b>flicker</b> while the video loads. <b>&lt;source&gt;</b> lists alternative files; the browser uses the <b>first recognized format</b>. Text between the tags is shown only in browsers that do not support &lt;video&gt;.",
       "<b>autoplay</b> starts automatically; add <b>muted</b> after autoplay to let it start (muted). <b>&lt;track&gt;</b> adds subtitles (kind=\"subtitles\").",
       "<code>&lt;audio controls&gt;&lt;source src=\"horse.ogg\" type=\"audio/ogg\"&gt;&lt;source src=\"horse.mp3\" type=\"audio/mpeg\"&gt;...&lt;/audio&gt;</code> plays audio."
-     ]
+     ],
+     "fig": [
+      "wb-l6-media"
+     ],
+     "figH": {
+      "wb-l6-media": "&lt;video&gt; and &lt;audio&gt;: sources, controls, autoplay with muted, width and height"
+     }
     }
    ],
    "cards": [
@@ -4062,7 +4451,13 @@ COURSES.web = {
        "JavaScript",
        "Controls how the page behaves, adding interactivity"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js1-layers"
+     ],
+     "figH": {
+      "wb-js1-layers": "One page, layer by layer: HTML content, CSS presentation, JavaScript behavior"
+     }
     },
     {
      "h": "History",
@@ -4071,7 +4466,16 @@ COURSES.web = {
       "<b>ECMA</b> developed a standard language known as <b>ECMAScript</b>; <b>ECMAScript Edition 6 (ES6)</b> is widely supported and is what is commonly called \"JavaScript\".",
       "<b>JavaScript = ECMAScript + DOM API</b> (language specification + communication with HTML). Timeline: JavaScript 1.0, ES1, ES2, ES3, AJAX, jQuery, ES5, ES6, ES7.",
       "JavaScript is the world's most popular programming language and the <b>programming language of the Web</b>; used in games, desktop and mobile applications. It is usually classed as an <b>object-oriented</b> (prototype-based) language."
-     ]
+     ],
+     "fig": [
+      "wb-js1-history"
+     ],
+     "figAt": {
+      "wb-js1-history": 2
+     },
+     "figH": {
+      "wb-js1-history": "From Netscape to ES7: JavaScript = ECMAScript + DOM API"
+     }
     },
     {
      "h": "Advantages of JavaScript",
@@ -4080,7 +4484,16 @@ COURSES.web = {
       "<b>Immediate feedback to the visitors</b>: no waiting for a page reload to see if they forgot to enter something.",
       "<b>Increased interactivity</b>: interfaces that react when the user hovers with the mouse or activates them via the keyboard.",
       "<b>Richer interfaces</b>: drag-and-drop components and sliders give a rich interface."
-     ]
+     ],
+     "fig": [
+      "wb-js1-trip"
+     ],
+     "figAt": {
+      "wb-js1-trip": 1
+     },
+     "figH": {
+      "wb-js1-trip": "A forgotten field checked on the server vs in the browser"
+     }
     },
     {
      "h": "Limitations and characteristics",
@@ -4099,7 +4512,25 @@ COURSES.web = {
       "JS can be in a separate <b>external file (.js)</b>, included with the <b>src</b> attribute: <code>&lt;script src=\"file.js\"&gt;&lt;/script&gt;</code>.",
       "Lab 7: three places: <b>inline</b> (<code>&lt;button onclick=\"alert('Hi')\"&gt;</code>), <b>internal</b> (&lt;script&gt; block), <b>external</b> (.js file).",
       "<code>&lt;noscript&gt;</code> content is displayed only by browsers that do not run JavaScript."
-     ]
+     ],
+     "fig": [
+      "wb-js1-headbody",
+      "wb-js1-first",
+      "wb-js1-places",
+      "wb-js1-noscript"
+     ],
+     "figAt": {
+      "wb-js1-headbody": 2,
+      "wb-js1-first": 3,
+      "wb-js1-places": 4,
+      "wb-js1-noscript": 5
+     },
+     "figH": {
+      "wb-js1-headbody": "A function in the &lt;head&gt; runs on every call, code in the &lt;body&gt; runs once at load",
+      "wb-js1-first": "The First Example read top to bottom: HTML, document.write and an external file.js",
+      "wb-js1-places": "Inline, internal and external: the same alert from three places",
+      "wb-js1-noscript": "Turn JavaScript off and the &lt;noscript&gt; content appears"
+     }
     },
     {
      "h": "Variables",
@@ -4110,14 +4541,44 @@ COURSES.web = {
       "Names start with a <b>letter, $ or _</b>, followed by letters, $, _ or digits; <b>case sensitive</b>; cannot be a reserved word (so <code>_myVariable</code> is valid, <code>123variable</code> and <code>break</code> are not).",
       "Types a variable can hold: String, Number, Undefined, Null, Objects (including arrays), Symbols, Functions (and Boolean, BigInt).",
       "<b>typeof</b> results: <code>typeof \"a\"</code> = \"string\", <code>typeof 5</code> = \"number\", <code>typeof true</code> = \"boolean\", <code>typeof undefined</code> = \"undefined\", <code>typeof null</code> = \"object\", <code>typeof [1,2,3]</code> = \"object\", <code>typeof NaN</code> = \"number\", <code>typeof function(){}</code> = \"function\", <code>typeof typeof 1</code> = \"string\"."
-     ]
+     ],
+     "fig": [
+      "wb-js1-loose",
+      "wb-js1-scope",
+      "wb-js1-names",
+      "wb-js1-typeof"
+     ],
+     "figAt": {
+      "wb-js1-loose": 0,
+      "wb-js1-scope": 1,
+      "wb-js1-names": 3,
+      "wb-js1-typeof": 5
+     },
+     "figH": {
+      "wb-js1-loose": "Loose typing: one variable, its type follows the value",
+      "wb-js1-scope": "var, let and const: which names are visible where",
+      "wb-js1-names": "Check a variable name against the three rules",
+      "wb-js1-typeof": "typeof traced, from typeof null to typeof typeof 1"
+     }
     },
     {
      "h": "Expressions and comments",
      "pts": [
       "If the operator is <b>+</b> and one operand is a <b>string</b>, + becomes <b>string concatenation</b> and the other operand is coerced to string: <code>5 + \"9\"</code> = \"59\".",
       "Comments: <code>// single-line</code> and <code>/* multi-line */</code> (identical to Java). Recall: HTML <code>&lt;!-- --&gt;</code>; CSS/JS <code>/* */</code>."
-     ]
+     ],
+     "fig": [
+      "wb-js1-plus",
+      "wb-js1-comments"
+     ],
+     "figAt": {
+      "wb-js1-plus": 0,
+      "wb-js1-comments": 1
+     },
+     "figH": {
+      "wb-js1-plus": "+ with a string operand: concatenation, traced pair by pair",
+      "wb-js1-comments": "Comments are skipped: only the real statements run"
+     }
     },
     {
      "h": "Four ways to output",
@@ -4142,11 +4603,23 @@ COURSES.web = {
        "console.log()",
        "Into the browser console (Inspect, Console tab)"
       ]
-     ]
+     ],
+     "fig": [
+      "wb-js1-output"
+     ],
+     "figH": {
+      "wb-js1-output": "innerHTML, document.write(), alert() and console.log() run side by side"
+     }
     },
     {
      "h": "Example: input validation (Example 5)",
-     "code": "<p>Please input a number between 1 and 10:</p>\n<input id=\"numb\" type=\"number\">\n<button type=\"button\" onclick=\"myFunction()\">Submit</button>\n<p id=\"demo\"></p>\n<script>\nfunction myFunction() {\n  var x, text;\n  x = document.getElementById(\"numb\").value;   // value is a string\n  if (isNaN(x) || x < 1 || x > 10) {           // not a number or out of range\n    text = \"Input not valid\";\n  } else {\n    text = \"Input OK\";\n  }\n  document.getElementById(\"demo\").innerHTML = text;\n}\n</script>"
+     "code": "<p>Please input a number between 1 and 10:</p>\n<input id=\"numb\" type=\"number\">\n<button type=\"button\" onclick=\"myFunction()\">Submit</button>\n<p id=\"demo\"></p>\n<script>\nfunction myFunction() {\n  var x, text;\n  x = document.getElementById(\"numb\").value;   // value is a string\n  if (isNaN(x) || x < 1 || x > 10) {           // not a number or out of range\n    text = \"Input not valid\";\n  } else {\n    text = \"Input OK\";\n  }\n  document.getElementById(\"demo\").innerHTML = text;\n}\n</script>",
+     "fig": [
+      "wb-js1-ex5"
+     ],
+     "figH": {
+      "wb-js1-ex5": "Example 5 traced: type a number, press Submit, follow the condition"
+     }
     },
     {
      "h": "Accessing elements (DOM, Lab 8)",
@@ -4154,7 +4627,19 @@ COURSES.web = {
       "The <b>DOM</b> (Document Object Model) is a W3C standard; the HTML DOM defines HTML elements as <b>objects</b>, their <b>properties</b>, <b>methods</b> to access them, and <b>events</b>. Parts: Core DOM, XML DOM, HTML DOM.",
       "Access methods: <code>document.getElementById(\"id\")</code>, <code>document.getElementsByClassName(\"c\")</code>, <code>document.getElementsByTagName(\"p\")</code>, <code>document.querySelector(\"css\")</code>.",
       "Events can be attached with <code>element.addEventListener(event, function, useCapture)</code>."
-     ]
+     ],
+     "fig": [
+      "wb-js1-dom",
+      "wb-js1-listen"
+     ],
+     "figAt": {
+      "wb-js1-dom": 1,
+      "wb-js1-listen": 2
+     },
+     "figH": {
+      "wb-js1-dom": "The DOM tree and what each access method returns",
+      "wb-js1-listen": "addEventListener: attach a function, then click or hover"
+     }
     }
    ],
    "cards": [

@@ -1637,7 +1637,16 @@ COURSES.ds = {
       "A <b>pointer is a data type</b>; you can create variables of this type like any other type. A pointer variable <b>contains a memory address</b> and <b>points to a specific data type</b>.",
       "Lab definition: a <b>pointer variable</b> is a variable whose content is an <b>address</b> (a memory address).",
       "Example: <code>int x; int *pointer1 = &amp;x;</code> pointer1 holds the address of x (e.g. 0x2000), not its value."
-     ]
+     ],
+     "fig": [
+      "ds-l4-pointer-box"
+     ],
+     "figAt": {
+      "ds-l4-pointer-box": 2
+     },
+     "figH": {
+      "ds-l4-pointer-box": "Slide 2 built up: pointer1 holds the address of x"
+     }
     },
     {
      "h": "Pointer operations",
@@ -1674,11 +1683,23 @@ COURSES.ds = {
        "delete p / delete[] p",
        "Frees memory allocated with new / new[]"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-l4-ptr-ops"
+     ],
+     "figH": {
+      "ds-l4-ptr-ops": "Each pointer operation on a memory picture"
+     }
     },
     {
      "h": "Pointers and function arguments: fakeSwap vs trueSwap",
-     "code": "// Solution 1: pass by value (does NOT swap)\nvoid fakeSwap(int a, int b)\n{\n   int tmp;\n   tmp = a;\n   a = b;\n   b = tmp;        // only the copies a and b are swapped\n}\n// Solution 2: pass addresses (swaps)\nvoid trueSwap(int* a, int* b)\n{\n   int tmp;\n   tmp = *a;       // tmp = 1\n   *a = *b;        // x = 2\n   *b = tmp;       // y = 1\n}\nint main()\n{\n   int x = 1, y = 2;\n   fakeSwap(x, y);\n   cout << \"x= \" << x << \" y= \" << y << endl;   // x= 1 y= 2\n   trueSwap(&x, &y);\n   cout << \"x= \" << x << \" y= \" << y << endl;   // x= 2 y= 1\n}"
+     "code": "// Solution 1: pass by value (does NOT swap)\nvoid fakeSwap(int a, int b)\n{\n   int tmp;\n   tmp = a;\n   a = b;\n   b = tmp;        // only the copies a and b are swapped\n}\n// Solution 2: pass addresses (swaps)\nvoid trueSwap(int* a, int* b)\n{\n   int tmp;\n   tmp = *a;       // tmp = 1\n   *a = *b;        // x = 2\n   *b = tmp;       // y = 1\n}\nint main()\n{\n   int x = 1, y = 2;\n   fakeSwap(x, y);\n   cout << \"x= \" << x << \" y= \" << y << endl;   // x= 1 y= 2\n   trueSwap(&x, &y);\n   cout << \"x= \" << x << \" y= \" << y << endl;   // x= 2 y= 1\n}",
+     "fig": [
+      "ds-l4-swap-goal"
+     ],
+     "figH": {
+      "ds-l4-swap-goal": "The goal of slide 4, and what each solution prints"
+     }
     },
     {
      "h": "Why fakeSwap fails (memory trace from the slides)",
@@ -1689,11 +1710,23 @@ COURSES.ds = {
       "function returns, a and b disappear; x and y are unchanged: x = 1, y = 2",
       "trueSwap(&x, &y): a = address of x, b = address of y",
       "tmp = *a → 1; *a = *b → x = 2; *b = tmp → y = 1  ⇒ x = 2, y = 1"
-     ]
+     ],
+     "fig": [
+      "ds-l4-swap-trace"
+     ],
+     "figH": {
+      "ds-l4-swap-trace": "The memory trace of slides 6–19, line by line"
+     }
     },
     {
      "h": "Lab: pointer program",
-     "code": "#include <iostream>\nusing namespace std;\nint main()\n{\n   int x = 5, *ptr;\n   ptr = &x;              // stores the address of x in ptr\n   cout << \"The Value of X =\" << x << endl;                 // 5\n   cout << \"The Address of X =\" << &x << endl;              // e.g. 001DFAD8\n   cout << \"The Value of ptr =\" << ptr << endl;             // same address as &x\n   cout << \"The Value pointed by pointer ptr \" << *ptr << endl;  // 5\n   cout << \"The Address of ptr =\" << &ptr << endl;          // e.g. 001DFACC\n   *ptr = 24;\n   cout << \"The Value of X after changes =\" << x << endl;   // 24\n}"
+     "code": "#include <iostream>\nusing namespace std;\nint main()\n{\n   int x = 5, *ptr;\n   ptr = &x;              // stores the address of x in ptr\n   cout << \"The Value of X =\" << x << endl;                 // 5\n   cout << \"The Address of X =\" << &x << endl;              // e.g. 001DFAD8\n   cout << \"The Value of ptr =\" << ptr << endl;             // same address as &x\n   cout << \"The Value pointed by pointer ptr \" << *ptr << endl;  // 5\n   cout << \"The Address of ptr =\" << &ptr << endl;          // e.g. 001DFACC\n   *ptr = 24;\n   cout << \"The Value of X after changes =\" << x << endl;   // 24\n}",
+     "fig": [
+      "ds-l4-lab-ptr"
+     ],
+     "figH": {
+      "ds-l4-lab-ptr": "Run the Lab program: x, &x, ptr, *ptr, &ptr"
+     }
     },
     {
      "h": "Dynamic arrays and memory segments (Lab)",
@@ -1702,7 +1735,22 @@ COURSES.ds = {
       "<code>new</code> allocates the memory needed for the object/array and the pointer stores the address of this block.",
       "Every program has three memory segments: <b>code segment</b> (compiled machine code), <b>stack segment</b> (local/temporary variables) and <b>heap segment</b> (dynamic memory allocation with new).",
       "Linked lists, linked stacks and linked queues use <b>dynamic</b> memory allocation: each node is created with <code>new</code> at run time."
-     ]
+     ],
+     "fig": [
+      "ds-l4-dyn-array",
+      "ds-l4-segments",
+      "ds-l4-linked-new"
+     ],
+     "figAt": {
+      "ds-l4-dyn-array": 1,
+      "ds-l4-segments": 2,
+      "ds-l4-linked-new": 3
+     },
+     "figH": {
+      "ds-l4-dyn-array": "Normal vs dynamic array: new at run time, delete[] after",
+      "ds-l4-segments": "Code, stack, heap: where each part of the program lives",
+      "ds-l4-linked-new": "Linked nodes made one by one with new at run time"
+     }
     }
    ],
    "cards": [
@@ -1935,7 +1983,19 @@ COURSES.ds = {
       "Each node has two fields: <b>data</b> and a <b>pointer (next)</b> to the next node. The <b>last node contains NULL</b> in its second field because it points to no node.",
       "The list is accessed through the <b>head</b>, which points to the first node; the last node (pointing to NULL) is the <b>tail</b>. A linked list can <b>grow and shrink</b> as required.",
       "Elements are <b>scattered randomly through memory</b> (not contiguous). It is easy to add or delete an element: just change the links."
-     ]
+     ],
+     "fig": [
+      "ds-l5-node-chain",
+      "ds-l5-scatter"
+     ],
+     "figAt": {
+      "ds-l5-node-chain": 2,
+      "ds-l5-scatter": 3
+     },
+     "figH": {
+      "ds-l5-node-chain": "Slide 3's chain: node fields, NULL, head and tail",
+      "ds-l5-scatter": "Slides 4 to 7: scattered nodes; add 5 and delete it by changing links"
+     }
     },
     {
      "h": "Types of linked lists",
@@ -1956,7 +2016,13 @@ COURSES.ds = {
        "Circular linked list",
        "The last node points back to the head node; can be singly or doubly linked"
       ]
-     ]
+     ],
+     "fig": [
+      "ds-l5-types"
+     ],
+     "figH": {
+      "ds-l5-types": "Singly, doubly and circular: traverse each one"
+     }
     },
     {
      "h": "Advantages and disadvantages",
@@ -1964,11 +2030,26 @@ COURSES.ds = {
       "<b>Advantages</b>: (1) <b>Dynamic size</b>: grows/shrinks since memory is allocated at run time. (2) <b>Insertion and deletion</b> are efficient, especially for large lists. (3) <b>Flexibility</b>: easily reorganized without needing a contiguous block of memory.",
       "<b>Disadvantages</b>: (1) <b>Linear access</b>: no direct access by index; traversal is required to reach a node. (2) <b>Extra memory</b> for storing the pointers.",
       "Operations: <b>insertion</b> (beginning, end, any position), <b>deletion</b> (beginning, end, any position), <b>searching</b> (traverse from head until found or end)."
-     ]
+     ],
+     "fig": [
+      "ds-l5-access"
+     ],
+     "figAt": {
+      "ds-l5-access": 1
+     },
+     "figH": {
+      "ds-l5-access": "Linear access: a[k] in one step, the list walks from head"
+     }
     },
     {
      "h": "Node and Linkedlist classes, isEmpty, isFull",
-     "code": "class Node\n{\npublic:\n   int data;\n   Node *next;\n   Node() { data = 0; next = NULL; }\n};\n\nclass Linkedlist\n{\npublic:\n   Node *head;\n   Linkedlist() { head = NULL; }\n\n   bool isEmpty()\n   {\n      if (head == NULL) return true;\n      else return false;\n   }\n   bool isFull()          // full only if new cannot allocate memory\n   {\n      Node *newnode = new Node();\n      if (newnode == NULL) return true;\n      else return false;\n   }\n};"
+     "code": "class Node\n{\npublic:\n   int data;\n   Node *next;\n   Node() { data = 0; next = NULL; }\n};\n\nclass Linkedlist\n{\npublic:\n   Node *head;\n   Linkedlist() { head = NULL; }\n\n   bool isEmpty()\n   {\n      if (head == NULL) return true;\n      else return false;\n   }\n   bool isFull()          // full only if new cannot allocate memory\n   {\n      Node *newnode = new Node();\n      if (newnode == NULL) return true;\n      else return false;\n   }\n};",
+     "fig": [
+      "ds-l5-classes"
+     ],
+     "figH": {
+      "ds-l5-classes": "Constructor, isEmpty and isFull run on a new list"
+     }
     },
     {
      "h": "Insert at beginning and at end (professor's code)",
@@ -1980,7 +2061,13 @@ COURSES.ds = {
        "end! 10"
       ]
      },
-     "code": "void insertatbeginning(int item)\n{\n   Node *newnode = new Node();\n   newnode->data = item;\n   if (isEmpty())\n   { newnode->next = NULL; head = newnode; }\n   else\n   { newnode->next = head;      // 1. new node points at the old first node\n     head = newnode; }           // 2. head points at the new node\n}\n\nvoid insertatend(int item)\n{\n   Node *newnode = new Node();\n   newnode->data = item;\n   newnode->next = NULL;            // new last node\n   Node *temp1 = head;\n   while (temp1->next != NULL) temp1 = temp1->next;   // go to last node\n   temp1->next = newnode;           // last node now points to new node\n}\n// Note: as written, insertatend crashes on an EMPTY list (temp1 is NULL).\n// Safe version: if (isEmpty()) { head = newnode; return; } before the loop."
+     "code": "void insertatbeginning(int item)\n{\n   Node *newnode = new Node();\n   newnode->data = item;\n   if (isEmpty())\n   { newnode->next = NULL; head = newnode; }\n   else\n   { newnode->next = head;      // 1. new node points at the old first node\n     head = newnode; }           // 2. head points at the new node\n}\n\nvoid insertatend(int item)\n{\n   Node *newnode = new Node();\n   newnode->data = item;\n   newnode->next = NULL;            // new last node\n   Node *temp1 = head;\n   while (temp1->next != NULL) temp1 = temp1->next;   // go to last node\n   temp1->next = newnode;           // last node now points to new node\n}\n// Note: as written, insertatend crashes on an EMPTY list (temp1 is NULL).\n// Safe version: if (isEmpty()) { head = newnode; return; } before the loop.",
+     "fig": [
+      "ds-l5-front-insert"
+     ],
+     "figH": {
+      "ds-l5-front-insert": "Slide 19: E inserted before A, and what swapping the two lines does"
+     }
     },
     {
      "h": "Insert in order (sorted list)",
@@ -2017,7 +2104,16 @@ COURSES.ds = {
       "Steps: (1) locate the node <b>preceding</b> the insertion point (current points to it); (2) make the new node point to the node after the insertion point (<code>newnode-&gt;next = current-&gt;next</code>); (3) make current point to the new node (<code>current-&gt;next = newnode</code>). The order of steps 2 and 3 matters: doing step 3 first loses the rest of the list.",
       "The slide's <code>insertsorted</code> loop is <code>while ((temp1-&gt;data &gt; item &amp;&amp; temp1-&gt;next-&gt;data &gt; item) || (temp1-&gt;data &lt; item &amp;&amp; temp1-&gt;next-&gt;data &lt; item) &amp;&amp; temp1!=NULL)</code>. Tested with g++: it works for a value <b>between</b> two nodes (10,20,30 + 25 → 10 20 25 30) but <b>crashes</b> for a value smaller than the head or larger than the last node (temp1-&gt;next becomes NULL).",
       "In an exam, write the safe version below: it handles the empty list, a new smallest value and a new largest value."
-     ]
+     ],
+     "fig": [
+      "ds-l5-order-insert"
+     ],
+     "figAt": {
+      "ds-l5-order-insert": 0
+     },
+     "figH": {
+      "ds-l5-order-insert": "Slides 21 and 22: the three steps, and why their order matters"
+     }
     },
     {
      "h": "Safe insertsorted (tested with g++)",
@@ -2039,15 +2135,33 @@ COURSES.ds = {
        "dellast"
       ]
      },
-     "code": "int deletefrombeginning()\n{\n   int value;\n   Node *temp = head;\n   if (isEmpty()) { cout << \"Empty\" << endl; return 0; }\n   else\n   { value = head->data;\n     head = head->next;      // head points to the second node\n     delete(temp);\n     return (value); }\n}\n\nint deletefromend()\n{\n   if (isEmpty()) { cout << \"Empty\" << endl; return 0; }\n   else\n   { int value;\n     Node *temp1 = head, *temp2 = NULL;\n     while (temp1->next != NULL) { temp2 = temp1; temp1 = temp1->next; }\n     value = temp1->data;\n     delete temp1;\n     temp2->next = NULL;     // (if there was only one node, set head = NULL instead)\n     return (value); }\n}\n\nvoid deleteitem(int value)\n{\n   if (isEmpty()) cout << \"empty\";\n   else if (search(value))\n   {\n      Node *temp1 = head, *temp2 = NULL;\n      if (head->data == value) { head = head->next; delete temp1; }\n      else\n      {\n         while ((temp1->data != value) && (temp1 != NULL))\n         { temp2 = temp1; temp1 = temp1->next; }   // temp2 = previous, temp1 = current\n         temp2->next = temp1->next;                 // bypass the node\n         delete(temp1);\n      }\n   }\n   else cout << \"not found\";\n}"
+     "code": "int deletefrombeginning()\n{\n   int value;\n   Node *temp = head;\n   if (isEmpty()) { cout << \"Empty\" << endl; return 0; }\n   else\n   { value = head->data;\n     head = head->next;      // head points to the second node\n     delete(temp);\n     return (value); }\n}\n\nint deletefromend()\n{\n   if (isEmpty()) { cout << \"Empty\" << endl; return 0; }\n   else\n   { int value;\n     Node *temp1 = head, *temp2 = NULL;\n     while (temp1->next != NULL) { temp2 = temp1; temp1 = temp1->next; }\n     value = temp1->data;\n     delete temp1;\n     temp2->next = NULL;     // (if there was only one node, set head = NULL instead)\n     return (value); }\n}\n\nvoid deleteitem(int value)\n{\n   if (isEmpty()) cout << \"empty\";\n   else if (search(value))\n   {\n      Node *temp1 = head, *temp2 = NULL;\n      if (head->data == value) { head = head->next; delete temp1; }\n      else\n      {\n         while ((temp1->data != value) && (temp1 != NULL))\n         { temp2 = temp1; temp1 = temp1->next; }   // temp2 = previous, temp1 = current\n         temp2->next = temp1->next;                 // bypass the node\n         delete(temp1);\n      }\n   }\n   else cout << \"not found\";\n}",
+     "fig": [
+      "ds-l5-delete-pics"
+     ],
+     "figH": {
+      "ds-l5-delete-pics": "Slides 27 and 29: deleting the first node and an interior node"
+     }
     },
     {
      "h": "search, count, get, update (professor's code)",
-     "code": "bool search(int item)\n{\n   Node *temp = head;\n   while (temp != NULL)\n   {\n      if (temp->data == item) return (true);\n      else temp = temp->next;\n   }\n   return (false);\n}\nint count()                // size of the list\n{\n   int c = 0;\n   Node *temp = head;\n   while (temp != NULL) { c++; temp = temp->next; }\n   return (c);\n}\nint get()                  // first element\n{\n   if (head != NULL) return head->data;\n   else { cout << \"Empty\"; return 0; }\n}\nbool update(int old_item, int new_item)\n{\n   Node *temp = head;\n   while (temp != NULL)\n   {\n      if (temp->data == old_item) { temp->data = new_item; return true; }\n      else temp = temp->next;\n   }\n   return false;\n}"
+     "code": "bool search(int item)\n{\n   Node *temp = head;\n   while (temp != NULL)\n   {\n      if (temp->data == item) return (true);\n      else temp = temp->next;\n   }\n   return (false);\n}\nint count()                // size of the list\n{\n   int c = 0;\n   Node *temp = head;\n   while (temp != NULL) { c++; temp = temp->next; }\n   return (c);\n}\nint get()                  // first element\n{\n   if (head != NULL) return head->data;\n   else { cout << \"Empty\"; return 0; }\n}\nbool update(int old_item, int new_item)\n{\n   Node *temp = head;\n   while (temp != NULL)\n   {\n      if (temp->data == old_item) { temp->data = new_item; return true; }\n      else temp = temp->next;\n   }\n   return false;\n}",
+     "fig": [
+      "ds-l5-funcs"
+     ],
+     "figH": {
+      "ds-l5-funcs": "search, count, get and update traced node by node"
+     }
     },
     {
      "h": "Lab 5: struct-based list and insert at position",
-     "code": "struct node { int data; node *next; };\nnode *head = NULL;\n\nvoid InsertB(int item)          // insert at beginning\n{\n   node *temp = new node;       // (1) create new node\n   temp->data = item;           // (2) fill the data\n   temp->next = head;           // (3) link to old list\n   head = temp;                 // (4) move start pointer to new node\n}\nvoid InsertAt(int item, int pos)  // positions start at 1\n{\n   int curr = 1;\n   node *temp = new node;\n   temp->data = item; temp->next = NULL;\n   if (head == NULL) head = temp;\n   else if (pos == 1) { temp->next = head; head = temp; }\n   else\n   {\n      node *p = head;\n      while (curr < pos-1) { curr++; p = p->next; }   // p = node at pos-1\n      temp->next = p->next;\n      p->next = temp;\n   }\n}\n// main: InsertB(10); InsertE(30); InsertB(5); InsertAt(20,2);  =>  5 20 10 30"
+     "code": "struct node { int data; node *next; };\nnode *head = NULL;\n\nvoid InsertB(int item)          // insert at beginning\n{\n   node *temp = new node;       // (1) create new node\n   temp->data = item;           // (2) fill the data\n   temp->next = head;           // (3) link to old list\n   head = temp;                 // (4) move start pointer to new node\n}\nvoid InsertAt(int item, int pos)  // positions start at 1\n{\n   int curr = 1;\n   node *temp = new node;\n   temp->data = item; temp->next = NULL;\n   if (head == NULL) head = temp;\n   else if (pos == 1) { temp->next = head; head = temp; }\n   else\n   {\n      node *p = head;\n      while (curr < pos-1) { curr++; p = p->next; }   // p = node at pos-1\n      temp->next = p->next;\n      p->next = temp;\n   }\n}\n// main: InsertB(10); InsertE(30); InsertB(5); InsertAt(20,2);  =>  5 20 10 30",
+     "fig": [
+      "ds-l5-insert-at"
+     ],
+     "figH": {
+      "ds-l5-insert-at": "Lab 5's main traced to 5 20 10 30, then InsertAt your own"
+     }
     }
    ],
    "cards": [
@@ -2330,7 +2444,16 @@ COURSES.ds = {
       "Every new element is inserted as the <b>top</b> element (pointed to by top). To remove, delete the node pointed to by top and <b>move top to its next node</b>.",
       "Figure: elements inserted in order 25, 32, 50, 99 → top → 99 → 50 → 32 → 25 → NULL. Last inserted = 99, first inserted = 25.",
       "Only <b>one pointer (top)</b> and one list are needed; push = insert at beginning, pop = delete from beginning."
-     ]
+     ],
+     "fig": [
+      "ds-l6-slide-stack"
+     ],
+     "figAt": {
+      "ds-l6-slide-stack": 4
+     },
+     "figH": {
+      "ds-l6-slide-stack": "Slide 4's linked stack built push by push: 25, 32, 50, 99"
+     }
     },
     {
      "h": "Creation, push and pop steps",
@@ -2348,7 +2471,19 @@ COURSES.ds = {
       "<b>Push</b>: (1) create newNode with the value; (2) check whether the stack is empty (top == NULL); (3) if empty, newNode→next = NULL; (4) if not empty, newNode→next = top; (5) finally top = newNode.",
       "<b>Pop</b>: (1) check whether empty (top == NULL); (2) if empty, terminate; (3) if not, define Node pointer temp = top; (4) top = top→next; (5) delete temp.",
       "<b>Display</b>: if empty print \"Stack is Empty\"; else temp = top, print temp→data and move to next until the first-inserted node; finally print \"--->NULL\"."
-     ]
+     ],
+     "fig": [
+      "ds-l6-creation",
+      "ds-l6-pop-order"
+     ],
+     "figAt": {
+      "ds-l6-creation": 0,
+      "ds-l6-pop-order": 2
+     },
+     "figH": {
+      "ds-l6-creation": "The three creation steps: Node class, top = NULL, main with a menu",
+      "ds-l6-pop-order": "Why pop keeps temp, moves top, then deletes: two wrong orders compared"
+     }
     },
     {
      "h": "Linked stack class (professor's code)",
@@ -2356,15 +2491,33 @@ COURSES.ds = {
     },
     {
      "h": "display, get, count, search (professor's code)",
-     "code": "void display()\n{\n   if (isEmpty()) cout << \"Empty Stack\";\n   else\n   { Node *temp = top;\n     while (temp != NULL) { cout << temp->data << \" \"; temp = temp->next; }\n     cout << endl << \"END\" << endl; }\n}\nint get()            // top element without removing it\n{\n   if (top != NULL) return top->data;\n   else { cout << \"Empty\"; return 0; }\n}\nint count()\n{\n   int c = 0; Node *temp = top;\n   while (temp != NULL) { c++; temp = temp->next; }\n   return (c);\n}\nbool search(int item)\n{\n   Node *temp = top;\n   while (temp != NULL)\n   { if (temp->data == item) return (true); else temp = temp->next; }\n   return (false);\n}"
+     "code": "void display()\n{\n   if (isEmpty()) cout << \"Empty Stack\";\n   else\n   { Node *temp = top;\n     while (temp != NULL) { cout << temp->data << \" \"; temp = temp->next; }\n     cout << endl << \"END\" << endl; }\n}\nint get()            // top element without removing it\n{\n   if (top != NULL) return top->data;\n   else { cout << \"Empty\"; return 0; }\n}\nint count()\n{\n   int c = 0; Node *temp = top;\n   while (temp != NULL) { c++; temp = temp->next; }\n   return (c);\n}\nbool search(int item)\n{\n   Node *temp = top;\n   while (temp != NULL)\n   { if (temp->data == item) return (true); else temp = temp->next; }\n   return (false);\n}",
+     "fig": [
+      "ds-l6-walk"
+     ],
+     "figH": {
+      "ds-l6-walk": "display, get, count and search traced with temp, node by node"
+     }
     },
     {
      "h": "Exam pattern: push 50 and 70, pop one, remove all (tested)",
-     "code": "void removeAll()          // pop until empty\n{\n   while (!isEmpty())\n      cout << \"popped \" << pop() << endl;\n}\nint main()\n{\n   Stack s;\n   if (s.isEmpty()) cout << \"Stack is empty\" << endl;\n   s.push(50);\n   s.push(70);                          // top -> 70 -> 50 -> NULL\n   cout << \"Removed \" << s.pop() << endl;   // Removed 70\n   s.removeAll();                       // popped 50\n   return 0;\n}"
+     "code": "void removeAll()          // pop until empty\n{\n   while (!isEmpty())\n      cout << \"popped \" << pop() << endl;\n}\nint main()\n{\n   Stack s;\n   if (s.isEmpty()) cout << \"Stack is empty\" << endl;\n   s.push(50);\n   s.push(70);                          // top -> 70 -> 50 -> NULL\n   cout << \"Removed \" << s.pop() << endl;   // Removed 70\n   s.removeAll();                       // popped 50\n   return 0;\n}",
+     "fig": [
+      "ds-l6-exam-main"
+     ],
+     "figH": {
+      "ds-l6-exam-main": "The exam main run line by line with its output"
+     }
     },
     {
      "h": "Lab 7: struct-based linked stack",
-     "code": "struct node { int data; node *next; };\nnode *top = NULL;\nvoid push(int item)          // insert at beginning\n{\n   node *newnode = new node;\n   newnode->data = item;\n   newnode->next = top;\n   top = newnode;\n}\nvoid pop()                   // delete from beginning\n{\n   node *delnode = top;\n   if (top == NULL) cout << \"Stack Underflow\\n\";\n   else\n   { cout << \"The popped element is \" << top->data << endl;\n     top = top->next;\n     delete delnode; }\n}"
+     "code": "struct node { int data; node *next; };\nnode *top = NULL;\nvoid push(int item)          // insert at beginning\n{\n   node *newnode = new node;\n   newnode->data = item;\n   newnode->next = top;\n   top = newnode;\n}\nvoid pop()                   // delete from beginning\n{\n   node *delnode = top;\n   if (top == NULL) cout << \"Stack Underflow\\n\";\n   else\n   { cout << \"The popped element is \" << top->data << endl;\n     top = top->next;\n     delete delnode; }\n}",
+     "fig": [
+      "ds-l6-lab7-compare"
+     ],
+     "figH": {
+      "ds-l6-lab7-compare": "Lab 7's struct push/pop next to the lecture's class"
+     }
     }
    ],
    "cards": [
@@ -2580,7 +2733,22 @@ COURSES.ds = {
       "The <b>last inserted node is always pointed to by rear</b> and the <b>first node by front</b>.",
       "Figure: inserted 10, 15, 22, 50 → front → 10 → 15 → 22 → 50 ← rear, 50 → NULL.",
       "<b>Creation</b>: (1) define Node class with data and next; (2) define two Node pointers <b>front and rear, both NULL</b>; (3) main shows a menu and calls the functions."
-     ]
+     ],
+     "fig": [
+      "ds-l7-fixed-vs-linked",
+      "ds-l7-slide-fig",
+      "ds-l7-creation"
+     ],
+     "figAt": {
+      "ds-l7-fixed-vs-linked": 1,
+      "ds-l7-slide-fig": 3,
+      "ds-l7-creation": 4
+     },
+     "figH": {
+      "ds-l7-fixed-vs-linked": "Fixed size array queue vs linked queue: keep enqueuing",
+      "ds-l7-slide-fig": "Slide 4's queue built node by node, with its addresses",
+      "ds-l7-creation": "The three creation steps: Node class, front and rear, the menu"
+     }
     },
     {
      "h": "Enqueue, dequeue and display steps",
@@ -2598,7 +2766,19 @@ COURSES.ds = {
       "<b>Dequeue</b>: (1) check empty (front == NULL); (2) if empty display \"Queue is Empty!!! Deletion is not possible\" and terminate; (3) else temp = front; (4) front = front→next and delete temp.",
       "<b>Display</b>: if empty display \"Queue is Empty\"; else temp = front; display temp→data and move to the next node until temp reaches rear; finally display \"temp→data ---&gt; NULL\".",
       "Insertion is at the <b>rear (end)</b> of the list; deletion is from the <b>front (beginning)</b>."
-     ]
+     ],
+     "fig": [
+      "ds-l7-display-steps",
+      "ds-l7-stack-vs-queue"
+     ],
+     "figAt": {
+      "ds-l7-display-steps": 2,
+      "ds-l7-stack-vs-queue": 3
+     },
+     "figH": {
+      "ds-l7-display-steps": "Slide 12's display steps, temp walking from front to rear",
+      "ds-l7-stack-vs-queue": "Same values into a linked stack and a linked queue"
+     }
     },
     {
      "h": "Linked queue class (professor's code)",
@@ -2616,15 +2796,33 @@ COURSES.ds = {
     },
     {
      "h": "display, get, count, search (professor's code)",
-     "code": "void display()\n{\n   Node *temp = front;\n   while (temp != NULL) { cout << temp->data << \" \"; temp = temp->next; }\n   cout << endl << \"END\" << endl;\n}\nint get()             // first node (head)\n{\n   if (front != NULL) return front->data;\n   else { cout << \"Empty\"; return 0; }\n}\nint count()\n{\n   int c = 0; Node *temp = front;\n   while (temp != NULL) { c++; temp = temp->next; }\n   return (c);\n}\nbool search(int item)\n{\n   Node *temp = front;\n   while (temp != NULL)\n   { if (temp->data == item) return (true); else temp = temp->next; }\n   return (false);\n}"
+     "code": "void display()\n{\n   Node *temp = front;\n   while (temp != NULL) { cout << temp->data << \" \"; temp = temp->next; }\n   cout << endl << \"END\" << endl;\n}\nint get()             // first node (head)\n{\n   if (front != NULL) return front->data;\n   else { cout << \"Empty\"; return 0; }\n}\nint count()\n{\n   int c = 0; Node *temp = front;\n   while (temp != NULL) { c++; temp = temp->next; }\n   return (c);\n}\nbool search(int item)\n{\n   Node *temp = front;\n   while (temp != NULL)\n   { if (temp->data == item) return (true); else temp = temp->next; }\n   return (false);\n}",
+     "fig": [
+      "ds-l7-funcs"
+     ],
+     "figH": {
+      "ds-l7-funcs": "display, get, count and search traced line by line"
+     }
     },
     {
      "h": "Exam pattern: insert 30 and 50, remove all items (tested)",
-     "code": "// safe dequeue + removeAll inside class Queue\nint dequeue()\n{\n   if (isEmpty()) { cout << \"Queue is empty\" << endl; return 0; }\n   Node *temp = front;\n   int value = front->data;\n   front = front->next;\n   if (front == NULL) rear = NULL;   // queue became empty\n   delete temp;\n   return value;\n}\nvoid removeAll()\n{\n   while (!isEmpty())\n      cout << \"dequeued \" << dequeue() << endl;\n}\nint main()\n{\n   Queue q;\n   if (q.isEmpty()) cout << \"Queue is empty\" << endl;\n   q.enqueue(30);\n   q.enqueue(50);        // front -> 30 -> 50 <- rear\n   q.removeAll();        // dequeued 30, dequeued 50\n   return 0;\n}"
+     "code": "// safe dequeue + removeAll inside class Queue\nint dequeue()\n{\n   if (isEmpty()) { cout << \"Queue is empty\" << endl; return 0; }\n   Node *temp = front;\n   int value = front->data;\n   front = front->next;\n   if (front == NULL) rear = NULL;   // queue became empty\n   delete temp;\n   return value;\n}\nvoid removeAll()\n{\n   while (!isEmpty())\n      cout << \"dequeued \" << dequeue() << endl;\n}\nint main()\n{\n   Queue q;\n   if (q.isEmpty()) cout << \"Queue is empty\" << endl;\n   q.enqueue(30);\n   q.enqueue(50);        // front -> 30 -> 50 <- rear\n   q.removeAll();        // dequeued 30, dequeued 50\n   return 0;\n}",
+     "fig": [
+      "ds-l7-exam-trace"
+     ],
+     "figH": {
+      "ds-l7-exam-trace": "The exam main traced: two enqueues, then removeAll()"
+     }
     },
     {
      "h": "Lab 7: struct-based linked queue dequeue",
-     "code": "node *front = NULL;\nnode *rear = NULL;\nvoid dequeue()                          // remove from beginning\n{\n   if (front == NULL && rear == NULL) cout << \"Queue Underflow\\n\";\n   else\n   {\n      node *temp;\n      if (front->next != NULL)          // more than 1 item\n      { temp = front; front = front->next;\n        cout << \"The deleted element is \" << temp->data << endl;\n        delete (temp); }\n      else                              // only one item\n      { cout << \"The deleted element is \" << front->data << endl;\n        front = rear = NULL; }\n   }\n}"
+     "code": "node *front = NULL;\nnode *rear = NULL;\nvoid dequeue()                          // remove from beginning\n{\n   if (front == NULL && rear == NULL) cout << \"Queue Underflow\\n\";\n   else\n   {\n      node *temp;\n      if (front->next != NULL)          // more than 1 item\n      { temp = front; front = front->next;\n        cout << \"The deleted element is \" << temp->data << endl;\n        delete (temp); }\n      else                              // only one item\n      { cout << \"The deleted element is \" << front->data << endl;\n        front = rear = NULL; }\n   }\n}",
+     "fig": [
+      "ds-l7-lab-dequeue"
+     ],
+     "figH": {
+      "ds-l7-lab-dequeue": "Lab 7's dequeue: which branch runs"
+     }
     }
    ],
    "cards": [
@@ -2846,11 +3044,32 @@ COURSES.ds = {
       "A <b>doubly linked list</b> node has <b>data</b>, a pointer to the <b>next</b> node and a pointer to the <b>previous</b> node, so we can travel in <b>both directions</b>, forward and backward.",
       "Node fields: <b>Data</b> (value), <b>prev</b> (pointer to the previous node), <b>next</b> (pointer to the next node). The first node's prev and the last node's next are NULL.",
       "Cost: extra memory for the prev pointer, and every insert/delete must update <b>both</b> next and prev links."
-     ]
+     ],
+     "fig": [
+      "ds-l8-travel",
+      "ds-l8-node-anatomy",
+      "ds-l8-link-cost"
+     ],
+     "figAt": {
+      "ds-l8-travel": 1,
+      "ds-l8-node-anatomy": 2,
+      "ds-l8-link-cost": 3
+     },
+     "figH": {
+      "ds-l8-travel": "Slide 3's list travelled forward and backward: singly vs doubly",
+      "ds-l8-node-anatomy": "Slide 4's node: Data, prev, next, and NULL at both ends",
+      "ds-l8-link-cost": "The cost: linking 25 between 20 and 30 takes 2 links in a singly list, 4 in a doubly list"
+     }
     },
     {
      "h": "Node and list classes (professor's code)",
-     "code": "class Node\n{\npublic:\n   int data;\n   Node *next;\n   Node *prev;\n   Node() { data = 0; next = NULL; prev = NULL; }\n};\nclass Linkedlist\n{\npublic:\n   Node *head;\n   Linkedlist() { head = NULL; }\n   bool isEmpty() { if (head == NULL) return true; else return false; }\n   bool isFull()\n   { Node *newnode = new Node();\n     if (newnode == NULL) return true; else return false; }\n};"
+     "code": "class Node\n{\npublic:\n   int data;\n   Node *next;\n   Node *prev;\n   Node() { data = 0; next = NULL; prev = NULL; }\n};\nclass Linkedlist\n{\npublic:\n   Node *head;\n   Linkedlist() { head = NULL; }\n   bool isEmpty() { if (head == NULL) return true; else return false; }\n   bool isFull()\n   { Node *newnode = new Node();\n     if (newnode == NULL) return true; else return false; }\n};",
+     "fig": [
+      "ds-l8-node-class"
+     ],
+     "figH": {
+      "ds-l8-node-class": "What the constructors, isEmpty and isFull do"
+     }
     },
     {
      "h": "Insertion: beginning and end (professor's code)",
@@ -2858,15 +3077,33 @@ COURSES.ds = {
     },
     {
      "h": "Insert in order (safe version, tested with g++)",
-     "code": "// The slide's insertsorted uses the same loop as the singly list and then:\n//   newnode->next = temp1->next; temp1->next = newnode;\n//   newnode->prev = temp1;       newnode->next->prev = newnode;\n// It fails when the new value is smaller than the head or larger than the last node.\nvoid insertsorted(int item)\n{\n   Node *newnode = new Node();\n   newnode->data = item;\n   if (isEmpty())\n      head = newnode;\n   else if (item < head->data)          // new first node\n   {\n      newnode->next = head;\n      head->prev = newnode;\n      head = newnode;\n   }\n   else\n   {\n      Node *temp = head;\n      while (temp->next != NULL && temp->next->data < item)\n         temp = temp->next;\n      newnode->next = temp->next;\n      newnode->prev = temp;\n      if (temp->next != NULL) temp->next->prev = newnode;\n      temp->next = newnode;\n   }\n}\n// insert 30,10,20,5,40,25  => forward 5 10 20 25 30 40, backward 40 30 25 20 10 5"
+     "code": "// The slide's insertsorted uses the same loop as the singly list and then:\n//   newnode->next = temp1->next; temp1->next = newnode;\n//   newnode->prev = temp1;       newnode->next->prev = newnode;\n// It fails when the new value is smaller than the head or larger than the last node.\nvoid insertsorted(int item)\n{\n   Node *newnode = new Node();\n   newnode->data = item;\n   if (isEmpty())\n      head = newnode;\n   else if (item < head->data)          // new first node\n   {\n      newnode->next = head;\n      head->prev = newnode;\n      head = newnode;\n   }\n   else\n   {\n      Node *temp = head;\n      while (temp->next != NULL && temp->next->data < item)\n         temp = temp->next;\n      newnode->next = temp->next;\n      newnode->prev = temp;\n      if (temp->next != NULL) temp->next->prev = newnode;\n      temp->next = newnode;\n   }\n}\n// insert 30,10,20,5,40,25  => forward 5 10 20 25 30 40, backward 40 30 25 20 10 5",
+     "fig": [
+      "ds-l8-insert-sorted"
+     ],
+     "figH": {
+      "ds-l8-insert-sorted": "insertsorted on 30, 10, 20, 5, 40, 25: which branch each value takes"
+     }
     },
     {
      "h": "Deletion (professor's code)",
-     "code": "int deletefrombeginning()\n{\n   int value;\n   Node *temp = head;\n   if (isEmpty()) { cout << \"Empty\" << endl; return 0; }\n   else\n   { value = head->data;\n     head = head->next;\n     head->prev = NULL;      // (crashes if it was the only node: check head != NULL)\n     delete(temp);\n     return (value); }\n}\n// deletefromend is the same as in the singly list (temp2->next = NULL)\n\nvoid deleteitem(int value)\n{\n   if (isEmpty()) cout << \"empty\";\n   else if (search(value))\n   {\n      Node *temp1 = head, *temp2 = NULL;\n      if (head->data == value)\n      {\n         if (head->next == NULL) { head = NULL; delete (temp1); }\n         else { head = head->next; head->prev = NULL; delete temp1; }\n      }\n      else\n      {\n         while ((temp1->data != value) && (temp1 != NULL))\n         { temp2 = temp1; temp1 = temp1->next; }\n         if (temp1->next == NULL)              // deleting the last node\n         { temp2->next = NULL; delete temp1; }\n         else                                  // interior node\n         { temp2->next = temp1->next;\n           temp1->next->prev = temp1->prev;\n           delete(temp1); }\n      }\n   }\n   else cout << \"not found\";\n}"
+     "code": "int deletefrombeginning()\n{\n   int value;\n   Node *temp = head;\n   if (isEmpty()) { cout << \"Empty\" << endl; return 0; }\n   else\n   { value = head->data;\n     head = head->next;\n     head->prev = NULL;      // (crashes if it was the only node: check head != NULL)\n     delete(temp);\n     return (value); }\n}\n// deletefromend is the same as in the singly list (temp2->next = NULL)\n\nvoid deleteitem(int value)\n{\n   if (isEmpty()) cout << \"empty\";\n   else if (search(value))\n   {\n      Node *temp1 = head, *temp2 = NULL;\n      if (head->data == value)\n      {\n         if (head->next == NULL) { head = NULL; delete (temp1); }\n         else { head = head->next; head->prev = NULL; delete temp1; }\n      }\n      else\n      {\n         while ((temp1->data != value) && (temp1 != NULL))\n         { temp2 = temp1; temp1 = temp1->next; }\n         if (temp1->next == NULL)              // deleting the last node\n         { temp2->next = NULL; delete temp1; }\n         else                                  // interior node\n         { temp2->next = temp1->next;\n           temp1->next->prev = temp1->prev;\n           delete(temp1); }\n      }\n   }\n   else cout << \"not found\";\n}",
+     "fig": [
+      "ds-l8-delete-ends"
+     ],
+     "figH": {
+      "ds-l8-delete-ends": "Deleting from the beginning and the end, and the one-node crash"
+     }
     },
     {
      "h": "Remove all items (exam pattern, tested)",
-     "code": "void removeAll()\n{\n   if (isEmpty()) { cout << \"List is empty\" << endl; return; }\n   while (head != NULL)\n   {\n      Node *temp = head;\n      head = head->next;\n      if (head != NULL) head->prev = NULL;\n      delete temp;\n   }\n}"
+     "code": "void removeAll()\n{\n   if (isEmpty()) { cout << \"List is empty\" << endl; return; }\n   while (head != NULL)\n   {\n      Node *temp = head;\n      head = head->next;\n      if (head != NULL) head->prev = NULL;\n      delete temp;\n   }\n}",
+     "fig": [
+      "ds-l8-remove-all"
+     ],
+     "figH": {
+      "ds-l8-remove-all": "removeAll node by node, and the empty-list check"
+     }
     },
     {
      "h": "Lab 8: list with head and tail",
@@ -2875,7 +3112,19 @@ COURSES.ds = {
       "<code>removeLast</code>: <code>delnode = tail; tail-&gt;prev-&gt;next = NULL; tail = tail-&gt;prev; delete delnode;</code>",
       "<code>displayBackward</code> starts at tail and follows prev; only possible because of the prev pointers.",
       "Lab main: insertFirst(10), insertLast(20), insertLast(30), insertFirst(100), insertFirst(200) → 200 100 10 20 30; removeFirst → 100 10 20 30; removeLast → 100 10 20; insertAtPosition(1000,2) → 100 1000 10 20; insertAtPosition(2000,4) → 100 1000 10 2000 20; insertAtPosition(5,1) → 5 100 1000 10 2000 20 (assuming <code>current</code> starts at 1; the lab code forgets to initialize it)."
-     ]
+     ],
+     "fig": [
+      "ds-l8-tail-ops",
+      "ds-l8-lab-main"
+     ],
+     "figAt": {
+      "ds-l8-tail-ops": 2,
+      "ds-l8-lab-main": 3
+     },
+     "figH": {
+      "ds-l8-tail-ops": "With a tail pointer: insertLast and removeLast need no loop, displayBackward starts at tail",
+      "ds-l8-lab-main": "The Lab main call by call, printed forward and backward"
+     }
     }
    ],
    "cards": [

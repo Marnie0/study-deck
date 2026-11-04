@@ -726,19 +726,34 @@ AR.ds = {
       "الـ <b>pointer هو data type</b>؛ تقدر تعمل variables من النوع ده زي أي type تاني. الـ pointer variable <b>جواه memory address</b> و<b>بيشاور على data type معين</b>.",
       "تعريف الـ Lab: الـ <b>pointer variable</b> هو variable المحتوى بتاعه <b>address</b> (عنوان في الـ memory).",
       "مثال:<pre>int x;\nint *pointer1 = &amp;x;</pre>الـ pointer1 شايل الـ address بتاع x (مثلًا 0x2000)، مش القيمة بتاعته."
-     ]
+     ],
+     "figH": {
+      "ds-l4-pointer-box": "رسمة slide 2 خطوة بخطوة: الـ pointer1 شايل الـ address بتاع x"
+     }
     },
     {
-     "h": "الـ operations على الـ pointers"
+     "h": "الـ operations على الـ pointers",
+     "figH": {
+      "ds-l4-ptr-ops": "كل operation على الـ pointers متوضحة على رسمة الـ memory"
+     }
     },
     {
-     "h": "الـ pointers كـ function arguments: الـ fakeSwap مقابل الـ trueSwap"
+     "h": "الـ pointers كـ function arguments: الـ fakeSwap مقابل الـ trueSwap",
+     "figH": {
+      "ds-l4-swap-goal": "هدف slide 4، وكل حل بيطبع إيه في الآخر"
+     }
     },
     {
-     "h": "ليه الـ fakeSwap مش بتشتغل (memory trace من الـ slides)"
+     "h": "ليه الـ fakeSwap مش بتشتغل (memory trace من الـ slides)",
+     "figH": {
+      "ds-l4-swap-trace": "الـ memory trace بتاع الـ slides سطر بسطر للحلّين"
+     }
     },
     {
-     "h": "الـ Lab: برنامج pointers"
+     "h": "الـ Lab: برنامج pointers",
+     "figH": {
+      "ds-l4-lab-ptr": "شغّل برنامج الـ Lab وشوف كل cout بيطبع إيه"
+     }
     },
     {
      "h": "الـ dynamic arrays والـ memory segments (Lab)",
@@ -747,7 +762,12 @@ AR.ds = {
       "الـ <code>new</code> بتحجز الـ memory اللي الـ <bdi dir=\"ltr\">object/⁠array</bdi> محتاجها، والـ pointer بيخزن الـ address بتاع الـ block ده.",
       "كل برنامج ليه تلات memory segments: الـ <b>code segment</b> (الـ machine code بعد الـ compile)، الـ <b>stack segment</b> (الـ <bdi dir=\"ltr\">local/⁠temporary&nbsp;variables</bdi>)، والـ <b>heap segment</b> (الـ dynamic memory allocation بالـ new).",
       "الـ linked lists والـ linked stacks والـ linked queues بيستخدموا <b>dynamic</b> memory allocation: كل node بتتعمل بـ <code>new</code> وقت الـ run time."
-     ]
+     ],
+     "figH": {
+      "ds-l4-dyn-array": "الـ array العادي والـ dynamic array: الحجز بالـ new والتحرير بالـ delete",
+      "ds-l4-segments": "الـ code والـ stack والـ heap: كل حتة من البرنامج مكانها فين",
+      "ds-l4-linked-new": "الـ nodes بتتعمل واحدة واحدة بالـ new وقت الـ run time"
+     }
     }
    ],
    "cards": [
@@ -880,10 +900,17 @@ AR.ds = {
       "كل node فيها field-ين: الـ <b>data</b> والـ <b>pointer (next)</b> اللي بيشاور على الـ node اللي بعدها. <b>آخر node فيها NULL</b> في الـ field التاني لأنها مش بتشاور على أي node.",
       "بنوصل للـ list عن طريق الـ <b>head</b>، اللي بيشاور على أول node؛ وآخر node (اللي بتشاور على NULL) اسمها الـ <b>tail</b>. الـ linked list تقدر <b>تكبر وتصغر</b> حسب الحاجة.",
       "العناصر <b>متفرقة عشوائي في الـ memory</b> (مش ورا بعض contiguous). وسهل تضيف أو تمسح عنصر: بس غيّر الـ links."
-     ]
+     ],
+     "figH": {
+      "ds-l5-node-chain": "سلسلة slide 3: الـ fields بتاعة الـ node، والـ NULL، والـ head والـ tail",
+      "ds-l5-scatter": "صور الـ slides من 4 لـ 7، فيها nodes متفرقة وبنضيف 5 ونمسحها بتغيير الـ links"
+     }
     },
     {
-     "h": "أنواع الـ linked lists"
+     "h": "أنواع الـ linked lists",
+     "figH": {
+      "ds-l5-types": "الـ singly والـ doubly والـ circular: اعمل traversal على كل واحدة"
+     }
     },
     {
      "h": "المميزات والعيوب",
@@ -891,13 +918,22 @@ AR.ds = {
       "<b>المميزات</b>: (1) <b>Dynamic size</b>: بتكبر/تصغر لأن الـ memory بتتحجز وقت الـ run time. (2) الـ <b>Insertion والـ deletion</b> efficient، خصوصًا في الـ lists الكبيرة. (3) <b>Flexibility</b>: سهل تعيد ترتيبها من غير ما تحتاج block متصل من الـ memory.",
       "<b>العيوب</b>: (1) <b>Linear access</b>: مفيش access مباشر بالـ index؛ لازم تعمل traversal عشان توصل لـ node. (2) <b>memory زيادة</b> عشان تخزن الـ pointers.",
       "الـ Operations: الـ <b>insertion</b> (في الأول، في الآخر، في أي مكان)، والـ <b>deletion</b> (من الأول، من الآخر، من أي مكان)، والـ <b>searching</b> (تمشي من الـ head لحد ما تلاقيه أو توصل للآخر)."
-     ]
+     ],
+     "figH": {
+      "ds-l5-access": "الـ linear access: الـ array بيوصل في خطوة، والـ list بتمشي من الـ head"
+     }
     },
     {
-     "h": "الـ classes بتاعة Node وLinkedlist، والـ isEmpty والـ isFull"
+     "h": "الـ classes بتاعة Node وLinkedlist، والـ isEmpty والـ isFull",
+     "figH": {
+      "ds-l5-classes": "الـ constructor والـ isEmpty والـ isFull على list جديدة"
+     }
     },
     {
-     "h": "الإضافة في الأول وفي الآخر (كود الدكتورة)"
+     "h": "الإضافة في الأول وفي الآخر (كود الدكتورة)",
+     "figH": {
+      "ds-l5-front-insert": "رسم slide 19: الـ E بتتحط قبل A، وإيه اللي يحصل لو بدّلنا السطرين"
+     }
     },
     {
      "h": "الإضافة بالترتيب (sorted list)",
@@ -905,19 +941,31 @@ AR.ds = {
       "الخطوات: (1) حدد الـ node اللي <b>قبل</b> مكان الإضافة (current بيشاور عليها)؛ و(2) خلي الـ new node تشاور على الـ node اللي بعد مكان الإضافة:<pre>newnode-&gt;next = current-&gt;next;</pre>و(3) خلي current تشاور على الـ new node:<pre>current-&gt;next = newnode;</pre>خلي بالك ترتيب خطوة 2 و3 مهم: لو عملت 3 الأول هتضيّع باقي الـ list.",
       "الـ loop بتاع <code>insertsorted</code> في الـ slide هو:<pre>while ((temp1-&gt;data &gt; item &amp;&amp;\n        temp1-&gt;next-&gt;data &gt; item)\n    || (temp1-&gt;data &lt; item &amp;&amp;\n        temp1-&gt;next-&gt;data &lt; item)\n    &amp;&amp; temp1!=NULL)</pre>اتجرب بـ <bdi dir=\"ltr\">g++</bdi>: بيشتغل مع قيمة <b>بين</b> اتنين nodes، مثلًا:<span class=\"ltr\">10,20,30 + 25 → 10 20 25 30</span>بس <b>بيعمل crash</b> مع قيمة أصغر من الـ head أو أكبر من آخر node (الـ <code>temp1-&gt;next</code> بيبقى NULL).",
       "في الامتحان اكتب النسخة الآمنة اللي تحت: بتتعامل مع الـ list الفاضية، ومع قيمة جديدة أصغر من الكل، ومع قيمة جديدة أكبر من الكل."
-     ]
+     ],
+     "figH": {
+      "ds-l5-order-insert": "صور slide 21 و slide 22: الخطوات التلاتة، وليه ترتيبهم مهم"
+     }
     },
     {
      "h": "الـ insertsorted الآمنة (اتجربت بـ <bdi dir=\"ltr\">g++</bdi>)"
     },
     {
-     "h": "مسح أول node، وآخر node، وعنصر معين (كود الدكتورة)"
+     "h": "مسح أول node، وآخر node، وعنصر معين (كود الدكتورة)",
+     "figH": {
+      "ds-l5-delete-pics": "صور slide 27 و slide 29: مسح أول node ومسح node في النص"
+     }
     },
     {
-     "h": "الـ search والـ count والـ get والـ update (كود الدكتورة)"
+     "h": "الـ search والـ count والـ get والـ update (كود الدكتورة)",
+     "figH": {
+      "ds-l5-funcs": "الـ search والـ count والـ get والـ update متتبعين node بـ node"
+     }
     },
     {
-     "h": "الـ Lab 5: الـ list مبنية على struct والإضافة في position معين"
+     "h": "الـ Lab 5: الـ list مبنية على struct والإضافة في position معين",
+     "figH": {
+      "ds-l5-insert-at": "الـ main بتاع Lab 5 لحد ما الـ list تبقى كاملة، وبعدين جرّب الـ InsertAt بنفسك"
+     }
     }
    ],
    "cards": [
@@ -1068,7 +1116,10 @@ AR.ds = {
       "كل عنصر جديد بيتضاف كـ <b>top</b> (الـ top بيشاور عليه). وعشان تشيل، امسح الـ node اللي الـ top بيشاور عليها و<b>حرّك الـ top للـ node اللي بعدها</b>.",
       "الرسمة: العناصر اتضافت بالترتيب <bdi dir=\"ltr\">25,&nbsp;32,&nbsp;50,&nbsp;99</bdi>، فالـ list بتبقى:<span class=\"ltr\">top → 99 → 50 → 32 → 25 → NULL</span>آخر واحد اتضاف هو <bdi dir=\"ltr\">99</bdi>، وأول واحد اتضاف هو <bdi dir=\"ltr\">25</bdi>.",
       "محتاج <b>pointer واحد بس (top)</b> وlist واحدة؛ الـ push معناها إضافة في الأول، والـ pop معناها مسح من الأول."
-     ]
+     ],
+     "figH": {
+      "ds-l6-slide-stack": "الـ linked stack بتاع slide 4 بيتبني push ورا push بالترتيب ده: <bdi dir=\"ltr\">25, 32, 50, 99</bdi>"
+     }
     },
     {
      "h": "خطوات الـ creation والـ push والـ pop",
@@ -1077,19 +1128,32 @@ AR.ds = {
       "خطوات الـ <b>Push</b>:<br>(1) اعمل <code>newNode</code> بالقيمة.<br>(2) شيك الـ stack فاضي ولا لأ (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>).<br>(3) لو فاضي، <bdi dir=\"ltr\">newNode→next&nbsp;=&nbsp;NULL</bdi>.<br>(4) لو مش فاضي، <bdi dir=\"ltr\">newNode→next&nbsp;=&nbsp;top</bdi>.<br>(5) وفي الآخر <bdi dir=\"ltr\">top&nbsp;=&nbsp;newNode</bdi>.",
       "خطوات الـ <b>Pop</b>:<br>(1) شيك فاضي ولا لأ (<bdi dir=\"ltr\">top&nbsp;==&nbsp;NULL</bdi>).<br>(2) لو فاضي، اخرج من الـ function.<br>(3) لو لأ، عرّف Node pointer <bdi dir=\"ltr\">temp&nbsp;=&nbsp;top</bdi>.<br>(4) بعدها <bdi dir=\"ltr\">top&nbsp;=&nbsp;top→next</bdi>.<br>(5) وفي الآخر <bdi dir=\"ltr\">delete&nbsp;temp</bdi>.",
       "الـ <b>Display</b>: لو فاضي اطبع \"Stack is Empty\"؛ غير كده خلي <bdi dir=\"ltr\">temp&nbsp;=&nbsp;top</bdi>، واطبع <bdi dir=\"ltr\">temp→data</bdi> واتحرك للـ next لحد أول node اتضافت؛ وفي الآخر اطبع <bdi dir=\"ltr\">\"---⁠&gt;NULL\"</bdi>."
-     ]
+     ],
+     "figH": {
+      "ds-l6-creation": "خطوات الـ creation التلاتة: الـ Node class، والـ <bdi dir=\"ltr\">top&nbsp;=&nbsp;NULL</bdi>، والـ main بالـ menu",
+      "ds-l6-pop-order": "ليه الـ pop بتمسك الـ temp وبعدين تحرّك الـ top وبعدين تمسح: مقارنة مع ترتيبين غلط"
+     }
     },
     {
      "h": "الـ class بتاع الـ linked stack (كود الدكتورة)"
     },
     {
-     "h": "الـ display والـ get والـ count والـ search (كود الدكتورة)"
+     "h": "الـ display والـ get والـ count والـ search (كود الدكتورة)",
+     "figH": {
+      "ds-l6-walk": "الـ display والـ get والـ count والـ search خطوة بخطوة والـ temp ماشي node ورا node"
+     }
     },
     {
-     "h": "شكل سؤال الامتحان: الـ push لـ 50 و70، والـ pop لواحد، وشيل الكل (اتجرب)"
+     "h": "شكل سؤال الامتحان: الـ push لـ 50 و70، والـ pop لواحد، وشيل الكل (اتجرب)",
+     "figH": {
+      "ds-l6-exam-main": "الـ main بتاعة الامتحان سطر بسطر ومعاها الـ output"
+     }
     },
     {
-     "h": "الـ Lab 7: الـ linked stack مبني على struct"
+     "h": "الـ Lab 7: الـ linked stack مبني على struct",
+     "figH": {
+      "ds-l6-lab7-compare": "الـ push والـ pop بتوع Lab 7 جنب الـ class بتاع المحاضرة"
+     }
     }
    ],
    "cards": [
@@ -1222,7 +1286,12 @@ AR.ds = {
       "<b>آخر node اتضافت الـ rear دايمًا بيشاور عليها</b> و<b>أول node الـ front بيشاور عليها</b>.",
       "الرسمة: اتضاف <bdi dir=\"ltr\">10,&nbsp;15,&nbsp;22,&nbsp;50</bdi>، فالـ list بتبقى:<span class=\"ltr\">front → 10 → 15 → 22 → 50 ← rear</span>والـ rear عند 50، و<bdi dir=\"ltr\">50&nbsp;→&nbsp;NULL</bdi>.",
       "الـ <b>Creation</b>:<br>(1) عرّف Node class فيها الـ data والـ next.<br>(2) عرّف اتنين Node pointers هما <b>الـ front والـ rear، الاتنين بـ NULL</b>.<br>(3) الـ main بتعرض menu وبتنادي الـ functions."
-     ]
+     ],
+     "figH": {
+      "ds-l7-fixed-vs-linked": "الـ array queue بحجم ثابت قصاد الـ linked queue: كمّل enqueue وشوف الفرق",
+      "ds-l7-slide-fig": "الـ queue بتاع slide 4 بيتبني node ورا node بالعناوين بتاعتها",
+      "ds-l7-creation": "خطوات الـ creation التلاتة: الـ Node class، والـ front والـ rear، والـ menu"
+     }
     },
     {
      "h": "خطوات الـ enqueue والـ dequeue والـ display",
@@ -1231,19 +1300,32 @@ AR.ds = {
       "خطوات الـ <b>Dequeue</b>:<br>(1) شيك على الـ empty (<bdi dir=\"ltr\">front&nbsp;==&nbsp;NULL</bdi>).<br>(2) لو فاضي اعرض \"Queue is Empty!!! Deletion is not possible\" واخرج.<br>(3) غير كده <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi>.<br>(4) بعدها <bdi dir=\"ltr\">front&nbsp;=&nbsp;front→next</bdi> واعمل delete لـ <code>temp</code>.",
       "الـ <b>Display</b>: لو فاضي اعرض \"Queue is Empty\"؛ غير كده <bdi dir=\"ltr\">temp&nbsp;=&nbsp;front</bdi>؛ اعرض <bdi dir=\"ltr\">temp→data</bdi> واتحرك للـ node اللي بعدها لحد ما الـ temp يوصل للـ rear؛ وفي الآخر اعرض:<span class=\"ltr\">\"temp→data ---&gt; NULL\"</span>",
       "الإضافة بتبقى عند الـ <b>rear (آخر الـ list)</b>؛ والمسح من الـ <b>front (أول الـ list)</b>."
-     ]
+     ],
+     "figH": {
+      "ds-l7-display-steps": "خطوات الـ display في slide 12، والـ temp ماشي من الـ front للـ rear",
+      "ds-l7-stack-vs-queue": "نفس القيم في linked stack وفي linked queue"
+     }
     },
     {
      "h": "الـ class بتاع الـ linked queue (كود الدكتورة)"
     },
     {
-     "h": "الـ display والـ get والـ count والـ search (كود الدكتورة)"
+     "h": "الـ display والـ get والـ count والـ search (كود الدكتورة)",
+     "figH": {
+      "ds-l7-funcs": "الـ display والـ get والـ count والـ search متتبعين سطر بسطر"
+     }
     },
     {
-     "h": "شكل سؤال الامتحان: إضافة 30 و50، وشيل كل العناصر (اتجرب)"
+     "h": "شكل سؤال الامتحان: إضافة 30 و50، وشيل كل العناصر (اتجرب)",
+     "figH": {
+      "ds-l7-exam-trace": "تتبع الـ main بتاعة الامتحان: اتنين enqueue وبعدهم الـ removeAll"
+     }
     },
     {
-     "h": "الـ Lab 7: الـ dequeue في linked queue مبني على struct"
+     "h": "الـ Lab 7: الـ dequeue في linked queue مبني على struct",
+     "figH": {
+      "ds-l7-lab-dequeue": "الـ dequeue بتاعة Lab 7: أنهي فرع بيشتغل"
+     }
     }
    ],
    "cards": [
@@ -1374,22 +1456,39 @@ AR.ds = {
       "الـ node في الـ <b>doubly linked list</b> فيها <b>data</b>، وpointer للـ node اللي <b>بعدها (next)</b>، وpointer للـ node اللي <b>قبلها (previous)</b>، فنقدر نمشي في <b>الاتجاهين</b>، لقدام ولورا.",
       "الـ fields بتاعة الـ node: الـ <b>Data</b> (القيمة)، الـ <b>prev</b> (pointer للـ node اللي قبلها)، الـ <b>next</b> (pointer للـ node اللي بعدها). الـ prev بتاع أول node والـ next بتاع آخر node بيبقوا NULL.",
       "التمن: memory زيادة للـ prev pointer، وكل insert أو delete لازم يعدّل الـ links <b>الاتنين</b>: الـ next والـ prev."
-     ]
+     ],
+     "figH": {
+      "ds-l8-travel": "الـ list بتاعة slide 3 لقدام ولورا: الـ singly مقابل الـ doubly",
+      "ds-l8-node-anatomy": "الـ node بتاعة slide 4: الـ Data والـ prev والـ next، والـ NULL في الطرفين",
+      "ds-l8-link-cost": "التمن: إضافة 25 بين 20 و 30 محتاجة 2 links في الـ singly و 4 في الـ doubly"
+     }
     },
     {
-     "h": "الـ classes بتاعة الـ Node والـ list (كود الدكتورة)"
+     "h": "الـ classes بتاعة الـ Node والـ list (كود الدكتورة)",
+     "figH": {
+      "ds-l8-node-class": "الـ constructors والـ isEmpty والـ isFull بيعملوا إيه"
+     }
     },
     {
      "h": "الـ Insertion: في الأول وفي الآخر (كود الدكتورة)"
     },
     {
-     "h": "الإضافة بالترتيب (نسخة آمنة، اتجربت بـ <code>g++</code>)"
+     "h": "الإضافة بالترتيب (نسخة آمنة، اتجربت بـ <code>g++</code>)",
+     "figH": {
+      "ds-l8-insert-sorted": "الـ insertsorted على مثال الـ notes: كل رقم بيدخل في أنهي branch"
+     }
     },
     {
-     "h": "الـ Deletion (كود الدكتورة)"
+     "h": "الـ Deletion (كود الدكتورة)",
+     "figH": {
+      "ds-l8-delete-ends": "المسح من الأول ومن الآخر، ومشكلة الـ list اللي فيها node واحدة"
+     }
     },
     {
-     "h": "شيل كل العناصر (شكل سؤال الامتحان، اتجرب)"
+     "h": "شيل كل العناصر (شكل سؤال الامتحان، اتجرب)",
+     "figH": {
+      "ds-l8-remove-all": "الـ removeAll بتمسح node ورا node، والـ check بتاع الـ list الفاضية"
+     }
     },
     {
      "h": "الـ Lab 8: الـ list فيها head وtail",
@@ -1398,7 +1497,11 @@ AR.ds = {
       "الـ <code>removeLast</code> بتعمل:<pre>delnode = tail;\ntail-&gt;prev-&gt;next = NULL;\ntail = tail-&gt;prev;\ndelete delnode;</pre>",
       "الـ <bdi dir=\"ltr\">displayBackward</bdi> بتبدأ من الـ tail وبتمشي ورا الـ prev؛ وده ممكن بس عشان فيه prev pointers.",
       "الـ main بتاع الـ lab، وبعد كل خطوة الـ list بتبقى:<pre>insertFirst(10), insertLast(20),\ninsertLast(30), insertFirst(100),\ninsertFirst(200)\n  → 200 100 10 20 30\nremoveFirst\n  → 100 10 20 30\nremoveLast\n  → 100 10 20\ninsertAtPosition(1000,2)\n  → 100 1000 10 20\ninsertAtPosition(2000,4)\n  → 100 1000 10 2000 20\ninsertAtPosition(5,1)\n  → 5 100 1000 10 2000 20</pre>(على فرض إن <code>current</code> بيبدأ من 1؛ كود الـ lab ناسي يعمله initialize)."
-     ]
+     ],
+     "figH": {
+      "ds-l8-tail-ops": "بالـ tail pointer الـ insertLast والـ removeLast من غير loop، والـ displayBackward بتبدأ من الـ tail",
+      "ds-l8-lab-main": "الـ main بتاع الـ lab سطر بسطر، مطبوع لقدام ولورا"
+     }
     }
    ],
    "cards": [

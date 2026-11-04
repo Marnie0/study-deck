@@ -3483,3 +3483,423 @@
 
   window.FIGS = Object.assign(window.FIGS || {}, { 'or-dp-stages': Stages, 'or-dp-node': NodeCalc, 'or-dp-allpaths': AllPaths, 'or-dp-m1m7': M7, 'or-dp-st': ST, 'or-dp-n10': N10, 'or-dp-j8': J8, 'or-dp-n6': N6 });
 })();
+/* ── part L7 ── */
+// Operations Research visuals, Lecture 7 (project scheduling, CPM): the network terms, building the arrow network (Lec_10 slide 1, Lec_09 slides 10-20), the two dummy rules, the time formulas (max at a merge node, min at a burst node, floats, the node test), the forward and backward pass with the ES/EF/LS/LF table (Lec_10 slides 3-5), the path list (Lec_10 slide 2), the section and Final examples step by step, and a CPM solver. Every label and number comes from the site's notes or is computed with the course's method.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.orv7 .fig-btn[aria-pressed="true"]{ background:var(--fig-s); color:#fff; border-color:transparent; }
+.orv7 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.orv7-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 8px; }
+.orv7-row .fig-btn{ font-size:.82rem; padding:4px 10px; min-height:30px; }
+.orv7-net{ width:100%; }
+.fig .orv7-net svg{ display:block; margin:0 auto; max-width:100%; height:auto; font-family:var(--body); }
+.fig .orv7-net svg text{ fill:var(--ink); }
+.fig .orv7-net svg text.orv7-w{ fill:#fff; font-weight:700; }
+.fig .orv7-net svg text.orv7-mu{ fill:var(--graphite); }
+.orv7-a, .orv7-lb, .orv7-nd, .orv7-bx{ transition:opacity .45s ease; }
+.orv7-tbl{ width:100%; max-width:460px; margin:10px auto 0; border-collapse:collapse; font:.8rem/1.35 var(--mono); color:var(--ink); background:var(--paper); table-layout:fixed; }
+.orv7-tbl th, .orv7-tbl td{ border:1px solid var(--line); padding:3px 2px; text-align:center; }
+.orv7-tbl th{ font-weight:600; background:var(--paper-2); font-family:var(--body); }
+.orv7-tbl tr.orv7-cur td{ background:color-mix(in srgb, var(--fig-k) 18%, var(--paper)); }
+.orv7-tbl tr.orv7-crit td{ font-weight:700; }
+.orv7-tbl tr.orv7-crit td:first-child{ color:var(--fig-k); }
+.orv7-tbl td.orv7-z{ color:var(--fig-k); }
+.orv7-verdict{ max-width:460px; margin:8px auto 0; text-align:center; font-weight:700; color:var(--ink); font-size:.9rem; overflow-wrap:anywhere; }
+.orv7-verdict.orv7-bad{ color:var(--pen); }
+.orv7-key{ display:flex; flex-wrap:wrap; gap:4px 14px; justify-content:center; font-size:.8rem; color:var(--graphite); margin:6px 0 0; }
+.orv7-key span{ display:inline-flex; align-items:center; gap:5px; }
+.orv7-key i{ display:inline-block; width:15px; height:13px; border:1.5px solid var(--fig-k); background:var(--paper); }
+.orv7-key i.orv7-tri{ border:0; width:0; height:0; border-left:8px solid transparent; border-right:8px solid transparent; border-bottom:13px solid var(--pen); background:none; }
+.orv7-key i.orv7-crl{ border:0; height:4px; width:18px; background:var(--fig-k); }
+.orv7-key i.orv7-dsh{ border:0; height:0; width:18px; border-top:2px dashed var(--graphite); background:none; }
+.orv7-paths{ max-width:460px; margin:8px auto 0; display:grid; gap:3px; font:.8rem/1.4 var(--mono); color:var(--ink); }
+.orv7-paths div{ display:flex; justify-content:space-between; gap:8px; border:1px solid var(--line); border-radius:6px; padding:2px 8px; background:var(--paper); }
+.orv7-paths div.orv7-on{ font-weight:700; border-color:var(--fig-k); box-shadow:0 0 0 1px var(--fig-k); }
+.orv7-ed{ max-width:460px; margin:0 auto 8px; display:grid; gap:4px; font-size:.84rem; color:var(--ink); }
+.orv7-ed .orv7-l{ display:grid; grid-template-columns:2.6em 3.6em minmax(0,1fr) auto; gap:4px; align-items:center; }
+.orv7-ed .orv7-h{ font-size:.78rem; color:var(--graphite); }
+.orv7-ed input{ width:100%; box-sizing:border-box; font:inherit; font-size:.84rem; padding:3px 4px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); min-height:30px; }
+.orv7-ed .fig-btn{ font-size:.8rem; padding:3px 9px; min-height:30px; }
+.fig .orv7-tl{ display:block; margin:0 auto; max-width:100%; height:auto; }
+.orv7 .fig-dots{ flex-wrap:wrap; min-width:0; flex:1 1 150px; row-gap:5px; }
+.fig .orv7-tl text{ fill:var(--ink); font-family:var(--body); }
+.fig .orv7-tl text.orv7-mu{ fill:var(--graphite); }
+.fig .orv7-tl text.orv7-w{ fill:#fff; font-weight:700; }
+.orv7-dm{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; }
+.orv7-dm > div{ border:1px solid var(--line); border-radius:8px; background:var(--paper); padding:6px 4px; min-width:0; }
+.orv7-dm b{ display:block; text-align:center; font-size:.82rem; }
+.orv7-dm .orv7-no{ color:var(--pen); } .orv7-dm .orv7-ok{ color:var(--ok); }
+@media (max-width:520px){ .orv7-dm{ grid-template-columns:minmax(0, 1fr); } }
+.orv7 .fig-cap .ltr{ font-family:var(--mono); font-size:.86rem; margin:2px 0; overflow-wrap:anywhere; }
+@media (prefers-reduced-motion: reduce){ .orv7-a, .orv7-lb, .orv7-nd, .orv7-bx{ transition:none; } }
+`;
+  if (!document.getElementById('orv7-css')) { const s = document.createElement('style'); s.id = 'orv7-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ── helpers: text ── */
+  const L = t => `<span class="ltr">${t}</span>`;
+  const I = t => `<bdi dir="ltr">${String(t).replace(/ /g, '&nbsp;')}</bdi>`;
+  const M = '−';
+  /* ── engine: CPM times (activity table) and the arrow network (nodes, activities, dummies) ── */
+  const A_ = (s) => s.split(';').map(x => x.trim()).filter(Boolean).map(x => { const m = x.match(/^([A-Za-z]\w*)\s+(\d+(?:\.\d+)?)\s*(?:\(([^)]*)\))?$/); return { id: m[1], d: +m[2], p: m[3] ? m[3].split(',').map(t => t.trim()).filter(Boolean) : [] }; });
+  // every activity: ES, EF, LS, LF, TF, FF; T; critical; all start-to-end paths
+  function times(acts) {
+    const by = {}; acts.forEach(a => { by[a.id] = a; });
+    const err = [];
+    acts.forEach(a => a.p.forEach(q => { if (!by[q]) err.push(`${a.id}: unknown predecessor ${q}`); if (q === a.id) err.push(`${a.id} cannot precede itself`); }));
+    if (Object.keys(by).length !== acts.length) err.push('two activities have the same name');
+    if (err.length) return { err };
+    const succ = {}; acts.forEach(a => { succ[a.id] = []; }); acts.forEach(a => a.p.forEach(q => succ[q].push(a.id)));
+    const order = [], deg = {}; acts.forEach(a => { deg[a.id] = a.p.length; });
+    const q = acts.filter(a => !a.p.length).map(a => a.id);
+    while (q.length) { const x = q.shift(); order.push(x); succ[x].forEach(y => { if (--deg[y] === 0) q.push(y); }); }
+    if (order.length < acts.length) return { err: ['the predecessors form a loop'] };
+    const R = {}; order.forEach(x => { const a = by[x], es = a.p.length ? Math.max(...a.p.map(p => R[p].EF)) : 0; R[x] = { id: x, d: a.d, p: a.p, ES: es, EF: es + a.d }; });
+    const T = Math.max(...order.map(x => R[x].EF));
+    order.slice().reverse().forEach(x => { const r = R[x], s = succ[x]; r.LF = s.length ? Math.min(...s.map(y => R[y].LS)) : T; r.LS = r.LF - r.d; r.TF = r.LS - r.ES; r.FF = (s.length ? Math.min(...s.map(y => R[y].ES)) : T) - r.EF; r.crit = r.TF === 0; r.succ = s; });
+    const paths = []; const walk = (x, acc) => { if (paths.length > 40) return; const ac = acc.concat(x); if (!succ[x].length) paths.push({ ids: ac, len: ac.reduce((s, y) => s + by[y].d, 0) }); else succ[x].forEach(y => walk(y, ac)); };
+    acts.filter(a => !a.p.length).forEach(a => walk(a.id, []));
+    return { R, rows: acts.map(a => R[a.id]), T, order, succ, paths, crit: paths.filter(p => p.len === T) };
+  }
+  // the arrow (activity-on-arrow) network with the course's rules: one start node, one end node, activities with the same
+  // predecessors leave the same node, dummies when an activity needs only part of a group and when two would share both nodes
+  function network(acts, tm) {
+    const key = s => s.slice().sort().join(',');
+    const sets = {}; acts.forEach(a => { if (a.p.length) sets[key(a.p)] = a.p.slice().sort(); });
+    const SK = Object.keys(sets), sub = (s, t) => s.length < t.length && s.every(x => t.includes(x));
+    const cover = {}, unc = {};
+    SK.forEach(t => { const ss = SK.filter(s => sub(sets[s], sets[t])); const mx = ss.filter(s => !ss.some(u => u !== s && sub(sets[s], sets[u]))); cover[t] = mx; const got = new Set(); mx.forEach(s => sets[s].forEach(x => got.add(x))); unc[t] = sets[t].filter(x => !got.has(x)); });
+    const arcs = [], home = {}, start = {};
+    acts.forEach(a => {
+      const need = tm.succ[a.id].length ? SK.filter(t => unc[t].includes(a.id)).map(t => 'N:' + t) : ['E'];
+      if (need.length === 1) home[a.id] = need[0]; else { home[a.id] = 'P:' + a.id; need.forEach(n => arcs.push({ t: 'P:' + a.id, h: n, dummy: true, d: 0 })); }
+      start[a.id] = a.p.length ? 'N:' + key(a.p) : 'S';
+    });
+    const seen = {};
+    acts.forEach(a => { const k = start[a.id] + '>' + home[a.id]; if (seen[k]) { arcs.push({ t: 'P:' + a.id, h: home[a.id], dummy: true, d: 0 }); home[a.id] = 'P:' + a.id; } else seen[k] = 1; });
+    SK.forEach(t => cover[t].forEach(s => arcs.push({ t: 'N:' + s, h: 'N:' + t, dummy: true, d: 0 })));
+    acts.forEach(a => arcs.unshift({ t: start[a.id], h: home[a.id], act: a.id, d: a.d }));
+    // order activities first in the input order, dummies after
+    const real = arcs.filter(x => !x.dummy), dum = arcs.filter(x => x.dummy);
+    real.sort((x, y) => acts.findIndex(a => a.id === x.act) - acts.findIndex(a => a.id === y.act));
+    const all = real.concat(dum), ids = [];
+    const addN = n => { if (!ids.includes(n)) ids.push(n); };
+    addN('S'); all.forEach(x => { addN(x.t); addN(x.h); }); ids.splice(ids.indexOf('E'), 1); ids.push('E');
+    // node times: ES = max over arrows in, LF = min over arrows out
+    const N = {}; ids.forEach(n => { N[n] = { id: n, inA: all.filter(x => x.h === n), outA: all.filter(x => x.t === n) }; });
+    const lay = {}; const lv = n => lay[n] != null ? lay[n] : (lay[n] = N[n].inA.length ? Math.max(...N[n].inA.map(x => lv(x.t) + 1)) : 0);
+    ids.forEach(lv); const LM = Math.max(...ids.map(n => lay[n])); lay.E = LM;
+    const topo = ids.slice().sort((x, y) => lay[x] - lay[y]);
+    topo.forEach(n => { const o = N[n]; o.L = lay[n]; o.es = o.inA.length ? Math.max(...o.inA.map(x => N[x.t].es + x.d)) : 0; });
+    topo.slice().reverse().forEach(n => { const o = N[n]; o.lf = o.outA.length ? Math.min(...o.outA.map(x => N[x.h].lf - x.d)) : tm.T; });
+    return { N, ids, arcs: all, LM };
+  }
+  // positions: layer L along the flow, R across it (barycentre ordering), unless the example fixes them
+  function place(net, fix) {
+    const { N, ids, arcs, LM } = net, layers = [];
+    ids.forEach(n => { (layers[N[n].L] = layers[N[n].L] || []).push(n); });
+    for (let l = 0; l <= LM; l++) layers[l] = layers[l] || [];
+    const nR = Math.max(...layers.map(x => x.length)), pos = {};
+    const setR = () => layers.forEach(ly => ly.forEach((n, i) => { pos[n] = i + (nR - ly.length) / 2; }));
+    setR();
+    const bary = (n, dir) => { const nb = arcs.filter(x => dir ? x.h === n : x.t === n).map(x => pos[dir ? x.t : x.h]); return nb.length ? nb.reduce((s, v) => s + v, 0) / nb.length : pos[n]; };
+    for (let it = 0; it < 6; it++) { const dn = it % 2 === 0; const rng = dn ? layers.slice(1) : layers.slice(0, -1).reverse(); rng.forEach(ly => { const b = {}; ly.forEach(n => { b[n] = bary(n, dn); }); ly.sort((x, y) => b[x] - b[y]); }); setR(); }
+    let nL = LM;
+    if (fix) { Object.keys(fix).forEach(k => { if (N[k]) { N[k].L = fix[k][0]; pos[k] = fix[k][1]; } }); nL = Math.max(...ids.map(n => N[n].L)); }
+    ids.forEach(n => { N[n].R = pos[n]; });
+    const minR = Math.min(...ids.map(n => N[n].R)); ids.forEach(n => { N[n].R -= minR; });
+    const sorted = ids.slice().sort((x, y) => N[x].L - N[y].L || N[x].R - N[y].R);
+    sorted.forEach((n, i) => { N[n].num = i + 1; });
+    return { N, ids: sorted, arcs, nL, nR: Math.max(...ids.map(n => N[n].R)) + 1, fixed: !!fix };
+  }
+  function build(acts, fix) { const tm = times(acts); if (tm.err) return tm; const net = place(network(acts, tm), fix); return Object.assign(tm, { net }); }
+
+  /* ── the course's examples (exact inputs from the notes; Lec 9 = the doctor's slide example) ── */
+  const EX = {
+    y19: { t: '2019/20', u: 'months', ua: 'شهر', s: 'A 15; B 17 (A); C 21 (A); D 19 (B); E 22 (B); F 18 (C, D); G 15 (E, F)', fix: { S: [0, 1], 'N:A': [1, 1], 'N:B': [2, 0], 'N:C,D': [2.6, 2], 'N:E,F': [3.6, 1], E: [4.6, 1] } },
+    sec: { t: 'Section', u: '', ua: '', s: 'A 5; B 7 (A); C 10 (A); D 2 (B); E 8 (C); F 10 (C); G 5 (D, E, F); H 3 (G)', fix: { S: [0, 1], 'N:A': [1, 1], 'N:B': [2, 0], 'N:C': [2, 2], 'P:F': [2.9, 2.2], 'N:D,E,F': [3.6, 1], 'N:G': [4.6, 1], E: [5.6, 1] } },
+    y25: { t: '2024/25', u: 'days', ua: 'يوم', s: 'A 6; G 2; J 13; B 4 (A); C 7 (B); D 2 (A); E 4 (D); F 10 (E); H 10 (G); I 6 (J, H); K 9 (A); L 3 (C, K); M 5 (I, L)', fix: { S: [0, 1], 'N:A': [1, 0.6], 'N:G': [1.2, 2.4], 'N:D': [1.9, 0], 'N:B': [2.3, 1.3], 'N:H,J': [2.8, 2], 'N:E': [3, 0], 'N:C,K': [3.5, 1], 'N:I,L': [4.4, 1.5], E: [5.4, 1] } },
+    y24c: { t: '2023/24 (3rd)', u: '', ua: '', s: 'A 3; B 3 (A); C 3 (A); D 5 (C); E 6 (B, C); F 9 (D, E); G 5 (E); H 3 (G); I 5 (G, F); J 6 (I, H); K 4 (J)', fix: { S: [0, 0.5], 'N:A': [1, 0.5], 'N:C': [2, 1], 'N:B,C': [2.6, 0], 'N:E': [3.6, 0], 'N:D,E': [4.3, 1], 'N:G': [4.6, 0], 'N:F,G': [5.6, 1], 'N:H,I': [6.6, 0.5], 'N:J': [7.6, 0.5], E: [8.6, 0.5] } },
+    y24b: { t: '2023/24 (2nd)', u: '', ua: '', s: 'A 5; B 5; C 2 (B); D 2 (A, C); E 3 (A, C); F 1 (A, C); G 2 (B); H 7 (B); I 13 (E); J 6 (E, D); K 4 (F, G, H); L 5 (H); M 5 (J, K, L)', fix: { S: [0, 1], 'N:B': [1, 1.5], 'N:A,C': [2, 0], 'N:H': [2.5, 2], 'N:E': [2.7, 0], 'N:F,G,H': [3.6, 1.6], 'N:D,E': [4.2, 1], 'N:J,K,L': [5.2, 2], E: [6.2, 1] } },
+    lec: { t: 'Lec 9 slides', u: 'months', ua: 'شهر', s: 'A 2; B 5; C 4; D 5 (B); E 7 (A); F 3 (A); G 3 (B); H 6 (C, D); I 2 (C, D); J 5 (E); K 4 (F, G, H); L 3 (F, G, H); M 12 (I); N 8 (J, K)', fix: { S: [0, 1.2], 'N:A': [1, 0], 'N:B': [1.5, 1], 'N:C,D': [2.2, 2], 'N:E': [2.6, 0], 'N:F,G,H': [3, 1], 'N:I': [3.4, 2.1], 'N:J,K': [4.1, 0.3], E: [5, 1.5] } }
+  };
+  const RUN = {}; const run = k => RUN[k] || (RUN[k] = build(A_(EX[k].s), EX[k].fix));
+  const lab = a => a.dummy ? 'dummy' : `${a.act}(${a.d})`;
+  const list = xs => xs.join(', ');
+  const nm = (G, n) => G.N[n].num;
+
+  /* ── width of the stage (the network turns vertical when it does not fit across) ── */
+  function useW() {
+    const ref = useRef(null), [w, setW] = useState(280);
+    useEffect(() => { const el = ref.current; if (!el) return; const f = () => setW(el.clientWidth || 280); f();
+      if (window.ResizeObserver) { const ro = new ResizeObserver(f); ro.observe(el); return () => ro.disconnect(); }
+      window.addEventListener('resize', f); return () => window.removeEventListener('resize', f); }, []);
+    return [ref, w];
+  }
+
+  /* ── the arrow network: nodes (number), box = ES, triangle = LF, arrows = activities, dashed = dummy ── */
+  let SEQ = 0;
+  function Net({ G, show, hi, alt, bad, crit, es, lf, ring, label, badges = true }) {
+    const [ref, w] = useW(), uid = useRef('orv7-m' + (++SEQ)).current;
+    const { N, ids, arcs, nL, nR } = G, H = nL * 100 + 72 <= w;
+    let gA, gC, mA, mC;
+    if (H) { gA = Math.min(130, (w - 72) / Math.max(nL, 1)); mA = 36; mC = badges ? 50 : 28; gC = 78; }
+    else { gA = 92; mA = badges ? 36 : 26; mC = badges ? 56 : 34; gC = nR > 1 ? Math.max(62, Math.min(130, (w - 2 * mC) / (nR - 1))) : 0; }
+    const stg = n => !H && badges && !G.fixed && nR > 1 ? (Math.round(N[n].R) % 2 ? .24 : -.24) * (N[n].L === 0 || N[n].L === nL ? 0 : 1) : 0;
+    const P = n => { const o = N[n], a = mA + (o.L + stg(n)) * gA, c = mC + o.R * gC; return H ? [a, c] : [c, a]; };
+    const Wv = Math.round(H ? 2 * mA + nL * gA : 2 * mC + (nR - 1) * gC), Hv = Math.round(H ? 2 * mC + (nR - 1) * gC : 2 * mA + nL * gA);
+    const any = !!((hi && hi.size) || (alt && alt.size) || (bad && bad.size));
+    const geo = arcs.map((a, i) => {
+      const p = P(a.t), q = P(a.h), dx = q[0] - p[0], dy = q[1] - p[1], len = Math.hypot(dx, dy) || 1, nx = -dy / len, ny = dx / len, m = [(p[0] + q[0]) / 2, (p[1] + q[1]) / 2];
+      let b = 0; const par = arcs.filter(x => x.t === a.t && x.h === a.h);
+      if (par.length > 1) b = (par.indexOf(a) - (par.length - 1) / 2) * 80;
+      else for (const n of ids) { if (n === a.t || n === a.h) continue; const c = P(n), t = Math.max(0, Math.min(1, ((c[0] - p[0]) * dx + (c[1] - p[1]) * dy) / (len * len))), d = Math.hypot(p[0] + t * dx - c[0], p[1] + t * dy - c[1]); if (d < 24) { const sd = (c[0] - m[0]) * nx + (c[1] - m[1]) * ny; b = sd > 0 ? -40 : 40; break; } }
+      const C = [m[0] + nx * b, m[1] + ny * b], u = (f, g, r) => { const ex = g[0] - f[0], ey = g[1] - f[1], l = Math.hypot(ex, ey) || 1; return [f[0] + ex / l * r, f[1] + ey / l * r]; };
+      const s = u(p, C, 15), e = u(q, C, 17), L0 = [.25 * p[0] + .5 * C[0] + .25 * q[0], .25 * p[1] + .5 * C[1] + .25 * q[1]];
+      return { d: `M${s[0].toFixed(1)},${s[1].toFixed(1)} Q${C[0].toFixed(1)},${C[1].toFixed(1)} ${e[0].toFixed(1)},${e[1].toFixed(1)}`, L0, i };
+    });
+    const st = i => bad && bad.has(i) ? 'bad' : hi && hi.has(i) ? 'hi' : alt && alt.has(i) ? 'alt' : crit && crit.has(i) ? 'crit' : '';
+    const col = { bad: 'var(--pen)', hi: 'var(--fig-s)', alt: 'var(--ok)', crit: 'var(--fig-k)', '': 'var(--graphite)' };
+    const vis = i => !show || show.has(i), nodeVis = n => !show || arcs.some((a, i) => show.has(i) && (a.t === n || a.h === n));
+    const op = i => !vis(i) ? 0 : any && !st(i) ? .35 : 1;
+    const badge = (n) => { const [x, y] = P(n), o = N[n], e = es && es[n], f = lf && lf[n];
+      const bx = H ? [x, y - 31] : [x - 35, y], tx = H ? [x, y + 30] : [x + 35, y];
+      return html`<g key=${'b' + n}>
+        <g className="orv7-bx" style=${{ opacity: e != null ? 1 : 0 }}><rect x=${bx[0] - 15} y=${bx[1] - 11} width="30" height="22" rx="2" fill="var(--paper)" stroke="var(--fig-k)" strokeWidth="1.8" /><text x=${bx[0]} y=${bx[1] + 4.5} textAnchor="middle" fontSize="13" fontWeight="600">${e != null ? e : ''}</text></g>
+        <g className="orv7-bx" style=${{ opacity: f != null ? 1 : 0 }}><path d=${`M${tx[0]},${tx[1] - 15} L${tx[0] + 17},${tx[1] + 12} L${tx[0] - 17},${tx[1] + 12} Z`} fill="var(--paper)" stroke="var(--pen)" strokeWidth="1.8" strokeLinejoin="round" /><text x=${tx[0]} y=${tx[1] + 8.5} textAnchor="middle" fontSize="12.5" fontWeight="600">${f != null ? f : ''}</text></g></g>`; };
+    return html`<div className="orv7-net" ref=${ref}><svg viewBox=${`0 0 ${Wv} ${Hv}`} width=${Wv} style=${{ width: Wv + 'px' }} role="img" aria-label=${label}>
+      <defs>${Object.keys(col).map(k => html`<marker key=${k} id=${uid + k} viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="9" markerHeight="9" markerUnits="userSpaceOnUse" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill=${col[k]} /></marker>`)}</defs>
+      ${geo.map(g => { const a = arcs[g.i], s = st(g.i); return html`<path key=${'a' + g.i} className="orv7-a" d=${g.d} fill="none" stroke=${col[s]} strokeWidth=${s ? 3.2 : 1.8} strokeDasharray=${a.dummy ? '6 5' : null} markerEnd=${`url(#${uid + s})`} style=${{ opacity: op(g.i) }} />`; })}
+      ${geo.map(g => { const a = arcs[g.i]; if (a.dummy) return null; const t = a.lbl != null ? a.lbl : lab(a), wd = t.length * 7.4 + 6, s = st(g.i);
+        return html`<g key=${'l' + g.i} className="orv7-lb" style=${{ opacity: op(g.i) }}><rect x=${g.L0[0] - wd / 2} y=${g.L0[1] - 9} width=${wd} height="18" rx="4" fill="var(--paper-2)" /><text x=${g.L0[0]} y=${g.L0[1] + 4.5} textAnchor="middle" fontSize="12.5" fontWeight=${s ? 700 : 500}>${t}</text></g>`; })}
+      ${ids.map(n => { const [x, y] = P(n); return html`<g key=${'n' + n} className="orv7-nd" style=${{ opacity: nodeVis(n) ? 1 : 0 }}>
+        ${ring && ring.has(n) && html`<circle cx=${x} cy=${y} r="19" fill="none" stroke="var(--pen)" strokeWidth="2.5" />`}
+        <circle cx=${x} cy=${y} r="14" fill="var(--fig-s)" /><text className="orv7-w" x=${x} y=${y + 4.6} textAnchor="middle" fontSize="13">${N[n].num}</text></g>`; })}
+      ${badges && ids.map(badge)}
+    </svg></div>`;
+  }
+  const Key = ({ dummy, crit }) => html`<div className="orv7-key"><span><i></i>ES (box)</span><span><i className="orv7-tri"></i>LF (triangle)</span>${crit && html`<span><i className="orv7-crl"></i>critical</span>`}${dummy && html`<span><i className="orv7-dsh"></i>dummy</span>`}</div>`;
+
+  /* ── the activity table ── */
+  function Tbl({ rows, cell, cur, ff, critOn }) {
+    const cols = ['ES', 'EF', 'LS', 'LF', 'TF'].concat(ff ? ['FF'] : []);
+    return html`<table className="orv7-tbl"><thead><tr><th>Act.</th><th>D</th>${cols.map(c => html`<th key=${c}>${c}</th>`)}</tr></thead><tbody>
+      ${rows.map(r => html`<tr key=${r.id} className=${(cur && cur.has(r.id) ? 'orv7-cur ' : '') + (critOn && r.crit ? 'orv7-crit' : '')}><td>${r.id}</td><td>${r.d}</td>
+        ${cols.map(c => { const v = cell ? cell(r, c) : r[c]; return html`<td key=${c} className=${(c === 'TF' && v === 0) ? 'orv7-z' : ''}>${v == null ? '' : v}</td>`; })}</tr>`)}</tbody></table>`;
+  }
+  const Modes = ({ list: l, mode, set }) => html`<div className="orv7-row" role="group">${l.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
+  const arcIdx = (G, f) => new Set(G.arcs.map((a, i) => f(a) ? i : -1).filter(i => i >= 0));
+  const actSet = (G, ids) => arcIdx(G, a => !a.dummy && ids.includes(a.act));
+  const critArcs = r => { const G = r.net, on = new Set(r.rows.filter(x => x.crit).map(x => x.id)); return arcIdx(G, a => a.dummy ? G.N[a.t].es === G.N[a.t].lf && G.N[a.h].es === G.N[a.h].lf && G.N[a.h].es - G.N[a.t].es === 0 : on.has(a.act)); };
+  const allT = r => { const es = {}, lf = {}; r.net.ids.forEach(n => { es[n] = r.net.N[n].es; lf[n] = r.net.N[n].lf; }); return { es, lf }; };
+
+  /* ── [0] the terms on the section example's network ── */
+  function Terms({ ar }) {
+    const r = run('sec'), G = r.net, D = arcIdx(G, a => a.dummy);
+    const T = [
+      ['proj', 'Project', [], [], 'The whole network is the <b>project</b>: interrelated activities executed in a certain order before the entire task can be completed.', 'الـ network كلها هي الـ <b>project</b>: activities مرتبطة ببعض بتتنفذ بترتيب معين لحد ما الشغل كله يخلص.'],
+      ['act', 'Activity', ['C'], [], 'An <b>activity</b> is a job, one arrow: C(10) needs time 10 and resources.', 'الـ <b>activity</b> شغلانة واحدة، وبتترسم سهم واحد زي الـ C اللي محتاجة وقت 10 و resources.'],
+      ['pre', 'Predecessor', ['C'], ['E', 'F'], '<b>C is the predecessor</b> of E and F: it must be completed immediately prior to their start.', 'الـ C هي الـ <b>predecessor</b> بتاعة الـ E والـ F، يعني لازم تخلص قبلهم على طول.'],
+      ['suc', 'Successor', ['G'], ['D', 'E', 'F'], '<b>G is a successor</b> of D, E and F: it cannot start until they are completed.', 'الـ G هي الـ <b>successor</b> بتاعة الـ D والـ E والـ F، ومتقدرش تبدأ غير لما يخلصوا.'],
+      ['start', 'Start activity', ['A'], [], '<b>A is the start activity</b>: it has no predecessor, so it leaves the start node 1.', 'الـ A هي الـ <b>start activity</b> لأن مالهاش predecessor، فبتطلع من الـ start node رقم 1.'],
+      ['dum', 'Dummy', [], [], 'The dashed arrow is a <b>dummy</b>: duration 0, no resources, it only shows that G also waits for F (E and F may not share both nodes).', 'السهم المتقطع ده <b>dummy</b> مدته صفر ومن غير resources، وبيوضح بس إن الـ G مستنية الـ F كمان (لأن الـ E والـ F مينفعش يشتركوا في الـ nodes الاتنين).'],
+      ['path', 'Path', ['A', 'B', 'D', 'G', 'H'], [], 'A <b>path</b>: nodes and activities alternately from the start event to the end event, here A-B-D-G-H = 5 + 7 + 2 + 5 + 3 = 22.', 'الـ <b>path</b> سلسلة nodes و activities ورا بعض من الـ start event للـ end event، زي:' + L('A-B-D-G-H = 5 + 7 + 2 + 5 + 3 = 22')],
+      ['crit', 'Critical path', ['A', 'C', 'F', 'G', 'H'], [], 'The <b>critical path</b> is the longest path, A-C-F-G-H = 33 = the <b>project completion time</b>. Its activities are <b>critical</b> (total float 0).', 'الـ <b>critical path</b> هو أطول path، وطوله هو الـ <b>project completion time</b>:' + L('A-C-F-G-H = 5 + 10 + 10 + 5 + 3 = 33') + 'والـ activities بتاعته <b>critical</b> والـ total float بتاعها صفر.'],
+      ['tf', 'Total float', ['E'], [], '<b>Total float</b> of E = 2: E can finish 2 later without delaying the project (B and D have 11).', 'الـ <b>total float</b> بتاع الـ E قيمته 2، يعني ممكن تتأخر 2 من غير ما الـ project يتأخر (والـ B والـ D ليهم 11).']
+    ];
+    const [k, setK] = useState('proj'), c = T.find(x => x[0] === k);
+    const hi = k === 'dum' ? D : actSet(G, c[2]), alt = actSet(G, c[3]);
+    return html`<figure className="fig orv7"><div className="fig-stage">
+      <${Modes} list=${T.map(x => [x[0], x[1]])} mode=${k} set=${setK} />
+      <${Net} G=${G} hi=${hi} alt=${alt} badges=${false} label="The section example's network: A 5; B 7 (A); C 10 (A); D 2 (B); E 8 (C); F 10 (C); G 5 (D, E, F); H 3 (G)" />
+      </div><${Cap} en=${c[4]} ar=${c[5]} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [1] building the 2019/20 network activity by activity ── */
+  function Build({ ar }) {
+    const r = run('y19'), G = r.net;
+    const S = [
+      { a: ['A'], en: 'A has no predecessor: it leaves the single <b>start node 1</b> and ends at node 2.', ar: 'الـ A مالهاش predecessor، فبتطلع من الـ <b>start node</b> الوحيدة رقم 1 وبتخلص عند الـ node رقم 2.' },
+      { a: ['B', 'C'], en: 'B and C both come after A: <b>same predecessors, same start node</b>, so both leave node 2.', ar: 'الـ B والـ C الاتنين بعد الـ A، يعني <b>نفس الـ predecessors فنفس الـ start node</b>، فالاتنين بيطلعوا من الـ node رقم 2.' },
+      { a: ['D', 'E'], en: 'D and E both come after B: both leave B\'s end node 3.', ar: 'الـ D والـ E الاتنين بعد الـ B، فبيطلعوا من الـ node رقم 3 اللي الـ B بتخلص عندها.' },
+      { a: ['F'], en: 'F needs C <b>and</b> D: C and D end at the same node 4, and F leaves it.', ar: 'الـ F محتاجة الـ C <b>والـ</b> D، فالاتنين بيخلصوا عند نفس الـ node رقم 4، والـ F بتطلع منها.' },
+      { a: ['G'], en: 'G needs E and F: they meet at node 5. G is nobody\'s predecessor, so it enters the single <b>end node 6</b>. Done: 6 nodes, 7 activities, no dummy needed.', ar: 'الـ G محتاجة الـ E والـ F، فبيتقابلوا عند الـ node رقم 5. والـ G مش predecessor لحد، فبتدخل على الـ <b>end node</b> الوحيدة رقم 6. كده خلصنا: 6 nodes و 7 activities ومن غير dummy.' }
+    ];
+    const [i, ctl] = useSteps(S.length, 2400);
+    const upto = [].concat(...S.slice(0, i + 1).map(s => s.a));
+    return html`<figure className="fig orv7"><div className="fig-stage">
+      <${Net} G=${G} show=${actSet(G, upto)} hi=${actSet(G, S[i].a)} badges=${false} label="Building the CPM network of A 15; B 17 (A); C 21 (A); D 19 (B); E 22 (B); F 18 (C, D); G 15 (E, F)" />
+      </div><${Cap} ...${S[i]} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1] the two dummy rules: wrong drawing vs right drawing ── */
+  const mk = (nodes, arcs) => { const N = {}; nodes.forEach(([id, L0, R0, es, lf]) => { N[id] = { id, num: id, L: L0, R: R0, es, lf }; });
+    return { N, ids: nodes.map(x => x[0]), arcs: arcs.map(([t, h, act, d]) => ({ t, h, act, d: d == null ? 0 : d, dummy: !act })), nL: Math.max(...nodes.map(x => x[1])), nR: Math.max(...nodes.map(x => x[2])) + 1 }; };
+  const DUM = {
+    par: { t: 'Same two nodes (1.3)',
+      bad: mk([[2, 0, 0], [4, 1, 0], [6, 2, 0], [7, 3, 0]], [[2, 4, 'C', 10], [4, 6, 'E', 8], [4, 6, 'F', 10], [6, 7, 'G', 5]]),
+      good: mk([[2, 0, 0], [4, 1, 0], [5, 1.9, 1], [6, 2.4, 0], [7, 3.4, 0]], [[2, 4, 'C', 10], [4, 6, 'E', 8], [4, 5, 'F', 10], [5, 6], [6, 7, 'G', 5]]),
+      en: ['Section example: E 8 (C) and F 10 (C), and G needs both. Drawn straight, E and F would both run from node 4 to node 6: two activities with the <b>same start and end node</b>, so "activity 4-6" is ambiguous.', 'Fix: F ends at an <b>extra node 5</b>, and a <b>dummy</b> 5 → 6 (duration 0) carries the dependence on to G. Now every activity has its own pair of nodes.'],
+      ar: ['في مثال السكشن الـ E والـ F الاتنين بعد الـ C، والـ G محتاجاهم الاتنين. لو رسمناهم على طول هيبقوا الاتنين من الـ node رقم 4 للـ node رقم 6، يعني اتنين activities ليهم <b>نفس الـ start node ونفس الـ end node</b>، ومش هنعرف مين فيهم الـ activity اللي بين 4 و 6.', 'الحل: الـ F تخلص عند <b>node زيادة</b> رقمها 5، وبعدين <b>dummy</b> مدته صفر يوصل الاعتماد للـ G:' + L('5 → 6 (dummy, 0)') + 'كده كل activity ليها زوج nodes خاص بيها.'] },
+    part: { t: 'Part of a group (1.4)',
+      bad: mk([[1, 0, 0], [2, 0, 1], [3, 1, 0.5], [4, 2, 0], [5, 2, 1]], [[1, 3, 'A', ''], [2, 3, 'C', ''], [3, 4, 'D', ''], [3, 5, 'F', '']]),
+      good: mk([[1, 0, 0], [2, 0, 1], [3, 1, 0], [4, 1, 1], [5, 2, 0], [6, 2, 1]], [[1, 3, 'A', ''], [2, 4, 'C', ''], [4, 3], [3, 5, 'D', ''], [4, 6, 'F', '']]),
+      en: ['D needs A and C, but F needs <b>only C</b>. If A and C end at one node and F leaves it, F would wrongly wait for A too.', 'Fix: C ends at its own node 4 and F leaves from there; a <b>dashed dummy</b> 4 → 3 tells D that C is done. D still waits for A and C, F only for C.'],
+      ar: ['الـ D محتاجة الـ A والـ C، لكن الـ F محتاجة <b>الـ C بس</b>. لو الـ A والـ C خلصوا عند node واحدة والـ F طلعت منها، الـ F هتستنى الـ A كمان وده غلط.', 'الحل: الـ C تخلص عند node لوحدها رقمها 4 والـ F تطلع منها، و <b>dummy متقطع</b> بيقول للـ D إن الـ C خلصت:' + L('4 → 3 (dummy, 0)') + 'كده الـ D مستنية الـ A والـ C، والـ F مستنية الـ C بس.'] }
+  };
+  function Dummy({ ar }) {
+    const [k, setK] = useState('par'), [fix, setFix] = useState(false), c = DUM[k];
+    const G0 = fix ? c.good : c.bad, j = fix ? 1 : 0;
+    const G = Object.assign({}, G0, { arcs: G0.arcs.map(a => Object.assign({}, a, { lbl: a.dummy ? '' : a.d === '' ? a.act : `${a.act}(${a.d})` })) });
+    const mark = fix ? arcIdx(G, a => a.dummy) : arcIdx(G, a => k === 'par' ? a.act === 'E' || a.act === 'F' : a.act === 'F');
+    return html`<figure className="fig orv7"><div className="fig-stage">
+      <${Modes} list=${Object.keys(DUM).map(x => [x, DUM[x].t])} mode=${k} set=${x => { setK(x); setFix(false); }} />
+      <${Modes} list=${[['n', '✕ Without dummy'], ['y', '✓ With dummy']]} mode=${fix ? 'y' : 'n'} set=${x => setFix(x === 'y')} />
+      <${Net} key=${k + j} G=${G} hi=${fix ? mark : null} bad=${fix ? null : mark} badges=${false} label=${c.t} />
+      <p className=${'orv7-verdict' + (fix ? '' : ' orv7-bad')}>${fix ? 'Correct network' : k === 'par' ? 'Wrong: E and F share both nodes' : 'Wrong: F would wait for A'}</p>
+      </div><${Cap} en=${c.en[j]} ar=${c.ar[j]} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [2] the time formulas on pieces of the 2019/20 network ── */
+  const FR = {
+    merge: mk([[3, 0, 0], [2, 0, 1], [4, 1, 0.5]], [[3, 4, 'D', 19], [2, 4, 'C', 21]]),
+    burst: mk([[3, 0, 0.5], [5, 1, 0], [4, 1, 1]], [[3, 5, 'E', 22], [3, 4, 'D', 19]])
+  };
+  function Timeline({ ff }) {
+    const X = t => 18 + t * 4.2, tick = [0, 15, 30, 36, 51];
+    return html`<svg className="orv7-tl" viewBox="0 0 264 150" width="264" style=${{ width: "264px" }} role="img" aria-label=${ff ? 'Free float of C: from its EF 36 to the ES of F, 51' : 'Total float of C: earliest 15 to 36, latest 30 to 51'}>
+      <text x=${X(0)} y="18" fontSize="13.5" className="orv7-mu">earliest</text>
+      <rect x=${X(15)} y="24" width=${X(36) - X(15)} height="24" rx="4" fill="var(--fig-s)" /><text className="orv7-w" x=${(X(15) + X(36)) / 2} y="41" textAnchor="middle" fontSize="13.5">C (21)</text>
+      ${!ff && html`<g><text x=${X(0)} y="68" fontSize="13.5" className="orv7-mu">latest</text>
+        <rect x=${X(30)} y="74" width=${X(51) - X(30)} height="24" rx="4" fill="var(--paper)" stroke="var(--fig-s)" strokeWidth="2" strokeDasharray="5 4" /><text x=${(X(30) + X(51)) / 2} y="91" textAnchor="middle" fontSize="13.5">C (21)</text>
+        <path d=${`M${X(15)},106 V112 H${X(30)} V106`} fill="none" stroke="var(--pen)" strokeWidth="2" /><text x=${(X(15) + X(30)) / 2} y="127" textAnchor="middle" fontSize="13.5" fontWeight="700">TF 15</text></g>`}
+      ${ff && html`<g><path d=${`M${X(51)},14 V112`} stroke="var(--fig-k)" strokeWidth="2" /><text x=${X(51) - 4} y="70" textAnchor="end" fontSize="13.5">ES of F = 51</text>
+        <path d=${`M${X(36)},56 V62 H${X(51)} V56`} fill="none" stroke="var(--pen)" strokeWidth="2" /><text x=${(X(36) + X(51)) / 2} y="92" textAnchor="middle" fontSize="13.5" fontWeight="700">FF 15</text></g>`}
+      <path d=${`M${X(0)},134 H${X(56)}`} stroke="var(--graphite)" strokeWidth="1.5" />
+      ${tick.map(t => html`<g key=${t}><path d=${`M${X(t)},130 V138`} stroke="var(--graphite)" strokeWidth="1.5" /><text x=${X(t)} y="149" textAnchor="middle" fontSize="13" className="orv7-mu">${t}</text></g>`)}
+    </svg>`;
+  }
+  function Formulas({ ar }) {
+    const S = [
+      { en: 'Forward pass at a node with <b>two arrows in</b> (node 4): C gives 15 + 21 = 36, D gives 32 + 19 = 51. F can start only when both are done, so ES = <b>max</b> = 51.', ar: 'في الـ forward pass عند node داخل عليها <b>سهمين</b> (رقم 4) الـ F مش هتبدأ غير لما الاتنين يخلصوا، فبناخد الأكبر:' + L('C: 15 + 21 = 36 ; D: 32 + 19 = 51') + L('ES(F) = max(36, 51) = 51') },
+      { en: 'Backward pass at a node with <b>two arrows out</b> (node 3): D must start by 51 − 19 = 32, E by 69 − 22 = 47. B must finish before the earlier one, so LF = <b>min</b> = 32.', ar: 'في الـ backward pass عند node طالع منها <b>سهمين</b> (رقم 3) الـ B لازم تخلص قبل أبدر واحد فيهم، فبناخد الأصغر:' + L('D: 51 − 19 = 32 ; E: 69 − 22 = 47') + L('LF(B) = min(32, 47) = 32') },
+      { en: '<b>Total float</b> of C: it can run anywhere from its earliest (15 to 36) to its latest (30 to 51) without delaying the project. TF = LS − ES = 30 − 15 = 15 = LF − EF = 51 − 36.', ar: 'الـ <b>total float</b> بتاع الـ C: ممكن تتنفذ في أي وقت من الأبكر (من 15 لـ 36) للأخر (من 30 لـ 51) من غير ما الـ project يتأخر:' + L('TF = LS − ES = 30 − 15 = 15') + L('TF = LF − EF = 51 − 36 = 15') },
+      { en: '<b>Free float</b> of C: how late it can finish without delaying the earliest start of its successor F (ES = 51). FF = min ES(successors) − EF = 51 − 36 = 15.', ar: 'الـ <b>free float</b> بتاع الـ C: قد إيه ممكن تتأخر من غير ما تأخر الـ ES بتاع الـ successor بتاعها F:' + L('FF = min ES(successors) − EF = 51 − 36 = 15') },
+      { en: 'Node test: D is critical: box = triangle at node 3 (32, 32) and at node 4 (51, 51), and 51 − 32 = 19 = its duration. C is not: 51 − 15 = 36 ≠ 21.', ar: 'اختبار الـ nodes: الـ D critical لأن الـ box بيساوي الـ triangle عند الـ node رقم 3 (32) وعند رقم 4 (51)، والفرق بيساوي المدة:' + L('D: 51 − 32 = 19 = D ✓') + 'أما الـ C فمش critical:' + L('C: 51 − 15 = 36 ≠ 21 ✗') }
+    ];
+    const [i, ctl] = useSteps(S.length, 3600);
+    let body;
+    if (i === 0) body = html`<${Net} G=${FR.merge} es=${{ 3: 32, 2: 15, 4: 51 }} hi=${new Set([0, 1])} ring=${new Set([4])} label="Node 4 with C and D coming in" />`;
+    else if (i === 1) body = html`<${Net} G=${FR.burst} lf=${{ 3: 32, 5: 69, 4: 51 }} hi=${new Set([0, 1])} ring=${new Set([3])} label="Node 3 with D and E going out" />`;
+    else if (i < 4) body = html`<${Timeline} ff=${i === 3} />`;
+    else body = html`<${Net} G=${FR.merge} es=${{ 3: 32, 2: 15, 4: 51 }} lf=${{ 3: 32, 2: 15, 4: 51 }} alt=${new Set([0])} bad=${new Set([1])} label="The node test for C and D" />`;
+    return html`<figure className="fig orv7"><div className="fig-stage">${body}${i !== 2 && i !== 3 && html`<${Key} />`}</div>
+      <${Cap} ...${S[i]} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── forward and backward pass, node by node, with the table filled in step ── */
+  const UA = { months: 'بالشهور', days: 'بالأيام' };
+  function passSteps(k) {
+    const r = run(k), G = r.net, ord = G.ids, n = ord.length, ex = EX[k], u = ex.u ? ' ' + ex.u : '';
+    const nd = G.arcs.filter(a => a.dummy).length, N = G.N, nm2 = a => a.dummy ? `dummy ${N[a.t].num}→${N[a.h].num}` : a.act;
+    const cnt = m => m === 2 ? 'سهمين' : m + ' أسهم';
+    const S = [{ en: `The network of the ${ex.t} example: ${n} nodes, ${r.rows.length} activities${nd ? ', ' + nd + ' dumm' + (nd > 1 ? 'ies' : 'y') : ''}. Forward pass: ES of every node from the start; backward pass: LF from the end.`, ar: `دي الـ network بتاعة المثال، فيها ${n} nodes و ${r.rows.length} activities${nd ? ' و ' + nd + ' dummy' : ''}. في الـ forward pass بنحسب الـ ES لكل node من البداية، وفي الـ backward pass بنحسب الـ LF من النهاية.`, f: 0, b: 0 }];
+    ord.forEach((id, j) => {
+      const o = N[id], inA = G.arcs.filter(a => a.h === id), ps = inA.map(a => `${nm2(a)}: ${N[a.t].es} + ${a.d} = ${N[a.t].es + a.d}`), endT = id === 'E' ? ` This is the project completion time <b>T = ${o.es}</b>${u}.` : '', endA = id === 'E' ? 'وده وقت انتهاء الـ project.' : '';
+      let en, a;
+      if (!inA.length) { en = 'Forward pass. Start node 1: <b>ES = 0</b>.'; a = 'الـ forward pass بيبدأ من الـ start node رقم 1، والـ ES بتاعها بصفر.'; }
+      else if (inA.length === 1) { en = `Node ${o.num}: one arrow in, ${ps[0]} → <b>ES = ${o.es}</b>.` + endT; a = `الـ node رقم ${o.num} داخل عليها سهم واحد:` + L(`${ps[0]} → ES = ${o.es}`) + endA; }
+      else { en = `Node ${o.num}: ${inA.length} arrows in, take the <b>largest</b>: ${ps.join('; ')} → <b>ES = max = ${o.es}</b>.` + endT; a = `الـ node رقم ${o.num} داخل عليها ${cnt(inA.length)} فبناخد الأكبر:` + L(ps.join(' ; ') + ` → ES = max = ${o.es}`) + endA; }
+      S.push({ en, ar: a, f: j + 1, b: 0, cur: id, hi: arcIdx(G, x => x.h === id), rows: G.arcs.filter(x => x.t === id && !x.dummy).map(x => x.act) });
+    });
+    ord.slice().reverse().forEach((id, j) => {
+      const o = N[id], out = G.arcs.filter(a => a.t === id), ps = out.map(a => `${nm2(a)}: ${N[a.h].lf} − ${a.d} = ${N[a.h].lf - a.d}`);
+      let en, a;
+      if (!out.length) { en = `Backward pass. End node ${o.num}: <b>LF = T = ${o.lf}</b>.`; a = `الـ backward pass بيبدأ من الـ end node رقم ${o.num}، والـ LF بتاعها هو الـ T:` + L(`LF = T = ${o.lf}`); }
+      else if (out.length === 1) { en = `Node ${o.num}: one arrow out, ${ps[0]} → <b>LF = ${o.lf}</b>.`; a = `الـ node رقم ${o.num} طالع منها سهم واحد:` + L(`${ps[0]} → LF = ${o.lf}`); }
+      else { en = `Node ${o.num}: ${out.length} arrows out, take the <b>smallest</b>: ${ps.join('; ')} → <b>LF = min = ${o.lf}</b>.`; a = `الـ node رقم ${o.num} طالع منها ${cnt(out.length)} فبناخد الأصغر:` + L(ps.join(' ; ') + ` → LF = min = ${o.lf}`); }
+      S.push({ en, ar: a, f: n, b: j + 1, cur: id, hi: arcIdx(G, x => x.t === id), rows: G.arcs.filter(x => x.h === id && !x.dummy).map(x => x.act) });
+    });
+    const cr = r.rows.filter(x => x.crit).map(x => x.id), nc = r.rows.filter(x => !x.crit).map(x => `${x.id} ${x.TF}`), cps = r.crit.map(p => p.ids.join('-'));
+    S.push({ en: `Total float TF = LS − ES. Critical activities (TF = 0): <b>${list(cr)}</b>. Critical path${cps.length > 1 ? 's (two)' : ''}: <b>${cps.join(' and ')}</b> = ${r.T}${u}, the project completion time. Non-critical, with their float: ${list(nc)}.`,
+      ar: 'الـ total float بنحسبه كده:' + L('TF = LS − ES') + 'والـ critical activities هي اللي الـ TF بتاعها صفر:' + L(list(cr)) + (cps.length > 1 ? 'وفيه critical paths اتنين:' : 'والـ critical path هو:') + L(cps.map(p => `${p} = ${r.T}`).join(' ; ')) + `وده وقت انتهاء الـ project${ex.u ? ' ' + UA[ex.u] : ''}. والـ non-critical بالـ float بتاعها:` + L(list(nc)), f: n, b: n, fin: true });
+    return { r, S };
+  }
+  function Pass({ ar, k }) {
+    const { r, S } = passSteps(k), G = r.net, [i, ctl] = useSteps(S.length, 2600), s = S[i], N = G.N;
+    const rank = id => N[id].num, n = G.ids.length;
+    const es = {}, lf = {}; G.ids.forEach(id => { if (rank(id) <= s.f) es[id] = N[id].es; if (rank(id) > n - s.b) lf[id] = N[id].lf; });
+    const tail = {}, head = {}; G.arcs.forEach(a => { if (!a.dummy) { tail[a.act] = a.t; head[a.act] = a.h; } });
+    const cell = (row, c) => (c === 'ES' || c === 'EF') ? (es[tail[row.id]] != null ? row[c] : null) : (c === 'LS' || c === 'LF') ? (lf[head[row.id]] != null ? row[c] : null) : s.fin ? row[c] : null;
+    return html`<figure className="fig orv7"><div className="fig-stage">
+      <${Net} G=${G} es=${es} lf=${lf} ring=${s.cur ? new Set([s.cur]) : null} hi=${s.hi} crit=${s.fin ? critArcs(r) : null} label=${'CPM network of ' + EX[k].s} />
+      <${Key} dummy=${G.arcs.some(a => a.dummy)} crit=${true} />
+      <${Tbl} rows=${r.rows} cell=${cell} cur=${new Set(s.rows || [])} critOn=${!!s.fin} />
+      </div><${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+  const PassY19 = ({ ar }) => html`<${Pass} ar=${ar} k="y19" />`;
+  const PassSec = ({ ar }) => html`<${Pass} ar=${ar} k="sec" />`;
+  const PassY25 = ({ ar }) => html`<${Pass} ar=${ar} k="y25" />`;
+  const PassY24 = ({ ar }) => html`<${Pass} ar=${ar} k="y24c" />`;
+
+  /* ── [4] the paths of the 2019/20 network (Lec_10 slide 2) ── */
+  function Paths({ ar }) {
+    const r = run('y19'), G = r.net, D = r.R;
+    const PS = [['I', ['A', 'B', 'E', 'G']], ['II', ['A', 'B', 'D', 'F', 'G']], ['III', ['A', 'C', 'F', 'G']]];
+    const sum = ids => ids.map(x => D[x].d).join(' + ') + ' = ' + ids.reduce((s, x) => s + D[x].d, 0);
+    const S = PS.map(([n, ids]) => ({ en: `Path ${n}: ${ids.join('-')} = ${sum(ids)} months.`, ar: `الـ path رقم ${n}:` + L(`${ids.join('-')} = ${sum(ids)}`), p: ids }))
+      .concat({ en: 'The <b>longest</b> path, A-B-D-F-G = 84 months, is the <b>critical path</b>: the project completion time is 84 months. Critical activities A, B, D, F, G; non-critical C and E (float 15 each).', ar: 'أطول path هو الـ <b>critical path</b>، ووقت انتهاء الـ project هو 84 شهر:' + L('A-B-D-F-G = 84') + 'والـ critical activities هي الـ A والـ B والـ D والـ F والـ G، والـ non-critical هي الـ C والـ E (الـ float لكل واحدة 15).', p: PS[1][1], fin: true });
+    const [i, ctl] = useSteps(S.length, 2600), s = S[i];
+    return html`<figure className="fig orv7"><div className="fig-stage">
+      <${Net} G=${G} hi=${s.fin ? null : actSet(G, s.p)} crit=${s.fin ? actSet(G, s.p) : null} badges=${false} label="The three paths of the 2019/20 network" />
+      <div className="orv7-paths">${PS.map(([n, ids], j) => html`<div key=${n} className=${(j === i || (s.fin && j === 1)) ? 'orv7-on' : ''} style=${{ opacity: j <= i ? 1 : .35 }}><span>${n}: ${ids.join('-')}</span><span>${j <= i ? ids.reduce((t, x) => t + D[x].d, 0) : ''}</span></div>`)}</div>
+      </div><${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Bar} steps=${S} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [9] the CPM solver: any of the course's examples, or your own table ── */
+  const toRows = s => A_(s).map(a => ({ id: a.id, d: String(a.d), p: a.p.join(', ') }));
+  function Solver({ ar }) {
+    const [mode, setMode] = useState('y24b'), [own, setOwn] = useState(() => toRows(EX.y19.s));
+    let r, err = null;
+    if (EX[mode]) r = run(mode);
+    else {
+      const acts = own.filter(x => x.id.trim()).map(x => ({ id: x.id.trim(), d: +x.d, p: x.p.split(/[\s,;]+/).filter(Boolean) }));
+      const bad = acts.find(a => !(a.d >= 0) || x_bad(a.id));
+      if (!acts.length) err = 'Add at least one activity.';
+      else if (bad) err = `${bad.id}: the name must be letters/digits and the duration a number ≥ 0.`;
+      else { r = build(acts); if (r.err) { err = r.err[0]; r = null; } }
+    }
+    const set = (j, f, v) => setOwn(o => o.map((x, i) => i === j ? Object.assign({}, x, { [f]: v }) : x));
+    const next = () => { const used = own.map(x => x.id); for (const c of 'ABCDEFGHIJKLMNOPQRSTUVWXYZ') if (!used.includes(c)) return c; return 'X' + own.length; };
+    const editor = !EX[mode] && html`<div className="orv7-ed">
+      <div className="orv7-l orv7-h"><span>Act.</span><span>D</span><span>Predecessors</span><span></span></div>
+      ${own.map((x, j) => html`<div key=${j} className="orv7-l"><input value=${x.id} maxLength="3" onInput=${e => set(j, 'id', e.target.value)} aria-label=${'activity ' + (j + 1) + ' name'} />
+        <input type="number" min="0" step="any" value=${x.d} onInput=${e => set(j, 'd', e.target.value)} aria-label=${'activity ' + (j + 1) + ' duration'} />
+        <input value=${x.p} placeholder="none" onInput=${e => set(j, 'p', e.target.value)} aria-label=${'activity ' + (j + 1) + ' predecessors'} />
+        <button className="fig-btn" onClick=${() => setOwn(o => o.filter((_, i) => i !== j))} aria-label="remove activity" disabled=${own.length < 2}>✕</button></div>`)}
+      <div className="orv7-row" style=${{ justifyContent: 'flex-start' }}>${own.length < 16 && html`<button className="fig-btn" onClick=${() => setOwn(o => o.concat({ id: next(), d: '1', p: o.length ? o[o.length - 1].id : '' }))}>+ activity</button>`}</div></div>`;
+    const ex = EX[mode], u = ex && ex.u ? ' ' + ex.u : '';
+    let en, a, verdict;
+    if (!r) { en = 'Fix the table: ' + err; a = 'فيه مشكلة في الجدول، صلّحها الأول.'; verdict = err; }
+    else {
+      const cr = r.rows.filter(x => x.crit).map(x => x.id), nc = r.rows.filter(x => !x.crit).map(x => `${x.id} ${x.TF}`), cps = r.crit.map(p => p.ids.join('-'));
+      verdict = `T = ${r.T}${u} · critical: ${cps.join(' and ')}`;
+      en = `Project completion time <b>T = ${r.T}</b>${u}. Critical activities (TF = 0): <b>${list(cr)}</b>${cps.length > 1 ? ' (' + cps.length + ' critical paths)' : ''}. Non-critical, with total float: ${nc.length ? list(nc) : 'none'}. FF = min ES(successors) − EF. ${EX[mode] ? '' : 'Edit names, durations or predecessors: the network, the dummies and the times are redrawn.'}`;
+      a = 'وقت انتهاء الـ project هو:' + L(`T = ${r.T}`) + 'والـ critical activities اللي الـ TF بتاعها صفر:' + L(list(cr)) + (cps.length > 1 ? `وفيه ${cps.length} critical paths. ` : '') + (nc.length ? 'والـ non-critical بالـ total float بتاعها:' + L(list(nc)) : 'ومفيش non-critical activities. ') + 'والـ free float محسوب بـ:' + L('FF = min ES(successors) − EF') + (EX[mode] ? '' : 'غيّر الأسماء أو المدد أو الـ predecessors، والـ network والـ dummies والأوقات هتترسم من جديد.');
+    }
+    const T0 = r && allT(r);
+    return html`<figure className="fig orv7"><div className="fig-stage">
+      <${Modes} list=${Object.keys(EX).map(x => [x, EX[x].t]).concat([['own', 'Try your own']])} mode=${mode} set=${setMode} />
+      ${editor}
+      ${r && html`<${Net} key=${mode} G=${r.net} es=${T0.es} lf=${T0.lf} crit=${critArcs(r)} label=${'CPM network of the chosen project'} />
+        <${Key} dummy=${r.net.arcs.some(x => x.dummy)} crit=${true} />`}
+      <p className=${'orv7-verdict' + (r ? '' : ' orv7-bad')}>${verdict}</p>
+      ${r && html`<${Tbl} rows=${r.rows} ff=${true} critOn=${true} />`}
+      ${r && r.paths.length <= 12 && html`<div className="orv7-paths">${r.paths.map((p, j) => html`<div key=${j} className=${p.len === r.T ? 'orv7-on' : ''}><span>${p.ids.join('-')}</span><span>${p.len}</span></div>`)}</div>`}
+      </div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+  const x_bad = id => !/^[A-Za-z0-9]{1,3}$/.test(id);
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'or-cpm-terms': Terms, 'or-cpm-build': Build, 'or-cpm-dummy': Dummy, 'or-cpm-formulas': Formulas, 'or-cpm-pass-2019': PassY19, 'or-cpm-paths-2019': Paths, 'or-cpm-pass-section': PassSec, 'or-cpm-pass-2024-25': PassY25, 'or-cpm-pass-2023-24': PassY24, 'or-cpm-solver': Solver });
+})();

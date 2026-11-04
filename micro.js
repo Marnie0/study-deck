@@ -897,7 +897,16 @@ COURSES.micro = {
       "User-visible: <b>General purpose</b>, <b>Special purpose</b>, <b>Segment registers</b>. User-invisible: <b>Program Counter (PC)</b>, <b>MAR</b>, <b>MBR</b>, <b>Instruction Register (IR)</b>.",
       "User-visible registers may be general purpose or have a special use (fixed/floating-point numbers, addresses, indexes, segment pointers). User-invisible registers are used to <b>control the operation of the CPU</b>.",
       "A <b>user-visible register</b> is one that may be referenced by the machine language the CPU executes. They let the programmer <b>minimize main memory references</b> by optimizing use of registers."
-     ]
+     ],
+     "fig": [
+      "mp-l2-reg-tree"
+     ],
+     "figAt": {
+      "mp-l2-reg-tree": 2
+     },
+     "figH": {
+      "mp-l2-reg-tree": "Registers split into user-visible and user-invisible, built up from the slide's tree"
+     }
     },
     {
      "h": "General purpose registers",
@@ -906,7 +915,19 @@ COURSES.micro = {
       "Each can be addressed as one <b>32-bit</b> value or as <b>16-bit</b> values; some also as <b>8-bit</b> parts. EAX is 32 bits; its lower 16 bits are <b>AX</b>; the upper 8 bits of AX are <b>AH</b>, the lower 8 bits are <b>AL</b>.",
       "Only <b>AX, BX, CX, DX</b> have 8-bit halves (AH/AL, BH/BL, CH/CL, DH/DL). <b>SI, DI, SP, BP</b> have <b>no</b> 8-bit halves: there is no SH/SL, so you can use ESP or ESI only as 16 or 32 bits.",
       "Lab example: if AX = 0011000000111001b then AH = 00110000b and AL = 00111001b. Modifying an 8-bit half also updates the 16-bit register."
-     ]
+     ],
+     "fig": [
+      "mp-l2-eax-parts",
+      "mp-l2-ax-halves"
+     ],
+     "figAt": {
+      "mp-l2-eax-parts": 1,
+      "mp-l2-ax-halves": 3
+     },
+     "figH": {
+      "mp-l2-eax-parts": "EAX, AX, AH and AL nested inside one register, and why SI has no 8-bit halves",
+      "mp-l2-ax-halves": "The Lab example bit by bit: write AX, AH or AL and watch the other names change"
+     }
     },
     {
      "h": "Roles of each register (Lab 1 + programming model)",
@@ -966,7 +987,13 @@ COURSES.micro = {
        "Flags",
        "Status of the processor and control of its operation."
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l2-prog-model"
+     ],
+     "figH": {
+      "mp-l2-prog-model": "The programming model from the slide: tap a register for its name and use"
+     }
     },
     {
      "h": "Segment registers",
@@ -977,7 +1004,16 @@ COURSES.micro = {
       "<b>ES</b> (Extra Segment): another data segment.",
       "<b>SS</b> (Stack Segment): holds the starting address of the currently active stack segment. (FS and GS also exist on 80386+.)",
       "Segment registers are <b>16-bit user-visible</b> registers. DI and SI are <b>not</b> segment registers. Segment registers cannot be used as operands of arithmetic and logical instructions."
-     ]
+     ],
+     "fig": [
+      "mp-l2-seg-map"
+     ],
+     "figAt": {
+      "mp-l2-seg-map": 0
+     },
+     "figH": {
+      "mp-l2-seg-map": "The slide's segment figure: segment 8000 in memory and the location 8000:0250"
+     }
     },
     {
      "h": "Special purpose registers (EIP, EFLAGS)",
@@ -1022,7 +1058,15 @@ COURSES.micro = {
        "O (overflow)",
        "Set when the signed result is too large or too small to fit into the destination."
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l2-eflags",
+      "mp-l2-zsco"
+     ],
+     "figH": {
+      "mp-l2-eflags": "The 32 bits of EFLAGS by group: status, control and system flags",
+      "mp-l2-zsco": "Z, S, C and O worked out for an 8-bit addition or subtraction you choose"
+     }
     },
     {
      "h": "User-invisible registers",
@@ -1047,7 +1091,15 @@ COURSES.micro = {
        "MBR (Memory Buffer Register)",
        "A <b>word of data to be written to memory</b> or the word most recently read."
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l2-fetch",
+      "mp-l2-reg-drill"
+     ],
+     "figH": {
+      "mp-l2-fetch": "PC, MAR, MBR and IR while an instruction is fetched",
+      "mp-l2-reg-drill": "Drill: general purpose, special purpose, segment, user-invisible, or no such register?"
+     }
     },
     {
      "h": "MOV instruction",
@@ -1055,7 +1107,16 @@ COURSES.micro = {
       "MOV copies the contents of a register or memory location (or immediate data) into another register or memory location. Syntax: <code>MOV destination, source</code>.",
       "<code>MOV EAX, 100</code> copies 100 decimal into EAX. <code>MOV BL, 10H</code> copies 10 hexadecimal into BL. <code>MOV DX, CX</code> copies the content of CX into DX.",
       "A <b>word</b> is <b>2 bytes</b> (16 bits); a double word is 4 bytes."
-     ]
+     ],
+     "fig": [
+      "mp-l2-mov"
+     ],
+     "figAt": {
+      "mp-l2-mov": 2
+     },
+     "figH": {
+      "mp-l2-mov": "MOV step by step with the slide's three examples, then your own MOV"
+     }
     }
    ],
    "cards": [
@@ -2717,7 +2778,16 @@ COURSES.micro = {
       "<b>Default segment of BP is SS</b>: <code>MOV AL, [BP]</code> uses SS.",
       "Memory to memory moves are not allowed except for string instructions: <code>MOV [DI], [SI]</code> is incorrect.",
       "Segment overriding can access other segments: <code>MOV AL, CS:[BX]</code>, <code>MOV AX, DS:[BP]</code>."
-     ]
+     ],
+     "fig": [
+      "mp-ri-pointers"
+     ],
+     "figAt": {
+      "mp-ri-pointers": 2
+     },
+     "figH": {
+      "mp-ri-pointers": "The four pointer registers: BX, DI, SI point into DS, BP into SS"
+     }
     },
     {
      "h": "Default segment rule (memorize)",
@@ -2750,7 +2820,13 @@ COURSES.micro = {
        "Explicit prefix like ES:[...]",
        "The written segment (override)"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-seg-rule"
+     ],
+     "figH": {
+      "mp-seg-rule": "Which segment? Type an instruction and see the rule that decides it"
+     }
     },
     {
      "h": "Indexed addressing (register + displacement)",
@@ -2758,7 +2834,16 @@ COURSES.micro = {
       "The offset is the <b>sum of a displacement constant and the specified register</b>. Uses BX, SI, DI (default DS) and BP (default SS).",
       "<code>MOV AL, 20[BX]</code> (DS), <code>MOV AX, 1000[BP]</code> (SS), <code>MOV AX, AB[SI]</code>, <code>MOV EAX, ES:100[DI]</code> (ES override).",
       "<code>20[BX]</code> is the same as <code>[BX+20]</code>; <code>[BP-2]</code> and <code>[BP+200H]</code> are legal."
-     ]
+     ],
+     "fig": [
+      "mp-indexed-forms"
+     ],
+     "figAt": {
+      "mp-indexed-forms": 2
+     },
+     "figH": {
+      "mp-indexed-forms": "Indexed addressing: displacement + register, written two ways"
+     }
     },
     {
      "h": "Base plus index and base plus index plus displacement",
@@ -2767,7 +2852,16 @@ COURSES.micro = {
       "Offset = base + index; then add segment×10. <code>MOV AL, [BX][SI]</code> (DS); <code>MOV EAX, ES:[BX][SI]</code> (ES).",
       "<b>Base indexed plus displacement</b>: <code>MOV AL, disp[BX][SI]</code>, e.g. <code>100[BX][DI]</code> (DS).",
       "Note: two bases (<code>[BX][BP]</code>) or two indexes (<code>[SI][DI]</code>) cannot be combined on a real 8086. When exams ask the segment of <code>MOV [BX][BP], AX</code>, the intended answer is SS (because BP is used)."
-     ]
+     ],
+     "fig": [
+      "mp-array-walk"
+     ],
+     "figAt": {
+      "mp-array-walk": 1
+     },
+     "figH": {
+      "mp-array-walk": "Base plus index walks an array: BX stays at the start, DI moves"
+     }
     },
     {
      "h": "Lecture examples",
@@ -2780,7 +2874,13 @@ COURSES.micro = {
       "  address = 10000 + CD01 + 150 = 10000 + CE51 = 1CE51",
       "DS=1000, BX=CD01, DI=150, MOV AL, 100[BX][DI]:",
       "  address = 10000 + 100 + CD01 + 150 = 1CF51"
-     ]
+     ],
+     "fig": [
+      "mp-lec4-figure"
+     ],
+     "figH": {
+      "mp-lec4-figure": "The slides' memory-state figures for the four lecture examples, built step by step"
+     }
     },
     {
      "h": "Sheet 1 solved (DS=1100H, BX=0200H, SI=0500H)",
@@ -2801,7 +2901,13 @@ COURSES.micro = {
       "(ii)  MOV BL, [BP+SI-100H]  = 20000 + 101 + 1200 - 100 = 21201",
       "(iii) MOV CX, [SI+0BC]      = DS×10 + SI + BC = 22000 + 1200 + BC = 232BC",
       "Method: 1) pick the segment (BP → SS, else DS)  2) shift it one hex digit (×10)  3) add every offset part in HEX"
-     ]
+     ],
+     "fig": [
+      "mp-ea-calc"
+     ],
+     "figH": {
+      "mp-ea-calc": "Address calculator: pick the segment, shift it, add the offset parts in hex"
+     }
     },
     {
      "h": "How to draw the \"memory state\" figure",
@@ -2809,7 +2915,16 @@ COURSES.micro = {
       "Left: register boxes (EAX, EBX, ECX, EDI/ESI, DS) with their values. The segment value goes through \"×10\" into a circle with <b>+</b>; the offset register (and displacement) also enter the adder.",
       "The adder output arrow points to the computed address in a memory column on the right (label it, e.g. 1CE51).",
       "An arrow from the memory cell(s) goes back to the destination register (AL for 1 byte, AX for 2 bytes, EAX for 4 bytes). For a word, the byte at the lower address goes to the low half (little-endian)."
-     ]
+     ],
+     "fig": [
+      "mp-mem-draw"
+     ],
+     "figAt": {
+      "mp-mem-draw": 2
+     },
+     "figH": {
+      "mp-mem-draw": "Draw the memory state for any sheet question, bytes in little-endian order"
+     }
     }
    ],
    "cards": [
@@ -3174,7 +3289,16 @@ COURSES.micro = {
       "The stack is accessed using both <b>SS and SP</b>. It grows <b>down</b>: from high addresses to lower addresses.",
       "Stack instructions transfer <b>2 or 4 bytes</b> depending on the register size: <code>PUSH AX</code> (2 bytes), <code>PUSH EAX</code> (4 bytes), <code>POP BX</code> (2 bytes from the stack into BX).",
       "In a program (lab): <code>.stack 100h</code> declares a stack of size 100h. The stack also stores subroutine return addresses, so PUSH and POP counts in a subroutine must be equal."
-     ]
+     ],
+     "fig": [
+      "mp-l5-stack-sim"
+     ],
+     "figAt": {
+      "mp-l5-stack-sim": 2
+     },
+     "figH": {
+      "mp-l5-stack-sim": "Stack simulator: PUSH and POP move SP at SS:[SP], last in, first out"
+     }
     },
     {
      "h": "PUSH",
@@ -3184,7 +3308,19 @@ COURSES.micro = {
       "32-bit push: four bytes stored (MSB first, at SP-1 down to SP-4), then SP = SP - 4. Example: ESP = 00FFFFE8, <code>PUSH EAX</code> sets ESP = 00FFFFE4 and stores EAX at 00FFFFE4.",
       "<b>PUSHA</b> pushes the 16-bit registers in the order <b>AX, CX, DX, BX, SP, BP, SI, DI</b> (8 words = 16 bytes, SP decreases by 16). <b>PUSHAD</b> pushes EAX, ECX, EDX, EBX, ESP, EBP, ESI, EDI (8 double words = 32 bytes).",
       "<b>PUSHF</b> pushes the 16-bit FLAGS register; <b>POPF</b> pops the stack into FLAGS."
-     ]
+     ],
+     "fig": [
+      "mp-l5-esp-push",
+      "mp-l5-pusha-popa"
+     ],
+     "figAt": {
+      "mp-l5-esp-push": 2,
+      "mp-l5-pusha-popa": 3
+     },
+     "figH": {
+      "mp-l5-esp-push": "The slide's PUSH EAX: ESP goes from 00FFFFE8 to 00FFFFE4, then EAX is stored",
+      "mp-l5-pusha-popa": "PUSHA saves AX, CX, DX, BX, SP, BP, SI, DI; POPA takes them back in reverse"
+     }
     },
     {
      "h": "POP",
@@ -3193,7 +3329,16 @@ COURSES.micro = {
       "Example: ESP = 00FFFFE4, <code>POP EAX</code> sets ESP = 00FFFFE8 and copies 4 bytes from the stack into EAX.",
       "<b>POPA</b> pops in the reverse order <b>DI, SI, BP, SP, BX, DX, CX, AX</b>, restoring what PUSHA saved; SP increases by 16. <b>POPAD</b> pops 8 double words (32 bytes).",
       "A PUSH or POP never changes SS; only SP changes."
-     ]
+     ],
+     "fig": [
+      "mp-l5-esp-pop"
+     ],
+     "figAt": {
+      "mp-l5-esp-pop": 1
+     },
+     "figH": {
+      "mp-l5-esp-pop": "The slide's POP EAX: 4 bytes go to EAX, then ESP goes from 00FFFFE4 to 00FFFFE8"
+     }
     },
     {
      "h": "Lecture example: PUSH AX",
@@ -3204,7 +3349,13 @@ COURSES.micro = {
       "AL = B3 → [37FC]      (SP-2)",
       "SP = 07FE - 2 = 07FC",
       "(Final 2024/25 asked the same with PUSH BX, BH=5A, BL=B3: same numbers.)"
-     ]
+     ],
+     "fig": [
+      "mp-l5-push-ax-figure"
+     ],
+     "figH": {
+      "mp-l5-push-ax-figure": "The slide's figure for PUSH AX, built step by step"
+     }
     },
     {
      "h": "Revision example: POP EAX",
@@ -3215,7 +3366,13 @@ COURSES.micro = {
       "EAX = 44 33 22 11   (AL=11, AH=22, upper word 4433)",
       "SP = 1234 + 4 = 1238",
       "Note: the lecture slide wrote the same example with [SP+1]=11 ... [SP+4]=44 and drew the bytes at 4235 to 4238; the revision sheet and the final exam use [SP] to [SP+3], which is how the 8086 really works (POP reads from SS:SP upward)."
-     ]
+     ],
+     "fig": [
+      "mp-l5-pop-eax-figure"
+     ],
+     "figH": {
+      "mp-l5-pop-eax-figure": "The slide's figure for POP EAX, built step by step"
+     }
     },
     {
      "h": "Sheet 1 Q5: PUSH EAX (EAX=ABCD, SP=0100H, SS=0200H)",
@@ -3226,11 +3383,23 @@ COURSES.micro = {
       "[20FD] = AB  ← AH",
       "[20FC] = CD  ← AL",
       "SP = 0100 - 4 = 00FC"
-     ]
+     ],
+     "fig": [
+      "mp-l5-stack-calc"
+     ],
+     "figH": {
+      "mp-l5-stack-calc": "PUSH / POP calculator: address, bytes in memory and the new SP"
+     }
     },
     {
      "h": "Lab 6 code examples",
-     "code": "MOV AX, 1234h\nPUSH AX        ; store value of AX in stack\nMOV AX, 5678h  ; modify the AX value\nPOP AX         ; restore the original value: AX = 1234h\n\nPUSHF          ; save flags\nSTC            ; set carry (changes CF)\nPOPF           ; restore the old flags\n\nPUSHA          ; save AX,CX,DX,BX,SP,BP,SI,DI\nMOV AX, 3\nMOV BX, 4\nADD AX, BX     ; AX = 7 temporarily\nPOPA           ; all registers restored"
+     "code": "MOV AX, 1234h\nPUSH AX        ; store value of AX in stack\nMOV AX, 5678h  ; modify the AX value\nPOP AX         ; restore the original value: AX = 1234h\n\nPUSHF          ; save flags\nSTC            ; set carry (changes CF)\nPOPF           ; restore the old flags\n\nPUSHA          ; save AX,CX,DX,BX,SP,BP,SI,DI\nMOV AX, 3\nMOV BX, 4\nADD AX, BX     ; AX = 7 temporarily\nPOPA           ; all registers restored",
+     "fig": [
+      "mp-l5-lab6"
+     ],
+     "figH": {
+      "mp-l5-lab6": "Lab 6 programs run line by line, with the stack beside them"
+     }
     }
    ],
    "cards": [
@@ -3870,7 +4039,16 @@ COURSES.micro = {
       "LEA calculates its source operand <b>the same way MOV does</b>, but instead of loading the <b>contents</b> of that address into the destination, it loads the <b>address (offset) itself</b>.",
       "<code>LEA BX, [DI]</code> loads the offset address specified by [DI] (i.e. the value of DI) into BX.",
       "<code>MOV BX, [DI]</code> loads the <b>data stored</b> at the memory location addressed by [DI] into BX."
-     ]
+     ],
+     "fig": [
+      "mp-l6-lea-mov"
+     ],
+     "figAt": {
+      "mp-l6-lea-mov": 2
+     },
+     "figH": {
+      "mp-l6-lea-mov": "Same operand [DI]: LEA loads the address, MOV loads the data stored there"
+     }
     },
     {
      "h": "LEA vs OFFSET",
@@ -3895,7 +4073,13 @@ COURSES.micro = {
        "The <b>assembler</b> calculates the offset of LIST",
        "The <b>microprocessor</b> calculates the address at run time"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l6-offset-lea"
+     ],
+     "figH": {
+      "mp-l6-offset-lea": "Same result, different worker: the assembler (OFFSET) or the microprocessor (LEA)"
+     }
     },
     {
      "h": "LDS, LES, LSS",
@@ -3904,7 +4088,13 @@ COURSES.micro = {
       "They read <b>4 bytes</b> from memory starting at the computed address (default DS×10 + offset): the <b>first two bytes</b> (lower addresses) go into the register (offset), the <b>next two bytes</b> go into the segment register.",
       "So <code>LES AX, [DI]</code> copies [DI] and [DI+1] into AX and [DI+2] and [DI+3] into ES. <code>LDS AX, [DI]</code> changes <b>both AX and DS</b> (not AX only).",
       "There is no \"LCS\" (CS cannot be loaded this way)."
-     ]
+     ],
+     "fig": [
+      "mp-l6-lxs-sim"
+     ],
+     "figH": {
+      "mp-l6-lxs-sim": "LDS / LES / LSS simulator: first word to the register, second word to the segment register"
+     }
     },
     {
      "h": "Lecture example: LES BX, [DI]",
@@ -3914,7 +4104,13 @@ COURSES.micro = {
       "[A0200]=B2, [A0201]=1A → BX = 1AB2   (old 2C2A replaced)",
       "[A0202]=00, [A0203]=3C → ES = 3C00   (old 0200 replaced)",
       "DS and DI unchanged"
-     ]
+     ],
+     "fig": [
+      "mp-l6-les-figure"
+     ],
+     "figH": {
+      "mp-l6-les-figure": "The slide's figure for LES BX, [DI], built step by step"
+     }
     },
     {
      "h": "Lecture example: LDS BX, [DI]",
@@ -3923,7 +4119,13 @@ COURSES.micro = {
       "BX = 1AB2",
       "DS = 3C00   (DS is changed after it was used to compute the address)",
       "ES stays 0200"
-     ]
+     ],
+     "fig": [
+      "mp-l6-lds-figure"
+     ],
+     "figH": {
+      "mp-l6-lds-figure": "The same figure for LDS BX, [DI]: DS changes after it gave the address"
+     }
     },
     {
      "h": "Revision / Final 2023/24: LDS BX, [DI] (DS=1000H, BX=6F2AH, DI=1000H)",
@@ -3931,7 +4133,13 @@ COURSES.micro = {
       "Address = DS×10 + DI = 10000 + 1000 = 11000",
       "[11000]=7A, [11001]=12 → BX = 127A",
       "[11002]=00, [11003]=30 → DS = 3000"
-     ]
+     ],
+     "fig": [
+      "mp-l6-rev-lds"
+     ],
+     "figH": {
+      "mp-l6-rev-lds": "Revision LDS BX, [DI]: address 11000, BX = 127A, DS = 3000"
+     }
     },
     {
      "h": "Final 2024/25 e and 2023/24 e: LSS / LES then a stack or string instruction",
@@ -3943,7 +4151,13 @@ COURSES.micro = {
       "2023/24: same bytes, ES=1100H, DI=200H, D=0",
       "LES AX, [SI]: address 20300 → AX = ABCD, ES = 1234",
       "STOSW: address = ES×10 + DI = 12340 + 200 = 12540; [12540]=CD (AL), [12541]=AB (AH); DI = 202"
-     ]
+     ],
+     "fig": [
+      "mp-l6-final-chain"
+     ],
+     "figH": {
+      "mp-l6-final-chain": "Two instructions in a row: the next one uses the NEW SS or ES"
+     }
     }
    ],
    "cards": [
@@ -4292,7 +4506,13 @@ COURSES.micro = {
        "DI",
        "same"
       ]
-     ]
+     ],
+     "fig": [
+      "mp-l7-sim"
+     ],
+     "figH": {
+      "mp-l7-sim": "String instruction simulator: pick LODS, STOS, OUTS or INS, a size and D"
+     }
     },
     {
      "h": "Key rules",
@@ -4302,7 +4522,19 @@ COURSES.micro = {
       "LODS/STOS do <b>not affect the flags</b> (LODSW does not affect ZF).",
       "String manipulation instructions are LODS, STOS, INS, OUTS (also MOVS, CMPS, SCAS). Plain <b>MOV is not</b> a string instruction.",
       "Reading an input port and writing an output port use <b>IN</b> and <b>OUT</b>."
-     ]
+     ],
+     "fig": [
+      "mp-l7-flow",
+      "mp-l7-dflag"
+     ],
+     "figAt": {
+      "mp-l7-flow": 0,
+      "mp-l7-dflag": 1
+     },
+     "figH": {
+      "mp-l7-flow": "Sources are read from DS:[SI], destinations are written to ES:[DI]",
+      "mp-l7-dflag": "The direction flag: CLD and STD set D, LODSB only follows it"
+     }
     },
     {
      "h": "Example: LODSW",
@@ -4312,7 +4544,13 @@ COURSES.micro = {
       "AL = [11000] = AB,  AH = [11001] = CD  →  AX = CDAB",
       "D=0 → SI = 1000 + 2 = 1002",
       "(SS and [SI-1] are distractors)"
-     ]
+     ],
+     "fig": [
+      "mp-l7-lodsw"
+     ],
+     "figH": {
+      "mp-l7-lodsw": "LODSW step by step: address 11000, AX = CDAB, SI = 1002"
+     }
     },
     {
      "h": "Example: STOSD (and the hex note)",
@@ -4323,7 +4561,13 @@ COURSES.micro = {
       "D=1 → DI = DI - 4. Lecture figure writes \"96\" (100 - 4 in decimal).",
       "Strictly in hex: 100H - 4 = 00FCH. Write DI = 0FCH (and mention 96 if you follow the slide).",
       "Byte order: the slide draws AB, CD, 12, 34 below 2100. On a real 8086 STOSD writes little-endian at 2100..2103: 34, 12, CD, AB."
-     ]
+     ],
+     "fig": [
+      "mp-l7-stosd"
+     ],
+     "figH": {
+      "mp-l7-stosd": "STOSD step by step: EAX stored at 2100, DI = 0FCH (slide: 96)"
+     }
     },
     {
      "h": "Example: OUTSB",
@@ -4332,7 +4576,13 @@ COURSES.micro = {
       "Memory location = DS×10 + SI = 11000",
       "Output device ← AB (one byte)",
       "SI = 1001"
-     ]
+     ],
+     "fig": [
+      "mp-l7-outsb"
+     ],
+     "figH": {
+      "mp-l7-outsb": "OUTSB step by step: one byte AB to the output device, SI = 1001"
+     }
     },
     {
      "h": "Example: INSD (asked in almost every final)",
@@ -4342,7 +4592,13 @@ COURSES.micro = {
       "Input device → memory: 4 bytes AB, CD, 12, 34 stored starting at 2100 (as drawn in the lecture)",
       "D=1 → DI = 100 - 4 = 0FCH  (slide/key: \"96\")",
       "DS is NOT used: INS always writes to ES:[DI]"
-     ]
+     ],
+     "fig": [
+      "mp-l7-insd"
+     ],
+     "figH": {
+      "mp-l7-insd": "INSD step by step: input bytes stored at ES:[DI] = 2100, DI = 0FCH"
+     }
     },
     {
      "h": "Revision: STOSW after LES (Final 2023/24)",
@@ -4351,7 +4607,13 @@ COURSES.micro = {
       "STOSW: address = ES×10 + DI = 12340 + 200 = 12540",
       "[12540] = CD (AL), [12541] = AB (AH)",
       "DI = 200 + 2 = 202"
-     ]
+     ],
+     "fig": [
+      "mp-l7-les-stosw"
+     ],
+     "figH": {
+      "mp-l7-les-stosw": "STOSW after LES: AX goes to 12540 low byte first, DI = 202"
+     }
     }
    ],
    "cards": [

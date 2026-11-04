@@ -1745,7 +1745,12 @@ AR.dm = {
       "الـ <b>Division relation</b>:<span class=\"ltr\"><b>a = q × n + r</b></span>حيث n موجب و r مش سالب <bdi dir=\"ltr\">(0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;n)</bdi>. الـ a هو الـ dividend (المقسوم)، والـ n هو الـ divisor (المقسوم عليه)، والـ q هو الـ quotient (خارج القسمة)، والـ r هو الـ remainder (الباقي).",
       "مثال 2.2:<span class=\"ltr\">a = 255, n = 11 → q = 23, r = 2</span><span class=\"ltr\">(255 = 23 × 11 + 2)</span>",
       "مثال 2.3: الكمبيوتر بيطلّع r سالب لما a تبقى سالبة. عشان تخلي r موجب: <b>نقّص q بواحد وزوّد n على r</b>. مثلًا <bdi dir=\"ltr\">−255&nbsp;÷&nbsp;11</bdi> بيدّي:<span class=\"ltr\">q = −23, r = −2 → q = −24, r = 9</span>"
-     ]
+     ],
+     "figH": {
+      "dm-int-ops": "الـ 3 binary operations على Z، وحالات الإشارة الأربعة في Example 2.1",
+      "dm-div-long": "الـ division algorithm: القسمة المطوّلة بتجيب الـ q والـ r",
+      "dm-div-negative": "لما الـ a تبقى سالبة: نقّص الـ q بواحد وزوّد الـ n على الـ r"
+     }
     },
     {
      "h": "الـ Divisibility (القابلية للقسمة)",
@@ -1755,7 +1760,10 @@ AR.dm = {
       "مثال 2.5:<span class=\"ltr\">13 | 78, 7 | 98, −6 | 24, 4 | 44, 11 | (−33)</span><span class=\"ltr\">13 ∤ 27, 7 ∤ 50, −6 ∤ 23, 4 ∤ 41, 11 ∤ (−32)</span>",
       "الـ <b>Property 1</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;1</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;±1</bdi>.<br>الـ <b>Property 2</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;a</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;±b</bdi>.<br>الـ <b>Property 3</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;c</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.<br>الـ <b>Property 4</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;(m&nbsp;×&nbsp;b&nbsp;+&nbsp;n&nbsp;×&nbsp;c)</bdi> لأي integers m و n.",
       "الـ <b>Fact 1</b>: الـ integer 1 ليه divisor واحد بس، هو نفسه. الـ <b>Fact 2</b>: أي positive integer ليه على الأقل 2 divisors، الـ 1 والرقم نفسه (وممكن يبقى ليه أكتر)."
-     ]
+     ],
+     "figH": {
+      "dm-div-check": "هل الـ n بتقسم الـ a؟ أمثلة 2.4 و 2.5 بالباقي"
+     }
     },
     {
      "h": "الـ GCD والـ Euclidean algorithm",
@@ -1766,10 +1774,17 @@ AR.dm = {
       "الـ Algorithm:<pre>r₁ ← a; r₂ ← b</pre>وطول ما <bdi dir=\"ltr\">r₂&nbsp;&gt;&nbsp;0</bdi> كرّر:<pre>q ← r₁ / r₂\nr ← r₁ − q × r₂\nr₁ ← r₂; r₂ ← r</pre>وفي الآخر <bdi dir=\"ltr\">gcd(a,&nbsp;b)&nbsp;=&nbsp;r₁</bdi>.",
       "مثال 2.8: نحسب <bdi dir=\"ltr\">gcd(25,&nbsp;60)</bdi> كده:<span class=\"ltr\">60 = 2 × 25 + 10</span><span class=\"ltr\">25 = 2 × 10 + 5</span><span class=\"ltr\">10 = 2 × 5 + 0 → gcd = 5</span>(الـ slide كاتبة <bdi dir=\"ltr\">\"gcd(25,&nbsp;65)&nbsp;=&nbsp;5\"</bdi>، وده typo؛ الاتنين بيطلعوا 5).",
       "في الامتحان: نحسب <bdi dir=\"ltr\">gcd(63,&nbsp;110)</bdi> كده:<span class=\"ltr\">110 = 1 × 63 + 47</span><span class=\"ltr\">63 = 1 × 47 + 16</span><span class=\"ltr\">47 = 2 × 16 + 15</span><span class=\"ltr\">16 = 1 × 15 + 1</span><span class=\"ltr\">15 = 15 × 1 + 0 → gcd = 1</span>يعني relatively prime."
-     ]
+     ],
+     "figH": {
+      "dm-gcd-venn": "الـ common divisors لرقمين، وأكبرهم هو الـ gcd",
+      "dm-euclid-run": "الـ Euclidean algorithm خطوة بخطوة: الـ process والكود"
+     }
     },
     {
-     "h": "مثال 2.7: <bdi dir=\"ltr\">gcd(2740,&nbsp;1760)</bdi>"
+     "h": "مثال 2.7: <bdi dir=\"ltr\">gcd(2740,&nbsp;1760)</bdi>",
+     "figH": {
+      "dm-euclid-table": "جدول Example 2.7 بيتملي صف صف"
+     }
     },
     {
      "h": "الـ Extended Euclidean algorithm",
@@ -1782,7 +1797,10 @@ AR.dm = {
      ]
     },
     {
-     "h": "مثال 2.9: <bdi dir=\"ltr\">a&nbsp;=&nbsp;161,&nbsp;b&nbsp;=&nbsp;28</bdi>"
+     "h": "مثال 2.9: <bdi dir=\"ltr\">a&nbsp;=&nbsp;161,&nbsp;b&nbsp;=&nbsp;28</bdi>",
+     "figH": {
+      "dm-xgcd-table": "الـ extended Euclidean algorithm: أعمدة الـ r والـ s والـ t بتتملي خطوة بخطوة"
+     }
     },
     {
      "h": "الـ Modular arithmetic",
@@ -1792,7 +1810,13 @@ AR.dm = {
       "الـ <b>Set of residues Zn</b>:<span class=\"ltr\">Zn = {0, 1, 2, …, n − 1}</span>هي الـ set بتاعة أصغر residues modulo n، زي:<span class=\"ltr\">Z₂ = {0,1}, Z₆ = {0,…,5}, Z₁₁ = {0,…,10}</span>",
       "الـ <b>Congruence</b>: في الـ cryptography بنستخدم ≡ بدل علامة اليساوي، ونزوّد <bdi dir=\"ltr\">(mod&nbsp;n)</bdi>، زي:<span class=\"ltr\">2 ≡ 12 (mod 10), 13 ≡ 23 (mod 10)</span><span class=\"ltr\">3 ≡ 8 (mod 5), 8 ≡ 13 (mod 5)</span>يعني <bdi dir=\"ltr\">a&nbsp;≡&nbsp;b&nbsp;(mod&nbsp;n)</bdi> معناها <bdi dir=\"ltr\">a&nbsp;mod&nbsp;n&nbsp;=&nbsp;b&nbsp;mod&nbsp;n</bdi>.",
       "مثال 2.15: الساعة بتستخدم modulo 12 arithmetic، بس بتكتب 12 بدل 0."
-     ]
+     ],
+     "figH": {
+      "dm-mod-op": "الـ division relation قصاد الـ mod operator، مع Example 2.14",
+      "dm-mod-zn": "الـ Zn: أي a mod n بيقع في <bdi dir=\"ltr\">{0,&nbsp;…,&nbsp;n&nbsp;−&nbsp;1}</bdi>",
+      "dm-mod-congruence": "الـ Congruence: أرقام مختلفة ليها نفس الـ residue",
+      "dm-mod-clock": "في Example 2.15 الساعة بتشتغل modulo 12 arithmetic"
+     }
     },
     {
      "h": "العمليات في Zn وخصائصها",
@@ -1804,7 +1828,12 @@ AR.dm = {
       "مثال 2.20: أي integer ومجموع أرقامه العشرية ليهم نفس الباقي mod 3 (لأن <bdi dir=\"ltr\">10ⁿ&nbsp;mod&nbsp;3&nbsp;=&nbsp;1</bdi>).",
       "مثال 2.16:<span class=\"ltr\">(14 + 7) mod 15 = 6</span><span class=\"ltr\">(7 − 11) mod 13 = −4 mod 13 = 9</span><span class=\"ltr\">(7 × 11) mod 20 = 77 mod 20 = 17</span>",
       "مثال 2.17:<span class=\"ltr\">(17 + 27) mod 14 = 44 mod 14 = 2</span><span class=\"ltr\">(12 − 43) mod 13 = −31 mod 13 = −31 + 39 = 8</span><span class=\"ltr\">(123 × (−10)) mod 19 = −1230 mod 19</span><span class=\"ltr\">= −1230 + 1235 = 5</span>(الـ slide مكررة حلول 2.16 تحت 2.17؛ والإجابات الصح لـ 2.17 هي 2 و 8 و 5.)"
-     ]
+     ],
+     "figH": {
+      "dm-zn-ops": "العمليات في Zn: نعمل العملية وبعدين نرجّع النتيجة بالـ mod",
+      "dm-mod-props": "خصائص الـ mod: صغّر الأرقام الأول وهتوصل لنفس النتيجة",
+      "dm-mod-digits": "أمثلة 2.19 و 2.20: قوى الـ 10 والـ mod، وقاعدة مجموع الأرقام"
+     }
     },
     {
      "h": "الـ Inverses",
@@ -1816,10 +1845,17 @@ AR.dm = {
       "الـ <b>extended Euclidean algorithm</b> بيجيب الـ multiplicative inverse بتاع b في Zn لما <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi>: شغّله على <bdi dir=\"ltr\">(n,&nbsp;b)</bdi>؛ والـ inverse هو قيمة <b>t بعد ما ترجّعها لـ Zn</b>.",
       "مثال 2.25: الـ inverse بتاع 11 في Z₂₆ هو <b>19</b>، لأن:<span class=\"ltr\">11 × 19 = 209 = 8 × 26 + 1</span>الـ slide كاتبة \"7 or 19\" والمفروض \"<bdi dir=\"ltr\">−7</bdi> or 19\" <bdi dir=\"ltr\">(−7&nbsp;≡&nbsp;19)</bdi>.",
       "مثال 2.26: الـ inverse بتاع 23 في Z₁₀₀ هو <b>87</b> <bdi dir=\"ltr\">(23&nbsp;×&nbsp;87&nbsp;=&nbsp;2001)</bdi>. الـ slide كاتبة \"13 or 87\" والمفروض \"<bdi dir=\"ltr\">−13</bdi> or 87\".<br>مثال 2.27: الـ 12 مالوش inverse في Z₂₆ <bdi dir=\"ltr\">(gcd&nbsp;=&nbsp;2)</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-inv-add": "أزواج الـ additive inverse في Zn",
+      "dm-inv-mult": "الـ multiplicative inverses في Zn: مين ليه inverse ومين لأ"
+     }
     },
     {
-     "h": "مثال 2.25 بالـ extended Euclidean algorithm <bdi dir=\"ltr\">(n&nbsp;=&nbsp;26,&nbsp;b&nbsp;=&nbsp;11)</bdi>"
+     "h": "مثال 2.25 بالـ extended Euclidean algorithm <bdi dir=\"ltr\">(n&nbsp;=&nbsp;26,&nbsp;b&nbsp;=&nbsp;11)</bdi>",
+     "figH": {
+      "dm-xgcd-inverse": "الـ extended Euclidean algorithm بيجيب الـ inverse: أمثلة 2.25 لـ 2.27"
+     }
     }
    ],
    "cards": [
@@ -2025,7 +2061,13 @@ AR.dm = {
       "الـ <b>Proposition</b> (الـ handshake): مجموع الـ degrees في G بيساوي <b><bdi dir=\"ltr\">2|E|&nbsp;=&nbsp;2m</bdi></b> (لأن كل edge بيتعد مرتين). الـ <b>Corollary</b>: عدد الـ vertices اللي الـ degree بتاعها odd دايمًا زوجي.",
       "الـ <b>null graph</b> N_n فيه n vertices و<b>مفيهوش ولا edge</b> (كل الـ vertices isolated).",
       "رسمة كباري Königsberg (الـ A و B و C و D و 7 كباري) هي اللي بتوضح فكرة الـ degrees."
-     ]
+     ],
+     "figH": {
+      "dm-graph-l9-incident": "الـ graph بتاع الـ slide فيه 5 vertices و 6 edges، وكل edge بيبقى incident مع أنهي vertices",
+      "dm-graph-l9-simple": "الـ self-loop والـ multiple edges بيخلّوا الـ graph يبقى multigraph، ولو شلناهم يبقى simple",
+      "dm-degree-l9-handshake": "زوّد وشيل edges، وهتلاقي مجموع الـ degrees دايمًا بيساوي <bdi dir=\"ltr\">2m</bdi>، وعدد الـ vertices الـ odd دايمًا زوجي",
+      "dm-degree-l9-konigsberg": "في Königsberg الأرض بتبقى vertices والكباري بتبقى edges، والـ degrees بتطلع <bdi dir=\"ltr\">5, 3, 3, 3</bdi>"
+     }
     },
     {
      "h": "الـ Graphs الخاصة",
@@ -2035,7 +2077,13 @@ AR.dm = {
       "الـ <b>bipartite</b> graph: <bdi dir=\"ltr\">V&nbsp;=&nbsp;V₁&nbsp;∪&nbsp;V₂</bdi> ومفيش edges جوه V₁ ولا جوه V₂ (كل edge بيوصّل V₁ بـ V₂). الاختبار: دوّر على <b>لونين يفصلوا الـ edges</b> (كل edge يوصّل بين لونين مختلفين).",
       "أي graph فيه <b>triangle</b> (odd cycle) يبقى <b>مش bipartite</b>.",
       "الـ <b>complete bipartite</b> graph <bdi dir=\"ltr\">K_{n₁,n₂}</bdi> فيه كل الـ edges الممكنة بين V₁ و V₂:<span class=\"ltr\">|E| = |V₁|·|V₂|</span>ويبقى regular بالظبط لما <bdi dir=\"ltr\">n₁&nbsp;=&nbsp;n₂</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-graph-l9-complete": "رسم الـ <bdi dir=\"ltr\">Kₙ</bdi> edge edge، وفيه <bdi dir=\"ltr\">n(n − 1)/2</bdi> edges وكل vertex الـ degree بتاعه <bdi dir=\"ltr\">n − 1</bdi>",
+      "dm-graph-l9-petersen": "الـ Petersen graph كل vertex فيه الـ degree بتاعه 3، يعني هو <bdi dir=\"ltr\">3-regular</bdi>",
+      "dm-graph-l9-bipartite": "لوّن الـ 3 graphs بتوع الـ slide بلونين، وهتلاقي الأول والتالت bipartite، والتاني فيه triangle",
+      "dm-graph-l9-kbip": "ابني الـ complete bipartite graph، وفيه <bdi dir=\"ltr\">n₁·n₂</bdi> edges، وبيبقى regular بس لما <bdi dir=\"ltr\">n₁ = n₂</bdi>"
+     }
     },
     {
      "h": "الـ Walks والـ trails والـ paths والـ cycles",
@@ -2044,7 +2092,11 @@ AR.dm = {
       "الـ <b>trail</b> هو walk كل الـ <b>edges</b> فيه مختلفة. الـ <b>path</b> هو walk كل الـ <b>nodes</b> فيه مختلفة (وبالتالي الـ edges كمان).",
       "الـ walk أو الـ trail بيبقى <b>closed</b> لما <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>. والـ <b>cycle</b> هو walk الـ nodes فيه مختلفة ما عدا <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>.",
       "الـ Lemmas: أي walk من u لـ <bdi dir=\"ltr\">v&nbsp;≠&nbsp;u</bdi> جواه path من u لـ v (بتشيل الـ subcycles)؛ وأي closed walk طوله odd جواه cycle طوله odd."
-     ]
+     ],
+     "figH": {
+      "dm-graph-l9-walk": "امشي على الـ graph بتاع الـ slide وشوف الـ walk بتاعك trail ولا path ولا closed ولا cycle",
+      "dm-graph-l9-oddwalk": "الـ closed walk اللي طوله 17 (odd) بيتقسم عند الـ nodes المتكررة لحد ما يفضل odd cycle طوله 5"
+     }
     },
     {
      "h": "الـ Directed graphs",
@@ -2052,7 +2104,10 @@ AR.dm = {
       "في الـ <b>directed graph</b> (digraph) كل edge ليه اتجاه. لـ <bdi dir=\"ltr\">e&nbsp;=&nbsp;(v_s,&nbsp;v_t)</bdi>، الـ <bdi dir=\"ltr\">v_s</bdi> هو الـ <b>source</b> node والـ <bdi dir=\"ltr\">v_t</bdi> هو الـ <b>terminal</b> node.",
       "كل node ليه <b>in-degree</b> <bdi dir=\"ltr\">d_in(v)</bdi> (الداخل) و<b>out-degree</b> <bdi dir=\"ltr\">d_out(v)</bdi> (الخارج). والـ graph يبقى <b>balanced</b> لو <bdi dir=\"ltr\">d_in(v)&nbsp;=&nbsp;d_out(v)</bdi> لكل الـ nodes.",
       "الـ graph اللي الـ edge set بتاعه مكوّن من أزواج vertices <b>ordered</b> يبقى directed graph <bdi dir=\"ltr\">(Exam&nbsp;2023/24&nbsp;Q9)</bdi>."
-     ]
+     ],
+     "figH": {
+      "dm-degree-l9-digraph": "الـ digraph بتاع الـ slide، والـ source والـ terminal لكل edge، والـ in-degree والـ out-degree، واختبار الـ balanced"
+     }
     },
     {
      "h": "الـ Topological order والـ acyclic graphs",
@@ -2061,14 +2116,22 @@ AR.dm = {
       "الـ <b>acyclic</b> graph هو graph من غير cycles. الـ <b>Proposition</b>: أي acyclic graph فيه على الأقل node واحد الـ in-degree بتاعه صفر. الـ <b>Proof by contradiction</b>: لو كل node ليه predecessor <bdi dir=\"ltr\">p(i)</bdi>، ولو مشيت ورا الـ predecessors من <bdi dir=\"ltr\">v₀</bdi> لازم في الآخر هترجع لـ node زرته قبل كده (لأن <bdi dir=\"ltr\">|V|</bdi> محدود)، وده يدّيك cycle.",
       "الـ <b>Algorithm <bdi dir=\"ltr\">FindTopOrd(G)</bdi></b> بيمشي كده:<span class=\"ltr\">t := 0; G⁰ := G</span>وطول ما فيه <bdi dir=\"ltr\">v&nbsp;∈&nbsp;Gᵗ</bdi> بحيث <bdi dir=\"ltr\">d_in(v)&nbsp;=&nbsp;0</bdi> اعمل:<pre>Gᵗ⁺¹ := Gᵗ \\ {v}\norder(v) := t + 1\nt := t + 1</pre>لو <bdi dir=\"ltr\">t&nbsp;=&nbsp;n</bdi> يبقى G هو acyclic؛ ولو <bdi dir=\"ltr\">t&nbsp;&lt;&nbsp;n</bdi> يبقى G فيه cycle.",
       "مثال: <bdi dir=\"ltr\">v₄</bdi> بس اللي الـ in-degree بتاعه 0، فشيله؛ بعدين <bdi dir=\"ltr\">v₁</bdi> و <bdi dir=\"ltr\">v₃</bdi> الـ in-degree بتاعهم بقى 0؛ اختار <bdi dir=\"ltr\">v₃</bdi>، وهكذا. الترتيب النهائي:<span class=\"ltr\">{v₄, v₃, v₁, v₂, v₅, v₆}</span>الـ Complexity بتاعته linear في حجم الـ graph، <bdi dir=\"ltr\">O(n&nbsp;+&nbsp;m)</bdi>، باستخدام counter للـ in-degree وqueue."
-     ]
+     ],
+     "figH": {
+      "dm-graph-l9-toporder": "رقّم الـ nodes بتاعة الـ digraph اللي في الـ slide واتأكد إن <bdi dir=\"ltr\">f_ord(i) &lt; f_ord(j)</bdi> لكل edge",
+      "dm-graph-l9-predchain": "الـ proof: لو كل node ليه predecessor، ولو مشيت ورا الـ predecessors لازم ترجع لـ node زرته وتقفل cycle",
+      "dm-graph-l9-findtopord": "الـ FindTopOrd خطوة بخطوة: شيل node الـ in-degree بتاعه صفر، وادّيله رقم الترتيب اللي بعده، وكرّر"
+     }
     },
     {
      "h": "الـ Isomorphism",
      "pts": [
       "الـ G₁ و G₂ يبقوا <b>isomorphic</b> لو وبس لو فيه bijection بين الـ nodes بتاعتهم بيخلّي كل edge في G₁ يقابله edge واحد بالظبط في G₂، والعكس.",
       "لازم تلاقي ترقيم للـ labels يخلّي الـ graphs متطابقين؛ والـ slide بتقول إن المشكلة دي في العموم معروف إنها صعبة (\"NP hard\")."
-     ]
+     ],
+     "figH": {
+      "dm-graph-l9-iso": "الـ 4 رسومات اللي في الـ slide هما نفس الـ graph، الـ vertices بتتحرك والترقيم والـ edges ثابتين"
+     }
     },
     {
      "h": "طرق التمثيل: الـ adjacency matrix، الـ incidence matrix، والـ edge list",
@@ -2077,13 +2140,22 @@ AR.dm = {
       "الـ <b>Incidence matrix</b> T <bdi dir=\"ltr\">(n&nbsp;×&nbsp;m)</bdi>. في الـ undirected:<span class=\"ltr\">T(i, k) = T(j, k) = 1</span>لو وبس لو <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi>. وفي الـ directed:<span class=\"ltr\">T(i, k) = −1, T(j, k) = 1</span>لو وبس لو <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi>، يعني <bdi dir=\"ltr\">−1</bdi> عند الـ source، و <bdi dir=\"ltr\">+1</bdi> عند الـ terminal.",
       "الـ <b>Sparse representation</b> أو الـ <b>list of edges</b> متنظمة حسب الـ nodes، زي:<span class=\"ltr\">V(1) = {2, 3}, V(2) = {3}, V(3) = {4},</span><span class=\"ltr\">V(4) = ∅, V(5) = {1, 3, 4}</span>",
       "حجم التمثيل ده <b>linear</b> في <bdi dir=\"ltr\">m&nbsp;=&nbsp;|E|</bdi>؛ ولو عدّينا الـ bits:<span class=\"ltr\"><b>L = (n + m) log n</b></span>لأن الـ vertex pointer محتاج <bdi dir=\"ltr\">log&nbsp;n</bdi> bits."
-     ]
+     ],
+     "figH": {
+      "dm-graph-l9-edgelist": "الـ list of edges متنظمة حسب الـ nodes، والحجم بتاعها <bdi dir=\"ltr\">L = (n + m) log n</bdi>"
+     }
     },
     {
-     "h": "مثال المحاضرة: undirected graph (الـ vertices <bdi dir=\"ltr\">1..5</bdi>، والـ edges <bdi dir=\"ltr\">a..f</bdi>)"
+     "h": "مثال المحاضرة: undirected graph (الـ vertices <bdi dir=\"ltr\">1..5</bdi>، والـ edges <bdi dir=\"ltr\">a..f</bdi>)",
+     "figH": {
+      "dm-graph-l9-mat-und": "الـ <bdi dir=\"ltr\">A₁</bdi> والـ <bdi dir=\"ltr\">T₁</bdi> بيتملوا edge edge من الرسمة، وبعدين الـ degrees من مجموع الصفوف"
+     }
     },
     {
-     "h": "مثال المحاضرة: digraph (الـ vertices <bdi dir=\"ltr\">1..4</bdi>، والـ edges <bdi dir=\"ltr\">e1..e5</bdi>)"
+     "h": "مثال المحاضرة: digraph (الـ vertices <bdi dir=\"ltr\">1..4</bdi>، والـ edges <bdi dir=\"ltr\">e1..e5</bdi>)",
+     "figH": {
+      "dm-graph-l9-mat-dir": "الـ <bdi dir=\"ltr\">A₂</bdi> والـ <bdi dir=\"ltr\">T₂</bdi> (فيها <bdi dir=\"ltr\">−1</bdi> عند الـ source و <bdi dir=\"ltr\">+1</bdi> عند الـ terminal) والـ list of edges، بيتملوا edge edge"
+     }
     }
    ],
    "cards": [
@@ -2281,7 +2353,10 @@ AR.dm = {
       "<b>ملاحظات</b>:<br>(1) كل edge incident على 2 vertices بالظبط، فـ <b>كل column فيه 1 مرتين بالظبط</b>.<br>(2) عدد الـ 1 في الـ row يساوي الـ <b>degree</b> بتاع الـ vertex ده.<br>(3) الـ row اللي كله أصفار معناه <b>isolated vertex</b>.<br>(4) الـ <b>parallel edges</b> بتدّي columns متطابقة.<br>(5) الـ disconnected graph اللي ليه components <bdi dir=\"ltr\">G₁</bdi> و <bdi dir=\"ltr\">G₂</bdi> بيبقى على شكل <b>block diagonal</b>:<span class=\"ltr\">[A(G₁) 0; 0 A(G₂)]</span>(6) تبديل الـ rows أو الـ columns معناه إعادة تسمية الـ vertices والـ edges.",
       "الـ A متعرّفة على <b><bdi dir=\"ltr\">GF(2)</bdi></b>، يعني <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> مع الجمع <bdi dir=\"ltr\">mod&nbsp;2</bdi> (<bdi dir=\"ltr\">1&nbsp;+&nbsp;1&nbsp;=&nbsp;0</bdi>) والضرب <bdi dir=\"ltr\">mod&nbsp;2</bdi>.",
       "<b>الـ Theorem 10.1</b>: الـ <bdi dir=\"ltr\">G₁</bdi> و <bdi dir=\"ltr\">G₂</bdi> يبقوا isomorphic لو وبس لو <bdi dir=\"ltr\">A(G₁)</bdi> و <bdi dir=\"ltr\">A(G₂)</bdi> مختلفين بس في ترتيب الـ rows والـ columns."
-     ]
+     ],
+     "figH": {
+      "dm-incmat-build": "الـ <bdi dir=\"ltr\">A(G1)</bdi> بتتبني من الرسمة، edge واحد (column واحد) في كل خطوة، ودوس على أي vertex أو edge"
+     }
     },
     {
      "h": "نتايج الـ rank بتاعة <bdi dir=\"ltr\">A(G)</bdi>",
@@ -2291,7 +2366,11 @@ AR.dm = {
       "لو مسحت أي row واحد بيطلعلك الـ <b>reduced incidence matrix A_f</b> ((n − 1) × m)؛ والـ vertex اللي اتمسح اسمه <b>reference vertex</b>. الـ n − 1 rows دول بيحددوا الـ graph بالكامل لأن الـ row الناقص ممكن يتبني تاني (كل column فيه 2 وحايد).",
       "<b>الـ Theorem 10.3</b>: الـ reduced incidence matrix بتاعة <b>tree</b> بتبقى non-singular (مربعة من الـ order <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> والـ rank بتاعها <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi>). والـ reduced incidence matrix اللي حجمها <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)&nbsp;×&nbsp;(n&nbsp;−&nbsp;1)</bdi> بتبقى non-singular لو وبس لو الـ graph ده tree.",
       "<b>الـ Theorem 10.4</b>: أي submatrix حجمها <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)&nbsp;×&nbsp;(n&nbsp;−&nbsp;1)</bdi> من <bdi dir=\"ltr\">A(G)</bdi> (والـ G connected) بتبقى non-singular لو وبس لو الـ <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> edges بتوعها بيكوّنوا <b>spanning tree</b>."
-     ]
+     ],
+     "figH": {
+      "dm-incmat-try": "ارسم الـ graph بتاعك وشوف الـ rows الأصفار والـ columns المتطابقة والـ block diagonal، و <bdi dir=\"ltr\">rank&nbsp;A&nbsp;=&nbsp;n&nbsp;−&nbsp;k</bdi>",
+      "dm-incmat-tree": "امسح الـ row بتاع الـ reference vertex واختار <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> edges، والـ submatrix بتبقى non-singular بس لما يكوّنوا spanning tree"
+     }
     },
     {
      "h": "الـ Modified incidence matrix F (edges ليها اتجاه)",
@@ -2300,7 +2379,10 @@ AR.dm = {
       "<b>الـ Theorem 10.5</b>:<span class=\"ltr\">G connected → rank F = n − 1</span><b>والـ Theorem 10.6</b>:<span class=\"ltr\">k components → rank F = n − k</span>",
       "<b>الـ Theorem 10.7</b>: الـ determinant بتاع أي square submatrix من F بيبقى <bdi dir=\"ltr\">1</bdi> أو <bdi dir=\"ltr\">−1</bdi> أو <bdi dir=\"ltr\">0</bdi>.",
       "مثال <bdi dir=\"ltr\">(Fig. 10.2)</bdi>: الـ rows بتاعة A:<span class=\"ltr\">v1: 1 0 0 1 0</span><span class=\"ltr\">v2: 1 1 0 0 1</span><span class=\"ltr\">v3: 0 1 1 0 0</span><span class=\"ltr\">v4: 0 0 1 1 1</span>بتبقى الـ rows بتاعة F:<span class=\"ltr\">v1: 1 0 0 1 0</span><span class=\"ltr\">v2: −1 1 0 0 1</span><span class=\"ltr\">v3: 0 −1 1 0 0</span><span class=\"ltr\">v4: 0 0 −1 −1 −1</span>"
-     ]
+     ],
+     "figH": {
+      "dm-incmat-oriented": "من الـ A للـ F في <bdi dir=\"ltr\">Fig.&nbsp;10.2</bdi>، في كل column واحد من الـ 1 بيبقى <bdi dir=\"ltr\">−1</bdi>، ولو قلبت أي edge الـ rank بيفضل <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi>"
+     }
     },
     {
      "h": "10.3 الـ Cycle matrix <bdi dir=\"ltr\">B(G)</bdi>",
@@ -2310,7 +2392,11 @@ AR.dm = {
       "<b>ملاحظات</b>:<br>(1) الـ column اللي كله أصفار معناه edge مش موجود في أي cycle (non-cycle edge).<br>(2) كل row هو cycle vector.<br>(3) الـ self-loop بيدّي row فيه 1 واحد بس.<br>(4) عدد الـ 1 في الـ row هو عدد الـ edges في الـ cycle ده.<br>(5) الـ separable أو الـ disconnected graph بيدّي شكل block diagonal.<br>(6) تبديل الـ rows أو الـ columns بيعيد تسمية الـ cycles أو الـ edges.<br>(7) أي 2 graphs ليهم نفس الـ cycle matrix لو وبس لو كانوا <b><bdi dir=\"ltr\">2-isomorphic</bdi></b>، فالـ B مش بتحدد الـ graph بالكامل.",
       "<b>الـ Theorem 10.9</b>: لو مفيش self-loops ونفس ترتيب الـ edges، كل row في B بيبقى orthogonal على كل row في A:<span class=\"ltr\"><b>A Bᵀ = B Aᵀ ≡ 0 (mod 2)</b></span>",
       "<b>الـ Theorem 10.10</b>: لو G connected:<span class=\"ltr\"><b>rank B = m − n + 1</b></span><b>والـ Theorem 10.11</b>: لو فيه k components:<span class=\"ltr\">rank B = m − n + k</span>"
-     ]
+     ],
+     "figH": {
+      "dm-cycmat-build": "الـ <bdi dir=\"ltr\">B(G1)</bdi> بتتبني cycle ورا cycle، وبعدين ليه الـ rank بتاعها <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi> وليه <bdi dir=\"ltr\">A&nbsp;Bᵀ&nbsp;≡&nbsp;0</bdi>",
+      "dm-cycmat-2iso": "في <bdi dir=\"ltr\">Fig.&nbsp;10.4</bdi> فيه 2 graphs ليهم نفس الـ cycle matrix، يعني 2-isomorphic بس مش isomorphic"
+     }
     },
     {
      "h": "الأجزاء <bdi dir=\"ltr\">10.4 – 10.6</bdi>: الـ Cut-set matrices",
@@ -2320,7 +2406,11 @@ AR.dm = {
       "الـ cut-set والـ cycle دايمًا مشتركين في عدد زوجي من الـ edges، فـ:<span class=\"ltr\"><b>B Cᵀ = C Bᵀ ≡ 0 (mod 2)</b></span>",
       "<b>الـ Theorem 10.14</b>: لـ G connected:<span class=\"ltr\">rank C(G) = rank A(G) = n − 1</span>وده الـ rank بتاع الـ graph.",
       "الـ <b>Fundamental cut-set matrix</b> <bdi dir=\"ltr\">C_f</bdi> حجمها <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)&nbsp;×&nbsp;m</bdi>، والـ rows هي الـ fundamental cut-sets بالنسبة لـ spanning tree:<span class=\"ltr\">C_f = [C_c : I_{n−1}]</span>يعني identity على الـ <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> branches، و <bdi dir=\"ltr\">C_c</bdi> على الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi> chords."
-     ]
+     ],
+     "figH": {
+      "dm-cutmat-build": "الـ <bdi dir=\"ltr\">C(G1)</bdi> من الـ 8 cut-sets اللي في الـ slides، والـ rank بتاعها <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> و <bdi dir=\"ltr\">B&nbsp;Cᵀ&nbsp;≡&nbsp;0</bdi>، وبعدين اعمل cut بنفسك",
+      "dm-cutmat-fund": "كل branch في الـ spanning tree ليه fundamental cut-set واحد، والنتيجة <bdi dir=\"ltr\">C_f&nbsp;=&nbsp;[C_c&nbsp;:&nbsp;I₅]</bdi>"
+     }
     },
     {
      "h": "10.7 الـ Path matrix <bdi dir=\"ltr\">P(u,&nbsp;v)</bdi>",
@@ -2329,7 +2419,10 @@ AR.dm = {
       "مثال: الـ paths بين v3 و v4:<span class=\"ltr\">p1 = {e8, e5}, p2 = {e8, e7, e3}</span><span class=\"ltr\">p3 = {e8, e6, e4, e3}</span>",
       "<b>ملاحظات</b>:<br>(1) الـ column اللي كله أصفار معناه edge مش موجود في أي <bdi dir=\"ltr\">u–v</bdi> path.<br>(2) الـ column اللي كله وحايد معناه edge موجود في كل الـ <bdi dir=\"ltr\">u–v</bdi> paths.<br>(3) مفيش row كله أصفار.<br>(4) الـ ring sum بتاع أي 2 rows بيبقى cycle أو اتحاد cycles مالهمش edges مشتركة (edge-disjoint).",
       "<b>الـ Theorem 10.15</b> بتقول:<span class=\"ltr\">A Pᵀ(u, v) = M (mod 2)</span>حيث M فيها وحايد بس في الـ rows بتوع u و v."
-     ]
+     ],
+     "figH": {
+      "dm-pathmat-build": "الـ <bdi dir=\"ltr\">P(v3,&nbsp;v4)</bdi> بتتبني path ورا path في <bdi dir=\"ltr\">Fig.&nbsp;10.10</bdi>، والملاحظات بتاعتها و <bdi dir=\"ltr\">A&nbsp;Pᵀ&nbsp;=&nbsp;M</bdi>، واختار أي u و v"
+     }
     },
     {
      "h": "10.8 الـ Adjacency matrix X",
@@ -2341,10 +2434,19 @@ AR.dm = {
       "<b>الـ Theorem 10.18</b>: في الـ connected graph، <bdi dir=\"ltr\">d(v_i,&nbsp;v_j)&nbsp;=&nbsp;k</bdi> لو وبس لو k هو أصغر integer بحيث <bdi dir=\"ltr\">[Xᵏ]_ij&nbsp;≠&nbsp;0</bdi>.",
       "الـ <b>Degree matrix</b> H هي diagonal فيها <bdi dir=\"ltr\">h_ii&nbsp;=&nbsp;d_i</bdi>. <b>والـ Theorem 10.19</b> بتقول:<span class=\"ltr\"><b>F Fᵀ = H − X</b></span>ومش بتعتمد على الاتجاهات اللي اخترناها.",
       "الـ <b>Matrix-tree theorem <bdi dir=\"ltr\">(10.21)</bdi></b>: لو <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F&nbsp;Fᵀ&nbsp;=&nbsp;H&nbsp;−&nbsp;X</bdi>، يبقى كل cofactor في Q بيساوي <bdi dir=\"ltr\">τ(G)</bdi>، يعني عدد الـ spanning trees (الـ complexity). <b>والـ Corollary</b>:<span class=\"ltr\">τ(K_n) = nⁿ⁻²</span>مثلًا <bdi dir=\"ltr\">K₄</bdi> فيه 16 spanning tree."
-     ]
+     ],
+     "figH": {
+      "dm-adjmat-edgeseq": "الـ edge sequence بتاعة <bdi dir=\"ltr\">Fig.&nbsp;10.13</bdi> ماشية edge ورا edge:<span class=\"ltr\">e1 e2 e3 e4 e2 e5</span>",
+      "dm-adjmat-powers": "كل خانة في الـ <bdi dir=\"ltr\">Xᵏ</bdi> بتعدّ الـ edge sequences اللي طولها k، ودوس على أي خانة عشان تشوفهم",
+      "dm-adjmat-connect": "الـ distances والـ connectivity من <bdi dir=\"ltr\">X,&nbsp;X²,&nbsp;X³,&nbsp;X⁴</bdi>، وامسح edges وشوفهم بيتغيروا إزاي",
+      "dm-adjmat-mtree": "الـ matrix-tree theorem، أي cofactor في الـ <bdi dir=\"ltr\">H&nbsp;−&nbsp;X</bdi> بيساوي عدد الـ spanning trees، وكلهم مرسومين"
+     }
     },
     {
-     "h": "مثال محلول: الـ incidence والـ adjacency لـ graph صغير"
+     "h": "مثال محلول: الـ incidence والـ adjacency لـ graph صغير",
+     "figH": {
+      "dm-adjmat-triangle": "المثلث خطوة بخطوة، الـ A والـ X والـ <bdi dir=\"ltr\">H&nbsp;−&nbsp;X</bdi> والـ cofactor اللي بيطلع 3 والـ ranks"
+     }
     }
    ],
    "cards": [

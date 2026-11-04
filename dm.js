@@ -4708,7 +4708,22 @@ COURSES.dm = {
       "<b>Division relation</b>: <b>a = q × n + r</b>, where n is positive and r is non-negative (0 ≤ r &lt; n). a = dividend, n = divisor, q = quotient, r = remainder.",
       "Example 2.2: a = 255, n = 11 → q = 23, r = 2 (255 = 23 × 11 + 2).",
       "Example 2.3: a computer gives a negative r when a is negative. To make r positive: <b>decrement q by 1 and add n to r</b>. E.g. −255 ÷ 11: q = −23, r = −2 → q = −24, r = 9."
-     ]
+     ],
+     "fig": [
+      "dm-int-ops",
+      "dm-div-long",
+      "dm-div-negative"
+     ],
+     "figAt": {
+      "dm-int-ops": 2,
+      "dm-div-long": 4,
+      "dm-div-negative": 5
+     },
+     "figH": {
+      "dm-int-ops": "The three binary operations on Z, with the four sign cases of Example 2.1 (Figure 2.2)",
+      "dm-div-long": "Division algorithm: long division finds q and r (Figures 2.3 and 2.4)",
+      "dm-div-negative": "Negative a: decrement q by 1 and add n to r"
+     }
     },
     {
      "h": "Divisibility",
@@ -4718,7 +4733,16 @@ COURSES.dm = {
       "Example 2.5: 13 | 78, 7 | 98, −6 | 24, 4 | 44, 11 | (−33); 13 ∤ 27, 7 ∤ 50, −6 ∤ 23, 4 ∤ 41, 11 ∤ (−32).",
       "<b>Property 1</b>: if a | 1, then a = ±1. <b>Property 2</b>: if a | b and b | a, then a = ±b. <b>Property 3</b>: if a | b and b | c, then a | c. <b>Property 4</b>: if a | b and a | c, then a | (m × b + n × c) for arbitrary integers m, n.",
       "<b>Fact 1</b>: the integer 1 has only one divisor, itself. <b>Fact 2</b>: any positive integer has at least two divisors, 1 and itself (but it can have more)."
-     ]
+     ],
+     "fig": [
+      "dm-div-check"
+     ],
+     "figAt": {
+      "dm-div-check": 2
+     },
+     "figH": {
+      "dm-div-check": "Does n divide a? Examples 2.4 and 2.5 checked with the remainder"
+     }
     },
     {
      "h": "GCD and the Euclidean algorithm",
@@ -4729,7 +4753,19 @@ COURSES.dm = {
       "Algorithm: r₁ ← a, r₂ ← b; while r₂ &gt; 0: q ← r₁ / r₂; r ← r₁ − q × r₂; r₁ ← r₂; r₂ ← r. Then gcd(a, b) = r₁.",
       "Example 2.8: gcd(25, 60): 60 = 2 × 25 + 10; 25 = 2 × 10 + 5; 10 = 2 × 5 + 0 → gcd = 5 (the slide prints \"gcd(25, 65) = 5\", a typo; both equal 5).",
       "Exam: gcd(63, 110): 110 = 1 × 63 + 47; 63 = 1 × 47 + 16; 47 = 2 × 16 + 15; 16 = 1 × 15 + 1; 15 = 15 × 1 + 0 → gcd = 1 (relatively prime)."
-     ]
+     ],
+     "fig": [
+      "dm-gcd-venn",
+      "dm-euclid-run"
+     ],
+     "figAt": {
+      "dm-gcd-venn": 0,
+      "dm-euclid-run": 3
+     },
+     "figH": {
+      "dm-gcd-venn": "Common divisors of two integers and the greatest one (Figure 2.6)",
+      "dm-euclid-run": "Euclidean algorithm step by step: the process and the code (Figure 2.7)"
+     }
     },
     {
      "h": "Example 2.7: gcd(2740, 1760)",
@@ -4782,7 +4818,13 @@ COURSES.dm = {
        "0",
        "gcd = 20"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-euclid-table"
+     ],
+     "figH": {
+      "dm-euclid-table": "The Example 2.7 table filled row by row"
+     }
     },
     {
      "h": "Extended Euclidean algorithm",
@@ -4869,7 +4911,13 @@ COURSES.dm = {
        "",
        "check: (−1)(161) + 6(28) = 7"
       ]
-     ]
+     ],
+     "fig": [
+      "dm-xgcd-table"
+     ],
+     "figH": {
+      "dm-xgcd-table": "Extended Euclidean algorithm: the r, s and t columns filled step by step (Figure 2.8)"
+     }
     },
     {
      "h": "Modular arithmetic",
@@ -4879,7 +4927,25 @@ COURSES.dm = {
       "<b>Set of residues Zn</b> = {0, 1, 2, …, n − 1}: the set of least residues modulo n (e.g. Z₂ = {0,1}, Z₆ = {0,…,5}, Z₁₁ = {0,…,10}).",
       "<b>Congruence</b>: in cryptography we use ≡ instead of equality, adding (mod n): 2 ≡ 12 (mod 10), 13 ≡ 23 (mod 10), 3 ≡ 8 (mod 5), 8 ≡ 13 (mod 5). a ≡ b (mod n) means a mod n = b mod n.",
       "Example 2.15: a clock uses modulo 12 arithmetic, but writes 12 instead of 0."
-     ]
+     ],
+     "fig": [
+      "dm-mod-op",
+      "dm-mod-zn",
+      "dm-mod-congruence",
+      "dm-mod-clock"
+     ],
+     "figAt": {
+      "dm-mod-op": 1,
+      "dm-mod-zn": 2,
+      "dm-mod-congruence": 3,
+      "dm-mod-clock": 4
+     },
+     "figH": {
+      "dm-mod-op": "Division relation vs mod operator, with Example 2.14 (Figure 2.9)",
+      "dm-mod-zn": "Zn: every a mod n lands in {0, …, n − 1} (Figure 2.10)",
+      "dm-mod-congruence": "Congruence: different integers, same residue (Figure 2.11)",
+      "dm-mod-clock": "Example 2.15: the clock is modulo 12 arithmetic"
+     }
     },
     {
      "h": "Operations in Zn and properties",
@@ -4891,7 +4957,22 @@ COURSES.dm = {
       "Example 2.20: an integer and the sum of its decimal digits have the same remainder mod 3 (since 10ⁿ mod 3 = 1).",
       "Example 2.16: (14 + 7) mod 15 = 6; (7 − 11) mod 13 = −4 mod 13 = 9; (7 × 11) mod 20 = 77 mod 20 = 17.",
       "Example 2.17: (17 + 27) mod 14 = 44 mod 14 = 2; (12 − 43) mod 13 = −31 mod 13 = −31 + 39 = 8; (123 × (−10)) mod 19 = −1230 mod 19 = −1230 + 1235 = 5. (The slide repeats the 2.16 solutions under 2.17; the correct 2.17 answers are 2, 8, 5.)"
-     ]
+     ],
+     "fig": [
+      "dm-zn-ops",
+      "dm-mod-props",
+      "dm-mod-digits"
+     ],
+     "figAt": {
+      "dm-zn-ops": 0,
+      "dm-mod-props": 2,
+      "dm-mod-digits": 4
+     },
+     "figH": {
+      "dm-zn-ops": "Binary operations in Zn: operate, then map back with mod (Figure 2.13, Examples 2.16 and 2.17)",
+      "dm-mod-props": "Properties of mod: reduce first, same result (Figure 2.14, Example 2.18)",
+      "dm-mod-digits": "Examples 2.19 and 2.20: powers of 10 mod x and the digit sum"
+     }
     },
     {
      "h": "Inverses",
@@ -4903,7 +4984,19 @@ COURSES.dm = {
       "The <b>extended Euclidean algorithm</b> finds the multiplicative inverse of b in Zn when gcd(n, b) = 1: run it on (n, b); the inverse is the value of <b>t mapped to Zn</b>.",
       "Example 2.25: inverse of 11 in Z₂₆ is <b>19</b> (11 × 19 = 209 = 8 × 26 + 1). The slide's \"7 or 19\" should read \"−7 or 19\" (−7 ≡ 19).",
       "Example 2.26: inverse of 23 in Z₁₀₀ is <b>87</b> (23 × 87 = 2001). The slide's \"13 or 87\" should read \"−13 or 87\". Example 2.27: 12 has no inverse in Z₂₆ (gcd = 2)."
-     ]
+     ],
+     "fig": [
+      "dm-inv-add",
+      "dm-inv-mult"
+     ],
+     "figAt": {
+      "dm-inv-add": 0,
+      "dm-inv-mult": 3
+     },
+     "figH": {
+      "dm-inv-add": "Additive inverse pairs in Zn",
+      "dm-inv-mult": "Multiplicative inverses in Zn: which elements have one (Examples 2.22 to 2.24)"
+     }
     },
     {
      "h": "Example 2.25 with the extended Euclidean algorithm (n = 26, b = 11)",
@@ -4971,7 +5064,13 @@ COURSES.dm = {
        "",
        ""
       ]
-     ]
+     ],
+     "fig": [
+      "dm-xgcd-inverse"
+     ],
+     "figH": {
+      "dm-xgcd-inverse": "Extended Euclid finds the inverse: Examples 2.25 to 2.27 (Figure 2.15)"
+     }
     }
    ],
    "cards": [
@@ -5467,7 +5566,25 @@ COURSES.dm = {
       "<b>Proposition</b> (handshake): the sum of the degrees of G equals <b>2|E| = 2m</b>. <b>Corollary</b>: the number of vertices of odd degree is even.",
       "A <b>null graph</b> N_n has n vertices and <b>no edges</b> (all vertices isolated).",
       "The Königsberg bridges figure (A, B, C, D with 7 bridges) motivates degrees."
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-incident",
+      "dm-graph-l9-simple",
+      "dm-degree-l9-handshake",
+      "dm-degree-l9-konigsberg"
+     ],
+     "figAt": {
+      "dm-graph-l9-incident": 1,
+      "dm-graph-l9-simple": 2,
+      "dm-degree-l9-handshake": 5,
+      "dm-degree-l9-konigsberg": 6
+     },
+     "figH": {
+      "dm-graph-l9-incident": "The slide's graph G: n = 5 vertices, m = 6 edges, and which vertices each edge is incident with",
+      "dm-graph-l9-simple": "A self-loop and multiple edges make a multigraph; remove them and the graph is simple",
+      "dm-degree-l9-handshake": "Add and remove edges: the degrees always add up to 2m, and the odd-degree vertices stay even in number",
+      "dm-degree-l9-konigsberg": "Königsberg: land areas become vertices, bridges become edges, and the degrees are 5, 3, 3, 3"
+     }
     },
     {
      "h": "Special graphs",
@@ -5477,7 +5594,25 @@ COURSES.dm = {
       "A <b>bipartite</b> graph: V = V₁ ∪ V₂ with no edges inside V₁ or inside V₂ (every edge joins V₁ to V₂). Test: find <b>2 colours that separate the edges</b> (each edge joins two different colours).",
       "A graph containing a <b>triangle</b> (odd cycle) is <b>not bipartite</b>.",
       "A <b>complete bipartite</b> graph K_{n₁,n₂} has all edges between V₁ and V₂: |E| = |V₁|·|V₂|. It is regular exactly when n₁ = n₂."
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-complete",
+      "dm-graph-l9-petersen",
+      "dm-graph-l9-bipartite",
+      "dm-graph-l9-kbip"
+     ],
+     "figAt": {
+      "dm-graph-l9-complete": 0,
+      "dm-graph-l9-petersen": 1,
+      "dm-graph-l9-bipartite": 3,
+      "dm-graph-l9-kbip": 4
+     },
+     "figH": {
+      "dm-graph-l9-complete": "Kₙ drawn edge by edge: n(n − 1)/2 edges, every vertex of degree n − 1",
+      "dm-graph-l9-petersen": "The Petersen graph: every vertex has degree 3, so it is 3-regular",
+      "dm-graph-l9-bipartite": "Colour the slide's three graphs with 2 colours: graphs 1 and 3 are bipartite, graph 2 has a triangle",
+      "dm-graph-l9-kbip": "Build the complete bipartite graph: n₁·n₂ edges, and regular only when n₁ = n₂"
+     }
     },
     {
      "h": "Walks, trails, paths, cycles",
@@ -5486,7 +5621,19 @@ COURSES.dm = {
       "A <b>trail</b> is a walk with all different <b>edges</b>. A <b>path</b> is a walk with all different <b>nodes</b> (hence edges).",
       "A walk or trail is <b>closed</b> when v₀ = v_k. A <b>cycle</b> is a walk with different nodes except v₀ = v_k.",
       "Lemmas: a walk from u to v ≠ u contains a path from u to v (eliminate subcycles); a closed walk of odd length contains a cycle of odd length."
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-walk",
+      "dm-graph-l9-oddwalk"
+     ],
+     "figAt": {
+      "dm-graph-l9-walk": 2,
+      "dm-graph-l9-oddwalk": 3
+     },
+     "figH": {
+      "dm-graph-l9-walk": "Walk on the slide's graph and see whether it is a trail, a path, closed or a cycle",
+      "dm-graph-l9-oddwalk": "A closed walk of odd length 17, split at its repeated nodes until an odd cycle of length 5 is left"
+     }
     },
     {
      "h": "Directed graphs",
@@ -5494,7 +5641,16 @@ COURSES.dm = {
       "In a <b>directed graph</b> (digraph) each edge has a direction. For e = (v_s, v_t), v_s is the <b>source</b> node and v_t the <b>terminal</b> node.",
       "Each node has an <b>in-degree</b> d_in(v) and an <b>out-degree</b> d_out(v). A graph is <b>balanced</b> if d_in(v) = d_out(v) for all nodes.",
       "A graph whose edge set is made of <b>ordered</b> pairs of vertices is a directed graph (Exam 2023/24 Q9)."
-     ]
+     ],
+     "fig": [
+      "dm-degree-l9-digraph"
+     ],
+     "figAt": {
+      "dm-degree-l9-digraph": 1
+     },
+     "figH": {
+      "dm-degree-l9-digraph": "The slide's digraph: source and terminal of each edge, in- and out-degrees, and the balanced test"
+     }
     },
     {
      "h": "Topological order and acyclic graphs",
@@ -5503,14 +5659,38 @@ COURSES.dm = {
       "An <b>acyclic</b> graph is a graph without cycles. <b>Proposition</b>: every acyclic graph contains at least one node with zero in-degree. <b>Proof by contradiction</b>: if every node had a predecessor p(i), following predecessors from v₀ must eventually revisit a node (|V| is bounded), giving a cycle.",
       "<b>Algorithm FindTopOrd(G)</b>: t := 0; G⁰ := G; while ∃ v ∈ Gᵗ with d_in(v) = 0: Gᵗ⁺¹ := Gᵗ \\ {v}; order(v) := t + 1; t := t + 1. If t = n, G is acyclic; if t &lt; n, G has a cycle.",
       "Example: only v₄ has in-degree 0 → remove it; then v₁ and v₃ have in-degree 0; pick v₃, and so on. Final order {v₄, v₃, v₁, v₂, v₅, v₆}. Complexity: linear in the size of the graph, O(n + m), with an in-degree counter and a queue."
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-toporder",
+      "dm-graph-l9-predchain",
+      "dm-graph-l9-findtopord"
+     ],
+     "figAt": {
+      "dm-graph-l9-toporder": 0,
+      "dm-graph-l9-predchain": 1,
+      "dm-graph-l9-findtopord": 3
+     },
+     "figH": {
+      "dm-graph-l9-toporder": "Number the nodes of the slide's digraph and check f_ord(i) < f_ord(j) on every edge",
+      "dm-graph-l9-predchain": "The proof: if every node has a predecessor, following predecessors must revisit a node and close a cycle",
+      "dm-graph-l9-findtopord": "FindTopOrd step by step: remove a node of in-degree 0, give it the next order number, repeat"
+     }
     },
     {
      "h": "Isomorphism",
      "pts": [
       "G₁ and G₂ are <b>isomorphic</b> iff there is a bijection between their nodes that makes each edge of G₁ correspond to exactly one edge of G₂, and vice versa.",
       "One must find a label numbering that makes the graphs identical; the slide notes the general problem is believed to be hard (\"NP hard\")."
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-iso"
+     ],
+     "figAt": {
+      "dm-graph-l9-iso": 1
+     },
+     "figH": {
+      "dm-graph-l9-iso": "The slide's four drawings are one graph: the vertices move, the numbering and the edges stay"
+     }
     },
     {
      "h": "Representations: adjacency matrix, incidence matrix, edge list",
@@ -5519,7 +5699,16 @@ COURSES.dm = {
       "<b>Incidence matrix</b> T (n × m): undirected: T(i, k) = T(j, k) = 1 iff e_k = (v_i, v_j). Directed: T(i, k) = −1 and T(j, k) = 1 iff e_k = (v_i, v_j) (−1 at the source, +1 at the terminal).",
       "<b>Sparse representation / list of edges</b> organised by nodes, e.g. V(1) = {2, 3}, V(2) = {3}, V(3) = {4}, V(4) = ∅, V(5) = {1, 3, 4}.",
       "The size of this representation is <b>linear</b> in m = |E|; counting bits: <b>L = (n + m) log n</b>, since log n bits represent a vertex pointer."
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-edgelist"
+     ],
+     "figAt": {
+      "dm-graph-l9-edgelist": 3
+     },
+     "figH": {
+      "dm-graph-l9-edgelist": "The list of edges organised by nodes, and its size L = (n + m) log n"
+     }
     },
     {
      "h": "Lecture example: undirected graph (vertices 1..5, edges a..f)",
@@ -5533,7 +5722,13 @@ COURSES.dm = {
       "5: 0 1 1 1 0",
       "Incidence T₁ (columns a b c d e f): 1: 1 0 0 0 0 0 | 2: 0 1 1 0 0 0 | 3: 0 0 1 1 1 0 | 4: 1 0 0 0 1 1 | 5: 0 1 0 1 0 1",
       "Degrees: d(1) = 1, d(2) = 2, d(3) = 3, d(4) = 3, d(5) = 3 → sum 12 = 2 × 6 edges ✓"
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-mat-und"
+     ],
+     "figH": {
+      "dm-graph-l9-mat-und": "A₁ and T₁ filled edge by edge from the drawing, then the degrees from the row sums"
+     }
     },
     {
      "h": "Lecture example: digraph (vertices 1..4, edges e1..e5)",
@@ -5542,7 +5737,13 @@ COURSES.dm = {
       "Adjacency A₂: 1: 0 0 1 0 | 2: 1 0 0 0 | 3: 0 1 0 0 | 4: 0 1 1 0",
       "Incidence T₂ (columns e1..e5): 1: −1 0 0 0 1 | 2: 0 1 0 1 −1 | 3: 1 0 1 −1 0 | 4: 0 −1 −1 0 0",
       "List of edges: V(1) = {3}, V(2) = {1}, V(3) = {2}, V(4) = {2, 3}"
-     ]
+     ],
+     "fig": [
+      "dm-graph-l9-mat-dir"
+     ],
+     "figH": {
+      "dm-graph-l9-mat-dir": "A₂, T₂ (−1 at the source, +1 at the terminal) and the list of edges, filled edge by edge"
+     }
     }
    ],
    "cards": [
@@ -5996,7 +6197,16 @@ COURSES.dm = {
       "<b>Observations</b>: (1) every edge is incident on exactly two vertices, so <b>each column has exactly two ones</b>; (2) the number of ones in a row = the <b>degree</b> of that vertex; (3) a row of all zeros = an <b>isolated vertex</b>; (4) <b>parallel edges</b> give identical columns; (5) a disconnected graph with components G₁, G₂ has a <b>block diagonal</b> form [A(G₁) 0; 0 A(G₂)]; (6) permuting rows or columns = relabelling vertices and edges.",
       "A is defined over <b>GF(2)</b>: {0, 1} with addition mod 2 (1 + 1 = 0) and multiplication mod 2.",
       "<b>Theorem 10.1</b>: G₁ and G₂ are isomorphic iff A(G₁) and A(G₂) differ only by permutations of rows and columns."
-     ]
+     ],
+     "fig": [
+      "dm-incmat-build"
+     ],
+     "figAt": {
+      "dm-incmat-build": 0
+     },
+     "figH": {
+      "dm-incmat-build": "A(G1) built from the drawing, one edge (column) at a time; tap a vertex or an edge"
+     }
     },
     {
      "h": "Rank results for A(G)",
@@ -6006,7 +6216,19 @@ COURSES.dm = {
       "Deleting any one row gives the <b>reduced incidence matrix A_f</b> ((n − 1) × m); the deleted vertex is the <b>reference vertex</b>. n − 1 rows specify the graph completely because the missing row can be rebuilt (each column has two ones).",
       "<b>Theorem 10.3</b>: the reduced incidence matrix of a <b>tree</b> is non-singular (square of order n − 1 with rank n − 1). An (n − 1) × (n − 1) reduced incidence matrix is non-singular iff the graph is a tree.",
       "<b>Theorem 10.4</b>: an (n − 1) × (n − 1) submatrix of A(G) (G connected) is non-singular iff its n − 1 edges form a <b>spanning tree</b>."
-     ]
+     ],
+     "fig": [
+      "dm-incmat-try",
+      "dm-incmat-tree"
+     ],
+     "figAt": {
+      "dm-incmat-try": 1,
+      "dm-incmat-tree": 4
+     },
+     "figH": {
+      "dm-incmat-try": "Draw your own graph: zero rows, identical columns, block diagonal form and rank A = n − k",
+      "dm-incmat-tree": "Delete a reference row, pick n − 1 edges: the submatrix is non-singular exactly when they form a spanning tree"
+     }
     },
     {
      "h": "Modified incidence matrix F (oriented edges)",
@@ -6015,7 +6237,16 @@ COURSES.dm = {
       "<b>Theorem 10.5</b>: G connected → rank F = n − 1. <b>Theorem 10.6</b>: k components → rank F = n − k.",
       "<b>Theorem 10.7</b>: the determinant of any square submatrix of F is 1, −1 or 0.",
       "Example (Fig. 10.2): A rows v1: 1 0 0 1 0, v2: 1 1 0 0 1, v3: 0 1 1 0 0, v4: 0 0 1 1 1 → F rows v1: 1 0 0 1 0, v2: −1 1 0 0 1, v3: 0 −1 1 0 0, v4: 0 0 −1 −1 −1."
-     ]
+     ],
+     "fig": [
+      "dm-incmat-oriented"
+     ],
+     "figAt": {
+      "dm-incmat-oriented": 3
+     },
+     "figH": {
+      "dm-incmat-oriented": "From A to F (Fig. 10.2): one 1 in each column becomes −1; flip any edge and the rank stays n − 1"
+     }
     },
     {
      "h": "10.3 Cycle matrix B(G)",
@@ -6025,7 +6256,19 @@ COURSES.dm = {
       "<b>Observations</b>: (1) a column of all zeros = an edge in no cycle (non-cycle edge); (2) each row is a cycle vector; (3) a self-loop gives a row with a single one; (4) ones in a row = edges in that cycle; (5) separable/disconnected graph → block diagonal form; (6) permuting rows/columns relabels cycles/edges; (7) two graphs have the same cycle matrix iff they are <b>2-isomorphic</b>, so B does not specify a graph completely.",
       "<b>Theorem 10.9</b>: with no self-loops and the same edge order, every row of B is orthogonal to every row of A: <b>A Bᵀ = B Aᵀ ≡ 0 (mod 2)</b>.",
       "<b>Theorem 10.10</b>: connected G → <b>rank B = m − n + 1</b>. <b>Theorem 10.11</b>: k components → rank B = m − n + k."
-     ]
+     ],
+     "fig": [
+      "dm-cycmat-build",
+      "dm-cycmat-2iso"
+     ],
+     "figAt": {
+      "dm-cycmat-build": 1,
+      "dm-cycmat-2iso": 2
+     },
+     "figH": {
+      "dm-cycmat-build": "B(G1) cycle by cycle, then why its rank is m − n + 1 and why A Bᵀ ≡ 0 (mod 2)",
+      "dm-cycmat-2iso": "Fig. 10.4: two graphs with the same cycle matrix, 2-isomorphic but not isomorphic"
+     }
     },
     {
      "h": "10.4 – 10.6 Cut-set matrices",
@@ -6035,7 +6278,19 @@ COURSES.dm = {
       "A cut-set and a cycle always share an even number of edges, so <b>B Cᵀ = C Bᵀ ≡ 0 (mod 2)</b>.",
       "<b>Theorem 10.14</b>: for connected G, rank C(G) = rank A(G) = n − 1 (the rank of the graph).",
       "<b>Fundamental cut-set matrix</b> C_f: (n − 1) × m, rows = fundamental cut-sets w.r.t. a spanning tree; C_f = [C_c : I_{n−1}] (identity on the n − 1 branches, C_c on the m − n + 1 chords)."
-     ]
+     ],
+     "fig": [
+      "dm-cutmat-build",
+      "dm-cutmat-fund"
+     ],
+     "figAt": {
+      "dm-cutmat-build": 0,
+      "dm-cutmat-fund": 4
+     },
+     "figH": {
+      "dm-cutmat-build": "C(G1) from the slides’ eight cut-sets, its rank n − 1 and B Cᵀ ≡ 0; then make your own cut",
+      "dm-cutmat-fund": "One fundamental cut-set per branch of the spanning tree: C_f = [C_c : I₅]"
+     }
     },
     {
      "h": "10.7 Path matrix P(u, v)",
@@ -6044,7 +6299,16 @@ COURSES.dm = {
       "Example: paths between v3 and v4: p1 = {e8, e5}, p2 = {e8, e7, e3}, p3 = {e8, e6, e4, e3}.",
       "<b>Observations</b>: (1) a column of all zeros = an edge in no u–v path; (2) a column of all ones = an edge in every u–v path; (3) no row is all zeros; (4) the ring sum of two rows is a cycle or an edge-disjoint union of cycles.",
       "<b>Theorem 10.15</b>: A Pᵀ(u, v) = M (mod 2), where M has ones only in rows u and v."
-     ]
+     ],
+     "fig": [
+      "dm-pathmat-build"
+     ],
+     "figAt": {
+      "dm-pathmat-build": 1
+     },
+     "figH": {
+      "dm-pathmat-build": "P(v3, v4) path by path (Fig. 10.10), its observations and A Pᵀ = M; pick any u and v"
+     }
     },
     {
      "h": "10.8 Adjacency matrix X",
@@ -6056,7 +6320,25 @@ COURSES.dm = {
       "<b>Theorem 10.18</b>: in a connected graph, d(v_i, v_j) = k iff k is the smallest integer with [Xᵏ]_ij ≠ 0.",
       "<b>Degree matrix</b> H: diagonal with h_ii = d_i. <b>Theorem 10.19</b>: <b>F Fᵀ = H − X</b> (independent of orientation).",
       "<b>Matrix-tree theorem (10.21)</b>: with Q = F Fᵀ = H − X, every cofactor of Q equals τ(G), the number of spanning trees (complexity). <b>Corollary</b>: τ(K_n) = nⁿ⁻² (e.g. K₄ has 16 spanning trees)."
-     ]
+     ],
+     "fig": [
+      "dm-adjmat-edgeseq",
+      "dm-adjmat-powers",
+      "dm-adjmat-connect",
+      "dm-adjmat-mtree"
+     ],
+     "figAt": {
+      "dm-adjmat-edgeseq": 1,
+      "dm-adjmat-powers": 2,
+      "dm-adjmat-connect": 4,
+      "dm-adjmat-mtree": 6
+     },
+     "figH": {
+      "dm-adjmat-edgeseq": "The edge sequence e1 e2 e3 e4 e2 e5 of Fig. 10.13, walked edge by edge",
+      "dm-adjmat-powers": "Each entry of Xᵏ counts the edge sequences of length k: tap a cell to list them",
+      "dm-adjmat-connect": "Distances and connectivity read from X, X², X³, X⁴: delete edges and watch them change",
+      "dm-adjmat-mtree": "Matrix-tree theorem: a cofactor of H − X equals the number of spanning trees, all drawn"
+     }
     },
     {
      "h": "Worked example: incidence and adjacency of a small graph",
@@ -6066,7 +6348,13 @@ COURSES.dm = {
       "X (adjacency):  v1: 0 1 1 | v2: 1 0 1 | v3: 1 1 0",
       "H − X = [2 −1 −1; −1 2 −1; −1 −1 2]; a cofactor, e.g. det[2 −1; −1 2] = 4 − 1 = 3 = τ(K₃) = 3³⁻² ✓",
       "rank A = n − 1 = 2 (connected); rank B = m − n + 1 = 3 − 3 + 1 = 1 (one cycle)"
-     ]
+     ],
+     "fig": [
+      "dm-adjmat-triangle"
+     ],
+     "figH": {
+      "dm-adjmat-triangle": "The triangle step by step: A, X, H − X, the cofactor 3 = 3³⁻² and the ranks"
+     }
     }
    ],
    "cards": [

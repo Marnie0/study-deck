@@ -4115,7 +4115,13 @@ COURSES.or = {
        "CPM vs PERT",
        "CPM: one time estimate per activity, no allowance for uncertainty (time is deterministic). PERT: three time estimates (time is probabilistic)."
       ]
-     ]
+     ],
+     "fig": [
+      "or-cpm-terms"
+     ],
+     "figH": {
+      "or-cpm-terms": "The terms on a real network: tap a term to see it (section example)"
+     }
     },
     {
      "h": "Constructing the CPM network (section rules)",
@@ -4125,7 +4131,19 @@ COURSES.or = {
       "Activities that share the same predecessors start from the same node (e.g. D, E, F all after C leave C's end node).",
       "Two activities may <b>not</b> have the same start node and the same end node: separate them with an extra node and a <b>dummy</b>.",
       "Use a dummy when an activity depends on only part of a group (e.g. F after C only, but D after A and C): connect with a dashed dummy arrow."
-     ]
+     ],
+     "fig": [
+      "or-cpm-build",
+      "or-cpm-dummy"
+     ],
+     "figAt": {
+      "or-cpm-build": 2,
+      "or-cpm-dummy": 4
+     },
+     "figH": {
+      "or-cpm-build": "Building the 2019/20 network activity by activity: one start node, shared start nodes, one end node",
+      "or-cpm-dummy": "When a dummy is needed: two activities on the same two nodes, and dependence on part of a group"
+     }
     },
     {
      "h": "Time formulas",
@@ -4135,7 +4153,13 @@ COURSES.or = {
       "Total float TF = LS − ES = LF − EF          Free float FF = min ES(successors) − EF",
       "Critical activity: TF = 0 (ES = LS and EF = LF). Critical path: the longest path, made of critical activities.",
       "Section node test: an activity is critical when the boxes (ES) and triangles (LF) at both its nodes are equal AND (LF of head − ES of tail) = its duration."
-     ]
+     ],
+     "fig": [
+      "or-cpm-formulas"
+     ],
+     "figH": {
+      "or-cpm-formulas": "The formulas on the 2019/20 network: max at a merge node, min at a burst node, total and free float, the node test"
+     }
     },
     {
      "h": "Worked example (Final 2019/20, section): A 15; B 17 (A); C 21 (A); D 19 (B); E 22 (B); F 18 (C, D); G 15 (E, F)",
@@ -4212,7 +4236,13 @@ COURSES.or = {
        "84",
        "0"
       ]
-     ]
+     ],
+     "fig": [
+      "or-cpm-pass-2019"
+     ],
+     "figH": {
+      "or-cpm-pass-2019": "Forward pass, backward pass and the table, node by node, down to the critical path (84 months)"
+     }
     },
     {
      "h": "Example result",
@@ -4222,14 +4252,26 @@ COURSES.or = {
       "Critical activities: A, B, D, F, G.  Non-critical: C, E (float 15 each).",
       "ES of F = max(EF of C = 36, EF of D = 51) = 51 (node with two incoming arrows takes the MAX).",
       "LF of B = min(LS of D = 32, LS of E = 47) = 32 (node with two outgoing arrows takes the MIN)."
-     ]
+     ],
+     "fig": [
+      "or-cpm-paths-2019"
+     ],
+     "figH": {
+      "or-cpm-paths-2019": "Every path from start to end, added up: the longest is the critical path"
+     }
     },
     {
      "h": "Section example: A 5; B 7 (A); C 10 (A); D 2 (B); E 8 (C); F 10 (C); G 5 (D, E, F); H 3 (G)",
      "formula": [
       "Paths: A-B-D-G-H = 22;  A-C-E-G-H = 31;  A-C-F-G-H = 33  → project time 33",
       "Critical: A, C, F, G, H.  Floats: B = 11, D = 11, E = 2."
-     ]
+     ],
+     "fig": [
+      "or-cpm-pass-section"
+     ],
+     "figH": {
+      "or-cpm-pass-section": "The section example step by step, with its dummy, down to T = 33"
+     }
     },
     {
      "h": "Final 2024/25 (days): A 6; G 2; J 13; B 4 (A); C 7 (B); D 2 (A); E 4 (D); F 10 (E); H 10 (G); I 6 (J, H); K 9 (A); L 3 (C, K); M 5 (I, L)",
@@ -4353,7 +4395,13 @@ COURSES.or = {
      "formula": [
       "Critical path A-B-C-L-M = 6 + 4 + 7 + 3 + 5 = 25 days (other paths: J-I-M 24, G-H-I-M 23, A-K-L-M 23, A-D-E-F 22)",
       "Critical: A, B, C, L, M.  Non-critical: G, J, D, E, F, H, I, K."
-     ]
+     ],
+     "fig": [
+      "or-cpm-pass-2024-25"
+     ],
+     "figH": {
+      "or-cpm-pass-2024-25": "Final 2024/25 step by step: three start activities, merge nodes, T = 25 days"
+     }
     },
     {
      "h": "Final 2023/24 (3rd yr): A 3; B 3 (A); C 3 (A); D 5 (C); E 6 (B, C); F 9 (D, E); G 5 (E); H 3 (G); I 5 (G, F); J 6 (I, H); K 4 (J)",
@@ -4362,7 +4410,13 @@ COURSES.or = {
       "TF: A 0, B 0, C 0, D 1, E 0, F 0, G 4, H 6, I 0, J 0, K 0",
       "Critical activities: A, B, C, E, F, I, J, K.  Non-critical: D, G, H.",
       "Critical paths: A-B-E-F-I-J-K = 36 and A-C-E-F-I-J-K = 36 (two critical paths)."
-     ]
+     ],
+     "fig": [
+      "or-cpm-pass-2023-24"
+     ],
+     "figH": {
+      "or-cpm-pass-2023-24": "Final 2023/24 (3rd yr) step by step: three dummies and two critical paths of 36"
+     }
     },
     {
      "h": "Final 2023/24 (2nd yr): A 5; B 5; C 2 (B); D 2 (A, C); E 3 (A, C); F 1 (A, C); G 2 (B); H 7 (B); I 13 (E); J 6 (E, D); K 4 (F, G, H); L 5 (H); M 5 (J, K, L)",
@@ -4371,7 +4425,13 @@ COURSES.or = {
       "Ends: I finishes at 23, M at 22 → T = 23",
       "TF: A 2, B 0, C 0, D 3, E 0, F 6, G 7, H 1, I 0, J 2, K 2, L 1, M 1",
       "Critical path B-C-E-I = 5 + 2 + 3 + 13 = 23. Critical: B, C, E, I."
-     ]
+     ],
+     "fig": [
+      "or-cpm-solver"
+     ],
+     "figH": {
+      "or-cpm-solver": "CPM solver: every example of the lecture, or your own table: network, times, floats, critical path"
+     }
     }
    ],
    "cards": [

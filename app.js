@@ -322,7 +322,7 @@ function start() {
       st.setProperty('--vr', Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y)) + 'px');
       document.documentElement.classList.add('vt-theme');
       const vt = document.startViewTransition(apply);
-      vt.finished.finally(() => document.documentElement.classList.remove('vt-theme'));
+      vt.ready.catch(() => {}); vt.finished.catch(() => {}).finally(() => document.documentElement.classList.remove('vt-theme'));
     };
     return { dark, toggle };
   }
@@ -378,7 +378,7 @@ function start() {
     const navigate = useCallback(next => {
       const cur = navRef.current, n = typeof next === 'function' ? next(cur) : next;
       const big = ['view', 'course', 'mode', 'lec'].some(key => n[key] !== cur[key]);
-      if (big && document.startViewTransition && !calm() && !document.querySelector('.bookmode')) document.startViewTransition(() => ReactDOM.flushSync(() => setNav(n)));
+      if (big && document.startViewTransition && !calm() && !document.querySelector('.bookmode')) { const vt = document.startViewTransition(() => ReactDOM.flushSync(() => setNav(n))); vt.ready.catch(() => {}); vt.finished.catch(() => {}); }
       else setNav(n);
     }, []);
     const go = useCallback(patch => navigate(n => Object.assign({}, n, patch)), []);

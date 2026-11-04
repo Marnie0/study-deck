@@ -21,10 +21,17 @@ AR.sa = {
       "تعريف الـ lab: مجموعة <b>interrelated components</b> بت<b>جمع، وتعالج وتخزن، وتطلّع كـ output</b> المعلومات اللي محتاجينها عشان نخلص business task. أمثلة: سيستم تسجيل المواد، سيستم الطلبات أونلاين، الـ online banking.",
       "الـ <b>System</b> يعني مجموعة عناصر مرتبطة ببعض (interrelated). الـ <b>Purposive system</b> يعني system بيسعى لمجموعة goals مرتبطة ببعض. الـ <b>Open system</b> يعني system بيتفاعل مع environment (الـ user يكتب command والكمبيوتر يرد بعرض داتا).",
       "يبقى الـ <b>information system هو open, purposive system</b> بيطلّع information باستخدام دورة الـ <b><bdi dir=\"ltr\">input&nbsp;/&nbsp;process&nbsp;/&nbsp;output</bdi></b>."
-     ]
+     ],
+     "figH": {
+      "sa-l1-firm-system": "الـ physical system بتاع الشركة، والـ information system بيتحكم فيه ويراقبه (الـ <bdi dir=\"ltr\">Figure 1.7</bdi>)",
+      "sa-l1-open-system": "الـ system والـ purposive system والـ open system، ودورة الـ <bdi dir=\"ltr\">input / process / output</bdi>"
+     }
     },
     {
-     "h": "الـ physical system مقابل الـ information system (مثال المخزن)"
+     "h": "الـ physical system مقابل الـ information system (مثال المخزن)",
+     "figH": {
+      "sa-l1-warehouse": "جرّب: حرّك البضاعة في المخزن وشوف الـ information system بيمثّلها إزاي"
+     }
     },
     {
      "h": "الـ physical والـ information systems كـ subsystems من المنظمة",
@@ -33,7 +40,10 @@ AR.sa = {
       "الاتنين ينفع نعتبرهم <b>subsystems من organization system أكبر</b>.",
       "الـ <b>Inputs</b> اللي داخلة للـ information system من الـ physical system غالبًا بتبقى <b>observations</b> (زي العدد الفعلي للكراتين اللي على الرف).",
       "الـ <b>Outputs</b> اللي خارجة من الـ information system للـ physical system بتبقى <b>actions needed</b> (زي الـ shipping note، معناها أمر إن بضاعة معينة تتحمّل على عربية وتروح لمكان معين)."
-     ]
+     ],
+     "figH": {
+      "sa-l1-subsystems": "الاتنين subsystems جوه الـ organization، الـ observations داخلة والـ actions needed خارجة"
+     }
     },
     {
      "h": "الـ components ودور الكمبيوتر",
@@ -41,7 +51,10 @@ AR.sa = {
       "<b>مكونات (components) الـ information system</b> هي الـ <b>people والـ procedures والـ data</b>. الناس بتمشي على الـ procedures عشان تتعامل مع الداتا وتطلّع information.",
       "<b>مكونات الـ Computer-Based Information System (CBIS)</b> هي الـ <b>people والـ procedures والـ data والـ programs والـ computers</b>. الـ programs هي تعليمات للكمبيوتر زي ما الـ procedures تعليمات للناس.",
       "<b>دور الكمبيوتر في إنتاج الـ information</b> (جه في امتحان <bdi dir=\"ltr\">2024/25</bdi>):<br>أولاً، يبقى جهاز <b>data storage and retrieval</b>؛<br>ثانياً، يوفّر <b>processing capabilities</b> لإنتاج الـ information (حساب totals و averages ...)؛<br>ثالثاً، يبقى <b>communication device</b> يجيب داتا أو information من كمبيوترات تانية؛<br>رابعاً، <b>يعرض الـ information</b> في شكل tables و reports و charts و graphs ومستندات متنسقة."
-     ]
+     ],
+     "figH": {
+      "sa-l1-cbis": "الـ IS بـ 3 components قصاد الـ CBIS بـ 5 components"
+     }
     },
     {
      "h": "الأنواع الأساسية للـ information systems"
@@ -53,7 +66,11 @@ AR.sa = {
       "الـ <b>event</b> ممكن يبقى طلب تذكرة حفلة، أو طلب order، أو تقديم شيك عشان يتصرف. الـ event بيتسجل بإنه يتكتب كـ <b>transaction</b>؛ يعني <b>الـ transaction هي representation للـ event</b>. وبرنامج TPS أو أكتر بيعالج الـ transaction على الـ <b>TPS data</b>.",
       "أمثلة TPS data: في حجز التذاكر هي أماكن الكراسي الفاضية؛ في الـ order entry هي لستة المنتجات المتاحة وأسعارها والداتا المرتبطة بيها؛ في الـ check processing هي أرصدة الحسابات ولستة العملاء وداتا تانية.",
       "الـ Model بتاع الـ TPS (الرسمة):<span class=\"ltr\">input physical resources → transform → output physical resources</span>الداتا بتيجي من الـ environment للـ data-processing software والـ database؛ والـ information بتروح للإدارة وترجع للـ environment."
-     ]
+     ],
+     "figH": {
+      "sa-l1-tps-event": "من الـ event للـ transaction للـ TPS data، في الأمثلة التلاتة",
+      "sa-l1-tps-model": "الـ model بتاع الـ TPS خطوة بخطوة (الـ <bdi dir=\"ltr\">Figure 1.8</bdi>)"
+     }
     },
     {
      "h": "الـ MIS والـ DSS بالتفصيل",
@@ -62,7 +79,11 @@ AR.sa = {
       "الشركات ممكن تتعامل مع الـ suppliers أو غيرهم ويعملوا <b>inter-organizational information systems (IOS)</b>، وفيها الـ MIS بيدّي information لباقي أعضاء الـ IOS بالإضافة لـ users الشركة نفسها.",
       "الـ <b>DSS</b> ليه تلات مصادر information: الـ <b>relational database</b>، والـ <b>knowledge base</b>، والـ <b>multidimensional database</b>. الـ Outputs (<bdi dir=\"ltr\">Fig&nbsp;1.10</bdi>) هي الـ periodic والـ special reports، والـ outputs من الـ mathematical models، والـ outputs من الـ groupware، والـ solutions and explanations (من الـ inference engine)، والـ outputs من الـ OLAP.",
       "نوعين زيادة من الـ software المرتبط بالـ DSS، هما الـ <b>Group Decision Support Systems</b> (بتساعد <b>مجموعة مديرين</b> يوصلوا لقرار مع بعض) والـ <b>Artificial Intelligence</b> (برنامج معمول للكمبيوتر عشان <b>يحلل مشكلة منطقيًا لوحده</b>)."
-     ]
+     ],
+     "figH": {
+      "sa-l1-mis-model": "الـ MIS model ومعاه الـ IOS (الـ <bdi dir=\"ltr\">Figure 1.9</bdi>)",
+      "sa-l1-dss-model": "الـ DSS model، تلات مصادر information والـ outputs بتاعتها (الـ <bdi dir=\"ltr\">Figure 1.10</bdi>)"
+     }
     },
     {
      "h": "المديرين كـ users للـ information system",
@@ -73,7 +94,12 @@ AR.sa = {
       "في <bdi dir=\"ltr\">Fig&nbsp;1.11</bdi>: المستوى الإداري بيأثر على <b>مصدر</b> الـ information (الـ strategic أغلبها <b>environmental</b>، والـ operational أغلبها <b>internal</b>) وعلى <b>شكلها</b> (الـ strategic <b>summary</b>، والـ operational <b>detail</b>).",
       "في <bdi dir=\"ltr\">Fig&nbsp;1.12</bdi>: فيه مديرين في كل المستويات وفي كل الـ business areas (الـ finance، والـ human resources، والـ information services، والـ manufacturing، والـ marketing).",
       "في <bdi dir=\"ltr\">Fig&nbsp;1.13</bdi>: المستوى بيأثر على الأهمية النسبية لكل function: مديرين الـ strategic بيصرفوا أغلب مجهودهم في الـ <b>planning</b> (والـ organizing)؛ ومديرين الـ operational في الـ <b>directing and controlling</b>."
-     ]
+     ],
+     "figH": {
+      "sa-l1-level-info": "المستوى الإداري قصاد مصدر الـ information وشكلها (الـ <bdi dir=\"ltr\">Figure 1.11</bdi>)",
+      "sa-l1-level-areas": "مديرين في كل المستويات وفي كل الـ business areas (الـ <bdi dir=\"ltr\">Figure 1.12</bdi>)",
+      "sa-l1-functions": "تركيز كل مستوى على الـ plan والـ organize والـ staff والـ direct والـ control (الـ <bdi dir=\"ltr\">Figure 1.13</bdi>)"
+     }
     },
     {
      "h": "الـ Lab 1: الـ analysis مقابل الـ design، والـ analyst، وطرق الـ development",
@@ -83,7 +109,10 @@ AR.sa = {
       "الـ <b>System analyst</b>: شخص business professional بيستخدم تقنيات الـ analysis والـ design عشان يحل مشاكل الـ business باستخدام الـ IT. دوره: investigate و analyze و design و develop و install و evaluate و maintain الـ IS بتاع الشركة؛ عنده business knowledge؛ بيحل مشاكل الـ business؛ وبيترجم الـ business requirements لـ IT projects.",
       "طريقتين: <b>Traditional (structured)</b> (الـ SADT، والـ information engineering) و<b>Object-oriented</b> (الـ OOA والـ OOD والـ OOP): الـ system عبارة عن مجموعة <b>objects</b> بتتفاعل مع بعض وبترد على messages؛ يعني مفيش processes ولا programs ولا data entities ولا files من الناحية الـ conceptual، فيه objects وبس.",
       "أنواع الـ UML diagrams: الـ <b>structural</b> (building blocks مابتتغيرش مع الوقت، زي الـ class diagram)، والـ <b>behavioral</b> (السيستم بيرد إزاي مع الوقت، زي الـ use case diagram)، والـ <b>interaction</b> (نوع من الـ behavioral بيوضح تبادل الـ messages، زي الـ sequence والـ collaboration diagrams). وفيه تقسيمة تانية: static و dynamic و functional."
-     ]
+     ],
+     "figH": {
+      "sa-l1-uml-kinds": "أنواع الـ UML diagrams، الـ structural والـ behavioral والـ interaction"
+     }
     }
    ],
    "cards": [
@@ -271,10 +300,16 @@ AR.sa = {
       "إنك تمشي على <b>systems methodology</b>، وتطبّق <b>techniques</b>، وتستخدم <b>tools</b> مناسبة:",
       "(1) عشان <b>تضمن الجودة وإن السيستم مناسب (quality and appropriateness)</b>؛",
       "(2) عشان <b>تدّي structure</b> لعملية الـ systems development، لأنها <b>اتجرّبت واتظبطت قبل كده من ناس تانية (tested and perfected by others)</b>."
-     ]
+     ],
+     "figH": {
+      "sa-l2-triangle": "الـ <bdi dir=\"ltr\">Figure&nbsp;1-1</bdi>: الـ methodologies والـ techniques والـ tools، وبيدّوك إيه"
+     }
     },
     {
-     "h": "الـ analysis والـ design اتغيروا إزاي (من الخمسينات لدلوقتي)"
+     "h": "الـ analysis والـ design اتغيروا إزاي (من الخمسينات لدلوقتي)",
+     "figH": {
+      "sa-l2-eras": "فترة بفترة: من فن لـ disciplined process، ومن builder لـ integrator"
+     }
     },
     {
      "h": "الـ One-tier والـ two-tier والـ three-tier architecture",
@@ -282,10 +317,16 @@ AR.sa = {
       "الـ <b>One-tier</b>: الـ presentation والـ processing والـ database على جهاز واحد.",
       "الـ <b>Two-tier</b>: جهاز الـ user (presentation + processing) بيكلّم <b>database server</b>.",
       "الـ <b>Three-tier</b>:<span class=\"ltr\">user (presentation) → <b>application server</b> (processing) → <b>database server</b></span>نسخة الويب:<span class=\"ltr\">browser → Internet → web/app server → DB server</span>"
-     ]
+     ],
+     "figH": {
+      "sa-l2-tiers": "الـ presentation والـ processing والـ database قاعدين فين في كل architecture"
+     }
     },
     {
-     "h": "مراحل الـ SDLC (بتيجي في كل final)"
+     "h": "مراحل الـ SDLC (بتيجي في كل final)",
+     "figH": {
+      "sa-l2-sdlc-cycle": "الـ <bdi dir=\"ltr\">Figure&nbsp;1-3</bdi>: دايرة الـ SDLC، مرحلة بمرحلة"
+     }
     },
     {
      "h": "الـ traditional waterfall SDLC ومشاكله",
@@ -293,7 +334,11 @@ AR.sa = {
       "الـ Waterfall: كل phase بتبدأ لما اللي قبلها تخلص، و<b>رجوع ولف قليل جدًا (little backtracking and looping)</b>. الممارسة الحالية بدل كده بتدمج الـ analysis والـ design والـ implementation في process واحدة <b>iterative و parallel</b>.",
       "<b>المشاكل</b>:<br>أولاً، الـ system requirements بتبقى <b>\"locked in\"</b> بعد ما تتحدد (ماينفعش تتغير)؛<br>ثانياً، <b>مشاركة الـ user محدودة</b> (في مرحلة الـ requirements بس)؛<br>ثالثاً، <b>تركيز زيادة على الـ milestone deadlines</b>؛<br>رابعاً، <b>process و documentation كتير</b>: منظمات كتير عندها staff كبير شغلته الوحيدة إنه يعمل ويحافظ على documentation الـ SDLC.",
       "الـ <bdi dir=\"ltr\">Fig&nbsp;1-3</bdi> (الـ SDLC الدايري) أقرب للواقع من <bdi dir=\"ltr\">Fig&nbsp;1-10</bdi> (الـ waterfall) لأنك تقدر ترجع لأي phase."
-     ]
+     ],
+     "figH": {
+      "sa-l2-heart": "الـ Figures <bdi dir=\"ltr\">1-8</bdi> و <bdi dir=\"ltr\">1-9</bdi>: الـ loop بتاع الـ analysis والـ design والـ code والـ test، وقلب الـ systems development",
+      "sa-l2-waterfall": "الـ <bdi dir=\"ltr\">Figure&nbsp;1-10</bdi>: الـ waterfall بيتبني خطوة خطوة، وبعدين مشاكله الأربعة"
+     }
     },
     {
      "h": "طرق تحسين الـ development: الـ Prototyping والـ JAD والـ RAD",
@@ -302,7 +347,11 @@ AR.sa = {
       "الـ <b>Prototyping</b> هو process <b>iterative</b> بيتحوّل فيها الـ requirements <b>بسرعة لـ working system</b> وبيت<b>عدّل باستمرار</b> عن طريق <b>شغل قريب بين الـ analyst والـ users</b>. مفيد في تحديد الـ requirements وممكن يبقى أساس السيستم النهائي (مثال: الـ analyst بيعمل sample interfaces بالـ Visual Basic \"on the fly\" قدام الـ sales representative).",
       "الـ <b>JAD (Joint Application Design)</b> هو <b>structured process</b> فيها الـ <b>users والمديرين والـ analysts</b> بيشتغلوا مع بعض <b>كذا يوم</b> في سلسلة <b>اجتماعات مكثفة (intensive meetings)</b> عشان <b>يحددوا أو يراجعوا الـ system requirements</b>. (الـ Lab: الـ JAD ممكن يبدّل سلسلة interviews؛ بيُستخدم لما ثقافة المكان بتدعم حل المشاكل بشكل جماعي والـ analysts متوقعين أفكار أكتر من الـ JAD.)",
       "الـ <b>RAD (Rapid Application Development)</b> هي methodology عشان <b>تقلل جدًا الوقت</b> اللي محتاجينه لـ design و implement الـ IS. فيها <b>مشاركة كبيرة من الـ users، والـ prototyping، والـ JAD sessions، والـ integrated CASE tools والـ code generators</b>. الـ RAD life cycle في <bdi dir=\"ltr\">Fig&nbsp;1-13</bdi> هي:<span class=\"ltr\">requirements planning → <b>user design ⇄ construction</b> (iterative) → cutover</span>"
-     ]
+     ],
+     "figH": {
+      "sa-l2-prototyping": "الـ <bdi dir=\"ltr\">Figure&nbsp;1-11</bdi>: الـ loop بتاع الـ prototyping، ماشيين فيه بمثال الـ Visual Basic",
+      "sa-l2-rad": "الـ <bdi dir=\"ltr\">Figure&nbsp;1-13</bdi>: الـ RAD life cycle، واللي فيه الـ user design والـ construction بس اللي بيعملوا iteration"
+     }
     },
     {
      "h": "الـ CASE tools",
@@ -310,10 +359,16 @@ AR.sa = {
       "الـ <b>CASE tools</b> هي software بيدّي <b>automated support لجزء من الـ SDLC</b>. مبني حوالين <b>repository</b> فيه كل الـ <b>metadata</b> (أسامي الداتا، الـ format، الاستخدامات، المكان) والـ system specifications؛ بيعمل automate للمهام الروتينية ويسمح بـ <b>code and DDL generation</b>، فيقدر يدعم الـ SDLC كله.",
       "<b>الأنواع العامة</b>:<br>(1) الـ <b>Diagramming tools</b>، بترسم الـ processes والداتا والـ control structures بشكل graphical؛<br>(2) الـ <b>Computer display and report generators</b>، بتعمل prototype لشكل السيستم وإحساسه (<bdi dir=\"ltr\">\"look&nbsp;and&nbsp;feel\"</bdi>)؛<br>(3) الـ <b>Analysis tools</b>، بتشيك أوتوماتيك على الـ specifications الناقصة أو المتعارضة أو الغلط في الـ diagrams والـ forms والـ reports؛<br>(4) الـ <b>Central repository</b>، تخزين متكامل للـ specifications والـ diagrams والـ reports ومعلومات الـ project management؛<br>(5) الـ <b>Documentation generators</b>، بتطلّع documentation تقنية وللـ user في formats قياسية؛<br>(6) الـ <b>Code generators</b>، بتطلّع كود البرنامج وتعريفات الـ database مباشرة من مستندات الـ design والـ diagrams والـ forms والـ reports.",
       "الـ <b>repository هو أهم component</b>: بيربط الـ tools والأنشطة ببعض، كل أعضاء الـ team بيستخدموه، وبيدّي <b>single view للمشروع</b>. مميزات تانية: الـ security، والـ version control، والـ <bdi dir=\"ltr\">import/export</bdi>، والـ backup and recovery، والـ user accounts، والـ usage accounting."
-     ]
+     ],
+     "figH": {
+      "sa-l2-case-hub": "الأنواع العامة للـ CASE tools حوالين الـ central repository"
+     }
     },
     {
-     "h": "دعم الـ CASE لكل مرحلة في الـ SDLC"
+     "h": "دعم الـ CASE لكل مرحلة في الـ SDLC",
+     "figH": {
+      "sa-l2-case-phases": "اختار phase: أنهي CASE tools بتدعمها"
+     }
     },
     {
      "h": "الـ Agile والـ XP والـ OOAD والـ RUP",
@@ -322,7 +377,10 @@ AR.sa = {
       "الـ <b>eXtreme Programming</b>: <b>دورات development قصيرة و incremental</b>، و planning incremental، و<b>automated tests</b> بيكتبها الـ programmers والـ customers، و<b>teams من اتنين programmers</b>، والـ coding والـ testing في نفس الـ process؛ الكود بيتعمله test بعد ما يتكتب بشوية ويتعمله integrate في ساعات. كل الـ phases بتتجمع في coding و testing و listening و designing. المميزات: الـ communication، والـ productivity العالية، والكود اللي جودته عالية.",
       "الـ <b>OOAD</b> هي methodologies مبنية على <b>objects</b> بتجمع <b>الداتا (attributes) والأنشطة (methods)</b> مع بعض، بدل ما الداتا تبقى منفصلة عن الـ processes. الـ <b>Object</b> هو structure بيغلّف attributes و behaviors لكيان حقيقي؛ الـ <b>object class</b> هو تجميع منطقي لـ objects ليها نفس الـ attributes والـ behaviors؛ الـ <b>inheritance</b> معناه إن الـ subclasses بتورث خصائص الـ superclasses.",
       "الـ <b>RUP (Rational Unified Process)</b> هي methodology object-oriented ليها <b>أربع phases</b>: <b>الـ inception، والـ elaboration، والـ construction، والـ transition</b>؛ وكل phase متقسمة لـ <b>iterations</b> منفصلة."
-     ]
+     ],
+     "figH": {
+      "sa-l2-rup": "الـ <bdi dir=\"ltr\">Figure&nbsp;1-14</bdi>: الأربع phases بتاعة الـ RUP، الـ resources مع الوقت"
+     }
     },
     {
      "h": "الـ Labs من 2 لـ 4: مرحلة الـ planning، والـ methodologies، وجمع الـ requirements",
@@ -333,7 +391,11 @@ AR.sa = {
       "الـ <b>Feasibility study</b>: بيقرر نكمّل ولا لأ وبيحدد الـ risks. تلات أجزاء: feasibility <b>technical و economic و organizational</b>.",
       "الـ Methodologies (الـ lab): الـ waterfall، والـ parallel (المشروع بيتقسم لـ subprojects بيتعملها design و implement بالتوازي)، والـ <bdi dir=\"ltr\">RAD&nbsp;/&nbsp;iterative</bdi> (نسخ السيستم 1 و 2 و 3)، والـ agile (تواصل وش لوش في كل phase).",
       "جمع الـ requirements: الـ <b>interviews</b> (الآراء والمشاعر، الوضع الحالي، أهداف السيستم)، والـ <b>JAD</b>، والـ <b>questionnaires</b> (المعتقدات، السلوكيات، الخصائص؛ مفيدة لما الأعضاء متفرقين في أماكن بعيدة أو العدد كبير)، والـ <b>use case diagrams</b> (الـ actors، والـ use cases، والـ system boundary، والـ association، والـ generalization، والـ <bdi dir=\"ltr\">&lt;&lt;include&gt;&gt;</bdi>، والـ <bdi dir=\"ltr\">&lt;&lt;extend&gt;&gt;</bdi>)."
-     ]
+     ],
+     "figH": {
+      "sa-l2-time-split": "قدّر وقت المشروع كله من وقت الـ planning، والنسب هي:<span class=\"ltr\">15%, 20%, 35%, 30%</span>",
+      "sa-l2-methods": "الأربع methodologies بتوع الـ lab: الـ waterfall والـ parallel والـ RAD والـ agile"
+     }
     }
    ],
    "cards": [
@@ -1097,16 +1159,29 @@ AR.sa = {
       "بيتوقع <b>الـ effort والـ schedule</b> لمنتج software بناءً على inputs ليها علاقة بـ <b>حجم الـ software</b> وعدد من الـ <b>cost drivers</b> اللي بتأثر على الـ productivity.",
       "تلات models حسب درجة التعقيد: الـ <b>Basic</b> model، والـ <b>Intermediate</b> model، والـ <b>Detailed</b> model.",
       "<b>الـ Assumptions</b>: أولاً، الـ cost driver الأساسي هو عدد الـ <b>Delivered Source Instructions (DSI)</b> اللي المشروع بيطوّرها؛ تانيًا، المشروع هيبقى عنده <b>إدارة كويسة</b> من الـ developer والـ customer الاتنين؛ تالتًا، <b>الـ requirements specification مش هتتغير بشكل كبير</b> بعد مرحلة الـ plans and requirements."
-     ]
+     ],
+     "figH": {
+      "sa-cocomo-models": "التلات COCOMO models: كل model بيزوّد إيه علشان يتوقع الـ effort والـ schedule"
+     }
     },
     {
-     "h": "الـ development modes (خصائص المشروع)"
+     "h": "الـ development modes (خصائص المشروع)",
+     "figH": {
+      "sa-cocomo-modes": "الـ organic والـ semidetached والـ embedded: من مشروع مألوف وصغير لـ constraints صارمة"
+     }
     },
     {
-     "h": "معادلات الـ Basic COCOMO (الـ KDSI يعني آلاف الـ DSI)"
+     "h": "معادلات الـ Basic COCOMO (الـ KDSI يعني آلاف الـ DSI)",
+     "figH": {
+      "sa-cocomo-curves": "الـ effort قصاد الحجم للتلات modes: حرّك الحجم واقرا الـ E والـ TDEV"
+     }
     },
     {
-     "h": "الكميات المشتقة اللي بتيجي في كل مسألة امتحان"
+     "h": "الكميات المشتقة اللي بتيجي في كل مسألة امتحان",
+     "figH": {
+      "sa-cocomo-calc": "حاسبة الـ COCOMO: الـ effort والـ schedule والـ staffing والـ productivity والتكلفة بتقريب الكورس",
+      "sa-cocomo-tradeoff": "الـ staff في الشهور بيساوي الـ effort: غيّر الـ staff أو الوقت وشوف التاني بيتحرك إزاي"
+     }
     },
     {
      "h": "الـ Basic model: استخدامه وعيوبه",
@@ -1117,7 +1192,10 @@ AR.sa = {
      ]
     },
     {
-     "h": "مثال المحاضرة المحلول: الـ Basic، والـ semidetached، والحجم <bdi dir=\"ltr\">32,000&nbsp;DSI</bdi>"
+     "h": "مثال المحاضرة المحلول: الـ Basic، والـ semidetached، والحجم <bdi dir=\"ltr\">32,000&nbsp;DSI</bdi>",
+     "figH": {
+      "sa-cocomo-ex-basic": "مثال المحاضرة خطوة بخطوة: <span class=\"ltr\">146 MM, 14 months, 219 DSI/MM, 10 FSP</span>"
+     }
     },
     {
      "h": "الـ Intermediate COCOMO",
@@ -1127,10 +1205,17 @@ AR.sa = {
       "المعادلات:<span class=\"ltr\">Organic: E = EAF × <b>3.2</b> × KDSI^1.05</span><span class=\"ltr\">Semidetached: E = EAF × <b>3.0</b> × KDSI^1.12</span><span class=\"ltr\">Embedded: E = EAF × <b>2.8</b> × KDSI^1.20</span>ومعادلات الـ TDEV زي الـ Basic بالظبط.",
       "<b>إمتى نستخدمه</b>: على المنتج كله لتقديرات بدري سهلة وتقريبية، أو على مستوى الـ component لتقديرات أدق في المراحل التفصيلية.",
       "<b>العيوب</b>: التقديرات بتبقى <b>في حدود 20% من الحقيقي في 68% من الحالات</b>؛ الـ effort multipliers <b>مش بتفرّق بين الـ phases (phase-insensitive)</b>؛ و<b>مُرهق جدًا</b> لمنتج فيه components كتير."
-     ]
+     ],
+     "figH": {
+      "sa-cocomo-cplx": "الـ effort multipliers بتاعة الـ CPLX: اختار rating وشوف الـ EAF بيغيّر الـ effort إزاي",
+      "sa-cocomo-drivers": "الـ 15 cost driver في أربع مجالات: الـ product والـ computer والـ personnel والـ project"
+     }
     },
     {
-     "h": "مثال المحاضرة المحلول: الـ Intermediate، والـ semidetached، والـ RELY عالي"
+     "h": "مثال المحاضرة المحلول: الـ Intermediate، والـ semidetached، والـ RELY عالي",
+     "figH": {
+      "sa-cocomo-ex-inter": "الـ Basic قصاد الـ Intermediate لنفس المشروع: الـ RELY العالي بيرفع الـ effort<span class=\"ltr\">146 MM → 167 MM (EAF = 1.15)</span>"
+     }
     },
     {
      "h": "الـ Detailed COCOMO",
@@ -1141,10 +1226,17 @@ AR.sa = {
       "<b>إمتى نستخدمه</b>: بيقدّر الـ staffing والتكلفة والمدة لكل phase و subsystem و module؛ وبيخليك تجرّب development strategies مختلفة.",
       "<b>العيوب</b>: محتاج وقت ومجهود أكتر بكتير؛ التقديرات بتبقى <b>في حدود 20% من الحقيقي في 70% من الحالات</b>.",
       "<b>الخلاصة</b>: الـ cost models مش بديل عن تقدير تفصيلي task بـ task؛ بتعتمد على معرفة المستخدم بالمجال وقدرته على التحليل وفهمه للـ model؛ والالتزام بالتقدير مهم قد عمله بالظبط."
-     ]
+     ],
+     "figH": {
+      "sa-cocomo-hierarchy": "الـ hierarchy بتاعة module-subsystem-system وأنهي drivers في كل مستوى",
+      "sa-cocomo-accuracy": "دقة كل model: الـ Basic والـ Intermediate والـ Detailed"
+     }
     },
     {
-     "h": "مسألة المحاضرة <bdi dir=\"ltr\">(b)</bdi>: الـ organic، والحجم <bdi dir=\"ltr\">8,000&nbsp;DSI</bdi>، والمعادلة <bdi dir=\"ltr\">E&nbsp;=&nbsp;3.2·KDSI^1.05</bdi>، والمرتب <bdi dir=\"ltr\">EP&nbsp;5000</bdi>"
+     "h": "مسألة المحاضرة <bdi dir=\"ltr\">(b)</bdi>: الـ organic، والحجم <bdi dir=\"ltr\">8,000&nbsp;DSI</bdi>، والمعادلة <bdi dir=\"ltr\">E&nbsp;=&nbsp;3.2·KDSI^1.05</bdi>، والمرتب <bdi dir=\"ltr\">EP&nbsp;5000</bdi>",
+     "figH": {
+      "sa-cocomo-prob-b": "مسألة (b) محلولة جزء جزء بتقريب الكورس"
+     }
     }
    ],
    "cards": [

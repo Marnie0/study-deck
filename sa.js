@@ -28,7 +28,19 @@ COURSES.sa = {
       "Lab definition: a collection of <b>interrelated components</b> that <b>collect, process and store, and provide as output</b> the information needed to complete a business task. Examples: course registration system, online order system, online banking system.",
       "<b>System</b> = a set of interrelated elements. <b>Purposive system</b> = a system that seeks a set of related goals. <b>Open system</b> = a system that interacts with an environment (a user types a command and the computer responds with a display of data).",
       "So an <b>information system is an open, purposive system</b> that produces information using the <b>input / process / output</b> cycle."
-     ]
+     ],
+     "fig": [
+      "sa-l1-firm-system",
+      "sa-l1-open-system"
+     ],
+     "figAt": {
+      "sa-l1-firm-system": 0,
+      "sa-l1-open-system": 5
+     },
+     "figH": {
+      "sa-l1-firm-system": "The physical system of the firm, controlled and monitored by the information system (Figure 1.7)",
+      "sa-l1-open-system": "System, purposive system, open system, and the input / process / output cycle"
+     }
     },
     {
      "h": "Physical system vs information system (warehouse example)",
@@ -49,7 +61,13 @@ COURSES.sa = {
        "The <b>shipping note</b> (and sales order from the customer)",
        "Represents goods leaving to the customer"
       ]
-     ]
+     ],
+     "fig": [
+      "sa-l1-warehouse"
+     ],
+     "figH": {
+      "sa-l1-warehouse": "Try it: move goods in the warehouse and watch the information system represent them"
+     }
     },
     {
      "h": "Physical and information systems as subsystems of the organization",
@@ -58,7 +76,16 @@ COURSES.sa = {
       "Both can be regarded as <b>subsystems of a larger organization system</b>.",
       "<b>Inputs</b> to the information system from the physical system are usually <b>observations</b> (e.g. the actual number of packets on the shelf).",
       "<b>Outputs</b> from the information system to the physical system are <b>actions needed</b> (e.g. the shipping note implies an instruction to load certain goods onto a truck and drive it to a destination)."
-     ]
+     ],
+     "fig": [
+      "sa-l1-subsystems"
+     ],
+     "figAt": {
+      "sa-l1-subsystems": 3
+     },
+     "figH": {
+      "sa-l1-subsystems": "Both subsystems inside the organization: observations go in, actions needed come out"
+     }
     },
     {
      "h": "Components and the role of the computer",
@@ -66,7 +93,16 @@ COURSES.sa = {
       "<b>Components of an information system</b>: <b>people, procedures and data</b>. People follow procedures to manipulate data to produce information.",
       "<b>Components of a Computer-Based Information System (CBIS)</b>: <b>people, procedures, data, programs and computers</b>. Programs are instructions for the computers just as procedures are instructions for people.",
       "<b>Role of the computer in information production</b> (asked in Exam 2024/25): (1) serve as a <b>data storage and retrieval</b> device; (2) provide <b>processing capabilities</b> for the production of information (calculation of totals, averages, ...); (3) serve as a <b>communication device</b> to obtain data or information from other computers; (4) <b>present information</b> by producing tables, reports, charts, graphs and formatted documents."
-     ]
+     ],
+     "fig": [
+      "sa-l1-cbis"
+     ],
+     "figAt": {
+      "sa-l1-cbis": 1
+     },
+     "figH": {
+      "sa-l1-cbis": "IS (3 components) vs CBIS (5 components)"
+     }
     },
     {
      "h": "Fundamental types of information systems",
@@ -104,7 +140,19 @@ COURSES.sa = {
       "The <b>event</b> could be a request for a concert ticket, an order request, or the presentation of a check for payment. The event is recorded by keying it in as a <b>transaction</b>; <b>the transaction is a representation of the event</b>. One or more TPS programs process the transaction against <b>TPS data</b>.",
       "TPS data examples: ticket reservation = location of the available seats; order entry = list of available products, their prices and related data; check processing = account balances, customer lists and other data.",
       "Model of a TPS (figure): input physical resources → transform → output physical resources; data flows from the environment into data-processing software and a database; information flows to management and back to the environment."
-     ]
+     ],
+     "fig": [
+      "sa-l1-tps-event",
+      "sa-l1-tps-model"
+     ],
+     "figAt": {
+      "sa-l1-tps-event": 2,
+      "sa-l1-tps-model": 3
+     },
+     "figH": {
+      "sa-l1-tps-event": "From event to transaction to TPS data, for the three examples",
+      "sa-l1-tps-model": "A model of a TPS, built step by step (Figure 1.8)"
+     }
     },
     {
      "h": "MIS and DSS in detail",
@@ -113,7 +161,19 @@ COURSES.sa = {
       "Firms can interact with suppliers or others to form <b>inter-organizational information systems (IOS)</b>, where the MIS supplies information to the other members of the IOS as well as the firm's users.",
       "<b>DSS</b>: three information sources: a <b>relational database</b>, a <b>knowledge base</b> and a <b>multidimensional database</b>. Outputs (Fig 1.10): periodic and special reports, outputs from mathematical models, outputs from groupware, solutions and explanations (from the inference engine), outputs from OLAP.",
       "Two additional types of DSS-related software: <b>Group Decision Support Systems</b> (aid a <b>group of managers</b> to work out decisions) and <b>Artificial Intelligence</b> (a program is created for a computer to <b>logically analyze a problem on its own</b>)."
-     ]
+     ],
+     "fig": [
+      "sa-l1-mis-model",
+      "sa-l1-dss-model"
+     ],
+     "figAt": {
+      "sa-l1-mis-model": 1,
+      "sa-l1-dss-model": 2
+     },
+     "figH": {
+      "sa-l1-mis-model": "An MIS model, and the IOS (Figure 1.9)",
+      "sa-l1-dss-model": "A DSS model: three information sources and their outputs (Figure 1.10)"
+     }
     },
     {
      "h": "Managers as information system users",
@@ -124,7 +184,22 @@ COURSES.sa = {
       "Fig 1.11: management level influences the <b>source</b> of information (strategic = mostly <b>environmental</b>, operational = mostly <b>internal</b>) and its <b>form</b> (strategic = <b>summary</b>, operational = <b>detail</b>).",
       "Fig 1.12: managers are found on all levels in all business areas (finance, human resources, information services, manufacturing, marketing).",
       "Fig 1.13: level influences the relative emphasis on the functions: strategic managers spend most effort on <b>planning</b> (and organizing); operational managers on <b>directing and controlling</b>."
-     ]
+     ],
+     "fig": [
+      "sa-l1-level-info",
+      "sa-l1-level-areas",
+      "sa-l1-functions"
+     ],
+     "figAt": {
+      "sa-l1-level-info": 3,
+      "sa-l1-level-areas": 4,
+      "sa-l1-functions": 5
+     },
+     "figH": {
+      "sa-l1-level-info": "Management level vs source and form of information (Figure 1.11)",
+      "sa-l1-level-areas": "Managers on all levels in all business areas (Figure 1.12)",
+      "sa-l1-functions": "Each level's emphasis on plan, organize, staff, direct and control (Figure 1.13)"
+     }
     },
     {
      "h": "Lab 1: analysis vs design, the analyst, development approaches",
@@ -134,7 +209,16 @@ COURSES.sa = {
       "<b>System analyst</b>: a business professional who uses analysis and design techniques to solve business problems using information technology. Role: investigate, analyze, design, develop, install, evaluate and maintain a company's IS; business knowledge; business problem solver; translate business requirements into IT projects.",
       "Two approaches: <b>Traditional (structured)</b> (SADT, information engineering) and <b>Object-oriented</b> (OOA, OOD, OOP): the system is a collection of interacting <b>objects</b> that respond to messages; conceptually no processes, programs, data entities or files, just objects.",
       "UML diagram categories: <b>structural</b> (building blocks that do not change with time, e.g. class diagram), <b>behavioral</b> (how the system responds over time, e.g. use case diagram), <b>interaction</b> (a type of behavioral diagram showing message exchange, e.g. sequence and collaboration diagrams). Another split: static, dynamic, functional."
-     ]
+     ],
+     "fig": [
+      "sa-l1-uml-kinds"
+     ],
+     "figAt": {
+      "sa-l1-uml-kinds": 4
+     },
+     "figH": {
+      "sa-l1-uml-kinds": "UML diagram categories: structural, behavioral, interaction"
+     }
     }
    ],
    "cards": [
@@ -533,7 +617,13 @@ COURSES.sa = {
       "Following a <b>systems methodology</b>, applying <b>techniques</b>, and using appropriate <b>tools</b>:",
       "(1) <b>ensure the quality and appropriateness</b> of the system being built;",
       "(2) <b>provide structure</b> to the systems development process, since they have been <b>tested and perfected by others</b>."
-     ]
+     ],
+     "fig": [
+      "sa-l2-triangle"
+     ],
+     "figH": {
+      "sa-l2-triangle": "Figure 1-1: methodologies, techniques and tools, and what they give you"
+     }
     },
     {
      "h": "How analysis and design changed (1950s to now)",
@@ -566,7 +656,13 @@ COURSES.sa = {
        "Current",
        "<b>Web-based</b> development and <b>wireless</b> components; <b>three-tier</b> design; assembling systems from <b>off-the-shelf components</b> or using <b>application service providers</b>."
       ]
-     ]
+     ],
+     "fig": [
+      "sa-l2-eras"
+     ],
+     "figH": {
+      "sa-l2-eras": "Era by era: from an art to a disciplined process, from builder to integrator"
+     }
     },
     {
      "h": "One-, two- and three-tier architecture",
@@ -574,7 +670,16 @@ COURSES.sa = {
       "<b>One-tier</b>: presentation, processing and database on one machine.",
       "<b>Two-tier</b>: user machine (presentation + processing) talks to a <b>database server</b>.",
       "<b>Three-tier</b>: user (presentation) → <b>application server</b> (processing) → <b>database server</b>. Web version: browser → Internet → web/app server → DB server."
-     ]
+     ],
+     "fig": [
+      "sa-l2-tiers"
+     ],
+     "figAt": {
+      "sa-l2-tiers": 2
+     },
+     "figH": {
+      "sa-l2-tiers": "Where presentation, processing and database sit in each architecture"
+     }
     },
     {
      "h": "SDLC phases (asked in every final)",
@@ -603,7 +708,13 @@ COURSES.sa = {
        "<b>Maintenance</b>",
        "<b>Systematically repair and improve</b> the information system."
       ]
-     ]
+     ],
+     "fig": [
+      "sa-l2-sdlc-cycle"
+     ],
+     "figH": {
+      "sa-l2-sdlc-cycle": "Figure 1-3: the SDLC cycle, phase by phase"
+     }
     },
     {
      "h": "Traditional waterfall SDLC and its problems",
@@ -611,7 +722,19 @@ COURSES.sa = {
       "Waterfall: one phase begins when another completes, <b>little backtracking and looping</b>. Current practice instead combines analysis, design and implementation into a single <b>iterative and parallel</b> process.",
       "<b>Problems</b>: (1) system requirements <b>\"locked in\"</b> after being determined (can't change); (2) <b>limited user involvement</b> (only in requirements phase); (3) <b>too much focus on milestone deadlines</b>; (4) <b>much process and documentation</b>: many organizations have a large overhead of staff whose sole purpose is to create and maintain SDLC documentation.",
       "Fig 1-3 (circular SDLC) is more realistic than Fig 1-10 (waterfall) because you can go back to any phase."
-     ]
+     ],
+     "fig": [
+      "sa-l2-heart",
+      "sa-l2-waterfall"
+     ],
+     "figAt": {
+      "sa-l2-heart": 0,
+      "sa-l2-waterfall": 2
+     },
+     "figH": {
+      "sa-l2-heart": "Figures 1-8 and 1-9: the analysis-design-code-test loop and the heart of systems development",
+      "sa-l2-waterfall": "Figure 1-10: the waterfall built step by step, then its four problems"
+     }
     },
     {
      "h": "Approaches to improving development: Prototyping, JAD, RAD",
@@ -620,7 +743,19 @@ COURSES.sa = {
       "<b>Prototyping</b>: an <b>iterative</b> process by which requirements are <b>quickly converted to a working system</b> which is <b>continually revised</b> through <b>close work between analyst and users</b>. Useful for requirements determination and can be the basis of the final system (example: analyst builds sample interfaces in Visual Basic \"on the fly\" with the sales representative).",
       "<b>JAD (Joint Application Design)</b>: a <b>structured process</b> in which <b>users, managers and analysts</b> work together for <b>several days</b> in a series of <b>intensive meetings</b> to <b>specify or review system requirements</b>. (Lab: JAD can replace a series of interviews; used when the culture supports joint problem solving and analysts forecast more ideas from JAD.)",
       "<b>RAD (Rapid Application Development)</b>: a methodology to <b>radically decrease the time</b> needed to design and implement an IS. Involves <b>extensive user involvement, prototyping, JAD sessions, integrated CASE tools and code generators</b>. RAD life cycle (Fig 1-13): requirements planning → <b>user design ⇄ construction</b> (iterative) → cutover."
-     ]
+     ],
+     "fig": [
+      "sa-l2-prototyping",
+      "sa-l2-rad"
+     ],
+     "figAt": {
+      "sa-l2-prototyping": 1,
+      "sa-l2-rad": 3
+     },
+     "figH": {
+      "sa-l2-prototyping": "Figure 1-11: the prototyping loop, walked with the Visual Basic example",
+      "sa-l2-rad": "Figure 1-13: the RAD life cycle, where only user design and construction iterate"
+     }
     },
     {
      "h": "CASE tools",
@@ -628,7 +763,16 @@ COURSES.sa = {
       "<b>CASE tools</b>: software that provides <b>automated support for some portion of the SDLC</b>. Built around a <b>repository</b> containing all the <b>metadata</b> (data names, format, uses, location) and system specifications; they automate routine tasks and allow <b>code and DDL generation</b>, so they can support the entire SDLC.",
       "<b>General types</b>: (1) <b>Diagramming tools</b>: represent processes, data and control structures graphically; (2) <b>Computer display and report generators</b>: prototype how systems \"look and feel\"; (3) <b>Analysis tools</b>: automatically check for incomplete, inconsistent or incorrect specifications in diagrams, forms and reports; (4) <b>Central repository</b>: integrated storage of specifications, diagrams, reports and project management information; (5) <b>Documentation generators</b>: technical and user documentation in standard formats; (6) <b>Code generators</b>: generate program and database definition code directly from design documents, diagrams, forms and reports.",
       "The <b>repository is the most important component</b>: it integrates tools and activities, is used by all team members and promotes a <b>single view of the project</b>. Other features: security, version control, import/export, backup and recovery, user accounts, usage accounting."
-     ]
+     ],
+     "fig": [
+      "sa-l2-case-hub"
+     ],
+     "figAt": {
+      "sa-l2-case-hub": 2
+     },
+     "figH": {
+      "sa-l2-case-hub": "The general types of CASE tools around the central repository"
+     }
     },
     {
      "h": "CASE support for each SDLC phase",
@@ -661,7 +805,13 @@ COURSES.sa = {
        "Maintenance: change existing software",
        "All tools, with emphasis on the central repository"
       ]
-     ]
+     ],
+     "fig": [
+      "sa-l2-case-phases"
+     ],
+     "figH": {
+      "sa-l2-case-phases": "Pick a phase: which CASE tools support it"
+     }
     },
     {
      "h": "Agile, XP, OOAD and RUP",
@@ -670,7 +820,16 @@ COURSES.sa = {
       "<b>eXtreme Programming</b>: <b>short, incremental development cycles</b>, incremental planning, <b>automated tests</b> written by programmers and customers, <b>two-person programming teams</b>, coding and testing in the same process; code tested shortly after it is written and integrated within a few hours. All phases converge into coding, testing, listening and designing. Advantages: communication, high productivity, high-quality code.",
       "<b>OOAD</b>: methodologies based on <b>objects</b> that combine <b>data (attributes) and activities (methods)</b>, rather than data separate from processes. <b>Object</b> = structure encapsulating attributes and behaviors of a real-world entity; <b>object class</b> = logical grouping of objects with the same attributes and behaviors; <b>inheritance</b> = subclasses inherit properties of superclasses.",
       "<b>RUP (Rational Unified Process)</b>: an object-oriented methodology with <b>four phases</b>: <b>inception, elaboration, construction, transition</b>; each phase organized into separate <b>iterations</b>."
-     ]
+     ],
+     "fig": [
+      "sa-l2-rup"
+     ],
+     "figAt": {
+      "sa-l2-rup": 3
+     },
+     "figH": {
+      "sa-l2-rup": "Figure 1-14: the four RUP phases, resources over time"
+     }
     },
     {
      "h": "Labs 2 to 4: planning phase, methodologies, requirements gathering",
@@ -681,7 +840,19 @@ COURSES.sa = {
       "<b>Feasibility study</b>: decides whether to proceed and identifies risks. Three parts: <b>technical, economic, organizational</b> feasibility.",
       "Methodologies (lab): waterfall, parallel (project split into subprojects designed and implemented in parallel), RAD / iterative (system versions 1, 2, 3), agile (face-to-face communication in each phase).",
       "Requirements gathering: <b>interviews</b> (opinions and feelings, current state, system goals), <b>JAD</b>, <b>questionnaires</b> (beliefs, behaviors, characteristics; useful when members are widely dispersed or many are involved), <b>use case diagrams</b> (actors, use cases, system boundary, association, generalization, &lt;&lt;include&gt;&gt;, &lt;&lt;extend&gt;&gt;)."
-     ]
+     ],
+     "fig": [
+      "sa-l2-time-split",
+      "sa-l2-methods"
+     ],
+     "figAt": {
+      "sa-l2-time-split": 0,
+      "sa-l2-methods": 4
+     },
+     "figH": {
+      "sa-l2-time-split": "Estimate the whole project from the planning time (15%, 20%, 35%, 30%)",
+      "sa-l2-methods": "The four lab methodologies: waterfall, parallel, RAD / iterative, agile"
+     }
     }
    ],
    "cards": [
@@ -2484,7 +2655,16 @@ COURSES.sa = {
       "It predicts the <b>effort and schedule</b> for a software product based on inputs relating to the <b>size of the software</b> and a number of <b>cost drivers</b> that affect productivity.",
       "Three models that reflect the complexity: the <b>Basic</b> model, the <b>Intermediate</b> model and the <b>Detailed</b> model.",
       "<b>Assumptions</b>: (1) the primary cost driver is the number of <b>Delivered Source Instructions (DSI)</b> developed by the project; (2) the project will enjoy <b>good management</b> by both the developer and the customer; (3) the <b>requirements specification is not substantially changed</b> after the plans and requirements phase."
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-models"
+     ],
+     "figAt": {
+      "sa-cocomo-models": 2
+     },
+     "figH": {
+      "sa-cocomo-models": "The three COCOMO models: what each one adds to predict effort and schedule"
+     }
     },
     {
      "h": "The development modes (project characteristics)",
@@ -2505,7 +2685,13 @@ COURSES.sa = {
        "<b>Embedded</b>",
        "<b>Tight, inflexible constraints</b> and interface requirements; the product requires <b>great innovation</b>."
       ]
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-modes"
+     ],
+     "figH": {
+      "sa-cocomo-modes": "Organic, semidetached, embedded: from familiar and small to tight constraints"
+     }
     },
     {
      "h": "Basic COCOMO equations (KDSI = thousands of DSI)",
@@ -2530,7 +2716,13 @@ COURSES.sa = {
        "E = 3.6 × (KDSI)^1.20",
        "TDEV = 2.5 × (E)^0.32"
       ]
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-curves"
+     ],
+     "figH": {
+      "sa-cocomo-curves": "Effort against size for the three modes: slide the size and read E and TDEV"
+     }
     },
     {
      "h": "Derived quantities used in every exam problem",
@@ -2541,7 +2733,15 @@ COURSES.sa = {
       "Staff needed for a different time T: FSP = E / T",
       "Total programmer cost = staff × months × salary per month   (= E × salary)",
       "Course convention (lecture and student keys): round each result to the nearest whole number and use the rounded value in the next step."
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-calc",
+      "sa-cocomo-tradeoff"
+     ],
+     "figH": {
+      "sa-cocomo-calc": "COCOMO calculator: effort, schedule, staffing, productivity and cost with the course's rounding",
+      "sa-cocomo-tradeoff": "Staff × months = effort: change the staff or the time and see the other side move"
+     }
     },
     {
      "h": "Basic model: use and limitations",
@@ -2559,7 +2759,13 @@ COURSES.sa = {
       "Schedule = 2.5 × 146^0.35 = 2.5 × 5.722 = 14.3 ≈ 14 months",
       "Productivity = 32,000 DSI / 146 MM = 219 DSI/MM",
       "Average staffing = 146 MM / 14 months = 10.4 ≈ 10 man (FSP)"
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-ex-basic"
+     ],
+     "figH": {
+      "sa-cocomo-ex-basic": "The lecture example step by step: 146 MM, 14 months, 219 DSI/MM, 10 people"
+     }
     },
     {
      "h": "Intermediate COCOMO",
@@ -2569,7 +2775,19 @@ COURSES.sa = {
       "Equations: Organic E = EAF × <b>3.2</b> × KDSI^1.05; Semidetached E = EAF × <b>3.0</b> × KDSI^1.12; Embedded E = EAF × <b>2.8</b> × KDSI^1.20; TDEV equations are the same as Basic.",
       "<b>When to use</b>: across the entire product for easy, rough early estimates, or at component level for more accurate estimates in detailed stages.",
       "<b>Limitations</b>: estimates <b>within 20% of the actuals 68% of the time</b>; effort multipliers are <b>phase-insensitive</b>; very <b>tedious</b> for a product with many components."
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-cplx",
+      "sa-cocomo-drivers"
+     ],
+     "figAt": {
+      "sa-cocomo-cplx": 0,
+      "sa-cocomo-drivers": 1
+     },
+     "figH": {
+      "sa-cocomo-cplx": "The CPLX effort multipliers: pick a rating and see the EAF change the effort",
+      "sa-cocomo-drivers": "The 15 cost drivers in four areas: product, computer, personnel, project"
+     }
     },
     {
      "h": "Worked lecture example: Intermediate, semidetached, RELY high",
@@ -2579,7 +2797,13 @@ COURSES.sa = {
       "Schedule = 2.5 × 167^0.35 = 2.5 × 5.997 = 15.0 ≈ 15 months",
       "Productivity = 32,000 / 167 = 192 DSI/MM",
       "Average staffing = 167 / 15 = 11.1 ≈ 11 FSP"
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-ex-inter"
+     ],
+     "figH": {
+      "sa-cocomo-ex-inter": "Basic vs Intermediate for the same project: RELY high (1.15) raises 146 MM to 167 MM"
+     }
     },
     {
      "h": "Detailed COCOMO",
@@ -2590,7 +2814,19 @@ COURSES.sa = {
       "<b>When to use</b>: estimates staffing, cost and duration of each phase, subsystem and module; lets you experiment with different development strategies.",
       "<b>Limitations</b>: requires substantially more time and effort; estimates <b>within 20% of the actuals 70% of the time</b>.",
       "<b>Summary</b>: cost models are not a substitute for a detailed task-by-task estimate; they depend on the user's domain knowledge, analysis ability and understanding of the model; meeting the estimate is as critical as making it."
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-hierarchy",
+      "sa-cocomo-accuracy"
+     ],
+     "figAt": {
+      "sa-cocomo-hierarchy": 1,
+      "sa-cocomo-accuracy": 4
+     },
+     "figH": {
+      "sa-cocomo-hierarchy": "The module-subsystem-system hierarchy and which drivers live at each level",
+      "sa-cocomo-accuracy": "How accurate each model is: Basic, Intermediate, Detailed"
+     }
     },
     {
      "h": "Lecture problem (b): organic, 8,000 DSI, E = 3.2·KDSI^1.05, salary EP 5000",
@@ -2603,7 +2839,13 @@ COURSES.sa = {
       "6) Double time = 18 months → 28/18 = 1.56 ≈ 2 FSP",
       "7) Cost = 3 FSP × 9 months × 5000 = EP 135,000  (exact form E × salary = 28 × 5000 = EP 140,000)",
       "Note: the problem gives 3.2 (the Intermediate organic constant with EAF = 1); the Basic organic constant is 2.4. Always use the constant printed in the question."
-     ]
+     ],
+     "fig": [
+      "sa-cocomo-prob-b"
+     ],
+     "figH": {
+      "sa-cocomo-prob-b": "Problem (b) solved part by part with the course's rounding"
+     }
     }
    ],
    "cards": [

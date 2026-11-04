@@ -3367,3 +3367,1901 @@
     'dm-var-try': VarTry, 'dm-mean-device': MeanDevice, 'dm-var-defects': VarDefects, 'dm-var-water': VarWater
   });
 })();
+/* ── part L8 ── */
+// Discrete Mathematics visuals, Lecture 8 (integer arithmetic and modular arithmetic): binary operations, the division relation, divisibility, GCD (Euclid and extended Euclid), mod, Zn, congruence, operations in Zn, additive and multiplicative inverses (Lec_8 slides 2.3–2.53, Figures 2.2–2.15). Every label and number comes from the site's notes or is computed with the course's method.
+(function () {
+  const { useState, useEffect } = React;
+  const { html, useSteps, Cap, Bar, pop, calm } = window.FIGKIT;
+  const CSS = `
+.dmv8{ --fig-k:var(--k-compiler); --fig-s:var(--s-compiler); }
+.dmv8 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dmv8 .fig-dots{ flex-wrap:wrap; row-gap:5px; }
+.dmv8 sub{ font-size:12px; line-height:0; }
+.dmv8 .fig-btn.dmv8-sel{ border-color:var(--fig-k); box-shadow:0 0 0 1px var(--fig-k); background:color-mix(in srgb, var(--fig-k) 14%, var(--paper)); }
+.dmv8-wrap{ max-width:540px; margin:0 auto; color:var(--ink); min-width:0; }
+.dmv8-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; margin:0 0 10px; }
+.dmv8-row .fig-btn{ font-size:.84rem; padding:4px 10px; min-height:32px; }
+.dmv8-in{ font:600 .9rem var(--mono); width:64px; box-sizing:border-box; padding:4px 5px; margin-left:4px; border:1px solid var(--line); border-radius:6px; background:var(--paper); color:var(--ink); }
+.dmv8-in.bad{ border-color:var(--pen); box-shadow:0 0 0 1px var(--pen); }
+.dmv8-in:focus{ outline:2px solid var(--fig-k); outline-offset:1px; }
+.dmv8-lbl{ font-size:.85rem; color:var(--graphite); white-space:nowrap; }
+.dmv8-muted{ font-size:.8rem; color:var(--graphite); text-align:center; margin:6px 0 0; line-height:1.4; }
+.dmv8-split{ display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:14px; align-items:start; }
+.dmv8-col{ display:flex; flex-direction:column; align-items:center; gap:5px; min-width:0; }
+.dmv8-z{ font:500 .84rem/1.4 var(--mono); padding:4px 8px; border:1px solid var(--line); border-radius:4px; background:color-mix(in srgb, var(--fig-k) 10%, var(--paper)); color:var(--ink); text-align:center; max-width:100%; overflow-wrap:anywhere; }
+.dmv8-z .on{ background:color-mix(in srgb, var(--fig-k) 40%, var(--paper)); border-radius:3px; padding:0 2px; font-weight:800; }
+.dmv8-op{ font:700 .88rem/1.3 var(--mono); padding:7px 10px; border:1.5px solid var(--fig-k); border-radius:3px; background:color-mix(in srgb, var(--fig-k) 22%, var(--paper)); box-shadow:3px 3px 0 var(--graphite); text-align:center; color:var(--ink); }
+.dmv8-ops span{ display:inline-block; padding:0 7px; opacity:.35; transition:opacity .3s; } .dmv8-ops span.on{ opacity:1; }
+.dmv8-arr{ font:600 .85rem/1.3 var(--mono); color:var(--ink); text-align:center; white-space:nowrap; }
+.dmv8-mid .dmv8-op{ white-space:nowrap; }
+.dmv8-arr small{ display:block; font:500 .75rem/1.2 var(--body); color:var(--graphite); white-space:normal; }
+.dmv8-arr.c{ color:var(--pen); } .dmv8-arr.g{ color:var(--ok); }
+.dmv8-ab{ display:flex; gap:26px; justify-content:center; flex-wrap:wrap; }
+.dmv8-mid{ display:flex; align-items:center; justify-content:center; gap:6px; }
+.dmv8-tag{ font:500 .78rem var(--body); color:var(--graphite); margin:0 4px; white-space:nowrap; }
+.dmv8-ttl{ font-weight:700; color:var(--fig-k); font-size:.9rem; text-align:center; }
+.dmv8-tbl{ border-collapse:collapse; width:100%; font:500 .84rem/1.35 var(--mono); }
+.dmv8-tbl th, .dmv8-tbl td{ border:1px solid var(--line); padding:3px 3px; text-align:center; overflow-wrap:anywhere; }
+.dmv8-tbl th{ background:var(--paper-2); font-weight:700; color:var(--ink); overflow-wrap:normal; }
+.dmv8-tbl td{ background:var(--paper); color:var(--ink); transition:background .4s; height:1.35em; }
+.dmv8-tbl td.new{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); font-weight:800; }
+.dmv8-tbl td.fin{ background:color-mix(in srgb, var(--ok) 22%, var(--paper)); font-weight:800; }
+.dmv8-tbl td.dim{ color:var(--faint); }
+.dmv8-eq{ font:600 .88rem/1.5 var(--mono); text-align:center; padding:6px 8px; border:1px solid var(--line); border-radius:8px; background:var(--paper); color:var(--ink); overflow-wrap:anywhere; transition:opacity .4s, border-color .4s; }
+.dmv8-eq.c{ border-color:var(--pen); } .dmv8-eq.g{ border-color:var(--ok); box-shadow:0 0 0 1px var(--ok); }
+.dmv8-big{ font:700 1.1rem/1.4 var(--mono); text-align:center; color:var(--ink); overflow-wrap:anywhere; }
+.dmv8-ld{ display:grid; grid-template-columns:auto auto; justify-content:center; font:600 1.02rem/1.5 var(--mono); color:var(--ink); }
+.dmv8-ldn{ text-align:right; padding-right:.5ch; white-space:nowrap; }
+.dmv8-ldq, .dmv8-ldb{ padding-left:.6ch; border-left:2px solid transparent; }
+.dmv8-ldb{ border-left-color:var(--ink); border-top:2px solid var(--ink); }
+.dmv8-ldl{ white-space:nowrap; } .dmv8-ldl .ul{ border-bottom:1.5px solid var(--ink); }
+.dmv8-ldl.nw > span:first-child{ color:var(--fig-k); font-weight:800; }
+.dmv8-leg{ display:grid; gap:6px; margin-top:6px; }
+.dmv8-lad{ display:grid; grid-template-columns:auto auto 22px auto; gap:3px 2px; justify-content:center; font:600 .9rem/1.3 var(--mono); }
+.dmv8-lad .bx{ border:1px solid var(--line); background:var(--paper); padding:4px 8px; min-width:3.2em; text-align:center; color:var(--ink); transition:opacity .4s, background .4s; }
+.dmv8-lad .l{ border-right:0; border-radius:3px 0 0 3px; text-align:left; } .dmv8-lad .m{ border-left:0; border-radius:0 3px 3px 0; text-align:right; }
+.dmv8-lad .rr{ background:color-mix(in srgb, var(--fig-k) 16%, var(--paper)); border-radius:3px; }
+.dmv8-lad .ar2{ text-align:center; color:var(--graphite); align-self:center; }
+.dmv8-lad .dn{ text-align:center; color:var(--pen); font-size:.85rem; line-height:1; }
+.dmv8-lad .gd{ background:color-mix(in srgb, var(--ok) 26%, var(--paper)); font-weight:800; }
+.dmv8-lad .nw{ box-shadow:0 0 0 2px var(--fig-k); }
+.dmv8-code{ font:500 .8rem/1.6 var(--mono); background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:6px; color:var(--ink); min-width:0; }
+.dmv8-code div{ white-space:pre-wrap; padding:0 5px; border-radius:4px; transition:background .4s; }
+.dmv8-code div.on{ background:color-mix(in srgb, var(--fig-k) 24%, var(--paper)); }
+.dmv8-xg{ display:grid; grid-template-columns:1.35fr 1fr 1fr; gap:8px; align-items:start; }
+.dmv8-xg.two{ grid-template-columns:1.3fr 1fr; }
+@media (max-width:560px){ .dmv8-xg:not(.two){ grid-template-columns:1fr 1fr; } .dmv8-xg:not(.two) > :first-child{ grid-column:1 / -1; } }
+.dmv8-pan{ min-width:0; } .dmv8-pan .dmv8-ttl{ display:block; margin-bottom:3px; }
+.dmv8-foot{ font:700 .8rem/1.3 var(--mono); color:var(--ok); text-align:center; margin-top:4px; overflow-wrap:anywhere; }
+.dmv8-pair{ display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px; }
+.dmv8-box{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:8px; min-width:0; }
+.dmv8-cols{ display:grid; gap:6px; justify-content:center; }
+.dmv8-chip{ font:700 .88rem var(--mono); border:1px solid var(--line); border-radius:6px; background:var(--paper); padding:3px 6px; text-align:center; color:var(--ink); transition:opacity .4s, background .4s; }
+.dmv8-chip.on{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); border-color:var(--fig-k); }
+.dmv8-chip.g{ background:color-mix(in srgb, var(--ok) 24%, var(--paper)); border-color:var(--ok); }
+.dmv8-chip.x{ opacity:.45; text-decoration:line-through; }
+.dmv8-cells{ display:flex; flex-wrap:wrap; gap:4px; justify-content:center; }
+.dmv8-cell{ min-width:30px; border:1px solid var(--line); border-radius:5px; background:var(--paper); text-align:center; font:600 .84rem/1.25 var(--mono); padding:2px 3px; color:var(--ink); transition:background .4s, opacity .4s; }
+.dmv8-cell small{ display:block; font:500 .75rem/1.2 var(--mono); color:var(--graphite); }
+.dmv8-cell.on{ background:color-mix(in srgb, var(--ok) 30%, var(--paper)); border-color:var(--ok); }
+.dmv8-cell.hl{ background:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); border-color:var(--fig-k); }
+.dmv8-cell.dim{ opacity:.4; }
+.dmv8-svg{ max-width:420px; margin:0 auto; }
+.dmv8 .dmv8-svg svg text{ font-family:var(--mono); }
+.dmv8-ops3 div{ font:600 .82rem/1.6 var(--mono); padding:0 6px; border-radius:4px; opacity:.5; transition:opacity .3s, background .3s; }
+.dmv8-ops3 div.on{ opacity:1; background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.dmv8-path{ display:grid; gap:5px; }
+.dmv8-path .dmv8-eq{ font-size:.82rem; }
+@media (prefers-reduced-motion: reduce){ .dmv8 *{ transition:none !important; } }`;
+  if (!document.getElementById('dmv8-css')) { const s = document.createElement('style'); s.id = 'dmv8-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ───────── helpers ───────── */
+  const mod = (a, n) => ((a % n) + n) % n;
+  const M = x => (x < 0 ? '−' + String(-x) : String(x));
+  const P = x => (x < 0 ? '(' + M(x) + ')' : M(x));
+  const C3 = x => (x < 0 ? '−' : '') + (x < 0 ? -x : x).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  const B = s => `<bdi dir="ltr">${String(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const L = s => `<span class="ltr">${s}</span>`;
+  const SUB = '₀₁₂₃₄₅₆₇₈₉', SUP = '⁰¹²³⁴⁵⁶⁷⁸⁹';
+  const sb = n => String(n).replace(/\d/g, d => SUB[d]), sp = n => String(n).replace(/\d/g, d => SUP[d]);
+  const Z = n => 'Z' + sb(n);
+  const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) { const t = a % b; a = b; b = t; } return a; };
+  const cls = (...a) => a.filter(Boolean).join(' ');
+  const range = n => Array.from({ length: n }, (_, k) => k);
+  const ZSET = 'Z = { …, −2, −1, 0, 1, 2, … }';
+  const ZH = n => html`<span>Z<sub>${n}</sub></span>`;
+
+  function NumIn({ label, v, set, lo, hi, w }) {
+    const [t, setT] = useState(String(v));
+    useEffect(() => { const c = t.replace(/−/g, '-').trim(); if (!/^-?\d+$/.test(c) || parseInt(c, 10) !== v) setT(String(v)); }, [v]);
+    const ok = s => { const c = s.replace(/−/g, '-').trim(); return /^-?\d{1,12}$/.test(c) && +c >= lo && +c <= hi ? parseInt(c, 10) : null; };
+    const ch = e => { const s = e.target.value; setT(s); const n = ok(s); if (n !== null) set(n); };
+    return html`<label className="dmv8-lbl">${label}<input className=${cls('dmv8-in', ok(t) === null && 'bad')} style=${{ width: w || '64px' }} inputMode=${lo < 0 ? 'text' : 'numeric'} value=${t} onChange=${ch} aria-label=${label} title=${`${lo} to ${hi}`} /></label>`;
+  }
+  const Chips = ({ items, sel, on }) => html`<div className="dmv8-row" role="group">${items.map((x, j) => html`<button key=${j} className=${cls('fig-btn', sel === j && 'dmv8-sel')} aria-pressed=${String(sel === j)} onClick=${() => on(j)}>${x}</button>`)}</div>`;
+  const Hint = ({ t }) => html`<p className="dmv8-muted" style=${{ margin: '-4px 0 10px' }}>${t}</p>`;
+  const Arw = ({ x1, x2, y, col }) => { const d = x2 > x1 ? 1 : -1; return html`<g><line x1=${x1} y1=${y} x2=${x2 - d * 8} y2=${y} stroke=${col} strokeWidth="3" /><path d=${`M${x2},${y} l${-d * 10},-6 l0,12 z`} fill=${col} /></g>`; };
+
+  /* ───────── [0.1–0.2] Figure 2.2 + Example 2.1: three binary operations on Z ───────── */
+  const OPS = [
+    { s: '+', en: 'Addition', ar: 'الـ addition (الجمع)', f: (a, b) => a + b },
+    { s: '−', en: 'Subtraction', ar: 'الـ subtraction (الطرح)', f: (a, b) => a - b },
+    { s: '×', en: 'Multiplication', ar: 'الـ multiplication (الضرب)', f: (a, b) => a * b }];
+  const CASES21 = [[5, 9], [-5, 9], [5, -9], [-5, -9]];
+  function OpBox({ a, b, op, c }) {
+    return html`<div className="dmv8-col">
+      <div className="dmv8-z">${ZSET}</div>
+      <div className="dmv8-ab"><span className="dmv8-arr">↓ a = ${M(a)}</span><span className="dmv8-arr">↓ b = ${M(b)}</span></div>
+      <div className="dmv8-mid"><div className="dmv8-op dmv8-ops">${OPS.map((o, j) => html`<span key=${j} className=${j === op ? 'on' : ''}>${o.s}</span>`)}</div><span className="dmv8-tag">Operation</span></div>
+      <div className="dmv8-arr">↓ c = ${M(c)}</div>
+      <div className="dmv8-z">${ZSET}</div></div>`;
+  }
+  function IntOpsEx({ ar, head }) {
+    const steps = [];
+    OPS.forEach((o, k) => CASES21.forEach(([a, b], j) => {
+      const c = o.f(a, b), e = `${P(a)} ${o.s} ${P(b)} = ${M(c)}`;
+      steps.push({ k, a, b, c, en: `${o.en}: <b>${e}</b>.` + (j === 0 ? ' Each input can be positive or negative, so each operation has four cases.' : ''),
+        ar: o.ar + ':' + L(e) + (j === 0 ? 'كل input ممكن يبقى موجب أو سالب، فكل عملية ليها 4 حالات.' : '') });
+    }));
+    const [i, ctl] = useSteps(steps.length, 1500), s = steps[i];
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-split">
+      <${OpBox} a=${s.a} b=${s.b} op=${s.k} c=${s.c} />
+      <table className="dmv8-tbl" aria-label="Example 2.1 results"><thead><tr><th>a, b</th>${CASES21.map(([a, b], j) => html`<th key=${j}>${M(a)}, ${M(b)}</th>`)}</tr></thead>
+        <tbody>${OPS.map((o, k) => html`<tr key=${k}><th>${o.s}</th>${CASES21.map(([a, b], j) => { const n = k * 4 + j; return html`<td key=${j} className=${n === i ? 'new' : ''}>${n <= i ? M(o.f(a, b)) : ''}</td>`; })}</tr>`)}</tbody></table>
+    </div></div><${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function IntOps({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(5), [b, setB] = useState(-9), [op, setOp] = useState(2);
+    const head = html`<${Chips} items=${['Example 2.1', 'Try your own']} sel=${ex} on=${setEx} />`;
+    if (ex === 0) return html`<figure className="fig dmv8"><${IntOpsEx} ar=${ar} head=${head} /></figure>`;
+    const o = OPS[op], c = o.f(a, b), e = `${P(a)} ${o.s} ${P(b)} = ${M(c)}`;
+    return html`<figure className="fig dmv8"><div className="fig-stage">${head}
+      <div className="dmv8-row">${OPS.map((x, j) => html`<button key=${j} className=${cls('fig-btn', op === j && 'dmv8-sel')} aria-pressed=${String(op === j)} onClick=${() => setOp(j)}>${x.s}</button>`)}
+        <${NumIn} label="a" v=${a} set=${setA} lo=${-999} hi=${999} /><${NumIn} label="b" v=${b} set=${setB} lo=${-999} hi=${999} /></div>
+      <${Hint} t="a and b from −999 to 999" />
+      <div className="dmv8-wrap"><${OpBox} a=${a} b=${b} op=${op} c=${c} /></div></div>
+      <${Cap} en=${`${o.en}: <b>${e}</b>. Two inputs from Z, one output in Z.`} ar=${o.ar + ':' + L(e) + 'الـ 2 inputs من Z والـ output واحد في Z.'} showAr=${ar} /></figure>`;
+  }
+
+  /* ───────── [0.3–0.4] Figure 2.4 + Figure 2.3 (Example 2.2): the division algorithm, long division ───────── */
+  function longDiv(a, n) {
+    const ds = String(a); let i = 1, cur = +ds[0];
+    while (cur < n && i < ds.length) { cur = cur * 10 + +ds[i]; i++; }
+    const st = [];
+    for (;;) {
+      const d = Math.floor(cur / n), p = d * n, rem = cur - p, more = i < ds.length;
+      st.push({ end: i - 1, cur, d, p, rem, dig: more ? ds[i] : null, next: more ? rem * 10 + +ds[i] : null });
+      if (!more) break; cur = rem * 10 + +ds[i]; i++;
+    }
+    return st;
+  }
+  function DivBox({ a, n, q, r, on, neg }) {
+    return html`<div className="dmv8-col">
+      <div className="dmv8-z">${ZSET}</div><div className="dmv8-arr">↓ a = ${M(a)}</div>
+      <div className="dmv8-mid"><span className="dmv8-arr">n = ${n} →<small>(positive)</small></span><div className="dmv8-op">a = q × n + r</div>
+        <span className=${cls('dmv8-arr', pop(on), neg && 'c')}>→ r = ${M(r)}<small>(non-negative)</small></span></div>
+      <div className=${cls('dmv8-arr', pop(on))}>↓ q = ${M(q)}</div><div className="dmv8-z">${ZSET}</div></div>`;
+  }
+  function Ln({ s, end, ul, tag, nw }) {
+    return html`<div className=${cls('dmv8-ldl', nw && 'nw')}><span className=${ul ? 'ul' : ''} style=${{ marginLeft: Math.max(0, end - s.length + 1) + 'ch' }}>${s}</span>${tag && html`<span className="dmv8-tag">${tag}</span>`}</div>`;
+  }
+  const EX_LD = [{ t: 'Example 2.2', a: 255, n: 11 }, { t: 'Q&A: 101 ÷ 11', a: 101, n: 11 }, { t: 'Quiz: 165 ÷ 18', a: 165, n: 18 }];
+  function DivLongRun({ a, n, ar, head }) {
+    const st = longDiv(a, n), K = st.length, q = Math.floor(a / n), r = a % n;
+    const steps = [{ en: `Divide the dividend <b>a = ${a}</b> by the divisor <b>n = ${n}</b> (n is positive). The division algorithm finds the quotient q and the remainder r.`,
+      ar: 'هنقسم الـ dividend على الـ divisor (والـ n موجب):' + L(`a = ${a}, n = ${n}`) + 'والـ division algorithm بيجيب الـ quotient q والـ remainder r.' }];
+    st.forEach((x, k) => {
+      const last = k === K - 1, f = `${x.cur} ÷ ${n} → ${x.d}, ${x.d} × ${n} = ${x.p}, ${x.cur} − ${x.p} = ${x.rem}`;
+      steps.push({ en: `${x.cur} ÷ ${n} gives <b>${x.d}</b>: ${x.d} × ${n} = ${x.p} and ${x.cur} − ${x.p} = ${x.rem}` + (last ? '.' : `. Bring down ${x.dig}: <b>${x.next}</b>.`),
+        ar: `الرقم ${x.d} بيتكتب في الـ q:` + L(f) + (last ? '' : `وبعدين ننزّل الـ ${x.dig} فيبقى معانا ${x.next}.`) });
+    });
+    steps.push({ en: `<b>q = ${q}</b>, <b>r = ${r}</b>: ${a} = ${q} × ${n} + ${r}, with 0 ≤ ${r} &lt; ${n}.`, ar: 'النتيجة:' + L(`q = ${q}, r = ${r}`) + 'والـ division relation بتبقى:' + L(`${a} = ${q} × ${n} + ${r}, 0 ≤ ${r} &lt; ${n}`) });
+    const [i, ctl] = useSteps(steps.length, 1900);
+    const t = Math.min(i, K), fin = i === K + 1, qs = st.slice(0, t).map(x => x.d).join(''), lines = [];
+    for (let k = 0; k < t; k++) {
+      const nw = k === t - 1 && !fin;
+      lines.push({ s: String(st[k].p), end: st[k].end, ul: 1, nw });
+      if (k < K - 1) lines.push({ s: String(st[k + 1].cur), end: st[k + 1].end, nw });
+      else lines.push({ s: String(st[k].rem), end: st[k].end, nw, tag: '← r' });
+    }
+    const len = String(a).length;
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-split">
+      <${DivBox} a=${a} n=${n} q=${q} r=${r} on=${fin} />
+      <div className="dmv8-ld" role="img" aria-label=${`Long division of ${a} by ${n}`}>
+        <span></span><div className="dmv8-ldq">${t > 0 ? html`<${Ln} s=${qs} end=${st[0].end + t - 1} tag="← q" nw=${!fin} />` : html`<div className="dmv8-ldl">\u00a0</div>`}</div>
+        <span className="dmv8-ldn"><span className="dmv8-tag">n →</span>${n}</span>
+        <div className="dmv8-ldb"><${Ln} s=${String(a)} end=${len - 1} tag="← a" />${lines.map((l, j) => html`<${Ln} key=${j} ...${l} />`)}</div>
+      </div></div></div>
+      <${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function DivLong({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(255), [n, setN] = useState(11);
+    const own = ex === EX_LD.length, E = own ? { a, n } : EX_LD[ex];
+    const head = html`<${Chips} items=${EX_LD.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${0} hi=${999999} w="84px" /><${NumIn} label="n" v=${n} set=${setN} lo=${1} hi=${9999} /></div><${Hint} t="a from 0 to 999999, n from 1 to 9999 (negative a: see the next visual)" />`}`;
+    return html`<figure className="fig dmv8"><${DivLongRun} key=${E.a + '/' + E.n} a=${E.a} n=${E.n} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [0.5] Example 2.3: a negative dividend, fix q and r ───────── */
+  const EX_NEG = [{ t: 'Example 2.3', a: -255, n: 11 }, { t: 'Q&A: −18 ÷ 14', a: -18, n: 14 }, { t: 'Quiz: −32 ÷ 6', a: -32, n: 6 }];
+  function DivNegRun({ a, n, ar, head }) {
+    const qc = Math.trunc(a / n), rc = a - qc * n, neg = rc < 0, q = neg ? qc - 1 : qc, r = neg ? rc + n : rc;
+    const eqC = `${M(a)} = (${M(qc)} × ${n}) + ${P(rc)}`, eqF = `${M(a)} = (${M(q)} × ${n}) + ${M(r)}`;
+    const steps = [{ en: `Divide <b>a = ${M(a)}</b> by <b>n = ${n}</b> on a computer or a calculator.`, ar: 'هنقسم بالكمبيوتر أو الآلة الحاسبة:' + L(`a = ${M(a)}, n = ${n}`) }];
+    if (neg) steps.push(
+      { en: `The computer gives <b>q = ${M(qc)}</b> and <b>r = ${M(rc)}</b>: ${eqC}. r is negative, but the relation needs 0 ≤ r &lt; n.`, ar: 'الكمبيوتر بيطلّع r سالب:' + L(eqC) + 'بس الـ relation محتاجة ' + B('0 ≤ r &lt; n') + '.' },
+      { en: `Decrement q by 1: q = ${M(qc)} − 1 = <b>${M(q)}</b>, so q × n = ${M(q * n)}, one n further down the line.`, ar: 'بننقّص الـ q بواحد:' + L(`q = ${M(qc)} − 1 = ${M(q)}, q × n = ${M(q * n)}`) },
+      { en: `Add n to r: r = ${M(rc)} + ${n} = <b>${r}</b>. Now ${eqF}, with 0 ≤ ${r} &lt; ${n}.`, ar: 'بنزوّد الـ n على الـ r:' + L(`r = ${M(rc)} + ${n} = ${r}`) + 'والـ relation بقت صح:' + L(eqF) });
+    else steps.push({ en: `The computer gives q = ${M(qc)} and r = ${M(rc)}: ${eqC}. r is not negative, so nothing needs fixing.`, ar: 'الكمبيوتر بيطلّع:' + L(eqC) + 'والـ r مش سالب أصلًا، فمفيش حاجة نصلّحها.' });
+    const [i, ctl] = useSteps(steps.length, 2300);
+    const lo = neg ? q * n : qc * n, hi = lo + n, X = v => 30 + (v - lo) * 260 / n, xa = X(a);
+    const cl = x => Math.max(52, Math.min(268, x));
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap">
+      <div className="dmv8-svg"><svg viewBox="0 0 320 112" role="img" aria-label=${`Number line from ${M(lo)} to ${M(hi)} with a = ${M(a)}`}>
+        <line x1="20" y1="52" x2="300" y2="52" stroke="var(--graphite)" strokeWidth="1.5" />
+        ${n <= 40 && range(n + 1).map(k => html`<line key=${k} x1=${X(lo + k)} y1="47" x2=${X(lo + k)} y2="57" stroke="var(--faint)" strokeWidth="1" />`)}
+        <line x1=${X(lo)} y1="38" x2=${X(lo)} y2="66" stroke=${neg && i >= 2 ? 'var(--ok)' : 'var(--ink)'} strokeWidth="2.5" /><line x1=${X(hi)} y1="38" x2=${X(hi)} y2="66" stroke=${neg && i === 1 ? 'var(--pen)' : 'var(--ink)'} strokeWidth="2.5" />
+        <text x=${X(lo)} y="28" textAnchor="middle" fontSize="15" fontWeight=${neg && i >= 2 ? 700 : 400}>${M(lo)}</text><text x=${X(hi)} y="28" textAnchor="middle" fontSize="15">${M(hi)}</text>
+        ${neg && i >= 1 && html`<${Arw} x1=${X(hi)} x2=${xa} y=${78} col="var(--pen)" />`}
+        ${(neg ? i >= 3 : i >= 1) && a !== lo && html`<${Arw} x1=${X(lo)} x2=${xa} y=${neg ? 88 : 78} col="var(--ok)" />`}
+        <circle cx=${xa} cy="52" r="6.5" fill="var(--fig-k)" stroke="var(--paper)" strokeWidth="1.5" />
+        <text x=${cl(xa)} y="108" textAnchor="middle" fontSize="15" fontWeight="700">a = ${M(a)}</text>
+      </svg></div>
+      <div className="dmv8-leg">
+        ${neg && html`<div className=${cls('dmv8-eq c', pop(i >= 1))}>computer: ${eqC}</div>`}
+        <div className=${cls('dmv8-eq g', pop(neg ? i >= 3 : i >= 1))}>${neg ? 'fixed: ' : ''}${eqF}</div></div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function DivNeg({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(-255), [n, setN] = useState(11);
+    const own = ex === EX_NEG.length, E = own ? { a, n } : EX_NEG[ex];
+    const head = html`<${Chips} items=${EX_NEG.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${-99999} hi=${99999} w="84px" /><${NumIn} label="n" v=${n} set=${setN} lo=${1} hi=${999} /></div><${Hint} t="a from −99999 to 99999, n from 1 to 999" />`}`;
+    return html`<figure className="fig dmv8"><${DivNegRun} key=${E.a + '/' + E.n} a=${E.a} n=${E.n} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [1.1–1.2] Examples 2.4 and 2.5: does n divide a? ───────── */
+  const EX_DIV = [[4, 32], [8, 42], [13, 78], [7, 98], [-6, 24], [4, 44], [11, -33], [13, 27], [7, 50], [-6, 23], [4, 41], [11, -32]];
+  function DivCheck({ ar }) {
+    const [ex, setEx] = useState(0), [n0, setN] = useState(7), [a0, setA] = useState(91);
+    const own = ex === EX_DIV.length, [n, a] = own ? [n0, a0] : EX_DIV[ex];
+    const m = Math.abs(n), r = mod(a, m), q = (a - r) / n, yes = r === 0;
+    const eq = `${M(a)} = ${P(q)} × ${P(n)}` + (yes ? '' : ` + ${r}`), vd = `${M(n)} ${yes ? '|' : '∤'} ${P(a)}`;
+    const k0 = Math.floor(a / m) - 1, lo = k0 * m, X = v => 30 + (v - lo) * 260 / (3 * m);
+    const src = own ? '' : ex < 2 ? 'Example 2.4: ' : 'Example 2.5: ';
+    const en = src + (yes ? `${eq}, the remainder is 0, so <b>${vd}</b> (${M(n)} divides ${P(a)}).` : `${eq}, the remainder is ${r} ≠ 0, so <b>${vd}</b> (${M(n)} does not divide ${P(a)}).`) + (n < 0 ? ` For the negative divisor we use ${m} to find the remainder.` : '');
+    const arT = (yes ? 'الباقي صفر، يبقى ' + B(vd) + ' لأن:' : 'فيه باقي مش صفر، يبقى ' + B(vd) + ' لأن:') + L(eq) + (n < 0 ? 'ومع الـ divisor السالب بنحسب الباقي بالـ ' + B(m) + '.' : '');
+    return html`<figure className="fig dmv8"><div className="fig-stage">
+      <${Chips} items=${EX_DIV.map(([x, y]) => `${M(x)} and ${M(y)}`).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="n" v=${n0} set=${v => v !== 0 && setN(v)} lo=${-999} hi=${999} /><${NumIn} label="a" v=${a0} set=${setA} lo=${-9999} hi=${9999} w="74px" /></div><${Hint} t="n from −999 to 999 (not 0), a from −9999 to 9999" />`}
+      <div className="dmv8-wrap dmv8-col">
+        <div className="dmv8-big">${eq}</div>
+        <div className=${cls('dmv8-eq', yes ? 'g' : 'c')} style=${{ fontSize: '1.15rem' }}>${vd}</div>
+        <div className="dmv8-svg" style=${{ width: '100%' }}><svg viewBox="0 0 320 86" role="img" aria-label=${`Multiples of ${m} around ${M(a)}`}>
+          <line x1="16" y1="44" x2="304" y2="44" stroke="var(--graphite)" strokeWidth="1.5" />
+          ${range(4).map(k => { const v = lo + k * m; return html`<g key=${k}><line x1=${X(v)} y1="36" x2=${X(v)} y2="52" stroke="var(--ink)" strokeWidth="2" /><text x=${X(v)} y="74" textAnchor="middle" fontSize="15" fontWeight=${v === a ? 700 : 400}>${M(v)}</text></g>`; })}
+          ${!yes && html`<${Arw} x1=${X(a - r)} x2=${X(a)} y=${58} col="var(--pen)" />`}
+          <circle cx=${X(a)} cy="44" r="6.5" fill="var(--fig-k)" stroke="var(--paper)" strokeWidth="1.5" />
+          <text x=${Math.max(50, Math.min(270, X(a)))} y="22" textAnchor="middle" fontSize="15" fontWeight="700">a = ${M(a)}</text>
+        </svg></div>
+        <p className="dmv8-muted" style=${{ marginTop: 0 }}>Ticks: multiples of ${m}. ${yes ? 'a sits on a multiple: remainder 0.' : `a is ${r} past a multiple: remainder ${r}.`}</p>
+      </div></div>
+      <${Cap} en=${en} ar=${arT} showAr=${ar} /></figure>`;
+  }
+
+  /* ───────── [2.0] Figure 2.6: common divisors of two integers ───────── */
+  const divs = x => range(x).map(k => k + 1).filter(k => x % k === 0);
+  const EX_VENN = [{ t: 'Figure 2.6: 140 and 12', a: 140, b: 12 }, { t: 'Example 2.8: 25 and 60', a: 25, b: 60 }, { t: 'Exam: 63 and 110', a: 63, b: 110 }];
+  function VennRun({ a, b, ar, head }) {
+    const da = divs(a), db = divs(b), com = da.filter(x => db.includes(x)), lo = da.filter(x => !db.includes(x)), ro = db.filter(x => !da.includes(x)), g = com[com.length - 1];
+    const rows = Math.max(1, Math.ceil(lo.length / 2), Math.ceil(com.length / 2), Math.ceil(ro.length / 2)), ry = Math.max(62, rows * 11 + 36), cy = 40 + ry, H = cy + ry + 6;
+    const place = (arr, xs) => { const nr = Math.ceil(arr.length / 2); return arr.map((v, j) => ({ v, x: arr.length % 2 === 1 && j === arr.length - 1 ? (xs[0] + xs[1]) / 2 : xs[j % 2], y: cy + (Math.floor(j / 2) - (nr - 1) / 2) * 22 + 5 })); };
+    const pl = place(lo, [44, 84]), pc = place(com, [150, 190]), pr = place(ro, [256, 296]);
+    const steps = [
+      { en: `Divisors of ${a}: ${da.join(', ')}.`, ar: `الـ divisors بتوع الـ ${a}:` + L(da.join(', ')) },
+      { en: `Divisors of ${b}: ${db.join(', ')}.`, ar: `الـ divisors بتوع الـ ${b}:` + L(db.join(', ')) },
+      { en: `The common divisors of ${a} and ${b} are in the shaded part: ${com.join(', ')}.`, ar: 'الـ common divisors هما اللي في الجزء المتظلل:' + L(com.join(', ')) },
+      { en: `The greatest common divisor is the largest of them: <b>gcd(${a}, ${b}) = ${g}</b>.` + (g === 1 ? ' Since it is 1, the two numbers are relatively prime.' : ''), ar: 'الـ gcd هو أكبر واحد فيهم:' + L(`gcd(${a}, ${b}) = ${g}`) + (g === 1 ? 'وبما إنه 1 يبقى الرقمين relatively prime.' : '') }];
+    const [i, ctl] = useSteps(steps.length, 2000);
+    const T = (p, show, key) => p.map(o => html`<g key=${key + o.v} className=${pop(show)}>${i >= 3 && o.v === g && html`<circle cx=${o.x} cy=${o.y - 5} r="16" fill="none" stroke="var(--ok)" strokeWidth="3" />`}<text x=${o.x} y=${o.y} textAnchor="middle" fontSize="16" fontWeight=${i >= 3 && o.v === g ? 800 : 500}>${o.v}</text></g>`);
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap">
+      <div className="dmv8-svg"><svg viewBox=${`0 0 340 ${H}`} role="img" aria-label=${`Divisors of ${a} and of ${b}; common divisors in the middle`}>
+        <defs><clipPath id="dmv8-venn-clip"><ellipse cx="115" cy=${cy} rx="115" ry=${ry} /></clipPath></defs>
+        <ellipse cx="225" cy=${cy} rx="114" ry=${ry - 1} fill="color-mix(in srgb, var(--fig-k) 30%, var(--paper))" clipPath="url(#dmv8-venn-clip)" className="fade" style=${{ opacity: i >= 2 ? 1 : 0 }} />
+        <ellipse cx="115" cy=${cy} rx="114" ry=${ry - 1} fill="none" stroke=${i === 0 ? 'var(--fig-k)' : 'var(--ink)'} strokeWidth=${i === 0 ? 2.5 : 1.3} />
+        <ellipse cx="225" cy=${cy} rx="114" ry=${ry - 1} fill="none" stroke=${i === 1 ? 'var(--fig-k)' : 'var(--ink)'} strokeWidth=${i === 1 ? 2.5 : 1.3} className=${pop(i >= 1)} />
+        <text x="80" y="22" textAnchor="middle" fontSize="16" fontWeight="600">Divisors of ${a}</text>
+        <text x="260" y="22" textAnchor="middle" fontSize="16" fontWeight="600" className=${pop(i >= 1)}>Divisors of ${b}</text>
+        ${T(pl, true, 'l')}${T(pc, true, 'c')}${T(pr, i >= 1, 'r')}
+      </svg></div>
+      <div className=${cls('dmv8-eq', i >= 3 && 'g', pop(i >= 2))}>common divisors: ${com.join(', ')}${i >= 3 ? ` → gcd(${a}, ${b}) = ${g}` : ''}</div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function GcdVenn({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(140), [b, setB] = useState(12);
+    const own = ex === EX_VENN.length, E = own ? { a, b } : EX_VENN[ex];
+    const head = html`<${Chips} items=${EX_VENN.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${1} hi=${200} /><${NumIn} label="b" v=${b} set=${setB} lo=${1} hi=${200} /></div><${Hint} t="a and b from 1 to 200" />`}`;
+    return html`<figure className="fig dmv8"><${VennRun} key=${E.a + '/' + E.b} a=${E.a} b=${E.b} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [2.3–2.5] Figure 2.7: Euclidean algorithm, process and code ───────── */
+  const euclid = (a, b) => { const rows = []; let r1 = a, r2 = b; while (r2 > 0) { const q = Math.floor(r1 / r2), r = r1 - q * r2; rows.push({ q, r1, r2, r }); r1 = r2; r2 = r; } return { rows, g: r1 }; };
+  const CODE27 = ['r₁ ← a;   r₂ ← b;   (Initialization)', 'while (r₂ > 0)', '{', '   q ← r₁ / r₂;', '   r ← r₁ − q × r₂;', '   r₁ ← r₂;   r₂ ← r;', '}', 'gcd(a, b) ← r₁'];
+  const EX_EU = [{ t: 'Example 2.8: gcd(25, 60)', a: 60, b: 25, note: 1 }, { t: 'Exam: gcd(63, 110)', a: 110, b: 63, note: 1 }];
+  function EuclidRunIn({ a, b, note, ar, head }) {
+    const { rows, g } = euclid(a, b), m = rows.length;
+    const steps = [{ on: [0], en: `Initialization: <b>r₁ ← ${a}</b>, <b>r₂ ← ${b}</b>.` + (note ? ' The notes start with the larger number.' : ''), ar: 'الـ Initialization:' + L(`r₁ ← ${a}, r₂ ← ${b}`) + (note ? 'والنوتس بتبدأ بالرقم الأكبر.' : '') }];
+    rows.forEach(x => steps.push({ on: [1, 3, 4, 5], en: `r₂ = ${x.r2} > 0: q ← ${x.r1} / ${x.r2} = ${x.q}, r ← ${x.r1} − ${x.q} × ${x.r2} = ${x.r}, so <b>${x.r1} = ${x.q} × ${x.r2} + ${x.r}</b>. Then r₁ ← ${x.r2}, r₂ ← ${x.r}.`,
+      ar: 'الـ r₂ لسه أكبر من صفر، فبنحسب:' + L(`${x.r1} = ${x.q} × ${x.r2} + ${x.r}`) + 'وبعدين بنزحلق القيم:' + L(`r₁ ← ${x.r2}, r₂ ← ${x.r}`) }));
+    steps.push({ on: [1, 7], en: `r₂ = 0, so the loop stops: <b>gcd(${a}, ${b}) = r₁ = ${g}</b>.` + (m === 0 ? ' (Fact 1: gcd(a, 0) = a.)' : '') + (g === 1 ? ' gcd = 1: the numbers are relatively prime.' : ''),
+      ar: 'الـ r₂ بقت صفر فالـ loop وقفت، والنتيجة:' + L(`gcd(${a}, ${b}) = r₁ = ${g}`) + (g === 1 ? 'وبما إن الـ gcd يساوي 1 يبقى الرقمين relatively prime.' : '') });
+    const [i, ctl] = useSteps(steps.length, 2100), fin = i === m + 1;
+    const all = rows.map(x => [x.r1, x.r2, x.r]).concat([[g, 0, null]]);
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-split">
+      <div><div className="dmv8-ttl" style=${{ marginBottom: '4px' }}>a. Process</div>
+        <div className="dmv8-lad" role="img" aria-label="Euclidean algorithm process">
+          ${all.map((row, k) => k > Math.min(i, m) ? null : html`<${React.Fragment} key=${k}>
+            ${k > 0 && html`<span></span><span className="dn">↙</span><span></span><span className="dn">↙</span>`}
+            <span className=${cls('bx l', k === m && fin && 'gd', k === i && !fin && 'nw')}>${k === 0 ? 'r₁ = ' : ''}${row[0]}</span>
+            <span className=${cls('bx m', k === m && fin && 'gd', k === i && !fin && 'nw')}>${k === 0 ? 'r₂ = ' : ''}${row[1]}</span>
+            ${k < m ? html`<span className="ar2">→</span><span className=${cls('bx rr', pop(i > k))}>${row[2]}</span>` : html`<span></span><span></span>`}
+          </${React.Fragment}>`)}
+        </div>
+        <div className=${cls('dmv8-foot', pop(fin))}>gcd(${a}, ${b}) = r₁ = ${g}</div></div>
+      <div><div className="dmv8-ttl" style=${{ marginBottom: '4px' }}>b. Algorithm</div>
+        <div className="dmv8-code">${CODE27.map((l, k) => html`<div key=${k} className=${steps[i].on.includes(k) ? 'on' : ''}>${l}</div>`)}</div></div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function EuclidRun({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(2740), [b, setB] = useState(1760);
+    const own = ex === EX_EU.length, E = own ? { a, b } : EX_EU[ex];
+    const head = html`<${Chips} items=${EX_EU.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${1} hi=${99999} w="74px" /><${NumIn} label="b" v=${b} set=${setB} lo=${0} hi=${99999} w="74px" /></div><${Hint} t="a from 1 to 99999, b from 0 to 99999" />`}`;
+    return html`<figure className="fig dmv8"><${EuclidRunIn} key=${E.a + '/' + E.b} a=${E.a} b=${E.b} note=${E.note} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [3] Example 2.7: the gcd table filled row by row ───────── */
+  function EuTableRun({ a, b, ar, head }) {
+    const { rows, g } = euclid(a, b), m = rows.length;
+    const steps = [{ en: `Start: <b>r₁ = ${a}</b>, <b>r₂ = ${b}</b>.`, ar: 'البداية:' + L(`r₁ = ${a}, r₂ = ${b}`) }];
+    rows.forEach((x, k) => {
+      steps.push({ en: `Row ${k + 1}: q is the integer part of r₁ / r₂: q = ${x.r1} / ${x.r2} → <b>${x.q}</b>.`, ar: `في الصف ${k + 1} الـ q هي الجزء الصحيح من القسمة:` + L(`q = ${x.r1} / ${x.r2} → ${x.q}`) });
+      steps.push({ en: `r = r₁ − q × r₂ = ${x.r1} − ${x.q} × ${x.r2} = <b>${x.r}</b>. In the next row r₂ (${x.r2}) becomes r₁ and r (${x.r}) becomes r₂.`, ar: 'بنحسب الباقي:' + L(`r = ${x.r1} − ${x.q} × ${x.r2} = ${x.r}`) + 'وفي الصف اللي بعده الـ r₂ بتبقى r₁ والـ r بتبقى r₂.' });
+    });
+    steps.push({ en: `r₂ = 0: stop. <b>gcd(${a}, ${b}) = r₁ = ${g}</b>.`, ar: 'الـ r₂ بقت صفر فبنقف:' + L(`gcd(${a}, ${b}) = r₁ = ${g}`) });
+    const [i, ctl] = useSteps(steps.length, 1500), fin = i === 2 * m + 1;
+    const cell = (k, c) => {   // step at which a cell appears
+      if (c === 'r1' || c === 'r2') return k === 0 ? 0 : 2 * k; if (c === 'q') return 2 * k + 1; return 2 * k + 2; };
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap" style=${{ maxWidth: '400px' }}>
+      <table className="dmv8-tbl"><thead><tr><th>q</th><th>r₁</th><th>r₂</th><th>r</th></tr></thead><tbody>
+        ${rows.map((x, k) => cell(k, 'r1') > i ? null : html`<tr key=${k}>${['q', 'r1', 'r2', 'r'].map(c => { const s = cell(k, c); return html`<td key=${c} className=${s === i ? 'new' : ''}>${s <= i ? x[c] : ''}</td>`; })}</tr>`)}
+        ${i >= 2 * m && html`<tr><td></td><td className=${fin ? 'fin' : i === 2 * m && m > 0 ? 'new' : ''}>${g}</td><td className=${i === 2 * m && m > 0 && !fin ? 'new' : ''}>0</td><td className=${fin ? 'fin' : ''}>${fin ? `gcd = ${g}` : ''}</td></tr>`}
+      </tbody></table></div></div>
+      <${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function EuTable({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(2740), [b, setB] = useState(1760);
+    const own = ex === 1, E = own ? { a, b } : { a: 2740, b: 1760 };
+    const head = html`<${Chips} items=${['Example 2.7', 'Try your own']} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${1} hi=${999999} w="84px" /><${NumIn} label="b" v=${b} set=${setB} lo=${0} hi=${999999} w="84px" /></div><${Hint} t="a from 1 to 999999, b from 0 to 999999" />`}`;
+    return html`<figure className="fig dmv8"><${EuTableRun} key=${E.a + '/' + E.b} a=${E.a} b=${E.b} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [5] + [9] Figures 2.8 and 2.15: extended Euclidean algorithm (s and t), and the inverse ───────── */
+  const xgcd = (a, b) => {
+    const rows = []; let r1 = a, r2 = b, s1 = 1, s2 = 0, t1 = 0, t2 = 1;
+    while (r2 > 0) { const q = Math.floor(r1 / r2), r = r1 - q * r2, s = s1 - q * s2, t = t1 - q * t2; rows.push({ q, r1, r2, r, s1, s2, s, t1, t2, t }); r1 = r2; r2 = r; s1 = s2; s2 = s; t1 = t2; t2 = t; }
+    rows.push({ r1, r2, s1, s2, t1, t2, fin: 1 }); return rows;
+  };
+  const XC = { r: ['q', 'r1', 'r2', 'r'], s: ['s1', 's2', 's'], t: ['t1', 't2', 't'] }, XH = { q: 'q', r1: 'r₁', r2: 'r₂', r: 'r', s1: 's₁', s2: 's₂', s: 's', t1: 't₁', t2: 't₂', t: 't' };
+  const PP = x => '(' + M(x) + ')';
+  function XRun({ a, b, inv, ar, head }) {
+    const rows = xgcd(a, b), m = rows.length - 1, parts = inv ? ['r', 't'] : ['r', 's', 't'], per = parts.length, F = rows[m], g = F.r1;
+    const steps = [{ en: inv ? `Initialization: r₁ ← n = ${a}, r₂ ← b = ${b}; t₁ ← 0, t₂ ← 1.` : `Initialization: r₁ ← ${a}, r₂ ← ${b}; s₁ ← 1, s₂ ← 0; t₁ ← 0, t₂ ← 1.`,
+      ar: 'الـ Initialization:' + L(inv ? `r₁ ← ${a}, r₂ ← ${b}; t₁ ← 0, t₂ ← 1` : `r₁ ← ${a}, r₂ ← ${b}; s₁ ← 1, s₂ ← 0; t₁ ← 0, t₂ ← 1`) }];
+    rows.slice(0, m).forEach((x, k) => parts.forEach(p => {
+      if (p === 'r') steps.push({ en: `Row ${k + 1}: q ← ${x.r1} / ${x.r2} = <b>${x.q}</b>, r ← ${x.r1} − ${x.q} × ${x.r2} = <b>${x.r}</b>; then r₁ ← ${x.r2}, r₂ ← ${x.r}.`,
+        ar: `في الصف ${k + 1} بنحسب الـ q والـ r:` + L(`q = ${x.r1} / ${x.r2} → ${x.q}`) + L(`r = ${x.r1} − ${x.q} × ${x.r2} = ${x.r}`) + 'وبعدين بنزحلق:' + L(`r₁ ← ${x.r2}, r₂ ← ${x.r}`) });
+      else { const v1 = x[p + '1'], v2 = x[p + '2'], v = x[p], sb1 = p + '₁', sb2 = p + '₂';
+        steps.push({ en: `Same q for ${p}: ${p} ← ${M(v1)} − ${x.q} × ${P(v2)} = <b>${M(v)}</b>; then ${sb1} ← ${M(v2)}, ${sb2} ← ${M(v)}.`,
+          ar: `نفس الـ q بنستخدمها في الـ ${p}:` + L(`${p} = ${M(v1)} − ${x.q} × ${P(v2)} = ${M(v)}`) + 'وبعدين بنزحلق:' + L(`${sb1} ← ${M(v2)}, ${sb2} ← ${M(v)}`) }); }
+    }));
+    let fen, far;
+    if (!inv) {
+      const chk = `${PP(F.s1)}(${a}) + ${PP(F.t1)}(${b}) = ${M(F.s1 * a)} + ${P(F.t1 * b)} = ${g}`;
+      fen = `r₂ = 0, so the loop stops: <b>gcd(${a}, ${b}) = ${g}, s = ${M(F.s1)}, t = ${M(F.t1)}</b>. Check s × a + t × b: ${chk}.`;
+      far = 'الـ r₂ بقت صفر فالـ loop وقفت، والنتيجة:' + L(`gcd(${a}, ${b}) = r₁ = ${g}, s = s₁ = ${M(F.s1)}, t = t₁ = ${M(F.t1)}`) + 'والتأكيد إن s × a + t × b يساوي الـ gcd:' + L(chk);
+    } else if (g === 1) {
+      const iv = mod(F.t1, a), k = (b * iv - 1) / a;
+      fen = `r₂ = 0: gcd(${a}, ${b}) = 1, so ${b} has an inverse in ${Z(a)}: t₁ = ${M(F.t1)}, mapped to ${Z(a)}: <b>${M(F.t1)} mod ${a} = ${iv}</b>. Check: ${b} × ${iv} = ${b * iv} = ${k} × ${a} + 1.`;
+      far = 'الـ gcd طلع 1، يبقى ليه inverse، وهو الـ t₁ بعد ما نرجّعها للـ set ' + B(Z(a)) + ' كده:' + L(`t₁ = ${M(F.t1)} → ${M(F.t1)} mod ${a} = ${iv}`) + 'والتأكيد:' + L(`${b} × ${iv} = ${b * iv} = ${k} × ${a} + 1`);
+    } else {
+      fen = `r₂ = 0: gcd(${a}, ${b}) = ${g} ≠ 1, so ${b} has <b>no</b> multiplicative inverse in ${Z(a)}.`;
+      far = 'الـ gcd طلع مش 1، يبقى الـ inverse مش موجود:' + L(`gcd(${a}, ${b}) = ${g} ≠ 1`);
+    }
+    steps.push({ en: fen, ar: far });
+    const [i, ctl] = useSteps(steps.length, 2000), fin = i === steps.length - 1;
+    const at = (k, c) => { const j = parts.indexOf(c === 'q' ? 'r' : c.replace(/[12]$/, '')); return /[12]$/.test(c) ? (k === 0 ? 0 : 1 + (k - 1) * per + j) : 1 + k * per + j; };
+    const foot = { r: `gcd = r₁ = ${g}`, s: `s = s₁ = ${M(F.s1)}`, t: inv ? (g === 1 ? `b⁻¹ = t₁ = ${M(F.t1)} → ${mod(F.t1, a)}` : 'no inverse') : `t = t₁ = ${M(F.t1)}` };
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap">
+      <div className=${cls('dmv8-xg', inv && 'two')}>${parts.map(p => html`<div key=${p} className="dmv8-pan"><span className="dmv8-ttl">${p}</span>
+        <table className="dmv8-tbl"><thead><tr>${XC[p].map(c => html`<th key=${c}>${XH[c]}</th>`)}</tr></thead><tbody>
+          ${rows.map((x, k) => at(k, XC[p][p === 'r' ? 1 : 0]) > i ? null : html`<tr key=${k}>${XC[p].map(c => { const s = x.fin && !/[12]$/.test(c) ? 1e9 : at(k, c); return html`<td key=${c} className=${x.fin && fin && /1$/.test(c) ? 'fin' : s === i ? 'new' : ''}>${s <= i ? M(x[c]) : ''}</td>`; })}</tr>`)}
+        </tbody></table><div className=${cls('dmv8-foot', pop(fin))}>${foot[p]}</div></div>`)}</div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  const EX_XG = [{ t: 'Example 2.9: 161, 28', a: 161, b: 28 }, { t: 'Example 2.10: 17, 0', a: 17, b: 0 }, { t: 'Example 2.11: 0, 45', a: 0, b: 45 }];
+  function XgcdTable({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(161), [b, setB] = useState(28);
+    const own = ex === EX_XG.length, E = own ? { a, b } : EX_XG[ex];
+    const head = html`<${Chips} items=${EX_XG.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${0} hi=${9999} /><${NumIn} label="b" v=${b} set=${setB} lo=${0} hi=${9999} /></div><${Hint} t="a and b from 0 to 9999 (not both 0)" />`}`;
+    const ok = E.a + E.b > 0;
+    return html`<figure className="fig dmv8">${ok ? html`<${XRun} key=${E.a + '/' + E.b} a=${E.a} b=${E.b} ar=${ar} head=${head} />` : html`<div className="fig-stage">${head}<p className="dmv8-muted">a and b cannot both be 0.</p></div>`}</figure>`;
+  }
+  const EX_XI = [{ t: 'Example 2.25: 11 in Z₂₆', a: 26, b: 11 }, { t: 'Example 2.26: 23 in Z₁₀₀', a: 100, b: 23 }, { t: 'Example 2.27: 12 in Z₂₆', a: 26, b: 12 }];
+  function XgcdInverse({ ar }) {
+    const [ex, setEx] = useState(0), [n, setN] = useState(26), [b, setB] = useState(11);
+    const own = ex === EX_XI.length, E = own ? { a: n, b } : EX_XI[ex];
+    const head = html`<${Chips} items=${EX_XI.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${9999} /><${NumIn} label="b" v=${b} set=${setB} lo=${1} hi=${9999} /></div><${Hint} t="n from 2 to 9999, b from 1 to n − 1" />`}`;
+    const ok = E.b < E.a;
+    return html`<figure className="fig dmv8">${ok ? html`<${XRun} key=${E.a + '/' + E.b} a=${E.a} b=${E.b} inv=${true} ar=${ar} head=${head} />` : html`<div className="fig-stage">${head}<p className="dmv8-muted">b must be smaller than n (b is in Zn).</p></div>`}</figure>`;
+  }
+
+  /* ───────── [6.0–6.1] Figure 2.9 + Example 2.14: division relation vs mod operator ───────── */
+  const EX_MOD = [[27, 5], [36, 12], [-18, 14], [-7, 10]];
+  function modSteps(a, n) {
+    const qc = Math.trunc(a / n), rc = a - qc * n, out = [];
+    if (rc >= 0) out.push({ a, n, q: qc, r: rc, en: `${M(a)} mod ${n}: ${M(a)} = ${P(qc)} × ${n} + ${rc}. The relation outputs q = ${M(qc)} and r = ${rc}; the mod operator keeps only <b>r = ${rc}</b>, the residue.`,
+      ar: 'الـ relation بتطلّع q و r، والـ mod operator بياخد الـ r بس (الـ residue):' + L(`${M(a)} = ${P(qc)} × ${n} + ${rc} → ${M(a)} mod ${n} = ${rc}`) });
+    else out.push({ a, n, q: qc, r: rc, neg: 1, en: `${M(a)} mod ${n}: dividing gives r = ${M(rc)} (q = ${M(qc)}), which is negative.`, ar: 'القسمة بتطلّع r سالب:' + L(`${M(a)} = (${M(qc)} × ${n}) + ${P(rc)}`) },
+      { a, n, q: qc - 1, r: rc + n, en: `Add the modulus: ${M(rc)} + ${n} = <b>${rc + n}</b>, so ${M(a)} mod ${n} = ${rc + n}.`, ar: 'بنزوّد الـ modulus على الباقي:' + L(`${M(rc)} + ${n} = ${rc + n} → ${M(a)} mod ${n} = ${rc + n}`) });
+    return out;
+  }
+  function ModOpRun({ list, ar, head }) {
+    const steps = list;
+    const [i, ctl] = useSteps(steps.length, 2300), s = steps[i];
+    const out = (both) => html`<div className="dmv8-ab">${both && html`<span className="dmv8-arr">↓ q = ${M(s.q)}</span>`}<span className=${cls('dmv8-arr', s.neg ? 'c' : 'g')}>↓ r = ${M(s.r)}<small>${s.neg ? 'negative: add n' : '(non-negative)'}</small></span></div>`;
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-pair">
+      <div className="dmv8-col dmv8-box"><span className="dmv8-ttl">Relation</span><div className="dmv8-arr">↓ a = ${M(s.a)}</div>
+        <div className="dmv8-mid"><span className="dmv8-arr">n = ${s.n} →<small>(positive)</small></span><div className="dmv8-op">a = q × n + r</div></div>${out(true)}</div>
+      <div className="dmv8-col dmv8-box"><span className="dmv8-ttl">Operator</span><div className="dmv8-arr">↓ a = ${M(s.a)}</div>
+        <div className="dmv8-mid"><span className="dmv8-arr">n = ${s.n} →<small>(modulus)</small></span><div className="dmv8-op">mod</div></div>${out(false)}</div>
+    </div><div className="dmv8-wrap" style=${{ marginTop: '10px' }}><div className=${cls('dmv8-eq', s.neg ? 'c' : 'g')}>${M(s.a)} mod ${s.n} = ${s.neg ? '?' : s.r}</div></div></div>
+      <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function ModOp({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(-18), [n, setN] = useState(14);
+    const own = ex === 1, list = own ? modSteps(a, n) : EX_MOD.reduce((acc, [x, y]) => acc.concat(modSteps(x, y)), []);
+    const head = html`<${Chips} items=${['Example 2.14', 'Try your own']} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${-9999} hi=${9999} w="74px" /><${NumIn} label="n" v=${n} set=${setN} lo=${1} hi=${999} /></div><${Hint} t="a from −9999 to 9999, n from 1 to 999" />`}`;
+    return html`<figure className="fig dmv8"><${ModOpRun} key=${own ? a + '/' + n : 'ex'} list=${list} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [6.2] Figure 2.10: Zn, the set of least residues, as a wheel ───────── */
+  function Wheel({ n, hi, pairs, mid, label }) {
+    const R = 108, c = 150, rs = Math.max(11, Math.min(20, Math.PI * R / n - 3)), pt = k => [c + R * Math.cos((-90 + 360 * k / n) * Math.PI / 180), c + R * Math.sin((-90 + 360 * k / n) * Math.PI / 180)];
+    return html`<div className="dmv8-svg" style=${{ maxWidth: '300px' }}><svg viewBox="0 0 300 300" role="img" aria-label=${label}>
+      <circle cx=${c} cy=${c} r=${R} fill="none" stroke="var(--line)" strokeWidth="2" />
+      ${(pairs || []).map(([x, y], j) => { const [x1, y1] = pt(x), [x2, y2] = pt(y); return x === y ? html`<circle key=${'p' + j} cx=${x1} cy=${y1} r=${rs + 5} fill="none" stroke="var(--ok)" strokeWidth="3" />` : html`<line key=${'p' + j} x1=${x1} y1=${y1} x2=${x2} y2=${y2} stroke="var(--ok)" strokeWidth="3" />`; })}
+      ${range(n).map(k => { const [x, y] = pt(k), on = hi && hi.includes(k); return html`<g key=${k}><circle cx=${x} cy=${y} r=${rs} fill=${on ? 'var(--fig-k)' : 'var(--paper)'} stroke=${on ? 'var(--fig-k)' : 'var(--graphite)'} strokeWidth="1.5" />
+        <text x=${x} y=${y + 5} textAnchor="middle" fontSize="15" fontWeight="700" style=${on ? { fill: 'var(--paper)' } : null}>${k}</text></g>`; })}
+      ${mid && mid.map((t, j) => html`<text key=${'m' + j} x=${c} y=${c - 6 + j * 24 - (mid.length - 1) * 8} textAnchor="middle" fontSize=${j === 0 ? 20 : 15} fontWeight=${j === 0 ? 800 : 500} style=${{ fontFamily: 'var(--body)' }}>${t}</text>`)}
+    </svg></div>`;
+  }
+  const SetBox = ({ n, on }) => html`<div className="dmv8-z">${ZH(n)} = { ${range(n).map(k => html`<${React.Fragment} key=${k}><span className=${on === k ? 'on' : ''}>${k}</span>${k < n - 1 ? ', ' : ''}</${React.Fragment}>`)} }</div>`;
+  function ZnRun({ n, ar, head }) {
+    const [a, setA] = useState(calm() ? n + 1 : 0), [lim, setLim] = useState(calm() ? null : 2 * n + 1);
+    useEffect(() => { if (lim == null) return; if (a >= lim || a >= 999) { setLim(null); return; } const t = setTimeout(() => setA(x => x + 1), 850); return () => clearTimeout(t); }, [a, lim]);
+    const r = mod(a, n), q = (a - r) / n, eq = `${M(a)} = ${P(q)} × ${n} + ${r}`;
+    const en = `a = ${M(a)}: ${eq}, so <b>${M(a)} mod ${n} = ${r}</b>. Whatever a is, the result is in ${Z(n)} = {0, …, ${n - 1}}, the set of least residues modulo ${n}.`;
+    const arT = 'مهما كانت الـ a، الـ residue بيقع جوّه ' + B(Z(n)) + '، وهي الـ set of least residues:' + L(`${eq} → ${M(a)} mod ${n} = ${r} ∈ ${Z(n)}`);
+    const go = d => { setLim(null); setA(x => Math.max(-999, Math.min(999, x + d))); };
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-col">
+      <div className="dmv8-z" style=${{ background: 'var(--paper)' }}>Z<sub>n</sub> = { 0, 1, 2, 3, …, (n − 1) }</div>
+      <${SetBox} n=${n} on=${r} />
+      <${Wheel} n=${n} hi=${[r]} mid=${[`a = ${M(a)}`, `a mod ${n} = ${r}`]} label=${`${Z(n)} as a wheel, ${M(a)} mod ${n} = ${r}`} />
+    </div></div><${Cap} en=${en} ar=${arT} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${() => go(-1)} aria-label="a minus 1">‹ a − 1</button><button className="fig-btn" onClick=${() => go(1)} aria-label="a plus 1">a + 1 ›</button>
+        <button className="fig-btn" onClick=${() => lim != null ? setLim(null) : setLim(Math.min(999, a + 2 * n))}>${lim != null ? '❚❚ Pause' : '▶ Walk'}</button><${NumIn} label="a" v=${a} set=${v => { setLim(null); setA(v); }} lo=${-999} hi=${999} /></div>`;
+  }
+  const EX_ZN = [2, 6, 11];
+  function ZnWheel({ ar }) {
+    const [ex, setEx] = useState(1), [n, setN] = useState(10);
+    const own = ex === EX_ZN.length, N = own ? n : EX_ZN[ex];
+    const head = html`<${Chips} items=${EX_ZN.map(k => Z(k)).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${24} /></div><${Hint} t="n from 2 to 24" />`}`;
+    return html`<figure className="fig dmv8"><${ZnRun} key=${N} n=${N} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [6.3] Figure 2.11: concept of congruence ───────── */
+  const EX_CG = [{ t: 'Figure 2.11', n: 10, xs: [-8, 2, 12, 22] }, { t: '2 ≡ 12 (mod 10)', n: 10, xs: [2, 12] }, { t: '13 ≡ 23 (mod 10)', n: 10, xs: [13, 23] }, { t: '3 ≡ 8 (mod 5)', n: 5, xs: [3, 8] }, { t: '8 ≡ 13 (mod 5)', n: 5, xs: [8, 13] }];
+  function CongRun({ n, xs, ar, head }) {
+    const rs = xs.map(x => mod(x, n)), same = rs.every(r => r === rs[0]), K = xs.length;
+    const rel = same ? xs.map(M).join(' ≡ ') + ` (mod ${n})` : `${M(xs[0])} ≢ ${M(xs[1])} (mod ${n})`;
+    const steps = [{ en: `Take the integers ${xs.map(M).join(', ')} from Z and feed each one to mod ${n}.`, ar: 'هندخّل الأرقام دي من Z على الـ mod:' + L(`${xs.map(M).join(', ')} → mod ${n}`) }];
+    xs.forEach((x, j) => steps.push({ en: `${M(x)} mod ${n} = <b>${rs[j]}</b>` + (x < 0 ? ` (${M(x)} + ${rs[j] - x} = ${rs[j]}).` : '.'), ar: 'الـ residue بتاع الرقم ده:' + L(`${M(x)} mod ${n} = ${rs[j]}`) }));
+    steps.push(same ? { en: `All of them give the same residue ${rs[0]} in ${Z(n)}, so they are congruent: <b>${rel}</b>. a ≡ b (mod n) means a mod n = b mod n.`, ar: 'كلهم طلّعوا نفس الـ residue، يبقوا congruent:' + L(rel) + 'يعني ' + B('a ≡ b (mod n)') + ' معناها إن ' + B('a mod n = b mod n') + '.' }
+      : { en: `The residues differ (${rs[0]} and ${rs[1]}), so <b>${rel}</b>: not congruent.`, ar: 'الـ residues مختلفة، يبقوا مش congruent:' + L(rel) });
+    const [i, ctl] = useSteps(steps.length, 1800), fin = i === K + 1;
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-col">
+      <div className="dmv8-cols" style=${{ gridTemplateColumns: `repeat(${K}, minmax(0, 76px))` }}>
+        ${xs.map((x, j) => html`<div key=${j} className="dmv8-col">
+          <span className=${cls('dmv8-chip', i === j + 1 && 'on')}>${M(x)}</span><span className="dmv8-arr">↓</span>
+          <div className="dmv8-op" style=${{ padding: '6px 6px', fontSize: '.84rem' }}>mod ${n}</div>
+          <span className=${cls('dmv8-arr', pop(i > j))}>↓</span><span className=${cls('dmv8-chip', i > j && 'g', pop(i > j))}>${rs[j]}</span></div>`)}</div>
+      <div className="dmv8-cells" style=${{ marginTop: '4px' }}><span className="dmv8-tag" style=${{ alignSelf: 'center' }}>${ZH(n)}</span>${range(n).map(k => html`<span key=${k} className=${cls('dmv8-cell', rs.slice(0, Math.min(i, K)).includes(k) && (fin ? 'on' : 'hl'))}>${k}</span>`)}</div>
+      <div className=${cls('dmv8-eq', same ? 'g' : 'c', pop(fin))} style=${{ fontSize: '1rem' }}>${rel}</div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function Congruence({ ar }) {
+    const [ex, setEx] = useState(0), [n, setN] = useState(7), [a, setA] = useState(-3), [b, setB] = useState(18);
+    const own = ex === EX_CG.length, E = own ? { n, xs: [a, b] } : EX_CG[ex];
+    const head = html`<${Chips} items=${EX_CG.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="a" v=${a} set=${setA} lo=${-999} hi=${999} /><${NumIn} label="b" v=${b} set=${setB} lo=${-999} hi=${999} /><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${30} /></div><${Hint} t="a and b from −999 to 999, n from 2 to 30" />`}`;
+    return html`<figure className="fig dmv8"><${CongRun} key=${E.n + ':' + E.xs.join(',')} n=${E.n} xs=${E.xs} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [6.4] Example 2.15: the clock is modulo 12 arithmetic ───────── */
+  function Clock({ ar }) {
+    const [s, setS0] = useState(9), [k, setK0] = useState(5), [j, setJ] = useState(calm() ? 5 : 0), [run, setRun] = useState(!calm());
+    useEffect(() => { if (!run) return; if (j >= k) { setRun(false); return; } const t = setTimeout(() => setJ(x => x + 1), 500); return () => clearTimeout(t); }, [run, j, k]);
+    const restart = () => { setJ(calm() ? k : 0); setRun(!calm()); };
+    const setS = v => { setS0(v); setJ(0); setRun(!calm()); if (calm()) setJ(k); }, setK = v => { setK0(v); setJ(calm() ? v : 0); setRun(!calm()); };
+    const h = (s + j) % 12, show = h === 0 ? 12 : h, done = j >= k, tot = s + k, r = tot % 12;
+    const ang = (show % 12) * 30 - 90, c = 130, P2 = (hr, rad) => [c + rad * Math.cos((hr * 30 - 90) * Math.PI / 180), c + rad * Math.sin((hr * 30 - 90) * Math.PI / 180)];
+    const f = `(${s} + ${k}) mod 12 = ${tot} mod 12 = ${r}`;
+    const en = done ? `Example 2.15: the clock uses modulo 12 arithmetic. ${s} o'clock + ${k} hours: <b>${f}</b>` + (r === 0 ? ', but the clock writes <b>12</b> instead of 0.' : '.') : `Moving the hand: ${s} o'clock + ${j} of ${k} hours.`;
+    const arT = done ? 'الساعة بتستخدم modulo 12 arithmetic:' + L(f) + (r === 0 ? 'بس الساعة بتكتب 12 بدل 0.' : '') : 'العقرب بيتحرك ساعة ساعة، ولحد دلوقتي:' + L(`${s} + ${j} h`);
+    const [hx, hy] = P2(show, 66);
+    return html`<figure className="fig dmv8"><div className="fig-stage">
+      <div className="dmv8-row"><${NumIn} label="start (o'clock)" v=${s} set=${setS} lo=${1} hi=${12} w="52px" /><${NumIn} label="+ hours" v=${k} set=${setK} lo=${0} hi=${48} w="52px" /></div>
+      <${Hint} t="start from 1 to 12, hours to add from 0 to 48" />
+      <div className="dmv8-wrap dmv8-col"><div className="dmv8-svg" style=${{ maxWidth: '240px', width: '100%' }}><svg viewBox="0 0 260 260" role="img" aria-label=${`Clock showing ${show} o'clock`}>
+        <circle cx=${c} cy=${c} r="120" fill="var(--paper)" stroke="var(--ink)" strokeWidth="2.5" />
+        ${range(12).map(t => { const hr = t + 1, [x, y] = P2(hr, 96), on = hr === show; return html`<g key=${t}>${(on || hr === s) && html`<circle cx=${x} cy=${y} r="17" fill=${on ? 'var(--fig-k)' : 'none'} stroke="var(--fig-k)" strokeWidth="2" />`}
+          <text x=${x} y=${y + 7} textAnchor="middle" fontSize="20" fontWeight="700" style=${on ? { fill: 'var(--paper)' } : null}>${hr}</text></g>`; })}
+        <line x1=${c} y1=${c} x2=${hx} y2=${hy} stroke="var(--fig-k)" strokeWidth="6" strokeLinecap="round" style=${{ transition: calm() ? 'none' : 'all .35s ease' }} />
+        <circle cx=${c} cy=${c} r="7" fill="var(--ink)" />
+        <text x=${c} y="178" textAnchor="middle" fontSize="16" fontWeight="600">+${j} h</text>
+      </svg></div>
+      <div className=${cls('dmv8-eq', done && 'g')}>${done ? f + (r === 0 ? ' → 12' : '') : `(${s} + ${j}) mod 12 = ${(s + j) % 12}`}</div></div></div>
+      <${Cap} en=${en} ar=${arT} showAr=${ar} />
+      <div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${restart}>↻ Replay</button></div></figure>`;
+  }
+
+  /* ───────── [7.0, 7.5–7.6] Figure 2.13 + Examples 2.16 and 2.17: binary operations in Zn ───────── */
+  const EX_ZO = [{ t: '2.16 a', a: 14, b: 7, o: 0, n: 15 }, { t: '2.16 b', a: 7, b: 11, o: 1, n: 13 }, { t: '2.16 c', a: 7, b: 11, o: 2, n: 20 },
+    { t: '2.17 a', a: 17, b: 27, o: 0, n: 14 }, { t: '2.17 b', a: 12, b: 43, o: 1, n: 13 }, { t: '2.17 c', a: 123, b: -10, o: 2, n: 19 }];
+  function ZnOpsRun({ E, own, ar, head }) {
+    const { a, b, o, n } = E, O = OPS[o], v = O.f(a, b), c = mod(v, n), kk = v < 0 ? Math.ceil(-v / n) : 0, e = `${P(a)} ${O.s} ${P(b)} = ${M(v)}`;
+    const src = own ? '' : `Example ${E.t.slice(0, 4)} (inputs from ${E.t[3] === '6' ? 'Zn' : 'Z or Zn'}): `;
+    const m2 = v >= 0 ? `${v} mod ${n} = ${c}` : `${M(v)} mod ${n} = ${M(v)} + ${kk * n} = ${c}`;
+    const steps = [
+      { en: src + `a = ${M(a)}, b = ${M(b)}, operation ${O.s}, modulus n = ${n}.`, ar: 'الـ inputs والعملية والـ modulus:' + L(`a = ${M(a)}, b = ${M(b)}, ${O.s}, n = ${n}`) },
+      { en: `First the operation: <b>${e}</b>.`, ar: 'الأول بنعمل العملية:' + L(e) },
+      { en: (v >= 0 ? `Then map the result to ${Z(n)} with mod: <b>${m2}</b>.` : `The result is negative, so add ${kk} × ${n} = ${kk * n}: <b>${m2}</b>.`) + ` So (${M(a)} ${O.s} ${P(b)}) mod ${n} = ${c}.` + (!own && E.t[3] === '7' ? ' (The slide repeats the answers of 2.16 under 2.17; these are the correct ones.)' : ''),
+        ar: 'وبعدين نرجّع النتيجة للـ set ' + B(Z(n)) + ' بالـ mod:' + L(m2) + (!own && E.t[3] === '7' ? 'الـ slide مكررة حلول 2.16 تحت 2.17، ودي الإجابات الصح.' : '') }];
+    const [i, ctl] = useSteps(steps.length, 2000);
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-split">
+      <div className="dmv8-col">
+        <div className="dmv8-z" style=${{ background: 'var(--paper)' }}>Z or Z<sub>n</sub></div>
+        <div className="dmv8-ab"><span className="dmv8-arr">↓ a = ${M(a)}</span><span className="dmv8-arr">↓ b = ${M(b)}</span></div>
+        <div className="dmv8-op dmv8-ops">${OPS.map((x, j) => html`<span key=${j} className=${j === o ? 'on' : ''}>${x.s}</span>`)}</div>
+        <div className=${cls('dmv8-arr', pop(i >= 1))}>↓ ${M(v)}</div>
+        <div className="dmv8-mid"><span className="dmv8-arr">n = ${n} →</span><div className="dmv8-op">mod</div></div>
+        <div className=${cls('dmv8-arr g', pop(i >= 2))}>↓ c = ${c}</div>
+        <div className="dmv8-z">${ZH(n)} = { 0, 1, 2, …, ${n - 1} }</div></div>
+      <div className="dmv8-col"><span className="dmv8-ttl">Operations</span>
+        <div className="dmv8-box dmv8-ops3">${['(a + b) mod n = c', '(a − b) mod n = c', '(a × b) mod n = c'].map((t, j) => html`<div key=${j} className=${j === o ? 'on' : ''}>${t}</div>`)}</div>
+        <div className=${cls('dmv8-eq g', pop(i >= 2))} style=${{ marginTop: '6px' }}>(${M(a)} ${O.s} ${P(b)}) mod ${n} = ${c}</div></div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function ZnOps({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(17), [b, setB] = useState(27), [o, setO] = useState(0), [n, setN] = useState(14);
+    const own = ex === EX_ZO.length, E = own ? { a, b, o, n } : EX_ZO[ex];
+    const head = html`<${Chips} items=${EX_ZO.map(e => e.t).concat('Try your own')} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row">${OPS.map((x, j) => html`<button key=${j} className=${cls('fig-btn', o === j && 'dmv8-sel')} aria-pressed=${String(o === j)} onClick=${() => setO(j)}>${x.s}</button>`)}
+        <${NumIn} label="a" v=${a} set=${setA} lo=${-9999} hi=${9999} w="70px" /><${NumIn} label="b" v=${b} set=${setB} lo=${-9999} hi=${9999} w="70px" /><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${999} /></div><${Hint} t="a and b from −9999 to 9999, n from 2 to 999" />`}`;
+    return html`<figure className="fig dmv8"><${ZnOpsRun} key=${[E.a, E.b, E.o, E.n].join('/')} E=${E} own=${own} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [7.1–7.2] Figure 2.14 + Example 2.18: properties of mod ───────── */
+  const bmod = (x, n) => ((x % n) + n) % n;
+  function PropsRun({ a, b, n, o, ex, ar, head }) {
+    const O = OPS[o], f = (x, y) => (o === 0 ? x + y : o === 1 ? x - y : x * y);
+    const v = f(a, b), c = bmod(v, n), am = bmod(a, n), bm = bmod(b, n), w = f(am, bm);
+    const typo = ex && o > 0;
+    const steps = [
+      { en: (ex ? `Example 2.18, line ${o + 1}: ` : '') + `find (${C3(a)} ${O.s} ${C3(b)}) mod ${n} in two ways.`, ar: 'المطلوب بطريقتين:' + L(`(${C3(a)} ${O.s} ${C3(b)}) mod ${n}`) },
+      { en: `a. Original process: first the operation, ${C3(a)} ${O.s} ${C3(b)} = <b>${C3(v)}</b>, a big number.`, ar: 'في الطريقة الأصلية بنعمل العملية الأول، والرقم بيطلع كبير:' + L(`${C3(a)} ${O.s} ${C3(b)} = ${C3(v)}`) },
+      { en: `then mod: ${C3(v)} mod ${n} = <b>${c}</b>.`, ar: 'وبعدين الـ mod:' + L(`${C3(v)} mod ${n} = ${c}`) },
+      { en: `b. Applying the properties: reduce each input first, ${C3(a)} mod ${n} = <b>${am}</b> and ${C3(b)} mod ${n} = <b>${bm}</b>.`, ar: 'بالـ properties بنصغّر كل input الأول:' + L(`${C3(a)} mod ${n} = ${am}, ${C3(b)} mod ${n} = ${bm}`) },
+      { en: `then the operation on the small numbers: ${am} ${O.s} ${bm} = <b>${M(w)}</b>.`, ar: 'وبعدين العملية على الأرقام الصغيرة:' + L(`${am} ${O.s} ${bm} = ${M(w)}`) },
+      { en: `and mod again: (${am} ${O.s} ${bm}) mod ${n} = ${M(w)} mod ${n} = <b>${c}</b>, the same result as path a, with small numbers only.` + (typo ? ' (The slide prints "mod 16" on the left of this line; it should be mod 11.)' : ''),
+        ar: 'وبعدين mod تاني، ونفس نتيجة الطريقة الأولى بأرقام صغيرة بس:' + L(`(${am} ${O.s} ${bm}) mod ${n} = ${M(w)} mod ${n} = ${c}`) + (typo ? 'الـ slide كاتبة "mod 16" على الشمال في السطر ده، والصح mod 11.' : '') }];
+    const [i, ctl] = useSteps(steps.length, 2100);
+    const Q = (k, t, g) => html`<div className=${cls('dmv8-eq', g && i >= k && 'g', pop(i >= k))}>${t}</div>`;
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-pair">
+      <div className="dmv8-box dmv8-path"><span className="dmv8-ttl">a. Original process</span>
+        ${Q(0, `a = ${C3(a)}, b = ${C3(b)}`)}${Q(1, `a ${O.s} b = ${C3(v)}`)}${Q(2, `(a ${O.s} b) mod ${n} = ${c}`, 1)}</div>
+      <div className="dmv8-box dmv8-path"><span className="dmv8-ttl">b. Applying properties</span>
+        ${Q(3, `a mod ${n} = ${am}, b mod ${n} = ${bm}`)}${Q(4, `${am} ${O.s} ${bm} = ${M(w)}`)}${Q(5, `${M(w)} mod ${n} = ${c}`, 1)}</div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function ModProps({ ar }) {
+    const [ex, setEx] = useState(0), [a, setA] = useState(1723345), [b, setB] = useState(2124945), [n, setN] = useState(11), [o, setO] = useState(0);
+    const own = ex === 3, E = own ? { a: BigInt(a), b: BigInt(b), n: BigInt(n), o } : { a: 1723345n, b: 2124945n, n: 11n, o: ex };
+    const head = html`<${Chips} items=${['2.18 line 1 (+)', '2.18 line 2 (−)', '2.18 line 3 (×)', 'Try your own']} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row">${OPS.map((x, j) => html`<button key=${j} className=${cls('fig-btn', o === j && 'dmv8-sel')} aria-pressed=${String(o === j)} onClick=${() => setO(j)}>${x.s}</button>`)}
+        <${NumIn} label="a" v=${a} set=${setA} lo=${-99999999} hi=${99999999} w="104px" /><${NumIn} label="b" v=${b} set=${setB} lo=${-99999999} hi=${99999999} w="104px" /><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${9999} /></div><${Hint} t="a and b up to 8 digits (may be negative), n from 2 to 9999" />`}`;
+    return html`<figure className="fig dmv8"><${PropsRun} key=${[E.a, E.b, E.n, E.o].join('/')} a=${E.a} b=${E.b} n=${E.n} o=${E.o} ex=${!own} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [7.3–7.4] Examples 2.19 and 2.20: powers of 10 mod x and the digit sum ───────── */
+  function DigitsRun({ a, x, ar, head }) {
+    const ds = String(a).split('').map(Number), K = ds.length, pw = ds.map((_, j) => K - 1 - j);
+    const pm = k => { let p = 1; for (let t = 0; t < k; t++) p = (p * 10) % x; return p; }, ten = 10 % x;
+    const terms = ds.map((d, j) => d * pm(pw[j])), sum = terms.reduce((s, t) => s + t, 0), res = sum % x;
+    const expand = ds.map((d, j) => `${d} × 10${sp(pw[j])}`).join(' + ');
+    const red = ten === 1 ? `(${ds.join(' + ')}) mod ${x}` : `(${ds.map((d, j) => `${d} × ${pm(pw[j])}`).join(' + ')}) mod ${x}`;
+    const steps = [
+      { en: `Write the integer as its digits times powers of 10: ${a} = ${expand}.`, ar: 'بنكتب الرقم كمجموع أرقامه مضروبة في قوى الـ 10:' + L(`${a} = ${expand}`) },
+      { en: `Example 2.19: 10ⁿ mod x = (10 mod x)ⁿ, the third property applied n times. Here 10 mod ${x} = ${ten}` + (ten === 1 ? `, so every power of 10 gives 1 mod ${x}.` : `, so 10ⁿ mod ${x} = ${ten}ⁿ mod ${x}.`),
+        ar: 'في Example 2.19 بنطبّق الخاصية التالتة n مرة:' + L(`10ⁿ mod x = (10 mod x)ⁿ, 10 mod ${x} = ${ten}` + (ten === 1 ? ` → 10ⁿ mod ${x} = 1` : ` → 10ⁿ mod ${x} = ${ten}ⁿ mod ${x}`)) },
+      { en: `Replace each power by its remainder: ${a} mod ${x} = ${red}` + (ten === 1 ? ': just the sum of the digits.' : '.'), ar: 'بنحط باقي كل قوة مكانها:' + L(`${a} mod ${x} = ${red}`) + (ten === 1 ? 'يعني مجموع الأرقام بس.' : '') },
+      { en: `${sum} mod ${x} = <b>${res}</b>, and ${a} mod ${x} = ${a % x}: the same remainder.` + (ten === 1 ? ` (Example 2.20: an integer and the sum of its digits have the same remainder mod ${x}.)` : ` For ${x} the digit sum alone does not work (10 mod ${x} ≠ 1).`),
+        ar: 'والنتيجة هي نفس باقي الرقم الأصلي:' + L(`${sum} mod ${x} = ${res}, ${a} mod ${x} = ${a % x}`) + (ten === 1 ? 'وده Example 2.20: الرقم ومجموع أرقامه ليهم نفس الباقي.' : 'وهنا مجموع الأرقام لوحده مينفعش لأن ' + B(`10 mod ${x} ≠ 1`) + '.') }];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap">
+      <div className="dmv8-eq" style=${{ marginBottom: '8px' }}>${a} = ${expand}</div>
+      <table className="dmv8-tbl"><thead><tr><th>aₖ</th><th>10ᵏ</th><th>10ᵏ mod ${x}</th><th>aₖ × (10ᵏ mod ${x})</th></tr></thead><tbody>
+        ${ds.map((d, j) => html`<tr key=${j}><td>${d}</td><td>10${sp(pw[j])}</td><td className=${i === 1 ? 'new' : ''}>${i >= 1 ? pm(pw[j]) : ''}</td><td className=${i === 2 ? 'new' : ''}>${i >= 2 ? `${d} × ${pm(pw[j])} = ${terms[j]}` : ''}</td></tr>`)}
+        <tr><th colSpan="3">sum</th><td className=${i === 3 ? 'fin' : ''}>${i >= 2 ? sum : ''}</td></tr></tbody></table>
+      <div className=${cls('dmv8-eq g', pop(i >= 3))} style=${{ marginTop: '8px' }}>${sum} mod ${x} = ${res} = ${a} mod ${x}</div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function ModDigits({ ar }) {
+    const [ex, setEx] = useState(0), [x, setX] = useState(3), [a, setA] = useState(6371);
+    const own = ex === 1, A = own ? a : 6371;
+    const head = html`<${Chips} items=${['Slide example: 6371', 'Try your own']} sel=${ex} on=${setEx} />
+      <div className="dmv8-row">${[3, 9, 7].map(k => html`<button key=${k} className=${cls('fig-btn', x === k && 'dmv8-sel')} aria-pressed=${String(x === k)} onClick=${() => setX(k)}>mod ${k}</button>`)}
+        ${own && html`<${NumIn} label="integer" v=${a} set=${setA} lo=${1} hi=${999999999} w="110px" />`}</div>
+      ${own && html`<${Hint} t="integer from 1 to 999999999" />`}`;
+    return html`<figure className="fig dmv8"><${DigitsRun} key=${A + '/' + x} a=${A} x=${x} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [8.0] additive inverse pairs in Zn ───────── */
+  function AddInvRun({ n, ar, head }) {
+    const pairs = range(Math.floor(n / 2) + 1).map(x => [x, mod(n - x, n)]), lst = pairs.map(([x, y]) => `(${x}, ${y})`).join(', ');
+    const steps = [{ en: `In ${Z(n)}, a and b are additive inverses if a + b ≡ 0 (mod ${n}). The inverse of a is ${n} − a.`, ar: 'في ' + B(Z(n)) + ' الـ a والـ b يبقوا additive inverses لو:' + L(`a + b ≡ 0 (mod ${n}), b = ${n} − a`) }];
+    pairs.forEach(([x, y]) => steps.push({ en: `<b>(${x}, ${y})</b>: ${x} + ${y} = ${x + y} ≡ 0 (mod ${n}).` + (x === y ? ` ${x} is its own additive inverse.` : ''), ar: 'الزوج ده additive inverses:' + L(`(${x}, ${y}): ${x} + ${y} = ${x + y} ≡ 0 (mod ${n})`) + (x === y ? 'والرقم ده هو الـ inverse بتاع نفسه.' : '') }));
+    steps.push({ en: `All ${pairs.length} pairs in ${Z(n)}: ${lst}. Every element has an additive inverse.`, ar: 'كل الأزواج في ' + B(Z(n)) + '، وكل element ليه additive inverse:' + L(lst) });
+    const [i, ctl] = useSteps(steps.length, 1500), shown = pairs.slice(0, Math.min(i, pairs.length)), cur = i >= 1 && i <= pairs.length ? pairs[i - 1] : null;
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-col">
+      <${Wheel} n=${n} pairs=${shown} hi=${cur ? cur : []} mid=${cur ? [`${cur[0]} + ${cur[1]}`, `≡ 0 (mod ${n})`] : [Z(n)]} label=${`Additive inverse pairs in ${Z(n)}`} />
+      <div className="dmv8-cells">${pairs.map(([x, y], j) => html`<span key=${j} className=${cls('dmv8-chip', j < i && (j === i - 1 ? 'on' : 'g'), pop(j < i))}>(${x}, ${y})</span>`)}</div>
+    </div></div><${Cap} en=${steps[i].en} ar=${steps[i].ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function AddInv({ ar }) {
+    const [ex, setEx] = useState(0), [n, setN] = useState(12);
+    const own = ex === 1, N = own ? n : 10;
+    const head = html`<${Chips} items=${['Example 2.21: Z₁₀', 'Try your own']} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${24} /></div><${Hint} t="n from 2 to 24" />`}`;
+    return html`<figure className="fig dmv8"><${AddInvRun} key=${N} n=${N} ar=${ar} head=${head} /></figure>`;
+  }
+
+  /* ───────── [8.1–8.3] multiplicative inverses in Zn (Examples 2.22–2.24) ───────── */
+  function MulInvRun({ n, ar, head, exn }) {
+    const inv = range(n).map(b => { const g = gcd(n, b); return g === 1 ? range(n).find(x => (b * x) % n === 1 % n) : null; });
+    const pairs = range(n).filter(b => inv[b] != null && b <= inv[b]).map(b => `(${b}, ${inv[b]})`), none = range(n).filter(b => inv[b] == null);
+    const steps = range(n).map(b => {
+      const g = gcd(n, b), x = inv[b];
+      if (x == null) return { b, en: `b = ${b}: gcd(${n}, ${b}) = ${g} ≠ 1, so no x gives ${b} × x ≡ 1 (mod ${n}): <b>${b} has no multiplicative inverse</b>.` + (exn === 10 && b === 8 ? ' (Example 2.22.)' : ''),
+        ar: 'الـ gcd مش 1، يبقى مفيش x يخلّي الحاصل ' + B('≡ 1') + '، والرقم ده مالوش multiplicative inverse:' + L(`b = ${b}, gcd(${n}, ${b}) = ${g} ≠ 1`) };
+      return { b, en: `b = ${b}: gcd(${n}, ${b}) = 1, and ${b} × ${x} = ${b * x} ≡ 1 (mod ${n}), so <b>(${b}, ${x})</b> are multiplicative inverses.` + (exn === 11 && b === 9 ? ' The slide lists (9, 9), but 9 × 9 = 81 ≡ 4 (mod 11): 9 pairs with 5.' : ''),
+        ar: 'الـ gcd يساوي 1، فلقينا الـ inverse:' + L(`gcd(${n}, ${b}) = 1, ${b} × ${x} = ${b * x} ≡ 1 (mod ${n})`) + (exn === 11 && b === 9 ? 'الـ slide كاتبة الزوج ده غلط:' + L('9 × 9 = 81 ≡ 4 (mod 11), 9 × 5 = 45 ≡ 1') : '') };
+    });
+    steps.push({ b: -1, en: `${Z(n)}: ${pairs.length} pair${pairs.length === 1 ? '' : 's'}, ${pairs.join(', ')}. No inverse: ${none.join(', ')}.` + (exn === 11 ? ' (Six pairs: the slide says seven and includes (9, 9) by mistake.)' : ''),
+      ar: 'الأزواج في ' + B(Z(n)) + ' هي:' + L(pairs.join(', ')) + 'واللي مالهمش inverse:' + L(none.join(', ')) + (exn === 11 ? 'يعني ستة أزواج بس، والـ slide قالت سبعة بالغلط.' : '') });
+    const [i, ctl] = useSteps(steps.length, 1700), s = steps[i], b = s.b;
+    return html`<div className="fig-stage">${head}<div className="dmv8-wrap dmv8-col">
+      <div className="dmv8-cells">${range(n).map(k => html`<span key=${k} className=${cls('dmv8-chip', k === b ? 'on' : (k < b || b < 0) && (inv[k] != null ? 'g' : 'x'))}>${k}${(k < b || b < 0 || k === b) && inv[k] != null ? html`<small style=${{ fontWeight: 500 }}> ↔ ${inv[k]}</small>` : ''}</span>`)}</div>
+      ${b >= 0 ? html`<div className="dmv8-muted" style=${{ margin: '2px 0 0' }}>${b} × x mod ${n}, for x = 0 … ${n - 1}</div>
+        <div className="dmv8-cells">${range(n).map(x => { const p = (b * x) % n; return html`<span key=${x} className=${cls('dmv8-cell', p === 1 % n && n > 1 ? 'on' : '', inv[b] == null && 'dim')}><small>x=${x}</small>${p}</span>`; })}</div>
+        <div className=${cls('dmv8-eq', inv[b] != null ? 'g' : 'c')}>gcd(${n}, ${b}) = ${gcd(n, b)} ${inv[b] != null ? `→ ${b}⁻¹ = ${inv[b]}` : '≠ 1 → no inverse'}</div>`
+      : html`<div className="dmv8-eq g">pairs: ${pairs.join(', ')}</div><div className="dmv8-eq c">no inverse: ${none.join(', ')}</div>`}
+    </div></div><${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} />`;
+  }
+  function MulInv({ ar }) {
+    const [ex, setEx] = useState(0), [n, setN] = useState(26);
+    const own = ex === 2, N = own ? n : ex === 0 ? 10 : 11;
+    const head = html`<${Chips} items=${['Examples 2.22–2.23: Z₁₀', 'Example 2.24: Z₁₁', 'Try your own']} sel=${ex} on=${setEx} />
+      ${own && html`<div className="dmv8-row"><${NumIn} label="n" v=${n} set=${setN} lo=${2} hi=${30} /></div><${Hint} t="n from 2 to 30" />`}`;
+    return html`<figure className="fig dmv8"><${MulInvRun} key=${N} n=${N} exn=${own ? 0 : N} ar=${ar} head=${head} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'dm-int-ops': IntOps, 'dm-div-long': DivLong, 'dm-div-negative': DivNeg, 'dm-div-check': DivCheck,
+    'dm-gcd-venn': GcdVenn, 'dm-euclid-run': EuclidRun, 'dm-euclid-table': EuTable, 'dm-xgcd-table': XgcdTable,
+    'dm-mod-op': ModOp, 'dm-mod-zn': ZnWheel, 'dm-mod-congruence': Congruence, 'dm-mod-clock': Clock,
+    'dm-zn-ops': ZnOps, 'dm-mod-props': ModProps, 'dm-mod-digits': ModDigits,
+    'dm-inv-add': AddInv, 'dm-inv-mult': MulInv, 'dm-xgcd-inverse': XgcdInverse
+  });
+})();
+/* ── part L9 ── */
+// Discrete Mathematics visuals, Lecture 9 (Graph Theory and Applications, part 1): graphs and incidence, simple graphs and multigraphs, degrees and the handshake proposition, Königsberg, K_n, regular, bipartite and complete bipartite graphs, walks/trails/paths/cycles and the two lemmas, digraph degrees, topological order, the acyclic proposition, FindTopOrd, isomorphism (Petersen drawings), and the lecture's adjacency / incidence / edge-list examples (Lec 9 slides 3 to 19). Every label and number comes from the site's notes and slides.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, useSteps, Cap, Bar, calm } = window.FIGKIT;
+  const CSS = `
+.dmv9{ --fig-k:var(--k-compiler); --fig-s:var(--s-compiler); }
+.dmv9 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dmv9 .fig-btn[aria-pressed="true"]{ border-color:var(--k-compiler); box-shadow:0 0 0 1px var(--k-compiler); background:color-mix(in srgb, var(--k-compiler) 16%, var(--paper)); }
+.dmv9-wrap{ max-width:560px; margin:0 auto; color:var(--ink); min-width:0; }
+.dmv9-g{ width:100%; height:auto; display:block; margin:0 auto; max-width:440px; touch-action:manipulation; -webkit-tap-highlight-color:transparent; }
+.dmv9-e .ln{ fill:none; stroke:var(--graphite); stroke-width:2.2; transition:stroke .3s, stroke-width .3s; }
+.dmv9-e{ transition:opacity .4s; }
+.dmv9-e .ah{ fill:var(--graphite); transition:fill .3s; }
+.dmv9-e.on .ln{ stroke:var(--k-compiler); stroke-width:4; } .dmv9-e.on .ah{ fill:var(--k-compiler); }
+.dmv9-e.ok .ln{ stroke:var(--ok); stroke-width:3.6; } .dmv9-e.ok .ah{ fill:var(--ok); }
+.dmv9-e.bad .ln{ stroke:var(--pen); stroke-width:3.4; stroke-dasharray:6 4; } .dmv9-e.bad .ah{ fill:var(--pen); }
+.dmv9-e.dim{ opacity:.2; } .dmv9-e.gone{ opacity:0; pointer-events:none; }
+.dmv9-e .hit{ fill:none; stroke:transparent; stroke-width:16; cursor:pointer; pointer-events:stroke; }
+.fig svg .dmv9-e text{ font-size:14.5px; font-style:italic; paint-order:stroke; stroke:var(--paper-2); stroke-width:4px; stroke-linejoin:round; pointer-events:none; }
+.fig svg .dmv9-e.on text{ fill:var(--k-compiler); font-weight:700; }
+.dmv9-n circle{ fill:var(--paper); stroke:var(--ink); stroke-width:1.8; transition:fill .3s, stroke .3s, opacity .3s; }
+.dmv9-n{ transition:opacity .4s; }
+.fig svg .dmv9-n text{ font-size:14.5px; font-weight:600; pointer-events:none; }
+.dmv9-n.tap{ cursor:pointer; }
+.dmv9-n.on circle{ fill:color-mix(in srgb, var(--k-compiler) 32%, var(--paper)); stroke:var(--k-compiler); stroke-width:2.6; }
+.dmv9-n.ok circle{ fill:color-mix(in srgb, var(--ok) 26%, var(--paper)); stroke:var(--ok); stroke-width:2.6; }
+.dmv9-n.bad circle{ fill:color-mix(in srgb, var(--pen) 18%, var(--paper)); stroke:var(--pen); stroke-width:2.6; }
+.dmv9-n.blk circle{ fill:var(--ink); }
+.fig svg .dmv9-n.blk text{ fill:var(--paper); }
+.dmv9-n.sel circle{ stroke:var(--k-compiler); stroke-width:3.2; stroke-dasharray:4 3; }
+.dmv9-n.dim{ opacity:.25; }
+.dmv9-n.dot circle{ fill:var(--ink); stroke:none; }
+.fig svg text.dmv9-bd{ font-size:14.5px; font-weight:700; fill:var(--k-compiler); paint-order:stroke; stroke:var(--paper-2); stroke-width:4px; stroke-linejoin:round; }
+.fig svg text.dmv9-lb{ font-size:16px; font-weight:700; }
+.fig svg text.dmv9-lb2{ font-size:15px; font-style:italic; paint-order:stroke; stroke:var(--paper-2); stroke-width:4px; }
+.dmv9-riv{ fill:none; stroke:color-mix(in srgb, var(--k-compiler) 28%, var(--paper-2)); stroke-width:17; transition:opacity .5s; }
+.dmv9-brg{ stroke:var(--ink); stroke-width:5; stroke-linecap:round; transition:opacity .5s; }
+.dmv9-fade{ transition:opacity .5s; }
+.dmv9-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dmv9-modes .fig-btn{ font-size:.86rem; padding:4px 10px; }
+.dmv9-row{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; align-items:center; margin:8px 0 0; }
+.dmv9-row .fig-btn{ font-size:.86rem; padding:4px 10px; }
+.dmv9-info{ font-size:.92rem; line-height:1.45; text-align:center; margin:8px 0 0; color:var(--ink); }
+.dmv9-mut{ color:var(--graphite); font-size:.86rem; }
+.dmv9-mono{ font-family:var(--mono); direction:ltr; unicode-bidi:isolate; overflow-wrap:anywhere; }
+.dmv9-tw{ max-width:100%; overflow-x:auto; }
+.dmv9-tb{ border-collapse:collapse; margin:8px auto 0; font:600 .9rem/1.25 var(--mono); background:var(--paper); color:var(--ink); direction:ltr; }
+.dmv9-tb caption{ font:700 .9rem var(--body); color:var(--graphite); padding-bottom:4px; caption-side:top; }
+.dmv9-tb th, .dmv9-tb td{ border:1px solid var(--line); padding:3px 6px; text-align:center; min-width:1.5em; transition:background .35s, box-shadow .35s; }
+.dmv9-tb th{ background:var(--paper-2); font-weight:700; }
+.dmv9-tb td.zero{ color:var(--graphite); font-weight:500; }
+.dmv9-tb td.cur{ background:color-mix(in srgb, var(--k-compiler) 28%, var(--paper)); box-shadow:inset 0 0 0 2px var(--k-compiler); }
+.dmv9-tb td.odd{ background:color-mix(in srgb, var(--k-compiler) 18%, var(--paper)); }
+.dmv9-tb td.ok{ color:var(--ok); } .dmv9-tb td.bad{ color:var(--pen); }
+.dmv9-tb td.done{ color:var(--graphite); font-weight:500; }
+.dmv9-mats{ display:flex; flex-wrap:wrap; gap:4px 16px; justify-content:center; align-items:flex-start; }
+.dmv9-tags{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; margin:8px 0 0; }
+.dmv9-tag{ display:inline-block; font-size:.86rem; font-weight:600; border-radius:99px; padding:2px 10px; border:1px solid var(--line); color:var(--graphite); }
+.dmv9-tag.yes{ border-color:var(--ok); color:var(--ok); } .dmv9-tag.no{ border-color:var(--line); color:var(--graphite); text-decoration:line-through; }
+.dmv9-big{ text-align:center; font:700 1.02rem/1.4 var(--mono); color:var(--k-compiler); margin:8px 0 0; direction:ltr; overflow-wrap:anywhere; }
+.dmv9-warn{ color:var(--pen); font-weight:600; }
+.dmv9-okt{ color:var(--ok); font-weight:700; }
+.dmv9-list{ font:600 .95rem/1.55 var(--mono); direction:ltr; text-align:left; display:inline-block; margin:8px auto 0; }
+.dmv9-list div{ transition:color .3s; } .dmv9-list .cur{ color:var(--k-compiler); } .dmv9-list .later{ color:var(--graphite); opacity:.45; }
+.dmv9-c{ text-align:center; }
+`;
+  if (!document.getElementById('dmv9-css')) { const s = document.createElement('style'); s.id = 'dmv9-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const L = s => `<span class="ltr">${s}</span>`, B = s => `<bdi dir="ltr">${s}</bdi>`;
+  const SB = n => String(n).replace(/\d/g, d => '₀₁₂₃₄₅₆₇₈₉'[d]);
+  const Modes = ({ list, mode, set }) => html`<div className="dmv9-modes" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
+
+  // step walker that restarts when key changes
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setI(calm() ? n - 1 : 0); setPlay(!calm()); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => Math.min(x + 1, n - 1)), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); } }];
+  }
+  // counts 0 → total, one per tick (edges drawn one by one)
+  function useCount(total, ms, key) {
+    const [c, setC] = useState(calm() ? total : 0), [run, setRun] = useState(0);
+    useEffect(() => { if (calm()) { setC(total); return; } setC(0); let k = 0; const id = setInterval(() => { k++; setC(k); if (k >= total) clearInterval(id); }, ms); return () => clearInterval(id); }, [key, run]);
+    return [Math.min(c, total), () => setRun(r => r + 1)];
+  }
+
+  /* ───────── drawing a graph ───────── */
+  function geo(a, b, bend) {
+    const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2, dx = b.x - a.x, dy = b.y - a.y, l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    return { mx, my, nx, ny, cx: mx + nx * bend * 2, cy: my + ny * bend * 2 };
+  }
+  // N: [{id,x,y,t}], E: [{id,u,v,t,bend,lp,la,side}]; nc/ec give extra class names
+  function GSvg({ vb, N, E, r = 15, dir, nc, ec, onN, onE, nlab, extra, under, aria }) {
+    const P = {}; N.forEach(n => { P[n.id] = n; });
+    const [, , W, H] = vb.split(' ').map(Number);
+    const ed = E.map(e => {
+      const a = P[e.u], b = P[e.v], bend = e.bend || 0; let d, lx, ly, ah = null;
+      if (e.u === e.v) {
+        const th = e.la != null ? e.la * Math.PI / 180 : Math.atan2(a.y - H / 2, a.x - W / 2), q = (ang, k) => [a.x + Math.cos(ang) * k, a.y + Math.sin(ang) * k];
+        const [x1, y1] = q(th - .5, r), [x2, y2] = q(th + .5, r), [c1x, c1y] = q(th - .85, r + 34), [c2x, c2y] = q(th + .85, r + 34);
+        d = `M${x1},${y1} C${c1x},${c1y} ${c2x},${c2y} ${x2},${y2}`; [lx, ly] = q(th, r + 36);
+      } else {
+        const g = geo(a, b, bend), s = e.side || (bend < 0 ? -1 : 1);
+        d = `M${a.x},${a.y} Q${g.cx},${g.cy} ${b.x},${b.y}`; lx = g.mx + g.nx * (bend + 12 * s); ly = g.my + g.ny * (bend + 12 * s);
+        if (dir) { const ux = b.x - g.cx, uy = b.y - g.cy, l = Math.hypot(ux, uy) || 1, tx = b.x - ux / l * (r + 1), ty = b.y - uy / l * (r + 1), px = -uy / l, py = ux / l, bx = tx - ux / l * 11, by = ty - uy / l * 11;
+          ah = `${tx},${ty} ${bx + px * 5.5},${by + py * 5.5} ${bx - px * 5.5},${by - py * 5.5}`; }
+      }
+      if (e.lp) [lx, ly] = e.lp;
+      return { e, d, lx, ly, ah };
+    });
+    return html`<svg viewBox=${vb} className="dmv9-g" role="img" aria-label=${aria}>
+      ${under}
+      ${ed.map(({ e, d, lx, ly, ah }) => html`<g key=${'e' + e.id} className=${'dmv9-e ' + (ec ? ec(e) : '')} onClick=${onE ? () => onE(e) : null}>
+        <path d=${d} className="ln" />${ah && html`<polygon points=${ah} className="ah" />`}${onE && html`<path d=${d} className="hit" />`}
+        ${e.t && html`<text x=${lx} y=${ly} dy="0.35em" textAnchor="middle">${e.t}</text>`}</g>`)}
+      ${N.map(n => html`<g key=${'n' + n.id} className=${'dmv9-n ' + (onN ? 'tap ' : '') + (nc ? nc(n) : '')} onClick=${onN ? () => onN(n) : null}>
+        <circle cx=${n.x} cy=${n.y} r=${n.r || r} />${(nlab ? nlab(n) : n.t) !== '' && html`<text x=${n.x} y=${n.y} dy="0.35em" textAnchor="middle">${nlab ? nlab(n) : n.t}</text>`}</g>`)}
+      ${extra}
+    </svg>`;
+  }
+  const ring = (n, cx, cy, R, start = -90) => Array.from({ length: n }, (_, k) => { const a = (start + 360 * k / n) * Math.PI / 180; return { x: +(cx + R * Math.cos(a)).toFixed(1), y: +(cy + R * Math.sin(a)).toFixed(1) }; });
+
+  /* ── [0.0–0.1] slide 3: G = (V, E), incident edges ── */
+  const G1N = [{ id: 1, x: 112, y: 35, t: 'v₁' }, { id: 2, x: 190, y: 35, t: 'v₂' }, { id: 3, x: 268, y: 35, t: 'v₃' }, { id: 4, x: 32, y: 108, t: 'v₄' }, { id: 5, x: 114, y: 108, t: 'v₅' }];
+  const G1E = [{ id: 1, u: 1, v: 2, t: 'e₁', lp: [151, 20] }, { id: 2, u: 2, v: 3, t: 'e₂', lp: [229, 20] }, { id: 3, u: 3, v: 5, t: 'e₃', lp: [206, 88] }, { id: 4, u: 1, v: 4, t: 'e₄', lp: [60, 60] }, { id: 5, u: 1, v: 5, t: 'e₅', lp: [129, 72] }, { id: 6, u: 4, v: 5, t: 'e₆', lp: [73, 127] }];
+  function Incident({ ar }) {
+    const steps = [{ en: 'G = (V, E) with V(G) = {v₁, …, v₅} and E(G) = {e₁, …, e₆}: n = |V| = 5 and m = |E| = 6. Tap an edge or a vertex.', ar: 'الـ graph ده فيه:' + L('V(G) = {v₁, …, v₅}, E(G) = {e₁, …, e₆}') + 'يعني:' + L('n = |V| = 5, m = |E| = 6') + 'دوس على أي edge أو vertex.' },
+      ...G1E.map(e => ({ en: `<b>e${SB(e.id)}</b> = (v${SB(e.u)}, v${SB(e.v)}) is incident with v${SB(e.u)} and v${SB(e.v)}.`, ar: `الـ edge ${B('e' + (SB(e.id)) + ' = (v' + (SB(e.u)) + ', v' + (SB(e.v)) + ')')} بيبقى incident مع ${B('v' + SB(e.u))} و ${B('v' + SB(e.v))}.` }))];
+    const [i, ctl] = useSteps(steps.length, 1700), [vx, setVx] = useState(null);
+    useEffect(() => { setVx(null); }, [i]);
+    const cur = i > 0 ? G1E[i - 1] : null;
+    let s = steps[i];
+    if (vx != null) { const inc = G1E.filter(e => e.u === vx || e.v === vx).map(e => e.t).join(', '); s = { en: `The edges incident with <b>v${SB(vx)}</b>: ${inc}.`, ar: `الـ edges الـ incident مع ${B('v' + SB(vx))} هي:` + L(inc) }; }
+    const ec = e => vx != null ? (e.u === vx || e.v === vx ? 'on' : 'dim') : cur ? (e === cur ? 'on' : 'dim') : '';
+    const nc = n => vx != null ? (n.id === vx ? 'on' : '') : cur && (n.id === cur.u || n.id === cur.v) ? 'on' : '';
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 140" N=${G1N} E=${G1E} nc=${nc} ec=${ec} onE=${e => ctl.go(e.id)} onN=${n => { ctl.go(i); setTimeout(() => setVx(n.id), 0); }} aria="Graph G with vertices v1 to v5 and edges e1 to e6" />
+      <p className="dmv9-info dmv9-mono">V(G) = {v₁, …, v₅}, n = 5 · E(G) = {e₁, …, e₆}, m = 6</p>
+    </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.2] slide 3: self-loop and multiple edges vs the simple graph ── */
+  const G2N = [{ id: 1, x: 152, y: 34, t: '1' }, { id: 2, x: 40, y: 100, t: '2' }, { id: 3, x: 136, y: 86, t: '3' }, { id: 4, x: 256, y: 60, t: '4' }, { id: 5, x: 139, y: 152, t: '5' }, { id: 6, x: 244, y: 130, t: '6' }];
+  function Simple({ ar }) {
+    const steps = [
+      { en: 'The slide’s left graph: edges a to i on the vertices 1 to 6. It has a self-loop and two edges between the same pair of vertices.', ar: 'الـ graph اللي على شمال الـ slide فيه الـ edges من a لـ i على الـ vertices من 1 لـ 6. فيه self-loop وفيه 2 edges بين نفس الـ 2 vertices.' },
+      { en: '<b>i</b> is a self-loop: it starts and ends at vertex 4.', ar: 'الـ edge <b>i</b> ده self-loop، بيبدأ وبيخلص عند الـ vertex رقم 4.' },
+      { en: '<b>g</b> and <b>h</b> both join 4 and 6: multiple edges. A graph with multiple edges is a multigraph.', ar: 'الـ <b>g</b> والـ <b>h</b> الاتنين بيوصّلوا 4 و 6، يعني multiple edges. والـ graph اللي فيه multiple edges اسمه multigraph.' },
+      { en: 'Remove the self-loop i and the extra edge h: the slide’s right graph, a <b>simple</b> graph (no self-loops, no multiple edges).', ar: 'لو شلنا الـ self-loop i والـ edge الزيادة h هيطلع الـ graph اللي على يمين الـ slide، وده <b>simple</b> graph (مفيهوش self-loops ولا multiple edges).' }];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    const E = [{ id: 'a', u: 2, v: 1, t: 'a', lp: [88, 56] }, { id: 'b', u: 1, v: 4, t: 'b', lp: [206, 34] }, { id: 'c', u: 2, v: 3, t: 'c', lp: [92, 108] }, { id: 'd', u: 3, v: 4, t: 'd', lp: [194, 62] }, { id: 'e', u: 2, v: 5, t: 'e', lp: [80, 142] }, { id: 'f', u: 5, v: 6, t: 'f', lp: [194, 157] },
+      { id: 'g', u: 4, v: 6, t: 'g', bend: i >= 3 ? 0 : 13, side: 1 }, { id: 'h', u: 4, v: 6, t: 'h', bend: -15 }, { id: 'i', u: 4, v: 4, t: 'i', la: -55 }];
+    const ec = e => (i >= 3 && (e.id === 'h' || e.id === 'i')) ? 'gone' : (i === 1 && e.id === 'i') || (i === 2 && (e.id === 'g' || e.id === 'h')) ? 'on' : i === 3 ? 'ok' : '';
+    const nc = n => (i === 1 || i === 2) && n.id === 4 ? 'on' : i === 2 && n.id === 6 ? 'on' : '';
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 172" N=${G2N} E=${E} r=${14} nc=${nc} ec=${ec} aria="A graph with a self-loop i and multiple edges g and h, then the simple graph without them" />
+      <p className="dmv9-info"><b>${i >= 3 ? 'simple graph' : 'multigraph'}</b></p>
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [0.3–0.5] degrees and the handshake proposition (graph of the lecture example) ── */
+  const G7N = [{ id: 1, x: 110, y: 42, t: '1' }, { id: 2, x: 52, y: 112, t: '2' }, { id: 3, x: 152, y: 178, t: '3' }, { id: 4, x: 248, y: 132, t: '4' }, { id: 5, x: 252, y: 46, t: '5' }];
+  const G7E = [[1, 4], [2, 5], [2, 3], [3, 5], [3, 4], [4, 5]];
+  const LET = 'abcdefghijkl';
+  const G7LP = { a: [220, 99], b: [98, 84], c: [92, 156], d: [197, 139], e: [208, 168], f: [264, 89] };
+  function withBends(list) {
+    const seen = {}, cnt = {};
+    list.forEach(([u, v]) => { const k = Math.min(u, v) + '-' + Math.max(u, v); cnt[k] = (cnt[k] || 0) + 1; });
+    return list.map(([u, v], j) => { const k = Math.min(u, v) + '-' + Math.max(u, v), m = seen[k] = (seen[k] || 0) + 1, c = cnt[k]; const off = u === v ? 0 : (m - 1 - (c - 1) / 2) * 24 * (u < v ? 1 : -1); return { id: j, u, v, t: LET[j], bend: off, la: u === v ? null : undefined }; });
+  }
+  function Handshake({ ar }) {
+    const [E, setE] = useState(G7E), [sel, setSel] = useState(null), [msg, setMsg] = useState(null);
+    const deg = G7N.map(n => E.reduce((s, [u, v]) => s + (u === n.id ? 1 : 0) + (v === n.id ? 1 : 0), 0));
+    const m = E.length, sum = deg.reduce((a, b) => a + b, 0), odd = deg.filter(d => d % 2).length, iso = G7N.filter((n, k) => deg[k] === 0).map(n => n.t);
+    const tapN = n => { setMsg(null); if (sel == null) { setSel(n.id); return; } if (m >= 12) { setMsg('full'); setSel(null); return; } setE(E.concat([[sel, n.id]])); setSel(null); };
+    const tapE = e => { setMsg(null); setSel(null); setE(E.filter((_, j) => j !== e.id)); };
+    let s;
+    if (sel != null) s = { en: `Vertex ${sel} chosen: tap a second vertex for an edge, or ${sel} again for a self-loop.`, ar: `اخترت الـ vertex رقم ${B(sel)}. دوس على vertex تاني علشان تعمل edge، أو على نفس الـ vertex تاني علشان تعمل self-loop.` };
+    else if (msg === 'full') s = { en: 'At most 12 edges here. Tap an edge to remove it.', ar: 'هنا أقصى حاجة 12 edge. دوس على edge علشان تشيله.' };
+    else if (!m) s = { en: 'The null graph N₅: 5 vertices and no edges. Every vertex is isolated (degree 0), and Σ d(v) = 0 = 2 × 0.', ar: 'ده الـ null graph <bdi dir="ltr">N₅</bdi>، فيه 5 vertices ومفيهوش ولا edge. كل الـ vertices الـ isolated (الـ degree بتاعها صفر)، والمجموع:' + L('Σ d(v) = 0 = 2 × 0') };
+    else s = { en: `Σ d(v) = ${sum} = 2 × ${m} = 2m: every edge is counted twice, at both ends (a self-loop adds 2 to its vertex). ${odd} vertices have odd degree: an even number.${iso.length ? ` Isolated (degree 0): ${iso.join(', ')}.` : ''}`,
+      ar: `مجموع الـ degrees:${L('Σ d(v) = ' + (sum) + ' = 2 × ' + (m) + ' = 2m')}لأن كل edge بيتعد مرتين، مرة عند كل طرف (والـ self-loop بيزوّد الـ vertex بتاعه 2). عدد الـ vertices اللي الـ degree بتاعها odd هو ${B(odd)}، وده عدد زوجي.${iso.length ? ` والـ vertices الـ isolated (الـ degree بتاعها صفر) هي:${L(iso.join(', '))}` : ''}` };
+    const isEx = m === 6 && E.every((p, j) => p[0] === G7E[j][0] && p[1] === G7E[j][1]);
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${[['ex', 'Example from the notes'], ['null', 'Null graph N₅']]} mode=${isEx ? 'ex' : !m ? 'null' : ''} set=${k => { setSel(null); setMsg(null); setE(k === 'ex' ? G7E : []); }} />
+      <${GSvg} vb="0 0 300 215" N=${G7N} E=${withBends(E).map((e, j) => j < 6 && E[j][0] === G7E[j][0] && E[j][1] === G7E[j][1] ? { ...e, lp: G7LP[LET[j]] } : e)} nc=${n => (sel === n.id ? 'sel ' : '') + (deg[n.id - 1] === 0 ? 'dim' : '')} onN=${tapN} onE=${tapE} aria="Graph of the lecture example; tap two vertices to add an edge, tap an edge to remove it" />
+      <p className="dmv9-mut dmv9-c" style=${{ margin: '2px 0 0' }}>Tap two vertices: new edge · same vertex twice: self-loop · tap an edge: remove it</p>
+      <div className="dmv9-tw"><table className="dmv9-tb"><tbody>
+        <tr><th>v</th>${G7N.map(n => html`<th key=${n.id}>${n.t}</th>`)}</tr>
+        <tr><th>d(v)</th>${deg.map((d, k) => html`<td key=${k} className=${d % 2 ? 'odd' : ''}>${d}</td>`)}</tr></tbody></table></div>
+      <p className="dmv9-big">Σ d(v) = ${deg.join(' + ')} = ${sum} = 2 × ${m}</p>
+      <p className="dmv9-info">odd degree: <b>${odd}</b> vertices ${odd % 2 === 0 ? '(even ✓)' : ''}</p>
+    </div></div><${Cap} ...${s} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [0.6] slide 4: the Königsberg bridges become a graph ── */
+  const KN = [{ id: 'A', x: 150, y: 100, t: 'A' }, { id: 'B', x: 150, y: 180, t: 'B' }, { id: 'C', x: 150, y: 22, t: 'C' }, { id: 'D', x: 272, y: 100, t: 'D' }];
+  const KE = [{ id: 'a', u: 'A', v: 'B', t: 'a', bend: 22 }, { id: 'b', u: 'A', v: 'B', t: 'b', bend: -22 }, { id: 'c', u: 'A', v: 'C', t: 'c', bend: -22 }, { id: 'd', u: 'A', v: 'C', t: 'd', bend: 22 },
+    { id: 'e', u: 'A', v: 'D', t: 'e', side: -1 }, { id: 'f', u: 'B', v: 'D', t: 'f', bend: 18 }, { id: 'g', u: 'C', v: 'D', t: 'g', bend: -18 }];
+  const KDEG = { A: 5, B: 3, C: 3, D: 3 };
+  function Konigsberg({ ar }) {
+    const steps = [
+      { en: 'The slide’s map of Königsberg: four land areas A, B, C, D and seven bridges a to g.', ar: 'خريطة Königsberg اللي في الـ slide فيها 4 مناطق أرض A و B و C و D، و 7 كباري من a لـ g.' },
+      { en: 'Each land area becomes a vertex.', ar: 'كل منطقة أرض بتبقى vertex.' },
+      { en: 'Each bridge becomes an edge: a and b join A and B, c and d join A and C, e joins A and D, f joins B and D, g joins C and D (a multigraph).', ar: 'كل كوبري بيبقى edge. الـ a والـ b بيوصّلوا A بـ B، والـ c والـ d بيوصّلوا A بـ C، والـ e بيوصّل A بـ D، والـ f بيوصّل B بـ D، والـ g بيوصّل C بـ D (يعني multigraph).' },
+      { en: 'Degrees (bridges touching each area): d(A) = 5, d(B) = 3, d(C) = 3, d(D) = 3.', ar: 'الـ degrees (عدد الكباري اللي بتلمس كل منطقة):' + L('d(A) = 5, d(B) = 3, d(C) = 3, d(D) = 3') },
+      { en: 'Handshake check: 5 + 3 + 3 + 3 = 14 = 2 × 7 bridges. All 4 vertices have odd degree: 4 is even, as the corollary says.', ar: 'نتأكد من الـ handshake:' + L('5 + 3 + 3 + 3 = 14 = 2 × 7') + 'والـ 4 vertices كلهم الـ degree بتاعهم odd، و 4 عدد زوجي زي ما الـ corollary بيقول.' }];
+    const [i, ctl] = useSteps(steps.length, 2400);
+    const riv = i >= 2 ? .35 : 1, br = i >= 2 ? 0 : 1;
+    const bars = [['c', 118, 50, 118, 76, 104, 40], ['d', 182, 50, 182, 76, 196, 40], ['a', 118, 124, 118, 150, 104, 162], ['b', 182, 124, 182, 150, 196, 162], ['e', 203, 100, 229, 100, 216, 117], ['g', 254, 38, 266, 60, 276, 32], ['f', 254, 162, 266, 140, 276, 168]];
+    const under = html`<g className="dmv9-fade" style=${{ opacity: riv }}>
+        <path className="dmv9-riv" d="M0,100 C40,100 50,63 100,63 L216,63 C246,63 262,48 300,40" />
+        <path className="dmv9-riv" d="M0,100 C40,100 50,137 100,137 L216,137 C246,137 262,152 300,160" />
+        <path className="dmv9-riv" d="M216,60 L216,140" /></g>
+      <g className="dmv9-fade" style=${{ opacity: br }}>${bars.map(([t, x1, y1, x2, y2, lx, ly]) => html`<g key=${t}><line className="dmv9-brg" x1=${x1} y1=${y1} x2=${x2} y2=${y2} /><text className="dmv9-lb2" x=${lx} y=${ly} dy="0.35em" textAnchor="middle">${t}</text></g>`)}</g>
+      ${i === 0 && KN.map(n => html`<text key=${n.id} className="dmv9-lb" x=${n.x} y=${n.y} dy="0.35em" textAnchor="middle">${n.t}</text>`)}`;
+    const N = i === 0 ? [] : KN;
+    const extra = i >= 3 && html`<g>${KN.map(n => html`<text key=${n.id} className="dmv9-bd" x=${n.x + (n.id === 'D' ? -2 : n.id === 'A' ? 26 : -26)} y=${n.y + (n.id === 'D' ? -26 : n.id === 'A' ? -14 : 0)} dy="0.35em" textAnchor="middle">${KDEG[n.id]}</text>`)}</g>`;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 200" N=${N} E=${i >= 2 ? KE : []} r=${13} under=${under} extra=${extra} nc=${() => i >= 3 ? 'on' : ''} aria="Königsberg: four land areas and seven bridges turned into a graph" />
+      ${i >= 3 && html`<div className="dmv9-tw"><table className="dmv9-tb"><tbody><tr><th>v</th>${KN.map(n => html`<th key=${n.id}>${n.t}</th>`)}<th>Σ</th></tr>
+        <tr><th>d(v)</th>${KN.map(n => html`<td key=${n.id} className="odd">${KDEG[n.id]}</td>`)}<td>${i >= 4 ? '14 = 2 × 7' : ''}</td></tr></tbody></table></div>`}
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.0] slide 5: complete graphs K_n, edges drawn one by one ── */
+  function Complete({ ar }) {
+    const [n, setN] = useState(5);
+    const P = ring(n, 150, 108, 86), N = P.map((p, k) => ({ id: k, ...p })), all = [];
+    for (let a = 0; a < n; a++) for (let b = a + 1; b < n; b++) all.push({ id: a + '-' + b, u: a, v: b });
+    const tot = all.length, [c, replay] = useCount(tot, Math.max(160, 1800 / tot), n), E = all.slice(0, c);
+    const deg = N.map(x => E.filter(e => e.u === x.id || e.v === x.id).length);
+    const K = 'K' + SB(n);
+    const s = c < tot ? { en: `Drawing ${K}: edge ${c} of ${tot}. The number in each vertex is its degree so far.`, ar: `بنرسم الـ ${B(K)}، وصلنا لـ edge رقم ${B(c)} من ${B(tot)}. الرقم اللي جوه كل vertex هو الـ degree بتاعه لحد دلوقتي.` }
+      : { en: `${K} has all B(${n}, 2) = ${n}(${n} − 1)/2 = <b>${tot}</b> edges. Every vertex has degree ${n} − 1 = <b>${n - 1}</b>: ${K} is (n − 1)-regular.`, ar: `الـ ${B(K)} فيه كل الـ edges الممكنة:${L('B(' + (n) + ', 2) = ' + (n) + '(' + (n) + ' − 1)/2 = ' + (tot))}وكل vertex الـ degree بتاعه ${B((n) + ' − 1 = ' + (n - 1))}، يعني الـ ${B(K)} هو ${B('(n − 1)-regular')}.` };
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${[2, 3, 4, 5, 6, 7].map(k => [k, 'K' + SB(k)])} mode=${n} set=${setN} />
+      <${GSvg} vb="0 0 300 206" N=${N} E=${all} ec=${e => E.some(x => x.id === e.id) ? (c === tot ? '' : (E[E.length - 1].id === e.id ? 'on' : '')) : 'gone'} nlab=${x => String(deg[x.id])} nc=${x => deg[x.id] === n - 1 ? 'ok' : ''} aria=${'Complete graph ' + K} />
+      <p className="dmv9-big">|E| = ${c} / ${tot}</p>
+    </div></div><${Cap} ...${s} showAr=${ar} /><div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${replay}>↻ Replay</button></div></figure>`;
+  }
+
+  /* ── Petersen graph: drawing 1 of slide 16 (also slide 5) ── */
+  const PD1 = [[558, 175], [872, 372], [744, 568], [370, 568], [240, 372], [558, 272], [744, 372], [650, 470], [465, 470], [370, 372]];
+  const PE = []; for (let k = 0; k < 5; k++) PE.push([k, (k + 1) % 5], [k, 5 + k], [5 + k, 5 + (k + 2) % 5]);
+  function fitPts(pts, X0 = 30, X1 = 270, Y0 = 20, Y1 = 206) {
+    const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]), mnx = Math.min(...xs), mxx = Math.max(...xs), mny = Math.min(...ys), mxy = Math.max(...ys);
+    const s = Math.min((X1 - X0) / (mxx - mnx), (Y1 - Y0) / (mxy - mny)), ox = (X0 + X1) / 2 - s * (mnx + mxx) / 2, oy = (Y0 + Y1) / 2 - s * (mny + mxy) / 2;
+    return pts.map(p => ({ x: +(ox + s * p[0]).toFixed(1), y: +(oy + s * p[1]).toFixed(1) }));
+  }
+  function Petersen({ ar }) {
+    const steps = [
+      { en: 'The slide’s k-regular example: the Petersen graph, 10 vertices. Tap a vertex to see its edges.', ar: 'مثال الـ slide على الـ k-regular هو الـ Petersen graph، وفيه 10 vertices. دوس على أي vertex علشان تشوف الـ edges بتاعته.' },
+      { en: 'Every vertex has exactly 3 incident edges: all degrees are equal to 3, so the Petersen graph is <b>3-regular</b>.', ar: 'كل vertex عليه 3 edges بالظبط، يعني كل الـ degrees بتساوي 3، وعلشان كده الـ Petersen graph هو <b>3-regular</b>.' },
+      { en: 'Handshake: Σ d(v) = 10 × 3 = 30 = 2m, so it has m = 15 edges.', ar: 'ومن الـ handshake:' + L('Σ d(v) = 10 × 3 = 30 = 2m') + 'يعني فيه 15 edge.' }];
+    const [i, ctl] = useSteps(steps.length, 2400), [v, setV] = useState(null);
+    const P = fitPts(PD1), N = P.map((p, k) => ({ id: k, ...p })), E = PE.map(([a, b], k) => ({ id: k, u: a, v: b }));
+    const nb = v == null ? [] : E.filter(e => e.u === v || e.v === v).map(e => e.u === v ? e.v : e.u);
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 226" N=${N} E=${E} r=${12} nlab=${() => i >= 1 ? '3' : ''} nc=${x => x.id === v ? 'on' : nb.includes(x.id) ? 'ok' : ''} ec=${e => v == null ? '' : e.u === v || e.v === v ? 'on' : 'dim'} onN=${x => setV(x.id === v ? null : x.id)} aria="Petersen graph, every vertex of degree 3" />
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [1.2–1.3] slides 7–8: which graph is bipartite? colour the vertices ── */
+  const BPN1 = [[115, 35], [188, 35], [40, 92], [260, 92], [115, 150], [188, 150]], BPN2 = [[40, 35], [260, 35], [40, 149], [260, 149], [113, 92], [187, 92]];
+  const BPG = [
+    { N: BPN1, E: [[0, 1], [0, 2], [1, 3], [2, 4], [3, 5], [4, 5], [2, 3], [0, 5], [1, 4]], ans: [1, 0, 0, 1, 1, 0] },
+    { N: BPN2, E: [[0, 1], [0, 2], [1, 3], [2, 3], [0, 4], [2, 4], [4, 5], [5, 1], [5, 3]], tri: [5, 1, 3] },
+    { N: BPN2, E: [[0, 1], [0, 2], [1, 3], [2, 3], [0, 4], [4, 5], [5, 1], [4, 3], [2, 5]], ans: [1, 0, 0, 1, 0, 1] }];
+  function Bipartite({ ar }) {
+    const [g, setG] = useState(0), [col, setCol] = useState([[0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0]]), [tri, setTri] = useState(false);
+    const G = BPG[g], c = col[g], any = c.some(x => x);
+    const N = G.N.map(([x, y], k) => ({ id: k, x, y, t: '' })), E = G.E.map(([u, v], k) => ({ id: k, u, v }));
+    const good = E.filter(e => c[e.u] !== c[e.v]).length, m = E.length;
+    const inTri = e => G.tri && G.tri.includes(e.u) && G.tri.includes(e.v);
+    const flip = n => { setTri(false); setCol(col.map((cc, k) => k === g ? cc.map((x, j) => j === n.id ? 1 - x : x) : cc)); };
+    const answer = () => { if (G.tri) { setTri(true); return; } setCol(col.map((cc, k) => k === g ? G.ans.slice() : cc)); };
+    let s;
+    if (tri) s = { en: 'Graph 2 has a <b>triangle</b> (an odd cycle). Its 3 corners are joined to each other, so 2 colours can never separate all 3 edges: graph 2 is <b>not bipartite</b>.', ar: 'الـ graph رقم 2 فيه <b>triangle</b> (يعني odd cycle). الـ 3 أركان بتوعه متوصلين ببعض، فمستحيل لونين يفصلوا الـ 3 edges، وعلشان كده الـ graph رقم 2 <b>مش bipartite</b>.' };
+    else if (!any) s = { en: 'Which graph is bipartite? Tap vertices to colour them black or white. It suffices to find 2 colours that separate the edges: every edge joins a black and a white vertex.', ar: 'أنهي graph فيهم bipartite؟ دوس على الـ vertices علشان تلوّنها أسود أو أبيض. يكفي إنك تلاقي لونين يفصلوا الـ edges، يعني كل edge يوصّل vertex أسود بـ vertex أبيض.' };
+    else if (good === m) s = { en: `All ${m} edges join two different colours: V₁ = black, V₂ = white, and no edge stays inside V₁ or V₂. This graph is <b>bipartite</b>.`, ar: `كل الـ ${B(m)} edges بتوصّل بين لونين مختلفين. الـ ${B('V₁')} هي الأسود والـ ${B('V₂')} هي الأبيض، ومفيش edge جوه ${B('V₁')} ولا جوه ${B('V₂')}. يبقى الـ graph ده <b>bipartite</b>.` };
+    else s = { en: `${good} of ${m} edges join two different colours. The red dashed edges join two vertices of the same colour.${G.tri ? ' (Graph 2: try it, then press “Slide’s answer”.)' : ''}`, ar: `فيه ${B(good)} من ${B(m)} edges بيوصّلوا بين لونين مختلفين. الـ edges الحمرا المتقطعة بتوصّل 2 vertices من نفس اللون.${G.tri ? ' (جرّب الـ graph رقم 2 وبعدين دوس على إجابة الـ slide.)' : ''}` };
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${[[0, 'Graph 1'], [1, 'Graph 2'], [2, 'Graph 3']]} mode=${g} set=${k => { setG(k); setTri(false); }} />
+      <${GSvg} vb="0 0 300 186" N=${N} E=${E} r=${13} nc=${n => (c[n.id] ? 'blk' : '') + (tri && G.tri.includes(n.id) ? ' bad' : '')} ec=${e => tri ? (inTri(e) ? 'bad' : 'dim') : !any ? '' : c[e.u] !== c[e.v] ? 'ok' : 'bad'} onN=${flip} aria=${'Graph ' + (g + 1) + ' of the slide; tap vertices to colour them'} />
+      <p className="dmv9-info"><b>${good} / ${m}</b> edges join two colours ${any && good === m ? html`<span className="dmv9-okt">✓ bipartite</span>` : ''}</p>
+      <div className="dmv9-row"><button className="fig-btn solid" onClick=${answer}>Slide’s answer</button><button className="fig-btn" onClick=${() => { setTri(false); setCol(col.map((cc, k) => k === g ? cc.map(() => 0) : cc)); }}>Clear</button></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [1.4] slide 6: complete bipartite K_{n1,n2} ── */
+  function KBip({ ar }) {
+    const [n1, setN1] = useState(3), [n2, setN2] = useState(4);
+    const row = (k, y) => Array.from({ length: k }, (_, j) => ({ x: +(150 + (j - (k - 1) / 2) * Math.min(60, 240 / Math.max(1, k - 1))).toFixed(1), y }));
+    const N = [...row(n1, 36).map((p, j) => ({ id: 'a' + j, ...p })), ...row(n2, 168).map((p, j) => ({ id: 'b' + j, ...p }))];
+    const all = []; for (let a = 0; a < n1; a++) for (let b = 0; b < n2; b++) all.push({ id: a + '-' + b, u: 'a' + a, v: 'b' + b });
+    const tot = all.length, [c, replay] = useCount(tot, Math.max(120, 1600 / tot), n1 * 10 + n2), shown = new Set(all.slice(0, c).map(e => e.id));
+    const deg = id => all.slice(0, c).filter(e => e.u === id || e.v === id).length;
+    const K = `K${SB(n1)},${SB(n2)}`, reg = n1 === n2;
+    const s = c < tot ? { en: `Drawing ${K}: every vertex of V₁ (top) is joined to every vertex of V₂ (bottom). Edge ${c} of ${tot}.`, ar: `بنرسم الـ ${B(K)}، كل vertex في ${B('V₁')} (فوق) بيتوصّل بكل vertex في ${B('V₂')} (تحت). وصلنا لـ edge رقم ${B(c)} من ${B(tot)}.` }
+      : { en: `|E| = |V₁|·|V₂| = ${n1} × ${n2} = <b>${tot}</b>. Vertices of V₁ have degree ${n2}, vertices of V₂ have degree ${n1}: ${reg ? `equal, so ${K} is <b>${n1}-regular</b> (n₁ = n₂).` : `not equal, so ${K} is <b>not regular</b> (regular exactly when n₁ = n₂).`}`,
+        ar: `عدد الـ edges:${L('|E| = |V₁|·|V₂| = ' + (n1) + ' × ' + (n2) + ' = ' + (tot))}الـ vertices اللي في ${B('V₁')} الـ degree بتاعها ${B(n2)}، واللي في ${B('V₂')} الـ degree بتاعها ${B(n1)}. ${reg ? `متساويين، يبقى الـ ${B(K)} هو ${B(n1 + '-regular')} (لأن ${B('n₁ = n₂')}).` : `مش متساويين، يبقى الـ ${B(K)} <b>مش regular</b> (بيبقى regular بالظبط لما ${B('n₁ = n₂')}).`}` };
+    const Step = ({ lab, v, set }) => html`<span className="dmv9-row" style=${{ margin: 0 }}><b className="dmv9-mono">${lab} = ${v}</b><button className="fig-btn" aria-label=${'decrease ' + lab} disabled=${v <= 1} onClick=${() => set(v - 1)}>−</button><button className="fig-btn" aria-label=${'increase ' + lab} disabled=${v >= 5} onClick=${() => set(v + 1)}>+</button></span>`;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <div className="dmv9-row" style=${{ margin: '0 0 8px', gap: '6px 16px' }}><${Step} lab="n₁" v=${n1} set=${setN1} /><${Step} lab="n₂" v=${n2} set=${setN2} /></div>
+      <${GSvg} vb="0 0 300 204" N=${N} E=${all} r=${13} ec=${e => shown.has(e.id) ? '' : 'gone'} nlab=${x => String(deg(x.id))} nc=${x => x.id[0] === 'a' ? 'on' : 'blk'} aria=${'Complete bipartite graph ' + K} />
+      <p className="dmv9-big">${K}: |E| = ${c} / ${tot}</p>
+      <div className="dmv9-row"><button className="fig-btn" onClick=${() => { setN1(3); setN2(4); }}>Slide’s picture (3 and 4)</button></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /><div className="fig-bar"><span className="grow"></span><button className="fig-btn" onClick=${replay}>↻ Replay</button></div></figure>`;
+  }
+
+  /* ── [2.0–2.3] slide 9: walks, trails, paths, cycles on the slide's graph G ── */
+  const WN = [{ id: 1, x: 26, y: 36 }, { id: 2, x: 159, y: 26 }, { id: 3, x: 100, y: 76 }, { id: 4, x: 90, y: 148 }, { id: 5, x: 146, y: 165 }, { id: 6, x: 186, y: 124 }, { id: 7, x: 242, y: 150 }, { id: 8, x: 274, y: 80 }].map(n => ({ ...n, t: String(n.id) }));
+  const WE = [[1, 2], [1, 3], [1, 4], [2, 3], [2, 6], [2, 8], [3, 8], [3, 4], [3, 5], [4, 5], [5, 6], [6, 7], [7, 8]];
+  const wk = (a, b) => Math.min(a, b) + '-' + Math.max(a, b), WADJ = new Set(WE.map(([a, b]) => wk(a, b)));
+  const WPRE = [['path', 'Slide’s path', [2, 3, 4, 5, 6, 7, 8]], ['walk', 'A walk', [1, 3, 4, 3, 8]], ['trail', 'A trail', [3, 1, 4, 3, 5, 4]], ['cycle', 'A cycle', [2, 3, 5, 6, 2]]];
+  function Walk({ ar }) {
+    const [w, setW] = useState(WPRE[0][2]), [note, setNote] = useState(null);
+    const k = w.length - 1, ek = w.slice(1).map((x, j) => wk(w[j], x));
+    const trail = new Set(ek).size === ek.length, path = new Set(w).size === w.length, closed = k >= 1 && w[0] === w[k], cycle = closed && k >= 3 && new Set(w.slice(0, k)).size === k;
+    const rep = !trail ? ek.find((e, j) => ek.indexOf(e) !== j) : null, repV = !path ? w.find((x, j) => w.indexOf(x) !== j && !(closed && j === k)) : null;
+    const canCut = k >= 1 && !closed && !path;
+    const tap = n => { setNote(null); if (!w.length) return setW([n.id]); const last = w[w.length - 1]; if (n.id === last) return setW(w.slice(0, -1)); if (!WADJ.has(wk(last, n.id))) return setNote({ en: `${n.id} is not adjacent to ${last}: a walk only moves along edges.`, ar: `الـ node رقم ${B(n.id)} مش جنب الـ node رقم ${B(last)}، والـ walk بيمشي على الـ edges بس.` }); if (w.length >= 13) return; setW(w.concat(n.id)); };
+    const cut = () => { let a = -1, b = -1; for (let j = 0; j < w.length && a < 0; j++) { const l = w.lastIndexOf(w[j]); if (l > j) { a = j; b = l; } } if (a < 0) return; const sub = w.slice(a, b + 1); setW(w.slice(0, a + 1).concat(w.slice(b + 1))); setNote({ en: `Removed the subcycle ${sub.join(' → ')} (length ${b - a}). The walk still goes from ${w[0]} to ${w[k]}.`, ar: `شلنا الـ subcycle ده (طوله ${B(b - a)}):${L(sub.join(' → '))}ولسه الـ walk رايح من ${B(w[0])} لـ ${B(w[k])}.` }); };
+    const lab = {}; ek.forEach((e, j) => { lab[e] = (lab[e] ? lab[e] + ',' : '') + (j + 1); });
+    const E = WE.map(([a, b]) => ({ id: wk(a, b), u: a, v: b, t: lab[wk(a, b)] || '' }));
+    let s;
+    if (note) s = note;
+    else if (k < 1) s = { en: w.length ? `v₀ = ${w[0]}. Tap a neighbour to walk along an edge (tap the last node to undo).` : 'Tap a node to start a walk.', ar: w.length ? `الـ ${B('v₀ = ' + w[0])}. دوس على node جنبه علشان تمشي على edge (ولو دوست على آخر node بيتشال).` : 'دوس على أي node علشان تبدأ walk.' };
+    else if (cycle) s = { en: `v₀ = v${SB(k)} = ${w[0]} and all other nodes are different: a <b>cycle</b> of length ${k}.`, ar: `هنا ${B('v₀ = v' + (SB(k)) + ' = ' + (w[0]))} وباقي الـ nodes كلها مختلفة، يبقى ده <b>cycle</b> طوله ${B(k)}.` };
+    else if (closed) s = { en: `v₀ = v${SB(k)} = ${w[0]}: a <b>closed</b> ${trail ? 'trail' : 'walk'} of length ${k}${repV != null ? `, not a cycle (node ${repV} repeats)` : ''}.`, ar: `هنا ${B('v₀ = v' + (SB(k)) + ' = ' + (w[0]))}، يبقى ده ${trail ? 'trail' : 'walk'} <b>closed</b> طوله ${B(k)}${repV != null ? `، بس مش cycle لأن الـ node رقم ${B(repV)} اتكرر` : ''}.` };
+    else if (path) s = { en: `All ${k + 1} nodes are different: a <b>path</b> of length ${k} (so its edges are different too).`, ar: `كل الـ nodes مختلفة (عددها ${B(k + 1)})، يبقى ده <b>path</b> طوله ${B(k)} (وبالتالي الـ edges كمان مختلفة).` };
+    else if (trail) s = { en: `All edges are different but node ${repV} repeats: a <b>trail</b>, not a path. Lemma: a walk from u to v ≠ u contains a path: press “Eliminate a subcycle”.`, ar: `كل الـ edges مختلفة بس الـ node رقم ${B(repV)} اتكرر، يبقى ده <b>trail</b> ومش path. الـ Lemma بتقول إن أي walk من u لـ ${B('v ≠ u')} جواه path، دوس على الزرار اللي بيشيل الـ subcycle.` };
+    else s = { en: `The edge {${rep.replace('-', ', ')}} is used twice: only a <b>walk</b>, not a trail. Lemma: it contains a path from ${w[0]} to ${w[k]}: press “Eliminate a subcycle”.`, ar: `الـ edge ${B('{' + (rep.replace('-', ', ')) + '}')} اتمشى عليه مرتين، يبقى ده <b>walk</b> بس ومش trail. والـ Lemma بتقول إن جواه path من ${B(w[0])} لـ ${B(w[k])}، دوس على الزرار اللي بيشيل الـ subcycle.` };
+    const Tag = ({ on, t }) => html`<span className=${'dmv9-tag ' + (on ? 'yes' : 'no')}>${t}</span>`;
+    const cur = (WPRE.find(p => p[2].join() === w.join()) || [''])[0];
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${WPRE.map(p => [p[0], p[1]])} mode=${cur} set=${key => { setNote(null); setW(WPRE.find(p => p[0] === key)[2]); }} />
+      <${GSvg} vb="0 0 300 188" N=${WN} E=${E} r=${13} ec=${e => e.t ? 'on' : ''} nc=${n => (n.id === w[w.length - 1] ? 'sel ' : '') + (w.includes(n.id) ? 'on' : '')} onN=${tap} aria="The slide's graph G; tap nodes to build a walk" />
+      <p className="dmv9-big">${w.length ? w.join(' → ') : '·'}</p>
+      <p className="dmv9-info dmv9-mono">k = ${Math.max(k, 0)} edges · ${w.length} nodes v₀ … v${SB(Math.max(k, 0))} (|V| = |E| + 1)</p>
+      <div className="dmv9-tags"><${Tag} on=${k >= 1} t="walk" /><${Tag} on=${k >= 1 && trail} t="trail" /><${Tag} on=${k >= 1 && path} t="path" /><${Tag} on=${closed} t="closed" /><${Tag} on=${cycle} t="cycle" /></div>
+      <div className="dmv9-row"><button className="fig-btn solid" disabled=${!canCut} onClick=${cut}>Eliminate a subcycle</button><button className="fig-btn" disabled=${!w.length} onClick=${() => { setNote(null); setW(w.slice(0, -1)); }}>Undo</button><button className="fig-btn" onClick=${() => { setNote(null); setW([]); }}>Clear</button></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [2.3] slide 10: a closed walk of odd length contains an odd cycle ── */
+  const OP = { P0: [15, 106], P1: [45, 40], X: [97, 40], P3: [72, 106], Q1: [156, 40], W: [178, 73], Q3: [156, 106], Q4: [98, 106], R1: [206, 40], Y: [234, 73], R3: [206, 106], S1: [260, 40], S2: [286, 73], S3: [260, 106] };
+  const OW = ['P0', 'P1', 'X', 'Q1', 'W', 'R1', 'Y', 'S1', 'S2', 'S3', 'Y', 'R3', 'W', 'Q3', 'Q4', 'X', 'P3', 'P0'];
+  const OPART = { par: ['P0', 'P1', 'X', 'P3'], pen: ['X', 'Q1', 'W', 'Q3', 'Q4'], dia: ['W', 'R1', 'Y', 'R3', 'S1', 'S2', 'S3'] };
+  function OddWalk({ ar }) {
+    const steps = [
+      { en: 'The slide’s closed walk goes once around every piece and comes back to its start: length 4 + 5 + 4 + 4 = <b>17</b>, odd.', ar: 'الـ closed walk اللي في الـ slide بيلف مرة على كل جزء ويرجع لأوله، وطوله:' + L('4 + 5 + 4 + 4 = 17') + 'وده odd.' },
+      { en: 'The walk passes <b>w</b> twice: split it there into two closed walks of lengths 8 (right) and 9 (left). 8 + 9 = 17 is odd, so one part is odd: keep the 9.', ar: 'الـ walk بيعدّي على <b>w</b> مرتين، فنقسمه عندها لـ 2 closed walks، طولهم 8 (يمين) و 9 (شمال). وبما إن المجموع 17 odd يبقى واحد منهم odd، فناخد الـ 9.' },
+      { en: 'The 9 still repeats the corner shared by the two left pieces: split again into 4 (even) and 5 (odd). Keep the 5.', ar: 'الـ 9 لسه بيعدّي مرتين على الركن المشترك بين الجزئين اللي على الشمال، فنقسمه تاني لـ 4 (even) و 5 (odd)، وناخد الـ 5.' },
+      { en: 'The 5 repeats no node: it is a <b>cycle of odd length 5</b> inside the closed walk of odd length 17. Hint of the slide: decompose recursively and use induction.', ar: 'الـ 5 مفيهوش أي node متكرر، يبقى ده <b>cycle طوله odd</b> (5) جوه الـ closed walk اللي طوله 17. وده الـ hint بتاع الـ slide: نقسّم recursively ونستخدم الـ induction.' }];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    const N = Object.entries(OP).map(([id, [x, y]]) => ({ id, x, y, t: '', r: id === 'W' || id === 'X' ? 6 : 4.5 }));
+    const E = OW.slice(1).map((v, j) => ({ id: j, u: OW[j], v }));
+    const part = e => OPART.dia.includes(e.u) && OPART.dia.includes(e.v) ? 'dia' : OPART.par.includes(e.u) && OPART.par.includes(e.v) ? 'par' : 'pen';
+    const ec = e => { const p = part(e); if (i === 0) return 'on'; if (i === 1) return p === 'dia' ? 'dim' : 'on'; if (i === 2) return p === 'pen' ? 'on' : 'dim'; return p === 'pen' ? 'ok' : 'dim'; };
+    const nc = n => 'dot ' + ((i === 1 && n.id === 'W') || (i === 2 && n.id === 'X') ? 'on' : '');
+    const len = ['17', '9 + 8', '5 + 4', '5'][i];
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 126" N=${N} E=${E} r=${4.5} nc=${nc} ec=${ec} extra=${html`<text className="dmv9-lb2" x="178" y="54" dy="0.35em" textAnchor="middle">w</text>`} aria="A closed walk of odd length split at repeated nodes until an odd cycle remains" />
+      <p className="dmv9-big">length ${len}</p>
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [3.0–3.1] slide 11: digraph, source / terminal, in- and out-degree ── */
+  const DN = [{ id: 1, x: 106, y: 38, t: 'v₁' }, { id: 2, x: 192, y: 38, t: 'v₂' }, { id: 3, x: 272, y: 38, t: 'v₃' }, { id: 4, x: 28, y: 140, t: 'v₄' }, { id: 5, x: 106, y: 140, t: 'v₅' }];
+  const DE = [{ id: 1, u: 1, v: 2, side: -1 }, { id: 2, u: 2, v: 3, bend: -11 }, { id: 3, u: 3, v: 2, bend: -11 }, { id: 4, u: 3, v: 5, bend: -22 }, { id: 5, u: 4, v: 1, bend: -16 }, { id: 6, u: 1, v: 5, bend: -10 }, { id: 7, u: 5, v: 1, bend: -10 }, { id: 8, u: 4, v: 5, side: 1 }];
+  function Digraph({ ar }) {
+    const [flip, setFlip] = useState([]), [sel, setSel] = useState(null);
+    const E = DE.map(e => flip.includes(e.id) ? { ...e, u: e.v, v: e.u, t: 'e' + SB(e.id) } : { ...e, t: 'e' + SB(e.id) });
+    const din = DN.map(n => E.filter(e => e.v === n.id).length), dout = DN.map(n => E.filter(e => e.u === n.id).length);
+    const off = DN.filter((n, k) => din[k] !== dout[k]).map(n => n.t), bal = !off.length;
+    const se = sel != null ? E.find(e => e.id === sel) : null;
+    let s;
+    if (se) s = { en: `<b>e${SB(se.id)}</b> = (v${SB(se.u)}, v${SB(se.v)}): v${SB(se.u)} is the <b>source</b> node and v${SB(se.v)} the <b>terminal</b> node. It adds 1 to d_out(v${SB(se.u)}) and 1 to d_in(v${SB(se.v)}).`, ar: `الـ ${B('e' + (SB(se.id)) + ' = (v' + (SB(se.u)) + ', v' + (SB(se.v)) + ')')}، الـ ${B('v' + SB(se.u))} هو الـ <b>source</b> node والـ ${B('v' + SB(se.v))} هو الـ <b>terminal</b> node. الـ edge ده بيزوّد ${B('d_out(v' + (SB(se.u)) + ')')} بواحد و ${B('d_in(v' + (SB(se.v)) + ')')} بواحد.` };
+    else s = { en: `Σ d_in = Σ d_out = ${E.length}. ${bal ? 'd_in(v) = d_out(v) for every node: the graph is <b>balanced</b>.' : `Not balanced: d_in and d_out differ at ${off.join(', ')}.`} Tap an edge to see its source and terminal; “Reverse” turns it around.`, ar: `مجموع الـ in-degrees بيساوي مجموع الـ out-degrees:${L('Σ d_in = Σ d_out = ' + (E.length))}${bal ? 'وكل node عنده ' + B('d_in(v) = d_out(v)') + '، يبقى الـ graph <b>balanced</b>.' : 'والـ graph <b>مش balanced</b>، لأن الـ in-degree مش بيساوي الـ out-degree عند:' + L(off.join(', '))}دوس على أي edge علشان تشوف الـ source والـ terminal بتوعه، وزرار الـ Reverse بيقلب اتجاهه.` };
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 172" N=${DN} E=${E} dir=${true} ec=${e => sel == null ? '' : e.id === sel ? 'on' : 'dim'} nc=${n => se ? (n.id === se.u ? 'on' : n.id === se.v ? 'ok' : '') : ''} onE=${e => setSel(e.id === sel ? null : e.id)} aria="Digraph with nodes v1 to v5 and edges e1 to e8" />
+      <div className="dmv9-tw"><table className="dmv9-tb"><tbody>
+        <tr><th>v</th>${DN.map(n => html`<th key=${n.id}>${n.t}</th>`)}</tr>
+        <tr><th>d_in</th>${din.map((d, k) => html`<td key=${k} className=${se && DN[k].id === se.v ? 'cur' : ''}>${d}</td>`)}</tr>
+        <tr><th>d_out</th>${dout.map((d, k) => html`<td key=${k} className=${se && DN[k].id === se.u ? 'cur' : ''}>${d}</td>`)}</tr>
+        <tr><th>=</th>${DN.map((n, k) => html`<td key=${k} className=${din[k] === dout[k] ? 'ok' : 'bad'}>${din[k] === dout[k] ? '✓' : '✗'}</td>`)}</tr></tbody></table></div>
+      <p className="dmv9-info">${bal ? html`<span className="dmv9-okt">balanced</span>` : html`<span className="dmv9-warn">not balanced</span>`}</p>
+      <div className="dmv9-row"><button className="fig-btn solid" disabled=${sel == null} onClick=${() => setFlip(flip.includes(sel) ? flip.filter(x => x !== sel) : flip.concat(sel))}>Reverse ${sel != null ? 'e' + SB(sel) : 'edge'}</button><button className="fig-btn" disabled=${!flip.length && sel == null} onClick=${() => { setFlip([]); setSel(null); }}>Slide’s digraph</button></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /></figure>`;
+  }
+
+  /* ── slide 12 graph (nodes 0..5) and slide 15 labels (v1..v6) ── */
+  const TPOS = { 0: [40, 160], 1: [40, 36], 2: [150, 36], 3: [260, 36], 4: [150, 160], 5: [260, 160] };
+  const TE = [[0, 1], [0, 2], [0, 3], [0, 4], [1, 2], [1, 4], [2, 4], [2, 5], [3, 5], [4, 5]];
+  const TN = Object.entries(TPOS).map(([id, [x, y]]) => ({ id: +id, x, y, t: id }));
+  const EXTRA = { id: 'x', u: 5, v: 0, bend: -36 };
+
+  /* ── [4.0] slide 12: is f_ord a topological order? ── */
+  const FIND = [0, 3, 1, 2, 4, 5];
+  function TopOrder({ ar }) {
+    const [ord, setOrd] = useState(FIND);
+    const f = {}; ord.forEach((v, k) => { f[v] = k + 1; });
+    const E = TE.map(([u, v], k) => ({ id: k, u, v }));
+    const both = E.filter(e => f[e.u] && f[e.v]), bad = both.filter(e => f[e.u] > f[e.v]), full = ord.length === 6;
+    const tap = n => { if (f[n.id]) setOrd(ord.slice(0, f[n.id] - 1)); else setOrd(ord.concat(n.id)); };
+    let s;
+    if (bad.length) s = { en: `Edge (${bad[0].u}, ${bad[0].v}) has f_ord(${bad[0].u}) = ${f[bad[0].u]} > f_ord(${bad[0].v}) = ${f[bad[0].v]}: this is not a topological order. Tap a node to undo from there.`, ar: `الـ edge ${B('(' + (bad[0].u) + ', ' + (bad[0].v) + ')')} فيه:${L('f_ord(' + (bad[0].u) + ') = ' + (f[bad[0].u]) + ' > f_ord(' + (bad[0].v) + ') = ' + (f[bad[0].v]))}يبقى ده مش topological order. دوس على أي node علشان ترجع من عنده.` };
+    else if (full) s = { en: 'f_ord(i) &lt; f_ord(j) for all 10 edges (i, j): a <b>topological order</b>. This one is the order FindTopOrd finds (slide 15).', ar: 'الشرط ' + B('f_ord(i) &lt; f_ord(j)') + ' متحقق لكل الـ 10 edges، يبقى ده <b>topological order</b>. وده نفس الترتيب اللي الـ FindTopOrd بيطلّعه (slide 15).' };
+    else s = { en: `Tap the nodes in order: the first gets f_ord = 1, the next 2, and so on. Every edge (i, j) needs f_ord(i) &lt; f_ord(j). ${ord.length} of 6 numbered.`, ar: `دوس على الـ nodes بالترتيب، أول واحد ياخد ${B('f_ord = 1')} واللي بعده 2 وهكذا. وكل edge ${B('(i, j)')} لازم يحقق ${B('f_ord(i) &lt; f_ord(j)')}. اترقّم ${B(ord.length)} من 6.` };
+    const extra = html`<g>${TN.filter(n => f[n.id]).map(n => html`<text key=${n.id} className="dmv9-bd" x=${n.x + (n.id === 0 ? 0 : 0)} y=${n.y < 100 ? n.y - 25 : n.y + 26} dy="0.35em" textAnchor="middle">f=${f[n.id]}</text>`)}</g>`;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 -6 300 202" N=${TN} E=${E} dir=${true} nc=${n => f[n.id] ? 'on' : ''} ec=${e => f[e.u] && f[e.v] ? (f[e.u] < f[e.v] ? 'ok' : 'bad') : ''} onN=${tap} extra=${extra} aria="The slide 12 digraph with nodes 0 to 5; tap nodes to number them" />
+      <p className="dmv9-info"><b>${both.length - bad.length} / 10</b> edges with f_ord(i) ${'<'} f_ord(j) ${full && !bad.length ? html`<span className="dmv9-okt">✓</span>` : ''}</p>
+      <div className="dmv9-row"><button className="fig-btn solid" onClick=${() => setOrd(FIND)}>FindTopOrd’s order</button><button className="fig-btn" onClick=${() => setOrd([])}>Clear</button></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [4.1] slide 14: why an acyclic graph has a node with zero in-degree (follow predecessors) ── */
+  function PredChain({ ar }) {
+    const [x, setX] = useState(true);
+    const E = TE.map(([u, v], k) => ({ id: k, u, v })).concat(x ? [EXTRA] : []);
+    const din = TN.map(n => E.filter(e => e.v === n.id).length);
+    const chain = [4]; if (x) { while (true) { const c = chain[chain.length - 1], p = Math.min(...E.filter(e => e.v === c).map(e => e.u)); chain.push(p); if (chain.indexOf(p) < chain.length - 1) break; } }
+    const rep = chain[chain.length - 1], cyc = chain.slice(chain.indexOf(rep));
+    const steps = x ? [
+      { en: 'Assume d_in(v) &gt; 0 for every node. Here the slide 12 graph gets one extra edge (5, 0), and now every node has a predecessor p(i) with (p(i), i) ∈ E. Start anywhere: v₀ = 4.', ar: 'نفترض إن ' + B('d_in(v) &gt; 0') + ' لكل الـ nodes. هنا زوّدنا على graph الـ slide 12 الـ edge ' + B('(5, 0)') + '، فبقى لكل node فيه predecessor:' + L('(p(i), i) ∈ E') + 'ونبدأ من أي node، مثلًا ' + B('v₀ = 4') + '.' },
+      ...chain.slice(1).map((v, j) => j + 2 < chain.length
+        ? { en: `v${SB(j + 1)} = p(v${SB(j)}) = ${v}, because (${v}, ${chain[j]}) ∈ E.`, ar: `ناخد الـ predecessor:${L('v' + (SB(j + 1)) + ' = p(v' + (SB(j)) + ') = ' + (v) + ', (' + (v) + ', ' + (chain[j]) + ') ∈ E')}` }
+        : { en: `v${SB(j + 1)} = p(v${SB(j)}) = ${v}: node ${v} was already visited. Since |V| is bounded this must happen, and it closes a cycle ${cyc.slice().reverse().join(' → ')}. So a graph where every node has d_in &gt; 0 is not acyclic.`, ar: `ناخد ${B('v' + (SB(j + 1)) + ' = p(v' + (SB(j)) + ') = ' + (v))}، والـ node ده زرناه قبل كده. ولأن ${B('|V|')} محدود لازم ده يحصل، وبيقفل cycle:${L(cyc.slice().reverse().join(' → '))}يعني لو كل node عنده ${B('d_in &gt; 0')} يبقى الـ graph مش acyclic.` })]
+      : [{ en: 'In the slide’s graph node 0 has d_in(0) = 0: the graph is acyclic and, as the proposition says, it has a node with zero in-degree. FindTopOrd starts there.', ar: 'في الـ graph بتاع الـ slide الـ node رقم 0 عنده ' + B('d_in(0) = 0') + '، والـ graph ده acyclic، وزي ما الـ proposition بتقول فيه node الـ in-degree بتاعه صفر. والـ FindTopOrd بيبدأ منه.' }];
+    const [i, ctl] = useWalk(steps.length, 2200, x);
+    const seen = x ? chain.slice(0, i + 1) : [], last = i === steps.length - 1 && x;
+    const used = new Set(); for (let j = 1; j < seen.length; j++) used.add(seen[j] + '>' + seen[j - 1]);
+    const inCyc = e => last && cyc.some((c, j) => j > 0 && e.u === c && e.v === cyc[j - 1]);
+    const ec = e => inCyc(e) ? 'ok' : used.has(e.u + '>' + e.v) ? 'on' : x && i > 0 ? 'dim' : '';
+    const nc = n => last && cyc.includes(n.id) ? 'ok' : seen.includes(n.id) ? 'on' : !x && n.id === 0 ? 'ok' : '';
+    const extra = html`<g>${TN.map(n => html`<text key=${n.id} className="dmv9-bd" x=${n.x + (n.x > 200 ? -2 : 2)} y=${n.y < 100 ? n.y - 25 : n.y + 26} dy="0.35em" textAnchor="middle">${'d=' + din[n.id]}</text>`)}</g>`;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${[[true, 'Every d_in > 0 (extra edge 5 → 0)'], [false, 'Slide’s graph']]} mode=${x} set=${setX} />
+      <${GSvg} vb="0 0 300 222" N=${TN} E=${E} dir=${true} nc=${nc} ec=${ec} extra=${extra} aria="Following predecessors from node 4 until a node repeats" />
+      <p className="dmv9-mut dmv9-c" style=${{ margin: '2px 0 0' }}>d = in-degree</p>
+      ${x && html`<p className="dmv9-big">${chain.slice(0, i + 1).map((v, j) => `v${SB(j)} = ${v}`).join(' → ')}</p>`}
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── [4.2–4.3] slides 13 and 15: FindTopOrd step by step ── */
+  const VN = TN.map(n => ({ ...n, t: 'v' + SB({ 0: 4, 1: 1, 2: 2, 3: 3, 4: 5, 5: 6 }[n.id]) }));
+  const VL = id => VN.find(n => n.id === id).t;
+  function FindTop({ ar }) {
+    const [mode, setMode] = useState('ex'), [rem, setRem] = useState([]), [x, setX] = useState(false);
+    const [i, ctl] = useWalk(8, 1900, mode);
+    const cyc = mode === 'try' && x;
+    const E = TE.map(([u, v], k) => ({ id: k, u, v })).concat(cyc ? [EXTRA] : []);
+    const R = mode === 'ex' ? FIND.slice(0, Math.min(i, 6)) : rem, t = R.length;
+    const live = TN.filter(n => !R.includes(n.id)).map(n => n.id);
+    const din = id => E.filter(e => e.v === id && !R.includes(e.u)).length;
+    const cand = live.filter(id => din(id) === 0), done = !cand.length;
+    const names = a => a.map(VL).join(', ');
+    let s;
+    if (mode === 'ex' && i === 7 || mode === 'try' && done && t === 6) s = { en: `t = 6 = n: G is <b>acyclic</b>, and the final order {${names(R)}} is a topological order. With an in-degree counter and a queue of in-degree-0 nodes, each node and edge is handled once: the algorithm is linear, O(n + m).`, ar: `هنا ${B('t = 6 = n')}، يبقى G هو <b>acyclic</b>، والترتيب النهائي ده topological order:${L('{' + (names(R)) + '}')}وباستخدام counter للـ in-degree و queue للـ nodes اللي الـ in-degree بتاعها صفر، كل node وكل edge بيتعامل معاهم مرة واحدة، يعني الـ algorithm ده linear:${L('O(n + m)')}` };
+    else if (done) s = { en: `No node of G${t ? SB(t) : '⁰'} has in-degree 0, and t = ${t} &lt; n = 6: G <b>has a cycle</b> (the extra edge v₆ → v₄ closes a cycle).`, ar: `مفيش ولا node الـ in-degree بتاعه صفر، و ${B('t = ' + (t) + ' &lt; n = 6')}، يبقى G <b>فيه cycle</b> (الـ edge الزيادة ${B('v₆ → v₄')} هو اللي قفل الـ cycle).` };
+    else if (t === 0) s = { en: `t := 0, G⁰ := G. In-degrees are in the table: ${cand.length === 1 ? `the only node of in-degree 0 is ${names(cand)}` : `in-degree 0: ${names(cand)}`}.${mode === 'try' ? ' Tap a green node to remove it.' : ''}`, ar: `في الأول ${B('t := 0')} و ${B('G⁰ := G')}. الـ in-degrees في الجدول، والـ nodes اللي الـ in-degree بتاعها صفر:${L(names(cand))}${mode === 'try' ? 'دوس على node أخضر علشان تشيله.' : ''}` };
+    else { const v = R[t - 1]; s = { en: `Remove ${VL(v)}: order(${VL(v)}) := ${t}, t := ${t}. ${t === 2 && v === 3 && mode === 'ex' ? '(v₁ and v₃ both had in-degree 0; the slide picks v₃.) ' : ''}In-degree 0 now: ${names(cand)}.`, ar: `نشيل ${B(VL(v))}، فيبقى ${B('order(' + (VL(v)) + ') := ' + (t))} و ${B('t := ' + (t))}. ${t === 2 && v === 3 && mode === 'ex' ? '(الـ v₁ والـ v₃ الاتنين كان الـ in-degree بتاعهم صفر، والـ slide اختارت v₃.) ' : ''}الـ nodes اللي الـ in-degree بتاعها بقى صفر:${L(names(cand))}` }; }
+    const tap = n => { if (mode !== 'try' || !cand.includes(n.id)) return; setRem(rem.concat(n.id)); };
+    const badge = html`<g>${R.map((id, k) => { const n = VN.find(q => q.id === id); return html`<text key=${id} className="dmv9-bd" x=${n.x} y=${n.y < 100 ? n.y - 25 : n.y + 26} dy="0.35em" textAnchor="middle">${'order ' + (k + 1)}</text>`; })}</g>`;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${[['ex', 'Example from the notes'], ['try', 'Try your own']]} mode=${mode} set=${k => { setMode(k); setRem([]); }} />
+      <${GSvg} vb="0 0 300 222" N=${VN} E=${E} dir=${true} nc=${n => t === 6 ? 'ok' : R.includes(n.id) ? 'dim' : cand.includes(n.id) ? 'ok' : ''} ec=${e => t === 6 ? 'ok' : R.includes(e.u) ? 'gone' : e.id === 'x' ? 'on' : ''} onN=${mode === 'try' ? tap : null} extra=${badge} aria="FindTopOrd on the slide 15 digraph: remove a node of in-degree 0 each step" />
+      <div className="dmv9-tw"><table className="dmv9-tb"><tbody>
+        <tr><th>v</th>${[1, 2, 3, 0, 4, 5].map(id => html`<th key=${id}>${VL(id)}</th>`)}</tr>
+        <tr><th>d_in</th>${[1, 2, 3, 0, 4, 5].map(id => R.includes(id) ? html`<td key=${id} className="done">·</td>` : html`<td key=${id} className=${din(id) === 0 ? 'ok' : ''}>${din(id)}</td>`)}</tr></tbody></table></div>
+      <p className="dmv9-big">t = ${t} · {${names(R)}}</p>
+      ${mode === 'try' && html`<div className="dmv9-row"><button className="fig-btn" aria-pressed=${String(x)} onClick=${() => { setX(!x); setRem([]); }}>${x ? 'Remove' : 'Add'} edge v₆ → v₄</button><button className="fig-btn" onClick=${() => setRem([])}>Restart</button></div>`}
+    </div></div><${Cap} ...${s} showAr=${ar} />${mode === 'ex' && html`<${Bar} steps=${Array(8).fill(0)} i=${i} ctl=${ctl} />`}</figure>`;
+  }
+
+  /* ── [5.0–5.1] slide 16: four drawings of the same graph (isomorphic) ── */
+  const PD = [
+    null,
+    { pos: { T: [1188, 175], UL: [1000, 272], UM: [1188, 272], UR: [1375, 272], C: [1188, 370], ML: [1095, 470], MR: [1283, 470], LL: [1000, 568], LR: [1375, 568], B: [1188, 668] }, map: ['T', 'UL', 'MR', 'C', 'UM', 'UR', 'LL', 'LR', 'ML', 'B'], curve: { 'UL|MR': 26, 'UR|ML': -26, 'UM|B': -30 } },
+    { pos: { T: [578, 62], UL: [358, 180], UR: [795, 180], L: [250, 293], R: [905, 293], IL: [468, 408], IR: [688, 408], LL: [358, 522], LR: [795, 522], B: [578, 638] }, map: ['T', 'UL', 'L', 'R', 'UR', 'B', 'IL', 'LL', 'LR', 'IR'], curve: {} },
+    { pos: { T: [575, 40], UL: [262, 205], UR: [885, 205], L: [105, 368], R: [1045, 368], C: [575, 535], ML: [262, 697], MR: [885, 697], BL: [420, 860], BR: [730, 860] }, map: ['T', 'UL', 'L', 'R', 'UR', 'C', 'BR', 'ML', 'MR', 'BL'], curve: {} }];
+  function Iso({ ar }) {
+    const [d, setD] = useState(1), [t, setT] = useState(0), tr = useRef(0), raf = useRef(0);
+    tr.current = t;
+    const go = to => { cancelAnimationFrame(raf.current); if (calm()) { setT(to); return; } const t0 = performance.now(), from = tr.current; const f = now => { const p = Math.min(1, (now - t0) / 1500), e = p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2; setT(from + (to - from) * e); if (p < 1) raf.current = requestAnimationFrame(f); }; raf.current = requestAnimationFrame(f); };
+    useEffect(() => { const id = setTimeout(() => go(1), 900); return () => { clearTimeout(id); cancelAnimationFrame(raf.current); }; }, []);
+    const A = fitPts(PD1), D = PD[d], Bp = fitPts(D.map.map(k => D.pos[k]));
+    const N = A.map((p, k) => ({ id: k, x: +(p.x + (Bp[k].x - p.x) * t).toFixed(1), y: +(p.y + (Bp[k].y - p.y) * t).toFixed(1), t: String(k + 1) }));
+    const E = PE.map(([a, b], k) => { const ka = D.map[a], kb = D.map[b], c = D.curve[ka + '|' + kb], c2 = D.curve[kb + '|' + ka]; return { id: k, u: a, v: b, bend: ((c != null ? c : c2 != null ? -c2 : 0) * t) }; });
+    const at = t > .99;
+    const s = at ? { en: `Drawing ${d + 1} of the slide, with the same labels: the 15 edges of drawing 1 are exactly the 15 edges here. This numbering is the bijection, so the drawings are <b>isomorphic</b>. Finding such a numbering in general is the hard part (the slide: “NP hard”).`, ar: `ده الرسم رقم ${B(d + 1)} في الـ slide بنفس الأرقام، والـ 15 edge بتوع الرسم الأول هما نفس الـ 15 edge هنا. الترقيم ده هو الـ bijection، يبقى الرسمتين <b>isomorphic</b>. والصعب في العموم هو إنك تلاقي ترقيم زي ده (الـ slide بتقول "NP hard").` }
+      : { en: `Drawing 1 (the Petersen graph) with its vertices numbered 1 to 10. Watch them move to drawing ${d + 1}: every vertex keeps its number and every edge keeps its two ends.`, ar: `ده الرسم الأول (الـ Petersen graph) والـ vertices مترقمة من 1 لـ 10. بص عليهم وهما بيتحركوا للرسم رقم ${B(d + 1)}، كل vertex بيفضل برقمه وكل edge بيفضل بنفس الطرفين.` };
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${Modes} list=${[[1, 'Drawing 2'], [2, 'Drawing 3'], [3, 'Drawing 4']]} mode=${d} set=${k => { setD(k); cancelAnimationFrame(raf.current); setT(0); tr.current = 0; setTimeout(() => go(1), 350); }} />
+      <${GSvg} vb="0 0 300 226" N=${N} E=${E} r=${12} nc=${() => at ? 'on' : ''} aria=${'Drawing 1 of the slide morphing into drawing ' + (d + 1)} />
+      <div className="dmv9-row"><button className="fig-btn solid" onClick=${() => go(t > .5 ? 0 : 1)}>${t > .5 ? '◀ Back to drawing 1' : `▶ Morph to drawing ${d + 1}`}</button></div>
+    </div></div><${Cap} ...${s} showAr=${ar} /></figure>`;
+  }
+
+  /* ── [7] and [8]: the lecture's adjacency and incidence matrices, built edge by edge ── */
+  const MAT = {
+    und: { N: G7N, vb: '0 0 300 200',
+      E: [['a', 1, 4], ['b', 2, 5], ['c', 2, 3], ['d', 3, 5], ['e', 3, 4], ['f', 4, 5]], A: 'A₁', T: 'T₁' },
+    dir: { N: [{ id: 1, x: 40, y: 34, t: '1' }, { id: 2, x: 260, y: 34, t: '2' }, { id: 3, x: 260, y: 148, t: '3' }, { id: 4, x: 40, y: 148, t: '4' }], vb: '0 0 300 182',
+      E: [['e₁', 1, 3], ['e₂', 4, 2], ['e₃', 4, 3], ['e₄', 3, 2], ['e₅', 2, 1]], A: 'A₂', T: 'T₂' } };
+  const LP = { ...G7LP, 'e₁': [118, 80], 'e₂': [186, 80], 'e₃': [150, 164], 'e₄': [276, 91], 'e₅': [150, 20] };
+  const fmt = v => v < 0 ? '−1' : String(v);
+  function Mats({ ar, kind }) {
+    const G = MAT[kind], di = kind === 'dir', n = G.N.length, m = G.E.length;
+    const steps = m + 2;
+    const [i, ctl] = useSteps(steps, 1700);
+    const k = Math.min(i, m), cur = i >= 1 && i <= m ? G.E[i - 1] : null, have = G.E.slice(0, k);
+    const A = (r, c) => have.some(([, u, v]) => (u === r && v === c) || (!di && u === c && v === r)) ? 1 : 0;
+    const T = (r, j) => { if (j >= k) return 0; const [, u, v] = G.E[j]; return u === r ? (di ? -1 : 1) : v === r ? 1 : 0; };
+    const ids = G.N.map(x => x.id).sort((a, b) => a - b);
+    const hlA = (r, c) => cur && ((cur[1] === r && cur[2] === c) || (!di && cur[1] === c && cur[2] === r));
+    const hlT = (r, j) => cur && j === i - 1 && (cur[1] === r || cur[2] === r);
+    const E = G.E.map(([t, u, v]) => ({ id: t, u, v, t, lp: LP[t] }));
+    const deg = ids.map(r => ids.reduce((s, c) => s + A(r, c), 0));
+    const lists = ids.map(r => have.filter(e => e[1] === r).map(e => e[2]).sort((a, b) => a - b));
+    let s;
+    if (i === 0) s = di ? { en: 'The lecture’s digraph: 4 vertices, edges e₁ to e₅. A₂ is 4 × 4 and T₂ is 4 × 5; we fill them edge by edge (tap an edge to jump to it).', ar: 'الـ digraph بتاع المحاضرة فيه 4 vertices والـ edges من ' + B('e₁') + ' لـ ' + B('e₅') + '. الـ ' + B('A₂') + ' حجمها ' + B('4 × 4') + ' والـ ' + B('T₂') + ' حجمها ' + B('4 × 5') + '، وهنملاهم edge edge (دوس على أي edge علشان تروحله).' }
+      : { en: 'The lecture’s undirected graph: 5 vertices, edges a to f. A₁ is 5 × 5 and T₁ is 5 × 6; we fill them edge by edge (tap an edge to jump to it).', ar: 'الـ undirected graph بتاع المحاضرة فيه 5 vertices والـ edges من a لـ f. الـ ' + B('A₁') + ' حجمها ' + B('5 × 5') + ' والـ ' + B('T₁') + ' حجمها ' + B('5 × 6') + '، وهنملاهم edge edge (دوس على أي edge علشان تروحله).' };
+    else if (cur) { const [t, u, v] = cur; s = di ? { en: `${t} = (${u} → ${v}): A₂(${u}, ${v}) = 1 only (direction matters). In column ${t} of T₂: −1 at the source ${u}, +1 at the terminal ${v}.`, ar: `الـ edge ${B((t) + ' = (' + (u) + ' → ' + (v) + ')')} بيحط ${B('A₂(' + (u) + ', ' + (v) + ') = 1')} بس (الاتجاه مهم). وفي عمود ${B(t)} في الـ ${B('T₂')} بنحط ${B('−1')} عند الـ source ${B(u)} و ${B('+1')} عند الـ terminal ${B(v)}.` }
+      : { en: `${t} = (${u}, ${v}): A₁(${u}, ${v}) = A₁(${v}, ${u}) = 1 (A₁ is symmetric), and column ${t} of T₁ gets 1 in rows ${u} and ${v}.`, ar: `الـ edge ${B((t) + ' = (' + (u) + ', ' + (v) + ')')} بيحط 1 في ${B('A₁(' + (u) + ', ' + (v) + ')')} وفي ${B('A₁(' + (v) + ', ' + (u) + ')')} (لأن الـ ${B('A₁')} symmetric)، وعمود ${B(t)} في الـ ${B('T₁')} بياخد 1 في الصفين ${B(u)} و ${B(v)}.` }; }
+    else s = di ? { en: 'Done: A₂ and T₂ as in the notes. Organised by source node, the list of edges is V(1) = {3}, V(2) = {1}, V(3) = {2}, V(4) = {2, 3}.', ar: 'خلصنا، والـ ' + B('A₂') + ' والـ ' + B('T₂') + ' طلعوا زي الـ notes. ولو نظّمنا الـ edges حسب الـ source node تبقى الـ list of edges:' + L('V(1) = {3}, V(2) = {1}, V(3) = {2}, V(4) = {2, 3}') }
+      : { en: 'Done: A₁ and T₁ as in the notes. Each row sum of A₁ (= ones in a row of T₁) is the degree: 1, 2, 3, 3, 3, sum 12 = 2 × 6 edges ✓.', ar: 'خلصنا، والـ ' + B('A₁') + ' والـ ' + B('T₁') + ' طلعوا زي الـ notes. مجموع كل صف في الـ ' + B('A₁') + ' (يعني عدد الـ 1 في نفس الصف في الـ ' + B('T₁') + ') هو الـ degree:' + L('1, 2, 3, 3, 3 → 12 = 2 × 6') };
+    const MatA = html`<table className="dmv9-tb"><caption>${G.A}</caption><tbody><tr><th></th>${ids.map(c => html`<th key=${c}>${c}</th>`)}${!di && i === steps - 1 ? html`<th>d</th>` : null}</tr>
+      ${ids.map(r => html`<tr key=${r}><th>${r}</th>${ids.map(c => html`<td key=${c} className=${(A(r, c) ? '' : 'zero ') + (hlA(r, c) ? 'cur' : '')}>${A(r, c)}</td>`)}${!di && i === steps - 1 ? html`<td className="odd">${deg[ids.indexOf(r)]}</td>` : null}</tr>`)}</tbody></table>`;
+    const MatT = html`<table className="dmv9-tb"><caption>${G.T}</caption><tbody><tr><th></th>${G.E.map(([t]) => html`<th key=${t}>${t}</th>`)}</tr>
+      ${ids.map(r => html`<tr key=${r}><th>${r}</th>${G.E.map(([t], j) => html`<td key=${t} className=${(T(r, j) ? '' : 'zero ') + (hlT(r, j) ? 'cur' : '')}>${fmt(T(r, j))}</td>`)}</tr>`)}</tbody></table>`;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb=${G.vb} N=${G.N} E=${E} dir=${di} ec=${e => cur ? (e.id === cur[0] ? 'on' : have.some(h => h[0] === e.id) ? '' : 'dim') : (i === 0 ? 'dim' : '')} nc=${x => cur && (x.id === cur[1] || x.id === cur[2]) ? 'on' : ''} onE=${e => ctl.go(G.E.findIndex(q => q[0] === e.id) + 1)} aria=${di ? 'The lecture digraph with edges e1 to e5' : 'The lecture graph with edges a to f'} />
+      <div className="dmv9-mats">${MatA}${MatT}</div>
+      ${di && html`<div className="dmv9-c"><div className="dmv9-list">${ids.map((r, j) => html`<div key=${r} className=${cur && cur[1] === r ? 'cur' : ''}>V(${r}) = ${lists[j].length ? `{${lists[j].join(', ')}}` : '∅'}</div>`)}</div></div>`}
+    </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${Array(steps).fill(0)} i=${i} ctl=${ctl} /></figure>`;
+  }
+  const MatsUnd = ({ ar }) => html`<${Mats} ar=${ar} kind="und" />`, MatsDir = ({ ar }) => html`<${Mats} ar=${ar} kind="dir" />`;
+
+  /* ── [6.2–6.3] slide 19: list of edges organised by nodes, size (n + m) log n ── */
+  const LN = [{ id: 5, x: 40, y: 36, t: '5' }, { id: 1, x: 150, y: 36, t: '1' }, { id: 2, x: 262, y: 94, t: '2' }, { id: 4, x: 40, y: 152, t: '4' }, { id: 3, x: 150, y: 152, t: '3' }];
+  const LE = [{ id: 0, u: 5, v: 1 }, { id: 1, u: 1, v: 2, bend: -16 }, { id: 2, u: 2, v: 3, bend: -16 }, { id: 3, u: 1, v: 3 }, { id: 4, u: 5, v: 3 }, { id: 5, u: 5, v: 4 }, { id: 6, u: 3, v: 4 }];
+  function EdgeList({ ar }) {
+    const steps = [
+      { en: 'The slide’s digraph: n = 5 nodes, m = 7 edges. Instead of a matrix, keep for each node the list of the nodes its edges go to.', ar: 'الـ digraph بتاع الـ slide فيه ' + B('n = 5') + ' nodes و ' + B('m = 7') + ' edges. بدل الـ matrix، بنحتفظ لكل node بـ list فيها الـ nodes اللي الـ edges بتاعته رايحة لها.' },
+      ...[1, 2, 3, 4, 5].map(v => { const out = LE.filter(e => e.u === v).map(e => e.v).sort(); const txt = `V(${v}) = ${out.length ? `{${out.join(', ')}}` : '∅'}`; return { en: `Node ${v}: ${out.length ? `its edges go to ${out.join(', ')}` : 'no edge leaves it'}, so <b>${txt}</b>.`, ar: `الـ node رقم ${B(v)} ${out.length ? 'الـ edges بتاعته رايحة لـ ' + B(out.join(', ')) : 'مفيش ولا edge طالع منه'}، يبقى:${L(txt)}` }; }),
+      { en: 'The lists hold m = 7 entries (one per edge) plus n = 5 heads: the size is linear in m = |E|. Each entry is a vertex pointer of log n bits, so L = (n + m) log n = (5 + 7) log 5 = 12 log 5 bits.', ar: 'الـ lists فيها ' + B('m = 7') + ' عناصر (واحد لكل edge) زائد ' + B('n = 5') + ' بدايات، يعني الحجم linear في ' + B('m = |E|') + '. وكل عنصر هو vertex pointer محتاج ' + B('log n') + ' bits، يبقى:' + L('L = (n + m) log n = (5 + 7) log 5 = 12 log 5') }];
+    const [i, ctl] = useSteps(steps.length, 1900);
+    const v = i >= 1 && i <= 5 ? i : null;
+    return html`<figure className="fig dmv9"><div className="fig-stage"><div className="dmv9-wrap">
+      <${GSvg} vb="0 0 300 182" N=${LN} E=${LE} dir=${true} ec=${e => v == null ? (i === 6 ? 'on' : '') : e.u === v ? 'on' : e.u < v ? '' : 'dim'} nc=${n => n.id === v ? 'on' : ''} aria="The slide 19 digraph with nodes 1 to 5" />
+      <div className="dmv9-c"><div className="dmv9-list">${[1, 2, 3, 4, 5].map(r => { const out = LE.filter(e => e.u === r).map(e => e.v).sort(); return html`<div key=${r} className=${r === v ? 'cur' : (i === 0 || (v != null && r > v)) ? 'later' : ''}>V(${r}) = ${out.length ? `{${out.join(', ')}}` : '∅'}</div>`; })}</div></div>
+      ${i === 6 && html`<p className="dmv9-big">L = (n + m) log n = 12 log 5</p>`}
+    </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'dm-graph-l9-incident': Incident, 'dm-graph-l9-simple': Simple, 'dm-degree-l9-handshake': Handshake, 'dm-degree-l9-konigsberg': Konigsberg,
+    'dm-graph-l9-complete': Complete, 'dm-graph-l9-petersen': Petersen, 'dm-graph-l9-bipartite': Bipartite, 'dm-graph-l9-kbip': KBip,
+    'dm-graph-l9-walk': Walk, 'dm-graph-l9-oddwalk': OddWalk, 'dm-degree-l9-digraph': Digraph, 'dm-graph-l9-toporder': TopOrder,
+    'dm-graph-l9-predchain': PredChain, 'dm-graph-l9-findtopord': FindTop, 'dm-graph-l9-iso': Iso,
+    'dm-graph-l9-edgelist': EdgeList, 'dm-graph-l9-mat-und': MatsUnd, 'dm-graph-l9-mat-dir': MatsDir
+  });
+})();
+/* ── part L10 ── */
+// Discrete Mathematics visuals, Lecture 10 (Graph Matrices): A(G) built from the drawing, its observations and rank, the reduced incidence matrix and spanning trees, F, B(G) and 2-isomorphic graphs, C(G) and C_f, P(u, v), edge sequences and powers of X, connectivity and distance from X, the matrix-tree theorem and the worked triangle (Lec_10_part_1, Figs. 10.1 to 10.13). Every label and number comes from the site's notes and the slides, or is computed by the code with the lecture's definitions.
+(function () {
+  const { useState, useEffect, useRef } = React;
+  const { html, Cap, calm } = window.FIGKIT;
+  const CSS = `
+.dmv10{ --fig-k:var(--k-compiler); --fig-s:var(--s-compiler); }
+.dmv10 .fig-btn:disabled{ opacity:.45; cursor:default; }
+.dmv10 .fig-btn[aria-pressed="true"]{ border-color:var(--k-compiler); box-shadow:0 0 0 1px var(--k-compiler); background:color-mix(in srgb, var(--k-compiler) 16%, var(--paper)); }
+.dmv10-wrap{ max-width:560px; margin:0 auto; color:var(--ink); min-width:0; }
+.dmv10-modes{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin:0 0 10px; }
+.dmv10-modes .fig-btn{ font-size:.84rem; padding:4px 10px; }
+.dmv10-gr{ display:block; width:100%; height:auto; max-width:400px; margin:0 auto 6px; }
+.dmv10-e .dmv10-ln{ fill:none; stroke:var(--graphite); stroke-width:2.2; transition:stroke .3s, stroke-width .3s, opacity .3s; }
+.dmv10-e .dmv10-hit{ fill:none; stroke:transparent; stroke-width:18; cursor:pointer; }
+.fig svg .dmv10-el{ font:600 13px var(--mono); paint-order:stroke; stroke:var(--paper-2); stroke-width:4px; stroke-linejoin:round; fill:var(--graphite); transition:fill .3s, opacity .3s; }
+.fig svg .dmv10-el.dmv10-big{ font-size:15px; }
+.dmv10-e.on .dmv10-ln{ stroke:var(--fig-k); stroke-width:4.5; }
+.fig svg .dmv10-e.on .dmv10-el{ fill:var(--fig-k); }
+.dmv10-e.dim .dmv10-ln{ opacity:.28; } .fig svg .dmv10-e.dim .dmv10-el{ opacity:.5; }
+.dmv10-e.off .dmv10-ln{ stroke-dasharray:5 6; opacity:.5; } .fig svg .dmv10-e.off .dmv10-el{ opacity:.6; }
+.dmv10-e.tr .dmv10-ln{ stroke:var(--ok); stroke-width:4.5; }
+.dmv10-e.cut .dmv10-ln{ stroke:var(--pen); stroke-width:4.5; } .fig svg .dmv10-e.cut .dmv10-el{ fill:var(--pen); }
+.dmv10-v circle{ fill:var(--paper); stroke:var(--ink); stroke-width:1.8; transition:fill .3s, stroke .3s; }
+.fig svg .dmv10-v text{ font:600 13px var(--body); fill:var(--ink); pointer-events:none; }
+.dmv10-v.dmv10-tap{ cursor:pointer; }
+.dmv10-v.on circle{ fill:var(--fig-s); stroke:var(--fig-s); } .fig svg .dmv10-v.on text{ fill:#fff; }
+.dmv10-v.sa circle{ fill:color-mix(in srgb, var(--fig-k) 30%, var(--paper)); stroke:var(--fig-k); stroke-width:2.5; }
+.dmv10-v.sb circle{ fill:color-mix(in srgb, var(--ok) 26%, var(--paper)); stroke:var(--ok); stroke-width:2.5; }
+.dmv10-v.sel circle{ stroke:var(--fig-k); stroke-width:4; }
+.dmv10-v.ref circle{ stroke-dasharray:3 3; fill:var(--paper-2); }
+.dmv10-v.dmv10-dot circle{ fill:var(--ink); stroke:none; }
+.fig svg .dmv10-sg{ font:700 17px var(--mono); }
+.fig svg .dmv10-sg.p{ fill:var(--ok); } .fig svg .dmv10-sg.m{ fill:var(--pen); }
+.dmv10-mw{ max-width:100%; margin:6px auto 4px; min-width:0; }
+.dmv10-mt{ text-align:center; font:700 .88rem/1.3 var(--mono); color:var(--fig-k); margin:4px 0; }
+.dmv10-m{ border-collapse:collapse; margin:0 auto; font:600 .86rem/1.2 var(--mono); background:var(--paper); color:var(--ink); }
+.dmv10-m th, .dmv10-m td{ border:1px solid var(--line); padding:3px 3px; text-align:center; vertical-align:middle; min-width:1.5em; }
+.dmv10-m th{ background:var(--paper-2); font-size:.8rem; }
+.dmv10-m .dmv10-tap{ cursor:pointer; }
+.dmv10-m td.z{ color:var(--graphite); font-weight:400; }
+.dmv10-m td.o{ color:var(--fig-k); font-weight:700; }
+.dmv10-m .hl{ background:color-mix(in srgb, var(--fig-k) 20%, var(--paper)); }
+.dmv10-m th.hl{ background:color-mix(in srgb, var(--fig-k) 28%, var(--paper-2)); }
+.dmv10-m .cur{ box-shadow:inset 0 0 0 2px var(--fig-k); }
+.dmv10-m .ok{ background:color-mix(in srgb, var(--ok) 22%, var(--paper)); }
+.dmv10-m .bad{ background:color-mix(in srgb, var(--pen) 22%, var(--paper)); }
+.dmv10-m .blk{ background:color-mix(in srgb, var(--fig-k) 11%, var(--paper)); }
+.dmv10-m tr.gone td, .dmv10-m tr.gone th{ opacity:.38; text-decoration:line-through; }
+.dmv10-m td.gone, .dmv10-m th.gone{ opacity:.38; }
+.dmv10-m .sep{ border-left:3px double var(--graphite); }
+.dmv10-m .x{ color:var(--graphite); font-weight:700; background:var(--paper-2); }
+.dmv10-m tr.ft td, .dmv10-m tr.ft th{ border-top:2px solid var(--graphite); }
+.dmv10-two{ display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:4px 8px; align-items:start; }
+.dmv10-pair{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:6px; max-width:420px; margin:0 auto; }
+.dmv10-pair .dmv10-gr{ margin:0; }
+.dmv10-chips{ display:flex; flex-wrap:wrap; gap:5px; justify-content:center; align-items:center; margin:6px 0; }
+.dmv10-chips .fig-btn{ font:600 .86rem var(--body); padding:3px 8px; min-height:30px; }
+.dmv10-lbl{ font-size:.84rem; color:var(--graphite); font-weight:600; }
+.dmv10-seq{ text-align:center; font:600 .92rem/1.6 var(--mono); margin:4px 0 6px; overflow-wrap:anywhere; }
+.dmv10-seq .on{ color:var(--fig-k); } .dmv10-seq .dim{ opacity:.35; }
+.dmv10-ver{ text-align:center; font-weight:700; margin:6px 0 0; font-size:.92rem; }
+.dmv10-ver.ok{ color:var(--ok); } .dmv10-ver.bad{ color:var(--pen); }
+.dmv10-thumbs{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:6px; max-width:340px; margin:6px auto 0; }
+.dmv10-thumbs svg{ width:100%; height:auto; border:1px solid var(--line); border-radius:8px; background:var(--paper); display:block; }
+.dmv10-th{ fill:none; stroke:var(--line); stroke-width:6; } .dmv10-th.on{ stroke:var(--fig-k); stroke-width:14; }
+.dmv10-thv{ fill:var(--ink); }
+.dmv10-list{ font:600 .86rem/1.55 var(--mono); text-align:center; margin:4px 0; }
+.dmv10-hint{ text-align:center; font-size:.84rem; color:var(--graphite); margin:4px 0; }
+.dmv10-sbar{ font:600 .84rem var(--mono); color:var(--graphite); }
+`;
+  if (!document.getElementById('dmv10-css')) { const s = document.createElement('style'); s.id = 'dmv10-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  const L = s => `<span class="ltr">${s}</span>`, B = s => `<bdi dir="ltr">${String(s).replace(/ /g, '&nbsp;')}</bdi>`;
+  const MI = '−', fmt = v => v == null ? '' : typeof v === 'string' ? v : v < 0 ? MI + (-v) : String(v);
+  const SUP = ['⁰', '¹', '²', '³', '⁴', '⁵', '⁶'];
+  const set = a => '{' + a.join(', ') + '}';
+  const Modes = ({ list, mode, set: f }) => html`<div className="dmv10-modes" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => f(k)}>${t}</button>`)}</div>`;
+
+  // step walker that jumps to the full result when key changes
+  function useWalk(n, ms, key) {
+    const [i, setI] = useState(calm() ? n - 1 : 0), [play, setPlay] = useState(!calm()), first = useRef(true);
+    useEffect(() => { if (first.current) { first.current = false; return; } setPlay(false); setI(n - 1); }, [key]);
+    useEffect(() => { if (!play) return; if (i >= n - 1) { setPlay(false); return; } const t = setTimeout(() => setI(x => Math.min(x + 1, n - 1)), ms); return () => clearTimeout(t); }, [i, play, n]);
+    const j = Math.max(0, Math.min(i, n - 1));
+    return [j, { replay: () => { setI(0); setPlay(!calm()); }, go: k => { setPlay(false); setI(k); }, end: () => { setPlay(false); setI(n - 1); } }];
+  }
+  const WBar = ({ n, i, ctl, extra }) => html`<div className="fig-bar"><span className="dmv10-sbar">${i + 1} / ${n}</span><span className="grow"></span>${extra || null}
+    <button className="fig-btn" onClick=${() => ctl.go(Math.max(0, i - 1))} disabled=${i === 0} aria-label="Previous step">‹ Back</button>
+    <button className="fig-btn" onClick=${() => ctl.go(Math.min(n - 1, i + 1))} disabled=${i === n - 1} aria-label="Next step">Next ›</button>
+    <button className="fig-btn" onClick=${ctl.replay}>↻ Replay</button></div>`;
+
+  /* ───────── graphs and matrices ───────── */
+  const V_ = (n, x, y) => ({ n, x, y });
+  const E_ = (n, a, b, bend = 0, lx, ly) => ({ n, a, b, bend, lx, ly });
+  // Fig. 10.1(a) = Fig. 10.3 G1 = Fig. 10.10 (edges as in the slides' A(G1))
+  const G1 = { w: 300, h: 188, V: [V_('v1', 105, 158), V_('v2', 105, 48), V_('v3', 20, 48), V_('v4', 205, 48), V_('v5', 205, 158), V_('v6', 280, 48)],
+    E: [E_('e1', 3, 5, -36, 242, 18), E_('e2', 3, 5, 36, 242, 79), E_('e3', 3, 4, 0, 220, 104), E_('e4', 0, 4, 0, 155, 177), E_('e5', 1, 3, 0, 155, 37), E_('e6', 0, 1, 0, 90, 104), E_('e7', 1, 4, 0, 167, 93), E_('e8', 2, 1, 0, 62, 37)] };
+  // Fig. 10.2
+  const G2 = { w: 300, h: 180, V: [V_('v1', 50, 30), V_('v2', 250, 30), V_('v3', 250, 150), V_('v4', 50, 150)],
+    E: [E_('e1', 0, 1, 0, 150, 17), E_('e2', 1, 2, 0, 268, 90), E_('e3', 2, 3, 0, 150, 167), E_('e4', 0, 3, 0, 32, 90), E_('e5', 1, 3, 0, 136, 78)] };
+  G2.E[4].st = 54; // e5's +/− sit further along the diagonal, clear of e1 and e3's marks
+  // Fig. 10.13
+  const G13 = { w: 300, h: 150, V: [V_('v1', 18, 40), V_('v2', 110, 40), V_('v3', 200, 40), V_('v4', 155, 126), V_('v5', 282, 40)],
+    E: [E_('e1', 0, 1, 0, 64, 25), E_('e2', 1, 2, 0, 155, 25), E_('e3', 2, 3, 0, 193, 90), E_('e4', 3, 1, 0, 117, 90), E_('e5', 2, 4, 0, 241, 25)] };
+  // the worked example: triangle
+  const G3 = { w: 300, h: 182, V: [V_('v1', 150, 26), V_('v2', 250, 152), V_('v3', 50, 152)],
+    E: [E_('e1', 0, 1, 0, 215, 80), E_('e2', 1, 2, 0, 150, 169), E_('e3', 0, 2, 0, 85, 80)] };
+
+  function geo(G, e) {
+    const A = G.V[e.a], Z = G.V[e.b], mx = (A.x + Z.x) / 2, my = (A.y + Z.y) / 2, dx = Z.x - A.x, dy = Z.y - A.y, l = Math.hypot(dx, dy) || 1, nx = -dy / l, ny = dx / l;
+    const d = e.bend ? `M${A.x},${A.y} Q${mx + nx * e.bend},${my + ny * e.bend} ${Z.x},${Z.y}` : `M${A.x},${A.y} L${Z.x},${Z.y}`;
+    return { d, px: mx + nx * e.bend / 2, py: my + ny * e.bend / 2, nx, ny };
+  }
+  // graph from vertex positions and [a, b] pairs (a < b): parallel edges bend apart, labels pushed away from the centre
+  function mkG(pos, ed, cx = 150, cy = 100, w = 300, h = 190) {
+    const cnt = {}, G = { w, h, V: pos.map(([x, y], i) => V_('v' + (i + 1), x, y)), E: [] };
+    ed.forEach(([a, b], j) => { const k = a + '-' + b, c = cnt[k] = (cnt[k] || 0) + 1; G.E.push(E_('e' + (j + 1), a, b, [0, 30, -30, 58, -58, 84, -84, 110][c - 1] || 0)); });
+    G.E.forEach(e => { const g = geo(G, e); let dx, dy; if (e.bend) { dx = g.nx * Math.sign(e.bend); dy = g.ny * Math.sign(e.bend); } else { dx = g.px - cx; dy = g.py - cy; const l = Math.hypot(dx, dy); if (l < 6) { dx = g.nx; dy = g.ny; } else { dx /= l; dy /= l; } } e.lx = g.px + dx * 12; e.ly = g.py + dy * 12; });
+    return G;
+  }
+  function Gr({ G, ec, vc, onE, onV, sg, lab, dots, big }) {
+    return html`<svg className="dmv10-gr" viewBox=${'0 0 ' + G.w + ' ' + G.h} role="img" aria-label=${lab || 'Graph'}>
+      ${G.E.map((e, j) => { const g = geo(G, e); return html`<g key=${'e' + j} className=${'dmv10-e ' + ((ec && ec(j)) || '')}>
+        <path d=${g.d} className="dmv10-ln" />
+        ${onE ? html`<path d=${g.d} className="dmv10-hit" onClick=${() => onE(j)} />` : null}
+        ${e.lx != null ? html`<text className=${'dmv10-el' + (big ? ' dmv10-big' : '')} x=${e.lx} y=${e.ly} textAnchor="middle" dominantBaseline="central" style=${onE ? { cursor: 'pointer' } : null} onClick=${onE ? () => onE(j) : null}>${e.n}</text>` : null}</g>`; })}
+      ${sg ? G.E.map((e, j) => { if (sg[j] == null) return null; const g = geo(G, e); return [e.a, e.b].map(p => { const P = G.V[p], O = G.V[p === e.a ? e.b : e.a], l = Math.hypot(O.x - P.x, O.y - P.y), t = (e.st || 32) / l;
+        return html`<text key=${'s' + j + '-' + p} className=${'dmv10-sg ' + (p === sg[j] ? 'p' : 'm')} x=${P.x + (O.x - P.x) * t + g.nx * 11} y=${P.y + (O.y - P.y) * t + g.ny * 11} textAnchor="middle" dominantBaseline="central">${p === sg[j] ? '+' : MI}</text>`; }); }) : null}
+      ${G.V.map((v, i) => html`<g key=${'v' + i} className=${'dmv10-v ' + ((vc && vc(i)) || '') + (onV ? ' dmv10-tap' : '') + (dots ? ' dmv10-dot' : '')} onClick=${onV ? () => onV(i) : null}>
+        <circle cx=${v.x} cy=${v.y} r=${dots ? 5 : 13} />${dots ? null : html`<text x=${v.x} y=${v.y} textAnchor="middle" dominantBaseline="central">${v.n}</text>`}</g>`)}
+    </svg>`;
+  }
+  // v(i, j): value (null = not filled yet); c(i, j): cell class; rc(i): row class; cc(j): column-head class
+  function Mat({ rl, cl, v, c, rc, cc, onR, onC, onX, sep, ex, ft, ti }) {
+    const cell = (x, extra) => [x == null || x === '' ? '' : x === 0 ? 'z' : 'o'].concat(extra).filter(Boolean).join(' ');
+    return html`<div className="dmv10-mw">${ti ? html`<div className="dmv10-mt" dangerouslySetInnerHTML=${{ __html: ti }}></div>` : null}
+      <table className="dmv10-m"><thead><tr><th></th>${cl.map((h, j) => html`<th key=${j} className=${[cc && cc(j), sep === j && 'sep', onC && 'dmv10-tap'].filter(Boolean).join(' ')} onClick=${onC ? () => onC(j) : null}>${h}</th>`)}${ex ? html`<th className="x">${ex.h}</th>` : null}</tr></thead>
+      <tbody>${rl.map((r, i) => html`<tr key=${i} className=${(rc && rc(i)) || ''}><th className=${onR ? 'dmv10-tap' : ''} onClick=${onR ? () => onR(i) : null}>${r}</th>${cl.map((_, j) => { const x = v(i, j); return html`<td key=${j} className=${cell(x, [c && c(i, j), sep === j && 'sep', onX && 'dmv10-tap'])} onClick=${onX ? () => onX(i, j) : null}>${fmt(x)}</td>`; })}${ex ? html`<td className="x">${ex.v(i)}</td>` : null}</tr>`)}
+      ${(ft || []).map((f, k) => html`<tr key=${'f' + k} className="ft"><th>${f.h}</th>${cl.map((_, j) => { const x = f.v(j); return html`<td key=${j} className=${cell(x, [f.c && f.c(j), sep === j && 'sep'])}>${fmt(x)}</td>`; })}${ex ? html`<td className="x"></td>` : null}</tr>`)}
+      </tbody></table></div>`;
+  }
+  const Thumbs = ({ G, trees }) => html`<div className="dmv10-thumbs">${trees.map((t, k) => html`<svg key=${k} viewBox=${'0 0 ' + G.w + ' ' + G.h} aria-hidden="true">${G.E.map((e, j) => html`<path key=${j} d=${geo(G, e).d} className=${'dmv10-th' + (t.includes(j) ? ' on' : '')} />`)}${G.V.map((v, i) => html`<circle key=${'c' + i} cx=${v.x} cy=${v.y} r="17" className="dmv10-thv" />`)}</svg>`)}</div>`;
+
+  const incOf = G => G.V.map((_, i) => G.E.map(e => e.a === i || e.b === i ? 1 : 0));
+  const rowSum = M => M.map(r => r.reduce((s, x) => s + x, 0));
+  const pairs = G => G.E.map(e => [e.a, e.b]);
+  function comps(n, E) {
+    const p = [...Array(n).keys()], f = x => p[x] === x ? x : (p[x] = f(p[x]));
+    E.forEach(([a, b]) => { p[f(a)] = f(b); });
+    const ids = new Map(), c = [];
+    for (let i = 0; i < n; i++) { const r = f(i); if (!ids.has(r)) ids.set(r, ids.size); c.push(ids.get(r)); }
+    return { c, k: ids.size };
+  }
+  const mul = (P, Q) => P.map(r => Q[0].map((_, j) => r.reduce((s, x, k) => s + x * Q[k][j], 0)));
+  const tr = M => M.length ? M[0].map((_, j) => M.map(r => r[j])) : [];
+  function rank2(M) {
+    const R = M.map(r => r.map(x => ((x % 2) + 2) % 2)); let rk = 0; const w = R.length ? R[0].length : 0;
+    for (let c = 0; c < w && rk < R.length; c++) {
+      let p = -1; for (let r = rk; r < R.length; r++) if (R[r][c]) { p = r; break; }
+      if (p < 0) continue; [R[rk], R[p]] = [R[p], R[rk]];
+      for (let r = 0; r < R.length; r++) if (r !== rk && R[r][c]) R[r] = R[r].map((x, k) => x ^ R[rk][k]);
+      rk++;
+    }
+    return rk;
+  }
+  function rankR(M) {
+    const R = M.map(r => r.slice()); let rk = 0; const w = R.length ? R[0].length : 0;
+    for (let c = 0; c < w && rk < R.length; c++) {
+      let p = -1, best = 1e-9; for (let r = rk; r < R.length; r++) if (Math.abs(R[r][c]) > best) { best = Math.abs(R[r][c]); p = r; }
+      if (p < 0) continue; [R[rk], R[p]] = [R[p], R[rk]];
+      for (let r = 0; r < R.length; r++) if (r !== rk) { const f = R[r][c] / R[rk][c]; if (f) R[r] = R[r].map((x, k) => x - f * R[rk][k]); }
+      rk++;
+    }
+    return rk;
+  }
+  function detI(M) { // Bareiss, exact for integers
+    const n = M.length; if (!n) return 1; const A = M.map(r => r.slice()); let sign = 1, prev = 1;
+    for (let k = 0; k < n - 1; k++) {
+      if (A[k][k] === 0) { let s = -1; for (let r = k + 1; r < n; r++) if (A[r][k] !== 0) { s = r; break; } if (s < 0) return 0; [A[k], A[s]] = [A[s], A[k]]; sign = -sign; }
+      for (let i = k + 1; i < n; i++) for (let j = k + 1; j < n; j++) A[i][j] = (A[i][j] * A[k][k] - A[i][k] * A[k][j]) / prev;
+      prev = A[k][k];
+    }
+    return sign * A[n - 1][n - 1];
+  }
+  const isTree = (n, E) => E.length === n - 1 && comps(n, E).k === 1;
+  function spanTrees(n, E, idx) { // idx: edge indices allowed
+    const out = [], pick = [];
+    (function go(s) { if (pick.length === n - 1) { if (isTree(n, pick.map(j => E[j]))) out.push(pick.slice()); return; } for (let t = s; t < idx.length; t++) { pick.push(idx[t]); go(t + 1); pick.pop(); } })(0);
+    return out;
+  }
+  function pathsOf(G, u, v) {
+    const out = [], vis = new Set([u]), es = [];
+    (function go(x) { if (x === v) { out.push(es.slice()); return; } G.E.forEach((e, j) => { const y = e.a === x ? e.b : e.b === x ? e.a : -1; if (y < 0 || vis.has(y)) return; vis.add(y); es.push(j); go(y); es.pop(); vis.delete(y); }); })(u);
+    return out.map((p, k) => [p, k]).sort((a, b) => a[0].length - b[0].length || a[1] - b[1]).map(x => x[0]);
+  }
+  const cutOf = (G, S) => G.E.map((e, j) => S.includes(e.a) !== S.includes(e.b) ? j : -1).filter(j => j >= 0);
+  const en = (G, js) => js.map(j => G.E[j].n);
+  const vn = (G, is) => is.map(i => G.V[i].n);
+
+  /* ── 10.1: A(G1) built edge by edge (Fig. 10.1) ── */
+  function IncBuild({ ar }) {
+    const G = G1, A = incOf(G), D = rowSum(A), n = 10;
+    const [i, ctl] = useWalk(n, 1500);
+    const [sel, setSel] = useState(null);
+    const go = k => { setSel(null); ctl.go(k); };
+    const pick = s => { setSel(s); ctl.end(); };
+    const done = i === n - 1, col = i >= 1 && i <= 8 ? i - 1 : -1, filled = j => i >= 9 || j < i;
+    let hv = [], he = [];
+    if (sel && sel.t === 'e') { he = [sel.k]; hv = [G.E[sel.k].a, G.E[sel.k].b]; }
+    else if (sel) { hv = [sel.k]; he = G.E.map((e, j) => e.a === sel.k || e.b === sel.k ? j : -1).filter(j => j >= 0); }
+    else if (col >= 0) { he = [col]; hv = [G.E[col].a, G.E[col].b]; }
+    let cap;
+    if (sel && sel.t === 'v') { const v = G.V[sel.k].n, es = en(G, he);
+      cap = { en: `Row <b>${v}</b> has 1s under ${set(es)}, so ${v} has degree <b>${D[sel.k]}</b>.`, ar: `الـ row بتاع <b>${v}</b> فيه 1 تحت ${B(set(es))}، فالـ degree بتاع ${v} هو <b>${D[sel.k]}</b>.` }; }
+    else if (sel) { const e = G.E[sel.k], a = G.V[e.a].n, b = G.V[e.b].n, par = sel.k < 2;
+      cap = { en: `Column <b>${e.n}</b> has 1s in rows ${a} and ${b}, the two ends of ${e.n}.` + (par ? ' e1 and e2 are parallel edges, so their columns are identical.' : ''),
+        ar: `الـ column بتاع <b>${e.n}</b> فيه 1 في الـ rows بتوع ${a} و ${b}، ودول طرفين الـ ${e.n}.` + (par ? ' والـ e1 والـ e2 دول parallel edges، فالـ columns بتوعهم متطابقة.' : '') }; }
+    else if (i === 0) cap = { en: 'G1 of Fig. 10.1 has n = 6 vertices, m = 8 edges and no self-loops, so A(G1) is 6 × 8: one row per vertex, one column per edge.', ar: `الـ G1 اللي في ${B('Fig. 10.1')} فيه 6 vertices و 8 edges ومفيهوش self-loops، فالـ ${B('A(G1)')} حجمها ${B('6 × 8')}، يعني row لكل vertex و column لكل edge.` };
+    else if (col >= 0) { const e = G.E[col], a = G.V[e.a].n, b = G.V[e.b].n;
+      cap = { en: `<b>${e.n}</b> joins ${a} and ${b}: column ${e.n} gets 1 in rows ${a} and ${b}, and 0 in the other four rows.` + (col === 1 ? ' e1 and e2 both join v4 and v6 (parallel edges), so their columns are identical.' : ''),
+        ar: `الـ <b>${e.n}</b> بيوصل بين ${a} و ${b}، فالـ column بتاع ${e.n} بياخد 1 في الـ rows بتوع ${a} و ${b}، و 0 في الـ 4 rows التانيين.` + (col === 1 ? ' والـ e1 والـ e2 الاتنين بيوصلوا بين v4 و v6 (parallel edges)، فالـ columns بتوعهم متطابقة.' : '') }; }
+    else cap = { en: 'Done. Every column has exactly two 1s (an edge has two ends). The number of 1s in a row is the degree of that vertex: v2 and v4 have degree 4, v3 only 1. Tap a vertex, an edge, a row or a column.', ar: 'خلصنا. كل column فيه 1 مرتين بالظبط (لأن الـ edge ليه طرفين). وعدد الـ 1 في الـ row هو الـ degree بتاع الـ vertex ده، فالـ v2 والـ v4 الـ degree بتاعهم 4، والـ v3 بس 1. دوس على أي vertex أو edge أو row أو column.' };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph G1 of Fig. 10.1" ec=${j => he.includes(j) ? 'on' : (he.length ? 'dim' : '')} vc=${k => hv.includes(k) ? 'on' : ''} onE=${j => pick({ t: 'e', k: j })} onV=${k => pick({ t: 'v', k })} />
+      <${Mat} ti="A(G1)" rl=${G.V.map(v => v.n)} cl=${G.E.map(e => e.n)} v=${(r, j) => filled(j) ? A[r][j] : null}
+        c=${(r, j) => (sel && sel.t === 'v' && r === sel.k) || (he.includes(j) && hv.includes(r)) ? 'hl' : ''}
+        cc=${j => he.includes(j) ? 'hl' : ''} onR=${r => pick({ t: 'v', k: r })} onC=${j => pick({ t: 'e', k: j })}
+        ex=${done ? { h: 'deg', v: r => D[r] } : null} />
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${WBar} n=${n} i=${i} ctl=${{ ...ctl, go, replay: () => { setSel(null); ctl.replay(); } }} /></figure>`;
+  }
+
+  /* ── 10.1–10.2: try your own graph: observations and rank n − k ── */
+  const PENT = [[150, 24], [226, 79], [197, 166], [103, 166], [74, 79]];
+  const START5 = [[0, 1], [1, 2], [2, 3], [0, 3], [1, 3]];
+  function IncTry({ ar }) {
+    const [ed, setEd] = useState(START5), [pend, setPend] = useState(null), [blk, setBlk] = useState(false), [full, setFull] = useState(false);
+    const n = 5, G = mkG(PENT, ed), A = incOf(G), D = rowSum(A), m = ed.length;
+    const { c: cid, k } = comps(n, ed), r2 = m ? rank2(A) : 0;
+    const iso = D.map((d, i) => d === 0 ? i : -1).filter(i => i >= 0);
+    const par = []; ed.forEach(([a, b], j) => { const f = ed.findIndex(([x, y]) => x === a && y === b); if (f !== j) { const g = par.find(p => p[0] === f); g ? g.push(j) : par.push([f, j]); } });
+    const parCols = par.flat();
+    const vo = [...Array(n).keys()], eo = [...Array(m).keys()];
+    if (blk) { vo.sort((x, y) => cid[x] - cid[y] || x - y); eo.sort((x, y) => cid[ed[x][0]] - cid[ed[y][0]] || x - y); }
+    const tapV = i => { setFull(false); if (pend == null) setPend(i); else if (pend === i) setPend(null); else { if (m >= 8) { setFull(true); setPend(null); return; } const a = Math.min(pend, i), b = Math.max(pend, i); setEd(e => e.concat([[a, b]])); setPend(null); } };
+    const tapE = j => { setFull(false); setPend(null); setEd(e => e.filter((_, q) => q !== j)); };
+    const E = [], R = [];
+    if (!m) { E.push('No edges yet, so A has no columns.'); R.push('لسه مفيش edges، فالـ A مفيهاش columns.'); }
+    else { E.push(`Every column has exactly two 1s, and the Σ row (all rows added mod 2) is all 0, so the rows are dependent: rank A ≤ n − 1 = 4.`);
+      R.push(`كل column فيه 1 مرتين بالظبط، والـ row اللي اسمه Σ (مجموع كل الـ rows بالـ mod 2) كله أصفار، فالـ rows دي dependent، و ${B('rank A ≤ n − 1 = 4')}.`); }
+    iso.forEach(i => { const v = G.V[i].n; E.push(`Row ${v} is all zeros: ${v} is an isolated vertex.`); R.push(`الـ row بتاع ${v} كله أصفار، يعني ${v} ده isolated vertex.`); });
+    par.forEach(p => { const s = p.map(j => 'e' + (j + 1)); E.push(`Columns ${s.join(' and ')} are identical: parallel edges.`); R.push(`الـ columns بتوع ${s.join(' و ')} متطابقة، يعني parallel edges.`); });
+    E.push(`${k === 1 ? 'G is connected' : `G has k = ${k} components`}: rank A = n − k = 5 − ${k} = ${5 - k}${m ? `, and row reduction mod 2 gives ${r2} too` : ''}.`);
+    R.push(`${k === 1 ? 'الـ G ده connected' : `الـ G فيه ${B('k = ' + k)} components`}، فـ` + L(`rank A = n − k = 5 − ${k} = ${5 - k}`) + (m ? `والـ row reduction بالـ mod 2 بيطلّع ${r2} برضه.` : 'ومفيش edges أصلًا.'));
+    if (blk && k > 1) { E.push('Rows and columns are reordered by component, so A is block diagonal [A(G₁) 0; 0 A(G₂)]: reordering only relabels vertices and edges.'); R.push('رتّبنا الـ rows والـ columns حسب الـ component، فالـ A بقت block diagonal، وإعادة الترتيب دي مجرد إعادة تسمية للـ vertices والـ edges.'); }
+    if (full) { E.push('At most 8 edges here.'); R.push('هنا أقصى حاجة 8 edges.'); }
+    E.push(pend != null ? `Now tap the other end of the new edge (from ${G.V[pend].n}).` : 'Tap two vertices to add an edge between them; tap an edge to delete it.');
+    R.push(pend != null ? `دوس على الطرف التاني للـ edge الجديد (اللي طالع من ${G.V[pend].n}).` : 'دوس على 2 vertices عشان تضيف edge بينهم، ودوس على أي edge عشان تمسحه.');
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Your graph on five vertices" onE=${tapE} onV=${tapV} ec=${j => parCols.includes(j) ? 'on' : ''} vc=${i => i === pend ? 'sel' : iso.includes(i) ? 'sb' : ''} />
+      ${m ? html`<${Mat} ti="A(G)" rl=${vo.map(i => G.V[i].n)} cl=${eo.map(j => 'e' + (j + 1))} v=${(r, c) => A[vo[r]][eo[c]]}
+        c=${(r, c) => blk && k > 1 && cid[vo[r]] === cid[ed[eo[c]][0]] ? 'blk' : ''} rc=${r => iso.includes(vo[r]) ? 'bad' : ''} cc=${c => parCols.includes(eo[c]) ? 'hl' : ''}
+        ex=${{ h: 'deg', v: r => D[vo[r]] }} ft=${[{ h: 'Σ', v: c => A.reduce((s, row) => s + row[eo[c]], 0) % 2 }]} />` : null}
+      <div className="dmv10-chips"><button className="fig-btn" onClick=${() => { setEd(START5); setPend(null); setFull(false); }}>Start graph</button>
+        <button className="fig-btn" aria-pressed=${String(blk)} onClick=${() => setBlk(b => !b)}>Group by component</button>
+        <button className="fig-btn" onClick=${() => { setEd([]); setPend(null); setFull(false); }}>Clear</button></div>
+    </div></div>
+      <${Cap} en=${E.join('<br>')} ar=${R.join('<br>')} showAr=${ar} /></figure>`;
+  }
+
+  /* ── Theorems 10.3, 10.4: reduced incidence matrix, (n − 1) × (n − 1) submatrices and spanning trees (Fig. 10.2's graph) ── */
+  function IncTree({ ar }) {
+    const G = G2, A = incOf(G);
+    const [ref, setRef] = useState(3), [ch, setCh] = useState([0, 1, 2]);
+    const tog = j => setCh(c => c.includes(j) ? c.filter(x => x !== j) : c.concat(j).sort((a, b) => a - b));
+    const rows = [0, 1, 2, 3].filter(r => r !== ref), vr = G.V[ref].n;
+    const ok3 = ch.length === 3, sub = rows.map(r => ch.map(j => A[r][j]));
+    const det = ok3 ? (rank2(sub) === 3 ? 1 : 0) : null, tree = ok3 && isTree(4, ch.map(j => [G.E[j].a, G.E[j].b]));
+    const S = set(en(G, ch));
+    let cap;
+    const head = { en: `Reference vertex <b>${vr}</b>: deleting its row leaves the reduced incidence matrix A_f (3 × 5). Nothing is lost: wherever a column has a single 1 left, its second 1 belongs to ${vr} (the bottom row rebuilds it).`,
+      ar: `الـ reference vertex هو <b>${vr}</b>، ولما نمسح الـ row بتاعه بتفضل الـ reduced incidence matrix ${B('A_f')} بحجم ${B('3 × 5')}. ومفيش حاجة بتضيع، لأن أي column فاضل فيه 1 واحد بس، الـ 1 التاني بتاعه بيبقى عند ${vr} (الـ row اللي تحت بيبنيه تاني).` };
+    if (!ok3) cap = { en: head.en + ` Pick exactly n − 1 = 3 edges (now ${ch.length}).`, ar: head.ar + ` اختار ${B('n − 1 = 3')} edges بالظبط (دلوقتي ${ch.length}).` };
+    else cap = { en: head.en + ` Columns ${S}: the 3 × 3 submatrix has det = ${det} (mod 2), so it is <b>${det ? 'non-singular' : 'singular'}</b>, and ${S} ${tree ? 'is a spanning tree (Theorem 10.4; it is that tree’s reduced incidence matrix, Theorem 10.3)' : 'is not a spanning tree: it has a cycle'}. Tap a vertex to change the reference vertex; tap edges to pick others.`,
+      ar: head.ar + ` والـ columns ${B(S)} بتدّي submatrix حجمها ${B('3 × 3')} والـ determinant بتاعها بالـ mod 2 هو ${det}، يعني هي <b>${det ? 'non-singular' : 'singular'}</b>، ${tree ? 'والـ edges دول spanning tree (Theorem 10.4، وهي نفسها الـ reduced incidence matrix بتاعة الـ tree ده، Theorem 10.3)' : 'والـ edges دول مش spanning tree لأن فيهم cycle'}. دوس على أي vertex عشان تغيّر الـ reference vertex، ودوس على الـ edges عشان تختار غيرهم.` };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph of Fig. 10.2" ec=${j => ch.includes(j) ? (ok3 ? (tree ? 'tr' : 'cut') : 'on') : 'dim'} vc=${k => k === ref ? 'ref' : ''} onE=${tog} onV=${setRef} />
+      <${Mat} ti=${'A_f: row ' + vr + ' deleted'} rl=${G.V.map(v => v.n)} cl=${G.E.map(e => e.n)} v=${(r, j) => A[r][j]} rc=${r => r === ref ? 'gone' : ''}
+        c=${(r, j) => ch.includes(j) && r !== ref ? 'hl' : ''} cc=${j => ch.includes(j) ? 'hl' : ''} onC=${tog} onR=${setRef}
+        ft=${[{ h: vr, v: j => rows.reduce((s, r) => s + A[r][j], 0) % 2, c: () => 'ok' }]} />
+      ${ok3 ? html`<${Mat} ti=${'columns ' + S} rl=${vn(G, rows)} cl=${en(G, ch)} v=${(r, j) => sub[r][j]} />
+        <p className=${'dmv10-ver ' + (det ? 'ok' : 'bad')}>det = ${det} (mod 2) · ${tree ? 'spanning tree ✓' : 'not a tree ✗'}</p>` : html`<p className="dmv10-hint">Pick 3 edges (now ${ch.length})</p>`}
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── F from A (Fig. 10.2), any orientation ── */
+  const POS0 = [0, 1, 2, 0, 1];
+  function IncOriented({ ar }) {
+    const G = G2, A = incOf(G), n = 7;
+    const [pos, setPos] = useState(POS0), [last, setLast] = useState(null);
+    const [i, ctl] = useWalk(n, 1600, pos.join());
+    const F = A.map((r, v) => r.map((x, j) => x ? (v === pos[j] ? 1 : -1) : 0)), rk = rankR(F);
+    const conv = j => i >= 6 || j < i, col = i >= 1 && i <= 5 ? i - 1 : -1;
+    const flip = j => { setLast(j); setPos(p => p.map((x, q) => q === j ? (x === G.E[j].a ? G.E[j].b : G.E[j].a) : x)); };
+    const hj = last != null && i === 6 ? last : col;
+    let cap;
+    if (i === 0) cap = { en: 'A of Fig. 10.2 (from the notes). To get F, give every edge an orientation: one end positive (+), the other negative (−).', ar: `دي الـ A بتاعة ${B('Fig. 10.2')} من الـ notes. وعشان نطلّع الـ F بندّي كل edge اتجاه، يعني طرف موجب ${B('+')} وطرف سالب ${B(MI)}.` };
+    else if (col >= 0) { const e = G.E[col], p = G.V[pos[col]].n, q = G.V[pos[col] === e.a ? e.b : e.a].n;
+      cap = { en: `<b>${e.n}</b> = (${p}, ${q}): ${p} is the positive end, so its 1 stays 1; ${q} is the negative end, so its 1 becomes −1.`, ar: `في الـ <b>${e.n}</b> الطرف الموجب هو ${p} فالـ 1 بتاعه بيفضل 1، والطرف السالب هو ${q} فالـ 1 بتاعه بيبقى ${B('−1')}.` }; }
+    else if (last != null && pos.join() !== POS0.join()) { const e = G.E[last], p = G.V[pos[last]].n, q = G.V[pos[last] === e.a ? e.b : e.a].n;
+      cap = { en: `Your orientation: ${e.n} now has +1 at ${p} and −1 at ${q}. F changed, but rank F is still ${rk} = n − 1: the theorems hold for any orientation.`, ar: `الاتجاه بتاعك: الـ ${e.n} بقى فيه ${B('+1')} عند ${p} و ${B('−1')} عند ${q}. الـ F اتغيرت، بس الـ rank F لسه ${B(rk + ' = n − 1')}، يعني الـ theorems بتمشي مع أي اتجاه.` }; }
+    else cap = { en: `F is done: every column has one 1 and one −1, so it adds up to 0. G is connected, so rank F = n − 1 = ${rk} (Theorem 10.5). Tap an edge to swap its ends.`, ar: 'كده الـ F خلصت، وكل column فيه 1 واحد و ' + B('−1') + ' واحد، فمجموعه بـ 0. والـ G ده connected، فـ' + L(`rank F = n − 1 = ${rk}`) + 'وده Theorem 10.5. دوس على أي edge عشان تبدّل طرفينه.' };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph of Fig. 10.2 with oriented edges" sg=${pos.map((p, j) => conv(j) ? p : null)} ec=${j => j === hj ? 'on' : ''} vc=${k => hj >= 0 && (G.E[hj].a === k || G.E[hj].b === k) ? 'on' : ''} onE=${flip} />
+      <${Mat} ti=${i === 0 ? 'A' : i >= 6 ? 'F' : 'A → F'} rl=${G.V.map(v => v.n)} cl=${G.E.map(e => e.n)} v=${(r, j) => conv(j) ? F[r][j] : A[r][j]}
+        c=${(r, j) => j === hj && A[r][j] ? 'hl' : ''} cc=${j => j === hj ? 'hl' : ''} onC=${flip} />
+      <div className="dmv10-chips"><button className="fig-btn" onClick=${() => { setLast(null); setPos(POS0); }} disabled=${pos.join() === POS0.join()}>Example from the notes</button></div>
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${WBar} n=${n} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 10.3: B(G1) row by row, then the rank and A Bᵀ ≡ 0 (Fig. 10.3) ── */
+  const ZC = [[0, 1], [2, 4, 6], [3, 5, 6], [2, 3, 4, 5]];
+  function CycBuild({ ar }) {
+    const G = G1, A = incOf(G), n = 8, Bm = ZC.map(z => G.E.map((_, j) => z.includes(j) ? 1 : 0));
+    const [i, ctl] = useWalk(n, 1700);
+    const [sel, setSel] = useState(null);
+    const go = k => { setSel(null); ctl.go(k); };
+    const AB = mul(A, tr(Bm)), rk = rank2(Bm), ring = Bm[1].map((x, j) => (x + Bm[2][j]) % 2);
+    const row = sel != null ? sel : i >= 1 && i <= 4 ? i - 1 : -1;
+    let he = row >= 0 ? ZC[row] : i === 6 ? [2, 3, 4, 5] : [];
+    const hv = [...new Set(he.flatMap(j => [G.E[j].a, G.E[j].b]))];
+    let cap;
+    if (sel != null) { const z = ZC[sel]; cap = { en: `Z${sel + 1} = ${set(en(G, z))}: ${z.length} edges, so ${z.length} ones in its row.`, ar: `الـ ${B('Z' + (sel + 1))} هو ${B(set(en(G, z)))}، يعني ${z.length} edges، وعشان كده فيه ${z.length} وحايد في الـ row بتاعه.` }; }
+    else if (i === 0) cap = { en: 'G1 of Fig. 10.3 has m = 8 edges and q = 4 different cycles, so B(G1) is 4 × 8: one row per cycle, one column per edge.', ar: `الـ G1 اللي في ${B('Fig. 10.3')} فيه 8 edges و 4 cycles مختلفة، فالـ ${B('B(G1)')} حجمها ${B('4 × 8')}، يعني row لكل cycle و column لكل edge.` };
+    else if (i <= 4) { const z = ZC[i - 1]; cap = { en: `Z${i} = ${set(en(G, z))}: 1 under these ${z.length} edges, 0 elsewhere.`, ar: `الـ ${B('Z' + i)} هو ${B(set(en(G, z)))}، فبنحط 1 تحت الـ ${z.length} edges دول و 0 في الباقي.` }; }
+    else if (i === 5) cap = { en: 'Column e8 is all zeros: e8 is a non-cycle edge (no cycle uses it). The 1s in a row count the edges of that cycle: 2, 3, 3, 4. Tap a row to see its cycle.', ar: 'الـ column بتاع e8 كله أصفار، يعني e8 ده non-cycle edge (مفيش cycle بيعدي عليه). وعدد الـ 1 في كل row هو عدد الـ edges في الـ cycle بتاعه، يعني 2 و 3 و 3 و 4. دوس على أي row عشان تشوف الـ cycle بتاعه.' };
+    else if (i === 6) cap = { en: `Add Z2 and Z3 mod 2: e7 cancels and Z2 ⊕ Z3 = {e3, e4, e5, e6} = Z4. So only ${rk} rows are independent: rank B = m − n + 1 = 8 − 6 + 1 = ${rk} (Theorem 10.10).`, ar: 'لو جمعنا الـ Z2 والـ Z3 بالـ mod 2 الـ e7 بيروح، والناتج بيطلع كده:' + L('Z2 ⊕ Z3 = {e3, e4, e5, e6} = Z4') + `يعني فيه ${rk} rows بس independent، والـ rank بيطلع:` + L(`rank B = m − n + 1 = 8 − 6 + 1 = ${rk}`) + 'وده Theorem 10.10.' };
+    else cap = { en: 'A Bᵀ counts, for each vertex and each cycle, the cycle’s edges at that vertex: always 0 or 2. So A Bᵀ ≡ 0 (mod 2) (Theorem 10.9).', ar: `الـ ${B('A Bᵀ')} بتعدّ لكل vertex وكل cycle عدد edges الـ cycle اللي عند الـ vertex ده، ودايمًا بيطلع 0 أو 2، فـ` + L('A Bᵀ ≡ 0 (mod 2)') + 'وده Theorem 10.9.' };
+    const filled = r => i >= 5 || r < i;
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph G1 of Fig. 10.3" ec=${j => he.includes(j) ? 'on' : (i === 5 && sel == null && j === 7 ? 'cut' : he.length ? 'dim' : '')} vc=${k => hv.includes(k) ? 'on' : ''} />
+      <${Mat} ti="B(G1)" rl=${ZC.map((_, r) => 'Z' + (r + 1))} cl=${G.E.map(e => e.n)} v=${(r, j) => filled(r) ? Bm[r][j] : null}
+        rc=${r => r === row || (i === 6 && sel == null && r >= 1) ? 'hl' : ''} c=${(r, j) => i === 5 && sel == null && j === 7 ? 'bad' : ''} onR=${r => { setSel(r); ctl.go(Math.max(i, 5)); }}
+        ex=${i >= 5 ? { h: '1s', v: r => ZC[r].length } : null} ft=${i === 6 && sel == null ? [{ h: '⊕', v: j => ring[j], c: () => 'ok' }] : null} />
+      ${i === 7 && sel == null ? html`<${Mat} ti="A Bᵀ (before mod 2)" rl=${G.V.map(v => v.n)} cl=${ZC.map((_, r) => 'Z' + (r + 1))} v=${(r, c) => AB[r][c]} c=${(r, c) => AB[r][c] ? 'ok' : ''} />` : null}
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${WBar} n=${n} i=${i} ctl=${{ ...ctl, go, replay: () => { setSel(null); ctl.replay(); } }} /></figure>`;
+  }
+
+  /* ── Fig. 10.4: same cycle matrix, 2-isomorphic but not isomorphic ── */
+  const P4 = [V_('T', 70, 20), V_('TR', 140, 20), V_('L', 16, 66), V_('BM', 70, 110), V_('BR', 140, 110)];
+  const H4a = { w: 160, h: 130, V: P4, E: [E_('a', 2, 0, -16, 30, 28), E_('b', 2, 0, 16, 56, 58), E_('c', 0, 1, 0, 105, 9), E_('d', 0, 4, 0, 116, 56), E_('e', 1, 4, 0, 151, 65), E_('f', 2, 3, 0, 34, 97), E_('g', 3, 4, 0, 105, 121)] };
+  const H4b = { w: 160, h: 130, V: P4, E: [E_('a', 2, 3, -16, 56, 73), E_('b', 2, 3, 16, 30, 104), E_('c', 0, 1, 0, 105, 9), E_('d', 0, 4, 0, 116, 56), E_('e', 1, 4, 0, 151, 65), E_('f', 2, 0, 0, 34, 35), E_('g', 3, 4, 0, 105, 121)] };
+  const Z4 = [[0, 1], [2, 3, 4], [0, 3, 5, 6], [1, 3, 5, 6], [0, 2, 4, 5, 6], [1, 2, 4, 5, 6]];
+  function Cyc2Iso({ ar }) {
+    const n = 8, [i, ctl] = useWalk(n, 1700), Bm = Z4.map(z => [0, 1, 2, 3, 4, 5, 6].map(j => z.includes(j) ? 1 : 0));
+    const degs = H => rowSum(incOf(H)).sort((a, b) => b - a).join(', '), r = i >= 1 && i <= 6 ? i - 1 : -1, he = r >= 0 ? Z4[r] : [];
+    const hv = H => [...new Set(he.flatMap(j => [H.E[j].a, H.E[j].b]))];
+    let cap;
+    if (i === 0) cap = { en: 'Fig. 10.4: two graphs, their edges matched up as a to g (the letters are added here to pair the edges). The left graph has its two parallel edges at the top, the right one at the bottom.', ar: `دي ${B('Fig. 10.4')} وفيها 2 graphs، والـ edges بتوعهم متوصّلين ببعض بالحروف من a لـ g (الحروف دي متضافة هنا عشان نربط الـ edges ببعض). الـ graph الشمال الـ parallel edges بتوعه فوق، واللي على اليمين تحت.` };
+    else if (r >= 0) { const s = set(Z4[r].map(j => 'abcdefg'[j])); cap = { en: `Z${i} = ${s}: a cycle in both graphs.`, ar: `الـ ${B('Z' + i)} هو ${B(s)}، وده cycle في الـ 2 graphs.` }; }
+    else cap = { en: `The same 6 cycles, so the same cycle matrix: the graphs are 2-isomorphic. Yet they are not isomorphic: the degrees are ${degs(H4a)} on the left and ${degs(H4b)} on the right. So B does not specify a graph completely.`, ar: 'نفس الـ 6 cycles يعني نفس الـ cycle matrix، فالـ 2 graphs دول 2-isomorphic. بس هما مش isomorphic، لأن الـ degrees مختلفة:' + L(`left: ${degs(H4a)} · right: ${degs(H4b)}`) + 'وعشان كده الـ B مش بتحدد الـ graph بالكامل.' };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <div className="dmv10-pair">
+        <${Gr} G=${H4a} dots big lab="Left graph of Fig. 10.4" ec=${j => he.includes(j) ? 'on' : he.length ? 'dim' : ''} vc=${k => hv(H4a).includes(k) ? 'on' : ''} />
+        <${Gr} G=${H4b} dots big lab="Right graph of Fig. 10.4" ec=${j => he.includes(j) ? 'on' : he.length ? 'dim' : ''} vc=${k => hv(H4b).includes(k) ? 'on' : ''} />
+      </div>
+      <${Mat} ti="B (both graphs)" rl=${Z4.map((_, k) => 'Z' + (k + 1))} cl=${'abcdefg'.split('')} v=${(k, j) => i >= 7 || k < i ? Bm[k][j] : null} rc=${k => k === r ? 'hl' : ''} />
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${WBar} n=${n} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── 10.4: C(G1) from the slides' cut-sets; your own cut ── */
+  const CS = [[2], [5], [3, 5], [1, 2], [0, 4], [0], [4], [0, 1, 2]]; // the side each slide cut-set c1..c8 cuts off
+  function CutBuild({ ar }) {
+    const G = G1, A = incOf(G), n = 11, Cm = CS.map(S => { const c = cutOf(G, S); return G.E.map((_, j) => c.includes(j) ? 1 : 0); });
+    const Bm = ZC.map(z => G.E.map((_, j) => z.includes(j) ? 1 : 0)), BC = mul(Bm, tr(Cm)), rk = rank2(Cm);
+    const [mode, setMode] = useState('ex'), [S, setS] = useState([0, 1]);
+    const [i, ctl] = useWalk(n, 1600);
+    let body, cap, bar = null;
+    if (mode === 'ex') {
+      const r = i >= 1 && i <= 8 ? i - 1 : -1, cut = r >= 0 ? cutOf(G, CS[r]) : [];
+      if (i === 0) cap = { en: 'The slides’ cut-sets of the same G1: removing a cut-set splits G1 into two pieces (and no smaller set does). C(G1) gets one row per cut-set (8) and one column per edge.', ar: `دي الـ cut-sets بتاعة نفس الـ G1 من الـ slides، ولما نشيل أي cut-set الـ G1 بيتقسم حتتين (ومفيش set أصغر منه بتعمل كده). والـ ${B('C(G1)')} فيها row لكل cut-set، يعني 8، و column لكل edge.` };
+      else if (r >= 0) cap = { en: `c${i} = ${set(en(G, cut))}: it separates ${set(vn(G, CS[r]))} from the rest.`, ar: `الـ ${B('c' + i)} هو ${B(set(en(G, cut)))}، وبيفصل ${B(set(vn(G, CS[r])))} عن الباقي.` };
+      else if (i === 9) cap = { en: `Rows c1, c2, c6, c7 each cut off one vertex (v3, v6, v1, v5): they are those vertices’ rows of A(G1). G1 is separable, so the rows of v2 and v4 are not cut-sets. rank C(G1) = ${rk} = n − 1 (Theorem 10.14).`, ar: `الـ rows ${B('c1, c2, c6, c7')} كل واحد فيهم بيعزل vertex واحد (${B('v3, v6, v1, v5')})، فهما نفس الـ rows بتوع الـ vertices دول في الـ ${B('A(G1)')}. والـ G1 ده separable، فالـ rows بتوع v2 و v4 مش cut-sets. والـ rank بيطلع:` + L(`rank C(G1) = ${rk} = n − 1`) + 'وده Theorem 10.14.' };
+      else cap = { en: 'Each cycle shares an even number of edges with each cut-set (0 or 2 here), so B Cᵀ ≡ 0 (mod 2).', ar: 'كل cycle مشترك مع كل cut-set في عدد زوجي من الـ edges (هنا 0 أو 2)، فـ' + L('B Cᵀ ≡ 0 (mod 2)') };
+      const one = [0, 1, 5, 6];
+      body = html`<${Gr} G=${G} lab="Graph G1 with a cut-set" ec=${j => cut.length ? (cut.includes(j) ? 'cut' : 'dim') : ''} vc=${k => r >= 0 ? (CS[r].includes(k) ? 'sa' : 'sb') : ''} />
+        <${Mat} ti="C(G1)" rl=${CS.map((_, k) => 'c' + (k + 1))} cl=${G.E.map(e => e.n)} v=${(k, j) => i >= 9 || k < i ? Cm[k][j] : null} rc=${k => k === r || (i === 9 && one.includes(k)) ? 'hl' : ''} />
+        ${i === 10 ? html`<${Mat} ti="B Cᵀ (before mod 2)" rl=${ZC.map((_, k) => 'Z' + (k + 1))} cl=${CS.map((_, k) => 'c' + (k + 1))} v=${(a, b) => BC[a][b]} c=${(a, b) => BC[a][b] ? 'ok' : ''} />` : null}`;
+      bar = html`<${WBar} n=${n} i=${i} ctl=${ctl} />`;
+    } else {
+      const cut = cutOf(G, S), rest = G.V.map((_, k) => k).filter(k => !S.includes(k)), sh = Bm.map(b => cut.reduce((s, j) => s + b[j], 0));
+      const inS = (k) => S.includes(k), conn = X => X.length > 0 && comps(G.V.length, pairs(G).filter(([a, b]) => X.includes(a) && X.includes(b))).k === G.V.length - X.length + 1;
+      const isCS = S.length > 0 && rest.length > 0 && conn(S) && conn(rest), match = CS.findIndex(T => { const c = cutOf(G, T); return c.join() === cut.join(); });
+      if (!S.length || !rest.length) cap = { en: 'Tap vertices to put them on one side (blue); the edges that cross to the other side (green) form a cut.', ar: 'دوس على vertices عشان تحطهم في جهة (الأزرق)، والـ edges اللي بتعدي للجهة التانية (الأخضر) هي الـ cut.' };
+      else cap = { en: `${set(vn(G, S))} against the rest: the cut is ${set(en(G, cut))}. ${isCS ? `Both sides stay connected, so it is a cut-set${match >= 0 ? ` (c${match + 1} of the slides)` : ''}.` : 'One side falls apart, so it is not a cut-set (it is a union of cut-sets).'} It shares ${sh.join(', ')} edges with Z1, Z2, Z3, Z4: all even.`,
+        ar: `الجهة ${B(set(vn(G, S)))} قصاد الباقي، والـ cut هو:` + L(set(en(G, cut))) + (isCS ? `والجهتين فضلوا connected، فده cut-set${match >= 0 ? ` (هو ${B('c' + (match + 1))} في الـ slides)` : ''}.` : 'وجهة منهم اتقسمت، فده مش cut-set (ده اتحاد cut-sets).') + ' وعدد الـ edges المشتركة مع الـ Z1 والـ Z2 والـ Z3 والـ Z4 كله زوجي:' + L(sh.join(', ')) };
+      body = html`<${Gr} G=${G} lab="Graph G1: tap vertices to choose a side" onV=${k => setS(s => s.includes(k) ? s.filter(x => x !== k) : s.concat(k).sort())} ec=${j => cut.includes(j) ? 'cut' : ''} vc=${k => S.length && rest.length ? (inS(k) ? 'sa' : 'sb') : inS(k) ? 'sa' : ''} />
+        <${Mat} ti="the cut as a row" rl=${['cut']} cl=${G.E.map(e => e.n)} v=${(_, j) => cut.includes(j) ? 1 : 0} />
+        <${Mat} ti="edges shared with each cycle" rl=${['shared']} cl=${ZC.map((_, k) => 'Z' + (k + 1))} v=${(_, k) => sh[k]} c=${(_, k) => sh[k] % 2 ? 'bad' : 'ok'} />`;
+    }
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Modes} list=${[['ex', 'Example from the slides'], ['try', 'Try your own cut']]} mode=${mode} set=${setMode} />${body}
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} />${bar}</figure>`;
+  }
+
+  /* ── 10.5: fundamental cut-set matrix C_f = [C_c : I] (Fig. 10.9's tree) ── */
+  const T0 = [0, 4, 5, 6, 7];
+  function CutFund({ ar }) {
+    const G = G1, nV = 6, m = 8;
+    const [T, setT] = useState(T0), n = 7;
+    const ok = isTree(nV, T.map(j => [G.E[j].a, G.E[j].b]));
+    const [i, ctl] = useWalk(n, 1700, T.join());
+    const tog = j => setT(t => t.includes(j) ? t.filter(x => x !== j) : t.concat(j).sort((a, b) => a - b));
+    const ch = G.E.map((_, j) => j).filter(j => !T.includes(j)), order = ch.concat(T);
+    const rows = ok ? T.map(b => { const rest = T.filter(x => x !== b), { c } = comps(nV, rest.map(j => [G.E[j].a, G.E[j].b])), side = G.V.map((_, k) => k).filter(k => c[k] === c[G.E[b].a]); return { b, side, cut: cutOf(G, side) }; }) : [];
+    const csName = cut => { const k = CS.findIndex(S => cutOf(G, S).join() === cut.join()); return k >= 0 ? 'c' + (k + 1) : null; };
+    const r = ok && i >= 1 && i <= 5 ? i - 1 : -1, cur = r >= 0 ? rows[r] : null;
+    let cap;
+    if (!ok) cap = { en: `Tap edges to choose a spanning tree: 5 edges joining all 6 vertices without a cycle (now ${T.length}${T.length === 5 ? ', with a cycle' : ''}).`, ar: `دوس على الـ edges عشان تختار spanning tree، يعني 5 edges بيوصلوا الـ 6 vertices من غير cycle (دلوقتي ${T.length}${T.length === 5 ? ' وفيهم cycle' : ''}).` };
+    else if (i === 0) cap = { en: `Spanning tree with branches ${set(en(G, T))} (green); the chords ${set(en(G, ch))} are dashed. Each branch gives one fundamental cut-set, so C_f has n − 1 = 5 rows.${T.join() === T0.join() ? ' This is the tree of Fig. 10.9.' : ''}`, ar: `ده spanning tree والـ branches بتوعه ${B(set(en(G, T)))} (الأخضر)، والـ chords هما ${B(set(en(G, ch)))} (المتقطعين). وكل branch بيدّي fundamental cut-set واحد، فالـ ${B('C_f')} فيها ${B('n − 1 = 5')} rows.${T.join() === T0.join() ? ' وده الـ tree بتاع Fig. 10.9.' : ''}` };
+    else if (cur) { const nm = csName(cur.cut);
+      cap = { en: `Branch <b>${G.E[cur.b].n}</b>: removing it splits the tree into ${set(vn(G, cur.side))} and the rest. The edges between them, ${set(en(G, cur.cut))}, are its fundamental cut-set${nm ? ` (${nm} of the slides)` : ''}: one branch, the rest chords.`,
+        ar: `الـ branch <b>${G.E[cur.b].n}</b> لو شلناه الـ tree بيتقسم لـ ${B(set(vn(G, cur.side)))} والباقي. والـ edges اللي بينهم هي الـ fundamental cut-set بتاعه:` + L(set(en(G, cur.cut))) + `وفيه branch واحد بس والباقي chords${nm ? `، وده ${B(nm)} في الـ slides` : ''}.` }; }
+    else cap = { en: 'Columns ordered chords first, then branches: C_f = [C_c : I₅], the identity on the 5 branches and C_c on the m − n + 1 = 3 chords. Tap edges to choose another spanning tree.', ar: 'لو رتّبنا الـ columns الـ chords الأول وبعدين الـ branches بتطلع:' + L('C_f = [C_c : I₅]') + `يعني identity على الـ 5 branches، والـ ${B('C_c')} على الـ ${B('m − n + 1 = 3')} chords. دوس على الـ edges عشان تختار spanning tree تاني.` };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph G1 with a spanning tree" onE=${tog} ec=${j => cur && cur.cut.includes(j) ? 'cut' : T.includes(j) ? 'tr' : 'off'} vc=${k => cur ? (cur.side.includes(k) ? 'sa' : 'sb') : ''} />
+      ${ok ? html`<${Mat} ti="C_f = [C_c : I₅]" rl=${T.map(b => G.E[b].n)} cl=${order.map(j => G.E[j].n)} sep=${m - 5} v=${(k, c) => i >= 6 || k < i ? (rows[k].cut.includes(order[c]) ? 1 : 0) : null} rc=${k => k === r ? 'hl' : ''} c=${(k, c) => (i >= 6 || k < i) && c >= m - 5 && c - (m - 5) === k ? 'ok' : ''} />` : html`<p className="dmv10-hint">Tree edges chosen: ${T.length} of 5</p>`}
+      <div className="dmv10-chips"><button className="fig-btn" onClick=${() => setT(T0)} disabled=${T.join() === T0.join()}>Example from the slides</button></div>
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} />${ok ? html`<${WBar} n=${n} i=${i} ctl=${ctl} />` : null}</figure>`;
+  }
+
+  /* ── 10.7: path matrix P(u, v) (Fig. 10.10), then A Pᵀ = M ── */
+  function PathBuild({ ar }) {
+    const G = G1, A = incOf(G);
+    const [u, setU] = useState(2), [v, setV] = useState(3);
+    const P = u === v ? [] : pathsOf(G, u, v), q = P.length, Pm = P.map(p => G.E.map((_, j) => p.includes(j) ? 1 : 0));
+    const hasRing = q >= 2, n = q + 1 + 1 + (hasRing ? 1 : 0) + 1;
+    const [i, ctl] = useWalk(n, 1600, u + '-' + v);
+    const iObs = q + 1, iRing = hasRing ? q + 2 : -1, iM = n - 1;
+    const ones = G.E.map((_, j) => j).filter(j => q && Pm.every(r => r[j])), zeros = G.E.map((_, j) => j).filter(j => q && Pm.every(r => !r[j]));
+    const ring = hasRing ? G.E.map((_, j) => j).filter(j => Pm[0][j] !== Pm[1][j]) : [];
+    const ringCycle = (() => { if (!ring.length) return false; const vs = [...new Set(ring.flatMap(j => [G.E[j].a, G.E[j].b]))]; const ok2 = vs.every(x => ring.filter(j => G.E[j].a === x || G.E[j].b === x).length === 2); return ok2 && comps(G.V.length, ring.map(j => [G.E[j].a, G.E[j].b])).k === G.V.length - vs.length + 1; })();
+    const M = q ? mul(A, tr(Pm)).map(r => r.map(x => x % 2)) : [];
+    const un = G.V[u].n, vv = G.V[v].n, ex = u === 2 && v === 3;
+    const r = i >= 1 && i <= q ? i - 1 : -1;
+    const he = r >= 0 ? P[r] : i === iRing ? ring : i === iObs ? ones : [];
+    let cap;
+    if (u === v) cap = { en: 'Pick two different vertices u and v.', ar: 'اختار 2 vertices مختلفين للـ u والـ v.' };
+    else if (i === 0) cap = { en: `${ex ? 'Fig. 10.10: ' : ''}the different paths between ${un} and ${vv}. P(${un}, ${vv}) gets one row per path (q = ${q}) and one column per edge.`, ar: `دي الـ paths المختلفة بين ${un} و ${vv}${ex ? ' في ' + B('Fig. 10.10') : ''}. والـ ${B('P(' + un + ', ' + vv + ')')} فيها row لكل path (يعني ${B('q = ' + q)}) و column لكل edge.` };
+    else if (r >= 0) cap = { en: `p${i} = ${set(en(G, P[r]))}: 1 under its ${P[r].length} edges.`, ar: `الـ ${B('p' + i)} هو ${B(set(en(G, P[r])))}، فبنحط 1 تحت الـ ${P[r].length} edges بتوعه.` };
+    else if (i === iObs) cap = { en: (ones.length ? `Column${ones.length > 1 ? 's' : ''} ${en(G, ones).join(', ')} ${ones.length > 1 ? 'are' : 'is'} all 1s: on every ${un}–${vv} path. ` : 'No column is all 1s: no edge is on every path. ') + (zeros.length ? `Column${zeros.length > 1 ? 's' : ''} ${en(G, zeros).join(', ')} ${zeros.length > 1 ? 'are' : 'is'} all 0s: on no ${un}–${vv} path. ` : '') + 'No row is all zeros.',
+      ar: (ones.length ? `الـ ${B(en(G, ones).join(', '))} كله وحايد، يعني موجود في كل الـ paths. ` : 'مفيش column كله وحايد، يعني مفيش edge موجود في كل الـ paths. ') + (zeros.length ? `والـ ${B(en(G, zeros).join(', '))} كله أصفار، يعني مش موجود في أي path. ` : '') + 'ومفيش row كله أصفار.' };
+    else if (i === iRing) cap = { en: `Ring sum p1 ⊕ p2 = ${set(en(G, ring))}: ${ringCycle ? 'a cycle' : 'an edge-disjoint union of cycles'}.`, ar: `الـ ring sum بتاع ${B('p1 ⊕ p2')} هو:` + L(set(en(G, ring))) + (ringCycle ? 'وده cycle.' : 'وده اتحاد cycles مالهمش edges مشتركة.') };
+    else cap = { en: `A Pᵀ (mod 2): a path meets each inner vertex in 2 edges (→ 0) and meets ${un} and ${vv} in 1 edge (→ 1). So M has 1s only in rows ${un} and ${vv} (Theorem 10.15). Pick another u and v.`, ar: `الـ ${B('A Pᵀ')} بالـ mod 2 بتطلع كده، لأن الـ path بيلمس أي vertex في النص بـ 2 edges فبيدّي 0، وبيلمس ${un} و ${vv} بـ edge واحد فبيدّي 1. فالـ M فيها وحايد بس في الـ rows بتوع ${un} و ${vv} (Theorem 10.15). اختار u و v غيرهم.` };
+    const pickRow = (lab, val, setter) => html`<div className="dmv10-chips"><span className="dmv10-lbl">${lab}</span>${G.V.map((x, k) => html`<button key=${k} className="fig-btn" aria-pressed=${String(val === k)} onClick=${() => setter(k)}>${x.n}</button>`)}</div>`;
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      ${pickRow('u', u, setU)}${pickRow('v', v, setV)}
+      <${Gr} G=${G} lab="Graph of Fig. 10.10" ec=${j => he.includes(j) ? (i === iObs ? 'tr' : 'on') : i === iObs && zeros.includes(j) ? 'off' : he.length ? 'dim' : ''} vc=${k => k === u || k === v ? 'on' : ''} />
+      ${q ? html`<${Mat} ti=${'P(' + un + ', ' + vv + ')'} rl=${P.map((_, k) => 'p' + (k + 1))} cl=${G.E.map(e => e.n)} v=${(k, j) => i > q || k < i ? Pm[k][j] : null}
+        rc=${k => k === r || (i === iRing && k < 2) ? 'hl' : ''} c=${(k, j) => i === iObs && ones.includes(j) ? 'ok' : i === iObs && zeros.includes(j) ? 'bad' : ''}
+        ft=${i === iRing ? [{ h: '⊕', v: j => ring.includes(j) ? 1 : 0, c: () => 'ok' }] : null} />` : null}
+      ${q && i === iM ? html`<${Mat} ti="M = A Pᵀ (mod 2)" rl=${G.V.map(x => x.n)} cl=${P.map((_, k) => 'p' + (k + 1))} v=${(a, b) => M[a][b]} rc=${a => a === u || a === v ? 'hl' : ''} />` : null}
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} />${u !== v ? html`<${WBar} n=${n} i=${i} ctl=${ctl} />` : null}</figure>`;
+  }
+
+  /* ── 10.8: an edge sequence of Fig. 10.13 walked edge by edge ── */
+  const SQV = [0, 1, 2, 3, 1, 2, 4], SQE = [0, 1, 2, 3, 1, 4];
+  function EdgeSeq({ ar }) {
+    const G = G13, n = 8, [i, ctl] = useWalk(n, 1300), k = Math.min(i, 6);
+    const he = SQE.slice(0, k), cur = k >= 1 && i <= 6 ? SQE[k - 1] : -1, at = SQV[k];
+    const parts = []; SQV.forEach((x, t) => { parts.push([G.V[x].n, t <= k]); if (t < 6) parts.push([G.E[SQE[t]].n, t < k]); });
+    let cap;
+    if (i === 0) cap = { en: 'Fig. 10.13. In an edge sequence every edge (except the first and the last) shares a vertex with the edge before it and one with the edge after it. Start at v1.', ar: `دي ${B('Fig. 10.13')}. في الـ edge sequence كل edge (ما عدا الأول والأخير) بيشارك vertex مع الـ edge اللي قبله و vertex مع اللي بعده. هنبدأ من v1.` };
+    else if (i <= 6) { const e = G.E[SQE[i - 1]], a = G.V[SQV[i - 1]].n, b = G.V[SQV[i]].n, again = i === 5;
+      cap = { en: `<b>${e.n}</b>: from ${a} to ${b}.` + (again ? ' e2 again: an edge may appear more than once in an edge sequence.' : ''), ar: `الـ <b>${e.n}</b> من ${a} لـ ${b}.` + (again ? ' والـ e2 اتكرر تاني، والـ edge ممكن يظهر أكتر من مرة في الـ edge sequence.' : '') }; }
+    else cap = { en: 'e1 e2 e3 e4 e2 e5 is an edge sequence of length 6 from v1 to v5. It repeats e2 (and the vertices v2, v3), so it is not a path; walks and paths are edge sequences too.', ar: 'كده عندنا edge sequence طولها 6 من v1 لـ v5:' + L('e1 e2 e3 e4 e2 e5') + 'وفيها الـ e2 متكرر (والـ v2 والـ v3 كمان)، فهي مش path. والـ walks والـ paths برضه edge sequences.' };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph of Fig. 10.13" ec=${j => j === cur ? 'cut' : he.includes(j) ? 'on' : ''} vc=${x => x === at ? 'on' : ''} />
+      <p className="dmv10-seq">${parts.map(([t, on], q) => html`<span key=${q} className=${on ? 'on' : 'dim'}>${t} </span>`)}</p>
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /><${WBar} n=${n} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── Theorem 10.16: [Xᵏ]ij counts edge sequences of length k (Fig. 10.13) ── */
+  const adjOf = (nv, E) => { const X = [...Array(nv)].map(() => Array(nv).fill(0)); E.forEach(([a, b]) => { X[a][b] = 1; X[b][a] = 1; }); return X; };
+  function seqs(G, E, a, b, k) {
+    const out = [], es = [], vs = [a];
+    (function go(x, d) { if (d === k) { if (x === b) out.push([es.slice(), vs.slice()]); return; } E.forEach(j => { const e = G.E[j], y = e.a === x ? e.b : e.b === x ? e.a : -1; if (y < 0) return; es.push(j); vs.push(y); go(y, d + 1); es.pop(); vs.pop(); }); })(a, 0);
+    return out;
+  }
+  function AdjPow({ ar }) {
+    const G = G13, nv = 5, all = G.E.map((_, j) => j), X = adjOf(nv, pairs(G));
+    const [k, setK] = useState(3), [cell, setCell] = useState([1, 2]);
+    let Xk = X; for (let t = 1; t < k; t++) Xk = mul(Xk, X);
+    const [a, b] = cell, cnt = Xk[a][b], list = seqs(G, all, a, b, k), va = G.V[a].n, vb = G.V[b].n;
+    const en1 = `[X${SUP[k]}] at (${va}, ${vb}) = <b>${cnt}</b>: there ${cnt === 1 ? 'is 1 edge sequence' : `are ${cnt} edge sequences`} of length ${k} from ${va} to ${vb} (Theorem 10.16).` + (a === b && k === 2 ? ' On the diagonal, [X²]ii is the degree of vi.' : '') + ' Pick k and tap a cell.';
+    const ar1 = `الخانة ${B('(' + va + ', ' + vb + ')')} في ${B('X' + SUP[k])} قيمتها <b>${cnt}</b>، يعني فيه ${cnt} edge sequence طولها ${k} من ${va} لـ ${vb} (Theorem 10.16).` + (a === b && k === 2 ? ` وعلى الـ diagonal الـ ${B('[X²]ii')} هي الـ degree بتاع الـ ${B('vi')}.` : '') + ' اختار الـ k ودوس على أي خانة.';
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Graph of Fig. 10.13" vc=${x => x === a || x === b ? 'on' : ''} ec=${j => list.length && list[0][0].includes(j) ? 'on' : ''} />
+      <div className="dmv10-chips"><span className="dmv10-lbl">k</span>${[1, 2, 3, 4].map(t => html`<button key=${t} className="fig-btn" aria-pressed=${String(k === t)} onClick=${() => setK(t)}>X${SUP[t]}</button>`)}</div>
+      <${Mat} ti=${'X' + SUP[k]} rl=${G.V.map(x => x.n)} cl=${G.V.map(x => x.n)} v=${(r, c) => Xk[r][c]} c=${(r, c) => r === a && c === b ? 'hl cur' : ''} onX=${(r, c) => setCell([r, c])} />
+      <div className="dmv10-list">${list.slice(0, 8).map(([es, vs], q) => html`<div key=${q}>${es.map(j => G.E[j].n).join(' ')} (${vs.map(x => G.V[x].n).join(' ')})</div>`)}${list.length > 8 ? html`<div>… ${list.length - 8} more</div>` : null}${!list.length ? html`<div>none</div>` : null}</div>
+    </div></div>
+      <${Cap} en=${en1} ar=${ar1} showAr=${ar} /></figure>`;
+  }
+
+  /* ── Theorems 10.17, 10.18: connectivity and distance from the powers of X (Fig. 10.13) ── */
+  function AdjConn({ ar }) {
+    const G = G13, nv = 5;
+    const [off, setOff] = useState([]), [view, setView] = useState('d'), [cell, setCell] = useState([0, 4]);
+    const on = G.E.map((_, j) => j).filter(j => !off.includes(j)), X = adjOf(nv, on.map(j => [G.E[j].a, G.E[j].b]));
+    const P = [X]; for (let t = 1; t < nv - 1; t++) P.push(mul(P[t - 1], X));
+    const Y = X.map((r, a) => r.map((_, b) => P.reduce((s, M) => s + M[a][b], 0)));
+    const D = X.map((r, a) => r.map((_, b) => { if (a === b) return 0; const t = P.findIndex(M => M[a][b] !== 0); return t < 0 ? '∞' : t + 1; }));
+    const zeros = []; Y.forEach((r, a) => r.forEach((y, b) => { if (a < b && y === 0) zeros.push([a, b]); }));
+    const [a, b] = cell, va = G.V[a].n, vb = G.V[b].n, seq = P.map(M => M[a][b]), d = D[a][b];
+    let cap;
+    if (view === 'Y') cap = zeros.length
+      ? { en: `Y = X + X² + X³ + X⁴ (up to n − 1 = 4) has ${zeros.length} zero pair${zeros.length > 1 ? 's' : ''} off the diagonal (red): no edge sequence joins ${G.V[zeros[0][0]].n} and ${G.V[zeros[0][1]].n}, so G is <b>not connected</b> (Theorem 10.17). Tap an edge to delete or restore it.`, ar: `الـ Y اللي هي` + L('Y = X + X² + X³ + X⁴') + `فيها أصفار برّه الـ diagonal (الأحمر)، يعني مفيش edge sequence بين ${G.V[zeros[0][0]].n} و ${G.V[zeros[0][1]].n}، فالـ G <b>مش connected</b> (Theorem 10.17). دوس على أي edge عشان تمسحه أو ترجّعه.` }
+      : { en: 'Y = X + X² + X³ + X⁴ (up to n − 1 = 4) has no zero off the main diagonal, so G is <b>connected</b> (Theorem 10.17). Tap an edge to delete it.', ar: 'الـ Y اللي هي' + L('Y = X + X² + X³ + X⁴') + 'مفيهاش ولا صفر برّه الـ main diagonal، فالـ G <b>connected</b> (Theorem 10.17). دوس على أي edge عشان تمسحه.' };
+    else if (a === b) cap = { en: 'Tap a cell off the diagonal.', ar: 'دوس على خانة برّه الـ diagonal.' };
+    else if (d === '∞') cap = { en: `[X¹], [X²], [X³], [X⁴] at (${va}, ${vb}) are ${seq.join(', ')}: all zero, so ${va} and ${vb} are not connected.`, ar: `قيم الخانة ${B('(' + va + ', ' + vb + ')')} في الـ ${B('X¹ … X⁴')} هي:` + L(seq.join(', ')) + `وكلها أصفار، فالـ ${va} والـ ${vb} مش متوصّلين.` };
+    else cap = { en: `[X¹], [X²], [X³], [X⁴] at (${va}, ${vb}) are ${seq.join(', ')}. The first non-zero is at k = ${d}, so d(${va}, ${vb}) = <b>${d}</b> (Theorem 10.18). Tap a cell, or an edge to delete it.`, ar: `قيم الخانة ${B('(' + va + ', ' + vb + ')')} في الـ ${B('X¹ … X⁴')} هي:` + L(seq.join(', ')) + `وأول قيمة مش صفر عند ${B('k = ' + d)}، فـ ${B('d(' + va + ', ' + vb + ') = ' + d)} (Theorem 10.18). دوس على أي خانة، أو على edge عشان تمسحه.` };
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Modes} list=${[['d', 'Distances'], ['Y', 'Y = X + … + X⁴']]} mode=${view} set=${setView} />
+      <${Gr} G=${G} lab="Graph of Fig. 10.13: tap an edge to delete it" onE=${j => setOff(o => o.includes(j) ? o.filter(x => x !== j) : o.concat(j))} ec=${j => off.includes(j) ? 'off' : ''} vc=${x => view === 'd' && (x === a || x === b) ? 'on' : ''} />
+      ${view === 'Y' ? html`<${Mat} ti="Y" rl=${G.V.map(x => x.n)} cl=${G.V.map(x => x.n)} v=${(r, c) => Y[r][c]} c=${(r, c) => r !== c && Y[r][c] === 0 ? 'bad' : ''} />`
+        : html`<${Mat} ti="d(vi, vj)" rl=${G.V.map(x => x.n)} cl=${G.V.map(x => x.n)} v=${(r, c) => D[r][c]} c=${(r, c) => (r === a && c === b ? 'hl cur' : '') + (D[r][c] === '∞' ? ' bad' : '')} onX=${(r, c) => setCell([r, c])} />`}
+      <div className="dmv10-chips"><button className="fig-btn" onClick=${() => setOff([])} disabled=${!off.length}>Restore all edges</button></div>
+    </div></div>
+      <${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── 10.21 matrix-tree theorem: every cofactor of Q = H − X counts the spanning trees ── */
+  const SQ4 = [[60, 32], [240, 32], [240, 152], [60, 152]], TRI = [[150, 26], [250, 152], [50, 152]];
+  const PRE = { k4: { pos: SQ4, on: [[0, 1], [1, 2], [2, 3], [0, 3], [1, 3], [0, 2]] }, f102: { pos: SQ4, on: [[0, 1], [1, 2], [2, 3], [0, 3], [1, 3]] }, k3: { pos: TRI, on: [[0, 1], [1, 2], [0, 2]] } };
+  function MTree({ ar }) {
+    const [pre, setPre] = useState('k4'), [on, setOn] = useState(PRE.k4.on.map(p => p.join())), [del, setDel] = useState(0);
+    const pos = PRE[pre].pos, nv = pos.length, all = []; for (let a = 0; a < nv; a++) for (let b = a + 1; b < nv; b++) all.push([a, b]);
+    const G = { w: 300, h: 182, V: pos.map(([x, y], k) => V_('v' + (k + 1), x, y)), E: all.map(([a, b]) => E_('', a, b)) };
+    const live = all.map((p, j) => on.includes(p.join()) ? j : -1).filter(j => j >= 0), E = live.map(j => all[j]);
+    const X = adjOf(nv, E), H = rowSum(X), Q = X.map((r, a) => r.map((x, b) => a === b ? H[a] : -x));
+    const minor = Q.filter((_, a) => a !== del).map(r => r.filter((_, b) => b !== del)), det = detI(minor);
+    const trees = spanTrees(nv, all, live), tau = trees.length;
+    const F = [...Array(nv).keys()].map(v => E.map(([a, b]) => v === a ? 1 : v === b ? -1 : 0)), FF = E.length ? mul(F, tr(F)) : Q.map(r => r.map(() => 0)), same = FF.every((r, a) => r.every((x, b) => x === Q[a][b]));
+    const complete = E.length === nv * (nv - 1) / 2, vd = 'v' + (del + 1);
+    const load = k => { setPre(k); setOn(PRE[k].on.map(p => p.join())); setDel(0); };
+    const tog = j => setOn(o => o.includes(all[j].join()) ? o.filter(x => x !== all[j].join()) : o.concat(all[j].join()));
+    const enC = `Q = H − X: the degrees on the diagonal, −1 for each edge${same ? ' (and F Fᵀ, computed from F, gives the same Q)' : ''}. Delete row and column ${vd}: the cofactor is <b>${det}</b>, and G has τ(G) = <b>${tau}</b> spanning tree${tau === 1 ? '' : 's'}${tau ? ', drawn below' : ''} (matrix-tree theorem).` + (complete ? ` K${nv}: τ = ${nv}${SUP[nv - 2]} = ${tau}.` : '') + ' Tap an edge to add or remove it, a row of Q to delete another one.';
+    const arC = `الـ Q هي ${B('H − X')}، يعني الـ degrees على الـ diagonal و ${B('−1')} مكان كل edge${same ? ' (والـ ' + B('F Fᵀ') + ' لو حسبناها من الـ F بتطلع نفس الـ Q)' : ''}. لو مسحنا الـ row والـ column بتوع ${vd} الـ cofactor بيطلع:` + L(`det = ${det} = τ(G)`) + `يعني الـ G فيه ${tau} spanning trees${tau ? ' مرسومين تحت' : ''} (الـ matrix-tree theorem).` + (complete ? ` ولأنه ${B('K' + nv)} فـ` + L(`τ(K${nv}) = ${nv}${SUP[nv - 2]} = ${tau}`) : '') + 'دوس على أي edge عشان تضيفه أو تشيله، وعلى أي row في الـ Q عشان تمسح غيره.';
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Modes} list=${[['k4', 'K₄'], ['f102', 'Fig. 10.2'], ['k3', 'K₃']]} mode=${pre} set=${load} />
+      <${Gr} G=${G} lab="Graph: tap an edge to add or remove it" onE=${tog} ec=${j => live.includes(j) ? '' : 'off'} vc=${k => k === del ? 'ref' : ''} onV=${setDel} />
+      <div className="dmv10-two">
+        <${Mat} ti="X" rl=${G.V.map(x => x.n)} cl=${G.V.map(x => x.n)} v=${(r, c) => X[r][c]} />
+        <${Mat} ti="Q = H − X" rl=${G.V.map(x => x.n)} cl=${G.V.map(x => x.n)} v=${(r, c) => Q[r][c]} rc=${r => r === del ? 'gone' : ''} c=${(r, c) => c === del ? 'gone' : r !== del ? 'hl' : ''} onR=${setDel} />
+      </div>
+      <p className=${'dmv10-ver ' + (tau ? 'ok' : 'bad')}>cofactor = ${det} = τ(G) = ${tau}</p>
+      ${tau ? html`<${Thumbs} G=${G} trees=${trees} />` : null}
+    </div></div>
+      <${Cap} en=${enC} ar=${arC} showAr=${ar} /></figure>`;
+  }
+
+  /* ── worked example: the triangle, step by step ── */
+  function Triangle({ ar }) {
+    const G = G3, A = incOf(G), X = adjOf(3, pairs(G)), H = rowSum(X), Q = X.map((r, a) => r.map((x, b) => a === b ? H[a] : -x));
+    const n = 6, [i, ctl] = useWalk(n, 2200), trees = spanTrees(3, pairs(G), [0, 1, 2]), rA = rank2(A), Bm = [[1, 1, 1]], rB = rank2(Bm);
+    const det = detI([[Q[1][1], Q[1][2]], [Q[2][1], Q[2][2]]]);
+    const vl = G.V.map(v => v.n), el = G.E.map(e => e.n);
+    const caps = [
+      { en: 'Worked example: the triangle v1 v2 v3 with e1 = v1v2, e2 = v2v3, e3 = v1v3.', ar: 'مثال محلول: مثلث فيه v1 و v2 و v3، والـ edges بتوعه:' + L('e1 = v1v2, e2 = v2v3, e3 = v1v3') },
+      { en: `Incidence A: each column has two 1s; the row sums are the degrees ${H.join(', ')}.`, ar: `الـ incidence matrix A فيها كل column فيه 1 مرتين، ومجموع كل row هو الـ degree، يعني ${H.join(' و ')}.` },
+      { en: 'Adjacency X: x_ij = 1 when v_i v_j is an edge, and here every pair is joined.', ar: `الـ adjacency matrix X فيها ${B('x_ij = 1')} لما يكون فيه edge بين ${B('v_i')} و ${B('v_j')}، وهنا كل الأزواج متوصّلة.` },
+      { en: 'H − X = [2 −1 −1; −1 2 −1; −1 −1 2].', ar: `الـ ${B('H − X')} بتطلع كده:` + L('H − X = [2 −1 −1; −1 2 −1; −1 −1 2]') },
+      { en: `Delete row and column v1: the cofactor det[2 −1; −1 2] = 4 − 1 = ${det} = τ(K₃) = 3³⁻². These are the ${trees.length} spanning trees.`, ar: 'لو مسحنا الـ row والـ column بتوع v1 الـ cofactor بيطلع:' + L(`det[2 −1; −1 2] = 4 − 1 = ${det} = τ(K₃) = 3³⁻²`) + `ودول الـ ${trees.length} spanning trees.` },
+      { en: `G is connected: rank A = n − 1 = ${rA}. It has one cycle {e1, e2, e3}: rank B = m − n + 1 = 3 − 3 + 1 = ${rB}.`, ar: 'الـ G ده connected، فـ' + L(`rank A = n − 1 = ${rA}`) + `وفيه cycle واحد بس هو ${B('{e1, e2, e3}')}، فـ` + L(`rank B = m − n + 1 = 3 − 3 + 1 = ${rB}`) }
+    ];
+    let mats;
+    if (i === 0) mats = null;
+    else if (i === 1) mats = html`<${Mat} ti="A" rl=${vl} cl=${el} v=${(r, c) => A[r][c]} ex=${{ h: 'deg', v: r => H[r] }} />`;
+    else if (i === 2) mats = html`<${Mat} ti="X" rl=${vl} cl=${vl} v=${(r, c) => X[r][c]} />`;
+    else if (i === 3) mats = html`<${Mat} ti="H − X" rl=${vl} cl=${vl} v=${(r, c) => Q[r][c]} />`;
+    else if (i === 4) mats = html`<${Mat} ti="H − X without row, column v1" rl=${vl} cl=${vl} v=${(r, c) => Q[r][c]} rc=${r => r === 0 ? 'gone' : ''} c=${(r, c) => c === 0 ? 'gone' : r ? 'hl' : ''} /><${Thumbs} G=${G} trees=${trees} />`;
+    else mats = html`<div className="dmv10-two"><${Mat} ti=${'A · rank ' + rA} rl=${vl} cl=${el} v=${(r, c) => A[r][c]} /><${Mat} ti=${'B · rank ' + rB} rl=${['Z1']} cl=${el} v=${(r, c) => Bm[r][c]} /></div>`;
+    return html`<figure className="fig dmv10"><div className="fig-stage"><div className="dmv10-wrap">
+      <${Gr} G=${G} lab="Triangle v1 v2 v3" ec=${() => i === 5 ? 'on' : ''} />${mats}
+    </div></div>
+      <${Cap} ...${caps[i]} showAr=${ar} /><${WBar} n=${n} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, {
+    'dm-incmat-build': IncBuild, 'dm-incmat-try': IncTry, 'dm-incmat-tree': IncTree, 'dm-incmat-oriented': IncOriented,
+    'dm-cycmat-build': CycBuild, 'dm-cycmat-2iso': Cyc2Iso, 'dm-cutmat-build': CutBuild, 'dm-cutmat-fund': CutFund,
+    'dm-pathmat-build': PathBuild, 'dm-adjmat-edgeseq': EdgeSeq, 'dm-adjmat-powers': AdjPow, 'dm-adjmat-connect': AdjConn,
+    'dm-adjmat-mtree': MTree, 'dm-adjmat-triangle': Triangle
+  });
+})();

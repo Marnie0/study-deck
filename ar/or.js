@@ -1513,7 +1513,10 @@ AR.or = {
   "7": {
    "notes": [
     {
-     "h": "مصطلحات الـ Project (تعريفات Revision 1)"
+     "h": "مصطلحات الـ Project (تعريفات Revision 1)",
+     "figH": {
+      "or-cpm-terms": "المصطلحات على network حقيقية: دوس على المصطلح وشوفه فين (مثال السكشن)"
+     }
     },
     {
      "h": "رسم الـ CPM network (قواعد السكشن)",
@@ -1523,31 +1526,56 @@ AR.or = {
       "الـ activities اللي ليها نفس الـ predecessors بتبدأ من نفس الـ node (مثلًا D و E و F كلهم بعد C، فبيطلعوا من الـ end node بتاعة C).",
       "مينفعش اتنين activities يبقى ليهم نفس الـ start node ونفس الـ end node: افصل بينهم بـ node زيادة و <b>dummy</b>.",
       "استخدم dummy لما activity تعتمد على جزء بس من مجموعة (مثلًا F بعد C بس، لكن D بعد A و C): وصّل بسهم dummy متقطع."
-     ]
+     ],
+     "figH": {
+      "or-cpm-build": "بناء الـ network بتاعة امتحان <bdi dir=\"ltr\">2019/20</bdi> الـ activity ورا التانية: فيها start node واحدة، ونفس الـ node لنفس الـ predecessors، و end node واحدة",
+      "or-cpm-dummy": "إمتى نحتاج dummy: اتنين activities على نفس الـ nodes الاتنين، و activity معتمدة على جزء من مجموعة"
+     }
     },
     {
-     "h": "معادلات الأوقات"
+     "h": "معادلات الأوقات",
+     "figH": {
+      "or-cpm-formulas": "المعادلات على network امتحان <bdi dir=\"ltr\">2019/20</bdi>: الـ max عند الـ merge node، والـ min عند الـ burst node، والـ total float والـ free float، واختبار الـ nodes"
+     }
     },
     {
-     "h": "مثال محلول (من الـ <bdi dir=\"ltr\">Final&nbsp;2019/20</bdi>، سكشن):<span class=\"ltr\">A 15; B 17 (A); C 21 (A); D 19 (B); E 22 (B); F 18 (C, D); G 15 (E, F)</span>"
+     "h": "مثال محلول (من الـ <bdi dir=\"ltr\">Final&nbsp;2019/20</bdi>، سكشن):<span class=\"ltr\">A 15; B 17 (A); C 21 (A); D 19 (B); E 22 (B); F 18 (C, D); G 15 (E, F)</span>",
+     "figH": {
+      "or-cpm-pass-2019": "الـ forward pass والـ backward pass والجدول node ورا node، لحد الـ critical path (84 شهر)"
+     }
     },
     {
-     "h": "نتيجة المثال"
+     "h": "نتيجة المثال",
+     "figH": {
+      "or-cpm-paths-2019": "كل path من البداية للنهاية متجمّع: الأطول هو الـ critical path"
+     }
     },
     {
-     "h": "مثال السكشن:<span class=\"ltr\">A 5; B 7 (A); C 10 (A); D 2 (B); E 8 (C); F 10 (C); G 5 (D, E, F); H 3 (G)</span>"
+     "h": "مثال السكشن:<span class=\"ltr\">A 5; B 7 (A); C 10 (A); D 2 (B); E 8 (C); F 10 (C); G 5 (D, E, F); H 3 (G)</span>",
+     "figH": {
+      "or-cpm-pass-section": "مثال السكشن خطوة بخطوة ومعاه الـ dummy بتاعه، لحد <bdi dir=\"ltr\">T&nbsp;=&nbsp;33</bdi>"
+     }
     },
     {
      "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2024/25</bdi> (بالأيام):<span class=\"ltr\">A 6; G 2; J 13; B 4 (A); C 7 (B); D 2 (A); E 4 (D); F 10 (E); H 10 (G); I 6 (J, H); K 9 (A); L 3 (C, K); M 5 (I, L)</span>"
     },
     {
-     "h": "نتيجة الـ <bdi dir=\"ltr\">Final&nbsp;2024/25</bdi>"
+     "h": "نتيجة الـ <bdi dir=\"ltr\">Final&nbsp;2024/25</bdi>",
+     "figH": {
+      "or-cpm-pass-2024-25": "امتحان الـ Final <bdi dir=\"ltr\">2024/25</bdi> خطوة بخطوة: فيها تلات start activities، و merge nodes، و <bdi dir=\"ltr\">T&nbsp;=&nbsp;25</bdi> يوم"
+     }
     },
     {
-     "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2023/24</bdi> (سنة تالتة):<span class=\"ltr\">A 3; B 3 (A); C 3 (A); D 5 (C); E 6 (B, C); F 9 (D, E); G 5 (E); H 3 (G); I 5 (G, F); J 6 (I, H); K 4 (J)</span>"
+     "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2023/24</bdi> (سنة تالتة):<span class=\"ltr\">A 3; B 3 (A); C 3 (A); D 5 (C); E 6 (B, C); F 9 (D, E); G 5 (E); H 3 (G); I 5 (G, F); J 6 (I, H); K 4 (J)</span>",
+     "figH": {
+      "or-cpm-pass-2023-24": "امتحان الـ Final <bdi dir=\"ltr\">2023/24</bdi> (سنة تالتة) خطوة بخطوة: فيها تلات dummies واتنين critical paths طول كل واحد 36"
+     }
     },
     {
-     "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2023/24</bdi> (سنة تانية):<span class=\"ltr\">A 5; B 5; C 2 (B); D 2 (A, C); E 3 (A, C); F 1 (A, C); G 2 (B); H 7 (B); I 13 (E); J 6 (E, D); K 4 (F, G, H); L 5 (H); M 5 (J, K, L)</span>"
+     "h": "امتحان الـ <bdi dir=\"ltr\">Final&nbsp;2023/24</bdi> (سنة تانية):<span class=\"ltr\">A 5; B 5; C 2 (B); D 2 (A, C); E 3 (A, C); F 1 (A, C); G 2 (B); H 7 (B); I 13 (E); J 6 (E, D); K 4 (F, G, H); L 5 (H); M 5 (J, K, L)</span>",
+     "figH": {
+      "or-cpm-solver": "محلل الـ CPM: أي مثال من المحاضرة أو جدولك انت: الـ network والأوقات والـ floats والـ critical path"
+     }
     }
    ],
    "cards": [

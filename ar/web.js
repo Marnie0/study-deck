@@ -18,7 +18,13 @@ AR.web = {
       "الـ <b>Web site</b>: مجموعة web pages متجمعة مع بعض وغالبًا متوصلة ببعض بطرق مختلفة.",
       "الـ <b>Static website</b>: الـ web pages متخزنة على الـ server <b>بنفس الشكل</b> اللي الـ user هيشوفها بيه.",
       "الـ <b>Dynamic website</b>: الصفحات <b>مش</b> متخزنة بالشكل اللي الـ user بيشوفه؛ المحتوى بيتغير أوتوماتيك و/أو كتير حسب criteria معينة. ليها معنيين: (1) الـ code بتاع الصفحة <b>بيتبني dynamically حتة حتة</b>؛ (2) <b>المحتوى اللي بيظهر بيختلف</b> حسب criteria (قواعد متحددة قبل كده أو input متغير من الـ user)."
-     ]
+     ],
+     "figH": {
+      "wb-l1-services": "الـ Internet بيشيل خدمات كتير، والـ Web واحدة منهم بس",
+      "wb-l1-proscons": "مميزات وعيوب الـ Internet، الرسمتين",
+      "wb-l1-pagesite": "الـ web page والـ links بتاعتها للـ resources، وبعدين الـ web site كصفحات متوصلة ببعض",
+      "wb-l1-staticdyn": "اطلب صفحة static وصفحة dynamic، واحدة متخزنة زي ما بتظهر والتانية بتتبني حتة حتة"
+     }
     },
     {
      "h": "الـ URL (Uniform Resource Locator)",
@@ -28,7 +34,11 @@ AR.web = {
       "الـ <b>Domain name</b> أو الـ <b>host name</b>: عنوان الـ server، زي:<span class=\"ltr\">www.example.com</span>الـ <code>example.com</code> هو الـ domain والـ <code>www.</code> هو host معين جوه الـ domain ده. وممكن كمان يبقى فيه:<span class=\"ltr\">development.example.com</span><span class=\"ltr\">clients.example.com</span>",
       "الـ <b>File name</b> أو الـ <b>path</b> (اختياري)، زي:<span class=\"ltr\">/2012/samples/first.html</span>يعني directories بينها slashes بتبدأ من الـ root directory بتاع الـ host.",
       "مثال:<span class=\"ltr\">http://www.icci.org/studies/ips.html</span>فيه:<span class=\"ltr\">protocol = http<br>host computer name = www<br>second-level domain = icci<br>top-level domain = org<br>directory = studies<br>file name = ips.html</span>"
-     ]
+     ],
+     "figH": {
+      "wb-l1-urlparts": "الـ 3 components بتوع الـ URL، وهما الـ protocol واسم الـ site والـ absolute path",
+      "wb-l1-urlsplit": "قسّم الـ URL جزء جزء، ومعاه معنى الـ top-level domain"
+     }
     },
     {
      "h": "الـ Top-level domains"
@@ -42,7 +52,11 @@ AR.web = {
       "الـ <b>HTTP</b> (Hypertext Transfer Protocol): بيضمن تبادل كل أنواع الـ resources تقريبًا على الـ web (الـ files والـ pages والـ images ونتايج البحث)؛ وهو اللغة اللي الـ browser بيبعت بيها الـ requests للـ server. والـ <b>HTTPS</b> هو النسخة الـ secure المتشفرة (encrypted).",
       "الـ <b>FTP</b> (File Transfer Protocol): بيعمل upload أو download للـ files بين الـ client والـ server أو بين كمبيوترين؛ مسؤول عن نقل الـ files.",
       "الـ <b>ISP</b> (Internet Service Provider): هو organization بتدّي الأفراد والشركات access للـ Internet وخدمات مرتبطة بيه زي الـ e-mail."
-     ]
+     ],
+     "figH": {
+      "wb-l1-search": "الـ search engine بيدوّر في الـ database المتنظمة بتاعته، مش في الـ Internet كله",
+      "wb-l1-protocols": "كل واحد بيعمل إيه، الـ <bdi dir=\"ltr\">TCP/IP</bdi> والـ HTTP والـ HTTPS والـ FTP والـ ISP والـ web hosting"
+     }
     },
     {
      "h": "الـ Client-server architecture",
@@ -53,7 +67,11 @@ AR.web = {
       "الـ <b>Client</b> (الـ front end): ناحية الـ user، وغالبًا هو الـ web browser؛ وممكن كمان يقصد بيه الـ plug-ins أو الـ helper apps أو جهاز handheld.",
       "الـ <b>Client-side technologies</b> هي الـ <bdi dir=\"ltr\">HTML&nbsp;/&nbsp;XHTML</bdi>، والـ CSS (Cascading Style Sheets)، والـ <bdi dir=\"ltr\">JavaScript&nbsp;/&nbsp;VBScript</bdi>.",
       "الـ <b>Web browser</b> هو software بيجيب ويعرض ويتنقل بين مصادر المعلومات على الـ WWW. والـ resource بيتعرف بـ <b>URI</b> (Uniform Resource Identifier)."
-     ]
+     ],
+     "figH": {
+      "wb-l1-csexample": "مثال الـ Client-server، فيه الـ request والـ web server والـ database والـ response",
+      "wb-l1-arch": "الـ Web architecture، رتّب الـ technologies بين الـ client-side والـ server-side"
+     }
     },
     {
      "h": "الـ Web بيشتغل إزاي (5 خطوات)",
@@ -63,7 +81,10 @@ AR.web = {
       "<b>3.</b> بعد ما ياخد الـ IP address، الـ browser بيبعت request للصفحة للـ web server باستخدام الـ <b>HTTP</b>، اللي بيحدد الـ browser والـ server بيتكلموا مع بعض إزاي. (الـ IP address ده رقم تعريفي مربوط بكمبيوتر أو network معينة.)",
       "<b>4.</b> الـ web server بيستقبل الـ request ويدوّر على الصفحة. لو لقاها بيرجعها للـ browser و<b>يقفل الـ HTTP connection</b>.",
       "<b>5.</b> الـ browser بيستقبل الصفحة، <b>يعملها interpret</b> ويعرض محتواها في الـ window."
-     ]
+     ],
+     "figH": {
+      "wb-l1-webworks": "الـ 5 خطوات من كتابة الـ URL لحد ما الصفحة تظهر (الـ browser والـ DNS والـ web server)"
+     }
     },
     {
      "h": "هيكل الـ site والـ hyperlinks والـ browsers بتعرض الصفحات إزاي",
@@ -71,7 +92,12 @@ AR.web = {
       "الهيكل المقترح للـ site:<br>(1) الـ <b>root folder</b> فيه الـ site كله؛<br>(2) صفحة اسمها <b><bdi dir=\"ltr\">index.htm&nbsp;/&nbsp;index.html</bdi></b> في الـ root تبقى الـ homepage الـ default؛<br>(3) ممكن folder اسمه <b>images</b>؛<br>(4) فيه folders زيادة عشان تنظم المحتوى.",
       "الـ <b>Hyperlinks</b> هي الطريقة الأساسية للتنقل بين الصفحات والـ sites. ليها 4 أنواع: الـ <b>Text</b> hyperlink (كلمة أو جملة)، والـ <b>Image</b> hyperlink، والـ <b>Bookmark</b> hyperlink (لجزء تاني في نفس الصفحة)، والـ <b>E-mail</b> hyperlink (تبعت e-mail للعنوان اللي ظاهر).",
       "لما صفحة تفتح، الـ browser بيقرا الـ HTML file ويعمله interpret ويظبط شكله. الـ files الخارجية (الـ images والـ multimedia) بتنزل من الـ server؛ يعني الـ HTML files فيها بس <b>references</b> للـ files الخارجية، مش \"embedding\" ليها جواها."
-     ]
+     ],
+     "figH": {
+      "wb-l1-sitetree": "الهيكل المقترح للـ site، وبنبنيه folder بـ folder",
+      "wb-l1-links": "الـ 4 أنواع بتوع الـ hyperlinks شغالين في صفحة صغيرة",
+      "wb-l1-display": "الـ browser بيقرا الـ index.htm وينزّل الصور اللي فيه references ليها بس"
+     }
     },
     {
      "h": "أنواع الـ web sites"
@@ -85,7 +111,10 @@ AR.web = {
       "رابعًا، الـ <b>Web accessibility</b>: الـ site يبقى متاح للكل، بما فيهم الناس اللي عندهم إعاقات (بصرية، سمعية، جسدية، في الكلام).",
       "خامسًا، الـ <b>User-friendly site</b>: متبني على اللي الجمهور محتاجه (<bdi dir=\"ltr\">UI/UX</bdi>).",
       "سادسًا، الـ <b>Download speed</b>: الـ designer مايقدرش يتحكم فيها بالكامل؛ اعمل optimize للـ graphics (الصور ماتزيدش عن <b><bdi dir=\"ltr\">10&nbsp;KB</bdi></b>)، اعمل صفحات أصغر، وابعد عن الـ nested tables."
-     ]
+     ],
+     "figH": {
+      "wb-l1-linkcolors": "ألوان الـ links الـ standard قدامك، أزرق للـ link وبنفسجي للـ visited وأحمر للـ active"
+     }
     },
     {
      "h": "أمان الـ Website (Website security)",
@@ -95,7 +124,11 @@ AR.web = {
       "<b>التهديدات (Threats)</b>: الـ mobile worms، الـ malware، الـ ransomware على الـ PC والموبايل، هجمات كبيرة زي <b>Stuxnet</b>، الـ hacking as a service، الـ spam، الـ phishing.",
       "الـ <b>Email phishing</b> هو emails بتدّعي إنها من شركة حقيقية عشان تسرق الـ usernames والـ passwords وتفاصيل الـ credit card؛ والـ links بتوديك لـ sites مزيفة شبه الأصلية. علاماتها: <b>أخطاء إملائية وقواعد ركيكة</b>، <b>links مشبوهة</b>، <b>تهديدات</b> (\"الـ account بتاعك هيتقفل\")، و<b>تقليد (spoofing) websites أو شركات مشهورة</b>.",
       "<b>اعتبارات الأمان (Security considerations)</b>:<br>(1) الـ <b>Updated software</b>؛<br>(2) الـ <b>SQL injection</b> (الـ hackers بيدخلوا code ضار جوه الـ query بتاعتك عشان يغيروا tables أو ياخدوا معلومات أو يمسحوا داتا)؛<br>(3) الـ <b>XSS</b> أو الـ cross site scripting (المهاجم بيحقن client side script؛ اعمل check أو encode أو شيل الـ HTML من الداتا اللي بتتبعت)؛<br>(4) الـ <b>Error messages</b> (ماتقولش هل الغلط في الـ username ولا الـ password)؛<br>(5) الـ <b>Validation of data</b> على الـ server side والـ client side الاتنين؛<br>(6) الـ <b>Passwords</b> (8 characters على الأقل فيها capital وsmall وspecial characters)؛<br>(7) الـ <b>Upload files</b> (ممكن يكون جواها script)؛<br>(8) الـ <b>SSL</b> لما تبعت معلومات شخصية."
-     ]
+     ],
+     "figH": {
+      "wb-l1-phish": "لاقي الـ 4 symptoms بتوع الـ phishing email",
+      "wb-l1-seclab": "جرّب الـ security considerations بنفسك، الـ passwords والـ error messages والـ SQL injection والـ XSS"
+     }
     }
    ],
    "cards": [
@@ -625,14 +658,21 @@ AR.web = {
       "الـ double quotes حوالين قيمة الـ attribute هي الأشهر، بس الـ single quotes بتشتغل برضه. لو القيمة نفسها فيها double quotes، استخدم single quotes:<pre>&lt;p title='John \"ShotGun\" Nelson'&gt;</pre>أو العكس:<pre>title=\"John 'ShotGun' Nelson\"</pre>",
       "الـ <code>&lt;hr&gt;</code> بيعرّف <b>thematic break</b>، وغالبًا بيظهر كـ <b>horizontal rule</b> (خط أفقي)، عشان يفصل المحتوى (أو يوضّح إن الموضوع اتغير). وهو empty element.",
       "الـ <code>&lt;br&gt;</code> بيعمل <b>line break</b> (سطر جديد من غير ما تبدأ paragraph جديدة). ده <b>empty tag</b> ملوش end tag، زي:<pre>&lt;p&gt;This is&lt;br&gt;a paragraph&lt;br&gt;\nwith line breaks.&lt;/p&gt;</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-quotes": "الـ single ولا الـ double quotes؟ مين اللي بيقفل قيمة الـ title",
+      "wb-breaks": "الـ <bdi dir=\"ltr\">&lt;hr&gt;</bdi> بيفصل المحتوى، والـ <bdi dir=\"ltr\">&lt;br&gt;</bdi> بيبدأ سطر جديد"
+     }
     },
     {
      "h": "مشكلة الـ poem والـ <code>&lt;pre&gt;</code>",
      "pts": [
       "الـ browser بيلمّ المسافات الزيادة والـ line breaks اللي جوه الـ <code>&lt;p&gt;</code>، فلو كتبت قصيدة على كذا سطر هتظهر في سطر واحد (دي \"the poem problem\").",
       "<b>الحل</b>: الـ <code>&lt;pre&gt;</code> بيعرّف <b>preformatted text</b>، بيتعرض بـ <b>fixed-width font (غالبًا Courier)</b>، و<b>بيحافظ على المسافات والـ line breaks الاتنين</b> زي ما كتبتهم بالظبط."
-     ]
+     ],
+     "figH": {
+      "wb-poem": "القصيدة جوه الـ <bdi dir=\"ltr\">&lt;p&gt;</bdi> بتتلم في سطر واحد، والـ <bdi dir=\"ltr\">&lt;pre&gt;</bdi> بيسيبها زي ما اتكتبت"
+     }
     },
     {
      "h": "الـ style attribute وأساسيات الـ CSS properties",
@@ -644,17 +684,26 @@ AR.web = {
       "الـ <b>font-size</b>: حجم الكلام، مثلًا:<pre>style=\"font-size:300%;\"</pre>أو <code>50px</code>.",
       "الـ <b>text-align</b>: المحاذاة الأفقية، مثلًا:<pre>style=\"text-align:center;\"</pre>",
       "الـ <b>border</b>: بيحدد عرض الـ border ونوعه ولونه، مثلًا:<pre>style=\"border:2px solid Tomato;\"</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-styleprops": "كل CSS property في الـ style attribute زي الـ slides، وبعدين اعمل التركيبة بتاعتك"
+     }
     },
     {
-     "h": "الـ text formatting elements"
+     "h": "الـ text formatting elements",
+     "figH": {
+      "wb-format": "كل formatting tag والـ browser بيعرضه إزاي"
+     }
     },
     {
      "h": "الـ Comments",
      "pts": [
       "الـ HTML comments مش بتظهر في الصفحة، بس بتوثّق الـ source code:<pre>&lt;!-- Write your comments here --&gt;</pre>",
       "احفظ شكل الـ comment في كل لغة:<pre>HTML:       &lt;!-- --&gt;\nCSS:        /* */\nJavaScript: //  and  /* */\nPHP:        #  //  /* */</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-comments": "الـ comment بيفضل في الـ source وعمره ما بيظهر، وشكله في كل لغة"
+     }
     },
     {
      "h": "الـ Colors",
@@ -663,10 +712,18 @@ AR.web = {
       "تقدر تطبّق الألوان على الـ <b>background</b> (الـ background-color)، والـ <b>text</b> (الـ color)، والـ <b>borders</b>:<span class=\"ltr\">border:2px solid Violet</span>",
       "لون \"Tomato\" مكتوب بـ 5 طرق:<pre>rgb(255, 99, 71)\n#ff6347\nhsl(9, 100%, 64%)</pre>ولو عايزه شفاف بنسبة <bdi dir=\"ltr\">50%</bdi>، بيبقى:<pre>rgba(255, 99, 71, 0.5)\nhsla(9, 100%, 64%, 0.5)</pre>آخر قيمة (الـ alpha) هي الـ opacity من <bdi dir=\"ltr\">0</bdi> لـ <bdi dir=\"ltr\">1</bdi>.",
       "الـ <b>Shades of gray</b> (درجات الرمادي) بتستخدم <b>نفس القيمة</b> للتلات parameters بتوع الـ RGB، مثلًا:<span class=\"ltr\">rgb(60,60,60) ... rgb(240,240,240)</span>يعني \"Gray with level 200\" هو:<span class=\"ltr\">rgb(200, 200, 200)</span>"
-     ]
+     ],
+     "figH": {
+      "wb-colornames": "أسماء الألوان على الـ background والـ text والـ border",
+      "wb-colorways": "لون Tomato مكتوب بـ 5 طرق، ومحوّل للون بتاعك",
+      "wb-grays": "درجات الرمادي بتاخد نفس القيمة للـ R والـ G والـ B"
+     }
     },
     {
-     "h": "مثال: الـ inline styles"
+     "h": "مثال: الـ inline styles",
+     "figH": {
+      "wb-inline": "مثال الـ inline styles بيتنفّذ سطر بسطر"
+     }
     }
    ],
    "cards": [
@@ -893,10 +950,16 @@ AR.web = {
       "بالـ CSS تقدر تتحكم في اللون، والخط، وحجم الكلام، والمسافات بين الـ elements، وإزاي الـ elements تتحط وتترتب، وصور أو ألوان الخلفية، وشكل العرض المختلف حسب الجهاز وحجم الشاشة، وحاجات تانية كتير.",
       "في الـ Lab 4: الـ CSS بيوصف إزاي الـ HTML elements تتعرض على الشاشة أو الورق أو أي media تانية؛ و<b>بيوفر شغل كتير</b> لأنه يقدر يتحكم في الـ layout بتاع كذا صفحة مرة واحدة. بيحل مشكلتين: الـ <b>presentation</b> (شكل elements معينة) والـ <b>layout</b>.",
       "الطبقات بتترتب إزاي <bdi dir=\"ltr\">(L7)</bdi>: الـ HTML هو الـ <b>content layer</b> (الهيكل والمعنى)، والـ CSS هو الـ <b>presentation layer</b>، والـ JavaScript هو الـ <b>behavior layer</b>."
-     ]
+     ],
+     "figH": {
+      "wb-css-layers": "صفحة واحدة بتلات طبقات: الـ HTML للـ content، والـ CSS للـ presentation، والـ JavaScript للـ behavior"
+     }
     },
     {
-     "h": "تلات طرق تضيف بيها CSS"
+     "h": "تلات طرق تضيف بيها CSS",
+     "figH": {
+      "wb-css-ways": "الـ inline والـ internal والـ external، وكل واحد فيهم بيأثر على قد إيه"
+     }
     },
     {
      "h": "أمثلة على الـ internal والـ external"
@@ -912,7 +975,11 @@ AR.web = {
       "الـ <b>Grouping selector</b> <code>p, h1</code>: بيختار كل الـ <code>&lt;p&gt;</code> وكل الـ <code>&lt;h1&gt;</code>.",
       "الـ <b>Universal selector</b> <code>*</code>: بيختار كل الـ elements.",
       "بيتستخدم كمان في الـ labs والامتحانات: الـ descendant <code>li a</code>، والـ pseudo-classes:<span class=\"ltr\">a:hover, a:visited, a:active, tr:nth-child(even)</span>"
-     ]
+     ],
+     "figH": {
+      "wb-css-rule": "الـ rule حتة حتة: الـ selector، والـ declaration block، والـ property، والـ value",
+      "wb-css-select": "اختار selector وشوف بيختار أنهي elements"
+     }
     },
     {
      "h": "الألوان والخطوط والأحجام",
@@ -920,7 +987,12 @@ AR.web = {
       "الـ <b>color</b>: لون الكلام. الـ <b>font-family</b>: نوع الخط. الـ <b>font-size</b>: حجم الكلام (مثلًا <bdi dir=\"ltr\">300%</bdi> أو <bdi dir=\"ltr\">16px</bdi>).",
       "الـ <b><bdi dir=\"ltr\">font-weight: bold</bdi></b> بيخلي الكلام بولد؛ والـ <b><bdi dir=\"ltr\">font-style: italic</bdi></b> بيخليه italic؛ والـ <b>text-decoration</b> بيضيف <bdi dir=\"ltr\">underline/overline/line-through</bdi> (والـ none بيشيل الخط اللي تحت الـ links).",
       "الـ Background properties <bdi dir=\"ltr\">(Lab 4)</bdi> هي الـ <b>background-color</b>، والـ <b>background-image</b> (بتتكرر by default لحد ما تغطي الـ element)، والـ <b>background-repeat</b>، والـ <b>background-attachment</b> (scroll أو fixed)، والـ <b>background-position</b>."
-     ]
+     ],
+     "figH": {
+      "wb-css-fonts": "شغّل وطفّي الـ color والـ font-family والـ font-size",
+      "wb-css-text": "جرّب الـ font-weight والـ font-style والـ text-decoration بنفسك",
+      "wb-css-bg": "صورة خلفية صغيرة مع الـ repeat والـ attachment والـ position"
+     }
     },
     {
      "h": "الـ CSS box model",
@@ -929,10 +1001,16 @@ AR.web = {
       "الـ <b>border</b>: إطار حوالين الـ element (العرض، النوع، اللون)، مثلًا:<pre>border: 2px solid powderblue;</pre>",
       "الـ <b>padding</b>: المسافة <b>بين الكلام والـ border</b> (جوه الـ border).",
       "الـ <b>margin</b>: المسافة <b>بره الـ border</b>."
-     ]
+     ],
+     "figH": {
+      "wb-css-box": "الـ box بيتبني من جوه لبره: الـ content، الـ padding، الـ border، الـ margin"
+     }
     },
     {
-     "h": "الـ shorthand بتاع الـ margin والـ padding والـ <code>border-width</code> <bdi dir=\"ltr\">(Lab 5)</bdi>"
+     "h": "الـ shorthand بتاع الـ margin والـ padding والـ <code>border-width</code> <bdi dir=\"ltr\">(Lab 5)</bdi>",
+     "figH": {
+      "wb-css-sides": "قيمة أو اتنين أو تلاتة أو أربعة، وكل قيمة بتروح لأنهي جهة"
+     }
     },
     {
      "h": "الـ Positioning والـ layout (الـ labs وسؤال الـ essay في الامتحان)",
@@ -941,7 +1019,13 @@ AR.web = {
       "الـ <b>float</b> <bdi dir=\"ltr\">(left/right)</bdi> بيزق الـ element لناحية عشان الكلام يلف حواليه؛ وبيستخدم في عمل horizontal navigation bars:<pre>li {float:left;}</pre>",
       "الـ <b>display</b> قيمه:<span class=\"ltr\">block, inline, none, flex, grid</span>في الـ Lab 6: الـ <b>Grid</b> بيقسم الصفحة لمناطق، مثلًا:<pre>grid-template-columns: auto auto;</pre>و <bdi dir=\"ltr\">repeat(3,300px)</bdi>، والـ <b>Flexbox</b> بيرص الـ items في row أو column.",
       "الـ Navigation bar عبارة عن list من الـ links:<pre>ul {\n  list-style-type: none;\n  margin: 0;\n  padding: 0;\n  overflow: hidden;\n}\nli {float: left;}\nli a {\n  display: block;\n  padding: 14px 16px;\n  text-decoration: none;\n}\nli a:hover {\n  background-color: #111;\n}</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-css-position": "قيم الـ position الخمسة على box حقيقي، جوه صفحة تقدر تعمل لها scroll",
+      "wb-css-float": "الـ float بيخلي الكلام يلف حوالين الصورة",
+      "wb-css-display": "الـ display بقيم block و inline و none، وبعدين الـ Flexbox والـ Grid على الـ parent",
+      "wb-css-navbar": "الـ navigation bar بيتبني rule بـ rule"
+     }
     }
    ],
    "cards": [
@@ -1156,16 +1240,30 @@ AR.web = {
       "كل item جوه <code>&lt;ul&gt;</code> أو <code>&lt;ol&gt;</code> بيبدأ بـ <code>&lt;li&gt;</code>. الـ items في الـ unordered بيتعلّم عليها بـ <b>bullets (دواير سودا صغيرة)</b> كـ default؛ وفي الـ ordered بـ <b>أرقام</b>.",
       "الـ lists ينفع تبقى <b>nested</b> (list جوه <code>&lt;li&gt;</code>).",
       "الـ <b>navigation bar</b> هو ببساطة list من الـ links، وبنعمله style بالـ CSS:<pre>&lt;ul&gt;\n  &lt;li&gt;&lt;a href=\"#home\"&gt;Home&lt;/a&gt;&lt;/li&gt;\n  ...\n&lt;/ul&gt;</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-list-kinds": "الـ <bdi dir=\"ltr\">&lt;ul&gt;</bdi> ولا الـ <bdi dir=\"ltr\">&lt;ol&gt;</bdi>؟ نفس الـ items بتاعة الـ <bdi dir=\"ltr\">&lt;li&gt;</bdi>، بـ bullets أو بأرقام",
+      "wb-list-nested": "الـ nested list عبارة عن <bdi dir=\"ltr\">&lt;ul&gt;</bdi> كاملة جوه الـ <bdi dir=\"ltr\">&lt;li&gt;</bdi> بتاع Tea",
+      "wb-list-navbar": "نفس الـ list من الـ links بـ 3 أشكال: من غير style، و navigation bar رأسي، وأفقي"
+     }
     },
     {
-     "h": "الـ list-style-type (شكل العلامة في الـ unordered list)"
+     "h": "الـ list-style-type (شكل العلامة في الـ unordered list)",
+     "figH": {
+      "wb-list-marker": "اختار الـ list-style-type وشوف العلامة بتتغيّر إزاي"
+     }
     },
     {
-     "h": "الـ ordered list: الـ attributes بتوع type و start"
+     "h": "الـ ordered list: الـ attributes بتوع type و start",
+     "figH": {
+      "wb-list-ol": "الـ type والـ start على الـ <bdi dir=\"ltr\">&lt;ol&gt;</bdi>، جرّب أي ترقيم"
+     }
     },
     {
-     "h": "الـ description list"
+     "h": "الـ description list",
+     "figH": {
+      "wb-list-dl": "الكود اللي فوق بيتعرض خطوة بخطوة، الـ <bdi dir=\"ltr\">&lt;dl&gt;</bdi> والـ square bullets مع nested list والـ <bdi dir=\"ltr\">type=\"A\" start=\"3\"</bdi>"
+     }
     },
     {
      "h": "الـ tables: الـ tags الأساسية",
@@ -1174,7 +1272,11 @@ AR.web = {
       "الـ <code>&lt;table&gt;</code> بيعمل الجدول؛ والـ <code>&lt;tr&gt;</code> بيعرّف row؛ والـ <code>&lt;td&gt;</code> بيعرّف data cell؛ والـ <code>&lt;th&gt;</code> بيعرّف <b>header cell</b> (bold و centered كـ default).",
       "فيه tags تانية للجدول: الـ <code>&lt;caption&gt;</code> (عنوان الجدول)، والـ <code>&lt;thead&gt;</code>، والـ <code>&lt;tbody&gt;</code>، والـ <code>&lt;tfoot&gt;</code>. والمجموعة الصح اللي \"كلها table elements\" هي <bdi dir=\"ltr\">&lt;table&gt;&lt;tr&gt;&lt;td&gt;</bdi>.",
       "الـ <b>colspan</b> بيخلي الـ cell تمتد على كذا <b>column</b>؛ والـ <b>rowspan</b> بيخليها تمتد على كذا <b>row</b>."
-     ]
+     ],
+     "figH": {
+      "wb-table-build": "جدول بيتبني row بـ row بالـ <bdi dir=\"ltr\">&lt;table&gt;</bdi> والـ <bdi dir=\"ltr\">&lt;tr&gt;</bdi> والـ <bdi dir=\"ltr\">&lt;th&gt;</bdi> والـ <bdi dir=\"ltr\">&lt;td&gt;</bdi>",
+      "wb-table-parts": "كل tag في الجدول والجزء اللي بيعمله"
+     }
     },
     {
      "h": "الـ borders والمقاسات في الجدول (CSS)",
@@ -1186,10 +1288,20 @@ AR.web = {
       "الـ <b><bdi dir=\"ltr\">border-style: dotted;</bdi></b> (وكمان dashed و solid و double...)، والـ <b>border-color</b>.",
       "المقاسات: عرض الجدول:<pre>&lt;table style=\"width:100%\"&gt;</pre>وعرض column بيتحط على <bdi dir=\"ltr\">&lt;th&gt;/&lt;td&gt;</bdi> كده:<pre>style=\"width:70%\"</pre>وارتفاع الـ row بيتحط على <code>&lt;tr&gt;</code> كده:<pre>style=\"height:200px\"</pre>",
       "الـ Zebra أو striped rows بتتعمل كده:<pre>tr:nth-child(even) {\n  background-color: #f2f2f2;\n}</pre>والـ <b>responsive table</b> بيظهر horizontal scroll bar على الشاشات الصغيرة (حطه جوه div عليه <bdi dir=\"ltr\">overflow-x:auto</bdi>)."
-     ]
+     ],
+     "figH": {
+      "wb-table-collapse": "ليه الـ borders بتطلع مزدوجة، وإزاي الـ border-collapse بيخليها border واحد",
+      "wb-table-style": "الـ borders المدوّرة، ومن غير border خارجي، والـ border-style، والـ border-color، وشكل الـ border اللي مش باين",
+      "wb-table-sizes": "شغّل وطفّي عرض الجدول وعرض الـ column وارتفاع الـ row",
+      "wb-table-zebra": "الـ zebra stripes، والـ <bdi dir=\"ltr\">nth-child(even)</bdi> بيختار أنهي rows",
+      "wb-table-responsive": "جدول عريض على شاشة صغيرة، بالـ <bdi dir=\"ltr\">overflow-x:auto</bdi> ومن غيره"
+     }
     },
     {
-     "h": "مثال على الـ colspan والـ rowspan"
+     "h": "مثال على الـ colspan والـ rowspan",
+     "figH": {
+      "wb-table-span": "اقفل الـ colspan أو الـ rowspan وشوف الـ cells بتروح فين"
+     }
     },
     {
      "h": "إزاي تبني جدول مش منتظم (طريقة الامتحان)",
@@ -1198,7 +1310,10 @@ AR.web = {
       "2) اكتب كل row كـ <code>&lt;tr&gt;</code>؛ ولكل cell بتبدأ في الـ row ده اكتب <code>&lt;td&gt;</code> وفيه الـ colspan بعدد الـ columns اللي بتغطيها، والـ rowspan بعدد الـ rows اللي بتغطيها.",
       "3) في الـ rows اللي بعد كده <b>اتخطّى</b> الأماكن اللي متغطية أصلًا بـ cell عليها rowspan من فوق.",
       "4) اعمل check: في كل row، مجموع الـ colspans بتوع الـ cells الجديدة، زائد الـ columns اللي لسه متغطية بـ rowspans من فوق، لازم يساوي إجمالي الـ columns."
-     ]
+     ],
+     "figH": {
+      "wb-table-irregular": "طريقة الامتحان row بـ row، على سؤال الـ notes أو على جدول تدمجه بنفسك"
+     }
     }
    ],
    "cards": [
@@ -1377,7 +1492,11 @@ AR.web = {
   "6": {
    "notes": [
     {
-     "h": "الـ block-level مقابل الـ inline elements"
+     "h": "الـ block-level مقابل الـ inline elements",
+     "figH": {
+      "wb-l6-flow": "الـ <bdi dir=\"ltr\">&lt;div&gt;</bdi> كـ block والـ <bdi dir=\"ltr\">&lt;span&gt;</bdi> كـ inline، سطر جديد ولا لأ، والعرض، والـ width والـ height والـ margin",
+      "wb-l6-sort": "الـ element ده block-level ولا inline؟ رتّبهم بنفسك"
+     }
     },
     {
      "h": "الـ <code>&lt;div&gt;</code> والـ <code>&lt;span&gt;</code>",
@@ -1385,7 +1504,11 @@ AR.web = {
       "الـ <b><code>&lt;div&gt;</code></b> هو block-level element بيستخدم غالبًا كـ <b>container لـ HTML elements تانية</b>؛ مالوش attributes إجبارية (style و class و id هم الشائعين)؛ ومع الـ CSS بنستخدمه نعمل style لـ <b>blocks من المحتوى</b>.",
       "الـ <b><code>&lt;span&gt;</code></b> هو <b>inline container</b> بنعلّم بيه جزء من نص أو document؛ ومع الـ CSS بنعمل style لـ <b>أجزاء من النص</b>، مثلًا:<pre>My mother has\n&lt;span style=\"color:blue;\n  font-weight:bold\"&gt;blue&lt;/span&gt;\neyes</pre>",
       "كل element ليه قيمة <b>display</b> default (block أو inline)، والـ CSS يقدر يغيرها:<span class=\"ltr\">display: block / inline / flex / grid</span>"
-     ]
+     ],
+     "figH": {
+      "wb-l6-span": "الـ <bdi dir=\"ltr\">&lt;span&gt;</bdi> بيعلّم جزء من النص، والـ CSS بيعمل style للجزء ده بس",
+      "wb-l6-display": "الـ <bdi dir=\"ltr\">&lt;div&gt;</bdi> كـ container فيه 4 blocks، غيّر الـ display لـ block أو inline أو flex أو grid"
+     }
     },
     {
      "h": "الـ Iframes",
@@ -1394,10 +1517,16 @@ AR.web = {
       "المقاس (بالـ pixels كـ default):<pre>height=\"200\" width=\"300\"</pre>أو بالـ CSS:<pre>style=\"height:200px;width:300px\"</pre>ودايمًا حط <b>title</b> عشان الـ screen readers.",
       "الـ iframe كـ default عليه border؛ شيله بـ:<pre>style=\"border:none;\"</pre>أو غيّره:<pre>style=\"border:2px solid red;\"</pre>",
       "<b>الـ Iframe كـ target لـ link</b>: الـ attribute بتاع <b>target</b> في الـ link لازم يشاور على الـ attribute بتاع <b>name</b> في الـ iframe."
-     ]
+     ],
+     "figH": {
+      "wb-l6-iframe": "الـ height والـ width والـ border بتوع الـ iframe، بالـ attributes أو بالـ CSS"
+     }
     },
     {
-     "h": "مثال على الـ iframe target"
+     "h": "مثال على الـ iframe target",
+     "figH": {
+      "wb-l6-target": "دوس على الـ link، ولو الـ target هو الـ name بتاع الـ iframe بيتفتح جواه"
+     }
     },
     {
      "h": "الـ HTML symbols (الـ entities) والـ emojis",
@@ -1406,7 +1535,10 @@ AR.web = {
       "علامة الـ Euro بـ 3 طرق:<span class=\"ltr\">&amp;euro;, &amp;#8364;, &amp;#x20AC;</span>الـ Copyright بـ <code>&amp;copy;</code>؛ وأصغر من بـ <code>&amp;lt;</code>؛ وأكبر من بـ <code>&amp;gt;</code>؛ والـ ampersand بـ <code>&amp;amp;</code>؛ والـ non-breaking space بـ <code>&amp;nbsp;</code>.",
       "الـ Math entities:<span class=\"ltr\">&forall; &amp;forall; (8704), &part; &amp;part; (8706), &exist; &amp;exist; (8707), &empty; &amp;empty; (8709), &nabla; &amp;nabla; (8711), &isin; &amp;isin; (8712), &notin; &amp;notin; (8713), &ni; &amp;ni; (8715), &prod; &amp;prod; (8719), &sum; &amp;sum; (8721)</span>",
       "الـ <b>Emojis</b> شكلها صور، بس هي في الحقيقة <b>characters من الـ <bdi dir=\"ltr\">UTF-8</bdi> (Unicode) character set</b>. استخدم الـ tag ده:<pre>&lt;meta charset=\"UTF-8\"&gt;</pre>والـ decimal reference، مثلًا:<span class=\"ltr\">&amp;#128512; (&#128512;), 128516 = &#128516;, 128525 = &#128525;, 128151 = &#128151;</span>"
-     ]
+     ],
+     "figH": {
+      "wb-l6-entity": "الرمز الواحد بـ 3 طرق (الـ entity name والـ decimal والـ hexadecimal)، والـ emojis عبارة عن characters"
+     }
     },
     {
      "h": "الـ XHTML مقابل الـ HTML",
@@ -1415,7 +1547,10 @@ AR.web = {
       "<b>ليه XHTML؟</b> عشان الـ HTML يبقى extensible ومرن أكتر ويشتغل مع data formats تانية (XML)، وعشان الـ browsers بتطنّش الأخطاء في الـ HTML، فالـ XHTML جاي بـ <b>error handling أشد بكتير</b>.",
       "<b>أهم الفروق</b>:<br>(1) الـ <code>&lt;!DOCTYPE&gt;</code> إجباري؛<br>(2) الـ attribute بتاع <b>xmlns</b> في <code>&lt;html&gt;</code> إجباري؛<br>(3) الـ <code>&lt;html&gt;</code> و <code>&lt;head&gt;</code> و <code>&lt;title&gt;</code> و <code>&lt;body&gt;</code> إجباريين؛<br>(4) الـ elements لازم دايمًا تبقى <b>properly nested</b>؛<br>(5) الـ elements لازم دايمًا تتقفل (<b>closed</b>)؛<br>(6) الـ elements لازم تبقى <b>lowercase</b>؛<br>(7) أسماء الـ attributes لازم تبقى <b>lowercase</b>؛<br>(8) قيم الـ attributes لازم دايمًا تبقى بين <b>quotes</b>.",
       "حتى الـ empty elements لازم تتقفل:<pre>&lt;br /&gt;\n&lt;hr /&gt;\n&lt;img src=\"happy.gif\"\n  alt=\"Happy face\" /&gt;</pre>ومثال على nesting غلط:<pre>&lt;b&gt;&lt;i&gt;Some text&lt;/b&gt;&lt;/i&gt;</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-l6-xhtml": "الـ 8 قواعد بتوع الـ XHTML متراجعة على أمثلة الـ slides الغلط والصح"
+     }
     },
     {
      "h": "الـ Forms وأنواع الـ input",
@@ -1425,10 +1560,17 @@ AR.web = {
       "الـ <b><bdi dir=\"ltr\">type=\"text\"</bdi></b>: text field سطر واحد. الـ <b><bdi dir=\"ltr\">type=\"password\"</bdi></b>: نص متخبي. الـ <b><bdi dir=\"ltr\">type=\"radio\"</bdi></b>: تختار <b>واحد بس (ONE)</b> من عدد محدود من الاختيارات (نفس الـ name بيجمعهم في group). الـ <b><bdi dir=\"ltr\">type=\"checkbox\"</bdi></b>: تختار <b>صفر أو أكتر (ZERO or MORE)</b>. الـ <b><bdi dir=\"ltr\">type=\"submit\"</bdi></b>: بيبعت داتا الـ form لـ <b>form-handler</b> متحدد في الـ attribute بتاع <b>action</b> في الـ form. وكمان فيه الـ <b>button</b>، والـ <b>reset</b>، والـ <b>number</b>، والـ <b>email</b>، والـ <b>date</b>، والـ <b>month</b> (شهر وسنة)، والـ <b>week</b> (أسبوع وسنة)، والـ <b>color</b> (color picker)، والـ <b>file</b> (file-select field)، والـ <b>image</b> (صورة كـ submit button)، والـ <b>tel</b>، والـ <b>range</b>.",
       "الـ <b><code>&lt;label&gt;</code></b> بيعرّف label؛ لما تدوس على النص بتاعه بيعمل toggle للـ <bdi dir=\"ltr\">radio/checkbox</bdi> (بيساعد الناس اللي بيلاقوا صعوبة يدوسوا على المساحات الصغيرة). خلي بالك: الـ <b>for</b> بتاع الـ label لازم يساوي الـ <b>id</b> بتاع الـ input.",
       "الـ Form attributes: الـ <b>action</b> (الداتا هتتبعت فين، مثلًا <bdi dir=\"ltr\">/action_page.php</bdi>)، والـ <b>method</b> (GET أو POST). وفيه controls تانية: الـ <code>&lt;textarea&gt;</code> (نص كذا سطر)، والـ <code>&lt;select&gt;</code> مع <code>&lt;option&gt;</code> (drop-down؛ وليه attribute اسمه <b>multiple</b>، والـ option ليها attribute اسمه <b>selected</b>)، والـ <code>&lt;button&gt;</code>، والـ <code>&lt;fieldset&gt;</code>."
-     ]
+     ],
+     "figH": {
+      "wb-l6-inputs": "كل أنواع الـ input والـ form controls، جرّبها بنفسك",
+      "wb-l6-choice": "الـ radio مقابل الـ checkbox، والـ for بتاع الـ label مربوط بالـ id بتاع الـ input"
+     }
     },
     {
-     "h": "مثال على form"
+     "h": "مثال على form",
+     "figH": {
+      "wb-l6-submit": "دوس Submit، وشوف أزواج الـ name والـ value رايحة لـ <bdi dir=\"ltr\">/action_page.php</bdi> بالـ POST أو الـ GET"
+     }
     },
     {
      "h": "الـ Multimedia: الـ video والـ audio",
@@ -1438,7 +1580,10 @@ AR.web = {
       "الـ <b>controls</b> بيضيف play و pause و volume. دايمًا حط <b>width و height</b>، وإلا الصفحة ممكن <b>ترعش (flicker)</b> وهي بتحمّل الفيديو. الـ <b><code>&lt;source&gt;</code></b> بيحط ملفات بديلة؛ والـ browser بيستخدم <b>أول format يعرفه</b>. والنص اللي بين الـ tags بيظهر بس في الـ browsers اللي مابتدعمش <code>&lt;video&gt;</code>.",
       "الـ <b>autoplay</b> بيشغّله لوحده؛ وحط <b>muted</b> بعد الـ autoplay عشان يقدر يشتغل (من غير صوت). الـ <b><code>&lt;track&gt;</code></b> بيضيف subtitles <bdi dir=\"ltr\">(kind=\"subtitles\")</bdi>.",
       "الكود ده بيشغّل صوت:<pre>&lt;audio controls&gt;\n  &lt;source src=\"horse.ogg\"\n    type=\"audio/ogg\"&gt;\n  &lt;source src=\"horse.mp3\"\n    type=\"audio/mpeg\"&gt;\n  ...\n&lt;/audio&gt;</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-l6-media": "الـ <bdi dir=\"ltr\">&lt;video&gt;</bdi> والـ <bdi dir=\"ltr\">&lt;audio&gt;</bdi>، والـ sources والـ controls والـ autoplay مع الـ muted والـ width والـ height"
+     }
     }
    ],
    "cards": [
@@ -1668,7 +1813,10 @@ AR.web = {
   "7": {
    "notes": [
     {
-     "h": "الـ HTML والـ CSS والـ JS بيكمّلوا بعض إزاي"
+     "h": "الـ HTML والـ CSS والـ JS بيكمّلوا بعض إزاي",
+     "figH": {
+      "wb-js1-layers": "صفحة واحدة layer ورا layer، الـ HTML للـ content والـ CSS للـ presentation والـ JavaScript للـ behavior"
+     }
     },
     {
      "h": "التاريخ",
@@ -1677,7 +1825,10 @@ AR.web = {
       "الـ <b>ECMA</b> عملت لغة standard اسمها <b>ECMAScript</b>؛ والـ <b>ECMAScript Edition 6 (ES6)</b> مدعومة في كل حتة وهي اللي بنسميها عادةً \"JavaScript\".",
       "المعادلة:<span class=\"ltr\"><b>JavaScript = ECMAScript + DOM API</b></span>يعني الـ language specification + التواصل مع الـ HTML. والـ Timeline بالترتيب:<span class=\"ltr\">JavaScript 1.0, ES1, ES2, ES3, AJAX, jQuery, ES5, ES6, ES7</span>",
       "الـ JavaScript أشهر programming language في العالم وهي <b>لغة البرمجة بتاعة الـ Web</b>؛ بتستخدم في الألعاب والـ desktop والـ mobile applications. وعادةً بتتصنف إنها لغة <b>object-oriented</b> (prototype-based)."
-     ]
+     ],
+     "figH": {
+      "wb-js1-history": "من Netscape لحد ES7، والمعادلة هي <span class=\"ltr\">JavaScript = ECMAScript + DOM API</span>"
+     }
     },
     {
      "h": "مميزات الـ JavaScript",
@@ -1686,7 +1837,10 @@ AR.web = {
       "<b>الـ Feedback فوري للزوار</b>: مش لازم يستنوا الصفحة تعمل reload عشان يعرفوا إنهم نسيوا يدخلوا حاجة.",
       "<b>الـ Interactivity أكتر</b>: الـ interfaces بتتفاعل لما الـ user يعدّي بالـ mouse أو يشغّلها من الـ keyboard.",
       "<b>الـ Interfaces أغنى</b>: الـ drag-and-drop components والـ sliders بيدّوا interface غني."
-     ]
+     ],
+     "figH": {
+      "wb-js1-trip": "خانة اتنست بيتشيك عليها في الـ server ولا في الـ browser"
+     }
     },
     {
      "h": "العيوب والخصائص",
@@ -1705,7 +1859,13 @@ AR.web = {
       "الـ JS ممكن تبقى في <b>external file <bdi dir=\"ltr\">(.js)</bdi></b> لوحدها، وتضمّنها بالـ attribute <b>src</b>:<pre>&lt;script src=\"file.js\"&gt;&lt;/script&gt;</pre>",
       "في الـ Lab 7 فيه تلات أماكن:<br>الأول <b>inline</b>، زي:<pre>&lt;button onclick=\"alert('Hi')\"&gt;</pre>والتاني <b>internal</b> (block <code>&lt;script&gt;</code>)، والتالت <b>external</b> (ملف <code>.js</code>).",
       "محتوى الـ <code>&lt;noscript&gt;</code> بيظهر بس في الـ browsers اللي مش بتشغّل JavaScript."
-     ]
+     ],
+     "figH": {
+      "wb-js1-headbody": "الـ function اللي في الـ <bdi dir=\"ltr\">&lt;head&gt;</bdi> بتشتغل مع كل نداء، والـ code اللي في الـ <bdi dir=\"ltr\">&lt;body&gt;</bdi> بيشتغل مرة واحدة وقت التحميل",
+      "wb-js1-first": "الـ First Example بيتقري من فوق لتحت، HTML و document.write و external file.js",
+      "wb-js1-places": "الـ inline والـ internal والـ external، نفس الـ alert من تلات أماكن",
+      "wb-js1-noscript": "اقفل الـ JavaScript ومحتوى الـ <bdi dir=\"ltr\">&lt;noscript&gt;</bdi> يظهر"
+     }
     },
     {
      "h": "الـ Variables",
@@ -1716,20 +1876,36 @@ AR.web = {
       "الأسامي بتبدأ بـ <b>حرف أو $ أو _</b>، وبعدها حروف أو $ أو _ أو أرقام؛ وهي <b>case sensitive</b>؛ وماينفعش تبقى reserved word (فـ <code>_myVariable</code> صح، لكن <code>123variable</code> و<code>break</code> غلط).",
       "الأنواع اللي الـ variable ممكن يشيلها: الـ String، والـ Number، والـ Undefined، والـ Null، والـ Objects (ومنها الـ arrays)، والـ Symbols، والـ Functions (وكمان الـ Boolean والـ BigInt).",
       "نتايج الـ <b>typeof</b>:<pre>typeof \"a\"          // \"string\"\ntypeof 5            // \"number\"\ntypeof true         // \"boolean\"\ntypeof undefined    // \"undefined\"\ntypeof null         // \"object\"\ntypeof [1,2,3]      // \"object\"\ntypeof NaN          // \"number\"\ntypeof function(){} // \"function\"\ntypeof typeof 1     // \"string\"</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-js1-loose": "الـ loose typing يعني variable واحد ونوعه بيمشي ورا القيمة",
+      "wb-js1-scope": "الـ var والـ let والـ const، أنهي اسم باين فين",
+      "wb-js1-names": "شيك على اسم variable بالتلات قواعد",
+      "wb-js1-typeof": "الـ typeof خطوة بخطوة، من <bdi dir=\"ltr\">typeof null</bdi> لحد <bdi dir=\"ltr\">typeof typeof 1</bdi>"
+     }
     },
     {
      "h": "الـ Expressions والـ comments",
      "pts": [
       "لو الـ operator هو <b>+</b> وواحد من الـ operands <b>string</b>، الـ + بتتحول لـ <b>string concatenation</b> والـ operand التاني بيتحول لـ string. مثال:<span class=\"ltr\">5 + \"9\" = \"59\"</span>",
       "الـ Comments (زي الـ Java بالظبط):<pre>// single-line\n/* multi-line */</pre>افتكر: الـ HTML بيستخدم <code>&lt;!-- --&gt;</code>، والـ <bdi dir=\"ltr\">CSS/JS</bdi> بيستخدموا <code>/* */</code>."
-     ]
+     ],
+     "figH": {
+      "wb-js1-plus": "الـ + لما يبقى فيها string بتبقى concatenation، خطوة بخطوة",
+      "wb-js1-comments": "الـ comments بتتجاهل، والـ statements الحقيقية بس اللي بتتنفذ"
+     }
     },
     {
-     "h": "أربع طرق للـ output"
+     "h": "أربع طرق للـ output",
+     "figH": {
+      "wb-js1-output": "الـ innerHTML والـ <bdi dir=\"ltr\">document.write()</bdi> والـ <bdi dir=\"ltr\">alert()</bdi> والـ <bdi dir=\"ltr\">console.log()</bdi> جنب بعض"
+     }
     },
     {
-     "h": "مثال: الـ input validation (Example 5)"
+     "h": "مثال: الـ input validation (Example 5)",
+     "figH": {
+      "wb-js1-ex5": "الـ Example 5 خطوة بخطوة، اكتب رقم ودوس Submit وتابع الشرط"
+     }
     },
     {
      "h": "الوصول للـ elements (الـ DOM، والـ Lab 8)",
@@ -1737,7 +1913,11 @@ AR.web = {
       "الـ <b>DOM</b> (Document Object Model) ده standard من الـ W3C؛ الـ HTML DOM بيعرّف الـ HTML elements كـ <b>objects</b>، وليها <b>properties</b>، و<b>methods</b> للوصول ليها، و<b>events</b>. أجزاؤه: الـ Core DOM، والـ XML DOM، والـ HTML DOM.",
       "طرق الوصول:<pre>document.getElementById(\"id\")\ndocument\n  .getElementsByClassName(\"c\")\ndocument\n  .getElementsByTagName(\"p\")\ndocument.querySelector(\"css\")</pre>",
       "ممكن تربط الـ events بـ:<pre>element.addEventListener(\n  event, function, useCapture)</pre>"
-     ]
+     ],
+     "figH": {
+      "wb-js1-dom": "شجرة الـ DOM وكل access method بترجع إيه",
+      "wb-js1-listen": "الـ addEventListener يعني اربط function وبعدين دوس أو عدّي بالـ mouse"
+     }
     }
    ],
    "cards": [
