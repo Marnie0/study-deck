@@ -884,17 +884,43 @@ function start() {
   const figWithHead = (s, an, n, ar) => html`<${React.Fragment} key=${n}>
     ${s.figH && s.figH[n] && html`<p className="fighead"><span dangerouslySetInnerHTML=${{ __html: s.figH[n] }}></span><${Ar} t=${an && an.figH && an.figH[n]} cls="arh" /></p>`}
     <${FigBlock} name=${n} ar=${ar} /></${React.Fragment}>`;
+  // Visuals are built only when they come near the screen (a long lecture has 30+ of them), so a lecture opens fast, uses less memory,
+  // and each animation starts when you reach it instead of finishing unseen. Until then a placeholder keeps the visual's last measured
+  // height (remembered per screen size), so saved reading positions and jumps to a section still land in the right place.
+  // Off-screen visuals get the class "away", which pauses their CSS animations.
+  const FIGH = (() => { try { return JSON.parse(localStorage.getItem('sd:figh') || '{}') || {}; } catch (e) { return {}; } })();
+  let fighTimer = 0;
+  const figKey = name => name + '@' + (window.innerWidth < 600 ? 's' : window.innerWidth < 1000 ? 'm' : 'l');
+  const saveFigH = (name, h) => {
+    const key = figKey(name); if (FIGH[key] === h) return; FIGH[key] = h;
+    if (!fighTimer) fighTimer = setTimeout(() => { fighTimer = 0; try { localStorage.setItem('sd:figh', JSON.stringify(FIGH)); } catch (e) {} }, 2000);
+  };
+  const figIO = typeof IntersectionObserver === 'function';
   function FigBlock({ name, ar }) {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
     // names like 'qa-…' live in figs-qa.js, which builds on figs.js
     const extra = /^([a-z]+)-/.exec(name), file = extra && extra[1] !== 'hci' && ['qa', 'mm', 'os', 'cc', 'fp', 'hc', 'ms', 'dm', 'or', 'ds', 'wb', 'mp', 'sa'].includes(extra[1]) ? 'figs-' + extra[1] : null;
     const [ready2, setReady2] = useState(() => !file || !!(window.FIGS && window.FIGS[name]));
+    const [near, setNear] = useState(!figIO);
+    const host = useRef(null);
     useEffect(() => { if (!ready) loadScript(dataUrl('figs')).then(() => setReady(true), () => setFailed(true)); }, []);
     useEffect(() => { if (ready && !ready2) loadScript(dataUrl(file)).then(() => setReady2(true), () => setFailed(true)); }, [ready]);
+    useEffect(() => {
+      const el = host.current; if (!el || !figIO) return;
+      const io = new IntersectionObserver(es => { const e = es[es.length - 1]; if (e.isIntersecting) setNear(true); el.classList.toggle('away', !e.isIntersecting); }, { rootMargin: '400px 0px' });
+      io.observe(el); return () => io.disconnect();
+    }, []);
+    const shown = near && ready && ready2 && !failed && !!(window.FIGS && window.FIGS[name]);
+    useEffect(() => {
+      const el = host.current; if (!shown || !el || typeof ResizeObserver !== 'function') return;
+      const ro = new ResizeObserver(() => { const h = Math.round(el.offsetHeight); if (h > 40) saveFigH(name, h); });
+      ro.observe(el); return () => ro.disconnect();
+    }, [shown]);
     if (failed) return html`<p className="muted small">The visual didn't load. Check your connection and refresh.</p>`;
-    if (!ready || !ready2) return html`<div className="vz vz-wait" style=${{ height: '200px' }} aria-hidden="true"></div>`;
-    const F = window.FIGS[name]; return F ? html`<div data-fig=${name}><${F} ar=${ar} /></div>` : null;
+    const F = shown && window.FIGS[name];
+    if (ready && ready2 && window.FIGS && !window.FIGS[name]) return null;
+    return html`<div ref=${host} data-fig=${name} className="fig-host">${F ? html`<${F} ar=${ar} />` : html`<div className="vz vz-wait" style=${{ height: (FIGH[figKey(name)] || 320) + 'px', margin: 0 }} aria-hidden="true"></div>`}</div>`;
   }
   // past papers: a trace question can be worked through as a diagram, before or after revealing the model answer
   function WatchSolved({ spec, ar, k }) {
@@ -909,12 +935,27 @@ function start() {
     </div>`;
   }
 
+  // keep a scroll target in place while the page above it settles (visuals, fonts and Arabic arriving change heights);
+  // it lets go after ms, or as soon as you scroll, tap or press a key yourself
+  function holdScroll(target, ms) {
+    let done = false, ro = null, t = 0;
+    const EV = ['wheel', 'touchstart', 'keydown', 'pointerdown'];
+    const apply = () => { if (done) return; const y = target(); if (y != null && Math.abs(window.scrollY - y) > 2) window.scrollTo(0, Math.max(0, y)); };
+    const stop = () => { if (done) return; done = true; if (ro) ro.disconnect(); clearTimeout(t); EV.forEach(e => window.removeEventListener(e, stop, true)); };
+    if (typeof ResizeObserver === 'function') { ro = new ResizeObserver(apply); ro.observe(document.body); }
+    EV.forEach(e => window.addEventListener(e, stop, { capture: true, passive: true }));
+    t = setTimeout(stop, ms);
+    apply();
+    return stop;
+  }
+
   function Read({ k, lecN, anchor, go, read, setRead, barRef, onSection }) {
     const c = C[k];
     const idx = c.lectures.findIndex(l => l.n === lecN);
     const lec = c.lectures[idx];
     const pageRef = useRef(null);
     const armed = useRef(false);
+    const holdRef = useRef(null);
     const [prefs, setPrefs] = usePersist('readprefs', { size: 'm', hl: true, focus: false });
     const [active, setActive] = useState(0);
     const [resumed, setResumed] = useState(false);
@@ -962,7 +1003,13 @@ function start() {
         const r = el.getBoundingClientRect();
         if (bar) bar.style.transform = 'scaleX(' + Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / Math.max(1, r.height))).toFixed(4) + ')';
         const now = Date.now();
-        if (armed.current && now - lastSave > 700) { lastSave = now; store.set(posKey, Math.max(0, Math.round(-r.top))); store.set('posf:' + k + ':' + lec.n, Math.min(1, Math.max(0, (innerHeight - r.top) / Math.max(1, r.height)))); }
+        if (armed.current && now - lastSave > 700) {
+          lastSave = now; store.set(posKey, Math.max(0, Math.round(-r.top))); store.set('posf:' + k + ':' + lec.n, Math.min(1, Math.max(0, (innerHeight - r.top) / Math.max(1, r.height))));
+          // also as "section i, so many pixels into it", which stays right when visuals above it change height
+          let at = null;
+          el.querySelectorAll('section.note, .fig-host').forEach(x => { const top = x.getBoundingClientRect().top; if (top <= 0) at = [x.id || x.dataset.fig, Math.round(-top)]; });
+          store.set('posa:' + k + ':' + lec.n, at);
+        }
       };
       const onScroll = () => { if (!frame) frame = requestAnimationFrame(paint); };
       paint();
@@ -974,23 +1021,27 @@ function start() {
     // reopen a lecture where you stopped (unless you arrived from search at a specific section)
     useEffect(() => {
       armed.current = false; setResumed(false);
-      const y = anchor ? 0 : store.get(posKey, 0);
+      const y = anchor ? 0 : store.get(posKey, 0), at = anchor ? null : store.get('posa:' + k + ':' + lec.n, null);
+      let stop = null;
       const t = requestAnimationFrame(() => {
         if (y > 400 && pageRef.current) {
-          window.scrollTo(0, pageRef.current.getBoundingClientRect().top + window.scrollY + y);
+          const sec = at && pageRef.current && [...pageRef.current.querySelectorAll('section.note, .fig-host')].find(x => (x.id || x.dataset.fig) === at[0]);
+          stop = holdScroll(sec ? () => sec.getBoundingClientRect().top + window.scrollY + at[1] : () => pageRef.current && pageRef.current.getBoundingClientRect().top + window.scrollY + y, 2500);
           setResumed(true);
         }
         setTimeout(() => { armed.current = true; }, 400);
       });
-      return () => cancelAnimationFrame(t);
+      return () => { cancelAnimationFrame(t); stop && stop(); };
     }, [lec.n]);
 
     useEffect(() => {
       if (!anchor) return;
       const el = document.getElementById(anchor);
-      if (el) { el.scrollIntoView({ block: 'start' }); el.classList.remove('flash-target'); void el.offsetWidth; el.classList.add('flash-target'); }
+      if (holdRef.current) holdRef.current();
+      if (el) { holdRef.current = holdScroll(() => el.getBoundingClientRect().top + window.scrollY - (parseFloat(getComputedStyle(el).scrollMarginTop) || 0), 2500); el.classList.remove('flash-target'); void el.offsetWidth; el.classList.add('flash-target'); }
       go({ anchor: null });
     }, [anchor]);
+    useEffect(() => () => { if (holdRef.current) holdRef.current(); }, [lec.n]);
 
     // which section is on screen
     useEffect(() => {
@@ -2259,5 +2310,14 @@ function start() {
   root.render(html`<${App} />`);
   const rootEl = document.getElementById('root');
   let hlQueued = false;
-  new MutationObserver(() => { if (hlQueued) return; hlQueued = true; requestAnimationFrame(() => { hlQueued = false; highlightPres(rootEl); }); }).observe(rootEl, { childList: true, subtree: true });
+  // code blocks are highlighted when they appear; only added elements can hold a new <pre> (an animation updating text adds none)
+  new MutationObserver(recs => {
+    if (hlQueued || !recs.some(r => [...r.addedNodes].some(n => n.nodeType === 1))) return;
+    hlQueued = true; requestAnimationFrame(() => { hlQueued = false; highlightPres(rootEl); });
+  }).observe(rootEl, { childList: true, subtree: true });
+  // the built site (dist.mjs sets DATA_V) keeps its files in a service worker: instant repeat visits, and studied courses open offline
+  if (window.DATA_V && 'serviceWorker' in navigator && window.isSecureContext) {
+    const reg = () => navigator.serviceWorker.register('sw.js').catch(() => {});
+    if (document.readyState === 'complete') setTimeout(reg, 3000); else window.addEventListener('load', () => setTimeout(reg, 3000));
+  }
 }
