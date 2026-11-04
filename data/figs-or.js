@@ -1691,7 +1691,7 @@
       ${note && html`<div className="orv5-key"><span>${note}</span></div>`}</div>
       <${Cap} en=${s.en} ar=${s.ar} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></${React.Fragment}>`;
   }
-  const EX2NOTE = { en: 'Row scanning boxes J1\'s only zero first (slides 22–26), so here J3 is the row left without an assignment; the notes\' text starts from J1 instead. Either way the lines are rows J2, J4 and column P4, and θ = 1.', ar: 'الـ row scanning بيعمل box للصفر الوحيد في J1 الأول (slides 22–26)، فهنا الصف اللي فاضل من غير assignment هو J3، والنوتس بتبدأ من J1 بدل كده. وفي الحالتين الخطوط على الصفين J2 و J4 والعمود P4، والـ θ بتساوي 1.' };
+  const EX2NOTE = { en: 'Row scanning boxes J1\'s only zero first (slides 22–26), so J3 is the row left without an assignment. The lines are rows J2, J4 and column P4, and θ = 1.', ar: 'الـ row scanning بيعمل box للصفر الوحيد في J1 الأول (slides 22–26)، فالصف اللي فاضل من غير assignment هو J3. والخطوط على الصفين J2 و J4 والعمود P4، والـ θ بتساوي 1.' };
   function HungMark({ ar }) {
     const [mode, setMode] = useState('ex2');
     return html`<figure className="fig orv5"><div className="fig-stage" style=${{ paddingBottom: 0 }}><${Modes} list=${[['ex2', 'Example 2 (slides 28–33)'], ['sh1', 'Sheet 1']]} mode=${mode} set=${setMode} /></div>

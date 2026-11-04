@@ -1636,7 +1636,7 @@ COURSES.ds = {
      "pts": [
       "A <b>pointer is a data type</b>; you can create variables of this type like any other type. A pointer variable <b>contains a memory address</b> and <b>points to a specific data type</b>.",
       "Lab definition: a <b>pointer variable</b> is a variable whose content is an <b>address</b> (a memory address).",
-      "Example: <code>int x; int *pointer1 = &amp;x;</code> pointer1 holds the address of x (e.g. 0x2000), not its value."
+      "Example: <code>int x; int *pointer1 = &amp;x;</code> pointer1 holds the address of x, not its value. On the slide, x is at 0x9060 (value 1), so pointer1 holds 0x9060; pointer1 itself sits at 0x2000."
      ],
      "fig": [
       "ds-l4-pointer-box"

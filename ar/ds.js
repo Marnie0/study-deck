@@ -725,7 +725,7 @@ AR.ds = {
      "pts": [
       "الـ <b>pointer هو data type</b>؛ تقدر تعمل variables من النوع ده زي أي type تاني. الـ pointer variable <b>جواه memory address</b> و<b>بيشاور على data type معين</b>.",
       "تعريف الـ Lab: الـ <b>pointer variable</b> هو variable المحتوى بتاعه <b>address</b> (عنوان في الـ memory).",
-      "مثال:<pre>int x;\nint *pointer1 = &amp;x;</pre>الـ pointer1 شايل الـ address بتاع x (مثلًا 0x2000)، مش القيمة بتاعته."
+      "مثال:<pre>int x;\nint *pointer1 = &amp;x;</pre>الـ pointer1 شايل الـ address بتاع x، مش القيمة بتاعته. في الـ slide الـ x موجود عند <bdi dir=\"ltr\">0x9060</bdi> وقيمته 1، يبقى الـ pointer1 شايل <bdi dir=\"ltr\">0x9060</bdi>، والـ pointer1 نفسه موجود عند <bdi dir=\"ltr\">0x2000</bdi>."
      ],
      "figH": {
       "ds-l4-pointer-box": "رسمة slide 2 خطوة بخطوة: الـ pointer1 شايل الـ address بتاع x"

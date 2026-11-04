@@ -3071,8 +3071,8 @@ COURSES.or = {
     {
      "h": "Example 2 marking and answer",
      "formula": [
-      "After column reduction only 3 independent zeros (J3 → P4, J4 → P1, J2 → P3), J1 has none.",
-      "Tick J1 (no assignment) → tick column P4 (zero in J1) → tick row J3 (assigned zero in P4).",
+      "Scanning after column reduction gives only 3 assignments: row scan boxes J1 → P4 (J1's only zero; J3's zero in P4 is crossed), column scan boxes J4 → P2 and J2 → P3. J3 has none.",
+      "Tick J3 (no assignment) → tick column P4 (zero in J3) → tick row J1 (assigned zero in P4).",
       "Lines through unticked rows J2, J4 and ticked column P4. Smallest uncovered = 1 (J3, P3).",
       "Subtract 1 from uncovered, add 1 at intersections (J2,P4) and (J4,P4).",
       "Optimal: J1 → P4, J2 → P1, J3 → P3, J4 → P2.  Total = 44 + 56 + 90 + 44 = $234"
