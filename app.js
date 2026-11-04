@@ -495,14 +495,14 @@ function start() {
           ${ORDER.some(([k]) => M[k].mid) && html`<button className="tile t-mid" onClick=${() => { go({ view: 'midterm' }); window.scrollTo(0, 0); }}>
             <span className="tm-badge" aria-hidden="true">✎</span>
             <span className="tm-text"><span className="tl">It’s midterm time</span><b className="tc-title">Midterm revision</b>
-              <span className="tm-sub">${ORDER.filter(([k]) => M[k].mid).length} course${ORDER.filter(([k]) => M[k].mid).length === 1 ? '' : 's'} · only the midterm lectures · summaries and ${ORDER.reduce((a, [k]) => a + (M[k].mid ? M[k].mid.prof + M[k].mid.mine : 0), 0)} questions, the doctor’s first</span></span>
+              <span className="tm-sub">${ORDER.filter(([k]) => M[k].mid).length} course${ORDER.filter(([k]) => M[k].mid).length === 1 ? '' : 's'} · only the midterm lectures · summaries, animations and ${ORDER.reduce((a, [k]) => a + (M[k].mid ? M[k].mid.prof + M[k].mid.mine : 0), 0)} questions, the doctor’s first</span></span>
             <span className="tm-chips" aria-hidden="true">${ORDER.filter(([k]) => M[k].mid).map(([k]) => html`<i key=${k} className=${'sp-' + k}>${M[k].short}</i>`)}</span>
             <span className="tgo">Open →</span>
           </button>`}
           ${cont ? html`<button className=${'tile t-cont sp-' + cont.course} onMouseEnter=${() => prefetch(cont.course)} onPointerDown=${() => prefetch(cont.course)} onClick=${() => go(Object.assign({}, cont, { view: 'course' }))}>
               <span className="ring" style=${{ '--p': contPct }} aria-hidden="true"><i>${contPct}%</i></span>
               <span className="tc-text"><span className="tl">Continue · ${modeName[cont.mode] || 'Notes'}</span>
-                <b className="tc-title">${typeof cont.lec === 'number' ? lecTitle(cont.course, cont.lec) : cont.lec === 'rev' ? 'Revision sheet' : cont.lec === 'mid' ? 'Midterm summary' : M[cont.course].name}</b>
+                <b className="tc-title">${typeof cont.lec === 'number' ? lecTitle(cont.course, cont.lec) : cont.lec === 'rev' ? 'Revision sheet' : cont.lec === 'mid' ? 'Midterm summary' : cont.lec === 'midviz' ? 'Midterm animations' : M[cont.course].name}</b>
                 <span className="tc-sub">${M[cont.course].name}${typeof cont.lec === 'number' ? ' · Lecture ' + cont.lec : ''} · ${contPct}% ${contWhat}</span>
                 <span className="tgo">Resume →</span></span>
             </button>`
@@ -560,9 +560,9 @@ function start() {
       const m = M[k].mid, st = store.get('stats:' + k, {});
       let r = 0, n = 0, seen = 0;
       Object.keys(st).forEach(id => { if (m.lecs.includes(lecOfId(id))) { seen++; r += st[id][0]; n += st[id][0] + st[id][1]; } });
-      return { k, m, acc: n ? Math.round(r / n * 100) : null, seen, total: m.prof + m.mine };
+      return { k, m, acc: n ? Math.round(r / n * 100) : null, seen, total: m.prof + m.mine, rev: store.get('midviz:' + k, []).length };
     });
-    const tot = rows.reduce((a, x) => ({ prof: a.prof + x.m.prof, mine: a.mine + x.m.mine, lec: a.lec + x.m.lecs.length }), { prof: 0, mine: 0, lec: 0 });
+    const tot = rows.reduce((a, x) => ({ prof: a.prof + x.m.prof, mine: a.mine + x.m.mine, lec: a.lec + x.m.lecs.length, figs: a.figs + (x.m.figs || 0) }), { prof: 0, mine: 0, lec: 0, figs: 0 });
     const open = (k, extra) => { go(Object.assign({ view: 'course', course: k, mode: 'quiz', lec: undefined, anchor: null, quizPreset: null, cardFocus: null, cardLec: null }, extra)); window.scrollTo(0, 0); };
     const quiz = (k, p) => open(k, { quizPreset: Object.assign({ lecs: M[k].mid.lecs, t: Date.now(), from: 'mid' }, p) });
     return html`<div className="page home-page mid-page">
@@ -574,16 +574,17 @@ function start() {
           <h1>Midterm revision</h1>
           <p className="mid-lede">Only the lectures in each midterm. Read the summary, then answer the doctor’s own questions (past exams, sheets and lecture examples) before the questions written for Study Deck.</p>
           <div className="mid-total">
-            <span><b>${rows.length}</b> course${rows.length === 1 ? '' : 's'}</span><span><b>${tot.lec}</b> lectures</span><span><b>${tot.prof}</b> doctor’s questions</span><span><b>${tot.mine}</b> more practice</span>
+            <span><b>${rows.length}</b> course${rows.length === 1 ? '' : 's'}</span><span><b>${tot.lec}</b> lectures</span><span><b>${tot.prof}</b> doctor’s questions</span><span><b>${tot.mine}</b> more practice</span><span><b>${tot.figs}</b> animations</span>
           </div>
           <ol className="mid-steps">
             <li><b>1</b><span>Read the midterm summary</span></li>
-            <li><b>2</b><span>Practise, the doctor’s questions first</span></li>
-            <li><b>3</b><span>Sit a timed mock midterm</span></li>
+            <li><b>2</b><span>Replay the animations</span></li>
+            <li><b>3</b><span>Practise, the doctor’s questions first</span></li>
+            <li><b>4</b><span>Sit a timed mock midterm</span></li>
           </ol>
         </div>
         <div className="mid-grid">
-          ${rows.map(({ k, m, acc, seen, total }) => html`<article key=${k} className=${'mid-card sp-' + k}>
+          ${rows.map(({ k, m, acc, seen, total, rev }) => html`<article key=${k} className=${'mid-card sp-' + k}>
             <header className="mc-head">
               <span className="tcs">${M[k].code} · ${lecRange(m.lecs)}</span>
               <h2>${M[k].name}</h2>
@@ -600,6 +601,7 @@ function start() {
               <div className="mc-meter" aria-hidden="true"><i style=${{ width: Math.min(100, Math.round(seen / Math.max(1, total) * 100)) + '%' }}></i></div>
               <div className="mc-acts">
                 <button className="btn solid" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => open(k, { mode: 'read', lec: 'mid' })}>Summary · ${m.pts} points</button>
+                ${m.figs > 0 && html`<button className="btn solid mc-viz" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => open(k, { mode: 'read', lec: 'midviz', vizLec: null })}>Animations · ${rev ? rev + '/' : ''}${m.figs}</button>`}
                 <button className="btn solid mc-go" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => quiz(k, { order: 'prof' })}>Practise all ${total}, doctor’s first</button>
                 <button className="btn" disabled=${!m.prof} onClick=${() => quiz(k, { only: 'prof' })}>Doctor’s only (${m.prof})</button>
                 <button className="btn" onClick=${() => quiz(k, { only: 'mine' })}>More practice (${m.mine})</button>
@@ -610,6 +612,54 @@ function start() {
         </div>
         <p className="foot">Midterm scope as announced for each course. Summaries and questions come only from the lectures; the doctor’s questions are from past exams, sheets and the lecture slides.</p>
       </main>
+    </div>`;
+  }
+
+  // every visual in the midterm lectures, one lecture at a time, with its headline, its place in the notes and a "reviewed" tick
+  function MidtermViz({ k, go, lecStart }) {
+    const c = C[k], m = c.midterm, A = arOf(k);
+    const [done, setDone] = usePersist('midviz:' + k, []);
+    const lecs = c.lectures.filter(l => m && m.lecs.includes(l.n));
+    const items = useMemo(() => lecs.map(l => {
+      const out = [];
+      l.notes.forEach((s, i) => {
+        [].concat(s.fig || []).forEach(n => out.push({ id: n, kind: 'fig', s, i, n }));
+        [].concat(s.viz || []).forEach((v, j) => out.push({ id: 'viz:' + l.n + '-' + i + '-' + j, kind: 'viz', s, i, v }));
+      });
+      return { l, out };
+    }), [k]);
+    const [lecN, setLecN] = useState(() => lecs.some(l => l.n === lecStart) ? lecStart : ((items.find(x => x.out.some(f => !done.includes(f.id))) || items[0] || {}).l || {}).n);
+    useEffect(() => { window.scrollTo(0, 0); }, [lecN]);
+    if (!m) return html`<div className="paper empty"><span className="pen">No midterm for this course.</span></div>`;
+    const cur = items.find(x => x.l.n === lecN) || items[0];
+    const total = items.reduce((a, x) => a + x.out.length, 0), seen = items.reduce((a, x) => a + x.out.filter(f => done.includes(f.id)).length, 0);
+    const arL = arLec(k, cur.l.n);
+    const toggle = id => setDone(d => d.includes(id) ? d.filter(x => x !== id) : d.concat(id));
+    const idx = items.indexOf(cur), nextL = items[idx + 1];
+    return html`<div className="midviz">
+      <article className="paper mv-head">
+        <p className="kicker" style=${{ color: 'var(--c)' }}>Midterm · ${c.short} · ${lecRange(m.lecs)}</p>
+        <h2>Midterm animations</h2>
+        <p className="meta">Every animation and diagram from the midterm lectures, in lecture order. Play each one, say what it shows, then tick it.</p>
+        <div className="mv-prog"><span className="mc-meter"><i style=${{ width: Math.round(seen / Math.max(1, total) * 100) + '%' }}></i></span><b>${seen} of ${total} reviewed</b></div>
+        <div className="mv-lecs" role="tablist" aria-label="Lectures">${items.map(x => { const d = x.out.filter(f => done.includes(f.id)).length; return html`<button key=${x.l.n} role="tab" aria-selected=${String(x.l.n === cur.l.n)} onClick=${() => setLecN(x.l.n)}>
+          <b>L${x.l.n}</b><span>${d === x.out.length && d ? '✓ ' : ''}${d}/${x.out.length}</span></button>`; })}</div>
+        <div className="row" style=${{ flexWrap: 'wrap', marginTop: '10px' }}>
+          <button className="btn ghost small" onClick=${() => go({ mode: 'read', lec: 'mid' })}>Midterm summary</button>
+          <button className="btn ghost small" onClick=${() => go({ view: 'midterm' })}>All midterm courses</button>
+        </div>
+      </article>
+      <h3 className="mv-lt"><span className="sec">L${cur.l.n}</span>${cleanTitle(cur.l.title)}</h3>
+      ${cur.out.length === 0 && html`<div className="paper empty">This lecture has no animations.</div>`}
+      ${cur.out.map((f, j) => { const an = arL && arL.notes && arL.notes[f.i]; const ok = done.includes(f.id); return html`<article key=${f.id} className=${'paper mv-item' + (ok ? ' done' : '')}>
+        <p className="mv-k"><span className="mv-n">${j + 1}/${cur.out.length}</span><span>§${f.i + 1} · <${H} h=${f.s.h} /></span></p>
+        ${f.kind === 'fig' ? figWithHead(f.s, an, f.n, !!A) : html`<${VizBlock} spec=${f.v} ar=${!!A} k=${k} />`}
+        <div className="mv-acts">
+          <button className=${'btn' + (ok ? ' solid' : '')} aria-pressed=${String(ok)} onClick=${() => toggle(f.id)}>${ok ? '✓ Reviewed' : 'Mark as reviewed'}</button>
+          <button className="btn ghost" onClick=${() => go({ mode: 'read', lec: cur.l.n, anchor: 'sec-' + cur.l.n + '-' + f.i })}>Open in the notes →</button>
+        </div>
+      </article>`; })}
+      ${nextL && html`<button className="btn solid mv-next" onClick=${() => setLecN(nextL.l.n)}>Next: lecture ${nextL.l.n} animations →</button>`}
     </div>`;
   }
 
@@ -631,6 +681,7 @@ function start() {
             <div className="row" style=${{ marginTop: '12px', flexWrap: 'wrap' }}>
               <button className="btn solid" onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: m.lecs, order: 'prof', t: Date.now() } })}>Practise all ${all}, doctor’s first</button>
               <button className="btn" disabled=${!prof} onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: m.lecs, only: 'prof', t: Date.now() } })}>Doctor’s only (${prof})</button>
+              ${M[k].mid && M[k].mid.figs > 0 && html`<button className="btn" onClick=${() => go({ mode: 'read', lec: 'midviz', vizLec: null })}>Animations (${M[k].mid.figs})</button>`}
               <button className="btn ghost" onClick=${() => go({ view: 'midterm' })}>All midterm courses</button>
             </div>
           </header>
@@ -642,6 +693,7 @@ function start() {
             </div>`)}
             <div className="row" style=${{ margin: '6px 0 10px' }}>
               <button className="btn ghost small" onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: [l.n], order: 'prof', t: Date.now() } })}>Quiz lecture ${l.n}</button>
+              <button className="btn ghost small" onClick=${() => go({ mode: 'read', lec: 'midviz', vizLec: l.n })}>Animations of lecture ${l.n}</button>
               <button className="btn ghost small" onClick=${() => go({ mode: 'read', lec: l.n, anchor: null })}>Full notes</button>
             </div>
           </section>`)}
@@ -667,7 +719,7 @@ function start() {
     const barRef = useRef(null);
     const mode = nav.mode === 'miss' ? 'progress' : (nav.mode || 'path');
     // with no lecture chosen, the path points at the first lecture you haven't read
-    const lecN = nav.lec === 'rev' ? 'rev' : nav.lec === 'mid' && c.mid ? 'mid' : c.lectures.some(l => l.n === nav.lec) ? nav.lec : ((c.lectures.find(l => !read.includes(l.n)) || c.lectures[0]).n);
+    const lecN = nav.lec === 'rev' ? 'rev' : (nav.lec === 'mid' || nav.lec === 'midviz') && c.mid ? nav.lec : c.lectures.some(l => l.n === nav.lec) ? nav.lec : ((c.lectures.find(l => !read.includes(l.n)) || c.lectures[0]).n);
 
     useEffect(() => { if (!nav.anchor) window.scrollTo(0, 0); }, [mode]);
 
@@ -681,7 +733,7 @@ function start() {
       ['progress', 'Progress', miss.length || null]
     ];
     return html`<div className="page">
-      <${Topbar} bar=${bar} cur=${k}><div className="readbar" hidden=${mode !== 'read' || status !== 'ready' || lecN === 'rev' || lecN === 'mid'}><i ref=${barRef}></i></div></${Topbar}>
+      <${Topbar} bar=${bar} cur=${k}><div className="readbar" hidden=${mode !== 'read' || status !== 'ready' || lecN === 'rev' || lecN === 'mid' || lecN === 'midviz'}><i ref=${barRef}></i></div></${Topbar}>
       <section className=${'band' + (mode === 'path' ? ' tall' : '')}>
         <div className="band-in">
           <div className="band-top">
@@ -769,7 +821,8 @@ function start() {
         ${mode === 'path' && html`<${PathView} key="path" k=${k} lecN=${lecN} go=${go} read=${read} known=${known} />`}
         ${mode === 'read' && lecN === 'rev' && html`<${RevisionSheet} key="rev" k=${k} go=${go} read=${read} onSection=${onSection} />`}
         ${mode === 'read' && lecN === 'mid' && html`<${MidtermSheet} key="mid" k=${k} go=${go} />`}
-        ${mode === 'read' && lecN !== 'rev' && lecN !== 'mid' && html`<${Read} key="read" k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
+        ${mode === 'read' && lecN === 'midviz' && html`<${MidtermViz} key="midviz" k=${k} go=${go} lecStart=${nav.vizLec} />`}
+        ${mode === 'read' && lecN !== 'rev' && lecN !== 'mid' && lecN !== 'midviz' && html`<${Read} key="read" k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
         ${mode === 'cards' && html`<${Cards} key="cards" k=${k} focus=${nav.cardFocus} startLec=${nav.cardLec} auto=${nav.cardsAuto} go=${go} known=${known} setKnown=${setKnown} />`}
         ${mode === 'ask' && html`<${Ask} key="ask" k=${k} startLec=${nav.askLec} />`}
         ${mode === 'quiz' && html`<${Quiz} key="quiz" k=${k} preset=${nav.quizPreset} go=${go} miss=${miss} setMiss=${setMiss} setFixed=${setFixed} best=${best} setBest=${setBest} />`}

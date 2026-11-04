@@ -76,7 +76,7 @@ for (const [id, c] of Object.entries(COURSES)) {
     const ls = c.lectures.filter(l => c.midterm.lecs.includes(l.n));
     const prof = ls.reduce((a, l) => a + l.quiz.filter(q => ['exam', 'sheet', 'lecture'].includes(originOf(q))).length, 0);
     const all = ls.reduce((a, l) => a + l.quiz.length + l.extra.length, 0);
-    manifest[id].mid = { lecs: c.midterm.lecs, scope: c.midterm.scope, scope_ar: MIDTERM[id].scope_ar, prof, mine: all - prof, pts: c.midterm.sections.reduce((a, s) => a + s.pts.length, 0) };
+    manifest[id].mid = { lecs: c.midterm.lecs, scope: c.midterm.scope, scope_ar: MIDTERM[id].scope_ar, prof, mine: all - prof, figs: ls.reduce((a, l) => a + l.notes.reduce((b, n) => b + [].concat(n.fig || []).length + [].concat(n.viz || []).length, 0), 0), pts: c.midterm.sections.reduce((a, s) => a + s.pts.length, 0) };
   }
   console.log(`data/${id}.js`.padEnd(20), (json.length / 1024).toFixed(0).padStart(5), 'KB');
 }
