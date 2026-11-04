@@ -333,6 +333,142 @@ AR.compiler = {
     [
      "الـ a هي الـ array نفسها؛ الـ subscript-expression <bdi dir=\"ltr\">a[index]</bdi> بس هي اللي integer.",
      "صح. الـ a بتتعمل annotate إنها <b>array of integer</b>؛ والـ index و 4 و 2 والـ subscript-expression والـ additive-expression كلهم integer."
+    ],
+    [
+     "صح. الـ scanner بيجمّع الحروف في وحدات ليها معنى اسمها tokens.",
+     "غلط. الـ syntax tree هو output الـ parser، والـ parser بياخد الـ tokens كـ input.",
+     "غلط. الـ annotated syntax tree هي output الـ semantic analyzer.",
+     "غلط. الـ intermediate code هو output الـ source code optimizer."
+    ],
+    [
+     "غلط. الـ stream of tokens ده بيطلّعه الـ scanner والـ parser بيقراه.",
+     "غلط. الـ intermediate code بيطلع من الـ source code optimizer.",
+     "صح. الـ parser بيحدد الـ structure بتاع البرنامج والناتج parse tree أو syntax tree (AST).",
+     "غلط. الـ target code بيطلّعه الـ code generator."
+    ],
+    [
+     "غلط. الـ semantic analyzer بيطلّع الـ annotated syntax tree.",
+     "غلط. الـ code generator بياخد الـ intermediate code كـ input ويطلّع target code.",
+     "غلط. الـ scanner بيطلّع tokens.",
+     "صح. في شكل الـ phases الـ source code optimizer بياخد الـ annotated tree ويطلّع intermediate code."
+    ],
+    [
+     "غلط. الـ annotated tree هي input الـ source code optimizer، يعني phase قبلها.",
+     "صح. الـ code generator بياخد الـ intermediate code (IR) ويطلّع كود للـ target machine.",
+     "غلط. الـ tokens هي input الـ parser.",
+     "غلط. الـ source code هو input الـ scanner، أول phase."
+    ],
+    [
+     "غلط. دول phases أصلاً، مش أدوات مشتركة.",
+     "غلط. دول outputs بتتنقل من phase للي بعدها، مش مشتركة بين كل الـ phases.",
+     "صح. الـ six phases كلهم بيتعاملوا مع الـ literal table والـ symbol table والـ error handler، ودول مش phases.",
+     "غلط. الـ hash tables بيتعمل بيها الـ symbol table، والـ temporary files بتشيل النواتج الوسطانية، ودول مش التلات boxes اللي في الشكل."
+    ],
+    [
+     "غلط. الـ error handler أداة مساعدة متوصلة بكل الـ phases، زي الـ literal table والـ symbol table.",
+     "صح. الـ six phases هما الـ scanner والـ parser والـ semantic analyzer والـ source code optimizer والـ code generator والـ target code optimizer، والـ error handler أداة مساعدة مش phase."
+    ],
+    [
+     "صح. جدول المقارنة بيقول إن الـ interpreter بيترجم statement واحدة في المرة، والـ compiler بيعمل scan للبرنامج كله.",
+     "غلط. الترجمة statement واحدة في المرة هي بالظبط صف الـ interpreter في الجدول."
+    ],
+    [
+     "غلط. ده وصف الـ interpreter، أما الـ compiler فبيطلّع intermediate object code محتاج linking.",
+     "صح. الـ compiler بيطلّع intermediate object code محتاج linking فبياخد memory أكتر، والـ interpreter هو اللي موفّر في الـ memory."
+    ],
+    [
+     "غلط. الـ <bdi dir=\"ltr\">C++</bdi> موجودة في عمود الـ compiler.",
+     "غلط. الـ Java موجودة في عمود الـ compiler.",
+     "غلط. الـ C والـ Java الاتنين موجودين في عمود الـ compiler.",
+     "صح. عمود الـ interpreter فيه الـ JavaScript والـ Python والـ Ruby."
+    ],
+    [
+     "غلط. الـ JavaScript موجودة في عمود الـ interpreter.",
+     "صح. عمود الـ compiler فيه الـ C والـ <bdi dir=\"ltr\">C++</bdi> والـ Java.",
+     "غلط. الـ Ruby موجودة في عمود الـ interpreter.",
+     "غلط. الـ Python موجودة في عمود الـ interpreter."
+    ],
+    [
+     "صح. الـ semantics هي \"معنى\" البرنامج، والـ syntax هو التركيب بتاعه.",
+     "غلط. التركيب (structure) هو الـ syntax، والـ parser هو اللي بيحدده.",
+     "غلط. الـ tokens هي الوحدات اللي الـ scanner بيطلّعها.",
+     "غلط. الـ target code هو اللي الـ code generator بيطلّعه."
+    ],
+    [
+     "غلط. دول optimizations بيعملهم الـ source code optimizer والـ target code optimizer.",
+     "غلط. ده شغل الـ scanner.",
+     "غلط. دي مهمة من مهام الـ target code optimizer.",
+     "صح. المحاضرة بتعرّف الـ static semantics إنها الـ declarations والـ type checking."
+    ],
+    [
+     "غلط. دي الخطوة اللي في النص بس، وبعدها الـ t بيتشال زي ما المحاضرة بتخلّص بـ assignment واحد.",
+     "صح. الـ <bdi dir=\"ltr\">7 + 1</bdi> بتتحوّل لـ 8 وبعدين الـ t بيتشال، زي بالظبط ما <bdi dir=\"ltr\">a[index] = t</bdi> بقت <bdi dir=\"ltr\">a[index] = 6</bdi> في المحاضرة.",
+     "غلط. هنا شلنا الـ temporary بس معملناش folding للـ constants، فالجمع لسه هيتعمل وقت التشغيل.",
+     "غلط. ده بيخلط الـ temporary مع constant من الاتنين ومش بيساوي الكود الأصلي."
+    ],
+    [
+     "غلط. الـ 8 ده عدد الـ tokens كلها، مش الـ identifiers بس.",
+     "غلط. الـ b والـ k identifiers، بس الـ c كمان identifier.",
+     "صح. الـ b والـ k والـ c هما الـ identifiers، والأقواس والـ = والـ + رموز، والـ 1 number، زي الـ a والـ index في مثال المحاضرة.",
+     "غلط. الـ 1 ده number token مش identifier."
+    ],
+    [
+     "صح. الـ semantic analyzer بيدّي الـ subscript-expression الـ attribute ده integer (عنصر من array of integer).",
+     "غلط. الـ \"array of integer\" هو attribute الـ identifier اللي اسمه a، مش الـ subscript-expression.",
+     "غلط. الـ 6 بتظهر بس بعد ما الـ constant folding يشيل الـ additive-expression.",
+     "غلط. كل node في الـ annotated tree ليها attribute، والـ node دي integer."
+    ],
+    [
+     "صح. المحاضرة بتقول إن أول نقطة لمعظم خطوات الـ optimization هي بعد الـ semantic analysis على طول، وده مكان الـ source code optimizer.",
+     "غلط. المحاضرة بتقول كده بالظبط، الـ optimization بيبدأ بعد الـ semantic analysis على طول."
+    ],
+    [
+     "غلط. الـ subscript-expression هي الـ child الشمال وبتفضل زي ما هي.",
+     "غلط. الـ 4 كانت operand من الاتنين، والاتنين بيتشالوا.",
+     "غلط. الـ index تبع الـ subscript-expression، ودي مبتتغيرش.",
+     "صح. الـ folding بيشيل الـ additive-expression والـ numbers بتوعها 4 و 2 ويحط node واحدة هي number 6 (integer)."
+    ],
+    [
+     "غلط. اختيار الـ address modes مهمة تانية في القايمة، والمحاضرة بتدّي الضرب في 2 اللي بقى SHL كمثال على استبدال الـ instructions.",
+     "صح. المحاضرة بتعدّ استبدال الـ instructions (الضرب في 2 يبقى SHL يعني shift left) من مهام الـ target code optimizer.",
+     "غلط. الـ eliminating بيشيل instructions، لكن هنا instruction اتبدلت بواحدة أرخص.",
+     "غلط. الـ constant folding بيعمله الـ source code optimizer قبل كده (الـ <bdi dir=\"ltr\">4+2</bdi> تبقى 6)."
+    ],
+    [
+     "غلط. الـ target code optimizer بيشتغل على الـ target code (الـ address modes واستبدال الـ instructions وشيل الزيادة).",
+     "صح. الـ constant folding بيعمله الـ source code optimizer على الـ annotated tree أو على الـ intermediate code."
+    ],
+    [
+     "غلط. ده الـ annotated syntax tree اللي بيعمله الـ semantic analyzer.",
+     "غلط. الـ scanner بيطلّع tokens، والشجرتين طالعين من الـ parser.",
+     "صح. الـ parse tree بيحتفظ بكل node في الـ grammar، والـ syntax tree هو النسخة المختصرة منه.",
+     "غلط. الاحتفاظ بكل node في الـ grammar ده الـ parse tree مش الـ syntax tree."
+    ],
+    [
+     "صح. الـ syntax tree structure عادي pointer-based، والـ nodes ممكن تبقى dynamically allocated وتتمثّل كـ variable records.",
+     "غلط. الـ hash tables بتتستخدم للـ symbol table عشان الوصول الـ constant-time.",
+     "غلط. قيم الـ enumerated data type دي طريقة تخزين الـ tokens.",
+     "غلط. الـ array of text strings دي طريقة من طرق تخزين الـ intermediate code."
+    ],
+    [
+     "غلط. الـ global variable الواحد (أو الـ array) ده مكان تخزين الـ token.",
+     "غلط. دي طريقة تمثيل الـ token.",
+     "غلط. الـ hash tables بتتستخدم للـ symbol table.",
+     "صح. الـ intermediate code (زي الـ three-address code والـ p-code) بيتخزن بواحدة من الطرق دي، ولازم يبقى سهل نعيد ترتيبه."
+    ],
+    [
+     "غلط. تخزين الـ constants والـ strings عشان نقلل حجم البرنامج ده شغل الـ literal table.",
+     "صح. ده الـ literal table، أما الـ symbol table فبيحتفظ بمعلومات الـ identifiers (الـ functions والـ variables والـ constants والـ data types)."
+    ],
+    [
+     "صح. ده صف الـ compiler في جدول المقارنة، والـ interpreter هو اللي بيترجم statement واحدة في المرة.",
+     "غلط. الـ scan للبرنامج كله مرة واحدة هو بالظبط وصف المحاضرة للـ compiler."
+    ],
+    [
+     "غلط. الـ comments والـ white space الـ scanner بيشيلهم، مش بيتخزنوا.",
+     "صح. الـ symbol table بيحتفظ بمعلومات الـ identifiers وبيتعامل مع تقريبًا كل phase.",
+     "غلط. نواتج الخطوات الوسطانية بتتشال في الـ temporary files.",
+     "غلط. خصائص الـ target machine مهمة للـ code generator، ومش هي اللي الـ symbol table بيخزنها."
     ]
    ]
   },
@@ -624,6 +760,148 @@ AR.compiler = {
     [
      "معكوسة. الجدول بيقول إن الـ DFA بياخد وقت أقل والـ NFA أكتر.",
      "صح. الـ DFA فيه next state واحدة بالظبط لكل input، فبيشغّل أي input string في وقت أقل."
+    ],
+    [
+     "صح. الـ lexical analysis phase بتشيل الـ comments والـ white space (الـ blank والـ tab والـ newline).",
+     "غلط. الـ parse tree بيبنيه الـ parser في الـ syntax analysis.",
+     "غلط. الـ type checking ده static semantics والـ semantic analyzer هو اللي بيعمله.",
+     "غلط. الـ intermediate code بييجي بعدين من الـ source code optimizer."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ white space اللي الـ lexical analyzer بيشيلها هي الـ blank والـ tab والـ newline.",
+     "غلط. التلاتة دول هما بالظبط حروف الـ white space اللي في المحاضرة."
+    ],
+    [
+     "غلط. العكس، الـ id هو الـ category والـ distance هو الـ string الحقيقي.",
+     "صح. الـ lexeme هو الـ string الحقيقي (distance)، والـ token هو الـ category المنطقية (زي الـ id والـ relop والـ number).",
+     "غلط. الـ alphabet دي set من الـ symbols، ومفيش حاجة من الاتنين alphabet.",
+     "غلط. الـ language دي set من الـ strings، والـ id ده token category."
+    ],
+    [
+     "غلط. الـ operators كمان tokens، فالـ <bdi dir=\"ltr\">&gt;=</bdi> بتبقى relop والـ <bdi dir=\"ltr\">:=</bdi> والـ ; بيفضلوا tokens لوحدهم.",
+     "غلط. الـ if والـ then keywords، بيتعرفوا كـ keywords مش كـ identifiers.",
+     "صح. كل اسم بيبقى id والـ <bdi dir=\"ltr\">&gt;=</bdi> بتبقى relop، والـ keywords وباقي الرموز بيفضلوا زي ما هما، زي مثال الـ distance في المحاضرة.",
+     "غلط. ده سايب الـ lexemes زي ما هي، والـ token stream بيبدّل كل identifier بالـ category بتاعته id."
+    ],
+    [
+     "غلط. الـ alphabet لازم تبقى محدودة (finite).",
+     "غلط. الـ alphabet لازم تبقى مش فاضية (non-empty).",
+     "غلط. الـ alphabet محدودة ومرتّبة.",
+     "صح. المحاضرة بتعرّف الـ alphabet إنها set محدودة ومش فاضية ومرتّبة من الـ symbols أو الحروف أو الـ characters."
+    ],
+    [
+     "غلط. الـ 3 ده عدد الـ 1 في الـ string، مش طولها.",
+     "غلط. عدّ تاني، الـ string فيها خمس symbols.",
+     "صح. الطول هو عدد الـ symbols، وهنا خمسة، زي ما الـ <code>0101</code> طولها 4.",
+     "غلط. الـ 2 ده عدد الـ symbols المختلفة في Σ، مش طول الـ string."
+    ],
+    [
+     "صح. الـ union فيها كل elements الـ set الاتنين ومفيهاش حاجة تانية، والـ b بتتكتب مرة واحدة لأنها set.",
+     "غلط. ده العنصر المشترك بس (الـ intersection)، مش الـ union.",
+     "غلط. ده الـ concatenation بين الـ two languages، مش الـ union.",
+     "غلط. الـ b موجودة في الاتنين، فلازم تبقى في الـ union."
+    ],
+    [
+     "غلط. ده الـ L2L1، لكن في الـ L1L2 الـ string اللي من L1 بتيجي الأول.",
+     "غلط. ده الـ union مش الـ concatenation.",
+     "غلط. الـ concatenation بتلزق كل string في L1 مع كل string في L2، مش اللي في نفس المكان بس.",
+     "صح. كل string في L1 بييجي بعدها كل string في L2، زي مثال المحاضرة بالظبط."
+    ],
+    [
+     "غلط. الـ 5 ده حجم الـ union (تلاتة زائد اتنين)، مش الـ concatenation.",
+     "صح. كل string من التلاتة اللي في L1 بتتلزق مع كل string من الاتنين اللي في L2، يعني:<span class=\"ltr\">abe, abfg, ce, cfg, de, dfg → 3 × 2 = 6</span>",
+     "غلط. الـ 3 ده حجم L1 بس.",
+     "غلط. الـ 9 دي تلاتة في تلاتة، لكن L2 فيها اتنين بس."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ union commutative والترتيب مش فارق (عكس الـ concatenation).",
+     "غلط. الترتيب مش فارق في الـ union، الـ concatenation هي اللي الترتيب فارق فيها."
+    ],
+    [
+     "غلط. ده الـ Kleene closure اللي فيه ε (صفر تكرار).",
+     "صح. الـ positive closure بتعمل concatenation لواحد أو أكتر، فالـ ε مش فيها.",
+     "غلط. دي الـ set اللي فيها الـ empty string بس.",
+     "غلط. دي فيها تكرار واحد بس، والـ closure بتسمح بأي عدد من الـ b من واحد وطالع."
+    ],
+    [
+     "صح. المحاضرة بتقول إن <bdi dir=\"ltr\">{ε}</bdi> set فيها element واحد هو الـ empty string.",
+     "غلط. الـ <bdi dir=\"ltr\">{ε}</bdi> مش فاضية، فيها element واحد بالظبط هو الـ empty string."
+    ],
+    [
+     "غلط. الـ | أقل أولوية، فمش بتربط الـ b والـ c قبل الـ concatenation.",
+     "غلط. الـ * الأقوى، فبتشتغل على الـ c بس مش على الـ expression كلها.",
+     "صح. الـ * الأول على الـ c، بعدين الـ concatenation للـ ab، وفي الآخر الـ | بتجمعهم.",
+     "غلط. الـ concatenation أقوى من الـ |، فالـ ab بتتجمّع قبل الـ |."
+    ],
+    [
+     "غلط. الجزئين بتوع <bdi dir=\"ltr\">(a|c)*</bdi> ممكن يبقوا فاضيين، فالـ b لوحدها مقبولة.",
+     "غلط. الـ ac من الجزء الأول، وبعدين الـ b الوحيدة، والجزء التاني فاضي.",
+     "غلط. الـ c وبعدين الـ b الوحيدة وبعدين الـ a، فيها b واحدة بالظبط.",
+     "صح. الـ <code>abcb</code> فيها اتنين b، والـ expression بتسمح بـ b واحدة بالظبط."
+    ],
+    [
+     "صح. أي عدد من الـ b وبعدين a واحدة وبعدين أي عدد من الـ b، نفس فكرة <bdi dir=\"ltr\">(a|c)*b(a|c)*</bdi> للـ b الواحدة.",
+     "غلط. دي معناها a واحدة على الأقل، لأن أجزاء الـ <bdi dir=\"ltr\">(a|b)*</bdi> ممكن يبقى فيها a تانية.",
+     "غلط. دي معناها b واحدة بالظبط، مش a.",
+     "غلط. الـ <bdi dir=\"ltr\">a+</bdi> بتسمح بـ a واحدة أو أكتر، فالـ aa هتتقبل."
+    ],
+    [
+     "غلط. الـ ss دي concatenation، لكن الـ <bdi dir=\"ltr\">s|s</bdi> اختيار بين حاجتين زي بعض.",
+     "غلط. الـ <bdi dir=\"ltr\">s*</bdi> يعني صفر أو أكتر، لكن الـ <bdi dir=\"ltr\">s|s</bdi> بتطابق s بس.",
+     "صح. الـ <bdi dir=\"ltr\">|</bdi> بتبقى idempotent، يعني:<span class=\"ltr\">s|s = s</span>",
+     "غلط. الـ ε هي الـ empty string، والـ <bdi dir=\"ltr\">s|s</bdi> لسه بتطابق s."
+    ],
+    [
+     "صح. الـ concatenation بتتوزع على الـ |، زي ما في جدول القوانين:<span class=\"ltr\">(r|s)t = rt|st</span>",
+     "غلط. ده قانون من القوانين اللي في الجدول، الـ concatenation بتتوزع على الـ |."
+    ],
+    [
+     "غلط. الـ <bdi dir=\"ltr\">s*</bdi> بتسمح بأي عدد، لكن الـ <bdi dir=\"ltr\">s?</bdi> يا s يا ولا حاجة.",
+     "غلط. الـ <bdi dir=\"ltr\">s+</bdi> هي واحد أو أكتر ومفيهاش ε.",
+     "غلط. الـ ss يعني s مرتين، لكن الـ <bdi dir=\"ltr\">s?</bdi> يعني s مرة واحدة بالكتير.",
+     "صح. جدول المحاضرة بيقول بالتعريف:<span class=\"ltr\">s? = s|ε</span>"
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">*</bdi> بتبقى idempotent، يعني:<span class=\"ltr\">(s*)* = s*</span>",
+     "غلط. تكرار حاجة عليها نجمة أي عدد من المرات مش بيضيف جديد، فالقانون صح."
+    ],
+    [
+     "غلط. الـ trace:<span class=\"ltr\">q0 –1→ q0 –0→ q1 –1→ q2</span>والـ q2 final، فهي accepted.",
+     "صح. الـ trace:<span class=\"ltr\">q0 –1→ q0 –0→ q1</span>والـ q1 مفيهاش transition بـ 0، فالـ input بيترفض.",
+     "غلط. الـ trace:<span class=\"ltr\">q0 –0→ q1 –1→ q2</span>وبعدين الـ q2 عليها loop بـ 1 و 0 فبتخلص في الـ final state.",
+     "غلط. الـ trace:<span class=\"ltr\">q0 –0→ q1 –1→ q2</span>والـ q2 final، فهي accepted."
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">a*</bdi> هي state واحدة عليها سهم start ومرسومة دايرة دبل وعليها loop بـ a، فالـ ε مقبولة.",
+     "غلط. الشكل ده (مع loop على الـ start state) هو الـ automaton بتاع <bdi dir=\"ltr\">a+</bdi>.",
+     "غلط. عليها سهم start كمان، فهي start وfinal مع بعض.",
+     "غلط. الـ loop اللي عليه <bdi dir=\"ltr\">a,b</bdi> ده بتاع <bdi dir=\"ltr\">(a|b)*</bdi>."
+    ],
+    [
+     "غلط. الـ start state علامتها السهم.",
+     "غلط. \"مفيش transition\" بتتكتب شرطة.",
+     "صح. الجداول بتستخدم السهم للـ start state، والنجمة للـ final state، والشرطة لمفيش transition.",
+     "غلط. الـ loops بتبان إن نفس الـ state مكتوبة في خانات الجدول، مش علامة جنب الـ state."
+    ],
+    [
+     "غلط. لو الـ start state كانت final كانت الـ empty string هتتقبل، لكن الـ <bdi dir=\"ltr\">a+</bdi> محتاجة a واحدة على الأقل.",
+     "صح. في الـ <bdi dir=\"ltr\">a+</bdi> الـ start state عليها loop بـ a وطالع منها edge بـ a لـ final state تانية، فلازم a واحدة على الأقل."
+    ],
+    [
+     "صح. جدول المقارنة بيقول إن الـ DFA مينفعش تستخدم <bdi dir=\"ltr\">ε</bdi> transition، والـ NFA ينفع.",
+     "غلط. صف الـ empty-string transition في الجدول بيقول كده بالظبط."
+    ],
+    [
+     "غلط. \"صفر أو واحد\" دي صياغة السلايد لصف الـ NFA.",
+     "غلط. ده وصف الـ NFA.",
+     "غلط. الـ DFA مينفعش تستخدم <bdi dir=\"ltr\">ε</bdi> transitions خالص.",
+     "صح. في الـ DFA كل transition function بتدّي next state واحدة بالظبط، والـ next state واضحة."
+    ],
+    [
+     "صح. الـ finite automata بتتعرّف على الـ tokens اللي الـ regular expression بيوصفها، وممكن تتحوّل لـ algorithm يعمل matching للـ input strings.",
+     "غلط. الـ annotated tree بيطلّعها الـ semantic analyzer.",
+     "غلط. الـ constants والـ strings بتتخزن في الـ literal table.",
+     "غلط. ده شغل الـ code generator."
     ]
    ]
   },
@@ -864,6 +1142,144 @@ AR.compiler = {
     [
      "صح. الـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">{1,3}</bdi> فيها الـ final state الأصلية 1، فهي start و final مع بعض (بنعلّم عليها <bdi dir=\"ltr\" style=\"white-space:nowrap\">→*</bdi>).",
      "أي set في الـ DFA فيها final state من الأصل بتبقى final، والـ <bdi dir=\"ltr\" style=\"white-space:nowrap\">{1,3}</bdi> فيها 1."
+    ],
+    [
+     "دي العلامة الأولى للـ NFA، إن يكون فيه <bdi dir=\"ltr\">ε</bdi> transition.",
+     "دي العلامة التانية للـ NFA، يعني loop على symbol وبعدها transition بنفس الـ symbol.",
+     "دي العلامة التالتة للـ NFA، أكتر من path لنفس الـ string (جرّب الـ 001 في slide 3).",
+     "صح. إن يكون فيه أكتر من accept state مش بيخلّي الـ automaton يبقى non-deterministic."
+    ],
+    [
+     "غلط، الـ NFA مش لازم يبقى فيه loop.",
+     "صح. الـ NFA مش لازم يبقى فيه loop، الـ <bdi dir=\"ltr\">ε</bdi> transition لوحدها كفاية تخليه NFA."
+    ],
+    [
+     "صح. جدول المحاضرة بيقول إن تشغيل أي string في الـ DFA بياخد وقت أقل من الـ NFA.",
+     "الجدول بيقول العكس، الـ NFA هو اللي بياخد وقت أكبر."
+    ],
+    [
+     "مش صفر، الـ DFA الـ next state بتاعه محددة بوضوح.",
+     "صح. في الـ DFA عدد الـ next state واحد بس.",
+     "الـ «zero or one» ده اللي السلايد كاتباه للـ NFA مش الـ DFA.",
+     "الـ next states الكتير دي صفة الـ NFA."
+    ],
+    [
+     "في الـ DFA الـ next state محددة بوضوح وواحدة بس.",
+     "الـ DFA عمره ما يبقى ليه أكتر من next state، فمينفعش الاتنين.",
+     "صح. دي الـ row بتاعة الـ NFA في الجدول، كل (state, symbol) ممكن يبقى ليها next states كتير.",
+     "الـ transition table مجرد طريقة نكتب بيها الـ automaton، والـ row دي بتقارن الـ DFA بالـ NFA."
+    ],
+    [
+     "غلط، العكس هو الصح.",
+     "صح. الصفوف هي الـ states والأعمدة هي الـ input symbols، والخانات فيها الـ next states."
+    ],
+    [
+     "الـ F دي خانة <bdi dir=\"ltr\">(T,&nbsp;a)</bdi> لأن T بتروح F بالـ a.",
+     "الـ T ليها move على b (الـ loop)، فالخانة مش فاضية.",
+     "صح. الـ T عليها loop بـ b، فالخانة بتبقى T.",
+     "الـ Q و T دي خانة <bdi dir=\"ltr\">(Q,&nbsp;a)</bdi>، اللي بتخلي الـ automaton non-deterministic."
+    ],
+    [
+     "صح. الـ \"-\" في الـ transition table معناها مفيش transition.",
+     "الـ P مفيش منها edge لـ F، اللي بيروحوا F هما R بالـ b و T بالـ a.",
+     "ده كان يبقى loop، وكان هيتكتب P في الخانة مش \"-\".",
+     "الـ P بتروح R بالـ b مش بالـ a، فالـ R مكانها خانة <bdi dir=\"ltr\">(P,&nbsp;b)</bdi>."
+    ],
+    [
+     "خانة الـ <bdi dir=\"ltr\">ε</bdi> مش بتبقى فاضية في الـ table ده، كل state بتوصل لنفسها.",
+     "الـ B مفيش منها <bdi dir=\"ltr\">ε</bdi> edge لـ A.",
+     "الـ A,B دي خانة <bdi dir=\"ltr\">(A,&nbsp;0)</bdi>.",
+     "صح. خانة الـ <bdi dir=\"ltr\">ε</bdi> لكل state فيها الـ state نفسها، فخانة الـ B هي B."
+    ],
+    [
+     "صح. الخطوة 1 بتعمل table فيه عمود <bdi dir=\"ltr\">ε</bdi>، وكل state بتوصل لنفسها بالـ <bdi dir=\"ltr\">ε</bdi>.",
+     "خانة الـ <bdi dir=\"ltr\">ε</bdi> مش فاضية، كل state بتوصل لنفسها."
+    ],
+    [
+     "فيها 3 اللي هي الـ final state الأصلية، فهي final.",
+     "صح. مفيهاش الـ 3، فمش final.",
+     "فيها 3، فهي final.",
+     "دي الـ final state الأصلية نفسها، فهي final."
+    ],
+    [
+     "صح. دي العلامة التانية، الـ <bdi dir=\"ltr\">(p,&nbsp;a)</bdi> ليها اتنين next states هما p و q.",
+     "الـ loop لوحده مش بيخلي الـ automaton يبقى NFA.",
+     "مفيش <bdi dir=\"ltr\">ε</bdi> edge في الـ automaton ده.",
+     "عدد الـ final states ملوش علاقة بالـ non-determinism."
+    ],
+    [
+     "كده نسينا إن p بتروح p بالـ b، فالـ p لازم تفضل في الـ set.",
+     "صح. الـ p بتروح p بالـ b، والـ q بتروح r بالـ b، فالناتج <bdi dir=\"ltr\">{p,r}</bdi>.",
+     "الـ q بنوصلها بالـ a بس مش بالـ b.",
+     "كده نسينا إن q بتروح r بالـ b."
+    ],
+    [
+     "كده نسينا إن r بتروح r بالـ a.",
+     "كده نسينا إن p بتروح q بالـ a.",
+     "كده نسينا الـ moves بتاعة p بالـ a (لـ p و q).",
+     "صح. الـ p بتروح p و q بالـ a، والـ r بتروح r، فالناتج <bdi dir=\"ltr\">{p,q,r}</bdi>."
+    ],
+    [
+     "صح. الـ states هي <bdi dir=\"ltr\">{p}</bdi> و <bdi dir=\"ltr\">{p,q}</bdi> و <bdi dir=\"ltr\">{p,r}</bdi> و <bdi dir=\"ltr\">{p,q,r}</bdi>، والـ final هما الاتنين اللي فيهم r.",
+     "الـ <bdi dir=\"ltr\">{p,q,r}</bdi> بتظهر برضه من <bdi dir=\"ltr\">{p,r}</bdi> بالـ a.",
+     "الـ <bdi dir=\"ltr\">{p,q}</bdi> مفيهاش r، فمش final.",
+     "مفيش set خامسة بتظهر، كل move بتقع في واحدة من الأربعة."
+    ],
+    [
+     "بعد الـ move لازم ناخد الـ <bdi dir=\"ltr\">ε-closure</bdi>، والـ 2 بتروح 3 بالـ <bdi dir=\"ltr\">ε</bdi>.",
+     "الـ 1 بتروح 2 بالـ a، والـ 3 جاية من الـ <bdi dir=\"ltr\">ε-closure</bdi> بتاعة 2، فالـ 2 لازم تفضل.",
+     "صح. الـ 1 بتروح 2 بالـ a، والـ <bdi dir=\"ltr\">ε-closure</bdi> بتاعة 2 هي <bdi dir=\"ltr\">{2,3}</bdi>.",
+     "الـ 1 مفيش عليها loop بالـ a، فمش في الناتج."
+    ],
+    [
+     "صح. الـ 2 مفيش ليها move بالـ b، والـ 3 بتروح 3، فالناتج <bdi dir=\"ltr\">{3}</bdi>.",
+     "الـ 2 مفيش ليها move بالـ b، فمش في الناتج.",
+     "الـ <bdi dir=\"ltr\">{1}</bdi> بنوصلها بالـ a مش بالـ b.",
+     "الـ 3 عليها loop بالـ b، فالـ set مش فاضية."
+    ],
+    [
+     "الـ <bdi dir=\"ltr\">{3}</bdi> دي الـ move من <bdi dir=\"ltr\">{1}</bdi> بالـ 0.",
+     "الـ <bdi dir=\"ltr\">{2,3}</bdi> دي الـ move من <bdi dir=\"ltr\">{3}</bdi> بالـ 1، مش من <bdi dir=\"ltr\">{1}</bdi>.",
+     "الـ 1 مفيش عليها loop بالـ 1.",
+     "صح. الـ state 1 مفيش منها edge عليه 1، فبتروح الـ dead state."
+    ],
+    [
+     "من <bdi dir=\"ltr\">{1}</bdi> بالـ 0 بنروح <bdi dir=\"ltr\">{3}</bdi> وهي final، فمقبول.",
+     "بنعدّي على <bdi dir=\"ltr\">{3}</bdi> وبعدين <bdi dir=\"ltr\">{2,3}</bdi> وهي final، فمقبول.",
+     "صح. بنعدّي على <bdi dir=\"ltr\">{3}</bdi> وبعدين نرجع <bdi dir=\"ltr\">{1}</bdi>، والـ <bdi dir=\"ltr\">{1}</bdi> مش final، فمرفوض.",
+     "بنعدّي على <bdi dir=\"ltr\">{3}</bdi> ثم <bdi dir=\"ltr\">{2,3}</bdi> ثم <bdi dir=\"ltr\">{1,3}</bdi> وهي final، فمقبول."
+    ],
+    [
+     "كده نسينا إن 1 بتروح 2 بالـ b.",
+     "صح. الـ 1 بتروح 2، والـ 2 بتروح 3، والـ 3 مفيش ليها move بالـ b، فالناتج <bdi dir=\"ltr\">{2,3}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,2,3}</bdi> دي الـ move بالـ a مش بالـ b.",
+     "الـ 1 والـ 2 الاتنين ليهم moves بالـ b."
+    ],
+    [
+     "فيه خمس sets مش أربعة.",
+     "الـ <bdi dir=\"ltr\">{1,2,3}</bdi> فيها 1 برضه، فهي final كمان.",
+     "الـ <bdi dir=\"ltr\">{2,3}</bdi> مفيهاش 1، فمش final.",
+     "صح. الـ states خمسة، والـ final هما <bdi dir=\"ltr\">{1,3}</bdi> و <bdi dir=\"ltr\">{1,2,3}</bdi> لأن فيهم 1."
+    ],
+    [
+     "الـ automaton ده مفيهوش <bdi dir=\"ltr\">ε</bdi> edge.",
+     "إن يكون فيه أكتر من accept state مش بيخليه NFA.",
+     "صح. الـ 001 ليها أكتر من path وكلهم بيخلصوا في final state.",
+     "دي نقطة تانية في المحاضرة، مش علامة من علامات الـ NFA."
+    ],
+    [
+     "صح. الـ NFA ممكن يبقى ليه صفر أو واحدة أو أكتر من الـ next states لكل pair، زي آخر row في الجدول.",
+     "الـ DFA بس هو اللي ليه next state واحدة بالظبط."
+    ],
+    [
+     "صح. أي set في الـ DFA فيها final state من الأصل بتبقى final، والـ B هي الـ final.",
+     "الـ <bdi dir=\"ltr\">{A,B}</bdi> فيها الـ B اللي هي final من الأصل، فهي final."
+    ],
+    [
+     "صح. دي الخطوة 2 بالظبط، من غير <bdi dir=\"ltr\">ε</bdi> وبنبدأ من الـ <bdi dir=\"ltr\">ε-closure</bdi> بتاعة الـ start.",
+     "ده أول table (الخطوة 1).",
+     "الطريقة بتبدأ من الـ start state مش من الـ final.",
+     "الـ rows الجديدة بتبقى sets من الـ states، زي <bdi dir=\"ltr\">{A,B}</bdi>."
     ]
    ]
   },
@@ -1193,6 +1609,154 @@ AR.compiler = {
     [
      "المحاضرة بتستخدم الـ grammar ده كمثال على الـ UNAMBIGUOUS: الـ <bdi dir=\"ltr\">id+id*id</bdi> ليها leftmost derivation واحد بس.",
      "صح. الـ LMD الوحيد هو:<pre>E ⇒ E+T ⇒ T+T ⇒ F+T ⇒ id+T\n  ⇒ id+T*F ⇒ id+F*F\n  ⇒ id+id*F ⇒ id+id*id</pre>"
+    ],
+    [
+     "أول phase هي الـ lexical analysis اللي بتطلّع الـ tokens.",
+     "صح. الـ Syntax analysis هي تاني phase.",
+     "الـ Syntax analysis بتيجي بعد الـ lexer على طول، فهي التانية.",
+     "الـ parser بياخد الـ tokens من الـ lexer على طول، فمش آخر phase."
+    ],
+    [
+     "الـ Terminals هي الـ tokens، الرموز الأساسية.",
+     "الـ Productions بتوضّح إزاي الـ terminals والـ non-terminals بيتجمعوا.",
+     "صح. الـ Non-terminals هي syntactic variables بتمثّل sets من الـ strings.",
+     "الـ start symbol هو الـ non-terminal اللي الـ derivation بيبدأ منه."
+    ],
+    [
+     "الـ Non-terminals هي syntactic variables مش tokens.",
+     "الـ start symbol هو اللي الـ derivation بيبدأ منه.",
+     "الـ productions هي الـ rules مش الرموز.",
+     "صح. الـ Terminals هي الـ tokens."
+    ],
+    [
+     "غلط، الـ left side دايماً non-terminal.",
+     "صح. كل production فيها non-terminal على الشمال، وسهم، و tokens أو non-terminals على اليمين."
+    ],
+    [
+     "صح. الأربعة دول هما اللي على الـ left side بتاع الـ productions.",
+     "دول الـ terminals (الـ tokens).",
+     "الـ E هو الـ start symbol بس، والـ T والـ X والـ Y non-terminals برضه.",
+     "الـ int دي token يعني terminal، مش non-terminal."
+    ],
+    [
+     "الـ terminals مش بتتبدّل، اللي بيتبدّل الـ non-terminals بس.",
+     "صح. دول القرارين في كل خطوة، أنهي non-terminal وأنهي production.",
+     "الـ tree مجرد رسمة للـ derivation، مش قرار في كل خطوة.",
+     "ده وصف للـ automaton مش للـ derivation."
+    ],
+    [
+     "صح. الـ rightmost derivation دايماً بيبدّل الـ non-terminal اللي على أقصى اليمين.",
+     "تبديل اللي على الشمال ده الـ leftmost، والـ rightmost بيبدّل اللي على اليمين."
+    ],
+    [
+     "الـ leftmost derivation ده بيطلّعه الـ top-down parser.",
+     "المحاضرة بتقول «in reverse» مع الـ rightmost مش الـ leftmost.",
+     "صح. الـ Bottom-up parsers بيطلّعوا rightmost derivation بالعكس.",
+     "كل parser بيمشي على derivation، والـ tokens دي output الـ lexer."
+    ],
+    [
+     "دي الصورة بعد الخطوة التالتة <bdi dir=\"ltr\">(Y&nbsp;→&nbsp;*T)</bdi>.",
+     "دي الصورة بعد الخطوة الخامسة <bdi dir=\"ltr\">(Y&nbsp;→&nbsp;ε)</bdi>.",
+     "دي صورة من الـ rightmost، وفي الـ leftmost الـ X بتتبدّل في آخر خطوة.",
+     "صح. الخطوة الرابعة بتطبّق <bdi dir=\"ltr\">T&nbsp;→&nbsp;int&nbsp;Y</bdi> على الـ T اللي على الشمال."
+    ],
+    [
+     "صح. الخطوات:<span class=\"ltr\">TX ⇒ T ⇒ int Y ⇒ int * T</span>يبقى الصورة بعد الخطوة الرابعة هي <bdi dir=\"ltr\">int&nbsp;*&nbsp;T</bdi>.",
+     "دي الصورة بعد الخطوة التالتة.",
+     "دي الصورة بعد الخطوة الخامسة.",
+     "الـ X اتبدّلت بـ <bdi dir=\"ltr\">ε</bdi> في الخطوة التانية من الـ rightmost."
+    ],
+    [
+     "لو استخدمنا <bdi dir=\"ltr\">A&nbsp;→&nbsp;a</bdi> في الخطوة التانية هيبقى فيه a واحدة بس قبل الـ B، والـ aabc فيها اتنين a.",
+     "صح. الـ derivation:<span class=\"ltr\">S ⇒ ABC ⇒ AaBC ⇒ aaBC ⇒ aabC ⇒ aabc</span>",
+     "الـ aabc فيها b واحدة بس، وكمان الـ A اللي على الشمال لازم تتبدّل الأول.",
+     "تبديل الـ C قبل الـ A ده rightmost مش leftmost."
+    ],
+    [
+     "الـ Terminals هي الـ leaf nodes.",
+     "الـ tokens بتبقى leaves مش root.",
+     "صح. الـ start symbol هو الـ root بتاع الـ parse tree.",
+     "الـ productions هي اللي بتتمدّد بيها الـ nodes، والـ root ده symbol."
+    ],
+    [
+     "غلط، الـ interior nodes دايماً non-terminals.",
+     "صح. كل الـ interior nodes بتبقى non-terminals وكل الـ leaf nodes بتبقى terminals."
+    ],
+    [
+     "صح. ده اللي بيخلّي الـ parse tree يوضّح الـ precedence.",
+     "أعمق sub-tree هو اللي بيتحسب الأول مش الـ root."
+    ],
+    [
+     "الـ * هي الـ root، فهي آخر حاجة بتتحسب في الـ tree ده.",
+     "صح. الـ E+E هي الـ sub-tree الأعمق تحت الـ root، فالـ + بتتحسب الأول.",
+     "الـ sub-tree الأعمق دايماً بيتحسب الأول.",
+     "الـ parse tree بيوضّح الـ precedence بالعمق."
+    ],
+    [
+     "صح. الـ aaa ممكن تتجمّع كده <bdi dir=\"ltr\">(aa)a</bdi> أو كده <bdi dir=\"ltr\">a(aa)</bdi>، يعني اتنين leftmost derivations واتنين trees، فهو ambiguous.",
+     "اتنين leftmost derivations مختلفين لنفس الـ string بيثبتوا الـ ambiguity."
+    ],
+    [
+     "الـ symbol اللي بعده 1، فمينفعش نستخدم <bdi dir=\"ltr\">A&nbsp;→&nbsp;0AA</bdi> هنا.",
+     "كده الاتنين derivations هيبقوا نفس الحاجة.",
+     "مفيش B في <bdi dir=\"ltr\">00AA</bdi> عشان نبدّلها.",
+     "صح. الـ LMD الأول بيعمل <bdi dir=\"ltr\">00AA&nbsp;⇒&nbsp;001SA</bdi> والتاني بيعمل <bdi dir=\"ltr\">00AA&nbsp;⇒&nbsp;001A</bdi>."
+    ],
+    [
+     "صح. الـ LMD الأول بيبدأ بـ <bdi dir=\"ltr\">S&nbsp;⇒&nbsp;AB</bdi> والتاني بـ <bdi dir=\"ltr\">S&nbsp;⇒&nbsp;C</bdi>.",
+     "الـ LMD التاني بيبدأ بـ <bdi dir=\"ltr\">S&nbsp;→&nbsp;C</bdi> مش <bdi dir=\"ltr\">AB</bdi>.",
+     "الـ LMD الأول بيبدأ بـ <bdi dir=\"ltr\">S&nbsp;→&nbsp;AB</bdi>.",
+     "أي derivation لازم يبدأ بـ production من الـ start symbol S."
+    ],
+    [
+     "في الـ leftmost لازم الـ E اللي على الشمال تتبدّل الأول.",
+     "دي الصورة بعد الخطوة التالتة.",
+     "صح. الـ derivation:<span class=\"ltr\">E ⇒ E+T ⇒ T+T</span>",
+     "دي الصورة بعد الخطوة الرابعة."
+    ],
+    [
+     "دي الخطوة التانية في الـ LMD الأول (الـ root فيه +).",
+     "صح. الـ derivation:<span class=\"ltr\">E ⇒ E–E ⇒ id–E</span>",
+     "دي الصورة بعد الخطوة التالتة في الـ LMD التاني.",
+     "دي أول خطوة في الـ LMD الأول."
+    ],
+    [
+     "المحاضرة بتقول الـ top-down parsers اللي بيبدأوا من الـ start symbol.",
+     "الـ shift-reduce parsers دول bottom-up.",
+     "الـ LR parsers دول bottom-up.",
+     "صح. الـ top-down parsers بيبدأوا من الـ start symbol وبيدخلوا في infinite loop مع الـ left recursion."
+    ],
+    [
+     "الـ A موجودة في الآخر مش في أول الـ right side.",
+     "الـ right side بيبدأ بالـ terminal c مش بـ A.",
+     "صح. الـ <bdi dir=\"ltr\">A&nbsp;→&nbsp;Ac</bdi> أولها A نفسها، على شكل:<span class=\"ltr\">A → Aα | β</span>",
+     "مفيش A على الـ right side خالص."
+    ],
+    [
+     "غلط، مش immediate لأن الـ S مش ظاهرة على طول في أول الـ rule بتاعتها.",
+     "صح. ده indirect left recursion، الـ S بتوصل لنفسها عن طريق A، والـ immediate شكله:<span class=\"ltr\">A → Aα | β</span>"
+    ],
+    [
+     "كده بدّلنا الـ α والـ β، والـ c هي الـ β ولازم تيجي الأول في الـ A.",
+     "صح. هنا <bdi dir=\"ltr\">α&nbsp;=&nbsp;ab</bdi> و <bdi dir=\"ltr\">β&nbsp;=&nbsp;c</bdi>، فبنطبّق القاعدة:<span class=\"ltr\">A → βA', A' → αA' | ε</span>",
+     "كده ضاع تكرار الـ ab، والـ A' لازم تنادي نفسها.",
+     "الـ A' لازم تنتهي بالـ <bdi dir=\"ltr\">ε</bdi> مش بالـ c."
+    ],
+    [
+     "صح. هنا <bdi dir=\"ltr\">α&nbsp;=&nbsp;*F</bdi> و <bdi dir=\"ltr\">β&nbsp;=&nbsp;F</bdi>، فالناتج:<span class=\"ltr\">T → FT', T' → *FT' | ε</span>",
+     "كده الـ left recursion ماتشالش بالشكل ده، وشكل المحاضرة بيضيف non-terminal جديد اسمه T'.",
+     "الـ T' لازم تكرّر نفسها وتنتهي بـ <bdi dir=\"ltr\">ε</bdi>.",
+     "ده تحويل لـ right recursion مش شكل الـ A' بتاع المحاضرة."
+    ],
+    [
+     "غلط، كده بدّلنا الـ α والـ β.",
+     "صح. هنا الـ α هي bc والـ β هي b، فالإجابة:<span class=\"ltr\">A → bA', A' → bcA' | ε</span>"
+    ],
+    [
+     "الـ c هي الـ β ولازم تيجي في أول الـ S، والـ a والـ b هما الـ α اللي بيتكرروا.",
+     "الـ a والـ b اتنين alternatives منفصلين مش string واحدة ab.",
+     "كده ضاع الـ alternative بتاع b، والـ <bdi dir=\"ltr\">S&nbsp;→&nbsp;Sb</bdi> لازم تبقى <bdi dir=\"ltr\">S'&nbsp;→&nbsp;bS'</bdi>.",
+     "صح. كل alternative فيه left recursion بيبقى alternative في الـ S'، زي مثال <bdi dir=\"ltr\">A&nbsp;→&nbsp;ABα&nbsp;|&nbsp;Aa&nbsp;|&nbsp;a</bdi>."
     ]
    ]
   },

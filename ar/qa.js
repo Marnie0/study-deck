@@ -281,6 +281,160 @@ AR.qa = {
     [
      "صح. المحاضرة بتديه كمثال حقيقي على تكلفة الـ bugs.",
      "المحاضرة بتقول كده بالظبط: timing bug، و28 عسكري ماتوا."
+    ],
+    [
+     "صح. المحاضرة بتعرّف الـ testing إنه process <b>incremental و iterative</b> وجزء أساسي من الـ SDLC.",
+     "غلط. الـ testing مش بيتعمل مرة واحدة في الآخر، هو incremental و iterative وجزء من الـ SDLC كله.",
+     "غلط. كلمة sequential بتوصف الـ Waterfall model، مش تعريف الـ testing.",
+     "غلط. الـ Miller بيقول إن الـ testing بيشغّل الـ software بشكل منظم في ظروف متحكم فيها بعناية."
+    ],
+    [
+     "غلط. الـ Demonstration-oriented كان من <bdi dir=\"ltr\">1957–1978</bdi>، وهدفه إن الـ software يطابق الـ specifications.",
+     "صح. لحد سنة <bdi dir=\"ltr\">1956</bdi> الـ testing كان debugging-oriented، يعني الـ testing معناه الـ debugging.",
+     "غلط. الـ Destruction-oriented كان من <bdi dir=\"ltr\">1979–1982</bdi>، والـ tests كانت معمولة عشان تلاقي errors (عصر Myers).",
+     "غلط. الـ Prevention-oriented كان من <bdi dir=\"ltr\">1988–2000</bdi>، وبيمنع الـ defects بالـ test design والـ planning بدري."
+    ],
+    [
+     "صح. الجدول بيقول إن الفترة من <bdi dir=\"ltr\">1979–1982</bdi> كانت destruction-oriented، والـ tests معمولة عشان تلاقي errors (عصر Myers).",
+     "غلط. الجملة مطابقة للجدول بالظبط، فهي صح."
+    ],
+    [
+     "غلط. الـ Miller هو اللي قال الهدف العام من الـ testing (نأكد الـ quality)، مش التقسيم التاريخي.",
+     "غلط. الـ Myers اسمه مذكور بس كعصر الـ destruction-oriented testing.",
+     "صح. الـ Gelperin والـ Hetzel قسّموا الـ testing على حسب الـ goals والـ phases بتاعته.",
+     "غلط. ولا واحد فيهم عمل التقسيم ده، التقسيم بتاع الـ Gelperin والـ Hetzel."
+    ],
+    [
+     "غلط. الـ Math bugs هي القسمة على صفر والـ overflow والـ rounding errors.",
+     "غلط. الـ Logical bugs هي الـ infinite loops والـ logic الغلط والـ conditions الغلط.",
+     "غلط. الـ Team working bugs هي الـ documentation القديمة والملفات اللي مش متطابقة والـ linking الغلط.",
+     "صح. الـ buffer overflow والـ access violations والـ variables اللي مش initialized كلها resource bugs."
+    ],
+    [
+     "صح. الـ infinite loops والـ logic الغلط والـ conditions الغلط كلها logical bugs.",
+     "غلط. الـ Conceptual bugs هي الـ syntax الغلط والـ keywords المتهجية غلط والـ design logic اللي فيه عيب.",
+     "غلط. الـ Co-programming bugs هي الـ deadlocks والـ race conditions ومشاكل الـ concurrency.",
+     "غلط. الـ Resource bugs هي الـ buffer overflow والـ access violations والـ variables اللي مش initialized."
+    ],
+    [
+     "غلط. الـ Math bugs هي القسمة على صفر والـ overflow والـ rounding.",
+     "صح. الـ syntax الغلط والـ keywords المتهجية غلط دي conceptual bugs.",
+     "غلط. الـ Team working bugs هي الـ documentation القديمة والملفات اللي مش متطابقة والـ linking الغلط.",
+     "غلط. الـ Logical bugs هي الـ infinite loops والـ conditions الغلط، مش الـ keywords المتهجية غلط."
+    ],
+    [
+     "غلط. الـ Co-programming bugs هي الـ deadlocks والـ race conditions والـ concurrency.",
+     "غلط. الـ Resource bugs هي الـ buffer overflow والـ access violations والـ variables اللي مش initialized.",
+     "صح. الـ documentation القديمة والملفات اللي مش متطابقة والـ linking الغلط دي team working bugs.",
+     "غلط. الـ Conceptual bugs هي الـ syntax الغلط والـ keywords المتهجية غلط."
+    ],
+    [
+     "غلط. الـ condition 1 هي function مذكورة في الـ spec ومش شغالة، زي زرار الـ + .",
+     "غلط. الـ condition 2 هي إنه يعمل حاجة ممنوعة زي الـ crash أو الـ freeze.",
+     "غلط. الـ condition 3 هي feature زيادة مش مذكورة، زي الـ function اللي اسمها square.",
+     "صح. إنه يشتغل صح والبطارية ضعيفة حاجة لازمة حتى لو مش مذكورة، وده مثال المحاضرة على الـ condition 4."
+    ],
+    [
+     "صح. فيه function الـ spec بتطلبها ومش شغالة، زي زرار الـ + في الـ calculator.",
+     "غلط. الـ condition 3 هي feature زيادة مش مذكورة، مش function مطلوبة وناقصة.",
+     "غلط. الـ condition 4 عن حاجات مش مذكورة في الـ spec، وهنا الـ Save مذكور صراحة.",
+     "غلط. الـ condition 5 عن سهولة الاستخدام والسرعة من وجهة نظر العميل."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ condition 5 هي وجهة نظر العميل، والـ feedback بتاع الـ tester بيطلّع العيوب دي قبل ما المنتج يوصل للعميل.",
+     "غلط. ده بالظبط وصف المحاضرة للـ condition 5."
+    ],
+    [
+     "غلط. الـ Communication failure هو سوء التواصل بين الـ teams.",
+     "صح. الـ deadlines الضيقة بتسبب design ضعيف وتنازلات في الـ testing، وده الـ unrealistic development timeframe.",
+     "غلط. الـ Change requests هي تغييرات في الـ requirements أو الـ tools في آخر لحظة.",
+     "غلط. الـ Human factor معناه غلطات في الـ logic أو الـ syntax."
+    ],
+    [
+     "غلط. الـ Poor design logic هو research مش كفاية أو فهم غلط للـ feasibility.",
+     "غلط. السبب ده عن الـ testers اللي مش ماهرين ومش بيلاقوا المشاكل المستخبية.",
+     "صح. الـ Poor coding practices فيها الطرق اللي مش كفء والـ tools اللي فيها مشاكل.",
+     "غلط. الـ Communication failure هو سوء التواصل بين الـ teams."
+    ],
+    [
+     "غلط. التكلفة في الـ coding متوسطة، وفي الـ integration أعلى لأن فيها الـ developer والـ engineers.",
+     "صح. الترتيب هو الـ Requirement (قليلة) ثم الـ Coding (متوسطة) ثم الـ Integration (أعلى) ثم الـ Testing (مكلفة جدًا) ثم الـ Production (مكلفة جدًا جدًا)."
+    ],
+    [
+     "غلط. الـ requirement stage هي الأرخص، لأن الـ errors بدري سهل تتصلح.",
+     "غلط. في الـ coding التكلفة متوسطة، والـ developer يقدر يصلحها بسهولة.",
+     "غلط. الـ production مكلفة جدًا جدًا بسبب السمعة والغرامات المالية أو القانونية.",
+     "صح. في الـ testing التصليح مكلف جدًا، لأن فيه developers و engineers و managers وتأخير."
+    ],
+    [
+     "صح. الـ errors اللي بدري بتنتقل للمراحل اللي بعدها، فتسبب تأخير وتكلفة أعلى لأنها لازم تتصلح في أكتر من مكان.",
+     "غلط. ده العيب الأساسي بتاع الـ Spiral model.",
+     "غلط. ده عيب من عيوب الـ RAD.",
+     "غلط. دي عيوب الـ Agile."
+    ],
+    [
+     "غلط. الـ System Engineering بيحدد الـ software والـ hardware requirements.",
+     "صح. الـ Analysis فيه الـ feasibility study والـ goals والـ performance والـ interface requirements.",
+     "غلط. الـ Design بيحوّل الـ requirements لـ software structure زي الـ database design.",
+     "غلط. الـ Maintenance بيصلح المشاكل ويعمل update لما تظهر احتياجات جديدة."
+    ],
+    [
+     "غلط. الـ Design engineering هي الـ phase التالتة، بعد الـ risk analysis.",
+     "غلط. الـ Customer evaluation هي آخر phase في الـ cycle.",
+     "صح. الـ cycle هي:<span class=\"ltr\">Planning → Risk analysis → Design engineering → Customer evaluation</span>",
+     "غلط. الـ Coding phase في الـ Waterfall، مش من الـ 4 phases بتاعة الـ Spiral."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ Spiral ممكن ياخد وقت ويبقى مكلف بسبب كتر الـ iterations والـ continuous testing.",
+     "غلط. ده بالظبط العيب اللي المحاضرة قالته على الـ Spiral."
+    ],
+    [
+     "غلط. الـ acceptance test plan بييجي من الـ requirements specifications.",
+     "غلط. الـ integration test plan بييجي من الـ system design.",
+     "غلط. الـ test cases بتاعة الـ unit testing بتيجي من الـ unit design.",
+     "صح. الـ functional specifications بيقابلها الـ system test plan والـ system test."
+    ],
+    [
+     "صح. الـ Acceptance testing بيعمله العميل عشان يتأكد من الـ business requirements.",
+     "غلط. الـ System testing بيتأكد إن الـ system كله ماشي على الـ design والـ performance.",
+     "غلط. الـ Integration testing بيختبر التفاعل بين الـ modules.",
+     "غلط. الـ Unit testing بيختبر كل module لوحده."
+    ],
+    [
+     "صح. ده عيب الـ V-model في المحاضرة، وكمان مش مناسب لكل المشاريع.",
+     "غلط. المحاضرة ذكرت ده بالظبط كعيب للـ V-model."
+    ],
+    [
+     "غلط. الـ Waterfall sequential بس مفيهوش cycle قصيرة ولا reusable components.",
+     "صح. الـ RAD هو linear sequential بـ cycle قصيرة جدًا و reusable components.",
+     "غلط. الـ Spiral بيمشي iterative وفيه risk analysis و 2 أو 3 prototypes.",
+     "غلط. الـ V-model بيدمج الـ testing في كل stage، ومش موصوف إنه cycle قصيرة."
+    ],
+    [
+     "غلط. الـ Requirements planning بيجمع الـ requirements ويعمل outline.",
+     "غلط. الـ Design phase بتبني prototype فيه كل الـ requirements والتغييرات.",
+     "صح. الـ Testing and handover بتستخدم reusable components عشان تقلل وقت الـ testing قبل التسليم.",
+     "غلط. الـ Construction بتطور وتحسّن الـ prototypes بالـ RAD tools لحد ما العميل يرضى."
+    ],
+    [
+     "غلط. ده مش الاختصار اللي في المحاضرة.",
+     "غلط. حرف الـ D الأول معناه Dynamic مش Distributed.",
+     "غلط. الـ DSDM طريقة development، مش طريقة لاكتشاف الـ bugs.",
+     "صح. الـ DSDM اختصار Dynamic Systems Development Method، والباقيين هما الـ SCRUM والـ XP."
+    ],
+    [
+     "صح. المحاضرة بتوصف الـ pair programming في الـ XP كده، واحد بيكتب والتاني بيعمل <bdi dir=\"ltr\">review/test</bdi>.",
+     "غلط. المحاضرة قالت كده بالظبط عن الـ XP."
+    ],
+    [
+     "صح. الـ Refactor بيخلي الـ code أسهل في الـ maintenance والتوسيع وبيشيل الـ code المتكرر أو اللي مش مستخدم.",
+     "غلط. دي أول خطوة، وفيها بنكتب automated tests بتحدد الـ software المفروض يعمل إيه.",
+     "غلط. هنا الـ tester بيزود tests بـ inputs مختلفة.",
+     "غلط. الخطوة دي بتعيد الـ tests لحد ما كلها تعدّي."
+    ],
+    [
+     "غلط. الـ Waterfall اتوصف إنه sequential بس، والـ Agile هو الأكثر تطورًا وكفاءة.",
+     "صح. الخلاصة بتقول إن الـ Agile هو الأكثر تطورًا وكفاءة، والـ V والـ Spiral أكفأ من الـ waterfall."
     ]
    ]
   },
@@ -549,6 +703,148 @@ AR.qa = {
      "صح. ده مذكور ضمن عيوب الـ black-box.",
      "المحاضرة بتعتبر سرعة عمل الـ test cases ميزة.",
      "الـ Black-box testing مناسب للـ testing من وجهة نظر الـ user (الـ GUI)."
+    ],
+    [
+     "غلط. الـ Validation بيسأل «إحنا بنبني المنتج الصح؟» زي الـ user acceptance testing.",
+     "غلط. الـ QC مركز على الـ product وهو corrective، زي الـ unit والـ system testing.",
+     "صح. الـ Verification معناه إننا بنبني المنتج صح (زي الـ code reviews والـ design checks).",
+     "غلط. الـ Acceptance testing بيعمله الـ user أو العميل على المنتج."
+    ],
+    [
+     "غلط. الاتنين متبدلين.",
+     "صح. الـ QA مركز على الـ process وهو preventive، والـ QC مركز على الـ product وهو corrective."
+    ],
+    [
+     "غلط. الـ test plan هو document فيه الـ objectives والـ scope.",
+     "صح. الـ test case فيها الـ input والـ conditions والـ expected output.",
+     "غلط. الـ bug عيب بيطلّع نتايج مش مقصودة، زي زرار الـ login اللي مش شغال.",
+     "غلط. الـ Validation بيتأكد إننا بنبني المنتج الصح للـ user."
+    ],
+    [
+     "صح. الـ Integration testing بيختبر الـ interfaces بين الـ modules (الـ payment مع الـ billing).",
+     "غلط. الـ Unit testing بيختبر أصغر component، يعني function أو module لوحده.",
+     "غلط. الـ System testing بيختبر سلوك الـ system كله مع الـ specifications.",
+     "غلط. الـ Acceptance testing بيعمله الـ user أو العميل."
+    ],
+    [
+     "غلط. المحاضرة ماسمتهوش structural، هو بيركز على الـ functionality من غير الـ internal logic.",
+     "غلط. الـ Static testing هو فحص حاجة مش شغالة، والـ black-box ممكن يبقى static أو dynamic.",
+     "غلط. الـ Unit testing هو test level لأصغر component.",
+     "صح. الـ Black-box (functional) testing اسمه كمان behavioral testing."
+    ],
+    [
+     "صح. الـ tester بيتصرف كأنه عميل وبيختبر الـ functions من الـ GUI بس.",
+     "غلط. ده بالظبط مثال الـ ATM في المحاضرة."
+    ],
+    [
+     "غلط. إنك تشغّل الـ software وتستخدمه ده الـ dynamic testing.",
+     "صح. الـ Static testing هو إنك تختبر حاجة مش شغالة (بتفحصها وتراجعها)."
+    ],
+    [
+     "غلط. الـ Static testing مش بيشغّل الـ software.",
+     "صح. الـ Dynamic black-box اسمه كمان exploratory أو behavioral testing.",
+     "غلط. الـ State testing بيختبر الـ states والـ transitions، وهو technique مش اسم تاني.",
+     "غلط. الـ Verification بيسأل إذا كنا بنبني المنتج صح، زي الـ code reviews."
+    ],
+    [
+     "غلط. ده الـ test-to-fail.",
+     "غلط. ده الـ static black-box testing.",
+     "صح. الـ Test-to-pass «بالراحة عليه» بيستخدم حالات عادية والـ boundaries والـ sub-boundaries والـ default data.",
+     "غلط. دي طريقة من طرق تقليل الـ states في الـ state testing."
+    ],
+    [
+     "غلط. المحاضرة بتقول ماتستغربش لو لقيت bugs حتى في الـ test-to-pass.",
+     "صح. الـ test-to-pass بيكشف bugs قبل الـ test-to-fail، وممكن تلاقي bugs حتى فيه."
+    ],
+    [
+     "صح. فكفاية نختبر case واحدة من كل class.",
+     "غلط. ده تعريف الـ boundary condition.",
+     "غلط. ده الـ software state.",
+     "غلط. ده الـ test plan."
+    ],
+    [
+     "صح. بيقلل بشكل منظم الـ test cases الكتير لمجموعة أصغر بكتير، ومع كده الـ coverage كويس.",
+     "غلط. المحاضرة قالت الميزة دي بالظبط."
+    ],
+    [
+     "غلط. كده بنختبر الأطراف الـ valid بس، وناقص الـ invalid classes الاتنين وقيمة في النص.",
+     "غلط. الـ invalid tests المفروض تبقى بره الـ range بواحد (1 و 9)، وناقص قيمة valid في النص.",
+     "غلط. المثال مش بياخد واحدة بس من كل class، ده كمان بيختبر الـ valid boundaries اللي هي 2 و 8.",
+     "صح. زي <bdi dir=\"ltr\">3,&nbsp;4,&nbsp;7,&nbsp;10,&nbsp;11</bdi> بالظبط: واحد تحت (invalid)، والطرف الأولاني، وقيمة في النص، والطرف التاني (valid)، وواحد فوق (invalid)."
+    ],
+    [
+     "غلط. دي الـ valid tests بس، وناقص الـ special value والـ invalid boundaries الاتنين.",
+     "غلط. ناقص الـ special value اللي هي 0000 وقيمة valid في النص.",
+     "صح. الـ special value ثم الـ invalid left ثم الـ valid left ثم الـ valid mid ثم الـ valid right ثم الـ invalid right، زي مثال المحاضرة بالظبط.",
+     "غلط. الـ boundaries هي القيم اللي على الطرف (1000 و 9999)، وناقص الـ invalid left اللي هي 0999."
+    ],
+    [
+     "غلط. الـ invalid left boundary هي 09999.",
+     "صح. الـ 00000 هي الـ invalid special value.",
+     "غلط. الـ valid left boundary هي 10000.",
+     "غلط. الـ valid mid هي 50000."
+    ],
+    [
+     "صح. بنختبر 1 والـ maximum و 0 و <bdi dir=\"ltr\">max+1</bdi>.",
+     "غلط. كده ناقص القيم الـ invalid اللي بره الحدود بواحد، اللي هي 0 و 17.",
+     "غلط. قيمة في النص لوحدها مش بتختبر أي boundary.",
+     "غلط. دي كلها invalid، وناقص الأطراف الـ valid اللي هي 1 و 16."
+    ],
+    [
+     "غلط. ده الـ objective بتاع الـ equivalence partitioning.",
+     "غلط. دي الـ state transitions.",
+     "غلط. ده الـ test plan.",
+     "صح. زي حافة الجرف، والـ bugs بتزيد عند الـ boundaries."
+    ],
+    [
+     "غلط. الـ keyboard input متصنف data.",
+     "غلط. الـ mouse clicks متصنفة data.",
+     "صح. الجزء بتاع الـ program هو الـ executable flow والـ transitions والـ logic والحسابات.",
+     "غلط. الـ disk files والـ printouts متصنفين data."
+    ],
+    [
+     "غلط. الـ boundary conditions مذكورة.",
+     "صح. دي طريقة لتقليل الـ state testing، مش أساس لتقسيم الـ data (اللي هو الـ boundary والـ sub-boundary والـ nulls والـ bad data).",
+     "غلط. الـ nulls مذكورة.",
+     "غلط. الـ bad data مذكورة."
+    ],
+    [
+     "صح. الـ software state هي الحالة أو الـ mode اللي الـ software فيه، زي الـ pencil والـ airbrush في Paint.",
+     "غلط. المحاضرة استخدمت المثال ده بالظبط."
+    ],
+    [
+     "صح. في الـ startup الـ pencil هو اللي متختار، مش الـ airbrush.",
+     "غلط. مساحة الرسم الفاضية جزء من الـ startup state.",
+     "غلط. الأسود على الأبيض جزء من الـ startup state.",
+     "غلط. اسم الـ document <bdi dir=\"ltr\">\"untitled\"</bdi> جزء من الـ startup state."
+    ],
+    [
+     "غلط. المحاضرة بتقول نعمل الـ map من وجهة نظر الـ user.",
+     "غلط. الـ database design مالوش علاقة بالـ state map.",
+     "غلط. وجهة نظر الـ manager مش مذكورة.",
+     "صح. المحاضرة بتقول اعمل الـ map من وجهة نظر الـ user للـ software."
+    ],
+    [
+     "غلط. الـ stop بيودّي لـ OFF من PLAY ومن FAST FORWARD بس، لكن من FAST PLAY بيودّي لـ PLAY.",
+     "صح. الجدول بيقول:<span class=\"ltr\">FAST PLAY + stop → PLAY</span>",
+     "غلط. بنوصل لـ FAST FORWARD من FAST PLAY بزرار الـ fast forward مش الـ stop.",
+     "غلط. مفيش stop بيلف على FAST PLAY نفسها."
+    ],
+    [
+     "غلط. بنوصل لـ PLAY بعد تاني ضغطة، وفيه ضغطتين كمان بعدها.",
+     "غلط. بنوصل لـ FAST PLAY بعد تالت ضغطة، والـ fast forward الأخيرة بتطلّعنا منها.",
+     "صح. التتبع هو:<span class=\"ltr\">OFF -ff→ FAST FORWARD -play→ PLAY -ff→ FAST PLAY -ff→ FAST FORWARD</span>",
+     "غلط. مفيش stop اتضغط، فمش هنرجع لـ OFF بعد البداية."
+    ],
+    [
+     "غلط. الـ play من FAST FORWARD بيودّي لـ PLAY، والـ FAST PLAY بنوصلها من PLAY بالـ fast forward.",
+     "صح. الجدول بيقول:<span class=\"ltr\">FAST FORWARD + play → PLAY</span>"
+    ],
+    [
+     "غلط. test case واحدة كفاية بس عشان نزور كل الـ states، مش كل الـ transitions.",
+     "صح. الـ TC1 والـ TC2 مع بعض بيغطوا الـ 8 transitions.",
+     "غلط. فيه 4 states، بس الـ transitions بتتغطى بـ 2 test cases.",
+     "غلط. الـ 8 هي عدد الـ transitions، مش عدد الـ test cases."
     ]
    ]
   },
@@ -821,6 +1117,148 @@ AR.qa = {
      "ده معناه إن الـ code أسهل في الفهم والـ maintenance.",
      "صح. الـ Portability معناها إن الـ code بيشتغل على hardware و compilers مختلفة.",
      "الـ Usability مش من الـ 3 أسباب بتوع الـ standards (reliability و <bdi dir=\"ltr\">readability/maintainability</bdi> و portability)؛ إن الـ code يشتغل على hardware تاني ده portability."
+    ],
+    [
+     "الـ Black-box testing بيبص على الـ inputs والـ outputs بس، مش على الشغل الداخلي.",
+     "صح. الـ White-box testing ليه الأسامي الأربعة دي عشان بيبص جوه الـ code.",
+     "الـ Integration testing جزء من الـ testing the pieces، مش اسم تاني للـ white-box.",
+     "الـ Acceptance testing ده آخر مرحلة في الـ validation، مش اسم للـ white-box."
+    ],
+    [
+     "صح. اختبار الـ logical correctness (الـ conditions وهي true ووهي false) واحد من الـ 4 حاجات اللي الـ white-box بيساعد فيها.",
+     "غلط، المحاضرة بتعد الـ logical correctness (true و false) كهدف للـ white-box."
+    ],
+    [
+     "الـ Code review checklist هي قايمة أنواع errors (زي الـ data reference والـ computation)، مش اجتماعات review.",
+     "الـ Standards والـ guidelines قواعد لكتابة الـ code، مش أنواع review.",
+     "الـ Data coverage تبع الـ dynamic white-box (الـ data flow والـ sub-boundaries والـ error forcing).",
+     "صح. الشكل بيبين إن الـ Formal Review بيتفرع لـ Peer Review و Walkthrough و Inspection."
+    ],
+    [
+     "الـ Formal review واحد من الـ 3 أجزاء بتوع الـ static white-box.",
+     "صح. الـ Code coverage (statement و path و condition) تبع الـ dynamic white-box، مش الـ static.",
+     "الـ Coding standards and guidelines واحد من الـ 3 أجزاء الـ static.",
+     "الـ Code review checklist واحد من الـ 3 أجزاء الـ static."
+    ],
+    [
+     "صح. الـ Follow rules معناه rules ثابتة زي عدد السطور اللي بتتراجع في اليوم والوقت المستهلك.",
+     "الـ Prepare معناه كل مشارك يحضّر ويساهم.",
+     "الـ Identify problems معناه نطلّع المشاكل في الـ design والـ code.",
+     "الـ Write a report معناه نلخص النتايج للـ development team."
+    ],
+    [
+     "غلط، المحاضرة بتقول الـ report بيبقى متاح للـ development team.",
+     "صح. العنصر الرابع هو الـ Write a report اللي بيلخص النتايج ويبقى متاح للـ development team."
+    ],
+    [
+     "عدد صغير، المحاضرة بتقول مجموعة من 5 أو 6.",
+     "مش رقم المحاضرة، المجموعة 5 أو 6.",
+     "صح. اللي كتب الـ code بيعرضه سطر سطر على مجموعة من 5 أو 6 programmers و testers.",
+     "عدد كبير، المحاضرة بتقول مجموعة من 5 أو 6."
+    ],
+    [
+     "صح. في الـ inspection اللي بيعرض مش الـ programmer الحقيقي، والـ inspectors بيراجعوا من وجهة نظر الـ user والـ tester.",
+     "ده يناسب الـ peer review، اللي فيه الـ programmer اللي شارك في التصميم.",
+     "المحاضرة مش بتذكر managers أو customers في الـ inspection.",
+     "الـ compilers والـ hardware ليهم علاقة بالـ portability، مش بالـ inspection."
+    ],
+    [
+     "غلط، ده وصف الـ walkthrough، أما في الـ inspection فاللي بيعرض مش الـ programmer الحقيقي.",
+     "صح. في الـ inspection اللي بيعرض مش هو الـ programmer الحقيقي."
+    ],
+    [
+     "غلط، الكلام معكوس.",
+     "صح. الـ Standards هي الـ rules الـ mandatory، والـ guidelines بتساعد نمشي عليها ومش mandatory أوي."
+    ],
+    [
+     "الـ Portability معناها الـ code يشتغل على hardware و compilers مختلفة.",
+     "الـ Reliability معناها الـ code أكتر reliable و secure.",
+     "الـ Usability مش من الـ 3 أسباب في المحاضرة.",
+     "صح. الـ <bdi dir=\"ltr\">Readability / Maintainability</bdi> معناها إن الـ code ده أسهل في الفهم والـ maintenance."
+    ],
+    [
+     "الـ Data declaration بيغطي الـ length والـ type والـ storage class والـ initialization والأسامي الشبه بعض.",
+     "صح. الـ subscripts جوه حدود الـ array والـ off-by-one في الـ indexing دول checks تبع الـ data reference.",
+     "الـ Computation بيغطي الـ types المختلفة والـ overflow والقسمة على صفر.",
+     "الـ Control flow بيغطي السلوك الغلط للـ loops والـ control structures."
+    ],
+    [
+     "الـ Comparison errors عن <bdi dir=\"ltr\">&lt;</bdi> و <bdi dir=\"ltr\">&lt;=</bdi> والـ Boolean operands.",
+     "الـ Data reference عن الـ variables اللي مش متعملها initialize وحدود الـ arrays.",
+     "صح. احتمال إن الـ divisor يبقى صفر ده check تبع الـ computation errors.",
+     "الـ <bdi dir=\"ltr\">Input/output</bdi> errors عن الـ files والـ input من الكيبورد والماوس والشاشة."
+    ],
+    [
+     "صح. الـ operands الغلط بتوع الـ Boolean operator ده check تبع الـ comparison errors.",
+     "الـ Computation عن الحسابات، زي الـ types المختلفة والحجم والـ overflow والقسمة على صفر.",
+     "الـ Data declaration عن طريقة تعريف الـ variables وعمل الـ initialization ليها.",
+     "الـ Control flow عن الـ loops والـ control structures لما تشتغل غلط."
+    ],
+    [
+     "الـ Control flow errors جاية من الـ loops والـ control structures.",
+     "الـ Data reference errors جاية من variables مش متعرّفة أو متعملها initialize صح.",
+     "صح. القراية من file، والـ input من الكيبورد والماوس، والكتابة على file أو الشاشة كلها <bdi dir=\"ltr\">Input/output</bdi> errors.",
+     "الـ Computation errors جاية من حسابات غلط."
+    ],
+    [
+     "غلط، الـ computation errors عن الحسابات (types مختلفة، overflow، قسمة على صفر).",
+     "صح. الـ variable اللي مش متعمله initialize واتعمله reference ده data reference error."
+    ],
+    [
+     "صح. الـ overflow في نص الحساب واحد من الـ 4 checks بتوع الـ computation.",
+     "غلط، المحاضرة حاطة الـ overflow في نص الحساب تحت الـ computation errors."
+    ],
+    [
+     "دول أنشطة تبع الـ static white-box (الـ formal review).",
+     "دول مواضيع تانية في الـ dynamic white-box، مش الـ testing the pieces.",
+     "الـ Debugging بيصلّح الـ bugs، وبيتقارن بالـ testing، مش جزء من الـ testing the pieces.",
+     "صح. الـ Testing the pieces معناه الـ unit والـ integration testing."
+    ],
+    [
+     "أنواع الـ Code coverage هي الـ statement والـ path والـ condition.",
+     "صح. المحاضرة بتقول إن الـ data flow والـ sub-boundaries والـ error forcing هما أنواع الـ data coverage.",
+     "استراتيجيات الـ Integration هي الـ bottom-up والـ top-down والـ umbrella.",
+     "أنواع الـ Formal review هي الـ peer review والـ walkthrough والـ inspection."
+    ],
+    [
+     "صح. شكل الـ Code Coverage بيتفرع لـ Statement و Path و Condition Coverage.",
+     "أنواع الـ Data coverage هي الـ data flow والـ sub-boundaries والـ error forcing.",
+     "الـ Static white-box هو الـ formal review والـ standards and guidelines والـ checklist.",
+     "استراتيجيات الـ Integration testing هي الـ bottom-up والـ top-down والـ umbrella."
+    ],
+    [
+     "الشرط <bdi dir=\"ltr\">X&lt;5</bdi> بيبقى false، فـ <bdi dir=\"ltr\">B=B*X</bdi> مش بتتنفذ.",
+     "الشرط <bdi dir=\"ltr\">Y&gt;2</bdi> بيبقى false، فالـ AND كله false و <bdi dir=\"ltr\">B=B*X</bdi> مش بتتنفذ.",
+     "صح. <bdi dir=\"ltr\">3&lt;5</bdi> و <bdi dir=\"ltr\">4&gt;2</bdi> الاتنين true، فـ <bdi dir=\"ltr\">B=B*X</bdi> بتتنفذ وكل الـ statements اتغطت.",
+     "بس <bdi dir=\"ltr\">X=3, Y=4</bdi> هي اللي بتخلي جزئين الـ AND true."
+    ],
+    [
+     "دي بتشتغل (<bdi dir=\"ltr\">A=1</bdi> true)، بس مش الوحيدة.",
+     "دي بتشتغل (<bdi dir=\"ltr\">B&lt;0</bdi> true)، بس مش الوحيدة.",
+     "دي بتشتغل (الجزئين true)، بس مش الوحيدة.",
+     "صح. مع الـ OR يكفي جزء واحد true، وكل اختيار فيه جزء true على الأقل، فـ <bdi dir=\"ltr\">C=C-1</bdi> بتتنفذ فيهم كلهم."
+    ],
+    [
+     "أول IF بيتنفذ (A بقت 7)، بس <bdi dir=\"ltr\">X=4</bdi> false و <bdi dir=\"ltr\">A&lt;0</bdi> false، فـ <bdi dir=\"ltr\">A=A*2</bdi> مش بتتنفذ.",
+     "صح. <bdi dir=\"ltr\">4&gt;2</bdi> و <bdi dir=\"ltr\">Y=1</bdi>، فـ A بقت 6، وبعدين <bdi dir=\"ltr\">X=4</bdi> true فـ A بقت 12، والاتنين اتنفذوا.",
+     "الشرط <bdi dir=\"ltr\">Y=1</bdi> false، فـ <bdi dir=\"ltr\">A=A-X</bdi> مش بتتنفذ، وبس تاني IF اللي بيشتغل.",
+     "بس <bdi dir=\"ltr\">X=4, Y=1, A=10</bdi> هي اللي بتشغّل الـ THEN الاتنين."
+    ],
+    [
+     "صح. أي تاريخ غير <bdi dir=\"ltr\">25-12-2008</bdi> بيخلي الـ IF يبقى false، فسطر 3 و 4 بيتنطوا.",
+     "ده الـ path لما التاريخ <bdi dir=\"ltr\">25-12-2008</bdi> بس.",
+     "سطر 2 (الـ IF) دايماً بيتنفذ، وسطر 5 و 6 الاتنين بيتنفذوا.",
+     "سطر 3 محتاج الـ IF يبقى true، وسطر 5 و 6 دايماً بيتنفذوا."
+    ],
+    [
+     "ده يختبر كل sub-condition مرة، مش كل توافيق الـ true والـ false.",
+     "الـ 4 دي لـ 2 sub-conditions، زي مثال الـ Date والـ Time في المحاضرة.",
+     "الـ 2 دي الـ branch coverage (الـ IF كله true مرة و false مرة)، مش الـ full condition coverage.",
+     "صح. كل sub-condition من الـ 3 يا true يا false، فالتوافيق:<span class=\"ltr\">2 × 2 × 2 = 8</span>"
+    ],
+    [
+     "غلط، جزء الـ Time بيبقى false، فالـ AND كله false وسطر 3 بيتنط.",
+     "صح. بس الحالة <bdi dir=\"ltr\">(25-12-2008, 00:00:00)</bdi> هي اللي بتشغّل سطر 3، والحالة دي بتشغّل <bdi dir=\"ltr\">1, 2, 5, 6, 7</bdi>."
     ]
    ]
   },
@@ -1086,6 +1524,150 @@ AR.qa = {
      "ده بيطرح بدل ما يزود الـ outer region.",
      "الـ 5 بتضيف 2 outer regions؛ الـ planar graph فيه outer region واحدة بالظبط، يعني:<span class=\"ltr\">V(G) = 3 + 1 = 4</span>",
      "صح. الـ <bdi dir=\"ltr\">V(G)</bdi> بيساوي عدد الـ regions، يعني:<span class=\"ltr\">3 inner + 1 outer = 4</span>والـ foo كان فيها <bdi dir=\"ltr\">2&nbsp;+&nbsp;1&nbsp;=&nbsp;3</bdi>."
+    ],
+    [
+     "صح. السهم من الـ Requirements Specifications للـ Acceptance Test مكتوب عليه Acceptance Test Plan.",
+     "الـ System Test Plan بيربط الـ Functional Specifications بالـ System Test.",
+     "الـ Integration Test Plan بيربط الـ System Design بالـ Integration Test.",
+     "كلمة Test Cases مكتوبة بين الـ Unit Design والـ Unit Test."
+    ],
+    [
+     "صح. الشكل حاطط كلمة Test Cases بين الـ Unit Design والـ Unit Test.",
+     "غلط، ده بالظبط مكان كلمة Test Cases في الشكل، والروابط التانية هي test plans."
+    ],
+    [
+     "ده <bdi dir=\"ltr\">E − N</bdi> من غير ما نزود <bdi dir=\"ltr\">2P</bdi>.",
+     "صح.<span class=\"ltr\">V(G) = E − N + 2P = 10 − 8 + 2(1) = 4</span>",
+     "ده على أساس <bdi dir=\"ltr\">P = 2</bdi>، بس الـ graph ده component واحد، فالصح:<span class=\"ltr\">10 − 8 + 2(1) = 4</span>",
+     "ده جمع الـ E والـ N بدل ما نطرح."
+    ],
+    [
+     "ده على أساس <bdi dir=\"ltr\">P = 1</bdi>، بس هنا <bdi dir=\"ltr\">P = 2</bdi>.",
+     "ده نسي الـ <bdi dir=\"ltr\">2P</bdi> خالص.",
+     "صح.<span class=\"ltr\">V(G) = 9 − 9 + 2(2) = 4</span>",
+     "ده زوّد 2 على الـ E بس، ولازم نطرح الـ N والـ P هنا 2."
+    ],
+    [
+     "ده طرح 1 بدل ما يزوّد.",
+     "ده نسي الـ <bdi dir=\"ltr\">+ 1</bdi>.",
+     "ده ضرب في 2، والقانون بيزوّد 1 بس.",
+     "صح.<span class=\"ltr\">V(G) = 4 + 1 = 5</span>"
+    ],
+    [
+     "صح. 2 regions جوه وواحدة برة، يعني 3، زي الـ <bdi dir=\"ltr\">V(G) = 3</bdi>.",
+     "الـ 2 دي الـ regions اللي جوه بس، والـ region اللي برة بتتحسب كمان.",
+     "الـ <code>foo()</code> ليها 2 regions جوه، مش 3.",
+     "الـ 7 ده عدد الـ edges، مش الـ regions."
+    ],
+    [
+     "صح. الشرط الأول true فـ b بقت صفر (node 2)، وبعدين <bdi dir=\"ltr\">b==0</bdi> true فبنروح لـ node 4.",
+     "أول IF بيبقى true، فـ node 2 مش بتتنط.",
+     "بعد node 2 الـ b بقت صفر، فـ <bdi dir=\"ltr\">b==0</bdi> true والـ path بيروح لـ node 4 مش للـ else.",
+     "الـ IF-ين الاتنين true هنا، فمفيش تنطيط لـ node 2 ولا node 4."
+    ],
+    [
+     "ده راح لـ node 4، بس <bdi dir=\"ltr\">b = 3</bdi> مش صفر و <bdi dir=\"ltr\">a = 2</bdi> مش أكبر من 5، فالـ else هو اللي بيتنفذ.",
+     "صح. الشرط الأول true فـ <bdi dir=\"ltr\">b = 3</bdi>، وبعدين الشرط التاني false فـ <bdi dir=\"ltr\">a = 4</bdi>، والـ return:<span class=\"ltr\">4 + 3 = 7 (path 1,2,3,5,6)</span>",
+     "ده نط node 2 (الـ b فضلت 5)، بس أول IF بيبقى true.",
+     "ده رجّع الـ b بس، والـ function بترجّع <bdi dir=\"ltr\">a + b</bdi>."
+    ],
+    [
+     "الـ node 2 محتاجة <bdi dir=\"ltr\">b==0</bdi>، وهنا <bdi dir=\"ltr\">b = 1</bdi> فبتتنط.",
+     "الـ <bdi dir=\"ltr\">x = 3 &gt; 1</bdi> بيخلي تاني IF true، فبنروح لـ node 4 مش للـ else.",
+     "صح. <bdi dir=\"ltr\">b==0</bdi> false فبنتنط node 2، و <bdi dir=\"ltr\">a==2</bdi> false بس <bdi dir=\"ltr\">x&gt;1</bdi> true فبنروح لـ node 4.",
+     "القرارين غلط هنا، الـ node 2 بتتنط والـ node 4 هي اللي بتتنفذ."
+    ],
+    [
+     "ده نط node 2، بس الشرط الأول true.",
+     "الـ 3 دي قيمة الـ x في الآخر، مش <bdi dir=\"ltr\">a + x</bdi>.",
+     "ده راح للـ else، بس <bdi dir=\"ltr\">a==2</bdi> true فـ node 4 هي اللي بتتنفذ.",
+     "صح. الـ x بقت 2 في node 2، وبعدين 3 في node 4، والـ return:<span class=\"ltr\">2 + 3 = 5</span>"
+    ],
+    [
+     "غلط، الـ <bdi dir=\"ltr\">V(G) = 3</bdi> ده عدد tests الـ basis paths، بس الـ branch coverage لـ <code>foo()</code> محتاج 2 بس.",
+     "صح. <bdi dir=\"ltr\">a=2, b=0</bdi> بيخلي الـ IF-ين true، و <bdi dir=\"ltr\">a=0, b=0, x=0</bdi> بيخليهم false، فـ 2 tests يكفوا للـ branch coverage."
+    ],
+    [
+     "صح. الـ nodes 1 و 3 هما الـ IF-ين، فـ <bdi dir=\"ltr\">V(G) = 2 + 1 = 3</bdi>.",
+     "الـ nodes 2 و 4 دول assignments.",
+     "الـ node 6 هي الـ return، مش decision.",
+     "الـ node 5 هي الـ assignment بتاع الـ else، مش decision."
+    ],
+    [
+     "غلط، الـ predicate nodes في القانون التاني:<span class=\"ltr\">V(G) = predicate nodes + 1</span>",
+     "صح. الـ P هو عدد الـ connected components، وغالباً بيبقى 1."
+    ],
+    [
+     "الشرط <bdi dir=\"ltr\">7 ≥ 8</bdi> false، فمش بنروح لـ not a triangle.",
+     "صح. <bdi dir=\"ltr\">a==b</bdi> بيحط isosceles، ومش كلهم متساويين، ومفيش ضلع أكبر من أو يساوي مجموع التانيين <bdi dir=\"ltr\">(7 &lt; 8)</bdi>، وكلهم موجبين.",
+     "الـ Equilateral محتاج الأضلاع التلاتة متساوية، والـ c هنا 7.",
+     "فيه ضلعين متساويين، فالـ type بيتغير من scalene لـ isosceles."
+    ],
+    [
+     "الـ C و E و G و I دول الـ IFs، وكل test case بتنفذهم.",
+     "الـ A والـ B والـ K بيتنفذوا مع كل test case.",
+     "صح. <bdi dir=\"ltr\">(3,4,5)</bdi> بتخلي كل الـ IFs false، فبتتنط الـ D والـ F والـ H والـ J.",
+     "صحيح إن F مش بتتنفذ، بس <bdi dir=\"ltr\">(3,4,5)</bdi> بتتنط كمان الـ D والـ H والـ J."
+    ],
+    [
+     "الـ 3 دي أقل عدد للـ branch coverage من tests جدول الـ slide.",
+     "الـ 2 دي أقل عدد للـ statement coverage لو مقيدين بجدول الـ slide.",
+     "الـ 4 دي عدد أعمدة جدول الـ slide، مش أقل عدد.",
+     "صح. <bdi dir=\"ltr\">(0,0,0)</bdi> لوحدها بتعدي على isosceles و equilateral و not a triangle و bad inputs، فبتشغّل كل السطور من A لـ K."
+    ],
+    [
+     "ده <bdi dir=\"ltr\">base × height</bdi> من غير القسمة على 2.",
+     "صح. القاعدة 6 والارتفاع 4:<span class=\"ltr\">area = ½ × 6 × 4 = 12</span>",
+     "ده جمع <bdi dir=\"ltr\">6 + 4</bdi> بدل ما يحسب المساحة.",
+     "النقط مش على خط واحد، فبتعمل triangle."
+    ],
+    [
+     "صح. مفيش ضلع أقل من أو يساوي صفر، و <bdi dir=\"ltr\">4 ≥ 1+2</bdi>، فالنتيجة not a triangle.",
+     "غلط، مفيش ضلع أقل من أو يساوي صفر، فشرط الـ bad inputs بيبقى false، والنتيجة not a triangle."
+    ],
+    [
+     "دول criteria conventional ومش شكلهم مناسبين لتعقيد الـ OO.",
+     "دول أنواع data coverage من الـ dynamic white-box.",
+     "صح. المحاضرة بتشرح الـ MM testing والـ function pair testing.",
+     "دول أنواع الـ formal review (الـ static white-box)."
+    ],
+    [
+     "صح. المحاضرة بتقول كده بالظبط.",
+     "غلط، المحاضرة بتقول إن تقنيات كتير conventional لسه مناسبة."
+    ],
+    [
+     "الـ Control flow graph بيستخدم للـ cyclomatic complexity والـ basis paths.",
+     "الـ Requirements document هو أساس الـ functional testing.",
+     "الـ V-model بيربط مراحل التطوير بمستويات الـ testing، مش بالـ method pairs.",
+     "صح. الـ FP testing بيغطي كل تسلسلات تنفيذ اتنين methods، وغالباً معتمد على state machine diagram."
+    ],
+    [
+     "الـ new بيدي Empty، والـ push من Empty بيودّي Normal، فمفيش error.",
+     "بعد الـ push من Empty الـ stack بقى Normal، والـ pop من Normal سليم.",
+     "صح. بعد الـ pop اللي ودّى Empty، أي pop تاني بيدي error (الـ pair رقم 14).",
+     "بعد الـ pop الـ stack لسه Normal، والـ push من Normal سليم."
+    ],
+    [
+     "الـ 3 دي عدد الـ states (Empty و Normal و Full)، أو طول سلسلة الـ MM.",
+     "المحاضرة فيها أكتر من 8 pairs.",
+     "المحاضرة فيها 14، مش 16.",
+     "صح. المحاضرة فيها 14 pair، من الـ new-pop (error) لحد الـ <bdi dir=\"ltr\">pop(into empty)-pop</bdi> (error)."
+    ],
+    [
+     "صح. الـ pop من Normal بيودّي يا Normal يا Empty.",
+     "الـ pop عمره ما يودّي Full، الـ push من Normal هو اللي ممكن.",
+     "الـ pop بيدي error بس من Empty.",
+     "الـ Normal أو Full ده اللي الـ push من Normal بيودّيه."
+    ],
+    [
+     "غلط، المحاضرة بتقول إنهم ينفع يتطبقوا على الـ OO.",
+     "صح. ينفع يتطبقوا، بس مش شكلهم مناسبين لأن لازم نختبر الـ interactions بين الـ methods."
+    ],
+    [
+     "ولا واحد منهم عن كل الـ statements، والـ MM أصلاً مش بيـ subsume الـ statement coverage.",
+     "صح. الـ FP بيختبر pairs من تنفيذ الـ methods، فبيمسك الـ bugs اللي بتعتمد على الـ state (زي push على Full أو pop على Empty) واللي الـ MM بيفوّتها.",
+     "الـ FP محتاج tests أكتر (14 pair للـ stack) من سلسلة الـ MM البسيطة.",
+     "الـ FP غالباً معتمد على state machine diagram."
     ]
    ]
   },
@@ -1321,6 +1903,140 @@ AR.qa = {
      "دول بيعرضوا catalogs و inventories من database.",
      "الـ Dynamic content بيتغير حسب ظروف زي الطقس أو الوقت.",
      "الـ home page هي الصفحة الـ default بتاعة الـ site وفيها header واسم المصدر؛ إنك تعمل generate للـ HTML من layout program ده بيوصف الـ programmatically created pages."
+    ],
+    [
+     "صح. الـ web site هو صفحات متجمعة تحت نفس الـ domain.",
+     "غلط. الـ site لازم يشتغل على كل browser، والـ browser مش هو اللي بيجمع الصفحات.",
+     "غلط. الـ site map ده element من الـ 13 بيساعد في التنقل، مش هو اللي بيجمع الصفحات.",
+     "غلط. الـ cookies بتخزن معلومات زي بيانات الـ login، ومالهاش دعوة بتعريف الـ web site."
+    ],
+    [
+     "غلط. المحاضرة بتقول إن site معمول لـ Internet Explorer ممكن يبوظ على Mozilla أو Chrome أو Linux.",
+     "صح. وده بالظبط سبب إن الـ testing لازم يتأكد إن الـ site شغال على كل browser وكل platform."
+    ],
+    [
+     "غلط. الـ site map هو map لصفحات الـ site والـ links، مش الصفحة الـ default.",
+     "صح. الـ home page هي الصفحة الـ default وغالبًا فيها header بالـ source name.",
+     "غلط. الـ content هو أهم جزء (text و graphics وأصوات…)، مش الصفحة الـ default.",
+     "غلط. الـ navigation bar المفروض يبقى في كل صفحة، وهو نفسه مش الصفحة الـ default."
+    ],
+    [
+     "غلط. الإعلانات اللي بتلف موجودة في أشكال الـ content.",
+     "غلط. الـ movie clips اللي بتتنزل موجودة في أشكال الـ content.",
+     "غلط. الـ text اللي بيتغير dynamically موجود في أشكال الـ content.",
+     "صح. الـ buffer overflow attacks تبع الـ security في الـ white-box، مش من أشكال الـ content."
+    ],
+    [
+     "صح. المحاضرة بتعد تنزيل الـ files وفتح الـ default e-mail client (زي Outlook) من استخدامات الـ links.",
+     "غلط. الاستخدامين الاتنين موجودين في قايمة الـ links."
+    ],
+    [
+     "غلط. المحاضرة ماجابتش سيرة الـ search engines، والسبب عندها خاص بالـ users اللي عندهم خبرة.",
+     "غلط. تشفير بيانات الـ login بيتختبر تحت الـ cookies.",
+     "صح. ده السبب اللي المحاضرة قالته، الـ users اللي عندهم خبرة عارفين رايحين فين وبيتجنبوا الـ instructions الطويلة.",
+     "غلط. تحميل الـ graphics ده check في الـ black-box، مش هدف الـ site map."
+    ],
+    [
+     "صح. المحاضرة بتقول إنها ممكن ماتعجبش الـ customer وبالتالي مايرجعش للـ site.",
+     "غلط. الـ database connection تبع الـ Functionality ومالهاش علاقة بالـ fonts.",
+     "غلط. زرار الـ submit بيتختبر تحت الـ Forms.",
+     "غلط. الـ plagiarism check منفصل عن النقل، مش عن شكل الـ text."
+    ],
+    [
+     "غلط. الـ wrap-around بيتأكد إن الـ text بيلف صح حوالين الصور.",
+     "صح. الـ colors والـ backgrounds بنختبرها عشان الـ content يفضل سهل في القراءة.",
+     "غلط. الـ tables بنختبرها عشان الـ users مايفضلوش يعملوا scrolling.",
+     "غلط. الـ instructions بيتأكد إن كل التعليمات المهمة موجودة."
+    ],
+    [
+     "غلط. الـ images عشان توصل رسايل (الصورة بألف كلمة).",
+     "غلط. الـ user interface بيتأكد إن الـ site سهل في الاستخدام عمومًا.",
+     "صح. الـ tables لازم تتحط بحيث الـ users مايفضلوش يعملوا scrolling.",
+     "غلط. الـ data verification بيقارن الـ input بالـ business rules."
+    ],
+    [
+     "غلط. الـ content عن الـ plagiarism وتقليل الـ bold والـ blinking والـ references اللي عليها links.",
+     "غلط. تحميل الـ graphics ده check في الـ black-box إن الصور بتتحمل وبتظهر صح.",
+     "غلط. الـ wrap-around عن لف الـ text حوالين الصور، مش استخدامها لتوصيل رسالة.",
+     "صح. الـ Images element بيقول استخدم الصور عشان توصل الرسايل."
+    ],
+    [
+     "صح. الـ Functionality في المحاضرة فيه كل الـ links والـ database connection والـ forms.",
+     "غلط. التلاتة دول بالظبط هما اللي في الـ Functionality."
+    ],
+    [
+     "صح. أول element وهو الـ User interface بيتأكد إن الـ site سهل في الاستخدام.",
+     "غلط. الـ site map بيتأكد إن فيه map والـ links بتاعته شغالة وفيه navigation bar في كل صفحة.",
+     "غلط. الـ cookies بيتأكد إنها شغالة وإن بيانات الـ login متشفرة.",
+     "غلط. الـ links هي الوسيلة اللي بتنقلك من صفحة لصفحة."
+    ],
+    [
+     "غلط. الـ spelling وعلامات الترقيم من checks الـ text.",
+     "صح. ده تبع الـ server performance and loading في الـ white-box، مش check للـ text.",
+     "غلط. التليفونات والعناوين الصح من checks الـ text.",
+     "غلط. مستوى الجمهور المستهدف أول check في الـ text."
+    ],
+    [
+     "غلط. نفس الـ tab أو window جديدة بيتحدد من الـ spec، ومش ده اللي بيخلي الـ link واضح.",
+     "غلط. الـ links اللي على الـ site map بنتأكد إنها موجودة وشغالة، وده check تاني.",
+     "صح. دي العلامات اللي المحاضرة قالتها للـ link الواضح.",
+     "غلط. المحاضرة بتقول الـ bold والـ big fonts يبقوا في أقل حدود."
+    ],
+    [
+     "صح. لو مفيش spec، المحاضرة بتقول نتأكد إن الـ link شغال.",
+     "غلط. المحاضرة قالت صراحةً لو مفيش spec نتأكد إنه شغال."
+    ],
+    [
+     "غلط. الـ hyperlinks بتودّي الـ user لـ destination، ومش fields لإدخال data.",
+     "غلط. الـ graphics صور لازم تتحمل وتظهر صح.",
+     "غلط. الـ cookies بتخزن معلومات زي الـ login، والـ user مش بيكتب فيها.",
+     "صح. ده تعريف الـ forms في المحاضرة."
+    ],
+    [
+     "صح. باسورد من 5 حروف أقل من الـ 8 المطلوبين، فالـ tester بيتأكد إن الـ form بترفض الـ data الغلط.",
+     "غلط. حجم الـ field عن حجم الـ box على الصفحة، مش شرط الطول.",
+     "غلط. الـ positioning عن مكان الـ fields على الصفحة.",
+     "غلط. الـ check ده بيستخدم باسورد صح من 8 حروف أو أكتر."
+    ],
+    [
+     "غلط. دول عناصر الـ white-box، مش اللي صورة Infosys بتوضحه.",
+     "صح. عنوان الشكل <bdi dir=\"ltr\">Figure 8.5</bdi> هو الـ texts والـ hyperlinks والـ graphics.",
+     "غلط. دول من الـ hardware configurations.",
+     "غلط. دول اتنين من الـ 13 element، مش اللي الشكل بيوضحه."
+    ],
+    [
+     "صح. المحاضرة بتعرّف الـ white-box إن الـ tester عارف الـ internal design.",
+     "غلط. معرفة الـ internal design هي بالظبط اللي بتخليه white-box."
+    ],
+    [
+     "غلط. الـ security (الـ denial of service والـ buffer overflow) هو element رقم 5 في الـ white-box.",
+     "غلط. الـ dynamic content هو element رقم 1 في الـ white-box.",
+     "صح. الـ wrap-around من الـ 13 element العامة، مش من عناصر الـ white-box.",
+     "غلط. الـ server performance and loading هو element رقم 4 في الـ white-box."
+    ],
+    [
+     "صح. المحاضرة بتعرّف الـ gray-box إنه خليط من الاتنين.",
+     "غلط. المحاضرة قالت إن الـ gray-box هو الخليط ده بالظبط."
+    ],
+    [
+     "غلط. الـ hardware فيه أنواع الـ CPU والـ RAM والـ cards والـ monitors، مش الـ screen resolutions.",
+     "غلط. عناصر الـ white-box هي الـ dynamic content والـ database-driven والـ programmatic pages والـ server load والـ security.",
+     "غلط. عناصر الـ black-box هي الـ text والـ hyperlinks والـ graphics والـ forms.",
+     "صح. الـ screen resolutions هي البند رقم 3 في الـ compatibility."
+    ],
+    [
+     "غلط. الـ RAM والـ video capture cards في قايمة الـ hardware configurations.",
+     "صح. الاتنين hardware configurations، وقايمة الـ compatibility فيها الـ memory sizes مش الـ RAM."
+    ],
+    [
+     "صح. تسجيل الـ domain name مش في قايمة الـ tools.",
+     "غلط. الـ hyperlinks المكسورة موجودة في القايمة.",
+     "غلط. الـ load والـ stress والـ performance موجودين في القايمة.",
+     "غلط. الـ browser compatibility أول بند في القايمة."
+    ],
+    [
+     "صح. الـ browsers مع الـ CSS هو البند رقم 2 في الـ compatibility.",
+     "غلط. قايمة الـ compatibility فيها الـ browsers مع الـ CSS."
     ]
    ]
   },
@@ -1553,6 +2269,160 @@ AR.qa = {
      "الـ CMM levels تبع الـ maturity model في Lecture 7؛ هدف الـ ITSM إنه يوصّل الـ IT services بمستوى quality متفق عليه.",
      "صح. ده هدف الـ ITSM اللي المحاضرة قالته.",
      "الـ ITSM موضوعه إدارة جودة الـ services، مش كتابة code."
+    ],
+    [
+     "غلط. المحاضرة بتقول الـ attributes اللي الـ end-users بيقدّروها، مش الـ developers.",
+     "غلط. الـ testers بيلاقوا الـ bugs ويبلّغوا عنها، والتعريف عن الـ end-users.",
+     "صح. الـ quality هي مجموعة الـ attributes اللي الـ end-users بيقدّروها.",
+     "غلط. الـ project managers بياخدوا القرار في structure معين، بس مش في التعريف."
+    ],
+    [
+     "صح. المحاضرة بتدي الـ maintainability والـ usability كأمثلة للـ indirectly measurable factors.",
+     "غلط. مثال الـ directly measurable هو الـ defects.",
+     "غلط. الـ indicators زي الـ progress والـ stability والـ defect density.",
+     "غلط. الـ process metrics زي الوقت والـ development methodology."
+    ],
+    [
+     "غلط. الـ reliability معناها إنه يعمل وظيفته بدقة.",
+     "صح. الـ efficiency هي الاستخدام الأمثل للـ computing resources.",
+     "غلط. الـ reusability عن الأجزاء اللي تتستخدم في applications تانية.",
+     "غلط. الـ integrity هي التحكم في الـ access والـ security."
+    ],
+    [
+     "غلط. الـ efficiency عن استخدام الـ resources بشكل أمثل، مش الدقة.",
+     "غلط. الـ usability هي مجهود التعلم والتشغيل.",
+     "غلط. الـ flexibility هي مجهود تغيير البرنامج.",
+     "صح. الـ reliability معناها إن البرنامج بيعمل وظيفته المقصودة بدقة."
+    ],
+    [
+     "غلط. الـ maintainability هي مجهود إننا نلاقي الـ errors ونصلحها.",
+     "غلط. الـ portability هي مجهود نقل البرنامج لـ system تاني.",
+     "صح. الـ flexibility هي المجهود المطلوب لتغيير البرنامج.",
+     "غلط. الـ usability هي مجهود التعلم والتشغيل."
+    ],
+    [
+     "صح. الـ usability هي المجهود المطلوب للتعلم والتشغيل.",
+     "غلط. الـ integrity هي التحكم في الـ access والـ security.",
+     "غلط. الـ maintainability عن إننا نلاقي الـ errors ونصلحها.",
+     "غلط. الـ efficiency هي الاستخدام الأمثل للـ resources."
+    ],
+    [
+     "غلط. الـ portability نقل البرنامج كله لـ system تاني، مش استخدام جزء في application تاني.",
+     "صح. الـ reusability عن الأجزاء اللي ممكن تتستخدم في applications تانية.",
+     "غلط. الـ flexibility هي مجهود تغيير البرنامج.",
+     "غلط. الـ reliability إنه يعمل وظيفته بدقة."
+    ],
+    [
+     "صح. جدول المحاضرة بيقول إن الـ SQA فكرته الـ prevention وتركيزه على الـ process (proactive).",
+     "غلط. الـ prevention والتركيز على الـ process هو بالظبط وصف الـ SQA."
+    ],
+    [
+     "غلط. ده الـ goal بتاع الـ SQA.",
+     "غلط. ده الـ goal بتاع الـ ITSM.",
+     "غلط. دي أمثلة لمهام الـ QA.",
+     "صح. الـ SQC بيركز على الـ product وبيستبعد الحاجات اللي مش مطابقة."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ testing جزء من الـ SQA وهدفه الاكتشاف.",
+     "غلط. النقطتين موجودين في وصف الـ software testing في المحاضرة."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ QA بيستخدم موديلات <bdi dir=\"ltr\">ISO / CMM</bdi>.",
+     "غلط. الـ Selenium والـ Cypress أدوات لاختبار الـ web applications في محاضرة 5.",
+     "غلط. دول الـ categories بتوع الـ ITSM، مش موديلات الـ QA.",
+     "غلط. الـ cohesion والـ coupling من الـ metrics المشهورة."
+    ],
+    [
+     "غلط. المحاضرة بتقول إن الـ testing بيتعمل تحت conditions عادية وغير عادية.",
+     "صح. الـ testing بيغطي الـ normal والـ abnormal conditions."
+    ],
+    [
+     "غلط. عمل الـ standard processes من أمثلة مهام الـ QA.",
+     "صح. الـ tester بيتابع الـ bugs طول الـ life cycle ويقنع الـ developers يصلحوها.",
+     "غلط. تحديد الـ quality metrics من مهام الـ QA.",
+     "غلط. فحص الـ development process من مسؤوليات الـ QA."
+    ],
+    [
+     "غلط. تنفيذ الـ tests مهمة testing، والـ QA أوسع من كده.",
+     "غلط. المحاضرة بتقول إن الـ scope بتاع الـ QA أكبر من الـ testing team.",
+     "صح. دي واحدة من مسؤوليات الـ QA اللي في المحاضرة.",
+     "غلط. ده وصف الـ SQC، أما الـ QA فـ proactive وبيركز على الـ process."
+    ],
+    [
+     "غلط. تنفيذ الـ tests من مهام الـ testing.",
+     "غلط. الـ verification والـ validation reports من مهام الـ testing.",
+     "غلط. اختيار الـ implementation approach من مهام الـ testing.",
+     "صح. استخدام checklists لكل stage من أمثلة مهام الـ QA."
+    ],
+    [
+     "صح. دي مهمة رقم 3 من مهام الـ testing في المحاضرة.",
+     "غلط. المحاضرة بتعد الـ verification والـ validation reports من مهام الـ testing."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ quality management في الـ IT اسمه غالبًا ITSM.",
+     "غلط. الـ SQC هو الـ detection اللي بيركز على الـ product، مش اسم الـ quality management في الـ IT.",
+     "غلط. الـ CMM موديل بيستخدمه الـ QA، مش اسم الـ quality management في الـ IT.",
+     "غلط. الـ function point analysis واحد من الـ metrics المشهورة."
+    ],
+    [
+     "غلط. الـ Service Delivery للـ planning والـ control والـ management على المدى الطويل.",
+     "صح. الـ IT Service Support هو التقديم الكفء للـ IT operational services.",
+     "غلط. الـ SQC عن اكتشاف الـ products اللي مش مطابقة، ومش category في الـ ITSM.",
+     "غلط. الـ process compliance ده quality indicator."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ SQA مش testing وبس، وبيشمل تصليح الـ errors ومنع تكرارها.",
+     "غلط. المحاضرة قالت صراحةً إن الـ SQA أكتر من الـ testing وبيشمل ده."
+    ],
+    [
+     "غلط. دي ميزة الـ test group reporting to executive management.",
+     "غلط. دي ميزة الـ independent test team.",
+     "صح. في الـ small team الـ testers والـ programmers تحت development manager واحد، فالـ communication سريع.",
+     "غلط. دي عيب الـ independent test team."
+    ],
+    [
+     "غلط. في الـ small team الـ testers تحت الـ development manager.",
+     "غلط. هنا الـ test lead تحت الـ project manager وهو اللي بياخد القرار الأخير.",
+     "غلط. ده category في الـ ITSM، مش structure لتنظيم الـ test.",
+     "صح. الـ QA والـ test managers تحت الـ executive manager، فتقارير الـ quality بتوصل للإدارة العليا على طول."
+    ],
+    [
+     "غلط. المحاضرة بتقول إن القرار الأخير للـ project manager.",
+     "صح. الـ project manager هو اللي بيقرر، وده ممكن يأثر على الـ quality في المشاريع الحرجة."
+    ],
+    [
+     "صح. الـ product metrics بتقيس الـ quality بتاعة الـ final product زي حجم الـ code وعدد الصفحات الموثقة.",
+     "غلط. الـ process metrics هي الوقت والـ development methodology.",
+     "غلط. الـ indicators بتعكس نتايج الـ process زي عدد الـ bugs اللي اتكشفت.",
+     "غلط. أمثلة الـ indirect في المحاضرة هي الـ maintainability والـ usability."
+    ],
+    [
+     "غلط. الـ indicators هي variables بتعكس نتايج الـ process.",
+     "صح. الـ metrics هي rules لقياس الـ software attributes.",
+     "غلط. الـ guidelines مهمة من مهام الـ QA (للـ requirements والـ design والـ coding).",
+     "غلط. الـ quality factors هي الـ 8 attributes زي الـ reliability والـ portability."
+    ],
+    [
+     "غلط. الـ 30 اتكشفوا واتحلوا، ودول اللي بيعدهم الـ defect removal rate.",
+     "غلط. الـ 40 هما كل اللي اتكشف، ودول تبع الـ defect detection efficiency.",
+     "صح. الـ age profile بيعد الـ defects اللي ماتحلتش:<span class=\"ltr\">40 − 30 = 10</span>",
+     "غلط. جمع اللي اتكشف واللي اتحل مالوش معنى في أي indicator."
+    ],
+    [
+     "غلط. الـ removal rate بيعد الـ defects اللي اتكشفت واتحلت في فترة.",
+     "غلط. الـ stability بيشوف منتجات كل phase مستقرة كفاية نكمل ولا لأ.",
+     "غلط. الـ progress بيقيس الشغل اللي الـ developer عمله في كل phase.",
+     "صح. الـ defect density بيحدد الأجزاء اللي فيها defects كتير في الـ system."
+    ],
+    [
+     "صح. الـ stability بيقيس هل منتجات كل phase مستقرة كفاية إننا نكمل.",
+     "غلط. ده بيقيس المجهود اللي اتصرف في الـ internal quality evaluation.",
+     "غلط. الـ complexity بيقيس قد إيه الـ code معقد.",
+     "غلط. الـ age profile بيعد الـ defects اللي ماتحلتش في فترة."
+    ],
+    [
+     "صح. ده معنى الـ Progress في المحاضرة.",
+     "غلط. المحاضرة بتعرّف الـ Progress كده بالظبط."
     ]
    ]
   },
@@ -1816,6 +2686,136 @@ AR.qa = {
      "دي الـ collection بتاعة الـ IEEE (من 1976)، مش الـ SPICE.",
      "الـ CMM من الـ SEI و Carnegie Mellon، مش من الـ ISO والـ IEC.",
      "صح. الـ SPICE مع الـ <bdi dir=\"ltr\">ISO/IEC&nbsp;15504</bdi>، واتقدم سنة 1993."
+    ],
+    [
+     "الـ ISO 9000 مجموعة quality standards عامة فيها 20 element لأي organization، مش maturity framework.",
+     "الـ SPICE مبادرة الـ ISO والـ IEC لتقييم الـ software process، مش الـ maturity framework ده.",
+     "صح. الـ CMM (Capability Maturity Model) هو بالظبط الـ framework ده.",
+     "الـ DMAIC هي الـ methodology بتاعة الـ Six Sigma، من محاضرة 8."
+    ],
+    [
+     "صح. الـ CMM اتعمل بواسطة الـ Software Engineering Institute (SEI) و Carnegie Mellon University.",
+     "مفيش حاجة بالاسم ده في المحاضرة، الـ SEI هو الـ Software Engineering Institute.",
+     "الكلمة الأولى غلط، حرف الـ S معناه Software.",
+     "ده مش الاختصار اللي في المحاضرة، الـ SEI هو الـ Software Engineering Institute."
+    ],
+    [
+     "هو متصمم أساسًا للـ software development، بس مش ليه بس.",
+     "صح. بيتطبق كمان على الـ system engineering والـ project management والـ IT والـ risk management والـ personnel management."
+    ],
+    [
+     "ده اسم الـ Level 1 (Initial).",
+     "صح. الشكل كاتب الـ Level 2 على إنه Repeatable (Project Management).",
+     "ده اسم الـ Level 3 (Defined).",
+     "ده اسم الـ Level 5 (Optimizing)."
+    ],
+    [
+     "السهم ده من الـ Level 1 للـ Level 2.",
+     "السهم ده من الـ Level 2 للـ Level 3.",
+     "السهم ده من الـ Level 4 للـ Level 5.",
+     "صح. الـ Level 3 بيطلع للـ Level 4 عن طريق الـ Process Measurement."
+    ],
+    [
+     "الـ Level 2 فيه plan و track للمشاريع وإدارة الـ suppliers والـ configurations وقياس المشاريع.",
+     "الـ Level 3 بيحدد الـ processes وينظمها، ويجمع process data، ويعمل organization-wide training.",
+     "صح. الـ Level 4 بيراقب الـ processes بشكل quantitative وبيعمل capability baselines.",
+     "الـ Level 5 بيعمل change infrastructure، وينظم التحسينات، ويشيل أسباب الـ defects."
+    ],
+    [
+     "الـ Level 2 تحكم على مستوى المشروع، plan و track للمشاريع وإدارة الـ suppliers والـ configurations.",
+     "صح. الـ manage with non-software groups موجود في قايمة الـ Level 3 (Defined) مع الـ organization-wide training والـ process data.",
+     "الـ Level 4 بس بيراقب الـ processes بشكل quantitative ويعمل capability baselines.",
+     "الـ Level 1 مفيهوش processes مطلوبة أصلًا."
+    ],
+    [
+     "صح. الـ Table 1 كاتب للـ Level 1 إنه no required processes.",
+     "الـ Level 1 هو المستوى الـ ad-hoc، والـ Table 1 مش كاتب له أي حاجة مطلوبة."
+    ],
+    [
+     "صح. الـ KPA مجموعة أنشطة مرتبطة بتحقق goals مع بعض، ومثالها الـ delivery planning.",
+     "الـ key practices هي الأفعال والـ infrastructure اللي بتدعم الـ KPA، ومثالها الـ delivery schedule الماشي على procedure موثق.",
+     "الـ goals بتقيّم الـ practices الأساسية عشان نعرف هل الـ process area اتطبقت بنجاح.",
+     "الـ common features بتوضح هل تطبيق الـ KPA ناجح ومستدام."
+    ],
+    [
+     "الـ goals بتقيّم الـ practices الأساسية وبتوضح أهمية الـ process area والغرض منها.",
+     "الـ key practices بتحدد الأفعال والـ infrastructure المطلوبين لدعم الـ KPA.",
+     "الـ process capability هي قدرة الـ organization تحقق توقعات الـ quality بالـ processes الحالية.",
+     "صح. الـ common features هي الخصائص اللي بتوضح هل تطبيق الـ KPA ناجح ومستدام."
+    ],
+    [
+     "الـ commitment هو المتطلبات اللي لازم تتحقق عشان نوصل للـ goals.",
+     "صح. الـ ability هي الأنشطة اللي بتخلي الـ organization تقدر تحقق الـ commitments.",
+     "الـ measurement معناه إن الأنشطة اللي بتتعمل لازم تتراقب.",
+     "الـ verification هي الـ methods اللي بتحدد إزاي نعمل الـ verification."
+    ],
+    [
+     "الوصف ده بتاع aspect تاني.",
+     "صح. الـ commitment هو المتطلبات اللي لازم تتحقق عشان نوصل للـ goals، أما الأنشطة اللي بتمكّننا فهي الـ ability."
+    ],
+    [
+     "ده هدف الـ Six Sigma في محاضرة 8.",
+     "ده وصف الـ ISO 9000.",
+     "صح. إنه بيساعد نجيب funding للمشاريع (زي الـ metadata repository) من الـ 5 فوايد بتوع الـ CMM.",
+     "ده وصف الـ SPICE."
+    ],
+    [
+     "صح. كلمة <bdi dir=\"ltr\">isos</bdi> معناها equal، وده بيعكس إنه standard عالمي.",
+     "كلمة standard جزء من الاسم الكامل، مش معنى <bdi dir=\"ltr\">isos</bdi>.",
+     "الـ quality هي موضوع الـ standard، مش معنى الكلمة.",
+     "كلمة international جزء من اسم الـ organization، مش معنى الكلمة اليونانية."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ ISO 9000 generic جدًا لأي organization بتقدم products أو services.",
+     "هو مش مقصور على شركات الـ software."
+    ],
+    [
+     "الـ element رقم 10 بيعمل inspections عند الاستلام وأثناء الـ process وفي الآخر.",
+     "صح. الـ element رقم 11 هو الـ calibration للأجهزة بانتظام.",
+     "الـ element رقم 12 بيحدد بوضوح الـ products اللي اتعملها inspection.",
+     "الـ element رقم 9 بيستخدم work instructions و quality plans و standards."
+    ],
+    [
+     "الـ element رقم 17 هو عمل audits دورية ومشاركة النتايج، مش الاحتفاظ بالـ records.",
+     "الـ element رقم 5 هو التحكم الصارم في إنشاء الـ documents وتعديلها.",
+     "الـ element رقم 18 بيحتفظ بـ training records و qualifications للموظفين بس.",
+     "صح. الـ element رقم 16 بيحتفظ بـ records للـ audit trails."
+    ],
+    [
+     "الـ process approach بيدير الأنشطة كـ processes عشان نتايج ثابتة.",
+     "الـ continuous improvement بيخلي التحسين المستمر هدف دايم.",
+     "صح. الـ factual decision making معناه القرارات تتبني على data وتحليل موثوق.",
+     "الـ system approach بيظبط الـ processes المترابطة كأنها system واحد."
+    ],
+    [
+     "الصياغة دي خالطة بين مبدأين.",
+     "صح. إدارة الأنشطة كـ processes هي الـ process approach، أما الـ system approach فبيظبط الـ processes المترابطة كأنها system واحد."
+    ],
+    [
+     "صح. الـ IEEE شغال في الـ standardization من سنة 1976.",
+     "سنة 1993 هي السنة اللي اتقدم فيها الـ SPICE.",
+     "السنة دي مش في المحاضرة، سنة الـ IEEE هي 1976.",
+     "السنة دي مش في المحاضرة."
+    ],
+    [
+     "الاتجاه معكوس.",
+     "صح. التحول بيحصل من standards محلية لـ دولية."
+    ],
+    [
+     "ده هدف الـ Six Sigma.",
+     "ده الـ ISO 9000.",
+     "ده الـ CMM.",
+     "صح. ده الهدف التالت للـ SPICE، مع الـ standard framework للتقييم والـ organizational assessments للـ standards الجديدة."
+    ],
+    [
+     "الـ IEEE هو صاحب الـ Software Engineering Standard Collection، مش الـ SPICE.",
+     "صح. الـ SPICE مبادرة مشتركة بين الـ ISO والـ IEC، زي ما الاسم <bdi dir=\"ltr\">ISO/IEC 15504</bdi> بيوضح."
+    ],
+    [
+     "صح. الـ processes الـ unstructured والـ reactive والأهداف اللي مش مضمونة هي وصف الـ Level 1.",
+     "الـ Level 2 فيه basic project management بيدي نجاح بيتكرر.",
+     "الـ Level 3 فيه processes standard على مستوى الـ organization.",
+     "الـ Level 4 بيتحكم في الـ processes إحصائيًا، عكس الـ ad-hoc."
     ]
    ]
   },
@@ -2055,6 +3055,134 @@ AR.qa = {
      "في الـ case study الـ Define بيحدد أسباب الرسوب؛ أما قياس حجم تأثيرها فده الخطوة اللي بعدها، الـ Measure.",
      "الـ Improve بيطلّع حلول لأسباب الرسوب؛ وده بييجي بعد ما تأثيرها يتقاس ومصادرها تتحلل.",
      "الـ Control هو آخر خطوة، المتابعة المستمرة بعد تطبيق الحلول، مش قياس تأثير الأسباب."
+    ],
+    [
+     "صح. المحاضرة بتبدأ بإن الـ Six Sigma من أشهر مفاهيم الـ total quality management.",
+     "الـ capability maturity فكرة الـ CMM في محاضرة 7.",
+     "الـ software process assessment هو اللي الـ SPICE بيعمله standard.",
+     "المحاضرة مش بتصنف الـ Six Sigma كده."
+    ],
+    [
+     "الـ CMM هو maturity framework من خمس levels.",
+     "الـ SPICE هو methodology standard لتقييم الـ software process.",
+     "الـ ISO 9000 مجموعة quality standards عامة فيها 20 element.",
+     "صح. المحاضرة بتعرّف الـ Six Sigma على إنه الـ statistical management system ده."
+    ],
+    [
+     "العلاقة معكوسة.",
+     "صح. الـ σ هي الجذر التربيعي للـ variance، يعني الـ variance هي مربع الـ σ."
+    ],
+    [
+     "ده ناتج ضرب الـ variance في 6 من غير ما ناخد الجذر الأول.",
+     "صح. نطلّع الـ σ وبعدين نضرب في 6:<span class=\"ltr\">σ = √0.81 = 0.9 → 6 × 0.9 = 5.4</span>",
+     "ده الـ σ بس، لسه لازم نضربه في 6.",
+     "ده جمع 6 على الـ variance بدل ما نضرب الـ σ في 6."
+    ],
+    [
+     "ده ضرب في 5، والقاعدة بتضرب في 6.",
+     "ده جمع 6 على الـ SD بدل الضرب.",
+     "صح. نضرب الـ SD في 6:<span class=\"ltr\">6 × 1.15 = 6.90</span>",
+     "ده الـ standard deviation نفسه بس."
+    ],
+    [
+     "الـ X1 قيمته أقل من الـ X7:<span class=\"ltr\">6 × 1.22 = 7.32</span>",
+     "الـ X5 قيمته أقل من الـ X7:<span class=\"ltr\">6 × 1.17 = 7.02</span>",
+     "صح. الـ X7 عنده أكبر SD، فقيمته هي الأكبر:<span class=\"ltr\">6 × 1.27 = 7.62</span>",
+     "الـ X9 عنده أصغر SD، فقيمته هي الأصغر:<span class=\"ltr\">6 × 0.91 = 5.46</span>"
+    ],
+    [
+     "صح. نقسم على 6 (وده الـ X3):<span class=\"ltr\">SD = 6.24 ÷ 6 = 1.04</span>",
+     "ده طرح 5 بدل القسمة على 6.",
+     "ده طرح 6 بدل القسمة على 6.",
+     "ده قسمة على 2 بدل 6."
+    ],
+    [
+     "صح. صف المؤشر الكلي فيه mean قيمته 2.99 و SD قيمته 1.07، والحساب:<span class=\"ltr\">6 × 1.07 = 6.42</span>",
+     "التلات أرقام مطابقين لصف المؤشر الكلي."
+    ],
+    [
+     "الـ 2,700 ppm دول بره الـ <bdi dir=\"ltr\">±3σ</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">±4σ</bdi> جواها 99.9937% وبره منها 63 ppm.",
+     "الـ 0.57 ppm دول بره الـ <bdi dir=\"ltr\">±5σ</bdi>.",
+     "الـ 45,500 ppm دول بره الـ <bdi dir=\"ltr\">±2σ</bdi>."
+    ],
+    [
+     "صح. ده صف الـ <bdi dir=\"ltr\">±3σ</bdi> والحساب:<span class=\"ltr\">(100 − 99.73)% = 0.27% → 0.27 × 10,000 = 2,700 ppm</span>",
+     "ده ضرب في 1,000 بدل 10,000، والـ 1% بتساوي 10,000 ppm.",
+     "ده ضرب في 100,000، والـ 1% بتساوي 10,000 ppm.",
+     "الـ 317,300 ppm دول بره الـ <bdi dir=\"ltr\">±1σ</bdi>."
+    ],
+    [
+     "صح. ملاحظة المحاضرة بتشرح الـ 3.4 بالـ drift ده (معلومة عامة مش على الـ slide):<span class=\"ltr\">6 − 1.5 = 4.5σ</span>",
+     "المنحنى المتمركز عند <bdi dir=\"ltr\">±6σ</bdi> بيدي 0.002 ppm بس، والـ drift هو اللي بيدي 3.4."
+    ],
+    [
+     "ده قسمة على عدد الـ units بس من غير الـ 5 opportunities.",
+     "ده لما المقام يبقى 15,000 بدل 1,500، والصح إن عدد الـ opportunities الكلي هو 1,500.",
+     "الـ 3.4 هي الـ DPMO عند الـ 6σ، مش للـ process دي.",
+     "صح. الحساب:<span class=\"ltr\">DPMO = 18 ÷ (300 × 5) × 10⁶ = 18 ÷ 1,500 × 10⁶ = 12,000</span>"
+    ],
+    [
+     "الـ Measure قبل الـ Analyze مش بعدها.",
+     "الـ Control آخر مرحلة، بعد الـ Improve.",
+     "صح. الترتيب هو Define ثم Measure ثم Analyze ثم Improve ثم Control.",
+     "الـ Design بييجي بعد الـ Analyze في الـ DMADV، مش الـ DMAIC."
+    ],
+    [
+     "صح. الـ Measure بيخطط وينفذ قياس الأداء مقارنة بمتطلبات العملاء بأدوات إحصائية.",
+     "الـ Define بيحدد المشاكل والـ level والـ location والـ financial impact ويكوّن team.",
+     "الـ Analyze بيدور على الـ root causes في الـ data اللي اتجمعت.",
+     "الـ Control بيفضل يراقب الـ processes ويصحح الانحرافات."
+    ],
+    [
+     "الـ Define بيحدد المشكلة ويكوّن الـ team بس.",
+     "الـ Measure بيقيس الأداء ومش بيغير الـ processes.",
+     "الـ Analyze بيلاقي الـ root causes ويرتبها، والتغيير بييجي بعده.",
+     "صح. في الـ Improve الـ processes بتتغير عشان نتخلص من الـ defects والتكلفة الزيادة والـ waste."
+    ],
+    [
+     "المحاضرة بتقول عكس كده.",
+     "صح. الـ Control بيراقب الـ processes ومش بيبطل، لأن دايمًا فيه حاجات محتاجة تتحسن."
+    ],
+    [
+     "قريبة، بس الكلمة اللي على الـ slide هي Verify.",
+     "صح. الـ DMADV هو Define و Measure و Analyze و Design و Verify.",
+     "كلمة value موجودة في الـ value stream mapping، مش في الـ DMADV.",
+     "الـ variation هي اللي الـ Six Sigma بيقللها، مش مرحلة."
+    ],
+    [
+     "صح. ده واحد من الـ 5 principles.",
+     "القايمة فيها المبدأ ده مع التركيز على العملاء والـ data والعمليات الداخلية والـ teamwork."
+    ],
+    [
+     "الـ training هي المرحلة الرابعة.",
+     "تنفيذ الـ process هي المرحلة الخامسة.",
+     "صح. المرحلة السادسة والأخيرة هي تقديم الحلول.",
+     "الـ document المكتوب هو المرحلة التالتة."
+    ],
+    [
+     "الـ White Belt هو الدرجة الأولى في الشكل، بس المحاضرة بتدي كل الموظفين للـ Yellow.",
+     "صح. الـ Yellow Belt لكل الموظفين.",
+     "الـ Green Belt للـ executive employees.",
+     "الـ Master Black Belt للـ senior management."
+    ],
+    [
+     "صح. الدرجة الخامسة جنب الـ target هي الـ Master Black Belt، وهو للـ senior management.",
+     "الجزئين مطابقين للشكل وللجدول."
+    ],
+    [
+     "الـ contract review هو الـ element رقم 3 في الـ ISO 9000.",
+     "الـ Key Process Areas من components الـ CMM.",
+     "الـ capability baselines تحسين في الـ CMM Level 4.",
+     "صح. الـ Kanban في القايمة مع الـ 5S والـ Seven Wastes والـ Kaizen والـ VOC وغيرهم."
+    ],
+    [
+     "صح. المحاضرة بتذكر الأنواع التلاتة دي من الـ defects.",
+     "الجملة مطابقة للمحاضرة."
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">±5σ</bdi> جواها 99.999943% وبره منها 0.57 ppm.",
+     "صف الـ <bdi dir=\"ltr\">±5σ</bdi> في الجدول بيقول كده بالظبط."
     ]
    ]
   }

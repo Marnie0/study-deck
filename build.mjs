@@ -43,6 +43,16 @@ for (const [id, c] of Object.entries(COURSES)) {
   }
 }
 for (const [id, c] of Object.entries(COURSES)) for (const l of c.lectures) l.extra = (EXTRA[id] && EXTRA[id][l.n]) || [];
+// midterm/<id>.js: the midterm scope (which lectures) and an exam-focused summary, English in the course, Arabic in AR
+for (const id of Object.keys(COURSES)) {
+  const f = `midterm/${id}.js`;
+  if (existsSync(f)) vm.runInContext(readFileSync(f, 'utf8'), ctx, { filename: f });
+}
+const MIDTERM = ctx.window.MIDTERM || {};
+for (const [id, c] of Object.entries(COURSES)) {
+  const M = MIDTERM[id]; if (!M) continue;
+  c.midterm = { lecs: M.lecs, scope: M.scope, sections: M.sections.map(s => ({ lec: s.lec, h: s.h, pts: s.pts.map(p => p[0]) })) };
+}
 // where a quiz question came from: the professor (exam, sheet, lecture example), a student summary, or the site itself
 const originOf = q => !q.src ? 'extra' : /^(exam|midterm)\b/i.test(q.src) ? 'exam' : /sheet|revision/i.test(q.src) ? 'sheet' : /^lecture\b/i.test(q.src) ? 'lecture' : /summary/i.test(q.src) ? 'summary' : 'extra';
 
@@ -62,6 +72,12 @@ for (const [id, c] of Object.entries(COURSES)) {
     qa: c.lectures.reduce((a, l) => a + l.qa.length, 0),
     examQs: c.lectures.reduce((a, l) => a + l.quiz.filter(q => q.src && /^(exam|midterm)\b/i.test(q.src)).length, 0)
   };
+  if (c.midterm) {
+    const ls = c.lectures.filter(l => c.midterm.lecs.includes(l.n));
+    const prof = ls.reduce((a, l) => a + l.quiz.filter(q => ['exam', 'sheet', 'lecture'].includes(originOf(q))).length, 0);
+    const all = ls.reduce((a, l) => a + l.quiz.length + l.extra.length, 0);
+    manifest[id].mid = { lecs: c.midterm.lecs, scope: c.midterm.scope, scope_ar: MIDTERM[id].scope_ar, prof, mine: all - prof, pts: c.midterm.sections.reduce((a, s) => a + s.pts.length, 0) };
+  }
   console.log(`data/${id}.js`.padEnd(20), (json.length / 1024).toFixed(0).padStart(5), 'KB');
 }
 for (const id of Object.keys(COURSES)) {
@@ -69,6 +85,8 @@ for (const id of Object.keys(COURSES)) {
   if (!existsSync(f)) continue;
   const actx = {}; actx.window = actx; vm.createContext(actx);
   vm.runInContext(readFileSync(f, 'utf8'), actx, { filename: f });
+  const M = MIDTERM[id];
+  if (M) actx.window.AR[id].midterm = M.sections.map(s => ({ h: s.ar_h, pts: s.pts.map(p => p[1]) }));
   const json = JSON.stringify(actx.window.AR[id]);
   writeFileSync(`data/ar-${id}.js`, `(window.AR=window.AR||{})[${JSON.stringify(id)}]=JSON.parse(${JSON.stringify(json)});\n`);
   manifest[id].ar = true;

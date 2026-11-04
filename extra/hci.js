@@ -393,6 +393,492 @@ EXTRA.hci = {
     ]
    ],
    "a": 0
+  },
+  {
+   "q": "\"The design of spaces for human communication and interaction\" is the definition of interaction design given by:",
+   "o": [
+    [
+     "Sharp, Rogers, and Preece (2019)",
+     "Wrong. Their definition is \"Designing interactive products to support the way people communicate and interact in their everyday and working lives.\""
+    ],
+    [
+     "Bishop (1995)",
+     "Wrong. Bishop (1995) is the marble answering machine, not a definition of interaction design."
+    ],
+    [
+     "Winograd (1997)",
+     "Correct. Winograd (1997) defines interaction design as the design of spaces for human communication and interaction. (L1, What is interaction design?)"
+    ],
+    [
+     "Knapp et al. (2016)",
+     "Wrong. Knapp et al. (2016) is the source of Google Design Sprints (Lecture 2)."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In the HCI pie chart, \"Interaction design\" belongs to which part?",
+   "o": [
+    [
+     "Interaction",
+     "Correct. The Interaction part of the pie chart contains Interaction design. (L1, The three parts of HCI)"
+    ],
+    [
+     "Human",
+     "Wrong. The Human part has Communication theory, Industrial design, Social science, Cognitive psychology and Human factors."
+    ],
+    [
+     "Computer",
+     "Wrong. The Computer part has Computer graphic, Operating system and Programming language."
+    ],
+    [
+     "None of the three parts",
+     "Wrong. It is listed under the Interaction part."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Which of the following belongs to the <b>Computer</b> part of the HCI pie chart?",
+   "o": [
+    [
+     "Human factors",
+     "Wrong. Human factors is in the Human part."
+    ],
+    [
+     "Communication theory",
+     "Wrong. Communication theory is in the Human part."
+    ],
+    [
+     "Interaction design",
+     "Wrong. Interaction design is the Interaction part."
+    ],
+    [
+     "Operating system",
+     "Correct. The Computer part is Computer graphic, Operating system and Programming language. (L1, The three parts of HCI)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: \"In the HCI pie chart, Programming language belongs to the Interaction part.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The Interaction part contains only Interaction design."
+    ],
+    [
+     "False",
+     "Correct. Programming language belongs to the Computer part; the Interaction part is Interaction design. (L1, The three parts of HCI)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Of the three parts that meet in HCI, which one is described by <b>input/output devices</b>?",
+   "o": [
+    [
+     "User",
+     "Wrong. The User part is described by mental and physical capabilities."
+    ],
+    [
+     "Computer / Machine",
+     "Correct. The Computer / Machine part is the input/output devices. (L1, What is HCI? More from last year's slides)"
+    ],
+    [
+     "Interaction",
+     "Wrong. The Interaction part is interfaces, HCI patterns, design and usability evaluation."
+    ],
+    [
+     "Task",
+     "Wrong. Task is not one of the three parts; the parts are User, Computer / Machine and Interaction."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which of the following is <b>NOT</b> one of the things HCI involves the study of?",
+   "o": [
+    [
+     "Humans: their needs, abilities and limitations",
+     "Wrong. This is the first thing HCI studies."
+    ],
+    [
+     "Computer technologies that can enhance the interaction between users and computers",
+     "Wrong. This is the second thing HCI studies."
+    ],
+    [
+     "The manufacturing cost of computer hardware",
+     "Correct. The lecture lists humans, computer technologies, and the ways, preferences and difficulties of users; hardware cost is not one of them. (L1, What you will learn in this course)"
+    ],
+    [
+     "The ways, preferences and difficulties faced by users of current or past systems",
+     "Wrong. This is the third thing HCI studies."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: \"HCI is a single-discipline field that studies only programming languages.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The lecture calls HCI a multidisciplinary field, not a single discipline."
+    ],
+    [
+     "False",
+     "Correct. HCI is a multidisciplinary field of study focusing on the design of computer technology and the interaction between humans and computers. (L1, What is HCI?)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "One objective of HCI is to design easy, natural and intuitive systems. According to the lecture, this is done to:",
+   "o": [
+    [
+     "Add as many features as possible",
+     "Wrong. Too many features leads to bloatware, which the lecture criticises."
+    ],
+    [
+     "Make the interface more noticeable",
+     "Wrong. The goal is the opposite: an interface that goes unnoticed."
+    ],
+    [
+     "Replace user research",
+     "Wrong. User research is a component of the design process, not something to replace."
+    ],
+    [
+     "Save time and reduce costs",
+     "Correct. Easy, natural and intuitive systems make interaction easier to save time and reduce costs. (L1, Objectives of HCI)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: \"Exploring new paradigms/prototypes of interaction and developing models and theories of interaction are objectives of HCI.\"",
+   "o": [
+    [
+     "True",
+     "Correct. Both are listed among the objectives of HCI. (L1, Objectives of HCI)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture lists both as objectives of HCI."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In the smart TV dilemma, \"Pecking\" means:",
+   "o": [
+    [
+     "Using a grid keyboard via a remote control",
+     "Correct. Pecking is typing on a grid keyboard with a remote control. (L1, Dilemma: interacting with a smart TV)"
+    ],
+    [
+     "Swiping across two alphanumeric rows using a touchpad",
+     "Wrong. That is Swiping, the second option."
+    ],
+    [
+     "Voice control using a remote or smart speaker",
+     "Wrong. That is Voice control, the third option."
+    ],
+    [
+     "Using a large touch screen and stylus pen",
+     "Wrong. That is the better design for the Qualcomm trucker device."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: \"The slides state that voice control is the best way to interact with a smart TV.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The slide lists pecking, swiping and voice control but does not choose one."
+    ],
+    [
+     "False",
+     "Correct. The smart TV dilemma is a question for discussion; the slide gives no answer. (L1, Dilemma: interacting with a smart TV)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Office 97–2003 was criticised for having too many features. What did the press call it?",
+   "o": [
+    [
+     "Invisible",
+     "Wrong. \"Invisible\" describes a good interface that users do not notice."
+    ],
+    [
+     "Bloated",
+     "Correct. The press called Office \"bloated\". (L1, The challenge of full-featured systems)"
+    ],
+    [
+     "Rafted",
+     "Wrong. \"Rafted\" names the Office 2000 toolbars that share one line."
+    ],
+    [
+     "Personalized",
+     "Wrong. \"Personalized\" is another name for the Office 2000 adaptive menus."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: \"Adaptive menus, also called personalized menus, show a short list of the most likely used commands at the top level.\"",
+   "o": [
+    [
+     "True",
+     "Correct. An adaptive (personalized) menu shows a short list of the most likely used commands; a chevron expands it. (L1, Office 2000 mechanisms)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture describes adaptive (personalized) menus exactly this way."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Adaptive menus and rafted toolbars were introduced in which version of Office?",
+   "o": [
+    [
+     "Office 97",
+     "Wrong. Office 97–2003 is the period called \"bloated\"; the mechanisms are from Office 2000."
+    ],
+    [
+     "Office 2003",
+     "Wrong. Office 2003 introduced the CEIP."
+    ],
+    [
+     "Office 2000",
+     "Correct. Adaptive menus and rafted toolbars are the Office 2000 mechanisms. (L1, Office 2000 mechanisms)"
+    ],
+    [
+     "Office 2007",
+     "Wrong. Office 2007 was designed from CEIP usage data."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "The CEIP (Customer Experience Improvement Program) was introduced in:",
+   "o": [
+    [
+     "Office 2000",
+     "Wrong. Office 2000 introduced adaptive menus and rafted toolbars."
+    ],
+    [
+     "Office 2007",
+     "Wrong. Office 2007 used the data collected by CEIP."
+    ],
+    [
+     "Office 97",
+     "Wrong. Before 2003 decisions were mostly guesswork."
+    ],
+    [
+     "Office 2003",
+     "Correct. Office 2003 introduced the CEIP with the \"Help make Office better\" balloon. (L1, From guesswork to data)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: \"CEIP collected the names and personal identities of Office users.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The lecture says the data was anonymous."
+    ],
+    [
+     "False",
+     "Correct. CEIP collected anonymous usage and hardware data. (L1, From guesswork to data)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "For Office 2007, the team got so much Word and Outlook data that ______ of it was thrown away.",
+   "o": [
+    [
+     "71%",
+     "Wrong. 71% is the share of ICDL searches that used visual search."
+    ],
+    [
+     "70%",
+     "Correct. 70% of the Word and Outlook data was thrown away. (L1, From guesswork to data)"
+    ],
+    [
+     "30%",
+     "Wrong. 30 is the number of shades of gray humans can distinguish."
+    ],
+    [
+     "7%",
+     "Wrong. 7 appears as \"7x more with the keyboard\", not a share of data thrown away."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which of the following is <b>NOT</b> something Microsoft learned from the CEIP usage data?",
+   "o": [
+    [
+     "Which commands are used in sequence",
+     "Wrong. This was learned from the data."
+    ],
+    [
+     "How many documents people open at once",
+     "Wrong. This was learned from the data."
+    ],
+    [
+     "How big screens are",
+     "Wrong. This was learned from the data."
+    ],
+    [
+     "Users' names and home addresses",
+     "Correct. CEIP data was anonymous; the lessons were about commands, sequences, keyboard vs mouse, open documents and screen sizes. (L1, From guesswork to data)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "In user research, kids, the elderly and people with disabilities are given as examples of:",
+   "o": [
+    [
+     "The tasks users try to complete",
+     "Wrong. Tasks are what users try to do, such as buying online."
+    ],
+    [
+     "Special needs of the users",
+     "Correct. Learning about the users includes their skills, distractions and special needs (kids, elderly, people with disabilities). (L1, UI design process)"
+    ],
+    [
+     "Previous research on human perception",
+     "Wrong. Previous research is a separate item about human capabilities, limitations and perception."
+    ],
+    [
+     "Design and prototyping",
+     "Wrong. Design and prototyping is the second component of the process, not part of user research."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Who designed the International Children's Digital Library?",
+   "o": [
+    [
+     "Microsoft",
+     "Wrong. Microsoft is the Office case study."
+    ],
+    [
+     "Qualcomm",
+     "Wrong. Qualcomm made the device for truckers."
+    ],
+    [
+     "Google",
+     "Wrong. Google appears in Lecture 2 (Design Sprints, UCD process)."
+    ],
+    [
+     "HCIL",
+     "Correct. HCIL (the University of Maryland's Human-Computer Interaction Lab) designed it. (L1, Example case: ICDL)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "The Qualcomm device for truckers is used in the lecture to show that:",
+   "o": [
+    [
+     "Auto-customization is usually worse than no customization",
+     "Wrong. That is the lesson of the Office 2000 adaptive menus and rafted toolbars."
+    ],
+    [
+     "User research is important",
+     "Correct. The slide is titled \"User research is important\": research found truckers have big hands and wear gloves. (L1, Qualcomm device for truckers)"
+    ],
+    [
+     "Interfaces should follow well known conventions",
+     "Wrong. That is the lesson of the vending machine."
+    ],
+    [
+     "Products with too many features become bloatware",
+     "Wrong. That is the Office full-featured systems case."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: \"Design must optimize the interactions users have with a product so that they match the users' activities and needs.\"",
+   "o": [
+    [
+     "True",
+     "Correct. This is one of the design considerations in the lecture. (L1, Design considerations)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture states this as a design consideration."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: \"Interaction design is fundamental to all disciplines, fields, and approaches concerned with researching and designing computer-based systems for people.\"",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture says exactly this about interaction design as the umbrella term. (L1, Which kind of design?)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture states this directly."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Which of the following is an <b>academic discipline</b> (not a design practice) contributing to interaction design?",
+   "o": [
+    [
+     "Graphic design",
+     "Wrong. Graphic design is a design practice."
+    ],
+    [
+     "Artist-design",
+     "Wrong. Artist-design is a design practice."
+    ],
+    [
+     "Ergonomics",
+     "Correct. The academic disciplines are Psychology, Social Sciences, Computing Sciences, Engineering, Ergonomics and Informatics. (L1, Relationship between ID, HCI and other fields)"
+    ],
+    [
+     "Industrial design",
+     "Wrong. Industrial design is a design practice."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In the lecture's hierarchy of fields, which field branches into UI Design, UX Design and Interaction design?",
+   "o": [
+    [
+     "HCI",
+     "Correct. HCI branches into UI Design, UX Design and Interaction design. (L1, HCI in a broader hierarchy of fields)"
+    ],
+    [
+     "Human Factors Engineering",
+     "Wrong. Human Factors Engineering branches into Industrial Design, HCI and Product Design."
+    ],
+    [
+     "Product Design",
+     "Wrong. Product Design is a sibling of HCI under Human Factors Engineering."
+    ],
+    [
+     "Psychology",
+     "Wrong. Psychology combines with Engineering to form Human Factors Engineering."
+    ]
+   ],
+   "a": 0
   }
  ],
  "2": [
@@ -591,10 +1077,1424 @@ EXTRA.hci = {
     ]
    ],
    "a": 0
+  },
+  {
+   "q": "In the double diamond of design, which phase is about \"the area to focus upon\"?",
+   "o": [
+    [
+     "Discover",
+     "Wrong. Discover gives insight into the problem."
+    ],
+    [
+     "Define",
+     "Correct. Define is the area to focus upon; it narrows the first diamond to the Problem Definition / Design Brief. (L2, The double diamond of design)"
+    ],
+    [
+     "Develop",
+     "Wrong. Develop produces potential solutions."
+    ],
+    [
+     "Deliver",
+     "Wrong. Deliver gives solutions that work."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which is the correct order of the four phases of the double diamond of design?",
+   "o": [
+    [
+     "Define → Discover → Develop → Deliver",
+     "Wrong. Discover comes before Define."
+    ],
+    [
+     "Discover → Develop → Define → Deliver",
+     "Wrong. Define (first diamond) comes before Develop (second diamond)."
+    ],
+    [
+     "Discover → Define → Develop → Deliver",
+     "Correct. Discover and Define form the first diamond, Develop and Deliver the second. (L2, The double diamond of design)"
+    ],
+    [
+     "Develop → Discover → Define → Deliver",
+     "Wrong. The process starts with Discover at the Problem point."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In the double diamond diagram, the second diamond ends at a point labelled:",
+   "o": [
+    [
+     "Problem",
+     "Wrong. Problem is where the first diamond starts."
+    ],
+    [
+     "Design Brief",
+     "Wrong. Problem Definition / Design Brief is the point between the two diamonds."
+    ],
+    [
+     "Final product",
+     "Wrong. Final product is the exit of the simple interaction design lifecycle model."
+    ],
+    [
+     "Solution",
+     "Correct. The second diamond widens in Develop and narrows in Deliver to the Solution. (L2, The double diamond of design)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: \"In the double diamond, the first diamond widens during Discover and narrows during Define.\"",
+   "o": [
+    [
+     "True",
+     "Correct. It starts at the Problem, widens during Discover and narrows during Define to the Problem Definition / Design Brief. (L2, The double diamond of design)"
+    ],
+    [
+     "False",
+     "Wrong. The diagram shows exactly this shape for the first diamond."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Google Design Sprints, as a lifecycle model, is credited in the lecture to:",
+   "o": [
+    [
+     "Knapp et al., 2016",
+     "Correct. The lecture cites Google Design Sprints (Knapp et al., 2016). (L2, Another lifecycle model: Google Design Sprints)"
+    ],
+    [
+     "Sha Zhao et al, 2016",
+     "Wrong. Sha Zhao et al (2016) found 382 distinct types of smartphone app users."
+    ],
+    [
+     "Joyner",
+     "Wrong. Joyner gives the four-phase design life cycle starting with Need finding."
+    ],
+    [
+     "Winograd, 1997",
+     "Wrong. Winograd (1997) gave a definition of interaction design (Lecture 1)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In Google Design Sprints, which step comes directly after <b>Sketch</b>?",
+   "o": [
+    [
+     "Unpack",
+     "Wrong. Unpack is the first step, before Sketch."
+    ],
+    [
+     "Prototype",
+     "Wrong. Prototype comes after Decide."
+    ],
+    [
+     "Decide",
+     "Correct. The order is Unpack, Sketch, Decide, Prototype, Test. (L2, Another lifecycle model: Google Design Sprints)"
+    ],
+    [
+     "Test",
+     "Wrong. Test is the last step, after Prototype."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: \"In Google Design Sprints, after Test the steps go back to Unpack, forming a cycle labelled Iterate.\"",
+   "o": [
+    [
+     "True",
+     "Correct. The five steps form a cycle labelled Iterate: Unpack, Sketch, Decide, Prototype, Test, back to Unpack. (L2, Another lifecycle model: Google Design Sprints)"
+    ],
+    [
+     "False",
+     "Wrong. The diagram shows the steps as a cycle labelled Iterate."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Which of the following is a step of Google Design Sprints but <b>NOT</b> a phase of Joyner's design life cycle?",
+   "o": [
+    [
+     "Prototyping",
+     "Wrong. Both models have it (Prototype in the sprint, Prototyping in Joyner)."
+    ],
+    [
+     "Evaluation",
+     "Wrong. Evaluation is Joyner's fourth phase."
+    ],
+    [
+     "Design alternative",
+     "Wrong. Design alternative is Joyner's second phase."
+    ],
+    [
+     "Decide",
+     "Correct. Decide is the sprint's third step; Joyner's phases are Need finding, Design alternative, Prototyping and Evaluation. (L2, Design life cycle (according to Joyner))"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "In Google's user-centered design process, which step is about how users experience the product and involves a lot of research?",
+   "o": [
+    [
+     "Specify",
+     "Wrong. Specify is the most important user problem to solve."
+    ],
+    [
+     "Understand",
+     "Correct. Understand covers how users experience the product, with a lot of research. (L2, User-centered design process (Google))"
+    ],
+    [
+     "Design",
+     "Wrong. Design is coming up with solutions and starting to build."
+    ],
+    [
+     "Evaluate",
+     "Wrong. Evaluate is testing with real users."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: \"In Google's user-centered design process, the Design step is where you test with real users.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. Testing with real users belongs to Evaluate, not Design."
+    ],
+    [
+     "False",
+     "Correct. Testing with real users is the Evaluate step; Design is solutions and starting to build. (L2, User-centered design process (Google))"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "In the simple interaction design lifecycle model, where does the process <b>enter</b>?",
+   "o": [
+    [
+     "Discovering requirements",
+     "Correct. The process enters at Discovering requirements, which links both ways with Designing alternatives. (L2, A simple interaction design lifecycle model)"
+    ],
+    [
+     "Designing alternatives",
+     "Wrong. Designing alternatives comes after Discovering requirements."
+    ],
+    [
+     "Prototyping",
+     "Wrong. Prototyping is reached from Designing alternatives."
+    ],
+    [
+     "Evaluating",
+     "Wrong. Evaluating is where the cycle exits to the Final product."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: \"In the simple lifecycle model, Prototyping leads directly to the Final product.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The arrow to the Final product leaves from Evaluating, not Prototyping."
+    ],
+    [
+     "False",
+     "Correct. Prototyping leads to Evaluating, and only Evaluating has the arrow out to the Final product. (L2, A simple interaction design lifecycle model)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: \"In the four basic activities of interaction design, the product and its user experience are evaluated only once, at the end.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The activity says evaluation happens throughout, not once at the end."
+    ],
+    [
+     "False",
+     "Correct. The fourth activity is \"Evaluating product and its user experience <i>throughout</i>\", i.e. all along. (L2, Four basic activities of interaction design)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "According to the lecture, interaction design as a process involves how to:",
+   "o": [
+    [
+     "Avoid prototypes and rely on static documentation",
+     "Wrong. The lecture says to use prototypes, not static documentation."
+    ],
+    [
+     "Build the first design without alternatives",
+     "Wrong. Generating alternatives and choosing between them is key."
+    ],
+    [
+     "Balance conflicting requirements",
+     "Correct. Interaction design involves how to balance conflicting requirements. (L2, What is involved in interaction design?)"
+    ],
+    [
+     "Meet a fixed functional specification only",
+     "Wrong. Designing only to a functional specification is the old way; user-centered design replaced it."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In the lecture, \"invisible interfaces\" in user research are linked to which kind of design?",
+   "o": [
+    [
+     "User-centric design",
+     "Wrong. User-centric design is the other idea: working with users rather than guessing."
+    ],
+    [
+     "Functional-specification design",
+     "Wrong. Designing to a functional specification is the old way, not linked to invisible interfaces."
+    ],
+    [
+     "Technology-centered design",
+     "Wrong. This term is not used in the lecture for invisible interfaces."
+    ],
+    [
+     "Task-oriented design",
+     "Correct. User research: invisible interfaces (task-oriented design). (L2, Remember: the interaction design process)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: \"Ignoring user research is rare in practice.\"",
+   "o": [
+    [
+     "True",
+     "Wrong. The lecture says ignoring user research is common, not rare."
+    ],
+    [
+     "False",
+     "Correct. The lecture says ignoring user research is common, so users should be involved so decisions are based on reality, not guesses. (L2, Remember: the interaction design process)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "In big companies like Google, who does UI/UX design?",
+   "o": [
+    [
+     "A software engineer designing the whole system",
+     "Wrong. That is the case where one engineer, often knowing little about HCI, designs everything."
+    ],
+    [
+     "Specialists for each role, such as UX researcher, UX designer, visual designer and UX engineer",
+     "Correct. Big companies have specialists for each role. (L2, Who does UI/UX design?)"
+    ],
+    [
+     "One UI/UX designer on the development team",
+     "Wrong. That is increasingly common in small and medium companies."
+    ],
+    [
+     "The users themselves, with no designers",
+     "Wrong. The lecture does not list this option."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: \"Having a UI/UX designer on the development team is increasingly common in small and medium companies.\"",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture says exactly this. (L2, Who does UI/UX design?)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture states it is increasingly common in small and medium companies."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Which of the following is <b>NOT</b> one of the specialist roles listed for big companies?",
+   "o": [
+    [
+     "UX researcher",
+     "Wrong. UX researcher is listed."
+    ],
+    [
+     "Visual designer",
+     "Wrong. Visual designer is listed."
+    ],
+    [
+     "Database administrator",
+     "Correct. The roles listed are UX researcher, UX designer, visual designer and UX engineer. (L2, Who does UI/UX design?)"
+    ],
+    [
+     "UX engineer",
+     "Wrong. UX engineer is listed."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Which of the following is <b>NOT</b> one of the practical issues in interaction design listed in the lecture?",
+   "o": [
+    [
+     "Who are the users?",
+     "Wrong. This is the first practical issue."
+    ],
+    [
+     "How to choose among alternatives?",
+     "Wrong. This is a listed practical issue."
+    ],
+    [
+     "How to integrate interaction design activities with other lifecycle models?",
+     "Wrong. This is the last listed practical issue."
+    ],
+    [
+     "How to minimize the cost of hardware?",
+     "Correct. The five issues are: who are the users, their needs, generating alternatives, choosing among them, and integrating with other lifecycle models. (L2, Some practical issues)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "When finding out the users' needs, the lecture says to focus on:",
+   "o": [
+    [
+     "Peoples' goals, usability, and user experience goals",
+     "Correct. This is exactly what the lecture says to focus on. (L2, What are the users' needs?)"
+    ],
+    [
+     "Whatever features users ask for, since they know what is possible",
+     "Wrong. Users rarely know what is possible."
+    ],
+    [
+     "Technical feasibility only",
+     "Wrong. Technical feasibility is a criterion for choosing among alternatives, not the focus for users' needs."
+    ],
+    [
+     "The functional specification",
+     "Wrong. Designing to a functional specification is the old approach."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Identifying stakeholders helps because it:",
+   "o": [
+    [
+     "Shows that the user is always a single person",
+     "Wrong. Stakeholders are a group larger than the direct users."
+    ],
+    [
+     "Identifies groups to include in interaction design activities",
+     "Correct. Identifying stakeholders helps identify groups to include in interaction design activities. (L2, Who are the users/stakeholders?)"
+    ],
+    [
+     "Removes the need for user research",
+     "Wrong. Nothing in the lecture removes the need for user research; it is integral to every phase."
+    ],
+    [
+     "Fixes one quality threshold for everybody",
+     "Wrong. Different stakeholder groups have different quality thresholds."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: \"Foundational research involves talking to users about their pain points and can reveal opportunities the team would not think of.\"",
+   "o": [
+    [
+     "True",
+     "Correct. Foundational (strategic / generative) research does exactly this, before anything is designed. (L2, Types of user research by WHEN)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture describes foundational research this way."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Why are secondary research findings often difficult for you to replicate?",
+   "o": [
+    [
+     "Because they are always outdated",
+     "Wrong. The lecture does not say this; it says they are useful early in the project."
+    ],
+    [
+     "Because they come only from interviews",
+     "Wrong. Interviews are a primary research method."
+    ],
+    [
+     "Because they are done by experienced researchers at credible organizations",
+     "Correct. Secondary findings are usually produced by experienced, specialized researchers in credible organizations. (L2, Types of user research by WHO)"
+    ],
+    [
+     "Because they are post-launch results",
+     "Wrong. Post-launch is a type of research by WHEN, not the reason."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: \"Many practitioners do not know how to use secondary research; courses on psychology and cognition and being part of HCI/UX communities help.\"",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture says many practitioners are unaware of it, and courses and communities help. (L2, Types of user research by WHO)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture states this directly."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Technical feasibility is listed in the lecture as a way to:",
+   "o": [
+    [
+     "Generate alternative designs",
+     "Wrong. Sources of alternatives are flair and creativity, cross-fertilization, users and inspiration."
+    ],
+    [
+     "Identify stakeholders",
+     "Wrong. Stakeholders are a group larger than the direct users; feasibility does not identify them."
+    ],
+    [
+     "Find who the users are",
+     "Wrong. Finding users is done by exploring the problem space and investigating users."
+    ],
+    [
+     "Choose among alternatives",
+     "Correct. Choosing uses externally-visible and measurable behavior, technical feasibility, evaluation with users or peers, and quality thresholds. (L2, How to choose among alternatives)"
+    ]
+   ],
+   "a": 3
   }
  ],
- "3": [],
- "4": [],
+ "3": [
+  {
+   "q": "According to the lecture, attention involves which senses?",
+   "o": [
+    [
+     "Only the visual senses",
+     "Wrong. The lecture says attention involves audio and/or visual senses, not only visual."
+    ],
+    [
+     "Only the audio senses",
+     "Wrong. Audio alone is too narrow; the lecture says audio and/or visual."
+    ],
+    [
+     "Audio and/or visual senses",
+     "Correct. Attention involves audio and/or visual senses. (L3, Attention)"
+    ],
+    [
+     "Touch and smell only",
+     "Wrong. Touch and smell are not mentioned; the lecture names audio and/or visual senses."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: The lecture names two kinds of attention: focused and divided.",
+   "o": [
+    [
+     "True",
+     "Correct. The slide says there is focused and divided attention. (L3, Attention)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture does name focused and divided attention."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Design recommendation for attention: information at the interface should be structured to capture users' attention, for example by using:",
+   "o": [
+    [
+     "Perceptual boundaries (windows) and colors",
+     "Correct. The slide's example is perceptual boundaries (windows) and colors. (L3, Attention)"
+    ],
+    [
+     "Long and complicated procedures",
+     "Wrong. Long, complicated procedures raise cognitive load; they are something to avoid, not a way to capture attention."
+    ],
+    [
+     "As much information as possible on one screen",
+     "Wrong. That is cluttering, which the design implications say to avoid."
+    ],
+    [
+     "Bunching the information up together",
+     "Wrong. Bunched up information made Tullis's 1st screen harder to search."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In Tullis's (1987) study, the 1st screen (information bunched up) took an average of ……… to search.",
+   "o": [
+    [
+     "3.2 seconds",
+     "Wrong. 3.2 seconds was the 2nd screen, the one grouped into vertical categories."
+    ],
+    [
+     "2.3 seconds",
+     "Wrong. 2.3 seconds is the difference between the two screens, not a search time."
+    ],
+    [
+     "7.2 seconds",
+     "Wrong. No screen in the study took 7.2 seconds."
+    ],
+    [
+     "5.5 seconds",
+     "Correct. The 1st screen took an average of 5.5 seconds to search. (L3, Tullis study)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Using Tullis's (1987) results, how many seconds faster on average was searching the 2nd screen than the 1st?",
+   "o": [
+    [
+     "1.7 seconds",
+     "Wrong. 1.7 is not the difference; 5.5 − 3.2 = 2.3."
+    ],
+    [
+     "2.3 seconds",
+     "Correct. 5.5 − 3.2 = 2.3 seconds faster. (L3, Tullis study)"
+    ],
+    [
+     "3.2 seconds",
+     "Wrong. 3.2 seconds is the 2nd screen's search time, not the difference."
+    ],
+    [
+     "8.7 seconds",
+     "Wrong. 8.7 is the sum 5.5 + 3.2, not the difference."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: Tullis's 2nd screen was faster to search because it contained less information (a lower density).",
+   "o": [
+    [
+     "True",
+     "Wrong. Both displays had the same density of information; the difference was spacing."
+    ],
+    [
+     "False",
+     "Correct. Both screens had the same density; the 2nd was faster because of spacing (vertical categories). (L3, Tullis study)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which study compared two screens of hotel information (Pennsylvania and South Carolina) and timed how long they took to search?",
+   "o": [
+    [
+     "Weller (2004)",
+     "Wrong. Weller compared grouping by border vs color contrast ('Find Italian' / 'Find French')."
+    ],
+    [
+     "Ophir et al. (2009)",
+     "Wrong. Ophir et al. compared heavy vs light multitaskers."
+    ],
+    [
+     "Tullis (1987)",
+     "Correct. Tullis (1987) timed the two hotel screens: 5.5 vs 3.2 seconds. (L3, Tullis study)"
+    ],
+    [
+     "Caird et al. (2018)",
+     "Wrong. Caird et al. studied drivers' reaction times when talking on the phone."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: Ophir et al. (2009) found that heavy multitaskers find it difficult to filter irrelevant information.",
+   "o": [
+    [
+     "True",
+     "Correct. Heavy multitaskers are easily distracted and find it difficult to filter irrelevant information. (L3, Multitasking)"
+    ],
+    [
+     "False",
+     "Wrong. That is exactly what Ophir et al. found about heavy multitaskers."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Hospital workers attend to multiple real-time screens in an operating room. According to the lecture, this creates a need to:",
+   "o": [
+    [
+     "Reduce the number of screens to seven",
+     "Wrong. The lecture does not say this; the 7 limit belongs to Miller's memory theory."
+    ],
+    [
+     "Develop new attention and scanning strategies",
+     "Correct. Constant attention is needed to spot unusual or anomalous data, so new attention and scanning strategies are needed. (L3, Multitasking at work)"
+    ],
+    [
+     "Use hands-free phones in the operating room",
+     "Wrong. Hands-free phones come up only in the driving example."
+    ],
+    [
+     "Stop checking whether the data is unusual",
+     "Wrong. The opposite: the clinician needs constant attention to check if any data is unusual or anomalous."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Humans tend to ………, but considering alternatives helps identify better designs.",
+   "o": [
+    [
+     "Multitask heavily",
+     "Wrong. Multitasking is about attention, not about generating alternatives."
+    ],
+    [
+     "Recall rather than recognize",
+     "Wrong. That is from memory, and it is the other way round: we recognize better than we recall."
+    ],
+    [
+     "Learn by doing",
+     "Wrong. Learning by doing is about how people prefer to learn, not about alternatives."
+    ],
+    [
+     "Stick with something that works",
+     "Correct. Humans tend to stick with something that works; considering alternatives helps find better designs. (L3, Generating alternatives)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "As a source of alternative designs, 'flair and creativity' means:",
+   "o": [
+    [
+     "Ideas from different perspectives crossing over",
+     "Wrong. That is cross-fertilization of ideas, a separate source."
+    ],
+    [
+     "Letting users generate different designs",
+     "Wrong. 'Users can generate different designs' is its own source in the list."
+    ],
+    [
+     "Looking at similar products and domain",
+     "Wrong. That is seeking inspiration."
+    ],
+    [
+     "Research and synthesis",
+     "Correct. 'Flair and creativity': research and synthesis. (L3, Generating alternatives)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: When seeking inspiration for alternative designs, you should look only at similar products in the same domain.",
+   "o": [
+    [
+     "True",
+     "Wrong. The lecture says inspiration can come from similar products and domain, or different products and domain."
+    ],
+    [
+     "False",
+     "Correct. Seek inspiration from similar products and domain, or different products and domain. (L3, Generating alternatives)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Drivers using their phones rely more on ………, as conducting a conversation takes up their attention.",
+   "o": [
+    [
+     "Their expectations about what is likely to happen next",
+     "Correct. With attention taken by the conversation, drivers rely more on expectations of what happens next. (L3, Phone when driving)"
+    ],
+    [
+     "The front seat passenger",
+     "Wrong. The passenger is discussed as a safer conversation partner, not as something drivers rely on."
+    ],
+    [
+     "Perceptual boundaries on the dashboard",
+     "Wrong. Perceptual boundaries are an interface design recommendation, not part of the driving example."
+    ],
+    [
+     "Their faster reaction times",
+     "Wrong. Reaction times are longer, not faster, when talking on the phone (Caird et al., 2018)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Briggs et al. (2018) found that, for drivers using phones:",
+   "o": [
+    [
+     "Hands-free phones remove the distraction",
+     "Wrong. Hands-free phones are not safer, as the same cognitive processing happens when talking."
+    ],
+    [
+     "Response time is slower to unexpected events",
+     "Correct. Briggs et al. (2018): response time is slower to unexpected events. (L3, Phone when driving)"
+    ],
+    [
+     "Talking to a front seat passenger is more dangerous than to a remote caller",
+     "Wrong. It is the reverse: a passenger is less dangerous than a remote person."
+    ],
+    [
+     "Heavy multitaskers filter irrelevant information better",
+     "Wrong. That contradicts Ophir et al. (2009): heavy multitaskers find filtering difficult."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: Imagining the face of the person on the other end of the call competes with the processing resources a driver needs to notice and react to what is in front of them.",
+   "o": [
+    [
+     "True",
+     "Correct. Drivers often imagine the other person's face, which competes with the processing resources they need for the road. (L3, Phone when driving)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture states exactly this as a reason phones are dangerous while driving."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: Talking to a front seat passenger involves no cognitive processing, so it is completely safe while driving.",
+   "o": [
+    [
+     "True",
+     "Wrong. The same thing (the same cognitive processing) happens with a passenger; it is only less dangerous than a remote caller."
+    ],
+    [
+     "False",
+     "Correct. The same processing happens with a passenger; it is less dangerous only because both can stop mid-sentence at a hazard. (L3, Hands-free phones)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "A remote person on the end of a phone is not privy to what the driver is seeing. As a result, the remote person:",
+   "o": [
+    [
+     "Stops talking as soon as a hazard appears",
+     "Wrong. That is what a front seat passenger can do, because they see the hazard too."
+    ],
+    [
+     "Reduces the driver's cognitive load",
+     "Wrong. The lecture says the opposite: it is hard for the driver to switch all attention to the road."
+    ],
+    [
+     "Will carry on the conversation when there is a hazard",
+     "Correct. The remote person carries on talking during a hazard, making it difficult for the driver to switch all attention to the road. (L3, Hands-free phones)"
+    ],
+    [
+     "Makes the driver's reaction times shorter",
+     "Wrong. Reaction times get longer, not shorter, when talking on the phone."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Which of the following is NOT one of the techniques the lecture lists for making information salient?",
+   "o": [
+    [
+     "Ordering",
+     "Wrong. Ordering is listed (color, ordering, spacing, underlining, sequencing, animation)."
+    ],
+    [
+     "Animation",
+     "Wrong. Animation is one of the listed techniques."
+    ],
+    [
+     "Underlining",
+     "Wrong. Underlining is one of the listed techniques."
+    ],
+    [
+     "Time stamping",
+     "Correct. Time stamping is a way of labelling digital information (memory, L4), not an attention technique. (L3, Design implications for attention)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: One design implication for attention is to avoid cluttering visual interfaces with too much information.",
+   "o": [
+    [
+     "True",
+     "Correct. Avoid cluttering visual interfaces with too much information. (L3, Design implications for attention)"
+    ],
+    [
+     "False",
+     "Wrong. Avoiding clutter is one of the four design implications for attention."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Perception's obvious design implication is to design representations that are readily perceivable. Which example does the lecture give?",
+   "o": [
+    [
+     "Text should be legible",
+     "Correct. Text should be legible and icons easy to distinguish and read. (L3, Perception)"
+    ],
+    [
+     "Speech-based menus should be short",
+     "Wrong. That is a design implication for reading, speaking and listening (L4)."
+    ],
+    [
+     "Interfaces should promote recognition rather than recall",
+     "Wrong. That is a design implication for memory (L4)."
+    ],
+    [
+     "Users should be able to switch away and return to an interface",
+     "Wrong. Supporting switching and returning is a design implication for attention."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In Weller's (2004) 'Find French' screen, how were the groups of names separated?",
+   "o": [
+    [
+     "By alternating light blue and white backgrounds",
+     "Wrong. That is color contrast, used in the 'Find Italian' screen."
+    ],
+    [
+     "Each group was enclosed in a border and separated by white space",
+     "Correct. The 2nd screen used borders and white space, and people found items faster there. (L3, Weller study)"
+    ],
+    [
+     "Characters were grouped into vertical categories",
+     "Wrong. Vertical categories describe Tullis's 2nd hotel screen."
+    ],
+    [
+     "The names were bunched up together",
+     "Wrong. Bunched up information describes Tullis's 1st screen."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: According to the lecture, yellow on black is a no-no.",
+   "o": [
+    [
+     "True",
+     "Wrong. Yellow on black or blue is fine; yellow on green or white is the no-no."
+    ],
+    [
+     "False",
+     "Correct. Yellow on black (or blue) is fine; the no-no is yellow on green or white. (L3, Design implications for perception)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: Some argue that too much white space on web pages is detrimental to the search process.",
+   "o": [
+    [
+     "True",
+     "Correct. Some argue too much white space makes information hard to find. (L3, Weller study)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture does report this argument (and asks whether you agree)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "A design implication for perception says sounds should be:",
+   "o": [
+    [
+     "Audible and distinguishable",
+     "Correct. Sounds should be audible and distinguishable. (L3, Design implications for perception)"
+    ],
+    [
+     "Salient and animated",
+     "Wrong. Salience and animation are attention techniques for visual information, not the rule for sounds."
+    ],
+    [
+     "Long and continuous",
+     "Wrong. The lecture asks for sounds to be audible and distinguishable, nothing about long or continuous."
+    ],
+    [
+     "Bordered and spaced",
+     "Wrong. Bordering and spacing group visual information; they are not about sounds."
+    ]
+   ],
+   "a": 0
+  }
+ ],
+ "4": [
+  {
+   "q": "Memory involves recalling various kinds of knowledge that allow people to:",
+   "o": [
+    [
+     "Perform multiple tasks without any being affected",
+     "Wrong. That is the multitasking question from attention (L3), not the definition of memory."
+    ],
+    [
+     "Act appropriately",
+     "Correct. Memory involves recalling knowledge that allows people to act appropriately, e.g. recognizing a face. (L4, Memory)"
+    ],
+    [
+     "Transform information into experiences",
+     "Wrong. Acquiring information and transforming it into experiences is perception."
+    ],
+    [
+     "Accumulate skills by doing",
+     "Wrong. Accumulating skills and knowledge is learning."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: In memory, we first retrieve and then encode knowledge.",
+   "o": [
+    [
+     "True",
+     "Wrong. The order is reversed: we first encode and then retrieve."
+    ],
+    [
+     "False",
+     "Correct. We first encode and then retrieve knowledge. (L4, Memory)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Sometimes it can be difficult for people to recall information that was ………",
+   "o": [
+    [
+     "Encoded in a different context",
+     "Correct. Context affects retrieval; information encoded in a different context can be hard to recall. (L4, Context)"
+    ],
+    [
+     "Shown as a visual cue",
+     "Wrong. People are very good at remembering visual cues."
+    ],
+    [
+     "Recognized rather than recalled",
+     "Wrong. Recognition is the easier one; we recognize much better than we recall."
+    ],
+    [
+     "Learned incidentally",
+     "Wrong. The lecture links recall difficulty to a change of context, not to incidental learning."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "People find it more difficult to learn and remember ………, for example birthdays and phone numbers.",
+   "o": [
+    [
+     "Visual cues",
+     "Wrong. Visual cues (color, location, marks) are what people remember very well."
+    ],
+    [
+     "Incidental material",
+     "Wrong. 'Incidental' is a type of learning, not the term the lecture uses here."
+    ],
+    [
+     "Arbitrary material",
+     "Correct. Arbitrary material such as birthdays and phone numbers is harder to learn and remember. (L4, What is easy to remember)"
+    ],
+    [
+     "Reflective material",
+     "Wrong. Reflective cognition is about problem-solving and decision-making, not hard-to-remember facts."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: People are very good at remembering visual cues such as marks on an object.",
+   "o": [
+    [
+     "True",
+     "Correct. People remember visual cues well: color of items, location of objects, marks on an object. (L4, What is easy to remember)"
+    ],
+    [
+     "False",
+     "Wrong. Marks on an object are one of the visual cues the lecture says people remember very well."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Whose theory states that people's immediate memory capacity is very limited to 7, + or - 2?",
+   "o": [
+    [
+     "Henkel",
+     "Wrong. Henkel (2014) is about remembering less about photographed objects."
+    ],
+    [
+     "Tullis",
+     "Wrong. Tullis (1987) timed searching two hotel screens (L3)."
+    ],
+    [
+     "Kahneman",
+     "Wrong. Kahneman (2011) is fast vs slow thinking (L3)."
+    ],
+    [
+     "George Miller",
+     "Correct. George Miller (1956): immediate memory capacity is limited to 7, + or - 2. (L4, Miller)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "By Miller's '7, + or - 2', what range of items can a person hold in immediate memory?",
+   "o": [
+    [
+     "7 to 9 items",
+     "Wrong. That only applies the + 2; the lower end is 7 − 2 = 5."
+    ],
+    [
+     "5 to 9 items",
+     "Correct. 7 − 2 = 5 and 7 + 2 = 9, so 5 to 9 items. (L4, Miller)"
+    ],
+    [
+     "2 to 7 items",
+     "Wrong. 2 is the margin, not the lower limit; the range is 5 to 9."
+    ],
+    [
+     "5 to 7 items",
+     "Wrong. That only applies the − 2; the upper end is 7 + 2 = 9."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: The lecture concludes that a designer should always place exactly 7 items on a pull down menu.",
+   "o": [
+    [
+     "True",
+     "Wrong. The lecture only asks whether the designer should do this (and whether 7 + or - 2 is a good use of theory in HCI); it gives no answer."
+    ],
+    [
+     "False",
+     "Correct. These are posed as questions for discussion ('The problem with the classic 7, + or - 2'); the slides give no answer. (L4, Miller)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Design implication for memory: reduce ……… by avoiding long and complicated procedures for carrying out tasks.",
+   "o": [
+    [
+     "Cognitive load",
+     "Correct. Reduce cognitive load by avoiding long and complicated procedures. (L4, Design implications for memory)"
+    ],
+    [
+     "Intonation",
+     "Wrong. Intonation should be accentuated in synthetic speech; it is not what long procedures increase."
+    ],
+    [
+     "Exploration",
+     "Wrong. Exploration is something to encourage (learning), not reduce."
+    ],
+    [
+     "Recognition",
+     "Wrong. Interfaces should promote recognition, not reduce it."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Which of the following is NOT given as a way of labelling digital information?",
+   "o": [
+    [
+     "Folders",
+     "Wrong. Folders are listed (folders, categories, color, flagging, time stamping)."
+    ],
+    [
+     "Flagging",
+     "Wrong. Flagging is one of the listed labelling ways."
+    ],
+    [
+     "Dynamic linking",
+     "Correct. Dynamically linking concepts and representations is a design implication for learning, not a labelling method. (L4, Design implications for memory)"
+    ],
+    [
+     "Time stamping",
+     "Wrong. Time stamping is one of the listed labelling ways."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Learning to cook is an example of:",
+   "o": [
+    [
+     "Incidental learning",
+     "Wrong. Incidental examples are recognizing faces and what you did today."
+    ],
+    [
+     "Intentional learning",
+     "Correct. Studying for an exam and learning to cook are intentional learning. (L4, Learning)"
+    ],
+    [
+     "Reflective cognition",
+     "Wrong. Reflective cognition covers problem-solving, planning, reasoning and decision-making."
+    ],
+    [
+     "Arbitrary material",
+     "Wrong. Arbitrary material (birthdays, phone numbers) is hard-to-remember content, not a type of learning."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: Remembering what you did today is an example of intentional learning.",
+   "o": [
+    [
+     "True",
+     "Wrong. What you did today is the lecture's example of incidental learning."
+    ],
+    [
+     "False",
+     "Correct. It is incidental learning (like recognizing faces); intentional learning is e.g. studying for an exam. (L4, Learning)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which technologies does the lecture say have been developed to help intentional learning?",
+   "o": [
+    [
+     "Siri, Alexa and Google Voice",
+     "Wrong. These are voice user interfaces."
+    ],
+    [
+     "Maps, books, pen and paper",
+     "Wrong. These are artifacts used in reflective cognition (problem-solving, planning)."
+    ],
+    [
+     "Multimedia, animations and VR",
+     "Correct. Many technologies have been developed to help, e.g. multimedia, animations, VR. (L4, Learning)"
+    ],
+    [
+     "Folders, categories and color",
+     "Wrong. These are ways of labelling digital information (memory)."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: Dynamically linking concepts and representations can facilitate the learning of complex material.",
+   "o": [
+    [
+     "True",
+     "Correct. This is the third design implication for learning. (L4, Design implications for learning)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture lists this as a design implication for learning."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Design implication for learning: design interfaces that ……… learners.",
+   "o": [
+    [
+     "Distract",
+     "Wrong. Distraction is a problem from attention (L3), not a design goal."
+    ],
+    [
+     "Overload",
+     "Wrong. Designers should reduce cognitive load, not overload users."
+    ],
+    [
+     "Test with long manuals",
+     "Wrong. People find it hard to learn by following instructions in a manual."
+    ],
+    [
+     "Constrain and guide",
+     "Correct. Design interfaces that constrain and guide learners. (L4, Design implications for learning)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: Listening requires less cognitive effort than reading or speaking.",
+   "o": [
+    [
+     "True",
+     "Correct. Listening requires less cognitive effort than reading or speaking. (L4, Reading, speaking and listening)"
+    ],
+    [
+     "False",
+     "Wrong. The slide states that listening needs less cognitive effort."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: According to the lecture, many people prefer reading to listening.",
+   "o": [
+    [
+     "True",
+     "Wrong. It is the other way round: many prefer listening to reading."
+    ],
+    [
+     "False",
+     "Correct. Many prefer listening to reading (although reading can be quicker). (L4, Reading, speaking and listening)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Google Voice, Siri and Alexa are given as examples of:",
+   "o": [
+    [
+     "Voice user interfaces",
+     "Correct. Voice user interfaces let users interact by asking questions, e.g. Google Voice, Siri, Alexa. (L4, Applications)"
+    ],
+    [
+     "Natural-language systems",
+     "Wrong. Natural-language systems take typed questions and give text responses, e.g. chatbots."
+    ],
+    [
+     "Speech-output systems",
+     "Wrong. Speech-output systems use artificially-generated speech, e.g. text-to-speech for the visually impaired."
+    ],
+    [
+     "Artifacts",
+     "Wrong. Artifacts are things like maps, books, pen and paper."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Natural-language systems enable users to:",
+   "o": [
+    [
+     "Hear written text read aloud by a synthetic voice",
+     "Wrong. That is a speech-output system (text-to-speech)."
+    ],
+    [
+     "Label information with folders and flags",
+     "Wrong. That is labelling digital information, a memory design implication."
+    ],
+    [
+     "Type in questions and get text-based responses",
+     "Correct. Natural-language systems let users type questions and give text-based responses, e.g. chatbots. (L4, Applications)"
+    ],
+    [
+     "Explore a virtual environment",
+     "Wrong. VR is mentioned as a technology to help learning, not as a natural-language system."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Design implication for reading, speaking and listening: speech-based menus and instructions should be:",
+   "o": [
+    [
+     "Limited to exactly 7 options",
+     "Wrong. The 7 + or - 2 idea is Miller's memory theory, which the lecture questions; the rule here is 'short'."
+    ],
+    [
+     "Short",
+     "Correct. Speech-based menus and instructions should be short. (L4, Design implications for reading, speaking and listening)"
+    ],
+    [
+     "Read in a flat intonation",
+     "Wrong. Intonation of artificial voices should be accentuated, not flat."
+    ],
+    [
+     "Long and detailed",
+     "Wrong. The lecture says short; long procedures also raise cognitive load."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: Artificially generated speech voices are easier to understand than human voices.",
+   "o": [
+    [
+     "True",
+     "Wrong. They are harder to understand than human voices, which is why their intonation should be accentuated."
+    ],
+    [
+     "False",
+     "Correct. They are harder to understand, so accentuate their intonation. (L4, Design implications for reading, speaking and listening)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which of the following is a design implication for reading, speaking and listening?",
+   "o": [
+    [
+     "Design interfaces that promote recall rather than recognition",
+     "Wrong. It is reversed, and it belongs to memory: promote recognition rather than recall."
+    ],
+    [
+     "Make speech-based menus long so nothing is missed",
+     "Wrong. Speech-based menus should be short."
+    ],
+    [
+     "Use human voices only and never synthetic speech",
+     "Wrong. The lecture does not ban synthetic speech; it says to accentuate its intonation."
+    ],
+    [
+     "Provide opportunities for making text large on a screen",
+     "Correct. Provide opportunities for making text large on a screen. (L4, Design implications for reading, speaking and listening)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Reflective cognition involves, for example:",
+   "o": [
+    [
+     "Thinking about what to do, what the options are, and the consequences",
+     "Correct. Problem-solving, planning, reasoning and decision-making involve reflective cognition: thinking about what to do, the options and the consequences. (L4, Reflective cognition)"
+    ],
+    [
+     "Recognizing people's faces without trying",
+     "Wrong. That is incidental learning."
+    ],
+    [
+     "Filtering what is attended to before encoding",
+     "Wrong. Filtering what is attended to describes memory."
+    ],
+    [
+     "Grouping information with borders and spacing",
+     "Wrong. Bordering and spacing are perception design implications (L3)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: Problem-solving and decision-making may involve working through different scenarios and weighing up alternatives.",
+   "o": [
+    [
+     "True",
+     "Correct. They may involve working through different scenarios, deciding which is the best option, and weighing up alternatives. (L4, Reflective cognition)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture lists both as part of problem-solving, planning, reasoning and decision-making."
+    ]
+   ],
+   "a": 0
+  }
+ ],
  "5": [
   {
    "q": "Which of these is <b>PII but NOT SPII</b>?",

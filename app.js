@@ -31,6 +31,8 @@ function start() {
   const levelOf = k => LEVELS.find(v => v.order.some(o => o[0] === k));
   let LEVEL = LEVELS.find(v => v.id === 'l3') || LEVELS[0];
   let ORDER = LEVEL ? LEVEL.order : [];
+  // courses with a midterm section (scope + summary), in level order
+  const MIDS = LEVELS.flatMap(v => v.order.map(o => o[0])).filter(k => M[k] && M[k].mid);
   const LET = 'ABCDEFGH';
 
   /* ── storage (same keys as the previous version, so progress carries over) ──
@@ -354,7 +356,7 @@ function start() {
       const hash = decodeURIComponent(location.hash.slice(1));
       if (M[hash]) return { view: 'course', course: hash, mode: 'path' };
       const saved = store.get('nav2', null);
-      if (saved && (saved.view === 'shelf' || M[saved.course])) return saved;
+      if (saved && (saved.view === 'shelf' || (saved.view === 'midterm' && MIDS.length) || (saved.view === 'course' && M[saved.course]))) return saved;
       return { view: 'shelf' };
     });
     const [searching, setSearching] = useState(false);
@@ -363,7 +365,7 @@ function start() {
     LANG = lang;
     const [levelId, setLevel] = usePersist('level', 'l3');
     // an open course shows its own level; otherwise the one picked on the home page
-    LEVEL = (nav.view === 'course' && levelOf(nav.course)) || LEVELS.find(v => v.id === levelId) || LEVELS[LEVELS.length - 1];
+    LEVEL = (nav.view === 'course' && levelOf(nav.course)) || (nav.view === 'midterm' && MIDS.length && levelOf(MIDS[0])) || LEVELS.find(v => v.id === levelId) || LEVELS[LEVELS.length - 1];
     ORDER = LEVEL.order;
     useEffect(() => { if (LEVEL.id !== levelId) setLevel(LEVEL.id); }, [LEVEL.id]);
     useEffect(() => { releaseExcept(new Set(LEVEL.order.map(o => o[0]).concat(nav.course ? [nav.course] : []))); }, [LEVEL.id]);
@@ -418,6 +420,7 @@ function start() {
       <div className="app" key="app">
         ${inCourse
           ? html`<${CourseView} key=${nav.course} nav=${nav} bar=${bar} />`
+          : nav.view === 'midterm' && MIDS.length ? html`<${MidtermPage} key="mid" bar=${bar} />`
           : html`<${Home} bar=${bar} />`}
       </div>
       ${searching && html`<${Search} key="search" close=${() => setSearching(false)} go=${p => { setSearching(false); navigate(p); }} />`}
@@ -489,10 +492,17 @@ function start() {
           <button className="hsearch" onClick=${openSearch}>${Icon.search}<span>Search notes, cards, past papers…</span><kbd>/</kbd></button>
         </div>
         <div className="bento">
+          ${ORDER.some(([k]) => M[k].mid) && html`<button className="tile t-mid" onClick=${() => { go({ view: 'midterm' }); window.scrollTo(0, 0); }}>
+            <span className="tm-badge" aria-hidden="true">✎</span>
+            <span className="tm-text"><span className="tl">It’s midterm time</span><b className="tc-title">Midterm revision</b>
+              <span className="tm-sub">${ORDER.filter(([k]) => M[k].mid).length} course${ORDER.filter(([k]) => M[k].mid).length === 1 ? '' : 's'} · only the midterm lectures · summaries and ${ORDER.reduce((a, [k]) => a + (M[k].mid ? M[k].mid.prof + M[k].mid.mine : 0), 0)} questions, the doctor’s first</span></span>
+            <span className="tm-chips" aria-hidden="true">${ORDER.filter(([k]) => M[k].mid).map(([k]) => html`<i key=${k} className=${'sp-' + k}>${M[k].short}</i>`)}</span>
+            <span className="tgo">Open →</span>
+          </button>`}
           ${cont ? html`<button className=${'tile t-cont sp-' + cont.course} onMouseEnter=${() => prefetch(cont.course)} onPointerDown=${() => prefetch(cont.course)} onClick=${() => go(Object.assign({}, cont, { view: 'course' }))}>
               <span className="ring" style=${{ '--p': contPct }} aria-hidden="true"><i>${contPct}%</i></span>
               <span className="tc-text"><span className="tl">Continue · ${modeName[cont.mode] || 'Notes'}</span>
-                <b className="tc-title">${typeof cont.lec === 'number' ? lecTitle(cont.course, cont.lec) : cont.lec === 'rev' ? 'Revision sheet' : M[cont.course].name}</b>
+                <b className="tc-title">${typeof cont.lec === 'number' ? lecTitle(cont.course, cont.lec) : cont.lec === 'rev' ? 'Revision sheet' : cont.lec === 'mid' ? 'Midterm summary' : M[cont.course].name}</b>
                 <span className="tc-sub">${M[cont.course].name}${typeof cont.lec === 'number' ? ' · Lecture ' + cont.lec : ''} · ${contPct}% ${contWhat}</span>
                 <span className="tgo">Resume →</span></span>
             </button>`
@@ -539,6 +549,111 @@ function start() {
     </div>`;
   }
 
+  /* ════════════ MIDTERM: the midterm lectures of each course, summary + practice ════════════ */
+  const lecRange = ls => ls.length > 1 && ls[ls.length - 1] - ls[0] === ls.length - 1 ? 'L' + ls[0] + '–L' + ls[ls.length - 1] : 'L' + ls.join(', L');
+  function MidtermPage({ bar }) {
+    const { go, lang } = bar;
+    const [, setTick] = useState(0);
+    useEffect(() => { const f = () => setTick(t => t + 1); window.addEventListener('sd-store', f); return () => window.removeEventListener('sd-store', f); }, []);
+    const ks = MIDS.filter(k => ORDER.some(o => o[0] === k));
+    const rows = ks.map(k => {
+      const m = M[k].mid, st = store.get('stats:' + k, {});
+      let r = 0, n = 0, seen = 0;
+      Object.keys(st).forEach(id => { if (m.lecs.includes(lecOfId(id))) { seen++; r += st[id][0]; n += st[id][0] + st[id][1]; } });
+      return { k, m, acc: n ? Math.round(r / n * 100) : null, seen, total: m.prof + m.mine };
+    });
+    const tot = rows.reduce((a, x) => ({ prof: a.prof + x.m.prof, mine: a.mine + x.m.mine, lec: a.lec + x.m.lecs.length }), { prof: 0, mine: 0, lec: 0 });
+    const open = (k, extra) => { go(Object.assign({ view: 'course', course: k, mode: 'quiz', lec: undefined, anchor: null, quizPreset: null, cardFocus: null, cardLec: null }, extra)); window.scrollTo(0, 0); };
+    const quiz = (k, p) => open(k, { quizPreset: Object.assign({ lecs: M[k].mid.lecs, t: Date.now(), from: 'mid' }, p) });
+    return html`<div className="page home-page mid-page">
+      <${Topbar} bar=${bar} cur=${null} />
+      <main className="content home mid">
+        <div className="mid-hero">
+          <button className="linkbtn mid-back" onClick=${() => go({ view: 'shelf' })}>← Home</button>
+          <p className="hello-k">${LEVEL.name} · ${LEVEL.sem} · Midterm</p>
+          <h1>Midterm revision</h1>
+          <p className="mid-lede">Only the lectures in each midterm. Read the summary, then answer the doctor’s own questions (past exams, sheets and lecture examples) before the questions written for Study Deck.</p>
+          <div className="mid-total">
+            <span><b>${rows.length}</b> course${rows.length === 1 ? '' : 's'}</span><span><b>${tot.lec}</b> lectures</span><span><b>${tot.prof}</b> doctor’s questions</span><span><b>${tot.mine}</b> more practice</span>
+          </div>
+          <ol className="mid-steps">
+            <li><b>1</b><span>Read the midterm summary</span></li>
+            <li><b>2</b><span>Practise, the doctor’s questions first</span></li>
+            <li><b>3</b><span>Sit a timed mock midterm</span></li>
+          </ol>
+        </div>
+        <div className="mid-grid">
+          ${rows.map(({ k, m, acc, seen, total }) => html`<article key=${k} className=${'mid-card sp-' + k}>
+            <header className="mc-head">
+              <span className="tcs">${M[k].code} · ${lecRange(m.lecs)}</span>
+              <h2>${M[k].name}</h2>
+              <p className="mc-by">${M[k].by}</p>
+              <p className="mc-scope">${m.scope}${lang === 'ar' && m.scope_ar ? html` <span className="ar" dir="rtl" lang="ar">${m.scope_ar}</span>` : null}</p>
+            </header>
+            <div className="mc-body">
+              <ol className="mc-lecs">${M[k].lectures.filter(l => m.lecs.includes(l.n)).map(l => html`<li key=${l.n}><span>L${l.n}</span>${shortTitle(cleanTitle(l.title), 60)}</li>`)}</ol>
+              <div className="mc-nums">
+                <div><b>${m.prof}</b><span>doctor’s</span></div>
+                <div><b>${m.mine}</b><span>more practice</span></div>
+                <div><b>${acc == null ? '–' : acc + '%'}</b><span>${seen ? seen + ' of ' + total + ' tried' : 'not started'}</span></div>
+              </div>
+              <div className="mc-meter" aria-hidden="true"><i style=${{ width: Math.min(100, Math.round(seen / Math.max(1, total) * 100)) + '%' }}></i></div>
+              <div className="mc-acts">
+                <button className="btn solid" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => open(k, { mode: 'read', lec: 'mid' })}>Summary · ${m.pts} points</button>
+                <button className="btn solid mc-go" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => quiz(k, { order: 'prof' })}>Practise all ${total}, doctor’s first</button>
+                <button className="btn" disabled=${!m.prof} onClick=${() => quiz(k, { only: 'prof' })}>Doctor’s only (${m.prof})</button>
+                <button className="btn" onClick=${() => quiz(k, { only: 'mine' })}>More practice (${m.mine})</button>
+                <button className="btn ghost" onClick=${() => quiz(k, { mock: 20 })}>Timed mock · 20 questions · 30 min</button>
+              </div>
+            </div>
+          </article>`)}
+        </div>
+        <p className="foot">Midterm scope as announced for each course. Summaries and questions come only from the lectures; the doctor’s questions are from past exams, sheets and the lecture slides.</p>
+      </main>
+    </div>`;
+  }
+
+  function MidtermSheet({ k, go }) {
+    const c = C[k], m = c.midterm, A = arOf(k), arm = A && A.midterm;
+    useEffect(() => { window.scrollTo(0, 0); }, [k]);
+    if (!m) return html`<div className="paper empty"><span className="pen">No midterm summary for this course.</span></div>`;
+    const secs = m.sections.map((s, i) => Object.assign({ i, ar: arm && arm[i] }, s));
+    const lecs = c.lectures.filter(l => m.lecs.includes(l.n));
+    const jump = n => { const el = document.getElementById('mid-' + n); if (el) el.scrollIntoView({ behavior: calm() ? 'auto' : 'smooth', block: 'start' }); };
+    const prof = quizOf(k).filter(q => m.lecs.includes(q.lec) && isProf(q)).length, all = quizOf(k).filter(q => m.lecs.includes(q.lec)).length;
+    return html`<div className="read">
+      <div className="readcol">
+        <article className="paper revsheet midsheet">
+          <header className="page-head">
+            <p className="kicker" style=${{ color: 'var(--c)' }}>Midterm · ${c.short} · ${lecRange(m.lecs)}</p>
+            <h2>Midterm summary</h2>
+            <p className="meta">${m.scope} · what to know for the midterm, lecture by lecture, ending with what the doctor asks.</p>
+            <div className="row" style=${{ marginTop: '12px', flexWrap: 'wrap' }}>
+              <button className="btn solid" onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: m.lecs, order: 'prof', t: Date.now() } })}>Practise all ${all}, doctor’s first</button>
+              <button className="btn" disabled=${!prof} onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: m.lecs, only: 'prof', t: Date.now() } })}>Doctor’s only (${prof})</button>
+              <button className="btn ghost" onClick=${() => go({ view: 'midterm' })}>All midterm courses</button>
+            </div>
+          </header>
+          ${lecs.map(l => html`<section key=${l.n} className="rev-lec" id=${'mid-' + l.n}>
+            <h3><span className="sec">L${l.n}</span>${l.title}</h3>
+            ${secs.filter(s => s.lec === l.n).map(s => html`<div key=${s.i} className=${'mid-sec' + (/doctor asks/i.test(s.h) ? ' asks' : '')}>
+              <h4><${H} h=${s.h} />${s.ar && s.ar.h ? html`<${Ar} t=${s.ar.h} cls="arh" />` : null}</h4>
+              <ul>${s.pts.map((p, j) => html`<li key=${j}><${H} h=${p} /><${Ar} t=${s.ar && s.ar.pts[j]} /></li>`)}</ul>
+            </div>`)}
+            <div className="row" style=${{ margin: '6px 0 10px' }}>
+              <button className="btn ghost small" onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: [l.n], order: 'prof', t: Date.now() } })}>Quiz lecture ${l.n}</button>
+              <button className="btn ghost small" onClick=${() => go({ mode: 'read', lec: l.n, anchor: null })}>Full notes</button>
+            </div>
+          </section>`)}
+        </article>
+      </div>
+      <aside className="outline" aria-label="Lectures in the midterm">
+        <p className="kicker">In the midterm</p>
+        <ol>${lecs.map(l => html`<li key=${l.n}><button onClick=${() => jump(l.n)}><span className="on-n">L${l.n}</span><span>${l.title}</span></button></li>`)}</ol>
+      </aside>
+    </div>`;
+  }
+
   /* ════════════ COURSE ════════════ */
   function CourseView({ nav, bar }) {
     const { go } = bar;
@@ -552,7 +667,7 @@ function start() {
     const barRef = useRef(null);
     const mode = nav.mode === 'miss' ? 'progress' : (nav.mode || 'path');
     // with no lecture chosen, the path points at the first lecture you haven't read
-    const lecN = nav.lec === 'rev' ? 'rev' : c.lectures.some(l => l.n === nav.lec) ? nav.lec : ((c.lectures.find(l => !read.includes(l.n)) || c.lectures[0]).n);
+    const lecN = nav.lec === 'rev' ? 'rev' : nav.lec === 'mid' && c.mid ? 'mid' : c.lectures.some(l => l.n === nav.lec) ? nav.lec : ((c.lectures.find(l => !read.includes(l.n)) || c.lectures[0]).n);
 
     useEffect(() => { if (!nav.anchor) window.scrollTo(0, 0); }, [mode]);
 
@@ -566,7 +681,7 @@ function start() {
       ['progress', 'Progress', miss.length || null]
     ];
     return html`<div className="page">
-      <${Topbar} bar=${bar} cur=${k}><div className="readbar" hidden=${mode !== 'read' || status !== 'ready' || lecN === 'rev'}><i ref=${barRef}></i></div></${Topbar}>
+      <${Topbar} bar=${bar} cur=${k}><div className="readbar" hidden=${mode !== 'read' || status !== 'ready' || lecN === 'rev' || lecN === 'mid'}><i ref=${barRef}></i></div></${Topbar}>
       <section className=${'band' + (mode === 'path' ? ' tall' : '')}>
         <div className="band-in">
           <div className="band-top">
@@ -574,6 +689,7 @@ function start() {
               <p className="band-k">${LEVEL.name} · ${LEVEL.sem} · ${c.code} · ${ORDER.find(o => o[0] === k)[1] ? 'Elective' : 'Core course'}</p>
               <h1>${c.name}</h1>
               <p className="band-by">${c.by}</p>
+              ${c.mid && html`<button className="band-mid" onClick=${() => go({ mode: 'read', lec: 'mid', anchor: null })}>Midterm · L${c.mid.lecs[0]}–L${c.mid.lecs[c.mid.lecs.length - 1]} summary →</button>`}
             </div>
             <div className="band-stats">
               <div><b>${read.length}<em>/${c.lectures.length}</em></b><span>lectures read</span></div>
@@ -604,7 +720,7 @@ function start() {
     const lastDone = stops.reduce((a, s, i) => s.done ? i : a, -1);
     const line = arr => arr.map((p, i) => (i ? 'L' : 'M') + (p.x * 10).toFixed(1) + ' ' + (p.y * 2.4).toFixed(1)).join(' ');
     const sel = (key, s) => go({ lec: s.n });
-    const l = lecN === 'rev' ? null : c.lectures.find(x => x.n === lecN);
+    const l = c.lectures.find(x => x.n === lecN);
     let detail;
     if (!l) {
       detail = html`<div className="stop">
@@ -652,7 +768,8 @@ function start() {
     return html`
         ${mode === 'path' && html`<${PathView} key="path" k=${k} lecN=${lecN} go=${go} read=${read} known=${known} />`}
         ${mode === 'read' && lecN === 'rev' && html`<${RevisionSheet} key="rev" k=${k} go=${go} read=${read} onSection=${onSection} />`}
-        ${mode === 'read' && lecN !== 'rev' && html`<${Read} key="read" k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
+        ${mode === 'read' && lecN === 'mid' && html`<${MidtermSheet} key="mid" k=${k} go=${go} />`}
+        ${mode === 'read' && lecN !== 'rev' && lecN !== 'mid' && html`<${Read} key="read" k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
         ${mode === 'cards' && html`<${Cards} key="cards" k=${k} focus=${nav.cardFocus} startLec=${nav.cardLec} auto=${nav.cardsAuto} go=${go} known=${known} setKnown=${setKnown} />`}
         ${mode === 'ask' && html`<${Ask} key="ask" k=${k} startLec=${nav.askLec} />`}
         ${mode === 'quiz' && html`<${Quiz} key="quiz" k=${k} preset=${nav.quizPreset} go=${go} miss=${miss} setMiss=${setMiss} setFixed=${setFixed} best=${best} setBest=${setBest} />`}
@@ -1195,11 +1312,12 @@ function start() {
     const [mock, setMockState] = useState(() => { const m = loadMock(k); if (m && !m.ids.some(id => quizById(k).has(id))) { saveMock(k, null); return null; } return m; });
     const setMock = m => { saveMock(k, m); setMockState(m); window.scrollTo(0, 0); };
     const [mockLen, setMockLen] = usePersist('mocklen', 20);
-    const startMock = nq => {
-      const ex = shuffle(all.filter(isExam)), rest = shuffle(all.filter(q => !isExam(q)));
+    const startMock = (nq, only) => {
+      const src = only ? all.filter(q => only.includes(q.lec)) : all;
+      const ex = shuffle(src.filter(isExam)), rest = shuffle(src.filter(q => !isExam(q)));
       const ids = ex.concat(rest).slice(0, nq).map(q => q.id);
       const minutes = Math.round(ids.length * 1.5);
-      setMock({ ids, minutes, started: Date.now(), deadline: Date.now() + minutes * 60000, ans: {}, flag: {}, i: 0, result: null });
+      setMock({ ids, minutes, lecs: only || null, started: Date.now(), deadline: Date.now() + minutes * 60000, ans: {}, flag: {}, i: 0, result: null });
     };
 
     const srcMode = src === 'exam' ? 'prof' : src;
@@ -1210,14 +1328,23 @@ function start() {
     const pool = inLecs.filter(q => srcMode === 'all' || (srcMode === 'prof' ? isProf(q) : srcMode === 'extra' ? originOf(q) === 'extra' : missSet.has(q.id)));
     // practice rounds (retrying misses, practising saved mistakes, a single question) are marked but never set the best score
     const start = (items, practice, from) => { if (items.length) setRun({ items, i: 0, picks: [], saved: false, practice: !!practice, from: from || null }); };
-    const closeRun = () => { const from = run && run.from; setRun(null); if (from === 'path') go({ mode: 'path' }); else if (from === 'home') go({ view: 'shelf' }); };
+    const closeRun = () => { const from = run && run.from; setRun(null); if (from === 'path') go({ mode: 'path' }); else if (from === 'home') go({ view: 'shelf' }); else if (from === 'mid') go({ view: 'midterm' }); };
     const startFromSetup = () => start(count === 'all' ? shuffle(pool) : shuffle(pool).slice(0, +count), src === 'miss');
     useEffect(() => { if (src === 'exam') setSrc('prof'); }, []);
 
     useEffect(() => {
       if (!preset) return;
       if (preset.ids) { const want = new Set(preset.ids); start(all.filter(q => want.has(q.id)), true, preset.from); }
-      else if (preset.lecs) { setLecs(preset.lecs); start(shuffle(all.filter(q => preset.lecs.includes(q.lec))), false, preset.from); }
+      else if (preset.mock) { setLecs(preset.lecs); startMock(preset.mock, preset.lecs); }
+      else if (preset.lecs) {
+        // midterm practice: the doctor's questions first (or only), then the rest
+        const inL = all.filter(q => preset.lecs.includes(q.lec));
+        setLecs(preset.lecs);
+        if (preset.only === 'prof') start(shuffle(inL.filter(isProf)), false, preset.from);
+        else if (preset.only === 'mine') start(shuffle(inL.filter(q => !isProf(q))), false, preset.from);
+        else if (preset.order === 'prof') start(shuffle(inL.filter(isProf)).concat(shuffle(inL.filter(q => !isProf(q)))), false, preset.from);
+        else start(shuffle(inL), false, preset.from);
+      }
       go({ quizPreset: null });
     }, [preset && preset.t]);
 
@@ -1307,7 +1434,7 @@ function start() {
       </${FocusShell}>`;
     }
 
-    if (mock) return html`<${MockExam} k=${k} mock=${mock} setMock=${setMock} setMiss=${setMiss} setFixed=${setFixed} onNew=${() => startMock(mock.ids.length)} />`;
+    if (mock) return html`<${MockExam} k=${k} mock=${mock} setMock=${setMock} setMiss=${setMiss} setFixed=${setFixed} onNew=${() => startMock(mock.ids.length, mock.lecs)} />`;
 
     /* setup */
     const n = count === 'all' ? pool.length : Math.min(+count, pool.length);

@@ -790,6 +790,140 @@ AR.hci = {
     [
      "صح. دي من المشاكل المذكورة لـ Office <bdi dir=\"ltr\">97–2003</bdi>.",
      "المحاضرة بتذكر المشاكل دي بالظبط لـ Office <bdi dir=\"ltr\">97–2003</bdi>."
+    ],
+    [
+     "غلط. تعريفهم هو <span class=\"ltr\">\"Designing interactive products to support the way people communicate and interact in their everyday and working lives.\"</span>",
+     "غلط. الباحث Bishop سنة 1995 ده بتاع الـ marble answering machine، مش تعريف للـ interaction design.",
+     "صح. الباحث Winograd سنة 1997 عرّف الـ interaction design إنه تصميم مساحات للتواصل والتفاعل بين البشر.",
+     "غلط. الباحث Knapp et al. سنة 2016 ده مصدر الـ Google Design Sprints (في المحاضرة التانية)."
+    ],
+    [
+     "صح. جزء الـ Interaction في الـ pie chart فيه الـ Interaction design.",
+     "غلط. جزء الـ Human فيه الـ Communication theory والـ Industrial design والـ Social science والـ Cognitive psychology والـ Human factors.",
+     "غلط. جزء الـ Computer فيه الـ Computer graphic والـ Operating system والـ Programming language.",
+     "غلط. هو مكتوب تحت جزء الـ Interaction."
+    ],
+    [
+     "غلط. الـ Human factors في جزء الـ Human.",
+     "غلط. الـ Communication theory في جزء الـ Human.",
+     "غلط. الـ Interaction design هو جزء الـ Interaction.",
+     "صح. جزء الـ Computer فيه الـ Computer graphic والـ Operating system والـ Programming language."
+    ],
+    [
+     "غلط. جزء الـ Interaction فيه الـ Interaction design بس.",
+     "صح. الـ Programming language في جزء الـ Computer، وجزء الـ Interaction فيه الـ Interaction design بس."
+    ],
+    [
+     "غلط. جزء الـ User بيتوصف بالقدرات العقلية والجسدية.",
+     "صح. جزء الـ <bdi dir=\"ltr\">Computer&nbsp;/&nbsp;Machine</bdi> هو أجهزة الـ <bdi dir=\"ltr\">input/output</bdi>.",
+     "غلط. جزء الـ Interaction هو الـ interfaces والـ HCI patterns والـ design والـ usability evaluation.",
+     "غلط. الـ Task مش من الـ 3 أجزاء؛ الأجزاء هي الـ User والـ Computer والـ Interaction."
+    ],
+    [
+     "غلط. دي أول حاجة الـ HCI بيدرسها.",
+     "غلط. دي تاني حاجة الـ HCI بيدرسها.",
+     "صح. المحاضرة ذكرت البني آدمين والـ computer technologies وطرق وتفضيلات وصعوبات الـ users، وتكلفة تصنيع الـ hardware مش منهم.",
+     "غلط. دي تالت حاجة الـ HCI بيدرسها."
+    ],
+    [
+     "غلط. المحاضرة بتقول إن الـ HCI مجال multidisciplinary، مش مجال واحد.",
+     "صح. الـ HCI هو multidisciplinary field of study بيركز على تصميم الـ computer technology والتفاعل بين البني آدمين والكمبيوتر."
+    ],
+    [
+     "غلط. الـ features الكتير بتوصل للـ bloatware، والمحاضرة بتنتقده.",
+     "غلط. الهدف عكس كده، إن الـ interface محدش ياخد باله منه.",
+     "غلط. الـ User research component في الـ design process، مش حاجة نستبدلها.",
+     "صح. الـ systems السهلة والطبيعية والـ intuitive بتسهّل التفاعل عشان نوفر وقت ونقلل التكلفة."
+    ],
+    [
+     "صح. الاتنين مذكورين في أهداف الـ HCI.",
+     "غلط. المحاضرة ذكرت الاتنين كأهداف للـ HCI."
+    ],
+    [
+     "صح. الـ Pecking إنك تكتب على grid keyboard بالريموت.",
+     "غلط. ده الـ Swiping، الطريقة التانية.",
+     "غلط. ده الـ Voice control، الطريقة التالتة.",
+     "غلط. ده الـ design الأحسن لجهاز Qualcomm بتاع السواقين."
+    ],
+    [
+     "غلط. الـ slide بتعرض الـ pecking والـ swiping والـ voice control من غير ما تختار واحدة.",
+     "صح. الـ smart TV dilemma سؤال للمناقشة، والـ slide مش بتدّي إجابة."
+    ],
+    [
+     "غلط. كلمة invisible بتوصف الـ interface الكويس اللي محدش بياخد باله منه.",
+     "صح. الصحافة سمّت الـ Office كلمة \"bloated\".",
+     "غلط. كلمة rafted دي اسم الـ toolbars بتاعة Office 2000 اللي بتتشارك سطر واحد.",
+     "غلط. كلمة personalized اسم تاني للـ adaptive menus بتاعة Office 2000."
+    ],
+    [
+     "صح. الـ adaptive (personalized) menu بتعرض list قصيرة بالـ commands الأكتر احتمال، والـ chevron بيفتحها كاملة.",
+     "غلط. المحاضرة وصفت الـ adaptive (personalized) menus بالظبط كده."
+    ],
+    [
+     "غلط. فترة Office <bdi dir=\"ltr\">97–2003</bdi> هي اللي اتسمّت bloated، والحاجات دي من Office 2000.",
+     "غلط. الـ Office 2003 هو اللي قدّم الـ CEIP.",
+     "صح. الـ adaptive menus والـ rafted toolbars هم آليات Office 2000.",
+     "غلط. الـ Office 2007 اتصمم من الـ usage data بتاعة الـ CEIP."
+    ],
+    [
+     "غلط. الـ Office 2000 قدّم الـ adaptive menus والـ rafted toolbars.",
+     "غلط. الـ Office 2007 استخدم الـ data اللي الـ CEIP جمعها.",
+     "غلط. قبل 2003 القرارات كانت في الغالب تخمين.",
+     "صح. الـ Office 2003 قدّم الـ CEIP بالـ balloon اللي مكتوب فيها <bdi dir=\"ltr\">\"Help make Office better\"</bdi>."
+    ],
+    [
+     "غلط. المحاضرة بتقول إن الـ data كانت anonymous.",
+     "صح. الـ CEIP جمع usage data و hardware data مجهولة الهوية (anonymous)."
+    ],
+    [
+     "غلط. نسبة <bdi dir=\"ltr\">71%</bdi> دي نسبة البحث بالـ visual search في الـ ICDL.",
+     "صح. اترمى <bdi dir=\"ltr\">70%</bdi> من data الـ Word والـ Outlook.",
+     "غلط. رقم 30 ده عدد درجات الرمادي اللي البني آدم بيفرّق بينها.",
+     "غلط. رقم 7 جه في إن commands بتتستخدم 7x أكتر بالـ keyboard، مش نسبة data اترمت."
+    ],
+    [
+     "غلط. دي حاجة اتعلموها من الـ data.",
+     "غلط. دي حاجة اتعلموها من الـ data.",
+     "غلط. دي حاجة اتعلموها من الـ data.",
+     "صح. الـ data كانت anonymous، واللي اتعلموه كان عن الـ commands وترتيبها والـ keyboard ضد الماوس وعدد الـ documents المفتوحة وحجم الشاشات."
+    ],
+    [
+     "غلط. الـ tasks هي اللي الـ users عايزين يعملوه، زي الشرا أونلاين.",
+     "صح. التعلم عن الـ users بيشمل مهاراتهم والحاجات اللي بتشتتهم واحتياجاتهم الخاصة (الأطفال وكبار السن وذوي الإعاقة).",
+     "غلط. الـ previous research بند لوحده عن قدرات الإنسان وحدوده وإدراكه.",
+     "غلط. الـ Design and prototyping هو تاني component في الـ process، مش جزء من الـ user research."
+    ],
+    [
+     "غلط. الـ Microsoft دي بتاعة حالة الـ Office.",
+     "غلط. الـ Qualcomm عملت الجهاز بتاع السواقين.",
+     "غلط. الـ Google جت في المحاضرة التانية (الـ Design Sprints والـ UCD process).",
+     "صح. الـ HCIL (الـ Human-Computer Interaction Lab بتاع University of Maryland) هو اللي صممها."
+    ],
+    [
+     "غلط. ده درس الـ adaptive menus والـ rafted toolbars بتوع Office 2000.",
+     "صح. عنوان الـ slide هو <bdi dir=\"ltr\">\"User research is important\"</bdi>، والـ research لقى إن السواقين إيديهم كبيرة ولابسين جوانتي.",
+     "غلط. ده درس الـ vending machine.",
+     "غلط. دي حالة برامج الـ Office الكاملة."
+    ],
+    [
+     "صح. دي واحدة من الـ design considerations في المحاضرة.",
+     "غلط. المحاضرة ذكرت ده كـ design consideration."
+    ],
+    [
+     "صح. المحاضرة قالت كده بالظبط عن الـ interaction design كـ umbrella term.",
+     "غلط. المحاضرة قالت كده صراحة."
+    ],
+    [
+     "غلط. الـ Graphic design من الـ design practices.",
+     "غلط. الـ Artist-design من الـ design practices.",
+     "صح. الـ academic disciplines هي الـ Psychology والـ Social Sciences والـ Computing Sciences والـ Engineering والـ Ergonomics والـ Informatics.",
+     "غلط. الـ Industrial design من الـ design practices."
+    ],
+    [
+     "صح. الـ HCI بيتفرع لـ UI Design و UX Design و Interaction design.",
+     "غلط. الـ Human Factors Engineering بيتفرع لـ Industrial Design و HCI و Product Design.",
+     "غلط. الـ Product Design أخو الـ HCI تحت الـ Human Factors Engineering.",
+     "غلط. الـ Psychology مع الـ Engineering بيطلّعوا الـ Human Factors Engineering."
     ]
    ]
   },
@@ -1297,6 +1431,144 @@ AR.hci = {
     [
      "صح. المحاضرة بتقول إن الـ component الواضح بيمنع إنك تستهون بيه، وكمان بقى أكتر وأكتر دور للـ specialists.",
      "المحاضرة بتذكر فوايد إنك تخلي الـ user research واضح لوحده."
+    ],
+    [
+     "غلط. الـ Discover بيدّي فهم للمشكلة (insight into the problem).",
+     "صح. الـ Define هو المنطقة اللي هنركز عليها، وبيضيّق الـ diamond الأولانية لحد الـ <bdi dir=\"ltr\">Problem Definition / Design Brief</bdi>.",
+     "غلط. الـ Develop بيطلّع حلول محتملة.",
+     "غلط. الـ Deliver بيدّي حلول شغالة فعلاً."
+    ],
+    [
+     "غلط. الـ Discover بييجي قبل الـ Define.",
+     "غلط. الـ Define (في الـ diamond الأولانية) بييجي قبل الـ Develop (في التانية).",
+     "صح. الـ Discover والـ Define هم الـ diamond الأولانية، والـ Develop والـ Deliver هم التانية.",
+     "غلط. الـ process بيبدأ بالـ Discover من نقطة الـ Problem."
+    ],
+    [
+     "غلط. الـ Problem هي نقطة بداية الـ diamond الأولانية.",
+     "غلط. الـ <bdi dir=\"ltr\">Problem Definition / Design Brief</bdi> هي النقطة اللي بين الـ 2 diamonds.",
+     "غلط. الـ Final product هو مخرج الـ simple interaction design lifecycle model.",
+     "صح. الـ diamond التانية بتوسع في الـ Develop وبتضيق في الـ Deliver لحد الـ Solution."
+    ],
+    [
+     "صح. بتبدأ من الـ Problem وبتوسع في الـ Discover وبتضيق في الـ Define لحد الـ <bdi dir=\"ltr\">Problem Definition / Design Brief</bdi>.",
+     "غلط. الرسمة بتوضح إن الـ diamond الأولانية شكلها كده بالظبط."
+    ],
+    [
+     "صح. المحاضرة نسبت الـ Google Design Sprints لـ Knapp et al. سنة 2016.",
+     "غلط. الباحث Sha Zhao et al سنة 2016 هو اللي لقى 382 نوع من users الـ smartphone apps.",
+     "غلط. الباحث Joyner بتاع الـ design life cycle اللي فيه 4 phases وبيبدأ بالـ Need finding.",
+     "غلط. الباحث Winograd سنة 1997 إدّى تعريف للـ interaction design (في المحاضرة الأولى)."
+    ],
+    [
+     "غلط. الـ Unpack أول step، قبل الـ Sketch.",
+     "غلط. الـ Prototype بييجي بعد الـ Decide.",
+     "صح. الترتيب هو الـ Unpack ثم الـ Sketch ثم الـ Decide ثم الـ Prototype ثم الـ Test.",
+     "غلط. الـ Test آخر step، بعد الـ Prototype."
+    ],
+    [
+     "صح. الـ 5 steps بيعملوا cycle اسمها Iterate، وبعد الـ Test بترجع للـ Unpack.",
+     "غلط. الرسمة بتوضح إن الـ steps cycle اسمها Iterate."
+    ],
+    [
+     "غلط. الاتنين فيهم الخطوة دي (الـ Prototype في الـ sprint والـ Prototyping عند Joyner).",
+     "غلط. الـ Evaluation هي رابع phase عند Joyner.",
+     "غلط. الـ Design alternative هي تاني phase عند Joyner.",
+     "صح. الـ Decide تالت step في الـ sprint، وphases الـ Joyner هي الـ Need finding والـ Design alternative والـ Prototyping والـ Evaluation."
+    ],
+    [
+     "غلط. الـ Specify هو أهم user problem محتاجين نحلها.",
+     "صح. الـ Understand هو إزاي الـ users بيجرّبوا المنتج، وفيه research كتير.",
+     "غلط. الـ Design هو إنك تطلّع حلول وتبدأ تبني.",
+     "غلط. الـ Evaluate هو الاختبار مع users حقيقيين."
+    ],
+    [
+     "غلط. الاختبار مع الـ users الحقيقيين تبع الـ Evaluate، مش الـ Design.",
+     "صح. الاختبار مع users حقيقيين ده الـ Evaluate، والـ Design هو الحلول وإننا نبدأ نبني."
+    ],
+    [
+     "صح. الـ process بيدخل من الـ Discovering requirements، وبينه وبين الـ Designing alternatives أسهم في الاتجاهين.",
+     "غلط. الـ Designing alternatives بييجي بعد الـ Discovering requirements.",
+     "غلط. الـ Prototyping بنوصله من الـ Designing alternatives.",
+     "غلط. الـ Evaluating هو اللي الـ cycle بيطلع منه للـ Final product."
+    ],
+    [
+     "غلط. السهم اللي للـ Final product طالع من الـ Evaluating، مش من الـ Prototyping.",
+     "صح. الـ Prototyping بيودّي للـ Evaluating، والـ Evaluating بس هو اللي ليه سهم للـ Final product."
+    ],
+    [
+     "غلط. الـ activity بتقول إن التقييم بيحصل طول الوقت (throughout)، مش مرة واحدة في الآخر.",
+     "صح. رابع activity اسمها <bdi dir=\"ltr\">\"Evaluating product and its user experience throughout\"</bdi>، يعني طول الوقت."
+    ],
+    [
+     "غلط. المحاضرة بتقول استخدم prototypes، مش static documentation.",
+     "غلط. إنك تطلّع alternatives وتختار منها ده المفتاح.",
+     "صح. الـ interaction design بيشمل إزاي توازن بين الـ requirements المتعارضة.",
+     "غلط. التصميم عشان functional specification بس ده الطريقة القديمة، والـ user-centered design جه مكانها."
+    ],
+    [
+     "غلط. الـ User-centric design هي الفكرة التانية، إنك تشتغل مع الـ users بدل ما تخمّن.",
+     "غلط. التصميم حسب الـ functional specification هو الطريقة القديمة، ومالوش علاقة بالـ invisible interfaces.",
+     "غلط. المصطلح ده مش مستخدم في المحاضرة للـ invisible interfaces.",
+     "صح. في الـ User research، الـ invisible interfaces معناها task-oriented design."
+    ],
+    [
+     "غلط. المحاضرة بتقول إن تجاهله منتشر، مش نادر.",
+     "صح. المحاضرة بتقول إن تجاهل الـ user research منتشر، فلازم ندخّل الـ users عشان القرارات تبقى على الواقع مش التخمين."
+    ],
+    [
+     "غلط. دي الحالة اللي فيها engineer واحد بيصمم كل حاجة وغالباً يعرف حاجة بسيطة عن الـ HCI.",
+     "صح. الشركات الكبيرة فيها specialists لكل دور.",
+     "غلط. ده بقى منتشر في الشركات الصغيرة والمتوسطة.",
+     "غلط. المحاضرة مذكرتش الاختيار ده."
+    ],
+    [
+     "صح. المحاضرة قالت كده بالظبط.",
+     "غلط. المحاضرة بتقول إنه بقى منتشر أكتر في الشركات الصغيرة والمتوسطة."
+    ],
+    [
+     "غلط. الـ UX researcher مذكور.",
+     "غلط. الـ Visual designer مذكور.",
+     "صح. الأدوار المذكورة هي الـ UX researcher والـ UX designer والـ visual designer والـ UX engineer.",
+     "غلط. الـ UX engineer مذكور."
+    ],
+    [
+     "غلط. دي أول practical issue.",
+     "غلط. دي practical issue مذكورة.",
+     "غلط. دي آخر practical issue مذكورة.",
+     "صح. الـ 5 issues هم: مين الـ users، واحتياجاتهم، وإزاي نطلّع alternatives، وإزاي نختار منها، وإزاي ندمج مع الـ lifecycle models التانية."
+    ],
+    [
+     "صح. ده بالظبط اللي المحاضرة قالت نركز عليه.",
+     "غلط. الـ users نادراً ما بيعرفوا إيه الممكن.",
+     "غلط. الـ Technical feasibility معيار لاختيار الـ alternatives، مش التركيز في احتياجات الـ users.",
+     "غلط. التصميم حسب الـ functional specification هو الطريقة القديمة."
+    ],
+    [
+     "غلط. الـ stakeholders مجموعة أكبر من الـ direct users.",
+     "صح. تحديد الـ stakeholders بيساعد تحدد المجموعات اللي تدخّلها في الـ interaction design activities.",
+     "غلط. مفيش حاجة في المحاضرة بتلغي الـ user research، ده جزء من كل مرحلة.",
+     "غلط. كل مجموعة stakeholders ليها quality thresholds مختلفة."
+    ],
+    [
+     "صح. الـ Foundational research (strategic أو generative) بيعمل كده بالظبط، قبل أي تصميم.",
+     "غلط. المحاضرة وصفت الـ foundational research بالشكل ده."
+    ],
+    [
+     "غلط. المحاضرة مقالتش كده، قالت إنها مفيدة في أول المشروع.",
+     "غلط. الـ interviews طريقة من طرق الـ primary research.",
+     "صح. نتايج الـ secondary research غالباً بيطلّعها researchers خبرة ومتخصصين في organizations موثوقة.",
+     "غلط. الـ Post-launch نوع research حسب الوقت، مش هو السبب."
+    ],
+    [
+     "صح. المحاضرة بتقول إن ناس كتير مش عارفين يستخدموه، والكورسات والمجتمعات بتساعد.",
+     "غلط. المحاضرة قالت كده صراحة."
+    ],
+    [
+     "غلط. مصادر الـ alternatives هي الـ flair and creativity والـ cross-fertilization والـ users والـ inspiration.",
+     "غلط. الـ stakeholders مجموعة أكبر من الـ direct users، والـ feasibility مش بتحددهم.",
+     "غلط. معرفة الـ users بتبقى باستكشاف الـ problem space ودراسة الـ users.",
+     "صح. الاختيار بيبقى بالـ behavior اللي باين ويتقاس، والـ technical feasibility، والـ evaluation مع الـ users أو الـ peers، والـ quality thresholds."
     ]
    ]
   },
@@ -1623,7 +1895,134 @@ AR.hci = {
      "الـ slide حاطة الجملة دي كـ design implication."
     ]
    ],
-   "extra": []
+   "extra": [
+    [
+     "غلط. المحاضرة بتقول الـ attention بيشمل الحواس السمعية و/أو البصرية، مش البصرية بس.",
+     "غلط. السمعية لوحدها ناقصة، المحاضرة بتقول audio و/أو visual.",
+     "صح. الـ attention بيشمل الحواس السمعية و/أو البصرية. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. اللمس والشم مش مذكورين، المحاضرة بتقول السمعية و/أو البصرية."
+    ],
+    [
+     "صح. الـ slide بتقول فيه attention من نوع focused ونوع divided. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. المحاضرة فعلاً بتذكر الـ focused والـ divided attention."
+    ],
+    [
+     "صح. مثال الـ slide هو الـ perceptual boundaries (windows) والألوان. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الـ procedures الطويلة المعقدة بتزود الـ cognitive load، دي حاجة نبعد عنها مش طريقة نشد بيها الـ attention.",
+     "غلط. ده اسمه cluttering، والـ design implications بتقول نبعد عنه.",
+     "غلط. المعلومات الـ bunched up هي اللي خلت شاشة Tullis الأولى أصعب في التدوير."
+    ],
+    [
+     "غلط. الـ 3.2 ثانية دي الشاشة التانية، اللي متجمعة في vertical categories.",
+     "غلط. الـ 2.3 ثانية دي الفرق بين الشاشتين، مش وقت تدوير.",
+     "غلط. مفيش شاشة في الدراسة أخدت 7.2 ثانية.",
+     "صح. الشاشة الأولى أخدت في المتوسط 5.5 ثانية للتدوير. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "غلط. الفرق مش 1.7، الحساب هو:<span class=\"ltr\">5.5 − 3.2 = 2.3</span>",
+     "صح. الحساب:<span class=\"ltr\">5.5 − 3.2 = 2.3 s</span>يعني أسرع بـ 2.3 ثانية. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الـ 3.2 ثانية دي وقت الشاشة التانية نفسها، مش الفرق.",
+     "غلط. الـ 8.7 دي مجموع الاتنين، مش الفرق."
+    ],
+    [
+     "غلط. الشاشتين فيهم نفس الـ density من المعلومات، والفرق كان في الـ spacing.",
+     "صح. الشاشتين فيهم نفس الـ density، والتانية كانت أسرع بسبب الـ spacing (الـ vertical categories). <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "غلط. الباحث Weller قارن التجميع بالـ border قصاد الـ color contrast (شاشتين Italian و French).",
+     "غلط. الباحثين Ophir et al. قارنوا الـ heavy بالـ light multitaskers.",
+     "صح. الباحث Tullis (1987) قاس وقت شاشتين الأوتيلات: 5.5 ثانية قصاد 3.2 ثانية. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الباحثين Caird et al. درسوا الـ reaction times للسواقين وهما بيتكلموا في التليفون."
+    ],
+    [
+     "صح. الـ heavy multitaskers بيتشتتوا بسهولة وبيلاقوا صعوبة يفلتروا المعلومات اللي ملهاش لازمة. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. ده بالظبط اللي Ophir et al. لقوه عن الـ heavy multitaskers."
+    ],
+    [
+     "غلط. المحاضرة مقالتش كده، ورقم 7 ده من نظرية Miller عن الـ memory.",
+     "صح. محتاجين attention مستمر عشان نلاقي أي data غريبة، فلازم attention and scanning strategies جديدة. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الـ hands-free phones اتذكرت في مثال السواقة بس.",
+     "غلط. العكس، الـ clinician محتاج attention مستمر عشان يشوف لو فيه data غريبة أو شاذة."
+    ],
+    [
+     "غلط. الـ multitasking موضوعه الـ attention، مش توليد الـ alternatives.",
+     "غلط. ده من الـ memory، وهو بالعكس، إحنا بنعمل recognize أحسن من الـ recall.",
+     "غلط. الـ learn by doing عن الطريقة اللي الناس بتفضل تتعلم بيها، مش عن الـ alternatives.",
+     "صح. البني آدمين بيميلوا يمسكوا في الحاجة اللي شغالة، والتفكير في alternatives بيساعد نلاقي designs أحسن. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "غلط. ده الـ cross-fertilization of ideas، وده مصدر تاني.",
+     "غلط. إن الـ users يطلّعوا designs ده مصدر لوحده في الـ list.",
+     "غلط. ده الـ seek inspiration.",
+     "صح. الـ 'Flair and creativity' يعني research و synthesis. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "غلط. المحاضرة بتقول الـ inspiration ممكن ييجي من منتجات و domain شبه بعض أو مختلفين.",
+     "صح. الـ seek inspiration بيبقى من منتجات و domain شبه بعض أو مختلفين. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "صح. عشان المكالمة واخدة الـ attention، السواق بيعتمد أكتر على توقعاته للي هيحصل. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الراكب اتذكر كطرف كلام أقل خطورة، مش حاجة السواق بيعتمد عليها.",
+     "غلط. الـ perceptual boundaries توصية design للـ interface، مش جزء من مثال السواقة.",
+     "غلط. الـ reaction times بتبقى أطول مش أسرع وإنت بتتكلم في التليفون <bdi dir=\"ltr\">(Caird et al., 2018)</bdi>."
+    ],
+    [
+     "غلط. الـ hands-free مش أأمن، لأن نفس الـ cognitive processing بيحصل وإنت بتتكلم.",
+     "صح. الباحثين Briggs et al. (2018) لقوا إن الـ response time أبطأ للأحداث اللي مش متوقعة. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. بالعكس، الراكب أقل خطورة من الشخص الـ remote.",
+     "غلط. ده عكس Ophir et al. (2009)، الـ heavy multitaskers بيلاقوا الـ filtering صعب."
+    ],
+    [
+     "صح. السواق كتير بيتخيل وش اللي بيكلمه، وده بينافس على الـ processing resources اللي محتاجها للطريق. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. المحاضرة قالت ده بالظبط كسبب إن الموبايل خطر وإنت سايق."
+    ],
+    [
+     "غلط. نفس الحاجة (نفس الـ cognitive processing) بتحصل مع الراكب، هو بس أقل خطورة من الـ remote caller.",
+     "صح. نفس الـ processing بيحصل مع الراكب، وهو أقل خطورة بس عشان الاتنين يقدروا يوقفوا في نص الجملة لو فيه hazard. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "غلط. ده اللي الراكب اللي قدام يقدر يعمله، لأنه شايف الـ hazard هو كمان.",
+     "غلط. المحاضرة بتقول العكس، بيصعب على السواق يحوّل كل الـ attention للطريق.",
+     "صح. الشخص الـ remote بيكمل كلام وقت الـ hazard، وده بيصعّب على السواق يحوّل كل الـ attention للطريق. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الـ reaction times بتطول مش بتقصر وإنت بتتكلم في التليفون."
+    ],
+    [
+     "غلط. الـ ordering موجود في الـ list (اللون، والـ ordering، والـ spacing، والـ underlining، والـ sequencing، والـ animation).",
+     "غلط. الـ animation من الـ techniques اللي في الـ list.",
+     "غلط. الـ underlining من الـ techniques اللي في الـ list.",
+     "صح. الـ time stamping طريقة لـ labelling الـ digital information (من الـ memory)، مش technique للـ attention. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "صح. متزحمش الـ visual interfaces بمعلومات كتير. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. البعد عن الـ cluttering واحدة من الـ design implications الأربعة للـ attention."
+    ],
+    [
+     "صح. الـ text لازم يكون legible والـ icons سهل نفرّق بينها ونقراها. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. ده design implication للقراية والكلام والسماع (من محاضرة 4).",
+     "غلط. ده design implication للـ memory (من محاضرة 4).",
+     "غلط. دعم الـ switching والرجوع ده design implication للـ attention."
+    ],
+    [
+     "غلط. ده الـ color contrast، واتستخدم في شاشة الـ Italian.",
+     "صح. الشاشة التانية استخدمت border و white space، والناس لقوا الـ items فيها أسرع. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الـ vertical categories دي وصف شاشة Tullis التانية بتاعة الأوتيلات.",
+     "غلط. المعلومات الـ bunched up دي وصف شاشة Tullis الأولى."
+    ],
+    [
+     "غلط. الأصفر على أسود أو أزرق تمام، والممنوع هو الأصفر على أخضر أو أبيض.",
+     "صح. الأصفر على أسود (أو أزرق) تمام، والممنوع هو الأصفر على أخضر أو أبيض. <bdi dir=\"ltr\">(L3)</bdi>"
+    ],
+    [
+     "صح. فيه ناس بتقول إن الـ white space الكتير بيصعّب إنك تلاقي المعلومة. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. المحاضرة فعلاً بتذكر الرأي ده (وبتسأل إنت موافق ولا لأ)."
+    ],
+    [
+     "صح. الأصوات لازم تكون مسموعة وسهل نفرّق بينها. <bdi dir=\"ltr\">(L3)</bdi>",
+     "غلط. الـ salience والـ animation دول techniques للـ attention في المعلومات البصرية، مش قاعدة الأصوات.",
+     "غلط. المحاضرة بتطلب الأصوات تبقى مسموعة وسهل نفرّق بينها، مفيش حاجة عن طويلة أو مستمرة.",
+     "غلط. الـ bordering والـ spacing بيجمعوا المعلومات البصرية، ملهمش علاقة بالأصوات."
+    ]
+   ]
   },
   "4": {
    "notes": [
@@ -1882,7 +2281,134 @@ AR.hci = {
      "دي technologies اتعملت عشان تساعد في الـ intentional learning."
     ]
    ],
-   "extra": []
+   "extra": [
+    [
+     "غلط. ده سؤال الـ multitasking من الـ attention (محاضرة 3)، مش تعريف الـ memory.",
+     "صح. الـ memory إننا نفتكر معرفة بتخلي الناس تتصرف صح، زي إنك تعرف وش حد. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. إن المعلومة تتاخد وتتحول لـ experiences ده الـ perception.",
+     "غلط. تجميع الـ skills والمعرفة ده الـ learning."
+    ],
+    [
+     "غلط. الترتيب معكوس، إحنا بنعمل encode الأول وبعدين retrieve.",
+     "صح. إحنا بنعمل encode الأول وبعدين retrieve. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "صح. الـ context بيأثر على الـ retrieval، والمعلومة اللي اتعملها encode في context مختلف ممكن تبقى صعبة تتفتكر. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الناس شاطرة جداً في تذكر الـ visual cues.",
+     "غلط. الـ recognition هو الأسهل، إحنا بنعمل recognize أحسن بكتير من الـ recall.",
+     "غلط. المحاضرة ربطت صعوبة التذكر بتغيير الـ context، مش بالـ incidental learning."
+    ],
+    [
+     "غلط. الـ visual cues (اللون، والمكان، والعلامات) هي اللي الناس بتفتكرها كويس جداً.",
+     "غلط. الـ incidental نوع من الـ learning، مش المصطلح اللي المحاضرة استخدمته هنا.",
+     "صح. الـ arbitrary material زي أعياد الميلاد وأرقام التليفونات أصعب في التعلم والتذكر. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ reflective cognition عن الـ problem-solving والـ decision-making، مش عن الحاجات الصعبة في التذكر."
+    ],
+    [
+     "صح. الناس بتفتكر الـ visual cues كويس، زي لون الحاجات ومكانها والعلامات اللي عليها. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. العلامات اللي على الحاجة من الـ visual cues اللي المحاضرة قالت الناس بتفتكرها كويس جداً."
+    ],
+    [
+     "غلط. الباحث Henkel (2014) موضوعه إننا بنفتكر أقل عن الحاجات اللي صورناها.",
+     "غلط. الباحث Tullis (1987) قاس وقت التدوير في شاشتين أوتيلات (محاضرة 3).",
+     "غلط. الباحث Kahneman (2011) هو بتاع الـ fast vs slow thinking (محاضرة 3).",
+     "صح. نظرية George Miller (1956) بتقول الـ immediate memory محدودة بـ <bdi dir=\"ltr\">7,&nbsp;+&nbsp;or&nbsp;-&nbsp;2</bdi>. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "غلط. كده طبقت الـ + 2 بس، والحد الأقل هو:<span class=\"ltr\">7 − 2 = 5</span>",
+     "صح. الحساب:<span class=\"ltr\">7 − 2 = 5, 7 + 2 = 9</span>يعني من 5 لـ 9 حاجات. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ 2 دي هي الفرق، مش الحد الأقل، والمدى من 5 لـ 9.",
+     "غلط. كده طبقت الـ − 2 بس، والحد الأعلى هو:<span class=\"ltr\">7 + 2 = 9</span>"
+    ],
+    [
+     "غلط. المحاضرة بس بتسأل هل الـ designer يعمل كده (وهل الـ <bdi dir=\"ltr\">7,&nbsp;+&nbsp;or&nbsp;-&nbsp;2</bdi> استخدام كويس لنظرية في الـ HCI)، ومش بتدي إجابة.",
+     "صح. دي أسئلة للنقاش تحت عنوان مشكلة الـ <bdi dir=\"ltr\">7,&nbsp;+&nbsp;or&nbsp;-&nbsp;2</bdi>، والـ slides مش بتدي إجابة. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "صح. نقلل الـ cognitive load بإننا نبعد عن الـ procedures الطويلة والمعقدة. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ intonation بنبرزه في الأصوات الصناعية، ومش هو اللي الـ procedures الطويلة بتزوده.",
+     "غلط. الـ exploration حاجة بنشجعها (في الـ learning)، مش بنقللها.",
+     "غلط. الـ interfaces المفروض تشجع الـ recognition، مش تقلله."
+    ],
+    [
+     "غلط. الـ folders موجودة في الـ list (الـ folders، والـ categories، واللون، والـ flagging، والـ time stamping).",
+     "غلط. الـ flagging من طرق الـ labelling اللي في الـ list.",
+     "صح. الـ dynamically linking بين الـ concepts والـ representations ده design implication للـ learning، مش طريقة labelling. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ time stamping من طرق الـ labelling اللي في الـ list."
+    ],
+    [
+     "غلط. أمثلة الـ incidental هي إنك تعرف الوشوش واللي عملته النهارده.",
+     "صح. المذاكرة للامتحان وتعلم الطبخ أمثلة على الـ intentional learning. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ reflective cognition بيغطي الـ problem-solving والـ planning والـ reasoning والـ decision-making.",
+     "غلط. الـ arbitrary material (أعياد الميلاد وأرقام التليفونات) حاجات صعبة التذكر، مش نوع learning."
+    ],
+    [
+     "غلط. اللي عملته النهارده ده مثال المحاضرة على الـ incidental learning.",
+     "صح. ده incidental learning (زي إنك تعرف الوشوش)، والـ intentional زي المذاكرة للامتحان. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "غلط. دول voice user interfaces.",
+     "غلط. دول artifacts بنستخدمها في الـ reflective cognition (الـ problem-solving والـ planning).",
+     "صح. فيه technologies كتير اتعملت عشان تساعد، زي الـ multimedia والـ animations والـ VR. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. دول طرق لـ labelling الـ digital information (من الـ memory)."
+    ],
+    [
+     "صح. دي تالت design implication للـ learning. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. المحاضرة ذكرت دي كـ design implication للـ learning."
+    ],
+    [
+     "غلط. التشتت مشكلة من الـ attention (محاضرة 3)، مش هدف للـ design.",
+     "غلط. الـ designer المفروض يقلل الـ cognitive load، مش يحمّل الـ users زيادة.",
+     "غلط. الناس بتلاقي صعوبة تتعلم من الـ instructions اللي في الـ manual.",
+     "صح. نصمم interfaces بتقيّد وتوجّه (constrain and guide) اللي بيتعلم. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "صح. الـ listening محتاج cognitive effort أقل من القراية أو الكلام. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ slide بتقول إن الـ listening محتاج cognitive effort أقل."
+    ],
+    [
+     "غلط. بالعكس، ناس كتير بتفضل الـ listening عن القراية.",
+     "صح. ناس كتير بتفضل الـ listening عن القراية (مع إن القراية ممكن تبقى أسرع). <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "صح. الـ voice user interfaces بتخلي الـ user يتفاعل بإنه يسأل، زي الـ Google Voice والـ Siri والـ Alexa. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ natural-language systems بتاخد أسئلة مكتوبة وترد بنص، زي الـ chatbots.",
+     "غلط. الـ speech-output systems بتستخدم speech صناعي، زي الـ text-to-speech لضعاف البصر.",
+     "غلط. الـ artifacts حاجات زي الخرايط والكتب والورقة والقلم."
+    ],
+    [
+     "غلط. ده speech-output system (الـ text-to-speech).",
+     "غلط. ده الـ labelling للـ digital information، ودي design implication للـ memory.",
+     "صح. الـ natural-language systems بتخلي الـ user يكتب سؤاله وترد بنص، زي الـ chatbots. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ VR اتذكر كـ technology بتساعد في الـ learning، مش natural-language system."
+    ],
+    [
+     "غلط. فكرة الـ <bdi dir=\"ltr\">7,&nbsp;+&nbsp;or&nbsp;-&nbsp;2</bdi> دي نظرية Miller عن الـ memory والمحاضرة بتشكك فيها، والقاعدة هنا إنها تبقى قصيرة.",
+     "صح. الـ menus والـ instructions اللي بالصوت لازم تبقى قصيرة. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. الـ intonation بتاع الأصوات الصناعية لازم نبرزه، مش نخليه flat.",
+     "غلط. المحاضرة بتقول قصيرة، والطول كمان بيزود الـ cognitive load."
+    ],
+    [
+     "غلط. هي أصعب في الفهم من الأصوات البشرية، وعشان كده بنبرز الـ intonation بتاعها.",
+     "صح. هي أصعب في الفهم، فبنبرز الـ intonation بتاعها. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "غلط. معكوسة، وهي تبع الـ memory، الصح إننا نشجع الـ recognition بدل الـ recall.",
+     "غلط. الـ menus اللي بالصوت لازم تبقى قصيرة.",
+     "غلط. المحاضرة مش بتمنع الصوت الصناعي، بتقول نبرز الـ intonation بتاعه.",
+     "صح. ندي فرص إن الـ user يكبّر النص على الشاشة. <bdi dir=\"ltr\">(L4)</bdi>"
+    ],
+    [
+     "صح. الـ problem-solving والـ planning والـ reasoning والـ decision-making فيهم reflective cognition، يعني تفكر هتعمل إيه وإيه الـ options والعواقب. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. ده incidental learning.",
+     "غلط. الـ filtering للي بنركز معاه ده وصف الـ memory.",
+     "غلط. الـ bordering والـ spacing دول design implications للـ perception (محاضرة 3)."
+    ],
+    [
+     "صح. ممكن يبقى فيهم إنك تمشي في scenarios مختلفة وتختار أحسن option وتوازن بين البدائل. <bdi dir=\"ltr\">(L4)</bdi>",
+     "غلط. المحاضرة ذكرت الاتنين كجزء من الـ problem-solving والـ planning والـ reasoning والـ decision-making."
+    ]
+   ]
   },
   "5": {
    "notes": [

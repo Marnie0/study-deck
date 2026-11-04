@@ -320,6 +320,158 @@ AR.fp = {
      "الـ cerr ده الـ standard error في <bdi dir=\"ltr\">C++</bdi>، وبرضه متوصل بالـ console أو الشاشة؛ الـ keyboard هو الـ standard input يعني <bdi dir=\"ltr\">cin (L1, Standard I/O names)</bdi>.",
      "الـ stdin ده الاسم بتاع C للـ standard input، مش بتاع <bdi dir=\"ltr\">C++</bdi>.",
      "صح. الـ standard input (الكيبورد) اسمه stdin في C وcin في <bdi dir=\"ltr\">C++</bdi>."
+    ],
+    [
+     "الـ data structures بتتعامل مع الداتا اللي في الـ main memory، مش الـ secondary storage.",
+     "الـ file managers (الـ OS والـ DBMS) هي system software بتدير الـ files، لكن اللي بيتعامل مع الداتا على الـ secondary storage اسمه file structures.",
+     "صح. الـ file structures بتتعامل مع الداتا اللي على الـ secondary storage، والـ data structures مع الداتا اللي في الـ main memory.",
+     "الـ main memory هي المكان اللي الـ data structures بتحط فيه الداتا، يعني مستوى تخزين مش نوع structure."
+    ],
+    [
+     "صح. الاتنين فيهم تمثيل للداتا وعمليات للوصول ليها، والفرق بس في مكان الداتا: الـ main memory ولا الـ secondary storage.",
+     "غلط، الاتنين فيهم الجزئين دول، والفرق الوحيد إن الـ data structures في الـ main memory والـ file structures على الـ secondary storage."
+    ],
+    [
+     "الـ RAM بتبقى volatile وهي المكان اللي الداتا بتتعالج فيه، لكن الـ file بيتحط على secondary storage من النوع الـ non-volatile.",
+     "صح. الـ file مجموعة داتا متحطة على secondary storage من النوع الـ non-volatile زي الـ hard disk أو الـ tape أو الـ optical media.",
+     "الـ buffer مكان في الـ memory الـ bytes بتتجمع فيه قبل ما تتبعت block، مش المكان اللي الـ file بيتحفظ فيه.",
+     "الـ logical file قناة بين البرنامج والـ physical file، مش المكان اللي الداتا متخزنة فيه."
+    ],
+    [
+     "دي صفات الـ main memory (RAM) اللي الداتا بتتعالج فيها.",
+     "الـ secondary storage بطيء و stable، مش سريع و volatile.",
+     "الـ secondary storage كبير ورخيص، أما صغير وغالي فدي صفات الـ main memory.",
+     "صح. الـ secondary storage هو اللي الداتا بتتخزن عليه، وهو بطيء وكبير ورخيص و stable."
+    ],
+    [
+     "الـ physical structure هو الـ file متخزن إزاي فعلًا على الـ secondary storage.",
+     "صح. الـ logical structure هو شكل الـ file عند الـ programmer، والـ physical structure هو متخزن إزاي.",
+     "الـ file organization هي الطرق اللي بننظم بيها الـ files (زي الـ heap والـ indexing والـ hashing والـ sectors والـ blocks).",
+     "الـ file management هي عمل format للـ media وحجز المساحة وإدارة الـ free space."
+    ],
+    [
+     "صح. طرق الـ logical organization هي الـ heap والـ indexing والـ hashing.",
+     "طرق الـ physical organization بتنظم الـ tracks بالـ sectors أو بالـ blocks.",
+     "الـ file management فيها الـ format وحجز المساحة والـ addressing وإدارة الـ free space.",
+     "الـ access في المحاضرة يا sequential يا direct، أما الـ hashing فمذكور كطريقة organization."
+    ],
+    [
+     "دي مهمة من مهام الـ file management.",
+     "دي مهمة من مهام الـ file management.",
+     "دي مهمة من مهام الـ file management.",
+     "صح. ده المطلوب من طرق الـ file organization، مش مهمة من مهام الـ file management."
+    ],
+    [
+     "غلط، الـ physical name بيتستخدم مرة واحدة بس وقت الفتح، والقراية والكتابة بتستخدم الـ logical name.",
+     "صح. الـ physical name بيتستخدم مرة وقت الفتح، وبعد كده البرنامج بيستخدم الـ logical name مرات كتير."
+    ],
+    [
+     "القراية بتستخدم logical name مربوط أصلًا بالـ physical file.",
+     "صح. الـ logical name (زي outfile) بيترتبط بالـ physical file (زي myfile.txt) وقت فتح الـ file.",
+     "الـ closing بيعمل العكس، بيفضّي الـ logical name عشان يتربط بـ physical file تاني.",
+     "الـ declaration بيعمل الـ logical name بس، ولسه مش مربوط بأي file."
+    ],
+    [
+     "الـ FILE ده الـ type بتاع C للـ logical name، مش الـ class بتاعة <bdi dir=\"ltr\">C++</bdi>.",
+     "الـ ios هي الـ class اللي فيها الـ constants اللي بنعمل منها الـ mode زي <code>ios::in</code>.",
+     "صح. في <bdi dir=\"ltr\">C++</bdi> الـ logical name بيبقى object من الـ class اللي اسمها fstream.",
+     "الـ stdout هو الـ logical name بتاع الـ standard output في C، مش class."
+    ],
+    [
+     "الـ logical name هو fp، الـ variable اللي بياخد نتيجة fopen.",
+     "الـ physical file هو <bdi dir=\"ltr\">\"data.txt\"</bdi>.",
+     "الـ method هي fopen.",
+     "صح. الـ argument التاني هو الـ mode، والـ <bdi dir=\"ltr\">\"a\"</bdi> بيعمل file جديد أو يعمل append على الموجود للـ output."
+    ],
+    [
+     "الـ 350 تطلع لو الـ mode كان <bdi dir=\"ltr\">\"a\"</bdi> (append)، لكن <bdi dir=\"ltr\">\"w\"</bdi> بيمسح المحتوى القديم.",
+     "صح. الـ <bdi dir=\"ltr\">\"w\"</bdi> بيعمل truncate للـ file الموجود، فبيفضل الـ 50 byte الجداد بس.",
+     "الـ 300 معناها إن الحجم القديم فضل والـ 50 الأولانيين اتكتب عليهم زي <bdi dir=\"ltr\">\"r+\"</bdi>، لكن <bdi dir=\"ltr\">\"w\"</bdi> بيعمل truncate.",
+     "الـ file بيتفضّى الأول، بس الـ 50 byte اللي اتكتبوا بعد كده بيفضلوا فيه."
+    ],
+    [
+     "الـ <bdi dir=\"ltr\">out&nbsp;|&nbsp;app</bdi> ده الـ mode <bdi dir=\"ltr\">\"a\"</bdi> (append للـ output بس).",
+     "ده الـ mode <bdi dir=\"ltr\">\"w+\"</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">\"a+\"</bdi> بيساوي out و in و app، يعني create أو append للـ input والـ output.",
+     "الـ <code>ios::in</code> لوحده هو الـ mode <bdi dir=\"ltr\">\"r\"</bdi>."
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">\"w\"</bdi> بيساوي out و trunc، والـ b بتزود binary.",
+     "ده الـ mode <bdi dir=\"ltr\">\"rb\"</bdi>.",
+     "ده الـ mode <bdi dir=\"ltr\">\"ab\"</bdi>.",
+     "ده الـ mode <bdi dir=\"ltr\">\"r+b\"</bdi>."
+    ],
+    [
+     "غلط، الـ argument التاني في <bdi dir=\"ltr\">C++</bdi> بيبقى integer معمول بـ bitwise OR بين constants الـ ios، أما الـ strings زي <bdi dir=\"ltr\">\"w\"</bdi> فدي modes الـ fopen في C.",
+     "صح. هو integer قيمته بتتعمل بـ bitwise OR بين constants متعرّفة في الـ class اللي اسمها ios، زي <code>ios::out</code>."
+    ],
+    [
+     "صح. الـ closing بيفضّي الـ logical name عشان يتستخدم مع physical file تاني، زي ما تقفل التليفون بعد المكالمة.",
+     "الـ closing مش بيمسح حاجة، والـ physical file بيفضل على الـ disk.",
+     "الـ truncate بيعمله الـ mode <bdi dir=\"ltr\">\"w\"</bdi> أو <code>ios::trunc</code> وقت الفتح، مش الـ closing.",
+     "الربط بيحصل وقت الفتح، والـ closing بيشيله."
+    ],
+    [
+     "صح. الـ bytes بتستنى في buffer وتتبعت block، فلو البرنامج وقع ممكن الداتا اللي في الـ buffer تضيع.",
+     "غلط، المحاضرة بتقول كده بالظبط: الـ OS بيقفله في الآخر، بس لو البرنامج وقع ممكن الداتا تضيع."
+    ],
+    [
+     "ده الـ Source_file.",
+     "ده الـ Size.",
+     "صح. الـ Destination_addr هو أول عنوان في الـ memory block اللي عايزين نقرا الداتا فيه.",
+     "الـ Read بتشتغل بالـ logical name، والـ Destination_addr عنوان في الـ memory مش اسم file."
+    ],
+    [
+     "العنوان هو أول argument، يعني a.",
+     "عدد العناصر هو الـ argument التالت، يعني 10.",
+     "الـ logical file name هو الـ argument الرابع، يعني infile.",
+     "صح. الـ argument التاني هو حجم العنصر، والـ char بياخد 1 byte فبيبقى 1."
+    ],
+    [
+     "صح. الـ fread (File Read) بتقرا record، زي ما في المثال بتاع emp.",
+     "الـ fgetc (File Get Character) بتقرا character واحد.",
+     "الـ fgets (File Get String) بتقرا string.",
+     "الـ fscanf (File Scan Format) بتقرا formatted text."
+    ],
+    [
+     "الـ File Get String ده الـ fgets.",
+     "الـ File Get Character ده الـ fgetc.",
+     "صح. الـ fscanf يعني File Scan Format، وبتقرا formatted text من الـ file.",
+     "الـ File Read ده الـ fread."
+    ],
+    [
+     "صح. لو الـ fread رجّعت 0 بعد محاولة القراية يبقى الـ file خلص.",
+     "غلط، دي طريقة C في slide 36، وطريقة <bdi dir=\"ltr\">C++</bdi> هي <code>infile.fail()</code> أو <code>infile.eof()</code>."
+    ],
+    [
+     "غلط، الـ operator <bdi dir=\"ltr\">&gt;&gt;</bdi> شغال بمستوى أعلى، وبما إن c نوعه char فمفهوم إنه byte واحد بس.",
+     "صح. عشان c نوعه char فالـ <bdi dir=\"ltr\">&gt;&gt;</bdi> بينقل 1 byte لوحده، وعدد الـ bytes بنكتبه بس مع read أو fread."
+    ],
+    [
+     "غلط، الـ standard input والـ output والـ error مش محتاجين open ولا close في البرنامج.",
+     "صح. الـ streams دي مش محتاجة open ولا close، وهي:<span class=\"ltr\">stdout/cout, stdin/cin, stderr/cerr</span>"
+    ],
+    [
+     "صح. الـ fopen بترجع NULL لو الـ file مافتحش، فالبرنامج يطبع error ويخرج.",
+     "نهاية الـ file بنختبرها بالـ feof جوه الـ while.",
+     "ده الاختبار الأأمن إن الـ fread ترجّع 1، مش اختبار الـ NULL.",
+     "تفضية الـ logical name بتحصل بالـ fclose."
+    ],
+    [
+     "الـ putchar بتطبع الـ character على الشاشة، ومستخدمة في readC.",
+     "صح. الـ writeC بتاخد الـ character بـ getche وبتكتبه بـ fputc.",
+     "الـ fputs بتكتب strings، ومستخدمة في writeS.",
+     "الـ fprintf بتكتب formatted text، ومستخدمة في writeASCII."
+    ],
+    [
+     "الـ 0 ده اللي الـ fread بترجّعه في نهاية الـ file، مش الـ fscanf في الـ method دي.",
+     "الـ NULL ده اللي الـ fopen بترجّعه لو الـ file مافتحش.",
+     "الـ 1 معناه قراية ناجحة عادي، والـ loop بيقف عند EOF.",
+     "صح. الـ loop بيقف لما الـ result يساوي EOF."
+    ],
+    [
+     "صح. في رسمة slide 20 برنامج بيوصل لـ b.txt وبرنامج تاني بيوصل لـ aa.txt، والاتنين بـ logical name اسمه infile.",
+     "غلط، رسمة slide 20 بتوضح كده بالظبط: برنامجين كل واحد عنده infile خاص بيه، واحد لـ b.txt والتاني لـ aa.txt."
     ]
    ]
   },
@@ -624,6 +776,208 @@ AR.fp = {
      "الـ Transfer بتاع sector واحد جزء صغير جدًا من اللفة (مثلًا 0.05 ms).",
      "الـ Latency عادةً <bdi dir=\"ltr\">6–8</bdi> ms، وده أقل من الـ average seek المعتاد 30 ms.",
      "ده جزء من الـ transfer، مش أكبر تكلفة."
+    ],
+    [
+     "الـ spindle بيمسك الـ platters ويلفّها، ومش بيخزن داتا.",
+     "الـ track حلقة واحدة على الـ platter، مش الـ disk كله.",
+     "صح. الـ platter هو الـ disk الدايرية اللي بتخزن الداتا الـ magnetic على الوشين.",
+     "الـ cylinder هو مجموعة الـ tracks اللي فوق وتحت بعض في كل الـ platters."
+    ],
+    [
+     "الـ arms بتشيل الـ heads وتوجهها وتحركها.",
+     "الـ arm assembly هو المجموعة اللي جواها الـ arms والـ heads.",
+     "الـ head بيقرا ويكتب وهو بيعدي على الـ track، ومش بيلف الـ platters.",
+     "صح. الـ spindle بيثبّت الـ platters ويسيب مسافة للـ arms، وبيلفّها."
+    ],
+    [
+     "غلط، الـ CD-RW ده optical disk يعني DASD، ومثال الـ SASD في المحاضرة هو الـ magnetic tape.",
+     "صح. الـ CD-RW ده optical disk من الـ Direct Access Storage Devices، والـ SASD هو الـ magnetic tape."
+    ],
+    [
+     "الـ track حلقة كاملة متقسمة لـ sectors.",
+     "الـ block (page) الـ user بيحدده والـ DBMS بيستخدمه، وفيه عدد صحيح من الـ records.",
+     "الـ cylinder هو الـ tracks اللي فوق وتحت بعض.",
+     "صح. الـ OS file manager بيشوف الـ file كسلسلة clusters، وكل cluster عدد ثابت من الـ sectors ورا بعض."
+    ],
+    [
+     "الـ track sector (حرف C) هو جزء الشريحة اللي على track واحد بس.",
+     "صح. حرف B هو الـ geometrical sector، شريحة معدية على كل الـ tracks.",
+     "الـ cluster (حرف D) هو sectors جنب بعض على نفس الـ track.",
+     "الـ track (حرف A) حلقة واحدة."
+    ],
+    [
+     "الـ OS بينظم الـ tracks بالـ sectors.",
+     "صح. التنظيم بالـ blocks بيستخدمه الـ DBMS، والتنظيم بالـ sectors بيستخدمه الـ OS.",
+     "الـ spindle hardware بيلف الـ platters، ومش بينظم الـ tracks.",
+     "الـ disk cache حتة memory شايلة pages من الـ disk، وده حل للـ bottleneck."
+    ],
+    [
+     "صح. الـ count sub-block فيه عدد الـ bytes اللي في الـ block.",
+     "الـ key sub-block (اختياري) فيه الـ key بتاع آخر record في الـ data sub-block.",
+     "الـ data sub-block فيه الـ records نفسها.",
+     "الـ gap مساحة فاضية بين الـ blocks وهي جزء من الـ non-data overhead."
+    ],
+    [
+     "غلط، الـ block فيه عدد صحيح من الـ records، فمفيش record بيتقسم على 2 blocks ومفيش internal fragmentation.",
+     "صح. مع الـ blocking factor كل block فيه عدد صحيح من الـ records، فمفيش record بيتقسم على 2 blocks."
+    ],
+    [
+     "الـ seek time هو تحريك الـ arm للـ cylinder الصح.",
+     "الـ transfer time هو وقت مرور الـ head على الداتا بعد ما يوصل.",
+     "صح. الـ rotational delay (latency) هو الوقت لحد ما الـ sector ييجي تحت الـ head.",
+     "الـ access time هو المجموع كله، يعني الـ seek والـ rotational delay والـ transfer."
+    ],
+    [
+     "صح. وعشان كده الـ average latency بتساوي نص لفة.",
+     "غلط، دي قيم المحاضرة بالظبط: الأقل صفر، والأكبر لفة كاملة، والمتوسط نص لفة."
+    ],
+    [
+     "ده الـ RAM disk، وده حل تاني.",
+     "صح. بنشيك على الـ cache الأول، ولو miss بنروح للـ disk.",
+     "ده الـ multiprocessing.",
+     "توزيع الـ blocks على drives مختلفة ده الـ disk striping."
+    ],
+    [
+     "الـ 5 ms هي الـ seek من track للي جنبه.",
+     "الـ 30 ms هي متوسط الـ seek من track عشوائي لـ track عشوائي.",
+     "صح. الـ 50 ms هي أقصى seek، من أجوّا track لأبرّا track.",
+     "الـ 12 ms دي وقت لفة عند 5000 rpm، يعني rotation مش seek."
+    ],
+    [
+     "صح. في الـ drive اللي فيه 4 platters و 8 surfaces فيه <bdi dir=\"ltr\">read/write head</bdi> على كل surface من الـ 8.",
+     "غلط، المحاضرة بتقول إن كل surface ليه الـ head بتاعه (8 heads لـ 8 surfaces)."
+    ],
+    [
+     "صح. الـ RAID اختصار لـ Redundant Array of Independent Disks.",
+     "غلط، ده بالظبط معنى الـ RAID في المحاضرة."
+    ],
+    [
+     "صح. الـ track capacity بتساوي:<span class=\"ltr\">48 × 512 = 24,576 B</span>",
+     "الـ 49,152 دي ضعف عدد الـ sectors، والـ track فيه 48 بس.",
+     "الـ 12,288 دي نص عدد الـ sectors بس.",
+     "الـ 560 جمع مش ضرب، والصح نضرب عدد الـ sectors في حجم الـ sector."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">64 × 512 = 32,768 B</span>",
+     "غلط، الـ track capacity فعلًا:<span class=\"ltr\">64 × 512 = 32,768 B</span>"
+    ],
+    [
+     "الـ 40,960 دي الـ track capacity، والـ cluster فيه 8 sectors بس.",
+     "الـ 64 قسمة مش ضرب.",
+     "الـ 640 ضربت عددين الـ sectors في بعض ونسيت الـ 512 B.",
+     "صح. الـ cluster بيساوي:<span class=\"ltr\">8 × 512 = 4096 B</span>"
+    ],
+    [
+     "الـ 8 ms دي لفة كاملة، يعني أكبر latency.",
+     "الـ 2 ms ربع لفة، والمتوسط نص لفة.",
+     "صح. الحساب:<span class=\"ltr\">revolution = 60 × 1000 / 7500 = 8 ms, average = ½ × 8 = 4 ms</span>",
+     "الـ 0.008 دي لفة كاملة بالـ seconds، مش بالـ ms."
+    ],
+    [
+     "غلط، الـ 15 ms دي لفة كاملة (الـ maximum)، والمتوسط نصها يعني 7.5 ms.",
+     "صح. الحساب:<span class=\"ltr\">revolution = 60,000/4000 = 15 ms, average = ½ × 15 = 7.5 ms</span>"
+    ],
+    [
+     "صح. الـ cylinder height بيساوي عدد الـ surfaces:<span class=\"ltr\">2 × 6 = 12</span>",
+     "الـ 6 دي عدد الـ platters، وكل platter ليه وشين وكل وش عليه track في الـ cylinder.",
+     "الـ 3 قسمة مش ضرب.",
+     "الـ 24 كأن كل platter فيه 4 tracks في الـ cylinder، لكن هو ليه وشين بس."
+    ],
+    [
+     "صح. عدد الـ cylinders بيساوي عدد الـ tracks في الـ surface، يعني 3000.",
+     "الـ 30,000 دي عدد الـ tracks كلها في الـ disk.",
+     "الـ 300 قسمة غلط، وعدد الـ surfaces بيدينا الـ tracks في الـ cylinder مش بيقلل الـ cylinders.",
+     "الـ 10 دي الـ cylinder height (الـ tracks في الـ cylinder)، مش عدد الـ cylinders."
+    ],
+    [
+     "الـ 25,600 دي track واحد، والـ cylinder فيه 12 track.",
+     "صح. الحساب:<span class=\"ltr\">track = 50 × 512 = 25,600 B, cylinder = 12 × 25,600 = 307,200 B</span>",
+     "الـ 153,600 استخدمت عدد الـ platters (6)، لكن الـ cylinder height بيعد الـ surfaces (12).",
+     "الـ 600 دي عدد الـ sectors في الـ cylinder، مش bytes."
+    ],
+    [
+     "الـ 102,400,000 نسيت الـ cylinder height اللي هو 12.",
+     "الـ 614,400,000 استخدمت 6 platters بدل 12 surface في الـ cylinder.",
+     "الرقم ده ضرب في الـ cylinder height مرتين.",
+     "صح. الحساب:<span class=\"ltr\">cylinder = 12 × 50 × 512 = 307,200 B</span><span class=\"ltr\">drive = 4000 × 307,200 = 1,228,800,000 B</span>"
+    ],
+    [
+     "الـ 200 دي الـ records في الـ track الواحد.",
+     "الـ 4 دي الـ records في الـ sector.",
+     "صح. الحساب:<span class=\"ltr\">records/cylinder = 307,200/128 = 2400</span>",
+     "الـ 1200 تطلع لو الـ record حجمه 256 B."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">file = 40,000 × 128 = 5,120,000 B, sectors = 5,120,000/512 = 10,000</span>",
+     "الـ 40,000 كأن كل record واخد sector لوحده، لكن 4 records بيدخلوا في الـ sector.",
+     "الـ 160,000 ضربت في عدد الـ records في الـ sector بدل ما تقسم.",
+     "الـ 5,120,000 دي حجم الـ file بالـ bytes، مش عدد sectors."
+    ],
+    [
+     "الناتج 277.78، ولو قرّبنا لتحت جزء من الـ file مش هيلاقي track.",
+     "صح. الحساب:<span class=\"ltr\">file = 20,000 × 256 = 5,120,000 B, track = 36 × 512 = 18,432 B</span><span class=\"ltr\">5,120,000/18,432 = 277.78 → 278 tracks</span>",
+     "الـ 556 كأن كل sector فيه record واحد، لكن 2 records بيدخلوا في الـ sector.",
+     "الـ 10,000 دي عدد الـ sectors."
+    ],
+    [
+     "الناتج 34.72، و 34 cylinder مش هيكفوا الـ file كله، فلازم نقرّب لفوق.",
+     "الـ 278 دي عدد الـ tracks.",
+     "الـ 70 استخدمت 4 tracks في الـ cylinder (عدد الـ platters)، لكن الـ cylinder فيه 8 tracks.",
+     "صح. الحساب:<span class=\"ltr\">cylinder = 8 × 18,432 = 147,456 B, 5,120,000/147,456 = 34.72 → 35</span>"
+    ],
+    [
+     "الـ 300 نسيت الـ overhead بتاع كل block (200 B).",
+     "الـ 250 استخدمت نص block، والـ blocks في الـ track لازم تتقرّب لتحت لـ 12.",
+     "صح. الحساب:<span class=\"ltr\">block = 20 × 50 + 200 = 1200 B</span><span class=\"ltr\">⌊15,000/1200⌋ = ⌊12.5⌋ = 12 blocks, 12 × 20 = 240 records</span>",
+     "الـ 12 دي عدد الـ blocks في الـ track، مش الـ records."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">block = 50 × 50 + 200 = 2700 B</span><span class=\"ltr\">⌊15,000/2700⌋ = ⌊5.56⌋ = 5 blocks, 5 × 50 = 250 records</span>",
+     "الـ 278 خلت جزء من block، والـ block مينفعش يتقسم فلازم floor.",
+     "الـ 300 نسيت الـ overhead.",
+     "الـ 5 دي عدد الـ blocks في الـ track."
+    ],
+    [
+     "الـ 10 ms دي لفة كاملة.",
+     "الـ 5 ms دي الـ average latency (نص لفة)، مش الـ transfer.",
+     "الـ 0.05 ms قسمت الـ transfer على 2، والنص ده بتاع الـ latency بس.",
+     "صح. الحساب:<span class=\"ltr\">revolution = 60,000/6000 = 10 ms, transfer = 10/100 = 0.1 ms</span>"
+    ],
+    [
+     "الـ 20.1 حسبت الـ latency لفة كاملة، والمتوسط نص لفة يعني 5 ms.",
+     "صح. الحساب:<span class=\"ltr\">latency = ½ × 10 = 5 ms, transfer = 10/100 = 0.1 ms</span><span class=\"ltr\">total = 10 + 5 + 0.1 = 15.1 ms</span>",
+     "الـ 10.1 نسيت الـ rotational delay.",
+     "الـ 15 نسيت الـ transfer time (0.1 ms)."
+    ],
+    [
+     "الـ 16.25 حسبت transfer لـ sector واحد بس (0.25 ms)، والـ 2 sectors محتاجين 0.5 ms.",
+     "الـ 20.5 استخدمت لفة كاملة (8 ms)، لكن الـ average rotational delay مدّيه 4 ms.",
+     "صح. الحساب:<span class=\"ltr\">revolution = 60,000/7500 = 8 ms, transfer = 2 × 8/32 = 0.5 ms</span><span class=\"ltr\">total = 12 + 4 + 0.5 = 16.5 ms</span>",
+     "الـ 12.5 نسيت الـ rotational delay."
+    ],
+    [
+     "الـ 20 ms دي لفة كاملة، يعني وقت نقل الـ track كله.",
+     "الـ 10 ms دي الـ average latency (نص لفة).",
+     "الـ 0.25 دي نسبة من الـ track مش وقت، ولازم نضربها في وقت اللفة.",
+     "صح. الحساب:<span class=\"ltr\">revolution = 60,000/3000 = 20 ms, transfer = (6000/24,000) × 20 = 5 ms</span>"
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">12 × 2000 × 30 × 512 = 368,640,000 B</span>",
+     "الـ 30,720,000 دي surface واحد بس.",
+     "الـ 184,320,000 استخدمت 6 (عدد الـ platters) بدل 12 surface.",
+     "الـ 737,280,000 حسبت 24 surface، يعني ضاعفت الـ 12 surface."
+    ],
+    [
+     "الـ 12,000 اعتبرت الـ 5 ms لفة كاملة، وهي نص لفة بس.",
+     "صح. الـ average latency نص لفة، يعني:<span class=\"ltr\">revolution = 10 ms, RPM = 60,000/10 = 6000</span>",
+     "الـ 3000 rpm بتدي لفة 20 ms و average latency بـ 10 ms.",
+     "الـ 5000 rpm بتدي لفة 12 ms و average latency بـ 6 ms."
+    ],
+    [
+     "الـ 312 كأن الـ sector فيه record واحد، لكن 2 records حجم كل واحد 200 B بيدخلوا.",
+     "الـ 512 مش من مضاعفات الـ 200، فلازم فيه مساحة بتضيع، ودي الـ fragmentation.",
+     "صح. الحساب:<span class=\"ltr\">⌊512/200⌋ = 2 records = 400 B, 512 − 400 = 112 B</span>",
+     "الـ 212 B دي الهدر لو الـ record حجمه 300 B (مثال المحاضرة)، مش 200 B."
     ]
    ]
   },
@@ -869,6 +1223,194 @@ AR.fp = {
     [
      "صح. الـ get pointer واقف في الآخر، فمكانه بيساوي عدد الـ bytes؛ وبعدين read واحدة وwrite واحدة بالحجم ده بينسخوا الـ file.",
      "الـ tellg بتقولك مكان الـ get الحالي، وفي آخر الـ file المكان ده هو حجم الـ file."
+    ],
+    [
+     "صح. الـ field قيمة داتا وهو أصغر وحدة ليها معنى logical.",
+     "الـ record مجموعة fields، يعني أكبر من الـ field.",
+     "الـ stream سلسلة bytes من غير معلومات زيادة، مش وحدة logical.",
+     "الـ primary key بيميّز الـ record، مش تعريف أصغر وحدة داتا."
+    ],
+    [
+     "الـ stream file مفيهوش أي معلومات زيادة فمش بيجمع fields.",
+     "صح. الـ record مجموعة fields بتكوّن وحدة logical واحدة.",
+     "الـ binary file سلسلة bytes زي فيلم أو مزيكا.",
+     "الـ delimiter علامة في آخر الـ field، مش مجموعة fields."
+    ],
+    [
+     "ده تعريف الـ binary file، مش الـ text file.",
+     "صح. الـ text file سلسلة characters (زي الـ source code بتاع C) وبيتشاف في text editor، أما الكلام ده فهو الـ binary file."
+    ],
+    [
+     "الـ text والـ binary أنواع files، مش الـ 3 structures.",
+     "دول طرق الـ field structure، مش الـ 3 file structures.",
+     "صح. الـ 3 هم الـ stream والـ field والـ record structures.",
+     "الـ input والـ output بيوصفوا البرنامج بيستخدم الـ file إزاي، والـ index file بيتستخدم مع الـ variable-length records."
+    ],
+    [
+     "ده عيب الـ <bdi dir=\"ltr\">keyword&nbsp;=&nbsp;value</bdi>، والـ stream file مش بيضيف حاجة.",
+     "الـ padding ده عيب الـ fixed-length fields والـ records.",
+     "ده عيب الـ delimited fields، والـ stream file مفيهوش delimiters.",
+     "صح. مفيش أي معلومات زيادة، فمش هنقدر نرجّع الـ records بشكلها المنظم."
+    ],
+    [
+     "الـ stream file مش بيضيف أي فواصل ولا أي معلومات بين الـ fields.",
+     "صح. الـ stream file مفيهوش معلومات زيادة، فمفيش طريقة نرجّع بيها الـ records منظمة."
+    ],
+    [
+     "صح. كل field مكتوب على شكل <bdi dir=\"ltr\">keyword=value</bdi> فهو بيوصف نفسه.",
+     "الـ length indicator كان هيحط طول الـ field قبل كل قيمة.",
+     "الـ delimiter بيحط علامة زي | في آخر كل field ومن غير keywords.",
+     "الـ fixed length كان هيعمل padding لأطوال ثابتة ومن غير keywords."
+    ],
+    [
+     "الـ fixed-length fields مفيهاش أرقام قدامها، بيتعملها padding لأطوال ثابتة.",
+     "مفيش delimiter زي | بين الـ fields.",
+     "صح. الأرقام <bdi dir=\"ltr\">05</bdi> و <bdi dir=\"ltr\">05</bdi> و <bdi dir=\"ltr\">07</bdi> بتقول طول الـ field اللي بعدها.",
+     "مفيش keywords زي <bdi dir=\"ltr\">ISBN=</bdi> في الـ record."
+    ],
+    [
+     "إن الـ fields بتوصف نفسها دي ميزة الـ <bdi dir=\"ltr\">keyword&nbsp;=&nbsp;value</bdi>.",
+     "دي ميزة الـ delimited fields.",
+     "دي ميزة الـ length indicator.",
+     "صح. الـ fixed-length fields سهلة في القراية والتخزين، بس بتضيّع مساحة في الـ padding."
+    ],
+    [
+     "عيب الـ delimited إنها لازم تقارن كل byte بالـ delimiter، ومفيهاش keywords.",
+     "صح. كتابة keyword مع كل field بتضيّع مساحة.",
+     "الـ fixed-length بتضيّع مساحة في الـ padding مش الـ keywords.",
+     "عيبها إن الـ fields الطويلة محتاجة أكتر من byte للطول."
+    ],
+    [
+     "صح. ده عيب الـ length indicator، الـ fields الطويلة محتاجة أكتر من byte واحد للطول.",
+     "الكلام صح، byte واحد مش كفاية لطول الـ fields الطويلة دي."
+    ],
+    [
+     "صح. دي ميزة الـ delimited fields، والتمن إننا نقارن كل byte بالـ delimiter.",
+     "الكلام صح، والمحاضرة بتقول إنها ميزة الـ delimited fields."
+    ],
+    [
+     "الرقم ده ناقص 2، والمجموع <bdi dir=\"ltr\">5+7+25</bdi> يساوي 37.",
+     "الـ 25 ده طول الـ title بس.",
+     "صح. الحسبة:<span class=\"ltr\">5 + 7 + 25 = 37 bytes</span>",
+     "الـ 3 ده عدد الـ fields مش عدد الـ bytes."
+    ],
+    [
+     "الـ 4 ده طول FOLK نفسه مش الـ padding.",
+     "الـ 7 ده حجم الـ field كله.",
+     "الـ FOLK أقصر من 7 فلازم يتعمله padding.",
+     "صح. الحسبة:<span class=\"ltr\">7 − 4 = 3</span>"
+    ],
+    [
+     "صح. الحسبة:<span class=\"ltr\">4 + 1 + 10 = 15</span>",
+     "الـ 14 نسي يعد الـ space، وهو جزء من الـ field.",
+     "ده delimited field مش length indicator.",
+     "ده <bdi dir=\"ltr\">keyword&nbsp;=&nbsp;value</bdi> مش length indicator."
+    ],
+    [
+     "الـ 24 نسي الـ delimiters الاتنين.",
+     "صح. الحسبة:<span class=\"ltr\">5 + 1 + 4 + 1 + 15 = 26</span>",
+     "الـ 37 ده حجم الـ fixed-length record مش الـ record ده.",
+     "الـ 33 ده طول record الـ CARROLL في الـ slide."
+    ],
+    [
+     "هنا الـ fields بـ delimiters يعني variable-length.",
+     "في الطريقة دي حجم الـ record بيتغير وبيتكتب في أوله.",
+     "صح. fields بـ delimiters أو length indicators وبنعمل padding لحد الحجم الثابت.",
+     "الـ stream file مفيهوش delimiters ولا padding."
+    ],
+    [
+     "الـ ISBN هو 87359 اللي بعد الـ 33.",
+     "الـ RRN رقم مكان الـ record ومش مكتوب في أوله.",
+     "الـ record فيه 3 fields بس.",
+     "صح. كل record بيبدأ بـ length indicator بيقول عدد الـ bytes بتاعته."
+    ],
+    [
+     "صح. دي ميزة الـ variable-length records، وعيبها إننا محتاجين index file عشان ننط للـ record رقم i.",
+     "الكلام صح، ودي الميزة اللي المحاضرة بتقولها للـ variable-length records."
+    ],
+    [
+     "ده عيب الـ variable-length records مش الـ fixed-length.",
+     "صح. الـ fixed-length records سهل ننط فيها للـ record رقم i، والـ index file محتاجينه مع الـ variable-length."
+    ],
+    [
+     "الـ secondary key للبحث بس ومش unique عادةً.",
+     "صح. الـ primary key بيميّز الـ record بشكل unique ومش بيتغير.",
+     "الـ RRN رقم مكان الـ record، مش key.",
+     "الـ length indicator بيخزن حجم الـ field أو الـ record."
+    ],
+    [
+     "صح. الـ sequential search <bdi dir=\"ltr\">O(n)</bdi> فمناسب للـ pattern matching أو الـ files الصغيرة.",
+     "لو عارفين الـ RRN بنستخدم الـ direct access وده <bdi dir=\"ltr\">O(1)</bdi>.",
+     "النط لـ record بيتعمل بالـ direct access بالـ offset.",
+     "مع الـ index file نقدر ننط على طول من غير ما نقرا كل الـ records."
+    ],
+    [
+     "صح. الـ direct access بيعمل seek على طول لأول الـ record لما نكون عارفين الـ RRN.",
+     "الكلام صح، معرفة الـ RRN هي اللي بتخلي الـ direct access ممكن."
+    ],
+    [
+     "العد بيبدأ من 0، فالـ RRN 1 ده تاني record.",
+     "الـ record size بيستخدم في حساب الـ offset مش الـ RRN.",
+     "صح. أول record الـ RRN بتاعه 0 واللي بعده 1.",
+     "الـ primary key بيميّز محتوى الـ record، أما الـ RRN فهو مكانه وبيبدأ من 0."
+    ],
+    [
+     "الـ 124 ده <bdi dir=\"ltr\">31×4</bdi>، يعني الـ desc بس مش الـ record كله.",
+     "الـ 195 ده <bdi dir=\"ltr\">39×5</bdi> وده offset الـ RRN 5.",
+     "الـ 39 ده حجم record واحد.",
+     "صح. الحسبة:<span class=\"ltr\">size = 31 + 4 + 4 = 39, offset = 4 × 39 = 156</span>"
+    ],
+    [
+     "صح. الحسبة:<span class=\"ltr\">RRN = 1200 / 60 = 20</span>",
+     "الـ 21 ده لو بدأنا العد من 1، هو الـ record رقم 21 بس الـ RRN بتاعه 20.",
+     "الـ 1140 ده offset الـ record اللي قبله.",
+     "الـ 72000 ده ضرب بدل القسمة."
+    ],
+    [
+     "الـ 0 معناه البداية.",
+     "الـ 1 معناه المكان الحالي.",
+     "صح. الـ 0 للبداية والـ 1 للمكان الحالي والـ 2 للنهاية.",
+     "مفيش origin رقمه 3، الـ origins هما 0 و 1 و 2 بس."
+    ],
+    [
+     "الـ origin 2 هو النهاية فده بيروح للآخر.",
+     "صح. offset 0 من الـ origin 0 يعني بداية الـ file.",
+     "الـ origin 1 هو المكان الحالي، فده مش بيتحرك.",
+     "ده بيرجع 10 bytes من المكان الحالي."
+    ],
+    [
+     "الـ <code>ios::beg</code> يقابل الـ origin 0 يعني البداية.",
+     "الـ <code>ios::end</code> يقابل الـ origin 2 يعني النهاية.",
+     "ده بيحرك الـ put pointer لقدام 10 مش لورا.",
+     "صح. الـ origin 1 هو <code>ios::cur</code> والـ <bdi dir=\"ltr\">−10</bdi> بيرجع 10 bytes."
+    ],
+    [
+     "الـ seekg بيحرك الـ get pointer، والـ put بيحركه الـ seekp.",
+     "صح. الـ seekg بيحرك الـ get pointer (القراية) والـ seekp بيحرك الـ put pointer (الكتابة)."
+    ],
+    [
+     "الـ 25 ده حجم الـ record مش عددهم.",
+     "الـ 19 ده آخر RRN، لكن العدد 20.",
+     "صح. الـ tellg في الآخر بيدي حجم الـ file، والحسبة:<span class=\"ltr\">500 / 25 = 20</span>",
+     "الـ 12500 ده ضرب بدل القسمة."
+    ],
+    [
+     "صح. بعد ما نروح للآخر وناخد الحجم بنرجّع الـ get pointer للبداية، وبعدين read واحدة و write واحدة.",
+     "الكلام صح، من غيرها الـ read هتبدأ من آخر الـ file."
+    ],
+    [
+     "الـ seekg بيحرك الـ get pointer وبيحدد المكان بس، مش بيكتب.",
+     "صح. بعد ما الـ seekp يحط الـ put pointer عند الـ offset، الـ write بيكتب فوق الـ record القديم.",
+     "الـ seekp بيحرك الـ put pointer للـ record بس، مش بيكتب حاجة.",
+     "الـ tellg بيقول مكان الـ get pointer بس."
+    ],
+    [
+     "الـ file اللي البرنامج بيكتب فيه اسمه output file.",
+     "صح. الـ input files البرنامج بيقرا منها، والـ output files بيكتب فيها."
+    ],
+    [
+     "صح. الـ Seek بشكل عام بينقلك للـ byte offset اللي بتديهوله.",
+     "الكلام صح، ده مثال المحاضرة نفسه."
     ]
    ]
   },

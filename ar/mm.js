@@ -281,6 +281,154 @@ AR.mm = {
     [
      "صح، المحاضرة بتوصف الـ video كده وبتقول إنه غالبًا لازم يتعمله compression.",
      "ده بالظبط وصف المحاضرة للـ video data."
+    ],
+    [
+     "صح. الـ Hypertext هو text فيه links لنصوص تانية، والمصطلح اخترعه Ted Nelson حوالي سنة 1965.",
+     "غلط، الـ Hypermedia مش مقصور على الـ text، وبيربط graphics وimages وصوت وvideo كمان.",
+     "غلط، الـ multimedia application بيستخدم مجموعة مصادر media متعددة، وتعريفه مش عن links بين نصوص.",
+     "غلط، الـ hot spot هو المكان اللي بتدوس عليه جوه الـ hypertext عشان تنتقل لمادة مرتبطة، مش نوع الـ text نفسه."
+    ],
+    [
+     "غلط، الـ normal text هو اللي بيتقري linear، لكن التنقل في الـ hypertext عادةً non-linear.",
+     "صح. التنقل بين صفحات الـ hypertext عادةً non-linear، والـ normal text بس هو اللي بيتقري linear."
+    ],
+    [
+     "غلط، الـ primitive objects (الـ lines والـ polygons والـ circles) هي اللي الـ graphics متبنية منها.",
+     "صح. لما القارئ يدوس على الـ hot spots في الـ text بيتنقل على طول للمادة المرتبطة.",
+     "غلط، الـ capture devices (الكاميرا والـ microphone والـ tablet) بتدخّل الـ media للـ system، مش links في الـ document.",
+     "غلط، الـ display devices (الـ HDTV والسماعات والشاشات) بتعرض الـ media، ومش بتتنقل في الـ document."
+    ],
+    [
+     "غلط، ده وصف الـ hypertext؛ الـ hypermedia بالتحديد مش مقصور على الـ text.",
+     "صح. الـ Hypermedia مش لازم يبقى text بس، وممكن يحتوي graphics وimages وخصوصًا continuous media زي الصوت والـ video."
+    ],
+    [
+     "غلط، الـ PowerPoint مذكور كمثال على hypermedia application.",
+     "غلط، الـ Adobe Acrobat (برنامج الـ PDF) مذكور كمثال على hypermedia application.",
+     "صح. الـ Unix compress مذكور كمثال على الـ lossless compression، مش hypermedia application.",
+     "غلط، الـ Adobe Flash مذكور كمثال على hypermedia application."
+    ],
+    [
+     "غلط، الـ compression من الـ key issues (وغالبًا إجباري)، بس مش في لستة الخصائص دي.",
+     "غلط، الـ synchronisation من الـ challenges (الـ inter-media scheduling)، مش جزء من التعريف ده.",
+     "غلط، الـ sampling تبع الـ key issue بتاع التمثيل الـ digital (الـ analog–digital conversion).",
+     "صح. الـ multimedia system بيتميز بالـ processing والـ storage والـ generation والـ manipulation والـ rendition للمعلومات الـ multimedia."
+    ],
+    [
+     "صح. من الأربع خصائص الأساسية إن المعلومات اللي الـ system بيتعامل معاها لازم تتمثّل digitally.",
+     "غلط، التمثيل الـ digital واحد من الأربع خصائص الأساسية، فالجملة صح."
+    ],
+    [
+     "صح. الخاصية الرابعة إن الـ interface للعرض النهائي للـ media غالبًا بيكون interactive.",
+     "غلط، كلمة linear بتوصف قراية الـ normal text، مش الـ interface بتاع العرض.",
+     "غلط، المعلومات في الـ multimedia system لازم تبقى digital مش analog.",
+     "غلط، الـ distributed networks واحد من الـ challenges، مش خاصية في الـ interface بتاع العرض."
+    ],
+    [
+     "غلط، دول أنواع الـ compression من خلاصة الكورس، مش الـ challenges.",
+     "صح. السلايد فيها اتنين challenges أساسيين، الـ Distributed Networks والـ Temporal relationship between data، والباقي تحت الـ temporal relationship.",
+     "غلط، دول اتنين من الـ components بتوع الـ multimedia system.",
+     "غلط، دول من الـ desirable features بتوع الـ multimedia system، مش الـ challenges."
+    ],
+    [
+     "غلط، ده الـ desirable feature بتاع الـ storage والـ memory.",
+     "غلط، الـ client-server systems تبع الـ network support.",
+     "صح. عرض data مختلفة في نفس الوقت وبشكل continuous، والـ sequencing جوه الـ media، والـ synchronisation، كلهم تحت الـ temporal relationship.",
+     "غلط، دول capture devices، يعني component من الـ system."
+    ],
+    [
+     "غلط، الـ lip synchronisation مثال على الـ challenge بتاع الـ inter-media synchronisation.",
+     "غلط، الـ RAID ده <bdi dir=\"ltr\">hardware/software</bdi> خاص للـ multimedia-capable file system.",
+     "غلط، الـ compression ده key issue تاني سببه الـ data requirements الكبيرة، والـ lossless لوحده مش كفاية.",
+     "صح. تمثيل الـ data بشكل digital معناه الـ analog–digital conversion والـ sampling."
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">I/O</bdi> الكفء والعالي لازم يسمح بالـ recording في real-time والـ playback، زي أنظمة الـ direct-to-disk recording.",
+     "غلط، الـ network support بتاع الـ client-server والـ distributed systems.",
+     "غلط، الـ software tools هي tools سهلة الاستخدام للتعامل مع الـ media وتصميم الـ applications.",
+     "غلط، الـ data representations هي file formats بتسمح بـ <bdi dir=\"ltr\">compression/decompression</bdi> في real-time."
+    ],
+    [
+     "صح. الـ Storage والـ memory معناها storage units كبيرة، وmemory كبيرة، وcaches كبيرة، وhigh-speed buses عشان الإدارة تبقى efficient.",
+     "غلط، الـ feature بتاع الـ storage والـ memory بيطلب صراحةً caches كبيرة وhigh-speed buses."
+    ],
+    [
+     "غلط، الـ display devices هي الـ CD-quality speakers والـ HDTV والـ SVGA والـ hi-res monitors والـ colour printers.",
+     "صح. دول متذكرين مع الـ video camera والـ microphone والـ keyboard والـ mouse كـ capture devices.",
+     "غلط، الـ storage devices هي الـ hard disks والـ CD-ROMs والـ DVD-ROMs.",
+     "غلط، الـ communication networks هي الـ local networks والـ intranets والـ Internet."
+    ],
+    [
+     "غلط، الـ capture devices بتدخّل الـ media (كاميرات وmicrophones وtablets).",
+     "غلط، الـ display devices بتطلّع الـ media (سماعات وHDTV وشاشات وطابعات).",
+     "صح. الـ Computer systems هي الـ multimedia desktop machines والـ workstations والـ <bdi dir=\"ltr\">MPEG/VIDEO/DSP</bdi> hardware.",
+     "غلط، الـ storage devices هي الـ hard disks والـ CD-ROMs والـ DVD-ROMs."
+    ],
+    [
+     "غلط، الـ text مش temporal، وممكن بس يبقى ليه sequence ضمني (زي ترتيب الـ statements في برنامج C).",
+     "صح. الـ text مش temporal، بس ممكن يبقى ليه sequence ضمني طبيعي، زي ترتيب الـ HTML أو الـ statements في برنامج."
+    ],
+    [
+     "غلط، الـ polygons من الـ primitives بتوع الـ graphics.",
+     "غلط، الـ arcs من الـ primitives بتوع الـ graphics.",
+     "غلط، الـ curves من الـ primitives بتوع الـ graphics.",
+     "صح. الـ pixels هي اللي بتعمل الـ bitmap images؛ أما الـ graphics متبنية من lines وpolygons وcircles وcurves وarcs."
+    ],
+    [
+     "صح. الـ graphics standards المذكورين هما الـ OpenGL والـ PHIGS والـ GKS.",
+     "غلط، الـ RTF (Rich Text Format) ده text format.",
+     "غلط، الـ FLAC ده audio compression format.",
+     "غلط، الـ RAID ده <bdi dir=\"ltr\">hardware/software</bdi> للـ multimedia-capable file system."
+    ],
+    [
+     "غلط، الصور الأبيض والأسود بتستخدم <bdi dir=\"ltr\">1&nbsp;bit</bdi> لكل pixel.",
+     "صح. الـ <bdi dir=\"ltr\">8&nbsp;bits/pixel</bdi> بتتستخدم للـ grey scale أو الـ colour map.",
+     "غلط، الـ true colour بتستخدم <bdi dir=\"ltr\">24&nbsp;bits</bdi> لكل pixel.",
+     "غلط، الـ vector graphics بتخزن primitives، مش bits لكل pixel."
+    ],
+    [
+     "غلط، ده حجم الـ grey scale بـ <bdi dir=\"ltr\">8-bit</bdi>، والحساب:<span class=\"ltr\">256 × 256 × 1 B = 65,536 B = 1/16 MB</span>",
+     "غلط، ده حجم صورة grey scale مقاس <bdi dir=\"ltr\">512&nbsp;×&nbsp;512</bdi>.",
+     "صح. الحساب كده:<span class=\"ltr\">256 × 256 × 3 B = 196,608 B = 3/16 MB ≈ 0.19 MB</span>",
+     "غلط، ده حجم صورة <bdi dir=\"ltr\">24-bit</bdi> مقاس <bdi dir=\"ltr\">512&nbsp;×&nbsp;512</bdi> (pixels أكتر بأربع مرات)."
+    ],
+    [
+     "غلط، ده حجم <bdi dir=\"ltr\">30</bdi> ثانية mono، والـ stereo بيضاعفه.",
+     "غلط، ده حجم دقيقة كاملة stereo، مش نص دقيقة.",
+     "غلط، ده حجم دقيقتين stereo.",
+     "صح. الحساب كده (نفس حجم دقيقة mono):<span class=\"ltr\">44,100 × 2 B × 2 channels × 30 s = 5,292,000 B ≈ 5 MB</span>"
+    ],
+    [
+     "صح. الحساب كده:<span class=\"ltr\">50 × 0.25 MB = 12.5 MB/s</span>",
+     "غلط، ده الـ rate اللي في المحاضرة عند <bdi dir=\"ltr\">25&nbsp;fps</bdi>، مش <bdi dir=\"ltr\">50&nbsp;fps</bdi>.",
+     "غلط، ده حجم frame واحد، مش ثانية.",
+     "غلط، ده كان هيبقى لو الـ frame ملوّن <bdi dir=\"ltr\">24-bit</bdi> (<bdi dir=\"ltr\">0.75&nbsp;MB</bdi>) عند <bdi dir=\"ltr\">50&nbsp;fps</bdi>."
+    ],
+    [
+     "غلط، ده مثال الـ audiophile، وهو أعلى من الـ CD quality.",
+     "صح. الـ CD quality معناها <bdi dir=\"ltr\">16-bit</bdi> sampling عند <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>.",
+     "غلط، ده مش رقم الـ CD quality اللي في المحاضرة.",
+     "غلط، الـ 25 ده frame rate شائع للـ video، مش الـ sampling rate بتاع الـ CD."
+    ],
+    [
+     "غلط، الـ <bdi dir=\"ltr\">0.25&nbsp;MB</bdi> ده حجم frame monochrome مقاس <bdi dir=\"ltr\">512&nbsp;×&nbsp;512</bdi>.",
+     "غلط، الـ <bdi dir=\"ltr\">10+&nbsp;Megapixels</bdi> ده مثال الـ digital camera الحديثة.",
+     "صح. الحساب كده:<span class=\"ltr\">1920 × 1080 ≈ 2 Megapixels per frame</span>",
+     "غلط، الـ <bdi dir=\"ltr\">1.24&nbsp;MB</bdi> ده حجم frame واحد PAL ملوّن."
+    ],
+    [
+     "صح. الـ lossy compression بيرمي الـ data الأقل أهمية للإدراك، وأمثلته الـ MP3 والـ JPEG والـ MPEG.",
+     "غلط، الـ JPEG متذكر مع الـ MP3 والـ MPEG كـ lossy؛ وأمثلة الـ lossless هي الـ zip والـ unix compress."
+    ],
+    [
+     "غلط، الـ lossy بيحتفظ بالأجزاء المهمة وبيرمي الأقل أهمية، مش العكس.",
+     "غلط، الاحتفاظ بكل bit ده وصف الـ lossless compression.",
+     "غلط، الـ encode لطريقة صناعة الـ data ده الـ compression via synthesis.",
+     "صح. الـ lossy بيرمي الأجزاء اللي مش أساسية (الأقل أهمية للإدراك)، يعني بيعمل filter للـ data."
+    ],
+    [
+     "صح. الـ lossy معناه فيه شوية error، وجودة أقل، وcompression أعلى (زي YouTube).",
+     "غلط، ملاحظة الخلاصة بتقول كده بالظبط: الـ lossy فيه error وجودة أقل وcompression أعلى."
     ]
    ]
   },
@@ -634,6 +782,170 @@ AR.mm = {
     [
      "الـ fft على matrix بتشتغل column column (1D لكل column).",
      "صح: الـ <code>fft(X)</code> على matrix بتحسب 1D FT لكل column، مش الـ 2D FT؛ وللـ 2D بنستخدم <code>fft2(X)</code>."
+    ],
+    [
+     "صح. الحساب كده:<span class=\"ltr\">T = 1/f = 1/20 = 0.05 s</span>",
+     "غلط، ده لخبطة بين الـ period والـ frequency؛ والقانون <bdi dir=\"ltr\">T&nbsp;=&nbsp;1/f</bdi>.",
+     "غلط، ده period موجة <bdi dir=\"ltr\">2&nbsp;Hz</bdi>.",
+     "غلط، ده period موجة <bdi dir=\"ltr\">50&nbsp;Hz</bdi>."
+    ],
+    [
+     "غلط، الـ wavelength بيتغير زي <bdi dir=\"ltr\">1/frequency</bdi>، يعني بيتناسب عكسيًا.",
+     "صح. الـ wavelength بيتناسب عكسيًا مع الـ frequency، كل ما الـ frequency تعلى الـ wavelength يقصر."
+    ],
+    [
+     "غلط، الـ <bdi dir=\"ltr\">y&nbsp;=&nbsp;A</bdi> بتحصل عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> (الزاوية <bdi dir=\"ltr\">π/2</bdi>).",
+     "صح. الحساب كده:<span class=\"ltr\">y = A·sin(2π·3/8) = A·sin(3π/4) = 0.7071A</span>",
+     "غلط، الـ <bdi dir=\"ltr\">y&nbsp;=&nbsp;0</bdi> بتحصل عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;4</bdi> (الزاوية π).",
+     "غلط، الـ <bdi dir=\"ltr\">sin(3π/4)</bdi> موجبة؛ والقيمة السالبة دي بتحصل عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;5</bdi>."
+    ],
+    [
+     "غلط، ده لمثال المحاضرة <bdi dir=\"ltr\">1000&nbsp;Hz</bdi> عند <bdi dir=\"ltr\">8000&nbsp;Hz</bdi> (النسبة <bdi dir=\"ltr\">1/8</bdi>).",
+     "غلط، ده الـ frequency بتاعة الموجة، مش عدد الـ samples في الـ cycle.",
+     "صح. النسبة كده، فالـ cycle بتاخد 16 sample:<span class=\"ltr\">F<sub>w</sub>/F<sub>s</sub> = 500/8000 = 1/16</span>",
+     "غلط، ده كان هيبقى لموجة <bdi dir=\"ltr\">2000&nbsp;Hz</bdi> عند <bdi dir=\"ltr\">8000&nbsp;Hz</bdi>."
+    ],
+    [
+     "غلط، دول التلات building blocks بتوع الـ signal flow graph.",
+     "غلط، الـ period والـ wavelength بييجوا من الـ frequency، والـ n ده متغيّر في معادلة الـ sampling.",
+     "غلط، دول مقاييس للمستوى والـ noise، مش وصف الـ sine wave.",
+     "صح. الـ sine wave بتتوصف بالـ amplitude والـ frequency والـ phase:<span class=\"ltr\">z(t) = a·sin(ωt + φ)</span>"
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ cosine هو sine wave متزاحة 90° في الـ phase.",
+     "غلط، المحاضرة بتقول كده بالظبط: الـ cosine هو sine متزاحة 90° في الـ phase."
+    ],
+    [
+     "صح. الحساب كده، وهي سالبة لأنها أقل من الـ reference:<span class=\"ltr\">10·log<sub>10</sub>(0.01) = 10 × (−2) = −20 dB</span>",
+     "غلط، الـ power أقل من الـ reference، فلازم الـ dB تطلع سالبة.",
+     "غلط، ده استخدام الـ <bdi dir=\"ltr\">20·log</bdi> اللي للـ amplitude، مش للـ power.",
+     "غلط، ده نسيان الـ factor 10 اللي قدام الـ log."
+    ],
+    [
+     "غلط، ده استخدام الـ <bdi dir=\"ltr\">20·log</bdi> اللي بيتطبق على نسبة الـ amplitudes، مش الـ power.",
+     "صح. الحساب كده:<span class=\"ltr\">SNR<sub>dB</sub> = 10·log<sub>10</sub>(10<sup>4</sup>) = 10 × 4 = 40 dB</span>",
+     "غلط، ده نسيان الـ factor 10 اللي قدام الـ log.",
+     "غلط، الـ dB مقياس logarithmic، والنسبة نفسها مش هي قيمة الـ dB."
+    ],
+    [
+     "غلط، لو الـ X أقل من الـ X<sub>0</sub> النسبة بتبقى أقل من 1، والـ log بتاعها سالب.",
+     "صح. لو الـ X أقل من الـ X<sub>0</sub> الـ dB بتطلع سالبة (الـ power قلّت)، والموجبة بس لما الـ X أكبر."
+    ],
+    [
+     "غلط، ده ضرب الـ 12 bit كلهم في 6؛ وأول bit بيدّي quantisation noise بس.",
+     "غلط، ده رقم الـ <bdi dir=\"ltr\">8-bit</bdi>، والحساب:<span class=\"ltr\">7 × 6 = 42 dB</span>",
+     "صح. أول bit بيدّي quantisation noise، فالحساب:<span class=\"ltr\">11 × 6 = 66 dB</span>",
+     "غلط، ده رقم الـ <bdi dir=\"ltr\">16-bit</bdi>، والحساب:<span class=\"ltr\">15 × 6 = 90 dB</span>"
+    ],
+    [
+     "غلط، ده مش الـ range المذكور؛ الأكتر حساسية هو range الكلام بالـ kHz.",
+     "غلط، دول sampling rates (للـ CD والـ audiophile)، مش range حساسية الودن.",
+     "غلط، ده مش الـ range اللي في المحاضرة.",
+     "صح. الودن أكتر حساسية بين 2 و4 kHz (الكلام)، وعشان كده الـ frequency weighting بيدّيهم وزن أكبر."
+    ],
+    [
+     "صح. الـ block اللي عليه T بيعمل delay بمقدار sampling interval واحد:<span class=\"ltr\">y(n) = x(n − 1)</span>",
+     "غلط، الـ multiplication بيترسم دايرة فيها ×.",
+     "غلط، الـ addition بيترسم دايرة فيها +.",
+     "غلط، الـ T رمز الـ period كمان، بس في الـ signal flow graph الـ T block هو delay."
+    ],
+    [
+     "غلط، الـ delays بتزحلق في الوقت، ومش بتضرب الـ signal.",
+     "صح. كل T بيأخّر sampling interval واحد، فلو اتنين بيدّوا <bdi dir=\"ltr\">x(n&nbsp;−&nbsp;2)</bdi> يبقى التلاتة:<span class=\"ltr\">y(n) = x(n − 3)</span>",
+     "غلط، الـ delay بيبص على samples قديمة، فالـ index بيبقى <bdi dir=\"ltr\">n&nbsp;−&nbsp;3</bdi>.",
+     "غلط، ده T block واحد بس؛ التلاتة ورا بعض بيأخّروا تلات sampling intervals."
+    ],
+    [
+     "غلط، ده <bdi dir=\"ltr\">½·12</bdi> بس، ونسي الحد <bdi dir=\"ltr\">⅓·x(0)</bdi>.",
+     "غلط، الرقم ده مش طالع من الـ coefficients ½ و⅓.",
+     "صح. الحساب كده:<span class=\"ltr\">y(1) = ½·12 + ⅓·6 = 6 + 2 = 8</span>",
+     "غلط، ده استخدم ¼ مع <bdi dir=\"ltr\">x(0)</bdi> بدل ⅓؛ والـ ¼ بتضرب <bdi dir=\"ltr\">x(n&nbsp;−&nbsp;2)</bdi>."
+    ],
+    [
+     "غلط، الـ filter ده مفيهوش feedback، فبعد <bdi dir=\"ltr\">½,&nbsp;⅓,&nbsp;¼</bdi> الـ output بيبقى 0، يعني الـ impulse response بتاعه finite.",
+     "صح. الـ impulse response هو <bdi dir=\"ltr\">½,&nbsp;⅓,&nbsp;¼,&nbsp;0,&nbsp;0,&nbsp;…</bdi> (finite)؛ واللي عمره ما بيوصل صفر ده الـ IIR."
+    ],
+    [
+     "غلط، الـ feedback بيخلي الـ output مكمّل، ومش بيوقع لصفر لما الـ input يخلص.",
+     "غلط، دي قيمة <bdi dir=\"ltr\">y(1)</bdi> بالحساب ده:<span class=\"ltr\">y(1) = 0 + 0.5 × 4 = 2</span>",
+     "غلط، دي القيمة لو الـ impulse input كان 1 مش 4.",
+     "صح. الحساب كده:<span class=\"ltr\">y(0) = 4, y(1) = 0.5 × 4 = 2, y(2) = 0.5 × 2 = 1</span>"
+    ],
+    [
+     "صح. الـ output في الـ FIR هو weighted sum للـ input الحالي والـ inputs المتأخرة بس، من غير feedback.",
+     "غلط، ده بيرجّع الـ outputs القديمة، فهو الـ IIR البسيط.",
+     "غلط، ده بيستخدم الـ output اللي قبله، فهو recursive (مثال الـ IIR في المحاضرة).",
+     "غلط، دي المعادلة العامة للـ IIR (feedback للـ outputs القديمة)."
+    ],
+    [
+     "غلط، الـ B هي الـ feed-forward coefficients، والـ A هي الـ feedback.",
+     "صح. الـ A فيها الـ feedback coefficients، والـ B فيها الـ feed-forward."
+    ],
+    [
+     "غلط، أمثلة الشيل هي الـ low-pass والـ high-pass.",
+     "صح. الـ attenuate يعني تقوّي أو تضعّف، زي الـ equalisation والـ effects والـ synthesis.",
+     "غلط، الـ compression via synthesis فكرة من المحاضرة الأولى (الـ MIDI والـ vector graphics)، مش نوع filtering.",
+     "غلط، الـ sampling بيحوّل من analog لـ digital، ومش واحد من التلات أفعال بتوع الـ filtering."
+    ],
+    [
+     "غلط، ده حال الـ low-frequency components الكبيرة (الـ features الكبيرة مسيطرة).",
+     "غلط، الـ FT بيبقى real لما الـ function تبقى even (زي الـ top hat)، مش بسبب الـ high frequencies.",
+     "صح. الـ high-frequency components الكبيرة معناها data بتتغير بسرعة على مسافات قصيرة، زي صفحة text (والـ noise كمان بيدّي high frequencies).",
+     "غلط، ده الـ spectrum بتاع sine wave بـ <bdi dir=\"ltr\">8&nbsp;Hz</bdi>."
+    ],
+    [
+     "غلط، ده استخدم الـ k نفسه كـ frequency؛ لازم يتضرب في <bdi dir=\"ltr\">f<sub>s</sub>/N</bdi>.",
+     "غلط، ده مثال المحاضرة بقيم تانية، مش القيم دي.",
+     "غلط، ده الـ step بس (<bdi dir=\"ltr\">f<sub>s</sub>/N</bdi>)، مش الـ frequency بتاعة الـ k ده.",
+     "صح. الحساب كده:<span class=\"ltr\">f<sub>k</sub> = 64 × 16000/512 = 64 × 31.25 = 2000 Hz</span>"
+    ],
+    [
+     "صح. الحساب كده:<span class=\"ltr\">φ = arctan(F<sub>I</sub>/F<sub>R</sub>) = arctan(2/2) = arctan(1) = 45°</span>",
+     "غلط، الـ 90° محتاجة قيمة imaginary بس (الـ real part صفر).",
+     "غلط، ده الـ magnitude مش الـ phase:<span class=\"ltr\">√(2² + 2²) ≈ 2.83</span>",
+     "غلط، ده الـ phase بتاع مثال المحاضرة <bdi dir=\"ltr\">3&nbsp;+&nbsp;4i</bdi>."
+    ],
+    [
+     "غلط، الـ <bdi dir=\"ltr\">1/N</bdi> اللي قدام موجود في الـ forward بس (وفي الصور المربعة 2D بيتعمله rebalance على الاتنين).",
+     "صح. الـ DFT فيه <bdi dir=\"ltr\">1/N</bdi> جوه الأُس، و<bdi dir=\"ltr\">1/N</bdi> قدام الـ forward transform بس."
+    ],
+    [
+     "غلط، الـ Butterworth شكل low-pass filter، مش الـ transform اللي بيعمل الـ spectrogram.",
+     "صح. الـ spectrogram بيستخدم STFT بـ window، والـ Blackman أو الـ Hamming أو الـ Hanning بيقللوا الـ leakage.",
+     "غلط، الـ inverse FFT بيرجّع من الـ frequency للـ time؛ والـ spectrogram بيحلل segments زمنية لـ frequencies.",
+     "غلط، الـ impulse response بيوصف filter في الـ temporal domain، مش تحليل time-frequency."
+    ],
+    [
+     "غلط، ده الـ 2nd order عند ضعف الـ cut-off:<span class=\"ltr\">1/(1 + 4²) = 1/17</span>",
+     "غلط، الـ <bdi dir=\"ltr\">H&nbsp;=&nbsp;1/2</bdi> بتحصل عند الـ cut-off بالظبط بس.",
+     "صح. الحساب كده:<span class=\"ltr\">H = 1/(1 + 9²) = 1/(1 + 81) = 1/82 ≈ 0.012</span>",
+     "غلط، ده نسي الـ order؛ والقيمة دي بتاعة الـ 1st order:<span class=\"ltr\">1/(1 + 9) = 1/10</span>"
+    ],
+    [
+     "غلط، الـ notch بيضعّف band ضيق حوالين الـ u<sub>0</sub>، يعني العكس.",
+     "غلط، الـ band-reject بيضعّف الـ band من u<sub>0</sub> لـ u<sub>1</sub>.",
+     "غلط، الـ high-pass بيختار الـ frequencies اللي فوق u<sub>0</sub>.",
+     "صح. الـ resonator بيقوّي band ضيق حوالين الـ u<sub>0</sub>."
+    ],
+    [
+     "صح. الـ cut-off الأوطى بيشيل noise أكتر، بس بيشيل كمان تفاصيل الـ edges الـ high-frequency، فبيعمل blur أكتر.",
+     "غلط، المحاضرة بتقول إن الـ cut-off الأوطى بيشيل noise أكتر بس بيعمل blur أكتر، فالجملة صح."
+    ],
+    [
+     "غلط، الـ ½ دي القيمة بس لما <bdi dir=\"ltr\">0&nbsp;≤&nbsp;x&nbsp;≤&nbsp;1</bdi>.",
+     "صح. لما <bdi dir=\"ltr\">−1&nbsp;≤&nbsp;x&nbsp;≤&nbsp;0</bdi> النتيجة:<span class=\"ltr\">(x + 1)/2 = (−0.6 + 1)/2 = 0.2</span>",
+     "غلط، ده شال إشارة السالب من الـ x واستخدم <bdi dir=\"ltr\">1&nbsp;−&nbsp;x/2</bdi>، والقانون ده صالح بس لما <bdi dir=\"ltr\">1&nbsp;≤&nbsp;x&nbsp;≤&nbsp;2</bdi>.",
+     "غلط، لسه فيه تداخل عند <bdi dir=\"ltr\">x&nbsp;=&nbsp;−0.6</bdi>؛ والنتيجة صفر بس لما <bdi dir=\"ltr\">x&nbsp;≤&nbsp;−1</bdi> أو <bdi dir=\"ltr\">x&nbsp;≥&nbsp;2</bdi>."
+    ],
+    [
+     "صح. الـ sinc الناتجة real بالكامل لأن الـ f even (متماثلة بين x و−x).",
+     "غلط، المحاضرة بتشرح إن الـ sinc real بالكامل بالظبط عشان الـ top hat even."
+    ],
+    [
+     "غلط، القسمة بتشيل الـ effect أو تعوّضه (الـ deconvolution).",
+     "غلط، الـ theorem بيدّي حاصل ضرب، مش جمع.",
+     "صح. الـ FT بتاع <bdi dir=\"ltr\">f&nbsp;*&nbsp;g</bdi> هو <bdi dir=\"ltr\">F(u)·G(u)</bdi>، فتطبيق effect زي الـ reverb يبقى ضرب وبعدين inverse FT.",
+     "غلط، الـ magnitude spectrum بيحلل الـ signal بس، ومش بيطبق effect."
     ]
    ]
   },
@@ -873,6 +1185,168 @@ AR.mm = {
     [
      "المحاضرة بتقول إن الـ spreadsheets ممكن تكون text (CSV) أو binary.",
      "صح، الـ spreadsheets ممكن تتخزن كـ text (CSV) أو في binary format."
+    ],
+    [
+     "صح. الـ static أو الـ discrete media مش معتمدة على الزمن.",
+     "الـ continuous media معتمدة على الزمن، زي الـ video والـ animation والـ audio.",
+     "الـ analog وصف لـ signals متصلة لازم تتعمل digitise، مش تقسيمة media حسب الزمن.",
+     "الـ temporal relationships بتاعة الـ media المعتمدة على الزمن، يعني عكس التعريف ده."
+    ],
+    [
+     "غلط. الـ animation متذكرة مع الـ video والـ audio كـ continuous media معتمدة على الزمن.",
+     "صح. الـ animation سلسلة graphics على مدار الزمن، فهي continuous media."
+    ],
+    [
+     "الاتنين static (discrete) media.",
+     "صح. الاتنين continuous media ومعاهم الـ animation.",
+     "الصورة الواحدة static؛ الـ audio بس هو الـ continuous.",
+     "الاتنين static ومش معتمدين على الزمن."
+    ],
+    [
+     "الـ compression موضوع جاي في الكورس، مش من الخمس حاجات.",
+     "الـ quantisation خطوة في الـ ADC، مش من الخمس حاجات.",
+     "صح. الـ communication هي الحاجة الخامسة في القايمة.",
+     "الـ synchronisation احتياج للـ data بسبب الـ temporal relationships، مش من الخمس حاجات."
+    ],
+    [
+     "غلط. المحاضرة بتقول العكس في النقطتين.",
+     "صح. أغلب الـ data حجمها كبير، والـ media ممكن تحتاج synchronisation بسبب الـ temporal relationships."
+    ],
+    [
+     "الـ microphone بيحس الصوت.",
+     "الكاميرا بتحس الضوء.",
+     "الـ sound card عبارة عن ADC، مش sensor.",
+     "صح. الـ thermocouple للحرارة."
+    ],
+    [
+     "غلط. ده وصف الـ analog؛ الـ digital signals متقطعة (discrete).",
+     "صح. الـ analog هي المتصلة ولازم تتعمل digitise؛ والـ digital متقطعة والكمبيوتر بيتعامل معاها على طول."
+    ],
+    [
+     "صح. المحاضرة بتدي تغيير الـ volume والـ equalisation كأمثلة.",
+     "الـ anti-aliasing filter بيشتغل على الـ analog input قبل الـ ADC.",
+     "الـ OCR بيحوّل الـ text المطبوع لـ digital، مش تعديل قبل الـ playback.",
+     "الـ tweening هو key-frame interpolation في الـ 2D animation."
+    ],
+    [
+     "الـ microphone ده input sensor بيدخل على الـ ADC.",
+     "صح. الـ DAC بيطلّع analog signal لـ loudspeaker أو RGB monitor.",
+     "الـ thermocouple ده input transducer للحرارة.",
+     "الـ sound card هو مثال المحاضرة للـ ADC."
+    ],
+    [
+     "غلط. الـ sampling هو اللي بيخليها discrete في الزمن؛ والـ quantisation بيخلي القيم discrete.",
+     "صح. الـ sampling بيحوّل من continuous لـ discrete في الزمن، والـ quantisation بيحوّل الـ samples لـ digital values."
+    ],
+    [
+     "الـ analog conditioning لازم قبل الـ ADC، والـ DAC قبل الـ filter بتاع الـ output.",
+     "الـ ADC والـ DAC متبدلين: الـ input بيتحول بالـ ADC.",
+     "صح. ده ترتيب الـ pipeline في المحاضرة.",
+     "الـ digital processing مينفعش يحصل غير بعد ما الـ ADC يعمل digitise."
+    ],
+    [
+     "طلوع أرقام binary ده شغل الـ ADC.",
+     "الـ quantise لـ discrete levels بيعمله الـ ADC عند الـ input.",
+     "الـ key frames بتاعة الـ animation (tweening)، مش الـ DAC.",
+     "صح. الـ DAC بيحوّل الـ discrete levels لـ voltages أو currents متصلة."
+    ],
+    [
+     "صح. بتتحط عند الـ input عشان تشيل الـ frequencies اللي فوق حد الـ sampling.",
+     "غلط. المحاضرة بتقول إنها جزء أساسي من الـ analog conditioning عند الـ input."
+    ],
+    [
+     "صح. الصور المطبوعة بتتعمل flatbed scan.",
+     "الـ electronic pen sensing بيعمل digitise للخط اليدوي.",
+     "الـ OCR للـ text المطبوع (وشوية من المكتوب بالإيد).",
+     "الـ DAC بيحوّل من digital لـ analog للـ playback."
+    ],
+    [
+     "الـ 24,000 ده الحجم بالـ bits، مش bytes.",
+     "صح. الـ ASCII بياخد byte لكل حرف، يعني 3,000 byte.",
+     "ده كأن كل حرف bit واحد.",
+     "اتنين byte لكل حرف ده زي الـ Unicode؛ الـ ASCII بايت واحد."
+    ],
+    [
+     "صح. الـ graphics معمولة من primitives فينفع تتختار وتتعدل؛ أما الـ images فغالبًا بتعدّل pixels بس.",
+     "غلط. المحاضرة بتقول الـ graphics ينفع تتختار وتتعدل عكس الـ images."
+    ],
+    [
+     "الـ polygons من الـ primitives المذكورة.",
+     "الـ arcs من الـ primitives المذكورة.",
+     "صح. الـ pixels بتاعة الـ bitmap images؛ والـ primitives هي الـ lines والـ polygons والـ circles والـ curves والـ arcs.",
+     "الـ curves من الـ primitives المذكورة."
+    ],
+    [
+     "الـ Flash مثال الـ 2D animation.",
+     "الـ Photoshop لتعديل الـ pixels في الصور.",
+     "الـ Illustrator ده graphics editor.",
+     "صح. الـ 3D animation مثالها Maya."
+    ],
+    [
+     "صح. الـ true colour بياخد <bdi dir=\"ltr\">24&nbsp;bits</bdi> للـ pixel.",
+     "الـ <bdi dir=\"ltr\">1&nbsp;bit</bdi> للأبيض والأسود.",
+     "الـ <bdi dir=\"ltr\">8&nbsp;bits</bdi> للـ grey scale أو الـ colour map.",
+     "الـ <bdi dir=\"ltr\">16&nbsp;bits</bdi> دي حجم الـ sample في الـ CD audio، مش عمق صورة."
+    ],
+    [
+     "ده لو <bdi dir=\"ltr\">8&nbsp;bits</bdi> للـ pixel (grey scale).",
+     "صح. الحساب:<span class=\"ltr\">1024 × 1024 × 24 / 8 = 3,145,728 B = 3 MB</span>",
+     "هنا نسيت تقسم الـ bits على 8.",
+     "هنا قسمت على 8 مرتين."
+    ],
+    [
+     "ده لو <bdi dir=\"ltr\">8&nbsp;bits</bdi> للـ pixel، مش أبيض وأسود.",
+     "ده لو <bdi dir=\"ltr\">24-bit</bdi> true colour.",
+     "صح. الحساب:<span class=\"ltr\">1024 × 768 = 786,432 bits / 8 = 98,304 B = 96 KB</span>",
+     "هنا قسمت على 8 مرتين."
+    ],
+    [
+     "ده لو byte واحد للـ pixel بدل 3.",
+     "ده بالـ bits من غير قسمة على 8.",
+     "الـ <bdi dir=\"ltr\">29&nbsp;MB</bdi> دي نتيجة الـ <bdi dir=\"ltr\">10&nbsp;megapixel</bdi> في المحاضرة.",
+     "صح. الحساب:<span class=\"ltr\">12,000,000 × 3 B = 36,000,000 B ≈ 34.3 MB</span>"
+    ],
+    [
+     "صح. الـ CD quality يعني <bdi dir=\"ltr\">16-bit</bdi> عند <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>.",
+     "ده الـ audiophile.",
+     "ده أقل من جودة الـ CD.",
+     "الـ <bdi dir=\"ltr\">8&nbsp;kHz</bdi> للتليفون، مش الـ CD."
+    ],
+    [
+     "ده الـ stereo.",
+     "صح. الحساب:<span class=\"ltr\">44,100 × 16 × 1 × 10 = 7,056,000 bits = 882,000 B</span>",
+     "ده الحجم بالـ bits.",
+     "ده لو الـ sample <bdi dir=\"ltr\">8-bit</bdi>."
+    ],
+    [
+     "صح. الدقيقة mono حوالي <bdi dir=\"ltr\">5&nbsp;MB</bdi> والـ stereo ضعفها يعني <bdi dir=\"ltr\">10&nbsp;MB</bdi>.",
+     "غلط. المحاضرة بتقول <bdi dir=\"ltr\">5&nbsp;MB</bdi> للـ mono و<bdi dir=\"ltr\">10&nbsp;MB</bdi> للـ stereo."
+    ],
+    [
+     "ده frame واحد بس.",
+     "ده لو byte واحد للـ pixel.",
+     "صح. الحساب:<span class=\"ltr\">1280 × 720 × 3 = 2,764,800 B</span><span class=\"ltr\">2,764,800 × 25 = 69,120,000 B/s</span>",
+     "ده لو <bdi dir=\"ltr\">30&nbsp;fps</bdi> بدل 25."
+    ],
+    [
+     "ده عند <bdi dir=\"ltr\">25&nbsp;fps</bdi> زي المحاضرة.",
+     "ده كأن كل frame <bdi dir=\"ltr\">24-bit</bdi>.",
+     "ده frame واحد.",
+     "صح. كل frame <bdi dir=\"ltr\">0.25&nbsp;MB</bdi>، والحساب:<span class=\"ltr\">50 × 0.25 = 12.5 MB</span>"
+    ],
+    [
+     "صح. من المواضيع العامة إن إدراك الإنسان بيطلّع أفكار للـ compression.",
+     "غلط. دي متذكرة كواحدة من المواضيع العامة."
+    ],
+    [
+     "صح. في الصور بتعدّل pixels لوحدها أو مجموعات (Photoshop).",
+     "الـ Freehand ده graphics editor.",
+     "الـ OpenGL ده API standard للـ graphics.",
+     "الـ PostScript برنامج بيعمل graphics."
+    ],
+    [
+     "صح. الـ text مش temporal بس ممكن يكون ليه sequence ضمني.",
+     "غلط. المحاضرة بتقول كده بالظبط عن الـ text."
     ]
    ]
   },
@@ -1229,6 +1703,202 @@ AR.mm = {
     [
      "المحاضرة بتقول إن الـ compression ممكن يتستخدم مع الـ formats دي بس مش إجباري.",
      "صح، في الـ <bdi dir=\"ltr\">.au</bdi> (Unix) والـ <bdi dir=\"ltr\">.aiff</bdi> (Mac) والـ <bdi dir=\"ltr\">.wav</bdi> (PC)، الـ compression ممكن يتستخدم بس مش إجباري."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">fs = 1 / 0.0000625 = 16,000 Hz</span>",
+     "الـ <bdi dir=\"ltr\">8&nbsp;kHz</bdi> جاية من interval <bdi dir=\"ltr\">0.000125&nbsp;s</bdi>.",
+     "ده ضعف النتيجة كأنك طبقت Nyquist؛ الـ fs هي <bdi dir=\"ltr\">1/T</bdi> بس.",
+     "الـ <bdi dir=\"ltr\">4&nbsp;kHz</bdi> دي الـ fmax بتاعة الـ speech، مش <bdi dir=\"ltr\">1/T</bdi>."
+    ],
+    [
+     "ده الـ interval بتاع <bdi dir=\"ltr\">22.05&nbsp;kHz</bdi>.",
+     "صح. الحساب:<span class=\"ltr\">T = 1 / 11,025 ≈ 0.0000907 s ≈ 90.7 µs</span>",
+     "ده الـ interval بتاع <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>.",
+     "ده الـ interval بتاع <bdi dir=\"ltr\">8&nbsp;kHz</bdi>."
+    ],
+    [
+     "ده نص أعلى frequency؛ والـ Nyquist محتاج الضعف.",
+     "الـ sampling بنفس الـ frequency بيضيّع الـ sine.",
+     "صح. الحساب:<span class=\"ltr\">fs ≥ 2 × 7.5 = 15 kHz</span>",
+     "ده أربع أضعاف: مسموح (oversampling) بس مش أقل قيمة."
+    ],
+    [
+     "ده الـ fs نفسها.",
+     "ده ضعف الـ fs؛ والـ Nyquist frequency هي <bdi dir=\"ltr\">fs/2</bdi>.",
+     "هنا قسمت على 4 بدل 2.",
+     "صح. الحساب:<span class=\"ltr\">fs / 2 = 22.05 / 2 = 11.025 kHz</span>"
+    ],
+    [
+     "صح. الـ Nyquist rate هو <bdi dir=\"ltr\">2·fmax</bdi>، أقل sample rate.",
+     "ده الـ Nyquist frequency، مش الـ rate.",
+     "الـ Nyquist بيستخدم أعلى frequency، مش أقلها.",
+     "ده تعريف الـ sampling frequency نفسها."
+    ],
+    [
+     "هنا استخدمت <bdi dir=\"ltr\">200&nbsp;Hz</bdi> من غير ما تضاعفها.",
+     "صح. الحساب:<span class=\"ltr\">f1 = 400π/2π = 200 Hz, f2 = 150 Hz</span><span class=\"ltr\">fs ≥ 400 Hz → T ≤ 1/400 = 0.0025 s</span>",
+     "هنا استخدمت الـ <bdi dir=\"ltr\">150&nbsp;Hz</bdi>؛ والـ Nyquist محتاج الأعلى.",
+     "هنا اعتبرت الـ f هي <bdi dir=\"ltr\">400&nbsp;Hz</bdi> لأنك قسمت على π بدل 2π."
+    ],
+    [
+     "ده الـ fmax نفسها.",
+     "هنا اعتبرت الـ f هي <bdi dir=\"ltr\">1200&nbsp;Hz</bdi> لأنك قسمت على π بدل 2π.",
+     "صح. الحساب:<span class=\"ltr\">f1 = 600 Hz, f2 = 400 Hz</span><span class=\"ltr\">fs ≥ 2 × 600 = 1200 Hz</span>",
+     "ده من الـ component الأوطى <bdi dir=\"ltr\">400&nbsp;Hz</bdi>."
+    ],
+    [
+     "هنا مضاعفتش الـ <bdi dir=\"ltr\">2500&nbsp;Hz</bdi>.",
+     "هنا استخدمت الـ <bdi dir=\"ltr\">1500&nbsp;Hz</bdi> بدل الأعلى.",
+     "هنا استخدمت أقل component <bdi dir=\"ltr\">500&nbsp;Hz</bdi>.",
+     "صح. الـ frequencies هي:<span class=\"ltr\">1500, 2500, 500 Hz</span><span class=\"ltr\">fmax = 2500 → fs ≥ 5000 Hz → T ≤ 0.0002 s</span>"
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">180 × 22,050 × 8 × 1 = 31,752,000 bits = 3,969,000 B</span>",
+     "ده الحجم بالـ bits.",
+     "ده الـ stereo.",
+     "هنا استخدمت 3 ثواني بدل 180."
+    ],
+    [
+     "ده الـ stereo؛ والإشارة mono.",
+     "صح. الحساب:<span class=\"ltr\">fs = 1/0.0000625 = 16,000 Hz</span><span class=\"ltr\">16,000 × 16 × 180 = 46,080,000 bits = 5,760,000 B = 5625 KB</span>",
+     "هنا قسمت الـ bits على 1024 من غير ما تقسم على 8.",
+     "هنا استخدمت 3 ثواني بدل 180."
+    ],
+    [
+     "ده الـ mono.",
+     "ده الحجم بالـ bits.",
+     "صح. الحساب:<span class=\"ltr\">fs = 1/0.25 = 4 Hz, t = 7200 s</span><span class=\"ltr\">4 × 32 × 7200 × 2 = 1,843,200 bits = 230,400 B</span>",
+     "هنا استخدمت 120 دقيقة بدل 7200 ثانية."
+    ],
+    [
+     "هنا استخدمت <bdi dir=\"ltr\">4000&nbsp;Hz</bdi> بدل <bdi dir=\"ltr\">8000&nbsp;Hz</bdi>.",
+     "ده الحجم بالـ bits.",
+     "هنا استخدمت <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>؛ والـ speech بياخد <bdi dir=\"ltr\">8&nbsp;kHz</bdi>.",
+     "صح. الحساب:<span class=\"ltr\">fs = 2 × 4000 = 8000 Hz, t = 5400 s</span><span class=\"ltr\">8000 × 16 × 5400 = 691,200,000 bits = 86,400,000 B</span>"
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">10 × 44,100 × 16 × 2 = 14,112,000 bits</span><span class=\"ltr\">= 1,764,000 B ≈ 1722.66 KB</span>",
+     "ده الـ mono.",
+     "هنا استخدمت rate الـ speech <bdi dir=\"ltr\">8&nbsp;kHz</bdi>.",
+     "هنا قسمت الـ bits على 1024 من غير قسمة على 8."
+    ],
+    [
+     "ده الـ mono.",
+     "صح. الحساب:<span class=\"ltr\">fs = 400 Hz, t = 14,400 s</span><span class=\"ltr\">400 × 64 × 14,400 × 2 = 737,280,000 bits = 92,160,000 B</span>",
+     "ده الحجم بالـ bits.",
+     "هنا استخدمت 240 دقيقة بدل الثواني."
+    ],
+    [
+     "مضاعفة الـ channels بتتلغي مع تنصيف الـ rate.",
+     "تنصيف الـ rate بيتلغي مع مضاعفة الـ channels.",
+     "صح. الحجم متناسب مع الـ rate والـ channels، والحساب:<span class=\"ltr\">½ × 2 = 1</span>",
+     "التغييرين بيلغوا بعض."
+    ],
+    [
+     "ده مدى الـ <bdi dir=\"ltr\">8-bit</bdi>.",
+     "فيه 65,536 level، فأعلى قيمة 65535.",
+     "ده نص المدى.",
+     "صح. الحساب:<span class=\"ltr\">2^16 = 65,536 levels: 0–65535</span>"
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">2^10 = 1024</span>",
+     "الـ levels هي <bdi dir=\"ltr\">2^bits</bdi>، مش <bdi dir=\"ltr\">10²</bdi>.",
+     "الـ levels بتساوي <bdi dir=\"ltr\">2^bits</bdi>، مش ضرب في 2.",
+     "ده الـ <bdi dir=\"ltr\">8-bit</bdi>."
+    ],
+    [
+     "ده الـ <bdi dir=\"ltr\">16-bit</bdi>.",
+     "صح. الـ SNR للـ <bdi dir=\"ltr\">8-bit</bdi> هو <bdi dir=\"ltr\">50&nbsp;dB</bdi>.",
+     "الـ <bdi dir=\"ltr\">6&nbsp;dB</bdi> هي الزيادة اللي بتضاعف الصوت.",
+     "الـ <bdi dir=\"ltr\">48&nbsp;dB</bdi> هي الفرق بين 98 و50."
+    ],
+    [
+     "صح. السلايد بيقول إن زيادة <bdi dir=\"ltr\">6&nbsp;dB</bdi> معناها الضعف.",
+     "غلط. السلايد بيقول كده بالظبط."
+    ],
+    [
+     "عدد الـ samples في الثانية بيتقاس بالـ Hertz.",
+     "الـ bits لكل sample ده الـ bit size.",
+     "صح. الودان مش linear، والـ dB مقياس logarithmic.",
+     "المحاضرة بتقول الودان مش linear."
+    ],
+    [
+     "ده الـ mono عند <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>.",
+     "ده الـ <bdi dir=\"ltr\">8-bit</bdi> mono.",
+     "ده الـ stereo عند <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>.",
+     "صح. نص الـ <bdi dir=\"ltr\">5.05&nbsp;MB</bdi>."
+    ],
+    [
+     "غلط. المحاضرة بتقول إنها مش دايمًا بتحسّن الجودة، بس بتكبّر الملف.",
+     "صح. الـ rate الأعلى بيكبّر الملف، بس الزيادة عن احتياج السمع مش دايمًا بتحسّن الجودة."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">2 × 22.05 kHz = 44.1 kHz</span>",
+     "ده الـ sample rate، ضعف حد السمع.",
+     "ده الـ fmax بتاع الـ speech.",
+     "ده sample rate للـ speech."
+    ],
+    [
+     "الـ CD عند <bdi dir=\"ltr\">44.1&nbsp;kHz</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">11.025&nbsp;kHz</bdi> للـ speech.",
+     "الـ AM radio تحت <bdi dir=\"ltr\">22.05&nbsp;kHz</bdi>.",
+     "الـ audiophile عند <bdi dir=\"ltr\">96&nbsp;kHz</bdi>."
+    ],
+    [
+     "ده لما الـ samples تقع على القمم والقيعان.",
+     "ده الـ sampling بنفس frequency الإشارة.",
+     "صح. الـ samples الحمرا على المحور بتطلع خط مستقيم والـ sine بيضيع.",
+     "ده محتاج sampling أعلى من Nyquist."
+    ],
+    [
+     "السلايد عن الـ undersampling، مش الـ noise.",
+     "الـ ADPCM في جزء الـ formats.",
+     "الشكل فيه مجموعة samples واحدة لتلات موجات.",
+     "صح. sinusoids مختلفة بتعدي على نفس الـ samples فمش هتفرق بينهم."
+    ],
+    [
+     "غلط. السلايدز بتقول الـ aliasing بيأثر على الـ audio والصور والـ video.",
+     "صح. الـ aliasing بيأثر على الـ audio والصور والـ video."
+    ],
+    [
+     "غلط. الـ low-pass filter بييجي قبل الـ <bdi dir=\"ltr\">A/D</bdi> converter على الـ analog signal.",
+     "صح. الترتيب:<span class=\"ltr\">Input → Low Pass Filter → A/D Converter → Sampled Signal</span>"
+    ],
+    [
+     "صح. الـ sampling فوق الـ Nyquist rate بيقلل الـ aliasing بس بيكلّف data أكتر.",
+     "غلط. المحاضرة بتقول كده."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">2 × 4 = 8 kHz</span>",
+     "غلط. الـ <bdi dir=\"ltr\">2&nbsp;×&nbsp;4&nbsp;kHz</bdi> بتساوي <bdi dir=\"ltr\">8&nbsp;kHz</bdi>، فالجملة صح."
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">.aiff</bdi> من Mac وSGI.",
+     "ده الـ <bdi dir=\"ltr\">.au</bdi>.",
+     "ده الـ <bdi dir=\"ltr\">.wav</bdi>.",
+     "الـ Sound Blaster مرتبط بالـ <bdi dir=\"ltr\">.voc</bdi>."
+    ],
+    [
+     "الـ <bdi dir=\"ltr\">.wav</bdi> مش متذكر معاه silence deletion.",
+     "صح. الـ <bdi dir=\"ltr\">.voc</bdi> بتاع Sound Blaster.",
+     "الـ FLAC متذكر من غير silence deletion.",
+     "الـ <bdi dir=\"ltr\">.sd2</bdi> بتاع Pro Tools."
+    ],
+    [
+     "الـ subtractive بيعمل filter لأجزاء من waveform معقدة.",
+     "الـ granular بيستخدم حتت صغيرة من samples.",
+     "صح. الـ additive بيجمع waveforms أبسط.",
+     "الـ wavetable من samples لآلات حقيقية."
+    ],
+    [
+     "غلط. بنبعت الـ parameters بس والـ client بيطلّع الصوت.",
+     "صح. بنبعت الـ parameters بس والـ client بيعمل synthesise للصوت."
+    ],
+    [
+     "الودان مش linear.",
+     "السمع لحد حوالي <bdi dir=\"ltr\">20–22&nbsp;kHz</bdi>.",
+     "الـ <bdi dir=\"ltr\">8-bit</bdi> noisy أكتر بحوالي 8 مرات.",
+     "صح. الودان بتستجيب للضغط والـ MPEG audio بيستغل ده."
     ]
    ]
   },

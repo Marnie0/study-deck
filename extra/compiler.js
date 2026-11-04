@@ -205,6 +205,500 @@ EXTRA.compiler = {
     ]
    ],
    "a": 1
+  },
+  {
+   "q": "……… is the output of the scanner (lexical analysis) phase.",
+   "o": [
+    [
+     "Tokens",
+     "Correct. The scanner collects sequences of characters into meaningful units called tokens. (L1, Phases of a compiler)"
+    ],
+    [
+     "Syntax tree",
+     "Wrong. The syntax tree is the output of the parser, which takes the tokens as input."
+    ],
+    [
+     "Annotated syntax tree",
+     "Wrong. The annotated syntax tree is the output of the semantic analyzer."
+    ],
+    [
+     "Intermediate code",
+     "Wrong. Intermediate code is the output of the source code optimizer."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "The syntax analysis phase (parser) produces ………",
+   "o": [
+    [
+     "a stream of tokens",
+     "Wrong. The stream of tokens is what the scanner produces and the parser reads."
+    ],
+    [
+     "intermediate code",
+     "Wrong. Intermediate code comes out of the source code optimizer."
+    ],
+    [
+     "a parse tree or a syntax tree",
+     "Correct. The parser determines the structure of the program and its result is a parse tree or a syntax tree (AST). (L1, Syntax analysis)"
+    ],
+    [
+     "target code",
+     "Wrong. Target code is produced by the code generator."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Intermediate code is the output of the ……… phase.",
+   "o": [
+    [
+     "semantic analyzer",
+     "Wrong. The semantic analyzer outputs the annotated syntax tree."
+    ],
+    [
+     "code generator",
+     "Wrong. The code generator takes intermediate code as input and outputs target code."
+    ],
+    [
+     "scanner",
+     "Wrong. The scanner outputs tokens."
+    ],
+    [
+     "source code optimizer",
+     "Correct. In the phases figure the source code optimizer takes the annotated tree and outputs intermediate code. (L1, Phases of a compiler)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "The code generator takes ……… as its input.",
+   "o": [
+    [
+     "the annotated syntax tree",
+     "Wrong. The annotated tree is the input to the source code optimizer, one phase earlier."
+    ],
+    [
+     "intermediate code (IR)",
+     "Correct. The code generator takes the intermediate code (IR) and generates code for the target machine. (L1, Code generator)"
+    ],
+    [
+     "tokens",
+     "Wrong. Tokens are the input to the parser."
+    ],
+    [
+     "source code",
+     "Wrong. Source code is the input to the scanner, the first phase."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which three components are connected to all six phases of the compiler in the lecture's figure?",
+   "o": [
+    [
+     "Scanner, parser and code generator",
+     "Wrong. These are phases themselves, not shared helpers."
+    ],
+    [
+     "Tokens, syntax tree and intermediate code",
+     "Wrong. These are outputs passed from one phase to the next, not shared by all phases."
+    ],
+    [
+     "Literal table, symbol table and error handler",
+     "Correct. All six phases talk to the literal table, the symbol table and the error handler, which are not phases. (L1, Phases of a compiler)"
+    ],
+    [
+     "Temporary files, hash tables and records",
+     "Wrong. Hash tables implement the symbol table and temporary files hold intermediate products; they are not the three boxes in the figure."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: The error handler is one of the six phases of a compiler.",
+   "o": [
+    [
+     "True",
+     "Wrong. The error handler is a helper connected to all phases, like the literal and symbol tables."
+    ],
+    [
+     "False",
+     "Correct. The six phases are scanner, parser, semantic analyzer, source code optimizer, code generator and target code optimizer; the error handler is a helper, not a phase. (L1, Phases of a compiler)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: An interpreter translates the program one statement at a time.",
+   "o": [
+    [
+     "True",
+     "Correct. The comparison table says an interpreter translates one statement at a time, while a compiler scans the entire program. (L1, Compilers vs interpreters)"
+    ],
+    [
+     "False",
+     "Wrong. Translating one statement at a time is exactly the interpreter row of the table."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: A compiler is memory efficient because it generates no intermediate object code.",
+   "o": [
+    [
+     "True",
+     "Wrong. That describes the interpreter; the compiler generates intermediate object code that needs linking."
+    ],
+    [
+     "False",
+     "Correct. The compiler generates intermediate object code which needs linking, so it needs more memory; the interpreter is the memory-efficient one. (L1, Compilers vs interpreters)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which of the following languages is given in the lecture as an example that uses an interpreter?",
+   "o": [
+    [
+     "C++",
+     "Wrong. C++ is listed under the compiler column."
+    ],
+    [
+     "Java",
+     "Wrong. Java is listed under the compiler column."
+    ],
+    [
+     "Both C and Java",
+     "Wrong. C and Java are both listed under the compiler column."
+    ],
+    [
+     "Python",
+     "Correct. The interpreter column lists JavaScript, Python and Ruby. (L1, Compilers vs interpreters)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Which of the following languages is listed in the lecture as using a compiler?",
+   "o": [
+    [
+     "JavaScript",
+     "Wrong. JavaScript is listed under the interpreter column."
+    ],
+    [
+     "Java",
+     "Correct. The compiler column lists C, C++ and Java. (L1, Compilers vs interpreters)"
+    ],
+    [
+     "Ruby",
+     "Wrong. Ruby is listed under the interpreter column."
+    ],
+    [
+     "Python",
+     "Wrong. Python is listed under the interpreter column."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "The semantics of a program are its ………, as opposed to its syntax.",
+   "o": [
+    [
+     "meaning",
+     "Correct. Semantics are the program's \"meaning\", while syntax is its structure. (L1, Semantic analyzer)"
+    ],
+    [
+     "structure",
+     "Wrong. Structure is the syntax, which the parser determines."
+    ],
+    [
+     "tokens",
+     "Wrong. Tokens are the units produced by the scanner."
+    ],
+    [
+     "target code",
+     "Wrong. Target code is what the code generator produces."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "<b>Static semantics</b>, handled by the semantic analyzer, include ………",
+   "o": [
+    [
+     "constant folding and instruction replacement",
+     "Wrong. These are optimizations done by the source code optimizer and the target code optimizer."
+    ],
+    [
+     "grouping characters into tokens",
+     "Wrong. That is the scanner's job."
+    ],
+    [
+     "choosing address modes",
+     "Wrong. That is a task of the target code optimizer."
+    ],
+    [
+     "declarations and type checking",
+     "Correct. The lecture defines static semantics as declarations and type checking. (L1, Semantic analyzer)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Apply the source code optimizer's constant folding to the three-address code <code>t = 7 + 1; b[j] = t</code>. What is the final result?",
+   "o": [
+    [
+     "<code>t = 8; b[j] = t</code>",
+     "Wrong. This is only the middle step; the temporary t is then substituted, as in the lecture where it ends with a single assignment."
+    ],
+    [
+     "<code>b[j] = 8</code>",
+     "Correct. 7 + 1 is folded to 8, then t is replaced, exactly like t = 4 + 2; a[index] = t → a[index] = 6. (L1, Source code optimizer)"
+    ],
+    [
+     "<code>b[j] = 7 + 1</code>",
+     "Wrong. This drops the temporary but does not fold the constants, so the addition is still done at run time."
+    ],
+    [
+     "<code>b[j] = t + 1</code>",
+     "Wrong. This mixes the temporary with one of the constants and is not equivalent to the original code."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "The scanner reads <code>b[k]=c+1</code>. How many of its tokens are <b>identifiers</b>?",
+   "o": [
+    [
+     "8",
+     "Wrong. 8 is the total number of tokens (b [ k ] = c + 1), not only the identifiers."
+    ],
+    [
+     "2",
+     "Wrong. b and k are identifiers, but c is also an identifier."
+    ],
+    [
+     "3",
+     "Correct. b, k and c are identifiers; [ ] = + are symbols and 1 is a number, like a and index in a[index]=4+2. (L1, Lexical analysis)"
+    ],
+    [
+     "4",
+     "Wrong. 1 is a number token, not an identifier."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In the annotated syntax tree of <code>a[index]=4+2</code>, the <b>subscript-expression</b> node is annotated as ………",
+   "o": [
+    [
+     "integer",
+     "Correct. The semantic analyzer annotates subscript-expression as integer (an element of an array of integer). (L1, Semantic analyzer)"
+    ],
+    [
+     "array of integer",
+     "Wrong. \"array of integer\" is the attribute of the identifier a, not of the subscript-expression."
+    ],
+    [
+     "number 6",
+     "Wrong. 6 appears only after constant folding replaces the additive-expression."
+    ],
+    [
+     "it gets no attribute",
+     "Wrong. Every node in the annotated tree gets an attribute; this one is integer."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: The earliest point of most optimization steps is just after semantic analysis.",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture says the earliest point of most optimization steps is just after semantic analysis, which is where the source code optimizer sits. (L1, Source code optimizer)"
+    ],
+    [
+     "False",
+     "Wrong. The lecture states exactly this: optimization starts just after semantic analysis."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "After constant folding on the annotated tree of <code>a[index]=4+2</code>, the additive-expression node is replaced by ………",
+   "o": [
+    [
+     "a subscript-expression",
+     "Wrong. The subscript-expression is the left child and stays as it is."
+    ],
+    [
+     "the number 4",
+     "Wrong. 4 was one of the two operands; both operands are removed."
+    ],
+    [
+     "the identifier index",
+     "Wrong. index belongs to the subscript-expression, which is not changed."
+    ],
+    [
+     "a single number 6",
+     "Correct. Folding replaces the additive-expression and its numbers 4 and 2 by the single node number 6 (integer). (L1, Source code optimizer)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Replacing <code>MUL R0, 2</code> by <code>SHL R0</code> is an example of which target code optimizer task?",
+   "o": [
+    [
+     "Choosing address modes",
+     "Wrong. Choosing address modes is a separate task in the list; the lecture gives MUL by 2 becoming SHL as its example of replacing instructions."
+    ],
+    [
+     "Replacing instructions",
+     "Correct. The lecture lists replacing instructions (MUL by 2 becomes SHL, a shift left) as a target code optimizer task. (L1, Target code optimizer)"
+    ],
+    [
+     "Eliminating redundant instructions",
+     "Wrong. Eliminating removes instructions; here one instruction is swapped for a cheaper one."
+    ],
+    [
+     "Constant folding",
+     "Wrong. Constant folding is done earlier by the source code optimizer (4+2 becomes 6)."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: Constant folding (4+2 becomes 6) is performed by the target code optimizer.",
+   "o": [
+    [
+     "True",
+     "Wrong. The target code optimizer works on target code: address modes, replacing instructions, removing redundant ones."
+    ],
+    [
+     "False",
+     "Correct. Constant folding is done by the source code optimizer, on the annotated tree or on the intermediate code. (L1, Source code optimizer)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Compared to the parse tree, the syntax tree (AST) is ………",
+   "o": [
+    [
+     "the same tree with types added under each node",
+     "Wrong. That is the annotated syntax tree made by the semantic analyzer."
+    ],
+    [
+     "the output of the scanner",
+     "Wrong. The scanner outputs tokens; both trees come from the parser."
+    ],
+    [
+     "a condensed version of it",
+     "Correct. The parse tree keeps every grammar node, while the syntax tree is the condensed version: assign-expression(subscript-expression(a, index), additive-expression(4, 2)). (L1, Syntax analysis)"
+    ],
+    [
+     "a tree that keeps every grammar node",
+     "Wrong. Keeping every grammar node is the parse tree, not the syntax tree."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "The syntax tree is a standard ……… structure generated by the parser.",
+   "o": [
+    [
+     "pointer-based",
+     "Correct. The syntax tree is a standard pointer-based structure; nodes may be dynamically allocated and represented as variable records. (L1, Principal data structures)"
+    ],
+    [
+     "hash-table",
+     "Wrong. Hash tables are used for the symbol table because of constant-time access."
+    ],
+    [
+     "enumerated-type",
+     "Wrong. Enumerated data type values are how tokens are stored."
+    ],
+    [
+     "array of text strings",
+     "Wrong. An array of text strings is one way to keep intermediate code."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "According to the lecture, intermediate code may be kept as ………",
+   "o": [
+    [
+     "a single global variable",
+     "Wrong. A single global variable (or an array) is where the current token is stored."
+    ],
+    [
+     "a value of an enumerated data type",
+     "Wrong. That is how a token is represented."
+    ],
+    [
+     "one or several hash tables",
+     "Wrong. Hash tables are used for the symbol table."
+    ],
+    [
+     "an array of text strings, a temporary text, or a linked list of structures",
+     "Correct. Intermediate code (e.g. three-address code, p-code) is kept in one of these forms and should be easy to reorganize. (L1, Principal data structures)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: The symbol table stores constants and strings in order to reduce program size.",
+   "o": [
+    [
+     "True",
+     "Wrong. Storing constants and strings to reduce program size is the job of the literal table."
+    ],
+    [
+     "False",
+     "Correct. That is the literal table; the symbol table keeps information about identifiers (functions, variables, constants, data types). (L1, Principal data structures)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: A compiler scans the entire program and translates it as a whole into machine code.",
+   "o": [
+    [
+     "True",
+     "Correct. This is the compiler row of the comparison table; the interpreter translates one statement at a time. (L1, Compilers vs interpreters)"
+    ],
+    [
+     "False",
+     "Wrong. Scanning the entire program at once is exactly how the lecture describes the compiler."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "The <b>symbol table</b> keeps information about ………",
+   "o": [
+    [
+     "comments and white space",
+     "Wrong. Comments and white space are removed by the scanner, not stored."
+    ],
+    [
+     "identifiers: functions, variables, constants and data types",
+     "Correct. The symbol table keeps information about identifiers and interacts with almost every phase. (L1, Principal data structures)"
+    ],
+    [
+     "the products of intermediate steps",
+     "Wrong. Products of intermediate steps are held in temporary files."
+    ],
+    [
+     "the target machine's instructions",
+     "Wrong. The target machine's properties matter to the code generator; they are not what the symbol table stores."
+    ]
+   ],
+   "a": 1
   }
  ],
  "2": [
@@ -411,6 +905,522 @@ EXTRA.compiler = {
     ]
    ],
    "a": 1
+  },
+  {
+   "q": "Besides producing tokens, the lexical analyzer also ………",
+   "o": [
+    [
+     "removes comments and white space",
+     "Correct. The lexical analysis phase removes comments and white space (blank, tab, newline). (L2, Lexical analysis)"
+    ],
+    [
+     "builds the parse tree",
+     "Wrong. The parse tree is built by the parser in syntax analysis."
+    ],
+    [
+     "checks declarations and types",
+     "Wrong. Type checking is static semantics, done by the semantic analyzer."
+    ],
+    [
+     "generates intermediate code",
+     "Wrong. Intermediate code comes later, from the source code optimizer."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: The white space removed by the scanner includes blank, tab and newline characters.",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture names blank, tab and newline as the white space that the lexical analyzer removes. (L2, Lexical analysis)"
+    ],
+    [
+     "False",
+     "Wrong. These three are exactly the white space characters listed in the lecture."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In the lecture's example, <code>distance</code> is a ……… and <b>id</b> is a ………",
+   "o": [
+    [
+     "token, lexeme",
+     "Wrong. It is the other way round: id is the category, distance is the actual string."
+    ],
+    [
+     "lexeme, token",
+     "Correct. A lexeme is the actual string instance (distance); a token is the logical category (id, relop, number). (L2, Token vs lexeme)"
+    ],
+    [
+     "alphabet, string",
+     "Wrong. An alphabet is a set of symbols; neither distance nor id is an alphabet."
+    ],
+    [
+     "token, language",
+     "Wrong. A language is a set of strings; id is a token category."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Using the lecture's token categories, the scanner turns <code>if rate &gt;= time0 then rate := maxdist;</code> into:",
+   "o": [
+    [
+     "<code>if id id id then id id id</code>",
+     "Wrong. The operators are tokens too: &gt;= is a relop and := and ; stay as their own tokens."
+    ],
+    [
+     "<code>id id relop id id id := id ;</code>",
+     "Wrong. if and then are keywords; they are recognized as keywords, not as identifiers."
+    ],
+    [
+     "<code>if id relop id then id := id ;</code>",
+     "Correct. Each name becomes id and &gt;= becomes relop, while keywords and the other symbols stay, as in the lecture's distance example. (L2, Token vs lexeme)"
+    ],
+    [
+     "<code>if rate relop time0 then rate := maxdist ;</code>",
+     "Wrong. This keeps the lexemes; the token stream replaces each identifier by its category id."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "An alphabet Σ is a ……… set of symbols.",
+   "o": [
+    [
+     "infinite, ordered",
+     "Wrong. An alphabet must be finite."
+    ],
+    [
+     "possibly empty, finite",
+     "Wrong. An alphabet must be non-empty."
+    ],
+    [
+     "infinite, unordered",
+     "Wrong. An alphabet is finite and ordered."
+    ],
+    [
+     "finite, non-empty, ordered",
+     "Correct. The lecture defines an alphabet as a finite, non-empty, ordered set of symbols, letters or characters. (L2, Alphabets and strings)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "What is the length of the string <code>10110</code> over Σ = {0,1}?",
+   "o": [
+    [
+     "3",
+     "Wrong. 3 is the number of 1s in the string, not its length."
+    ],
+    [
+     "4",
+     "Wrong. Count again: the string has five symbols."
+    ],
+    [
+     "5",
+     "Correct. The length is the number of symbols: 1, 0, 1, 1, 0 gives 5, just as 0101 has length 4. (L2, Alphabets and strings)"
+    ],
+    [
+     "2",
+     "Wrong. 2 is the number of distinct symbols in Σ, not the length of the string."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Compute the union {aa, b} ∪ {b, ab}.",
+   "o": [
+    [
+     "{aa, b, ab}",
+     "Correct. The union contains every element of each set and nothing else; b appears once since it is a set. (L2, Operations on languages)"
+    ],
+    [
+     "{b}",
+     "Wrong. That is only the common element (the intersection), not the union."
+    ],
+    [
+     "{aab, aaab, bb, bab}",
+     "Wrong. That is the concatenation of the two languages, not their union."
+    ],
+    [
+     "{aa, ab}",
+     "Wrong. b is in both sets, so it must be in the union."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "L1 = {x, y} and L2 = {1, 22}. L1L2 = ?",
+   "o": [
+    [
+     "{1x, 1y, 22x, 22y}",
+     "Wrong. That is L2L1; in L1L2 the string from L1 comes first."
+    ],
+    [
+     "{x, y, 1, 22}",
+     "Wrong. That is the union L1 ∪ L2, not the concatenation."
+    ],
+    [
+     "{x1, y22}",
+     "Wrong. Concatenation pairs each string of L1 with each string of L2, not just matching positions."
+    ],
+    [
+     "{x1, x22, y1, y22}",
+     "Correct. Each string in L1 is followed by each string in L2, like {a,b}{0,11} = {a0, a11, b0, b11}. (L2, Operations on languages)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "L1 = {ab, c, d} and L2 = {e, fg}. How many strings are in L1L2?",
+   "o": [
+    [
+     "5",
+     "Wrong. 5 = 3 + 2 is the size of the union, not of the concatenation."
+    ],
+    [
+     "6",
+     "Correct. Each of the 3 strings of L1 joins each of the 2 strings of L2: abe, abfg, ce, cfg, de, dfg, so 3 × 2 = 6. (L2, Operations on languages)"
+    ],
+    [
+     "3",
+     "Wrong. 3 is only the size of L1."
+    ],
+    [
+     "9",
+     "Wrong. 9 = 3 × 3; L2 has only 2 strings."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: The union of two languages is commutative, so L1 ∪ L2 = L2 ∪ L1.",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture notes that L1 ∪ L2 = L2 ∪ L1: for union the order does not matter (unlike concatenation). (L2, Operations on languages)"
+    ],
+    [
+     "False",
+     "Wrong. The order does not matter in union; it is concatenation where order matters."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "{b}+ = ?",
+   "o": [
+    [
+     "{ε, b, bb, bbb, …}, including the empty string",
+     "Wrong. That is the Kleene closure {b}*, which includes ε (zero repetitions)."
+    ],
+    [
+     "{b, bb, bbb, …}",
+     "Correct. The positive closure concatenates one or more strings, so ε is not included. (L2, Operations on languages)"
+    ],
+    [
+     "{ε}",
+     "Wrong. {ε} is the set containing only the empty string."
+    ],
+    [
+     "{b}",
+     "Wrong. {b} has only one repetition; the closure allows any number of b's from one up."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: {ε} is a set of one element, which is the empty string.",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture says {ε} is a set of one element which is the empty string. (L2, Operations on languages)"
+    ],
+    [
+     "False",
+     "Wrong. {ε} is not empty: it contains exactly one element, the empty string."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Using the lecture's precedence rules, the regular expression <code>ab|c*</code> means:",
+   "o": [
+    [
+     "<code>a(b|c)*</code>: a followed by any mix of b and c",
+     "Wrong. | has the lowest precedence, so it does not bind b and c together before the concatenation."
+    ],
+    [
+     "<code>(ab|c)*</code>: the whole expression repeated",
+     "Wrong. * binds tightest, so it applies only to c, not to the whole expression."
+    ],
+    [
+     "<code>(ab)|(c*)</code>: ab, or zero or more c's",
+     "Correct. * applies first (c*), then concatenation (ab), then | joins them. (L2, Regular expressions)"
+    ],
+    [
+     "<code>a(b|(c*))</code>: a followed by b or by c's",
+     "Wrong. Concatenation binds tighter than |, so ab is grouped before the |."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Which string is NOT in the language of <code>(a|c)*b(a|c)*</code> (exactly one b over {a,b,c})?",
+   "o": [
+    [
+     "b",
+     "Wrong. Both (a|c)* parts can be empty, so b alone is accepted."
+    ],
+    [
+     "acb",
+     "Wrong. ac comes from the first (a|c)*, then the single b; the second part is empty."
+    ],
+    [
+     "cba",
+     "Wrong. c, then the single b, then a; it has exactly one b."
+    ],
+    [
+     "abcb",
+     "Correct. abcb has two b's, but the expression allows exactly one b. (L2, Regular expressions)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Which regular expression over {a,b} gives the strings with <b>exactly one a</b>?",
+   "o": [
+    [
+     "<code>b*ab*</code>",
+     "Correct. Any number of b's, one a, then any number of b's, the same pattern as (a|c)*b(a|c)* for exactly one b. (L2, Regular expressions)"
+    ],
+    [
+     "<code>(a|b)*a(a|b)*</code>",
+     "Wrong. This means at least one a: the (a|b)* parts can contain more a's."
+    ],
+    [
+     "<code>a*ba*</code>",
+     "Wrong. This is exactly one b, not exactly one a."
+    ],
+    [
+     "<code>b*a+b*</code>",
+     "Wrong. a+ allows one or more a's, so aa would be accepted."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "By the algebraic properties of regular expressions, <code>s|s</code> = ?",
+   "o": [
+    [
+     "<code>ss</code> (s twice)",
+     "Wrong. ss is a concatenation; s|s is a choice between two identical options."
+    ],
+    [
+     "<code>s*</code> (zero or more s)",
+     "Wrong. s* is zero or more s; s|s matches only s."
+    ],
+    [
+     "<code>s</code> (s itself)",
+     "Correct. | is idempotent: s|s = s. (L2, Algebraic properties)"
+    ],
+    [
+     "<code>ε</code> (the empty string)",
+     "Wrong. ε is the empty string; s|s still matches s."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: <code>(r|s)t = rt|st</code>.",
+   "o": [
+    [
+     "True",
+     "Correct. Concatenation distributes over |: (r|s)t = rt|st, as in the lecture's table of laws. (L2, Algebraic properties)"
+    ],
+    [
+     "False",
+     "Wrong. This is one of the laws in the table: concatenation distributes over |."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "By definition, <code>s?</code> = ?",
+   "o": [
+    [
+     "<code>s*</code> (zero or more s)",
+     "Wrong. s* allows any number of s; s? allows s or nothing."
+    ],
+    [
+     "<code>s+</code> (one or more s)",
+     "Wrong. s+ = ss* is one or more s and does not include ε."
+    ],
+    [
+     "<code>ss</code> (s twice)",
+     "Wrong. ss is s twice; s? is s at most once."
+    ],
+    [
+     "<code>s|ε</code> (s or the empty string)",
+     "Correct. The lecture's table gives s? = s|ε by definition. (L2, Algebraic properties)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: <code>(s*)* = s*</code>.",
+   "o": [
+    [
+     "True",
+     "Correct. * is idempotent: (s*)* = s*. (L2, Algebraic properties)"
+    ],
+    [
+     "False",
+     "Wrong. Repeating a starred expression any number of times gives nothing new, so the law (s*)* = s* holds."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Using the finite automaton for <code>1*01(0|1)*</code> (q0 loop 1, q0 –0→ q1, q1 –1→ q2, q2 final with loop 0,1), which input is <b>rejected</b>?",
+   "o": [
+    [
+     "101",
+     "Wrong. q0 –1→ q0 –0→ q1 –1→ q2, which is final, so 101 is accepted."
+    ],
+    [
+     "1001",
+     "Correct. q0 –1→ q0 –0→ q1, and q1 has no transition on 0, so the input is rejected. (L2, Finite automaton for 1*01(0|1)*)"
+    ],
+    [
+     "0110",
+     "Wrong. q0 –0→ q1 –1→ q2, then q2 loops on 1 and 0, ending in the final state."
+    ],
+    [
+     "01",
+     "Wrong. q0 –0→ q1 –1→ q2, the final state, so 01 is accepted."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "In the finite automaton for <code>a*</code>, the single state is ………",
+   "o": [
+    [
+     "both the start state and a final state",
+     "Correct. a* is one state with a start arrow, drawn as a double circle, with a loop on a, so ε is accepted. (L2, Finite automata)"
+    ],
+    [
+     "a start state only, with an edge to a separate final state",
+     "Wrong. That shape (with a loop on the start state) is the automaton for a+."
+    ],
+    [
+     "a final state only",
+     "Wrong. It also has the start arrow; it is both start and final."
+    ],
+    [
+     "a state with a loop labelled a,b",
+     "Wrong. A loop labelled a,b belongs to the automaton for (a|b)*."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In the lecture's transition tables, the symbol <b>*</b> next to a state means ………",
+   "o": [
+    [
+     "the start state",
+     "Wrong. The start state is marked with →."
+    ],
+    [
+     "no transition",
+     "Wrong. \"No transition\" is written as –."
+    ],
+    [
+     "the final state",
+     "Correct. The tables use → for the start state, * for the final state and – for no transition. (L2, Finite automata)"
+    ],
+    [
+     "a loop on every input",
+     "Wrong. Loops appear as the same state in the table cells, not as a mark next to the state."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: In the finite automaton for <code>a+</code>, the start state is also a final state.",
+   "o": [
+    [
+     "True",
+     "Wrong. If the start state were final, the empty string would be accepted, but a+ needs at least one a."
+    ],
+    [
+     "False",
+     "Correct. In a+ the start state has a loop on a and an a-edge to a separate final state, so at least one a is needed. (L2, Finite automata)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: An NFA can use ε transitions, but a DFA cannot.",
+   "o": [
+    [
+     "True",
+     "Correct. The comparison table says a DFA cannot use an ε transition, while an NFA can. (L2, NFA vs DFA)"
+    ],
+    [
+     "False",
+     "Wrong. The empty-string transition row of the table says exactly this."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "According to the lecture's DFA vs NFA table, each transition function of a <b>DFA</b> has ………",
+   "o": [
+    [
+     "zero or one next state",
+     "Wrong. \"Zero or one\" is the slide's wording for the NFA row."
+    ],
+    [
+     "many possible next states for each (state, input) pair",
+     "Wrong. That describes the NFA."
+    ],
+    [
+     "an ε transition to every state",
+     "Wrong. A DFA cannot use ε transitions at all."
+    ],
+    [
+     "exactly one next state",
+     "Correct. In a DFA each transition function gives exactly one next state, and the next state is clearly set. (L2, NFA vs DFA)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Finite automata are used in the lexical analysis phase to ………",
+   "o": [
+    [
+     "recognize the tokens specified by a regular expression",
+     "Correct. Finite automata recognize the tokens specified by a regular expression and can be converted into an algorithm for matching input strings. (L2, Finite automata)"
+    ],
+    [
+     "build the annotated syntax tree",
+     "Wrong. The annotated tree is produced by the semantic analyzer."
+    ],
+    [
+     "store constants and strings",
+     "Wrong. Constants and strings are stored in the literal table."
+    ],
+    [
+     "generate code for the target machine",
+     "Wrong. That is the code generator's job."
+    ]
+   ],
+   "a": 0
   }
  ],
  "3": [
@@ -614,6 +1624,508 @@ EXTRA.compiler = {
     [
      "False",
      "Any DFA set containing an original final state is final, and {1,3} contains 1."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Which of the following is NOT one of the lecture's signs that an automaton is an NFA?",
+   "o": [
+    [
+     "It contains an ε transition",
+     "This is sign 1 of an NFA. (L3, What makes an automaton an NFA?)"
+    ],
+    [
+     "It has a loop on an input symbol followed by a transition with the same symbol",
+     "This is sign 2 of an NFA."
+    ],
+    [
+     "It has multiple paths for the same input string",
+     "This is sign 3 of an NFA (try 001 on the slide-3 automaton)."
+    ],
+    [
+     "It has more than one final state",
+     "Correct. Having several accept states does not make an automaton non-deterministic. (L3, What makes an automaton an NFA?)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: An automaton must contain at least one loop to be an NFA.",
+   "o": [
+    [
+     "True",
+     "An NFA does not need a loop."
+    ],
+    [
+     "False",
+     "Correct. An NFA does not need a loop: an ε transition alone is enough to make it an NFA. (L3, What makes an automaton an NFA?)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: The total time required for running any input string in a DFA is less than in an NFA.",
+   "o": [
+    [
+     "True",
+     "Correct. The lecture's table says running a string in a DFA takes less time than in an NFA. (L3, NFA vs. DFA)"
+    ],
+    [
+     "False",
+     "The table says the opposite: the NFA takes the larger time."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In the lecture's DFA vs NFA table, the number related to the next state in a DFA is ………",
+   "o": [
+    [
+     "zero",
+     "A DFA always has a next state that is clearly set; zero is not the DFA's row."
+    ],
+    [
+     "one",
+     "Correct. In a DFA the number related to the next state is one. (L3, NFA vs. DFA)"
+    ],
+    [
+     "zero or one",
+     "\"Zero or one\" is what the slide writes for the NFA, not the DFA."
+    ],
+    [
+     "many possible next states",
+     "Many possible next states describes the NFA."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "\"Every single pair of input symbols and states may contain many possible next states.\" This row of the lecture's table describes ………",
+   "o": [
+    [
+     "a DFA",
+     "In a DFA the next possible state is clearly set (only one)."
+    ],
+    [
+     "both DFA and NFA",
+     "A DFA never has more than one next state, so it cannot be both."
+    ],
+    [
+     "an NFA",
+     "Correct. This is the NFA's \"setting of the next possible set\" row. (L3, NFA vs. DFA)"
+    ],
+    [
+     "neither: it describes a transition table",
+     "A transition table is just a way of writing an automaton; the row compares DFA and NFA."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: In a transition table, the rows are the input symbols and the columns are the states.",
+   "o": [
+    [
+     "True",
+     "It is the other way round."
+    ],
+    [
+     "False",
+     "Correct. Rows are the states and columns are the input symbols; the cells hold the next state(s). (L3, Transition tables)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Slide-5 automaton: S –a→ P, S –b→ Q, P –b→ R, R –b→ F, Q loops on a, Q –a→ T, T loops on b, T –a→ F. In its transition table, the cell (T, b) is ………",
+   "o": [
+    [
+     "F",
+     "F is the cell (T, a): T –a→ F."
+    ],
+    [
+     "-",
+     "T does have a move on b (its loop), so the cell is not empty."
+    ],
+    [
+     "T",
+     "Correct. T has a loop on b, so (T, b) = T. (L3, Transition tables)"
+    ],
+    [
+     "Q, T",
+     "Q, T is the cell (Q, a), the non-deterministic one."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In the slide-5 transition table, the cell (P, a) holds \"-\". This means ………",
+   "o": [
+    [
+     "there is no transition from P on a",
+     "Correct. \"-\" in a transition table means no transition. (L3, Transition tables)"
+    ],
+    [
+     "P moves to the final state F on a",
+     "P has no edge to F; only R –b→ F and T –a→ F."
+    ],
+    [
+     "P stays in P on a",
+     "That would be a loop, written P in the cell, not \"-\"."
+    ],
+    [
+     "P moves to R on a",
+     "P goes to R on b, so R is in the (P, b) cell."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Slide-6 NFA: A (start, loop on 0,1) –0→ B (final). In the first transition table (with empty transition), the ε cell of B is ………",
+   "o": [
+    [
+     "-",
+     "The ε cell is never empty in this table: every state reaches itself by ε."
+    ],
+    [
+     "A",
+     "B has no ε edge to A."
+    ],
+    [
+     "A,B",
+     "A,B is the cell (A, 0)."
+    ],
+    [
+     "B",
+     "Correct. Each state's ε cell holds the state itself, so B's ε cell is B. (L3, NFA into DFA: first transition table)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: In the first transition table of the lecture's method, each state's ε cell holds the state itself.",
+   "o": [
+    [
+     "True",
+     "Correct. Step 1 builds the table with an ε column where every state reaches itself by ε. (L3, NFA → DFA)"
+    ],
+    [
+     "False",
+     "The ε cell is not empty: every state reaches itself by ε."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "After the subset construction of an NFA whose only final state is 3, which DFA state is NOT final?",
+   "o": [
+    [
+     "{1,3}",
+     "It contains 3, the original final state, so it is final."
+    ],
+    [
+     "{1,2}",
+     "Correct. It does not contain the original final state 3, so it is not final. (L3, NFA → DFA)"
+    ],
+    [
+     "{2,3}",
+     "It contains 3, so it is final."
+    ],
+    [
+     "{3}",
+     "It is the original final state itself, so it is final."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "NFA: start p, final r; p –a→ p, p –b→ p, p –a→ q, q –b→ r, r –a→ r, r –b→ r. Why is this automaton non-deterministic?",
+   "o": [
+    [
+     "p has a loop on a and also a transition on the same symbol a to q",
+     "Correct. This is sign 2: (p, a) has two next states, p and q. (L3, What makes an automaton an NFA?)"
+    ],
+    [
+     "r has a loop on both a and b",
+     "A loop by itself does not make an automaton an NFA."
+    ],
+    [
+     "It contains an ε transition",
+     "There is no ε edge in this automaton."
+    ],
+    [
+     "It has only one final state",
+     "The number of final states has nothing to do with non-determinism."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Same NFA (NFA: start p, final r; p –a→ p, p –b→ p, p –a→ q, q –b→ r, r –a→ r, r –b→ r.) In the DFA, what is the transition from {p,q} on b?",
+   "o": [
+    [
+     "{r}",
+     "p –b→ p is forgotten here; p stays in the set."
+    ],
+    [
+     "{p,r}",
+     "Correct. p –b→ p and q –b→ r, so {p,q} on b → {p,r}. (L3, NFA → DFA)"
+    ],
+    [
+     "{p,q,r}",
+     "q is reached only on a, not on b."
+    ],
+    [
+     "{p}",
+     "q –b→ r is forgotten here."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Same NFA (NFA: start p, final r; p –a→ p, p –b→ p, p –a→ q, q –b→ r, r –a→ r, r –b→ r.) In the DFA, what is the transition from {p,r} on a?",
+   "o": [
+    [
+     "{p,q}",
+     "r –a→ r is forgotten here."
+    ],
+    [
+     "{p,r}",
+     "p –a→ q is forgotten here."
+    ],
+    [
+     "{r}",
+     "p's moves on a (to p and q) are forgotten here."
+    ],
+    [
+     "{p,q,r}",
+     "Correct. p –a→ {p,q} and r –a→ r, so the union is {p,q,r}. (L3, NFA → DFA)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Same NFA (NFA: start p, final r; p –a→ p, p –b→ p, p –a→ q, q –b→ r, r –a→ r, r –b→ r.) Starting from {p}, how many DFA states does the subset construction give, and how many of them are final?",
+   "o": [
+    [
+     "4 states, 2 final",
+     "Correct. {p}, {p,q}, {p,r}, {p,q,r}; final are the two sets containing r. (L3, NFA → DFA)"
+    ],
+    [
+     "3 states, 1 final",
+     "{p,q,r} is reached too: {p,r} on a → {p,q,r}."
+    ],
+    [
+     "4 states, 3 final",
+     "{p,q} does not contain r, so it is not final."
+    ],
+    [
+     "5 states, 2 final",
+     "No fifth set appears; every move lands in one of the four sets."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "ε-NFA: start 1, final 3; 1 –a→ 2, 2 –ε→ 3, 3 –b→ 3, 3 –a→ 1. ε-closures: E(1) = {1}, E(2) = {2,3}, E(3) = {3}. In the DFA, the transition from {1} on a is ………",
+   "o": [
+    [
+     "{2}",
+     "After the move, take the ε-closure: 2 –ε→ 3 adds 3."
+    ],
+    [
+     "{3}",
+     "1 moves to 2 on a; 3 only comes from 2's ε-closure, so 2 must stay."
+    ],
+    [
+     "{2,3}",
+     "Correct. 1 –a→ 2, and E(2) = {2,3}. (L3, Worked exam NFA 2)"
+    ],
+    [
+     "{1,2}",
+     "1 has no loop on a, so 1 is not in the result."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Same ε-NFA (ε-NFA: start 1, final 3; 1 –a→ 2, 2 –ε→ 3, 3 –b→ 3, 3 –a→ 1.) In the DFA, the transition from {2,3} on b is ………",
+   "o": [
+    [
+     "{3}",
+     "Correct. 2 has no move on b and 3 –b→ 3, so the result is {3}. (L3, NFA → DFA)"
+    ],
+    [
+     "{2,3}",
+     "2 has no move on b, so 2 is not in the result."
+    ],
+    [
+     "{1}",
+     "{1} is reached on a (3 –a→ 1), not on b."
+    ],
+    [
+     "∅",
+     "3 has a loop on b, so the set is not empty."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Exam NFA (start 1, final 3): 1 –0→ 3, 3 –0→ 1, 3 –1→ 3, 3 –1→ 2, 2 –0→ 3. In the DFA, the transition from {1} on input 1 is ………",
+   "o": [
+    [
+     "{3}",
+     "{3} is the move from {1} on 0."
+    ],
+    [
+     "{2,3}",
+     "{2,3} is the move from {3} on 1, not from {1}."
+    ],
+    [
+     "{1}",
+     "1 has no loop on 1."
+    ],
+    [
+     "∅ (dead state)",
+     "Correct. State 1 has no edge labelled 1, so the move goes to the dead state. (L3, Worked exam NFA 1)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Same exam NFA (Exam NFA (start 1, final 3): 1 –0→ 3, 3 –0→ 1, 3 –1→ 3, 3 –1→ 2, 2 –0→ 3.) Which input string is NOT accepted?",
+   "o": [
+    [
+     "0",
+     "{1} on 0 → {3}, which is final, so 0 is accepted."
+    ],
+    [
+     "01",
+     "{1} → {3} → {2,3}, final, so 01 is accepted."
+    ],
+    [
+     "00",
+     "Correct. {1} → {3} → {1}; {1} is not final, so 00 is rejected. (L3, Worked exam NFA 1)"
+    ],
+    [
+     "010",
+     "{1} → {3} → {2,3} → {1,3}, final, so 010 is accepted."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Exam ε-NFA (start and final 1): 1 –b→ 2, 1 –ε→ 3, 2 –a→ 2, 2 –a,b→ 3, 3 –a→ 1. In the DFA, the transition from {1,2,3} on b is ………",
+   "o": [
+    [
+     "{3}",
+     "1 –b→ 2 is forgotten here."
+    ],
+    [
+     "{2,3}",
+     "Correct. 1 –b→ 2, 2 –b→ 3, 3 has no move on b: {2,3}. (L3, Worked exam NFA 2)"
+    ],
+    [
+     "{1,2,3}",
+     "{1,2,3} is the move on a, not on b."
+    ],
+    [
+     "∅",
+     "1 and 2 both have moves on b."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Same exam ε-NFA (Exam ε-NFA (start and final 1): 1 –b→ 2, 1 –ε→ 3, 2 –a→ 2, 2 –a,b→ 3, 3 –a→ 1.) Not counting the dead state, how many DFA states are there, and how many are final?",
+   "o": [
+    [
+     "4 states, 2 final",
+     "There are five sets: {1,3}, {2}, {2,3}, {3}, {1,2,3}."
+    ],
+    [
+     "5 states, 1 final",
+     "{1,2,3} contains 1 too, so it is also final."
+    ],
+    [
+     "5 states, 3 final",
+     "{2,3} does not contain 1, so it is not final."
+    ],
+    [
+     "5 states, 2 final",
+     "Correct. {1,3}, {2}, {2,3}, {3}, {1,2,3}; final are {1,3} and {1,2,3}, the sets containing 1. (L3, Worked exam NFA 2)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Slide-3 automaton: A loops on 0,1; A –0→ C; A –1→ B; B –1→ C; C loops on 0,1; B and C are final. The lecture uses it (with the string 001) to show which sign of an NFA?",
+   "o": [
+    [
+     "It contains an ε transition",
+     "This automaton has no ε edge."
+    ],
+    [
+     "It has two final states, B and C",
+     "Several accept states do not make an automaton an NFA."
+    ],
+    [
+     "Multiple paths for the same input string",
+     "Correct. 001 can be read along several paths that all end in a final state. (L3, What makes an automaton an NFA?)"
+    ],
+    [
+     "A DFA may contain loops",
+     "That is a separate point of the lecture, not a sign of an NFA."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: In an NFA, a (state, input symbol) pair may have zero, one or more next states.",
+   "o": [
+    [
+     "True",
+     "Correct. An NFA may have zero, one or many possible next states for each pair, as the last row of the table says. (L3, NFA vs. DFA)"
+    ],
+    [
+     "False",
+     "Only a DFA is limited to exactly one next state."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: In the slide-6 conversion (A loops on 0,1; A –0→ B final), the DFA state {A,B} is final because it contains B.",
+   "o": [
+    [
+     "True",
+     "Correct. Every DFA set that contains an original final state is final, and B is final. (L3, NFA → DFA)"
+    ],
+    [
+     "False",
+     "{A,B} contains the original final state B, so it is final."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "In Step 2 of the lecture's NFA → DFA method, the second transition table is built ………",
+   "o": [
+    [
+     "without ε, starting from the start state's ε-closure, adding every new set as a row",
+     "Correct. This is Step 2. (L3, NFA → DFA)"
+    ],
+    [
+     "with an ε column, one row per original state",
+     "That is the first table (Step 1)."
+    ],
+    [
+     "starting from the final state and working backwards",
+     "The construction starts from the start state, not the final state."
+    ],
+    [
+     "without ε, with exactly one row per original NFA state",
+     "New rows are sets of states, so there can be rows like {A,B}."
     ]
    ],
    "a": 0
@@ -823,6 +2335,544 @@ EXTRA.compiler = {
     ]
    ],
    "a": 1
+  },
+  {
+   "q": "Syntax analysis is the ……… phase of the compiler.",
+   "o": [
+    [
+     "first",
+     "The first phase is lexical analysis, which produces the tokens."
+    ],
+    [
+     "second",
+     "Correct. Syntax analysis (parsing) is the second phase. (L4, Why syntax analysis needs CFGs)"
+    ],
+    [
+     "third",
+     "Syntax analysis comes right after the lexer, so it is the second."
+    ],
+    [
+     "last",
+     "The parser takes the tokens straight from the lexer; it is not the last phase."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "……… are syntactic variables that denote sets of strings.",
+   "o": [
+    [
+     "Terminals",
+     "Terminals are the tokens, the basic symbols."
+    ],
+    [
+     "Productions",
+     "Productions describe how terminals and non-terminals combine."
+    ],
+    [
+     "Non-terminals",
+     "Correct. Non-terminals (V) are syntactic variables denoting sets of strings. (L4, The four components of a CFG)"
+    ],
+    [
+     "Start symbols",
+     "The start symbol is the one non-terminal where derivation begins."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "In a CFG, the tokens, the basic symbols from which strings are formed, are the ………",
+   "o": [
+    [
+     "non-terminals",
+     "Non-terminals are syntactic variables, not tokens."
+    ],
+    [
+     "start symbol",
+     "The start symbol is where derivation begins."
+    ],
+    [
+     "productions",
+     "Productions are the rules, not the symbols."
+    ],
+    [
+     "terminals",
+     "Correct. Terminals (Σ) are the tokens. (L4, The four components of a CFG)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "True or False: The left side of a production in a CFG is a terminal.",
+   "o": [
+    [
+     "True",
+     "The left side is always a non-terminal."
+    ],
+    [
+     "False",
+     "Correct. Each production has a non-terminal on the left, an arrow, and tokens and/or non-terminals on the right. (L4, The four components of a CFG)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "In the grammar E → TX, X → +E | ε, T → int Y | (E), Y → *T | ε, the set of non-terminals is ………",
+   "o": [
+    [
+     "{E, T, X, Y}",
+     "Correct. These four appear on the left sides of the productions. (L4, The four components of a CFG)"
+    ],
+    [
+     "{int, +, *, (, )}",
+     "These are the terminals (tokens)."
+    ],
+    [
+     "{E}",
+     "E is only the start symbol; T, X and Y are non-terminals too."
+    ],
+    [
+     "{E, T, X, Y, int}",
+     "int is a token, i.e. a terminal, not a non-terminal."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "At each step of a derivation, we decide ………",
+   "o": [
+    [
+     "which terminal to replace and which token to read",
+     "Terminals are never replaced; only non-terminals are."
+    ],
+    [
+     "which non-terminal to replace and which production to use",
+     "Correct. These are the two decisions at each derivation step. (L4, Derivations)"
+    ],
+    [
+     "which parse tree to draw and which leaf to add",
+     "The tree is a picture of the derivation, not a decision at each step."
+    ],
+    [
+     "which state to move to and which symbol to consume",
+     "That describes an automaton, not a derivation."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: In a rightmost derivation, the rightmost non-terminal is replaced at each step.",
+   "o": [
+    [
+     "True",
+     "Correct. Rightmost derivation always replaces the rightmost non-terminal (scan right to left). (L4, Derivations)"
+    ],
+    [
+     "False",
+     "Replacing the leftmost one is the leftmost derivation; the rightmost replaces the rightmost."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Bottom-up parsers (shift-reduce, LR) produce ………",
+   "o": [
+    [
+     "a leftmost derivation",
+     "A leftmost derivation is produced by a top-down parser."
+    ],
+    [
+     "a leftmost derivation in reverse",
+     "The lecture pairs \"in reverse\" with the rightmost derivation."
+    ],
+    [
+     "a rightmost derivation in reverse",
+     "Correct. Bottom-up parsers produce a rightmost derivation in reverse. (L4, Derivations)"
+    ],
+    [
+     "no derivation, only tokens",
+     "Every parser follows a derivation; tokens are the lexer's output."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "Grammar E → TX, X → +E | ε, T → int Y | (E), Y → *T | ε. In the <b>leftmost</b> derivation of int*int (E ⇒ TX ⇒ …), what is the sentential form after the fourth step?",
+   "o": [
+    [
+     "int * T X",
+     "That is the form after the third step (Y → *T)."
+    ],
+    [
+     "int * int X",
+     "That is the form after the fifth step (Y → ε)."
+    ],
+    [
+     "int * T",
+     "That is a rightmost form: X is replaced by ε only at the last leftmost step."
+    ],
+    [
+     "int * int Y X",
+     "Correct. Step 4 applies T → int Y to the leftmost non-terminal T. (L4, Example int*int)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Same grammar (E → TX, X → +E | ε, T → int Y | (E), Y → *T | ε). In the <b>rightmost</b> derivation of int*int, what is the sentential form after the fourth step?",
+   "o": [
+    [
+     "int * T",
+     "Correct. Steps: TX, T, int Y, then Y → *T gives int * T. (L4, Example int*int)"
+    ],
+    [
+     "int Y",
+     "That is the form after the third step."
+    ],
+    [
+     "int * int Y",
+     "That is the form after the fifth step."
+    ],
+    [
+     "int * T X",
+     "X was already replaced by ε at step 2 of the rightmost derivation."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Grammar S → ABC, A → a | Aa, B → b | Bb, C → c. In the leftmost derivation of aabc (S ⇒ ABC ⇒ …), which production is applied at the second step?",
+   "o": [
+    [
+     "A → a",
+     "A → a at step 2 would leave only one a before B; aabc needs two a's."
+    ],
+    [
+     "A → Aa",
+     "Correct. S ⇒ ABC ⇒ AaBC (A → Aa) ⇒ aaBC ⇒ aabC ⇒ aabc. (L4, Derivations)"
+    ],
+    [
+     "B → Bb",
+     "aabc has only one b, and the leftmost non-terminal A must be replaced first."
+    ],
+    [
+     "C → c",
+     "Replacing C before A would be rightmost, not leftmost."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "The root of a parse tree is ………",
+   "o": [
+    [
+     "a terminal",
+     "Terminals are the leaf nodes."
+    ],
+    [
+     "the first token of the input",
+     "Tokens are leaves, not the root."
+    ],
+    [
+     "the start symbol",
+     "Correct. The start symbol is the root of the parse tree. (L4, Parse trees)"
+    ],
+    [
+     "the last production applied",
+     "Productions are edges/expansions; the root is a symbol."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: Interior (non-leaf) nodes of a parse tree may be terminals.",
+   "o": [
+    [
+     "True",
+     "Interior nodes are always non-terminals."
+    ],
+    [
+     "False",
+     "Correct. All interior nodes are non-terminals and all leaf nodes are terminals. (L4, Parse trees)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: In a parse tree, the deepest sub-tree is evaluated first, so its operator has precedence over the operators in parent nodes.",
+   "o": [
+    [
+     "True",
+     "Correct. That is how a parse tree shows precedence. (L4, Parse trees)"
+    ],
+    [
+     "False",
+     "The deepest sub-tree is evaluated first, not the root."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "The slides build the leftmost tree for id+id*id as E → E*E, E → E+E*E, E → id+E*E, E → id+id*E, E → id+id*id. Which operation does this tree evaluate first?",
+   "o": [
+    [
+     "Multiplication first: id+(id*id)",
+     "* is at the root, so it is evaluated last in this tree."
+    ],
+    [
+     "Addition first: (id+id)*id",
+     "Correct. E+E is the deeper sub-tree under the root *, so + is evaluated first. (L4, Parse trees)"
+    ],
+    [
+     "Both at the same time",
+     "The deeper sub-tree is always evaluated first."
+    ],
+    [
+     "It cannot be told from the tree",
+     "A parse tree shows precedence by depth."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "True or False: The grammar S → SS | a is ambiguous, because the string aaa has two different leftmost derivations.",
+   "o": [
+    [
+     "True",
+     "Correct. aaa can be grouped (aa)a or a(aa): two leftmost derivations, two trees, so ambiguous. (L4, Ambiguity)"
+    ],
+    [
+     "False",
+     "Two different leftmost derivations for one string prove ambiguity."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Sheet grammar S → 0A | 1B, A → 0AA | 1S | 1, B → 1BB | 0S | 0, string 001101. Both leftmost derivations reach 00AA. Which productions do they then apply to the leftmost A?",
+   "o": [
+    [
+     "LMD 1 uses A → 0AA, LMD 2 uses A → 1",
+     "The next symbol is 1, so A → 0AA cannot be used here."
+    ],
+    [
+     "Both use A → 1S",
+     "Then the two derivations would be the same."
+    ],
+    [
+     "LMD 1 uses A → 1, LMD 2 uses B → 0",
+     "There is no B in 00AA to replace."
+    ],
+    [
+     "LMD 1 uses A → 1S, LMD 2 uses A → 1",
+     "Correct. 00AA ⇒ 001SA in LMD 1 and 00AA ⇒ 001A in LMD 2. (L4, More ambiguity proofs)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Sheet grammar S → AB | C, A → aAb | ab, B → cBd | cd, C → aCd | aDd, D → bDc | bc. The two leftmost derivations of aabbccdd begin with which productions?",
+   "o": [
+    [
+     "S → AB and S → C",
+     "Correct. LMD 1 starts S ⇒ AB, LMD 2 starts S ⇒ C. (L4, More ambiguity proofs)"
+    ],
+    [
+     "S → AB in both",
+     "Then the first step would not differ; LMD 2 starts with S → C."
+    ],
+    [
+     "S → C in both",
+     "LMD 1 starts with S → AB."
+    ],
+    [
+     "A → aAb and C → aDd",
+     "Every derivation begins with a production of the start symbol S."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "Unambiguous grammar E → E+T | T, T → T*F | F, F → (E) | id. In the leftmost derivation of id+id*id, what is the sentential form after the second step?",
+   "o": [
+    [
+     "E+T*F",
+     "The left E must be replaced first in a leftmost derivation."
+    ],
+    [
+     "F+T",
+     "That is the form after the third step."
+    ],
+    [
+     "T+T",
+     "Correct. E ⇒ E+T ⇒ T+T (the leftmost E → T). (L4, More ambiguity proofs)"
+    ],
+    [
+     "id+T",
+     "That is the form after the fourth step."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "For E → E+E | E–E | id and the string id–id+id, consider LMD 2 (the tree whose root is –). What is the sentential form after its second step?",
+   "o": [
+    [
+     "E–E+E",
+     "That is the second step of LMD 1 (root +)."
+    ],
+    [
+     "id–E",
+     "Correct. E ⇒ E–E ⇒ id–E. (L4, Ambiguity)"
+    ],
+    [
+     "id–E+E",
+     "That is the form after the third step of LMD 2."
+    ],
+    [
+     "E+E",
+     "That is the first step of LMD 1."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Left recursion is a problem for ……… parsers, because they keep expanding the same left non-terminal and go into an infinite loop.",
+   "o": [
+    [
+     "bottom-up",
+     "The lecture names top-down parsers, which start from the start symbol."
+    ],
+    [
+     "shift-reduce",
+     "Shift-reduce parsers are bottom-up."
+    ],
+    [
+     "LR",
+     "LR parsers are bottom-up."
+    ],
+    [
+     "top-down",
+     "Correct. Top-down parsers start from the start symbol and loop forever on left recursion. (L4, Left recursion)"
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Which of the following rules is immediately left-recursive?",
+   "o": [
+    [
+     "A → bA | c",
+     "A appears on the right end, not as the left-most symbol."
+    ],
+    [
+     "A → cAb | b",
+     "The right side starts with the terminal c, not A."
+    ],
+    [
+     "A → Ac | b",
+     "Correct. A → Ac has A itself as the left-most symbol: A → Aα | β. (L4, Left recursion)"
+    ],
+    [
+     "A → b | c",
+     "No A appears on the right side at all."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "True or False: S → Aα | β together with A ⇒ Sd is immediate left recursion.",
+   "o": [
+    [
+     "True",
+     "It is not immediate, because S does not appear directly at the left of its own rule."
+    ],
+    [
+     "False",
+     "Correct. This is indirect left recursion: S reaches itself only through A. Immediate is A → Aα | β. (L4, Left recursion)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Removing left recursion from A → Aab | c gives ………",
+   "o": [
+    [
+     "A → abA', A' → cA' | ε",
+     "α and β are swapped: β = c must come first in A."
+    ],
+    [
+     "A → cA', A' → abA' | ε",
+     "Correct. Here α = ab and β = c, so A → βA', A' → αA' | ε. (L4, Removing left recursion)"
+    ],
+    [
+     "A → cab, A' → ε",
+     "The repetition of ab is lost; A' must call itself."
+    ],
+    [
+     "A → cA', A' → abA' | c",
+     "A' must end with the ε alternative, not with c."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Removing left recursion from T → T*F | F gives ………",
+   "o": [
+    [
+     "T → FT', T' → *FT' | ε",
+     "Correct. α = *F and β = F, so T → FT', T' → *FT' | ε. (L4, Removing left recursion)"
+    ],
+    [
+     "T → *FT | F",
+     "The left recursion is not removed this way; the lecture form adds a new non-terminal T'."
+    ],
+    [
+     "T → FT', T' → *F",
+     "T' must repeat itself and end with ε."
+    ],
+    [
+     "T → F*T | F",
+     "That rewrites the rule into a right-recursive one, not the lecture's A' form."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "True or False: Removing left recursion from A → Abc | b gives A → bcA', A' → bA' | ε.",
+   "o": [
+    [
+     "True",
+     "This swaps α and β."
+    ],
+    [
+     "False",
+     "Correct. Here α = bc and β = b, so the answer is A → bA', A' → bcA' | ε. (L4, Removing left recursion)"
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Removing left recursion from S → Sa | Sb | c gives ………",
+   "o": [
+    [
+     "S → aS' | bS', S' → cS' | ε",
+     "c is β; it must start S, and a, b are the repeated α parts."
+    ],
+    [
+     "S → cS', S' → abS' | ε",
+     "a and b are two separate alternatives, not one string ab."
+    ],
+    [
+     "S → cS', S' → aS' | ε",
+     "The b alternative is lost; S → Sb must become S' → bS'."
+    ],
+    [
+     "S → cS', S' → aS' | bS' | ε",
+     "Correct. Each left-recursive alternative becomes an S' alternative, like A → ABα | Aa | a. (L4, Removing left recursion)"
+    ]
+   ],
+   "a": 3
   }
  ],
  "6": [

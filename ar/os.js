@@ -288,6 +288,164 @@ AR.os = {
      "الـ main memory بيديرها الـ operating system.",
      "الـ Solid-state disks بيديرها الـ operating system.",
      "صح. الـ compiler هو اللي بيقرر أنهي قيم تتحط في الـ registers (الحجم <bdi dir=\"ltr\">&lt;&nbsp;1&nbsp;KB</bdi>، والـ access من <bdi dir=\"ltr\">0.25–⁠0.5&nbsp;ns</bdi>)."
+    ],
+    [
+     "غلط، الـ device-status table فيها نوع وعنوان وحالة كل جهاز <bdi dir=\"ltr\">I/O</bdi>.",
+     "صح. الـ interrupt بينقل التحكم للـ service routine عن طريق الـ interrupt vector، وفيه عناوين كل الـ service routines.",
+     "غلط، الـ local buffer بتاع الـ device controller بيشيل الداتا اللي بتتنقل، مش عناوين routines.",
+     "غلط، الـ bootstrap program بيعمل initialize للسيستم ويحمّل الـ kernel لما الجهاز يشتغل أو يعمل reboot."
+    ],
+    [
+     "غلط، الـ device controller بيبلّغ بـ interrupt عادي من الـ hardware، أما الـ trap فجاي من الـ software.",
+     "صح. الـ trap (أو exception) هو interrupt جاي من الـ software، سببه يا error يا طلب من الـ user."
+    ],
+    [
+     "غلط، الـ DMA بينقل blocks للـ memory مباشرة والـ spooling بيداخل الـ output والـ input بتوع الـ jobs، ومفيش فيهم حاجة بتحدد نوع الـ interrupt.",
+     "غلط، الـ mode bit بيفرق بين كود الـ user وكود الـ kernel، والـ timer بيمنع process إنها تحتكر الـ CPU.",
+     "غلط، دول شغل الـ <bdi dir=\"ltr\">I/O</bdi> subsystem في إدارة الـ memory، مش طرق لتحديد نوع الـ interrupt.",
+     "صح. في التعامل مع الـ interrupt الـ OS بيعرف نوعه بالـ polling أو بالـ vectored interrupt system."
+    ],
+    [
+     "غلط، ده أول هدف من أهداف الـ OS.",
+     "غلط، ده تاني هدف من أهداف الـ OS.",
+     "صح. توفير الـ resources الأساسية ده دور الـ hardware في المكونات الأربعة، مش هدف من أهداف الـ OS.",
+     "غلط، ده تالت هدف من أهداف الـ OS."
+    ],
+    [
+     "صح. الـ application programs بتحدد إزاي الـ resources تتستخدم لحل مشاكل الـ users، والـ compilers والـ web browsers والـ video games من أمثلتها في المحاضرة.",
+     "غلط، الـ hardware هو الـ CPU والـ memory والـ <bdi dir=\"ltr\">I/O&nbsp;devices</bdi> اللي بتوفر الـ resources الأساسية.",
+     "غلط، الـ operating system (زي Windows وLinux) بيتحكم وينسّق استخدام الـ hardware.",
+     "غلط، الـ users هم ناس أو أجهزة أو كمبيوترات تانية."
+    ],
+    [
+     "غلط، الحكم بين الطلبات المتعارضة ده دور الـ OS كـ resource allocator.",
+     "صح. الـ OS كـ control program بيتحكم في تنفيذ البرامج عشان يمنع الأخطاء والاستخدام الغلط، أما الحكم بين الطلبات المتعارضة فده شغل الـ resource allocator."
+    ],
+    [
+     "غلط، الـ bootstrap program بيشتغل لما الجهاز يقوم أو يعمل reboot عشان يحمّل الـ kernel، مش شغال طول الوقت.",
+     "صح. الـ kernel هو البرنامج الوحيد اللي شغال طول الوقت، وأي حاجة تانية يا system program يا application program.",
+     "غلط، الـ system program بييجي مع الـ OS بس مش هو الـ kernel.",
+     "غلط، الـ device driver بيدّي interface موحد بين الـ device controller والـ kernel."
+    ],
+    [
+     "صح. الـ bootstrap program بيتحمّل لما الجهاز يشتغل، وبيعمل initialize للسيستم ويحمّل الـ kernel ويشغّله.",
+     "غلط، تحميل الـ kernel وتشغيله هو بالظبط شغل الـ bootstrap program."
+    ],
+    [
+     "غلط، الرجوع من غير ما يستنى ده الـ <bdi dir=\"ltr\">Asynchronous&nbsp;I/O</bdi>.",
+     "غلط، الـ timer interrupt بيرجّع التحكم للـ OS من الـ process، ومالوش علاقة برجوع الـ <bdi dir=\"ltr\">I/O</bdi>.",
+     "صح. في الـ <bdi dir=\"ltr\">Synchronous&nbsp;I/O</bdi> التحكم بيرجع بس لما الـ <bdi dir=\"ltr\">I/O</bdi> يخلص، فبيبقى فيه request واحد بالكتير مستني.",
+     "غلط، الـ device-status table بيستخدمها الـ OS مع الـ <bdi dir=\"ltr\">Asynchronous&nbsp;I/O</bdi> عشان يتابع حالة كل جهاز."
+    ],
+    [
+     "غلط، ده التقريب بتاع المصنّعين (الـ GB مليار byte)، مش <bdi dir=\"ltr\">1,024³</bdi>.",
+     "غلط، الرقم ده هو <bdi dir=\"ltr\">2 KB</bdi> بس.",
+     "غلط، الرقم ده هو <bdi dir=\"ltr\">2 MB</bdi> بس.",
+     "صح. الحساب:<span class=\"ltr\">2 × 1,024³ = 2 × 1,073,741,824 = 2,147,483,648 B</span>"
+    ],
+    [
+     "غلط، الـ byte فيه 8 bits بس، وده أصغر حتة مريحة مش الـ word.",
+     "غلط، الـ 4 bytes دول <bdi dir=\"ltr\">32-bit</bdi> بس.",
+     "صح. الحساب:<span class=\"ltr\">64 bits ÷ 8 = 8 bytes</span>زي مثال المحاضرة بالظبط.",
+     "غلط، الـ 64 هو عدد الـ bits في الـ word مش عدد الـ bytes."
+    ],
+    [
+     "غلط، الـ networking استثناء، وبيتقاس بالـ bits.",
+     "صح. قياسات الـ networking بتبقى بالـ bits، عشان الـ networks بتنقل الداتا bit bit."
+    ],
+    [
+     "صح. الـ main memory بتبقى random access وغالبًا volatile، والـ secondary storage هو الامتداد الـ nonvolatile.",
+     "غلط، الـ nonvolatile ده وصف الـ secondary storage.",
+     "غلط، الـ main memory بتبقى random access.",
+     "غلط، في جدول الـ performance الـ compiler بيدير الـ registers، أما الـ main memory فبيديرها الـ operating system."
+    ],
+    [
+     "غلط، الـ 4 ده حجم الـ block بالـ KB، مش عدد الـ blocks.",
+     "صح. الحساب:<span class=\"ltr\">32 KB ÷ 4 KB = 8 blocks</span>والـ DMA بيعمل interrupt واحد بس لكل block.",
+     "غلط، ده لو فيه interrupt لكل KB، والـ DMA مش كده.",
+     "غلط، الرقم ده لو فيه interrupt لكل byte، وده بالظبط اللي الـ DMA بيمنعه."
+    ],
+    [
+     "غلط، الـ compiler بيدير الـ registers.",
+     "صح. الجدول بيقول إن الـ cache بيديرها الـ hardware.",
+     "غلط، الـ OS بيدير الـ main memory والـ solid-state disk والـ magnetic disk.",
+     "غلط، الـ device controller مسؤول عن نوع أجهزة معين، مش عن الـ cache."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ main memory ممكن تعتبرها cache للـ secondary storage.",
+     "غلط، المحاضرة بتقول صراحة إن الـ main memory ممكن تتعتبر cache للـ secondary storage."
+    ],
+    [
+     "صح. الـ multiprocessors محتاجة cache coherency من الـ hardware عشان كل الـ CPUs تشوف أحدث قيمة.",
+     "غلط، الـ spooling هو تداخل الـ output بتاع job مع الـ input بتاع jobs تانية.",
+     "غلط، الـ DMA بيخلي الـ device controller ينقل blocks للـ memory من غير الـ CPU.",
+     "غلط، الـ privilege escalation بيخلي الـ user يتحوّل لـ effective ID بصلاحيات أكتر."
+    ],
+    [
+     "غلط، الـ batch systems هي الـ multiprogramming اللي بيحط كذا job في الـ memory.",
+     "غلط، الـ timesharing (multitasking) بيبدّل الـ CPU بين الـ jobs عشان الـ users يتفاعلوا.",
+     "غلط، الـ embedded computers جوه الأجهزة والعربيات وملهاش user interface تقريبًا.",
+     "صح. الـ multiprocessor systems اسمها كمان parallel systems أو tightly-coupled systems."
+    ],
+    [
+     "غلط، إن كل processor يعمل كل الـ tasks ده الـ symmetric multiprocessing (SMP).",
+     "صح. في الـ asymmetric multiprocessing كل processor ليه task معينة، أما إنه يعمل كل الـ tasks فده الـ SMP."
+    ],
+    [
+     "غلط، الـ swapping بيدخّل ويطلّع الـ processes لما متكفيش الـ memory، مش هو اللي بيشغّل process مش متحمّلة كلها.",
+     "غلط، الـ job scheduling بيختار الـ job اللي تشتغل في الـ multiprogramming.",
+     "صح. الـ virtual memory بتسمح بتشغيل processes مش موجودة كلها في الـ memory.",
+     "غلط، الـ DMA بينقل blocks بين الجهاز والـ main memory من غير الـ CPU."
+    ],
+    [
+     "غلط، الـ cache coherency حاجة لازم الـ hardware يوفرها في الـ multiprocessors، مش mode.",
+     "غلط، الـ polling طريقة لتحديد نوع الـ interrupt، مش mode للـ CPU.",
+     "غلط، الـ DMA طريقة نقل للأجهزة السريعة، مش mode للـ CPU.",
+     "صح. مثال المحاضرة على الـ multi-mode هو الـ VMM mode للـ guest VMs."
+    ],
+    [
+     "صح. الـ process management فيها إنشاء ومسح وإيقاف واستكمال الـ processes، ومعاها الـ synchronization والـ communication والـ deadlock handling.",
+     "غلط، ده نشاط من أنشطة الـ memory management.",
+     "غلط، ده نشاط من أنشطة الـ file-system management.",
+     "غلط، ده الـ spooling، وده شغل الـ <bdi dir=\"ltr\">I/O</bdi> subsystem."
+    ],
+    [
+     "غلط، الـ process management بتاعة إنشاء ومسح وإيقاف واستكمال الـ processes والـ synchronization والـ communication والـ deadlock handling.",
+     "غلط، الـ memory management بتتابع استخدام الـ memory وتدخّل وتطلّع الـ processes وتعمل allocate وdeallocate.",
+     "صح. المحاضرة بتقول إن الـ free-space management والـ storage allocation والـ disk scheduling من أنشطة الـ mass-storage management.",
+     "غلط، الـ <bdi dir=\"ltr\">I/O</bdi> subsystem بتاع الـ buffering والـ caching والـ spooling والـ device drivers."
+    ],
+    [
+     "صح. الـ <bdi dir=\"ltr\">I/O</bdi> subsystem بيعرّف الـ buffering إنه تخزين الداتا مؤقتًا وهي بتتنقل.",
+     "غلط، ده بالظبط تعريف الـ buffering في المحاضرة، أما تخزين أجزاء من الداتا في storage أسرع فده الـ caching."
+    ],
+    [
+     "غلط، الـ group ID بيعرّف مجموعة users وبيترتبط بكل process وfile.",
+     "صح. الـ privilege escalation بيسمح للـ user يتحوّل لـ effective ID بصلاحيات أكتر.",
+     "غلط، الـ user ID هو اسم ورقم لكل user بيستخدم في الـ access control.",
+     "غلط، الـ dual mode بيفصل بين الـ user mode والـ kernel mode عشان يحمي الـ OS."
+    ],
+    [
+     "غلط، الـ security هي الدفاع عن السيستم ضد الهجمات الداخلية والخارجية.",
+     "غلط، الـ privilege escalation هو التحوّل لـ effective ID بصلاحيات أكتر.",
+     "غلط، الـ dual mode بيخلي الـ OS يحمي نفسه بالفصل بين كود الـ user والـ kernel، مش ده التعريف المطلوب.",
+     "صح. الـ protection هي أي mechanism للتحكم في وصول الـ processes أو الـ users للـ resources اللي الـ OS بيعرّفها."
+    ],
+    [
+     "صح. كل device controller عنده local buffer، والـ CPU بينقل الداتا بينه وبين الـ main memory، والـ <bdi dir=\"ltr\">I/O</bdi> بيبقى من الجهاز للـ buffer.",
+     "غلط، المحاضرة بتقول كده بالظبط: كل controller عنده local buffer والـ CPU بينقل الداتا بينه وبين الـ main memory."
+    ],
+    [
+     "غلط، الـ mainframe كمبيوتر مشترك لازم يرضّي كل الـ users.",
+     "غلط، الـ workstations ليها resources خاصة بس بتستخدم resources مشتركة من الـ servers.",
+     "صح. الأجهزة الـ handheld فقيرة في الـ resources ومتظبطة للـ usability وعمر البطارية.",
+     "غلط، الـ embedded computers (في الأجهزة والعربيات) ملهاش user interface تقريبًا."
+    ],
+    [
+     "صح. الـ single-threaded process ليها program counter واحد، وبتنفذ الـ instructions بالترتيب لحد ما تخلص.",
+     "غلط، program counter لكل thread ده وصف الـ multi-threaded process.",
+     "غلط، المحاضرة بتقول إن الـ single-threaded process ليها program counter واحد.",
+     "غلط، عدد الـ program counters مرتبط بعدد الـ threads، مش بعدد الـ CPUs."
     ]
    ]
   },
@@ -561,6 +719,198 @@ AR.os = {
     [
      "في الـ shared memory، الـ user processes هي اللي بتتحكم في التواصل. والـ synchronization بينهم هي المشكلة الأساسية اللي لازم يحلّوها بنفسهم.",
      "صح. التواصل تحت تحكم الـ user processes، مش الـ OS، والـ synchronization بين أفعالهم هي المشكلة الكبيرة."
+    ],
+    [
+     "غلط، الـ text section هو كود البرنامج.",
+     "غلط، الـ data section فيها الـ global والـ static variables.",
+     "غلط، الـ heap هو الـ memory اللي بتتحجز وقت التشغيل (زي <code>malloc</code>).",
+     "صح. الـ stack بيشيل الداتا المؤقتة: الـ function parameters والـ return addresses والـ local variables."
+    ],
+    [
+     "غلط، الـ stack فيه الـ function parameters والـ return addresses والـ local variables.",
+     "صح. الـ data section فيها الـ global والـ static variables.",
+     "غلط، الـ heap فيه الـ memory اللي بتتحجز ديناميكيًا وقت التشغيل.",
+     "غلط، الـ text section فيه كود البرنامج."
+    ],
+    [
+     "غلط، العكس: الـ stack فوق عند الـ max وبيكبر لتحت، والـ heap بيكبر لفوق.",
+     "صح. من الـ max لصفر الترتيب هو الـ stack وبعدين الـ heap وبعدين الـ data وبعدين الـ text؛ والـ stack بيكبر لتحت والـ heap بيكبر لفوق."
+    ],
+    [
+     "غلط، الـ executable file على الـ disk لسه program وهو passive.",
+     "غلط، البرنامج المتخزن على الـ disk هو passive entity مش process.",
+     "صح. البرنامج بيبقى process لما الـ executable file بتاعه يتحمّل في الـ memory.",
+     "غلط، الـ terminated معناها إن الـ process خلّصت تنفيذ."
+    ],
+    [
+     "صح. المحاضرة بتقول إن برنامج واحد ممكن يبقى كذا process، زي لما كذا user يشغّلوا نفس البرنامج.",
+     "غلط، المحاضرة بتقول إن برنامج واحد فعلًا ممكن يبقى كذا process."
+    ],
+    [
+     "غلط، الـ new معناها إن الـ process لسه بتتعمل.",
+     "صح. الـ ready معناها مستنية تاخد processor.",
+     "غلط، الـ waiting معناها مستنية event زي إن الـ <bdi dir=\"ltr\">I/O</bdi> يخلص أو signal.",
+     "غلط، الـ running معناها إن الـ instructions بتاعتها بتتنفذ."
+    ],
+    [
+     "صح. الانتقال من الـ running للـ waiting اسمه <bdi dir=\"ltr\">I/O or event wait</bdi>.",
+     "غلط، الـ running بتروح ready لما يحصل interrupt، أو بتوصل ready بعدين لما الـ <bdi dir=\"ltr\">I/O</bdi> يخلص.",
+     "غلط، الـ new هي بس الحالة وهي بتتعمل.",
+     "غلط، الـ running بتروح terminated لما تعمل exit."
+    ],
+    [
+     "غلط، الانتقال من الـ new للـ ready اسمه admitted.",
+     "غلط، الانتقال من الـ running للـ ready اسمه interrupt.",
+     "صح. الـ scheduler بيعمل dispatch للـ process الجاهزة على الـ CPU، يعني من الـ ready للـ running.",
+     "غلط، الانتقال من الـ waiting للـ ready اسمه <bdi dir=\"ltr\">I/O or event completion</bdi>."
+    ],
+    [
+     "غلط، مفيش سهم من الـ waiting للـ running، لازم ترجع ready وتستنى الـ dispatch.",
+     "صح. لما الـ <bdi dir=\"ltr\">I/O</bdi> يخلص الـ process بتروح ready، والـ scheduler dispatch بس هو اللي يوديها running."
+    ],
+    [
+     "غلط، الـ accounting information فيها الـ CPU المستخدم والوقت من البداية والـ time limits.",
+     "غلط، الـ memory-management information فيها الـ memory المحجوزة للـ process.",
+     "غلط، الـ <bdi dir=\"ltr\">I/O</bdi> status information فيها الأجهزة المحجوزة والـ open files.",
+     "صح. الـ CPU-scheduling information فيها الـ priorities والـ scheduling queue pointers."
+    ],
+    [
+     "غلط، الـ job queue فيها كل الـ processes اللي في السيستم.",
+     "صح. الـ ready queue فيها كل الـ processes اللي في الـ main memory وجاهزة ومستنية تتنفذ.",
+     "غلط، الـ device queue فيها الـ processes المستنية جهاز <bdi dir=\"ltr\">I/O</bdi>.",
+     "غلط، الـ swapped-out processes اتنقلت من الـ memory للـ disk."
+    ],
+    [
+     "غلط، الـ PCB7 في أول الـ ready queue.",
+     "غلط، الـ PCB6 في آخر queue الـ disk unit 0.",
+     "صح. الـ disk unit 0 شكلها كده:<span class=\"ltr\">head → PCB3 → PCB14 → PCB6 → null, tail → PCB6</span>",
+     "غلط، الـ PCB5 هو الوحيد في queue الـ terminal unit 0."
+    ],
+    [
+     "غلط، الـ long-term scheduler ميفضّلش نوع واحد، محتاج خليط.",
+     "صح. الـ long-term scheduler لازم يختار خليط كويس من الـ <bdi dir=\"ltr\">I/O-bound</bdi> والـ CPU-bound processes."
+    ],
+    [
+     "غلط، إنه نادر وممكن يبقى بطيء ده وصف الـ long-term scheduler.",
+     "غلط، الـ swapping ده شغل الـ medium-term scheduler.",
+     "غلط، اختيار مين يدخل الـ ready queue ده الـ long-term scheduler.",
+     "صح. الـ short-term scheduler بيختار الـ process الجاية للـ CPU كل كام millisecond، فلازم يبقى سريع."
+    ],
+    [
+     "صح. الـ long-term (job) scheduler بيتحكم في الـ degree of multiprogramming لأنه بيختار مين يدخل الـ ready queue.",
+     "غلط، الـ short-term scheduler بيقرر بس مين من الجاهزين ياخد الـ CPU.",
+     "غلط، الـ medium-term بيتضاف عشان يقلل الـ degree of multiprogramming بالـ swapping، لكن الجدول بيقول إن الـ long-term هو اللي بيتحكم فيه.",
+     "غلط، المحاضرة بتحدد scheduler لده، وهو الـ long-term."
+    ],
+    [
+     "صح. المحاضرة بتقول إن وقت الـ context switch بيعتمد على الـ hardware، زي إن يبقى فيه multiple register sets per CPU.",
+     "غلط، المحاضرة بتقول كده صراحة عن دعم الـ hardware للـ context switch."
+    ],
+    [
+     "غلط، لازم حالة الـ process القديمة تتحفظ وتتحط في queue الأول قبل ما نختار الجاية.",
+     "غلط، لو رجّعنا الجديدة قبل ما نحفظ القديمة هنمسح الـ registers بتاعة القديمة قبل ما تتخزن.",
+     "صح. ده ترتيب خطوات الـ kernel زي المحاضرة: يحفظ الـ PC والـ registers والـ state في الـ PCB القديم، ويحطها في الـ queue المناسبة، ويختار الجاية، ويرجّع الـ context بتاعها من الـ PCB، وبعدين يحوّل للـ user mode وينط للـ PC المحفوظ.",
+     "غلط، التحويل للـ user mode هو آخر خطوة، بعد ما الـ context الجديد يرجع."
+    ],
+    [
+     "غلط، الـ <code>fork()</code> بترجّع صفر في الـ child.",
+     "غلط، في الـ parent الـ <code>fork()</code> بترجّع الـ PID بتاع الـ child.",
+     "غلط، الـ zombie هي process خلصت والـ parent ما عملش <code>wait()</code>، والـ <code>fork()</code> مش بترجّع ده.",
+     "صح. الـ <code>fork()</code> بترجّع رقم سالب لو فيه error، وكود المحاضرة بيطبع <bdi dir=\"ltr\">Fork Failed</bdi>."
+    ],
+    [
+     "غلط، كل <code>fork()</code> بتتنفذ في كل process موجودة ساعتها، مش مرة واحدة بس.",
+     "صح. كل <code>fork()</code> بتضاعف العدد:<span class=\"ltr\">1 → 2 → 4 → 8</span>",
+     "غلط، الـ 6 معناها إن كل call بتزوّد اتنين بس، لكن الحقيقة إن كل call بتضاعف العدد.",
+     "غلط، الـ 4 ده العدد بعد اتنين <code>fork()</code> بس."
+    ],
+    [
+     "صح. الـ <code>exec()</code> بتتستخدم بعد الـ <code>fork()</code> عشان تبدّل الـ memory بتاعة الـ process ببرنامج جديد.",
+     "غلط، الـ <code>wait()</code> بتخلي الـ parent يستنى الـ child وترجّع الـ status والـ pid.",
+     "غلط، الـ <code>abort()</code> بتخلي الـ parent يقفل الـ child.",
+     "غلط، الـ <code>exit()</code> بتطلب من الـ OS يمسح الـ process بعد آخر statement."
+    ],
+    [
+     "غلط، إن الـ child يعدّي الـ resources المحجوزة له ده من الأسباب المذكورة.",
+     "غلط، إن الـ task مبقتش مطلوبة ده من الأسباب المذكورة.",
+     "غلط، ده تالت سبب مذكور في المحاضرة.",
+     "صح. إن الـ child يبقى CPU-bound (CPU bursts قليلة وطويلة) مش سبب للـ <code>abort()</code> في المحاضرة."
+    ],
+    [
+     "غلط، المحاضرة بتقول إن الـ cascading termination الـ OS هو اللي بيبدأها.",
+     "صح. في الـ cascading termination كل الـ children والـ grandchildren بيتقفلوا، والـ operating system هو اللي بيبدأ الإنهاء."
+    ],
+    [
+     "غلط، الـ browser process بيدير الـ user interface والـ disk والـ network.",
+     "صح. الـ renderer processes بترسم الصفحات، واحدة لكل website، جوه sandbox بيحدّ الـ disk والـ network.",
+     "غلط، الـ plug-in process بتتعمل لكل نوع plug-in.",
+     "غلط، الـ service هي طريقة الـ background process في الـ Android عشان تعمل tasks."
+    ],
+    [
+     "غلط، الـ information sharing من الأسباب المذكورة.",
+     "غلط، الـ computation speedup من الأسباب المذكورة.",
+     "صح. الأسباب هي الـ information sharing والـ computation speedup والـ modularity والـ convenience، أما الـ increased reliability فدي ميزة الـ multiprocessors من المحاضرة الأولى.",
+     "غلط، الـ modularity من الأسباب المذكورة."
+    ],
+    [
+     "صح. الحساب:<span class=\"ltr\">in = (9 + 1) % 10 = 0</span>يعني الـ index بيلف ويرجع للأول.",
+     "غلط، الـ 10 ده لو نسيت الـ <code>%</code>، ومفيش index رقم 10 في buffer حجمه 10.",
+     "غلط، الـ <code>in</code> بيزيد بعد ما العنصر يتخزن، فمينفعش يفضل 9.",
+     "غلط، الناتج صفر مش واحد."
+    ],
+    [
+     "غلط، لما <bdi dir=\"ltr\">in == out</bdi> يبقى مفيش حاجة تتاخد لسه.",
+     "غلط، الـ consumer بيقرا من مكان الـ <code>out</code> نفسه، وكمان الـ buffer هنا فاضي أصلًا.",
+     "صح. الـ consumer بيلف طول ما <bdi dir=\"ltr\">in == out</bdi>، وهنا الاتنين 4، يبقى الـ buffer فاضي.",
+     "غلط، الـ buffer مش مليان:<span class=\"ltr\">(4 + 1) % 6 = 5 ≠ 4</span>وكمان المليان بيوقّف الـ producer مش الـ consumer."
+    ],
+    [
+     "غلط، الـ message passing من غير shared variables، والداتا المشتركة دي الـ shared memory.",
+     "صح. في الـ message passing الـ processes بتتواصل وتعمل synchronization من غير shared variables، بالـ send والـ receive."
+    ],
+    [
+     "غلط، إن الـ link يوصّل processes كتير ده في الـ indirect (الـ mailboxes).",
+     "غلط، كذا link لنفس الاتنين ده في الـ indirect.",
+     "غلط، الـ mailboxes (ports) دي الـ indirect.",
+     "صح. في الـ direct الـ processes بتسمّي بعض، والـ links بتتعمل automatic، و link واحد بالظبط لكل اتنين."
+    ],
+    [
+     "صح. الحلول المذكورة: الـ link يبقى لاتنين بس، أو process واحدة بس تعمل receive في المرة، أو السيستم يختار الـ receiver عشوائي ويبلّغ الـ sender.",
+     "غلط، توصيل الرسالة لكل الـ processes مش من الحلول المذكورة.",
+     "غلط، الـ null هو اللي الـ non-blocking receive ممكن يرجّعه، مش حل لمشكلة الـ mailbox.",
+     "غلط، المحاضرة مقالتش إن الحل نحوّل لـ direct communication."
+    ],
+    [
+     "غلط، الـ sender اللي عمره ما يستنى ده في الـ unbounded capacity.",
+     "غلط، إنه يستنى لما الـ n messages يتملوا ده الـ bounded capacity.",
+     "صح. في الـ zero capacity مفيش messages بتستنى في الـ queue، فالـ sender لازم يستنى الـ receiver، وده الـ rendezvous.",
+     "غلط، إنه يبعت ويكمل والـ receiver ياخد null ده الـ non-blocking (asynchronous)."
+    ],
+    [
+     "صح. الـ non-blocking receive بيرجّع يا message سليمة يا null.",
+     "غلط، المحاضرة بتعرّف الـ non-blocking receive كده بالظبط، والـ blocking receive هو اللي بيستنى."
+    ],
+    [
+     "غلط، كده انت عكستهم، الـ IP address الأول وبعده الـ port.",
+     "صح. الـ socket هو IP address ومعاه port، يعني الـ port رقم <bdi dir=\"ltr\">1625</bdi> على الـ host <bdi dir=\"ltr\">161.25.19.8</bdi>.",
+     "غلط، الـ loopback هو <bdi dir=\"ltr\">127.0.0.1</bdi>.",
+     "غلط، الـ well-known ports أقل من <bdi dir=\"ltr\">1024</bdi>، والـ <bdi dir=\"ltr\">1625</bdi> مش كده."
+    ],
+    [
+     "صح. الـ ports اللي أقل من <bdi dir=\"ltr\">1024</bdi> معروفة وبتستخدم للـ standard services.",
+     "غلط، المحاضرة بتقول إن الـ ports اللي أقل من <bdi dir=\"ltr\">1024</bdi> هي الـ well known."
+    ],
+    [
+     "غلط، الـ foreground process هي اللي على الشاشة وبتتحكم فيها من الـ user interface.",
+     "غلط، الـ renderer process دي بتاعة Chrome لرسم الصفحات.",
+     "غلط، الـ plug-in process دي بتاعة Chrome لكل نوع plug-in.",
+     "صح. الـ background process في الـ Android بتستخدم service، بتفضل شغالة لو الـ process اتعمل لها suspend، ومن غير UI وبـ memory قليلة."
+    ],
+    [
+     "صح. الـ <code>wait()</code> بترجّع الـ status والـ pid بتاع الـ child اللي خلصت.",
+     "غلط، عمل child وإرجاع الـ pid بتاعه ده الـ <code>fork()</code> في الـ parent.",
+     "غلط، إرجاع صفر في الـ child ده الـ <code>fork()</code>.",
+     "غلط، الـ <code>wait()</code> بترجّع معلومات الـ child اللي خلصت، مش الـ parent."
     ]
    ]
   },
@@ -855,6 +1205,240 @@ AR.os = {
      "ده الترتيب بالمقلوب: الـ batch processes ليها أقل priority والـ real-time ليها الأعلى.",
      "الـ real-time، مش الـ system، هي اللي في الأول، والـ batch، مش الـ interactive، هي الأخيرة. والترتيب الصح:<span class=\"ltr\">real-time → system → interactive → batch</span>",
      "صح. ده ترتيب المحاضرة حسب نوع الـ process."
+    ],
+    [
+     "ده متوسط الـ turnaround time مش الـ waiting time:<span class=\"ltr\">(7 + 9 + 9 + 10)/4 = 8.75</span>",
+     "صح. الـ Gantt chart:<span class=\"ltr\">P1 0–7 | P2 7–11 | P3 11–12 | P4 12–15</span>والـ WT هو البداية ناقص الوصول:<span class=\"ltr\">0, 5, 8, 7 → 20/4 = 5</span>",
+     "ده لو اعتبرت الكل واصل عند 0 ونسيت الـ arrival times:<span class=\"ltr\">0, 7, 11, 12 → 30/4 = 7.5</span>",
+     "ده الـ non-preemptive SJF مش الـ FCFS، الترتيب P1 ثم P3 ثم P4 ثم P2:<span class=\"ltr\">0 + 9 + 4 + 3 = 16 → 16/4 = 4</span>"
+    ],
+    [
+     "ده الـ FCFS بترتيب الوصول، مش الـ SJF.",
+     "ده الأطول الأول، عكس الـ SJF خالص.",
+     "صح. الأقصر الأول، يعني 2 ثم 3 ثم 5 ثم 8:<span class=\"ltr\">P2 0–2 | P4 2–5 | P1 5–10 | P3 10–18</span>",
+     "الـ P4 (3) أقصر من P1 (5)، يبقى P4 لازم تشتغل قبل P1."
+    ],
+    [
+     "ده الـ FCFS بالترتيب الأصلي:<span class=\"ltr\">0 + 5 + 7 + 15 = 27 → 27/4 = 6.75</span>",
+     "ده متوسط الـ turnaround في الـ SJF مش الـ waiting:<span class=\"ltr\">(2 + 5 + 10 + 18)/4 = 8.75</span>",
+     "ده لو شغّلت P1 (5) قبل P4 (3)، والـ P4 أقصر فلازم تشتغل الأول:<span class=\"ltr\">0 + 2 + 7 + 10 = 19 → 19/4 = 4.75</span>",
+     "صح. الكل واصل عند 0، فالـ WT هو وقت البداية:<span class=\"ltr\">P2 0, P4 2, P1 5, P3 10 → 17/4 = 4.25</span>"
+    ],
+    [
+     "صح. الـ P1 مش بتتعملها preempt فبتشتغل من 0 لـ 7، وعند 7 الجاهزين هما P2 (4) و P3 (1) و P4 (4)، والـ P3 هي الأقصر.",
+     "الاختيار بالوصول ده الـ FCFS، أما الـ SJF فبيختار الأقصر.",
+     "لا الـ SJF ولا الـ FCFS بيختار آخر واحدة وصلت، والـ burst بتاعها (4) مش الأقصر.",
+     "ده يحصل في الـ SRTF الـ preemptive، لكن الـ SJF العادي بيسيب P1 تكمّل."
+    ],
+    [
+     "ده الـ FCFS:<span class=\"ltr\">0 + 6 + 9 + 9 = 24 → 24/4 = 6</span>",
+     "صح. الـ Gantt:<span class=\"ltr\">P1 0–7 | P3 7–8 | P2 8–12 | P4 12–16</span>والتعادل بين P2 و P4 بيتحل بالـ FCFS، والـ WT:<span class=\"ltr\">P1 0, P2 7, P3 5, P4 9 → 21/4 = 5.25</span>",
+     "ده الـ SRTF الـ preemptive على نفس الأرقام، مش الـ non-preemptive.",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(7 + 11 + 6 + 13)/4 = 9.25</span>"
+    ],
+    [
+     "ده الـ non-preemptive SJF، مفيش أي preemption فيه.",
+     "ناقصه الـ preemption عند 4، لأن P3 (1) أقل من الباقي من P2 وهو 2.",
+     "صح. عند 2 الـ P2 (4) أقل من الباقي من P1 (5)، وعند 4 الـ P3 (1) أقل من الباقي من P2 (2)، وعند 5 الباقي من P2 هو 2 وده أقل من P4 (4) فـ P2 بترجع تكمّل.",
+     "عند 5 الباقي من P2 هو 2 وده أقصر من P4 (4)، يبقى P2 تشتغل قبل P4."
+    ],
+    [
+     "صح. الـ CT هي 16 و 7 و 5 و 11، والـ WT:<span class=\"ltr\">WT = CT − AT − BT → 9, 1, 0, 2 → 12/4 = 3</span>",
+     "ده الـ non-preemptive SJF على نفس الأرقام:<span class=\"ltr\">0 + 6 + 3 + 7 = 16 → 16/4 = 4</span>",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(16 + 5 + 1 + 6)/4 = 7</span>",
+     "ده متوسط الـ response time (أول مرة على الـ CPU ناقص الوصول):<span class=\"ltr\">0 + 0 + 0 + 2 = 2 → 2/4 = 0.5</span>"
+    ],
+    [
+     "الـ 7 ده الوقت اللي P4 أخدت فيه الـ CPU، مش المدة من وصولها.",
+     "الـ 6 ده الـ turnaround بتاع P4:<span class=\"ltr\">11 − 5 = 6</span>",
+     "الـ P4 مابتبدأش أول ما توصل، لأن P2 لسه فاضلها 2 وده أقل من 4.",
+     "صح. الـ response time هو أول مرة على الـ CPU ناقص الوصول:<span class=\"ltr\">7 − 5 = 2</span>"
+    ],
+    [
+     "ده الـ FCFS:<span class=\"ltr\">0 + 9 + 14 = 23 → 23/3 = 7.67</span>",
+     "ده الـ SJF:<span class=\"ltr\">0 + 2 + 7 = 9 → 9/3 = 3</span>",
+     "صح. الـ Gantt:<span class=\"ltr\">P1 0–3 | P2 3–6 | P3 6–8 | P1 8–11 | P2 11–13 | P1 13–16</span>والـ WT هو الـ CT ناقص الـ burst:<span class=\"ltr\">7 + 8 + 6 = 21 → 21/3 = 7</span>",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(16 + 13 + 8)/3 = 12.33</span>"
+    ],
+    [
+     "عند 6 الـ P2 خلصت أول quantum بس ولسه فاضلها 2.",
+     "صح. الـ P2 بتشتغل من 3 لـ 6، وتستنى P3 (من 6 لـ 8) و P1 (من 8 لـ 11)، وبعدين تخلص من 11 لـ 13.",
+     "الـ 14 ده وقت خلاص P2 في الـ FCFS:<span class=\"ltr\">9 + 5 = 14</span>",
+     "الـ 16 ده وقت خلاص P1 آخر واحدة."
+    ],
+    [
+     "صح. عند 2 الـ P3 بتوصل مع انتهاء quantum الـ P1، فالـ queue بتبقى P2 ثم P3 ثم P1. وعند 4 الـ P4 بتوصل مع انتهاء quantum الـ P2، فالـ queue بتبقى P3 ثم P1 ثم P4 ثم P2.",
+     "ده حاطط الـ process اللي اتعملها preempt قبل اللي لسه واصلة، عكس الاصطلاح بتاع الكورس.",
+     "ده الـ FCFS، مفيش quantum خالص.",
+     "الـ P4 وصلت عند 4، بعد ما P1 رجعت الـ queue عند 2، يبقى P1 تشتغل قبل P4."
+    ],
+    [
+     "ده الـ FCFS على نفس الأرقام:<span class=\"ltr\">0 + 4 + 6 + 5 = 15 → 15/4 = 3.75</span>",
+     "ده لو حطيت الـ process اللي اتعملها preempt قبل الجديدة:<span class=\"ltr\">6 + 4 + 4 + 4 = 18 → 18/4 = 4.5</span>",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(11 + 9 + 3 + 5)/4 = 7</span>",
+     "صح. الـ CT هي 11 و 10 و 5 و 9، والـ TAT هي 11 و 9 و 3 و 5، والـ WT:<span class=\"ltr\">WT = TAT − BT → 6 + 6 + 2 + 3 = 17 → 17/4 = 4.25</span>"
+    ],
+    [
+     "ده لو اعتبرت الرقم الأكبر هو الأعلى priority:<span class=\"ltr\">P1, P4, P2, P3 → 0 + 6 + 9 + 11 = 26 → 6.5</span>",
+     "ده الـ SJF على نفس الـ bursts، مش الـ priority.",
+     "صح. الترتيب حسب الـ priority:<span class=\"ltr\">P3 0–4 | P2 4–6 | P4 6–9 | P1 9–15</span>والـ WT:<span class=\"ltr\">P1 9, P2 4, P3 0, P4 6 → 19/4 = 4.75</span>",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(15 + 6 + 4 + 9)/4 = 8.5</span>"
+    ],
+    [
+     "ده الـ non-preemptive:<span class=\"ltr\">P1 0–5 | P2 5–8 | P4 8–10 | P3 10–14</span>",
+     "صح. الـ P2 بتعمل preempt لـ P1 عند 1:<span class=\"ltr\">P1 0–1 | P2 1–4 | P4 4–6 | P1 6–10 | P3 10–14</span>والـ WT:<span class=\"ltr\">5 + 0 + 8 + 1 = 14 → 14/4 = 3.5</span>",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(10 + 3 + 12 + 3)/4 = 7</span>",
+     "ده متوسط الـ response time:<span class=\"ltr\">0 + 0 + 8 + 1 = 9 → 9/4 = 2.25</span>"
+    ],
+    [
+     "ده لو شغّلت P1 و P3 ورا بعض من غير RR بين اللي ليهم نفس الـ priority.",
+     "ده متوسط الـ turnaround:<span class=\"ltr\">(9 + 4 + 12 + 14)/4 = 9.75</span>",
+     "ده متوسط الـ response time:<span class=\"ltr\">4 + 0 + 6 + 12 = 22 → 22/4 = 5.5</span>",
+     "صح. الـ Gantt:<span class=\"ltr\">P2 0–4 | P1 4–6 | P3 6–8 | P1 8–9 | P3 9–12 | P4 12–14</span>والـ WT هو الـ CT ناقص الـ burst:<span class=\"ltr\">6 + 0 + 7 + 12 = 25 → 25/4 = 6.25</span>"
+    ],
+    [
+     "صح. الـ q (15) أكبر من كل الـ bursts، فالـ RR بيتصرف زي الـ FCFS:<span class=\"ltr\">0 + 12 + 17 = 29 → 29/3 = 9.67</span>",
+     "ده الـ RR بـ q بيساوي 5:<span class=\"ltr\">P1 0–5 | P2 5–10 | P3 10–14 | P1 14–21 → 24/3 = 8</span>",
+     "ده الـ SJF:<span class=\"ltr\">0 + 4 + 9 = 13 → 13/3 = 4.33</span>",
+     "ده متوسط الـ turnaround في الـ FCFS:<span class=\"ltr\">(12 + 17 + 21)/3 = 16.67</span>"
+    ],
+    [
+     "الترتيب معكوس، الـ FCFS هو الأسوأ هنا (9.67) والـ SJF هو الأحسن (4.33).",
+     "الـ RR بيدّي 8 وده أكتر من الـ SJF (4.33)، والـ SJF هو الـ optimal.",
+     "صح. الـ SJF بيدّي 4.33 وبعده الـ RR بـ 8 وبعده الـ FCFS بـ 9.67، والـ SJF دايمًا بيدّي أقل متوسط waiting time.",
+     "الـ FCFS (9.67) أسوأ من الـ RR (8) هنا، لأن P2 و P3 القصيرين مستنيين ورا P1 (الـ convoy effect)."
+    ],
+    [
+     "ده قسمة على n، لكن الحد هو (n − 1)q، يعني نقسم على 3.",
+     "صح. القانون:<span class=\"ltr\">(n − 1)q = 60 → 3q = 60 → q = 20 ms</span>",
+     "الـ 60 ده أقصى انتظار نفسه، مش الـ quantum.",
+     "ده ضرب بدل القسمة:<span class=\"ltr\">4 × 60 = 240</span>"
+    ],
+    [
+     "صح. بتدخل Q0 وتاخد 8 ms، ومش بتخلص فبتنزل Q1، والـ 12 ms الباقيين بيكفيهم الـ quantum بتاع 16 ms.",
+     "الـ quantum بتاع Q1 هو 16 ms مش 8، يبقى الـ 12 الباقيين بيخلصوا في Q1.",
+     "الـ Q0 بتدّي 8 ms بس، وبعدها الـ process بتنزل Q1.",
+     "ده يحصل لو الـ burst أكبر من 24 ms، لكن دي بتخلص بعد 20 ms:<span class=\"ltr\">8 + 12 = 20</span>"
+    ],
+    [
+     "الـ throughput معدل في وحدة الزمن، مش عدد processes وخلاص.",
+     "الـ 16 ده الوقت الكلي، مش عدد processes في وحدة الزمن.",
+     "الـ 4 processes أخدوا 16 وحدة زمن، مش وحدة واحدة.",
+     "صح. الـ throughput هو عدد الـ processes اللي بتخلص في وحدة الزمن:<span class=\"ltr\">4/16 = 0.25</span>"
+    ],
+    [
+     "دول الحالتين 1 و 4، ومفيش فيهم اختيار، لازم process جديدة تتختار.",
+     "دول سهم الـ admitted وسهم الـ scheduler dispatch، مش من الحالات الأربعة.",
+     "صح. الحالتين 2 و 3 فيهم اختيار، والـ scheduling فيهم هو اللي بيخلي الـ scheduler يبقى preemptive.",
+     "الـ termination هي الحالة 4، ومفيهاش اختيار."
+    ],
+    [
+     "صح. السهم من running لـ ready مكتوب عليه interrupt.",
+     "ده السهم من running لـ waiting.",
+     "ده السهم من ready لـ running.",
+     "ده السهم من waiting لـ ready."
+    ],
+    [
+     "الـ Response time هو من الـ submission لحد أول response.",
+     "صح. الـ Dispatch latency بتشمل الـ save state في PCB0 والـ restore state من PCB1.",
+     "الـ Waiting time هو الوقت اللي الـ process بتقضيه في الـ ready queue.",
+     "الـ Time quantum هو الحتة من وقت الـ CPU اللي كل process بتاخدها في الـ RR."
+    ],
+    [
+     "الـ Turnaround time من الـ submission لحد الـ completion، مش لحد أول response.",
+     "الـ Waiting time بيحسب الوقت في الـ ready queue بس.",
+     "الـ Dispatch latency هو وقت الـ dispatcher عشان يبدّل بين process والتانية.",
+     "صح. الـ Response time هو من الـ submission لحد أول response، ولازم نعمله minimize."
+    ],
+    [
+     "صح. في الـ FCFS الترتيب 24 و 3 و 3 بيدّي متوسط WT قد 17، أما 3 و 3 و 24 فبيدّي 3 بس.",
+     "الـ SRTF بيخلي الأقصر يعمل preempt للطويلة، فالقصيرين مش بيتزنقوا.",
+     "الـ RR بيدّي كل process quantum بالدور، فالقصيرين بيخلصوا بدري.",
+     "الـ SJF بيشغّل القصيرين الأول، فعمرهم ما بيستنوا ورا واحدة طويلة."
+    ],
+    [
+     "دي مشكلة الـ RR لما الـ quantum يبقى صغير أوي.",
+     "الـ convoy effect بتاع الـ FCFS، والـ SJF بيتجنبه.",
+     "صح. الـ SJF محتاج طول الـ CPU burst الجاي، فلازم تسأل الـ user أو تقدّره.",
+     "الـ race conditions بتيجي من الـ preemption عمومًا، مش هي صعوبة الـ SJF."
+    ],
+    [
+     "الترتيب بالـ arrival time ده الـ FCFS.",
+     "صح. كل ما الـ burst الجاي المتوقع يقصر، الـ priority يعلى.",
+     "الـ quantum بتاع الـ RR والـ multilevel feedback queue، مش الـ SJF.",
+     "ده وصف الـ aging، اللي هو حل الـ starvation."
+    ],
+    [
+     "ده من الحاجات اللي بتعرّفها.",
+     "ده من الحاجات اللي بتعرّفها.",
+     "ده من الحاجات اللي بتعرّفها.",
+     "صح. الـ scheduler ده بيتعرّف بعدد الـ queues، والـ algorithm بتاع كل queue، وطريقة الـ upgrade والـ demote، وطريقة اختيار الـ queue اللي الـ process تدخلها."
+    ],
+    [
+     "ده يحصل لما الـ q يبقى كبير أوي.",
+     "صح. الـ q لازم يبقى كبير مقارنة بوقت الـ context switch (اللي بياخد أقل من <bdi dir=\"ltr\">10&nbsp;µs</bdi>).",
+     "الـ RR بيخدم كل الـ processes بالدور، فمش بيعمل starvation.",
+     "أقل متوسط waiting time بيدّيه الـ SJF، مش الـ quantum الصغير."
+    ],
+    [
+     "الـ processes اللي في الـ waiting مستنية <bdi dir=\"ltr\">I/O</bdi> أو event، مش مستنية الـ CPU.",
+     "الـ PCB فيه الـ state المحفوظة للـ process، والـ dispatcher بيستخدمه وقت الـ switch.",
+     "الـ processes اللي في الـ new لازم تتعمل لها admitted للـ ready الأول قبل ما تتعمل لها schedule.",
+     "صح. الـ CPU scheduler بيختار process من الـ ready queue ويدّيها CPU core."
+    ],
+    [
+     "صح. كل block فيه <bdi dir=\"ltr\">wait&nbsp;for&nbsp;I/O</bdi> هو <bdi dir=\"ltr\">I/O&nbsp;burst</bdi> بين اتنين CPU bursts.",
+     "الـ CPU bursts هي الـ blocks اللي فيها حسابات زي الـ load store والـ add store.",
+     "الـ dispatch latency في شكل الـ dispatcher، مش في الـ burst cycle.",
+     "الـ time quantum بتاع الـ Round Robin."
+    ],
+    [
+     "مفيش اختيار في الحالتين دول، لازم process جديدة تتختار.",
+     "صح. في الحالتين 1 و 4 مفيش اختيار، الاختيار موجود في 2 و 3 بس."
+    ],
+    [
+     "الـ FCFS عمره ما بياخد الـ CPU من process شغالة.",
+     "صح. الـ FCFS هو non-preemptive، الـ process بتفضل ماسكة الـ CPU لحد ما تخلص أو تروح waiting."
+    ],
+    [
+     "الحد في المحاضرة هو <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)q</bdi> مش nq.",
+     "صح. الحد في المحاضرة هو <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)q</bdi>، لأن الـ process بتستنى باقي الـ processes بس."
+    ],
+    [
+     "صح. ده بالظبط كلام المحاضرة عن الـ performance بتاع الـ RR.",
+     "المحاضرة بتقول إن الـ RR متوسط الـ turnaround فيه أعلى من الـ SJF بس الـ response أحسن."
+    ],
+    [
+     "الاصطلاح عكس كده، أصغر integer هو أعلى priority.",
+     "صح. أصغر integer هو أعلى priority (يعني P2 اللي الـ priority بتاعها 1 بتشتغل الأول)."
+    ],
+    [
+     "صح. لما process مستنية تطلع queue أعلى، ده هو الـ aging.",
+     "المحاضرة بتقول إن الـ aging ينفع يتعمل بالـ multilevel feedback queue."
+    ],
+    [
+     "التنقل بين الـ queues هو اللي بيميّز الـ multilevel feedback queue.",
+     "صح. الـ multilevel feedback queue بس هي اللي بتسمح بالـ upgrade والـ demote."
+    ],
+    [
+     "الـ RR بيدّي كل process quantum بالدور، فمفيش process بتستنى للأبد.",
+     "صح. الـ FCFS والـ RR مش بيعملوا starvation، أما الـ SJF والـ priority فممكن، والحل aging."
+    ],
+    [
+     "صح. كل أنظمة التشغيل الحديثة تقريبًا بتستخدم preemptive scheduling.",
+     "المحاضرة بتقول إن Windows و macOS و Linux و UNIX كلهم preemptive."
+    ],
+    [
+     "الاصطلاح بتاع الكورس عكس كده، الجديدة بتدخل الـ queue الأول.",
+     "صح. الجديدة بتدخل الأول والـ process اللي اتعملها preempt بتقف وراها."
+    ],
+    [
+     "صح. الـ process بتستنى من 0 لحد ما تبدأ ومحدش بيقاطعها، فالـ WT هو وقت البداية (زي 0 و 24 و 27 في الـ FCFS).",
+     "لو الوصول عند 0 ومفيش preemption، الانتظار الوحيد بيبقى قبل ما الـ process تبدأ."
+    ],
+    [
+     "صح. الـ CPU utilization والـ throughput بنعملهم maximize، والـ turnaround والـ waiting والـ response بنعملهم minimize.",
+     "المحاضرة بتقول الاتجاهات دي بالظبط للـ criteria."
     ]
    ]
   },
