@@ -470,7 +470,7 @@ AR.dm = {
      "pts": [
       "الـ <b>Proposition</b>: جملة بتقول حقيقة يا صح يا غلط (<b>بس مش الاتنين مع بعض</b>).",
       "الـ <bdi dir=\"ltr\">\"2&nbsp;+&nbsp;2&nbsp;=&nbsp;4\"</bdi> دي proposition (حقيقة). إنما <bdi dir=\"ltr\">\"x&nbsp;+&nbsp;1&nbsp;=&nbsp;2\"</bdi> <b>مش</b> proposition إلا لو اتحددت قيمة معينة لـ x، لأن صحتها بتعتمد على x.",
-      "الـ <b>Negation</b> بتاع p، بنكتبه <b>¬p</b> (أو ~p) وبنقراه \"not p\": يعني \"مش صحيح إن p\". والـ truth value بتاعه <b>عكس</b> p.",
+      "الـ <b>Negation</b> بتاع p، بنكتبه <b><bdi dir=\"ltr\">¬p</bdi></b> (أو <bdi dir=\"ltr\">~p</bdi>) وبنقراه \"not p\": يعني \"مش صحيح إن p\". والـ truth value بتاعه <b>عكس</b> p.",
       "أمثلة:<span class=\"ltr\">p: Today is Thursday → ¬p: Today is not Thursday</span><span class=\"ltr\">p: At least a foot of snow falls in Boulder on Fridays → ¬p: <b>Less than a foot</b> of snow falls in Boulder on Fridays</span>",
       "خلي بالك: نفي \"at least a foot\" هو \"less than a foot\"، مش \"no snow\"، واليوم بيفضل Fridays زي ما هو."
      ]
@@ -648,7 +648,7 @@ AR.dm = {
     ],
     [
      "صح. الـ ⊕ بتبقى true بالظبط لما p وq يختلفوا.",
-     "الـ p ↔ q بتبقى true لما p وq ليهم نفس القيمة؛ والـ ⊕ بتبقى true لما يختلفوا. يعني العمودين عكس بعض بالظبط، فـ ⊕ ≡ ¬(p ↔ q).",
+     "الـ p ↔ q بتبقى true لما p وq ليهم نفس القيمة؛ والـ ⊕ بتبقى true لما يختلفوا. يعني العمودين عكس بعض بالظبط، فـ ⊕ ≡ <bdi dir=\"ltr\">¬(p&nbsp;↔&nbsp;q)</bdi>.",
      "الـ p ∨ q بتتفق مع الـ ⊕ ما عدا في الـ row TT: هناك الـ ∨ بتبقى T والـ ⊕ بتبقى F.",
      "الـ p ∧ q بتبقى T بس في الـ row TT، ودي بالظبط اللي الـ ⊕ فيها F؛ وفي الـ rows TF وFT كمان مختلفين."
     ],
@@ -665,7 +665,7 @@ AR.dm = {
      "الجملة <bdi dir=\"ltr\">\"Close the door.\"</bdi> ده أمر؛ ماينفعش يبقى true أو false، فهو مش proposition."
     ],
     [
-     "دي بتبقى true يوم Thursday كمان، فماينفعش تبقى الـ negation. الـ ¬p لازم تبقى عكس قيمة p في كل يوم.",
+     "دي بتبقى true يوم Thursday كمان، فماينفعش تبقى الـ negation. الـ <bdi dir=\"ltr\">¬p</bdi> لازم تبقى عكس قيمة p في كل يوم.",
      "الجملة <bdi dir=\"ltr\">\"Tomorrow is Thursday\"</bdi> دي proposition تانية عن يوم تاني. الـ negation هي <bdi dir=\"ltr\">\"it is not the case that today is Thursday\"</bdi>.",
      "الجملة <bdi dir=\"ltr\">\"Today is Friday\"</bdi> دي طريقة واحدة بس إن p تبقى false؛ يوم Monday مثلًا p والجملة دي الاتنين false. الـ negation هي <bdi dir=\"ltr\">\"Today is not Thursday\"</bdi>.",
      "صح. الـ <bdi dir=\"ltr\">¬p</bdi> معناها <bdi dir=\"ltr\">\"it is not the case that p\"</bdi> وليها عكس الـ truth value؛ ومثال المحاضرة بيدّي:<span class=\"ltr\">¬p: \"Today is not Thursday\"</span>المرجع <bdi dir=\"ltr\">(L3, Propositions and negation)</bdi>."
@@ -2503,9 +2503,9 @@ AR.dm = {
        "why": "قانون De Morgan:<span class=\"ltr\">¬(p ∧ q) ≡ ¬p ∨ ¬q</span>بتنفي كل جزء وتقلب الـ <bdi dir=\"ltr\">∧</bdi> لـ <bdi dir=\"ltr\">∨</bdi> <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ ¬P ∧ ¬Q دي قانون De Morgan التاني، بتاع ¬(P ∨ Q). في ¬(P ∧ Q) لازم الـ ∧ كمان تتقلب لـ ∨.",
-        "الـ P ∧ Q دي الأصل من غير النفي؛ قيمتها عكس ¬(P ∧ Q) في كل row.",
-        "الـ P ∨ Q مش نافية أي حاجة. في الـ row بتاع T, T هي T بينما ¬(P ∧ Q) بتبقى F، فهما مختلفين."
+        "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;¬Q</bdi> دي قانون De Morgan التاني، بتاع <bdi dir=\"ltr\">¬(P&nbsp;∨&nbsp;Q)</bdi>. في <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> لازم الـ ∧ كمان تتقلب لـ ∨.",
+        "الـ P ∧ Q دي الأصل من غير النفي؛ قيمتها عكس <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> في كل row.",
+        "الـ P ∨ Q مش نافية أي حاجة. في الـ row بتاع T, T هي T بينما <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> بتبقى F، فهما مختلفين."
        ]
       },
       {
@@ -2518,11 +2518,11 @@ AR.dm = {
        ]
       },
       {
-       "why": "يا p يا ¬p لازم واحد فيهم يبقى true، فالـ p ∨ ¬p بتطلع T في الـ rows الاتنين؛ والـ negation law بيدي p ∨ ¬p ≡ t (L4, Example 1.1.13).",
+       "why": "يا p يا <bdi dir=\"ltr\">¬p</bdi> لازم واحد فيهم يبقى true، فالـ p ∨ <bdi dir=\"ltr\">¬p</bdi> بتطلع T في الـ rows الاتنين؛ والـ negation law بيدي p ∨ ¬p ≡ t (L4, Example 1.1.13).",
        "ow": [
-        "الـ p ∧ ¬p محتاجة p و ¬p الاتنين true، وده عمره ما بيحصل، فهي دايمًا false: يعني contradiction (Theorem 1.1.1, negation law).",
+        "الـ p ∧ <bdi dir=\"ltr\">¬p</bdi> محتاجة p و <bdi dir=\"ltr\">¬p</bdi> الاتنين true، وده عمره ما بيحصل، فهي دايمًا false: يعني contradiction (Theorem 1.1.1, negation law).",
         null,
-        "الـ ¬p ∧ ¬Q بتبقى true بس لما p و Q الاتنين false؛ أي variable يبقى true بيخليها F، فهي مش دايمًا true.",
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬Q</bdi> بتبقى true بس لما p و Q الاتنين false؛ أي variable يبقى true بيخليها F، فهي مش دايمًا true.",
         "الـ <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;Q)</bdi> بتبقى F في الـ row بتاع <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;T</bdi>، فهي مش tautology. وهي بتساوي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬Q</bdi> بـ De Morgan."
        ]
       },
@@ -2540,7 +2540,7 @@ AR.dm = {
        "ow": [
         null,
         "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> اتجاه واحد بس («only if»)؛ في الـ row بتاع <bdi dir=\"ltr\">F,&nbsp;T</bdi> هي T بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتبقى F. الـ biconditional محتاجة <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
-        "الـ ¬p بتتجاهل q: في الـ row بتاع T, T هي F بينما p ↔ q بتبقى T.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> بتتجاهل q: في الـ row بتاع T, T هي F بينما p ↔ q بتبقى T.",
         "الـ p ∨ q بتبقى F في الـ row بتاع F, F، بس p ↔ q بتبقى T هناك (القيم متساوية)، والـ p ∨ q بتبقى T في TF و FT اللي فيهم الـ ↔ بتبقى F."
        ]
       },
@@ -2700,9 +2700,9 @@ AR.dm = {
       {
        "why": "الـ Double negative law:<span class=\"ltr\">~(~p) ≡ p</span>المرجع <bdi dir=\"ltr\">(Theorem 1.1.1, law 6)</bdi>: النفي مرتين بيقلب القيمة مرتين، فبترجع لقيمة p <bdi dir=\"ltr\">(L4)</bdi>.",
        "ow": [
-        "الـ ¬p ده نفي واحد بس. النفيين بيلغوا بعض، فالـ ¬(¬p) بترجّع p.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> ده نفي واحد بس. النفيين بيلغوا بعض، فالـ <bdi dir=\"ltr\">¬(¬p)</bdi> بترجّع p.",
         null,
-        "الـ q مش موجودة في ¬(¬p) أصلًا، فمينفعش تظهر في النتيجة. الـ double negation بتدي p.",
+        "الـ q مش موجودة في <bdi dir=\"ltr\">¬(¬p)</bdi> أصلًا، فمينفعش تظهر في النتيجة. الـ double negation بتدي p.",
         "دي الـ expression نفسها، مش التبسيط بتاعها."
        ]
       },
@@ -2960,7 +2960,7 @@ AR.dm = {
        ]
       },
       {
-       "why": "يا p يا ¬p دايمًا واحد فيهم true، فـ p ∨ ¬p قيمتها T في الـ rows الاتنين؛ والـ negation law بيدي p ∨ ¬p ≡ t (L4, Example 1.1.13).",
+       "why": "يا p يا <bdi dir=\"ltr\">¬p</bdi> دايمًا واحد فيهم true، فـ p ∨ <bdi dir=\"ltr\">¬p</bdi> قيمتها T في الـ rows الاتنين؛ والـ negation law بيدي p ∨ ¬p ≡ t (L4, Example 1.1.13).",
        "ow": [
         "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> محتاجة p و <bdi dir=\"ltr\">¬p</bdi> يبقوا true مع بعض، وده عمره ما بيحصل، فهي دايمًا false: دي contradiction <bdi dir=\"ltr\">(Theorem 1.1.1, negation law)</bdi>.",
         null,
