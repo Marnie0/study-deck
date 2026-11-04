@@ -8,58 +8,58 @@ AR.dm = {
      "h": "يعني إيه set؟",
      "pts": [
       "الـ <b>set</b> هي <b>مجموعة من الحاجات متعرّفة كويس (well defined collection of objects)</b>، والحاجات دي اسمها \"<b>elements</b>\" أو \"<b>members</b>\" بتوع الـ set.",
-      "تقدر تعرّف الـ set <b>بطريقتين</b>: (1) <b>listing</b> (roster): تكتب الـ elements بين أقواس <code>{ }</code> وبينهم فواصل، زي {1, 2, 3, 4, 5}؛ (2) باستخدام <b>property</b> بتحدد الـ elements (set-builder)، زي {x | x is odd and 0 &lt; x &lt; 100}.",
+      "تقدر تعرّف الـ set <b>بطريقتين</b>: (1) بالـ <b>listing</b> (roster): تكتب الـ elements بين أقواس <code>{ }</code> وبينهم فواصل، زي:<span class=\"ltr\">{1, 2, 3, 4, 5}</span>(2) باستخدام <b>property</b> بتحدد الـ elements (الـ set-builder)، زي:<span class=\"ltr\">{x | x is odd and 0 &lt; x &lt; 100}</span>",
       "لو x عنصر في A بنكتب <b>x ∈ A</b>؛ ولو x مش عنصر في A بنكتب <b>x ∉ A</b>.",
-      "<b>Well defined</b> يعني دايمًا واضح الحاجة دي تنتمي للـ set ولا لأ. \"The set of all even numbers less than 10\" دي well defined؛ إنما \"tall students\" و\"good teachers\" و\"beautiful cities\" <b>مش</b> well defined لأنها رأي شخصي (Midterm 2025/26 Q7)."
+      "كلمة <b>Well defined</b> يعني دايمًا واضح الحاجة دي تنتمي للـ set ولا لأ. <bdi dir=\"ltr\">\"The set of all even numbers less than 10\"</bdi> دي well defined؛ إنما \"tall students\" و\"good teachers\" و\"beautiful cities\" <b>مش</b> well defined لأنها رأي شخصي <bdi dir=\"ltr\">(Midterm 2025/26 Q7)</bdi>."
      ]
     },
     {
      "h": "الرموز والـ sets الخاصة"
     },
     {
-     "h": "Example 1.1 (الـ elements)"
+     "h": "مثال 1.1 (الـ elements)"
     },
     {
      "h": "أنواع الـ sets",
      "pts": [
-      "<b>Subset</b>: لو كل element في A موجود كمان في B، يبقى A هي subset من B، وبنكتبها <b>A ⊆ B</b>. مثال: A = {1,2,3,4,5,6}، B = {1,2,3,4} → B ⊆ A.",
-      "<b>Equal sets</b>: A وB متساويين لو فيهم نفس الـ elements، يعني <b>A ⊆ B و B ⊆ A</b>، وده معناه A = B. خلي بالك الترتيب والتكرار مش فارقين: {1,3,4,5,6} = {4,1,5,6,3}.",
-      "<b>Empty set</b> (null / void set)، رمزها ∅ أو { }: مفيهاش ولا element. أمثلة: الـ whole numbers اللي أقل من 0؛ {x : x ∈ N, 3 &lt; x &lt; 4}؛ {x : 2 &lt; x &lt; 3, x natural}؛ {x : x is a composite number less than 4}.",
-      "<b>Finite set</b>: فيها عدد محدد من الـ elements. والـ empty set كمان finite. أمثلة: ألوان قوس قزح، {x : x ∈ N, x &lt; 7}، الـ primes لحد 97.",
-      "<b>Infinite set</b>: الـ elements مش ممكن تتعد كلها (مالهاش آخر). أمثلة: النقط في الـ plane، {x : x ∈ N, x &gt; 1}، كل الـ prime numbers.",
-      "<b>Universal set</b> U (أو ξ): set فيها كل الـ elements بتاعة الـ sets التانية اللي معانا. لو A = {1,2,3}، B = {2,3,4}، C = {3,5,7} يبقى U = {1,2,3,4,5,7}. ولو P = whole numbers وQ = negative numbers، يبقى U = كل الـ integers."
+      "الـ <b>Subset</b>: لو كل element في A موجود كمان في B، يبقى A هي subset من B، وبنكتبها <b>A ⊆ B</b>. مثال:<span class=\"ltr\">A = {1,2,3,4,5,6}, B = {1,2,3,4} → B ⊆ A</span>",
+      "الـ <b>Equal sets</b>: بنقول A وB متساويين لو فيهم نفس الـ elements، يعني <b>A ⊆ B و B ⊆ A</b>، وده معناه <bdi dir=\"ltr\">A&nbsp;=&nbsp;B</bdi>. خلي بالك الترتيب والتكرار مش فارقين:<span class=\"ltr\">{1,3,4,5,6} = {4,1,5,6,3}</span>",
+      "الـ <b>Empty set</b> <bdi dir=\"ltr\">(null&nbsp;/&nbsp;void&nbsp;set)</bdi>، رمزها ∅ أو <code>{ }</code>: مفيهاش ولا element. أمثلة: الـ whole numbers اللي أقل من 0، و:<span class=\"ltr\">{x : x ∈ N, 3 &lt; x &lt; 4}</span><span class=\"ltr\">{x : 2 &lt; x &lt; 3, x natural}</span><span class=\"ltr\">{x : x is a composite number less than 4}</span>",
+      "الـ <b>Finite set</b>: فيها عدد محدد من الـ elements. والـ empty set كمان finite. أمثلة: ألوان قوس قزح، و<bdi dir=\"ltr\">{x&nbsp;:&nbsp;x&nbsp;∈&nbsp;N,&nbsp;x&nbsp;&lt;&nbsp;7}</bdi>، والـ primes لحد 97.",
+      "الـ <b>Infinite set</b>: الـ elements مش ممكن تتعد كلها (مالهاش آخر). أمثلة: النقط في الـ plane، و<bdi dir=\"ltr\">{x&nbsp;:&nbsp;x&nbsp;∈&nbsp;N,&nbsp;x&nbsp;&gt;&nbsp;1}</bdi>، وكل الـ prime numbers.",
+      "الـ <b>Universal set</b> U (أو ξ): هي set فيها كل الـ elements بتاعة الـ sets التانية اللي معانا. لو:<span class=\"ltr\">A = {1,2,3}, B = {2,3,4}, C = {3,5,7}</span>يبقى:<span class=\"ltr\">U = {1,2,3,4,5,7}</span>ولو P هي الـ whole numbers وQ هي الـ negative numbers، يبقى U هي كل الـ integers."
      ]
     },
     {
      "h": "الـ Power set",
      "pts": [
-      "الـ <b>power set</b> بتاعة S، ورمزها <b>P(S)</b>، هي الـ set اللي فيها <b>كل الـ subsets</b> بتاعة S. يعني كل element في P(S) هو نفسه set.",
-      "P(∅) = {∅}، فـ |P(∅)| = 1 (يعني هي <b>مش</b> فاضية: جواها الـ empty set).",
-      "P({1}) = {∅, {1}} → 2 elements. P({p, q}) = {∅, {p}, {q}, {p, q}} → 4 elements.",
-      "P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}} → 8 elements.",
-      "<b>القاعدة: لو |S| = n يبقى |P(S)| = 2ⁿ</b> (كل element يا إما جوه الـ subset يا إما برّه، يعني اختيارين لكل واحد). الـ slide كاتبة \"n[P(A)] = 4 = 2²\".",
-      "الـ ∅ والـ S نفسها دايمًا members في P(S)."
+      "الـ <b>power set</b> بتاعة S، ورمزها <b><bdi dir=\"ltr\">P(S)</bdi></b>، هي الـ set اللي فيها <b>كل الـ subsets</b> بتاعة S. يعني كل element في <bdi dir=\"ltr\">P(S)</bdi> هو نفسه set.",
+      "عندنا <bdi dir=\"ltr\">P(∅)&nbsp;=&nbsp;{∅}</bdi>، فـ:<span class=\"ltr\">|P(∅)| = 1</span>يعني هي <b>مش</b> فاضية: جواها الـ empty set.",
+      "أمثلة:<span class=\"ltr\">P({1}) = {∅, {1}} → 2 elements</span><span class=\"ltr\">P({p, q}) = {∅, {p}, {q}, {p, q}} → 4 elements</span>",
+      "مثال:<span class=\"ltr\">P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}} → 8 elements</span>",
+      "<b>القاعدة: لو <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi></b> (كل element يا إما جوه الـ subset يا إما برّه، يعني اختيارين لكل واحد). الـ slide كاتبة:<span class=\"ltr\">n[P(A)] = 4 = 2²</span>",
+      "الـ ∅ والـ S نفسها دايمًا members في <bdi dir=\"ltr\">P(S)</bdi>."
      ]
     },
     {
      "h": "الفرق بين ∈ و ⊆ (فخ مشهور في الامتحان)",
      "pts": [
       "الـ ∈ بتربط <b>element</b> بـ set؛ إنما الـ ⊆ بتربط <b>set</b> بـ set.",
-      "3 ∈ {1,2,3} صح. {3} ∈ {1,2,3} غلط (لأن {3} دي set، مش واحدة من الـ elements المكتوبة). {3} ⊆ {1,2,3} صح.",
-      "{2} هي subset من {1,2,3}؛ إنما الرقم 2 نفسه element، مش subset.",
-      "A ⊆ A دايمًا صح (أي set هي subset من نفسها). إنما A ∈ A غلط للـ sets العادية.",
-      "مثال (Exam 2021/22): A = {0, {0}}، B = {0}. B ∈ A صح ({0} مكتوبة كـ element). B ⊆ A صح (لأن 0 ∈ A). إنما P(B) = {∅, {0}} ⊆ A <b>غلط</b> لأن ∅ مش element في A."
+      "الـ <bdi dir=\"ltr\">3&nbsp;∈&nbsp;{1,2,3}</bdi> صح. والـ <bdi dir=\"ltr\">{3}&nbsp;∈&nbsp;{1,2,3}</bdi> غلط (لأن <bdi dir=\"ltr\">{3}</bdi> دي set، مش واحدة من الـ elements المكتوبة). والـ <bdi dir=\"ltr\">{3}&nbsp;⊆&nbsp;{1,2,3}</bdi> صح.",
+      "الـ <bdi dir=\"ltr\">{2}</bdi> هي subset من <bdi dir=\"ltr\">{1,2,3}</bdi>؛ إنما الرقم 2 نفسه element، مش subset.",
+      "الـ <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;A</bdi> دايمًا صح (أي set هي subset من نفسها). إنما <bdi dir=\"ltr\">A&nbsp;∈&nbsp;A</bdi> غلط للـ sets العادية.",
+      "مثال <bdi dir=\"ltr\">(Exam 2021/22)</bdi> فيه:<span class=\"ltr\">A = {0, {0}}, B = {0}</span>الـ <bdi dir=\"ltr\">B&nbsp;∈&nbsp;A</bdi> صح (الـ <bdi dir=\"ltr\">{0}</bdi> مكتوبة كـ element). والـ <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi> صح (لأن <bdi dir=\"ltr\">0&nbsp;∈&nbsp;A</bdi>). إنما دي <b>غلط</b>:<span class=\"ltr\">P(B) = {∅, {0}} ⊆ A</span>لأن ∅ مش element في A."
      ]
     },
     {
      "h": "مقدمة للـ operations في Lecture 1",
      "pts": [
-      "الـ 4 operations الأساسية: (1) <b>union</b>، (2) <b>intersection</b>، (3) <b>complement</b>، (4) <b>Cartesian product</b>. وهنشرحهم بالتفصيل في Lecture 2.",
-      "الـ Union A ∪ B = {x | x ∈ A or x ∈ B}: أصغر set فيها كل الـ elements بتاعة الـ set الاتنين.",
-      "الـ Intersection A ∩ B = {x | x ∈ A and x ∈ B}. لو A ∩ B = ∅ يبقى الـ sets دي <b>disjoint</b> (مفيش بينهم حاجة مشتركة).",
+      "الـ 4 operations الأساسية: (1) الـ <b>union</b>، و(2) الـ <b>intersection</b>، و(3) الـ <b>complement</b>، و(4) الـ <b>Cartesian product</b>. وهنشرحهم بالتفصيل في الـ Lecture 2.",
+      "الـ Union:<span class=\"ltr\">A ∪ B = {x | x ∈ A or x ∈ B}</span>وهي أصغر set فيها كل الـ elements بتاعة الـ set الاتنين.",
+      "الـ Intersection:<span class=\"ltr\">A ∩ B = {x | x ∈ A and x ∈ B}</span>ولو <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;∅</bdi> يبقى الـ sets دي <b>disjoint</b> (مفيش بينهم حاجة مشتركة).",
       "الـ Complement: لو U هي الـ universal set اللي فيها A، يبقى U − A هي الـ complement بتاع A.",
-      "الـ Difference A \\ B = {x | x ∈ A, x ∉ B}، وبتتقري \"A minus B\" (وبتتكتب كمان A − B أو A ~ B).",
-      "مثال: U = الطلبة، M = الولاد، F = البنات: U هي <b>disjoint union</b> لـ M وF، يعني U = M ∪ F و M ∩ F = ∅."
+      "الـ Difference:<span class=\"ltr\">A \\ B = {x | x ∈ A, x ∉ B}</span>وبتتقري \"A minus B\" (وبتتكتب كمان <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi> أو <bdi dir=\"ltr\">A&nbsp;~&nbsp;B</bdi>).",
+      "مثال: الـ U هي الطلبة، والـ M هي الولاد، والـ F هي البنات: يبقى U هي <b>disjoint union</b> لـ M وF، يعني:<span class=\"ltr\">U = M ∪ F, M ∩ F = ∅</span>"
      ]
     },
     {
@@ -68,197 +68,197 @@ AR.dm = {
    ],
    "cards": [
     "مجموعة حاجات متعرّفة كويس (well defined) اسمها elements أو members.",
-    "يا إما listing للـ elements جوه { } وبينهم فواصل، يا إما property (set-builder) زي {x | x is odd and 0 &lt; x &lt; 100}.",
-    "x عنصر في A / x مش عنصر في A.",
-    "عدد الـ elements في A (الـ cardinality، وبتتكتب كمان |A|).",
+    "يا إما listing للـ elements جوه <code>{ }</code> وبينهم فواصل، يا إما property (set-builder) زي:<span class=\"ltr\">{x | x is odd and 0 &lt; x &lt; 100}</span>",
+    "الأولى: x عنصر في A. والتانية: x مش عنصر في A.",
+    "عدد الـ elements في A (الـ cardinality، وبتتكتب كمان <bdi dir=\"ltr\">|⁠A|⁠</bdi>).",
     "الـ Natural numbers، الـ integers، الـ rationals، الـ reals، الـ complex numbers.",
     "كل element في A موجود كمان في B.",
-    "A ⊆ B و B ⊆ A (نفس الـ elements؛ الترتيب والتكرار مش فارقين).",
-    "Set مفيهاش ولا element، ∅ أو { } (null / void set). مثال: {x ∈ N : 3 &lt; x &lt; 4}.",
+    "لما <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> و<bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi> (نفس الـ elements؛ الترتيب والتكرار مش فارقين).",
+    "هي set مفيهاش ولا element، رمزها ∅ أو <code>{ }</code> <bdi dir=\"ltr\">(null&nbsp;/&nbsp;void&nbsp;set)</bdi>. مثال:<span class=\"ltr\">{x ∈ N : 3 &lt; x &lt; 4}</span>",
     "فيها عدد محدد من الـ elements. والـ ∅ تعتبر finite.",
-    "الـ elements مش ممكن تتعد؛ مالهاش آخر (زي كل الـ primes، {x ∈ N : x &gt; 1}).",
-    "U أو ξ: فيها كل الـ elements بتاعة الـ sets التانية اللي معانا.",
+    "الـ elements مش ممكن تتعد؛ مالهاش آخر (زي كل الـ primes، و<bdi dir=\"ltr\">{x&nbsp;∈&nbsp;N&nbsp;:&nbsp;x&nbsp;&gt;&nbsp;1}</bdi>).",
+    "الـ U أو ξ: فيها كل الـ elements بتاعة الـ sets التانية اللي معانا.",
     "الـ set اللي فيها كل الـ subsets بتاعة S؛ كل element فيها هو set.",
     "2ⁿ",
     "{∅}، وفيها element واحد.",
-    "{∅, {a}, {b}, {a, b}}",
-    "A ∩ B = ∅ (مفيش elements مشتركة).",
-    "لأ. {3} ⊆ {1,2,3} صح، بس {3} مش واحدة من الـ elements."
+    "الإجابة:<span class=\"ltr\">{∅, {a}, {b}, {a, b}}</span>",
+    "يعني <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;∅</bdi> (مفيش elements مشتركة).",
+    "لأ. الـ <bdi dir=\"ltr\">{3}&nbsp;⊆&nbsp;{1,2,3}</bdi> صح، بس <bdi dir=\"ltr\">{3}</bdi> مش واحدة من الـ elements."
    ],
    "qa": [
-    "الـ set هي مجموعة حاجات متعرّفة كويس (well defined) اسمها elements (members). (1) Listing: تكتب الـ elements بين أقواس معقوفة وبينهم فواصل، زي {1, 2, 3, 4, 5}. (2) Property / set-builder: تكتب property بتتحقق بالظبط في الـ elements دي بس، زي {x | x is odd and 0 &lt; x &lt; 100}.",
-    "<b>Empty</b>: مفيهاش elements، ∅ أو { }، زي {x : x is a natural number, 2 &lt; x &lt; 3}. <b>Finite</b>: عدد elements محدد، زي ألوان قوس قزح، {x ∈ N : x &lt; 7}؛ والـ ∅ تعتبر finite. <b>Infinite</b>: elements مالهاش آخر، زي {x ∈ N : x &gt; 1}، أو set الـ primes. <b>Universal</b>: فيها كل الـ elements بتاعة الـ sets اللي بنتكلم عنها، زي A = {1,2,3}، B = {2,3,4}، C = {3,5,7} → U = {1,2,3,4,5,7}.",
-    "P(S) هي الـ set اللي فيها كل الـ subsets بتاعة S. P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}}. لو |S| = n يبقى |P(S)| = 2ⁿ، وهنا 2³ = 8.",
-    "A = B لما A ⊆ B و B ⊆ A، يعني فيهم نفس الـ elements بالظبط. أيوه، الـ set الاتنين متساويين: الترتيب مش فارق.",
-    "الـ ∈ معناها إن الحاجة دي واحدة من الـ elements المكتوبة؛ والـ ⊆ معناها إن كل element في set موجود في set تانية. 0 ∈ A و {0} ∈ A (الاتنين مكتوبين). {0} ⊆ A كمان صح لأن 0 ∈ A. و{{0}} ⊆ A صح. بس ∅ ∈ A غلط، فـ P({0}) = {∅, {0}} مش subset من A."
+    "الـ set هي مجموعة حاجات متعرّفة كويس (well defined) اسمها elements (members).<br>(1) الـ Listing: تكتب الـ elements بين أقواس معقوفة وبينهم فواصل، زي:<span class=\"ltr\">{1, 2, 3, 4, 5}</span>(2) الـ <bdi dir=\"ltr\">Property / set-builder</bdi>: تكتب property بتتحقق بالظبط في الـ elements دي بس، زي:<span class=\"ltr\">{x | x is odd and 0 &lt; x &lt; 100}</span>",
+    "الـ <b>Empty</b>: مفيهاش elements، ∅ أو <code>{ }</code>، زي:<span class=\"ltr\">{x : x is a natural number, 2 &lt; x &lt; 3}</span>الـ <b>Finite</b>: عدد elements محدد، زي ألوان قوس قزح، و<bdi dir=\"ltr\">{x&nbsp;∈&nbsp;N&nbsp;:&nbsp;x&nbsp;&lt;&nbsp;7}</bdi>؛ والـ ∅ تعتبر finite.<br>الـ <b>Infinite</b>: الـ elements مالهاش آخر، زي <bdi dir=\"ltr\">{x&nbsp;∈&nbsp;N&nbsp;:&nbsp;x&nbsp;&gt;&nbsp;1}</bdi>، أو set الـ primes.<br>الـ <b>Universal</b>: فيها كل الـ elements بتاعة الـ sets اللي بنتكلم عنها، زي:<span class=\"ltr\">A = {1,2,3}, B = {2,3,4}, C = {3,5,7} → U = {1,2,3,4,5,7}</span>",
+    "الـ <bdi dir=\"ltr\">P(S)</bdi> هي الـ set اللي فيها كل الـ subsets بتاعة S. مثلاً:<span class=\"ltr\">P({1,2,3}) = {∅, {1}, {2}, {3}, {1,2}, {1,3}, {2,3}, {1,2,3}}</span>لو <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi>، وهنا <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>.",
+    "الـ <bdi dir=\"ltr\">A&nbsp;=&nbsp;B</bdi> لما <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> و<bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>، يعني فيهم نفس الـ elements بالظبط. أيوه، الـ set الاتنين متساويين: الترتيب مش فارق.",
+    "الـ ∈ معناها إن الحاجة دي واحدة من الـ elements المكتوبة؛ والـ ⊆ معناها إن كل element في set موجود في set تانية.<br>الـ <bdi dir=\"ltr\">0&nbsp;∈&nbsp;A</bdi> و<bdi dir=\"ltr\">{0}&nbsp;∈&nbsp;A</bdi> (الاتنين مكتوبين). و<bdi dir=\"ltr\">{0}&nbsp;⊆&nbsp;A</bdi> كمان صح لأن <bdi dir=\"ltr\">0&nbsp;∈&nbsp;A</bdi>. و<bdi dir=\"ltr\">{{0}}&nbsp;⊆&nbsp;A</bdi> صح. بس <bdi dir=\"ltr\">∅&nbsp;∈&nbsp;A</bdi> غلط، فـ:<span class=\"ltr\">P({0}) = {∅, {0}}</span>مش subset من A."
    ],
    "quiz": [
     [
-     "الـ 3 ده n، يعني عدد الـ elements في {1, 2, 3}. لكن السؤال عن الـ subsets، وعددهم 2ⁿ = 2³ = 8.",
-     "الـ 4 = 2² ده عدد الـ subsets لـ set فيها 2 elements بس زي {a, b}. مع 3 elements العدد بيبقى 2³ = 8.",
+     "الـ 3 ده n، يعني عدد الـ elements في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>. لكن السؤال عن الـ subsets، وعددهم <bdi dir=\"ltr\">2ⁿ&nbsp;=&nbsp;2³&nbsp;=&nbsp;8</bdi>.",
+     "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2²</bdi> ده عدد الـ subsets لـ set فيها 2 elements بس زي <bdi dir=\"ltr\">{a,&nbsp;b}</bdi>. مع 3 elements العدد بيبقى <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>.",
      "مش power of 2؛ وعدد الـ subsets دايمًا 2ⁿ.",
-     "صح. لو |S| = n يبقى |P(S)| = 2ⁿ، لأن كل element يا إما جوه الـ subset يا إما برّه: 2³ = 8 (∅، وتلات singletons، وتلات pairs، و{1, 2, 3}) (L1, Power set)."
+     "صح. لو <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi>، لأن كل element يا إما جوه الـ subset يا إما برّه، فـ <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi> (∅، وتلات singletons، وتلات pairs، و<bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>) <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>."
     ],
     [
-     "صح. الـ sets بتبقى equal لما يكون فيها نفس الـ elements (A ⊆ B و B ⊆ A)؛ والترتيب مش فارق، فـ {1, 2, 3} = {3, 2, 1} (L1, Types of sets).",
+     "صح. الـ sets بتبقى equal لما يكون فيها نفس الـ elements (<bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> و<bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>)؛ والترتيب مش فارق، فـ <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}&nbsp;=&nbsp;{3,&nbsp;2,&nbsp;1}</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Types&nbsp;of&nbsp;sets)</bdi>.",
      "الـ sets مختلفة: الـ 3 موجودة في الأولى ومش في التانية، والـ 4 في التانية ومش في الأولى. الـ equal sets لازم يكون فيها نفس الـ elements بالظبط.",
      "مشتركين في الـ element 3 بس؛ الـ 1 و2 مش موجودين في التانية، والـ 4 و5 مش موجودين في الأولى، فولا واحدة فيهم subset من التانية.",
-     "الـ 2 موجودة في الأولى ومش في التانية (والـ 4 العكس)، فـ {2, 3} ⊄ {3, 4}. الـ equality محتاجة A ⊆ B و B ⊆ A."
+     "الـ 2 موجودة في الأولى ومش في التانية (والـ 4 العكس)، فـ <bdi dir=\"ltr\">{2,&nbsp;3}&nbsp;⊄&nbsp;{3,&nbsp;4}</bdi>. الـ equality محتاجة <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> و<bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>."
     ],
     [
-     "صح. كل الـ 2² = 4 subsets، ومعاهم ∅ والـ set نفسها.",
-     "{{a, b}} فيها subset واحد بس، اللي هو الـ set نفسها. الـ power set فيها كل الـ 2² = 4 subsets، فناقصها ∅ و{a} و{b}.",
-     "هنا مكتوب الـ two one-element subsets بس. خلي بالك إن ∅ والـ set {a, b} نفسها دايمًا members في الـ P(S)، فناقص 2 subsets.",
+     "صح. كل الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets، ومعاهم ∅ والـ set نفسها.",
+     "الـ <bdi dir=\"ltr\">{{a,&nbsp;b}}</bdi> فيها subset واحد بس، اللي هو الـ set نفسها. الـ power set فيها كل الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets، فناقصها ∅ و<bdi dir=\"ltr\">{a}</bdi> و<bdi dir=\"ltr\">{b}</bdi>.",
+     "هنا مكتوب الـ two one-element subsets بس. خلي بالك إن ∅ والـ set <bdi dir=\"ltr\">{a,&nbsp;b}</bdi> نفسها دايمًا members في الـ <bdi dir=\"ltr\">P(S)</bdi>، فناقص 2 subsets.",
      "دي الـ set نفسها، مش الـ set اللي فيها الـ subsets بتاعتها."
     ],
     [
      "\"كل element في B موجود في A\" ده تعريف B ⊆ A، يعني الـ inclusion العكسي. الـ A ⊆ B مش بتقول أي حاجة عن باقي elements الـ B.",
-     "صح. بالتعريف، A ⊆ B معناها إن كل element في A موجود كمان في B؛ والـ B ممكن يكون فيها elements زيادة (L1, Types of sets: Subset).",
-     "إن مفيش elements مشتركة معناها A ∩ B = ∅، ودي تعريف الـ disjoint sets. الـ subset بتشارك كل elements بتاعتها مع B.",
-     "∅ ⊆ B صح لأي B، بس دي حالة واحدة بس. مثلًا {1} ⊆ {1, 2} والـ A مش فاضية، فالـ A ⊆ B مش بتجبرنا إن A = ∅."
+     "صح. بالتعريف، <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> معناها إن كل element في A موجود كمان في B؛ والـ B ممكن يكون فيها elements زيادة <bdi dir=\"ltr\">(L1, Types of sets: Subset)</bdi>.",
+     "إن مفيش elements مشتركة معناها <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;∅</bdi>، ودي تعريف الـ disjoint sets. الـ subset بتشارك كل elements بتاعتها مع B.",
+     "الـ <bdi dir=\"ltr\">∅&nbsp;⊆&nbsp;B</bdi> صح لأي B، بس دي حالة واحدة بس. مثلًا <bdi dir=\"ltr\">{1}&nbsp;⊆&nbsp;{1,&nbsp;2}</bdi> والـ A مش فاضية، فالـ <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> مش بتجبرنا إن <bdi dir=\"ltr\">A&nbsp;=&nbsp;∅</bdi>."
     ],
     [
      "كلمة \"Tall\" مالهاش حد ثابت، فمش دايمًا واضح الطالب ينتمي ولا لأ. المحاضرة بتذكر \"tall students\" كمثال لحاجة مش well defined.",
-     "صح. الـ set لازم تبقى well defined: يعني دايمًا واضح الـ object ينتمي ليها ولا لأ. \"Even numbers less than 10\" بتدينا بالظبط {2, 4, 6, 8} (L1, What is a set?).",
-     "\"Good\" دي مسألة رأي، فالانتماء مش واضح. المحاضرة بتدي \"good teachers\" كمثال لـ collection مش well defined.",
-     "\"Beautiful\" حاجة subjective، فالناس هتختلف مين ينتمي ومين لأ. المحاضرة بتستخدم \"beautiful cities\" كمثال لـ collection مش well defined."
+     "صح. الـ set لازم تبقى well defined: يعني دايمًا واضح الـ object ينتمي ليها ولا لأ. الـ <bdi dir=\"ltr\">\"Even numbers less than 10\"</bdi> بتدينا بالظبط <bdi dir=\"ltr\">{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi> <bdi dir=\"ltr\">(L1, What is a set?)</bdi>.",
+     "كلمة <bdi dir=\"ltr\">\"Good\"</bdi> دي مسألة رأي، فالانتماء مش واضح. المحاضرة بتدي <bdi dir=\"ltr\">\"good teachers\"</bdi> كمثال لـ collection مش well defined.",
+     "كلمة <bdi dir=\"ltr\">\"Beautiful\"</bdi> حاجة subjective، فالناس هتختلف مين ينتمي ومين لأ. المحاضرة بتستخدم <bdi dir=\"ltr\">\"beautiful cities\"</bdi> كمثال لـ collection مش well defined."
     ],
     [
      "صح. الأرقام الزوجية الموجبة اللي أقل من 10 (حسب اصطلاح المحاضرة).",
-     "{1, 3, 5, 7, 9} دي الأرقام الفردية اللي أقل من 10. الـ property بتطلب أرقام زوجية، وده بيدينا {2, 4, 6, 8}.",
-     "الـ 10 مش أقل من 10، فمينفعش تتحط (وكمان حسب convention المحاضرة، الإجابة النموذجية مش بتحط 0). A = {2, 4, 6, 8}.",
-     "دي وقفت عند 6، بس الـ 8 زوجي وأقل من 10، فهي كمان تنتمي. A = {2, 4, 6, 8}."
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;9}</bdi> دي الأرقام الفردية اللي أقل من 10. الـ property بتطلب أرقام زوجية، وده بيدينا <bdi dir=\"ltr\">{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi>.",
+     "الـ 10 مش أقل من 10، فمينفعش تتحط (وكمان حسب convention المحاضرة، الإجابة النموذجية مش بتحط 0). يعني <bdi dir=\"ltr\">A&nbsp;=&nbsp;{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi>.",
+     "دي وقفت عند 6، بس الـ 8 زوجي وأقل من 10، فهي كمان تنتمي. يعني <bdi dir=\"ltr\">A&nbsp;=&nbsp;{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi>."
     ],
     [
-     "{3, 1} = {1, 3} دي S نفسها (والترتيب مش فارق). الـ P(S) لازم يكون فيها الـ subsets بتاعة S كـ elements: ∅، {1}، {3}، {1, 3}.",
-     "الـ 0 رقم، مش subset من {1, 3}، ومن الـ subsets الحقيقية مكتوب ∅ بس. P(S) = {∅, {1}, {3}, {1, 3}}.",
-     "صح. الـ P(S) هي الـ set اللي فيها كل الـ subsets بتاعة S. ومع |S| = 2 يبقى فيه 2² = 4: ∅، {1}، {3} و{1, 3} (L1, Power set).",
-     "الـ power set عمرها ما تبقى فاضية: ∅ والـ S نفسها دايمًا members في الـ P(S). هنا الـ P(S) فيها 2² = 4 elements."
+     "الـ <bdi dir=\"ltr\">{3,&nbsp;1}&nbsp;=&nbsp;{1,&nbsp;3}</bdi> دي S نفسها (والترتيب مش فارق). الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يكون فيها الـ subsets بتاعة S كـ elements:<span class=\"ltr\">∅, {1}, {3}, {1, 3}</span>",
+     "الـ 0 رقم، مش subset من <bdi dir=\"ltr\">{1,&nbsp;3}</bdi>، ومن الـ subsets الحقيقية مكتوب ∅ بس. الصح:<span class=\"ltr\">P(S) = {∅, {1}, {3}, {1, 3}}</span>",
+     "صح. الـ <bdi dir=\"ltr\">P(S)</bdi> هي الـ set اللي فيها كل الـ subsets بتاعة S. ومع <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;2</bdi> يبقى فيه <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>، وهما ∅ و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{3}</bdi> و<bdi dir=\"ltr\">{1,&nbsp;3}</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
+     "الـ power set عمرها ما تبقى فاضية: ∅ والـ S نفسها دايمًا members في الـ <bdi dir=\"ltr\">P(S)</bdi>. هنا الـ <bdi dir=\"ltr\">P(S)</bdi> فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements."
     ],
     [
-     "{2, 1} مش مبنية من S أصلًا: الـ 2 مش في S، والـ elements بتاعتها أرقام مش subsets. P(S) = {∅, {1}, {4}, {1, 4}}.",
-     "الـ 0 مش subset من {1, 4}، وناقص {1} و{4} و{1, 4}. خلي بالك إن كل element في الـ P(S) هو نفسه set.",
-     "صح. الـ power set فيها كل الـ 2² = 4 subsets بتاعة {1, 4}: ∅، والـ singletons {1} و{4}، و{1, 4} نفسها (L1, Power set).",
-     "الـ power set عمرها ما تبقى فاضية: ∅ والـ S نفسها دايمًا members في الـ P(S). هنا الـ P(S) فيها 2² = 4 elements."
+     "الـ <bdi dir=\"ltr\">{2,&nbsp;1}</bdi> مش مبنية من S أصلًا: الـ 2 مش في S، والـ elements بتاعتها أرقام مش subsets. الصح:<span class=\"ltr\">P(S) = {∅, {1}, {4}, {1, 4}}</span>",
+     "الـ 0 مش subset من <bdi dir=\"ltr\">{1,&nbsp;4}</bdi>، وناقص <bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{4}</bdi> و<bdi dir=\"ltr\">{1,&nbsp;4}</bdi>. خلي بالك إن كل element في الـ <bdi dir=\"ltr\">P(S)</bdi> هو نفسه set.",
+     "صح. الـ power set فيها كل الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets بتاعة <bdi dir=\"ltr\">{1,&nbsp;4}</bdi>، يعني ∅، والـ singletons <bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{4}</bdi>، و<bdi dir=\"ltr\">{1,&nbsp;4}</bdi> نفسها <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
+     "الـ power set عمرها ما تبقى فاضية: ∅ والـ S نفسها دايمًا members في الـ <bdi dir=\"ltr\">P(S)</bdi>. هنا الـ <bdi dir=\"ltr\">P(S)</bdi> فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements."
     ],
     [
-     "{0, 1} فيها أرقام مش subsets، والـ 0 أصلًا مش في S. الـ elements بتاعة P(S) لازم تبقى sets: ∅، {1}، {2}، {1, 2}.",
-     "الـ 0 مش subset من {1, 2}؛ وغير ∅، ناقص الـ subsets {1} و{2} و{1, 2}. الـ |P(S)| لازم تبقى 2² = 4.",
-     "صح. الـ P(S) هي الـ set اللي فيها كل الـ subsets بتاعة S؛ ولـ S = {1, 2} هما ∅، {1}، {2} و{1, 2}، يعني 2² = 4 في المجموع (L1, Power set).",
-     "{0} فيها element واحد، رقم ومش subset من S. الـ P(S) لازم يكون فيها 2² = 4 sets كـ elements، منهم ∅ وS."
+     "الـ <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> فيها أرقام مش subsets، والـ 0 أصلًا مش في S. الـ elements بتاعة <bdi dir=\"ltr\">P(S)</bdi> لازم تبقى sets:<span class=\"ltr\">∅, {1}, {2}, {1, 2}</span>",
+     "الـ 0 مش subset من <bdi dir=\"ltr\">{1,&nbsp;2}</bdi>؛ وغير ∅، ناقص الـ subsets <bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{1,&nbsp;2}</bdi>. الـ <bdi dir=\"ltr\">|⁠P(S)|⁠</bdi> لازم تبقى <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">P(S)</bdi> هي الـ set اللي فيها كل الـ subsets بتاعة S؛ ولـ <bdi dir=\"ltr\">S&nbsp;=&nbsp;{1,&nbsp;2}</bdi> هما ∅ و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{1,&nbsp;2}</bdi>، يعني <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> في المجموع <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{0}</bdi> فيها element واحد، رقم ومش subset من S. الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يكون فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> sets كـ elements، منهم ∅ وS."
     ],
     [
      "دي الـ power set نفسها، مش عدد الـ elements بتاعها.",
-     "الـ n(P(S)) بتسأل عن رقم (الـ cardinality)، و{{1}} دي set. وكمان فيها subset واحد بس؛ والـ P(S) فيها 2² = 4.",
-     "صح. لو |S| = n يبقى n(P(S)) = 2ⁿ. هنا n = 2، فـ 2² = 4: ∅، {1}، {2}، {1, 2} (L1, Power set).",
-     "الـ 6 مش power of 2، والـ power set دايمًا فيها 2ⁿ elements. لـ n = 2 ده 2² = 4 (والـ 6 ممكن تيجي من تخمين زي 2 × 3)."
+     "الـ <bdi dir=\"ltr\">n(P(S))</bdi> بتسأل عن رقم (الـ cardinality)، و<bdi dir=\"ltr\">{{1}}</bdi> دي set. وكمان فيها subset واحد بس؛ والـ <bdi dir=\"ltr\">P(S)</bdi> فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>.",
+     "صح. لو <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">n(P(S))&nbsp;=&nbsp;2ⁿ</bdi>. هنا <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi>، فـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>، وهما ∅ و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{1,&nbsp;2}</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
+     "الـ 6 مش power of 2، والـ power set دايمًا فيها <bdi dir=\"ltr\">2ⁿ</bdi> elements. لـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> ده <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> (والـ 6 ممكن تيجي من تخمين زي <bdi dir=\"ltr\">2&nbsp;×&nbsp;3</bdi>)."
     ],
     [
-     "{0, 1} دي S نفسها، set فيها أرقام. الـ P(S) فيها الـ subsets بتاعة S كـ elements: ∅، {0}، {1}، {0, 1}.",
-     "هنا الـ 0 مجرد الـ element 0، مش subset، وناقص {0} و{1} و{0, 1}. الـ P(S) لازم يكون فيها 2² = 4 subsets.",
-     "صح. الـ power set بتاعة {0, 1} فيها كل الـ 2² = 4 subsets: ∅، {0}، {1} و{0, 1}. خلي بالك إن {0} (set) غير 0 (element) (L1, Power set)."
+     "الـ <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> دي S نفسها، set فيها أرقام. الـ <bdi dir=\"ltr\">P(S)</bdi> فيها الـ subsets بتاعة S كـ elements:<span class=\"ltr\">∅, {0}, {1}, {0, 1}</span>",
+     "هنا الـ 0 مجرد الـ element 0، مش subset، وناقص <bdi dir=\"ltr\">{0}</bdi> و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{0,&nbsp;1}</bdi>. الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يكون فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets.",
+     "صح. الـ power set بتاعة <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> فيها كل الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets، وهما ∅ و<bdi dir=\"ltr\">{0}</bdi> و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{0,&nbsp;1}</bdi>. خلي بالك إن <bdi dir=\"ltr\">{0}</bdi> (set) غير 0 (element) <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>."
     ],
     [
-     "{2, 1} فيها أرقام، والـ 1 مش في S. الـ P(S) لازم يكون فيها الـ subsets بتاعة {2, 4}: ∅، {2}، {4}، {2, 4}.",
-     "الـ 0 مش subset من {2, 4}، وناقص {2} و{4} و{2, 4}. الـ power set لـ set فيها 2 elements بيبقى فيها 2² = 4 elements.",
-     "صح. الـ P(S) هي الـ set اللي فيها كل الـ subsets بتاعة S = {2, 4}: ∅، {2}، {4} و{2, 4}، يعني 2² = 4 elements (L1, Power set)."
+     "الـ <bdi dir=\"ltr\">{2,&nbsp;1}</bdi> فيها أرقام، والـ 1 مش في S. الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يكون فيها الـ subsets بتاعة <bdi dir=\"ltr\">{2,&nbsp;4}</bdi>، وهي:<span class=\"ltr\">∅, {2}, {4}, {2, 4}</span>",
+     "الـ 0 مش subset من <bdi dir=\"ltr\">{2,&nbsp;4}</bdi>، وناقص <bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{4}</bdi> و<bdi dir=\"ltr\">{2,&nbsp;4}</bdi>. الـ power set لـ set فيها 2 elements بيبقى فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements.",
+     "صح. الـ <bdi dir=\"ltr\">P(S)</bdi> هي الـ set اللي فيها كل الـ subsets بتاعة <bdi dir=\"ltr\">S&nbsp;=&nbsp;{2,&nbsp;4}</bdi>، وهما ∅ و<bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{4}</bdi> و<bdi dir=\"ltr\">{2,&nbsp;4}</bdi>، يعني <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>."
     ],
     [
      "الـ 4 رقم (مش set) وكمان مش موجود في الـ set أصلًا.",
-     "صح. الـ ∈ بتربط element بـ set، والـ 3 واحد من الـ elements المكتوبة في {1, 2, 3}، فـ 3 ∈ {1, 2, 3} (L1, ∈ versus ⊆).",
-     "{3} دي set؛ والـ elements هي الأرقام 1 و2 و3. (لو كانت {3} ⊆ {1,2,3} كانت هتبقى صح.)",
-     "دي عاكسة الأدوار: الـ 3 رقم مش set، فمفيش حاجة ممكن تبقى element فيه. العبارة الصح هي 3 ∈ {1, 2, 3}."
+     "صح. الـ ∈ بتربط element بـ set، والـ 3 واحد من الـ elements المكتوبة في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>، فـ <bdi dir=\"ltr\">3&nbsp;∈&nbsp;{1,&nbsp;2,&nbsp;3}</bdi> <bdi dir=\"ltr\">(L1,&nbsp;∈&nbsp;versus&nbsp;⊆)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{3}</bdi> دي set؛ والـ elements هي الأرقام 1 و2 و3. (لو كانت <bdi dir=\"ltr\">{3}&nbsp;⊆&nbsp;{1,2,3}</bdi> كانت هتبقى صح.)",
+     "دي عاكسة الأدوار: الـ 3 رقم مش set، فمفيش حاجة ممكن تبقى element فيه. العبارة الصح هي <bdi dir=\"ltr\">3&nbsp;∈&nbsp;{1,&nbsp;2,&nbsp;3}</bdi>."
     ],
     [
-     "الـ 2 element في {1, 2, 3}، يعني 2 ∈ {1, 2, 3}؛ بس الـ ⊆ بتربط set بـ set، والرقم 2 مش set. الـ subset هي {2}.",
-     "صح. كل element في {2} موجود في {1, 2, 3}.",
-     "الـ 4 رقم مش set، فمينفعش يبقى subset؛ وكمان الـ 4 أصلًا مش element في {1, 2, 3}.",
-     "{4} دي set، بس الـ element بتاعها 4 مش في {1, 2, 3}، فـ {4} ⊄ {1, 2, 3}. الـ subset محتاجة كل elements بتاعتها تبقى جوه الـ set الكبيرة."
+     "الـ 2 element في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>، يعني <bdi dir=\"ltr\">2&nbsp;∈&nbsp;{1,&nbsp;2,&nbsp;3}</bdi>؛ بس الـ ⊆ بتربط set بـ set، والرقم 2 مش set. الـ subset هي <bdi dir=\"ltr\">{2}</bdi>.",
+     "صح. كل element في <bdi dir=\"ltr\">{2}</bdi> موجود في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>.",
+     "الـ 4 رقم مش set، فمينفعش يبقى subset؛ وكمان الـ 4 أصلًا مش element في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{4}</bdi> دي set، بس الـ element بتاعها 4 مش في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>، فـ <bdi dir=\"ltr\">{4}&nbsp;⊄&nbsp;{1,&nbsp;2,&nbsp;3}</bdi>. الـ subset محتاجة كل elements بتاعتها تبقى جوه الـ set الكبيرة."
     ],
     [
-     "A ∈ A معناها إن A واحدة من الـ elements بتاعة نفسها، وده غلط للـ sets العادية. الحقيقة اللي دايمًا صح هي A ⊆ A.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;∈&nbsp;A</bdi> معناها إن A واحدة من الـ elements بتاعة نفسها، وده غلط للـ sets العادية. الحقيقة اللي دايمًا صح هي <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;A</bdi>.",
      "صح (الـ ⊂ هنا معناها \"subset of\"): أي set هي subset من نفسها.",
      "دي بتنفي A ⊆ A، بس كل element في A موجود في A، فالـ A دايمًا subset من نفسها. A ⊄ A عمرها ما تبقى صح.",
-     "A ⊆ ∅ بتتحقق بس لما A مفيهاش elements، يعني A = ∅. أي A مش فاضية فيها element مش موجود في ∅."
+     "الـ <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;∅</bdi> بتتحقق بس لما A مفيهاش elements، يعني <bdi dir=\"ltr\">A&nbsp;=&nbsp;∅</bdi>. أي A مش فاضية فيها element مش موجود في ∅."
     ],
     [
-     "العبارة دي صح، فهي مش الإجابة: A = {0, {0}} مكتوب فيها {0} كـ element، و{0} = B، فـ B ∈ A.",
-     "العبارة دي صح، فهي مش الإجابة: B = {0} فيها element واحد هو 0، و0 ∈ A، فـ B ⊆ A.",
-     "صح (هي العبارة الغلط). P(B) = {∅, {0}} والـ ∅ مش element في A."
+     "العبارة دي صح، فهي مش الإجابة: الـ <bdi dir=\"ltr\">A&nbsp;=&nbsp;{0,&nbsp;{0}}</bdi> مكتوب فيها <bdi dir=\"ltr\">{0}</bdi> كـ element، و<bdi dir=\"ltr\">{0}&nbsp;=&nbsp;B</bdi>، فـ <bdi dir=\"ltr\">B&nbsp;∈&nbsp;A</bdi>.",
+     "العبارة دي صح، فهي مش الإجابة: الـ <bdi dir=\"ltr\">B&nbsp;=&nbsp;{0}</bdi> فيها element واحد هو 0، و<bdi dir=\"ltr\">0&nbsp;∈&nbsp;A</bdi>، فـ <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>.",
+     "صح (هي العبارة الغلط). لأن <bdi dir=\"ltr\">P(B)&nbsp;=&nbsp;{∅,&nbsp;{0}}</bdi> والـ ∅ مش element في A."
     ],
     [
-     "صح. احسب C: 2⁰ = 1، 2¹ = 2، 2² = 4، 2³ = 8، 2⁴ = 16، فـ C = {1, 2, 4, 8, 16}. نفس elements الـ B، فـ B = C (L1, Example 1.1).",
-     "B = {1, 2, 4, 8, 16} فيها powers of 2 بس، والـ 5 مش واحد منهم. المحاضرة كاتبة 5 ∉ B.",
-     "لما تحسب C هتلاقي 2⁰ = 1، 2¹ = 2، 2² = 4، 2³ = 8، 2⁴ = 16، وهي بالظبط elements الـ B، فـ B = C مش B ≠ C.",
-     "C = {1, 2, 4, 8, 16} والـ 9 مش power of 2، فـ 9 ∉ C. مثال المحاضرة هو 8 ∈ C (8 = 2³)."
+     "صح. احسب C:<span class=\"ltr\">2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16</span>فـ <bdi dir=\"ltr\">C&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;4,&nbsp;8,&nbsp;16}</bdi>. نفس elements الـ B، فـ <bdi dir=\"ltr\">B&nbsp;=&nbsp;C</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Example&nbsp;1.1)</bdi>.",
+     "الـ <bdi dir=\"ltr\">B&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;4,&nbsp;8,&nbsp;16}</bdi> فيها powers of 2 بس، والـ 5 مش واحد منهم. المحاضرة كاتبة <bdi dir=\"ltr\">5&nbsp;∉&nbsp;B</bdi>.",
+     "لما تحسب C هتلاقي:<span class=\"ltr\">2⁰ = 1, 2¹ = 2, 2² = 4, 2³ = 8, 2⁴ = 16</span>وهي بالظبط elements الـ B، فـ <bdi dir=\"ltr\">B&nbsp;=&nbsp;C</bdi> مش <bdi dir=\"ltr\">B&nbsp;≠&nbsp;C</bdi>.",
+     "الـ <bdi dir=\"ltr\">C&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;4,&nbsp;8,&nbsp;16}</bdi> والـ 9 مش power of 2، فـ <bdi dir=\"ltr\">9&nbsp;∉&nbsp;C</bdi>. مثال المحاضرة هو <bdi dir=\"ltr\">8&nbsp;∈&nbsp;C</bdi> (<bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi>)."
     ],
     [
-     "الـ 2 = 2¹ ده حجم P({1}) = {∅, {1}}. لكن ∅ فيها 0 elements، فـ |P(∅)| = 2⁰ = 1.",
-     "صح. ∅ فيها n = 0 elements، فـ |P(∅)| = 2⁰ = 1. والـ element الوحيد فيها هو ∅ نفسها: P(∅) = {∅} (L1, Power set).",
-     "P(∅) = {∅} مش فاضية: فيها الـ empty set كـ element، لأن ∅ ⊆ ∅. فـ |P(∅)| = 2⁰ = 1.",
-     "القاعدة |P(S)| = 2ⁿ شغالة مع n = 0 كمان: 2⁰ = 1، لأن ∅ ليها subset واحد بالظبط، هو ∅ نفسها."
+     "الـ <bdi dir=\"ltr\">2&nbsp;=&nbsp;2¹</bdi> ده حجم <bdi dir=\"ltr\">P({1})&nbsp;=&nbsp;{∅,&nbsp;{1}}</bdi>. لكن ∅ فيها 0 elements، فـ <bdi dir=\"ltr\">|⁠P(∅)|⁠&nbsp;=&nbsp;2⁰&nbsp;=&nbsp;1</bdi>.",
+     "صح. الـ ∅ فيها <bdi dir=\"ltr\">n&nbsp;=&nbsp;0</bdi> elements، فـ <bdi dir=\"ltr\">|⁠P(∅)|⁠&nbsp;=&nbsp;2⁰&nbsp;=&nbsp;1</bdi>. والـ element الوحيد فيها هو ∅ نفسها: <bdi dir=\"ltr\">P(∅)&nbsp;=&nbsp;{∅}</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
+     "الـ <bdi dir=\"ltr\">P(∅)&nbsp;=&nbsp;{∅}</bdi> مش فاضية: فيها الـ empty set كـ element، لأن <bdi dir=\"ltr\">∅&nbsp;⊆&nbsp;∅</bdi>. فـ <bdi dir=\"ltr\">|⁠P(∅)|⁠&nbsp;=&nbsp;2⁰&nbsp;=&nbsp;1</bdi>.",
+     "القاعدة <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi> شغالة مع <bdi dir=\"ltr\">n&nbsp;=&nbsp;0</bdi> كمان: <bdi dir=\"ltr\">2⁰&nbsp;=&nbsp;1</bdi>، لأن ∅ ليها subset واحد بالظبط، هو ∅ نفسها."
     ]
    ],
    "extra": [
     [
-     "صح. لو |S| = n يبقى |P(S)| = 2ⁿ، لأن كل element يا إما جوه الـ subset يا إما برّه: 2⁵ = 32 (L1, Power set).",
-     "الـ 31 = 2⁵ − 1 سايبة الـ empty set، بس ∅ دايمًا member في الـ P(S). العدد الكامل 2⁵ = 32.",
-     "الـ 10 = 2 × 5 ضربت بدل ما ترفع لـ power. القاعدة 2ⁿ، فـ 2⁵ = 32.",
-     "الـ 25 = 5² بدّلت الـ base والـ exponent. القاعدة |P(S)| = 2ⁿ، فـ 2⁵ = 32."
+     "صح. لو <bdi dir=\"ltr\">|⁠S|⁠&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi>، لأن كل element يا إما جوه الـ subset يا إما برّه، فـ <bdi dir=\"ltr\">2⁵&nbsp;=&nbsp;32</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
+     "الـ <bdi dir=\"ltr\">31&nbsp;=&nbsp;2⁵&nbsp;−&nbsp;1</bdi> سايبة الـ empty set، بس ∅ دايمًا member في الـ <bdi dir=\"ltr\">P(S)</bdi>. العدد الكامل <bdi dir=\"ltr\">2⁵&nbsp;=&nbsp;32</bdi>.",
+     "الـ <bdi dir=\"ltr\">10&nbsp;=&nbsp;2&nbsp;×&nbsp;5</bdi> ضربت بدل ما ترفع لـ power. القاعدة <bdi dir=\"ltr\">2ⁿ</bdi>، فـ <bdi dir=\"ltr\">2⁵&nbsp;=&nbsp;32</bdi>.",
+     "الـ <bdi dir=\"ltr\">25&nbsp;=&nbsp;5²</bdi> بدّلت الـ base والـ exponent. القاعدة <bdi dir=\"ltr\">|⁠P(S)|⁠&nbsp;=&nbsp;2ⁿ</bdi>، فـ <bdi dir=\"ltr\">2⁵&nbsp;=&nbsp;32</bdi>."
     ],
     [
-     "مع N = {1, 2, 3, …}، الرقم 1 بيحقق x &lt; 2، فالـ set دي {1}، يعني مش فاضية.",
-     "صح. مفيش natural number أقل من 1 (المحاضرة بتعتبر N = {1, 2, 3, …}).",
+     "مع <bdi dir=\"ltr\">N&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;…}</bdi>، الرقم 1 بيحقق <bdi dir=\"ltr\">x&nbsp;&lt;&nbsp;2</bdi>، فالـ set دي <bdi dir=\"ltr\">{1}</bdi>، يعني مش فاضية.",
+     "صح. مفيش natural number أقل من 1 (المحاضرة بتعتبر <bdi dir=\"ltr\">N&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;…}</bdi>).",
      "فيها element واحد هو ∅، فهي مش فاضية.",
      "فيها الـ element 0، فهي مش فاضية."
     ],
     [
      "صح كعبارة: الـ empty set هي subset من أي set.",
-     "العبارة دي صح، فهي مش الإجابة: a وc الاتنين elements في A، فـ {a, c} ⊆ A.",
-     "صح (هي العبارة الغلط). {a} دي set؛ والـ elements بتاعة A هي a وb وc، فـ {a} ⊆ A بس {a} ∉ A.",
+     "العبارة دي صح، فهي مش الإجابة: a وc الاتنين elements في A، فـ <bdi dir=\"ltr\">{a,&nbsp;c}&nbsp;⊆&nbsp;A</bdi>.",
+     "صح (هي العبارة الغلط). الـ <bdi dir=\"ltr\">{a}</bdi> دي set؛ والـ elements بتاعة A هي a وb وc، فـ <bdi dir=\"ltr\">{a}&nbsp;⊆&nbsp;A</bdi> بس <bdi dir=\"ltr\">{a}&nbsp;∉&nbsp;A</bdi>.",
      "العبارة دي صح، فهي مش الإجابة: كل element في A موجود في A، فأي set هي subset من نفسها."
     ],
     [
      "الـ power set دايمًا فيها ∅، فعمرها ما تبقى فاضية.",
-     "الـ 1 ده |P(∅)|، لأن P(∅) = {∅}. لما تاخد الـ power set تاني هتطلع P({∅}) = {∅, {∅}}، فيها 2¹ = 2 elements.",
-     "الـ 4 = 2² كانت محتاجة P(∅) يبقى فيها 2 elements، بس P(∅) = {∅} فيها 1 بس. فـ P(P(∅)) فيها 2¹ = 2 elements.",
-     "صح. P(∅) = {∅} فيها element واحد، فـ P(P(∅)) = {∅, {∅}} فيها 2¹ = 2."
+     "الـ 1 ده <bdi dir=\"ltr\">|⁠P(∅)|⁠</bdi>، لأن <bdi dir=\"ltr\">P(∅)&nbsp;=&nbsp;{∅}</bdi>. لما تاخد الـ power set تاني هتطلع:<span class=\"ltr\">P({∅}) = {∅, {∅}}</span>فيها <bdi dir=\"ltr\">2¹&nbsp;=&nbsp;2</bdi> elements.",
+     "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2²</bdi> كانت محتاجة <bdi dir=\"ltr\">P(∅)</bdi> يبقى فيها 2 elements، بس <bdi dir=\"ltr\">P(∅)&nbsp;=&nbsp;{∅}</bdi> فيها 1 بس. فـ <bdi dir=\"ltr\">P(P(∅))</bdi> فيها <bdi dir=\"ltr\">2¹&nbsp;=&nbsp;2</bdi> elements.",
+     "صح. الـ <bdi dir=\"ltr\">P(∅)&nbsp;=&nbsp;{∅}</bdi> فيها element واحد، فـ:<span class=\"ltr\">P(P(∅)) = {∅, {∅}}</span>فيها <bdi dir=\"ltr\">2¹&nbsp;=&nbsp;2</bdi>."
     ],
     [
-     "صح. التكرار والترتيب مش فارقين؛ الاتنين = {1, 2, 3}.",
-     "الـ 6 مش أقل من 6، فالـ set الأولى = {2, 4}.",
-     "{0} فيها element واحد (الرقم 0)، أما ∅ مفيهاش elements خالص، فهما مش equal. n({0}) = 1 و n(∅) = 0.",
+     "صح. التكرار والترتيب مش فارقين؛ الاتنين بيساووا <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>.",
+     "الـ 6 مش أقل من 6، فالـ set الأولى بتساوي <bdi dir=\"ltr\">{2,&nbsp;4}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{0}</bdi> فيها element واحد (الرقم 0)، أما ∅ مفيهاش elements خالص، فهما مش equal. يعني <bdi dir=\"ltr\">n({0})&nbsp;=&nbsp;1</bdi> و<bdi dir=\"ltr\">n(∅)&nbsp;=&nbsp;0</bdi>.",
      "الـ elements بتاعة الـ set التانية sets، مش أرقام."
     ],
     [
-     "مع N = {1, 2, 3, …}، دي {1, 2, 3, 4, 5, 6}، عدد elements محدد. المحاضرة بتعتبرها finite set.",
-     "صح. ده مثال المحاضرة للـ infinite set: 2، 3، 4، … مالهاش آخر.",
+     "مع <bdi dir=\"ltr\">N&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;…}</bdi>، دي <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5,&nbsp;6}</bdi>، عدد elements محدد. المحاضرة بتعتبرها finite set.",
+     "صح. ده مثال المحاضرة للـ infinite set: الـ <bdi dir=\"ltr\">2,&nbsp;3,&nbsp;4,&nbsp;…</bdi> مالهاش آخر.",
      "الـ primes لحد 97 بتخلص عند 97، فعددهم محدد (25). المحاضرة بتديها كمثال لـ finite set؛ إنما كل الـ primes تبقى infinite.",
-     "Finite (7 ألوان)، ودي مثال المحاضرة للـ finite set."
+     "دي Finite (7 ألوان)، ودي مثال المحاضرة للـ finite set."
     ],
     [
-     "{1, 2, 3} دي A نفسها، ومفيهاش 4 ∈ B. الـ universal set لازم يكون فيها كل elements الـ sets المعطاة.",
-     "{2, 3} دي A ∩ B، الـ elements المشتركة بس. ناقصها 1 ∈ A و4 ∈ B، فمينفعش تبقى universal.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi> دي A نفسها، ومفيهاش <bdi dir=\"ltr\">4&nbsp;∈&nbsp;B</bdi>. الـ universal set لازم يكون فيها كل elements الـ sets المعطاة.",
+     "الـ <bdi dir=\"ltr\">{2,&nbsp;3}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi>، الـ elements المشتركة بس. ناقصها <bdi dir=\"ltr\">1&nbsp;∈&nbsp;A</bdi> و<bdi dir=\"ltr\">4&nbsp;∈&nbsp;B</bdi>، فمينفعش تبقى universal.",
      "صح. فيها كل element في A وB.",
-     "{1, 4} ناقصها 2 و3، ودول موجودين في A وB الاتنين. الـ universal set لازم يكون فيها كل elements الـ A والـ B: {1, 2, 3, 4}."
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;4}</bdi> ناقصها 2 و3، ودول موجودين في A وB الاتنين. الـ universal set لازم يكون فيها كل elements الـ A والـ B، يعني <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3,&nbsp;4}</bdi>."
     ],
     [
-     "الـ 3 بتعد الـ one-element subsets بس: {p}، {q}، {r}. الـ proper subsets فيها كمان ∅ والتلات pairs: 2³ − 1 = 7.",
-     "الـ 8 = 2³ بتعد كل الـ subsets، ومعاهم {p, q, r} نفسها، واللي السؤال مستبعدها. الـ proper subsets: 8 − 1 = 7.",
+     "الـ 3 بتعد الـ one-element subsets بس، اللي هما <bdi dir=\"ltr\">{p}</bdi> و<bdi dir=\"ltr\">{q}</bdi> و<bdi dir=\"ltr\">{r}</bdi>. الـ proper subsets فيها كمان ∅ والتلات pairs، يعني <bdi dir=\"ltr\">2³&nbsp;−&nbsp;1&nbsp;=&nbsp;7</bdi>.",
+     "الـ <bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi> بتعد كل الـ subsets، ومعاهم <bdi dir=\"ltr\">{p,&nbsp;q,&nbsp;r}</bdi> نفسها، واللي السؤال مستبعدها. الـ proper subsets عددها <bdi dir=\"ltr\">8&nbsp;−&nbsp;1&nbsp;=&nbsp;7</bdi>.",
      "ده شال ∅ كمان، بس ∅ تعتبر proper subset.",
-     "صح. الـ set ليها 2³ = 8 subsets (L1, Power set)؛ ولما نشيل الـ set نفسها يفضل 8 − 1 = 7: ∅، {p}، {q}، {r}، {p, q}، {p, r}، {q, r}."
+     "صح. الـ set ليها <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi> subsets <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>؛ ولما نشيل الـ set نفسها يفضل <bdi dir=\"ltr\">8&nbsp;−&nbsp;1&nbsp;=&nbsp;7</bdi>، وهما:<span class=\"ltr\">∅, {p}, {q}, {r}, {p, q}, {p, r}, {q, r}</span>"
     ],
     [
      "صح. ده مثال المحاضرة لطريقة الـ property.",
-     "{x | x &lt; 100} شالت شرط \"x is odd\" والـ lower bound 0، فبقى فيها أرقام زوجية وسالبة كمان.",
-     "\"x ∈ odd\" دي مجرد statement عن x، مش set: الـ set-builder form محتاجة أقواس وproperty، {x | property}.",
-     "{1, 3, 5} دي طريقة الـ listing (roster) ووقفت بعد 3 elements؛ مش set-builder form وناقصها 7، 9، …، 99."
+     "الـ <bdi dir=\"ltr\">{x&nbsp;|⁠&nbsp;x&nbsp;&lt;&nbsp;100}</bdi> شالت شرط <bdi dir=\"ltr\">\"x is odd\"</bdi> والـ lower bound 0، فبقى فيها أرقام زوجية وسالبة كمان.",
+     "الـ <bdi dir=\"ltr\">\"x&nbsp;∈&nbsp;odd\"</bdi> دي مجرد statement عن x، مش set: الـ set-builder form محتاجة أقواس وproperty، بالشكل ده <bdi dir=\"ltr\">{x&nbsp;|⁠&nbsp;property}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5}</bdi> دي طريقة الـ listing (roster) ووقفت بعد 3 elements؛ مش set-builder form وناقصها <bdi dir=\"ltr\">7,&nbsp;9,&nbsp;…,&nbsp;99</bdi>."
     ],
     [
-     "C = {2⁰, …, 2⁴} = {1, 2, 4, 8, 16}، والـ 9 مش power of 2، فـ 9 ∉ C (L1, Example 1.1).",
-     "صح. C = {2⁰, 2¹, 2², 2³, 2⁴} = {1, 2, 4, 8, 16}، والـ 8 = 2³ مكتوبة، فـ 8 ∈ C (L1, Example 1.1).",
-     "الـ exponents ماشية 0، 1، 2، 3، 4، يعني خمس powers، فـ n(C) = 5. لو عدّيت من 1 لـ 4 تبقى نسيت 2⁰.",
-     "2⁰ = 1 مش 0، فالـ 0 مش في C = {1, 2, 4, 8, 16}. أي رقم أُس 0 بيساوي 1."
+     "عندنا:<span class=\"ltr\">C = {2⁰, …, 2⁴} = {1, 2, 4, 8, 16}</span>والـ 9 مش power of 2، فـ <bdi dir=\"ltr\">9&nbsp;∉&nbsp;C</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Example&nbsp;1.1)</bdi>.",
+     "صح. عندنا:<span class=\"ltr\">C = {2⁰, 2¹, 2², 2³, 2⁴} = {1, 2, 4, 8, 16}</span>والـ <bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi> مكتوبة، فـ <bdi dir=\"ltr\">8&nbsp;∈&nbsp;C</bdi> <bdi dir=\"ltr\">(L1,&nbsp;Example&nbsp;1.1)</bdi>.",
+     "الـ exponents ماشية <bdi dir=\"ltr\">0,&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;4</bdi>، يعني خمس powers، فـ <bdi dir=\"ltr\">n(C)&nbsp;=&nbsp;5</bdi>. لو عدّيت من 1 لـ 4 تبقى نسيت <bdi dir=\"ltr\">2⁰</bdi>.",
+     "الـ <bdi dir=\"ltr\">2⁰&nbsp;=&nbsp;1</bdi> مش 0، فالـ 0 مش في <bdi dir=\"ltr\">C&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;4,&nbsp;8,&nbsp;16}</bdi>. أي رقم أُس 0 بيساوي 1."
     ]
    ]
   },
@@ -267,23 +267,23 @@ AR.dm = {
     {
      "h": "الـ 4 operations الأساسية",
      "pts": [
-      "<b>1. Union</b> A ∪ B = {x | x ∈ A <b>or</b> x ∈ B}: كل الـ elements اللي في أي set فيهم (\"or\" هنا بتشمل \"الاتنين\"). في الـ Venn: بنضلّل A كلها وB كلها. مثال: {4, 5} ∪ {5, 6, 7} = {4, 5, 6, 7} (ماتكتبش الـ 5 مرتين).",
-      "<b>2. Intersection</b> A ∩ B = {x | x ∈ A <b>and</b> x ∈ B}: الـ elements المشتركة بس، يعني الجزء المتداخل. مثال: {4, 5} ∩ {5, 6, 7} = {5}. ولو A ∩ B = ∅ يبقى الـ sets دي <b>disjoint</b>.",
-      "<b>3. Complement</b> A′ (أو Aᶜ أو Ā) = {x : x ∈ U but x ∉ A} = U − A. فكّر فيها كـ \"not A\". في الـ Venn: كل حاجة جوه المستطيل U بس برّه الدايرة A.",
-      "<b>4. Cartesian product</b> A × B = {(a, b) | a ∈ A, b ∈ B}: كل الـ ordered pairs؛ و|A × B| = |A|·|B| (مثلًا |A| = 4، |B| = 3 → |A × B| = 12).",
-      "<b>Difference</b> B − A = {x | x ∈ B and x ∉ A}: الـ elements اللي في B ومش في A (بنضلّل الجزء من B اللي برّه A)."
+      "<b>1. الـ Union</b>:<span class=\"ltr\">A ∪ B = {x | x ∈ A <b>or</b> x ∈ B}</span>يعني كل الـ elements اللي في أي set فيهم (\"or\" هنا بتشمل \"الاتنين\"). في الـ Venn: بنضلّل A كلها وB كلها. مثال:<span class=\"ltr\">{4, 5} ∪ {5, 6, 7} = {4, 5, 6, 7}</span>(ماتكتبش الـ 5 مرتين).",
+      "<b>2. الـ Intersection</b>:<span class=\"ltr\">A ∩ B = {x | x ∈ A <b>and</b> x ∈ B}</span>يعني الـ elements المشتركة بس، يعني الجزء المتداخل. مثال:<span class=\"ltr\">{4, 5} ∩ {5, 6, 7} = {5}</span>ولو <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;∅</bdi> يبقى الـ sets دي <b>disjoint</b>.",
+      "<b>3. الـ Complement</b> (بنكتبه A′ أو Aᶜ أو Ā):<span class=\"ltr\">A′ = {x : x ∈ U but x ∉ A} = U − A</span>فكّر فيها كـ <bdi dir=\"ltr\">\"not A\"</bdi>. في الـ Venn: كل حاجة جوه المستطيل U بس برّه الدايرة A.",
+      "<b>4. الـ Cartesian product</b>:<span class=\"ltr\">A × B = {(a, b) | a ∈ A, b ∈ B}</span>يعني كل الـ ordered pairs؛ و:<span class=\"ltr\">|A × B| = |A|·|B|</span>مثلًا:<span class=\"ltr\">|A| = 4, |B| = 3 → |A × B| = 12</span>",
+      "الـ <b>Difference</b>:<span class=\"ltr\">B − A = {x | x ∈ B and x ∉ A}</span>يعني الـ elements اللي في B ومش في A (بنضلّل الجزء من B اللي برّه A)."
      ]
     },
     {
-     "h": "Ex 1 من المحاضرة (بعد التصحيح)"
+     "h": "الـ Ex 1 من المحاضرة (بعد التصحيح)"
     },
     {
      "h": "أمثلة زيادة",
      "pts": [
-      "S = {1, 0}، T = {0, 1, 2}: S ⊂ T، S ∩ T = S، S ∪ T = T، T − S = {2}.",
-      "قاعدة: لو A ⊆ B يبقى A ∩ B = A و A ∪ B = B.",
-      "U = {1,2,3,4,5}، A = {1,2} → A′ = {3,4,5}. U = {1,…,6}، A = {2,4,6} → A′ = {1,3,5}.",
-      "{2,4,6,8} ∩ {4,8,10,12} = {4,8}."
+      "لو:<span class=\"ltr\">S = {1, 0}, T = {0, 1, 2}</span>يبقى:<span class=\"ltr\">S ⊂ T, S ∩ T = S, S ∪ T = T, T − S = {2}</span>",
+      "قاعدة: لو <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> يبقى <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;A</bdi> و<bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;B</bdi>.",
+      "أمثلة:<span class=\"ltr\">U = {1,2,3,4,5}, A = {1,2} → A′ = {3,4,5}</span><span class=\"ltr\">U = {1,…,6}, A = {2,4,6} → A′ = {1,3,5}</span>",
+      "مثال:<span class=\"ltr\">{2,4,6,8} ∩ {4,8,10,12} = {4,8}</span>"
      ]
     },
     {
@@ -297,161 +297,161 @@ AR.dm = {
     }
    ],
    "cards": [
-    "{x | x ∈ A or x ∈ B}: الـ elements اللي في A، أو في B، أو في الاتنين.",
-    "{x | x ∈ A and x ∈ B}: الـ elements المشتركة بس.",
-    "{x : x ∈ U but x ∉ A} = U − A.",
+    "يعني:<span class=\"ltr\">{x | x ∈ A or x ∈ B}</span>الـ elements اللي في A، أو في B، أو في الاتنين.",
+    "يعني:<span class=\"ltr\">{x | x ∈ A and x ∈ B}</span>الـ elements المشتركة بس.",
+    "القانون:<span class=\"ltr\">{x : x ∈ U but x ∉ A} = U − A</span>",
     "الـ elements اللي في B ومش في A.",
-    "كل الـ ordered pairs (a, b) بحيث a ∈ A و b ∈ B؛ و|A × B| = |A|·|B|.",
+    "كل الـ ordered pairs <bdi dir=\"ltr\">(a,&nbsp;b)</bdi> بحيث <bdi dir=\"ltr\">a&nbsp;∈&nbsp;A</bdi> و<bdi dir=\"ltr\">b&nbsp;∈&nbsp;B</bdi>؛ و:<span class=\"ltr\">|A × B| = |A|·|B|</span>",
     "كل الـ elements اللي في A أو في B أو في الاتنين.",
     "الـ elements اللي في A وB الاتنين في نفس الوقت.",
-    "A ∪ ∅ = A، A ∩ U = A",
-    "A ∪ U = U، A ∩ ∅ = ∅",
-    "A ∪ A = A، A ∩ A = A",
-    "(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ، (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ",
-    "A ∪ (A ∩ B) = A، A ∩ (A ∪ B) = A",
-    "A ∪ Aᶜ = U، A ∩ Aᶜ = ∅",
-    "A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)؛ A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)",
-    "A ∩ B = A و A ∪ B = B."
+    "القانون:<span class=\"ltr\">A ∪ ∅ = A, A ∩ U = A</span>",
+    "القانون:<span class=\"ltr\">A ∪ U = U, A ∩ ∅ = ∅</span>",
+    "القانون:<span class=\"ltr\">A ∪ A = A, A ∩ A = A</span>",
+    "القانون:<span class=\"ltr\">(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ</span><span class=\"ltr\">(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ</span>",
+    "القانون:<span class=\"ltr\">A ∪ (A ∩ B) = A, A ∩ (A ∪ B) = A</span>",
+    "القانون:<span class=\"ltr\">A ∪ Aᶜ = U, A ∩ Aᶜ = ∅</span>",
+    "القانون:<span class=\"ltr\">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span><span class=\"ltr\">A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</span>",
+    "يبقى <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;A</bdi> و<bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;B</bdi>."
    ],
    "qa": [
-    "A ∪ B = {x | x ∈ A or x ∈ B}؛ A ∩ B = {x | x ∈ A and x ∈ B}؛ A′ = {x : x ∈ U but x ∉ A}؛ B − A = {x | x ∈ B and x ∉ A}. في الـ Venn diagrams: الـ union بيضلّل الدايرتين، الـ intersection بيضلّل الجزء المتداخل، الـ complement بيضلّل U اللي برّه A، والـ B − A بيضلّل الجزء من B اللي برّه A.",
-    "A ∩ B = {3}؛ A ∪ B = {1,2,3,4,6}؛ A − B = {1,2}؛ A − C = {2,3}؛ (A ∩ B)ᶜ = {1,2,4,5,6,7,8,9,10}؛ (A ∪ B)ᶜ = {5,7,8,9,10}؛ Aᶜ ∩ Bᶜ = {5,7,8,9,10}؛ Aᶜ ∪ Bᶜ = {1,2,4,5,6,7,8,9,10}. آخر اتنين بيأكدوا قوانين De Morgan.",
-    "Identity: A ∪ ∅ = A، A ∩ U = A. Domination: A ∪ U = U، A ∩ ∅ = ∅. Idempotent: A ∪ A = A، A ∩ A = A. Complementation: (Aᶜ)ᶜ = A. Commutative: A ∪ B = B ∪ A، A ∩ B = B ∩ A. Associative: A ∪ (B ∪ C) = (A ∪ B) ∪ C ونفس الكلام للـ ∩. Distributive: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)، A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C). De Morgan: (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ، (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ. Absorption: A ∪ (A ∩ B) = A، A ∩ (A ∪ B) = A. Complement: A ∪ Aᶜ = U، A ∩ Aᶜ = ∅.",
-    "كل element في S موجود في T، يبقى S ⊂ T. وعشان كده S ∩ T = S = {0, 1}، S ∪ T = T = {0, 1, 2}، T − S = {2}.",
-    "B − A = {x | x ∈ B and x ∉ A}. في الـ Venn diagram بتضلّل الجزء من الدايرة B اللي مش متداخل مع الدايرة A."
+    "التعريفات:<span class=\"ltr\">A ∪ B = {x | x ∈ A or x ∈ B}</span><span class=\"ltr\">A ∩ B = {x | x ∈ A and x ∈ B}</span><span class=\"ltr\">A′ = {x : x ∈ U but x ∉ A}</span><span class=\"ltr\">B − A = {x | x ∈ B and x ∉ A}</span>في الـ Venn diagrams: الـ union بيضلّل الدايرتين، الـ intersection بيضلّل الجزء المتداخل، الـ complement بيضلّل U اللي برّه A، والـ <bdi dir=\"ltr\">B&nbsp;−&nbsp;A</bdi> بيضلّل الجزء من B اللي برّه A.",
+    "النتايج:<span class=\"ltr\">A ∩ B = {3}</span><span class=\"ltr\">A ∪ B = {1,2,3,4,6}</span><span class=\"ltr\">A − B = {1,2}</span><span class=\"ltr\">A − C = {2,3}</span><span class=\"ltr\">(A ∩ B)ᶜ = {1,2,4,5,6,7,8,9,10}</span><span class=\"ltr\">(A ∪ B)ᶜ = {5,7,8,9,10}</span><span class=\"ltr\">Aᶜ ∩ Bᶜ = {5,7,8,9,10}</span><span class=\"ltr\">Aᶜ ∪ Bᶜ = {1,2,4,5,6,7,8,9,10}</span>آخر اتنين بيأكدوا قوانين De Morgan.",
+    "الـ Identity:<span class=\"ltr\">A ∪ ∅ = A, A ∩ U = A</span>الـ Domination:<span class=\"ltr\">A ∪ U = U, A ∩ ∅ = ∅</span>الـ Idempotent:<span class=\"ltr\">A ∪ A = A, A ∩ A = A</span>الـ Complementation:<span class=\"ltr\">(Aᶜ)ᶜ = A</span>الـ Commutative:<span class=\"ltr\">A ∪ B = B ∪ A, A ∩ B = B ∩ A</span>الـ Associative:<span class=\"ltr\">A ∪ (B ∪ C) = (A ∪ B) ∪ C</span>ونفس الكلام للـ ∩.<br>الـ Distributive:<span class=\"ltr\">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span><span class=\"ltr\">A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</span>الـ De Morgan:<span class=\"ltr\">(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ, (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ</span>الـ Absorption:<span class=\"ltr\">A ∪ (A ∩ B) = A, A ∩ (A ∪ B) = A</span>الـ Complement:<span class=\"ltr\">A ∪ Aᶜ = U, A ∩ Aᶜ = ∅</span>",
+    "كل element في S موجود في T، يبقى <bdi dir=\"ltr\">S&nbsp;⊂&nbsp;T</bdi>. وعشان كده:<span class=\"ltr\">S ∩ T = S = {0, 1}</span><span class=\"ltr\">S ∪ T = T = {0, 1, 2}</span><span class=\"ltr\">T − S = {2}</span>",
+    "التعريف:<span class=\"ltr\">B − A = {x | x ∈ B and x ∉ A}</span>في الـ Venn diagram بتضلّل الجزء من الدايرة B اللي مش متداخل مع الدايرة A."
    ],
    "quiz": [
     [
-     "صح. A′ = {x : x ∈ U but x ∉ A} = U − A. لو شلت 1 و2 من {1, 2, 3, 4, 5} يفضل {3, 4, 5} (L2, Complement).",
-     "خلي بالك، الـ 4 كمان موجودة في U ومش في A، يبقى هي كمان من A′. لو شلتها يطلع {3, 5}؛ لكن الـ complement كامل هو U − A = {3, 4, 5}.",
-     "1 ∈ A، فماينفعش تبقى في A′ (الـ complement فيه بس الـ elements اللي برّه A)؛ وكمان الـ 4 ناقصة. A′ = {3, 4, 5}.",
-     "{1, 2} دي A نفسها. الـ complement هو كل حاجة في U مش في A: U − A = {3, 4, 5}."
+     "صح. التعريف:<span class=\"ltr\">A′ = {x : x ∈ U but x ∉ A} = U − A</span>لو شلت 1 و2 من <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5}</bdi> يفضل <bdi dir=\"ltr\">{3,&nbsp;4,&nbsp;5}</bdi> <bdi dir=\"ltr\">(L2,&nbsp;Complement)</bdi>.",
+     "خلي بالك، الـ 4 كمان موجودة في U ومش في A، يبقى هي كمان من A′. لو شلتها يطلع <bdi dir=\"ltr\">{3,&nbsp;5}</bdi>؛ لكن الـ complement كامل هو <bdi dir=\"ltr\">U&nbsp;−&nbsp;A&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;5}</bdi>.",
+     "الـ <bdi dir=\"ltr\">1&nbsp;∈&nbsp;A</bdi>، فماينفعش تبقى في A′ (الـ complement فيه بس الـ elements اللي برّه A)؛ وكمان الـ 4 ناقصة. يعني <bdi dir=\"ltr\">A′&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;5}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> دي A نفسها. الـ complement هو كل حاجة في U مش في A، يعني <bdi dir=\"ltr\">U&nbsp;−&nbsp;A&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;5}</bdi>."
     ],
     [
-     "الـ commutative law بيبدّل الترتيب بس: A ∪ B = B ∪ A و A ∩ B = B ∩ A. مفيهوش أي complements.",
-     "الـ associative law بيغيّر مكان الأقواس لنفس الـ operation بس: A ∪ (B ∪ C) = (A ∪ B) ∪ C. مفيش complements خالص.",
-     "صح. الـ complement بتاع الـ union = الـ intersection بتاع الـ complements.",
-     "الـ distributive law بيوزّع operation على التانية: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C). مش بياخد complement لأي حاجة."
+     "الـ commutative law بيبدّل الترتيب بس:<span class=\"ltr\">A ∪ B = B ∪ A, A ∩ B = B ∩ A</span>مفيهوش أي complements.",
+     "الـ associative law بيغيّر مكان الأقواس لنفس الـ operation بس:<span class=\"ltr\">A ∪ (B ∪ C) = (A ∪ B) ∪ C</span>مفيش complements خالص.",
+     "صح. الـ complement بتاع الـ union بيساوي الـ intersection بتاع الـ complements.",
+     "الـ distributive law بيوزّع operation على التانية:<span class=\"ltr\">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span>مش بياخد complement لأي حاجة."
     ],
     [
-     "{2, 6} دول الـ elements اللي في A ومش في B، يعني A − B. الـ intersection بياخد المشترك بس، وهو {4, 8}.",
-     "صح. A ∩ B = {x | x ∈ A and x ∈ B}: الـ elements الوحيدة اللي في الاتنين هي 4 و8، يبقى A ∩ B = {4, 8} (L2, Intersection).",
-     "{2, 4, 6, 8, 10, 12} فيها كل حاجة في أي set منهم، ودي A ∪ B. الـ intersection بياخد المشترك بس {4, 8}.",
-     "∅ معناها إن الـ sets دي disjoint، لكن 4 و8 موجودين في الاتنين. يبقى A ∩ B = {4, 8}."
+     "الـ <bdi dir=\"ltr\">{2,&nbsp;6}</bdi> دول الـ elements اللي في A ومش في B، يعني <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi>. الـ intersection بياخد المشترك بس، وهو <bdi dir=\"ltr\">{4,&nbsp;8}</bdi>.",
+     "صح. التعريف:<span class=\"ltr\">A ∩ B = {x | x ∈ A and x ∈ B}</span>الـ elements الوحيدة اللي في الاتنين هي 4 و8، يبقى <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;{4,&nbsp;8}</bdi> <bdi dir=\"ltr\">(L2,&nbsp;Intersection)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{2,&nbsp;4,&nbsp;6,&nbsp;8,&nbsp;10,&nbsp;12}</bdi> فيها كل حاجة في أي set منهم، ودي <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B</bdi>. الـ intersection بياخد المشترك بس <bdi dir=\"ltr\">{4,&nbsp;8}</bdi>.",
+     "الـ ∅ معناها إن الـ sets دي disjoint، لكن 4 و8 موجودين في الاتنين. يبقى <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;{4,&nbsp;8}</bdi>."
     ],
     [
-     "الـ 2 موجودة في A، فماينفعش تبقى في A′، وكمان الـ 5 (اللي برّه A) ناقصة. A′ = U − A = {1, 3, 5}.",
-     "صح. A′ = U − A: شيل 2 و4 و6 من {1, …, 6} يفضل {1, 3, 5} (L2, Complement).",
-     "{1, …, 6} دي U نفسها. الـ complement لازم يشيل الـ elements بتاعة A (2, 4, 6)، فيفضل {1, 3, 5}.",
-     "A′ بتبقى فاضية بس لو A = U. هنا 1 و3 و5 موجودين في U ومش في A، يبقى A′ = {1, 3, 5}."
+     "الـ 2 موجودة في A، فماينفعش تبقى في A′، وكمان الـ 5 (اللي برّه A) ناقصة. يعني:<span class=\"ltr\">A′ = U − A = {1, 3, 5}</span>",
+     "صح. الـ <bdi dir=\"ltr\">A′&nbsp;=&nbsp;U&nbsp;−&nbsp;A</bdi>: شيل 2 و4 و6 من <bdi dir=\"ltr\">{1,&nbsp;…,&nbsp;6}</bdi> يفضل <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5}</bdi> <bdi dir=\"ltr\">(L2,&nbsp;Complement)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;…,&nbsp;6}</bdi> دي U نفسها. الـ complement لازم يشيل الـ elements بتاعة A (<bdi dir=\"ltr\">2,&nbsp;4,&nbsp;6</bdi>)، فيفضل <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5}</bdi>.",
+     "الـ A′ بتبقى فاضية بس لو <bdi dir=\"ltr\">A&nbsp;=&nbsp;U</bdi>. هنا 1 و3 و5 موجودين في U ومش في A، يبقى <bdi dir=\"ltr\">A′&nbsp;=&nbsp;{1,&nbsp;3,&nbsp;5}</bdi>."
     ],
     [
-     "Aᶜ ∩ Bᶜ ده الـ complement بتاع الـ union، (A ∪ B)ᶜ، يعني قانون De Morgan التاني. لما تاخد complement لـ intersection الـ ∩ بتتقلب ∪.",
-     "A ∨ B (يعني A ∪ B) مفيهوش complements خالص. الـ De Morgan بياخد complement لكل set ويقلب الـ operation: Aᶜ ∪ Bᶜ.",
-     "صح. De Morgan: الـ complement بتاع الـ intersection هو الـ union بتاع الـ complements، (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ، ومكتوبة هنا Aᶜ ∨ Bᶜ (L2, Set identities).",
-     "A ∩ B دي الـ set الأصلية قبل ما ناخد الـ complement؛ والـ complement بتاعها set تانية خالص، وهي Aᶜ ∪ Bᶜ بالـ De Morgan."
+     "الـ <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;Bᶜ</bdi> ده الـ complement بتاع الـ union، <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ</bdi>، يعني قانون De Morgan التاني. لما تاخد complement لـ intersection الـ ∩ بتتقلب ∪.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;∨&nbsp;B</bdi> (يعني <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B</bdi>) مفيهوش complements خالص. الـ De Morgan بياخد complement لكل set ويقلب الـ operation، فيطلع <bdi dir=\"ltr\">Aᶜ&nbsp;∪&nbsp;Bᶜ</bdi>.",
+     "صح. الـ De Morgan: الـ complement بتاع الـ intersection هو الـ union بتاع الـ complements:<span class=\"ltr\">(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ</span>ومكتوبة هنا <bdi dir=\"ltr\">Aᶜ&nbsp;∨&nbsp;Bᶜ</bdi> <bdi dir=\"ltr\">(L2,&nbsp;Set&nbsp;identities)</bdi>.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi> دي الـ set الأصلية قبل ما ناخد الـ complement؛ والـ complement بتاعها set تانية خالص، وهي <bdi dir=\"ltr\">Aᶜ&nbsp;∪&nbsp;Bᶜ</bdi> بالـ De Morgan."
     ],
     [
-     "|A ∩ B| = 0 بتتحقق بس لو A و B disjoint. ممكن يكون بينهم لحد 3 elements مشتركة، فده مش صح دايمًا.",
-     "صح. A × B هي كل الـ ordered pairs (a, b)، وكل اختيار من الـ 4 بتوع a بيتجوّز مع كل اختيار من الـ 3 بتوع b: |A × B| = |A|·|B| = 4 × 3 = 12 (L2, Cartesian product).",
-     "|A − B| بتعتمد على قد إيه A و B متداخلين: بتبقى 4 لو disjoint، و1 لو B كلها جوّه A. فمش دايمًا 1."
+     "الـ <bdi dir=\"ltr\">|⁠A&nbsp;∩&nbsp;B|⁠&nbsp;=&nbsp;0</bdi> بتتحقق بس لو A وB disjoint. ممكن يكون بينهم لحد 3 elements مشتركة، فده مش صح دايمًا.",
+     "صح. الـ <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> هي كل الـ ordered pairs <bdi dir=\"ltr\">(a,&nbsp;b)</bdi>، وكل اختيار من الـ 4 بتوع a بيتجوّز مع كل اختيار من الـ 3 بتوع b، فـ:<span class=\"ltr\">|A × B| = |A|·|B| = 4 × 3 = 12</span>المرجع <bdi dir=\"ltr\">(L2,&nbsp;Cartesian&nbsp;product)</bdi>.",
+     "الـ <bdi dir=\"ltr\">|⁠A&nbsp;−&nbsp;B|⁠</bdi> بتعتمد على قد إيه A وB متداخلين: بتبقى 4 لو disjoint، و1 لو B كلها جوّه A. فمش دايمًا 1."
     ],
     [
-     "{1, 2, 4, 5, 6, 7, 8, 9, 10} = U − {3} دي (A ∩ B)ᶜ. المفروض تشيل الـ union كله A ∪ B = {1, 2, 3, 4, 6}، مش الـ 3 بس.",
-     "{1, 2} دي A − B (الـ elements اللي في A ومش في B). أما (A ∪ B)ᶜ فهي كل حاجة في U برّه A و B الاتنين.",
-     "صح. A ∪ B = {1, 2, 3, 4, 6}، يبقى (A ∪ B)ᶜ = U − {1, 2, 3, 4, 6} = {5, 7, 8, 9, 10} (L2, Ex 1 part u).",
-     "{3} دي A ∩ B، الـ element المشترك، مش complement. (A ∪ B)ᶜ = U − {1, 2, 3, 4, 6} = {5, 7, 8, 9, 10}."
+     "الـ set دي:<span class=\"ltr\">{1, 2, 4, 5, 6, 7, 8, 9, 10} = U − {3}</span>هي <bdi dir=\"ltr\">(A&nbsp;∩&nbsp;B)ᶜ</bdi>. المفروض تشيل الـ union كله <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;6}</bdi>، مش الـ 3 بس.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> دي <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi> (الـ elements اللي في A ومش في B). أما <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ</bdi> فهي كل حاجة في U برّه A وB الاتنين.",
+     "صح. الـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;6}</bdi>، يبقى:<span class=\"ltr\">(A ∪ B)ᶜ = U − {1, 2, 3, 4, 6} = {5, 7, 8, 9, 10}</span>المرجع <bdi dir=\"ltr\">(L2,&nbsp;Ex&nbsp;1&nbsp;part&nbsp;u)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{3}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi>، الـ element المشترك، مش complement. الصح:<span class=\"ltr\">(A ∪ B)ᶜ = U − {1, 2, 3, 4, 6} = {5, 7, 8, 9, 10}</span>"
     ],
     [
-     "{1} دي A ∩ C، الـ element المشترك بين A و C. والـ A − C بتشيل بالظبط الـ element ده، يعني 1 هي الحاجة الوحيدة اللي مش في A − C.",
-     "{4, 7} دول الـ elements اللي في C ومش في A، يعني C − A. خلي بالك الـ difference مش symmetric: A − C بتحتفظ بـ elements بتاعة A.",
-     "{1, 2, 3, 4, 7} دي A ∪ C، كل الـ elements اللي في أي set منهم. A − C بتاخد بس الـ elements اللي في A ومش في C.",
-     "صح. A − C = {x | x ∈ A and x ∉ C}: من {1, 2, 3} شيل الـ 1 (لأنها في C)، يفضل {2, 3} (L2, Ex 1 part d)."
+     "الـ <bdi dir=\"ltr\">{1}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;C</bdi>، الـ element المشترك بين A وC. والـ <bdi dir=\"ltr\">A&nbsp;−&nbsp;C</bdi> بتشيل بالظبط الـ element ده، يعني 1 هي الحاجة الوحيدة اللي مش في <bdi dir=\"ltr\">A&nbsp;−&nbsp;C</bdi>.",
+     "الـ <bdi dir=\"ltr\">{4,&nbsp;7}</bdi> دول الـ elements اللي في C ومش في A، يعني <bdi dir=\"ltr\">C&nbsp;−&nbsp;A</bdi>. خلي بالك الـ difference مش symmetric: الـ <bdi dir=\"ltr\">A&nbsp;−&nbsp;C</bdi> بتحتفظ بـ elements بتاعة A.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;7}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∪&nbsp;C</bdi>، كل الـ elements اللي في أي set منهم. الـ <bdi dir=\"ltr\">A&nbsp;−&nbsp;C</bdi> بتاخد بس الـ elements اللي في A ومش في C.",
+     "صح. التعريف:<span class=\"ltr\">A − C = {x | x ∈ A and x ∉ C}</span>من <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi> شيل الـ 1 (لأنها في C)، يفضل <bdi dir=\"ltr\">{2,&nbsp;3}</bdi> <bdi dir=\"ltr\">(L2,&nbsp;Ex&nbsp;1&nbsp;part&nbsp;d)</bdi>."
     ],
     [
-     "صح. T − S بتاخد الـ elements اللي في T ومش في S: الـ 0 والـ 1 موجودين في S، فمفيش غير الـ 2، T − S = {2} (L2, More examples).",
-     "{0, 1, 2} دي S ∪ T، وهي نفسها T لأن S ⊂ T. لكن T − S لازم تشيل الـ elements بتاعة S، فيفضل {2}.",
-     "∅ دي S − T: كل element في S موجود في T. السؤال عايز العكس، T − S = {2}.",
-     "{0, 1} دي S ∩ T (وهي = S، لأن S ⊂ T). ودول بالظبط الـ elements اللي بتتشال في T − S، فيفضل {2}."
+     "صح. الـ <bdi dir=\"ltr\">T&nbsp;−&nbsp;S</bdi> بتاخد الـ elements اللي في T ومش في S: الـ 0 والـ 1 موجودين في S، فمفيش غير الـ 2، يعني <bdi dir=\"ltr\">T&nbsp;−&nbsp;S&nbsp;=&nbsp;{2}</bdi> <bdi dir=\"ltr\">(L2,&nbsp;More&nbsp;examples)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{0,&nbsp;1,&nbsp;2}</bdi> دي <bdi dir=\"ltr\">S&nbsp;∪&nbsp;T</bdi>، وهي نفسها T لأن <bdi dir=\"ltr\">S&nbsp;⊂&nbsp;T</bdi>. لكن <bdi dir=\"ltr\">T&nbsp;−&nbsp;S</bdi> لازم تشيل الـ elements بتاعة S، فيفضل <bdi dir=\"ltr\">{2}</bdi>.",
+     "الـ ∅ دي <bdi dir=\"ltr\">S&nbsp;−&nbsp;T</bdi>: كل element في S موجود في T. السؤال عايز العكس، يعني <bdi dir=\"ltr\">T&nbsp;−&nbsp;S&nbsp;=&nbsp;{2}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> دي <bdi dir=\"ltr\">S&nbsp;∩&nbsp;T</bdi> (وهي بتساوي S، لأن <bdi dir=\"ltr\">S&nbsp;⊂&nbsp;T</bdi>). ودول بالظبط الـ elements اللي بتتشال في <bdi dir=\"ltr\">T&nbsp;−&nbsp;S</bdi>، فيفضل <bdi dir=\"ltr\">{2}</bdi>."
     ],
     [
-     "الـ Domination بيقول A ∪ U = U و A ∩ ∅ = ∅: لما تدمج مع U أو ∅ هما اللي بيبلعوا النتيجة. أما A ∪ (A ∩ B) = A فده absorption.",
-     "صح. الـ Absorption: A ∪ (A ∩ B) = A و A ∩ (A ∪ B) = A. الفكرة إن A ∩ B أصلًا جوّه A، فلما تعمل union مع A مش بتزوّد حاجة (L2, Set identities).",
-     "الـ Idempotent بيقول A ∪ A = A و A ∩ A = A، وفيه set واحدة بس. هنا فيه set تانية B، فده absorption.",
-     "الـ distributive law بيوزّع operation على أقواس، A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)، ومحتاج 3 sets. هنا A بس بتبلع A ∩ B."
+     "الـ Domination بيقول:<span class=\"ltr\">A ∪ U = U, A ∩ ∅ = ∅</span>يعني لما تدمج مع U أو ∅ هما اللي بيبلعوا النتيجة. أما <bdi dir=\"ltr\">A&nbsp;∪&nbsp;(A&nbsp;∩&nbsp;B)&nbsp;=&nbsp;A</bdi> فده absorption.",
+     "صح. الـ Absorption:<span class=\"ltr\">A ∪ (A ∩ B) = A, A ∩ (A ∪ B) = A</span>الفكرة إن <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi> أصلًا جوّه A، فلما تعمل union مع A مش بتزوّد حاجة <bdi dir=\"ltr\">(L2,&nbsp;Set&nbsp;identities)</bdi>.",
+     "الـ Idempotent بيقول <bdi dir=\"ltr\">A&nbsp;∪&nbsp;A&nbsp;=&nbsp;A</bdi> و<bdi dir=\"ltr\">A&nbsp;∩&nbsp;A&nbsp;=&nbsp;A</bdi>، وفيه set واحدة بس. هنا فيه set تانية B، فده absorption.",
+     "الـ distributive law بيوزّع operation على أقواس:<span class=\"ltr\">A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)</span>ومحتاج 3 sets. هنا A بس بتبلع <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi>."
     ],
     [
-     "الـ complement law هو A ∩ Aᶜ = ∅ و A ∪ Aᶜ = U؛ يعني فيه Aᶜ. أما A ∩ ∅ = ∅ فبيستخدم الـ empty set، فده domination.",
-     "الـ identity law هو A ∩ U = A (و A ∪ ∅ = A): النتيجة A زي ما هي. هنا النتيجة ∅، فده domination.",
-     "صح. الـ Domination laws: A ∪ U = U و A ∩ ∅ = ∅. مفيش أي حاجة في ∅، فمفيش حاجة ممكن تبقى في A و ∅ مع بعض (L2, Set identities).",
-     "الـ Idempotent هو A ∩ A = A (set مع نفسها). لكن A ∩ ∅ = ∅ ده intersection مع الـ empty set، فده domination."
+     "الـ complement law هو <bdi dir=\"ltr\">A&nbsp;∩&nbsp;Aᶜ&nbsp;=&nbsp;∅</bdi> و<bdi dir=\"ltr\">A&nbsp;∪&nbsp;Aᶜ&nbsp;=&nbsp;U</bdi>؛ يعني فيه Aᶜ. أما <bdi dir=\"ltr\">A&nbsp;∩&nbsp;∅&nbsp;=&nbsp;∅</bdi> فبيستخدم الـ empty set، فده domination.",
+     "الـ identity law هو <bdi dir=\"ltr\">A&nbsp;∩&nbsp;U&nbsp;=&nbsp;A</bdi> (و<bdi dir=\"ltr\">A&nbsp;∪&nbsp;∅&nbsp;=&nbsp;A</bdi>): النتيجة A زي ما هي. هنا النتيجة ∅، فده domination.",
+     "صح. الـ Domination laws:<span class=\"ltr\">A ∪ U = U, A ∩ ∅ = ∅</span>مفيش أي حاجة في ∅، فمفيش حاجة ممكن تبقى في A و∅ مع بعض <bdi dir=\"ltr\">(L2,&nbsp;Set&nbsp;identities)</bdi>.",
+     "الـ Idempotent هو <bdi dir=\"ltr\">A&nbsp;∩&nbsp;A&nbsp;=&nbsp;A</bdi> (set مع نفسها). لكن <bdi dir=\"ltr\">A&nbsp;∩&nbsp;∅&nbsp;=&nbsp;∅</bdi> ده intersection مع الـ empty set، فده domination."
     ],
     [
      "ده الـ symmetric difference (exclusive or).",
      "الـ elements اللي في الاتنين بس دي A ∩ B، ودي معنى \"AND\". الـ \"OR\" بتاع الـ union بياخد كمان الـ elements اللي في set واحدة بس.",
      "الـ elements اللي مش في أي set منهم دي (A ∪ B)ᶜ، المنطقة اللي برّه الدايرتين. الـ union هو جوّه الدايرتين المتظلل.",
-     "صح. A ∪ B = {x | x ∈ A or x ∈ B}، والـ \"or\" في المحاضرة inclusive: في A، أو في B، أو في الاتنين (L2, Union)."
+     "صح. التعريف:<span class=\"ltr\">A ∪ B = {x | x ∈ A or x ∈ B}</span>والـ \"or\" في المحاضرة inclusive: في A، أو في B، أو في الاتنين <bdi dir=\"ltr\">(L2,&nbsp;Union)</bdi>."
     ]
    ],
    "extra": [
     [
-     "{4, 6, 8} دول الـ elements اللي برّه A و B الاتنين، (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ. لكن Aᶜ ∩ B لازم تحتفظ بـ elements من B، فالإجابة {3, 7}.",
-     "صح. Aᶜ = {3, 4, 6, 7, 8}؛ ولما نعمل intersection مع B يطلع {3, 7} (= B − A).",
-     "{2, 5} دي A ∩ B، الـ elements اللي في الاتنين. Aᶜ ∩ B بتاخد الـ elements اللي في B وبرّه A: {3, 7}.",
-     "{1} دي A − B (في A ومش في B). أما Aᶜ ∩ B فهي العكس، B − A = {3, 7}."
+     "الـ <bdi dir=\"ltr\">{4,&nbsp;6,&nbsp;8}</bdi> دول الـ elements اللي برّه A وB الاتنين، يعني:<span class=\"ltr\">(A ∪ B)ᶜ = Aᶜ ∩ Bᶜ</span>لكن <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;B</bdi> لازم تحتفظ بـ elements من B، فالإجابة <bdi dir=\"ltr\">{3,&nbsp;7}</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">Aᶜ&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;6,&nbsp;7,&nbsp;8}</bdi>؛ ولما نعمل intersection مع B يطلع <bdi dir=\"ltr\">{3,&nbsp;7}</bdi> (وهي بتساوي <bdi dir=\"ltr\">B&nbsp;−&nbsp;A</bdi>).",
+     "الـ <bdi dir=\"ltr\">{2,&nbsp;5}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi>، الـ elements اللي في الاتنين. الـ <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;B</bdi> بتاخد الـ elements اللي في B وبرّه A، يعني <bdi dir=\"ltr\">{3,&nbsp;7}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1}</bdi> دي <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi> (في A ومش في B). أما <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;B</bdi> فهي العكس، يعني <bdi dir=\"ltr\">B&nbsp;−&nbsp;A&nbsp;=&nbsp;{3,&nbsp;7}</bdi>."
     ],
     [
-     "∅ معناها إن كل element في U موجود في A أو B، لكن 4 و6 و8 مش في أي واحدة منهم. Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {4, 6, 8}.",
-     "{1, 3, 4, 6, 7, 8} = U − {2, 5} دي (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ. لكن مع الـ ∩ الإجابة هي (A ∪ B)ᶜ = {4, 6, 8}.",
-     "صح. A ∪ B = {1, 2, 3, 5, 7}، فـ (A ∪ B)ᶜ = {4, 6, 8} (De Morgan).",
-     "{3, 7} دي Aᶜ ∩ B = B − A. لما تعمل intersection مع Bᶜ بدلها بتشيل الـ elements بتاعة B كمان، فيفضل {4, 6, 8}."
+     "الـ ∅ معناها إن كل element في U موجود في A أو B، لكن 4 و6 و8 مش في أي واحدة منهم. الصح:<span class=\"ltr\">Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {4, 6, 8}</span>",
+     "الـ set دي:<span class=\"ltr\">{1, 3, 4, 6, 7, 8} = U − {2, 5}</span>هي:<span class=\"ltr\">(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ</span>لكن مع الـ ∩ الإجابة هي <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ&nbsp;=&nbsp;{4,&nbsp;6,&nbsp;8}</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;5,&nbsp;7}</bdi>، فـ <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ&nbsp;=&nbsp;{4,&nbsp;6,&nbsp;8}</bdi> (بالـ De Morgan).",
+     "الـ <bdi dir=\"ltr\">{3,&nbsp;7}</bdi> دي <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;B&nbsp;=&nbsp;B&nbsp;−&nbsp;A</bdi>. لما تعمل intersection مع Bᶜ بدلها بتشيل الـ elements بتاعة B كمان، فيفضل <bdi dir=\"ltr\">{4,&nbsp;6,&nbsp;8}</bdi>."
     ],
     [
-     "(Aᶜ)ᶜ = A ده الـ complementation law: لما تاخد complement مرتين ترجع لـ A. الـ Absorption فيه 2 sets، A ∩ (A ∪ B) = A.",
-     "A ∪ A = A ده الـ idempotent law (set مع نفسها). الـ Absorption بيدمج A مع expression فيه B.",
-     "A ∪ ∅ = A ده الـ identity law: الـ ∅ هو الـ identity بتاع الـ union. الـ Absorption هو A ∩ (A ∪ B) = A أو A ∪ (A ∩ B) = A.",
-     "صح. الـ Absorption laws: A ∩ (A ∪ B) = A و A ∪ (A ∩ B) = A. الفكرة إن A جوّه A ∪ B، فلما تعمل intersection معاها يفضل A (L2, Set identities)."
+     "الـ <bdi dir=\"ltr\">(Aᶜ)ᶜ&nbsp;=&nbsp;A</bdi> ده الـ complementation law: لما تاخد complement مرتين ترجع لـ A. الـ Absorption فيه 2 sets، زي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;(A&nbsp;∪&nbsp;B)&nbsp;=&nbsp;A</bdi>.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;A&nbsp;=&nbsp;A</bdi> ده الـ idempotent law (set مع نفسها). الـ Absorption بيدمج A مع expression فيه B.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;∅&nbsp;=&nbsp;A</bdi> ده الـ identity law: الـ ∅ هو الـ identity بتاع الـ union. الـ Absorption هو <bdi dir=\"ltr\">A&nbsp;∩&nbsp;(A&nbsp;∪&nbsp;B)&nbsp;=&nbsp;A</bdi> أو <bdi dir=\"ltr\">A&nbsp;∪&nbsp;(A&nbsp;∩&nbsp;B)&nbsp;=&nbsp;A</bdi>.",
+     "صح. الـ Absorption laws:<span class=\"ltr\">A ∩ (A ∪ B) = A, A ∪ (A ∩ B) = A</span>الفكرة إن A جوّه <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B</bdi>، فلما تعمل intersection معاها يفضل A <bdi dir=\"ltr\">(L2,&nbsp;Set&nbsp;identities)</bdi>."
     ],
     [
-     "صح. كل element من الـ 2 بتوع A بيتجوّز مع كل element من الـ 3 بتوع B، يبقى |A × B| = |A|·|B| = 2 × 3 = 6 (L2, Cartesian product).",
-     "9 = 3² كأنك اعتبرت الـ sets الاتنين فيهم 3 elements، يعني B × B. هنا |A| = 2، فـ |A × B| = 2 × 3 = 6.",
-     "8 = 2³ ده أُس، زي ما بنعد الـ subsets. الـ Cartesian product بيضرب: |A × B| = 2 × 3 = 6.",
-     "5 = 2 + 3 ده جمع الأحجام، وده يبقى |A ∪ B| لو الـ sets disjoint. الـ ordered pairs بتتضرب: 2 × 3 = 6."
+     "صح. كل element من الـ 2 بتوع A بيتجوّز مع كل element من الـ 3 بتوع B، يبقى:<span class=\"ltr\">|A × B| = |A|·|B| = 2 × 3 = 6</span>المرجع <bdi dir=\"ltr\">(L2,&nbsp;Cartesian&nbsp;product)</bdi>.",
+     "الـ <bdi dir=\"ltr\">9&nbsp;=&nbsp;3²</bdi> كأنك اعتبرت الـ sets الاتنين فيهم 3 elements، يعني <bdi dir=\"ltr\">B&nbsp;×&nbsp;B</bdi>. هنا <bdi dir=\"ltr\">|⁠A|⁠&nbsp;=&nbsp;2</bdi>، فـ <bdi dir=\"ltr\">|⁠A&nbsp;×&nbsp;B|⁠&nbsp;=&nbsp;2&nbsp;×&nbsp;3&nbsp;=&nbsp;6</bdi>.",
+     "الـ <bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi> ده أُس، زي ما بنعد الـ subsets. الـ Cartesian product بيضرب، يعني <bdi dir=\"ltr\">|⁠A&nbsp;×&nbsp;B|⁠&nbsp;=&nbsp;2&nbsp;×&nbsp;3&nbsp;=&nbsp;6</bdi>.",
+     "الـ <bdi dir=\"ltr\">5&nbsp;=&nbsp;2&nbsp;+&nbsp;3</bdi> ده جمع الأحجام، وده يبقى <bdi dir=\"ltr\">|⁠A&nbsp;∪&nbsp;B|⁠</bdi> لو الـ sets disjoint. الـ ordered pairs بتتضرب، يعني <bdi dir=\"ltr\">2&nbsp;×&nbsp;3&nbsp;=&nbsp;6</bdi>."
     ],
     [
-     "A ∪ B = ∅ بس لو الاتنين فاضيين. بشكل عام فيها على الأقل كل B، وبما إن A ⊆ B فهي = B.",
-     "صح. كل element في A موجود أصلًا في B، فالـ union مش بيزوّد حاجة جديدة: لو A ⊆ B يبقى A ∪ B = B (و A ∩ B = A) (L2, More examples).",
-     "A ∪ B = U بس لو B بالصدفة هي الـ universal set كلها. وبما إن A ⊆ B، الـ union هو B بس.",
-     "A دي اللي بتطلع في A ∩ B لما A ⊆ B. الـ union بيحتفظ بـ B كلها، فـ A ∪ B = B."
+     "الـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;∅</bdi> بس لو الاتنين فاضيين. بشكل عام فيها على الأقل كل B، وبما إن <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> فهي بتساوي B.",
+     "صح. كل element في A موجود أصلًا في B، فالـ union مش بيزوّد حاجة جديدة: لو <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> يبقى <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;B</bdi> (و<bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;A</bdi>) <bdi dir=\"ltr\">(L2,&nbsp;More&nbsp;examples)</bdi>.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;U</bdi> بس لو B بالصدفة هي الـ universal set كلها. وبما إن <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi>، الـ union هو B بس.",
+     "الـ A دي اللي بتطلع في <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi> لما <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi>. الـ union بيحتفظ بـ B كلها، فـ <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;B</bdi>."
     ],
     [
-     "الـ Associative بيعيد تجميع الأقواس بنفس الـ operation، زي A ∩ (B ∩ C) = (A ∩ B) ∩ C. هنا الـ ∩ بتتوزّع على الـ ∪.",
-     "الـ De Morgan فيه complements: (A ∪ B)ᶜ = Aᶜ ∩ Bᶜ. الـ identity دي مفيهاش complements.",
-     "صح. الـ distributive law بيوزّع الـ ∩ على الـ ∪: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)، زي فك الأقواس في الضرب (L2, Set identities).",
-     "الـ Commutative بيبدّل الترتيب بس، زي A ∩ B = B ∩ A. هنا A بتتوزّع جوّه القوس، وده الـ distributive law."
+     "الـ Associative بيعيد تجميع الأقواس بنفس الـ operation، زي:<span class=\"ltr\">A ∩ (B ∩ C) = (A ∩ B) ∩ C</span>هنا الـ ∩ بتتوزّع على الـ ∪.",
+     "الـ De Morgan فيه complements، زي <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ&nbsp;=&nbsp;Aᶜ&nbsp;∩&nbsp;Bᶜ</bdi>. الـ identity دي مفيهاش complements.",
+     "صح. الـ distributive law بيوزّع الـ ∩ على الـ ∪:<span class=\"ltr\">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span>زي فك الأقواس في الضرب <bdi dir=\"ltr\">(L2,&nbsp;Set&nbsp;identities)</bdi>.",
+     "الـ Commutative بيبدّل الترتيب بس، زي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;B&nbsp;∩&nbsp;A</bdi>. هنا A بتتوزّع جوّه القوس، وده الـ distributive law."
     ],
     [
-     "{5, 6} بتشيل A ∪ B = {1, 2, 3, 4} كلها، فده يدّيك (A ∪ B)ᶜ. في (A ∩ B)ᶜ بتشيل بس الـ element المشترك 3.",
-     "{3} دي A ∩ B نفسها، قبل ما ناخد الـ complement. الـ complement بتاعها هو كل حاجة تانية في U: {1, 2, 4, 5, 6}.",
-     "{1, 2} دي A − B. الـ complement بتاع A ∩ B = {3} فيه كل U ما عدا 3: {1, 2, 4, 5, 6}.",
-     "صح. A ∩ B = {3}، يبقى (A ∩ B)ᶜ = U − {3} = {1, 2, 4, 5, 6}، وهي كمان = Aᶜ ∪ Bᶜ بالـ De Morgan (L2, Set identities)."
+     "الـ <bdi dir=\"ltr\">{5,&nbsp;6}</bdi> بتشيل <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B&nbsp;=&nbsp;{1,&nbsp;2,&nbsp;3,&nbsp;4}</bdi> كلها، فده يدّيك <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ</bdi>. في <bdi dir=\"ltr\">(A&nbsp;∩&nbsp;B)ᶜ</bdi> بتشيل بس الـ element المشترك 3.",
+     "الـ <bdi dir=\"ltr\">{3}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi> نفسها، قبل ما ناخد الـ complement. الـ complement بتاعها هو كل حاجة تانية في U، يعني <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;4,&nbsp;5,&nbsp;6}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> دي <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi>. الـ complement بتاع <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;{3}</bdi> فيه كل U ما عدا 3، يعني <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;4,&nbsp;5,&nbsp;6}</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;{3}</bdi>، يبقى:<span class=\"ltr\">(A ∩ B)ᶜ = U − {3} = {1, 2, 4, 5, 6}</span>وهي كمان بتساوي <bdi dir=\"ltr\">Aᶜ&nbsp;∪&nbsp;Bᶜ</bdi> بالـ De Morgan <bdi dir=\"ltr\">(L2,&nbsp;Set&nbsp;identities)</bdi>."
     ],
     [
      "صح. ده الـ Complement law: مفيش element يبقى في A ومش في A في نفس الوقت.",
-     "U دي A ∪ Aᶜ (كل element يا إما في A يا إما لأ). أما الـ intersection A ∩ Aᶜ فهو ∅ بالـ complement law.",
+     "الـ U دي <bdi dir=\"ltr\">A&nbsp;∪&nbsp;Aᶜ</bdi> (كل element يا إما في A يا إما لأ). أما الـ intersection <bdi dir=\"ltr\">A&nbsp;∩&nbsp;Aᶜ</bdi> فهو ∅ بالـ complement law.",
      "علشان تطلع A لازم يبقى فيه elements في A وفي Aᶜ مع بعض، لكن Aᶜ فيها بس الـ elements اللي برّه A. الـ complement law بيدّي ∅.",
-     "Aᶜ ∩ Aᶜ = Aᶜ (idempotent)، لكن الـ intersection مع A بيشيل كل حاجة في Aᶜ. الـ Complement law: A ∩ Aᶜ = ∅."
+     "الـ <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;Aᶜ&nbsp;=&nbsp;Aᶜ</bdi> (idempotent)، لكن الـ intersection مع A بيشيل كل حاجة في Aᶜ. الـ Complement law بيقول <bdi dir=\"ltr\">A&nbsp;∩&nbsp;Aᶜ&nbsp;=&nbsp;∅</bdi>."
     ],
     [
-     "{3, 4} دي A ∩ B، الـ elements المشتركة. B − A بتشيل دول بالظبط من B، فيفضل {5}.",
-     "صح. B − A = {x | x ∈ B and x ∉ A}: من {3, 4, 5} شيل 3 و4 (لأنهم في A)، يفضل {5} (L2, Difference).",
-     "{1, 2, 5} دي الـ symmetric difference (A − B) ∪ (B − A). لكن B − A بتاخد ناحية B بس: {5}.",
-     "{1, 2} دي A − B، الـ elements اللي في A ومش في B. الـ difference مش symmetric؛ B − A = {5}."
+     "الـ <bdi dir=\"ltr\">{3,&nbsp;4}</bdi> دي <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi>، الـ elements المشتركة. الـ <bdi dir=\"ltr\">B&nbsp;−&nbsp;A</bdi> بتشيل دول بالظبط من B، فيفضل <bdi dir=\"ltr\">{5}</bdi>.",
+     "صح. التعريف:<span class=\"ltr\">B − A = {x | x ∈ B and x ∉ A}</span>من <bdi dir=\"ltr\">{3,&nbsp;4,&nbsp;5}</bdi> شيل 3 و4 (لأنهم في A)، يفضل <bdi dir=\"ltr\">{5}</bdi> <bdi dir=\"ltr\">(L2,&nbsp;Difference)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;5}</bdi> دي الـ symmetric difference <bdi dir=\"ltr\">(A&nbsp;−&nbsp;B)&nbsp;∪&nbsp;(B&nbsp;−&nbsp;A)</bdi>. لكن <bdi dir=\"ltr\">B&nbsp;−&nbsp;A</bdi> بتاخد ناحية B بس، يعني <bdi dir=\"ltr\">{5}</bdi>.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> دي <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi>، الـ elements اللي في A ومش في B. الـ difference مش symmetric؛ و<bdi dir=\"ltr\">B&nbsp;−&nbsp;A&nbsp;=&nbsp;{5}</bdi>."
     ],
     [
      "المنطقة المشتركة بين الدايرتين بتتظلل في A ∩ B. أما Aᶜ فبتظلل كل حاجة في U مش جوّه الدايرة A.",
      "المستطيل هو الـ universal set U ومفيش حاجة برّاه. Aᶜ بتتظلل جوّه المستطيل وبرّه الدايرة A.",
-     "صح. Aᶜ = {x : x ∈ U but x ∉ A} = U − A، فالـ Venn diagram بيظلل المستطيل U ما عدا الدايرة A (L2, Complement).",
+     "صح. التعريف:<span class=\"ltr\">Aᶜ = {x : x ∈ U but x ∉ A} = U − A</span>فالـ Venn diagram بيظلل المستطيل U ما عدا الدايرة A <bdi dir=\"ltr\">(L2,&nbsp;Complement)</bdi>.",
      "لو ظللت جوّه الدايرة A يبقى ده A نفسها. الـ complement هو المنطقة العكس: جوّه U وبرّه A."
     ]
    ]
@@ -468,10 +468,10 @@ AR.dm = {
     {
      "h": "الـ Propositions والـ negation",
      "pts": [
-      "<b>Proposition</b>: جملة بتقول حقيقة يا صح يا غلط (<b>بس مش الاتنين مع بعض</b>).",
-      "\"2 + 2 = 4\" دي proposition (حقيقة). إنما \"x + 1 = 2\" <b>مش</b> proposition إلا لو اتحددت قيمة معينة لـ x، لأن صحتها بتعتمد على x.",
+      "الـ <b>Proposition</b>: جملة بتقول حقيقة يا صح يا غلط (<b>بس مش الاتنين مع بعض</b>).",
+      "الـ <bdi dir=\"ltr\">\"2&nbsp;+&nbsp;2&nbsp;=&nbsp;4\"</bdi> دي proposition (حقيقة). إنما <bdi dir=\"ltr\">\"x&nbsp;+&nbsp;1&nbsp;=&nbsp;2\"</bdi> <b>مش</b> proposition إلا لو اتحددت قيمة معينة لـ x، لأن صحتها بتعتمد على x.",
       "الـ <b>Negation</b> بتاع p، بنكتبه <b>¬p</b> (أو ~p) وبنقراه \"not p\": يعني \"مش صحيح إن p\". والـ truth value بتاعه <b>عكس</b> p.",
-      "أمثلة: p: Today is Thursday → ¬p: Today is not Thursday. p: At least a foot of snow falls in Boulder on Fridays → ¬p: <b>Less than a foot</b> of snow falls in Boulder on Fridays.",
+      "أمثلة:<span class=\"ltr\">p: Today is Thursday → ¬p: Today is not Thursday</span><span class=\"ltr\">p: At least a foot of snow falls in Boulder on Fridays → ¬p: <b>Less than a foot</b> of snow falls in Boulder on Fridays</span>",
       "خلي بالك: نفي \"at least a foot\" هو \"less than a foot\"، مش \"no snow\"، واليوم بيفضل Fridays زي ما هو."
      ]
     },
@@ -484,28 +484,28 @@ AR.dm = {
     {
      "h": "مصطلحات مهمة",
      "pts": [
-      "<b>Truth function</b>: الـ truth value بتاع أي compound proposition بيتحدد بس من الـ truth values بتاعة الأجزاء اللي مكوّناه.",
-      "<b>Statement variable</b>: متغير بيمثّل proposition؛ والمتعارف عليه إننا نستخدم حروف small زي p, q, r, s.",
-      "<b>Truth table</b>: جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition معينة.",
-      "الـ truth table اللي فيها n variables فيها <b>2ⁿ rows</b>: variable واحد → 2 rows، 2 → 4، 3 → 8 (Midterm 2025/26 Q21).",
-      "في p → q، الـ p هو الـ <b>hypothesis / antecedent</b> والـ q هو الـ <b>conclusion / consequent</b>.",
-      "<b>Tautology</b> (صح منطقيًا دايمًا): كل الحالات بتطلع true، زي p ∨ ¬p."
+      "الـ <b>Truth function</b>: الـ truth value بتاع أي compound proposition بيتحدد بس من الـ truth values بتاعة الأجزاء اللي مكوّناه.",
+      "الـ <b>Statement variable</b>: متغير بيمثّل proposition؛ والمتعارف عليه إننا نستخدم حروف small زي <bdi dir=\"ltr\">p,&nbsp;q,&nbsp;r,&nbsp;s</bdi>.",
+      "الـ <b>Truth table</b>: جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition معينة.",
+      "الـ truth table اللي فيها n variables فيها <b><bdi dir=\"ltr\">2ⁿ</bdi> rows</b>: لو variable واحد يبقى 2 rows، ولو 2 يبقى 4، ولو 3 يبقى 8 <bdi dir=\"ltr\">(Midterm&nbsp;2025/26&nbsp;Q21)</bdi>.",
+      "في <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>، الـ p هو الـ <b><bdi dir=\"ltr\">hypothesis&nbsp;/&nbsp;antecedent</bdi></b> والـ q هو الـ <b><bdi dir=\"ltr\">conclusion&nbsp;/&nbsp;consequent</bdi></b>.",
+      "الـ <b>Tautology</b> (صح منطقيًا دايمًا): كل الحالات بتطلع true، زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>."
      ]
     },
     {
-     "h": "مثال: الـ truth table بتاع ¬P ∧ (P → Q)"
+     "h": "مثال: الـ truth table بتاع <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;(P&nbsp;→&nbsp;Q)</bdi>"
     },
     {
-     "h": "مثال: (P → Q) ∨ (Q → P) هي tautology"
+     "h": "مثال: الـ <bdi dir=\"ltr\">(P&nbsp;→&nbsp;Q)&nbsp;∨&nbsp;(Q&nbsp;→&nbsp;P)</bdi> هي tautology"
     },
     {
-     "h": "مثال: الـ truth table بتاع (P → Q) ∧ (Q → R)"
+     "h": "مثال: الـ truth table بتاع <bdi dir=\"ltr\">(P&nbsp;→&nbsp;Q)&nbsp;∧&nbsp;(Q&nbsp;→&nbsp;R)</bdi>"
     },
     {
      "h": "نفي جمل \"all\" (الـ quantifiers)",
      "pts": [
       "نفي \"All animals can fly\" هو \"<b>Some animals cannot fly</b>\" (يعني فيه واحد على الأقل مابيطيرش). مش \"All animals cannot fly\".",
-      "بشكل عام ¬(∀x P(x)) ≡ ∃x ¬P(x) و ¬(∃x P(x)) ≡ ∀x ¬P(x)."
+      "بشكل عام:<span class=\"ltr\">¬(∀x P(x)) ≡ ∃x ¬P(x)</span><span class=\"ltr\">¬(∃x P(x)) ≡ ∀x ¬P(x)</span>"
      ]
     }
    ],
@@ -513,34 +513,34 @@ AR.dm = {
     "جملة بتقول حقيقة يا صح يا غلط (بس مش الاتنين).",
     "لأ، إلا لو اتحددت قيمة معينة لـ x.",
     "\"مش صحيح إن p\"؛ الـ truth value بالعكس.",
-    "true بس لو p وq الاتنين true.",
-    "true لو p أو q (أو الاتنين) true؛ وfalse بس لما الاتنين يبقوا false.",
-    "true لو واحد بس من p وq هو اللي true.",
+    "بتبقى true بس لو p وq الاتنين true.",
+    "بتبقى true لو p أو q (أو الاتنين) true؛ وfalse بس لما الاتنين يبقوا false.",
+    "بتبقى true لو واحد بس من p وq هو اللي true.",
     "الـ p (الـ antecedent) تبقى true والـ q (الـ consequent) تبقى false. وفي أي حالة تانية بتبقى true.",
-    "true لما p وq يبقى ليهم نفس الـ truth value (الاتنين T أو الاتنين F).",
+    "بتبقى true لما p وq يبقى ليهم نفس الـ truth value (الاتنين T أو الاتنين F).",
     "الـ truth value بتاع الـ compound proposition بيتحدد بس من الـ truth values بتاعة الأجزاء بتاعته.",
     "متغير (p, q, r, s) بيمثّل proposition.",
     "جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition.",
-    "2ⁿ (3 variables → 8 rows).",
-    "\"Less than a foot of snow falls in Boulder on Fridays.\"",
-    "\"Some animals cannot fly.\"",
+    "عددها <bdi dir=\"ltr\">2ⁿ</bdi>، يعني:<span class=\"ltr\">3 variables → 8 rows</span>",
+    "الإجابة:<span class=\"ltr\">\"Less than a foot of snow falls in Boulder on Fridays.\"</span>",
+    "الإجابة:<span class=\"ltr\">\"Some animals cannot fly.\"</span>",
     "1 و 0.",
     "⊃ (الـ material implication) و ≡ (الـ material equivalence)."
    ],
    "qa": [
-    "الـ proposition جملة بتقول حقيقة يا صح يا غلط، بس مش الاتنين. \"2 + 2 = 4\" proposition (حقيقة، true). \"x + 1 = 2\" مش proposition إلا لو اتدّت قيمة معينة لـ x، لأن صحتها بتعتمد على x.",
-    "p ∧ q بتبقى true لو p وq الاتنين true، وغير كده false. p ∨ q بتبقى true لو p أو q true (inclusive)، وغير كده false. p ⊕ q بتبقى true لو واحد بس من p وq هو اللي true. الجدول (p, q → ∧, ∨, ⊕): TT → T, T, F؛ TF → F, T, T؛ FT → F, T, T؛ FF → F, F, F.",
-    "p → q بتبقى true في كل الحالات ما عدا لما الـ antecedent p يبقى true والـ consequent q يبقى false: TT T، TF F، FT T، FF T. أما p ↔ q فمعناها إن p وq equivalent: بتبقى true لو الاتنين true أو الاتنين false: TT T، TF F، FT F، FF T.",
-    "الـ Rows (P Q R : P→Q، Q→R، النتيجة): TTT: T T T؛ TTF: T F F؛ TFT: F T F؛ TFF: F T F؛ FTT: T T T؛ FTF: T F F؛ FFT: T T T؛ FFF: T T T. النتيجة true في الـ rows 1، 5، 7، 8.",
-    "P Q : P→Q، Q→P، OR. TT: T, T, T. TF: F, T, T. FT: T, F, T. FF: T, T, T. آخر عمود كله T، يبقى الـ formula دي tautology. (الفكرة إن كل ما implication منهم تبقى false، التانية بتبقى true.)",
-    "Truth function: الـ truth value بتاع الـ compound proposition بيتحدد بس من الـ truth values بتاعة أجزاءه. Statement variable: متغير بيمثّل proposition (p, q, r, s). Truth table: جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition."
+    "الـ proposition جملة بتقول حقيقة يا صح يا غلط، بس مش الاتنين. الـ <bdi dir=\"ltr\">\"2&nbsp;+&nbsp;2&nbsp;=&nbsp;4\"</bdi> proposition (حقيقة، true). والـ <bdi dir=\"ltr\">\"x&nbsp;+&nbsp;1&nbsp;=&nbsp;2\"</bdi> مش proposition إلا لو اتدّت قيمة معينة لـ x، لأن صحتها بتعتمد على x.",
+    "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتبقى true لو p وq الاتنين true، وغير كده false. الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true لو p أو q true (inclusive)، وغير كده false. الـ <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> بتبقى true لو واحد بس من p وq هو اللي true.<br>الجدول بالترتيب <bdi dir=\"ltr\">(p,&nbsp;q&nbsp;→&nbsp;∧,&nbsp;∨,&nbsp;⊕)</bdi> هو:<span class=\"ltr\">TT → T, T, F</span><span class=\"ltr\">TF → F, T, T</span><span class=\"ltr\">FT → F, T, T</span><span class=\"ltr\">FF → F, F, F</span>",
+    "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى true في كل الحالات ما عدا لما الـ antecedent p يبقى true والـ consequent q يبقى false:<span class=\"ltr\">TT T, TF F, FT T, FF T</span>أما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> فمعناها إن p وq equivalent: بتبقى true لو الاتنين true أو الاتنين false:<span class=\"ltr\">TT T, TF F, FT F, FF T</span>",
+    "الـ Rows مكتوبة بالترتيب ده، وبعدهم النتيجة:<span class=\"ltr\">P Q R : P→Q, Q→R</span><span class=\"ltr\">TTT: T T T</span><span class=\"ltr\">TTF: T F F</span><span class=\"ltr\">TFT: F T F</span><span class=\"ltr\">TFF: F T F</span><span class=\"ltr\">FTT: T T T</span><span class=\"ltr\">FTF: T F F</span><span class=\"ltr\">FFT: T T T</span><span class=\"ltr\">FFF: T T T</span>النتيجة true في الـ rows <bdi dir=\"ltr\">1,&nbsp;5,&nbsp;7,&nbsp;8</bdi>.",
+    "الأعمدة:<span class=\"ltr\">P Q : P→Q, Q→P, OR</span><span class=\"ltr\">TT: T, T, T</span><span class=\"ltr\">TF: F, T, T</span><span class=\"ltr\">FT: T, F, T</span><span class=\"ltr\">FF: T, T, T</span>آخر عمود كله T، يبقى الـ formula دي tautology. (الفكرة إن كل ما implication منهم تبقى false، التانية بتبقى true.)",
+    "الـ Truth function: الـ truth value بتاع الـ compound proposition بيتحدد بس من الـ truth values بتاعة أجزاءه.<br>الـ Statement variable: متغير بيمثّل proposition <bdi dir=\"ltr\">(p,&nbsp;q,&nbsp;r,&nbsp;s)</bdi>.<br>الـ Truth table: جدول حسابي (calculation matrix) بيوضح كل الـ truth values الممكنة منطقيًا لـ proposition."
    ],
    "quiz": [
     [
      "صح. الـ conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لما p وq الاتنين يبقوا true (L3, Connectives).",
      "الـ p ∨ q ده الـ disjunction (\"or\")، بيبقى true لو جزء واحد على الأقل true. الـ conjunction (\"and\") هي p ∧ q.",
      "الـ \"−\" ده set difference أو طرح، مش واحد من الـ logical connectives اللي في المحاضرة (¬, ∧, ∨, ⊕, →, ↔). الـ conjunction هي p ∧ q.",
-     "الـ bar | (في كتب تانية بيبقى الـ NAND أو الـ Sheffer stroke) مش من الـ connectives بتوع المحاضرة. الـ conjunction بتتكتب p ∧ q."
+     "الـ bar <code>|</code> (في كتب تانية بيبقى الـ NAND أو الـ Sheffer stroke) مش من الـ connectives بتوع المحاضرة. الـ conjunction بتتكتب <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>."
     ],
     [
      "صح. الـ disjunction هي الـ inclusive \"or\"، بتتكتب p ∨ q: بتبقى true لو p أو q (أو الاتنين) true، وfalse بس لما الاتنين يبقوا false (L3, Connectives).",
@@ -552,37 +552,37 @@ AR.dm = {
      "الـ p ∨ q ده الـ inclusive or، وبيبقى true كمان لما الاتنين true. الـ exclusive or ليها رمز لوحدها: p ⊕ q.",
      "الـ p ∧ q ده الـ conjunction (\"and\")، بيبقى true بس لما الاتنين true؛ وفي الحالة دي بالذات الـ p ⊕ q بيبقى false، فهما connectives مختلفين. الـ exclusive or ليها رمز لوحدها: p ⊕ q.",
      "صح. الـ exclusive or بتتكتب p ⊕ q وبتبقى true لما واحد بس من p وq يبقى true (وfalse لما الاتنين T أو الاتنين F) (L3, Connectives).",
-     "الـ p → q ده الـ implication (conditional)، بيبقى false بس في T → F. الـ exclusive or بتتكتب p ⊕ q."
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> ده الـ implication (conditional)، بيبقى false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>. الـ exclusive or بتتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>."
     ],
     [
-     "الـ conjunction بتبقى true بس لما الجزئين الاتنين true. وهنا Q قيمتها false، يبقى P ∧ Q = T ∧ F = F.",
-     "صح. الـ P ∧ Q بتبقى true بس لما الاتنين true؛ وبما إن Q false، يبقى T ∧ F = F (L3, Truth tables of the connectives).",
-     "كل combination من الـ truth values ليها نتيجة محددة في الـ truth table. الـ row اللي فيه P = T, Q = F بيدّي P ∧ Q = F.",
-     "الـ proposition يا true يا false، مش الاتنين مع بعض، ونفس الكلام على أي compound من الـ propositions. هنا T ∧ F = F."
+     "الـ conjunction بتبقى true بس لما الجزئين الاتنين true. وهنا Q قيمتها false، يبقى:<span class=\"ltr\">P ∧ Q = T ∧ F = F</span>",
+     "صح. الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> بتبقى true بس لما الاتنين true؛ وبما إن Q false، يبقى <bdi dir=\"ltr\">T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3, Truth tables of the connectives)</bdi>.",
+     "كل combination من الـ truth values ليها نتيجة محددة في الـ truth table. الـ row اللي فيه <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> بيدّي <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q&nbsp;=&nbsp;F</bdi>.",
+     "الـ proposition يا true يا false، مش الاتنين مع بعض، ونفس الكلام على أي compound من الـ propositions. هنا <bdi dir=\"ltr\">T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi>."
     ],
     [
-     "صح. الـ disjunction بتبقى false بس لما الجزئين الاتنين false؛ وهنا P قيمتها true، يبقى T ∨ F = T (L3, Truth tables of the connectives).",
-     "الـ P ∨ Q بتبقى false بس لما P وQ الاتنين false. وهنا P قيمتها true، يبقى T ∨ F = T.",
-     "الـ proposition يا true يا false، مش الاتنين. والـ row بتاع T, F في الـ truth table بيدّي P ∨ Q = T.",
-     "كل row في الـ truth table ليه قيمة؛ والـ row اللي فيه P = T, Q = F بيدّي P ∨ Q = T."
+     "صح. الـ disjunction بتبقى false بس لما الجزئين الاتنين false؛ وهنا P قيمتها true، يبقى <bdi dir=\"ltr\">T&nbsp;∨&nbsp;F&nbsp;=&nbsp;T</bdi> <bdi dir=\"ltr\">(L3, Truth tables of the connectives)</bdi>.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بتبقى false بس لما P وQ الاتنين false. وهنا P قيمتها true، يبقى <bdi dir=\"ltr\">T&nbsp;∨&nbsp;F&nbsp;=&nbsp;T</bdi>.",
+     "الـ proposition يا true يا false، مش الاتنين. والـ row بتاع <bdi dir=\"ltr\">T,&nbsp;F</bdi> في الـ truth table بيدّي <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q&nbsp;=&nbsp;T</bdi>.",
+     "كل row في الـ truth table ليه قيمة؛ والـ row اللي فيه <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> بيدّي <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q&nbsp;=&nbsp;T</bdi>."
     ],
     [
-     "الـ implication بتبقى true في كل الحالات ما عدا لما الـ antecedent يبقى true والـ consequent false، وT → F هي الحالة دي بالظبط. يبقى P → Q = F.",
-     "صح. الـ P → Q بتبقى false بس لما الـ antecedent يبقى true والـ consequent false، وده بالظبط الـ row ده: T → F = F (L3, Connectives).",
-     "الـ compound proposition يا true يا false، عمرها ما تبقى الاتنين. هنا T → F بتدّي قيمة واحدة بس، وهي F.",
-     "الـ implication ليها قيمة في كل row من الـ truth table بتاعها. ولما P = T, Q = F قيمتها F."
+     "الـ implication بتبقى true في كل الحالات ما عدا لما الـ antecedent يبقى true والـ consequent false، و<bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi> هي الحالة دي بالظبط. يبقى <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;F</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى false بس لما الـ antecedent يبقى true والـ consequent false، وده بالظبط الـ row ده: <bdi dir=\"ltr\">T&nbsp;→&nbsp;F&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
+     "الـ compound proposition يا true يا false، عمرها ما تبقى الاتنين. هنا <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi> بتدّي قيمة واحدة بس، وهي F.",
+     "الـ implication ليها قيمة في كل row من الـ truth table بتاعها. ولما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> قيمتها F."
     ],
     [
      "صح. الـ antecedent لما يبقى false الـ implication بتبقى true.",
-     "الـ implication بتبقى false بس في T → F. وهنا الـ antecedent P قيمته false، يبقى F → T = T.",
-     "الـ proposition يا true يا false، عمرها ما تبقى الاتنين. والـ row اللي فيه P = F, Q = T بيدّي P → Q = T.",
-     "كل row في الـ truth table ليه قيمة. ولما الـ antecedent يبقى false، يبقى P → Q = T."
+     "الـ implication بتبقى false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>. وهنا الـ antecedent P قيمته false، يبقى <bdi dir=\"ltr\">F&nbsp;→&nbsp;T&nbsp;=&nbsp;T</bdi>.",
+     "الـ proposition يا true يا false، عمرها ما تبقى الاتنين. والـ row اللي فيه <bdi dir=\"ltr\">P&nbsp;=&nbsp;F,&nbsp;Q&nbsp;=&nbsp;T</bdi> بيدّي <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>.",
+     "كل row في الـ truth table ليه قيمة. ولما الـ antecedent يبقى false، يبقى <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>."
     ],
     [
-     "الـ 4 = 2² ده عدد الـ rows لـ 2 variables. مع 3 variables بيبقى عندك 2³ = 8 rows.",
-     "الـ 6 = 2 × 3 ده ضرب بدل ما تستخدم power. خلي بالك كل variable بيضاعف عدد الـ rows: 2³ = 8.",
-     "صح. الـ truth table اللي فيه n variables بيبقى فيه 2ⁿ rows، لأن كل variable يا T يا F: يبقى 2³ = 8 rows (L3, Vocabulary).",
-     "الـ 12 مش power of 2، فماينفعش يبقى عدد rows لـ truth table. لـ 3 variables العدد 2³ = 8."
+     "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2²</bdi> ده عدد الـ rows لـ 2 variables. مع 3 variables بيبقى عندك <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi> rows.",
+     "الـ <bdi dir=\"ltr\">6&nbsp;=&nbsp;2&nbsp;×&nbsp;3</bdi> ده ضرب بدل ما تستخدم power. خلي بالك كل variable بيضاعف عدد الـ rows، يعني <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>.",
+     "صح. الـ truth table اللي فيه n variables بيبقى فيه <bdi dir=\"ltr\">2ⁿ</bdi> rows، لأن كل variable يا T يا F، يبقى <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi> rows <bdi dir=\"ltr\">(L3,&nbsp;Vocabulary)</bdi>.",
+     "الـ 12 مش power of 2، فماينفعش يبقى عدد rows لـ truth table. لـ 3 variables العدد <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>."
     ],
     [
      "صح. ده مثال المحاضرة: \"at least\" بتبقى \"less than\"، والـ Fridays زي ما هي.",
@@ -591,60 +591,60 @@ AR.dm = {
      "نفت الكمية صح، بس بدّلت \"on Fridays\" بـ \"in the morning\". الـ negation لازم تحافظ على اليوم: less than a foot on Fridays."
     ],
     [
-     "صح. الـ P → Q والـ Q → P عمرهم ما يبقوا false مع بعض (الـ F row بتاع كل واحد مختلف)، فالـ disjunction بتبقى T في الـ 4 rows كلهم: يعني tautology (L3, Example).",
-     "الـ contradiction بتبقى false في كل row، لكن الـ formula دي true في كل row: لما P → Q تبقى F (الـ row بتاع T, F)، الـ Q → P بتبقى T.",
+     "صح. الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> والـ <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> عمرهم ما يبقوا false مع بعض (الـ F row بتاع كل واحد مختلف)، فالـ disjunction بتبقى T في الـ 4 rows كلهم: يعني tautology <bdi dir=\"ltr\">(L3,&nbsp;Example)</bdi>.",
+     "الـ contradiction بتبقى false في كل row، لكن الـ formula دي true في كل row: لما <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> تبقى F (الـ row بتاع <bdi dir=\"ltr\">T,&nbsp;F</bdi>)، الـ <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> بتبقى T.",
      "الـ tautology بتبقى true في كل row والـ contradiction بتبقى false في كل row؛ ومفيش formula ممكن تبقى الاتنين. ودي كلها T.",
      "كلمة \"Equivalent\" بتوصف علاقة بين جملتين ليهم نفس الـ truth table، مش نوع لجملة واحدة."
     ],
     [
      "قوية زيادة؛ النفي محتاج counter-example واحد بس.",
-     "\"Some animals can fly\" دي بتطلع من الجملة الأصلية أصلًا (لو كلهم بيطيروا يبقى بعضهم بيطير)، فهي مش بتنفيها. الفكرة إنك تقلب الـ ∀ لـ ∃ وتنفي الـ predicate.",
-     "صح. ¬(∀x P(x)) ≡ ∃x ¬P(x): عشان تنفي إن كل الحيوانات بتطير، كفاية حيوان واحد مش بيطير، يبقى \"Some animals cannot fly\" (L3, Negating \"all\" statements).",
+     "الجملة <bdi dir=\"ltr\">\"Some animals can fly\"</bdi> دي بتطلع من الجملة الأصلية أصلًا (لو كلهم بيطيروا يبقى بعضهم بيطير)، فهي مش بتنفيها. الفكرة إنك تقلب الـ ∀ لـ ∃ وتنفي الـ predicate.",
+     "صح. القاعدة:<span class=\"ltr\">¬(∀x P(x)) ≡ ∃x ¬P(x)</span>عشان تنفي إن كل الحيوانات بتطير، كفاية حيوان واحد مش بيطير، يبقى <bdi dir=\"ltr\">\"Some animals cannot fly\"</bdi> <bdi dir=\"ltr\">(L3, Negating \"all\" statements)</bdi>.",
      "متوافقة مع الجملة الأصلية، فمش نفيها."
     ],
     [
-     "صح. الـ proposition هي جملة بتقول حقيقة يا true يا false، مش الاتنين؛ و\"2 + 2 = 4\" حقيقة قيمتها T (L3, Propositions).",
-     "\"Read the book.\" ده أمر؛ ماينفعش يبقى true أو false، فهو مش proposition.",
+     "صح. الـ proposition هي جملة بتقول حقيقة يا true يا false، مش الاتنين؛ والـ <bdi dir=\"ltr\">\"2&nbsp;+&nbsp;2&nbsp;=&nbsp;4\"</bdi> حقيقة قيمتها T <bdi dir=\"ltr\">(L3,&nbsp;Propositions)</bdi>.",
+     "الجملة <bdi dir=\"ltr\">\"Read the book.\"</bdi> ده أمر؛ ماينفعش يبقى true أو false، فهو مش proposition.",
      "السؤال بيسأل مش بيقرر حاجة، فمالوش truth value ومش proposition.",
-     "\"x + 1 = 2\" بتبقى true لما x = 1 وfalse غير كده؛ والمحاضرة بتقول إنها مش proposition إلا لو قيمة x اتحددت."
+     "الـ <bdi dir=\"ltr\">\"x&nbsp;+&nbsp;1&nbsp;=&nbsp;2\"</bdi> بتبقى true لما <bdi dir=\"ltr\">x&nbsp;=&nbsp;1</bdi> وfalse غير كده؛ والمحاضرة بتقول إنها مش proposition إلا لو قيمة x اتحددت."
     ],
     [
-     "لما الاتنين يبقوا true، p ⊕ q بتبقى F (الـ row TT). الـ exclusive or بتستبعد حالة \"الاتنين\"؛ وده اللي بيفرّقها عن الـ ∨.",
+     "لما الاتنين يبقوا true، الـ <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> بتبقى F (الـ row TT). الـ exclusive or بتستبعد حالة \"الاتنين\"؛ وده اللي بيفرّقها عن الـ ∨.",
      "صح. الـ exclusive or بتبقى true لما واحد بس من p وq يبقى true (الـ rows TF وFT)، وfalse لما يبقى ليهم نفس القيمة (L3, Connectives).",
-     "الـ p ⊕ q بتبقى false في 2 rows، TT وFF، يبقى هي مش tautology.",
-     "لما الاتنين يبقوا false، مفيش ولا جزء true، فـ p ⊕ q = F (الـ row FF). هي محتاجة جزء واحد بالظبط يبقى true."
+     "الـ <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> بتبقى false في 2 rows، هما TT وFF، يبقى هي مش tautology.",
+     "لما الاتنين يبقوا false، مفيش ولا جزء true، فـ <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q&nbsp;=&nbsp;F</bdi> (الـ row FF). هي محتاجة جزء واحد بالظبط يبقى true."
     ],
     [
-     "لما P تبقى true، ¬P بتبقى false، وأي conjunction فيها جزء false بتبقى false (الـ rows TT وTF الاتنين بيدّوا F).",
-     "إن Q تبقى true مش كفاية: في الـ row اللي فيه P = T, Q = T، ¬P = F فالـ expression كلها F. اللي فارق هنا قيمة P بس.",
-     "صح. لو P = F يبقى ¬P = T وP → Q = T (false antecedent)، فالـ conjunction بتبقى T؛ ولو P = T يبقى ¬P = F (L3, Example ¬P ∧ (P → Q)).",
-     "في الـ row TT، ¬P = F، فـ ¬P ∧ (P → Q) = F حتى لو P → Q = T."
+     "لما P تبقى true، الـ <bdi dir=\"ltr\">¬P</bdi> بتبقى false، وأي conjunction فيها جزء false بتبقى false (الـ rows TT وTF الاتنين بيدّوا F).",
+     "إن Q تبقى true مش كفاية: في الـ row اللي فيه <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;T</bdi>، الـ <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;F</bdi> فالـ expression كلها F. اللي فارق هنا قيمة P بس.",
+     "صح. لو <bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> يبقى <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;T</bdi> و<bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi> <bdi dir=\"ltr\">(false antecedent)</bdi>، فالـ conjunction بتبقى T؛ ولو <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> يبقى <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3,&nbsp;Example&nbsp;¬P&nbsp;∧&nbsp;(P&nbsp;→&nbsp;Q))</bdi>.",
+     "في الـ row TT، الـ <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;F</bdi>، فـ:<span class=\"ltr\">¬P ∧ (P → Q) = F</span>حتى لو <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>."
     ],
     [
-     "الـ material implication بتبقى false في row واحد: لما الـ antecedent يبقى true والـ consequent false (T ⊃ F = F). يعني هي مش دايمًا true.",
+     "الـ material implication بتبقى false في row واحد: لما الـ antecedent يبقى true والـ consequent false (<bdi dir=\"ltr\">T&nbsp;⊃&nbsp;F&nbsp;=&nbsp;F</bdi>). يعني هي مش دايمًا true.",
      "الـ antecedent لما يبقى false بيخلي الـ implication true مهما كان الـ consequent (الـ rows FT وFF الاتنين T).",
-     "لما الاتنين يبقوا false يبقى الـ antecedent false، فـ F ⊃ F = T. الـ row الوحيد الـ false هو T ⊃ F.",
-     "صح. الـ p ⊃ q (يعني p → q) بتبقى true في كل الحالات ما عدا لما الـ antecedent p يبقى true والـ consequent q يبقى false (L3, Connectives)."
+     "لما الاتنين يبقوا false يبقى الـ antecedent false، فـ <bdi dir=\"ltr\">F&nbsp;⊃&nbsp;F&nbsp;=&nbsp;T</bdi>. الـ row الوحيد الـ false هو <bdi dir=\"ltr\">T&nbsp;⊃&nbsp;F</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;⊃&nbsp;q</bdi> (يعني <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>) بتبقى true في كل الحالات ما عدا لما الـ antecedent p يبقى true والـ consequent q يبقى false <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>."
     ],
     [
      "صح. الـ implication الاتنين يا إما الـ antecedent بتاعهم false يا إما الـ consequent true.",
-     "لما Q = T وR = F، يبقى Q → R = T → F = F، فالـ conjunction بتبقى F حتى لو P → Q = T.",
-     "الـ Q = T والـ R = F بيخلّوا Q → R = F، فـ (P → Q) ∧ (Q → R) بتبقى F.",
-     "الـ P = T والـ Q = F بيخلّوا P → Q = T → F = F، فالـ conjunction بتبقى F حتى لو Q → R = T."
+     "لما <bdi dir=\"ltr\">Q&nbsp;=&nbsp;T</bdi> و<bdi dir=\"ltr\">R&nbsp;=&nbsp;F</bdi>، يبقى:<span class=\"ltr\">Q → R = T → F = F</span>فالـ conjunction بتبقى F حتى لو <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>.",
+     "الـ <bdi dir=\"ltr\">Q&nbsp;=&nbsp;T</bdi> والـ <bdi dir=\"ltr\">R&nbsp;=&nbsp;F</bdi> بيخلّوا <bdi dir=\"ltr\">Q&nbsp;→&nbsp;R&nbsp;=&nbsp;F</bdi>، فـ:<span class=\"ltr\">(P → Q) ∧ (Q → R) = F</span>",
+     "الـ <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> والـ <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi> بيخلّوا:<span class=\"ltr\">P → Q = T → F = F</span>فالـ conjunction بتبقى F حتى لو <bdi dir=\"ltr\">Q&nbsp;→&nbsp;R&nbsp;=&nbsp;T</bdi>."
     ]
    ],
    "extra": [
     [
-     "الـ formula فيها p وq بس؛ مفيش r أصلًا، فقيمتها محددة من p = T وq = F: وهي T.",
-     "الجزئين الاتنين true: p ∨ q = T ∨ F = T و¬q = ¬F = T، فالـ conjunction بتبقى T مش F.",
-     "صح. p ∨ q = T ∨ F = T (جزء واحد true كفاية) و¬q = T، يبقى (p ∨ q) ∧ ¬q = T ∧ T = T (L3, Truth tables of the connectives).",
-     "كل compound proposition ليها قيمة في كل row من الـ truth table بتاعها. وهنا بتطلع T ∧ T = T."
+     "الـ formula فيها p وq بس؛ مفيش r أصلًا، فقيمتها محددة من <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و<bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>: وهي T.",
+     "الجزئين الاتنين true:<span class=\"ltr\">p ∨ q = T ∨ F = T</span><span class=\"ltr\">¬q = ¬F = T</span>فالـ conjunction بتبقى T مش F.",
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;=&nbsp;T&nbsp;∨&nbsp;F&nbsp;=&nbsp;T</bdi> (جزء واحد true كفاية) و<bdi dir=\"ltr\">¬q&nbsp;=&nbsp;T</bdi>، يبقى:<span class=\"ltr\">(p ∨ q) ∧ ¬q = T ∧ T = T</span>المرجع <bdi dir=\"ltr\">(L3, Truth tables of the connectives)</bdi>.",
+     "كل compound proposition ليها قيمة في كل row من الـ truth table بتاعها. وهنا بتطلع <bdi dir=\"ltr\">T&nbsp;∧&nbsp;T&nbsp;=&nbsp;T</bdi>."
     ],
     [
-     "الـ 12 = 3 × 4 مش power of 2. خلي بالك كل variable بيضاعف عدد الـ rows: 2⁴ = 16.",
-     "الـ 8 = 2³ ده عدد الـ rows لـ 3 variables. الـ variable الرابع بيضاعفه لـ 2⁴ = 16.",
-     "الـ 4 = 2² ده عدد الـ rows لـ 2 variables (أو إنك خلطت عدد الـ variables بعدد الـ rows). مع 4 variables: 2⁴ = 16.",
-     "صح. الـ truth table اللي فيه n variables بيبقى فيه 2ⁿ rows (كل variable يا T يا F): 2⁴ = 16 (L3, Vocabulary)."
+     "الـ <bdi dir=\"ltr\">12&nbsp;=&nbsp;3&nbsp;×&nbsp;4</bdi> مش power of 2. خلي بالك كل variable بيضاعف عدد الـ rows، يعني <bdi dir=\"ltr\">2⁴&nbsp;=&nbsp;16</bdi>.",
+     "الـ <bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi> ده عدد الـ rows لـ 3 variables. الـ variable الرابع بيضاعفه لـ <bdi dir=\"ltr\">2⁴&nbsp;=&nbsp;16</bdi>.",
+     "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2²</bdi> ده عدد الـ rows لـ 2 variables (أو إنك خلطت عدد الـ variables بعدد الـ rows). مع 4 variables العدد <bdi dir=\"ltr\">2⁴&nbsp;=&nbsp;16</bdi>.",
+     "صح. الـ truth table اللي فيه n variables بيبقى فيه <bdi dir=\"ltr\">2ⁿ</bdi> rows (كل variable يا T يا F)، يعني <bdi dir=\"ltr\">2⁴&nbsp;=&nbsp;16</bdi> <bdi dir=\"ltr\">(L3,&nbsp;Vocabulary)</bdi>."
     ],
     [
      "صح. الـ ⊕ بتبقى true بالظبط لما p وq يختلفوا.",
@@ -653,46 +653,46 @@ AR.dm = {
      "الـ p ∧ q بتبقى T بس في الـ row TT، ودي بالظبط اللي الـ ⊕ فيها F؛ وفي الـ rows TF وFT كمان مختلفين."
     ],
     [
-     "إنها تمطر وإنك تاخد شمسية ده T → T، وده true: الوعد اتنفذ.",
-     "صح. الـ p → q بتبقى false بس لما الـ antecedent يبقى true والـ consequent false: الدنيا بتمطر (T) ومخدتش شمسية (F) (L3, Connectives).",
-     "لو مش بتمطر يبقى الـ antecedent false، فـ F → F بتبقى true؛ الجملة مش بتقول حاجة عن الأيام اللي مفيهاش مطر.",
-     "لو مش بتمطر يبقى الـ antecedent false، فـ F → T بتبقى true. إنك تاخد شمسية برضه مش بيكسر الوعد."
+     "إنها تمطر وإنك تاخد شمسية ده <bdi dir=\"ltr\">T&nbsp;→&nbsp;T</bdi>، وده true: الوعد اتنفذ.",
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما الـ antecedent يبقى true والـ consequent false: الدنيا بتمطر (T) ومخدتش شمسية (F) <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
+     "لو مش بتمطر يبقى الـ antecedent false، فـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;F</bdi> بتبقى true؛ الجملة مش بتقول حاجة عن الأيام اللي مفيهاش مطر.",
+     "لو مش بتمطر يبقى الـ antecedent false، فـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;T</bdi> بتبقى true. إنك تاخد شمسية برضه مش بيكسر الوعد."
     ],
     [
-     "\"Is 7 prime?\" ده سؤال؛ مش بيقرر حقيقة، فمالوش truth value ومش proposition.",
-     "صحتها بتعتمد على x (true بس لما x = 2). زي x + 1 = 2 بتاعة المحاضرة، مش proposition لحد ما x تتحدد.",
+     "الجملة <bdi dir=\"ltr\">\"Is 7 prime?\"</bdi> ده سؤال؛ مش بيقرر حقيقة، فمالوش truth value ومش proposition.",
+     "صحتها بتعتمد على x (true بس لما <bdi dir=\"ltr\">x&nbsp;=&nbsp;2</bdi>). زي <bdi dir=\"ltr\">x&nbsp;+&nbsp;1&nbsp;=&nbsp;2</bdi> بتاعة المحاضرة، مش proposition لحد ما x تتحدد.",
      "صح. هي جملة غلط، بس برضه proposition.",
-     "\"Close the door.\" ده أمر؛ ماينفعش يبقى true أو false، فهو مش proposition."
+     "الجملة <bdi dir=\"ltr\">\"Close the door.\"</bdi> ده أمر؛ ماينفعش يبقى true أو false، فهو مش proposition."
     ],
     [
      "دي بتبقى true يوم Thursday كمان، فماينفعش تبقى الـ negation. الـ ¬p لازم تبقى عكس قيمة p في كل يوم.",
-     "\"Tomorrow is Thursday\" دي proposition تانية عن يوم تاني. الـ negation هي \"it is not the case that today is Thursday\".",
-     "\"Today is Friday\" دي طريقة واحدة بس إن p تبقى false؛ يوم Monday مثلًا p والجملة دي الاتنين false. الـ negation هي \"Today is not Thursday\".",
-     "صح. الـ ¬p معناها \"it is not the case that p\" وليها عكس الـ truth value؛ ومثال المحاضرة بيدّي ¬p: \"Today is not Thursday\" (L3, Propositions and negation)."
+     "الجملة <bdi dir=\"ltr\">\"Tomorrow is Thursday\"</bdi> دي proposition تانية عن يوم تاني. الـ negation هي <bdi dir=\"ltr\">\"it is not the case that today is Thursday\"</bdi>.",
+     "الجملة <bdi dir=\"ltr\">\"Today is Friday\"</bdi> دي طريقة واحدة بس إن p تبقى false؛ يوم Monday مثلًا p والجملة دي الاتنين false. الـ negation هي <bdi dir=\"ltr\">\"Today is not Thursday\"</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">¬p</bdi> معناها <bdi dir=\"ltr\">\"it is not the case that p\"</bdi> وليها عكس الـ truth value؛ ومثال المحاضرة بيدّي:<span class=\"ltr\">¬p: \"Today is not Thursday\"</span>المرجع <bdi dir=\"ltr\">(L3, Propositions and negation)</bdi>."
     ],
     [
-     "صح. الـ p ↔ q بتبقى true لما p وq ليهم نفس الـ truth values، الاتنين true أو الاتنين false؛ F ↔ F = T (L3, Connectives).",
-     "الـ p ↔ q بتبقى true في 2 rows، TT وFF، يعني كل ما القيم تبقى متساوية، فـ \"never\" غلط.",
-     "القيم مختلفة (T وF)، فـ p ↔ q = F. الـ biconditional محتاج truth values متساوية.",
-     "القيم مختلفة (F وT)، فـ p ↔ q = F. وعلى عكس p → q، الـ biconditional هنا بيبقى false."
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتبقى true لما p وq ليهم نفس الـ truth values، الاتنين true أو الاتنين false؛ و<bdi dir=\"ltr\">F&nbsp;↔&nbsp;F&nbsp;=&nbsp;T</bdi> <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتبقى true في 2 rows، هما TT وFF، يعني كل ما القيم تبقى متساوية، فـ \"never\" غلط.",
+     "القيم مختلفة (T وF)، فـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q&nbsp;=&nbsp;F</bdi>. الـ biconditional محتاج truth values متساوية.",
+     "القيم مختلفة (F وT)، فـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q&nbsp;=&nbsp;F</bdi>. وعلى عكس <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>، الـ biconditional هنا بيبقى false."
     ],
     [
-     "فيه 2 rows true مش واحد: P = F مع Q = T وP = F مع Q = F الاتنين بيدّوا ¬P = T وP → Q = T.",
-     "صح. الـ expression بتبقى T بالظبط لما P = F (ساعتها ¬P = T وP → Q = T)، وده بيحصل في 2 من الـ 4 rows (L3, Example ¬P ∧ (P → Q)).",
-     "لما P = T، ¬P = F والـ conjunction بتبقى F، فالـ rows TT وTF الاتنين false. يبقى 2 rows بس هما الـ true.",
-     "لو الـ 4 rows true كانت هتبقى tautology، لكن الـ 2 rows اللي فيهم P = T بيدّوا F."
+     "فيه 2 rows true مش واحد: <bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> مع <bdi dir=\"ltr\">Q&nbsp;=&nbsp;T</bdi>، و<bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> مع <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi>، الاتنين بيدّوا <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;T</bdi> و<bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>.",
+     "صح. الـ expression بتبقى T بالظبط لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> (ساعتها <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;T</bdi> و<bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>)، وده بيحصل في 2 من الـ 4 rows <bdi dir=\"ltr\">(L3,&nbsp;Example&nbsp;¬P&nbsp;∧&nbsp;(P&nbsp;→&nbsp;Q))</bdi>.",
+     "لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi>، الـ <bdi dir=\"ltr\">¬P&nbsp;=&nbsp;F</bdi> والـ conjunction بتبقى F، فالـ rows TT وTF الاتنين false. يبقى 2 rows بس هما الـ true.",
+     "لو الـ 4 rows true كانت هتبقى tautology، لكن الـ 2 rows اللي فيهم <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> بيدّوا F."
     ],
     [
-     "\"Some did not pass\" ممكن تبقى true مع \"some passed\" في نفس الوقت (فصل فيه الاتنين)، فهي مش بتنفيها.",
+     "الجملة <bdi dir=\"ltr\">\"Some did not pass\"</bdi> ممكن تبقى true مع <bdi dir=\"ltr\">\"some passed\"</bdi> في نفس الوقت (فصل فيه الاتنين)، فهي مش بتنفيها.",
      "دي بتزوّد على الجملة الأصلية بدل ما تنفيها؛ وبتبقى true بس لما الأصلية تبقى true هي كمان.",
-     "صح. ¬(∃x P(x)) ≡ ∀x ¬P(x): إنك تنفي إن فيه طلبة نجحوا معناه إن كل طالب منجحش، يعني no student passed (L3, Negating quantifiers).",
-     "\"All passed\" بتخلي \"some passed\" true هي كمان، فماينفعش تبقى الـ negation بتاعتها."
+     "صح. القاعدة:<span class=\"ltr\">¬(∃x P(x)) ≡ ∀x ¬P(x)</span>إنك تنفي إن فيه طلبة نجحوا معناه إن كل طالب منجحش، يعني no student passed <bdi dir=\"ltr\">(L3, Negating quantifiers)</bdi>.",
+     "الجملة <bdi dir=\"ltr\">\"All passed\"</bdi> بتخلي <bdi dir=\"ltr\">\"some passed\"</bdi> true هي كمان، فماينفعش تبقى الـ negation بتاعتها."
     ],
     [
-     "الـ T → T بتبقى true، لأن الـ consequent متحقق. الـ p → q بتبقى false بس لما p = T, q = F.",
-     "الـ F → F بتبقى true لأن الـ false antecedent بيخلي الـ implication true.",
-     "الـ F → T بتبقى true: الـ antecedent false. الـ row الوحيد الـ false هو p = T, q = F.",
-     "صح. الـ implication بتبقى false بس لما الـ antecedent يبقى true والـ consequent false، يبقى p = T وq = F (L3, Connectives)."
+     "الـ <bdi dir=\"ltr\">T&nbsp;→&nbsp;T</bdi> بتبقى true، لأن الـ consequent متحقق. الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;q&nbsp;=&nbsp;F</bdi>.",
+     "الـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;F</bdi> بتبقى true لأن الـ false antecedent بيخلي الـ implication true.",
+     "الـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;T</bdi> بتبقى true: الـ antecedent false. الـ row الوحيد الـ false هو <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;q&nbsp;=&nbsp;F</bdi>.",
+     "صح. الـ implication بتبقى false بس لما الـ antecedent يبقى true والـ consequent false، يبقى <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و<bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>."
     ]
    ]
   },
@@ -703,26 +703,26 @@ AR.dm = {
      "pts": [
       "الـ <b>tautology</b> هي statement form بتبقى <b>true دايمًا</b> مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ statement variables. والـ statement اللي الـ form بتاعها tautology اسمها <b>tautological statement</b>.",
       "الـ <b>contradiction</b> هي statement form بتبقى <b>false دايمًا</b> مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ statement variables. والـ statement اللي الـ form بتاعها contradiction اسمها <b>contradictory statement</b>.",
-      "Example 1.1.13: الـ p ∨ ~p هي tautology (كلها T)؛ والـ p ∧ ~p هي contradiction (كلها F).",
-      "الـ compound propositions اللي ليها نفس الـ truth values في كل الحالات الممكنة اسمها <b>logically equivalent</b>: يعني p ≡ q معناها إن p ↔ q هي tautology.",
-      "<b>ملحوظة</b>: الـ ≡ مش logical connective، والـ p ≡ q مش compound proposition؛ هي مجرد عبارة بتقول إن p ↔ q هي tautology. وساعات بيستخدموا الرمز ⇔ بدل ≡.",
+      "مثال <bdi dir=\"ltr\">Example&nbsp;1.1.13</bdi>: الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p</bdi> هي tautology (كلها T)؛ والـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~p</bdi> هي contradiction (كلها F).",
+      "الـ compound propositions اللي ليها نفس الـ truth values في كل الحالات الممكنة اسمها <b>logically equivalent</b>: يعني <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> معناها إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هي tautology.",
+      "<b>ملحوظة</b>: الـ ≡ مش logical connective، والـ <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> مش compound proposition؛ هي مجرد عبارة بتقول إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هي tautology. وساعات بيستخدموا الرمز ⇔ بدل ≡.",
       "الـ statements الاتنين بيبقوا equivalent <b>if and only if</b> الأعمدة بتاعتهم في الـ truth table متطابقة."
      ]
     },
     {
-     "h": "Example 1.1.13 و 1.1.14 (t = tautology، c = contradiction)"
+     "h": "الـ Examples <bdi dir=\"ltr\">1.1.13</bdi> و <bdi dir=\"ltr\">1.1.14</bdi> (الرمز <bdi dir=\"ltr\">t&nbsp;=&nbsp;tautology</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;contradiction</bdi>)"
     },
     {
-     "h": "Theorem 1.1.1 الـ Logical Equivalences (t = tautology، c = contradiction)"
+     "h": "الـ Logical Equivalences في <bdi dir=\"ltr\">Theorem&nbsp;1.1.1</bdi> (الرمز <bdi dir=\"ltr\">t&nbsp;=&nbsp;tautology</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;contradiction</bdi>)"
     },
     {
-     "h": "إثبات قانون De Morgan بالـ truth table (Table 3)"
+     "h": "إثبات قانون De Morgan بالـ truth table <bdi dir=\"ltr\">(Table&nbsp;3)</bdi>"
     },
     {
-     "h": "p → q ≡ ¬p ∨ q (Table 4)"
+     "h": "إثبات إن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;4)</bdi>"
     },
     {
-     "h": "إثبات إن ~(~p ∧ q) ∧ (p ∨ q) ≡ p باستخدام القوانين"
+     "h": "إثبات باستخدام القوانين إن:<span class=\"ltr\">~(~p ∧ q) ∧ (p ∨ q) ≡ p</span>"
     },
     {
      "h": "الـ truth tables ولا القوانين؟",
@@ -730,172 +730,172 @@ AR.dm = {
       "قوانين Theorem 1.1.1 تقدر <b>تثبت</b> إن 2 statement forms متساويين (equivalent)، عن طريق إنك تبدّل أجزاء بـ expressions مكافئة ليها لحد ما توصل للطرف التاني.",
       "بس <b>ماتقدرش</b> تستخدمها عشان تثبت إنهم <b>مش</b> equivalent؛ في الحالة دي لازم تطلّع row في الـ truth table بيختلفوا فيه.",
       "مهارة تبسيط الـ statement forms مفيدة في بناء <b>برامج كمبيوتر efficient منطقيًا</b> وفي <b>تصميم الـ digital logic circuits</b>.",
-      "مثال جدول: p ∨ ~q → ~p. الـ Hypothesis هو p ∨ ~q، والـ conclusion هو ~p. الـ Rows: TT: T → F = F؛ TF: T → F = F؛ FT: F → T = T؛ FF: T → T = T."
+      "مثال جدول: <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~q&nbsp;→&nbsp;~p</bdi>. الـ Hypothesis هو <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~q</bdi>، والـ conclusion هو <bdi dir=\"ltr\">~p</bdi>. الـ Rows:<span class=\"ltr\">TT: T → F = F</span><span class=\"ltr\">TF: T → F = F</span><span class=\"ltr\">FT: F → T = T</span><span class=\"ltr\">FF: T → T = T</span>"
      ]
     },
     {
-     "h": "الـ Division into cases: p ∨ q → r ≡ (p → r) ∧ (q → r) (Example 1.2.2)"
+     "h": "الـ Division into cases (<bdi dir=\"ltr\">Example&nbsp;1.2.2</bdi>) بتقول:<span class=\"ltr\">p ∨ q → r ≡ (p → r) ∧ (q → r)</span>"
     }
    ],
    "cards": [
-    "Statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنحطها مكان الـ variables بتاعتها.",
-    "Statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنحطها مكان الـ variables بتاعتها.",
-    "نفس الـ truth values في كل الحالات الممكنة؛ p ≡ q معناها إن p ↔ q هي tautology.",
-    "لأ. الـ p ≡ q مش compound proposition؛ هي بتقول إن p ↔ q هي tautology (وساعات بيستخدموا ⇔).",
-    "p ∧ t ≡ p، p ∨ c ≡ p (p ∧ T ≡ p، p ∨ F ≡ p)",
-    "p ∨ ~p ≡ t، p ∧ ~p ≡ c",
-    "~(~p) ≡ p",
-    "p ∧ p ≡ p، p ∨ p ≡ p",
-    "p ∨ t ≡ t، p ∧ c ≡ c",
-    "~(p ∧ q) ≡ ~p ∨ ~q؛ ~(p ∨ q) ≡ ~p ∧ ~q",
-    "p ∨ (p ∧ q) ≡ p؛ p ∧ (p ∨ q) ≡ p",
-    "p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)؛ p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)",
-    "~t ≡ c، ~c ≡ t",
+    "هي statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنحطها مكان الـ variables بتاعتها.",
+    "هي statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنحطها مكان الـ variables بتاعتها.",
+    "نفس الـ truth values في كل الحالات الممكنة؛ <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> معناها إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هي tautology.",
+    "لأ. الـ <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> مش compound proposition؛ هي بتقول إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هي tautology (وساعات بيستخدموا ⇔).",
+    "القانونين:<span class=\"ltr\">p ∧ t ≡ p, p ∨ c ≡ p</span><span class=\"ltr\">(p ∧ T ≡ p, p ∨ F ≡ p)</span>",
+    "القانونين:<span class=\"ltr\">p ∨ ~p ≡ t, p ∧ ~p ≡ c</span>",
+    "القانون:<span class=\"ltr\">~(~p) ≡ p</span>",
+    "القانونين:<span class=\"ltr\">p ∧ p ≡ p, p ∨ p ≡ p</span>",
+    "القانونين:<span class=\"ltr\">p ∨ t ≡ t, p ∧ c ≡ c</span>",
+    "القانونين:<span class=\"ltr\">~(p ∧ q) ≡ ~p ∨ ~q</span><span class=\"ltr\">~(p ∨ q) ≡ ~p ∧ ~q</span>",
+    "القانونين:<span class=\"ltr\">p ∨ (p ∧ q) ≡ p</span><span class=\"ltr\">p ∧ (p ∨ q) ≡ p</span>",
+    "القانونين:<span class=\"ltr\">p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)</span><span class=\"ltr\">p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)</span>",
+    "القانونين:<span class=\"ltr\">~t ≡ c, ~c ≡ t</span>",
     "لأ؛ لازم تطلّع row في الـ truth table بيختلفوا فيه.",
     "برامج كمبيوتر efficient منطقيًا، وتصميم الـ digital logic circuits.",
-    "¬(p₁ ∨ … ∨ pₙ) ≡ ¬p₁ ∧ … ∧ ¬pₙ؛ ¬(p₁ ∧ … ∧ pₙ) ≡ ¬p₁ ∨ … ∨ ¬pₙ"
+    "القانونين:<span class=\"ltr\">¬(p₁ ∨ … ∨ pₙ) ≡ ¬p₁ ∧ … ∧ ¬pₙ</span><span class=\"ltr\">¬(p₁ ∧ … ∧ pₙ) ≡ ¬p₁ ∨ … ∨ ¬pₙ</span>"
    ],
    "qa": [
-    "الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ variables؛ والـ contradiction بتبقى false دايمًا. الجدول: p = T: ~p = F، p ∨ ~p = T، p ∧ ~p = F. p = F: ~p = T، p ∨ ~p = T، p ∧ ~p = F. عمود p ∨ ~p كله T (tautology)؛ وعمود p ∧ ~p كله F (contradiction).",
-    "الـ Rows: p = T، t = T: p ∧ t = T؛ c = F: p ∧ c = F. p = F، t = T: p ∧ t = F؛ p ∧ c = F. عمود p ∧ t (T, F) هو نفس عمود p، يبقى p ∧ t ≡ p. وعمود p ∧ c (F, F) هو نفس c، يبقى p ∧ c ≡ c.",
-    "1 Commutative: p ∧ q ≡ q ∧ p، p ∨ q ≡ q ∨ p. 2 Associative: (p ∧ q) ∧ r ≡ p ∧ (q ∧ r)، (p ∨ q) ∨ r ≡ p ∨ (q ∨ r). 3 Distributive: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)، p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r). 4 Identity: p ∧ t ≡ p، p ∨ c ≡ p. 5 Negation: p ∨ ~p ≡ t، p ∧ ~p ≡ c. 6 Double negative: ~(~p) ≡ p. 7 Idempotent: p ∧ p ≡ p، p ∨ p ≡ p. 8 Universal bound: p ∨ t ≡ t، p ∧ c ≡ c. 9 De Morgan: ~(p ∧ q) ≡ ~p ∨ ~q، ~(p ∨ q) ≡ ~p ∧ ~q. 10 Absorption: p ∨ (p ∧ q) ≡ p، p ∧ (p ∨ q) ≡ p. 11 Negations of t and c: ~t ≡ c، ~c ≡ t.",
-    "~(~p ∧ q) ∧ (p ∨ q) ≡ (~(~p) ∨ ~q) ∧ (p ∨ q) [De Morgan] ≡ (p ∨ ~q) ∧ (p ∨ q) [double negative] ≡ p ∨ (~q ∧ q) [distributive] ≡ p ∨ (q ∧ ~q) [commutative] ≡ p ∨ c [negation] ≡ p [identity].",
-    "p q | p ∨ q | ¬(p ∨ q) | ¬p | ¬q | ¬p ∧ ¬q: TT: T F F F F؛ TF: T F F T F؛ FT: T F T F F؛ FF: F T T T T. عمود ¬(p ∨ q) وعمود ¬p ∧ ¬q متطابقين (F, F, F, T)، يبقوا logically equivalent (قانون De Morgan).",
-    "بص على الجدول اللي فيه 8 rows في الـ notes: p ∨ q → r بتبقى F بالظبط في الـ rows TTF، TFF، FTF (الـ hypothesis true والـ r false)، و(p → r) ∧ (q → r) بتبقى F في نفس الـ rows بالظبط. وباقي الـ rows T في الاتنين، يبقى الـ forms دي logically equivalent (\"division into cases\")."
+    "الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values بتاعة الـ statements اللي بنحطها مكان الـ variables؛ والـ contradiction بتبقى false دايمًا. الجدول:<span class=\"ltr\">p = T: ~p = F, p ∨ ~p = T, p ∧ ~p = F</span><span class=\"ltr\">p = F: ~p = T, p ∨ ~p = T, p ∧ ~p = F</span>عمود <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p</bdi> كله T (tautology)؛ وعمود <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~p</bdi> كله F (contradiction).",
+    "الـ Rows:<span class=\"ltr\">p = T, t = T: p ∧ t = T; c = F: p ∧ c = F</span><span class=\"ltr\">p = F, t = T: p ∧ t = F; p ∧ c = F</span>عمود <bdi dir=\"ltr\">p&nbsp;∧&nbsp;t</bdi> <bdi dir=\"ltr\">(T,&nbsp;F)</bdi> هو نفس عمود p، يبقى <bdi dir=\"ltr\">p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p</bdi>. وعمود <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c</bdi> <bdi dir=\"ltr\">(F,&nbsp;F)</bdi> هو نفس c، يبقى <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c&nbsp;≡&nbsp;c</bdi>.",
+    "القوانين الـ 11:<span class=\"ltr\">1 Commutative: p ∧ q ≡ q ∧ p, p ∨ q ≡ q ∨ p</span><span class=\"ltr\">2 Associative: (p ∧ q) ∧ r ≡ p ∧ (q ∧ r), (p ∨ q) ∨ r ≡ p ∨ (q ∨ r)</span><span class=\"ltr\">3 Distributive: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r), p ∨ (q ∧ r) ≡ (p ∨ q) ∧ (p ∨ r)</span><span class=\"ltr\">4 Identity: p ∧ t ≡ p, p ∨ c ≡ p</span><span class=\"ltr\">5 Negation: p ∨ ~p ≡ t, p ∧ ~p ≡ c</span><span class=\"ltr\">6 Double negative: ~(~p) ≡ p</span><span class=\"ltr\">7 Idempotent: p ∧ p ≡ p, p ∨ p ≡ p</span><span class=\"ltr\">8 Universal bound: p ∨ t ≡ t, p ∧ c ≡ c</span><span class=\"ltr\">9 De Morgan: ~(p ∧ q) ≡ ~p ∨ ~q, ~(p ∨ q) ≡ ~p ∧ ~q</span><span class=\"ltr\">10 Absorption: p ∨ (p ∧ q) ≡ p, p ∧ (p ∨ q) ≡ p</span><span class=\"ltr\">11 Negations of t and c: ~t ≡ c, ~c ≡ t</span>",
+    "الخطوات:<span class=\"ltr\">~(~p ∧ q) ∧ (p ∨ q)</span><span class=\"ltr\">≡ (~(~p) ∨ ~q) ∧ (p ∨ q) [De Morgan]</span><span class=\"ltr\">≡ (p ∨ ~q) ∧ (p ∨ q) [double negative]</span><span class=\"ltr\">≡ p ∨ (~q ∧ q) [distributive]</span><span class=\"ltr\">≡ p ∨ (q ∧ ~q) [commutative]</span><span class=\"ltr\">≡ p ∨ c [negation]</span><span class=\"ltr\">≡ p [identity]</span>",
+    "الجدول:<span class=\"ltr\">p q | p ∨ q | ¬(p ∨ q) | ¬p | ¬q | ¬p ∧ ¬q</span><span class=\"ltr\">TT: T F F F F</span><span class=\"ltr\">TF: T F F T F</span><span class=\"ltr\">FT: T F T F F</span><span class=\"ltr\">FF: F T T T T</span>عمود <bdi dir=\"ltr\">¬⁠(p&nbsp;∨&nbsp;q)</bdi> وعمود <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi> متطابقين <bdi dir=\"ltr\">(F,&nbsp;F,&nbsp;F,&nbsp;T)</bdi>، يبقوا logically equivalent (قانون De Morgan).",
+    "بص على الجدول اللي فيه 8 rows في الـ notes: <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;→&nbsp;r</bdi> بتبقى F بالظبط في الـ rows <bdi dir=\"ltr\">TTF,&nbsp;TFF,&nbsp;FTF</bdi> (الـ hypothesis true والـ r false)، و<bdi dir=\"ltr\">(p&nbsp;→&nbsp;r)&nbsp;∧&nbsp;(q&nbsp;→&nbsp;r)</bdi> بتبقى F في نفس الـ rows بالظبط. وباقي الـ rows T في الاتنين، يبقى الـ forms دي logically equivalent (\"division into cases\")."
    ],
    "quiz": [
     [
-     "الـ tautology هي العكس بالظبط: بتبقى true دايمًا مهما كانت قيم الـ variables (زي p ∨ ¬p). اللي false دايمًا اسمها contradiction.",
-     "صح. الـ contradiction هي statement form بتبقى false دايمًا مهما عوّضت بأي truth values، زي p ∧ ¬p (L4, Definitions).",
+     "الـ tautology هي العكس بالظبط: بتبقى true دايمًا مهما كانت قيم الـ variables (زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>). اللي false دايمًا اسمها contradiction.",
+     "صح. الـ contradiction هي statement form بتبقى false دايمًا مهما عوّضت بأي truth values، زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
      "الـ tautology كلها T والـ contradiction كلها F، وعمود واحد في الـ truth table ماينفعش يبقى الاتنين. false دايمًا يعني contradiction بس.",
-     "«True» دي truth value، مش نوع من أنواع الـ compound propositions، والسؤال بيوصف حاجة false دايمًا. ودي contradiction."
+     "كلمة «True» دي truth value، مش نوع من أنواع الـ compound propositions، والسؤال بيوصف حاجة false دايمًا. ودي contradiction."
     ],
     [
-     "صح. الـ tautology هي statement form بتبقى true دايمًا مهما عوّضت بأي truth values في الـ variables بتاعتها، زي p ∨ ¬p (L4, Definitions).",
-     "الـ contradiction بتبقى false دايمًا (زي p ∧ ¬p)، يعني عكس المطلوب. اللي true دايمًا هي الـ tautology.",
+     "صح. الـ tautology هي statement form بتبقى true دايمًا مهما عوّضت بأي truth values في الـ variables بتاعتها، زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
+     "الـ contradiction بتبقى false دايمًا (زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi>)، يعني عكس المطلوب. اللي true دايمًا هي الـ tautology.",
      "العمود ماينفعش يبقى كله T وكله F في نفس الوقت، فالـ proposition ماينفعش تبقى الاتنين. true دايمًا يعني tautology.",
-     "«Identity» ده اسم قانون (p ∧ t ≡ p)، مش نوع من الـ compound propositions. اللي true دايمًا هي الـ tautology."
+     "كلمة «Identity» ده اسم قانون <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p)</bdi>، مش نوع من الـ compound propositions. اللي true دايمًا هي الـ tautology."
     ],
     [
-     "p ∧ ¬p محتاجة p و ¬p يبقوا true مع بعض، وده عمره ما بيحصل، فهي false دايمًا: يعني contradiction (Theorem 1.1.1, negation law).",
-     "صح. يا p يا ¬p لازم واحدة فيهم تبقى true، فـ p ∨ ¬p بتبقى T في الـ rows الاتنين؛ والـ negation law بيدي p ∨ ¬p ≡ t (L4, Example 1.1.13).",
-     "¬p ∧ ¬Q بتبقى true بس لما p و Q الاتنين يبقوا false؛ أي variable true بيخليها F، فهي مش true دايمًا.",
-     "¬(p ∧ Q) بتبقى F في الـ row اللي فيه p = T و Q = T، فهي مش tautology. وهي بتساوي ¬p ∨ ¬Q بـ De Morgan."
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> محتاجة p و <bdi dir=\"ltr\">¬p</bdi> يبقوا true مع بعض، وده عمره ما بيحصل، فهي false دايمًا: يعني contradiction <bdi dir=\"ltr\">(Theorem 1.1.1, negation law)</bdi>.",
+     "صح. يا p يا <bdi dir=\"ltr\">¬p</bdi> لازم واحدة فيهم تبقى true، فـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> بتبقى T في الـ rows الاتنين؛ والـ negation law بيدي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p&nbsp;≡&nbsp;t</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Example&nbsp;1.1.13)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬Q</bdi> بتبقى true بس لما p و Q الاتنين يبقوا false؛ أي variable true بيخليها F، فهي مش true دايمًا.",
+     "الـ <bdi dir=\"ltr\">¬⁠(p&nbsp;∧&nbsp;Q)</bdi> بتبقى F في الـ row اللي فيه <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;T</bdi>، فهي مش tautology. وهي بتساوي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬Q</bdi> بـ De Morgan."
     ],
     [
-     "P ∨ Q بتبقى true في 3 من 4 rows (false بس في F, F). والـ contradiction لازم تبقى false في كل row.",
-     "صح. P و ¬P قيمهم دايمًا عكس بعض، فعمرهم ما بيبقوا true مع بعض، وبالتالي P ∧ ¬P بتبقى F في كل row؛ negation law: P ∧ ¬P ≡ c (L4, Example 1.1.13).",
-     "P → Q بتبقى true في 3 من 4 rows (false بس في T → F)، فهي مش false دايمًا.",
-     "P ↔ Q بتبقى true في الـ rows TT و FF (لما القيم متساوية)، فهي مش contradiction."
+     "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بتبقى true في 3 من 4 rows (false بس في F, F). والـ contradiction لازم تبقى false في كل row.",
+     "صح. P و <bdi dir=\"ltr\">¬P</bdi> قيمهم دايمًا عكس بعض، فعمرهم ما بيبقوا true مع بعض، وبالتالي <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P</bdi> بتبقى F في كل row؛ والـ negation law بيقول <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P&nbsp;≡&nbsp;c</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Example&nbsp;1.1.13)</bdi>.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى true في 3 من 4 rows (false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>)، فهي مش false دايمًا.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> بتبقى true في الـ rows TT و FF (لما القيم متساوية)، فهي مش contradiction."
     ],
     [
      "أعمدة الـ truth table بتاعتهم متطابقة في كل row (الاتنين T بس في TT)، والأعمدة لما تتطابق يبقوا logically equivalent.",
-     "صح. ده الـ commutative law p ∧ q ≡ q ∧ p (Theorem 1.1.1, law 1): الترتيب مابيغيرش الـ «and»، فالأعمدة بتتطابق في كل row (L4).",
+     "صح. ده الـ commutative law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q&nbsp;≡&nbsp;q&nbsp;∧&nbsp;p</bdi> <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;1)</bdi>: الترتيب مابيغيرش الـ «and»، فالأعمدة بتتطابق في كل row <bdi dir=\"ltr\">(L4)</bdi>.",
      "الـ equivalence معناها إن الأعمدة تتطابق في كل الـ rows؛ مفيش حاجة اسمها «sometimes». وهنا متطابقين في كل حتة، فهم equivalent.",
-     "Contradictory كانت هتعني إن قيمهم عكس بعض، لكن P ∧ Q و Q ∧ P ليهم نفس القيمة في كل row."
+     "لو كانوا Contradictory كان ده هيعني إن قيمهم عكس بعض، لكن <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> و <bdi dir=\"ltr\">Q&nbsp;∧&nbsp;P</bdi> ليهم نفس القيمة في كل row."
     ],
     [
-     "صح. ده De Morgan's law: ¬(p ∧ q) ≡ ¬p ∨ ¬q. انفي كل جزء وحوّل الـ ∧ لـ ∨ (Theorem 1.1.1, law 9) (L4).",
-     "¬P ∧ ¬Q ده قانون De Morgan التاني، يعني ¬(P ∨ Q). في ¬(P ∧ Q) لازم الـ ∧ كمان تتقلب لـ ∨.",
-     "P ∧ Q ده الأصل من غير النفي؛ قيمته عكس ¬(P ∧ Q) في كل row.",
-     "P ∨ Q مافيهاش أي نفي. في الـ row بتاع T, T هي T بينما ¬(P ∧ Q) بتبقى F، فهم مختلفين."
+     "صح. ده De Morgan's law: <bdi dir=\"ltr\">¬⁠(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi>. انفي كل جزء وحوّل الـ ∧ لـ ∨ <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;9)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;¬Q</bdi> ده قانون De Morgan التاني، يعني <bdi dir=\"ltr\">¬⁠(P&nbsp;∨&nbsp;Q)</bdi>. في <bdi dir=\"ltr\">¬⁠(P&nbsp;∧&nbsp;Q)</bdi> لازم الـ ∧ كمان تتقلب لـ ∨.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> ده الأصل من غير النفي؛ قيمته عكس <bdi dir=\"ltr\">¬⁠(P&nbsp;∧&nbsp;Q)</bdi> في كل row.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> مافيهاش أي نفي. في الـ row بتاع T, T هي T بينما <bdi dir=\"ltr\">¬⁠(P&nbsp;∧&nbsp;Q)</bdi> بتبقى F، فهم مختلفين."
     ],
     [
-     "الـ commutative law بيبدّل الترتيب بس، p ∧ q ≡ q ∧ p، من غير أي نفي. إنك تدخّل الـ ¬ جوه القوس ده De Morgan.",
-     "صح. De Morgan's laws، ~(p ∧ q) ≡ ~p ∨ ~q و ~(p ∨ q) ≡ ~p ∧ ~q، بيدخّلوا النفي جوه القوس ويقلبوا الـ connective (Theorem 1.1.1, law 9) (L4).",
-     "الـ associative law بيعيد تجميع الأقواس لنفس الـ connective، (p ∧ q) ∧ r ≡ p ∧ (q ∧ r). عمره ما بيضيف نفي أو بيحرّكه.",
-     "الـ distributive law بيوزّع connective على connective تاني، p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r). مابيحرّكش النفي."
+     "الـ commutative law بيبدّل الترتيب بس، <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q&nbsp;≡&nbsp;q&nbsp;∧&nbsp;p</bdi>، من غير أي نفي. إنك تدخّل الـ ¬ جوه القوس ده De Morgan.",
+     "صح. De Morgan's laws، <bdi dir=\"ltr\">~⁠(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;~p&nbsp;∨&nbsp;~q</bdi> و <bdi dir=\"ltr\">~⁠(p&nbsp;∨&nbsp;q)&nbsp;≡&nbsp;~p&nbsp;∧&nbsp;~q</bdi>، بيدخّلوا النفي جوه القوس ويقلبوا الـ connective <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;9)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ associative law بيعيد تجميع الأقواس لنفس الـ connective:<span class=\"ltr\">(p ∧ q) ∧ r ≡ p ∧ (q ∧ r)</span>وعمره ما بيضيف نفي أو بيحرّكه.",
+     "الـ distributive law بيوزّع connective على connective تاني:<span class=\"ltr\">p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)</span>وهو مابيحرّكش النفي."
     ],
     [
-     "الـ Q بتتجاهل P: عند P = T و Q = F الـ expression P ∨ (P ∧ Q) بتبقى T (عشان P بـ T) بينما Q بـ F.",
-     "صح. ده الـ Absorption: p ∨ (p ∧ q) ≡ p (Theorem 1.1.1, law 10). لو P بـ T يبقى الكل T؛ ولو P بـ F يبقى P ∧ Q كمان F (L4).",
-     "¬P قيمتها عكس الـ expression في كل row: لما P = T الـ expression بتبقى T لكن ¬P بتبقى F.",
-     "بتبقى false لما P = T و Q = F، بس الـ expression هناك T."
+     "الـ Q بتتجاهل P: عند <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi> الـ expression <bdi dir=\"ltr\">P&nbsp;∨&nbsp;(P&nbsp;∧&nbsp;Q)</bdi> بتبقى T (عشان P بـ T) بينما Q بـ F.",
+     "صح. ده الـ Absorption: <bdi dir=\"ltr\">p&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;p</bdi> <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;10)</bdi>. لو P بـ T يبقى الكل T؛ ولو P بـ F يبقى <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> كمان F <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬P</bdi> قيمتها عكس الـ expression في كل row: لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> الـ expression بتبقى T لكن <bdi dir=\"ltr\">¬P</bdi> بتبقى F.",
+     "بتبقى false لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi>، بس الـ expression هناك T."
     ],
     [
-     "صح. الـ Absorption law p ∨ (p ∧ q) ≡ p (Theorem 1.1.1, law 10): الـ p ∧ q مش ممكن تبقى true غير لما p تكون true أصلًا، فمش بتضيف حاجة (L4).",
-     "الـ q بتتجاهل p: لما p = T و q = F الـ expression p ∨ (p ∧ q) بتبقى T لكن q بـ F.",
-     "في الـ row اللي فيه p = F و q = T، الـ p ∨ q بتبقى T لكن p ∨ (p ∧ q) = F ∨ F = F، فهم مش equivalent."
+     "صح. الـ Absorption law <bdi dir=\"ltr\">p&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;p</bdi> <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;10)</bdi>: الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> مش ممكن تبقى true غير لما p تكون true أصلًا، فمش بتضيف حاجة <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ q بتتجاهل p: لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> الـ expression <bdi dir=\"ltr\">p&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)</bdi> بتبقى T لكن q بـ F.",
+     "في الـ row اللي فيه <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى T لكن:<span class=\"ltr\">p ∨ (p ∧ q) = F ∨ F = F</span>فهم مش equivalent."
     ],
     [
-     "الـ conjunction اللي فيها جزء false بتبقى false، فـ p ∧ F عمرها ما تبقى true. Universal bound law: p ∧ c ≡ c.",
-     "صح. ده الـ universal bound (domination) law p ∧ c ≡ c: الـ conjunction محتاجة الجزئين true، والـ F عمرها ما بتبقى true (Theorem 1.1.1, law 8) (L4).",
-     "p ∧ F ليها قيمة في الـ rows الاتنين في الـ truth table بتاعتها: F في كل واحد. مفيش حاجة undefined.",
-     "الـ statement form يا true يا false في كل row، عمرها ما تبقى الاتنين؛ و p ∧ F بتبقى F في كل row."
+     "الـ conjunction اللي فيها جزء false بتبقى false، فـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;F</bdi> عمرها ما تبقى true. والـ Universal bound law بيقول <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c&nbsp;≡&nbsp;c</bdi>.",
+     "صح. ده الـ universal bound (domination) law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c&nbsp;≡&nbsp;c</bdi>: الـ conjunction محتاجة الجزئين true، والـ F عمرها ما بتبقى true <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;8)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;F</bdi> ليها قيمة في الـ rows الاتنين في الـ truth table بتاعتها: F في كل واحد. مفيش حاجة undefined.",
+     "الـ statement form يا true يا false في كل row، عمرها ما تبقى الاتنين؛ و <bdi dir=\"ltr\">p&nbsp;∧&nbsp;F</bdi> بتبقى F في كل row."
     ],
     [
-     "¬p ده نفي واحد بس. النفيين بيلغوا بعض، فـ ¬(¬p) بترجّع p.",
-     "صح. الـ double negative law ~(~p) ≡ p (Theorem 1.1.1, law 6): لما تنفي مرتين القيمة بتتقلب مرتين وترجع لقيمة p (L4).",
-     "الـ q مش موجودة في ¬(¬p) أصلًا، فماينفعش تظهر في النتيجة. الـ double negation بتدي p.",
+     "الـ <bdi dir=\"ltr\">¬p</bdi> ده نفي واحد بس. النفيين بيلغوا بعض، فـ <bdi dir=\"ltr\">¬⁠(¬p)</bdi> بترجّع p.",
+     "صح. الـ double negative law <bdi dir=\"ltr\">~⁠(~p)&nbsp;≡&nbsp;p</bdi> <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;6)</bdi>: لما تنفي مرتين القيمة بتتقلب مرتين وترجع لقيمة p <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ q مش موجودة في <bdi dir=\"ltr\">¬⁠(¬p)</bdi> أصلًا، فماينفعش تظهر في النتيجة. الـ double negation بتدي p.",
      "دي الـ expression نفسها، مش تبسيطها."
     ],
     [
-     "صح. الـ distributive law p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r): الـ ∧ بتتوزّع على الـ ∨ زي ما بتفك الأقواس في الضرب (Theorem 1.1.1, law 3) (L4).",
-     "(P ∨ Q) ∧ (P ∨ R) ده الشكل التاني من الـ distributive، وبيساوي P ∨ (Q ∧ R). هنا الـ ∧ هي اللي برة، فهي اللي لازم تتوزّع.",
-     "(P ∧ Q) ∧ (P ∧ R) ≡ P ∧ Q ∧ R محتاجة Q و R الاتنين true. لكن P ∧ (Q ∨ R) محتاجة واحدة بس، فمثلًا الـ row بتاع T, T, F بيختلف.",
-     "(P ∨ Q) ∨ (P ∨ R) ≡ P ∨ Q ∨ R بتبقى true حتى لو P لوحدها false و Q بـ true، لكن ساعتها P ∧ (Q ∨ R) بتبقى F."
+     "صح. الـ distributive law:<span class=\"ltr\">p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)</span>الـ ∧ بتتوزّع على الـ ∨ زي ما بتفك الأقواس في الضرب <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;3)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">(P&nbsp;∨&nbsp;Q)&nbsp;∧&nbsp;(P&nbsp;∨&nbsp;R)</bdi> ده الشكل التاني من الـ distributive، وبيساوي <bdi dir=\"ltr\">P&nbsp;∨&nbsp;(Q&nbsp;∧&nbsp;R)</bdi>. هنا الـ ∧ هي اللي برة، فهي اللي لازم تتوزّع.",
+     "الاختيار ده:<span class=\"ltr\">(P ∧ Q) ∧ (P ∧ R) ≡ P ∧ Q ∧ R</span>محتاج Q و R الاتنين true. لكن <bdi dir=\"ltr\">P&nbsp;∧&nbsp;(Q&nbsp;∨&nbsp;R)</bdi> محتاجة واحدة بس، فمثلًا الـ row بتاع <bdi dir=\"ltr\">T,&nbsp;T,&nbsp;F</bdi> بيختلف.",
+     "الاختيار ده:<span class=\"ltr\">(P ∨ Q) ∨ (P ∨ R) ≡ P ∨ Q ∨ R</span>بيبقى true حتى لو P لوحدها false و Q بـ true، لكن ساعتها <bdi dir=\"ltr\">P&nbsp;∧&nbsp;(Q&nbsp;∨&nbsp;R)</bdi> بتبقى F."
     ],
     [
-     "صح. الـ negation law p ∨ ~p ≡ t: واحدة من p و ¬p دايمًا true، فالـ disjunction بتبقى tautology (Theorem 1.1.1, law 5) (L4).",
-     "الـ F (contradiction) دي نتيجة الـ negation law التاني، p ∧ ¬p ≡ c. مع الـ ∨ النتيجة T.",
-     "الـ q مش موجودة في p ∨ ¬p، و p ∨ ¬q بتبقى false لما p = F و q = T، فهي مش equivalent. القانون بيدي T.",
-     "الـ q مش في الـ expression؛ p ∨ ¬p دايمًا true بينما q ممكن تبقى false. الـ negation law بيدي T."
+     "صح. الـ negation law <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p&nbsp;≡&nbsp;t</bdi>: واحدة من p و <bdi dir=\"ltr\">¬p</bdi> دايمًا true، فالـ disjunction بتبقى tautology <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;5)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ F (contradiction) دي نتيجة الـ negation law التاني، <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p&nbsp;≡&nbsp;c</bdi>. مع الـ ∨ النتيجة T.",
+     "الـ q مش موجودة في <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>، و <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q</bdi> بتبقى false لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، فهي مش equivalent. القانون بيدي T.",
+     "الـ q مش في الـ expression؛ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> دايمًا true بينما q ممكن تبقى false. الـ negation law بيدي T."
     ],
     [
-     "صح. De Morgan: ~(p ∨ q) ≡ ~p ∧ ~q. «مش (p أو q)» معناها إن ولا واحدة فيهم true (Theorem 1.1.1, law 9; Table 3) (L4).",
-     "¬p ∨ ¬q ده قانون De Morgan التاني، ¬(p ∧ q). لما تنفي ∨ لازم تتحوّل لـ ∧.",
-     "p ∧ ¬q ده نفي p → q (L5). الـ De Morgan على ¬(p ∨ q) بينفي الجزئين: ¬p ∧ ¬q.",
-     "p → q ≡ ¬p ∨ q بتبقى true في 3 rows، بينما ¬(p ∨ q) true بس في الـ row بتاع F, F. فهم مش equivalent."
+     "صح. De Morgan: <bdi dir=\"ltr\">~⁠(p&nbsp;∨&nbsp;q)&nbsp;≡&nbsp;~p&nbsp;∧&nbsp;~q</bdi>. «مش (p أو q)» معناها إن ولا واحدة فيهم true <bdi dir=\"ltr\">(Theorem 1.1.1, law 9; Table 3)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi> ده قانون De Morgan التاني، <bdi dir=\"ltr\">¬⁠(p&nbsp;∧&nbsp;q)</bdi>. لما تنفي ∨ لازم تتحوّل لـ ∧.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> <bdi dir=\"ltr\">(L5)</bdi>. الـ De Morgan على <bdi dir=\"ltr\">¬⁠(p&nbsp;∨&nbsp;q)</bdi> بينفي الجزئين: <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi> بتبقى true في 3 rows، بينما <bdi dir=\"ltr\">¬⁠(p&nbsp;∨&nbsp;q)</bdi> true بس في الـ row بتاع F, F. فهم مش equivalent."
     ],
     [
-     "¬p ∧ ¬q دي نتيجة De Morgan لـ ¬(p ∨ q). لما تنفي ∧ بتتحوّل لـ ∨: ¬p ∨ ¬q.",
-     "صح. De Morgan: ~(p ∧ q) ≡ ~p ∨ ~q. «مش الاتنين» معناها إن واحدة على الأقل false (Theorem 1.1.1, law 9) (L4).",
-     "p ∧ ¬q ده نفي p → q (L5). الـ De Morgan بينفي الجزئين ويقلب الـ ∧ لـ ∨: ¬p ∨ ¬q.",
-     "p → q بتبقى F بس في الـ row بتاع T, F، لكن ¬(p ∧ q) بتبقى F بس في الـ row بتاع T, T. مختلفين، فده مش De Morgan."
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi> دي نتيجة De Morgan لـ <bdi dir=\"ltr\">¬⁠(p&nbsp;∨&nbsp;q)</bdi>. لما تنفي ∧ بتتحوّل لـ ∨: <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi>.",
+     "صح. De Morgan: <bdi dir=\"ltr\">~⁠(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;~p&nbsp;∨&nbsp;~q</bdi>. «مش الاتنين» معناها إن واحدة على الأقل false <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;9)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> <bdi dir=\"ltr\">(L5)</bdi>. الـ De Morgan بينفي الجزئين ويقلب الـ ∧ لـ ∨: <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى F بس في الـ row بتاع T, F، لكن <bdi dir=\"ltr\">¬⁠(p&nbsp;∧&nbsp;q)</bdi> بتبقى F بس في الـ row بتاع T, T. مختلفين، فده مش De Morgan."
     ],
     [
-     "صح. الـ identity law p ∧ t ≡ p: «and true» مابتغيرش قيمة p، فالعمود بيطلع زي p بالظبط (Theorem 1.1.1, law 4; Example 1.1.14) (L4).",
-     "الـ q مش موجودة في p ∧ T، فماينفعش تبقى النتيجة. الـ identity law بيدي p.",
-     "p ∨ q بتبقى true لما p = F و q = T، لكن p ∧ T = F هناك. الـ identity law بيدي p.",
-     "الـ T دي كانت هتبقى نتيجة الـ universal bound لـ p ∨ T ≡ t. مع الـ ∧، الجزء T مابيغيرش حاجة، فالنتيجة p."
+     "صح. الـ identity law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p</bdi>: «and true» مابتغيرش قيمة p، فالعمود بيطلع زي p بالظبط <bdi dir=\"ltr\">(Theorem 1.1.1, law 4; Example 1.1.14)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ q مش موجودة في <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T</bdi>، فماينفعش تبقى النتيجة. الـ identity law بيدي p.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، لكن <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi> هناك. الـ identity law بيدي p.",
+     "الـ T دي كانت هتبقى نتيجة الـ universal bound لـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;T&nbsp;≡&nbsp;t</bdi>. مع الـ ∧، الجزء T مابيغيرش حاجة، فالنتيجة p."
     ],
     [
-     "صح. الـ commutative law p ∧ q ≡ q ∧ p: إنك تبدّل ترتيب الـ «and» مابيغيرش قيمته (Theorem 1.1.1, law 1) (L4).",
-     "¬p ∨ q بتساوي p → q (L4, Table 4)، مش p ∧ q؛ مثلًا عند p = F هي T بينما p ∧ q بتبقى F.",
-     "p ∧ ¬q ده نفي p → q؛ بتبقى T عند p = T و q = F، وهناك p ∧ q بتبقى F.",
-     "p ∨ ¬q بتبقى T عند p = F و q = F، وهناك p ∧ q بتبقى F، فهي مش equivalent. الـ commutative بيبدّل بس: q ∧ p."
+     "صح. الـ commutative law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q&nbsp;≡&nbsp;q&nbsp;∧&nbsp;p</bdi>: إنك تبدّل ترتيب الـ «and» مابيغيرش قيمته <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;1)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi> بتساوي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Table&nbsp;4)</bdi>، مش <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>؛ مثلًا عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> هي T بينما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتبقى F.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>؛ بتبقى T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتبقى F.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q</bdi> بتبقى T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتبقى F، فهي مش equivalent. الـ commutative بيبدّل بس: <bdi dir=\"ltr\">q&nbsp;∧&nbsp;p</bdi>."
     ],
     [
-     "الـ T دي نتيجة الـ negation law التاني، p ∨ ¬p ≡ t. مع الـ ∧، p و ¬p عمرهم ما يبقوا true مع بعض.",
-     "صح. الـ negation law p ∧ ~p ≡ c: p و ¬p قيمهم دايمًا عكس بعض، فالـ conjunction بتاعتهم false دايمًا (Theorem 1.1.1, law 5) (L4).",
-     "الـ p بتبقى T في row واحد، لكن p ∧ ¬p بتبقى F في كل row. الـ negation law بيدي c (contradiction).",
-     "¬p بتبقى T لما p = F، لكن ساعتها p ∧ ¬p = F ∧ T = F. النتيجة دايمًا F، يعني c."
+     "الـ T دي نتيجة الـ negation law التاني، <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p&nbsp;≡&nbsp;t</bdi>. مع الـ ∧، p و <bdi dir=\"ltr\">¬p</bdi> عمرهم ما يبقوا true مع بعض.",
+     "صح. الـ negation law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~p&nbsp;≡&nbsp;c</bdi>: p و <bdi dir=\"ltr\">¬p</bdi> قيمهم دايمًا عكس بعض، فالـ conjunction بتاعتهم false دايمًا <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;5)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ p بتبقى T في row واحد، لكن <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> بتبقى F في كل row. الـ negation law بيدي c (contradiction).",
+     "الـ <bdi dir=\"ltr\">¬p</bdi> بتبقى T لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi>، لكن ساعتها <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p&nbsp;=&nbsp;F&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi>. النتيجة دايمًا F، يعني c."
     ],
     [
-     "صح. الـ Absorption p ∧ (p ∨ q) ≡ p: لو p بـ T يبقى p ∨ q كمان T؛ ولو p بـ F الـ conjunction بتبقى F (Theorem 1.1.1, law 10) (L4).",
-     "عند p = F و q = T الـ expression بتبقى F ∧ T = F لكن q بـ T، فهي مش q. الـ Absorption بيسيب p.",
-     "¬p عكس p، والـ expression بتساوي p، فالاتنين بيختلفوا في كل row.",
-     "عند p = T و q = T الـ expression بتبقى T لكن ¬q بـ F. الـ Absorption بيدي p."
+     "صح. الـ Absorption <bdi dir=\"ltr\">p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)&nbsp;≡&nbsp;p</bdi>: لو p بـ T يبقى <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> كمان T؛ ولو p بـ F الـ conjunction بتبقى F <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;10)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> الـ expression بتبقى <bdi dir=\"ltr\">F&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi> لكن q بـ T، فهي مش q. الـ Absorption بيسيب p.",
+     "الـ <bdi dir=\"ltr\">¬p</bdi> عكس p، والـ expression بتساوي p، فالاتنين بيختلفوا في كل row.",
+     "عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> الـ expression بتبقى T لكن <bdi dir=\"ltr\">¬q</bdi> بـ F. الـ Absorption بيدي p."
     ],
     [
-     "صح. (p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q) ≡ (¬p ∨ p) ∨ (¬q ∨ q) ≡ T: أي وقت p ∧ q تبقى true، p ∨ q بتبقى true (L5, Proof).",
-     "الـ contradiction بتبقى false في كل row، لكن الـ implication دي عمرها ما بتبقى false: أي وقت p ∧ q بـ T، p ∨ q كمان بـ T.",
+     "صح. بالقوانين:<span class=\"ltr\">(p ∧ q) → (p ∨ q)</span><span class=\"ltr\">≡ ¬(p ∧ q) ∨ (p ∨ q)</span><span class=\"ltr\">≡ (¬p ∨ p) ∨ (¬q ∨ q) ≡ T</span>أي وقت <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى true، <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true <bdi dir=\"ltr\">(L5,&nbsp;Proof)</bdi>.",
+     "الـ contradiction بتبقى false في كل row، لكن الـ implication دي عمرها ما بتبقى false: أي وقت <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ T، <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> كمان بـ T.",
      "الـ form ماينفعش تبقى كلها T وكلها F في نفس الوقت. هنا كل الـ rows بـ T، فهي tautology بس."
     ],
     [
-     "صح. لما p ∧ q تبقى true، يبقى q true، فـ p → q true.",
-     "عمرها ما بتبقى false: الـ implication بتبقى F بس في T → F، ولما p ∧ q بـ T يبقى q بـ T، فـ p → q بتبقى T.",
+     "صح. لما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى true، يبقى q true، فـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> true.",
+     "عمرها ما بتبقى false: الـ implication بتبقى F بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>، ولما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ T يبقى q بـ T، فـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى T.",
      "الـ statement form ماينفعش تبقى true دايمًا و false دايمًا في نفس الوقت. كل الـ rows هنا T: يعني tautology."
     ],
     [
-     "صح. P ∨ ¬P بتبقى T في الـ rows الاتنين عشان واحدة من P و ¬P دايمًا true: tautology، والـ negation law p ∨ ~p ≡ t (L4, Example 1.1.13).",
-     "اللي false دايمًا هي P ∧ ¬P (الـ contradiction). مع الـ ∨ فيه جزء دايمًا true، فهي دايمًا T.",
-     "هي true في كل row، مش في بعضها بس: لما P = T يبقى P بـ true؛ ولما P = F يبقى ¬P بـ true.",
+     "صح. <bdi dir=\"ltr\">P&nbsp;∨&nbsp;¬P</bdi> بتبقى T في الـ rows الاتنين عشان واحدة من P و <bdi dir=\"ltr\">¬P</bdi> دايمًا true، يعني tautology، والـ negation law <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p&nbsp;≡&nbsp;t</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Example&nbsp;1.1.13)</bdi>.",
+     "اللي false دايمًا هي <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P</bdi> (الـ contradiction). مع الـ ∨ فيه جزء دايمًا true، فهي دايمًا T.",
+     "هي true في كل row، مش في بعضها بس: لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> يبقى P بـ true؛ ولما <bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> يبقى <bdi dir=\"ltr\">¬P</bdi> بـ true.",
      "الـ rows الاتنين في الـ truth table ليهم قيمة، وهي T. مفيش حاجة undefined."
     ],
     [
-     "عمرها ما بتبقى true: P و ¬P قيمهم دايمًا عكس بعض، فعمرهم ما يبقوا T مع بعض.",
-     "صح. P ∧ ¬P بتبقى F في الـ rows الاتنين لأن P و ¬P مش ممكن يبقوا true مع بعض: contradiction، والـ negation law p ∧ ~p ≡ c (L4, Example 1.1.13).",
+     "عمرها ما بتبقى true، لأن P و <bdi dir=\"ltr\">¬P</bdi> قيمهم دايمًا عكس بعض، فعمرهم ما يبقوا T مع بعض.",
+     "صح. <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P</bdi> بتبقى F في الـ rows الاتنين لأن P و <bdi dir=\"ltr\">¬P</bdi> مش ممكن يبقوا true مع بعض: contradiction، والـ negation law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~p&nbsp;≡&nbsp;c</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Example&nbsp;1.1.13)</bdi>.",
      "هي false في كل row، مش true أحيانًا. الـ conjunction بين statement والنفي بتاعها بتبقى contradiction.",
      "الـ rows الاتنين ليهم قيمة، وهي F. الـ contradiction دي statement form متعرّفة تمامًا."
     ]
@@ -903,63 +903,63 @@ AR.dm = {
    "extra": [
     [
      "الـ De Morgan بيدخّل نفي جوه قوس. في الخطوة دي مفيش قوس متنفي؛ اللي حصل إن p اتطلعت عامل مشترك من two disjunctions.",
-     "الـ associative law بيعيد تجميع connective واحد بس، (p ∨ q) ∨ r ≡ p ∨ (q ∨ r). هنا الـ ∨ والـ ∧ بيبدّلوا أماكنهم حوالين p.",
-     "الـ Absorption بيشيل term، p ∧ (p ∨ q) ≡ p. هنا مفيش حاجة اختفت؛ الـ p ∨ اتطلعت عامل مشترك من القوسين.",
-     "صح. p ∨ (x ∧ y) ≡ (p ∨ x) ∧ (p ∨ y)، بس مقروءة من اليمين للشمال."
+     "الـ associative law بيعيد تجميع connective واحد بس:<span class=\"ltr\">(p ∨ q) ∨ r ≡ p ∨ (q ∨ r)</span>هنا الـ ∨ والـ ∧ بيبدّلوا أماكنهم حوالين p.",
+     "الـ Absorption بيشيل term، <bdi dir=\"ltr\">p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)&nbsp;≡&nbsp;p</bdi>. هنا مفيش حاجة اختفت؛ الـ <bdi dir=\"ltr\">p&nbsp;∨</bdi> اتطلعت عامل مشترك من القوسين.",
+     "صح. ده الـ distributive law:<span class=\"ltr\">p ∨ (x ∧ y) ≡ (p ∨ x) ∧ (p ∨ y)</span>بس مقروءة من اليمين للشمال."
     ],
     [
-     "صح. الـ Absorption بيدّي p، وبعدين الـ identity p ∧ T ≡ p.",
-     "الـ Absorption بيصغّر p ∧ (p ∨ q) لـ p، فـ p ∨ q أكبر من اللازم: عند p = F و q = T هي T لكن الـ expression بـ F.",
-     "الـ q اتشالت بالـ absorption: p ∧ (p ∨ q) ≡ p. عند p = F و q = T الـ expression بـ F بينما q بـ T.",
-     "الـ expression بتبقى F أي وقت p = F (لأنها conjunction فيها p)، فهي مش tautology. وبتتبسّط لـ p."
+     "صح. الـ Absorption بيدّي p، وبعدين الـ identity <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T&nbsp;≡&nbsp;p</bdi>.",
+     "الـ Absorption بيصغّر <bdi dir=\"ltr\">p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)</bdi> لـ p، فـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> أكبر من اللازم: عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> هي T لكن الـ expression بـ F.",
+     "الـ q اتشالت بالـ absorption: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)&nbsp;≡&nbsp;p</bdi>. عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> الـ expression بـ F بينما q بـ T.",
+     "الـ expression بتبقى F أي وقت <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> (لأنها conjunction فيها p)، فهي مش tautology. وبتتبسّط لـ p."
     ],
     [
-     "p → p بتبقى false بس في T → F، وده مش ممكن يحصل بنفس الـ p، فهي true دايمًا، يعني tautology.",
-     "صح. p ∧ ¬p ≡ c بالـ negation law، و c ∧ q ≡ c بالـ universal bound law، فالـ form بتبقى false في كل row (L4, Theorem 1.1.1).",
-     "(p ∧ q) → p دي tautology: لو p ∧ q بـ T يبقى p بـ T، فالـ implication عمرها ما تبقى T → F.",
-     "p ∨ ¬p دي الـ tautology المشهورة (negation law p ∨ ~p ≡ t)، true دايمًا، يعني عكس الـ contradiction."
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;p</bdi> بتبقى false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>، وده مش ممكن يحصل بنفس الـ p، فهي true دايمًا، يعني tautology.",
+     "صح. <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p&nbsp;≡&nbsp;c</bdi> بالـ negation law، و <bdi dir=\"ltr\">c&nbsp;∧&nbsp;q&nbsp;≡&nbsp;c</bdi> بالـ universal bound law، فالـ form بتبقى false في كل row <bdi dir=\"ltr\">(L4,&nbsp;Theorem&nbsp;1.1.1)</bdi>.",
+     "الـ <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;p</bdi> دي tautology: لو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ T يبقى p بـ T، فالـ implication عمرها ما تبقى <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> دي الـ tautology المشهورة (الـ negation law <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p&nbsp;≡&nbsp;t</bdi>)، وهي true دايمًا، يعني عكس الـ contradiction."
     ],
     [
-     "الـ negation laws هما p ∨ ~p ≡ t و p ∧ ~p ≡ c؛ فيهم ~p. لكن p ∨ c ≡ p مافيهاش أي نفي.",
-     "الـ universal bound laws هما p ∨ t ≡ t و p ∧ c ≡ c، والنتيجة فيهم هي الـ constant. هنا النتيجة p.",
-     "صح. الـ identity laws هما p ∧ t ≡ p و p ∨ c ≡ p: «or false» مابتغيرش p (Theorem 1.1.1, law 4) (L4).",
-     "الـ idempotent law بيجمع p مع نفسها، p ∨ p ≡ p. هنا p متجمّعة مع c، وده الـ identity law."
+     "الـ negation laws هما <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p&nbsp;≡&nbsp;t</bdi> و <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~p&nbsp;≡&nbsp;c</bdi>؛ فيهم <bdi dir=\"ltr\">~p</bdi>. لكن <bdi dir=\"ltr\">p&nbsp;∨&nbsp;c&nbsp;≡&nbsp;p</bdi> مافيهاش أي نفي.",
+     "الـ universal bound laws هما <bdi dir=\"ltr\">p&nbsp;∨&nbsp;t&nbsp;≡&nbsp;t</bdi> و <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c&nbsp;≡&nbsp;c</bdi>، والنتيجة فيهم هي الـ constant. هنا النتيجة p.",
+     "صح. الـ identity laws هما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p</bdi> و <bdi dir=\"ltr\">p&nbsp;∨&nbsp;c&nbsp;≡&nbsp;p</bdi>: «or false» مابتغيرش p <bdi dir=\"ltr\">(Theorem&nbsp;1.1.1,&nbsp;law&nbsp;4)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ idempotent law بيجمع p مع نفسها، <bdi dir=\"ltr\">p&nbsp;∨&nbsp;p&nbsp;≡&nbsp;p</bdi>. هنا p متجمّعة مع c، وده الـ identity law."
     ],
     [
-     "إن عدد الـ variables يختلف ده مابيحددش الـ equivalence (p ∨ (p ∧ q) ≡ p). لازم تقارن الـ truth values في row.",
+     "إن عدد الـ variables يختلف ده مابيحددش الـ equivalence (زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;p</bdi>). لازم تقارن الـ truth values في row.",
      "لو الاتنين tautologies يبقى أعمدتهم كلها T ويبقوا equivalent، يعني عكس اللي إنت عايز تثبته.",
      "المحاضرة بتقول إن القوانين ماتقدرش تثبت عدم الـ equivalence.",
-     "صح. الـ equivalence معناها إن الأعمدة تتطابق في كل row، فـ row واحد بيختلفوا فيه كفاية يثبت إنهم مش equivalent؛ والقوانين ماتقدرش تثبت ده (L4, Using truth tables vs laws)."
+     "صح. الـ equivalence معناها إن الأعمدة تتطابق في كل row، فـ row واحد بيختلفوا فيه كفاية يثبت إنهم مش equivalent؛ والقوانين ماتقدرش تثبت ده <bdi dir=\"ltr\">(L4, Using truth tables vs laws)</bdi>."
     ],
     [
-     "صح. De Morgan مرتين: ¬((p ∨ q) ∨ r) ≡ ¬(p ∨ q) ∧ ¬r ≡ ¬p ∧ ¬q ∧ ¬r. يعني ولا واحدة فيهم true (L4, Theorem 1.1.1 law 9).",
-     "¬p ∨ ¬q ∨ ¬r ده De Morgan لـ ¬(p ∧ q ∧ r). لما تنفي disjunction لازم كل ∨ تتحوّل لـ ∧.",
-     "ده نفى p بس وكمان حوّل الـ ∨ لـ ∧ عند q و r. الـ De Morgan بينفي كل الأجزاء: ¬p ∧ ¬q ∧ ¬r.",
-     "p ∧ q ∧ r شالت النفي خالص. الـ De Morgan بيسيبه على كل جزء: ¬p ∧ ¬q ∧ ¬r."
+     "صح. De Morgan مرتين:<span class=\"ltr\">¬((p ∨ q) ∨ r) ≡ ¬(p ∨ q) ∧ ¬r</span><span class=\"ltr\">≡ ¬p ∧ ¬q ∧ ¬r</span>يعني ولا واحدة فيهم true <bdi dir=\"ltr\">(L4,&nbsp;Theorem&nbsp;1.1.1&nbsp;law&nbsp;9)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q&nbsp;∨&nbsp;¬r</bdi> ده De Morgan لـ <bdi dir=\"ltr\">¬⁠(p&nbsp;∧&nbsp;q&nbsp;∧&nbsp;r)</bdi>. لما تنفي disjunction لازم كل ∨ تتحوّل لـ ∧.",
+     "ده نفى p بس وكمان حوّل الـ ∨ لـ ∧ عند q و r. الـ De Morgan بينفي كل الأجزاء: <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q&nbsp;∧&nbsp;¬r</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q&nbsp;∧&nbsp;r</bdi> شالت النفي خالص. الـ De Morgan بيسيبه على كل جزء: <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q&nbsp;∧&nbsp;¬r</bdi>."
     ],
     [
-     "الـ De Morgan بيدي ¬(¬p) ∧ ¬(¬q)؛ وبعدين النفي المزدوج لازم يتلغي ويبقى p و q، مش يفضل ¬p ∧ ¬q.",
-     "صح. De Morgan: ¬(¬p ∨ ¬q) ≡ ¬(¬p) ∧ ¬(¬q)؛ والـ double negative law بيدي p ∧ q (L4, Theorem 1.1.1 laws 9 and 6).",
-     "الـ De Morgan بيقلب الـ ∨ اللي جوه لـ ∧ لما النفي يدخل، فالنتيجة p ∧ q، مش p ∨ q.",
-     "¬(¬p ∨ ¬q) ≡ p ∧ q بتبقى F أي وقت p أو q بـ F، فهي مش tautology."
+     "الـ De Morgan بيدي <bdi dir=\"ltr\">¬⁠(¬p)&nbsp;∧&nbsp;¬⁠(¬q)</bdi>؛ وبعدين النفي المزدوج لازم يتلغي ويبقى p و q، مش يفضل <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>.",
+     "صح. بالـ De Morgan:<span class=\"ltr\">¬(¬p ∨ ¬q) ≡ ¬(¬p) ∧ ¬(¬q)</span>والـ double negative law بيدي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> <bdi dir=\"ltr\">(L4, Theorem 1.1.1 laws 9 and 6)</bdi>.",
+     "الـ De Morgan بيقلب الـ ∨ اللي جوه لـ ∧ لما النفي يدخل، فالنتيجة <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>، مش <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬⁠(¬p&nbsp;∨&nbsp;¬q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;q</bdi> بتبقى F أي وقت p أو q بـ F، فهي مش tautology."
     ],
     [
-     "إنهم يشتركوا في نفس الـ variables مابيخليهمش equivalent (p ∧ q و p ∨ q ليهم نفس الـ variables). لازم الأعمدة تتطابق.",
-     "لو p ∧ q كانت tautology يبقى معناها إن الاتنين true دايمًا. الـ equivalence محتاجة بس قيم متساوية في كل row، يعني p ↔ q تبقى true دايمًا.",
-     "صح. المحاضرة بتعرّف p ≡ q على إنها p ↔ q تبقى tautology، يعني p و q ليهم نفس الـ truth value في كل row (L4, Definitions).",
-     "إن p → q تبقى true في row واحد ده مابيقولش حاجة تقريبًا؛ الـ equivalence محتاجة تطابق في كل row، يعني p ↔ q تبقى true في كل الـ rows."
+     "إنهم يشتركوا في نفس الـ variables مابيخليهمش equivalent (الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> و <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> ليهم نفس الـ variables). لازم الأعمدة تتطابق.",
+     "لو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> كانت tautology يبقى معناها إن الاتنين true دايمًا. الـ equivalence محتاجة بس قيم متساوية في كل row، يعني <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> تبقى true دايمًا.",
+     "صح. المحاضرة بتعرّف <bdi dir=\"ltr\">p&nbsp;≡&nbsp;q</bdi> على إنها <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> تبقى tautology، يعني p و q ليهم نفس الـ truth value في كل row <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
+     "إن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> تبقى true في row واحد ده مابيقولش حاجة تقريبًا؛ الـ equivalence محتاجة تطابق في كل row، يعني <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> تبقى true في كل الـ rows."
     ],
     [
-     "الـ commutative law بيقول p ∧ q ≡ q ∧ p، فالـ pair ده equivalent ومش هو الإجابة.",
-     "الـ Absorption law بيقول p ∨ (p ∧ q) ≡ p، فالـ pair ده equivalent ومش هو الإجابة.",
-     "الـ double negative law بيقول ~(~p) ≡ p، فالـ pair ده equivalent ومش هو الإجابة.",
-     "صح. بيختلفوا لما p = T و q = F (الأولى F والتانية T)."
+     "الـ commutative law بيقول <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q&nbsp;≡&nbsp;q&nbsp;∧&nbsp;p</bdi>، فالـ pair ده equivalent ومش هو الإجابة.",
+     "الـ Absorption law بيقول <bdi dir=\"ltr\">p&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)&nbsp;≡&nbsp;p</bdi>، فالـ pair ده equivalent ومش هو الإجابة.",
+     "الـ double negative law بيقول <bdi dir=\"ltr\">~⁠(~p)&nbsp;≡&nbsp;p</bdi>، فالـ pair ده equivalent ومش هو الإجابة.",
+     "صح. بيختلفوا لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> (الأولى F والتانية T)."
     ],
     [
-     "صح. Law 11 في Theorem 1.1.1 اسمه «negations of t and c»: نفي الـ tautology بيبقى contradiction (~t ≡ c) والعكس (L4).",
-     "الـ identity laws هما p ∧ t ≡ p و p ∨ c ≡ p (law 4)؛ بيجمعوا p مع constant، من غير نفي.",
-     "الـ double negative law هو ~(~p) ≡ p (law 6)، يعني نفيين لـ variable. لكن ~t ≡ c ده نفي واحد لـ constant.",
-     "الـ universal bound laws هما p ∨ t ≡ t و p ∧ c ≡ c (law 8). أما ~t ≡ c فده law 11، negations of t and c."
+     "صح. الـ <bdi dir=\"ltr\">Law&nbsp;11</bdi> في <bdi dir=\"ltr\">Theorem&nbsp;1.1.1</bdi> اسمه «<bdi dir=\"ltr\">negations&nbsp;of&nbsp;t&nbsp;and&nbsp;c</bdi>»: نفي الـ tautology بيبقى contradiction <bdi dir=\"ltr\">(~t&nbsp;≡&nbsp;c)</bdi> والعكس <bdi dir=\"ltr\">(L4)</bdi>.",
+     "الـ identity laws هما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p</bdi> و <bdi dir=\"ltr\">p&nbsp;∨&nbsp;c&nbsp;≡&nbsp;p</bdi> (law 4)؛ بيجمعوا p مع constant، من غير نفي.",
+     "الـ double negative law هو <bdi dir=\"ltr\">~⁠(~p)&nbsp;≡&nbsp;p</bdi> (law 6)، يعني نفيين لـ variable. لكن <bdi dir=\"ltr\">~t&nbsp;≡&nbsp;c</bdi> ده نفي واحد لـ constant.",
+     "الـ universal bound laws هما <bdi dir=\"ltr\">p&nbsp;∨&nbsp;t&nbsp;≡&nbsp;t</bdi> و <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c&nbsp;≡&nbsp;c</bdi> <bdi dir=\"ltr\">(law&nbsp;8)</bdi>. أما <bdi dir=\"ltr\">~t&nbsp;≡&nbsp;c</bdi> فده الـ <bdi dir=\"ltr\">law&nbsp;11</bdi>، اللي اسمه negations of t and c."
     ]
    ]
   },
@@ -968,10 +968,10 @@ AR.dm = {
     {
      "h": "نفي الـ conditional statement",
      "pts": [
-      "بالتعريف p → q بتبقى false لو وبس لو الـ hypothesis p تبقى true والـ conclusion q تبقى false. يبقى: <b>نفي \"if p then q\" مكافئ منطقيًا لـ \"p and not q\"</b>.",
-      "بالرموز: <b>~(p → q) ≡ p ∧ ~q</b>.",
-      "الاشتقاق من p → q ≡ ~p ∨ q: ~(p → q) ≡ ~(~p ∨ q) ≡ ~(~p) ∧ (~q) [De Morgan] ≡ p ∧ ~q [double negative].",
-      "Example 1.2.4: (a) \"If my car is in the repair shop, then I cannot get to class.\" النفي: \"My car is in the repair shop <b>and</b> I can get to class.\" (b) \"If Sara lives in Athens, then she lives in Greece.\" النفي: \"Sara lives in Athens and she does not live in Greece.\" (ممكن تكون عايشة في Athens اللي في Georgia أو Ohio أو Wisconsin.)",
+      "بالتعريف <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false لو وبس لو الـ hypothesis p تبقى true والـ conclusion q تبقى false. يبقى: <b>نفي \"if p then q\" مكافئ منطقيًا لـ \"p and not q\"</b>.",
+      "بالرموز: <b><bdi dir=\"ltr\">~⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;~q</bdi></b>.",
+      "الاشتقاق من <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;~p&nbsp;∨&nbsp;q</bdi> بيمشي كده:<span class=\"ltr\">~(p → q) ≡ ~(~p ∨ q)</span><span class=\"ltr\">≡ ~(~p) ∧ (~q) [De Morgan]</span><span class=\"ltr\">≡ p ∧ ~q [double negative]</span>",
+      "مثال <bdi dir=\"ltr\">Example&nbsp;1.2.4</bdi>:<br>(أ) الجملة: <bdi dir=\"ltr\">\"If my car is in the repair shop, then I cannot get to class.\"</bdi><br>النفي: <bdi dir=\"ltr\">\"My car is in the repair shop <b>and</b> I can get to class.\"</bdi><br>(ب) الجملة: <bdi dir=\"ltr\">\"If Sara lives in Athens, then she lives in Greece.\"</bdi><br>النفي: <bdi dir=\"ltr\">\"Sara lives in Athens and she does not live in Greece.\"</bdi><br>(ممكن تكون عايشة في Athens اللي في Georgia أو Ohio أو Wisconsin.)",
       "غلطة مشهورة: نفي الـ if-then <b>مش</b> if-then تانية؛ ده جملة فيها \"and\"."
      ]
     },
@@ -979,229 +979,229 @@ AR.dm = {
      "h": "ترتيب العمليات (order of operations) للـ logical operators"
     },
     {
-     "h": "الـ Biconditional: p ↔ q ≡ (p → q) ∧ (q → p)"
+     "h": "الـ Biconditional:<span class=\"ltr\">p ↔ q ≡ (p → q) ∧ (q → p)</span>"
     },
     {
-     "h": "Table 7: الـ equivalences اللي فيها conditional statements"
+     "h": "جدول <bdi dir=\"ltr\">Table&nbsp;7</bdi>: الـ equivalences اللي فيها conditional statements"
     },
     {
-     "h": "Table 8: الـ equivalences اللي فيها biconditionals"
+     "h": "جدول <bdi dir=\"ltr\">Table&nbsp;8</bdi>: الـ equivalences اللي فيها biconditionals"
     },
     {
      "h": "الـ Converse والـ contrapositive والـ inverse و\"if and only if\"",
      "pts": [
-      "لـ p → q: الـ <b>converse</b> هو q → p؛ الـ <b>contrapositive</b> هو ¬q → ¬p (مكافئ لـ p → q)؛ الـ <b>inverse</b> هو ¬p → ¬q (مكافئ للـ converse).",
-      "الـ converse بتاع ¬p → q هو <b>q → ¬p</b> (بس بدّل الـ hypothesis والـ conclusion؛ Exam 2020/21 Q8).",
-      "من تعريف <i>if</i> و<i>only if</i> كل واحدة لوحدها، \"p if, and only if, q\" معناها الاتنين: \"p if q\" (q → p) و\"p only if q\" (p → q).",
-      "الجدول اللي فوق بيوضح إن p ↔ q و (p → q) ∧ (q → p) ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (Exam 2024/25 Q2b، Exam 2023/24 Q3b)."
+      "لـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>: الـ <b>converse</b> هو <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi>؛ الـ <b>contrapositive</b> هو <bdi dir=\"ltr\">¬q&nbsp;→&nbsp;¬p</bdi> (مكافئ لـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>)؛ الـ <b>inverse</b> هو <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q</bdi> (مكافئ للـ converse).",
+      "الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi> هو <b><bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi></b> (بس بدّل الـ hypothesis والـ conclusion؛ من امتحان <bdi dir=\"ltr\">2020/21</bdi>، سؤال <bdi dir=\"ltr\">Q8</bdi>).",
+      "من تعريف <i>if</i> و<i>only if</i> كل واحدة لوحدها، \"p if, and only if, q\" معناها الاتنين: \"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi> و\"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi>.",
+      "الجدول اللي فوق بيوضح إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> و <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)&nbsp;∧&nbsp;(q&nbsp;→&nbsp;p)</bdi> ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (من امتحان <bdi dir=\"ltr\">2024/25&nbsp;Q2b</bdi> وامتحان <bdi dir=\"ltr\">2023/24&nbsp;Q3b</bdi>)."
      ]
     },
     {
-     "h": "الإثبات بسلسلة equivalences: ¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬q"
+     "h": "الإثبات بسلسلة equivalences:<span class=\"ltr\">¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬q</span>"
     },
     {
-     "h": "إثبات: (p ∧ q) → (p ∨ q) هي tautology"
+     "h": "إثبات: <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;(p&nbsp;∨&nbsp;q)</bdi> هي tautology"
     },
     {
-     "h": "إثبات: [¬p ∧ (p ∨ q)] → q هي tautology (بالقوانين)"
+     "h": "إثبات: <bdi dir=\"ltr\">[¬p&nbsp;∧&nbsp;(p&nbsp;∨&nbsp;q)]&nbsp;→&nbsp;q</bdi> هي tautology (بالقوانين)"
     },
     {
      "h": "تمارين من الـ slides (كلها tautologies)"
     }
    ],
    "cards": [
-    "p ∧ ~q (\"p and not q\").",
-    "\"My car is in the repair shop and I can get to class.\"",
-    "1. ~ ؛ 2. ∧، ∨ ؛ 3. →، ↔ (ممكن تحتاج أقواس لو ظهر اتنين من نفس المستوى).",
-    "(p → q) ∧ (q → p)، وكمان (p ∧ q) ∨ (¬p ∧ ¬q) و ¬p ↔ ¬q.",
-    "p ↔ ¬q",
-    "¬p ∨ q و ¬q → ¬p (الـ contrapositive).",
-    "¬p → q",
-    "¬(p → ¬q)",
-    "p → (q ∧ r)",
-    "(p ∨ q) → r",
-    "p → (q ∨ r)",
-    "(p ∧ q) → r",
-    "q → p",
-    "¬q → ¬p (مكافئ لـ p → q).",
-    "\"p if q\" (q → p) و \"p only if q\" (p → q).",
-    "\"John is not rich or he is famous\"، يعني \"If John is rich, then he is famous\"."
+    "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~q</bdi> (\"p and not q\").",
+    "النفي: \"My car is in the repair shop and I can get to class.\"",
+    "الترتيب:<span class=\"ltr\">1. ~ ; 2. ∧, ∨ ; 3. →, ↔</span>(ممكن تحتاج أقواس لو ظهر اتنين من نفس المستوى).",
+    "الـ <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)&nbsp;∧&nbsp;(q&nbsp;→&nbsp;p)</bdi>، وكمان <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;∨&nbsp;(¬p&nbsp;∧&nbsp;¬q)</bdi> و <bdi dir=\"ltr\">¬p&nbsp;↔&nbsp;¬q</bdi>.",
+    "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;¬q</bdi>",
+    "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi> و <bdi dir=\"ltr\">¬q&nbsp;→&nbsp;¬p</bdi> (الـ contrapositive).",
+    "الـ <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi>",
+    "الـ <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;¬q)</bdi>",
+    "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;(q&nbsp;∧&nbsp;r)</bdi>",
+    "الـ <bdi dir=\"ltr\">(p&nbsp;∨&nbsp;q)&nbsp;→&nbsp;r</bdi>",
+    "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;(q&nbsp;∨&nbsp;r)</bdi>",
+    "الـ <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi>",
+    "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi>",
+    "الـ <bdi dir=\"ltr\">¬q&nbsp;→&nbsp;¬p</bdi> (مكافئ لـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>).",
+    "معناها \"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi> و \"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi>.",
+    "النفي: \"John is not rich or he is famous\"، يعني \"If John is rich, then he is famous\"."
    ],
    "qa": [
-    "الـ p → q بتبقى false بس لما p تبقى true و q تبقى false، يبقى ~(p → q) ≡ p ∧ ~q. جبريًا: ~(p → q) ≡ ~(~p ∨ q) ≡ ~(~p) ∧ ~q (De Morgan) ≡ p ∧ ~q (double negative). النفي: \"Sara lives in Athens and she does not live in Greece.\"",
-    "p q | p→q | q→p | p↔q | (p→q)∧(q→p): TT: T T T T؛ TF: F T F F؛ FT: T F F F؛ FF: T T T T. عمود p ↔ q وعمود (p → q) ∧ (q → p) متطابقين، يبقوا logically equivalent.",
-    "¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [2nd De Morgan] ≡ ¬p ∧ [¬(¬p) ∨ ¬q] [1st De Morgan] ≡ ¬p ∧ (p ∨ ¬q) [double negation] ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [2nd distributive] ≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F] ≡ (¬p ∧ ¬q) ∨ F [commutative] ≡ ¬p ∧ ¬q [identity].",
-    "(p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q) ≡ (¬p ∨ ¬q) ∨ (p ∨ q) [De Morgan] ≡ (¬p ∨ p) ∨ (¬q ∨ q) [associative، commutative] ≡ T ∨ T ≡ T [domination].",
-    "الـ Rows p q r | p→q | p→r | (p→q)∧(p→r) | q∧r | p→(q∧r): TTT: T T T T T؛ TTF: T F F F F؛ TFT: F T F F F؛ TFF: F F F F F؛ FTT: T T T T T؛ FTF: T T T F T؛ FFT: T T T F T؛ FFF: T T T F T. عمودين النتيجة متطابقين في الـ 8 rows، يبقى الـ forms دي equivalent.",
-    "1. الـ Negation ~ الأول. 2. الـ ∧ والـ ∨ تاني (حط أقواس لو الاتنين ظهروا). 3. الـ → والـ ↔ تالت (حط أقواس لو الاتنين ظهروا). مثلًا p ∨ q → r معناها (p ∨ q) → r، و r ∨ p ∧ q محتاجة أقواس عشان ماتبقاش ملخبطة."
+    "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما p تبقى true و q تبقى false، يبقى <bdi dir=\"ltr\">~⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;~q</bdi>. جبريًا:<span class=\"ltr\">~(p → q) ≡ ~(~p ∨ q)</span><span class=\"ltr\">≡ ~(~p) ∧ ~q (De Morgan)</span><span class=\"ltr\">≡ p ∧ ~q (double negative)</span>النفي: \"Sara lives in Athens and she does not live in Greece.\"",
+    "الجدول:<span class=\"ltr\">p q | p→q | q→p | p↔q | (p→q)∧(q→p)</span><span class=\"ltr\">TT: T T T T</span><span class=\"ltr\">TF: F T F F</span><span class=\"ltr\">FT: T F F F</span><span class=\"ltr\">FF: T T T T</span>عمود <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> وعمود <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)&nbsp;∧&nbsp;(q&nbsp;→&nbsp;p)</bdi> متطابقين، يبقوا logically equivalent.",
+    "سلسلة الـ equivalences:<span class=\"ltr\">¬(p ∨ (¬p ∧ q))</span><span class=\"ltr\">≡ ¬p ∧ ¬(¬p ∧ q) [2nd De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ [¬(¬p) ∨ ¬q] [1st De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ (p ∨ ¬q) [double negation]</span><span class=\"ltr\">≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [2nd distributive]</span><span class=\"ltr\">≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F]</span><span class=\"ltr\">≡ (¬p ∧ ¬q) ∨ F [commutative]</span><span class=\"ltr\">≡ ¬p ∧ ¬q [identity]</span>",
+    "بالقوانين:<span class=\"ltr\">(p ∧ q) → (p ∨ q)</span><span class=\"ltr\">≡ ¬(p ∧ q) ∨ (p ∨ q)</span><span class=\"ltr\">≡ (¬p ∨ ¬q) ∨ (p ∨ q) [De Morgan]</span><span class=\"ltr\">≡ (¬p ∨ p) ∨ (¬q ∨ q) [associative, commutative]</span><span class=\"ltr\">≡ T ∨ T ≡ T [domination]</span>",
+    "الـ Rows:<span class=\"ltr\">p q r | p→q | p→r | (p→q)∧(p→r) | q∧r | p→(q∧r)</span><span class=\"ltr\">TTT: T T T T T</span><span class=\"ltr\">TTF: T F F F F</span><span class=\"ltr\">TFT: F T F F F</span><span class=\"ltr\">TFF: F F F F F</span><span class=\"ltr\">FTT: T T T T T</span><span class=\"ltr\">FTF: T T T F T</span><span class=\"ltr\">FFT: T T T F T</span><span class=\"ltr\">FFF: T T T F T</span>عمودين النتيجة متطابقين في الـ 8 rows، يبقى الـ forms دي equivalent.",
+    "الترتيب:<br>(1) الـ Negation ~ الأول.<br>(2) الـ ∧ والـ ∨ تاني (حط أقواس لو الاتنين ظهروا).<br>(3) الـ → والـ ↔ تالت (حط أقواس لو الاتنين ظهروا).<br>مثلًا <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;→&nbsp;r</bdi> معناها <bdi dir=\"ltr\">(p&nbsp;∨&nbsp;q)&nbsp;→&nbsp;r</bdi>، و <bdi dir=\"ltr\">r&nbsp;∨&nbsp;p&nbsp;∧&nbsp;q</bdi> محتاجة أقواس عشان ماتبقاش ملخبطة."
    ],
    "quiz": [
     [
-     "صح. الـ p → q بتبقى false بس لما p تكون true و q تكون false، علشان كده ~(p → q) ≡ p ∧ ~q. وبالقوانين: ~(~p ∨ q) ≡ p ∧ ~q (De Morgan والـ double negative) (L5, Negation of a conditional).",
-     "الـ p لوحدها بتبقى T في الـ row اللي فيه p = T و q = T، وهناك p → q بـ T ونفيها F. خلي بالك النفي محتاج ¬q كمان: p ∧ ¬q.",
-     "الـ q بتبقى T في الـ row اللي هو T, T، بس هناك p → q true، يعني نفيها F. النفي هو p ∧ ¬q (لازم q تبقى false).",
-     "الـ p ∨ q بـ T في الـ row اللي هو T, T، وهناك ¬(p → q) بـ F. الفكرة إن نفي الـ if-then بيطلع «and»: p ∧ ¬q."
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما p تكون true و q تكون false، علشان كده <bdi dir=\"ltr\">~⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;~q</bdi>. وبالقوانين: <bdi dir=\"ltr\">~⁠(~p&nbsp;∨&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;~q</bdi> (De Morgan والـ double negative) <bdi dir=\"ltr\">(L5, Negation of a conditional)</bdi>.",
+     "الـ p لوحدها بتبقى T في الـ row اللي فيه <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ T ونفيها F. خلي بالك النفي محتاج <bdi dir=\"ltr\">¬q</bdi> كمان: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ q بتبقى T في الـ row اللي هو T, T، بس هناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> true، يعني نفيها F. النفي هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> (لازم q تبقى false).",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بـ T في الـ row اللي هو T, T، وهناك <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)</bdi> بـ F. الفكرة إن نفي الـ if-then بيطلع «and»: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>."
     ],
     [
-     "الـ p ∨ q بتبقى true في تلات rows، لكن ¬(p → q) true في row واحد بس: p = T و q = F. الصيغة الصح هي p ∧ ¬q.",
-     "صح. الـ p → q بتبقى false بس لما الـ hypothesis تبقى true والـ conclusion false، علشان كده ¬(p → q) ≡ p ∧ ¬q (Table 7؛ وبتطلع من ¬(¬p ∨ q) بـ De Morgan) (L5).",
-     "الـ p ∨ ¬q ≡ q → p (الـ converse)، ودي true في تلات rows. أما نفي p → q فـ true في row واحد بس: p ∧ ¬q.",
-     "الـ p → q دي الجملة الأصلية نفسها، وعكس نفيها في كل row. ¬(p → q) ≡ p ∧ ¬q."
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true في تلات rows، لكن <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)</bdi> true في row واحد بس: <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>. الصيغة الصح هي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما الـ hypothesis تبقى true والـ conclusion false، علشان كده <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi> (Table 7؛ وبتطلع من <bdi dir=\"ltr\">¬⁠(¬p&nbsp;∨&nbsp;q)</bdi> بـ De Morgan) <bdi dir=\"ltr\">(L5)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q&nbsp;≡&nbsp;q&nbsp;→&nbsp;p</bdi> (الـ converse)، ودي true في تلات rows. أما نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> فـ true في row واحد بس: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> دي الجملة الأصلية نفسها، وعكس نفيها في كل row. <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi>."
     ],
     [
-     "صح. الـ row الوحيد اللي فيه p → q بـ false هو p = T و q = F، يبقى نفيها «p and not q»: ¬(p → q) ≡ p ∧ ¬q (L5, Table 7).",
-     "الـ q → p ده الـ converse بتاع p → q، يعني if-then تانية. ونفي الـ if-then بيبقى جملة «and»: p ∧ ¬q.",
-     "الـ ¬p ∧ q بتبقى true بس عند p = F و q = T، ودي ¬(q → p)، يعني نفي الـ converse. أما ¬(p → q) ≡ p ∧ ¬q.",
-     "الـ q ∧ ¬p هي نفسها ¬p ∧ q (commutative)، يعني نفي q → p. نفي p → q محتاج p تبقى true و q تبقى false: p ∧ ¬q."
+     "صح. الـ row الوحيد اللي فيه <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ false هو <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، يبقى نفيها «<bdi dir=\"ltr\">p&nbsp;and&nbsp;not&nbsp;q</bdi>»، يعني <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi> <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>.",
+     "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> ده الـ converse بتاع <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>، يعني if-then تانية. ونفي الـ if-then بيبقى جملة «and»: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;q</bdi> بتبقى true بس عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، ودي <bdi dir=\"ltr\">¬⁠(q&nbsp;→&nbsp;p)</bdi>، يعني نفي الـ converse. أما <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">q&nbsp;∧&nbsp;¬p</bdi> هي نفسها <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;q</bdi> (commutative)، يعني نفي <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi>. نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> محتاج p تبقى true و q تبقى false: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>."
     ],
     [
-     "صح. P → Q ≡ ¬P ∨ Q (Table 4/Table 7): الاتنين false بس لما P = T و Q = F، و true في التلات rows التانيين (L5).",
-     "في الـ row اللي فيه P = T و Q = F، الـ P ∨ Q بـ T بس P → Q بـ F؛ وفي الـ row اللي هو F, F، الـ P ∨ Q بـ F بس P → Q بـ T.",
-     "الـ Q → P ده الـ converse؛ بيختلف في الـ rows TF و FT (مثلًا P = F و Q = T: P → Q = T لكن Q → P = F).",
-     "الـ ¬P ∧ Q بتبقى T بس في الـ row اللي هو F, T؛ وفي الـ row اللي هو T, T بتبقى F مع إن P → Q بـ T."
+     "صح. <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;≡&nbsp;¬P&nbsp;∨&nbsp;Q</bdi> <bdi dir=\"ltr\">(Table&nbsp;4/Table&nbsp;7)</bdi>: الاتنين false بس لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi>، و true في التلات rows التانيين <bdi dir=\"ltr\">(L5)</bdi>.",
+     "في الـ row اللي فيه <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi>، الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بـ T بس <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بـ F؛ وفي الـ row اللي هو F, F، الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بـ F بس <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بـ T.",
+     "الـ <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> ده الـ converse؛ بيختلف في الـ rows TF و FT، مثلًا عند <bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;T</bdi> بيطلع:<span class=\"ltr\">P → Q = T, Q → P = F</span>",
+     "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;Q</bdi> بتبقى T بس في الـ row اللي هو F, T؛ وفي الـ row اللي هو T, T بتبقى F مع إن <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بـ T."
     ],
     [
-     "الـ p ∨ q بتختلف عن p → q في الـ rows T, F (T قصاد F) و F, F (F قصاد T). الـ rewrite الصح بينفي p: ¬p ∨ q.",
-     "صح. p → q ≡ ¬p ∨ q، ودي أهم rewrite في Table 7: الاتنين false بس لما p = T و q = F (L5).",
-     "الـ p ∧ q بـ F في الـ row اللي هو F, F، وهناك p → q بـ T (الـ hypothesis false). يعني بيتفقوا بس في الـ rows TT و TF.",
-     "الـ «+» ده عملية حسابية (أو OR في رموز الـ circuits)، ومش من الـ connectives اللي في المحاضرة. p → q ≡ ¬p ∨ q."
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتختلف عن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> في الـ rows T, F (T قصاد F) و F, F (F قصاد T). الـ rewrite الصح بينفي p: <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi>.",
+     "صح. <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi>، ودي أهم rewrite في Table 7: الاتنين false بس لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L5)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ F في الـ row اللي هو F, F، وهناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ T (الـ hypothesis false). يعني بيتفقوا بس في الـ rows TT و TF.",
+     "الـ «+» ده عملية حسابية (أو OR في رموز الـ circuits)، ومش من الـ connectives اللي في المحاضرة. <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi>."
     ],
     [
-     "صح. الـ p ↔ q معناها «p only if q» (p → q) و«p if q» (q → p)؛ والـ truth table بيبين إن العمودين متطابقين (L5, Biconditional; Table 8).",
-     "الـ p → q ده اتجاه واحد بس («only if»)؛ في الـ row اللي هو F, T بتبقى T مع إن p ↔ q بـ F. الـ biconditional محتاج q → p كمان.",
-     "الـ ¬p بتتجاهل q خالص: في الـ row اللي هو T, T بتبقى F مع إن p ↔ q بـ T.",
-     "الـ p ∨ q بـ F في الـ row اللي هو F, F، لكن p ↔ q هناك بـ T (القيمتين زي بعض)، وكمان p ∨ q بـ T في الـ rows TF و FT اللي فيهم ↔ بـ F."
+     "صح. الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> معناها «<bdi dir=\"ltr\">p&nbsp;only&nbsp;if&nbsp;q</bdi>» <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi> و«<bdi dir=\"ltr\">p&nbsp;if&nbsp;q</bdi>» <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi>؛ والـ truth table بيبين إن العمودين متطابقين <bdi dir=\"ltr\">(L5, Biconditional; Table 8)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> ده اتجاه واحد بس («only if»)؛ في الـ row اللي هو F, T بتبقى T مع إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بـ F. الـ biconditional محتاج <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
+     "الـ <bdi dir=\"ltr\">¬p</bdi> بتتجاهل q خالص: في الـ row اللي هو T, T بتبقى F مع إن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بـ T.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بـ F في الـ row اللي هو F, F، لكن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> هناك بـ T (القيمتين زي بعض)، وكمان <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بـ T في الـ rows TF و FT اللي فيهم ↔ بـ F."
     ],
     [
-     "صح. الـ P ↔ Q بتبقى true لما الاتنين true (P ∧ Q) أو الاتنين false (¬P ∧ ¬Q): p ↔ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q) (L5, Table 8).",
-     "الـ (P ∨ Q) ∧ (¬P ∨ ¬Q) معناها واحد على الأقل true ومش الاتنين، يعني واحد بس true: ده P ⊕ Q، اللي هو نفي P ↔ Q.",
-     "الـ P ∨ ¬Q ≡ Q → P، ده اتجاه واحد بس؛ في الـ row اللي هو T, F بتبقى T مع إن P ↔ Q بـ F.",
-     "الـ P ∧ ¬Q ≡ ¬(P → Q)، ودي true بس في الـ row اللي هو T, F، وهناك P ↔ Q بـ F، يبقى مش equivalent."
+     "صح. الـ <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> بتبقى true لما الاتنين true <bdi dir=\"ltr\">(P&nbsp;∧&nbsp;Q)</bdi> أو الاتنين false <bdi dir=\"ltr\">(¬P&nbsp;∧&nbsp;¬Q)</bdi>، يعني:<span class=\"ltr\">p ↔ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q)</span>المصدر <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;8)</bdi>.",
+     "الـ <bdi dir=\"ltr\">(P&nbsp;∨&nbsp;Q)&nbsp;∧&nbsp;(¬P&nbsp;∨&nbsp;¬Q)</bdi> معناها واحد على الأقل true ومش الاتنين، يعني واحد بس true: ده <bdi dir=\"ltr\">P&nbsp;⊕&nbsp;Q</bdi>، اللي هو نفي <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi>.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;¬Q&nbsp;≡&nbsp;Q&nbsp;→&nbsp;P</bdi>، ده اتجاه واحد بس؛ في الـ row اللي هو T, F بتبقى T مع إن <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> بـ F.",
+     "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬Q&nbsp;≡&nbsp;¬⁠(P&nbsp;→&nbsp;Q)</bdi>، ودي true بس في الـ row اللي هو T, F، وهناك <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> بـ F، يبقى مش equivalent."
     ],
     [
-     "صح. ده الـ Division into cases (Table 7): لو أي واحدة من p أو q بتوصّل لـ r، يبقى لازم p → r و q → r الاتنين يتحققوا، علشان كده (p ∨ q) → r ≡ (p → r) ∧ (q → r) (L5).",
-     "الـ p → q شالت الـ r خالص. خد p = q = T و r = F: الـ p ∨ q → r بـ F لكن p → q بـ T.",
-     "الـ q → p مفيهاش r أصلًا. عند p = q = T و r = F الأصلية بـ F لكن q → p بـ T.",
-     "الـ q → r بتتجاهل p. عند p = T و q = F و r = F الأصلية p ∨ q → r بـ F لكن q → r بـ T."
+     "صح. ده الـ Division into cases <bdi dir=\"ltr\">(Table&nbsp;7)</bdi>: لو أي واحدة من p أو q بتوصّل لـ r، يبقى لازم <bdi dir=\"ltr\">p&nbsp;→&nbsp;r</bdi> و <bdi dir=\"ltr\">q&nbsp;→&nbsp;r</bdi> الاتنين يتحققوا، علشان كده:<span class=\"ltr\">(p ∨ q) → r ≡ (p → r) ∧ (q → r)</span>المصدر <bdi dir=\"ltr\">(L5)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> شالت الـ r خالص. خد <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi>: الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;→&nbsp;r</bdi> بـ F لكن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ T.",
+     "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> مفيهاش r أصلًا. عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> الأصلية بـ F لكن <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> بـ T.",
+     "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;r</bdi> بتتجاهل p. عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> الأصلية <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;→&nbsp;r</bdi> بـ F لكن <bdi dir=\"ltr\">q&nbsp;→&nbsp;r</bdi> بـ T."
     ],
     [
-     "الـ p ∧ q شالت الـ r ومش حتى implication: عند p = q = F بتبقى F مع إن (p ∧ q) → r بـ T.",
-     "الـ r → (p ∧ q) ده الـ converse: عند r = T و p = F بتبقى F، مع إن (p ∧ q) → r بـ T.",
-     "صح. طبّق a → b ≡ ¬a ∨ b على a = p ∧ q و b = r: (p ∧ q) → r ≡ ¬(p ∧ q) ∨ r (L5, Table 7).",
-     "الـ r → (p ∨ q) implication مختلفة: عند p = q = T و r = F بتبقى T لكن (p ∧ q) → r بـ F."
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> شالت الـ r ومش حتى implication: عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;F</bdi> بتبقى F مع إن <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بـ T.",
+     "الـ <bdi dir=\"ltr\">r&nbsp;→&nbsp;(p&nbsp;∧&nbsp;q)</bdi> ده الـ converse: عند <bdi dir=\"ltr\">r&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> بتبقى F، مع إن <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بـ T.",
+     "صح. طبّق <bdi dir=\"ltr\">a&nbsp;→&nbsp;b&nbsp;≡&nbsp;¬a&nbsp;∨&nbsp;b</bdi> على <bdi dir=\"ltr\">a&nbsp;=&nbsp;p&nbsp;∧&nbsp;q</bdi> و <bdi dir=\"ltr\">b&nbsp;=&nbsp;r</bdi> يطلع:<span class=\"ltr\">(p ∧ q) → r ≡ ¬(p ∧ q) ∨ r</span>المصدر <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>.",
+     "الـ <bdi dir=\"ltr\">r&nbsp;→&nbsp;(p&nbsp;∨&nbsp;q)</bdi> implication مختلفة: عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> بتبقى T لكن <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بـ F."
     ],
     [
-     "الـ p → q غيّرت الـ hypothesis من ¬p لـ p من غير ما تبدّل حاجة، يبقى ده مش الـ converse بتاع ¬p → q.",
-     "الـ ¬p → ¬q بتنفي الطرفين بتوع p → q من غير تبديل، ودي الـ inverse بتاع p → q. الـ converse بتاع ¬p → q بس بيبدّل الطرفين: q → ¬p.",
-     "صح. الـ converse بتاع a → b هو b → a: بدّل الـ hypothesis والـ conclusion. ومع a = ¬p و b = q يطلع q → ¬p (L5, Converse, contrapositive, inverse)."
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> غيّرت الـ hypothesis من <bdi dir=\"ltr\">¬p</bdi> لـ p من غير ما تبدّل حاجة، يبقى ده مش الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q</bdi> بتنفي الطرفين بتوع <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> من غير تبديل، ودي الـ inverse بتاع <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>. الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi> بس بيبدّل الطرفين: <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi>.",
+     "صح. الـ converse بتاع <bdi dir=\"ltr\">a&nbsp;→&nbsp;b</bdi> هو <bdi dir=\"ltr\">b&nbsp;→&nbsp;a</bdi>: بدّل الـ hypothesis والـ conclusion. ومع <bdi dir=\"ltr\">a&nbsp;=&nbsp;¬p</bdi> و <bdi dir=\"ltr\">b&nbsp;=&nbsp;q</bdi> يطلع <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L5, Converse, contrapositive, inverse)</bdi>."
     ],
     [
-     "الـ q → ¬p ده الـ converse بتاع ¬p → q، ومش equivalent: عند p = T و q = T الأصلية بـ T لكن q → ¬p بـ F.",
-     "الـ p → ¬q ≡ ¬p ∨ ¬q بتبقى F عند p = q = T، وهناك ¬p → q (F → T) بـ T، يبقى مش equivalent.",
-     "صح. من a → b ≡ ¬a ∨ b يطلع ¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q بالـ double negation (L5, Table 7: p ∨ q ≡ ¬p → q)."
+     "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi> ده الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi>، ومش equivalent: عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> الأصلية بـ T لكن <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi> بـ F.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;¬q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi> بتبقى F عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi>، وهناك <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi> <bdi dir=\"ltr\">(F&nbsp;→&nbsp;T)</bdi> بـ T، يبقى مش equivalent.",
+     "صح. من <bdi dir=\"ltr\">a&nbsp;→&nbsp;b&nbsp;≡&nbsp;¬a&nbsp;∨&nbsp;b</bdi> يطلع:<span class=\"ltr\">¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q</span>بالـ double negation (وده مكتوب في <bdi dir=\"ltr\">L5,&nbsp;Table&nbsp;7</bdi> كـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;→&nbsp;q</bdi>)."
     ],
     [
-     "الـ ¬r ∧ ¬p ∧ ¬q دي نفي r ∨ p ∨ q. هنا الـ p ∧ q متجمعين، فالـ De Morgan عليهم بيدّي ¬p ∨ ¬q، مش ¬p ∧ ¬q.",
-     "الـ ¬r ∨ ¬p ∨ ¬q دي نفي r ∧ p ∧ q. الـ connective اللي برّه هو ∨، فالنفي لازم يبدأ بـ ¬r ∧ ….",
-     "صح. De Morgan مرتين: ¬r ∧ ¬(p ∧ q). الورقة كاتباها ¬r ∧ ¬p ∨ ¬q."
+     "الـ <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬p&nbsp;∧&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">r&nbsp;∨&nbsp;p&nbsp;∨&nbsp;q</bdi>. هنا الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> متجمعين، فالـ De Morgan عليهم بيدّي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi>، مش <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬r&nbsp;∨&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">r&nbsp;∧&nbsp;p&nbsp;∧&nbsp;q</bdi>. الـ connective اللي برّه هو ∨، فالنفي لازم يبدأ بـ <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;…</bdi>.",
+     "صح. De Morgan مرتين: <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬⁠(p&nbsp;∧&nbsp;q)</bdi>. الورقة كاتباها <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi>."
     ],
     [
-     "«Neither rich nor famous» دي ¬R ∧ ¬F؛ بتبقى false لما John يكون rich و famous، مع إن الأصلية (R ∧ ¬F) في الحالة دي false هي كمان.",
-     "«Rich or famous» (R ∨ F) بتبقى true لما John يكون rich ومش famous، ودي بالظبط الحالة اللي الأصلية فيها true.",
-     "الـ F → R ≡ ¬F ∨ R بتبقى true لما John يكون rich ومش famous، وهناك الأصلية true برضه، يبقى مش النفي.",
-     "صح. ¬(R ∧ ¬F) ≡ ¬R ∨ F بالـ De Morgan والـ double negation، و ¬R ∨ F ≡ R → F: «If John is rich, then he is famous» (L5, Table 7)."
+     "جملة «<bdi dir=\"ltr\">Neither&nbsp;rich&nbsp;nor&nbsp;famous</bdi>» دي <bdi dir=\"ltr\">¬R&nbsp;∧&nbsp;¬F</bdi>؛ بتبقى false لما John يكون rich و famous، مع إن الأصلية <bdi dir=\"ltr\">(R&nbsp;∧&nbsp;¬F)</bdi> في الحالة دي false هي كمان.",
+     "جملة «<bdi dir=\"ltr\">Rich&nbsp;or&nbsp;famous</bdi>» <bdi dir=\"ltr\">(R&nbsp;∨&nbsp;F)</bdi> بتبقى true لما John يكون rich ومش famous، ودي بالظبط الحالة اللي الأصلية فيها true.",
+     "الـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;R&nbsp;≡&nbsp;¬F&nbsp;∨&nbsp;R</bdi> بتبقى true لما John يكون rich ومش famous، وهناك الأصلية true برضه، يبقى مش النفي.",
+     "صح. <bdi dir=\"ltr\">¬⁠(R&nbsp;∧&nbsp;¬F)&nbsp;≡&nbsp;¬R&nbsp;∨&nbsp;F</bdi> بالـ De Morgan والـ double negation، و <bdi dir=\"ltr\">¬R&nbsp;∨&nbsp;F&nbsp;≡&nbsp;R&nbsp;→&nbsp;F</bdi>، يعني «<bdi dir=\"ltr\">If John is rich, then he is famous</bdi>» <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>."
     ],
     [
-     "الـ p ∧ q بـ T في الـ row اللي هو T, T، وهناك p ↔ q بـ T ونفيها F. ¬(p ↔ q) ≡ p ↔ ¬q.",
-     "صح. الـ ¬(p ↔ q) بتبقى true لما p و q يختلفوا، وده بالظبط لما p و ¬q يبقوا زي بعض: ¬(p ↔ q) ≡ p ↔ ¬q (L5, Table 8).",
-     "لما تنفي الطرفين، اللي كانوا زي بعض يفضلوا زي بعض واللي مختلفين يفضلوا مختلفين، فـ ¬p ↔ ¬q ≡ p ↔ q (Table 8)، مش نفيها.",
-     "الـ p → q بـ T في الـ row اللي هو F, F، لكن هناك p ↔ q بـ T يعني نفيها F."
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ T في الـ row اللي هو T, T، وهناك <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بـ T ونفيها F. <bdi dir=\"ltr\">¬⁠(p&nbsp;↔&nbsp;q)&nbsp;≡&nbsp;p&nbsp;↔&nbsp;¬q</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">¬⁠(p&nbsp;↔&nbsp;q)</bdi> بتبقى true لما p و q يختلفوا، وده بالظبط لما p و <bdi dir=\"ltr\">¬q</bdi> يبقوا زي بعض: <bdi dir=\"ltr\">¬⁠(p&nbsp;↔&nbsp;q)&nbsp;≡&nbsp;p&nbsp;↔&nbsp;¬q</bdi> <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;8)</bdi>.",
+     "لما تنفي الطرفين، اللي كانوا زي بعض يفضلوا زي بعض واللي مختلفين يفضلوا مختلفين، فـ <bdi dir=\"ltr\">¬p&nbsp;↔&nbsp;¬q&nbsp;≡&nbsp;p&nbsp;↔&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;8)</bdi>، مش نفيها.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ T في الـ row اللي هو F, F، لكن هناك <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بـ T يعني نفيها F."
     ],
     [
-     "دي ¬q بس. النفي p ∧ ¬q محتاج الـ hypothesis كمان: my car is in the repair shop and I can get to class.",
-     "«Not p or q» دي ¬p ∨ q ≡ p → q، يعني الجملة الأصلية نفسها، مش نفيها.",
-     "صح. ¬(p → q) ≡ p ∧ ¬q: سيب p زي ما هي (العربية في الورشة) وانفي q («cannot get to class» تبقى «can»). ده Example 1.2.4(a) (L5).",
-     "لما تنفي الجزئين بيطلع الـ inverse ¬p → ¬q. نفي الـ if-then مش if-then تانية؛ هو p ∧ ¬q."
+     "دي <bdi dir=\"ltr\">¬q</bdi> بس. النفي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> محتاج الـ hypothesis كمان: <bdi dir=\"ltr\">my car is in the repair shop and I can get to class.</bdi>",
+     "جملة «<bdi dir=\"ltr\">Not&nbsp;p&nbsp;or&nbsp;q</bdi>» دي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q&nbsp;≡&nbsp;p&nbsp;→&nbsp;q</bdi>، يعني الجملة الأصلية نفسها، مش نفيها.",
+     "صح. <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi>: سيب p زي ما هي (العربية في الورشة) وانفي q («<bdi dir=\"ltr\">cannot&nbsp;get&nbsp;to&nbsp;class</bdi>» تبقى «can»). ده مثال <bdi dir=\"ltr\">Example&nbsp;1.2.4(a)</bdi> <bdi dir=\"ltr\">(L5)</bdi>.",
+     "لما تنفي الجزئين بيطلع الـ inverse <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q</bdi>. نفي الـ if-then مش if-then تانية؛ هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>."
     ],
     [
      "الـ ↔ في آخر مجموعة (priority 3، مع →)، بتتحسب بعد الـ ~ وبعد الـ ∧ و ∨.",
      "الـ → ليها priority 3 (مع ↔)، يعني بتتحسب في الآخر، بعد الـ ~ والـ ∧ و ∨.",
      "الـ ∧ (مع ∨) ليها priority 2: بتيجي بعد الـ negation. الـ ~ هي اللي بتتحسب الأول.",
-     "صح. الـ order of operations: الـ ~ الأول، بعدين ∧ و ∨، بعدين → و ↔ (L5, Order of operations)."
+     "صح. الـ order of operations: الـ ~ الأول، بعدين ∧ و ∨، بعدين → و ↔ <bdi dir=\"ltr\">(L5,&nbsp;Order&nbsp;of&nbsp;operations)</bdi>."
     ],
     [
-     "صح. Table 7 فيه (p → r) ∨ (q → r) ≡ (p ∧ q) → r: الاتنين false بس لما p و q يبقوا true و r تبقى false (L5).",
-     "الـ p → (q ∨ r) ≡ (p → q) ∨ (p → r)، ودي سطر تاني في Table 7 فيه p هي الـ hypothesis المشتركة، مش r هي الـ conclusion المشتركة.",
-     "الـ r → (p ∧ q) بتبقى false عند r = T و p = F، وهناك (p → r) ∨ (q → r) بـ T.",
-     "الـ (p ∨ q) → r ≡ (p → r) ∧ (q → r)، يعني بـ ∧ بين الـ implications (division into cases). لما يبقى ∨ الـ hypothesis بتبقى p ∧ q."
+     "صح. جدول <bdi dir=\"ltr\">Table&nbsp;7</bdi> فيه:<span class=\"ltr\">(p → r) ∨ (q → r) ≡ (p ∧ q) → r</span>الاتنين false بس لما p و q يبقوا true و r تبقى false <bdi dir=\"ltr\">(L5)</bdi>.",
+     "الاختيار ده:<span class=\"ltr\">p → (q ∨ r) ≡ (p → q) ∨ (p → r)</span>ودي سطر تاني في <bdi dir=\"ltr\">Table&nbsp;7</bdi> فيه p هي الـ hypothesis المشتركة، مش r هي الـ conclusion المشتركة.",
+     "الـ <bdi dir=\"ltr\">r&nbsp;→&nbsp;(p&nbsp;∧&nbsp;q)</bdi> بتبقى false عند <bdi dir=\"ltr\">r&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">(p&nbsp;→&nbsp;r)&nbsp;∨&nbsp;(q&nbsp;→&nbsp;r)</bdi> بـ T.",
+     "الاختيار ده:<span class=\"ltr\">(p ∨ q) → r ≡ (p → r) ∧ (q → r)</span>يعني بـ ∧ بين الـ implications (division into cases). لما يبقى ∨ الـ hypothesis بتبقى <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>."
     ],
     [
-     "الـ ¬p → q ≡ p ∨ q (Table 7)، ودي T عند p = T و q = F، وهناك p ∧ q بـ F.",
-     "صح. ¬(p → ¬q) ≡ p ∧ ¬(¬q) ≡ p ∧ q، باستخدام ¬(a → b) ≡ a ∧ ¬b والـ double negation (L5, Table 7).",
-     "الـ p → q بتبقى T لما p = F، لكن p ∧ q هناك F، يبقى مش equivalent.",
-     "الـ ¬(p → q) ≡ p ∧ ¬q، ودي true عند p = T و q = F، وهناك p ∧ q بـ F. خلي بالك الـ implication المنفية لازم يبقى جواها ¬q."
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q&nbsp;≡&nbsp;p&nbsp;∨&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;7)</bdi>، ودي T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ F.",
+     "صح. الخطوات:<span class=\"ltr\">¬(p → ¬q) ≡ p ∧ ¬(¬q) ≡ p ∧ q</span>باستخدام <bdi dir=\"ltr\">¬⁠(a&nbsp;→&nbsp;b)&nbsp;≡&nbsp;a&nbsp;∧&nbsp;¬b</bdi> والـ double negation <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى T لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi>، لكن <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> هناك F، يبقى مش equivalent.",
+     "الـ <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi>، ودي true عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ F. خلي بالك الـ implication المنفية لازم يبقى جواها <bdi dir=\"ltr\">¬q</bdi>."
     ]
    ],
    "extra": [
     [
-     "صح. ¬(p → q) ≡ p ∧ ¬q: سيب الـ hypothesis «it snows» زي ما هي وانفي الـ conclusion، واربطهم بـ «and» (L5, Negation of a conditional).",
-     "«If school is closed, then it snows» ده الـ converse q → p. ونفي الـ if-then بيبقى جملة «and»، مش if-then تانية.",
-     "«If it does not snow, then school is open» ده الـ inverse ¬p → ¬q، ولسه if-then. النفي هو p ∧ ¬q.",
-     "الـ ¬p ∧ q (مفيش تلج والمدرسة مقفولة) حالة الأصلية فيها true (الـ hypothesis false)، فمستحيل تبقى النفي."
+     "صح. <bdi dir=\"ltr\">¬⁠(p&nbsp;→&nbsp;q)&nbsp;≡&nbsp;p&nbsp;∧&nbsp;¬q</bdi>: سيب الـ hypothesis «it snows» زي ما هي وانفي الـ conclusion، واربطهم بـ «and» <bdi dir=\"ltr\">(L5, Negation of a conditional)</bdi>.",
+     "جملة «<bdi dir=\"ltr\">If school is closed, then it snows</bdi>» دي الـ converse <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi>. ونفي الـ if-then بيبقى جملة «and»، مش if-then تانية.",
+     "جملة «<bdi dir=\"ltr\">If it does not snow, then school is open</bdi>» دي الـ inverse <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q</bdi>، ولسه if-then. النفي هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;q</bdi> (مفيش تلج والمدرسة مقفولة) حالة الأصلية فيها true (الـ hypothesis false)، فمستحيل تبقى النفي."
     ],
     [
-     "الـ p ∧ ¬q ده نفي p → q، وقيمته عكسها في كل row؛ أما الـ contrapositive فهو equivalent ليها.",
-     "صح. الـ contrapositive بينفي ويبدّل الجزئين: ¬q → ¬p، وهو logically equivalent لـ p → q (Table 7) (L5).",
-     "الـ ¬p → ¬q بتنفي من غير تبديل، ودي الـ inverse؛ وهي equivalent للـ converse، مش لـ p → q.",
-     "الـ q → p بتبدّل من غير نفي، ودي الـ converse. الـ contrapositive بيعمل الاتنين: ¬q → ¬p."
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>، وقيمته عكسها في كل row؛ أما الـ contrapositive فهو equivalent ليها.",
+     "صح. الـ contrapositive بينفي ويبدّل الجزئين: <bdi dir=\"ltr\">¬q&nbsp;→&nbsp;¬p</bdi>، وهو logically equivalent لـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;7)</bdi> <bdi dir=\"ltr\">(L5)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q</bdi> بتنفي من غير تبديل، ودي الـ inverse؛ وهي equivalent للـ converse، مش لـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>.",
+     "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> بتبدّل من غير نفي، ودي الـ converse. الـ contrapositive بيعمل الاتنين: <bdi dir=\"ltr\">¬q&nbsp;→&nbsp;¬p</bdi>."
     ],
     [
-     "الـ ¬p → ¬q ≡ p ∨ ¬q، ودي T عند p = F و q = F، وهناك p ∨ q بـ F.",
-     "الـ p → q ≡ ¬p ∨ q، ودي T عند p = F و q = F، وهناك p ∨ q بـ F.",
-     "صح. ¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q: «if not p then q» معناها إن واحدة على الأقل true (L5, Table 7).",
-     "الـ q → p ≡ ¬q ∨ p، ودي T عند p = F و q = F، وهناك p ∨ q بـ F."
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q&nbsp;≡&nbsp;p&nbsp;∨&nbsp;¬q</bdi>، ودي T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بـ F.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi>، ودي T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بـ F.",
+     "صح. الخطوات:<span class=\"ltr\">¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q</span>والجملة «<bdi dir=\"ltr\">if&nbsp;not&nbsp;p&nbsp;then&nbsp;q</bdi>» معناها إن واحدة على الأقل true <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>.",
+     "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p&nbsp;≡&nbsp;¬q&nbsp;∨&nbsp;p</bdi>، ودي T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بـ F."
     ],
     [
-     "الـ negation ليها أعلى priority وبتقع على الرمز اللي بعدها على طول بس، اللي هو p، مش على p ∨ q كلها.",
+     "الـ negation ليها أعلى priority وبتقع على الرمز اللي بعدها على طول بس، اللي هو p، مش على <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> كلها.",
      "دي حاطة الـ → جوه والـ ¬ حوالين كل حاجة، لكن الـ ¬ بتمسك p بس، والـ → بتتحسب في الآخر.",
      "دي بتحسب الـ → قبل الـ ∨، لكن الـ → ليها priority 3 والـ ∨ ليها priority 2، فالـ ∨ هي اللي بتتجمع الأول.",
-     "صح. الـ order of operations: الـ ~ الأول (¬p)، بعدين ∨ (¬p ∨ q)، وفي الآخر →، فيطلع (¬p ∨ q) → r (L5, Order of operations)."
+     "صح. الـ order of operations: الـ ~ الأول <bdi dir=\"ltr\">(¬p)</bdi>، بعدين ∨ <bdi dir=\"ltr\">(¬p&nbsp;∨&nbsp;q)</bdi>، وفي الآخر →، فيطلع <bdi dir=\"ltr\">(¬p&nbsp;∨&nbsp;q)&nbsp;→&nbsp;r</bdi> <bdi dir=\"ltr\">(L5,&nbsp;Order&nbsp;of&nbsp;operations)</bdi>."
     ],
     [
-     "صح. p → q = F، p → r = T؛ F ∨ T = T. وكمان بتساوي p → (q ∨ r) = T → T.",
-     "أي compound proposition ليها قيمة محددة لما تديها الـ truth values: p → q = F و p → r = T، فالنتيجة T.",
-     "مفيش s في الـ formula أصلًا؛ قيمتها بتتحدد بـ p و q و r: F ∨ T = T.",
-     "الـ p → r = T → T = T، والـ disjunction اللي فيها جزء true بتبقى true. اللي بـ F هي p → q بس."
+     "صح. الحساب:<span class=\"ltr\">p → q = F, p → r = T; F ∨ T = T</span>وكمان بتساوي <bdi dir=\"ltr\">p&nbsp;→&nbsp;(q&nbsp;∨&nbsp;r)&nbsp;=&nbsp;T&nbsp;→&nbsp;T</bdi>.",
+     "أي compound proposition ليها قيمة محددة لما تديها الـ truth values: <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">p&nbsp;→&nbsp;r&nbsp;=&nbsp;T</bdi>، فالنتيجة T.",
+     "مفيش s في الـ formula أصلًا؛ قيمتها بتتحدد بـ p و q و r: <bdi dir=\"ltr\">F&nbsp;∨&nbsp;T&nbsp;=&nbsp;T</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;r&nbsp;=&nbsp;T&nbsp;→&nbsp;T&nbsp;=&nbsp;T</bdi>، والـ disjunction اللي فيها جزء true بتبقى true. اللي بـ F هي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بس."
     ],
     [
-     "الـ p → (q ∧ r) بتبقى F عند p = T و q = F و r = F، لكن هناك (p ∧ q) → r = F → F = T.",
-     "صح. Table 7: (p → r) ∨ (q → r) ≡ (p ∧ q) → r. الاتنين false بس لما p = q = T و r = F (L5).",
-     "الـ (p → r) ∧ (q → r) ≡ (p ∨ q) → r (division into cases). بتبقى F عند p = T و q = F و r = F، وهناك (p ∧ q) → r بـ T.",
-     "الـ r → (p ∧ q) ده الـ converse؛ عند r = T و p = F بتبقى F مع إن (p ∧ q) → r بـ T."
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;(q&nbsp;∧&nbsp;r)</bdi> بتبقى F عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi>، لكن هناك:<span class=\"ltr\">(p ∧ q) → r = F → F = T</span>",
+     "صح. جدول <bdi dir=\"ltr\">Table&nbsp;7</bdi> فيه:<span class=\"ltr\">(p → r) ∨ (q → r) ≡ (p ∧ q) → r</span>الاتنين false بس لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L5)</bdi>.",
+     "الاختيار ده (division into cases):<span class=\"ltr\">(p → r) ∧ (q → r) ≡ (p ∨ q) → r</span>بيبقى F عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بـ T.",
+     "الـ <bdi dir=\"ltr\">r&nbsp;→&nbsp;(p&nbsp;∧&nbsp;q)</bdi> ده الـ converse؛ عند <bdi dir=\"ltr\">r&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> بتبقى F مع إن <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بـ T."
     ],
     [
-     "الـ De Morgan بينفي الجزئين: الجزء التاني لازم يبقى ¬(¬p ∧ q)، مش يفضل (¬p ∧ q) زي ما هو.",
-     "الـ De Morgan على ¬(a ∨ b) بيدّي ¬a ∧ ¬b؛ الـ ∨ لازم تتحول لـ ∧، فـ ¬p ∨ … غلط.",
-     "صح. تاني قانون De Morgan ¬(a ∨ b) ≡ ¬a ∧ ¬b مع a = p و b = ¬p ∧ q بيدّي ¬p ∧ ¬(¬p ∧ q)، ودي أول خطوة في البرهان بتاع المحاضرة (L5).",
-     "النفي اختفى من الجزئين؛ الـ De Morgan محتاج ¬p و ¬(¬p ∧ q) مربوطين بـ ∧."
+     "الـ De Morgan بينفي الجزئين: الجزء التاني لازم يبقى <bdi dir=\"ltr\">¬⁠(¬p&nbsp;∧&nbsp;q)</bdi>، مش يفضل <bdi dir=\"ltr\">(¬p&nbsp;∧&nbsp;q)</bdi> زي ما هو.",
+     "الـ De Morgan على <bdi dir=\"ltr\">¬⁠(a&nbsp;∨&nbsp;b)</bdi> بيدّي <bdi dir=\"ltr\">¬a&nbsp;∧&nbsp;¬b</bdi>؛ الـ ∨ لازم تتحول لـ ∧، فـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;…</bdi> غلط.",
+     "صح. تاني قانون De Morgan <bdi dir=\"ltr\">¬⁠(a&nbsp;∨&nbsp;b)&nbsp;≡&nbsp;¬a&nbsp;∧&nbsp;¬b</bdi> مع <bdi dir=\"ltr\">a&nbsp;=&nbsp;p</bdi> و <bdi dir=\"ltr\">b&nbsp;=&nbsp;¬p&nbsp;∧&nbsp;q</bdi> بيدّي <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬⁠(¬p&nbsp;∧&nbsp;q)</bdi>، ودي أول خطوة في البرهان بتاع المحاضرة <bdi dir=\"ltr\">(L5)</bdi>.",
+     "النفي اختفى من الجزئين؛ الـ De Morgan محتاج <bdi dir=\"ltr\">¬p</bdi> و <bdi dir=\"ltr\">¬⁠(¬p&nbsp;∧&nbsp;q)</bdi> مربوطين بـ ∧."
     ],
     [
-     "بتبقى false لما p = F و q = T (affirming the consequent).",
-     "الـ (p → q) → (q → p) بتبقى false عند p = F و q = T: الـ p → q = T لكن الـ converse بتاعها q → p = F، فمش tautology.",
-     "الـ p → (p ∧ q) بتبقى false عند p = T و q = F: p true لكن p ∧ q false.",
-     "صح. كل ما p و p → q يبقوا true، يبقى q true."
+     "بتبقى false لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> <bdi dir=\"ltr\">(affirming&nbsp;the&nbsp;consequent)</bdi>.",
+     "الـ <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)&nbsp;→&nbsp;(q&nbsp;→&nbsp;p)</bdi> بتبقى false عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>: الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;=&nbsp;T</bdi> لكن الـ converse بتاعها <bdi dir=\"ltr\">q&nbsp;→&nbsp;p&nbsp;=&nbsp;F</bdi>، فمش tautology.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;(p&nbsp;∧&nbsp;q)</bdi> بتبقى false عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>: p true لكن <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> false.",
+     "صح. كل ما p و <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> يبقوا true، يبقى q true."
     ],
     [
-     "صح. الـ ¬(p ↔ q) بتبقى true لما p و q يختلفوا، يعني لما p تساوي ¬q: ¬(p ↔ q) ≡ p ↔ ¬q (L5, Table 8).",
-     "الـ p ∧ q بـ T عند p = q = T، وهناك p ↔ q بـ T فنفيها F.",
-     "الـ ¬p ↔ ¬q ≡ p ↔ q (Table 8): لما تنفي الطرفين بيفضلوا زي بعض، فده الـ biconditional نفسه مش نفيه.",
-     "الـ (p → q) ∧ (q → p) ≡ p ↔ q (ده التعريف)، يعني عكس ¬(p ↔ q)."
+     "صح. الـ <bdi dir=\"ltr\">¬⁠(p&nbsp;↔&nbsp;q)</bdi> بتبقى true لما p و q يختلفوا، يعني لما p تساوي <bdi dir=\"ltr\">¬q</bdi>، فـ <bdi dir=\"ltr\">¬⁠(p&nbsp;↔&nbsp;q)&nbsp;≡&nbsp;p&nbsp;↔&nbsp;¬q</bdi> <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;8)</bdi>.",
+     "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بـ T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بـ T فنفيها F.",
+     "الـ <bdi dir=\"ltr\">¬p&nbsp;↔&nbsp;¬q&nbsp;≡&nbsp;p&nbsp;↔&nbsp;q</bdi> <bdi dir=\"ltr\">(Table&nbsp;8)</bdi>: لما تنفي الطرفين بيفضلوا زي بعض، فده الـ biconditional نفسه مش نفيه.",
+     "الاختيار ده هو التعريف:<span class=\"ltr\">(p → q) ∧ (q → p) ≡ p ↔ q</span>يعني عكس <bdi dir=\"ltr\">¬⁠(p&nbsp;↔&nbsp;q)</bdi>."
     ],
     [
-     "الـ R → F بتبقى true لما John يكون لا rich ولا famous، وكمان لما يكون مش rich بس famous، ودي حالة الأصلية فيها true. يبقى مش نفي.",
-     "صح. De Morgan: ¬(R ∨ F) ≡ ¬R ∧ ¬F، يعني «John is not rich and not famous» = neither rich nor famous (L4, De Morgan; L5).",
-     "الـ ¬R ∨ ¬F ده نفي «rich and famous» (R ∧ F) بالـ De Morgan. نفي الـ «or» لازم يطلع «and».",
-     "الـ R ∧ ¬F (rich ومش famous) بتخلي الأصلية R ∨ F بـ true، فمستحيل تبقى النفي."
+     "الـ <bdi dir=\"ltr\">R&nbsp;→&nbsp;F</bdi> بتبقى true لما John يكون لا rich ولا famous، وكمان لما يكون مش rich بس famous، ودي حالة الأصلية فيها true. يبقى مش نفي.",
+     "صح. De Morgan: <bdi dir=\"ltr\">¬⁠(R&nbsp;∨&nbsp;F)&nbsp;≡&nbsp;¬R&nbsp;∧&nbsp;¬F</bdi>، يعني «<bdi dir=\"ltr\">John is not rich and not famous</bdi>»، أي <bdi dir=\"ltr\">neither&nbsp;rich&nbsp;nor&nbsp;famous</bdi> <bdi dir=\"ltr\">(L4,&nbsp;De&nbsp;Morgan;&nbsp;L5)</bdi>.",
+     "الـ <bdi dir=\"ltr\">¬R&nbsp;∨&nbsp;¬F</bdi> ده نفي «<bdi dir=\"ltr\">rich&nbsp;and&nbsp;famous</bdi>» <bdi dir=\"ltr\">(R&nbsp;∧&nbsp;F)</bdi> بالـ De Morgan. نفي الـ «or» لازم يطلع «and».",
+     "الـ <bdi dir=\"ltr\">R&nbsp;∧&nbsp;¬F</bdi> (rich ومش famous) بتخلي الأصلية <bdi dir=\"ltr\">R&nbsp;∨&nbsp;F</bdi> بـ true، فمستحيل تبقى النفي."
     ]
    ]
   },
@@ -1210,36 +1210,36 @@ AR.dm = {
     {
      "h": "الـ Random variable",
      "pts": [
-      "لو رميت عملة 3 مرات ورا بعض هيطلعلك sample space S فيها 8 outcomes (hhh، hhT، … ، ttt). لما تسأل عن \"عدد الصور\" (heads) انت كده بتربط S (الـ <b>independent variable</b>) برقم حقيقي R (الـ <b>dependent variable</b>).",
-      "العلاقة دي function بنكتبها <b>X : S → R</b>، والـ X هو الـ <b>random variable</b>.",
+      "لو رميت عملة 3 مرات ورا بعض هيطلعلك sample space S فيها 8 outcomes <bdi dir=\"ltr\">(hhh,&nbsp;hhT,&nbsp;…&nbsp;,&nbsp;ttt)</bdi>. لما تسأل عن \"عدد الصور\" (heads) انت كده بتربط S (الـ <b>independent variable</b>) برقم حقيقي R (الـ <b>dependent variable</b>).",
+      "العلاقة دي function بنكتبها <b><bdi dir=\"ltr\">X&nbsp;:&nbsp;S&nbsp;→&nbsp;R</bdi></b>، والـ X هو الـ <b>random variable</b>.",
       "<b>التعريف</b>: الـ random variable هو <b>function الـ domain بتاعها هو elements الـ sample space S والـ co-domain بتاعها هو الـ real numbers R</b>.",
-      "في حالة عدد الـ heads في 3 رميات، الـ range بتاع X هو {0, 1, 2, 3}.",
-      "<b>Discrete sample space</b>: فيها عدد محدود (finite) من الاحتمالات، أو سلسلة مالهاش آخر بس عدد عناصرها زي عدد الـ whole numbers (يعني تتعد).",
-      "<b>Continuous sample space</b>: فيها عدد لانهائي من الاحتمالات زي عدد النقط اللي على line segment (مش بتتعد)."
+      "في حالة عدد الـ heads في 3 رميات، الـ range بتاع X هو <bdi dir=\"ltr\">{0,&nbsp;1,&nbsp;2,&nbsp;3}</bdi>.",
+      "الـ <b>Discrete sample space</b>: فيها عدد محدود (finite) من الاحتمالات، أو سلسلة مالهاش آخر بس عدد عناصرها زي عدد الـ whole numbers (يعني تتعد).",
+      "الـ <b>Continuous sample space</b>: فيها عدد لانهائي من الاحتمالات زي عدد النقط اللي على line segment (مش بتتعد)."
      ]
     },
     {
-     "h": "Example 1: X = عدد الـ heads − عدد الـ tails (3 رميات)"
+     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;1</bdi>: الـ X هو عدد الـ heads ناقص عدد الـ tails (3 رميات)"
     },
     {
-     "h": "Example 2: مجموع رقمين الزهر",
+     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;2</bdi>: مجموع رقمين الزهر",
      "pts": [
-      "بنرمي زهرة عادية مرتين؛ X = مجموع الرقمين. n(S) = 36.",
-      "مجموع 2: (1,1). 3: (1,2),(2,1). 4: (3,1),(2,2),(1,3). 5: 4 pairs. 6: 5 pairs. 7: (4,3),(3,4),(2,5),(1,6),(6,1),(5,2)، يعني 6 pairs. 8: 5 pairs. 9: 4 pairs. 10: 3 pairs. 11: 2 pairs. 12: (6,6).",
-      "الـ Range X = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}. والخطوط المايلة في الجدول (\"lateral shape\") بتطلّع نفس النتيجة.",
-      "يبقى P(X = 7) = 6/36 = 1/6 و P(X = 2) = 1/36."
+      "بنرمي زهرة عادية مرتين؛ والـ X هو مجموع الرقمين. وعدد الـ outcomes <bdi dir=\"ltr\">n(S)&nbsp;=&nbsp;36</bdi>.",
+      "المجاميع والـ pairs:<span class=\"ltr\">2: (1,1)</span><span class=\"ltr\">3: (1,2),(2,1)</span><span class=\"ltr\">4: (3,1),(2,2),(1,3)</span><span class=\"ltr\">5: 4 pairs. 6: 5 pairs.</span><span class=\"ltr\">7: (4,3),(3,4),(2,5),(1,6),(6,1),(5,2)</span>يعني المجموع 7 ليه 6 pairs.<span class=\"ltr\">8: 5 pairs. 9: 4 pairs. 10: 3 pairs.</span><span class=\"ltr\">11: 2 pairs. 12: (6,6)</span>",
+      "الـ Range:<span class=\"ltr\">X = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12}</span>والخطوط المايلة في الجدول (\"lateral shape\") بتطلّع نفس النتيجة.",
+      "يبقى:<span class=\"ltr\">P(X = 7) = 6/36 = 1/6</span><span class=\"ltr\">P(X = 2) = 1/36</span>"
      ]
     },
     {
      "h": "الـ Probability distribution function",
      "pts": [
-      "لو X هو discrete random variable والـ range بتاعه {x₁, x₂, …, xᵣ}، يبقى الـ function f اللي متعرّفة بـ <b>f(xᵣ) = P(X = xᵣ)</b> لكل r = 1, 2, 3, … هي الـ <b>probability distribution function</b> بتاعة X.",
-      "بنكتبها كـ set من الـ ordered pairs: X = {(x₁, f(x₁)), (x₂, f(x₂)), …, (xₙ, f(xₙ))}، أو كجدول فيه صف للـ xᵣ وصف للـ f(xᵣ).",
-      "الـ set بتاعة الـ ordered pairs (x, f(x)) تبقى <b>probability function أو probability mass function أو probability distribution</b> لـ X لو لكل outcome ممكن x: <b>1.</b> f(x) ≥ 0؛ <b>2.</b> Σ f(x) = 1؛ <b>3.</b> P(X = x) = f(x)."
+      "لو X هو discrete random variable والـ range بتاعه <bdi dir=\"ltr\">{x₁,&nbsp;x₂,&nbsp;…,&nbsp;xᵣ}</bdi>، يبقى الـ function f اللي متعرّفة بـ:<span class=\"ltr\"><b>f(xᵣ) = P(X = xᵣ)</b></span>لكل <bdi dir=\"ltr\">r&nbsp;=&nbsp;1,&nbsp;2,&nbsp;3,&nbsp;…</bdi> هي الـ <b>probability distribution function</b> بتاعة X.",
+      "بنكتبها كـ set من الـ ordered pairs:<span class=\"ltr\">X = {(x₁, f(x₁)), (x₂, f(x₂)), …, (xₙ, f(xₙ))}</span>أو كجدول فيه صف للـ <bdi dir=\"ltr\">xᵣ</bdi> وصف للـ <bdi dir=\"ltr\">f(xᵣ)</bdi>.",
+      "الـ set بتاعة الـ ordered pairs <bdi dir=\"ltr\">(x,&nbsp;f(x))</bdi> تبقى <b>probability function أو probability mass function أو probability distribution</b> لـ X لو لكل outcome ممكن x:<span class=\"ltr\"><b>1.</b> f(x) ≥ 0</span><span class=\"ltr\"><b>2.</b> Σ f(x) = 1</span><span class=\"ltr\"><b>3.</b> P(X = x) = f(x)</span>"
      ]
     },
     {
-     "h": "Example 3: عدد الـ heads (العملة اترمت مرتين)"
+     "h": "مثال <bdi dir=\"ltr\">Example&nbsp;3</bdi>: عدد الـ heads (العملة اترمت مرتين)"
     },
     {
      "h": "حاول تحل: heads − tails لرميتين"
@@ -1252,62 +1252,62 @@ AR.dm = {
     }
    ],
    "cards": [
-    "function الـ domain بتاعها الـ sample space S والـ co-domain بتاعها الـ real numbers R؛ X : S → R.",
+    "هو function الـ domain بتاعها الـ sample space S والـ co-domain بتاعها الـ real numbers R:<span class=\"ltr\">X : S → R</span>",
     "عدد محدود من الاحتمالات، أو سلسلة مالهاش آخر بس عدد عناصرها زي الـ whole numbers.",
     "عدد لانهائي من الاحتمالات زي عدد النقط اللي على line segment.",
-    "f(xᵣ) = P(X = xᵣ) لكل قيمة xᵣ في الـ range بتاع X.",
-    "f(x) ≥ 0؛ Σ f(x) = 1؛ P(X = x) = f(x).",
-    "{−3, −1, 1, 3}",
-    "{2, 3, …, 12}",
+    "الـ <bdi dir=\"ltr\">f(xᵣ)&nbsp;=&nbsp;P(X&nbsp;=&nbsp;xᵣ)</bdi> لكل قيمة <bdi dir=\"ltr\">xᵣ</bdi> في الـ range بتاع X.",
+    "الشروط:<span class=\"ltr\">f(x) ≥ 0; Σ f(x) = 1; P(X = x) = f(x)</span>",
+    "الـ range هو:<span class=\"ltr\">{−3, −1, 1, 3}</span>",
+    "الـ range هو:<span class=\"ltr\">{2, 3, …, 12}</span>",
     "36",
-    "f(0) = 1/4، f(1) = 2/4، f(2) = 1/4",
-    "20 (5 × 4؛ من غير الأزواج المتكررة).",
-    "8/20، 6/20، 4/20، 2/20",
-    "6 (1+6، 2+5، 3+4 وعكسهم).",
+    "الـ distribution:<span class=\"ltr\">f(0) = 1/4, f(1) = 2/4, f(2) = 1/4</span>",
+    "عددهم 20 (<bdi dir=\"ltr\">5&nbsp;×&nbsp;4</bdi>؛ من غير الأزواج المتكررة).",
+    "القيم بالترتيب:<span class=\"ltr\">8/20, 6/20, 4/20, 2/20</span>",
+    "عددهم 6 (<bdi dir=\"ltr\">1+6</bdi> و <bdi dir=\"ltr\">2+5</bdi> و <bdi dir=\"ltr\">3+4</bdi> وعكسهم).",
     "الـ S هي الـ independent؛ والرقم الحقيقي R هو الـ dependent."
    ],
    "qa": [
-    "الـ random variable هو function الـ domain بتاعها elements الـ sample space S والـ co-domain بتاعها الـ real numbers: X : S → R. لو X هو discrete والـ range بتاعه {x₁, …, xᵣ}، يبقى الـ function f(xᵣ) = P(X = xᵣ) هي الـ probability distribution function بتاعته، وبتتكتب كـ ordered pairs {(xᵣ, f(xᵣ))} أو كجدول. ولازم تحقق f(x) ≥ 0، Σ f(x) = 1، P(X = x) = f(x).",
-    "S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}. قيم X: HHH = 3؛ HHT، HTH، THH = 1؛ HTT، THT، TTH = −1؛ TTT = −3. الـ Range = {−3, −1, 1, 3}.",
-    "الـ Range هو {2, 3, …, 12}. المجموع 7 بيطلع في (1,6),(2,5),(3,4),(4,3),(5,2),(6,1): يعني 6 من 36 outcome، يبقى P(X = 7) = 6/36 = 1/6.",
-    "n(S) = 20. X = 1 في 8 outcomes، 2 في 6، 3 في 4، 4 في 2. f(1) = 8/20، f(2) = 6/20، f(3) = 4/20، f(4) = 2/20؛ والمجموع = 1.",
+    "الـ random variable هو function الـ domain بتاعها elements الـ sample space S والـ co-domain بتاعها الـ real numbers:<span class=\"ltr\">X : S → R</span>لو X هو discrete والـ range بتاعه <bdi dir=\"ltr\">{x₁,&nbsp;…,&nbsp;xᵣ}</bdi>، يبقى الـ function دي هي الـ probability distribution function بتاعته:<span class=\"ltr\">f(xᵣ) = P(X = xᵣ)</span>وبتتكتب كـ ordered pairs <bdi dir=\"ltr\">{(xᵣ,&nbsp;f(xᵣ))}</bdi> أو كجدول. ولازم تحقق:<span class=\"ltr\">f(x) ≥ 0, Σ f(x) = 1, P(X = x) = f(x)</span>",
+    "الـ sample space:<span class=\"ltr\">S = {HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}</span>قيم X:<span class=\"ltr\">HHH = 3</span><span class=\"ltr\">HHT, HTH, THH = 1</span><span class=\"ltr\">HTT, THT, TTH = −1</span><span class=\"ltr\">TTT = −3</span>الـ Range:<span class=\"ltr\">{−3, −1, 1, 3}</span>",
+    "الـ Range هو <bdi dir=\"ltr\">{2,&nbsp;3,&nbsp;…,&nbsp;12}</bdi>. المجموع 7 بيطلع في:<span class=\"ltr\">(1,6),(2,5),(3,4),(4,3),(5,2),(6,1)</span>يعني 6 من 36 outcome، يبقى:<span class=\"ltr\">P(X = 7) = 6/36 = 1/6</span>",
+    "عدد الـ outcomes <bdi dir=\"ltr\">n(S)&nbsp;=&nbsp;20</bdi>. الـ X بيساوي 1 في 8 outcomes، و 2 في 6، و 3 في 4، و 4 في 2. يبقى:<span class=\"ltr\">f(1) = 8/20, f(2) = 6/20</span><span class=\"ltr\">f(3) = 4/20, f(4) = 2/20</span>والمجموع بيساوي 1.",
     "الـ Discrete: احتمالات محدودة، أو سلسلة مالهاش آخر بس عدد عناصرها زي الـ whole numbers (countable). الـ Continuous: عدد لانهائي من الاحتمالات زي عدد النقط على line segment (زي وقت أو حجم بيتقاس)."
    ],
    "quiz": [
     [
-     "عدد الـ heads + الـ tails = 3، فالفرق دايمًا رقم فردي.",
-     "الـ {1, 3} ده بياخد بس الـ outcomes اللي فيها heads أكتر. خلي بالك إن TTT بتدي 0 − 3 = −3 و HTT بتدي 1 − 2 = −1، يعني فيه قيم سالبة كمان.",
-     "صح. HHH → 3، اتنين heads → 2 − 1 = 1، head واحدة → 1 − 2 = −1، و TTT → −3، فالـ range هو {−3, −1, 1, 3} (L6, Example 1).",
-     "الـ {0, 1, 2, 3} ده الـ range بتاع عدد الـ heads لوحده. لما تطرح الـ tails بيبقى h − (3 − h) = 2h − 3، فيطلع {−3, −1, 1, 3}."
+     "عدد الـ heads + الـ tails بيساوي 3، فالفرق دايمًا رقم فردي.",
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;3}</bdi> ده بياخد بس الـ outcomes اللي فيها heads أكتر. خلي بالك إن TTT بتدي <bdi dir=\"ltr\">0&nbsp;−&nbsp;3&nbsp;=&nbsp;−3</bdi> و HTT بتدي <bdi dir=\"ltr\">1&nbsp;−&nbsp;2&nbsp;=&nbsp;−1</bdi>، يعني فيه قيم سالبة كمان.",
+     "صح. القيم:<span class=\"ltr\">HHH → 3</span><span class=\"ltr\">2 heads → 2 − 1 = 1</span><span class=\"ltr\">1 head → 1 − 2 = −1</span><span class=\"ltr\">TTT → −3</span>فالـ range هو <bdi dir=\"ltr\">{−3,&nbsp;−1,&nbsp;1,&nbsp;3}</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Example&nbsp;1)</bdi>.",
+     "الـ <bdi dir=\"ltr\">{0,&nbsp;1,&nbsp;2,&nbsp;3}</bdi> ده الـ range بتاع عدد الـ heads لوحده. لما تطرح الـ tails بيبقى:<span class=\"ltr\">h − (3 − h) = 2h − 3</span>فيطلع <bdi dir=\"ltr\">{−3,&nbsp;−1,&nbsp;1,&nbsp;3}</bdi>."
     ],
     [
-     "الـ {1, …, 6} دي أوجه زهرة واحدة. لكن X بيجمع زهرتين، فأصغر مجموع 1 + 1 = 2 وأكبر مجموع 6 + 6 = 12.",
-     "الـ 36 = 6 × 6 ده n(S)، يعني عدد الـ outcomes، مش مجموع ممكن. أكبر مجموع هو 6 + 6 = 12.",
-     "المجموع 1 مستحيل لإن كل زهرة أقل حاجة بتجيب 1، فأصغر مجموع هو 1 + 1 = 2.",
-     "صح. المجاميع بتبتدي من (1,1) = 2 لحد (6,6) = 12، وكل قيمة في النص بتحصل: {2, 3, …, 12} (L6, Example 2)."
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;…,&nbsp;6}</bdi> دي أوجه زهرة واحدة. لكن X بيجمع زهرتين، فأصغر مجموع <bdi dir=\"ltr\">1&nbsp;+&nbsp;1&nbsp;=&nbsp;2</bdi> وأكبر مجموع <bdi dir=\"ltr\">6&nbsp;+&nbsp;6&nbsp;=&nbsp;12</bdi>.",
+     "الـ <bdi dir=\"ltr\">36&nbsp;=&nbsp;6&nbsp;×&nbsp;6</bdi> ده <bdi dir=\"ltr\">n(S)</bdi>، يعني عدد الـ outcomes، مش مجموع ممكن. أكبر مجموع هو <bdi dir=\"ltr\">6&nbsp;+&nbsp;6&nbsp;=&nbsp;12</bdi>.",
+     "المجموع 1 مستحيل لإن كل زهرة أقل حاجة بتجيب 1، فأصغر مجموع هو <bdi dir=\"ltr\">1&nbsp;+&nbsp;1&nbsp;=&nbsp;2</bdi>.",
+     "صح. المجاميع بتبتدي من <bdi dir=\"ltr\">(1,1)&nbsp;=&nbsp;2</bdi> لحد <bdi dir=\"ltr\">(6,6)&nbsp;=&nbsp;12</bdi>، وكل قيمة في النص بتحصل: <bdi dir=\"ltr\">{2,&nbsp;3,&nbsp;…,&nbsp;12}</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Example&nbsp;2)</bdi>."
     ],
     [
-     "صح. المحاضرة بتعرّف الـ random variable إنه function X : S → R، الـ domain بتاعها هو الـ sample space S والـ co-domain هو الأعداد الحقيقية R (L6, Random variable).",
+     "صح. المحاضرة بتعرّف الـ random variable إنه function <bdi dir=\"ltr\">X&nbsp;:&nbsp;S&nbsp;→&nbsp;R</bdi>، الـ domain بتاعها هو الـ sample space S والـ co-domain هو الأعداد الحقيقية R <bdi dir=\"ltr\">(L6,&nbsp;Random&nbsp;variable)</bdi>.",
      "الـ natural numbers مش هي الـ domain؛ الـ X بتاخد inputs زي HHT، يعني outcomes. الـ domain بتاعها هو الـ sample space S.",
      "الأعداد الحقيقية R دي الـ co-domain، يعني القيم اللي X بتطلّعها (الـ dependent variable). الـ domain هو S.",
-     "الاحتمالات بتيجي من الـ distribution f(x) = P(X = x)، ودي function تانية خالص. الـ domain بتاع X هو S."
+     "الاحتمالات بتيجي من الـ distribution <bdi dir=\"ltr\">f(x)&nbsp;=&nbsp;P(X&nbsp;=&nbsp;x)</bdi>، ودي function تانية خالص. الـ domain بتاع X هو S."
     ],
     [
-     "الـ Σ f(x) = 1 ده الشرط رقم 2 من شروط الـ probability distribution، يعني هو شرط فعلاً؛ والسؤال بيسأل على اللي مش شرط.",
+     "الـ <bdi dir=\"ltr\">Σ&nbsp;f(x)&nbsp;=&nbsp;1</bdi> ده الشرط رقم 2 من شروط الـ probability distribution، يعني هو شرط فعلاً؛ والسؤال بيسأل على اللي مش شرط.",
      "صح (هو مش شرط). الاحتمالات عمرها ما تعدّي 1.",
-     "الـ P(X = x) = f(x) ده الشرط رقم 3 من شروط الـ probability distribution، يعني شرط ومش هي الإجابة.",
-     "الـ f(x) ≥ 0 ده الشرط رقم 1 (مفيش احتمالات سالبة)، يعني شرط ومش هي الإجابة."
+     "الـ <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;x)&nbsp;=&nbsp;f(x)</bdi> ده الشرط رقم 3 من شروط الـ probability distribution، يعني شرط ومش هي الإجابة.",
+     "الـ <bdi dir=\"ltr\">f(x)&nbsp;≥&nbsp;0</bdi> ده الشرط رقم 1 (مفيش احتمالات سالبة)، يعني شرط ومش هي الإجابة."
     ],
     [
-     "لو f(1) = 1 يبقى كل مرة هتطلع head واحدة بالظبط، بس HH و TT بيدوا 2 و 0 heads. اللي بيدوا head واحدة 2 بس من 4 outcomes.",
-     "الـ 1/4 ده f(0) (TT بس) أو f(2) (HH بس). الـ head الواحدة بتحصل في 2 outcomes: HT و TH.",
-     "صح. S = {HH, HT, TH, TT}، و n(S) = 4، والـ head الواحدة بالظبط بتحصل في HT و TH: f(1) = 2/4 (L6, Example 3).",
-     "الـ 3/4 بيعد كل outcome فيه head واحدة على الأقل (ومنهم HH). لكن head واحدة بالظبط هي HT و TH بس: 2/4."
+     "لو <bdi dir=\"ltr\">f(1)&nbsp;=&nbsp;1</bdi> يبقى كل مرة هتطلع head واحدة بالظبط، بس HH و TT بيدوا 2 و 0 heads. اللي بيدوا head واحدة 2 بس من 4 outcomes.",
+     "الـ <bdi dir=\"ltr\">1/4</bdi> ده <bdi dir=\"ltr\">f(0)</bdi> (TT بس) أو <bdi dir=\"ltr\">f(2)</bdi> (HH بس). الـ head الواحدة بتحصل في 2 outcomes، هما HT و TH.",
+     "صح. الـ sample space هي <bdi dir=\"ltr\">S&nbsp;=&nbsp;{HH,&nbsp;HT,&nbsp;TH,&nbsp;TT}</bdi>، و <bdi dir=\"ltr\">n(S)&nbsp;=&nbsp;4</bdi>، والـ head الواحدة بالظبط بتحصل في HT و TH، يبقى <bdi dir=\"ltr\">f(1)&nbsp;=&nbsp;2/4</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Example&nbsp;3)</bdi>.",
+     "الـ <bdi dir=\"ltr\">3/4</bdi> بيعد كل outcome فيه head واحدة على الأقل (ومنهم HH). لكن head واحدة بالظبط هي HT و TH بس: <bdi dir=\"ltr\">2/4</bdi>."
     ],
     [
-     "الـ 6/20 ده f(2): الـ pairs من {2, …, 5} اللي فيها 2، يعني 3 + 3 = 6. أما الـ pairs اللي فيها 1 فعددها 4 + 4 = 8.",
-     "الـ 2/20 ده f(4)، يعني (4, 5) و (5, 4) بس. أصغر رقم بيبقى 1 في أي سحبة فيها 1: يعني 8 ordered pairs.",
-     "الـ 4/20 بيعد 1 مع 2، 3، 4، 5 بترتيب واحد بس (وهو كمان بيساوي f(3)). السحب هنا ordered، فالـ (1, k) والـ (k, 1) الاتنين بيتحسبوا: 8/20.",
+     "الـ <bdi dir=\"ltr\">6/20</bdi> ده <bdi dir=\"ltr\">f(2)</bdi>: الـ pairs من <bdi dir=\"ltr\">{2,&nbsp;…,&nbsp;5}</bdi> اللي فيها 2، يعني <bdi dir=\"ltr\">3&nbsp;+&nbsp;3&nbsp;=&nbsp;6</bdi>. أما الـ pairs اللي فيها 1 فعددها <bdi dir=\"ltr\">4&nbsp;+&nbsp;4&nbsp;=&nbsp;8</bdi>.",
+     "الـ <bdi dir=\"ltr\">2/20</bdi> ده <bdi dir=\"ltr\">f(4)</bdi>، يعني <bdi dir=\"ltr\">(4,&nbsp;5)</bdi> و <bdi dir=\"ltr\">(5,&nbsp;4)</bdi> بس. أصغر رقم بيبقى 1 في أي سحبة فيها 1: يعني 8 ordered pairs.",
+     "الـ <bdi dir=\"ltr\">4/20</bdi> بيعد 1 مع 2 و 3 و 4 و 5 بترتيب واحد بس (وهو كمان بيساوي <bdi dir=\"ltr\">f(3)</bdi>). السحب هنا ordered، فالـ <bdi dir=\"ltr\">(1,&nbsp;k)</bdi> والـ <bdi dir=\"ltr\">(k,&nbsp;1)</bdi> الاتنين بيتحسبوا: <bdi dir=\"ltr\">8/20</bdi>.",
      "صح. الـ 1 مع 2 أو 3 أو 4 أو 5 بأي ترتيب."
     ],
     [
@@ -1319,58 +1319,58 @@ AR.dm = {
    ],
    "extra": [
     [
-     "الـ 2/8 ناقصه outcome: HHT و HTH و THH كلهم فيهم 2 heads بالظبط، فـ f(2) = 3/8.",
-     "صح. 3 رميات بيدوا n(S) = 2³ = 8 outcomes، والـ 2 heads بالظبط بيحصلوا في HHT، HTH، THH: f(2) = 3/8 (L6, Random variable).",
-     "1/2 = 4/8، بس 3 بس من الـ 8 outcomes فيهم 2 heads بالظبط.",
-     "الـ 1/8 ده f(0) (TTT) أو f(3) (HHH)، outcome واحد بس. الـ 2 heads بيحصلوا في 3 outcomes: 3/8."
+     "الـ <bdi dir=\"ltr\">2/8</bdi> ناقصه outcome، لأن HHT و HTH و THH كلهم فيهم 2 heads بالظبط، فـ <bdi dir=\"ltr\">f(2)&nbsp;=&nbsp;3/8</bdi>.",
+     "صح. 3 رميات بيدوا <bdi dir=\"ltr\">n(S)&nbsp;=&nbsp;2³&nbsp;=&nbsp;8</bdi> outcomes، والـ 2 heads بالظبط بيحصلوا في HHT و HTH و THH، يبقى <bdi dir=\"ltr\">f(2)&nbsp;=&nbsp;3/8</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Random&nbsp;variable)</bdi>.",
+     "الـ <bdi dir=\"ltr\">1/2&nbsp;=&nbsp;4/8</bdi>، بس 3 بس من الـ 8 outcomes فيهم 2 heads بالظبط.",
+     "الـ <bdi dir=\"ltr\">1/8</bdi> ده <bdi dir=\"ltr\">f(0)</bdi> (TTT) أو <bdi dir=\"ltr\">f(3)</bdi> (HHH)، يعني outcome واحد بس. الـ 2 heads بيحصلوا في 3 outcomes: <bdi dir=\"ltr\">3/8</bdi>."
     ],
     [
-     "الـ 4/36 ده P(X = 5) أو P(X = 9)، كل واحد فيهم ليه 4 pairs. المجموع 8 ليه 5 pairs: (2,6)، (3,5)، (4,4)، (5,3)، (6,2).",
-     "الـ 6/36 ده P(X = 7)، أكتر مجموع احتمالاً. المجموع 8 ليه pair أقل بواحد: 5/36.",
-     "صح. من الـ 36 outcome، المجموع 8 بييجي من (2,6)، (3,5)، (4,4)، (5,3)، (6,2)، فـ P(X = 8) = 5/36 (L6, Example 2).",
+     "الـ <bdi dir=\"ltr\">4/36</bdi> ده <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;5)</bdi> أو <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;9)</bdi>، كل واحد فيهم ليه 4 pairs. المجموع 8 ليه 5 pairs:<span class=\"ltr\">(2,6), (3,5), (4,4), (5,3), (6,2)</span>",
+     "الـ <bdi dir=\"ltr\">6/36</bdi> ده <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;7)</bdi>، أكتر مجموع احتمالاً. المجموع 8 ليه pair أقل بواحد: <bdi dir=\"ltr\">5/36</bdi>.",
+     "صح. من الـ 36 outcome، المجموع 8 بييجي من:<span class=\"ltr\">(2,6), (3,5), (4,4), (5,3), (6,2)</span>فـ <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;8)&nbsp;=&nbsp;5/36</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Example&nbsp;2)</bdi>.",
      "مفيش مجموع ليه 8 pairs؛ أكبر عدد هو 6 وده للمجموع 7. لو كتبت الـ pairs بتاعة 8 هتلاقيهم 5 بس."
     ],
     [
-     "الـ 9/36 = 3²/36 بيعد الـ pairs اللي الرقمين فيها 3 أو أقل، يعني P(X ≤ 3). اطرح منهم الـ 2² = 4 pairs اللي أكبر رقم فيها 2 أو أقل: 5/36.",
-     "الـ 6/36 بيعد (3, 3) مرتين، مرة في (1,3)، (2,3)، (3,3) ومرة في (3,1)، (3,2)، (3,3). الـ pairs المختلفة 5 بس.",
-     "الـ 3/36 ده f(2): (1,2)، (2,1)، (2,2). عشان أكبر رقم يبقى 3 فيه 2·3 − 1 = 5 pairs.",
-     "صح. 3² − 2² = 5 pairs: (1,3)، (2,3)، (3,3)، (3,2)، (3,1)."
+     "الـ <bdi dir=\"ltr\">9/36&nbsp;=&nbsp;3²/36</bdi> بيعد الـ pairs اللي الرقمين فيها 3 أو أقل، يعني <bdi dir=\"ltr\">P(X&nbsp;≤&nbsp;3)</bdi>. اطرح منهم الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> pairs اللي أكبر رقم فيها 2 أو أقل: <bdi dir=\"ltr\">5/36</bdi>.",
+     "الـ <bdi dir=\"ltr\">6/36</bdi> بيعد <bdi dir=\"ltr\">(3,&nbsp;3)</bdi> مرتين، مرة في <bdi dir=\"ltr\">(1,3),&nbsp;(2,3),&nbsp;(3,3)</bdi> ومرة في <bdi dir=\"ltr\">(3,1),&nbsp;(3,2),&nbsp;(3,3)</bdi>. الـ pairs المختلفة 5 بس.",
+     "الـ <bdi dir=\"ltr\">3/36</bdi> ده <bdi dir=\"ltr\">f(2)</bdi>، يعني <bdi dir=\"ltr\">(1,2),&nbsp;(2,1),&nbsp;(2,2)</bdi>. عشان أكبر رقم يبقى 3 فيه <bdi dir=\"ltr\">2·3&nbsp;−&nbsp;1&nbsp;=&nbsp;5</bdi> pairs.",
+     "صح. العدد <bdi dir=\"ltr\">3²&nbsp;−&nbsp;2²&nbsp;=&nbsp;5</bdi> pairs:<span class=\"ltr\">(1,3), (2,3), (3,3), (3,2), (3,1)</span>"
     ],
     [
-     "صح. الـ distribution محتاج f(x) ≥ 0 لكل x و Σ f(x) = 1: وهنا كل القيم non-negative و 0.2 + 0.3 + 0.5 = 1 (L6, Probability distribution function).",
-     "القيم non-negative بس 0.3 + 0.3 = 0.6 ≠ 1، فالشرط رقم 2 (Σ f(x) = 1) مش متحقق.",
-     "المجموع 0.7 − 0.1 + 0.4 = 1 فعلاً، بس f(1) = −0.1 بيكسر الشرط رقم 1، f(x) ≥ 0.",
-     "0.5 + 0.6 = 1.1 &gt; 1، فالشرط رقم 2 (Σ f(x) = 1) مش متحقق."
+     "صح. الـ distribution محتاج <bdi dir=\"ltr\">f(x)&nbsp;≥&nbsp;0</bdi> لكل x و <bdi dir=\"ltr\">Σ&nbsp;f(x)&nbsp;=&nbsp;1</bdi>، وهنا كل القيم non-negative و:<span class=\"ltr\">0.2 + 0.3 + 0.5 = 1</span>المصدر <bdi dir=\"ltr\">(L6, Probability distribution function)</bdi>.",
+     "القيم non-negative بس <bdi dir=\"ltr\">0.3&nbsp;+&nbsp;0.3&nbsp;=&nbsp;0.6&nbsp;≠&nbsp;1</bdi>، فالشرط رقم 2 <bdi dir=\"ltr\">(Σ&nbsp;f(x)&nbsp;=&nbsp;1)</bdi> مش متحقق.",
+     "المجموع <bdi dir=\"ltr\">0.7&nbsp;−&nbsp;0.1&nbsp;+&nbsp;0.4&nbsp;=&nbsp;1</bdi> فعلاً، بس <bdi dir=\"ltr\">f(1)&nbsp;=&nbsp;−0.1</bdi> بيكسر الشرط رقم 1، اللي هو <bdi dir=\"ltr\">f(x)&nbsp;≥&nbsp;0</bdi>.",
+     "المجموع <bdi dir=\"ltr\">0.5&nbsp;+&nbsp;0.6&nbsp;=&nbsp;1.1&nbsp;&gt;&nbsp;1</bdi>، فالشرط رقم 2 <bdi dir=\"ltr\">(Σ&nbsp;f(x)&nbsp;=&nbsp;1)</bdi> مش متحقق."
     ],
     [
-     "الـ 2/12 ده f(3): (3, 4) و (4, 3) بس. أي pair فيها 1 أصغر رقم فيها 1: يعني 3 + 3 = 6 pairs.",
-     "صح. n(S) = 4 × 3 = 12؛ والـ pairs اللي فيها 1: 3 + 3 = 6.",
-     "الـ 4/12 ده f(2): (2,3)، (2,4) والعكس بتاعهم. الـ pairs اللي فيها 1 عددها 6.",
-     "الـ 3/12 بيعد (1,2)، (1,3)، (1,4) بس. السحب ordered، فـ (2,1)، (3,1)، (4,1) بيتحسبوا كمان: 6/12."
+     "الـ <bdi dir=\"ltr\">2/12</bdi> ده <bdi dir=\"ltr\">f(3)</bdi>، يعني <bdi dir=\"ltr\">(3,&nbsp;4)</bdi> و <bdi dir=\"ltr\">(4,&nbsp;3)</bdi> بس. أي pair فيها 1 أصغر رقم فيها 1: يعني <bdi dir=\"ltr\">3&nbsp;+&nbsp;3&nbsp;=&nbsp;6</bdi> pairs.",
+     "صح. عدد الـ outcomes <bdi dir=\"ltr\">n(S)&nbsp;=&nbsp;4&nbsp;×&nbsp;3&nbsp;=&nbsp;12</bdi>؛ والـ pairs اللي فيها 1 عددها <bdi dir=\"ltr\">3&nbsp;+&nbsp;3&nbsp;=&nbsp;6</bdi>.",
+     "الـ <bdi dir=\"ltr\">4/12</bdi> ده <bdi dir=\"ltr\">f(2)</bdi>، يعني <bdi dir=\"ltr\">(2,3),&nbsp;(2,4)</bdi> والعكس بتاعهم. الـ pairs اللي فيها 1 عددها 6.",
+     "الـ <bdi dir=\"ltr\">3/12</bdi> بيعد <bdi dir=\"ltr\">(1,2),&nbsp;(1,3),&nbsp;(1,4)</bdi> بس. السحب ordered، فـ <bdi dir=\"ltr\">(2,1),&nbsp;(3,1),&nbsp;(4,1)</bdi> بيتحسبوا كمان: <bdi dir=\"ltr\">6/12</bdi>."
     ],
     [
-     "الـ {0, 1, 2} ده الـ range بتاع عدد الـ heads. لما تطرح الـ tails: HH → 2، HT/TH → 0، TT → −2.",
-     "في رميتين، h − t = 2h − 2 دايماً زوجي، فالـ ±1 مستحيل يحصلوا. الـ range هو {−2, 0, 2}.",
-     "صح. HH → 2 − 0 = 2، و HT و TH → 1 − 1 = 0، و TT → 0 − 2 = −2، فالـ range هو {−2, 0, 2} (L6, Try to solve).",
-     "الـ ±1 محتاجين عدد رميات فردي. في رميتين الـ h − t بيبقى زوجي: {−2, 0, 2}."
+     "الـ <bdi dir=\"ltr\">{0,&nbsp;1,&nbsp;2}</bdi> ده الـ range بتاع عدد الـ heads. لما تطرح الـ tails:<span class=\"ltr\">HH → 2, HT/TH → 0, TT → −2</span>",
+     "في رميتين، <bdi dir=\"ltr\">h&nbsp;−&nbsp;t&nbsp;=&nbsp;2h&nbsp;−&nbsp;2</bdi> دايماً زوجي، فالـ <bdi dir=\"ltr\">±1</bdi> مستحيل يحصلوا. الـ range هو <bdi dir=\"ltr\">{−2,&nbsp;0,&nbsp;2}</bdi>.",
+     "صح. القيم:<span class=\"ltr\">HH → 2 − 0 = 2</span><span class=\"ltr\">HT, TH → 1 − 1 = 0</span><span class=\"ltr\">TT → 0 − 2 = −2</span>فالـ range هو <bdi dir=\"ltr\">{−2,&nbsp;0,&nbsp;2}</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Try&nbsp;to&nbsp;solve)</bdi>.",
+     "الـ <bdi dir=\"ltr\">±1</bdi> محتاجين عدد رميات فردي. في رميتين الـ <bdi dir=\"ltr\">h&nbsp;−&nbsp;t</bdi> بيبقى زوجي: <bdi dir=\"ltr\">{−2,&nbsp;0,&nbsp;2}</bdi>."
     ],
     [
      "الـ dependent variable هو الرقم الحقيقي اللي X بتطلّعه (R). الـ S فيه الـ inputs، فهو الـ independent variable.",
-     "الـ co-domain بتاع X : S → R هو R، مجموعة القيم الحقيقية. الـ S هو الـ domain.",
-     "الاحتمالات بتاعة الـ distribution f(x)، مش بتاعة S. الـ S هو مجموعة الـ outcomes، يعني الـ domain بتاع X.",
-     "صح. في X : S → R الـ sample space S هو الـ domain (الـ independent variable) و R هو الـ co-domain (الـ dependent variable) (L6, Random variable)."
+     "الـ co-domain بتاع <bdi dir=\"ltr\">X&nbsp;:&nbsp;S&nbsp;→&nbsp;R</bdi> هو R، مجموعة القيم الحقيقية. الـ S هو الـ domain.",
+     "الاحتمالات بتاعة الـ distribution <bdi dir=\"ltr\">f(x)</bdi>، مش بتاعة S. الـ S هو مجموعة الـ outcomes، يعني الـ domain بتاع X.",
+     "صح. في <bdi dir=\"ltr\">X&nbsp;:&nbsp;S&nbsp;→&nbsp;R</bdi> الـ sample space S هو الـ domain (الـ independent variable) و R هو الـ co-domain (الـ dependent variable) <bdi dir=\"ltr\">(L6,&nbsp;Random&nbsp;variable)</bdi>."
     ],
     [
-     "صح. كل رمية ليها 6 outcomes، والرميتين بيتجمعوا كـ ordered pairs: n(S) = 6 × 6 = 36 (L6, Example 2).",
-     "الـ 11 ده عدد المجاميع الممكنة (من 2 لـ 12)، مش عدد الـ outcomes. الـ ordered pairs بتدي 6 × 6 = 36.",
-     "الـ 6 ده عدد outcomes رمية واحدة. رميتين بيدوا 6 × 6 = 36 ordered pairs.",
-     "الـ 12 = 6 + 6 ده جمع بدل ضرب. كل نتيجة من الـ 6 الأولانيين بتتجمع مع 6 نتايج تانية: 36."
+     "صح. كل رمية ليها 6 outcomes، والرميتين بيتجمعوا كـ ordered pairs، يبقى <bdi dir=\"ltr\">n(S)&nbsp;=&nbsp;6&nbsp;×&nbsp;6&nbsp;=&nbsp;36</bdi> <bdi dir=\"ltr\">(L6,&nbsp;Example&nbsp;2)</bdi>.",
+     "الـ 11 ده عدد المجاميع الممكنة (من 2 لـ 12)، مش عدد الـ outcomes. الـ ordered pairs بتدي <bdi dir=\"ltr\">6&nbsp;×&nbsp;6&nbsp;=&nbsp;36</bdi>.",
+     "الـ 6 ده عدد outcomes رمية واحدة. رميتين بيدوا <bdi dir=\"ltr\">6&nbsp;×&nbsp;6&nbsp;=&nbsp;36</bdi> ordered pairs.",
+     "الـ <bdi dir=\"ltr\">12&nbsp;=&nbsp;6&nbsp;+&nbsp;6</bdi> ده جمع بدل ضرب. كل نتيجة من الـ 6 الأولانيين بتتجمع مع 6 نتايج تانية: 36."
     ],
     [
-     "الـ 7/8 = 1 − 1/8 ده P(X ≥ 1)، اللي بيستبعد TTT بس. الـ X ≥ 2 محتاج 2 أو 3 heads: 3/8 + 1/8.",
-     "صح. P(X ≥ 2) = f(2) + f(3) = 3/8 + 1/8 = 4/8 (HHT، HTH، THH، HHH من 8) (L6, Probability distribution).",
-     "الـ 3/8 ده P(X = 2) بس. الـ X ≥ 2 فيه كمان X = 3 (HHH): 3/8 + 1/8 = 4/8.",
-     "الـ 1/8 ده P(X = 3) بس (HHH). لما تزود P(X = 2) = 3/8 يطلع 4/8."
+     "الـ <bdi dir=\"ltr\">7/8&nbsp;=&nbsp;1&nbsp;−&nbsp;1/8</bdi> ده <bdi dir=\"ltr\">P(X&nbsp;≥&nbsp;1)</bdi>، اللي بيستبعد TTT بس. الـ <bdi dir=\"ltr\">X&nbsp;≥&nbsp;2</bdi> محتاج 2 أو 3 heads: <bdi dir=\"ltr\">3/8&nbsp;+&nbsp;1/8</bdi>.",
+     "صح. الحساب:<span class=\"ltr\">P(X ≥ 2) = f(2) + f(3) = 3/8 + 1/8 = 4/8</span>يعني HHT و HTH و THH و HHH من 8 <bdi dir=\"ltr\">(L6, Probability distribution)</bdi>.",
+     "الـ <bdi dir=\"ltr\">3/8</bdi> ده <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;2)</bdi> بس. الـ <bdi dir=\"ltr\">X&nbsp;≥&nbsp;2</bdi> فيه كمان <bdi dir=\"ltr\">X&nbsp;=&nbsp;3</bdi> (HHH):<span class=\"ltr\">3/8 + 1/8 = 4/8</span>",
+     "الـ <bdi dir=\"ltr\">1/8</bdi> ده <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;3)</bdi> بس (HHH). لما تزود <bdi dir=\"ltr\">P(X&nbsp;=&nbsp;2)&nbsp;=&nbsp;3/8</bdi> يطلع <bdi dir=\"ltr\">4/8</bdi>."
     ],
     [
      "الوقت ممكن ياخد أي قيمة في interval، فالـ outcomes ماتتعدش؛ والـ discrete finite space ليه عدد outcomes محدد.",
@@ -1386,169 +1386,169 @@ AR.dm = {
      "h": "الـ Expectation (الـ mean)",
      "pts": [
       "الـ <b>Expectation</b> هي القيمة اللي أغلب قيم الـ discrete random variable بتتمركز حواليها؛ وساعات بنسميها \"<b>mean</b>\" ورمزها <b>μ</b> (بتتقري \"Mu\").",
-      "لو X هو discrete والـ distribution بتاعه f والـ range بتاعه {x₁, …, xₙ} باحتمالات f(x₁), …, f(xₙ): <b>μ = E(X) = Σ xᵣ · f(xᵣ)</b> = x₁·f(x₁) + x₂·f(x₂) + … + xₙ·f(xₙ). يعني كل قيمة في الاحتمال بتاعها وتجمع.",
-      "لو X هو continuous: <b>μ = E(X) = ∫ x f(x) dx</b> على (−∞, ∞).",
-      "<b>Theorem</b>: الـ expected value بتاعة g(X) هي E[g(X)] = Σ g(x) f(x) (discrete) أو ∫ g(x) f(x) dx (continuous). ولو g(x) = x² يطلعلك E(X²)."
+      "لو X هو discrete والـ distribution بتاعه f والـ range بتاعه <bdi dir=\"ltr\">{x₁,&nbsp;…,&nbsp;xₙ}</bdi> باحتمالات <bdi dir=\"ltr\">f(x₁),&nbsp;…,&nbsp;f(xₙ)</bdi>، يبقى:<span class=\"ltr\"><b>μ = E(X) = Σ xᵣ · f(xᵣ)</b></span><span class=\"ltr\">= x₁·f(x₁) + x₂·f(x₂) + … + xₙ·f(xₙ)</span>يعني كل قيمة في الاحتمال بتاعها وتجمع.",
+      "لو X هو continuous، على <bdi dir=\"ltr\">(−∞,&nbsp;∞)</bdi>، يبقى:<span class=\"ltr\"><b>μ = E(X) = ∫ x f(x) dx</b></span>",
+      "الـ <b>Theorem</b>: الـ expected value بتاعة <bdi dir=\"ltr\">g(X)</bdi> هي:<span class=\"ltr\">E[g(X)] = Σ g(x) f(x)  (discrete)</span>أو:<span class=\"ltr\">E[g(X)] = ∫ g(x) f(x) dx  (continuous)</span>ولو <bdi dir=\"ltr\">g(x)&nbsp;=&nbsp;x²</bdi> يطلعلك <bdi dir=\"ltr\">E(X²)</bdi>."
      ]
     },
     {
      "h": "الـ Variance والـ standard deviation",
      "pts": [
-      "الـ <b>Variance</b>: σ² = E[(X − μ)²] = Σ (x − μ)² f(x) (discrete) أو ∫ (x − μ)² f(x) dx (continuous).",
-      "<b>الطريقة المختصرة</b>: <b>σ² = E(X²) − μ²</b>، ودي اللي هتستخدمها في الامتحان غالبًا.",
+      "الـ <b>Variance</b>:<span class=\"ltr\">σ² = E[(X − μ)²] = Σ (x − μ)² f(x)  (discrete)</span>أو:<span class=\"ltr\">σ² = ∫ (x − μ)² f(x) dx  (continuous)</span>",
+      "<b>الطريقة المختصرة</b>:<span class=\"ltr\"><b>σ² = E(X²) − μ²</b></span>ودي اللي هتستخدمها في الامتحان غالبًا.",
       "الجذر التربيعي الموجب للـ variance، يعني <b>σ</b>، هو الـ <b>standard deviation</b> بتاع X."
      ]
     },
     {
-     "h": "Example 1: عملة fair اترمت مرتين (عدد الـ heads)"
+     "h": "مثال 1: عملة fair اترمت مرتين (عدد الـ heads)"
     },
     {
-     "h": "Example 2: هات a، وبعدين الـ expectation"
+     "h": "مثال 2: هات a، وبعدين الـ expectation"
     },
     {
-     "h": "حاول تحل (وجه كمان في Exam 2023/24 Q2b)"
+     "h": "حاول تحل (وجه كمان في <bdi dir=\"ltr\">Exam&nbsp;2023/24&nbsp;Q2b</bdi>)"
     },
     {
-     "h": "Example 3: expectation لـ continuous variable (عمر جهاز)"
+     "h": "مثال 3: الـ expectation لـ continuous variable (عمر جهاز)"
     },
     {
-     "h": "Example 4: الـ variance لعدد القطع البايظة (defective parts)"
+     "h": "مثال 4: الـ variance لعدد القطع البايظة (defective parts)"
     },
     {
-     "h": "Example 5: mean وvariance لـ continuous variable (الطلب على المية)"
+     "h": "مثال 5: الـ mean والـ variance لـ continuous variable (الطلب على المية)"
     }
    ],
    "cards": [
-    "القيمة اللي أغلب قيم الـ random variable بتتمركز حواليها؛ μ = E(X).",
-    "Σ xᵣ · f(xᵣ)",
-    "∫ x f(x) dx على الـ real line كله.",
-    "Σ g(x) f(x) (discrete) أو ∫ g(x) f(x) dx (continuous).",
-    "σ² = E[(X − μ)²]",
-    "σ² = E(X²) − μ²",
+    "القيمة اللي أغلب قيم الـ random variable بتتمركز حواليها؛ <bdi dir=\"ltr\">μ&nbsp;=&nbsp;E(X)</bdi>.",
+    "<span class=\"ltr\">Σ xᵣ · f(xᵣ)</span>",
+    "على الـ real line كله:<span class=\"ltr\">∫ x f(x) dx</span>",
+    "<span class=\"ltr\">Σ g(x) f(x)  (discrete)</span>أو:<span class=\"ltr\">∫ g(x) f(x) dx  (continuous)</span>",
+    "<span class=\"ltr\">σ² = E[(X − μ)²]</span>",
+    "<span class=\"ltr\">σ² = E(X²) − μ²</span>",
     "σ = الجذر التربيعي الموجب للـ variance.",
     "1 (في المتوسط head واحدة في كل رمية للعملتين).",
-    "استخدم Σ f(x) = 1.",
-    "μ = 0.61، E(X²) = 0.87، σ² = 0.4979.",
+    "استخدم <bdi dir=\"ltr\">Σ&nbsp;f(x)&nbsp;=&nbsp;1</bdi>.",
+    "<span class=\"ltr\">μ = 0.61, E(X²) = 0.87, σ² = 0.4979</span>",
     "200 ساعة.",
-    "μ = 5/3، σ² = 1/18.",
-    "\"Mu\""
+    "<span class=\"ltr\">μ = 5/3, σ² = 1/18</span>",
+    "بتتقري \"Mu\""
    ],
    "qa": [
-    "E(X) = μ = Σ xᵣ f(xᵣ)، وهي القيمة اللي أغلب القيم بتتمركز حواليها. في رميتين: f(0) = 1/4، f(1) = 1/2، f(2) = 1/4، يبقى μ = 0(1/4) + 1(1/2) + 2(1/4) = 1.",
-    "a = 1 − 0.6 = 0.4. E(X) = 0.2 + 0.2 + 1.2 + 1.2 = 2.8. E(X²) = 1(0.2) + 4(0.1) + 9(0.4) + 16(0.3) = 0.2 + 0.4 + 3.6 + 4.8 = 9.0. V(X) = 9.0 − 2.8² = 9.0 − 7.84 = 1.16.",
-    "σ² = E[(X − μ)²] = Σ (x − μ)² f(x) (discrete) أو ∫ (x − μ)² f(x) dx (continuous). الطريقة المختصرة: σ² = E(X²) − μ². والـ standard deviation σ هو الجذر التربيعي الموجب لـ σ².",
-    "μ = 2∫₁² (x² − x) dx = 2[x³/3 − x²/2]₁² = 5/3. E(X²) = 2∫₁² (x³ − x²) dx = 2[x⁴/4 − x³/3]₁² = 17/6. σ² = 17/6 − 25/9 = 1/18.",
-    "μ = 0.38 + 0.20 + 0.03 = 0.61. E(X²) = 0.38 + 0.40 + 0.09 = 0.87. σ² = 0.87 − 0.3721 = 0.4979."
+    "التعريف:<span class=\"ltr\">E(X) = μ = Σ xᵣ f(xᵣ)</span>وهي القيمة اللي أغلب القيم بتتمركز حواليها. في رميتين:<span class=\"ltr\">f(0) = 1/4, f(1) = 1/2, f(2) = 1/4</span>يبقى:<span class=\"ltr\">μ = 0(1/4) + 1(1/2) + 2(1/4) = 1</span>",
+    "الحل:<span class=\"ltr\">a = 1 − 0.6 = 0.4</span><span class=\"ltr\">E(X) = 0.2 + 0.2 + 1.2 + 1.2 = 2.8</span><span class=\"ltr\">E(X²) = 1(0.2) + 4(0.1) + 9(0.4) + 16(0.3)</span><span class=\"ltr\">= 0.2 + 0.4 + 3.6 + 4.8 = 9.0</span><span class=\"ltr\">V(X) = 9.0 − 2.8² = 9.0 − 7.84 = 1.16</span>",
+    "التعريف:<span class=\"ltr\">σ² = E[(X − μ)²] = Σ (x − μ)² f(x)  (discrete)</span>أو:<span class=\"ltr\">σ² = ∫ (x − μ)² f(x) dx  (continuous)</span>الطريقة المختصرة:<span class=\"ltr\">σ² = E(X²) − μ²</span>والـ standard deviation σ هو الجذر التربيعي الموجب لـ σ².",
+    "الحل:<span class=\"ltr\">μ = 2∫₁² (x² − x) dx = 2[x³/3 − x²/2]₁² = 5/3</span><span class=\"ltr\">E(X²) = 2∫₁² (x³ − x²) dx = 2[x⁴/4 − x³/3]₁² = 17/6</span><span class=\"ltr\">σ² = 17/6 − 25/9 = 1/18</span>",
+    "الحل:<span class=\"ltr\">μ = 0.38 + 0.20 + 0.03 = 0.61</span><span class=\"ltr\">E(X²) = 0.38 + 0.40 + 0.09 = 0.87</span><span class=\"ltr\">σ² = 0.87 − 0.3721 = 0.4979</span>"
    ],
    "quiz": [
     [
-     "صح. في الـ discrete random variable بيبقى μ = E(X) = Σ xᵣ · f(xᵣ) = x₁f(x₁) + … + xₙf(xₙ): كل قيمة بتتضرب في الـ probability بتاعتها (L7, Expectation).",
-     "الـ Σ x بيجمع القيم بس ومش بيبص خالص على احتمال كل واحدة. الـ expectation بيدّي كل قيمة وزنها: Σ x · f(x).",
-     "الـ s(x) ده مش متعرّف في أي حتة في المحاضرة. الـ expectation هو Σ x · f(x)، باستخدام الـ distribution f.",
-     "الـ Σ f(x) دايمًا بيساوي 1 لأي distribution (الشرط التاني في L6)، فمينفعش يبقى هو الـ mean. الصح E(X) = Σ x · f(x)."
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Expectation)</bdi>. في الـ discrete random variable بيبقى:<span class=\"ltr\">μ = E(X) = Σ xᵣ · f(xᵣ) = x₁f(x₁) + … + xₙf(xₙ)</span>يعني كل قيمة بتتضرب في الـ probability بتاعتها.",
+     "الـ <bdi dir=\"ltr\">Σ&nbsp;x</bdi> بيجمع القيم بس ومش بيبص خالص على احتمال كل واحدة. الـ expectation بيدّي كل قيمة وزنها: <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>.",
+     "الـ <bdi dir=\"ltr\">s(x)</bdi> ده مش متعرّف في أي حتة في المحاضرة. الـ expectation هو <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>، باستخدام الـ distribution f.",
+     "الـ <bdi dir=\"ltr\">Σ&nbsp;f(x)</bdi> دايمًا بيساوي 1 لأي distribution (الشرط التاني في L6)، فمينفعش يبقى هو الـ mean. الصح <bdi dir=\"ltr\">E(X)&nbsp;=&nbsp;Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>."
     ],
     [
-     "لو a = 0.2 مجموع الاحتمالات هيبقى 0.3 + 0.1 + 0.1 + 0.2 + 0.2 = 0.9، مش 1. عشان Σ f = 1 لازم a = 0.3.",
-     "صح. أي distribution مجموعها لازم يبقى 1: 0.3 + 0.1 + 0.1 + a + 0.2 = 1، يبقى a = 1 − 0.7 = 0.3 (L7, Example 2).",
-     "لو a = 0.4 المجموع هيبقى 0.7 + 0.4 = 1.1 &gt; 1، وده مش مسموح. الصح a = 1 − 0.7 = 0.3.",
-     "لو a = 0.1 المجموع هيبقى 0.7 + 0.1 = 0.8 &lt; 1. الاحتمالات لازم مجموعها يبقى 1، فـ a = 0.3."
+     "لو <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.2</bdi> مجموع الاحتمالات هيبقى:<span class=\"ltr\">0.3 + 0.1 + 0.1 + 0.2 + 0.2 = 0.9</span>مش 1. عشان <bdi dir=\"ltr\">Σ&nbsp;f&nbsp;=&nbsp;1</bdi> لازم <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.3</bdi>.",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;2)</bdi>. أي distribution مجموعها لازم يبقى 1:<span class=\"ltr\">0.3 + 0.1 + 0.1 + a + 0.2 = 1</span>يبقى:<span class=\"ltr\">a = 1 − 0.7 = 0.3</span>",
+     "لو <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.4</bdi> المجموع هيبقى <bdi dir=\"ltr\">0.7&nbsp;+&nbsp;0.4&nbsp;=&nbsp;1.1&nbsp;&gt;&nbsp;1</bdi>، وده مش مسموح. الصح <bdi dir=\"ltr\">a&nbsp;=&nbsp;1&nbsp;−&nbsp;0.7&nbsp;=&nbsp;0.3</bdi>.",
+     "لو <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.1</bdi> المجموع هيبقى <bdi dir=\"ltr\">0.7&nbsp;+&nbsp;0.1&nbsp;=&nbsp;0.8&nbsp;&lt;&nbsp;1</bdi>. الاحتمالات لازم مجموعها يبقى 1، فـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.3</bdi>."
     ],
     [
-     "الـ 1.6 جاية من إنك استخدمت +1 بدل −1: 0.3 + 0 + 0.1 + 0.6 + 0.6. خلي بالك أول term هو (−1)(0.3) = −0.3، فيطلع μ = 1.",
-     "الـ 0.6 دي term واحد بس (2 × 0.3 أو 3 × 0.2)، مش المجموع كله. لما تجمع الخمسة: −0.3 + 0 + 0.1 + 0.6 + 0.6 = 1.",
-     "صح. μ = Σ x f(x) = (−1)(0.3) + (0)(0.1) + (1)(0.1) + (2)(0.3) + (3)(0.2) = −0.3 + 0 + 0.1 + 0.6 + 0.6 = 1 (L7, Example 2).",
-     "الـ 2.4 دي الـ variance: E(X²) = 3.4 و σ² = 3.4 − 1² = 2.4. أما الـ expectation نفسه فهو μ = 1."
+     "الـ 1.6 جاية من إنك استخدمت <bdi dir=\"ltr\">+1</bdi> بدل <bdi dir=\"ltr\">−1</bdi> في الحساب:<span class=\"ltr\">0.3 + 0 + 0.1 + 0.6 + 0.6</span>خلي بالك أول term هو <bdi dir=\"ltr\">(−1)(0.3)&nbsp;=&nbsp;−0.3</bdi>، فيطلع <bdi dir=\"ltr\">μ&nbsp;=&nbsp;1</bdi>.",
+     "الـ 0.6 دي term واحد بس (<bdi dir=\"ltr\">2&nbsp;×&nbsp;0.3</bdi> أو <bdi dir=\"ltr\">3&nbsp;×&nbsp;0.2</bdi>)، مش المجموع كله. لما تجمع الخمسة:<span class=\"ltr\">−0.3 + 0 + 0.1 + 0.6 + 0.6 = 1</span>",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;2)</bdi>. الحساب:<span class=\"ltr\">μ = Σ x f(x)</span><span class=\"ltr\">= (−1)(0.3) + (0)(0.1) + (1)(0.1) + (2)(0.3) + (3)(0.2)</span><span class=\"ltr\">= −0.3 + 0 + 0.1 + 0.6 + 0.6 = 1</span>",
+     "الـ 2.4 دي الـ variance:<span class=\"ltr\">E(X²) = 3.4,  σ² = 3.4 − 1² = 2.4</span>أما الـ expectation نفسه فهو <bdi dir=\"ltr\">μ&nbsp;=&nbsp;1</bdi>."
     ],
     [
-     "الـ Σ f(x) = 1 لأي distribution؛ مش بيقول أي حاجة عن الـ spread. الـ variance هو σ² = E(X²) − μ².",
-     "الـ E(X)² = μ² ده بس الـ term اللي بنطرحه في الـ shortcut. الـ variance هو E(X²) − μ²، يعني متوسط المربعات ناقص مربع المتوسط.",
-     "الـ E(X) − μ = μ − μ = 0 لأي X. الـ variance بياخد متوسط مربعات الانحرافات: E[(X − μ)²] = E(X²) − μ².",
-     "صح. σ² = E[(X − μ)²]، والـ shortcut بتاع المحاضرة هو σ² = E(X²) − μ² (L7, Variance and standard deviation)."
+     "الـ <bdi dir=\"ltr\">Σ&nbsp;f(x)&nbsp;=&nbsp;1</bdi> لأي distribution؛ مش بيقول أي حاجة عن الـ spread. الـ variance هو:<span class=\"ltr\">σ² = E(X²) − μ²</span>",
+     "الـ <bdi dir=\"ltr\">E(X)²&nbsp;=&nbsp;μ²</bdi> ده بس الـ term اللي بنطرحه في الـ shortcut. الـ variance هو <bdi dir=\"ltr\">E(X²)&nbsp;−&nbsp;μ²</bdi>، يعني متوسط المربعات ناقص مربع المتوسط.",
+     "الـ <bdi dir=\"ltr\">E(X)&nbsp;−&nbsp;μ&nbsp;=&nbsp;μ&nbsp;−&nbsp;μ&nbsp;=&nbsp;0</bdi> لأي X. الـ variance بياخد متوسط مربعات الانحرافات:<span class=\"ltr\">E[(X − μ)²] = E(X²) − μ²</span>",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Variance&nbsp;and&nbsp;standard&nbsp;deviation)</bdi>. الحساب:<span class=\"ltr\">σ² = E[(X − μ)²]</span>والـ shortcut بتاع المحاضرة هو:<span class=\"ltr\">σ² = E(X²) − μ²</span>"
     ],
     [
-     "صح. μ = 0.38 + 0.20 + 0.03 = 0.61، و E(X²) = 0.38 + 0.40 + 0.09 = 0.87، يبقى σ² = 0.87 − 0.61² = 0.87 − 0.3721 = 0.4979 (L7, Example 4).",
-     "الـ 0.87 ده E(X²) = 0(0.51) + 1(0.38) + 4(0.10) + 9(0.01). الـ variance لسه محتاج تطرح منه μ² = 0.3721: يطلع 0.4979.",
-     "الـ 0.3721 ده μ² = 0.61². الـ variance هو E(X²) − μ² = 0.87 − 0.3721 = 0.4979.",
-     "الـ 0.61 ده الـ mean μ = 0.38 + 0.20 + 0.03. الـ variance هو 0.87 − 0.61² = 0.4979."
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;4)</bdi>. الحساب:<span class=\"ltr\">μ = 0.38 + 0.20 + 0.03 = 0.61</span><span class=\"ltr\">E(X²) = 0.38 + 0.40 + 0.09 = 0.87</span>يبقى:<span class=\"ltr\">σ² = 0.87 − 0.61² = 0.87 − 0.3721 = 0.4979</span>",
+     "الـ 0.87 ده:<span class=\"ltr\">E(X²) = 0(0.51) + 1(0.38) + 4(0.10) + 9(0.01)</span>الـ variance لسه محتاج تطرح منه <bdi dir=\"ltr\">μ²&nbsp;=&nbsp;0.3721</bdi>: يطلع 0.4979.",
+     "الـ 0.3721 ده <bdi dir=\"ltr\">μ²&nbsp;=&nbsp;0.61²</bdi>. الـ variance هو:<span class=\"ltr\">E(X²) − μ² = 0.87 − 0.3721 = 0.4979</span>",
+     "الـ 0.61 ده الـ mean <bdi dir=\"ltr\">μ&nbsp;=&nbsp;0.38&nbsp;+&nbsp;0.20&nbsp;+&nbsp;0.03</bdi>. الـ variance هو <bdi dir=\"ltr\">0.87&nbsp;−&nbsp;0.61²&nbsp;=&nbsp;0.4979</bdi>."
     ],
     [
-     "الـ 20000 ده مجرد الـ constant اللي في f(x). الـ mean هو ∫₁₀₀^∞ x · 20000/x³ dx = [−20000/x]₁₀₀^∞ = 200.",
-     "صح. μ = ∫₁₀₀^∞ x · 20000/x³ dx = ∫₁₀₀^∞ 20000/x² dx = [−20000/x]₁₀₀^∞ = 0 + 200 = 200 hours (L7, Example 3).",
-     "الـ x · f(x) = 20000/x²، والـ integral بتاعه من 100 لـ ∞ بيـ converge: [−20000/x]₁₀₀^∞ = 200. فالـ mean رقم محدود مش infinite.",
-     "الـ 100 hours دي الـ lower limit (أقل عمر، المكان اللي f بتبدأ منه). المتوسط هو ∫ x f(x) dx = 200 hours."
+     "الـ 20000 ده مجرد الـ constant اللي في <bdi dir=\"ltr\">f(x)</bdi>. الـ mean هو:<span class=\"ltr\">∫₁₀₀^∞ x · 20000/x³ dx = [−20000/x]₁₀₀^∞ = 200</span>",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;3)</bdi>. الحساب:<span class=\"ltr\">μ = ∫₁₀₀^∞ x · 20000/x³ dx = ∫₁₀₀^∞ 20000/x² dx</span><span class=\"ltr\">= [−20000/x]₁₀₀^∞ = 0 + 200 = 200 hours</span>",
+     "الـ <bdi dir=\"ltr\">x&nbsp;·&nbsp;f(x)&nbsp;=&nbsp;20000/x²</bdi>، والـ integral بتاعه من 100 لـ ∞ بيـ converge:<span class=\"ltr\">[−20000/x]₁₀₀^∞ = 200</span>فالـ mean رقم محدود مش infinite.",
+     "الـ 100 hours دي الـ lower limit (أقل عمر، المكان اللي f بتبدأ منه). المتوسط هو <bdi dir=\"ltr\">∫&nbsp;x&nbsp;f(x)&nbsp;dx&nbsp;=&nbsp;200&nbsp;hours</bdi>."
     ],
     [
-     "الـ 1/6 غلطة في الكسور. مع E(X²) = 17/6 و μ = 5/3: σ² = 17/6 − 25/9 = 51/18 − 50/18 = 1/18.",
-     "الـ 5/3 ده الـ mean μ = ∫₁² x · 2(x − 1) dx. الـ variance هو E(X²) − μ² = 17/6 − 25/9 = 1/18.",
-     "صح. μ = 5/3 و E(X²) = ∫₁² x² · 2(x − 1) dx = 17/6، يبقى σ² = 17/6 − (5/3)² = 51/18 − 50/18 = 1/18 (L7, Example 5).",
-     "الـ 17/6 ده E(X²). الـ variance لسه محتاج تطرح μ²: 17/6 − (5/3)² = 1/18."
+     "الـ <bdi dir=\"ltr\">1/6</bdi> غلطة في الكسور. مع <bdi dir=\"ltr\">E(X²)&nbsp;=&nbsp;17/6</bdi> و <bdi dir=\"ltr\">μ&nbsp;=&nbsp;5/3</bdi> يبقى:<span class=\"ltr\">σ² = 17/6 − 25/9 = 51/18 − 50/18 = 1/18</span>",
+     "الـ <bdi dir=\"ltr\">5/3</bdi> ده الـ mean <bdi dir=\"ltr\">μ&nbsp;=&nbsp;∫₁²&nbsp;x&nbsp;·&nbsp;2(x&nbsp;−&nbsp;1)&nbsp;dx</bdi>. الـ variance هو:<span class=\"ltr\">E(X²) − μ² = 17/6 − 25/9 = 1/18</span>",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;5)</bdi>. عندنا <bdi dir=\"ltr\">μ&nbsp;=&nbsp;5/3</bdi> وكمان:<span class=\"ltr\">E(X²) = ∫₁² x² · 2(x − 1) dx = 17/6</span>يبقى:<span class=\"ltr\">σ² = 17/6 − (5/3)² = 51/18 − 50/18 = 1/18</span>",
+     "الـ <bdi dir=\"ltr\">17/6</bdi> ده <bdi dir=\"ltr\">E(X²)</bdi>. الـ variance لسه محتاج تطرح μ²:<span class=\"ltr\">17/6 − (5/3)² = 1/18</span>"
     ],
     [
      "مربع الـ mean هو μ²، وده term في قانون الـ variance. الـ σ هو الجذر التربيعي الموجب للـ variance.",
      "تربيع الـ variance ده عكس المطلوب؛ الـ σ² هو الـ variance، فـ σ = √(σ²)، يعني الجذر التربيعي الموجب.",
-     "الـ E(X²) ده متوسط المربعات، بنستخدمه عشان نحسب σ² = E(X²) − μ². الـ σ هو الجذر التربيعي للـ variance ده.",
+     "الـ <bdi dir=\"ltr\">E(X²)</bdi> ده متوسط المربعات، بنستخدمه عشان نحسب <bdi dir=\"ltr\">σ²&nbsp;=&nbsp;E(X²)&nbsp;−&nbsp;μ²</bdi>. الـ σ هو الجذر التربيعي للـ variance ده.",
      "صح. المحاضرة بتعرّف الـ standard deviation σ إنه الجذر التربيعي الموجب للـ variance σ² (L7, Variance and standard deviation)."
     ]
    ],
    "extra": [
     [
-     "الـ 1 ده الـ mean لو رميت العملة مرتين (L7, Example 1). في 3 رميات: μ = 0(1/8) + 1(3/8) + 2(3/8) + 3(1/8) = 12/8 = 1.5.",
-     "الـ 2 بتدّي القيم الكبيرة وزن أكتر من حقها. لما تضرب كل عدد في احتماله: (0 + 3 + 6 + 3)/8 = 1.5.",
-     "صح. μ = Σ x f(x) = 0·(1/8) + 1·(3/8) + 2·(3/8) + 3·(1/8) = (0 + 3 + 6 + 3)/8 = 12/8 = 1.5 (L7, Expectation).",
-     "الـ 3 دي أكبر قيمة ممكنة (HHH)، واحتمالها 1/8 بس. المتوسط الموزون هو 12/8 = 1.5."
+     "الـ 1 ده الـ mean لو رميت العملة مرتين <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;1)</bdi>. في 3 رميات:<span class=\"ltr\">μ = 0(1/8) + 1(3/8) + 2(3/8) + 3(1/8) = 12/8 = 1.5</span>",
+     "الـ 2 بتدّي القيم الكبيرة وزن أكتر من حقها. لما تضرب كل عدد في احتماله:<span class=\"ltr\">(0 + 3 + 6 + 3)/8 = 1.5</span>",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Expectation)</bdi>. الحساب:<span class=\"ltr\">μ = Σ x f(x) = 0·(1/8) + 1·(3/8) + 2·(3/8) + 3·(1/8)</span><span class=\"ltr\">= (0 + 3 + 6 + 3)/8 = 12/8 = 1.5</span>",
+     "الـ 3 دي أكبر قيمة ممكنة (HHH)، واحتمالها <bdi dir=\"ltr\">1/8</bdi> بس. المتوسط الموزون هو <bdi dir=\"ltr\">12/8&nbsp;=&nbsp;1.5</bdi>."
     ],
     [
-     "الـ 3 ده E(X²) = (0 + 3 + 12 + 9)/8. الـ variance بيطرح μ² = 1.5² = 2.25، فيطلع 0.75.",
-     "الـ 2.25 ده μ² = 1.5². الـ variance هو E(X²) − μ² = 3 − 2.25 = 0.75.",
-     "الـ 1.5 ده الـ mean μ، مش الـ variance. σ² = E(X²) − μ² = 3 − 2.25 = 0.75.",
-     "صح. E(X²) = (0 + 3 + 12 + 9)/8 = 3؛ 3 − 1.5² = 0.75."
+     "الـ 3 ده <bdi dir=\"ltr\">E(X²)&nbsp;=&nbsp;(0&nbsp;+&nbsp;3&nbsp;+&nbsp;12&nbsp;+&nbsp;9)/8</bdi>. الـ variance بيطرح <bdi dir=\"ltr\">μ²&nbsp;=&nbsp;1.5²&nbsp;=&nbsp;2.25</bdi>، فيطلع 0.75.",
+     "الـ 2.25 ده <bdi dir=\"ltr\">μ²&nbsp;=&nbsp;1.5²</bdi>. الـ variance هو:<span class=\"ltr\">E(X²) − μ² = 3 − 2.25 = 0.75</span>",
+     "الـ 1.5 ده الـ mean μ، مش الـ variance:<span class=\"ltr\">σ² = E(X²) − μ² = 3 − 2.25 = 0.75</span>",
+     "صح:<span class=\"ltr\">E(X²) = (0 + 3 + 12 + 9)/8 = 3</span><span class=\"ltr\">3 − 1.5² = 0.75</span>"
     ],
     [
-     "صح. μ = Σ x f(x) = 1(0.5) + 2(0.3) + 3(0.2) = 0.5 + 0.6 + 0.6 = 1.7 (L7, Expectation).",
-     "الـ 2 = (1 + 2 + 3)/3 كأن القيم ليها نفس الاحتمال. لما توزن بـ f يطلع 0.5 + 0.6 + 0.6 = 1.7.",
-     "الـ 3.5 ده E(X²) = 1(0.5) + 4(0.3) + 9(0.2). الـ mean بيستخدم x مش x²: يطلع 1.7.",
-     "الـ 1.5 جاية من إنك ضربت 0.2 في 2 بدل 3 (0.5 + 0.6 + 0.4). آخر term هو 3 × 0.2 = 0.6، فـ μ = 1.7."
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Expectation)</bdi>. الحساب:<span class=\"ltr\">μ = Σ x f(x) = 1(0.5) + 2(0.3) + 3(0.2)</span><span class=\"ltr\">= 0.5 + 0.6 + 0.6 = 1.7</span>",
+     "الـ <bdi dir=\"ltr\">2&nbsp;=&nbsp;(1&nbsp;+&nbsp;2&nbsp;+&nbsp;3)/3</bdi> كأن القيم ليها نفس الاحتمال. لما توزن بـ f يطلع <bdi dir=\"ltr\">0.5&nbsp;+&nbsp;0.6&nbsp;+&nbsp;0.6&nbsp;=&nbsp;1.7</bdi>.",
+     "الـ 3.5 ده:<span class=\"ltr\">E(X²) = 1(0.5) + 4(0.3) + 9(0.2)</span>الـ mean بيستخدم x مش x²: يطلع 1.7.",
+     "الـ 1.5 جاية من إنك ضربت 0.2 في 2 بدل 3 <bdi dir=\"ltr\">(0.5&nbsp;+&nbsp;0.6&nbsp;+&nbsp;0.4)</bdi>. آخر term هو <bdi dir=\"ltr\">3&nbsp;×&nbsp;0.2&nbsp;=&nbsp;0.6</bdi>، فـ <bdi dir=\"ltr\">μ&nbsp;=&nbsp;1.7</bdi>."
     ],
     [
-     "الـ 2.89 ده μ² = 1.7². الـ variance هو E(X²) − μ² = 3.5 − 2.89 = 0.61.",
-     "صح. E(X²) = 0.5 + 1.2 + 1.8 = 3.5؛ 3.5 − 1.7² = 0.61.",
-     "الـ 3.5 ده E(X²) = 0.5 + 1.2 + 1.8. اطرح منه μ² = 2.89 يطلع σ² = 0.61.",
-     "الـ 1.7 ده الـ mean μ. الـ variance هو E(X²) − μ² = 3.5 − 2.89 = 0.61."
+     "الـ 2.89 ده <bdi dir=\"ltr\">μ²&nbsp;=&nbsp;1.7²</bdi>. الـ variance هو:<span class=\"ltr\">E(X²) − μ² = 3.5 − 2.89 = 0.61</span>",
+     "صح:<span class=\"ltr\">E(X²) = 0.5 + 1.2 + 1.8 = 3.5</span><span class=\"ltr\">3.5 − 1.7² = 0.61</span>",
+     "الـ 3.5 ده <bdi dir=\"ltr\">E(X²)&nbsp;=&nbsp;0.5&nbsp;+&nbsp;1.2&nbsp;+&nbsp;1.8</bdi>. اطرح منه <bdi dir=\"ltr\">μ²&nbsp;=&nbsp;2.89</bdi> يطلع <bdi dir=\"ltr\">σ²&nbsp;=&nbsp;0.61</bdi>.",
+     "الـ 1.7 ده الـ mean μ. الـ variance هو:<span class=\"ltr\">E(X²) − μ² = 3.5 − 2.89 = 0.61</span>"
     ],
     [
-     "الـ μ = 1 معناها إن X = 1 على طول. هنا μ = (−1)(0.5) + (1)(0.5) = 0، والقيم بعيدة عنه بمسافة 1، فـ σ² = 1.",
-     "الـ 0.5 ده term الـ x = 1 بس؛ لما تزود (−1)(0.5) يطلع μ = 0. وبعدين E(X²) = 1 و σ² = 1 − 0 = 1.",
-     "صح. μ = (−1)(0.5) + (1)(0.5) = 0؛ و E(X²) = 1(0.5) + 1(0.5) = 1؛ يبقى σ² = E(X²) − μ² = 1 − 0 = 1 (L7, Variance).",
-     "الـ μ = 0 صح، بس variance بـ 0 معناها مفيش spread خالص؛ والقيمتين كل واحدة بعيدة عن 0 بمسافة 1، فـ σ² = 1 − 0² = 1."
+     "الـ <bdi dir=\"ltr\">μ&nbsp;=&nbsp;1</bdi> معناها إن <bdi dir=\"ltr\">X&nbsp;=&nbsp;1</bdi> على طول. هنا:<span class=\"ltr\">μ = (−1)(0.5) + (1)(0.5) = 0</span>والقيم بعيدة عنه بمسافة 1، فـ <bdi dir=\"ltr\">σ²&nbsp;=&nbsp;1</bdi>.",
+     "الـ 0.5 ده term الـ <bdi dir=\"ltr\">x&nbsp;=&nbsp;1</bdi> بس؛ لما تزود <bdi dir=\"ltr\">(−1)(0.5)</bdi> يطلع <bdi dir=\"ltr\">μ&nbsp;=&nbsp;0</bdi>. وبعدين:<span class=\"ltr\">E(X²) = 1,  σ² = 1 − 0 = 1</span>",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Variance)</bdi>. الحساب:<span class=\"ltr\">μ = (−1)(0.5) + (1)(0.5) = 0</span><span class=\"ltr\">E(X²) = 1(0.5) + 1(0.5) = 1</span><span class=\"ltr\">σ² = E(X²) − μ² = 1 − 0 = 1</span>",
+     "الـ <bdi dir=\"ltr\">μ&nbsp;=&nbsp;0</bdi> صح، بس variance بـ 0 معناها مفيش spread خالص؛ والقيمتين كل واحدة بعيدة عن 0 بمسافة 1، فـ <bdi dir=\"ltr\">σ²&nbsp;=&nbsp;1&nbsp;−&nbsp;0²&nbsp;=&nbsp;1</bdi>."
     ],
     [
-     "الـ a = 0.3 صح، بس 0.8 = 0.5 + 0.3 نسيت فيها تضرب في x = 2: آخر term هو 2 × 0.3 = 0.6، فـ E(X) = 1.1.",
-     "لو a = 0.5 مجموع الاحتمالات هيبقى 0.2 + 0.5 + 0.5 = 1.2 &gt; 1. الشرط Σ f = 1 بيجبرك إن a = 0.3.",
-     "لو a = 0.2 المجموع هيبقى 0.9، مش 1. الـ Σ f = 1 بيدّي a = 0.3 و E(X) = 0.5 + 0.6 = 1.1.",
-     "صح. Σ f = 1 بيدّي a = 1 − 0.7 = 0.3؛ وبعدين E(X) = 0(0.2) + 1(0.5) + 2(0.3) = 0.5 + 0.6 = 1.1 (L7, Example 2 method)."
+     "الـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.3</bdi> صح، بس <bdi dir=\"ltr\">0.8&nbsp;=&nbsp;0.5&nbsp;+&nbsp;0.3</bdi> نسيت فيها تضرب في <bdi dir=\"ltr\">x&nbsp;=&nbsp;2</bdi>: آخر term هو <bdi dir=\"ltr\">2&nbsp;×&nbsp;0.3&nbsp;=&nbsp;0.6</bdi>، فـ <bdi dir=\"ltr\">E(X)&nbsp;=&nbsp;1.1</bdi>.",
+     "لو <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.5</bdi> مجموع الاحتمالات هيبقى:<span class=\"ltr\">0.2 + 0.5 + 0.5 = 1.2 &gt; 1</span>الشرط <bdi dir=\"ltr\">Σ&nbsp;f&nbsp;=&nbsp;1</bdi> بيجبرك إن <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.3</bdi>.",
+     "لو <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.2</bdi> المجموع هيبقى 0.9، مش 1. الـ <bdi dir=\"ltr\">Σ&nbsp;f&nbsp;=&nbsp;1</bdi> بيدّي <bdi dir=\"ltr\">a&nbsp;=&nbsp;0.3</bdi> و <bdi dir=\"ltr\">E(X)&nbsp;=&nbsp;0.5&nbsp;+&nbsp;0.6&nbsp;=&nbsp;1.1</bdi>.",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Example&nbsp;2&nbsp;method)</bdi>. الـ <bdi dir=\"ltr\">Σ&nbsp;f&nbsp;=&nbsp;1</bdi> بيدّي:<span class=\"ltr\">a = 1 − 0.7 = 0.3</span>وبعدين:<span class=\"ltr\">E(X) = 0(0.2) + 1(0.5) + 2(0.3) = 0.5 + 0.6 = 1.1</span>"
     ],
     [
-     "صح. الـ σ هو الجذر التربيعي الموجب للـ variance: σ = √0.49 = 0.7، لأن 0.7² = 0.49 (L7, Variance and standard deviation).",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Variance&nbsp;and&nbsp;standard&nbsp;deviation)</bdi>. الـ σ هو الجذر التربيعي الموجب للـ variance:<span class=\"ltr\">σ = √0.49 = 0.7,  0.7² = 0.49</span>",
      "الـ 0.49 ده الـ variance σ² نفسه. الـ standard deviation هو الجذر بتاعه، يعني 0.7.",
-     "الـ 7 ده √49: العلامة العشرية ضاعت. بما إن 0.7² = 0.49، يبقى √0.49 = 0.7.",
-     "الـ 0.2401 = 0.49² ده تربيع للـ variance. الـ σ هو الجذر: √0.49 = 0.7."
+     "الـ 7 ده <bdi dir=\"ltr\">√49</bdi>: العلامة العشرية ضاعت. بما إن <bdi dir=\"ltr\">0.7²&nbsp;=&nbsp;0.49</bdi>، يبقى <bdi dir=\"ltr\">√0.49&nbsp;=&nbsp;0.7</bdi>.",
+     "الـ <bdi dir=\"ltr\">0.2401&nbsp;=&nbsp;0.49²</bdi> ده تربيع للـ variance. الـ σ هو الجذر: <bdi dir=\"ltr\">√0.49&nbsp;=&nbsp;0.7</bdi>."
     ],
     [
-     "الـ 1/12 ده الـ variance، E(X²) − μ² = 1/3 − 1/4. الـ mean هو ∫₀¹ x dx = 1/2.",
-     "صح. في الـ continuous X بيبقى μ = ∫ x f(x) dx = ∫₀¹ x · 1 dx = [x²/2]₀¹ = 1/2 (L7, Expectation).",
-     "الـ 1 ده ∫₀¹ f(x) dx، يعني الاحتمال الكلي. الـ mean بيضرب في x الأول: ∫₀¹ x dx = 1/2.",
-     "الـ 1/3 ده E(X²) = ∫₀¹ x² dx. الـ mean بيستخدم x: ∫₀¹ x dx = 1/2."
+     "الـ <bdi dir=\"ltr\">1/12</bdi> ده الـ variance:<span class=\"ltr\">E(X²) − μ² = 1/3 − 1/4</span>الـ mean هو <bdi dir=\"ltr\">∫₀¹&nbsp;x&nbsp;dx&nbsp;=&nbsp;1/2</bdi>.",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Expectation)</bdi>. في الـ continuous X بيبقى:<span class=\"ltr\">μ = ∫ x f(x) dx = ∫₀¹ x · 1 dx = [x²/2]₀¹ = 1/2</span>",
+     "الـ 1 ده <bdi dir=\"ltr\">∫₀¹&nbsp;f(x)&nbsp;dx</bdi>، يعني الاحتمال الكلي. الـ mean بيضرب في x الأول: <bdi dir=\"ltr\">∫₀¹&nbsp;x&nbsp;dx&nbsp;=&nbsp;1/2</bdi>.",
+     "الـ <bdi dir=\"ltr\">1/3</bdi> ده <bdi dir=\"ltr\">E(X²)&nbsp;=&nbsp;∫₀¹&nbsp;x²&nbsp;dx</bdi>. الـ mean بيستخدم x: <bdi dir=\"ltr\">∫₀¹&nbsp;x&nbsp;dx&nbsp;=&nbsp;1/2</bdi>."
     ],
     [
-     "الـ Σ f(x)² بيربّع الاحتمالات مش القيم. من الـ theorem E[g(X)] = Σ g(x) f(x) مع g(x) = x² يطلع E(X²) = Σ x² f(x).",
-     "الـ Σ x f(x²) بيحسب f عند x²، وده بيلخبط الأدوار. القيمة هي اللي بتتربّع وتتوزن بـ f(x): Σ x² f(x).",
-     "صح. الـ theorem E[g(X)] = Σ g(x) f(x) مع g(x) = x² بيدّي E(X²) = Σ x² f(x) (L7, Expectation).",
-     "الـ (Σ x f(x))² = μ²، يعني مربع الـ mean. وعمومًا E(X²) ≠ μ²؛ والفرق بينهم هو الـ variance."
+     "الـ <bdi dir=\"ltr\">Σ&nbsp;f(x)²</bdi> بيربّع الاحتمالات مش القيم. من الـ theorem:<span class=\"ltr\">E[g(X)] = Σ g(x) f(x)</span>مع <bdi dir=\"ltr\">g(x)&nbsp;=&nbsp;x²</bdi> يطلع:<span class=\"ltr\">E(X²) = Σ x² f(x)</span>",
+     "الـ <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;f(x²)</bdi> بيحسب f عند x²، وده بيلخبط الأدوار. القيمة هي اللي بتتربّع وتتوزن بـ <bdi dir=\"ltr\">f(x)</bdi>، يعني <bdi dir=\"ltr\">Σ&nbsp;x²&nbsp;f(x)</bdi>.",
+     "صح <bdi dir=\"ltr\">(L7,&nbsp;Expectation)</bdi>. الـ theorem:<span class=\"ltr\">E[g(X)] = Σ g(x) f(x)</span>مع <bdi dir=\"ltr\">g(x)&nbsp;=&nbsp;x²</bdi> بيدّي:<span class=\"ltr\">E(X²) = Σ x² f(x)</span>",
+     "الـ <bdi dir=\"ltr\">(Σ&nbsp;x&nbsp;f(x))²&nbsp;=&nbsp;μ²</bdi>، يعني مربع الـ mean. وعمومًا <bdi dir=\"ltr\">E(X²)&nbsp;≠&nbsp;μ²</bdi>؛ والفرق بينهم هو الـ variance."
     ],
     [
      "الـ spread بتاع القيم بيتقاس بالـ variance σ² (أو σ)، مش بالـ mean.",
      "الـ mean ده متوسط موزون وممكن يبقى أقل بكتير من أكبر قيمة (زي 1.5 heads في 3 رميات، والـ max 3).",
-     "عدد الـ outcomes هو n(S)، ده عدّ. الـ mean μ = Σ x f(x) متوسط موزون للقيم.",
+     "عدد الـ outcomes هو <bdi dir=\"ltr\">n(S)</bdi>، ده عدّ. الـ mean <bdi dir=\"ltr\">μ&nbsp;=&nbsp;Σ&nbsp;x&nbsp;f(x)</bdi> متوسط موزون للقيم.",
      "صح. المحاضرة بتعرّف الـ expectation إنه القيمة اللي أغلب قيم الـ random variable بتتمركز حواليها، وبنسميه برضه الـ mean μ (L7, Expectation)."
     ]
    ]
@@ -1558,277 +1558,277 @@ AR.dm = {
     {
      "h": "الـ Integers والـ binary operations والقسمة",
      "pts": [
-      "الـ set بتاعة الـ integers <b>Z</b> فيها كل الأرقام الصحيحة (من غير كسور) من سالب ما لا نهاية لموجب ما لا نهاية: {…, −2, −1, 0, 1, 2, …}.",
-      "الـ <b>binary operation</b> بتاخد 2 inputs وبتطلّع output واحد. في الـ cryptography بيهمنا 3: <b>addition، subtraction، multiplication</b>.",
-      "Example 2.1: 5 + 9 = 14، (−5) + 9 = 4، 5 + (−9) = −4، (−5) + (−9) = −14؛ 5 − 9 = −4، (−5) − 9 = −14، 5 − (−9) = 14، (−5) − (−9) = 4؛ 5 × 9 = 45، (−5) × 9 = −45، 5 × (−9) = −45، (−5) × (−9) = 45.",
-      "الـ <b>Division relation</b>: <b>a = q × n + r</b>، حيث n موجب و r مش سالب (0 ≤ r &lt; n). a = الـ dividend (المقسوم)، n = الـ divisor (المقسوم عليه)، q = الـ quotient (خارج القسمة)، r = الـ remainder (الباقي).",
-      "Example 2.2: a = 255، n = 11 → q = 23، r = 2 (255 = 23 × 11 + 2).",
-      "Example 2.3: الكمبيوتر بيطلّع r سالب لما a تبقى سالبة. عشان تخلي r موجب: <b>نقّص q بواحد وزوّد n على r</b>. مثلًا −255 ÷ 11: q = −23، r = −2 → q = −24، r = 9."
+      "الـ set بتاعة الـ integers <b>Z</b> فيها كل الأرقام الصحيحة (من غير كسور) من سالب ما لا نهاية لموجب ما لا نهاية:<span class=\"ltr\">{…, −2, −1, 0, 1, 2, …}</span>",
+      "الـ <b>binary operation</b> بتاخد 2 inputs وبتطلّع output واحد. في الـ cryptography بيهمنا 3: الـ <b>addition</b>، والـ <b>subtraction</b>، والـ <b>multiplication</b>.",
+      "مثال 2.1:<span class=\"ltr\">5 + 9 = 14, (−5) + 9 = 4</span><span class=\"ltr\">5 + (−9) = −4, (−5) + (−9) = −14</span><span class=\"ltr\">5 − 9 = −4, (−5) − 9 = −14</span><span class=\"ltr\">5 − (−9) = 14, (−5) − (−9) = 4</span><span class=\"ltr\">5 × 9 = 45, (−5) × 9 = −45</span><span class=\"ltr\">5 × (−9) = −45, (−5) × (−9) = 45</span>",
+      "الـ <b>Division relation</b>:<span class=\"ltr\"><b>a = q × n + r</b></span>حيث n موجب و r مش سالب <bdi dir=\"ltr\">(0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;n)</bdi>. الـ a هو الـ dividend (المقسوم)، والـ n هو الـ divisor (المقسوم عليه)، والـ q هو الـ quotient (خارج القسمة)، والـ r هو الـ remainder (الباقي).",
+      "مثال 2.2:<span class=\"ltr\">a = 255, n = 11 → q = 23, r = 2</span><span class=\"ltr\">(255 = 23 × 11 + 2)</span>",
+      "مثال 2.3: الكمبيوتر بيطلّع r سالب لما a تبقى سالبة. عشان تخلي r موجب: <b>نقّص q بواحد وزوّد n على r</b>. مثلًا <bdi dir=\"ltr\">−255&nbsp;÷&nbsp;11</bdi> بيدّي:<span class=\"ltr\">q = −23, r = −2 → q = −24, r = 9</span>"
      ]
     },
     {
      "h": "الـ Divisibility (القابلية للقسمة)",
      "pts": [
-      "لو a ≠ 0 و r = 0 في الـ division relation، يبقى a = q × n. لو الباقي صفر بنكتب <b>n | a</b> (n بتقسم a)؛ ولو مش صفر بنكتب n ∤ a. (الـ slide كاتبة a | n وقصدها \"الـ divisor بيقسم\".)",
-      "Example 2.4: 4 | 32 لأن 32 = 8 × 4؛ و 8 ∤ 42 لأن 42 = 5 × 8 + 2.",
-      "Example 2.5: 13 | 78، 7 | 98، −6 | 24، 4 | 44، 11 | (−33)؛ 13 ∤ 27، 7 ∤ 50، −6 ∤ 23، 4 ∤ 41، 11 ∤ (−32).",
-      "<b>Property 1</b>: لو a | 1، يبقى a = ±1. <b>Property 2</b>: لو a | b و b | a، يبقى a = ±b. <b>Property 3</b>: لو a | b و b | c، يبقى a | c. <b>Property 4</b>: لو a | b و a | c، يبقى a | (m × b + n × c) لأي integers m و n.",
-      "<b>Fact 1</b>: الـ integer 1 ليه divisor واحد بس، هو نفسه. <b>Fact 2</b>: أي positive integer ليه على الأقل 2 divisors، الـ 1 والرقم نفسه (وممكن يبقى ليه أكتر)."
+      "لو <bdi dir=\"ltr\">a&nbsp;≠&nbsp;0</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> في الـ division relation، يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>. لو الباقي صفر بنكتب <bdi dir=\"ltr\"><b>n&nbsp;|&nbsp;a</b></bdi> (n بتقسم a)؛ ولو مش صفر بنكتب <bdi dir=\"ltr\">n&nbsp;∤&nbsp;a</bdi>. (الـ slide كاتبة <bdi dir=\"ltr\">a&nbsp;|&nbsp;n</bdi> وقصدها \"الـ divisor بيقسم\".)",
+      "مثال 2.4: <bdi dir=\"ltr\">4&nbsp;|&nbsp;32</bdi> لأن <bdi dir=\"ltr\">32&nbsp;=&nbsp;8&nbsp;×&nbsp;4</bdi>؛ و <bdi dir=\"ltr\">8&nbsp;∤&nbsp;42</bdi> لأن <bdi dir=\"ltr\">42&nbsp;=&nbsp;5&nbsp;×&nbsp;8&nbsp;+&nbsp;2</bdi>.",
+      "مثال 2.5:<span class=\"ltr\">13 | 78, 7 | 98, −6 | 24, 4 | 44, 11 | (−33)</span><span class=\"ltr\">13 ∤ 27, 7 ∤ 50, −6 ∤ 23, 4 ∤ 41, 11 ∤ (−32)</span>",
+      "الـ <b>Property 1</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;1</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;±1</bdi>.<br>الـ <b>Property 2</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;a</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;±b</bdi>.<br>الـ <b>Property 3</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;c</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.<br>الـ <b>Property 4</b>: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;(m&nbsp;×&nbsp;b&nbsp;+&nbsp;n&nbsp;×&nbsp;c)</bdi> لأي integers m و n.",
+      "الـ <b>Fact 1</b>: الـ integer 1 ليه divisor واحد بس، هو نفسه. الـ <b>Fact 2</b>: أي positive integer ليه على الأقل 2 divisors، الـ 1 والرقم نفسه (وممكن يبقى ليه أكتر)."
      ]
     },
     {
      "h": "الـ GCD والـ Euclidean algorithm",
      "pts": [
       "الـ <b>greatest common divisor</b> لـ 2 positive integers هو أكبر integer يقدر يقسم الاتنين.",
-      "الـ <b>Euclidean algorithm</b>: Fact 1: gcd(a, 0) = a. Fact 2: gcd(a, b) = gcd(b, r)، حيث r هو باقي قسمة a على b.",
-      "لما gcd(a, b) = 1، بنقول إن a و b <b>relatively prime</b> (أوليين فيما بينهم).",
-      "الـ Algorithm: r₁ ← a، r₂ ← b؛ طول ما r₂ &gt; 0: q ← r₁ / r₂؛ r ← r₁ − q × r₂؛ r₁ ← r₂؛ r₂ ← r. وفي الآخر gcd(a, b) = r₁.",
-      "Example 2.8: gcd(25, 60): 60 = 2 × 25 + 10؛ 25 = 2 × 10 + 5؛ 10 = 2 × 5 + 0 → gcd = 5 (الـ slide كاتبة \"gcd(25, 65) = 5\"، وده typo؛ الاتنين بيطلعوا 5).",
-      "في الامتحان: gcd(63, 110): 110 = 1 × 63 + 47؛ 63 = 1 × 47 + 16؛ 47 = 2 × 16 + 15؛ 16 = 1 × 15 + 1؛ 15 = 15 × 1 + 0 → gcd = 1 (relatively prime)."
+      "الـ <b>Euclidean algorithm</b>:<br>الـ Fact 1: <bdi dir=\"ltr\">gcd(a,&nbsp;0)&nbsp;=&nbsp;a</bdi>.<br>الـ Fact 2: <bdi dir=\"ltr\">gcd(a,&nbsp;b)&nbsp;=&nbsp;gcd(b,&nbsp;r)</bdi>، حيث r هو باقي قسمة a على b.",
+      "لما <bdi dir=\"ltr\">gcd(a,&nbsp;b)&nbsp;=&nbsp;1</bdi>، بنقول إن a و b <b>relatively prime</b> (أوليين فيما بينهم).",
+      "الـ Algorithm:<pre>r₁ ← a; r₂ ← b</pre>وطول ما <bdi dir=\"ltr\">r₂&nbsp;&gt;&nbsp;0</bdi> كرّر:<pre>q ← r₁ / r₂\nr ← r₁ − q × r₂\nr₁ ← r₂; r₂ ← r</pre>وفي الآخر <bdi dir=\"ltr\">gcd(a,&nbsp;b)&nbsp;=&nbsp;r₁</bdi>.",
+      "مثال 2.8: نحسب <bdi dir=\"ltr\">gcd(25,&nbsp;60)</bdi> كده:<span class=\"ltr\">60 = 2 × 25 + 10</span><span class=\"ltr\">25 = 2 × 10 + 5</span><span class=\"ltr\">10 = 2 × 5 + 0 → gcd = 5</span>(الـ slide كاتبة <bdi dir=\"ltr\">\"gcd(25,&nbsp;65)&nbsp;=&nbsp;5\"</bdi>، وده typo؛ الاتنين بيطلعوا 5).",
+      "في الامتحان: نحسب <bdi dir=\"ltr\">gcd(63,&nbsp;110)</bdi> كده:<span class=\"ltr\">110 = 1 × 63 + 47</span><span class=\"ltr\">63 = 1 × 47 + 16</span><span class=\"ltr\">47 = 2 × 16 + 15</span><span class=\"ltr\">16 = 1 × 15 + 1</span><span class=\"ltr\">15 = 15 × 1 + 0 → gcd = 1</span>يعني relatively prime."
      ]
     },
     {
-     "h": "Example 2.7: gcd(2740, 1760)"
+     "h": "مثال 2.7: <bdi dir=\"ltr\">gcd(2740,&nbsp;1760)</bdi>"
     },
     {
      "h": "الـ Extended Euclidean algorithm",
      "pts": [
-      "لو معاك a و b، عايز تلاقي s و t بحيث <b>s × a + t × b = gcd(a, b)</b>. الـ extended algorithm بيحسب gcd(a, b) و s و t في نفس الوقت.",
-      "الـ Initialization: r₁ ← a، r₂ ← b؛ s₁ ← 1، s₂ ← 0؛ t₁ ← 0، t₂ ← 1.",
-      "الـ Loop طول ما r₂ &gt; 0: q ← r₁ / r₂؛ r ← r₁ − q × r₂، r₁ ← r₂، r₂ ← r؛ s ← s₁ − q × s₂، s₁ ← s₂، s₂ ← s؛ t ← t₁ − q × t₂، t₁ ← t₂، t₂ ← t.",
-      "النتيجة: gcd(a, b) ← r₁؛ s ← s₁؛ t ← t₁.",
-      "Example 2.10: a = 17، b = 0 → gcd = 17، s = 1، t = 0. Example 2.11: a = 0، b = 45 → gcd = 45، s = 0، t = 1."
+      "لو معاك a و b، عايز تلاقي s و t بحيث:<span class=\"ltr\"><b>s × a + t × b = gcd(a, b)</b></span>الـ extended algorithm بيحسب <bdi dir=\"ltr\">gcd(a,&nbsp;b)</bdi> و s و t في نفس الوقت.",
+      "الـ Initialization:<pre>r₁ ← a; r₂ ← b\ns₁ ← 1; s₂ ← 0\nt₁ ← 0; t₂ ← 1</pre>",
+      "الـ Loop طول ما <bdi dir=\"ltr\">r₂&nbsp;&gt;&nbsp;0</bdi> بيعمل:<pre>q ← r₁ / r₂\nr ← r₁ − q × r₂; r₁ ← r₂; r₂ ← r\ns ← s₁ − q × s₂; s₁ ← s₂; s₂ ← s\nt ← t₁ − q × t₂; t₁ ← t₂; t₂ ← t</pre>",
+      "النتيجة:<pre>gcd(a, b) ← r₁; s ← s₁; t ← t₁</pre>",
+      "مثال 2.10:<span class=\"ltr\">a = 17, b = 0 → gcd = 17, s = 1, t = 0</span>مثال 2.11:<span class=\"ltr\">a = 0, b = 45 → gcd = 45, s = 0, t = 1</span>"
      ]
     },
     {
-     "h": "Example 2.9: a = 161، b = 28"
+     "h": "مثال 2.9: <bdi dir=\"ltr\">a&nbsp;=&nbsp;161,&nbsp;b&nbsp;=&nbsp;28</bdi>"
     },
     {
      "h": "الـ Modular arithmetic",
      "pts": [
-      "في الـ modular arithmetic بناخد الباقي r بس من a = q × n + r. الـ operator اسمه <b>mod</b>؛ والـ input التاني n اسمه <b>modulus</b>؛ والـ output r اسمه <b>residue</b>. a mod n = r حيث 0 ≤ r ≤ n − 1.",
-      "Example 2.14: 27 mod 5 = 2؛ 36 mod 12 = 0؛ −18 mod 14: r = −4، نزوّد الـ modulus → 10؛ −7 mod 10: r = −7 → 3.",
-      "الـ <b>Set of residues Zn</b> = {0, 1, 2, …, n − 1}: الـ set بتاعة أصغر residues modulo n (زي Z₂ = {0,1}، Z₆ = {0,…,5}، Z₁₁ = {0,…,10}).",
-      "الـ <b>Congruence</b>: في الـ cryptography بنستخدم ≡ بدل علامة اليساوي، ونزوّد (mod n): 2 ≡ 12 (mod 10)، 13 ≡ 23 (mod 10)، 3 ≡ 8 (mod 5)، 8 ≡ 13 (mod 5). يعني a ≡ b (mod n) معناها a mod n = b mod n.",
-      "Example 2.15: الساعة بتستخدم modulo 12 arithmetic، بس بتكتب 12 بدل 0."
+      "في الـ modular arithmetic بناخد الباقي r بس من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>. الـ operator اسمه <b>mod</b>؛ والـ input التاني n اسمه <b>modulus</b>؛ والـ output r اسمه <b>residue</b>:<span class=\"ltr\">a mod n = r,  0 ≤ r ≤ n − 1</span>",
+      "مثال 2.14:<span class=\"ltr\">27 mod 5 = 2</span><span class=\"ltr\">36 mod 12 = 0</span>وفي <bdi dir=\"ltr\">−18&nbsp;mod&nbsp;14</bdi> الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;−4</bdi>، نزوّد الـ modulus يطلع 10.<br>وفي <bdi dir=\"ltr\">−7&nbsp;mod&nbsp;10</bdi> الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;−7</bdi>، يطلع 3.",
+      "الـ <b>Set of residues Zn</b>:<span class=\"ltr\">Zn = {0, 1, 2, …, n − 1}</span>هي الـ set بتاعة أصغر residues modulo n، زي:<span class=\"ltr\">Z₂ = {0,1}, Z₆ = {0,…,5}, Z₁₁ = {0,…,10}</span>",
+      "الـ <b>Congruence</b>: في الـ cryptography بنستخدم ≡ بدل علامة اليساوي، ونزوّد <bdi dir=\"ltr\">(mod&nbsp;n)</bdi>، زي:<span class=\"ltr\">2 ≡ 12 (mod 10), 13 ≡ 23 (mod 10)</span><span class=\"ltr\">3 ≡ 8 (mod 5), 8 ≡ 13 (mod 5)</span>يعني <bdi dir=\"ltr\">a&nbsp;≡&nbsp;b&nbsp;(mod&nbsp;n)</bdi> معناها <bdi dir=\"ltr\">a&nbsp;mod&nbsp;n&nbsp;=&nbsp;b&nbsp;mod&nbsp;n</bdi>.",
+      "مثال 2.15: الساعة بتستخدم modulo 12 arithmetic، بس بتكتب 12 بدل 0."
      ]
     },
     {
      "h": "العمليات في Zn وخصائصها",
      "pts": [
-      "الجمع والطرح والضرب متعرّفين في Zn: (a + b) mod n، (a − b) mod n، (a × b) mod n؛ والنتيجة بنرجّعها لـ Zn بالـ mod.",
-      "<b>الخاصية الأولى</b>: (a + b) mod n = [(a mod n) + (b mod n)] mod n. <b>التانية</b>: (a − b) mod n = [(a mod n) − (b mod n)] mod n. <b>التالتة</b>: (a × b) mod n = [(a mod n) × (b mod n)] mod n. الفايدة إنك تصغّر الأرقام الأول قبل ما تحسب.",
-      "Example 2.18: 1,723,345 mod 11 = 8 و 2,124,945 mod 11 = 9، يبقى (المجموع) mod 11 = (8 + 9) mod 11 = 6؛ (الفرق) mod 11 = (8 − 9) mod 11 = 10؛ (حاصل الضرب) mod 11 = (8 × 9) mod 11 = 72 mod 11 = 6. (الـ slide كاتبة \"mod 16\" على الشمال في السطر التاني والتالت؛ والصح mod 11.)",
-      "Example 2.19: 10ⁿ mod x = (10 mod x)ⁿ (الخاصية التالتة n مرة): 10ⁿ mod 3 = 1، 10ⁿ mod 9 = 1، 10ⁿ mod 7 = 3ⁿ mod 7.",
-      "Example 2.20: أي integer ومجموع أرقامه العشرية ليهم نفس الباقي mod 3 (لأن 10ⁿ mod 3 = 1).",
-      "Example 2.16: (14 + 7) mod 15 = 6؛ (7 − 11) mod 13 = −4 mod 13 = 9؛ (7 × 11) mod 20 = 77 mod 20 = 17.",
-      "Example 2.17: (17 + 27) mod 14 = 44 mod 14 = 2؛ (12 − 43) mod 13 = −31 mod 13 = −31 + 39 = 8؛ (123 × (−10)) mod 19 = −1230 mod 19 = −1230 + 1235 = 5. (الـ slide مكررة حلول 2.16 تحت 2.17؛ والإجابات الصح لـ 2.17 هي 2، 8، 5.)"
+      "الجمع والطرح والضرب متعرّفين في Zn:<span class=\"ltr\">(a + b) mod n, (a − b) mod n, (a × b) mod n</span>والنتيجة بنرجّعها لـ Zn بالـ mod.",
+      "<b>الخاصية الأولى</b>:<span class=\"ltr\">(a + b) mod n = [(a mod n) + (b mod n)] mod n</span><b>التانية</b>:<span class=\"ltr\">(a − b) mod n = [(a mod n) − (b mod n)] mod n</span><b>التالتة</b>:<span class=\"ltr\">(a × b) mod n = [(a mod n) × (b mod n)] mod n</span>الفايدة إنك تصغّر الأرقام الأول قبل ما تحسب.",
+      "مثال 2.18:<span class=\"ltr\">1,723,345 mod 11 = 8</span><span class=\"ltr\">2,124,945 mod 11 = 9</span>يبقى (المجموع) mod 11:<span class=\"ltr\">(8 + 9) mod 11 = 6</span>و (الفرق) mod 11:<span class=\"ltr\">(8 − 9) mod 11 = 10</span>و (حاصل الضرب) mod 11:<span class=\"ltr\">(8 × 9) mod 11 = 72 mod 11 = 6</span>(الـ slide كاتبة \"mod 16\" على الشمال في السطر التاني والتالت؛ والصح mod 11.)",
+      "مثال 2.19، بالخاصية التالتة n مرة:<span class=\"ltr\">10ⁿ mod x = (10 mod x)ⁿ</span><span class=\"ltr\">10ⁿ mod 3 = 1, 10ⁿ mod 9 = 1</span><span class=\"ltr\">10ⁿ mod 7 = 3ⁿ mod 7</span>",
+      "مثال 2.20: أي integer ومجموع أرقامه العشرية ليهم نفس الباقي mod 3 (لأن <bdi dir=\"ltr\">10ⁿ&nbsp;mod&nbsp;3&nbsp;=&nbsp;1</bdi>).",
+      "مثال 2.16:<span class=\"ltr\">(14 + 7) mod 15 = 6</span><span class=\"ltr\">(7 − 11) mod 13 = −4 mod 13 = 9</span><span class=\"ltr\">(7 × 11) mod 20 = 77 mod 20 = 17</span>",
+      "مثال 2.17:<span class=\"ltr\">(17 + 27) mod 14 = 44 mod 14 = 2</span><span class=\"ltr\">(12 − 43) mod 13 = −31 mod 13 = −31 + 39 = 8</span><span class=\"ltr\">(123 × (−10)) mod 19 = −1230 mod 19</span><span class=\"ltr\">= −1230 + 1235 = 5</span>(الـ slide مكررة حلول 2.16 تحت 2.17؛ والإجابات الصح لـ 2.17 هي 2 و 8 و 5.)"
      ]
     },
     {
      "h": "الـ Inverses",
      "pts": [
-      "الـ <b>Additive inverse</b>: a و b يبقوا additive inverses في Zn لو a + b ≡ 0 (mod n). أي integer ليه واحد؛ والـ inverse بتاع a هو n − a. أزواج Z₁₀: (0,0)، (1,9)، (2,8)، (3,7)، (4,6)، (5,5).",
-      "الـ <b>Multiplicative inverse</b>: a و b يبقوا multiplicative inverses في Zn لو a × b ≡ 1 (mod n). الـ integer ممكن يبقى ليه أو مايبقاش ليه؛ <b>b ليه inverse في Zn لو وبس لو gcd(n, b) = 1</b>.",
-      "Example 2.22: الـ 8 مالوش inverse في Z₁₀ لأن gcd(10, 8) = 2 ≠ 1. Example 2.23: أزواج Z₁₀: (1,1)، (3,7)، (9,9)؛ والـ 0، 2، 4، 5، 6، 8 مالهمش inverse.",
-      "Example 2.24، في Z₁₁: (1,1)، (2,6)، (3,4)، (5,9)، (7,8)، (10,10). الـ slide بتقول \"seven pairs\" وكاتبة (9,9)، بس 9 × 9 = 81 ≡ 4 (mod 11)، يبقى (9,9) غلط: هما <b>ستة</b> أزواج بس (كل element مش صفر بيظهر مرة واحدة).",
-      "الـ <b>extended Euclidean algorithm</b> بيجيب الـ multiplicative inverse بتاع b في Zn لما gcd(n, b) = 1: شغّله على (n, b)؛ والـ inverse هو قيمة <b>t بعد ما ترجّعها لـ Zn</b>.",
-      "Example 2.25: الـ inverse بتاع 11 في Z₂₆ هو <b>19</b> (11 × 19 = 209 = 8 × 26 + 1). الـ slide كاتبة \"7 or 19\" والمفروض \"−7 or 19\" (−7 ≡ 19).",
-      "Example 2.26: الـ inverse بتاع 23 في Z₁₀₀ هو <b>87</b> (23 × 87 = 2001). الـ slide كاتبة \"13 or 87\" والمفروض \"−13 or 87\". Example 2.27: الـ 12 مالوش inverse في Z₂₆ (gcd = 2)."
+      "الـ <b>Additive inverse</b>: الـ a و b يبقوا additive inverses في Zn لو <bdi dir=\"ltr\">a&nbsp;+&nbsp;b&nbsp;≡&nbsp;0&nbsp;(mod&nbsp;n)</bdi>. أي integer ليه واحد؛ والـ inverse بتاع a هو <bdi dir=\"ltr\">n&nbsp;−&nbsp;a</bdi>. أزواج Z₁₀:<span class=\"ltr\">(0,0), (1,9), (2,8), (3,7), (4,6), (5,5)</span>",
+      "الـ <b>Multiplicative inverse</b>: الـ a و b يبقوا multiplicative inverses في Zn لو <bdi dir=\"ltr\">a&nbsp;×&nbsp;b&nbsp;≡&nbsp;1&nbsp;(mod&nbsp;n)</bdi>. الـ integer ممكن يبقى ليه أو مايبقاش ليه؛ <b>b ليه inverse في Zn لو وبس لو <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi></b>.",
+      "مثال 2.22: الـ 8 مالوش inverse في Z₁₀ لأن <bdi dir=\"ltr\">gcd(10,&nbsp;8)&nbsp;=&nbsp;2&nbsp;≠&nbsp;1</bdi>.<br>مثال 2.23: أزواج Z₁₀ هي <bdi dir=\"ltr\">(1,1),&nbsp;(3,7),&nbsp;(9,9)</bdi>؛ والـ 0 و 2 و 4 و 5 و 6 و 8 مالهمش inverse.",
+      "مثال 2.24، في Z₁₁:<span class=\"ltr\">(1,1), (2,6), (3,4), (5,9), (7,8), (10,10)</span>الـ slide بتقول \"seven pairs\" وكاتبة <bdi dir=\"ltr\">(9,9)</bdi>، بس:<span class=\"ltr\">9 × 9 = 81 ≡ 4 (mod 11)</span>يبقى <bdi dir=\"ltr\">(9,9)</bdi> غلط: هما <b>ستة</b> أزواج بس (كل element مش صفر بيظهر مرة واحدة).",
+      "الـ <b>extended Euclidean algorithm</b> بيجيب الـ multiplicative inverse بتاع b في Zn لما <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi>: شغّله على <bdi dir=\"ltr\">(n,&nbsp;b)</bdi>؛ والـ inverse هو قيمة <b>t بعد ما ترجّعها لـ Zn</b>.",
+      "مثال 2.25: الـ inverse بتاع 11 في Z₂₆ هو <b>19</b>، لأن:<span class=\"ltr\">11 × 19 = 209 = 8 × 26 + 1</span>الـ slide كاتبة \"7 or 19\" والمفروض \"<bdi dir=\"ltr\">−7</bdi> or 19\" <bdi dir=\"ltr\">(−7&nbsp;≡&nbsp;19)</bdi>.",
+      "مثال 2.26: الـ inverse بتاع 23 في Z₁₀₀ هو <b>87</b> <bdi dir=\"ltr\">(23&nbsp;×&nbsp;87&nbsp;=&nbsp;2001)</bdi>. الـ slide كاتبة \"13 or 87\" والمفروض \"<bdi dir=\"ltr\">−13</bdi> or 87\".<br>مثال 2.27: الـ 12 مالوش inverse في Z₂₆ <bdi dir=\"ltr\">(gcd&nbsp;=&nbsp;2)</bdi>."
      ]
     },
     {
-     "h": "Example 2.25 بالـ extended Euclidean algorithm (n = 26، b = 11)"
+     "h": "مثال 2.25 بالـ extended Euclidean algorithm <bdi dir=\"ltr\">(n&nbsp;=&nbsp;26,&nbsp;b&nbsp;=&nbsp;11)</bdi>"
     }
    ],
    "cards": [
-    "a = q × n + r، الـ n موجب، و 0 ≤ r &lt; n.",
+    "الـ relation:<span class=\"ltr\">a = q × n + r</span>الـ n موجب، و <bdi dir=\"ltr\">0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;n</bdi>.",
     "نقّص q بواحد وزوّد n على r.",
-    "q = 23، r = 2",
-    "لو a | b و b | c، يبقى a | c.",
-    "لو a | b و a | c، يبقى a | (m × b + n × c).",
+    "<span class=\"ltr\">q = 23, r = 2</span>",
+    "لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;c</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.",
+    "لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>، يبقى:<span class=\"ltr\">a | (m × b + n × c)</span>",
     "ليه divisor واحد بس، هو نفسه.",
     "أكبر integer بيقسم الـ positive integers الاتنين.",
-    "gcd(a, 0) = a؛ gcd(a, b) = gcd(b, r)، حيث r = a mod b.",
-    "gcd(a, b) = 1",
-    "gcd(a, b) و s و t بحيث s × a + t × b = gcd(a, b).",
-    "الـ n = modulus، والـ output r = residue.",
-    "الـ set بتاعة أصغر residues modulo n: {0, 1, …, n − 1}.",
+    "<span class=\"ltr\">gcd(a, 0) = a</span><span class=\"ltr\">gcd(a, b) = gcd(b, r)</span>حيث <bdi dir=\"ltr\">r&nbsp;=&nbsp;a&nbsp;mod&nbsp;b</bdi>.",
+    "<span class=\"ltr\">gcd(a, b) = 1</span>",
+    "الـ <bdi dir=\"ltr\">gcd(a,&nbsp;b)</bdi> و s و t بحيث:<span class=\"ltr\">s × a + t × b = gcd(a, b)</span>",
+    "الـ n هو الـ modulus، والـ output r هو الـ residue.",
+    "الـ set بتاعة أصغر residues modulo n:<span class=\"ltr\">{0, 1, …, n − 1}</span>",
     "10",
     "3",
-    "a + b ≡ 0 (mod n)",
-    "gcd(n, b) = 1",
-    "(1,1)، (3,7)، (9,9)",
-    "19 (الـ t = −7 بعد ما نرجّعها لـ Z₂₆).",
+    "<span class=\"ltr\">a + b ≡ 0 (mod n)</span>",
+    "<span class=\"ltr\">gcd(n, b) = 1</span>",
+    "<span class=\"ltr\">(1,1), (3,7), (9,9)</span>",
+    "الـ 19 (الـ <bdi dir=\"ltr\">t&nbsp;=&nbsp;−7</bdi> بعد ما نرجّعها لـ Z₂₆).",
     "20",
-    "7، s = −1، t = 6"
+    "<span class=\"ltr\">7, s = −1, t = 6</span>"
    ],
    "qa": [
-    "a = q × n + r حيث n &gt; 0 و 0 ≤ r &lt; n. 101 = 9 × 11 + 2 → q = 9، r = 2. −18: الكمبيوتر بيدّي q = −1، r = −4؛ نقّص q وزوّد n: q = −2، r = 10 (−18 = −2 × 14 + 10).",
-    "1. لو a | 1 يبقى a = ±1. 2. لو a | b و b | a يبقى a = ±b. 3. لو a | b و b | c يبقى a | c. 4. لو a | b و a | c يبقى a | (m × b + n × c) لأي integers m و n.",
-    "2740 = 1 × 1760 + 980؛ 1760 = 1 × 980 + 780؛ 980 = 1 × 780 + 200؛ 780 = 3 × 200 + 180؛ 200 = 1 × 180 + 20؛ 180 = 9 × 20 + 0. gcd = 20.",
-    "q = 5: r = 21، s = 1، t = −5. q = 1: r = 7، s = −1، t = 6. q = 3: r = 0، s = 4، t = −23. وقف: gcd = 7، s = −1، t = 6. للتأكد: (−1)(161) + 6(28) = −161 + 168 = 7.",
-    "27 = 5 × 5 + 2 → 2. 36 = 3 × 12 + 0 → 0. −18 → r = −4، نزوّد 14 → 10. −7 → r = −7، نزوّد 10 → 3.",
-    "a و b يبقوا additive inverses لو a + b ≡ 0 (mod n) (دايمًا موجود: n − a). ويبقوا multiplicative inverses لو a × b ≡ 1 (mod n)، وده موجود بس لما gcd(n, b) = 1. للـ 11 في Z₂₆: gcd = 1؛ الـ extended Euclid بيدّي t = −7، ولما نرجّعها لـ Z₂₆ = 19. للتأكد 11 × 19 = 209 = 8 × 26 + 1.",
-    "(17 + 27) mod 14 = 44 mod 14 = 2. (12 − 43) mod 13 = −31 mod 13 = 8. (123 × −10) mod 19 = −1230 mod 19 = 5 (لأن 19 × 65 = 1235)."
+    "الـ relation:<span class=\"ltr\">a = q × n + r,  n &gt; 0,  0 ≤ r &lt; n</span>في الـ 101:<span class=\"ltr\">101 = 9 × 11 + 2 → q = 9, r = 2</span>وفي الـ <bdi dir=\"ltr\">−18</bdi>، الكمبيوتر بيدّي <bdi dir=\"ltr\">q&nbsp;=&nbsp;−1,&nbsp;r&nbsp;=&nbsp;−4</bdi>؛ نقّص q وزوّد n:<span class=\"ltr\">q = −2, r = 10  (−18 = −2 × 14 + 10)</span>",
+    "(1) لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;1</bdi> يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;±1</bdi>.<br>(2) لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;a</bdi> يبقى <bdi dir=\"ltr\">a&nbsp;=&nbsp;±b</bdi>.<br>(3) لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;c</bdi> يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.<br>(4) لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi> يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;(m&nbsp;×&nbsp;b&nbsp;+&nbsp;n&nbsp;×&nbsp;c)</bdi> لأي integers m و n.",
+    "خطوات الـ Euclid:<span class=\"ltr\">2740 = 1 × 1760 + 980</span><span class=\"ltr\">1760 = 1 × 980 + 780</span><span class=\"ltr\">980 = 1 × 780 + 200</span><span class=\"ltr\">780 = 3 × 200 + 180</span><span class=\"ltr\">200 = 1 × 180 + 20</span><span class=\"ltr\">180 = 9 × 20 + 0</span>يبقى <bdi dir=\"ltr\">gcd&nbsp;=&nbsp;20</bdi>.",
+    "الخطوات:<span class=\"ltr\">q = 5: r = 21, s = 1, t = −5</span><span class=\"ltr\">q = 1: r = 7, s = −1, t = 6</span><span class=\"ltr\">q = 3: r = 0, s = 4, t = −23</span>وقف:<span class=\"ltr\">gcd = 7, s = −1, t = 6</span>للتأكد:<span class=\"ltr\">(−1)(161) + 6(28) = −161 + 168 = 7</span>",
+    "الحل:<span class=\"ltr\">27 = 5 × 5 + 2 → 2</span><span class=\"ltr\">36 = 3 × 12 + 0 → 0</span>وفي الـ <bdi dir=\"ltr\">−18</bdi> الباقي <bdi dir=\"ltr\">r&nbsp;=&nbsp;−4</bdi>، نزوّد 14 يطلع 10.<br>وفي الـ <bdi dir=\"ltr\">−7</bdi> الباقي <bdi dir=\"ltr\">r&nbsp;=&nbsp;−7</bdi>، نزوّد 10 يطلع 3.",
+    "الـ a و b يبقوا additive inverses لو <bdi dir=\"ltr\">a&nbsp;+&nbsp;b&nbsp;≡&nbsp;0&nbsp;(mod&nbsp;n)</bdi> (دايمًا موجود: <bdi dir=\"ltr\">n&nbsp;−&nbsp;a</bdi>). ويبقوا multiplicative inverses لو <bdi dir=\"ltr\">a&nbsp;×&nbsp;b&nbsp;≡&nbsp;1&nbsp;(mod&nbsp;n)</bdi>، وده موجود بس لما <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi>. للـ 11 في Z₂₆: <bdi dir=\"ltr\">gcd&nbsp;=&nbsp;1</bdi>؛ الـ extended Euclid بيدّي <bdi dir=\"ltr\">t&nbsp;=&nbsp;−7</bdi>، ولما نرجّعها لـ Z₂₆ تبقى 19. للتأكد:<span class=\"ltr\">11 × 19 = 209 = 8 × 26 + 1</span>",
+    "الحل:<span class=\"ltr\">(17 + 27) mod 14 = 44 mod 14 = 2</span><span class=\"ltr\">(12 − 43) mod 13 = −31 mod 13 = 8</span><span class=\"ltr\">(123 × −10) mod 19 = −1230 mod 19 = 5</span>لأن <bdi dir=\"ltr\">19&nbsp;×&nbsp;65&nbsp;=&nbsp;1235</bdi>."
    ],
    "quiz": [
     [
-     "صح. الـ a mod n بيحتفظ بالباقي r من a = q × n + r: يعني 27 = 5 × 5 + 2، يبقى 27 mod 5 = 2 (L8, Example 2.14).",
-     "عشان r = 3 لازم 27 − 3 = 24 تبقى multiple of 5، وهي مش كده. الصح 27 = 5 × 5 + 2، يعني r = 2.",
-     "عشان r = 1 لازم 26 تبقى multiple of 5، وده مش حاصل. أكبر multiple of 5 مش أكبر من 27 هو 25، والباقي 2.",
-     "عشان r = 4 لازم 23 تبقى multiple of 5، وده غلط. 27 − 25 = 2، يبقى الـ residue هو 2."
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>. الـ <bdi dir=\"ltr\">a&nbsp;mod&nbsp;n</bdi> بيحتفظ بالباقي r من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>، يعني:<span class=\"ltr\">27 = 5 × 5 + 2 → 27 mod 5 = 2</span>",
+     "عشان <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi> لازم <bdi dir=\"ltr\">27&nbsp;−&nbsp;3&nbsp;=&nbsp;24</bdi> تبقى multiple of 5، وهي مش كده. الصح <bdi dir=\"ltr\">27&nbsp;=&nbsp;5&nbsp;×&nbsp;5&nbsp;+&nbsp;2</bdi>، يعني <bdi dir=\"ltr\">r&nbsp;=&nbsp;2</bdi>.",
+     "عشان <bdi dir=\"ltr\">r&nbsp;=&nbsp;1</bdi> لازم 26 تبقى multiple of 5، وده مش حاصل. أكبر multiple of 5 مش أكبر من 27 هو 25، والباقي 2.",
+     "عشان <bdi dir=\"ltr\">r&nbsp;=&nbsp;4</bdi> لازم 23 تبقى multiple of 5، وده غلط. <bdi dir=\"ltr\">27&nbsp;−&nbsp;25&nbsp;=&nbsp;2</bdi>، يبقى الـ residue هو 2."
     ],
     [
-     "صح. 36 = 3 × 12 + 0، يعني 12 بتقسم 36 بالظبط، فـ 36 mod 12 = 0 (L8, Example 2.14).",
-     "عشان r = 10 لازم 36 − 10 = 26 تبقى multiple of 12، وهي مش كده. 36 = 3 × 12 بالظبط، فالباقي 0.",
-     "عشان r = 4 لازم 32 تبقى multiple of 12، وده مش صح. وبما إن 36 = 3 × 12، الـ residue هو 0.",
-     "عشان r = 6 لازم 30 تبقى multiple of 12، وده غلط. الـ 36 نفسها multiple (3 × 12)، فـ 36 mod 12 = 0."
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>. <bdi dir=\"ltr\">36&nbsp;=&nbsp;3&nbsp;×&nbsp;12&nbsp;+&nbsp;0</bdi>، يعني 12 بتقسم 36 بالظبط، فـ <bdi dir=\"ltr\">36&nbsp;mod&nbsp;12&nbsp;=&nbsp;0</bdi>.",
+     "عشان <bdi dir=\"ltr\">r&nbsp;=&nbsp;10</bdi> لازم <bdi dir=\"ltr\">36&nbsp;−&nbsp;10&nbsp;=&nbsp;26</bdi> تبقى multiple of 12، وهي مش كده. <bdi dir=\"ltr\">36&nbsp;=&nbsp;3&nbsp;×&nbsp;12</bdi> بالظبط، فالباقي 0.",
+     "عشان <bdi dir=\"ltr\">r&nbsp;=&nbsp;4</bdi> لازم 32 تبقى multiple of 12، وده مش صح. وبما إن <bdi dir=\"ltr\">36&nbsp;=&nbsp;3&nbsp;×&nbsp;12</bdi>، الـ residue هو 0.",
+     "عشان <bdi dir=\"ltr\">r&nbsp;=&nbsp;6</bdi> لازم 30 تبقى multiple of 12، وده غلط. الـ 36 نفسها multiple <bdi dir=\"ltr\">(3&nbsp;×&nbsp;12)</bdi>، فـ <bdi dir=\"ltr\">36&nbsp;mod&nbsp;12&nbsp;=&nbsp;0</bdi>."
     ],
     [
-     "صح. في الـ division relation اللي هي a = q × n + r، لما تحط r = 0 يفضل a = q × n، يعني n بتقسم a (n | a) (L8, Divisibility).",
-     "لما تشيل r من a = q × n + r بيفضل a = q × n؛ الـ factor n مش بيختفي. a = q بتحصل بس لو n = 1.",
-     "السؤال قايل إن a مش صفر؛ و r = 0 معناها إن a مضاعف بالظبط لـ n، يعني a = q × n.",
-     "الـ a = n بتحصل بس في الحالة الخاصة q = 1. في العموم r = 0 بتدي a = q × n."
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Divisibility)</bdi>. في الـ division relation اللي هي <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>، لما تحط <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> يفضل <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>، يعني n بتقسم a <bdi dir=\"ltr\">(n&nbsp;|&nbsp;a)</bdi>.",
+     "لما تشيل r من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi> بيفضل <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>؛ الـ factor n مش بيختفي. الـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;q</bdi> بتحصل بس لو <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+     "السؤال قايل إن a مش صفر؛ و <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> معناها إن a مضاعف بالظبط لـ n، يعني <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>.",
+     "الـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;n</bdi> بتحصل بس في الحالة الخاصة <bdi dir=\"ltr\">q&nbsp;=&nbsp;1</bdi>. في العموم <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> بتدي <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>."
     ],
     [
-     "صح كرقم، بس صياغة المحاضرة هي \"itself\" (Fact 1). وفي 2024/25 الاختيار a مكتوب 2.",
+     "صح كرقم، بس صياغة المحاضرة هي \"itself\" (Fact 1). وفي <bdi dir=\"ltr\">2024/25</bdi> الاختيار a مكتوب 2.",
      "صح. Fact 1: الـ integer 1 ليه divisor واحد بس، هو نفسه.",
-     "الـ 4 مابتقسمش 1 (1 = 0 × 4 + 1). والـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
+     "الـ 4 مابتقسمش 1 <bdi dir=\"ltr\">(1&nbsp;=&nbsp;0&nbsp;×&nbsp;4&nbsp;+&nbsp;1)</bdi>. والـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
      "الـ 5 مابتقسمش 1 (الباقي 1). وحسب الـ Fact 1 الـ divisor الوحيد لـ 1 هو نفسه."
     ],
     [
-     "الـ c | a بتعكس الاتجاه: من 2 | 4 و 4 | 8 بنطلع بـ 2 | 8، مش 8 | 2. الـ Property 3 بتدي a | c.",
-     "صح. الـ Property 3: لو a | b و b | c يبقى a | c. لو b = ka و c = mb، يبقى c = (mk)a (L8, Divisibility).",
-     "مفيش حاجة بتجبر a = b = 1: مثلاً 2 | 4 و 4 | 8 والـ a = 2 والـ b = 4. النتيجة هي a | c.",
-     "الـ divisibility مش بتخلي حاصل الضرب صفر: مع 2 | 4 و 4 | 8 بيبقى a · b = 8. الـ Property 3 بتدي a | c."
+     "الـ <bdi dir=\"ltr\">c&nbsp;|&nbsp;a</bdi> بتعكس الاتجاه: من <bdi dir=\"ltr\">2&nbsp;|&nbsp;4</bdi> و <bdi dir=\"ltr\">4&nbsp;|&nbsp;8</bdi> بنطلع بـ <bdi dir=\"ltr\">2&nbsp;|&nbsp;8</bdi>، مش <bdi dir=\"ltr\">8&nbsp;|&nbsp;2</bdi>. الـ Property 3 بتدي <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Divisibility)</bdi>. الـ Property 3: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;c</bdi> يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>. لو <bdi dir=\"ltr\">b&nbsp;=&nbsp;ka</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;mb</bdi>، يبقى <bdi dir=\"ltr\">c&nbsp;=&nbsp;(mk)a</bdi>.",
+     "مفيش حاجة بتجبر <bdi dir=\"ltr\">a&nbsp;=&nbsp;b&nbsp;=&nbsp;1</bdi>: مثلاً <bdi dir=\"ltr\">2&nbsp;|&nbsp;4</bdi> و <bdi dir=\"ltr\">4&nbsp;|&nbsp;8</bdi> والـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;2</bdi> والـ <bdi dir=\"ltr\">b&nbsp;=&nbsp;4</bdi>. النتيجة هي <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.",
+     "الـ divisibility مش بتخلي حاصل الضرب صفر: مع <bdi dir=\"ltr\">2&nbsp;|&nbsp;4</bdi> و <bdi dir=\"ltr\">4&nbsp;|&nbsp;8</bdi> بيبقى <bdi dir=\"ltr\">a&nbsp;·&nbsp;b&nbsp;=&nbsp;8</bdi>. الـ Property 3 بتدي <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>."
     ],
     [
-     "الـ 9 بتقسم 63 (63 = 7 × 9) بس مابتقسمش 110 (110 = 12 × 9 + 2)، فهي مش common divisor أصلاً.",
-     "الـ 6 مابتقسمش 63 (63 فردي) ومابتقسمش 110 كمان (110 = 18 × 6 + 2).",
-     "صح. بالـ Euclid: 110 = 1·63 + 47؛ 63 = 1·47 + 16؛ 47 = 2·16 + 15؛ 16 = 1·15 + 1؛ 15 = 15·1 + 0، يبقى gcd = 1 (يعني relatively prime) (L8, GCD).",
+     "الـ 9 بتقسم 63 <bdi dir=\"ltr\">(63&nbsp;=&nbsp;7&nbsp;×&nbsp;9)</bdi> بس مابتقسمش 110 <bdi dir=\"ltr\">(110&nbsp;=&nbsp;12&nbsp;×&nbsp;9&nbsp;+&nbsp;2)</bdi>، فهي مش common divisor أصلاً.",
+     "الـ 6 مابتقسمش 63 (63 فردي) ومابتقسمش 110 كمان <bdi dir=\"ltr\">(110&nbsp;=&nbsp;18&nbsp;×&nbsp;6&nbsp;+&nbsp;2)</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;GCD)</bdi>. بالـ Euclid:<span class=\"ltr\">110 = 1·63 + 47</span><span class=\"ltr\">63 = 1·47 + 16</span><span class=\"ltr\">47 = 2·16 + 15</span><span class=\"ltr\">16 = 1·15 + 1</span><span class=\"ltr\">15 = 15·1 + 0</span>يبقى <bdi dir=\"ltr\">gcd&nbsp;=&nbsp;1</bdi> (يعني relatively prime).",
      "الـ 2 بتقسم 110 بس مابتقسمش 63 (63 فردي)، فهي مش common divisor."
     ],
     [
-     "9 × 18 + 4 = 166 مش 165. الـ quotient 9 صح، بس الباقي هو 165 − 162 = 3.",
-     "4 × 18 + 9 = 81 مش 165؛ الأرقام دي مش division صحيحة أصلاً. الصح 165 = 9 × 18 + 3.",
-     "8 × 18 + 4 = 148 مش 165. ولو q = 8 الباقي هيبقى 21 ≥ 18، فلازم q = 9 و r = 3.",
-     "صح. في a = q × n + r مع 0 ≤ r &lt; n: 9 × 18 = 162 و 165 − 162 = 3، يبقى q = 9 و r = 3 (L8, Division relation)."
+     "الحساب <bdi dir=\"ltr\">9&nbsp;×&nbsp;18&nbsp;+&nbsp;4&nbsp;=&nbsp;166</bdi> مش 165. الـ quotient 9 صح، بس الباقي هو <bdi dir=\"ltr\">165&nbsp;−&nbsp;162&nbsp;=&nbsp;3</bdi>.",
+     "الحساب <bdi dir=\"ltr\">4&nbsp;×&nbsp;18&nbsp;+&nbsp;9&nbsp;=&nbsp;81</bdi> مش 165؛ الأرقام دي مش division صحيحة أصلاً. الصح <bdi dir=\"ltr\">165&nbsp;=&nbsp;9&nbsp;×&nbsp;18&nbsp;+&nbsp;3</bdi>.",
+     "الحساب <bdi dir=\"ltr\">8&nbsp;×&nbsp;18&nbsp;+&nbsp;4&nbsp;=&nbsp;148</bdi> مش 165. ولو <bdi dir=\"ltr\">q&nbsp;=&nbsp;8</bdi> الباقي هيبقى <bdi dir=\"ltr\">21&nbsp;≥&nbsp;18</bdi>، فلازم <bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Division&nbsp;relation)</bdi>. في <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi> مع <bdi dir=\"ltr\">0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;n</bdi> بيبقى:<span class=\"ltr\">9 × 18 = 162, 165 − 162 = 3</span>يبقى <bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi>."
     ],
     [
-     "صح. −32 = (−6)(6) + 4، والباقي لازم يبقى مش سالب.",
-     "6 × 6 + 3 = 39 مش −32؛ هنا إشارة الـ a اتجاهلت. الصح −32 = (−6)(6) + 4 مع 0 ≤ r &lt; 6.",
-     "4 × 6 + 5 = 29 مش −32. خلي بالك لما الـ dividend يبقى سالب الـ quotient بيبقى سالب: −32 = (−6)(6) + 4."
+     "صح:<span class=\"ltr\">−32 = (−6)(6) + 4</span>والباقي لازم يبقى مش سالب.",
+     "الحساب <bdi dir=\"ltr\">6&nbsp;×&nbsp;6&nbsp;+&nbsp;3&nbsp;=&nbsp;39</bdi> مش <bdi dir=\"ltr\">−32</bdi>؛ هنا إشارة الـ a اتجاهلت. الصح:<span class=\"ltr\">−32 = (−6)(6) + 4,  0 ≤ r &lt; 6</span>",
+     "الحساب <bdi dir=\"ltr\">4&nbsp;×&nbsp;6&nbsp;+&nbsp;5&nbsp;=&nbsp;29</bdi> مش <bdi dir=\"ltr\">−32</bdi>. خلي بالك لما الـ dividend يبقى سالب الـ quotient بيبقى سالب:<span class=\"ltr\">−32 = (−6)(6) + 4</span>"
     ],
     [
-     "الـ −4 ده الباقي السالب اللي الكمبيوتر بيطلعه. الـ residue لازم يبقى في Z₁₄ = {0, …, 13}، فزوّد الـ modulus: −4 + 14 = 10.",
-     "الـ 4 ده 18 mod 14، يعني شلت إشارة السالب. لـ −18 الباقي الخام −4، و −4 + 14 = 10.",
-     "صح. −18 = (−1)(14) − 4 بيدي r = −4؛ وعشان يبقى مش سالب نزوّد الـ modulus: −4 + 14 = 10 (L8, Example 2.14).",
-     "الـ 14 هو الـ modulus نفسه، وده برّه Z₁₄ = {0, …, 13} (14 mod 14 = 0). الـ residue هو −4 + 14 = 10."
+     "الـ <bdi dir=\"ltr\">−4</bdi> ده الباقي السالب اللي الكمبيوتر بيطلعه. الـ residue لازم يبقى في <bdi dir=\"ltr\">Z₁₄&nbsp;=&nbsp;{0,&nbsp;…,&nbsp;13}</bdi>، فزوّد الـ modulus:<span class=\"ltr\">−4 + 14 = 10</span>",
+     "الـ 4 ده <bdi dir=\"ltr\">18&nbsp;mod&nbsp;14</bdi>، يعني شلت إشارة السالب. لـ <bdi dir=\"ltr\">−18</bdi> الباقي الخام <bdi dir=\"ltr\">−4</bdi>، و <bdi dir=\"ltr\">−4&nbsp;+&nbsp;14&nbsp;=&nbsp;10</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>. <bdi dir=\"ltr\">−18&nbsp;=&nbsp;(−1)(14)&nbsp;−&nbsp;4</bdi> بيدي <bdi dir=\"ltr\">r&nbsp;=&nbsp;−4</bdi>؛ وعشان يبقى مش سالب نزوّد الـ modulus:<span class=\"ltr\">−4 + 14 = 10</span>",
+     "الـ 14 هو الـ modulus نفسه، وده برّه <bdi dir=\"ltr\">Z₁₄&nbsp;=&nbsp;{0,&nbsp;…,&nbsp;13}</bdi> <bdi dir=\"ltr\">(14&nbsp;mod&nbsp;14&nbsp;=&nbsp;0)</bdi>. الـ residue هو <bdi dir=\"ltr\">−4&nbsp;+&nbsp;14&nbsp;=&nbsp;10</bdi>."
     ],
     [
-     "صح. −7 بيدي باقي سالب r = −7، فنزوّد الـ modulus: −7 + 10 = 3، و −7 = (−1)(10) + 3 (L8, Example 2.14).",
-     "الـ 7 ده 7 mod 10، يعني تجاهلت إشارة السالب. لـ −7 الـ residue هو −7 + 10 = 3.",
-     "الـ residue لازم يبقى في Z₁₀ = {0, …, 9}؛ و −7 سالب، فزوّد الـ modulus تطلع 3.",
-     "الـ 0 معناه إن 10 بتقسم −7، وده مش صح. −7 + 10 = 3."
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>. الـ <bdi dir=\"ltr\">−7</bdi> بيدي باقي سالب <bdi dir=\"ltr\">r&nbsp;=&nbsp;−7</bdi>، فنزوّد الـ modulus:<span class=\"ltr\">−7 + 10 = 3,  −7 = (−1)(10) + 3</span>",
+     "الـ 7 ده <bdi dir=\"ltr\">7&nbsp;mod&nbsp;10</bdi>، يعني تجاهلت إشارة السالب. لـ <bdi dir=\"ltr\">−7</bdi> الـ residue هو <bdi dir=\"ltr\">−7&nbsp;+&nbsp;10&nbsp;=&nbsp;3</bdi>.",
+     "الـ residue لازم يبقى في <bdi dir=\"ltr\">Z₁₀&nbsp;=&nbsp;{0,&nbsp;…,&nbsp;9}</bdi>؛ و <bdi dir=\"ltr\">−7</bdi> سالب، فزوّد الـ modulus تطلع 3.",
+     "الـ 0 معناه إن 10 بتقسم <bdi dir=\"ltr\">−7</bdi>، وده مش صح. الحساب <bdi dir=\"ltr\">−7&nbsp;+&nbsp;10&nbsp;=&nbsp;3</bdi>."
     ],
     [
-     "صح. بالـ Euclid البواقي: 980، 780، 200، 180، 20، 0؛ وآخر باقي مش صفر هو 20، يبقى gcd(2740, 1760) = 20 (L8, Example 2.7).",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.7)</bdi>. بالـ Euclid البواقي:<span class=\"ltr\">980, 780, 200, 180, 20, 0</span>وآخر باقي مش صفر هو 20، يبقى <bdi dir=\"ltr\">gcd(2740,&nbsp;1760)&nbsp;=&nbsp;20</bdi>.",
      "الـ 10 بتقسم 2740 و 1760 الاتنين، بس 20 كمان بتقسمهم، فـ 10 common divisor بس مش الأكبر.",
-     "الـ 980 ده أول باقي بس (2740 − 1760). الـ Euclid بيكمل لحد ما الباقي يبقى 0؛ وآخر باقي مش صفر هو 20.",
-     "الـ 40 بتقسم 1760 (= 44 × 40) بس مابتقسمش 2740 (2740/40 = 68.5)، فهي مش common divisor."
+     "الـ 980 ده أول باقي بس (<bdi dir=\"ltr\">2740 − 1760</bdi>). الـ Euclid بيكمل لحد ما الباقي يبقى 0؛ وآخر باقي مش صفر هو 20.",
+     "الـ 40 بتقسم 1760 <bdi dir=\"ltr\">(=&nbsp;44&nbsp;×&nbsp;40)</bdi> بس مابتقسمش 2740 <bdi dir=\"ltr\">(2740/40&nbsp;=&nbsp;68.5)</bdi>، فهي مش common divisor."
     ],
     [
-     "الـ 1 هو الـ inverse بتاع نفسه: 1 × 1 = 1 ≡ 1 (mod 10)، و gcd(10, 1) = 1.",
-     "صح. الـ b ليه multiplicative inverse في Zn بس لو gcd(n, b) = 1؛ و gcd(10, 8) = 2 ≠ 1، فالـ 8 ملهاش inverse (L8, Example 2.22).",
-     "الـ 3 ليها inverse هو 7: 3 × 7 = 21 ≡ 1 (mod 10)، لأن gcd(10, 3) = 1. والـ pair (3, 7) موجودة في Example 2.23.",
-     "الـ 9 هي الـ inverse بتاع نفسها: 9 × 9 = 81 ≡ 1 (mod 10). والـ (9, 9) واحدة من الـ pairs بتاعة Z₁₀."
+     "الـ 1 هو الـ inverse بتاع نفسه:<span class=\"ltr\">1 × 1 = 1 ≡ 1 (mod 10),  gcd(10, 1) = 1</span>",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.22)</bdi>. الـ b ليه multiplicative inverse في Zn بس لو <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi>؛ و <bdi dir=\"ltr\">gcd(10,&nbsp;8)&nbsp;=&nbsp;2&nbsp;≠&nbsp;1</bdi>، فالـ 8 ملهاش inverse.",
+     "الـ 3 ليها inverse هو 7:<span class=\"ltr\">3 × 7 = 21 ≡ 1 (mod 10)</span>لأن <bdi dir=\"ltr\">gcd(10,&nbsp;3)&nbsp;=&nbsp;1</bdi>. والـ pair <bdi dir=\"ltr\">(3,&nbsp;7)</bdi> موجودة في Example 2.23.",
+     "الـ 9 هي الـ inverse بتاع نفسها: <bdi dir=\"ltr\">9&nbsp;×&nbsp;9&nbsp;=&nbsp;81&nbsp;≡&nbsp;1&nbsp;(mod&nbsp;10)</bdi>. والـ <bdi dir=\"ltr\">(9,&nbsp;9)</bdi> واحدة من الـ pairs بتاعة Z₁₀."
     ],
     [
-     "gcd(26, 11) = 1، يبقى الـ inverse موجود؛ والـ extended Euclidean algorithm بيطلّع t = −7 ≡ 19.",
-     "11 × 15 = 165 = 6 × 26 + 9 ≡ 9، مش 1 (mod 26). الـ 15 هي الـ inverse بتاع 7 في Z₂₆، مش بتاع 11.",
-     "صح. الـ extended Euclid على (26, 11) بيدي t = −7، و −7 mod 26 = 19؛ وللتأكد 11 × 19 = 209 = 8 × 26 + 1 ≡ 1 (L8, Example 2.25).",
-     "11 × 7 = 77 ≡ 25. الـ \"7\" اللي في الـ slide ضاعت منها علامة السالب."
+     "الـ <bdi dir=\"ltr\">gcd(26,&nbsp;11)&nbsp;=&nbsp;1</bdi>، يبقى الـ inverse موجود؛ والـ extended Euclidean algorithm بيطلّع <bdi dir=\"ltr\">t&nbsp;=&nbsp;−7&nbsp;≡&nbsp;19</bdi>.",
+     "الحساب:<span class=\"ltr\">11 × 15 = 165 = 6 × 26 + 9 ≡ 9</span>مش 1 <bdi dir=\"ltr\">(mod&nbsp;26)</bdi>. الـ 15 هي الـ inverse بتاع 7 في Z₂₆، مش بتاع 11.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.25)</bdi>. الـ extended Euclid على <bdi dir=\"ltr\">(26,&nbsp;11)</bdi> بيدي <bdi dir=\"ltr\">t&nbsp;=&nbsp;−7</bdi>، و <bdi dir=\"ltr\">−7&nbsp;mod&nbsp;26&nbsp;=&nbsp;19</bdi>؛ وللتأكد:<span class=\"ltr\">11 × 19 = 209 = 8 × 26 + 1 ≡ 1</span>",
+     "الحساب <bdi dir=\"ltr\">11&nbsp;×&nbsp;7&nbsp;=&nbsp;77&nbsp;≡&nbsp;25</bdi>. الـ \"7\" اللي في الـ slide ضاعت منها علامة السالب."
     ],
     [
-     "الـ 11 ده مجرد الـ operand التاني؛ مفيش خطوة بتطلّعه. (7 − 11) = −4، و −4 + 13 = 9.",
-     "الـ 4 جاي من إنك شلت إشارة السالب من 7 − 11 = −4. ولما ترجّع −4 لـ Z₁₃ بتزوّد الـ modulus: 9.",
-     "الـ −4 مش في Z₁₃ = {0, …, 12}؛ لازم ترجّع النتيجة بالـ mod: −4 + 13 = 9.",
-     "صح. 7 − 11 = −4 و −4 mod 13 = −4 + 13 = 9، يبقى (7 − 11) mod 13 = 9 (L8, Example 2.16)."
+     "الـ 11 ده مجرد الـ operand التاني؛ مفيش خطوة بتطلّعه. <bdi dir=\"ltr\">(7&nbsp;−&nbsp;11)&nbsp;=&nbsp;−4</bdi>، و <bdi dir=\"ltr\">−4&nbsp;+&nbsp;13&nbsp;=&nbsp;9</bdi>.",
+     "الـ 4 جاي من إنك شلت إشارة السالب من <bdi dir=\"ltr\">7&nbsp;−&nbsp;11&nbsp;=&nbsp;−4</bdi>. ولما ترجّع <bdi dir=\"ltr\">−4</bdi> لـ Z₁₃ بتزوّد الـ modulus فتطلع 9.",
+     "الـ <bdi dir=\"ltr\">−4</bdi> مش في <bdi dir=\"ltr\">Z₁₃&nbsp;=&nbsp;{0,&nbsp;…,&nbsp;12}</bdi>؛ لازم ترجّع النتيجة بالـ mod: <bdi dir=\"ltr\">−4&nbsp;+&nbsp;13&nbsp;=&nbsp;9</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.16)</bdi>. الحساب:<span class=\"ltr\">7 − 11 = −4,  −4 mod 13 = −4 + 13 = 9</span>يبقى <bdi dir=\"ltr\">(7&nbsp;−&nbsp;11)&nbsp;mod&nbsp;13&nbsp;=&nbsp;9</bdi>."
     ],
     [
-     "صح. في a mod n = r الـ input التاني n اسمه الـ modulus، والـ output r اسمه الـ residue (L8, Modular arithmetic).",
-     "الـ dividend هو a، الرقم اللي بنقسمه. أما n فهو الـ modulus (الـ divisor في a = q × n + r).",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Modular&nbsp;arithmetic)</bdi>. في <bdi dir=\"ltr\">a&nbsp;mod&nbsp;n&nbsp;=&nbsp;r</bdi> الـ input التاني n اسمه الـ modulus، والـ output r اسمه الـ residue.",
+     "الـ dividend هو a، الرقم اللي بنقسمه. أما n فهو الـ modulus (الـ divisor في <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>).",
      "الـ quotient q بنرميه في الـ modular arithmetic؛ بنحتفظ بـ r بس. والـ n هو الـ modulus.",
      "الـ residue هو الـ output r. أما الـ input التاني n فهو الـ modulus."
     ],
     [
-     "الـ −4 هو الـ inverse في الـ integers العادية، بس مش في Z₁₀ = {0, …, 9}؛ ولما نرجّعه لـ Z₁₀ يبقى 10 − 4 = 6.",
-     "صح. الـ additive inverses بتحقق a + b ≡ 0 (mod n)، يعني b = n − a = 10 − 4 = 6، و 4 + 6 = 10 ≡ 0 (L8, Inverses).",
+     "الـ <bdi dir=\"ltr\">−4</bdi> هو الـ inverse في الـ integers العادية، بس مش في <bdi dir=\"ltr\">Z₁₀&nbsp;=&nbsp;{0,&nbsp;…,&nbsp;9}</bdi>؛ ولما نرجّعه لـ Z₁₀ يبقى <bdi dir=\"ltr\">10&nbsp;−&nbsp;4&nbsp;=&nbsp;6</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Inverses)</bdi>. الـ additive inverses بتحقق <bdi dir=\"ltr\">a&nbsp;+&nbsp;b&nbsp;≡&nbsp;0&nbsp;(mod&nbsp;n)</bdi>، يعني:<span class=\"ltr\">b = n − a = 10 − 4 = 6,  4 + 6 = 10 ≡ 0</span>",
      "كل عنصر في Zn ليه additive inverse، وهو n − a. وللـ 4 في Z₁₀ هو 6.",
-     "4 + 4 = 8 ≢ 0 (mod 10). العناصر الوحيدة اللي هي additive inverse لنفسها في Z₁₀ هي 0 و 5؛ وللـ 4 الـ inverse هو 6."
+     "الحساب <bdi dir=\"ltr\">4&nbsp;+&nbsp;4&nbsp;=&nbsp;8&nbsp;≢&nbsp;0&nbsp;(mod&nbsp;10)</bdi>. العناصر الوحيدة اللي هي additive inverse لنفسها في Z₁₀ هي 0 و 5؛ وللـ 4 الـ inverse هو 6."
     ]
    ],
    "extra": [
     [
-     "الـ 5 مش الـ residue: −25 − 5 = −30 مش multiple of 7. الصح −25 = (−4)(7) + 3.",
-     "الـ −4 ده الباقي السالب اللي الكمبيوتر بيطلعه (−25 = (−3)(7) − 4). زوّد الـ modulus عشان تقع في Z₇: −4 + 7 = 3.",
-     "الـ 4 ده 25 mod 7، يعني شلت إشارة السالب. لـ −25 الباقي هو −4 + 7 = 3.",
-     "صح. −25 = (−3)(7) − 4 بيدي r = −4؛ نقّص الـ q واحد وزوّد n: −25 = (−4)(7) + 3، يبقى −25 mod 7 = 3 (L8, Example 2.3 method)."
+     "الـ 5 مش الـ residue: <bdi dir=\"ltr\">−25&nbsp;−&nbsp;5&nbsp;=&nbsp;−30</bdi> مش multiple of 7. الصح <bdi dir=\"ltr\">−25&nbsp;=&nbsp;(−4)(7)&nbsp;+&nbsp;3</bdi>.",
+     "الـ <bdi dir=\"ltr\">−4</bdi> ده الباقي السالب اللي الكمبيوتر بيطلعه <bdi dir=\"ltr\">(−25&nbsp;=&nbsp;(−3)(7)&nbsp;−&nbsp;4)</bdi>. زوّد الـ modulus عشان تقع في Z₇: <bdi dir=\"ltr\">−4&nbsp;+&nbsp;7&nbsp;=&nbsp;3</bdi>.",
+     "الـ 4 ده <bdi dir=\"ltr\">25&nbsp;mod&nbsp;7</bdi>، يعني شلت إشارة السالب. لـ <bdi dir=\"ltr\">−25</bdi> الباقي هو <bdi dir=\"ltr\">−4&nbsp;+&nbsp;7&nbsp;=&nbsp;3</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.3&nbsp;method)</bdi>. <bdi dir=\"ltr\">−25&nbsp;=&nbsp;(−3)(7)&nbsp;−&nbsp;4</bdi> بيدي <bdi dir=\"ltr\">r&nbsp;=&nbsp;−4</bdi>؛ نقّص الـ q واحد وزوّد n:<span class=\"ltr\">−25 = (−4)(7) + 3 → −25 mod 7 = 3</span>"
     ],
     [
-     "صح. 84 = 2·36 + 12؛ 36 = 3·12 + 0؛ 84 − 2·36 = 12.",
-     "الـ 4 بتقسم 84 و 36 الاتنين بس مش الأكبر؛ الـ Euclid بيخلص عند الباقي 12 (84 = 2·36 + 12، 36 = 3·12 + 0).",
-     "الـ s والـ t متبدّلين: (−2)(84) + 1(36) = −168 + 36 = −132، مش 12. الـ pair الصح s = 1 و t = −2.",
-     "مع s = 1 و t = −2 بيطلع 84 − 72 = 12، مش 6. والـ Euclid بيدي gcd = 12 (36 = 3 × 12 بالظبط)."
+     "صح:<span class=\"ltr\">84 = 2·36 + 12</span><span class=\"ltr\">36 = 3·12 + 0</span><span class=\"ltr\">84 − 2·36 = 12</span>",
+     "الـ 4 بتقسم 84 و 36 الاتنين بس مش الأكبر؛ الـ Euclid بيخلص عند الباقي 12:<span class=\"ltr\">84 = 2·36 + 12,  36 = 3·12 + 0</span>",
+     "الـ s والـ t متبدّلين:<span class=\"ltr\">(−2)(84) + 1(36) = −168 + 36 = −132</span>مش 12. الـ pair الصح <bdi dir=\"ltr\">s&nbsp;=&nbsp;1</bdi> و <bdi dir=\"ltr\">t&nbsp;=&nbsp;−2</bdi>.",
+     "مع <bdi dir=\"ltr\">s&nbsp;=&nbsp;1</bdi> و <bdi dir=\"ltr\">t&nbsp;=&nbsp;−2</bdi> بيطلع <bdi dir=\"ltr\">84&nbsp;−&nbsp;72&nbsp;=&nbsp;12</bdi>، مش 6. والـ Euclid بيدي <bdi dir=\"ltr\">gcd&nbsp;=&nbsp;12</bdi> <bdi dir=\"ltr\">(36&nbsp;=&nbsp;3&nbsp;×&nbsp;12)</bdi> بالظبط."
     ],
     [
-     "7 × 11 = 77 = 2 × 26 + 25 ≡ 25 (mod 26)، مش 1. (الـ inverse بتاع 11 هو 19.)",
-     "صح. gcd(26, 7) = 1 يبقى الـ inverse موجود، و 7 × 15 = 105 = 4 × 26 + 1 ≡ 1 (mod 26) (L8, Inverses).",
-     "الـ b ليه inverse في Zn لما gcd(n, b) = 1، و gcd(26, 7) = 1، فالـ 7 ليها inverse فعلاً: 15.",
-     "7 × 19 = 133 = 5 × 26 + 3 ≡ 3، مش 1. الـ 19 هي الـ inverse بتاع 11 في Z₂₆."
+     "الحساب:<span class=\"ltr\">7 × 11 = 77 = 2 × 26 + 25 ≡ 25 (mod 26)</span>مش 1. (الـ inverse بتاع 11 هو 19.)",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Inverses)</bdi>. <bdi dir=\"ltr\">gcd(26,&nbsp;7)&nbsp;=&nbsp;1</bdi> يبقى الـ inverse موجود، و:<span class=\"ltr\">7 × 15 = 105 = 4 × 26 + 1 ≡ 1 (mod 26)</span>",
+     "الـ b ليه inverse في Zn لما <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi>، و <bdi dir=\"ltr\">gcd(26,&nbsp;7)&nbsp;=&nbsp;1</bdi>، فالـ 7 ليها inverse فعلاً: 15.",
+     "الحساب:<span class=\"ltr\">7 × 19 = 133 = 5 × 26 + 3 ≡ 3</span>مش 1. الـ 19 هي الـ inverse بتاع 11 في Z₂₆."
     ],
     [
-     "الـ 2 ده 15 mod 13 بس؛ حاصل الضرب محتاج كمان 17 mod 13 = 4: (2 × 4) mod 13 = 8.",
-     "الـ 5 مش مظبوطة: 15 × 17 = 255 = 19 × 13 + 8. وبالـ third property، (2 × 4) mod 13 = 8.",
-     "صح. 255 = 19 × 13 + 8 (أو (2 × 4) mod 13 = 8).",
-     "الـ 4 ده 17 mod 13 بس. بالـ third property اضرب الـ residues: (2 × 4) mod 13 = 8."
+     "الـ 2 ده <bdi dir=\"ltr\">15&nbsp;mod&nbsp;13</bdi> بس؛ حاصل الضرب محتاج كمان <bdi dir=\"ltr\">17&nbsp;mod&nbsp;13&nbsp;=&nbsp;4</bdi>، يبقى:<span class=\"ltr\">(2 × 4) mod 13 = 8</span>",
+     "الـ 5 مش مظبوطة:<span class=\"ltr\">15 × 17 = 255 = 19 × 13 + 8</span>وبالـ third property:<span class=\"ltr\">(2 × 4) mod 13 = 8</span>",
+     "صح:<span class=\"ltr\">255 = 19 × 13 + 8</span>أو:<span class=\"ltr\">(2 × 4) mod 13 = 8</span>",
+     "الـ 4 ده <bdi dir=\"ltr\">17&nbsp;mod&nbsp;13</bdi> بس. بالـ third property اضرب الـ residues:<span class=\"ltr\">(2 × 4) mod 13 = 8</span>"
     ],
     [
-     "الـ 7 هي الـ inverse بتاع نفسها في Z₁₂: 7 × 7 = 49 = 4 × 12 + 1 ≡ 1، و gcd(12, 7) = 1.",
-     "الـ 5 هي الـ inverse بتاع نفسها في Z₁₂: 5 × 5 = 25 = 2 × 12 + 1 ≡ 1، و gcd(12, 5) = 1.",
-     "الـ 11 هي الـ inverse بتاع نفسها في Z₁₂: 11 × 11 = 121 = 10 × 12 + 1 ≡ 1، و gcd(12, 11) = 1.",
-     "صح. الـ inverse موجود بس لو gcd(n, b) = 1؛ و gcd(12, 9) = 3 ≠ 1، فالـ 9 ملهاش multiplicative inverse في Z₁₂ (L8, Inverses)."
+     "الـ 7 هي الـ inverse بتاع نفسها في Z₁₂:<span class=\"ltr\">7 × 7 = 49 = 4 × 12 + 1 ≡ 1,  gcd(12, 7) = 1</span>",
+     "الـ 5 هي الـ inverse بتاع نفسها في Z₁₂:<span class=\"ltr\">5 × 5 = 25 = 2 × 12 + 1 ≡ 1,  gcd(12, 5) = 1</span>",
+     "الـ 11 هي الـ inverse بتاع نفسها في Z₁₂:<span class=\"ltr\">11 × 11 = 121 = 10 × 12 + 1 ≡ 1</span><span class=\"ltr\">gcd(12, 11) = 1</span>",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Inverses)</bdi>. الـ inverse موجود بس لو <bdi dir=\"ltr\">gcd(n,&nbsp;b)&nbsp;=&nbsp;1</bdi>؛ و <bdi dir=\"ltr\">gcd(12,&nbsp;9)&nbsp;=&nbsp;3&nbsp;≠&nbsp;1</bdi>، فالـ 9 ملهاش multiplicative inverse في Z₁₂."
     ],
     [
-     "صح. الـ third property متطبقة n مرة: 10⁵ mod 9 = (10 mod 9)⁵ mod 9 = 1⁵ = 1 (L8, Example 2.19).",
-     "الـ 0 معناه إن 9 بتقسم 100000، بس مجموع أرقامها 1. (10 mod 9)⁵ = 1⁵ = 1.",
-     "الـ 5 ده الـ exponent، مش الـ residue. 10 mod 9 = 1، و 1⁵ = 1.",
-     "الـ 10 مش في Z₉ = {0, …, 8}؛ 10 mod 9 = 1، و 1⁵ = 1."
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.19)</bdi>. الـ third property متطبقة n مرة:<span class=\"ltr\">10⁵ mod 9 = (10 mod 9)⁵ mod 9 = 1⁵ = 1</span>",
+     "الـ 0 معناه إن 9 بتقسم 100000، بس مجموع أرقامها 1:<span class=\"ltr\">(10 mod 9)⁵ = 1⁵ = 1</span>",
+     "الـ 5 ده الـ exponent، مش الـ residue. <bdi dir=\"ltr\">10&nbsp;mod&nbsp;9&nbsp;=&nbsp;1</bdi>، و <bdi dir=\"ltr\">1⁵&nbsp;=&nbsp;1</bdi>.",
+     "الـ 10 مش في <bdi dir=\"ltr\">Z₉&nbsp;=&nbsp;{0,&nbsp;…,&nbsp;8}</bdi>؛ والـ <bdi dir=\"ltr\">10&nbsp;mod&nbsp;9&nbsp;=&nbsp;1</bdi>، و <bdi dir=\"ltr\">1⁵&nbsp;=&nbsp;1</bdi>."
     ],
     [
-     "5 mod 3 = 2 و 0 mod 3 = 0؛ الـ residues مختلفة، يبقى 5 ≢ 0 (mod 3).",
+     "الحساب <bdi dir=\"ltr\">5&nbsp;mod&nbsp;3&nbsp;=&nbsp;2</bdi> و <bdi dir=\"ltr\">0&nbsp;mod&nbsp;3&nbsp;=&nbsp;0</bdi>؛ الـ residues مختلفة، يبقى <bdi dir=\"ltr\">5&nbsp;≢&nbsp;0&nbsp;(mod&nbsp;3)</bdi>.",
      "صح. الاتنين باقيهم 3 (مثال المحاضرة).",
-     "7 mod 3 = 1 بس 2 mod 3 = 2، فهما مش congruent؛ و 7 − 2 = 5 مش multiple of 3.",
-     "13 mod 10 = 3 و 24 mod 10 = 4؛ الـ residues مختلفة (24 − 13 = 11 مش multiple of 10)."
+     "الحساب <bdi dir=\"ltr\">7&nbsp;mod&nbsp;3&nbsp;=&nbsp;1</bdi> بس <bdi dir=\"ltr\">2&nbsp;mod&nbsp;3&nbsp;=&nbsp;2</bdi>، فهما مش congruent؛ و <bdi dir=\"ltr\">7&nbsp;−&nbsp;2&nbsp;=&nbsp;5</bdi> مش multiple of 3.",
+     "الحساب <bdi dir=\"ltr\">13&nbsp;mod&nbsp;10&nbsp;=&nbsp;3</bdi> و <bdi dir=\"ltr\">24&nbsp;mod&nbsp;10&nbsp;=&nbsp;4</bdi>؛ الـ residues مختلفة (<bdi dir=\"ltr\">24&nbsp;−&nbsp;13&nbsp;=&nbsp;11</bdi> مش multiple of 10)."
     ],
     [
-     "3 + 1 = 4 ≢ 0 (mod 10). الـ additive inverse بتاع a في Zn هو n − a = 7.",
-     "الـ −3 هو الـ inverse في الـ integers العادية، بس مش في Z₁₀؛ ولما نرجّعه لـ Z₁₀ يبقى 10 − 3 = 7.",
-     "صح. a + b ≡ 0 (mod n) بتدي b = n − a = 10 − 3 = 7، و 3 + 7 = 10 ≡ 0؛ والـ (3, 7) pair من pairs الـ Z₁₀ (L8, Inverses).",
-     "3 + 3 = 6 ≢ 0 (mod 10). الـ additive inverse هو 10 − 3 = 7."
+     "الحساب <bdi dir=\"ltr\">3&nbsp;+&nbsp;1&nbsp;=&nbsp;4&nbsp;≢&nbsp;0&nbsp;(mod&nbsp;10)</bdi>. الـ additive inverse بتاع a في Zn هو <bdi dir=\"ltr\">n&nbsp;−&nbsp;a&nbsp;=&nbsp;7</bdi>.",
+     "الـ <bdi dir=\"ltr\">−3</bdi> هو الـ inverse في الـ integers العادية، بس مش في Z₁₀؛ ولما نرجّعه لـ Z₁₀ يبقى <bdi dir=\"ltr\">10&nbsp;−&nbsp;3&nbsp;=&nbsp;7</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Inverses)</bdi>. الـ <bdi dir=\"ltr\">a&nbsp;+&nbsp;b&nbsp;≡&nbsp;0&nbsp;(mod&nbsp;n)</bdi> بتدي:<span class=\"ltr\">b = n − a = 10 − 3 = 7,  3 + 7 = 10 ≡ 0</span>والـ <bdi dir=\"ltr\">(3,&nbsp;7)</bdi> pair من pairs الـ Z₁₀.",
+     "الحساب <bdi dir=\"ltr\">3&nbsp;+&nbsp;3&nbsp;=&nbsp;6&nbsp;≢&nbsp;0&nbsp;(mod&nbsp;10)</bdi>. الـ additive inverse هو <bdi dir=\"ltr\">10&nbsp;−&nbsp;3&nbsp;=&nbsp;7</bdi>."
     ],
     [
-     "(−5)(8) + 3 = −37 مش −45. الـ quotient لازم ينزل واحد كمان: (−6)(8) + 3 = −45.",
-     "−45 = (−5)(8) − 5 ده اللي الكمبيوتر بيطلعه، بس الـ r لازم يبقى مش سالب: نقّص الـ q واحد وزوّد n، يطلع q = −6 و r = 3.",
-     "5 × 8 + 5 = 45، ودي قسمة +45. لـ −45 الـ quotient بيبقى سالب: (−6)(8) + 3.",
-     "صح. −45 = (−5)(8) − 5 فيها r &lt; 0، فنقّص الـ q بـ 1 وزوّد n على r: q = −6 و r = −5 + 8 = 3 (L8, Example 2.3)."
+     "الحساب <bdi dir=\"ltr\">(−5)(8)&nbsp;+&nbsp;3&nbsp;=&nbsp;−37</bdi> مش <bdi dir=\"ltr\">−45</bdi>. الـ quotient لازم ينزل واحد كمان:<span class=\"ltr\">(−6)(8) + 3 = −45</span>",
+     "الـ <bdi dir=\"ltr\">−45&nbsp;=&nbsp;(−5)(8)&nbsp;−&nbsp;5</bdi> ده اللي الكمبيوتر بيطلعه، بس الـ r لازم يبقى مش سالب: نقّص الـ q واحد وزوّد n، يطلع <bdi dir=\"ltr\">q&nbsp;=&nbsp;−6</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi>.",
+     "الحساب <bdi dir=\"ltr\">5&nbsp;×&nbsp;8&nbsp;+&nbsp;5&nbsp;=&nbsp;45</bdi>، ودي قسمة <bdi dir=\"ltr\">+45</bdi>. لـ <bdi dir=\"ltr\">−45</bdi> الـ quotient بيبقى سالب: <bdi dir=\"ltr\">(−6)(8)&nbsp;+&nbsp;3</bdi>.",
+     "صح <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.3)</bdi>. <bdi dir=\"ltr\">−45&nbsp;=&nbsp;(−5)(8)&nbsp;−&nbsp;5</bdi> فيها <bdi dir=\"ltr\">r&nbsp;&lt;&nbsp;0</bdi>، فنقّص الـ q بـ 1 وزوّد n على r:<span class=\"ltr\">q = −6,  r = −5 + 8 = 3</span>"
     ],
     [
-     "صح. 1071 = 2·462 + 147؛ 462 = 3·147 + 21؛ 147 = 7·21 + 0.",
-     "الـ 147 ده أول باقي (1071 − 2·462). وهو مابيقسمش 462 (462 = 3·147 + 21)، فالـ Euclid بيكمل لحد 21.",
-     "الـ 7 بتقسم الاتنين (1071 = 153·7، 462 = 66·7)، بس 21 كمان بتقسمهم، فـ 7 مش الأكبر.",
-     "الـ 42 بتقسم 462 (= 11·42) بس مابتقسمش 1071 لأنه فردي. وآخر باقي مش صفر هو 21."
+     "صح:<span class=\"ltr\">1071 = 2·462 + 147</span><span class=\"ltr\">462 = 3·147 + 21</span><span class=\"ltr\">147 = 7·21 + 0</span>",
+     "الـ 147 ده أول باقي <bdi dir=\"ltr\">(1071&nbsp;−&nbsp;2·462)</bdi>. وهو مابيقسمش 462 <bdi dir=\"ltr\">(462&nbsp;=&nbsp;3·147&nbsp;+&nbsp;21)</bdi>، فالـ Euclid بيكمل لحد 21.",
+     "الـ 7 بتقسم الاتنين <bdi dir=\"ltr\">(1071&nbsp;=&nbsp;153·7,&nbsp;462&nbsp;=&nbsp;66·7)</bdi>، بس 21 كمان بتقسمهم، فـ 7 مش الأكبر.",
+     "الـ 42 بتقسم 462 <bdi dir=\"ltr\">(=&nbsp;11·42)</bdi> بس مابتقسمش 1071 لأنه فردي. وآخر باقي مش صفر هو 21."
     ]
    ]
   },
@@ -1837,49 +1837,49 @@ AR.dm = {
     {
      "h": "الـ Graphs والـ edges والـ degree",
      "pts": [
-      "الـ <b>graph</b> G = (V, E) هو زوج: set من الـ <b>vertices</b> (nodes) V وset من الـ <b>edges</b> E، وبنفترض إنهم finite: |V| = n و |E| = m.",
-      "الـ edge e_k = (v_i, v_j) بنقول إنه <b>incident</b> مع الـ vertices v_i و v_j (يعني متوصل بيهم).",
+      "الـ <b>graph</b> <bdi dir=\"ltr\">G&nbsp;=&nbsp;(V,&nbsp;E)</bdi> هو زوج: set من الـ <b>vertices</b> (nodes) V وset من الـ <b>edges</b> E، وبنفترض إنهم finite:<span class=\"ltr\">|V| = n,  |E| = m</span>",
+      "الـ edge <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi> بنقول إنه <b>incident</b> مع الـ vertices <bdi dir=\"ltr\">v_i</bdi> و <bdi dir=\"ltr\">v_j</bdi> (يعني متوصل بيهم).",
       "الـ <b>simple</b> graph <b>مفيهوش self-loops ولا multiple edges</b>. إنما الـ <b>multigraph</b> فيه أكتر من edge بين نفس الـ 2 vertices.",
-      "الـ <b>degree</b> d(v) بتاع vertex هو عدد الـ edges الـ incident عليه. خلي بالك: <b>الـ self-loop بيتحسب 2</b>. والـ vertex الـ <b>isolated</b> الـ degree بتاعه 0.",
-      "<b>Proposition</b> (الـ handshake): مجموع الـ degrees في G بيساوي <b>2|E| = 2m</b> (لأن كل edge بيتعد مرتين). <b>Corollary</b>: عدد الـ vertices اللي الـ degree بتاعها odd دايمًا زوجي.",
+      "الـ <b>degree</b> <bdi dir=\"ltr\">d(v)</bdi> بتاع vertex هو عدد الـ edges الـ incident عليه. خلي بالك: <b>الـ self-loop بيتحسب 2</b>. والـ vertex الـ <b>isolated</b> الـ degree بتاعه 0.",
+      "الـ <b>Proposition</b> (الـ handshake): مجموع الـ degrees في G بيساوي <b><bdi dir=\"ltr\">2|E|&nbsp;=&nbsp;2m</bdi></b> (لأن كل edge بيتعد مرتين). الـ <b>Corollary</b>: عدد الـ vertices اللي الـ degree بتاعها odd دايمًا زوجي.",
       "الـ <b>null graph</b> N_n فيه n vertices و<b>مفيهوش ولا edge</b> (كل الـ vertices isolated).",
-      "رسمة كباري Königsberg (A، B، C، D و 7 كباري) هي اللي بتوضح فكرة الـ degrees."
+      "رسمة كباري Königsberg (الـ A و B و C و D و 7 كباري) هي اللي بتوضح فكرة الـ degrees."
      ]
     },
     {
-     "h": "Graphs خاصة",
+     "h": "الـ Graphs الخاصة",
      "pts": [
-      "الـ <b>complete graph</b> K_n هو simple graph فيه كل الـ B(n, 2) = n(n − 1)/2 edges الممكنة (مرسوم K₂، K₃، K₄، K₅). يعني K_n فيه n(n − 1)/2 edges: K₄ = 6، K₅ = 10.",
-      "الـ <b>k-regular</b> graph هو simple graph كل الـ vertices بتاعته ليها نفس الـ degree k (زي الـ Petersen graph اللي هو 3-regular). <b>Corollary</b>: الـ K_n هو (n − 1)-regular.",
-      "الـ <b>bipartite</b> graph: V = V₁ ∪ V₂ ومفيش edges جوه V₁ ولا جوه V₂ (كل edge بيوصّل V₁ بـ V₂). الاختبار: دوّر على <b>لونين يفصلوا الـ edges</b> (كل edge يوصّل بين لونين مختلفين).",
+      "الـ <b>complete graph</b> <bdi dir=\"ltr\">K_n</bdi> هو simple graph فيه كل الـ edges الممكنة:<span class=\"ltr\">B(n, 2) = n(n − 1)/2</span>(مرسوم <bdi dir=\"ltr\">K₂,&nbsp;K₃,&nbsp;K₄,&nbsp;K₅</bdi>). يعني <bdi dir=\"ltr\">K_n</bdi> فيه <bdi dir=\"ltr\">n(n&nbsp;−&nbsp;1)/2</bdi> edges:<span class=\"ltr\">K₄ = 6, K₅ = 10</span>",
+      "الـ <b>k-regular</b> graph هو simple graph كل الـ vertices بتاعته ليها نفس الـ degree k (زي الـ Petersen graph اللي هو <bdi dir=\"ltr\">3-regular</bdi>). <b>Corollary</b>: الـ K_n هو (n − 1)-regular.",
+      "الـ <b>bipartite</b> graph: <bdi dir=\"ltr\">V&nbsp;=&nbsp;V₁&nbsp;∪&nbsp;V₂</bdi> ومفيش edges جوه V₁ ولا جوه V₂ (كل edge بيوصّل V₁ بـ V₂). الاختبار: دوّر على <b>لونين يفصلوا الـ edges</b> (كل edge يوصّل بين لونين مختلفين).",
       "أي graph فيه <b>triangle</b> (odd cycle) يبقى <b>مش bipartite</b>.",
-      "الـ <b>complete bipartite</b> graph K_{n₁,n₂} فيه كل الـ edges الممكنة بين V₁ و V₂: |E| = |V₁|·|V₂|. ويبقى regular بالظبط لما n₁ = n₂."
+      "الـ <b>complete bipartite</b> graph <bdi dir=\"ltr\">K_{n₁,n₂}</bdi> فيه كل الـ edges الممكنة بين V₁ و V₂:<span class=\"ltr\">|E| = |V₁|·|V₂|</span>ويبقى regular بالظبط لما <bdi dir=\"ltr\">n₁&nbsp;=&nbsp;n₂</bdi>."
      ]
     },
     {
      "h": "الـ Walks والـ trails والـ paths والـ cycles",
      "pts": [
-      "الـ <b>walk of length k</b> من v₀ لـ v_k: V = {v₀, …, v_k}، E = {(v₀, v₁), …, (v_{k−1}, v_k)}، حيث الـ edge رقم j بيوصّل الـ node رقم j − 1 بالـ node رقم j (|V| = |E| + 1).",
+      "الـ <b>walk of length k</b> من <bdi dir=\"ltr\">v₀</bdi> لـ <bdi dir=\"ltr\">v_k</bdi> هو:<span class=\"ltr\">V = {v₀, …, v_k}</span><span class=\"ltr\">E = {(v₀, v₁), …, (v_{k−1}, v_k)}</span>حيث الـ edge رقم j بيوصّل الـ node رقم <bdi dir=\"ltr\">j&nbsp;−&nbsp;1</bdi> بالـ node رقم j <bdi dir=\"ltr\">(|V|&nbsp;=&nbsp;|E|&nbsp;+&nbsp;1)</bdi>.",
       "الـ <b>trail</b> هو walk كل الـ <b>edges</b> فيه مختلفة. الـ <b>path</b> هو walk كل الـ <b>nodes</b> فيه مختلفة (وبالتالي الـ edges كمان).",
-      "الـ walk أو الـ trail بيبقى <b>closed</b> لما v₀ = v_k. والـ <b>cycle</b> هو walk الـ nodes فيه مختلفة ما عدا v₀ = v_k.",
-      "Lemmas: أي walk من u لـ v ≠ u جواه path من u لـ v (بتشيل الـ subcycles)؛ وأي closed walk طوله odd جواه cycle طوله odd."
+      "الـ walk أو الـ trail بيبقى <b>closed</b> لما <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>. والـ <b>cycle</b> هو walk الـ nodes فيه مختلفة ما عدا <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>.",
+      "الـ Lemmas: أي walk من u لـ <bdi dir=\"ltr\">v&nbsp;≠&nbsp;u</bdi> جواه path من u لـ v (بتشيل الـ subcycles)؛ وأي closed walk طوله odd جواه cycle طوله odd."
      ]
     },
     {
      "h": "الـ Directed graphs",
      "pts": [
-      "في الـ <b>directed graph</b> (digraph) كل edge ليه اتجاه. لـ e = (v_s, v_t)، الـ v_s هو الـ <b>source</b> node والـ v_t هو الـ <b>terminal</b> node.",
-      "كل node ليه <b>in-degree</b> d_in(v) (الداخل) و<b>out-degree</b> d_out(v) (الخارج). والـ graph يبقى <b>balanced</b> لو d_in(v) = d_out(v) لكل الـ nodes.",
-      "الـ graph اللي الـ edge set بتاعه مكوّن من أزواج vertices <b>ordered</b> يبقى directed graph (Exam 2023/24 Q9)."
+      "في الـ <b>directed graph</b> (digraph) كل edge ليه اتجاه. لـ <bdi dir=\"ltr\">e&nbsp;=&nbsp;(v_s,&nbsp;v_t)</bdi>، الـ <bdi dir=\"ltr\">v_s</bdi> هو الـ <b>source</b> node والـ <bdi dir=\"ltr\">v_t</bdi> هو الـ <b>terminal</b> node.",
+      "كل node ليه <b>in-degree</b> <bdi dir=\"ltr\">d_in(v)</bdi> (الداخل) و<b>out-degree</b> <bdi dir=\"ltr\">d_out(v)</bdi> (الخارج). والـ graph يبقى <b>balanced</b> لو <bdi dir=\"ltr\">d_in(v)&nbsp;=&nbsp;d_out(v)</bdi> لكل الـ nodes.",
+      "الـ graph اللي الـ edge set بتاعه مكوّن من أزواج vertices <b>ordered</b> يبقى directed graph <bdi dir=\"ltr\">(Exam&nbsp;2023/24&nbsp;Q9)</bdi>."
      ]
     },
     {
      "h": "الـ Topological order والـ acyclic graphs",
      "pts": [
-      "الـ bijection f_ord : V → {1, …, n} يبقى <b>topological order</b> لو وبس لو f_ord(i) &lt; f_ord(j) لكل edge (i, j) ∈ E. والـ graph ده لازم يبقى <b>مفيهوش cycles</b>.",
-      "الـ <b>acyclic</b> graph هو graph من غير cycles. <b>Proposition</b>: أي acyclic graph فيه على الأقل node واحد الـ in-degree بتاعه صفر. <b>Proof by contradiction</b>: لو كل node ليه predecessor p(i)، ولو مشيت ورا الـ predecessors من v₀ لازم في الآخر هترجع لـ node زرته قبل كده (لأن |V| محدود)، وده يدّيك cycle.",
-      "<b>Algorithm FindTopOrd(G)</b>: t := 0؛ G⁰ := G؛ طول ما فيه v ∈ Gᵗ بحيث d_in(v) = 0: Gᵗ⁺¹ := Gᵗ \\ {v}؛ order(v) := t + 1؛ t := t + 1. لو t = n يبقى G هو acyclic؛ ولو t &lt; n يبقى G فيه cycle.",
-      "مثال: v₄ بس اللي الـ in-degree بتاعه 0 → شيله؛ بعدين v₁ و v₃ الـ in-degree بتاعهم بقى 0؛ اختار v₃، وهكذا. الترتيب النهائي {v₄, v₃, v₁, v₂, v₅, v₆}. الـ Complexity: linear في حجم الـ graph، O(n + m)، باستخدام counter للـ in-degree وqueue."
+      "الـ bijection:<span class=\"ltr\">f_ord : V → {1, …, n}</span>يبقى <b>topological order</b> لو وبس لو:<span class=\"ltr\">f_ord(i) &lt; f_ord(j)</span>لكل edge <bdi dir=\"ltr\">(i,&nbsp;j)&nbsp;∈&nbsp;E</bdi>. والـ graph ده لازم يبقى <b>مفيهوش cycles</b>.",
+      "الـ <b>acyclic</b> graph هو graph من غير cycles. الـ <b>Proposition</b>: أي acyclic graph فيه على الأقل node واحد الـ in-degree بتاعه صفر. الـ <b>Proof by contradiction</b>: لو كل node ليه predecessor <bdi dir=\"ltr\">p(i)</bdi>، ولو مشيت ورا الـ predecessors من <bdi dir=\"ltr\">v₀</bdi> لازم في الآخر هترجع لـ node زرته قبل كده (لأن <bdi dir=\"ltr\">|V|</bdi> محدود)، وده يدّيك cycle.",
+      "الـ <b>Algorithm <bdi dir=\"ltr\">FindTopOrd(G)</bdi></b> بيمشي كده:<span class=\"ltr\">t := 0; G⁰ := G</span>وطول ما فيه <bdi dir=\"ltr\">v&nbsp;∈&nbsp;Gᵗ</bdi> بحيث <bdi dir=\"ltr\">d_in(v)&nbsp;=&nbsp;0</bdi> اعمل:<pre>Gᵗ⁺¹ := Gᵗ \\ {v}\norder(v) := t + 1\nt := t + 1</pre>لو <bdi dir=\"ltr\">t&nbsp;=&nbsp;n</bdi> يبقى G هو acyclic؛ ولو <bdi dir=\"ltr\">t&nbsp;&lt;&nbsp;n</bdi> يبقى G فيه cycle.",
+      "مثال: <bdi dir=\"ltr\">v₄</bdi> بس اللي الـ in-degree بتاعه 0، فشيله؛ بعدين <bdi dir=\"ltr\">v₁</bdi> و <bdi dir=\"ltr\">v₃</bdi> الـ in-degree بتاعهم بقى 0؛ اختار <bdi dir=\"ltr\">v₃</bdi>، وهكذا. الترتيب النهائي:<span class=\"ltr\">{v₄, v₃, v₁, v₂, v₅, v₆}</span>الـ Complexity بتاعته linear في حجم الـ graph، <bdi dir=\"ltr\">O(n&nbsp;+&nbsp;m)</bdi>، باستخدام counter للـ in-degree وqueue."
      ]
     },
     {
@@ -1892,48 +1892,48 @@ AR.dm = {
     {
      "h": "طرق التمثيل: الـ adjacency matrix، الـ incidence matrix، والـ edge list",
      "pts": [
-      "الـ <b>Adjacency matrix</b>: matrix A حجمها n × n فيها A(i, j) = 1 لو وبس لو (i, j) ∈ E. وبتبقى symmetric في الـ undirected graphs.",
-      "الـ <b>Incidence matrix</b> T (n × m): في الـ undirected: T(i, k) = T(j, k) = 1 لو وبس لو e_k = (v_i, v_j). في الـ directed: T(i, k) = −1 و T(j, k) = 1 لو وبس لو e_k = (v_i, v_j) (−1 عند الـ source، و +1 عند الـ terminal).",
-      "الـ <b>Sparse representation / list of edges</b> متنظمة حسب الـ nodes، زي V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.",
-      "حجم التمثيل ده <b>linear</b> في m = |E|؛ ولو عدّينا الـ bits: <b>L = (n + m) log n</b>، لأن الـ vertex pointer محتاج log n bits."
+      "الـ <b>Adjacency matrix</b>: هي matrix A حجمها <bdi dir=\"ltr\">n&nbsp;×&nbsp;n</bdi> فيها <bdi dir=\"ltr\">A(i,&nbsp;j)&nbsp;=&nbsp;1</bdi> لو وبس لو <bdi dir=\"ltr\">(i,&nbsp;j)&nbsp;∈&nbsp;E</bdi>. وبتبقى symmetric في الـ undirected graphs.",
+      "الـ <b>Incidence matrix</b> T <bdi dir=\"ltr\">(n&nbsp;×&nbsp;m)</bdi>. في الـ undirected:<span class=\"ltr\">T(i, k) = T(j, k) = 1</span>لو وبس لو <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi>. وفي الـ directed:<span class=\"ltr\">T(i, k) = −1, T(j, k) = 1</span>لو وبس لو <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi>، يعني <bdi dir=\"ltr\">−1</bdi> عند الـ source، و <bdi dir=\"ltr\">+1</bdi> عند الـ terminal.",
+      "الـ <b>Sparse representation</b> أو الـ <b>list of edges</b> متنظمة حسب الـ nodes، زي:<span class=\"ltr\">V(1) = {2, 3}, V(2) = {3}, V(3) = {4},</span><span class=\"ltr\">V(4) = ∅, V(5) = {1, 3, 4}</span>",
+      "حجم التمثيل ده <b>linear</b> في <bdi dir=\"ltr\">m&nbsp;=&nbsp;|E|</bdi>؛ ولو عدّينا الـ bits:<span class=\"ltr\"><b>L = (n + m) log n</b></span>لأن الـ vertex pointer محتاج <bdi dir=\"ltr\">log&nbsp;n</bdi> bits."
      ]
     },
     {
-     "h": "مثال المحاضرة: undirected graph (vertices 1..5، edges a..f)"
+     "h": "مثال المحاضرة: undirected graph (الـ vertices <bdi dir=\"ltr\">1..5</bdi>، والـ edges <bdi dir=\"ltr\">a..f</bdi>)"
     },
     {
-     "h": "مثال المحاضرة: digraph (vertices 1..4، edges e1..e5)"
+     "h": "مثال المحاضرة: digraph (الـ vertices <bdi dir=\"ltr\">1..4</bdi>، والـ edges <bdi dir=\"ltr\">e1..e5</bdi>)"
     }
    ],
    "cards": [
-    "زوج: set محدودة من الـ vertices V (|V| = n) وset من الـ edges E (|E| = m).",
-    "الـ edge e_k = (v_i, v_j) بيبقى incident مع v_i و v_j.",
+    "زوج: set محدودة من الـ vertices V <bdi dir=\"ltr\">(|V|&nbsp;=&nbsp;n)</bdi> وset من الـ edges E <bdi dir=\"ltr\">(|E|&nbsp;=&nbsp;m)</bdi>.",
+    "الـ edge <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi> بيبقى incident مع <bdi dir=\"ltr\">v_i</bdi> و <bdi dir=\"ltr\">v_j</bdi>.",
     "مفيهوش self-loops ولا multiple edges.",
     "فيه أكتر من edge بين نفس الـ 2 vertices.",
-    "n vertices ومفيش ولا edge.",
+    "عدد n من الـ vertices ومفيش ولا edge.",
     "عدد الـ edges الـ incident عليه؛ والـ self-loop بيتحسب 2.",
     "الـ degree بتاعه 0.",
-    "Σ d(v) = 2|E| = 2m؛ وعدد الـ vertices اللي الـ degree بتاعها odd بيبقى زوجي.",
-    "Simple graph فيه كل الـ n(n − 1)/2 edges؛ وهو (n − 1)-regular.",
-    "Simple graph كل الـ vertices بتاعته الـ degree بتاعها k.",
-    "V = V₁ ∪ V₂ والـ edges بس بين V₁ و V₂؛ لونين بيفصلوا الـ edges. ولو فيه triangle يبقى مش bipartite.",
-    "كل الـ edges بين V₁ و V₂؛ |E| = n₁·n₂؛ ويبقى regular لو وبس لو n₁ = n₂.",
-    "Walk: سلسلة edges؛ trail: edges مختلفة؛ path: nodes مختلفة؛ cycle: nodes مختلفة ما عدا v₀ = v_k.",
-    "لـ e = (v_s, v_t): الـ v_s هو الـ source، والـ v_t هو الـ terminal.",
-    "d_in(v) = d_out(v) لكل node.",
-    "Bijection f_ord بحيث f_ord(i) &lt; f_ord(j) لكل edge (i, j)؛ وموجود بس لو الـ graph acyclic.",
+    "<span class=\"ltr\">Σ d(v) = 2|E| = 2m</span>وعدد الـ vertices اللي الـ degree بتاعها odd بيبقى زوجي.",
+    "الـ Simple graph فيه كل الـ <bdi dir=\"ltr\">n(n&nbsp;−&nbsp;1)/2</bdi> edges؛ وهو <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)-regular</bdi>.",
+    "الـ Simple graph كل الـ vertices بتاعته الـ degree بتاعها k.",
+    "الـ <bdi dir=\"ltr\">V&nbsp;=&nbsp;V₁&nbsp;∪&nbsp;V₂</bdi> والـ edges بس بين V₁ و V₂؛ لونين بيفصلوا الـ edges. ولو فيه triangle يبقى مش bipartite.",
+    "كل الـ edges بين V₁ و V₂؛ و <bdi dir=\"ltr\">|E|&nbsp;=&nbsp;n₁·n₂</bdi>؛ ويبقى regular لو وبس لو <bdi dir=\"ltr\">n₁&nbsp;=&nbsp;n₂</bdi>.",
+    "الـ Walk: سلسلة edges.<br>الـ trail: فيه edges مختلفة.<br>الـ path: فيه nodes مختلفة.<br>الـ cycle: فيه nodes مختلفة ما عدا <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>.",
+    "لـ <bdi dir=\"ltr\">e&nbsp;=&nbsp;(v_s,&nbsp;v_t)</bdi>، الـ <bdi dir=\"ltr\">v_s</bdi> هو الـ source، والـ <bdi dir=\"ltr\">v_t</bdi> هو الـ terminal.",
+    "الـ <bdi dir=\"ltr\">d_in(v)&nbsp;=&nbsp;d_out(v)</bdi> لكل node.",
+    "الـ Bijection <bdi dir=\"ltr\">f_ord</bdi> بحيث:<span class=\"ltr\">f_ord(i) &lt; f_ord(j)</span>لكل edge <bdi dir=\"ltr\">(i,&nbsp;j)</bdi>؛ وموجود بس لو الـ graph acyclic.",
     "على الأقل node واحد الـ in-degree بتاعه صفر.",
-    "Bijection للـ nodes بيخلّي كل edge في G₁ يقابل edge واحد بالظبط في G₂ والعكس.",
-    "n × n، و A(i, j) = 1 لو وبس لو (i, j) ∈ E.",
-    "T(i, k) = −1 عند الـ source، و T(j, k) = 1 عند الـ terminal بتاع e_k."
+    "الـ Bijection للـ nodes بيخلّي كل edge في G₁ يقابل edge واحد بالظبط في G₂ والعكس.",
+    "الحجم <bdi dir=\"ltr\">n&nbsp;×&nbsp;n</bdi>، و <bdi dir=\"ltr\">A(i,&nbsp;j)&nbsp;=&nbsp;1</bdi> لو وبس لو <bdi dir=\"ltr\">(i,&nbsp;j)&nbsp;∈&nbsp;E</bdi>.",
+    "الـ <bdi dir=\"ltr\">T(i,&nbsp;k)&nbsp;=&nbsp;−1</bdi> عند الـ source، و <bdi dir=\"ltr\">T(j,&nbsp;k)&nbsp;=&nbsp;1</bdi> عند الـ terminal بتاع <bdi dir=\"ltr\">e_k</bdi>."
    ],
    "qa": [
-    "G = (V, E): set محدودة من الـ vertices وset من الـ edges، |V| = n، |E| = m. الـ edge (v_i, v_j) بيبقى incident مع v_i و v_j. الـ simple graph مفيهوش self-loops ولا multiple edges. الـ degree d(v) هو عدد الـ edges الـ incident (والـ self-loop بيتحسب 2)؛ والـ isolated vertex الـ degree بتاعه 0. Σ d(v) = 2|E| = 2m؛ والـ corollary: عدد الـ vertices اللي الـ degree بتاعها odd بيبقى زوجي.",
-    "K_n: simple graph فيه كل الـ n(n − 1)/2 edges (وهو (n − 1)-regular). k-regular: simple graph كل vertex فيه الـ degree بتاعه k. Bipartite: V = V₁ ∪ V₂ ومفيش edges جوه V₁ ولا V₂. Complete bipartite K_{n₁,n₂}: كل الـ edges بين V₁ و V₂، |E| = |V₁|·|V₂|. الـ vertices اللي في V₁ الـ degree بتاعها n₂ واللي في V₂ الـ degree بتاعها n₁، يبقى regular لو وبس لو n₁ = n₂.",
-    "الـ walk of length k من v₀ لـ v_k هو سلسلة nodes v₀, …, v_k بالـ edges (v_{j−1}, v_j). الـ trail هو walk كل الـ edges فيه مختلفة. الـ path هو walk كل الـ nodes فيه مختلفة. الـ walk/trail بيبقى closed لو v₀ = v_k. والـ cycle هو walk الـ nodes فيه مختلفة ما عدا v₀ = v_k.",
-    "بالتناقض (contradiction): لو d_in(v) &gt; 0 لكل v، يبقى كل node i ليه predecessor p(i). ابدأ من v₀ وكوّن v₁ = p(v₀)، v₂ = p(v₁)، …؛ وبما إن |V| محدودة لازم node يتكرر، وده بيدّي cycle، وده بيناقض إن الـ graph acyclic. الـ FindTopOrd بيشيل كل مرة node الـ in-degree بتاعه 0 ويدّيله رقم الترتيب الجاي t + 1؛ لو كل الـ n nodes اتشالوا (t = n) يبقى G هو acyclic وترتيب الشيل هو topological order؛ ولو وقف و t &lt; n يبقى G فيه cycle.",
-    "الـ Adjacency (rows 1..5): 1: 0 1 1 0 0؛ 2: 0 0 1 0 0؛ 3: 0 0 0 1 0؛ 4: 0 0 0 0 0؛ 5: 1 0 1 1 0. الـ List: V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.",
-    "الـ Adjacency: n × n، A(i, j) = 1 لو وبس لو (i, j) ∈ E. الـ Incidence: n × m؛ في الـ undirected T(i, k) = T(j, k) = 1 لو وبس لو e_k = (v_i, v_j)؛ وفي الـ directed T(i, k) = −1 و T(j, k) = 1. الـ Sparse: لكل node، list بالـ out-neighbours بتوعه؛ وحجمه linear في m، تقريبًا L = (n + m) log n bits."
+    "الـ <bdi dir=\"ltr\">G&nbsp;=&nbsp;(V,&nbsp;E)</bdi> هو set محدودة من الـ vertices وset من الـ edges:<span class=\"ltr\">|V| = n,  |E| = m</span>الـ edge <bdi dir=\"ltr\">(v_i,&nbsp;v_j)</bdi> بيبقى incident مع <bdi dir=\"ltr\">v_i</bdi> و <bdi dir=\"ltr\">v_j</bdi>. الـ simple graph مفيهوش self-loops ولا multiple edges. الـ degree <bdi dir=\"ltr\">d(v)</bdi> هو عدد الـ edges الـ incident (والـ self-loop بيتحسب 2)؛ والـ isolated vertex الـ degree بتاعه 0. وكمان:<span class=\"ltr\">Σ d(v) = 2|E| = 2m</span>والـ corollary: عدد الـ vertices اللي الـ degree بتاعها odd بيبقى زوجي.",
+    "الـ <bdi dir=\"ltr\">K_n</bdi>: simple graph فيه كل الـ <bdi dir=\"ltr\">n(n&nbsp;−&nbsp;1)/2</bdi> edges (وهو <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)-regular</bdi>).<br>الـ k-regular: هو simple graph كل vertex فيه الـ degree بتاعه k.<br>الـ Bipartite: <bdi dir=\"ltr\">V&nbsp;=&nbsp;V₁&nbsp;∪&nbsp;V₂</bdi> ومفيش edges جوه V₁ ولا V₂.<br>الـ Complete bipartite <bdi dir=\"ltr\">K_{n₁,n₂}</bdi>: كل الـ edges بين V₁ و V₂، و:<span class=\"ltr\">|E| = |V₁|·|V₂|</span>الـ vertices اللي في V₁ الـ degree بتاعها n₂ واللي في V₂ الـ degree بتاعها n₁، يبقى regular لو وبس لو <bdi dir=\"ltr\">n₁&nbsp;=&nbsp;n₂</bdi>.",
+    "الـ walk of length k من <bdi dir=\"ltr\">v₀</bdi> لـ <bdi dir=\"ltr\">v_k</bdi> هو سلسلة nodes <bdi dir=\"ltr\">v₀,&nbsp;…,&nbsp;v_k</bdi> بالـ edges <bdi dir=\"ltr\">(v_{j−1},&nbsp;v_j)</bdi>. الـ trail هو walk كل الـ edges فيه مختلفة. الـ path هو walk كل الـ nodes فيه مختلفة. الـ walk أو الـ trail بيبقى closed لو <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>. والـ cycle هو walk الـ nodes فيه مختلفة ما عدا <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi>.",
+    "بالتناقض (contradiction): لو <bdi dir=\"ltr\">d_in(v)&nbsp;&gt;&nbsp;0</bdi> لكل v، يبقى كل node i ليه predecessor <bdi dir=\"ltr\">p(i)</bdi>. ابدأ من <bdi dir=\"ltr\">v₀</bdi> وكوّن:<span class=\"ltr\">v₁ = p(v₀), v₂ = p(v₁), …</span>وبما إن <bdi dir=\"ltr\">|V|</bdi> محدودة لازم node يتكرر، وده بيدّي cycle، وده بيناقض إن الـ graph acyclic. الـ FindTopOrd بيشيل كل مرة node الـ in-degree بتاعه 0 ويدّيله رقم الترتيب الجاي <bdi dir=\"ltr\">t&nbsp;+&nbsp;1</bdi>؛ لو كل الـ n nodes اتشالوا <bdi dir=\"ltr\">(t&nbsp;=&nbsp;n)</bdi> يبقى G هو acyclic وترتيب الشيل هو topological order؛ ولو وقف و <bdi dir=\"ltr\">t&nbsp;&lt;&nbsp;n</bdi> يبقى G فيه cycle.",
+    "الـ Adjacency (الـ rows من 1 لـ 5):<pre>1: 0 1 1 0 0\n2: 0 0 1 0 0\n3: 0 0 0 1 0\n4: 0 0 0 0 0\n5: 1 0 1 1 0</pre>الـ List:<span class=\"ltr\">V(1) = {2, 3}, V(2) = {3}, V(3) = {4},</span><span class=\"ltr\">V(4) = ∅, V(5) = {1, 3, 4}</span>",
+    "الـ Adjacency: <bdi dir=\"ltr\">n&nbsp;×&nbsp;n</bdi>، و <bdi dir=\"ltr\">A(i,&nbsp;j)&nbsp;=&nbsp;1</bdi> لو وبس لو <bdi dir=\"ltr\">(i,&nbsp;j)&nbsp;∈&nbsp;E</bdi>.<br>الـ Incidence: <bdi dir=\"ltr\">n&nbsp;×&nbsp;m</bdi>؛ في الـ undirected:<span class=\"ltr\">T(i, k) = T(j, k) = 1</span>لو وبس لو <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi>؛ وفي الـ directed:<span class=\"ltr\">T(i, k) = −1, T(j, k) = 1</span>الـ Sparse: لكل node فيه list بالـ out-neighbours بتوعه؛ وحجمه linear في m، تقريبًا:<span class=\"ltr\">L = (n + m) log n bits</span>"
    ],
    "quiz": [
     [
@@ -1951,7 +1951,7 @@ AR.dm = {
     [
      "صح. الـ multigraph بيسمح بـ multiple edges بين نفس الـ pair من الـ vertices؛ والـ simple graph بيمنعها (L9, Graphs, edges and degree).",
      "الـ graph اللي مفيهوش edges ده الـ null graph N_n. الـ multigraph اللي بيعرّفه إن فيه multiple (parallel) edges.",
-     "«No loop» ده جزء من تعريف الـ simple graph. الـ multigraph بيتعرّف بالـ edges المتكررة بين نفس الـ vertices.",
+     "الـ «No loop» ده جزء من تعريف الـ simple graph. الـ multigraph بيتعرّف بالـ edges المتكررة بين نفس الـ vertices.",
      "الـ graph اللي مفيهوش vertices مينفعش يبقى فيه أي edges أصلًا، فما بالك بـ multiple edges. الـ multigraph فيه multiple edges."
     ],
     [
@@ -1962,24 +1962,24 @@ AR.dm = {
     ],
     [
      "الـ self-loop بيبقى incident مع الـ vertex بتاعه من الطرفين، فبيتعد مرتين مش بيتجاهل. المحاضرة بتقول إنه بيتحسب 2.",
-     "القاعدة مش بتعتمد على الـ graph: الـ self-loop دايمًا بيتحسب 2، وده اللي بيخلي Σ d(v) = 2|E| صحيحة.",
-     "صح. الطرفين بتوع الـ self-loop على نفس الـ vertex، فالمحاضرة بتحسبه 2 في الـ d(v)؛ وده بيحافظ على Σ d(v) = 2|E| (L9, Graphs, edges and degree).",
-     "لو حسبت الـ loop مرة واحدة هتبوّظ الـ handshake rule Σ d(v) = 2|E|، لأن كل edge لازم يزوّد 2. الـ loop بيتحسب 2."
+     "القاعدة مش بتعتمد على الـ graph: الـ self-loop دايمًا بيتحسب 2، وده اللي بيخلي <bdi dir=\"ltr\">Σ&nbsp;d(v)&nbsp;=&nbsp;2|E|</bdi> صحيحة.",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Graphs,&nbsp;edges&nbsp;and&nbsp;degree)</bdi>. الطرفين بتوع الـ self-loop على نفس الـ vertex، فالمحاضرة بتحسبه 2 في الـ <bdi dir=\"ltr\">d(v)</bdi>؛ وده بيحافظ على <bdi dir=\"ltr\">Σ&nbsp;d(v)&nbsp;=&nbsp;2|E|</bdi>.",
+     "لو حسبت الـ loop مرة واحدة هتبوّظ الـ handshake rule <bdi dir=\"ltr\">Σ&nbsp;d(v)&nbsp;=&nbsp;2|E|</bdi>، لأن كل edge لازم يزوّد 2. الـ loop بيتحسب 2."
     ],
     [
-     "الـ |V| + |E| بيدخّل الـ vertices في المجموع، بس الـ vertices لوحدها مش بتزوّد حاجة (الـ isolated vertex الـ degree بتاعه 0). Σ d(v) = 2|E|.",
-     "الـ |V| بيعد الـ vertices؛ الـ null graph فيه |V| = n بس مجموع الـ degrees بتاعه 0. المجموع بيعتمد على الـ edges بس: 2|E|.",
-     "كل edge ليه طرفين وبيزوّد 1 على الـ degree بتاع كل طرف، فبيتعد مرتين: Σ d(v) = 2|E| مش |E|.",
-     "صح. الـ Handshake proposition: كل edge بيزوّد 1 على الـ degree بتاع الطرفين، فـ Σ d(v) = 2|E| = 2m (L9, Graphs, edges and degree)."
+     "الـ <bdi dir=\"ltr\">|V|&nbsp;+&nbsp;|E|</bdi> بيدخّل الـ vertices في المجموع، بس الـ vertices لوحدها مش بتزوّد حاجة (الـ isolated vertex الـ degree بتاعه 0). الصح <bdi dir=\"ltr\">Σ&nbsp;d(v)&nbsp;=&nbsp;2|E|</bdi>.",
+     "الـ <bdi dir=\"ltr\">|V|</bdi> بيعد الـ vertices؛ الـ null graph فيه <bdi dir=\"ltr\">|V|&nbsp;=&nbsp;n</bdi> بس مجموع الـ degrees بتاعه 0. المجموع بيعتمد على الـ edges بس: <bdi dir=\"ltr\">2|E|</bdi>.",
+     "كل edge ليه طرفين وبيزوّد 1 على الـ degree بتاع كل طرف، فبيتعد مرتين: <bdi dir=\"ltr\">Σ&nbsp;d(v)&nbsp;=&nbsp;2|E|</bdi> مش <bdi dir=\"ltr\">|E|</bdi>.",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Graphs,&nbsp;edges&nbsp;and&nbsp;degree)</bdi>. الـ Handshake proposition: كل edge بيزوّد 1 على الـ degree بتاع الطرفين، فـ:<span class=\"ltr\">Σ d(v) = 2|E| = 2m</span>"
     ],
     [
-     "صح. الـ K_n فيه edge بين كل pair: B(n, 2) = n(n − 1)/2، فالـ K₅ فيه 5 × 4 / 2 = 10 edges (L9, Special graphs).",
-     "الـ 5 edges دول cycle C₅ (كل vertex الـ degree بتاعه 2). في الـ K₅ كل vertex الـ degree بتاعه 4: 5 × 4 / 2 = 10.",
-     "الـ 20 = 5 × 4 بيعد كل edge مرتين، مرة من كل طرف. لما تقسم على 2 تطلع 10.",
-     "الـ 25 = 5² بيعد كل الـ ordered pairs ومعاهم الـ vertex مع نفسه. الـ unordered pairs المختلفة: 5 × 4 / 2 = 10."
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Special&nbsp;graphs)</bdi>. الـ <bdi dir=\"ltr\">K_n</bdi> فيه edge بين كل pair:<span class=\"ltr\">B(n, 2) = n(n − 1)/2</span>فالـ K₅ فيه <bdi dir=\"ltr\">5&nbsp;×&nbsp;4&nbsp;/&nbsp;2&nbsp;=&nbsp;10</bdi> edges.",
+     "الـ 5 edges دول cycle C₅ (كل vertex الـ degree بتاعه 2). في الـ K₅ كل vertex الـ degree بتاعه 4: <bdi dir=\"ltr\">5&nbsp;×&nbsp;4&nbsp;/&nbsp;2&nbsp;=&nbsp;10</bdi>.",
+     "الـ <bdi dir=\"ltr\">20&nbsp;=&nbsp;5&nbsp;×&nbsp;4</bdi> بيعد كل edge مرتين، مرة من كل طرف. لما تقسم على 2 تطلع 10.",
+     "الـ <bdi dir=\"ltr\">25&nbsp;=&nbsp;5²</bdi> بيعد كل الـ ordered pairs ومعاهم الـ vertex مع نفسه. الـ unordered pairs المختلفة عددها <bdi dir=\"ltr\">5&nbsp;×&nbsp;4&nbsp;/&nbsp;2&nbsp;=&nbsp;10</bdi>."
     ],
     [
-     "بس الـ K₃ (الـ triangle) هو اللي 2-regular. في الـ K_n كل vertex متوصل بالـ n − 1 التانيين، فهو (n − 1)-regular.",
+     "بس الـ K₃ (الـ triangle) هو اللي <bdi dir=\"ltr\">2-regular</bdi>. في الـ K_n كل vertex متوصل بالـ n − 1 التانيين، فهو (n − 1)-regular.",
      "صح. في الـ K_n كل vertex متوصل بكل الـ vertices التانية، وهما n − 1، فكل الـ degrees بتساوي n − 1 (L9, corollary in Special graphs).",
      "الـ K_n ده simple، فالـ vertex مفيهوش loop لنفسه؛ هو adjacent بس للـ n − 1 vertices التانيين.",
      "كل vertex في الـ K_n ليه نفس الـ degree n − 1، فهو regular بالتعريف."
@@ -1992,41 +1992,41 @@ AR.dm = {
     ],
     [
      "الـ walk اللي كل الـ edges بتاعته مختلفة ده الـ trail؛ والـ vertices لسه ممكن تتكرر. الـ path محتاج كل الـ nodes مختلفة.",
-     "الـ v₀ = v_k بيخلي الـ walk ده closed (ويبقى cycle لو باقي الـ nodes مختلفة). الـ path كل الـ nodes بتاعته مختلفة، فطرفينه مختلفين.",
+     "الـ <bdi dir=\"ltr\">v₀&nbsp;=&nbsp;v_k</bdi> بيخلي الـ walk ده closed (ويبقى cycle لو باقي الـ nodes مختلفة). الـ path كل الـ nodes بتاعته مختلفة، فطرفينه مختلفين.",
      "الـ nodes المتكررة هي بالظبط اللي الـ path بيمنعها؛ الـ walk اللي فيه nodes متكررة ممكن يبقى trail أو closed walk.",
      "صح. المحاضرة بتعرّف الـ path إنه walk كل الـ nodes بتاعته مختلفة (وبالتالي الـ edges كمان) (L9, Walks, trails, paths, cycles)."
     ],
     [
-     "صح. الـ digraph بيبقى balanced لما كل node يبقى عدد الـ edges الداخلة عليه قد الخارجة منه: d_in(v) = d_out(v) لكل v (L9, Directed graphs).",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Directed&nbsp;graphs)</bdi>. الـ digraph بيبقى balanced لما كل node يبقى عدد الـ edges الداخلة عليه قد الخارجة منه:<span class=\"ltr\">d_in(v) = d_out(v)</span>لكل v.",
      "إن كل الـ degrees تبقى متساوية ده تعريف الـ k-regular graph. الـ balanced بيقارن الـ in-degree بالـ out-degree لكل node.",
      "مفيش cycles معناها acyclic. الـ balanced digraph في الحقيقة بيبقى فيه cycles طالما فيه edges، لأن أي node دخلته تقدر تخرج منه.",
-     "الـ topological order بيبقى موجود بالظبط لما الـ graph يبقى acyclic. الـ balanced فكرته في d_in(v) = d_out(v)."
+     "الـ topological order بيبقى موجود بالظبط لما الـ graph يبقى acyclic. الـ balanced فكرته في <bdi dir=\"ltr\">d_in(v)&nbsp;=&nbsp;d_out(v)</bdi>."
     ],
     [
-     "الـ G بيبقى acyclic لما الـ loop يشيل كل الـ n nodes، يعني t = n. لو وقف بدري (t &lt; n) يبقى مفيش node فاضل الـ in-degree بتاعه 0.",
-     "صح. كل acyclic graph فيه node الـ in-degree بتاعه 0؛ فلو الـ algorithm وقف وهو شايل t &lt; n nodes بس، يبقى الـ graph الباقي مفيهوش node زي ده، فيبقى فيه cycle (L9, FindTopOrd).",
+     "الـ G بيبقى acyclic لما الـ loop يشيل كل الـ n nodes، يعني <bdi dir=\"ltr\">t&nbsp;=&nbsp;n</bdi>. لو وقف بدري <bdi dir=\"ltr\">(t&nbsp;&lt;&nbsp;n)</bdi> يبقى مفيش node فاضل الـ in-degree بتاعه 0.",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;FindTopOrd)</bdi>. كل acyclic graph فيه node الـ in-degree بتاعه 0؛ فلو الـ algorithm وقف وهو شايل <bdi dir=\"ltr\">t&nbsp;&lt;&nbsp;n</bdi> nodes بس، يبقى الـ graph الباقي مفيهوش node زي ده، فيبقى فيه cycle.",
      "الـ FindTopOrd بيختبر الـ cycles بس عن طريق الـ nodes اللي الـ in-degree بتاعها 0؛ مش بيقول أي حاجة عن إن كل pair متوصل (complete).",
-     "الـ bipartiteness بتتختبر بلونين. الـ FindTopOrd لما يقف عند t &lt; n بيقولك إن الـ graph فيه cycle."
+     "الـ bipartiteness بتتختبر بلونين. الـ FindTopOrd لما يقف عند <bdi dir=\"ltr\">t&nbsp;&lt;&nbsp;n</bdi> بيقولك إن الـ graph فيه cycle."
     ],
     [
-     "الـ n² ده حجم الـ adjacency matrix (n × n entries). حجم الـ edge-list linear في m: (n + m) log n bits.",
-     "كل item متخزّن هو vertex pointer حجمه log n bits (مش log m)، ولازم تحسب كمان الـ n node headers: (n + m) log n.",
-     "صح. الـ edge list بيخزّن n node entries و m edges، كل واحد vertex pointer حجمه log n bits: L = (n + m) log n (L9, Representations).",
+     "الـ n² ده حجم الـ adjacency matrix (<bdi dir=\"ltr\">n&nbsp;×&nbsp;n</bdi> entries). حجم الـ edge-list linear في m:<span class=\"ltr\">(n + m) log n bits</span>",
+     "كل item متخزّن هو vertex pointer حجمه <bdi dir=\"ltr\">log&nbsp;n</bdi> bits (مش <bdi dir=\"ltr\">log&nbsp;m</bdi>)، ولازم تحسب كمان الـ n node headers:<span class=\"ltr\">(n + m) log n</span>",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Representations)</bdi>. الـ edge list بيخزّن n node entries و m edges، كل واحد vertex pointer حجمه <bdi dir=\"ltr\">log&nbsp;n</bdi> bits:<span class=\"ltr\">L = (n + m) log n</span>",
      "الـ n × m ده حجم الـ incidence matrix (row لكل vertex و column لكل edge). الـ edge list بياخد (n + m) log n bits."
     ],
     [
-     "الـ 0 معناه إن الـ vertex مش incident مع e_k. الـ source incident، فبياخد entry مش صفر، وهو −1.",
-     "الـ +1 بيعلّم الـ terminal vertex v_t. اصطلاح المحاضرة بيدّي الـ source −1.",
-     "الـ 2 عمره ما بيستخدم في الـ directed incidence matrix (بس −1 و 0 و 1). الـ source بياخد −1.",
-     "صح. الـ directed incidence matrix: T(i, k) = −1 و T(j, k) = 1 لما e_k = (v_i, v_j)، يعني −1 عند الـ source و +1 عند الـ terminal (L9, Representations)."
+     "الـ 0 معناه إن الـ vertex مش incident مع e_k. الـ source incident، فبياخد entry مش صفر، وهو <bdi dir=\"ltr\">−1.</bdi>",
+     "الـ +1 بيعلّم الـ terminal vertex v_t. اصطلاح المحاضرة بيدّي الـ source <bdi dir=\"ltr\">−1.</bdi>",
+     "الـ 2 عمره ما بيستخدم في الـ directed incidence matrix (بس <bdi dir=\"ltr\">−1</bdi> و 0 و 1). الـ source بياخد <bdi dir=\"ltr\">−1.</bdi>",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Representations)</bdi>. الـ directed incidence matrix:<span class=\"ltr\">T(i, k) = −1, T(j, k) = 1</span>لما <bdi dir=\"ltr\">e_k&nbsp;=&nbsp;(v_i,&nbsp;v_j)</bdi>، يعني <bdi dir=\"ltr\">−1</bdi> عند الـ source و <bdi dir=\"ltr\">+1</bdi> عند الـ terminal."
     ]
    ],
    "extra": [
     [
-     "صح. الـ Handshake proposition: Σ d(v) = 2|E| = 2 × 7 = 14، لأن كل edge بيزوّد 1 على الطرفين بتوعه (L9).",
-     "الـ 7 بيعد كل edge مرة واحدة، بس كل edge ليه طرفين. Σ d(v) = 2 × 7 = 14.",
-     "الـ isolated vertices بتزوّد 0 على مجموع الـ degrees، فعدد الـ vertices مش فارق: Σ d(v) = 2|E| = 14.",
-     "الـ 21 = 3 × 7 بيعد كل edge 3 مرات. كل edge ليه طرفين بالظبط: 2 × 7 = 14."
+     "صح <bdi dir=\"ltr\">(L9)</bdi>. الـ Handshake proposition:<span class=\"ltr\">Σ d(v) = 2|E| = 2 × 7 = 14</span>لأن كل edge بيزوّد 1 على الطرفين بتوعه.",
+     "الـ 7 بيعد كل edge مرة واحدة، بس كل edge ليه طرفين:<span class=\"ltr\">Σ d(v) = 2 × 7 = 14</span>",
+     "الـ isolated vertices بتزوّد 0 على مجموع الـ degrees، فعدد الـ vertices مش فارق:<span class=\"ltr\">Σ d(v) = 2|E| = 14</span>",
+     "الـ <bdi dir=\"ltr\">21&nbsp;=&nbsp;3&nbsp;×&nbsp;7</bdi> بيعد كل edge 3 مرات. كل edge ليه طرفين بالظبط: <bdi dir=\"ltr\">2&nbsp;×&nbsp;7&nbsp;=&nbsp;14</bdi>."
     ],
     [
      "الـ handshake proposition شغالة على الـ multigraphs كمان: كل edge لسه بيزوّد 2 على مجموع الـ degrees، فعدد الـ odd-degree vertices بيفضل زوجي.",
@@ -2035,34 +2035,34 @@ AR.dm = {
      "الـ loop بيزوّد 2 على الـ degree بتاع vertex واحد، وده مش بيغيّر الـ parity بتاعه، فعدد الـ odd vertices بيفضل زوجي."
     ],
     [
-     "الـ 36 = 6² بيعد كل الـ ordered pairs ومعاهم (v, v). الـ K₆ فيه edge واحد لكل unordered pair من vertices مختلفين: 6 × 5 / 2 = 15.",
-     "الـ 30 = 6 × 5 بيعد كل edge من الطرفين. لما تقسم على 2: n(n − 1)/2 = 15.",
-     "صح. الـ K_n فيه n(n − 1)/2 edges: 6 × 5 / 2 = 15 (كل واحد من الـ 6 vertices الـ degree بتاعه 5) (L9, Special graphs).",
-     "الـ 12 = 6 × 2 ده عدد الـ edges بتاع 4-regular graph على 6 vertices. الـ K₆ ده 5-regular: 6 × 5 / 2 = 15."
+     "الـ <bdi dir=\"ltr\">36&nbsp;=&nbsp;6²</bdi> بيعد كل الـ ordered pairs ومعاهم <bdi dir=\"ltr\">(v,&nbsp;v)</bdi>. الـ K₆ فيه edge واحد لكل unordered pair من vertices مختلفين: <bdi dir=\"ltr\">6&nbsp;×&nbsp;5&nbsp;/&nbsp;2&nbsp;=&nbsp;15</bdi>.",
+     "الـ <bdi dir=\"ltr\">30&nbsp;=&nbsp;6&nbsp;×&nbsp;5</bdi> بيعد كل edge من الطرفين. لما تقسم على 2:<span class=\"ltr\">n(n − 1)/2 = 15</span>",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Special&nbsp;graphs)</bdi>. الـ <bdi dir=\"ltr\">K_n</bdi> فيه <bdi dir=\"ltr\">n(n&nbsp;−&nbsp;1)/2</bdi> edges:<span class=\"ltr\">6 × 5 / 2 = 15</span>(كل واحد من الـ 6 vertices الـ degree بتاعه 5).",
+     "الـ <bdi dir=\"ltr\">12&nbsp;=&nbsp;6&nbsp;×&nbsp;2</bdi> ده عدد الـ edges بتاع <bdi dir=\"ltr\">4-regular</bdi> graph على 6 vertices. الـ K₆ ده <bdi dir=\"ltr\">5-regular</bdi>، يعني <bdi dir=\"ltr\">6&nbsp;×&nbsp;5&nbsp;/&nbsp;2&nbsp;=&nbsp;15</bdi>."
     ],
     [
-     "الـ K_{3,3} فعلًا 3-regular، بس |E| = n₁ · n₂ = 3 × 3 = 9، مش 6.",
-     "كل vertex في part متوصل بالـ 3 vertices اللي في الـ part التاني، فالـ degree بيبقى 3، و |E| = 3 × 3 = 9.",
-     "الـ K_{3,3} ده complete bipartite: الـ two parts بتوعه كل واحد فيه 3 vertices ومفيش edges جوه أي part، فهو bipartite.",
-     "صح. |E| = 3 × 3؛ و n₁ = n₂ فهو regular."
+     "الـ <bdi dir=\"ltr\">K_{3,3}</bdi> فعلًا <bdi dir=\"ltr\">3-regular</bdi>، بس:<span class=\"ltr\">|E| = n₁ · n₂ = 3 × 3 = 9</span>مش 6.",
+     "كل vertex في part متوصل بالـ 3 vertices اللي في الـ part التاني، فالـ degree بيبقى 3، و <bdi dir=\"ltr\">|E|&nbsp;=&nbsp;3&nbsp;×&nbsp;3&nbsp;=&nbsp;9</bdi>.",
+     "الـ <bdi dir=\"ltr\">K_{3,3}</bdi> ده complete bipartite: الـ two parts بتوعه كل واحد فيه 3 vertices ومفيش edges جوه أي part، فهو bipartite.",
+     "صح. <bdi dir=\"ltr\">|E|&nbsp;=&nbsp;3&nbsp;×&nbsp;3</bdi>؛ و <bdi dir=\"ltr\">n₁&nbsp;=&nbsp;n₂</bdi> فهو regular."
     ],
     [
      "صح. الـ trail ده walk كل الـ edges بتاعته مختلفة؛ والـ vertices ممكن تتكرر (L9, Walks, trails, paths, cycles).",
      "الـ path محتاج كل الـ nodes تبقى مختلفة. لو الـ vertices بتتكرر والـ edges مختلفة يبقى ده trail.",
      "الـ (self-)loop ده edge واحد من vertex لنفسه، مش نوع من الـ walks.",
-     "الـ cycle بيبقى closed (v₀ = v_k) وباقي الـ nodes كلها مختلفة. السؤال بيسمح بـ vertices متكررة ومفيهوش شرط إنه يتقفل."
+     "الـ cycle بيبقى closed <bdi dir=\"ltr\">(v₀&nbsp;=&nbsp;v_k)</bdi> وباقي الـ nodes كلها مختلفة. السؤال بيسمح بـ vertices متكررة ومفيهوش شرط إنه يتقفل."
     ],
     [
-     "الـ in-degree 0 معناه إن مفيش edge داخل على 2، بس الـ 1→2 والـ 3→2 الاتنين بينتهوا عند 2.",
-     "صح. الـ d_in(v) بيعد الـ edges اللي الـ terminal بتاعها v: الـ 1→2 والـ 3→2 الاتنين بينتهوا عند 2، فـ d_in(2) = 2 (L9, Directed graphs).",
-     "الـ 1 بيعد الـ 1→2 بس ونسي الـ 3→2، وده كمان بينتهي عند 2.",
-     "الـ 2→4 بيبدأ من 2، فبيتحسب في d_out(2) مش d_in(2). اللي داخلين على 2 هما الـ 1→2 والـ 3→2 بس."
+     "الـ in-degree 0 معناه إن مفيش edge داخل على 2، بس الـ <bdi dir=\"ltr\">1→2</bdi> والـ <bdi dir=\"ltr\">3→2</bdi> الاتنين بينتهوا عند 2.",
+     "صح <bdi dir=\"ltr\">(L9,&nbsp;Directed&nbsp;graphs)</bdi>. الـ <bdi dir=\"ltr\">d_in(v)</bdi> بيعد الـ edges اللي الـ terminal بتاعها v: الـ <bdi dir=\"ltr\">1→2</bdi> والـ <bdi dir=\"ltr\">3→2</bdi> الاتنين بينتهوا عند 2، فـ <bdi dir=\"ltr\">d_in(2)&nbsp;=&nbsp;2</bdi>.",
+     "الـ 1 بيعد الـ <bdi dir=\"ltr\">1→2</bdi> بس ونسي الـ <bdi dir=\"ltr\">3→2</bdi>، وده كمان بينتهي عند 2.",
+     "الـ <bdi dir=\"ltr\">2→4</bdi> بيبدأ من 2، فبيتحسب في <bdi dir=\"ltr\">d_out(2)</bdi> مش <bdi dir=\"ltr\">d_in(2)</bdi>. اللي داخلين على 2 هما الـ <bdi dir=\"ltr\">1→2</bdi> والـ <bdi dir=\"ltr\">3→2</bdi> بس."
     ],
     [
-     "ده الترتيب المعكوس: الـ edge 1→2 محتاج 1 تيجي قبل 2، بس هنا 1 جاية في الآخر. كل الـ edges هتبقى رايحة لورا.",
-     "الـ edge 3→2 محتاج f(3) &lt; f(2)، بس الترتيب ده حاطط 2 قبل 3.",
+     "ده الترتيب المعكوس: الـ edge <bdi dir=\"ltr\">1→2</bdi> محتاج 1 تيجي قبل 2، بس هنا 1 جاية في الآخر. كل الـ edges هتبقى رايحة لورا.",
+     "الـ edge <bdi dir=\"ltr\">3→2</bdi> محتاج <bdi dir=\"ltr\">f(3)&nbsp;&lt;&nbsp;f(2)</bdi>، بس الترتيب ده حاطط 2 قبل 3.",
      "صح. كل edge ماشي لقدّام في الترتيب ده.",
-     "الـ edge 1→2 محتاج 1 قبل 2، بس الترتيب ده بادئ بـ 2. الـ 1 بس هو اللي الـ in-degree بتاعه 0، فلازم ييجي الأول."
+     "الـ edge <bdi dir=\"ltr\">1→2</bdi> محتاج 1 قبل 2، بس الترتيب ده بادئ بـ 2. الـ 1 بس هو اللي الـ in-degree بتاعه 0، فلازم ييجي الأول."
     ],
     [
      "الـ identity matrix فيها 1s على الـ diagonal بس، وده معناه self-loops؛ والـ simple graph الـ diagonal بتاعه أصفار.",
@@ -2071,16 +2071,16 @@ AR.dm = {
      "صح. الـ edges مش ordered ومفيش loops."
     ],
     [
-     "صح. الـ source −1، والـ terminal +1 (اصطلاح المحاضرة).",
-     "الإشارات دي معكوسة: المحاضرة بتحط −1 عند الـ source v₂ و +1 عند الـ terminal v₅.",
-     "الـ 1 عند الطرفين ده الـ undirected incidence matrix. الـ directed version بتعلّم الـ source بـ −1.",
-     "الـ edge ليه طرفين، فالـ column بتاعه فيه اتنين non-zero entries: −1 عند v₂ و +1 عند v₅."
+     "صح. الـ source <bdi dir=\"ltr\">−1</bdi>، والـ terminal +1 (اصطلاح المحاضرة).",
+     "الإشارات دي معكوسة: المحاضرة بتحط <bdi dir=\"ltr\">−1</bdi> عند الـ source v₂ و +1 عند الـ terminal v₅.",
+     "الـ 1 عند الطرفين ده الـ undirected incidence matrix. الـ directed version بتعلّم الـ source بـ <bdi dir=\"ltr\">−1.</bdi>",
+     "الـ edge ليه طرفين، فالـ column بتاعه فيه اتنين non-zero entries: <bdi dir=\"ltr\">−1</bdi> عند <bdi dir=\"ltr\">v₂</bdi> و <bdi dir=\"ltr\">+1</bdi> عند <bdi dir=\"ltr\">v₅</bdi>."
     ],
     [
-     "الـ 6-cycle زوجي، فالألوان تقدر تتبادل حواليه (A, B, A, B, A, B) وكل edge بيوصّل لونين مختلفين: يبقى bipartite.",
-     "صح. لما تبادل لونين حوالين الـ 5-cycle، آخر edge هيضطر يوصّل اتنين vertices بنفس اللون؛ زي الـ triangle بالظبط، الـ odd cycle مش bipartite (L9, Special graphs).",
+     "الـ <bdi dir=\"ltr\">6-cycle</bdi> زوجي، فالألوان تقدر تتبادل حواليه (A, B, A, B, A, B) وكل edge بيوصّل لونين مختلفين: يبقى bipartite.",
+     "صح. لما تبادل لونين حوالين الـ <bdi dir=\"ltr\">5-cycle</bdi>، آخر edge هيضطر يوصّل اتنين vertices بنفس اللون؛ زي الـ triangle بالظبط، الـ odd cycle مش bipartite (L9, Special graphs).",
      "الـ path مفيهوش cycles، فلو بادلت الألوان على طوله (A, B, A, B) كل edge هيبقى بين لونين مختلفين: bipartite.",
-     "الـ K_{2,3} ده complete bipartite بالتعريف: كل الـ edges بتاعته رايحة بين الـ part اللي فيه 2 والـ part اللي فيه 3."
+     "الـ <bdi dir=\"ltr\">K_{2,3}</bdi> ده complete bipartite بالتعريف: كل الـ edges بتاعته رايحة بين الـ part اللي فيه 2 والـ part اللي فيه 3."
     ]
    ]
   },
@@ -2090,76 +2090,76 @@ AR.dm = {
      "h": "ليه بنستخدم matrices؟",
      "pts": [
       "الـ graph بيتحدد بالكامل من الـ <b>adjacency</b> structure بتاعته أو الـ <b>incidence</b> structure بتاعته. والتوصيف ده أكفأ بكتير من الرسمة لما الـ graph يبقى كبير، والكمبيوتر بيتعامل مع الأرقام أحسن من الصور، فعشان كده بندّي الـ graphs للكمبيوتر في <b>شكل matrix</b>.",
-      "الـ Matrices اللي هنشوفها: الـ incidence matrix A(G)، الـ modified (oriented) incidence matrix F، الـ cycle matrix B(G)، الـ cut-set matrix C(G)، الـ fundamental cut-set matrix C_f، الـ path matrix P(u, v)، الـ adjacency matrix X، والـ degree matrix H."
+      "الـ Matrices اللي هنشوفها: الـ incidence matrix <bdi dir=\"ltr\">A(G)</bdi>، والـ modified (oriented) incidence matrix <bdi dir=\"ltr\">F</bdi>، والـ cycle matrix <bdi dir=\"ltr\">B(G)</bdi>، والـ cut-set matrix <bdi dir=\"ltr\">C(G)</bdi>، والـ fundamental cut-set matrix <bdi dir=\"ltr\">C_f</bdi>، والـ path matrix <bdi dir=\"ltr\">P(u,&nbsp;v)</bdi>، والـ adjacency matrix <bdi dir=\"ltr\">X</bdi>، والـ degree matrix <bdi dir=\"ltr\">H</bdi>."
      ]
     },
     {
-     "h": "10.1 الـ Incidence matrix A(G)",
+     "h": "10.1 الـ Incidence matrix <bdi dir=\"ltr\">A(G)</bdi>",
      "pts": [
-      "لـ G فيه n vertices و m edges و<b>مفيهوش self-loops</b>: A = [a_ij] حجمها <b>n × m</b>؛ الـ rows هي الـ vertices والـ columns هي الـ edges؛ a_ij = 1 لو الـ edge رقم j incident على الـ vertex رقم i، وغير كده 0. واسمها كمان <b>vertex-edge incidence matrix</b>. وهي binary (0, 1)-matrix.",
-      "<b>ملاحظات</b>: (1) كل edge incident على 2 vertices بالظبط، فـ <b>كل column فيه 1 مرتين بالظبط</b>؛ (2) عدد الـ 1 في الـ row = الـ <b>degree</b> بتاع الـ vertex ده؛ (3) row كله أصفار = <b>isolated vertex</b>؛ (4) الـ <b>parallel edges</b> بتدّي columns متطابقة؛ (5) الـ disconnected graph اللي ليه components G₁ و G₂ بيبقى على شكل <b>block diagonal</b> [A(G₁) 0; 0 A(G₂)]؛ (6) تبديل الـ rows أو الـ columns = إعادة تسمية الـ vertices والـ edges.",
-      "الـ A متعرّفة على <b>GF(2)</b>: يعني {0, 1} مع الجمع mod 2 (1 + 1 = 0) والضرب mod 2.",
-      "<b>Theorem 10.1</b>: الـ G₁ و G₂ يبقوا isomorphic لو وبس لو A(G₁) و A(G₂) مختلفين بس في ترتيب الـ rows والـ columns."
+      "لـ G فيه n vertices و m edges و<b>مفيهوش self-loops</b>، الـ <bdi dir=\"ltr\">A&nbsp;=&nbsp;[a_ij]</bdi> حجمها <b><bdi dir=\"ltr\">n&nbsp;×&nbsp;m</bdi></b>؛ الـ rows هي الـ vertices والـ columns هي الـ edges؛ و <bdi dir=\"ltr\">a_ij&nbsp;=&nbsp;1</bdi> لو الـ edge رقم j incident على الـ vertex رقم i، وغير كده <bdi dir=\"ltr\">0</bdi>. واسمها كمان <b>vertex-edge incidence matrix</b>. وهي binary <bdi dir=\"ltr\">(0,&nbsp;1)-matrix</bdi>.",
+      "<b>ملاحظات</b>:<br>(1) كل edge incident على 2 vertices بالظبط، فـ <b>كل column فيه 1 مرتين بالظبط</b>.<br>(2) عدد الـ 1 في الـ row يساوي الـ <b>degree</b> بتاع الـ vertex ده.<br>(3) الـ row اللي كله أصفار معناه <b>isolated vertex</b>.<br>(4) الـ <b>parallel edges</b> بتدّي columns متطابقة.<br>(5) الـ disconnected graph اللي ليه components <bdi dir=\"ltr\">G₁</bdi> و <bdi dir=\"ltr\">G₂</bdi> بيبقى على شكل <b>block diagonal</b>:<span class=\"ltr\">[A(G₁) 0; 0 A(G₂)]</span>(6) تبديل الـ rows أو الـ columns معناه إعادة تسمية الـ vertices والـ edges.",
+      "الـ A متعرّفة على <b><bdi dir=\"ltr\">GF(2)</bdi></b>، يعني <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> مع الجمع <bdi dir=\"ltr\">mod&nbsp;2</bdi> (<bdi dir=\"ltr\">1&nbsp;+&nbsp;1&nbsp;=&nbsp;0</bdi>) والضرب <bdi dir=\"ltr\">mod&nbsp;2</bdi>.",
+      "<b>الـ Theorem 10.1</b>: الـ <bdi dir=\"ltr\">G₁</bdi> و <bdi dir=\"ltr\">G₂</bdi> يبقوا isomorphic لو وبس لو <bdi dir=\"ltr\">A(G₁)</bdi> و <bdi dir=\"ltr\">A(G₂)</bdi> مختلفين بس في ترتيب الـ rows والـ columns."
      ]
     },
     {
-     "h": "نتايج الـ rank بتاعة A(G)",
+     "h": "نتايج الـ rank بتاعة <bdi dir=\"ltr\">A(G)</bdi>",
      "pts": [
-      "مجموع كل الـ rows بالـ modulo-2 بيساوي 0 (لأن كل column فيه 2 وحايد)، فالـ rows دي dependent و rank A ≤ n − 1.",
-      "<b>Theorem 10.2</b>: لو G هو connected وفيه n vertices، يبقى <b>rank A(G) = n − 1</b>. <b>ملحوظة</b>: لو فيه k components، rank A(G) = n − k.",
+      "مجموع كل الـ rows بالـ <bdi dir=\"ltr\">modulo-2</bdi> بيساوي 0 (لأن كل column فيه 2 وحايد)، فالـ rows دي dependent و rank A ≤ n − 1.",
+      "<b>الـ Theorem 10.2</b>: لو G هو connected وفيه n vertices، يبقى:<span class=\"ltr\"><b>rank A(G) = n − 1</b></span><b>ملحوظة</b>: لو فيه k components يبقى <bdi dir=\"ltr\">rank&nbsp;A(G)&nbsp;=&nbsp;n&nbsp;−&nbsp;k</bdi>.",
       "لو مسحت أي row واحد بيطلعلك الـ <b>reduced incidence matrix A_f</b> ((n − 1) × m)؛ والـ vertex اللي اتمسح اسمه <b>reference vertex</b>. الـ n − 1 rows دول بيحددوا الـ graph بالكامل لأن الـ row الناقص ممكن يتبني تاني (كل column فيه 2 وحايد).",
-      "<b>Theorem 10.3</b>: الـ reduced incidence matrix بتاعة <b>tree</b> بتبقى non-singular (مربعة من الـ order n − 1 والـ rank بتاعها n − 1). والـ reduced incidence matrix اللي حجمها (n − 1) × (n − 1) بتبقى non-singular لو وبس لو الـ graph ده tree.",
-      "<b>Theorem 10.4</b>: أي submatrix حجمها (n − 1) × (n − 1) من A(G) (والـ G connected) بتبقى non-singular لو وبس لو الـ n − 1 edges بتوعها بيكوّنوا <b>spanning tree</b>."
+      "<b>الـ Theorem 10.3</b>: الـ reduced incidence matrix بتاعة <b>tree</b> بتبقى non-singular (مربعة من الـ order <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> والـ rank بتاعها <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi>). والـ reduced incidence matrix اللي حجمها <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)&nbsp;×&nbsp;(n&nbsp;−&nbsp;1)</bdi> بتبقى non-singular لو وبس لو الـ graph ده tree.",
+      "<b>الـ Theorem 10.4</b>: أي submatrix حجمها <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)&nbsp;×&nbsp;(n&nbsp;−&nbsp;1)</bdi> من <bdi dir=\"ltr\">A(G)</bdi> (والـ G connected) بتبقى non-singular لو وبس لو الـ <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> edges بتوعها بيكوّنوا <b>spanning tree</b>."
      ]
     },
     {
      "h": "الـ Modified incidence matrix F (edges ليها اتجاه)",
      "pts": [
-      "ادّي كل edge e_j = (v_i, v_k) اتجاه بشكل عشوائي: f_ij = 1 لو v_i هو الطرف الموجب، −1 لو الطرف السالب، 0 لو مش incident. يعني F بتطلع من A لما تغيّر واحد من الـ 1 اللي في كل column لـ −1.",
-      "<b>Theorem 10.5</b>: G connected → rank F = n − 1. <b>Theorem 10.6</b>: k components → rank F = n − k.",
-      "<b>Theorem 10.7</b>: الـ determinant بتاع أي square submatrix من F بيبقى 1 أو −1 أو 0.",
-      "مثال (Fig. 10.2): الـ rows بتاعة A: v1: 1 0 0 1 0، v2: 1 1 0 0 1، v3: 0 1 1 0 0، v4: 0 0 1 1 1 → الـ rows بتاعة F: v1: 1 0 0 1 0، v2: −1 1 0 0 1، v3: 0 −1 1 0 0، v4: 0 0 −1 −1 −1."
+      "ادّي كل edge <bdi dir=\"ltr\">e_j&nbsp;=&nbsp;(v_i,&nbsp;v_k)</bdi> اتجاه بشكل عشوائي: الـ <bdi dir=\"ltr\">f_ij&nbsp;=&nbsp;1</bdi> لو <bdi dir=\"ltr\">v_i</bdi> هو الطرف الموجب، و <bdi dir=\"ltr\">−1</bdi> لو الطرف السالب، و <bdi dir=\"ltr\">0</bdi> لو مش incident. يعني F بتطلع من A لما تغيّر واحد من الـ 1 اللي في كل column لـ <bdi dir=\"ltr\">−1</bdi>.",
+      "<b>الـ Theorem 10.5</b>:<span class=\"ltr\">G connected → rank F = n − 1</span><b>والـ Theorem 10.6</b>:<span class=\"ltr\">k components → rank F = n − k</span>",
+      "<b>الـ Theorem 10.7</b>: الـ determinant بتاع أي square submatrix من F بيبقى <bdi dir=\"ltr\">1</bdi> أو <bdi dir=\"ltr\">−1</bdi> أو <bdi dir=\"ltr\">0</bdi>.",
+      "مثال <bdi dir=\"ltr\">(Fig. 10.2)</bdi>: الـ rows بتاعة A:<span class=\"ltr\">v1: 1 0 0 1 0</span><span class=\"ltr\">v2: 1 1 0 0 1</span><span class=\"ltr\">v3: 0 1 1 0 0</span><span class=\"ltr\">v4: 0 0 1 1 1</span>بتبقى الـ rows بتاعة F:<span class=\"ltr\">v1: 1 0 0 1 0</span><span class=\"ltr\">v2: −1 1 0 0 1</span><span class=\"ltr\">v3: 0 −1 1 0 0</span><span class=\"ltr\">v4: 0 0 −1 −1 −1</span>"
      ]
     },
     {
-     "h": "10.3 الـ Cycle matrix B(G)",
+     "h": "10.3 الـ Cycle matrix <bdi dir=\"ltr\">B(G)</bdi>",
      "pts": [
-      "لـ G فيه m edges و q cycles مختلفة: B = [b_ij] حجمها <b>q × m</b>، و b_ij = 1 لو الـ cycle رقم i فيه الـ edge رقم j، وغير كده 0.",
-      "مثال G₁: الـ cycles هي Z1 = {e1, e2}، Z2 = {e3, e5, e7}، Z3 = {e4, e6, e7}، Z4 = {e3, e4, e6, e5}.",
-      "<b>ملاحظات</b>: (1) column كله أصفار = edge مش موجود في أي cycle (non-cycle edge)؛ (2) كل row هو cycle vector؛ (3) الـ self-loop بيدّي row فيه 1 واحد بس؛ (4) عدد الـ 1 في الـ row = عدد الـ edges في الـ cycle ده؛ (5) الـ separable/disconnected graph → شكل block diagonal؛ (6) تبديل الـ rows/columns بيعيد تسمية الـ cycles/edges؛ (7) 2 graphs ليهم نفس الـ cycle matrix لو وبس لو كانوا <b>2-isomorphic</b>، فالـ B مش بتحدد الـ graph بالكامل.",
-      "<b>Theorem 10.9</b>: لو مفيش self-loops ونفس ترتيب الـ edges، كل row في B بيبقى orthogonal على كل row في A: <b>A Bᵀ = B Aᵀ ≡ 0 (mod 2)</b>.",
-      "<b>Theorem 10.10</b>: لو G connected → <b>rank B = m − n + 1</b>. <b>Theorem 10.11</b>: لو فيه k components → rank B = m − n + k."
+      "لـ G فيه m edges و q cycles مختلفة، الـ <bdi dir=\"ltr\">B&nbsp;=&nbsp;[b_ij]</bdi> حجمها <b><bdi dir=\"ltr\">q&nbsp;×&nbsp;m</bdi></b>، و <bdi dir=\"ltr\">b_ij&nbsp;=&nbsp;1</bdi> لو الـ cycle رقم i فيه الـ edge رقم j، وغير كده <bdi dir=\"ltr\">0</bdi>.",
+      "مثال <bdi dir=\"ltr\">G₁</bdi>: الـ cycles هي:<span class=\"ltr\">Z1 = {e1, e2}, Z2 = {e3, e5, e7}</span><span class=\"ltr\">Z3 = {e4, e6, e7}, Z4 = {e3, e4, e6, e5}</span>",
+      "<b>ملاحظات</b>:<br>(1) الـ column اللي كله أصفار معناه edge مش موجود في أي cycle (non-cycle edge).<br>(2) كل row هو cycle vector.<br>(3) الـ self-loop بيدّي row فيه 1 واحد بس.<br>(4) عدد الـ 1 في الـ row هو عدد الـ edges في الـ cycle ده.<br>(5) الـ separable أو الـ disconnected graph بيدّي شكل block diagonal.<br>(6) تبديل الـ rows أو الـ columns بيعيد تسمية الـ cycles أو الـ edges.<br>(7) أي 2 graphs ليهم نفس الـ cycle matrix لو وبس لو كانوا <b><bdi dir=\"ltr\">2-isomorphic</bdi></b>، فالـ B مش بتحدد الـ graph بالكامل.",
+      "<b>الـ Theorem 10.9</b>: لو مفيش self-loops ونفس ترتيب الـ edges، كل row في B بيبقى orthogonal على كل row في A:<span class=\"ltr\"><b>A Bᵀ = B Aᵀ ≡ 0 (mod 2)</b></span>",
+      "<b>الـ Theorem 10.10</b>: لو G connected:<span class=\"ltr\"><b>rank B = m − n + 1</b></span><b>والـ Theorem 10.11</b>: لو فيه k components:<span class=\"ltr\">rank B = m − n + k</span>"
      ]
     },
     {
-     "h": "10.4 – 10.6 الـ Cut-set matrices",
+     "h": "الأجزاء <bdi dir=\"ltr\">10.4 – 10.6</bdi>: الـ Cut-set matrices",
      "pts": [
-      "لـ G فيه m edges و q cut-sets: C = [c_ij] حجمها q × m، و c_ij = 1 لو الـ cut-set رقم i فيه الـ edge رقم j.",
-      "في الـ non-separable graph، الـ C(G) جواها rows الـ A(G)، فـ rank C ≥ n − 1.",
-      "الـ cut-set والـ cycle دايمًا مشتركين في عدد زوجي من الـ edges، فـ <b>B Cᵀ = C Bᵀ ≡ 0 (mod 2)</b>.",
-      "<b>Theorem 10.14</b>: لـ G connected، rank C(G) = rank A(G) = n − 1 (ده الـ rank بتاع الـ graph).",
-      "الـ <b>Fundamental cut-set matrix</b> C_f: حجمها (n − 1) × m، والـ rows هي الـ fundamental cut-sets بالنسبة لـ spanning tree؛ C_f = [C_c : I_{n−1}] (identity على الـ n − 1 branches، و C_c على الـ m − n + 1 chords)."
+      "لـ G فيه m edges و q cut-sets، الـ <bdi dir=\"ltr\">C&nbsp;=&nbsp;[c_ij]</bdi> حجمها <bdi dir=\"ltr\">q&nbsp;×&nbsp;m</bdi>، و <bdi dir=\"ltr\">c_ij&nbsp;=&nbsp;1</bdi> لو الـ cut-set رقم i فيه الـ edge رقم j.",
+      "في الـ non-separable graph، الـ <bdi dir=\"ltr\">C(G)</bdi> جواها rows الـ <bdi dir=\"ltr\">A(G)</bdi>، فـ <bdi dir=\"ltr\">rank&nbsp;C&nbsp;≥&nbsp;n&nbsp;−&nbsp;1</bdi>.",
+      "الـ cut-set والـ cycle دايمًا مشتركين في عدد زوجي من الـ edges، فـ:<span class=\"ltr\"><b>B Cᵀ = C Bᵀ ≡ 0 (mod 2)</b></span>",
+      "<b>الـ Theorem 10.14</b>: لـ G connected:<span class=\"ltr\">rank C(G) = rank A(G) = n − 1</span>وده الـ rank بتاع الـ graph.",
+      "الـ <b>Fundamental cut-set matrix</b> <bdi dir=\"ltr\">C_f</bdi> حجمها <bdi dir=\"ltr\">(n&nbsp;−&nbsp;1)&nbsp;×&nbsp;m</bdi>، والـ rows هي الـ fundamental cut-sets بالنسبة لـ spanning tree:<span class=\"ltr\">C_f = [C_c : I_{n−1}]</span>يعني identity على الـ <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> branches، و <bdi dir=\"ltr\">C_c</bdi> على الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi> chords."
      ]
     },
     {
-     "h": "10.7 الـ Path matrix P(u, v)",
+     "h": "10.7 الـ Path matrix <bdi dir=\"ltr\">P(u,&nbsp;v)</bdi>",
      "pts": [
-      "لـ vertices u و v بينهم q paths مختلفة: P(u, v) = [p_ij] حجمها q × m، و p_ij = 1 لو الـ edge رقم j موجود في الـ path رقم i.",
-      "مثال: الـ paths بين v3 و v4: p1 = {e8, e5}، p2 = {e8, e7, e3}، p3 = {e8, e6, e4, e3}.",
-      "<b>ملاحظات</b>: (1) column كله أصفار = edge مش موجود في أي u–v path؛ (2) column كله وحايد = edge موجود في كل الـ u–v paths؛ (3) مفيش row كله أصفار؛ (4) الـ ring sum بتاع أي 2 rows بيبقى cycle أو اتحاد cycles مالهمش edges مشتركة (edge-disjoint).",
-      "<b>Theorem 10.15</b>: A Pᵀ(u, v) = M (mod 2)، حيث M فيها وحايد بس في الـ rows بتوع u و v."
+      "لـ vertices u و v بينهم q paths مختلفة، الـ <bdi dir=\"ltr\">P(u,&nbsp;v)&nbsp;=&nbsp;[p_ij]</bdi> حجمها <bdi dir=\"ltr\">q&nbsp;×&nbsp;m</bdi>، و <bdi dir=\"ltr\">p_ij&nbsp;=&nbsp;1</bdi> لو الـ edge رقم j موجود في الـ path رقم i.",
+      "مثال: الـ paths بين v3 و v4:<span class=\"ltr\">p1 = {e8, e5}, p2 = {e8, e7, e3}</span><span class=\"ltr\">p3 = {e8, e6, e4, e3}</span>",
+      "<b>ملاحظات</b>:<br>(1) الـ column اللي كله أصفار معناه edge مش موجود في أي <bdi dir=\"ltr\">u–v</bdi> path.<br>(2) الـ column اللي كله وحايد معناه edge موجود في كل الـ <bdi dir=\"ltr\">u–v</bdi> paths.<br>(3) مفيش row كله أصفار.<br>(4) الـ ring sum بتاع أي 2 rows بيبقى cycle أو اتحاد cycles مالهمش edges مشتركة (edge-disjoint).",
+      "<b>الـ Theorem 10.15</b> بتقول:<span class=\"ltr\">A Pᵀ(u, v) = M (mod 2)</span>حيث M فيها وحايد بس في الـ rows بتوع u و v."
      ]
     },
     {
      "h": "10.8 الـ Adjacency matrix X",
      "pts": [
-      "لـ G مفيهوش parallel edges: X = [x_ij] حجمها <b>n × n symmetric binary</b>، و x_ij = 1 لو v_i v_j ∈ E، وغير كده 0.",
+      "لـ G مفيهوش parallel edges، الـ <bdi dir=\"ltr\">X&nbsp;=&nbsp;[x_ij]</bdi> حجمها <b><bdi dir=\"ltr\">n&nbsp;×&nbsp;n</bdi> symmetric binary</b>، و <bdi dir=\"ltr\">x_ij&nbsp;=&nbsp;1</bdi> لو <bdi dir=\"ltr\">v_i&nbsp;v_j&nbsp;∈&nbsp;E</bdi>، وغير كده <bdi dir=\"ltr\">0</bdi>.",
       "الـ <b>edge sequence</b>: كل edge (ما عدا الأول والأخير) بيشارك vertex مع الـ edge اللي قبله وvertex مع اللي بعده؛ والـ edges ممكن تتكرر. الـ Walks والـ paths هما edge sequences.",
-      "<b>Theorem 10.16</b>: [Xᵏ]_ij = عدد الـ edge sequences المختلفة اللي طولها k بين v_i و v_j.",
-      "<b>Theorem 10.17</b>: الـ G يبقى connected لو وبس لو Y = X + X² + … + Xⁿ⁻¹ مفيهاش ولا entry بصفر برّه الـ main diagonal.",
-      "<b>Theorem 10.18</b>: في الـ connected graph، d(v_i, v_j) = k لو وبس لو k هو أصغر integer بحيث [Xᵏ]_ij ≠ 0.",
-      "الـ <b>Degree matrix</b> H: diagonal فيها h_ii = d_i. <b>Theorem 10.19</b>: <b>F Fᵀ = H − X</b> (ومش بتعتمد على الاتجاهات اللي اخترناها).",
-      "الـ <b>Matrix-tree theorem (10.21)</b>: لو Q = F Fᵀ = H − X، يبقى كل cofactor في Q بيساوي τ(G)، يعني عدد الـ spanning trees (الـ complexity). <b>Corollary</b>: τ(K_n) = nⁿ⁻² (مثلًا K₄ فيه 16 spanning tree)."
+      "<b>الـ Theorem 10.16</b>: الـ <bdi dir=\"ltr\">[Xᵏ]_ij</bdi> بيساوي عدد الـ edge sequences المختلفة اللي طولها k بين <bdi dir=\"ltr\">v_i</bdi> و <bdi dir=\"ltr\">v_j</bdi>.",
+      "<b>الـ Theorem 10.17</b>: الـ G يبقى connected لو وبس لو:<span class=\"ltr\">Y = X + X² + … + Xⁿ⁻¹</span>مفيهاش ولا entry بصفر برّه الـ main diagonal.",
+      "<b>الـ Theorem 10.18</b>: في الـ connected graph، <bdi dir=\"ltr\">d(v_i,&nbsp;v_j)&nbsp;=&nbsp;k</bdi> لو وبس لو k هو أصغر integer بحيث <bdi dir=\"ltr\">[Xᵏ]_ij&nbsp;≠&nbsp;0</bdi>.",
+      "الـ <b>Degree matrix</b> H هي diagonal فيها <bdi dir=\"ltr\">h_ii&nbsp;=&nbsp;d_i</bdi>. <b>والـ Theorem 10.19</b> بتقول:<span class=\"ltr\"><b>F Fᵀ = H − X</b></span>ومش بتعتمد على الاتجاهات اللي اخترناها.",
+      "الـ <b>Matrix-tree theorem <bdi dir=\"ltr\">(10.21)</bdi></b>: لو <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F&nbsp;Fᵀ&nbsp;=&nbsp;H&nbsp;−&nbsp;X</bdi>، يبقى كل cofactor في Q بيساوي <bdi dir=\"ltr\">τ(G)</bdi>، يعني عدد الـ spanning trees (الـ complexity). <b>والـ Corollary</b>:<span class=\"ltr\">τ(K_n) = nⁿ⁻²</span>مثلًا <bdi dir=\"ltr\">K₄</bdi> فيه 16 spanning tree."
      ]
     },
     {
@@ -2167,33 +2167,33 @@ AR.dm = {
     }
    ],
    "cards": [
-    "(0,1)-matrix حجمها n × m؛ a_ij = 1 لو الـ edge j incident على الـ vertex i.",
+    "هي <bdi dir=\"ltr\">(0,1)-matrix</bdi> حجمها <bdi dir=\"ltr\">n&nbsp;×&nbsp;m</bdi>؛ و <bdi dir=\"ltr\">a_ij&nbsp;=&nbsp;1</bdi> لو الـ edge j incident على الـ vertex i.",
     "اتنين بالظبط.",
     "الـ degree بتاع الـ vertex ده.",
-    "Isolated vertex.",
-    "Parallel edges.",
-    "n − 1 (و n − k لو فيه k components).",
+    "الـ Isolated vertex.",
+    "الـ Parallel edges.",
+    "بيساوي <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> (و <bdi dir=\"ltr\">n&nbsp;−&nbsp;k</bdi> لو فيه k components).",
     "الـ A بعد ما نمسح row واحد (الـ reference vertex): حجمها (n − 1) × m.",
-    "Non-singular.",
+    "بتبقى Non-singular.",
     "الـ edges بتوعها بيكوّنوا spanning tree.",
-    "q × m؛ b_ij = 1 لو الـ cycle i فيه الـ edge j.",
-    "m − n + 1 (و m − n + k لو فيه k components).",
-    "0 (mod 2)",
-    "الـ graphs دول 2-isomorphic.",
-    "n − 1 (نفس rank A).",
-    "q × m؛ p_ij = 1 لو الـ edge j موجود في الـ u–v path رقم i.",
+    "حجمها <bdi dir=\"ltr\">q&nbsp;×&nbsp;m</bdi>؛ و <bdi dir=\"ltr\">b_ij&nbsp;=&nbsp;1</bdi> لو الـ cycle i فيه الـ edge j.",
+    "بيساوي <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi> (و <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;k</bdi> لو فيه k components).",
+    "بيساوي <bdi dir=\"ltr\">0&nbsp;(mod&nbsp;2)</bdi>",
+    "الـ graphs دول <bdi dir=\"ltr\">2-isomorphic</bdi>.",
+    "بيساوي <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> (نفس <bdi dir=\"ltr\">rank&nbsp;A</bdi>).",
+    "حجمها <bdi dir=\"ltr\">q&nbsp;×&nbsp;m</bdi>؛ و <bdi dir=\"ltr\">p_ij&nbsp;=&nbsp;1</bdi> لو الـ edge j موجود في الـ <bdi dir=\"ltr\">u–v</bdi> path رقم i.",
     "عدد الـ edge sequences اللي طولها k بين v_i و v_j.",
-    "Y = X + … + Xⁿ⁻¹ مفيهاش entries بصفر برّه الـ diagonal.",
-    "H − X (الـ degree ناقص الـ adjacency).",
-    "كل cofactor في Q = H − X بيساوي τ(G)، يعني عدد الـ spanning trees.",
-    "nⁿ⁻²"
+    "الـ <bdi dir=\"ltr\">Y&nbsp;=&nbsp;X&nbsp;+&nbsp;…&nbsp;+&nbsp;Xⁿ⁻¹</bdi> مفيهاش entries بصفر برّه الـ diagonal.",
+    "بيساوي <bdi dir=\"ltr\">H&nbsp;−&nbsp;X</bdi> (الـ degree ناقص الـ adjacency).",
+    "كل cofactor في <bdi dir=\"ltr\">Q&nbsp;=&nbsp;H&nbsp;−&nbsp;X</bdi> بيساوي <bdi dir=\"ltr\">τ(G)</bdi>، يعني عدد الـ spanning trees.",
+    "بيساوي <bdi dir=\"ltr\">nⁿ⁻²</bdi>"
    ],
    "qa": [
-    "لـ G فيه n vertices و m edges ومفيهوش self-loops، A = [a_ij] حجمها n × m و a_ij = 1 لو الـ edge j incident على الـ vertex i، وغير كده 0. (1) كل column فيه 2 وحايد بالظبط. (2) مجموع الـ row = الـ degree. (3) الـ row اللي كله أصفار = isolated vertex. (4) الـ parallel edges بتدّي columns متطابقة. (5) الـ disconnected graph بيدّي matrix على شكل block-diagonal. (6) تبديل الـ rows/columns بيعيد تسمية الـ vertices/edges.",
-    "rank A(G) = n − 1. على GF(2) مجموع كل الـ rows بيساوي صفر (كل column فيه 2 وحايد)، فـ rank ≤ n − 1. وبما إن G connected، مفيش subset حقيقية من الـ rows مجموعها صفر (الـ A ماينفعش تتقسم blocks)، فأي n − 1 rows يبقوا independent: rank = n − 1. ولو فيه k components الـ rank بيبقى n − k.",
-    "B = [b_ij] حجمها q × m، و b_ij = 1 لو الـ cycle رقم i فيه الـ edge j. لـ graph مفيهوش self-loops وبنفس ترتيب الـ edges، A Bᵀ ≡ 0 (mod 2). لـ G connected، rank B = m − n + 1 (و m − n + k لو فيه k components). والـ graphs اللي ليها نفس الـ cycle matrix بيبقوا 2-isomorphic.",
-    "الـ [Xᵏ]_ij بيعد الـ edge sequences اللي طولها k من v_i لـ v_j. الـ G يبقى connected لو وبس لو Y = X + X² + … + Xⁿ⁻¹ مفيهاش entries بصفر برّه الـ diagonal. والـ distance d(v_i, v_j) هي أصغر k بحيث [Xᵏ]_ij ≠ 0.",
-    "لو X و F و H هما الـ adjacency والـ modified incidence والـ degree matrices لـ G connected، و Q = F Fᵀ = H − X، يبقى adj Q = τ(G)·J، يعني كل cofactor في Q بيساوي عدد الـ spanning trees τ(G). في الـ K_n: Q = nI − J و τ(K_n) = nⁿ⁻²."
+    "لـ G فيه n vertices و m edges ومفيهوش self-loops، الـ <bdi dir=\"ltr\">A&nbsp;=&nbsp;[a_ij]</bdi> حجمها <bdi dir=\"ltr\">n&nbsp;×&nbsp;m</bdi> و <bdi dir=\"ltr\">a_ij&nbsp;=&nbsp;1</bdi> لو الـ edge j incident على الـ vertex i، وغير كده <bdi dir=\"ltr\">0</bdi>.<br>(1) كل column فيه 2 وحايد بالظبط.<br>(2) مجموع الـ row بيساوي الـ degree.<br>(3) الـ row اللي كله أصفار معناه isolated vertex.<br>(4) الـ parallel edges بتدّي columns متطابقة.<br>(5) الـ disconnected graph بيدّي matrix على شكل block-diagonal.<br>(6) تبديل الـ rows أو الـ columns بيعيد تسمية الـ vertices أو الـ edges.",
+    "الإجابة:<span class=\"ltr\">rank A(G) = n − 1</span>على <bdi dir=\"ltr\">GF(2)</bdi> مجموع كل الـ rows بيساوي صفر (كل column فيه 2 وحايد)، فـ <bdi dir=\"ltr\">rank&nbsp;≤&nbsp;n&nbsp;−&nbsp;1</bdi>. وبما إن G connected، مفيش subset حقيقية من الـ rows مجموعها صفر (الـ A ماينفعش تتقسم blocks)، فأي <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> rows يبقوا independent، يعني <bdi dir=\"ltr\">rank&nbsp;=&nbsp;n&nbsp;−&nbsp;1</bdi>. ولو فيه k components الـ rank بيبقى <bdi dir=\"ltr\">n&nbsp;−&nbsp;k</bdi>.",
+    "الـ <bdi dir=\"ltr\">B&nbsp;=&nbsp;[b_ij]</bdi> حجمها <bdi dir=\"ltr\">q&nbsp;×&nbsp;m</bdi>، و <bdi dir=\"ltr\">b_ij&nbsp;=&nbsp;1</bdi> لو الـ cycle رقم i فيه الـ edge j. لـ graph مفيهوش self-loops وبنفس ترتيب الـ edges:<span class=\"ltr\">A Bᵀ ≡ 0 (mod 2)</span>ولـ G connected:<span class=\"ltr\">rank B = m − n + 1</span>و <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;k</bdi> لو فيه k components. والـ graphs اللي ليها نفس الـ cycle matrix بيبقوا <bdi dir=\"ltr\">2-isomorphic</bdi>.",
+    "الـ <bdi dir=\"ltr\">[Xᵏ]_ij</bdi> بيعد الـ edge sequences اللي طولها k من <bdi dir=\"ltr\">v_i</bdi> لـ <bdi dir=\"ltr\">v_j</bdi>. الـ G يبقى connected لو وبس لو:<span class=\"ltr\">Y = X + X² + … + Xⁿ⁻¹</span>مفيهاش entries بصفر برّه الـ diagonal. والـ distance <bdi dir=\"ltr\">d(v_i,&nbsp;v_j)</bdi> هي أصغر k بحيث <bdi dir=\"ltr\">[Xᵏ]_ij&nbsp;≠&nbsp;0</bdi>.",
+    "لو X و F و H هما الـ adjacency والـ modified incidence والـ degree matrices لـ G connected، و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F&nbsp;Fᵀ&nbsp;=&nbsp;H&nbsp;−&nbsp;X</bdi>، يبقى:<span class=\"ltr\">adj Q = τ(G)·J</span>يعني كل cofactor في Q بيساوي عدد الـ spanning trees <bdi dir=\"ltr\">τ(G)</bdi>. وفي الـ <bdi dir=\"ltr\">K_n</bdi> بيطلع:<span class=\"ltr\">Q = nI − J, τ(K_n) = nⁿ⁻²</span>"
    ],
    "quiz": [
     [
@@ -2203,72 +2203,72 @@ AR.dm = {
      "كل column ده edge حقيقي ليه طرفين، فدايمًا فيه two 1s. الـ rows (مش الـ columns) اللي كلها أصفار هي اللي معناها isolated vertices."
     ],
     [
-     "الـ m − n + 1 ده الـ rank بتاع الـ cycle matrix B(G) (Theorem 10.10)، مش الـ incidence matrix.",
-     "صح. Theorem 10.2: لـ connected G فيه n vertices، rank A(G) = n − 1؛ لأن الـ mod-2 sum لكل الـ rows بيساوي 0، فمش ممكن يكونوا كلهم independent (L10).",
-     "كل column فيه two 1s، فالـ mod-2 sum لكل الـ n rows بيساوي 0 والـ rows تبقى dependent: rank ≤ n − 1. وبيساوي n − 1 بالظبط لما الـ graph يبقى connected.",
+     "الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi> ده الـ rank بتاع الـ cycle matrix <bdi dir=\"ltr\">B(G)</bdi> (الـ Theorem 10.10)، مش الـ incidence matrix.",
+     "صح. الـ Theorem 10.2: لـ connected G فيه n vertices، <bdi dir=\"ltr\">rank&nbsp;A(G)&nbsp;=&nbsp;n&nbsp;−&nbsp;1</bdi>؛ لأن الـ <bdi dir=\"ltr\">mod-2</bdi> sum لكل الـ rows بيساوي 0، فمش ممكن يكونوا كلهم independent <bdi dir=\"ltr\">(L10)</bdi>.",
+     "كل column فيه two 1s، فالـ <bdi dir=\"ltr\">mod-2</bdi> sum لكل الـ n rows بيساوي 0 والـ rows تبقى dependent، يعني <bdi dir=\"ltr\">rank&nbsp;≤&nbsp;n&nbsp;−&nbsp;1</bdi>. وبيساوي <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> بالظبط لما الـ graph يبقى connected.",
      "الـ m ده عدد الـ columns (الـ edges)، بس الـ rank مايقدرش يعدّي عدد الـ independent rows، اللي هو n − 1 لـ connected graph."
     ],
     [
      "الـ m ده عدد الـ edges (الـ columns بتاعة B). اللي independent منهم بس m − n + 1 cycles (الـ chords بتاعة الـ spanning tree).",
-     "الـ n − 1 ده rank A(G)، بتاع الـ incidence matrix (Theorem 10.2). الـ cycle matrix الـ rank بتاعها m − n + 1.",
-     "صح. Theorem 10.10: لـ connected graph، rank B(G) = m − n + 1، وده عدد الـ chords بتاعة الـ spanning tree (L10, 10.3 Cycle matrix).",
-     "الـ m − n + k ده Theorem 10.11 لـ graph فيه k components. والـ connected معناه k = 1، فتطلع m − n + 1."
+     "الـ <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> ده <bdi dir=\"ltr\">rank&nbsp;A(G)</bdi>، بتاع الـ incidence matrix (الـ Theorem 10.2). الـ cycle matrix الـ rank بتاعها <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi>.",
+     "صح. الـ Theorem 10.10: لـ connected graph، <bdi dir=\"ltr\">rank B(G) = m − n + 1</bdi>، وده عدد الـ chords بتاعة الـ spanning tree <bdi dir=\"ltr\">(L10, 10.3 Cycle matrix)</bdi>.",
+     "الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;k</bdi> ده الـ Theorem 10.11 لـ graph فيه k components. والـ connected معناه <bdi dir=\"ltr\">k&nbsp;=&nbsp;1</bdi>، فتطلع <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;+&nbsp;1</bdi>."
     ],
     [
      "الـ zero row معناه vertex مفيش edges بتلمسه، يعني isolated vertex (Observation 3)، مش parallel edges.",
      "الـ rows دي vertices؛ والـ parallel edges بيوصلوا نفس الـ two vertices، فاللي بيبقوا متساويين هما الـ two columns بتوعهم، مش الـ rows.",
-     "الـ A دي binary 0/1 matrix؛ الـ −1 بيظهر بس في الـ modified (oriented) incidence matrix F.",
-     "صح. الـ parallel edges ليهم نفس الـ two end vertices، فالـ columns بتاعتهم فيها 1s في نفس الـ rows: identical columns (L10, 10.1 Observation 4)."
+     "الـ A دي binary <bdi dir=\"ltr\">0/1</bdi> matrix؛ والـ <bdi dir=\"ltr\">−1</bdi> بيظهر بس في الـ modified (oriented) incidence matrix F.",
+     "صح. الـ parallel edges ليهم نفس الـ two end vertices، فالـ columns بتاعتهم فيها 1s في نفس الـ rows، يعني identical columns <bdi dir=\"ltr\">(L10, 10.1 Observation 4)</bdi>."
     ],
     [
      "صح. الـ row بيعرض الـ edges اللي بتلمس الـ vertex؛ لو كله أصفار يبقى مفيش edge بيلمسه، يعني isolated vertex (L10, 10.1 Observation 3).",
-     "الـ A(G) متعرّفة لـ graphs من غير self-loops أصلًا، فالـ loop مش هيظهر. الـ zero row معناه isolated vertex.",
-     "الـ cycles بتتوصف بالـ cycle matrix B(G). الـ zero row في A معناه vertex الـ degree بتاعه 0.",
+     "الـ <bdi dir=\"ltr\">A(G)</bdi> متعرّفة لـ graphs من غير self-loops أصلًا، فالـ loop مش هيظهر. الـ zero row معناه isolated vertex.",
+     "الـ cycles بتتوصف بالـ cycle matrix <bdi dir=\"ltr\">B(G)</bdi>. الـ zero row في A معناه vertex الـ degree بتاعه 0.",
      "الـ bridge ده edge، فهيبقى column فيه two 1s. الـ zero row معناه isolated vertex."
     ],
     [
-     "الـ 64 = 4³ ده استخدم الأس n − 1. الـ corollary بتاع الـ matrix-tree theorem بيقول τ(K_n) = nⁿ⁻² = 4² = 16.",
-     "صح. من الـ corollary بتاع الـ matrix-tree theorem، τ(K_n) = nⁿ⁻²، فـ τ(K₄) = 4⁴⁻² = 4² = 16 (L10, 10.8).",
-     "الـ 4 ده عدد الـ vertices (أو 4¹). الـ formula هي nⁿ⁻² = 4² = 16.",
-     "الـ 8 = 2³ مش طالعة من nⁿ⁻². الـ K₄ فيه 4⁴⁻² = 16 spanning trees."
+     "الـ <bdi dir=\"ltr\">64&nbsp;=&nbsp;4³</bdi> ده استخدم الأس <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi>. الـ corollary بتاع الـ matrix-tree theorem بيقول:<span class=\"ltr\">τ(K_n) = nⁿ⁻² = 4² = 16</span>",
+     "صح. من الـ corollary بتاع الـ matrix-tree theorem، <bdi dir=\"ltr\">τ(K_n)&nbsp;=&nbsp;nⁿ⁻²</bdi>، فـ:<span class=\"ltr\">τ(K₄) = 4⁴⁻² = 4² = 16</span>المرجع <bdi dir=\"ltr\">(L10, 10.8)</bdi>.",
+     "الـ 4 ده عدد الـ vertices (أو <bdi dir=\"ltr\">4¹</bdi>). الـ formula هي:<span class=\"ltr\">nⁿ⁻² = 4² = 16</span>",
+     "الـ <bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi> مش طالعة من <bdi dir=\"ltr\">nⁿ⁻²</bdi>. الـ <bdi dir=\"ltr\">K₄</bdi> فيه <bdi dir=\"ltr\">4⁴⁻²&nbsp;=&nbsp;16</bdi> spanning trees."
     ],
     [
      "الـ distance هي أصغر k يدّي entry مش صفر.",
      "الـ degree بتاع v_i هو الـ diagonal entry [X²]_ii (sequences طولها 2 رايح وراجع). أما [X³]_ij فبيعد الـ sequences اللي طولها 3.",
-     "صح. Theorem 10.16: الـ [Xᵏ]_ij هو عدد الـ edge sequences المختلفة اللي طولها k بين v_i و v_j، فلما k = 3 بيعد الـ sequences اللي طولها 3 (L10, 10.8).",
-     "الـ [X³]_ij بيعد edge sequences، فممكن يبقى أي non-negative integer (في K₄، [X³]_12 = 7)، مش 0 أو 1 بس."
+     "صح. الـ Theorem 10.16: الـ <bdi dir=\"ltr\">[Xᵏ]_ij</bdi> هو عدد الـ edge sequences المختلفة اللي طولها k بين <bdi dir=\"ltr\">v_i</bdi> و <bdi dir=\"ltr\">v_j</bdi>، فلما <bdi dir=\"ltr\">k&nbsp;=&nbsp;3</bdi> بيعد الـ sequences اللي طولها 3 <bdi dir=\"ltr\">(L10, 10.8)</bdi>.",
+     "الـ <bdi dir=\"ltr\">[X³]_ij</bdi> بيعد edge sequences، فممكن يبقى أي non-negative integer (في <bdi dir=\"ltr\">K₄</bdi> الـ <bdi dir=\"ltr\">[X³]_12&nbsp;=&nbsp;7</bdi>)، مش 0 أو 1 بس."
     ],
     [
      "الـ A Bᵀ ده حاصل ضرب الـ incidence في الـ cycle matrix، وبيساوي 0 (mod 2) من Theorem 10.9. أما F Fᵀ فهو H − X.",
-     "الـ X² الـ entries بتاعته non-negative وبتعد الـ length-2 sequences؛ لكن F Fᵀ فيه −1 للـ adjacent vertices والـ degrees على الـ diagonal: يعني H − X.",
-     "في F Fᵀ الـ two adjacent vertices هما الطرف +1 والطرف −1 بتوع الـ edge، فالـ off-diagonal entries بتبقى −1: يعني H − X، مش H + X.",
-     "صح. Theorem 10.19: الـ F Fᵀ = H − X، الـ degrees على الـ diagonal و −1 لكل adjacent pair، أيًا كان الـ orientation (L10, 10.8)."
+     "الـ X² الـ entries بتاعته non-negative وبتعد الـ <bdi dir=\"ltr\">length-2</bdi> sequences؛ لكن F Fᵀ فيه <bdi dir=\"ltr\">−1</bdi> للـ adjacent vertices والـ degrees على الـ diagonal: يعني H − X.",
+     "في F Fᵀ الـ two adjacent vertices هما الطرف +1 والطرف <bdi dir=\"ltr\">−1</bdi> بتوع الـ edge، فالـ off-diagonal entries بتبقى <bdi dir=\"ltr\">−1</bdi>: يعني H − X، مش H + X.",
+     "صح. الـ Theorem 10.19: الـ <bdi dir=\"ltr\">F&nbsp;Fᵀ&nbsp;=&nbsp;H&nbsp;−&nbsp;X</bdi>، الـ degrees على الـ diagonal و <bdi dir=\"ltr\">−1</bdi> لكل adjacent pair، أيًا كان الـ orientation <bdi dir=\"ltr\">(L10, 10.8)</bdi>."
     ],
     [
      "صح. Theorem 10.3: الـ reduced incidence matrix اللي مقاسها (n − 1) × (n − 1) بتبقى non-singular iff الـ graph يبقى tree (n − 1 edges و connected) (L10).",
-     "الـ complete graph K_n فيه n(n − 1)/2 edges، وده أكتر من n − 1 لما n ≥ 4، فالـ matrix بتاعته مش بالشكل الـ square ده. الـ non-singular محتاج tree.",
-     "لو فيه k ≥ 2 components الـ rank بيبقى n − k &lt; n − 1، فالـ matrix تبقى singular. الـ non-singular محتاج tree.",
+     "الـ complete graph <bdi dir=\"ltr\">K_n</bdi> فيه <bdi dir=\"ltr\">n(n&nbsp;−&nbsp;1)/2</bdi> edges، وده أكتر من <bdi dir=\"ltr\">n&nbsp;−&nbsp;1</bdi> لما <bdi dir=\"ltr\">n&nbsp;≥&nbsp;4</bdi>، فالـ matrix بتاعته مش بالشكل الـ square ده. الـ non-singular محتاج tree.",
+     "لو فيه <bdi dir=\"ltr\">k&nbsp;≥&nbsp;2</bdi> components الـ rank بيبقى <bdi dir=\"ltr\">n&nbsp;−&nbsp;k&nbsp;&lt;&nbsp;n&nbsp;−&nbsp;1</bdi>، فالـ matrix تبقى singular. الـ non-singular محتاج tree.",
      "الـ bipartiteness مش هو الشرط: bipartite graph فيه n − 1 edges وفيه cycle هيبقى disconnected و singular. Theorem 10.3 محتاج tree."
     ],
     [
-     "الـ regularity (إن الـ degrees متساوية) ملهاش دعوة بالـ cycle matrix. نفس الـ cycle matrix iff 2-isomorphic (Observation 7).",
-     "صح. Observation 7: الـ two graphs ليهم نفس الـ cycle matrix iff هما 2-isomorphic، فالـ B(G) مش بتحدد الـ graph بالكامل (L10, 10.3).",
-     "الـ completeness ملهاش علاقة. المحاضرة بتقول إن نفس الـ cycle matrix بتحصل بالظبط للـ 2-isomorphic graphs.",
-     "الـ isomorphic graphs فعلًا ليهم نفس الـ cycle matrix، بس كمان الـ 2-isomorphic graphs اللي مش isomorphic ليهم نفسها، فشرط الـ \"iff\" هو الـ 2-isomorphism."
+     "الـ regularity (إن الـ degrees متساوية) ملهاش دعوة بالـ cycle matrix. نفس الـ cycle matrix iff <bdi dir=\"ltr\">2-isomorphic</bdi> (Observation 7).",
+     "صح. الـ Observation 7: الـ two graphs ليهم نفس الـ cycle matrix iff هما <bdi dir=\"ltr\">2-isomorphic</bdi>، فالـ <bdi dir=\"ltr\">B(G)</bdi> مش بتحدد الـ graph بالكامل <bdi dir=\"ltr\">(L10, 10.3)</bdi>.",
+     "الـ completeness ملهاش علاقة. المحاضرة بتقول إن نفس الـ cycle matrix بتحصل بالظبط للـ <bdi dir=\"ltr\">2-isomorphic</bdi> graphs.",
+     "الـ isomorphic graphs فعلًا ليهم نفس الـ cycle matrix، بس كمان الـ <bdi dir=\"ltr\">2-isomorphic</bdi> graphs اللي مش isomorphic ليهم نفسها، فشرط الـ \"iff\" هو الـ <bdi dir=\"ltr\">2-isomorphism</bdi>."
     ]
    ],
    "extra": [
     [
-     "الـ rank A = n − 1 = 5 صح، بس rank B = m − n + 1 = 9 − 6 + 1 = 4، مش 3.",
-     "صح. n − 1 = 5؛ m − n + 1 = 9 − 6 + 1 = 4.",
-     "الـ 9 و 6 دول مجرد m و n. الـ rank A = n − 1 = 5 والـ rank B = m − n + 1 = 4.",
-     "الـ rows بتاعة A مجموعها 0 mod 2، فـ rank A = n − 1 = 5، مش 6؛ و rank B = 9 − 6 + 1 = 4."
+     "الـ <bdi dir=\"ltr\">rank&nbsp;A&nbsp;=&nbsp;n&nbsp;−&nbsp;1&nbsp;=&nbsp;5</bdi> صح، بس:<span class=\"ltr\">rank B = m − n + 1 = 9 − 6 + 1 = 4</span>مش 3.",
+     "صح.<span class=\"ltr\">n − 1 = 5; m − n + 1 = 9 − 6 + 1 = 4</span>",
+     "الـ 9 و 6 دول مجرد m و n. الـ <bdi dir=\"ltr\">rank&nbsp;A&nbsp;=&nbsp;n&nbsp;−&nbsp;1&nbsp;=&nbsp;5</bdi> والـ <bdi dir=\"ltr\">rank B = m − n + 1 = 4</bdi>.",
+     "الـ rows بتاعة A مجموعها <bdi dir=\"ltr\">0&nbsp;mod&nbsp;2</bdi>، فـ <bdi dir=\"ltr\">rank&nbsp;A&nbsp;=&nbsp;n&nbsp;−&nbsp;1&nbsp;=&nbsp;5</bdi>، مش 6؛ و <bdi dir=\"ltr\">rank B = 9 − 6 + 1 = 4</bdi>."
     ],
     [
-     "الـ 8 ده n، بس الـ rows جوه كل component بتبقى dependent. مع k components الـ rank A = n − k = 5.",
-     "الـ 3 ده k، عدد الـ components. الـ rank هو n − k = 8 − 3 = 5.",
-     "صح. الـ Remark على Theorem 10.2: مع k components الـ rank A(G) = n − k، لأن كل component بيخسر row واحد dependent: 8 − 3 = 5 (L10).",
-     "الـ 7 = n − 1 ده الـ rank لـ connected graph. مع 3 components: n − k = 5."
+     "الـ 8 ده n، بس الـ rows جوه كل component بتبقى dependent. مع k components الـ <bdi dir=\"ltr\">rank&nbsp;A&nbsp;=&nbsp;n&nbsp;−&nbsp;k&nbsp;=&nbsp;5</bdi>.",
+     "الـ 3 ده k، عدد الـ components. الـ rank هو <bdi dir=\"ltr\">n&nbsp;−&nbsp;k&nbsp;=&nbsp;8&nbsp;−&nbsp;3&nbsp;=&nbsp;5</bdi>.",
+     "صح. الـ Remark على الـ Theorem 10.2: مع k components الـ <bdi dir=\"ltr\">rank&nbsp;A(G)&nbsp;=&nbsp;n&nbsp;−&nbsp;k</bdi>، لأن كل component بيخسر row واحد dependent:<span class=\"ltr\">8 − 3 = 5</span>المرجع <bdi dir=\"ltr\">(L10)</bdi>.",
+     "الـ <bdi dir=\"ltr\">7&nbsp;=&nbsp;n&nbsp;−&nbsp;1</bdi> ده الـ rank لـ connected graph. مع 3 components بيبقى <bdi dir=\"ltr\">n&nbsp;−&nbsp;k&nbsp;=&nbsp;5</bdi>."
     ],
     [
      "العدد الكلي للـ edges هو m، عدد الـ columns. الـ row بيعد بس الـ edges اللي عند الـ vertex بتاعه.",
@@ -2277,45 +2277,45 @@ AR.dm = {
      "صح. الـ 1s اللي في row v بتعلّم على الـ edges اللي بتلمس v، فعددهم هو الـ degree بتاع v (L10, 10.1 Observation 2)."
     ],
     [
-     "صح. الـ matrix-tree corollary: τ(K_n) = nⁿ⁻²، فـ τ(K₅) = 5³ = 125 (L10, 10.8).",
-     "الـ 60 مش طالعة من الـ formula. τ(K_n) = nⁿ⁻² بتدّي 5³ = 125.",
-     "الـ 10 = 5 × 4 / 2 ده عدد الـ edges بتاع K₅. الـ spanning trees: 5⁵⁻² = 125.",
-     "الـ 25 = 5² ده استخدم الأس n − 3. الـ formula هي nⁿ⁻² = 5³ = 125."
+     "صح. الـ matrix-tree corollary: <bdi dir=\"ltr\">τ(K_n)&nbsp;=&nbsp;nⁿ⁻²</bdi>، فـ:<span class=\"ltr\">τ(K₅) = 5³ = 125</span>المرجع <bdi dir=\"ltr\">(L10, 10.8)</bdi>.",
+     "الـ 60 مش طالعة من الـ formula. الـ <bdi dir=\"ltr\">τ(K_n)&nbsp;=&nbsp;nⁿ⁻²</bdi> بتدّي <bdi dir=\"ltr\">5³&nbsp;=&nbsp;125</bdi>.",
+     "الـ <bdi dir=\"ltr\">10&nbsp;=&nbsp;5&nbsp;×&nbsp;4&nbsp;/&nbsp;2</bdi> ده عدد الـ edges بتاع <bdi dir=\"ltr\">K₅</bdi>. الـ spanning trees:<span class=\"ltr\">5⁵⁻² = 125</span>",
+     "الـ <bdi dir=\"ltr\">25&nbsp;=&nbsp;5²</bdi> ده استخدم الأس <bdi dir=\"ltr\">n&nbsp;−&nbsp;3</bdi>. الـ formula هي:<span class=\"ltr\">nⁿ⁻² = 5³ = 125</span>"
     ],
     [
      "الـ edge اللي في كل cycle كان هيدّي column كله 1s. الأصفار كلها معناها إن الـ edge مش في أي cycle.",
-     "صح. الـ row i في B(G) بيعلّم على الـ edges بتاعة الـ cycle i، فالـ column اللي مفيهوش أي 1 ده edge مش موجود في أي cycle، يعني non-cycle edge (L10, 10.3 Observation 1).",
+     "صح. الـ row i في <bdi dir=\"ltr\">B(G)</bdi> بيعلّم على الـ edges بتاعة الـ cycle i، فالـ column اللي مفيهوش أي 1 ده edge مش موجود في أي cycle، يعني non-cycle edge <bdi dir=\"ltr\">(L10, 10.3 Observation 1)</bdi>.",
      "الـ self-loop هو cycle لوحده وبيدّي row فيه 1 واحد بس (Observation 3)، مش zero column.",
-     "الـ parallel edges بيعملوا cycle مع بعض (زي Z1 = {e1, e2})، فالـ columns بتاعتهم مش كلها أصفار."
+     "الـ parallel edges بيعملوا cycle مع بعض (زي <bdi dir=\"ltr\">Z1&nbsp;=&nbsp;{e1,&nbsp;e2}</bdi>)، فالـ columns بتاعتهم مش كلها أصفار."
     ],
     [
-     "الـ 2 ده diagonal entry (الـ degree). الـ cofactor هو 2 × 2 determinant: 2·2 − (−1)(−1) = 3.",
-     "الـ 4 = 2 × 2 نسي يطرح حاصل ضرب الـ off-diagonal: det[2 −1; −1 2] = 4 − 1 = 3.",
-     "صح. الـ matrix-tree theorem: كل cofactor في H − X بيساوي τ(G). det[2 −1; −1 2] = 4 − 1 = 3 = τ(K₃) = 3³⁻² (L10, worked example).",
-     "الـ 1 ده بس حاصل الضرب اللي بيتطرح (−1)(−1). الـ cofactor هو 4 − 1 = 3."
+     "الـ 2 ده diagonal entry (الـ degree). الـ cofactor هو <bdi dir=\"ltr\">2&nbsp;×&nbsp;2</bdi> determinant:<span class=\"ltr\">2·2 − (−1)(−1) = 3</span>",
+     "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2&nbsp;×&nbsp;2</bdi> نسي يطرح حاصل ضرب الـ off-diagonal:<span class=\"ltr\">det[2 −1; −1 2] = 4 − 1 = 3</span>",
+     "صح. الـ matrix-tree theorem: كل cofactor في <bdi dir=\"ltr\">H&nbsp;−&nbsp;X</bdi> بيساوي <bdi dir=\"ltr\">τ(G)</bdi>.<span class=\"ltr\">det[2 −1; −1 2] = 4 − 1 = 3</span><span class=\"ltr\">τ(K₃) = 3³⁻² = 3</span>المرجع <bdi dir=\"ltr\">(L10, worked example)</bdi>.",
+     "الـ 1 ده بس حاصل الضرب اللي بيتطرح <bdi dir=\"ltr\">(−1)(−1)</bdi>. الـ cofactor هو <bdi dir=\"ltr\">4&nbsp;−&nbsp;1&nbsp;=&nbsp;3</bdi>."
     ],
     [
-     "الـ d = 3 معناها إن فيه path طوله 3، وده edge sequence طوله 3، فـ [X³]_ij ≥ 1، مش 0.",
+     "الـ <bdi dir=\"ltr\">d&nbsp;=&nbsp;3</bdi> معناها إن فيه path طوله 3، وده edge sequence طوله 3، فـ <bdi dir=\"ltr\">[X³]_ij&nbsp;≥&nbsp;1</bdi>، مش 0.",
      "لو [X²]_ij ≠ 0 كان هيبقى فيه sequence طوله 2 بينهم، والـ distance كانت هتبقى 2 بالكتير.",
      "الـ [X]_ij ≠ 0 معناها إن v_i و v_j adjacent، يعني distance 1، مش 3.",
-     "صح. Theorem 10.18: الـ d(v_i, v_j) = k iff k هو أصغر power فيها [Xᵏ]_ij ≠ 0؛ هنا X و X² بيدّوا 0 عند (i, j) و X³ لأ (L10)."
+     "صح. الـ Theorem 10.18: الـ <bdi dir=\"ltr\">d(v_i,&nbsp;v_j)&nbsp;=&nbsp;k</bdi> iff k هو أصغر power فيها <bdi dir=\"ltr\">[Xᵏ]_ij&nbsp;≠&nbsp;0</bdi>؛ هنا X و <bdi dir=\"ltr\">X²</bdi> بيدّوا 0 عند <bdi dir=\"ltr\">(i,&nbsp;j)</bdi> و <bdi dir=\"ltr\">X³</bdi> لأ <bdi dir=\"ltr\">(L10)</bdi>."
     ],
     [
-     "صح. Theorem 10.9: الـ vertex والـ cycle بيشتركوا في 0 أو 2 edges، فكل row في A بيبقى orthogonal على كل row في B: A Bᵀ ≡ 0 (mod 2) (L10).",
-     "الـ F Fᵀ = H − X (Theorem 10.19)، والـ degrees على الـ diagonal، فهو مش zero.",
+     "صح. الـ Theorem 10.9: الـ vertex والـ cycle بيشتركوا في 0 أو 2 edges، فكل row في A بيبقى orthogonal على كل row في B:<span class=\"ltr\">A Bᵀ ≡ 0 (mod 2)</span>المرجع <bdi dir=\"ltr\">(L10)</bdi>.",
+     "الـ <bdi dir=\"ltr\">F&nbsp;Fᵀ&nbsp;=&nbsp;H&nbsp;−&nbsp;X</bdi> (الـ Theorem 10.19)، والـ degrees على الـ diagonal، فهو مش zero.",
      "الـ A Aᵀ فيه الـ degrees على الـ diagonal وعدد الـ adjacencies برّاه، فهو مش zero.",
      "الـ X² بيعد الـ edge sequences اللي طولها 2؛ والـ diagonal بتاعه فيه الـ degrees، فهو مش zero."
     ],
     [
      "الـ transposing بيبدّل الـ rows والـ columns بس بيحافظ على كل المعلومات. الـ A_f بيمسح row بتاع vertex واحد.",
-     "صح. لو مسحت أي row واحد من A(G) تطلع الـ reduced incidence matrix A_f؛ الـ vertex اللي اتمسح هو الـ reference vertex، والـ row ده ممكن يترجع تاني (L10, Rank results).",
+     "صح. لو مسحت أي row واحد من <bdi dir=\"ltr\">A(G)</bdi> تطلع الـ reduced incidence matrix <bdi dir=\"ltr\">A_f</bdi>؛ الـ vertex اللي اتمسح هو الـ reference vertex، والـ row ده ممكن يترجع تاني <bdi dir=\"ltr\">(L10, Rank results)</bdi>.",
      "الـ A_f بيمسح row (الـ reference vertex)، مش column؛ لو مسحت column هتخسر edge.",
-     "الـ A أصلًا 0/1 matrix على GF(2). الـ A_f بيتعمل بمسح الـ row بتاع الـ reference vertex."
+     "الـ A أصلًا <bdi dir=\"ltr\">0/1</bdi> matrix على <bdi dir=\"ltr\">GF(2)</bdi>. الـ <bdi dir=\"ltr\">A_f</bdi> بيتعمل بمسح الـ row بتاع الـ reference vertex."
     ],
     [
      "الـ loop عمره ما بيبقى جزء من path، فالـ column بتاعه هيبقى كله أصفار. الـ column اللي كله 1s معناه إن الـ edge في كل u–v path.",
      "الـ edge اللي مش في أي u–v path بيدّي column كله أصفار (Observation 1)، مش كله 1s.",
-     "صح. الـ row i في P(u, v) هو الـ ith u–v path، فوجود 1 في كل row في column معناه إن الـ edge ده موجود في كل u–v path (L10, 10.7 Observation 2).",
+     "صح. الـ row i في <bdi dir=\"ltr\">P(u,&nbsp;v)</bdi> هو الـ ith <bdi dir=\"ltr\">u–v</bdi> path، فوجود 1 في كل row في column معناه إن الـ edge ده موجود في كل <bdi dir=\"ltr\">u–v</bdi> path <bdi dir=\"ltr\">(L10, 10.7 Observation 2)</bdi>.",
      "الـ isolation بيتقال على الـ vertices، مش الـ edges. الـ column اللي كله 1s معناه إن الـ edge في كل u–v path."
     ]
    ]
@@ -2325,40 +2325,40 @@ AR.dm = {
     {
      "h": "ليه المحاضرة دي؟",
      "pts": [
-      "الـ Mathematical induction (إثبات صيغ المجاميع) والـ binary relations جم في امتحانات الـ final بتاعة 2024/25 و 2025/26 وفي الـ midterm بتاع 2025/26، بس مكانش فيه ملف محاضرة بيشرحهم في فولدر المادة. الـ notes دي بتستخدم التعريفات القياسية من الكتاب (Rosen) بنفس صياغة الدكتورة في الامتحانات."
+      "الـ Mathematical induction (إثبات صيغ المجاميع) والـ binary relations جم في امتحانات الـ final بتاعة <bdi dir=\"ltr\">2024/25</bdi> و <bdi dir=\"ltr\">2025/26</bdi> وفي الـ midterm بتاع <bdi dir=\"ltr\">2025/26</bdi>، بس مكانش فيه ملف محاضرة بيشرحهم في فولدر المادة. الـ notes دي بتستخدم التعريفات القياسية من الكتاب (Rosen) بنفس صياغة الدكتورة في الامتحانات."
      ]
     },
     {
      "h": "مبدأ الـ mathematical induction",
      "pts": [
-      "عشان تثبت إن P(n) صح لكل n ≥ n₀:",
-      "<b>1. Basis step</b>: اثبت إن P(n₀) صح (غالبًا <b>n = 1</b>؛ وإجابة الامتحانات لـ \"1 + 2 + … + n\" ولـ \"2ⁿ &gt; n for n ≥ 1\" الاتنين هي n = 1).",
-      "<b>2. Inductive hypothesis</b>: <b>افترض إن P(k) صح</b> لأي k ≥ n₀ (افترضها صح عند n = k).",
-      "<b>3. Inductive step</b>: باستخدام الفرض ده، <b>اثبت P(k + 1)</b> (اثبتها عند n = k + 1).",
-      "النتيجة: P(n) صح لكل n ≥ n₀ (زي قطع الدومينو لما توقع ورا بعض)."
+      "عشان تثبت إن <bdi dir=\"ltr\">P(n)</bdi> صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;n₀</bdi>:",
+      "<b>1. الـ Basis step</b>: اثبت إن <bdi dir=\"ltr\">P(n₀)</bdi> صح (غالبًا <b><bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi></b>؛ وإجابة الامتحانات لـ \"<bdi dir=\"ltr\">1&nbsp;+&nbsp;2&nbsp;+&nbsp;…&nbsp;+&nbsp;n</bdi>\" ولـ \"<bdi dir=\"ltr\">2ⁿ &gt; n for n ≥ 1</bdi>\" الاتنين هي <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>).",
+      "<b>2. الـ Inductive hypothesis</b>: <b>افترض إن <bdi dir=\"ltr\">P(k)</bdi> صح</b> لأي <bdi dir=\"ltr\">k&nbsp;≥&nbsp;n₀</bdi> (افترضها صح عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi>).",
+      "<b>3. الـ Inductive step</b>: باستخدام الفرض ده، <b>اثبت <bdi dir=\"ltr\">P(k&nbsp;+&nbsp;1)</bdi></b> (اثبتها عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>).",
+      "النتيجة: <bdi dir=\"ltr\">P(n)</bdi> صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;n₀</bdi> (زي قطع الدومينو لما توقع ورا بعض)."
      ]
     },
     {
-     "h": "إثبات: 1 + 2 + 3 + … + n = n(n + 1)/2"
+     "h": "إثبات:<span class=\"ltr\">1 + 2 + 3 + … + n = n(n + 1)/2</span>"
     },
     {
-     "h": "إثبات: 2 + 4 + … + 2n = n(n + 1)"
+     "h": "إثبات:<span class=\"ltr\">2 + 4 + … + 2n = n(n + 1)</span>"
     },
     {
-     "h": "إثبات: 1 + 4 + 7 + … + (3n − 2) = n(3n − 1)/2"
+     "h": "إثبات:<span class=\"ltr\">1 + 4 + 7 + … + (3n − 2) = n(3n − 1)/2</span>"
     },
     {
-     "h": "إثبات: 2ⁿ &gt; n لكل n ≥ 1"
+     "h": "إثبات <bdi dir=\"ltr\">2ⁿ&nbsp;&gt;&nbsp;n</bdi> لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>"
     },
     {
      "h": "الـ Binary relations",
      "pts": [
-      "الـ <b>Cartesian product</b> A × B = {(a, b) | a ∈ A, b ∈ B}؛ و |A × B| = |A|·|B|.",
-      "الـ <b>binary relation R from A to B</b> هي subset من A × B (ومكتوبة R: A → B في امتحان 2024/25).",
-      "<b>aRb</b> معناها <b>(a, b) ∈ R</b>؛ و a R̸ b معناها (a, b) ∉ R.",
+      "الـ <b>Cartesian product</b>:<span class=\"ltr\">A × B = {(a, b) | a ∈ A, b ∈ B}</span><span class=\"ltr\">|A × B| = |A|·|B|</span>",
+      "الـ <b>binary relation R from A to B</b> هي subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> (ومكتوبة <bdi dir=\"ltr\">R:&nbsp;A&nbsp;→&nbsp;B</bdi> في امتحان <bdi dir=\"ltr\">2024/25</bdi>).",
+      "الـ <b>aRb</b> معناها <b><bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi></b>؛ والـ <bdi dir=\"ltr\">a&nbsp;R̸&nbsp;b</bdi> معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∉&nbsp;R</bdi>.",
       "الـ relation <b>on a set A</b> هي relation من A لـ A (يعني subset من A × A).",
-      "الـ <b>identity relation</b> I_A على A هي الـ set <b>{(a, a) | a ∈ A}</b>.",
-      "مثال: A = {1, 2}، B = {x, y}: A × B = {(1,x), (1,y), (2,x), (2,y)}؛ R = {(1,x), (2,y)} هي relation من A لـ B؛ و I_A = {(1,1), (2,2)}."
+      "الـ <b>identity relation</b> <bdi dir=\"ltr\">I_A</bdi> على A هي الـ set:<span class=\"ltr\"><b>{(a, a) | a ∈ A}</b></span>",
+      "مثال:<span class=\"ltr\">A = {1, 2}, B = {x, y}</span><span class=\"ltr\">A × B = {(1,x), (1,y), (2,x), (2,y)}</span>والـ <bdi dir=\"ltr\">R&nbsp;=&nbsp;{(1,x),&nbsp;(2,y)}</bdi> هي relation من A لـ B؛ و:<span class=\"ltr\">I_A = {(1,1), (2,2)}</span>"
      ]
     },
     {
@@ -2366,111 +2366,111 @@ AR.dm = {
     }
    ],
    "cards": [
-    "Basis step (اثبت P(1))؛ inductive hypothesis (افترض P(k))؛ inductive step (اثبت P(k + 1)).",
-    "n = k + 1",
-    "n = 1",
-    "n = 1",
-    "k(k + 1)/2 + (k + 1) = (k + 1)(k + 2)/2",
-    "{(a, b) | a ∈ A, b ∈ B}؛ وحجمها |A|·|B|.",
-    "Subset من A × B.",
-    "(a, b) ∈ R",
-    "{(a, a) | a ∈ A}",
-    "Subset من A × A.",
-    "(a, a) ∈ R لكل a ∈ A.",
-    "Reflexive و symmetric و transitive."
+    "الـ Basis step (اثبت <bdi dir=\"ltr\">P(1)</bdi>)، والـ inductive hypothesis (افترض <bdi dir=\"ltr\">P(k)</bdi>)، والـ inductive step (اثبت <bdi dir=\"ltr\">P(k&nbsp;+&nbsp;1)</bdi>).",
+    "عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>",
+    "عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>",
+    "عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>",
+    "بيبقى:<span class=\"ltr\">k(k + 1)/2 + (k + 1) = (k + 1)(k + 2)/2</span>",
+    "هو <bdi dir=\"ltr\">{(a, b) | a ∈ A, b ∈ B}</bdi>؛ وحجمها <bdi dir=\"ltr\">|A|·|B|</bdi>.",
+    "هي Subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi>.",
+    "معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>",
+    "هي <bdi dir=\"ltr\">{(a,&nbsp;a)&nbsp;|&nbsp;a&nbsp;∈&nbsp;A}</bdi>",
+    "هي Subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;A</bdi>.",
+    "لما <bdi dir=\"ltr\">(a,&nbsp;a)&nbsp;∈&nbsp;R</bdi> لكل <bdi dir=\"ltr\">a&nbsp;∈&nbsp;A</bdi>.",
+    "بتبقى Reflexive و symmetric و transitive."
    ],
    "qa": [
-    "عشان تثبت P(n) لكل n ≥ n₀: (1) Basis step: اتأكد من P(n₀) (غالبًا n = 1). (2) Inductive hypothesis: افترض إن P(k) صح لأي k ≥ n₀. (3) Inductive step: اثبت إن P(k) → P(k + 1). ساعتها P(n) بتبقى صح لكل n ≥ n₀.",
-    "الـ Basis عند n = 1: 1 = 1·2/2. افترض 1 + … + k = k(k + 1)/2. يبقى 1 + … + k + (k + 1) = k(k + 1)/2 + (k + 1) = (k + 1)(k + 2)/2، ودي نفس الصيغة عند n = k + 1. يبقى صح لكل n ≥ 1.",
-    "الـ Basis عند n = 1: 2 = 1·2. افترض 2 + … + 2k = k(k + 1). نزوّد 2(k + 1): k(k + 1) + 2(k + 1) = (k + 1)(k + 2) = (k + 1)((k + 1) + 1). يبقى صح لكل n ≥ 1.",
-    "الـ Basis عند n = 1: 1 = 1·2/2. افترضها صح عند k. نزوّد 3(k + 1) − 2 = 3k + 1: k(3k − 1)/2 + 3k + 1 = (3k² + 5k + 2)/2 = (k + 1)(3k + 2)/2 = (k + 1)(3(k + 1) − 1)/2. يبقى صح لكل n ≥ 1.",
-    "الـ binary relation R من A لـ B هي subset من A × B. الـ aRb معناها (a, b) ∈ R. والـ relation on A هي subset من A × A. والـ identity relation على A هي I_A = {(a, a) | a ∈ A}."
+    "عشان تثبت <bdi dir=\"ltr\">P(n)</bdi> لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;n₀</bdi>:<br>(1) الـ Basis step: اتأكد من <bdi dir=\"ltr\">P(n₀)</bdi> (غالبًا <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>).<br>(2) الـ Inductive hypothesis: افترض إن <bdi dir=\"ltr\">P(k)</bdi> صح لأي <bdi dir=\"ltr\">k&nbsp;≥&nbsp;n₀</bdi>.<br>(3) الـ Inductive step: اثبت إن:<span class=\"ltr\">P(k) → P(k + 1)</span>ساعتها <bdi dir=\"ltr\">P(n)</bdi> بتبقى صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;n₀</bdi>.",
+    "الـ Basis عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">1 = 1·2/2</span>افترض:<span class=\"ltr\">1 + … + k = k(k + 1)/2</span>يبقى:<span class=\"ltr\">1 + … + k + (k + 1)</span><span class=\"ltr\">= k(k + 1)/2 + (k + 1)</span><span class=\"ltr\">= (k + 1)(k + 2)/2</span>ودي نفس الصيغة عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>. يبقى صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>.",
+    "الـ Basis عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">2 = 1·2</span>افترض:<span class=\"ltr\">2 + … + 2k = k(k + 1)</span>نزوّد <bdi dir=\"ltr\">2(k&nbsp;+&nbsp;1)</bdi>، يعني:<span class=\"ltr\">k(k + 1) + 2(k + 1) = (k + 1)(k + 2)</span><span class=\"ltr\">= (k + 1)((k + 1) + 1)</span>يبقى صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>.",
+    "الـ Basis عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">1 = 1·2/2</span>افترضها صح عند k. نزوّد:<span class=\"ltr\">3(k + 1) − 2 = 3k + 1</span>بيبقى:<span class=\"ltr\">k(3k − 1)/2 + 3k + 1</span><span class=\"ltr\">= (3k² + 5k + 2)/2</span><span class=\"ltr\">= (k + 1)(3k + 2)/2</span><span class=\"ltr\">= (k + 1)(3(k + 1) − 1)/2</span>يبقى صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>.",
+    "الـ binary relation R من A لـ B هي subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi>. الـ aRb معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>. والـ relation on A هي subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;A</bdi>. والـ identity relation على A هي:<span class=\"ltr\">I_A = {(a, a) | a ∈ A}</span>"
    ],
    "quiz": [
     [
-     "الـ n = k هي الـ inductive hypothesis نفسها، يعني إحنا بنفترضها مش بنثبتها. الـ step لازم يوصل للحالة اللي بعدها، n = k + 1.",
-     "صح. الـ induction بيفترض P(k) (الـ hypothesis) ويستخدمها عشان يثبت P(k + 1)؛ ومع الـ basis الحالات بتقع ورا بعض زي الـ dominoes (L11, Principle of induction).",
-     "إنك تثبت n = k − 1 من n = k ده رجوع لورا، ومش هيوصلك أبدًا لـ n أكبر. الـ step بيثبت n = k + 1.",
+     "الـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi> هي الـ inductive hypothesis نفسها، يعني إحنا بنفترضها مش بنثبتها. الـ step لازم يوصل للحالة اللي بعدها، <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>.",
+     "صح. الـ induction بيفترض <bdi dir=\"ltr\">P(k)</bdi> (الـ hypothesis) ويستخدمها عشان يثبت <bdi dir=\"ltr\">P(k&nbsp;+&nbsp;1)</bdi>؛ ومع الـ basis الحالات بتقع ورا بعض زي الـ dominoes <bdi dir=\"ltr\">(L11, Principle of induction)</bdi>.",
+     "إنك تثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;−&nbsp;1</bdi> من <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi> ده رجوع لورا، ومش هيوصلك أبدًا لـ n أكبر. الـ step بيثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>.",
      "لو نطيت لـ k + 2 هتسيب قيمة وتاخد قيمة (يا الـ odd بس يا الـ even بس). الـ step بيروح لـ k + 1."
     ],
     [
-     "الجملة متقالة لـ n ≥ 1، فـ n = 0 مش جزء منها أصلًا. الـ basis هو أول قيمة في الجملة، n = 1 (2¹ = 2 &gt; 1).",
-     "صح. الـ basis بيتشيك على أول قيمة في الجملة، هنا n = 1: 2¹ = 2 &gt; 1؛ وبعدين الـ inductive step بيغطي كل n بعدها (L11, Principle of induction).",
-     "لو بدأت من n = 2 عمرك ما هتثبت n = 1، وهي داخلة في الجملة. الـ basis لازم يكون n = 1.",
-     "لو بدأت من n = 3 هتسيب n = 1 و n = 2 من غير إثبات. الـ basis هو أول قيمة، n = 1."
+     "الجملة متقالة لـ <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>، فـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;0</bdi> مش جزء منها أصلًا. الـ basis هو أول قيمة في الجملة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> (<bdi dir=\"ltr\">2¹&nbsp;=&nbsp;2&nbsp;&gt;&nbsp;1</bdi>).",
+     "صح. الـ basis بيتشيك على أول قيمة في الجملة، هنا <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">2¹ = 2 &gt; 1</span>وبعدين الـ inductive step بيغطي كل n بعدها <bdi dir=\"ltr\">(L11, Principle of induction)</bdi>.",
+     "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> عمرك ما هتثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، وهي داخلة في الجملة. الـ basis لازم يكون <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+     "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;3</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> و <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> من غير إثبات. الـ basis هو أول قيمة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>."
     ],
     [
-     "المجموع 1 + 2 + … + n بيبدأ بالـ term 1، فأول حالة هي n = 1 (LHS = 1، RHS = 1·2/2 = 1).",
-     "صح. المجموع بيبدأ بالـ term 1، فالـ basis بيتشيك على n = 1: الـ LHS = 1 والـ RHS = 1(1 + 1)/2 = 1 (L11, Proof of 1 + 2 + … + n).",
-     "لو بدأت من n = 2 هتسيب n = 1 من غير إثبات، فالـ dominoes مش هتبدأ تقع من أول حالة. الـ basis هو n = 1.",
-     "لو بدأت من n = 3 هتسيب n = 1 و 2 من غير إثبات. اتشيك على أول حالة، n = 1: 1 = 1(2)/2."
+     "المجموع <bdi dir=\"ltr\">1&nbsp;+&nbsp;2&nbsp;+&nbsp;…&nbsp;+&nbsp;n</bdi> بيبدأ بالـ term 1، فأول حالة هي <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">LHS = 1, RHS = 1·2/2 = 1</span>",
+     "صح. المجموع بيبدأ بالـ term 1، فالـ basis بيتشيك على <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">LHS = 1, RHS = 1(1 + 1)/2 = 1</span>المرجع <bdi dir=\"ltr\">(L11, Proof of 1 + 2 + … + n)</bdi>.",
+     "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> من غير إثبات، فالـ dominoes مش هتبدأ تقع من أول حالة. الـ basis هو <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+     "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;3</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> و 2 من غير إثبات. اتشيك على أول حالة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">1 = 1(2)/2</span>"
     ],
     [
-     "الـ B → A دي relation من B لـ A، يعني subset من B × A. الـ relation من A لـ B بتتكتب A → B.",
-     "صح. الـ binary relation من A لـ B هي subset من A × B، ومكتوبة R: A → B في امتحان 2024/25 (L11, Binary relations).",
-     "الـ A − B ده set difference (L2)، يعني set من elements، مش من ordered pairs. الـ relation من A لـ B هي R: A → B.",
-     "الـ A / B دي مش notation بنستخدمها للـ relations خالص. الـ relation من A لـ B بتتكتب A → B، و R ⊆ A × B."
+     "الـ <bdi dir=\"ltr\">B&nbsp;→&nbsp;A</bdi> دي relation من B لـ A، يعني subset من <bdi dir=\"ltr\">B&nbsp;×&nbsp;A</bdi>. الـ relation من A لـ B بتتكتب <bdi dir=\"ltr\">A&nbsp;→&nbsp;B</bdi>.",
+     "صح. الـ binary relation من A لـ B هي subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi>، ومكتوبة <bdi dir=\"ltr\">R:&nbsp;A&nbsp;→&nbsp;B</bdi> في امتحان <bdi dir=\"ltr\">2024/25</bdi> <bdi dir=\"ltr\">(L11, Binary relations)</bdi>.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi> ده set difference <bdi dir=\"ltr\">(L2)</bdi>، يعني set من elements، مش من ordered pairs. الـ relation من A لـ B هي <bdi dir=\"ltr\">R:&nbsp;A&nbsp;→&nbsp;B</bdi>.",
+     "الـ <bdi dir=\"ltr\">A&nbsp;/&nbsp;B</bdi> دي مش notation بنستخدمها للـ relations خالص. الـ relation من A لـ B بتتكتب <bdi dir=\"ltr\">A&nbsp;→&nbsp;B</bdi>، و <bdi dir=\"ltr\">R&nbsp;⊆&nbsp;A&nbsp;×&nbsp;B</bdi>."
     ],
     [
      "صح. الـ aRb اختصار لـ (a, b) ∈ R: يعني الـ ordered pair ده واحد من elements الـ relation (L11, Binary relations).",
-     "السهم → بيوضح اتجاه الـ relation (A → B)، مش إن الـ pair عضو فيها. الـ aRb معناها (a, b) ∈ R.",
-     "الـ pair (a, b) هو element في R، فبنستخدم ∈ مش ⊂ (شوف L1، ∈ versus ⊆). الـ aRb معناها (a, b) ∈ R.",
+     "السهم <bdi dir=\"ltr\">→</bdi> بيوضح اتجاه الـ relation (<bdi dir=\"ltr\">A&nbsp;→&nbsp;B</bdi>)، مش إن الـ pair عضو فيها. الـ aRb معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>.",
+     "الـ pair <bdi dir=\"ltr\">(a,&nbsp;b)</bdi> هو element في R، فبنستخدم <bdi dir=\"ltr\">∈</bdi> مش <bdi dir=\"ltr\">⊂</bdi> (شوف الـ L1، جزء <bdi dir=\"ltr\">∈&nbsp;versus&nbsp;⊆</bdi>). الـ aRb معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>.",
      "الـ R هي set من الـ pairs، فمينفعش pair واحد يساويها (إلا لو R فيها element واحد ومكتوبة كـ set). الـ aRb معناها (a, b) ∈ R."
     ],
     [
-     "الـ {(a, a)} ده pair واحد ومفيش شرط بيقول إن a بتلف على كل A. الـ I_A محتاجة كل الـ pairs: {(a, a) | a ∈ A}.",
-     "صح. الـ identity relation I_A بتربط كل element في A بنفسه: {(a, a) | a ∈ A}؛ مثلًا I_{1,2} = {(1,1), (2,2)} (L11, Binary relations).",
-     "الـ \"a &lt; A\" بتقارن element بـ set، وده مالوش معنى. الشرط لازم يكون a ∈ A.",
-     "الـ \"(a, a) ≥ A\" بتقارن pair بـ set، وده مش متعرّف، وكمان مفيهاش شرط set-builder. الـ I_A = {(a, a) | a ∈ A}."
+     "الـ <bdi dir=\"ltr\">{(a,&nbsp;a)}</bdi> ده pair واحد ومفيش شرط بيقول إن a بتلف على كل A. الـ <bdi dir=\"ltr\">I_A</bdi> محتاجة كل الـ pairs:<span class=\"ltr\">{(a, a) | a ∈ A}</span>",
+     "صح. الـ identity relation <bdi dir=\"ltr\">I_A</bdi> بتربط كل element في A بنفسه:<span class=\"ltr\">{(a, a) | a ∈ A}</span>مثلًا:<span class=\"ltr\">I_{1,2} = {(1,1), (2,2)}</span>المرجع <bdi dir=\"ltr\">(L11, Binary relations)</bdi>.",
+     "الـ \"<bdi dir=\"ltr\">a&nbsp;&lt;&nbsp;A</bdi>\" بتقارن element بـ set، وده مالوش معنى. الشرط لازم يكون <bdi dir=\"ltr\">a&nbsp;∈&nbsp;A</bdi>.",
+     "الـ \"<bdi dir=\"ltr\">(a,&nbsp;a)&nbsp;≥&nbsp;A</bdi>\" بتقارن pair بـ set، وده مش متعرّف، وكمان مفيهاش شرط set-builder. الـ <bdi dir=\"ltr\">I_A</bdi> بتساوي:<span class=\"ltr\">{(a, a) | a ∈ A}</span>"
     ],
     [
-     "الـ 7 = 4 + 3 ده جمع الأحجام. كل element من الـ 4 بتوع A بيتعمل منه pair مع كل واحد من الـ 3 بتوع B: 4 × 3 = 12.",
-     "صح. A × B = {(a, b) | a ∈ A, b ∈ B}، و |A × B| = |A|·|B| = 4 × 3 = 12 (L11, Binary relations; L2).",
-     "الـ 64 = 4³ ده أُس (عدد الـ functions من B لـ A). الـ Cartesian product بيضرب: 4 × 3 = 12.",
-     "الـ 81 = 3⁴ ده عدد الـ functions من A لـ B، مش عدد الـ pairs. |A × B| = 4 × 3 = 12."
+     "الـ <bdi dir=\"ltr\">7&nbsp;=&nbsp;4&nbsp;+&nbsp;3</bdi> ده جمع الأحجام. كل element من الـ 4 بتوع A بيتعمل منه pair مع كل واحد من الـ 3 بتوع B:<span class=\"ltr\">4 × 3 = 12</span>",
+     "صح.<span class=\"ltr\">A × B = {(a, b) | a ∈ A, b ∈ B}</span><span class=\"ltr\">|A × B| = |A|·|B| = 4 × 3 = 12</span>المرجع <bdi dir=\"ltr\">(L11, Binary relations; L2)</bdi>.",
+     "الـ <bdi dir=\"ltr\">64&nbsp;=&nbsp;4³</bdi> ده أُس (عدد الـ functions من B لـ A). الـ Cartesian product بيضرب:<span class=\"ltr\">4 × 3 = 12</span>",
+     "الـ <bdi dir=\"ltr\">81&nbsp;=&nbsp;3⁴</bdi> ده عدد الـ functions من A لـ B، مش عدد الـ pairs.<span class=\"ltr\">|A × B| = 4 × 3 = 12</span>"
     ]
    ],
    "extra": [
     [
-     "الـ (k + 1)² = k² غلط لأي k ≥ 0. الـ step بيزوّد الـ odd term اللي جاي على k²: k² + (2k + 1) = (k + 1)².",
-     "الـ 2k − 1 ده الـ odd number رقم k، وهو موجود في المجموع أصلًا. اللي رقم k + 1 هو 2(k + 1) − 1 = 2k + 1، والهدف (k + 1)².",
-     "صح. الرقم الفردي رقم (k + 1) هو 2(k + 1) − 1 = 2k + 1.",
-     "الـ 1 = 1² بتتشيك على n = 1، وده الـ basis step. الـ inductive step بيروح من k لـ k + 1."
+     "الـ <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)²&nbsp;=&nbsp;k²</bdi> غلط لأي <bdi dir=\"ltr\">k&nbsp;≥&nbsp;0</bdi>. الـ step بيزوّد الـ odd term اللي جاي على <bdi dir=\"ltr\">k²</bdi>، يعني:<span class=\"ltr\">k² + (2k + 1) = (k + 1)²</span>",
+     "الـ <bdi dir=\"ltr\">2k&nbsp;−&nbsp;1</bdi> ده الـ odd number رقم k، وهو موجود في المجموع أصلًا. اللي رقم <bdi dir=\"ltr\">k&nbsp;+&nbsp;1</bdi> هو:<span class=\"ltr\">2(k + 1) − 1 = 2k + 1</span>والهدف <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)²</bdi>.",
+     "صح. الرقم الفردي رقم <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)</bdi> هو:<span class=\"ltr\">2(k + 1) − 1 = 2k + 1</span>",
+     "الـ <bdi dir=\"ltr\">1&nbsp;=&nbsp;1²</bdi> بتتشيك على <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، وده الـ basis step. الـ inductive step بيروح من k لـ <bdi dir=\"ltr\">k&nbsp;+&nbsp;1</bdi>."
     ],
     [
-     "الـ (k + 1)²/2 كانت هتحتاج k(k + 1) + 2(k + 1) = (k + 1)²، بس لما تطلّع العامل المشترك بيطلع (k + 1)(k + 2)، مش (k + 1)(k + 1).",
-     "الـ k² + 1 مش تبسيط جبري لـ k(k + 1)/2 + (k + 1)؛ مثلًا k = 1 بتدي 1 + 2 = 3، لكن k² + 1 = 2.",
-     "الـ k(k + 2)/2 طلّعت k كعامل مشترك بدل (k + 1). الاتنين terms فيهم (k + 1): [k(k + 1) + 2(k + 1)]/2 = (k + 1)(k + 2)/2.",
-     "صح. k(k + 1)/2 + (k + 1) = [k(k + 1) + 2(k + 1)]/2 = (k + 1)(k + 2)/2، وده نفس الـ formula بـ n = k + 1 (L11, Proof of 1 + … + n)."
+     "الـ <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)²/2</bdi> كانت هتحتاج:<span class=\"ltr\">k(k + 1) + 2(k + 1) = (k + 1)²</span>بس لما تطلّع العامل المشترك بيطلع <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)(k&nbsp;+&nbsp;2)</bdi>، مش <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)(k&nbsp;+&nbsp;1)</bdi>.",
+     "الـ <bdi dir=\"ltr\">k²&nbsp;+&nbsp;1</bdi> مش تبسيط جبري لـ <bdi dir=\"ltr\">k(k + 1)/2 + (k + 1)</bdi>؛ مثلًا <bdi dir=\"ltr\">k&nbsp;=&nbsp;1</bdi> بتدي <bdi dir=\"ltr\">1&nbsp;+&nbsp;2&nbsp;=&nbsp;3</bdi>، لكن <bdi dir=\"ltr\">k²&nbsp;+&nbsp;1&nbsp;=&nbsp;2</bdi>.",
+     "الـ <bdi dir=\"ltr\">k(k&nbsp;+&nbsp;2)/2</bdi> طلّعت k كعامل مشترك بدل <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)</bdi>. الاتنين terms فيهم <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)</bdi>، يعني:<span class=\"ltr\">[k(k + 1) + 2(k + 1)]/2 = (k + 1)(k + 2)/2</span>",
+     "صح.<span class=\"ltr\">k(k + 1)/2 + (k + 1)</span><span class=\"ltr\">= [k(k + 1) + 2(k + 1)]/2</span><span class=\"ltr\">= (k + 1)(k + 2)/2</span>وده نفس الـ formula بـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi> <bdi dir=\"ltr\">(L11, Proof of 1 + … + n)</bdi>."
     ],
     [
-     "صح. الـ basis step بيثبت P(n₀) لأول قيمة في الجملة، غالبًا n = 1؛ وبعدين الـ inductive step بيكمّل لقدام (L11, Principle of induction).",
+     "صح. الـ basis step بيثبت <bdi dir=\"ltr\">P(n₀)</bdi> لأول قيمة في الجملة، غالبًا <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>؛ وبعدين الـ inductive step بيكمّل لقدام <bdi dir=\"ltr\">(L11, Principle of induction)</bdi>.",
      "إنك تتشيك على كل n مستحيل لأن القيم مالهاش نهاية؛ وده اللي الـ induction كله بيثبته. الـ basis بيتشيك على أول قيمة بس.",
-     "إثبات P(k) → P(k + 1) ده الـ inductive step. الـ basis بيتشيك على قيمة البداية، P(1).",
-     "الـ basis هو أول قيمة في الجملة، n₀؛ وفي الجمل اللي فيها \"n ≥ 1\" بتبقى P(1)، مش P(0)."
+     "إثبات <bdi dir=\"ltr\">P(k)&nbsp;→&nbsp;P(k&nbsp;+&nbsp;1)</bdi> ده الـ inductive step. الـ basis بيتشيك على قيمة البداية، <bdi dir=\"ltr\">P(1)</bdi>.",
+     "الـ basis هو أول قيمة في الجملة، <bdi dir=\"ltr\">n₀</bdi>؛ وفي الجمل اللي فيها \"<bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>\" بتبقى <bdi dir=\"ltr\">P(1)</bdi>، مش <bdi dir=\"ltr\">P(0)</bdi>."
     ],
     [
-     "الـ 3k + 2 = 3(k + 1) − 1، وده العامل اللي في الـ formula (k + 1)(3k + 2)/2، مش الـ term. الـ term هو 3(k + 1) − 2 = 3k + 1.",
-     "صح. عوّض بـ n = k + 1 في الـ general term 3n − 2: 3(k + 1) − 2 = 3k + 1 (L11, Proof of 1 + 4 + … + (3n − 2)).",
-     "الـ 3k − 2 ده الـ term رقم k، آخر واحد موجود في الـ hypothesis. اللي بعده هو 3(k + 1) − 2 = 3k + 1.",
-     "الـ 3k = 3(k + 1) − 3 يعني طرحت 3 بدل 2. الـ term رقم k + 1 هو 3k + 1."
+     "الـ <bdi dir=\"ltr\">3k + 2 = 3(k + 1) − 1</bdi>، وده العامل اللي في الـ formula <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)(3k&nbsp;+&nbsp;2)/2</bdi>، مش الـ term. الـ term هو:<span class=\"ltr\">3(k + 1) − 2 = 3k + 1</span>",
+     "صح. عوّض بـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi> في الـ general term <bdi dir=\"ltr\">3n&nbsp;−&nbsp;2</bdi>، يعني:<span class=\"ltr\">3(k + 1) − 2 = 3k + 1</span>المرجع <bdi dir=\"ltr\">(L11, Proof of 1 + 4 + … + (3n − 2))</bdi>.",
+     "الـ <bdi dir=\"ltr\">3k&nbsp;−&nbsp;2</bdi> ده الـ term رقم k، آخر واحد موجود في الـ hypothesis. اللي بعده هو:<span class=\"ltr\">3(k + 1) − 2 = 3k + 1</span>",
+     "الـ <bdi dir=\"ltr\">3k&nbsp;=&nbsp;3(k&nbsp;+&nbsp;1)&nbsp;−&nbsp;3</bdi> يعني طرحت 3 بدل 2. الـ term رقم <bdi dir=\"ltr\">k&nbsp;+&nbsp;1</bdi> هو <bdi dir=\"ltr\">3k&nbsp;+&nbsp;1</bdi>."
     ],
     [
-     "الـ 8 = 2³ ده عدد الـ subsets بتاعة B، مش بتاعة A × B. الـ A × B فيها 2 × 3 = 6 pairs، فعدد الـ relations 2⁶ = 64.",
-     "الـ 5 = 2 + 3 ده جمع الأحجام. أي subset من الـ set اللي فيها 6 pairs (A × B) هي relation: 2⁶ = 64.",
-     "صح. أي subset من A × B هي relation: 2⁶.",
-     "الـ 6 = |A × B| ده عدد الـ ordered pairs. الـ relation هي أي subset من الـ 6 pairs دول، فعندنا 2⁶ = 64."
+     "الـ <bdi dir=\"ltr\">8&nbsp;=&nbsp;2³</bdi> ده عدد الـ subsets بتاعة B، مش بتاعة <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi>. الـ <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> فيها <bdi dir=\"ltr\">2&nbsp;×&nbsp;3&nbsp;=&nbsp;6</bdi> pairs، فعدد الـ relations <bdi dir=\"ltr\">2⁶&nbsp;=&nbsp;64</bdi>.",
+     "الـ <bdi dir=\"ltr\">5&nbsp;=&nbsp;2&nbsp;+&nbsp;3</bdi> ده جمع الأحجام. أي subset من الـ set اللي فيها 6 pairs (<bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi>) هي relation، يعني <bdi dir=\"ltr\">2⁶&nbsp;=&nbsp;64</bdi>.",
+     "صح. أي subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> هي relation، يعني <bdi dir=\"ltr\">2⁶</bdi>.",
+     "الـ <bdi dir=\"ltr\">6&nbsp;=&nbsp;|A&nbsp;×&nbsp;B|</bdi> ده عدد الـ ordered pairs. الـ relation هي أي subset من الـ 6 pairs دول، فعندنا <bdi dir=\"ltr\">2⁶&nbsp;=&nbsp;64</bdi>."
     ],
     [
      "الـ A × A فيها الـ 9 pairs كلهم، ومنهم (1, 2) وغيره؛ ودي الـ universal relation. الـ I_A بتاخد الـ pairs (a, a) بس.",
-     "الـ {1, 2, 3} دي A نفسها، set من أرقام. الـ relation لازم تكون set من ordered pairs: {(1,1), (2,2), (3,3)}.",
-     "الـ {(1,2), (2,3)} بتربط كل element بواحد تاني ومفيهاش (a, a). الـ identity relation هي {(1,1), (2,2), (3,3)}.",
-     "صح. I_A = {(a, a) | a ∈ A} بتربط كل element بنفسه، فعلى {1, 2, 3} بتبقى {(1,1), (2,2), (3,3)} (L11, Binary relations)."
+     "الـ <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi> دي A نفسها، set من أرقام. الـ relation لازم تكون set من ordered pairs:<span class=\"ltr\">{(1,1), (2,2), (3,3)}</span>",
+     "الـ <bdi dir=\"ltr\">{(1,2),&nbsp;(2,3)}</bdi> بتربط كل element بواحد تاني ومفيهاش <bdi dir=\"ltr\">(a,&nbsp;a)</bdi>. الـ identity relation هي:<span class=\"ltr\">{(1,1), (2,2), (3,3)}</span>",
+     "صح. الـ <bdi dir=\"ltr\">I_A = {(a, a) | a ∈ A}</bdi> بتربط كل element بنفسه، فعلى <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi> بتبقى:<span class=\"ltr\">{(1,1), (2,2), (3,3)}</span>المرجع <bdi dir=\"ltr\">(L11, Binary relations)</bdi>."
     ],
     [
-     "صح. الـ symmetric معناها (a, b) ∈ R → (b, a) ∈ R: الـ (1,2) معاها شريكتها (2,1)، والـ (1,1) هي عكس نفسها (L11, Properties of relations).",
-     "الـ identity relation على {1, 2} هي {(1,1), (2,2)}؛ لكن R فيها (1,2) و (2,1) وناقصها (2,2).",
-     "الـ antisymmetric بتشترط إن (a, b) و (b, a) يبقوا الاتنين في R بس لما a = b، لكن هنا (1,2) و (2,1) الاتنين في R و 1 ≠ 2.",
+     "صح. الـ symmetric معناها:<span class=\"ltr\">(a, b) ∈ R → (b, a) ∈ R</span>الـ <bdi dir=\"ltr\">(1,2)</bdi> معاها شريكتها <bdi dir=\"ltr\">(2,1)</bdi>، والـ <bdi dir=\"ltr\">(1,1)</bdi> هي عكس نفسها <bdi dir=\"ltr\">(L11, Properties of relations)</bdi>.",
+     "الـ identity relation على <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> هي <bdi dir=\"ltr\">{(1,1),&nbsp;(2,2)}</bdi>؛ لكن R فيها <bdi dir=\"ltr\">(1,2)</bdi> و <bdi dir=\"ltr\">(2,1)</bdi> وناقصها <bdi dir=\"ltr\">(2,2)</bdi>.",
+     "الـ antisymmetric بتشترط إن <bdi dir=\"ltr\">(a,&nbsp;b)</bdi> و <bdi dir=\"ltr\">(b,&nbsp;a)</bdi> يبقوا الاتنين في R بس لما <bdi dir=\"ltr\">a&nbsp;=&nbsp;b</bdi>، لكن هنا <bdi dir=\"ltr\">(1,2)</bdi> و <bdi dir=\"ltr\">(2,1)</bdi> الاتنين في R و <bdi dir=\"ltr\">1&nbsp;≠&nbsp;2</bdi>.",
      "الـ reflexive محتاجة (a, a) لكل a ∈ A؛ والـ (2,2) ناقصة، فـ R مش reflexive."
     ],
     [
@@ -2486,10 +2486,10 @@ AR.dm = {
      "الـ congruence بتربط a بـ b كتير (3 ≡ 8 ≡ 13 mod 5)، فهي مش function. هي equivalence relation."
     ],
     [
-     "الـ 2ᵏ⁺¹ = 2 · 2ᵏ، مش 2ᵏ + 1 (مثلًا 2² = 4 لكن 2¹ + 1 = 3). الـ step بيضاعف: 2ᵏ⁺¹ = 2·2ᵏ &gt; 2k.",
-     "الـ 2ᵏ &lt; k بتناقض الـ hypothesis 2ᵏ &gt; k؛ الـ step لازم يستخدم الـ hypothesis، مش عكسها.",
-     "الـ 2¹ &gt; 1 ده الـ basis step (n = 1). الـ inductive step بيروح من k لـ k + 1: 2ᵏ⁺¹ = 2·2ᵏ &gt; 2k ≥ k + 1.",
-     "صح. بيستخدم الفرض 2ᵏ &gt; k و k ≥ 1."
+     "الـ <bdi dir=\"ltr\">2ᵏ⁺¹&nbsp;=&nbsp;2&nbsp;·&nbsp;2ᵏ</bdi>، مش <bdi dir=\"ltr\">2ᵏ&nbsp;+&nbsp;1</bdi> (مثلًا <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> لكن <bdi dir=\"ltr\">2¹&nbsp;+&nbsp;1&nbsp;=&nbsp;3</bdi>). الـ step بيضاعف:<span class=\"ltr\">2ᵏ⁺¹ = 2·2ᵏ &gt; 2k</span>",
+     "الـ <bdi dir=\"ltr\">2ᵏ&nbsp;&lt;&nbsp;k</bdi> بتناقض الـ hypothesis <bdi dir=\"ltr\">2ᵏ&nbsp;&gt;&nbsp;k</bdi>؛ الـ step لازم يستخدم الـ hypothesis، مش عكسها.",
+     "الـ <bdi dir=\"ltr\">2¹&nbsp;&gt;&nbsp;1</bdi> ده الـ basis step (<bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>). الـ inductive step بيروح من k لـ <bdi dir=\"ltr\">k&nbsp;+&nbsp;1</bdi>، يعني:<span class=\"ltr\">2ᵏ⁺¹ = 2·2ᵏ &gt; 2k ≥ k + 1</span>",
+     "صح. بيستخدم الفرض <bdi dir=\"ltr\">2ᵏ&nbsp;&gt;&nbsp;k</bdi> و <bdi dir=\"ltr\">k&nbsp;≥&nbsp;1</bdi>."
     ]
    ]
   }
@@ -2500,7 +2500,7 @@ AR.dm = {
     {
      "items": [
       {
-       "why": "قانون De Morgan: ¬(p ∧ q) ≡ ¬p ∨ ¬q. بتنفي كل جزء وتقلب الـ ∧ لـ ∨ (Theorem 1.1.1, law 9) (L4).",
+       "why": "قانون De Morgan:<span class=\"ltr\">¬(p ∧ q) ≡ ¬p ∨ ¬q</span>بتنفي كل جزء وتقلب الـ <bdi dir=\"ltr\">∧</bdi> لـ <bdi dir=\"ltr\">∨</bdi> <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
        "ow": [
         null,
         "الـ ¬P ∧ ¬Q دي قانون De Morgan التاني، بتاع ¬(P ∨ Q). في ¬(P ∧ Q) لازم الـ ∧ كمان تتقلب لـ ∨.",
@@ -2523,7 +2523,7 @@ AR.dm = {
         "الـ p ∧ ¬p محتاجة p و ¬p الاتنين true، وده عمره ما بيحصل، فهي دايمًا false: يعني contradiction (Theorem 1.1.1, negation law).",
         null,
         "الـ ¬p ∧ ¬Q بتبقى true بس لما p و Q الاتنين false؛ أي variable يبقى true بيخليها F، فهي مش دايمًا true.",
-        "الـ ¬(p ∧ Q) بتبقى F في الـ row بتاع p = T, Q = T، فهي مش tautology. وهي بتساوي ¬p ∨ ¬Q بـ De Morgan."
+        "الـ <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;Q)</bdi> بتبقى F في الـ row بتاع <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;T</bdi>، فهي مش tautology. وهي بتساوي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬Q</bdi> بـ De Morgan."
        ]
       },
       {
@@ -2536,39 +2536,39 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ p ↔ q معناها «p only if q» (p → q) و «p if q» (q → p)؛ والـ truth table بيبين إن الـ columns الاتنين متفقين (L5, Biconditional; Table 8).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> معناها «p only if q» (<bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>) و «p if q» (<bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi>)؛ والـ truth table بيبين إن الـ columns الاتنين متفقين <bdi dir=\"ltr\">(L5, Biconditional; Table 8)</bdi>.",
        "ow": [
         null,
-        "الـ p → q اتجاه واحد بس («only if»)؛ في الـ row بتاع F, T هي T بينما p ↔ q بتبقى F. الـ biconditional محتاجة q → p كمان.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> اتجاه واحد بس («only if»)؛ في الـ row بتاع <bdi dir=\"ltr\">F,&nbsp;T</bdi> هي T بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتبقى F. الـ biconditional محتاجة <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
         "الـ ¬p بتتجاهل q: في الـ row بتاع T, T هي F بينما p ↔ q بتبقى T.",
         "الـ p ∨ q بتبقى F في الـ row بتاع F, F، بس p ↔ q بتبقى T هناك (القيم متساوية)، والـ p ∨ q بتبقى T في TF و FT اللي فيهم الـ ↔ بتبقى F."
        ]
       },
       {
-       "why": "الـ P → Q ≡ ¬P ∨ Q (Table 4/Table 7): الاتنين بيبقوا false بس لما P = T و Q = F، و true في الـ rows التلاتة التانيين (L5).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;≡&nbsp;¬P&nbsp;∨&nbsp;Q</bdi> <bdi dir=\"ltr\">(Table 4/Table 7)</bdi>: الاتنين بيبقوا false بس لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi>، و true في الـ rows التلاتة التانيين <bdi dir=\"ltr\">(L5)</bdi>.",
        "ow": [
         null,
-        "في الـ row بتاع P = T, Q = F، الـ P ∨ Q بتبقى T بس P → Q بتبقى F؛ وفي الـ row بتاع F, F، الـ P ∨ Q بتبقى F بس P → Q بتبقى T.",
-        "الـ Q → P دي الـ converse؛ بتختلف في الـ rows بتوع TF و FT (مثلًا P = F, Q = T: الـ P → Q = T بس Q → P = F).",
-        "الـ ¬P ∧ Q بتبقى T بس في الـ row بتاع F, T؛ في الـ row بتاع T, T هي F بينما P → Q بتبقى T."
+        "في الـ row بتاع <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi>، الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بتبقى T بس <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى F؛ وفي الـ row بتاع <bdi dir=\"ltr\">F,&nbsp;F</bdi>، الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بتبقى F بس <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى T.",
+        "الـ <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> دي الـ converse؛ بتختلف في الـ rows بتوع TF و FT، مثلًا:<span class=\"ltr\">P = F, Q = T: P → Q = T, Q → P = F</span>",
+        "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;Q</bdi> بتبقى T بس في الـ row بتاع <bdi dir=\"ltr\">F,&nbsp;T</bdi>؛ في الـ row بتاع <bdi dir=\"ltr\">T,&nbsp;T</bdi> هي F بينما <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى T."
        ]
       },
       {
-       "why": "للـ discrete random variable: μ = E(X) = Σ xᵣ · f(xᵣ) = x₁f(x₁) + … + xₙf(xₙ): كل قيمة مضروبة في الـ probability بتاعتها (L7, Expectation).",
+       "why": "للـ discrete random variable:<span class=\"ltr\">μ = E(X) = Σ xᵣ · f(xᵣ)</span><span class=\"ltr\">= x₁f(x₁) + … + xₙf(xₙ)</span>كل قيمة مضروبة في الـ probability بتاعتها <bdi dir=\"ltr\">(L7, Expectation)</bdi>.",
        "ow": [
         null,
-        "الـ Σ x بتجمع القيم بس وبتتجاهل احتمال كل واحدة. الـ expectation بتوزن كل قيمة: Σ x · f(x).",
-        "الـ s(x) مش متعرفة في أي حتة في المحاضرة. الـ expectation هي Σ x · f(x)، باستخدام الـ distribution f.",
-        "الـ Σ f(x) دايمًا بتساوي 1 لأي distribution (condition 2 في L6)، فمينفعش تبقى الـ mean. الـ E(X) = Σ x · f(x)."
+        "الـ <bdi dir=\"ltr\">Σ&nbsp;x</bdi> بتجمع القيم بس وبتتجاهل احتمال كل واحدة. الـ expectation بتوزن كل قيمة: <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>.",
+        "الـ <bdi dir=\"ltr\">s(x)</bdi> مش متعرفة في أي حتة في المحاضرة. الـ expectation هي <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>، باستخدام الـ distribution f.",
+        "الـ <bdi dir=\"ltr\">Σ&nbsp;f(x)</bdi> دايمًا بتساوي 1 لأي distribution (الـ condition 2 في <bdi dir=\"ltr\">L6</bdi>)، فمينفعش تبقى الـ mean. الـ <bdi dir=\"ltr\">E(X)&nbsp;=&nbsp;Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>."
        ]
       },
       {
-       "why": "الـ Absorption: p ∨ (p ∧ q) ≡ p (Theorem 1.1.1, law 10). لو P بـ T يبقى الكل T؛ ولو P بـ F يبقى P ∧ Q كمان F (L4).",
+       "why": "الـ Absorption:<span class=\"ltr\">p ∨ (p ∧ q) ≡ p</span>المرجع <bdi dir=\"ltr\">(Theorem 1.1.1, law 10)</bdi>. لو P بـ T يبقى الكل T؛ ولو P بـ F يبقى <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> كمان F <bdi dir=\"ltr\">(L4)</bdi>.",
        "ow": [
-        "الـ Q بتتجاهل P: عند P = T, Q = F الـ expression P ∨ (P ∧ Q) بتبقى T (عشان P بـ T) بينما Q بـ F.",
+        "الـ Q بتتجاهل P: عند <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> الـ expression <bdi dir=\"ltr\">P&nbsp;∨&nbsp;(P&nbsp;∧&nbsp;Q)</bdi> بتبقى T (عشان P بـ T) بينما Q بـ F.",
         null,
-        "الـ ¬P قيمتها عكس الـ expression في كل row: لما P = T الـ expression بتبقى T بس ¬P بتبقى F.",
-        "بتبقى false لما P = T, Q = F، بس الـ expression بتبقى T هناك."
+        "الـ <bdi dir=\"ltr\">¬P</bdi> قيمتها عكس الـ expression في كل row: لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> الـ expression بتبقى T بس <bdi dir=\"ltr\">¬P</bdi> بتبقى F.",
+        "بتبقى false لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi>، بس الـ expression بتبقى T هناك."
        ]
       },
       {
@@ -2581,75 +2581,75 @@ AR.dm = {
        ]
       },
       {
-       "why": "Fact 1 (L8): \"the integer 1 has only one divisor, itself\". (الاختيار a وهو 1 نفس المعنى كرقم، بس صياغة المحاضرة هي \"itself\".)",
+       "why": "الـ Fact 1 <bdi dir=\"ltr\">(L8)</bdi> بيقول:<span class=\"ltr\">\"the integer 1 has only one divisor, itself\"</span>(الاختيار a وهو 1 نفس المعنى كرقم، بس صياغة المحاضرة هي \"itself\".)",
        "ow": [
-        "صح كرقم، بس صياغة المحاضرة هي «itself» (Fact 1). وفي 2024/25 الاختيار a مكتوب 2.",
+        "صح كرقم، بس صياغة المحاضرة هي «itself» (الـ Fact 1). وفي <bdi dir=\"ltr\">2024/25</bdi> الاختيار a مكتوب 2.",
         null,
-        "الـ 4 مش بتقسم 1 (1 = 0 × 4 + 1). الـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
+        "الـ 4 مش بتقسم 1 (<bdi dir=\"ltr\">1&nbsp;=&nbsp;0&nbsp;×&nbsp;4&nbsp;+&nbsp;1</bdi>). الـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
         "الـ 5 مش بتقسم 1 (الباقي 1). بالـ Fact 1 الـ divisor الوحيد للـ 1 هو نفسه."
        ]
       },
       {
-       "why": "الـ induction بيفترض P(k) (الـ hypothesis) ويستخدمه عشان يثبت P(k + 1)؛ ومع الـ basis، الحالات بتقع ورا بعض زي الـ dominoes (L11, Principle of induction).",
+       "why": "الـ induction بيفترض <bdi dir=\"ltr\">P(k)</bdi> (الـ hypothesis) ويستخدمه عشان يثبت <bdi dir=\"ltr\">P(k&nbsp;+&nbsp;1)</bdi>؛ ومع الـ basis، الحالات بتقع ورا بعض زي الـ dominoes <bdi dir=\"ltr\">(L11, Principle of induction)</bdi>.",
        "ow": [
-        "الـ n = k دي الـ inductive hypothesis نفسها، ودي بنفترضها مش بنثبتها. الـ step لازم توصل للحالة اللي بعدها، n = k + 1.",
+        "الـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi> دي الـ inductive hypothesis نفسها، ودي بنفترضها مش بنثبتها. الـ step لازم توصل للحالة اللي بعدها، <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>.",
         null,
-        "إنك تثبت n = k − 1 من n = k ده رجوع لورا وعمره ما هيوصل لـ n أكبر. الـ step بتثبت n = k + 1.",
+        "إنك تثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;−&nbsp;1</bdi> من <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi> ده رجوع لورا وعمره ما هيوصل لـ n أكبر. الـ step بتثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>.",
         "القفز لـ k + 2 هيفوّت قيمة كل مرة (هيغطي الـ n الفردي بس أو الزوجي بس). الـ step بتروح لـ k + 1."
        ]
       },
       {
-       "why": "الـ P و ¬P دايمًا قيمهم عكس بعض، فعمرهم ما بيبقوا true مع بعض، والـ P ∧ ¬P بتبقى F في كل row؛ والـ negation law: P ∧ ¬P ≡ c (L4, Example 1.1.13).",
+       "why": "الـ P و <bdi dir=\"ltr\">¬P</bdi> دايمًا قيمهم عكس بعض، فعمرهم ما بيبقوا true مع بعض، والـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P</bdi> بتبقى F في كل row؛ والـ negation law:<span class=\"ltr\">P ∧ ¬P ≡ c</span>المرجع <bdi dir=\"ltr\">(L4, Example 1.1.13)</bdi>.",
        "ow": [
         "الـ P ∨ Q بتبقى true في 3 من 4 rows (false بس في F, F). الـ contradiction لازم تبقى false في كل row.",
         null,
-        "الـ P → Q بتبقى true في 3 من 4 rows (false بس في T → F)، فهي مش دايمًا false.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى true في 3 من 4 rows (false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>)، فهي مش دايمًا false.",
         "الـ P ↔ Q بتبقى true في الـ rows بتوع TT و FF (القيم متساوية)، فهي مش contradiction."
        ]
       },
       {
-       "why": "ابدأ من أول قيمة في الجملة، n = 1 (L11).",
+       "why": "ابدأ من أول قيمة في الجملة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> <bdi dir=\"ltr\">(L11)</bdi>.",
        "ow": [
-        "الـ claim لـ n ≥ 1، فالـ n = 0 مش جزء منه. الـ basis هي أول قيمة في الـ claim، n = 1 (2¹ = 2 &gt; 1).",
+        "الـ claim لـ <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>، فالـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;0</bdi> مش جزء منه. الـ basis هي أول قيمة في الـ claim، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> (<bdi dir=\"ltr\">2¹&nbsp;=&nbsp;2&nbsp;&gt;&nbsp;1</bdi>).",
         null,
-        "لو بدأت من n = 2 عمرك ما هتثبت n = 1، وهي داخلة في الـ claim. الـ basis لازم تبقى n = 1.",
-        "لو بدأت من n = 3 هتسيب n = 1 و n = 2 من غير إثبات. الـ basis هي أول قيمة، n = 1."
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> عمرك ما هتثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، وهي داخلة في الـ claim. الـ basis لازم تبقى <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;3</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> و <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> من غير إثبات. الـ basis هي أول قيمة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>."
        ]
       },
       {
        "why": "الـ Disjunction هي الـ «or» الـ inclusive، وبتتكتب p ∨ q: بتبقى true لما p أو q (أو الاتنين) يبقى true، و false بس لما الاتنين يبقوا false (L3, Connectives).",
        "ow": [
         null,
-        "الـ p ∧ q دي الـ conjunction («and»)، true بس لما الاتنين يبقوا true. الـ disjunction («or») هي p ∨ q.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> دي الـ conjunction («and»)، وبتبقى true بس لما الاتنين يبقوا true. الـ disjunction («or») هي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>.",
         "الـ «−» مش logical connective في المحاضرة (دي set difference). الـ disjunction بتاعة p و q هي p ∨ q.",
         "الـ «/» دي قسمة، مش logical connective. المحاضرة بتكتب الـ disjunction (الـ inclusive or) كـ p ∨ q."
        ]
       },
       {
-       "why": "قوانين De Morgan، ~(p ∧ q) ≡ ~p ∨ ~q و ~(p ∨ q) ≡ ~p ∧ ~q، بتدخّل النفي جوه القوس وبتقلب الـ connective (Theorem 1.1.1, law 9) (L4).",
+       "why": "قوانين De Morgan:<span class=\"ltr\">~(p ∧ q) ≡ ~p ∨ ~q</span><span class=\"ltr\">~(p ∨ q) ≡ ~p ∧ ~q</span>بتدخّل النفي جوه القوس وبتقلب الـ connective <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
        "ow": [
         "الـ commutative law بيبدّل الترتيب بس، p ∧ q ≡ q ∧ p، من غير أي نفي. إنك تدخّل الـ ¬ جوه القوس ده De Morgan.",
         null,
-        "الـ associative law بيعيد تجميع الأقواس لنفس الـ connective، (p ∧ q) ∧ r ≡ p ∧ (q ∧ r). عمره ما بيضيف أو يحرّك نفي.",
+        "الـ associative law بيعيد تجميع الأقواس لنفس الـ connective:<span class=\"ltr\">(p ∧ q) ∧ r ≡ p ∧ (q ∧ r)</span>عمره ما بيضيف أو يحرّك نفي.",
         "الـ distributive law بيوزّع connective على التاني، p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r). مش بيحرّك نفي."
        ]
       },
       {
-       "why": "الـ P ∧ Q بتبقى true بس لما الاتنين يبقوا true؛ وبما إن Q بـ false، يبقى T ∧ F = F (L3, Truth tables of the connectives).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> بتبقى true بس لما الاتنين يبقوا true؛ وبما إن Q بـ false، يبقى <bdi dir=\"ltr\">T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3, Truth tables of the connectives)</bdi>.",
        "ow": [
-        "الـ conjunction بتبقى true بس لما الجزئين يبقوا true. الـ Q بـ false، فالـ P ∧ Q = T ∧ F = F.",
+        "الـ conjunction بتبقى true بس لما الجزئين يبقوا true. الـ Q بـ false، فالـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q&nbsp;=&nbsp;T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi>.",
         null,
-        "الـ proposition يا true يا false بس مش الاتنين، وكذلك أي compound من propositions. وهنا T ∧ F = F.",
-        "كل combination من الـ truth values بتدي نتيجة محددة في الـ truth table. الـ row بتاع P = T, Q = F بيدي P ∧ Q = F."
+        "الـ proposition يا true يا false بس مش الاتنين، وكذلك أي compound من propositions. وهنا <bdi dir=\"ltr\">T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi>.",
+        "كل combination من الـ truth values بتدي نتيجة محددة في الـ truth table. الـ row بتاع <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> بيدي <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q&nbsp;=&nbsp;F</bdi>."
        ]
       },
       {
-       "why": "الـ P → Q بتبقى false بس لما الـ antecedent يبقى true والـ consequent يبقى false، وده بالظبط الـ row ده: T → F = F (L3, Connectives).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى false بس لما الـ antecedent يبقى true والـ consequent يبقى false، وده بالظبط الـ row ده: <bdi dir=\"ltr\">T&nbsp;→&nbsp;F&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3, Connectives)</bdi>.",
        "ow": [
-        "الـ implication بتبقى true في كل الحالات ما عدا antecedent بـ true و consequent بـ false، والـ T → F هي الحالة دي بالظبط. فالـ P → Q = F.",
+        "الـ implication بتبقى true في كل الحالات ما عدا antecedent بـ true و consequent بـ false، والـ <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi> هي الحالة دي بالظبط. فالـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;F</bdi>.",
         null,
-        "الـ implication ليها قيمة في كل row في الـ truth table بتاعها. لـ P = T, Q = F هي F.",
-        "الـ compound proposition يا true يا false، عمرها ما تبقى الاتنين. هنا T → F بتدي قيمة واحدة بس، F."
+        "الـ implication ليها قيمة في كل row في الـ truth table بتاعها. لـ <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> هي F.",
+        "الـ compound proposition يا true يا false، عمرها ما تبقى الاتنين. هنا <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi> بتدي قيمة واحدة بس، F."
        ]
       },
       {
@@ -2662,12 +2662,12 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ P(S) هي الـ set بتاعة كل الـ subsets بتاعة S. وبما إن |S| = 2 يبقى فيه 2² = 4: ∅، {1}، {3} و {1, 3} (L1, Power set).",
+       "why": "الـ <bdi dir=\"ltr\">P(S)</bdi> هي الـ set بتاعة كل الـ subsets بتاعة S. وبما إن <bdi dir=\"ltr\">|S|&nbsp;=&nbsp;2</bdi> يبقى فيه <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>، يعني:<span class=\"ltr\">∅, {1}, {3}, {1, 3}</span>المرجع <bdi dir=\"ltr\">(L1, Power set)</bdi>.",
        "ow": [
-        "الـ {3, 1} = {1, 3} دي S نفسها (الترتيب مش فارق). الـ P(S) لازم يكون فيها الـ subsets بتاعة S كـ elements: ∅، {1}، {3}، {1, 3}.",
-        "الـ 0 رقم، مش subset من {1, 3}، والـ ∅ بس هي اللي مكتوبة من الـ subsets الحقيقية. الـ P(S) = {∅, {1}, {3}, {1, 3}}.",
+        "الـ <bdi dir=\"ltr\">{3,&nbsp;1}&nbsp;=&nbsp;{1,&nbsp;3}</bdi> دي S نفسها (الترتيب مش فارق). الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يكون فيها الـ subsets بتاعة S كـ elements:<span class=\"ltr\">∅, {1}, {3}, {1, 3}</span>",
+        "الـ 0 رقم، مش subset من <bdi dir=\"ltr\">{1,&nbsp;3}</bdi>، والـ ∅ بس هي اللي مكتوبة من الـ subsets الحقيقية. الـ <bdi dir=\"ltr\">P(S)</bdi> بتساوي:<span class=\"ltr\">{∅, {1}, {3}, {1, 3}}</span>",
         null,
-        "الـ power set عمرها ما بتبقى فاضية: الـ ∅ و S نفسها دايمًا members في P(S). وهنا P(S) فيها 2² = 4 elements."
+        "الـ power set عمرها ما بتبقى فاضية: الـ ∅ و S نفسها دايمًا members في <bdi dir=\"ltr\">P(S)</bdi>. وهنا <bdi dir=\"ltr\">P(S)</bdi> فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements."
        ]
       },
       {
@@ -2680,25 +2680,25 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ Domination / universal bound law: p ∧ c ≡ c (L4).",
+       "why": "الـ Domination أو الـ universal bound law:<span class=\"ltr\">p ∧ c ≡ c</span>المرجع <bdi dir=\"ltr\">(L4)</bdi>.",
        "ow": [
-        "الـ conjunction اللي فيها جزء false بتبقى false، فالـ p ∧ F عمرها ما تبقى true. الـ Universal bound law: p ∧ c ≡ c.",
+        "الـ conjunction اللي فيها جزء false بتبقى false، فالـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;F</bdi> عمرها ما تبقى true. الـ Universal bound law: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;c&nbsp;≡&nbsp;c</bdi>.",
         null,
-        "الـ p ∧ F ليها قيمة في الـ rows الاتنين في الـ truth table: F في الاتنين. مفيش حاجة undefined.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;F</bdi> ليها قيمة في الـ rows الاتنين في الـ truth table، وهي F في الاتنين. مفيش حاجة undefined.",
         "الـ statement form يا true يا false في كل row، عمرها ما تبقى الاتنين؛ والـ p ∧ F بتبقى F في كل row."
        ]
       },
       {
-       "why": "الـ a mod n بتاخد الباقي من a = q × n + r: الـ 27 = 5 × 5 + 2، فالـ 27 mod 5 = 2 (L8, Example 2.14).",
+       "why": "الـ <bdi dir=\"ltr\">a&nbsp;mod&nbsp;n</bdi> بتاخد الباقي من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>، يعني:<span class=\"ltr\">27 = 5 × 5 + 2</span>فالـ <bdi dir=\"ltr\">27&nbsp;mod&nbsp;5&nbsp;=&nbsp;2</bdi> <bdi dir=\"ltr\">(L8, Example 2.14)</bdi>.",
        "ow": [
         null,
-        "الـ r = 3 محتاجة 27 − 3 = 24 تبقى multiple of 5، وهي مش كده. الـ 27 = 5 × 5 + 2، فالـ r = 2.",
-        "الـ r = 1 محتاجة 26 تبقى multiple of 5. أكبر multiple of 5 مش أكبر من 27 هو 25، والباقي 2.",
-        "الـ r = 4 محتاجة 23 تبقى multiple of 5. الـ 27 − 25 = 2، فالـ residue هو 2."
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi> محتاجة <bdi dir=\"ltr\">27&nbsp;−&nbsp;3&nbsp;=&nbsp;24</bdi> تبقى multiple of 5، وهي مش كده. الـ <bdi dir=\"ltr\">27&nbsp;=&nbsp;5&nbsp;×&nbsp;5&nbsp;+&nbsp;2</bdi>، فالـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;2</bdi>.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;1</bdi> محتاجة 26 تبقى multiple of 5. أكبر multiple of 5 مش أكبر من 27 هو 25، والباقي 2.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;4</bdi> محتاجة 23 تبقى multiple of 5. الـ <bdi dir=\"ltr\">27&nbsp;−&nbsp;25&nbsp;=&nbsp;2</bdi>، فالـ residue هو 2."
        ]
       },
       {
-       "why": "الـ Double negative law: ~(~p) ≡ p (Theorem 1.1.1, law 6): النفي مرتين بيقلب القيمة مرتين، فبترجع لقيمة p (L4).",
+       "why": "الـ Double negative law:<span class=\"ltr\">~(~p) ≡ p</span>المرجع <bdi dir=\"ltr\">(Theorem 1.1.1, law 6)</bdi>: النفي مرتين بيقلب القيمة مرتين، فبترجع لقيمة p <bdi dir=\"ltr\">(L4)</bdi>.",
        "ow": [
         "الـ ¬p ده نفي واحد بس. النفيين بيلغوا بعض، فالـ ¬(¬p) بترجّع p.",
         null,
@@ -2707,7 +2707,7 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ Distributive law: p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r): الـ ∧ بتتوزع على الـ ∨ زي ما بتفك الأقواس في الضرب (Theorem 1.1.1, law 3) (L4).",
+       "why": "الـ Distributive law:<span class=\"ltr\">p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r)</span>الـ <bdi dir=\"ltr\">∧</bdi> بتتوزع على الـ <bdi dir=\"ltr\">∨</bdi> زي ما بتفك الأقواس في الضرب <bdi dir=\"ltr\">(Theorem 1.1.1, law 3) (L4)</bdi>.",
        "ow": [
         null,
         "الـ (P ∨ Q) ∧ (P ∨ R) دي الصورة التانية من الـ distributive، وبتساوي P ∨ (Q ∧ R). هنا الـ ∧ هي اللي برة، فهي اللي لازم تتوزع.",
@@ -2716,30 +2716,30 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ 3 مكتوبة كـ element. إنما {3} دي subset، مش element (L1).",
+       "why": "الـ 3 مكتوبة كـ element. إنما <bdi dir=\"ltr\">{3}</bdi> دي subset، مش element <bdi dir=\"ltr\">(L1)</bdi>.",
        "ow": [
         "الـ 4 رقم (مش set) وكمان مش موجودة في الـ set أصلًا.",
         null,
-        "الـ {3} دي set؛ الـ elements هي الأرقام 1، 2، 3. (الـ {3} ⊆ {1,2,3} هي اللي تبقى صح.)",
-        "دي بتعكس الأدوار: الـ 3 رقم مش set، فمفيش حاجة ممكن تبقى element فيها. الجملة الصح هي 3 ∈ {1, 2, 3}."
+        "الـ <bdi dir=\"ltr\">{3}</bdi> دي set؛ الـ elements هي الأرقام 1 و 2 و 3. (الـ <bdi dir=\"ltr\">{3}&nbsp;⊆&nbsp;{1,2,3}</bdi> هي اللي تبقى صح.)",
+        "دي بتعكس الأدوار: الـ 3 رقم مش set، فمفيش حاجة ممكن تبقى element فيها. الجملة الصح هي <bdi dir=\"ltr\">3&nbsp;∈&nbsp;{1,&nbsp;2,&nbsp;3}</bdi>."
        ]
       },
       {
-       "why": "الـ p → q بتبقى false بس لما p بـ true و q بـ false، فالـ ~(p → q) ≡ p ∧ ~q. وبالقوانين: ~(~p ∨ q) ≡ p ∧ ~q (De Morgan، double negative) (L5, Negation of a conditional).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما p بـ true و q بـ false، فـ:<span class=\"ltr\">~(p → q) ≡ p ∧ ~q</span>وبالقوانين (De Morgan، والـ double negative):<span class=\"ltr\">~(~p ∨ q) ≡ p ∧ ~q</span>المرجع <bdi dir=\"ltr\">(L5, Negation of a conditional)</bdi>.",
        "ow": [
         null,
-        "الـ p لوحدها بتبقى T في الـ row بتاع p = T, q = T، واللي فيه p → q بـ T والنفي بتاعها F. النفي محتاج ¬q كمان: p ∧ ¬q.",
-        "الـ q بتبقى T في الـ row بتاع T, T، بس هناك p → q بـ true، فالنفي بتاعها F. النفي هو p ∧ ¬q (الـ q لازم تبقى false).",
-        "الـ p ∨ q بتبقى T في الـ row بتاع T, T، واللي فيه ¬(p → q) بـ F. نفي الـ if-then بيبقى «and»: p ∧ ¬q."
+        "الـ p لوحدها بتبقى T في الـ row بتاع <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;q&nbsp;=&nbsp;T</bdi>، واللي فيه <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ T والنفي بتاعها F. النفي محتاج <bdi dir=\"ltr\">¬q</bdi> كمان: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ q بتبقى T في الـ row بتاع <bdi dir=\"ltr\">T,&nbsp;T</bdi>، بس هناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بـ true، فالنفي بتاعها F. النفي هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> (الـ q لازم تبقى false).",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى T في الـ row بتاع <bdi dir=\"ltr\">T,&nbsp;T</bdi>، واللي فيه <bdi dir=\"ltr\">¬(p&nbsp;→&nbsp;q)</bdi> بـ F. نفي الـ if-then بيبقى «and»: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>."
        ]
       },
       {
-       "why": "الـ subset لازم تبقى set والـ elements بتاعتها موجودة في {1,2,3} (L1).",
+       "why": "الـ subset لازم تبقى set والـ elements بتاعتها موجودة في <bdi dir=\"ltr\">{1,2,3}</bdi> <bdi dir=\"ltr\">(L1)</bdi>.",
        "ow": [
-        "الـ 2 element في {1, 2, 3}، يعني 2 ∈ {1, 2, 3}؛ بس الـ ⊆ بتربط set بـ set، والرقم 2 مش set. الـ subset هي {2}.",
+        "الـ 2 element في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>، يعني <bdi dir=\"ltr\">2&nbsp;∈&nbsp;{1,&nbsp;2,&nbsp;3}</bdi>؛ بس الـ <bdi dir=\"ltr\">⊆</bdi> بتربط set بـ set، والرقم 2 مش set. الـ subset هي <bdi dir=\"ltr\">{2}</bdi>.",
         null,
-        "الـ 4 رقم مش set، فمينفعش تبقى subset؛ وكمان الـ 4 مش element في {1, 2, 3} أصلًا.",
-        "الـ {4} دي set، بس الـ element بتاعها 4 مش موجود في {1, 2, 3}، فالـ {4} ⊄ {1, 2, 3}. الـ subset لازم كل elements بتاعتها تبقى جوه الـ set الأكبر."
+        "الـ 4 رقم مش set، فمينفعش تبقى subset؛ وكمان الـ 4 مش element في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi> أصلًا.",
+        "الـ <bdi dir=\"ltr\">{4}</bdi> دي set، بس الـ element بتاعها 4 مش موجود في <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>، فـ:<span class=\"ltr\">{4} ⊄ {1, 2, 3}</span>الـ subset لازم كل elements بتاعتها تبقى جوه الـ set الأكبر."
        ]
       },
       {
@@ -2748,25 +2748,25 @@ AR.dm = {
         "الـ A ∈ A معناها إن A واحدة من الـ elements بتاعتها، وده غلط للـ sets العادية. الحقيقة اللي دايمًا صح هي A ⊆ A.",
         null,
         "دي بتنفي A ⊆ A، بس كل element في A موجود في A، فالـ A دايمًا subset من نفسها. الـ A ⊄ A عمرها ما تبقى صح.",
-        "الـ A ⊆ ∅ بتتحقق بس لما A مفيهاش elements، يعني A = ∅. أي A مش فاضية فيها element مش موجود في ∅."
+        "الـ <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;∅</bdi> بتتحقق بس لما A مفيهاش elements، يعني <bdi dir=\"ltr\">A&nbsp;=&nbsp;∅</bdi>. أي A مش فاضية فيها element مش موجود في ∅."
        ]
       },
       {
-       "why": "الـ sum بيبدأ بالـ term 1، فالـ basis بتتشيك على n = 1: الـ LHS = 1 والـ RHS = 1(1 + 1)/2 = 1 (L11, Proof of 1 + 2 + … + n).",
+       "why": "الـ sum بيبدأ بالـ term 1، فالـ basis بتتشيك على <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">LHS = 1, RHS = 1(1 + 1)/2 = 1</span>المرجع <bdi dir=\"ltr\">(L11, Proof of 1 + 2 + … + n)</bdi>.",
        "ow": [
-        "الـ sum 1 + 2 + … + n بيبدأ بالـ term 1، فأول حالة هي n = 1 (الـ LHS = 1، الـ RHS = 1·2/2 = 1).",
+        "الـ sum <bdi dir=\"ltr\">1&nbsp;+&nbsp;2&nbsp;+&nbsp;…&nbsp;+&nbsp;n</bdi> بيبدأ بالـ term 1، فأول حالة هي <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">LHS = 1, RHS = 1·2/2 = 1</span>",
         null,
-        "لو بدأت من n = 2 هتسيب n = 1 من غير إثبات، فالـ dominoes عمرها ما هتبدأ من أول حالة. الـ basis هي n = 1.",
-        "لو بدأت من n = 3 هتسيب n = 1 و 2 من غير إثبات. شيّك على أول حالة، n = 1: الـ 1 = 1(2)/2."
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> من غير إثبات، فالـ dominoes عمرها ما هتبدأ من أول حالة. الـ basis هي <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;3</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> و 2 من غير إثبات. شيّك على أول حالة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">1 = 1(2)/2</span>"
        ]
       },
       {
-       "why": "طبّق a → b ≡ ¬a ∨ b بـ a = p ∧ q و b = r: الـ (p ∧ q) → r ≡ ¬(p ∧ q) ∨ r (L5, Table 7).",
+       "why": "طبّق:<span class=\"ltr\">a → b ≡ ¬a ∨ b</span>بـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;p&nbsp;∧&nbsp;q</bdi> و <bdi dir=\"ltr\">b&nbsp;=&nbsp;r</bdi> بيطلع:<span class=\"ltr\">(p ∧ q) → r ≡ ¬(p ∧ q) ∨ r</span>المرجع <bdi dir=\"ltr\">(L5, Table 7)</bdi>.",
        "ow": [
-        "الـ p ∧ q بتشيل r ومش implication أصلًا: لما p = q = F هي F بينما (p ∧ q) → r بتبقى T.",
-        "الـ r → (p ∧ q) دي الـ converse: لما r = T و p = F هي F، بينما (p ∧ q) → r بتبقى T.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتشيل r ومش implication أصلًا: لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;F</bdi> هي F بينما <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بتبقى T.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;→&nbsp;(p&nbsp;∧&nbsp;q)</bdi> دي الـ converse: لما <bdi dir=\"ltr\">r&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> هي F، بينما <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بتبقى T.",
         null,
-        "الـ r → (p ∨ q) دي implication مختلفة: لما p = q = T و r = F هي T بس (p ∧ q) → r بتبقى F."
+        "الـ <bdi dir=\"ltr\">r&nbsp;→&nbsp;(p&nbsp;∨&nbsp;q)</bdi> دي implication مختلفة: لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> هي T بس <bdi dir=\"ltr\">(p&nbsp;∧&nbsp;q)&nbsp;→&nbsp;r</bdi> بتبقى F."
        ]
       }
      ]
@@ -2774,20 +2774,20 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "<b>(i)</b> A(i, j) = 1 لو وبس لو فيه edge i → j (الـ rows/columns من 1 لـ 5):<br><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>5</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></table><b>(ii)</b> الـ List of edges متنظمة حسب الـ nodes: V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.<br>(أو بشكل مكافئ E = {(5,1), (1,2), (2,3), (1,3), (5,3), (5,4), (3,4)}.) وده نفس مثال الـ sparse representation بتاع المحاضرة (L9)."
+       "ans": "<b>الجزء (i)</b> الـ <bdi dir=\"ltr\">A(i,&nbsp;j)&nbsp;=&nbsp;1</bdi> لو وبس لو فيه edge <bdi dir=\"ltr\">i&nbsp;→&nbsp;j</bdi> (الـ rows والـ columns من 1 لـ 5):<br><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>5</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></table><b>الجزء (ii)</b> الـ List of edges متنظمة حسب الـ nodes:<span class=\"ltr\">V(1) = {2, 3}, V(2) = {3}, V(3) = {4}</span><span class=\"ltr\">V(4) = ∅, V(5) = {1, 3, 4}</span>أو بشكل مكافئ:<span class=\"ltr\">E = {(5,1), (1,2), (2,3), (1,3), (5,3), (5,4), (3,4)}</span>وده نفس مثال الـ sparse representation بتاع المحاضرة <bdi dir=\"ltr\">(L9)</bdi>."
       },
       {
-       "ans": "<table><tr><th>p</th><th>q</th><th>r</th><th>p→q</th><th>p→r</th><th>(p→q)∧(p→r)</th><th>q∧r</th><th>p→(q∧r)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr></table>عمود (p→q)∧(p→r) وعمود p→(q∧r) متطابقين في الـ 8 rows كلهم، يبقى الـ statements دي logically equivalent (Table 7، L5)."
+       "ans": "<table><tr><th dir=\"ltr\">p</th><th dir=\"ltr\">q</th><th dir=\"ltr\">r</th><th dir=\"ltr\">p→q</th><th dir=\"ltr\">p→r</th><th dir=\"ltr\">(p→q)∧(p→r)</th><th dir=\"ltr\">q∧r</th><th dir=\"ltr\">p→(q∧r)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td></tr></table>عمود <bdi dir=\"ltr\">(p→q)∧(p→r)</bdi> وعمود <bdi dir=\"ltr\">p→(q∧r)</bdi> متطابقين في الـ 8 rows كلهم، يبقى الـ statements دي logically equivalent <bdi dir=\"ltr\">(Table 7, L5)</bdi>."
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "<b>(i)</b> الـ Basis عند n = 1: الطرف الشمال = 2، الطرف اليمين = 1·2 = 2 ✓.<br>الـ Hypothesis: 2 + 4 + … + 2k = k(k + 1).<br>الـ Step: 2 + … + 2k + 2(k + 1) = k(k + 1) + 2(k + 1) = (k + 1)(k + 2) = (k + 1)((k + 1) + 1) ✓. يبقى صح لكل n ≥ 1.<br><br><b>(ii)</b> الـ Basis عند n = 1: الطرف الشمال = 1، الطرف اليمين = 1(3 − 1)/2 = 1 ✓.<br>الـ Hypothesis: 1 + 4 + … + (3k − 2) = k(3k − 1)/2.<br>الـ Step: الـ term رقم (k + 1) هو 3(k + 1) − 2 = 3k + 1. المجموع = k(3k − 1)/2 + (3k + 1) = (3k² − k + 6k + 2)/2 = (3k² + 5k + 2)/2 = (k + 1)(3k + 2)/2 = (k + 1)(3(k + 1) − 1)/2 ✓. يبقى صح لكل n ≥ 1. (L11)"
+       "ans": "<b>الجزء (i)</b> الـ Basis عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>: الطرف الشمال بيساوي 2، والطرف اليمين:<span class=\"ltr\">1·2 = 2 ✓</span>الـ Hypothesis:<span class=\"ltr\">2 + 4 + … + 2k = k(k + 1)</span>الـ Step:<span class=\"ltr\">2 + … + 2k + 2(k + 1)</span><span class=\"ltr\">= k(k + 1) + 2(k + 1)</span><span class=\"ltr\">= (k + 1)(k + 2)</span><span class=\"ltr\">= (k + 1)((k + 1) + 1) ✓</span>يبقى صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>.<br><br><b>الجزء (ii)</b> الـ Basis عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>: الطرف الشمال بيساوي 1، والطرف اليمين:<span class=\"ltr\">1(3 − 1)/2 = 1 ✓</span>الـ Hypothesis:<span class=\"ltr\">1 + 4 + … + (3k − 2) = k(3k − 1)/2</span>الـ Step: الـ term رقم <bdi dir=\"ltr\">(k&nbsp;+&nbsp;1)</bdi> هو:<span class=\"ltr\">3(k + 1) − 2 = 3k + 1</span>المجموع:<span class=\"ltr\">= k(3k − 1)/2 + (3k + 1)</span><span class=\"ltr\">= (3k² − k + 6k + 2)/2</span><span class=\"ltr\">= (3k² + 5k + 2)/2</span><span class=\"ltr\">= (k + 1)(3k + 2)/2</span><span class=\"ltr\">= (k + 1)(3(k + 1) − 1)/2 ✓</span>يبقى صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>. <bdi dir=\"ltr\">(L11)</bdi>"
       },
       {
-       "ans": "¬(¬p ∧ q) ∧ (p ∨ q)<br>≡ (¬(¬p) ∨ ¬q) ∧ (p ∨ q) &nbsp; بقوانين De Morgan<br>≡ (p ∨ ¬q) ∧ (p ∨ q) &nbsp; بالـ double negative law<br>≡ p ∨ (¬q ∧ q) &nbsp; بالـ distributive law<br>≡ p ∨ (q ∧ ¬q) &nbsp; بالـ commutative law للـ ∧<br>≡ p ∨ c &nbsp; بالـ negation law<br>≡ p &nbsp; بالـ identity law ■ (L4)"
+       "ans": "نبدأ من:<span class=\"ltr\">¬(¬p ∧ q) ∧ (p ∨ q)</span><span class=\"ltr\">≡ (¬(¬p) ∨ ¬q) ∧ (p ∨ q)</span>بقوانين De Morgan<span class=\"ltr\">≡ (p ∨ ¬q) ∧ (p ∨ q)</span>بالـ double negative law<span class=\"ltr\">≡ p ∨ (¬q ∧ q)</span>بالـ distributive law<span class=\"ltr\">≡ p ∨ (q ∧ ¬q)</span>بالـ commutative law للـ <bdi dir=\"ltr\">∧</bdi><span class=\"ltr\">≡ p ∨ c</span>بالـ negation law<span class=\"ltr\">≡ p</span>بالـ identity law ■ <bdi dir=\"ltr\">(L4)</bdi>"
       }
      ]
     }
@@ -2798,192 +2798,192 @@ AR.dm = {
     {
      "items": [
       {
-       "why": "لو |S| = n يبقى |P(S)| = 2ⁿ، لأن كل element يا إما جوه الـ subset يا إما برّه: 2³ = 8 (∅، وتلات singletons، وتلات pairs، و{1, 2, 3}) (L1, Power set).",
+       "why": "لو <bdi dir=\"ltr\">|S|&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">|P(S)|&nbsp;=&nbsp;2ⁿ</bdi>، لأن كل element يا إما جوه الـ subset يا إما برّه، فالعدد:<span class=\"ltr\">2³ = 8</span>وهم ∅، وتلات singletons، وتلات pairs، و <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi> <bdi dir=\"ltr\">(L1, Power set)</bdi>.",
        "ow": [
-        "3 دي n، يعني عدد الـ elements بتاعة {1, 2, 3}. السؤال بيسأل عن عدد الـ subsets، وده 2ⁿ = 2³ = 8.",
-        "4 = 2² ده عدد الـ subsets لـ set فيها 2 elements زي {a, b}. مع 3 elements العدد 2³ = 8.",
+        "الـ 3 دي n، يعني عدد الـ elements بتاعة <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3}</bdi>. السؤال بيسأل عن عدد الـ subsets، وده <bdi dir=\"ltr\">2ⁿ&nbsp;=&nbsp;2³&nbsp;=&nbsp;8</bdi>.",
+        "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2²</bdi> ده عدد الـ subsets لـ set فيها 2 elements زي <bdi dir=\"ltr\">{a,&nbsp;b}</bdi>. مع 3 elements العدد <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>.",
         "6 مش power of 2؛ وعدد الـ subsets دايمًا 2ⁿ.",
         null
        ]
       },
       {
-       "why": "A′ = {x : x ∈ U but x ∉ A} = U − A. لما تشيل 1 و2 من {1, 2, 3, 4, 5} يفضل {3, 4, 5} (L2, Complement).",
+       "why": "التعريف:<span class=\"ltr\">A′ = {x : x ∈ U but x ∉ A} = U − A</span>لما تشيل 1 و 2 من <bdi dir=\"ltr\">{1,&nbsp;2,&nbsp;3,&nbsp;4,&nbsp;5}</bdi> يفضل <bdi dir=\"ltr\">{3,&nbsp;4,&nbsp;5}</bdi> <bdi dir=\"ltr\">(L2, Complement)</bdi>.",
        "ow": [
         null,
-        "الـ 4 كمان موجودة في U ومش في A، فهي من الـ A′ برضه. لو شلتها يطلع {3, 5}؛ لكن الـ complement كامل هو U − A = {3, 4, 5}.",
-        "1 ∈ A، فمينفعش تبقى في الـ A′ (الـ complement فيه بس الـ elements اللي برّه A)؛ وكمان الـ 4 ناقصة. A′ = {3, 4, 5}.",
-        "{1, 2} دي A نفسها. الـ complement هو كل اللي في U ومش في A: U − A = {3, 4, 5}."
+        "الـ 4 كمان موجودة في U ومش في A، فهي من الـ <bdi dir=\"ltr\">A′</bdi> برضه. لو شلتها يطلع <bdi dir=\"ltr\">{3,&nbsp;5}</bdi>؛ لكن الـ complement كامل هو <bdi dir=\"ltr\">U&nbsp;−&nbsp;A&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;5}</bdi>.",
+        "بما إن <bdi dir=\"ltr\">1&nbsp;∈&nbsp;A</bdi>، فمينفعش تبقى في الـ <bdi dir=\"ltr\">A′</bdi> (الـ complement فيه بس الـ elements اللي برّه A)؛ وكمان الـ 4 ناقصة. الـ <bdi dir=\"ltr\">A′&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;5}</bdi>.",
+        "الـ <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> دي A نفسها. الـ complement هو كل اللي في U ومش في A، يعني <bdi dir=\"ltr\">U&nbsp;−&nbsp;A&nbsp;=&nbsp;{3,&nbsp;4,&nbsp;5}</bdi>."
        ]
       },
       {
-       "why": "الـ sets بتبقى equal لما يكون فيها نفس الـ elements (A ⊆ B و B ⊆ A)؛ والترتيب مش فارق، فـ {1, 2, 3} = {3, 2, 1} (L1, Types of sets).",
+       "why": "الـ sets بتبقى equal لما يكون فيها نفس الـ elements (<bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> و <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>)؛ والترتيب مش فارق، فـ:<span class=\"ltr\">{1, 2, 3} = {3, 2, 1}</span>المرجع <bdi dir=\"ltr\">(L1, Types of sets)</bdi>.",
        "ow": [
         null,
         "الـ sets مختلفة: الـ 3 موجودة في الأولى ومش في التانية، والـ 4 في التانية ومش في الأولى. الـ equal sets لازم يكون فيها نفس الـ elements بالظبط.",
         "مشتركين في الـ element 3 بس؛ الـ 1 و2 ناقصين من التانية، والـ 4 و5 ناقصين من الأولى، فولا واحدة فيهم subset من التانية.",
-        "الـ 2 في الأولى ومش في التانية (والـ 4 العكس)، فـ {2, 3} ⊄ {3, 4}. الـ equality محتاجة A ⊆ B و B ⊆ A."
+        "الـ 2 في الأولى ومش في التانية (والـ 4 العكس)، فـ <bdi dir=\"ltr\">{2,&nbsp;3}&nbsp;⊄&nbsp;{3,&nbsp;4}</bdi>. الـ equality محتاجة <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> و <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>."
        ]
       },
       {
-       "why": "فيها كل الـ 2² = 4 subsets، ومنهم ∅ والـ set نفسها.",
+       "why": "فيها كل الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets، ومنهم ∅ والـ set نفسها.",
        "ow": [
         null,
-        "{{a, b}} فيها subset واحدة بس، الـ set نفسها. الـ power set فيها كل الـ 2² = 4 subsets، فناقص ∅ و{a} و{b}.",
-        "هنا مكتوب بس الـ subsets اللي فيها element واحد. خلي بالك إن ∅ والـ set {a, b} نفسها دايمًا members في الـ P(S)، فناقص 2 subsets.",
+        "الـ <bdi dir=\"ltr\">{{a,&nbsp;b}}</bdi> فيها subset واحدة بس، الـ set نفسها. الـ power set فيها كل الـ <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets، فناقص ∅ و <bdi dir=\"ltr\">{a}</bdi> و <bdi dir=\"ltr\">{b}</bdi>.",
+        "هنا مكتوب بس الـ subsets اللي فيها element واحد. خلي بالك إن ∅ والـ set <bdi dir=\"ltr\">{a,&nbsp;b}</bdi> نفسها دايمًا members في الـ <bdi dir=\"ltr\">P(S)</bdi>، فناقص 2 subsets.",
         "دي الـ set نفسها، مش الـ set اللي فيها الـ subsets بتاعتها."
        ]
       },
       {
-       "why": "بالتعريف، A ⊆ B معناها إن كل element في A موجود كمان في B؛ وB ممكن يكون فيها elements زيادة (L1, Types of sets: Subset).",
+       "why": "بالتعريف، <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> معناها إن كل element في A موجود كمان في B؛ و B ممكن يكون فيها elements زيادة <bdi dir=\"ltr\">(L1, Types of sets: Subset)</bdi>.",
        "ow": [
         "«كل element في B موجود في A» ده تعريف B ⊆ A، يعني الـ inclusion المعكوس. A ⊆ B مبتقولش حاجة عن باقي الـ elements بتاعة B.",
         null,
-        "إن مفيش elements مشتركة معناها A ∩ B = ∅، وده تعريف الـ disjoint sets. الـ subset بتشارك B في كل الـ elements بتاعتها.",
-        "∅ ⊆ B صح لأي B، بس دي حالة واحدة بس. مثلًا {1} ⊆ {1, 2} وA مش فاضية، فـ A ⊆ B مش بتجبر إن A = ∅."
+        "إن مفيش elements مشتركة معناها <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;∅</bdi>، وده تعريف الـ disjoint sets. الـ subset بتشارك B في كل الـ elements بتاعتها.",
+        "الـ <bdi dir=\"ltr\">∅&nbsp;⊆&nbsp;B</bdi> صح لأي B، بس دي حالة واحدة بس. مثلًا <bdi dir=\"ltr\">{1}&nbsp;⊆&nbsp;{1,&nbsp;2}</bdi> و A مش فاضية، فـ <bdi dir=\"ltr\">A&nbsp;⊆&nbsp;B</bdi> مش بتجبر إن <bdi dir=\"ltr\">A&nbsp;=&nbsp;∅</bdi>."
        ]
       },
       {
        "why": "الـ complement بتاع الـ union هو الـ intersection بتاع الـ complements.",
        "ow": [
-        "الـ commutative law بيبدّل الترتيب بس: A ∪ B = B ∪ A و A ∩ B = B ∩ A. مفيهوش complements خالص.",
-        "الـ associative law بيعيد ترتيب الأقواس لنفس الـ operation بس: A ∪ (B ∪ C) = (A ∪ B) ∪ C. مفيش complements.",
+        "الـ commutative law بيبدّل الترتيب بس:<span class=\"ltr\">A ∪ B = B ∪ A, A ∩ B = B ∩ A</span>مفيهوش complements خالص.",
+        "الـ associative law بيعيد ترتيب الأقواس لنفس الـ operation بس:<span class=\"ltr\">A ∪ (B ∪ C) = (A ∪ B) ∪ C</span>مفيش complements.",
         null,
-        "الـ distributive law بيوزّع operation على التانية: A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C). مش بياخد complement لأي حاجة."
+        "الـ distributive law بيوزّع operation على التانية:<span class=\"ltr\">A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)</span>مش بياخد complement لأي حاجة."
        ]
       },
       {
-       "why": "الـ set لازم تبقى well defined: يعني دايمًا يبقى واضح إذا كان الـ object ينتمي ليها ولا لأ. «Even numbers less than 10» بتدي بالظبط {2, 4, 6, 8} (L1, What is a set?).",
+       "why": "الـ set لازم تبقى well defined: يعني دايمًا يبقى واضح إذا كان الـ object ينتمي ليها ولا لأ. الـ «Even numbers less than 10» بتدي بالظبط <bdi dir=\"ltr\">{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi> <bdi dir=\"ltr\">(L1, What is a set?)</bdi>.",
        "ow": [
-        "«Tall» مالهاش حد ثابت، فمش دايمًا واضح الطالب ينتمي ولا لأ. المحاضرة بتذكر «tall students» كمثال لحاجة مش well defined.",
+        "كلمة «Tall» مالهاش حد ثابت، فمش دايمًا واضح الطالب ينتمي ولا لأ. المحاضرة بتذكر «tall students» كمثال لحاجة مش well defined.",
         null,
-        "«Good» دي مسألة رأي، فالانتماء مش واضح. المحاضرة بتدي «good teachers» كمثال لـ collection مش well defined.",
-        "«Beautiful» حاجة subjective، والناس هتختلف مين ينتمي. المحاضرة بتستخدم «beautiful cities» كـ collection مش well defined."
+        "كلمة «Good» دي مسألة رأي، فالانتماء مش واضح. المحاضرة بتدي «good teachers» كمثال لـ collection مش well defined.",
+        "كلمة «Beautiful» حاجة subjective، والناس هتختلف مين ينتمي. المحاضرة بتستخدم «beautiful cities» كـ collection مش well defined."
        ]
       },
       {
-       "why": "A ∩ B = {x | x ∈ A and x ∈ B}: الـ elements الوحيدة اللي في الاتنين هي 4 و8، فـ A ∩ B = {4, 8} (L2, Intersection).",
+       "why": "التعريف:<span class=\"ltr\">A ∩ B = {x | x ∈ A and x ∈ B}</span>الـ elements الوحيدة اللي في الاتنين هي 4 و 8، فـ <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;{4,&nbsp;8}</bdi> <bdi dir=\"ltr\">(L2, Intersection)</bdi>.",
        "ow": [
-        "{2, 6} دول الـ elements اللي في A ومش في B، يعني A − B. الـ intersection بياخد المشترك بس، {4, 8}.",
+        "الـ <bdi dir=\"ltr\">{2,&nbsp;6}</bdi> دول الـ elements اللي في A ومش في B، يعني <bdi dir=\"ltr\">A&nbsp;−&nbsp;B</bdi>. الـ intersection بياخد المشترك بس، <bdi dir=\"ltr\">{4,&nbsp;8}</bdi>.",
         null,
-        "{2, 4, 6, 8, 10, 12} فيها كل حاجة في أي set من الاتنين، وده A ∪ B. الـ intersection بياخد المشترك بس {4, 8}.",
-        "∅ معناها إن الـ sets دي disjoint، بس 4 و8 موجودين في الاتنين. فـ A ∩ B = {4, 8}."
+        "الـ <bdi dir=\"ltr\">{2, 4, 6, 8, 10, 12}</bdi> فيها كل حاجة في أي set من الاتنين، وده <bdi dir=\"ltr\">A&nbsp;∪&nbsp;B</bdi>. الـ intersection بياخد المشترك بس <bdi dir=\"ltr\">{4,&nbsp;8}</bdi>.",
+        "الـ ∅ معناها إن الـ sets دي disjoint، بس 4 و 8 موجودين في الاتنين. فـ <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B&nbsp;=&nbsp;{4,&nbsp;8}</bdi>."
        ]
       },
       {
-       "why": "A′ = U − A: شيل 2 و4 و6 من {1, …, 6} يفضل {1, 3, 5} (L2, Complement).",
+       "why": "الـ <bdi dir=\"ltr\">A′&nbsp;=&nbsp;U&nbsp;−&nbsp;A</bdi>، يعني شيل 2 و 4 و 6 من <bdi dir=\"ltr\">{1,&nbsp;…,&nbsp;6}</bdi> يفضل <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5}</bdi> <bdi dir=\"ltr\">(L2, Complement)</bdi>.",
        "ow": [
-        "الـ 2 في A، فمينفعش تبقى في الـ A′، والـ 5 (اللي برّه A) ناقصة. A′ = U − A = {1, 3, 5}.",
+        "الـ 2 في A، فمينفعش تبقى في الـ <bdi dir=\"ltr\">A′</bdi>، والـ 5 (اللي برّه A) ناقصة. الـ <bdi dir=\"ltr\">A′ = U − A = {1, 3, 5}</bdi>.",
         null,
-        "{1, …, 6} دي U نفسها. الـ complement لازم يستبعد الـ elements بتاعة A (2، 4، 6)، فيفضل {1, 3, 5}.",
-        "A′ بتبقى فاضية بس لما A = U. هنا 1 و3 و5 في U ومش في A، فـ A′ = {1, 3, 5}."
+        "الـ <bdi dir=\"ltr\">{1,&nbsp;…,&nbsp;6}</bdi> دي U نفسها. الـ complement لازم يستبعد الـ elements بتاعة A (2 و 4 و 6)، فيفضل <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5}</bdi>.",
+        "الـ <bdi dir=\"ltr\">A′</bdi> بتبقى فاضية بس لما <bdi dir=\"ltr\">A&nbsp;=&nbsp;U</bdi>. هنا 1 و 3 و 5 في U ومش في A، فـ <bdi dir=\"ltr\">A′&nbsp;=&nbsp;{1,&nbsp;3,&nbsp;5}</bdi>."
        ]
       },
       {
-       "why": "L1 (الإجابة النموذجية بتعتبر الأرقام الزوجية موجبة).",
-       "ow": [
-        null,
-        "{1, 3, 5, 7, 9} دي الأرقام الفردية اللي أقل من 10. الـ property طالبة الأرقام الزوجية، وده بيدي {2, 4, 6, 8}.",
-        "الـ 10 مش أقل من 10، فمينفعش تتحط (وكمان، حسب الـ convention بتاع المحاضرة، الإجابة النموذجية سايبة الـ 0 برّه). A = {2, 4, 6, 8}.",
-        "ده واقف عند 6، بس 8 زوجي وأقل من 10، فلازم تبقى موجودة. A = {2, 4, 6, 8}."
-       ]
-      },
-      {
-       "why": "De Morgan's law: ¬(p ∧ q) ≡ ¬p ∨ ¬q. اعمل negation لكل جزء وغيّر الـ ∧ لـ ∨ (Theorem 1.1.1, law 9) (L4).",
+       "why": "المرجع <bdi dir=\"ltr\">L1</bdi> (الإجابة النموذجية بتعتبر الأرقام الزوجية موجبة).",
        "ow": [
         null,
-        "¬P ∧ ¬Q دي الـ De Morgan law التانية، بتاعة ¬(P ∨ Q). في ¬(P ∧ Q) لازم الـ ∧ كمان تتقلب لـ ∨.",
-        "P ∧ Q هي الأصل من غير الـ negation؛ قيمتها عكس ¬(P ∧ Q) في كل row.",
-        "P ∨ Q مفيهاش negation لأي حاجة. في الـ row T, T قيمتها T بينما ¬(P ∧ Q) قيمتها F، فهما مختلفين."
+        "الـ <bdi dir=\"ltr\">{1,&nbsp;3,&nbsp;5,&nbsp;7,&nbsp;9}</bdi> دي الأرقام الفردية اللي أقل من 10. الـ property طالبة الأرقام الزوجية، وده بيدي <bdi dir=\"ltr\">{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi>.",
+        "الـ 10 مش أقل من 10، فمينفعش تتحط (وكمان، حسب الـ convention بتاع المحاضرة، الإجابة النموذجية سايبة الـ 0 برّه). الـ <bdi dir=\"ltr\">A&nbsp;=&nbsp;{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi>.",
+        "ده واقف عند 6، بس 8 زوجي وأقل من 10، فلازم تبقى موجودة. الـ <bdi dir=\"ltr\">A&nbsp;=&nbsp;{2,&nbsp;4,&nbsp;6,&nbsp;8}</bdi>."
        ]
       },
       {
-       "why": "الـ De Morgan's laws، ~(p ∧ q) ≡ ~p ∨ ~q و ~(p ∨ q) ≡ ~p ∧ ~q، بتدخّل الـ negation جوه القوس وتقلب الـ connective (Theorem 1.1.1, law 9) (L4).",
+       "why": "الـ De Morgan's law:<span class=\"ltr\">¬(p ∧ q) ≡ ¬p ∨ ¬q</span>اعمل negation لكل جزء وغيّر الـ <bdi dir=\"ltr\">∧</bdi> لـ <bdi dir=\"ltr\">∨</bdi> <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
+       "ow": [
+        null,
+        "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;¬Q</bdi> دي الـ De Morgan law التانية، بتاعة <bdi dir=\"ltr\">¬(P&nbsp;∨&nbsp;Q)</bdi>. في <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> لازم الـ <bdi dir=\"ltr\">∧</bdi> كمان تتقلب لـ <bdi dir=\"ltr\">∨</bdi>.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> هي الأصل من غير الـ negation؛ قيمتها عكس <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> في كل row.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> مفيهاش negation لأي حاجة. في الـ row <bdi dir=\"ltr\">T,&nbsp;T</bdi> قيمتها T بينما <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> قيمتها F، فهما مختلفين."
+       ]
+      },
+      {
+       "why": "الـ De Morgan's laws:<span class=\"ltr\">~(p ∧ q) ≡ ~p ∨ ~q</span><span class=\"ltr\">~(p ∨ q) ≡ ~p ∧ ~q</span>بتدخّل الـ negation جوه القوس وتقلب الـ connective <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
        "ow": [
         "الـ commutative law بيبدّل الترتيب بس، p ∧ q ≡ q ∧ p، من غير negation. إدخال الـ ¬ جوه القوس ده De Morgan.",
         "الـ distributive law بيوزّع connective على connective تاني، p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r). مش بيحرّك negation.",
         null,
-        "الـ associative law بيعيد ترتيب الأقواس لنفس الـ connective، (p ∧ q) ∧ r ≡ p ∧ (q ∧ r). عمره ما بيضيف أو يحرّك negation."
+        "الـ associative law بيعيد ترتيب الأقواس لنفس الـ connective:<span class=\"ltr\">(p ∧ q) ∧ r ≡ p ∧ (q ∧ r)</span>عمره ما بيضيف أو يحرّك negation."
        ]
       },
       {
-       "why": "P ∧ Q بتبقى true بس لما الاتنين يبقوا true؛ وبما إن Q false، يبقى T ∧ F = F (L3, Truth tables of the connectives).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> بتبقى true بس لما الاتنين يبقوا true؛ وبما إن Q false، يبقى <bdi dir=\"ltr\">T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3, Truth tables of the connectives)</bdi>.",
        "ow": [
-        "الـ conjunction بتبقى true بس لما الجزئين يبقوا true. وQ هنا false، فـ P ∧ Q = T ∧ F = F.",
+        "الـ conjunction بتبقى true بس لما الجزئين يبقوا true. و Q هنا false، فـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q&nbsp;=&nbsp;T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi>.",
         null,
-        "كل combination من الـ truth values ليها نتيجة محددة في الـ truth table. الـ row P = T, Q = F بيدي P ∧ Q = F.",
-        "الـ proposition يا true يا false ومش الاتنين، وده ينطبق على أي compound من الـ propositions. هنا T ∧ F = F."
+        "كل combination من الـ truth values ليها نتيجة محددة في الـ truth table. الـ row <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> بيدي <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q&nbsp;=&nbsp;F</bdi>.",
+        "الـ proposition يا true يا false ومش الاتنين، وده ينطبق على أي compound من الـ propositions. هنا <bdi dir=\"ltr\">T&nbsp;∧&nbsp;F&nbsp;=&nbsp;F</bdi>."
        ]
       },
       {
-       "why": "الـ disjunction بتبقى false بس لما الجزئين يبقوا false؛ هنا P true، فـ T ∨ F = T (L3, Truth tables of the connectives).",
+       "why": "الـ disjunction بتبقى false بس لما الجزئين يبقوا false؛ هنا P true، فـ <bdi dir=\"ltr\">T&nbsp;∨&nbsp;F&nbsp;=&nbsp;T</bdi> <bdi dir=\"ltr\">(L3, Truth tables of the connectives)</bdi>.",
        "ow": [
         null,
-        "P ∨ Q بتبقى false بس لما P وQ الاتنين false. هنا P true، فـ T ∨ F = T.",
-        "الـ proposition يا true يا false ومش الاتنين. الـ row T, F في الـ truth table بيدي P ∨ Q = T.",
-        "كل row في الـ truth table ليه قيمة؛ والـ row P = T, Q = F بيدي P ∨ Q = T."
+        "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بتبقى false بس لما P و Q الاتنين false. هنا P true، فـ <bdi dir=\"ltr\">T&nbsp;∨&nbsp;F&nbsp;=&nbsp;T</bdi>.",
+        "الـ proposition يا true يا false ومش الاتنين. الـ row <bdi dir=\"ltr\">T,&nbsp;F</bdi> في الـ truth table بيدي <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q&nbsp;=&nbsp;T</bdi>.",
+        "كل row في الـ truth table ليه قيمة؛ والـ row <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> بيدي <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q&nbsp;=&nbsp;T</bdi>."
        ]
       },
       {
-       "why": "P → Q بتبقى false بس لما الـ antecedent يبقى true والـ consequent false، وده بالظبط الـ row ده: T → F = F (L3, Connectives).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى false بس لما الـ antecedent يبقى true والـ consequent false، وده بالظبط الـ row ده: <bdi dir=\"ltr\">T&nbsp;→&nbsp;F&nbsp;=&nbsp;F</bdi> <bdi dir=\"ltr\">(L3, Connectives)</bdi>.",
        "ow": [
-        "الـ implication بتبقى true في كل الحالات ما عدا antecedent true مع consequent false، وT → F هي بالظبط الحالة دي. فـ P → Q = F.",
+        "الـ implication بتبقى true في كل الحالات ما عدا antecedent true مع consequent false، و <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi> هي بالظبط الحالة دي. فـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;F</bdi>.",
         null,
-        "الـ compound proposition يا true يا false، عمرها ما تبقى الاتنين. هنا T → F بتدي قيمة واحدة بس، F.",
-        "الـ implication ليها قيمة في كل row من الـ truth table بتاعها. لما P = T, Q = F قيمتها F."
+        "الـ compound proposition يا true يا false، عمرها ما تبقى الاتنين. هنا <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi> بتدي قيمة واحدة بس، F.",
+        "الـ implication ليها قيمة في كل row من الـ truth table بتاعها. لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> قيمتها F."
        ]
       },
       {
        "why": "الـ antecedent لما يبقى false الـ implication بتبقى true.",
        "ow": [
         null,
-        "الـ implication بتبقى false بس في T → F. هنا الـ antecedent P قيمته false، فـ F → T = T.",
-        "الـ proposition يا true يا false، عمرها ما تبقى الاتنين. الـ row P = F, Q = T بيدي P → Q = T.",
-        "كل row في الـ truth table ليه قيمة. ولما الـ antecedent يبقى false، P → Q = T."
+        "الـ implication بتبقى false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>. هنا الـ antecedent P قيمته false، فـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;T&nbsp;=&nbsp;T</bdi>.",
+        "الـ proposition يا true يا false، عمرها ما تبقى الاتنين. الـ row <bdi dir=\"ltr\">P&nbsp;=&nbsp;F,&nbsp;Q&nbsp;=&nbsp;T</bdi> بيدي <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>.",
+        "كل row في الـ truth table ليه قيمة. ولما الـ antecedent يبقى false، يبقى <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;=&nbsp;T</bdi>."
        ]
       },
       {
-       "why": "P ∧ ¬P قيمتها F في الـ rows الاتنين لأن P و¬P مينفعش يبقوا true مع بعض: دي contradiction، والـ negation law بيقول p ∧ ~p ≡ c (L4, Example 1.1.13).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P</bdi> قيمتها F في الـ rows الاتنين لأن P و <bdi dir=\"ltr\">¬P</bdi> مينفعش يبقوا true مع بعض: دي contradiction، والـ negation law بيقول <bdi dir=\"ltr\">p&nbsp;∧&nbsp;~p&nbsp;≡&nbsp;c</bdi> <bdi dir=\"ltr\">(L4, Example 1.1.13)</bdi>.",
        "ow": [
-        "عمرها ما بتبقى true: P و¬P دايمًا قيمهم عكس بعض، فعمرهم ما يبقوا T مع بعض.",
+        "عمرها ما بتبقى true: الـ P و <bdi dir=\"ltr\">¬P</bdi> دايمًا قيمهم عكس بعض، فعمرهم ما يبقوا T مع بعض.",
         null,
         "هي false في كل row، مش true أحيانًا. الـ conjunction بين statement والـ negation بتاعته دي contradiction.",
         "الـ rows الاتنين ليهم قيمة، F. الـ contradiction دي statement form معرّفة تمامًا."
        ]
       },
       {
-       "why": "P ∨ ¬P قيمتها T في الـ rows الاتنين لأن واحدة من P و¬P دايمًا true: دي tautology، والـ negation law بيقول p ∨ ~p ≡ t (L4, Example 1.1.13).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;¬P</bdi> قيمتها T في الـ rows الاتنين لأن واحدة من P و <bdi dir=\"ltr\">¬P</bdi> دايمًا true: دي tautology، والـ negation law بيقول <bdi dir=\"ltr\">p&nbsp;∨&nbsp;~p&nbsp;≡&nbsp;t</bdi> <bdi dir=\"ltr\">(L4, Example 1.1.13)</bdi>.",
        "ow": [
         null,
         "اللي دايمًا false هي P ∧ ¬P (الـ contradiction). مع الـ ∨ فيه جزء دايمًا true، فهي دايمًا T.",
-        "هي true في كل row، مش في بعضهم بس: لما P = T يبقى P true، ولما P = F يبقى ¬P true.",
+        "هي true في كل row، مش في بعضهم بس: لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> يبقى P true، ولما <bdi dir=\"ltr\">P&nbsp;=&nbsp;F</bdi> يبقى <bdi dir=\"ltr\">¬P</bdi> true.",
         "الـ rows الاتنين في الـ truth table ليهم قيمة، T. مفيش حاجة undefined."
        ]
       },
       {
        "why": "يا p يا ¬p دايمًا واحد فيهم true، فـ p ∨ ¬p قيمتها T في الـ rows الاتنين؛ والـ negation law بيدي p ∨ ¬p ≡ t (L4, Example 1.1.13).",
        "ow": [
-        "p ∧ ¬p محتاجة p و¬p يبقوا true مع بعض، وده عمره ما بيحصل، فهي دايمًا false: دي contradiction (Theorem 1.1.1, negation law).",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> محتاجة p و <bdi dir=\"ltr\">¬p</bdi> يبقوا true مع بعض، وده عمره ما بيحصل، فهي دايمًا false: دي contradiction <bdi dir=\"ltr\">(Theorem 1.1.1, negation law)</bdi>.",
         null,
-        "¬p ∧ ¬Q بتبقى true بس لما p وQ الاتنين false؛ أي variable قيمته true بيخليها F، فهي مش دايمًا true.",
-        "¬(p ∧ Q) قيمتها F في الـ row p = T, Q = T، فهي مش tautology. وهي بتساوي ¬p ∨ ¬Q بـ De Morgan."
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬Q</bdi> بتبقى true بس لما p و Q الاتنين false؛ أي variable قيمته true بيخليها F، فهي مش دايمًا true.",
+        "الـ <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;Q)</bdi> قيمتها F في الـ row <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;T</bdi>، فهي مش tautology. وهي بتساوي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬Q</bdi> بـ De Morgan."
        ]
       },
       {
-       "why": "P و¬P دايمًا قيمهم عكس بعض، فعمرهم ما يبقوا true مع بعض وP ∧ ¬P قيمتها F في كل row؛ والـ negation law بيقول P ∧ ¬P ≡ c (L4, Example 1.1.13).",
+       "why": "الـ P و <bdi dir=\"ltr\">¬P</bdi> دايمًا قيمهم عكس بعض، فعمرهم ما يبقوا true مع بعض و <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P</bdi> قيمتها F في كل row؛ والـ negation law بيقول <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬P&nbsp;≡&nbsp;c</bdi> <bdi dir=\"ltr\">(L4, Example 1.1.13)</bdi>.",
        "ow": [
-        "P ∨ Q بتبقى true في 3 من 4 rows (false بس في F, F). الـ contradiction لازم تبقى false في كل row.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> بتبقى true في 3 من 4 rows (false بس في <bdi dir=\"ltr\">F,&nbsp;F</bdi>). الـ contradiction لازم تبقى false في كل row.",
         null,
-        "P → Q بتبقى true في 3 من 4 rows (false بس في T → F)، فهي مش دايمًا false.",
-        "P ↔ Q بتبقى true في الـ rows TT وFF (لما القيم متساوية)، فهي مش contradiction."
+        "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> بتبقى true في 3 من 4 rows (false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>)، فهي مش دايمًا false.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> بتبقى true في الـ rows TT و FF (لما القيم متساوية)، فهي مش contradiction."
        ]
       },
       {
-       "why": "الـ truth table اللي فيه n variables بيبقى فيه 2ⁿ rows، لأن كل variable يا T يا F: 2³ = 8 rows (L3, Vocabulary).",
+       "why": "الـ truth table اللي فيه n variables بيبقى فيه <bdi dir=\"ltr\">2ⁿ</bdi> rows، لأن كل variable يا T يا F، يعني <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi> rows <bdi dir=\"ltr\">(L3, Vocabulary)</bdi>.",
        "ow": [
-        "4 = 2² ده عدد الـ rows لـ 2 variables. مع 3 variables بيبقى فيه 2³ = 8 rows.",
-        "6 = 2 × 3 ده ضرب بدل ما يبقى أُس. كل variable بيضاعف عدد الـ rows: 2³ = 8.",
+        "الـ <bdi dir=\"ltr\">4&nbsp;=&nbsp;2²</bdi> ده عدد الـ rows لـ 2 variables. مع 3 variables بيبقى فيه <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi> rows.",
+        "الـ <bdi dir=\"ltr\">6&nbsp;=&nbsp;2&nbsp;×&nbsp;3</bdi> ده ضرب بدل ما يبقى أُس. كل variable بيضاعف عدد الـ rows، يعني <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>.",
         null,
-        "12 مش power of 2، فمينفعش يبقى عدد rows في truth table. مع 3 variables العدد 2³ = 8."
+        "الـ 12 مش power of 2، فمينفعش يبقى عدد rows في truth table. مع 3 variables العدد <bdi dir=\"ltr\">2³&nbsp;=&nbsp;8</bdi>."
        ]
       },
       {
@@ -2992,79 +2992,79 @@ AR.dm = {
         "الـ columns بتاعتهم في الـ truth table متفقة في كل row (الاتنين T بس في TT)، والـ columns المتفقة معناها logically equivalent.",
         null,
         "الـ equivalence معناها إن الـ columns تتفق في كل الـ rows؛ مفيش حاجة اسمها «أحيانًا». هنا متفقين في كل حتة، فهما equivalent.",
-        "Contradictory معناها قيم عكس بعض، بس P ∧ Q وQ ∧ P ليهم نفس القيمة في كل row."
+        "الـ Contradictory معناها قيم عكس بعض، بس <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> و <bdi dir=\"ltr\">Q&nbsp;∧&nbsp;P</bdi> ليهم نفس القيمة في كل row."
        ]
       },
       {
-       "why": "De Morgan's law: ¬(p ∧ q) ≡ ¬p ∨ ¬q. اعمل negation لكل جزء وغيّر الـ ∧ لـ ∨ (Theorem 1.1.1, law 9) (L4).",
+       "why": "الـ De Morgan's law:<span class=\"ltr\">¬(p ∧ q) ≡ ¬p ∨ ¬q</span>اعمل negation لكل جزء وغيّر الـ <bdi dir=\"ltr\">∧</bdi> لـ <bdi dir=\"ltr\">∨</bdi> <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
        "ow": [
         null,
-        "¬P ∧ ¬Q دي الـ De Morgan law التانية، بتاعة ¬(P ∨ Q). في ¬(P ∧ Q) لازم الـ ∧ كمان تتقلب لـ ∨.",
-        "P ∨ Q مفيهاش negation لأي حاجة. في الـ row T, T قيمتها T بينما ¬(P ∧ Q) قيمتها F، فهما مختلفين.",
-        "P ∧ Q هي الأصل من غير الـ negation؛ قيمتها عكس ¬(P ∧ Q) في كل row."
+        "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;¬Q</bdi> دي الـ De Morgan law التانية، بتاعة <bdi dir=\"ltr\">¬(P&nbsp;∨&nbsp;Q)</bdi>. في <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> لازم الـ <bdi dir=\"ltr\">∧</bdi> كمان تتقلب لـ <bdi dir=\"ltr\">∨</bdi>.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> مفيهاش negation لأي حاجة. في الـ row <bdi dir=\"ltr\">T,&nbsp;T</bdi> قيمتها T بينما <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> قيمتها F، فهما مختلفين.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> هي الأصل من غير الـ negation؛ قيمتها عكس <bdi dir=\"ltr\">¬(P&nbsp;∧&nbsp;Q)</bdi> في كل row."
        ]
       },
       {
-       "why": "P → Q ≡ ¬P ∨ Q (Table 4/Table 7): الاتنين بيبقوا false بس لما P = T وQ = F، وtrue في الـ 3 rows التانيين (L5).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q&nbsp;≡&nbsp;¬P&nbsp;∨&nbsp;Q</bdi> <bdi dir=\"ltr\">(Table 4/Table 7)</bdi>: الاتنين بيبقوا false بس لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">Q&nbsp;=&nbsp;F</bdi>، و true في الـ 3 rows التانيين <bdi dir=\"ltr\">(L5)</bdi>.",
        "ow": [
         null,
-        "في الـ row P = T, Q = F، الـ P ∨ Q قيمتها T بس P → Q قيمتها F؛ وفي الـ row F, F الـ P ∨ Q قيمتها F بس P → Q قيمتها T.",
-        "Q → P دي الـ converse؛ بتختلف في الـ rows TF وFT (مثلًا P = F, Q = T: P → Q = T بس Q → P = F).",
-        "¬P ∧ Q بتبقى T بس في الـ row F, T؛ في الـ row T, T قيمتها F بينما P → Q قيمتها T."
+        "في الـ row <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi>، الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> قيمتها T بس <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> قيمتها F؛ وفي الـ row <bdi dir=\"ltr\">F,&nbsp;F</bdi> الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;Q</bdi> قيمتها F بس <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> قيمتها T.",
+        "الـ <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> دي الـ converse؛ بتختلف في الـ rows TF و FT، مثلًا:<span class=\"ltr\">P = F, Q = T: P → Q = T, Q → P = F</span>",
+        "الـ <bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;Q</bdi> بتبقى T بس في الـ row <bdi dir=\"ltr\">F,&nbsp;T</bdi>؛ في الـ row <bdi dir=\"ltr\">T,&nbsp;T</bdi> قيمتها F بينما <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> قيمتها T."
        ]
       },
       {
-       "why": "P ↔ Q بتبقى true لما الاتنين يبقوا true (P ∧ Q) أو الاتنين false (¬P ∧ ¬Q): p ↔ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q) (L5, Table 8).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> بتبقى true لما الاتنين يبقوا true (<bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi>) أو الاتنين false (<bdi dir=\"ltr\">¬P&nbsp;∧&nbsp;¬Q</bdi>)، يعني:<span class=\"ltr\">p ↔ q ≡ (p ∧ q) ∨ (¬p ∧ ¬q)</span>المرجع <bdi dir=\"ltr\">(L5, Table 8)</bdi>.",
        "ow": [
         null,
-        "(P ∨ Q) ∧ (¬P ∨ ¬Q) معناها واحد على الأقل true ومش الاتنين، يعني واحد بالظبط true: ودي P ⊕ Q، الـ negation بتاع P ↔ Q.",
-        "P ∨ ¬Q ≡ Q → P دي اتجاه واحد بس؛ في الـ row T, F قيمتها T بينما P ↔ Q قيمتها F.",
-        "P ∧ ¬Q ≡ ¬(P → Q) بتبقى true بس في الـ row T, F، واللي فيه P ↔ Q قيمتها F، فهي مش equivalent."
+        "الـ <bdi dir=\"ltr\">(P ∨ Q) ∧ (¬P ∨ ¬Q)</bdi> معناها واحد على الأقل true ومش الاتنين، يعني واحد بالظبط true: ودي <bdi dir=\"ltr\">P&nbsp;⊕&nbsp;Q</bdi>، الـ negation بتاع <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi>.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∨&nbsp;¬Q&nbsp;≡&nbsp;Q&nbsp;→&nbsp;P</bdi> دي اتجاه واحد بس؛ في الـ row <bdi dir=\"ltr\">T,&nbsp;F</bdi> قيمتها T بينما <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> قيمتها F.",
+        "الـ <bdi dir=\"ltr\">P&nbsp;∧&nbsp;¬Q&nbsp;≡&nbsp;¬(P&nbsp;→&nbsp;Q)</bdi> بتبقى true بس في الـ row <bdi dir=\"ltr\">T,&nbsp;F</bdi>، واللي فيه <bdi dir=\"ltr\">P&nbsp;↔&nbsp;Q</bdi> قيمتها F، فهي مش equivalent."
        ]
       },
       {
-       "why": "Absorption: p ∨ (p ∧ q) ≡ p (Theorem 1.1.1, law 10). لو P قيمتها T يبقى الكل T؛ ولو P قيمتها F يبقى P ∧ Q كمان F (L4).",
+       "why": "الـ Absorption:<span class=\"ltr\">p ∨ (p ∧ q) ≡ p</span>المرجع <bdi dir=\"ltr\">(Theorem 1.1.1, law 10)</bdi>. لو P قيمتها T يبقى الكل T؛ ولو P قيمتها F يبقى <bdi dir=\"ltr\">P&nbsp;∧&nbsp;Q</bdi> كمان F <bdi dir=\"ltr\">(L4)</bdi>.",
        "ow": [
-        "Q مش بتبص على P خالص: عند P = T, Q = F الـ expression P ∨ (P ∧ Q) قيمتها T (عشان P قيمتها T) بينما Q قيمتها F.",
+        "الـ Q مش بتبص على P خالص: عند <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi> الـ expression <bdi dir=\"ltr\">P&nbsp;∨&nbsp;(P&nbsp;∧&nbsp;Q)</bdi> قيمتها T (عشان P قيمتها T) بينما Q قيمتها F.",
         null,
-        "¬P قيمتها عكس الـ expression في كل row: لما P = T الـ expression قيمتها T بس ¬P قيمتها F.",
-        "قيمتها false لما P = T, Q = F، بس الـ expression قيمتها T هناك."
+        "الـ <bdi dir=\"ltr\">¬P</bdi> قيمتها عكس الـ expression في كل row: لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T</bdi> الـ expression قيمتها T بس <bdi dir=\"ltr\">¬P</bdi> قيمتها F.",
+        "قيمتها false لما <bdi dir=\"ltr\">P&nbsp;=&nbsp;T,&nbsp;Q&nbsp;=&nbsp;F</bdi>، بس الـ expression قيمتها T هناك."
        ]
       },
       {
        "why": "الـ distributive law p ∧ (q ∨ r) ≡ (p ∧ q) ∨ (p ∧ r): الـ ∧ بتتوزّع على الـ ∨ زي ما بتفك الأقواس في الضرب (Theorem 1.1.1, law 3) (L4).",
        "ow": [
         null,
-        "(P ∨ Q) ∧ (P ∨ R) دي الـ distributive form التانية، وبتساوي P ∨ (Q ∧ R). هنا الـ ∧ هي اللي برّه، فهي اللي لازم تتوزّع.",
-        "(P ∧ Q) ∧ (P ∧ R) ≡ P ∧ Q ∧ R محتاجة Q وR الاتنين true. أما P ∧ (Q ∨ R) محتاجة واحد بس، مثلًا الـ row T, T, F بيختلف.",
-        "(P ∨ Q) ∨ (P ∨ R) ≡ P ∨ Q ∨ R بتبقى true لما P لوحدها false وQ true، بس ساعتها P ∧ (Q ∨ R) قيمتها F."
+        "الـ <bdi dir=\"ltr\">(P&nbsp;∨&nbsp;Q)&nbsp;∧&nbsp;(P&nbsp;∨&nbsp;R)</bdi> دي الـ distributive form التانية، وبتساوي <bdi dir=\"ltr\">P&nbsp;∨&nbsp;(Q&nbsp;∧&nbsp;R)</bdi>. هنا الـ <bdi dir=\"ltr\">∧</bdi> هي اللي برّه، فهي اللي لازم تتوزّع.",
+        "الصيغة:<span class=\"ltr\">(P ∧ Q) ∧ (P ∧ R) ≡ P ∧ Q ∧ R</span>محتاجة Q و R الاتنين true. أما <bdi dir=\"ltr\">P&nbsp;∧&nbsp;(Q&nbsp;∨&nbsp;R)</bdi> محتاجة واحد بس، مثلًا الـ row <bdi dir=\"ltr\">T,&nbsp;T,&nbsp;F</bdi> بيختلف.",
+        "الصيغة:<span class=\"ltr\">(P ∨ Q) ∨ (P ∨ R) ≡ P ∨ Q ∨ R</span>بتبقى true لما P لوحدها false و Q true، بس ساعتها <bdi dir=\"ltr\">P&nbsp;∧&nbsp;(Q&nbsp;∨&nbsp;R)</bdi> قيمتها F."
        ]
       },
       {
-       "why": "المجموع بيبدأ بالـ term 1، فالـ basis بيتشيك على n = 1: الـ LHS = 1 والـ RHS = 1(1 + 1)/2 = 1 (L11, Proof of 1 + 2 + … + n).",
+       "why": "المجموع بيبدأ بالـ term 1، فالـ basis بيتشيك على <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">LHS = 1, RHS = 1(1 + 1)/2 = 1</span>المرجع <bdi dir=\"ltr\">(L11, Proof of 1 + 2 + … + n)</bdi>.",
        "ow": [
-        "لو بدأت من n = 2 هتسيب n = 1 من غير إثبات، فالـ dominoes عمرها ما هتبدأ من أول حالة. الـ basis هو n = 1.",
-        "المجموع 1 + 2 + … + n بيبدأ بالـ term 1، فأول حالة هي n = 1 (LHS = 1، RHS = 1·2/2 = 1).",
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> من غير إثبات، فالـ dominoes عمرها ما هتبدأ من أول حالة. الـ basis هو <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+        "المجموع <bdi dir=\"ltr\">1&nbsp;+&nbsp;2&nbsp;+&nbsp;…&nbsp;+&nbsp;n</bdi> بيبدأ بالـ term 1، فأول حالة هي <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">LHS = 1, RHS = 1·2/2 = 1</span>",
         null,
-        "لو بدأت من n = 3 هتسيب n = 1 و2 من غير إثبات. اتشيك على أول حالة، n = 1: 1 = 1(2)/2."
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;3</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> و 2 من غير إثبات. اتشيك على أول حالة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">1 = 1(2)/2</span>"
        ]
       },
       {
-       "why": "الـ induction بيفترض P(k) (الـ hypothesis) ويستخدمه عشان يثبت P(k + 1)؛ ومع الـ basis، الحالات بتقع ورا بعض زي الـ dominoes (L11, Principle of induction).",
+       "why": "الـ induction بيفترض <bdi dir=\"ltr\">P(k)</bdi> (الـ hypothesis) ويستخدمه عشان يثبت <bdi dir=\"ltr\">P(k&nbsp;+&nbsp;1)</bdi>؛ ومع الـ basis، الحالات بتقع ورا بعض زي الـ dominoes <bdi dir=\"ltr\">(L11, Principle of induction)</bdi>.",
        "ow": [
-        "n = k ده الـ inductive hypothesis نفسه، وده بنفترضه مش بنثبته. الـ step لازم يوصل للحالة اللي بعدها، n = k + 1.",
+        "الـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi> ده الـ inductive hypothesis نفسه، وده بنفترضه مش بنثبته. الـ step لازم يوصل للحالة اللي بعدها، <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>.",
         null,
-        "إنك تثبت n = k − 1 من n = k ده رجوع لورا ومش هيوصل أبدًا لـ n أكبر. الـ step بيثبت n = k + 1.",
+        "إنك تثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;−&nbsp;1</bdi> من <bdi dir=\"ltr\">n&nbsp;=&nbsp;k</bdi> ده رجوع لورا ومش هيوصل أبدًا لـ n أكبر. الـ step بيثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi>.",
         "القفز لـ k + 2 هيفوّت قيمة كل مرة (هتغطي الـ n الفردية بس أو الزوجية بس). الـ step بيروح لـ k + 1."
        ]
       },
       {
-       "why": "الـ basis بيتشيك على أول قيمة في الـ claim، هنا n = 1: 2¹ = 2 &gt; 1؛ وبعدين الـ inductive step بيغطي كل الـ n اللي بعدها (L11, Principle of induction).",
+       "why": "الـ basis بيتشيك على أول قيمة في الـ claim، هنا <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، يعني:<span class=\"ltr\">2¹ = 2 &gt; 1</span>وبعدين الـ inductive step بيغطي كل الـ n اللي بعدها <bdi dir=\"ltr\">(L11, Principle of induction)</bdi>.",
        "ow": [
-        "الـ claim لـ n ≥ 1، فـ n = 0 مش جزء منه. الـ basis هو أول قيمة في الـ claim، n = 1 (2¹ = 2 &gt; 1).",
+        "الـ claim لـ <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi>، فـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;0</bdi> مش جزء منه. الـ basis هو أول قيمة في الـ claim، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> (<bdi dir=\"ltr\">2¹&nbsp;=&nbsp;2&nbsp;&gt;&nbsp;1</bdi>).",
         null,
-        "لو بدأت من n = 2 عمرك ما هتثبت n = 1، واللي الـ claim بيشملها. الـ basis لازم يبقى n = 1.",
-        "لو بدأت من n = 3 هتسيب n = 1 وn = 2 من غير إثبات. الـ basis هو أول قيمة، n = 1."
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> عمرك ما هتثبت <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>، واللي الـ claim بيشملها. الـ basis لازم يبقى <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+        "لو بدأت من <bdi dir=\"ltr\">n&nbsp;=&nbsp;3</bdi> هتسيب <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi> و <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> من غير إثبات. الـ basis هو أول قيمة، <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>."
        ]
       }
      ]
@@ -3076,97 +3076,97 @@ AR.dm = {
     {
      "items": [
       {
-       "why": "ده الـ Negation law: p ∨ ~p ≡ t. الفكرة إن واحد من p و ¬p لازم يكون true دايمًا، فالـ disjunction بتاعهم tautology (Theorem 1.1.1, law 5) (L4).",
+       "why": "ده الـ Negation law:<span class=\"ltr\">p ∨ ~p ≡ t</span>الفكرة إن واحد من p و <bdi dir=\"ltr\">¬p</bdi> لازم يكون true دايمًا، فالـ disjunction بتاعهم tautology <bdi dir=\"ltr\">(Theorem 1.1.1, law 5) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ F (contradiction) ده ناتج الـ negation law التاني، p ∧ ¬p ≡ c. لكن مع ∨ الناتج T.",
-        "الـ q مش موجودة أصلًا في p ∨ ¬p، و p ∨ ¬q بتطلع false لما p = F و q = T، فمش equivalent. الـ law بيدي T.",
-        "الـ q مش في الـ expression؛ p ∨ ¬p دايمًا true بينما q ممكن تبقى false. الـ negation law بيدي T."
+        "الـ F (contradiction) ده ناتج الـ negation law التاني، <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p&nbsp;≡&nbsp;c</bdi>. لكن مع <bdi dir=\"ltr\">∨</bdi> الناتج T.",
+        "الـ q مش موجودة أصلًا في <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>، و <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q</bdi> بتطلع false لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، فمش equivalent. الـ law بيدي T.",
+        "الـ q مش في الـ expression؛ والـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> دايمًا true بينما q ممكن تبقى false. الـ negation law بيدي T."
        ]
       },
       {
-       "why": "الـ disjunction هو الـ \"or\" الـ inclusive، وبيتكتب p ∨ q: بيبقى true لو p أو q (أو الاتنين) true، وfalse بس لما الاتنين false (L3, Connectives).",
+       "why": "الـ disjunction هو الـ \"or\" الـ inclusive، وبيتكتب <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>: بيبقى true لو p أو q (أو الاتنين) true، وfalse بس لما الاتنين false <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
         null,
-        "الـ p ∧ q ده الـ conjunction (\"and\")، true بس لما الاتنين true. الـ disjunction (\"or\") هو p ∨ q.",
-        "الـ \"−\" مش logical connective في المحاضرة (ده set difference). الـ disjunction بتاع p و q هو p ∨ q.",
-        "الـ \"/\" ده قسمة، مش logical connective. المحاضرة بتكتب الـ disjunction (inclusive or) كده: p ∨ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> ده الـ conjunction (\"and\")، وبيبقى true بس لما الاتنين true. الـ disjunction (\"or\") هو <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>.",
+        "الـ \"−\" مش logical connective في المحاضرة (ده set difference). الـ disjunction بتاع p و q هو <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>.",
+        "الـ \"/\" ده قسمة، مش logical connective. المحاضرة بتكتب الـ disjunction (inclusive or) كده: <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "De Morgan: ~(p ∨ q) ≡ ~p ∧ ~q. يعني \"مش (p أو q)\" معناها إن ولا واحد فيهم true (Theorem 1.1.1, law 9; Table 3) (L4).",
+       "why": "قانون الـ De Morgan:<span class=\"ltr\">~(p ∨ q) ≡ ~p ∧ ~q</span>يعني \"مش (p أو q)\" معناها إن ولا واحد فيهم true <bdi dir=\"ltr\">(Theorem 1.1.1, law 9; Table 3) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ ¬p ∨ ¬q ده الـ De Morgan law التاني، بتاع ¬(p ∧ q). خلي بالك: لما تنفي ∨ لازم تقلبها ∧.",
-        "الـ p ∧ ¬q ده نفي p → q (L5). الـ De Morgan على ¬(p ∨ q) بينفي الجزئين: ¬p ∧ ¬q.",
-        "الـ p → q ≡ ¬p ∨ q بتبقى true في 3 rows، بينما ¬(p ∨ q) true بس في الـ row F, F. فمش equivalent."
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi> ده الـ De Morgan law التاني، بتاع <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;q)</bdi>. خلي بالك: لما تنفي <bdi dir=\"ltr\">∨</bdi> لازم تقلبها <bdi dir=\"ltr\">∧</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> (L5). الـ De Morgan على <bdi dir=\"ltr\">¬(p&nbsp;∨&nbsp;q)</bdi> بينفي الجزئين: <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi> بتبقى true في 3 rows، بينما <bdi dir=\"ltr\">¬(p&nbsp;∨&nbsp;q)</bdi> true بس في الـ row <bdi dir=\"ltr\">F,&nbsp;F</bdi>. فمش equivalent."
        ]
       },
       {
-       "why": "الـ tautology هي statement form دايمًا true مهما كانت الـ truth values اللي بنحطها للـ variables، زي p ∨ ¬p (L4, Definitions).",
+       "why": "الـ tautology هي statement form دايمًا true مهما كانت الـ truth values اللي بنحطها للـ variables، زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
         null,
-        "الـ contradiction دايمًا false (زي p ∧ ¬p)، يعني عكس المطلوب. الدايمًا true هي الـ tautology.",
+        "الـ contradiction دايمًا false (زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi>)، يعني عكس المطلوب. الدايمًا true هي الـ tautology.",
         "مينفعش column يبقى كله T وكله F في نفس الوقت، فالـ proposition مينفعش تبقى الاتنين. دايمًا true يعني tautology.",
-        "الـ \"Identity\" اسم law (p ∧ t ≡ p)، مش نوع من الـ compound propositions. الدايمًا true هي الـ tautology."
+        "الـ \"Identity\" اسم <bdi dir=\"ltr\">law&nbsp;(p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p)</bdi>، مش نوع من الـ compound propositions. الدايمًا true هي الـ tautology."
        ]
       },
       {
-       "why": "الـ Identity law: p ∧ t ≡ p. الـ \"and true\" مش بتغير قيمة p، فالـ column بيطلع زي p بالظبط (Theorem 1.1.1, law 4; Example 1.1.14) (L4).",
+       "why": "الـ Identity law:<span class=\"ltr\">p ∧ t ≡ p</span>الـ \"and true\" مش بتغير قيمة p، فالـ column بيطلع زي p بالظبط <bdi dir=\"ltr\">(Theorem 1.1.1, law 4; Example 1.1.14) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ q مش موجودة في p ∧ T، فمينفعش تبقى الناتج. الـ identity law بيدي p.",
-        "الـ p ∨ q بتبقى true لما p = F و q = T، لكن p ∧ T = F هناك. الـ identity law بيدي p.",
-        "الـ T ده ناتج الـ universal bound law في p ∨ T ≡ t. مع ∧ الـ T مش بيغير حاجة، فالناتج p."
+        "الـ q مش موجودة في <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T</bdi>، فمينفعش تبقى الناتج. الـ identity law بيدي p.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، لكن هناك <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi>. الـ identity law بيدي p.",
+        "الـ T ده ناتج الـ universal bound law في <bdi dir=\"ltr\">p&nbsp;∨&nbsp;T&nbsp;≡&nbsp;t</bdi>. مع <bdi dir=\"ltr\">∧</bdi> الـ T مش بيغير حاجة، فالناتج p."
        ]
       },
       {
-       "why": "الـ power set بيجمع كل الـ 2² = 4 subsets بتوع {1, 4}: الـ ∅، والـ singletons {1} و {4}، و {1, 4} نفسها (L1, Power set).",
+       "why": "الـ power set بيجمع كل الـ subsets بتوع <bdi dir=\"ltr\">{1,&nbsp;4}</bdi>، وعددهم <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>: الـ ∅، والـ singletons <bdi dir=\"ltr\">{1}</bdi> و <bdi dir=\"ltr\">{4}</bdi>، و <bdi dir=\"ltr\">{1,&nbsp;4}</bdi> نفسها <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
        "ow": [
-        "الـ {2, 1} مش متبنية من S أصلًا: 2 مش في S، والـ elements بتاعتها أرقام مش subsets. P(S) = {∅, {1}, {4}, {1, 4}}.",
-        "الـ 0 مش subset من {1, 4}، وكمان {1} و {4} و {1, 4} ناقصين. خلي بالك كل element في P(S) هو نفسه set.",
+        "الـ <bdi dir=\"ltr\">{2,&nbsp;1}</bdi> مش متبنية من S أصلًا: 2 مش في S، والـ elements بتاعتها أرقام مش subsets. يعني:<span class=\"ltr\">P(S) = {∅, {1}, {4}, {1, 4}}</span>",
+        "الـ 0 مش subset من <bdi dir=\"ltr\">{1,&nbsp;4}</bdi>، وكمان <bdi dir=\"ltr\">{1}</bdi> و <bdi dir=\"ltr\">{4}</bdi> و <bdi dir=\"ltr\">{1,&nbsp;4}</bdi> ناقصين. خلي بالك كل element في <bdi dir=\"ltr\">P(S)</bdi> هو نفسه set.",
         null,
-        "الـ power set عمره ما يبقى فاضي: الـ ∅ و S نفسها دايمًا members في P(S). هنا P(S) فيها 2² = 4 elements."
+        "الـ power set عمره ما يبقى فاضي: الـ ∅ و S نفسها دايمًا members في <bdi dir=\"ltr\">P(S)</bdi>. هنا <bdi dir=\"ltr\">P(S)</bdi> فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements."
        ]
       },
       {
-       "why": "ده الـ Division into cases (Table 7): لو أي واحد من p أو q بيوصل لـ r، يبقى لازم p → r و q → r الاتنين يتحققوا، فـ (p ∨ q) → r ≡ (p → r) ∧ (q → r) (L5).",
+       "why": "ده الـ Division into cases (Table 7): لو أي واحد من p أو q بيوصل لـ r، يبقى لازم <bdi dir=\"ltr\">p&nbsp;→&nbsp;r</bdi> و <bdi dir=\"ltr\">q&nbsp;→&nbsp;r</bdi> الاتنين يتحققوا، يبقى:<span class=\"ltr\">(p ∨ q) → r ≡ (p → r) ∧ (q → r) (L5)</span>",
        "ow": [
         null,
-        "الـ p → q شالت r خالص. لو p = q = T و r = F، يبقى p ∨ q → r قيمتها F لكن p → q قيمتها T.",
-        "الـ q → p مفيهاش r. لو p = q = T و r = F الأصلية F لكن q → p قيمتها T.",
-        "الـ q → r بتتجاهل p. لو p = T و q = F و r = F الأصلية p ∨ q → r قيمتها F لكن q → r قيمتها T."
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> شالت r خالص. لو <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi>، يبقى <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;→&nbsp;r</bdi> قيمتها F لكن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> قيمتها T.",
+        "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> مفيهاش r. لو <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> الأصلية F لكن <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> قيمتها T.",
+        "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;r</bdi> بتتجاهل p. لو <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;F</bdi> الأصلية <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q&nbsp;→&nbsp;r</bdi> قيمتها F لكن <bdi dir=\"ltr\">q&nbsp;→&nbsp;r</bdi> قيمتها T."
        ]
       },
       {
-       "why": "في الـ division relation a = q × n + r، لما نحط r = 0 يفضل a = q × n، يعني n بتقسم a (n | a) (L8, Divisibility).",
+       "why": "في الـ division relation:<span class=\"ltr\">a = q × n + r</span>لما نحط <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> يفضل <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>، يعني n بتقسم a <bdi dir=\"ltr\">(n&nbsp;|&nbsp;a)</bdi> <bdi dir=\"ltr\">(L8,&nbsp;Divisibility)</bdi>.",
        "ow": [
         null,
-        "لما تشيل r من a = q × n + r يفضل a = q × n؛ الـ factor n مش بيختفي. a = q بس لو n = 1.",
-        "السؤال قال إن a مش صفر؛ و r = 0 معناها إن a مضاعف بالظبط لـ n، يعني a = q × n.",
-        "الـ a = n بتحصل بس في الحالة الخاصة q = 1. عمومًا r = 0 بتدي a = q × n."
+        "لما تشيل r من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi> يفضل <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>؛ الـ factor n مش بيختفي. والـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;q</bdi> بس لو <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>.",
+        "السؤال قال إن a مش صفر؛ و <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> معناها إن a مضاعف بالظبط لـ n، يعني <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>.",
+        "الـ <bdi dir=\"ltr\">a&nbsp;=&nbsp;n</bdi> بتحصل بس في الحالة الخاصة <bdi dir=\"ltr\">q&nbsp;=&nbsp;1</bdi>. عمومًا <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> بتدي <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n</bdi>."
        ]
       },
       {
-       "why": "الـ a mod n بياخد الباقي من a = q × n + r: 27 = 5 × 5 + 2، فـ 27 mod 5 = 2 (L8, Example 2.14).",
+       "why": "الـ a mod n بياخد الباقي من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>، وهنا:<span class=\"ltr\">27 = 5 × 5 + 2</span>فـ <bdi dir=\"ltr\">27&nbsp;mod&nbsp;5&nbsp;=&nbsp;2</bdi> <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>.",
        "ow": [
         null,
-        "الـ r = 3 محتاجة إن 27 − 3 = 24 تبقى مضاعف لـ 5، وده مش صح. 27 = 5 × 5 + 2، فـ r = 2.",
-        "الـ r = 1 محتاجة إن 26 تبقى مضاعف لـ 5. أكبر مضاعف لـ 5 مش أكبر من 27 هو 25، والباقي 2.",
-        "الـ r = 4 محتاجة إن 23 تبقى مضاعف لـ 5. 27 − 25 = 2، فالـ residue هو 2."
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi> محتاجة إن <bdi dir=\"ltr\">27&nbsp;−&nbsp;3&nbsp;=&nbsp;24</bdi> تبقى مضاعف لـ 5، وده مش صح. الحساب:<span class=\"ltr\">27 = 5 × 5 + 2</span>فـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;2</bdi>.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;1</bdi> محتاجة إن 26 تبقى مضاعف لـ 5. أكبر مضاعف لـ 5 مش أكبر من 27 هو 25، والباقي 2.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;4</bdi> محتاجة إن 23 تبقى مضاعف لـ 5. و <bdi dir=\"ltr\">27&nbsp;−&nbsp;25&nbsp;=&nbsp;2</bdi>، فالـ residue هو 2."
        ]
       },
       {
-       "why": "Fact 1: الـ integer 1 ليه divisor واحد بس، وهو نفسه.",
+       "why": "الـ Fact 1: الـ integer 1 ليه divisor واحد بس، وهو نفسه.",
        "ow": [
-        "الـ 2 مش بتقسم 1 (1 = 0 × 2 + 1). الـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
+        "الـ 2 مش بتقسم 1 <bdi dir=\"ltr\">(1&nbsp;=&nbsp;0&nbsp;×&nbsp;2&nbsp;+&nbsp;1)</bdi>. الـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
         null,
-        "الـ 4 مش بتقسم 1 (1 = 0 × 4 + 1). الـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
+        "الـ 4 مش بتقسم 1 <bdi dir=\"ltr\">(1&nbsp;=&nbsp;0&nbsp;×&nbsp;4&nbsp;+&nbsp;1)</bdi>. الـ Fact 1 بيقول إن الـ integer 1 ليه divisor واحد بس، هو نفسه.",
         "الـ 5 مش بتقسم 1 (الباقي 1). حسب الـ Fact 1 الـ divisor الوحيد لـ 1 هو نفسه."
        ]
       },
       {
-       "why": "الـ null graph N_n فيه n vertices ومفيهوش ولا edge، فكل vertex بيبقى isolated والـ degree بتاعه 0 (L9, Graphs, edges and degree).",
+       "why": "الـ null graph N_n فيه n vertices ومفيهوش ولا edge، فكل vertex بيبقى isolated والـ degree بتاعه 0 <bdi dir=\"ltr\">(L9, Graphs, edges and degree)</bdi>.",
        "ow": [
         null,
         "الـ null graph مفيهوش edges خالص؛ لو فيه edge واحد بس، يبقى فيه 2 vertices الـ degree بتاعهم 1 ومش isolated.",
@@ -3175,7 +3175,7 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ multigraph بيسمح بـ multiple edges بين نفس الـ pair of vertices؛ أما الـ simple graph فبيمنعهم (L9, Graphs, edges and degree).",
+       "why": "الـ multigraph بيسمح بـ multiple edges بين نفس الـ pair of vertices؛ أما الـ simple graph فبيمنعهم <bdi dir=\"ltr\">(L9, Graphs, edges and degree)</bdi>.",
        "ow": [
         null,
         "الـ graph اللي مفيهوش edges ده الـ null graph N_n. الـ multigraph تعريفه إن فيه multiple (parallel) edges.",
@@ -3184,74 +3184,74 @@ AR.dm = {
        ]
       },
       {
-       "why": "للـ discrete random variable: μ = E(X) = Σ xᵣ · f(xᵣ) = x₁f(x₁) + … + xₙf(xₙ)، يعني كل value مضروبة في الـ probability بتاعتها (L7, Expectation).",
+       "why": "للـ discrete random variable:<span class=\"ltr\">μ = E(X) = Σ xᵣ · f(xᵣ) = x₁f(x₁) + … + xₙf(xₙ)</span>يعني كل value مضروبة في الـ probability بتاعتها <bdi dir=\"ltr\">(L7,&nbsp;Expectation)</bdi>.",
        "ow": [
         null,
-        "الـ Σ x بيجمع الـ values بس ومش بيبص على احتمال كل واحدة. الـ expectation بيدي وزن لكل value: Σ x · f(x).",
-        "الـ s(x) مش متعرفة في أي حتة في المحاضرة. الـ expectation هو Σ x · f(x)، باستخدام الـ distribution f.",
-        "الـ Σ f(x) دايمًا بيساوي 1 لأي distribution (الشرط 2 في L6)، فمينفعش يبقى الـ mean. E(X) = Σ x · f(x)."
+        "الـ <bdi dir=\"ltr\">Σ&nbsp;x</bdi> بيجمع الـ values بس ومش بيبص على احتمال كل واحدة. الـ expectation بيدي وزن لكل value: <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>.",
+        "الـ <bdi dir=\"ltr\">s(x)</bdi> مش متعرفة في أي حتة في المحاضرة. الـ expectation هو <bdi dir=\"ltr\">Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>، باستخدام الـ distribution f.",
+        "الـ <bdi dir=\"ltr\">Σ&nbsp;f(x)</bdi> دايمًا بيساوي 1 لأي distribution (الشرط 2 في L6)، فمينفعش يبقى الـ mean. وإنما <bdi dir=\"ltr\">E(X)&nbsp;=&nbsp;Σ&nbsp;x&nbsp;·&nbsp;f(x)</bdi>."
        ]
       },
       {
-       "why": "الـ exclusive or بيتكتب p ⊕ q وبيبقى true لما واحد بس من p و q يكون true (و false لما الاتنين T أو الاتنين F) (L3, Connectives).",
+       "why": "الـ exclusive or بيتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> وبيبقى true لما واحد بس من p و q يكون true (و false لما الاتنين T أو الاتنين F) <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
-        "الـ p ∨ q ده الـ inclusive or، اللي بيبقى true كمان لما الاتنين true. الـ exclusive or ليه رمز خاص، p ⊕ q.",
-        "الـ p ∧ q ده conjunction (\"and\")، true بس لما الاتنين true، وده بالظبط الوقت اللي ⊕ بتبقى فيه false.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> ده الـ inclusive or، اللي بيبقى true كمان لما الاتنين true. الـ exclusive or ليه رمز خاص، <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> ده conjunction (\"and\")، وبيبقى true بس لما الاتنين true، وده بالظبط الوقت اللي <bdi dir=\"ltr\">⊕</bdi> بتبقى فيه false.",
         null,
-        "الـ \"−\" مش من الـ logical connectives بتاعة المحاضرة (ده set difference أو طرح). الـ exclusive or بيتكتب p ⊕ q."
+        "الـ \"−\" مش من الـ logical connectives بتاعة المحاضرة (ده set difference أو طرح). الـ exclusive or بيتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "الـ p ↔ q معناها \"p only if q\" (p → q) و \"p if q\" (q → p)؛ والـ truth table بيوضح إن الـ columns الاتنين متطابقين (L5, Biconditional; Table 8).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> معناها \"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi> و \"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi>؛ والـ truth table بيوضح إن الـ columns الاتنين متطابقين <bdi dir=\"ltr\">(L5, Biconditional; Table 8)</bdi>.",
        "ow": [
         null,
-        "الـ p → q اتجاه واحد بس (\"only if\")؛ في الـ row F, T قيمتها T بينما p ↔ q قيمتها F. الـ biconditional محتاج q → p كمان.",
-        "الـ ¬p بتتجاهل q: في الـ row T, T قيمتها F بينما p ↔ q قيمتها T.",
-        "الـ p ∨ q قيمتها F في الـ row F, F، لكن p ↔ q قيمتها T هناك (القيم متساوية)، و p ∨ q قيمتها T في الـ rows TF و FT اللي ↔ فيهم F."
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> اتجاه واحد بس (\"only if\")؛ في الـ row <bdi dir=\"ltr\">F,&nbsp;T</bdi> قيمتها T بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها F. الـ biconditional محتاج <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> بتتجاهل q: في الـ row T, T قيمتها F بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها T.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> قيمتها F في الـ row F, F، لكن <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها T هناك (القيم متساوية)، و <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> قيمتها T في الـ rows TF و FT اللي <bdi dir=\"ltr\">↔</bdi> فيهم F."
        ]
       },
       {
-       "why": "الـ p → q بتبقى false بس لما الـ hypothesis يكون true والـ conclusion يكون false، فـ ¬(p → q) ≡ p ∧ ¬q (Table 7؛ وبتطلع من ¬(¬p ∨ q) بـ De Morgan) (L5).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما الـ hypothesis يكون true والـ conclusion يكون false، يبقى:<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q</span>(من Table 7؛ وبتطلع من <bdi dir=\"ltr\">¬(¬p&nbsp;∨&nbsp;q)</bdi> بـ De Morgan) (L5).",
        "ow": [
-        "الـ p ∨ q بتبقى true في 3 rows، لكن ¬(p → q) true بس في الـ row p = T, q = F. الصح هو p ∧ ¬q.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true في 3 rows، لكن <bdi dir=\"ltr\">¬(p&nbsp;→&nbsp;q)</bdi> بتبقى true بس في الـ row <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;q&nbsp;=&nbsp;F</bdi>. الصح هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
         null,
-        "الـ p ∨ ¬q ≡ q → p (الـ converse)، وده true في 3 rows. نفي p → q بيبقى true في row واحد بس: p ∧ ¬q.",
-        "الـ p → q دي الـ statement الأصلية نفسها، وهي عكس نفيها في كل row. ¬(p → q) ≡ p ∧ ¬q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q&nbsp;≡&nbsp;q&nbsp;→&nbsp;p</bdi> (الـ converse)، وده true في 3 rows. نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بيبقى true في row واحد بس: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> دي الـ statement الأصلية نفسها، وهي عكس نفيها في كل row. والصح:<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q</span>"
        ]
       },
       {
-       "why": "الـ binary relation من A لـ B هي subset من A × B، واتكتبت R: A → B في امتحان 2024/25 (L11, Binary relations).",
+       "why": "الـ binary relation من A لـ B هي subset من <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi>، واتكتبت <bdi dir=\"ltr\">R:&nbsp;A&nbsp;→&nbsp;B</bdi> في امتحان <bdi dir=\"ltr\">2024/25</bdi> <bdi dir=\"ltr\">(L11, Binary relations)</bdi>.",
        "ow": [
-        "الـ B → A دي relation من B لـ A، يعني subset من B × A. الـ relation من A لـ B بتتكتب A → B.",
+        "الـ <bdi dir=\"ltr\">B&nbsp;→&nbsp;A</bdi> دي relation من B لـ A، يعني subset من <bdi dir=\"ltr\">B&nbsp;×&nbsp;A</bdi>. الـ relation من A لـ B بتتكتب <bdi dir=\"ltr\">A&nbsp;→&nbsp;B</bdi>.",
         null,
-        "الـ A − B ده set difference (L2)، set من elements مش من ordered pairs. الـ relation من A لـ B هي R: A → B.",
-        "الـ A / B مش notation بنستخدمه للـ relations. الـ relation من A لـ B بتتكتب A → B، مع R ⊆ A × B."
+        "الـ A − B ده set difference (L2)، يعني set من elements مش من ordered pairs. الـ relation من A لـ B هي <bdi dir=\"ltr\">R:&nbsp;A&nbsp;→&nbsp;B</bdi>.",
+        "الـ <bdi dir=\"ltr\">A&nbsp;/&nbsp;B</bdi> مش notation بنستخدمه للـ relations. الـ relation من A لـ B بتتكتب <bdi dir=\"ltr\">A&nbsp;→&nbsp;B</bdi>، مع <bdi dir=\"ltr\">R&nbsp;⊆&nbsp;A&nbsp;×&nbsp;B</bdi>."
        ]
       },
       {
-       "why": "الـ aRb اختصار لـ (a, b) ∈ R: يعني الـ ordered pair ده واحد من الـ elements بتاعة الـ relation (L11, Binary relations).",
+       "why": "الـ aRb اختصار لـ <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>: يعني الـ ordered pair ده واحد من الـ elements بتاعة الـ relation <bdi dir=\"ltr\">(L11, Binary relations)</bdi>.",
        "ow": [
         null,
-        "الـ → بتوصف اتجاه الـ relation (A → B)، مش إن الـ pair عضو فيها. aRb معناها (a, b) ∈ R.",
-        "الـ pair (a, b) هو element في R، فبنستخدم ∈ مش ⊂ (شوف L1، ∈ مقابل ⊆). aRb معناها (a, b) ∈ R.",
-        "الـ R دي set من pairs، فـ pair واحد مينفعش يساويها (إلا لو R فيها element واحد مكتوب كـ set). aRb معناها (a, b) ∈ R."
+        "الـ <bdi dir=\"ltr\">→</bdi> بتوصف اتجاه الـ relation <bdi dir=\"ltr\">(A&nbsp;→&nbsp;B)</bdi>، مش إن الـ pair عضو فيها. والـ aRb معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>.",
+        "الـ pair (a, b) هو element في R، فبنستخدم <bdi dir=\"ltr\">∈</bdi> مش ⊂ (شوف L1، <bdi dir=\"ltr\">∈</bdi> مقابل ⊆). aRb معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>.",
+        "الـ R دي set من pairs، فـ pair واحد مينفعش يساويها (إلا لو R فيها element واحد مكتوب كـ set). aRb معناها <bdi dir=\"ltr\">(a,&nbsp;b)&nbsp;∈&nbsp;R</bdi>."
        ]
       },
       {
-       "why": "الـ identity relation I_A بتربط كل element في A بنفسه: {(a, a) | a ∈ A}؛ مثلًا I_{1,2} = {(1,1), (2,2)} (L11, Binary relations).",
+       "why": "الـ identity relation I_A <bdi dir=\"ltr\">(L11, Binary relations)</bdi> بتربط كل element في A بنفسه:<span class=\"ltr\">{(a, a) | a ∈ A}</span>مثلًا:<span class=\"ltr\">I_{1,2} = {(1,1), (2,2)}</span>",
        "ow": [
-        "الـ {(a, a)} ده pair واحد ومفيش شرط بيقول إن a ماشية على A. الـ I_A محتاجة كل الـ pairs: {(a, a) | a ∈ A}.",
+        "الـ <bdi dir=\"ltr\">{(a,&nbsp;a)}</bdi> ده pair واحد ومفيش شرط بيقول إن a ماشية على A. الـ I_A محتاجة كل الـ pairs:<span class=\"ltr\">{(a, a) | a ∈ A}</span>",
         null,
-        "الـ \"a &lt; A\" بتقارن element بـ set، وده ملوش معنى. الشرط لازم يبقى a ∈ A.",
-        "الـ \"(a, a) ≥ A\" بتقارن pair بـ set، وده مش متعرف، وكمان مفيهاش شرط set-builder. I_A = {(a, a) | a ∈ A}."
+        "الـ <bdi dir=\"ltr\">\"a&nbsp;&lt;&nbsp;A\"</bdi> بتقارن element بـ set، وده ملوش معنى. الشرط لازم يبقى <bdi dir=\"ltr\">a&nbsp;∈&nbsp;A</bdi>.",
+        "الـ <bdi dir=\"ltr\">\"(a,&nbsp;a)&nbsp;≥&nbsp;A\"</bdi> بتقارن pair بـ set، وده مش متعرف، وكمان مفيهاش شرط set-builder. والصح:<span class=\"ltr\">I_A = {(a, a) | a ∈ A}</span>"
        ]
       },
       {
-       "why": "الـ contradiction هي statement form دايمًا false مهما كانت الـ truth values اللي بنحطها، زي p ∧ ¬p (L4, Definitions).",
+       "why": "الـ contradiction هي statement form دايمًا false مهما كانت الـ truth values اللي بنحطها، زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
-        "الـ tautology هي العكس: دايمًا true مهما كانت قيم الـ variables (زي p ∨ ¬p). الدايمًا false هي الـ contradiction.",
+        "الـ tautology هي العكس: دايمًا true مهما كانت قيم الـ variables (زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>). الدايمًا false هي الـ contradiction.",
         null,
-        "الـ tautology كلها T والـ contradiction كلها F؛ column واحد مينفعش يبقى الاتنين. دايمًا false يعني contradiction بس.",
+        "الـ tautology كلها T والـ contradiction كلها F؛ والـ column الواحد مينفعش يبقى الاتنين. دايمًا false يعني contradiction بس.",
         "الـ \"True\" دي truth value، مش نوع من الـ compound propositions، والسؤال بيوصف حاجة دايمًا false. دي الـ contradiction."
        ]
       }
@@ -3260,30 +3260,30 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "<b>(i)</b> Σ f(x) = 1 → 0.2 + 0.1 + a + 0.3 = 1 → <b>a = 0.4</b>.<br><b>(ii)</b> E(X) = 1(0.2) + 2(0.1) + 3(0.4) + 4(0.3) = 0.2 + 0.2 + 1.2 + 1.2 = <b>2.8</b>.<br>E(X²) = 1(0.2) + 4(0.1) + 9(0.4) + 16(0.3) = 0.2 + 0.4 + 3.6 + 4.8 = 9.0.<br>V(X) = E(X²) − μ² = 9.0 − 2.8² = 9.0 − 7.84 = <b>1.16</b> (σ ≈ 1.077). (L6، L7)"
+       "ans": "<b>الجزء (i)</b>:<span class=\"ltr\">Σ f(x) = 1 → 0.2 + 0.1 + a + 0.3 = 1 → <b>a = 0.4</b></span><b>الجزء (ii)</b>:<span class=\"ltr\">E(X) = 1(0.2) + 2(0.1) + 3(0.4) + 4(0.3)</span><span class=\"ltr\">= 0.2 + 0.2 + 1.2 + 1.2 = <b>2.8</b></span><span class=\"ltr\">E(X²) = 1(0.2) + 4(0.1) + 9(0.4) + 16(0.3)</span><span class=\"ltr\">= 0.2 + 0.4 + 3.6 + 4.8 = 9.0</span><span class=\"ltr\">V(X) = E(X²) − μ²</span><span class=\"ltr\">= 9.0 − 2.8² = 9.0 − 7.84 = <b>1.16</b> (σ ≈ 1.077)</span>(من L6 و L7)"
       },
       {
-       "ans": "<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>p↔q</th><th>(p→q)∧(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>عمود p ↔ q وعمود (p → q) ∧ (q → p) ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (L5)."
+       "ans": "<table><tr><th dir=\"ltr\">p</th><th dir=\"ltr\">q</th><th dir=\"ltr\">p→q</th><th dir=\"ltr\">q→p</th><th dir=\"ltr\">p↔q</th><th dir=\"ltr\">(p→q)∧(q→p)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr></table>عمود <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> وعمود <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)&nbsp;∧&nbsp;(q&nbsp;→&nbsp;p)</bdi> ليهم نفس الـ truth values دايمًا، يبقوا logically equivalent (L5)."
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "الـ Basis عند n = 1: الطرف الشمال = 1، الطرف اليمين = 1·2/2 = 1 ✓.<br>الـ Hypothesis: افترض إن 1 + 2 + … + k = k(k + 1)/2.<br>الـ Step: 1 + 2 + … + k + (k + 1) = k(k + 1)/2 + (k + 1) = [k(k + 1) + 2(k + 1)]/2 = (k + 1)(k + 2)/2، ودي نفس الصيغة لما n = k + 1 ✓.<br>يبقى الصيغة صح لكل n ≥ 1 (L11)."
+       "ans": "الـ Basis عند <bdi dir=\"ltr\">n&nbsp;=&nbsp;1</bdi>: الطرف الشمال بيساوي 1، والطرف اليمين <bdi dir=\"ltr\">1·2/2&nbsp;=&nbsp;1</bdi> ✓.<br>الـ Hypothesis: افترض إن:<span class=\"ltr\">1 + 2 + … + k = k(k + 1)/2</span>الـ Step:<span class=\"ltr\">1 + 2 + … + k + (k + 1)</span><span class=\"ltr\">= k(k + 1)/2 + (k + 1)</span><span class=\"ltr\">= [k(k + 1) + 2(k + 1)]/2</span><span class=\"ltr\">= (k + 1)(k + 2)/2</span>ودي نفس الصيغة لما <bdi dir=\"ltr\">n&nbsp;=&nbsp;k&nbsp;+&nbsp;1</bdi> ✓.<br>يبقى الصيغة صح لكل <bdi dir=\"ltr\">n&nbsp;≥&nbsp;1</bdi> (L11)."
       },
       {
-       "ans": "<b>(i)</b><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><th>1</th><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>2</th><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>4</th><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>(دي نفس الـ matrix A₂ بتاعة المحاضرة.)<br><b>(ii)</b> V(1) = {3}، V(2) = {1}، V(3) = {2}، V(4) = {2, 3}؛ يعني E = {e1 = (1,3), e2 = (4,2), e3 = (4,3), e4 = (3,2), e5 = (2,1)}. (L9)"
+       "ans": "<b>الجزء (i)</b>:<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th></tr><tr><th>1</th><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>2</th><td>1</td><td>0</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>4</th><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>(دي نفس الـ matrix A₂ بتاعة المحاضرة.)<br><b>الجزء (ii)</b>:<span class=\"ltr\">V(1) = {3}, V(2) = {1}, V(3) = {2}, V(4) = {2, 3}</span>يعني:<span class=\"ltr\">E = {e1 = (1,3), e2 = (4,2), e3 = (4,3), e4 = (3,2), e5 = (2,1)}. (L9)</span>"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "101 = 9 × 11 + 2 (9 × 11 = 99، و 101 − 99 = 2)، يبقى <b>q = 9، r = 2</b> (a = q × n + r حيث 0 ≤ r &lt; 11). (L8)"
+       "ans": "الحساب:<span class=\"ltr\">101 = 9 × 11 + 2</span><span class=\"ltr\">(9 × 11 = 99, 101 − 99 = 2)</span>يبقى <b><bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi></b> و <b><bdi dir=\"ltr\">r&nbsp;=&nbsp;2</bdi></b> (<bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi> حيث <bdi dir=\"ltr\">0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;11</bdi>). (L8)"
       },
       {
-       "ans": "¬(¬p ∧ q) ∧ (p ∨ q) ≡ (¬(¬p) ∨ ¬q) ∧ (p ∨ q) [De Morgan] ≡ (p ∨ ¬q) ∧ (p ∨ q) [double negative] ≡ p ∨ (¬q ∧ q) [distributive] ≡ p ∨ (q ∧ ¬q) [commutative] ≡ p ∨ c [negation] ≡ p [identity] ■ (L4)"
+       "ans": "باستخدام الـ laws:<span class=\"ltr\">¬(¬p ∧ q) ∧ (p ∨ q)</span><span class=\"ltr\">≡ (¬(¬p) ∨ ¬q) ∧ (p ∨ q) [De Morgan]</span><span class=\"ltr\">≡ (p ∨ ¬q) ∧ (p ∨ q) [double negative]</span><span class=\"ltr\">≡ p ∨ (¬q ∧ q) [distributive]</span><span class=\"ltr\">≡ p ∨ (q ∧ ¬q) [commutative]</span><span class=\"ltr\">≡ p ∨ c [negation]</span><span class=\"ltr\">≡ p [identity] ■ (L4)</span>"
       }
      ]
     }
@@ -3294,70 +3294,70 @@ AR.dm = {
     {
      "items": [
       {
-       "why": "الـ contradiction هي statement form دايمًا false مهما كانت الـ truth values اللي بنحطها، زي p ∧ ¬p (L4, Definitions).",
+       "why": "الـ contradiction هي statement form دايمًا false مهما كانت الـ truth values اللي بنحطها، زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
-        "الـ tautology هي العكس: دايمًا true مهما كانت قيم الـ variables (زي p ∨ ¬p). الدايمًا false هي الـ contradiction.",
+        "الـ tautology هي العكس: دايمًا true مهما كانت قيم الـ variables (زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>). الدايمًا false هي الـ contradiction.",
         null,
-        "الـ tautology كلها T والـ contradiction كلها F؛ column واحد مينفعش يبقى الاتنين. دايمًا false يعني contradiction بس.",
+        "الـ tautology كلها T والـ contradiction كلها F؛ والـ column الواحد مينفعش يبقى الاتنين. دايمًا false يعني contradiction بس.",
         "الـ \"True\" دي truth value، مش نوع من الـ compound propositions، والسؤال بيوصف حاجة دايمًا false. دي الـ contradiction."
        ]
       },
       {
-       "why": "الـ P(S) هي set كل الـ subsets بتوع S؛ لـ S = {1, 2} دول ∅ و {1} و {2} و {1, 2}، يعني 2² = 4 في المجموع (L1, Power set).",
+       "why": "الـ <bdi dir=\"ltr\">P(S)</bdi> هي set كل الـ subsets بتوع S؛ لـ <bdi dir=\"ltr\">S&nbsp;=&nbsp;{1,&nbsp;2}</bdi> دول ∅ و <bdi dir=\"ltr\">{1}</bdi> و <bdi dir=\"ltr\">{2}</bdi> و <bdi dir=\"ltr\">{1,&nbsp;2}</bdi>، يعني <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> في المجموع <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
        "ow": [
-        "الـ {0, 1} فيها أرقام مش subsets، والـ 0 أصلًا مش في S. الـ elements بتاعة P(S) لازم تبقى sets: ∅، {1}، {2}، {1, 2}.",
-        "الـ 0 مش subset من {1, 2}؛ وغير ∅، الـ subsets {1} و {2} و {1, 2} ناقصين. |P(S)| لازم تبقى 2² = 4.",
+        "الـ <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> فيها أرقام مش subsets، والـ 0 أصلًا مش في S. الـ elements بتاعة <bdi dir=\"ltr\">P(S)</bdi> لازم تبقى sets:<span class=\"ltr\">∅, {1}, {2}, {1, 2}</span>",
+        "الـ 0 مش subset من <bdi dir=\"ltr\">{1,&nbsp;2}</bdi>؛ وغير ∅، الـ subsets <bdi dir=\"ltr\">{1}</bdi> و <bdi dir=\"ltr\">{2}</bdi> و <bdi dir=\"ltr\">{1,&nbsp;2}</bdi> ناقصين. والـ <bdi dir=\"ltr\">|P(S)|</bdi> لازم تبقى <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>.",
         null,
-        "الـ {0} فيها element واحد، رقم مش subset من S. الـ P(S) لازم يبقى فيها 2² = 4 sets كـ elements، منهم ∅ و S."
+        "الـ <bdi dir=\"ltr\">{0}</bdi> فيها element واحد، رقم مش subset من S. الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يبقى فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> sets كـ elements، منهم ∅ و S."
        ]
       },
       {
-       "why": "الـ p → q ≡ ¬p ∨ q، ودي أهم إعادة كتابة في Table 7: الاتنين false بس لما p = T و q = F (L5).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi>، ودي أهم إعادة كتابة في Table 7: الاتنين false بس لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> (L5).",
        "ow": [
-        "الـ p ∨ q بتختلف عن p → q في الـ rows T, F (T مقابل F) و F, F (F مقابل T). إعادة الكتابة بتنفي p: ¬p ∨ q.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتختلف عن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> في الـ rows <bdi dir=\"ltr\">T,&nbsp;F</bdi> (T مقابل F) و <bdi dir=\"ltr\">F,&nbsp;F</bdi> (F مقابل T). إعادة الكتابة بتنفي p: <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi>.",
         null,
-        "الـ p ∧ q قيمتها F في الـ row F, F، اللي فيه p → q قيمتها T (hypothesis false). هي بتتطابق بس في الـ rows TT و TF.",
-        "الـ \"+\" ده حساب (أو OR في الـ circuit notation) ومش من الـ connectives بتاعة المحاضرة. p → q ≡ ¬p ∨ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> قيمتها F في الـ row <bdi dir=\"ltr\">F,&nbsp;F</bdi>، اللي فيه <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> قيمتها T (hypothesis false). هي بتتطابق بس في الـ rows TT و TF.",
+        "الـ \"+\" ده حساب (أو OR في الـ circuit notation) ومش من الـ connectives بتاعة المحاضرة. المعادلة الصح:<span class=\"ltr\">p → q ≡ ¬p ∨ q</span>"
        ]
       },
       {
-       "why": "De Morgan: ~(p ∧ q) ≡ ~p ∨ ~q. يعني \"مش الاتنين\" معناها إن واحد على الأقل false (Theorem 1.1.1, law 9) (L4).",
+       "why": "قانون الـ De Morgan:<span class=\"ltr\">~(p ∧ q) ≡ ~p ∨ ~q</span>يعني \"مش الاتنين\" معناها إن واحد على الأقل false <bdi dir=\"ltr\">(Theorem 1.1.1, law 9) (L4)</bdi>.",
        "ow": [
-        "الـ ¬p ∧ ¬q ده ناتج De Morgan لـ ¬(p ∨ q). خلي بالك: نفي ∧ بيقلبها ∨: ¬p ∨ ¬q.",
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi> ده ناتج De Morgan لـ <bdi dir=\"ltr\">¬(p&nbsp;∨&nbsp;q)</bdi>. خلي بالك: نفي <bdi dir=\"ltr\">∧</bdi> بيقلبها <bdi dir=\"ltr\">∨:&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi>.",
         null,
-        "الـ p ∧ ¬q ده نفي p → q (L5). الـ De Morgan بينفي الجزئين ويقلب ∧ لـ ∨: ¬p ∨ ¬q.",
-        "الـ p → q قيمتها F بس في الـ row T, F، لكن ¬(p ∧ q) قيمتها F بس في الـ row T, T. مختلفين، فده مش De Morgan."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> (L5). الـ De Morgan بينفي الجزئين ويقلب <bdi dir=\"ltr\">∧</bdi> لـ <bdi dir=\"ltr\">∨</bdi>، فالناتج <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> قيمتها F بس في الـ row <bdi dir=\"ltr\">T,&nbsp;F</bdi>، لكن <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;q)</bdi> قيمتها F بس في الـ row <bdi dir=\"ltr\">T,&nbsp;T</bdi>. مختلفين، فده مش De Morgan."
        ]
       },
       {
-       "why": "الـ p ↔ q معناها \"p only if q\" (p → q) و \"p if q\" (q → p)؛ والـ truth table بيوضح إن الـ columns الاتنين متطابقين (L5, Biconditional; Table 8).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> معناها \"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi> و \"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi>؛ والـ truth table بيوضح إن الـ columns الاتنين متطابقين <bdi dir=\"ltr\">(L5, Biconditional; Table 8)</bdi>.",
        "ow": [
         null,
-        "الـ p → q اتجاه واحد بس (\"only if\")؛ في الـ row F, T قيمتها T بينما p ↔ q قيمتها F. الـ biconditional محتاج q → p كمان.",
-        "الـ ¬p بتتجاهل q: في الـ row T, T قيمتها F بينما p ↔ q قيمتها T.",
-        "الـ ¬p ∧ q بتبقى true بس عند p = F و q = T، واللي فيه p ↔ q قيمتها F، وقيمتها F عند p = q = T، اللي فيه p ↔ q قيمتها T."
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> اتجاه واحد بس (\"only if\")؛ في الـ row <bdi dir=\"ltr\">F,&nbsp;T</bdi> قيمتها T بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها F. الـ biconditional محتاج <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> بتتجاهل q: في الـ row T, T قيمتها F بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها T.",
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;q</bdi> بتبقى true بس عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، واللي فيه <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها F، وقيمتها F عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi>، اللي فيه <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> قيمتها T."
        ]
       },
       {
-       "why": "الـ Commutative law: p ∧ q ≡ q ∧ p. تبديل ترتيب الـ \"and\" مش بيغير قيمته (Theorem 1.1.1, law 1) (L4).",
+       "why": "الـ Commutative law:<span class=\"ltr\">p ∧ q ≡ q ∧ p</span>تبديل ترتيب الـ \"and\" مش بيغير قيمته <bdi dir=\"ltr\">(Theorem 1.1.1, law 1) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ ¬p ∨ q ده equivalent لـ p → q (L4, Table 4)، مش لـ p ∧ q؛ مثلًا عند p = F قيمته T بينما p ∧ q قيمتها F.",
-        "الـ p ∧ ¬q ده نفي p → q؛ قيمته T عند p = T و q = F، اللي فيه p ∧ q قيمتها F.",
-        "الـ p ∨ ¬q قيمته T عند p = F و q = F، اللي فيه p ∧ q قيمتها F، فمش equivalent. الـ commutative بيبدل بس: q ∧ p."
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi> ده equivalent لـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Table&nbsp;4)</bdi>، مش لـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>؛ مثلًا عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> قيمته T بينما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> قيمتها F.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> ده نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>؛ قيمته T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، اللي فيه <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> قيمتها F.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q</bdi> قيمته T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، اللي فيه <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> قيمتها F، فمش equivalent. الـ commutative بيبدل بس: <bdi dir=\"ltr\">q&nbsp;∧&nbsp;p</bdi>."
        ]
       },
       {
-       "why": "الـ row الوحيد اللي p → q فيه false هو p = T و q = F، فنفيها \"p و مش q\": ¬(p → q) ≡ p ∧ ¬q (L5, Table 7).",
+       "why": "الـ row الوحيد اللي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> فيه false هو <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، فنفيها \"p و مش q\":<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q (L5, Table 7)</span>",
        "ow": [
         null,
-        "الـ q → p ده الـ converse بتاع p → q، يعني if-then تاني. نفي الـ if-then بيبقى \"and\" statement: p ∧ ¬q.",
-        "الـ ¬p ∧ q بتبقى true بس عند p = F و q = T، ودي ¬(q → p)، يعني نفي الـ converse. ¬(p → q) ≡ p ∧ ¬q.",
-        "الـ q ∧ ¬p هي نفسها ¬p ∧ q (commutative)، يعني نفي q → p. نفي p → q محتاج p true و q false: p ∧ ¬q."
+        "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> ده الـ converse بتاع <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>، يعني if-then تاني. نفي الـ if-then بيبقى <bdi dir=\"ltr\">\"and\"&nbsp;statement</bdi>، يعني <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;q</bdi> بتبقى true بس عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi>، ودي <bdi dir=\"ltr\">¬(q&nbsp;→&nbsp;p)</bdi>، يعني نفي الـ converse. والصح:<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q</span>",
+        "الـ <bdi dir=\"ltr\">q&nbsp;∧&nbsp;¬p</bdi> هي نفسها <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;q</bdi> (commutative)، يعني نفي <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi>. نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> محتاج p true و q false: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>."
        ]
       },
       {
-       "why": "المحاضرة بتعرّف الـ null graph N_n إنه graph على n vertices من غير أي edges (كل الـ vertices isolated) (L9, Graphs, edges and degree).",
+       "why": "المحاضرة بتعرّف الـ null graph N_n إنه graph على n vertices من غير أي edges (كل الـ vertices isolated) <bdi dir=\"ltr\">(L9, Graphs, edges and degree)</bdi>.",
        "ow": [
         null,
         "الـ simple graph بيمنع بس الـ self-loops والـ multiple edges؛ وممكن يبقى فيه edges كتير (K_n مثلًا simple). من غير edges يبقى null graph.",
@@ -3366,48 +3366,48 @@ AR.dm = {
        ]
       },
       {
-       "why": "لما الـ edges تبقى ordered pairs (v_s, v_t)، كل edge بيبقى ليه اتجاه من الـ source للـ terminal: ده directed graph (L9, Directed graphs).",
+       "why": "لما الـ edges تبقى ordered pairs (v_s, v_t)، كل edge بيبقى ليه اتجاه من الـ source للـ terminal: ده directed graph <bdi dir=\"ltr\">(L9, Directed graphs)</bdi>.",
        "ow": [
         null,
-        "في الـ undirected graph الـ edges بتبقى unordered pairs: (u, v) و (v, u) نفس الـ edge. الـ ordered pairs بتدي digraph.",
+        "في الـ undirected graph الـ edges بتبقى unordered pairs: <bdi dir=\"ltr\">(u,&nbsp;v)</bdi> و <bdi dir=\"ltr\">(v,&nbsp;u)</bdi> نفس الـ edge. الـ ordered pairs بتدي digraph.",
         "الـ null graph الـ edge set بتاعه فاضي، فالـ edges بتاعته لا ordered ولا unordered pairs.",
         "الـ multigraph فكرته الـ edges المتكررة بين نفس الـ vertices، مش ترتيب الـ pair."
        ]
       },
       {
-       "why": "الـ P → Q و Q → P عمرهم ما يبقوا false مع بعض (الـ row الـ F الوحيد في كل واحدة مختلف)، فالـ disjunction بيبقى T في الأربع rows: يعني tautology (L3, Example).",
+       "why": "الـ <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> و <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> عمرهم ما يبقوا false مع بعض (الـ row الـ F الوحيد في كل واحدة مختلف)، فالـ disjunction بيبقى T في الأربع rows: يعني tautology <bdi dir=\"ltr\">(L3,&nbsp;Example)</bdi>.",
        "ow": [
         null,
-        "الـ contradiction بتبقى false في كل row، لكن الـ formula دي true في كل row: لما P → Q تبقى F (الـ row T, F)، Q → P بتبقى T.",
+        "الـ contradiction بتبقى false في كل row، لكن الـ formula دي true في كل row: لما <bdi dir=\"ltr\">P&nbsp;→&nbsp;Q</bdi> تبقى F (الـ row <bdi dir=\"ltr\">T,&nbsp;F</bdi>)، بتبقى <bdi dir=\"ltr\">Q&nbsp;→&nbsp;P</bdi> قيمتها T.",
         "الـ tautology true في كل row والـ contradiction false في كل row؛ مفيش formula تبقى الاتنين. دي كلها T.",
         "الـ \"Equivalent\" بتوصف علاقة بين two statements ليهم نفس الـ truth tables، مش نوع statement واحدة."
        ]
       },
       {
-       "why": "Property 3: لو a | b و b | c، يبقى a | c. لو b = ka و c = mb، يبقى c = (mk)a (L8, Divisibility).",
+       "why": "الـ Property 3: لو <bdi dir=\"ltr\">a&nbsp;|&nbsp;b</bdi> و <bdi dir=\"ltr\">b&nbsp;|&nbsp;c</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>. لو <bdi dir=\"ltr\">b&nbsp;=&nbsp;ka</bdi> و <bdi dir=\"ltr\">c&nbsp;=&nbsp;mb</bdi>، يبقى <bdi dir=\"ltr\">c&nbsp;=&nbsp;(mk)a</bdi> <bdi dir=\"ltr\">(L8,&nbsp;Divisibility)</bdi>.",
        "ow": [
-        "الـ c | a بتعكس الاتجاه: من 2 | 4 و 4 | 8 بنطلع بـ 2 | 8، مش 8 | 2. الـ Property 3 بتدي a | c.",
+        "الـ <bdi dir=\"ltr\">c&nbsp;|&nbsp;a</bdi> بتعكس الاتجاه: من <bdi dir=\"ltr\">2&nbsp;|&nbsp;4</bdi> و <bdi dir=\"ltr\">4&nbsp;|&nbsp;8</bdi> بنطلع بـ <bdi dir=\"ltr\">2&nbsp;|&nbsp;8</bdi>، مش <bdi dir=\"ltr\">8&nbsp;|&nbsp;2</bdi>. الـ Property 3 بتدي <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.",
         null,
-        "مفيش حاجة بتجبر a = b = 1: مثلًا 2 | 4 و 4 | 8 مع a = 2 و b = 4. النتيجة هي a | c.",
-        "الـ divisibility مش بتخلي حاصل الضرب صفر: مع 2 | 4 و 4 | 8، a · b = 8. الـ Property 3 بتدي a | c."
+        "مفيش حاجة بتجبر <bdi dir=\"ltr\">a&nbsp;=&nbsp;b&nbsp;=&nbsp;1</bdi>: مثلًا <bdi dir=\"ltr\">2&nbsp;|&nbsp;4</bdi> و <bdi dir=\"ltr\">4&nbsp;|&nbsp;8</bdi> مع <bdi dir=\"ltr\">a&nbsp;=&nbsp;2</bdi> و <bdi dir=\"ltr\">b&nbsp;=&nbsp;4</bdi>. النتيجة هي <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>.",
+        "الـ divisibility مش بتخلي حاصل الضرب صفر: مع <bdi dir=\"ltr\">2&nbsp;|&nbsp;4</bdi> و <bdi dir=\"ltr\">4&nbsp;|&nbsp;8</bdi>، يبقى <bdi dir=\"ltr\">a&nbsp;·&nbsp;b&nbsp;=&nbsp;8</bdi>. الـ Property 3 بتدي <bdi dir=\"ltr\">a&nbsp;|&nbsp;c</bdi>."
        ]
       },
       {
-       "why": "الـ a mod n بياخد الباقي من a = q × n + r: 27 = 5 × 5 + 2، فـ 27 mod 5 = 2 (L8, Example 2.14).",
+       "why": "الـ a mod n بياخد الباقي من <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi>، وهنا:<span class=\"ltr\">27 = 5 × 5 + 2</span>فـ <bdi dir=\"ltr\">27&nbsp;mod&nbsp;5&nbsp;=&nbsp;2</bdi> <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>.",
        "ow": [
         null,
-        "الـ r = 3 محتاجة إن 27 − 3 = 24 تبقى مضاعف لـ 5، وده مش صح. 27 = 5 × 5 + 2، فـ r = 2.",
-        "الـ r = 0 معناها إن 5 بتقسم 27 بالظبط، لكن 27 = 5 × 5 + 2، فالباقي 2.",
-        "الـ r = 1 محتاجة إن 26 تبقى مضاعف لـ 5. أكبر مضاعف لـ 5 مش أكبر من 27 هو 25، والباقي 2."
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi> محتاجة إن <bdi dir=\"ltr\">27&nbsp;−&nbsp;3&nbsp;=&nbsp;24</bdi> تبقى مضاعف لـ 5، وده مش صح. الحساب:<span class=\"ltr\">27 = 5 × 5 + 2</span>فـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;2</bdi>.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;0</bdi> معناها إن 5 بتقسم 27 بالظبط، لكن <bdi dir=\"ltr\">27&nbsp;=&nbsp;5&nbsp;×&nbsp;5&nbsp;+&nbsp;2</bdi>، فالباقي 2.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;1</bdi> محتاجة إن 26 تبقى مضاعف لـ 5. أكبر مضاعف لـ 5 مش أكبر من 27 هو 25، والباقي 2."
        ]
       },
       {
-       "why": "الـ exclusive or بيتكتب p ⊕ q وبيبقى true لما واحد بس من p و q يكون true (و false لما الاتنين T أو الاتنين F) (L3, Connectives).",
+       "why": "الـ exclusive or بيتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> وبيبقى true لما واحد بس من p و q يكون true (و false لما الاتنين T أو الاتنين F) <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
-        "الـ p ∨ q ده الـ inclusive or، اللي بيبقى true كمان لما الاتنين true. الـ exclusive or ليه رمز خاص، p ⊕ q.",
-        "الـ p ∧ q ده conjunction (\"and\")، true بس لما الاتنين true، وده بالظبط الوقت اللي ⊕ بتبقى فيه false.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> ده الـ inclusive or، اللي بيبقى true كمان لما الاتنين true. الـ exclusive or ليه رمز خاص، <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> ده conjunction (\"and\")، وبيبقى true بس لما الاتنين true، وده بالظبط الوقت اللي <bdi dir=\"ltr\">⊕</bdi> بتبقى فيه false.",
         null,
-        "الـ p → q ده الـ implication (conditional)، false بس في T → F. الـ exclusive or بيتكتب p ⊕ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> ده الـ implication (conditional)، وبيبقى false بس في <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>. الـ exclusive or بيتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>."
        ]
       },
       {
@@ -3420,57 +3420,57 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ 36 = 3 × 12 + 0، يعني 12 بتقسم 36 بالظبط و 36 mod 12 = 0 (L8, Example 2.14).",
+       "why": "الـ <bdi dir=\"ltr\">36&nbsp;=&nbsp;3&nbsp;×&nbsp;12&nbsp;+&nbsp;0</bdi>، يعني 12 بتقسم 36 بالظبط و <bdi dir=\"ltr\">36&nbsp;mod&nbsp;12&nbsp;=&nbsp;0</bdi> <bdi dir=\"ltr\">(L8,&nbsp;Example&nbsp;2.14)</bdi>.",
        "ow": [
         null,
-        "الـ r = 10 محتاجة إن 36 − 10 = 26 تبقى مضاعف لـ 12. لكن 36 = 3 × 12 بالظبط، فالباقي 0.",
-        "الـ r = 4 محتاجة إن 32 تبقى مضاعف لـ 12. وبما إن 36 = 3 × 12، الـ residue هو 0.",
-        "الـ r = 6 محتاجة إن 30 تبقى مضاعف لـ 12. الـ 36 نفسها مضاعف (3 × 12)، فـ 36 mod 12 = 0."
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;10</bdi> محتاجة إن <bdi dir=\"ltr\">36&nbsp;−&nbsp;10&nbsp;=&nbsp;26</bdi> تبقى مضاعف لـ 12. لكن <bdi dir=\"ltr\">36&nbsp;=&nbsp;3&nbsp;×&nbsp;12</bdi> بالظبط، فالباقي 0.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;4</bdi> محتاجة إن 32 تبقى مضاعف لـ 12. وبما إن <bdi dir=\"ltr\">36&nbsp;=&nbsp;3&nbsp;×&nbsp;12</bdi>، الـ residue هو 0.",
+        "الـ <bdi dir=\"ltr\">r&nbsp;=&nbsp;6</bdi> محتاجة إن 30 تبقى مضاعف لـ 12. الـ 36 نفسها مضاعف <bdi dir=\"ltr\">(3&nbsp;×&nbsp;12)</bdi>، فـ <bdi dir=\"ltr\">36&nbsp;mod&nbsp;12&nbsp;=&nbsp;0</bdi>."
        ]
       },
       {
-       "why": "De Morgan: الـ complement بتاع الـ intersection هو الـ union بتاع الـ complements، (A ∩ B)ᶜ = Aᶜ ∪ Bᶜ، واتكتب هنا Aᶜ ∨ Bᶜ (L2, Set identities).",
+       "why": "قانون الـ De Morgan: الـ complement بتاع الـ intersection هو الـ union بتاع الـ complements:<span class=\"ltr\">(A ∩ B)ᶜ = Aᶜ ∪ Bᶜ</span>واتكتب هنا <bdi dir=\"ltr\">Aᶜ&nbsp;∨&nbsp;Bᶜ</bdi> <bdi dir=\"ltr\">(L2, Set identities)</bdi>.",
        "ow": [
-        "الـ Aᶜ ∩ Bᶜ ده complement الـ union، (A ∪ B)ᶜ، يعني الـ De Morgan law التاني. complement الـ intersection بيقلب ∩ لـ ∪.",
-        "الـ A ∨ B (A ∪ B) مفيهاش complements خالص. الـ De Morgan بياخد complement كل set ويقلب الـ operation: Aᶜ ∪ Bᶜ.",
+        "الـ <bdi dir=\"ltr\">Aᶜ&nbsp;∩&nbsp;Bᶜ</bdi> ده complement الـ union، <bdi dir=\"ltr\">(A&nbsp;∪&nbsp;B)ᶜ</bdi>، يعني الـ De Morgan law التاني. والـ complement بتاع الـ intersection بيقلب <bdi dir=\"ltr\">∩</bdi> لـ <bdi dir=\"ltr\">∪</bdi>.",
+        "الـ <bdi dir=\"ltr\">A&nbsp;∨&nbsp;B&nbsp;(A&nbsp;∪&nbsp;B)</bdi> مفيهاش complements خالص. الـ De Morgan بياخد complement كل set ويقلب الـ operation: <bdi dir=\"ltr\">Aᶜ&nbsp;∪&nbsp;Bᶜ</bdi>.",
         null,
-        "الـ A ∩ B دي الـ set الأصلية قبل الـ complement؛ والـ complement بتاعها set تانية، Aᶜ ∪ Bᶜ حسب De Morgan."
+        "الـ <bdi dir=\"ltr\">A&nbsp;∩&nbsp;B</bdi> دي الـ set الأصلية قبل الـ complement؛ والـ complement بتاعها set تانية، <bdi dir=\"ltr\">Aᶜ&nbsp;∪&nbsp;Bᶜ</bdi> حسب De Morgan."
        ]
       },
       {
-       "why": "الـ conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لما p و q الاتنين true (L3, Connectives).",
+       "why": "الـ conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لما p و q الاتنين true <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
         null,
-        "الـ p ∨ q ده الـ disjunction (\"or\")، true لما جزء واحد على الأقل يكون true. الـ conjunction (\"and\") هو p ∧ q.",
-        "الـ \"−\" ده set difference أو طرح، مش من الـ logical connectives بتاعة المحاضرة (¬, ∧, ∨, ⊕, →, ↔). الـ conjunction هو p ∧ q.",
-        "الـ bar | (في كتب تانية ده الـ NAND أو الـ Sheffer stroke) مش من الـ connectives بتاعة المحاضرة. الـ conjunction بيتكتب p ∧ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> ده الـ disjunction (\"or\")، وبيبقى true لما جزء واحد على الأقل يكون true. الـ conjunction (\"and\") هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>.",
+        "الـ \"−\" ده set difference أو طرح، مش من الـ logical connectives بتاعة المحاضرة <bdi dir=\"ltr\">(¬,&nbsp;∧,&nbsp;∨,&nbsp;⊕,&nbsp;→,&nbsp;↔)</bdi>. الـ conjunction هو <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>.",
+        "الـ bar <bdi dir=\"ltr\">|</bdi> (في كتب تانية ده الـ NAND أو الـ Sheffer stroke) مش من الـ connectives بتاعة المحاضرة. الـ conjunction بيتكتب <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "الـ Negation law: p ∧ ~p ≡ c. الـ p و ¬p دايمًا قيمهم عكس بعض، فالـ conjunction بتاعهم دايمًا false (Theorem 1.1.1, law 5) (L4).",
+       "why": "الـ Negation law:<span class=\"ltr\">p ∧ ~p ≡ c</span>الـ p و <bdi dir=\"ltr\">¬p</bdi> دايمًا قيمهم عكس بعض، فالـ conjunction بتاعهم دايمًا false <bdi dir=\"ltr\">(Theorem 1.1.1, law 5) (L4)</bdi>.",
        "ow": [
-        "الـ T ده ناتج الـ negation law التاني، p ∨ ¬p ≡ t. مع ∧، الـ p و ¬p عمرهم ما يبقوا true مع بعض.",
+        "الـ T ده ناتج الـ negation law التاني، <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p&nbsp;≡&nbsp;t</bdi>. مع <bdi dir=\"ltr\">∧</bdi>، الـ p و <bdi dir=\"ltr\">¬p</bdi> عمرهم ما يبقوا true مع بعض.",
         null,
-        "الـ p قيمتها T في row واحد، لكن p ∧ ¬p قيمتها F في كل row. الـ negation law بيدي c (contradiction).",
-        "الـ ¬p قيمتها T لما p = F، بس ساعتها p ∧ ¬p = F ∧ T = F. الناتج دايمًا F، يعني c."
+        "الـ p قيمتها T في row واحد، لكن <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> قيمتها F في كل row. الـ negation law بيدي c (contradiction).",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> قيمتها T لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi>، بس ساعتها <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p&nbsp;=&nbsp;F&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi>. الناتج دايمًا F، يعني c."
        ]
       },
       {
-       "why": "لو |S| = n يبقى n(P(S)) = 2ⁿ. هنا n = 2، فـ 2² = 4: ∅، {1}، {2}، {1, 2} (L1, Power set).",
+       "why": "لو <bdi dir=\"ltr\">|S|&nbsp;=&nbsp;n</bdi> يبقى <bdi dir=\"ltr\">n(P(S))&nbsp;=&nbsp;2ⁿ</bdi>. هنا <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi>، يعني:<span class=\"ltr\">2² = 4: ∅, {1}, {2}, {1, 2} (L1, Power set)</span>",
        "ow": [
         "ده الـ power set نفسه، مش عدد الـ elements بتاعه.",
-        "الـ n(P(S)) بيسأل عن رقم (الـ cardinality)، و {{1}} دي set. وكمان فيها subset واحد بس؛ و P(S) فيها 2² = 4.",
+        "الـ <bdi dir=\"ltr\">n(P(S))</bdi> بيسأل عن رقم (الـ cardinality)، و <bdi dir=\"ltr\">{{1}}</bdi> دي set. وكمان فيها subset واحد بس؛ و <bdi dir=\"ltr\">P(S)</bdi> فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>.",
         null,
-        "الـ 6 مش power of 2، والـ power set دايمًا فيه 2ⁿ elements. لـ n = 2 يبقى 2² = 4 (الـ 6 ممكن تيجي من تخمين زي 2 × 3)."
+        "الـ 6 مش power of 2، والـ power set دايمًا فيه 2ⁿ elements. لـ <bdi dir=\"ltr\">n&nbsp;=&nbsp;2</bdi> يبقى <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> (الـ 6 ممكن تيجي من تخمين زي <bdi dir=\"ltr\">2&nbsp;×&nbsp;3</bdi>)."
        ]
       },
       {
-       "why": "الـ Absorption: p ∧ (p ∨ q) ≡ p. لو p قيمتها T يبقى p ∨ q قيمتها T كمان؛ ولو p قيمتها F الـ conjunction بتبقى F (Theorem 1.1.1, law 10) (L4).",
+       "why": "الـ Absorption:<span class=\"ltr\">p ∧ (p ∨ q) ≡ p</span>لو p قيمتها T يبقى <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> قيمتها T كمان؛ ولو p قيمتها F الـ conjunction بتبقى F <bdi dir=\"ltr\">(Theorem 1.1.1, law 10) (L4)</bdi>.",
        "ow": [
         null,
-        "عند p = F و q = T الـ expression بيبقى F ∧ T = F لكن q قيمتها T، فمش q. الـ Absorption بيسيب p.",
-        "الـ ¬p عكس p، والـ expression بيساوي p، فالاتنين مختلفين في كل row.",
-        "عند p = T و q = T الـ expression قيمته T لكن ¬q قيمتها F. الـ Absorption بيدي p."
+        "عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> الـ expression بيبقى <bdi dir=\"ltr\">F&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi> لكن q قيمتها T، فمش q. الـ Absorption بيسيب p.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> عكس p، والـ expression بيساوي p، فالاتنين مختلفين في كل row.",
+        "عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;T</bdi> الـ expression قيمته T لكن <bdi dir=\"ltr\">¬q</bdi> قيمتها F. الـ Absorption بيدي p."
        ]
       }
      ]
@@ -3478,27 +3478,27 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "Aᶜ = U − A = {3,6,7,8,9,10}؛ Bᶜ = {2,4,5,6,10}.<br><b>(i)</b> Aᶜ ∩ B = {3,7,8,9} (= B − A).<br><b>(ii)</b> Aᶜ ∩ Bᶜ = {6,10} (= (A ∪ B)ᶜ، لأن A ∪ B = {1,2,3,4,5,7,8,9}).<br><b>(iii)</b> A ∪ Bᶜ = {1,2,4,5} ∪ {2,4,5,6,10} = {1,2,4,5,6,10}.<br><b>(iv)</b> |A| = 4 → 2⁴ = 16 subsets: P(A) = {∅, {1}, {2}, {4}, {5}, {1,2}, {1,4}, {1,5}, {2,4}, {2,5}, {4,5}, {1,2,4}, {1,2,5}, {1,4,5}, {2,4,5}, {1,2,4,5}}. (الـ C مش مستخدمة.) (L1، L2)"
+       "ans": "أولًا:<span class=\"ltr\">Aᶜ = U − A = {3,6,7,8,9,10}</span><span class=\"ltr\">Bᶜ = {2,4,5,6,10}</span><b>الجزء (i)</b>:<span class=\"ltr\">Aᶜ ∩ B = {3,7,8,9} (= B − A)</span><b>الجزء (ii)</b>:<span class=\"ltr\">Aᶜ ∩ Bᶜ = {6,10} (= (A ∪ B)ᶜ)</span>لأن:<span class=\"ltr\">A ∪ B = {1,2,3,4,5,7,8,9}</span><b>الجزء (iii)</b>:<span class=\"ltr\">A ∪ Bᶜ = {1,2,4,5} ∪ {2,4,5,6,10}</span><span class=\"ltr\">= {1,2,4,5,6,10}</span><b>الجزء (iv)</b>:<span class=\"ltr\">|A| = 4 → 2⁴ = 16 subsets:</span><span class=\"ltr\">P(A) = {∅, {1}, {2}, {4}, {5}, {1,2}, {1,4}, {1,5}, {2,4}, {2,5}, {4,5}, {1,2,4}, {1,2,5}, {1,4,5}, {2,4,5}, {1,2,4,5}}</span>(الـ C مش مستخدمة.) <bdi dir=\"ltr\">(L1&nbsp;و&nbsp;L2)</bdi>"
       },
       {
-       "ans": "Σ f(x) = 1 → 0.1 + 0.1 + a + 0.2 = 1 → <b>a = 0.6</b>.<br>E(X) = 0(0.1) + 2(0.1) + 3(0.6) + 4(0.2) = 0 + 0.2 + 1.8 + 0.8 = <b>2.8</b>. (ده تمرين \"try to solve\" بتاع L7.)"
+       "ans": "الحل:<span class=\"ltr\">Σ f(x) = 1 → 0.1 + 0.1 + a + 0.2 = 1 → <b>a = 0.6</b></span><span class=\"ltr\">E(X) = 0(0.1) + 2(0.1) + 3(0.6) + 4(0.2)</span><span class=\"ltr\">= 0 + 0.2 + 1.8 + 0.8 = <b>2.8</b></span>(ده تمرين \"try to solve\" بتاع L7.)"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "μ = ∫₁² x·2(x − 1) dx = 2[x³/3 − x²/2]₁² = 2[(8/3 − 2) − (1/3 − 1/2)] = 2(2/3 + 1/6) = <b>5/3</b>.<br>E(X²) = ∫₁² x²·2(x − 1) dx = 2[x⁴/4 − x³/3]₁² = 2[(4 − 8/3) − (1/4 − 1/3)] = 2(4/3 + 1/12) = 17/6.<br>σ² = E(X²) − μ² = 17/6 − 25/9 = 51/18 − 50/18 = <b>1/18</b>. (Lecture 7، Example 5)"
+       "ans": "الـ mean:<span class=\"ltr\">μ = ∫₁² x·2(x − 1) dx = 2[x³/3 − x²/2]₁²</span><span class=\"ltr\">= 2[(8/3 − 2) − (1/3 − 1/2)]</span><span class=\"ltr\">= 2(2/3 + 1/6) = <b>5/3</b></span>وبعدها:<span class=\"ltr\">E(X²) = ∫₁² x²·2(x − 1) dx = 2[x⁴/4 − x³/3]₁²</span><span class=\"ltr\">= 2[(4 − 8/3) − (1/4 − 1/3)]</span><span class=\"ltr\">= 2(4/3 + 1/12) = 17/6</span>والـ variance:<span class=\"ltr\">σ² = E(X²) − μ² = 17/6 − 25/9</span><span class=\"ltr\">= 51/18 − 50/18 = <b>1/18</b></span>(من <bdi dir=\"ltr\">Lecture 7, Example 5</bdi>)"
       },
       {
-       "ans": "<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>p↔q</th><th>(p→q)∧(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>عمودين النتيجة متطابقين، يبقى الـ statements دي equivalent (L5)."
+       "ans": "<table><tr><th dir=\"ltr\">p</th><th dir=\"ltr\">q</th><th dir=\"ltr\">p→q</th><th dir=\"ltr\">q→p</th><th dir=\"ltr\">p↔q</th><th dir=\"ltr\">(p→q)∧(q→p)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr></table>عمودين النتيجة متطابقين، يبقى الـ statements دي equivalent (L5)."
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "باستخدام اتجاهات المحاضرة 5→1، 1→2، 2→3، 1→3، 5→3، 5→4، 3→4:<br><b>(i)</b><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>5</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></table><b>(ii)</b> V(1) = {2, 3}، V(2) = {3}، V(3) = {4}، V(4) = ∅، V(5) = {1, 3, 4}.<br>ولو قريت الـ graph على إنه <b>undirected</b>، الـ adjacency matrix بتبقى symmetric: 1: 0 1 1 0 1؛ 2: 1 0 1 0 0؛ 3: 1 1 0 1 1؛ 4: 0 0 1 0 1؛ 5: 1 0 1 1 0، والـ edge list هي {5,1}، {1,2}، {2,3}، {1,3}، {5,3}، {5,4}، {4,3}. (L9)"
+       "ans": "باستخدام اتجاهات المحاضرة:<span class=\"ltr\">5→1, 1→2, 2→3, 1→3, 5→3, 5→4, 3→4</span><b>الجزء (i)</b>:<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td></tr><tr><th>3</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>4</th><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr><tr><th>5</th><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr></table><b>الجزء (ii)</b>:<span class=\"ltr\">V(1) = {2, 3}, V(2) = {3}, V(3) = {4},</span><span class=\"ltr\">V(4) = ∅, V(5) = {1, 3, 4}</span>ولو قريت الـ graph على إنه <b>undirected</b>، الـ adjacency matrix بتبقى symmetric:<span class=\"ltr\">1: 0 1 1 0 1</span><span class=\"ltr\">2: 1 0 1 0 0</span><span class=\"ltr\">3: 1 1 0 1 1</span><span class=\"ltr\">4: 0 0 1 0 1</span><span class=\"ltr\">5: 1 0 1 1 0</span>والـ edge list هي:<span class=\"ltr\">{5,1}, {1,2}, {2,3}, {1,3}, {5,3}, {5,4}, {4,3} (L9)</span>"
       }
      ]
     }
@@ -3509,24 +3509,24 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "الـ U = N، يبقى Aᶜ = {5, 6, 7, 8, …}.<br><b>(i)</b> Aᶜ ∩ B = {5, 6, 7} (= B − A).<br><b>(ii)</b> A ∪ B = {1,…,7}، يبقى Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {8, 9, 10, …}.<br><b>(iii)</b> A ∪ B = {1, 2, 3, 4, 5, 6, 7}.<br><b>(iv)</b> 2⁴ = 16 subsets: {∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}. (L1، L2؛ نفس الـ sets بتاعة مثال المحاضرة)"
+       "ans": "الـ <bdi dir=\"ltr\">U&nbsp;=&nbsp;N</bdi>، يبقى:<span class=\"ltr\">Aᶜ = {5, 6, 7, 8, …}</span><b>الجزء (i)</b>:<span class=\"ltr\">Aᶜ ∩ B = {5, 6, 7} (= B − A)</span><b>الجزء (ii)</b>:<span class=\"ltr\">A ∪ B = {1,…,7}</span>يبقى:<span class=\"ltr\">Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {8, 9, 10, …}</span><b>الجزء (iii)</b>:<span class=\"ltr\">A ∪ B = {1, 2, 3, 4, 5, 6, 7}</span><b>الجزء (iv)</b>:<span class=\"ltr\">2⁴ = 16 subsets:</span><span class=\"ltr\">{∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}</span>(نفس الـ sets بتاعة مثال المحاضرة؛ L1 و L2)"
       },
       {
-       "ans": "<table><tr><th>p</th><th>q</th><th>p→q</th><th>q→p</th><th>(p→q)∨(q→p)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr></table>آخر عمود كله T، يبقى tautology. وبالقوانين: (¬p ∨ q) ∨ (¬q ∨ p) ≡ (¬p ∨ p) ∨ (q ∨ ¬q) ≡ T ∨ T ≡ T. (L3)"
+       "ans": "<table><tr><th dir=\"ltr\">p</th><th dir=\"ltr\">q</th><th dir=\"ltr\">p→q</th><th dir=\"ltr\">q→p</th><th dir=\"ltr\">(p→q)∨(q→p)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr></table>آخر عمود كله T، يبقى tautology. وبالقوانين:<span class=\"ltr\">(¬p ∨ q) ∨ (¬q ∨ p)</span><span class=\"ltr\">≡ (¬p ∨ p) ∨ (q ∨ ¬q) ≡ T ∨ T ≡ T. (L3)</span>"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "<b>(i)</b> deg(a) = 2 (الـ loop بيتحسب مرتين) + 1 (a–b) + 1 (a–c) = <b>4</b>.<br><b>(ii)</b> بالترتيب a، b، c، d:<table><tr><th></th><th>a</th><th>b</th><th>c</th><th>d</th></tr><tr><th>a</th><td>1</td><td>1</td><td>1</td><td>0</td></tr><tr><th>b</th><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><th>c</th><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><th>d</th><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>الـ matrix دي symmetric (لأن الـ graph undirected). للتأكد: الـ degrees هي a = 4، b = 2، c = 2، d = 2، والمجموع 10 = 2 × 5 edges (الـ handshake). (L9)"
+       "ans": "<b>الجزء (i)</b>:<span class=\"ltr\">deg(a) = 2 + 1 (a–b) + 1 (a–c) = <b>4</b></span>والـ 2 دي لأن الـ loop بيتحسب مرتين.<br><b>الجزء (ii)</b> بالترتيب <bdi dir=\"ltr\">a,&nbsp;b,&nbsp;c,&nbsp;d</bdi> كده:<table><tr><th></th><th dir=\"ltr\">a</th><th dir=\"ltr\">b</th><th dir=\"ltr\">c</th><th dir=\"ltr\">d</th></tr><tr><th dir=\"ltr\">a</th><td>1</td><td>1</td><td>1</td><td>0</td></tr><tr><th dir=\"ltr\">b</th><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><th dir=\"ltr\">c</th><td>1</td><td>0</td><td>0</td><td>1</td></tr><tr><th dir=\"ltr\">d</th><td>0</td><td>1</td><td>1</td><td>0</td></tr></table>الـ matrix دي symmetric (لأن الـ graph undirected). للتأكد، الـ degrees هي:<span class=\"ltr\">a = 4, b = 2, c = 2, d = 2</span>والمجموع:<span class=\"ltr\">10 = 2 × 5 edges</span>(الـ handshake). (L9)"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [second De Morgan]<br>≡ ¬p ∧ [¬(¬p) ∨ ¬q] [first De Morgan]<br>≡ ¬p ∧ (p ∨ ¬q) [double negation]<br>≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [second distributive]<br>≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F]<br>≡ (¬p ∧ ¬q) ∨ F [commutative]<br>≡ ¬p ∧ ¬q [identity law for F] ■ (L5)"
+       "ans": "باستخدام الـ laws:<span class=\"ltr\">¬(p ∨ (¬p ∧ q))</span><span class=\"ltr\">≡ ¬p ∧ ¬(¬p ∧ q) [second De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ [¬(¬p) ∨ ¬q] [first De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ (p ∨ ¬q) [double negation]</span><span class=\"ltr\">≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [second distributive]</span><span class=\"ltr\">≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F]</span><span class=\"ltr\">≡ (¬p ∧ ¬q) ∨ F [commutative]</span><span class=\"ltr\">≡ ¬p ∧ ¬q [identity law for F] ■ (L5)</span>"
       }
      ]
     }
@@ -3537,20 +3537,20 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "<table><tr><th>p</th><th>q</th><th>r</th><th>q∨r</th><th>p∧(q∨r)</th><th>p∧q</th><th>p∧r</th><th>(p∧q)∨(p∧r)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td><td>F</td></tr></table>العمود الخامس والعمود التامن متطابقين، يبقى الـ distributive law صح. (L4)"
+       "ans": "<table><tr><th dir=\"ltr\">p</th><th dir=\"ltr\">q</th><th dir=\"ltr\">r</th><th dir=\"ltr\">q∨r</th><th dir=\"ltr\">p∧(q∨r)</th><th dir=\"ltr\">p∧q</th><th dir=\"ltr\">p∧r</th><th dir=\"ltr\">(p∧q)∨(p∧r)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr></table>العمود الخامس والعمود التامن متطابقين، يبقى الـ distributive law صح. (L4)"
       },
       {
-       "ans": "(i) 27 = 5 × 5 + 2 → <b>2</b>. (ii) 36 = 3 × 12 + 0 → <b>0</b>. (L8)"
+       "ans": "الجزء (i):<span class=\"ltr\">27 = 5 × 5 + 2 → <b>2</b></span>الجزء (ii):<span class=\"ltr\">36 = 3 × 12 + 0 → <b>0</b> (L8)</span>"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "Aᶜ = {5,6,7,8,9}.<br><b>(i)</b> Aᶜ ∩ B = {5, 6, 8}.<br><b>(ii)</b> A ∪ B = {1,2,3,4,5,6,8} → Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {7, 9}.<br><b>(iii)</b> A ∪ B = {1, 2, 3, 4, 5, 6, 8}.<br><b>(iv)</b> 16 subset: {∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}. (L1، L2)"
+       "ans": "أولًا:<span class=\"ltr\">Aᶜ = {5,6,7,8,9}</span><b>الجزء (i)</b>:<span class=\"ltr\">Aᶜ ∩ B = {5, 6, 8}</span><b>الجزء (ii)</b>:<span class=\"ltr\">A ∪ B = {1,2,3,4,5,6,8}</span><span class=\"ltr\">→ Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {7, 9}</span><b>الجزء (iii)</b>:<span class=\"ltr\">A ∪ B = {1, 2, 3, 4, 5, 6, 8}</span><b>الجزء (iv)</b>: فيه 16 subset:<span class=\"ltr\">{∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}}</span>(من L1 و L2)"
       },
       {
-       "ans": "[¬p ∧ (p ∨ q)] → q<br>≡ ¬[¬p ∧ (p ∨ q)] ∨ q [p → q ≡ ¬p ∨ q]<br>≡ [p ∨ ¬(p ∨ q)] ∨ q [De Morgan، double negation]<br>≡ [p ∨ (¬p ∧ ¬q)] ∨ q [De Morgan]<br>≡ [(p ∨ ¬p) ∧ (p ∨ ¬q)] ∨ q [distributive]<br>≡ [T ∧ (p ∨ ¬q)] ∨ q ≡ (p ∨ ¬q) ∨ q [negation، identity]<br>≡ p ∨ (¬q ∨ q) ≡ p ∨ T ≡ T [associative، negation، domination] ■<br>(طريقة أقصر: ¬p ∧ (p ∨ q) ≡ (¬p ∧ p) ∨ (¬p ∧ q) ≡ ¬p ∧ q، و (¬p ∧ q) → q ≡ p ∨ ¬q ∨ q ≡ T.) (L5)"
+       "ans": "باستخدام الـ laws:<span class=\"ltr\">[¬p ∧ (p ∨ q)] → q</span><span class=\"ltr\">≡ ¬[¬p ∧ (p ∨ q)] ∨ q [p → q ≡ ¬p ∨ q]</span><span class=\"ltr\">≡ [p ∨ ¬(p ∨ q)] ∨ q [De Morgan, double negation]</span><span class=\"ltr\">≡ [p ∨ (¬p ∧ ¬q)] ∨ q [De Morgan]</span><span class=\"ltr\">≡ [(p ∨ ¬p) ∧ (p ∨ ¬q)] ∨ q [distributive]</span><span class=\"ltr\">≡ [T ∧ (p ∨ ¬q)] ∨ q ≡ (p ∨ ¬q) ∨ q [negation, identity]</span><span class=\"ltr\">≡ p ∨ (¬q ∨ q) ≡ p ∨ T ≡ T [associative, negation, domination] ■</span>طريقة أقصر:<span class=\"ltr\">¬p ∧ (p ∨ q) ≡ (¬p ∧ p) ∨ (¬p ∧ q) ≡ ¬p ∧ q</span>وبعدين:<span class=\"ltr\">(¬p ∧ q) → q ≡ p ∨ ¬q ∨ q ≡ T (L5)</span>"
       }
      ]
     }
@@ -3561,163 +3561,163 @@ AR.dm = {
     {
      "items": [
       {
-       "why": "الـ P(S) هي الـ set اللي فيها كل الـ subsets بتاعة S = {2, 4}: يعني ∅ و{2} و{4} و{2, 4}، فيبقى عندنا 2² = 4 elements (L1, Power set).",
+       "why": "الـ <bdi dir=\"ltr\">P(S)</bdi> هي الـ set اللي فيها كل الـ subsets بتاعة <bdi dir=\"ltr\">S&nbsp;=&nbsp;{2,&nbsp;4}</bdi>: يعني ∅ و<bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{4}</bdi> و<bdi dir=\"ltr\">{2,&nbsp;4}</bdi>، فيبقى عندنا <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
        "ow": [
-        "{2, 1} فيها أرقام، وكمان 1 مش موجود في S أصلًا. الـ P(S) لازم يبقى فيها الـ subsets بتاعة {2, 4}: ∅ و{2} و{4} و{2, 4}.",
-        "الـ 0 مش subset من {2, 4}، وكمان {2} و{4} و{2, 4} ناقصين. الـ power set لـ set فيها 2 elements لازم يبقى فيها 2² = 4 elements.",
+        "الـ <bdi dir=\"ltr\">{2,&nbsp;1}</bdi> فيها أرقام، وكمان 1 مش موجود في S أصلًا. الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يبقى فيها الـ subsets بتاعة <bdi dir=\"ltr\">{2,&nbsp;4}</bdi>، وهي:<span class=\"ltr\">∅, {2}, {4}, {2, 4}</span>",
+        "الـ 0 مش subset من <bdi dir=\"ltr\">{2,&nbsp;4}</bdi>، وكمان <bdi dir=\"ltr\">{2}</bdi> و<bdi dir=\"ltr\">{4}</bdi> و<bdi dir=\"ltr\">{2,&nbsp;4}</bdi> ناقصين. الـ power set لـ set فيها 2 elements لازم يبقى فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> elements.",
         null
        ]
       },
       {
-       "why": "ده الـ Absorption law: p ∨ (p ∧ q) ≡ p (Theorem 1.1.1, law 10). الفكرة إن p ∧ q مش ممكن تبقى true غير لو p نفسها true أصلًا، فمش بتزوّد حاجة (L4).",
+       "why": "ده الـ Absorption law:<span class=\"ltr\">p ∨ (p ∧ q) ≡ p</span>(من <bdi dir=\"ltr\">Theorem 1.1.1, law 10</bdi>). الفكرة إن <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> مش ممكن تبقى true غير لو p نفسها true أصلًا، فمش بتزوّد حاجة (L4).",
        "ow": [
         null,
-        "الـ q بتتجاهل p خالص: لو p = T و q = F، الـ expression p ∨ (p ∧ q) بتطلع T بس q بتطلع F.",
-        "خلي بالك من الصف p = F، q = T: الـ p ∨ q بتطلع T، إنما p ∨ (p ∧ q) = F ∨ F = F، فهما مش equivalent."
+        "الـ q بتتجاهل p خالص: لو <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، الـ expression <bdi dir=\"ltr\">p&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)</bdi> بتطلع T بس q بتطلع F.",
+        "خلي بالك من الصف <bdi dir=\"ltr\">p&nbsp;=&nbsp;F,&nbsp;q&nbsp;=&nbsp;T</bdi>: الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتطلع T، إنما:<span class=\"ltr\">p ∨ (p ∧ q) = F ∨ F = F</span>فهما مش equivalent."
        ]
       },
       {
-       "why": "نفي r ∨ (p ∧ q) هو ¬r ∧ ¬(p ∧ q) = ¬r ∧ (¬p ∨ ¬q)، ومكتوب في الورقة كاختيار c (L4، L5).",
+       "why": "نفي <bdi dir=\"ltr\">r&nbsp;∨&nbsp;(p&nbsp;∧&nbsp;q)</bdi> هو:<span class=\"ltr\">¬r ∧ ¬(p ∧ q) = ¬r ∧ (¬p ∨ ¬q)</span>ومكتوب في الورقة كاختيار c <bdi dir=\"ltr\">(L4&nbsp;و&nbsp;L5)</bdi>.",
        "ow": [
-        "الـ ¬r ∧ ¬p ∧ ¬q دي نفي r ∨ p ∨ q. هنا p ∧ q متجمّعين مع بعض، فالـ De Morgan عليهم بيدّي ¬p ∨ ¬q مش ¬p ∧ ¬q.",
-        "الـ ¬r ∨ ¬p ∨ ¬q دي نفي r ∧ p ∧ q. الـ connective اللي برّه هو ∨، فالنفي لازم يبدأ بـ ¬r ∧ ….",
+        "الـ <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬p&nbsp;∧&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">r&nbsp;∨&nbsp;p&nbsp;∨&nbsp;q</bdi>. هنا <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> متجمّعين مع بعض، فالـ De Morgan عليهم بيدّي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi> مش <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">¬r&nbsp;∨&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">r&nbsp;∧&nbsp;p&nbsp;∧&nbsp;q</bdi>. الـ connective اللي برّه هو <bdi dir=\"ltr\">∨</bdi>، فالنفي لازم يبدأ بـ <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;…</bdi>.",
         null
        ]
       },
       {
-       "why": "ده الـ Identity law: p ∧ t ≡ p. الـ \"and true\" مش بتغيّر قيمة p، فالعمود بيطلع زي p بالظبط (Theorem 1.1.1, law 4; Example 1.1.14) (L4).",
+       "why": "ده الـ Identity law:<span class=\"ltr\">p ∧ t ≡ p</span>الـ \"and true\" مش بتغيّر قيمة p، فالعمود بيطلع زي p بالظبط <bdi dir=\"ltr\">(Theorem 1.1.1, law 4; Example 1.1.14) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ q مش موجودة أصلًا في p ∧ T، فمستحيل تبقى هي الناتج. الـ identity law بيدّي p.",
-        "الـ p ∨ ¬q بتطلع T لما p = F و q = F، وساعتها p ∧ T = F. الـ identity law p ∧ t ≡ p بيدّي p."
+        "الـ q مش موجودة أصلًا في <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T</bdi>، فمستحيل تبقى هي الناتج. الـ identity law بيدّي p.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q</bdi> بتطلع T لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;F</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi>، وساعتها <bdi dir=\"ltr\">p&nbsp;∧&nbsp;T&nbsp;=&nbsp;F</bdi>. الـ identity law <bdi dir=\"ltr\">p&nbsp;∧&nbsp;t&nbsp;≡&nbsp;p</bdi> بيدّي p."
        ]
       },
       {
-       "why": "الـ A × B هي كل الـ ordered pairs (a, b)، وكل اختيار من الـ 4 بتوع a بيتجوّز مع كل اختيار من الـ 3 بتوع b: |A × B| = |A|·|B| = 4 × 3 = 12 (L2, Cartesian product).",
+       "why": "الـ <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> هي كل الـ ordered pairs <bdi dir=\"ltr\">(a,&nbsp;b)</bdi>، وكل اختيار من الـ 4 بتوع a بيتجوّز مع كل اختيار من الـ 3 بتوع b:<span class=\"ltr\">|A × B| = |A|·|B| = 4 × 3 = 12 (L2, Cartesian product)</span>",
        "ow": [
-        "الـ |A ∩ B| = 0 بتتحقق بس لو A و B disjoint. ممكن يشتركوا في لحد 3 elements، فدي مش صح دايمًا.",
+        "الـ <bdi dir=\"ltr\">|A&nbsp;∩&nbsp;B|&nbsp;=&nbsp;0</bdi> بتتحقق بس لو A و B disjoint. ممكن يشتركوا في لحد 3 elements، فدي مش صح دايمًا.",
         null,
-        "الـ |A − B| بتعتمد على قد إيه A و B متداخلين: بتبقى 4 لو disjoint، و1 لو B كلها جوّه A. فمش دايمًا 1."
+        "الـ <bdi dir=\"ltr\">|A&nbsp;−&nbsp;B|</bdi> بتعتمد على قد إيه A و B متداخلين: بتبقى 4 لو disjoint، و1 لو B كلها جوّه A. فمش دايمًا 1."
        ]
       },
       {
-       "why": "¬(R ∧ ¬F) ≡ ¬R ∨ F بالـ De Morgan والـ double negation، و ¬R ∨ F ≡ R → F: يعني \"If John is rich, then he is famous\" (L5, Table 7).",
+       "why": "بالـ De Morgan والـ double negation:<span class=\"ltr\">¬(R ∧ ¬F) ≡ ¬R ∨ F</span>وكمان:<span class=\"ltr\">¬R ∨ F ≡ R → F</span>يعني \"If John is rich, then he is famous\" <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>.",
        "ow": [
-        "\"Neither rich nor famous\" هي ¬R ∧ ¬F؛ دي بتبقى false لو John غني ومشهور، وفي الحالة دي الأصل (R ∧ ¬F) false برضه، فمش نفيه.",
-        "\"Rich or famous\" (R ∨ F) بتبقى true لو John غني ومش مشهور، ودي بالظبط الحالة اللي الأصل فيها true.",
-        "الـ F → R ≡ ¬F ∨ R بتبقى true لو John غني ومش مشهور، والأصل كمان true هناك، فدي مش النفي.",
+        "الـ \"Neither rich nor famous\" هي <bdi dir=\"ltr\">¬R&nbsp;∧&nbsp;¬F</bdi>؛ دي بتبقى false لو John غني ومشهور، وفي الحالة دي الأصل <bdi dir=\"ltr\">(R&nbsp;∧&nbsp;¬F)</bdi> false برضه، فمش نفيه.",
+        "الـ \"Rich or famous\" <bdi dir=\"ltr\">(R&nbsp;∨&nbsp;F)</bdi> بتبقى true لو John غني ومش مشهور، ودي بالظبط الحالة اللي الأصل فيها true.",
+        "الـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;R&nbsp;≡&nbsp;¬F&nbsp;∨&nbsp;R</bdi> بتبقى true لو John غني ومش مشهور، والأصل كمان true هناك، فدي مش النفي.",
         null
        ]
       },
       {
-       "why": "الـ p ↔ q معناها \"p only if q\" (p → q) و\"p if q\" (q → p) مع بعض؛ والـ truth table بيوضّح إن العمودين متطابقين (L5, Biconditional; Table 8).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> معناها \"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi> و\"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi> مع بعض؛ والـ truth table بيوضّح إن العمودين متطابقين <bdi dir=\"ltr\">(L5, Biconditional; Table 8)</bdi>.",
        "ow": [
         null,
-        "الـ p → q اتجاه واحد بس (\"only if\")؛ في الصف F, T بتطلع T بينما p ↔ q بتطلع F. الـ biconditional محتاج q → p كمان.",
-        "الـ ¬p بتتجاهل q: في الصف T, T بتطلع F بينما p ↔ q بتطلع T."
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> اتجاه واحد بس (\"only if\")؛ في الصف <bdi dir=\"ltr\">F,&nbsp;T</bdi> بتطلع T بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتطلع F. الـ biconditional محتاج <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> بتتجاهل q: في الصف T, T بتطلع F بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتطلع T."
        ]
       },
       {
-       "why": "الـ Disjunction هي الـ \"or\" الـ inclusive، وبتتكتب p ∨ q: بتبقى true لو p أو q (أو الاتنين) true، و false بس لو الاتنين false (L3, Connectives).",
+       "why": "الـ Disjunction هي الـ \"or\" الـ inclusive، وبتتكتب <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>: بتبقى true لو p أو q (أو الاتنين) true، و false بس لو الاتنين false <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
         null,
-        "الـ p ∧ q دي الـ conjunction (\"and\")، و true بس لو الاتنين true. الـ disjunction (\"or\") هي p ∨ q.",
-        "الـ \"−\" مش logical connective في المحاضرة (دي set difference). الـ disjunction بتاعة p و q هي p ∨ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> دي الـ conjunction (\"and\")، و true بس لو الاتنين true. الـ disjunction (\"or\") هي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>.",
+        "الـ \"−\" مش logical connective في المحاضرة (دي set difference). الـ disjunction بتاعة p و q هي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "(p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q) ≡ (¬p ∨ p) ∨ (¬q ∨ q) ≡ T: الفكرة إن أي وقت p ∧ q تبقى true، الـ p ∨ q بتبقى true (L5, Proof).",
+       "why": "التبسيط:<span class=\"ltr\">(p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q)</span><span class=\"ltr\">≡ (¬p ∨ p) ∨ (¬q ∨ q) ≡ T</span>الفكرة إن أي وقت <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى true، الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true <bdi dir=\"ltr\">(L5,&nbsp;Proof)</bdi>.",
        "ow": [
         null,
-        "الـ contradiction بتبقى false في كل الصفوف، إنما الـ implication دي عمرها ما بتطلع false: أي وقت p ∧ q تبقى T، الـ p ∨ q بتبقى T برضه.",
+        "الـ contradiction بتبقى false في كل الصفوف، إنما الـ implication دي عمرها ما بتطلع false: أي وقت <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى T، الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى T برضه.",
         "مفيش form تبقى كلها T وكلها F في نفس الوقت. هنا كل الصفوف T، فهي tautology بس."
        ]
       },
       {
-       "why": "الـ Conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لو p و q الاتنين true (L3, Connectives).",
+       "why": "الـ Conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لو p و q الاتنين true <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
         null,
-        "الـ p ∨ q دي الـ disjunction (\"or\")، و true لو جزء واحد على الأقل true. الـ conjunction (\"and\") هي p ∧ q.",
-        "الـ \"−\" دي set difference أو طرح، مش من الـ logical connectives بتوع المحاضرة (¬, ∧, ∨, ⊕, →, ↔). الـ conjunction هي p ∧ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> دي الـ disjunction (\"or\")، و true لو جزء واحد على الأقل true. الـ conjunction (\"and\") هي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>.",
+        "الـ \"−\" دي set difference أو طرح، مش من الـ logical connectives بتوع المحاضرة <bdi dir=\"ltr\">(¬,&nbsp;∧,&nbsp;∨,&nbsp;⊕,&nbsp;→,&nbsp;↔)</bdi>. الـ conjunction هي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "الـ Exclusive or بتتكتب p ⊕ q وبتبقى true لما واحدة بس من p و q تبقى true (و false لو الاتنين T أو الاتنين F) (L3, Connectives).",
+       "why": "الـ Exclusive or بتتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> وبتبقى true لما واحدة بس من p و q تبقى true (و false لو الاتنين T أو الاتنين F) <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
-        "الـ p ∨ q دي الـ inclusive or، وبتبقى true كمان لو الاتنين true. الـ exclusive or ليها رمز لوحدها: p ⊕ q.",
-        "الـ p ∧ q دي الـ conjunction (\"and\")، و true بس لو الاتنين true، ودي بالظبط الحالة اللي ⊕ فيها false.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> دي الـ inclusive or، وبتبقى true كمان لو الاتنين true. الـ exclusive or ليها رمز لوحدها: <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> دي الـ conjunction (\"and\")، و true بس لو الاتنين true، ودي بالظبط الحالة اللي <bdi dir=\"ltr\">⊕</bdi> فيها false.",
         null
        ]
       },
       {
-       "why": "الـ De Morgan: ~(p ∨ q) ≡ ~p ∧ ~q. يعني \"مش (p أو q)\" معناها إن ولا واحدة فيهم true (Theorem 1.1.1, law 9; Table 3) (L4).",
+       "why": "الـ De Morgan:<span class=\"ltr\">~(p ∨ q) ≡ ~p ∧ ~q</span>يعني \"مش (p أو q)\" معناها إن ولا واحدة فيهم true <bdi dir=\"ltr\">(Theorem 1.1.1, law 9; Table 3) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ ¬p ∨ ¬q دي قانون الـ De Morgan التاني، بتاع ¬(p ∧ q). نفي الـ ∨ لازم يقلبها ∧.",
-        "الـ p ∧ ¬q دي نفي p → q (L5). الـ De Morgan على ¬(p ∨ q) بينفي الجزئين: ¬p ∧ ¬q."
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi> دي قانون الـ De Morgan التاني، بتاع <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;q)</bdi>. نفي الـ <bdi dir=\"ltr\">∨</bdi> لازم يقلبها <bdi dir=\"ltr\">∧</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> (L5). الـ De Morgan على <bdi dir=\"ltr\">¬(p&nbsp;∨&nbsp;q)</bdi> بينفي الجزئين: <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>."
        ]
       },
       {
-       "why": "لما p ∧ q تبقى true، يبقى q true، فالـ p → q بتبقى true.",
+       "why": "لما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى true، يبقى q true، فالـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى true.",
        "ow": [
         null,
-        "عمرها ما بتطلع false: الـ implication بتبقى F بس في حالة T → F، ولما p ∧ q تبقى T يبقى q بـ T، فالـ p → q بتطلع T.",
+        "عمرها ما بتطلع false: الـ implication بتبقى F بس في حالة <bdi dir=\"ltr\">T&nbsp;→&nbsp;F</bdi>، ولما <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى T يبقى q بـ T، فالـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتطلع T.",
         "الـ statement form مش ممكن تبقى دايمًا true ودايمًا false في نفس الوقت. هنا كل الصفوف T: يبقى tautology."
        ]
       },
       {
-       "why": "من a → b ≡ ¬a ∨ b بنطلع ¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q بالـ double negation (L5, Table 7: p ∨ q ≡ ¬p → q).",
+       "why": "من <bdi dir=\"ltr\">a&nbsp;→&nbsp;b&nbsp;≡&nbsp;¬a&nbsp;∨&nbsp;b</bdi> بنطلع:<span class=\"ltr\">¬p → q ≡ ¬(¬p) ∨ q ≡ p ∨ q</span>بالـ double negation (<bdi dir=\"ltr\">L5, Table 7: p ∨ q ≡ ¬p → q</bdi>).",
        "ow": [
-        "الـ q → ¬p دي الـ converse بتاع ¬p → q، ومش equivalent ليها: عند p = T، q = T الأصل بيطلع T بس q → ¬p بتطلع F.",
-        "الـ p → ¬q ≡ ¬p ∨ ¬q بتطلع F عند p = q = T، وهناك ¬p → q (F → T) بتطلع T، فهما مش equivalent.",
+        "الـ <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi> دي الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi>، ومش equivalent ليها: عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;q&nbsp;=&nbsp;T</bdi> الأصل بيطلع T بس <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi> بتطلع F.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;¬q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi> بتطلع F عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi>، وهناك <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q&nbsp;(F&nbsp;→&nbsp;T)</bdi> بتطلع T، فهما مش equivalent.",
         null
        ]
       },
       {
-       "why": "الـ statement اللي FALSE هي P(B) ⊂ A: الـ P(B) = {∅, {0}}، والـ ∅ مش element في A = {0, {0}}. إنما B ∈ A و B ⊆ A الاتنين صح (L1, ∈ versus ⊆).",
+       "why": "الـ statement اللي FALSE هي <bdi dir=\"ltr\">P(B)&nbsp;⊂&nbsp;A</bdi>: لأن <bdi dir=\"ltr\">P(B)&nbsp;=&nbsp;{∅,&nbsp;{0}}</bdi>، والـ ∅ مش element في <bdi dir=\"ltr\">A&nbsp;=&nbsp;{0,&nbsp;{0}}</bdi>. إنما <bdi dir=\"ltr\">B&nbsp;∈&nbsp;A</bdi> و <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi> الاتنين صح <bdi dir=\"ltr\">(L1,&nbsp;∈&nbsp;versus&nbsp;⊆)</bdi>.",
        "ow": [
-        "الـ statement دي صح، فمش هي الإجابة: A = {0, {0}} فيها {0} كـ element، و {0} = B، يبقى B ∈ A.",
-        "الـ statement دي صح، فمش هي الإجابة: B = {0} فيها element واحد بس هو 0، و 0 ∈ A، يبقى B ⊆ A.",
+        "الـ statement دي صح، فمش هي الإجابة: <bdi dir=\"ltr\">A&nbsp;=&nbsp;{0,&nbsp;{0}}</bdi> فيها <bdi dir=\"ltr\">{0}</bdi> كـ element، و <bdi dir=\"ltr\">{0}&nbsp;=&nbsp;B</bdi>، يبقى <bdi dir=\"ltr\">B&nbsp;∈&nbsp;A</bdi>.",
+        "الـ statement دي صح، فمش هي الإجابة: <bdi dir=\"ltr\">B&nbsp;=&nbsp;{0}</bdi> فيها element واحد بس هو 0، و <bdi dir=\"ltr\">0&nbsp;∈&nbsp;A</bdi>، يبقى <bdi dir=\"ltr\">B&nbsp;⊆&nbsp;A</bdi>.",
         null
        ]
       },
       {
-       "why": "الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنعوّض بيها في الـ variables، زي p ∨ ¬p (L4, Definitions).",
+       "why": "الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنعوّض بيها في الـ variables، زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
         null,
-        "الـ contradiction بتبقى false دايمًا (زي p ∧ ¬p)، يعني عكس المطلوب. الـ always true هي tautology.",
+        "الـ contradiction بتبقى false دايمًا (زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi>)، يعني عكس المطلوب. الـ always true هي tautology.",
         "العمود مش ممكن يبقى كله T وكله F في نفس الوقت، فالـ proposition مش ممكن تبقى الاتنين. الـ always true يعني tautology."
        ]
       },
       {
-       "why": "−32 = (−6)(6) + 4، لأن الـ remainder لازم يبقى مش سالب.",
+       "why": "الحساب:<span class=\"ltr\">−32 = (−6)(6) + 4</span>لأن الـ remainder لازم يبقى مش سالب.",
        "ow": [
         null,
-        "6 × 6 + 3 = 39، مش −32؛ هنا اتجاهلنا إشارة a. الصح −32 = (−6)(6) + 4 مع 0 ≤ r &lt; 6.",
-        "4 × 6 + 5 = 29، مش −32. خلي بالك لما الـ dividend يبقى سالب الـ quotient بيبقى سالب: −32 = (−6)(6) + 4."
+        "الحساب <bdi dir=\"ltr\">6&nbsp;×&nbsp;6&nbsp;+&nbsp;3&nbsp;=&nbsp;39</bdi>، مش <bdi dir=\"ltr\">−32</bdi>؛ هنا اتجاهلنا إشارة a. الصح:<span class=\"ltr\">−32 = (−6)(6) + 4</span>مع <bdi dir=\"ltr\">0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;6</bdi>.",
+        "الحساب <bdi dir=\"ltr\">4&nbsp;×&nbsp;6&nbsp;+&nbsp;5&nbsp;=&nbsp;29</bdi>، مش <bdi dir=\"ltr\">−32</bdi>. خلي بالك لما الـ dividend يبقى سالب الـ quotient بيبقى سالب:<span class=\"ltr\">−32 = (−6)(6) + 4</span>"
        ]
       },
       {
-       "why": "الـ contradiction هي statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنعوّض بيها، زي p ∧ ¬p (L4, Definitions).",
+       "why": "الـ contradiction هي statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنعوّض بيها، زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
-        "الـ tautology عكسها: بتبقى true دايمًا مهما كانت قيم الـ variables (زي p ∨ ¬p). الـ always false هي contradiction.",
+        "الـ tautology عكسها: بتبقى true دايمًا مهما كانت قيم الـ variables (زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>). الـ always false هي contradiction.",
         null,
         "الـ tautology كلها T والـ contradiction كلها F؛ عمود واحد في الـ truth table مش ممكن يبقى الاتنين. الـ always false يعني contradiction بس."
        ]
       },
       {
-       "why": "بالـ Euclid: 110 = 63 + 47، 63 = 47 + 16، 47 = 2·16 + 15، 16 = 15 + 1، 15 = 15·1 + 0 (L8).",
+       "why": "بالـ Euclid:<span class=\"ltr\">110 = 63 + 47</span><span class=\"ltr\">63 = 47 + 16</span><span class=\"ltr\">47 = 2·16 + 15</span><span class=\"ltr\">16 = 15 + 1</span><span class=\"ltr\">15 = 15·1 + 0 (L8)</span>",
        "ow": [
-        "الـ 9 بتقسم 63 (63 = 7 × 9) بس مش بتقسم 110 (110 = 12 × 9 + 2)، فمش common divisor.",
-        "الـ 6 مش بتقسم 63 (63 فردي) ومش بتقسم 110 كمان (110 = 18 × 6 + 2).",
+        "الـ 9 بتقسم 63 <bdi dir=\"ltr\">(63&nbsp;=&nbsp;7&nbsp;×&nbsp;9)</bdi> بس مش بتقسم 110 <bdi dir=\"ltr\">(110&nbsp;=&nbsp;12&nbsp;×&nbsp;9&nbsp;+&nbsp;2)</bdi>، فمش common divisor.",
+        "الـ 6 مش بتقسم 63 (63 فردي) ومش بتقسم 110 كمان <bdi dir=\"ltr\">(110&nbsp;=&nbsp;18&nbsp;×&nbsp;6&nbsp;+&nbsp;2)</bdi>.",
         null
        ]
       },
       {
-       "why": "في a = q × n + r مع 0 ≤ r &lt; n: 9 × 18 = 162 و 165 − 162 = 3، يبقى q = 9، r = 3 (L8, Division relation).",
+       "why": "في <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi> مع <bdi dir=\"ltr\">0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;n</bdi>، بنحسب:<span class=\"ltr\">9 × 18 = 162</span><span class=\"ltr\">165 − 162 = 3</span>يبقى <bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi> <bdi dir=\"ltr\">(L8, Division relation)</bdi>.",
        "ow": [
-        "9 × 18 + 4 = 166، مش 165. الـ quotient 9 صح بس الـ remainder هو 165 − 162 = 3.",
-        "8 × 18 + 4 = 148، مش 165. ولو q = 8 الـ remainder هيبقى 21 ≥ 18، فلازم q = 9، r = 3.",
+        "الحساب <bdi dir=\"ltr\">9&nbsp;×&nbsp;18&nbsp;+&nbsp;4&nbsp;=&nbsp;166</bdi>، مش 165. الـ quotient 9 صح بس الـ remainder هو <bdi dir=\"ltr\">165&nbsp;−&nbsp;162&nbsp;=&nbsp;3</bdi>.",
+        "الحساب <bdi dir=\"ltr\">8&nbsp;×&nbsp;18&nbsp;+&nbsp;4&nbsp;=&nbsp;148</bdi>، مش 165. ولو <bdi dir=\"ltr\">q&nbsp;=&nbsp;8</bdi> الـ remainder هيبقى <bdi dir=\"ltr\">21&nbsp;≥&nbsp;18</bdi>، فلازم <bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi>.",
         null
        ]
       }
@@ -3726,30 +3726,30 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "الـ Rows (p q r → p∧(q∨r) | (p∧q)∨(p∧r)): TTT T|T؛ TTF T|T؛ TFT T|T؛ TFF F|F؛ FTT F|F؛ FTF F|F؛ FFT F|F؛ FFF F|F. العمودين متفقين في الـ 8 rows كلهم، يبقى الـ distributive law صح. (الجدول كامل موجود في ورقة Aug 2024، Q1a.) (L4)"
+       "ans": "الـ Rows بالترتيب:<span class=\"ltr\">p q r → p∧(q∨r) | (p∧q)∨(p∧r)</span><span class=\"ltr\">TTT T|T; TTF T|T; TFT T|T; TFF F|F;</span><span class=\"ltr\">FTT F|F; FTF F|F; FFT F|F; FFF F|F</span>العمودين متفقين في الـ 8 rows كلهم، يبقى الـ distributive law صح. (الجدول كامل موجود في ورقة <bdi dir=\"ltr\">Aug&nbsp;2024,&nbsp;Q1a</bdi>.) (L4)"
       },
       {
-       "ans": "(i) 27 = 5·5 + 2 → <b>2</b>.<br>(ii) 36 = 3·12 + 0 → <b>0</b>.<br>(iii) −18 ÷ 14 بيدّي r = −4؛ زوّد الـ modulus: −4 + 14 = <b>10</b> (−18 = (−2)(14) + 10).<br>(iv) −7 ÷ 10 بيدّي r = −7؛ زوّد الـ modulus: <b>3</b> (−7 = (−1)(10) + 3). (Lecture 8، Example 2.14)"
+       "ans": "الجزء (i):<span class=\"ltr\">27 = 5·5 + 2 → <b>2</b></span>الجزء (ii):<span class=\"ltr\">36 = 3·12 + 0 → <b>0</b></span>الجزء (iii): <bdi dir=\"ltr\">−18&nbsp;÷&nbsp;14</bdi> بيدّي <bdi dir=\"ltr\">r&nbsp;=&nbsp;−4</bdi>؛ زوّد الـ modulus:<span class=\"ltr\">−4 + 14 = <b>10</b> (−18 = (−2)(14) + 10)</span>الجزء (iv): <bdi dir=\"ltr\">−7&nbsp;÷&nbsp;10</bdi> بيدّي <bdi dir=\"ltr\">r&nbsp;=&nbsp;−7</bdi>؛ زوّد الـ modulus:<span class=\"ltr\"><b>3</b> (−7 = (−1)(10) + 3)</span>(من <bdi dir=\"ltr\">Lecture 8, Example 2.14</bdi>)"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "Aᶜ = {4,5,6,7,9}.<br><b>(i)</b> Aᶜ ∩ B = {4, 5, 6, 9}.<br><b>(ii)</b> A ∪ B = {1,2,3,4,5,6,8,9} → Aᶜ ∩ Bᶜ = {7}.<br><b>(iii)</b> A ∪ B = {1, 2, 3, 4, 5, 6, 8, 9}.<br><b>(iv)</b> 16 subset: {∅, {1}, {2}, {3}, {8}, {1,2}, {1,3}, {1,8}, {2,3}, {2,8}, {3,8}, {1,2,3}, {1,2,8}, {1,3,8}, {2,3,8}, {1,2,3,8}}. (L1، L2)"
+       "ans": "أولًا:<span class=\"ltr\">Aᶜ = {4,5,6,7,9}</span><b>الجزء (i)</b>:<span class=\"ltr\">Aᶜ ∩ B = {4, 5, 6, 9}</span><b>الجزء (ii)</b>:<span class=\"ltr\">A ∪ B = {1,2,3,4,5,6,8,9}</span><span class=\"ltr\">→ Aᶜ ∩ Bᶜ = {7}</span><b>الجزء (iii)</b>:<span class=\"ltr\">A ∪ B = {1, 2, 3, 4, 5, 6, 8, 9}</span><b>الجزء (iv)</b>: فيه 16 subset:<span class=\"ltr\">{∅, {1}, {2}, {3}, {8}, {1,2}, {1,3}, {1,8}, {2,3}, {2,8}, {3,8}, {1,2,3}, {1,2,8}, {1,3,8}, {2,3,8}, {1,2,3,8}}</span>(من L1 و L2)"
       },
       {
-       "ans": "¬p ∧ (p ∨ q) ≡ (¬p ∧ p) ∨ (¬p ∧ q) [distributive] ≡ F ∨ (¬p ∧ q) ≡ ¬p ∧ q [negation، identity].<br>وبعدين (¬p ∧ q) → q ≡ ¬(¬p ∧ q) ∨ q [p → q ≡ ¬p ∨ q] ≡ (p ∨ ¬q) ∨ q [De Morgan، double negation] ≡ p ∨ (¬q ∨ q) [associative] ≡ p ∨ T ≡ T [negation، domination] ■ (L5)"
+       "ans": "أولًا:<span class=\"ltr\">¬p ∧ (p ∨ q) ≡ (¬p ∧ p) ∨ (¬p ∧ q) [distributive]</span><span class=\"ltr\">≡ F ∨ (¬p ∧ q) ≡ ¬p ∧ q [negation, identity]</span>وبعدين:<span class=\"ltr\">(¬p ∧ q) → q ≡ ¬(¬p ∧ q) ∨ q [p → q ≡ ¬p ∨ q]</span><span class=\"ltr\">≡ (p ∨ ¬q) ∨ q [De Morgan, double negation]</span><span class=\"ltr\">≡ p ∨ (¬q ∨ q) [associative]</span><span class=\"ltr\">≡ p ∨ T ≡ T [negation, domination] ■ (L5)</span>"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "<b>(I)</b><table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><th>3</th><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><th>4</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><th>5</th><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table>(دي الـ matrix A₁ بتاعة المحاضرة؛ وهي symmetric.)<br><b>(II)</b> V(1) = {4}، V(2) = {3, 5}، V(3) = {2, 4, 5}، V(4) = {1, 3, 5}، V(5) = {2, 3, 4}؛ أو E = {a(1,4), b(2,5), c(2,3), d(3,5), e(3,4), f(4,5)}. (L9)"
+       "ans": "<b>الجزء (I)</b>:<table><tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><th>1</th><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td></tr><tr><th>2</th><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><th>3</th><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td></tr><tr><th>4</th><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td></tr><tr><th>5</th><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr></table>(دي الـ matrix A₁ بتاعة المحاضرة؛ وهي symmetric.)<br><b>الجزء (II)</b>:<span class=\"ltr\">V(1) = {4}, V(2) = {3, 5}, V(3) = {2, 4, 5},</span><span class=\"ltr\">V(4) = {1, 3, 5}, V(5) = {2, 3, 4}</span>أو:<span class=\"ltr\">E = {a(1,4), b(2,5), c(2,3), d(3,5), e(3,4), f(4,5)} (L9)</span>"
       },
       {
-       "ans": "¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) ≡ ¬p ∧ (p ∨ ¬q) ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) ≡ F ∨ (¬p ∧ ¬q) ≡ ¬p ∧ ¬q (De Morgan، De Morgan + double negation، distributive، negation، identity). وممكن كمان بالـ truth table: العمودين الاتنين F, F, F, T لـ pq = TT، TF، FT، FF. (L5)"
+       "ans": "التبسيط:<span class=\"ltr\">¬(p ∨ (¬p ∧ q))</span><span class=\"ltr\">≡ ¬p ∧ ¬(¬p ∧ q)</span><span class=\"ltr\">≡ ¬p ∧ (p ∨ ¬q)</span><span class=\"ltr\">≡ (¬p ∧ p) ∨ (¬p ∧ ¬q)</span><span class=\"ltr\">≡ F ∨ (¬p ∧ ¬q)</span><span class=\"ltr\">≡ ¬p ∧ ¬q</span>(بالترتيب: الـ De Morgan، والـ <bdi dir=\"ltr\">De Morgan + double negation</bdi>، والـ distributive، والـ negation، والـ identity). وممكن كمان بالـ truth table: العمودين الاتنين <bdi dir=\"ltr\">F,&nbsp;F,&nbsp;F,&nbsp;T</bdi> لـ <bdi dir=\"ltr\">pq = TT, TF, FT, FF</bdi>. (L5)"
       }
      ]
     }
@@ -3760,14 +3760,14 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "<table><tr><th>P</th><th>Q</th><th>P→Q</th><th>Q→P</th><th>(P→Q)∨(Q→P)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>T</td><td>F</td><td>T</td></tr><tr><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td></tr></table>كل الـ rows في آخر عمود T، يبقى الـ statement دي tautology. (L3)"
+       "ans": "<table><tr><th dir=\"ltr\">P</th><th dir=\"ltr\">Q</th><th dir=\"ltr\">P→Q</th><th dir=\"ltr\">Q→P</th><th dir=\"ltr\">(P→Q)∨(Q→P)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr></table>كل الـ rows في آخر عمود T، يبقى الـ statement دي tautology. (L3)"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [2nd De Morgan] ≡ ¬p ∧ [¬(¬p) ∨ ¬q] [1st De Morgan] ≡ ¬p ∧ (p ∨ ¬q) [double negation] ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [2nd distributive] ≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F] ≡ (¬p ∧ ¬q) ∨ F [commutative] ≡ ¬p ∧ ¬q [identity] ■ (L5)"
+       "ans": "باستخدام الـ laws:<span class=\"ltr\">¬(p ∨ (¬p ∧ q))</span><span class=\"ltr\">≡ ¬p ∧ ¬(¬p ∧ q) [2nd De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ [¬(¬p) ∨ ¬q] [1st De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ (p ∨ ¬q) [double negation]</span><span class=\"ltr\">≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [2nd distributive]</span><span class=\"ltr\">≡ F ∨ (¬p ∧ ¬q) [¬p ∧ p ≡ F]</span><span class=\"ltr\">≡ (¬p ∧ ¬q) ∨ F [commutative]</span><span class=\"ltr\">≡ ¬p ∧ ¬q [identity] ■ (L5)</span>"
       }
      ]
     }
@@ -3778,138 +3778,138 @@ AR.dm = {
     {
      "items": [
       {
-       "why": "الـ Conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لو p و q الاتنين true (L3, Connectives).",
+       "why": "الـ Conjunction معناها \"and\"، وبتتكتب p ∧ q (أو p · q): بتبقى true بس لو p و q الاتنين true <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
         null,
-        "الـ p ∨ q دي الـ disjunction (\"or\")، و true لو جزء واحد على الأقل true. الـ conjunction (\"and\") هي p ∧ q.",
-        "الـ \"−\" دي set difference أو طرح، مش من الـ logical connectives بتوع المحاضرة (¬, ∧, ∨, ⊕, →, ↔). الـ conjunction هي p ∧ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> دي الـ disjunction (\"or\")، و true لو جزء واحد على الأقل true. الـ conjunction (\"and\") هي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>.",
+        "الـ \"−\" دي set difference أو طرح، مش من الـ logical connectives بتوع المحاضرة <bdi dir=\"ltr\">(¬,&nbsp;∧,&nbsp;∨,&nbsp;⊕,&nbsp;→,&nbsp;↔)</bdi>. الـ conjunction هي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "الـ Disjunction هي الـ \"or\" الـ inclusive، وبتتكتب p ∨ q: بتبقى true لو p أو q (أو الاتنين) true، و false بس لو الاتنين false (L3, Connectives).",
+       "why": "الـ Disjunction هي الـ \"or\" الـ inclusive، وبتتكتب <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>: بتبقى true لو p أو q (أو الاتنين) true، و false بس لو الاتنين false <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
         null,
-        "الـ p ∧ q دي الـ conjunction (\"and\")، و true بس لو الاتنين true. الـ disjunction (\"or\") هي p ∨ q.",
-        "الـ \"−\" مش logical connective في المحاضرة (دي set difference). الـ disjunction بتاعة p و q هي p ∨ q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> دي الـ conjunction (\"and\")، و true بس لو الاتنين true. الـ disjunction (\"or\") هي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>.",
+        "الـ \"−\" مش logical connective في المحاضرة (دي set difference). الـ disjunction بتاعة p و q هي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi>."
        ]
       },
       {
-       "why": "الـ Exclusive or بتتكتب p ⊕ q وبتبقى true لما واحدة بس من p و q تبقى true (و false لو الاتنين T أو الاتنين F) (L3, Connectives).",
+       "why": "الـ Exclusive or بتتكتب <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi> وبتبقى true لما واحدة بس من p و q تبقى true (و false لو الاتنين T أو الاتنين F) <bdi dir=\"ltr\">(L3,&nbsp;Connectives)</bdi>.",
        "ow": [
-        "الـ p ∨ q دي الـ inclusive or، وبتبقى true كمان لو الاتنين true. الـ exclusive or ليها رمز لوحدها: p ⊕ q.",
-        "الـ p ∧ q دي الـ conjunction (\"and\")، و true بس لو الاتنين true، ودي بالظبط الحالة اللي ⊕ فيها false.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> دي الـ inclusive or، وبتبقى true كمان لو الاتنين true. الـ exclusive or ليها رمز لوحدها: <bdi dir=\"ltr\">p&nbsp;⊕&nbsp;q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> دي الـ conjunction (\"and\")، و true بس لو الاتنين true، ودي بالظبط الحالة اللي <bdi dir=\"ltr\">⊕</bdi> فيها false.",
         null
        ]
       },
       {
-       "why": "الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنعوّض بيها في الـ variables، زي p ∨ ¬p (L4, Definitions).",
+       "why": "الـ tautology هي statement form بتبقى true دايمًا مهما كانت الـ truth values اللي بنعوّض بيها في الـ variables، زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
         null,
-        "الـ contradiction بتبقى false دايمًا (زي p ∧ ¬p)، يعني عكس المطلوب. الـ always true هي tautology.",
+        "الـ contradiction بتبقى false دايمًا (زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi>)، يعني عكس المطلوب. الـ always true هي tautology.",
         "العمود مش ممكن يبقى كله T وكله F في نفس الوقت، فالـ proposition مش ممكن تبقى الاتنين. الـ always true يعني tautology."
        ]
       },
       {
-       "why": "الـ p → q ≡ ¬p ∨ q، ودي الـ rewrite الأساسية في Table 7: الاتنين بيبقوا false بس لما p = T و q = F (L5).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi>، ودي الـ rewrite الأساسية في Table 7: الاتنين بيبقوا false بس لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> (L5).",
        "ow": [
-        "الـ p ∨ q بتختلف عن p → q في الصف T, F (T قصاد F) والصف F, F (F قصاد T). الـ rewrite بتنفي p: ¬p ∨ q.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتختلف عن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> في الصف <bdi dir=\"ltr\">T,&nbsp;F</bdi> (T قصاد F) والصف <bdi dir=\"ltr\">F,&nbsp;F</bdi> (F قصاد T). الـ rewrite بتنفي p: <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi>.",
         null,
-        "الـ p ∧ q بتطلع F في الصف F, F، وهناك p → q بتطلع T (الـ hypothesis false). هي بتتطابق بس في الصفين TT و TF."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتطلع F في الصف <bdi dir=\"ltr\">F,&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتطلع T (الـ hypothesis false). هي بتتطابق بس في الصفين TT و TF."
        ]
       },
       {
-       "why": "الـ p → q بتبقى false بس لما الـ hypothesis تبقى true والـ conclusion false، فـ ¬(p → q) ≡ p ∧ ¬q (Table 7؛ وبتطلع من ¬(¬p ∨ q) بالـ De Morgan) (L5).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما الـ hypothesis تبقى true والـ conclusion false، يبقى:<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q</span>(من Table 7؛ وبتطلع من <bdi dir=\"ltr\">¬(¬p&nbsp;∨&nbsp;q)</bdi> بالـ De Morgan) (L5).",
        "ow": [
-        "الـ p ∨ q بتبقى true في 3 صفوف، إنما ¬(p → q) بتبقى true في صف واحد بس: p = T، q = F. الشكل الصح p ∧ ¬q.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true في 3 صفوف، إنما <bdi dir=\"ltr\">¬(p&nbsp;→&nbsp;q)</bdi> بتبقى true في صف واحد بس: <bdi dir=\"ltr\">p&nbsp;=&nbsp;T,&nbsp;q&nbsp;=&nbsp;F</bdi>. الشكل الصح <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
         null,
-        "الـ p ∧ q بتطلع T عند p = q = T، وهناك p → q بتطلع T فنفيها F. النفي محتاج ¬q: p ∧ ¬q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتطلع T عند <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;T</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتطلع T فنفيها F. النفي محتاج <bdi dir=\"ltr\">¬q</bdi>، يعني <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>."
        ]
       },
       {
-       "why": "الـ contradiction هي statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنعوّض بيها، زي p ∧ ¬p (L4, Definitions).",
+       "why": "الـ contradiction هي statement form بتبقى false دايمًا مهما كانت الـ truth values اللي بنعوّض بيها، زي <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L4,&nbsp;Definitions)</bdi>.",
        "ow": [
-        "الـ tautology عكسها: بتبقى true دايمًا مهما كانت قيم الـ variables (زي p ∨ ¬p). الـ always false هي contradiction.",
+        "الـ tautology عكسها: بتبقى true دايمًا مهما كانت قيم الـ variables (زي <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬p</bdi>). الـ always false هي contradiction.",
         null,
         "الـ tautology كلها T والـ contradiction كلها F؛ عمود واحد في الـ truth table مش ممكن يبقى الاتنين. الـ always false يعني contradiction بس."
        ]
       },
       {
-       "why": "الـ converse بتاع a → b هو b → a: بنبدّل الـ hypothesis والـ conclusion. ولما a = ¬p و b = q يبقى الناتج q → ¬p (L5, Converse, contrapositive, inverse).",
+       "why": "الـ converse بتاع <bdi dir=\"ltr\">a&nbsp;→&nbsp;b</bdi> هو <bdi dir=\"ltr\">b&nbsp;→&nbsp;a</bdi>: بنبدّل الـ hypothesis والـ conclusion. ولما <bdi dir=\"ltr\">a&nbsp;=&nbsp;¬p</bdi> و <bdi dir=\"ltr\">b&nbsp;=&nbsp;q</bdi> يبقى الناتج <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi> <bdi dir=\"ltr\">(L5, Converse, contrapositive, inverse)</bdi>.",
        "ow": [
-        "الـ p → q غيّرت الـ hypothesis من ¬p لـ p من غير ما تبدّل حاجة، فمش هي الـ converse بتاع ¬p → q.",
-        "الـ ¬p → ¬q بتنفي الطرفين بتوع p → q من غير تبديل، ودي الـ inverse بتاع p → q. الـ converse بتاع ¬p → q بيبدّل الطرفين بس: q → ¬p.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> غيّرت الـ hypothesis من <bdi dir=\"ltr\">¬p</bdi> لـ p من غير ما تبدّل حاجة، فمش هي الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi>.",
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;¬q</bdi> بتنفي الطرفين بتوع <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> من غير تبديل، ودي الـ inverse بتاع <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi>. الـ converse بتاع <bdi dir=\"ltr\">¬p&nbsp;→&nbsp;q</bdi> بيبدّل الطرفين بس: <bdi dir=\"ltr\">q&nbsp;→&nbsp;¬p</bdi>.",
         null
        ]
       },
       {
-       "why": "الـ A × B هي كل الـ ordered pairs (a, b)، وكل اختيار من الـ 4 بتوع a بيتجوّز مع كل اختيار من الـ 3 بتوع b: |A × B| = |A|·|B| = 4 × 3 = 12 (L2, Cartesian product).",
+       "why": "الـ <bdi dir=\"ltr\">A&nbsp;×&nbsp;B</bdi> هي كل الـ ordered pairs <bdi dir=\"ltr\">(a,&nbsp;b)</bdi>، وكل اختيار من الـ 4 بتوع a بيتجوّز مع كل اختيار من الـ 3 بتوع b:<span class=\"ltr\">|A × B| = |A|·|B| = 4 × 3 = 12 (L2, Cartesian product)</span>",
        "ow": [
-        "الـ |A ∩ B| = 0 بتتحقق بس لو A و B disjoint. ممكن يشتركوا في لحد 3 elements، فدي مش صح دايمًا.",
+        "الـ <bdi dir=\"ltr\">|A&nbsp;∩&nbsp;B|&nbsp;=&nbsp;0</bdi> بتتحقق بس لو A و B disjoint. ممكن يشتركوا في لحد 3 elements، فدي مش صح دايمًا.",
         null,
-        "الـ |A − B| بتعتمد على قد إيه A و B متداخلين: بتبقى 4 لو disjoint، و1 لو B كلها جوّه A. فمش دايمًا 1."
+        "الـ <bdi dir=\"ltr\">|A&nbsp;−&nbsp;B|</bdi> بتعتمد على قد إيه A و B متداخلين: بتبقى 4 لو disjoint، و1 لو B كلها جوّه A. فمش دايمًا 1."
        ]
       },
       {
-       "why": "الـ power set بتاعة {0, 1} فيها كل الـ 2² = 4 subsets: ∅ و{0} و{1} و{0, 1}. خلي بالك إن {0} (set) غير 0 (element) (L1, Power set).",
+       "why": "الـ power set بتاعة <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> فيها كل الـ subsets، وعددهم <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi>: ∅ و<bdi dir=\"ltr\">{0}</bdi> و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{0,&nbsp;1}</bdi>. خلي بالك إن <bdi dir=\"ltr\">{0}</bdi> (set) غير 0 (element) <bdi dir=\"ltr\">(L1,&nbsp;Power&nbsp;set)</bdi>.",
        "ow": [
-        "الـ {0, 1} دي S نفسها، set فيها أرقام. الـ P(S) فيها الـ subsets بتاعة S كـ elements: ∅ و{0} و{1} و{0, 1}.",
-        "هنا الـ 0 مجرد element مش subset، وكمان {0} و{1} و{0, 1} ناقصين. الـ P(S) لازم يبقى فيها 2² = 4 subsets.",
+        "الـ <bdi dir=\"ltr\">{0,&nbsp;1}</bdi> دي S نفسها، set فيها أرقام. الـ <bdi dir=\"ltr\">P(S)</bdi> فيها الـ subsets بتاعة S كـ elements:<span class=\"ltr\">∅, {0}, {1}, {0, 1}</span>",
+        "هنا الـ 0 مجرد element مش subset، وكمان <bdi dir=\"ltr\">{0}</bdi> و<bdi dir=\"ltr\">{1}</bdi> و<bdi dir=\"ltr\">{0,&nbsp;1}</bdi> ناقصين. الـ <bdi dir=\"ltr\">P(S)</bdi> لازم يبقى فيها <bdi dir=\"ltr\">2²&nbsp;=&nbsp;4</bdi> subsets.",
         null
        ]
       },
       {
-       "why": "الـ p → q بتبقى false بس لما الـ hypothesis تبقى true والـ conclusion false، فـ ¬(p → q) ≡ p ∧ ¬q (Table 7؛ وبتطلع من ¬(¬p ∨ q) بالـ De Morgan) (L5).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتبقى false بس لما الـ hypothesis تبقى true والـ conclusion false، يبقى:<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q</span>(من Table 7؛ وبتطلع من <bdi dir=\"ltr\">¬(¬p&nbsp;∨&nbsp;q)</bdi> بالـ De Morgan) (L5).",
        "ow": [
         null,
-        "الـ p ∨ ¬q ≡ q → p (الـ converse)، ودي true في 3 صفوف. نفي p → q بيبقى true في صف واحد بس: p ∧ ¬q.",
-        "الـ p → q دي الـ statement الأصلية نفسها، يعني عكس نفيها في كل صف. الصح ¬(p → q) ≡ p ∧ ¬q."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;¬q&nbsp;≡&nbsp;q&nbsp;→&nbsp;p</bdi> (الـ converse)، ودي true في 3 صفوف. نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بيبقى true في صف واحد بس: <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> دي الـ statement الأصلية نفسها، يعني عكس نفيها في كل صف. الصح:<span class=\"ltr\">¬(p → q) ≡ p ∧ ¬q</span>"
        ]
       },
       {
-       "why": "(p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q) ≡ (¬p ∨ p) ∨ (¬q ∨ q) ≡ T: الفكرة إن أي وقت p ∧ q تبقى true، الـ p ∨ q بتبقى true (L5, Proof).",
+       "why": "التبسيط:<span class=\"ltr\">(p ∧ q) → (p ∨ q) ≡ ¬(p ∧ q) ∨ (p ∨ q)</span><span class=\"ltr\">≡ (¬p ∨ p) ∨ (¬q ∨ q) ≡ T</span>الفكرة إن أي وقت <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى true، الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى true <bdi dir=\"ltr\">(L5,&nbsp;Proof)</bdi>.",
        "ow": [
         null,
-        "الـ contradiction بتبقى false في كل الصفوف، إنما الـ implication دي عمرها ما بتطلع false: أي وقت p ∧ q تبقى T، الـ p ∨ q بتبقى T برضه.",
+        "الـ contradiction بتبقى false في كل الصفوف، إنما الـ implication دي عمرها ما بتطلع false: أي وقت <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> تبقى T، الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتبقى T برضه.",
         "مفيش form تبقى كلها T وكلها F في نفس الوقت. هنا كل الصفوف T، فهي tautology بس."
        ]
       },
       {
-       "why": "الـ De Morgan مرتين: ¬r ∧ ¬(p ∧ q). والورقة كاتباها ¬r ∧ ¬p ∨ ¬q.",
+       "why": "الـ De Morgan مرتين: <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬(p&nbsp;∧&nbsp;q)</bdi>. والورقة كاتباها <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi>.",
        "ow": [
-        "الـ ¬r ∧ ¬p ∧ ¬q دي نفي r ∨ p ∨ q. هنا p ∧ q متجمّعين مع بعض، فالـ De Morgan عليهم بيدّي ¬p ∨ ¬q مش ¬p ∧ ¬q.",
-        "الـ ¬r ∨ ¬p ∨ ¬q دي نفي r ∧ p ∧ q. الـ connective اللي برّه هو ∨، فالنفي لازم يبدأ بـ ¬r ∧ ….",
+        "الـ <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;¬p&nbsp;∧&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">r&nbsp;∨&nbsp;p&nbsp;∨&nbsp;q</bdi>. هنا <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> متجمّعين مع بعض، فالـ De Morgan عليهم بيدّي <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi> مش <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>.",
+        "الـ <bdi dir=\"ltr\">¬r&nbsp;∨&nbsp;¬p&nbsp;∨&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">r&nbsp;∧&nbsp;p&nbsp;∧&nbsp;q</bdi>. الـ connective اللي برّه هو <bdi dir=\"ltr\">∨</bdi>، فالنفي لازم يبدأ بـ <bdi dir=\"ltr\">¬r&nbsp;∧&nbsp;…</bdi>.",
         null
        ]
       },
       {
-       "why": "بالـ Euclid: 110 = 1·63 + 47؛ 63 = 1·47 + 16؛ 47 = 2·16 + 15؛ 16 = 1·15 + 1؛ 15 = 15·1 + 0، يبقى gcd = 1 (يعني relatively prime) (L8, GCD).",
+       "why": "بالـ Euclid:<span class=\"ltr\">110 = 1·63 + 47</span><span class=\"ltr\">63 = 1·47 + 16</span><span class=\"ltr\">47 = 2·16 + 15</span><span class=\"ltr\">16 = 1·15 + 1</span><span class=\"ltr\">15 = 15·1 + 0</span>يبقى <bdi dir=\"ltr\">gcd&nbsp;=&nbsp;1</bdi> (يعني relatively prime) <bdi dir=\"ltr\">(L8,&nbsp;GCD)</bdi>.",
        "ow": [
-        "الـ 9 بتقسم 63 (63 = 7 × 9) بس مش بتقسم 110 (110 = 12 × 9 + 2)، فمش common divisor.",
-        "الـ 6 مش بتقسم 63 (63 فردي) ومش بتقسم 110 كمان (110 = 18 × 6 + 2).",
+        "الـ 9 بتقسم 63 <bdi dir=\"ltr\">(63&nbsp;=&nbsp;7&nbsp;×&nbsp;9)</bdi> بس مش بتقسم 110 <bdi dir=\"ltr\">(110&nbsp;=&nbsp;12&nbsp;×&nbsp;9&nbsp;+&nbsp;2)</bdi>، فمش common divisor.",
+        "الـ 6 مش بتقسم 63 (63 فردي) ومش بتقسم 110 كمان <bdi dir=\"ltr\">(110&nbsp;=&nbsp;18&nbsp;×&nbsp;6&nbsp;+&nbsp;2)</bdi>.",
         null,
         "الـ 2 بتقسم 110 بس مش بتقسم 63 (63 فردي)، فمش common divisor."
        ]
       },
       {
-       "why": "¬(R ∧ ¬F) ≡ ¬R ∨ F بالـ De Morgan والـ double negation، و ¬R ∨ F ≡ R → F: يعني \"If John is rich, then he is famous\" (L5, Table 7).",
+       "why": "بالـ De Morgan والـ double negation:<span class=\"ltr\">¬(R ∧ ¬F) ≡ ¬R ∨ F</span>وكمان:<span class=\"ltr\">¬R ∨ F ≡ R → F</span>يعني \"If John is rich, then he is famous\" <bdi dir=\"ltr\">(L5,&nbsp;Table&nbsp;7)</bdi>.",
        "ow": [
-        "\"Neither rich nor famous\" هي ¬R ∧ ¬F؛ دي بتبقى false لو John غني ومشهور، وفي الحالة دي الأصل (R ∧ ¬F) false برضه، فمش نفيه.",
-        "\"Rich or famous\" (R ∨ F) بتبقى true لو John غني ومش مشهور، ودي بالظبط الحالة اللي الأصل فيها true.",
-        "الـ F → R ≡ ¬F ∨ R بتبقى true لو John غني ومش مشهور، والأصل كمان true هناك، فدي مش النفي.",
+        "الـ \"Neither rich nor famous\" هي <bdi dir=\"ltr\">¬R&nbsp;∧&nbsp;¬F</bdi>؛ دي بتبقى false لو John غني ومشهور، وفي الحالة دي الأصل <bdi dir=\"ltr\">(R&nbsp;∧&nbsp;¬F)</bdi> false برضه، فمش نفيه.",
+        "الـ \"Rich or famous\" <bdi dir=\"ltr\">(R&nbsp;∨&nbsp;F)</bdi> بتبقى true لو John غني ومش مشهور، ودي بالظبط الحالة اللي الأصل فيها true.",
+        "الـ <bdi dir=\"ltr\">F&nbsp;→&nbsp;R&nbsp;≡&nbsp;¬F&nbsp;∨&nbsp;R</bdi> بتبقى true لو John غني ومش مشهور، والأصل كمان true هناك، فدي مش النفي.",
         null
        ]
       },
       {
-       "why": "في a = q × n + r مع 0 ≤ r &lt; n: 9 × 18 = 162 و 165 − 162 = 3، يبقى q = 9، r = 3 (L8, Division relation).",
+       "why": "في <bdi dir=\"ltr\">a&nbsp;=&nbsp;q&nbsp;×&nbsp;n&nbsp;+&nbsp;r</bdi> مع <bdi dir=\"ltr\">0&nbsp;≤&nbsp;r&nbsp;&lt;&nbsp;n</bdi>، بنحسب:<span class=\"ltr\">9 × 18 = 162</span><span class=\"ltr\">165 − 162 = 3</span>يبقى <bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi> <bdi dir=\"ltr\">(L8, Division relation)</bdi>.",
        "ow": [
-        "9 × 18 + 4 = 166، مش 165. الـ quotient 9 صح بس الـ remainder هو 165 − 162 = 3.",
-        "4 × 18 + 9 = 81، مش 165؛ الأرقام دي مش قسمة صح أصلًا. الصح 165 = 9 × 18 + 3.",
-        "8 × 18 + 4 = 148، مش 165. ولو q = 8 الـ remainder هيبقى 21 ≥ 18، فلازم q = 9، r = 3.",
+        "الحساب <bdi dir=\"ltr\">9&nbsp;×&nbsp;18&nbsp;+&nbsp;4&nbsp;=&nbsp;166</bdi>، مش 165. الـ quotient 9 صح بس الـ remainder هو <bdi dir=\"ltr\">165&nbsp;−&nbsp;162&nbsp;=&nbsp;3</bdi>.",
+        "الحساب <bdi dir=\"ltr\">4&nbsp;×&nbsp;18&nbsp;+&nbsp;9&nbsp;=&nbsp;81</bdi>، مش 165؛ الأرقام دي مش قسمة صح أصلًا. الصح:<span class=\"ltr\">165 = 9 × 18 + 3</span>",
+        "الحساب <bdi dir=\"ltr\">8&nbsp;×&nbsp;18&nbsp;+&nbsp;4&nbsp;=&nbsp;148</bdi>، مش 165. ولو <bdi dir=\"ltr\">q&nbsp;=&nbsp;8</bdi> الـ remainder هيبقى <bdi dir=\"ltr\">21&nbsp;≥&nbsp;18</bdi>، فلازم <bdi dir=\"ltr\">q&nbsp;=&nbsp;9</bdi> و <bdi dir=\"ltr\">r&nbsp;=&nbsp;3</bdi>.",
         null
        ]
       },
       {
-       "why": "¬(∀x P(x)) ≡ ∃x ¬P(x): علشان تنفي إن كل الحيوانات بتطير يكفي حيوان واحد مش بيطير، فالإجابة \"Some animals cannot fly\" (L3, Negating \"all\" statements).",
+       "why": "القاعدة:<span class=\"ltr\">¬(∀x P(x)) ≡ ∃x ¬P(x)</span>علشان تنفي إن كل الحيوانات بتطير يكفي حيوان واحد مش بيطير، فالإجابة <bdi dir=\"ltr\">\"Some animals cannot fly\"</bdi> <bdi dir=\"ltr\">(L3, Negating \"all\" statements)</bdi>.",
        "ow": [
         "دي أقوى من اللازم؛ النفي محتاج counter-example واحد بس.",
         "الـ \"Some animals can fly\" بتطلع من الأصل (لو كلهم بيطيروا يبقى بعضهم بيطير)، فمش بتنفيه. انفي الـ ∀ بـ ∃ وانفي الـ predicate.",
@@ -3918,27 +3918,27 @@ AR.dm = {
        ]
       },
       {
-       "why": "الـ De Morgan: ~(p ∨ q) ≡ ~p ∧ ~q. يعني \"مش (p أو q)\" معناها إن ولا واحدة فيهم true (Theorem 1.1.1, law 9; Table 3) (L4).",
+       "why": "الـ De Morgan:<span class=\"ltr\">~(p ∨ q) ≡ ~p ∧ ~q</span>يعني \"مش (p أو q)\" معناها إن ولا واحدة فيهم true <bdi dir=\"ltr\">(Theorem 1.1.1, law 9; Table 3) (L4)</bdi>.",
        "ow": [
         null,
-        "الـ ¬p ∨ ¬q دي قانون الـ De Morgan التاني، بتاع ¬(p ∧ q). نفي الـ ∨ لازم يقلبها ∧.",
-        "الـ p ∧ ¬q دي نفي p → q (L5). الـ De Morgan على ¬(p ∨ q) بينفي الجزئين: ¬p ∧ ¬q."
+        "الـ <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;¬q</bdi> دي قانون الـ De Morgan التاني، بتاع <bdi dir=\"ltr\">¬(p&nbsp;∧&nbsp;q)</bdi>. نفي الـ <bdi dir=\"ltr\">∨</bdi> لازم يقلبها <bdi dir=\"ltr\">∧</bdi>.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;¬q</bdi> دي نفي <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> (L5). الـ De Morgan على <bdi dir=\"ltr\">¬(p&nbsp;∨&nbsp;q)</bdi> بينفي الجزئين: <bdi dir=\"ltr\">¬p&nbsp;∧&nbsp;¬q</bdi>."
        ]
       },
       {
-       "why": "الـ p ↔ q معناها \"p only if q\" (p → q) و\"p if q\" (q → p) مع بعض؛ والـ truth table بيوضّح إن العمودين متطابقين (L5, Biconditional; Table 8).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> معناها \"p only if q\" <bdi dir=\"ltr\">(p&nbsp;→&nbsp;q)</bdi> و\"p if q\" <bdi dir=\"ltr\">(q&nbsp;→&nbsp;p)</bdi> مع بعض؛ والـ truth table بيوضّح إن العمودين متطابقين <bdi dir=\"ltr\">(L5, Biconditional; Table 8)</bdi>.",
        "ow": [
         null,
-        "الـ p → q اتجاه واحد بس (\"only if\")؛ في الصف F, T بتطلع T بينما p ↔ q بتطلع F. الـ biconditional محتاج q → p كمان.",
-        "الـ ¬p بتتجاهل q: في الصف T, T بتطلع F بينما p ↔ q بتطلع T."
+        "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> اتجاه واحد بس (\"only if\")؛ في الصف <bdi dir=\"ltr\">F,&nbsp;T</bdi> بتطلع T بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتطلع F. الـ biconditional محتاج <bdi dir=\"ltr\">q&nbsp;→&nbsp;p</bdi> كمان.",
+        "الـ <bdi dir=\"ltr\">¬p</bdi> بتتجاهل q: في الصف T, T بتطلع F بينما <bdi dir=\"ltr\">p&nbsp;↔&nbsp;q</bdi> بتطلع T."
        ]
       },
       {
-       "why": "الـ p → q ≡ ¬p ∨ q، ودي الـ rewrite الأساسية في Table 7: الاتنين بيبقوا false بس لما p = T و q = F (L5).",
+       "why": "الـ <bdi dir=\"ltr\">p&nbsp;→&nbsp;q&nbsp;≡&nbsp;¬p&nbsp;∨&nbsp;q</bdi>، ودي الـ rewrite الأساسية في Table 7: الاتنين بيبقوا false بس لما <bdi dir=\"ltr\">p&nbsp;=&nbsp;T</bdi> و <bdi dir=\"ltr\">q&nbsp;=&nbsp;F</bdi> (L5).",
        "ow": [
-        "الـ p ∨ q بتختلف عن p → q في الصف T, F (T قصاد F) والصف F, F (F قصاد T). الـ rewrite بتنفي p: ¬p ∨ q.",
+        "الـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> بتختلف عن <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> في الصف <bdi dir=\"ltr\">T,&nbsp;F</bdi> (T قصاد F) والصف <bdi dir=\"ltr\">F,&nbsp;F</bdi> (F قصاد T). الـ rewrite بتنفي p: <bdi dir=\"ltr\">¬p&nbsp;∨&nbsp;q</bdi>.",
         null,
-        "الـ p ∧ q بتطلع F في الصف F, F، وهناك p → q بتطلع T (الـ hypothesis false). هي بتتطابق بس في الصفين TT و TF."
+        "الـ <bdi dir=\"ltr\">p&nbsp;∧&nbsp;q</bdi> بتطلع F في الصف <bdi dir=\"ltr\">F,&nbsp;F</bdi>، وهناك <bdi dir=\"ltr\">p&nbsp;→&nbsp;q</bdi> بتطلع T (الـ hypothesis false). هي بتتطابق بس في الصفين TT و TF."
        ]
       }
      ]
@@ -3946,30 +3946,30 @@ AR.dm = {
     {
      "items": [
       {
-       "ans": "(i) Aᶜ ∩ B = {5, 6, 7}. (ii) Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {8, 9, 10, …}. (iii) A ∪ B = {1, 2, 3, 4, 5, 6, 7}. (iv) الـ P(A) فيها 2⁴ = 16 subset: ∅، {1}، {2}، {3}، {4}، {1,2}، {1,3}، {1,4}، {2,3}، {2,4}، {3,4}، {1,2,3}، {1,2,4}، {1,3,4}، {2,3,4}، {1,2,3,4}. (نفس Summer 2023/24 Q1a.)"
+       "ans": "الجزء (i):<span class=\"ltr\">Aᶜ ∩ B = {5, 6, 7}</span>الجزء (ii):<span class=\"ltr\">Aᶜ ∩ Bᶜ = (A ∪ B)ᶜ = {8, 9, 10, …}</span>الجزء (iii):<span class=\"ltr\">A ∪ B = {1, 2, 3, 4, 5, 6, 7}</span>الجزء (iv): الـ <bdi dir=\"ltr\">P(A)</bdi> فيها <bdi dir=\"ltr\">2⁴&nbsp;=&nbsp;16</bdi> subset:<span class=\"ltr\">∅, {1}, {2}, {3}, {4}, {1,2}, {1,3}, {1,4}, {2,3}, {2,4}, {3,4}, {1,2,3}, {1,2,4}, {1,3,4}, {2,3,4}, {1,2,3,4}</span>(نفس <bdi dir=\"ltr\">Summer&nbsp;2023/24&nbsp;Q1a</bdi>.)"
       },
       {
-       "ans": "الـ Truth table: P→Q = T, F, T, T و Q→P = T, T, F, T لـ PQ = TT، TF، FT، FF؛ والـ disjunction بتاعهم T في كل row، يبقى tautology. (L3)"
+       "ans": "الـ Truth table، لـ <bdi dir=\"ltr\">PQ = TT, TF, FT, FF</bdi> بالترتيب:<span class=\"ltr\">P→Q = T, F, T, T</span><span class=\"ltr\">Q→P = T, T, F, T</span>والـ disjunction بتاعهم T في كل row، يبقى tautology. (L3)"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "¬(p ∨ (¬p ∧ q)) ≡ ¬p ∧ ¬(¬p ∧ q) [De Morgan] ≡ ¬p ∧ (p ∨ ¬q) [De Morgan، double negation] ≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [distributive] ≡ F ∨ (¬p ∧ ¬q) [negation] ≡ ¬p ∧ ¬q [identity] ■ (L5)"
+       "ans": "باستخدام الـ laws:<span class=\"ltr\">¬(p ∨ (¬p ∧ q))</span><span class=\"ltr\">≡ ¬p ∧ ¬(¬p ∧ q) [De Morgan]</span><span class=\"ltr\">≡ ¬p ∧ (p ∨ ¬q) [De Morgan, double negation]</span><span class=\"ltr\">≡ (¬p ∧ p) ∨ (¬p ∧ ¬q) [distributive]</span><span class=\"ltr\">≡ F ∨ (¬p ∧ ¬q) [negation]</span><span class=\"ltr\">≡ ¬p ∧ ¬q [identity] ■ (L5)</span>"
       },
       {
-       "ans": "(i) 2 (ii) 0 (iii) −18 = (−2)(14) + 10 → 10 (iv) −7 = (−1)(10) + 3 → 3. لما a تبقى سالبة: الباقي اللي بتطلّعه الآلة الحاسبة بيبقى سالب، فزوّد الـ modulus (ونقّص q بواحد). (L8)"
+       "ans": "الجزء (i) الناتج 2، والجزء (ii) الناتج 0.<br>الجزء (iii):<span class=\"ltr\">−18 = (−2)(14) + 10 → 10</span>الجزء (iv):<span class=\"ltr\">−7 = (−1)(10) + 3 → 3</span>لما a تبقى سالبة: الباقي اللي بتطلّعه الآلة الحاسبة بيبقى سالب، فزوّد الـ modulus (ونقّص q بواحد). (L8)"
       }
      ]
     },
     {
      "items": [
       {
-       "ans": "(i) الـ Rows من 1 لـ 4: 1: 0 0 1 0؛ 2: 1 0 0 0؛ 3: 0 1 0 0؛ 4: 0 1 1 0.<br>(ii) V(1) = {3}، V(2) = {1}، V(3) = {2}، V(4) = {2, 3}. (الـ matrix A₂ بتاعة Lecture 9؛ ونفس الـ graph بتاع 2024/25 Q3b.)"
+       "ans": "الجزء (i)، الـ Rows من 1 لـ 4:<span class=\"ltr\">1: 0 0 1 0</span><span class=\"ltr\">2: 1 0 0 0</span><span class=\"ltr\">3: 0 1 0 0</span><span class=\"ltr\">4: 0 1 1 0</span>الجزء (ii):<span class=\"ltr\">V(1) = {3}, V(2) = {1}, V(3) = {2}, V(4) = {2, 3}</span>(الـ matrix A₂ بتاعة <bdi dir=\"ltr\">Lecture&nbsp;9</bdi>؛ ونفس الـ graph بتاع <bdi dir=\"ltr\">2024/25&nbsp;Q3b</bdi>.)"
       },
       {
-       "ans": "<table><tr><th>p</th><th>q</th><th>r</th><th>p∨q</th><th>p→r</th><th>q→r</th><th>p∨q→r</th><th>(p→r)∧(q→r)</th></tr><tr><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td><td>F</td><td>F</td></tr><tr><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>T</td><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>F</td><td>F</td></tr><tr><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>F</td><td>F</td><td>F</td></tr><tr><td>F</td><td>F</td><td>T</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr><tr><td>F</td><td>F</td><td>F</td><td>F</td><td>T</td><td>T</td><td>T</td><td>T</td></tr></table>آخر عمودين متطابقين، يبقى الـ forms دي equivalent. (الورقة فيها غلطة مطبعية وكاتبة الطرف الشمال \"p ∨ q\" بس؛ والـ p ∨ q لوحدها مش equivalent، مثلًا الـ row اللي فيه p = q = r = F بيدّي F قصاد T.) (L4، Example 1.2.2)"
+       "ans": "<table><tr><th dir=\"ltr\">p</th><th dir=\"ltr\">q</th><th dir=\"ltr\">r</th><th dir=\"ltr\">p∨q</th><th dir=\"ltr\">p→r</th><th dir=\"ltr\">q→r</th><th dir=\"ltr\">p∨q→r</th><th dir=\"ltr\">(p→r)∧(q→r)</th></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr><tr><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">F</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td><td dir=\"ltr\">T</td></tr></table>آخر عمودين متطابقين، يبقى الـ forms دي equivalent. (الورقة فيها غلطة مطبعية وكاتبة الطرف الشمال <bdi dir=\"ltr\">\"p&nbsp;∨&nbsp;q\"</bdi> بس؛ والـ <bdi dir=\"ltr\">p&nbsp;∨&nbsp;q</bdi> لوحدها مش equivalent، مثلًا الـ row اللي فيه <bdi dir=\"ltr\">p&nbsp;=&nbsp;q&nbsp;=&nbsp;r&nbsp;=&nbsp;F</bdi> بيدّي F قصاد T.) <bdi dir=\"ltr\">(L4, Example 1.2.2)</bdi>"
       }
      ]
     }
