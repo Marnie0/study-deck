@@ -4877,3 +4877,560 @@ AR.compiler = {
   }
  ]
 };
+// Midterm 2026/2027 (papers/compiler.js): Arabic for the exam and for its copies in the lecture quizzes, in the same order.
+AR.compiler.exams.push({
+ "sections": [
+  {
+   "items": [
+    {
+     "why": "الـ parser (الـ syntax analysis) مبني على context-free grammar. الـ regular expressions مش بتقدر تتأكد من الـ balancing tokens زي الأقواس، عشان كده الـ phase دي محتاجة CFG <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "الـ semantic analysis بتشتغل على الـ parse tree بالـ attribute grammars والـ symbol table عشان تتأكد من المعنى (types وscope)، مش مبنية على CFG <bdi dir=\"ltr\">(L7)</bdi>.",
+      "«None» غلط لأن الـ syntax analysis فعلًا بتستخدم CFG <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ lexical analysis بتستخدم regular expressions وfinite automata عشان تتعرّف على الـ tokens، مش CFG <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ syntactic analyzer (الـ parser) بياخد الـ tokens ويقارنها بالـ CFG ويبني الـ parse tree (كلمة «paring» غلطة مطبعية وقصدها parsing) <bdi dir=\"ltr\">(L4; revision sheet Q27)</bdi>.",
+     "ow": [
+      "تجميع الـ data types والتأكد منها ده شغل الـ semantic analysis (الـ type checking)، وده بييجي بعد الـ parser <bdi dir=\"ltr\">(L7)</bdi>.",
+      "الـ symbol table كل الـ phases بتستخدمه (الـ scanner بيدخّل الأسماء، والـ semantic analysis بتضيف الـ types والـ scope)، فهو مش شغل الـ parser لوحده <bdi dir=\"ltr\">(L1, L8)</bdi>.",
+      null,
+      "«None» غلط لأن (c) صح: الـ output بتاع الـ parser هو الـ parse tree <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ grammar بتبقى ambiguous لو فيه جملة ليها أكتر من parse tree، يعني أكتر من leftmost أو أكتر من rightmost derivation. مثال: <bdi dir=\"ltr\">E → E+E | E*E | id</bdi> بتدّي شجرتين لـ <bdi dir=\"ltr\">id+id*id</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "كلمة «deterministic» بتوصف الـ automata (الـ DFA ليه move واحدة لكل input)، مش الـ grammars أو الـ parse trees <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "الـ unambiguous عكسها: parse tree واحدة بس لكل جملة <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«None» غلط لأن وجود أكتر من parse tree هو تعريف الـ ambiguity بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ syntax analysis مبنية على context-free grammar: لازم تتأكد من الـ structures المتداخلة والمتوازنة زي <bdi dir=\"ltr\">( )</bdi> و<bdi dir=\"ltr\">begin … end</bdi>، وده الـ regular expressions مش بتقدر عليه <bdi dir=\"ltr\">(L4; revision sheet Q3)</bdi>.",
+     "ow": [
+      null,
+      "الـ regular grammar (regular expressions + finite automata) هي اللي بتعمل model للـ LEXICAL analysis، ومش بتقدر تعدّ أو تطابق الـ nesting <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ low-level (machine) language ده الـ output بتاع الـ compiler، مش model لـ phase <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ high-level language ده الـ input بتاع الـ compiler (الـ source program)، مش الـ model اللي الـ parser بيستخدمه <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ | هو operator الـ «or» (الـ union): <bdi dir=\"ltr\">L(a|b) = L(a) ∪ L(b) = {a} ∪ {b} = {a, b}</bdi> <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "<bdi dir=\"ltr\">{a}</bdi> دي <bdi dir=\"ltr\">L(a)</bdi> بس، ناقصها b <bdi dir=\"ltr\">(L2)</bdi>.",
+      "<bdi dir=\"ltr\">{ab}</bdi> دي الـ concatenation ab (a وبعدها b)، مش «a أو b» <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ ε محتاجة اختيار لوحدها، زي <bdi dir=\"ltr\">ε|a|b</bdi> أو <bdi dir=\"ltr\">(a|b)?</bdi>؛ الـ <bdi dir=\"ltr\">a|b</bdi> العادية مش بتطابق الـ empty string <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ parser (الـ syntax analysis) بيتأكد إن الـ tokens ماشية على الـ grammar بتاعة اللغة (الـ CFG)، وبيبني الـ parse tree، وبيطلّع الـ syntax errors زي <bdi dir=\"ltr\">;</bdi> ناقصة أو أقواس مش متقفلة <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+     "ow": [
+      "الـ code optimization بتحسّن intermediate code اتراجع خلاص، زي الـ constant folding <bdi dir=\"ltr\">(L9)</bdi>.",
+      "الـ semantic analysis بتتأكد من المعنى بعد الـ parsing (types وdeclarations وscope)، مش من الـ grammar <bdi dir=\"ltr\">(L7, L8)</bdi>.",
+      null,
+      "الـ code generation آخر phase؛ بتطلّع الـ target code من برنامج صح أصلًا <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "«a واحدة بعدها أي عدد من الـ b» = <bdi dir=\"ltr\">ab*</bdi> (a، ab، abb، …)؛ و«b واحدة بعدها أي عدد من الـ a» = <bdi dir=\"ltr\">ba*</bdi>؛ و«أو» = |. يبقى <bdi dir=\"ltr\">ab* | ba*</bdi>. (الـ * أقوى من الـ concatenation، فـ <bdi dir=\"ltr\">ab* = a(b*)</bdi>) <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "<bdi dir=\"ltr\">ab*ba*</bdi> دي concatenation: كل string لازم يبقى فيها الجزءين (زي abba)، فـ a أو b لوحدهم مش بيتطابقوا <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "«none» غلط لأن <bdi dir=\"ltr\">ab* | ba*</bdi> مظبوطة بالظبط <bdi dir=\"ltr\">(L2)</bdi>.",
+      "<bdi dir=\"ltr\">a*b | b*a</bdi> بتحط الحرف المتكرر قبل الحرف الواحد (b، ab، aab، …)، وده عكس الوصف <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ compiler بيترجم الـ high-level source program لـ low-level machine language، والـ machine code هو نفسه binary code، فالاتنين صح. الـ official key لنفس السؤال في الـ revision sheet (Q12) اختار «both» <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "الـ binary code صح بس ده نص إجابة الـ key؛ الـ machine code كمان صح <bdi dir=\"ltr\">(L1; sheet Q12)</bdi>.",
+      "الـ machine code صح بس ده نص إجابة الـ key؛ الـ machine code هو نفسه binary code <bdi dir=\"ltr\">(L1; sheet Q12)</bdi>.",
+      null,
+      "الـ compiler بيطلّع object (machine) code؛ لسه الـ linker/loader لازم يحوّله لـ executable يشتغل، فالـ key مش بيختار ده <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ lexical analyzer (الـ scanner) بيقرا الـ source code كـ characters، ويجمّعها في lexemes، ويطلّع tokens (id وnum و+ …) للـ parser <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+     "ow": [
+      "معكوسة: الـ tokens هي الـ OUTPUT بتاع الـ scanner والـ source code هو الـ input <bdi dir=\"ltr\">(L2)</bdi>.",
+      "«None» غلط لأن (c) صح <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ machine code ده الـ output النهائي بتاع الـ compiler (الـ code generator)، مش اللي الـ scanner بيقراه <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "إنك تكتب * بدل / ده LOGICAL error: <bdi dir=\"ltr\">a*b</bdi> و<bdi dir=\"ltr\">a/b</bdi> الاتنين syntax صح ونفس الـ types، فالبرنامج صح من وجهة نظر الـ compiler. الـ compilers والـ interpreters بيمسكوا lexical وsyntax وsemantic errors بس؛ ميعرفوش المبرمج كان قصده إيه. الـ testing للـ output بس هو اللي يبيّنه <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "الـ compiler شايف expression سليمة (syntax وtypes صح)، فمفيش error يطلّعه <bdi dir=\"ltr\">(L1)</bdi>.",
+      "لا الـ compiler ولا الـ interpreter يقدروا يكتشفوه: الاتنين بيراجعوا نفس القواعد، والسطر مش مخالف أي واحدة فيهم.",
+      "الـ interpreter بيراجع نفس قواعد الـ compiler؛ هينفّذ السطر عادي ويطلّع قيمة غلط.",
+      null
+     ]
+    },
+    {
+     "why": "الـ compiler بيمسك ويبلّغ عن الأخطاء اللي يقدر يشوفها في نص البرنامج قبل ما يشتغل؛ والـ syntax errors (<bdi dir=\"ltr\">;</bdi> ناقصة، أقواس مش متقفلة) هي المثال الأساسي، والـ parser بيلاقيها بمقارنتها بالـ CFG <bdi dir=\"ltr\">(L1, L4)</bdi>؛ والـ revision sheet Q29 key: syntax.",
+     "ow": [
+      "الـ logic errors (زي * بدل /) كود سليم بس معناه غلط؛ الـ compiler مش بيقدر يكتشفها (sheet Q29).",
+      "الـ runtime errors (القسمة على صفر، index برّه الحدود) بتحصل بس وقت تنفيذ البرنامج، بعد الـ compilation (sheet Q29).",
+      null,
+      "مش كلهم: الـ logic والـ runtime errors بيعدّوا من الـ compiler؛ الـ key هو syntax بس (sheet Q29)."
+     ]
+    },
+    {
+     "why": "الـ parsing (الـ syntax analysis) هو عملية إننا نلاقي parse tree للـ tokens اللي الـ scanner طلّعها؛ ولو مفيش شجرة، يبقى البرنامج فيه syntax error <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      null,
+      "«Analyzing» عامة أوي: الـ lexical والـ syntax والـ semantic analysis كلهم analysis؛ فمش اسم العملية دي بالذات <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ recognizing ده اللي الـ finite automata بتعمله: accept أو reject لـ string (آه أو لأ)، من غير ما تبني شجرة <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+      "الـ tokenizing هو الـ lexical analysis (characters ← tokens)، وده بيحصل قبل الـ parsing <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ CFG ليها أربع مكونات: non-terminals (V) وterminals (Σ) وproductions (P) وstart symbol (S). مفيش حاجة اسمها «end symbol»؛ والـ $ اللي في جداول الـ LL(1) الـ parser بيضيفها لآخر الـ input، مش جزء من الـ grammar <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "الـ non-terminals (V) واحدة من الأربع مكونات بتاعة الـ CFG <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ start symbol (S) واحد من الأربع مكونات؛ والـ derivation بيبدأ منه <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ terminals (Σ) واحدة من الأربع مكونات بتاعة الـ CFG <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "المادة بتقول «the regular expression accepted by an automaton» (زي سؤال الـ T/F في Summer 2025)، وكل NFA في L2–L3 بيتبني عشان يتعرّف على regular expression، زي <bdi dir=\"ltr\">1*01(0|1)*</bdi>. فأي NFA بيقبل regular expression (يعني regular language).",
+     "ow": [
+      "الـ NFA فعلًا بيقبل strings لوحدها، بس السؤال بيسأل أي NFA بيقبل إيه ككل؛ وبأسلوب المادة الإجابة regular expression <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+      null,
+      "الـ context-free grammars محتاجة parser؛ الـ finite automata مش بتقدر على الـ nesting <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ function مش حاجة الـ automaton بيقبلها؛ الـ transition function δ جزء من الـ NFA نفسه <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ scanner (الـ lexical analyzer) بيقرا الـ source program حرف حرف، ويجمّع الحروف في lexemes، ويطلّع tokens، مثلًا <bdi dir=\"ltr\">count = 10;</bdi> بتبقى <bdi dir=\"ltr\">id, =, num, ;</bdi> <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+     "ow": [
+      "الـ parser بياخد الـ tokens ويجمّعها هي في parse tree؛ بيشتغل على tokens مش characters <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ code generator آخر phase؛ بيطلّع target machine code <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ code optimizer بيحسّن الـ intermediate code؛ ملوش دعوة بالـ characters أو الـ tokens <bdi dir=\"ltr\">(L9)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ | commutative <bdi dir=\"ltr\">(s|t = t|s)</bdi>، من الـ algebraic laws في L2، فـ <bdi dir=\"ltr\">a | (b*c) = (b*c) | a = b*c | a</bdi>. والأقواس ممكن تتشال لأن الـ * أقوى حاجة وبعدها الـ concatenation، فـ <bdi dir=\"ltr\">b*c</bdi> معناها <bdi dir=\"ltr\">(b*)c</bdi> أصلًا. الاتنين بيوصفوا <bdi dir=\"ltr\">{a, c, bc, bbc, …}</bdi>.",
+     "ow": [
+      null,
+      "الـ ε هي الـ empty string بس؛ و<bdi dir=\"ltr\">a | (b*c)</bdi> مفيهاش ε أصلًا، لأن كل string فيها a أو بتخلص بـ c <bdi dir=\"ltr\">(L2)</bdi>.",
+      "«none» غلط لأن <bdi dir=\"ltr\">b*c | a</bdi> مكافئة بقانون الـ commutative بتاع الـ | <bdi dir=\"ltr\">(L2)</bdi>.",
+      "abcabc دي string واحدة ثابتة معمولة بالـ concatenation؛ ومش موجودة في الـ language خالص <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ symbol table ده data structure (الأسماء مع الـ type والـ scope وباقي الـ attributes) كل الـ phases بتقرا منه وتعدّل فيه؛ ومرسوم جنب سلسلة الـ phases مش جوّاها <bdi dir=\"ltr\">(L1, L8)</bdi>.",
+     "ow": [
+      "الـ code optimizer ده phase حقيقية (الـ code optimization) <bdi dir=\"ltr\">(L1, L9)</bdi>.",
+      "الـ parser هو phase 2، الـ syntax analysis <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+      null,
+      "الـ scanner هو phase 1، الـ lexical analysis <bdi dir=\"ltr\">(L1, L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ phases في L1 بالترتيب: lexical analysis (scanner)، syntax analysis (parser)، semantic analysis، intermediate code generation، code optimization، code generation. والـ code generation والـ syntax analyzer والـ lexical analyzer كلهم في القايمة.",
+     "ow": [
+      null,
+      "الـ code generation فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ syntax analyzer فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ lexical analyzer فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "سلسلة الـ phases في L1: <bdi dir=\"ltr\">scanner → tokens → parser → syntax tree → semantic analyzer → annotated tree → source code optimizer → intermediate code</bdi>. يبقى الـ annotated tree هي الـ input بتاع الـ (source) code optimizer (الـ revision sheet Q37 key).",
+     "ow": [
+      "الـ lexical analysis بتاخد الـ source code (characters) كـ input <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+      null,
+      "الـ semantic analysis هي اللي بتطلّع الـ annotated tree؛ الـ input بتاعها هو الـ syntax tree العادية. السؤال العكسي (sheet Q36، «output of») إجابته semantic analysis <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ syntax analysis بتاخد tokens كـ input وبتطلّع الـ syntax tree العادية <bdi dir=\"ltr\">(L1, L4)</bdi>."
+     ]
+    },
+    {
+     "why": "بالظبط اتنين a: اتنين a وأي مكان تاني يبقى b أو c بس: <bdi dir=\"ltr\">(b|c)*</bdi> قبل، a، <bdi dir=\"ltr\">(b|c)*</bdi> في النص، a، <bdi dir=\"ltr\">(b|c)*</bdi> بعد. كل <bdi dir=\"ltr\">(b|c)*</bdi> ممكن تبقى فاضية، فـ aa وbaca وcbaabc كلهم بيتطابقوا، ومستحيل تظهر a تالتة <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "«none» غلط لأن <bdi dir=\"ltr\">(b|c)* a (b|c)* a (b|c)*</bdi> مظبوطة بالظبط <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ <bdi dir=\"ltr\">(a|b|c)*</bdi> بتسمح بـ a زيادة في الفراغات (زي aaa)، فمعناها «على الأقل» اتنين a، مش بالظبط اتنين <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "<bdi dir=\"ltr\">ab* | ba*</bdi> language تانية خالص (سؤال 10): مفيهاش c، ومش بتجبر على اتنين a (a وabb فيهم a واحدة) <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ <bdi dir=\"ltr\">(a|b)*</bdi> أي string من a وb بأي طول (حتى ε)، فـ bbbb بتتطابق لما نختار b من <bdi dir=\"ltr\">(a|b)</bdi> أربع مرات <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      null,
+      "«none» غلط لأن <bdi dir=\"ltr\">(a|b)*</bdi> بتطابق bbbb <bdi dir=\"ltr\">(L2)</bdi>.",
+      "<bdi dir=\"ltr\">bb(abb)*</bdi> بتدّي bb وbbabb وbbabbabb …: أي string بعد bb فيها a، فـ bbbb مش بتتطابق <bdi dir=\"ltr\">(L2)</bdi>.",
+      "<bdi dir=\"ltr\">bb(ab)*</bdi> بتدّي bb وbbab وbbabab …: برضه أي string بعد bb فيها a، فـ bbbb مش بتتطابق <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "تعريف L1: الـ compiler بيترجم برنامج مكتوب بلغة high-level لـ low-level machine language (الـ revision sheet Q4).",
+     "ow": [
+      null,
+      "ترجمة الـ assembly language لـ machine language ده شغل الـ ASSEMBLER <bdi dir=\"ltr\">(L1)</bdi>.",
+      "إنه يبان إنه بينفّذ الـ source program على طول، statement ورا التانية، ده وصف الـ INTERPRETER <bdi dir=\"ltr\">(L1)</bdi>.",
+      "إنه يحط البرامج في الـ memory ويجهّزها للتنفيذ ده شغل الـ LOADER <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "التلات جمل صح في المادة دي: الـ leaves هي terminals (أو ε) ولو قريناها من الشمال لليمين بتدّي الجملة؛ وكل node جوّا الشجرة non-terminal اتعمله expand بـ production (والـ root هو الـ start symbol)؛ وحسب الـ key بتاع الدكتورة الـ leftmost parsing tree بتكبر من اليمين، فالجنب اليمين هو الأطول. مفيش جملة غلط، فالإجابة «None of the mentioned» <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      null,
+      "جملة صح: الـ leaves بتاعة الـ parse tree هي terminals (أو ε)؛ ولو اتقرت من الشمال لليمين بتدّي الجملة <bdi dir=\"ltr\">(L4)</bdi>.",
+      "جملة صح: كل node جوّا الشجرة non-terminal اتعمله expand بـ production، والـ root هو الـ start symbol <bdi dir=\"ltr\">(L4)</bdi>.",
+      "صح حسب الـ key بتاع المادة: الـ leftmost parsing tree بتكبر من الـ RIGHT side (الـ revision sheet Q52)، فالـ right subtree الأطول معناه leftmost tree."
+     ]
+    },
+    {
+     "why": "الـ symbol table ده data structure كل الـ phases بتقرا منه وتعدّل فيه، مش phase <bdi dir=\"ltr\">(L1, L8)</bdi>.",
+     "ow": [
+      "الـ code optimization دي phase <bdi dir=\"ltr\">(L1, L9)</bdi>.",
+      null,
+      "الـ scanner ده phase: الـ lexical analysis <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+      "الـ syntax analysis (الـ parser) دي phase <bdi dir=\"ltr\">(L1, L4)</bdi>."
+     ]
+    }
+   ]
+  },
+  {
+   "items": [
+    {
+     "why": "في جدول L1: الـ compiler بياخد وقت كبير في الـ ANALYZE للـ source code، لكن الـ EXECUTION في الآخر أسرع. الجملة بدّلت «analyze» بـ «execute» (الـ revision sheet T/F 2 = False).",
+     "ow": [
+      "True غلط: الـ compiler بطيء في التحليل والترجمة، لكن الـ machine code اللي بيطلّعه بيشتغل أسرع من الـ interpreted code <bdi dir=\"ltr\">(L1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ concatenation مش commutative. في L2: <bdi dir=\"ltr\">L1 = {a,b}</bdi> و<bdi dir=\"ltr\">L2 = {0,11}</bdi> بيدّوا <bdi dir=\"ltr\">L1L2 = {a0, a11, b0, b11}</bdi> لكن <bdi dir=\"ltr\">L2L1 = {0a, 0b, 11a, 11b}</bdi>، يعني <bdi dir=\"ltr\">L1L2 ≠ L2L1</bdi> (الـ revision sheet T/F 11 = False).",
+     "ow": [
+      "True غلط: الترتيب فارق؛ <bdi dir=\"ltr\">L1L2</bdi> بتحط strings بتاعة L1 الأول، فغالبًا <bdi dir=\"ltr\">L1L2 ≠ L2L1</bdi> <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في L4: الـ start symbol S هو اللي الـ derivation بيبدأ منه؛ الـ strings بتطلع من S بإننا كل مرة نبدّل non-terminal بالـ right side بتاع production من بتوعه. وعشان كده S هو الـ root بتاع أي parse tree.",
+     "ow": [
+      null,
+      "False غلط: أي derivation بيبدأ من الـ start symbol S <bdi dir=\"ltr\">(L4)</bdi>. النسخة اللي في الامتحانات القديمة «الـ derivation ممكن يبدأ من أي non-terminal» هي اللي False."
+     ]
+    },
+    {
+     "why": "في L3 بنحوّل أي NFA لـ DFA مكافئ بالـ subset construction (ε-closure + move)؛ كل state في الـ DFA عبارة عن set من states الـ NFA. الـ DFA ممكن يبقى فيه states أكتر (لحد <bdi dir=\"ltr\">2ⁿ</bdi>)، بس دايمًا موجود.",
+     "ow": [
+      null,
+      "False غلط: L3 بتشرح الـ subset construction اللي بتحوّل أي NFA لـ DFA مكافئ."
+     ]
+    },
+    {
+     "why": "الـ finite automata (NFA وDFA) بتتعرّف على الـ tokens اللي الـ regular expressions بتوصفها، وبتتعرّف على الـ regular languages بالظبط مش أكتر. ملهاش memory غير الـ state الحالية، فمش بتقدر تطابق nesting زي الأقواس المتوازنة، وده محتاج CFG <bdi dir=\"ltr\">(L2, L3, L4)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: الـ NFA والـ DFA ليهم نفس القوة والاتنين بيتعرّفوا على الـ regular languages بالظبط؛ أي حاجة أكتر من كده (nesting) محتاجة CFG وparser <bdi dir=\"ltr\">(L3, L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في جدول L1: الـ interpreter مبيطلّعش أي intermediate object code، فهو موفّر في الـ memory؛ الـ compiler هو اللي بيطلّع intermediate object code محتاج linking (الـ revision sheet T/F 3).",
+     "ow": [
+      "True غلط: إن يطلع intermediate (object) code ده شغل الـ compiler؛ الـ interpreter بيترجم وينفّذ statement واحدة في المرة <bdi dir=\"ltr\">(L1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "امشي على الـ key بتاع الدكتورة في الـ revision sheet (Q52): الـ leftmost parsing tree بتكبر من الـ right side (والـ rightmost من الـ left). الفكرة: أول non-terminal على الشمال بيتعمله expand الأول، فالـ symbols اللي لسه مستنية بتفضل على اليمين وباقي الشجرة بيتملا من ناحية اليمين.",
+     "ow": [
+      null,
+      "False هي الإجابة «المنطقية»، بس الـ key بتاع المادة (الـ revision sheet Q52، واتكرر في فاينل 2023/24 و2024/25) بيقول إن الـ leftmost parsing tree بتكبر من الـ RIGHT side."
+     ]
+    },
+    {
+     "why": "الـ concatenation مش commutative. في L2: <bdi dir=\"ltr\">L1 = {a,b}</bdi> و<bdi dir=\"ltr\">L2 = {0,11}</bdi>: <bdi dir=\"ltr\">L1L2 = {a0, a11, b0, b11}</bdi> و<bdi dir=\"ltr\">L2L1 = {0a, 0b, 11a, 11b}</bdi>؛ الـ setين مفيش بينهم ولا string مشتركة، يبقى <bdi dir=\"ltr\">L1L2 ≠ L2L1</bdi>.",
+     "ow": [
+      "True غلط: <bdi dir=\"ltr\">L1L2</bdi> بتحط strings بتاعة L1 الأول و<bdi dir=\"ltr\">L2L1</bdi> بتحط بتاعة L2 الأول، فغالبًا بيطلّعوا strings مختلفة <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ compiler بيبلّغ عن الأخطاء اللي يقدر يلاقيها في نص البرنامج قبل ما يشتغل (lexical وsyntax وsemantic). الـ runtime errors (القسمة على صفر، index برّه الحدود) بتظهر بس وقت تنفيذ البرنامج، بعد ما الـ compiler يخلّص <bdi dir=\"ltr\">(L1)</bdi>؛ والـ revision sheet Q29 key: syntax.",
+     "ow": [
+      "True غلط: الـ compiler بيطلّع الـ syntax errors، لكن الـ runtime errors بتحصل وقت التنفيذ بس، فمش بيقدر يبلّغ عنها (sheet Q29).",
+      null
+     ]
+    },
+    {
+     "why": "الـ ε-transition بتغيّر الـ state من غير ما تقرا أي input. الـ ε هي الـ empty string والـ identity بتاع الـ concatenation <bdi dir=\"ltr\">(sε = εs = s)</bdi>، فمش بتضيف أي حاجة للـ strings المقبولة. وفي L3 الـ ε edges بتدخل في الـ ε-closures والـ DFA اللي بيطلع بيقبل نفس الـ language بالظبط.",
+     "ow": [
+      "True غلط: الـ ε مش بتستهلك input و<bdi dir=\"ltr\">sε = s</bdi>، فالـ ε-move مش بتغيّر الـ language (الـ regular expression) المقبولة <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ parser بياخد الـ tokens من الـ scanner، ويقارنها بالـ CFG، ويبني الـ parse tree اللي بتوضّح structure البرنامج؛ وبعدين الـ semantic analysis بتشتغل على الشجرة دي <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: الـ output بتاع الـ syntax analyzer هو الـ parse (syntax) tree <bdi dir=\"ltr\">(L1, L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ loop لوحدها مش بتخلّي الـ automaton non-deterministic؛ الـ DFA ممكن يبقى فيه loops. اللي بيخلّيه NFA بس هو ε-transition، أو اتنين edges أو أكتر بنفس الـ symbol من نفس الـ state (زي loop على a ومعاها edge تاني على a). الـ DFA بتاع <bdi dir=\"ltr\">1*01(0|1)*</bdi> في L2 فيه loops وهو deterministic <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "True غلط: الـ loop على symbol عادي في الـ DFA طالما مفيش edge تاني طالع من نفس الـ state بنفس الـ symbol <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الأقواس حوالين symbol واحد مش بتغيّر حاجة: <bdi dir=\"ltr\">(c) = c</bdi> و<bdi dir=\"ltr\">(a) = a</bdi>، فالاتنين abc يعني <bdi dir=\"ltr\">{abc}</bdi>. وكمان الـ concatenation associative <bdi dir=\"ltr\">(rs)t = r(st)</bdi>، فالتجميع مش فارق طالما الترتيب هو هو <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: الـ expressions الاتنين هما abc؛ تغيير الترتيب بس هو اللي يغيّر الـ language، وهنا الترتيب a ثم b ثم c هو هو <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ subset construction (ε-closure + move) بتحوّل أي NFA لـ DFA مكافئ بيقبل نفس الـ language بالظبط؛ كل state في الـ DFA عبارة عن set من states الـ NFA. الـ NFA والـ DFA ليهم نفس القوة <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: الـ subset construction في L3 دايمًا بتطلّع DFA مكافئ (ممكن بـ states أكتر، لحد <bdi dir=\"ltr\">2ⁿ</bdi>)."
+     ]
+    },
+    {
+     "why": "قانون من الـ algebraic laws في L2: الـ concatenation بتتوزّع على الـ |، يعني <bdi dir=\"ltr\">r(s|t) = rs | rt</bdi>. فـ <bdi dir=\"ltr\">a(b|c) = ab | ac</bdi>، والاتنين <bdi dir=\"ltr\">{ab, ac}</bdi>؛ والجملة بتقول إنهم مش متساويين، فهي False.",
+     "ow": [
+      "True غلط: بقانون التوزيع <bdi dir=\"ltr\">r(s|t) = rs|rt</bdi> الـ expressions الاتنين متساويين <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ <bdi dir=\"ltr\">(X|Y)*</bdi> أي خليط من X وY (ε، X، Y، XY، YX، XXY، …)، لكن <bdi dir=\"ltr\">X* | Y*</bdi> يا كله X يا كله Y، من غير خلط. XY موجودة في <bdi dir=\"ltr\">(X|Y)*</bdi> ومش موجودة في <bdi dir=\"ltr\">X* | Y*</bdi>، فمش متكافئين؛ و<bdi dir=\"ltr\">X* | Y*</bdi> مجرد subset. (القانون الصح: <bdi dir=\"ltr\">(X|Y)* = (X*Y*)*</bdi>.) <bdi dir=\"ltr\">(L2)</bdi>",
+     "ow": [
+      "True غلط: XY تبع <bdi dir=\"ltr\">(X|Y)*</bdi> لكن مش تبع <bdi dir=\"ltr\">X* | Y*</bdi>، اللي عمره ما بيخلط X وY <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    }
+   ]
+  }
+ ]
+});
+AR.compiler.lectures[1].quiz.push(...[
+ [
+  "True غلط: الـ compiler بطيء في التحليل والترجمة، لكن الـ machine code اللي بيطلّعه بيشتغل أسرع من الـ interpreted code <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. في جدول L1: الـ compiler بياخد وقت كبير في الـ ANALYZE للـ source code، لكن الـ EXECUTION في الآخر أسرع. الجملة بدّلت «analyze» بـ «execute» (الـ revision sheet T/F 2 = False)."
+ ],
+ [
+  "الـ binary code صح بس ده نص إجابة الـ key؛ الـ machine code كمان صح <bdi dir=\"ltr\">(L1; sheet Q12)</bdi>.",
+  "الـ machine code صح بس ده نص إجابة الـ key؛ الـ machine code هو نفسه binary code <bdi dir=\"ltr\">(L1; sheet Q12)</bdi>.",
+  "صح. الـ compiler بيترجم الـ high-level source program لـ low-level machine language، والـ machine code هو نفسه binary code، فالاتنين صح. الـ official key لنفس السؤال في الـ revision sheet (Q12) اختار «both» <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ compiler بيطلّع object (machine) code؛ لسه الـ linker/loader لازم يحوّله لـ executable يشتغل، فالـ key مش بيختار ده <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "True غلط: إن يطلع intermediate (object) code ده شغل الـ compiler؛ الـ interpreter بيترجم وينفّذ statement واحدة في المرة <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. في جدول L1: الـ interpreter مبيطلّعش أي intermediate object code، فهو موفّر في الـ memory؛ الـ compiler هو اللي بيطلّع intermediate object code محتاج linking (الـ revision sheet T/F 3)."
+ ],
+ [
+  "الـ compiler شايف expression سليمة (syntax وtypes صح)، فمفيش error يطلّعه <bdi dir=\"ltr\">(L1)</bdi>.",
+  "لا الـ compiler ولا الـ interpreter يقدروا يكتشفوه: الاتنين بيراجعوا نفس القواعد، والسطر مش مخالف أي واحدة فيهم.",
+  "الـ interpreter بيراجع نفس قواعد الـ compiler؛ هينفّذ السطر عادي ويطلّع قيمة غلط.",
+  "صح. إنك تكتب * بدل / ده LOGICAL error: <bdi dir=\"ltr\">a*b</bdi> و<bdi dir=\"ltr\">a/b</bdi> الاتنين syntax صح ونفس الـ types، فالبرنامج صح من وجهة نظر الـ compiler. الـ compilers والـ interpreters بيمسكوا lexical وsyntax وsemantic errors بس؛ ميعرفوش المبرمج كان قصده إيه. الـ testing للـ output بس هو اللي يبيّنه <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ logic errors (زي * بدل /) كود سليم بس معناه غلط؛ الـ compiler مش بيقدر يكتشفها (sheet Q29).",
+  "الـ runtime errors (القسمة على صفر، index برّه الحدود) بتحصل بس وقت تنفيذ البرنامج، بعد الـ compilation (sheet Q29).",
+  "صح. الـ compiler بيمسك ويبلّغ عن الأخطاء اللي يقدر يشوفها في نص البرنامج قبل ما يشتغل؛ والـ syntax errors (<bdi dir=\"ltr\">;</bdi> ناقصة، أقواس مش متقفلة) هي المثال الأساسي، والـ parser بيلاقيها بمقارنتها بالـ CFG <bdi dir=\"ltr\">(L1, L4)</bdi>؛ والـ revision sheet Q29 key: syntax.",
+  "مش كلهم: الـ logic والـ runtime errors بيعدّوا من الـ compiler؛ الـ key هو syntax بس (sheet Q29)."
+ ],
+ [
+  "True غلط: الـ compiler بيطلّع الـ syntax errors، لكن الـ runtime errors بتحصل وقت التنفيذ بس، فمش بيقدر يبلّغ عنها (sheet Q29).",
+  "صح. الـ compiler بيبلّغ عن الأخطاء اللي يقدر يلاقيها في نص البرنامج قبل ما يشتغل (lexical وsyntax وsemantic). الـ runtime errors (القسمة على صفر، index برّه الحدود) بتظهر بس وقت تنفيذ البرنامج، بعد ما الـ compiler يخلّص <bdi dir=\"ltr\">(L1)</bdi>؛ والـ revision sheet Q29 key: syntax."
+ ],
+ [
+  "الـ code optimizer ده phase حقيقية (الـ code optimization) <bdi dir=\"ltr\">(L1, L9)</bdi>.",
+  "الـ parser هو phase 2، الـ syntax analysis <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+  "صح. الـ symbol table ده data structure (الأسماء مع الـ type والـ scope وباقي الـ attributes) كل الـ phases بتقرا منه وتعدّل فيه؛ ومرسوم جنب سلسلة الـ phases مش جوّاها <bdi dir=\"ltr\">(L1, L8)</bdi>.",
+  "الـ scanner هو phase 1، الـ lexical analysis <bdi dir=\"ltr\">(L1, L2)</bdi>."
+ ],
+ [
+  "صح. الـ phases في L1 بالترتيب: lexical analysis (scanner)، syntax analysis (parser)، semantic analysis، intermediate code generation، code optimization، code generation. والـ code generation والـ syntax analyzer والـ lexical analyzer كلهم في القايمة.",
+  "الـ code generation فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ syntax analyzer فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ lexical analyzer فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ lexical analysis بتاخد الـ source code (characters) كـ input <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+  "صح. سلسلة الـ phases في L1: <bdi dir=\"ltr\">scanner → tokens → parser → syntax tree → semantic analyzer → annotated tree → source code optimizer → intermediate code</bdi>. يبقى الـ annotated tree هي الـ input بتاع الـ (source) code optimizer (الـ revision sheet Q37 key).",
+  "الـ semantic analysis هي اللي بتطلّع الـ annotated tree؛ الـ input بتاعها هو الـ syntax tree العادية. السؤال العكسي (sheet Q36، «output of») إجابته semantic analysis <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ syntax analysis بتاخد tokens كـ input وبتطلّع الـ syntax tree العادية <bdi dir=\"ltr\">(L1, L4)</bdi>."
+ ],
+ [
+  "صح. تعريف L1: الـ compiler بيترجم برنامج مكتوب بلغة high-level لـ low-level machine language (الـ revision sheet Q4).",
+  "ترجمة الـ assembly language لـ machine language ده شغل الـ ASSEMBLER <bdi dir=\"ltr\">(L1)</bdi>.",
+  "إنه يبان إنه بينفّذ الـ source program على طول، statement ورا التانية، ده وصف الـ INTERPRETER <bdi dir=\"ltr\">(L1)</bdi>.",
+  "إنه يحط البرامج في الـ memory ويجهّزها للتنفيذ ده شغل الـ LOADER <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ code optimization دي phase <bdi dir=\"ltr\">(L1, L9)</bdi>.",
+  "صح. الـ symbol table ده data structure كل الـ phases بتقرا منه وتعدّل فيه، مش phase <bdi dir=\"ltr\">(L1, L8)</bdi>.",
+  "الـ scanner ده phase: الـ lexical analysis <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+  "الـ syntax analysis (الـ parser) دي phase <bdi dir=\"ltr\">(L1, L4)</bdi>."
+ ]
+]);
+AR.compiler.lectures[2].quiz.push(...[
+ [
+  "True غلط: الترتيب فارق؛ <bdi dir=\"ltr\">L1L2</bdi> بتحط strings بتاعة L1 الأول، فغالبًا <bdi dir=\"ltr\">L1L2 ≠ L2L1</bdi> <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. الـ concatenation مش commutative. في L2: <bdi dir=\"ltr\">L1 = {a,b}</bdi> و<bdi dir=\"ltr\">L2 = {0,11}</bdi> بيدّوا <bdi dir=\"ltr\">L1L2 = {a0, a11, b0, b11}</bdi> لكن <bdi dir=\"ltr\">L2L1 = {0a, 0b, 11a, 11b}</bdi>، يعني <bdi dir=\"ltr\">L1L2 ≠ L2L1</bdi> (الـ revision sheet T/F 11 = False)."
+ ],
+ [
+  "<bdi dir=\"ltr\">{a}</bdi> دي <bdi dir=\"ltr\">L(a)</bdi> بس، ناقصها b <bdi dir=\"ltr\">(L2)</bdi>.",
+  "<bdi dir=\"ltr\">{ab}</bdi> دي الـ concatenation ab (a وبعدها b)، مش «a أو b» <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. الـ | هو operator الـ «or» (الـ union): <bdi dir=\"ltr\">L(a|b) = L(a) ∪ L(b) = {a} ∪ {b} = {a, b}</bdi> <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ ε محتاجة اختيار لوحدها، زي <bdi dir=\"ltr\">ε|a|b</bdi> أو <bdi dir=\"ltr\">(a|b)?</bdi>؛ الـ <bdi dir=\"ltr\">a|b</bdi> العادية مش بتطابق الـ empty string <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "<bdi dir=\"ltr\">ab*ba*</bdi> دي concatenation: كل string لازم يبقى فيها الجزءين (زي abba)، فـ a أو b لوحدهم مش بيتطابقوا <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. «a واحدة بعدها أي عدد من الـ b» = <bdi dir=\"ltr\">ab*</bdi> (a، ab، abb، …)؛ و«b واحدة بعدها أي عدد من الـ a» = <bdi dir=\"ltr\">ba*</bdi>؛ و«أو» = |. يبقى <bdi dir=\"ltr\">ab* | ba*</bdi>. (الـ * أقوى من الـ concatenation، فـ <bdi dir=\"ltr\">ab* = a(b*)</bdi>) <bdi dir=\"ltr\">(L2)</bdi>.",
+  "«none» غلط لأن <bdi dir=\"ltr\">ab* | ba*</bdi> مظبوطة بالظبط <bdi dir=\"ltr\">(L2)</bdi>.",
+  "<bdi dir=\"ltr\">a*b | b*a</bdi> بتحط الحرف المتكرر قبل الحرف الواحد (b، ab، aab، …)، وده عكس الوصف <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "معكوسة: الـ tokens هي الـ OUTPUT بتاع الـ scanner والـ source code هو الـ input <bdi dir=\"ltr\">(L2)</bdi>.",
+  "«None» غلط لأن (c) صح <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. الـ lexical analyzer (الـ scanner) بيقرا الـ source code كـ characters، ويجمّعها في lexemes، ويطلّع tokens (id وnum و+ …) للـ parser <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+  "الـ machine code ده الـ output النهائي بتاع الـ compiler (الـ code generator)، مش اللي الـ scanner بيقراه <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "True غلط: <bdi dir=\"ltr\">L1L2</bdi> بتحط strings بتاعة L1 الأول و<bdi dir=\"ltr\">L2L1</bdi> بتحط بتاعة L2 الأول، فغالبًا بيطلّعوا strings مختلفة <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. الـ concatenation مش commutative. في L2: <bdi dir=\"ltr\">L1 = {a,b}</bdi> و<bdi dir=\"ltr\">L2 = {0,11}</bdi>: <bdi dir=\"ltr\">L1L2 = {a0, a11, b0, b11}</bdi> و<bdi dir=\"ltr\">L2L1 = {0a, 0b, 11a, 11b}</bdi>؛ الـ setين مفيش بينهم ولا string مشتركة، يبقى <bdi dir=\"ltr\">L1L2 ≠ L2L1</bdi>."
+ ],
+ [
+  "الـ parser بياخد الـ tokens ويجمّعها هي في parse tree؛ بيشتغل على tokens مش characters <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. الـ scanner (الـ lexical analyzer) بيقرا الـ source program حرف حرف، ويجمّع الحروف في lexemes، ويطلّع tokens، مثلًا <bdi dir=\"ltr\">count = 10;</bdi> بتبقى <bdi dir=\"ltr\">id, =, num, ;</bdi> <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+  "الـ code generator آخر phase؛ بيطلّع target machine code <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ code optimizer بيحسّن الـ intermediate code؛ ملوش دعوة بالـ characters أو الـ tokens <bdi dir=\"ltr\">(L9)</bdi>."
+ ],
+ [
+  "صح. الـ | commutative <bdi dir=\"ltr\">(s|t = t|s)</bdi>، من الـ algebraic laws في L2، فـ <bdi dir=\"ltr\">a | (b*c) = (b*c) | a = b*c | a</bdi>. والأقواس ممكن تتشال لأن الـ * أقوى حاجة وبعدها الـ concatenation، فـ <bdi dir=\"ltr\">b*c</bdi> معناها <bdi dir=\"ltr\">(b*)c</bdi> أصلًا. الاتنين بيوصفوا <bdi dir=\"ltr\">{a, c, bc, bbc, …}</bdi>.",
+  "الـ ε هي الـ empty string بس؛ و<bdi dir=\"ltr\">a | (b*c)</bdi> مفيهاش ε أصلًا، لأن كل string فيها a أو بتخلص بـ c <bdi dir=\"ltr\">(L2)</bdi>.",
+  "«none» غلط لأن <bdi dir=\"ltr\">b*c | a</bdi> مكافئة بقانون الـ commutative بتاع الـ | <bdi dir=\"ltr\">(L2)</bdi>.",
+  "abcabc دي string واحدة ثابتة معمولة بالـ concatenation؛ ومش موجودة في الـ language خالص <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. الأقواس حوالين symbol واحد مش بتغيّر حاجة: <bdi dir=\"ltr\">(c) = c</bdi> و<bdi dir=\"ltr\">(a) = a</bdi>، فالاتنين abc يعني <bdi dir=\"ltr\">{abc}</bdi>. وكمان الـ concatenation associative <bdi dir=\"ltr\">(rs)t = r(st)</bdi>، فالتجميع مش فارق طالما الترتيب هو هو <bdi dir=\"ltr\">(L2)</bdi>.",
+  "False غلط: الـ expressions الاتنين هما abc؛ تغيير الترتيب بس هو اللي يغيّر الـ language، وهنا الترتيب a ثم b ثم c هو هو <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "«none» غلط لأن <bdi dir=\"ltr\">(b|c)* a (b|c)* a (b|c)*</bdi> مظبوطة بالظبط <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ <bdi dir=\"ltr\">(a|b|c)*</bdi> بتسمح بـ a زيادة في الفراغات (زي aaa)، فمعناها «على الأقل» اتنين a، مش بالظبط اتنين <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. بالظبط اتنين a: اتنين a وأي مكان تاني يبقى b أو c بس: <bdi dir=\"ltr\">(b|c)*</bdi> قبل، a، <bdi dir=\"ltr\">(b|c)*</bdi> في النص، a، <bdi dir=\"ltr\">(b|c)*</bdi> بعد. كل <bdi dir=\"ltr\">(b|c)*</bdi> ممكن تبقى فاضية، فـ aa وbaca وcbaabc كلهم بيتطابقوا، ومستحيل تظهر a تالتة <bdi dir=\"ltr\">(L2)</bdi>.",
+  "<bdi dir=\"ltr\">ab* | ba*</bdi> language تانية خالص (سؤال 10): مفيهاش c، ومش بتجبر على اتنين a (a وabb فيهم a واحدة) <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">(a|b)*</bdi> أي string من a وb بأي طول (حتى ε)، فـ bbbb بتتطابق لما نختار b من <bdi dir=\"ltr\">(a|b)</bdi> أربع مرات <bdi dir=\"ltr\">(L2)</bdi>.",
+  "«none» غلط لأن <bdi dir=\"ltr\">(a|b)*</bdi> بتطابق bbbb <bdi dir=\"ltr\">(L2)</bdi>.",
+  "<bdi dir=\"ltr\">bb(abb)*</bdi> بتدّي bb وbbabb وbbabbabb …: أي string بعد bb فيها a، فـ bbbb مش بتتطابق <bdi dir=\"ltr\">(L2)</bdi>.",
+  "<bdi dir=\"ltr\">bb(ab)*</bdi> بتدّي bb وbbab وbbabab …: برضه أي string بعد bb فيها a، فـ bbbb مش بتتطابق <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "True غلط: بقانون التوزيع <bdi dir=\"ltr\">r(s|t) = rs|rt</bdi> الـ expressions الاتنين متساويين <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. قانون من الـ algebraic laws في L2: الـ concatenation بتتوزّع على الـ |، يعني <bdi dir=\"ltr\">r(s|t) = rs | rt</bdi>. فـ <bdi dir=\"ltr\">a(b|c) = ab | ac</bdi>، والاتنين <bdi dir=\"ltr\">{ab, ac}</bdi>؛ والجملة بتقول إنهم مش متساويين، فهي False."
+ ],
+ [
+  "True غلط: XY تبع <bdi dir=\"ltr\">(X|Y)*</bdi> لكن مش تبع <bdi dir=\"ltr\">X* | Y*</bdi>، اللي عمره ما بيخلط X وY <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">(X|Y)*</bdi> أي خليط من X وY (ε، X، Y، XY، YX، XXY، …)، لكن <bdi dir=\"ltr\">X* | Y*</bdi> يا كله X يا كله Y، من غير خلط. XY موجودة في <bdi dir=\"ltr\">(X|Y)*</bdi> ومش موجودة في <bdi dir=\"ltr\">X* | Y*</bdi>، فمش متكافئين؛ و<bdi dir=\"ltr\">X* | Y*</bdi> مجرد subset. (القانون الصح: <bdi dir=\"ltr\">(X|Y)* = (X*Y*)*</bdi>.) <bdi dir=\"ltr\">(L2)</bdi>"
+ ]
+]);
+AR.compiler.lectures[3].quiz.push(...[
+ [
+  "صح. في L3 بنحوّل أي NFA لـ DFA مكافئ بالـ subset construction (ε-closure + move)؛ كل state في الـ DFA عبارة عن set من states الـ NFA. الـ DFA ممكن يبقى فيه states أكتر (لحد <bdi dir=\"ltr\">2ⁿ</bdi>)، بس دايمًا موجود.",
+  "False غلط: L3 بتشرح الـ subset construction اللي بتحوّل أي NFA لـ DFA مكافئ."
+ ],
+ [
+  "صح. الـ finite automata (NFA وDFA) بتتعرّف على الـ tokens اللي الـ regular expressions بتوصفها، وبتتعرّف على الـ regular languages بالظبط مش أكتر. ملهاش memory غير الـ state الحالية، فمش بتقدر تطابق nesting زي الأقواس المتوازنة، وده محتاج CFG <bdi dir=\"ltr\">(L2, L3, L4)</bdi>.",
+  "False غلط: الـ NFA والـ DFA ليهم نفس القوة والاتنين بيتعرّفوا على الـ regular languages بالظبط؛ أي حاجة أكتر من كده (nesting) محتاجة CFG وparser <bdi dir=\"ltr\">(L3, L4)</bdi>."
+ ],
+ [
+  "الـ NFA فعلًا بيقبل strings لوحدها، بس السؤال بيسأل أي NFA بيقبل إيه ككل؛ وبأسلوب المادة الإجابة regular expression <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+  "صح. المادة بتقول «the regular expression accepted by an automaton» (زي سؤال الـ T/F في Summer 2025)، وكل NFA في L2–L3 بيتبني عشان يتعرّف على regular expression، زي <bdi dir=\"ltr\">1*01(0|1)*</bdi>. فأي NFA بيقبل regular expression (يعني regular language).",
+  "الـ context-free grammars محتاجة parser؛ الـ finite automata مش بتقدر على الـ nesting <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ function مش حاجة الـ automaton بيقبلها؛ الـ transition function δ جزء من الـ NFA نفسه <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "True غلط: الـ ε مش بتستهلك input و<bdi dir=\"ltr\">sε = s</bdi>، فالـ ε-move مش بتغيّر الـ language (الـ regular expression) المقبولة <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+  "صح. الـ ε-transition بتغيّر الـ state من غير ما تقرا أي input. الـ ε هي الـ empty string والـ identity بتاع الـ concatenation <bdi dir=\"ltr\">(sε = εs = s)</bdi>، فمش بتضيف أي حاجة للـ strings المقبولة. وفي L3 الـ ε edges بتدخل في الـ ε-closures والـ DFA اللي بيطلع بيقبل نفس الـ language بالظبط."
+ ],
+ [
+  "True غلط: الـ loop على symbol عادي في الـ DFA طالما مفيش edge تاني طالع من نفس الـ state بنفس الـ symbol <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. الـ loop لوحدها مش بتخلّي الـ automaton non-deterministic؛ الـ DFA ممكن يبقى فيه loops. اللي بيخلّيه NFA بس هو ε-transition، أو اتنين edges أو أكتر بنفس الـ symbol من نفس الـ state (زي loop على a ومعاها edge تاني على a). الـ DFA بتاع <bdi dir=\"ltr\">1*01(0|1)*</bdi> في L2 فيه loops وهو deterministic <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "صح. الـ subset construction (ε-closure + move) بتحوّل أي NFA لـ DFA مكافئ بيقبل نفس الـ language بالظبط؛ كل state في الـ DFA عبارة عن set من states الـ NFA. الـ NFA والـ DFA ليهم نفس القوة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "False غلط: الـ subset construction في L3 دايمًا بتطلّع DFA مكافئ (ممكن بـ states أكتر، لحد <bdi dir=\"ltr\">2ⁿ</bdi>)."
+ ]
+]);
+AR.compiler.lectures[4].quiz.push(...[
+ [
+  "الـ semantic analysis بتشتغل على الـ parse tree بالـ attribute grammars والـ symbol table عشان تتأكد من المعنى (types وscope)، مش مبنية على CFG <bdi dir=\"ltr\">(L7)</bdi>.",
+  "«None» غلط لأن الـ syntax analysis فعلًا بتستخدم CFG <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. الـ parser (الـ syntax analysis) مبني على context-free grammar. الـ regular expressions مش بتقدر تتأكد من الـ balancing tokens زي الأقواس، عشان كده الـ phase دي محتاجة CFG <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ lexical analysis بتستخدم regular expressions وfinite automata عشان تتعرّف على الـ tokens، مش CFG <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "تجميع الـ data types والتأكد منها ده شغل الـ semantic analysis (الـ type checking)، وده بييجي بعد الـ parser <bdi dir=\"ltr\">(L7)</bdi>.",
+  "الـ symbol table كل الـ phases بتستخدمه (الـ scanner بيدخّل الأسماء، والـ semantic analysis بتضيف الـ types والـ scope)، فهو مش شغل الـ parser لوحده <bdi dir=\"ltr\">(L1, L8)</bdi>.",
+  "صح. الـ syntactic analyzer (الـ parser) بياخد الـ tokens ويقارنها بالـ CFG ويبني الـ parse tree (كلمة «paring» غلطة مطبعية وقصدها parsing) <bdi dir=\"ltr\">(L4; revision sheet Q27)</bdi>.",
+  "«None» غلط لأن (c) صح: الـ output بتاع الـ parser هو الـ parse tree <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "كلمة «deterministic» بتوصف الـ automata (الـ DFA ليه move واحدة لكل input)، مش الـ grammars أو الـ parse trees <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. الـ grammar بتبقى ambiguous لو فيه جملة ليها أكتر من parse tree، يعني أكتر من leftmost أو أكتر من rightmost derivation. مثال: <bdi dir=\"ltr\">E → E+E | E*E | id</bdi> بتدّي شجرتين لـ <bdi dir=\"ltr\">id+id*id</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ unambiguous عكسها: parse tree واحدة بس لكل جملة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«None» غلط لأن وجود أكتر من parse tree هو تعريف الـ ambiguity بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. الـ syntax analysis مبنية على context-free grammar: لازم تتأكد من الـ structures المتداخلة والمتوازنة زي <bdi dir=\"ltr\">( )</bdi> و<bdi dir=\"ltr\">begin … end</bdi>، وده الـ regular expressions مش بتقدر عليه <bdi dir=\"ltr\">(L4; revision sheet Q3)</bdi>.",
+  "الـ regular grammar (regular expressions + finite automata) هي اللي بتعمل model للـ LEXICAL analysis، ومش بتقدر تعدّ أو تطابق الـ nesting <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ low-level (machine) language ده الـ output بتاع الـ compiler، مش model لـ phase <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ high-level language ده الـ input بتاع الـ compiler (الـ source program)، مش الـ model اللي الـ parser بيستخدمه <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "صح. في L4: الـ start symbol S هو اللي الـ derivation بيبدأ منه؛ الـ strings بتطلع من S بإننا كل مرة نبدّل non-terminal بالـ right side بتاع production من بتوعه. وعشان كده S هو الـ root بتاع أي parse tree.",
+  "False غلط: أي derivation بيبدأ من الـ start symbol S <bdi dir=\"ltr\">(L4)</bdi>. النسخة اللي في الامتحانات القديمة «الـ derivation ممكن يبدأ من أي non-terminal» هي اللي False."
+ ],
+ [
+  "الـ code optimization بتحسّن intermediate code اتراجع خلاص، زي الـ constant folding <bdi dir=\"ltr\">(L9)</bdi>.",
+  "الـ semantic analysis بتتأكد من المعنى بعد الـ parsing (types وdeclarations وscope)، مش من الـ grammar <bdi dir=\"ltr\">(L7, L8)</bdi>.",
+  "صح. الـ parser (الـ syntax analysis) بيتأكد إن الـ tokens ماشية على الـ grammar بتاعة اللغة (الـ CFG)، وبيبني الـ parse tree، وبيطلّع الـ syntax errors زي <bdi dir=\"ltr\">;</bdi> ناقصة أو أقواس مش متقفلة <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+  "الـ code generation آخر phase؛ بتطلّع الـ target code من برنامج صح أصلًا <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "صح. امشي على الـ key بتاع الدكتورة في الـ revision sheet (Q52): الـ leftmost parsing tree بتكبر من الـ right side (والـ rightmost من الـ left). الفكرة: أول non-terminal على الشمال بيتعمله expand الأول، فالـ symbols اللي لسه مستنية بتفضل على اليمين وباقي الشجرة بيتملا من ناحية اليمين.",
+  "False هي الإجابة «المنطقية»، بس الـ key بتاع المادة (الـ revision sheet Q52، واتكرر في فاينل 2023/24 و2024/25) بيقول إن الـ leftmost parsing tree بتكبر من الـ RIGHT side."
+ ],
+ [
+  "صح. الـ parsing (الـ syntax analysis) هو عملية إننا نلاقي parse tree للـ tokens اللي الـ scanner طلّعها؛ ولو مفيش شجرة، يبقى البرنامج فيه syntax error <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«Analyzing» عامة أوي: الـ lexical والـ syntax والـ semantic analysis كلهم analysis؛ فمش اسم العملية دي بالذات <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ recognizing ده اللي الـ finite automata بتعمله: accept أو reject لـ string (آه أو لأ)، من غير ما تبني شجرة <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+  "الـ tokenizing هو الـ lexical analysis (characters ← tokens)، وده بيحصل قبل الـ parsing <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ non-terminals (V) واحدة من الأربع مكونات بتاعة الـ CFG <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ start symbol (S) واحد من الأربع مكونات؛ والـ derivation بيبدأ منه <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. الـ CFG ليها أربع مكونات: non-terminals (V) وterminals (Σ) وproductions (P) وstart symbol (S). مفيش حاجة اسمها «end symbol»؛ والـ $ اللي في جداول الـ LL(1) الـ parser بيضيفها لآخر الـ input، مش جزء من الـ grammar <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ terminals (Σ) واحدة من الأربع مكونات بتاعة الـ CFG <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. الـ parser بياخد الـ tokens من الـ scanner، ويقارنها بالـ CFG، ويبني الـ parse tree اللي بتوضّح structure البرنامج؛ وبعدين الـ semantic analysis بتشتغل على الشجرة دي <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+  "False غلط: الـ output بتاع الـ syntax analyzer هو الـ parse (syntax) tree <bdi dir=\"ltr\">(L1, L4)</bdi>."
+ ],
+ [
+  "صح. التلات جمل صح في المادة دي: الـ leaves هي terminals (أو ε) ولو قريناها من الشمال لليمين بتدّي الجملة؛ وكل node جوّا الشجرة non-terminal اتعمله expand بـ production (والـ root هو الـ start symbol)؛ وحسب الـ key بتاع الدكتورة الـ leftmost parsing tree بتكبر من اليمين، فالجنب اليمين هو الأطول. مفيش جملة غلط، فالإجابة «None of the mentioned» <bdi dir=\"ltr\">(L4)</bdi>.",
+  "جملة صح: الـ leaves بتاعة الـ parse tree هي terminals (أو ε)؛ ولو اتقرت من الشمال لليمين بتدّي الجملة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "جملة صح: كل node جوّا الشجرة non-terminal اتعمله expand بـ production، والـ root هو الـ start symbol <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح حسب الـ key بتاع المادة: الـ leftmost parsing tree بتكبر من الـ RIGHT side (الـ revision sheet Q52)، فالـ right subtree الأطول معناه leftmost tree."
+ ]
+]);

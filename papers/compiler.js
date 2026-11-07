@@ -381,6 +381,57 @@ Tree 2:
           { type: `written`, q: `17- Consider the grammar S → A, A → aB | Ad, B → b, C → g. Create LL(1) parser for the string abd.`, ans: `a- Remove left recursion: S → A, A → aBA', A' → dA' | ε, B → b, C → g.<table><tr><th>NT</th><th>FIRST</th><th>FOLLOW</th></tr><tr><td>S</td><td>{a}</td><td>{$}</td></tr><tr><td>A</td><td>{a}</td><td>{$}</td></tr><tr><td>A'</td><td>{d, ε}</td><td>{$}</td></tr><tr><td>B</td><td>{b}</td><td>{d, $}</td></tr><tr><td>C</td><td>{g}</td><td>{ } (C is unreachable)</td></tr></table>Table: M[S,a] = S→A; M[A,a] = A→aBA'; M[A',d] = A'→dA'; M[A',$] = A'→ε; M[B,b] = B→b; M[C,g] = C→g.<table><tr><th>Stack</th><th>Input</th><th>Action</th></tr><tr><td>S$</td><td>abd$</td><td>S→A</td></tr><tr><td>A$</td><td>abd$</td><td>A→aBA'</td></tr><tr><td>aBA'$</td><td>abd$</td><td>match a</td></tr><tr><td>BA'$</td><td>bd$</td><td>B→b</td></tr><tr><td>bA'$</td><td>bd$</td><td>match b</td></tr><tr><td>A'$</td><td>d$</td><td>A'→dA'</td></tr><tr><td>dA'$</td><td>d$</td><td>match d</td></tr><tr><td>A'$</td><td>$</td><td>A'→ε</td></tr><tr><td>$</td><td>$</td><td>accept</td></tr></table>`, key: `Typos in the official solution: the table entry M[A', $] and the trace step are printed as "A→ε" (should be A'→ε), and the trace's first stack is printed as "$" (should be S$). The FIRST/FOLLOW sets and the moves are otherwise correct.`, why: `FOLLOW(B) = FIRST(A') − ε ∪ FOLLOW(A) = {d, $}. C never appears on a right-hand side, so it has an empty FOLLOW set (the sheet writes {-}).` }
         ]}
       ]
+    },
+    {
+      title: `Midterm 2026/2027`,
+      meta: `CS321 Compiler Design and Theory · Midterm, 1st term 2026/2027 · online quiz · 40 questions (24 MCQ, 16 True/False) · Lectures 1–4 · Dr. Lamiaa Hassaan`,
+      note: `No official answer key was published. The answers are worked out from Lectures 1–4 and the doctor's final revision sheet. The sheet's key decides three answers: a leftmost parsing tree grows from the RIGHT side (the True/False statement about it and the MCQ "Which of the following statement is false?"), and a compiler indicates SYNTAX errors only. "Any NFA accepts……" is answered in the course's wording, "regular expression" (strictly, an NFA accepts strings). "Multiplication instead of division" is not covered by the lectures. The questions are kept as they appeared, typos included ("paring tree", "machime", "exaclty").`,
+      sections: [
+        { title: `Choose the correct answer`, marks: `24 questions`, items: [
+          { type: `mcq`, q: `Context free grammars are used in ………. phase`, o: [`semantic analysis`, `None`, `syntax analysis`, `lexical analysis`], a: 2, why: `The parser (syntax analysis) is modeled on a context-free grammar. Regular expressions cannot check balancing tokens such as parentheses, so this phase needs a CFG (L4).`, ow: [`Semantic analysis works on the parse tree with attribute grammars and the symbol table to check meaning (types, scope); it is not modeled on a CFG (L7).`, `"None" is wrong because syntax analysis does use a CFG (L4).`, null, `Lexical analysis uses regular expressions and finite automata to recognize tokens, not a CFG (L2).`] },
+          { type: `mcq`, q: `What does a syntactic analyzer do?`, o: [`collect data types`, `maintain symbol table`, `create paring tree`, `None of the mentioned`], a: 2, why: `The syntactic analyzer (parser) takes the tokens, checks them against the CFG and creates the parse tree ("paring" is a typo for parsing) (L4; revision sheet Q27).`, ow: [`Collecting and checking data types is semantic analysis (type checking), which runs after the parser (L7).`, `The symbol table is shared by all phases (the scanner enters names, semantic analysis adds types and scope); it is not the parser's own job (L1, L8).`, null, `"None" is wrong because (c) is correct: the parser's output is the parse tree (L4).`] },
+          { type: `mcq`, q: `More than one rightmost parse tree for some sentence, that is ………grammar.`, o: [`deterministic`, `ambiguous`, `unambiguous`, `None of the mentioned`], a: 1, why: `A grammar is ambiguous if some sentence has more than one parse tree, i.e. more than one leftmost or more than one rightmost derivation. Example: E → E+E | E*E | id gives two trees for id+id*id (L4).`, ow: [`"Deterministic" describes automata (DFA: one move per input), not grammars or parse trees (L3).`, null, `Unambiguous is the opposite: exactly one parse tree for every sentence (L4).`, `"None" is wrong because more than one parse tree is exactly the definition of ambiguity (L4).`] },
+          { type: `mcq`, q: `The phase Syntax Analysis is modeled on the basis of`, o: [`Context free grammar`, `Regular grammar`, `Low level language`, `High level language`], a: 0, why: `Syntax analysis is modeled on a context-free grammar: it must check nested, balanced structures such as ( ) and begin … end, which regular expressions cannot (L4; revision sheet Q3).`, ow: [null, `Regular grammar (regular expressions + finite automata) models LEXICAL analysis; it cannot count or match nesting (L2).`, `Low-level (machine) language is the compiler's output, not a model for a phase (L1).`, `High-level language is the compiler's input (the source program), not the model the parser uses (L1).`] },
+          { type: `mcq`, q: `Regular expression a|b denotes which of the following set?`, o: [`{a}`, `{ab}`, `{a, b}`, `{ℇ, a, b}`], a: 2, why: `| is the "or" (union) operator: L(a|b) = L(a) ∪ L(b) = {a} ∪ {b} = {a, b} (L2).`, ow: [`{a} is L(a) only; it leaves out b (L2).`, `{ab} is the concatenation ab (a followed by b), not "a or b" (L2).`, null, `ε would need its own alternative, e.g. ε|a|b or (a|b)?; plain a|b does not match the empty string (L2).`] },
+          { type: `mcq`, q: `Grammar of the programming is checked at ………… phase of compiler.`, o: [`Code optimization`, `Semantic analysis`, `Syntax analysis`, `Code generation`], a: 2, why: `The parser (syntax analysis) checks that the token stream follows the language's grammar (the CFG), builds the parse tree, and reports syntax errors such as a missing ; or unbalanced parentheses (L1, L4).`, ow: [`Code optimization improves intermediate code that has already been checked, e.g. constant folding (L9).`, `Semantic analysis checks MEANING after parsing (types, declarations, scope), not the grammar (L7, L8).`, null, `Code generation is the last phase; it produces target code from an already valid program (L1).`] },
+          { type: `mcq`, q: `The set of all strings over ∑ ={a,b} in which a single 'a' is followed by any number of b’s or a single 'b' followed by any number of a’s is?`, o: [`ab*ba*`, `ab* | ba*`, `none`, `a*b | b*a`], a: 1, why: `"A single a followed by any number of b's" = ab* (a, ab, abb, …); "a single b followed by any number of a's" = ba*; "or" = |. So ab* | ba*. (* binds tighter than concatenation, so ab* = a(b*)) (L2).`, ow: [`ab*ba* is a concatenation: every string must contain both parts (e.g. abba), so a or b alone is not matched (L2).`, null, `"none" is wrong because ab* | ba* fits exactly (L2).`, `a*b | b*a puts the repeated letter BEFORE the single one (b, ab, aab, …), the reverse of the description (L2).`] },
+          { type: `mcq`, q: `Compiler translates the source code to........`, o: [`Binary code`, `Machine code`, `Both machine code and binary code are correct`, `Executable code`], a: 2, why: `A compiler translates the high-level source program into low-level machine language, and machine code is binary code, so both are correct. The official key for the same past-paper question (revision sheet Q12) picks "both" (L1).`, ow: [`Binary code is right but only half of the key's answer; machine code is also correct (L1; sheet Q12).`, `Machine code is right but only half of the key's answer; machine code IS binary code (L1; sheet Q12).`, null, `The compiler outputs object (machine) code; the linker/loader still has to turn it into a runnable executable, so the key does not pick this (L1).`] },
+          { type: `mcq`, q: `The lexical analyzer takes ..... as input and produces a list of ....... as output`, o: [`Tokens, source code`, `None`, `Source code, tokens`, `Machine code, tokens`], a: 2, why: `The lexical analyzer (scanner) reads the source code as a stream of characters, groups them into lexemes and outputs tokens (id, num, +, …) for the parser (L1, L2).`, ow: [`Reversed: tokens are the scanner's OUTPUT and source code is its input (L2).`, `"None" is wrong because (c) is correct (L2).`, null, `Machine code is the compiler's final output (code generator), not what the scanner reads (L1).`] },
+          { type: `mcq`, q: `Which of the following can detect an error if a programmer by mistake writes multiplication instead of division?`, o: [`Compiler`, `Compiler or interpreter test`, `Interpreter`, `None of the mentioned`], a: 3, key: `Not in the lectures or past papers; answered from the error types the course covers (also the standard answer in compiler MCQ banks).`, why: `Writing * instead of / is a LOGICAL error: a*b and a/b are both valid syntax with the same types, so the program is still correct to the compiler. Compilers and interpreters only catch lexical, syntax and semantic errors; they cannot know what the programmer meant. Only testing the output reveals it (L1).`, ow: [`The compiler sees a valid expression (correct syntax and types), so there is no error for it to report (L1).`, `Neither the compiler nor the interpreter can detect it: both check the same rules, and the statement breaks none of them.`, `An interpreter checks the same rules as a compiler; it would run the line and simply compute the wrong value.`, null] },
+          { type: `mcq`, q: `A compiler indicates the ………error.`, o: [`logic`, `runtime`, `syntax`, `All of the mentioned`], a: 2, why: `A compiler spots and reports mistakes it can see in the program text before running it; syntax errors (missing ;, unbalanced parentheses) are the main example, found by the parser against the CFG (L1, L4; revision sheet Q29 key: syntax).`, ow: [`Logic errors (e.g. * instead of /) are valid code with the wrong meaning; the compiler cannot detect them (sheet Q29).`, `Runtime errors (division by zero, index out of bounds) only happen while the program executes, after compilation (sheet Q29).`, null, `Not all: logic and runtime errors escape the compiler; the key is syntax only (sheet Q29).`] },
+          { type: `mcq`, q: `…… is a process of finding a parse tree for a string of tokens.`, o: [`Parsing`, `Analyzing`, `Recognizing`, `Tokenizing`], a: 0, why: `Parsing (syntax analysis) is the process of finding a parse tree for the string of tokens produced by the scanner; if none exists, the program has a syntax error (L4).`, ow: [null, `"Analyzing" is too general: lexical, syntax and semantic analysis are all analysis; it does not name this process (L1).`, `Recognizing is what finite automata do: accept or reject a string (yes/no), without building a tree (L2, L3).`, `Tokenizing is lexical analysis (characters → tokens), which happens before parsing (L2).`] },
+          { type: `mcq`, q: `The following is not a part of a context free grammar:`, o: [`non-terminal symbols`, `start symbol`, `end symbol`, `terminal symbols`], a: 2, why: `A CFG has four components: non-terminals (V), terminals (Σ), productions (P) and a start symbol (S). There is no "end symbol"; the $ end marker in LL(1) tables is added by the parser for the end of input, not part of the grammar (L4).`, ow: [`Non-terminals (V) are one of the four CFG components (L4).`, `The start symbol (S) is one of the four CFG components; derivation begins from it (L4).`, null, `Terminals (Σ) are one of the four CFG components (L4).`] },
+          { type: `mcq`, q: `Any NFA accepts……`, o: [`string`, `regular expression`, `context free grammar`, `function`], a: 1, key: `No official key. Answered in the course's wording ("the regular expression accepted by an automaton"); strictly, an NFA accepts individual strings, so "string" is the risk if the doctor meant that.`, why: `The course talks about "the regular expression accepted by an automaton" (e.g. the Summer 2025 T/F), and every NFA in L2–L3 is built to recognize a regular expression, e.g. 1*01(0|1)*. So any NFA accepts a regular expression (a regular language).`, ow: [`An NFA does accept individual strings, but the question asks what any NFA accepts as a whole; in this course's wording that is a regular expression (L2, L3).`, null, `Context-free grammars need a parser; finite automata cannot handle nesting (L4).`, `A function is not something an automaton accepts; the transition function δ is part of the NFA itself (L3).`] },
+          { type: `mcq`, q: `Which of the following is used for grouping of characters into tokens?`, o: [`Parser`, `Scanner`, `Code Generator`, `Code Optimizer`], a: 1, why: `The scanner (lexical analyzer) reads the source program character by character, groups the characters into lexemes and produces tokens, e.g. count = 10; → id, =, num, ; (L1, L2).`, ow: [`The parser receives the tokens and groups THEM into a parse tree; it works on tokens, not characters (L4).`, null, `The code generator is the last phase; it produces target machine code (L1).`, `The code optimizer improves intermediate code; it does not deal with characters or tokens (L9).`] },
+          { type: `mcq`, q: `The string a | (b*c) is equivalent to`, o: [`b*c | a`, `ℇ`, `none`, `abcabc`], a: 0, why: `| is commutative (s|t = t|s, L2 algebraic laws), so a | (b*c) = (b*c) | a = b*c | a. The parentheses can go because * binds tightest, then concatenation: b*c already means (b*)c. Both describe {a, c, bc, bbc, …}.`, ow: [null, `ε is the empty string only; a | (b*c) does not even contain ε, since every string has an a or ends in c (L2).`, `"none" is wrong because b*c | a is equivalent by the commutative law of | (L2).`, `abcabc is one fixed string made by concatenation; it is not in the language at all (L2).`] },
+          { type: `mcq`, q: `………… is not a phase of a compiler`, o: [`Code optimizer`, `Parser`, `Symbol table`, `Scanner`], a: 2, why: `The symbol table is a data structure (names with their type, scope and other attributes) that every phase reads and updates; it is drawn beside the phase chain, not in it (L1, L8).`, ow: [`The code optimizer is a real phase (code optimization) (L1, L9).`, `The parser is phase 2, syntax analysis (L1, L4).`, null, `The scanner is phase 1, lexical analysis (L1, L2).`] },
+          { type: `mcq`, q: `Which of the following is/are the phases of compiler?`, o: [`All of the mentioned`, `Code generation`, `Syntax analyzer`, `Lexical analyzer`], a: 0, why: `L1 phases in order: lexical analysis (scanner), syntax analysis (parser), semantic analysis, intermediate code generation, code optimization, code generation. Code generation, the syntax analyzer and the lexical analyzer are all on the list.`, ow: [null, `Code generation is a phase, but so are the other two options, so "All of the mentioned" is the full answer (L1).`, `The syntax analyzer is a phase, but so are the other two options, so "All of the mentioned" is the full answer (L1).`, `The lexical analyzer is a phase, but so are the other two options, so "All of the mentioned" is the full answer (L1).`] },
+          { type: `mcq`, q: `Annotated syntax tree is the input to…………phase`, o: [`lexical analysis`, `code optimizer`, `semantic analysis`, `syntax analysis`], a: 1, why: `L1 phase chain: scanner → tokens → parser → syntax tree → semantic analyzer → annotated tree → source code optimizer → intermediate code. So the annotated tree is the input of the (source) code optimizer (revision sheet Q37 key).`, ow: [`Lexical analysis takes the source code (characters) as input (L1, L2).`, null, `Semantic analysis PRODUCES the annotated tree; its input is the plain syntax tree. The reverse question (sheet Q36, "output of") is semantic analysis (L1).`, `Syntax analysis takes tokens as input and outputs the plain syntax tree (L1, L4).`] },
+          { type: `mcq`, q: `The set of all strings over ∑ ={a,b,c} in which there exist exaclty two a's is?`, o: [`none`, `(a|b|c)* a (a|b|c)* a (a|b|c)*`, `(b|c)* a (b|c)* a (b|c)*`, `ab* | ba*`], a: 2, why: `Exactly two a's: two a's, and every other position may only be b or c: (b|c)* before, a, (b|c)* between, a, (b|c)* after. Each (b|c)* may be empty, so aa, baca, cbaabc all match, and a third a can never appear (L2).`, ow: [`"none" is wrong because (b|c)* a (b|c)* a (b|c)* fits exactly (L2).`, `(a|b|c)* lets extra a's into the gaps (e.g. aaa), so this means AT LEAST two a's, not exactly two (L2).`, null, `ab* | ba* is a different language (Q10): no c, and it never forces two a's (a and abb have one a) (L2).`] },
+          { type: `mcq`, q: `The set of strings over L={a, b}, the string bbbb can be recognized by the expression:`, o: [`(a|b)*`, `none`, `bb(abb)*`, `bb(ab)*`], a: 0, why: `(a|b)* is any string of a's and b's of any length (including ε), so bbbb matches by choosing b from (a|b) four times (L2).`, ow: [null, `"none" is wrong because (a|b)* matches bbbb (L2).`, `bb(abb)* gives bb, bbabb, bbabbabb, …: every string after bb contains an a, so bbbb is not matched (L2).`, `bb(ab)* gives bb, bbab, bbabab, …: again every string after bb has an a, so bbbb is not matched (L2).`] },
+          { type: `mcq`, q: `Compiler is a program that.......`, o: [`Accepts a program written in a high level language and produces a machime language program`, `Automates the translation of assembly language into machine language`, `Appears to execute a source program as if it were machine language`, `Places programs into memory and prepares them for execution`], a: 0, why: `L1 definition: a compiler translates a program written in a high-level language into low-level machine language (revision sheet Q4).`, ow: [null, `Translating assembly language into machine language is what an ASSEMBLER does (L1).`, `Appearing to execute the source program directly, statement by statement, describes an INTERPRETER (L1).`, `Placing programs into memory and preparing them for execution is the LOADER's job (L1).`] },
+          { type: `mcq`, q: `Which of the following statement is false?`, o: [`None of the mentioned`, `In a parsing tree, each leaf node is a terminal`, `In a parsing tree, all nodes except leaf nodes is a non-terminals`, `In a parsing tree, if the right subtree is longer than the left one, then it is a leftmost parsing tree`], a: 0, key: `No official key. (b) and (c) are straight from L4; (d) follows the revision-sheet key "a leftmost parsing tree grows from the right side" (Q52), the same rule as Q18 here.`, why: `All three statements count as true in this course: leaves are terminals (or ε) and reading them left to right gives the sentence; every interior node is a non-terminal expanded by a production (root = start symbol); and by the doctor's key a leftmost parsing tree grows from the right, so its right side is the longer one. No statement is false, so the answer is "None of the mentioned" (L4).`, ow: [null, `True statement: the leaves of a parse tree are terminals (or ε); read left to right they give the derived sentence (L4).`, `True statement: every interior node is a non-terminal that was expanded by a production, and the root is the start symbol (L4).`, `True by the course key: a leftmost parsing tree grows from the RIGHT side (revision sheet Q52), so a longer right subtree marks a leftmost tree.`] },
+          { type: `mcq`, q: `All of the following are phases of a compiler except:`, o: [`code optimization`, `symbol table`, `scanner`, `syntax analysis`], a: 1, why: `The symbol table is a data structure that every phase reads and updates, not a phase (L1, L8).`, ow: [`Code optimization is a phase (L1, L9).`, null, `The scanner is a phase: lexical analysis (L1, L2).`, `Syntax analysis (the parser) is a phase (L1, L4).`] }
+        ] },
+        { title: `True or False`, marks: `16 questions`, items: [
+          { type: `tf`, q: `Compilers take long time to execute source code`, a: 1, why: `L1 table: a compiler takes a large amount of time to ANALYZE the source code, but overall EXECUTION is faster. The statement swaps "analyze" for "execute" (revision sheet T/F 2 = False).`, ow: [`True is wrong: the compiler is slow at analysis/translation, but the compiled machine code runs faster than interpreted code (L1).`, null] },
+          { type: `tf`, q: `Order is not important in concatenation operation of two alphabets`, a: 1, why: `Concatenation is not commutative. L2: L1 = {a,b}, L2 = {0,11} gives L1L2 = {a0, a11, b0, b11} but L2L1 = {0a, 0b, 11a, 11b}, so L1L2 ≠ L2L1 (revision sheet T/F 11 = False).`, ow: [`True is wrong: order matters; L1L2 puts L1's strings first, so in general L1L2 ≠ L2L1 (L2).`, null] },
+          { type: `tf`, q: `Derivation can only be started with the start symbol of the context free grammar`, a: 0, why: `L4: the start symbol S is where derivation begins; strings are derived from S by repeatedly replacing a non-terminal with the right side of one of its productions. That is also why S is the root of every parse tree.`, ow: [null, `False is wrong: every derivation begins at the start symbol S (L4). The past-paper version "derivation can be started from any non-terminal" is the False one.`] },
+          { type: `tf`, q: `Conversion of NFA into DFA is possible`, a: 0, why: `L3 converts any NFA into an equivalent DFA with the subset construction (ε-closure + move); each DFA state is a set of NFA states. The DFA may have more states (up to 2ⁿ), but it always exists.`, ow: [null, `False is wrong: L3 shows the subset construction that turns every NFA into an equivalent DFA.`] },
+          { type: `tf`, q: `DFAs and NFAs only recognize regular expressions`, a: 0, why: `Finite automata (NFA and DFA) recognize the tokens specified by regular expressions, and they recognize exactly the regular languages, nothing more. They have no memory beyond the current state, so they cannot match nesting such as balanced parentheses, which needs a CFG (L2, L3, L4).`, ow: [null, `False is wrong: NFAs and DFAs are equally powerful and both recognize exactly the regular languages; anything beyond that (nesting) needs a CFG and a parser (L3, L4).`] },
+          { type: `tf`, q: `Interpreters generate intermediate code`, a: 1, why: `L1 table: an interpreter generates NO intermediate object code, so it is memory efficient; a compiler generates intermediate object code that needs linking (revision sheet T/F 3).`, ow: [`True is wrong: generating intermediate (object) code is the compiler's job; the interpreter translates and runs one statement at a time (L1).`, null] },
+          { type: `tf`, q: `A leftmost parsing tree grows from the right hand side`, a: 0, key: `Revision sheet Q52 key: a leftmost parsing tree grows from the RIGHT side. The lectures do not state this rule; the same statement is marked True in the 2024/25 (50) paper.`, why: `Follow the doctor's revision-sheet key (Q52): a leftmost parsing tree grows from the right side (and a rightmost one from the left). The reasoning: the leftmost non-terminal is expanded first, so the symbols still waiting to be expanded stay on the right and the rest of the tree is filled in from the right-hand side.`, ow: [null, `False is the "intuitive" answer, but the course key (revision sheet Q52, reused in the 2023/24 and 2024/25 finals) says a leftmost parsing tree grows from the RIGHT side.`] },
+          { type: `tf`, q: `Given two languages L1 and L2, strings produced by L1L2 are the same as L2L1`, a: 1, why: `Concatenation is not commutative. L2: L1 = {a,b}, L2 = {0,11}: L1L2 = {a0, a11, b0, b11} while L2L1 = {0a, 0b, 11a, 11b}; the two sets share no string, so L1L2 ≠ L2L1.`, ow: [`True is wrong: L1L2 puts L1's strings first and L2L1 puts L2's first, so in general they produce different strings (L2).`, null] },
+          { type: `tf`, q: `A compiler indicates the syntax and runtime errors`, a: 1, why: `A compiler reports errors it can find in the program text before it runs (lexical, syntax, semantic). Runtime errors (division by zero, index out of bounds) only appear while the compiled program executes, after the compiler has finished (L1; revision sheet Q29 key: syntax).`, ow: [`True is wrong: the compiler indicates syntax errors, but runtime errors happen only during execution, so it cannot report them (sheet Q29).`, null] },
+          { type: `tf`, q: `Epsilon transition causes a change of the regular expression accepted by an automaton`, a: 1, why: `An ε-transition changes state WITHOUT reading input. ε is the empty string and the identity of concatenation (sε = εs = s), so it adds nothing to the strings accepted. In L3 the ε edges are absorbed into ε-closures and the resulting DFA accepts exactly the same language.`, ow: [`True is wrong: ε consumes no input and sε = s, so an ε-move does not change the language (regular expression) accepted (L2, L3).`, null] },
+          { type: `tf`, q: `Syntax analysis generates Parse Tree`, a: 0, why: `The parser takes the tokens from the scanner, checks them against the CFG and builds the parse tree that shows the program's structure; semantic analysis then works on that tree (L1, L4).`, ow: [null, `False is wrong: the output of the syntax analyzer is the parse (syntax) tree (L1 phase chain, L4).`] },
+          { type: `tf`, q: `Any loop causes the automaton to be nondeterministic`, a: 1, why: `A loop by itself does NOT make an automaton non-deterministic; a DFA may contain loops. Only an ε-transition, or two or more edges on the same symbol from one state (e.g. a loop on a plus another edge on a), make it an NFA. The L2 DFA for 1*01(0|1)* has loops and is deterministic (L3).`, ow: [`True is wrong: a loop on a symbol is fine in a DFA as long as no other edge leaves that state on the same symbol (L3).`, null] },
+          { type: `tf`, q: `The expression ab(c) is equivalent to (a)bc`, a: 0, why: `Parentheses around a single symbol change nothing: (c) = c and (a) = a, so both are abc, the set {abc}. Also concatenation is associative, (rs)t = r(st), so grouping does not matter as long as the order stays the same (L2).`, ow: [null, `False is wrong: both expressions are just abc; only swapping the ORDER would change the language, and here the order a, b, c is the same (L2).`] },
+          { type: `tf`, q: `For every NFA a deterministic finite automaton (DFA) can be found that accepts the same language.`, a: 0, why: `The subset construction (ε-closure + move) turns any NFA into an equivalent DFA that accepts exactly the same language; each DFA state is a set of NFA states. NFAs and DFAs are equally powerful (L3).`, ow: [null, `False is wrong: L3's subset construction always produces an equivalent DFA (possibly with more states, up to 2ⁿ).`] },
+          { type: `tf`, q: `The expression a(b|c) is not equal to the expression ab|ac`, a: 1, why: `L2 algebraic law: concatenation distributes over |, r(s|t) = rs | rt. So a(b|c) = ab | ac, both the set {ab, ac}; the statement says they are NOT equal, so it is False.`, ow: [`True is wrong: by the distributive law r(s|t) = rs|rt the two expressions are equal (L2).`, null] },
+          { type: `tf`, q: `(X | Y)* is equivalent to X* | Y*`, a: 1, why: `(X|Y)* is any mix of X's and Y's (ε, X, Y, XY, YX, XXY, …), while X* | Y* is all X's or all Y's, never mixed. XY is in (X|Y)* but not in X* | Y*, so they are not equivalent; X* | Y* is only a subset. (A law that does hold: (X|Y)* = (X*Y*)*.) (L2)`, ow: [`True is wrong: XY belongs to (X|Y)* but not to X* | Y*, which never mixes X and Y (L2).`, null] }
+        ] }
+      ]
     }
   ],
   quiz: {
@@ -458,7 +509,67 @@ Tree 2:
       { q: `"Annotated syntax tree is the output of syntax analysis phase."`, o: [
         [`True`, `Syntax analysis outputs the plain syntax tree.`],
         [`False`, `Correct. The annotated tree is the output of semantic analysis.`]
-      ], a: 1, src: `Professor's revision sheet` }
+      ], a: 1, src: `Professor's revision sheet` },
+      { q: `"Compilers take long time to execute source code"`, o: [
+        [`True`, `True is wrong: the compiler is slow at analysis/translation, but the compiled machine code runs faster than interpreted code (L1).`],
+        [`False`, `Correct. L1 table: a compiler takes a large amount of time to ANALYZE the source code, but overall EXECUTION is faster. The statement swaps "analyze" for "execute" (revision sheet T/F 2 = False).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `Compiler translates the source code to........`, o: [
+        [`Binary code`, `Binary code is right but only half of the key's answer; machine code is also correct (L1; sheet Q12).`],
+        [`Machine code`, `Machine code is right but only half of the key's answer; machine code IS binary code (L1; sheet Q12).`],
+        [`Both machine code and binary code are correct`, `Correct. A compiler translates the high-level source program into low-level machine language, and machine code is binary code, so both are correct. The official key for the same past-paper question (revision sheet Q12) picks "both" (L1).`],
+        [`Executable code`, `The compiler outputs object (machine) code; the linker/loader still has to turn it into a runnable executable, so the key does not pick this (L1).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `"Interpreters generate intermediate code"`, o: [
+        [`True`, `True is wrong: generating intermediate (object) code is the compiler's job; the interpreter translates and runs one statement at a time (L1).`],
+        [`False`, `Correct. L1 table: an interpreter generates NO intermediate object code, so it is memory efficient; a compiler generates intermediate object code that needs linking (revision sheet T/F 3).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `Which of the following can detect an error if a programmer by mistake writes multiplication instead of division?`, o: [
+        [`Compiler`, `The compiler sees a valid expression (correct syntax and types), so there is no error for it to report (L1).`],
+        [`Compiler or interpreter test`, `Neither the compiler nor the interpreter can detect it: both check the same rules, and the statement breaks none of them.`],
+        [`Interpreter`, `An interpreter checks the same rules as a compiler; it would run the line and simply compute the wrong value.`],
+        [`None of the mentioned`, `Correct. Writing * instead of / is a LOGICAL error: a*b and a/b are both valid syntax with the same types, so the program is still correct to the compiler. Compilers and interpreters only catch lexical, syntax and semantic errors; they cannot know what the programmer meant. Only testing the output reveals it (L1).`]
+      ], a: 3, src: `Midterm 2026/27` },
+      { q: `A compiler indicates the ………error.`, o: [
+        [`logic`, `Logic errors (e.g. * instead of /) are valid code with the wrong meaning; the compiler cannot detect them (sheet Q29).`],
+        [`runtime`, `Runtime errors (division by zero, index out of bounds) only happen while the program executes, after compilation (sheet Q29).`],
+        [`syntax`, `Correct. A compiler spots and reports mistakes it can see in the program text before running it; syntax errors (missing ;, unbalanced parentheses) are the main example, found by the parser against the CFG (L1, L4; revision sheet Q29 key: syntax).`],
+        [`All of the mentioned`, `Not all: logic and runtime errors escape the compiler; the key is syntax only (sheet Q29).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `"A compiler indicates the syntax and runtime errors"`, o: [
+        [`True`, `True is wrong: the compiler indicates syntax errors, but runtime errors happen only during execution, so it cannot report them (sheet Q29).`],
+        [`False`, `Correct. A compiler reports errors it can find in the program text before it runs (lexical, syntax, semantic). Runtime errors (division by zero, index out of bounds) only appear while the compiled program executes, after the compiler has finished (L1; revision sheet Q29 key: syntax).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `………… is not a phase of a compiler`, o: [
+        [`Code optimizer`, `The code optimizer is a real phase (code optimization) (L1, L9).`],
+        [`Parser`, `The parser is phase 2, syntax analysis (L1, L4).`],
+        [`Symbol table`, `Correct. The symbol table is a data structure (names with their type, scope and other attributes) that every phase reads and updates; it is drawn beside the phase chain, not in it (L1, L8).`],
+        [`Scanner`, `The scanner is phase 1, lexical analysis (L1, L2).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `Which of the following is/are the phases of compiler?`, o: [
+        [`All of the mentioned`, `Correct. L1 phases in order: lexical analysis (scanner), syntax analysis (parser), semantic analysis, intermediate code generation, code optimization, code generation. Code generation, the syntax analyzer and the lexical analyzer are all on the list.`],
+        [`Code generation`, `Code generation is a phase, but so are the other two options, so "All of the mentioned" is the full answer (L1).`],
+        [`Syntax analyzer`, `The syntax analyzer is a phase, but so are the other two options, so "All of the mentioned" is the full answer (L1).`],
+        [`Lexical analyzer`, `The lexical analyzer is a phase, but so are the other two options, so "All of the mentioned" is the full answer (L1).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `Annotated syntax tree is the input to…………phase`, o: [
+        [`lexical analysis`, `Lexical analysis takes the source code (characters) as input (L1, L2).`],
+        [`code optimizer`, `Correct. L1 phase chain: scanner → tokens → parser → syntax tree → semantic analyzer → annotated tree → source code optimizer → intermediate code. So the annotated tree is the input of the (source) code optimizer (revision sheet Q37 key).`],
+        [`semantic analysis`, `Semantic analysis PRODUCES the annotated tree; its input is the plain syntax tree. The reverse question (sheet Q36, "output of") is semantic analysis (L1).`],
+        [`syntax analysis`, `Syntax analysis takes tokens as input and outputs the plain syntax tree (L1, L4).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `Compiler is a program that.......`, o: [
+        [`Accepts a program written in a high level language and produces a machime language program`, `Correct. L1 definition: a compiler translates a program written in a high-level language into low-level machine language (revision sheet Q4).`],
+        [`Automates the translation of assembly language into machine language`, `Translating assembly language into machine language is what an ASSEMBLER does (L1).`],
+        [`Appears to execute a source program as if it were machine language`, `Appearing to execute the source program directly, statement by statement, describes an INTERPRETER (L1).`],
+        [`Places programs into memory and prepares them for execution`, `Placing programs into memory and preparing them for execution is the LOADER's job (L1).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `All of the following are phases of a compiler except:`, o: [
+        [`code optimization`, `Code optimization is a phase (L1, L9).`],
+        [`symbol table`, `Correct. The symbol table is a data structure that every phase reads and updates, not a phase (L1, L8).`],
+        [`scanner`, `The scanner is a phase: lexical analysis (L1, L2).`],
+        [`syntax analysis`, `Syntax analysis (the parser) is a phase (L1, L4).`]
+      ], a: 1, src: `Midterm 2026/27` }
     ],
     2: [
       { q: `One of the modeling criteria of lexical analysis phase is:`, o: [
@@ -488,7 +599,69 @@ Tree 2:
         [`a+b | ab+`, `Correct. Upper path ε·a*·a·b = a+b; lower path a·b*·b = ab+.`],
         [`(a|b)*ab`, `Accepts strings like bab, which the FA rejects.`],
         [`a+b+`, `a+b+ accepts aabb, but the upper path a+b allows only one b and the lower path ab+ only one a.`]
-      ], a: 1, src: `Professor's revision sheet` }
+      ], a: 1, src: `Professor's revision sheet` },
+      { q: `"Order is not important in concatenation operation of two alphabets"`, o: [
+        [`True`, `True is wrong: order matters; L1L2 puts L1's strings first, so in general L1L2 ≠ L2L1 (L2).`],
+        [`False`, `Correct. Concatenation is not commutative. L2: L1 = {a,b}, L2 = {0,11} gives L1L2 = {a0, a11, b0, b11} but L2L1 = {0a, 0b, 11a, 11b}, so L1L2 ≠ L2L1 (revision sheet T/F 11 = False).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `Regular expression a|b denotes which of the following set?`, o: [
+        [`{a}`, `{a} is L(a) only; it leaves out b (L2).`],
+        [`{ab}`, `{ab} is the concatenation ab (a followed by b), not "a or b" (L2).`],
+        [`{a, b}`, `Correct. | is the "or" (union) operator: L(a|b) = L(a) ∪ L(b) = {a} ∪ {b} = {a, b} (L2).`],
+        [`{ℇ, a, b}`, `ε would need its own alternative, e.g. ε|a|b or (a|b)?; plain a|b does not match the empty string (L2).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `The set of all strings over ∑ ={a,b} in which a single 'a' is followed by any number of b’s or a single 'b' followed by any number of a’s is?`, o: [
+        [`ab*ba*`, `ab*ba* is a concatenation: every string must contain both parts (e.g. abba), so a or b alone is not matched (L2).`],
+        [`ab* | ba*`, `Correct. "A single a followed by any number of b's" = ab* (a, ab, abb, …); "a single b followed by any number of a's" = ba*; "or" = |. So ab* | ba*. (* binds tighter than concatenation, so ab* = a(b*)) (L2).`],
+        [`none`, `"none" is wrong because ab* | ba* fits exactly (L2).`],
+        [`a*b | b*a`, `a*b | b*a puts the repeated letter BEFORE the single one (b, ab, aab, …), the reverse of the description (L2).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `The lexical analyzer takes ..... as input and produces a list of ....... as output`, o: [
+        [`Tokens, source code`, `Reversed: tokens are the scanner's OUTPUT and source code is its input (L2).`],
+        [`None`, `"None" is wrong because (c) is correct (L2).`],
+        [`Source code, tokens`, `Correct. The lexical analyzer (scanner) reads the source code as a stream of characters, groups them into lexemes and outputs tokens (id, num, +, …) for the parser (L1, L2).`],
+        [`Machine code, tokens`, `Machine code is the compiler's final output (code generator), not what the scanner reads (L1).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `"Given two languages L1 and L2, strings produced by L1L2 are the same as L2L1"`, o: [
+        [`True`, `True is wrong: L1L2 puts L1's strings first and L2L1 puts L2's first, so in general they produce different strings (L2).`],
+        [`False`, `Correct. Concatenation is not commutative. L2: L1 = {a,b}, L2 = {0,11}: L1L2 = {a0, a11, b0, b11} while L2L1 = {0a, 0b, 11a, 11b}; the two sets share no string, so L1L2 ≠ L2L1.`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `Which of the following is used for grouping of characters into tokens?`, o: [
+        [`Parser`, `The parser receives the tokens and groups THEM into a parse tree; it works on tokens, not characters (L4).`],
+        [`Scanner`, `Correct. The scanner (lexical analyzer) reads the source program character by character, groups the characters into lexemes and produces tokens, e.g. count = 10; → id, =, num, ; (L1, L2).`],
+        [`Code Generator`, `The code generator is the last phase; it produces target machine code (L1).`],
+        [`Code Optimizer`, `The code optimizer improves intermediate code; it does not deal with characters or tokens (L9).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `The string a | (b*c) is equivalent to`, o: [
+        [`b*c | a`, `Correct. | is commutative (s|t = t|s, L2 algebraic laws), so a | (b*c) = (b*c) | a = b*c | a. The parentheses can go because * binds tightest, then concatenation: b*c already means (b*)c. Both describe {a, c, bc, bbc, …}.`],
+        [`ℇ`, `ε is the empty string only; a | (b*c) does not even contain ε, since every string has an a or ends in c (L2).`],
+        [`none`, `"none" is wrong because b*c | a is equivalent by the commutative law of | (L2).`],
+        [`abcabc`, `abcabc is one fixed string made by concatenation; it is not in the language at all (L2).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `"The expression ab(c) is equivalent to (a)bc"`, o: [
+        [`True`, `Correct. Parentheses around a single symbol change nothing: (c) = c and (a) = a, so both are abc, the set {abc}. Also concatenation is associative, (rs)t = r(st), so grouping does not matter as long as the order stays the same (L2).`],
+        [`False`, `False is wrong: both expressions are just abc; only swapping the ORDER would change the language, and here the order a, b, c is the same (L2).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `The set of all strings over ∑ ={a,b,c} in which there exist exaclty two a's is?`, o: [
+        [`none`, `"none" is wrong because (b|c)* a (b|c)* a (b|c)* fits exactly (L2).`],
+        [`(a|b|c)* a (a|b|c)* a (a|b|c)*`, `(a|b|c)* lets extra a's into the gaps (e.g. aaa), so this means AT LEAST two a's, not exactly two (L2).`],
+        [`(b|c)* a (b|c)* a (b|c)*`, `Correct. Exactly two a's: two a's, and every other position may only be b or c: (b|c)* before, a, (b|c)* between, a, (b|c)* after. Each (b|c)* may be empty, so aa, baca, cbaabc all match, and a third a can never appear (L2).`],
+        [`ab* | ba*`, `ab* | ba* is a different language (Q10): no c, and it never forces two a's (a and abb have one a) (L2).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `The set of strings over L={a, b}, the string bbbb can be recognized by the expression:`, o: [
+        [`(a|b)*`, `Correct. (a|b)* is any string of a's and b's of any length (including ε), so bbbb matches by choosing b from (a|b) four times (L2).`],
+        [`none`, `"none" is wrong because (a|b)* matches bbbb (L2).`],
+        [`bb(abb)*`, `bb(abb)* gives bb, bbabb, bbabbabb, …: every string after bb contains an a, so bbbb is not matched (L2).`],
+        [`bb(ab)*`, `bb(ab)* gives bb, bbab, bbabab, …: again every string after bb has an a, so bbbb is not matched (L2).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `"The expression a(b|c) is not equal to the expression ab|ac"`, o: [
+        [`True`, `True is wrong: by the distributive law r(s|t) = rs|rt the two expressions are equal (L2).`],
+        [`False`, `Correct. L2 algebraic law: concatenation distributes over |, r(s|t) = rs | rt. So a(b|c) = ab | ac, both the set {ab, ac}; the statement says they are NOT equal, so it is False.`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `"(X | Y)* is equivalent to X* | Y*"`, o: [
+        [`True`, `True is wrong: XY belongs to (X|Y)* but not to X* | Y*, which never mixes X and Y (L2).`],
+        [`False`, `Correct. (X|Y)* is any mix of X's and Y's (ε, X, Y, XY, YX, XXY, …), while X* | Y* is all X's or all Y's, never mixed. XY is in (X|Y)* but not in X* | Y*, so they are not equivalent; X* | Y* is only a subset. (A law that does hold: (X|Y)* = (X*Y*)*.) (L2)`]
+      ], a: 1, src: `Midterm 2026/27` }
     ],
     3: [
       { q: `"The ε transition can exist in DFA."`, o: [
@@ -510,7 +683,33 @@ Tree 2:
         [`{2}`, `This keeps only 1 –a→ 2 and forgets that state 1 also loops back to itself on a.`],
         [`{1,2}`, `Correct. 1 on a goes to 1 (loop) and 2, giving the final DFA state {1,2}.`],
         [`∅`, `∅ would mean state 1 has no a-moves, but it has two: the loop to 1 and the edge to 2.`]
-      ], a: 2, src: `Exam 2023/24 Summer` }
+      ], a: 2, src: `Exam 2023/24 Summer` },
+      { q: `"Conversion of NFA into DFA is possible"`, o: [
+        [`True`, `Correct. L3 converts any NFA into an equivalent DFA with the subset construction (ε-closure + move); each DFA state is a set of NFA states. The DFA may have more states (up to 2ⁿ), but it always exists.`],
+        [`False`, `False is wrong: L3 shows the subset construction that turns every NFA into an equivalent DFA.`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `"DFAs and NFAs only recognize regular expressions"`, o: [
+        [`True`, `Correct. Finite automata (NFA and DFA) recognize the tokens specified by regular expressions, and they recognize exactly the regular languages, nothing more. They have no memory beyond the current state, so they cannot match nesting such as balanced parentheses, which needs a CFG (L2, L3, L4).`],
+        [`False`, `False is wrong: NFAs and DFAs are equally powerful and both recognize exactly the regular languages; anything beyond that (nesting) needs a CFG and a parser (L3, L4).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `Any NFA accepts……`, o: [
+        [`string`, `An NFA does accept individual strings, but the question asks what any NFA accepts as a whole; in this course's wording that is a regular expression (L2, L3).`],
+        [`regular expression`, `Correct. The course talks about "the regular expression accepted by an automaton" (e.g. the Summer 2025 T/F), and every NFA in L2–L3 is built to recognize a regular expression, e.g. 1*01(0|1)*. So any NFA accepts a regular expression (a regular language).`],
+        [`context free grammar`, `Context-free grammars need a parser; finite automata cannot handle nesting (L4).`],
+        [`function`, `A function is not something an automaton accepts; the transition function δ is part of the NFA itself (L3).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `"Epsilon transition causes a change of the regular expression accepted by an automaton"`, o: [
+        [`True`, `True is wrong: ε consumes no input and sε = s, so an ε-move does not change the language (regular expression) accepted (L2, L3).`],
+        [`False`, `Correct. An ε-transition changes state WITHOUT reading input. ε is the empty string and the identity of concatenation (sε = εs = s), so it adds nothing to the strings accepted. In L3 the ε edges are absorbed into ε-closures and the resulting DFA accepts exactly the same language.`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `"Any loop causes the automaton to be nondeterministic"`, o: [
+        [`True`, `True is wrong: a loop on a symbol is fine in a DFA as long as no other edge leaves that state on the same symbol (L3).`],
+        [`False`, `Correct. A loop by itself does NOT make an automaton non-deterministic; a DFA may contain loops. Only an ε-transition, or two or more edges on the same symbol from one state (e.g. a loop on a plus another edge on a), make it an NFA. The L2 DFA for 1*01(0|1)* has loops and is deterministic (L3).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `"For every NFA a deterministic finite automaton (DFA) can be found that accepts the same language."`, o: [
+        [`True`, `Correct. The subset construction (ε-closure + move) turns any NFA into an equivalent DFA that accepts exactly the same language; each DFA state is a set of NFA states. NFAs and DFAs are equally powerful (L3).`],
+        [`False`, `False is wrong: L3's subset construction always produces an equivalent DFA (possibly with more states, up to 2ⁿ).`]
+      ], a: 0, src: `Midterm 2026/27` }
     ],
     4: [
       { q: `The syntax analyzer takes ……. as input and produces ……. as output.`, o: [
@@ -586,7 +785,67 @@ Tree 2:
         [`The + can be a binary op, or op → ε followed by the unary E → +E`, `Correct. Tree 1: E op E with op = +. Tree 2: E op E with op = ε and the right E = +E.`],
         [`The parentheses can be dropped`, `Parentheses are terminals and must appear exactly as written.`],
         [`num can be derived from op`, `op only derives + - * / or ε, never num; num comes only from E → num.`]
-      ], a: 1, src: `Exam 2023/24 Summer` }
+      ], a: 1, src: `Exam 2023/24 Summer` },
+      { q: `Context free grammars are used in ………. phase`, o: [
+        [`semantic analysis`, `Semantic analysis works on the parse tree with attribute grammars and the symbol table to check meaning (types, scope); it is not modeled on a CFG (L7).`],
+        [`None`, `"None" is wrong because syntax analysis does use a CFG (L4).`],
+        [`syntax analysis`, `Correct. The parser (syntax analysis) is modeled on a context-free grammar. Regular expressions cannot check balancing tokens such as parentheses, so this phase needs a CFG (L4).`],
+        [`lexical analysis`, `Lexical analysis uses regular expressions and finite automata to recognize tokens, not a CFG (L2).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `What does a syntactic analyzer do?`, o: [
+        [`collect data types`, `Collecting and checking data types is semantic analysis (type checking), which runs after the parser (L7).`],
+        [`maintain symbol table`, `The symbol table is shared by all phases (the scanner enters names, semantic analysis adds types and scope); it is not the parser's own job (L1, L8).`],
+        [`create paring tree`, `Correct. The syntactic analyzer (parser) takes the tokens, checks them against the CFG and creates the parse tree ("paring" is a typo for parsing) (L4; revision sheet Q27).`],
+        [`None of the mentioned`, `"None" is wrong because (c) is correct: the parser's output is the parse tree (L4).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `More than one rightmost parse tree for some sentence, that is ………grammar.`, o: [
+        [`deterministic`, `"Deterministic" describes automata (DFA: one move per input), not grammars or parse trees (L3).`],
+        [`ambiguous`, `Correct. A grammar is ambiguous if some sentence has more than one parse tree, i.e. more than one leftmost or more than one rightmost derivation. Example: E → E+E | E*E | id gives two trees for id+id*id (L4).`],
+        [`unambiguous`, `Unambiguous is the opposite: exactly one parse tree for every sentence (L4).`],
+        [`None of the mentioned`, `"None" is wrong because more than one parse tree is exactly the definition of ambiguity (L4).`]
+      ], a: 1, src: `Midterm 2026/27` },
+      { q: `The phase Syntax Analysis is modeled on the basis of`, o: [
+        [`Context free grammar`, `Correct. Syntax analysis is modeled on a context-free grammar: it must check nested, balanced structures such as ( ) and begin … end, which regular expressions cannot (L4; revision sheet Q3).`],
+        [`Regular grammar`, `Regular grammar (regular expressions + finite automata) models LEXICAL analysis; it cannot count or match nesting (L2).`],
+        [`Low level language`, `Low-level (machine) language is the compiler's output, not a model for a phase (L1).`],
+        [`High level language`, `High-level language is the compiler's input (the source program), not the model the parser uses (L1).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `"Derivation can only be started with the start symbol of the context free grammar"`, o: [
+        [`True`, `Correct. L4: the start symbol S is where derivation begins; strings are derived from S by repeatedly replacing a non-terminal with the right side of one of its productions. That is also why S is the root of every parse tree.`],
+        [`False`, `False is wrong: every derivation begins at the start symbol S (L4). The past-paper version "derivation can be started from any non-terminal" is the False one.`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `Grammar of the programming is checked at ………… phase of compiler.`, o: [
+        [`Code optimization`, `Code optimization improves intermediate code that has already been checked, e.g. constant folding (L9).`],
+        [`Semantic analysis`, `Semantic analysis checks MEANING after parsing (types, declarations, scope), not the grammar (L7, L8).`],
+        [`Syntax analysis`, `Correct. The parser (syntax analysis) checks that the token stream follows the language's grammar (the CFG), builds the parse tree, and reports syntax errors such as a missing ; or unbalanced parentheses (L1, L4).`],
+        [`Code generation`, `Code generation is the last phase; it produces target code from an already valid program (L1).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `"A leftmost parsing tree grows from the right hand side"`, o: [
+        [`True`, `Correct. Follow the doctor's revision-sheet key (Q52): a leftmost parsing tree grows from the right side (and a rightmost one from the left). The reasoning: the leftmost non-terminal is expanded first, so the symbols still waiting to be expanded stay on the right and the rest of the tree is filled in from the right-hand side.`],
+        [`False`, `False is the "intuitive" answer, but the course key (revision sheet Q52, reused in the 2023/24 and 2024/25 finals) says a leftmost parsing tree grows from the RIGHT side.`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `…… is a process of finding a parse tree for a string of tokens.`, o: [
+        [`Parsing`, `Correct. Parsing (syntax analysis) is the process of finding a parse tree for the string of tokens produced by the scanner; if none exists, the program has a syntax error (L4).`],
+        [`Analyzing`, `"Analyzing" is too general: lexical, syntax and semantic analysis are all analysis; it does not name this process (L1).`],
+        [`Recognizing`, `Recognizing is what finite automata do: accept or reject a string (yes/no), without building a tree (L2, L3).`],
+        [`Tokenizing`, `Tokenizing is lexical analysis (characters → tokens), which happens before parsing (L2).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `The following is not a part of a context free grammar:`, o: [
+        [`non-terminal symbols`, `Non-terminals (V) are one of the four CFG components (L4).`],
+        [`start symbol`, `The start symbol (S) is one of the four CFG components; derivation begins from it (L4).`],
+        [`end symbol`, `Correct. A CFG has four components: non-terminals (V), terminals (Σ), productions (P) and a start symbol (S). There is no "end symbol"; the $ end marker in LL(1) tables is added by the parser for the end of input, not part of the grammar (L4).`],
+        [`terminal symbols`, `Terminals (Σ) are one of the four CFG components (L4).`]
+      ], a: 2, src: `Midterm 2026/27` },
+      { q: `"Syntax analysis generates Parse Tree"`, o: [
+        [`True`, `Correct. The parser takes the tokens from the scanner, checks them against the CFG and builds the parse tree that shows the program's structure; semantic analysis then works on that tree (L1, L4).`],
+        [`False`, `False is wrong: the output of the syntax analyzer is the parse (syntax) tree (L1 phase chain, L4).`]
+      ], a: 0, src: `Midterm 2026/27` },
+      { q: `Which of the following statement is false?`, o: [
+        [`None of the mentioned`, `Correct. All three statements count as true in this course: leaves are terminals (or ε) and reading them left to right gives the sentence; every interior node is a non-terminal expanded by a production (root = start symbol); and by the doctor's key a leftmost parsing tree grows from the right, so its right side is the longer one. No statement is false, so the answer is "None of the mentioned" (L4).`],
+        [`In a parsing tree, each leaf node is a terminal`, `True statement: the leaves of a parse tree are terminals (or ε); read left to right they give the derived sentence (L4).`],
+        [`In a parsing tree, all nodes except leaf nodes is a non-terminals`, `True statement: every interior node is a non-terminal that was expanded by a production, and the root is the start symbol (L4).`],
+        [`In a parsing tree, if the right subtree is longer than the left one, then it is a leftmost parsing tree`, `True by the course key: a leftmost parsing tree grows from the RIGHT side (revision sheet Q52), so a longer right subtree marks a leftmost tree.`]
+      ], a: 0, src: `Midterm 2026/27` }
     ],
     6: [
       { q: `In which parsing does the parser construct the parse tree from the start symbol and transform it into the input symbols?`, o: [
