@@ -2100,3 +2100,470 @@ AR.fp = {
   }
  ]
 };
+// Midterm 2026/2027 (papers/fp.js): Arabic for the exam and for its copies in the lecture quizzes, in the same order.
+AR.fp.exams.push({
+ "sections": [
+  {
+   "items": [
+    {
+     "why": "جدول التكلفة في L4: الـ delete في الـ sorted file = <bdi dir=\"ltr\">search + 2·(0.5B(D+RC))</bdi>. الـ search هو binary search <bdi dir=\"ltr\">D·log₂B + C·log₂R</bdi>؛ وبعدها كل الـ records اللي بعده بتتزق مكان، فبنقرا نص الملف في المتوسط <bdi dir=\"ltr\">(0.5B pages)</bdi> ونكتبه تاني (×2).",
+     "ow": [
+      "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP file: نقرا آخر page ونضيف الـ record ونكتبها تاني <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file (الـ buckets مليانة ~80%) <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+      null,
+      "دي لازقة الـ sorted search على الـ heap insert <bdi dir=\"ltr\">2D + C</bdi>؛ مفيش operation في الجدول ليها التكلفة دي، وناقصها إزاحة نص الملف <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ EOF ده integer constant متعرّف في stdio.h وقيمته −1. الـ loop بتاع readASCII() في L1 بيعمل <bdi dir=\"ltr\">result = fscanf(...)</bdi> ويقف لما <bdi dir=\"ltr\">result == EOF</bdi>؛ والـ fgetc والـ fscanf بيرجّعوا EOF (−1) في آخر الملف أو لو حصل error. (المحاضرات بتستخدم EOF في الكود بس مش بتكتب قيمته؛ −1 هي القيمة الـ standard في C.)",
+     "ow": [
+      "الـ NULL ده null POINTER: اللي fopen بترجّعه لو الملف مفتحش <bdi dir=\"ltr\">(if (my_file == NULL))</bdi>، مش الـ integer EOF <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ 0 ده اللي fread بترجّعه في آخر الملف (قرت صفر عناصر)؛ ده عدد، مش الـ EOF constant <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "الـ 1 عدد طبيعي لقراية ناجحة (زي fread قرت record واحد)؛ مش معناه آخر الملف <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2 «Disk as a bottleneck»: الـ network والـ CPU بيستنوا الـ disk. الحلول: (1) multiprocessing، (2) disk striping، (3) RAID، (4) RAM disk، (5) disk cache. السؤال بيقول «various techniques»، و«Both A and B» بتغطي أكتر عدد منهم: striping + distributed processing (multiprocessing) + RAID.",
+     "ow": [
+      "الـ disk striping والـ distributed processing (multiprocessing) حلول فعلًا، بس ناقصين: الـ RAID حل كمان، فـ «Both A and B» أكمل <bdi dir=\"ltr\">(L2, Disk bottleneck)</bdi>.",
+      "الـ RAID حل واحد بس؛ الـ striping والـ multiprocessing كمان موجودين في السلايد، فـ «Both A and B» أكمل <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ disk cache حل حقيقي (رقم 5 في السلايد)، بس هو واحد بس؛ و«Both A and B» بتجمع حلول أكتر من السلايد <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول الـ field structures في L3: في الـ length indicator كل field بيبدأ بطوله (مثلًا <bdi dir=\"ltr\">05 87359 07 CARROLL …</bdi>)، فالبرنامج بيقرا الطول ويقفز على طول لآخر الـ field. العيب: الـ fields الطويلة محتاجة أكتر من byte عشان تخزّن الطول.",
+     "ow": [
+      null,
+      "ميزة الـ keyword = value إن الـ fields بتوصف نفسها ومسموح تبقى ناقصة؛ مفيهاش طول نقفز بيه <bdi dir=\"ltr\">(L3)</bdi>.",
+      "ميزة الـ fixed fields إنها «سهلة في القراية والتخزين»؛ ميزة القفز لآخر الـ field مكتوبة للـ length indicator <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ delimiter عكسها: لازم تراجع كل byte عشان تلاقي الـ delimiter، فمينفعش تقفز <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "مكونات الـ disk في L2: الـ ARMS هي اللي بتشيل وتوجّه وتحرّك الـ read/write heads؛ وتحريكها للـ track الصح اسمه seeking (نفس السؤال والإجابة في Midterm 2022/23 Model A).",
+     "ow": [
+      "الـ spindles بتشيل الـ platters وتلفّها تحت الـ heads؛ مش بتحرّك الـ heads <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ platters هي الأسطوانات اللي بتخزّن الـ data على الوشّين <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ arm assembly هي الوحدة الداخلية كلها اللي فيها الـ arms والـ heads؛ الجزء اللي بيشيل ويحرّك الـ heads بالتحديد هو الـ arms <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "جدول الـ field structures في L3: في الـ FIXED-length كل field ليه حجم ثابت، فالقيمة القصيرة (اسم 3 حروف في field حجمه 10 bytes) بتتملا بمسافات (padding)، والـ padding ده مساحة ضايعة. الميزة: سهل في القراية والتخزين.",
+     "ow": [
+      "عيب الـ length indicator إن الـ fields الطويلة محتاجة أكتر من byte للطول؛ مفيش padding <bdi dir=\"ltr\">(L3)</bdi>.",
+      "عيب الـ delimiter إننا لازم نراجع كل byte عشان الـ delimiter؛ وممكن يضيّع مساحة أقل <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "عيب الـ keyword هو المساحة اللي الـ keywords نفسها بتاخدها؛ مفيش padding <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول الـ field structures في L3: في الـ keyword = value (زي <bdi dir=\"ltr\">last=Ames|first=Mary|city=Stillwater|</bdi>) كل field معاه اسمه، فالـ fields بتوصف نفسها، والـ field اللي ملوش قيمة ممكن ببساطة يتشال. العيب: الـ keywords بتضيّع مساحة.",
+     "ow": [
+      "الـ fixed fields بتتعرف بمكانها بس: مش بتوصف نفسها، والـ field الناقص برضه بياخد مساحته بالـ padding <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "الـ length indicator بيقول الـ field كام byte، مش هو أنهي field <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ delimited fields مفصولة برمز ومعروفة بترتيبها بس، فمش بتوصف نفسها <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول التكلفة في L4: الـ equality search في الـ sorted file = <bdi dir=\"ltr\">D·log₂B + C·log₂R</bdi>: binary search على الـ B pages (D لكل page بنقراها)، وبعدين binary search على الـ R records جوّا الـ page (C لكل مقارنة).",
+     "ow": [
+      null,
+      "دي تكلفة الـ INSERT/DELETE في الـ sorted file: search + إزاحة نص الملف مرتين؛ الـ search مش بيزق حاجة <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP file <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ read/write heads هي «الجزء الصغير من الـ disk اللي بيتحرك فوق الـ platter». بتطير فوق السطح (المسافة ممكن تبقى 3 nm بس) وبتتحرك للـ track اللي فيه الـ data؛ وكل surface ليه head.",
+     "ow": [
+      "الـ platter هو الأسطوانة الـ magnetic اللي بتخزّن الـ data؛ والـ head بيتحرك فوقه <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ arm بيشيل ويوجّه ويحرّك الـ head؛ مش هو الجزء الصغير اللي بيقرا ويكتب فوق السطح <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ spindle بيشيل الـ platters ويلفّها؛ مش بيتحرك فوقها <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في L1 «(3) File structures»: الملف ليه LOGICAL structure (إزاي المبرمج شايفه: text أو image أو data file…) وPHYSICAL structure (إزاي متخزّن على الـ secondary storage). اختيار «Both A and B» مترقّم غلط في الكويز: قصده physical (a) وlogical (d).",
+     "ow": [
+      "الـ physical structure لوحده نص الإجابة بس: الـ logical structure هو التاني <bdi dir=\"ltr\">(L1, File structures)</bdi>.",
+      null,
+      "الـ stream واحدة من طرق تنظيم الـ data جوّا الملف في L3 (stream وfield وrecord)، مش واحد من الـ structures الاتنين بتوع الملف <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ logical structure لوحده نص الإجابة بس: الـ physical structure هو التاني <bdi dir=\"ltr\">(L1, File structures)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ platter هو «الأسطوانة اللي الـ magnetic data بتتخزّن عليها في الـ hard disk». متغطّي بطبقة magnetic رفيعة وبيخزّن على الوشّين.",
+     "ow": [
+      "الـ spindle هو العمود اللي بيشيل الـ platters ويلفّها؛ مش بيخزّن حاجة <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ arm assembly فيها الـ arms والـ heads اللي بتقرا وتكتب على الـ platters؛ مش بتخزّن data <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ arm بيشيل ويوجّه ويحرّك الـ read/write head <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول التكلفة في L4: الـ heap file ملوش ترتيب، فالـ record الجديد دايمًا بيروح في الآخر: D نقرا آخر page + C نضيف الـ record + D نكتب الـ page تاني = <bdi dir=\"ltr\">2D + C</bdi>، من غير أي search.",
+     "ow": [
+      "دي الـ insert/delete في الـ SORTED file: binary search + إزاحة نص الملف <bdi dir=\"ltr\">2·0.5B(D+RC) = B(D+RC)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+      "دي حاطة الـ sorted search قبل الـ heap insert؛ الـ heap insert مش محتاج search، ومفيش operation في الجدول ليها التكلفة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "دوال الملفات في C في L1: <bdi dir=\"ltr\">fputs(str, fp)</bdi> بتكتب string (سطر) في الملف: f = file، put = اكتب، s = string.",
+     "ow": [
+      null,
+      "قراية حرف واحد دي <bdi dir=\"ltr\">fgetc(fp)</bdi> <bdi dir=\"ltr\">(L1)</bdi>.",
+      "قراية سطر دي <bdi dir=\"ltr\">fgets(str, n, fp)</bdi>، وهي اللي بتقرا عكس fputs <bdi dir=\"ltr\">(L1)</bdi>.",
+      "كتابة حرف واحد دي <bdi dir=\"ltr\">fputc(ch, fp)</bdi> <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول التكلفة في L4: الـ scan (جلب كل الـ records) في الـ sorted file تكلفته <bdi dir=\"ltr\">B(D + RC)</bdi>، زي الـ heap file بالظبط: نقرا الـ B pages كلها (D لكل واحدة) ونعالج الـ R records في كل page (C لكل واحد).",
+     "ow": [
+      "دي لازقة الـ sorted search على الـ heap insert؛ مفيش operation في الجدول ليها المعادلة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file (الـ buckets مليانة ~80%، فالـ pages أكتر 1.25 مرة)؛ الـ sorted file مليان على الآخر <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP file، مش scan <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "تكلفة الـ disk access في L2: «وقت الوصول لـ sector في track على surface بيتقسم لـ 3 components»: seek time (نحرّك الـ arm للـ track)، وrotational delay (نستنى الـ sector ييجي تحت الـ head)، وtransfer time (الـ head يعدّي على الـ block).",
+     "ow": [
+      null,
+      "الأربعة دي عدد مكونات الـ platter (sector وcluster وtrack وcylinder)، ودي قايمة تانية في نفس المحاضرة <bdi dir=\"ltr\">(L2)</bdi>.",
+      "المحاضرة بتقسم وقت الوصول لتلات أجزاء منفصلة، مش جزء واحد <bdi dir=\"ltr\">(L2)</bdi>.",
+      "اتنين ناقصين واحد من التلاتة (غالبًا الـ transfer time) <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول التكلفة في L4: الـ equality search في الـ heap file = <bdi dir=\"ltr\">0.5B(D + RC)</bdi>. الملف ملوش ترتيب، فبنقرا الـ pages واحدة واحدة؛ وفي المتوسط بنلاقي الـ record في النص، بعد <bdi dir=\"ltr\">0.5B</bdi> pages (ولو مفيش تطابق، بنعدّي على الملف كله).",
+     "ow": [
+      "دي الـ DELETE في الـ heap باستخدام scan كامل كـ search (نلاقيه، وبعدين <bdi dir=\"ltr\">C + D</bdi> نشيله ونكتب الـ page)؛ الـ search بيقرا نص الملف بس في المتوسط ومش بيكتب حاجة <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">2D + C</bdi> دي الـ INSERT في الـ heap: نقرا آخر page ونضيف ونكتبها <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ rotational delay (latency) هو الوقت اللي الـ disk بياخده عشان يلف لحد ما الـ sector اللي عايزينه ييجي تحت الـ read/write head. أقل حاجة 0، وأقصاه لفة كاملة، والمتوسط نص لفة.",
+     "ow": [
+      null,
+      "الـ transfer time هو إن الـ head يعدّي على الـ block، بعد ما الـ sector بقى تحته خلاص <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ seek time هو تحريك الـ ARM للـ track/cylinder الصح: حركة arm مش لفّ <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ revolution time هو لفة كاملة (زي 12 ms عند 5000 rpm)، ودي أقصى latency بس <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "تنظيم الـ tracks في L2: بالـ SECTORS (بيستخدمها الـ OS، والـ file manager بتاعه شايف الملف كسلسلة clusters) أو بالـ BLOCKS (بيستخدمها الـ DBMS: الـ tracks بتتقسم لـ blocks/pages يحددها المستخدم، وكل block غالبًا فيه عدد صحيح من الـ logical records). يبقى الـ DBMS شايف blocks.",
+     "ow": [
+      null,
+      "الـ clusters (مجموعات ثابتة من sectors ورا بعض) دي نظرة الـ OS file manager، مش الـ DBMS <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ tracks حلقات physical على الـ platter، جزء من شكل الـ disk، مش نظرة file manager للملف <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ bytes دي نظرة الـ stream في L3 (الملف كـ stream of bytes)، مش نظرة الـ DBMS <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول الـ field structures في L3: في الـ DELIMITED الـ fields مفصولة بحرف مخصوص <bdi dir=\"ltr\">(87359|CARROLL|ALICE IN WONDERLAND|)</bdi>، فعشان البرنامج يعرف آخر الـ field لازم يراجع كل byte لحد ما يلاقي الـ delimiter. الميزة: ممكن يضيّع مساحة أقل (مفيش padding).",
+     "ow": [
+      "عيب الـ keyword المساحة اللي الـ keywords بتاخدها؛ وميزته إن الـ fields بتوصف نفسها <bdi dir=\"ltr\">(L3)</bdi>.",
+      "عيب الـ fixed الـ padding الضايع؛ ونهاية الـ fields في أماكن معروفة، فمفيش مراجعة bytes <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "عيب الـ length indicator إن الـ fields الطويلة محتاجة أكتر من byte للطول؛ وميزته عكس السؤال: القفز على طول لآخر الـ field <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ C++ file I/O في L1: <bdi dir=\"ltr\">seekg()</bdi> («seek get») بتحرّك الـ read file pointer، مثلًا <bdi dir=\"ltr\">infile.seekg(0, infile.end)</bdi> بتقفز لآخر الملف و<bdi dir=\"ltr\">tellg()</bdi> بعدها بتدّي الحجم. واللي بتحرّك الـ write pointer هي <bdi dir=\"ltr\">seekp()</bdi>؛ واللي زيها في C هي <bdi dir=\"ltr\">fseek()</bdi>.",
+     "ow": [
+      "<bdi dir=\"ltr\">changep()</bdi> مش دالة ملفات في C ولا C++ <bdi dir=\"ltr\">(L1)</bdi>.",
+      "<bdi dir=\"ltr\">moveg()</bdi> مش موجودة؛ بس بتقلّد حرف الـ g بتاع seekg <bdi dir=\"ltr\">(L1)</bdi>.",
+      "<bdi dir=\"ltr\">go_p()</bdi> مش موجودة <bdi dir=\"ltr\">(L1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في L4 «Ordered and Unordered (Heap / Sequential) Files»: الملفات اللي الـ records بتاعتها مش مترتبة اسمها heap (pile) files. الـ records بتتحط بترتيب الإدخال: الـ record الجديد بيروح في الآخر <bdi dir=\"ltr\">(2D + C)</bdi>، والـ search بيعدّي على الملف <bdi dir=\"ltr\">(0.5B(D + RC))</bdi> في المتوسط.",
+     "ow": [
+      "«None of these» غلط لأن heap files هو مصطلح المحاضرة <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«Stored files» مش نوع تنظيم ملفات في المحاضرة؛ كل ملف متخزّن في مكان ما <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ hash files متنظّمة بـ hash function على key بتحدد الـ bucket بتاع كل record: ده تنظيم تالت، مش unordered <bdi dir=\"ltr\">(L4–L5)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول التكلفة في L4: الـ scan في الـ heap file = <bdi dir=\"ltr\">B(D + RC)</bdi>: نقرا الـ B pages كلها (D لكل واحدة) ونعالج الـ R records في كل page (C لكل واحد)، زي الـ sorted file بالظبط.",
+     "ow": [
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED (الـ buckets مليانة ~80%، فالـ pages أكتر 1.25 مرة)؛ الـ heap file مليان على الآخر <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">2D + C</bdi> دي الـ INSERT في الـ heap، مش scan <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "دي الـ insert/delete في الـ SORTED file: binary search + إزاحة نص الملف <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ transfer time هو الوقت اللي الـ read/write head بياخده عشان يعدّي على block. <bdi dir=\"ltr\">Transfer time = (bytes transferred / bytes on a track) × rotation time</bdi>، أو <bdi dir=\"ltr\">revolution time / sectors per track</bdi>.",
+     "ow": [
+      null,
+      "الـ seek time هو تحريك الـ ARM للـ track الصح؛ بيحصل قبل ما الـ head يوصل للـ block <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ rotational delay هو انتظار الـ sector لحد ما يلف ويبقى تحت الـ head، قبل ما يعدّي عليه <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ revolution time لفة كاملة؛ والـ transfer time هو الجزء من اللفة اللي الـ block واخده بس <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: كل SURFACE ليه read/write head خاص بيه (الـ drive اللي في السلايد فيه 4 platters و8 surfaces و8 heads). يبقى 20 surface ← 20 head.",
+     "ow": [
+      null,
+      "الـ 5 قسمة على 4 من غير سبب: لا هي عدد الـ platters (10) ولا عدد الـ heads <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ 10 هو عدد الـ PLATTERS (كل واحد ليه وشّين)؛ الـ heads بتتعد لكل surface مش لكل platter <bdi dir=\"ltr\">(L2)</bdi>.",
+      "كل surface محتاج head لوحده؛ كلهم بيتحركوا مع بعض على الـ arm assembly، بس برضه عددهم 20 <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ cylinder هو مجموعة الـ tracks اللي فوق وتحت بعض، كلها تحت الـ heads في وضع واحد للـ arm، فالـ data بتاعته تتقري من غير ما نحرّك الـ arm. نفس السؤال في Midterm 2022/23 Model B، والـ model answer «moving the arm assembly».",
+     "ow": [
+      "الـ spindle عمره ما «بيتحرك»: هو بس بيلف الـ platters طول الوقت <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ rotation لسه مطلوبة عشان كل sector ييجي تحت الـ head؛ اللي بنتجنّبه حركة الـ arm بس <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ seeking معناها تحريك الـ arm، نفس الفكرة، بس الـ model answer (Model B) هو «moving the arm assembly»، زي كلام السلايد «without moving the arm» <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "في L1: في C بنفتح الملف بـ fopen، اللي بتاخد اسم الملف والـ mode (<bdi dir=\"ltr\">\"r\", \"w\", \"a\", \"rb\", \"wb\"…</bdi>) وبترجّع pointer من نوع <bdi dir=\"ltr\">FILE *</bdi> (أو NULL لو فشلت)، زي <bdi dir=\"ltr\">my_file = fopen(\"ascii.txt\",\"r\")</bdi>. الـ prototype الحقيقي <bdi dir=\"ltr\">FILE *fopen(const char *filename, const char *mode)</bdi>؛ الكويز شال «char» من أول argument، بس (a) هي الوحيدة اللي فيها الاسم الصح والـ argumentين والـ return type الصح.",
+     "ow": [
+      null,
+      "مفيش MODE: الـ fopen لازم ياخد mode عشان يعرف هيقرا ولا يكتب ولا يعمل append <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الاسم غلط: دالة الـ C library اسمها fopen؛ الـ open دي method في الـ C++ streams <bdi dir=\"ltr\">(infile.open(...))</bdi> أو system call low-level، والاتنين مش بيرجّعوا <bdi dir=\"ltr\">FILE *</bdi> <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الاسم غلط، ومفيش mode، وبترجّع FILE كقيمة بدل pointer <bdi dir=\"ltr\">FILE *</bdi> <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ arm assembly هي «مجموعة داخلية من مكونات الـ hard disk فيها الـ arms، والـ arms فيها الـ read/write heads». دورها إنها تقرا وتكتب على الـ platters؛ ولو وقفت، الـ drive بيبوظ.",
+     "ow": [
+      "الـ track حلقة على سطح الـ platter بتتخزّن فيها الـ data، جزء من التقسيم، مش مجموعة مكونات <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ spindle بيشيل الـ platters ويلفّها <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ platter هو الأسطوانة الـ magnetic اللي بتخزّن الـ data <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "في L2: الـ seek time هو الوقت اللي بناخده عشان نحرّك الـ read/write arm للـ cylinder الصح. ده أول component من التلاتة بتوع وقت الوصول، وغالبًا أبطأهم.",
+     "ow": [
+      "الـ revolution time لفة كاملة للـ disk (زي 12 ms عند 5000 rpm)؛ مفيهاش حركة arm <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ transfer time هو إن الـ head يعدّي على الـ block، بعد ما الـ arm وصل والـ sector جه <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ rotational delay هو انتظار الـ disk يلف لحد ما الـ sector ييجي تحت الـ head، بعد الـ seek <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "بالمعنى الحرفي الأربعة flags بنمرّرها وإحنا بنفتح C++ stream (الـ L1 فيها ios::in وout وapp وate وtrunc وbinary). السؤال جاي من بنك أسئلة C++ مشهور إجابته ios::trunc: لأنه مش بيحدد إزاي هنتعامل مع الملف (قراية، كتابة، binary، مكان البداية)؛ هو بس بيفضّي الملف الموجود لطول صفر وقت الفتح («always create new»).",
+     "ow": [
+      "الـ ios::in بيفتح الملف للـ input (القراية): ده opening mode <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "الـ ios::binary بيفتح الملف binary بدل text: ده opening mode <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ ios::ate بيفتح الملف والـ pointer في الآخر: ده opening mode <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول التكلفة في L4: الـ insert في الـ sorted file = الـ delete = <bdi dir=\"ltr\">search + 2·(0.5B(D+RC))</bdi>. binary search على المكان <bdi dir=\"ltr\">(D·log₂B + C·log₂R)</bdi>، وبعدين كل record الـ key بتاعه أكبر بيتزق مكان ناحية الآخر: نقرا نص الملف ونكتبه تاني في المتوسط.",
+     "ow": [
+      null,
+      "دي حاطة الـ sorted search قبل الـ heap insert؛ ناقصها إزاحة نص الملف، ومفيش operation في الجدول ليها التكلفة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+      "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP: الـ heap بيضيف في الآخر وخلاص، لكن الـ sorted file لازم يحافظ على ترتيبه <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    }
+   ]
+  }
+ ]
+});
+AR.fp.lectures[1].quiz.push(...[
+ [
+  "الـ NULL ده null POINTER: اللي fopen بترجّعه لو الملف مفتحش <bdi dir=\"ltr\">(if (my_file == NULL))</bdi>، مش الـ integer EOF <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ 0 ده اللي fread بترجّعه في آخر الملف (قرت صفر عناصر)؛ ده عدد، مش الـ EOF constant <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ EOF ده integer constant متعرّف في stdio.h وقيمته −1. الـ loop بتاع readASCII() في L1 بيعمل <bdi dir=\"ltr\">result = fscanf(...)</bdi> ويقف لما <bdi dir=\"ltr\">result == EOF</bdi>؛ والـ fgetc والـ fscanf بيرجّعوا EOF (−1) في آخر الملف أو لو حصل error. (المحاضرات بتستخدم EOF في الكود بس مش بتكتب قيمته؛ −1 هي القيمة الـ standard في C.)",
+  "الـ 1 عدد طبيعي لقراية ناجحة (زي fread قرت record واحد)؛ مش معناه آخر الملف <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ physical structure لوحده نص الإجابة بس: الـ logical structure هو التاني <bdi dir=\"ltr\">(L1, File structures)</bdi>.",
+  "صح. في L1 «(3) File structures»: الملف ليه LOGICAL structure (إزاي المبرمج شايفه: text أو image أو data file…) وPHYSICAL structure (إزاي متخزّن على الـ secondary storage). اختيار «Both A and B» مترقّم غلط في الكويز: قصده physical (a) وlogical (d).",
+  "الـ stream واحدة من طرق تنظيم الـ data جوّا الملف في L3 (stream وfield وrecord)، مش واحد من الـ structures الاتنين بتوع الملف <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ logical structure لوحده نص الإجابة بس: الـ physical structure هو التاني <bdi dir=\"ltr\">(L1, File structures)</bdi>."
+ ],
+ [
+  "صح. دوال الملفات في C في L1: <bdi dir=\"ltr\">fputs(str, fp)</bdi> بتكتب string (سطر) في الملف: f = file، put = اكتب، s = string.",
+  "قراية حرف واحد دي <bdi dir=\"ltr\">fgetc(fp)</bdi> <bdi dir=\"ltr\">(L1)</bdi>.",
+  "قراية سطر دي <bdi dir=\"ltr\">fgets(str, n, fp)</bdi>، وهي اللي بتقرا عكس fputs <bdi dir=\"ltr\">(L1)</bdi>.",
+  "كتابة حرف واحد دي <bdi dir=\"ltr\">fputc(ch, fp)</bdi> <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "<bdi dir=\"ltr\">changep()</bdi> مش دالة ملفات في C ولا C++ <bdi dir=\"ltr\">(L1)</bdi>.",
+  "<bdi dir=\"ltr\">moveg()</bdi> مش موجودة؛ بس بتقلّد حرف الـ g بتاع seekg <bdi dir=\"ltr\">(L1)</bdi>.",
+  "<bdi dir=\"ltr\">go_p()</bdi> مش موجودة <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ C++ file I/O في L1: <bdi dir=\"ltr\">seekg()</bdi> («seek get») بتحرّك الـ read file pointer، مثلًا <bdi dir=\"ltr\">infile.seekg(0, infile.end)</bdi> بتقفز لآخر الملف و<bdi dir=\"ltr\">tellg()</bdi> بعدها بتدّي الحجم. واللي بتحرّك الـ write pointer هي <bdi dir=\"ltr\">seekp()</bdi>؛ واللي زيها في C هي <bdi dir=\"ltr\">fseek()</bdi>."
+ ],
+ [
+  "صح. في L1: في C بنفتح الملف بـ fopen، اللي بتاخد اسم الملف والـ mode (<bdi dir=\"ltr\">\"r\", \"w\", \"a\", \"rb\", \"wb\"…</bdi>) وبترجّع pointer من نوع <bdi dir=\"ltr\">FILE *</bdi> (أو NULL لو فشلت)، زي <bdi dir=\"ltr\">my_file = fopen(\"ascii.txt\",\"r\")</bdi>. الـ prototype الحقيقي <bdi dir=\"ltr\">FILE *fopen(const char *filename, const char *mode)</bdi>؛ الكويز شال «char» من أول argument، بس (a) هي الوحيدة اللي فيها الاسم الصح والـ argumentين والـ return type الصح.",
+  "مفيش MODE: الـ fopen لازم ياخد mode عشان يعرف هيقرا ولا يكتب ولا يعمل append <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الاسم غلط: دالة الـ C library اسمها fopen؛ الـ open دي method في الـ C++ streams <bdi dir=\"ltr\">(infile.open(...))</bdi> أو system call low-level، والاتنين مش بيرجّعوا <bdi dir=\"ltr\">FILE *</bdi> <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الاسم غلط، ومفيش mode، وبترجّع FILE كقيمة بدل pointer <bdi dir=\"ltr\">FILE *</bdi> <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ ios::in بيفتح الملف للـ input (القراية): ده opening mode <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. بالمعنى الحرفي الأربعة flags بنمرّرها وإحنا بنفتح C++ stream (الـ L1 فيها ios::in وout وapp وate وtrunc وbinary). السؤال جاي من بنك أسئلة C++ مشهور إجابته ios::trunc: لأنه مش بيحدد إزاي هنتعامل مع الملف (قراية، كتابة، binary، مكان البداية)؛ هو بس بيفضّي الملف الموجود لطول صفر وقت الفتح («always create new»).",
+  "الـ ios::binary بيفتح الملف binary بدل text: ده opening mode <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ ios::ate بيفتح الملف والـ pointer في الآخر: ده opening mode <bdi dir=\"ltr\">(L1)</bdi>."
+ ]
+]);
+AR.fp.lectures[2].quiz.push(...[
+ [
+  "الـ disk striping والـ distributed processing (multiprocessing) حلول فعلًا، بس ناقصين: الـ RAID حل كمان، فـ «Both A and B» أكمل <bdi dir=\"ltr\">(L2, Disk bottleneck)</bdi>.",
+  "الـ RAID حل واحد بس؛ الـ striping والـ multiprocessing كمان موجودين في السلايد، فـ «Both A and B» أكمل <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في L2 «Disk as a bottleneck»: الـ network والـ CPU بيستنوا الـ disk. الحلول: (1) multiprocessing، (2) disk striping، (3) RAID، (4) RAM disk، (5) disk cache. السؤال بيقول «various techniques»، و«Both A and B» بتغطي أكتر عدد منهم: striping + distributed processing (multiprocessing) + RAID.",
+  "الـ disk cache حل حقيقي (رقم 5 في السلايد)، بس هو واحد بس؛ و«Both A and B» بتجمع حلول أكتر من السلايد <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ spindles بتشيل الـ platters وتلفّها تحت الـ heads؛ مش بتحرّك الـ heads <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ platters هي الأسطوانات اللي بتخزّن الـ data على الوشّين <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ arm assembly هي الوحدة الداخلية كلها اللي فيها الـ arms والـ heads؛ الجزء اللي بيشيل ويحرّك الـ heads بالتحديد هو الـ arms <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. مكونات الـ disk في L2: الـ ARMS هي اللي بتشيل وتوجّه وتحرّك الـ read/write heads؛ وتحريكها للـ track الصح اسمه seeking (نفس السؤال والإجابة في Midterm 2022/23 Model A)."
+ ],
+ [
+  "الـ platter هو الأسطوانة الـ magnetic اللي بتخزّن الـ data؛ والـ head بيتحرك فوقه <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ arm بيشيل ويوجّه ويحرّك الـ head؛ مش هو الجزء الصغير اللي بيقرا ويكتب فوق السطح <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ spindle بيشيل الـ platters ويلفّها؛ مش بيتحرك فوقها <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في L2: الـ read/write heads هي «الجزء الصغير من الـ disk اللي بيتحرك فوق الـ platter». بتطير فوق السطح (المسافة ممكن تبقى 3 nm بس) وبتتحرك للـ track اللي فيه الـ data؛ وكل surface ليه head."
+ ],
+ [
+  "الـ spindle هو العمود اللي بيشيل الـ platters ويلفّها؛ مش بيخزّن حاجة <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ arm assembly فيها الـ arms والـ heads اللي بتقرا وتكتب على الـ platters؛ مش بتخزّن data <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في L2: الـ platter هو «الأسطوانة اللي الـ magnetic data بتتخزّن عليها في الـ hard disk». متغطّي بطبقة magnetic رفيعة وبيخزّن على الوشّين.",
+  "الـ arm بيشيل ويوجّه ويحرّك الـ read/write head <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. تكلفة الـ disk access في L2: «وقت الوصول لـ sector في track على surface بيتقسم لـ 3 components»: seek time (نحرّك الـ arm للـ track)، وrotational delay (نستنى الـ sector ييجي تحت الـ head)، وtransfer time (الـ head يعدّي على الـ block).",
+  "الأربعة دي عدد مكونات الـ platter (sector وcluster وtrack وcylinder)، ودي قايمة تانية في نفس المحاضرة <bdi dir=\"ltr\">(L2)</bdi>.",
+  "المحاضرة بتقسم وقت الوصول لتلات أجزاء منفصلة، مش جزء واحد <bdi dir=\"ltr\">(L2)</bdi>.",
+  "اتنين ناقصين واحد من التلاتة (غالبًا الـ transfer time) <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. في L2: الـ rotational delay (latency) هو الوقت اللي الـ disk بياخده عشان يلف لحد ما الـ sector اللي عايزينه ييجي تحت الـ read/write head. أقل حاجة 0، وأقصاه لفة كاملة، والمتوسط نص لفة.",
+  "الـ transfer time هو إن الـ head يعدّي على الـ block، بعد ما الـ sector بقى تحته خلاص <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ seek time هو تحريك الـ ARM للـ track/cylinder الصح: حركة arm مش لفّ <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ revolution time هو لفة كاملة (زي 12 ms عند 5000 rpm)، ودي أقصى latency بس <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. تنظيم الـ tracks في L2: بالـ SECTORS (بيستخدمها الـ OS، والـ file manager بتاعه شايف الملف كسلسلة clusters) أو بالـ BLOCKS (بيستخدمها الـ DBMS: الـ tracks بتتقسم لـ blocks/pages يحددها المستخدم، وكل block غالبًا فيه عدد صحيح من الـ logical records). يبقى الـ DBMS شايف blocks.",
+  "الـ clusters (مجموعات ثابتة من sectors ورا بعض) دي نظرة الـ OS file manager، مش الـ DBMS <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ tracks حلقات physical على الـ platter، جزء من شكل الـ disk، مش نظرة file manager للملف <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ bytes دي نظرة الـ stream في L3 (الملف كـ stream of bytes)، مش نظرة الـ DBMS <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "صح. في L2: الـ transfer time هو الوقت اللي الـ read/write head بياخده عشان يعدّي على block. <bdi dir=\"ltr\">Transfer time = (bytes transferred / bytes on a track) × rotation time</bdi>، أو <bdi dir=\"ltr\">revolution time / sectors per track</bdi>.",
+  "الـ seek time هو تحريك الـ ARM للـ track الصح؛ بيحصل قبل ما الـ head يوصل للـ block <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ rotational delay هو انتظار الـ sector لحد ما يلف ويبقى تحت الـ head، قبل ما يعدّي عليه <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ revolution time لفة كاملة؛ والـ transfer time هو الجزء من اللفة اللي الـ block واخده بس <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. في L2: كل SURFACE ليه read/write head خاص بيه (الـ drive اللي في السلايد فيه 4 platters و8 surfaces و8 heads). يبقى 20 surface ← 20 head.",
+  "الـ 5 قسمة على 4 من غير سبب: لا هي عدد الـ platters (10) ولا عدد الـ heads <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ 10 هو عدد الـ PLATTERS (كل واحد ليه وشّين)؛ الـ heads بتتعد لكل surface مش لكل platter <bdi dir=\"ltr\">(L2)</bdi>.",
+  "كل surface محتاج head لوحده؛ كلهم بيتحركوا مع بعض على الـ arm assembly، بس برضه عددهم 20 <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ spindle عمره ما «بيتحرك»: هو بس بيلف الـ platters طول الوقت <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ rotation لسه مطلوبة عشان كل sector ييجي تحت الـ head؛ اللي بنتجنّبه حركة الـ arm بس <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في L2: الـ cylinder هو مجموعة الـ tracks اللي فوق وتحت بعض، كلها تحت الـ heads في وضع واحد للـ arm، فالـ data بتاعته تتقري من غير ما نحرّك الـ arm. نفس السؤال في Midterm 2022/23 Model B، والـ model answer «moving the arm assembly».",
+  "الـ seeking معناها تحريك الـ arm، نفس الفكرة، بس الـ model answer (Model B) هو «moving the arm assembly»، زي كلام السلايد «without moving the arm» <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ track حلقة على سطح الـ platter بتتخزّن فيها الـ data، جزء من التقسيم، مش مجموعة مكونات <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في L2: الـ arm assembly هي «مجموعة داخلية من مكونات الـ hard disk فيها الـ arms، والـ arms فيها الـ read/write heads». دورها إنها تقرا وتكتب على الـ platters؛ ولو وقفت، الـ drive بيبوظ.",
+  "الـ spindle بيشيل الـ platters ويلفّها <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ platter هو الأسطوانة الـ magnetic اللي بتخزّن الـ data <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ revolution time لفة كاملة للـ disk (زي 12 ms عند 5000 rpm)؛ مفيهاش حركة arm <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ transfer time هو إن الـ head يعدّي على الـ block، بعد ما الـ arm وصل والـ sector جه <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في L2: الـ seek time هو الوقت اللي بناخده عشان نحرّك الـ read/write arm للـ cylinder الصح. ده أول component من التلاتة بتوع وقت الوصول، وغالبًا أبطأهم.",
+  "الـ rotational delay هو انتظار الـ disk يلف لحد ما الـ sector ييجي تحت الـ head، بعد الـ seek <bdi dir=\"ltr\">(L2)</bdi>."
+ ]
+]);
+AR.fp.lectures[3].quiz.push(...[
+ [
+  "صح. جدول الـ field structures في L3: في الـ length indicator كل field بيبدأ بطوله (مثلًا <bdi dir=\"ltr\">05 87359 07 CARROLL …</bdi>)، فالبرنامج بيقرا الطول ويقفز على طول لآخر الـ field. العيب: الـ fields الطويلة محتاجة أكتر من byte عشان تخزّن الطول.",
+  "ميزة الـ keyword = value إن الـ fields بتوصف نفسها ومسموح تبقى ناقصة؛ مفيهاش طول نقفز بيه <bdi dir=\"ltr\">(L3)</bdi>.",
+  "ميزة الـ fixed fields إنها «سهلة في القراية والتخزين»؛ ميزة القفز لآخر الـ field مكتوبة للـ length indicator <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ delimiter عكسها: لازم تراجع كل byte عشان تلاقي الـ delimiter، فمينفعش تقفز <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "عيب الـ length indicator إن الـ fields الطويلة محتاجة أكتر من byte للطول؛ مفيش padding <bdi dir=\"ltr\">(L3)</bdi>.",
+  "عيب الـ delimiter إننا لازم نراجع كل byte عشان الـ delimiter؛ وممكن يضيّع مساحة أقل <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. جدول الـ field structures في L3: في الـ FIXED-length كل field ليه حجم ثابت، فالقيمة القصيرة (اسم 3 حروف في field حجمه 10 bytes) بتتملا بمسافات (padding)، والـ padding ده مساحة ضايعة. الميزة: سهل في القراية والتخزين.",
+  "عيب الـ keyword هو المساحة اللي الـ keywords نفسها بتاخدها؛ مفيش padding <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "الـ fixed fields بتتعرف بمكانها بس: مش بتوصف نفسها، والـ field الناقص برضه بياخد مساحته بالـ padding <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. جدول الـ field structures في L3: في الـ keyword = value (زي <bdi dir=\"ltr\">last=Ames|first=Mary|city=Stillwater|</bdi>) كل field معاه اسمه، فالـ fields بتوصف نفسها، والـ field اللي ملوش قيمة ممكن ببساطة يتشال. العيب: الـ keywords بتضيّع مساحة.",
+  "الـ length indicator بيقول الـ field كام byte، مش هو أنهي field <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ delimited fields مفصولة برمز ومعروفة بترتيبها بس، فمش بتوصف نفسها <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "عيب الـ keyword المساحة اللي الـ keywords بتاخدها؛ وميزته إن الـ fields بتوصف نفسها <bdi dir=\"ltr\">(L3)</bdi>.",
+  "عيب الـ fixed الـ padding الضايع؛ ونهاية الـ fields في أماكن معروفة، فمفيش مراجعة bytes <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. جدول الـ field structures في L3: في الـ DELIMITED الـ fields مفصولة بحرف مخصوص <bdi dir=\"ltr\">(87359|CARROLL|ALICE IN WONDERLAND|)</bdi>، فعشان البرنامج يعرف آخر الـ field لازم يراجع كل byte لحد ما يلاقي الـ delimiter. الميزة: ممكن يضيّع مساحة أقل (مفيش padding).",
+  "عيب الـ length indicator إن الـ fields الطويلة محتاجة أكتر من byte للطول؛ وميزته عكس السؤال: القفز على طول لآخر الـ field <bdi dir=\"ltr\">(L3)</bdi>."
+ ]
+]);
+AR.fp.lectures[4].quiz.push(...[
+ [
+  "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP file: نقرا آخر page ونضيف الـ record ونكتبها تاني <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file (الـ buckets مليانة ~80%) <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+  "صح. جدول التكلفة في L4: الـ delete في الـ sorted file = <bdi dir=\"ltr\">search + 2·(0.5B(D+RC))</bdi>. الـ search هو binary search <bdi dir=\"ltr\">D·log₂B + C·log₂R</bdi>؛ وبعدها كل الـ records اللي بعده بتتزق مكان، فبنقرا نص الملف في المتوسط <bdi dir=\"ltr\">(0.5B pages)</bdi> ونكتبه تاني (×2).",
+  "دي لازقة الـ sorted search على الـ heap insert <bdi dir=\"ltr\">2D + C</bdi>؛ مفيش operation في الجدول ليها التكلفة دي، وناقصها إزاحة نص الملف <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. جدول التكلفة في L4: الـ equality search في الـ sorted file = <bdi dir=\"ltr\">D·log₂B + C·log₂R</bdi>: binary search على الـ B pages (D لكل page بنقراها)، وبعدين binary search على الـ R records جوّا الـ page (C لكل مقارنة).",
+  "دي تكلفة الـ INSERT/DELETE في الـ sorted file: search + إزاحة نص الملف مرتين؛ الـ search مش بيزق حاجة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP file <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>."
+ ],
+ [
+  "دي الـ insert/delete في الـ SORTED file: binary search + إزاحة نص الملف <bdi dir=\"ltr\">2·0.5B(D+RC) = B(D+RC)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+  "دي حاطة الـ sorted search قبل الـ heap insert؛ الـ heap insert مش محتاج search، ومفيش operation في الجدول ليها التكلفة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. جدول التكلفة في L4: الـ heap file ملوش ترتيب، فالـ record الجديد دايمًا بيروح في الآخر: D نقرا آخر page + C نضيف الـ record + D نكتب الـ page تاني = <bdi dir=\"ltr\">2D + C</bdi>، من غير أي search."
+ ],
+ [
+  "دي لازقة الـ sorted search على الـ heap insert؛ مفيش operation في الجدول ليها المعادلة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file (الـ buckets مليانة ~80%، فالـ pages أكتر 1.25 مرة)؛ الـ sorted file مليان على الآخر <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. جدول التكلفة في L4: الـ scan (جلب كل الـ records) في الـ sorted file تكلفته <bdi dir=\"ltr\">B(D + RC)</bdi>، زي الـ heap file بالظبط: نقرا الـ B pages كلها (D لكل واحدة) ونعالج الـ R records في كل page (C لكل واحد).",
+  "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP file، مش scan <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "دي الـ DELETE في الـ heap باستخدام scan كامل كـ search (نلاقيه، وبعدين <bdi dir=\"ltr\">C + D</bdi> نشيله ونكتب الـ page)؛ الـ search بيقرا نص الملف بس في المتوسط ومش بيكتب حاجة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">2D + C</bdi> دي الـ INSERT في الـ heap: نقرا آخر page ونضيف ونكتبها <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. جدول التكلفة في L4: الـ equality search في الـ heap file = <bdi dir=\"ltr\">0.5B(D + RC)</bdi>. الملف ملوش ترتيب، فبنقرا الـ pages واحدة واحدة؛ وفي المتوسط بنلاقي الـ record في النص، بعد <bdi dir=\"ltr\">0.5B</bdi> pages (ولو مفيش تطابق، بنعدّي على الملف كله).",
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>."
+ ],
+ [
+  "«None of these» غلط لأن heap files هو مصطلح المحاضرة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«Stored files» مش نوع تنظيم ملفات في المحاضرة؛ كل ملف متخزّن في مكان ما <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. في L4 «Ordered and Unordered (Heap / Sequential) Files»: الملفات اللي الـ records بتاعتها مش مترتبة اسمها heap (pile) files. الـ records بتتحط بترتيب الإدخال: الـ record الجديد بيروح في الآخر <bdi dir=\"ltr\">(2D + C)</bdi>، والـ search بيعدّي على الملف <bdi dir=\"ltr\">(0.5B(D + RC))</bdi> في المتوسط.",
+  "الـ hash files متنظّمة بـ hash function على key بتحدد الـ bucket بتاع كل record: ده تنظيم تالت، مش unordered <bdi dir=\"ltr\">(L4–L5)</bdi>."
+ ],
+ [
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED (الـ buckets مليانة ~80%، فالـ pages أكتر 1.25 مرة)؛ الـ heap file مليان على الآخر <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">2D + C</bdi> دي الـ INSERT في الـ heap، مش scan <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. جدول التكلفة في L4: الـ scan في الـ heap file = <bdi dir=\"ltr\">B(D + RC)</bdi>: نقرا الـ B pages كلها (D لكل واحدة) ونعالج الـ R records في كل page (C لكل واحد)، زي الـ sorted file بالظبط.",
+  "دي الـ insert/delete في الـ SORTED file: binary search + إزاحة نص الملف <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. جدول التكلفة في L4: الـ insert في الـ sorted file = الـ delete = <bdi dir=\"ltr\">search + 2·(0.5B(D+RC))</bdi>. binary search على المكان <bdi dir=\"ltr\">(D·log₂B + C·log₂R)</bdi>، وبعدين كل record الـ key بتاعه أكبر بيتزق مكان ناحية الآخر: نقرا نص الملف ونكتبه تاني في المتوسط.",
+  "دي حاطة الـ sorted search قبل الـ heap insert؛ ناقصها إزاحة نص الملف، ومفيش operation في الجدول ليها التكلفة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">1.25B(D + RC)</bdi> دي الـ scan في الـ HASHED file <bdi dir=\"ltr\">(L4, Cost table)</bdi>.",
+  "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP: الـ heap بيضيف في الآخر وخلاص، لكن الـ sorted file لازم يحافظ على ترتيبه <bdi dir=\"ltr\">(L4)</bdi>."
+ ]
+]);
