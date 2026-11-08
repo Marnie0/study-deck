@@ -135,7 +135,7 @@
     { en: 'As an <b>initial step</b>: a survey gives insights on motivations, preferences, priorities and pain points…', ar: 'كـ <b>خطوة أولى</b>: الـ survey بيدي insights عن الـ motivations والـ preferences والـ priorities والـ pain points…', on: [0, 1], show: [0, 1] },
     { en: '…which help you plan later activities such as <b>interviews</b>.', ar: '…ودي بتساعدك تخطط لأنشطة بعدها، زي الـ <b>interviews</b>.', on: [2], show: [0, 1, 2] },
     { en: 'A survey can also <b>follow</b> an interview or a usability study.', ar: 'والـ survey ممكن كمان ييجي <b>بعد</b> interview أو usability study.', on: [3, 4], show: [3, 4] },
-    { en: '<b>Tips</b>: keep it as small as possible, since too many questions hurt the response rate and reliability. Ask only what you need and will use, be aware of bias, and get feedback from participants about the survey.', ar: '<b>نصايح</b>: خليه صغير على قد ما تقدر، لأن الأسئلة الكتير بتقلل الـ response rate والـ reliability. اسأل اللي محتاجه وهتستخدمه بس، وخد بالك من الـ bias، وخد feedback من المشاركين على الـ survey نفسه.', on: [], show: [], tips: 1 }
+    { en: '<b>Tips</b>: keep it as small as possible, since too many questions affect the response rate and reliability. Ask only what you need and will use, be aware of bias, and get feedback from participants about the survey.', ar: '<b>نصايح</b>: خليه صغير على قد ما تقدر، لأن الأسئلة الكتير بتأثر على الـ response rate والـ reliability. اسأل اللي محتاجه وهتستخدمه بس، وخد بالك من الـ bias، وخد feedback من المشاركين على الـ survey نفسه.', on: [], show: [], tips: 1 }
   ];
   function SurveyFit({ ar }) {
     const [i, ctl] = useSteps(SV.length, 3000), s = SV[i];
@@ -210,34 +210,34 @@
 .hf6-ex .fig-btn{ font-size:.8rem; padding:3px 9px; min-height:28px; text-align:left; }
 .hf6-ex.ok{ border-color:var(--ok); } .hf6-ex.no{ border-color:var(--pen); }
 .hf6-pk{ display:flex; flex-wrap:wrap; gap:5px; }
-.hf6-ex .res{ font-size:.8rem; margin-top:5px; }
+.hf6-ex .hf6-res{ font-size:.8rem; margin-top:5px; }
 @media (prefers-reduced-motion: reduce){ .hf6-do{ animation:none; } }`;
   if (!document.getElementById('hf6-css')) { const s = document.createElement('style'); s.id = 'hf6-css'; s.textContent = CSS; document.head.appendChild(s); }
 
   /* ── L6 §0-§6: the six principles, each with its "Don't ask this… / Instead, ask this…" examples ── */
   const PR = {
     Clear: { en: '<b>Be Clear</b>: label numeric scales, avoid overlapping ranges, give extra detail when in doubt, and timebox frequency questions.', ar: 'مبدأ <b>Be Clear</b>: اكتب labels للـ numeric scales، وتجنب الـ ranges المتداخلة، وزوّد تفاصيل لو شاكك، وحط إطار زمني لأسئلة التكرار.', pairs: [
-      ['Rate it: 1–5', '1 = Highly dissatisfied … 5 = Highly satisfied', 'Label numeric scales.'],
-      ['0-2, 2-5, 5-10', '0-2, 3-5, 6-10, 11-19, 20+', 'Avoid overlapping ranges.'],
-      ['tablet computer', 'tablet computer (i.e. any computer with a touchscreen and detachable keyboard)', 'When in doubt, give extra detail.'],
-      ['Never / Rarely / Often…', 'In the past seven days, how many times have you exercised? 0, 1-2, 3-4, 5-7, 7 or more', 'Timebox frequency questions.']] },
-    Concise: { en: '<b>Be Concise</b>: use plain language.', ar: 'مبدأ <b>Be Concise</b>: استخدم لغة بسيطة.', pairs: [
-      ['What was the overall level of cleanliness that you observed within the car?', 'How clean was the car?', 'Plain language.']] },
+      ['From 1 to 5, rate your satisfaction with.. (1, 2, 3, 4, 5)', 'From 1 to 5, rate your satisfaction with.. 1 - Highly dissatisfied, 2 - Dissatisfied, 3 - Neutral, 4 - Satisfied, 5 - Highly Satisfied', 'Provide labels to clarify a numeric scale.'],
+      ['How many times per week do you watch Hulu? 0-2, 2-5, 5-10, 10-20, 20+', 'How many times per week do you watch Hulu? 0-2, 3-5, 6-10, 11-19, 20+', 'Avoid overlapping ranges.'],
+      ['Do you own a tablet computer? (Yes / No)', 'Do you own a tablet computer (i.e., any computer with a touchscreen and detachable keyboard)? (Yes / No)', 'When in doubt, provide extra detail.'],
+      ['How often do you exercise? (Never / Rarely / Occasionally / Frequently / Always)', 'In the past seven days, how many times have you exercised? 0 / 1-2 / 3-4 / 5-6 / 7 or more', 'Timebox frequency-based questions. (The slide shows 5-7 and 7 or more, which overlap at 7.)']] },
+    Concise: { en: '<b>Be Concise</b>: ask questions in plain language.', ar: 'مبدأ <b>Be Concise</b>: اسأل بلغة بسيطة.', pairs: [
+      ['What was the overall level of cleanliness that you observed within the car that you rented? (Very clean / Somewhat clean / Not clean at all)', 'How clean was the car? (Very clean / Somewhat clean / Not clean at all)', 'Ask questions in plain language.']] },
     Specific: { en: '<b>Be Specific</b>: avoid super-big ideas, double-barrel questions (two things in one) and internal conflict.', ar: 'مبدأ <b>Be Specific</b>: تجنب الأفكار الكبيرة أوي، والـ double-barrel questions (حاجتين في سؤال واحد)، والتعارض الداخلي.', pairs: [
-      ['How satisfied were you with the interface?', '…with how quickly the interface responded? (plus follow-up questions)', 'Avoid super-big ideas.'],
-      ['…the speed and availability of your connection?', 'Split it into two questions: one on speed, one on availability.', 'Avoid double-barrel questions.'],
-      ['How satisfied with your food?', 'Split it into temperature, appearance and flavor.', 'Avoid internal conflict.']] },
-    Expressive: { en: '<b>Be Expressive</b>: emphasize the user\'s opinion, use ranges instead of yes/no, give levels of frequency or agreement, and allow multiple selections when possible.', ar: 'مبدأ <b>Be Expressive</b>: ركّز على رأي الـ user، واستخدم ranges بدل <bdi dir="ltr">yes/no</bdi>، وادّي مستويات للتكرار أو الموافقة، واسمح بأكتر من اختيار لما ينفع.', pairs: [
-      ['Is our price too high?', 'Do you feel our price is too high, too low, or about right?', 'Emphasize the user\'s opinion.'],
-      ['Do you use social media?', 'In the past seven days, how much time have you spent on social media? 0 / <1 / 1-2 / 3-5 / 6-9 / 10+ hours', 'Use ranges instead of yes/no.'],
-      ['Dissatisfied / Satisfied', 'A 5-level satisfaction scale', 'Give levels of frequency or agreement.'],
-      ['Radio buttons (one choice)', 'Checkboxes (several choices)', 'Allow multiple selections when possible.']] },
+      ['How satisfied were you with the interface?', 'How satisfied were you with how quickly the interface responded to your commands? (and more follow-up questions)', 'Avoid questions on super-big ideas.'],
+      ['How satisfied are you with the speed and availability of your mobile connection?', 'How satisfied are you with the speed of your mobile connection? How satisfied are you with the availability of your mobile connection?', 'Avoid "double-barrel" questions.'],
+      ['How satisfied were you with your food?', 'How satisfied were you with the temperature of your food? …with the appearance of your food? …with the flavor of your food?', 'Avoid questions that allow internal conflict.']] },
+    Expressive: { en: '<b>Be Expressive</b>: emphasize the user\'s opinions, use ranges instead of yes/no, give levels of frequency or agreement, and allow multiple selections when possible.', ar: 'مبدأ <b>Be Expressive</b>: ركّز على رأي الـ user، واستخدم ranges بدل <bdi dir="ltr">yes/no</bdi>، وادّي مستويات للتكرار أو الموافقة، واسمح بأكتر من اختيار لما ينفع.', pairs: [
+      ['Is our subscription price too high?', 'Do you feel our subscription price is too high, too low, or about right?', 'Emphasize the user\'s opinions.'],
+      ['Do you use social media? (Yes / No)', 'In the past seven days, how much time have you spent on social media? 0 hours / <1 hour / 1-2 hours / 3-5 hours / 6-9 hours / 10+ hours', 'Use ranges instead of yes/no questions.'],
+      ['How satisfied are you with this interface? (Dissatisfied / Satisfied)', 'How satisfied are you with this interface? (Highly dissatisfied / Dissatisfied / Neutral / Satisfied / Highly Satisfied)', 'Give levels of frequency or agreement.'],
+      ['What social media platform do you use most? (radio buttons: one choice)', 'What social media platform do you use most? (checkboxes: several choices)', 'Allow multiple selections when possible.']] },
     Unbiased: { en: '<b>Be Unbiased</b>: let users add categories, leave open-ended questions open, and avoid leading and loaded questions.', ar: 'مبدأ <b>Be Unbiased</b>: اسمح للـ users يضيفوا categories، وسيب الأسئلة المفتوحة مفتوحة، وتجنب الـ leading والـ loaded questions.', pairs: [
-      ['Fixed categories only', 'Add "Other: ____"', 'Allow users to add nominal categories.'],
-      ['Why did you choose our service? (with fixed options)', 'Why did you choose our service? (open answer)', 'Leave open-ended questions open.'],
-      ['Did our brand-new AI-based interface generate better recommendations?', 'How satisfied were you with the recommendations?', 'Avoid leading questions.'],
-      ['How much time have you wasted on social media?', 'How much time have you spent on social media?', 'Avoid loaded questions.']] },
-    Usable: { en: '<b>Be Usable</b>: provide a progress bar, keep page lengths consistent, order questions logically, alert users about unanswered questions, and preview the survey yourself.', ar: 'مبدأ <b>Be Usable</b>: حط progress bar، وخلي أطوال الصفحات ثابتة، ورتّب الأسئلة بشكل منطقي، ونبّه الـ users على الأسئلة اللي متجاوبتش، واعمل preview للـ survey بنفسك.', tips: ['Provide a progress bar', 'Keep page lengths consistent', 'Order questions logically', 'Alert users about unanswered questions', 'Preview the survey yourself'] }
+      ['What social media platform do you use most? (Facebook, Snapchat, Instagram, Twitter, LinkedIn, Pinterest)', 'The same list plus "Other: ____"', 'Allow users to add nominal categories.'],
+      ['Why did you choose our service over our competitors? (Reputation / Price / Recommendation / Reviews / Other: ____)', 'Why did you choose our service over our competitors? (open answer)', 'Leave potentially open-ended questions open.'],
+      ['Did our brand-new AI-based interface generate better recommendations? (Yes! / No :( )', 'How satisfied were you with the recommendations the interface generated? (Dissatisfied / Neutral / Satisfied)', 'Avoid leading questions.'],
+      ['In the past seven days, how much time have you wasted on social media?', 'In the past seven days, how much time have you spent on social media?', 'Avoid loaded questions.']] },
+    Usable: { en: '<b>Be Usable</b>: provide a progress bar, make your page lengths consistent, order your questions logically, alert users about unanswered questions, and preview the survey yourself.', ar: 'مبدأ <b>Be Usable</b>: حط progress bar، وخلي أطوال الصفحات ثابتة، ورتّب الأسئلة بشكل منطقي، ونبّه الـ users على الأسئلة اللي متجاوبتش، واعمل preview للـ survey بنفسك.', tips: ['Provide a progress bar', 'Make your page lengths consistent', 'Order your questions logically', 'Alert users about unanswered questions', 'Preview the survey yourself'] }
   };
   function Principles({ ar }) {
     const [p, setP] = useState('Clear'), [open, setOpen] = useState({}), P = PR[p];
@@ -253,37 +253,37 @@
   }
 
   /* ── L6 §1: overlapping ranges and labelled scales ── */
-  const BAD = [[0, 2], [2, 5], [5, 10]], GOOD = [[0, 2], [3, 5], [6, 10], [11, 19], [20, Infinity]];
+  const BAD = [[0, 2], [2, 5], [5, 10], [10, 20], [20, Infinity]], GOOD = [[0, 2], [3, 5], [6, 10], [11, 19], [20, Infinity]];
   function Ranges({ ar }) {
     const [mode, setMode] = useState('bad'), [v, setV] = useState(2), [lab, setLab] = useState(false);
     const R = mode === 'bad' ? BAD : GOOD, hits = R.filter(([a, b]) => v >= a && v <= b).length;
     const name = ([a, b]) => b === Infinity ? a + '+' : a + '-' + b;
     const msg = hits === 1 ? 'Exactly one answer fits.' : hits === 0 ? 'No answer fits this value.' : 'Two answers fit: the question is ambiguous.';
     const cap = mode === 'bad'
-      ? { en: `<b>Avoid overlapping ranges</b>: with 0-2, 2-5, 5-10, a user with ${v} ${hits > 1 ? 'could tick two answers' : hits === 0 ? 'has no answer to tick' : 'has one answer'}. Try 2 or 5.`, ar: `<b>تجنب الـ ranges المتداخلة</b>: مع <bdi dir="ltr">0-2,&nbsp;2-5,&nbsp;5-10</bdi>، الـ user اللي عنده ${v} ${hits > 1 ? 'ممكن يختار إجابتين' : hits === 0 ? 'ملوش إجابة يختارها' : 'ليه إجابة واحدة'}. جرّب القيمة 2 أو 5.` }
+      ? { en: `<b>Avoid overlapping ranges</b>: "How many times per week do you watch Hulu?" With 0-2, 2-5, 5-10, 10-20, 20+, a user with ${v} ${hits > 1 ? 'could tick two answers' : hits === 0 ? 'has no answer to tick' : 'has one answer'}. Try 2, 5, 10 or 20.`, ar: `<b>تجنب الـ ranges المتداخلة</b>: في سؤال <bdi dir="ltr">"How many times per week do you watch Hulu?"</bdi> مع <bdi dir="ltr">0-2,&nbsp;2-5,&nbsp;5-10,&nbsp;10-20,&nbsp;20+</bdi>، الـ user اللي عنده ${v} ${hits > 1 ? 'ممكن يختار إجابتين' : hits === 0 ? 'ملوش إجابة يختارها' : 'ليه إجابة واحدة'}. جرّب القيمة <bdi dir="ltr">2</bdi> أو <bdi dir="ltr">5</bdi> أو <bdi dir="ltr">10</bdi> أو <bdi dir="ltr">20</bdi>.` }
       : { en: '<b>Use ranges that do not overlap</b>: 0-2, 3-5, 6-10, 11-19, 20+. Every value fits exactly one answer.', ar: '<b>استخدم ranges مش متداخلة</b>، زي <bdi dir="ltr">0-2, 3-5, 6-10, 11-19, 20+</bdi>، وكده كل قيمة ليها إجابة واحدة بس.' };
-    const capS = lab ? { en: ' The scale is <b>labelled</b>: 1 = Highly dissatisfied … 5 = Highly satisfied.', ar: ' والـ scale عليه <b>labels</b>، يعني 1 معناها Highly dissatisfied و 5 معناها Highly satisfied.' } : { en: ' A bare "1–5" scale does not say which end is good: label it.', ar: ' والـ scale من غير labels مش بيقول أنهي ناحية الكويسة، فاكتب labels.' };
+    const capS = lab ? { en: ' The scale is <b>labelled</b>: 1 - Highly dissatisfied, 2 - Dissatisfied, 3 - Neutral, 4 - Satisfied, 5 - Highly Satisfied.', ar: ' والـ scale عليه <b>labels</b>، من Highly dissatisfied لـ Highly Satisfied.' } : { en: ' A bare "1–5" scale does not say which end is good: label it.', ar: ' والـ scale من غير labels مش بيقول أنهي ناحية الكويسة، فاكتب labels.' };
     return html`<figure className="fig hf6"><div className="fig-stage"><div className="hf6-wrap">
-      <div className="hf6-modes" role="group">${[['bad', 'Overlapping: 0-2, 2-5, 5-10'], ['good', 'Fixed: 0-2, 3-5, 6-10, 11-19, 20+']].map(([k, l]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => setMode(k)}>${l}</button>`)}</div>
+      <div className="hf6-modes" role="group">${[['bad', 'Overlapping: 0-2, 2-5, 5-10, 10-20, 20+'], ['good', 'Fixed: 0-2, 3-5, 6-10, 11-19, 20+']].map(([k, l]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(mode === k)} onClick=${() => setMode(k)}>${l}</button>`)}</div>
       <div className="hf6-ranges">${R.map((r, k) => { const h = v >= r[0] && v <= r[1]; return html`<div key=${mode + k} className=${'hf6-rg' + (h ? (hits > 1 ? ' two' : ' hit') : '')}><span>${name(r)}</span><span>${h ? '✓' : ''}</span></div>`; })}</div>
       <div className="hf6-val"><label htmlFor="hf6-v">Your answer</label><input id="hf6-v" type="range" min="0" max="25" value=${v} onInput=${e => setV(+e.target.value)} onChange=${e => setV(+e.target.value)} /><b>${v}</b></div>
       <div className="hf6-msg" aria-live="polite" style=${{ color: hits === 1 ? 'var(--ok)' : 'var(--pen)' }}>${msg}</div>
       <div className="hf6-scale" aria-label="Rating scale">${[1, 2, 3, 4, 5].map(n => html`<span key=${n}>${n}</span>`)}</div>
-      <div className="hf6-ends">${lab ? [html`<span key="a">1 = Highly dissatisfied</span>`, html`<span key="b" style=${{ textAlign: 'right' }}>5 = Highly satisfied</span>`] : html`<span>No labels: which end is good?</span>`}</div>
+      ${lab ? html`<div className="hf6-ranges" style=${{ marginTop: '6px' }}>${['1 - Highly dissatisfied', '2 - Dissatisfied', '3 - Neutral', '4 - Satisfied', '5 - Highly Satisfied'].map(t => html`<div key=${t} className="hf6-rg"><span>${t}</span></div>`)}</div>` : html`<div className="hf6-ends"><span>No labels: which end is good?</span></div>`}
       <div style=${{ textAlign: 'center', marginTop: '6px' }}><button className="fig-btn" aria-pressed=${String(lab)} onClick=${() => setLab(l => !l)}>${lab ? 'Remove the labels' : 'Label the scale'}</button></div>
       </div></div><${Cap} en=${cap.en + capS.en} ar=${cap.ar + capS.ar} showAr=${ar} /></figure>`;
   }
 
   /* ── L6 §4: Be Expressive, before and after ── */
   const EX = [
-    { en: '<b>Emphasize the user\'s opinion</b>: "Is our price too high?" becomes "Do you feel our price is too high, too low, or about right?"', ar: '<b>ركّز على رأي الـ user</b>: السؤال <bdi dir="ltr">"Is our price too high?"</bdi> يبقى:<span class="ltr">"Do you feel our price is too high, too low, or about right?"</span>',
-      b: ['Is our price too high?', ['Yes', 'No']], g: ['Do you feel our price is too high, too low, or about right?', ['Too high', 'Too low', 'About right']] },
+    { en: '<b>Emphasize the user\'s opinions</b>: "Is our subscription price too high?" becomes "Do you feel our subscription price is too high, too low, or about right?"', ar: '<b>ركّز على رأي الـ user</b>: السؤال <bdi dir="ltr">"Is our subscription price too high?"</bdi> يبقى:<span class="ltr">"Do you feel our subscription price is too high, too low, or about right?"</span>',
+      b: ['Is our subscription price too high?', []], g: ['Do you feel our subscription price is too high, too low, or about right?', ['Too high', 'Too low', 'About right']] },
     { en: '<b>Use ranges instead of yes/no</b>: "Do you use social media?" becomes a question about the past seven days, answered in hours.', ar: '<b>استخدم ranges بدل <bdi dir="ltr">yes/no</bdi></b>: السؤال <bdi dir="ltr">"Do you use social media?"</bdi> يبقى سؤال عن آخر 7 أيام، والإجابة بالساعات.',
-      b: ['Do you use social media?', ['Yes', 'No']], g: ['In the past seven days, how much time have you spent on social media?', ['0', '<1', '1-2', '3-5', '6-9', '10+ hours']] },
+      b: ['Do you use social media?', ['Yes', 'No']], g: ['In the past seven days, how much time have you spent on social media?', ['0 hours', '<1 hour', '1-2 hours', '3-5 hours', '6-9 hours', '10+ hours']] },
     { en: '<b>Give levels of frequency or agreement</b>: a 5-level satisfaction scale instead of Dissatisfied/Satisfied.', ar: '<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل <bdi dir="ltr">Dissatisfied/Satisfied</bdi>.',
-      b: ['How satisfied are you?', ['Dissatisfied', 'Satisfied']], g: ['How satisfied are you?', ['1 = Highly dissatisfied', '2', '3', '4', '5 = Highly satisfied']] },
+      b: ['How satisfied are you with this interface?', ['Dissatisfied', 'Satisfied']], g: ['How satisfied are you with this interface?', ['Highly dissatisfied', 'Dissatisfied', 'Neutral', 'Satisfied', 'Highly Satisfied']] },
     { en: '<b>Allow multiple selections when possible</b>: checkboxes (several choices) instead of radio buttons (one choice).', ar: '<b>اسمح بأكتر من اختيار لما ينفع</b>: checkboxes (أكتر من اختيار) بدل radio buttons (اختيار واحد).',
-      b: ['Radio buttons: one choice', ['Option 1', 'Option 2', 'Option 3']], g: ['Checkboxes: several choices', ['Option 1', 'Option 2', 'Option 3']], sq: 1 }
+      b: ['What social media platform do you use most? (radio buttons: one choice)', ['Facebook', 'Snapchat', 'Instagram', 'Twitter', 'LinkedIn', 'Pinterest']], g: ['What social media platform do you use most? (checkboxes: several choices)', ['Facebook', 'Snapchat', 'Instagram', 'Twitter', 'LinkedIn', 'Pinterest']], sq: 1 }
   ];
   function Expressive({ ar }) {
     const [i, ctl] = useSteps(EX.length, 3400), s = EX[i];
@@ -297,13 +297,13 @@
   /* ── L6 §6: a usable survey, tip by tip ── */
   const SQ = [
     { t: 'How clean was the car?', o: ['1', '2', '3', '4', '5'], g: 0 },
-    { t: 'In the past seven days, how many times have you exercised?', o: ['0', '1-2', '3-4', '5-7', '7 or more'], g: 1 },
+    { t: 'In the past seven days, how many times have you exercised?', o: ['0', '1-2', '3-4', '5-6', '7 or more'], g: 1 },
     { t: 'How satisfied were you with the recommendations?', o: ['1', '2', '3', '4', '5'], g: 0 },
     { t: 'In the past seven days, how much time have you spent on social media?', o: ['0', '<1', '1-2', '3-5', '6-9', '10+ hours'], g: 1 },
-    { t: 'Do you feel our price is too high, too low, or about right?', o: ['Too high', 'Too low', 'About right'], g: 0 },
+    { t: 'Do you feel our subscription price is too high, too low, or about right?', o: ['Too high', 'Too low', 'About right'], g: 0 },
     { t: 'Why did you choose our service?', o: null, g: 0 }
   ];
-  const TIPS = [['prog', 'Provide a progress bar'], ['len', 'Keep page lengths consistent'], ['order', 'Order questions logically'], ['alert', 'Alert users about unanswered questions'], ['prev', 'Preview the survey yourself']];
+  const TIPS = [['prog', 'Provide a progress bar'], ['len', 'Make your page lengths consistent'], ['order', 'Order your questions logically'], ['alert', 'Alert users about unanswered questions'], ['prev', 'Preview the survey yourself']];
   function UsableSurvey({ ar }) {
     const [on, setOn] = useState({ prog: false, len: false, order: false, alert: false, prev: false }), [page, setPage] = useState(0), [ans, setAns] = useState({}), [warn, setWarn] = useState(false), [skipped, setSkipped] = useState(0);
     const order = on.order ? [0, 2, 4, 5, 1, 3] : [0, 1, 2, 3, 4, 5];
@@ -335,7 +335,7 @@
   const EQ = [
     { q: '"On a scale of 1 to 4 with 1 meaning \'a lot\' and 4 meaning \'not at all\', how much do you enjoy exercising?"', a: 0 },
     { q: '"Why do you like to exercise?"', a: 1 },
-    { q: '"On a scale of 1 to 6 with 1 meaning \'not at all\'…" (asked after the question above)', a: 2 },
+    { q: '"On a scale of 1 to 6 with 1 meaning \'not at all\' and 6 meaning \'a lot\', how much do you like audiobooks?"', a: 2 },
     { q: '"Have you listened to an audiobook this year?"', a: 3 }
   ];
   const EP = [
@@ -348,13 +348,13 @@
     const [pick, setPick] = useState({}), [last, setLast] = useState(null);
     const done = Object.keys(pick).length, right = EQ.filter((e, k) => pick[k] === e.a).length;
     const L = last != null ? EQ[last] : null, ok = L && pick[last] === L.a;
-    const cap = done === EQ.length ? { en: `${right} of ${EQ.length} right. Examiners often ask you to evaluate questions like these with the six principles.`, ar: `صح ${right} من ${EQ.length}. والممتحنين كتير بيطلبوا منك تقيّم أسئلة زي دي بالـ 6 مبادئ.` }
+    const cap = done === EQ.length ? { en: `${right} of ${EQ.length} right. The slide's five labels: Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions. The slide does not match them to questions; this matching is our reading.`, ar: `صح ${right} من ${EQ.length}. والـ 5 labels بتوع الـ slide هما:<span class="ltr">Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions</span>والـ slide مش قايلة كل مشكلة تبع أنهي سؤال، فالتوصيل ده قراءتنا إحنا.` }
       : L ? { en: (ok ? 'Right. ' : 'Not quite. ') + EP[L.a][1], ar: (ok ? 'صح. ' : 'مش بالظبط. ') + EP[L.a][2] }
-      : { en: 'Exercise: what is wrong with each survey question? Pick a problem for each.', ar: 'تمرين: إيه المشكلة في كل سؤال من أسئلة الـ survey دي؟ اختار مشكلة لكل سؤال.' };
+      : { en: 'Exercise: what is wrong with each survey question? Pick a problem for each. The slide lists the five labels without matching them to questions; this matching is our reading.', ar: 'تمرين: إيه المشكلة في كل سؤال من أسئلة الـ survey دي؟ اختار مشكلة لكل سؤال. والـ slide مش قايلة كل مشكلة تبع أنهي سؤال، فالتوصيل ده قراءتنا إحنا.' };
     return html`<figure className="fig hf6"><div className="fig-stage"><div className="hf6-wrap">
       ${EQ.map((e, k) => { const p = pick[k]; return html`<div key=${k} className=${'hf6-ex' + (p != null ? (p === e.a ? ' ok' : ' no') : '')}><span className="qt">${e.q}</span>
         <div className="hf6-pk">${EP.map(([l], j) => html`<button key=${j} className="fig-btn" aria-pressed=${String(p === j)} onClick=${() => { setPick(o => Object.assign({}, o, { [k]: j })); setLast(k); }}>${l}</button>`)}</div>
-        ${p != null && html`<div className="res" style=${{ color: p === e.a ? 'var(--ok)' : 'var(--pen)' }}>${p === e.a ? '✓ ' + EP[e.a][1] : '✗ Try again.'}</div>`}</div>`; })}
+        ${p != null && html`<div className="hf6-res" style=${{ color: p === e.a ? 'var(--ok)' : 'var(--pen)' }}>${p === e.a ? '✓ ' + EP[e.a][1] : '✗ Try again.'}</div>`}</div>`; })}
       ${done > 0 && html`<div style=${{ textAlign: 'center' }}><button className="fig-btn" onClick=${() => { setPick({}); setLast(null); }}>↻ Start over</button></div>`}
       </div></div><${Cap} ...${cap} showAr=${ar} /></figure>`;
   }
@@ -1101,4 +1101,150 @@
   }
 
   window.FIGS = Object.assign(window.FIGS || {}, { 'hc-close-cancel': CloseCancel, 'hc-messages': Messages, 'hc-layout': Layout, 'hc-navigation': Navigation });
+})();
+/* ── part 11 ── */
+// HCI visuals, part 11: this term's Lecture 5 slides, in site L5 (UI vs UX wheels, what each designer focuses on, the pizza app, the UX design process).
+(function () {
+  const { useState } = React;
+  const { html, useSteps, Cap, Bar, pop } = window.FIGKIT;
+  const CSS = `
+.hf11 .fig-btn[aria-pressed="true"]{ background:var(--s-hci); color:#fff; border-color:transparent; }
+.hf11-wrap{ max-width:440px; margin:0 auto; color:var(--ink); font-size:.86rem; line-height:1.35; }
+.hf11-tabs{ display:flex; flex-wrap:wrap; gap:6px; justify-content:center; margin-bottom:10px; }
+.hf11-wheel{ position:relative; height:262px; max-width:292px; margin:0 auto; }
+.hf11-hub{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:70px; height:70px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.3rem; background:var(--s-hci); color:#fff; }
+.hf11-spoke{ position:absolute; transform:translate(-50%,-50%); max-width:88px; text-align:center; font-size:.8rem; font-weight:600; padding:3px 7px; border-radius:99px; background:color-mix(in srgb, var(--k-hci) 14%, var(--paper)); border:1.3px solid var(--k-hci); color:var(--ink); line-height:1.15; }
+.hf11-list{ list-style:none; margin:8px 0 0; padding:0; display:flex; flex-direction:column; gap:4px; }
+.hf11-list li{ border-left:3px solid var(--line); padding:3px 8px; border-radius:0 6px 6px 0; color:var(--graphite); transition:all .3s; }
+.hf11-list li.on{ border-left-color:var(--s-hci); background:color-mix(in srgb, var(--k-hci) 14%, var(--paper)); color:var(--ink); font-weight:700; }
+.hf11-svg{ display:block; width:100%; height:auto; }
+.hf11-pz{ display:grid; grid-template-columns:1fr; gap:8px; }
+.hf11-toggle{ display:flex; align-items:center; justify-content:space-between; gap:8px; border:1px solid var(--line); border-radius:8px; padding:5px 8px; background:var(--paper); }
+.hf11-toggle b{ font-size:.86rem; }
+.hf11-phone{ border:2px solid var(--line); border-radius:14px; padding:8px; background:var(--paper); max-width:232px; margin:0 auto; width:100%; }
+.hf11-photo{ height:58px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; margin-bottom:6px; }
+.hf11-photo.good{ background:linear-gradient(135deg,#f59e0b,#ef4444); color:#fff; }
+.hf11-photo.bad{ background:var(--paper-2); color:var(--graphite); border:1px dashed var(--line); }
+.hf11-pay{ display:block; width:100%; font:inherit; font-size:.86rem; padding:5px; border-radius:99px; border:0; background:var(--s-hci); color:#fff; font-weight:700; margin-top:6px; }
+.hf11-pay.bad{ border-radius:0; background:var(--paper-2); color:var(--graphite); font-weight:400; }
+.hf11-step{ font-size:.8rem; padding:3px 6px; border:1px solid var(--line); border-radius:6px; margin-bottom:3px; }
+.hf11-step.lost{ border-style:dashed; color:var(--pen); }
+.hf11-verdict{ text-align:center; font-weight:800; margin-top:8px; padding:5px; border-radius:7px; }
+.hf11-verdict.both{ background:color-mix(in srgb, var(--ok) 16%, var(--paper)); color:var(--ok); }
+.hf11-verdict.mid{ background:color-mix(in srgb, #f59e0b 16%, var(--paper)); color:#b45309; }
+.hf11-verdict.none{ background:color-mix(in srgb, var(--pen) 12%, var(--paper)); color:var(--pen); }`;
+  if (!document.getElementById('hf11-css')) { const s = document.createElement('style'); s.id = 'hf11-css'; s.textContent = CSS; document.head.appendChild(s); }
+
+  /* ── L5 §0 (doctor's slide 3): the UX wheel and the UI wheel ── */
+  const WH = {
+    UX: { items: ['Useful', 'Satisfiable', 'Convenient', 'Credible', 'Accessible', 'Desirable', 'Valuable'],
+      en: '<b>UX Design</b> covers a user\'s overall experience with the product or website. Its wheel on the slide: Useful, Satisfiable, Convenient, Credible, Accessible, Desirable, Valuable.',
+      ar: 'الـ <b>UX Design</b> بيغطي التجربة الكاملة بتاعة الـ user مع المنتج أو الموقع. وعجلته في الـ slide فيها الـ Useful والـ Satisfiable والـ Convenient والـ Credible والـ Accessible والـ Desirable والـ Valuable.' },
+    UI: { items: ['Color Scheme', 'Typography', 'Layout', 'Images', 'Forms', 'Buttons', 'Content'],
+      en: '<b>UI Design</b> refers to the interactivity, look and feel of a product screen or web page. Its wheel on the slide: Color Scheme, Typography, Layout, Images, Forms, Buttons, Content.',
+      ar: 'الـ <b>UI Design</b> هو الـ interactivity والـ look and feel بتاع شاشة المنتج أو صفحة الويب. وعجلته في الـ slide فيها الـ Color Scheme والـ Typography والـ Layout والـ Images والـ Forms والـ Buttons والـ Content.' }
+  };
+  function Wheels({ ar }) {
+    const [k, setK] = useState('UX'), W = WH[k], n = W.items.length;
+    return html`<figure className="fig hf11"><div className="fig-stage"><div className="hf11-wrap">
+      <div className="hf11-tabs" role="group">${['UX', 'UI'].map(x => html`<button key=${x} className="fig-btn" aria-pressed=${String(k === x)} onClick=${() => setK(x)}>${x}</button>`)}</div>
+      <div className="hf11-wheel" key=${k}><div className="hf11-hub">${k}</div>
+        ${W.items.map((t, j) => { const a = -Math.PI / 2 + j * 2 * Math.PI / n, x = 50 + 37 * Math.cos(a), y = 50 + 38 * Math.sin(a); return html`<span key=${t} className="hf11-spoke" style=${{ left: x + '%', top: y + '%' }}>${t}</span>`; })}</div>
+      </div></div><${Cap} en=${W.en} ar=${W.ar} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L5 §1 (doctor's slide 4): what UI designers and UX designers focus on ── */
+  const FOC = {
+    UI: { title: 'UI designers focus on', sub: 'Visual appearance', items: ['Colors and typography', 'Buttons and icons', 'Layout and spacing', 'Images and visual style', 'Consistency across screens'],
+      ar: ['الألوان والـ typography', 'الزراير والـ icons', 'الـ layout والـ spacing', 'الصور والـ visual style', 'الـ consistency بين الشاشات'] },
+    UX: { title: 'UX designers focus on', sub: 'User experience', items: ['User needs and research', 'User journeys and flows', 'Wireframes and prototypes', 'Ease of use', 'Usability testing'],
+      ar: ['احتياجات الـ user والـ research', 'الـ user journeys والـ flows', 'الـ wireframes والـ prototypes', 'سهولة الاستخدام', 'الـ usability testing'] }
+  };
+  const ST = [].concat(FOC.UI.items.map((t, j) => ({ m: 'UI', j, en: '<b>UI designers</b> work on how screens look: ' + t.toLowerCase() + '.', ar: 'الـ <b>UI designers</b> بيشتغلوا على شكل الشاشات: ' + FOC.UI.ar[j] + '.' })),
+    FOC.UX.items.map((t, j) => ({ m: 'UX', j, en: '<b>UX designers</b> work on the whole experience: ' + t.toLowerCase() + '.', ar: 'الـ <b>UX designers</b> بيشتغلوا على التجربة كلها: ' + FOC.UX.ar[j] + '.' })));
+  const hl = on => ({ fill: on ? 'color-mix(in srgb, var(--k-hci) 28%, var(--paper))' : 'var(--paper-2)', stroke: on ? 'var(--s-hci)' : 'var(--line)', strokeWidth: on ? 2 : 1, transition: 'all .3s' });
+  function FocusMock({ m, j }) {
+    if (m === 'UI') return html`<svg className="hf11-svg" viewBox="0 0 280 130" role="img" aria-label="Two phone screens of an app">
+      ${[10, 150].map(px => html`<g key=${px}><rect x=${px} y="8" width="120" height="114" rx="10" fill="var(--paper)" stroke="var(--line)" strokeWidth="1.5"/>
+        <rect x=${px + 8} y="16" width="104" height="22" rx="5" style=${hl(j === 0 || j === 4)} /><text x=${px + 60} y="32" textAnchor="middle" fontSize="13" fontWeight="700" fill="var(--ink)">$46,267</text>
+        <rect x=${px + 8} y="44" width="104" height="30" rx="5" style=${hl(j === 2 || j === 4)} />
+        <rect x=${px + 8} y="80" width="48" height="36" rx="5" style=${hl(j === 3)} /><circle cx=${px + 32} cy="98" r="9" fill="#f59e0b"/>
+        <circle cx=${px + 76} cy="96" r="12" style=${hl(j === 1)} /><circle cx=${px + 102} cy="96" r="9" style=${hl(j === 1)} /></g>`)}
+      </svg>`;
+    const notes = [[12, 14], [46, 14], [80, 14], [12, 46], [46, 46], [80, 46]];
+    return html`<svg className="hf11-svg" viewBox="0 0 280 130" role="img" aria-label="A wall of sticky notes, a journey map and a wireframe">
+      ${notes.map(([x, y], k) => html`<rect key=${k} x=${x} y=${y} width="28" height="26" rx="3" style=${hl(j === 0)} />`)}
+      <text x="61" y="92" textAnchor="middle" fontSize="12.5" fontWeight="700" fill="var(--ink)">User needs</text>
+      <g style=${{ opacity: 1 }}><rect x="122" y="14" width="44" height="22" rx="5" style=${hl(j === 1)} /><path d="M166 25 h12" stroke="var(--graphite)" strokeWidth="1.8" /><rect x="180" y="14" width="44" height="22" rx="5" style=${hl(j === 1)} /><path d="M224 25 h12" stroke="var(--graphite)" strokeWidth="1.8" /><rect x="238" y="14" width="34" height="22" rx="5" style=${hl(j === 1)} /></g>
+      <rect x="122" y="46" width="60" height="66" rx="4" style=${hl(j === 2)} /><path d="M130 58 h44 M130 70 h30 M130 82 h44" stroke="var(--graphite)" strokeWidth="1.5" />
+      <circle cx="210" cy="64" r="14" style=${hl(j === 3)} /><path d="M203 64 l6 6 l10 -12" fill="none" stroke="var(--graphite)" strokeWidth="2" />
+      <circle cx="252" cy="62" r="8" style=${hl(j === 4)} /><path d="M240 96 q12 -24 24 0" style=${hl(j === 4)} />
+      </svg>`;
+  }
+  function Focus({ ar }) {
+    const [i, ctl] = useSteps(ST.length, 3000), s = ST[i], F = FOC[s.m];
+    return html`<figure className="fig hf11"><div className="fig-stage"><div className="hf11-wrap">
+      <div style=${{ textAlign: 'center', fontWeight: 700 }}>${s.m} Design</div>
+      <div style=${{ textAlign: 'center', fontSize: '.8rem', color: 'var(--graphite)', marginBottom: '4px' }}>${F.sub}</div>
+      <${FocusMock} m=${s.m} j=${s.j} />
+      <div style=${{ fontWeight: 700, marginTop: '6px' }}>${F.title}:</div>
+      <ul className="hf11-list">${F.items.map((t, j) => html`<li key=${t} className=${j === s.j ? 'on' : ''}>${t}</li>`)}</ul>
+      </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${ST} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── L5 §2 (doctor's slide 5): the pizza app, UI and UX switched separately ── */
+  function Pizza({ ar }) {
+    const [ui, setUi] = useState(true), [ux, setUx] = useState(true);
+    const v = ui && ux ? { c: 'both', t: 'Good UI and good UX: the best products combine both' }
+      : ui ? { c: 'mid', t: 'Good UI, poor UX' } : ux ? { c: 'mid', t: 'Good UX, poor UI' } : { c: 'none', t: 'Poor UI and poor UX' };
+    const capEn = ui && ux ? 'The UI designer chose the pizza photos, colors, button shapes and where text appears. The UX designer made sure customers can find a pizza, customize their order, pay easily and track delivery without confusion. <b>The best products combine both.</b>'
+      : ui ? 'A beautiful app with confusing navigation has <b>good UI but poor UX</b>. (The steps on the screen are illustrations.) ‡'
+      : ux ? 'An easy-to-use app with unattractive visuals may have <b>good UX but poor UI</b>.'
+      : 'Unattractive visuals and confusing navigation: the app fails on both. (This fourth state and the steps on the screen are illustrations.) ‡';
+    const capAr = ui && ux ? 'الـ UI designer اختار صور البيتزا والألوان وشكل الزراير ومكان الكلام، والـ UX designer اتأكد إن الزبون يلاقي البيتزا ويظبط الأوردر ويدفع بسهولة ويتابع الـ delivery من غير لخبطة. <b>أحسن المنتجات بتجمع الاتنين.</b>'
+      : ui ? 'الـ app الجميل اللي الـ navigation بتاعه ملخبط عنده <b>UI كويس بس UX وحش</b>. (الخطوات اللي على الشاشة أمثلة توضيحية.) ‡'
+      : ux ? 'الـ app السهل في الاستخدام بس شكله مش حلو ممكن يبقى عنده <b>UX كويس بس UI وحش</b>.'
+      : 'شكل وحش و navigation ملخبط: الـ app فشل في الاتنين. (الحالة الرابعة دي والخطوات اللي على الشاشة أمثلة توضيحية.) ‡';
+    const flow = ux ? ['Find a pizza', 'Customize your order', 'Pay', 'Track delivery'] : ['Menu? Where?', 'Three screens to customize', 'Pay is hidden', 'No way to track delivery'];
+    return html`<figure className="fig hf11"><div className="fig-stage"><div className="hf11-wrap hf11-pz">
+      <div className="hf11-toggle"><b>UI (how it looks)</b><button className="fig-btn" aria-pressed=${String(ui)} onClick=${() => setUi(u => !u)}>${ui ? 'Good' : 'Poor'}</button></div>
+      <div className="hf11-toggle"><b>UX (the experience)</b><button className="fig-btn" aria-pressed=${String(ux)} onClick=${() => setUx(u => !u)}>${ux ? 'Good' : 'Poor'}</button></div>
+      <div className="hf11-phone">
+        <div className=${'hf11-photo ' + (ui ? 'good' : 'bad')}>${ui ? '🍕 Pizza' : 'Photo'}</div>
+        ${flow.map(t => html`<div key=${t} className=${'hf11-step' + (ux ? '' : ' lost')}>${t}</div>`)}
+        <button className=${'hf11-pay' + (ui ? '' : ' bad')} tabIndex="-1">Order</button>
+      </div>
+      <div className=${'hf11-verdict ' + v.c} aria-live="polite">${v.t}</div>
+      </div></div><${Cap} en=${capEn} ar=${capAr} showAr=${ar} /></figure>`;
+  }
+
+  /* ── L5 §5 (doctor's slide 8): the UX design process cycle ── */
+  const UX = [
+    { k: 0, en: '<b>User Research</b> comes first: learn about the users, their tasks and earlier research.', ar: 'الـ <b>User Research</b> الأول: اتعلم عن الـ users والـ tasks بتاعتهم والأبحاث القديمة.' },
+    { k: 3, en: 'Between research and design: <b>Iterate to validate your ideas</b>.', ar: `بين الـ research والـ design:<span class="ltr">Iterate to validate your ideas</span>` },
+    { k: 1, en: '<b>Design</b>: design and prototyping of the interface.', ar: 'الـ <b>Design</b>: الـ design and prototyping بتاع الـ interface.' },
+    { k: 4, en: 'Between design and build: <b>Iterate to design around constraints</b>.', ar: `بين الـ design والـ build:<span class="ltr">Iterate to design around constraints</span>` },
+    { k: 2, en: '<b>Build</b>. The slide\'s list names the third component as user interface evaluation (improvement).', ar: 'الـ <b>Build</b>. والـ list اللي في الـ slide بتسمي الـ component التالت الـ user interface evaluation (improvement).' },
+    { k: 0, en: 'The cycle goes back to <b>User Research</b> and repeats.', ar: 'الـ cycle بترجع تاني للـ <b>User Research</b> وتتكرر.' }
+  ];
+  function Process({ ar }) {
+    const [i, ctl] = useSteps(UX.length, 3200), s = UX[i], on = k => s.k === k;
+    const node = (x, y, t, k) => html`<g key=${t}><circle cx=${x} cy=${y} r="38" fill=${on(k) ? 'var(--s-hci)' : 'var(--paper-2)'} stroke=${on(k) ? 'var(--s-hci)' : 'var(--line)'} strokeWidth="2" style=${{ transition: 'all .4s' }}/>
+      ${t.map((w, n) => html`<text key=${w} x=${x} y=${y + 5 + (n - (t.length - 1) / 2) * 15} textAnchor="middle" fontSize="13.5" fontWeight="700" style=${{ fill: on(k) ? '#fff' : 'var(--ink)' }}>${w}</text>`)}</g>`;
+    const arrow = (d, k) => html`<path d=${d} fill="none" stroke=${on(k) ? 'var(--k-hci)' : 'var(--graphite)'} strokeWidth="3.5" markerEnd="url(#hf11-ah)"/>`;
+    const dash = (d) => html`<path d=${d} fill="none" stroke="var(--graphite)" strokeWidth="1.6" strokeDasharray="4 4"/>`;
+    return html`<figure className="fig hf11"><div className="fig-stage"><div className="hf11-wrap">
+      <svg className="hf11-svg" viewBox="0 0 300 276" role="img" aria-label="A cycle of User Research, Design and Build with two inner iteration loops">
+        <defs><marker id="hf11-ah" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="var(--graphite)"/></marker></defs>
+        ${arrow('M188 54 Q258 70 262 158', 0)}
+        ${arrow('M222 234 Q150 268 84 240', 1)}
+        ${arrow('M42 158 Q42 72 112 54', 2)}
+        ${node(150, 48, ['USER', 'RESEARCH'], 0)}${node(254, 202, ['DESIGN'], 1)}${node(46, 202, ['BUILD'], 2)}
+        <g className=${pop(i >= 1)}>${dash('M172 92 Q230 130 226 168')}<text x="128" y="112" textAnchor="middle" fontSize="13.5" fill="var(--ink)">Iterate to validate</text><text x="128" y="128" textAnchor="middle" fontSize="13.5" fill="var(--ink)">your ideas</text></g>
+        <g className=${pop(i >= 3)}>${dash('M214 214 Q150 186 90 216')}<text x="150" y="162" textAnchor="middle" fontSize="13.5" fill="var(--ink)">Iterate to design</text><text x="150" y="178" textAnchor="middle" fontSize="13.5" fill="var(--ink)">around constraints</text></g>
+      </svg>
+      </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${UX} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'hc-ux-ui-wheels': Wheels, 'hc-ui-ux-focus': Focus, 'hc-pizza-app': Pizza, 'hc-ux-process': Process });
 })();

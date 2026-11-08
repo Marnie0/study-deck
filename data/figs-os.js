@@ -1850,7 +1850,7 @@
   });
 })();
 /* ── part 5 ── */
-// OS visuals, part 5: L4 Memory Management (internal memory). Every label and caption comes from the site's notes for that lecture.
+// OS visuals, part 5: L4 Memory Management (internal memory), slides 3, 4, 7, 10, 12-13, 15, 16, 18-20, 21, 23-24, 27, 28, 30-31, 32, 33. Every label and caption comes from the doctor's slides.
 (function () {
   const { useState } = React;
   const { html, useSteps, Cap, Bar, calm } = window.FIGKIT;
@@ -1939,11 +1939,47 @@
 .fo5-pg{ display:flex; flex-wrap:wrap; gap:3px; margin:4px 0; }
 .fo5-pg i{ width:12px; height:12px; border-radius:2px; background:color-mix(in srgb, var(--k-os) 40%, var(--paper)); border:1px solid var(--k-os); }
 .fo5-pg i.l{ background:repeating-linear-gradient(45deg, var(--k-os), var(--k-os) 3px, var(--paper) 3px, var(--paper) 6px); }
+.fo5-map{ padding:10px 0 12px; }
+.fo5-mr{ display:grid; grid-template-columns:54px minmax(0,1fr) 74px; align-items:start; min-height:42px; }
+.fo5-mr.end{ min-height:0; }
+.fo5-mr .ad{ font-family:var(--mono); font-size:.78rem; color:var(--graphite); text-align:right; padding-right:6px; transform:translateY(-50%); line-height:1.1; }
+.fo5-mr .ce{ border:1.4px solid var(--line); border-bottom:0; min-height:42px; display:grid; place-items:center; font-size:.82rem; text-align:center; transition:all .5s ease; }
+.fo5-mr.last .ce{ border-bottom:1.4px solid var(--line); }
+.fo5-mr .ce.os{ background:color-mix(in srgb, var(--graphite) 18%, var(--paper)); }
+.fo5-mr .ce.p{ background:color-mix(in srgb, var(--k-os) 16%, var(--paper)); }
+.fo5-mr .ce.free{ background:color-mix(in srgb, var(--k-os) 6%, var(--paper)); }
+.fo5-mr .ce.on{ background:var(--s-os); color:#fff; font-weight:700; }
+.fo5-mr .tg{ font-family:var(--mono); font-size:.78rem; line-height:1.15; padding-left:4px; color:var(--k-os); font-weight:700; transform:translateY(-50%); opacity:0; transition:opacity .4s; }
+.fo5-mr .tg.on{ opacity:1; }
+.fo5-col{ max-width:210px; margin:0 auto; height:240px; }
+.fo5-col .seg{ display:grid; place-items:center; min-height:26px; flex-basis:0; }
+.fo5-col .seg:last-child{ border-bottom:0; }
+.fo5-col .seg.free.new{ color:var(--ok); font-weight:700; border:1.4px dashed var(--ok); }
+.fo5-stepno{ text-align:center; color:var(--graphite); font-size:.8rem; margin:0 0 6px; }
+.fo5-grid{ width:100%; table-layout:fixed; border-collapse:collapse; font-size:.8rem; }
+.fo5-grid th, .fo5-grid td{ border:1px solid var(--line); padding:5px 2px; text-align:center; background:var(--paper); font-family:var(--mono); }
+.fo5-grid th{ background:var(--paper-2); color:var(--graphite); font-weight:600; }
+.fo5-grid td.tick{ font-weight:700; color:var(--k-os); }
+.fo5-grid td.hl{ background:color-mix(in srgb, #e6b800 42%, var(--paper)); }
+.fo5-grid td.wait{ font-family:inherit; font-weight:700; color:var(--pen); }
+.fo5-blob{ border:1.4px solid var(--line); border-radius:42% / 30%; background:color-mix(in srgb, var(--k-os) 10%, var(--paper)); padding:30px 14px; display:flex; flex-wrap:wrap; gap:8px; justify-content:center; align-items:center; }
+.fo5-blob .fo5-box{ min-width:92px; text-align:center; }
+.fo5-blob.small{ padding:26px 10px; }
+.fo5-blob.small .fo5-box{ min-width:0; width:44px; font-weight:700; }
+.fo5-cap{ text-align:center; color:var(--graphite); font-size:.8rem; margin:4px 0 0; }
+.fo5-seglist{ font-size:.8rem; color:var(--graphite); margin-top:6px; line-height:1.4; }
+.fo5-pr{ display:flex; flex-direction:column; align-self:start; border:1.4px solid var(--line); border-radius:6px; overflow:hidden; }
+.fo5-pr div{ font-family:var(--mono); font-size:.78rem; padding:3px 4px; min-height:22px; display:flex; align-items:center; justify-content:center; border-bottom:1px solid var(--line); transition:all .5s; white-space:nowrap; }
+.fo5-pr div:last-child{ border-bottom:0; }
+.fo5-pr .s{ background:color-mix(in srgb, var(--k-os) 18%, var(--paper)); font-weight:600; }
+.fo5-pr .s.on{ background:var(--s-os); color:#fff; }
+.fo5-pr .e{ background:var(--paper); color:var(--graphite); }
 @media (prefers-reduced-motion: reduce){ .fo5 *{ transition:none !important; animation:none !important; } }`;
   if (!document.getElementById('fo5-css')) { const s = document.createElement('style'); s.id = 'fo5-css'; s.textContent = CSS; document.head.appendChild(s); }
   const fmt = n => Number(n).toLocaleString('en-US');
   const Modes = ({ list, val, set }) => html`<div className="fo5-row" role="group">${list.map(([k, t]) => html`<button key=${k} className="fig-btn" aria-pressed=${String(val === k)} onClick=${() => set(k)}>${t}</button>`)}</div>`;
   const L = t => `<span class="ltr">${t}</span>`;
+  const B2 = t => `<bdi dir="ltr">${t}</bdi>`;
 
   /* ── §0 base and limit registers: is this address legal? ── */
   function BaseLimit({ ar }) {
@@ -1976,22 +2012,19 @@
   /* ── §1 multistep processing and the three binding times ── */
   const BIND = [
     { k: 'Source program', s: 'symbolic addresses (variables)', en: 'The <b>source program</b> uses <b>symbolic</b> addresses, such as variable names.', ar: 'الـ <b>source program</b> بيستخدم addresses <b>symbolic</b>، زي أسامي الـ variables.' },
-    { k: 'Compiler or assembler', s: '', en: 'The <b>compiler or assembler</b> translates it. <b>Compile-time binding</b>: if the memory location is known a priori, absolute code is generated, and it must be recompiled if the start location changes.', ar: 'الـ <b>compiler أو الـ assembler</b> بيترجمه. الـ <b>compile-time binding</b>: لو مكان الـ memory معروف من الأول بيطلع absolute code، ولو مكان البداية اتغير لازم نعمل recompile.', b: 'Compile time' },
-    { k: 'Object module', s: 'relocatable: "14 bytes from the beginning of this module"', en: 'The <b>object module</b> has <b>relocatable</b> addresses, such as "14 bytes from the beginning of this module".', ar: 'الـ <b>object module</b> فيه addresses <b>relocatable</b>، زي <bdi dir="ltr">"14 bytes from the beginning of this module"</bdi>.' },
-    { k: 'Linkage editor', s: '+ other object modules', en: 'The <b>linkage editor</b> joins it with <b>other object modules</b>.', ar: 'الـ <b>linkage editor</b> بيجمعه مع <b>object modules تانية</b>.' },
-    { k: 'Load module', s: '', en: 'The result is the <b>load module</b>, which waits on disk in the <b>input queue</b>.', ar: 'النتيجة هي الـ <b>load module</b>، وبيستنى على الـ disk في الـ <b>input queue</b>.' },
-    { k: 'Loader', s: '+ system library', en: 'The <b>loader</b> brings it into memory with the <b>system library</b>. <b>Load-time binding</b>: relocatable code is generated when the location is not known at compile time.', ar: 'الـ <b>loader</b> بيحمّله في الـ memory مع الـ <b>system library</b>. الـ <b>load-time binding</b>: بيطلع relocatable code لما المكان مايكونش معروف وقت الـ compile.', b: 'Load time' },
-    { k: 'In-memory binary image', s: 'absolute addresses, e.g. 74014', en: 'The <b>in-memory binary image</b> has <b>absolute</b> addresses, e.g. 74014. A <b>dynamically loaded system library</b> can join it through <b>dynamic linking</b>.', ar: 'الـ <b>in-memory binary image</b> فيها addresses <b>absolute</b>، زي 74014. وممكن <b>system library</b> تتحمّل بشكل dynamic وتنضم ليها عن طريق الـ <b>dynamic linking</b>.' },
-    { k: 'Execution time', s: '', en: '<b>Execution-time binding</b>: binding is delayed until run time if the process can move during execution. It needs hardware support (base and limit registers).', ar: 'الـ <b>execution-time binding</b>: الـ binding بيتأجل لوقت التشغيل لو الـ process ممكن تتنقل وهي شغالة، وده محتاج دعم من الـ hardware (الـ base والـ limit registers).', b: 'Execution time', last: 1 }
+    { k: 'Compiler or assembler', s: '', en: 'The <b>compiler or assembler</b> translates it. <b>Compile-time binding</b>: if the memory location is known a priori, absolute code is generated, and it must be recompiled if the start location changes.', ar: 'الـ <b>compiler أو الـ assembler</b> بيترجمه. الـ <b>compile-time binding</b>: لو مكان الـ memory معروف من الأول بيطلع absolute code، ولو مكان البداية اتغير لازم نعمل recompile.', b: 'compile time' },
+    { k: 'Object module', s: 'relocatable: "14 bytes from beginning of this module"', en: 'The <b>object module</b> has <b>relocatable</b> addresses, such as "14 bytes from beginning of this module".', ar: 'الـ <b>object module</b> فيه addresses <b>relocatable</b>، زي <bdi dir="ltr">"14 bytes from beginning of this module"</bdi>.' },
+    { k: 'Linkage editor', s: '+ other object modules', en: 'The <b>linkage editor</b> (the start of <b>load time</b> on the slide) joins it with <b>other object modules</b>.', ar: 'الـ <b>linkage editor</b> (من هنا بيبدأ الـ <b>load time</b> على السلايد) بيجمعه مع الـ <b>other object modules</b>.', b: 'load time' },
+    { k: 'Load module', s: 'on disk, in the input queue', en: 'The result is the <b>load module</b>. Programs on disk ready to be brought into memory form the <b>input queue</b>.', ar: 'النتيجة هي الـ <b>load module</b>. والبرامج اللي على الـ disk وجاهزة تتجاب للـ memory بتكوّن الـ <b>input queue</b>.', b: 'load time' },
+    { k: 'Loader', s: '+ system library; absolute addresses, e.g. 74014', en: 'The <b>loader</b> brings it into memory with the <b>system library</b>, and binds relocatable addresses to <b>absolute</b> ones, e.g. 74014. <b>Load-time binding</b>: relocatable code is generated when the location is not known at compile time.', ar: 'الـ <b>loader</b> بيحمّله في الـ memory مع الـ <b>system library</b>، وبيعمل bind للـ relocatable addresses لـ <b>absolute</b>، زي 74014. الـ <b>load-time binding</b>: بيطلع relocatable code لما المكان مايكونش معروف وقت الـ compile.', b: 'load time' },
+    { k: 'In-memory binary memory image', s: '+ dynamically loaded system library (dynamic linking)', en: 'The <b>in-memory binary memory image</b> is <b>execution time (run time)</b>. A <b>dynamically loaded system library</b> joins it through <b>dynamic linking</b>. <b>Execution-time binding</b>: binding is delayed until run time if the process can be moved during its execution; this needs hardware support (e.g. base and limit registers).', ar: 'الـ <b>in-memory binary memory image</b> هي الـ <b>execution time</b> (run time). والـ <b>dynamically loaded system library</b> بتنضم ليها عن طريق الـ <b>dynamic linking</b>. الـ <b>execution-time binding</b>: الـ binding بيتأجل لوقت التشغيل لو الـ process ممكن تتنقل وهي شغالة، وده محتاج دعم hardware (زي الـ base والـ limit registers).', b: 'execution time' }
   ];
   function Binding({ ar }) {
     const [i, ctl] = useSteps(BIND.length, 2400);
-    const boxes = BIND.filter(x => !x.last), s = BIND[i];
+    const s = BIND[i];
     return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap fo5-chain">
-      ${boxes.map((x, k) => html`<div key=${k}>${k > 0 && html`<div className="fo5-arrow">↓</div>`}
-        <div className=${'fo5-box' + (k === i ? ' on' : k > i ? ' dim' : '')}><b className="t">${x.k}${x.b && k <= i ? html`<span className="fo5-tag">${x.b} binding</span>` : ''}</b>${x.s && html`<small>${x.s}</small>`}</div></div>`)}
-      <div className="fo5-arrow">↓</div>
-      <div className=${'fo5-box' + (s.last ? ' on' : ' dim')}><b className="t">While it runs<span className="fo5-tag">Execution time binding</span></b><small>process may move: base and limit registers</small></div>
+      ${BIND.map((x, k) => html`<div key=${k}>${k > 0 && html`<div className="fo5-arrow">↓</div>`}
+        <div className=${'fo5-box' + (k === i ? ' on' : k > i ? ' dim' : '')}><b className="t">${x.k}${x.b && k <= i ? html`<span className="fo5-tag">${x.b}</span>` : ''}</b>${x.s && html`<small>${x.s}</small>`}</div></div>`)}
       </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${BIND} i=${i} ctl=${ctl} /></figure>`;
   }
 
@@ -2027,7 +2060,7 @@
     const steps = [
       { en: 'Memory holds the OS and a <b>lower-priority</b> process P1. A <b>higher-priority</b> process P2 is ready, but its memory image is on the <b>backing store</b> (a fast disk with direct access to all memory images).', ar: 'الـ memory فيها الـ OS و process اسمها P1 <b>أولويتها أقل</b>. فيه process تانية P2 <b>أولويتها أعلى</b> جاهزة، بس الـ memory image بتاعتها على الـ <b>backing store</b> (disk سريع بيوصل لكل الـ memory images مباشرةً).', o: 0 },
       { en: `<b>Roll out</b>: P1 is swapped out to the backing store. Transfer time is proportional to the size: ${mb} MB at ${RATE} MB/s = <b>${fmt(ms)} ms</b>.`, ar: `الـ <b>roll out</b>: الـ P1 بتتنقل للـ backing store. وقت النقل بيتناسب مع الحجم:${L(`${mb} MB ÷ ${RATE} MB/s = <b>${ms} ms</b>`)}`, o: 1 },
-      { en: `<b>Roll in</b>: P2 is swapped in, another <b>${fmt(ms)} ms</b>, and runs.`, ar: `الـ <b>roll in</b>: الـ P2 بتدخل الـ memory في <b>${ms} ms</b> كمان، وبعدين تشتغل.`, o: 2 },
+      { en: `<b>Roll in</b>: P2 is swapped in, another <b>${fmt(ms)} ms</b>, and runs.`, ar: `الـ <b>roll in</b>: الـ P2 بتدخل الـ memory في <b>${B2(ms + ' ms')}</b> كمان، وبعدين تشتغل.`, o: 2 },
       { en: `The swap component of this context switch is ${fmt(ms)} + ${fmt(ms)} = <b>${fmt(2 * ms / 1000)} s</b>. Most of swap time is <b>transfer time</b>, so it grows with the memory swapped.`, ar: `الجزء بتاع الـ swap في الـ context switch ده ${L(`${ms} + ${ms} ms = <b>${2 * ms / 1000} s</b>`)}وأغلب وقت الـ swap هو <b>transfer time</b>، فبيزيد مع حجم الـ memory اللي بتتنقل.`, o: 3 }
     ];
     const [i, ctl] = useSteps(steps.length, 2600);
@@ -2036,13 +2069,14 @@
       <div className="fo5-in"><label>Process size <select value=${mb} aria-label="Process size in MB" onChange=${e => setMb(+e.target.value)}>${[10, 50, 100, 200, 500].map(v => html`<option key=${v} value=${v}>${v} MB</option>`)}</select></label><span>at ${RATE} MB/s</span></div>
       <div className="fo5-two">
         <div className="fo5-mem"><div className="seg hd">Main memory</div><div className="seg os">Operating system</div>
-          <div className=${'seg p' + (s.o === 1 || s.o === 2 ? ' hi' : '')} style=${{ flex: 1, display: 'grid', placeItems: 'center' }}>${p1In ? 'P1 (low priority)' : p2In ? 'P2 (high priority)' : html`<span style=${{ color: 'var(--graphite)' }}>user space (free)</span>`}</div></div>
+          <div className=${'seg p' + (s.o === 1 || s.o === 2 ? ' hi' : '')} style=${{ flex: 1, display: 'grid', placeItems: 'center' }}>${p1In ? 'user space: P1 (low priority)' : p2In ? 'user space: P2 (high priority)' : html`<span style=${{ color: 'var(--graphite)' }}>user space (free)</span>`}</div></div>
         <div className="fo5-mem"><div className="seg hd">Backing store</div>
-          <div className="seg free">${p1In ? 'P2 image' : 'P1 image'}</div>
-          <div className="seg free" style=${{ flex: 1, display: 'grid', placeItems: 'center' }}>${p2In ? 'P1 waits here' : ''}</div></div></div>
+          ${!p1In && html`<div className="seg free">Process P1 image</div>`}
+          ${!p2In && html`<div className="seg free">Process P2 image</div>`}
+          <div className="seg free" style=${{ flex: 1 }}></div></div></div>
       <div style=${{ marginTop: '8px' }}>
-        <small>Swap out ${fmt(ms)} ms</small><div className="fo5-prog"><i style=${{ width: s.o >= 1 ? '100%' : '0%' }}></i></div>
-        <small>Swap in ${fmt(ms)} ms</small><div className="fo5-prog"><i style=${{ width: s.o >= 2 ? '100%' : '0%' }}></i></div></div>
+        <small>1 swap out: ${fmt(ms)} ms</small><div className="fo5-prog"><i style=${{ width: s.o >= 1 ? '100%' : '0%' }}></i></div>
+        <small>2 swap in: ${fmt(ms)} ms</small><div className="fo5-prog"><i style=${{ width: s.o >= 2 ? '100%' : '0%' }}></i></div></div>
       </div></div><${Cap} ...${s} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
 
@@ -2078,16 +2112,16 @@
     const used = PARTS.map(() => []); log.slice(0, doneK).forEach(e => { if (e.j >= 0) used[e.j].push({ s: e.p, k: e.k }); });
     const free = used.map((u, j) => PARTS[j] - u.reduce((a, b) => a + b.s, 0));
     let en, a;
-    if (!s) { en = `<b>${NAME[alg]}</b> takes ${RULE[alg]}. Partitions 100, 500, 200, 300, 600 KB; the processes arrive in order${ex ? ' (the example from the notes)' : ''}. After each placement the hole shrinks and the leftover can hold later processes.`; a = `الـ <b>${NAME[alg]}</b> بياخد ${RULE_AR[alg]}. الـ partitions هي 100 و 500 و 200 و 300 و 600 KB، والـ processes بتيجي بالترتيب${ex ? ' (ده مثال الـ notes)' : ''}. بعد كل placement الـ hole بتصغر، واللي فاضل منها ممكن ياخد processes بعدين.`; }
-    else if (s.end) { const n = log.filter(e => e.j >= 0).length; en = `<b>${NAME[alg]}</b>: ${n} of ${procs.length} placed.${ex ? (alg === 'best' ? ' All placed: best-fit is the most efficient here.' : ' 426 KB must wait.') : ''} First-fit and best-fit are better than worst-fit in speed and storage utilization.`; a = `الـ <b>${NAME[alg]}</b>: اتحط ${n} من ${procs.length}.${ex ? (alg === 'best' ? ' كلهم اتحطوا، فالـ best-fit هو الأكفأ هنا.' : ' والـ 426 KB لازم تستنى.') : ''} الـ first-fit والـ best-fit أحسن من الـ worst-fit في السرعة واستغلال الـ storage.`; }
-    else if (s.ph === 0) { en = `<b>${s.e.p} KB</b>: holes big enough: ${s.e.cand.length ? s.e.cand.map(j => free[j] + ' KB').join(', ') : 'none'}.`; a = `الـ process اللي حجمها <b>${s.e.p} KB</b>: الـ holes الكبيرة كفاية هي ${s.e.cand.length ? s.e.cand.map(j => free[j] + ' KB').join(' و ') : 'مفيش'}.`; }
-    else if (s.e.j >= 0) { en = `${NAME[alg]} picks ${RULE[alg]}: <b>${s.e.hole} KB</b> (partition ${PARTS[s.e.j]}), leaving <b>${s.e.left} KB</b>.`; a = `الـ ${NAME[alg]} بياخد ${RULE_AR[alg]}: <b>${s.e.hole} KB</b> (الـ partition اللي حجمها ${PARTS[s.e.j]})، ويفضل منها <b>${s.e.left} KB</b>.`; }
-    else { en = `No hole is big enough: <b>${s.e.p} KB must wait</b>.`; a = `مفيش hole كبيرة كفاية، فالـ <b>${s.e.p} KB لازم تستنى</b>.`; }
+    if (!s) { en = `<b>${NAME[alg]}</b> takes ${RULE[alg]}. Partitions 100, 500, 200, 300, 600 KB; the processes arrive in order${ex ? ' (the slide 18 example)' : ''}. After each placement the hole shrinks and the leftover can hold later processes.`; a = `الـ <b>${NAME[alg]}</b> بياخد ${RULE_AR[alg]}. الـ partitions هي 100 و 500 و 200 و 300 و <bdi dir="ltr">600 KB</bdi>، والـ processes بتيجي بالترتيب${ex ? ' (ده مثال سلايد 18)' : ''}. بعد كل placement الـ hole بتصغر، واللي فاضل منها ممكن ياخد processes بعدين.`; }
+    else if (s.end) { const n = log.filter(e => e.j >= 0).length; en = `<b>${NAME[alg]}</b>: ${n} of ${procs.length} placed.${ex ? (alg === 'best' ? ' All placed: best-fit is the most efficient here.' : ' 426 KB must wait.') : ''} First-fit and best-fit are better than worst-fit in speed and storage utilization.`; a = `الـ <b>${NAME[alg]}</b>: اتحط ${n} من ${procs.length}.${ex ? (alg === 'best' ? ' كلهم اتحطوا، فالـ best-fit هو الأكفأ هنا.' : ' والـ <bdi dir="ltr">426 KB</bdi> لازم تستنى.') : ''} الـ first-fit والـ best-fit أحسن من الـ worst-fit في السرعة واستغلال الـ storage.`; }
+    else if (s.ph === 0) { en = `<b>${s.e.p} KB</b>: holes big enough: ${s.e.cand.length ? s.e.cand.map(j => free[j] + ' KB').join(', ') : 'none'}.`; a = `الـ process اللي حجمها <b>${B2(s.e.p + ' KB')}</b>: الـ holes الكبيرة كفاية هي ${s.e.cand.length ? s.e.cand.map(j => B2(free[j] + ' KB')).join(' و ') : 'مفيش'}.`; }
+    else if (s.e.j >= 0) { en = `${NAME[alg]} picks ${RULE[alg]}: <b>${s.e.hole} KB</b> (partition ${PARTS[s.e.j]}), leaving <b>${s.e.left} KB</b>.`; a = `الـ ${NAME[alg]} بياخد ${RULE_AR[alg]}: <b>${B2(s.e.hole + ' KB')}</b> (الـ partition اللي حجمها ${PARTS[s.e.j]})، ويفضل منها <b>${B2(s.e.left + ' KB')}</b>.`; }
+    else { en = `No hole is big enough: <b>${s.e.p} KB must wait</b>.`; a = `مفيش hole كبيرة كفاية، فالـ <b>${B2(s.e.p + ' KB')} لازم تستنى</b>.`; }
     const cur = s && !s.end ? s.e : null;
     return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
       <${Modes} list=${[['first', 'First-fit'], ['best', 'Best-fit'], ['worst', 'Worst-fit']]} val=${alg} set=${setAlg} />
       <div className="fo5-in"><label>Processes (KB) <input className="w" value=${txt} aria-label="Process sizes in KB" onInput=${e => { setTxt(e.target.value); ctl.go(0); }} /></label>
-        ${!ex && html`<button className="fig-btn" onClick=${() => { setTxt('212, 417, 112, 426'); ctl.go(0); }}>Notes example</button>`}</div>
+        ${!ex && html`<button className="fig-btn" onClick=${() => { setTxt('212, 417, 112, 426'); ctl.go(0); }}>Slide example</button>`}</div>
       <div className="fo5-q">${procs.map((p, k) => { const e = log[k]; const st = cur && cur.k === k ? 'cur' : k < doneK ? (e.j >= 0 ? 'done' : 'wait') : ''; return html`<span key=${k} className=${st}>${p}${k < doneK ? (e.j >= 0 ? ' ✓' : ' waits') : ''}</span>`; })}</div>
       <div className="fo5-parts">${PARTS.map((P, j) => { const isC = cur && cur.cand.includes(j), isP = cur && s.ph === 1 && cur.j === j;
         return html`<div key=${j} className="fo5-part"><span className="nm">${P} KB</span>
@@ -2103,10 +2137,10 @@
     const ROWS = [{ P: 100, used: [] }, { P: 500, used: [212, 112] }, { P: 200, used: [] }, { P: 300, used: [] }, { P: 600, used: [417] }];
     const total = 100 + 176 + 200 + 300 + 183;
     const steps = [
-      { en: 'After <b>first-fit</b>, the 426 KB process is waiting. The holes left are 100, 176, 200, 300 and 183 KB.', ar: 'بعد الـ <b>first-fit</b>، الـ process اللي حجمها 426 KB مستنية. والـ holes اللي فاضلة هي 100 و 176 و 200 و 300 و 183 KB.' },
-      { en: `<b>External fragmentation</b>: the free memory adds up to ${total} KB, enough for 426 KB, but it is <b>not contiguous</b>. The largest hole is only 300 KB.`, ar: `الـ <b>external fragmentation</b>: مجموع الـ memory الفاضية ${total} KB، وده يكفي الـ 426 KB، بس هي <b>مش contiguous</b>، وأكبر hole فيها 300 KB بس.` },
+      { en: 'After <b>first-fit</b>, the 426 KB process is waiting. The holes left are 100, 176, 200, 300 and 183 KB.', ar: 'بعد الـ <b>first-fit</b>، الـ process اللي حجمها <bdi dir="ltr">426 KB</bdi> مستنية. والـ holes اللي فاضلة هي 100 و 176 و 200 و 300 و <bdi dir="ltr">183 KB</bdi>.' },
+      { en: `<b>External fragmentation</b>: the free memory adds up to ${total} KB, enough for 426 KB, but it is <b>not contiguous</b>. The largest hole is only 300 KB.`, ar: `الـ <b>external fragmentation</b>: مجموع الـ memory الفاضية ${B2(total + ' KB')}، وده يكفي الـ <bdi dir="ltr">426 KB</bdi>، بس هي <b>مش contiguous</b>، وأكبر hole فيها <bdi dir="ltr">300 KB</bdi> بس.` },
       { en: '<b>Compaction</b> shuffles memory contents to place all free memory together in one large block. It is possible only if relocation is dynamic and done at execution time.', ar: 'الـ <b>compaction</b> بيحرك محتويات الـ memory عشان يجمع كل الـ free memory في block واحدة كبيرة. وده ينفع بس لو الـ relocation dynamic وبيحصل وقت الـ execution.' },
-      { en: `Now one hole of <b>${total} KB</b> exists and the 426 KB process fits. During compaction, a job doing I/O must be latched in memory, or I/O is done only into OS buffers.`, ar: `دلوقتي فيه hole واحدة <b>${total} KB</b>، والـ process اللي حجمها 426 KB دخلت. وأثناء الـ compaction، الـ job اللي بتعمل I/O لازم تتثبت في الـ memory، أو الـ I/O يتعمل في الـ OS buffers بس.` }
+      { en: `Now one hole of <b>${total} KB</b> exists and the 426 KB process fits. During compaction, a job doing I/O must be latched in memory, or I/O is done only into OS buffers.`, ar: `دلوقتي فيه hole واحدة <b>${B2(total + ' KB')}</b>، والـ process اللي حجمها <bdi dir="ltr">426 KB</bdi> دخلت. وأثناء الـ compaction، الـ job اللي بتعمل I/O لازم تتثبت في الـ memory، أو الـ I/O يتعمل في الـ OS buffers بس.` }
     ];
     const [i, ctl] = useSteps(steps.length, 2800);
     const packed = i >= 2;
@@ -2136,24 +2170,24 @@
     const sOk = s >= 0 && s < T.length, row = sOk ? T[s] : null, dOk = sOk && d < row[0], phys = dOk ? row[1] + d : null;
     const pick = (a, b) => { setSd([a, b]); setSt(String(a)); setDt(String(b)); };
     const setSet = k => { setSet0(k); const e = SEG_EX[k][0]; pick(e[0], e[1]); };
-    const en = !sOk ? `Segment ${s} is illegal: s must be &lt; STLR (${T.length}). Trap.` : dOk ? `Logical &lt;${s}, ${d}&gt;: STBR points to the segment table; entry ${s} has limit ${row[0]}, base ${row[1]}. Offset ${d} &lt; ${row[0]}, so physical = ${row[1]} + ${d} = <b>${phys}</b>.` : `Logical &lt;${s}, ${d}&gt;: entry ${s} has limit ${row[0]}. Offset ${d} ≥ ${row[0]}, so the hardware <b>traps: addressing error</b>.`;
+    const NM = set === 'slide' ? ['subroutine', 'Sqrt', 'main program', 'stack', 'symbol table'] : null;
+    const en = !sOk ? `Segment ${s} is illegal: s must be &lt; STLR (${T.length}). Trap.` : dOk ? `Logical &lt;${s}, ${d}&gt;${NM ? ' (' + NM[s] + ')' : ''}: STBR points to the segment table; entry ${s} has limit ${row[0]}, base ${row[1]}. Offset ${d} &lt; ${row[0]}, so physical = ${row[1]} + ${d} = <b>${phys}</b>.` : `Logical &lt;${s}, ${d}&gt;${NM ? ' (' + NM[s] + ')' : ''}: entry ${s} has limit ${row[0]}. Offset ${d} ≥ ${row[0]}, so the hardware <b>traps: addressing error</b>.`;
     const lg = `<bdi dir="ltr">&lt;${s}, ${d}&gt;</bdi>`;
     const a = !sOk ? `الـ segment رقم ${s} illegal، لأن s لازم يبقى أقل من الـ STLR (${T.length}). فيه trap.` : dOk ? `العنوان ${lg}: الـ STBR بيشاور على الـ segment table، والـ entry رقم ${s} فيها limit ${row[0]} و base ${row[1]}. والـ offset ${d} أقل من ${row[0]}، فالـ physical address هو${L(`${row[1]} + ${d} = <b>${phys}</b>`)}` : `العنوان ${lg}: الـ entry رقم ${s} فيها limit ${row[0]}. والـ offset ${d} مش أقل منه، فالـ hardware بيعمل <b><bdi dir="ltr">trap: addressing error</bdi></b>.`;
-    const top = set === 'slide' ? 6700 : 2600, order = T.map((r, k) => ({ k, base: r[1], lim: r[0] })).sort((x, y) => x.base - y.base);
+    const order = T.map((r, k) => ({ k, base: r[1], lim: r[0] })).sort((x, y) => x.base - y.base);
     const cells = []; let at = 0;
-    order.forEach(g => { if (g.base > at) cells.push({ e: 1, h: g.base - at }); cells.push({ k: g.k, h: g.lim, base: g.base }); at = g.base + g.lim; });
-    if (at < top) cells.push({ e: 1, h: top - at });
+    order.forEach(g => { if (g.base > at) cells.push({ e: 1, from: at, to: g.base }); cells.push({ k: g.k, from: g.base, to: g.base + g.lim }); at = g.base + g.lim; });
     return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
       <${Modes} list=${[['slide', 'Slide example'], ['q6', 'Review Q6']]} val=${set} set=${setSet} />
       <div className="fo5-row">${SEG_EX[set].map(([a2, b2]) => html`<button key=${a2 + '-' + b2} className="fig-btn" aria-pressed=${String(s === a2 && d === b2)} onClick=${() => pick(a2, b2)}>(${a2}, ${b2})</button>`)}</div>
       <div className="fo5-in"><label>s <input style=${{ width: '3.4em' }} inputMode="numeric" value=${st} aria-label="Segment number" onInput=${e => { setSt(e.target.value); const v = parseInt(e.target.value, 10); if (!isNaN(v)) setSd([v, d]); }} /></label>
         <label>d <input style=${{ width: '4.6em' }} inputMode="numeric" value=${dt} aria-label="Offset" onInput=${e => { setDt(e.target.value); const v = parseInt(e.target.value, 10); if (!isNaN(v)) setSd([s, v]); }} /></label></div>
-      <div className="fo5-two" style=${{ gridTemplateColumns: '1.25fr 1fr' }}>
+      <div className="fo5-two" style=${{ gridTemplateColumns: 'minmax(0,1fr) minmax(0,1.15fr)' }}>
         <div><table className="fo5-tbl"><thead><tr><th>s</th><th>limit</th><th>base</th></tr></thead>
           <tbody>${T.map((r, k) => html`<tr key=${k} className=${k === s ? (dOk ? 'on' : 'no') : ''}><td>${k}</td><td>${r[0]}</td><td>${r[1]}</td></tr>`)}</tbody></table>
           <div className=${'fo5-box ' + (dOk ? 'good' : 'bad')} style=${{ marginTop: '6px', textAlign: 'center' }}>${dOk ? html`<span className="fo5-mono">${row[1]} + ${d} = </span><b className="fo5-big">${phys}</b>` : html`<b className="fo5-red">trap</b>`}</div></div>
-        <div className="fo5-pm" aria-label="Physical memory" style=${{ height: '210px' }}>${cells.map((c, k) => html`<div key=${k} className=${c.e ? 'e' : 's' + (c.k === s && dOk ? ' on' : '')} style=${{ flex: c.h + ' 0 0' }}>${c.e ? '' : 'seg ' + c.k}</div>`)}</div>
-      </div></div></div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+        <div className="fo5-pr" aria-label="Physical memory">${cells.map((c, k) => html`<div key=${k} className=${c.e ? 'e' : 's' + (c.k === s && dOk ? ' on' : '')}>${(c.e ? '' : 'seg ' + c.k + ': ') + c.from + '–' + c.to}</div>`)}</div>
+      </div>${NM && html`<div className="fo5-seglist">0 subroutine, 1 Sqrt, 2 main program, 3 stack, 4 symbol table</div>`}</div></div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
   }
 
   /* ── §6 paging model: page table 0→1, 1→4, 2→3, 3→7 ── */
@@ -2187,13 +2221,13 @@
     const [ps, setPs] = useState(2048), [sz, setSz] = useState(72766), [t, setT] = useState('72766');
     const full = Math.floor(sz / ps), rest = sz % ps, frames = full + (rest ? 1 : 0), waste = rest ? ps - rest : 0;
     const ex = ps === 2048 && sz === 72766;
-    const en = `${fmt(sz)} B ÷ ${fmt(ps)} B = <b>${full} pages + ${fmt(rest)} B</b>, so the process needs <b>${frames} frames</b>. The last frame wastes ${fmt(ps)} − ${fmt(rest)} = <b>${fmt(waste)} B</b> of <b>internal fragmentation</b>${ex ? ' (the example from the notes)' : ''}. Worst case = 1 frame − 1 byte; on average ½ frame. Smaller pages mean less fragmentation but more page-table entries.`;
-    const a = `الحسبة:${L(`${sz} B ÷ ${ps} B = <b>${full} pages + ${rest} B</b>`)}يعني الـ process محتاجة <b>${frames} frames</b>. وآخر frame بيضيع منها${L(`${ps} − ${rest} = <b>${waste} B</b>`)}وده اسمه <b>internal fragmentation</b>${ex ? '، وده مثال الـ notes' : ''}. أسوأ حالة هي frame إلا byte واحد، وفي المتوسط نص frame. والـ pages الأصغر معناها fragmentation أقل، بس entries أكتر في الـ page table.`;
+    const en = `${fmt(sz)} B ÷ ${fmt(ps)} B = <b>${full} pages + ${fmt(rest)} B</b>, so the process needs <b>${frames} frames</b>. The last frame wastes ${fmt(ps)} − ${fmt(rest)} = <b>${fmt(waste)} B</b> of <b>internal fragmentation</b>${ex ? ' (the slide 33 example)' : ''}. Worst case = 1 frame − 1 byte; on average ½ frame. Smaller pages mean less fragmentation but more page-table entries.`;
+    const a = `الحسبة:${L(`${sz} B ÷ ${ps} B = <b>${full} pages + ${rest} B</b>`)}يعني الـ process محتاجة <b>${B2(frames + ' frames')}</b>. وآخر frame بيضيع منها${L(`${ps} − ${rest} = <b>${waste} B</b>`)}وده اسمه <b>internal fragmentation</b>${ex ? '، وده مثال سلايد 33' : ''}. أسوأ حالة هي frame إلا byte واحد، وفي المتوسط نص frame. والـ pages الأصغر معناها fragmentation أقل، بس entries أكتر في الـ page table.`;
     const shown = Math.min(frames, 48);
     return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
       <div className="fo5-in"><label>Process (B) <input inputMode="numeric" value=${t} aria-label="Process size in bytes" onInput=${e => { setT(e.target.value); const v = parseInt(e.target.value.replace(/\D/g, ''), 10); if (v > 0) setSz(v); }} /></label>
         <label>Page <select value=${ps} aria-label="Page size in bytes" onChange=${e => setPs(+e.target.value)}>${[512, 1024, 2048, 4096, 8192].map(v => html`<option key=${v} value=${v}>${fmt(v)} B</option>`)}</select></label>
-        ${!ex && html`<button className="fig-btn" onClick=${() => { setPs(2048); setSz(72766); setT('72766'); }}>Notes example</button>`}</div>
+        ${!ex && html`<button className="fig-btn" onClick=${() => { setPs(2048); setSz(72766); setT('72766'); }}>Slide example</button>`}</div>
       <small>${frames} frames${frames > shown ? ` (first ${shown} drawn)` : ''}</small>
       <div className="fo5-pg" aria-hidden="true">${Array.from({ length: shown }, (_, k) => html`<i key=${k} className=${k === frames - 1 && rest ? 'l' : ''}></i>`)}</div>
       <small>Last frame (${fmt(ps)} B)</small>
@@ -2201,7 +2235,154 @@
       </div></div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
   }
 
-  window.FIGS = Object.assign(window.FIGS || {}, { 'os-base-limit': BaseLimit, 'os-binding-steps': Binding, 'os-mmu-reloc': Mmu, 'os-swapping': Swap, 'os-fit-sim': FitSim, 'os-ext-frag': ExtFrag, 'os-segment-xlate': Segment, 'os-paging-model': Paging, 'os-page-frag': PageFrag });
+  /* ── slide 3: memory with base and limit ── */
+  function BaseMap({ ar }) {
+    const ROWS = [
+      { a: '0', t: 'operating system', c: 'os' },
+      { a: '256000', t: 'process', c: 'p' },
+      { a: '300040', t: 'process', c: 'p', me: 1, tag: 'base' },
+      { a: '420940', t: 'process', c: 'p', tag: 'limit' },
+      { a: '880000', t: '', c: 'free' }
+    ];
+    const steps = [
+      { en: 'Memory from 0 to 1024000: the <b>operating system</b>, then three processes, then free memory.', ar: 'الـ memory من 0 لحد 1024000: الـ <b>operating system</b>، وبعدين 3 processes، وبعدين memory فاضية.' },
+      { en: 'The <b>base</b> register holds where this process starts: <b>300040</b>.', ar: 'الـ <b>base</b> register فيه بداية الـ process دي: <b>300040</b>.' },
+      { en: 'The <b>limit</b> register holds its length: <b>120900</b>. So 300040 + 120900 = <b>420940</b> is where the next process starts, and the last legal address is <b>420939</b>.', ar: `الـ <b>limit</b> register فيه طولها: <b>120900</b>. يعني:${L('300040 + 120900 = <b>420940</b>')}ده مكان بداية الـ process اللي بعدها، وآخر address legal هو <b>420939</b>.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2600);
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap fo5-map">
+      ${ROWS.map((r, k) => html`<div key=${k} className=${'fo5-mr' + (k === ROWS.length - 1 ? ' last' : '')}>
+        <span className="ad">${r.a}</span>
+        <div className=${'ce ' + r.c + (r.me && i >= 1 ? ' on' : '')}>${r.t}</div>
+        <span className=${'tg' + ((r.tag === 'base' && i >= 1) || (r.tag === 'limit' && i >= 2) ? ' on' : '')}>${r.tag === 'base' ? html`← base<br />300040` : r.tag === 'limit' ? html`← limit<br />120900` : ''}</span>
+      </div>`)}
+      <div className="fo5-mr end"><span className="ad">1024000</span><span></span><span></span></div>
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 15: hardware support for relocation and limit registers (registers from slide 3) ── */
+  function RelocLimit({ ar }) {
+    const LIM = 120900, R = 300040;
+    const [x, setX] = useState(346), [t, setT] = useState('346');
+    const ok = x < LIM, phys = x + R;
+    const pick = v => { setX(v); setT(String(v)); };
+    const en = ok ? `Using the registers of slide 3 (limit 120900, relocation 300040): logical ${fmt(x)} &lt; ${fmt(LIM)}, so <b>yes</b>: add the relocation register, ${fmt(x)} + ${fmt(R)} = <b>${fmt(phys)}</b>, the physical address sent to memory.` : `Logical ${fmt(x)} is not &lt; ${fmt(LIM)}, so <b>no</b>: <b>trap: addressing error</b>. The relocation register is never added.`;
+    const a = ok ? `بالـ registers بتوع سلايد 3 (الـ limit هو 120900 والـ relocation هو 300040): الـ logical address قيمته ${x} وده أقل من ${LIM}، فالإجابة <b>yes</b>، وبنجمع الـ relocation register:${L(`${x} + ${R} = <b>${phys}</b>`)}وده الـ physical address اللي بيروح للـ memory.` : `الـ logical address قيمته ${x} وده مش أقل من ${LIM}، فالإجابة <b>no</b>:${L('<b>trap: addressing error</b>')}والـ relocation register مش بيتجمع خالص.`;
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap fo5-chain">
+      <div className="fo5-in"><label>Logical <input inputMode="numeric" value=${t} aria-label="Logical address" onInput=${e => { setT(e.target.value); const v = parseInt(e.target.value.replace(/\D/g, ''), 10); if (!isNaN(v)) setX(v); }} /></label></div>
+      <div className="fo5-row">${[346, 120899, 120900, 200000].map(v => html`<button key=${v} className="fig-btn" aria-pressed=${String(x === v)} onClick=${() => pick(v)}>${v}</button>`)}</div>
+      <div className="fo5-box"><b className="t">CPU</b><small>logical address</small><span className="fo5-pkt">${fmt(x)}</span></div>
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box ' + (ok ? 'good' : 'bad')}><small>limit register = ${fmt(LIM)}</small>logical ${'<'} limit? <b className=${ok ? 'fo5-ok' : 'fo5-red'}>${ok ? 'yes' : 'no'}</b></div>
+      <div className="fo5-arrow">↓</div>
+      ${ok ? html`<div className="fo5-box on"><small>relocation register = ${fmt(R)}</small><span className="fo5-mono">+ ${fmt(R)}</span></div>
+        <div className="fo5-arrow">↓</div>
+        <div className="fo5-box good"><b className="t">Memory</b><small>physical address</small><span className="fo5-big">${fmt(phys)}</span></div>`
+      : html`<div className="fo5-box bad"><b className="t">Trap: addressing error</b></div>`}
+      </div></div><${Cap} en=${en} ar=${a} showAr=${ar} /></figure>`;
+  }
+
+  /* ── slide 16: holes appear and get filled ── */
+  function Holes({ ar }) {
+    const ST = [
+      { c: [['OS', 'os', 2], ['process 5', 'p', 3], ['process 8', 'p', 7], ['process 2', 'p', 3]], en: 'Memory holds the OS and processes 5, 8 and 2.', ar: 'الـ memory فيها الـ OS و processes 5 و 8 و 2.' },
+      { c: [['OS', 'os', 2], ['process 5', 'p', 3], ['hole', 'free new', 7], ['process 2', 'p', 3]], en: '<b>Process 8 exits</b> and frees its partition: a <b>hole</b> is left. Any adjacent free partitions would be combined.', ar: 'الـ <b>process 8 بتخرج</b> وتفضّي الـ partition بتاعها، فيتساب <b>hole</b>. ولو فيه free partitions جنبه كانوا هيتجمعوا.' },
+      { c: [['OS', 'os', 2], ['process 5', 'p', 3], ['process 9', 'p hi', 3], ['hole', 'free new', 4], ['process 2', 'p', 3]], en: '<b>Process 9 arrives</b>: it is allocated memory from a hole large enough to fit it, and a smaller hole remains.', ar: 'الـ <b>process 9 بتوصل</b>: بتاخد memory من hole كبير كفاية يساعها، ويفضل hole أصغر.' },
+      { c: [['OS', 'os', 2], ['process 5', 'p', 3], ['process 9', 'p', 3], ['process 10', 'p hi', 2.5], ['hole', 'free new', 1.5], ['process 2', 'p', 3]], en: '<b>Process 10 arrives</b> and takes part of what is left; a smaller hole remains under it. The OS keeps track of allocated partitions and free partitions (holes).', ar: 'الـ <b>process 10 بتوصل</b> وتاخد جزء من اللي فاضل، ويفضل hole أصغر تحتها. والـ OS بيتابع الـ allocated partitions والـ free partitions (الـ holes).' }
+    ];
+    const [i, ctl] = useSteps(ST.length, 2400);
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <p className="fo5-stepno">State ${i + 1} of 4</p>
+      <div className="fo5-mem fo5-col">${ST[i].c.map((c, k) => html`<div key=${k + c[0]} className=${'seg ' + c[1]} style=${{ flexGrow: c[2] }}>${c[0]}</div>`)}</div>
+      </div></div><${Cap} ...${ST[i]} showAr=${ar} /><${Bar} steps=${ST} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 20: first-fit, best-fit and worst-fit as a table ── */
+  function FitGrid({ ar }) {
+    const [alg, setAlg] = useState('first');
+    const P = [212, 417, 112, 426], log = runFit(alg, P);
+    const cnt = PARTS.map((_, j) => log.filter(e => e.j === j).length);
+    const cap = {
+      first: { en: '<b>First-fit</b>: 212 → 500, 417 → 600, 112 → the 288 K left in the 500, and 426 is waiting. Yellow: the 500 KB partition is used twice.', ar: `الـ <b>First-fit</b>:${L('212 → 500, 417 → 600, 112 → 288')}والـ 426 مستنية. والأصفر معناه إن الـ partition اللي <bdi dir="ltr">500 KB</bdi> اتاخدت مرتين.` },
+      best: { en: '<b>Best-fit</b>: 212 → 300, 417 → 500, 112 → 200, 426 → 600. All four are placed, so <b>best-fit turns out to be the best</b>.', ar: `الـ <b>Best-fit</b>:${L('212 → 300, 417 → 500, 112 → 200, 426 → 600')}الأربعة اتحطوا، فالـ <b>best-fit طلع الأحسن</b>.` },
+      worst: { en: '<b>Worst-fit</b>: 212 → 600, 417 → 500, 112 → the 388 K left in the 600, and 426 is waiting. Yellow: the 600 KB partition is used twice.', ar: `الـ <b>Worst-fit</b>:${L('212 → 600, 417 → 500, 112 → 388')}والـ 426 مستنية. والأصفر معناه إن الـ partition اللي <bdi dir="ltr">600 KB</bdi> اتاخدت مرتين.` }
+    }[alg];
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      <${Modes} list=${[['first', 'First-fit'], ['best', 'Best-fit'], ['worst', 'Worst-fit']]} val=${alg} set=${setAlg} />
+      <table className="fo5-grid"><thead><tr><th>KB</th>${PARTS.map(p => html`<th key=${p}>${p}</th>`)}</tr></thead>
+        <tbody>${log.map(e => html`<tr key=${e.k}><th>${e.p}</th>${e.j < 0 ? html`<td colSpan="5" className="wait">waiting</td>` : PARTS.map((_, j) => html`<td key=${j} className=${(e.j === j ? 'tick' : '') + (e.j === j && cnt[j] > 1 ? ' hl' : '')}>${e.j === j ? '√' : ''}</td>`)}</tr>`)}</tbody></table>
+      </div></div><${Cap} ...${cap} showAr=${ar} /></figure>`;
+  }
+
+  /* ── slides 23-24: the user's view and the logical view of segmentation ── */
+  function SegView({ ar }) {
+    const steps = [
+      { en: 'Slide 23, the <b>user\'s view of a program</b>: the <b>logical address</b> space holds separate blocks: subroutine, stack, symbol table, Sqrt and main program.', ar: 'سلايد 23، <b>نظرة الـ user للبرنامج</b>: الـ <b>logical address</b> space فيها blocks منفصلة، وهي الـ subroutine والـ stack والـ symbol table والـ Sqrt والـ main program.' },
+      { en: 'Slide 24, the <b>logical view</b>: the segments in the user space are placed in separate blocks of physical memory.', ar: 'سلايد 24، الـ <b>logical view</b>: الـ segments اللي في الـ user space بتتحط في blocks منفصلة في الـ physical memory.' },
+      ...[1, 2, 3, 4].map(n => ({ en: `Segment <b>${n}</b> has its own block in physical memory.`, ar: `الـ segment رقم <b>${n}</b> ليه block لوحده في الـ physical memory.`, n }))
+    ];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    const h = steps[i].n;
+    const PM = [1, 4, 0, 0, 2, 3, 0];
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap">
+      ${i === 0 ? html`<div className="fo5-blob">${['subroutine', 'stack', 'symbol table', 'Sqrt', 'main program'].map(t => html`<div key=${t} className="fo5-box">${t}</div>`)}</div><p className="fo5-cap">logical address</p>`
+      : html`<div className="fo5-two"><div><div className="fo5-blob small">${[1, 2, 3, 4].map(n => html`<div key=${n} className=${'fo5-box' + (h === n ? ' on' : '')}>${n}</div>`)}</div><p className="fo5-cap">user space</p></div>
+        <div><div className="fo5-mem" style=${{ minHeight: '180px' }}>${PM.map((n, k) => html`<div key=${k} className=${'seg ' + (n ? 'p' + (h === n ? ' hi' : '') : 'os')} style=${{ flex: 1, display: 'grid', placeItems: 'center' }}>${n || ''}</div>`)}</div><p className="fo5-cap">physical memory space</p></div></div>`}
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slide 27: segmentation hardware, with the slide 28 table ── */
+  function SegHw({ ar }) {
+    const T = SEG.slide, CASES = SEG_EX.slide;
+    const [c, setC] = useState(0);
+    const [s, d] = CASES[c], [lim, base] = T[s], ok = d < lim;
+    const steps = [
+      { en: `The CPU produces the logical address <b>(s, d)</b> = (${s}, ${d}).`, ar: `الـ CPU بيطلّع الـ logical address:${L(`<b>(s, d)</b> = (${s}, ${d})`)}` },
+      { en: `<b>s</b> indexes the segment table: entry ${s} gives limit ${lim} and base ${base}.`, ar: `الـ <b>s</b> بيدخل على الـ segment table، والـ entry رقم ${s} فيها limit ${lim} و base ${base}.` },
+      { en: `Compare <b>d &lt; limit</b>: is ${d} &lt; ${lim}? <b>${ok ? 'Yes' : 'No'}</b>.`, ar: `بنقارن:${L(`<b>d &lt; limit</b> ? ${d} &lt; ${lim} → <b>${ok ? 'yes' : 'no'}</b>`)}` },
+      ok ? { en: `Yes: physical address = base + d = ${base} + ${d} = <b>${base + d}</b>, sent to physical memory.`, ar: `لأن الإجابة yes، الـ physical address:${L(`${base} + ${d} = <b>${base + d}</b>`)}وبيروح للـ physical memory.` }
+        : { en: `No: <b>trap: addressing error</b>, because segment ${s} is only ${lim} bytes long.`, ar: `لأن الإجابة no:${L('<b>trap: addressing error</b>')}لأن الـ segment رقم ${s} طوله ${B2(lim + ' bytes')} بس.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2200);
+    const pick = k => { setC(k); ctl.go(0); };
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap fo5-chain">
+      <div className="fo5-row">${CASES.map(([a, b], k) => html`<button key=${k} className="fig-btn" aria-pressed=${String(c === k)} onClick=${() => pick(k)}>(${a}, ${b})</button>`)}</div>
+      <div className="fo5-split"><span className="pp">s = ${s}</span><span>d = ${d}</span></div>
+      <div className="fo5-arrow">↓</div>
+      <table className=${'fo5-tbl'} style=${{ width: '100%' }}><thead><tr><th>s</th><th>limit</th><th>base</th></tr></thead><tbody>${T.map((r, k) => html`<tr key=${k} className=${k === s && i >= 1 ? 'on' : ''}><td>${k}</td><td>${r[0]}</td><td>${r[1]}</td></tr>`)}</tbody></table>
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box' + (i < 2 ? ' dim' : ok ? ' good' : ' bad')}>d ${'<'} limit? ${i >= 2 ? html`<b className=${ok ? 'fo5-ok' : 'fo5-red'}>${ok ? 'yes' : 'no'}</b>` : ''}</div>
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box' + (i < 3 ? ' dim' : ok ? ' good' : ' bad')}>${i < 3 ? 'base + d, or trap' : ok ? html`<span className="fo5-mono">${base} + ${d} = </span><b className="fo5-big">${base + d}</b>` : html`<b className="fo5-red">trap: addressing error</b>`}</div>
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  /* ── slides 30-31: paging hardware, with the page table of slide 32 ── */
+  function PagingHw({ ar }) {
+    const PT = [1, 4, 3, 7], p = 2, f = PT[p];
+    const steps = [
+      { en: 'The CPU\'s address is divided into the <b>page number p</b> (the high m − n bits) and the <b>page offset d</b> (the low n bits), for a logical address space 2<sup>m</sup> and page size 2<sup>n</sup>.', ar: `الـ address بتاع الـ CPU بيتقسم لـ <b>page number p</b> و<b>page offset d</b>:${L('p = high m − n bits, d = low n bits')}للـ logical address space 2<sup>m</sup> والـ page size 2<sup>n</sup>.` },
+      { en: 'With p = 2, <b>p is used as an index</b> into the page table (the table of slide 32).', ar: `لو ${B2('p = 2')}، الـ <b>p بيستخدم كـ index</b> في الـ page table (الـ table بتاعت سلايد 32).` },
+      { en: 'The entry gives the frame number: <b>f = 3</b>, the base address of the page in physical memory.', ar: `الـ entry بتجيب رقم الـ frame:${L('<b>f = 3</b>')}وده الـ base address بتاع الـ page في الـ physical memory.` },
+      { en: 'The physical address is <b>(f, d)</b>: the frame number combined with the <b>unchanged</b> offset d, and it is sent to memory.', ar: 'الـ physical address هو <bdi dir="ltr"><b>(f, d)</b></bdi>: رقم الـ frame مع الـ offset d <b>زي ما هو</b>، وبيتبعت للـ memory.' },
+      { en: 'Frame f covers the physical addresses <b>f0000…0000</b> to <b>f1111…1111</b>; the offset d picks the byte inside the frame.', ar: `الـ frame f بتغطي العناوين من:${L('f0000…0000 → f1111…1111')}والـ offset d بيحدد الـ byte جوة الـ frame.` }
+    ];
+    const [i, ctl] = useSteps(steps.length, 2300);
+    return html`<figure className="fig fo5"><div className="fig-stage"><div className="fo5-wrap fo5-chain">
+      <small>CPU: logical address</small>
+      <div className="fo5-split"><span className="pp">p = ${p}</span><span>d</span></div>
+      ${i === 0 && html`<div className="fo5-split" style=${{ marginTop: '4px' }}><span>m − n bits</span><span>n bits</span></div>`}
+      <div className="fo5-arrow">↓</div>
+      <table className="fo5-tbl" style=${{ width: '70%' }}><thead><tr><th>page</th><th>frame</th></tr></thead><tbody>${PT.map((v, k) => html`<tr key=${k} className=${k === p && i >= 1 ? 'on' : ''}><td>${k}</td><td>${k === p && i >= 2 ? v : k === p ? '?' : v}</td></tr>`)}</tbody></table>
+      <div className="fo5-arrow">↓</div>
+      <small>physical address</small>
+      <div className="fo5-split" style=${{ opacity: i < 3 ? .35 : 1, transition: 'opacity .4s' }}><span className="pp">${i >= 2 ? 'f = ' + f : 'f'}</span><span>d</span></div>
+      <div className="fo5-arrow">↓</div>
+      <div className=${'fo5-box' + (i === 4 ? ' on' : i < 3 ? ' dim' : '')} style=${{ textAlign: 'center' }}><b className="t">Frame ${i >= 2 ? f : 'f'} in physical memory</b><small>f0000…0000 to f1111…1111</small></div>
+      </div></div><${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
+  }
+
+  window.FIGS = Object.assign(window.FIGS || {}, { 'os-base-limit': BaseLimit, 'os-binding-steps': Binding, 'os-mmu-reloc': Mmu, 'os-swapping': Swap, 'os-fit-sim': FitSim, 'os-ext-frag': ExtFrag, 'os-segment-xlate': Segment, 'os-paging-model': Paging, 'os-page-frag': PageFrag, 'os-base-map': BaseMap, 'os-reloc-limit': RelocLimit, 'os-holes': Holes, 'os-fit-grid': FitGrid, 'os-seg-view': SegView, 'os-seg-hw': SegHw, 'os-paging-hw': PagingHw });
 })();
 /* ── part 6 ── */
 // OS visuals, part 6: L5 virtual memory (demand paging, page faults, page replacement FIFO / OPT / LRU, Belady, LRU implementations, second chance, LFU/MFU). Every label and caption comes from the site's notes for L5.

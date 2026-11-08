@@ -1447,65 +1447,135 @@ AR.os = {
     {
      "h": "خلفية، والـ base والـ limit registers",
      "pts": [
-      "البرنامج لازم يتجاب من الـ disk للـ memory ويتحط جوة process عشان يشتغل. <b>الـ main memory والـ registers</b> هما الـ storage الوحيد اللي الـ CPU يقدر يوصله مباشرة.",
-      "الـ memory unit بتشوف بس سلسلة addresses + read requests، أو address + data + write requests. الوصول للـ register بياخد CPU clock واحدة (أو أقل)؛ الـ main memory ممكن تاخد cycles كتير؛ والـ <b>cache</b> قاعد بين الـ main memory والـ CPU registers.",
+      "البرنامج لازم يتجاب من الـ disk للـ memory ويتحط جوة process عشان يشتغل.",
+      "<b>الـ main memory والـ registers</b> هما الـ storage الوحيد اللي الـ CPU يقدر يوصله مباشرةً.",
+      "الـ memory unit مابتشوفش غير سلسلة من الـ <b>addresses + read requests</b>، أو <b>address + data</b> ومعاهم <b>write requests</b>.",
+      "الوصول للـ register بياخد CPU clock واحدة (أو أقل)، والـ main memory ممكن تاخد cycles كتير.",
+      "الـ <b>cache</b> قاعد بين الـ main memory والـ CPU registers.",
       "الـ <b>protection</b> بتاع الـ memory لازم عشان الشغل يبقى صح.",
-      "زوج <b>base وlimit registers</b> بيحدد الـ logical address space بتاع الـ process. الـ CPU بيتشيك على كل memory access في الـ user-mode: الـ access يبقى legal لو <bdi dir=\"ltr\"><b>base ≤ address &lt; base + limit</b></bdi>، وغير كده بيحصل <b>trap</b> للـ OS (addressing error).<br>مثال الرسمة: الـ base هو 300040 والـ limit هو 120900، يعني الـ range الـ legal هو <bdi dir=\"ltr\">300040 … 420939</bdi>."
+      "زوج <b>base وlimit registers</b> بيحددوا الـ logical address space بتاع الـ process.",
+      "الـ CPU لازم يتشيك على كل memory access طالع من الـ user mode، عشان يتأكد إنه <b>بين الـ base والـ limit</b> بتوع الـ user ده.",
+      "شكل (سلايد 3): الـ memory عمود، فيه الـ <b>operating system</b> من <bdi dir=\"ltr\">0</bdi> لحد <bdi dir=\"ltr\">256000</bdi>، وبعدين process لحد <bdi dir=\"ltr\">300040</bdi>، و process لحد <bdi dir=\"ltr\">420940</bdi>، و process لحد <bdi dir=\"ltr\">880000</bdi>، وبعدين memory فاضية لحد <bdi dir=\"ltr\">1024000</bdi>. والـ process اللي في النص:<span class=\"ltr\">base = 300040, limit = 120900</span>يعني الـ process اللي بعدها بتبدأ عند:<span class=\"ltr\">300040 + 120900 = 420940</span>وآخر address legal هو <b><bdi dir=\"ltr\">420939</bdi></b>.",
+      "شكل (سلايد 4، الـ hardware address protection): الـ <b>address</b> اللي طالع من الـ CPU بيتقارن الأول مع الـ <b>base</b> بعلامة ≥، وبعدين مع الـ <b>base + limit</b> بعلامة &lt;. لو الإجابة yes في الاتنين بيروح للـ memory، ولو no في أي واحد فيهم بيحصل <b>trap</b> للـ operating system monitor، وده اسمه:<span class=\"ltr\">trap: addressing error</span>",
+      "يعني الـ access يبقى legal بس لو:<span class=\"ltr\"><b>base ≤ address &lt; base + limit</b></span>وهنا:<span class=\"ltr\">300040 ≤ address &lt; 420940</span>"
      ],
      "figH": {
-      "os-base-limit": "الـ base والـ limit registers: بيتشيكوا على كل address"
+      "os-base-map": "سلايد 3: الـ memory ومعاها الـ base والـ limit",
+      "os-base-limit": "سلايد 4: الـ hardware address protection بيتشيك على كل address"
      }
     },
     {
      "h": "الـ Address binding؛ الـ logical مقابل الـ physical addresses؛ الـ MMU",
      "pts": [
-      "البرامج اللي على الـ disk ومستنية تتحمّل بتكوّن الـ <b>input queue</b>. الـ addresses بتبقى <b>symbolic</b> في الـ source code (variables)، و<b>relocatable</b> بعد الـ compiling (\"14 bytes من أول الـ module ده\")، و<b>absolute</b> بعد ما الـ <bdi dir=\"ltr\">linker/loader</bdi> يعملها bind (زي 74014).",
-      "الـ Binding ممكن يحصل في 3 مراحل: <br>• في الـ <b>compile time</b>: لو مكان الـ memory معروف من الأول، بيطلع absolute code؛ ولازم تعمل recompile لو مكان البداية اتغير.<br>• في الـ <b>load time</b>: بيطلع relocatable code لو المكان مش معروف وقت الـ compile.<br>• في الـ <b>execution time</b>: الـ binding بيتأجل لوقت التشغيل لو الـ process ممكن تتنقل وهي شغالة؛ ومحتاج دعم hardware (base وlimit registers).",
-      "الـ multistep processing بيمشي كده:<span class=\"ltr\">source program → compiler/assembler → object module → linkage editor → load module → loader → in-memory binary image</span>الـ linkage editor بياخد كمان object modules تانية، والـ loader بياخد الـ system library، وفيه system library بتتحمّل ديناميك وقت التشغيل عن طريق الـ dynamic linking.",
-      "الـ <b>Logical (virtual) address</b>: الـ CPU هو اللي بيطلّعه. الـ <b>Physical address</b>: الـ address اللي الـ memory unit بتشوفه. هما <b>نفس الحاجة</b> في الـ compile-time والـ load-time binding و<b>بيختلفوا</b> في الـ execution-time binding.",
-      "الـ <b>Logical address space</b> هو مجموعة كل الـ logical addresses اللي البرنامج بيطلّعها؛ الـ <b>physical address space</b> هو مجموعة كل الـ physical addresses اللي بتقابلها.",
-      "الـ <b>MMU (Memory-Management Unit)</b>: ده hardware بيعمل mapping من virtual لـ physical addresses وقت التشغيل. أبسط طريقة: الـ base register بيبقى <b>relocation register</b>، وقيمته بتتجمع على كل address الـ user process بتبعته للـ memory، مثلًا:<span class=\"ltr\">relocation 14000 + logical 346 = physical 14346</span>وبرنامج الـ user بيتعامل مع logical addresses بس وعمره ما بيشوف الـ physical addresses الحقيقية.",
-      "الـ <b>Dynamic loading</b> (slide 10): الـ routine مابتتحمّلش غير لما تتنادى؛ استخدام أحسن لمساحة الـ memory (الـ routine اللي مش مستخدمة عمرها ما بتتحمّل)؛ كل الـ routines متخزنة على الـ disk بـ relocatable load format؛ مفيد للكود الكبير اللي نادرًا ما بيستخدم (error handling). مش محتاج دعم خاص من الـ OS: بيتعمل من خلال تصميم البرنامج، وإن كان الـ OS ممكن يوفر libraries."
+      "البرامج اللي على الـ disk وجاهزة تتجاب للـ memory عشان تتنفذ بتكوّن <b>input queue</b>.",
+      "من غير دعم، البرنامج لازم يتحمّل عند العنوان <b><bdi dir=\"ltr\">0000</bdi></b>.",
+      "مش مريح إن أول user process يبقى الـ physical address بتاعها دايمًا <bdi dir=\"ltr\">0000</bdi>.",
+      "طب إزاي مايبقاش كده؟ الـ addresses في الكود بعد الـ compile بتعمل <b>bind</b> لـ <b>relocatable addresses</b>، يعني مثلًا:<span class=\"ltr\">\"14 bytes from beginning of this module\"</span>",
+      "الـ addresses بتتمثل بأشكال مختلفة في مراحل عمر البرنامج. في الـ source code بتبقى غالبًا <b>symbolic</b> (زي الـ variables).",
+      "الـ <b>linker أو الـ loader</b> بيعمل bind للـ relocatable addresses لـ <b>absolute addresses</b>، زي <bdi dir=\"ltr\">74014</bdi>.",
+      "كل binding بيعمل mapping من address space لـ address space تانية.",
+      "الـ binding بتاع الـ instructions والـ data للـ memory addresses ممكن يحصل في <b>3 مراحل مختلفة</b>.",
+      "في الـ <b>compile time</b>: لو مكان الـ memory معروف من الأول، بيطلع <b>absolute code</b>، ولازم تعمل <b>recompile</b> لو مكان البداية اتغير.",
+      "في الـ <b>load time</b>: لازم يطلع <b>relocatable code</b> لو مكان الـ memory مش معروف وقت الـ compile.",
+      "في الـ <b>execution time</b>: الـ binding بيتأجل لوقت التشغيل لو الـ process ممكن تتنقل وهي شغالة من memory segment لواحدة تانية.",
+      "والـ execution-time binding محتاج <b>دعم hardware</b> للـ address maps (زي الـ base والـ limit registers).",
+      "شكل (سلايد 7، الـ multistep processing):<span class=\"ltr\">source program → compiler or assembler → object module → linkage editor → load module → loader → in-memory binary memory image</span>والـ linkage editor بياخد كمان الـ other object modules، والـ loader بياخد الـ system library، والـ in-memory image بينضم ليها الـ dynamically loaded system library عن طريق الـ <b>dynamic linking</b>.",
+      "الأقواس اللي جنب الشكل: الـ compiler أو الـ assembler هو الـ <b>compile time</b>، ومن الـ linkage editor لحد الـ loader هو الـ <b>load time</b>، والـ in-memory image هي الـ <b>execution time</b> (run time).",
+      "فكرة وجود <b>logical address space</b> مربوط بـ <b>physical address space</b> منفصل هي الأساس في الـ memory management الصح.",
+      "الـ <b>Logical address</b>: الـ CPU هو اللي بيطلّعه، وبيتسمى كمان <b>virtual address</b>.",
+      "الـ <b>Physical address</b>: العنوان اللي الـ memory unit بتشوفه.",
+      "الـ logical والـ physical addresses <b>نفس الحاجة</b> في الـ compile-time والـ load-time binding، و<b>بيختلفوا في الـ execution-time</b> binding.",
+      "الـ <b>Logical address space</b>: مجموعة كل الـ <b>virtual</b> addresses اللي الـ CPU بيطلّعها وقت تنفيذ البرنامج.",
+      "الـ <b>Physical address space</b>: مجموعة كل الـ <b>actual</b> addresses، وكل واحد منهم data element معينة في الـ memory. (السلايد كاتب:<span class=\"ltr\">generated by a program</span>بس البرنامج بيطلّع logical addresses، وعمره ما بيشوف الـ physical addresses، سلايد 8 و9.)",
+      "وبمعنى تاني: الـ physical addresses اللي بتقابل الـ logical addresses دي. ‡",
+      "الـ <b>MMU</b> (Memory-Management Unit): ده hardware device بيعمل mapping من virtual لـ physical addresses وقت التشغيل.",
+      "أبسط طريقة: قيمة الـ <b>relocation register</b> بتتجمع على كل address الـ user process بتطلّعه لحظة ما بيتبعت للـ memory.",
+      "الـ <b>base register</b> بقى اسمه هنا <b>relocation register</b>.",
+      "برنامج الـ user بيتعامل مع <b>logical</b> addresses بس، و<b>عمره ما بيشوف</b> الـ physical addresses الحقيقية.",
+      "الـ execution-time binding بيحصل لما يبقى فيه reference لمكان في الـ memory، فالـ logical address بيتربط بالـ physical address.",
+      "شكل (سلايد 10، الـ dynamic relocation باستخدام relocation register):<span class=\"ltr\">CPU → logical 346 → MMU (relocation 14000) → physical <b>14346</b> → memory</span>لأن:<span class=\"ltr\">14000 + 346 = <b>14346</b></span>",
+      "الـ bullets في سلايد 10 بتتكلم عن الـ <b>dynamic loading</b> (العنوان كاتب Dynamic relocation، بس آخر bullet بيقول dynamic loading صراحة): الـ routine مابتتحمّلش غير لما تتنادى.",
+      "استخدام أحسن لمساحة الـ memory: الـ routine اللي مش مستخدمة عمرها ما بتتحمّل.",
+      "كل الـ routines متخزنة على الـ disk بـ relocatable load format.",
+      "مفيدة لما يبقى فيه كود كبير محتاجينه عشان يتعامل مع <b>حالات نادرة الحدوث</b>.",
+      "ومثال مشهور عليها كود الـ error handling. ‡",
+      "مش محتاجة دعم خاص من الـ OS: بتتعمل من خلال تصميم البرنامج، والـ OS ممكن يساعد بإنه يوفر libraries تنفذ الـ dynamic loading."
      ],
      "figH": {
-      "os-binding-steps": "من الـ source program للـ memory image، والـ 3 أوقات بتاعة الـ binding",
-      "os-mmu-reloc": "الـ MMU بيجمع الـ relocation register على كل logical address"
+      "os-binding-steps": "سلايد 7: من الـ source program لحد الـ memory image",
+      "os-mmu-reloc": "سلايد 10: الـ MMU بيجمع الـ relocation register على كل logical address"
      }
     },
     {
      "h": "الـ Swapping",
      "pts": [
-      "الـ process ممكن تتعملها <b>swap</b> مؤقتًا برة الـ memory لـ <b>backing store</b> وترجع تاني عشان تكمّل. فمجموع الـ physical memory بتاعة كل الـ processes ممكن يعدّي الـ physical memory الموجودة.",
-      "الـ <b>backing store</b> هو disk سريع وكبير كفاية يشيل نسخ من كل الـ memory images، وفيه direct access ليها.",
-      "الـ <bdi dir=\"ltr\"><b>roll out, roll in</b></bdi> هو نوع من الـ swapping للـ priority-based scheduling؛ الـ process اللي الـ priority بتاعها أوطى بتتعملها swap out عشان اللي أعلى تتحمّل وتشتغل.",
-      "الجزء الأكبر من وقت الـ swap هو الـ <b>transfer time</b>، وبيتناسب طرديًا مع كمية الـ memory اللي بتتعملها swap. السيستم بيحتفظ بـ ready queue للـ processes اللي الـ memory images بتاعتها على الـ disk.",
-      "لو الـ process الجاية مش في الـ memory، الـ context switch لازم يعمل swap out لـ process وswap in للتانية: 100 MB بسرعة <bdi dir=\"ltr\">50&nbsp;MB/s</bdi> بيبقى:<span class=\"ltr\"><b>2000 ms</b> out + 2000 ms in = <b>4 s</b></span>وده إجمالي جزء الـ swap."
+      "الـ process ممكن تتعملها <b>swap</b> مؤقتًا برة الـ memory لـ <b>backing store</b>، وبعدين ترجع تاني للـ memory عشان تكمّل تنفيذ.",
+      "فمجموع الـ physical memory space بتاعة الـ processes ممكن يعدّي الـ physical memory الموجودة.",
+      "الـ <b>backing store</b> هو disk سريع وكبير كفاية يشيل نسخ من كل الـ memory images بتاعة كل الـ users، ولازم يوفر direct access للـ memory images دي.",
+      "الـ <b><bdi dir=\"ltr\">roll out, roll in</bdi></b> نوع من الـ swapping بيستخدم مع الـ priority-based scheduling algorithms: الـ process اللي أولويتها أقل بتتعملها swap out، عشان اللي أعلى تتحمّل وتتنفذ.",
+      "الجزء الأكبر من وقت الـ swap هو الـ <b>transfer time</b>، وإجمالي الـ transfer time بيتناسب طرديًا مع كمية الـ memory اللي بتتعملها swap.",
+      "السيستم بيحتفظ بـ <b>ready queue</b> للـ processes الجاهزة تشتغل واللي الـ memory images بتاعتها على الـ disk.",
+      "شكل (سلايد 12، الـ schematic view): الـ main memory فيها الـ operating system والـ user space، والـ backing store فيه process P1 و process P2. الخطوة <b>1 هي الـ swap out</b>، بتنقل الـ P1 من الـ user space للـ backing store. والخطوة <b>2 هي الـ swap in</b>، بتنقل الـ P2 من الـ backing store للـ user space.",
+      "لو الـ process الجاية على الـ CPU مش في الـ memory، لازم نعمل swap out لـ process و swap in للـ process المطلوبة، فالـ context switch time ممكن يبقى عالي جدًا.",
+      "مثال سلايد 13: process حجمها <bdi dir=\"ltr\">100 MB</bdi> بتتعملها swap على hard disk سرعته <bdi dir=\"ltr\">50 MB/sec</bdi>:<span class=\"ltr\">swap out = 100 ÷ 50 = 2 s = <b>2000 ms</b></span>",
+      "وبعدها swap in لـ process بنفس الحجم، <bdi dir=\"ltr\">2000 ms</bdi> كمان، فإجمالي جزء الـ swapping في الـ context switch:<span class=\"ltr\">2000 + 2000 = <b>4000 ms = 4 s</b></span>"
      ],
      "figH": {
-      "os-swapping": "الـ Swapping: الـ roll out والـ roll in، ووقت الـ swap"
+      "os-swapping": "سلايدات 12 و13: الـ swap out والـ swap in ووقت الـ swap"
      }
     },
     {
      "h": "الـ Contiguous allocation ومشكلة الـ dynamic storage-allocation",
      "pts": [
-      "الـ main memory متقسمة لـ two partitions: الـ <b>resident OS</b> (غالبًا في الـ low memory، ومعاه الـ interrupt vector) والـ <b>user processes</b> (الـ high memory). كل process في <b>section واحدة contiguous</b>.",
-      "الـ Relocation registers بتحمي الـ processes من بعض ومن الـ OS: <br>• الـ <b>base (relocation) register</b> فيه أصغر physical address.<br>• الـ <b>limit register</b> فيه الـ range بتاع الـ logical addresses، يعني كل logical address لازم يبقى أصغر من الـ limit.<br>والـ MMU بيعمل mapping ديناميك: لو <bdi dir=\"ltr\">logical &lt; limit</bdi> يبقى <bdi dir=\"ltr\">physical = logical + relocation</bdi>، وغير كده بيحصل trap.",
-      "الـ <b>Multiple-partition allocation</b>: الـ degree of multiprogramming محدود بعدد الـ partitions؛ والـ partitions بأحجام متغيرة عشان الكفاءة. الـ <b>hole</b> هو block من الـ memory المتاحة. الـ process الجديدة بتاخد hole كبير كفاية؛ والـ process اللي بتخرج بتفضّي الـ partition بتاعها والـ free partitions اللي جنب بعض بتتجمع. الـ OS بيتابع الـ allocated partitions والـ free partitions (الـ holes).",
-      "الـ <b>First-fit</b>: ادّي <b>أول</b> hole كبير كفاية. الـ <b>Best-fit</b>: <b>أصغر</b> hole كبير كفاية (لازم تدوّر في اللستة كلها إلا لو مترتبة بالحجم)، وده بيطلّع أصغر hole متبقي. الـ <b>Worst-fit</b>: <b>أكبر</b> hole (برضه بيدوّر في اللستة كلها)، وده بيطلّع أكبر hole متبقي.",
+      "الـ main memory لازم تشيل الـ OS والـ user processes مع بعض.",
+      "وهي resource محدود، فلازم الـ allocation يبقى efficient. والـ <b>contiguous allocation</b> طريقة من الطرق الأولى.",
+      "الـ main memory عادةً بتتقسم لـ <b>two partitions</b>. الـ <b>resident OS</b> غالبًا بيبقى في الـ <b>low memory</b> ومعاه الـ interrupt vector.",
+      "والـ <b>user processes</b> بتبقى في الـ <b>high memory</b>.",
+      "كل process موجودة في <b>section واحدة contiguous</b> من الـ memory.",
+      "الـ <b>relocation registers</b> بتستخدم عشان تحمي الـ user processes من بعض، وتمنع تغيير الـ code والـ data بتوع الـ OS.",
+      "الـ <b>base register</b> فيه قيمة أصغر physical address.",
+      "الـ <b>limit register</b> فيه الـ range بتاع الـ logical addresses، يعني كل logical address لازم يبقى <b>أقل من الـ limit register</b>.",
+      "الـ <b>MMU</b> بيعمل mapping للـ logical address <i>dynamically</i>.",
+      "شكل (سلايد 15، الـ hardware support للـ relocation والـ limit registers):<span class=\"ltr\">CPU → logical address → &lt; limit register ?</span>لو yes:<span class=\"ltr\">+ relocation register → physical address → memory</span>لو no:<span class=\"ltr\"><b>trap: addressing error</b></span>",
+      "الـ <b>Multiple-partition allocation</b>: الـ degree of multiprogramming محدود بعدد الـ partitions.",
+      "بنستخدم <b>variable-partition</b> sizes عشان الكفاءة، يعني كل partition حجمه على قد احتياج الـ process.",
+      "الـ <b>Hole</b> هو block من الـ memory المتاحة، والـ holes بأحجام مختلفة متفرقة في الـ memory.",
+      "لما process توصل، بتاخد memory من hole كبير كفاية يساعها.",
+      "الـ process اللي بتخرج بتفضّي الـ partition بتاعها، و<b>الـ free partitions اللي جنب بعض بتتجمع</b>.",
+      "الـ OS بيحتفظ بمعلومات عن: (a) الـ allocated partitions، و(b) الـ free partitions يعني الـ holes.",
+      "شكل (سلايد 16): أربع أعمدة memory. الأول فيه الـ OS و process <bdi dir=\"ltr\">5</bdi> و process <bdi dir=\"ltr\">8</bdi> و process <bdi dir=\"ltr\">2</bdi>. بعدها process <bdi dir=\"ltr\">8</bdi> بتخرج وتسيب <b>hole</b>، وبعدها process <bdi dir=\"ltr\">9</bdi> تاخد جزء من الـ hole ويفضل hole أصغر، وبعدها process <bdi dir=\"ltr\">10</bdi> تاخد جزء من اللي فاضل، ويفضل hole أصغر تحتها.",
+      "الـ <b>Dynamic storage-allocation problem</b>: إزاي نلبّي request حجمه <i>n</i> من لستة الـ free holes؟",
+      "الـ <b>First-fit</b>: ادّي <b>أول</b> hole كبير كفاية.",
+      "الـ <b>Best-fit</b>: ادّي <b>أصغر</b> hole كبير كفاية، ولازم تدوّر في اللستة كلها إلا لو مترتبة بالحجم. وده بيطلّع أصغر hole متبقي.",
+      "الـ <b>Worst-fit</b>: ادّي <b>أكبر</b> hole، ولازم برضه تدوّر في اللستة كلها. وده بيطلّع أكبر hole متبقي.",
       "الـ First-fit والـ best-fit أحسن من الـ worst-fit في السرعة واستخدام الـ storage.",
-      "الطريقة: امشي على الـ processes <b>بالترتيب</b>. بعد كل placement الـ hole بيصغر (زي <bdi dir=\"ltr\">500&nbsp;−&nbsp;212&nbsp;=&nbsp;288&nbsp;K</bdi>) والباقي ده ممكن ياخد processes بعدين."
+      "مثال سلايد 18: خمس partitions بالترتيب:<span class=\"ltr\">100, 500, 200, 300, 600 KB</span>والـ processes بالترتيب:<span class=\"ltr\">212, 417, 112, 426 KB</span>أنهي algorithm بيستخدم الـ memory بأكفأ طريقة؟",
+      "الطريقة: امشي على الـ processes <b>بالترتيب</b>. بعد كل placement الـ hole بيصغر، واللي فاضل منه ممكن ياخد processes بعدين.",
+      "الـ <b>First-fit</b> (سلايد 19):<span class=\"ltr\">212K → 500K, 417K → 600K</span><span class=\"ltr\">112K → 288K (new partition 288K = 500K − 212K)</span>والـ 426K <b>لازم تستنى</b>.",
+      "الـ <b>Best-fit</b>:<span class=\"ltr\">212K → 300K, 417K → 500K, 112K → 200K, 426K → 600K</span>",
+      "الـ <b>Worst-fit</b>:<span class=\"ltr\">212K → 600K, 417K → 500K</span><span class=\"ltr\">112K → 388K (new partition 388K = 600K − 212K)</span>والـ 426K <b>لازم تستنى</b>.",
+      "في المثال ده، <b>الـ best-fit طلع الأحسن</b>، لأنه الوحيد اللي حط الأربع processes.",
+      "سلايد 20 بيعرض نفس الإجابة في table، وفيه √ تحت الـ partition اللي كل process راحتله. والخانات الصفرا (الـ <bdi dir=\"ltr\">500 KB</bdi> في الـ first-fit، والـ <bdi dir=\"ltr\">600 KB</bdi> في الـ worst-fit) هي الـ partitions اللي اتاخدت مرتين."
      ],
      "figH": {
-      "os-fit-sim": "الـ First-fit والـ best-fit والـ worst-fit على partitions المثال"
+      "os-reloc-limit": "سلايد 15: الـ hardware support للـ relocation والـ limit registers",
+      "os-holes": "سلايد 16: الـ holes بتظهر وبتتملى",
+      "os-fit-sim": "سلايدات 18 و19: الـ First-fit والـ best-fit والـ worst-fit على partitions المثال",
+      "os-fit-grid": "سلايد 20: نفس المثال في table"
      }
     },
     {
      "h": "الـ Fragmentation",
      "pts": [
-      "الـ <b>External fragmentation</b>: إجمالي مساحة الـ memory موجود ويكفي الطلب، بس <b>مش contiguous</b> (بيحصل مع الـ variable partitions أو الـ segmentation).",
-      "الـ <b>Internal fragmentation</b>: الـ memory المتخصصة ممكن تبقى أكبر شوية من المطلوب؛ الفرق ده memory <b>جوة الـ partition بس مش مستخدمة</b> (بيحصل مع الـ fixed blocks أو الـ paging).",
-      "بنقلل الـ external fragmentation بالـ <b>compaction</b>: نحرّك محتويات الـ memory عشان نجمّع كل الـ free memory في block واحد كبير. ممكن <b>بس لو الـ relocation dynamic</b> وبيحصل وقت الـ execution.",
-      "مشكلة الـ <bdi dir=\"ltr\">I/O</bdi> وقت الـ compaction: نثبّت (latch) الـ job في الـ memory وهي بتعمل <bdi dir=\"ltr\">I/O</bdi>، أو نعمل <bdi dir=\"ltr\">I/O</bdi> بس في buffers الـ OS. والـ backing store عنده نفس مشاكل الـ fragmentation."
+      "الـ <b>External fragmentation</b>: إجمالي مساحة الـ memory موجود ويكفي الطلب، بس <b>مش contiguous</b>.",
+      "وبيحصل مع الـ variable partitions والـ segmentation. ‡",
+      "الـ <b>Internal fragmentation</b>: الـ memory المخصصة ممكن تبقى <b>أكبر شوية من المطلوب</b>، والفرق ده memory جوة الـ partition بس <b>مش مستخدمة</b>.",
+      "والـ paging لسه فيه internal fragmentation (سلايد 29).",
+      "وبشكل عام بيحصل مع الـ fixed-size blocks. ‡",
+      "بنقلل الـ external fragmentation بالـ <b>compaction</b>: نعمل <b>defragment</b> لمحتويات الـ memory عشان نجمّع كل الـ free memory في block واحد كبير.",
+      "الـ compaction ممكن <b>بس لو الـ relocation dynamic</b>، وبيتعمل وقت الـ execution.",
+      "مشكلة الـ <bdi dir=\"ltr\">I/O</bdi> وقت الـ compaction: إما <b>نثبّت (latch) الـ job في الـ memory</b> وهي بتعمل <bdi dir=\"ltr\">I/O</bdi>، أو نعمل <bdi dir=\"ltr\">I/O</bdi> في <b>الـ OS buffers</b> بس.",
+      "والـ backing store عنده نفس مشاكل الـ fragmentation."
      ],
      "figH": {
       "os-ext-frag": "الـ External fragmentation والـ compaction"
@@ -1514,32 +1584,69 @@ AR.os = {
     {
      "h": "الـ Segmentation",
      "pts": [
-      "ده memory-management scheme بيدعم <b>نظرة الـ user للـ memory</b>: البرنامج عبارة عن مجموعة <b>segments</b>، كل واحد وحدة منطقية زي:<span class=\"ltr\">main program, procedure, function, method, object, local/global variables, common block, stack, symbol table, arrays</span>",
-      "الـ logical address بيتكون من <bdi dir=\"ltr\"><b>&lt;segment-number, offset&gt;</b></bdi>.",
-      "الـ <b>Segment table</b>: كل entry فيها <b>base</b> (أول physical address للـ segment) و<b>limit</b> (طول الـ segment).",
-      "الـ <b>STBR</b> (segment-table base register) بيشاور على الـ segment table في الـ memory؛ الـ <b>STLR</b> (segment-table length register) فيه عدد الـ segments؛ رقم الـ segment s يبقى legal لو <bdi dir=\"ltr\"><b>s &lt; STLR</b></bdi>.",
-      "الـ hardware بيعمل كده: لو <bdi dir=\"ltr\"><b>offset d &lt; limit</b></bdi> يبقى <bdi dir=\"ltr\">physical = base + d</bdi>، وغير كده بيحصل <b>trap</b> (addressing error).",
-      "الـ Protection: كل entry فيها validation bit (لو قيمته 0 يبقى الـ segment مش legal) وصلاحيات <bdi dir=\"ltr\">read/write/execute</bdi>؛ ومشاركة الكود بتحصل على مستوى الـ segment. وبما إن الـ segments أطوالها مختلفة، الـ allocation بيبقى dynamic storage-allocation problem (external fragmentation).",
-      "مثال الـ slide، وكل segment مكتوب (limit, base) كده:<span class=\"ltr\">seg0 (1000, 1400), seg1 (400, 6300), seg2 (400, 4300), seg3 (1100, 3200), seg4 (1000, 4700)</span>• الـ byte 53 من seg 2:<span class=\"ltr\">4300 + 53 = <b>4353</b></span>• الـ byte 852 من seg 3:<span class=\"ltr\">3200 + 852 = <b>4052</b></span>• الـ byte 1222 من seg 0:<span class=\"ltr\">1222 ≥ 1000 → <b>trap</b></span>"
+      "الـ <b>Segmentation</b> هو memory-management scheme بيدعم <b>نظرة الـ user للـ memory</b>.",
+      "البرنامج عبارة عن مجموعة <b>segments</b>.",
+      "الـ segment وحدة منطقية، زي:<span class=\"ltr\">main program, procedure, function, method, object, local variables, global variables, common block, stack, symbol table, arrays</span>",
+      "شكل (سلايد 23، نظرة الـ user للبرنامج): الـ logical address space فيها blocks منفصلة:<span class=\"ltr\">subroutine, stack, symbol table, Sqrt, main program</span>",
+      "شكل (سلايد 24، الـ logical view): الـ segments رقم <bdi dir=\"ltr\">1</bdi> و <bdi dir=\"ltr\">2</bdi> و <bdi dir=\"ltr\">3</bdi> و <bdi dir=\"ltr\">4</bdi> في الـ user space بتتحط في أماكن منفصلة في الـ physical memory، والترتيب من فوق:<span class=\"ltr\">1, 4, 2, 3</span>وفيه مساحة فاضية بين الـ <bdi dir=\"ltr\">4</bdi> والـ <bdi dir=\"ltr\">2</bdi> وتحت الـ <bdi dir=\"ltr\">3</bdi>.",
+      "الـ logical address بيتكون من اتنين:<span class=\"ltr\"><b>&lt;segment-number, offset&gt;</b></span>",
+      "الـ <b>Segment table</b> بتعمل mapping للـ logical addresses اللي فيها بُعدين لـ physical addresses. (السلايد كاتب:<span class=\"ltr\">maps two-dimensional physical addresses</span>بس العنوان اللي بيتكون من بُعدين هو الـ logical، يعني:<span class=\"ltr\">&lt;segment-number, offset&gt;</span>)",
+      "كل entry في الـ table فيها <b>base</b>، وهو أول physical address الـ segment موجود عنده في الـ memory.",
+      "وفيها <b>limit</b>، وهو طول الـ segment.",
+      "الـ <b>STBR</b> (segment-table base register) بيشاور على مكان الـ segment table في الـ memory.",
+      "الـ <b>STLR</b> (segment-table length register) بيقول عدد الـ segments اللي البرنامج مستخدمها، ورقم الـ segment s يبقى legal لو:<span class=\"ltr\"><b>s &lt; STLR</b></span>",
+      "الـ <b>Protection</b>: مع كل entry في الـ segment table فيه <b>validation bit</b>:<span class=\"ltr\">validation bit = 0 ⇒ illegal segment</span>",
+      "وكل entry فيها كمان صلاحيات <b><bdi dir=\"ltr\">read/write/execute</bdi></b>.",
+      "الـ protection bits مرتبطة بالـ segments، و<b>مشاركة الكود بتحصل على مستوى الـ segment</b>.",
+      "وبما إن الـ segments أطوالها مختلفة، الـ memory allocation بيبقى <b>dynamic storage-allocation problem</b>.",
+      "يعني الـ segmentation فيه external fragmentation. ‡",
+      "شكل (سلايد 27، الـ segmentation hardware): الـ CPU بيطلّع <bdi dir=\"ltr\">(s, d)</bdi>. والـ <b>s</b> بيدخل على الـ segment table ويجيب الـ limit والـ base. وبعدين بنسأل:<span class=\"ltr\"><b>d &lt; limit</b> ?</span>لو yes:<span class=\"ltr\"><b>base + d</b> → physical memory</span>لو no:<span class=\"ltr\"><b>trap: addressing error</b></span>",
+      "مثال سلايد 28، والـ segment table مكتوبة <bdi dir=\"ltr\">(limit, base)</bdi>:<span class=\"ltr\">seg 0 subroutine (1000, 1400)</span><span class=\"ltr\">seg 1 Sqrt (400, 6300)</span><span class=\"ltr\">seg 2 main program (400, 4300)</span><span class=\"ltr\">seg 3 stack (1100, 3200)</span><span class=\"ltr\">seg 4 symbol table (1000, 4700)</span>",
+      "ترتيبهم في الـ physical memory على السلايد:<span class=\"ltr\">seg 0: 1400–2400</span><span class=\"ltr\">seg 3: 3200–4300</span><span class=\"ltr\">seg 2: 4300–4700</span><span class=\"ltr\">seg 4: 4700–5700</span><span class=\"ltr\">seg 1: 6300–6700</span>",
+      "الـ byte رقم <bdi dir=\"ltr\">53</bdi> من الـ segment رقم 2:<span class=\"ltr\">4300 + 53 = <b>4353</b></span>",
+      "الـ byte رقم <bdi dir=\"ltr\">852</bdi> من الـ segment رقم 3:<span class=\"ltr\">3200 + 852 = <b>4052</b></span>",
+      "الـ byte رقم <bdi dir=\"ltr\">1222</bdi> من الـ segment رقم 0:<span class=\"ltr\">1222 ≥ 1000 → <b>trap</b></span>لأن الـ segment ده طوله <bdi dir=\"ltr\">1000 bytes</bdi> بس."
      ],
      "figH": {
-      "os-segment-xlate": "الـ Segmentation: الترجمة من <bdi dir=\"ltr\">(segment, offset)</bdi> لـ physical address"
+      "os-seg-view": "سلايدات 23 و24: نظرة الـ user والـ logical view للـ segmentation",
+      "os-seg-hw": "سلايد 27: الـ segmentation hardware خطوة بخطوة",
+      "os-segment-xlate": "سلايد 28 والسؤال 6: الترجمة من <bdi dir=\"ltr\">(segment, offset)</bdi> لـ physical address"
      }
     },
     {
      "h": "الـ Paging والـ address translation",
      "pts": [
-      "الـ physical address space بتاع الـ process ممكن يبقى <b>noncontiguous</b>. الـ Paging <b>بيتجنب الـ external fragmentation</b> ومشكلة الحتت اللي أحجامها مختلفة، بس <b>لسه فيه internal fragmentation</b>.",
-      "الـ physical memory بتتقسم لـ blocks ثابتة الحجم اسمها <b>frames</b> (الحجم power of 2، ما بين 512 bytes و16 MB)؛ والـ logical memory لـ blocks بنفس الحجم اسمها <b>pages</b>. والـ backing store كمان بيتقسم لـ pages.",
-      "بنتابع كل الـ free frames؛ عشان نشغّل برنامج فيه N pages، بنلاقي N free frames ونحمّله؛ ونعمل <b>page table</b> تترجم من logical لـ physical addresses.",
-      "الـ logical address بيتكون من <b>page number p</b> (index في الـ page table، اللي فيها الـ <bdi dir=\"ltr\">base&nbsp;address/frame</bdi> لكل page) + <b>page offset d</b> (بيتجمع مع الـ frame base عشان يطلع الـ physical address). لو الـ logical address space هو 2<sup>m</sup> والـ page size هو 2<sup>n</sup>: <b>الـ p هو الـ m − n bits العالية، والـ d هو الـ n bits الواطية</b>.",
-      "رسمة الـ paging model، والـ page table فيها:<span class=\"ltr\">0→1, 1→4, 2→3, 3→7</span>يعني الـ page 0 في الـ frame 1، والـ page 1 في الـ frame 4، والـ page 2 في الـ frame 3، والـ page 3 في الـ frame 7.",
-      "<b>مثال internal fragmentation</b>: الـ page حجمها 2,048 B والـ process حجمها 72,766 B:<span class=\"ltr\">72,766 B = 35 pages + 1,086 B → 36 frames</span><span class=\"ltr\">internal fragmentation = 2,048 − 1,086 = <b>962 B</b></span>أسوأ حالة هي <bdi dir=\"ltr\">1 frame − 1 byte</bdi>، وفي المتوسط ½ frame. الـ pages الصغيرة معناها fragmentation أقل بس page-table entries أكتر؛ وأحجام الـ pages بتكبر مع الوقت (Solaris بيدعم 8 KB و4 MB).",
-      "نظرة الـ process والـ physical memory بقوا مختلفين جدًا، والـ process تقدر توصل بس للـ memory بتاعتها."
+      "الـ physical address space بتاع الـ process ممكن يبقى <b>noncontiguous</b>، فالـ process بتاخد physical memory في أي وقت تكون متاحة فيه.",
+      "الـ Paging <b>بيتجنب الـ external fragmentation</b>.",
+      "وبيتجنب مشكلة الحتت اللي أحجامها مختلفة في الـ memory.",
+      "بنقسم الـ physical memory لـ blocks ثابتة الحجم اسمها <b>frames</b>.",
+      "وحجم الـ frame هو power of 2، ما بين <bdi dir=\"ltr\">512 bytes</bdi> و <bdi dir=\"ltr\">16 Mbytes</bdi>.",
+      "وبنقسم الـ logical memory لـ blocks بنفس الحجم اسمها <b>pages</b>.",
+      "بنتابع كل الـ free frames.",
+      "عشان نشغّل برنامج حجمه <b>N</b> pages، لازم نلاقي <b>N</b> free frames ونحمّل البرنامج.",
+      "وبنعمل <b>page table</b> تترجم من logical لـ physical addresses.",
+      "والـ backing store كمان بيتقسم لـ pages.",
+      "الـ Paging <b>لسه فيه internal fragmentation</b>.",
+      "الـ address اللي الـ CPU بيطلّعه بيتقسم لـ: <b>page number p</b>، وده بيستخدم كـ index في الـ page table، واللي فيها الـ base address بتاع كل page في الـ physical memory.",
+      "و <b>page offset d</b>، وده بيتجمع مع الـ base address عشان يحدد الـ physical memory address اللي بيتبعت للـ memory unit.",
+      "شكل (سلايد 30): لو الـ logical address space حجمها 2<sup>m</sup> والـ page size حجمها 2<sup>n</sup>، يبقى:<span class=\"ltr\"><b>p = high m − n bits, d = low n bits</b></span>",
+      "شكل (سلايد 31، الـ paging hardware): الـ CPU بيطلّع <bdi dir=\"ltr\">(p, d)</bdi>. والـ <b>p</b> بيدخل على الـ page table ويجيب الـ frame <b>f</b>. والـ physical address بيبقى <bdi dir=\"ltr\">(f, d)</bdi>، والـ d زي ما هو. والـ frame f بتغطي العناوين:<span class=\"ltr\">f0000…0000 → f1111…1111</span>",
+      "شكل (سلايد 32، الـ paging model): الـ page table فيها:<span class=\"ltr\">0 → 1, 1 → 4, 2 → 3, 3 → 7</span>يعني الـ page رقم <bdi dir=\"ltr\">0</bdi> في الـ frame رقم <bdi dir=\"ltr\">1</bdi>، والـ page رقم <bdi dir=\"ltr\">1</bdi> في الـ frame رقم <bdi dir=\"ltr\">4</bdi>، والـ page رقم <bdi dir=\"ltr\">2</bdi> في الـ frame رقم <bdi dir=\"ltr\">3</bdi>، والـ page رقم <bdi dir=\"ltr\">3</bdi> في الـ frame رقم <bdi dir=\"ltr\">7</bdi>. والـ frames <span class=\"ltr\">0, 2, 5, 6</span>فاضية.",
+      "<b>حساب الـ internal fragmentation</b> (سلايد 33): الـ page size هو <bdi dir=\"ltr\">2,048 bytes</bdi> والـ process size هو <bdi dir=\"ltr\">72,766 bytes</bdi>، فالـ process بتبقى:<span class=\"ltr\">35 × 2,048 = 71,680</span><span class=\"ltr\">72,766 − 71,680 = 1,086</span><span class=\"ltr\">35 pages + 1,086 bytes</span>يعني محتاجة <bdi dir=\"ltr\">36 frames</bdi>.",
+      "والـ internal fragmentation:<span class=\"ltr\">2,048 − 1,086 = <b>962 bytes</b></span>",
+      "أسوأ حالة للـ fragmentation هي:<span class=\"ltr\">1 frame − 1 byte</span>",
+      "وفي المتوسط الـ fragmentation بيبقى نص frame size.",
+      "يبقى نخلّي الـ frame size صغير؟ بس كل page table entry بياخد memory عشان نتابعه.",
+      "الـ pages الأصغر معناها fragmentation أقل، بس entries أكتر في الـ page table. ‡",
+      "وأحجام الـ pages بتكبر مع الوقت.",
+      "والـ Solaris بيدعم حجمين للـ page:<span class=\"ltr\">8 KB, 4 MB</span>",
+      "نظرة الـ process والـ physical memory بقوا مختلفين جدًا.",
+      "وبالتنفيذ ده، الـ process تقدر توصل بس للـ memory بتاعتها."
      ],
      "figH": {
-      "os-paging-model": "الـ Paging model: الـ pages والـ page table والـ frames",
-      "os-page-frag": "الـ Internal fragmentation في الـ paging: آخر frame"
+      "os-paging-hw": "سلايدات 30 و31: الـ paging hardware خطوة بخطوة",
+      "os-paging-model": "سلايد 32: الـ pages والـ page table والـ frames",
+      "os-page-frag": "سلايد 33: الـ internal fragmentation في آخر frame"
      }
     },
     {
@@ -1558,34 +1665,47 @@ AR.os = {
     "اعمل swap out لـ process الـ priority بتاعها أوطى عشان تشغّل واحدة أعلى.",
     "أول hole كبير كفاية / أصغر hole كبير كفاية / أكبر hole.",
     "إجمالي الـ free memory كفاية، بس مش contiguous.",
-    "الـ block المتخصص أكبر شوية من المطلوب؛ الجزء اللي مش مستخدم جوة الـ partition.",
+    "الـ block المخصص أكبر شوية من المطلوب؛ الجزء اللي مش مستخدم جوة الـ partition.",
     "بتحرّك محتويات الـ memory عشان الـ free memory تبقى block واحد كبير؛ محتاجة dynamic relocation.",
     "الـ Base (عنوان البداية) والـ limit (الطول).",
     "الـ Segment-table base register (مكان الـ table)، والـ length register (عدد الـ segments، والـ s لازم يبقى <bdi dir=\"ltr\">s&nbsp;&lt;&nbsp;STLR</bdi>).",
     "الـ frame هو block ثابت من الـ physical memory، والـ page هي block بنفس الحجم من الـ logical memory.",
     "مفيش external fragmentation، بس فيه internal fragmentation في آخر page.",
-    "الـ Page number p (الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;bits</bdi> العالية) والـ offset d (الـ n bits الواطية)."
+    "الـ Page number p (الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;bits</bdi> العالية) والـ offset d (الـ n bits الواطية).",
+    "الـ programs اللي على الـ disk وجاهزة تتجاب للـ memory عشان تتنفذ.",
+    "الـ Logical: مجموعة كل الـ virtual addresses اللي الـ CPU بيطلّعها وقت تنفيذ البرنامج.<br>الـ Physical: مجموعة كل الـ actual addresses، وكل واحد منهم data element معينة في الـ memory.",
+    "الـ backing store هو disk سريع وكبير كفاية يشيل نسخ من كل الـ memory images بتاعة كل الـ users، وفيه direct access ليها.",
+    "الـ hole هو block من الـ memory المتاحة، والـ holes بأحجام مختلفة متفرقة في الـ memory.",
+    "بيتابع (a) الـ allocated partitions، و(b) الـ free partitions يعني الـ holes.",
+    "لما الـ validation bit يبقى <bdi dir=\"ltr\">0</bdi> يبقى الـ segment illegal.",
+    "على مستوى الـ segment، لأن الـ protection bits مرتبطة بالـ segments.",
+    "بتترجم من logical لـ physical addresses، والـ page number p هو الـ index بتاعها، وفيها الـ base address (الـ frame) بتاع كل page.",
+    "الحجم power of 2، ما بين <bdi dir=\"ltr\">512 bytes</bdi> و <bdi dir=\"ltr\">16 Mbytes</bdi>.",
+    "أسوأ حالة:<span class=\"ltr\">1 frame − 1 byte</span>وفي المتوسط نص frame size.",
+    "حجمين للـ page:<span class=\"ltr\">8 KB, 4 MB</span>"
    ],
    "qa": [
-    "زوج registers بيحدد الـ logical address space بتاع الـ process. الـ base فيه أصغر physical address legal، والـ limit فيه حجم الـ range. الـ CPU hardware بيتشيك على كل memory access في الـ user-mode: لو <bdi dir=\"ltr\">base ≤ address &lt; base + limit</bdi> بيكمّل؛ غير كده بيعمل trap للـ OS بـ addressing error. الـ OS بس هو اللي يقدر يحمّلهم، باستخدام privileged instructions.",
+    "زوج registers بيحدد الـ logical address space بتاع الـ process. الـ base فيه أصغر physical address legal، والـ limit فيه حجم الـ range. الـ CPU hardware بيتشيك على كل memory access في الـ user-mode: لو <bdi dir=\"ltr\">base ≤ address &lt; base + limit</bdi> بيكمّل؛ غير كده بيعمل trap للـ OS بـ addressing error. الـ OS بس هو اللي يقدر يحمّلهم، باستخدام privileged instructions. ‡",
     "الـ logical (virtual) address الـ CPU بيطلّعه وقت تنفيذ البرنامج. الـ physical address هو اللي الـ memory unit بتشوفه فعلًا. هما نفس الحاجة مع الـ compile-time والـ load-time binding بس بيختلفوا مع الـ execution-time binding، لما الـ MMU بيعمل mapping من logical لـ physical وقت التشغيل (زي إنه يجمع الـ relocation register). البرنامج عمره ما بيشوف غير logical addresses.",
     "الـ First-fit:<span class=\"ltr\">212 → 500, 417 → 600, 112 → 288</span>(وفاضل 288 بعد الأولى)، والـ 426 لازم يستنى.<br>الـ Best-fit:<span class=\"ltr\">212 → 300, 417 → 500, 112 → 200, 426 → 600</span>الـ Worst-fit:<span class=\"ltr\">212 → 600, 417 → 500, 112 → 388</span>(وفاضل 388 بعد الأولى)، والـ 426 لازم يستنى.<br>الـ Best-fit هو اللي بيستخدم الـ memory بأكفأ طريقة هنا لأنه الوحيد اللي حط الأربعة.",
-    "الـ External: فيه free memory إجمالي كفاية للطلب، بس مش contiguous. بيحصل مع الـ variable partitions والـ segmentation، والـ compaction بيحله. الـ Internal: الـ process بتاخد block أكبر شوية من اللي طلبته، والمساحة اللي مش مستخدمة جوة الـ partition بتضيع. بيحصل مع الـ fixed-size blocks زي الـ paging، زي 962 bytes في آخر page حجمها 2 KB.",
-    "الـ physical memory بتتقسم لـ frames ثابتة الحجم والـ logical memory لـ pages بنفس الحجم. الـ process اللي فيها N pages بتتحمّل في أي N free frames، ومش لازم يبقوا contiguous. الـ page table بتعمل mapping لكل page number على الـ frame بتاعه. الـ address بتاع الـ CPU بيتقسم لـ page number p (الـ index في الـ page table) وoffset d، والـ physical address بيساوي <bdi dir=\"ltr\">frame × page size + d</bdi>. الـ Paging بيتجنب الـ external fragmentation بس لسه فيه internal fragmentation.",
-    "الـ Paging بيستخدم pages ثابتة الحجم مش باينة للـ user. الـ address بتاعه <bdi dir=\"ltr\">(p,&nbsp;d)</bdi> مع page table فيها frames، وفيه internal fragmentation بس مفيش external. الـ Segmentation بيستخدم segments منطقية أحجامها متغيرة بتطابق نظرة الـ user (زي الـ main والـ stack والـ functions…). الـ address بتاعه <bdi dir=\"ltr\">(s,&nbsp;d)</bdi> مع segment table فيها base وlimit، وفيه external fragmentation بس مفيش internal. الـ Segments بتتعملها allocation بـ <bdi dir=\"ltr\">first/best/worst&nbsp;fit</bdi>، والـ protection والمشاركة بييجوا طبيعي لكل segment."
+    "الـ External: فيه free memory إجمالي كفاية للطلب، بس مش contiguous. والـ compaction بيقلله. بيحصل مع الـ variable partitions والـ segmentation. ‡ الـ Internal: الـ process بتاخد block أكبر شوية من اللي طلبته، والمساحة اللي مش مستخدمة جوة الـ partition بتضيع. بيحصل مع الـ fixed-size blocks زي الـ paging، زي <bdi dir=\"ltr\">962 bytes</bdi> في آخر page حجمها <bdi dir=\"ltr\">2 KB</bdi>.",
+    "الـ physical memory بتتقسم لـ frames ثابتة الحجم والـ logical memory لـ pages بنفس الحجم. الـ process اللي فيها N pages بتتحمّل في أي N free frames، ومش لازم يبقوا contiguous. الـ page table بتعمل mapping لكل page number على الـ frame بتاعه. الـ address بتاع الـ CPU بيتقسم لـ page number p (الـ index في الـ page table) وoffset d. الـ Paging بيتجنب الـ external fragmentation بس لسه فيه internal fragmentation. والـ physical address بيساوي <bdi dir=\"ltr\">frame × page size + d</bdi>. ‡",
+    "الـ Paging بيستخدم pages ثابتة الحجم مش باينة للـ user. الـ address بتاعه <bdi dir=\"ltr\">(p,&nbsp;d)</bdi> مع page table فيها frames، وفيه internal fragmentation بس مفيش external. الـ Segmentation بيستخدم segments منطقية أحجامها متغيرة بتطابق نظرة الـ user (زي الـ main والـ stack والـ functions…). الـ address بتاعه <bdi dir=\"ltr\">(s,&nbsp;d)</bdi> مع segment table فيها base وlimit، وفيه external fragmentation بس مفيش internal. الـ Segments بتتعملها allocation بـ <bdi dir=\"ltr\">first/best/worst&nbsp;fit</bdi>، والـ protection والمشاركة بييجوا طبيعي لكل segment. ‡",
+    "الـ MMU ده hardware device بيعمل mapping من virtual (logical) لـ physical addresses وقت التشغيل. في أبسط طريقة، قيمة الـ relocation register (ده الاسم الجديد للـ base register) بتتجمع على كل address الـ user process بتطلّعه لحظة ما بيتبعت للـ memory، مثلًا:<span class=\"ltr\">14000 + 346 = 14346</span>وبرنامج الـ user بيتعامل مع logical addresses بس، وعمره ما بيشوف الـ physical addresses الحقيقية.",
+    "نتأكد الأول إن الـ offset أقل من الـ length، وبعدين نجمع الـ base.<br>(a):<span class=\"ltr\">430 &lt; 600 → 219 + 430 = <b>649</b></span>(b):<span class=\"ltr\">10 &lt; 14 → 2300 + 10 = <b>2310</b></span>(c):<span class=\"ltr\">500 ≥ 100 → <b>trap (addressing error)</b></span>(d):<span class=\"ltr\">400 &lt; 580 → 1327 + 400 = <b>1727</b></span>(e):<span class=\"ltr\">112 ≥ 96 → <b>trap (addressing error)</b></span>"
    ],
    "quiz": [
     [
-     "الـ partition اللي 100 KB أصغر من 112 KB، فالـ first-fit بيعدّيها وياخد أول hole بعدها يكفي: الـ 288 KB اللي فاضلين في الـ partition اللي 500 KB <bdi dir=\"ltr\">(Topic 4)</bdi>.",
-     "صح. بعد ما الـ 212 يروح الـ 500، أول hole ≥ 112 هو الـ 288 K المتبقي.",
-     "الـ partition اللي 200 KB دي اختيار الـ best-fit (أصغر hole ≥ 112 KB)؛ الـ first-fit بيقف قبلها، عند الـ hole اللي 288 KB الفاضل في الـ 500 KB <bdi dir=\"ltr\">(Topic 4)</bdi>.",
-     "الـ hole اللي 388 KB (<bdi dir=\"ltr\">600 − 212</bdi>) ده اختيار الـ worst-fit، عشان الـ worst-fit حط الـ 212 KB في الـ 600 KB؛ الـ first-fit حط 212 في الـ 500 و417 في الـ 600 <bdi dir=\"ltr\">(Topic 4)</bdi>."
+     "الـ partition اللي <bdi dir=\"ltr\">100 KB</bdi> أصغر من <bdi dir=\"ltr\">112 KB</bdi>، فالـ first-fit بيعدّيها وياخد أول hole بعدها يكفي: الـ <bdi dir=\"ltr\">288 KB</bdi> اللي فاضلين في الـ partition اللي <bdi dir=\"ltr\">500 KB</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "صح. بعد ما الـ 212 يروح الـ 500، أول hole ≥ 112 هو الـ <bdi dir=\"ltr\">288 K</bdi> المتبقي.",
+     "الـ partition اللي <bdi dir=\"ltr\">200 KB</bdi> دي اختيار الـ best-fit (أصغر hole ≥ <bdi dir=\"ltr\">112 KB</bdi>)؛ الـ first-fit بيقف قبلها، عند الـ hole اللي <bdi dir=\"ltr\">288 KB</bdi> الفاضل في الـ <bdi dir=\"ltr\">500 KB</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ hole اللي <bdi dir=\"ltr\">388 KB</bdi> (<bdi dir=\"ltr\">600 − 212</bdi>) ده اختيار الـ worst-fit، عشان الـ worst-fit حط الـ <bdi dir=\"ltr\">212 KB</bdi> في الـ <bdi dir=\"ltr\">600 KB</bdi>؛ الـ first-fit حط 212 في الـ 500 و417 في الـ 600 <bdi dir=\"ltr\">(Topic 4)</bdi>."
     ],
     [
-     "الـ first-fit بيحط:<span class=\"ltr\">212 → 500, 417 → 600, 112 → 288</span>وبعدين مفيش hole ≥ 426 KB، فالـ 426 KB لازم تستنى (Topic 4، مثال الـ Dynamic Storage-Allocation).",
+     "الـ first-fit بيحط:<span class=\"ltr\">212 → 500, 417 → 600, 112 → 288</span>وبعدين مفيش hole ≥ <bdi dir=\"ltr\">426 KB</bdi>، فالـ <bdi dir=\"ltr\">426 KB</bdi> لازم تستنى (Topic 4، مثال الـ Dynamic Storage-Allocation).",
      "صح. هو الوحيد اللي بيحط الأربع processes.",
-     "الـ worst-fit بيحط:<span class=\"ltr\">212 → 600, 417 → 500, 112 → 388</span>وبعدين مفيش hole ≥ 426 KB، فالـ 426 KB لازم تستنى <bdi dir=\"ltr\">(Topic 4)</bdi>.",
-     "مش متساويين: الـ first-fit والـ worst-fit الاتنين بيسيبوا الـ process اللي 426 KB مستنية، أما الـ best-fit بيحط الأربعة، فالسلايد بيقول إن الـ best-fit هو الأحسن هنا <bdi dir=\"ltr\">(Topic 4)</bdi>."
+     "الـ worst-fit بيحط:<span class=\"ltr\">212 → 600, 417 → 500, 112 → 388</span>وبعدين مفيش hole ≥ <bdi dir=\"ltr\">426 KB</bdi>، فالـ <bdi dir=\"ltr\">426 KB</bdi> لازم تستنى <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "مش متساويين: الـ first-fit والـ worst-fit الاتنين بيسيبوا الـ process اللي <bdi dir=\"ltr\">426 KB</bdi> مستنية، أما الـ best-fit بيحط الأربعة، فالسلايد بيقول إن الـ best-fit هو الأحسن هنا <bdi dir=\"ltr\">(Topic 4)</bdi>."
     ],
     [
      "الـ Internal هو مساحة ضايعة جوة block متخصص.",
@@ -1594,10 +1714,10 @@ AR.os = {
      "الـ page fault ده reference لـ page مش موجودة في الـ memory <bdi dir=\"ltr\">(Topic 5)</bdi>؛ مالوش علاقة بإن المساحة الفاضية متفرقة في holes مش contiguous."
     ],
     [
-     "الـ 1,086 B دي المستخدم فعلًا من آخر page:<span class=\"ltr\">72,766 − 35 × 2,048</span>والجزء الضايع هو:<span class=\"ltr\">2,048 − 1,086 = 962 B</span>وده من Topic 4.",
+     "الـ <bdi dir=\"ltr\">1,086 B</bdi> دي المستخدم فعلًا من آخر page:<span class=\"ltr\">72,766 − 35 × 2,048</span>والجزء الضايع هو:<span class=\"ltr\">2,048 − 1,086 = 962 B</span>وده من Topic 4.",
      "صح، لأن <bdi dir=\"ltr\">72,766 = 35 × 2,048 + 1,086</bdi>، فآخر frame بيضيّع <bdi dir=\"ltr\">2,048 − 1,086 = 962 B</bdi>.",
-     "الـ 2,047 B (frame واحد − 1 byte) دي أسوأ internal fragmentation، وبتحصل بس لما آخر page يبقى فيها 1 byte؛ هنا فيها 1,086 B <bdi dir=\"ltr\">(Topic 4)</bdi>.",
-     "الـ 0 B محتاجة حجم الـ process يبقى مضاعف مظبوط لـ 2,048؛ الـ 72,766 بيفضل منها باقي 1,086 B، فـ 962 B من آخر frame بيضيعوا <bdi dir=\"ltr\">(Topic 4)</bdi>."
+     "الـ <bdi dir=\"ltr\">2,047 B</bdi> (frame واحد − <bdi dir=\"ltr\">1 byte</bdi>) دي أسوأ internal fragmentation، وبتحصل بس لما آخر page يبقى فيها <bdi dir=\"ltr\">1 byte</bdi>؛ هنا فيها <bdi dir=\"ltr\">1,086 B</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">0 B</bdi> محتاجة حجم الـ process يبقى مضاعف مظبوط لـ 2,048؛ الـ 72,766 بيفضل منها باقي <bdi dir=\"ltr\">1,086 B</bdi>، فـ <bdi dir=\"ltr\">962 B</bdi> من آخر frame بيضيعوا <bdi dir=\"ltr\">(Topic 4)</bdi>."
     ],
     [
      "الـ 590 <bdi dir=\"ltr\">(= 90 + 500)</bdi> بتجمع الـ offset من غير ما تتشيك على الـ limit الأول؛ وبما إن 500 ≥ الـ length 100، الـ hardware بيعمل trap بدل ما يطلّع address <bdi dir=\"ltr\">(Topic 4, Segmentation)</bdi>.",
@@ -1630,10 +1750,10 @@ AR.os = {
      "الـ paging مبيتجنبش الـ swapping (الـ pages لسه ممكن تتعمل swap)؛ والـ compaction ده علاج الـ external fragmentation، اللي الـ paging بيلغي الحاجة ليه أصلًا <bdi dir=\"ltr\">(Topic 4)</bdi>."
     ],
     [
-     "الـ 2 s دي الـ swap-out بس:<span class=\"ltr\">100 MB ÷ 50 MB/s = 2000 ms</span>والسؤال بيحسب كمان الـ swap-in لـ process بنفس الحجم <bdi dir=\"ltr\">(Topic 4)</bdi>.",
-     "صح. الـ swap out بياخد <bdi dir=\"ltr\">100 MB ÷ 50 MB/s = 2000 ms</bdi>، وزائد swap in بنفس الحجم بياخد 2000 ms، يبقى المجموع <bdi dir=\"ltr\">4000 ms = 4 s</bdi> <bdi dir=\"ltr\">(Topic 4, Context Switch Time including Swapping)</bdi>.",
-     "الـ 0.5 s جاية من القسمة بالمقلوب <bdi dir=\"ltr\">(50&nbsp;÷&nbsp;100)</bdi>؛ والوقت:<span class=\"ltr\">size ÷ rate = 100 ÷ 50 = 2 s</span>لكل اتجاه، يعني 4 s في المجموع <bdi dir=\"ltr\">(Topic 4)</bdi>.",
-     "الـ 50 s مش طالعة من أي خطوة: كل transfer بياخد:<span class=\"ltr\">100 MB ÷ 50 MB/s = 2 s</span>فالـ out + in بيبقوا 4 s، وده من Topic 4."
+     "الـ <bdi dir=\"ltr\">2 s</bdi> دي الـ swap-out بس:<span class=\"ltr\">100 MB ÷ 50 MB/s = 2000 ms</span>والسؤال بيحسب كمان الـ swap-in لـ process بنفس الحجم <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "صح. الـ swap out بياخد <bdi dir=\"ltr\">100 MB ÷ 50 MB/s = 2000 ms</bdi>، وزائد swap in بنفس الحجم بياخد <bdi dir=\"ltr\">2000 ms</bdi>، يبقى المجموع <bdi dir=\"ltr\">4000 ms = 4 s</bdi> <bdi dir=\"ltr\">(Topic 4, Context Switch Time including Swapping)</bdi>.",
+     "الـ <bdi dir=\"ltr\">0.5 s</bdi> جاية من القسمة بالمقلوب <bdi dir=\"ltr\">(50&nbsp;÷&nbsp;100)</bdi>؛ والوقت:<span class=\"ltr\">size ÷ rate = 100 ÷ 50 = 2 s</span>لكل اتجاه، يعني <bdi dir=\"ltr\">4 s</bdi> في المجموع <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">50 s</bdi> مش طالعة من أي خطوة: كل transfer بياخد:<span class=\"ltr\">100 MB ÷ 50 MB/s = 2 s</span>فالـ out + in بيبقوا <bdi dir=\"ltr\">4 s</bdi>، وده من Topic 4."
     ],
     [
      "الـ low n bits دول الـ page offset d، اللي بيحدد الـ byte جوه الـ page اللي حجمها 2<sup>n</sup> <bdi dir=\"ltr\">(Topic 4, Address Translation Scheme)</bdi>.",
@@ -1646,6 +1766,64 @@ AR.os = {
      "الـ best-fit بياخد أصغر hole يكفي، فبيطلّع أصغر leftover hole، عكس المطلوب <bdi dir=\"ltr\">(Topic 4)</bdi>.",
      "صح. الـ worst-fit بيحجز أكبر hole (بيدوّر في الليستة كلها)، وده بيطلّع أكبر leftover hole <bdi dir=\"ltr\">(Topic 4, Dynamic Storage-Allocation)</bdi>.",
      "الـ next-fit (first-fit بيبدأ من المكان اللي آخر search وقف عنده) مش في المحاضرة؛ ومن التلات strategies اللي اتشرحوا، الـ worst-fit هو اللي بيسيب أكبر hole <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. المحاضرة بتقول إن الـ main memory والـ registers هما الـ storage الوحيد اللي الـ CPU يقدر يوصله مباشرةً <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ backing store ده disk بيستخدم في الـ swapping، والبرنامج لازم يتجاب من الـ disk للـ memory عشان يشتغل <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "البرامج لازم تتجاب من الـ disk للـ memory عشان تشتغل، لأن الـ CPU مايقدرش يوصل للـ disk مباشرةً <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ input queue هي البرامج اللي على الـ disk ومستنية تتجاب للـ memory، مش storage الـ CPU بيقرا منه <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. سلايد 10: الـ routine مابتتحمّلش غير لما تتنادى، وده بيدّي استخدام أحسن لمساحة الـ memory، وآخر bullet بيسميها dynamic loading <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ swapping بينقل process كاملة لـ backing store وبيرجعها، مش بيأجل تحميل routine لحد أول مرة تتنادى فيها <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ compaction بيحرك محتويات الـ memory عشان يجمع الـ free memory، ومالوش دعوة بتأجيل تحميل الـ routines <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">roll out, roll in</bdi> نوع من الـ swapping مع الـ priority، بيعمل swap out للـ process الأقل أولوية <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "الـ absolute code بيطلع لما مكان الـ memory يبقى معروف من الأول (compile-time binding)، وده عكس الحالة دي <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "صح. في الـ load time لازم يطلع relocatable code لو مكان الـ memory مش معروف وقت الـ compile <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ symbolic addresses هي أسامي الـ variables في الـ source code، والكود بعد الـ compile بيعمل bind لـ relocatable addresses <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "كلمة virtual اسم تاني للـ logical address اللي الـ CPU بيطلّعه، مش نوع كود بيطلع من الـ compiler <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. سلايد 14: الـ base register فيه قيمة أصغر physical address <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ range بتاع الـ logical addresses في الـ limit register، وكل logical address لازم يبقى أقل منه <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "السلايد بيقول أصغر physical address، وآخر الـ range بييجي من <bdi dir=\"ltr\">base + limit</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "عدد الـ segments في الـ STLR، وده تبع الـ segmentation <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "ده الشيك بتاع سلايد 4 بالـ <bdi dir=\"ltr\">base + limit</bdi>، إنما مع الـ relocation register الـ logical address بيتقارن بالـ limit بس <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "صح. لو yes بيتجمع عليه الـ relocation register ويطلع physical address ويروح للـ memory (سلايد 15).",
+     "الـ trap هو فرع الـ no، لما الـ logical address مايبقاش أقل من الـ limit <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ logical address عمره ما بيتبعت زي ما هو، لازم الـ relocation يتجمع عليه الأول <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. <bdi dir=\"ltr\">852 &lt; 1100</bdi>، فالـ physical address هو:<span class=\"ltr\">3200 + 852 = 4052</span><bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">4300</bdi> هو <bdi dir=\"ltr\">3200 + 1100</bdi>، يعني نهاية الـ segment رقم <bdi dir=\"ltr\">3</bdi>، والـ byte رقم <bdi dir=\"ltr\">852</bdi> جوّاها <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">1952</bdi> ده <bdi dir=\"ltr\">852 + 1100</bdi>، جمع الـ offset على الـ limit، والصح هو base + offset <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "مفيش trap، لأن <bdi dir=\"ltr\">852 &lt; 1100</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. سلايد 25: الـ s يبقى legal لو <bdi dir=\"ltr\">s &lt; STLR</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ STLR هو عدد الـ segments، فآخر رقم legal هو <bdi dir=\"ltr\">STLR − 1</bdi> <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ limit بيتقارن بالـ offset d، مش برقم الـ segment <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ STBR فيه مكان الـ segment table في الـ memory، ومش بيتقارن بالـ s <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. سلايد 30: الـ page number p بيستخدم كـ index في الـ page table <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ offset d بيتجمع مع الـ base address، ومش بيستخدم كـ index <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ f هو اللي الـ table بترجّعه، مش اللي بيدخل عليها <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ STLR تبع الـ segmentation، مش الـ paging <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "ضياع frame كاملة معناه إن آخر page فاضية خالص فمش محتاجينها، وأسوأ حالة هي frame إلا byte واحد <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "صح. أسوأ حالة:<span class=\"ltr\">1 frame − 1 byte = 2,048 − 1 = 2,047</span><bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">1,024</bdi> هي نص frame، وده متوسط الـ fragmentation <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "الـ <bdi dir=\"ltr\">962</bdi> هي نتيجة مثال السلايد للـ process اللي حجمها <bdi dir=\"ltr\">72,766</bdi>، مش أسوأ حالة <bdi dir=\"ltr\">(Topic 4)</bdi>."
+    ],
+    [
+     "صح. سلايد 16: الـ process اللي بتخرج بتفضّي الـ partition بتاعها، والـ free partitions اللي جنب بعض بتتجمع <bdi dir=\"ltr\">(Topic 4)</bdi>.",
+     "السلايد بيقول كده بالظبط: الـ free partitions اللي جنب بعض بتتجمع لما process تخرج <bdi dir=\"ltr\">(Topic 4)</bdi>."
     ]
    ],
    "extra": [
@@ -1669,21 +1847,21 @@ AR.os = {
     ],
     [
      "بالعكس: الـ offset محتاج <bdi dir=\"ltr\">n&nbsp;=&nbsp;9&nbsp;bits</bdi> عشان يوصل لـ <bdi dir=\"ltr\">512&nbsp;=&nbsp;2⁹&nbsp;bytes</bdi> جوة الـ page.",
-     "صح. لما <bdi dir=\"ltr\">m = 13, n = 9</bdi>، الـ page number هو الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;=&nbsp;4&nbsp;bits</bdi> العالية (16 page) والـ offset هو الـ 9 bits الواطية.",
+     "صح. لما <bdi dir=\"ltr\">m = 13, n = 9</bdi>، الـ page number هو الـ <bdi dir=\"ltr\">m&nbsp;−&nbsp;n&nbsp;=&nbsp;4&nbsp;bits</bdi> العالية (<bdi dir=\"ltr\">16 page</bdi>) والـ offset هو الـ <bdi dir=\"ltr\">9 bits</bdi> الواطية.",
      "الـ fields الاتنين مع بعض لازم يساووا الـ address اللي <bdi dir=\"ltr\">13-bit</bdi>، فالـ page number بس <bdi dir=\"ltr\">13 − 9</bdi> bits.",
      "الـ offset بيغطي page واحدة بس (2⁹ bytes)، مش الـ address space كله."
     ],
     [
-     "الـ 4 frames بيشيلوا 4,096 bytes بس؛ الـ 904 bytes الباقيين محتاجين frame خامس. وكمان 904 ده الجزء المستخدم من آخر page، مش الضايع.",
-     "الـ 5 frames صح، بس 904 bytes ده المستخدم من آخر frame. الضايع هو <bdi dir=\"ltr\">1,024 − 904</bdi>.",
-     "صح، لأن <bdi dir=\"ltr\">5,000 = 4 × 1,024 + 904</bdi>، فمحتاجين 5 frames؛ والـ internal fragmentation هي <bdi dir=\"ltr\">1,024 − 904 = 120 bytes</bdi>.",
+     "الـ <bdi dir=\"ltr\">4 frames</bdi> بيشيلوا <bdi dir=\"ltr\">4,096 bytes</bdi> بس؛ الـ <bdi dir=\"ltr\">904 bytes</bdi> الباقيين محتاجين frame خامس. وكمان 904 ده الجزء المستخدم من آخر page، مش الضايع.",
+     "الـ <bdi dir=\"ltr\">5 frames</bdi> صح، بس <bdi dir=\"ltr\">904 bytes</bdi> ده المستخدم من آخر frame. الضايع هو <bdi dir=\"ltr\">1,024 − 904</bdi>.",
+     "صح، لأن <bdi dir=\"ltr\">5,000 = 4 × 1,024 + 904</bdi>، فمحتاجين <bdi dir=\"ltr\">5 frames</bdi>؛ والـ internal fragmentation هي <bdi dir=\"ltr\">1,024 − 904 = 120 bytes</bdi>.",
      "الـ Paging مافيهوش external fragmentation، بس آخر page غالبًا فيها internal fragmentation."
     ],
     [
      "الـ First-fit بيحط:<span class=\"ltr\">350 → 400, 200 → 250, 300 → 600</span>والكل اتحط.",
      "الـ Best-fit بيحط:<span class=\"ltr\">350 → 400, 200 → 250, 300 → 600</span>والكل اتحط.",
-     "الـ Worst-fit مش بيلاقي hole كبير كفاية للـ process اللي 300 KB.",
-     "صح. الـ 350 بتروح للـ 600 (فاضل 250)، والـ 200 بتروح للـ 400 (فاضل 200)؛ فالـ holes بقت <bdi dir=\"ltr\">150, 200, 250, 250</bdi>، والـ 300 KB لازم تستنى."
+     "الـ Worst-fit مش بيلاقي hole كبير كفاية للـ process اللي <bdi dir=\"ltr\">300 KB</bdi>.",
+     "صح. الـ 350 بتروح للـ 600 (فاضل 250)، والـ 200 بتروح للـ 400 (فاضل 200)؛ فالـ holes بقت <bdi dir=\"ltr\">150, 200, 250, 250</bdi>، والـ <bdi dir=\"ltr\">300 KB</bdi> لازم تستنى."
     ],
     [
      "رقم الـ segment 4 مش legal: الـ s لازم يبقى <bdi dir=\"ltr\">&lt; STLR = 4</bdi>، فده بيعمل trap حتى لو الـ offset صغير.",

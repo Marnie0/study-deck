@@ -166,7 +166,12 @@ AR.hci = {
     {
      "h": "الـ UI design process (3 أجزاء)",
      "pts": [
-      "الـ User research معناه إنك تتعلم عن الـ <b>users</b> (مهاراتهم، الحاجات اللي بتشتتهم، الاحتياجات الخاصة زي الأطفال وكبار السن وذوي الإعاقة)، والـ <b>tasks</b> اللي عايزين يخلصوها، والـ <b>previous research</b> عن قدرات الإنسان وحدوده وإدراكه.",
+      "المحاضرة الخامسة بتاعة السنة دي بتدرّس الـ <bdi dir=\"ltr\">3</bdi> components دول باسم الـ <b>UX Design Process</b>: الـ user research (الـ users والـ tasks بتاعتهم والأبحاث القديمة)، والـ design and prototyping، والـ evaluation (improvement). شوف <bdi dir=\"ltr\">L5, UX Design Process</bdi> و<bdi dir=\"ltr\">L5, 1- User Research</bdi>."
+     ]
+    },
+    {
+     "h": "الـ UI design process: الـ software development هو research",
+     "pts": [
       "الـ Software development هو research: مش بس إنك تعمل software، ده كمان <b>إنك تتعلم إزاي تعمل الـ software الأنسب لهدفه</b> (دي واحدة من الـ 12 characteristics اللي اتدرست في Software Engineering)."
      ]
     },
@@ -256,8 +261,14 @@ AR.hci = {
     {
      "h": "الفرق بين الـ UI والـ UX والـ HCI",
      "pts": [
-      "الـ <b>UI Design</b> (User Interface): هو الـ <b>interactivity والـ look and feel</b> بتاع شاشة المنتج أو صفحة الويب. يعني إنك تصمم الحاجة حلوة على الشاشة.",
-      "الـ <b>UX Design</b> (User Experience): هي <b>التجربة الكاملة</b> بتاعة الـ user مع المنتج أو الموقع. الـ UX بيـ<b>حدد (dictate)</b> التفاعلات.",
+      "الـ <b>UI Design</b> (User Interface) هو الـ <b>interactivity والـ look and feel</b> بتاع شاشة المنتج أو صفحة الويب. والـ <b>UX Design</b> (User Experience) هو <b>التجربة الكاملة</b> بتاعة الـ user مع المنتج أو الموقع. والاتنين موجودين في slides المحاضرة الخامسة بتاعة السنة دي بالأمثلة: شوف <bdi dir=\"ltr\">L5, UI Design vs UX Design</bdi>."
+     ]
+    },
+    {
+     "h": "الـ UI والـ UX والـ HCI: زيادة من slides السنة اللي فاتت",
+     "pts": [
+      "الـ UI Design يعني إنك تصمم الحاجة حلوة على الشاشة.",
+      "الـ UX بيـ<b>حدد (dictate)</b> التفاعلات.",
       "أما الـ <b>HCI</b> فهو في الأساس عن <b>فهم</b> التفاعل بين البني آدمين والكمبيوتر.",
       "الأنظمة القديمة كانت شغالة على أجهزة غالية، فالمهندسين ركزوا على software كفء وطنّشوا الـ usability. النهارده عشان تنجح لازم design يكون <b>user-centric</b> ومركز على الـ usability وتجربة حلوة وسلسة."
      ]
@@ -2413,6 +2424,98 @@ AR.hci = {
   "5": {
    "notes": [
     {
+     "h": "الـ UI Design والـ UX Design",
+     "pts": [
+      "الـ <b>UI Design</b> (User Interface): بيتكلم عن الـ <b>interactivity والـ look and feel</b> بتاع شاشة المنتج أو صفحة الويب.",
+      "الـ <b>UX Design</b> (User Experience): بيغطي <b>التجربة الكاملة</b> بتاعة الـ user مع المنتج أو الموقع.",
+      "الفرق بينهم وبين الـ HCI متشرح في المحاضرة الأولى <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+      "عجلة الـ <b>UX</b> في الـ slide فيها: الـ Useful والـ Satisfiable والـ Convenient والـ Credible والـ Accessible والـ Desirable والـ Valuable.",
+      "عجلة الـ <b>UI</b> في الـ slide فيها: الـ Color Scheme والـ Typography والـ Layout والـ Images والـ Forms والـ Buttons والـ Content."
+     ],
+     "figH": {
+      "hc-ux-ui-wheels": "عجلة الـ UX وعجلة الـ UI: إيه اللي تحت كل واحد"
+     }
+    },
+    {
+     "h": "الـ UI designers والـ UX designers بيركزوا على إيه",
+     "pts": [
+      "الـ <b>UI Design</b> هو الـ <b>visual appearance</b> (الشكل). والـ UI designers بيركزوا على:<br>• الألوان والـ typography<br>• الزراير والـ icons<br>• الـ layout والـ spacing<br>• الصور والـ visual style<br>• الـ consistency بين الشاشات",
+      "الـ <b>UX Design</b> هو الـ <b>user experience</b> (التجربة). والـ UX designers بيركزوا على:<br>• احتياجات الـ user والـ research<br>• الـ user journeys والـ flows<br>• الـ wireframes والـ prototypes<br>• سهولة الاستخدام<br>• الـ usability testing"
+     ],
+     "figH": {
+      "hc-ui-ux-focus": "الشاشات اللي بيرسمها الـ UI designer والحيطة اللي بيشتغل عليها الـ UX designer"
+     }
+    },
+    {
+     "h": "مثال: app لتوصيل الأكل",
+     "pts": [
+      "تخيل إنك بتصمم app لطلب البيتزا.",
+      "الـ <b>UI designer</b>: بيقرر شكل صور البيتزا، والألوان اللي الـ app هيستخدمها، وشكل الزراير، والكلام هيظهر فين.",
+      "الـ <b>UX designer</b>: بيتأكد إن الزبون يقدر يلاقي البيتزا، ويظبط الأوردر بتاعه، ويدفع بسهولة، ويتابع الـ delivery من غير ما يتلخبط.",
+      "الـ app الجميل اللي الـ navigation بتاعه ملخبط عنده <b>UI كويس بس UX وحش</b>.",
+      "الـ app السهل في الاستخدام بس شكله مش حلو ممكن يبقى عنده <b>UX كويس بس UI وحش</b>.",
+      "وأحسن المنتجات بتجمع الاتنين."
+     ],
+     "figH": {
+      "hc-pizza-app": "الـ pizza app: غيّر الـ UI والـ UX بين كويس ووحش"
+     }
+    },
+    {
+     "h": "محتاج إيه من skills؟",
+     "pts": [
+      "خد بالك إن <b>Figma</b> بيتستخدم للـ UI والـ UX الاتنين."
+     ]
+    },
+    {
+     "h": "الـ Invisible Interface (Idle Concept)",
+     "pts": [
+      "الـ interface لازم يبقى <b>خفي على قد ما نقدر</b>، عشان الـ user يفكر في الـ <b>task</b> مش في الأداة. متشرحة كاملة مع الرسمة بتاعتها في المحاضرة الأولى <bdi dir=\"ltr\">(L1, Invisible Interface (Idle Concept))</bdi>."
+     ]
+    },
+    {
+     "h": "الـ UX Design Process",
+     "pts": [
+      "فيه <bdi dir=\"ltr\">3</bdi> components موصى بيهم:<br><bdi dir=\"ltr\">1-</bdi> الـ user research.<br><bdi dir=\"ltr\">2-</bdi> الـ design and prototyping بتاع الـ interface.<br><bdi dir=\"ltr\">3-</bdi> الـ user interface evaluation (improvement).",
+      "الرسمة اللي في الـ slide عبارة عن <b>cycle</b>:<span class=\"ltr\">User Research → Design → Build → User Research</span>",
+      "جوه الـ cycle فيه جملتين، الأولى بين الـ User Research والـ Design:<span class=\"ltr\">Iterate to validate your ideas</span>والتانية بين الـ Design والـ Build:<span class=\"ltr\">Iterate to design around constraints</span>",
+      "المرحلة التالتة في الرسمة هي <b>Build</b>، بينما الـ component التالت في الـ list هو الـ <b>evaluation (improvement)</b>، والاتنين موجودين في الـ slide."
+     ],
+     "figH": {
+      "hc-ux-process": "دورة الـ UX design process، فيها الـ research والـ design والـ build"
+     }
+    },
+    {
+     "h": "<bdi dir=\"ltr\">1-</bdi> الـ User Research: لازم تتعلم إيه",
+     "pts": [
+      "الـ <b>Users</b> اللي هيستخدموا الـ system بتاعك: مهاراتهم، والحاجات اللي ممكن تشتتهم، والاحتياجات الخاصة زي الأطفال وكبار السن وذوي الإعاقة.",
+      "الـ <b>Tasks</b> اللي الـ users بيحاولوا يخلصوها من خلال الـ system.",
+      "ومش بس تتعلم من الـ users، لكن كمان من <b>الأبحاث اللي اتعملت قبل كده</b> عن قدرات الإنسان وحدوده وإزاي الناس بتدرك الحاجات."
+     ]
+    },
+    {
+     "h": "(1) الـ Surveys",
+     "pts": [
+      "طريقة قوية تجمع بيها <b>ردود سريعة</b> في وقت قصير من <b>عدد كبير من الـ users</b> (نظرة عامة واسعة).",
+      "غالباً بتتعمل <b>online</b> وسهل تعملها.",
+      "وهي من <b>أرخص</b> methods الـ user research.",
+      "ممكن تبقى <b>خطوة أولى</b> عشان تجمع insights عامة عن الدوافع والتفضيلات والأولويات والـ pain points بتاعة الـ users، والنتايج بتساعد في التخطيط لأنشطة بعد كده زي الـ interviews.",
+      "وممكن <b>تيجي بعد</b> activity تانية (interview أو usability study)، وتستخدم نتايج الـ method اللي قبلها عشان تخطط للـ survey."
+     ]
+    },
+    {
+     "h": "نصايح لتصميم survey كويس",
+     "pts": [
+      "<b>خليها صغيرة على قد ما تقدر.</b>",
+      "الأسئلة الكتير بتأثر على الـ <b>response rate</b> وعلى <b>الـ reliability بتاعة الـ data</b> (الـ slide كاتبة <bdi dir=\"ltr\">\"response rate reliability of data\"</bdi>، ناقصها كلمة <bdi dir=\"ltr\">\"and\"</bdi>).",
+      "اسأل <b>أقل عدد من الأسئلة</b> يجيب الـ data اللي محتاجها وعارف إنك هتستخدمها.",
+      "<b>خلي بالك من الـ bias.</b>",
+      "خد <b>feedback من المشاركين</b> عن الـ survey نفسه."
+     ],
+     "figH": {
+      "hc-survey-fit": "مكان الـ surveys في الـ user research، وإزاي تخليها كويسة"
+     }
+    },
+    {
      "h": "فوايد الـ Secondary research",
      "pts": [
       "بيجاوب على أسئلة عن <b>قدرات الإنسان وحدوده</b>. مثال: تصمم لـ users عندهم color-blindness باستخدام حقائق عن عمى الألوان.",
@@ -2455,17 +2558,6 @@ AR.hci = {
      "figH": {
       "hc-pii-spii": "الـ data دي PII ولا sensitive PII؟ صنّفها"
      }
-    },
-    {
-     "h": "(1) الـ Surveys",
-     "pts": [
-      "ردود سريعة من <b>عدد كبير من الـ users</b> في وقت قصير (نظرة عامة واسعة). غالباً أونلاين وسهل تعملها. وهي من <b>أرخص</b> الطرق.",
-      "ممكن تبقى خطوة أولى عشان تاخد insights عن الدوافع والتفضيلات والأولويات والـ pain points، عشان تخطط لأنشطة بعدها زي الـ interviews. وممكن كمان تيجي بعد interview أو usability study.",
-      "نصايح:<br>• <b>خليها صغيرة على قد ما تقدر</b> (أسئلة كتير بتقلل الـ response rate والـ reliability)<br>• اسأل بس اللي محتاجه وهتستخدمه<br>• <b>خلي بالك من الـ bias</b><br>• وخد feedback من المشاركين عن الـ survey نفسه."
-     ],
-     "figH": {
-      "hc-survey-fit": "مكان الـ surveys في الـ user research، وإزاي تخليها كويسة"
-     }
     }
    ],
    "cards": [
@@ -2476,13 +2568,28 @@ AR.hci = {
     "الميزة: specific لاحتياجاتك وإنت متحكم في الـ quality.<br>العيب: بيكلّف أكتر وبياخد وقت أطول.",
     "رخيص وسريع / ممكن يكون قديم أوي أو مش specific كفاية.",
     "خطط من بدري، بس خليك flexible أثناء الـ activity.",
-    "الـ users كتير، وقت قصير، أونلاين، رخيص؛ نظرة عامة واسعة."
+    "الـ users كتير، وقت قصير، أونلاين، رخيص؛ نظرة عامة واسعة.",
+    "الـ UI Design هو الـ visual appearance، والـ UX Design هو الـ user experience.",
+    "الاتنين: Figma بيتستخدم للـ UI والـ UX.",
+    "الـ Useful والـ Satisfiable والـ Convenient والـ Credible والـ Accessible والـ Desirable والـ Valuable.",
+    "الـ Color Scheme والـ Typography والـ Layout والـ Images والـ Forms والـ Buttons والـ Content.",
+    "الألوان والـ typography، والزراير والـ icons، والـ layout والـ spacing، والصور والـ visual style، والـ consistency بين الشاشات.",
+    "احتياجات الـ user والـ research، والـ user journeys والـ flows، والـ wireframes والـ prototypes، وسهولة الاستخدام، والـ usability testing.",
+    "الـ UI: صور البيتزا والألوان وشكل الزراير ومكان الكلام.<br>الـ UX: يلاقي البيتزا، ويظبط الأوردر، ويدفع بسهولة، ويتابع الـ delivery من غير لخبطة.",
+    "ده الـ app الجميل اللي الـ navigation بتاعه ملخبط. (واللي سهل الاستخدام بس شكله مش حلو ممكن يبقى UX كويس وUI وحش. وأحسن المنتجات بتجمع الاتنين.)",
+    "الـ visual design والـ color theory والـ typography والـ layout and composition والـ design systems وأدوات زي Figma.",
+    "الـ user research والـ problem-solving والـ information architecture والـ user flows والـ journey maps والـ wireframing والـ usability testing وأدوات زي Figma وأدوات الـ research والـ testing.",
+    "الـ cycle:<span class=\"ltr\">User Research → Design → Build → User Research</span>وجواها:<span class=\"ltr\">Iterate to validate your ideas</span><span class=\"ltr\">Iterate to design around constraints</span>",
+    "الـ users (مهاراتهم، والحاجات اللي بتشتتهم، والاحتياجات الخاصة)، والـ tasks اللي بيحاولوا يخلصوها، والأبحاث القديمة عن قدرات الإنسان وحدوده وإدراكه.",
+    "خليها صغيرة على قد ما تقدر (الأسئلة الكتير بتأثر على الـ response rate والـ reliability)، واسأل أقل حاجة محتاجها وهتستخدمها، وخلي بالك من الـ bias، وخد feedback من المشاركين."
    ],
    "qa": [
     "الـ Primary إنت اللي بتجمعه، زي الـ surveys والـ focus groups والـ interviews والـ observations والـ experiments؛ وهو specific لاحتياجاتك وإنت متحكم في الـ quality، بس بيكلّف أكتر وبياخد وقت أطول. الـ Secondary حد تاني جمعه (data موجودة زي الكتب والـ journals)؛ رخيص وسريع، بس ممكن يكون قديم أوي أو مش specific كفاية. والاتنين ممكن يبقوا qualitative أو quantitative.",
     "اجمع بس اللي محتاجه، متربطش الـ data اللي جمعتها بـ PII أو SPII، ومتسيبش الـ data متخزنة بعد ما متبقاش محتاجها.",
     "خطط من بدري (زي script للـ interview)؛ خليك flexible (الـ script مش كتاب مقدس)؛ اعمل combination من الـ methods بترتيب مناسب؛ حسّن بالـ testing والـ iteration؛ واحمي الـ privacy والـ security بتاعة data الـ users.",
     "خليها صغيرة على قد ما تقدر، لأن الأسئلة الكتير بتقلل الـ response rate والـ reliability. اسأل أقل عدد أسئلة للـ data اللي هتستخدمها. خلي بالك من الـ bias. وخد feedback من المشاركين عن الـ survey.",
+    "الـ <b>UI Design</b> هو الـ interactivity والـ look and feel بتاع شاشة المنتج أو صفحة الويب (الألوان والـ typography، والزراير والـ icons، والـ layout والـ spacing، والصور والـ visual style، والـ consistency بين الشاشات).<br>الـ <b>UX Design</b> بيغطي التجربة الكاملة بتاعة الـ user مع المنتج أو الموقع (احتياجات الـ user والـ research، والـ user journeys والـ flows، والـ wireframes والـ prototypes، وسهولة الاستخدام، والـ usability testing).<br>مثال app البيتزا: الـ UI designer بيقرر شكل صور البيتزا والألوان وشكل الزراير ومكان الكلام، والـ UX designer بيتأكد إن الزبون يلاقي البيتزا ويظبط الأوردر ويدفع بسهولة ويتابع الـ delivery من غير لخبطة.<br>الـ app الجميل اللي الـ navigation بتاعه ملخبط عنده UI كويس بس UX وحش، وأحسن المنتجات بتجمع الاتنين.",
+    "فيه <bdi dir=\"ltr\">3</bdi> components موصى بيهم: الـ user research، والـ design and prototyping بتاع الـ interface، والـ user interface evaluation (improvement).<br>وفي الـ user research بتتعلم عن الـ users (مهاراتهم، والحاجات اللي بتشتتهم، والاحتياجات الخاصة زي الأطفال وكبار السن وذوي الإعاقة)، والـ tasks اللي بيحاولوا يخلصوها من خلال الـ system، والأبحاث القديمة عن قدرات الإنسان وحدوده وإزاي الناس بتدرك الحاجات.",
     "الـ <b>Quantitative research</b>: فيه data طبيعتها أرقام، زي الـ measures والـ counts. أسهل على الـ engineers والناس الـ technical إنهم يتعاملوا معاه.<br>الـ <b>Qualitative research</b>: بيركّز على ملاحظات عن ليه وإزاي الحاجات بتحصل، وغالباً مبني على interviews. الـ Qualitative analysis أصعب على الناس الـ technical، بس هو اللي محتاجينه عشان نفهم بجد.",
     "الـ <b>PII</b> (Personally Identifiable Information): تفاصيل معينة ممكن تتستخدم عشان تعرّف الـ user، زي الأسامي، وعنوان البيت، والـ email address، ورقم التليفون.<br>الـ <b>SPII</b> (Sensitive Personally Identifiable Information)، وهي data لو ضاعت أو اتكشفت أو اتسرقت ممكن تسبب للـ users بتوعك ضرر مالي أو إحراج أو تمييز، زي الـ social security number، ورخصة السواقة، وأرقام الباسبور، وأرقام الحسابات المالية، وتاريخ الميلاد.",
     "الـ survey طريقة قوية إنك تجمع ردود سريعة في وقت قصير من عدد كبير من الـ users (<b>نظرة واسعة</b>).<br>(1) غالباً بيتعمل أونلاين وسهل تعمله.<br>(2) هو من <b>أرخص</b> methods الـ user research.<br>(3) ممكن يبقى خطوة أولى عشان تجمع insights عامة عن دوافع الـ users وتفضيلاتهم وأولوياتهم والـ pain points بتاعتهم؛ ونتايجه بتساعد في التخطيط لأنشطة بعد كده زي الـ interviews.<br>(4) وممكن كمان ييجي بعد activity تانية (interview أو usability study)، وتستخدم نتايج الـ method اللي قبله عشان تخطط للـ survey."
@@ -2727,6 +2834,50 @@ AR.hci = {
      "دي نصيحة عامة، بس مش هي اللي الـ survey ده كاسرها.",
      "النصيحة دي عن تحسين الـ survey، مش عن إيه الـ data اللي تتجمع.",
      "صح. الـ survey بيطلب PII عمره ما هيستخدمه، فبيكسر نصيحة الـ survey وقاعدة الـ privacy الاتنين."
+    ],
+    [
+     "صح. ده تعريف الـ UI Design في الـ slide <bdi dir=\"ltr\">(L5, UI Design vs UX Design)</bdi>.",
+     "ده تعريف الـ UX Design مش الـ UI Design <bdi dir=\"ltr\">(L5, UI Design vs UX Design)</bdi>.",
+     "ده وصف الـ HCI، مش الـ UI Design <bdi dir=\"ltr\">(L1, UI vs UX vs HCI)</bdi>.",
+     "ده الـ user research، أول component في الـ UX Design Process <bdi dir=\"ltr\">(L5, 1- User Research)</bdi>."
+    ],
+    [
+     "عجلة الـ UI فيها الـ Color Scheme والـ Typography والـ Layout والـ Images والـ Forms والـ Buttons والـ Content <bdi dir=\"ltr\">(L5, UI Design vs UX Design)</bdi>.",
+     "صح. عجلة الـ UX فيها الـ Useful والـ Satisfiable والـ Convenient والـ Credible والـ Accessible والـ Desirable والـ Valuable <bdi dir=\"ltr\">(L5, UI Design vs UX Design)</bdi>.",
+     "العجلتين مفيش بينهم كلمة مشتركة، والكلمتين دول في عجلة الـ UX بس <bdi dir=\"ltr\">(L5, UI Design vs UX Design)</bdi>.",
+     "الكلمتين دول موجودين في عجلة الـ UX، مع الـ Useful والـ Satisfiable والـ Convenient والـ Desirable والـ Valuable <bdi dir=\"ltr\">(L5, UI Design vs UX Design)</bdi>."
+    ],
+    [
+     "الألوان والـ typography في لستة الـ UI designers <bdi dir=\"ltr\">(L5, What UI designers and UX designers focus on)</bdi>.",
+     "الزراير والـ icons في لستة الـ UI designers <bdi dir=\"ltr\">(L5, What UI designers and UX designers focus on)</bdi>.",
+     "صح. الـ UX designers بيركزوا على احتياجات الـ user والـ research، والـ user journeys والـ flows، والـ wireframes والـ prototypes، وسهولة الاستخدام، والـ usability testing <bdi dir=\"ltr\">(L5, What UI designers and UX designers focus on)</bdi>.",
+     "الـ consistency بين الشاشات في لستة الـ UI designers <bdi dir=\"ltr\">(L5, What UI designers and UX designers focus on)</bdi>."
+    ],
+    [
+     "الـ UX designer بيتأكد إن الزبون يلاقي البيتزا ويظبط الأوردر ويدفع بسهولة ويتابع الـ delivery من غير لخبطة <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>.",
+     "صح. صور البيتزا والألوان وشكل الزراير ومكان الكلام دي شغلانة الـ UI designer في مثال الـ slide <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>.",
+     "الزبون بيستخدم الـ app، في الـ slide بيدور على البيتزا ويدفع، لكن مش هو اللي بيقرر الـ visual design <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>.",
+     "الـ slide بتدي الشغلانة دي للـ UI designer، فهو قرار designer <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>."
+    ],
+    [
+     "ده الـ app السهل في الاستخدام بس شكله مش حلو <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>.",
+     "الـ navigation الملخبط مشكلة UX، فالـ UX مش ممكن يبقى كويس، وأحسن المنتجات بتجمع الاتنين <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>.",
+     "الـ app جميل يعني الـ UI كويس، والـ UX بس اللي وحش <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>.",
+     "صح. جميل يعني UI كويس، والـ navigation الملخبط يعني UX وحش <bdi dir=\"ltr\">(L5, An example: a food delivery app)</bdi>."
+    ],
+    [
+     "الـ slide بتقول العكس: Figma بيتستخدم للـ UI والـ UX الاتنين <bdi dir=\"ltr\">(L5, What skills do you need?)</bdi>.",
+     "صح. جدول الـ skills بيقول إن Figma بيتستخدم للـ UI والـ UX الاتنين <bdi dir=\"ltr\">(L5, What skills do you need?)</bdi>."
+    ],
+    [
+     "صح. دول الـ <bdi dir=\"ltr\">3</bdi> components اللي في الـ slide <bdi dir=\"ltr\">(L5, UX Design Process)</bdi>.",
+     "الـ coding والـ marketing مش من الـ components الموصى بيها <bdi dir=\"ltr\">(L5, UX Design Process)</bdi>.",
+     "دول activities للـ user research، مش الـ <bdi dir=\"ltr\">3</bdi> components بتوع الـ process <bdi dir=\"ltr\">(L5, 1) Surveys)</bdi>.",
+     "دول UI design skills من جدول الـ skills، مش components في الـ process <bdi dir=\"ltr\">(L5, What skills do you need?)</bdi>."
+    ],
+    [
+     "الـ slide بتقول مش بس من الـ users، لكن كمان من الأبحاث القديمة عن قدرات الإنسان وحدوده <bdi dir=\"ltr\">(L5, 1- User Research)</bdi>.",
+     "صح. مش بس من الـ users، لكن كمان من الأبحاث القديمة عن قدرات الإنسان وحدوده وإزاي الناس بتدرك الحاجات <bdi dir=\"ltr\">(L5, 1- User Research)</bdi>."
     ]
    ]
   },
@@ -2735,7 +2886,8 @@ AR.hci = {
     {
      "h": "6 مبادئ: Clear و Concise و Specific و Expressive و Unbiased و Usable",
      "pts": [
-      "كل مبدأ ليه أمثلة \"متسألش كده… / اسأل كده بدلها…\". والممتحنين كتير بيطلبوا منك تقيّم سؤال بيها."
+      "كل مبدأ ليه أمثلة \"<bdi dir=\"ltr\">Don't ask this…</bdi>\" و\"<bdi dir=\"ltr\">Instead, ask this…</bdi>\".",
+      "الممتحنين كتير بيطلبوا منك تقيّم سؤال بيها. ‡"
      ],
      "figH": {
       "hc-six-principles": "الـ 6 مبادئ: متسألش كده، واسأل كده بدلها"
@@ -2744,10 +2896,10 @@ AR.hci = {
     {
      "h": "خليك واضح (Be Clear)",
      "pts": [
-      "<b>اكتب labels للـ numeric scales</b>: مش <bdi dir=\"ltr\">\"1–5\"</bdi> وخلاص، لكن:<span class=\"ltr\">\"1 = Highly dissatisfied … 5 = Highly satisfied\"</span>",
-      "<b>تجنب الـ ranges اللي بتتداخل</b>، زي:<span class=\"ltr\">0-2, 2-5, 5-10</span>دول متداخلين. واستخدم بدلهم:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>",
-      "<b>لو شاكك، زوّد تفاصيل</b>: \"tablet computer (يعني أي كمبيوتر بـ touchscreen و keyboard بيتفك)\".",
-      "<b>حط إطار زمني (timebox) لأسئلة التكرار</b>: بدل <bdi dir=\"ltr\">\"Never / Rarely / Often…\"</bdi>، اسأل \"في آخر 7 أيام، اتمرنت كام مرة؟\" والاختيارات:<span class=\"ltr\">0, 1-2, 3-4, 5-7</span>أو \"7 أو أكتر\"."
+      "<b>حط labels توضّح الـ numeric scale.</b><br>متسألش:<span class=\"ltr\">From 1 to 5, rate your satisfaction with.. (1, 2, 3, 4, 5)</span>اسأل بدلها:<span class=\"ltr\">1 - Highly dissatisfied, 2 - Dissatisfied, 3 - Neutral, 4 - Satisfied, 5 - Highly Satisfied</span>",
+      "<b>تجنب الـ ranges المتداخلة.</b> السؤال:<span class=\"ltr\">How many times per week do you watch Hulu?</span>متحطش:<span class=\"ltr\">0-2, 2-5, 5-10, 10-20, 20+</span>لأن الأرقام <bdi dir=\"ltr\">2, 5, 10, 20</bdi> كل واحد فيهم داخل في range اتنين. حط بدلها:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>",
+      "<b>لو شاكك، زوّد تفاصيل.</b><br>متسألش:<span class=\"ltr\">Do you own a tablet computer? (Yes / No)</span>اسأل بدلها:<span class=\"ltr\">Do you own a tablet computer (i.e., any computer with a touchscreen and detachable keyboard)? (Yes / No)</span>",
+      "<b>حط إطار زمني (timebox) للأسئلة بتاعة التكرار.</b><br>متسألش:<span class=\"ltr\">How often do you exercise? (Never / Rarely / Occasionally / Frequently / Always)</span>اسأل بدلها:<span class=\"ltr\">In the past seven days, how many times have you exercised?</span>والاختيارات:<span class=\"ltr\">0 / 1-2 / 3-4 / 5-6 / 7 or more</span>(الـ slide كاتبة <bdi dir=\"ltr\">5-7</bdi> و<bdi dir=\"ltr\">7 or more</bdi>، ودول متداخلين عند الـ <bdi dir=\"ltr\">7</bdi>، وده عكس القاعدة بتاعتها)."
      ],
      "figH": {
       "hc-clear-ranges": "الـ ranges المتداخلة والـ scale من غير labels: جرّب قيمة"
@@ -2756,24 +2908,24 @@ AR.hci = {
     {
      "h": "خليك مختصر (Be Concise)",
      "pts": [
-      "<b>لغة بسيطة</b>: السؤال:<span class=\"ltr\">\"What was the overall level of cleanliness that you observed within the car?\"</span>تبقى:<span class=\"ltr\">\"How clean was the car?\"</span>"
+      "<b>اسأل بلغة بسيطة (plain language).</b><br>متسألش:<span class=\"ltr\">What was the overall level of cleanliness that you observed within the car that you rented? (Very clean / Somewhat clean / Not clean at all)</span>اسأل بدلها، بنفس الـ <bdi dir=\"ltr\">3</bdi> إجابات:<span class=\"ltr\">How clean was the car?</span>"
      ]
     },
     {
      "h": "خليك محدد (Be Specific)",
      "pts": [
-      "<b>تجنب الأفكار الكبيرة أوي</b>: \"How satisfied were you with the interface?\" تبقى \"…with how quickly the interface responded?\" ومعاها follow-up questions.",
-      "<b>تجنب الـ double-barrel questions</b> (حاجتين في سؤال واحد): السؤال عن <bdi dir=\"ltr\">\"speed and availability of your connection\"</bdi> المفروض يتقسم لسؤالين.",
-      "<b>تجنب التعارض الداخلي (internal conflict)</b>: السؤال <bdi dir=\"ltr\">\"How satisfied with your food?\"</bdi> المفروض يتقسم لـ temperature و appearance و flavor."
+      "<b>ابعد عن الأسئلة عن الأفكار الكبيرة أوي (super-big ideas).</b><br>متسألش:<span class=\"ltr\">How satisfied were you with the interface?</span>اسأل بدلها:<span class=\"ltr\">How satisfied were you with how quickly the interface responded to your commands? (and more follow-up questions)</span>",
+      "<b>ابعد عن الـ <bdi dir=\"ltr\">\"double-barrel\"</bdi> questions</b> (حاجتين في سؤال واحد).<br>متسألش:<span class=\"ltr\">How satisfied are you with the speed and availability of your mobile connection?</span>قسّمه لسؤالين:<span class=\"ltr\">…the speed of your mobile connection?</span><span class=\"ltr\">…the availability of your mobile connection?</span>",
+      "<b>ابعد عن الأسئلة اللي فيها internal conflict.</b><br>متسألش:<span class=\"ltr\">How satisfied were you with your food?</span>اسأل بدلها:<span class=\"ltr\">How satisfied were you with the temperature of your food?</span><span class=\"ltr\">…with the appearance of your food?</span><span class=\"ltr\">…with the flavor of your food?</span>"
      ]
     },
     {
      "h": "خلّي الـ user يعبّر (Be Expressive)",
      "pts": [
-      "<b>ركّز على رأي الـ user</b>: السؤال <bdi dir=\"ltr\">\"Is our price too high?\"</bdi> تبقى:<span class=\"ltr\">\"Do you feel our price is too high, too low, or about right?\"</span>",
-      "<b>استخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi></b>: السؤال <bdi dir=\"ltr\">\"Do you use social media?\"</bdi> تبقى \"في آخر 7 أيام، قضيت قد إيه على الـ social media؟\" والاختيارات بالساعات:<span class=\"ltr\">0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+</span>",
-      "<b>ادّي مستويات للتكرار أو الموافقة</b>: satisfaction scale من 5 مستويات بدل <bdi dir=\"ltr\">Dissatisfied/Satisfied</bdi>.",
-      "<b>اسمح بأكتر من اختيار</b> لما ينفع (checkboxes بدل radio buttons)."
+      "<b>ركّز على رأي الـ user.</b><br>متسألش:<span class=\"ltr\">Is our subscription price too high?</span>اسأل بدلها:<span class=\"ltr\">Do you feel our subscription price is too high, too low, or about right?</span>",
+      "<b>استخدم ranges بدل الأسئلة بتاعة <bdi dir=\"ltr\">yes/no</bdi>.</b><br>متسألش:<span class=\"ltr\">Do you use social media? (Yes / No)</span>اسأل بدلها:<span class=\"ltr\">In the past seven days, how much time have you spent on social media?</span>والاختيارات:<span class=\"ltr\">0 hours / &lt;1 hour / 1-2 hours / 3-5 hours / 6-9 hours / 10+ hours</span>",
+      "<b>ادّي مستويات للتكرار أو الموافقة.</b><br>متحطش بس:<span class=\"ltr\">Dissatisfied / Satisfied</span>للسؤال:<span class=\"ltr\">How satisfied are you with this interface?</span>حط بدلها:<span class=\"ltr\">Highly dissatisfied / Dissatisfied / Neutral / Satisfied / Highly Satisfied</span>",
+      "<b>اسمح بأكتر من اختيار لما ينفع</b>، يعني checkboxes بدل radio buttons. السؤال:<span class=\"ltr\">What social media platform do you use most?</span>والاختيارات:<span class=\"ltr\">Facebook, Snapchat, Instagram, Twitter, LinkedIn, Pinterest</span>"
      ],
      "figH": {
       "hc-expressive": "خلّي الـ user يعبّر: كل سؤال قبل وبعد"
@@ -2782,10 +2934,10 @@ AR.hci = {
     {
      "h": "خليك محايد (Be Unbiased)",
      "pts": [
-      "<b>اسمح للـ users يضيفوا nominal categories</b>: ضيف \"Other: ____\".",
-      "<b>سيب الأسئلة المفتوحة مفتوحة</b>: \"Why did you choose our service?\" متجبرهوش على options ثابتة.",
-      "<b>تجنب الـ leading questions</b>: السؤال:<span class=\"ltr\">\"Did our brand-new AI-based interface generate better recommendations?\"</span>تبقى:<span class=\"ltr\">\"How satisfied were you with the recommendations?\"</span>",
-      "<b>تجنب الـ loaded questions</b>: السؤال:<span class=\"ltr\">\"how much time have you <i>wasted</i> on social media?\"</span>تبقى <bdi dir=\"ltr\">\"…<i>spent</i>…\"</bdi>."
+      "<b>اسمح للـ users يضيفوا nominal categories</b>. السؤال:<span class=\"ltr\">What social media platform do you use most?</span>بنفس الـ list وزيادة عليها:<span class=\"ltr\">Other: ____</span>",
+      "<b>سيب الأسئلة اللي ممكن تكون open-ended مفتوحة.</b><br>متسألش بـ options ثابتة:<span class=\"ltr\">Why did you choose our service over our competitors? (Reputation / Price / Recommendation / Reviews / Other: ____)</span>اسأل نفس السؤال وسيب الإجابة مفتوحة.",
+      "<b>ابعد عن الـ leading questions.</b><br>متسألش:<span class=\"ltr\">Did our brand-new AI-based interface generate better recommendations? (Yes! / No :( )</span>اسأل بدلها:<span class=\"ltr\">How satisfied were you with the recommendations the interface generated? (Dissatisfied / Neutral / Satisfied)</span>",
+      "<b>ابعد عن الـ loaded questions.</b><br>متسألش:<span class=\"ltr\">In the past seven days, how much time have you <i>wasted</i> on social media?</span>اسأل بدلها:<span class=\"ltr\">In the past seven days, how much time have you <i>spent</i> on social media?</span>"
      ]
     },
     {
@@ -2801,9 +2953,10 @@ AR.hci = {
      "h": "تمرين: قيّم أسئلة الـ survey دي",
      "pts": [
       "السؤال ده <b>scale مش واضح / معكوس</b>:<span class=\"ltr\">\"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\"</span>",
-      "السؤال \"Why do you like to exercise?\" ده <b>leading question</b> لأنه بيفترض إنك بتحبه.",
-      "السؤال \"On a scale of 1 to 6 with 1 meaning 'not at all'…\" فيه <b>عدد options بيتغير</b> (4 ضد 6) و<b>scale معكوس</b> مقارنة بالسؤال اللي قبله.",
-      "السؤال <bdi dir=\"ltr\">\"Have you listened to an audiobook this year?\"</bdi> ده <b>سؤال <bdi dir=\"ltr\">yes/no</bdi></b>. استخدم ranges."
+      "السؤال <bdi dir=\"ltr\">\"Why do you like to exercise?\"</bdi> ده <b>leading question</b> لأنه بيفترض إنك بتحبه.",
+      "السؤال ده:<span class=\"ltr\">\"On a scale of 1 to 6 with 1 meaning 'not at all' and 6 meaning 'a lot', how much do you like audiobooks?\"</span>فيه <b>عدد options بيتغير</b> (<bdi dir=\"ltr\">4</bdi> ضد <bdi dir=\"ltr\">6</bdi>) و<b>scale معكوس</b> مقارنة بالسؤال الأول.",
+      "السؤال <bdi dir=\"ltr\">\"Have you listened to an audiobook this year?\"</bdi> ده <b>سؤال <bdi dir=\"ltr\">yes/no</bdi></b>. استخدم ranges.",
+      "الـ slide كاتبة <bdi dir=\"ltr\">5</bdi> مشاكل جنب الأسئلة دي:<span class=\"ltr\">Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions</span>ومش قايلة كل مشكلة تبع أنهي سؤال، فالتوصيل اللي فوق ده قراءتنا إحنا."
      ],
      "figH": {
       "hc-evaluate-questions": "تمرين: اعرف إيه الغلط في كل سؤال"
@@ -2819,13 +2972,19 @@ AR.hci = {
     "اسأل بـ ranges <bdi dir=\"ltr\">(Be Expressive)</bdi>، زي <bdi dir=\"ltr\">\"In the past 7 days, how much time…\"</bdi>.",
     "ضيف option \"Other: ___\" (Be Unbiased).",
     "الـ Progress bar، أطوال صفحات ثابتة، ترتيب منطقي، تنبيه على اللي متجاوبش، preview بنفسك.",
-    "اسأل <bdi dir=\"ltr\">\"In the past seven days, how many times…\"</bdi> بدل <bdi dir=\"ltr\">\"Rarely/Often\"</bdi> <bdi dir=\"ltr\">(Be Clear)</bdi>."
+    "اسأل <bdi dir=\"ltr\">\"In the past seven days, how many times…\"</bdi> بدل <bdi dir=\"ltr\">\"Rarely/Frequently\"</bdi> <bdi dir=\"ltr\">(Be Clear)</bdi>.",
+    "الـ scale لازم يبقى عليه labels، زي:<span class=\"ltr\">1 - Highly dissatisfied … 5 - Highly Satisfied</span><bdi dir=\"ltr\">(Be Clear)</bdi>.",
+    "السؤال القصير:<span class=\"ltr\">How clean was the car?</span>بدل الجملة الطويلة عن الـ overall level of cleanliness <bdi dir=\"ltr\">(Be Concise)</bdi>.",
+    "سؤال واسع أوي:<span class=\"ltr\">How satisfied were you with the interface?</span>الأحسن تسأل عن حاجة واحدة (سرعة الاستجابة) وبعدها follow-up questions <bdi dir=\"ltr\">(Be Specific)</bdi>.",
+    "السؤال:<span class=\"ltr\">How satisfied were you with your food?</span>قسّمه لـ temperature و appearance و flavor <bdi dir=\"ltr\">(Be Specific)</bdi>.",
+    "الـ <bdi dir=\"ltr\">5</bdi> مشاكل هما:<span class=\"ltr\">Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions</span>"
    ],
    "qa": [
     "(1) الـ Be Clear (labels للـ scales، من غير ranges متداخلة، تفاصيل زيادة، timebox للتكرار)<br>(2) الـ Be Concise (لغة بسيطة: <bdi dir=\"ltr\">\"How clean was the car?\"</bdi>)<br>(3) الـ Be Specific (من غير أفكار كبيرة أوي، من غير double-barrel، من غير internal conflict)<br>(4) الـ Be Expressive (ركّز على الآراء، ranges بدل <bdi dir=\"ltr\">yes/no</bdi>، مستويات موافقة، أكتر من اختيار)<br>(5) الـ Be Unbiased (ضيف <bdi dir=\"ltr\">\"Other\"</bdi>، سيب الأسئلة المفتوحة مفتوحة، تجنب الكلمات الـ leading والـ loaded)<br>(6) الـ Be Usable (progress bar، صفحات ثابتة، ترتيب منطقي، تنبيه على اللي متجاوبش، preview).",
     "ده loaded question: كلمة \"wasted\" فيها حكم على اللي بيجاوب. اسأل \"…how much time have you spent on social media?\"",
     "ده سؤال <bdi dir=\"ltr\">yes/no</bdi> بيدّي معلومات قليلة. استخدم ranges:<span class=\"ltr\">\"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\"</span>",
-    "ده double-barrel question: بيسأل عن حاجتين. قسّمه لسؤال عن الـ speed وسؤال عن الـ availability."
+    "ده double-barrel question: بيسأل عن حاجتين. قسّمه لسؤال عن الـ speed وسؤال عن الـ availability.",
+    "الأول فيه <b>scale مش واضح / معكوس</b>.<br>التاني <b>leading question</b> لأنه بيفترض إنك بتحب التمرين.<br>التالت بيغيّر <b>عدد الـ options</b> (<bdi dir=\"ltr\">4</bdi> قصاد <bdi dir=\"ltr\">6</bdi>) و<b>بيعكس الـ scale</b> مقارنة بالأول.<br>الرابع <b>سؤال <bdi dir=\"ltr\">yes/no</bdi></b>، فاستخدم ranges بداله.<br>والـ slide كاتبة المشاكل:<span class=\"ltr\">Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions</span> والـ slide مش قايلة كل مشكلة تبع أنهي سؤال، فالتوصيل ده قراءتنا إحنا."
    ],
    "quiz": [
     [
@@ -2866,7 +3025,7 @@ AR.hci = {
     ],
     [
      "سؤال <bdi dir=\"ltr\">yes/no</bdi> بيدّي معلومات أقل كمان؛ الـ Be Expressive بيقول استخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi> <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
-     "صح. الـ Be Clear بيقول اعمل timebox لأسئلة التكرار: كلمات زي Rarely أو Often معناها بيختلف من شخص للتاني، لكن \"in the past seven days\" مع أعداد بتبقى مظبوطة (L6, Be Clear).",
+     "صح. الـ Be Clear بيقول حط إطار زمني للأسئلة بتاعة التكرار: كلمات زي Rarely أو Frequently معناها بيختلف من واحد للتاني، لكن \"في آخر 7 أيام\" مع أرقام حاجة محددة. (الـ slide كاتبة <bdi dir=\"ltr\">5-7</bdi> و<bdi dir=\"ltr\">7 or more</bdi> ودول متداخلين عند الـ <bdi dir=\"ltr\">7</bdi>، فهنا اتكتبت <bdi dir=\"ltr\">5-6</bdi>.) <bdi dir=\"ltr\">(L6, Be Clear)</bdi>.",
      "ده بيسأل عن حاجة تانية (الأسباب، مش التكرار)، وكمان \"Why do you…\" مفترض إن الشخص بيتمرن، فبيبقى leading (L6, Be Unbiased).",
      "الـ scale من <bdi dir=\"ltr\">1‑5</bdi> من غير labels بيكسر rule الـ Be Clear بتاعة <bdi dir=\"ltr\">\"label numeric scales\"</bdi>، وكمان لسه مش بيقيس الشخص بيتمرن قد إيه <bdi dir=\"ltr\">(L6, Be Clear)</bdi>."
     ],
@@ -2931,7 +3090,7 @@ AR.hci = {
    ],
    "extra": [
     [
-     "صح. الـ Scales لازم يبقى ليها labels، زي:<span class=\"ltr\">\"1 = Highly dissatisfied … 5 = Highly satisfied\"</span>",
+     "صح. الـ Scales لازم يبقى ليها labels، زي:<span class=\"ltr\">\"1 - Highly dissatisfied … 5 - Highly Satisfied\"</span>",
      "السؤال قصير أصلاً؛ المشكلة إن الـ scale ملوش labels.",
      "مفيش كلمة loaded فيها مشاعر في السؤال.",
      "الـ progress bar عن الـ survey كله، مش عن scale واحد من غير labels."
@@ -2966,7 +3125,7 @@ AR.hci = {
     ],
     [
      "مش بيفترض إجابة ولا بيمدح حاجة.",
-     "صح. تمرين المحاضرة بيعتبره <bdi dir=\"ltr\">yes/no</bdi>؛ والـ ranges (زي في <bdi dir=\"ltr\">\"Be Expressive\"</bdi>) بتدي إجابات أغنى.",
+     "صح. تمرين المحاضرة بيعتبره <bdi dir=\"ltr\">yes/no</bdi>؛ والـ ranges (زي في <bdi dir=\"ltr\">\"Be Expressive\"</bdi>) بتدي إجابات أغنى. (الـ slide مش قايلة كل مشكلة تبع أنهي سؤال، فالتوصيل ده قراءتنا إحنا.)",
      "الـ loaded question فيه كلمة حكم زي <bdi dir=\"ltr\">\"wasted\"</bdi>؛ السؤال ده محايد. عيبه هو شكل الـ <bdi dir=\"ltr\">yes/no</bdi> <bdi dir=\"ltr\">(L6, Exercise)</bdi>.",
      "مفيهوش ranges خالص، وده هو المشكلة الحقيقية."
     ],
@@ -2977,12 +3136,42 @@ AR.hci = {
     [
      "الـ double-barrel question بيسأل عن حاجتين مرة واحدة، لكن كل سؤال هنا بيسأل عن الاستمتاع بس. العيب هو إن الـ scales مش متسقة (L6, Exercise).",
      "الاختصار حاجة كويسة (Be Concise). المشكلة الحقيقية إن الـ scale بيتغير من 4 لـ 6 اختيارات واتجاهه بيتعكس (L6, Exercise).",
-     "صح. تمرين المحاضرة بيشاور على إن عدد الـ options بيتغير وإن الـ scale معكوس.",
+     "صح. تمرين المحاضرة بيشاور على إن عدد الـ options بيتغير وإن الـ scale معكوس. (الـ slide مش قايلة كل مشكلة تبع أنهي سؤال، فالتوصيل ده قراءتنا إحنا.)",
      "الـ \"Other\" للـ lists بتاعة categories، مش للـ numeric scales."
     ],
     [
      "صح. ده مثال المحاضرة على إنك تزوّد تفاصيل تحت Be Clear.",
      "المحاضرة ذاكرة المثال ده بالظبط تحت Be Clear."
+    ],
+    [
+     "صح. ده الـ scale اللي عليه labels في الـ slide <bdi dir=\"ltr\">(L6, Be Clear)</bdi>.",
+     "ده الـ scale اللي في \"<bdi dir=\"ltr\">Don't ask this</bdi>\" في الـ slide: الأرقام من غير labels <bdi dir=\"ltr\">(L6, Be Clear)</bdi>.",
+     "دي الإجابة بتاعة المستويين اللي الـ slide بتقول نتجنبها في levels of agreement <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
+     "دي كلمات التكرار اللي الـ slide بتقول نغيّرها بـ timebox، وهي مش أرقام أصلاً <bdi dir=\"ltr\">(L6, Be Clear)</bdi>."
+    ],
+    [
+     "صح. اللي اتمرن <bdi dir=\"ltr\">7</bdi> مرات هتنفع له إجابتين، وده عكس قاعدة تجنب الـ ranges المتداخلة، والصح <bdi dir=\"ltr\">5-6</bdi> و<bdi dir=\"ltr\">7 or more</bdi> <bdi dir=\"ltr\">(L6, Be Clear)</bdi>.",
+     "دول عدد مرات، والجملة <bdi dir=\"ltr\">\"in the past seven days\"</bdi> موضحة المعنى، والـ labels للـ rating scales <bdi dir=\"ltr\">(L6, Be Clear)</bdi>.",
+     "الـ double-barrel معناه سؤال واحد عن حاجتين، وده سؤال واحد عن التمرين <bdi dir=\"ltr\">(L6, Be Specific)</bdi>.",
+     "جرّب القيمة <bdi dir=\"ltr\">7</bdi>: داخلة في <bdi dir=\"ltr\">5-7</bdi> وفي <bdi dir=\"ltr\">7 or more</bdi>، فالـ ranges متداخلة <bdi dir=\"ltr\">(L6, Be Clear)</bdi>."
+    ],
+    [
+     "ده سؤال <bdi dir=\"ltr\">yes/no</bdi>، وكمان لسه عن الـ interface كله <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
+     "صح. ده حل الـ slide للـ super-big idea: اسأل عن حاجة واحدة محددة <bdi dir=\"ltr\">(L6, Be Specific)</bdi>.",
+     "ده بيضيف حاجة تانية، فبقى double-barrel ولسه واسع <bdi dir=\"ltr\">(L6, Be Specific)</bdi>.",
+     "كلمة <bdi dir=\"ltr\">wasted</bdi> كلمة loaded، والـ Be Unbiased بيقول نتجنبها <bdi dir=\"ltr\">(L6, Be Unbiased)</bdi>."
+    ],
+    [
+     "دي أول حاجة في الـ list <bdi dir=\"ltr\">(L6, Be Usable)</bdi>.",
+     "دي آخر حاجة في الـ list <bdi dir=\"ltr\">(L6, Be Usable)</bdi>.",
+     "دي موجودة في الـ list <bdi dir=\"ltr\">(L6, Be Usable)</bdi>.",
+     "صح. الـ plain language تحت الـ Be Concise، والـ Be Usable فيه الـ progress bar والـ page lengths الثابتة والترتيب المنطقي والتنبيهات والـ preview <bdi dir=\"ltr\">(L6, Be Concise)</bdi>."
+    ],
+    [
+     "دي أول مشكلة في الـ slide <bdi dir=\"ltr\">(L6, Exercise)</bdi>.",
+     "دي موجودة في الـ slide <bdi dir=\"ltr\">(L6, Exercise)</bdi>.",
+     "صح. الـ <bdi dir=\"ltr\">5</bdi> هما الـ ambiguous scale والـ changing number of options والـ reversing scale والـ leading questions والـ yes/no questions، والـ double-barrel تحت الـ Be Specific <bdi dir=\"ltr\">(L6, Exercise)</bdi>.",
+     "دي آخر مشكلة في الـ slide <bdi dir=\"ltr\">(L6, Exercise)</bdi>."
     ]
    ]
   },
@@ -3984,7 +4173,7 @@ AR.hci = {
       },
       {
        "why": "اذكر الـ 6 principles وادّي مثال \"متسألش كده / اسأل كده بدلها\" لكل واحد. كده تغطي الدرجات.",
-       "ans": "<b>الـ Be Clear</b>: اكتب labels للـ numeric scales، زي:<span class=\"ltr\">1 = Highly dissatisfied … 5 = Highly satisfied</span>وكمان تجنب الـ ranges المتداخلة (زي <bdi dir=\"ltr\">0‑2,&nbsp;3‑5,&nbsp;6‑10</bdi>)؛ زوّد تفاصيل لو شاكك؛ اعمل timebox للتكرار <bdi dir=\"ltr\">(\"in the past seven days…\")</bdi>.<br><b>الـ Be Concise</b>: لغة بسيطة <bdi dir=\"ltr\">(\"How clean was the car?\")</bdi>.<br><b>الـ Be Specific</b>: تجنب الأفكار الكبيرة أوي؛ تجنب الـ double-barrel questions (قسّم <bdi dir=\"ltr\">\"speed and availability\"</bdi>)؛ تجنب الـ internal conflict (قسّم <bdi dir=\"ltr\">\"food\"</bdi> لـ temperature و appearance و flavor).<br><b>الـ Be Expressive</b>: ركّز على الآراء <bdi dir=\"ltr\">(\"too high, too low, or about right?\")</bdi>؛ واستخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi>؛ مستويات موافقة؛ اسمح بأكتر من اختيار.<br><b>الـ Be Unbiased</b>: ضيف <bdi dir=\"ltr\">\"Other: ___\"</bdi>؛ سيب الأسئلة المفتوحة مفتوحة؛ تجنب الـ leading questions؛ تجنب الكلمات الـ loaded (<bdi dir=\"ltr\">\"wasted\"</bdi> تبقى <bdi dir=\"ltr\">\"spent\"</bdi>).<br><b>الـ Be Usable</b>: الـ progress bar، وطول صفحات ثابت، وترتيب منطقي، وتنبيه على الأسئلة اللي متجاوبتش، اعمل preview للـ survey."
+       "ans": "<b>الـ Be Clear</b>: اكتب labels للـ numeric scales، زي:<span class=\"ltr\">1 - Highly dissatisfied … 5 - Highly Satisfied</span>وكمان تجنب الـ ranges المتداخلة (زي <bdi dir=\"ltr\">0‑2,&nbsp;3‑5,&nbsp;6‑10</bdi>)؛ زوّد تفاصيل لو شاكك؛ اعمل timebox للتكرار <bdi dir=\"ltr\">(\"in the past seven days…\")</bdi>.<br><b>الـ Be Concise</b>: لغة بسيطة <bdi dir=\"ltr\">(\"How clean was the car?\")</bdi>.<br><b>الـ Be Specific</b>: تجنب الأفكار الكبيرة أوي؛ تجنب الـ double-barrel questions (قسّم <bdi dir=\"ltr\">\"speed and availability\"</bdi>)؛ تجنب الـ internal conflict (قسّم <bdi dir=\"ltr\">\"food\"</bdi> لـ temperature و appearance و flavor).<br><b>الـ Be Expressive</b>: ركّز على الآراء <bdi dir=\"ltr\">(\"too high, too low, or about right?\")</bdi>؛ واستخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi>؛ مستويات موافقة؛ اسمح بأكتر من اختيار.<br><b>الـ Be Unbiased</b>: ضيف <bdi dir=\"ltr\">\"Other: ___\"</bdi>؛ سيب الأسئلة المفتوحة مفتوحة؛ تجنب الـ leading questions؛ تجنب الكلمات الـ loaded (<bdi dir=\"ltr\">\"wasted\"</bdi> تبقى <bdi dir=\"ltr\">\"spent\"</bdi>).<br><b>الـ Be Usable</b>: الـ progress bar، وطول صفحات ثابت، وترتيب منطقي، وتنبيه على الأسئلة اللي متجاوبتش، اعمل preview للـ survey."
       },
       {
        "why": "من L2 slides <bdi dir=\"ltr\">11–12</bdi>.",

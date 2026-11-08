@@ -5,10 +5,12 @@ MIDTERM.hci = {
   1,
   2,
   3,
-  4
+  4,
+  5,
+  6
  ],
- "scope": "Lectures 1 to 4",
- "scope_ar": "من المحاضرة 1 لـ 4",
+ "scope": "Lectures 1 to 6",
+ "scope_ar": "من المحاضرة 1 لـ 6",
  "sections": [
   {
    "lec": 1,
@@ -359,6 +361,205 @@ MIDTERM.hci = {
     [
      "Classic traps: encode <b>before</b> retrieve; recognition is <b>easier</b> than recall (so promote recognition); <b>intentional</b> learning is the harder one; listening = <b>less effort</b>, reading = <b>quicker</b>; Siri = voice UI, text-to-speech = speech-output, chatbot = natural-language system.",
      "الفخاخ المشهورة: الـ encode <b>قبل</b> الـ retrieve. والـ recognition <b>أسهل</b> من الـ recall (فبنشجع الـ recognition). والـ <b>intentional</b> هو الأصعب. والـ listening <b>مجهوده أقل</b> لكن الـ reading <b>أسرع</b>. والـ Siri تبع الـ voice UI، والـ text-to-speech تبع الـ speech-output، والـ chatbot تبع الـ natural-language system."
+    ]
+   ]
+  },
+  {
+   "lec": 5,
+   "h": "UI Design vs UX Design",
+   "ar_h": "الـ UI Design والـ UX Design",
+   "pts": [
+    [
+     "<b>Note</b>: the doctor's Lecture 5 is split over two lectures here: UI/UX, the UX process, user research, surveys and tips are in <b>L5</b>; \"How to ask good survey questions\" and the exercise are in <b>L6</b>.",
+     "<b>خد بالك</b>: محاضرة الدكتورة رقم <bdi dir=\"ltr\">5</bdi> متقسمة هنا على محاضرتين: الـ UI والـ UX والـ UX process والـ user research والـ surveys والـ tips في <b><bdi dir=\"ltr\">L5</bdi></b>، وجزء <bdi dir=\"ltr\">\"How to ask good survey questions\"</bdi> والتمرين في <b><bdi dir=\"ltr\">L6</bdi></b>."
+    ],
+    [
+     "<b>UI Design</b>: <b>interactivity, look and feel</b> of a product screen or web page. <b>UX Design</b>: a user's <b>overall experience</b> with the product or website. Trap: swapping them is False in the exam.",
+     "الـ <b>UI Design</b> هو الـ <b>interactivity والـ look and feel</b> بتاع شاشة المنتج أو صفحة الويب. والـ <b>UX Design</b> هو <b>التجربة الكاملة</b> بتاعة الـ user مع المنتج أو الموقع. والفخ: لو بدّلوهم في الامتحان تبقى الإجابة False."
+    ],
+    [
+     "Wheels: <b>UX</b> = Useful, Satisfiable, Convenient, Credible, Accessible, Desirable, Valuable. <b>UI</b> = Color Scheme, Typography, Layout, Images, Forms, Buttons, Content.",
+     "العجل: الـ <b>UX</b> فيها الـ Useful والـ Satisfiable والـ Convenient والـ Credible والـ Accessible والـ Desirable والـ Valuable. والـ <b>UI</b> فيها الـ Color Scheme والـ Typography والـ Layout والـ Images والـ Forms والـ Buttons والـ Content."
+    ],
+    [
+     "<b>UI designers</b> focus on: colors and typography, buttons and icons, layout and spacing, images and visual style, consistency across screens.",
+     "الـ <b>UI designers</b> بيركزوا على: الألوان والـ typography، والزراير والـ icons، والـ layout والـ spacing، والصور والـ visual style، والـ consistency بين الشاشات."
+    ],
+    [
+     "<b>UX designers</b> focus on: user needs and research, user journeys and flows, wireframes and prototypes, ease of use, usability testing.",
+     "الـ <b>UX designers</b> بيركزوا على: احتياجات الـ user والـ research، والـ user journeys والـ flows، والـ wireframes والـ prototypes، وسهولة الاستخدام، والـ usability testing."
+    ],
+    [
+     "<b>Pizza app</b>: UI designer = pizza photos, colors, button shape, where the text appears; UX designer = customers can find a pizza, customize, pay easily, track delivery without confusion. Beautiful but confusing navigation = <b>good UI, poor UX</b>; easy but unattractive = <b>good UX, poor UI</b>; the best products combine both.",
+     "مثال الـ <b>pizza app</b>: الـ UI designer بيقرر صور البيتزا والألوان وشكل الزراير ومكان الكلام، والـ UX designer بيتأكد إن الزبون يلاقي البيتزا ويظبط الأوردر ويدفع بسهولة ويتابع الـ delivery من غير لخبطة. ولو جميل بس الـ navigation ملخبط يبقى <b>UI كويس وUX وحش</b>، ولو سهل بس شكله مش حلو يبقى <b>UX كويس وUI وحش</b>، وأحسن المنتجات بتجمع الاتنين."
+    ],
+    [
+     "Skills: <b>UI</b> = visual design, color theory, typography, layout and composition, design systems, tools like Figma. <b>UX</b> = user research, problem-solving, information architecture, user flows and journey maps, wireframing and usability testing, tools like Figma plus research and testing tools. <b>Figma is used for both.</b>",
+     "الـ Skills: الـ <b>UI</b> محتاج الـ visual design والـ color theory والـ typography والـ layout and composition والـ design systems وأدوات زي Figma. والـ <b>UX</b> محتاج الـ user research والـ problem-solving والـ information architecture والـ user flows والـ journey maps والـ wireframing والـ usability testing وأدوات زي Figma وأدوات الـ research والـ testing. و<b>Figma بيتستخدم للاتنين</b>."
+    ]
+   ]
+  },
+  {
+   "lec": 5,
+   "h": "UX Design Process and user research",
+   "ar_h": "الـ UX Design Process والـ user research",
+   "pts": [
+    [
+     "<b>UX Design Process, 3 components</b>: 1- user research, 2- design and prototyping of the interface, 3- user interface evaluation (improvement).",
+     "الـ <b>UX Design Process فيه <bdi dir=\"ltr\">3</bdi> components</b>: الـ user research، والـ design and prototyping بتاع الـ interface، والـ user interface evaluation (improvement)."
+    ],
+    [
+     "Figure: a cycle <b>User Research → Design → Build</b> and back, with \"Iterate to validate your ideas\" and \"Iterate to design around constraints\" inside.",
+     "الرسمة cycle:<span class=\"ltr\">User Research → Design → Build → User Research</span>وجواها:<span class=\"ltr\">Iterate to validate your ideas</span><span class=\"ltr\">Iterate to design around constraints</span>"
+    ],
+    [
+     "<b>User research</b>: learn about the <b>users</b> (skills, possible distractions, special needs such as kids, elderly, people with disabilities), the <b>tasks</b> they try to complete, and <b>research done before</b> on human capabilities, limitations and perception. Invisible interface (idle concept): see L1.",
+     "الـ <b>User research</b>: تتعلم عن الـ <b>users</b> (مهاراتهم، والحاجات اللي بتشتتهم، والاحتياجات الخاصة زي الأطفال وكبار السن وذوي الإعاقة)، والـ <b>tasks</b> اللي بيحاولوا يخلصوها، و<b>الأبحاث القديمة</b> عن قدرات الإنسان وحدوده وإدراكه. والـ Invisible interface (idle concept) متشرح في <bdi dir=\"ltr\">L1</bdi>."
+    ]
+   ]
+  },
+  {
+   "lec": 5,
+   "h": "Surveys and tips for a good survey",
+   "ar_h": "الـ Surveys ونصايح تصميم survey كويس",
+   "pts": [
+    [
+     "<b>Surveys</b>: quick responses in a short time from a <b>large number of users</b> (broad view), often <b>online</b> and easily created, one of the <b>cheapest</b> methods of user research.",
+     "الـ <b>Surveys</b>: ردود سريعة في وقت قصير من <b>عدد كبير من الـ users</b> (نظرة واسعة)، وغالباً <b>online</b> وسهل تعملها، ومن <b>أرخص</b> methods الـ user research."
+    ],
+    [
+     "A survey can be an <b>initial step</b> (motivations, preferences, priorities, pain points) whose findings plan later activities such as interviews, or can <b>follow</b> an interview or usability study.",
+     "الـ survey ممكن يبقى <b>خطوة أولى</b> (الدوافع والتفضيلات والأولويات والـ pain points) ونتايجه بتخطط لأنشطة بعدها زي الـ interviews، أو <b>ييجي بعد</b> interview أو usability study."
+    ],
+    [
+     "<b>Tips</b>: keep it as small as possible, since too many questions affect response rate and reliability of data; ask the <b>minimum</b> that gets the data you need and will use; be aware of <b>bias</b>; get <b>feedback from participants</b>.",
+     "الـ <b>Tips</b>: خليها صغيرة على قد ما تقدر، لأن الأسئلة الكتير بتأثر على الـ response rate والـ reliability، واسأل <b>أقل عدد</b> يجيب الـ data اللي محتاجها وهتستخدمها، وخلي بالك من الـ <b>bias</b>، وخد <b>feedback من المشاركين</b>."
+    ]
+   ]
+  },
+  {
+   "lec": 5,
+   "h": "From last year's slides (not in this term's deck)",
+   "ar_h": "من slides السنة اللي فاتت (مش في الـ deck بتاعة السنة دي)",
+   "pts": [
+    [
+     "These sections stay in L5 with a \"Last year's slides\" tag, and past exams ask about them: <b>Quantitative</b> = numeric data (easier for engineers); <b>Qualitative</b> = why and how, often interviews.",
+     "الأجزاء دي موجودة في <bdi dir=\"ltr\">L5</bdi> وعليها tag <bdi dir=\"ltr\">\"Last year's slides\"</bdi>، وامتحانات قديمة سألت منها: الـ <b>Quantitative</b> هو data رقمية (أسهل للـ engineers)، والـ <b>Qualitative</b> عن ليه وإزاي وغالباً من interviews."
+    ],
+    [
+     "<b>Primary</b> = you collect it (specific, costs more); <b>Secondary</b> = someone else collected it (cheap and quick, may be old or not specific).",
+     "الـ <b>Primary</b> إنت اللي بتجمعه (specific لاحتياجاتك وبيكلّف أكتر)، والـ <b>Secondary</b> حد تاني جمعه (رخيص وسريع، بس ممكن يكون قديم أو مش specific)."
+    ],
+    [
+     "<b>PII</b> = names, home address, email, phone. <b>SPII</b> = SSN, driver's license, passport, financial account numbers, date of birth (loss could cause financial harm, embarrassment or discrimination). Collect only what you need, do not link it to PII or SPII, do not keep it after you no longer need it.",
+     "الـ <b>PII</b> هي الأسامي وعنوان البيت والـ email والتليفون. والـ <b>SPII</b> هي الـ SSN ورخصة السواقة والـ passport وأرقام الحسابات المالية وتاريخ الميلاد (لو ضاعت ممكن تعمل ضرر مالي أو إحراج أو تمييز). اجمع اللي محتاجه بس، ومتربطهاش بالـ PII أو الـ SPII، ومتحتفظش بيها بعد ما متبقاش محتاجها."
+    ],
+    [
+     "General tips: plan ahead (an interview script; \"the script is not a bible\"), combine methods in a relevant order, improve by testing and iteration, protect privacy and security.",
+     "نصايح عامة: خطط من بدري (script للـ interview، و<bdi dir=\"ltr\">\"the script is not a bible\"</bdi>)، واستخدم combination من الـ methods بترتيب مناسب، وحسّن بالـ testing والـ iteration، واحمي الـ privacy والـ security."
+    ]
+   ]
+  },
+  {
+   "lec": 5,
+   "h": "What the doctor asks",
+   "ar_h": "الدكتورة بتسأل في إيه",
+   "pts": [
+    [
+     "True or False: \"UI Design covers a user's overall experience with the product or website.\" → <b>False</b>. \"UX Design refers to interactivity, look and feel of product screen or web page.\" → <b>False</b> (they swapped the definitions).",
+     "صح ولا غلط: إن الـ UI Design بيغطي التجربة الكاملة، والإجابة <b>False</b>. وإن الـ UX Design هو الـ interactivity والـ look and feel، والإجابة <b>False</b> (بدّلوا التعريفين)."
+    ],
+    [
+     "True or False: \"Survey is more expensive than interview.\" → <b>False</b>. \"A well-designed survey should take a long time to complete to ensure detailed responses.\" → <b>False</b>.",
+     "صح ولا غلط: إن الـ Survey أغلى من الـ interview، والإجابة <b>False</b>. وإن الـ survey الكويس لازم ياخد وقت طويل عشان ردود مفصلة، والإجابة <b>False</b>."
+    ],
+    [
+     "From last year's parts:<br>\"Qualitative research involves data of numeric nature.\" → <b>False</b>.<br>Descriptions from interviewees → <b>Qualitative data</b>.<br>Quantitative research is easier for → <b>Engineers and technical people</b>.<br>\"PII is specific details that could be used to identify a user such as names, phone number.\" → <b>True</b>.<br>SPII includes → <b>Financial account numbers</b>.",
+     "من أجزاء السنة اللي فاتت:<br>إن الـ Qualitative research فيه data رقمية، والإجابة <b>False</b>.<br>الأوصاف اللي جاية من اللي بنعملهم interview، والإجابة <b>Qualitative data</b>.<br>الـ Quantitative research أسهل على مين، والإجابة <b>الـ Engineers والناس الـ technical</b>.<br>وإن الـ PII تفاصيل تعرّف الـ user زي الأسامي ورقم التليفون، والإجابة <b>True</b>.<br>والـ SPII بتشمل إيه، والإجابة <b>أرقام الحسابات المالية</b>."
+    ],
+    [
+     "From last year's parts: written, 5 marks: 2024/25 \"What is the difference between primary research and secondary research?\", 2025/26 \"Compare between primary research and secondary research.\": draw the table (L5, Primary vs secondary research).",
+     "من أجزاء السنة اللي فاتت: سؤال مقالي <bdi dir=\"ltr\">5</bdi> درجات، في امتحان <bdi dir=\"ltr\">2024/25</bdi> جه:<span class=\"ltr\">What is the difference between primary research and secondary research?</span>وفي <bdi dir=\"ltr\">2025/26</bdi> جه:<span class=\"ltr\">Compare between primary research and secondary research.</span>ارسم الجدول <bdi dir=\"ltr\">(L5, Primary vs secondary research)</bdi>."
+    ]
+   ]
+  },
+  {
+   "lec": 6,
+   "h": "How to ask good survey questions: Clear, Concise, Specific",
+   "ar_h": "إزاي تسأل أسئلة survey كويسة: Clear و Concise و Specific",
+   "pts": [
+    [
+     "This is the second half of the doctor's Lecture 5 (see the note in L5). The six principles: <b>Be Clear, Concise, Specific, Expressive, Unbiased, Usable</b>.",
+     "ده النص التاني من محاضرة الدكتورة رقم <bdi dir=\"ltr\">5</bdi> (شوف الملحوظة في <bdi dir=\"ltr\">L5</bdi>). والـ <bdi dir=\"ltr\">6</bdi> مبادئ هما:<span class=\"ltr\">Be Clear, Be Concise, Be Specific, Be Expressive, Be Unbiased, Be Usable</span>"
+    ],
+    [
+     "<b>Be Clear</b>:<br>label numeric scales (1 - Highly dissatisfied … 5 - Highly Satisfied);<br>no overlapping ranges (0-2, 3-5, 6-10, 11-19, 20+);<br>when in doubt give extra detail (\"tablet computer (i.e., any computer with a touchscreen and detachable keyboard)\");<br>timebox frequency (\"In the past seven days, how many times…\").",
+     "الـ <b>Be Clear</b>: حط labels للـ numeric scale، زي:<span class=\"ltr\">1 - Highly dissatisfied … 5 - Highly Satisfied</span>ومتخليش الـ ranges متداخلة، زي:<span class=\"ltr\">0-2, 3-5, 6-10, 11-19, 20+</span>ولو شاكك زوّد تفاصيل (زي شرح الـ tablet computer)، وحط إطار زمني للتكرار:<span class=\"ltr\">In the past seven days, how many times…</span>"
+    ],
+    [
+     "<b>Be Concise</b>: plain language (\"How clean was the car?\").",
+     "الـ <b>Be Concise</b>: لغة بسيطة:<span class=\"ltr\">How clean was the car?</span>"
+    ],
+    [
+     "<b>Be Specific</b>:<br>no super-big ideas (\"…how quickly the interface responded to your commands?\" plus follow-ups);<br>no double-barrel questions (split speed and availability);<br>no internal conflict (split food into temperature, appearance, flavor).",
+     "الـ <b>Be Specific</b>: مفيش super-big ideas (اسأل عن سرعة استجابة الـ interface وبعدها follow-ups)، ومفيش double-barrel (قسّم الـ speed والـ availability)، ومفيش internal conflict (قسّم الأكل لـ temperature و appearance و flavor)."
+    ]
+   ]
+  },
+  {
+   "lec": 6,
+   "h": "Expressive, Unbiased, Usable",
+   "ar_h": "الـ Expressive والـ Unbiased والـ Usable",
+   "pts": [
+    [
+     "<b>Be Expressive</b>:<br>emphasize the user's opinion (\"too high, too low, or about right?\");<br>ranges instead of yes/no (\"In the past seven days, how much time…? 0 hours / &lt;1 hour / 1-2 / 3-5 / 6-9 / 10+ hours\");<br>levels of frequency or agreement (5 levels instead of Dissatisfied/Satisfied);<br>multiple selections when possible (checkboxes).",
+     "الـ <b>Be Expressive</b>: ركّز على رأي الـ user:<span class=\"ltr\">too high, too low, or about right?</span>واستخدم ranges بدل <bdi dir=\"ltr\">yes/no</bdi>، زي:<span class=\"ltr\">0 hours / &lt;1 hour / 1-2 / 3-5 / 6-9 / 10+ hours</span>وادّي مستويات (<bdi dir=\"ltr\">5</bdi> مستويات بدل <bdi dir=\"ltr\">Dissatisfied/Satisfied</bdi>)، واسمح بأكتر من اختيار (checkboxes)."
+    ],
+    [
+     "<b>Be Unbiased</b>:<br>add \"Other: ____\" (nominal categories);<br>leave open-ended questions open;<br>no leading questions (\"Did our brand-new AI-based interface…\");<br>no loaded words (\"wasted\" → \"spent\").",
+     "الـ <b>Be Unbiased</b>: ضيف:<span class=\"ltr\">Other: ____</span>وسيب الأسئلة المفتوحة مفتوحة، ومفيش leading questions (زي <bdi dir=\"ltr\">\"brand-new AI-based\"</bdi>)، ومفيش loaded words (زي <bdi dir=\"ltr\">wasted</bdi> بدل <bdi dir=\"ltr\">spent</bdi>)."
+    ],
+    [
+     "<b>Be Usable</b>: progress bar, consistent page lengths, logical order, alert unanswered questions, preview the survey yourself.",
+     "الـ <b>Be Usable</b>: الـ progress bar، وأطوال صفحات ثابتة، وترتيب منطقي، وتنبيه على الأسئلة اللي متجاوبتش، واعمل preview للـ survey بنفسك."
+    ]
+   ]
+  },
+  {
+   "lec": 6,
+   "h": "Exercise: evaluate survey questions",
+   "ar_h": "تمرين: قيّم أسئلة الـ survey",
+   "pts": [
+    [
+     "The exercise's questions, with our matching: \"1 to 4, 1 = a lot, 4 = not at all\" (<b>ambiguous / reversed scale</b>); \"Why do you like to exercise?\" (<b>leading</b>); \"1 to 6, 1 = not at all\" (<b>changing number of options, reversing scale</b>); \"Have you listened to an audiobook this year?\" (<b>yes/no</b>).",
+     "أسئلة التمرين مع التوصيل بتاعنا: السؤال بتاع:<span class=\"ltr\">1 to 4, 1 = a lot, 4 = not at all</span>فيه <b>scale مش واضح / معكوس</b>. والسؤال:<span class=\"ltr\">Why do you like to exercise?</span>ده <b>leading</b>. والسؤال بتاع:<span class=\"ltr\">1 to 6, 1 = not at all</span>فيه <b>عدد options بيتغير وscale معكوس</b>. والسؤال:<span class=\"ltr\">Have you listened to an audiobook this year?</span>ده <b><bdi dir=\"ltr\">yes/no</bdi></b>."
+    ],
+    [
+     "The slide lists five problems without saying which question each belongs to: Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions. The matching above is our reading.",
+     "الـ slide كاتبة <bdi dir=\"ltr\">5</bdi> مشاكل من غير ما تقول كل مشكلة تبع أنهي سؤال:<span class=\"ltr\">Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions</span>والتوصيل اللي فوق ده قراءتنا إحنا."
+    ]
+   ]
+  },
+  {
+   "lec": 6,
+   "h": "What the doctor asks",
+   "ar_h": "الدكتورة بتسأل في إيه",
+   "pts": [
+    [
+     "Written, 5 marks (Final 2024/25, Q2B): \"Evaluate the following survey questions\": <b>Do you use social media?</b> (yes/no, use ranges); <b>Why do you like to exercise?</b> (leading); <b>…how much time have you wasted on social media?</b> (loaded, use \"spent\"); the <b>1 to 4</b> scale (ambiguous / reversed); the <b>1 to 6</b> scale (changing number of options, reversing scale). (These are the site's answers; the paper has no official key for this question.)",
+     "مقالي <bdi dir=\"ltr\">5</bdi> درجات <bdi dir=\"ltr\">(Final 2024/25, Q2B)</bdi>: قيّم الأسئلة دي:<span class=\"ltr\">Do you use social media?</span>سؤال <bdi dir=\"ltr\">yes/no</bdi> فاستخدم ranges.<span class=\"ltr\">Why do you like to exercise?</span>سؤال leading.<span class=\"ltr\">…how much time have you wasted on social media?</span>سؤال loaded فاستخدم <bdi dir=\"ltr\">spent</bdi>. والـ scale بتاع <bdi dir=\"ltr\">1 to 4</bdi> مش واضح أو معكوس، والـ scale بتاع <bdi dir=\"ltr\">1 to 6</bdi> عدد الـ options بيتغير وبيعكس الـ scale. (دي إجابات الموقع، والامتحان ملوش model answer رسمي للسؤال ده.)"
+    ],
+    [
+     "Written, 5 marks (Final 2025/26, Q2B): \"Mention the points that should be taken into consideration to ask good survey questions and give examples.\": name the six principles with one don't/instead example each.",
+     "مقالي <bdi dir=\"ltr\">5</bdi> درجات <bdi dir=\"ltr\">(Final 2025/26, Q2B)</bdi>: اذكر النقط اللي لازم تتحط في الاعتبار عشان تسأل أسئلة survey كويسة مع أمثلة، يعني الـ <bdi dir=\"ltr\">6</bdi> مبادئ ومعاهم مثال <bdi dir=\"ltr\">don't/instead</bdi> لكل واحد."
+    ],
+    [
+     "True or False: \"Be biased\" is an important point for a good survey → <b>False</b> from the lecture (the principle is Be <b>Unbiased</b>; the 2024/25 key marks it True, likely a typo).",
+     "صح ولا غلط: إن <bdi dir=\"ltr\">\"Be biased\"</bdi> نقطة مهمة في الـ survey، والإجابة <b>False</b> من المحاضرة (المبدأ هو Be <b>Unbiased</b>، ونموذج <bdi dir=\"ltr\">2024/25</bdi> معلّمها True وده غالباً غلطة مطبعية)."
+    ],
+    [
+     "MCQ: \"Which of the following best summarizes a good survey design principle?\" → <b>Short, clear, unbiased surveys with participant feedback considered</b>.",
+     "اختار: أنهي جملة بتلخص مبدأ كويس لتصميم الـ survey، والإجابة:<span class=\"ltr\">Short, clear, unbiased surveys with participant feedback considered</span>"
     ]
    ]
   }

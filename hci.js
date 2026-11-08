@@ -1,6 +1,6 @@
 // Human Computer Interaction (CS314, Dr. Mona Samir Lackousha).
 // Lectures 1–4 follow this term's slides; last year's slides that are not in this term's are kept inside them as sections marked ly (shown as "Last year's slides").
-// Lectures 5–10 are last year's lectures 4–9, not yet replaced by this term's.
+// Lectures 5–6 follow this term's Lecture 5 slides (split over two lectures), with last year's parts marked ly; lectures 7–10 are last year's, not yet replaced.
 window.COURSES = window.COURSES || {};
 COURSES.hci = {
  "id": "hci",
@@ -210,9 +210,14 @@ COURSES.hci = {
     },
     {
      "h": "UI design process (3 components)",
+     "pts": [
+      "This term's Lecture 5 teaches these three components as the <b>UX Design Process</b>: user research (the users, their tasks and earlier research), design and prototyping, and evaluation (improvement). See L5, UX Design Process and 1- User Research."
+     ]
+    },
+    {
+     "h": "UI design process: software development is research",
      "ly": 1,
      "pts": [
-      "User research means learning about the <b>users</b> (skills, distractions, special needs like kids, elderly, people with disabilities), the <b>tasks</b> they try to complete, and <b>previous research</b> on human capabilities, limitations and perception.",
       "Software development is research: it is not just creating software but also <b>learning how to create the software best suited for its purpose</b> (one of the 12 characteristics studied in Software Engineering)."
      ]
     },
@@ -320,10 +325,16 @@ COURSES.hci = {
     },
     {
      "h": "UI vs UX vs HCI",
+     "pts": [
+      "<b>UI Design</b> (User Interface): the <b>interactivity, look and feel</b> of a product screen or web page. <b>UX Design</b> (User Experience): the user's <b>overall experience</b> with the product or website. Both are on this term's Lecture 5 slides, with examples: see L5, UI Design vs UX Design."
+     ]
+    },
+    {
+     "h": "UI vs UX vs HCI: more from last year's slides",
      "ly": 1,
      "pts": [
-      "<b>UI Design</b> (User Interface): the <b>interactivity, look and feel</b> of a product screen or web page. It is about designing things nicely for a screen.",
-      "<b>UX Design</b> (User Experience): the user's <b>overall experience</b> with the product or website. UX is about <b>dictating</b> the interactions.",
+      "UI Design is about designing things nicely for a screen.",
+      "UX is about <b>dictating</b> the interactions.",
       "<b>HCI</b> is largely about <b>understanding</b> the interactions between humans and computers.",
       "Early systems ran on expensive machines, so engineers focused on efficient software and ignored usability. Today success requires <b>user-centric</b> design focused on usability and a pleasant, smooth experience."
      ]
@@ -3678,14 +3689,152 @@ COURSES.hci = {
   },
   {
    "n": 5,
-   "title": "Qualitative vs Quantitative, Privacy and Surveys (last year's slides)",
+   "title": "UI vs UX, User Research and Surveys",
    "notes": [
+    {
+     "h": "UI Design vs UX Design",
+     "pts": [
+      "<b>UI Design</b> (User Interface): refers to the <b>interactivity, look and feel</b> of a product screen or web page.",
+      "<b>UX Design</b> (User Experience): covers a user's <b>overall experience</b> with the product or website.",
+      "How both differ from HCI is taught in L1 (UI vs UX vs HCI).",
+      "<b>UX</b> on the slide's wheel: Useful, Satisfiable, Convenient, Credible, Accessible, Desirable, Valuable.",
+      "<b>UI</b> on the slide's wheel: Color Scheme, Typography, Layout, Images, Forms, Buttons, Content."
+     ],
+     "fig": [
+      "hc-ux-ui-wheels"
+     ],
+     "figH": {
+      "hc-ux-ui-wheels": "The UX wheel and the UI wheel: what falls under each"
+     }
+    },
+    {
+     "h": "What UI designers and UX designers focus on",
+     "pts": [
+      "<b>UI Design</b> is the <b>visual appearance</b>. UI designers focus on:<br>• Colors and typography<br>• Buttons and icons<br>• Layout and spacing<br>• Images and visual style<br>• Consistency across screens",
+      "<b>UX Design</b> is the <b>user experience</b>. UX designers focus on:<br>• User needs and research<br>• User journeys and flows<br>• Wireframes and prototypes<br>• Ease of use<br>• Usability testing"
+     ],
+     "fig": [
+      "hc-ui-ux-focus"
+     ],
+     "figH": {
+      "hc-ui-ux-focus": "The screens a UI designer draws and the wall a UX designer works on"
+     }
+    },
+    {
+     "h": "An example: a food delivery app",
+     "pts": [
+      "Imagine you are designing an app to order pizza.",
+      "<b>UI designer</b>: decides how the pizza photos look, which colors the app uses, the shape of the buttons, and where the text appears.",
+      "<b>UX designer</b>: makes sure customers can find a pizza, customize their order, pay easily, and track delivery without confusion.",
+      "A beautiful app with confusing navigation has <b>good UI but poor UX</b>.",
+      "An easy-to-use app with unattractive visuals may have <b>good UX but poor UI</b>.",
+      "The best products combine both."
+     ],
+     "fig": [
+      "hc-pizza-app"
+     ],
+     "figH": {
+      "hc-pizza-app": "The pizza app: switch UI and UX between good and poor"
+     }
+    },
+    {
+     "h": "What skills do you need?",
+     "table": [
+      [
+       "UI design",
+       "UX design"
+      ],
+      [
+       "Visual design",
+       "User research"
+      ],
+      [
+       "Color theory",
+       "Problem-solving"
+      ],
+      [
+       "Typography",
+       "Information architecture"
+      ],
+      [
+       "Layout and composition",
+       "User flows and journey maps"
+      ],
+      [
+       "Design systems",
+       "Wireframing and usability testing"
+      ],
+      [
+       "Tools like Figma",
+       "Tools like Figma, research and testing tools"
+      ]
+     ],
+     "pts": [
+      "Note that <b>Figma</b> is used for both UI and UX design."
+     ]
+    },
+    {
+     "h": "Invisible Interface (Idle Concept)",
+     "pts": [
+      "The interface should be <b>as invisible as possible</b>, so the user thinks about the <b>task</b> rather than about the tool. It is taught in full, with its diagram, in L1 (Invisible Interface (Idle Concept))."
+     ]
+    },
+    {
+     "h": "UX Design Process",
+     "pts": [
+      "Three components are recommended:<br>1- user research.<br>2- design and prototyping of the interface.<br>3- user interface evaluation (improvement).",
+      "The slide's figure is a <b>cycle</b>: User Research → Design → Build → back to User Research.",
+      "Inside the cycle: <b>\"Iterate to validate your ideas\"</b> sits between User Research and Design, and <b>\"Iterate to design around constraints\"</b> sits between Design and Build.",
+      "The figure's third stage is <b>Build</b>, while the third component in the list is <b>evaluation (improvement)</b>: both are on the slide."
+     ],
+     "fig": [
+      "hc-ux-process"
+     ],
+     "figH": {
+      "hc-ux-process": "The UX design process: research, design and build, around and around"
+     }
+    },
+    {
+     "h": "1- User Research: what you have to learn",
+     "pts": [
+      "<b>Users</b> who will use your system: their skills, possible distractions, special needs such as kids, elderly, people with disabilities.",
+      "<b>Tasks</b> that users try to complete through the system.",
+      "Not just learning from users but from <b>research done before</b> about human capabilities, limitations and how people perceive things."
+     ]
+    },
+    {
+     "h": "1) Surveys",
+     "pts": [
+      "A powerful way to gather <b>quick responses</b> in a short time from a <b>large number of users</b> (a broad view).",
+      "Often done <b>online</b> and easily created.",
+      "One of the <b>cheapest</b> methods of user research.",
+      "Can be an <b>initial step</b> to gather general insights about users' motivations, preferences, priorities and pain points; the findings help in planning later activities such as interviews.",
+      "Can <b>follow</b> an activity (an interview or usability study), using the findings of the earlier method to plan the survey."
+     ]
+    },
+    {
+     "h": "Tips for a good survey design",
+     "pts": [
+      "<b>Keep it as small as possible.</b>",
+      "Asking too many questions affects the <b>response rate</b> and the <b>reliability of data</b> (the slide shows \"response rate reliability of data\", with the \"and\" missing).",
+      "Ask the <b>minimum number of questions</b> to get the data you need and know you will use.",
+      "<b>Be aware of bias.</b>",
+      "Get <b>feedback from participants</b> about the survey."
+     ],
+     "fig": [
+      "hc-survey-fit"
+     ],
+     "figH": {
+      "hc-survey-fit": "Where surveys fit in user research, and how to keep them good"
+     }
+    },
     {
      "h": "Secondary research benefits",
      "pts": [
       "Answers questions about <b>human abilities and limitations</b>. Example: designing for color-blind users using color-blindness facts.",
       "Answers questions about <b>user groups with common issues</b>. Example: an app for a poor country where users likely have <b>low-end devices</b>."
-     ]
+     ],
+     "ly": 1
     },
     {
      "h": "Types of user research by WHAT",
@@ -3698,7 +3847,8 @@ COURSES.hci = {
      ],
      "figH": {
       "hc-qual-quant": "Quantitative or qualitative? Sort the kinds of data"
-     }
+     },
+     "ly": 1
     },
     {
      "h": "Primary vs secondary research",
@@ -3739,7 +3889,8 @@ COURSES.hci = {
      ],
      "figH": {
       "hc-primary-secondary": "Primary or secondary research? Sort the methods, then compare them"
-     }
+     },
+     "ly": 1
     },
     {
      "h": "General tips for research methods",
@@ -3749,7 +3900,8 @@ COURSES.hci = {
       "Methods are not alternatives. Use a <b>combination</b> in a relevant order.",
       "<b>Testing and iteration</b> improve any technique.",
       "<b>Privacy and security</b> of user data are essential."
-     ]
+     ],
+     "ly": 1
     },
     {
      "h": "Privacy and security",
@@ -3763,21 +3915,8 @@ COURSES.hci = {
      ],
      "figH": {
       "hc-pii-spii": "PII or sensitive PII? Sort the user data"
-     }
-    },
-    {
-     "h": "1) Surveys",
-     "pts": [
-      "Quick responses from a <b>large number of users</b> in a short time (a broad view). Often online and easy to create. One of the <b>cheapest</b> methods.",
-      "Can be an initial step for insights on motivations, preferences, priorities and pain points, to plan later activities such as interviews. Can also follow an interview or usability study.",
-      "Tips:<br>• <b>keep it as small as possible</b> (too many questions hurt response rate and reliability)<br>• ask only what you need and will use<br>• <b>be aware of bias</b><br>• get feedback from participants about the survey."
-     ],
-     "fig": [
-      "hc-survey-fit"
-     ],
-     "figH": {
-      "hc-survey-fit": "Where surveys fit in user research, and how to keep them good"
-     }
+     },
+     "ly": 1
     }
    ],
    "cards": [
@@ -3812,6 +3951,58 @@ COURSES.hci = {
     [
      "Survey strengths",
      "Many users, short time, online, cheap; a broad view."
+    ],
+    [
+     "UI vs UX in two words",
+     "UI Design: visual appearance. UX Design: user experience."
+    ],
+    [
+     "Which design is Figma used for?",
+     "Both: Figma is used for UI and UX design."
+    ],
+    [
+     "UX wheel (7 words)",
+     "Useful, Satisfiable, Convenient, Credible, Accessible, Desirable, Valuable."
+    ],
+    [
+     "UI wheel (7 words)",
+     "Color Scheme, Typography, Layout, Images, Forms, Buttons, Content."
+    ],
+    [
+     "UI designers focus on",
+     "Colors and typography, buttons and icons, layout and spacing, images and visual style, consistency across screens."
+    ],
+    [
+     "UX designers focus on",
+     "User needs and research, user journeys and flows, wireframes and prototypes, ease of use, usability testing."
+    ],
+    [
+     "Pizza app: UI vs UX",
+     "UI: pizza photos, colors, button shapes, where the text appears. UX: find a pizza, customize, pay easily, track delivery without confusion."
+    ],
+    [
+     "Good UI but poor UX?",
+     "A beautiful app with confusing navigation. (Easy-to-use but unattractive may be good UX, poor UI. The best products combine both.)"
+    ],
+    [
+     "UI design skills",
+     "Visual design, color theory, typography, layout and composition, design systems, tools like Figma."
+    ],
+    [
+     "UX design skills",
+     "User research, problem-solving, information architecture, user flows and journey maps, wireframing and usability testing, tools like Figma, research and testing tools."
+    ],
+    [
+     "UX Design Process: the slide's cycle",
+     "User Research → Design → Build → back to User Research, with \"Iterate to validate your ideas\" and \"Iterate to design around constraints\" inside."
+    ],
+    [
+     "User research: what to learn",
+     "The users (skills, distractions, special needs), the tasks they try to complete, and earlier research on human capabilities, limitations and perception."
+    ],
+    [
+     "Tips for a good survey design",
+     "Keep it as small as possible (too many questions affect response rate and reliability); ask the minimum you need and will use; be aware of bias; get feedback from participants."
     ]
    ],
    "qa": [
@@ -3830,6 +4021,14 @@ COURSES.hci = {
     [
      "Give tips for a good survey design.",
      "Keep it as small as possible, since too many questions reduce the response rate and reliability. Ask the minimum questions for data you will use. Be aware of bias. Get feedback from participants about the survey."
+    ],
+    [
+     "Compare UI design and UX design, with an example.",
+     "<b>UI Design</b> refers to the interactivity, look and feel of a product screen or web page (colors and typography, buttons and icons, layout and spacing, images and visual style, consistency across screens).<br><b>UX Design</b> covers a user's overall experience with the product or website (user needs and research, user journeys and flows, wireframes and prototypes, ease of use, usability testing).<br>Example, an app to order pizza: the UI designer decides how the pizza photos look, the colors, the shape of the buttons and where the text appears; the UX designer makes sure customers can find a pizza, customize their order, pay easily and track delivery without confusion.<br>A beautiful app with confusing navigation has good UI but poor UX. The best products combine both."
+    ],
+    [
+     "What does the UX Design Process include, and what do you learn in user research?",
+     "Three components are recommended: 1- user research, 2- design and prototyping of the interface, 3- user interface evaluation (improvement).<br>In user research you learn about the users (their skills, possible distractions, special needs such as kids, elderly, people with disabilities), the tasks they try to complete through the system, and research done before about human capabilities, limitations and how people perceive things."
     ]
    ],
    "quiz": [
@@ -4057,18 +4256,19 @@ COURSES.hci = {
   },
   {
    "n": 6,
-   "title": "How to Ask Good Survey Questions (last year's slides)",
+   "title": "How to Ask Good Survey Questions",
    "notes": [
     {
      "h": "Six principles: Clear · Concise · Specific · Expressive · Unbiased · Usable",
      "pts": [
-      "Each principle has \"Don't ask this… / Instead, ask this…\" examples. Examiners often ask you to evaluate a question with them."
+      "Each principle has \"Don't ask this… / Instead, ask this…\" examples.",
+      "Examiners often ask you to evaluate a question with them. ‡"
      ],
      "fig": [
       "hc-six-principles"
      ],
      "figAt": {
-      "hc-six-principles": 0
+      "hc-six-principles": 1
      },
      "figH": {
       "hc-six-principles": "The six principles: don't ask this, ask this instead"
@@ -4077,10 +4277,10 @@ COURSES.hci = {
     {
      "h": "Be Clear",
      "pts": [
-      "<b>Label numeric scales</b>: not \"1–5\" alone but \"1 = Highly dissatisfied … 5 = Highly satisfied\".",
-      "<b>Avoid overlapping ranges</b>: 0-2, 2-5, 5-10 overlap. Use 0-2, 3-5, 6-10, 11-19, 20+.",
-      "<b>When in doubt, give extra detail</b>: \"tablet computer (i.e. any computer with a touchscreen and detachable keyboard)\".",
-      "<b>Timebox frequency questions</b>: instead of \"Never / Rarely / Often…\", ask \"In the past seven days, how many times have you exercised? 0, 1-2, 3-4, 5-7, 7 or more\"."
+      "<b>Provide labels to clarify a numeric scale.</b><br>Don't ask: \"From 1 to 5, rate your satisfaction with..\" (just 1, 2, 3, 4, 5).<br>Instead: 1 - Highly dissatisfied, 2 - Dissatisfied, 3 - Neutral, 4 - Satisfied, 5 - Highly Satisfied.",
+      "<b>Avoid overlapping ranges.</b> \"How many times per week do you watch Hulu?\"<br>Don't offer: 0-2, 2-5, 5-10, 10-20, 20+ (2, 5, 10 and 20 each fall in two ranges).<br>Instead: 0-2, 3-5, 6-10, 11-19, 20+.",
+      "<b>When in doubt, provide extra detail.</b><br>Don't ask: \"Do you own a tablet computer?\" (Yes / No).<br>Instead: \"Do you own a tablet computer (i.e., any computer with a touchscreen and detachable keyboard)?\" (Yes / No).",
+      "<b>Timebox frequency-based questions.</b><br>Don't ask: \"How often do you exercise?\" (Never / Rarely / Occasionally / Frequently / Always).<br>Instead: \"In the past seven days, how many times have you exercised?\" 0 / 1-2 / 3-4 / 5-6 / 7 or more (the slide shows 5-7 and 7 or more, which overlap at 7 and break its own rule)."
      ],
      "fig": [
       "hc-clear-ranges"
@@ -4092,24 +4292,24 @@ COURSES.hci = {
     {
      "h": "Be Concise",
      "pts": [
-      "<b>Plain language</b>: \"What was the overall level of cleanliness that you observed within the car?\" becomes \"How clean was the car?\""
+      "<b>Ask questions in plain language.</b><br>Don't ask: \"What was the overall level of cleanliness that you observed within the car that you rented?\" (Very clean / Somewhat clean / Not clean at all).<br>Instead: \"How clean was the car?\" with the same three answers."
      ]
     },
     {
      "h": "Be Specific",
      "pts": [
-      "<b>Avoid super-big ideas</b>: \"How satisfied were you with the interface?\" becomes \"…with how quickly the interface responded?\" plus follow-up questions.",
-      "<b>Avoid double-barrel questions</b> (two things in one): \"speed and availability of your connection\" should be split into two questions.",
-      "<b>Avoid internal conflict</b>: \"How satisfied with your food?\" should be split into temperature, appearance and flavor."
+      "<b>Avoid questions on super-big ideas.</b><br>Don't ask: \"How satisfied were you with the interface?\"<br>Instead: \"How satisfied were you with how quickly the interface responded to your commands?\" (and more follow-up questions).",
+      "<b>Avoid \"double-barrel\" questions</b> (two things in one).<br>Don't ask: \"How satisfied are you with the speed and availability of your mobile connection?\"<br>Instead: split it into \"…the speed of your mobile connection?\" and \"…the availability of your mobile connection?\".",
+      "<b>Avoid questions that allow internal conflict.</b><br>Don't ask: \"How satisfied were you with your food?\"<br>Instead: \"How satisfied were you with the temperature of your food?\" \"…with the appearance of your food?\" \"…with the flavor of your food?\"."
      ]
     },
     {
      "h": "Be Expressive",
      "pts": [
-      "<b>Emphasize the user's opinion</b>: \"Is our price too high?\" becomes \"Do you feel our price is too high, too low, or about right?\"",
-      "<b>Use ranges instead of yes/no</b>: \"Do you use social media?\" becomes \"In the past seven days, how much time have you spent on social media? 0 / &lt;1 / 1-2 / 3-5 / 6-9 / 10+ hours\".",
-      "<b>Give levels of frequency or agreement</b>: a 5-level satisfaction scale instead of Dissatisfied/Satisfied.",
-      "<b>Allow multiple selections</b> when possible (checkboxes instead of radio buttons)."
+      "<b>Emphasize the user's opinions.</b><br>Don't ask: \"Is our subscription price too high?\"<br>Instead: \"Do you feel our subscription price is too high, too low, or about right?\"",
+      "<b>Use ranges instead of yes/no questions.</b><br>Don't ask: \"Do you use social media?\" (Yes / No).<br>Instead: \"In the past seven days, how much time have you spent on social media?\" 0 hours / &lt;1 hour / 1-2 hours / 3-5 hours / 6-9 hours / 10+ hours.",
+      "<b>Give levels of frequency or agreement.</b><br>Don't offer: \"How satisfied are you with this interface?\" with only Dissatisfied / Satisfied.<br>Instead: Highly dissatisfied / Dissatisfied / Neutral / Satisfied / Highly Satisfied.",
+      "<b>Allow multiple selections when possible</b>: checkboxes instead of radio buttons.<br>\"What social media platform do you use most?\" Facebook, Snapchat, Instagram, Twitter, LinkedIn, Pinterest."
      ],
      "fig": [
       "hc-expressive"
@@ -4121,16 +4321,16 @@ COURSES.hci = {
     {
      "h": "Be Unbiased",
      "pts": [
-      "<b>Allow users to add nominal categories</b>: add \"Other: ____\".",
-      "<b>Leave open-ended questions open</b>: \"Why did you choose our service?\" should not force fixed options.",
-      "<b>Avoid leading questions</b>: \"Did our brand-new AI-based interface generate better recommendations?\" becomes \"How satisfied were you with the recommendations?\"",
-      "<b>Avoid loaded questions</b>: \"how much time have you <i>wasted</i> on social media?\" becomes \"…<i>spent</i>…\"."
+      "<b>Allow users to add nominal categories</b>: \"What social media platform do you use most?\" with the same list plus <b>\"Other: ____\"</b>.",
+      "<b>Leave potentially open-ended questions open.</b><br>Don't ask: \"Why did you choose our service over our competitors?\" with fixed options (Reputation / Price / Recommendation / Reviews / Other: ____).<br>Instead: ask the same question and leave the answer open.",
+      "<b>Avoid leading questions.</b><br>Don't ask: \"Did our brand-new AI-based interface generate better recommendations?\" (Yes! / No :( ).<br>Instead: \"How satisfied were you with the recommendations the interface generated?\" (Dissatisfied / Neutral / Satisfied).",
+      "<b>Avoid loaded questions.</b><br>Don't ask: \"In the past seven days, how much time have you <i>wasted</i> on social media?\"<br>Instead: \"In the past seven days, how much time have you <i>spent</i> on social media?\""
      ]
     },
     {
      "h": "Be Usable",
      "pts": [
-      "• Provide a <b>progress bar</b>.<br>• Keep <b>page lengths consistent</b>.<br>• <b>Order questions logically</b>.<br>• <b>Alert users about unanswered questions</b>.<br>• <b>Preview the survey yourself</b>."
+      "• Provide a <b>progress bar</b>.<br>• Make your <b>page lengths consistent</b>.<br>• <b>Order your questions logically</b>.<br>• <b>Alert users about unanswered questions</b>.<br>• <b>Preview the survey yourself</b>."
      ],
      "fig": [
       "hc-usable-survey"
@@ -4144,8 +4344,9 @@ COURSES.hci = {
      "pts": [
       "\"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\" is an <b>ambiguous / reversed scale</b>.",
       "\"Why do you like to exercise?\" is a <b>leading question</b> because it assumes you like it.",
-      "\"On a scale of 1 to 6 with 1 meaning 'not at all'…\" has a <b>changing number of options</b> (4 vs 6) and a <b>reversed scale</b> compared with the previous question.",
-      "\"Have you listened to an audiobook this year?\" is a <b>yes/no question</b>. Use ranges."
+      "\"On a scale of 1 to 6 with 1 meaning 'not at all' and 6 meaning 'a lot', how much do you like audiobooks?\" has a <b>changing number of options</b> (4 vs 6) and a <b>reversed scale</b> compared with the first question.",
+      "\"Have you listened to an audiobook this year?\" is a <b>yes/no question</b>. Use ranges.",
+      "The slide lists five problems next to these questions: <b>Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions</b>. It does not say which question each one belongs to; the matching above is our reading."
      ],
      "fig": [
       "hc-evaluate-questions"
@@ -4186,11 +4387,31 @@ COURSES.hci = {
     ],
     [
      "Be Usable checklist",
-     "Progress bar, consistent page lengths, logical order, alert unanswered, preview yourself."
+     "Provide a progress bar, make your page lengths consistent, order your questions logically, alert users about unanswered questions, preview the survey yourself."
     ],
     [
      "Timebox frequency",
-     "\"In the past seven days, how many times…\" instead of \"Rarely/Often\" (Be Clear)."
+     "\"In the past seven days, how many times…\" instead of \"Rarely/Frequently\" (Be Clear)."
+    ],
+    [
+     "Label a numeric scale",
+     "1 - Highly dissatisfied, 2 - Dissatisfied, 3 - Neutral, 4 - Satisfied, 5 - Highly Satisfied (Be Clear)."
+    ],
+    [
+     "Plain language",
+     "\"How clean was the car?\" instead of \"What was the overall level of cleanliness that you observed within the car that you rented?\" (Be Concise)."
+    ],
+    [
+     "Super-big ideas",
+     "Too broad: \"How satisfied were you with the interface?\" Ask about one thing (how quickly it responded), with follow-ups (Be Specific)."
+    ],
+    [
+     "Internal conflict",
+     "\"How satisfied were you with your food?\" Split it into temperature, appearance and flavor (Be Specific)."
+    ],
+    [
+     "Exercise: the five problems",
+     "Ambiguous scale, changing number of options, reversing scale, leading questions, yes/no questions."
     ]
    ],
    "qa": [
@@ -4209,6 +4430,10 @@ COURSES.hci = {
     [
      "Evaluate: \"How satisfied are you with the speed and availability of your mobile connection?\"",
      "A double-barrel question: it asks two things. Split it into one question about speed and one about availability."
+    ],
+    [
+     "Evaluate these survey questions: \"On a scale of 1 to 4 with 1 meaning 'a lot' and 4 meaning 'not at all', how much do you enjoy exercising?\", \"Why do you like to exercise?\", \"On a scale of 1 to 6 with 1 meaning 'not at all' and 6 meaning 'a lot', how much do you like audiobooks?\", \"Have you listened to an audiobook this year?\"",
+     "The first is an <b>ambiguous / reversed scale</b>.<br>The second is a <b>leading question</b>: it assumes you like exercising.<br>The third changes the <b>number of options</b> (4 vs 6) and <b>reverses the scale</b> compared with the first.<br>The fourth is a <b>yes/no question</b>: use ranges instead.<br>The slide lists the problems as: Ambiguous scale, Changing number of options, Reversing scale, Leading questions, Yes/no questions. The slide does not say which problem belongs to which question; this matching is our reading."
     ]
    ],
    "quiz": [
@@ -4353,8 +4578,8 @@ COURSES.hci = {
        "A yes/no question gives even less information; Be Expressive says to use ranges instead of yes/no (L6, Be Expressive)."
       ],
       [
-       "\"In the past seven days, how many times have you exercised? 0 / 1-2 / 3-4 / 5-7 / 7 or more\"",
-       "Correct. Be Clear says to timebox frequency questions: words like Rarely or Often mean different things to different people, while \"in the past seven days\" with counts is exact (L6, Be Clear)."
+       "\"In the past seven days, how many times have you exercised? 0 / 1-2 / 3-4 / 5-6 / 7 or more\"",
+       "Correct. Be Clear says to timebox frequency questions: words like Rarely or Frequently mean different things to different people, while \"in the past seven days\" with counts is exact. (The slide prints 5-7 and 7 or more, which overlap at 7, so the second is written 5-6 here.) (L6, Be Clear)."
       ],
       [
        "\"Why do you exercise?\"",
@@ -5920,7 +6145,7 @@ COURSES.hci = {
       {
        "type": "written",
        "q": "B. Mention the points that should be taken into consideration to ask good survey questions and give examples. (5 marks)",
-       "ans": "<b>Be Clear</b>: label numeric scales (1 = Highly dissatisfied … 5 = Highly satisfied); avoid overlapping ranges (0-2, 3-5, 6-10); add detail when in doubt; timebox frequency (\"in the past seven days…\").<br><b>Be Concise</b>: plain language (\"How clean was the car?\").<br><b>Be Specific</b>: avoid super-big ideas; avoid double-barrel questions (split \"speed and availability\"); avoid internal conflict (split \"food\" into temperature, appearance, flavor).<br><b>Be Expressive</b>: emphasize opinions (\"too high, too low, or about right?\"); ranges instead of yes/no; levels of agreement; allow multiple selections.<br><b>Be Unbiased</b>: add \"Other: ___\"; leave open-ended questions open; avoid leading questions; avoid loaded words (\"wasted\" becomes \"spent\").<br><b>Be Usable</b>: progress bar, consistent page length, logical order, alert unanswered questions, preview the survey.",
+       "ans": "<b>Be Clear</b>: label numeric scales (1 - Highly dissatisfied … 5 - Highly Satisfied); avoid overlapping ranges (0-2, 3-5, 6-10); add detail when in doubt; timebox frequency (\"in the past seven days…\").<br><b>Be Concise</b>: plain language (\"How clean was the car?\").<br><b>Be Specific</b>: avoid super-big ideas; avoid double-barrel questions (split \"speed and availability\"); avoid internal conflict (split \"food\" into temperature, appearance, flavor).<br><b>Be Expressive</b>: emphasize opinions (\"too high, too low, or about right?\"); ranges instead of yes/no; levels of agreement; allow multiple selections.<br><b>Be Unbiased</b>: add \"Other: ___\"; leave open-ended questions open; avoid leading questions; avoid loaded words (\"wasted\" becomes \"spent\").<br><b>Be Usable</b>: progress bar, consistent page length, logical order, alert unanswered questions, preview the survey.",
        "why": "Name the 6 principles and give one \"don't / instead\" example for each. That covers the marks."
       },
       {

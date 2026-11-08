@@ -2691,6 +2691,166 @@ EXTRA.hci = {
     ]
    ],
    "a": 3
+  },
+  {
+   "q": "<b>UI Design</b> refers to:",
+   "o": [
+    [
+     "Interactivity, look and feel of a product screen or web page",
+     "Correct. This is the slide's definition of UI Design (L5, UI Design vs UX Design)."
+    ],
+    [
+     "A user's overall experience with the product or website",
+     "That is the definition of UX Design, not UI Design (L5, UI Design vs UX Design)."
+    ],
+    [
+     "Understanding the interactions between humans and computers",
+     "That describes HCI (L1, UI vs UX vs HCI), not UI Design."
+    ],
+    [
+     "Learning about the users and their tasks",
+     "That is user research, the first component of the UX Design Process (L5, 1- User Research)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "\"Credible\" and \"Accessible\" appear on the slide's wheel of:",
+   "o": [
+    [
+     "UI",
+     "The UI wheel has Color Scheme, Typography, Layout, Images, Forms, Buttons and Content (L5, UI Design vs UX Design)."
+    ],
+    [
+     "UX",
+     "Correct. The UX wheel has Useful, Satisfiable, Convenient, Credible, Accessible, Desirable and Valuable (L5, UI Design vs UX Design)."
+    ],
+    [
+     "Both UI and UX",
+     "The two wheels do not share any word; Credible and Accessible are on the UX wheel only (L5, UI Design vs UX Design)."
+    ],
+    [
+     "Neither of them",
+     "They are on the UX wheel, with Useful, Satisfiable, Convenient, Desirable and Valuable (L5, UI Design vs UX Design)."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which of these is a focus of <b>UX</b> designers?",
+   "o": [
+    [
+     "Colors and typography",
+     "Colors and typography are on the UI designers' list (L5, What UI designers and UX designers focus on)."
+    ],
+    [
+     "Buttons and icons",
+     "Buttons and icons are on the UI designers' list (L5, What UI designers and UX designers focus on)."
+    ],
+    [
+     "Wireframes and prototypes",
+     "Correct. UX designers focus on user needs and research, user journeys and flows, wireframes and prototypes, ease of use and usability testing (L5, What UI designers and UX designers focus on)."
+    ],
+    [
+     "Consistency across screens",
+     "Consistency across screens is on the UI designers' list (L5, What UI designers and UX designers focus on)."
+    ]
+   ],
+   "a": 2
+  },
+  {
+   "q": "<b>Scenario:</b> In a pizza ordering app, someone decides how the pizza photos look, the shape of the buttons and where the text appears. Who?",
+   "o": [
+    [
+     "The UX designer",
+     "The UX designer makes sure customers can find a pizza, customize their order, pay easily and track delivery without confusion (L5, An example: a food delivery app)."
+    ],
+    [
+     "The UI designer",
+     "Correct. Pizza photos, colors, button shapes and where text appears are the UI designer's job in the slide's example (L5, An example: a food delivery app)."
+    ],
+    [
+     "The customer",
+     "Customers use the app; in the slide they find a pizza and pay, they do not decide its visual design (L5, An example: a food delivery app)."
+    ],
+    [
+     "Nobody: it is decided by the framework",
+     "The slide gives this job to the UI designer, so it is a designer's decision (L5, An example: a food delivery app)."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "A beautiful app with confusing navigation has:",
+   "o": [
+    [
+     "Good UX but poor UI",
+     "That is the easy-to-use app with unattractive visuals (L5, An example: a food delivery app)."
+    ],
+    [
+     "Good UI and good UX",
+     "Confusing navigation is a UX problem, so the UX cannot be good; the best products combine both (L5, An example: a food delivery app)."
+    ],
+    [
+     "Poor UI and poor UX",
+     "The app is beautiful, so the UI is good; only the UX is poor (L5, An example: a food delivery app)."
+    ],
+    [
+     "Good UI but poor UX",
+     "Correct. Beautiful means good UI; confusing navigation means poor UX (L5, An example: a food delivery app)."
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "\"Figma is used only for UI design.\"",
+   "o": [
+    [
+     "True",
+     "The slide says the opposite: Figma is used for both UI and UX design (L5, What skills do you need?)."
+    ],
+    [
+     "False",
+     "Correct. The skills table notes that Figma is used for both UI and UX design (L5, What skills do you need?)."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which are the three recommended components of the <b>UX Design Process</b>?",
+   "o": [
+    [
+     "User research, design and prototyping of the interface, user interface evaluation (improvement)",
+     "Correct. These are the three components on the slide (L5, UX Design Process)."
+    ],
+    [
+     "User research, coding, marketing",
+     "Coding and marketing are not among the recommended components (L5, UX Design Process)."
+    ],
+    [
+     "Surveys, interviews, usability testing",
+     "These are user-research activities, not the three components of the process (L5, 1) Surveys)."
+    ],
+    [
+     "Visual design, color theory, typography",
+     "These are UI design skills from the skills table, not components of the process (L5, What skills do you need?)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "\"In user research you learn only from the users of your system.\"",
+   "o": [
+    [
+     "True",
+     "The slide says you learn not just from users but also from research done before about human capabilities and limitations (L5, 1- User Research)."
+    ],
+    [
+     "False",
+     "Correct. Not just from users but from research done before about human capabilities, limitations and how people perceive things (L5, 1- User Research)."
+    ]
+   ],
+   "a": 1
   }
  ],
  "6": [
@@ -2699,7 +2859,7 @@ EXTRA.hci = {
    "o": [
     [
      "Be Clear: label numeric scales",
-     "Correct. Scales should be labeled, e.g. \"1 = Highly dissatisfied … 5 = Highly satisfied\"."
+     "Correct. Scales should be labeled, e.g. \"1 - Highly dissatisfied … 5 - Highly Satisfied\"."
     ],
     [
      "Be Concise: use plain language",
@@ -2717,7 +2877,7 @@ EXTRA.hci = {
    "a": 0
   },
   {
-   "q": "\"What was the overall level of cleanliness that you observed within the car?\" should become \"How clean was the car?\". Which principle is this?",
+   "q": "\"What was the overall level of cleanliness that you observed within the car that you rented?\" should become \"How clean was the car?\". Which principle is this?",
    "o": [
     [
      "Be Specific: avoid double-barrel questions",
@@ -2739,7 +2899,7 @@ EXTRA.hci = {
    "a": 1
   },
   {
-   "q": "\"How satisfied are you with your food?\" is a problem because:",
+   "q": "\"How satisfied were you with your food?\" is a problem because:",
    "o": [
     [
      "It is a loaded question",
@@ -2797,7 +2957,7 @@ EXTRA.hci = {
    "a": 3
   },
   {
-   "q": "\"Is our price too high?\" should become \"Do you feel our price is too high, too low, or about right?\". Which guideline is this?",
+   "q": "\"Is our subscription price too high?\" should become \"Do you feel our subscription price is too high, too low, or about right?\". Which guideline is this?",
    "o": [
     [
      "Be Expressive: emphasize the user's opinion",
@@ -2827,7 +2987,7 @@ EXTRA.hci = {
     ],
     [
      "It is a yes/no question; use ranges instead",
-     "Correct. The lecture's exercise flags it as yes/no; ranges (as in \"Be Expressive\") give richer answers."
+     "Correct. The lecture's exercise flags it as yes/no; ranges (as in \"Be Expressive\") give richer answers. (The slide lists the labels without matching them to questions; this match is our reading.)"
     ],
     [
      "It is a loaded question",
@@ -2841,7 +3001,7 @@ EXTRA.hci = {
    "a": 1
   },
   {
-   "q": "\"Why did you choose our service?\" should be left as an open-ended question instead of forcing fixed options.",
+   "q": "\"Why did you choose our service over our competitors?\" should be left as an open-ended question instead of forcing fixed options.",
    "o": [
     [
      "True",
@@ -2867,7 +3027,7 @@ EXTRA.hci = {
     ],
     [
      "The number of options changes (4 vs 6) and the scale direction is reversed",
-     "Correct. The lecture's exercise flags the changing number of options and the reversed scale."
+     "Correct. The lecture's exercise flags the changing number of options and the reversed scale. (The slide lists the labels without matching them to questions; this match is our reading.)"
     ],
     [
      "It is missing an \"Other: ____\" option",
@@ -2889,6 +3049,116 @@ EXTRA.hci = {
     ]
    ],
    "a": 0
+  },
+  {
+   "q": "Which option follows \"Provide labels to clarify a numeric scale\"?",
+   "o": [
+    [
+     "1 - Highly dissatisfied, 2 - Dissatisfied, 3 - Neutral, 4 - Satisfied, 5 - Highly Satisfied",
+     "Correct. This is the slide's labeled scale (L6, Be Clear)."
+    ],
+    [
+     "1, 2, 3, 4, 5",
+     "This is the slide's \"Don't ask this\" scale: the numbers have no labels (L6, Be Clear)."
+    ],
+    [
+     "Dissatisfied / Satisfied",
+     "This is the two-level answer that the slide on levels of agreement says to avoid (L6, Be Expressive)."
+    ],
+    [
+     "Never / Rarely / Occasionally / Frequently / Always",
+     "These are the frequency words the slide tells you to replace with a timebox, and they are not numbers (L6, Be Clear)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "The doctor's timebox example offers 0, 1-2, 3-4, 5-7, 7 or more. What is wrong with these options?",
+   "o": [
+    [
+     "They overlap at 7",
+     "Correct. A user who exercised 7 times fits two answers, which breaks \"Avoid overlapping ranges\"; they should be 5-6 and 7 or more (L6, Be Clear)."
+    ],
+    [
+     "They have no labels",
+     "They are numbers of times, with \"in the past seven days\" giving the meaning; labels are for rating scales (L6, Be Clear)."
+    ],
+    [
+     "They ask two things at once",
+     "Double-barrel means one question about two things; this is one question about exercising (L6, Be Specific)."
+    ],
+    [
+     "Nothing is wrong",
+     "Check the value 7: it fits both 5-7 and 7 or more, so the ranges overlap (L6, Be Clear)."
+    ]
+   ],
+   "a": 0
+  },
+  {
+   "q": "\"How satisfied were you with the interface?\" is improved by asking:",
+   "o": [
+    [
+     "\"Do you like the interface?\"",
+     "That is a yes/no question, and it is still about the whole interface (L6, Be Expressive)."
+    ],
+    [
+     "\"How satisfied were you with how quickly the interface responded to your commands?\" and more follow-up questions",
+     "Correct. The slide's fix for a super-big idea: ask about one specific thing (L6, Be Specific)."
+    ],
+    [
+     "\"How satisfied were you with the interface and the app?\"",
+     "That adds a second thing, which makes it double-barrel and still too broad (L6, Be Specific)."
+    ],
+    [
+     "\"How much time have you wasted on the interface?\"",
+     "\"Wasted\" is a loaded word, which Be Unbiased says to avoid (L6, Be Unbiased)."
+    ]
+   ],
+   "a": 1
+  },
+  {
+   "q": "Which of these is <b>NOT</b> on the doctor's \"Be Usable\" list?",
+   "o": [
+    [
+     "Provide a progress bar",
+     "It is the first item on the list (L6, Be Usable)."
+    ],
+    [
+     "Preview the survey yourself",
+     "It is the last item on the list (L6, Be Usable)."
+    ],
+    [
+     "Alert users about unanswered questions",
+     "It is on the list (L6, Be Usable)."
+    ],
+    [
+     "Ask questions in plain language",
+     "Correct. Plain language is under Be Concise; Be Usable is progress bar, consistent page lengths, logical order, alerts and preview (L6, Be Concise)."
+    ]
+   ],
+   "a": 3
+  },
+  {
+   "q": "Which problem is <b>NOT</b> among the five listed on the exercise slide?",
+   "o": [
+    [
+     "Ambiguous scale",
+     "It is the first label on the slide (L6, Exercise)."
+    ],
+    [
+     "Changing number of options",
+     "It is on the slide (L6, Exercise)."
+    ],
+    [
+     "Double-barrel question",
+     "Correct. The five are ambiguous scale, changing number of options, reversing scale, leading questions and yes/no questions; double-barrel is under Be Specific (L6, Exercise)."
+    ],
+    [
+     "Yes/no questions",
+     "It is the last label on the slide (L6, Exercise)."
+    ]
+   ],
+   "a": 2
   }
  ],
  "7": [
