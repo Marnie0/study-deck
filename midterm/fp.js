@@ -4,10 +4,11 @@ MIDTERM.fp = {
  "lecs": [
   1,
   2,
-  3
+  3,
+  4
  ],
- "scope": "Up to file structures (L1–L3)",
- "scope_ar": "لحد الـ file structures، من المحاضرة 1 لـ 3",
+ "scope": "Up to heap and sorted files (L1–L4)",
+ "scope_ar": "لحد الـ heap والـ sorted files، من المحاضرة 1 لـ 4",
  "sections": [
   {
    "lec": 1,
@@ -291,6 +292,86 @@ MIDTERM.fp = {
     [
      "Code (Quiz 3): copy a file with no loops (<code>seekg</code> end + <code>tellg</code>), and <code>UpdateRecord</code> by RRN in a fixed-length field, fixed-length record file.",
      "كود (Quiz 3): انسخ file من غير loops باستخدام <code>seekg</code> و <code>tellg</code>، واكتب <code>UpdateRecord</code> بالـ RRN في file كله fixed-length."
+    ]
+   ]
+  },
+  {
+   "lec": 4,
+   "h": "Heap and sorted files",
+   "ar_h": "الـ heap والـ sorted files",
+   "pts": [
+    [
+     "A file organization defines the <b>record placement strategy</b> and how a record's <b>key value</b> relates to its <b>relative address</b>. Efficiency is measured by the <b>number of disk accesses</b>. <b>Sequential search</b> is O(n); <b>direct access</b> is O(1).",
+     "الـ file organization بتحدد <b>record placement strategy</b> والعلاقة بين الـ <b>key value</b> والـ <b>relative address</b>. والكفاءة بتتقاس بـ <b>عدد الـ disk accesses</b>. الـ <b>sequential search</b> بيبقى <bdi dir=\"ltr\">O(n)</bdi> والـ <b>direct access</b> بيبقى <bdi dir=\"ltr\">O(1)</bdi>."
+    ],
+    [
+     "<b>Unordered (heap, pile) file</b>: records in <b>order of entry</b>, regardless of key. Retrieve only by <b>linear search</b>. Insert <b>at the end</b> (one access to read the last page, one to write it back). Serious disadvantage: it <b>allows duplicates</b>. Delete: find the record, delete it <b>physically or logically</b>, write it back.",
+     "الـ <b>unordered (heap, pile) file</b>: الـ records بـ <b>ترتيب الإدخال</b> بغض النظر عن الـ key. القراية بـ <b>linear search</b> بس. الـ insert <b>في الآخر</b> (access نقرا آخر page وaccess نكتبها). العيب الكبير إنه <b>بيسمح بالتكرار</b>. الـ delete: نلاقي الـ record ونمسحه <b>physically أو logically</b> ونكتبه تاني."
+    ],
+    [
+     "<b>Ordered (sequential) file</b>: records in order of the <b>key value</b>. Insert goes into an exact position, so <b>all records with a greater key move one location towards the end</b>; delete and update need the opposite. Example: inserting (4, Ali, CS) into 1, 2, 3, 5 puts it at offset 60 and shifts Ahmed (5) to 80.",
+     "الـ <b>ordered (sequential) file</b>: الـ records بترتيب الـ <b>key value</b>. الـ insert بيروح في مكان محدد، فـ <b>كل الـ records اللي الـ key بتاعها أكبر بتتزق مكان ناحية الآخر</b>؛ والـ delete والـ update العكس. مثال: إدخال <bdi dir=\"ltr\">(4, Ali, CS)</bdi> في 1، 2، 3، 5 بيحطه عند offset 60 ويزق Ahmed (5) لـ 80."
+    ]
+   ]
+  },
+  {
+   "lec": 4,
+   "h": "The cost table (memorize it)",
+   "ar_h": "جدول التكلفة (احفظه)",
+   "pts": [
+    [
+     "Symbols: <b>B</b> = data pages, <b>R</b> = records per page, <b>D</b> = time to read/write a page, <b>C</b> = time to process a record.",
+     "الرموز: <b>B</b> عدد الـ data pages، و<b>R</b> عدد الـ records في الـ page، و<b>D</b> وقت قراية أو كتابة page، و<b>C</b> وقت معالجة record."
+    ],
+    [
+     "<b>Heap file</b><br>• Scan: <b>B(D + RC)</b><br>• Equality search: <b>0.5B(D + RC)</b><br>• Range search: <b>B(D + RC)</b><br>• Insert: <b>2D + C</b><br>• Delete: <b>search + C + D</b>",
+     "<b>Heap file</b><br>• Scan: <bdi dir=\"ltr\"><b>B(D + RC)</b></bdi><br>• Equality search: <bdi dir=\"ltr\"><b>0.5B(D + RC)</b></bdi><br>• Range search: <bdi dir=\"ltr\"><b>B(D + RC)</b></bdi><br>• Insert: <bdi dir=\"ltr\"><b>2D + C</b></bdi><br>• Delete: <bdi dir=\"ltr\"><b>search + C + D</b></bdi>"
+    ],
+    [
+     "<b>Sorted file</b><br>• Scan: <b>B(D + RC)</b><br>• Equality search: <b>D·log₂B + C·log₂R</b><br>• Range search: <b>search + retrieve matches</b><br>• Insert: <b>search + 2 × (0.5B(D + RC))</b><br>• Delete: <b>search + 2 × (0.5B(D + RC))</b>",
+     "<b>Sorted file</b><br>• Scan: <bdi dir=\"ltr\"><b>B(D + RC)</b></bdi><br>• Equality search: <bdi dir=\"ltr\"><b>D·log₂B + C·log₂R</b></bdi><br>• Range search: <bdi dir=\"ltr\"><b>search + retrieve matches</b></bdi><br>• Insert: <bdi dir=\"ltr\"><b>search + 2 × (0.5B(D + RC))</b></bdi><br>• Delete: <bdi dir=\"ltr\"><b>search + 2 × (0.5B(D + RC))</b></bdi>"
+    ],
+    [
+     "<b>Hashed file</b> (from the same table)<br>• Scan: <b>1.25B(D + RC)</b>, because buckets are kept about 80% full<br>• Equality search: <b>H + D + 0.5RC</b><br>• Range search: <b>1.25B(D + RC)</b><br>• Insert and delete: <b>search + C + D</b>",
+     "<b>Hashed file</b> (من نفس الجدول)<br>• Scan: <bdi dir=\"ltr\"><b>1.25B(D + RC)</b></bdi>، لأن الـ buckets بتبقى مليانة حوالي 80%<br>• Equality search: <bdi dir=\"ltr\"><b>H + D + 0.5RC</b></bdi><br>• Range search: <bdi dir=\"ltr\"><b>1.25B(D + RC)</b></bdi><br>• Insert وDelete: <bdi dir=\"ltr\"><b>search + C + D</b></bdi>"
+    ]
+   ]
+  },
+  {
+   "lec": 4,
+   "h": "Why each cost looks that way",
+   "ar_h": "ليه كل تكلفة شكلها كده",
+   "pts": [
+    [
+     "<b>Heap equality search</b>: no order, so pages are read one by one; on average the record is halfway, so <b>0.5B</b> pages. If nothing matches, the whole file is scanned.",
+     "الـ <b>heap equality search</b>: مفيش ترتيب، فبنقرا الـ pages واحدة واحدة؛ وفي المتوسط الـ record في النص، يعني <bdi dir=\"ltr\"><b>0.5B</b></bdi> pages. ولو مفيش تطابق بنعدّي على الملف كله."
+    ],
+    [
+     "<b>Heap insert 2D + C</b>: D to read the last page, C to add the record, D to write it back. No search.",
+     "الـ <b>heap insert</b> <bdi dir=\"ltr\"><b>2D + C</b></bdi>: D نقرا آخر page، وC نضيف الـ record، وD نكتبها تاني. من غير search."
+    ],
+    [
+     "<b>Sorted equality search</b>: binary search over the pages (D·log₂B), then binary search inside the page (C·log₂R).",
+     "الـ <b>sorted equality search</b>: binary search على الـ pages <bdi dir=\"ltr\">(D·log₂B)</bdi>، وبعدين binary search جوّا الـ page <bdi dir=\"ltr\">(C·log₂R)</bdi>."
+    ],
+    [
+     "<b>Sorted insert/delete</b>: after the search, later records shift, so half the file (<b>0.5B</b> pages) is read <b>and</b> written back, hence × 2. Exams expand it: <b>Dlog₂B + Clog₂R + B(D + RC)</b>.",
+     "الـ <b>sorted insert/delete</b>: بعد الـ search الـ records اللي بعده بتتزق، فبنقرا نص الملف <bdi dir=\"ltr\">(<b>0.5B</b> pages)</bdi> <b>ونكتبه</b> تاني، وعشان كده × 2. والامتحانات بتكتبها: <bdi dir=\"ltr\"><b>Dlog₂B + Clog₂R + B(D + RC)</b></bdi>."
+    ]
+   ]
+  },
+  {
+   "lec": 4,
+   "h": "What the doctor asks",
+   "ar_h": "الدكتور بيسأل في إيه",
+   "pts": [
+    [
+     "The 2026/27 midterm asked this table directly: heap scan, equality search and insert; sorted scan, equality search, insert and delete; and \"files of unordered records are called\" → <b>heap files</b>.",
+     "ميدترم 2026/27 سأل من الجدول ده مباشرة: الـ heap (scan وequality search وinsert) والـ sorted (scan وequality search وinsert وdelete)، و«files of unordered records are called» إجابتها <b>heap files</b>."
+    ],
+    [
+     "The wrong choices are other rows of the table: <b>2D + C</b> is the heap insert, <b>1.25B(D + RC)</b> is the hashed scan, and <b>Dlog₂B + Clog₂R + 2D + C</b> matches no operation at all.",
+     "الاختيارات الغلط صفوف تانية من الجدول: <bdi dir=\"ltr\"><b>2D + C</b></bdi> دي الـ heap insert، و<bdi dir=\"ltr\"><b>1.25B(D + RC)</b></bdi> دي الـ hashed scan، و<bdi dir=\"ltr\"><b>Dlog₂B + Clog₂R + 2D + C</b></bdi> مش بتطابق أي operation."
     ]
    ]
   }
