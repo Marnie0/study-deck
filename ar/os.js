@@ -3375,3 +3375,598 @@ AR.os = {
   }
  ]
 };
+// Midterm 2026/2027 (papers/os.js): Arabic for the exam and for its copies in the lecture quizzes, in the same order.
+AR.os.exams.push({
+ "sections": [
+  {
+   "items": [
+    {
+     "why": "الـ program counter بيحدد البرنامج واقف فين في الكود: مكان الـ instruction اللي هتتنفذ بعد كده. وبيتخزّن في الـ PCB عشان الـ process تكمّل بعد الـ context switch <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+     "ow": [
+      "الـ stack فيه بيانات مؤقتة: الـ function parameters والـ return addresses والـ local variables <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null,
+      "الـ heap هي memory بتتحجز dynamically وقت التشغيل (new وmalloc) <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "الـ data section فيها الـ global والـ static variables <bdi dir=\"ltr\">(Topic 2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ boot block عبارة عن disk block واحد في مكان ثابت، فالكود بتاعه لازم يبقى صغير: غالبًا بيعرف بس مكان باقي الـ bootstrap program على الـ disk وطوله (Silberschatz).",
+     "ow": [
+      null,
+      "ممكن في بعض الأنظمة، بس مش المعتاد: block واحد صغير أوي، والسؤال بيقول «typically» (Silberschatz).",
+      "هو block واحد؛ والحجم ده هو سبب إن الكود بتاعه بسيط (Silberschatz).",
+      "هو block واحد، والـ cylinder أكبر بكتير من الـ block (Silberschatz)."
+     ]
+    },
+    {
+     "why": "الـ CPU scheduling بيبقى ليه لازمة بس لما processes كتير في الـ memory تتنافس على الـ CPU، وده الـ multiprogramming: لما job تستنى، الـ CPU بيروح لـ job تانية <bdi dir=\"ltr\">(Topics 1, 3)</bdi>. والجملة نفسها هي أول سطر في فصل الـ CPU Scheduling في الكتاب.",
+     "ow": [
+      "الـ multiprocessor systems موضوعها إن فيه أكتر من CPU؛ والـ scheduling اتعمل الأول عشان يقسّم CPU واحد على jobs كتير <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null,
+      "«None» غلط لأن الـ multiprogramming صح <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "زيادة الـ memory ملهاش علاقة باختيار مين ياخد الـ CPU <bdi dir=\"ltr\">(Topic 3)</bdi>."
+     ]
+    },
+    {
+     "why": "معايير الـ scheduling في Topic 3: الـ turnaround time هو «الوقت اللازم لتنفيذ process معينة»، من الـ submission للـ completion. <bdi dir=\"ltr\">TAT = Completion − Arrival</bdi>؛ وعايزينه أقل ما يمكن.",
+     "ow": [
+      "الـ response time من الطلب لحد أول response، مش لحد ما تخلص <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null,
+      "الـ waiting time هو الوقت في الـ ready queue بس <bdi dir=\"ltr\">= turnaround − burst</bdi> <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "كل معيار ليه تعريفه؛ والـ turnaround time بس هو اللي مطابق <bdi dir=\"ltr\">(Topic 3)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ hard (magnetic) disk هو أشهر secondary storage: امتداد للـ main memory بسعة كبيرة nonvolatile <bdi dir=\"ltr\">(Topic 1)</bdi>. ونفس السؤال جه في فاينل 2025/26.",
+     "ow": [
+      "الـ tape بطيء وsequential access وبيستخدم للـ backups والأرشيف <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "الـ SSDs أسرع وبتنتشر، بس إجابة المادة هي الـ magnetic disk <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "الـ RAM هي الـ main memory وvolatile، مش secondary storage <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ priority scheduling في Topic 3: الـ low-priority processes ممكن متشتغلش أبدًا (starvation). والحل هو الـ aging: نزوّد الـ priority بالتدريج للـ processes اللي مستنية كتير.",
+     "ow": [
+      "الـ starvation هي المشكلة نفسها، مش الحل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "الـ wait queue فيها processes مستنية event أو I/O؛ مش بترفع الـ priority <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "الـ low-priority processes بتجوع جوّا الـ ready queue نفسها، فمينفعش تبقى الحل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ FCFS non-preemptive <bdi dir=\"ltr\">(Topic 3)</bdi>، والـ time-sharing لازم يبدّل الـ CPU بين المستخدمين بسرعة عشان كل واحد يتفاعل <bdi dir=\"ltr\">(Topic 1)</bdi>. process طويلة واحدة هتمسك الـ CPU والباقي مش هيلاقي response. وعبارة «particularly troublesome» من الكتاب.",
+     "ow": [
+      "عدد الـ CPUs مش هو اللي بيخلّي الـ non-preemption مشكلة <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null,
+      "عامة أوي: الـ FCFS نفسها طريقة بتستخدمها الـ operating systems <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "أضعف: الـ batch multiprogramming عايز الـ CPU مشغول وبس، ومفيش مستخدمين مستنيين رد سريع <bdi dir=\"ltr\">(Topic 1)</bdi>."
+     ]
+    },
+    {
+     "why": "إنشاء الـ process في Topic 2: في UNIX الـ <bdi dir=\"ltr\">fork()</bdi> بتعمل process جديدة (نسخة من الـ parent)، و<bdi dir=\"ltr\">exec()</bdi> بتتستخدم بعدها عشان تحمّل برنامج جديد؛ و<bdi dir=\"ltr\">CreateProcess()</bdi> هي نداء Windows.",
+     "ow": [
+      "<bdi dir=\"ltr\">process()</bdi> مش system call في UNIX <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null,
+      "<bdi dir=\"ltr\">NTCreateProcess()</bdi> دالة في Windows NT، مش UNIX.",
+      "<bdi dir=\"ltr\">getpid()</bdi> بترجّع ID الـ process الحالية بس؛ مش بتعمل حاجة جديدة."
+     ]
+    },
+    {
+     "why": "الـ FIFO (First In, First Out) اسم تاني للـ FCFS: الـ ready queue بتتخدم بترتيب الوصول، فاللي في الأول يشتغل الأول <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+     "ow": [
+      "اللي محتاج أقل processor الأول ده SJF <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "آخر واحد في الـ queue الأول ده LIFO، عكس FIFO.",
+      "أكبر احتياج الأول ده longest-job-first؛ الـ FIFO بيبص على ترتيب الوصول مش احتياج الـ CPU.",
+      null
+     ]
+    },
+    {
+     "why": "الـ dual-mode operation في Topic 1 بتخلّي الـ OS يحمي نفسه وباقي المكونات: user mode وkernel mode، وبيتفرّقوا بـ mode bit في الـ hardware. والـ privileged instructions بتشتغل في الـ kernel mode بس.",
+     "ow": [
+      "الاتنين أسماء تانية للـ kernel mode (معلومة من الكتاب)، فده نفس الـ mode مرتين.",
+      "الـ privileged mode برضه معناها kernel mode، والـ user mode ناقص.",
+      "دول مش CPU modes؛ physical وlogical مصطلحات للـ addresses والملفات <bdi dir=\"ltr\">(Topics 1, 4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في Topic 1: الـ kernel هو «البرنامج الوحيد اللي شغال طول الوقت على الكمبيوتر»؛ وأي حاجة تانية يا system program يا application program.",
+     "ow": [
+      "الـ system calls طلبات لخدمات الـ OS، مش برنامج شغال على طول <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null,
+      "الـ device drivers بتدير أجهزة معينة وبتشتغل لما الـ kernel يحتاجها <bdi dir=\"ltr\">(Topics 1, 8)</bdi>.",
+      "«None» غلط لأن الـ kernel صح <bdi dir=\"ltr\">(Topic 1)</bdi>."
+     ]
+    },
+    {
+     "why": "في Topic 3: كل process بتاخد time quantum؛ ولما يخلص بتتعمل preempt وتروح لآخر الـ ready queue حتى لو لسه مخلصتش. وده اللي بيخلّي الـ RR preemptive.",
+     "ow": [
+      null,
+      "الـ non-preemptive معناها تفضل ماسكة الـ CPU لحد ما تخلص أو تستنى، زي FCFS؛ والـ RR مش بيسمح بكده <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "«None» غلط لأن preemptive صح <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "مينفعش algorithm تبقى preemptive وnon-preemptive مع بعض <bdi dir=\"ltr\">(Topic 3)</bdi>."
+     ]
+    },
+    {
+     "why": "في Topic 2: الـ degree of multiprogramming هو عدد الـ processes في الـ memory. الـ long-term scheduler بيتحكم فيه، والـ medium-term scheduler ممكن يقلله بالـ swapping.",
+     "ow": [
+      "شكلها صح، بس مش مصطلح المادة <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "الفخ: هو اللي بيتحكم في الـ degree of multiprogramming، بس مش هو العدد نفسه <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "الـ CPU (short-term) scheduler بيختار أنهي ready process تشتغل <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ kernel mode <bdi dir=\"ltr\">(Topic 1, dual-mode)</bdi> اسمه كمان privileged mode وsupervisor mode وsystem mode، فالتلاتة صح (الأسماء التانية من الكتاب).",
+     "ow": [
+      "صح لوحدها، بس التانيين كمان صح، فالإجابة الكاملة «all of the mentioned».",
+      "صح لوحدها، بس التانيين كمان صح، فالإجابة الكاملة «all of the mentioned».",
+      "صح لوحدها، بس التانيين كمان صح، فالإجابة الكاملة «all of the mentioned».",
+      null
+     ]
+    },
+    {
+     "why": "الـ flow time اسم تاني للـ turnaround time. الـ SJF هي الـ optimal: بتدّي أقل متوسط waiting time لمجموعة processes، فالـ jobs القصيرة مش بتستنى ورا الطويلة ومتوسط الـ turnaround برضه بيبقى الأقل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+     "ow": [
+      "الـ Earliest Deadline First طريقة real-time هدفها تلحق الـ deadlines، مش تقلل الـ flow time.",
+      "الـ FCFS مش بتبص على طول الـ job، فـ job طويلة في الأول بتخلّي القصيرة تستنى (convoy effect) <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null,
+      "الأطول الأول بتخلّي كل job قصيرة تستنى أطول وقت: أسوأ اختيار هنا."
+     ]
+    },
+    {
+     "why": "في Topic 2: الـ PCB فيه كل اللي الـ OS محتاج يعرفه عن process واحدة: الـ process state ورقمها والـ program counter والـ CPU registers ومعلومات الـ scheduling وحدود الـ memory والملفات المفتوحة.",
+     "ow": [
+      "قريبة بس غلط: الـ PCB بيخزّن الـ program counter بتاع الـ process بتاعته هي، مش process تانية <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "الـ PCB بيوصف process واحدة؛ والـ queues زي الـ ready queue بتربط الـ PCBs ببعض <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "اختيار الـ process الجاية شغل الـ CPU (short-term) scheduler؛ الـ PCB بيانات بس <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ system call طلب من المستخدم لخدمة من الـ OS: بيدخل الـ kernel mode بـ trap <bdi dir=\"ltr\">(Topic 1)</bdi>. وعبارة «interface للخدمات» هي تعريف الكتاب للـ system calls.",
+     "ow": [
+      null,
+      "الـ shared memory واحدة من طريقتين للـ interprocess communication، لتبادل البيانات بين الـ processes <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "الـ simulators بتقلّد نظام؛ مش طريقة البرامج لطلب خدمات الـ OS.",
+      "الـ communication واحدة من الخدمات اللي الـ OS بيقدمها، مش الـ interface للوصول ليها."
+     ]
+    },
+    {
+     "why": "الـ Windows برنامج proprietary مقفول المصدر: Microsoft مش بتنشر الـ source code لأي حد يستخدمه أو يعدّله. (معلومة عامة؛ المحاضرات مش بتذكر الأنظمة الـ open source.)",
+     "ow": [
+      "الـ BSD UNIX بيتوزع برخصة BSD الـ open source.",
+      "الـ Linux مفتوح المصدر برخصة GNU GPL.",
+      null,
+      "الـ PCLinuxOS توزيعة Linux، فهو open source برضه."
+     ]
+    },
+    {
+     "why": "في Topic 1 (وجهة النظر): الكمبيوتر المشترك زي الـ mainframe لازم يرضي كل المستخدمين، فالـ OS بتاعه بيركّز على استخدام الـ CPU والـ memory والـ I/O بكفاءة وعدل.",
+     "ow": [
+      "الـ handhelds مواردها قليلة ومتصممة للسهولة وعمر البطارية <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "الـ network operating systems بتركّز على مشاركة الملفات والاتصال بين الأجهزة.",
+      "مستخدمين الـ PC عايزين الراحة وسهولة الاستخدام ومش مهتمين بالـ resource utilization <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "Topic 2 بيسميها device queue: مجموعة الـ processes المستنية I/O device. المصطلح ده مش موجود في الاختيارات؛ والـ waiting queue ليها نفس المعنى، لأن الـ processes دي في حالة waiting.",
+     "ow": [
+      "الـ ready queue فيها processes مستنية الـ CPU، مش I/O device <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "مش من الـ queues بتوع المحاضرة، وهم job وready وdevice <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "مش من الـ queues بتوع المحاضرة برضه <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "القاعدة الأساسية في الـ real-time OS: كل task ليها وقت محدد ولازم تتخدم قبل الـ deadline. النتيجة المتأخرة بتتحسب فشل حتى لو صح.",
+     "ow": [
+      "العكس: الـ real-time systems بتعتمد على الـ priorities عشان الـ tasks المستعجلة تشتغل الأول <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "مكتوبة وحش ومش خاصية في الـ real-time؛ الـ scheduling بيحصل باستمرار مع وصول الـ tasks.",
+      null,
+      "الـ real-time OS برضه ليه kernel بيعمل scheduling ويتعامل مع الـ interrupts."
+     ]
+    },
+    {
+     "why": "الـ real-time system بيعالج البيانات أول ما توصل من غير تأخير، عشان النتايج تطلع في حدود وقت صارمة، زي الـ air-bag والـ flight control. (تعريف عام؛ الملاحظات مش مغطية الـ real-time كويس.)",
+     "ow": [
+      "الـ online معناها متوصّل بكمبيوتر أو شبكة؛ مش ضمان إن مفيش تأخير.",
+      null,
+      "مش نوع نظام معروف؛ اختيار مضلّل مأخوذ من كلمة «instructions».",
+      "العكس: البيانات بتتخزن الأول وتتعالج بعدين، زي الـ batch processing."
+     ]
+    },
+    {
+     "why": "الكتاب بيقول إن الـ preemptive priority-based scheduler بيضمن soft real-time بس: الـ process الأهم بتاخد الـ CPU الأول، لكن الـ scheduler لوحده مش بيوعد إن الـ deadlines تتلحق.",
+     "ow": [
+      "الـ hard real-time لازم كل task تخلص قبل الـ deadline، وده محتاج حاجات أكتر من الـ priorities والـ preemption (Silberschatz).",
+      null,
+      "الـ hard real-time وحماية الـ memory مش مضمونين، فمش الكل.",
+      "حماية الـ memory بتتعمل بالـ hardware زي الـ base والـ limit registers <bdi dir=\"ltr\">(Topic 4)</bdi>، مش الـ CPU scheduling."
+     ]
+    },
+    {
+     "why": "في Topic 3: في الـ preemptive scheduling ممكن الـ CPU يتاخد من process شغالة وهي لسه تقدر تكمّل؛ بترجع ready وتكمّل بعدين.",
+     "ow": [
+      "العكس: الـ process بتفضل ماسكة الـ CPU لحد ما تخلص أو تروح waiting بنفسها <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null,
+      "الـ SJF خوارزمية معينة بتختار بطول الـ burst؛ والشكل الأساسي بتاعها non-preemptive <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "الـ FCFS خوارزمية non-preemptive؛ الـ scheduler عمره ما بيوقّف process شغالة <bdi dir=\"ltr\">(Topic 3)</bdi>."
+     ]
+    },
+    {
+     "why": "في Topic 3: <bdi dir=\"ltr\">q large</bdi> بتتصرف زي FIFO/FCFS، لأن كل process بتخلص في slice واحدة ومفيش preempt. و<bdi dir=\"ltr\">q small</bdi> معناها context switches كتير أوي.",
+     "ow": [
+      "معكوسة: الـ slices الصغيرة بتعمل switching على طول؛ والكبيرة هي اللي بتدّي FCFS <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "الـ RR مش بتبص على طول الـ burst، فمش بتبقى SJF <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      "الـ overhead بتاع الـ context switch بياخد وقت CPU أكتر، فالأداء بيقل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في Topic 2: الـ medium-term scheduler بيتضاف لما الـ degree of multiprogramming لازم يقل: بيشيل process من الـ memory ويخزنها على الـ disk ويرجّعها بعدين (swapping).",
+     "ow": [
+      "ده الـ long-term (job) scheduler <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "«None» غلط لأن (c) صح <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null,
+      "ده الـ short-term (CPU) scheduler <bdi dir=\"ltr\">(Topic 2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ SRAM (static RAM) volatile وأسرع الأربعة، وعشان كده بتستخدم في الـ cache <bdi dir=\"ltr\">(Topic 1, storage hierarchy)</bdi>.",
+     "ow": [
+      "الـ EEPROM ذاكرة read-only nonvolatile وبطيئة جدًا في الكتابة.",
+      null,
+      "الـ DRAM volatile برضه، بس أبطأ من الـ SRAM لأن الخلايا محتاجة refresh؛ وبتستخدم للـ main memory.",
+      "الـ EPROM ذاكرة read-only nonvolatile للـ firmware زي الـ bootstrap، وأبطأ بكتير من الـ SRAM <bdi dir=\"ltr\">(Topic 1)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ ROM أبسط ذاكرة non-volatile: محتواها بيتحدد وقت التصنيع. والتلاتة التانيين بيضيفوا إمكانية البرمجة أو المسح. (معلومة عامة؛ Topic 1 بيذكر الـ ROM والـ EPROM بس كمكان الـ bootstrap.)",
+     "ow": [
+      "الـ flash أكتر واحدة متطورة: بتتمسح وتتكتب كهربيًا بالـ blocks.",
+      "الـ PROM هي ROM تقدر تبرمجها مرة واحدة بعد التصنيع، خطوة فوق الـ ROM.",
+      null,
+      "الـ EPROM بتتمسح بالأشعة فوق البنفسجية وتتبرمج تاني، خطوة كمان."
+     ]
+    },
+    {
+     "why": "Topic 1 بيوصف الـ OS بأدواره: وسيط بين المستخدم والـ hardware، وبيقدّم خدمات للبرامج، وresource allocator وcontrol program. فالتلات اختيارات صح.",
+     "ow": [
+      "صح لوحدها (intermediary)، بس التانيين كمان أدوار للـ OS <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "صح لوحدها، بس التانيين كمان أدوار للـ OS <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "صح لوحدها (resource allocator)، بس التانيين كمان أدوار للـ OS <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في Topic 1: الـ process هي برنامج في حالة تنفيذ، وحدة الشغل في النظام. ومحتاجة موارد زي الـ CPU والـ memory والـ I/O والملفات.",
+     "ow": [
+      null,
+      "الـ OS بيدير الـ processes؛ مش هو وحدة الشغل <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "الـ mode bit بيقول للـ CPU هو في user ولا kernel mode <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "الـ timer بيعمل interrupt بعد فترة محددة عشان محدش يمسك الـ CPU على طول <bdi dir=\"ltr\">(Topic 1)</bdi>."
+     ]
+    },
+    {
+     "why": "في Topic 3: الـ aging هو حل الـ starvation في الـ priority scheduling: الـ priority بتاع الـ process المستنية بيزيد بالتدريج، فبتشتغل وتخلص في الآخر.",
+     "ow": [
+      "متابعة محتوى الـ cache شغل الـ hardware؛ ملهاش علاقة بالـ priority.",
+      null,
+      "ده شغل الـ page table بالـ valid-invalid bits <bdi dir=\"ltr\">(Topics 4, 5)</bdi>.",
+      "ده الـ reference counting زي خوارزميات page replacement <bdi dir=\"ltr\">(Topic 5)</bdi>، مش الـ aging في الـ scheduling."
+     ]
+    },
+    {
+     "why": "الـ embedded computers جوّا الأجهزة والعربيات <bdi dir=\"ltr\">(Topic 1)</bdi> ولازم ترد على الأحداث في وقت محدد، فغالبًا بتشغّل real-time OS (من الكتاب).",
+     "ow": [
+      "الـ Windows XP نظام desktop عام، كبير على معظم الـ embedded devices ومفيهوش ضمان deadlines.",
+      "الـ network operating systems لمشاركة الملفات والاتصال بين الأجهزة.",
+      "الـ clustered systems بتربط كذا كمبيوتر للـ availability أو الأداء العالي، عكس الـ embedded تمامًا <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "في Topic 2: في الـ context switch النظام بيحفظ state الـ process القديمة ويحمّل الـ state المحفوظة للجديدة. والوقت ده overhead خالص.",
+     "ow": [
+      "بتوصف اللي بيحصل بكلام عادي، بس مش اسم العملية <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      "مش مصطلح المادة؛ كلمة «state» معناها running وwaiting وهكذا <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null,
+      "«None» غلط لأن الـ context switch صح <bdi dir=\"ltr\">(Topic 2)</bdi>."
+     ]
+    },
+    {
+     "why": "أعلى CPU utilization بتيجي من الـ multiprogramming <bdi dir=\"ltr\">(Topic 3)</bdi>: كذا job في الـ memory، فلما واحدة تستنى الـ CPU بيروح لغيرها بدل ما يقعد فاضي <bdi dir=\"ltr\">(Topic 1)</bdi>. الـ utilization هو الهدف؛ وإن فيه process شغالة هي الطريقة.",
+     "ow": [
+      "صح، بس دي الطريقة؛ بتخدم هدف زيادة الـ CPU utilization <bdi dir=\"ltr\">(Topics 1, 3)</bdi>.",
+      "ده مجرد الوضع اللي الـ multiprogramming بيستخدمه، مش هدفه <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      "«None» غلط لأن زيادة الـ CPU utilization مناسبة <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+      null
+     ]
+    }
+   ]
+  },
+  {
+   "items": [
+    {
+     "why": "تعريف Topic 3 بالحرف: الـ waiting time هو الوقت اللي الـ process استنته في الـ ready queue (وعايزينه أقل ما يمكن). <bdi dir=\"ltr\">Waiting = turnaround − burst</bdi>.",
+     "ow": [
+      null,
+      "False غلط: ده تعريف الـ waiting time في المحاضرة بالظبط <bdi dir=\"ltr\">(Topic 3)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ SSDs بتستخدم flash memory، وهي nonvolatile: بتحتفظ بالبيانات من غير كهربا. وفي الـ storage hierarchy في Topic 1 الـ volatile هي الـ registers والـ cache والـ main memory.",
+     "ow": [
+      "True غلط: الـ SSD بيحتفظ ببياناته لما الكهربا تقطع <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "Topic 1 بيقول مفيش تعريف متفق عليه عالميًا؛ و«كل حاجة الشركة بتبعتها لما تطلب OS» تقريب كويس، بس بيختلف جدًا.",
+     "ow": [
+      null,
+      "False غلط: المحاضرة بتقول كده صراحة <bdi dir=\"ltr\">(Topic 1)</bdi>."
+     ]
+    },
+    {
+     "why": "في Topic 2: الـ <bdi dir=\"ltr\">fork()</bdi> هي اللي بتعمل process جديدة؛ والـ <bdi dir=\"ltr\">exec()</bdi>، اللي بتيجي بعدها، بتبدّل الـ memory space ببرنامج جديد، ومفيش process جديدة بتتعمل.",
+     "ow": [
+      "True غلط: الـ <bdi dir=\"ltr\">exec()</bdi> بتبدّل البرنامج جوّا نفس الـ process؛ والـ <bdi dir=\"ltr\">fork()</bdi> هي اللي بتعمل واحدة <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "البرامج عادةً بتوصل للـ system calls عن طريق API عالي المستوى (Win32 وPOSIX وJava API) مش مباشرة: أسهل وأكتر portable (من الكتاب؛ المحاضرات مش بتذكر الـ API).",
+     "ow": [
+      null,
+      "False غلط: المبرمجين عادةً بينادوا API، والـ API هو اللي بيعمل الـ system calls (Silberschatz)."
+     ]
+    },
+    {
+     "why": "في Topic 1: الـ kernel هو البرنامج الوحيد الشغال طول الوقت؛ وأي حاجة تانية يا system program يا application program، فدول منفصلين عن الـ kernel.",
+     "ow": [
+      "True غلط: الـ system والـ application programs هم «أي حاجة تانية»، مش جزء من الـ kernel <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+      null
+     ]
+    }
+   ]
+  }
+ ]
+});
+AR.os.lectures[1].quiz.push(...[
+ [
+  "صح. الـ boot block عبارة عن disk block واحد في مكان ثابت، فالكود بتاعه لازم يبقى صغير: غالبًا بيعرف بس مكان باقي الـ bootstrap program على الـ disk وطوله (Silberschatz).",
+  "ممكن في بعض الأنظمة، بس مش المعتاد: block واحد صغير أوي، والسؤال بيقول «typically» (Silberschatz).",
+  "هو block واحد؛ والحجم ده هو سبب إن الكود بتاعه بسيط (Silberschatz).",
+  "هو block واحد، والـ cylinder أكبر بكتير من الـ block (Silberschatz)."
+ ],
+ [
+  "الـ tape بطيء وsequential access وبيستخدم للـ backups والأرشيف <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "الـ SSDs أسرع وبتنتشر، بس إجابة المادة هي الـ magnetic disk <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "الـ RAM هي الـ main memory وvolatile، مش secondary storage <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. الـ hard (magnetic) disk هو أشهر secondary storage: امتداد للـ main memory بسعة كبيرة nonvolatile <bdi dir=\"ltr\">(Topic 1)</bdi>. ونفس السؤال جه في فاينل 2025/26."
+ ],
+ [
+  "الاتنين أسماء تانية للـ kernel mode (معلومة من الكتاب)، فده نفس الـ mode مرتين.",
+  "الـ privileged mode برضه معناها kernel mode، والـ user mode ناقص.",
+  "دول مش CPU modes؛ physical وlogical مصطلحات للـ addresses والملفات <bdi dir=\"ltr\">(Topics 1, 4)</bdi>.",
+  "صح. الـ dual-mode operation في Topic 1 بتخلّي الـ OS يحمي نفسه وباقي المكونات: user mode وkernel mode، وبيتفرّقوا بـ mode bit في الـ hardware. والـ privileged instructions بتشتغل في الـ kernel mode بس."
+ ],
+ [
+  "الـ system calls طلبات لخدمات الـ OS، مش برنامج شغال على طول <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. في Topic 1: الـ kernel هو «البرنامج الوحيد اللي شغال طول الوقت على الكمبيوتر»؛ وأي حاجة تانية يا system program يا application program.",
+  "الـ device drivers بتدير أجهزة معينة وبتشتغل لما الـ kernel يحتاجها <bdi dir=\"ltr\">(Topics 1, 8)</bdi>.",
+  "«None» غلط لأن الـ kernel صح <bdi dir=\"ltr\">(Topic 1)</bdi>."
+ ],
+ [
+  "صح لوحدها، بس التانيين كمان صح، فالإجابة الكاملة «all of the mentioned».",
+  "صح لوحدها، بس التانيين كمان صح، فالإجابة الكاملة «all of the mentioned».",
+  "صح لوحدها، بس التانيين كمان صح، فالإجابة الكاملة «all of the mentioned».",
+  "صح. الـ kernel mode <bdi dir=\"ltr\">(Topic 1, dual-mode)</bdi> اسمه كمان privileged mode وsupervisor mode وsystem mode، فالتلاتة صح (الأسماء التانية من الكتاب)."
+ ],
+ [
+  "صح. الـ system call طلب من المستخدم لخدمة من الـ OS: بيدخل الـ kernel mode بـ trap <bdi dir=\"ltr\">(Topic 1)</bdi>. وعبارة «interface للخدمات» هي تعريف الكتاب للـ system calls.",
+  "الـ shared memory واحدة من طريقتين للـ interprocess communication، لتبادل البيانات بين الـ processes <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الـ simulators بتقلّد نظام؛ مش طريقة البرامج لطلب خدمات الـ OS.",
+  "الـ communication واحدة من الخدمات اللي الـ OS بيقدمها، مش الـ interface للوصول ليها."
+ ],
+ [
+  "True غلط: الـ SSD بيحتفظ ببياناته لما الكهربا تقطع <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. الـ SSDs بتستخدم flash memory، وهي nonvolatile: بتحتفظ بالبيانات من غير كهربا. وفي الـ storage hierarchy في Topic 1 الـ volatile هي الـ registers والـ cache والـ main memory."
+ ],
+ [
+  "الـ BSD UNIX بيتوزع برخصة BSD الـ open source.",
+  "الـ Linux مفتوح المصدر برخصة GNU GPL.",
+  "صح. الـ Windows برنامج proprietary مقفول المصدر: Microsoft مش بتنشر الـ source code لأي حد يستخدمه أو يعدّله. (معلومة عامة؛ المحاضرات مش بتذكر الأنظمة الـ open source.)",
+  "الـ PCLinuxOS توزيعة Linux، فهو open source برضه."
+ ],
+ [
+  "الـ handhelds مواردها قليلة ومتصممة للسهولة وعمر البطارية <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "الـ network operating systems بتركّز على مشاركة الملفات والاتصال بين الأجهزة.",
+  "مستخدمين الـ PC عايزين الراحة وسهولة الاستخدام ومش مهتمين بالـ resource utilization <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. في Topic 1 (وجهة النظر): الكمبيوتر المشترك زي الـ mainframe لازم يرضي كل المستخدمين، فالـ OS بتاعه بيركّز على استخدام الـ CPU والـ memory والـ I/O بكفاءة وعدل."
+ ],
+ [
+  "صح. Topic 1 بيقول مفيش تعريف متفق عليه عالميًا؛ و«كل حاجة الشركة بتبعتها لما تطلب OS» تقريب كويس، بس بيختلف جدًا.",
+  "False غلط: المحاضرة بتقول كده صراحة <bdi dir=\"ltr\">(Topic 1)</bdi>."
+ ],
+ [
+  "العكس: الـ real-time systems بتعتمد على الـ priorities عشان الـ tasks المستعجلة تشتغل الأول <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "مكتوبة وحش ومش خاصية في الـ real-time؛ الـ scheduling بيحصل باستمرار مع وصول الـ tasks.",
+  "صح. القاعدة الأساسية في الـ real-time OS: كل task ليها وقت محدد ولازم تتخدم قبل الـ deadline. النتيجة المتأخرة بتتحسب فشل حتى لو صح.",
+  "الـ real-time OS برضه ليه kernel بيعمل scheduling ويتعامل مع الـ interrupts."
+ ],
+ [
+  "الـ online معناها متوصّل بكمبيوتر أو شبكة؛ مش ضمان إن مفيش تأخير.",
+  "صح. الـ real-time system بيعالج البيانات أول ما توصل من غير تأخير، عشان النتايج تطلع في حدود وقت صارمة، زي الـ air-bag والـ flight control. (تعريف عام؛ الملاحظات مش مغطية الـ real-time كويس.)",
+  "مش نوع نظام معروف؛ اختيار مضلّل مأخوذ من كلمة «instructions».",
+  "العكس: البيانات بتتخزن الأول وتتعالج بعدين، زي الـ batch processing."
+ ],
+ [
+  "الـ EEPROM ذاكرة read-only nonvolatile وبطيئة جدًا في الكتابة.",
+  "صح. الـ SRAM (static RAM) volatile وأسرع الأربعة، وعشان كده بتستخدم في الـ cache <bdi dir=\"ltr\">(Topic 1, storage hierarchy)</bdi>.",
+  "الـ DRAM volatile برضه، بس أبطأ من الـ SRAM لأن الخلايا محتاجة refresh؛ وبتستخدم للـ main memory.",
+  "الـ EPROM ذاكرة read-only nonvolatile للـ firmware زي الـ bootstrap، وأبطأ بكتير من الـ SRAM <bdi dir=\"ltr\">(Topic 1)</bdi>."
+ ],
+ [
+  "الـ flash أكتر واحدة متطورة: بتتمسح وتتكتب كهربيًا بالـ blocks.",
+  "الـ PROM هي ROM تقدر تبرمجها مرة واحدة بعد التصنيع، خطوة فوق الـ ROM.",
+  "صح. الـ ROM أبسط ذاكرة non-volatile: محتواها بيتحدد وقت التصنيع. والتلاتة التانيين بيضيفوا إمكانية البرمجة أو المسح. (معلومة عامة؛ Topic 1 بيذكر الـ ROM والـ EPROM بس كمكان الـ bootstrap.)",
+  "الـ EPROM بتتمسح بالأشعة فوق البنفسجية وتتبرمج تاني، خطوة كمان."
+ ],
+ [
+  "صح لوحدها (intermediary)، بس التانيين كمان أدوار للـ OS <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح لوحدها، بس التانيين كمان أدوار للـ OS <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح لوحدها (resource allocator)، بس التانيين كمان أدوار للـ OS <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. Topic 1 بيوصف الـ OS بأدواره: وسيط بين المستخدم والـ hardware، وبيقدّم خدمات للبرامج، وresource allocator وcontrol program. فالتلات اختيارات صح."
+ ],
+ [
+  "صح. البرامج عادةً بتوصل للـ system calls عن طريق API عالي المستوى (Win32 وPOSIX وJava API) مش مباشرة: أسهل وأكتر portable (من الكتاب؛ المحاضرات مش بتذكر الـ API).",
+  "False غلط: المبرمجين عادةً بينادوا API، والـ API هو اللي بيعمل الـ system calls (Silberschatz)."
+ ],
+ [
+  "صح. في Topic 1: الـ process هي برنامج في حالة تنفيذ، وحدة الشغل في النظام. ومحتاجة موارد زي الـ CPU والـ memory والـ I/O والملفات.",
+  "الـ OS بيدير الـ processes؛ مش هو وحدة الشغل <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "الـ mode bit بيقول للـ CPU هو في user ولا kernel mode <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "الـ timer بيعمل interrupt بعد فترة محددة عشان محدش يمسك الـ CPU على طول <bdi dir=\"ltr\">(Topic 1)</bdi>."
+ ],
+ [
+  "الـ Windows XP نظام desktop عام، كبير على معظم الـ embedded devices ومفيهوش ضمان deadlines.",
+  "الـ network operating systems لمشاركة الملفات والاتصال بين الأجهزة.",
+  "الـ clustered systems بتربط كذا كمبيوتر للـ availability أو الأداء العالي، عكس الـ embedded تمامًا <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. الـ embedded computers جوّا الأجهزة والعربيات <bdi dir=\"ltr\">(Topic 1)</bdi> ولازم ترد على الأحداث في وقت محدد، فغالبًا بتشغّل real-time OS (من الكتاب)."
+ ],
+ [
+  "True غلط: الـ system والـ application programs هم «أي حاجة تانية»، مش جزء من الـ kernel <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "صح. في Topic 1: الـ kernel هو البرنامج الوحيد الشغال طول الوقت؛ وأي حاجة تانية يا system program يا application program، فدول منفصلين عن الـ kernel."
+ ],
+ [
+  "صح، بس دي الطريقة؛ بتخدم هدف زيادة الـ CPU utilization <bdi dir=\"ltr\">(Topics 1, 3)</bdi>.",
+  "ده مجرد الوضع اللي الـ multiprogramming بيستخدمه، مش هدفه <bdi dir=\"ltr\">(Topic 1)</bdi>.",
+  "«None» غلط لأن زيادة الـ CPU utilization مناسبة <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. أعلى CPU utilization بتيجي من الـ multiprogramming <bdi dir=\"ltr\">(Topic 3)</bdi>: كذا job في الـ memory، فلما واحدة تستنى الـ CPU بيروح لغيرها بدل ما يقعد فاضي <bdi dir=\"ltr\">(Topic 1)</bdi>. الـ utilization هو الهدف؛ وإن فيه process شغالة هي الطريقة."
+ ]
+]);
+AR.os.lectures[2].quiz.push(...[
+ [
+  "الـ stack فيه بيانات مؤقتة: الـ function parameters والـ return addresses والـ local variables <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. الـ program counter بيحدد البرنامج واقف فين في الكود: مكان الـ instruction اللي هتتنفذ بعد كده. وبيتخزّن في الـ PCB عشان الـ process تكمّل بعد الـ context switch <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الـ heap هي memory بتتحجز dynamically وقت التشغيل (new وmalloc) <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الـ data section فيها الـ global والـ static variables <bdi dir=\"ltr\">(Topic 2)</bdi>."
+ ],
+ [
+  "<bdi dir=\"ltr\">process()</bdi> مش system call في UNIX <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. إنشاء الـ process في Topic 2: في UNIX الـ <bdi dir=\"ltr\">fork()</bdi> بتعمل process جديدة (نسخة من الـ parent)، و<bdi dir=\"ltr\">exec()</bdi> بتتستخدم بعدها عشان تحمّل برنامج جديد؛ و<bdi dir=\"ltr\">CreateProcess()</bdi> هي نداء Windows.",
+  "<bdi dir=\"ltr\">NTCreateProcess()</bdi> دالة في Windows NT، مش UNIX.",
+  "<bdi dir=\"ltr\">getpid()</bdi> بترجّع ID الـ process الحالية بس؛ مش بتعمل حاجة جديدة."
+ ],
+ [
+  "شكلها صح، بس مش مصطلح المادة <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الفخ: هو اللي بيتحكم في الـ degree of multiprogramming، بس مش هو العدد نفسه <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الـ CPU (short-term) scheduler بيختار أنهي ready process تشتغل <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. في Topic 2: الـ degree of multiprogramming هو عدد الـ processes في الـ memory. الـ long-term scheduler بيتحكم فيه، والـ medium-term scheduler ممكن يقلله بالـ swapping."
+ ],
+ [
+  "قريبة بس غلط: الـ PCB بيخزّن الـ program counter بتاع الـ process بتاعته هي، مش process تانية <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الـ PCB بيوصف process واحدة؛ والـ queues زي الـ ready queue بتربط الـ PCBs ببعض <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "اختيار الـ process الجاية شغل الـ CPU (short-term) scheduler؛ الـ PCB بيانات بس <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. في Topic 2: الـ PCB فيه كل اللي الـ OS محتاج يعرفه عن process واحدة: الـ process state ورقمها والـ program counter والـ CPU registers ومعلومات الـ scheduling وحدود الـ memory والملفات المفتوحة."
+ ],
+ [
+  "الـ ready queue فيها processes مستنية الـ CPU، مش I/O device <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "مش من الـ queues بتوع المحاضرة، وهم job وready وdevice <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "مش من الـ queues بتوع المحاضرة برضه <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. Topic 2 بيسميها device queue: مجموعة الـ processes المستنية I/O device. المصطلح ده مش موجود في الاختيارات؛ والـ waiting queue ليها نفس المعنى، لأن الـ processes دي في حالة waiting."
+ ],
+ [
+  "True غلط: الـ <bdi dir=\"ltr\">exec()</bdi> بتبدّل البرنامج جوّا نفس الـ process؛ والـ <bdi dir=\"ltr\">fork()</bdi> هي اللي بتعمل واحدة <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. في Topic 2: الـ <bdi dir=\"ltr\">fork()</bdi> هي اللي بتعمل process جديدة؛ والـ <bdi dir=\"ltr\">exec()</bdi>، اللي بتيجي بعدها، بتبدّل الـ memory space ببرنامج جديد، ومفيش process جديدة بتتعمل."
+ ],
+ [
+  "ده الـ long-term (job) scheduler <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "«None» غلط لأن (c) صح <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. في Topic 2: الـ medium-term scheduler بيتضاف لما الـ degree of multiprogramming لازم يقل: بيشيل process من الـ memory ويخزنها على الـ disk ويرجّعها بعدين (swapping).",
+  "ده الـ short-term (CPU) scheduler <bdi dir=\"ltr\">(Topic 2)</bdi>."
+ ],
+ [
+  "بتوصف اللي بيحصل بكلام عادي، بس مش اسم العملية <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "مش مصطلح المادة؛ كلمة «state» معناها running وwaiting وهكذا <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "صح. في Topic 2: في الـ context switch النظام بيحفظ state الـ process القديمة ويحمّل الـ state المحفوظة للجديدة. والوقت ده overhead خالص.",
+  "«None» غلط لأن الـ context switch صح <bdi dir=\"ltr\">(Topic 2)</bdi>."
+ ]
+]);
+AR.os.lectures[3].quiz.push(...[
+ [
+  "الـ multiprocessor systems موضوعها إن فيه أكتر من CPU؛ والـ scheduling اتعمل الأول عشان يقسّم CPU واحد على jobs كتير <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. الـ CPU scheduling بيبقى ليه لازمة بس لما processes كتير في الـ memory تتنافس على الـ CPU، وده الـ multiprogramming: لما job تستنى، الـ CPU بيروح لـ job تانية <bdi dir=\"ltr\">(Topics 1, 3)</bdi>. والجملة نفسها هي أول سطر في فصل الـ CPU Scheduling في الكتاب.",
+  "«None» غلط لأن الـ multiprogramming صح <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "زيادة الـ memory ملهاش علاقة باختيار مين ياخد الـ CPU <bdi dir=\"ltr\">(Topic 3)</bdi>."
+ ],
+ [
+  "الـ response time من الطلب لحد أول response، مش لحد ما تخلص <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. معايير الـ scheduling في Topic 3: الـ turnaround time هو «الوقت اللازم لتنفيذ process معينة»، من الـ submission للـ completion. <bdi dir=\"ltr\">TAT = Completion − Arrival</bdi>؛ وعايزينه أقل ما يمكن.",
+  "الـ waiting time هو الوقت في الـ ready queue بس <bdi dir=\"ltr\">= turnaround − burst</bdi> <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "كل معيار ليه تعريفه؛ والـ turnaround time بس هو اللي مطابق <bdi dir=\"ltr\">(Topic 3)</bdi>."
+ ],
+ [
+  "الـ starvation هي المشكلة نفسها، مش الحل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "الـ wait queue فيها processes مستنية event أو I/O؛ مش بترفع الـ priority <bdi dir=\"ltr\">(Topic 2)</bdi>.",
+  "الـ low-priority processes بتجوع جوّا الـ ready queue نفسها، فمينفعش تبقى الحل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. الـ priority scheduling في Topic 3: الـ low-priority processes ممكن متشتغلش أبدًا (starvation). والحل هو الـ aging: نزوّد الـ priority بالتدريج للـ processes اللي مستنية كتير."
+ ],
+ [
+  "عدد الـ CPUs مش هو اللي بيخلّي الـ non-preemption مشكلة <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. الـ FCFS non-preemptive <bdi dir=\"ltr\">(Topic 3)</bdi>، والـ time-sharing لازم يبدّل الـ CPU بين المستخدمين بسرعة عشان كل واحد يتفاعل <bdi dir=\"ltr\">(Topic 1)</bdi>. process طويلة واحدة هتمسك الـ CPU والباقي مش هيلاقي response. وعبارة «particularly troublesome» من الكتاب.",
+  "عامة أوي: الـ FCFS نفسها طريقة بتستخدمها الـ operating systems <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "أضعف: الـ batch multiprogramming عايز الـ CPU مشغول وبس، ومفيش مستخدمين مستنيين رد سريع <bdi dir=\"ltr\">(Topic 1)</bdi>."
+ ],
+ [
+  "اللي محتاج أقل processor الأول ده SJF <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "آخر واحد في الـ queue الأول ده LIFO، عكس FIFO.",
+  "أكبر احتياج الأول ده longest-job-first؛ الـ FIFO بيبص على ترتيب الوصول مش احتياج الـ CPU.",
+  "صح. الـ FIFO (First In, First Out) اسم تاني للـ FCFS: الـ ready queue بتتخدم بترتيب الوصول، فاللي في الأول يشتغل الأول <bdi dir=\"ltr\">(Topic 3)</bdi>."
+ ],
+ [
+  "صح. تعريف Topic 3 بالحرف: الـ waiting time هو الوقت اللي الـ process استنته في الـ ready queue (وعايزينه أقل ما يمكن). <bdi dir=\"ltr\">Waiting = turnaround − burst</bdi>.",
+  "False غلط: ده تعريف الـ waiting time في المحاضرة بالظبط <bdi dir=\"ltr\">(Topic 3)</bdi>."
+ ],
+ [
+  "صح. في Topic 3: كل process بتاخد time quantum؛ ولما يخلص بتتعمل preempt وتروح لآخر الـ ready queue حتى لو لسه مخلصتش. وده اللي بيخلّي الـ RR preemptive.",
+  "الـ non-preemptive معناها تفضل ماسكة الـ CPU لحد ما تخلص أو تستنى، زي FCFS؛ والـ RR مش بيسمح بكده <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "«None» غلط لأن preemptive صح <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "مينفعش algorithm تبقى preemptive وnon-preemptive مع بعض <bdi dir=\"ltr\">(Topic 3)</bdi>."
+ ],
+ [
+  "الـ Earliest Deadline First طريقة real-time هدفها تلحق الـ deadlines، مش تقلل الـ flow time.",
+  "الـ FCFS مش بتبص على طول الـ job، فـ job طويلة في الأول بتخلّي القصيرة تستنى (convoy effect) <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. الـ flow time اسم تاني للـ turnaround time. الـ SJF هي الـ optimal: بتدّي أقل متوسط waiting time لمجموعة processes، فالـ jobs القصيرة مش بتستنى ورا الطويلة ومتوسط الـ turnaround برضه بيبقى الأقل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "الأطول الأول بتخلّي كل job قصيرة تستنى أطول وقت: أسوأ اختيار هنا."
+ ],
+ [
+  "الـ hard real-time لازم كل task تخلص قبل الـ deadline، وده محتاج حاجات أكتر من الـ priorities والـ preemption (Silberschatz).",
+  "صح. الكتاب بيقول إن الـ preemptive priority-based scheduler بيضمن soft real-time بس: الـ process الأهم بتاخد الـ CPU الأول، لكن الـ scheduler لوحده مش بيوعد إن الـ deadlines تتلحق.",
+  "الـ hard real-time وحماية الـ memory مش مضمونين، فمش الكل.",
+  "حماية الـ memory بتتعمل بالـ hardware زي الـ base والـ limit registers <bdi dir=\"ltr\">(Topic 4)</bdi>، مش الـ CPU scheduling."
+ ],
+ [
+  "العكس: الـ process بتفضل ماسكة الـ CPU لحد ما تخلص أو تروح waiting بنفسها <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. في Topic 3: في الـ preemptive scheduling ممكن الـ CPU يتاخد من process شغالة وهي لسه تقدر تكمّل؛ بترجع ready وتكمّل بعدين.",
+  "الـ SJF خوارزمية معينة بتختار بطول الـ burst؛ والشكل الأساسي بتاعها non-preemptive <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "الـ FCFS خوارزمية non-preemptive؛ الـ scheduler عمره ما بيوقّف process شغالة <bdi dir=\"ltr\">(Topic 3)</bdi>."
+ ],
+ [
+  "معكوسة: الـ slices الصغيرة بتعمل switching على طول؛ والكبيرة هي اللي بتدّي FCFS <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "الـ RR مش بتبص على طول الـ burst، فمش بتبقى SJF <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "الـ overhead بتاع الـ context switch بياخد وقت CPU أكتر، فالأداء بيقل <bdi dir=\"ltr\">(Topic 3)</bdi>.",
+  "صح. في Topic 3: <bdi dir=\"ltr\">q large</bdi> بتتصرف زي FIFO/FCFS، لأن كل process بتخلص في slice واحدة ومفيش preempt. و<bdi dir=\"ltr\">q small</bdi> معناها context switches كتير أوي."
+ ],
+ [
+  "متابعة محتوى الـ cache شغل الـ hardware؛ ملهاش علاقة بالـ priority.",
+  "صح. في Topic 3: الـ aging هو حل الـ starvation في الـ priority scheduling: الـ priority بتاع الـ process المستنية بيزيد بالتدريج، فبتشتغل وتخلص في الآخر.",
+  "ده شغل الـ page table بالـ valid-invalid bits <bdi dir=\"ltr\">(Topics 4, 5)</bdi>.",
+  "ده الـ reference counting زي خوارزميات page replacement <bdi dir=\"ltr\">(Topic 5)</bdi>، مش الـ aging في الـ scheduling."
+ ]
+]);

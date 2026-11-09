@@ -5036,7 +5036,7 @@ AR.compiler.exams.push({
      ]
     },
     {
-     "why": "الـ phases في L1 بالترتيب: lexical analysis (scanner)، syntax analysis (parser)، semantic analysis، intermediate code generation، code optimization، code generation. والـ code generation والـ syntax analyzer والـ lexical analyzer كلهم في القايمة.",
+     "why": "الـ six phases في L1 بالترتيب: scanner (lexical analysis)، parser (syntax analysis)، semantic analyzer، source code optimizer، code generator، target code optimizer. والـ code generation والـ syntax analyzer والـ lexical analyzer كلهم في القايمة.",
      "ow": [
       null,
       "الـ code generation فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
@@ -5256,7 +5256,7 @@ AR.compiler.lectures[1].quiz.push(...[
   "الـ scanner هو phase 1، الـ lexical analysis <bdi dir=\"ltr\">(L1, L2)</bdi>."
  ],
  [
-  "صح. الـ phases في L1 بالترتيب: lexical analysis (scanner)، syntax analysis (parser)، semantic analysis، intermediate code generation، code optimization، code generation. والـ code generation والـ syntax analyzer والـ lexical analyzer كلهم في القايمة.",
+  "صح. الـ six phases في L1 بالترتيب: scanner (lexical analysis)، parser (syntax analysis)، semantic analyzer، source code optimizer، code generator، target code optimizer. والـ code generation والـ syntax analyzer والـ lexical analyzer كلهم في القايمة.",
   "الـ code generation فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
   "الـ syntax analyzer فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>.",
   "الـ lexical analyzer فعلًا phase، بس كمان الاختيارين التانيين، فالإجابة الكاملة «All of the mentioned» <bdi dir=\"ltr\">(L1)</bdi>."
