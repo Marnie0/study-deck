@@ -1750,3 +1750,1461 @@ PAPERS.mm = {
   ]
  }
 };
+// Midterm 2026/2027: the exam and its copies in the lecture quizzes (Arabic in ar/mm.js, same order).
+PAPERS.mm.exams.push({
+ "title": "Midterm 2026/2027",
+ "meta": "CS253 Multimedia · Midterm, 1st term 2026/2027 · online quiz · 40 questions (27 MCQ, 13 True/False) · Lectures 1 and 4 · Dr. Abbass Rostomme, Prof. Dr. Mahmoud Gadalla",
+ "note": "Not yet confirmed by the doctor. The answers are worked out from Lectures 1 and 4. Some come from general knowledge rather than the slides, such as the webcam question. \"The Main Reason For 8 Khz Sampling In Telephony\" has shuffled options, and \"Both (A) And (B)\" is read as speech bandwidth limitation and avoiding aliasing. The questions are kept as they appeared, including 2000 Hz listed twice in one question.",
+ "sections": [
+  {
+   "title": "Choose the correct answer",
+   "marks": "27 questions",
+   "items": [
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 5000 Hz?",
+     "o": [
+      "11.025 Khz",
+      "22.05 Khz",
+      "NONE",
+      "10000 Hz"
+     ],
+     "a": 3,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 5000 Hz = 10000 Hz.",
+     "ow": [
+      "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4.",
+      "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4).",
+      "\"NONE\" is wrong because 10000 Hz is exactly 2 × fmax (L4).",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Increasing Sampling Frequency Beyond Nyquist Rate:",
+     "o": [
+      "Improves Accuracy",
+      "Reduces Quantization Levels",
+      "Has No Effect",
+      "Always Increases Distortion"
+     ],
+     "a": 0,
+     "key": "Not yet confirmed. L4 also says that increasing fs beyond what hearing needs does not \"always improve\" quality; here \"improves accuracy\" is the only option that fits oversampling.",
+     "why": "Sampling above the Nyquist rate is oversampling (L4): it reduces aliasing and captures the waveform better, because there are more samples per cycle. The cost is more data.",
+     "ow": [
+      null,
+      "Quantization levels depend on the bit size, not on the sampling rate (L4).",
+      "The extra samples do change the result: the slides show sampling above Nyquist captures the waveform well (L4).",
+      "Backwards: distortion comes from sampling too slowly, which causes aliasing (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "For Clear Speech Transmission, The Minimum Sampling Rate Is:",
+     "o": [
+      "4 Khz",
+      "8 Khz",
+      "16 Khz",
+      "2 Khz"
+     ],
+     "a": 1,
+     "why": "L4's sample-rate list gives 8 kHz for telephone speech. Telephone speech reaches about 4 kHz, so Nyquist gives fs ≥ 2 × 4 kHz = 8 kHz.",
+     "ow": [
+      "4 kHz is the highest speech frequency, not the sampling rate; sampling at 1 × fmax loses the signal (L4).",
+      null,
+      "16 kHz gives better speech quality, but the question asks for the minimum.",
+      "2 kHz is far too low and would cause heavy aliasing: it can only represent frequencies up to 1 kHz (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "If A Speech Signal Has Frequency Components Up To 4 Khz, The Minimum Sampling Rate Required Is:",
+     "o": [
+      "16 Khz",
+      "4 Khz",
+      "2 Khz",
+      "8 Khz"
+     ],
+     "a": 3,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 4 kHz = 8 kHz.",
+     "ow": [
+      "16 kHz is 4 × fmax: it would work, but it is not the minimum (L4).",
+      "4 kHz is only 1 × fmax: one sample per cycle, so the signal is lost (L4).",
+      "2 kHz is below even fmax, so it would cause heavy aliasing (L4).",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 3000 Hz?",
+     "o": [
+      "NONE",
+      "22.05 Khz",
+      "11.025 Khz",
+      "6000 Hz"
+     ],
+     "a": 3,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 3000 Hz = 6000 Hz.",
+     "ow": [
+      "\"NONE\" is wrong because 6000 Hz is exactly 2 × fmax (L4).",
+      "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4).",
+      "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4.",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 2000 Hz?",
+     "o": [
+      "11.025 Khz",
+      "4000 Hz",
+      "NONE",
+      "22.05 Khz"
+     ],
+     "a": 1,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 2000 Hz = 4000 Hz.",
+     "ow": [
+      "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4.",
+      null,
+      "\"NONE\" is wrong because 4000 Hz is exactly 2 × fmax (L4).",
+      "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Aliasing Occurs When:",
+     "o": [
+      "The Signal Is Undersampled",
+      "The Signal Is Sampled Above Nyquist Rate",
+      "The Signal Is Quantized",
+      "The Signal Is Filtered"
+     ],
+     "a": 0,
+     "why": "L4: aliasing is the artefact of getting Nyquist sampling wrong: the rate is below 2 × fmax, so high frequencies appear as false lower ones. Different sinusoids pass through the same sample points.",
+     "ow": [
+      null,
+      "Sampling above the Nyquist rate is oversampling, which reduces aliasing (L4).",
+      "Quantizing produces quantization error, a different problem from rounding amplitudes (L4).",
+      "Backwards: a low-pass filter before the A/D converter is how aliasing is prevented (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Interactivity In Multimedia Means:",
+     "o": [
+      "Text-Based Communication",
+      "Only Playback Mode",
+      "Non-Digital Presentation",
+      "User Has Control Over The Content"
+     ],
+     "a": 3,
+     "why": "L1 lists an interactive interface to the final presentation as one of the four characteristics of multimedia systems: the user can act on the presentation and control what they see and when, as in games and video-on-demand.",
+     "ow": [
+      "This is about one type of media and says nothing about user control (L1).",
+      "The opposite: in playback only, the user just watches with no control.",
+      "This contradicts another of the four characteristics: information must be represented digitally (L1).",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 11025 Hz?",
+     "o": [
+      "44.1 Khz",
+      "22.05 Khz",
+      "11.025 Khz",
+      "NONE"
+     ],
+     "a": 1,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 11025 Hz = 22.05 kHz.",
+     "ow": [
+      "44.1 kHz would avoid aliasing, but it is 4 × fmax, so not the required rate (L4).",
+      null,
+      "11.025 kHz is only 1 × fmax: one sample per cycle, so the signal is lost (L4).",
+      "\"NONE\" is wrong because 22.05 kHz is exactly 2 × fmax (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "The Nyquist Frequency Is:",
+     "o": [
+      "Equal To The Sampling Rate",
+      "Equal To Bandwidth",
+      "Twice The Sampling Rate",
+      "Half The Sampling Rate"
+     ],
+     "a": 3,
+     "why": "L4: Nyquist frequency = fs / 2, the highest frequency a given sample rate can represent (e.g. 44.1 kHz → 22.05 kHz).",
+     "ow": [
+      "fs is twice the Nyquist frequency, not equal to it (L4).",
+      "A different quantity: the Nyquist frequency depends only on the sampling rate (L4).",
+      "The reverse trap: the Nyquist RATE is 2 × fmax, a different term from the Nyquist frequency (L4).",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Typical Sampling Rate For Telephone Speech Is:",
+     "o": [
+      "16 Khz",
+      "8 Khz",
+      "4 Khz",
+      "2 Khz"
+     ],
+     "a": 1,
+     "why": "L4's sample-rate list gives 8 kHz for telephone. It matches Nyquist: telephone speech reaches about 4 kHz, and 2 × 4 kHz = 8 kHz.",
+     "ow": [
+      "16 kHz is double the telephone rate, used for higher-quality wideband speech.",
+      null,
+      "4 kHz is the highest speech frequency, not the sampling rate (L4).",
+      "2 kHz is far too low for speech and would cause heavy aliasing (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Which Of The Following Is Not A Multimedia Component?",
+     "o": [
+      "Video",
+      "Spreadsheet",
+      "Text",
+      "Audio"
+     ],
+     "a": 1,
+     "why": "A spreadsheet is a type of application or file, not a media type. L1's media are text, graphics, images, sound and video; spreadsheets are only mentioned as data files stored as text or binary.",
+     "ow": [
+      "Video is continuous media, a multimedia component (L1).",
+      null,
+      "Text is one of the basic media (L1).",
+      "Audio is continuous media, a multimedia component (L1)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "A Signal Of Maximum Frequency 3 Khz Should Be Sampled At Least At:",
+     "o": [
+      "6 Khz",
+      "1.5 Khz",
+      "3 Khz",
+      "9 Khz"
+     ],
+     "a": 0,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 3 kHz = 6 kHz.",
+     "ow": [
+      null,
+      "1.5 kHz is half of fmax instead of double, so it would cause heavy aliasing (L4).",
+      "3 kHz is only 1 × fmax: one sample per cycle, so the signal is lost (L4).",
+      "9 kHz would avoid aliasing, but it is 3 × fmax, so not the minimum (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 9000 Hz?",
+     "o": [
+      "18 Khz",
+      "2000 Hz",
+      "NONE",
+      "1800 Hz"
+     ],
+     "a": 0,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 9000 Hz = 18 kHz.",
+     "ow": [
+      null,
+      "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4).",
+      "\"NONE\" is wrong because 18 kHz is exactly 2 × fmax (L4).",
+      "The trap with a zero missing: 18000 Hz is correct, but 1800 Hz is ten times too low (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 4000 Hz?",
+     "o": [
+      "11.025 Khz",
+      "NONE",
+      "8000 Hz",
+      "22.05 Khz"
+     ],
+     "a": 2,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 4000 Hz = 8000 Hz.",
+     "ow": [
+      "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4.",
+      "\"NONE\" is wrong because 8000 Hz is exactly 2 × fmax (L4).",
+      null,
+      "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Oversampling Helps To:",
+     "o": [
+      "Reduce SNR",
+      "Increase Quantization Noise",
+      "Reduce Bandwidth",
+      "Reduce Aliasing"
+     ],
+     "a": 3,
+     "why": "L4: oversampling, sampling above the Nyquist rate, reduces aliasing but costs more data.",
+     "ow": [
+      "Oversampling does not make the signal-to-noise ratio worse.",
+      "Quantization noise comes from the bit size, and oversampling does not add to it (L4).",
+      "Backwards: more samples per second need more data, so the bandwidth needed goes up.",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 10000 Hz?",
+     "o": [
+      "20 Khz",
+      "2000 Hz",
+      "NONE",
+      "2000 Hz"
+     ],
+     "a": 0,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 10000 Hz = 20 kHz.",
+     "ow": [
+      null,
+      "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4).",
+      "\"NONE\" is wrong because 20 kHz is exactly 2 × fmax (L4).",
+      "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "For A Maximum Frequency Of 5 Khz, The Nyquist Rate Is:",
+     "o": [
+      "5 Khz",
+      "10 Khz",
+      "20 Khz",
+      "2.5 Khz"
+     ],
+     "a": 1,
+     "why": "L4 defines the Nyquist rate as 2 × fmax: 2 × 5 kHz = 10 kHz.",
+     "ow": [
+      "5 kHz is just fmax: one sample per cycle, so the signal is lost (L4).",
+      null,
+      "20 kHz is 4 × fmax: it would work, but it is not the Nyquist rate (L4).",
+      "2.5 kHz is half of fmax; fs / 2 gives the Nyquist FREQUENCY from a sampling rate, a different term (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Which Device Is Used To Capture Video?",
+     "o": [
+      "Printer",
+      "Scanner",
+      "Webcam",
+      "Microphone"
+     ],
+     "a": 2,
+     "why": "A webcam is a digital camera that captures moving images. L1's capture devices include the video camera; analog video is usually captured by a video camera and then digitised.",
+     "ow": [
+      "A printer is an output device for putting documents on paper.",
+      "A scanner captures still images of documents and pictures, not video (L1).",
+      null,
+      "A microphone captures audio (L1)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Which Of The Following Is An Example Of A Multimedia Application?",
+     "o": [
+      "Word Processing",
+      "File Compression",
+      "Data Encryption",
+      "Video Conferencing"
+     ],
+     "a": 3,
+     "why": "L1's \"Applications\" slide lists video conferencing as a multimedia application, alongside groupware and home shopping. It combines audio and video in real time.",
+     "ow": [
+      "Word processing works mainly with text, a single medium.",
+      "File compression is a general utility that can be applied to any data.",
+      "Data encryption is a security technique, not a multimedia application.",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "The Term “Multi” In Multimedia Means:",
+     "o": [
+      "Large",
+      "Single",
+      "Many",
+      "Medium"
+     ],
+     "a": 2,
+     "why": "\"Multi\" means many: multimedia is the use of many media together: text, graphics, images, audio and video (L1).",
+     "ow": [
+      "Large describes size, not number.",
+      "Single is the opposite; it would be \"mono\".",
+      null,
+      "Medium is the singular of \"media\", the second half of the word."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Oversampling Means:",
+     "o": [
+      "Sampling At Rate Lower Than Nyquist",
+      "Sampling At Rate Higher Than Nyquist",
+      "Sampling At Nyquist Rate",
+      "None Of These"
+     ],
+     "a": 1,
+     "why": "L4 defines oversampling as sampling above the Nyquist rate. It reduces aliasing but costs more data.",
+     "ow": [
+      "Lower than Nyquist is undersampling, which causes aliasing (L4).",
+      null,
+      "Exactly 2 × fmax is the minimum rate, so it is not \"over\" (L4).",
+      "\"None\" is wrong because (b) is correct (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 7000 Hz?",
+     "o": [
+      "NONE",
+      "14 Khz",
+      "2000 Hz",
+      "1400 Hz"
+     ],
+     "a": 1,
+     "why": "Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 7000 Hz = 14 kHz.",
+     "ow": [
+      "\"NONE\" is wrong because 14 kHz is exactly 2 × fmax (L4).",
+      null,
+      "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4).",
+      "The trap with a zero missing: 14000 Hz is correct, but 1400 Hz is ten times too low (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "Increasing The Number Of Quantization Levels:",
+     "o": [
+      "Has No Effect On Noise",
+      "Decreases Bit Rate",
+      "Increases Quantization Noise",
+      "Decreases Quantization Noise"
+     ],
+     "a": 3,
+     "why": "More levels mean each sample is rounded to a closer value, so the rounding error, the quantization noise, gets smaller (L4: more bits give finer quantisation and less noise).",
+     "ow": [
+      "The level spacing is what sets the size of the rounding error (L4).",
+      "Backwards: more levels need more bits per sample, so the bit rate goes up (L4).",
+      "The opposite of what happens (L4).",
+      null
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "The Process Of Reducing File Size For Storage Or Transmission Is Called:",
+     "o": [
+      "Expansion",
+      "Compression",
+      "Formatting",
+      "Conversion"
+     ],
+     "a": 1,
+     "why": "Compression reduces the size of a file so it takes less storage and transmits faster. L1's course outline lists it: JPEG/GIF for images and MPEG for video and audio.",
+     "ow": [
+      "Expansion makes data larger, the opposite.",
+      null,
+      "Formatting changes how data is laid out or presented; its goal is not reducing size.",
+      "Conversion changes data from one format to another, which does not necessarily make it smaller."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "The Nyquist Rate Is Defined As:",
+     "o": [
+      "Half Of The Sampling Rate",
+      "Equal To The Sampling Rate",
+      "Twice The Highest Frequency In The Signal",
+      "Equal To The Bandwidth"
+     ],
+     "a": 2,
+     "why": "L4 defines the Nyquist rate as 2 × fmax, the minimum sample rate for a signal.",
+     "ow": [
+      "Half the sampling rate is the Nyquist FREQUENCY (fs / 2) (L4).",
+      "The sampling rate is what you choose; it only has to be at least the Nyquist rate (L4).",
+      null,
+      "The rate is twice the highest frequency, not equal to a bandwidth (L4)."
+     ]
+    },
+    {
+     "type": "mcq",
+     "q": "The Main Reason For 8 Khz Sampling In Telephony Is:",
+     "o": [
+      "Speech Bandwidth Limitation",
+      "Both (A) And (B)",
+      "To Avoid Aliasing",
+      "Cost Reduction"
+     ],
+     "a": 1,
+     "key": "Not in the notes or past papers. The options appear shuffled: \"Both (A) And (B)\" is read as speech bandwidth limitation and avoiding aliasing.",
+     "why": "The options look shuffled; \"Both (A) And (B)\" means the two reasons that go together. Speech bandwidth: telephone speech is limited to about 4 kHz. Avoiding aliasing: by Nyquist (L4), a 4 kHz signal needs at least 2 × 4 kHz = 8 kHz.",
+     "ow": [
+      "True but only half: on its own it does not explain why the rate is double that bandwidth (L4).",
+      null,
+      "True but only half: on its own it does not explain why the number is 8 kHz (L4).",
+      "A lower rate saves data, but 8 kHz comes from the Nyquist calculation (L4)."
+     ]
+    }
+   ]
+  },
+  {
+   "title": "True or False",
+   "marks": "13 questions",
+   "items": [
+    {
+     "type": "tf",
+     "q": "Multimedia Is Used Only For Entertainment Purposes.",
+     "a": 1,
+     "why": "L1's applications go well beyond entertainment: hypermedia courseware (education), video conferencing, groupware, home shopping, multimedia database systems and the WWW.",
+     "ow": [
+      "True is wrong: L1 lists education, communication and commerce applications too.",
+      null
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "The Nyquist Rate For A 4 Khz Speech Signal Is 8 Khz.",
+     "a": 0,
+     "why": "L4 defines the Nyquist rate as 2 × fmax, the minimum sample rate for a signal: 2 × 4 kHz = 8 kHz.",
+     "ow": [
+      null,
+      "False is wrong: 2 × 4 kHz is exactly 8 kHz (L4)."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Powerpoint Is An Example Of Multimedia Presentation Software.",
+     "a": 0,
+     "why": "L1 names PowerPoint among its hypermedia application examples: it combines text, images, audio, video and animation in one computer-controlled presentation.",
+     "ow": [
+      null,
+      "False is wrong: L1 lists PowerPoint with the WWW, Adobe Acrobat and Adobe Flash as hypermedia applications."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "The Sampling Frequency For A Signal Must Be At Least Twice The Highest Frequency Component In The Signal",
+     "a": 0,
+     "why": "This is L4's statement of Nyquist's theorem almost word for word: fs ≥ 2 × fmax.",
+     "ow": [
+      null,
+      "False is wrong: this is Nyquist's theorem as stated in L4."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Quantization Converts Continuous Amplitudes Into Discrete Amplitude Levels.",
+     "a": 0,
+     "why": "Sampling discretizes time; quantization discretizes amplitude, storing each sample as one of a fixed set of values: 0–255 for 8 bits, 0–65535 for 16 bits (L4).",
+     "ow": [
+      null,
+      "False is wrong: rounding each amplitude to a fixed level is what quantization does (L4)."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Increasing The Number Of Bits Per Sample Decreases Quantization Error.",
+     "a": 0,
+     "why": "L4: more bits give finer quantisation and less noise. 8 bits give 256 values (0–255) and 16 bits give 65,536 (0–65535), so each amplitude is rounded to a closer value. The cost is a larger file.",
+     "ow": [
+      null,
+      "False is wrong: more bits mean finer levels and less rounding error (L4)."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Sampling Below The Nyquist Rate Can Cause Aliasing.",
+     "a": 0,
+     "why": "L4: below the Nyquist rate (2 × fmax), different frequencies produce the same samples and cannot be told apart. This artefact is aliasing, which affects audio, imagery and video.",
+     "ow": [
+      null,
+      "False is wrong: undersampling is exactly what causes aliasing (L4)."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Quantization Is Performed Before Sampling.",
+     "a": 1,
+     "why": "Sampling comes first (the value is measured at regular time intervals); quantization comes second (each sample value is stored as one of a fixed set of values). There is nothing to quantize until the signal has been sampled (L4).",
+     "ow": [
+      "True is wrong: the sample values must exist before they can be quantized (L4).",
+      null
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Speech Is An Example Of A Continuous-Time Signal.",
+     "a": 0,
+     "why": "Natural speech is a pressure wave that varies smoothly over time, so it is an analog, continuous-time signal; that is why it must be sampled and quantized before a computer can store it (L4).",
+     "ow": [
+      null,
+      "False is wrong: speech varies continuously over time until it is digitized (L4)."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "The Nyquist Rate Is Equal To Twice The Highest Frequency In The Signal.",
+     "a": 0,
+     "why": "L4: Nyquist rate = 2 × fmax, the minimum sample rate for a signal. Do not confuse it with the Nyquist frequency, fs / 2.",
+     "ow": [
+      null,
+      "False is wrong: this is the L4 definition of the Nyquist rate."
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "The Standard Sampling Rate For Telephone-Quality Speech Is 16 Khz.",
+     "a": 1,
+     "why": "L4's sample-rate list gives 8 kHz for telephone speech, not 16 kHz.",
+     "ow": [
+      "True is wrong: telephone speech is sampled at 8 kHz (L4).",
+      null
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Multimedia Involves Only Audio And Video Elements.",
+     "a": 1,
+     "why": "Multimedia also includes text, graphics and images. L1's hypermedia figure shows graphics, sound, text and video, and the course outline covers audio, graphics, images and video.",
+     "ow": [
+      "True is wrong: text, graphics and images are multimedia elements too (L1).",
+      null
+     ]
+    },
+    {
+     "type": "tf",
+     "q": "Aliasing Improves The Quality Of The Signal.",
+     "a": 1,
+     "why": "L4 describes aliasing as a digital sampling artefact: frequencies above the Nyquist limit appear as strange false frequencies. It damages the signal, which is why it is prevented by low-pass filtering before sampling.",
+     "ow": [
+      "True is wrong: aliasing is an artefact that damages the signal (L4).",
+      null
+     ]
+    }
+   ]
+  }
+ ]
+});
+PAPERS.mm.quiz[1].push(...[
+ {
+  "q": "\"Multimedia Is Used Only For Entertainment Purposes.\"",
+  "o": [
+   [
+    "True",
+    "True is wrong: L1 lists education, communication and commerce applications too."
+   ],
+   [
+    "False",
+    "Correct. L1's applications go well beyond entertainment: hypermedia courseware (education), video conferencing, groupware, home shopping, multimedia database systems and the WWW."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Interactivity In Multimedia Means:",
+  "o": [
+   [
+    "Text-Based Communication",
+    "This is about one type of media and says nothing about user control (L1)."
+   ],
+   [
+    "Only Playback Mode",
+    "The opposite: in playback only, the user just watches with no control."
+   ],
+   [
+    "Non-Digital Presentation",
+    "This contradicts another of the four characteristics: information must be represented digitally (L1)."
+   ],
+   [
+    "User Has Control Over The Content",
+    "Correct. L1 lists an interactive interface to the final presentation as one of the four characteristics of multimedia systems: the user can act on the presentation and control what they see and when, as in games and video-on-demand."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Powerpoint Is An Example Of Multimedia Presentation Software.\"",
+  "o": [
+   [
+    "True",
+    "Correct. L1 names PowerPoint among its hypermedia application examples: it combines text, images, audio, video and animation in one computer-controlled presentation."
+   ],
+   [
+    "False",
+    "False is wrong: L1 lists PowerPoint with the WWW, Adobe Acrobat and Adobe Flash as hypermedia applications."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Which Of The Following Is Not A Multimedia Component?",
+  "o": [
+   [
+    "Video",
+    "Video is continuous media, a multimedia component (L1)."
+   ],
+   [
+    "Spreadsheet",
+    "Correct. A spreadsheet is a type of application or file, not a media type. L1's media are text, graphics, images, sound and video; spreadsheets are only mentioned as data files stored as text or binary."
+   ],
+   [
+    "Text",
+    "Text is one of the basic media (L1)."
+   ],
+   [
+    "Audio",
+    "Audio is continuous media, a multimedia component (L1)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Which Device Is Used To Capture Video?",
+  "o": [
+   [
+    "Printer",
+    "A printer is an output device for putting documents on paper."
+   ],
+   [
+    "Scanner",
+    "A scanner captures still images of documents and pictures, not video (L1)."
+   ],
+   [
+    "Webcam",
+    "Correct. A webcam is a digital camera that captures moving images. L1's capture devices include the video camera; analog video is usually captured by a video camera and then digitised."
+   ],
+   [
+    "Microphone",
+    "A microphone captures audio (L1)."
+   ]
+  ],
+  "a": 2,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Which Of The Following Is An Example Of A Multimedia Application?",
+  "o": [
+   [
+    "Word Processing",
+    "Word processing works mainly with text, a single medium."
+   ],
+   [
+    "File Compression",
+    "File compression is a general utility that can be applied to any data."
+   ],
+   [
+    "Data Encryption",
+    "Data encryption is a security technique, not a multimedia application."
+   ],
+   [
+    "Video Conferencing",
+    "Correct. L1's \"Applications\" slide lists video conferencing as a multimedia application, alongside groupware and home shopping. It combines audio and video in real time."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "The Term “Multi” In Multimedia Means:",
+  "o": [
+   [
+    "Large",
+    "Large describes size, not number."
+   ],
+   [
+    "Single",
+    "Single is the opposite; it would be \"mono\"."
+   ],
+   [
+    "Many",
+    "Correct. \"Multi\" means many: multimedia is the use of many media together: text, graphics, images, audio and video (L1)."
+   ],
+   [
+    "Medium",
+    "Medium is the singular of \"media\", the second half of the word."
+   ]
+  ],
+  "a": 2,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Multimedia Involves Only Audio And Video Elements.\"",
+  "o": [
+   [
+    "True",
+    "True is wrong: text, graphics and images are multimedia elements too (L1)."
+   ],
+   [
+    "False",
+    "Correct. Multimedia also includes text, graphics and images. L1's hypermedia figure shows graphics, sound, text and video, and the course outline covers audio, graphics, images and video."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "The Process Of Reducing File Size For Storage Or Transmission Is Called:",
+  "o": [
+   [
+    "Expansion",
+    "Expansion makes data larger, the opposite."
+   ],
+   [
+    "Compression",
+    "Correct. Compression reduces the size of a file so it takes less storage and transmits faster. L1's course outline lists it: JPEG/GIF for images and MPEG for video and audio."
+   ],
+   [
+    "Formatting",
+    "Formatting changes how data is laid out or presented; its goal is not reducing size."
+   ],
+   [
+    "Conversion",
+    "Conversion changes data from one format to another, which does not necessarily make it smaller."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ }
+]);
+PAPERS.mm.quiz[4].push(...[
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 5000 Hz?",
+  "o": [
+   [
+    "11.025 Khz",
+    "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4."
+   ],
+   [
+    "22.05 Khz",
+    "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4)."
+   ],
+   [
+    "NONE",
+    "\"NONE\" is wrong because 10000 Hz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "10000 Hz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 5000 Hz = 10000 Hz."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Increasing Sampling Frequency Beyond Nyquist Rate:",
+  "o": [
+   [
+    "Improves Accuracy",
+    "Correct. Sampling above the Nyquist rate is oversampling (L4): it reduces aliasing and captures the waveform better, because there are more samples per cycle. The cost is more data."
+   ],
+   [
+    "Reduces Quantization Levels",
+    "Quantization levels depend on the bit size, not on the sampling rate (L4)."
+   ],
+   [
+    "Has No Effect",
+    "The extra samples do change the result: the slides show sampling above Nyquist captures the waveform well (L4)."
+   ],
+   [
+    "Always Increases Distortion",
+    "Backwards: distortion comes from sampling too slowly, which causes aliasing (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "For Clear Speech Transmission, The Minimum Sampling Rate Is:",
+  "o": [
+   [
+    "4 Khz",
+    "4 kHz is the highest speech frequency, not the sampling rate; sampling at 1 × fmax loses the signal (L4)."
+   ],
+   [
+    "8 Khz",
+    "Correct. L4's sample-rate list gives 8 kHz for telephone speech. Telephone speech reaches about 4 kHz, so Nyquist gives fs ≥ 2 × 4 kHz = 8 kHz."
+   ],
+   [
+    "16 Khz",
+    "16 kHz gives better speech quality, but the question asks for the minimum."
+   ],
+   [
+    "2 Khz",
+    "2 kHz is far too low and would cause heavy aliasing: it can only represent frequencies up to 1 kHz (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "If A Speech Signal Has Frequency Components Up To 4 Khz, The Minimum Sampling Rate Required Is:",
+  "o": [
+   [
+    "16 Khz",
+    "16 kHz is 4 × fmax: it would work, but it is not the minimum (L4)."
+   ],
+   [
+    "4 Khz",
+    "4 kHz is only 1 × fmax: one sample per cycle, so the signal is lost (L4)."
+   ],
+   [
+    "2 Khz",
+    "2 kHz is below even fmax, so it would cause heavy aliasing (L4)."
+   ],
+   [
+    "8 Khz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 4 kHz = 8 kHz."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 3000 Hz?",
+  "o": [
+   [
+    "NONE",
+    "\"NONE\" is wrong because 6000 Hz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "22.05 Khz",
+    "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4)."
+   ],
+   [
+    "11.025 Khz",
+    "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4."
+   ],
+   [
+    "6000 Hz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 3000 Hz = 6000 Hz."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 2000 Hz?",
+  "o": [
+   [
+    "11.025 Khz",
+    "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4."
+   ],
+   [
+    "4000 Hz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 2000 Hz = 4000 Hz."
+   ],
+   [
+    "NONE",
+    "\"NONE\" is wrong because 4000 Hz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "22.05 Khz",
+    "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Aliasing Occurs When:",
+  "o": [
+   [
+    "The Signal Is Undersampled",
+    "Correct. L4: aliasing is the artefact of getting Nyquist sampling wrong: the rate is below 2 × fmax, so high frequencies appear as false lower ones. Different sinusoids pass through the same sample points."
+   ],
+   [
+    "The Signal Is Sampled Above Nyquist Rate",
+    "Sampling above the Nyquist rate is oversampling, which reduces aliasing (L4)."
+   ],
+   [
+    "The Signal Is Quantized",
+    "Quantizing produces quantization error, a different problem from rounding amplitudes (L4)."
+   ],
+   [
+    "The Signal Is Filtered",
+    "Backwards: a low-pass filter before the A/D converter is how aliasing is prevented (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"The Nyquist Rate For A 4 Khz Speech Signal Is 8 Khz.\"",
+  "o": [
+   [
+    "True",
+    "Correct. L4 defines the Nyquist rate as 2 × fmax, the minimum sample rate for a signal: 2 × 4 kHz = 8 kHz."
+   ],
+   [
+    "False",
+    "False is wrong: 2 × 4 kHz is exactly 8 kHz (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 11025 Hz?",
+  "o": [
+   [
+    "44.1 Khz",
+    "44.1 kHz would avoid aliasing, but it is 4 × fmax, so not the required rate (L4)."
+   ],
+   [
+    "22.05 Khz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 11025 Hz = 22.05 kHz."
+   ],
+   [
+    "11.025 Khz",
+    "11.025 kHz is only 1 × fmax: one sample per cycle, so the signal is lost (L4)."
+   ],
+   [
+    "NONE",
+    "\"NONE\" is wrong because 22.05 kHz is exactly 2 × fmax (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "The Nyquist Frequency Is:",
+  "o": [
+   [
+    "Equal To The Sampling Rate",
+    "fs is twice the Nyquist frequency, not equal to it (L4)."
+   ],
+   [
+    "Equal To Bandwidth",
+    "A different quantity: the Nyquist frequency depends only on the sampling rate (L4)."
+   ],
+   [
+    "Twice The Sampling Rate",
+    "The reverse trap: the Nyquist RATE is 2 × fmax, a different term from the Nyquist frequency (L4)."
+   ],
+   [
+    "Half The Sampling Rate",
+    "Correct. L4: Nyquist frequency = fs / 2, the highest frequency a given sample rate can represent (e.g. 44.1 kHz → 22.05 kHz)."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"The Sampling Frequency For A Signal Must Be At Least Twice The Highest Frequency Component In The Signal\"",
+  "o": [
+   [
+    "True",
+    "Correct. This is L4's statement of Nyquist's theorem almost word for word: fs ≥ 2 × fmax."
+   ],
+   [
+    "False",
+    "False is wrong: this is Nyquist's theorem as stated in L4."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Typical Sampling Rate For Telephone Speech Is:",
+  "o": [
+   [
+    "16 Khz",
+    "16 kHz is double the telephone rate, used for higher-quality wideband speech."
+   ],
+   [
+    "8 Khz",
+    "Correct. L4's sample-rate list gives 8 kHz for telephone. It matches Nyquist: telephone speech reaches about 4 kHz, and 2 × 4 kHz = 8 kHz."
+   ],
+   [
+    "4 Khz",
+    "4 kHz is the highest speech frequency, not the sampling rate (L4)."
+   ],
+   [
+    "2 Khz",
+    "2 kHz is far too low for speech and would cause heavy aliasing (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Quantization Converts Continuous Amplitudes Into Discrete Amplitude Levels.\"",
+  "o": [
+   [
+    "True",
+    "Correct. Sampling discretizes time; quantization discretizes amplitude, storing each sample as one of a fixed set of values: 0–255 for 8 bits, 0–65535 for 16 bits (L4)."
+   ],
+   [
+    "False",
+    "False is wrong: rounding each amplitude to a fixed level is what quantization does (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "A Signal Of Maximum Frequency 3 Khz Should Be Sampled At Least At:",
+  "o": [
+   [
+    "6 Khz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 3 kHz = 6 kHz."
+   ],
+   [
+    "1.5 Khz",
+    "1.5 kHz is half of fmax instead of double, so it would cause heavy aliasing (L4)."
+   ],
+   [
+    "3 Khz",
+    "3 kHz is only 1 × fmax: one sample per cycle, so the signal is lost (L4)."
+   ],
+   [
+    "9 Khz",
+    "9 kHz would avoid aliasing, but it is 3 × fmax, so not the minimum (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Increasing The Number Of Bits Per Sample Decreases Quantization Error.\"",
+  "o": [
+   [
+    "True",
+    "Correct. L4: more bits give finer quantisation and less noise. 8 bits give 256 values (0–255) and 16 bits give 65,536 (0–65535), so each amplitude is rounded to a closer value. The cost is a larger file."
+   ],
+   [
+    "False",
+    "False is wrong: more bits mean finer levels and less rounding error (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 9000 Hz?",
+  "o": [
+   [
+    "18 Khz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 9000 Hz = 18 kHz."
+   ],
+   [
+    "2000 Hz",
+    "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4)."
+   ],
+   [
+    "NONE",
+    "\"NONE\" is wrong because 18 kHz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "1800 Hz",
+    "The trap with a zero missing: 18000 Hz is correct, but 1800 Hz is ten times too low (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 4000 Hz?",
+  "o": [
+   [
+    "11.025 Khz",
+    "11.025 kHz would avoid aliasing, but it is not the required rate; it is the standard speech rate listed in L4."
+   ],
+   [
+    "NONE",
+    "\"NONE\" is wrong because 8000 Hz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "8000 Hz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 4000 Hz = 8000 Hz."
+   ],
+   [
+    "22.05 Khz",
+    "22.05 kHz is the required rate for fmax = 11025 Hz, not for this signal (L4)."
+   ]
+  ],
+  "a": 2,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Oversampling Helps To:",
+  "o": [
+   [
+    "Reduce SNR",
+    "Oversampling does not make the signal-to-noise ratio worse."
+   ],
+   [
+    "Increase Quantization Noise",
+    "Quantization noise comes from the bit size, and oversampling does not add to it (L4)."
+   ],
+   [
+    "Reduce Bandwidth",
+    "Backwards: more samples per second need more data, so the bandwidth needed goes up."
+   ],
+   [
+    "Reduce Aliasing",
+    "Correct. L4: oversampling, sampling above the Nyquist rate, reduces aliasing but costs more data."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Sampling Below The Nyquist Rate Can Cause Aliasing.\"",
+  "o": [
+   [
+    "True",
+    "Correct. L4: below the Nyquist rate (2 × fmax), different frequencies produce the same samples and cannot be told apart. This artefact is aliasing, which affects audio, imagery and video."
+   ],
+   [
+    "False",
+    "False is wrong: undersampling is exactly what causes aliasing (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 10000 Hz?",
+  "o": [
+   [
+    "20 Khz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 10000 Hz = 20 kHz."
+   ],
+   [
+    "2000 Hz",
+    "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4)."
+   ],
+   [
+    "NONE",
+    "\"NONE\" is wrong because 20 kHz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "2000 Hz",
+    "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "For A Maximum Frequency Of 5 Khz, The Nyquist Rate Is:",
+  "o": [
+   [
+    "5 Khz",
+    "5 kHz is just fmax: one sample per cycle, so the signal is lost (L4)."
+   ],
+   [
+    "10 Khz",
+    "Correct. L4 defines the Nyquist rate as 2 × fmax: 2 × 5 kHz = 10 kHz."
+   ],
+   [
+    "20 Khz",
+    "20 kHz is 4 × fmax: it would work, but it is not the Nyquist rate (L4)."
+   ],
+   [
+    "2.5 Khz",
+    "2.5 kHz is half of fmax; fs / 2 gives the Nyquist FREQUENCY from a sampling rate, a different term (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Quantization Is Performed Before Sampling.\"",
+  "o": [
+   [
+    "True",
+    "True is wrong: the sample values must exist before they can be quantized (L4)."
+   ],
+   [
+    "False",
+    "Correct. Sampling comes first (the value is measured at regular time intervals); quantization comes second (each sample value is stored as one of a fixed set of values). There is nothing to quantize until the signal has been sampled (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Speech Is An Example Of A Continuous-Time Signal.\"",
+  "o": [
+   [
+    "True",
+    "Correct. Natural speech is a pressure wave that varies smoothly over time, so it is an analog, continuous-time signal; that is why it must be sampled and quantized before a computer can store it (L4)."
+   ],
+   [
+    "False",
+    "False is wrong: speech varies continuously over time until it is digitized (L4)."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Oversampling Means:",
+  "o": [
+   [
+    "Sampling At Rate Lower Than Nyquist",
+    "Lower than Nyquist is undersampling, which causes aliasing (L4)."
+   ],
+   [
+    "Sampling At Rate Higher Than Nyquist",
+    "Correct. L4 defines oversampling as sampling above the Nyquist rate. It reduces aliasing but costs more data."
+   ],
+   [
+    "Sampling At Nyquist Rate",
+    "Exactly 2 × fmax is the minimum rate, so it is not \"over\" (L4)."
+   ],
+   [
+    "None Of These",
+    "\"None\" is wrong because (b) is correct (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"The Nyquist Rate Is Equal To Twice The Highest Frequency In The Signal.\"",
+  "o": [
+   [
+    "True",
+    "Correct. L4: Nyquist rate = 2 × fmax, the minimum sample rate for a signal. Do not confuse it with the Nyquist frequency, fs / 2."
+   ],
+   [
+    "False",
+    "False is wrong: this is the L4 definition of the Nyquist rate."
+   ]
+  ],
+  "a": 0,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "What Is The Sampling Frequency To Digitize A Signal With A Maximum Frequency Equal To 7000 Hz?",
+  "o": [
+   [
+    "NONE",
+    "\"NONE\" is wrong because 14 kHz is exactly 2 × fmax (L4)."
+   ],
+   [
+    "14 Khz",
+    "Correct. Nyquist's theorem (L4): fs ≥ 2 × fmax = 2 × 7000 Hz = 14 kHz."
+   ],
+   [
+    "2000 Hz",
+    "2000 Hz is far below what Nyquist needs, so it would cause heavy aliasing (L4)."
+   ],
+   [
+    "1400 Hz",
+    "The trap with a zero missing: 14000 Hz is correct, but 1400 Hz is ten times too low (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"The Standard Sampling Rate For Telephone-Quality Speech Is 16 Khz.\"",
+  "o": [
+   [
+    "True",
+    "True is wrong: telephone speech is sampled at 8 kHz (L4)."
+   ],
+   [
+    "False",
+    "Correct. L4's sample-rate list gives 8 kHz for telephone speech, not 16 kHz."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "Increasing The Number Of Quantization Levels:",
+  "o": [
+   [
+    "Has No Effect On Noise",
+    "The level spacing is what sets the size of the rounding error (L4)."
+   ],
+   [
+    "Decreases Bit Rate",
+    "Backwards: more levels need more bits per sample, so the bit rate goes up (L4)."
+   ],
+   [
+    "Increases Quantization Noise",
+    "The opposite of what happens (L4)."
+   ],
+   [
+    "Decreases Quantization Noise",
+    "Correct. More levels mean each sample is rounded to a closer value, so the rounding error, the quantization noise, gets smaller (L4: more bits give finer quantisation and less noise)."
+   ]
+  ],
+  "a": 3,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "The Nyquist Rate Is Defined As:",
+  "o": [
+   [
+    "Half Of The Sampling Rate",
+    "Half the sampling rate is the Nyquist FREQUENCY (fs / 2) (L4)."
+   ],
+   [
+    "Equal To The Sampling Rate",
+    "The sampling rate is what you choose; it only has to be at least the Nyquist rate (L4)."
+   ],
+   [
+    "Twice The Highest Frequency In The Signal",
+    "Correct. L4 defines the Nyquist rate as 2 × fmax, the minimum sample rate for a signal."
+   ],
+   [
+    "Equal To The Bandwidth",
+    "The rate is twice the highest frequency, not equal to a bandwidth (L4)."
+   ]
+  ],
+  "a": 2,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "\"Aliasing Improves The Quality Of The Signal.\"",
+  "o": [
+   [
+    "True",
+    "True is wrong: aliasing is an artefact that damages the signal (L4)."
+   ],
+   [
+    "False",
+    "Correct. L4 describes aliasing as a digital sampling artefact: frequencies above the Nyquist limit appear as strange false frequencies. It damages the signal, which is why it is prevented by low-pass filtering before sampling."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ },
+ {
+  "q": "The Main Reason For 8 Khz Sampling In Telephony Is:",
+  "o": [
+   [
+    "Speech Bandwidth Limitation",
+    "True but only half: on its own it does not explain why the rate is double that bandwidth (L4)."
+   ],
+   [
+    "Both (A) And (B)",
+    "Correct. The options look shuffled; \"Both (A) And (B)\" means the two reasons that go together. Speech bandwidth: telephone speech is limited to about 4 kHz. Avoiding aliasing: by Nyquist (L4), a 4 kHz signal needs at least 2 × 4 kHz = 8 kHz."
+   ],
+   [
+    "To Avoid Aliasing",
+    "True but only half: on its own it does not explain why the number is 8 kHz (L4)."
+   ],
+   [
+    "Cost Reduction",
+    "A lower rate saves data, but 8 kHz comes from the Nyquist calculation (L4)."
+   ]
+  ],
+  "a": 1,
+  "src": "Midterm 2026/27"
+ }
+]);

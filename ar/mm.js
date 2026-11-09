@@ -4238,3 +4238,568 @@ AR.mm = {
   }
  ]
 };
+// Midterm 2026/2027 (papers/mm.js): Arabic for the exam and for its copies in the lecture quizzes, in the same order.
+AR.mm.exams.push({
+ "sections": [
+  {
+   "items": [
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 5000 Hz = 10000 Hz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+      "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«NONE» غلط لأن <bdi dir=\"ltr\">10000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "السامبلنج فوق الـ Nyquist rate اسمه oversampling <bdi dir=\"ltr\">(L4)</bdi>: بيقلل الـ aliasing وبيمسك شكل الموجة أحسن، لأن فيه samples أكتر في الـ cycle. التمن: data أكتر.",
+     "ow": [
+      null,
+      "الـ quantization levels بتعتمد على الـ bit size، مش الـ sampling rate <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ samples الزيادة بتفرق: السلايدز بتبيّن إن السامبلنج فوق Nyquist بيمسك الموجة كويس <bdi dir=\"ltr\">(L4)</bdi>.",
+      "معكوسة: الـ distortion بيجي من السامبلنج البطيء، اللي بيعمل aliasing <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "قايمة الـ sample rates في L4 بتدّي <bdi dir=\"ltr\">8 kHz</bdi> لصوت التليفون. وصوت التليفون بيوصل لحوالي <bdi dir=\"ltr\">4 kHz</bdi>، فـ Nyquist بيدّي <bdi dir=\"ltr\">fs ≥ 2 × 4 kHz = 8 kHz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">4 kHz</bdi> هي أعلى تردد للكلام، مش معدل السامبلنج؛ والسامبلنج عند <bdi dir=\"ltr\">1 × fmax</bdi> بيضيّع الإشارة <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ <bdi dir=\"ltr\">16 kHz</bdi> بتدّي جودة كلام أحسن، بس السؤال عن الأقل.",
+      "الـ <bdi dir=\"ltr\">2 kHz</bdi> قليلة جدًا وهتعمل aliasing شديد: بتمثل لحد <bdi dir=\"ltr\">1 kHz</bdi> بس <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 4 kHz = 8 kHz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">16 kHz</bdi> هي <bdi dir=\"ltr\">4 × fmax</bdi>: تنفع، بس مش الأقل <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">4 kHz</bdi> هي <bdi dir=\"ltr\">1 × fmax</bdi> بس: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">2 kHz</bdi> أقل من fmax نفسها، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 3000 Hz = 6000 Hz</bdi>.",
+     "ow": [
+      "«NONE» غلط لأن <bdi dir=\"ltr\">6000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+      null
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 2000 Hz = 4000 Hz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+      null,
+      "«NONE» غلط لأن <bdi dir=\"ltr\">4000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L4: الـ aliasing هو الأثر الناتج عن غلطة في سامبلنج Nyquist: المعدل أقل من <bdi dir=\"ltr\">2 × fmax</bdi>، فالترددات العالية بتظهر كترددات أقل مزيفة. sinusoids مختلفة بتعدّي على نفس الـ sample points.",
+     "ow": [
+      null,
+      "السامبلنج فوق الـ Nyquist rate هو oversampling، وده بيقلل الـ aliasing <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ quantization بيطلّع quantization error، مشكلة تانية من تقريب الـ amplitudes <bdi dir=\"ltr\">(L4)</bdi>.",
+      "معكوسة: الـ low-pass filter قبل الـ A/D converter هو اللي بيمنع الـ aliasing <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "L1 بتعدّ الـ interface التفاعلي من الأربع خصائص بتاعة الـ multimedia systems: المستخدم يقدر يتحكم في اللي بيشوفه وإمتى، زي الألعاب والـ video-on-demand.",
+     "ow": [
+      "ده عن نوع media واحد ومش بيقول حاجة عن تحكم المستخدم <bdi dir=\"ltr\">(L1)</bdi>.",
+      "العكس: في الـ playback بس المستخدم بيتفرج ومفيش تحكم.",
+      "ده بيخالف خاصية تانية من الأربعة: المعلومات لازم تبقى digital <bdi dir=\"ltr\">(L1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 11025 Hz = 22.05 kHz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">44.1 kHz</bdi> هتمنع الـ aliasing، بس هي <bdi dir=\"ltr\">4 × fmax</bdi>، فمش المطلوبة <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هي <bdi dir=\"ltr\">1 × fmax</bdi> بس: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«NONE» غلط لأن <bdi dir=\"ltr\">22.05 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L4: <bdi dir=\"ltr\">Nyquist frequency = fs / 2</bdi>، أعلى تردد يقدر الـ sample rate يمثله (مثلًا <bdi dir=\"ltr\">44.1 kHz → 22.05 kHz</bdi>).",
+     "ow": [
+      "الـ fs ضعف الـ Nyquist frequency، مش مساوية ليها <bdi dir=\"ltr\">(L4)</bdi>.",
+      "كمية تانية: الـ Nyquist frequency بتعتمد على الـ sampling rate بس <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الفخ العكسي: الـ Nyquist RATE هو <bdi dir=\"ltr\">2 × fmax</bdi>، مصطلح تاني غير الـ Nyquist frequency <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "قايمة الـ sample rates في L4 بتدّي <bdi dir=\"ltr\">8 kHz</bdi> للتليفون. ومتوافقة مع Nyquist: الكلام بيوصل لحوالي <bdi dir=\"ltr\">4 kHz</bdi>، و<bdi dir=\"ltr\">2 × 4 kHz = 8 kHz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">16 kHz</bdi> ضعف معدل التليفون، وبتستخدم للكلام عالي الجودة.",
+      null,
+      "الـ <bdi dir=\"ltr\">4 kHz</bdi> أعلى تردد للكلام، مش معدل السامبلنج <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">2 kHz</bdi> قليلة جدًا للكلام وهتعمل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ spreadsheet نوع برنامج أو ملف، مش نوع media. الـ media في L1 هي text وgraphics وimages وsound وvideo؛ والـ spreadsheets متذكورة بس كملفات بيانات متخزنة text أو binary.",
+     "ow": [
+      "الـ video دي continuous media، من مكونات الـ multimedia <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "الـ text واحد من الـ media الأساسية <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ audio دي continuous media، من مكونات الـ multimedia <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 3 kHz = 6 kHz</bdi>.",
+     "ow": [
+      null,
+      "الـ <bdi dir=\"ltr\">1.5 kHz</bdi> نص fmax بدل الضعف، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">3 kHz</bdi> هي <bdi dir=\"ltr\">1 × fmax</bdi> بس: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">9 kHz</bdi> هتمنع الـ aliasing، بس هي <bdi dir=\"ltr\">3 × fmax</bdi>، فمش الأقل <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 9000 Hz = 18 kHz</bdi>.",
+     "ow": [
+      null,
+      "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«NONE» غلط لأن <bdi dir=\"ltr\">18 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      "فخ ناقص صفر: <bdi dir=\"ltr\">18000 Hz</bdi> صح، لكن <bdi dir=\"ltr\">1800 Hz</bdi> أقل بعشر مرات <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 4000 Hz = 8000 Hz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+      "«NONE» غلط لأن <bdi dir=\"ltr\">8000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L4: الـ oversampling، السامبلنج فوق الـ Nyquist rate، بيقلل الـ aliasing بس بياخد data أكتر.",
+     "ow": [
+      "الـ oversampling مش بيقلل نسبة الـ signal-to-noise.",
+      "الـ quantization noise جاي من الـ bit size، والـ oversampling مش بيزوّده <bdi dir=\"ltr\">(L4)</bdi>.",
+      "معكوسة: samples أكتر في الثانية محتاجة data أكتر، فالـ bandwidth المطلوب بيزيد.",
+      null
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 10000 Hz = 20 kHz</bdi>.",
+     "ow": [
+      null,
+      "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«NONE» غلط لأن <bdi dir=\"ltr\">20 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "L4 بتعرّف الـ Nyquist rate بإنه <bdi dir=\"ltr\">2 × fmax</bdi>: <bdi dir=\"ltr\">2 × 5 kHz = 10 kHz</bdi>.",
+     "ow": [
+      "الـ <bdi dir=\"ltr\">5 kHz</bdi> هي fmax نفسها: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ <bdi dir=\"ltr\">20 kHz</bdi> هي <bdi dir=\"ltr\">4 × fmax</bdi>: تنفع، بس مش الـ Nyquist rate <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ <bdi dir=\"ltr\">2.5 kHz</bdi> نص fmax؛ و<bdi dir=\"ltr\">fs / 2</bdi> بتدّي الـ Nyquist FREQUENCY من الـ sampling rate، مصطلح تاني <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ webcam كاميرا digital بتصوّر صور متحركة. أجهزة الـ capture في L1 فيها الـ video camera؛ والفيديو الـ analog بيتصور بـ video camera وبعدين يتحول digital.",
+     "ow": [
+      "الـ printer جهاز output بيطبع على ورق.",
+      "الـ scanner بيمسك صور ثابتة، مش فيديو <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "الـ microphone بيمسك الصوت <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "سلايد الـ Applications في L1 بيذكر الـ video conferencing كتطبيق multimedia، مع groupware وhome shopping. بيجمع صوت وفيديو في الوقت الحقيقي.",
+     "ow": [
+      "الـ word processing بيشتغل أساسًا على text، media واحدة.",
+      "الـ file compression أداة عامة تتطبق على أي بيانات.",
+      "الـ data encryption تقنية أمان، مش تطبيق multimedia.",
+      null
+     ]
+    },
+    {
+     "why": "«Multi» معناها كتير: الـ multimedia هي استخدام media كتير مع بعض: text وgraphics وimages وaudio وvideo <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "«Large» بتوصف الحجم، مش العدد.",
+      "«Single» عكسها؛ دي تبقى «mono».",
+      null,
+      "«Medium» مفرد «media»، النص التاني من الكلمة."
+     ]
+    },
+    {
+     "why": "L4 بتعرّف الـ oversampling بإنه السامبلنج فوق الـ Nyquist rate. بيقلل الـ aliasing بس بياخد data أكتر.",
+     "ow": [
+      "أقل من Nyquist ده undersampling، وده بيعمل aliasing <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "بالظبط <bdi dir=\"ltr\">2 × fmax</bdi> هو الأقل، فمش «over» <bdi dir=\"ltr\">(L4)</bdi>.",
+      "«None» غلط لأن (b) صح <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 7000 Hz = 14 kHz</bdi>.",
+     "ow": [
+      "«NONE» غلط لأن <bdi dir=\"ltr\">14 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+      "فخ ناقص صفر: <bdi dir=\"ltr\">14000 Hz</bdi> صح، لكن <bdi dir=\"ltr\">1400 Hz</bdi> أقل بعشر مرات <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "مستويات أكتر معناها كل sample بتتقرّب لقيمة أقرب، فخطأ التقريب (الـ quantization noise) بيقل <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "المسافة بين المستويات هي اللي بتحدد حجم خطأ التقريب <bdi dir=\"ltr\">(L4)</bdi>.",
+      "معكوسة: مستويات أكتر محتاجة bits أكتر لكل sample، فالـ bit rate بيزيد <bdi dir=\"ltr\">(L4)</bdi>.",
+      "عكس اللي بيحصل <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ compression بيقلل حجم الملف عشان ياخد مساحة أقل ويتبعت أسرع. outline المادة في L1 بيذكره: JPEG/GIF للصور وMPEG للفيديو والصوت.",
+     "ow": [
+      "الـ expansion بتكبّر البيانات، العكس.",
+      null,
+      "الـ formatting بيغيّر شكل عرض البيانات؛ هدفه مش تقليل الحجم.",
+      "الـ conversion بتحوّل من format لتاني، ومش لازم الحجم يقل."
+     ]
+    },
+    {
+     "why": "L4 بتعرّف الـ Nyquist rate بإنه <bdi dir=\"ltr\">2 × fmax</bdi>، أقل sample rate للإشارة.",
+     "ow": [
+      "نص الـ sampling rate ده الـ Nyquist FREQUENCY <bdi dir=\"ltr\">(fs / 2)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ sampling rate إنت اللي بتختاره؛ لازم بس يبقى على الأقل الـ Nyquist rate <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "الـ rate ضعف أعلى تردد، مش مساوي لـ bandwidth <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الاختيارات شكلها متلخبطة؛ «Both (A) And (B)» قصدها السببين مع بعض. الـ bandwidth: صوت التليفون محدود بحوالي <bdi dir=\"ltr\">4 kHz</bdi>. ومنع الـ aliasing: حسب Nyquist <bdi dir=\"ltr\">(L4)</bdi>، إشارة <bdi dir=\"ltr\">4 kHz</bdi> محتاجة على الأقل <bdi dir=\"ltr\">2 × 4 kHz = 8 kHz</bdi>.",
+     "ow": [
+      "صح بس نص السبب: لوحده مش بيفسّر ليه المعدل ضعف الـ bandwidth <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "صح بس نص السبب: لوحده مش بيفسّر ليه الرقم <bdi dir=\"ltr\">8 kHz</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+      "المعدل الأقل بيوفّر data، بس الـ <bdi dir=\"ltr\">8 kHz</bdi> جاية من حساب Nyquist <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    }
+   ]
+  },
+  {
+   "items": [
+    {
+     "why": "تطبيقات L1 أكتر بكتير من الترفيه: hypermedia courseware (تعليم)، وvideo conferencing، وgroupware، وhome shopping، وmultimedia databases، والـ WWW.",
+     "ow": [
+      "True غلط: L1 فيها تطبيقات تعليم واتصالات وتجارة كمان.",
+      null
+     ]
+    },
+    {
+     "why": "L4 بتعرّف الـ Nyquist rate بإنه <bdi dir=\"ltr\">2 × fmax</bdi>، أقل sample rate للإشارة: <bdi dir=\"ltr\">2 × 4 kHz = 8 kHz</bdi>.",
+     "ow": [
+      null,
+      "False غلط: <bdi dir=\"ltr\">2 × 4 kHz</bdi> هي <bdi dir=\"ltr\">8 kHz</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "L1 بتذكر الـ PowerPoint من أمثلة الـ hypermedia: بيجمع text وصور وصوت وفيديو وanimation في عرض واحد.",
+     "ow": [
+      null,
+      "False غلط: L1 بتذكر الـ PowerPoint مع الـ WWW وAdobe Acrobat وAdobe Flash كتطبيقات hypermedia."
+     ]
+    },
+    {
+     "why": "دي نظرية Nyquist في L4 تقريبًا بالحرف: <bdi dir=\"ltr\">fs ≥ 2 × fmax</bdi>.",
+     "ow": [
+      null,
+      "False غلط: دي نظرية Nyquist زي ما هي في L4."
+     ]
+    },
+    {
+     "why": "الـ sampling بيقطّع الزمن؛ والـ quantization بيقطّع الـ amplitude، فبيخزّن كل sample كواحدة من قيم ثابتة: <bdi dir=\"ltr\">0–255</bdi> لـ 8 bits و<bdi dir=\"ltr\">0–65535</bdi> لـ 16 bits <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: تقريب كل amplitude لمستوى ثابت هو شغل الـ quantization <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L4: bits أكتر معناها quantisation أدق وnoise أقل. الـ 8 bits بتدّي 256 قيمة والـ 16 bits بتدّي 65,536، فكل amplitude بتتقرّب لقيمة أقرب. التمن: ملف أكبر.",
+     "ow": [
+      null,
+      "False غلط: bits أكتر معناها مستويات أدق وخطأ تقريب أقل <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L4: تحت الـ Nyquist rate <bdi dir=\"ltr\">(2 × fmax)</bdi> ترددات مختلفة بتدّي نفس الـ samples ومش بنقدر نفرّقها. الأثر ده هو الـ aliasing، وبيأثر على الصوت والصور والفيديو.",
+     "ow": [
+      null,
+      "False غلط: الـ undersampling هو سبب الـ aliasing بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ sampling الأول (بنقيس القيمة كل فترة زمنية ثابتة)؛ والـ quantization بعده (كل قيمة بتتخزن كواحدة من قيم ثابتة). مفيش حاجة تتعملها quantization قبل ما الإشارة تتعملها sampling <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "True غلط: قيم الـ samples لازم تكون موجودة قبل الـ quantization <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الكلام الطبيعي موجة ضغط بتتغير بنعومة مع الزمن، فهو إشارة analog مستمرة؛ وعشان كده لازم يتعمله sampling وquantization قبل ما الكمبيوتر يخزنه <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: الكلام بيتغير باستمرار مع الزمن لحد ما يتحول digital <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "في L4: <bdi dir=\"ltr\">Nyquist rate = 2 × fmax</bdi>، أقل sample rate للإشارة. ومتتلخبطش بينه وبين الـ Nyquist frequency <bdi dir=\"ltr\">(fs / 2)</bdi>.",
+     "ow": [
+      null,
+      "False غلط: ده تعريف الـ Nyquist rate في L4."
+     ]
+    },
+    {
+     "why": "قايمة الـ sample rates في L4 بتدّي <bdi dir=\"ltr\">8 kHz</bdi> لصوت التليفون، مش <bdi dir=\"ltr\">16 kHz</bdi>.",
+     "ow": [
+      "True غلط: صوت التليفون بيتعمله sampling عند <bdi dir=\"ltr\">8 kHz</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ multimedia فيها كمان text وgraphics وimages. رسمة الـ hypermedia في L1 فيها graphics وsound وtext وvideo.",
+     "ow": [
+      "True غلط: الـ text والـ graphics والـ images عناصر multimedia برضه <bdi dir=\"ltr\">(L1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "L4 بتوصف الـ aliasing بإنه artefact: الترددات فوق حد Nyquist بتظهر كترددات مزيفة غريبة. بيبوّظ الإشارة، وعشان كده بنمنعه بـ low-pass filter قبل الـ sampling.",
+     "ow": [
+      "True غلط: الـ aliasing artefact بيبوّظ الإشارة <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    }
+   ]
+  }
+ ]
+});
+AR.mm.lectures[1].quiz.push(...[
+ [
+  "True غلط: L1 فيها تطبيقات تعليم واتصالات وتجارة كمان.",
+  "صح. تطبيقات L1 أكتر بكتير من الترفيه: hypermedia courseware (تعليم)، وvideo conferencing، وgroupware، وhome shopping، وmultimedia databases، والـ WWW."
+ ],
+ [
+  "ده عن نوع media واحد ومش بيقول حاجة عن تحكم المستخدم <bdi dir=\"ltr\">(L1)</bdi>.",
+  "العكس: في الـ playback بس المستخدم بيتفرج ومفيش تحكم.",
+  "ده بيخالف خاصية تانية من الأربعة: المعلومات لازم تبقى digital <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. L1 بتعدّ الـ interface التفاعلي من الأربع خصائص بتاعة الـ multimedia systems: المستخدم يقدر يتحكم في اللي بيشوفه وإمتى، زي الألعاب والـ video-on-demand."
+ ],
+ [
+  "صح. L1 بتذكر الـ PowerPoint من أمثلة الـ hypermedia: بيجمع text وصور وصوت وفيديو وanimation في عرض واحد.",
+  "False غلط: L1 بتذكر الـ PowerPoint مع الـ WWW وAdobe Acrobat وAdobe Flash كتطبيقات hypermedia."
+ ],
+ [
+  "الـ video دي continuous media، من مكونات الـ multimedia <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ spreadsheet نوع برنامج أو ملف، مش نوع media. الـ media في L1 هي text وgraphics وimages وsound وvideo؛ والـ spreadsheets متذكورة بس كملفات بيانات متخزنة text أو binary.",
+  "الـ text واحد من الـ media الأساسية <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ audio دي continuous media، من مكونات الـ multimedia <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ printer جهاز output بيطبع على ورق.",
+  "الـ scanner بيمسك صور ثابتة، مش فيديو <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ webcam كاميرا digital بتصوّر صور متحركة. أجهزة الـ capture في L1 فيها الـ video camera؛ والفيديو الـ analog بيتصور بـ video camera وبعدين يتحول digital.",
+  "الـ microphone بيمسك الصوت <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ word processing بيشتغل أساسًا على text، media واحدة.",
+  "الـ file compression أداة عامة تتطبق على أي بيانات.",
+  "الـ data encryption تقنية أمان، مش تطبيق multimedia.",
+  "صح. سلايد الـ Applications في L1 بيذكر الـ video conferencing كتطبيق multimedia، مع groupware وhome shopping. بيجمع صوت وفيديو في الوقت الحقيقي."
+ ],
+ [
+  "«Large» بتوصف الحجم، مش العدد.",
+  "«Single» عكسها؛ دي تبقى «mono».",
+  "صح. «Multi» معناها كتير: الـ multimedia هي استخدام media كتير مع بعض: text وgraphics وimages وaudio وvideo <bdi dir=\"ltr\">(L1)</bdi>.",
+  "«Medium» مفرد «media»، النص التاني من الكلمة."
+ ],
+ [
+  "True غلط: الـ text والـ graphics والـ images عناصر multimedia برضه <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ multimedia فيها كمان text وgraphics وimages. رسمة الـ hypermedia في L1 فيها graphics وsound وtext وvideo."
+ ],
+ [
+  "الـ expansion بتكبّر البيانات، العكس.",
+  "صح. الـ compression بيقلل حجم الملف عشان ياخد مساحة أقل ويتبعت أسرع. outline المادة في L1 بيذكره: JPEG/GIF للصور وMPEG للفيديو والصوت.",
+  "الـ formatting بيغيّر شكل عرض البيانات؛ هدفه مش تقليل الحجم.",
+  "الـ conversion بتحوّل من format لتاني، ومش لازم الحجم يقل."
+ ]
+]);
+AR.mm.lectures[4].quiz.push(...[
+ [
+  "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+  "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«NONE» غلط لأن <bdi dir=\"ltr\">10000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 5000 Hz = 10000 Hz</bdi>."
+ ],
+ [
+  "صح. السامبلنج فوق الـ Nyquist rate اسمه oversampling <bdi dir=\"ltr\">(L4)</bdi>: بيقلل الـ aliasing وبيمسك شكل الموجة أحسن، لأن فيه samples أكتر في الـ cycle. التمن: data أكتر.",
+  "الـ quantization levels بتعتمد على الـ bit size، مش الـ sampling rate <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ samples الزيادة بتفرق: السلايدز بتبيّن إن السامبلنج فوق Nyquist بيمسك الموجة كويس <bdi dir=\"ltr\">(L4)</bdi>.",
+  "معكوسة: الـ distortion بيجي من السامبلنج البطيء، اللي بيعمل aliasing <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">4 kHz</bdi> هي أعلى تردد للكلام، مش معدل السامبلنج؛ والسامبلنج عند <bdi dir=\"ltr\">1 × fmax</bdi> بيضيّع الإشارة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. قايمة الـ sample rates في L4 بتدّي <bdi dir=\"ltr\">8 kHz</bdi> لصوت التليفون. وصوت التليفون بيوصل لحوالي <bdi dir=\"ltr\">4 kHz</bdi>، فـ Nyquist بيدّي <bdi dir=\"ltr\">fs ≥ 2 × 4 kHz = 8 kHz</bdi>.",
+  "الـ <bdi dir=\"ltr\">16 kHz</bdi> بتدّي جودة كلام أحسن، بس السؤال عن الأقل.",
+  "الـ <bdi dir=\"ltr\">2 kHz</bdi> قليلة جدًا وهتعمل aliasing شديد: بتمثل لحد <bdi dir=\"ltr\">1 kHz</bdi> بس <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">16 kHz</bdi> هي <bdi dir=\"ltr\">4 × fmax</bdi>: تنفع، بس مش الأقل <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">4 kHz</bdi> هي <bdi dir=\"ltr\">1 × fmax</bdi> بس: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">2 kHz</bdi> أقل من fmax نفسها، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 4 kHz = 8 kHz</bdi>."
+ ],
+ [
+  "«NONE» غلط لأن <bdi dir=\"ltr\">6000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 3000 Hz = 6000 Hz</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 2000 Hz = 4000 Hz</bdi>.",
+  "«NONE» غلط لأن <bdi dir=\"ltr\">4000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. في L4: الـ aliasing هو الأثر الناتج عن غلطة في سامبلنج Nyquist: المعدل أقل من <bdi dir=\"ltr\">2 × fmax</bdi>، فالترددات العالية بتظهر كترددات أقل مزيفة. sinusoids مختلفة بتعدّي على نفس الـ sample points.",
+  "السامبلنج فوق الـ Nyquist rate هو oversampling، وده بيقلل الـ aliasing <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ quantization بيطلّع quantization error، مشكلة تانية من تقريب الـ amplitudes <bdi dir=\"ltr\">(L4)</bdi>.",
+  "معكوسة: الـ low-pass filter قبل الـ A/D converter هو اللي بيمنع الـ aliasing <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. L4 بتعرّف الـ Nyquist rate بإنه <bdi dir=\"ltr\">2 × fmax</bdi>، أقل sample rate للإشارة: <bdi dir=\"ltr\">2 × 4 kHz = 8 kHz</bdi>.",
+  "False غلط: <bdi dir=\"ltr\">2 × 4 kHz</bdi> هي <bdi dir=\"ltr\">8 kHz</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">44.1 kHz</bdi> هتمنع الـ aliasing، بس هي <bdi dir=\"ltr\">4 × fmax</bdi>، فمش المطلوبة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 11025 Hz = 22.05 kHz</bdi>.",
+  "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هي <bdi dir=\"ltr\">1 × fmax</bdi> بس: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«NONE» غلط لأن <bdi dir=\"ltr\">22.05 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ fs ضعف الـ Nyquist frequency، مش مساوية ليها <bdi dir=\"ltr\">(L4)</bdi>.",
+  "كمية تانية: الـ Nyquist frequency بتعتمد على الـ sampling rate بس <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الفخ العكسي: الـ Nyquist RATE هو <bdi dir=\"ltr\">2 × fmax</bdi>، مصطلح تاني غير الـ Nyquist frequency <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. في L4: <bdi dir=\"ltr\">Nyquist frequency = fs / 2</bdi>، أعلى تردد يقدر الـ sample rate يمثله (مثلًا <bdi dir=\"ltr\">44.1 kHz → 22.05 kHz</bdi>)."
+ ],
+ [
+  "صح. دي نظرية Nyquist في L4 تقريبًا بالحرف: <bdi dir=\"ltr\">fs ≥ 2 × fmax</bdi>.",
+  "False غلط: دي نظرية Nyquist زي ما هي في L4."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">16 kHz</bdi> ضعف معدل التليفون، وبتستخدم للكلام عالي الجودة.",
+  "صح. قايمة الـ sample rates في L4 بتدّي <bdi dir=\"ltr\">8 kHz</bdi> للتليفون. ومتوافقة مع Nyquist: الكلام بيوصل لحوالي <bdi dir=\"ltr\">4 kHz</bdi>، و<bdi dir=\"ltr\">2 × 4 kHz = 8 kHz</bdi>.",
+  "الـ <bdi dir=\"ltr\">4 kHz</bdi> أعلى تردد للكلام، مش معدل السامبلنج <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">2 kHz</bdi> قليلة جدًا للكلام وهتعمل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. الـ sampling بيقطّع الزمن؛ والـ quantization بيقطّع الـ amplitude، فبيخزّن كل sample كواحدة من قيم ثابتة: <bdi dir=\"ltr\">0–255</bdi> لـ 8 bits و<bdi dir=\"ltr\">0–65535</bdi> لـ 16 bits <bdi dir=\"ltr\">(L4)</bdi>.",
+  "False غلط: تقريب كل amplitude لمستوى ثابت هو شغل الـ quantization <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 3 kHz = 6 kHz</bdi>.",
+  "الـ <bdi dir=\"ltr\">1.5 kHz</bdi> نص fmax بدل الضعف، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">3 kHz</bdi> هي <bdi dir=\"ltr\">1 × fmax</bdi> بس: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">9 kHz</bdi> هتمنع الـ aliasing، بس هي <bdi dir=\"ltr\">3 × fmax</bdi>، فمش الأقل <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. في L4: bits أكتر معناها quantisation أدق وnoise أقل. الـ 8 bits بتدّي 256 قيمة والـ 16 bits بتدّي 65,536، فكل amplitude بتتقرّب لقيمة أقرب. التمن: ملف أكبر.",
+  "False غلط: bits أكتر معناها مستويات أدق وخطأ تقريب أقل <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 9000 Hz = 18 kHz</bdi>.",
+  "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«NONE» غلط لأن <bdi dir=\"ltr\">18 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "فخ ناقص صفر: <bdi dir=\"ltr\">18000 Hz</bdi> صح، لكن <bdi dir=\"ltr\">1800 Hz</bdi> أقل بعشر مرات <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">11.025 kHz</bdi> هتمنع الـ aliasing، بس مش هي المطلوبة؛ دي معدل الـ speech في L4.",
+  "«NONE» غلط لأن <bdi dir=\"ltr\">8000 Hz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 4000 Hz = 8000 Hz</bdi>.",
+  "الـ <bdi dir=\"ltr\">22.05 kHz</bdi> هي المطلوبة لـ <bdi dir=\"ltr\">fmax = 11025 Hz</bdi>، مش للإشارة دي <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ oversampling مش بيقلل نسبة الـ signal-to-noise.",
+  "الـ quantization noise جاي من الـ bit size، والـ oversampling مش بيزوّده <bdi dir=\"ltr\">(L4)</bdi>.",
+  "معكوسة: samples أكتر في الثانية محتاجة data أكتر، فالـ bandwidth المطلوب بيزيد.",
+  "صح. في L4: الـ oversampling، السامبلنج فوق الـ Nyquist rate، بيقلل الـ aliasing بس بياخد data أكتر."
+ ],
+ [
+  "صح. في L4: تحت الـ Nyquist rate <bdi dir=\"ltr\">(2 × fmax)</bdi> ترددات مختلفة بتدّي نفس الـ samples ومش بنقدر نفرّقها. الأثر ده هو الـ aliasing، وبيأثر على الصوت والصور والفيديو.",
+  "False غلط: الـ undersampling هو سبب الـ aliasing بالظبط <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 10000 Hz = 20 kHz</bdi>.",
+  "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«NONE» غلط لأن <bdi dir=\"ltr\">20 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">5 kHz</bdi> هي fmax نفسها: sample واحدة في الـ cycle، فالإشارة بتضيع <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. L4 بتعرّف الـ Nyquist rate بإنه <bdi dir=\"ltr\">2 × fmax</bdi>: <bdi dir=\"ltr\">2 × 5 kHz = 10 kHz</bdi>.",
+  "الـ <bdi dir=\"ltr\">20 kHz</bdi> هي <bdi dir=\"ltr\">4 × fmax</bdi>: تنفع، بس مش الـ Nyquist rate <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ <bdi dir=\"ltr\">2.5 kHz</bdi> نص fmax؛ و<bdi dir=\"ltr\">fs / 2</bdi> بتدّي الـ Nyquist FREQUENCY من الـ sampling rate، مصطلح تاني <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "True غلط: قيم الـ samples لازم تكون موجودة قبل الـ quantization <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. الـ sampling الأول (بنقيس القيمة كل فترة زمنية ثابتة)؛ والـ quantization بعده (كل قيمة بتتخزن كواحدة من قيم ثابتة). مفيش حاجة تتعملها quantization قبل ما الإشارة تتعملها sampling <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. الكلام الطبيعي موجة ضغط بتتغير بنعومة مع الزمن، فهو إشارة analog مستمرة؛ وعشان كده لازم يتعمله sampling وquantization قبل ما الكمبيوتر يخزنه <bdi dir=\"ltr\">(L4)</bdi>.",
+  "False غلط: الكلام بيتغير باستمرار مع الزمن لحد ما يتحول digital <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "أقل من Nyquist ده undersampling، وده بيعمل aliasing <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. L4 بتعرّف الـ oversampling بإنه السامبلنج فوق الـ Nyquist rate. بيقلل الـ aliasing بس بياخد data أكتر.",
+  "بالظبط <bdi dir=\"ltr\">2 × fmax</bdi> هو الأقل، فمش «over» <bdi dir=\"ltr\">(L4)</bdi>.",
+  "«None» غلط لأن (b) صح <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "صح. في L4: <bdi dir=\"ltr\">Nyquist rate = 2 × fmax</bdi>، أقل sample rate للإشارة. ومتتلخبطش بينه وبين الـ Nyquist frequency <bdi dir=\"ltr\">(fs / 2)</bdi>.",
+  "False غلط: ده تعريف الـ Nyquist rate في L4."
+ ],
+ [
+  "«NONE» غلط لأن <bdi dir=\"ltr\">14 kHz</bdi> هي <bdi dir=\"ltr\">2 × fmax</bdi> بالظبط <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. نظرية Nyquist <bdi dir=\"ltr\">(L4)</bdi>: <bdi dir=\"ltr\">fs ≥ 2 × fmax = 2 × 7000 Hz = 14 kHz</bdi>.",
+  "<bdi dir=\"ltr\">2000 Hz</bdi> أقل بكتير من المطلوب في Nyquist، فهيحصل aliasing شديد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "فخ ناقص صفر: <bdi dir=\"ltr\">14000 Hz</bdi> صح، لكن <bdi dir=\"ltr\">1400 Hz</bdi> أقل بعشر مرات <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "True غلط: صوت التليفون بيتعمله sampling عند <bdi dir=\"ltr\">8 kHz</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. قايمة الـ sample rates في L4 بتدّي <bdi dir=\"ltr\">8 kHz</bdi> لصوت التليفون، مش <bdi dir=\"ltr\">16 kHz</bdi>."
+ ],
+ [
+  "المسافة بين المستويات هي اللي بتحدد حجم خطأ التقريب <bdi dir=\"ltr\">(L4)</bdi>.",
+  "معكوسة: مستويات أكتر محتاجة bits أكتر لكل sample، فالـ bit rate بيزيد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "عكس اللي بيحصل <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. مستويات أكتر معناها كل sample بتتقرّب لقيمة أقرب، فخطأ التقريب (الـ quantization noise) بيقل <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "نص الـ sampling rate ده الـ Nyquist FREQUENCY <bdi dir=\"ltr\">(fs / 2)</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ sampling rate إنت اللي بتختاره؛ لازم بس يبقى على الأقل الـ Nyquist rate <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. L4 بتعرّف الـ Nyquist rate بإنه <bdi dir=\"ltr\">2 × fmax</bdi>، أقل sample rate للإشارة.",
+  "الـ rate ضعف أعلى تردد، مش مساوي لـ bandwidth <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "True غلط: الـ aliasing artefact بيبوّظ الإشارة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. L4 بتوصف الـ aliasing بإنه artefact: الترددات فوق حد Nyquist بتظهر كترددات مزيفة غريبة. بيبوّظ الإشارة، وعشان كده بنمنعه بـ low-pass filter قبل الـ sampling."
+ ],
+ [
+  "صح بس نص السبب: لوحده مش بيفسّر ليه المعدل ضعف الـ bandwidth <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. الاختيارات شكلها متلخبطة؛ «Both (A) And (B)» قصدها السببين مع بعض. الـ bandwidth: صوت التليفون محدود بحوالي <bdi dir=\"ltr\">4 kHz</bdi>. ومنع الـ aliasing: حسب Nyquist <bdi dir=\"ltr\">(L4)</bdi>، إشارة <bdi dir=\"ltr\">4 kHz</bdi> محتاجة على الأقل <bdi dir=\"ltr\">2 × 4 kHz = 8 kHz</bdi>.",
+  "صح بس نص السبب: لوحده مش بيفسّر ليه الرقم <bdi dir=\"ltr\">8 kHz</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "المعدل الأقل بيوفّر data، بس الـ <bdi dir=\"ltr\">8 kHz</bdi> جاية من حساب Nyquist <bdi dir=\"ltr\">(L4)</bdi>."
+ ]
+]);
