@@ -6,7 +6,7 @@ PAPERS.hci = {
   {
    "title": "Midterm 2026/2027",
    "meta": "CS314 Human Computer Interaction · Midterm, 1st term 2026/2027 · online quiz · 30 questions (MCQ) · Lectures 1 to 6 · Dr. Mona Samir Lackousha",
-   "note": "Not yet confirmed by the doctor. The answers are worked out from Lectures 1 to 6. Judgement calls: \"Recognizing a familiar face\" is answered as perception, because Lecture 4's own example (memory) is not an option; \"Communication theory belongs to which component?\" follows Lecture 1's pie chart, which puts it under Human, not Interaction; \"the slide's recommendation\" is 7 tabs, although the slide only poses the 7 ± 2 rule as a question. What the Decide stage does and the \"quickly\" in the Design Sprint's goal come from Knapp et al., not the slides.",
+   "note": "Confirmed by the doctor (November 2026). The answers are worked out from Lectures 1 to 6. Judgement calls: \"Recognizing a familiar face\" is answered as perception, because Lecture 4's own example (memory) is not an option; \"Communication theory belongs to which component?\" follows Lecture 1's pie chart, which puts it under Human, not Interaction; \"the slide's recommendation\" is 7 tabs, although the slide only poses the 7 ± 2 rule as a question. What the Decide stage does and the \"quickly\" in the Design Sprint's goal come from Knapp et al., not the slides.",
    "sections": [
     {
      "title": "Choose the correct answer",
@@ -40,7 +40,7 @@ PAPERS.hci = {
         "Understand the market"
        ],
        "a": 1,
-       "key": "Lecture 2 lists the five sprint steps but does not describe each one. What Decide does comes from the standard Design Sprint method (Knapp et al.).",
+       "key": "Confirmed by the doctor. Lecture 2 lists the five sprint steps but does not describe each one. What Decide does comes from the standard Design Sprint method (Knapp et al.).",
        "why": "Google Design Sprint (Knapp et al., 2016): Unpack → Sketch → Decide → Prototype → Test, then iterate. In Decide the team picks the best of the ideas sketched in the step before, and that is the one it prototypes next (L2, Google Design Sprints).",
        "ow": [
         "Testing is the fifth step, Test (L2).",
@@ -77,7 +77,7 @@ PAPERS.hci = {
         "Decision-making"
        ],
        "a": 2,
-       "key": "Lecture 4 uses recognizing someone's face as an example of memory, which is not among the options. Of the four, perception is the process involved.",
+       "key": "Confirmed by the doctor. Lecture 4 uses recognizing someone's face as an example of memory, which is not among the options. Of the four, perception is the process involved.",
        "why": "Perception is how information is acquired from the world and transformed into experiences (L3). Seeing a face and recognizing it as someone you know starts there. L4 also uses this example for memory, but memory is not an option here.",
        "ow": [
         "Planning is reflective cognition: thinking about what to do and the consequences (L4). Recognizing a face is fast and automatic.",
@@ -204,7 +204,7 @@ PAPERS.hci = {
         "Programming"
        ],
        "a": 1,
-       "key": "Answered from Lecture 1's pie chart, which lists communication theory under Human. Interaction is the tempting choice, but the chart puts only interaction design there.",
+       "key": "Confirmed by the doctor. Answered from Lecture 1's pie chart, which lists communication theory under Human. Interaction is the tempting choice, but the chart puts only interaction design there.",
        "why": "Lecture 1's pie chart, \"The three parts of HCI\", lists communication theory under Human, with industrial design, social science, cognitive psychology and human factors (L1, The three parts of HCI).",
        "ow": [
         "Computer holds computer graphics, operating system and programming language (L1).",
@@ -493,7 +493,7 @@ PAPERS.hci = {
         "12 toolbar icons"
        ],
        "a": 0,
-       "key": "The slide is titled \"The problem with the classic 7 ± 2\" and poses the 7-items rule as discussion questions without answering them. The quiz treats 7 as the recommendation, so 7 tabs is the expected answer.",
+       "key": "Confirmed by the doctor. The slide is titled \"The problem with the classic 7 ± 2\" and poses the 7-items rule as discussion questions without answering them. The quiz treats 7 as the recommendation, so 7 tabs is the expected answer.",
        "why": "Miller's (1956) 7 ± 2: immediate memory is very limited, and this has been applied in interaction design when deciding how many options to display. The slide asks whether to place only 7 tabs on the top of a website page; only 7 is within 7 ± 2 (L4).",
        "ow": [
         null,
@@ -530,7 +530,7 @@ PAPERS.hci = {
         "To develop and test solutions quickly"
        ],
        "a": 3,
-       "key": "Lecture 2 gives the sprint's steps but not its goal. \"Quickly\" comes from Knapp et al.'s book, where a sprint takes five days.",
+       "key": "Confirmed by the doctor. Lecture 2 gives the sprint's steps but not its goal. \"Quickly\" comes from Knapp et al.'s book, where a sprint takes five days.",
        "why": "Lecture 2's Google Design Sprint (Knapp et al., 2016) is a loop: Unpack → Sketch → Decide → Prototype → Test, then iterate. It goes from a problem to a tested prototype, and a sprint is short (five days in Knapp et al.) (L2).",
        "ow": [
         "The sprint moves from sketches straight to a prototype; L2 also says to use prototypes, not static documentation.",
