@@ -3624,3 +3624,629 @@ AR.qa = {
   }
  ]
 };
+
+// Midterm 2026/2027 (papers/qa.js): the exam and its lecture-quiz copies, in the same order.
+AR.qa.exams.push({
+ "sections": [
+  {
+   "items": [
+    {
+     "why": "مع «> 9000» الـ valid class بيبدأ من 9001، فالـ 9000 هي الـ invalid boundary: القيمة اللي برا الـ range على طول ولازم تترفض. ونفس مثال المحاضرة 2: لـ «≥ 10,000» الـ 09999 هي الـ invalid left boundary والـ 10000 هي الـ valid left boundary <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      null,
+      "الـ 9999 أكبر من 9000، يعني valid input من الـ class المقبول <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ 10000 أكبر من 9000، يعني valid input <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ 9999 والـ 10000 valid، فمش كل الاختيارات invalid."
+     ]
+    },
+    {
+     "why": "المحاضرة 2: «الـ static testing = اختبار حاجة مش شغالة (بتفحصها وتراجعها). الـ dynamic testing = تشغيل البرنامج واستخدامه».",
+     "ow": [
+      "بالعكس: الـ static testing بيفحص ويراجع software مش شغال <bdi dir=\"ltr\">(L2)</bdi>.",
+      "مش مصطلح في المحاضرة؛ المحاضرة 2 بتقسم الاختبار لـ static (مش شغال) وdynamic (شغال).",
+      null,
+      "مش مصطلح في المحاضرة؛ الـ Analysis مجرد phase في Waterfall/Spiral في المحاضرة 1، مش نوع اختبار."
+     ]
+    },
+    {
+     "why": "المحاضرة 3 بتدّي 3 أسباب لاتباع الـ coding standards والـ guidelines: (1) الـ reliability، كود أكثر اعتمادية وأمان؛ (2) الـ readability/maintainability؛ (3) الـ portability، يشتغل على hardware وcompilers مختلفة <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "سبب حقيقي، بس واحد من التلاتة؛ الـ reliability والـ maintainability كمان موجودين <bdi dir=\"ltr\">(L3)</bdi>.",
+      "سبب حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "سبب حقيقي (readability/maintainability)، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ preventive maintenance بيعدّل الـ software عشان يكتشف ويصلّح الـ latent faults قبل ما تبقى أخطاء فعلية <bdi dir=\"ltr\">(ISO/IEC 14764)</bdi>. المحاضرات بتوصف الـ Maintenance بس كآخر phase في الـ Waterfall: «بيصلّح المشاكل ويحدّث الـ software لما تظهر احتياجات جديدة» <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "تحسين أو إعادة تصميم software شغال ده perfective maintenance.",
+      "تصليح أخطاء حصلت فعلًا ده corrective maintenance، عكس إنك تتصرف قبل ما الخطأ يظهر.",
+      "تظبيط الـ software أو البيانات على بيئة جديدة ده adaptive maintenance (migration).",
+      null
+     ]
+    },
+    {
+     "why": "الـ method-message (MM) testing محتاج كل method call يتختبر مرة على الأقل. للـ stack المحاضرة 4 بتقول «تسلسل بسيط create وpush وpop ممكن يحقق الـ MM testing». والـ state diagram بتاع الـ queue (Empty وNormal وFull) بيستخدم new وinsert وdelete، فالتسلسل بتاعه create وinsert وdelete <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      null,
+      "خلط بين الاتنين: الـ pop بتاع الـ stack؛ والـ queue بيشيل بـ delete.",
+      "ده تسلسل الـ stack من السلايد بالظبط؛ الـ push والـ pop مش methods الـ queue.",
+      "خلط بين الاتنين: الـ push بتاع الـ stack؛ والـ queue بيضيف بـ insert."
+     ]
+    },
+    {
+     "why": "الـ adaptive maintenance بيغيّر الـ software عشان يفضل شغال في بيئة اتغيرت: operating system جديد أو hardware أو database أو قوانين. إنك تخلي التطبيق متوافق مع نسخة OS جديدة هو المثال المعروف <bdi dir=\"ltr\">(ISO/IEC 14764)</bdi>.",
+     "ow": [
+      "الـ perfective بيضيف أو يحسّن features أو أداء؛ تغيّر البيئة مش سببه.",
+      "الـ corrective بيصلّح أخطاء ظهرت؛ هنا مفيش حاجة بايظة.",
+      "الـ preventive بيصلّح latent faults قبل ما تبقى أخطاء؛ مش بيتعمل بسبب بيئة جديدة.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 8: «C – Control: ركّز على مراقبة كل العمليات دي ومتوقفش»: قيس الأداء باستمرار وصلّح أي انحراف. والملخص بيكررها: «وأخيرًا Control: راقب عمليات التحسين باستمرار» <bdi dir=\"ltr\">(L8)</bdi>.",
+     "ow": [
+      "الـ Measure بيقيس الأداء قصاد متطلبات العميل بأدوات إحصائية، قبل ما يبقى فيه حل <bdi dir=\"ltr\">(L8)</bdi>.",
+      null,
+      "الـ Improve بيلاقي الحلول ويجربها ويطبقها؛ والـ Control هو اللي بيحافظ عليها <bdi dir=\"ltr\">(L8)</bdi>.",
+      "الـ Define بيحدد المشكلة (مستواها ومكانها وأثرها المالي) ويكوّن الفريق <bdi dir=\"ltr\">(L8)</bdi>.",
+      "الـ Analyze بيدور على الـ root causes من البيانات اللي اتجمعت <bdi dir=\"ltr\">(L8)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: «الـ code coverage ليه 3 أنواع: Statement coverage وPath coverage (branch) وCondition coverage». الـ condition موجود في السلايد، والـ branch هو اسم السلايد للـ path coverage، والـ line coverage هو الاسم التاني المعروف للـ statement coverage (كل سطر يتنفذ مرة على الأقل) <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      null,
+      "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "نوع حقيقي (statement coverage)، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "نوع حقيقي (path coverage)، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ Lean Six Sigma بيحسّن العمليات اللي بتتكرر: بيقلل الهدر (Lean) والعيوب والتباين (Six Sigma) بالـ DMAIC. والمحاضرة 8 بتقول إن الـ Six Sigma بيستهدف الأخطاء «في كل الأنشطة». اختيار موظف السنة قرار تقديري لمرة واحدة، مش عملية متكررة فيها عيوب تتقاس، فالـ DMAIC ملوش حاجة يشتغل عليها.",
+     "ow": [
+      null,
+      "العمليات الإدارية (موافقات، فواتير، HR) بتتكرر وتتقاس، فالـ Lean Six Sigma ينفع فيها.",
+      "الرعاية الصحية من أكبر المستخدمين، زي تقليل وقت الانتظار وأخطاء الأدوية.",
+      "الـ supply chain (مخزون، لوجستيات، توصيل) استخدام كلاسيكي للـ Lean."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: الـ static white-box testing بيتقسم لـ Formal Review وCoding Standards and Guidelines وCode Review Checklist، والـ Formal Review بيتفرع لـ Peer Review وWalkthrough وInspection <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "الـ code coverage (statement وpath وcondition) ده dynamic white-box بيشغّل الكود؛ والـ inspection مراجعة static <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ data coverage (data flow وsub-boundaries وerror forcing) ده dynamic white-box <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "الـ peer review أخو الـ inspection، واحد من التلات formal reviews، مش المرحلة اللي فوقه <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: «الـ Standards قواعد لازم تتبعها (إجبارية). الـ Guidelines تعليمات بتساعدك تتبع الـ standards (مش إجبارية أوي)».",
+     "ow": [
+      "الـ guidelines بتطابق التعريف بالظبط <bdi dir=\"ltr\">(L3)</bdi>.",
+      "بالعكس: الـ standards هي القواعد الإجبارية <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ standards إجبارية، فالاتنين مع بعض مش «مش إجبارية» <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 3 بتعرّف الـ formal review إنه «اجتماعات رسمية بين المبرمجين والـ testers لفحص الـ design والكود» <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "الـ formal review بس هو اللي بيطابق التعريف <bdi dir=\"ltr\">(L3)</bdi>.",
+      "في المحاضرة 3 الـ code review هو الـ Code Review Checklist، قايمة بأنواع الأخطاء، مش الاجتماع؛ والاجتماع بيشمل الـ design كمان.",
+      "مش مصطلح في المحاضرة؛ الـ data coverage اختبار dynamic، مش اجتماع.",
+      null
+     ]
+    },
+    {
+     "why": "الـ Maintenance آخر phase في الـ Waterfall بعد التسليم: «بيصلّح المشاكل ويحدّث الـ software لما تظهر احتياجات جديدة» <bdi dir=\"ltr\">(L1)</bdi>. وتعريف IEEE: تعديل المنتج بعد التسليم عشان تصلّح الأخطاء، أو تحسّن الأداء، أو تظبطه على بيئة اتغيرت.",
+     "ow": [
+      "بالعكس: الـ adaptive maintenance بيخلي الـ software شغال لما البيئة تتغير.",
+      "ده الـ Coding phase، قبل الـ Testing والـ Maintenance <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "دي مراحل الـ Analysis والـ Design الأولى، قبل الـ maintenance بكتير <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "الاختيارات أنواع maintenance، والـ maintenance هي أغلى مرحلة، فالسؤال بيسأل أنهي نوع بياخد أكبر جزء منها. Lientz وSwanson وTompkins (1978): 60.3% perfective و18.2% adaptive و17.4% corrective و4.1% other؛ والنسخة المقرّبة في الكتب: 50% perfective و25% adaptive و21% corrective و4% preventive.",
+     "ow": [
+      null,
+      "حوالي 18-25% من مجهود الـ maintenance، أقل بكتير من الـ perfective (Lientz وSwanson).",
+      "أصغر نسبة، حوالي 4% (Lientz وSwanson). ودي إجابة الكويز، وهي عكس المصادر المعروفة.",
+      "حوالي 17-21%: أغلب المجهود بيروح في تغيير software شغال، مش تصليح أخطاء (Lientz وSwanson)."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: أنواع الـ data coverage هي «Data flow وSub-boundaries وError forcing». والتلات اختيارات في القايمة <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ statement coverage معناه كل statement يتنفذ مرة على الأقل <bdi dir=\"ltr\">(L3)</bdi>؛ والـ statement الوحيد هو A=A+1، فلازم شرط الـ OR يبقى true. <bdi dir=\"ltr\">X=2,y=0</bdi> (X=2 true) و<bdi dir=\"ltr\">X=1,y=2</bdi> (y>1 true) و<bdi dir=\"ltr\">X=2,y=2</bdi> (الاتنين true) كل واحد فيهم بيشغّله. وفاينل 2025/26 كان فيه نفس السؤال وإجابته «All answers».",
+     "ow": [
+      "شغال (X=2 بيخلي الـ OR true)، بس التانيين كمان شغالين.",
+      "شغال (y=2 > 1 بيخلي الـ OR true)، بس التانيين كمان شغالين.",
+      "شغال (الجزئين true)، بس التانيين كمان شغالين.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 2: الـ validation = «إحنا بنبني المنتج الصح؟»، يعني بتتأكد قصاد احتياج العميل (زي الـ user acceptance testing)؛ والـ verification = «إحنا بنبني المنتج صح؟»، يعني بتتأكد قصاد الـ specification. وفاينل 2025/26 جاب نفس السؤال وإجابته Validation.",
+     "ow": [
+      "الـ Design نشاط تطوير بيحدد الهيكل؛ مش بيتأكد من المنتج.",
+      "الـ Requirements هي اللي بنقارن بيها، مش عملية التأكد نفسها.",
+      null,
+      "الـ verification بيتأكد قصاد الـ specification؛ إنما قصاد متطلبات العميل يبقى validation <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 8: الـ Six Sigma بيركّز على رضا العميل و«بيقلل الـ process variation لحد ما النتيجة تبقى 3.4 عيب في المليون». تباين أكتر يعني نتايج أكتر برا حدود العميل، يعني عيوب أكتر وفشل أكتر في تلبية المتطلبات؛ وجدول الـ normal curve في السلايد بيوضح إن كل ما الانتشار يزيد، الـ ppm برا الـ spec بيزيد <bdi dir=\"ltr\">(L8)</bdi>.",
+     "ow": [
+      "التباين بيعمل rework وتأخير، فبيطوّل الـ cycle time مش بيقصّره (معلومة Lean عامة).",
+      null,
+      "الـ 8 wastes المعروفة: transport وinventory وmotion وwaiting وoverproduction وoverprocessing وdefects وunused skills؛ والتباين مش منهم (معلومة عامة؛ المحاضرة 8 بتذكر أداة «Seven Wastes» بس).",
+      "المحاضرة 8 بتقول إن الـ Six Sigma بيستهدف الأخطاء «في كل الأنشطة»: design وindustrial وcommercial."
+     ]
+    },
+    {
+     "why": "المحاضرة 4: <bdi dir=\"ltr\">V(G) = E − N + 2P</bdi>، و<bdi dir=\"ltr\">P = 1</bdi> لبرنامج واحد، فـ <bdi dir=\"ltr\">V(G) = E − N + 2</bdi>. لـ foo(): <bdi dir=\"ltr\">7 − 6 + 2 = 3</bdi>، زي <bdi dir=\"ltr\">predicate nodes + 1 = 2 + 1</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "الثابت غلط: foo() هتدّي <bdi dir=\"ltr\">7 − 6 + 3 = 4</bdi> مش 3 بتاعة المحاضرة <bdi dir=\"ltr\">(L4)</bdi>.",
+      "معكوسة: foo() هتدّي <bdi dir=\"ltr\">6 − 7 + 2 = 1</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "زي أول اختيار (الكويز كاتبه مرتين): الثابت غلط <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 6، دور الـ tester: يتحمّل مسؤولية الـ bugs اللي لقاها، ويتابعها في الـ life cycle بتاعها، ويقنع فريق التطوير يصلّحها. وفاينل 2025/26 جاب نفس السؤال بنفس الإجابة.",
+     "ow": [
+      "الاختيار c بيطابق السلايد.",
+      "ناقصة: هدف الاختبار الأساسي إنه يلاقي الـ bugs ويبلّغ عنها، بس الـ tester لازم كمان يتابعها ويخليها تتصلّح <bdi dir=\"ltr\">(L6)</bdi>.",
+      null,
+      "المطوّرين هما اللي بيصلّحوا؛ الـ tester بيقنع الفريق يصلّح <bdi dir=\"ltr\">(L6)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 2: الـ verification = «إحنا بنبني المنتج صح؟»، يعني بتتأكد قصاد الـ specification (code reviews وdesign checks). وفي الـ V-model الجنب الشمال النازل (من الـ requirements spec للكود) هو الـ verification <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+     "ow": [
+      "الـ validation بيتأكد قصاد متطلبات العميل؛ قصاد الـ specification يبقى verification <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ Design نشاط تطوير؛ مش بيتأكد من حاجة قصاد الـ spec.",
+      "الـ Requirements هي اللي بنقارن بيها، مش عملية التأكد.",
+      null
+     ]
+    },
+    {
+     "why": "الـ perfective maintenance بيحسّن software شغال أصلًا: أداء وسرعة أحسن، أو features جديدة المستخدمين طالبينها. وبياخد أكبر نسبة من مجهود الـ maintenance (Lientz وSwanson).",
+     "ow": [
+      "تصليح الأخطاء ده corrective؛ واكتشاف الـ latent faults بدري ده preventive.",
+      "الـ refactoring عشان الكود يتقري أسهل ده preventive في ISO/IEC 14764 (بيحسّن الـ maintainability)؛ صياغة IEEE القديمة بتحطه تحت perfective، بس الـ perfective أساسًا عن الأداء والـ features.",
+      "التظبيط على hardware جديد ده adaptive maintenance.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 8: الـ Measure هو «تخطيط وتنفيذ قياس الأداء قصاد متطلبات وتوقعات العملاء»، وقياس العيوب بأدوات إحصائية. إنك تقيس الأداء الحالي قبل ما تغيّر حاجة ده الـ baseline، واللي بتقارن بيه التحسينات بعدين <bdi dir=\"ltr\">(L8)</bdi>.",
+     "ow": [
+      "الـ Control آخر مرحلة وبيراقب الحل عشان يفضل ثابت <bdi dir=\"ltr\">(L8)</bdi>.",
+      "الـ Define بيوصف المشكلة (مستواها ومكانها وأثرها المالي) ويكوّن الفريق؛ والـ Measure هو اللي بيحط لها أرقام <bdi dir=\"ltr\">(L8)</bdi>.",
+      null,
+      "الـ Improve بيلاقي الحلول ويجربها، وبتتقيّم قصاد الـ baseline بتاع الـ Measure <bdi dir=\"ltr\">(L8)</bdi>.",
+      "الـ Analyze بيدور على الـ root causes من بيانات الـ Measure <bdi dir=\"ltr\">(L8)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: «استراتيجيات الـ integration testing: Bottom-up وTop-down وUmbrella approach». وفي الرسمة الـ Integration testing بيتقسم لـ Bottom Up وTop Down وUmbrella Approach Testing <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      null,
+      "الـ black box طريقة اختبار (من الـ spec من غير الكود؛ <bdi dir=\"ltr\">L2</bdi>)، مش استراتيجية integration.",
+      "مش في قايمة المحاضرة. (الـ Big Bang، إنك تجمع كل الـ modules مرة واحدة، استراتيجية integration في الكتب، بس مش في السلايدز.)",
+      "الـ static white-box بيراجع الـ design والكود من غير تشغيل؛ والـ integration testing بيشغّل الأجزاء مع بعض <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "رسمة المحاضرة 3: الـ Integration testing بيتقسم لـ Bottom Up Testing وTop Down Testing وUmbrella Approach Testing <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "أخو الـ umbrella approach، مش اللي فوقه <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ static testing مش بيشغّل الكود؛ والـ integration testing بيشغّل الـ modules مع بعض <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+      null,
+      "أخو الـ umbrella approach، مش اللي فوقه <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 4: في كود الـ OO «لازم نختبر التفاعل بين الـ methods»، والـ MM والـ function pair هما الطريقتين لده. الـ function pair بيختبر «كل التسلسلات الممكنة لتنفيذ methods بطول اتنين»، وعادة بيعتمد على state machine diagram <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "السلايد بتقول إن الـ FP بيعتمد على state machine diagram: الرسمة هي مصدر الـ pairs، مش الحاجة اللي بتتختبر <bdi dir=\"ltr\">(L4)</bdi>.",
+      "ملوش علاقة بالـ function pair في المحاضرة؛ الـ data flow نوع من الـ data coverage <bdi dir=\"ltr\">(L3)</bdi>.",
+      "مستحيل، لأن الـ data flow diagram غلط.",
+      null
+     ]
+    },
+    {
+     "why": "الـ corrective maintenance بيصلّح الأخطاء (bugs وerrors) اللي اتلقت بعد تسليم الـ software، وغالبًا المستخدمين هما اللي بيبلّغوا عنها <bdi dir=\"ltr\">(ISO/IEC 14764)</bdi>.",
+     "ow": [
+      null,
+      "الـ perfective بيحسّن الأداء أو يضيف features؛ مفيش حاجة بايظة.",
+      "الـ preventive بيصلّح latent faults قبل ما تبقى أخطاء؛ هنا الـ bugs ظهرت خلاص.",
+      "الـ adaptive بيظبط الـ software على بيئة اتغيرت (OS أو hardware جديد)."
+     ]
+    },
+    {
+     "why": "المحاضرة 4: الـ MM testing «أبسط criterion ومش بيغطي (does not subsume) الـ statement coverage»: إنك تنادي كل method مرة مش معناه إن كل الـ statements جواها اتنفذت <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "المحاضرة 4 مش بتقارن الـ data coverage (فكرة white-box من المحاضرة 3) بالـ MM.",
+      "الـ states تبع الـ function pair testing؛ السلايد مش بتقارن الـ state coverage بالـ MM <bdi dir=\"ltr\">(L4)</bdi>.",
+      null,
+      "السلايد بتذكر الـ statement coverage بس <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "جدول مصطلحات الاختبار في المحاضرة 2: «Test Plan: مستند فيه أهداف الاختبار ونطاقه» (مثال: بيوصف نطاق اختبار الـ login). و«Test plane» هي طريقة كتابة الكويز لـ test plan.",
+     "ow": [
+      null,
+      "الـ random test طريقة لاختيار المدخلات، مش مستند.",
+      "الـ dynamic testing نوع اختبار (تشغيل البرنامج)، مش مستند <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ test case اختبار واحد: input وconditions وexpected output؛ والـ test plan هو اللي بيحدد الأهداف والنطاق لكلهم."
+     ]
+    },
+    {
+     "why": "المحاضرة 8: الـ Six Sigma بيقلل التباين لحد 3.4 عيب في المليون. <bdi dir=\"ltr\">3.4 / 1,000,000 = 0.00034%</bdi> معيب، فـ <bdi dir=\"ltr\">100% − 0.00034% = 99.99966%</bdi> من غير عيوب. (الـ <bdi dir=\"ltr\">±6σ = 99.9999998%</bdi> في السلايد لـ process متمركزة تمامًا؛ والـ 3.4 في المليون بتسمح بانحراف <bdi dir=\"ltr\">1.5σ</bdi>.)",
+     "ow": [
+      null,
+      "حوالي 9,000 عيب في المليون، تقريبًا 3.9 sigma.",
+      "حوالي 2,000 عيب في المليون، تقريبًا 4.4 sigma.",
+      "حوالي 9,500 عيب في المليون، تقريبًا 3.8 sigma."
+     ]
+    },
+    {
+     "why": "الـ boundary value analysis بيختبر أطراف كل range صحيح <bdi dir=\"ltr\">(L2)</bdi>. وآخر يوم صحيح بيعتمد على الشهر والسنة: 28 (فبراير)، 29 (فبراير في سنة كبيسة)، 30 (أبريل ويونيو وسبتمبر ونوفمبر)، 31 (باقي الشهور). وكلهم boundaries لازم تتختبر.",
+     "ow": [
+      "boundaries الشهور اللي 30 و31 يوم، بس ناقص 28 و29 بتوع فبراير.",
+      null,
+      "boundary فبراير في السنة العادية بس.",
+      "boundary فبراير في السنة الكبيسة بس."
+     ]
+    },
+    {
+     "why": "المحاضرة 3، الـ Code Review Checklist: الـ data reference errors هي «أخطاء سببها استخدام variables أو constants أو arrays أو strings أو records مش متعرّفة أو متهيّأة صح» (زي variables من غير قيمة أولية، أو index برا الحدود، أو off-by-one).",
+     "ow": [
+      "الـ comparison errors بتحصل عند الـ boundary conditions (<bdi dir=\"ltr\">&lt; vs &lt;=</bdi>، أو Boolean operands غلط) <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ control flow errors هي loops وcontrol structures شغالة غلط <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ computation errors حسابات غلط، زي خلط أنواع بيانات <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 3، الـ Code Review Checklist، فحص (b) في الـ computation errors: حسابات بـ variables «من نفس النوع بس مختلفة في الحجم (مثال: جمع long integers على short integers)».",
+     "ow": [
+      "الـ comparison errors عن عوامل المقارنة والـ Boolean operands، مش الحساب <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "الـ data reference errors عن variables مش متعرّفة أو متهيّأة وindex برا الحدود <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ control flow errors عن الـ loops والـ control structures <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ statement coverage محتاج <bdi dir=\"ltr\">A=A/X</bdi> و<bdi dir=\"ltr\">A=A+1</bdi> الاتنين يتنفذوا <bdi dir=\"ltr\">(L3)</bdi>. <bdi dir=\"ltr\">X=2,Y=0,A=4</bdi>: X>1 وY=0 true، فـ <bdi dir=\"ltr\">A = 4/2 = 2</bdi>؛ وبعدين X=2 true، فـ <bdi dir=\"ltr\">A = 3</bdi>. الاتنين اتنفذوا. وفاينل 2025/26 جاب نفس السؤال بنفس الإجابة.",
+     "ow": [
+      "X=0 بيخلي X>1 false، فـ <bdi dir=\"ltr\">A=A/X</bdi> مبيتنفذش.",
+      null,
+      "كل واحد من التانيين بيفوّت statement.",
+      "<bdi dir=\"ltr\">A = 1/3 ≈ 0.33</bdi>؛ وبعدين X=2 false وA>1 false، فـ <bdi dir=\"ltr\">A=A+1</bdi> مبيتنفذش."
+     ]
+    },
+    {
+     "why": "المحاضرة 2: «الـ static testing = اختبار حاجة مش شغالة (بتفحصها وتراجعها)».",
+     "ow": [
+      "بالعكس: الـ dynamic testing بيشغّل البرنامج ويستخدمه <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "الـ integration testing بيشغّل الـ modules مع بعض، يعني dynamic <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ system testing بيشغّل النظام كله، يعني dynamic <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 6: الـ QA مركّز على الـ process ووقائي وبيغطي المؤسسة كلها: وضع standards ومنهجيات، ومتابعة وتقييم عملية التطوير، ومنع تكرار الأخطاء. والـ QC مركّز على المنتج وبيكتشف العيوب. وفاينل 2025/26 جاب نفس السؤال وإجابته Quality Assurance.",
+     "ow": [
+      "الـ code coverage تقنية white-box <bdi dir=\"ltr\">(L3)</bdi>، مش نشاط على مستوى المؤسسة.",
+      "الـ QC بيفحص المنتج النهائي ويشيل العيوب (reactive)؛ مش نشاط الضمان على مستوى المؤسسة <bdi dir=\"ltr\">(L6)</bdi>.",
+      null,
+      "الـ data coverage تقنية white-box <bdi dir=\"ltr\">(L3)</bdi>، مش نشاط على مستوى المؤسسة."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: شجرة الـ Static White Box Testing بتتقسم لـ Formal Review وCoding Standards and Guidelines وCode Review Checklist («فحص الـ Design والكود»).",
+     "ow": [
+      "الـ dynamic white-box بيشغّل الكود: testing the pieces وdata coverage وcode coverage <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ dynamic black-box بيشغّل البرنامج من غير ما يشوف الكود، زي equivalence partitioning والـ boundary values <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ static black-box بيراجع الـ specification <bdi dir=\"ltr\">(L2)</bdi>؛ إنما مراجعة الكود والـ standards بتاعته static white-box.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 4: الـ cyclomatic complexity هو «عدد الـ independent (basis) paths»، فبيدّيك عدد الـ test cases اللي محتاجها عشان تشغّل كل basis path. والـ foo() عندها <bdi dir=\"ltr\">V(G) = 3</bdi> و3 basis paths: <bdi dir=\"ltr\">1-2-3-4-6, 1-3-4-6, 1-3-5-6</bdi>.",
+     "ow": [
+      "الـ states بتيجي من state machine diagram، وده للـ function pair testing <bdi dir=\"ltr\">(L4)</bdi>.",
+      "الـ V(G) بيعدّ القرارات مش السطور: كود من غير IF يبقى <bdi dir=\"ltr\">V(G) = 1</bdi> مهما كان طويل.",
+      "الـ statements مبتغيرش الـ V(G) إلا لو فيها قرار؛ والـ statement coverage فكرة تانية <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 3: التلات أسباب للـ standards والـ guidelines هما الـ reliability والـ readability/maintainability والـ portability. والـ reliability بس هي اللي في الاختيارات.",
+     "ow": [
+      "مش من التلات أسباب <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "مش من التلات أسباب؛ الـ usability جودة تخص المستخدم <bdi dir=\"ltr\">(L3)</bdi>.",
+      "شبه الـ portability، بس كلمة السلايد portability، والـ compatibility مش موجودة <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 8: الـ Six Sigma «نظام إدارة إحصائي مركّز على رضا العميل وتقليل الهدر وتحسين الجودة»، وبيقلل العيوب لـ 3.4 في المليون. هدفه يرفع رضا العميل، فالنقص فيه مستحيل يبقى ميزة.",
+     "ow": [
+      "ميزة حقيقية: تحسين الجودة ومنتج من غير عيوب <bdi dir=\"ltr\">(L8)</bdi>.",
+      null,
+      "ميزة حقيقية: الهدف الأساسي، 3.4 عيب في المليون أو أقل <bdi dir=\"ltr\">(L8)</bdi>.",
+      "ميزة حقيقية: مرحلة Improve في الـ DMAIC بتغيّر العمليات عشان تشيل العيوب والتكاليف والهدر <bdi dir=\"ltr\">(L8)</bdi>."
+     ]
+    }
+   ]
+  }
+ ]
+});
+AR.qa.lectures[1].quiz.push(...[
+ [
+  "تحسين أو إعادة تصميم software شغال ده perfective maintenance.",
+  "تصليح أخطاء حصلت فعلًا ده corrective maintenance، عكس إنك تتصرف قبل ما الخطأ يظهر.",
+  "تظبيط الـ software أو البيانات على بيئة جديدة ده adaptive maintenance (migration).",
+  "صح. الـ preventive maintenance بيعدّل الـ software عشان يكتشف ويصلّح الـ latent faults قبل ما تبقى أخطاء فعلية <bdi dir=\"ltr\">(ISO/IEC 14764)</bdi>. المحاضرات بتوصف الـ Maintenance بس كآخر phase في الـ Waterfall: «بيصلّح المشاكل ويحدّث الـ software لما تظهر احتياجات جديدة» <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ perfective بيضيف أو يحسّن features أو أداء؛ تغيّر البيئة مش سببه.",
+  "الـ corrective بيصلّح أخطاء ظهرت؛ هنا مفيش حاجة بايظة.",
+  "الـ preventive بيصلّح latent faults قبل ما تبقى أخطاء؛ مش بيتعمل بسبب بيئة جديدة.",
+  "صح. الـ adaptive maintenance بيغيّر الـ software عشان يفضل شغال في بيئة اتغيرت: operating system جديد أو hardware أو database أو قوانين. إنك تخلي التطبيق متوافق مع نسخة OS جديدة هو المثال المعروف <bdi dir=\"ltr\">(ISO/IEC 14764)</bdi>."
+ ],
+ [
+  "بالعكس: الـ adaptive maintenance بيخلي الـ software شغال لما البيئة تتغير.",
+  "ده الـ Coding phase، قبل الـ Testing والـ Maintenance <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ Maintenance آخر phase في الـ Waterfall بعد التسليم: «بيصلّح المشاكل ويحدّث الـ software لما تظهر احتياجات جديدة» <bdi dir=\"ltr\">(L1)</bdi>. وتعريف IEEE: تعديل المنتج بعد التسليم عشان تصلّح الأخطاء، أو تحسّن الأداء، أو تظبطه على بيئة اتغيرت.",
+  "دي مراحل الـ Analysis والـ Design الأولى، قبل الـ maintenance بكتير <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "صح. الاختيارات أنواع maintenance، والـ maintenance هي أغلى مرحلة، فالسؤال بيسأل أنهي نوع بياخد أكبر جزء منها. Lientz وSwanson وTompkins (1978): 60.3% perfective و18.2% adaptive و17.4% corrective و4.1% other؛ والنسخة المقرّبة في الكتب: 50% perfective و25% adaptive و21% corrective و4% preventive.",
+  "حوالي 18-25% من مجهود الـ maintenance، أقل بكتير من الـ perfective (Lientz وSwanson).",
+  "أصغر نسبة، حوالي 4% (Lientz وSwanson). ودي إجابة الكويز، وهي عكس المصادر المعروفة.",
+  "حوالي 17-21%: أغلب المجهود بيروح في تغيير software شغال، مش تصليح أخطاء (Lientz وSwanson)."
+ ],
+ [
+  "تصليح الأخطاء ده corrective؛ واكتشاف الـ latent faults بدري ده preventive.",
+  "الـ refactoring عشان الكود يتقري أسهل ده preventive في ISO/IEC 14764 (بيحسّن الـ maintainability)؛ صياغة IEEE القديمة بتحطه تحت perfective، بس الـ perfective أساسًا عن الأداء والـ features.",
+  "التظبيط على hardware جديد ده adaptive maintenance.",
+  "صح. الـ perfective maintenance بيحسّن software شغال أصلًا: أداء وسرعة أحسن، أو features جديدة المستخدمين طالبينها. وبياخد أكبر نسبة من مجهود الـ maintenance (Lientz وSwanson)."
+ ],
+ [
+  "صح. الـ corrective maintenance بيصلّح الأخطاء (bugs وerrors) اللي اتلقت بعد تسليم الـ software، وغالبًا المستخدمين هما اللي بيبلّغوا عنها <bdi dir=\"ltr\">(ISO/IEC 14764)</bdi>.",
+  "الـ perfective بيحسّن الأداء أو يضيف features؛ مفيش حاجة بايظة.",
+  "الـ preventive بيصلّح latent faults قبل ما تبقى أخطاء؛ هنا الـ bugs ظهرت خلاص.",
+  "الـ adaptive بيظبط الـ software على بيئة اتغيرت (OS أو hardware جديد)."
+ ]
+]);
+AR.qa.lectures[2].quiz.push(...[
+ [
+  "صح. مع «> 9000» الـ valid class بيبدأ من 9001، فالـ 9000 هي الـ invalid boundary: القيمة اللي برا الـ range على طول ولازم تترفض. ونفس مثال المحاضرة 2: لـ «≥ 10,000» الـ 09999 هي الـ invalid left boundary والـ 10000 هي الـ valid left boundary <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ 9999 أكبر من 9000، يعني valid input من الـ class المقبول <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ 10000 أكبر من 9000، يعني valid input <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ 9999 والـ 10000 valid، فمش كل الاختيارات invalid."
+ ],
+ [
+  "بالعكس: الـ static testing بيفحص ويراجع software مش شغال <bdi dir=\"ltr\">(L2)</bdi>.",
+  "مش مصطلح في المحاضرة؛ المحاضرة 2 بتقسم الاختبار لـ static (مش شغال) وdynamic (شغال).",
+  "صح. المحاضرة 2: «الـ static testing = اختبار حاجة مش شغالة (بتفحصها وتراجعها). الـ dynamic testing = تشغيل البرنامج واستخدامه».",
+  "مش مصطلح في المحاضرة؛ الـ Analysis مجرد phase في Waterfall/Spiral في المحاضرة 1، مش نوع اختبار."
+ ],
+ [
+  "الـ Design نشاط تطوير بيحدد الهيكل؛ مش بيتأكد من المنتج.",
+  "الـ Requirements هي اللي بنقارن بيها، مش عملية التأكد نفسها.",
+  "صح. المحاضرة 2: الـ validation = «إحنا بنبني المنتج الصح؟»، يعني بتتأكد قصاد احتياج العميل (زي الـ user acceptance testing)؛ والـ verification = «إحنا بنبني المنتج صح؟»، يعني بتتأكد قصاد الـ specification. وفاينل 2025/26 جاب نفس السؤال وإجابته Validation.",
+  "الـ verification بيتأكد قصاد الـ specification؛ إنما قصاد متطلبات العميل يبقى validation <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ validation بيتأكد قصاد متطلبات العميل؛ قصاد الـ specification يبقى verification <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ Design نشاط تطوير؛ مش بيتأكد من حاجة قصاد الـ spec.",
+  "الـ Requirements هي اللي بنقارن بيها، مش عملية التأكد.",
+  "صح. المحاضرة 2: الـ verification = «إحنا بنبني المنتج صح؟»، يعني بتتأكد قصاد الـ specification (code reviews وdesign checks). وفي الـ V-model الجنب الشمال النازل (من الـ requirements spec للكود) هو الـ verification <bdi dir=\"ltr\">(L1, L2)</bdi>."
+ ],
+ [
+  "صح. جدول مصطلحات الاختبار في المحاضرة 2: «Test Plan: مستند فيه أهداف الاختبار ونطاقه» (مثال: بيوصف نطاق اختبار الـ login). و«Test plane» هي طريقة كتابة الكويز لـ test plan.",
+  "الـ random test طريقة لاختيار المدخلات، مش مستند.",
+  "الـ dynamic testing نوع اختبار (تشغيل البرنامج)، مش مستند <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ test case اختبار واحد: input وconditions وexpected output؛ والـ test plan هو اللي بيحدد الأهداف والنطاق لكلهم."
+ ],
+ [
+  "boundaries الشهور اللي 30 و31 يوم، بس ناقص 28 و29 بتوع فبراير.",
+  "صح. الـ boundary value analysis بيختبر أطراف كل range صحيح <bdi dir=\"ltr\">(L2)</bdi>. وآخر يوم صحيح بيعتمد على الشهر والسنة: 28 (فبراير)، 29 (فبراير في سنة كبيسة)، 30 (أبريل ويونيو وسبتمبر ونوفمبر)، 31 (باقي الشهور). وكلهم boundaries لازم تتختبر.",
+  "boundary فبراير في السنة العادية بس.",
+  "boundary فبراير في السنة الكبيسة بس."
+ ],
+ [
+  "بالعكس: الـ dynamic testing بيشغّل البرنامج ويستخدمه <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. المحاضرة 2: «الـ static testing = اختبار حاجة مش شغالة (بتفحصها وتراجعها)».",
+  "الـ integration testing بيشغّل الـ modules مع بعض، يعني dynamic <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ system testing بيشغّل النظام كله، يعني dynamic <bdi dir=\"ltr\">(L1)</bdi>."
+ ]
+]);
+AR.qa.lectures[3].quiz.push(...[
+ [
+  "سبب حقيقي، بس واحد من التلاتة؛ الـ reliability والـ maintainability كمان موجودين <bdi dir=\"ltr\">(L3)</bdi>.",
+  "سبب حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "سبب حقيقي (readability/maintainability)، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3 بتدّي 3 أسباب لاتباع الـ coding standards والـ guidelines: (1) الـ reliability، كود أكثر اعتمادية وأمان؛ (2) الـ readability/maintainability؛ (3) الـ portability، يشتغل على hardware وcompilers مختلفة <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "صح. المحاضرة 3: «الـ code coverage ليه 3 أنواع: Statement coverage وPath coverage (branch) وCondition coverage». الـ condition موجود في السلايد، والـ branch هو اسم السلايد للـ path coverage، والـ line coverage هو الاسم التاني المعروف للـ statement coverage (كل سطر يتنفذ مرة على الأقل) <bdi dir=\"ltr\">(L3)</bdi>.",
+  "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "نوع حقيقي (statement coverage)، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "نوع حقيقي (path coverage)، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "الـ code coverage (statement وpath وcondition) ده dynamic white-box بيشغّل الكود؛ والـ inspection مراجعة static <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ data coverage (data flow وsub-boundaries وerror forcing) ده dynamic white-box <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3: الـ static white-box testing بيتقسم لـ Formal Review وCoding Standards and Guidelines وCode Review Checklist، والـ Formal Review بيتفرع لـ Peer Review وWalkthrough وInspection <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ peer review أخو الـ inspection، واحد من التلات formal reviews، مش المرحلة اللي فوقه <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "الـ guidelines بتطابق التعريف بالظبط <bdi dir=\"ltr\">(L3)</bdi>.",
+  "بالعكس: الـ standards هي القواعد الإجبارية <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ standards إجبارية، فالاتنين مع بعض مش «مش إجبارية» <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3: «الـ Standards قواعد لازم تتبعها (إجبارية). الـ Guidelines تعليمات بتساعدك تتبع الـ standards (مش إجبارية أوي)»."
+ ],
+ [
+  "الـ formal review بس هو اللي بيطابق التعريف <bdi dir=\"ltr\">(L3)</bdi>.",
+  "في المحاضرة 3 الـ code review هو الـ Code Review Checklist، قايمة بأنواع الأخطاء، مش الاجتماع؛ والاجتماع بيشمل الـ design كمان.",
+  "مش مصطلح في المحاضرة؛ الـ data coverage اختبار dynamic، مش اجتماع.",
+  "صح. المحاضرة 3 بتعرّف الـ formal review إنه «اجتماعات رسمية بين المبرمجين والـ testers لفحص الـ design والكود» <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "نوع حقيقي، بس واحد من التلاتة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3: أنواع الـ data coverage هي «Data flow وSub-boundaries وError forcing». والتلات اختيارات في القايمة <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "شغال (X=2 بيخلي الـ OR true)، بس التانيين كمان شغالين.",
+  "شغال (y=2 > 1 بيخلي الـ OR true)، بس التانيين كمان شغالين.",
+  "شغال (الجزئين true)، بس التانيين كمان شغالين.",
+  "صح. الـ statement coverage معناه كل statement يتنفذ مرة على الأقل <bdi dir=\"ltr\">(L3)</bdi>؛ والـ statement الوحيد هو A=A+1، فلازم شرط الـ OR يبقى true. <bdi dir=\"ltr\">X=2,y=0</bdi> (X=2 true) و<bdi dir=\"ltr\">X=1,y=2</bdi> (y>1 true) و<bdi dir=\"ltr\">X=2,y=2</bdi> (الاتنين true) كل واحد فيهم بيشغّله. وفاينل 2025/26 كان فيه نفس السؤال وإجابته «All answers»."
+ ],
+ [
+  "صح. المحاضرة 3: «استراتيجيات الـ integration testing: Bottom-up وTop-down وUmbrella approach». وفي الرسمة الـ Integration testing بيتقسم لـ Bottom Up وTop Down وUmbrella Approach Testing <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ black box طريقة اختبار (من الـ spec من غير الكود؛ <bdi dir=\"ltr\">L2</bdi>)، مش استراتيجية integration.",
+  "مش في قايمة المحاضرة. (الـ Big Bang، إنك تجمع كل الـ modules مرة واحدة، استراتيجية integration في الكتب، بس مش في السلايدز.)",
+  "الـ static white-box بيراجع الـ design والكود من غير تشغيل؛ والـ integration testing بيشغّل الأجزاء مع بعض <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "أخو الـ umbrella approach، مش اللي فوقه <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ static testing مش بيشغّل الكود؛ والـ integration testing بيشغّل الـ modules مع بعض <bdi dir=\"ltr\">(L2, L3)</bdi>.",
+  "صح. رسمة المحاضرة 3: الـ Integration testing بيتقسم لـ Bottom Up Testing وTop Down Testing وUmbrella Approach Testing <bdi dir=\"ltr\">(L3)</bdi>.",
+  "أخو الـ umbrella approach، مش اللي فوقه <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "الـ comparison errors بتحصل عند الـ boundary conditions (<bdi dir=\"ltr\">&lt; vs &lt;=</bdi>، أو Boolean operands غلط) <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ control flow errors هي loops وcontrol structures شغالة غلط <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ computation errors حسابات غلط، زي خلط أنواع بيانات <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3، الـ Code Review Checklist: الـ data reference errors هي «أخطاء سببها استخدام variables أو constants أو arrays أو strings أو records مش متعرّفة أو متهيّأة صح» (زي variables من غير قيمة أولية، أو index برا الحدود، أو off-by-one)."
+ ],
+ [
+  "الـ comparison errors عن عوامل المقارنة والـ Boolean operands، مش الحساب <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3، الـ Code Review Checklist، فحص (b) في الـ computation errors: حسابات بـ variables «من نفس النوع بس مختلفة في الحجم (مثال: جمع long integers على short integers)».",
+  "الـ data reference errors عن variables مش متعرّفة أو متهيّأة وindex برا الحدود <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ control flow errors عن الـ loops والـ control structures <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "X=0 بيخلي X>1 false، فـ <bdi dir=\"ltr\">A=A/X</bdi> مبيتنفذش.",
+  "صح. الـ statement coverage محتاج <bdi dir=\"ltr\">A=A/X</bdi> و<bdi dir=\"ltr\">A=A+1</bdi> الاتنين يتنفذوا <bdi dir=\"ltr\">(L3)</bdi>. <bdi dir=\"ltr\">X=2,Y=0,A=4</bdi>: X>1 وY=0 true، فـ <bdi dir=\"ltr\">A = 4/2 = 2</bdi>؛ وبعدين X=2 true، فـ <bdi dir=\"ltr\">A = 3</bdi>. الاتنين اتنفذوا. وفاينل 2025/26 جاب نفس السؤال بنفس الإجابة.",
+  "كل واحد من التانيين بيفوّت statement.",
+  "<bdi dir=\"ltr\">A = 1/3 ≈ 0.33</bdi>؛ وبعدين X=2 false وA>1 false، فـ <bdi dir=\"ltr\">A=A+1</bdi> مبيتنفذش."
+ ],
+ [
+  "الـ dynamic white-box بيشغّل الكود: testing the pieces وdata coverage وcode coverage <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ dynamic black-box بيشغّل البرنامج من غير ما يشوف الكود، زي equivalence partitioning والـ boundary values <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ static black-box بيراجع الـ specification <bdi dir=\"ltr\">(L2)</bdi>؛ إنما مراجعة الكود والـ standards بتاعته static white-box.",
+  "صح. المحاضرة 3: شجرة الـ Static White Box Testing بتتقسم لـ Formal Review وCoding Standards and Guidelines وCode Review Checklist («فحص الـ Design والكود»)."
+ ],
+ [
+  "مش من التلات أسباب <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 3: التلات أسباب للـ standards والـ guidelines هما الـ reliability والـ readability/maintainability والـ portability. والـ reliability بس هي اللي في الاختيارات.",
+  "مش من التلات أسباب؛ الـ usability جودة تخص المستخدم <bdi dir=\"ltr\">(L3)</bdi>.",
+  "شبه الـ portability، بس كلمة السلايد portability، والـ compatibility مش موجودة <bdi dir=\"ltr\">(L3)</bdi>."
+ ]
+]);
+AR.qa.lectures[4].quiz.push(...[
+ [
+  "صح. الـ method-message (MM) testing محتاج كل method call يتختبر مرة على الأقل. للـ stack المحاضرة 4 بتقول «تسلسل بسيط create وpush وpop ممكن يحقق الـ MM testing». والـ state diagram بتاع الـ queue (Empty وNormal وFull) بيستخدم new وinsert وdelete، فالتسلسل بتاعه create وinsert وdelete <bdi dir=\"ltr\">(L4)</bdi>.",
+  "خلط بين الاتنين: الـ pop بتاع الـ stack؛ والـ queue بيشيل بـ delete.",
+  "ده تسلسل الـ stack من السلايد بالظبط؛ الـ push والـ pop مش methods الـ queue.",
+  "خلط بين الاتنين: الـ push بتاع الـ stack؛ والـ queue بيضيف بـ insert."
+ ],
+ [
+  "الثابت غلط: foo() هتدّي <bdi dir=\"ltr\">7 − 6 + 3 = 4</bdi> مش 3 بتاعة المحاضرة <bdi dir=\"ltr\">(L4)</bdi>.",
+  "معكوسة: foo() هتدّي <bdi dir=\"ltr\">6 − 7 + 2 = 1</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. المحاضرة 4: <bdi dir=\"ltr\">V(G) = E − N + 2P</bdi>، و<bdi dir=\"ltr\">P = 1</bdi> لبرنامج واحد، فـ <bdi dir=\"ltr\">V(G) = E − N + 2</bdi>. لـ foo(): <bdi dir=\"ltr\">7 − 6 + 2 = 3</bdi>، زي <bdi dir=\"ltr\">predicate nodes + 1 = 2 + 1</bdi> <bdi dir=\"ltr\">(L4)</bdi>.",
+  "زي أول اختيار (الكويز كاتبه مرتين): الثابت غلط <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "السلايد بتقول إن الـ FP بيعتمد على state machine diagram: الرسمة هي مصدر الـ pairs، مش الحاجة اللي بتتختبر <bdi dir=\"ltr\">(L4)</bdi>.",
+  "ملوش علاقة بالـ function pair في المحاضرة؛ الـ data flow نوع من الـ data coverage <bdi dir=\"ltr\">(L3)</bdi>.",
+  "مستحيل، لأن الـ data flow diagram غلط.",
+  "صح. المحاضرة 4: في كود الـ OO «لازم نختبر التفاعل بين الـ methods»، والـ MM والـ function pair هما الطريقتين لده. الـ function pair بيختبر «كل التسلسلات الممكنة لتنفيذ methods بطول اتنين»، وعادة بيعتمد على state machine diagram <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "المحاضرة 4 مش بتقارن الـ data coverage (فكرة white-box من المحاضرة 3) بالـ MM.",
+  "الـ states تبع الـ function pair testing؛ السلايد مش بتقارن الـ state coverage بالـ MM <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. المحاضرة 4: الـ MM testing «أبسط criterion ومش بيغطي (does not subsume) الـ statement coverage»: إنك تنادي كل method مرة مش معناه إن كل الـ statements جواها اتنفذت <bdi dir=\"ltr\">(L4)</bdi>.",
+  "السلايد بتذكر الـ statement coverage بس <bdi dir=\"ltr\">(L4)</bdi>."
+ ],
+ [
+  "الـ states بتيجي من state machine diagram، وده للـ function pair testing <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ V(G) بيعدّ القرارات مش السطور: كود من غير IF يبقى <bdi dir=\"ltr\">V(G) = 1</bdi> مهما كان طويل.",
+  "الـ statements مبتغيرش الـ V(G) إلا لو فيها قرار؛ والـ statement coverage فكرة تانية <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 4: الـ cyclomatic complexity هو «عدد الـ independent (basis) paths»، فبيدّيك عدد الـ test cases اللي محتاجها عشان تشغّل كل basis path. والـ foo() عندها <bdi dir=\"ltr\">V(G) = 3</bdi> و3 basis paths: <bdi dir=\"ltr\">1-2-3-4-6, 1-3-4-6, 1-3-5-6</bdi>."
+ ]
+]);
+AR.qa.lectures[6].quiz.push(...[
+ [
+  "الاختيار c بيطابق السلايد.",
+  "ناقصة: هدف الاختبار الأساسي إنه يلاقي الـ bugs ويبلّغ عنها، بس الـ tester لازم كمان يتابعها ويخليها تتصلّح <bdi dir=\"ltr\">(L6)</bdi>.",
+  "صح. المحاضرة 6، دور الـ tester: يتحمّل مسؤولية الـ bugs اللي لقاها، ويتابعها في الـ life cycle بتاعها، ويقنع فريق التطوير يصلّحها. وفاينل 2025/26 جاب نفس السؤال بنفس الإجابة.",
+  "المطوّرين هما اللي بيصلّحوا؛ الـ tester بيقنع الفريق يصلّح <bdi dir=\"ltr\">(L6)</bdi>."
+ ],
+ [
+  "الـ code coverage تقنية white-box <bdi dir=\"ltr\">(L3)</bdi>، مش نشاط على مستوى المؤسسة.",
+  "الـ QC بيفحص المنتج النهائي ويشيل العيوب (reactive)؛ مش نشاط الضمان على مستوى المؤسسة <bdi dir=\"ltr\">(L6)</bdi>.",
+  "صح. المحاضرة 6: الـ QA مركّز على الـ process ووقائي وبيغطي المؤسسة كلها: وضع standards ومنهجيات، ومتابعة وتقييم عملية التطوير، ومنع تكرار الأخطاء. والـ QC مركّز على المنتج وبيكتشف العيوب. وفاينل 2025/26 جاب نفس السؤال وإجابته Quality Assurance.",
+  "الـ data coverage تقنية white-box <bdi dir=\"ltr\">(L3)</bdi>، مش نشاط على مستوى المؤسسة."
+ ]
+]);
+AR.qa.lectures[8].quiz.push(...[
+ [
+  "الـ Measure بيقيس الأداء قصاد متطلبات العميل بأدوات إحصائية، قبل ما يبقى فيه حل <bdi dir=\"ltr\">(L8)</bdi>.",
+  "صح. المحاضرة 8: «C – Control: ركّز على مراقبة كل العمليات دي ومتوقفش»: قيس الأداء باستمرار وصلّح أي انحراف. والملخص بيكررها: «وأخيرًا Control: راقب عمليات التحسين باستمرار» <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ Improve بيلاقي الحلول ويجربها ويطبقها؛ والـ Control هو اللي بيحافظ عليها <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ Define بيحدد المشكلة (مستواها ومكانها وأثرها المالي) ويكوّن الفريق <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ Analyze بيدور على الـ root causes من البيانات اللي اتجمعت <bdi dir=\"ltr\">(L8)</bdi>."
+ ],
+ [
+  "صح. الـ Lean Six Sigma بيحسّن العمليات اللي بتتكرر: بيقلل الهدر (Lean) والعيوب والتباين (Six Sigma) بالـ DMAIC. والمحاضرة 8 بتقول إن الـ Six Sigma بيستهدف الأخطاء «في كل الأنشطة». اختيار موظف السنة قرار تقديري لمرة واحدة، مش عملية متكررة فيها عيوب تتقاس، فالـ DMAIC ملوش حاجة يشتغل عليها.",
+  "العمليات الإدارية (موافقات، فواتير، HR) بتتكرر وتتقاس، فالـ Lean Six Sigma ينفع فيها.",
+  "الرعاية الصحية من أكبر المستخدمين، زي تقليل وقت الانتظار وأخطاء الأدوية.",
+  "الـ supply chain (مخزون، لوجستيات، توصيل) استخدام كلاسيكي للـ Lean."
+ ],
+ [
+  "التباين بيعمل rework وتأخير، فبيطوّل الـ cycle time مش بيقصّره (معلومة Lean عامة).",
+  "صح. المحاضرة 8: الـ Six Sigma بيركّز على رضا العميل و«بيقلل الـ process variation لحد ما النتيجة تبقى 3.4 عيب في المليون». تباين أكتر يعني نتايج أكتر برا حدود العميل، يعني عيوب أكتر وفشل أكتر في تلبية المتطلبات؛ وجدول الـ normal curve في السلايد بيوضح إن كل ما الانتشار يزيد، الـ ppm برا الـ spec بيزيد <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ 8 wastes المعروفة: transport وinventory وmotion وwaiting وoverproduction وoverprocessing وdefects وunused skills؛ والتباين مش منهم (معلومة عامة؛ المحاضرة 8 بتذكر أداة «Seven Wastes» بس).",
+  "المحاضرة 8 بتقول إن الـ Six Sigma بيستهدف الأخطاء «في كل الأنشطة»: design وindustrial وcommercial."
+ ],
+ [
+  "الـ Control آخر مرحلة وبيراقب الحل عشان يفضل ثابت <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ Define بيوصف المشكلة (مستواها ومكانها وأثرها المالي) ويكوّن الفريق؛ والـ Measure هو اللي بيحط لها أرقام <bdi dir=\"ltr\">(L8)</bdi>.",
+  "صح. المحاضرة 8: الـ Measure هو «تخطيط وتنفيذ قياس الأداء قصاد متطلبات وتوقعات العملاء»، وقياس العيوب بأدوات إحصائية. إنك تقيس الأداء الحالي قبل ما تغيّر حاجة ده الـ baseline، واللي بتقارن بيه التحسينات بعدين <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ Improve بيلاقي الحلول ويجربها، وبتتقيّم قصاد الـ baseline بتاع الـ Measure <bdi dir=\"ltr\">(L8)</bdi>.",
+  "الـ Analyze بيدور على الـ root causes من بيانات الـ Measure <bdi dir=\"ltr\">(L8)</bdi>."
+ ],
+ [
+  "صح. المحاضرة 8: الـ Six Sigma بيقلل التباين لحد 3.4 عيب في المليون. <bdi dir=\"ltr\">3.4 / 1,000,000 = 0.00034%</bdi> معيب، فـ <bdi dir=\"ltr\">100% − 0.00034% = 99.99966%</bdi> من غير عيوب. (الـ <bdi dir=\"ltr\">±6σ = 99.9999998%</bdi> في السلايد لـ process متمركزة تمامًا؛ والـ 3.4 في المليون بتسمح بانحراف <bdi dir=\"ltr\">1.5σ</bdi>.)",
+  "حوالي 9,000 عيب في المليون، تقريبًا 3.9 sigma.",
+  "حوالي 2,000 عيب في المليون، تقريبًا 4.4 sigma.",
+  "حوالي 9,500 عيب في المليون، تقريبًا 3.8 sigma."
+ ],
+ [
+  "ميزة حقيقية: تحسين الجودة ومنتج من غير عيوب <bdi dir=\"ltr\">(L8)</bdi>.",
+  "صح. المحاضرة 8: الـ Six Sigma «نظام إدارة إحصائي مركّز على رضا العميل وتقليل الهدر وتحسين الجودة»، وبيقلل العيوب لـ 3.4 في المليون. هدفه يرفع رضا العميل، فالنقص فيه مستحيل يبقى ميزة.",
+  "ميزة حقيقية: الهدف الأساسي، 3.4 عيب في المليون أو أقل <bdi dir=\"ltr\">(L8)</bdi>.",
+  "ميزة حقيقية: مرحلة Improve في الـ DMAIC بتغيّر العمليات عشان تشيل العيوب والتكاليف والهدر <bdi dir=\"ltr\">(L8)</bdi>."
+ ]
+]);
