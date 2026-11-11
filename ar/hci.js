@@ -4391,3 +4391,475 @@ AR.hci = {
   }
  ]
 };
+
+// Midterm 2026/2027 (papers/hci.js): the exam, and its lecture-quiz copies spliced in after each lecture's own items, before the summary items.
+AR.hci.exams.push({
+ "sections": [
+  {
+   "items": [
+    {
+     "why": "المحاضرة 6 بتدّي ست مبادئ للـ survey questions الكويسة: Clear وConcise وSpecific وExpressive وUnbiased وUsable. الصياغة الواضحة والمحايدة هي اتنين منهم: تحط labels للـ scales، ومفيش ranges متداخلة، ومفيش leading questions <bdi dir=\"ltr\">(L6)</bdi>.",
+     "ow": [
+      "المحاضرة بتقول سيب الأسئلة اللي ممكن تكون open-ended مفتوحة، مش إن كل الأسئلة تبقى مفتوحة. وكمان بتنصح بالـ ranges ودرجات الموافقة <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
+      null,
+      "إن كل الأسئلة تبقى إجبارية مش من الست مبادئ. لما تجبر الناس يجاوبوا بيسيبوا الـ survey أو يجاوبوا أي حاجة (ممارسة عامة، مش في السلايدز).",
+      "ده ضد Be Concise: اسأل بلغة بسيطة. الأسئلة اللي المستخدم مش فاهمها بتطلّع إجابات غلط <bdi dir=\"ltr\">(L6)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ Google Design Sprint (Knapp et al., 2016): <bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate. في Decide الفريق بيختار أحسن فكرة من اللي اترسموا في الخطوة اللي قبلها، ودي اللي بيعملها prototype بعد كده <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "الاختبار هو الخطوة الخامسة، Test <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "بناء الـ prototype هو الخطوة الرابعة، Prototype، وبتيجي بعد Decide <bdi dir=\"ltr\">(L2)</bdi>.",
+      "فهم المشكلة والمستخدمين بيبقى في أول خطوة، Unpack <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ HCI قايم على تصميم منتجات تفاعلية الناس تعرف تستخدمها: الـ usability <bdi dir=\"ltr\">(L1)</bdi>، والـ user interface والـ user experience <bdi dir=\"ltr\">(L5)</bdi>. الـ machine learning مجال تاني في علوم الحاسب؛ ممكن المنتج يستخدمه، بس مش من العوامل الأساسية في الـ HCI.",
+     "ow": [
+      null,
+      "الـ UI عامل أساسي: شكل الشاشة وإحساسها والتفاعل معاها <bdi dir=\"ltr\">(L5)</bdi>.",
+      "الـ UX عامل أساسي: التجربة الكاملة للمستخدم مع المنتج <bdi dir=\"ltr\">(L5)</bdi>.",
+      "الـ usability عامل أساسي: سهل تتعلمه، فعّال، وتجربته ممتعة <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ perception هو إزاي المعلومة بتتاخد من العالم وتتحول لتجربة <bdi dir=\"ltr\">(L3)</bdi>. إنك تشوف وش وتعرف إنه حد تعرفه بيبدأ من هنا. المحاضرة 4 بتستخدم نفس المثال للـ memory، بس الـ memory مش من الاختيارات.",
+     "ow": [
+      "الـ planning ده reflective cognition: تفكر تعمل إيه وإيه النتايج <bdi dir=\"ltr\">(L4)</bdi>. التعرف على وش حاجة سريعة وتلقائية.",
+      "الـ problem-solving كمان reflective cognition <bdi dir=\"ltr\">(L4)</bdi>. مفيش مشكلة بتحلها لما تعرف وش.",
+      null,
+      "الـ decision-making معناه تختار بين اختيارات <bdi dir=\"ltr\">(L4)</bdi>. التعرف على وش مفيهوش اختيار."
+     ]
+    },
+    {
+     "why": "الـ decision-making من مجموعة الـ reflective cognition مع الـ problem-solving والـ planning والـ reasoning: تفكر تعمل إيه، وإيه الاختيارات، وإيه النتايج، وبعدين تختار واحد <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "حفظ الكلمات ده memory وlearning، عمليات معرفية تانية <bdi dir=\"ltr\">(L3, L4)</bdi>.",
+      null,
+      "النسيان عيب في الـ memory، مش طريقة للقرار <bdi dir=\"ltr\">(L4)</bdi>.",
+      "تجاهل المشاكل عكس الـ problem-solving والـ decision-making."
+     ]
+    },
+    {
+     "why": "في الـ lifecycle بتاع الـ interaction design، تقييم الـ prototype مع مستخدمين حقيقيين بيوريك التصميم بيلبّي احتياجاتهم ولا لأ وفين محتاج يتغير. والعملية iterative: تصميم، prototype، تقييم، وإعادة تصميم. وخطوة Test في الـ Design Sprint بتعمل نفس الحاجة <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "معكوسة: الاختبار موجود عشان تلاقي تحسينات للـ iteration الجاية <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "معكوسة: لما تكتشف المشاكل بدري على prototype رخيص بتوفّر فلوس بعدين.",
+      "المستخدمين بيدّوا feedback؛ والمصممين لسه هما اللي بياخدوا قرارات التصميم."
+     ]
+    },
+    {
+     "why": "جدول \"What skills do you need?\" في المحاضرة 5 بيحط مهارات الـ UX: user research وproblem-solving وinformation architecture وuser flows وjourney maps وwireframing وusability testing <bdi dir=\"ltr\">(L5)</bdi>.",
+     "ow": [
+      null,
+      "الـ visual design مهارة UI في نفس الجدول <bdi dir=\"ltr\">(L5)</bdi>.",
+      "الـ color theory مهارة UI في نفس الجدول <bdi dir=\"ltr\">(L5)</bdi>.",
+      "الـ layout and composition مهارة UI في نفس الجدول <bdi dir=\"ltr\">(L5)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 1 بتعدّد الـ academic disciplines اللي بتساهم في الـ interaction design. الـ psychology والـ cognitive science هما اللي بيدرسوا الناس بتفكر إزاي: attention وperception وmemory وlearning وdecision-making <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "الـ informatics عن المعلومات وإزاي الأنظمة بتعالجها، مش تفكير الإنسان.",
+      "الـ engineering عن بناء الأنظمة التقنية.",
+      null,
+      "الـ industrial design من الـ design practices، عن شكل واستخدام المنتجات المادية <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "العمليات المعرفية في المحاضرة 3: attention وperception وmemory وlearning وreading/speaking/listening وproblem-solving/planning/reasoning/decision-making. والـ attention أولهم <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      null,
+      "التنفس عملية جسمانية، مش عقلية.",
+      "الدورة الدموية عملية جسمانية، مش عقلية.",
+      "الهضم عملية جسمانية، مش عقلية."
+     ]
+    },
+    {
+     "why": "الـ pie chart في المحاضرة 1، \"The three parts of HCI\"، بيحط computer graphics وoperating system وprogramming language تحت Computer <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "الـ Interaction فيه interaction design بس في الـ pie chart <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ Human فيه communication theory وindustrial design وsocial science وcognitive psychology وhuman factors <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ cognitive psychology مش component؛ ده واحد من العناصر تحت Human <bdi dir=\"ltr\">(L1)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "الـ pie chart في المحاضرة 1، \"The three parts of HCI\"، بيحط communication theory تحت Human، مع industrial design وsocial science وcognitive psychology وhuman factors <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "الـ Computer فيه computer graphics وoperating system وprogramming language <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "ده الاختيار اللي بيخدع، بس في الـ pie chart الـ Interaction فيه interaction design بس <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ Programming مش component؛ الـ programming language واحد من العناصر تحت Computer <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ pie chart في المحاضرة 1 بيحط operating system تحت Computer، مع computer graphics وprogramming language <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "الـ communication theory تحت Human في الـ pie chart <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "الـ human factors تحت Human <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ social science تحت Human <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 2 بتحط الـ interviews والـ participant observations تحت الـ primary research، يعني بحث بتعمله بنفسك مع مستخدمين حقيقيين. المستخدمين نادرًا ما يعرفوا إيه الممكن، فلما تتفرج عليهم وهما شغالين بتشوف مشاكل عمرهم ما هيقولوها، والـ interview بيخليك تسأل «ليه» <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "التخمين هو اللي الـ user research جاي يشيله: تخمين المصممين كتير بيطلع غلط <bdi dir=\"ltr\">(L2)</bdi>.",
+      "اختيار ألوان عشوائي ده visual design من غير تخطيط ومبيقولش حاجة عن احتياجات المستخدم.",
+      null,
+      "متأخر أوي: الاحتياجات لازم تتعرف قبل التصميم، في الـ foundational research <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "في المحاضرة 1: الـ HCI هو التفاعل بين المستخدم والكمبيوتر، أو العلاقة بين المستخدمين والأنظمة. بيدرس الإنسان، والتقنيات اللي بتحسّن تفاعله مع الكمبيوتر، وطرق المستخدمين وتفضيلاتهم والصعوبات اللي بتقابلهم <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "ده computer engineering؛ الـ HCI عن الناس وهي بتستخدم الأنظمة، مش السرعة <bdi dir=\"ltr\">(L1)</bdi>.",
+      "ده networking أو distributed systems، ومفيش إنسان في الصورة.",
+      null,
+      "مش هدف للـ HCI؛ بالعكس، هو عايز أنظمة أبسط وأسهل."
+     ]
+    },
+    {
+     "why": "في حالة Office في المحاضرة 1، الـ menus والـ toolbars كانت مليانة لدرجة إن الناس حسّت إنها مش متحكمة؛ والـ adaptive menus عرضت قايمة قصيرة بالأوامر اللي غالبًا هتستخدمها. الاختيارات القليلة أسهل تتقري وتتفكر، وده مربوط كمان بـ Miller's 7 ± 2 في المحاضرة 4 <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+     "ow": [
+      "التقليل معناه تعرض اختيارات أقل، مش صفر. الـ adaptive menus خلّت كل الأوامر موجودة وعرضت المتوقع الأول <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "بالعكس: الـ menus المزحومة هي اللي بتلخبط، والتقليل بيقلل اللخبطة <bdi dir=\"ltr\">(L1)</bdi>.",
+      "عدد عناصر الـ menu مبيغيرش حجم الشاشة؛ السبب هو محدودية ذاكرة وانتباه المستخدم."
+     ]
+    },
+    {
+     "why": "الرسمة في المحاضرة 1 للمجالات اللي حوالين الـ interaction design بتحط Human Factors (HF) في الـ Interdisciplinary Fields (أسهم في الاتجاهين مع الـ ID)، مع cognitive engineering وHCI وcognitive ergonomics وCSCW وinformation systems <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      null,
+      "الـ Design Practices هي graphic design وproduct design وartist-design وindustrial design وfilm industry <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ film industry عنصر واحد تحت Design Practices، مش category <bdi dir=\"ltr\">(L1)</bdi>.",
+      "ده الفخ: الـ HF بياخد من الـ ergonomics والـ psychology والـ engineering، بس الرسمة بتحطه مع الـ interdisciplinary fields مش الـ academic disciplines <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    },
+    {
+     "why": "في الـ Google Design Sprint (<bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate)، الـ Test بييجي بعد الـ Prototype على طول: الـ prototype بيتعرض على مستخدمين حقيقيين عشان تاخد الـ feedback بتاعهم للدورة الجاية. والـ process بتاع Google بيخلص بنفس الطريقة: «Evaluate: test with real users» <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "توليد الأفكار هو خطوة Sketch <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ business plan مش خطوة في أي lifecycle model في المحاضرة.",
+      "اختيار الفريق بيحصل قبل الـ sprint، مش في مرحلة منه.",
+      null
+     ]
+    },
+    {
+     "why": "التصميم iterative: الـ Design Sprint ماشي <bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate، والـ lifecycle بتاع Joyner (need finding، design alternatives، prototyping، evaluation) برضه دايرة. الـ feedback السلبي هو اللي الدورة الجاية بتستخدمه عشان تصلّح التصميم <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "الـ feedback السلبي على prototype حاجة عادية؛ ده input للـ iteration الجاية، مش سبب تلغي المشروع <bdi dir=\"ltr\">(L2)</bdi>.",
+      "كده بتلغي فايدة الاختبار: هتنزّل حاجة المستخدمين وضّحوا إنها مش نافعة معاهم.",
+      "ده ضد الـ user-centered design، اللي بياخد احتياجات المستخدم في الاعتبار في كل خطوة <bdi dir=\"ltr\">(L2)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 2 بتعرّف الـ user-centered design إنه تصميم بياخد احتياجات المستخدم في الاعتبار في كل خطوة، وبتقول إن الـ simple lifecycle model (requirements، alternatives، prototype، evaluate) مثال عليه <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      null,
+      "ده بيبدأ من منتج منافس، مش من المستخدمين بتوعك، واحتياجاتهم ممكن تختلف.",
+      "الـ user-centered design قايم على التقييم مع المستخدمين؛ من غير اختبار عمرك ما هتتأكد إن التصميم مناسب ليهم <bdi dir=\"ltr\">(L2)</bdi>.",
+      "بالعكس: كده المطوّر هو اللي في المركز مش المستخدم."
+     ]
+    },
+    {
+     "why": "المحاضرة 3: الـ attention بيخلينا نركّز على المعلومة اللي ليها علاقة باللي بنعمله <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      "اتخاذ القرار عملية تانية، مع الـ problem-solving والـ planning والـ reasoning <bdi dir=\"ltr\">(L3, L4)</bdi>.",
+      "تخزين المعلومة ده memory <bdi dir=\"ltr\">(L4)</bdi>.",
+      "النسيان عيب في الـ memory، مش attention <bdi dir=\"ltr\">(L4)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "العملية المعرفية السادسة في المحاضرة 3 هي problem-solving وplanning وreasoning وdecision-making. اختيار الإجابة معناه توزن الاختيارات وتختار واحد، والمحاضرة 4 بتسمي ده reflective cognition <bdi dir=\"ltr\">(L3, L4)</bdi>.",
+     "ow": [
+      null,
+      "النوم حالة جسمانية، مش عملية معرفية.",
+      "التنفس عملية جسمانية، مش معرفية.",
+      "الهضم عملية جسمانية، مش معرفية."
+     ]
+    },
+    {
+     "why": "المحاضرة 2: المستخدمين نادرًا ما يعرفوا إيه الممكن، فاستكشف الـ problem space، واعرف مين المستخدمين، وادرس أنشطتهم عشان تشوف إيه ممكن يتحسّن. غير كده ممكن تعمل حل كويس لمشكلة غلط. وعشان كده الـ sprint بيبدأ بـ Unpack ودورة Joyner بتبدأ بـ need finding <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "البحث عشان تفهم المستخدمين، مش تقلّلهم؛ منتجات كتير معمولة لـ «everybody» <bdi dir=\"ltr\">(L2)</bdi>.",
+      "البحث بيزوّد خطوة في الأول؛ بيوفّر إعادة شغل بعدين بس مبيخلّصش حاجة على طول.",
+      null,
+      "البحث مش بديل للاختبار؛ الدورة لسه بتخلص بـ Test/Evaluate وبتعيد <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "العمليات المعرفية في المحاضرة 3 هي attention وperception وmemory وlearning وreading/speaking/listening وproblem-solving/planning/reasoning/decision-making. الهضم مش في القايمة؛ ده عملية جسمانية <bdi dir=\"ltr\">(L3)</bdi>.",
+     "ow": [
+      null,
+      "الـ learning عملية معرفية، رقم 4 في القايمة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ attention عملية معرفية، رقم 1 في القايمة <bdi dir=\"ltr\">(L3)</bdi>.",
+      "الـ memory عملية معرفية، رقم 3 في القايمة <bdi dir=\"ltr\">(L3)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 1: النهارده نجاح أي نظام محتاج تصميم user-centric مركّز على الـ usability وuser experience لطيفة وسلسة؛ والـ HCI هدفه منتجات usable. والمحاضرة 2 بتقول ركّز على أهداف الناس والـ usability والـ user experience goals <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+     "ow": [
+      "بالعكس: الـ HCI بيخلي الأنظمة أسهل؛ في حالة Office الـ menus المزحومة خلّت الناس تحس إنها مش متحكمة <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "كفاءة الماكينة كانت تركيز الأنظمة القديمة اللي تجاهلت الـ usability؛ الـ HCI عن المستخدم <bdi dir=\"ltr\">(L1)</bdi>.",
+      "الـ security مجال تاني، مش الهدف الأساسي للـ HCI."
+     ]
+    },
+    {
+     "why": "الـ reasoning في مجموعة الـ problem-solving والـ planning والـ reasoning والـ decision-making، ودول فيهم reflective cognition: تفكر تعمل إيه، وإيه الاختيارات، وإيه النتايج <bdi dir=\"ltr\">(L3, L4)</bdi>. النوتس مبتعرّفش الـ reasoning لوحده؛ و«التفكير المنطقي» هو معناه المعروف.",
+     "ow": [
+      "الجري نشاط جسماني، مش عملية معرفية.",
+      "النوم حالة جسمانية؛ مبتفكرش بالمنطق وإنت نايم.",
+      "السمع perception بالحواس: بياخد المعلومة، والـ reasoning هو اللي بيشتغل عليها <bdi dir=\"ltr\">(L3)</bdi>.",
+      null
+     ]
+    },
+    {
+     "why": "المحاضرة 4: الـ problem-solving والـ planning والـ reasoning والـ decision-making كلهم فيهم reflective cognition، يعني تفكر تعمل إيه، وإيه الاختيارات، وإيه النتايج. وهي عمليات واعية، وكتير بتستخدم نقاش وأدوات زي الخرايط والكتب والورقة والقلم <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      "حركة جسمانية، مش تفكير.",
+      "دي الحواس، وبتتبع الـ perception: بتاخد المعلومة، مش تفكير عالي المستوى <bdi dir=\"ltr\">(L3)</bdi>.",
+      null,
+      "وظايف جسمانية أساسية، مش عمليات معرفية."
+     ]
+    },
+    {
+     "why": "قاعدة Miller (1956) بتاعة 7 ± 2: الذاكرة الفورية محدودة جدًا، واتطبقت في الـ interaction design لما نحدد نعرض كام اختيار. السلايد بتسأل هل نحط 7 tabs بس فوق صفحة الويب؛ والـ 7 بس هي اللي جوه 7 ± 2 <bdi dir=\"ltr\">(L4)</bdi>.",
+     "ow": [
+      null,
+      "الـ 15 أكتر بكتير من 9، أعلى حد في 7 ± 2 <bdi dir=\"ltr\">(L4)</bdi>.",
+      "السلايد بتسأل عن 7 bullets بالكتير؛ و20 تقريبًا تلات أضعاف <bdi dir=\"ltr\">(L4)</bdi>.",
+      "السلايد بتسأل عن 7 icons بس في الـ toolbar؛ و12 أكتر حتى من 9 <bdi dir=\"ltr\">(L4)</bdi>."
+     ]
+    },
+    {
+     "why": "المحاضرة 2، \"How to choose among alternatives\": قيّم الأفكار بالـ technical feasibility، والتقييم مع المستخدمين أو الزملاء (prototypes مش static documentation)، والـ quality thresholds، والـ usability والـ user experience goals هي اللي بتدّي المعايير. ودي خطوة Decide في الـ sprint <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "الـ requirements هي معايير الاختيار؛ لو اتجاهلتها مفيش حاجة تختار على أساسها <bdi dir=\"ltr\">(L2)</bdi>.",
+      null,
+      "مستحيل بوقت وموارد محدودة، وبتتخطى خطوة الاختيار بين البدائل <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الاختيار الصح محتاج معلومات أكتر، زي التقييم مع المستخدمين أو الزملاء <bdi dir=\"ltr\">(L2)</bdi>."
+     ]
+    },
+    {
+     "why": "الـ Google Design Sprint في المحاضرة 2 (Knapp et al., 2016) دايرة: <bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate. بيوصل من المشكلة لـ prototype متجرّب، والـ sprint قصير (خمس أيام في كتاب Knapp) <bdi dir=\"ltr\">(L2)</bdi>.",
+     "ow": [
+      "الـ sprint بيروح من الـ sketches للـ prototype على طول؛ والمحاضرة 2 بتقول استخدم prototypes مش static documentation.",
+      "آخر خطوة، Test، معمولة عشان تاخد feedback من المستخدمين <bdi dir=\"ltr\">(L2)</bdi>.",
+      "الـ sketching والـ deciding شغل فريق؛ مفيش حاجة في الموديل بتلغي الشغل الجماعي.",
+      null
+     ]
+    },
+    {
+     "why": "الـ pie chart في المحاضرة 1، \"The three parts of HCI\": Human (communication theory وindustrial design وsocial science وcognitive psychology وhuman factors)، وComputer (computer graphics وoperating system وprogramming language)، وInteraction (interaction design) <bdi dir=\"ltr\">(L1)</bdi>.",
+     "ow": [
+      "دي أنشطة تطوير؛ والـ programming language عنصر واحد تحت Computer <bdi dir=\"ltr\">(L1)</bdi>.",
+      "دي أجزاء نظام كمبيوتر؛ ناقصها الإنسان والتفاعل <bdi dir=\"ltr\">(L1)</bdi>.",
+      null,
+      "دي مواد دراسية؛ الـ cognitive psychology عنصر تحت Human، والرياضيات مش موجودة في الرسمة <bdi dir=\"ltr\">(L1)</bdi>."
+     ]
+    }
+   ]
+  }
+ ]
+});
+AR.hci.lectures[1].quiz.splice(34, 0, ...[
+ [
+  "الـ informatics عن المعلومات وإزاي الأنظمة بتعالجها، مش تفكير الإنسان.",
+  "الـ engineering عن بناء الأنظمة التقنية.",
+  "صح. المحاضرة 1 بتعدّد الـ academic disciplines اللي بتساهم في الـ interaction design. الـ psychology والـ cognitive science هما اللي بيدرسوا الناس بتفكر إزاي: attention وperception وmemory وlearning وdecision-making <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ industrial design من الـ design practices، عن شكل واستخدام المنتجات المادية <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ Interaction فيه interaction design بس في الـ pie chart <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ Human فيه communication theory وindustrial design وsocial science وcognitive psychology وhuman factors <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ cognitive psychology مش component؛ ده واحد من العناصر تحت Human <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ pie chart في المحاضرة 1، \"The three parts of HCI\"، بيحط computer graphics وoperating system وprogramming language تحت Computer <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ Computer فيه computer graphics وoperating system وprogramming language <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ pie chart في المحاضرة 1، \"The three parts of HCI\"، بيحط communication theory تحت Human، مع industrial design وsocial science وcognitive psychology وhuman factors <bdi dir=\"ltr\">(L1)</bdi>.",
+  "ده الاختيار اللي بيخدع، بس في الـ pie chart الـ Interaction فيه interaction design بس <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ Programming مش component؛ الـ programming language واحد من العناصر تحت Computer <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "الـ communication theory تحت Human في الـ pie chart <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ pie chart في المحاضرة 1 بيحط operating system تحت Computer، مع computer graphics وprogramming language <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ human factors تحت Human <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ social science تحت Human <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "ده computer engineering؛ الـ HCI عن الناس وهي بتستخدم الأنظمة، مش السرعة <bdi dir=\"ltr\">(L1)</bdi>.",
+  "ده networking أو distributed systems، ومفيش إنسان في الصورة.",
+  "صح. في المحاضرة 1: الـ HCI هو التفاعل بين المستخدم والكمبيوتر، أو العلاقة بين المستخدمين والأنظمة. بيدرس الإنسان، والتقنيات اللي بتحسّن تفاعله مع الكمبيوتر، وطرق المستخدمين وتفضيلاتهم والصعوبات اللي بتقابلهم <bdi dir=\"ltr\">(L1)</bdi>.",
+  "مش هدف للـ HCI؛ بالعكس، هو عايز أنظمة أبسط وأسهل."
+ ],
+ [
+  "التقليل معناه تعرض اختيارات أقل، مش صفر. الـ adaptive menus خلّت كل الأوامر موجودة وعرضت المتوقع الأول <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. في حالة Office في المحاضرة 1، الـ menus والـ toolbars كانت مليانة لدرجة إن الناس حسّت إنها مش متحكمة؛ والـ adaptive menus عرضت قايمة قصيرة بالأوامر اللي غالبًا هتستخدمها. الاختيارات القليلة أسهل تتقري وتتفكر، وده مربوط كمان بـ Miller's 7 ± 2 في المحاضرة 4 <bdi dir=\"ltr\">(L1, L4)</bdi>.",
+  "بالعكس: الـ menus المزحومة هي اللي بتلخبط، والتقليل بيقلل اللخبطة <bdi dir=\"ltr\">(L1)</bdi>.",
+  "عدد عناصر الـ menu مبيغيرش حجم الشاشة؛ السبب هو محدودية ذاكرة وانتباه المستخدم."
+ ],
+ [
+  "صح. الرسمة في المحاضرة 1 للمجالات اللي حوالين الـ interaction design بتحط Human Factors (HF) في الـ Interdisciplinary Fields (أسهم في الاتجاهين مع الـ ID)، مع cognitive engineering وHCI وcognitive ergonomics وCSCW وinformation systems <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ Design Practices هي graphic design وproduct design وartist-design وindustrial design وfilm industry <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ film industry عنصر واحد تحت Design Practices، مش category <bdi dir=\"ltr\">(L1)</bdi>.",
+  "ده الفخ: الـ HF بياخد من الـ ergonomics والـ psychology والـ engineering، بس الرسمة بتحطه مع الـ interdisciplinary fields مش الـ academic disciplines <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "بالعكس: الـ HCI بيخلي الأنظمة أسهل؛ في حالة Office الـ menus المزحومة خلّت الناس تحس إنها مش متحكمة <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. المحاضرة 1: النهارده نجاح أي نظام محتاج تصميم user-centric مركّز على الـ usability وuser experience لطيفة وسلسة؛ والـ HCI هدفه منتجات usable. والمحاضرة 2 بتقول ركّز على أهداف الناس والـ usability والـ user experience goals <bdi dir=\"ltr\">(L1, L2)</bdi>.",
+  "كفاءة الماكينة كانت تركيز الأنظمة القديمة اللي تجاهلت الـ usability؛ الـ HCI عن المستخدم <bdi dir=\"ltr\">(L1)</bdi>.",
+  "الـ security مجال تاني، مش الهدف الأساسي للـ HCI."
+ ],
+ [
+  "دي أنشطة تطوير؛ والـ programming language عنصر واحد تحت Computer <bdi dir=\"ltr\">(L1)</bdi>.",
+  "دي أجزاء نظام كمبيوتر؛ ناقصها الإنسان والتفاعل <bdi dir=\"ltr\">(L1)</bdi>.",
+  "صح. الـ pie chart في المحاضرة 1، \"The three parts of HCI\": Human (communication theory وindustrial design وsocial science وcognitive psychology وhuman factors)، وComputer (computer graphics وoperating system وprogramming language)، وInteraction (interaction design) <bdi dir=\"ltr\">(L1)</bdi>.",
+  "دي مواد دراسية؛ الـ cognitive psychology عنصر تحت Human، والرياضيات مش موجودة في الرسمة <bdi dir=\"ltr\">(L1)</bdi>."
+ ]
+]);
+AR.hci.lectures[2].quiz.splice(28, 0, ...[
+ [
+  "الاختبار هو الخطوة الخامسة، Test <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. الـ Google Design Sprint (Knapp et al., 2016): <bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate. في Decide الفريق بيختار أحسن فكرة من اللي اترسموا في الخطوة اللي قبلها، ودي اللي بيعملها prototype بعد كده <bdi dir=\"ltr\">(L2)</bdi>.",
+  "بناء الـ prototype هو الخطوة الرابعة، Prototype، وبتيجي بعد Decide <bdi dir=\"ltr\">(L2)</bdi>.",
+  "فهم المشكلة والمستخدمين بيبقى في أول خطوة، Unpack <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "معكوسة: الاختبار موجود عشان تلاقي تحسينات للـ iteration الجاية <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. في الـ lifecycle بتاع الـ interaction design، تقييم الـ prototype مع مستخدمين حقيقيين بيوريك التصميم بيلبّي احتياجاتهم ولا لأ وفين محتاج يتغير. والعملية iterative: تصميم، prototype، تقييم، وإعادة تصميم. وخطوة Test في الـ Design Sprint بتعمل نفس الحاجة <bdi dir=\"ltr\">(L2)</bdi>.",
+  "معكوسة: لما تكتشف المشاكل بدري على prototype رخيص بتوفّر فلوس بعدين.",
+  "المستخدمين بيدّوا feedback؛ والمصممين لسه هما اللي بياخدوا قرارات التصميم."
+ ],
+ [
+  "التخمين هو اللي الـ user research جاي يشيله: تخمين المصممين كتير بيطلع غلط <bdi dir=\"ltr\">(L2)</bdi>.",
+  "اختيار ألوان عشوائي ده visual design من غير تخطيط ومبيقولش حاجة عن احتياجات المستخدم.",
+  "صح. المحاضرة 2 بتحط الـ interviews والـ participant observations تحت الـ primary research، يعني بحث بتعمله بنفسك مع مستخدمين حقيقيين. المستخدمين نادرًا ما يعرفوا إيه الممكن، فلما تتفرج عليهم وهما شغالين بتشوف مشاكل عمرهم ما هيقولوها، والـ interview بيخليك تسأل «ليه» <bdi dir=\"ltr\">(L2)</bdi>.",
+  "متأخر أوي: الاحتياجات لازم تتعرف قبل التصميم، في الـ foundational research <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "توليد الأفكار هو خطوة Sketch <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ business plan مش خطوة في أي lifecycle model في المحاضرة.",
+  "اختيار الفريق بيحصل قبل الـ sprint، مش في مرحلة منه.",
+  "صح. في الـ Google Design Sprint (<bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate)، الـ Test بييجي بعد الـ Prototype على طول: الـ prototype بيتعرض على مستخدمين حقيقيين عشان تاخد الـ feedback بتاعهم للدورة الجاية. والـ process بتاع Google بيخلص بنفس الطريقة: «Evaluate: test with real users» <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ feedback السلبي على prototype حاجة عادية؛ ده input للـ iteration الجاية، مش سبب تلغي المشروع <bdi dir=\"ltr\">(L2)</bdi>.",
+  "كده بتلغي فايدة الاختبار: هتنزّل حاجة المستخدمين وضّحوا إنها مش نافعة معاهم.",
+  "ده ضد الـ user-centered design، اللي بياخد احتياجات المستخدم في الاعتبار في كل خطوة <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. التصميم iterative: الـ Design Sprint ماشي <bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate، والـ lifecycle بتاع Joyner (need finding، design alternatives، prototyping، evaluation) برضه دايرة. الـ feedback السلبي هو اللي الدورة الجاية بتستخدمه عشان تصلّح التصميم <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "صح. المحاضرة 2 بتعرّف الـ user-centered design إنه تصميم بياخد احتياجات المستخدم في الاعتبار في كل خطوة، وبتقول إن الـ simple lifecycle model (requirements، alternatives، prototype، evaluate) مثال عليه <bdi dir=\"ltr\">(L2)</bdi>.",
+  "ده بيبدأ من منتج منافس، مش من المستخدمين بتوعك، واحتياجاتهم ممكن تختلف.",
+  "الـ user-centered design قايم على التقييم مع المستخدمين؛ من غير اختبار عمرك ما هتتأكد إن التصميم مناسب ليهم <bdi dir=\"ltr\">(L2)</bdi>.",
+  "بالعكس: كده المطوّر هو اللي في المركز مش المستخدم."
+ ],
+ [
+  "البحث عشان تفهم المستخدمين، مش تقلّلهم؛ منتجات كتير معمولة لـ «everybody» <bdi dir=\"ltr\">(L2)</bdi>.",
+  "البحث بيزوّد خطوة في الأول؛ بيوفّر إعادة شغل بعدين بس مبيخلّصش حاجة على طول.",
+  "صح. المحاضرة 2: المستخدمين نادرًا ما يعرفوا إيه الممكن، فاستكشف الـ problem space، واعرف مين المستخدمين، وادرس أنشطتهم عشان تشوف إيه ممكن يتحسّن. غير كده ممكن تعمل حل كويس لمشكلة غلط. وعشان كده الـ sprint بيبدأ بـ Unpack ودورة Joyner بتبدأ بـ need finding <bdi dir=\"ltr\">(L2)</bdi>.",
+  "البحث مش بديل للاختبار؛ الدورة لسه بتخلص بـ Test/Evaluate وبتعيد <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ requirements هي معايير الاختيار؛ لو اتجاهلتها مفيش حاجة تختار على أساسها <bdi dir=\"ltr\">(L2)</bdi>.",
+  "صح. المحاضرة 2، \"How to choose among alternatives\": قيّم الأفكار بالـ technical feasibility، والتقييم مع المستخدمين أو الزملاء (prototypes مش static documentation)، والـ quality thresholds، والـ usability والـ user experience goals هي اللي بتدّي المعايير. ودي خطوة Decide في الـ sprint <bdi dir=\"ltr\">(L2)</bdi>.",
+  "مستحيل بوقت وموارد محدودة، وبتتخطى خطوة الاختيار بين البدائل <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الاختيار الصح محتاج معلومات أكتر، زي التقييم مع المستخدمين أو الزملاء <bdi dir=\"ltr\">(L2)</bdi>."
+ ],
+ [
+  "الـ sprint بيروح من الـ sketches للـ prototype على طول؛ والمحاضرة 2 بتقول استخدم prototypes مش static documentation.",
+  "آخر خطوة، Test، معمولة عشان تاخد feedback من المستخدمين <bdi dir=\"ltr\">(L2)</bdi>.",
+  "الـ sketching والـ deciding شغل فريق؛ مفيش حاجة في الموديل بتلغي الشغل الجماعي.",
+  "صح. الـ Google Design Sprint في المحاضرة 2 (Knapp et al., 2016) دايرة: <bdi dir=\"ltr\">Unpack → Sketch → Decide → Prototype → Test</bdi> وبعدين iterate. بيوصل من المشكلة لـ prototype متجرّب، والـ sprint قصير (خمس أيام في كتاب Knapp) <bdi dir=\"ltr\">(L2)</bdi>."
+ ]
+]);
+AR.hci.lectures[3].quiz.splice(18, 0, ...[
+ [
+  "الـ planning ده reflective cognition: تفكر تعمل إيه وإيه النتايج <bdi dir=\"ltr\">(L4)</bdi>. التعرف على وش حاجة سريعة وتلقائية.",
+  "الـ problem-solving كمان reflective cognition <bdi dir=\"ltr\">(L4)</bdi>. مفيش مشكلة بتحلها لما تعرف وش.",
+  "صح. الـ perception هو إزاي المعلومة بتتاخد من العالم وتتحول لتجربة <bdi dir=\"ltr\">(L3)</bdi>. إنك تشوف وش وتعرف إنه حد تعرفه بيبدأ من هنا. المحاضرة 4 بتستخدم نفس المثال للـ memory، بس الـ memory مش من الاختيارات.",
+  "الـ decision-making معناه تختار بين اختيارات <bdi dir=\"ltr\">(L4)</bdi>. التعرف على وش مفيهوش اختيار."
+ ],
+ [
+  "صح. العمليات المعرفية في المحاضرة 3: attention وperception وmemory وlearning وreading/speaking/listening وproblem-solving/planning/reasoning/decision-making. والـ attention أولهم <bdi dir=\"ltr\">(L3)</bdi>.",
+  "التنفس عملية جسمانية، مش عقلية.",
+  "الدورة الدموية عملية جسمانية، مش عقلية.",
+  "الهضم عملية جسمانية، مش عقلية."
+ ],
+ [
+  "اتخاذ القرار عملية تانية، مع الـ problem-solving والـ planning والـ reasoning <bdi dir=\"ltr\">(L3, L4)</bdi>.",
+  "تخزين المعلومة ده memory <bdi dir=\"ltr\">(L4)</bdi>.",
+  "النسيان عيب في الـ memory، مش attention <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. المحاضرة 3: الـ attention بيخلينا نركّز على المعلومة اللي ليها علاقة باللي بنعمله <bdi dir=\"ltr\">(L3)</bdi>."
+ ],
+ [
+  "صح. العملية المعرفية السادسة في المحاضرة 3 هي problem-solving وplanning وreasoning وdecision-making. اختيار الإجابة معناه توزن الاختيارات وتختار واحد، والمحاضرة 4 بتسمي ده reflective cognition <bdi dir=\"ltr\">(L3, L4)</bdi>.",
+  "النوم حالة جسمانية، مش عملية معرفية.",
+  "التنفس عملية جسمانية، مش معرفية.",
+  "الهضم عملية جسمانية، مش معرفية."
+ ],
+ [
+  "صح. العمليات المعرفية في المحاضرة 3 هي attention وperception وmemory وlearning وreading/speaking/listening وproblem-solving/planning/reasoning/decision-making. الهضم مش في القايمة؛ ده عملية جسمانية <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ learning عملية معرفية، رقم 4 في القايمة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ attention عملية معرفية، رقم 1 في القايمة <bdi dir=\"ltr\">(L3)</bdi>.",
+  "الـ memory عملية معرفية، رقم 3 في القايمة <bdi dir=\"ltr\">(L3)</bdi>."
+ ]
+]);
+AR.hci.lectures[4].quiz.splice(19, 0, ...[
+ [
+  "حفظ الكلمات ده memory وlearning، عمليات معرفية تانية <bdi dir=\"ltr\">(L3, L4)</bdi>.",
+  "صح. الـ decision-making من مجموعة الـ reflective cognition مع الـ problem-solving والـ planning والـ reasoning: تفكر تعمل إيه، وإيه الاختيارات، وإيه النتايج، وبعدين تختار واحد <bdi dir=\"ltr\">(L4)</bdi>.",
+  "النسيان عيب في الـ memory، مش طريقة للقرار <bdi dir=\"ltr\">(L4)</bdi>.",
+  "تجاهل المشاكل عكس الـ problem-solving والـ decision-making."
+ ],
+ [
+  "الجري نشاط جسماني، مش عملية معرفية.",
+  "النوم حالة جسمانية؛ مبتفكرش بالمنطق وإنت نايم.",
+  "السمع perception بالحواس: بياخد المعلومة، والـ reasoning هو اللي بيشتغل عليها <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. الـ reasoning في مجموعة الـ problem-solving والـ planning والـ reasoning والـ decision-making، ودول فيهم reflective cognition: تفكر تعمل إيه، وإيه الاختيارات، وإيه النتايج <bdi dir=\"ltr\">(L3, L4)</bdi>. النوتس مبتعرّفش الـ reasoning لوحده؛ و«التفكير المنطقي» هو معناه المعروف."
+ ],
+ [
+  "حركة جسمانية، مش تفكير.",
+  "دي الحواس، وبتتبع الـ perception: بتاخد المعلومة، مش تفكير عالي المستوى <bdi dir=\"ltr\">(L3)</bdi>.",
+  "صح. المحاضرة 4: الـ problem-solving والـ planning والـ reasoning والـ decision-making كلهم فيهم reflective cognition، يعني تفكر تعمل إيه، وإيه الاختيارات، وإيه النتايج. وهي عمليات واعية، وكتير بتستخدم نقاش وأدوات زي الخرايط والكتب والورقة والقلم <bdi dir=\"ltr\">(L4)</bdi>.",
+  "وظايف جسمانية أساسية، مش عمليات معرفية."
+ ],
+ [
+  "صح. قاعدة Miller (1956) بتاعة 7 ± 2: الذاكرة الفورية محدودة جدًا، واتطبقت في الـ interaction design لما نحدد نعرض كام اختيار. السلايد بتسأل هل نحط 7 tabs بس فوق صفحة الويب؛ والـ 7 بس هي اللي جوه 7 ± 2 <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ 15 أكتر بكتير من 9، أعلى حد في 7 ± 2 <bdi dir=\"ltr\">(L4)</bdi>.",
+  "السلايد بتسأل عن 7 bullets بالكتير؛ و20 تقريبًا تلات أضعاف <bdi dir=\"ltr\">(L4)</bdi>.",
+  "السلايد بتسأل عن 7 icons بس في الـ toolbar؛ و12 أكتر حتى من 9 <bdi dir=\"ltr\">(L4)</bdi>."
+ ]
+]);
+AR.hci.lectures[5].quiz.splice(11, 0, ...[
+ [
+  "صح. الـ HCI قايم على تصميم منتجات تفاعلية الناس تعرف تستخدمها: الـ usability <bdi dir=\"ltr\">(L1)</bdi>، والـ user interface والـ user experience <bdi dir=\"ltr\">(L5)</bdi>. الـ machine learning مجال تاني في علوم الحاسب؛ ممكن المنتج يستخدمه، بس مش من العوامل الأساسية في الـ HCI.",
+  "الـ UI عامل أساسي: شكل الشاشة وإحساسها والتفاعل معاها <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ UX عامل أساسي: التجربة الكاملة للمستخدم مع المنتج <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ usability عامل أساسي: سهل تتعلمه، فعّال، وتجربته ممتعة <bdi dir=\"ltr\">(L1)</bdi>."
+ ],
+ [
+  "صح. جدول \"What skills do you need?\" في المحاضرة 5 بيحط مهارات الـ UX: user research وproblem-solving وinformation architecture وuser flows وjourney maps وwireframing وusability testing <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ visual design مهارة UI في نفس الجدول <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ color theory مهارة UI في نفس الجدول <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ layout and composition مهارة UI في نفس الجدول <bdi dir=\"ltr\">(L5)</bdi>."
+ ]
+]);
+AR.hci.lectures[6].quiz.splice(9, 0, ...[
+ [
+  "المحاضرة بتقول سيب الأسئلة اللي ممكن تكون open-ended مفتوحة، مش إن كل الأسئلة تبقى مفتوحة. وكمان بتنصح بالـ ranges ودرجات الموافقة <bdi dir=\"ltr\">(L6, Be Expressive)</bdi>.",
+  "صح. المحاضرة 6 بتدّي ست مبادئ للـ survey questions الكويسة: Clear وConcise وSpecific وExpressive وUnbiased وUsable. الصياغة الواضحة والمحايدة هي اتنين منهم: تحط labels للـ scales، ومفيش ranges متداخلة، ومفيش leading questions <bdi dir=\"ltr\">(L6)</bdi>.",
+  "إن كل الأسئلة تبقى إجبارية مش من الست مبادئ. لما تجبر الناس يجاوبوا بيسيبوا الـ survey أو يجاوبوا أي حاجة (ممارسة عامة، مش في السلايدز).",
+  "ده ضد Be Concise: اسأل بلغة بسيطة. الأسئلة اللي المستخدم مش فاهمها بتطلّع إجابات غلط <bdi dir=\"ltr\">(L6)</bdi>."
+ ]
+]);
