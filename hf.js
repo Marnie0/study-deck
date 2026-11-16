@@ -615,7 +615,7 @@
       <footer className="bfoot">
         <button className="bturn" onClick=${prev} disabled=${atStart} aria-label=${ar ? 'الصفحة اللي فاتت' : 'Previous page'}>${ar ? '›' : '‹'}</button>
         <input type="range" min="0" max=${Math.max(0, total - 1)} step="1" value=${page} aria-label="Page" onInput=${e => turnTo(+e.target.value)} />
-        <span className="bplabel" aria-label=${label}><span className="lf">${label}</span><span className="ls">${shortLabel}</span></span>
+        <span className="bplabel" aria-label=${label}><span className="lf">${label}</span><span className="ls" dir="ltr">${shortLabel}</span></span>
         <button className="bturn" onClick=${next} disabled=${atEnd} aria-label=${ar ? 'الصفحة الجاية' : 'Next page'}>${ar ? '‹' : '›'}</button>
       </footer>
     </div></${Slots.Provider}></${Kit.Provider}>`;

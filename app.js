@@ -1850,7 +1850,7 @@ function start() {
   }
 
   /* ════════════ HEAD FIRST: a lecture retold the Head First way, as a book (hf.js + hf-<course>.js, loaded when opened) ════════════ */
-  const loadHF = k => loadScript(dataUrl('figs')).then(() => loadScript(dataUrl('hf'))).then(() => loadScript(dataUrl('hf-' + k)));
+  const loadHF = (k, n) => loadScript(dataUrl('figs')).then(() => loadScript(dataUrl('hf'))).then(() => loadScript(dataUrl(M[k].hfx && M[k].hfx.includes(n) ? 'hf-' + k + '-' + n : 'hf-' + k)));
   // the language a Head First chapter opens in (English or Egyptian Arabic), chosen on the Head First tab or inside the book
   function HeadFirstHost({ k, n, go }) {
     const [lang, setLang] = usePersist('hflang', 'en');
@@ -1863,7 +1863,7 @@ function start() {
       lazyFont('hf', 'https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Aref+Ruqaa:wght@700&display=swap');
       if (lang === 'ar') arFont();
       // the Arabic book also uses the course's Arabic explanations for the doctor's questions
-      if (!has() || !arReady()) { setReady(false); Promise.all([loadHF(k), lang === 'ar' ? loadAr(k) : null]).then(() => setReady(has()), () => setFailed(true)); }
+      if (!has() || !arReady()) { setReady(false); Promise.all([loadHF(k, n), lang === 'ar' ? loadAr(k) : null]).then(() => setReady(has()), () => setFailed(true)); }
     }, [k, n, lang]);
     const close = () => go({ hf: null });
     const kit = useMemo(() => ({ FigBlock, store, go, course: C[k] }), [k]);
@@ -1878,7 +1878,7 @@ function start() {
     // the language can also be switched inside the open book, so follow the stored value
     useEffect(() => { const f = () => setLang(store.get('hflang', 'en')); window.addEventListener('sd-store', f); return () => window.removeEventListener('sd-store', f); }, []);
     const ar = lang === 'ar';
-    const warm = () => { loadHF(k).catch(() => {}); if (ar) { arFont(); loadAr(k).catch(() => {}); } };
+    const warm = n => { loadHF(k, n).catch(() => {}); if (ar) { arFont(); loadAr(k).catch(() => {}); } };
     return html`<section className=${'hfshelf' + (ar ? ' ar-on' : '')} aria-label="Head First chapters">
       <div className="hfs-top">
         <div className="hfs-intro" dir=${ar ? 'rtl' : 'ltr'} lang=${ar ? 'ar' : 'en'}>
@@ -1894,7 +1894,7 @@ function start() {
         </div>
       </div>
       <ol className="hfs-list">${c.lectures.map(l => { const on = have.has(l.n);
-        return html`<li key=${l.n}><button className=${'hfcover' + (on ? '' : ' soon')} disabled=${!on} onClick=${() => go({ hf: l.n })} onPointerEnter=${on ? warm : null} onFocus=${on ? warm : null}>
+        return html`<li key=${l.n}><button className=${'hfcover' + (on ? '' : ' soon')} disabled=${!on} onClick=${() => go({ hf: l.n })} onPointerEnter=${on ? () => warm(l.n) : null} onFocus=${on ? () => warm(l.n) : null}>
           <span className="hfc-top"><span className="hfc-hf">Head First</span><span className="hfc-n">${l.n}</span></span>
           <span className="hfc-t">${cleanTitle(l.title)}</span>
           <span className="hfc-foot" lang=${ar ? 'ar' : 'en'} dir=${ar ? 'rtl' : 'ltr'}>${on ? (ar ? 'افتح الفصل بالعربي ←' : 'Open the chapter →') : (ar ? 'قريبًا' : 'Coming soon')}</span>

@@ -2,7 +2,7 @@
 //   data/<id>.js   one course, minified, wrapped in JSON.parse (faster to parse than an object literal)
 //   manifest.js    names and counts for the shelf, so the home page loads without any course data
 // Run: node build.mjs
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
 import vm from 'node:vm';
 
 // Level 3 then Level 2
@@ -99,11 +99,19 @@ if (existsSync('viz.js')) { writeFileSync('data/viz.js', readFileSync('viz.js'))
 // Head First chapters: hf.js is the book, hf-<course>.js holds a course's chapters; its header comment lists them ("// lectures: [1, 2]")
 if (existsSync('hf.js')) { writeFileSync('data/hf.js', readFileSync('hf.js')); console.log('data/hf.js'.padEnd(20), (readFileSync('hf.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
 for (const id of Object.keys(COURSES)) {
-  const f = `hf-${id}.js`; if (!existsSync(f)) continue;
-  const src = readFileSync(f, 'utf8'), m = /^\/\/ lectures: \[([\d,\s]*)\]/m.exec(src);
-  if (!m) throw new Error(f + ' needs a "// lectures: [n, ...]" line');
-  manifest[id].hf = m[1].split(',').map(x => +x.trim()).filter(Boolean);
-  writeFileSync('data/' + f, src); console.log(('data/' + f).padEnd(20), (src.length / 1024).toFixed(0).padStart(5), 'KB');
+  // a chapter can also live in its own file, hf-<course>-<n>.js, loaded only when that chapter is opened (listed in manifest hfx)
+  const own = readdirSync('.').map(x => new RegExp('^hf-' + id + '-(\\d+)\\.js$').exec(x)).filter(Boolean).map(x => +x[1]).sort((a, b) => a - b);
+  const f = `hf-${id}.js`; if (!existsSync(f) && !own.length) continue;
+  let hf = [];
+  if (existsSync(f)) {
+    const src = readFileSync(f, 'utf8'), m = /^\/\/ lectures: \[([\d,\s]*)\]/m.exec(src);
+    if (!m) throw new Error(f + ' needs a "// lectures: [n, ...]" line');
+    hf = m[1].split(',').map(x => +x.trim()).filter(Boolean);
+    writeFileSync('data/' + f, src); console.log(('data/' + f).padEnd(20), (src.length / 1024).toFixed(0).padStart(5), 'KB');
+  }
+  for (const n of own) { const g = `hf-${id}-${n}.js`, src = readFileSync(g, 'utf8'); writeFileSync('data/' + g, src); console.log(('data/' + g).padEnd(20), (src.length / 1024).toFixed(0).padStart(5), 'KB'); }
+  manifest[id].hf = [...new Set(hf.concat(own))].sort((a, b) => a - b);
+  if (own.length) manifest[id].hfx = own;
 }
 writeFileSync('manifest.js', `window.MANIFEST=${JSON.stringify(manifest)};\n`);
 console.log('manifest.js'.padEnd(20), (JSON.stringify(manifest).length / 1024).toFixed(1).padStart(5), 'KB');
