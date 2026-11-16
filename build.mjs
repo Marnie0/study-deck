@@ -96,5 +96,14 @@ for (const id of Object.keys(COURSES)) {
 for (const f of ['figs-qa.js', 'figs-mm.js', 'figs-os.js', 'figs-cc.js', 'figs-fp.js', 'figs-hc.js', 'figs-ms.js', 'figs-dm.js', 'figs-or.js', 'figs-ds.js', 'figs-wb.js', 'figs-mp.js', 'figs-sa.js']) if (existsSync(f)) { writeFileSync('data/' + f, readFileSync(f)); console.log(('data/' + f).padEnd(20), (readFileSync(f).length / 1024).toFixed(0).padStart(5), 'KB'); }
 if (existsSync('figs.js')) { writeFileSync('data/figs.js', readFileSync('figs.js')); console.log('data/figs.js'.padEnd(20), (readFileSync('figs.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
 if (existsSync('viz.js')) { writeFileSync('data/viz.js', readFileSync('viz.js')); console.log('data/viz.js'.padEnd(20), (readFileSync('viz.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
+// Head First chapters: hf.js is the book, hf-<course>.js holds a course's chapters; its header comment lists them ("// lectures: [1, 2]")
+if (existsSync('hf.js')) { writeFileSync('data/hf.js', readFileSync('hf.js')); console.log('data/hf.js'.padEnd(20), (readFileSync('hf.js').length / 1024).toFixed(0).padStart(5), 'KB'); }
+for (const id of Object.keys(COURSES)) {
+  const f = `hf-${id}.js`; if (!existsSync(f)) continue;
+  const src = readFileSync(f, 'utf8'), m = /^\/\/ lectures: \[([\d,\s]*)\]/m.exec(src);
+  if (!m) throw new Error(f + ' needs a "// lectures: [n, ...]" line');
+  manifest[id].hf = m[1].split(',').map(x => +x.trim()).filter(Boolean);
+  writeFileSync('data/' + f, src); console.log(('data/' + f).padEnd(20), (src.length / 1024).toFixed(0).padStart(5), 'KB');
+}
 writeFileSync('manifest.js', `window.MANIFEST=${JSON.stringify(manifest)};\n`);
 console.log('manifest.js'.padEnd(20), (JSON.stringify(manifest).length / 1024).toFixed(1).padStart(5), 'KB');

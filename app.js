@@ -725,13 +725,14 @@ function start() {
 
     const modes = [
       ['path', 'Path', null],
-      ['read', 'Notes', c.lectures.length],
+      ['read', 'Notes', c.lectures.length]
+    ].concat(c.hf ? [['hf', 'Head First', c.hf.length]] : []).concat([
       ['cards', 'Cards', c.cards],
       ['ask', 'Q&A', c.qa],
       ['quiz', 'Quiz', c.quiz],
       ['papers', 'Past papers', c.exams],
       ['progress', 'Progress', miss.length || null]
-    ];
+    ]);
     return html`<div className="page">
       <${Topbar} bar=${bar} cur=${k}><div className="readbar" hidden=${mode !== 'read' || status !== 'ready' || lecN === 'rev' || lecN === 'mid' || lecN === 'midviz'}><i ref=${barRef}></i></div></${Topbar}>
       <section className=${'band' + (mode === 'path' ? ' tall' : '')}>
@@ -758,6 +759,7 @@ function start() {
       <main className=${'content course m-' + mode}>
         ${status === 'loading' && html`<div className="paper loadsheet" aria-busy="true"><span className="pen">Opening ${c.name}…</span><i></i><i></i><i></i></div>`}
         ${status === 'error' && html`<div className="paper empty"><span className="pen">Couldn't load this course.</span>Check your internet connection, then try again.<div style=${{ marginTop: '14px' }}><button className="btn" onClick=${retry}>Try again</button></div></div>`}
+        ${status === 'ready' && nav.hf != null && html`<${HeadFirstHost} k=${k} n=${nav.hf} go=${go} />`}
         ${status === 'ready' && html`<${CourseBody} k=${k} mode=${mode} nav=${nav} go=${go} lecN=${lecN} known=${known} setKnown=${setKnown} miss=${miss} setMiss=${setMiss} fixed=${fixed} setFixed=${setFixed} best=${best} setBest=${setBest} read=${read} setRead=${setRead} barRef=${barRef} onSection=${() => {}} />`}
       </main>
     </div>`;
@@ -823,6 +825,7 @@ function start() {
         ${mode === 'read' && lecN === 'mid' && html`<${MidtermSheet} key="mid" k=${k} go=${go} />`}
         ${mode === 'read' && lecN === 'midviz' && html`<${MidtermViz} key="midviz" k=${k} go=${go} lecStart=${nav.vizLec} />`}
         ${mode === 'read' && lecN !== 'rev' && lecN !== 'mid' && lecN !== 'midviz' && html`<${Read} key="read" k=${k} lecN=${lecN} anchor=${nav.anchor} go=${go} read=${read} setRead=${setRead} barRef=${barRef} onSection=${onSection} />`}
+        ${mode === 'hf' && html`<${HeadFirstShelf} key="hf" k=${k} go=${go} />`}
         ${mode === 'cards' && html`<${Cards} key="cards" k=${k} focus=${nav.cardFocus} startLec=${nav.cardLec} auto=${nav.cardsAuto} go=${go} known=${known} setKnown=${setKnown} />`}
         ${mode === 'ask' && html`<${Ask} key="ask" k=${k} startLec=${nav.askLec} />`}
         ${mode === 'quiz' && html`<${Quiz} key="quiz" k=${k} preset=${nav.quizPreset} go=${go} miss=${miss} setMiss=${setMiss} setFixed=${setFixed} best=${best} setBest=${setBest} />`}
@@ -896,7 +899,7 @@ function start() {
     if (!fighTimer) fighTimer = setTimeout(() => { fighTimer = 0; try { localStorage.setItem('sd:figh', JSON.stringify(FIGH)); } catch (e) {} }, 2000);
   };
   const figIO = typeof IntersectionObserver === 'function';
-  function FigBlock({ name, ar }) {
+  function FigBlock({ name, ar, nosave }) {
     const [ready, setReady] = useState(() => !!window.FIGS);
     const [failed, setFailed] = useState(false);
     // names like 'qa-…' live in figs-qa.js, which builds on figs.js
@@ -914,7 +917,7 @@ function start() {
     const shown = near && ready && ready2 && !failed && !!(window.FIGS && window.FIGS[name]);
     useEffect(() => {
       const el = host.current; if (!shown || !el || typeof ResizeObserver !== 'function') return;
-      const ro = new ResizeObserver(() => { const h = Math.round(el.offsetHeight); if (h > 40) saveFigH(name, h); });
+      const ro = new ResizeObserver(() => { const h = Math.round(el.offsetHeight); if (h > 40 && !nosave) saveFigH(name, h); });
       ro.observe(el); return () => ro.disconnect();
     }, [shown]);
     if (failed) return html`<p className="muted small">The visual didn't load. Check your connection and refresh.</p>`;
@@ -1106,6 +1109,7 @@ function start() {
           <button className="tbtn" aria-pressed=${String(!!prefs.hl)} onClick=${() => setPref({ hl: !prefs.hl })} title="Show or hide highlighted key terms"><span className="hlswatch"></span>Highlights</button>
           <button className="tbtn" aria-pressed=${String(!!prefs.focus)} onClick=${() => setPref({ focus: !prefs.focus })} title="Focus mode (F)">${prefs.focus ? 'Exit focus' : 'Focus'}</button>
           <button className="tbtn bookbtn" onClick=${() => setBook(true)} title="Read as a book (B)"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M3 5.5C5.5 4.5 9 4.5 12 6.5c3-2 6.5-2 9-1v13c-2.5-1-6-1-9 1-3-2-6.5-2-9-1z M12 6.5v13" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinejoin="round"/></svg>Book view</button>
+          ${M[k].hf && M[k].hf.includes(lec.n) && html`<button className="tbtn hfbtn" onClick=${() => go({ hf: lec.n })} title="Read this lecture the Head First way"><span className="hfmark" aria-hidden="true">HF</span>Head First</button>`}
         </div>
         ${resumed && html`<div className="resume"><span>Picked up where you stopped.</span><button className="linkbtn" onClick=${() => { window.scrollTo({ top: 0, behavior: calm() ? 'auto' : 'smooth' }); setResumed(false); }}>Start from the top</button><button className="linkbtn muted" aria-label="Dismiss" onClick=${() => setResumed(false)}>✕</button></div>`}
 
@@ -1843,6 +1847,59 @@ function start() {
         </section>`; })}
       <p className="bend">End of the revision sheet</p>
     </div>`;
+  }
+
+  /* ════════════ HEAD FIRST: a lecture retold the Head First way, as a book (hf.js + hf-<course>.js, loaded when opened) ════════════ */
+  const loadHF = k => loadScript(dataUrl('figs')).then(() => loadScript(dataUrl('hf'))).then(() => loadScript(dataUrl('hf-' + k)));
+  // the language a Head First chapter opens in (English or Egyptian Arabic), chosen on the Head First tab or inside the book
+  function HeadFirstHost({ k, n, go }) {
+    const [lang, setLang] = usePersist('hflang', 'en');
+    const has = () => !!(window.HF && window.HF.Book && window.HF.chapters && window.HF.chapters[k] && window.HF.chapters[k][n]);
+    const arReady = () => lang !== 'ar' || !(M[k] && M[k].ar) || !!(window.AR && window.AR[k]);
+    const [ready, setReady] = useState(() => has() && arReady());
+    const [failed, setFailed] = useState(false);
+    useEffect(() => {
+      lazyFont('book', 'https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,36,400;0,36,500;1,36,400&display=swap');
+      lazyFont('hf', 'https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Aref+Ruqaa:wght@700&display=swap');
+      if (lang === 'ar') arFont();
+      // the Arabic book also uses the course's Arabic explanations for the doctor's questions
+      if (!has() || !arReady()) { setReady(false); Promise.all([loadHF(k), lang === 'ar' ? loadAr(k) : null]).then(() => setReady(has()), () => setFailed(true)); }
+    }, [k, n, lang]);
+    const close = () => go({ hf: null });
+    const kit = useMemo(() => ({ FigBlock, store, go, course: C[k] }), [k]);
+    useEffect(() => { if (!failed) return; const t = setTimeout(close, 2600); return () => clearTimeout(t); }, [failed]);
+    if (failed || (ready && !has())) return html`<div className="bookmode hfwait"><p>The Head First chapter didn't load. Check your connection and try again.</p></div>`;
+    if (!ready) return html`<div className="bookmode hfwait" aria-busy="true"><p>Opening the Head First chapter…</p></div>`;
+    return html`<${window.HF.Book} k=${k} n=${n} kit=${kit} lang=${lang} setLang=${setLang} onClose=${close} />`;
+  }
+  function HeadFirstShelf({ k, go }) {
+    const c = C[k], have = new Set(M[k].hf || []);
+    const [lang, setLang] = usePersist('hflang', 'en');
+    // the language can also be switched inside the open book, so follow the stored value
+    useEffect(() => { const f = () => setLang(store.get('hflang', 'en')); window.addEventListener('sd-store', f); return () => window.removeEventListener('sd-store', f); }, []);
+    const ar = lang === 'ar';
+    const warm = () => { loadHF(k).catch(() => {}); if (ar) { arFont(); loadAr(k).catch(() => {}); } };
+    return html`<section className=${'hfshelf' + (ar ? ' ar-on' : '')} aria-label="Head First chapters">
+      <div className="hfs-top">
+        <div className="hfs-intro" dir=${ar ? 'rtl' : 'ltr'} lang=${ar ? 'ar' : 'en'}>
+          <p className="eyebrow">Head First</p>
+          ${ar ? html`<h2>المحاضرات بطريقة Head First</h2>
+            <p>الصور الأول، كلام دردشة، شخصيات بتتخانق، أسئلة "شغّل مخك"، فخاخ الامتحان في "خلّي بالك!"، تمارين بتحلها على الصفحة نفسها، والـ animations بتاعة المحاضرة. كل فصل بيفتح ككتاب بتقلّب صفحاته من اليمين للشمال.</p>`
+          : html`<h2>The lectures, the Head First way</h2>
+            <p>Pictures first, a chatty voice, characters who argue, Brain Power questions, "Watch it!" exam traps, exercises you do right on the page, and the lecture's animated visuals. Each chapter opens as a book you flip through.</p>`}
+        </div>
+        <div className="hfs-lang" role="tablist" aria-label="Language of the chapters">
+          <button role="tab" aria-selected=${String(!ar)} onClick=${() => setLang('en')} lang="en">English</button>
+          <button role="tab" aria-selected=${String(ar)} onClick=${() => { arFont(); setLang('ar'); }} lang="ar">العربي</button>
+        </div>
+      </div>
+      <ol className="hfs-list">${c.lectures.map(l => { const on = have.has(l.n);
+        return html`<li key=${l.n}><button className=${'hfcover' + (on ? '' : ' soon')} disabled=${!on} onClick=${() => go({ hf: l.n })} onPointerEnter=${on ? warm : null} onFocus=${on ? warm : null}>
+          <span className="hfc-top"><span className="hfc-hf">Head First</span><span className="hfc-n">${l.n}</span></span>
+          <span className="hfc-t">${cleanTitle(l.title)}</span>
+          <span className="hfc-foot" lang=${ar ? 'ar' : 'en'} dir=${ar ? 'rtl' : 'ltr'}>${on ? (ar ? 'افتح الفصل بالعربي ←' : 'Open the chapter →') : (ar ? 'قريبًا' : 'Coming soon')}</span>
+        </button></li>`; })}</ol>
+    </section>`;
   }
 
   const BOOK_FS = { s: 15.5, m: 17, l: 19 };

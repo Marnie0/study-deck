@@ -1086,6 +1086,40 @@ html.vt-theme::view-transition-old(topbar), html.vt-theme::view-transition-new(t
 @media (max-width:640px){ .hide-s{ display:none; } .bbar{ flex-wrap:wrap; row-gap:6px; } .bsel{ order:5; flex-basis:100%; width:100%; max-width:100%; } .bplabel .lf{ display:none; } .bplabel .ls{ display:inline; } .bfoot{ gap:10px; } .bfoot input[type="range"]{ width:auto; flex:1; min-width:60px; } .bfoot input[type="range"]{ width:34vw; } .bplabel{ min-width:0; } .btitle b{ font-size:.98rem; } }
 @media (prefers-reduced-motion: reduce){ .bookmode{ animation:none; } .bleaf{ transition:none; } .bleaf.go .bface::after{ animation:none; } }
 
+/* ───── Head First: the tab of chapter covers, the Notes button, and the loading screen (the book itself is styled by hf.js) ───── */
+.tbtn.hfbtn{ color:var(--ink); }
+.hfmark{ display:inline-grid; place-items:center; height:18px; padding:0 4px; border-radius:4px; background:#C62828; color:#fff; font-size:.66rem; font-weight:800; letter-spacing:.02em; }
+.hfwait{ align-items:center; justify-content:center; color:var(--ink); font-size:1rem; }
+.hfshelf{ display:grid; gap:22px; }
+.hfs-top{ display:flex; gap:18px; align-items:flex-end; justify-content:space-between; flex-wrap:wrap; }
+.hfs-intro{ max-width:720px; flex:1 1 420px; }
+.hfs-intro[dir="rtl"]{ font-family:"IBM Plex Sans Arabic", var(--body); text-align:right; }
+.hfs-intro[dir="rtl"] h2{ font-family:"IBM Plex Sans Arabic", var(--body); font-weight:600; letter-spacing:0; line-height:1.3; }
+.hfs-intro[dir="rtl"] p:last-child{ line-height:1.8; }
+.hfs-lang{ display:inline-flex; padding:4px; gap:4px; border-radius:12px; background:var(--paper); border:1px solid var(--line); box-shadow:var(--shadow-sm); flex:none; }
+.hfs-lang button{ white-space:nowrap; border:0; border-radius:9px; background:none; cursor:pointer; height:38px; padding:0 18px; font:inherit; font-size:.95rem; font-weight:600; color:var(--graphite); }
+.hfs-lang button[lang="ar"]{ font-family:"IBM Plex Sans Arabic", var(--body); }
+.hfs-lang button[aria-selected="true"]{ background:var(--s); color:var(--on-s); }
+.hfc-foot[dir="rtl"]{ font-family:"IBM Plex Sans Arabic", var(--body); }
+.hfs-intro h2{ font-size:clamp(1.5rem, 3.6vw, 2.1rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin:6px 0 8px; }
+.hfs-intro p:last-child{ color:var(--graphite); line-height:1.55; margin:0; }
+.hfs-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(168px, 1fr)); gap:18px; }
+.hfcover{ position:relative; width:100%; aspect-ratio:3/4; display:flex; flex-direction:column; gap:10px; padding:14px 14px 14px 22px; border:0; border-radius:4px 10px 10px 4px; text-align:left; cursor:pointer; font:inherit; color:#fff;
+  background:linear-gradient(150deg, color-mix(in srgb, var(--s) 82%, #fff) 0%, var(--s) 45%, color-mix(in srgb, var(--s) 62%, #000) 100%);
+  box-shadow:inset 7px 0 0 rgba(0,0,0,.22), inset 9px 0 0 rgba(255,255,255,.12), 0 14px 26px -14px rgba(0,0,0,.55), 0 2px 5px rgba(0,0,0,.14); transition:transform .18s ease, box-shadow .18s ease; }
+.hfcover:not(:disabled):hover{ transform:translateY(-4px) rotate(-.6deg); box-shadow:inset 7px 0 0 rgba(0,0,0,.22), inset 9px 0 0 rgba(255,255,255,.12), 0 22px 34px -16px rgba(0,0,0,.6), 0 2px 5px rgba(0,0,0,.14); }
+.hfcover:focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+.hfc-top{ display:flex; justify-content:space-between; align-items:flex-start; }
+.hfc-hf{ background:#C62828; color:#fff; font-weight:800; font-size:.8rem; letter-spacing:.02em; padding:3px 7px; border-radius:3px; transform:rotate(-3deg); box-shadow:0 2px 0 rgba(0,0,0,.2); }
+.hfc-n{ font-weight:800; font-size:2.6rem; line-height:.85; color:transparent; -webkit-text-stroke:1.6px rgba(255,255,255,.9); }
+.hfc-t{ font-weight:800; font-size:1.12rem; line-height:1.15; letter-spacing:-.01em; flex:1; text-wrap:balance; }
+.hfc-foot{ font-size:.85rem; font-weight:600; opacity:.95; }
+.hfcover.soon{ cursor:default; color:var(--graphite); background:var(--paper-2); box-shadow:inset 7px 0 0 var(--line), 0 0 0 1px var(--line); }
+.hfcover.soon .hfc-hf{ background:var(--line); color:var(--graphite); box-shadow:none; }
+.hfcover.soon .hfc-n{ -webkit-text-stroke-color:var(--faint); }
+@media (max-width:520px){ .hfs-list{ grid-template-columns:repeat(2, 1fr); gap:12px; } .hfc-t{ font-size:1rem; } .hfc-n{ font-size:2.1rem; } }
+@media (prefers-reduced-motion: reduce){ .hfcover{ transition:none; } .hfcover:not(:disabled):hover{ transform:none; } }
+
 /* ───── Egyptian Arabic explanations (under the English) ───── */
 .ar{ display:block; direction:rtl; text-align:right; unicode-bidi:isolate; font-family:"IBM Plex Sans Arabic", "Noto Sans Arabic", "Segoe UI", Tahoma, sans-serif; font-weight:400; font-size:.95em; line-height:1.85; color:var(--ink);
   margin-top:.35em; padding:.15em .75em .15em 0; border-right:2px solid color-mix(in srgb, var(--c) 45%, transparent); letter-spacing:0; text-transform:none; }

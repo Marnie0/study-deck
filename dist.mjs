@@ -35,7 +35,7 @@ if ((page.match(GOOGLE_FONTS) || []).length !== 5) throw new Error('index.html f
 const fontCss = readFileSync('vendor/fonts/main.css', 'utf8').replaceAll('__BASE__', 'vendor/fonts/').trim();
 // the Arabic and Book-view faces load only when needed, so their rules go to app.js as text (window.FONT_CSS), not into the page
 const lazyFont = f => readFileSync('vendor/fonts/' + f, 'utf8').replaceAll('url(', 'url(vendor/fonts/').replace(/\n+/g, '');
-const FONT_CSS = { ar: lazyFont('ar.css'), book: lazyFont('book.css') };
+const FONT_CSS = { ar: lazyFont('ar.css'), book: lazyFont('book.css'), hf: lazyFont('hf.css') };
 page = page
   .replace(GOOGLE_FONTS, '')
   .replace('<style>', `<link rel="preload" href="vendor/fonts/outfit-400-latin-v15.woff2" as="font" type="font/woff2" crossorigin>\n<style>\n${fontCss}\n</style>\n<style>`)
