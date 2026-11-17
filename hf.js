@@ -63,7 +63,7 @@
 .hf-dumbt b{ display:block; font:800 21px/1.05 var(--body); letter-spacing:-.01em; }
 .hf-q{ font:700 14.5px/1.32 var(--body); margin:7px 0 2px; } .hf-q:first-of-type{ margin-top:0; }
 .hf-a{ font-size:14.5px; line-height:1.36; margin:0; }
-.hf-q::before{ content:"Q: "; } .hf-a::before{ content:"A: "; font:700 14.5px var(--body); } .hf-ar .hf-q::before{ content:"س: "; } .hf-ar .hf-a::before{ content:"ج: "; }
+.hf-q::before{ content:"Q: "; } .hf-a::before{ content:"A: "; font:700 14.5px var(--body); } .hf-ar .hf-q::before{ content:"س: "; font-family:"IBM Plex Sans Arabic", var(--body); } .hf-ar .hf-a::before{ content:"ج: "; font-family:"IBM Plex Sans Arabic", var(--body); }
 .hf-bullets{ background:var(--hf-grey); border:0; padding:12px 14px; }
 .hf-bullets .hf-tag{ font-size:17px; }
 .hf-bullets ul{ list-style:none; margin:0; padding:0; }
@@ -199,7 +199,7 @@
 .hf-ar .hf-iv-l{ line-height:1.5; } .hf-ar .hf-iv-l > b:first-child{ margin-right:0; margin-left:5px; text-transform:none; font-family:"IBM Plex Sans Arabic", var(--body); }
 .hf-ar .hf-ul{ padding-left:0; padding-right:1.1em; list-style:none; }
 /* Chrome paints list markers on the wrong side inside the mirrored book, so Arabic lists draw their own dots */
-.hf-ar .hf-ul > li{ position:relative; } .hf-ar .hf-ul > li::before{ content:""; position:absolute; right:-.85em; top:.72em; width:5px; height:5px; border-radius:50%; background:var(--hf-k); }
+.hf-ar .hf-ul > li{ margin-right:-1.1em; padding-right:1.1em; background:radial-gradient(circle, var(--hf-k) 2.6px, transparent 3.1px) no-repeat right .25em top .62em / 7px 7px; }
 .hf-ar .hf-bullets li{ padding-left:0; padding-right:16px; } .hf-ar .hf-bullets li::before{ left:auto; right:2px; top:.6em; }
 .hf-ar .hf-mcq .hf-why[dir="rtl"]{ font-family:"IBM Plex Sans Arabic", var(--body); padding-left:0; padding-right:9px; border-left:0; border-right:3px solid var(--hf-k); text-align:right; }
 .hf-ar .hf-code, .hf-ar .hf-tok, .hf-ar .hf-line pre, .hf-ar .hf-line .tr{ direction:ltr; text-align:left; }
@@ -296,7 +296,7 @@
       const ar = useAr();
       const tag = ar
         ? { brain: [ICON.brain, 'شغّل مخك'], watch: [ICON.watch, 'خلّي بالك!'], relax: [ICON.relax, 'ريّح دماغك'], pencil: [ICON.pencil, 'امسك القلم'], exam: [ICON.exam, title || 'من الامتحانات اللي فاتت'], bullets: [ICON.bullets, 'الخلاصة'] }[kind]
-        : { brain: [ICON.brain, 'Brain Power'], watch: [ICON.watch, 'Watch it!'], relax: [ICON.relax, 'Relax'], pencil: [ICON.pencil, 'Sharpen your pencil'], exam: [ICON.exam, title || "From the doctor's papers"], bullets: [ICON.bullets, 'Bullet points'] }[kind];
+        : { brain: [ICON.brain, 'Brain Power'], watch: [ICON.watch, 'Watch it!'], relax: [ICON.relax, 'Relax'], pencil: [ICON.pencil, 'Sharpen your pencil'], exam: [ICON.exam, title || 'From past exams'], bullets: [ICON.bullets, 'Bullet points'] }[kind];
       return html`<div className=${'hf-box hf-in hf-' + kind}>
         ${tag && html`<p className="hf-tag">${tag[0]}<span>${title && kind !== 'exam' ? title : tag[1]}</span></p>`}
         ${children}</div>`;
