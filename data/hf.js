@@ -63,7 +63,7 @@
 .hf-dumbt b{ display:block; font:800 21px/1.05 var(--body); letter-spacing:-.01em; }
 .hf-q{ font:700 14.5px/1.32 var(--body); margin:7px 0 2px; } .hf-q:first-of-type{ margin-top:0; }
 .hf-a{ font-size:14.5px; line-height:1.36; margin:0; }
-.hf-q::before{ content:"Q: "; } .hf-a::before{ content:"A: "; font:700 14.5px var(--body); }
+.hf-q::before{ content:"Q: "; } .hf-a::before{ content:"A: "; font:700 14.5px var(--body); } .hf-ar .hf-q::before{ content:"س: "; } .hf-ar .hf-a::before{ content:"ج: "; }
 .hf-bullets{ background:var(--hf-grey); border:0; padding:12px 14px; }
 .hf-bullets .hf-tag{ font-size:17px; }
 .hf-bullets ul{ list-style:none; margin:0; padding:0; }
@@ -318,6 +318,26 @@
   // one of the lecture's own visuals (figs-*.js), with an optional headline; the book passes in the site's FigBlock
   // A visual can grow as you step through it, so it gets the rest of the page and shrinks (down to `min`) whenever it would spill over;
   // past that it scrolls inside its frame, so its text never gets too small to read.
+  // The site's visuals switch to their narrow layout with viewport media queries (max-width 360–700px). A book page is always
+  // narrow, even on a wide screen, so copy those narrow-layout rules under the book's figure frame (.hf-figin) once each visual's stylesheet has loaded.
+  const seenMedia = new WeakSet(); let narrowCss = null;
+  const narrowFigs = () => {
+    for (const sh of document.styleSheets) {
+      if (sh.ownerNode && sh.ownerNode.id === 'hf-narrow') continue;
+      let rules; try { rules = sh.cssRules; } catch (e) { continue; }
+      for (const r of rules) {
+        if (!(r instanceof CSSMediaRule) || seenMedia.has(r)) continue;
+        seenMedia.add(r);
+        const m = /^\s*\(max-width:\s*(\d+)px\)\s*$/.exec(r.conditionText || r.media.mediaText); if (!m || +m[1] < 360 || +m[1] > 700) continue;
+        if (!narrowCss) { narrowCss = document.createElement('style'); narrowCss.id = 'hf-narrow'; document.head.appendChild(narrowCss); }
+        for (const x of r.cssRules) {
+          if (!(x instanceof CSSStyleRule) || /\.hf|\.bpage|\.bbook|\.book|body|html|:root/.test(x.selectorText)) continue;
+          const sel = x.selectorText.split(',').map(t => '.hfb .hf-figin ' + t.trim()).join(', ');
+          try { narrowCss.sheet.insertRule(sel + '{' + x.style.cssText + '}', narrowCss.sheet.cssRules.length); } catch (e) {}
+        }
+      }
+    }
+  };
   K.Fig = function Fig({ name, head, min = 0.8 }) {
     const kit = useContext(Kit);
     const box = useRef(null), inner = useRef(null);
@@ -327,6 +347,7 @@
       const b = box.current, i = inner.current; if (!b || !i || typeof ResizeObserver !== 'function') return;
       let last = 0;
       const fit = () => {
+        narrowFigs();
         const avail = b.clientHeight, h = i.offsetHeight; if (!avail || h < 20) return;
         let ns = Math.max(min, Math.min(1, avail / h));
         const cur = sRef.current;
@@ -418,8 +439,10 @@
     const ar = useAr();
     if (!q) return null;
     const strip = s => String(s).replace(/<[^>]+>/g, '');
+    // the book has little room: long source notes ("Student summary "…" …, listed there as a midterm question; answer checked…") keep only their gist
+    const shortSrc = s => { const h = s.split(';')[0].trim(); if (!/^Student summary/.test(h)) return h; const m = h.match(/listed there as (?:an? )?(.*)$/); return 'Student summary' + (m ? ': ' + m[1] : ''); };
     return html`<div className="hf-mcq hf-in" dir="ltr">
-      ${q.src && html`<p className="src">${strip(q.src)}</p>`}
+      ${q.src && html`<p className="src">${shortSrc(strip(q.src))}</p>`}
       <p className="q">${T(q.q)}</p>
       <div className="hf-opts">${q.o.map((o, j) => html`<button key=${j} className=${p == null ? '' : j === q.a ? 'ok' : j === p ? 'no' : ''} onClick=${() => p == null && setP(j)} aria-pressed=${String(p === j)}>${String.fromCharCode(65 + j)}. ${T(o[0])}${p != null && j === q.a ? ' ✓' : ''}</button>`)}</div>
       ${p != null && (ar && why && why[p] ? html`<p className="hf-why" dir="rtl" lang="ar">${T(why[p])}</p>` : html`<p className="hf-why" dir="ltr">${T(q.o[p][1])}</p>`)}
