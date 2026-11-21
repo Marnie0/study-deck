@@ -3002,3 +3002,525 @@ EXTRA.fp = {
   }
  ]
 };
+
+// Final revision practice questions (2026-11-21), appended per lecture
+EXTRA.fp["5"] = (EXTRA.fp["5"] || []).concat([
+ {
+  "q": "What is the main motivation for using hashing?",
+  "o": [
+   [
+    "To improve search time",
+    "Correct. The lecture: hashing is a searching technique for implementing indexes, and its main motivation is to improve search time (L5, Why hashing?)."
+   ],
+   [
+    "To keep the records sorted by key",
+    "Hashing does the opposite: it destroys key order, which is why a hashed range search scans the whole file (L5, Hashed file costs)."
+   ],
+   [
+    "To save disk space",
+    "A hashed file takes MORE pages, not fewer: buckets are kept about 80% full, so it needs 1.25B pages (L5)."
+   ],
+   [
+    "To allow duplicate records",
+    "Allowing duplicates is the serious disadvantage of the heap file (L4), not a goal of hashing."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Hashing is described in the lecture as a useful searching technique for implementing:",
+  "o": [
+   [
+    "Sorting algorithms",
+    "Hashing scatters records by h(k); it does not sort them, and it destroys key order (L5)."
+   ],
+   [
+    "Indexes",
+    "Correct. \"Hashing is a useful searching technique for implementing indexes\" (L5, Why hashing?)."
+   ],
+   [
+    "Data compression",
+    "Nothing in the lecture compresses data; hashing computes an address from a key (L5)."
+   ],
+   [
+    "Encryption of keys",
+    "The hash function here is for addressing, not security; it maps a key to an address (L5)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which list orders the search techniques from SLOWEST to FASTEST, as the lecture compares them?",
+  "o": [
+   [
+    "Hashing O(1), B-tree O(log_k N), simple index O(log N)",
+    "This is the order from fastest to slowest, reversed."
+   ],
+   [
+    "B-tree O(log_k N), simple index O(log N), hashing O(1)",
+    "With k > 2, log_k N is smaller than log₂ N, so the B-tree is faster than a simple index with binary search, not slower (L5)."
+   ],
+   [
+    "Simple index O(log N), B-tree O(log_k N), hashing O(1)",
+    "Correct. Simple index with binary search O(log N), then B-trees O(log_k N), then hashing O(1), which computes the address directly (L5, Why hashing?)."
+   ],
+   [
+    "Simple index O(log N), hashing O(1), B-tree O(log_k N)",
+    "O(1) does not grow with N at all, so hashing is the fastest, not in the middle (L5)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A B-tree with k = 100 indexes N = 1,000,000 keys. Using the lecture's search time O(log_k N), about how many levels does a search visit?",
+  "o": [
+   [
+    "20",
+    "20 ≈ log₂ 1,000,000: that is the simple index with binary search, O(log N), not the B-tree (L5)."
+   ],
+   [
+    "6",
+    "6 = log₁₀ 1,000,000: this used base 10 instead of base k = 100."
+   ],
+   [
+    "1",
+    "1 is the hashing case, O(1): compute the address directly. A B-tree still walks its levels (L5)."
+   ],
+   [
+    "3",
+    "Correct. log₁₀₀ 1,000,000 = log₁₀₀ (100³) = 3 levels."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "A hash function h(k) transforms:",
+  "o": [
+   [
+    "An address into a key",
+    "Backwards: the input is the key and the output is the address (L5, What is hashing?)."
+   ],
+   [
+    "A key into an address",
+    "Correct. h(k) transforms a key into an address in the address space chosen beforehand (L5)."
+   ],
+   [
+    "A record into a bucket size",
+    "A bucket's size is a storage property; h(k) produces an address from the key (L5)."
+   ],
+   [
+    "A page number into a key",
+    "Pages are counted by B in the cost model; h(k) goes from key to address, not from page to key (L4, L5)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "The address space of a hash file is chosen beforehand as 500 addresses. What is the largest home address h(k) can return?",
+  "o": [
+   [
+    "500",
+    "Off by one: addresses start at 0, so 500 addresses are 0..499 (like 1000 addresses → {0, …, 999} on the slide)."
+   ],
+   [
+    "499",
+    "Correct. h maps every key to {0, 1, …, 499}; the remainder of dividing by 500 is at most 499."
+   ],
+   [
+    "19936",
+    "19936 is the largest remainder of % 19937, the overflow step; the final % 500 brings it into 0..499 (L5)."
+   ],
+   [
+    "1",
+    "1 would mean only two addresses; the remainder of dividing by 500 can be anything from 0 to 499."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A 6-character version of the course hash is used:<pre>sum = 0;\nfor (j = 0; j &lt; 6; j += 2)\n  sum += key[j] * key[j+1];\nsum = sum % 19937;\nreturn sum % maxAddress;</pre>With X = 88 and Y = 89, what is the home address of <code>\"XYXYXY\"</code> when maxAddress = 1000?",
+  "o": [
+   [
+    "496",
+    "This skipped sum % 19937: 23,496 % 1000 = 496. The sum is larger than 19937, so the prime step changes it (L5)."
+   ],
+   [
+    "3559",
+    "This skipped the final % maxAddress; 3559 is outside the address space 0..999."
+   ],
+   [
+    "832",
+    "This used only the first pair: 88 × 89 = 7832, 7832 % 1000 = 832. All three pairs must be added."
+   ],
+   [
+    "559",
+    "Correct. 88 × 89 = 7832, three pairs → 23,496; 23,496 % 19937 = 3559; 3559 % 1000 = 559."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "After folding, a key's sum is 45,000. Following the course hash, what is its home address when maxAddress = 101?",
+  "o": [
+   [
+    "76",
+    "Correct. 45,000 % 19937 = 5126 (45,000 − 39,874); 5126 % 101 = 76 (5126 − 5050)."
+   ],
+   [
+    "55",
+    "This skipped the prime step: 45,000 % 101 = 55. The course divides by 19937 first (L5, Simple hash function)."
+   ],
+   [
+    "5126",
+    "This stopped after % 19937; the final % maxAddress is still needed to get an address in 0..100."
+   ],
+   [
+    "50",
+    "50 is the quotient 5126 / 101 ≈ 50, not the remainder. The home address is the remainder."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which order matches the three steps of the lecture's simple hash function?",
+  "o": [
+   [
+    "Divide by the address-space size → fold and add → represent the key numerically",
+    "The remainder by the address-space size is the LAST step: it gives the home address (L5)."
+   ],
+   [
+    "Represent the key numerically → fold and add (divide by the prime 19937) → divide by the address-space size and keep the remainder",
+    "Correct. Step 1 pairs of characters as numbers, step 2 fold and add with % 19937 against overflow, step 3 remainder = home address (L5)."
+   ],
+   [
+    "Fold and add → represent the key numerically → divide by 19937",
+    "You cannot fold and add characters before turning them into numbers; and the last step divides by the address-space size, not by 19937 (L5)."
+   ],
+   [
+    "Represent the key numerically → divide by the address-space size → divide by 19937",
+    "The prime division comes before the address-space division; dividing by 19937 last could give an address outside the address space (L5)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "For a 12-character key, which loop header matches the model hash function (each step combines one pair of characters)?",
+  "o": [
+   [
+    "for (int j = 0; j &lt; 12; j += 2)",
+    "Correct. j = 0, 2, 4, 6, 8, 10: six pairs key[j], key[j+1], each character used once."
+   ],
+   [
+    "for (int j = 0; j &lt; 12; j++)",
+    "Stepping by 1 overlaps the pairs (0-1, 1-2, …) and at j = 11 reads key[12], one past the array."
+   ],
+   [
+    "for (int j = 0; j &lt;= 12; j += 2)",
+    "j = 12 is one step too many: it reads key[12] and key[13], outside char key[12]."
+   ],
+   [
+    "for (int j = 0; j &lt; 6; j += 2)",
+    "This stops at j = 4, so it combines only the first 6 characters (3 pairs) of the 12."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Using the course's last step with h(k) = k mod 7, which key is a synonym of 45?",
+  "o": [
+   [
+    "52",
+    "Correct. 45 mod 7 = 3 and 52 mod 7 = 3: same address, so the two keys collide and are synonyms."
+   ],
+   [
+    "49",
+    "49 mod 7 = 0, address 0. Being near a multiple of 7 does not matter; only equal remainders collide."
+   ],
+   [
+    "46",
+    "46 mod 7 = 4. Neighbouring keys usually get different addresses: there is no obvious connection between key and location (L5)."
+   ],
+   [
+    "35",
+    "35 mod 7 = 0, address 0, not 3."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Keys 12, 25, 38 and 40 are inserted in that order into an empty hash file with h(k) = k mod 13. How many inserts land on an address that already holds a key (collisions)?",
+  "o": [
+   [
+    "3",
+    "3 counts every key that maps to address 12 (12, 25, 38); the first one, 12, lands on an empty address, so it is not a collision."
+   ],
+   [
+    "1",
+    "Both 25 and 38 hit address 12 after 12 is stored, so there are two collisions, not one."
+   ],
+   [
+    "2",
+    "Correct. 12 → 12 (empty), 25 → 12 (collision), 38 → 12 (collision), 40 → 1 (empty)."
+   ],
+   [
+    "0",
+    "12, 25 and 38 all give remainder 12 when divided by 13, so collisions do happen."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A collision is the name given to the keys that hash to the same address.",
+  "o": [
+   [
+    "True",
+    "False is correct: the KEYS that collide are called synonyms; the collision is the event of two different keys getting the same address (L5, Collisions)."
+   ],
+   [
+    "False",
+    "Correct. A collision is the event (two different keys transformed into the same address); the keys themselves are synonyms."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In a hash file organization, a bucket can hold only one record.",
+  "o": [
+   [
+    "True",
+    "False is correct: the lecture defines a bucket as a unit of storage that can hold one OR MORE records (L5, What is hashing?)."
+   ],
+   [
+    "False",
+    "Correct. A bucket is a unit of storage that can store one or more records in a hash file."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A hashed file has B = 80 pages, D = 10 ms, R = 20 records/page, C = 0.5 ms. What does a scan cost?",
+  "o": [
+   [
+    "1600 ms",
+    "1600 = B(D + RC) = 80 × 20, the heap/sorted scan. The hashed scan multiplies by 1.25 because buckets are ~80% full."
+   ],
+   [
+    "2000 ms",
+    "Correct. 1.25 × 80 × (10 + 20 × 0.5) = 1.25 × 80 × 20 = 2000 ms."
+   ],
+   [
+    "800 ms",
+    "800 = 0.5B(D + RC), the heap equality search (half the file); a scan reads every page."
+   ],
+   [
+    "1010 ms",
+    "1010 = 1.25 × 80 × 10 + 20 × 0.5: the RC term was added once instead of being multiplied by the pages."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A file fills 400 pages completely as a heap file. Stored as a hashed file whose buckets are kept about 80% full, about how many pages does it take?",
+  "o": [
+   [
+    "320",
+    "320 = 400 × 0.8: multiplying by 80% shrinks the file, but partly empty buckets need MORE pages."
+   ],
+   [
+    "480",
+    "480 = 400 × 1.2 adds 20%; the right factor is 1 / 0.8 = 1.25."
+   ],
+   [
+    "400",
+    "400 assumes the buckets are full; they are kept about 80% full, so more pages are needed."
+   ],
+   [
+    "500",
+    "Correct. 400 / 0.8 = 400 × 1.25 = 500 pages, which is where the 1.25B in the hashed scan comes from."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Which operation on a hashed file has exactly the same cost as its scan, 1.25B(D + RC)?",
+  "o": [
+   [
+    "Equality search",
+    "Equality search reads one page: H + D + 0.5RC (L5, Hashed file costs)."
+   ],
+   [
+    "Insert",
+    "Insert is search + C + D: find the bucket, add the record, write the page back (L5)."
+   ],
+   [
+    "Range search",
+    "Correct. Hashing does not keep key order, so records in a range can be in any bucket and every page is read: 1.25B(D + RC)."
+   ],
+   [
+    "Delete",
+    "Delete is search + C + D, like insert (L5)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A hashed file has H = 1 ms, D = 10 ms, R = 20 records/page, C = 0.5 ms. Taking the search as the equality search H + D + 0.5RC, what does an insert (search + C + D) cost?",
+  "o": [
+   [
+    "20.5 ms",
+    "20.5 = 2D + C is the HEAP insert (read the last page, add, write back); a hashed insert first computes h(k) and searches the bucket."
+   ],
+   [
+    "16 ms",
+    "16 ms is only the search (1 + 10 + 5); the C to add the record and the D to write the page back are missing."
+   ],
+   [
+    "26.5 ms",
+    "Correct. Search = 1 + 10 + 0.5 × 20 × 0.5 = 16; insert = 16 + 0.5 + 10 = 26.5 ms."
+   ],
+   [
+    "36.5 ms",
+    "36.5 adds D twice after the search (16 + 0.5 + 20); the page was already read in the search, so only one D to write it back."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Why does the hashed-file insert cost search + C + D?",
+  "o": [
+   [
+    "Find the bucket the record belongs to (search), add the record (C), and write the page back (D)",
+    "Correct. The same pattern as the heap delete: search, process the record, write one page (L4–L5 cost table)."
+   ],
+   [
+    "Read the last page, add the record and write it back, with no search",
+    "That is the heap insert 2D + C: a heap appends at the end, but a hashed record must go to the bucket h(k) picks (L4)."
+   ],
+   [
+    "Binary search for the place, then shift half the file",
+    "That is the sorted-file insert, search + 2 × 0.5B(D + RC) (L4)."
+   ],
+   [
+    "Scan every page, since hashing destroys key order",
+    "Only the scan and the range search read every page; an insert goes straight to one bucket (L5)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A file has B = 1024 pages, R = 16 records/page, D = 10 ms, C = 1 ms, H = 1 ms. Using the cost table, which organization gives the cheapest equality search, and what does it cost?",
+  "o": [
+   [
+    "Sorted file, 104 ms",
+    "104 ms = 10 × log₂1024 + 1 × log₂16 = 100 + 4 is the sorted equality search: cheaper than the heap, but not the cheapest."
+   ],
+   [
+    "Heap file, 13,312 ms",
+    "13,312 ms = 0.5 × 1024 × (10 + 16) is the heap equality search: the most expensive of the three."
+   ],
+   [
+    "Hashed file, 1 ms",
+    "1 ms is only H, the time to compute the hash; reading the page (D) and checking records (0.5RC) are missing."
+   ],
+   [
+    "Hashed file, 19 ms",
+    "Correct. H + D + 0.5RC = 1 + 10 + 0.5 × 16 × 1 = 19 ms, against 104 ms sorted and 13,312 ms heap."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Why does a hashed equality search read only ONE page (a single D)?",
+  "o": [
+   [
+    "The pages are binary-searched, and the record is always found on the first try",
+    "Binary search over the pages is the SORTED file (D·log₂B); a hashed file does not search the pages at all (L4)."
+   ],
+   [
+    "The hash function computes the record's address (its bucket) directly from the key",
+    "Correct. h(k) gives the bucket, so only that page is read (D), and half its records are checked on average (0.5RC)."
+   ],
+   [
+    "The whole file is read into memory first",
+    "Reading the whole file is a scan, 1.25B(D + RC); equality search avoids it (L5)."
+   ],
+   [
+    "Hashed files have only one page",
+    "A hashed file has 1.25B pages; the search just goes straight to one of them (L5)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Hashing keeps the records in key order, so a range search on a hashed file can stop early.",
+  "o": [
+   [
+    "True",
+    "False is correct: hashing destroys key order, so a hashed range search must scan the whole file, 1.25B(D + RC) (L5, Hashed file costs)."
+   ],
+   [
+    "False",
+    "Correct. With no key order, the records of a range can be in any bucket, so every page is read."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "With hashing, doubling the number of records roughly doubles the search time.",
+  "o": [
+   [
+    "True",
+    "False is correct: hashing search time is O(1); it does not grow with N. Doubling with N is sequential search, O(n) (L3, L5)."
+   ],
+   [
+    "False",
+    "Correct. h(k) computes the address directly, so the search time stays O(1) whatever the number of records."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A hashed file has B = 40, R = 10, D = 10 ms, C = 1 ms, H = 1 ms. Using the cost table's equality search (H + D + 0.5RC) as the search term, what does a delete (search + C + D) cost?",
+  "o": [
+   [
+    "1011 ms",
+    "1011 = 1.25 × 40 × 20 + 1 + 10 is the Model C model-answer form, which puts the hashed SCAN in place of the search; this question uses the equality search."
+   ],
+   [
+    "16 ms",
+    "16 ms is only the search (1 + 10 + 5); deleting the record (C) and writing the page back (D) are missing."
+   ],
+   [
+    "27 ms",
+    "Correct. Search = 1 + 10 + 0.5 × 10 × 1 = 16; delete = 16 + 1 + 10 = 27 ms."
+   ],
+   [
+    "21 ms",
+    "21 = 2D + C is the heap insert, not a hashed delete."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Compared with the heap insert (2D + C), why does the hashed insert begin with a search term?",
+  "o": [
+   [
+    "A hashed file must be sorted before every insert",
+    "Hashing never sorts the file; it scatters records by h(k) (L5)."
+   ],
+   [
+    "The new record cannot simply go at the end: it must go to the bucket h(k) picks, so that bucket has to be found and read first",
+    "Correct. Heap: no order, append to the last page (2D + C). Hashed: compute h(k) and read that bucket (search), then C + D."
+   ],
+   [
+    "The whole file has to be scanned to check for duplicates",
+    "Neither cost formula scans the file for an insert; the heap even allows duplicates (L4)."
+   ],
+   [
+    "The heap insert is wrong; both cost the same",
+    "The table gives different costs: heap 2D + C, hashed search + C + D (L4–L5)."
+   ]
+  ],
+  "a": 1
+ }
+]);

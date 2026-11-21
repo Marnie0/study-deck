@@ -3954,3 +3954,2013 @@ EXTRA.hci = {
   }
  ]
 };
+
+// Final revision practice questions (2026-11-21), appended per lecture
+EXTRA.hci["7"] = (EXTRA.hci["7"] || []).concat([
+ {
+  "q": "Compared with surveys, how many users can interviews reach?",
+  "o": [
+   [
+    "About the same number, since both ask questions",
+    "Both ask questions, but the lecture says far fewer users can be interviewed than surveyed (L7, Interviews)."
+   ],
+   [
+    "Far fewer users",
+    "Correct. Far fewer users can be interviewed than surveyed, because each interview takes the interviewer's time."
+   ],
+   [
+    "Far more users",
+    "Reversed. Reaching a large number of users quickly is the strength of surveys (L5, Surveys)."
+   ],
+   [
+    "Only users of past systems",
+    "Interviews are not limited to past systems; the limit the lecture gives is the number of users (L7, Interviews)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Interviews are cheaper than surveys because they need only a few participants.\"",
+  "o": [
+   [
+    "True",
+    "Fewer participants does not mean cheaper: interviews are more expensive because they are synchronous and need incentives (L7, Interviews)."
+   ],
+   [
+    "False",
+    "Correct. Interviews are more expensive: the interviewer devotes time to each interviewee, and interviewees often expect compensation."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which of these is <b>NOT</b> a reason the lecture gives for interviews offering a deeper understanding?",
+  "o": [
+   [
+    "More open-ended and \"why\" questions",
+    "This is one of the reasons listed for the deeper understanding (L7, Interviews)."
+   ],
+   [
+    "Room for follow-up questions",
+    "This is one of the reasons listed for the deeper understanding (L7, Interviews)."
+   ],
+   [
+    "Reflection on rare events",
+    "This is one of the reasons listed for the deeper understanding (L7, Interviews)."
+   ],
+   [
+    "Reaching a large number of users quickly",
+    "Correct. That is the strength of surveys. Interviews reach far fewer users."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "The lecture calls interviews <b>synchronous</b>. What does this mean here?",
+  "o": [
+   [
+    "The interviewer devotes time to each interviewee",
+    "Correct. Synchronous means the interviewer spends time with every interviewee, which is one reason interviews cost more."
+   ],
+   [
+    "Questions are emailed and answered later",
+    "Answering later is asynchronous, which is how online surveys work, not interviews (L5, Surveys)."
+   ],
+   [
+    "All interviewees answer together in one batch",
+    "That describes a group session, not the meaning of synchronous. The point is the interviewer's time per person (L7, Interviews)."
+   ],
+   [
+    "Software collects the data automatically",
+    "Nothing is automatic in an interview; a person asks and a person takes notes (L7, Tips for a good interview)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> In an interview, a user says she checks her budget app \"every single day\". The app's logs show she opens it about once a week. Which problem is this?",
+  "o": [
+   [
+    "Recall bias",
+    "Recall bias is an inaccurate memory of the past. Here the answer is made to look better than reality, which is reporting bias (L7, Challenges)."
+   ],
+   [
+    "Reporting bias",
+    "Correct. She gave an answer more ideal than reality, which is the lecture's definition of reporting bias."
+   ],
+   [
+    "A \"presentation of self\" issue in a group",
+    "\"Presentation of self\" is listed as a group-interview issue, and this is a one-to-one answer about her own habit (L7, Individuals vs groups)."
+   ],
+   [
+    "A leading question",
+    "A leading question is a flaw in the wording (L6). Nothing in the question pushed her; she idealized her own answer (L7, Challenges)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Recall bias means people give answers that are more ideal than reality.\"",
+  "o": [
+   [
+    "True",
+    "That is reporting bias. Recall bias is about inaccurate answers on things in the past (L7, Challenges)."
+   ],
+   [
+    "False",
+    "Correct. Recall bias is inaccurate answers about past events; answers more ideal than reality are reporting bias."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which of these is <b>NOT</b> a challenge of data gathered by asking questions?",
+  "o": [
+   [
+    "Planning takes more time and effort than the team may have",
+    "This is the first challenge on the lecture's list (L7, Challenges)."
+   ],
+   [
+    "Analysis of qualitative data is not easy",
+    "This is on the lecture's list of challenges (L7, Challenges)."
+   ],
+   [
+    "Recall bias",
+    "Recall bias is one of the two biases the lecture names as challenges (L7, Challenges)."
+   ],
+   [
+    "The answers are always numeric and easy to compute",
+    "Correct. The opposite is true: interview answers are qualitative, and analyzing qualitative data is not easy."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"Planning interviews or surveys can take more time and effort than the team may have.\"",
+  "o": [
+   [
+    "True",
+    "Correct. This is the first challenge the lecture lists for data gathered by asking questions."
+   ],
+   [
+    "False",
+    "The lecture lists exactly this as a challenge (L7, Challenges)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A team interviews a nurse about the one time last year the hospital system crashed during surgery. Which strength of interviews is the team using?",
+  "o": [
+   [
+    "Reflection on rare events",
+    "Correct. Interviews allow reflection on rare events, which a short survey would hardly capture."
+   ],
+   [
+    "Reaching many users at once",
+    "One nurse is not many users; reach is the strength of surveys (L5, Surveys)."
+   ],
+   [
+    "Low cost",
+    "Interviews are the more expensive method, not the cheap one (L7, Interviews)."
+   ],
+   [
+    "No need for note-taking",
+    "Taking notes is one of the two keys during an interview (L7, Tips for a good interview)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the individuals vs groups table, \"more time/effort spent with each participant\" is listed under:",
+  "o": [
+   [
+    "Individuals",
+    "Correct. It is the first row under individuals, next to easier logistics and more privacy."
+   ],
+   [
+    "Groups",
+    "In a group the time is shared among many people. Groups give more feedback and discussion (L7, Individuals vs groups)."
+   ],
+   [
+    "Both columns",
+    "The table lists it only under individuals (L7, Individuals vs groups)."
+   ],
+   [
+    "Neither, it describes surveys",
+    "Surveys spend little time per person. The row is in the interview table under individuals (L7, Individuals vs groups)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Presentation of self\" issues are listed as a concern of:",
+  "o": [
+   [
+    "Individual interviews",
+    "Individual interviews give more privacy, which is the opposite situation (L7, Individuals vs groups)."
+   ],
+   [
+    "Group interviews",
+    "Correct. In a group, people may present themselves to the others instead of answering honestly; the table lists it under groups."
+   ],
+   [
+    "Surveys",
+    "The lecture lists this issue in the interview table, under groups (L7, Individuals vs groups)."
+   ],
+   [
+    "Secondary research",
+    "Secondary research uses data someone else collected, so there are no participants to present themselves (L2)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> A team needs to ask patients about a sensitive health problem. Based on the lecture's table, which format fits best, and why?",
+  "o": [
+   [
+    "A group interview, to get more feedback",
+    "More feedback is a group advantage, but sensitive topics need privacy, which groups do not give (L7, Individuals vs groups)."
+   ],
+   [
+    "A group interview, so discussion highlights assumptions",
+    "Discussion is a group advantage, but patients may hold back in front of others (\"presentation of self\") (L7, Individuals vs groups)."
+   ],
+   [
+    "Individual interviews, for more privacy",
+    "Correct. More privacy for participants is listed under individual interviews."
+   ],
+   [
+    "Individual interviews, because they reach more users",
+    "Individual interviews do not reach more users; they spend more time per participant (L7, Individuals vs groups)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"Group interviews make it easier to get more feedback.\"",
+  "o": [
+   [
+    "True",
+    "Correct. \"Easier to get more feedback\" is the first advantage listed under groups."
+   ],
+   [
+    "False",
+    "The table lists this exactly as a group advantage (L7, Individuals vs groups)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A researcher runs five interviews back to back with no break, and by the fourth she mixes up whose answers are whose. Which tip did she skip?",
+  "o": [
+   [
+    "Plan ahead and prepare questions",
+    "Her questions were not the problem; the sessions ran together with no gap (L7, Tips for a good interview)."
+   ],
+   [
+    "Listen well",
+    "Listening is a during-the-interview key. Her problem comes from the missing time between interviews (L7, Tips for a good interview)."
+   ],
+   [
+    "Interview groups instead",
+    "Changing to groups is not a tip, and it would not fix the mix-up (L7, Tips for a good interview)."
+   ],
+   [
+    "Leave some time between interviews",
+    "Correct. The lecture's tip is to leave some time between interviews."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Scenario:</b> An interviewer arrives with no questions and makes them all up on the spot, so key topics are missed. Which tip was ignored?",
+  "o": [
+   [
+    "Plan ahead and prepare your questions before the interview",
+    "Correct. This is the first tip, and L5 adds writing a script of questions before the interview."
+   ],
+   [
+    "Leave some time between interviews",
+    "Time between interviews helps after a session; the problem here starts before it (L7, Tips for a good interview)."
+   ],
+   [
+    "Take notes",
+    "Notes record what is said; they cannot supply the questions that were never prepared (L7, Tips for a good interview)."
+   ],
+   [
+    "Never change the script",
+    "That is not a tip: L5 says \"the script is not a bible\", so adapting is allowed. The problem is having no plan at all (L5)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "When taking notes in an interview, what does the lecture say to record besides the answers?",
+  "o": [
+   [
+    "Only the interviewee's name and age",
+    "The lecture asks for more than facts about the person: note emotions and reactions (L7, Tips for a good interview)."
+   ],
+   [
+    "Emotions and reactions",
+    "Correct. Notes should capture emotions and reactions, which is one reason an audio recording is not enough."
+   ],
+   [
+    "The exact time of each question",
+    "The lecture does not ask for timestamps; it asks for emotions and reactions (L7, Tips for a good interview)."
+   ],
+   [
+    "Nothing, since the audio recording covers it",
+    "The lecture says an audio recording is not enough (L7, Tips for a good interview)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Interviews are valued mostly for which kind of question?",
+  "o": [
+   [
+    "Open-ended \"why\" questions",
+    "Correct. Interviews allow more open-ended and \"why\" questions, plus follow-ups."
+   ],
+   [
+    "Yes/no questions",
+    "Yes/no questions are closed; L6 even warns against them in surveys. Interviews are valued for open \"why\" questions (L7, Interviews)."
+   ],
+   [
+    "Numeric rating scales",
+    "Rating scales give numbers, which suit surveys. Interviews dig into why (L7, Interviews)."
+   ],
+   [
+    "Multiple-choice checkboxes",
+    "Checkboxes are a survey tool (L6, Be Expressive), not what makes interviews valuable (L7, Interviews)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Designers in the lecture say \"we are not artists\". What do they mean?",
+  "o": [
+   [
+    "Design must look ugly to be usable",
+    "Nothing in the lecture says design should look bad; the point is that design is not artwork (L7, Design)."
+   ],
+   [
+    "Only trained artists may design interfaces",
+    "The opposite: designers say most of them are not even talented in drawing (L7, Design)."
+   ],
+   [
+    "Design does not produce wall-hanging artwork, and most designers are not even talented in drawing",
+    "Correct. That is exactly what the lecture quotes designers as saying."
+   ],
+   [
+    "Creativity has no place in design",
+    "The lecture says not to turn off creativity; talent and creativity are an advantage (L7, Design)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"According to the lecture, you cannot design interfaces without a talent for drawing.\"",
+  "o": [
+   [
+    "True",
+    "Talent is an advantage, not a requirement: pretty good interfaces are easy if you know basic methods, techniques and principles (L7, Design)."
+   ],
+   [
+    "False",
+    "Correct. Designers say they are often not talented in drawing; follow the tips and avoid the biggest mistakes."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Who is quoted in the lecture saying \"design is very hard\"?",
+  "o": [
+   [
+    "Joyner",
+    "Correct. The lecture quotes Joyner: \"design is very hard\"."
+   ],
+   [
+    "Scott Klemmer",
+    "Klemmer's quote is that great interfaces need enormous creativity and hard work, but pretty good ones are easy with basic methods (L7, Design)."
+   ],
+   [
+    "George Miller",
+    "Miller is the 7 ± 2 memory limit in L4, not a design quote."
+   ],
+   [
+    "Tullis",
+    "Tullis is the hotel-screen spacing study in L3, not a design quote."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A team knows from analytics that many users abandon the \"Export\" feature, but not why. They want to understand the reasons in depth from a handful of users. Which method fits best?",
+  "o": [
+   [
+    "A survey of thousands of users",
+    "A survey gives a broad view from many users; the team needs depth and \"why\" from a few (L7, Interviews)."
+   ],
+   [
+    "Interviews",
+    "Correct. Interviews give a deeper understanding through \"why\" questions and follow-ups, with fewer users."
+   ],
+   [
+    "Secondary research only",
+    "Secondary research is someone else's data; it cannot explain why these users abandon this feature (L2)."
+   ],
+   [
+    "No research, just redesign it",
+    "Redesigning without understanding the users is Joyner's biggest mistake (L8)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Analysis of qualitative data from interviews is easy.\"",
+  "o": [
+   [
+    "True",
+    "The lecture lists the opposite as a challenge: analysis of qualitative data is not easy (L7, Challenges)."
+   ],
+   [
+    "False",
+    "Correct. Analysis of qualitative data is not easy; it is one of the challenges of asking questions."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which two biases does the lecture name for data gathered by asking questions?",
+  "o": [
+   [
+    "Recall bias and reporting bias",
+    "Correct. Recall bias (inaccurate answers about the past) and reporting bias (answers more ideal than reality)."
+   ],
+   [
+    "Selection bias and confirmation bias",
+    "These are not in the lecture; it names recall and reporting bias (L7, Challenges)."
+   ],
+   [
+    "Leading and loaded questions",
+    "Leading and loaded are flawed survey questions from L6 (Be Unbiased), not the two biases of L7."
+   ],
+   [
+    "Recall bias and confirmation bias",
+    "Recall bias is right, but the second one is reporting bias (L7, Challenges)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Room for follow-up questions is one reason interviews give a deeper understanding.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture lists room for follow-up questions with open \"why\" questions and reflection on rare events."
+   ],
+   [
+    "False",
+    "Follow-up questions are listed as a reason for the deeper understanding (L7, Interviews)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Leaving some time between interviews is one of the two keys for success during the interview.\"",
+  "o": [
+   [
+    "True",
+    "The two keys during the interview are listen well and take notes. Leaving time is a separate tip for between interviews (L7, Tips for a good interview)."
+   ],
+   [
+    "False",
+    "Correct. The two keys during the interview are listen well and take notes; leaving time is for between interviews."
+   ]
+  ],
+  "a": 1
+ }
+]);
+EXTRA.hci["8"] = (EXTRA.hci["8"] || []).concat([
+ {
+  "q": "Which ranking of Joyner's two biggest design mistakes is right?",
+  "o": [
+   [
+    "1st: settling on a single idea too early; 2nd: designing without understanding the users or the task",
+    "The two are swapped. Designing without understanding the users or the task is the biggest (L8, Biggest mistakes)."
+   ],
+   [
+    "1st: building too many prototypes; 2nd: building too few",
+    "Neither is one of Joyner's two mistakes, and the lecture wants as many alternatives as you can (L8, Design alternatives)."
+   ],
+   [
+    "1st: designing without understanding the users or the task; 2nd: settling on a single idea or genre too early",
+    "Correct. This is Joyner's order."
+   ],
+   [
+    "1st: ignoring colors; 2nd: ignoring fonts",
+    "Colors and fonts are details; Joyner's mistakes are about users, tasks and ideas (L8, Biggest mistakes)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Scenario:</b> A team talks to no users at all, but sketches 40 very different ideas for a new app. In Joyner's terms, what happened?",
+  "o": [
+   [
+    "They avoided both big mistakes",
+    "40 different ideas avoid the second mistake, but skipping users is the biggest one (L8, Biggest mistakes)."
+   ],
+   [
+    "They made the biggest mistake but avoided the second",
+    "Correct. Designing without understanding the users or the task is the biggest mistake; many different ideas avoid the second."
+   ],
+   [
+    "They made only the second mistake",
+    "The second mistake is settling on one idea or genre too early, and 40 different ideas is the opposite (L8, Biggest mistakes)."
+   ],
+   [
+    "They made both mistakes",
+    "They explored many different ideas, so they did not settle early (L8, Biggest mistakes)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> A team spends a week interviewing users about their tasks, then generates 30 different design ideas before prototyping. Which of Joyner's mistakes did it make?",
+  "o": [
+   [
+    "The biggest one only",
+    "They understood the users and the task first, so they avoided the biggest mistake (L8, Biggest mistakes)."
+   ],
+   [
+    "The second one only",
+    "30 different ideas is the opposite of settling on a single idea too early (L8, Biggest mistakes)."
+   ],
+   [
+    "Both",
+    "They did user research and explored widely, which avoids both (L8, Biggest mistakes)."
+   ],
+   [
+    "Neither",
+    "Correct. Understanding the users and task first avoids the biggest mistake, and many different ideas avoid the second."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Complete Joyner's second biggest mistake: settling on a single design idea or a single ___ of ideas too early.",
+  "o": [
+   [
+    "genre",
+    "Correct. The mistake is a single design idea or a single genre of ideas, so many variations of one kind still count."
+   ],
+   [
+    "color",
+    "Colors are visual details; the mistake is about kinds of ideas (L8, Biggest mistakes)."
+   ],
+   [
+    "user",
+    "Not understanding the users is the first mistake, not part of the second (L8, Biggest mistakes)."
+   ],
+   [
+    "programming language",
+    "The lecture is about design ideas, not code (L8, Biggest mistakes)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Joyner names settling on a single design idea too late as the second biggest mistake.\"",
+  "o": [
+   [
+    "True",
+    "The mistake is settling too early, before exploring enough alternatives (L8, Biggest mistakes)."
+   ],
+   [
+    "False",
+    "Correct. It is settling on a single idea or genre too early."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Where does the design alternatives phase sit in Joyner's cycle (L2)?",
+  "o": [
+   [
+    "Between need finding and prototyping",
+    "Correct. Need finding → Design alternatives → Prototyping → Evaluation."
+   ],
+   [
+    "After evaluation, at the very end",
+    "Evaluation is the last phase; alternatives come right after need finding (L2, Lifecycle models)."
+   ],
+   [
+    "Before need finding",
+    "You first need to understand the users' needs; generating alternatives before that is the biggest mistake (L8)."
+   ],
+   [
+    "It is not part of Joyner's cycle",
+    "The lecture says design alternatives is a separate phase in Joyner's cycle (L8, Design alternatives)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which activity belongs to the design alternatives phase?",
+  "o": [
+   [
+    "Interviewing users to learn their needs",
+    "That is need finding, the phase before alternatives (L2, Lifecycle models)."
+   ],
+   [
+    "Sketching a wide range of different ideas",
+    "Correct. The phase is about exploring a wide range of alternatives instead of one from the start."
+   ],
+   [
+    "Testing the finished product with users",
+    "Testing with users is evaluation (L2, Lifecycle models)."
+   ],
+   [
+    "Writing the final code",
+    "Code comes after design; it is not part of exploring alternatives (L8, Design alternatives)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Exploring design alternatives matters only for brand-new systems, not when enhancing an existing one.\"",
+  "o": [
+   [
+    "True",
+    "The lecture says the single-idea mistake is especially common when enhancing an existing system (L8, Design alternatives)."
+   ],
+   [
+    "False",
+    "Correct. When enhancing an existing system you are captured by its interface, so exploring alternatives matters even more."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Joyner describes design as an iterative process of brainstorming, combining, abandoning, revising and improving ideas. Which of these is <b>NOT</b> part of it?",
+  "o": [
+   [
+    "Combining ideas",
+    "Combining is in Joyner's list (L8, Prototyping)."
+   ],
+   [
+    "Abandoning ideas",
+    "Abandoning is in Joyner's list (L8, Prototyping)."
+   ],
+   [
+    "Revising ideas",
+    "Revising is in Joyner's list (L8, Prototyping)."
+   ],
+   [
+    "Freezing the first idea on day one",
+    "Correct. Freezing the first idea is the second biggest mistake, not part of the iterative process."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"Joyner's advice on design alternatives and Klemmer's advice on prototypes both push you to make many, not one.\"",
+  "o": [
+   [
+    "True",
+    "Correct. Alternatives: \"as many as you can\"; prototypes: \"ask a lot of them\"."
+   ],
+   [
+    "False",
+    "Both say many: as many alternatives as you can, and a lot of prototypes, because prototypes are questions (L8)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "The first Microsoft mouse (more than 100 prototypes) is used in the lecture to support which advice?",
+  "o": [
+   [
+    "Explore as many alternatives as you can",
+    "Correct. \"How many alternatives? As many as you can\", and the mouse is the example."
+   ],
+   [
+    "Settle on one idea early to save time",
+    "That is Joyner's second biggest mistake, the opposite of the example (L8, Biggest mistakes)."
+   ],
+   [
+    "Prototypes must look like the final product",
+    "The example is about the number of prototypes, and good prototypes do not need to resemble the final product (L8, Prototyping)."
+   ],
+   [
+    "Hardware does not need prototypes",
+    "The mouse is hardware and still had more than 100 prototypes (L8, Design alternatives)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the definition \"rapidly creating an <b>approximation</b> of a design so that you can quickly get feedback\", what does \"approximation\" tell you?",
+  "o": [
+   [
+    "The prototype must be the finished product",
+    "An approximation is not the finished product; the lecture rejects \"small version of the real thing\" as not useful (L8, Prototyping)."
+   ],
+   [
+    "The prototype must be built in code",
+    "Nothing in the definition requires code; a sketch can be an approximation (L9, Power of lo-fi)."
+   ],
+   [
+    "It only needs to be close enough to get feedback, not complete or polished",
+    "Correct. The aim is quick feedback, so a rough approximation is enough."
+   ],
+   [
+    "It should be shown only to the design team",
+    "The purpose is feedback, and prototypes have four audiences: colleagues, clients, users and yourself (L9)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Scenario:</b> A manager asks for \"a small working version of the app\" to impress investors and calls it a prototype. By the designers' definition in the lecture, what is missing?",
+  "o": [
+   [
+    "More features",
+    "More features do not make it a prototype in the designers' sense; the definition is about getting feedback (L8, Prototyping)."
+   ],
+   [
+    "The purpose of getting feedback to iterate on the design",
+    "Correct. \"A small version of the real thing\" is not a useful understanding; a prototype is about feedback and iteration."
+   ],
+   [
+    "A higher price",
+    "Cost is not part of the definition (L8, Prototyping)."
+   ],
+   [
+    "Final colors and fonts",
+    "Polish is not required; a good prototype need not resemble the final product (L8, Prototyping)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which of these would the lecture count as a <b>good</b> prototype?",
+  "o": [
+   [
+    "A hand-drawn paper sketch that shows users cannot find the search box",
+    "Correct. It gave useful, constructive feedback to iterate on, and it does not need to resemble the final product."
+   ],
+   [
+    "A pixel-perfect mock-up that teaches the team nothing new",
+    "A prototype that gives no new knowledge wastes the design process (L8, Prototyping)."
+   ],
+   [
+    "The final coded app released to all users",
+    "A released product is not a quick approximation for feedback (L8, Prototyping)."
+   ],
+   [
+    "A polished poster of the app logo",
+    "A poster is an artifact; a prototype is about feedback and iteration, not the artifact (L8, Prototyping)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Match the quotes to the people: (A) \"The biggest mistake… is jumping straight to designing an interface without understanding the users or the task\"; (B) \"Prototypes are questions, ask a lot of them\".",
+  "o": [
+   [
+    "A: Klemmer; B: Joyner",
+    "Swapped. The biggest-mistake list is Joyner's and the questions quote is Klemmer's (L8)."
+   ],
+   [
+    "A: Joyner; B: Klemmer",
+    "Correct. Joyner gives the two biggest mistakes; Klemmer says prototypes are questions."
+   ],
+   [
+    "A: Joyner; B: Konstan",
+    "Konstan (L9) is about little-effort prototypes getting more constructive feedback; B is Klemmer's."
+   ],
+   [
+    "A: Miller; B: Klemmer",
+    "Miller is the 7 ± 2 memory limit (L4); A is Joyner's."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> In one month, Team A builds a single polished prototype and tests it once. Team B builds ten rough prototypes of different ideas and tests each with users. Which team follows the lecture?",
+  "o": [
+   [
+    "Team A, because a polished prototype resembles the final product",
+    "A good prototype does not need to resemble the final product, and one idea is the second biggest mistake (L8)."
+   ],
+   [
+    "Team B",
+    "Correct. Many alternatives and many prototypes mean many questions asked and more feedback to iterate on."
+   ],
+   [
+    "Both equally, since each tested with users",
+    "Testing is good, but Team A asked one question about one idea; Team B explored widely (L8, Design alternatives)."
+   ],
+   [
+    "Neither, since prototypes should come after the final design",
+    "Prototypes come before the final design; they exist to get feedback and iterate (L8, Prototyping)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> Users try a prototype and say the \"Pay\" button is too hard to find. What should happen next, following the lecture's view of prototypes?",
+  "o": [
+   [
+    "Freeze the design, since the prototype is done",
+    "A prototype is about feedback and iteration; freezing ignores the feedback (L8, Prototyping)."
+   ],
+   [
+    "Ship the product as it is",
+    "Shipping without acting on feedback skips iteration (L8, Prototyping)."
+   ],
+   [
+    "Revise the design and prototype again",
+    "Correct. Feedback leads to iteration: revise and improve, then prototype again."
+   ],
+   [
+    "Discard the feedback because users are not designers",
+    "Feedback is the whole point of prototyping (L8, Prototyping)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which two ideas from the lecture make the same point?",
+  "o": [
+   [
+    "\"Prototypes are questions\" and \"a prototype that gives no new knowledge wastes the design process\"",
+    "Correct. Both say a prototype exists to learn something new through feedback."
+   ],
+   [
+    "\"Prototypes are questions\" and \"a prototype is a quick or small version of the real thing\"",
+    "The lecture rejects the second as not a useful understanding (L8, Prototyping)."
+   ],
+   [
+    "\"Explore as many alternatives as you can\" and \"settle on a single idea early\"",
+    "These contradict each other; settling early is the second biggest mistake (L8)."
+   ],
+   [
+    "\"Good prototypes resemble the final product\" and \"prototypes are about feedback\"",
+    "The first is false: a good prototype does not need to resemble the final product (L8, Prototyping)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A designer builds one highly polished prototype of a single idea and shows only that to users. Which mistake does the polish <b>not</b> fix?",
+  "o": [
+   [
+    "Using too many alternatives",
+    "There is only one idea here, so too many alternatives is not the issue (L8, Design alternatives)."
+   ],
+   [
+    "Forgetting to add colors",
+    "The prototype is polished, so colors are there; polish does not fix the real problem (L8)."
+   ],
+   [
+    "Interviewing too many users",
+    "Nothing here involves too many interviews (L8, Biggest mistakes)."
+   ],
+   [
+    "Settling on a single design idea too early",
+    "Correct. One idea, however polished, is still Joyner's second biggest mistake."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "What does <b>iteration</b> mean in \"a prototype is about feedback and iteration\"?",
+  "o": [
+   [
+    "Building the final product once, carefully",
+    "Doing it once is the opposite of iterating (L8, Prototyping)."
+   ],
+   [
+    "Repeating design, prototype and feedback, improving the design each round",
+    "Correct. Joyner calls design an iterative process of combining, abandoning, revising and improving ideas."
+   ],
+   [
+    "Copying the existing system's interface",
+    "The lecture advises distancing yourself from existing solutions (L8, Design alternatives)."
+   ],
+   [
+    "Adding more features each week without testing",
+    "Iteration is driven by feedback, not by adding untested features (L8, Prototyping)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Joyner describes design as a straight line: pick one idea, build it, and finish.\"",
+  "o": [
+   [
+    "True",
+    "Joyner calls design iterative: brainstorming, combining, abandoning, revising and improving ideas (L8, Prototyping)."
+   ],
+   [
+    "False",
+    "Correct. Design is iterative and needs several ideas to start with."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "When enhancing an existing system, what is the risk of being \"captured by its current interface\"?",
+  "o": [
+   [
+    "You explore too many alternatives",
+    "Being captured narrows your ideas; it does not multiply them (L8, Design alternatives)."
+   ],
+   [
+    "Users stop giving feedback",
+    "The lecture links this risk to the designer's ideas, not to user feedback (L8, Design alternatives)."
+   ],
+   [
+    "Your new ideas stay close to the old design, so you settle on one kind of idea too early",
+    "Correct. That is why the lecture says to distance yourself from existing solutions, at least during brainstorming."
+   ],
+   [
+    "The system becomes slower",
+    "Performance is not the issue; the issue is a narrow range of design ideas (L8, Design alternatives)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"Exploring alternatives means the final design must be the one most different from the existing system.\"",
+  "o": [
+   [
+    "True",
+    "The final design is often a combination of the alternatives explored, not the most different one. Distancing applies at least during brainstorming (L8, Design alternatives)."
+   ],
+   [
+    "False",
+    "Correct. The final design is often a combination of alternatives explored earlier."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> A team wants to know whether users understand a new \"swipe to pay\" gesture. According to the lecture, what should they build first?",
+  "o": [
+   [
+    "A quick approximation that lets users try the gesture and give feedback",
+    "Correct. A prototype is a question: rapidly create an approximation to get feedback on exactly that point."
+   ],
+   [
+    "The complete app, then ask users at launch",
+    "Waiting for launch skips prototyping, which exists to get feedback quickly (L8, Prototyping)."
+   ],
+   [
+    "Nothing, since gestures cannot be prototyped",
+    "Any design question can be asked with a prototype; \"ask a lot of them\" (L8, Prototyping)."
+   ],
+   [
+    "A pixel-perfect design of every screen first",
+    "Polishing every screen first is slow and not needed for this one question (L8, Prototyping)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Joyner's biggest mistake (designing without understanding the users or the task) goes against which advice from L2?",
+  "o": [
+   [
+    "\"You need users early and often\"",
+    "Correct. Joyner's L2 advice is to involve users early and often, which is exactly what the biggest mistake skips."
+   ],
+   [
+    "\"Auto-customization, unless it does a perfect job, is usually worse than no customization at all\"",
+    "That is the Office case rule from L1, about adaptive menus, not about understanding users first."
+   ],
+   [
+    "\"7, + or - 2\"",
+    "That is Miller's memory limit from L4."
+   ],
+   [
+    "\"The script is not a bible\"",
+    "That is a user-research tip about adapting during a session (L5), not the opposite of the biggest mistake."
+   ]
+  ],
+  "a": 0
+ }
+]);
+EXTRA.hci["9"] = (EXTRA.hci["9"] || []).concat([
+ {
+  "q": "\"You should start with high-fidelity prototypes and move to low fidelity as the design proceeds.\"",
+  "o": [
+   [
+    "True",
+    "Reversed. Start with lo-fi and move to hi-fi as the design proceeds (L9, Prototypes and fidelity)."
+   ],
+   [
+    "False",
+    "Correct. Start with lo-fi, then move to hi-fi as the design proceeds."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why is a high-fidelity prototype not possible at the beginning of a design?",
+  "o": [
+   [
+    "Because hi-fi tools do not exist yet",
+    "Tools like Figma and Adobe XD exist; the reason is about the design itself (L9, Power of lo-fi)."
+   ],
+   [
+    "Because users refuse to look at hi-fi prototypes",
+    "Users can look at them; the lecture says they talk more about sketches, but that is not why hi-fi is impossible early (L9, Power of lo-fi)."
+   ],
+   [
+    "Because many details have not been decided yet",
+    "Correct. Hi-fi needs details that are still undecided at the start."
+   ],
+   [
+    "Because hi-fi prototypes are cheaper later",
+    "Hi-fi is the costly one at any stage; lo-fi is the cheaper one (L9, Power of lo-fi)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Scenario:</b> A team shows users an early prototype with final colors, photos and fonts. Users spend the session debating the shade of blue instead of whether the flow makes sense. What does the lecture call this effect?",
+  "o": [
+   [
+    "Recall bias",
+    "Recall bias is about inaccurate memories of the past (L7), not about prototype detail."
+   ],
+   [
+    "Too many details make people give feedback at a lower level than needed",
+    "Correct. Detail pulls feedback down to colors and fonts; early on you want high-level feedback."
+   ],
+   [
+    "The handshake process",
+    "Handshake is about design and development running in parallel (L9, Design-development process)."
+   ],
+   [
+    "Reporting bias",
+    "Reporting bias is giving answers more ideal than reality (L7), not focusing on colors."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "What is Google's advice in the lecture about what to present early versus later?",
+  "o": [
+   [
+    "Present detailed screens early, high-level ideas later",
+    "Reversed: high-level ideas early, details and screens later (L9, Power of lo-fi)."
+   ],
+   [
+    "Present only the final product",
+    "Showing only the final product leaves no room for early feedback (L9, Power of lo-fi)."
+   ],
+   [
+    "Present nothing until development is finished",
+    "That is not Google's advice; ideas should be shown early (L9, Power of lo-fi)."
+   ],
+   [
+    "Present high-level ideas early, and focus on details and screens later",
+    "Correct. That is Google's advice in the lecture."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"People are much more willing to talk when given a sketch than something that looks finished.\"",
+  "o": [
+   [
+    "True",
+    "Correct. This is one of the points on the power of lo-fi prototypes."
+   ],
+   [
+    "False",
+    "The lecture says exactly this about sketches (L9, Power of lo-fi)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "According to the lecture, every design activity does which of the following?",
+  "o": [
+   [
+    "Produces final code",
+    "Design activities are about thinking and communicating, not code (L9, Brainstorming)."
+   ],
+   [
+    "Replaces user research",
+    "No design activity replaces research; wireframes even come after foundational research (L9, Wireframes)."
+   ],
+   [
+    "Helps the designer think and visualize, helps the team and stakeholders visualize and communicate, or both",
+    "Correct. That is the lecture's statement about design activities."
+   ],
+   [
+    "Evaluates and excludes weak ideas",
+    "Evaluating and excluding ideas is what brainstorming tips say not to do (L9, Brainstorming)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Why does Joyner say to start with <b>individual</b> brainstorming?",
+  "o": [
+   [
+    "Because groups coalesce on ideas too early",
+    "Correct. Groups tend to settle together on ideas too early, so start alone."
+   ],
+   [
+    "Because groups always produce more ideas",
+    "If that were the reason, you would start with a group. The problem is that groups converge too early (L9, Brainstorming)."
+   ],
+   [
+    "Because team sessions are forbidden",
+    "Team sessions are allowed, for sharing and adding ideas (L9, Brainstorming)."
+   ],
+   [
+    "Because individuals evaluate ideas better",
+    "Brainstorming is not for evaluating; the tip is not to evaluate or exclude ideas (L9, Brainstorming)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which of these is <b>NOT</b> one of the lecture's brainstorming tips?",
+  "o": [
+   [
+    "Aim for 20 ideas",
+    "Aim for 20 is a tip (L9, Brainstorming)."
+   ],
+   [
+    "Each idea is a few words or a sentence",
+    "This is a tip: keep each idea short (L9, Brainstorming)."
+   ],
+   [
+    "Take breaks or use several sessions",
+    "This is a tip (L9, Brainstorming)."
+   ],
+   [
+    "Evaluate each idea right away and drop the weak ones",
+    "Correct. The tip is the opposite: do not evaluate or exclude any idea."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"Team brainstorming sessions are for narrowing the list down to the single best idea.\"",
+  "o": [
+   [
+    "True",
+    "The lecture says team sessions are for sharing and adding ideas, not narrowing (L9, Brainstorming)."
+   ],
+   [
+    "False",
+    "Correct. Team sessions are for sharing and adding ideas, not narrowing."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which of these is <b>NOT</b> a reason the lecture gives for studying design?",
+  "o": [
+   [
+    "Some students will shine as designers",
+    "This is one of the three reasons (L9, Why study design?)."
+   ],
+   [
+    "Developers often do design when there are no designers",
+    "This is one of the three reasons (L9, Why study design?)."
+   ],
+   [
+    "Developers work better with designers when they understand the process",
+    "This is one of the three reasons (L9, Why study design?)."
+   ],
+   [
+    "Once developers learn design, designers are no longer needed",
+    "Correct. The lecture says developers work better <b>with</b> designers, not instead of them."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Scenario:</b> Designers finish every screen in March, then hand the full design to developers who start coding in April. Which process is this?",
+  "o": [
+   [
+    "Handoff process",
+    "Correct. Design finishes, then it is handed over to development: sequential, with one handover point."
+   ],
+   [
+    "Handshake process",
+    "Handshake runs design and development in parallel with frequent sync points; here they are one after the other (L9, Design-development process)."
+   ],
+   [
+    "Brainstorming",
+    "Brainstorming generates ideas; it is not a way of organizing design and development (L9, Brainstorming)."
+   ],
+   [
+    "Wireframing",
+    "Wireframing is a design activity, not the design-development process (L9, Wireframes)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"In the handshake process, design must finish completely before development starts.\"",
+  "o": [
+   [
+    "True",
+    "That describes handoff. In handshake, design and development run in parallel (L9, Design-development process)."
+   ],
+   [
+    "False",
+    "Correct. Handshake runs design and development in parallel with frequent sync points."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A clickable mock-up with the final colors, fonts and real images is an example of:",
+  "o": [
+   [
+    "A low-fidelity prototype",
+    "Lo-fi is rough, like a hand-drawn sketch; this one matches the final look and feel (L9, Prototypes and fidelity)."
+   ],
+   [
+    "A high-fidelity prototype",
+    "Correct. Fidelity is how closely the design matches the final look and feel, and this is very close."
+   ],
+   [
+    "A wireframe",
+    "Wireframes intentionally have no colors or font styles (L9, Wireframes)."
+   ],
+   [
+    "A site map",
+    "A site map is the content hierarchy, not a mock-up (L9, Wireframes)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which of these is <b>NOT</b> one of the four purposes of wireframes?",
+  "o": [
+   [
+    "Decide the basic page structure before colors and images",
+    "This is purpose (1) (L9, Wireframes)."
+   ],
+   [
+    "Get the team on the same page early, saving time and resources",
+    "This is purpose (2) (L9, Wireframes)."
+   ],
+   [
+    "Catch forgotten or disorganized elements early",
+    "This is purpose (4) (L9, Wireframes)."
+   ],
+   [
+    "Choose the final color palette and fonts",
+    "Correct. Wireframes intentionally have no colors or font styles; they direct feedback away from them."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Scenario:</b> Stakeholders keep arguing about button colors when the team only wants to agree on what goes on each screen. Which wireframe purpose solves this?",
+  "o": [
+   [
+    "Catch forgotten elements early",
+    "That purpose is about missing elements, not about the level of feedback (L9, Wireframes)."
+   ],
+   [
+    "Proper annotation",
+    "Annotation is a wireframing standard, not one of the four purposes (L9, Wireframing standards)."
+   ],
+   [
+    "Direct feedback to the right level: structure and function, not colors and typography",
+    "Correct. With no colors in the wireframe, feedback goes to structure and function."
+   ],
+   [
+    "Move to high fidelity at once",
+    "Hi-fi adds even more color detail, which makes the problem worse (L9, Power of lo-fi)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Wireframes are made as soon as there is an initial <b>site map</b>. What is a site map here?",
+  "o": [
+   [
+    "The content hierarchy of the site",
+    "Correct. The lecture explains site map as the content hierarchy."
+   ],
+   [
+    "A geographic map of users' locations",
+    "The site map is about the site's content, not where users live (L9, Wireframes)."
+   ],
+   [
+    "The final high-fidelity design",
+    "The site map comes before wireframes, and hi-fi comes much later (L9, Wireframes)."
+   ],
+   [
+    "The list of wireframing tools",
+    "Tools are Figma, Adobe XD, Sketch, Balsamiq and Pencil; a site map is the content hierarchy (L9, Wireframes)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In a wireframe, a rectangle with an <b>X</b> drawn through it stands for:",
+  "o": [
+   [
+    "A text paragraph",
+    "Text is shown as horizontal lines or placeholder text (L9, Wireframing standards)."
+   ],
+   [
+    "A deleted element",
+    "The X is not a deletion mark; it is the standard symbol for an image (L9, Wireframing standards)."
+   ],
+   [
+    "An image",
+    "Correct. Images are drawn as rectangles or circles with an X."
+   ],
+   [
+    "An error message",
+    "Error messages are a form guideline, not a wireframe symbol (L9, Form design)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "What is the <b>first</b> goal at the pen-and-paper stage of wireframing?",
+  "o": [
+   [
+    "Showing a finished design to the client",
+    "The lecture says the first goal is reaching a design, not showing one (L9, Wireframing process)."
+   ],
+   [
+    "Reaching a design, not showing one",
+    "Correct. The first goal is reaching a design; the second is moving the idea to paper quickly."
+   ],
+   [
+    "Getting straight lines and correct alignment",
+    "Straight lines, spacing and alignment are to be ignored at this stage (L9, Wireframing process)."
+   ],
+   [
+    "Choosing the digital tool",
+    "Tools come after the paper stage (L9, Wireframing process)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> A checkout has a fixed sequence: Cart → Shipping → Payment → Confirm. What should show users where they are and what is left?",
+  "o": [
+   [
+    "Breadcrumbs",
+    "Breadcrumbs show where users are when there are multiple choices, but not what is left on a fixed path (L9, Form design)."
+   ],
+   [
+    "A confirmation page",
+    "A confirmation page comes after a successful submission, not during the steps (L9, Form design)."
+   ],
+   [
+    "A text box with hints",
+    "Hints help users fill a field; they do not show progress (L9, Form design)."
+   ],
+   [
+    "A progress bar",
+    "Correct. A progress bar shows where users are and what is left, for a predefined unique path."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"Important commands should be shown as links, because links take less space than buttons.\"",
+  "o": [
+   [
+    "True",
+    "The guideline is the opposite: important commands are buttons, because buttons catch the eye (L9, Form design)."
+   ],
+   [
+    "False",
+    "Correct. Important commands are buttons, not links, because buttons catch the eye."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "How should a form confirm that it was submitted successfully?",
+  "o": [
+   [
+    "With a confirmation page",
+    "Correct. A successful submission is confirmed with a confirmation page."
+   ],
+   [
+    "With an error message next to each field",
+    "Error messages are for errors, not for success (L9, Form design)."
+   ],
+   [
+    "By silently clearing the form",
+    "Clearing the form tells the user nothing; the guideline is a confirmation page (L9, Form design)."
+   ],
+   [
+    "By showing a progress bar",
+    "A progress bar shows steps on a fixed path, not that the submission succeeded (L9, Form design)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Besides placing the error message next to the field, which way of marking the field with the error is preferred?",
+  "o": [
+   [
+    "Making the whole page flash",
+    "The lecture does not recommend this; it prefers changing the field's border color (L9, Form design)."
+   ],
+   [
+    "A popup after the form is submitted",
+    "A popup away from the field breaks the rule that errors sit next to the field (L9, Form design)."
+   ],
+   [
+    "Changing the field's border color, e.g. red",
+    "Correct. Changing the border color of the field is preferred."
+   ],
+   [
+    "Removing the field from the form",
+    "Removing the field stops the user from fixing it (L9, Form design)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Scenario:</b> An online shop makes a returning customer type the same delivery address on every order. Which form guideline does it break?",
+  "o": [
+   [
+    "Make a clear distinction between primary and secondary CTAs",
+    "There is no CTA problem here; the problem is repeating the same input (L9, Form design)."
+   ],
+   [
+    "Remove repetitive actions: remember customers' preferences",
+    "Correct. The shop should remember the address instead of asking every time."
+   ],
+   [
+    "Text boxes provide plenty of space",
+    "Box size is not the issue; typing the same thing again is (L9, Form design)."
+   ],
+   [
+    "Use breadcrumbs",
+    "Breadcrumbs show where users are; they do not save repeated input (L9, Form design)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Text boxes in a form should be kept small so that users write short answers.\"",
+  "o": [
+   [
+    "True",
+    "The guideline says text boxes provide plenty of space for the answer (L9, Form design)."
+   ],
+   [
+    "False",
+    "Correct. Text boxes should provide plenty of space for the answer."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> A date field shows no format, so users type \"3/4/25\", \"March 4\" and \"2025-03-04\", and many get errors. What does the lecture recommend?",
+  "o": [
+   [
+    "Move the field below the fold",
+    "Hiding the field does not tell users the format (L9, Form design)."
+   ],
+   [
+    "Show all errors in one popup at the end",
+    "Errors belong next to the field, and the real fix is to prevent them with a format hint (L9, Form design)."
+   ],
+   [
+    "Turn the field into a link",
+    "Links are not for input fields; the issue is the missing format (L9, Form design)."
+   ],
+   [
+    "Put a hint, an example or the required format in the field",
+    "Correct. Fields should contain hints, examples or required formats, e.g. DD/MM/YYYY."
+   ]
+  ],
+  "a": 3
+ }
+]);
+EXTRA.hci["10"] = (EXTRA.hci["10"] || []).concat([
+ {
+  "q": "\"Using more than three primary colors is recommended so that each part of a form is easy to tell apart.\"",
+  "o": [
+   [
+    "True",
+    "The guideline is a simple 3-color palette; more than 3 primary colors is difficult and confuses users (L10, Forms)."
+   ],
+   [
+    "False",
+    "Correct. Stick to a simple 3-color palette; more than 3 primary colors confuses users."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> After saving, a dialog says \"Your report was saved.\" and its only button is labeled \"Cancel\". What should the button say?",
+  "o": [
+   [
+    "Keep \"Cancel\"",
+    "\"Cancel\" is for a dialog with two buttons, an action and one to dismiss. A single button is \"Close\" (L10, Forms)."
+   ],
+   [
+    "\"Remind me later\"",
+    "That button belongs to a system notice, not to a one-button message (L10, Forms)."
+   ],
+   [
+    "\"Close\"",
+    "Correct. If there is only one button, it should be \"Close\"."
+   ],
+   [
+    "\"Abort\"",
+    "\"Abort\" is not in the guideline; one button is \"Close\" (L10, Forms)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Put the parts of a good error message in the lecture's order.",
+  "o": [
+   [
+    "Problem in the title → why it happened → link to complete the task or return → next course of action",
+    "Correct. That is the lecture's order."
+   ],
+   [
+    "Why it happened → problem in the title → next course of action → link to return",
+    "The problem goes first, in the title; the why goes under it (L10, Forms)."
+   ],
+   [
+    "Next course of action → problem in the title → why it happened → link to return",
+    "Recommendations for the next action come last, after the problem and its cause (L10, Forms)."
+   ],
+   [
+    "Link to return → why it happened → problem in the title → next course of action",
+    "Stating the problem in the title is the first step (L10, Forms)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A shop shows an error whose only text is the title \"Payment failed\". Which part of the guideline is the <b>next</b> one missing?",
+  "o": [
+   [
+    "State the problem in the title",
+    "That part is already there: \"Payment failed\" is the problem in the title (L10, Forms)."
+   ],
+   [
+    "Describe briefly why it happened, under the title",
+    "Correct. After the title comes a short description of why it happened, such as \"your card has expired\"."
+   ],
+   [
+    "Use a 3-color palette",
+    "Colors are a separate form guideline, not a part of the error message (L10, Forms)."
+   ],
+   [
+    "Add a \"Don't show again\" box",
+    "That box is for system notices, not error messages (L10, Forms)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"In a good error message, the brief description of why the problem happened goes under the title.\"",
+  "o": [
+   [
+    "True",
+    "Correct. State the problem in the title, then describe briefly why it happened under it."
+   ],
+   [
+    "False",
+    "The lecture places the why directly under the title (L10, Forms)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> \"Payment failed. Your card has expired.\" There is no button or link, and no advice. Which <b>two</b> parts of the guideline are missing?",
+  "o": [
+   [
+    "The title and the reason",
+    "Both are present: \"Payment failed\" is the title and \"Your card has expired\" is the reason (L10, Forms)."
+   ],
+   [
+    "An Action button and a Remind me later button",
+    "Those belong to a system notice, not an error message (L10, Forms)."
+   ],
+   [
+    "A confirmation page and a progress bar",
+    "Those are L9 form elements for success and fixed paths, not parts of an error message."
+   ],
+   [
+    "A link to complete the task or return, and a recommendation for the next action",
+    "Correct. The user is left stuck: add a way back (e.g. to the cart) and advice such as \"use another card\"."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"'Remind me later' is one of the buttons of a system notice.\"",
+  "o": [
+   [
+    "True",
+    "Correct. A system notice has an \"Action\" button, a \"Remind me later\" button and a \"Don't show again\" box."
+   ],
+   [
+    "False",
+    "\"Remind me later\" is listed among the system-notice elements (L10, Forms)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "How many parts does the lecture's error-message guideline have, and how many elements does its system notice have?",
+  "o": [
+   [
+    "3 parts and 4 elements",
+    "Swapped: the error message has 4 parts and the notice has 3 elements (L10, Forms)."
+   ],
+   [
+    "4 parts and 4 elements",
+    "The notice has 3: Action, Remind me later, Don't show again (L10, Forms)."
+   ],
+   [
+    "4 parts and 3 elements",
+    "Correct. Error message: title, why, link, next action (4). Notice: Action, Remind me later, Don't show again (3)."
+   ],
+   [
+    "2 parts and 3 elements",
+    "The error message has 4 parts, not 2 (L10, Forms)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Scenario:</b> A landing page puts its \"Sign up\" button at the very bottom, three screens down. Which layout guideline does it break?",
+  "o": [
+   [
+    "The most important information is above the fold",
+    "Correct. The key action should be visible without scrolling."
+   ],
+   [
+    "The background is not complicated",
+    "Nothing is said about the background; the problem is the button's position (L10, Layout)."
+   ],
+   [
+    "Related items are logically ordered",
+    "Ordering is about related fields such as first/last name, not about one button's position (L10, Layout)."
+   ],
+   [
+    "Alert messages are consistent",
+    "There is no alert here (L10, Forms)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> An employee form tints the HR fields light blue and the Payroll fields light green. Which guideline is it following?",
+  "o": [
+   [
+    "Stick to a 3-color palette",
+    "The palette rule limits the number of primary colors; it is not about grouping fields (L10, Forms)."
+   ],
+   [
+    "Alert messages are consistent",
+    "These are form sections, not alerts (L10, Forms)."
+   ],
+   [
+    "Color groups and structures items",
+    "Correct. The lecture's example is HR, Technical and Payroll fields grouped by color."
+   ],
+   [
+    "The background is not complicated",
+    "The tints mark groups of fields; the background rule is about not distracting from content (L10, Layout)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"Navigation tabs should be at the top of the page.\"",
+  "o": [
+   [
+    "True",
+    "Correct. Navigation tabs are at the top of the page."
+   ],
+   [
+    "False",
+    "The navigation guideline says exactly this (L10, Navigation)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A user deep inside a help site (Help › Billing › Refunds) cannot tell which section they are in. What should be added?",
+  "o": [
+   [
+    "A progress bar",
+    "A progress bar is for a predefined unique path with steps left, not for browsing sections (L9, Form design)."
+   ],
+   [
+    "Breadcrumbs",
+    "Correct. It should be clear where users are on the site, for example with breadcrumbs."
+   ],
+   [
+    "A system notice",
+    "A system notice informs about something and offers Action / Remind me later; it does not show location (L10, Forms)."
+   ],
+   [
+    "A darker background",
+    "The background does not tell users where they are (L10, Layout)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Links to the Home page and main categories need to appear only on the home page.\"",
+  "o": [
+   [
+    "True",
+    "The guideline asks for clear links to the Home page and categories on every page (L10, Navigation)."
+   ],
+   [
+    "False",
+    "Correct. There should be clear links to the Home page and categories on every page."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In a food-delivery app, which of these is most likely a <b>Red Route</b>?",
+  "o": [
+   [
+    "Search for a restaurant → add a meal to the cart → check out",
+    "Correct. Red Routes are the series of pages or actions customers most often use to complete tasks, and ordering food is the main task."
+   ],
+   [
+    "Changing the profile picture",
+    "Users rarely do this; a Red Route is what customers use most often (L10, Navigation)."
+   ],
+   [
+    "Reading the terms and conditions",
+    "Few users go there; it is not a frequently used route (L10, Navigation)."
+   ],
+   [
+    "An error page shown in red",
+    "\"Red\" does not mean the color or errors; Red Routes are the most-used paths (L10, Navigation)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which of these is <b>NOT</b> a layout guideline?",
+  "o": [
+   [
+    "The most important information is above the fold",
+    "This is a layout guideline (L10, Layout)."
+   ],
+   [
+    "Related information is grouped by a frame or a separator",
+    "This is a layout guideline (L10, Layout)."
+   ],
+   [
+    "The background is not complicated",
+    "This is a layout guideline (L10, Layout)."
+   ],
+   [
+    "Move the logo to a new place on each page so users notice it",
+    "Correct. The guideline is the opposite: the logo is in the same place on every page."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"There is an obvious change on hover over anything clickable\" belongs to which group of guidelines?",
+  "o": [
+   [
+    "Navigation",
+    "Correct. It is listed under navigation, with the CTA, breadcrumbs, Home links, tabs at the top, the logo link and Red Routes."
+   ],
+   [
+    "Layout",
+    "Layout covers above the fold, grouping, color groups, logical order, logo position and background (L10, Layout)."
+   ],
+   [
+    "Error messages",
+    "Error messages cover the title, why, link and next action (L10, Forms)."
+   ],
+   [
+    "System notices",
+    "System notices cover Action, Remind me later and Don't show again (L10, Forms)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Stick to a simple 3-color palette\" is listed under which part of the lecture?",
+  "o": [
+   [
+    "Navigation",
+    "Navigation is about CTAs, location, links, tabs, hover, the logo link and Red Routes (L10, Navigation)."
+   ],
+   [
+    "Layout",
+    "Color appears in layout as \"color groups and structures items\", but the 3-color rule is in the forms part (L10, Forms)."
+   ],
+   [
+    "Forms (continued from L9)",
+    "Correct. It opens the lecture's forms part, with consistent alerts, Close vs Cancel, error messages and system notices."
+   ],
+   [
+    "Wireframing standards",
+    "Wireframes have no colors at all (L9, Wireframes)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Scenario:</b> Users click a site's logo expecting to go home, but nothing happens. Which guideline is broken?",
+  "o": [
+   [
+    "The logo is in the same place on every page",
+    "The logo may well be in the same place; the problem is that it does not link anywhere (L10, Navigation)."
+   ],
+   [
+    "The company logo links to the homepage",
+    "Correct. This navigation guideline says the logo links to the homepage."
+   ],
+   [
+    "There is a clear call-to-action",
+    "A CTA is an eye-catching button for the next step, not the logo (L10, Navigation)."
+   ],
+   [
+    "Map out Red Routes",
+    "Red Routes are about the most-used paths, not the logo's link (L10, Navigation)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> After a user adds an item to the cart, the page shows only \"Item added\" with no obvious next step. What is missing?",
+  "o": [
+   [
+    "A complicated background",
+    "A complicated background is something to avoid, not add (L10, Layout)."
+   ],
+   [
+    "More than three primary colors",
+    "More colors confuse users (L10, Forms)."
+   ],
+   [
+    "A \"Don't show again\" box",
+    "That belongs to a system notice, and it does not guide the next step (L10, Forms)."
+   ],
+   [
+    "A clear call-to-action, such as \"Checkout\"",
+    "Correct. A clear CTA tells users what to do next: an eye-catching button for the most common next step."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Scenario:</b> A site's product cards look exactly the same whether or not the mouse is over them, and users don't realize they are clickable. Which guideline would fix this?",
+  "o": [
+   [
+    "Put the most important information above the fold",
+    "The cards are visible already; the problem is that they do not look clickable (L10, Navigation)."
+   ],
+   [
+    "Keep alert messages consistent",
+    "There are no alerts here (L10, Forms)."
+   ],
+   [
+    "An obvious change on hover over anything clickable",
+    "Correct. A visible hover change shows users what can be clicked."
+   ],
+   [
+    "Order related items logically",
+    "Ordering is about related fields such as dates and names, not clickability (L10, Layout)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"In the lecture, keeping alert messages consistent is a forms guideline, while keeping the logo in the same place is a layout guideline.\"",
+  "o": [
+   [
+    "True",
+    "Correct. Consistent alerts are in the forms part, and the logo position is in the layout part."
+   ],
+   [
+    "False",
+    "Both are filed as stated: alerts under forms, logo position under layout (L10)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which two elements both help users know <b>where they are</b>?",
+  "o": [
+   [
+    "A confirmation page and an alert message",
+    "A confirmation page confirms a submission and alerts inform; neither shows location (L9, L10)."
+   ],
+   [
+    "Breadcrumbs and a progress bar",
+    "Correct. Breadcrumbs show where users are among multiple choices; a progress bar shows where they are and what is left on a fixed path (L9, L10)."
+   ],
+   [
+    "A 3-color palette and a simple background",
+    "These are visual rules; they do not show location (L10, Forms, Layout)."
+   ],
+   [
+    "A Cancel button and a Close button",
+    "These dismiss dialogs; they do not show location (L10, Forms)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Scenario:</b> A desktop shop places its main tabs (Home, Men, Women, Sale) at the bottom of a very long page. Which guideline does it break?",
+  "o": [
+   [
+    "The logo links to the homepage",
+    "The logo is not mentioned; the problem is the tabs' position (L10, Navigation)."
+   ],
+   [
+    "Related items are logically ordered",
+    "The tabs' order is fine; their position is the problem (L10, Navigation)."
+   ],
+   [
+    "Cancel is placed to the right",
+    "Cancel placement is about dialogs, not page navigation (L10, Forms)."
+   ],
+   [
+    "Navigation tabs are at the top of the page",
+    "Correct. Navigation tabs belong at the top of the page."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "The lecture gives two guidelines about the company logo. Which pair is right?",
+  "o": [
+   [
+    "Layout: same place on every page; Navigation: links to the homepage",
+    "Correct. Logo position is a layout rule and the logo link is a navigation rule."
+   ],
+   [
+    "Layout: links to the homepage; Navigation: same place on every page",
+    "Swapped. Position is layout, linking home is navigation (L10)."
+   ],
+   [
+    "Layout: changes place on each page; Navigation: links to the homepage",
+    "The logo must not shift; it stays in the same place on every page (L10, Layout)."
+   ],
+   [
+    "Layout: same place on every page; Navigation: links to the categories page",
+    "The logo links to the homepage, not the categories (L10, Navigation)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Scenario:</b> A \"Delete account?\" dialog shows a big bright \"Cancel\" button on the left and a small grey \"Delete\" on the right. Which guideline does it break?",
+  "o": [
+   [
+    "Only one button should say \"Close\"",
+    "There are two buttons (an action and one to dismiss), so \"Cancel\" is the right label; the issue is how it is placed and styled (L10, Forms)."
+   ],
+   [
+    "Cancel is most commonly placed to the right and is not eye-catching",
+    "Correct. Here Cancel is on the left and eye-catching, the opposite of the guideline."
+   ],
+   [
+    "Stick to a 3-color palette",
+    "Two buttons do not break the palette rule; the issue is Cancel's placement and look (L10, Forms)."
+   ],
+   [
+    "Notice messages should not be lengthy",
+    "The dialog is short; length is not the problem (L10, Forms)."
+   ]
+  ],
+  "a": 1
+ }
+]);

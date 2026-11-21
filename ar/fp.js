@@ -2567,3 +2567,149 @@ AR.fp.lectures[4].quiz.push(...[
   "<bdi dir=\"ltr\">2D + C</bdi> دي الـ insert في الـ HEAP: الـ heap بيضيف في الآخر وخلاص، لكن الـ sorted file لازم يحافظ على ترتيبه <bdi dir=\"ltr\">(L4)</bdi>."
  ]
 ]);
+
+// Final revision practice questions (Arabic whys), appended in the same order as extra/fp.js
+AR.fp.lectures["5"].extra = (AR.fp.lectures["5"].extra || []).concat([
+ [
+  "صح. المحاضرة بتقول إن الـ hashing تكنيك search لتنفيذ الـ indexes، والهدف الأساسي منه <b>تحسين الـ search time</b> <bdi dir=\"ltr\">(L5, Why hashing?)</bdi>.",
+  "الـ hashing بيعمل العكس: بيبوّظ ترتيب الـ keys، وعشان كده الـ hashed range search بيعدّي على الملف كله <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ hashed file بياخد pages <b>أكتر</b> مش أقل، لأن الـ buckets بتبقى مليانة حوالي 80%، فمحتاج <bdi dir=\"ltr\">1.25B</bdi> page <bdi dir=\"ltr\">(L5)</bdi>.",
+  "السماح بالتكرار ده العيب الكبير بتاع الـ heap file <bdi dir=\"ltr\">(L4)</bdi>، مش هدف للـ hashing."
+ ],
+ [
+  "الـ hashing بيوزّع الـ records حسب <bdi dir=\"ltr\">h(k)</bdi>، مش بيرتبها، وكمان بيبوّظ ترتيب الـ keys <bdi dir=\"ltr\">(L5)</bdi>.",
+  "صح. المحاضرة بتقول إن الـ hashing تكنيك search مفيد لتنفيذ الـ <b>indexes</b> <bdi dir=\"ltr\">(L5, Why hashing?)</bdi>.",
+  "مفيش أي compression في المحاضرة؛ الـ hashing بيحسب address من الـ key <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ hash function هنا للـ addressing مش للـ security؛ بتحوّل الـ key لـ address <bdi dir=\"ltr\">(L5)</bdi>."
+ ],
+ [
+  "ده الترتيب من الأسرع للأبطأ، يعني مقلوب.",
+  "لما الـ k أكبر من 2 الـ <bdi dir=\"ltr\">log_k N</bdi> بيبقى أصغر من الـ <bdi dir=\"ltr\">log₂ N</bdi>، فالـ B-tree أسرع من الـ simple index بالـ binary search مش أبطأ <bdi dir=\"ltr\">(L5)</bdi>.",
+  "صح. الترتيب:<span class=\"ltr\">simple index O(log N) → B-tree O(log_k N) → hashing O(1)</span>والـ hashing بيحسب الـ address على طول <bdi dir=\"ltr\">(L5, Why hashing?)</bdi>.",
+  "الـ <bdi dir=\"ltr\">O(1)</bdi> مش بيكبر مع الـ N خالص، فالـ hashing هو الأسرع مش في النص <bdi dir=\"ltr\">(L5)</bdi>."
+ ],
+ [
+  "الـ 20 تقريبًا هي <bdi dir=\"ltr\">log₂ 1,000,000</bdi>، ودي بتاعة الـ simple index بالـ binary search <bdi dir=\"ltr\">O(log N)</bdi>، مش الـ B-tree <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ 6 هي <bdi dir=\"ltr\">log₁₀ 1,000,000</bdi>، يعني استخدمت base 10 بدل الـ <bdi dir=\"ltr\">k = 100</bdi>.",
+  "الـ 1 دي حالة الـ hashing <bdi dir=\"ltr\">O(1)</bdi> اللي بيحسب الـ address على طول؛ الـ B-tree لسه بيمشي على الـ levels <bdi dir=\"ltr\">(L5)</bdi>.",
+  "صح. الحساب:<span class=\"ltr\">1,000,000 = 100³ → log₁₀₀ 1,000,000 = 3</span>"
+ ],
+ [
+  "بالعكس: الـ input هو الـ key والـ output هو الـ address <bdi dir=\"ltr\">(L5, What is hashing?)</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">h(k)</bdi> بتحوّل الـ <b>key</b> لـ <b>address</b> جوه الـ address space اللي اتحدد من الأول <bdi dir=\"ltr\">(L5)</bdi>.",
+  "حجم الـ bucket ده خاصية تخزين؛ الـ <bdi dir=\"ltr\">h(k)</bdi> بتطلّع address من الـ key <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ pages بنعدها بالـ B في الـ cost model؛ والـ <bdi dir=\"ltr\">h(k)</bdi> بتروح من key لـ address، مش من page لـ key <bdi dir=\"ltr\">(L4, L5)</bdi>."
+ ],
+ [
+  "غلط بواحد: الـ addresses بتبدأ من 0، فالـ 500 address هم <bdi dir=\"ltr\">0..499</bdi>، زي مثال الـ slide اللي فيه 1000 address يبقوا <bdi dir=\"ltr\">{0, …, 999}</bdi>.",
+  "صح. الـ h بتحوّل أي key لـ <bdi dir=\"ltr\">{0, 1, …, 499}</bdi>، وباقي القسمة على 500 أكبر حاجة فيه <bdi dir=\"ltr\">499</bdi>.",
+  "الـ <bdi dir=\"ltr\">19936</bdi> ده أكبر باقي لـ <bdi dir=\"ltr\">% 19937</bdi> بتاعة منع الـ overflow؛ وآخر خطوة <bdi dir=\"ltr\">% 500</bdi> بترجّعه لـ <bdi dir=\"ltr\">0..499 (L5)</bdi>.",
+  "الـ 1 معناها إن عندنا 2 address بس؛ لكن باقي القسمة على 500 ممكن يبقى أي رقم من 0 لـ 499."
+ ],
+ [
+  "هنا نطيت <bdi dir=\"ltr\">sum % 19937</bdi>:<span class=\"ltr\">23496 % 1000 = 496</span>والـ sum أكبر من 19937، فخطوة الـ prime بتغيّره <bdi dir=\"ltr\">(L5)</bdi>.",
+  "هنا نطيت آخر خطوة <bdi dir=\"ltr\">% maxAddress</bdi>، والـ <bdi dir=\"ltr\">3559</bdi> برا الـ address space <bdi dir=\"ltr\">0..999</bdi>.",
+  "هنا استخدمت أول pair بس:<span class=\"ltr\">88 × 89 = 7832 ; 7832 % 1000 = 832</span>ولازم تجمع الـ 3 pairs.",
+  "صح. الحساب:<span class=\"ltr\">88 × 89 = 7832 ; 3 × 7832 = 23496</span><span class=\"ltr\">23496 % 19937 = 3559 ; 3559 % 1000 = 559</span>"
+ ],
+ [
+  "صح. الحساب:<span class=\"ltr\">45000 % 19937 = 45000 − 39874 = 5126</span><span class=\"ltr\">5126 % 101 = 5126 − 5050 = 76</span>",
+  "هنا نطيت خطوة الـ prime:<span class=\"ltr\">45000 % 101 = 55</span>والكورس بيقسم على 19937 الأول <bdi dir=\"ltr\">(L5, Simple hash function)</bdi>.",
+  "هنا وقفت بعد <bdi dir=\"ltr\">% 19937</bdi>؛ ولسه محتاج <bdi dir=\"ltr\">% maxAddress</bdi> عشان يطلع address في <bdi dir=\"ltr\">0..100</bdi>.",
+  "الـ 50 ده خارج القسمة <bdi dir=\"ltr\">5126 / 101 ≈ 50</bdi>، مش الباقي؛ والـ home address هو الباقي."
+ ],
+ [
+  "القسمة على حجم الـ address space هي <b>آخر</b> خطوة لأنها بتدي الـ home address <bdi dir=\"ltr\">(L5)</bdi>.",
+  "صح. Step 1 تحويل كل pair من الـ characters لرقم، وStep 2 الـ fold and add مع <bdi dir=\"ltr\">% 19937</bdi> ضد الـ overflow، وStep 3 الباقي هو الـ home address <bdi dir=\"ltr\">(L5)</bdi>.",
+  "مينفعش تعمل fold and add للـ characters قبل ما تحولها لأرقام، وآخر خطوة قسمة على حجم الـ address space مش على 19937 <bdi dir=\"ltr\">(L5)</bdi>.",
+  "القسمة على الـ prime بتيجي قبل القسمة على الـ address space؛ لو قسمت على 19937 في الآخر ممكن يطلع address برا الـ address space <bdi dir=\"ltr\">(L5)</bdi>."
+ ],
+ [
+  "صح. الـ j بتاخد <bdi dir=\"ltr\">0, 2, 4, 6, 8, 10</bdi>، يعني 6 pairs من <bdi dir=\"ltr\">key[j], key[j+1]</bdi> وكل character بيتستخدم مرة واحدة.",
+  "لو الخطوة 1 الـ pairs هتتداخل (<bdi dir=\"ltr\">0-1, 1-2, …</bdi>)، وعند <bdi dir=\"ltr\">j = 11</bdi> هتقرا <bdi dir=\"ltr\">key[12]</bdi> اللي بعد آخر الـ array.",
+  "الـ <bdi dir=\"ltr\">j = 12</bdi> خطوة زيادة: هتقرا <bdi dir=\"ltr\">key[12]</bdi> و <bdi dir=\"ltr\">key[13]</bdi> وهما برا <bdi dir=\"ltr\">char key[12]</bdi>.",
+  "دي بتقف عند <bdi dir=\"ltr\">j = 4</bdi>، فبتدمج أول 6 characters بس (3 pairs) من الـ 12."
+ ],
+ [
+  "صح. الحساب:<span class=\"ltr\">45 mod 7 = 3 ; 52 mod 7 = 3</span>نفس الـ address، فالـ 2 keys بيعملوا collision ويبقوا synonyms.",
+  "الحساب:<span class=\"ltr\">49 mod 7 = 0</span>يعني address صفر. كونه من مضاعفات 7 مش فارق؛ اللي بيعمل collision هو تساوي الباقي بس.",
+  "الحساب:<span class=\"ltr\">46 mod 7 = 4</span>الـ keys الجيران عادةً بيطلعوا addresses مختلفة، لأن مفيش علاقة واضحة بين الـ key والـ location <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الحساب:<span class=\"ltr\">35 mod 7 = 0</span>يعني address صفر مش 3."
+ ],
+ [
+  "الـ 3 دي عدّت كل الـ keys اللي بتروح لـ address 12 (<bdi dir=\"ltr\">12, 25, 38</bdi>)، بس أول واحد، الـ 12، نزل في address فاضي فمش collision.",
+  "الـ 25 والـ 38 الاتنين بيخبطوا في address 12 بعد ما الـ 12 اتخزن، يعني 2 collisions مش واحد.",
+  "صح. الحساب:<span class=\"ltr\">12 → 12 (empty) ; 25 → 12 (collision)</span><span class=\"ltr\">38 → 12 (collision) ; 40 → 1 (empty)</span>",
+  "الـ 12 والـ 25 والـ 38 باقي قسمتهم على 13 هو 12، فالـ collisions بتحصل فعلًا."
+ ],
+ [
+  "غلط، الإجابة الصح False: الـ <b>keys</b> اللي بتعمل collision اسمها synonyms، والـ collision هو الحدث نفسه إن two keys مختلفين ياخدوا نفس الـ address <bdi dir=\"ltr\">(L5, Collisions)</bdi>.",
+  "صح. الـ collision هو الحدث (two keys مختلفين اتحولوا لنفس الـ address)، والـ keys نفسهم اسمهم synonyms."
+ ],
+ [
+  "غلط، الإجابة الصح False: المحاضرة بتعرّف الـ bucket إنه unit of storage بتشيل record <b>واحد أو أكتر</b> <bdi dir=\"ltr\">(L5, What is hashing?)</bdi>.",
+  "صح. الـ bucket هو unit of storage في الـ hash file بتشيل record واحد أو أكتر."
+ ],
+ [
+  "الـ 1600 هي <bdi dir=\"ltr\">B(D + RC) = 80 × 20</bdi>، يعني scan الـ heap أو الـ sorted. الـ hashed scan بيتضرب في 1.25 لأن الـ buckets مليانة حوالي 80%.",
+  "صح. الحساب:<span class=\"ltr\">1.25 × 80 × (10 + 20 × 0.5) = 1.25 × 80 × 20 = 2000 ms</span>",
+  "الـ 800 هي <bdi dir=\"ltr\">0.5B(D + RC)</bdi>، يعني الـ heap equality search (نص الملف)؛ والـ scan بيقرا كل الـ pages.",
+  "الـ 1010 جاية من:<span class=\"ltr\">1.25 × 80 × 10 + 20 × 0.5</span>يعني جمعت الـ RC مرة واحدة بدل ما تضربه في عدد الـ pages."
+ ],
+ [
+  "الـ 320 هي <bdi dir=\"ltr\">400 × 0.8</bdi>: الضرب في 80% بيصغّر الملف، مع إن الـ buckets اللي مش مليانة محتاجة pages <b>أكتر</b>.",
+  "الـ 480 هي <bdi dir=\"ltr\">400 × 1.2</bdi> يعني زودت 20%؛ والمعامل الصح هو <bdi dir=\"ltr\">1 / 0.8 = 1.25</bdi>.",
+  "الـ 400 معناها إن الـ buckets مليانة على الآخر؛ لكنها بتبقى حوالي 80% بس، فمحتاج pages أكتر.",
+  "صح. الحساب:<span class=\"ltr\">400 / 0.8 = 400 × 1.25 = 500 pages</span>ومن هنا جاية الـ <bdi dir=\"ltr\">1.25B</bdi> في الـ hashed scan."
+ ],
+ [
+  "الـ equality search بيقرا page واحدة:<span class=\"ltr\">H + D + 0.5RC</span>المرجع: <bdi dir=\"ltr\">(L5, Hashed file costs)</bdi>.",
+  "الـ insert تكلفته <bdi dir=\"ltr\">search + C + D</bdi>: تلاقي الـ bucket وتضيف الـ record وتكتب الـ page تاني <bdi dir=\"ltr\">(L5)</bdi>.",
+  "صح. الـ hashing مش بيحافظ على ترتيب الـ keys، فالـ records اللي في الـ range ممكن تبقى في أي bucket ولازم تقرا كل الـ pages:<span class=\"ltr\">1.25B(D + RC)</span>",
+  "الـ delete تكلفته <bdi dir=\"ltr\">search + C + D</bdi> زي الـ insert <bdi dir=\"ltr\">(L5)</bdi>."
+ ],
+ [
+  "الـ 20.5 هي <bdi dir=\"ltr\">2D + C</bdi>، يعني الـ <b>heap</b> insert (تقرا آخر page وتضيف وتكتبها)؛ لكن الـ hashed insert بيحسب <bdi dir=\"ltr\">h(k)</bdi> الأول ويدوّر في الـ bucket.",
+  "الـ 16 دي الـ search بس <bdi dir=\"ltr\">(1 + 10 + 5)</bdi>؛ ناقصها الـ C عشان تضيف الـ record والـ D عشان تكتب الـ page تاني.",
+  "صح. الحساب:<span class=\"ltr\">search = 1 + 10 + 0.5 × 20 × 0.5 = 16</span><span class=\"ltr\">insert = 16 + 0.5 + 10 = 26.5 ms</span>",
+  "الـ 36.5 جمعت D مرتين بعد الـ search <bdi dir=\"ltr\">(16 + 0.5 + 20)</bdi>؛ الـ page اتقرت خلاص في الـ search، فمحتاج D واحدة بس عشان تكتبها."
+ ],
+ [
+  "صح. تلاقي الـ bucket بتاع الـ record (الـ search)، وتضيفه (الـ C)، وتكتب الـ page تاني (الـ D)، نفس شكل الـ heap delete <bdi dir=\"ltr\">(L4–L5)</bdi>.",
+  "ده الـ heap insert <bdi dir=\"ltr\">2D + C</bdi>: الـ heap بيضيف في الآخر، لكن الـ hashed record لازم يروح للـ bucket اللي الـ <bdi dir=\"ltr\">h(k)</bdi> اختاره <bdi dir=\"ltr\">(L4)</bdi>.",
+  "ده الـ sorted insert:<span class=\"ltr\">search + 2 × 0.5B(D + RC)</span>المرجع: <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الـ scan والـ range search بس هما اللي بيقروا كل الـ pages؛ الـ insert بيروح على bucket واحد على طول <bdi dir=\"ltr\">(L5)</bdi>."
+ ],
+ [
+  "الـ 104 هي الـ sorted equality search:<span class=\"ltr\">10 × log₂1024 + 1 × log₂16 = 100 + 4 = 104 ms</span>أرخص من الـ heap بس مش الأرخص.",
+  "الـ 13,312 هي الـ heap equality search:<span class=\"ltr\">0.5 × 1024 × (10 + 16) = 13312 ms</span>ودي أغلى واحدة في التلاتة.",
+  "الـ 1 دي الـ H بس، يعني وقت حساب الـ hash؛ ناقصها قراية الـ page (الـ D) والتشييك على الـ records (الـ 0.5RC).",
+  "صح. الحساب:<span class=\"ltr\">H + D + 0.5RC = 1 + 10 + 0.5 × 16 × 1 = 19 ms</span>قصاد <bdi dir=\"ltr\">104 ms</bdi> للـ sorted و <bdi dir=\"ltr\">13,312 ms</bdi> للـ heap."
+ ],
+ [
+  "الـ binary search على الـ pages ده الـ sorted file <bdi dir=\"ltr\">(D·log₂B)</bdi>؛ الـ hashed file مش بيدوّر في الـ pages خالص <bdi dir=\"ltr\">(L4)</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">h(k)</bdi> بتدي الـ bucket على طول، فبنقرا الـ page دي بس (الـ D) ونشيك على نص الـ records فيها في المتوسط (الـ 0.5RC).",
+  "قراية الملف كله دي الـ scan <bdi dir=\"ltr\">1.25B(D + RC)</bdi>، والـ equality search بيتجنبها <bdi dir=\"ltr\">(L5)</bdi>.",
+  "الـ hashed file فيه <bdi dir=\"ltr\">1.25B</bdi> page؛ الـ search بس بيروح على واحدة منهم على طول <bdi dir=\"ltr\">(L5)</bdi>."
+ ],
+ [
+  "غلط، الإجابة الصح False: الـ hashing بيبوّظ ترتيب الـ keys، فالـ hashed range search لازم يعدّي على الملف كله <bdi dir=\"ltr\">1.25B(D + RC) (L5)</bdi>.",
+  "صح. مفيش ترتيب للـ keys، فالـ records اللي في الـ range ممكن تبقى في أي bucket، ولازم تقرا كل page."
+ ],
+ [
+  "غلط، الإجابة الصح False: الـ search time في الـ hashing <bdi dir=\"ltr\">O(1)</bdi> ومش بيكبر مع الـ N. اللي بيتضاعف مع الـ N هو الـ sequential search <bdi dir=\"ltr\">O(n) (L3, L5)</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">h(k)</bdi> بتحسب الـ address على طول، فالـ search time بيفضل <bdi dir=\"ltr\">O(1)</bdi> مهما كان عدد الـ records."
+ ],
+ [
+  "الـ 1011 جاية من:<span class=\"ltr\">1.25 × 40 × 20 + 1 + 10 = 1011</span>ودي صيغة الـ model answer بتاع Model C اللي بتحط الـ hashed <b>scan</b> مكان الـ search؛ والسؤال هنا طالب الـ equality search.",
+  "الـ 16 دي الـ search بس <bdi dir=\"ltr\">(1 + 10 + 5)</bdi>؛ ناقصها مسح الـ record (الـ C) وكتابة الـ page تاني (الـ D).",
+  "صح. الحساب:<span class=\"ltr\">search = 1 + 10 + 0.5 × 10 × 1 = 16</span><span class=\"ltr\">delete = 16 + 1 + 10 = 27 ms</span>",
+  "الـ 21 هي <bdi dir=\"ltr\">2D + C</bdi>، يعني الـ heap insert مش الـ hashed delete."
+ ],
+ [
+  "الـ hashing عمره ما بيرتب الملف؛ بيوزّع الـ records حسب <bdi dir=\"ltr\">h(k)</bdi> <bdi dir=\"ltr\">(L5)</bdi>.",
+  "صح. في الـ heap مفيش ترتيب، فبنضيف في آخر page <bdi dir=\"ltr\">(2D + C)</bdi>. لكن في الـ hashed لازم نحسب <bdi dir=\"ltr\">h(k)</bdi> ونقرا الـ bucket ده (الـ search)، وبعدين <bdi dir=\"ltr\">C + D</bdi>.",
+  "ولا formula من الاتنين بتعمل scan للملف وقت الـ insert، والـ heap أصلًا بيسمح بالتكرار <bdi dir=\"ltr\">(L4)</bdi>.",
+  "الجدول بيدي تكلفتين مختلفتين: الـ heap <bdi dir=\"ltr\">2D + C</bdi> والـ hashed <bdi dir=\"ltr\">search + C + D (L4–L5)</bdi>."
+ ]
+]);

@@ -4803,3 +4803,471 @@ AR.mm.lectures[4].quiz.push(...[
   "المعدل الأقل بيوفّر data، بس الـ <bdi dir=\"ltr\">8 kHz</bdi> جاية من حساب Nyquist <bdi dir=\"ltr\">(L4)</bdi>."
  ]
 ]);
+
+// Final revision practice questions (Arabic whys), appended in the same order as extra/mm.js
+AR.mm.lectures["5"].extra = (AR.mm.lectures["5"].extra || []).concat([
+ [
+  "الـ <bdi dir=\"ltr\">n = 1</bdi> بتدي <bdi dir=\"ltr\">500 ± 100 = 400, 600 Hz</bdi>، وده أقرب زوج، مش 200 و800.",
+  "الـ <bdi dir=\"ltr\">n = 2</bdi> بتدي <bdi dir=\"ltr\">500 ± 200 = 300, 700 Hz</bdi>.",
+  "صح. الـ sidebands عند <bdi dir=\"ltr\">fc ± n·fm</bdi>:<span class=\"ltr\">500 ± 3 × 100 = 500 ± 300 = 200, 800 Hz</span>",
+  "ده الفرق بالـ Hz (300)، مش الـ order؛ الفرق هو <bdi dir=\"ltr\">n·fm</bdi>، يعني <bdi dir=\"ltr\">n = 300/100 = 3</bdi>."
+ ],
+ [
+  "صح. عند <bdi dir=\"ltr\">n = 1</bdi>:<span class=\"ltr\">300 ± 110 = 190, 410 Hz</span>والنسبة <bdi dir=\"ltr\">300 : 110</bdi> مش صحيحة، فالـ sidebands مش مضاعفات لـ fundamental واحد، والصوت يبقى زي الجرس، inharmonic.",
+  "الـ frequencies صح، بس الصوت الـ harmonic محتاج الـ modulator يبقى بنسبة صحيحة مع الـ carrier؛ و<bdi dir=\"ltr\">300 : 110</bdi> مش كده.",
+  "دول الـ upper sidebands بتوع <bdi dir=\"ltr\">n = 1</bdi> و<bdi dir=\"ltr\">n = 2</bdi> <bdi dir=\"ltr\">(300 + 110, 300 + 220)</bdi>؛ كل order ليها sideband تحت <b>و</b>فوق.",
+  "دول بس الـ carrier والـ modulator؛ الـ FM sidebands بتطلع عند <bdi dir=\"ltr\">fc ± n·fm</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">I = peak deviation / modulator frequency = 600 / 200 = 3</span>",
+  "ده قسمة بالمقلوب: <bdi dir=\"ltr\">200 / 600</bdi>. الـ index هو الـ deviation على الـ modulator.",
+  "ده ضرب <bdi dir=\"ltr\">(600 × 200)</bdi>؛ الـ index نسبة.",
+  "ده طرح <bdi dir=\"ltr\">(600 − 200)</bdi>؛ الـ index نسبة مش فرق."
+ ],
+ [
+  "صح. الـ operators هي الـ oscillators؛ والـ synths فيها 4 أو 6 لإن carrier واحد + modulator واحد مش معقدين كفاية، والـ algorithms بتوصّلهم.",
+  "الـ FM بيتعمل digital عشان الـ analog oscillators مش مستقرة أصلًا؛ والـ operators مش احتياطي.",
+  "الـ ADSR بيشكّل الصوت مع الوقت؛ مش متقسم على الـ operators.",
+  "الـ sidebands بتطلع لوحدها عند <bdi dir=\"ltr\">fc ± n·fm</bdi> من carrier وmodulator؛ مش محتاجة oscillators زيادة."
+ ],
+ [
+  "لو ضاعفت الـ D الـ period بيتضاعف والـ frequency بتتقسم على 2 وتبقى <bdi dir=\"ltr\">110.25 Hz</bdi>، يعني octave أوطى.",
+  "صح. <bdi dir=\"ltr\">F1 = Fs / D</bdi>، فلو قسمت الـ D على 2 الـ F1 بتتضاعف:<span class=\"ltr\">44,100 / 100 = 441 Hz</span>وده نفس مثال النوتس.",
+  "لو سبت الـ D زي ما هي هتفضل <bdi dir=\"ltr\">220.5 Hz</bdi>؛ الـ pitch بيتحدد بطول الـ delay.",
+  "ده خلط الـ frequency المطلوبة <bdi dir=\"ltr\">(441 Hz)</bdi> بطول الـ delay؛ والصح <bdi dir=\"ltr\">44,100 / 441 = 100</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">T = Fs / freq = 22,050 / 441 = 50 samples</span>",
+  "ده قسم الـ Nyquist <bdi dir=\"ltr\">(11,025)</bdi> على 441؛ الـ period بيستخدم الـ sample rate كاملة.",
+  "ده <bdi dir=\"ltr\">1/441</bdi>، الـ period بالثواني مش بالـ samples (نسيت تضرب في Fs).",
+  "ده ضرب <bdi dir=\"ltr\">Fs × freq</bdi>؛ الـ period هو Fs على الـ frequency."
+ ],
+ [
+  "ده قرا \"<bdi dir=\"ltr\">5/100 second</bdi>\" على إنها 5؛ النافذة اللحظية <bdi dir=\"ltr\">0.05 s</bdi>.",
+  "صح. النافذة المتوسطة حوالي <bdi dir=\"ltr\">1 s</bdi> واللحظية حوالي <bdi dir=\"ltr\">5/100 s</bdi>، يعني:<span class=\"ltr\">1 / 0.05 = 20</span>",
+  "ده قسم <bdi dir=\"ltr\">1 s</bdi> على <bdi dir=\"ltr\">0.01 s</bdi>؛ النافذة اللحظية <bdi dir=\"ltr\">5/100 s</bdi> مش <bdi dir=\"ltr\">1/100</bdi>.",
+  "ده عدد الـ samples في النافذة اللحظية عند <bdi dir=\"ltr\">44.1 kHz</bdi>، مش عدد النوافذ."
+ ],
+ [
+  "المحاضرة بتقول الـ beat بيتسجل لو <b>sub-band واحدة أو أكتر</b> عدّت المتوسط بتاعها، مش كلهم.",
+  "صح. بعد FFT على 1024 sample متقسمة لحوالي 32 sub-band، الـ beat بيتسجل لما sub-band واحدة أو أكتر تعدّي المتوسط بتاعها."
+ ],
+ [
+  "صح.<span class=\"ltr\">samples = 0.03 × 48,000 = 1440</span>بنفس طريقة النوتس <bdi dir=\"ltr\">(10 ms × 44.1 kHz = 441)</bdi>.",
+  "غلطة في العلامة العشرية: <bdi dir=\"ltr\">30 ms</bdi> هي <bdi dir=\"ltr\">0.03 s</bdi> مش <bdi dir=\"ltr\">0.003</bdi>.",
+  "ده ضرب <bdi dir=\"ltr\">30 × 48,000</bdi> من غير ما يحوّل الـ ms لثواني.",
+  "ده استخدم <bdi dir=\"ltr\">0.3 s</bdi>؛ والـ <bdi dir=\"ltr\">30 ms</bdi> هي <bdi dir=\"ltr\">0.03 s</bdi>."
+ ],
+ [
+  "الـ grains صغيرة جدًا: حوالي <bdi dir=\"ltr\">1 to 50 ms</bdi> (غالبًا <bdi dir=\"ltr\">10 to 50</bdi>). الـ <bdi dir=\"ltr\">200 ms</bdi> أطول بكتير.",
+  "صح. المحاضرة بتقول الـ grains حوالي <bdi dir=\"ltr\">1 to 50 ms</bdi>، وغالبًا <bdi dir=\"ltr\">10 to 50 ms</bdi>، على مقياس الـ \"microsound\"."
+ ],
+ [
+  "صح. الـ Attack هو سرعة الوصول للـ volume الكامل بعد ما الـ key يتداس: بطيء في الـ bowed strings والـ pads، وتقريبًا فوري في أغلب الآلات الميكانيكية.",
+  "الـ Decay هو سرعة النزول من الـ peak لمستوى الـ sustain، مش الطلوع.",
+  "الـ Sustain مستوى بيفضل طول ما الـ key متداس، مش سرعة.",
+  "الـ Release هو الاختفاء بعد ما تسيب الـ key (قصير في الـ organ، وطويل في الجرس)."
+ ],
+ [
+  "الـ source (square وpulse وsawtooth وtriangle) هو الإشارة الغنية اللي الـ subtractive بيعملها filter.",
+  "الـ filtering هو الجزء الـ subtractive نفسه: الـ cut-off والـ resonance بيشيلوا الـ overtones.",
+  "صح. الـ amplitude envelope مش subtractive synthesis بالظبط، بس بيتستخدم معاه كتير ومع طرق تانية.",
+  "الـ vocoder هو أول مثال للـ subtractive <bdi dir=\"ltr\">(1939)</bdi>، مش واحد من عناصر التحكم التلاتة."
+ ],
+ [
+  "صح. الـ square wave بيستخدم الـ harmonics الفردية <bdi dir=\"ltr\">f, 3f, 5f</bdi> بـ amplitudes <bdi dir=\"ltr\">1, 1/3, 1/5</bdi>، فالمكوّن التالت:<span class=\"ltr\">5 × 200 = 1000 Hz , amplitude 1/5</span>",
+  "ده المكوّن التاني <bdi dir=\"ltr\">(3f)</bdi>؛ الأول هو <bdi dir=\"ltr\">f = 200 Hz</bdi>.",
+  "ده عدّ كل الـ harmonics <bdi dir=\"ltr\">(f, 2f, 3f)</bdi>؛ الـ square wave فيه الفردية بس.",
+  "الـ frequency صح، بس الـ amplitude بتاع الـ harmonic رقم n هو <bdi dir=\"ltr\">1/n</bdi>، يعني <bdi dir=\"ltr\">1/5</bdi>."
+ ],
+ [
+  "صح. الـ linear crossfading هو الحالة الخاصة من الـ sequential enveloping اللي الـ envelopes فيها نبضات مثلثية متداخلة.",
+  "المستطيلات اللي مش متداخلة هتبدّل الـ tables فجأة؛ الـ crossfading محتاج تداخل.",
+  "الـ ADSR بيتعمل على الـ output، بس الـ envelopes بتاعة الـ crossfade نفسها نبضات مثلثية.",
+  "الـ Hanning fades بتاعة <bdi dir=\"ltr\">10 ms</bdi> هي envelopes الـ grains في <bdi dir=\"ltr\">granulation.m</bdi>، مش الـ wavetable."
+ ],
+ [
+  "الـ wavetables قصيرة: الموجات فيها نادرًا ما تزيد عن period أو اتنين. وعشان كده أصغر بكتير من الـ PCM sample.",
+  "صح. على عكس الـ sample playback، الـ tables نادرًا ما تزيد عن period أو اتنين، والـ output بيتعمل في الـ real time."
+ ],
+ [
+  "نقط السكوت مناسبة لضربات الدرامز؛ الـ note المستمرة مفيهاش سكوت تقطع عنده.",
+  "صح. في الآلات المستمرة الـ loop بيتحط في المكان اللي الـ audio content بيتكرر فيه، وده بالـ pattern matching.",
+  "الـ tail-off sample بينهي الـ loop؛ مش بيحدد مكانه.",
+  "تغيير السرعة بيغيّر الـ pitch (وده سبب الـ multisampling)؛ مش بيلاقي نقط الـ loop."
+ ],
+ [
+  "صح. مع layer واحدة الـ volume بس اللي بيتغير؛ مفيش تغيير في الـ timbre.",
+  "ده الـ dual (أو triple) layer: الصوت التاني بيشتغل مع الـ velocity الأعلى.",
+  "طريقة العزف بتتختار بالـ keyswitching، مش بالـ velocity.",
+  "الـ velocity بتقيس قوة الضرب؛ الـ pitch بييجي من رقم الـ key."
+ ],
+ [
+  "تقريب الـ segments بيعلّي الـ pitch؛ قواعد المدة بتستخدم تكرار أو حذف segments.",
+  "تكرار الـ segments بيطوّل الصوت.",
+  "صح. في الـ PSOLA بنكرر segments عشان الصوت يطول، ونحذف شوية عشان يقصر، وبعدين overlap-add.",
+  "الـ PSOLA مفيهوش STFT؛ بيشتغل على segments زمنية متداخلة على طول."
+ ],
+ [
+  "صح. الـ p بيحدد الاتنين: الـ p الكبيرة بتدي decay طويل وpitch واطي.",
+  "بالمقلوب: table أطول يعني period أطول (pitch أوطى) وdecay أبطأ.",
+  "شخصية الـ snare أو الـ cymbal بيحددها الـ blend factor b (قريب من 1 يبقى cymbal)، مش الـ p.",
+  "الـ p بتفرق: بتحدد الـ decay والـ pitch، والـ b بتحدد الـ timbre."
+ ],
+ [
+  "الـ tail overlap بييجي من tempo <b>أسرع</b>؛ التشغيل الأبطأ بيبعّد الـ slices عن بعض.",
+  "صح. الـ tempo الأبطأ بيسيب فراغات ساكتة بين الـ slices؛ وحل منهم إنك تعمل loop لآخر الـ tail يملا الفراغ (والحل التاني envelope يعمل fade لكل slice).",
+  "الـ attacks بتفضل نضيفة من غير artefacts، وده أهم حاجة في الـ percussion.",
+  "تغيير الـ tempo بتاع الـ slices مش بيعمل undersampling؛ المشكلة فراغات أو overlaps."
+ ]
+]);
+AR.mm.lectures["6"].extra = (AR.mm.lectures["6"].extra || []).concat([
+ [
+  "صح. الـ C يعني Program Change؛ والـ 5 يعني <bdi dir=\"ltr\">channel 5 + 1 = 6</bdi>؛ و<span class=\"ltr\">18h = 1 × 16 + 8 = 24</span>والـ program change ليها data byte واحد بس.",
+  "الـ nibble فيها <bdi dir=\"ltr\">channel − 1</bdi>؛ والـ nibble 5 هي channel 6.",
+  "الـ Control Change هي Bx وليها اتنين data bytes؛ الـ Cx هي Program Change.",
+  "الـ data byte مكتوب hex، يعني <bdi dir=\"ltr\">18h = 24</bdi>."
+ ],
+ [
+  "الـ channel nibble هي <bdi dir=\"ltr\">channel − 1</bdi>، فـ channel 1 تبقى 0 مش 1.",
+  "صح. الـ 9 يعني Note On والـ 0 يعني channel 1؛<span class=\"ltr\">60 = 3 × 16 + 12 = 3C ;  100 = 6 × 16 + 4 = 64</span>",
+  "قيم الـ data لازم تتكتب hex، يعني <bdi dir=\"ltr\">60 = 3C</bdi> و<bdi dir=\"ltr\">100 = 64</bdi>.",
+  "الـ 8x هي Note Off؛ الـ Note On هي 9x."
+ ],
+ [
+  "صح. الـ Pitch bend هي Ex؛ وchannel 16 تبقى nibble <bdi dir=\"ltr\">16 − 1 = 15 = F</bdi>، يعني EF.",
+  "الـ status byte هو byte واحد (رقمين hex)؛ وchannel 16 هي nibble F، والـ \"10\" هي 16 بالـ hex مش <bdi dir=\"ltr\">channel − 1</bdi>.",
+  "الـ Dx هي Channel Pressure، مش Pitch Bend.",
+  "الـ F0 هي بداية الـ System Exclusive؛ والـ system messages مش مربوطة بـ channel."
+ ],
+ [
+  "صح. المحاضرة بتذكر إننا نجمع قيمتين كـ LSB وMSB (مدى 16-bit زي ما السلايد بتقول)، وكمان الـ OSC والـ MIDI 2.0.",
+  "الـ resolution بتاعة حجم الأرقام، مش sample rate؛ والـ MIDI مش بيعمل sampling.",
+  "عدد الـ channels حد تاني منفصل؛ مش بيدقق قيم الـ controllers.",
+  "الـ Sysex للـ data اللي بتعتمد على الـ system زي إعداد الأصوات، مش الحل المعتاد للـ resolution."
+ ],
+ [
+  "الـ Control change فيها controller number وcontroller value.",
+  "صح. الـ Pitch bend <bdi dir=\"ltr\">(Ex)</bdi> أول data byte فيها MSB والتاني LSB، فهي message بـ 3 bytes.",
+  "الـ Channel pressure ليها data byte واحد، قيمة الضغط.",
+  "الـ Poly key pressure فيها key number وكمية الضغط."
+ ],
+ [
+  "ده استخدم CD audio mono <bdi dir=\"ltr\">(10,584,000 B)</bdi>؛ والسؤال بيقول stereo.",
+  "صح.<span class=\"ltr\">MIDI = 1500 × 2 × 3 = 9000 B</span><span class=\"ltr\">CD = 44,100 × 16 × 2 × 120 / 8 = 21,168,000 B</span><span class=\"ltr\">21,168,000 / 9000 = 2352</span>",
+  "ده حسب الـ Note On بس <bdi dir=\"ltr\">(4500 B)</bdi>؛ وكل note محتاجة Note Off كمان.",
+  "ده قارن حجم الـ CD بالـ bits بحجم الـ MIDI بالـ bytes؛ اقسم على 8 الأول."
+ ],
+ [
+  "صح. الـ 3 bits بيدّوا <bdi dir=\"ltr\">2³ = 8</bdi> أكواد: من 8x لـ Fx (سبعة voice types من 8x لـ Ex، وFx للـ system messages).",
+  "الـ 16 هو عدد الـ channels، من الـ 4 bits الواطيين.",
+  "السبعة دول عدد الـ channel voice messages (من 8x لـ Ex)؛ والـ 3 bits بيدّوا كمان Fx للـ system messages.",
+  "الـ 128 هو مدى الـ data byte اللي 7 bits <bdi dir=\"ltr\">(0 to 127)</bdi>."
+ ],
+ [
+  "الـ 79 مكتوبة hex، يعني <bdi dir=\"ltr\">79h = 7 × 16 + 9 = 121</bdi>، وده في المدى المحجوز <bdi dir=\"ltr\">121 to 127</bdi>.",
+  "صح. الـ Bx لما أول data byte فيها من 121 لـ 127 تبقى channel mode message؛ و<bdi dir=\"ltr\">79h = 121</bdi>؛ والـ B0 هي channel 1.",
+  "الـ Note Off هي 8x؛ هنا الـ status هي B0 (من عيلة الـ Control Change وعلى channel 1).",
+  "الـ system messages بتبدأ بـ F؛ والـ B0 channel message."
+ ],
+ [
+  "الـ Ensemble من 49 لـ 56.",
+  "صح. العيلات كل 8 مع بعض: من 57 لـ 64 Brass (والـ 57 هي Trumpet)، فالـ 60 brass.",
+  "الـ Reed من 65 لـ 72.",
+  "الـ Strings من 41 لـ 48 (والـ 41 هي Violin)."
+ ],
+ [
+  "صح. الـ 9 يعني Note On، والـ 9 التانية يعني channel 10 (channel الدرامز في الـ GM)؛<span class=\"ltr\">2A = 2 × 16 + 10 = 42 = Closed Hi-Hat ;  50h = 80</span>",
+  "الـ nibble هي <bdi dir=\"ltr\">channel − 1</bdi>: الـ nibble 9 تبقى channel 10.",
+  "الـ Snare هي key 38 يعني <bdi dir=\"ltr\">26h</bdi>؛ والـ <bdi dir=\"ltr\">2Ah = 42</bdi>، والـ velocity <bdi dir=\"ltr\">50h = 80</bdi>.",
+  "الـ 9x هي Note On، و<bdi dir=\"ltr\">2A = 42</bdi> مش 49 (Crash Cymbal 1)."
+ ],
+ [
+  "صح. الـ Real-time:<span class=\"ltr\">F8 clock, FA start, FB continue, FC stop, FE active sensing, FF reset</span>",
+  "الـ FB هي Continue (يكمّل من مكان ما وقف).",
+  "الـ F8 هي الـ Timing Clock.",
+  "الـ F2 هي Song Position Pointer، ودي system common message."
+ ],
+ [
+  "لو byte واحد من غير data يبقى الـ Tune Request <bdi dir=\"ltr\">(F6)</bdi>.",
+  "اتنين bytes (data byte واحد) ده الـ MIDI Timing Code <bdi dir=\"ltr\">(F1)</bdi> أو الـ Song Select <bdi dir=\"ltr\">(F3)</bdi>.",
+  "صح. الـ Song Position Pointer هي F2 وليها 2 data bytes:<span class=\"ltr\">1 + 2 = 3 bytes</span>",
+  "الـ MIDI message فيها status byte واحد ولحد اتنين data bytes، فعمرها ما تبقى 4 (غير الـ Sysex)."
+ ],
+ [
+  "الـ MIDI OUT بيبعت الـ data اللي الجهاز بيطلّعها بنفسه بس؛ تكرار اللي داخل على الـ MIDI IN ده شغل الـ MIDI THROUGH.",
+  "صح. الـ MIDI OUT بيبعت data الجهاز نفسه؛ والـ MIDI THROUGH بيكرر اللي جاي على الـ MIDI IN."
+ ],
+ [
+  "الـ patch هو إعدادات التحكم اللي بتحدد timbre.",
+  "الـ track بينظم التسجيلات في الـ sequencer.",
+  "صح. الـ voice هو اللي بيطلّع الصوت؛ والـ synths فيها كتير <bdi dir=\"ltr\">(12, 20, 24, 36 …)</bdi> شغالين مستقلين وفي نفس الوقت.",
+  "الـ channel بيفصل المعلومات؛ 16 في كل cable."
+ ],
+ [
+  "الـ synthesiser هو مولّد الصوت (الـ tone generation unit).",
+  "الـ interfaces بتوصّل الأجهزة بالكمبيوتر بس (cable أو USB أو Bluetooth أو WiFi).",
+  "صح. الكمبيوتر هو قلب الـ MIDI system، وبيتحكم في الـ scheduling والـ synchronisation والـ recording؛ والـ sequencers دلوقتي جوه الـ DAWs.",
+  "الـ keyboards والـ controllers بيبعتوا data العزف؛ مش بيعملوا scheduling للـ system كله."
+ ],
+ [
+  "صح. الـ GM محتاج الـ 16 channel، وكل واحدة تعزف آلة مختلفة (multitimbral) وnotes كتير (polyphony)، وعلى الأقل 24 voice بيتوزعوا dynamically.",
+  "الـ polyphony في كل channel من شروط الـ GM المذكورة، مع الـ 16 channel والـ multitimbral والـ 24 voice."
+ ],
+ [
+  "الـ SAOL هي لغة الـ orchestra اللي بتوصف الـ synthesisers.",
+  "صح. الـ SASBF (الـ Sample Bank Format) بيبعت banks من الـ samples للـ wavetable والـ sample-based synthesis بكفاءة؛ ومتوافق جزئيًا مع الـ MIDI DLS.",
+  "الـ SASL هي لغة الـ score (أنهي notes وبأي قوة والـ tempo).",
+  "الـ AudioBIFS بيعمل الـ mixing والـ post-production للـ audio scenes."
+ ],
+ [
+  "صح. الـ scheduler هو الجسم الأساسي للـ Structured Audio: بيحدد الـ SAOL بيعمل الصوت إزاي لما الـ MIDI أو الـ SASL يشغّله.",
+  "الـ MIDI semantics بتخلي الـ MIDI يشغّل الـ SAOL؛ والـ scheduler هو اللي بيقول الأجزاء تتجمع إزاي.",
+  "الـ SASBF بيشيل banks الـ samples.",
+  "الـ BIFS بيوصف الـ objects (video وsound وanimation) بتترص مع بعض إزاي."
+ ],
+ [
+  "المحاضرة بتقول حدود الـ SASL إن مفيهاش looping ولا sections ولا repeats ولا expression evaluation؛ وأغلب الـ scores بتتعمل بأدوات أوتوماتيك.",
+  "صح. الـ SASL لغة score بسيطة جدًا؛ مفيهاش looping ولا sections ولا repeats ولا expression evaluation."
+ ],
+ [
+  "الـ MIDI مش audio codec زي الـ MP3؛ مفيهوش audio samples خالص.",
+  "صح. الـ MIDI بيبعت تعليمات مش samples؛ ومسئولية إنتاج الصوت بتنتقل للـ client (الـ synth أو الـ sampler أو الـ soundcard).",
+  "الـ MIDI مش بيعمل sampling للصوت؛ الـ sample rates بتاعة الصوت المتسجل.",
+  "الـ MIDI فيه 16 channel في الـ cable؛ وحجمه صغير بسبب نوع اللي بيبعته، مش عدد الـ channels."
+ ]
+]);
+AR.mm.lectures["7"].extra = (AR.mm.lectures["7"].extra || []).concat([
+ [
+  "الـ Overdrive بيدخّل المستويات الواطية في منحنى non-linear، يعني soft clipping متماثل، وده أهدى نوع.",
+  "الـ Distortion بيغطي مساحة أوسع ومنطقة non-linear أعلى، بس مش non-linear بالكامل.",
+  "صح. الأنواع التلاتة overdrive وdistortion وfuzz؛ والـ fuzz non-linear بالكامل، وأخشن وأقسى.",
+  "الـ exciter بيزوّد distortion خفيف في الـ high frequencies للـ brightness؛ مش نوع من الـ distortion."
+ ],
+ [
+  "صح.<span class=\"ltr\">τ = M / fs = 1323 / 44,100 = 0.03 s = 30 ms</span>ومن غير modulation، المدى من <bdi dir=\"ltr\">25 to 50 ms</bdi> هو slapback.",
+  "الـ chorus من <bdi dir=\"ltr\">10 to 25 ms</bdi> بـ modulation عشوائية؛ والـ delay ده أطول ومن غير modulation.",
+  "ده قسم على 1000 بدل الـ fs؛ والصح <bdi dir=\"ltr\">1323 / 44,100 = 0.03 s</bdi>.",
+  "غلطة عشرية: <bdi dir=\"ltr\">1323 / 44,100 = 0.03 s = 30 ms</bdi> مش <bdi dir=\"ltr\">3 ms</bdi>."
+ ],
+ [
+  "ده إجابة الـ FIR comb (echo واحد بس عند <bdi dir=\"ltr\">n = 5</bdi>)؛ الـ IIR بيفضل يعمل feedback.",
+  "ده <bdi dir=\"ltr\">y(5)</bdi> بعد لفة واحدة؛ والـ <bdi dir=\"ltr\">n = 15</bdi> هي تلات لفات من <bdi dir=\"ltr\">M = 5</bdi>.",
+  "صح. الـ echoes عند <bdi dir=\"ltr\">n = 0, 5, 10, 15</bdi> بقيم:<span class=\"ltr\">1, 0.6, 0.36, 0.216  →  y(k·M) = g^k = 0.6³</span>",
+  "ده جمع 0.6 تلات مرات؛ كل لفة بتضرب في g."
+ ],
+ [
+  "ده <bdi dir=\"ltr\">0.7²</bdi>، نتيجة الـ IIR comb؛ الـ FIR مفيهوش feedback.",
+  "صح. الـ FIR comb بيدي <bdi dir=\"ltr\">y(0) = 1</bdi> و<bdi dir=\"ltr\">y(4) = 0.7</bdi> بس: echo واحد، يعني <bdi dir=\"ltr\">y(8) = 0</bdi>.",
+  "ده <bdi dir=\"ltr\">y(4)</bdi>، الـ echo الوحيد؛ مفيش حاجة تانية بتوصل عند <bdi dir=\"ltr\">n = 8</bdi>.",
+  "ده جمع 0.7 مرتين كإن فيه echo اتنين."
+ ],
+ [
+  "ده الـ FIR comb.",
+  "ده الـ IIR comb.",
+  "صح. الجدول بيقول الـ allpass هو <bdi dir=\"ltr\">BL = a, FB = −a, FF = 1</bdi>.",
+  "ده delay بس."
+ ],
+ [
+  "صح. الـ ring modulation بيدي <bdi dir=\"ltr\">|k·f0 ± fc|</bdi> لكل partial:<span class=\"ltr\">500 ± 100 = 400, 600 ;  500 ± 200 = 300, 700</span>ومن غير الـ inputs نفسها.",
+  "الـ RM بيشيل الـ inputs؛ بنسمع المجموع والفرق بس.",
+  "ده عمل modulation للـ 100 بس؛ والـ 200 بيدي كمان 300 و700.",
+  "ده سايب الـ carrier بتاع الـ 500، وده سلوك الـ AM؛ الـ RM مفيهوش خط الـ carrier."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">1 + α·m</bdi> والـ m من <bdi dir=\"ltr\">−1</bdi> لـ 1 بتدي:<span class=\"ltr\">1 − 0.3 = 0.7  to  1 + 0.3 = 1.3</span>زي الديمو <bdi dir=\"ltr\">(α = 0.5 → 0.5 to 1.5)</bdi>.",
+  "ده نسي الـ \"<bdi dir=\"ltr\">1 +</bdi>\": الـ gain بيتأرجح حوالين 1 مش حوالين 0.",
+  "ده خد الـ α كأقل قيمة؛ الأقل هو <bdi dir=\"ltr\">1 − α</bdi>.",
+  "ده خد الـ m من <bdi dir=\"ltr\">−1</bdi> لـ 0 بس؛ والـ LFO sine بيطلع لـ +1 كمان."
+ ],
+ [
+  "الـ tremolo هو AM بـ modulation frequency أقل من <bdi dir=\"ltr\">20 Hz</bdi>؛ والـ <bdi dir=\"ltr\">30 Hz</bdi> أعلى من الحد ده.",
+  "صح. المحاضرة بتعرّف الـ tremolo إنه AM بـ modulation frequency أقل من <bdi dir=\"ltr\">20 Hz</bdi> (الديمو <bdi dir=\"ltr\">5 Hz</bdi>)، فالـ <bdi dir=\"ltr\">30 Hz</bdi> مش tremolo."
+ ],
+ [
+  "صح.<span class=\"ltr\">V0 = 10^(−6/20) = 10^(−0.3) ≈ 0.501 → H0 ≈ −0.499</span>والـ cut بيدي H0 سالب.",
+  "ده الـ boost بتاع <bdi dir=\"ltr\">+6 dB</bdi> <bdi dir=\"ltr\">(V0 ≈ 1.995)</bdi>؛ علامة الـ G اتشالت.",
+  "ده استخدم <bdi dir=\"ltr\">10^(G/10)</bdi>، شكل الـ power؛ قانون الـ EQ بيستخدم <bdi dir=\"ltr\">G/20</bdi>.",
+  "ده نسي الأس: <bdi dir=\"ltr\">G/20 − 1 = −0.3 − 1</bdi>؛ والـ V0 هو 10 أس <bdi dir=\"ltr\">G/20</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">2π × 11,025 / 44,100 = 2π × 0.25 = π/2 → cos(π/2) = 0 → d = 0</span>",
+  "ده نسي الـ 2، يعني حسب <bdi dir=\"ltr\">−cos(π × 0.25) = −cos(π/4)</bdi>.",
+  "ده استخدم sin بدل cos، يعني <bdi dir=\"ltr\">−sin(π/2) = −1</bdi>.",
+  "ده نسي علامة السالب واستخدم <bdi dir=\"ltr\">cos(0)</bdi>؛ والزاوية هنا <bdi dir=\"ltr\">π/2</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">π × 7350 / 44,100 = π/6 → sin(π/6) = 0.5 → F1 = 2 × 0.5 = 1.0</span>",
+  "ده نسي الـ 2 اللي قدام الـ sine.",
+  "ده <bdi dir=\"ltr\">2 × fc / fs</bdi> من غير π ولا sine.",
+  "ده <bdi dir=\"ltr\">2π·fc/fs = π/3</bdi> من غير ما ياخد الـ sine."
+ ],
+ [
+  "ده استخدم الجزء الخطي <bdi dir=\"ltr\">2x</bdi>، وده لـ <bdi dir=\"ltr\">x &lt; 1/3</bdi> بس؛ و0.4 في منطقة الـ quadratic.",
+  "صح. <bdi dir=\"ltr\">1/3 ≤ 0.4 &lt; 2/3</bdi>، يعني:<span class=\"ltr\">f = (3 − (2 − 1.2)²)/3 = (3 − 0.64)/3 = 2.36/3 ≈ 0.787</span>",
+  "الـ saturation عند 1 بيبدأ من <bdi dir=\"ltr\">x ≥ 2/3</bdi>؛ و0.4 أقل من كده.",
+  "ده نسي القسمة على 3 في الآخر."
+ ],
+ [
+  "صح.<span class=\"ltr\">cos 15° ≈ 0.9659 , sin 15° ≈ 0.2588</span><span class=\"ltr\">gL = 1.2247x ,  gR = 0.7071x</span>",
+  "الشمال واليمين متبدلين؛ الـ gL بيستخدم <bdi dir=\"ltr\">cos θ + sin θ</bdi>.",
+  "دول بس <bdi dir=\"ltr\">cos θ</bdi> و<bdi dir=\"ltr\">sin θ</bdi>؛ كل gain بيجمع الاتنين.",
+  "ده حالة <bdi dir=\"ltr\">θ = 45°</bdi> (على جنب واحد خالص)."
+ ],
+ [
+  "صح.<span class=\"ltr\">0.005 × 48,000 = 240 ;  0.010 × 48,000 = 480</span>",
+  "ده نقل الـ ms كإنها samples؛ اضرب الثواني في الـ fs.",
+  "ده ضرب 5 و10 في 48,000 من غير ما يحوّل الـ ms لثواني.",
+  "غلطة عشرية: <bdi dir=\"ltr\">5 ms = 0.005 s</bdi> مش <bdi dir=\"ltr\">0.0005</bdi>."
+ ],
+ [
+  "النسخة الواضحة المتأخرة دي echo؛ انعكاسات الـ reverb بتوصل بسرعة لدرجة إنها متتسمعش كنسخ.",
+  "صح. الـ early reflections (ليها اتجاه وبتتحدد بشكل الأوضة والأماكن) بييجي بعدها diffuse reverberation، أكثف بكتير وعشوائية، وبتقل exponentially في القاعات الكويسة.",
+  "الانعكاسات على فترات ثابتة هي اللي الـ delay بالـ feedback بيديها؛ وعشان كده مش بيعمل reverb حقيقي.",
+  "ذيل الـ reverb بيكمل بعد الـ early reflections وبيدّي الأوضة الإحساس بالمساحة."
+ ],
+ [
+  "صح.<span class=\"ltr\">y = IFFT( FFT(x) · FFT(h) )</span>الـ convolution theorem بيحوّل الـ convolution الطويلة لضرب في الـ frequency domain.",
+  "الـ FFT بيغيّر طريقة الحساب؛ مش بيشيل أجزاء من الـ impulse response.",
+  "الـ impulse response بتاع الأوضة طويل، وده سبب استخدام الـ FFT.",
+  "الـ convolution في الزمن بيقابله ضرب الـ spectra، مش جمعهم."
+ ],
+ [
+  "في الـ vibrato بنسمع الإشارة المتأخرة بس: مفيش forward ولا backward feed للإشارة الأصلية.",
+  "صح. الـ vibrato هو delay line + LFO، وبنسمع الإشارة المتأخرة بس."
+ ],
+ [
+  "الـ Chorus تحت الـ Delays بس.",
+  "الـ Tremolo تحت الـ Modulators بس.",
+  "صح. الـ Delays فيها الـ vibrato والـ flanger والـ chorus والـ echo؛ والـ Modulators فيها الـ ring modulation والـ tremolo والـ vibrato.",
+  "الـ Phaser من الـ time-varying filters."
+ ],
+ [
+  "صح. الـ limiter بيتحكم في الـ peaks العالية مع أقل تغيير في الـ dynamics الأساسية، بـ peak level measurement ورد فعل سريع جدًا.",
+  "الـ expander بيشتغل على المستويات الواطية ويكبّر الـ dynamics بتاعتها.",
+  "الـ exciter بيغيّر الـ timbre بإبراز frequencies؛ مش بيتحكم في الـ dynamics.",
+  "الـ fuzz هو distortion مقصود وnon-linear بالكامل."
+ ],
+ [
+  "الـ lowpass من الـ basic filtering؛ الـ phaser بيستخدم notch.",
+  "صح. الـ phaser نفس فكرة الـ wah-wah بس بـ notch filter (IIR filters ورا بعض)، ومخلوط مع الإشارة الأصلية.",
+  "الـ comb بـ <bdi dir=\"ltr\">100 ms</bdi> ده echo، يعني delay effect.",
+  "الـ shelving filters بتعلّي أو تقطع الـ bands الواطية أو العالية في الـ equaliser."
+ ]
+]);
+AR.mm.lectures["8"].extra = (AR.mm.lectures["8"].extra || []).concat([
+ [
+  "صح.<span class=\"ltr\">÷255 → (0.1176, 0.5098, 0.9020)</span><span class=\"ltr\">CMY = (0.8824, 0.4902, 0.0980) , K = 0.0980</span><span class=\"ltr\">CMYK = (0.7843, 0.3922, 0, 0.0980)</span>",
+  "ده الـ CMY والـ K اتحسبت بس ما اتطرحتش من الـ C والـ M والـ Y.",
+  "ده نط خطوة <bdi dir=\"ltr\">CMY = 1 − RGB</bdi> وخد الـ K من قيم الـ RGB نفسها.",
+  "ده الـ RGB بعد القسمة بس؛ ما اتعملش <bdi dir=\"ltr\">CMY = 1 − RGB</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">Y = 29.9 + 88.05 + 22.8 = 140.75</span><span class=\"ltr\">U = B − Y = 59.25 ,  V = R − Y = −40.75</span>",
+  "الـ U والـ V متبدلين: <bdi dir=\"ltr\">U = B − Y</bdi> و<bdi dir=\"ltr\">V = R − Y</bdi>.",
+  "ده طرح الـ G بدل الـ luminance Y <bdi dir=\"ltr\">(200 − 150, 100 − 150)</bdi>؛ والـ U والـ V بيستخدموا <bdi dir=\"ltr\">Y = 140.75</bdi>.",
+  "دول الـ Cb والـ Cr <bdi dir=\"ltr\">(U/1.772, V/1.402)</bdi>، قيم الـ YCrCb بعد الـ scaling."
+ ],
+ [
+  "صح.<span class=\"ltr\">I = 0.596(200) − 0.275(100) − 0.321(50) = 119.2 − 27.5 − 16.05 = 75.65</span>",
+  "ده الـ Q:<span class=\"ltr\">0.212R − 0.528G + 0.311B = 42.4 − 52.8 + 15.55 = 5.15</span>",
+  "ده الـ Y، يعني <bdi dir=\"ltr\">0.299R + 0.587G + 0.114B</bdi>.",
+  "ده جمع التلات حدود؛ والـ G والـ B في الـ I معاملاتهم سالبة."
+ ],
+ [
+  "صح.<span class=\"ltr\">Cb = (B − Y)/1.772 = 59.25 / 1.772 ≈ 33.44</span>",
+  "ده الـ <bdi dir=\"ltr\">U = B − Y</bdi> قبل الـ scaling على 1.772.",
+  "ده قسم على 1.402، ثابت الـ Cr.",
+  "ده ضرب في 1.772 بدل القسمة."
+ ],
+ [
+  "صح.<span class=\"ltr\">1024 × 768 = 786,432 bits ÷ 8 = 98,304 B ÷ 1024 = 96 KB</span>",
+  "ده حسب byte لكل pixel (grey-scale)؛ الـ bitmap بـ bit واحد لكل pixel.",
+  "ده حجم الـ 24-bit colour (3 bytes لكل pixel).",
+  "ده عدّ الـ bits كإنها KB؛ اقسم على 8 وعلى 1024."
+ ],
+ [
+  "ده حجم الـ RGB (3 channels)؛ الـ CMYK فيه 4 channels.",
+  "صح.<span class=\"ltr\">4 × 4 × 4 channels × 1 byte = 64 bytes</span>زي إجابة <bdi dir=\"ltr\">Final 2023/24</bdi> <bdi dir=\"ltr\">(5 × 5 → 100 B)</bdi>.",
+  "ده حسب byte واحد لكل pixel زي الـ grey-scale.",
+  "ده الحجم بالـ bits <bdi dir=\"ltr\">(64 × 8)</bdi> مكتوب كإنه bytes."
+ ],
+ [
+  "صح.<span class=\"ltr\">frame = 320 × 240 × 3 = 230,400 B</span><span class=\"ltr\">× 25 × 60 = 345,600,000 B ≈ 329.59 MB</span>",
+  "ده نسي الـ <bdi dir=\"ltr\">25 fps</bdi> (frame واحد في الثانية لمدة 60 ثانية).",
+  "ده حسب byte لكل pixel (grey-scale)؛ الـ RGB محتاج 3 bytes.",
+  "ده بالـ megabits: الـ 24 bit ما اتقسمتش على 8."
+ ],
+ [
+  "صح.<span class=\"ltr\">video = 640 × 480 × 1 × 25 × 30 = 230,400,000 B</span><span class=\"ltr\">audio = 30 × 8000 × 16 / 8 = 480,000 B</span><span class=\"ltr\">total = 230,880,000 B</span>",
+  "ده الـ video stream بس؛ الملف كله بيزوّد الـ audio stream.",
+  "ده استخدم 2 channels (stereo)؛ والـ speech هنا mono.",
+  "ده جمع الـ audio بالـ bits <bdi dir=\"ltr\">(3,840,000)</bdi> على الـ video بالـ bytes؛ اقسم الـ audio على 8 الأول."
+ ],
+ [
+  "تخزين الـ R والـ G والـ B في كل pixel ده الـ 24-bit true colour؛ الـ 8-bit colour بيخزن byte واحد.",
+  "صح. الـ pixel فيه index بس (مثلًا القيمة 25)؛ والصف 25 في الـ LUT بيدّي اللون <bdi dir=\"ltr\">R = 30, G = 190, B = 60</bdi>.",
+  "الـ grey level ده الـ grey-scale؛ نفس الحجم، بس الـ LUT بيحوّل الـ byte للون.",
+  "الـ dither patterns لطباعة صور grey كنقط أبيض وأسود."
+ ],
+ [
+  "صح.<span class=\"ltr\">|I − I″| = 2, 3, 0, 8 → 13 / 4 = 3.25</span>",
+  "ده الـ MSE، يعني <bdi dir=\"ltr\">(4 + 9 + 0 + 64) / 4</bdi>.",
+  "ده متوسط الفروق بالإشارة <bdi dir=\"ltr\">(−2 + 3 + 0 − 8) / 4</bdi>؛ الـ MAE بيستخدم القيمة المطلقة.",
+  "ده قسم على 3، عدد الأخطاء اللي مش صفر؛ اقسم على كل الـ <bdi dir=\"ltr\">M × N = 4</bdi> pixels."
+ ],
+ [
+  "صح. الأخطاء: R 10 و0، وG 0 و0، وB <bdi dir=\"ltr\">−20</bdi> و0:<span class=\"ltr\">Σ = 100 + 400 = 500 → MSE = 500 / (3 × 1 × 2) = 83.33</span>",
+  "ده قسم على <bdi dir=\"ltr\">M × N = 2</bdi> بس؛ الصورة الملونة بتتقسم على 3MN.",
+  "ده مجموع مربعات الأخطاء قبل المتوسط.",
+  "ده قسم على 12؛ عدد القيم <bdi dir=\"ltr\">3 × 1 × 2 = 6</bdi>."
+ ],
+ [
+  "الأزرق هو Cyan + Magenta.",
+  "صح. الخلط الـ subtractive:<span class=\"ltr\">C + M = Blue , C + Y = Green , M + Y = Red , C + M + Y = Black</span>",
+  "الأحمر هو Magenta + Yellow.",
+  "الأبيض هو مجموع التلات additive primaries <bdi dir=\"ltr\">(R + G + B)</bdi>؛ وفي الحبر التلاتة بيدّوا أسود."
+ ],
+ [
+  "صح.<span class=\"ltr\">180 × 17 / 256 = 11.95 → 11</span>والأرقام الأصغر من 11 هي من 0 لـ 10، يعني 11 نقطة من 16.",
+  "ده قرّب 11.95 لفوق لـ 12 (أو استخدم ≥)؛ القاعدة نقرّب لتحت وأكبر من بالظبط.",
+  "ده عدد النقط الفاضية <bdi dir=\"ltr\">(16 − 11)</bdi>.",
+  "الـ 16 نقطة كلهم محتاجين قيمة 16 بعد التحويل (pixel 241 أو أكتر)."
+ ],
+ [
+  "ده حافظ على الحجم، وده الـ ordered dither؛ الـ simple dithering بيبدّل كل pixel بـ block <bdi dir=\"ltr\">4 × 4</bdi>.",
+  "ده حسب 4 نقط لكل pixel؛ والـ block <bdi dir=\"ltr\">4 × 4</bdi> فيه 16 نقطة.",
+  "صح. الـ simple dithering بيكبّر الصورة 16 مرة:<span class=\"ltr\">200 × 100 × 16 = 320,000 dots</span>",
+  "ده استخدم 17 (عدد المستويات اللي الـ block يقدر يعرضها) بدل 16 نقطة."
+ ],
+ [
+  "ده الـ <bdi dir=\"ltr\">4:4:4</bdi> (من غير subsampling)، يعني <bdi dir=\"ltr\">3 × 307,200</bdi>.",
+  "ده الـ <bdi dir=\"ltr\">4:2:2</bdi>، يعني الـ chroma نصها أفقي بس <bdi dir=\"ltr\">(307,200 + 2 × 153,600)</bdi>.",
+  "صح.<span class=\"ltr\">Y = 307,200 ; Cb = Cr = 320 × 240 = 76,800</span><span class=\"ltr\">total = 307,200 + 153,600 = 460,800</span>يعني نص الـ <bdi dir=\"ltr\">4:4:4</bdi>.",
+  "ده حسب chroma واحد بس؛ الـ <bdi dir=\"ltr\">4:2:0</bdi> بيحتفظ بـ Cb <b>و</b>Cr لكل block <bdi dir=\"ltr\">2 × 2</bdi>."
+ ],
+ [
+  "الـ Cb لسه متخزن؛ الـ 0 كود خاص، مش \"مفيش samples\".",
+  "صح. المحاضرة بتقول: الـ 0 معناه إن الـ horizontal factor بتاع الـ Cb زي الرقم التاني، والاتنين Cr وCb متعملهم subsampling <bdi dir=\"ltr\">2:1</bdi> رأسي.",
+  "الـ Luma هي الرقم الأول، المرجع الكامل؛ الـ chroma هي اللي بتتعمل subsampling.",
+  "الـ <bdi dir=\"ltr\">4:4:4</bdi> مفيهوش subsampling؛ الـ <bdi dir=\"ltr\">4:2:0</bdi> بيقسم الـ chroma على 2 في الاتجاهين."
+ ],
+ [
+  "ده طرح 20 سطر مرة واحدة؛ فيه 2 fields، يعني 40 سطر محجوزين في الـ frame.",
+  "صح.<span class=\"ltr\">525 − 2 × 20 = 485 visible lines</span>",
+  "ده عدد السطور في الـ field <bdi dir=\"ltr\">(525 / 2)</bdi>.",
+  "ده عدد سطور الـ PAL."
+ ],
+ [
+  "صح. الـ PAL فيه 625 سطر، و25 fps، وبيستخدم YUV (YCrCb)، والـ bandwidth <bdi dir=\"ltr\">Y 5.5 MHz</bdi> و<bdi dir=\"ltr\">U, V 1.8 MHz</bdi> لكل واحد.",
+  "دي أرقام الـ PAL فعلًا؛ والـ NTSC هو اللي بيستخدم YIQ و<bdi dir=\"ltr\">4, 1.5, 0.6 MHz</bdi>."
+ ],
+ [
+  "صح. المحاضرة بتقول الـ CIE موديل vector-based: أي لونين لما يتجمعوا بيطلعوا نقطة على الخط اللي بينهم.",
+  "ده بالظبط وصف المحاضرة للـ CIE كموديل vector-based."
+ ],
+ [
+  "الـ TIFF غالبًا lossless (والـ JPEG tag بيسمح بـ JPEG)، ومش قابل للتحكم زي الـ JPEG، واستخدامه بيقل.",
+  "صح. الـ TIFF بيعرّف أنواع الصور بـ tags، وغالبًا lossless، ومفيهوش ميزة كبيرة عن الـ JPEG، وأقل في التحكم، واستخدامه بيقل."
+ ]
+]);

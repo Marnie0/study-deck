@@ -5434,3 +5434,583 @@ AR.compiler.lectures[4].quiz.push(...[
   "صح حسب الـ key بتاع المادة: الـ leftmost parsing tree بتكبر من الـ RIGHT side (الـ revision sheet Q52)، فالـ right subtree الأطول معناه leftmost tree."
  ]
 ]);
+
+// Final revision practice questions (Arabic whys), appended in the same order as extra/compiler.js
+AR.compiler.lectures["6"].extra = (AR.compiler.lectures["6"].extra || []).concat([
+ [
+  "الـ <bdi dir=\"ltr\">E' → ε</bdi> بتحط ε كمان في <bdi dir=\"ltr\">FIRST(E')</bdi> (قاعدة 3 بتاعة الـ FIRST).",
+  "صح. الـ <bdi dir=\"ltr\">E' → +TE'</bdi> بتبدأ بـ +، والـ <bdi dir=\"ltr\">E' → ε</bdi> بتضيف ε (قاعدة 3).",
+  "ده خلط مع <bdi dir=\"ltr\">FOLLOW(E') = {), $}</bdi>. الـ FIRST عمرها ما بيبقى فيها $.",
+  "دي <bdi dir=\"ltr\">FIRST(E) = FIRST(T) = FIRST(F)</bdi>. الـ <bdi dir=\"ltr\">E'</bdi> بتبدأ بـ +."
+ ],
+ [
+  "الـ $ جاية عشان E هي الـ start symbol، بس كمان <bdi dir=\"ltr\">F → (E)</bdi> بتحط ) بعد E.",
+  "ده <bdi dir=\"ltr\">FOLLOW(T)</bdi>. الـ + بتيجي بعد T (من <bdi dir=\"ltr\">E' → +TE'</bdi>)، مش بعد E.",
+  "صح. قاعدة 1 بتدّي $ (الـ start symbol)، وقاعدة 2 على <bdi dir=\"ltr\">F → (E)</bdi> بتدّي ).",
+  "دي <bdi dir=\"ltr\">FIRST(E)</bdi>، يعني E بتبدأ بإيه، مش إيه اللي بييجي بعدها."
+ ],
+ [
+  "الـ U معندهاش ε-production، فـ <bdi dir=\"ltr\">S → UVW</bdi> عمرها ما تختفي، والـ ε مش في <bdi dir=\"ltr\">FIRST(S)</bdi>.",
+  "دي <bdi dir=\"ltr\">FIRST(VW)</bdi>. الـ S بتبدأ بـ U، والـ U مش nullable، فقاعدة 2 بتقف عند U.",
+  "دي واحدة بس من تلات alternatives بتوع U. الـ <bdi dir=\"ltr\">U → aSb</bdi> و <bdi dir=\"ltr\">U → d</bdi> بيضيفوا a و d.",
+  "صح. <bdi dir=\"ltr\">FIRST(S) = FIRST(U) = {(, a, d}</bdi> عشان الـ U مبتطلّعش ε."
+ ],
+ [
+  "دي قاعدة 2 بس <bdi dir=\"ltr\">(FIRST(W) − ε)</bdi>. الـ W nullable، فقاعدة 3 بتضيف كمان <bdi dir=\"ltr\">FOLLOW(S) = {$, ), b}</bdi>.",
+  "صح. من <bdi dir=\"ltr\">S → UVW</bdi>: الـ <bdi dir=\"ltr\">FIRST(W) − ε = {c}</bdi>، والـ W ممكن تختفي فبنضيف <bdi dir=\"ltr\">FOLLOW(S) = {$, ), b}</bdi>.",
+  "ده <bdi dir=\"ltr\">FOLLOW(U)</bdi>. الـ V جاية بعد U، فـ <bdi dir=\"ltr\">FIRST(V)</bdi> ملهاش دعوة بـ <bdi dir=\"ltr\">FOLLOW(V)</bdi>.",
+  "الـ FOLLOW عمره ما بيبقى فيه ε. الـ W اللي ممكن تختفي بنعوّضها بإننا نضيف <bdi dir=\"ltr\">FOLLOW(S)</bdi>."
+ ],
+ [
+  "دي في <bdi dir=\"ltr\">M[S, a]</bdi>، يعني صف S. في صف U الـ a بتختار <bdi dir=\"ltr\">U → aSb</bdi>.",
+  "صح. <bdi dir=\"ltr\">FIRST(aSb) = {a}</bdi>، فقاعدة 1 بتحط <bdi dir=\"ltr\">U → aSb</bdi> في <bdi dir=\"ltr\">M[U, a]</bdi>.",
+  "دي <bdi dir=\"ltr\">M[V, a]</bdi>، في صف V.",
+  "الـ a في <bdi dir=\"ltr\">FIRST(aSb)</bdi>، فالخانة مش فاضية."
+ ],
+ [
+  "لأن <bdi dir=\"ltr\">FIRST(cW) = {c}</bdi>، فـ <bdi dir=\"ltr\">W → cW</bdi> بتتحط تحت c بس.",
+  "ده نسيان لقاعدة 2: الـ W nullable والـ b في <bdi dir=\"ltr\">FOLLOW(W)</bdi>.",
+  "صح. الـ ε في <bdi dir=\"ltr\">FIRST(ε)</bdi> والـ b في <bdi dir=\"ltr\">FOLLOW(W) = {$, ), b}</bdi>، فقاعدة 2 بتحط <bdi dir=\"ltr\">W → ε</bdi> في <bdi dir=\"ltr\">M[W, b]</bdi>.",
+  "دي <bdi dir=\"ltr\">M[V, b]</bdi> في صف V، مش صف W."
+ ],
+ [
+  "الـ c مش في <bdi dir=\"ltr\">FIRST(UVW) = {(, a, d}</bdi>، لأن U أول واحدة ومش nullable، والـ S معندهاش ε-production.",
+  "دي <bdi dir=\"ltr\">M[W, c]</bdi>. صف S فيه entries تحت ( و a و d بس.",
+  "دي <bdi dir=\"ltr\">M[V, c]</bdi> في صف V.",
+  "صح. الـ c مش في <bdi dir=\"ltr\">FIRST(UVW)</bdi> والـ S مبتطلّعش ε، فـ <bdi dir=\"ltr\">M[S, c]</bdi> فاضية، يعني مفيش string يبدأ بـ c."
+ ],
+ [
+  "الـ top بتاع الـ stack هو V، مش W. الـ <bdi dir=\"ltr\">W → cW</bdi> بتيجي في الخطوة اللي بعدها.",
+  "صح. <bdi dir=\"ltr\">M[V, c] = V → ε</bdi> عشان c في <bdi dir=\"ltr\">FOLLOW(V)</bdi>، فالـ V بتتشال والـ W تبقى فوق.",
+  "الـ match محتاج terminal فوق الـ stack، والـ V non-terminal.",
+  "الـ <bdi dir=\"ltr\">M[V, c]</bdi> مش فاضية: الـ c في <bdi dir=\"ltr\">FOLLOW(V)</bdi> فبتحط <bdi dir=\"ltr\">V → ε</bdi> هناك."
+ ],
+ [
+  "صح. كل terminal في الـ input بيتعمله match مرة واحدة: ( و d و c و ) و a و c.",
+  "الـ <bdi dir=\"ltr\">11</bdi> ده عدد الـ expansions، مش الـ matches.",
+  "الـ <bdi dir=\"ltr\">17</bdi> ده عدد كل الـ actions <bdi dir=\"ltr\">(11 + 6)</bdi> قبل الـ accept.",
+  "ده عدّ الحروف d و c و a و c بس، ونسي إن ( و ) terminals لازم يتعملهم match كمان."
+ ],
+ [
+  "دي <bdi dir=\"ltr\">FIRST(A')</bdi>. والـ FOLLOW عمره ما بيبقى فيه ε.",
+  "صح. الـ <bdi dir=\"ltr\">A → bA'</bdi> بتخلص بـ <bdi dir=\"ltr\">A'</bdi>، فقاعدة 3 بتدّي <bdi dir=\"ltr\">FOLLOW(A) = FIRST(B) = {d}</bdi>، والـ <bdi dir=\"ltr\">A' → bcA'</bdi> بتضيف <bdi dir=\"ltr\">FOLLOW(A')</bdi> لنفسها بس.",
+  "ده <bdi dir=\"ltr\">FOLLOW(B)</bdi> من <bdi dir=\"ltr\">S → aABe</bdi>. الـ <bdi dir=\"ltr\">A'</bdi> بييجي بعدها اللي بييجي بعد A، يعني B اللي بتبدأ بـ d.",
+  "الـ $ في <bdi dir=\"ltr\">FOLLOW(S)</bdi> بس. الـ <bdi dir=\"ltr\">A'</bdi> عمرها ما بتبقى في الآخر، لأن B و e بييجوا بعدها."
+ ],
+ [
+  "كمان <bdi dir=\"ltr\">FIRST(Ad) = FIRST(A) = {a}</bdi>، فـ <bdi dir=\"ltr\">A → Ad</bdi> بتقع في نفس الخانة.",
+  "لأن <bdi dir=\"ltr\">FIRST(aB) = {a}</bdi>، فـ <bdi dir=\"ltr\">A → aB</bdi> كمان في الخانة دي.",
+  "صح. الاتنين alternatives بيبدأوا بـ a، واتنين entries في خانة واحدة بيبوّظوا الـ <bdi dir=\"ltr\">LL(1)</bdi>. عشان كده بنشيل الـ left recursion الأول.",
+  "الـ a في <bdi dir=\"ltr\">FIRST(aB)</bdi>، فالخانة مينفعش تبقى فاضية."
+ ],
+ [
+  "دي <bdi dir=\"ltr\">FIRST(C)</bdi>.",
+  "الـ $ بتدخل في FOLLOW بتاع الـ start symbol S، والـ C مش هي الـ start.",
+  "صح. الـ FOLLOW بنطلّعه من الأماكن اللي C ظاهرة فيها في الـ right sides، والـ C مش ظاهرة في أي واحدة (unreachable)، فالـ set فاضية.",
+  "ده <bdi dir=\"ltr\">FOLLOW(B)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">A → b</bdi> بس هي اللي بتبدأ بـ terminal، والـ <bdi dir=\"ltr\">A → ε</bdi> بتطلّع الـ empty string، مش string بيبدأ بـ b.",
+  "الـ <bdi dir=\"ltr\">A → ε</bdi> بس هي اللي بتطلّع ε، والـ <bdi dir=\"ltr\">A → b</bdi> لأ.",
+  "صح. <bdi dir=\"ltr\">FOLLOW(A) = FIRST(b) = {b}</bdi>، فـ <bdi dir=\"ltr\">M[A, b]</bdi> بياخد <bdi dir=\"ltr\">A → b</bdi> (قاعدة 1) و <bdi dir=\"ltr\">A → ε</bdi> (قاعدة 2).",
+  "الـ <bdi dir=\"ltr\">M[A, b]</bdi> فيها اتنين entries، فهو مش <bdi dir=\"ltr\">LL(1)</bdi>."
+ ],
+ [
+  "صح. المفروض alternative واحد بس على الأكتر يطلّع ε، وهنا الاتنين، فالاتنين بيقعوا في <bdi dir=\"ltr\">M[S, $]</bdi> لأن <bdi dir=\"ltr\">FOLLOW(S) = {$}</bdi>.",
+  "الـ <bdi dir=\"ltr\">FIRST(A) − ε = {a}</bdi> و <bdi dir=\"ltr\">FIRST(B) − ε = {b}</bdi> مفيش بينهم مشترك، فشرط 1 ماشي.",
+  "مفيش non-terminal بيطلّع نفسه كأول symbol على الشمال.",
+  "الـ <bdi dir=\"ltr\">M[S, $]</bdi> فيها <bdi dir=\"ltr\">S → A</bdi> و <bdi dir=\"ltr\">S → B</bdi>، فهو مش <bdi dir=\"ltr\">LL(1)</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">X → ε</bdi> بتتستخدم بس لو الـ table قال كده (تحت <bdi dir=\"ltr\">FOLLOW(X)</bdi>). الخانة الفاضية معناها error.",
+  "الـ match بيحصل بس لو الـ top terminal وبيساوي a.",
+  "صح. الخانات الفاضية في الـ M معناها error.",
+  "الـ accept محتاج الـ stack والـ input الاتنين يبقوا $."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">T'</bdi> هي اللي فوق، فهي اللي بتتعمل expand الأول.",
+  "صح. <bdi dir=\"ltr\">M[T', +] = T' → ε</bdi> عشان + في <bdi dir=\"ltr\">FOLLOW(T')</bdi>، وبعدين <bdi dir=\"ltr\">E'</bdi> تبقى فوق و <bdi dir=\"ltr\">M[E', +] = E' → +TE'</bdi>.",
+  "الـ <bdi dir=\"ltr\">M[T', +]</bdi> هي <bdi dir=\"ltr\">T' → ε</bdi>، والـ <bdi dir=\"ltr\">T' → *FT'</bdi> محتاجة input *.",
+  "مينفعش نعمل match لـ + وفيه non-terminal <bdi dir=\"ltr\">(T')</bdi> فوق."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">S → UVW, U → d, match d, V → aV, match a, V → ε, W → ε, accept</bdi>.",
+  "الـ <bdi dir=\"ltr\">M[S, c]</bdi> فاضية: مفيش string في الـ grammar ده بيبدأ بـ c.",
+  "بعد d بيحصل <bdi dir=\"ltr\">V → ε</bdi> و <bdi dir=\"ltr\">W → ε</bdi> (عشان b في الـ FOLLOW)، وبعدين الـ stack يبقى $ والـ b لسه موجودة، فـ error.",
+  "الـ <bdi dir=\"ltr\">U → (S)</bdi> محتاجة ) تقفل ومش جاية، فالـ parser بيوصل لـ error عند الـ $."
+ ],
+ [
+  "قاعدة 2 بتحط <bdi dir=\"ltr\">A → ε</bdi> تحت terminals الـ <bdi dir=\"ltr\">FOLLOW(A)</bdi>، مش الـ <bdi dir=\"ltr\">FIRST(A)</bdi>.",
+  "صح. الـ ε-productions بتتحط تحت <bdi dir=\"ltr\">FOLLOW(A)</bdi>، ومعاهم الـ $."
+ ],
+ [
+  "صح. ده تعريف المحاضرة، والـ grammars اللي ينفع نعملها واحد اسمها <bdi dir=\"ltr\">LL(1)</bdi>.",
+  "المحاضرة بتعرّف الـ predictive parser بالظبط إنه recursive-descent parser مش محتاج backtracking."
+ ],
+ [
+  "الـ accept محتاج الـ stack والـ input الاتنين يبقوا $، ولو فاضل input يبقى error.",
+  "صح. الـ parser بيعمل accept بس لما الـ stack والـ input الاتنين يبقوا $."
+ ],
+ [
+  "ده ناسي الـ ε-productions اللي بتتحط تحت الـ FOLLOW: <bdi dir=\"ltr\">E' → ε</bdi> مرتين و <bdi dir=\"ltr\">T' → ε</bdi> تلات مرات.",
+  "ده حاطط <bdi dir=\"ltr\">E' → ε</bdi> و <bdi dir=\"ltr\">T' → ε</bdi> تحت $ بس، وناسي ) و + من الـ FOLLOW بتاعهم.",
+  "صح. <bdi dir=\"ltr\">E 2, E' 3, T 2, T' 4, F 2</bdi> يعني <bdi dir=\"ltr\">13</bdi>.",
+  "الـ <bdi dir=\"ltr\">30</bdi> ده عدد كل الخانات <bdi dir=\"ltr\">(5 × 6)</bdi>، ومعظمها errors."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">FIRST(E) = FIRST(T)</bdi> و <bdi dir=\"ltr\">FIRST(T) = FIRST(F) = {(, id}</bdi>، والـ <bdi dir=\"ltr\">E'</bdi> والـ <bdi dir=\"ltr\">T'</bdi> اللي بعدهم مش بنوصلهم.",
+  "الـ ε في <bdi dir=\"ltr\">FIRST(E')</bdi> بتفرق في اللي بعد <bdi dir=\"ltr\">E'</bdi> بس، مش بتحدد <bdi dir=\"ltr\">FIRST(E)</bdi>.",
+  "الـ FOLLOW بتاعهم مختلف: <bdi dir=\"ltr\">{), $}</bdi> و <bdi dir=\"ltr\">{+, ), $}</bdi> و <bdi dir=\"ltr\">{+, *, ), $}</bdi>.",
+  "ولا واحدة من E و T و F عندها ε-production، فقاعدة 3 مش بتنطبق."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">LL(1)</bdi> دايماً بيعمل expand لأول non-terminal على الشمال (تاني L).",
+  "الـ B اتعملها expand قبل <bdi dir=\"ltr\">A'</bdi>، يعني كل مرة بنبدّل اللي على الشمال.",
+  "ده اللي بيطلّعه الـ bottom-up parsers. الـ <bdi dir=\"ltr\">LL(1)</bdi> ده top-down.",
+  "الـ expansions اللي اتطبقت من S لحد الـ input هي بالظبط derivation."
+ ],
+ [
+  "الـ start symbol هو S، مش U.",
+  "صح. في <bdi dir=\"ltr\">S → UVW</bdi> كل اللي بعد U ممكن يختفي، فـ <bdi dir=\"ltr\">FOLLOW(S) = {$, ), b}</bdi> بيدخل في <bdi dir=\"ltr\">FOLLOW(U)</bdi>.",
+  "الـ FIRST عمرها ما بيبقى فيها $، و <bdi dir=\"ltr\">FIRST(VW) = {a, c, ε}</bdi>.",
+  "اللي بتخلص بيه productions الـ U نفسها ملوش دعوة باللي بييجي بعد U."
+ ],
+ [
+  "صح. المحاضرة بتقول إن الـ <bdi dir=\"ltr\">LL(1)</bdi> grammar مفيهاش left recursion ولا ambiguity ولا خانة فيها اتنين entries.",
+  "المحاضرة حاطة «مفيش ambiguity» من شروط الـ <bdi dir=\"ltr\">LL(1)</bdi>."
+ ]
+]);
+AR.compiler.lectures["7"].extra = (AR.compiler.lectures["7"].extra || []).concat([
+ [
+  "صح. الـ <bdi dir=\"ltr\">T → T*F</bdi> بتجمّع <bdi dir=\"ltr\">2*5 = 10</bdi> تحت الـ +، وبعدين <bdi dir=\"ltr\">E.val = 6 + 10 = 16</bdi>.",
+  "ده حساب من الشمال لليمين <bdi dir=\"ltr\">((6+2)*5)</bdi>. في الـ grammar الـ * أعمق من الـ + في الـ tree، فبتتحسب الأول.",
+  "ده ضرب الكل <bdi dir=\"ltr\">(6*2*5)</bdi>. قاعدة <bdi dir=\"ltr\">E → E+T</bdi> بتجمع.",
+  "ده جمع الكل <bdi dir=\"ltr\">(6+2+5)</bdi>. قاعدة <bdi dir=\"ltr\">T → T*F</bdi> بتضرب."
+ ],
+ [
+  "ده جمع <bdi dir=\"ltr\">4+1</bdi> الأول <bdi dir=\"ltr\">(2*3*5)</bdi>. الـ + أعلى من الـ * في الـ tree، فالضرب بيتحسب الأول.",
+  "الـ <bdi dir=\"ltr\">24</bdi> ده <bdi dir=\"ltr\">T.val</bdi> بتاع <bdi dir=\"ltr\">2*3*4</bdi>، والـ root لسه هيجمع الـ 1.",
+  "صح. <bdi dir=\"ltr\">T.val = (2*3)*4 = 24</bdi> بـ <bdi dir=\"ltr\">T → T*F</bdi> مرتين، وبعدين <bdi dir=\"ltr\">E.val = 24 + 1 = 25</bdi>.",
+  "ده جمع كل الأرقام <bdi dir=\"ltr\">(2+3+4+1)</bdi>."
+ ],
+ [
+  "صح. الترتيب <bdi dir=\"ltr\">F=2, T=2, E=2, F=3, T=3, F=4</bdi> وبعدين <bdi dir=\"ltr\">T = 12</bdi> وبعدين الـ root <bdi dir=\"ltr\">E = 2 + 12</bdi>.",
+  "الـ <bdi dir=\"ltr\">F = 4</bdi> قبل <bdi dir=\"ltr\">T = 12</bdi>، ولازم الـ T تتحسب منها قبل ما الـ root يجمع.",
+  "الـ <bdi dir=\"ltr\">E = 2</bdi> (الـ left child) بتتحسب بدري، بعد <bdi dir=\"ltr\">F = 2</bdi> و <bdi dir=\"ltr\">T = 2</bdi> على طول.",
+  "الـ <bdi dir=\"ltr\">T = 3</bdi> قبل <bdi dir=\"ltr\">F = 4</bdi>، وهي الـ left child بتاع node الـ <bdi dir=\"ltr\">T → T*F</bdi>."
+ ],
+ [
+  "القاعدة دي بتستخدم attributes بتاعة non-terminals بس.",
+  "دي بتنسخ attribute بتاع non-terminal (F).",
+  "صح. الـ <bdi dir=\"ltr\">INT.lexval</bdi> هي الـ lexical value بتاعة الـ token (2 و 3 و 4 في المثال).",
+  "دي بتنسخ <bdi dir=\"ltr\">T.val</bdi>، وده attribute مش lexical value."
+ ],
+ [
+  "الـ lexical values أول واحدة من التلاتة.",
+  "الـ constants تاني واحدة من التلاتة.",
+  "الـ attributes تالت واحدة من التلاتة.",
+  "صح. قواعد الـ SDT بتستخدم الـ lexical values والـ constants والـ attributes، والـ registers دي بتاعة الـ code generation."
+ ],
+ [
+  "الـ tokens (الـ leaves) بتشيل lexical values، والقواعد متعلقة في الـ productions.",
+  "صح. الـ SDT بتربط set من الـ attributes بكل node، و set من الـ translation rules بكل production.",
+  "الـ SDT جزء من الـ semantic analysis، ومش بتربط قواعد بالـ phases.",
+  "القواعد بتاعة الـ productions، والـ attributes على الـ nodes (غالباً non-terminals)."
+ ],
+ [
+  "صح. الناحيتين فيهم E، فالـ E1 بتسمّي الـ child عشان <bdi dir=\"ltr\">E.val</bdi> تبقى واضحة إنها الـ parent.",
+  "الـ E1 هي نفس الـ non-terminal E، والـ 1 مجرد علامة.",
+  "الـ subscript ملوش علاقة بالـ inherited، والـ <bdi dir=\"ltr\">E.val</bdi> هنا synthesized.",
+  "تغيير الاسم مش بيغيّر الـ grammar، والـ <bdi dir=\"ltr\">E → E1 + T</bdi> لسه left-recursive."
+ ],
+ [
+  "كل val بتتحسب من قيم الـ children، مش من الـ parent.",
+  "صح. المعلومات ماشية من تحت لفوق: الـ children الأول وبعدين الـ parent.",
+  "الـ lexical values هي قيم الـ tokens اللي في الـ leaves بس، يعني 2 و 3 و 4.",
+  "الـ val بتتغير من node للتانية (2 و 12 و 14…)، فهي attribute."
+ ],
+ [
+  "صح. قيمة string اتحطت في variable نوعه int.",
+  "الـ x متعرّف <bdi dir=\"ltr\">(int x;)</bdi>.",
+  "الـ x مش reserved word.",
+  "مفيش function call هنا."
+ ],
+ [
+  "الـ if متعرّفة مرة واحدة، والمشكلة في الاسم نفسه.",
+  "صح. الـ if كلمة محجوزة (keyword) ومينفعش تبقى اسم variable.",
+  "الـ 5 int ومتحطة في int، فالأنواع متفقة.",
+  "الـ statement نفسها declaration."
+ ],
+ [
+  "الـ t متعرّفة مرة واحدة بس.",
+  "الـ 2 int، نفس نوع الـ t.",
+  "صح. الـ t عايشة في الـ block الداخلي بس، والـ <bdi dir=\"ltr\">t = 2</bdi> بعد قوس القفل بتاعه (زي print d في محاضرة 8).",
+  "مفيش function call هنا."
+ ],
+ [
+  "ده محتاج b تكون متعرّفة في scope تاني، وهنا الـ b ملهاش declaration خالص.",
+  "صح. الـ b اتستخدمت ومتعرّفتش أبداً.",
+  "الـ <bdi dir=\"ltr\">a + 2</bdi> expression نوعها int، والمشكلة إن b ملهاش declaration فملهاش type.",
+  "مفيش حاجة متعرّفة مرتين."
+ ],
+ [
+  "دي أدوات الـ scanner (محاضرة 2).",
+  "صح. بتستخدم الـ syntax tree والـ symbol table.",
+  "دول بتوع الـ code generation اللي بتيجي بعدين.",
+  "ده الـ lexical analysis."
+ ],
+ [
+  "الـ literal table بيشيل الـ constants والـ strings (محاضرة 1).",
+  "الـ tokens طالعة من الـ scanner، قبل الـ semantic analysis.",
+  "صح. الـ type information بتتحط في الـ syntax tree أو الـ symbol table، عشان تتستخدم في الـ intermediate-code generation.",
+  "الـ target code لسه متعملش، بيتعمل بعدين."
+ ],
+ [
+  "صح. المحاضرة بتذكر الـ domains دي بالظبط.",
+  "المحاضرة بتقول إن كل attribute ليه domain واضح، وبتذكر الـ integer والـ float والـ character والـ string والـ expressions."
+ ],
+ [
+  "هي بتدّي semantics للـ CFG وتقدر توصف الـ syntax والـ semantics الاتنين.",
+  "صح. الـ attribute grammar بتوصف الـ syntax والـ semantics الاتنين."
+ ],
+ [
+  "الـ x بتاخد قيمة بس لو c صح، فده مش أكيد.",
+  "ممكن تكون x خدت قيمة في الطريق اللي c فيه صح.",
+  "صح. ممكن تكون اتعملها assign وممكن لأ، حسب c.",
+  "الـ x متعرّفة، والسؤال عن الـ assignment بس."
+ ],
+ [
+  "صح. مفيش أي حاجة عملت assign لـ x في أي طريق، فأكيد unassigned.",
+  "مفيش statement بتدّي x قيمة قبل الـ print.",
+  "الـ unknown لما يبقى «ممكن وممكن لأ»، وهنا مفيش ولا طريق بيدّي x قيمة.",
+  "الـ x متعرّفة في نفس الـ scope بتاع الـ print."
+ ],
+ [
+  "الـ x خدت 0 من الأول في الـ declaration، فكل الطرق بتوصل للـ print والـ x ليها قيمة.",
+  "الـ <bdi dir=\"ltr\">x = 0</bdi> بتدّيها قيمة في الـ declaration.",
+  "صح. الـ x ليها قيمة في كل الطرق (0، أو 1 لو c صح)، فأكيد assigned.",
+  "الـ 0 والـ 1 ints، نفس نوع الـ x."
+ ],
+ [
+  "صح. ده تعريف المحاضرة.",
+  "الـ peephole techniques (محاضرة 9) بتبدّل الكود، والـ definite assignment بيتشيك بس.",
+  "الـ parsing بيبني الـ tree، والتحليل ده بيتشيك على الـ assignment قبل الاستخدام.",
+  "الـ scanner مش بيتابع إذا كان الـ variable خد قيمة ولا لأ."
+ ],
+ [
+  "صح. الـ synthesized attribute بتاع S جاي من الـ children بتوعه A و B و C.",
+  "ده من الـ parent، يعني inherited.",
+  "ده من الـ siblings، يعني inherited.",
+  "ده من الـ parent و sibling، يعني inherited."
+ ],
+ [
+  "صح. جدول المحاضرة بيقول إن الـ synthesized attributes عمرها ما بتاخد من الـ parent أو الـ siblings.",
+  "المحاضرة بتقولها صريح: الـ synthesized بتاخد من الـ child nodes بس."
+ ],
+ [
+  "المحاضرة بتقول إن كتير الـ attributes بتتحسب وقت الـ parsing من غير tree صريحة.",
+  "صح. الطريقة العامة بتبني tree، بس كتير بيتعمل ده وقت الـ parsing من غيرها."
+ ],
+ [
+  "توازن الأقواس هو سبب إن الـ parser بيستخدم CFG (محاضرة 4)، يعني syntax.",
+  "صح. الـ «undeclared variable» من الـ semantic errors في المحاضرة.",
+  "ده الـ lexical analysis.",
+  "الـ scanner هو اللي بيشيل الـ comments (محاضرة 2)."
+ ],
+ [
+  "الـ 4 مش بتطلع بـ <bdi dir=\"ltr\">T → F</bdi>، هي الـ F بتاع <bdi dir=\"ltr\">T → T * F</bdi>.",
+  "صح. مرة للـ 2 <bdi dir=\"ltr\">(F=2 → T=2)</bdi> ومرة للـ 3 <bdi dir=\"ltr\">(F=3 → T=3)</bdi>، والـ <bdi dir=\"ltr\">F=4</bdi> بتتستخدم على طول في <bdi dir=\"ltr\">T = T * F</bdi>.",
+  "الـ 2 والـ 3 الاتنين محتاجين <bdi dir=\"ltr\">T → F</bdi>: الـ 2 بتبقى الـ T تحت <bdi dir=\"ltr\">E → T</bdi>، والـ 3 الـ T الشمال في <bdi dir=\"ltr\">T → T * F</bdi>.",
+  "التقييم فيه <bdi dir=\"ltr\">F=2 → T=2</bdi> و <bdi dir=\"ltr\">F=3 → T=3</bdi>، ودول خطوات <bdi dir=\"ltr\">T → F</bdi>."
+ ]
+]);
+AR.compiler.lectures["8"].extra = (AR.compiler.lectures["8"].extra || []).concat([
+ [
+  "ده أول print، والـ <bdi dir=\"ltr\">b += a</bdi> لسه هتجمع a بعد الـ block.",
+  "صح. جوه <bdi dir=\"ltr\">b = 20 × 30 = 600</bdi>. بعد القوس الـ a الداخلية خرجت من الـ scope، فـ <bdi dir=\"ltr\">b = 600 + 10 = 610</bdi>.",
+  "ده استخدم الـ a الداخلية <bdi dir=\"ltr\">= 30</bdi> بعد الـ block، وده جواب الـ dynamic في الكورس.",
+  "ده استخدم الـ b الأصلية <bdi dir=\"ltr\">= 20</bdi> <bdi dir=\"ltr\">(20 + 10)</bdi> ونسي إن <bdi dir=\"ltr\">b *= a</bdi> خلّت b بـ <bdi dir=\"ltr\">600</bdi>."
+ ],
+ [
+  "ده عمل <bdi dir=\"ltr\">b *= a</bdi> تاني. الـ statement اللي بعد الـ block هي <bdi dir=\"ltr\">b += a</bdi>.",
+  "ده جمع <bdi dir=\"ltr\">20 + 30</bdi> وتجاهل <bdi dir=\"ltr\">b *= a</bdi> اللي جوه الـ block.",
+  "ده الـ static: رجع للـ a اللي برّه <bdi dir=\"ltr\">= 10</bdi>.",
+  "صح. آخر declaration اتقابل <bdi dir=\"ltr\">a = 30</bdi> لسه بيتستخدم: <bdi dir=\"ltr\">600 + 30 = 630</bdi> <bdi dir=\"ltr\">(Final 2023/24 (60))</bdi>."
+ ],
+ [
+  "صح. جوه الاتنين بيستخدموا <bdi dir=\"ltr\">m = 4</bdi> فـ <bdi dir=\"ltr\">n = 5 − 4 = 1</bdi>. بعد كده الـ static بيستخدم <bdi dir=\"ltr\">m = 2</bdi> اللي برّه <bdi dir=\"ltr\">(n = 3)</bdi>، والـ dynamic بيفضل على <bdi dir=\"ltr\">m = 4</bdi> <bdi dir=\"ltr\">(n = 5)</bdi>.",
+  "القاعدتين متبدّلين: الـ static هو اللي بيرجع للـ m اللي برّه بعد القوس.",
+  "جوه الـ block الاتنين بيستخدموا <bdi dir=\"ltr\">m = 4</bdi>، فأول print بيبقى 1.",
+  "ده عامل الـ dynamic زي الـ static. في اتفاقية الكورس الـ <bdi dir=\"ltr\">m = 4</bdi> الداخلية لسه بتتستخدم بعد الـ block."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">9 = 1 × 3 × 3</bdi> استخدمت الـ k اللي برّه جوه الـ block كمان، بس الـ <bdi dir=\"ltr\">k = 2</bdi> الداخلية بتخبّيها هناك.",
+  "ده عامل الـ dynamic زي الـ static، والـ dynamic في الكورس بيفضل على <bdi dir=\"ltr\">k = 2</bdi>.",
+  "صح. جوه <bdi dir=\"ltr\">s = 1 × 2 = 2</bdi>. بعد كده الـ static <bdi dir=\"ltr\">s = 2 × 3 = 6</bdi>، والـ dynamic لسه بيستخدم <bdi dir=\"ltr\">k = 2</bdi> فـ <bdi dir=\"ltr\">s = 2 × 2 = 4</bdi>.",
+  "متبدّلين: الـ static هو اللي بيرجع للـ k اللي برّه <bdi dir=\"ltr\">= 3</bdi>."
+ ],
+ [
+  "الـ block الداخلي ليه entries بتاعته (زي x في scope 1).",
+  "الـ static binding ماشي على الأقواس في كل حتة، جوه وبرّه.",
+  "صح. القاعدتين بيختاروا الـ declaration الداخلي هناك، والفرق بيبان بعد قوس القفل بس.",
+  "الـ dynamic binding مينفعش يتحل في الـ compile time."
+ ],
+ [
+  "صح. الـ a فيها <bdi dir=\"ltr\">[scope 1] → [scope 0]</bdi>، والـ b فيها <bdi dir=\"ltr\">[scope 0]</bdi>، والـ c فيها <bdi dir=\"ltr\">[scope 1]</bdi>، يعني <bdi dir=\"ltr\">2 + 1 + 1 = 4</bdi>.",
+  "ده عدّ declarations الـ block الداخلي بس.",
+  "الكود فيه أربع declarations بس.",
+  "ده عدّ الـ identifiers (a و b و c). الـ a ليها اتنين records، واحد لكل declaration."
+ ],
+ [
+  "الـ key بيبقى الـ identifier الأول وبعدين الـ scope_id.",
+  "الـ 1 خدها أول block. الـ scope_id بيزيد مع كل scope جديد، فالـ block اللي بعده ياخد 2.",
+  "الـ 0 هو الـ global scope، اللي فيه أول x.",
+  "صح. الـ global <bdi dir=\"ltr\">= 0</bdi>، وأول block <bdi dir=\"ltr\">= 1</bdi>، وتاني block <bdi dir=\"ltr\">= 2</bdi>، فالـ key هو <bdi dir=\"ltr\">\"x,2\"</bdi>."
+ ],
+ [
+  "الـ record القديم بيفضل، وبيرجع يبان لما نخرج من الـ scope الداخلي.",
+  "صح. في الـ single-pass compiler كل إضافة جديدة بتتحط في الأول، فأول item دايماً هو الصح.",
+  "ساعتها الـ lookup هيلاقي أقدم declaration الأول.",
+  "الحل 2 بيستخدم hash table واحد لكل الـ scopes."
+ ],
+ [
+  "المحاضرة بتستخدمها عشان تمسح الـ entries لما نخرج من الـ scope، مش عشان تعد الاستخدامات.",
+  "صح. لما نخرج من الـ scope الـ records بتاعتهم بتتشال، فالـ declarations اللي برّه ترجع في الأول.",
+  "الـ types موجودة في الـ records نفسها.",
+  "هي بتشيل identifiers الـ scope الحالي، مش الـ hashing."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">enter_scope</bdi> بيبدأ scope جديد جوه.",
+  "الـ <bdi dir=\"ltr\">exit_scope</bdi> بيخرج من الـ scope الحالي.",
+  "الـ <bdi dir=\"ltr\">look_up</bdi> بيلاقي الـ x الحالي عشان استخدام.",
+  "صح. الـ declaration بيضيف الـ symbol x للـ table."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">local_lookup</bdi> بيتشيك على الـ local scope بس.",
+  "الـ <bdi dir=\"ltr\">exit_scope</bdi> بيخرج من الـ scope.",
+  "الـ <bdi dir=\"ltr\">look_up</bdi> بيدوّر بقواعد الـ scoping، ومعاها الـ scopes اللي برّه.",
+  "الـ <bdi dir=\"ltr\">insert_symbol</bdi> بيضيف x، مش بيدوّر."
+ ],
+ [
+  "دول متعرّفين في block 2، فبيدخلوا ST2.",
+  "الـ ST2 بيتعمل أول ما ندخل الـ block، قبل الـ declarations بتاعته.",
+  "صح. كل block جديد بياخد symbol table بتاعه، والـ c والـ d بتوع block 2 بيدخلوا ST2.",
+  "الـ ST1 بيفضل، والـ block 2 لسه بيقرا منه الـ a."
+ ],
+ [
+  "الصفوف بتتملا عند الـ declaration في block 1.",
+  "بيبقوا initiated بس لما <bdi dir=\"ltr\">a = 0; b = 0; c = 0;</bdi> تتنفذ.",
+  "صح. الـ type declaration بيضيفهم والـ Init بتاعهم No، وبعدين كل assignment بيعلّمهم initiated.",
+  "العمود ده Yes أو No، والـ unknown دي حالة من الـ definite assignment في محاضرة 7."
+ ],
+ [
+  "صح. الـ c موجودة في الـ table الحالي ST2، فالـ c بتاعة block 1 مستخبية.",
+  "بندوّر في ST1 بس لو الاسم مش في ST2، والـ c موجودة في ST2.",
+  "لسه مدخلناش block 3.",
+  "الـ c متعرّفة في block 2 <bdi dir=\"ltr\">(int c, d;)</bdi>."
+ ],
+ [
+  "دي لغات الـ dynamic binding في المحاضرة.",
+  "ده وصف الـ dynamic binding.",
+  "دي طريقة الـ dynamic binding في إنه يلاقي النسخة الصح.",
+  "صح. الـ static scope بيعتمد على نص البرنامج بس (الأقواس) وبيتحل في الـ compile time."
+ ],
+ [
+  "صح. المحاضرة بتدّي الـ Java والـ C كأمثلة للـ static binding اللي معظم اللغات بتستخدمه.",
+  "المحاضرة حاطة الـ Java والـ C تحت الـ static، والـ Lisp والـ SNOBOL والـ Perl تحت الـ dynamic."
+ ],
+ [
+  "الـ scope جزء من البرنامج، مش عدد.",
+  "صح. ده تعريف المحاضرة.",
+  "الـ type بيتخزن في الـ symbol table، والـ scope هو المكان اللي الاسم متاح فيه.",
+  "الـ location ممكن يتخزن، بس هو مش الـ scope."
+ ],
+ [
+  "المحاضرة بتقول إن الـ scopes المختلفة لنفس الاسم مش بتتداخل.",
+  "صح. الـ scopes المختلفة لنفس الاسم مش بتتداخل، والداخلي بيخبّي اللي برّه لحد قوس القفل."
+ ],
+ [
+  "صح. ده الحل اللي المحاضرة قالته لمشكلة الـ table لكل scope.",
+  "المحاضرة بتذكر الميزتين دول بالظبط للـ table الواحد: memory overhead أقل و search واحد."
+ ],
+ [
+  "طريقة الـ tables مش هي اللي بتحدد قاعدة الـ binding.",
+  "صح. الاسم اللي مش في الـ table الحالي لازم ندوّر عليه في الـ tables اللي فوق كمان.",
+  "هو بيمثّلهم على طول: ST2 جوه ST1.",
+  "الـ tables في المثال فيها عمود Dtype."
+ ],
+ [
+  "ده الـ parsing (محاضرة 4).",
+  "ده الـ code generation.",
+  "الربط ده بتاع الـ scanner (محاضرة 2).",
+  "صح. ده تعريف المحاضرة للـ binding."
+ ],
+ [
+  "صح. الـ compiler أو الـ interpreter بيطلع لفوق في الـ stack لحد آخر declaration.",
+  "الـ hashing بيوصل للـ entry، بس قاعدة الـ binding هي آخر declaration.",
+  "الـ dynamic بيستخدم آخر declaration اتقابل، مش الـ global.",
+  "ده الـ static binding."
+ ],
+ [
+  "دي موجودة في الـ list.",
+  "دي موجودة في الـ list.",
+  "صح. الـ techniques هي الـ unordered list والـ ordered list والـ binary search trees والـ hash tables.",
+  "دي موجودة في الـ list."
+ ],
+ [
+  "صح. المحاضرة بتقول إن في الحل 2 كل الـ entries في scopes مفتوحة، وrecords الـ scopes المقفولة بتتمسح عند الخروج.",
+  "المحاضرة بتقولها: entries الـ scope بتتشال لما يقفل، فالـ table فيه scopes مفتوحة بس."
+ ],
+ [
+  "الـ static مش بيلغي الـ assignment: <bdi dir=\"ltr\">a = 5</bdi> غيّرت الـ a الوحيدة الموجودة.",
+  "والـ dynamic كمان مش بيلغي الـ assignment.",
+  "صح. الـ block الداخلي مفيهوش declaration، فـ <bdi dir=\"ltr\">a = 5</bdi> بتغيّر الـ a اللي برّه، والاتنين بيطبعوا 5.",
+  "الـ <bdi dir=\"ltr\">a = 5</bdi> assignment مش declaration جديد، فبتغيّر الـ a اللي برّه."
+ ]
+]);
+AR.compiler.lectures["9"].extra = (AR.compiler.lectures["9"].extra || []).concat([
+ [
+  "ده الـ by result: الـ formals بتبدأ بـ 0 وبترجع في الآخر.",
+  "صح. مفيش حاجة بترجع، فالـ i فاضلة 2، بس <bdi dir=\"ltr\">a[2] := 0</bdi> بتغيّر الـ array الـ global على طول.",
+  "ده نسي إن <bdi dir=\"ltr\">a[2] := 0</bdi> بتكتب في الـ array الـ global، والـ by value مش بيحميه.",
+  "ده الـ value-result: الـ j والـ x رجعوا لـ i و <bdi dir=\"ltr\">a[2]</bdi>."
+ ],
+ [
+  "ده دخّل القيم (<bdi dir=\"ltr\">j = 2, x = 30</bdi>)، وده by value أو value-result.",
+  "ده نسي <bdi dir=\"ltr\">a[2] := 0</bdi> اللي بتتنفذ قبل الـ print.",
+  "ده نسي خطوات <bdi dir=\"ltr\">j := j+1</bdi> و <bdi dir=\"ltr\">x := x+3</bdi>.",
+  "صح. مفيش قيمة بتدخل، فـ <bdi dir=\"ltr\">j = 0 + 1 = 1</bdi> و <bdi dir=\"ltr\">x = 0 + 3 = 3</bdi>، والـ <bdi dir=\"ltr\">a[2] := 0</bdi> بتخلّي الـ array <bdi dir=\"ltr\">10 20 0</bdi>."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">j = 3</bdi> بترجع لـ i، والـ <bdi dir=\"ltr\">x = 33</bdi> بترجع لـ <bdi dir=\"ltr\">a[2]</bdi> (العنوان اللي اتحدد وقت الـ call)، زي الـ revision sheet.",
+  "الـ j كمان بترجع، فالـ i بتبقى 3.",
+  "ده الـ by result، اللي مفيش فيه قيمة بتدخل.",
+  "ده نسي إن x بترجع لـ <bdi dir=\"ltr\">a[2]</bdi> في الآخر وبتكتب فوق الـ 0."
+ ],
+ [
+  "ده الـ value-result: <bdi dir=\"ltr\">j = 2</bdi> و <bdi dir=\"ltr\">x = 4 + 3 = 7</bdi> رجعوا.",
+  "ده نسي <bdi dir=\"ltr\">a[2] := 0</bdi> ونسي رجوع الـ x.",
+  "صح. <bdi dir=\"ltr\">j = 0 + 1 = 1</bdi> و <bdi dir=\"ltr\">x = 0 + 3 = 3</bdi>، و <bdi dir=\"ltr\">a[2] := 0</bdi>، وفي الآخر <bdi dir=\"ltr\">i ← 1</bdi> و <bdi dir=\"ltr\">a[1] ← 3</bdi>.",
+  "ده الـ by value: مفيش حاجة رجعت، والـ <bdi dir=\"ltr\">a[2] := 0</bdi> بس هي اللي باينة."
+ ],
+ [
+  "ده الـ by value، والـ value-result بيرجّع الـ j والـ x.",
+  "ده الـ by result، اللي الـ j والـ x فيه بيبدأوا بـ 0.",
+  "صح. <bdi dir=\"ltr\">j = 1 + 1 = 2</bdi> و <bdi dir=\"ltr\">x = 4 + 3 = 7</bdi>، و <bdi dir=\"ltr\">a[2] := 0</bdi>، وفي الآخر <bdi dir=\"ltr\">i ← 2</bdi> و <bdi dir=\"ltr\">a[1] ← 7</bdi>.",
+  "ده نسي <bdi dir=\"ltr\">a[2] := 0</bdi>. هنا الـ x مربوطة بـ <bdi dir=\"ltr\">a[1]</bdi>، فالـ 0 اللي في <bdi dir=\"ltr\">a[2]</bdi> بتفضل."
+ ],
+ [
+  "صح. في الـ by value الـ swap بتبدّل النسخ بتاعتها بس، والـ value والـ <bdi dir=\"ltr\">list[0]</bdi> زي ما هم.",
+  "مفيش حاجة بتكتب 2 في <bdi dir=\"ltr\">list[0]</bdi> في الـ by value.",
+  "مفيش حاجة بتكتب 1 في الـ value في الـ by value.",
+  "ده اللي الـ swap نفسها بتطبعه <bdi dir=\"ltr\">(a = 1, b = 2)</bdi>، أو سطر الـ main في الـ value-result."
+ ],
+ [
+  "ده السطر اللي بعده في الـ main <bdi dir=\"ltr\">(value = 2, list[2] = 5)</bdi>، مش print الـ swap.",
+  "ده الـ value-result، اللي الـ value فيه بقت 1 بعد أول call، فاتستخدم <bdi dir=\"ltr\">list[1] = 3</bdi>.",
+  "الـ <bdi dir=\"ltr\">list[value]</bdi> والـ value بـ 2 تبقى <bdi dir=\"ltr\">list[2] = 5</bdi>، مش 3.",
+  "صح. الـ value لسه 2، فالـ call هي <bdi dir=\"ltr\">swap(2, list[2] = 5)</bdi>، وبعد التبديل <bdi dir=\"ltr\">a = 5, b = 2</bdi>."
+ ],
+ [
+  "الـ value-result بينسخ في الأول ويرجّع في الآخر، والـ formals لسه variables منفصلة.",
+  "صح. في مثال المحاضرة الـ x هي نفسها <bdi dir=\"ltr\">a[2]</bdi>.",
+  "الـ by value بيدّي الـ formals نسخ.",
+  "الـ by result بيرجّع الـ formals في الآخر بس."
+ ],
+ [
+  "هي بتتنفذ في الطريقتين، والـ value-result بيكتب فوقها في الآخر وخلاص.",
+  "صح. الـ aliasing بيخلّي آخر كتابة (0) هي اللي تكسب، والـ value-result بيكتب <bdi dir=\"ltr\">x = 5</bdi> في <bdi dir=\"ltr\">a[2]</bdi> بعد <bdi dir=\"ltr\">a[2] := 0</bdi>.",
+  "البداية بـ 0 دي في الـ by result، مش الـ reference.",
+  "العنوان <bdi dir=\"ltr\">a[2]</bdi> بيتحدد وقت الـ call."
+ ],
+ [
+  "الـ local بتاع concentrate هو <bdi dir=\"ltr\">var i := 0</bdi> بتاعه، مش الـ arguments.",
+  "الـ lexical values هي قيم الـ tokens في الـ SDT (محاضرة 7).",
+  "الـ formals هي j و x، المتعرّفين في تعريف الـ procedure.",
+  "صح. هم ظاهرين في الـ call كـ arguments."
+ ],
+ [
+  "صح. ده package غالباً بيتعمل مع الـ executable، وبيظبط التواصل بين الـ process والـ runtime environment.",
+  "ده الـ syntax analysis.",
+  "ده وصف الـ runtime environment، مش الـ support system.",
+  "ده الـ scanner، في الـ compile time."
+ ],
+ [
+  "الـ symbol table ده data structure في الـ compiler.",
+  "الـ heap منطقة storage واحدة، والـ environment أوسع من كده.",
+  "صح. ده تعريف المحاضرة.",
+  "الـ runtime يعني برنامج شغّال."
+ ],
+ [
+  "الـ variables بتتعرف وقت الـ runtime بس إلا لو global أو constant (الـ heap).",
+  "دي بالظبط اللي الـ heap allocation معمول عشانها.",
+  "صح. الـ text مش بيتغير وقت الـ runtime، فاحتياجه من الـ memory معروف في الـ compile time.",
+  "الـ procedures بتتنادى بترتيب عشوائي، فالـ activations بتاعتها بتتدار على الـ stack وقت الـ runtime."
+ ],
+ [
+  "صح. الاتنين dynamic، فمينفعش ناخدلهم حجم ثابت.",
+  "الـ static data ثابتة، والـ heap بس هو اللي بيكبر.",
+  "الـ text part ثابت.",
+  "الاتنين حجمهم ثابت."
+ ],
+ [
+  "الـ text segment فيه الكود.",
+  "الـ heap للـ malloc والـ realloc والـ free.",
+  "الـ BSS فيه الـ globals والـ statics اللي ملهاش قيمة أولية.",
+  "صح. الـ stack فيه الـ automatic variables والـ stack frames بالـ return addresses."
+ ],
+ [
+  "هي مش متحجزة بالـ malloc وقت الـ runtime.",
+  "صح. الـ globals والـ statics اللي ليها قيمة أولية بتروح الـ initialized data segment.",
+  "الـ BSS للي ملهاش قيمة، والـ limit ليها القيمة 5.",
+  "الـ static variable مش automatic variable بتاع call."
+ ],
+ [
+  "موجودة في الـ list (الـ scope resolution).",
+  "صح. ده شغل الـ scanner (محاضرة 2).",
+  "موجودة في الـ list.",
+  "موجودة في الـ list."
+ ],
+ [
+  "دي شغلانة الـ lexical analysis.",
+  "ده الـ semantic analysis.",
+  "ده الـ runtime support system.",
+  "صح. دول الهدفين اللي المحاضرة قالتهم."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">3 * 4 = 12</bdi> الأول، وبعدين <bdi dir=\"ltr\">12 + 2 = 14</bdi>، وده بيتحسب في الـ compile time.",
+  "ده جمع <bdi dir=\"ltr\">4 + 2</bdi> الأول <bdi dir=\"ltr\">(3 * 6)</bdi>، والـ * قبل الـ +.",
+  "ده جمع التلات أرقام.",
+  "ده ضرب التلات أرقام."
+ ],
+ [
+  "صح. المحاضرة بتقول إن الـ peephole بيشتغل بالـ replacement بكود أقصر وأسرع وبنفس الـ output.",
+  "ده بالظبط وصف المحاضرة لطريقة شغل الـ peephole optimization."
+ ],
+ [
+  "الكود بعد الـ optimization لسه بيحسبه مرة في <bdi dir=\"ltr\">int x = a→length-1</bdi>.",
+  "من غير الـ optimization الشرط بيعيد حساب <bdi dir=\"ltr\">length-1</bdi> في كل اختبار.",
+  "صح. الشرط بيتشيك عند <bdi dir=\"ltr\">i = 0, 1, 2, 3</bdi> (صح) وعند <bdi dir=\"ltr\">i = 4</bdi> (غلط)، يعني 5 مرات زي طول الـ array. وبعد ما نحطه في x بيتحسب مرة واحدة.",
+  "ده نسي آخر اختبار اللي بيفشل <bdi dir=\"ltr\">(i = 4)</bdi>، وده كمان بيحسب <bdi dir=\"ltr\">length-1</bdi>."
+ ],
+ [
+  "ده سبب الـ static allocation.",
+  "الـ dynamic data structures بتروح الـ heap.",
+  "صح. الـ text بتاع الـ procedure static، بس الـ calls بتيجي بترتيب عشوائي، والـ stack (LIFO) بيديرها.",
+  "الـ text بتاع الـ procedures static."
+ ],
+ [
+  "صح. الـ variables بتتعرف وقت الـ runtime بس إلا لو global أو constant.",
+  "دي بتيجي وتمشي مع الـ calls على الـ stack.",
+  "دي heap allocations بتتعمل وقت الـ runtime.",
+  "الـ global أو الـ constant بس، والباقي بيتعرف وقت الـ runtime."
+ ],
+ [
+  "الـ static allocation بيربط الداتا بـ location ثابت مش بيتغير طول التنفيذ.",
+  "صح. الـ location ثابت، وعشان كده مش محتاجين runtime support package."
+ ],
+ [
+  "الـ by result مش بيدخّل حاجة: الـ formals بتبدأ بـ 0 وبترجع للـ actuals في الآخر بس.",
+  "صح. النسخ في الأول بيحصل في الـ by value والـ by value-result، والـ by result بيرجّع بس."
+ ]
+]);

@@ -3780,3 +3780,1637 @@ EXTRA.os = {
   }
  ]
 };
+
+// Final revision practice questions (2026-11-21), appended per lecture
+EXTRA.os["5"] = (EXTRA.os["5"] || []).concat([
+ {
+  "q": "<b>Applied.</b> Reference string 2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2 with <b>3 frames</b>, initially empty. How many page faults does <b>FIFO</b> cause?",
+  "o": [
+   [
+    "7",
+    "7 is the LRU count. FIFO ignores recent use: at the 5th reference it throws out page 2, although 2 was just used at reference 3."
+   ],
+   [
+    "6",
+    "This leaves out the 3 faults that fill the empty frames at the start (it only matches the Optimal count by chance). Filling an empty frame counts as a fault."
+   ],
+   [
+    "9",
+    "Correct. Faults on 2, 3, (2 hit), 1, 5 (evict 2), 2 (evict 3), 4 (evict 1), (5 hit), 3 (evict 5), (2 hit), 5 (evict 2), 2 (evict 4) = 9."
+   ],
+   [
+    "12",
+    "This counts every reference. References 3 (page 2), 8 (page 5) and 10 (page 2) find the page already in a frame, so they are hits."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Applied.</b> Same string 2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2 with 3 frames. How many page faults does <b>LRU</b> cause?",
+  "o": [
+   [
+    "7",
+    "Correct. 2, 3 fault; 2 hit; 1 faults; 5 evicts 3 (used longest ago); 2 hit; 4 evicts 1; 5 hit; 3 evicts 2; 2 evicts 4; 5 and 2 hit → 7."
+   ],
+   [
+    "9",
+    "That is FIFO. LRU keeps page 2 at the 5th reference because 2 was used at reference 3, so reference 6 is a hit."
+   ],
+   [
+    "6",
+    "That is Optimal, which looks at future references; LRU can only use the past."
+   ],
+   [
+    "4",
+    "This leaves out the 3 faults that fill the empty frames at the start. They count as faults."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Applied.</b> Same string 2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2 with 3 frames. How many page faults does <b>Optimal</b> cause?",
+  "o": [
+   [
+    "7",
+    "That is LRU. At the 5th reference LRU evicts 3 (least recently used), but 3 is needed again at reference 9; Optimal evicts 1, which is never used again."
+   ],
+   [
+    "9",
+    "That is FIFO, which evicts by load time and ignores future use."
+   ],
+   [
+    "3",
+    "This leaves out the 3 faults that fill the empty frames at the start."
+   ],
+   [
+    "6",
+    "Correct. 2, 3 and 1 fault (the second 2 is a hit); 5 evicts 1 (never used again); 4 evicts 2 (next used farthest away, at reference 10); 2 evicts 4 (never used again); the rest are hits → 6."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Applied.</b> Same string 2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2, now with <b>4 frames</b>. How many page faults does <b>FIFO</b> cause?",
+  "o": [
+   [
+    "9",
+    "That is the count with 3 frames. With a 4th frame pages stay in memory longer, so this string gets fewer faults."
+   ],
+   [
+    "6",
+    "Correct. 2, 3, 1, 5 fill the 4 frames (4 faults; the second 2 is a hit); the next 2 hits; 4 evicts 2 (loaded first); 5 and 3 hit; 2 evicts 3; 5 and 2 hit → 6. Here the 4th frame cuts the faults from 9 to 6."
+   ],
+   [
+    "5",
+    "That is Optimal with 4 frames. FIFO evicts page 2 at the 7th reference even though 2 is needed again at reference 10."
+   ],
+   [
+    "2",
+    "This leaves out the 4 faults that fill the empty frames at the start."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> FIFO on 2, 3, 2, 1, 5, 2, 4, 5, 3, 2, 5, 2 with 3 frames. When page <b>3</b> arrives at the 9th reference, the frames hold 5, 2 and 4. Which page is evicted?",
+  "o": [
+   [
+    "Page 2",
+    "2 was the first page of the string, but it was evicted at reference 5 and loaded again at reference 6. FIFO counts from the new load time."
+   ],
+   [
+    "Page 5",
+    "Correct. 5 was loaded at reference 5, 2 at reference 6 and 4 at reference 7, so 5 is the oldest load and FIFO evicts it."
+   ],
+   [
+    "Page 4",
+    "4 is the newest load (reference 7). FIFO evicts the oldest page, not the newest."
+   ],
+   [
+    "None: page 3 is a hit",
+    "Page 3 was evicted at reference 6, so it is not in a frame. This reference is a fault."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> Four frames hold pages 3, 5, 7 and 8, loaded in that order. Their most recent uses, oldest first, were 5, 8, 7, 3. Page 9 now faults, and the next references are 5, 3, 7, 3, 8. Which page does <b>Optimal</b> evict?",
+  "o": [
+   [
+    "Page 3",
+    "That is the FIFO choice (3 was loaded first). Optimal looks only at future use, and 3 is needed at the 2nd future reference."
+   ],
+   [
+    "Page 5",
+    "That is the LRU choice (5 was used longest ago). Optimal looks ahead, and 5 is needed at the very next reference, so evicting it causes another fault at once."
+   ],
+   [
+    "Page 7",
+    "7 is next used at the 3rd future reference, sooner than 8 (5th). Optimal evicts the farthest next use."
+   ],
+   [
+    "Page 8",
+    "Correct. Next uses: 5 at the 1st future reference, 3 at the 2nd, 7 at the 3rd, 8 at the 5th. Optimal evicts the page whose next use is farthest away: 8."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Applied.</b> LRU with the <b>counter</b> implementation. The counters (clock value at each page's last reference) are A = 17, B = 9, C = 23, D = 12. Which page is replaced?",
+  "o": [
+   [
+    "B",
+    "Correct. The counter holds the time of the last reference, so the smallest counter (9) is the page used longest ago: the LRU victim."
+   ],
+   [
+    "C",
+    "C has the largest counter, so it was referenced most recently; LRU keeps it."
+   ],
+   [
+    "D",
+    "D (12) is the second smallest. LRU looks for the smallest counter value."
+   ],
+   [
+    "A",
+    "A is just the first entry in the table. The counter implementation searches the whole table for the smallest counter, not the first entry."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Applied.</b> LRU with the <b>stack</b> implementation. Pages are referenced in the order 4, 7, 0, 7, 1, 0, 1, 2. Which page is at the <b>bottom</b> of the stack, ready to be the victim?",
+  "o": [
+   [
+    "2",
+    "2 was referenced last, so it sits at the top, not the bottom."
+   ],
+   [
+    "7",
+    "7 was last used at the 4th reference, so it is second from the bottom. Its earlier use does not matter; only the last use counts."
+   ],
+   [
+    "4",
+    "Correct. Each reference moves the page to the top, so the stack from top to bottom is 2, 1, 0, 7, 4. Page 4 (last used at the 1st reference) is at the bottom."
+   ],
+   [
+    "0",
+    "0 was last used at the 6th reference, so it is in the middle of the stack."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Applied.</b> Second-chance (clock) algorithm. The FIFO order (oldest first) with reference bits is A (1), B (1), C (1), D (1). A page must be replaced. Which one?",
+  "o": [
+   [
+    "D, the newest page",
+    "Second chance never prefers the newest page; it moves through the pages in FIFO order, oldest first."
+   ],
+   [
+    "None: every page keeps its second chance, so nothing can be replaced",
+    "A second chance is given only once: the bit is cleared, so on the next pass the page has bit 0 and can be replaced."
+   ],
+   [
+    "B, because A's bit is cleared and B is next",
+    "B's bit is also 1, so it too is cleared and skipped. The algorithm stops only at a page with bit 0."
+   ],
+   [
+    "A, after every bit has been cleared to 0",
+    "Correct. Each page with bit 1 has its bit cleared and is skipped: A, B, C, D all become 0. Back at A the bit is 0, so A is replaced. With all bits 1 it behaves like plain FIFO."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Applied.</b> Run <b>LRU</b> on Belady's string 1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5 with 3 frames and then with 4 frames. What are the fault counts?",
+  "o": [
+   [
+    "9 with 3 frames, 10 with 4 frames",
+    "Those are FIFO's counts, the anomaly itself. LRU does not suffer from Belady's anomaly."
+   ],
+   [
+    "10 with 3 frames, 8 with 4 frames",
+    "Correct. LRU is a stack algorithm: adding a frame never adds faults. With 3 frames all but 1, 2 (the 8th and 9th references) fault = 10; with 4 frames 5, 3, 4, 5 replace pages after the 4 fills = 8."
+   ],
+   [
+    "8 with 3 frames, 10 with 4 frames",
+    "This assumes LRU shows the anomaly too. As a stack algorithm it never gets more faults with more frames."
+   ],
+   [
+    "7 with 3 frames, 6 with 4 frames",
+    "Those are Optimal's counts; LRU cannot do better than Optimal."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "With only a <b>reference bit</b> per page (0 initially, set to 1 when referenced), the OS can replace a page whose bit is 0. What does it <b>not</b> know?",
+  "o": [
+   [
+    "Whether a page has been referenced",
+    "That is exactly what the bit records: 1 means referenced."
+   ],
+   [
+    "Which pages are currently in memory",
+    "That is given by the valid–invalid bit in the page table, not by the reference bit."
+   ],
+   [
+    "The order in which the pages were used",
+    "Correct. The bit only says whether a page was referenced, not when; the lecture notes that we do not know the order."
+   ],
+   [
+    "Which pages are candidates for replacement",
+    "Any page with bit 0 is a candidate; the bit tells the OS that much."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Applied.</b> Reference string 4, 4, 1, 4, 2, 2, 1, 3 with 3 frames, FIFO, initially empty. How many page faults?",
+  "o": [
+   [
+    "4",
+    "Correct. 4 faults, 4 hits, 1 faults, 4 hits, 2 faults, 2 and 1 hit, 3 faults (evicting 4) → 4. A repeated reference to a page already in memory is not a fault."
+   ],
+   [
+    "8",
+    "This counts every reference. Four of them (the second 4, the third 4, the second 2 and the second 1) find the page already in a frame."
+   ],
+   [
+    "5",
+    "This treats the immediate repeat 4, 4 as a second fault. The page is already in a frame after the first reference."
+   ],
+   [
+    "1",
+    "This counts only the replacement (3 evicting 4) and drops the 3 faults that fill the empty frames."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: \"When a process starts under demand paging, every page-table entry is marked v (valid).\"",
+  "o": [
+   [
+    "True",
+    "Initially all entries are marked i (not in memory); pages are brought in only when they are referenced."
+   ],
+   [
+    "False",
+    "Correct. Initially every valid–invalid bit is i. The first reference to each page finds i and causes a page fault."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "During page-fault handling, the OS looks at another table and finds that the reference is <b>invalid</b>. What happens?",
+  "o": [
+   [
+    "The process is aborted",
+    "Correct. Step 1 of page-fault handling: invalid reference → abort; only a valid page that is just not in memory is brought in."
+   ],
+   [
+    "A free frame is found and the page is read in",
+    "That is the case where the reference is valid but the page is not in memory."
+   ],
+   [
+    "The validation bit is set to v and the instruction is restarted",
+    "Those are the last steps after a valid page has been read in; an invalid reference never gets there."
+   ],
+   [
+    "A victim page is written to disk",
+    "Choosing and writing a victim is page replacement, used only to make room for a valid page."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the worst-case stages of demand paging, the OS has just received the interrupt from the disk I/O subsystem (I/O completed). What is the <b>next</b> stage?",
+  "o": [
+   [
+    "Restore the faulting process's registers and resume the instruction",
+    "That is the last stage (11). Before it, the other user's state is saved, the page table corrected, and the process waits for the CPU."
+   ],
+   [
+    "Issue a read from the disk to a free frame",
+    "That was stage 5; the read has just completed."
+   ],
+   [
+    "Determine that the interrupt was a page fault",
+    "That was stage 3, right after the original trap."
+   ],
+   [
+    "Save the registers and process state of the other user that was running",
+    "Correct. Stage 8: the CPU was given to another user while waiting (stage 6), so that user's state is saved before the page table is corrected (stage 9)."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"When page replacement picks a victim frame, the victim is always written to disk before the new page is read in.\"",
+  "o": [
+   [
+    "True",
+    "Only a dirty victim (changed since it was loaded) must be written out; a clean one can simply be overwritten."
+   ],
+   [
+    "False",
+    "Correct. The victim is written to disk only if it is dirty. That is why a fault needs up to 2 page transfers, not always 2."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which algorithm decides <b>how many frames</b> each process gets?",
+  "o": [
+   [
+    "The page-replacement algorithm",
+    "It chooses the victim page when a fault finds no free frame; it does not decide each process's share of frames."
+   ],
+   [
+    "The frame-allocation algorithm",
+    "Correct. It decides how many frames to give each process and which frames to replace."
+   ],
+   [
+    "LRU",
+    "LRU is one particular page-replacement algorithm."
+   ],
+   [
+    "The lazy swapper",
+    "The lazy swapper only decides when to bring a page in (only when needed)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why does <b>MFU</b> replace the page with the <b>largest</b> reference count?",
+  "o": [
+   [
+    "The largest count means the page was used longest ago",
+    "A count says how often a page was used, not when. Time since last use is LRU's idea."
+   ],
+   [
+    "The page with the largest count was loaded first",
+    "Load order is FIFO's rule; counts are not load times."
+   ],
+   [
+    "The page with the largest count will not be used for the longest time in the future",
+    "That is Optimal's rule, which needs the future; MFU only counts past references."
+   ],
+   [
+    "It argues that the page with the smallest count was probably just brought in and has yet to be used",
+    "Correct. That is MFU's argument in the lecture; LFU does the opposite and replaces the smallest count."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"A swapper that deals with individual pages, instead of whole processes, is called a pager.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture: \"a swapper that deals with pages is a pager\"; the lazy swapper is one that never swaps a page in unless it will be needed."
+   ],
+   [
+    "False",
+    "This is the lecture's own definition of a pager."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: \"Running a partially loaded program lets more programs run at the same time, increasing CPU utilization and throughput with no increase in response or turnaround time.\"",
+  "o": [
+   [
+    "True",
+    "Correct. Each program uses less memory, so more programs fit at once; the lecture lists this benefit with no increase in response or turnaround time."
+   ],
+   [
+    "False",
+    "This is one of the listed benefits of virtual memory: less memory per program means more programs at the same time."
+   ]
+  ],
+  "a": 0
+ }
+]);
+EXTRA.os["6"] = (EXTRA.os["6"] || []).concat([
+ {
+  "q": "<b>Applied.</b> Snapshot S, resources A B C with totals A = 8, B = 5, C = 6:<br><table><tr><th>Process</th><th>Allocation A B C</th><th>Max A B C</th></tr><tr><td>P0</td><td>1 1 0</td><td>4 3 2</td></tr><tr><td>P1</td><td>2 0 1</td><td>3 2 2</td></tr><tr><td>P2</td><td>1 2 2</td><td>5 2 4</td></tr><tr><td>P3</td><td>0 1 1</td><td>2 2 2</td></tr><tr><td>P4</td><td>2 0 0</td><td>3 1 4</td></tr></table>What is the <b>Need</b> of P4?",
+  "o": [
+   [
+    "(5, 1, 4)",
+    "This adds Allocation to Max. Need is what is still missing: Max minus what is already held."
+   ],
+   [
+    "(3, 1, 4)",
+    "That is P4's Max. It already holds (2, 0, 0), which must be subtracted."
+   ],
+   [
+    "(−1, −1, −4)",
+    "This is Allocation − Max, the subtraction reversed. Need is never negative."
+   ],
+   [
+    "(1, 1, 4)",
+    "Correct. Need = Max − Allocation = (3, 1, 4) − (2, 0, 0) = (1, 1, 4)."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Applied.</b> Snapshot S (totals A = 8, B = 5, C = 6; Allocation P0 (1, 1, 0), P1 (2, 0, 1), P2 (1, 2, 2), P3 (0, 1, 1), P4 (2, 0, 0)). What is the <b>Available</b> vector?",
+  "o": [
+   [
+    "(6, 4, 4)",
+    "That is the total allocated; it still has to be subtracted from the totals."
+   ],
+   [
+    "(2, 1, 2)",
+    "Correct. Column sums of Allocation = (6, 4, 4), so Available = (8, 5, 6) − (6, 4, 4) = (2, 1, 2)."
+   ],
+   [
+    "(8, 5, 6)",
+    "Those are the total instances. Some are already allocated, so they are not all available."
+   ],
+   [
+    "(−9, −5, −8)",
+    "This subtracts the Max column sums (17, 10, 14). Available depends on what is allocated, not on the maximum claims."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> Using snapshot S (totals A = 8, B = 5, C = 6; Available (2, 1, 2); Need P0 (3, 2, 2), P1 (1, 2, 1), P2 (4, 0, 2), P3 (2, 1, 1), P4 (1, 1, 4)), which is a <b>safe sequence</b>?",
+  "o": [
+   [
+    "&lt;P1, P3, P2, P4, P0&gt;",
+    "P1 cannot go first: it needs 2 B but only 1 B is available."
+   ],
+   [
+    "&lt;P3, P4, P1, P2, P0&gt;",
+    "After P3, Work = (2,2,3), and P4 needs 4 C. P4 must wait until P1 and P2 have released theirs."
+   ],
+   [
+    "&lt;P3, P1, P2, P4, P0&gt;",
+    "Correct. Work (2,1,2): P3 (2,1,1) fits → (2,2,3); P1 (1,2,1) → (4,2,4); P2 (4,0,2) → (5,4,6); P4 (1,1,4) → (7,4,6); P0 (3,2,2) → (8,5,6) = totals."
+   ],
+   [
+    "&lt;P0, P1, P2, P3, P4&gt;",
+    "P0 cannot start: it needs 3 A but only 2 A are available. A safe sequence is not simply the process numbers in order."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Applied.</b> Using snapshot S (totals A = 8, B = 5, C = 6; Available (2, 1, 2); Need P0 (3, 2, 2), P1 (1, 2, 1), P2 (4, 0, 2), P3 (2, 1, 1), P4 (1, 1, 4)), P4 now requests (1, 0, 1). What does the banker's algorithm decide?",
+  "o": [
+   [
+    "P4 must wait: the pretend state is unsafe",
+    "Correct. Pretend: Available (1,1,1), Allocation P4 (3,0,1), Need P4 (0,1,3). No process fits now: P3 needs 2 A, P1 needs 2 B, P0 and P2 need more A, P4 needs 3 C. Unsafe, so P4 waits and the old state is restored."
+   ],
+   [
+    "Grant it, because the request ≤ Need and ≤ Available",
+    "Those two checks only allow the pretend allocation. The request is granted only if the safety algorithm then finds the state safe, and here it does not."
+   ],
+   [
+    "Error, because the request exceeds P4's maximum claim",
+    "(1, 0, 1) ≤ Need P4 (1, 1, 4), so the claim is not exceeded."
+   ],
+   [
+    "P4 must wait because the request is more than Available",
+    "(1, 0, 1) ≤ Available (2, 1, 2), so there are enough free instances; the problem is that the resulting state is unsafe."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Applied.</b> Using snapshot S (totals A = 8, B = 5, C = 6; Available (2, 1, 2); Need P0 (3, 2, 2), P1 (1, 2, 1), P2 (4, 0, 2), P3 (2, 1, 1), P4 (1, 1, 4)), P3 now requests (0, 2, 0). What does the banker's algorithm decide?",
+  "o": [
+   [
+    "P3 must wait until 2 B are available",
+    "Waiting is for a valid request that exceeds Available. This request fails the earlier check against Need."
+   ],
+   [
+    "Grant it, because the system is safe",
+    "A safe state does not let a process ask for more than its declared maximum."
+   ],
+   [
+    "Error: the request exceeds P3's maximum claim",
+    "Correct. Step 1 checks Request ≤ Need: Need P3 = (2, 1, 1), and 2 B > 1 B, so it is an error condition."
+   ],
+   [
+    "Run the safety algorithm, then decide",
+    "The safety algorithm runs only after both checks pass; this request fails the first one."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Applied.</b> Using snapshot S (totals A = 8, B = 5, C = 6; Available (2, 1, 2); Need P0 (3, 2, 2), P1 (1, 2, 1), P2 (4, 0, 2), P3 (2, 1, 1), P4 (1, 1, 4)), P0 now requests (3, 0, 0). What does the banker's algorithm decide?",
+  "o": [
+   [
+    "P0 must wait: the request is more than Available",
+    "Correct. Request ≤ Need P0 (3, 2, 2) passes, but 3 A > Available 2 A, so step 2 makes P0 wait. The safety algorithm is not even reached."
+   ],
+   [
+    "Error: the request exceeds P0's maximum claim",
+    "(3, 0, 0) ≤ Need (3, 2, 2), so it is within P0's claim."
+   ],
+   [
+    "Grant it after a successful safety check",
+    "Only 2 A are free, so 3 A cannot be allocated, even for pretend."
+   ],
+   [
+    "Abort P0 to free its resources",
+    "The banker's algorithm avoids deadlock by making the process wait; it does not abort processes."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: \"In snapshot S, when the safety algorithm has finished every process, Work equals the total instances (8, 5, 6).\"",
+  "o": [
+   [
+    "True",
+    "Correct. Every process releases its Allocation, so the final Work = Available + all Allocations = (2,1,2) + (6,4,4) = (8,5,6). It is a good self-check."
+   ],
+   [
+    "False",
+    "When all processes finish, everything they held is back in Work, so it must equal the totals."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Applied.</b> Detection algorithm with resources A, B, C (one instance each), Available (0, 0, 0).<br>Allocation: P0 (1, 0, 0), P1 (0, 1, 0), P2 (0, 0, 1). Request: P0 (0, 1, 0), P1 (1, 0, 0), P2 (0, 0, 0).<br>What is the result?",
+  "o": [
+   [
+    "All three are deadlocked, since Available is (0, 0, 0)",
+    "P2 requests nothing, so it can finish even with nothing available."
+   ],
+   [
+    "P0 and P1 are deadlocked; P2 can finish",
+    "Correct. Work (0,0,0): P2's request (0,0,0) fits → Work (0,0,1). P0 needs B and P1 needs A, which each other holds, so Finish stays false for P0 and P1."
+   ],
+   [
+    "No deadlock: P2 finishes and its release lets the others continue",
+    "P2 releases only C, but P0 is waiting for B (held by P1) and P1 for A (held by P0)."
+   ],
+   [
+    "Only P2 is deadlocked",
+    "P2's request is zero, so Request ≤ Work holds at once; it is the one process that can finish."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> The slide's graph has R1 → P2, R2 → P1 and R2 → P2, R3 → P3 (assignments) and P1 → R1, P2 → R3 (requests). Now P3 → R2 is added. Which processes are deadlocked?",
+  "o": [
+   [
+    "None: R2 has two instances, so there is only a possibility of deadlock",
+    "Several instances only make deadlock possible in general. Here both R2 instances are held by P1 and P2, which are themselves waiting, so the deadlock is real."
+   ],
+   [
+    "P1, P2 and P3",
+    "Correct. There are two cycles, P1 → R1 → P2 → R3 → P3 → R2 → P1 and P2 → R3 → P3 → R2 → P2, and both instances of R2 are held by waiting processes, so nobody can finish."
+   ],
+   [
+    "Only P2 and P3, the shorter cycle",
+    "P1 waits for R1, held by P2, which can never finish, so P1 is stuck too."
+   ],
+   [
+    "Only P3, the process that made the new request",
+    "P3's request closes the cycles; P1 and P2 are in them as well."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> A graph has the cycle P1 → R1 → P3 → R2 → P1, but R1's other instance is held by P2 and R2's other instance by P4. Why is there <b>no</b> deadlock?",
+  "o": [
+   [
+    "A cycle never means deadlock",
+    "With one instance per resource type a cycle does mean deadlock; here it is the extra instances that save the system."
+   ],
+   [
+    "Because R1 and R2 are sharable resources",
+    "Nothing says they are sharable; the cycle is broken because other holders of the instances can release them."
+   ],
+   [
+    "Because P1 and P3 can take resources from each other",
+    "No preemption holds: resources are released only voluntarily by their holders."
+   ],
+   [
+    "P2 and P4 are not waiting, so they can finish and release instances that break the cycle",
+    "Correct. When P4 releases its R2 instance, P3 can get it and finish, and then P1 can proceed."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "In a resource-allocation graph, an arrow goes from an instance dot inside box R2 to process P1. What does it mean?",
+  "o": [
+   [
+    "An assignment edge: P1 holds an instance of R2",
+    "Correct. Assignment edges go Rj → Pi, from an instance dot to the process holding it."
+   ],
+   [
+    "A request edge: P1 is waiting for R2",
+    "A request edge goes the other way, Pi → Rj, from the process to the resource box."
+   ],
+   [
+    "A wait-for edge from R2 to P1",
+    "A wait-for graph has only process nodes (Pi → Pj); resource nodes are collapsed away."
+   ],
+   [
+    "Nothing: edges only go from processes to resources",
+    "Both directions exist: requests go P → R and assignments go R → P."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Applied.</b> Single-instance resources. P1 requests R1, which is held by P2; P2 requests R2, which is held by P3; P3 requests nothing. What does the wait-for graph show?",
+  "o": [
+   [
+    "P1 → P2 → P3 → P1, a deadlock",
+    "There is no edge from P3 to P1, because P3 is not waiting for anything."
+   ],
+   [
+    "P3 → P2 → P1",
+    "The edges point from the waiting process to the one it waits for, so they go P1 → P2 → P3."
+   ],
+   [
+    "P1 → P2 → P3, no cycle, so no deadlock",
+    "Correct. Collapsing the resource nodes gives P1 → P2 and P2 → P3. There is no cycle: P3 finishes, then P2, then P1."
+   ],
+   [
+    "It cannot be built: wait-for graphs need several instances per type",
+    "It is the other way round: the wait-for graph is the detection method for a single instance of each resource type."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Making a resource <b>sharable</b>, such as a read-only file that many processes can open at once, attacks which deadlock condition?",
+  "o": [
+   [
+    "Hold and wait",
+    "Hold and wait is denied by requesting all resources up front or only when holding none."
+   ],
+   [
+    "No preemption",
+    "No preemption is denied by making a blocked process release everything it holds."
+   ],
+   [
+    "Circular wait",
+    "Circular wait is denied by a total ordering of resource types."
+   ],
+   [
+    "Mutual exclusion",
+    "Correct. Mutual exclusion is not required for sharable resources, so they can never be part of a deadlock."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"Deadlock prevention can always deny the mutual-exclusion condition.\"",
+  "o": [
+   [
+    "True",
+    "Mutual exclusion must hold for non-sharable resources (a printer cannot be shared), so it generally cannot be denied."
+   ],
+   [
+    "False",
+    "Correct. Only sharable resources such as read-only files avoid it; for non-sharable resources mutual exclusion must hold."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "For deadlock <b>avoidance</b>, which tool fits which case?",
+  "o": [
+   [
+    "Single instance: the banker's algorithm. Multiple instances: a resource-allocation graph",
+    "This is reversed. The banker's algorithm is the one built for multiple instances."
+   ],
+   [
+    "Both cases: the wait-for graph",
+    "The wait-for graph is for detection (single instances), not avoidance."
+   ],
+   [
+    "Single instance per type: a resource-allocation graph (with claim edges). Multiple instances: the banker's algorithm",
+    "Correct. That is the lecture's split for avoidance."
+   ],
+   [
+    "Both cases: a total ordering of resource types",
+    "Total ordering prevents circular wait; it is a prevention method."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: \"In the banker's algorithm, a process that gets all its resources may keep them for as long as it likes.\"",
+  "o": [
+   [
+    "True",
+    "The lecture's rule: a process that gets all its resources must return them in a finite amount of time."
+   ],
+   [
+    "False",
+    "Correct. Each process claims its maximum a priori, may have to wait, and must return all its resources in a finite amount of time."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "When choosing which deadlocked process to abort first, which factor is <b>not</b> in the lecture's list?",
+  "o": [
+   [
+    "The priority of the process",
+    "Priority is factor 1 in the list."
+   ],
+   [
+    "How many processes will need to be terminated",
+    "This is factor 5 in the list."
+   ],
+   [
+    "How many page faults the process has caused",
+    "Correct. Page faults are not listed. The factors are priority, time computed and still needed, resources used, resources needed, how many processes must be terminated, and interactive or batch."
+   ],
+   [
+    "Whether the process is interactive or batch",
+    "This is factor 6 in the list."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "When deciding how often to invoke the detection algorithm, the lecture considers how many processes will need to be rolled back. How many?",
+  "o": [
+   [
+    "One for each disjoint cycle",
+    "Correct. Each disjoint cycle needs at least one process rolled back to break it."
+   ],
+   [
+    "Every process in the system",
+    "Only processes in the deadlock cycles are involved; the others are not deadlocked."
+   ],
+   [
+    "Exactly one, whatever the number of cycles",
+    "One victim breaks only one cycle; separate cycles each need their own."
+   ],
+   [
+    "None: rollback is never used",
+    "Rollback is one of the issues of recovery by resource preemption."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the system model, in what order does a process use a resource?",
+  "o": [
+   [
+    "Use → request → release",
+    "A process cannot use a resource before requesting and getting it."
+   ],
+   [
+    "Request → release → use",
+    "Releasing gives the resource back, so it can no longer be used."
+   ],
+   [
+    "Release → request → use",
+    "There is nothing to release before the resource has been requested and used."
+   ],
+   [
+    "Request → use → release",
+    "Correct. The process must request the resource (waiting if necessary), use it, then release it."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"The deadlock-detection algorithm checks Need_i ≤ Work, exactly like the safety algorithm.\"",
+  "o": [
+   [
+    "True",
+    "Detection has no Max or Need: it uses the current requests, Request_i ≤ Work."
+   ],
+   [
+    "False",
+    "Correct. The detection algorithm uses Request_i ≤ Work instead of Need, and Finish[i] starts true when Allocation_i = 0."
+   ]
+  ],
+  "a": 1
+ }
+]);
+EXTRA.os["7"] = (EXTRA.os["7"] || []).concat([
+ {
+  "q": "<b>Applied.</b> Which permissions does <code>chmod 536 plan</code> give?",
+  "o": [
+   [
+    "Owner RW-, group -WX, public R-X",
+    "This reads the digits from right to left. chmod lists owner, then group, then public."
+   ],
+   [
+    "Owner R-X, group -WX, public RW-",
+    "Correct. R = 4, W = 2, X = 1: 5 = 4 + 1 (R-X) for the owner, 3 = 2 + 1 (-WX) for the group, 6 = 4 + 2 (RW-) for the public."
+   ],
+   [
+    "Owner R-X, group RW-, public -WX",
+    "The group digit 3 is 2 + 1 (write and execute); RW- would be 6."
+   ],
+   [
+    "Owner -WX, group R-X, public RW-",
+    "5 is 4 + 1 (read and execute); -WX is 2 + 1 = 3."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> Linked allocation: file jeep is the chain 9 → 16 → 1 → 10 → 25 (the directory holds start 9 and end 25). How many disk blocks must be read to reach the file's <b>4th</b> block?",
+  "o": [
+   [
+    "1",
+    "That would need direct access, as with contiguous or indexed allocation. With linked allocation the address of block i is only in block i − 1."
+   ],
+   [
+    "5",
+    "Reading stops at the 4th block (10); block 25 is not needed."
+   ],
+   [
+    "2",
+    "The directory gives only the start and the end; the middle blocks can only be found by following the pointers one by one."
+   ],
+   [
+    "4",
+    "Correct. The 4th block's address is stored only in the 3rd block, so blocks 9, 16 and 1 must be read to find block 10, then 10 itself is read. This is why linked allocation has poor direct access."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Applied.</b> Indexed allocation: jeep's index block 19 lists 9, 16, 1, 10, 25, −1, … Which disk block holds the file's <b>4th</b> data block?",
+  "o": [
+   [
+    "10",
+    "Correct. The i-th entry of the index block points to the i-th block of the file: 9, 16, 1, then 10."
+   ],
+   [
+    "1",
+    "1 is the 3rd entry; one entry too early."
+   ],
+   [
+    "25",
+    "25 is the 5th entry, the last block of the file. Counting the entries from 0 lands here by mistake."
+   ],
+   [
+    "19",
+    "19 is the index block itself, which holds the pointers, not the file's data."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<b>Applied.</b> In the lecture's FAT example, the directory entry \"test\" has start block 217, and the file is 217 → 618 → 339. What is stored in <b>FAT[618]</b>?",
+  "o": [
+   [
+    "−1",
+    "−1 (end of file) is in FAT[339], the last block."
+   ],
+   [
+    "217",
+    "217 is the start block, kept in the directory entry; FAT[217] holds 618."
+   ],
+   [
+    "339",
+    "Correct. Each FAT entry holds the number of the next block of the file, so the entry for block 618 holds 339."
+   ],
+   [
+    "618",
+    "An entry does not hold its own block number; it holds the next block's number."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<b>Applied.</b> Sequential access is simulated on a direct-access file with current position <code>cp</code>. Starting from cp = 6, the operations are: read next, read next, reset, write next. Which block is written, and what is cp at the end?",
+  "o": [
+   [
+    "Block 8 is written and cp = 9",
+    "This ignores the reset, which sets cp back to 0 before the write."
+   ],
+   [
+    "Block 0 is written and cp = 0",
+    "Write next also advances the position: write cp, then cp = cp + 1."
+   ],
+   [
+    "Block 1 is written and cp = 2",
+    "This adds 1 before writing. The operation writes block cp first, then increases cp."
+   ],
+   [
+    "Block 0 is written and cp = 1",
+    "Correct. The reads use blocks 6 and 7 (cp becomes 8), reset sets cp = 0, and write next writes block 0 and sets cp = 1."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<b>Applied.</b> In a tree-structured directory the current directory is <code>/mail</code>, and the user types <code>mkdir count</code>. Where is the new directory created?",
+  "o": [
+   [
+    "/count, at the root",
+    "A relative name is taken from the current directory, not from the root."
+   ],
+   [
+    "/mail/count",
+    "Correct. New files and subdirectories are created in the current directory, as in the lecture's example (in /mail: mkdir count)."
+   ],
+   [
+    "/spell/mail/prog/count",
+    "That path comes from the separate cd example; here the current directory is /mail."
+   ],
+   [
+    "Nowhere: mkdir replaces the directory mail",
+    "mkdir adds a subdirectory; it does not replace or delete anything."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which file attribute is a <b>pointer to the file's location on the device</b>?",
+  "o": [
+   [
+    "Identifier",
+    "The identifier is a unique tag (number) that names the file within the file system."
+   ],
+   [
+    "Name",
+    "The name is the only information kept in human-readable form."
+   ],
+   [
+    "Location",
+    "Correct. Location is the pointer to where the file is on the device."
+   ],
+   [
+    "Protection",
+    "Protection records who can read, write and execute the file."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: \"A file checksum is an example of an extended file attribute.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture lists the file checksum among the extended attributes."
+   ],
+   [
+    "False",
+    "The lecture names the file checksum as an extended attribute."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Repositioning within a file is also called:",
+  "o": [
+   [
+    "Truncate",
+    "Truncate is a separate file operation in the list, not repositioning."
+   ],
+   [
+    "Open",
+    "open(Fi) searches the directory and moves the entry to memory; it does not move inside the file."
+   ],
+   [
+    "Seek",
+    "Correct. The lecture lists the operation as \"reposition within the file (seek)\"."
+   ],
+   [
+    "Append",
+    "Append is a type of access (adding to the end), not a repositioning operation."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: \"For an open file, a single file pointer is shared by all the processes that opened it.\"",
+  "o": [
+   [
+    "True",
+    "The file pointer (last read/write location) is kept per process, so each process has its own position."
+   ],
+   [
+    "False",
+    "Correct. The file pointer is per process, as are the access rights; the file-open count is what is shared for the file."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "The extensions <code>so</code> and <code>dll</code> belong to which file type?",
+  "o": [
+   [
+    "Object",
+    "Object files are obj and o."
+   ],
+   [
+    "Executable",
+    "Executables are exe, com and bin."
+   ],
+   [
+    "Archive",
+    "Archives are arc, zip and tar."
+   ],
+   [
+    "Library",
+    "Correct. The lecture's library type is lib, a, so, dll."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "A <b>relocatable load file</b> is an example of which file structure?",
+  "o": [
+   [
+    "No structure (a sequence of words or bytes)",
+    "That is the plain stream case, with no internal records."
+   ],
+   [
+    "Complex structure",
+    "Correct. Complex structures are a formatted document or a relocatable load file."
+   ],
+   [
+    "Simple record structure",
+    "Simple record structure means lines, fixed-length or variable-length records."
+   ],
+   [
+    "Direct access",
+    "Direct access is an access method, not a file structure."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why does direct access address records by a <b>relative block number</b> n?",
+  "o": [
+   [
+    "It makes sequential access impossible on the file",
+    "Sequential access can still be simulated on a direct-access file with a current position cp."
+   ],
+   [
+    "It lets the OS decide where the file is placed on disk",
+    "Correct. The program asks for block n of the file, and the OS maps it to wherever the file actually is."
+   ],
+   [
+    "n is the physical sector number on the disk",
+    "n is relative to the start of the file, not a physical disk address."
+   ],
+   [
+    "It is needed because the file is stored on tape",
+    "Tape is the model for sequential access; direct access is for disks."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Two users can use the same name for different files, and one file can have several names. Which directory-organization goal is this?",
+  "o": [
+   [
+    "Efficiency",
+    "Efficiency means locating a file quickly."
+   ],
+   [
+    "Grouping",
+    "Grouping means logical groups of files by properties, e.g. all Java programs or all games."
+   ],
+   [
+    "Protection",
+    "Protection is about who may access a file; it is not one of the three organization goals."
+   ],
+   [
+    "Naming",
+    "Correct. The naming goal is convenience for users: the same name for different users' files, and several names for one file."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"The directory structure is kept only in main memory; only the files themselves are on disk.\"",
+  "o": [
+   [
+    "True",
+    "The lecture says both the directory structure and the files reside on disk."
+   ],
+   [
+    "False",
+    "Correct. Both the directory structure and the files reside on disk; open() brings a directory entry into memory when needed."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A directory implemented as a <b>linear list</b> of file names with pointers to the data blocks. What is its main drawback?",
+  "o": [
+   [
+    "Two names can hash to the same location",
+    "Collisions are the problem of the hash-table implementation."
+   ],
+   [
+    "It only works with fixed-size entries",
+    "That limit belongs to the hash table, unless chained overflow is used."
+   ],
+   [
+    "Finding a file is time-consuming (linear search)",
+    "Correct. It is simple to program but slow to search; keeping it sorted (linked list or B+ tree) helps."
+   ],
+   [
+    "It cannot store pointers to data blocks",
+    "A linear list stores each file name with a pointer to its data blocks."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: \"A hash-table directory is only good if its entries are fixed size, or if it uses the chained-overflow method.\"",
+  "o": [
+   [
+    "True",
+    "Correct. A hash table cuts search time but must handle collisions; the lecture says it is only good with fixed-size entries or chained overflow."
+   ],
+   [
+    "False",
+    "This is the lecture's own condition for the hash-table directory."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which storage structure holds the information about a file?",
+  "o": [
+   [
+    "The device driver",
+    "The device driver controls the physical device."
+   ],
+   [
+    "The file control block (FCB)",
+    "Correct. The FCB is the storage structure holding information about a file."
+   ],
+   [
+    "The open-file table",
+    "The open-file table only tracks which files are open."
+   ],
+   [
+    "The index block",
+    "An index block holds pointers to a file's data blocks in indexed allocation."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "On distributed systems, files are shared across a network. Which is the common distributed file-sharing method named in the lecture?",
+  "o": [
+   [
+    "FAT",
+    "FAT is a disk allocation method (linked allocation with a table)."
+   ],
+   [
+    "FCB",
+    "The FCB holds information about one file."
+   ],
+   [
+    "NFS (Network File System)",
+    "Correct. NFS is the lecture's common distributed file-sharing method."
+   ],
+   [
+    "chmod",
+    "chmod sets UNIX access modes on a file; it does not share files across a network."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which of these is <b>not</b> one of the types of access the owner can control?",
+  "o": [
+   [
+    "Defragment",
+    "Correct. The types of access are read, write, execute, append, delete and list."
+   ],
+   [
+    "Append",
+    "Append is in the list of access types."
+   ],
+   [
+    "List",
+    "List is in the list of access types."
+   ],
+   [
+    "Delete",
+    "Delete is in the list of access types."
+   ]
+  ],
+  "a": 0
+ }
+]);
+EXTRA.os["8"] = (EXTRA.os["8"] || []).concat([
+ {
+  "q": "In the typical PC bus figure, which bus does the lecture name as common in PCs and servers, connecting the graphics, SCSI and IDE disk controllers?",
+  "o": [
+   [
+    "The expansion bus",
+    "The expansion bus connects relatively slow devices such as the keyboard and the serial and parallel ports."
+   ],
+   [
+    "The Interrupt Request Line",
+    "That is a single CPU wire used to signal interrupts, not a bus for controllers."
+   ],
+   [
+    "The PCI bus",
+    "Correct. PCI is the common PC and server bus; the graphics controller, SCSI controller, IDE disk controller and the expansion bus interface hang off it."
+   ],
+   [
+    "A port",
+    "A port is a connection point for one device; a bus is shared by many devices."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A program divides by zero on an Intel Pentium. Which entry of the event-vector table handles it?",
+  "o": [
+   [
+    "Vector 0 (divide error)",
+    "Correct. Vector 0 is the divide error."
+   ],
+   [
+    "Vector 14",
+    "Vector 14 is the page fault."
+   ],
+   [
+    "Vector 13",
+    "Vector 13 is general protection."
+   ],
+   [
+    "Vector 32",
+    "Vectors 32–255 are the maskable interrupts, not the divide error."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which is <b>not</b> one of the lecture's three device categories?",
+  "o": [
+   [
+    "Storage",
+    "Storage is one of the three categories."
+   ],
+   [
+    "Transmission",
+    "Transmission is one of the three categories."
+   ],
+   [
+    "Human-interface",
+    "Human-interface is one of the three categories."
+   ],
+   [
+    "Processing",
+    "Correct. The three categories are storage, transmission and human-interface."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"A controller (host adapter) is sometimes a separate circuit board containing a processor, microcode, private memory and a bus controller.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture: a controller is sometimes integrated and sometimes a separate circuit board, and contains a processor, microcode, private memory, a bus controller, etc."
+   ],
+   [
+    "False",
+    "This is the lecture's description of a controller (host adapter)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "During a polled <b>write</b>, where does the host put the byte to be written?",
+  "o": [
+   [
+    "The data-in register",
+    "Data-in is read by the host to get input from the device."
+   ],
+   [
+    "The data-out register",
+    "Correct. In step 2 of the handshake the host sets the write bit and copies the byte into data-out."
+   ],
+   [
+    "The status register",
+    "The status register holds bits such as busy, which the host reads."
+   ],
+   [
+    "The control register",
+    "The control register receives commands (such as command-ready), not the data byte."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which is the correct order of the polling handshake for one byte?",
+  "o": [
+   [
+    "Host sets command-ready → host reads busy until 0 → host sets read/write → controller transfers → controller clears busy",
+    "The host must first wait for busy = 0; it sets command-ready only after the command and data are in place."
+   ],
+   [
+    "Controller sets busy → host reads busy until 0 → host sets command-ready → controller transfers → host clears busy",
+    "The controller sets busy only after command-ready, and it is the controller, not the host, that clears it."
+   ],
+   [
+    "Host reads busy until 0 → controller transfers → host sets command-ready → host sets read/write → controller clears busy",
+    "The controller cannot transfer before it has a command: write bit, data-out and command-ready come first."
+   ],
+   [
+    "Host reads busy until 0 → host sets read/write (and data-out) → host sets command-ready → controller sets busy and transfers → controller clears busy, error and command-ready",
+    "Correct. These are the five steps in the lecture's order."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Memory-mapped I/O maps device registers into the processor's address space. When is it especially used?",
+  "o": [
+   [
+    "For large address spaces such as graphics",
+    "Correct. The lecture says memory-mapped I/O is used especially for large address spaces, such as graphics."
+   ],
+   [
+    "For slow devices that send one byte at a time, such as keyboards",
+    "The lecture ties memory-mapped I/O to large address spaces such as graphics, not to small byte-at-a-time devices."
+   ],
+   [
+    "Only for disk sectors",
+    "Disks are block devices; memory-mapped I/O is about device registers and data, e.g. graphics memory."
+   ],
+   [
+    "To hold the interrupt vector",
+    "The interrupt vector holds handler addresses; it is not a device register."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the interrupt-driven I/O cycle, the controller has just generated an interrupt signal (input ready, output complete or error). What happens next?",
+  "o": [
+   [
+    "The interrupt handler returns from the interrupt",
+    "The handler must first be given control and process the data."
+   ],
+   [
+    "The device driver initiates the I/O",
+    "That is the very first step of the cycle."
+   ],
+   [
+    "The CPU, checking for interrupts between instructions, receives it and transfers control to the interrupt handler",
+    "Correct. That is step 4, before the handler processes the data and returns."
+   ],
+   [
+    "The CPU resumes the interrupted task",
+    "That is the last step, after the handler returns."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "When a controller asserts a signal on the Interrupt Request Line, what does the CPU do?",
+  "o": [
+   [
+    "It finishes the whole running program first",
+    "The line is sensed after every instruction, so the CPU responds at once, not at the end of the program."
+   ],
+   [
+    "It starts a DMA transfer",
+    "DMA is set up by the OS writing a command block; an interrupt does not start one."
+   ],
+   [
+    "It polls the device's busy bit",
+    "Interrupts exist exactly so the CPU does not have to poll the busy bit."
+   ],
+   [
+    "It performs a state save and jumps to the interrupt-handler routine at a fixed address",
+    "Correct. After the current instruction, the CPU saves state and jumps to the handler at a fixed address."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "After the OS writes the DMA command block into memory, how does the DMA controller find it?",
+  "o": [
+   [
+    "The CPU copies each byte of the block to the controller",
+    "Copying byte by byte through the CPU is the programmed I/O that DMA avoids."
+   ],
+   [
+    "The OS writes the location of the command block to the DMA controller",
+    "Correct. That is step 4 of setting up DMA; then the controller takes the bus (bus mastering)."
+   ],
+   [
+    "The device driver puts it in the data-out register",
+    "Data-out is a device data register used in polling, not a pointer to a DMA command block."
+   ],
+   [
+    "The controller looks it up in the interrupt vector",
+    "The interrupt vector holds interrupt-handler addresses."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<b>Applied.</b> 4 KB of data is moved in 512-byte blocks. How many interrupts occur with DMA, compared with an interrupt for every byte?",
+  "o": [
+   [
+    "1 with DMA, compared with 4,096",
+    "DMA interrupts once per block, not once for the whole 4 KB here."
+   ],
+   [
+    "8 in both cases",
+    "Without DMA the CPU is involved for every byte, so there are 4,096, not 8."
+   ],
+   [
+    "8 with DMA, compared with 4,096",
+    "Correct. 4 KB = 4,096 bytes; 4,096 / 512 = 8 blocks, and DMA raises one interrupt per block instead of one per byte."
+   ],
+   [
+    "4,096 with DMA, compared with 8",
+    "This is reversed: DMA is the one with fewer interrupts."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "In the six-step DMA transfer, what comes right after \"the disk controller initiates the DMA transfer\"?",
+  "o": [
+   [
+    "The disk controller sends each byte to the DMA controller",
+    "Correct. That is step 4; step 5 is the DMA controller writing the bytes into buffer X."
+   ],
+   [
+    "DMA interrupts the CPU to signal completion",
+    "That is step 6, when C reaches 0."
+   ],
+   [
+    "The device driver tells the disk controller to transfer C bytes",
+    "That is step 2, before the transfer starts."
+   ],
+   [
+    "The DMA controller transfers the bytes to buffer X",
+    "That is step 5; the bytes must first reach the DMA controller."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "On one device data must be read in order; on another any position can be reached directly. Which dimension of device variety is this?",
+  "o": [
+   [
+    "Sharable or dedicated",
+    "That is about whether several processes can use the device at once."
+   ],
+   [
+    "Synchronous or asynchronous",
+    "That is about timing of transfers, not about order of access."
+   ],
+   [
+    "Sequential or random-access",
+    "Correct. This is the sequential vs random-access dimension in the lecture's list."
+   ],
+   [
+    "Read-write, read-only or write-only",
+    "That is about which directions of transfer are allowed."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: \"Because the device-driver layer hides differences among I/O controllers from the kernel, a new device using an already-implemented protocol needs no extra work.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture states both points: the driver layer hides controller differences, and new devices using implemented protocols need no extra work."
+   ],
+   [
+    "False",
+    "This is exactly what the lecture says about the device-driver layer."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "On a block device, memory-mapped file access maps the file into virtual memory. How are its clusters brought in?",
+  "o": [
+   [
+    "All at once when the file is opened",
+    "Demand paging brings in only what is referenced, not the whole file at open."
+   ],
+   [
+    "With get() and put()",
+    "get() and put() are character-device commands."
+   ],
+   [
+    "By polling each byte",
+    "Polling is a way of talking to device registers, not how a mapped file is loaded."
+   ],
+   [
+    "By demand paging",
+    "Correct. The lecture: the file is mapped to virtual memory and clusters are brought in via demand paging."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "True or False: \"For character devices, libraries layered on top of get() and put() allow line editing.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture: character devices (keyboard, mouse, serial ports) use get() and put(), and libraries layered on top allow line editing."
+   ],
+   [
+    "False",
+    "The lecture says exactly this about character devices."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which is <b>not</b> one of the ways the lecture says I/O affects system performance?",
+  "o": [
+   [
+    "The CPU must execute device-driver code",
+    "This is listed: I/O demands the CPU to run driver code."
+   ],
+   [
+    "It causes external fragmentation of main memory",
+    "Correct. Fragmentation is a memory-allocation problem (Topic 4). The I/O costs are CPU time for driver code, context switches due to interrupts, and data copying."
+   ],
+   [
+    "Interrupts cause context switches",
+    "This is listed: context switches due to interrupts."
+   ],
+   [
+    "Data must be copied",
+    "This is listed: I/O causes data copying."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "True or False: \"One of the lecture's ways to reduce interrupts is to use polling, along with large transfers and smart controllers.\"",
+  "o": [
+   [
+    "True",
+    "Correct. \"Reduce interrupts by using large transfers, smart controllers, polling\" is in the list of ways to improve performance."
+   ],
+   [
+    "False",
+    "The lecture lists polling among the ways to reduce interrupts. Polling is wasteful only when it busy-waits on a slow device."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: \"Because DMA steals bus cycles from the CPU, it is less efficient than programmed I/O.\"",
+  "o": [
+   [
+    "True",
+    "The lecture says cycle stealing costs a little but DMA is still much more efficient than moving one byte at a time."
+   ],
+   [
+    "False",
+    "Correct. Cycle stealing has a small cost, but DMA is still much more efficient: one interrupt per block and the CPU is free for other work."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why is it sometimes better for the controller to <b>interrupt</b> the CPU than for the CPU to poll it?",
+  "o": [
+   [
+    "Interrupts have no overhead at all",
+    "Servicing an interrupt costs a state save, the handler, and a state restore."
+   ],
+   [
+    "With interrupts the data moves without the CPU",
+    "Moving data without the CPU is DMA; with plain interrupt-driven I/O the handler still processes the data."
+   ],
+   [
+    "With a slow device the CPU does not waste time busy-waiting and can switch to other tasks",
+    "Correct. Polling's busy-wait is inefficient when the device is slow; an interrupt notifies the CPU only when the device is ready."
+   ],
+   [
+    "Devices cannot be polled",
+    "Polling works with any device; it is just wasteful for slow ones."
+   ]
+  ],
+  "a": 2
+ }
+]);

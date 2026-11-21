@@ -3700,3 +3700,2093 @@ EXTRA.compiler = {
   }
  ]
 };
+
+// Final revision practice questions (2026-11-21), appended per lecture
+EXTRA.compiler["6"] = (EXTRA.compiler["6"] || []).concat([
+ {
+  "q": "Expression grammar E → TE', E' → +TE' | ε, T → FT', T' → *FT' | ε, F → (E) | id. What is FIRST(E')?",
+  "o": [
+   [
+    "{+}",
+    "E' → ε puts ε in FIRST(E') too (FIRST rule 3)."
+   ],
+   [
+    "{+, ε}",
+    "Correct. E' → +TE' starts with + (rule 1/2) and E' → ε adds ε (rule 3)."
+   ],
+   [
+    "{+, ), $}",
+    "This mixes in FOLLOW(E') = {), $}. FIRST sets never contain $."
+   ],
+   [
+    "{(, id}",
+    "That is FIRST(E) = FIRST(T) = FIRST(F). E' begins with +."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Same expression grammar. What is FOLLOW(E)?",
+  "o": [
+   [
+    "{$}",
+    "$ comes from E being the start symbol, but F → (E) also puts ) after E."
+   ],
+   [
+    "{+, ), $}",
+    "That is FOLLOW(T). + follows T (from E' → +TE'), not E."
+   ],
+   [
+    "{), $}",
+    "Correct. Rule 1 gives $ (start symbol) and rule 2 on F → (E) gives )."
+   ],
+   [
+    "{(, id}",
+    "That is FIRST(E), what E begins with, not what follows it."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "For S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε, what is FIRST(S)?",
+  "o": [
+   [
+    "{(, a, d, ε}",
+    "U has no ε-production, so S → UVW can never vanish and ε is not in FIRST(S)."
+   ],
+   [
+    "{a, c, ε}",
+    "That is FIRST(VW). S starts with U, which is not nullable, so rule 2 stops at U."
+   ],
+   [
+    "{(}",
+    "Only one of U's three alternatives. U → aSb and U → d add a and d."
+   ],
+   [
+    "{(, a, d}",
+    "Correct. FIRST(S) = FIRST(U) = {(, a, d}, since U cannot derive ε."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Same grammar (S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε). What is FOLLOW(V)?",
+  "o": [
+   [
+    "{c}",
+    "Only rule 2 (FIRST(W) − ε). W is nullable, so rule 3 also adds FOLLOW(S) = {$, ), b}."
+   ],
+   [
+    "{c, $, ), b}",
+    "Correct. From S → UVW: FIRST(W) − ε = {c}; W can vanish, so FOLLOW(S) = {$, ), b} is added."
+   ],
+   [
+    "{a, c, $, ), b}",
+    "That is FOLLOW(U). V comes after U, so FIRST(V) does not belong in FOLLOW(V)."
+   ],
+   [
+    "{c, ε}",
+    "FOLLOW sets never contain ε; the nullable W is handled by adding FOLLOW(S) instead."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Same grammar (S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε). Which production is in M[U, a]?",
+  "o": [
+   [
+    "S → UVW",
+    "That production is in M[S, a], the S row. In the U row, a selects U → aSb."
+   ],
+   [
+    "U → aSb",
+    "Correct. FIRST(aSb) = {a}, so table rule 1 puts U → aSb in M[U, a]."
+   ],
+   [
+    "V → aV",
+    "That is M[V, a], in the V row."
+   ],
+   [
+    "Empty (error)",
+    "a ∈ FIRST(aSb), so the cell is filled."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Same grammar (S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε). Which entry is M[W, b]?",
+  "o": [
+   [
+    "W → cW",
+    "FIRST(cW) = {c}, so W → cW goes only under c."
+   ],
+   [
+    "Empty (error)",
+    "This forgets table rule 2: W is nullable and b ∈ FOLLOW(W)."
+   ],
+   [
+    "W → ε",
+    "Correct. ε ∈ FIRST(ε) and b ∈ FOLLOW(W) = {$, ), b}, so rule 2 puts W → ε in M[W, b]."
+   ],
+   [
+    "V → ε",
+    "That is M[V, b], in the V row, not the W row."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Same grammar (S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε). What is in M[S, c]?",
+  "o": [
+   [
+    "S → UVW",
+    "c is not in FIRST(UVW) = {(, a, d}: U comes first and is not nullable, and S has no ε-production."
+   ],
+   [
+    "W → cW",
+    "That is M[W, c]. The S row only has entries under (, a and d."
+   ],
+   [
+    "V → ε",
+    "That is M[V, c], in the V row."
+   ],
+   [
+    "Nothing: it is an error entry",
+    "Correct. c ∉ FIRST(UVW) and S cannot derive ε, so M[S, c] is empty: a string cannot start with c."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Parsing (dc)ac with the exam grammar S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε. The stack is <code>VW)VW$</code> and the input is <code>c)ac$</code>. What is the next action?",
+  "o": [
+   [
+    "W → cW",
+    "The top of the stack is V, not W. W → cW comes one step later."
+   ],
+   [
+    "V → ε",
+    "Correct. M[V, c] = V → ε because c ∈ FOLLOW(V); V is popped and W is on top."
+   ],
+   [
+    "match c",
+    "A match needs a terminal on top. V is a non-terminal."
+   ],
+   [
+    "Report an error",
+    "M[V, c] is not empty: c ∈ FOLLOW(V) puts V → ε there."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In the full LL(1) parse of (dc)ac with the exam grammar, how many <b>match</b> actions are there?",
+  "o": [
+   [
+    "6",
+    "Correct. Every input terminal is matched once: (, d, c, ), a, c."
+   ],
+   [
+    "11",
+    "11 is the number of expansions (S → UVW twice, U → (S), U → d, V → ε twice, V → aV, W → cW twice, W → ε twice)."
+   ],
+   [
+    "17",
+    "17 counts every action (11 expansions + 6 matches) before accept."
+   ],
+   [
+    "4",
+    "This counts only the letters d, c, a, c and forgets that ( and ) are terminals that must be matched too."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For S → aABe, A → bA', A' → bcA' | ε, B → d (left recursion already removed), what is FOLLOW(A')?",
+  "o": [
+   [
+    "{b, ε}",
+    "That is FIRST(A'). FOLLOW never contains ε."
+   ],
+   [
+    "{d}",
+    "Correct. A → bA' ends with A', so rule 3 gives FOLLOW(A) = FIRST(B) = {d}; A' → bcA' only adds FOLLOW(A') to itself."
+   ],
+   [
+    "{e}",
+    "That is FOLLOW(B), from S → aABe. A' is followed by what follows A, which is B, starting with d."
+   ],
+   [
+    "{$}",
+    "$ is in FOLLOW(S) only. A' never ends the whole sentential form, because B and e come after it."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "If we built the table for S → A, A → aB | Ad, B → b <b>without</b> removing the left recursion, what would M[A, a] hold?",
+  "o": [
+   [
+    "Only A → aB",
+    "FIRST(Ad) = FIRST(A) = {a} as well, so A → Ad also lands in this cell."
+   ],
+   [
+    "Only A → Ad",
+    "FIRST(aB) = {a}, so A → aB is in this cell too."
+   ],
+   [
+    "Both A → aB and A → Ad, so the grammar is not LL(1)",
+    "Correct. Both alternatives begin with a; two entries in one cell break LL(1). That is why the left recursion is removed first."
+   ],
+   [
+    "Nothing, it is an error entry",
+    "a ∈ FIRST(aB), so the cell cannot be empty."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Example 1 (S → A, A → aBA', A' → dA' | ε, B → b, C → g). What is FOLLOW(C)?",
+  "o": [
+   [
+    "{g}",
+    "That is FIRST(C)."
+   ],
+   [
+    "{$}",
+    "$ goes into FOLLOW of the start symbol S. C is not the start symbol."
+   ],
+   [
+    "Empty: C never appears on a right side",
+    "Correct. FOLLOW is read from where C occurs in right sides; C never does (it is unreachable), so the set is empty."
+   ],
+   [
+    "{d, $}",
+    "That is FOLLOW(B)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "S → Ab, A → b | ε. Why is this grammar NOT LL(1)?",
+  "o": [
+   [
+    "It breaks condition 1: two alternatives of A start with the same terminal",
+    "Only A → b starts with a terminal; A → ε derives the empty string, not a string beginning with b."
+   ],
+   [
+    "It breaks condition 2: both alternatives derive ε",
+    "Only A → ε derives ε; A → b does not."
+   ],
+   [
+    "It breaks condition 3: A → ε is nullable and A → b begins with b, which is in FOLLOW(A) = {b}",
+    "Correct. FOLLOW(A) = FIRST(b) = {b}, so M[A, b] gets A → b (rule 1) and A → ε (rule 2)."
+   ],
+   [
+    "It is LL(1)",
+    "M[A, b] holds two entries, so it is not LL(1)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "S → A | B, A → a | ε, B → b | ε. Why is this grammar NOT LL(1)?",
+  "o": [
+   [
+    "Both S → A and S → B can derive ε, breaking condition 2",
+    "Correct. At most one alternative may derive ε; here both do, so both land in M[S, $] (FOLLOW(S) = {$})."
+   ],
+   [
+    "Both alternatives begin with the same terminal",
+    "FIRST(A) − ε = {a} and FIRST(B) − ε = {b} are disjoint, so condition 1 holds."
+   ],
+   [
+    "It is left recursive",
+    "No non-terminal derives itself as the leftmost symbol."
+   ],
+   [
+    "It is LL(1)",
+    "M[S, $] holds S → A and S → B, so it is not LL(1)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "During LL(1) parsing the top of the stack is a non-terminal X and the current input is a, but M[X, a] is empty. What does the parser do?",
+  "o": [
+   [
+    "Pops X and goes on, treating X as ε",
+    "X → ε is used only when the table says so (under FOLLOW(X)). An empty cell is an error."
+   ],
+   [
+    "Matches a",
+    "Match only happens when the top is a terminal equal to a."
+   ],
+   [
+    "Reports an error",
+    "Correct. Empty entries of M are errors."
+   ],
+   [
+    "Accepts",
+    "Accept needs both the stack and the input to be $."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Parsing <code>id+id</code> with the expression grammar. After the first <b>match id</b>, the stack is <code>T'E'$</code> and the input is <code>+id$</code>. What are the next two actions?",
+  "o": [
+   [
+    "E' → +TE', then T' → ε",
+    "T' is on top, so it is expanded first."
+   ],
+   [
+    "T' → ε, then E' → +TE'",
+    "Correct. M[T', +] = T' → ε (+ ∈ FOLLOW(T')), then E' is on top and M[E', +] = E' → +TE'."
+   ],
+   [
+    "T' → *FT', then match +",
+    "M[T', +] is T' → ε; T' → *FT' needs input *."
+   ],
+   [
+    "match +, then T' → ε",
+    "+ cannot be matched while a non-terminal (T') is on top."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which of these strings is accepted by the LL(1) parser of S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε?",
+  "o": [
+   [
+    "da",
+    "Correct. S → UVW, U → d, match d, V → aV, match a, V → ε, W → ε, accept."
+   ],
+   [
+    "ca",
+    "M[S, c] is empty: no string of this grammar starts with c."
+   ],
+   [
+    "db",
+    "After d, V → ε and W → ε (b ∈ FOLLOW), then the stack is $ but b is left: error."
+   ],
+   [
+    "(d",
+    "U → (S) needs a closing ) that never comes, so the parser hits an error at $."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"In LL(1) table construction, an ε-production A → ε is placed under every terminal in FIRST(A).\"",
+  "o": [
+   [
+    "True",
+    "Rule 2 places A → ε under the terminals of FOLLOW(A), not FIRST(A)."
+   ],
+   [
+    "False",
+    "Correct. ε-productions go under FOLLOW(A), including $."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"A predictive parser is a recursive-descent parser that needs no backtracking.\"",
+  "o": [
+   [
+    "True",
+    "Correct. That is the lecture's definition; grammars that allow one are LL(1)."
+   ],
+   [
+    "False",
+    "The lecture defines predictive parsers exactly as recursive-descent parsers needing no backtracking."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"The LL(1) parser accepts as soon as the top of the stack is $, even if input symbols remain.\"",
+  "o": [
+   [
+    "True",
+    "Accept needs both the stack and the input to be $; leftover input is an error."
+   ],
+   [
+    "False",
+    "Correct. The parser accepts only when the stack and the input are both $."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "How many non-error entries does the predictive parsing table of the expression grammar have?",
+  "o": [
+   [
+    "8",
+    "This leaves out the ε-productions, which go under FOLLOW: E' → ε twice and T' → ε three times."
+   ],
+   [
+    "10",
+    "This puts E' → ε and T' → ε only under $, forgetting ) and + from their FOLLOW sets."
+   ],
+   [
+    "13",
+    "Correct. E 2, E' 3, T 2, T' 4, F 2: 13 entries."
+   ],
+   [
+    "30",
+    "30 is the total number of cells (5 non-terminals × 6 columns); most are errors."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "In the expression grammar, why is FIRST(E) = FIRST(T) = FIRST(F) = {(, id}?",
+  "o": [
+   [
+    "Because E → TE' and T → FT' begin with T and F, which cannot derive ε, so FIRST rule 2 stops at the first symbol",
+    "Correct. FIRST(E) = FIRST(T) and FIRST(T) = FIRST(F) = {(, id}; the E' and T' after them are never reached."
+   ],
+   [
+    "Because ε is in FIRST(E')",
+    "ε in FIRST(E') matters only for what follows E'; it does not decide FIRST(E)."
+   ],
+   [
+    "Because E, T and F have the same FOLLOW set",
+    "Their FOLLOW sets differ: {), $}, {+, ), $}, {+, *, ), $}."
+   ],
+   [
+    "Because of FIRST rule 3 (X → ε)",
+    "None of E, T, F has an ε-production; rule 3 does not apply to them."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "The expansions of the abd parse are S → A, A → aBA', B → b, A' → dA', A' → ε, in this order. What do they form?",
+  "o": [
+   [
+    "A leftmost derivation: S ⇒ A ⇒ aBA' ⇒ abA' ⇒ abdA' ⇒ abd",
+    "Correct. LL(1) always expands the leftmost non-terminal (the second L)."
+   ],
+   [
+    "A rightmost derivation",
+    "B is expanded before A', so the leftmost non-terminal is replaced each time."
+   ],
+   [
+    "A rightmost derivation in reverse",
+    "That is what bottom-up parsers produce. LL(1) is top-down."
+   ],
+   [
+    "No derivation, only a list of matches",
+    "The expansions applied from S to the input are exactly a derivation."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For S → UVW, U → (S) | aSb | d, V → aV | ε, W → cW | ε, why is $ in FOLLOW(U)?",
+  "o": [
+   [
+    "Because U is the start symbol",
+    "S is the start symbol, not U."
+   ],
+   [
+    "Because V and W can both derive ε, so FOLLOW rule 3 adds FOLLOW(S), which contains $",
+    "Correct. In S → UVW everything after U can vanish, so FOLLOW(S) = {$, ), b} goes into FOLLOW(U)."
+   ],
+   [
+    "Because FIRST(VW) contains $",
+    "FIRST sets never contain $; FIRST(VW) = {a, c, ε}."
+   ],
+   [
+    "Because U → d ends with a terminal",
+    "What U's own productions end with does not decide what follows U."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"An ambiguous grammar cannot be LL(1).\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture: an LL(1) grammar has no left recursion, no ambiguity and no cell with two entries."
+   ],
+   [
+    "False",
+    "The lecture lists 'no ambiguity' among the requirements for LL(1)."
+   ]
+  ],
+  "a": 0
+ }
+]);
+EXTRA.compiler["7"] = (EXTRA.compiler["7"] || []).concat([
+ {
+  "q": "Using the lecture's SDT rules (E → E+T, E → T, T → T*F, T → F, F → INT), what is E.val at the root for <code>6+2*5</code>?",
+  "o": [
+   [
+    "16",
+    "Correct. T → T*F groups 2*5 = 10 below the +, then E.val = 6 + 10 = 16."
+   ],
+   [
+    "40",
+    "This works left to right ((6+2)*5). In the grammar * sits deeper in the tree than +, so it is evaluated first."
+   ],
+   [
+    "60",
+    "This multiplies everything (6*2*5). The rule for E → E+T adds."
+   ],
+   [
+    "13",
+    "This adds everything (6+2+5). The rule for T → T*F multiplies."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Same rules. What is E.val at the root for <code>2*3*4+1</code>?",
+  "o": [
+   [
+    "30",
+    "This adds 4+1 first (2*3*5). + is higher in the tree than *, so the products are computed first."
+   ],
+   [
+    "24",
+    "24 is the T.val of 2*3*4; the root still adds the final 1."
+   ],
+   [
+    "25",
+    "Correct. T.val = (2*3)*4 = 24 with T → T*F applied twice, then E.val = 24 + 1 = 25."
+   ],
+   [
+    "10",
+    "This adds every number (2+3+4+1)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "In the 2+3*4 evaluation, which value is computed immediately before the root's E.val = 14?",
+  "o": [
+   [
+    "T.val = 3 * 4 = 12",
+    "Correct. The order is F=2, T=2, E=2, F=3, T=3, F=4, then T = 12, then the root E = 2 + 12."
+   ],
+   [
+    "F.val = 4",
+    "F = 4 comes before T = 12; T must be built from it before the root can add."
+   ],
+   [
+    "E.val = 2",
+    "E = 2 (the left child) is computed early, right after F = 2 and T = 2."
+   ],
+   [
+    "T.val = 3",
+    "T = 3 comes before F = 4; it is the left child of the T → T*F node."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which of the lecture's SDT rules uses a <b>lexical value</b>?",
+  "o": [
+   [
+    "E → E + T { E.val = E.val + T.val }",
+    "This rule uses only attributes of non-terminals."
+   ],
+   [
+    "T → F { T.val = F.val }",
+    "This copies an attribute of a non-terminal (F)."
+   ],
+   [
+    "F → INT { F.val = INT.lexval }",
+    "Correct. INT.lexval is the token's lexical value (2, 3, 4 in the example)."
+   ],
+   [
+    "E → T { E.val = T.val }",
+    "This copies T.val, an attribute, not a lexical value."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which is NOT one of the three things that SDT rules use?",
+  "o": [
+   [
+    "Lexical values of nodes",
+    "Lexical values are the first of the three."
+   ],
+   [
+    "Constants",
+    "Constants are the second of the three."
+   ],
+   [
+    "Attributes of non-terminals",
+    "Attributes are the third of the three."
+   ],
+   [
+    "The target machine's registers",
+    "Correct. SDT rules use lexical values, constants and attributes; registers belong to code generation."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "In general, SDT associates a set of translation rules with every:",
+  "o": [
+   [
+    "token",
+    "Tokens (leaves) carry lexical values; the rules are attached to productions."
+   ],
+   [
+    "production of the grammar",
+    "Correct. SDT associates a set of attributes with every node and a set of translation rules with every production."
+   ],
+   [
+    "phase of the compiler",
+    "SDT is part of semantic analysis; it does not attach rules to phases."
+   ],
+   [
+    "terminal only",
+    "The rules belong to productions; attributes go on the nodes (mostly non-terminals)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why is the rule sometimes written E → E1 + T { E.val = E1.val + T.val }?",
+  "o": [
+   [
+    "The subscript tells the child E (on the right side) from the parent E",
+    "Correct. Both sides contain E; E1 names the child so E.val clearly means the parent."
+   ],
+   [
+    "E1 is a different non-terminal from E",
+    "E1 is the same non-terminal E; the 1 is only a label."
+   ],
+   [
+    "E1 marks an inherited attribute",
+    "The subscript says nothing about inheritance; E.val here is synthesized."
+   ],
+   [
+    "It removes the left recursion",
+    "Renaming does not change the grammar; E → E1 + T is still left-recursive."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the 2+3*4 example, the attribute <code>val</code> is:",
+  "o": [
+   [
+    "inherited, because it comes from the parent",
+    "Each val is computed from the children's vals, never from the parent."
+   ],
+   [
+    "synthesized, because each node's val is computed from its children",
+    "Correct. Information flows bottom-up: children first, then the parent."
+   ],
+   [
+    "a lexical value",
+    "Lexical values are only the token values 2, 3, 4 at the leaves."
+   ],
+   [
+    "a constant",
+    "val changes from node to node (2, 12, 14…); it is an attribute."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<code>int x; x = \"hello\";</code> Which semantic error from the lecture's list is this?",
+  "o": [
+   [
+    "Type mismatch",
+    "Correct. A string value is assigned to an int variable."
+   ],
+   [
+    "Undeclared variable",
+    "x is declared (int x;)."
+   ],
+   [
+    "Reserved identifier misuse",
+    "x is not a reserved word."
+   ],
+   [
+    "Actual and formal parameter mismatch",
+    "There is no function call here."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<code>int if = 5;</code> Which semantic error from the lecture's list is this?",
+  "o": [
+   [
+    "Multiple declaration",
+    "if is declared once; the problem is the name itself."
+   ],
+   [
+    "Reserved identifier misuse",
+    "Correct. if is a reserved keyword and cannot be used as a variable name."
+   ],
+   [
+    "Type mismatch",
+    "5 is an int assigned to an int; the types agree."
+   ],
+   [
+    "Undeclared variable",
+    "The statement is itself a declaration."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<code>{ { int t = 1; } t = 2; }</code> Which semantic error from the lecture's list is this?",
+  "o": [
+   [
+    "Multiple declaration of a variable in one scope",
+    "t is declared only once."
+   ],
+   [
+    "Type mismatch",
+    "2 is an int, the same type as t."
+   ],
+   [
+    "Accessing an out-of-scope variable",
+    "Correct. t lives only in the inner block; t = 2 is after its closing brace (like print d in Lecture 8)."
+   ],
+   [
+    "Actual and formal parameter mismatch",
+    "There is no function call here."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<code>{ int a = 1; b = a + 2; }</code> where b is declared nowhere in the program. Which semantic error from the lecture's list is this?",
+  "o": [
+   [
+    "Accessing an out-of-scope variable",
+    "That needs b to be declared in some other scope; here b has no declaration at all."
+   ],
+   [
+    "Undeclared variable",
+    "Correct. b is used but never declared."
+   ],
+   [
+    "Type mismatch",
+    "a + 2 is an int expression; the problem is that b has no declaration, so it has no type."
+   ],
+   [
+    "Multiple declaration",
+    "Nothing is declared twice."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Semantic analysis checks the program against the language definition using:",
+  "o": [
+   [
+    "the token stream and regular expressions",
+    "These are the scanner's tools (Lecture 2)."
+   ],
+   [
+    "the syntax tree and the symbol table",
+    "Correct. It uses the syntax tree and the symbol table."
+   ],
+   [
+    "the target code and the registers",
+    "Those belong to code generation, which comes later."
+   ],
+   [
+    "the source characters and finite automata",
+    "That is lexical analysis."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Where does the semantic analyzer store the type information it gathers?",
+  "o": [
+   [
+    "In the literal table only",
+    "The literal table holds constants and strings (Lecture 1)."
+   ],
+   [
+    "In the token stream",
+    "Tokens come from the scanner, before semantic analysis."
+   ],
+   [
+    "In the syntax tree or the symbol table",
+    "Correct. The type information goes into the syntax tree or the symbol table, for use in intermediate-code generation."
+   ],
+   [
+    "In the target code",
+    "Target code does not exist yet; it is generated later."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"Each attribute in an attribute grammar has a well-defined domain, such as integer, float, character, string or expressions.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture lists exactly these domains."
+   ],
+   [
+    "False",
+    "The lecture says each attribute has a well-defined domain and lists integer, float, character, string and expressions."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"An attribute grammar can specify only the syntax of a language, not its semantics.\"",
+  "o": [
+   [
+    "True",
+    "It gives semantics to the CFG and can specify both syntax and semantics."
+   ],
+   [
+    "False",
+    "Correct. An attribute grammar specifies both syntax and semantics."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<code>int x; if (c) x = 1; print(x);</code> At the print, x is:",
+  "o": [
+   [
+    "definitely assigned",
+    "x is assigned only when c is true, so it is not certain."
+   ],
+   [
+    "definitely unassigned",
+    "x may have been assigned on the path where c is true."
+   ],
+   [
+    "unknown",
+    "Correct. It may or may not be assigned, depending on c."
+   ],
+   [
+    "undeclared",
+    "x is declared; the question is only about assignment."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "<code>int x; print(x);</code> At the print, x is:",
+  "o": [
+   [
+    "definitely unassigned",
+    "Correct. Nothing has assigned x on any path, so it is known with certainty to be unassigned."
+   ],
+   [
+    "definitely assigned",
+    "No statement assigns x before the print."
+   ],
+   [
+    "unknown",
+    "Unknown is for 'may or may not'; here there is no path that assigns x."
+   ],
+   [
+    "out of scope",
+    "x is declared in the same scope as the print."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<code>int x = 0; if (c) x = 1; print(x);</code> At the print, x is:",
+  "o": [
+   [
+    "unknown, because of the if",
+    "x was already assigned 0 at the declaration, so every path reaches the print with x assigned."
+   ],
+   [
+    "definitely unassigned",
+    "x = 0 assigns it at the declaration."
+   ],
+   [
+    "definitely assigned",
+    "Correct. x is assigned on every path (0, or 1 when c holds), so it is known with certainty to be assigned."
+   ],
+   [
+    "a type mismatch",
+    "0 and 1 are ints, the same type as x."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Definite assignment analysis is a:",
+  "o": [
+   [
+    "data-flow analysis that ensures a variable is always assigned before it is used",
+    "Correct. That is the lecture's definition."
+   ],
+   [
+    "peephole optimization technique",
+    "Peephole techniques (Lecture 9) replace code; definite assignment only checks it."
+   ],
+   [
+    "parsing technique for LL(1) grammars",
+    "Parsing builds the tree; this analysis checks assignments before use."
+   ],
+   [
+    "lexical check on identifiers",
+    "The scanner does not track whether variables are assigned."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For the production S → ABC, which attribute flow is <b>synthesized</b>?",
+  "o": [
+   [
+    "S takes its value from A, B and C",
+    "Correct. A synthesized attribute of S comes from its children A, B, C."
+   ],
+   [
+    "A takes its value from S",
+    "From the parent: that is inherited."
+   ],
+   [
+    "B takes its value from A and C",
+    "From siblings: that is inherited."
+   ],
+   [
+    "C takes its value from S and B",
+    "From the parent and a sibling: that is inherited."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Synthesized attributes never take values from their parent or sibling nodes.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture's table says synthesized attributes never take values from parent or sibling nodes."
+   ],
+   [
+    "False",
+    "The lecture states it directly: synthesized attributes get values only from child nodes."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"SDT always requires an explicit parse tree to be built before any attribute can be computed.\"",
+  "o": [
+   [
+    "True",
+    "The lecture says that often the attributes can be computed during parsing, without an explicit tree."
+   ],
+   [
+    "False",
+    "Correct. The general approach builds a tree, but often this is done during parsing without one."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which check belongs to semantic analysis rather than to syntax analysis?",
+  "o": [
+   [
+    "The parentheses are balanced",
+    "Balancing tokens is the reason the parser uses a CFG (Lecture 4): syntax."
+   ],
+   [
+    "A variable is declared before it is used",
+    "Correct. 'Undeclared variable' is on the lecture's list of semantic errors."
+   ],
+   [
+    "The characters form valid tokens",
+    "That is lexical analysis."
+   ],
+   [
+    "Comments are removed",
+    "The scanner removes comments (Lecture 2)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In the 2+3*4 evaluation, how many times is the rule T → F { T.val = F.val } applied?",
+  "o": [
+   [
+    "3",
+    "The 4 is not copied up by T → F: it is the F of T → T * F."
+   ],
+   [
+    "2",
+    "Correct. For 2 (F=2 → T=2) and for 3 (F=3 → T=3); F=4 is used directly in T = T * F."
+   ],
+   [
+    "1",
+    "Both 2 and 3 need T → F: 2 becomes the T under E → T, and 3 the left T of T → T * F."
+   ],
+   [
+    "0",
+    "The evaluation lists F=2 → T=2 and F=3 → T=3, which are T → F steps."
+   ]
+  ],
+  "a": 1
+ }
+]);
+EXTRA.compiler["8"] = (EXTRA.compiler["8"] || []).concat([
+ {
+  "q": "<code>{ int a = 10; int b = 20; { int a = 30; b *= a; cout&lt;&lt;b; } b += a; cout&lt;&lt;b; }</code><br>With STATIC binding, what is the second value printed?",
+  "o": [
+   [
+    "600",
+    "That is the first print; b += a still adds a after the block."
+   ],
+   [
+    "610",
+    "Correct. Inside, b = 20 × 30 = 600. After the brace the inner a is out of scope, so b = 600 + 10 = 610."
+   ],
+   [
+    "630",
+    "That uses the inner a = 30 after the block, which is the course's dynamic answer."
+   ],
+   [
+    "30",
+    "This uses the original b = 20 (20 + 10) and forgets that b *= a already made b = 600."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Same code. With DYNAMIC binding (course convention), what is the second value printed?",
+  "o": [
+   [
+    "1200",
+    "This applies b *= a again (600 × 2). The statement after the block is b += a."
+   ],
+   [
+    "50",
+    "This adds 20 + 30 and ignores b *= a inside the block."
+   ],
+   [
+    "610",
+    "That is static: it returns to the outer a = 10."
+   ],
+   [
+    "630",
+    "Correct. The most recently encountered declaration a = 30 is still used: 600 + 30 = 630 (Final 2023/24 (60))."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "<code>{ int m = 2; int n = 5; { int m = 4; n -= m; print n; } n += m; print n; }</code><br>What is printed with static and with dynamic binding (course convention)?",
+  "o": [
+   [
+    "Static 1 3, dynamic 1 5",
+    "Correct. Inside both use m = 4: n = 5 − 4 = 1. After: static uses the outer m = 2 (n = 3), dynamic keeps m = 4 (n = 5)."
+   ],
+   [
+    "Static 1 5, dynamic 1 3",
+    "The two rules are swapped: static returns to the outer m after the brace."
+   ],
+   [
+    "Static 3 3, dynamic 1 5",
+    "Inside the block the inner m = 4 is used by both rules, so the first print is 1."
+   ],
+   [
+    "Static 1 3, dynamic 1 3",
+    "This treats dynamic like static. In the course's convention the inner m = 4 is still used after the block."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<code>{ int k = 3; int s = 1; { int k = 2; s *= k; } s *= k; }</code><br>What is the final s with static and with dynamic binding (course convention)?",
+  "o": [
+   [
+    "9 and 4",
+    "9 = 1 × 3 × 3 uses the outer k inside the block too, but the inner k = 2 hides it there."
+   ],
+   [
+    "6 and 6",
+    "This treats dynamic like static; the course's dynamic keeps the inner k = 2."
+   ],
+   [
+    "6 and 4",
+    "Correct. Inside s = 1 × 2 = 2. After: static s = 2 × 3 = 6; dynamic still uses k = 2, s = 2 × 2 = 4."
+   ],
+   [
+    "4 and 6",
+    "Swapped: static goes back to the outer k = 3."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "In these binding exercises, why is the print INSIDE the inner block the same for static and dynamic binding?",
+  "o": [
+   [
+    "Because the symbol table is empty inside a block",
+    "The inner block has its own entries (e.g. x in scope 1)."
+   ],
+   [
+    "Because static binding is used only outside blocks",
+    "Static binding follows the braces everywhere, inside and outside."
+   ],
+   [
+    "Because inside the block the inner declaration is both the structurally nearest one and the most recently encountered one",
+    "Correct. Both rules pick the inner declaration there; they differ only after the closing brace."
+   ],
+   [
+    "Because dynamic binding is resolved at compile time",
+    "Dynamic binding cannot be resolved at compile time."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Solution 2 (one hash table, a linked list per identifier) for <code>{ int a = 1; int b = 2; { int a = 5; int c = 0; … } }</code>. While inside the inner block, how many records are in the table's lists in total?",
+  "o": [
+   [
+    "4",
+    "Correct. a → [scope 1] → [scope 0], b → [scope 0], c → [scope 1]: 2 + 1 + 1 = 4."
+   ],
+   [
+    "2",
+    "This counts only the inner block's declarations."
+   ],
+   [
+    "5",
+    "There are only four declarations in the code."
+   ],
+   [
+    "3",
+    "This counts identifiers (a, b, c). a has two records: one per declaration."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Solution 1 (key \"identifier,scope_id\"): the global scope declares x; the program opens a block that declares y and closes it, then opens another block that declares x. What is the key of the second x?",
+  "o": [
+   [
+    "\"2,x\"",
+    "The key is the identifier first, then the scope id."
+   ],
+   [
+    "\"x,1\"",
+    "1 was given to the first block. The scope id is incremented for each new scope, so the next block gets 2."
+   ],
+   [
+    "\"x,0\"",
+    "0 is the global scope, where the first x lives."
+   ],
+   [
+    "\"x,2\"",
+    "Correct. Global = 0, first block = 1, second block = 2, so the key is \"x,2\"."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "In Solution 2, where does a new declaration of an identifier that already has a list go?",
+  "o": [
+   [
+    "It replaces the old record",
+    "The old record is kept; it becomes visible again when the inner scope exits."
+   ],
+   [
+    "At the front of the identifier's linked list",
+    "Correct. In a single-pass compiler each new insertion goes at the front, so the front item is always the right one."
+   ],
+   [
+    "At the end of the list",
+    "Then the lookup would find the oldest declaration first."
+   ],
+   [
+    "In a new hash table for the scope",
+    "Solution 2 keeps one single hash table for all scopes."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In Solution 2, what is the separate structure that tracks the identifiers defined in the current scope used for?",
+  "o": [
+   [
+    "To count how many times each identifier is used",
+    "The lecture uses it to delete entries on scope exit, not to count uses."
+   ],
+   [
+    "To delete those identifiers' records when the scope exits",
+    "Correct. On scope exit their front records are removed, so the outer declarations are at the front again."
+   ],
+   [
+    "To store the type of every identifier",
+    "Types are in the records themselves."
+   ],
+   [
+    "To hold the hash function",
+    "It holds the current scope's identifiers, not the hashing."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which low-level symbol table operation handles \"process a declaration\"?",
+  "o": [
+   [
+    "enter_scope()",
+    "enter_scope starts a new nested scope."
+   ],
+   [
+    "exit_scope()",
+    "exit_scope leaves the current scope."
+   ],
+   [
+    "look_up(x)",
+    "look_up finds the current x for a use."
+   ],
+   [
+    "insert_symbol(x)",
+    "Correct. A declaration adds the symbol x to the table."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Which low-level operation answers \"is x in the local scope?\"",
+  "o": [
+   [
+    "local_lookup(x)",
+    "Correct. local_lookup checks only the local scope."
+   ],
+   [
+    "exit_scope()",
+    "exit_scope leaves the scope."
+   ],
+   [
+    "look_up(x)",
+    "look_up searches using the scoping rules, including outer scopes."
+   ],
+   [
+    "insert_symbol(x)",
+    "insert_symbol adds x; it does not search."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the one-table-per-scope walkthrough, what happens when the compiler enters Block 2?",
+  "o": [
+   [
+    "c and d are added to ST1",
+    "They are declared in Block 2, so they go into ST2."
+   ],
+   [
+    "ST2 is created only when print d runs",
+    "ST2 is created on entering the block, before its declarations."
+   ],
+   [
+    "enter_scope() creates a new table ST2",
+    "Correct. Each new block gets its own symbol table; c and d of Block 2 go into ST2."
+   ],
+   [
+    "The entries of ST1 are deleted",
+    "ST1 stays; Block 2 still reads a from it."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Walkthrough: right after <code>int a, b, c;</code> in Block 1 and before any assignment, what does the Init? column show for a, b and c?",
+  "o": [
+   [
+    "The column is empty until Block 2",
+    "The rows are filled at the declaration in Block 1."
+   ],
+   [
+    "Yes",
+    "They become initiated only when a = 0; b = 0; c = 0; run."
+   ],
+   [
+    "No",
+    "Correct. A type declaration adds them with Init = No; each assignment then marks them initiated."
+   ],
+   [
+    "Unknown",
+    "The table column is Yes/No; unknown is a definite-assignment state from Lecture 7."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Walkthrough, Block 2: <code>c = a + 1; d = c;</code> Which c does <code>d = c</code> use?",
+  "o": [
+   [
+    "Block 2's c in ST2, initiated by c = a + 1",
+    "Correct. c is found in the current table ST2, so Block 1's c is hidden."
+   ],
+   [
+    "Block 1's c in ST1",
+    "ST1 is searched only when the name is not in ST2, and c is in ST2."
+   ],
+   [
+    "Block 3's c",
+    "Block 3 has not been entered yet."
+   ],
+   [
+    "None: it is an undeclared variable",
+    "c is declared in Block 2 (int c, d;)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which of these is TRUE of static binding?",
+  "o": [
+   [
+    "It is used by Lisp and SNOBOL",
+    "Those are the lecture's dynamic-binding languages."
+   ],
+   [
+    "It depends on the execution of the program",
+    "That describes dynamic binding."
+   ],
+   [
+    "It walks up the symbol-table stack at run time to find the instance",
+    "That is how dynamic binding finds the right instance."
+   ],
+   [
+    "It is resolved at compile time from the program text",
+    "Correct. Static scope depends only on the program text (braces) and is resolved at compile time."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "\"Java and C use static binding.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture gives Java and C as examples of the static binding used by most languages."
+   ],
+   [
+    "False",
+    "The lecture lists Java and C under static binding; Lisp, SNOBOL and Perl under dynamic."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "According to the lecture, the scope of an identifier is:",
+  "o": [
+   [
+    "the number of times the identifier is used",
+    "Scope is a region of the program, not a count."
+   ],
+   [
+    "the portion of the program in which the identifier is accessible",
+    "Correct. That is the lecture's definition."
+   ],
+   [
+    "the data type of the identifier",
+    "The type is stored in the symbol table; scope is where the name is accessible."
+   ],
+   [
+    "the memory address of the identifier",
+    "The location may be stored, but it is not the scope."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Different scopes for the same name overlap.\"",
+  "o": [
+   [
+    "True",
+    "The lecture states that different scopes for the same name do not overlap."
+   ],
+   [
+    "False",
+    "Correct. Different scopes of the same name do not overlap; the inner one hides the outer one until its closing brace."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Using a single hash table for all scopes gives less memory overhead and needs only one search.\"",
+  "o": [
+   [
+    "True",
+    "Correct. That is the lecture's solution to the per-scope problem."
+   ],
+   [
+    "False",
+    "The lecture gives exactly these two gains of the single table: less memory overhead and one search."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Besides memory overhead, what other problem does the one-table-per-scope approach have?",
+  "o": [
+   [
+    "It forces dynamic binding",
+    "The table approach does not decide the binding rule."
+   ],
+   [
+    "We may need to search several tables, which is slower",
+    "Correct. A name missing from the current table must be looked up in the parent tables too."
+   ],
+   [
+    "It cannot represent nested scopes",
+    "It represents them directly: ST2 inside ST1."
+   ],
+   [
+    "It cannot store data types",
+    "The walkthrough tables have a Dtype column."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Binding connects:",
+  "o": [
+   [
+    "a production and its parse tree",
+    "That is parsing (Lecture 4)."
+   ],
+   [
+    "a function and its machine code",
+    "That is code generation."
+   ],
+   [
+    "a token and its lexeme",
+    "That pairing belongs to the scanner (Lecture 2)."
+   ],
+   [
+    "a declaration and its uses",
+    "Correct. That is the lecture's definition of binding."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "With dynamic binding, how is the right instance of a name found?",
+  "o": [
+   [
+    "By walking up the symbol-table stack during execution",
+    "Correct. The compiler or interpreter walks up the stack to the most recent declaration."
+   ],
+   [
+    "By the hash value of the name only",
+    "Hashing locates the entry, but the binding rule is about the most recent declaration."
+   ],
+   [
+    "By choosing the global declaration",
+    "Dynamic binding uses the most recently encountered declaration, not the global one."
+   ],
+   [
+    "By the braces of the program text at compile time",
+    "That is static binding."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which is NOT one of the lecture's symbol table implementation techniques?",
+  "o": [
+   [
+    "Unordered list",
+    "It is listed."
+   ],
+   [
+    "Binary search trees",
+    "They are listed."
+   ],
+   [
+    "A finite automaton",
+    "Correct. The techniques are unordered list, ordered list, binary search trees and hash tables."
+   ],
+   [
+    "Ordered list",
+    "It is listed."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "\"In Solution 2, all the entries in the table belong to open scopes.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture says that with solution 2 all entries are in open scopes; closed scopes' records are deleted at exit."
+   ],
+   [
+    "False",
+    "The lecture states it: entries of a scope are removed when it exits, so the table holds only open scopes."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<code>{ int a = 1; { a = 5; } print a; }</code> (no new declaration inside). What is printed with static and with dynamic binding?",
+  "o": [
+   [
+    "1 and 5",
+    "Static does not undo the assignment: a = 5 changed the only a there is."
+   ],
+   [
+    "5 and 1",
+    "Dynamic does not undo the assignment either."
+   ],
+   [
+    "5 and 5",
+    "Correct. The inner block declares nothing, so a = 5 assigns the outer a; both rules print 5."
+   ],
+   [
+    "1 and 1",
+    "a = 5 is an assignment, not a new declaration, so it changes the outer a."
+   ]
+  ],
+  "a": 2
+ }
+]);
+EXTRA.compiler["9"] = (EXTRA.compiler["9"] || []).concat([
+ {
+  "q": "Summer 2025 code: <code>int a[]={10,20,30}; int i=2;</code> <code>my_function(int j, int x){ j:=j+1; x:=x+3; a[2]:=0; print j, x, a; }</code>, called as <code>my_function(i, a[i])</code>; main prints i and a before and after the call. By VALUE, what does main print after the call (i, a[0], a[1], a[2])?",
+  "o": [
+   [
+    "1 10 20 3",
+    "That is by result: formals start at 0 and are copied back."
+   ],
+   [
+    "2 10 20 0",
+    "Correct. Nothing is copied back, so i stays 2, but a[2] := 0 changes the global array directly."
+   ],
+   [
+    "2 10 20 30",
+    "This forgets that a[2] := 0 writes to the global array, which by value does not protect."
+   ],
+   [
+    "3 10 20 33",
+    "That is value-result: j and x copied back to i and a[2]."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Same Summer 2025 code by RESULT. What does my_function print (j, x, a[0], a[1], a[2])?",
+  "o": [
+   [
+    "3 33 10 20 0",
+    "That copies the values in (j = 2, x = 30), which is by value or value-result."
+   ],
+   [
+    "1 3 10 20 30",
+    "This forgets a[2] := 0, which runs before the print."
+   ],
+   [
+    "0 0 10 20 0",
+    "This forgets the j := j+1 and x := x+3 steps."
+   ],
+   [
+    "1 3 10 20 0",
+    "Correct. Nothing goes in, so j = 0 + 1 = 1 and x = 0 + 3 = 3; a[2] := 0 gives 10 20 0."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Same Summer 2025 code by VALUE-RESULT. What does main print after the call?",
+  "o": [
+   [
+    "3 10 20 33",
+    "Correct. j = 3 goes back to i, and x = 33 goes back to a[2] (the address fixed at the call), as in the revision sheet."
+   ],
+   [
+    "2 10 20 33",
+    "j is copied back too, so i becomes 3."
+   ],
+   [
+    "1 10 20 3",
+    "That is by result, where nothing is copied in."
+   ],
+   [
+    "3 10 20 0",
+    "This forgets that x is copied back to a[2] at return, overwriting the 0."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Lecture procedure <code>concentrate(j, x)</code> (j := j+1; x := x+3; a[2] := 0) with new data: <code>a = (4, 8, 1)</code> (a[1..3]), <code>i = 1</code>, call <code>concentrate(i, a[i])</code>. By RESULT, what does main print after the call (i, a[1], a[2], a[3])?",
+  "o": [
+   [
+    "2 7 0 1",
+    "That is value-result: j = 2 and x = 4 + 3 = 7 are copied back."
+   ],
+   [
+    "1 4 8 1",
+    "This forgets both a[2] := 0 and the copy-back of x."
+   ],
+   [
+    "1 3 0 1",
+    "Correct. j = 0 + 1 = 1 and x = 0 + 3 = 3; a[2] := 0; at return i ← 1 and a[1] ← 3."
+   ],
+   [
+    "1 4 0 1",
+    "That is by value: nothing copied back, only a[2] := 0 shows."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Same new data (a = (4, 8, 1), i = 1, concentrate(i, a[i])) by VALUE-RESULT. What does main print after the call?",
+  "o": [
+   [
+    "1 4 0 1",
+    "That is by value; value-result copies j and x back."
+   ],
+   [
+    "1 3 0 1",
+    "That is by result, where j and x start at 0."
+   ],
+   [
+    "2 7 0 1",
+    "Correct. j = 1 + 1 = 2 and x = 4 + 3 = 7; a[2] := 0; at return i ← 2 and a[1] ← 7."
+   ],
+   [
+    "2 7 8 1",
+    "This forgets a[2] := 0. Here x is bound to a[1], so the 0 in a[2] stays."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Final 2024/25: <code>value = 2; list = {1, 3, 5, 7, 9}; swap(value, list[0]);</code> where swap(int a, int b) swaps a and b and prints them. By VALUE, what does main print right after (value, list[0])?",
+  "o": [
+   [
+    "2 1",
+    "Correct. By value, swap only exchanges its copies; value and list[0] are unchanged."
+   ],
+   [
+    "2 2",
+    "Nothing writes 2 into list[0] by value."
+   ],
+   [
+    "1 1",
+    "Nothing writes 1 into value by value."
+   ],
+   [
+    "1 2",
+    "That is what swap itself prints (a = 1, b = 2), or main's line under value-result."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Same Final 2024/25 code, by VALUE: the second call is <code>swap(value, list[value])</code>. What does swap itself print?",
+  "o": [
+   [
+    "2 5",
+    "That is main's next line (value = 2, list[2] = 5), not swap's print."
+   ],
+   [
+    "3 1",
+    "That is value-result, where value became 1 after the first call, so list[1] = 3 is used."
+   ],
+   [
+    "3 2",
+    "list[value] with value = 2 is list[2] = 5, not 3."
+   ],
+   [
+    "5 2",
+    "Correct. value is still 2, so the call is swap(2, list[2] = 5); after swapping a = 5, b = 2."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Which parameter-passing mode makes the formal parameters aliases of the actual parameters?",
+  "o": [
+   [
+    "By value-result",
+    "Value-result copies in and back; the formals are still separate variables."
+   ],
+   [
+    "By reference",
+    "Correct. In the lecture's example x IS a[2]."
+   ],
+   [
+    "By value",
+    "By value gives the formals copies."
+   ],
+   [
+    "By result",
+    "By result copies the formals back only at return."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Lecture example: after the call, by REFERENCE main prints a = 1 0 3 but by VALUE-RESULT it prints 1 5 3. Why?",
+  "o": [
+   [
+    "a[2] := 0 is ignored by value-result",
+    "It runs in both modes; value-result simply overwrites it at return."
+   ],
+   [
+    "By reference x is a[2], so a[2] := 0 overwrites x's 5; by value-result x keeps 5 and is copied back to a[2] at return",
+    "Correct. Aliasing makes the last write (0) win; value-result writes x = 5 into a[2] after a[2] := 0."
+   ],
+   [
+    "By reference nothing is copied in, so x starts at 0",
+    "Starting at 0 is pass by result, not reference."
+   ],
+   [
+    "Value-result copies back to a[3] because i became 3",
+    "The address a[2] is fixed at the call time."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In the call <code>concentrate(i, a[i])</code>, i and a[i] are the:",
+  "o": [
+   [
+    "local variables of concentrate",
+    "concentrate's local is its own var i := 0, not the arguments."
+   ],
+   [
+    "lexical values",
+    "Lexical values are token values in SDT (Lecture 7)."
+   ],
+   [
+    "formal parameters",
+    "Formals are j and x, declared in the procedure's definition."
+   ],
+   [
+    "actual parameters",
+    "Correct. They appear in the call as arguments."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "What does the runtime support system do?",
+  "o": [
+   [
+    "It handles memory allocation and de-allocation while the program runs",
+    "Correct. It is a package, mostly generated with the executable, between the process and the runtime environment."
+   ],
+   [
+    "It checks the grammar of the program",
+    "That is syntax analysis."
+   ],
+   [
+    "It is the state of the target machine's libraries and environment variables",
+    "That describes the runtime environment, not the support system."
+   ],
+   [
+    "It scans the source code into tokens",
+    "That is the scanner, at compile time."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "The runtime environment is:",
+  "o": [
+   [
+    "the symbol table of the program",
+    "The symbol table is a compiler data structure."
+   ],
+   [
+    "the heap area only",
+    "The heap is one storage area; the environment is much wider."
+   ],
+   [
+    "a state of the target machine (libraries, environment variables…) that provides services to running processes",
+    "Correct. That is the lecture's definition."
+   ],
+   [
+    "the source program before compilation",
+    "Runtime means a program in execution."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which part's memory needs are known at compile time?",
+  "o": [
+   [
+    "Ordinary variables",
+    "Variables are known only at runtime unless global or constant (heap)."
+   ],
+   [
+    "Dynamic data structures",
+    "These are exactly what heap allocation is for."
+   ],
+   [
+    "The code (text part)",
+    "Correct. The text does not change at runtime, so its memory requirement is known at compile time."
+   ],
+   [
+    "Procedure activations",
+    "Procedures are called in random order, so their activations are managed on the stack at runtime."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which two areas of the memory layout sit at the two extremes and grow and shrink against each other?",
+  "o": [
+   [
+    "Stack and heap",
+    "Correct. They are dynamic, so they cannot be given a fixed amount of memory."
+   ],
+   [
+    "Static data and heap",
+    "Static data is fixed; only the heap grows."
+   ],
+   [
+    "Text and stack",
+    "The text part is fixed."
+   ],
+   [
+    "Text and static data",
+    "Both are fixed in size."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the lecture-notes C memory layout, where do a function's automatic (local) variables and its return address go?",
+  "o": [
+   [
+    "The text segment",
+    "The text segment holds the code."
+   ],
+   [
+    "The heap",
+    "The heap is for malloc/realloc/free."
+   ],
+   [
+    "The uninitialized data segment (BSS)",
+    "BSS holds globals and statics without an initial value."
+   ],
+   [
+    "The stack",
+    "Correct. The stack holds automatic variables and stack frames with return addresses."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "In the lecture-notes C layout, where does <code>static int limit = 5;</code> go?",
+  "o": [
+   [
+    "The heap",
+    "It is not allocated with malloc at run time."
+   ],
+   [
+    "The initialized data segment",
+    "Correct. Globals and statics that have an initial value go in the initialized data segment."
+   ],
+   [
+    "The uninitialized data segment (BSS)",
+    "BSS is for globals and statics without a value; limit has the value 5."
+   ],
+   [
+    "The stack",
+    "A static variable is not an automatic variable of a call."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which is NOT a purpose of the symbol table listed in Lecture 9?",
+  "o": [
+   [
+    "Determine the scope of a name",
+    "Listed (scope resolution)."
+   ],
+   [
+    "Group the source characters into tokens",
+    "Correct. That is the scanner's job (Lecture 2)."
+   ],
+   [
+    "Verify that a variable has been declared",
+    "Listed."
+   ],
+   [
+    "Implement type checking",
+    "Listed."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "The objectives of peephole optimization are:",
+  "o": [
+   [
+    "to find tokens and remove comments",
+    "Those are lexical analysis jobs."
+   ],
+   [
+    "to check types and scopes",
+    "That is semantic analysis."
+   ],
+   [
+    "to allocate heap memory",
+    "That is the runtime support system."
+   ],
+   [
+    "to improve performance and to reduce code size (improving memory usage)",
+    "Correct. These are the two objectives the lecture gives."
+   ]
+  ],
+  "a": 3
+ },
+ {
+  "q": "Constant folding turns <code>z = 3 * 4 + 2;</code> into:",
+  "o": [
+   [
+    "z = 14;",
+    "Correct. 3 * 4 = 12 first, then 12 + 2 = 14, computed at compile time."
+   ],
+   [
+    "z = 18;",
+    "This adds 4 + 2 first (3 * 6); * comes before +."
+   ],
+   [
+    "z = 9;",
+    "This adds all three numbers."
+   ],
+   [
+    "z = 24;",
+    "This multiplies all three numbers."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Peephole optimization replaces part of the code with shorter, faster code that gives the same output.\"",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture says peephole optimization works by replacement with shorter, faster code with the same output."
+   ],
+   [
+    "False",
+    "That is exactly the lecture's description of how peephole optimization works."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the exam loop <code>for (i=0; i &lt; a→length-1; i++)</code> on an array of length 5, how many times is length-1 evaluated before and after the lecture's optimization?",
+  "o": [
+   [
+    "5 times before, 0 after",
+    "The optimized code still computes length-1 once, in int x = a→length-1."
+   ],
+   [
+    "Once before, once after",
+    "Without the optimization the loop condition re-evaluates length-1 on every test."
+   ],
+   [
+    "5 times before, once after",
+    "Correct. The test runs for i = 0, 1, 2, 3 (true) and i = 4 (false): 5 times, as many as the array length. After hoisting it into x it runs once."
+   ],
+   [
+    "4 times before, once after",
+    "This forgets the last, failing test (i = 4), which also evaluates length-1."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Why is a stack used for procedures?",
+  "o": [
+   [
+    "Because their sizes are known in advance",
+    "That is the reason for static allocation."
+   ],
+   [
+    "Because they are dynamic data structures",
+    "Dynamic data structures go on the heap."
+   ],
+   [
+    "Because procedures are called in an unpredictable order, and the stack manages their calls and activations",
+    "Correct. Procedure text is static, but calls come in random order; the stack (LIFO) manages them."
+   ],
+   [
+    "Because procedure code changes at runtime",
+    "The text of procedures is static."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "According to the lecture, which variables can have their memory known before runtime?",
+  "o": [
+   [
+    "Global or constant variables",
+    "Correct. Variables are known only at runtime unless they are global or constant."
+   ],
+   [
+    "Local variables of recursive procedures",
+    "These come and go with calls on the stack."
+   ],
+   [
+    "Variables created with malloc",
+    "These are heap allocations made at run time."
+   ],
+   [
+    "All variables",
+    "Only global or constant ones; the rest are known only at runtime."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "\"Static allocation binds data to locations that may move during execution.\"",
+  "o": [
+   [
+    "True",
+    "Static allocation binds data to a fixed location that does not change during execution."
+   ],
+   [
+    "False",
+    "Correct. The location is fixed, which is why no runtime support package is needed."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "\"Pass by result copies the actual parameters' values into the formals at the call.\"",
+  "o": [
+   [
+    "True",
+    "By result passes nothing in: the formals start at 0 and are copied back to the actuals only at return."
+   ],
+   [
+    "False",
+    "Correct. Copy-in happens in by value and by value-result; by result only copies back."
+   ]
+  ],
+  "a": 1
+ }
+]);

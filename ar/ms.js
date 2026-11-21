@@ -4929,3 +4929,902 @@ AR.ms = {
   }
  ]
 };
+
+// Final revision practice questions (Arabic whys), appended in the same order as extra/ms.js
+AR.ms.lectures["1"].extra = (AR.ms.lectures["1"].extra || []).concat([
+ [
+  "دي مشكلة الـ measurements على system حقيقي (سلايد 5).",
+  "صح. الـ analysis بيدي حلول كويسة، بس الـ systems الحقيقية زي المصنع والكمبيوتر والـ network معقدة أوي (سلايد 5).",
+  "دي مشكلة الـ measurements، لأنها محتاجة نسخة موجودة من الـ system <bdi dir=\"ltr\">(L1, How do you evaluate a system's performance?)</bdi>.",
+  "الـ GIGO متقالة كمشكلة للـ simulation مش للـ analysis (سلايد 5)."
+ ],
+ [
+  "الـ MANET مفيهاش infrastructure، يعني لا access points ولا base stations، والـ nodes بتكلم بعض جوه الـ communication range وبتعمل forward لبعض (سلايد 12).",
+  "صح. الـ MANET معناها مفيش infrastructure، والـ source والـ destination بينهم كذا hop فكل الـ nodes بتعمل forward (سلايد 12)."
+ ],
+ [
+  "السلايد بيقول صعب تطلّع <bdi dir=\"ltr\">f(x, y)</bdi> بـ closed form، وعشان كده بنعمل simulation (سلايد 13).",
+  "الـ surface شكلها تل مش مسطحة، فاختيار x وy بشكل uniform مش بيخلّي المكان uniform (سلايد 13).",
+  "صح. الـ density شكلها تل أعلاه في النص (حوالي <bdi dir=\"ltr\">2E-6</bdi>)، يعني النص مفضّل، ولأن مفيش closed form بنعمل simulation (سلايد 13).",
+  "الأطراف قريبة من الصفر على السلايد، والقمة في النص (سلايد 13)."
+ ],
+ [
+  "ده الـ open system، أما الـ closed فمفيهوش exogenous activity (L1, Components of a system، من الـ lecture notes).",
+  "صح. الـ open system فيه exogenous activity، والـ closed مفيهوش (من الـ lecture notes)."
+ ],
+ [
+  "الـ physical والـ mathematical نوعين model في نفس المستوى، والـ physical مش طريقة لدراسة الـ mathematical (سلايد 37).",
+  "ده الفرع التاني في أول الشجرة قبل ما تبني أي model (سلايد 37).",
+  "الـ measurements بتستخدم system موجود، والشجرة بتقسم الـ mathematical model لـ analytical أو simulation (سلايد 4 و 37).",
+  "صح. الشجرة: system ثم model ثم mathematical model ثم analytical model أو simulation (سلايد 37)."
+ ],
+ [
+  "عيبه بالظبط إنه مش مفيد جوه المباني ولا في المدن، لأنه بيفترض line of sight ومفيش عوائق (سلايد 39).",
+  "صح. بيفترض line of sight مباشر ومفيش عوائق، وبيدي formulas بسيطة للأماكن المفتوحة بس مش مفيد جوه المباني ولا في المدن (سلايد 39)."
+ ],
+ [
+  "صح. الـ Level 3 هو الـ operating system machine level، والـ OS بيعمله partial interpretation (سلايد 42).",
+  "الـ Level 4 بيترجمه الـ assembler (سلايد 42).",
+  "الـ Level 5 بيترجمه الـ compiler (سلايد 42).",
+  "الـ Level 2 بيعمله interpretation الـ microprogram أو بيتنفذ direct (سلايد 42)."
+ ],
+ [
+  "الـ higher is better بيناسب الـ throughput، والـ utilization العالية أوي بتعمل delays (سلايد 57).",
+  "صح. الـ utility شكلها تل أعلاه في قيمة متوسطة: الواطي بيضيّع resources والعالي بيعمل delays (سلايد 57).",
+  "ده metric للـ request اللي اتعمل غلط، مش نوع utility (سلايد 53).",
+  "الـ lower is better بيناسب الـ response time، والـ utilization الواطية أوي بتضيّع resources (سلايد 57)."
+ ],
+ [
+  "الخطوة 8 بتيجي بعد الـ verification والـ validation، والـ More runs بـ Yes هي اللي بترجع لـ 9 أو 8 (سلايد 59).",
+  "الـ flowchart مفيهوش رجوع من الـ verification لخطوة 1 (سلايد 59).",
+  "صح. لو الـ Verified بـ No بترجع للـ model translation عشان تصلّح البرنامج (سلايد 59).",
+  "هنا بترجع لو الـ Validated بـ No، يعني النتايج مش زي الواقع (سلايد 59)."
+ ],
+ [
+  "الـ Phase 4 هي 11 و 12، الـ documentation and reporting والـ implementation (سلايد 60).",
+  "الـ Phase 1 هي خطوات 1 و 2 (سلايد 60).",
+  "الـ Phase 2 هي من 3 لـ 7 (سلايد 60).",
+  "صح. الـ Phase 3 (run the model) هي من 8 لـ 10 (سلايد 60)."
+ ],
+ [
+  "صح. المبدأ التاني: السر إنك تعرف إمتى محتاج وتقدر تعمل remodel (سلايد 46).",
+  "الـ granularity مشكلة في الـ models، والـ model المعقد زيادة بيزوّد التكلفة والوقت من غير output أحسن (سلايد 34، من الـ lecture notes).",
+  "المبدأ 8 بيقول اعرف إمتى top-down وإمتى bottom-up (سلايد 46).",
+  "المبدأ 5 بيقول في الـ combined systems الجوانب الـ continuous الأول (سلايد 46)."
+ ],
+ [
+  "المبدأ 6: في المطلق الـ model مش كويس ولا وحش ولا neutral، وبيتقيّم بفايدته (سلايد 46).",
+  "صح. الـ model بيتقيّم حسب فايدته، وفي المطلق مش كويس ولا وحش ولا neutral (سلايد 46)."
+ ],
+ [
+  "ده واحد من طرق التعويض في سلايد 20.",
+  "صح. العكس هو الصح: أغلب الـ outputs random variables، وعشان كده النتايج صعب تتفسر (سلايد 20).",
+  "ده من طرق التعويض في سلايد 20: الـ simulation لازمة كده كده.",
+  "ده واحد من طرق التعويض في سلايد 20."
+ ],
+ [
+  "ده عيب الـ special purpose packages (tools سلايد 9).",
+  "ده عيب الـ general purpose languages (tools سلايد 3).",
+  "صح. الـ general simulation languages الـ software بتاعها أغلى ومحتاجة training زيادة والـ portability محدودة (tools سلايد 5).",
+  "الـ general simulation languages بتساعد كتير في الـ verification، والـ verification الصعبة عيب الـ general purpose languages (tools سلايد 3 و 5)."
+ ],
+ [
+  "دي الـ world-view بتاعة SLAM (tools سلايد 6 لـ 8).",
+  "دي الـ world-view بتاعة SIMSCRIPT II.5 (tools سلايد 6 لـ 8).",
+  "الـ Processes هي الـ world-view بتاعة MODSIM III وSIMULA وCSIM (tools سلايد 6 لـ 8).",
+  "صح. الـ GPSS لغة block-structured وinterpretive ومبنية على FORTRAN، والـ world-view بتاعها transactions/facilities (tools سلايد 6 لـ 8)."
+ ],
+ [
+  "صح. tools سلايد 10: الـ OPNET simulator للـ communication networks ومعاها الـ wireless.",
+  "هو موجود في ليستة الـ special purpose packages (tools سلايد 10)؛ والـ SIMFACTORY هو بتاع الـ manufacturing والـ NETWORK II.5 بتاع الـ computer systems."
+ ],
+ [
+  "سلايد 34 حاطة \"الـ models مش unique\" كمشكلة في الـ modeling، مع الـ granularity بتاعة التفاصيل.",
+  "صح. الـ models مش unique، وبتاخد بس الجوانب اللي بتأثر على المشكلة (سلايد 34)."
+ ],
+ [
+  "صح. الـ Network بيقابل الـ Internet layer (سلايد 41).",
+  "الـ Host-to-Network بيغطي الـ Data Link والـ Physical (سلايد 41).",
+  "الـ Session (والـ Presentation) مش موجودين في الـ TCP/IP (سلايد 41).",
+  "الـ Transport بيقابل الـ Transport، والـ Network بيقابل الـ Internet layer (سلايد 41)."
+ ],
+ [
+  "الرموز والمعادلات معناها mathematical model (سلايد 36).",
+  "صح. الـ physical model هو prototype أو نسخة مادية من حاجة، زي موديل الجزيء أو الماكيت المعماري (سلايد 35، من الـ lecture notes).",
+  "الـ formula يبقى mathematical model (سلايد 39).",
+  "ده معادلة، يعني mathematical model (سلايد 36 و 38)."
+ ],
+ [
+  "الوصول العشوائي يعني inputs عشوائية، فالـ model يبقى stochastic، والـ deterministic مفيهوش random variables (سلايد 48، من الـ lecture notes).",
+  "صح. الـ lecture notes بتدي وصول الـ customers للبنك كمثال stochastic، وجدول محاضرات الكلية كمثال deterministic."
+ ]
+]);
+AR.ms.lectures["2"].extra = (AR.ms.lectures["2"].extra || []).concat([
+ [
+  "غلط: <bdi dir=\"ltr\">13/6 = 2.17</bdi> ده متوسط الخدمة، والوقت في الـ system فيه كمان الانتظار (الـ customers 4 و 5 كل واحد استنى 2).",
+  "غلط: <bdi dir=\"ltr\">4/6 = 0.67</bdi> ده متوسط الانتظار في الـ queue بس <bdi dir=\"ltr\">(L2, Building a simulation run)</bdi>.",
+  "صح. الوقت في الـ system هو النهاية ناقص الوصول:<span class=\"ltr\">2 + 1 + 3 + 4 + 3 + 4 = 17,   17/6 = 2.83 = 0.67 + 2.17</span>",
+  "غلط: <bdi dir=\"ltr\">3.17</bdi> ده متوسط الخدمة في الـ grocery بتاع 100 customer، مش الـ run ده (سلايد 16)."
+ ],
+ [
+  "الـ 4 ده إجمالي دقايق الانتظار، مش عدد اللي استنوا.",
+  "الـ customer 2 وصل عند 2 بالظبط لما الـ 1 مشي، فمااستناش؛ اللي استنوا 2 بس.",
+  "الـ customers 4 و 5 الاتنين استنوا دقيقتين، مش واحد بس.",
+  "صح. اللي استنوا بس الـ customer 4 (وصل 7 وبدأ 9) والـ 5 (وصل 9 وبدأ 11)، يعني <bdi dir=\"ltr\">2/6 = 0.33</bdi>."
+ ],
+ [
+  "صح. النهايات <bdi dir=\"ltr\">4, 7, 9, 10</bdi>: الـ 2 بيبدأ 4، والـ 3 بيبدأ 7، والـ 4 بيبدأ <bdi dir=\"ltr\">max(6, 9) = 9</bdi> ويخلص 10، والانتظار <bdi dir=\"ltr\">9 − 6 = 3</bdi>.",
+  "الـ 4 ده الوقت في الـ system (<bdi dir=\"ltr\">10 − 6</bdi>)، والانتظار هو البداية ناقص الوصول <bdi dir=\"ltr\">9 − 6 = 3</bdi>.",
+  "الخدمة بتبدأ 9 وبتاخد دقيقة، فبتخلص 10.",
+  "غلط: <bdi dir=\"ltr\">6 + 1 = 7</bdi> كده انت ناسي الـ queue: الـ customer 3 بيتخدم لحد 9، فالـ 4 بيبدأ عند <bdi dir=\"ltr\">max(6, 9) = 9</bdi>."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">18/86 = 0.21</bdi> ده احتمال إن الـ server فاضي، والـ busy هو <bdi dir=\"ltr\">1 − 0.21</bdi>.",
+  "صح. <bdi dir=\"ltr\">P(idle) = 18/86 = 0.21</bdi>، يبقى <bdi dir=\"ltr\">P(busy) = 1 − 0.21 = 0.79</bdi> (مثال 2.2).",
+  "غلط: <bdi dir=\"ltr\">0.65 = 13/20</bdi> ده احتمال إن الـ customer يستنى.",
+  "غلط: <bdi dir=\"ltr\">0.90</bdi> ده الـ utilization بتاع Able في مثال الـ carhop."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">68/20 = 3.4</bdi> ده متوسط الخدمة.",
+  "لازم تقسم على عدد الـ arrivals ناقص واحد: أول customer بيوصل عند صفر، فعندك 19 interarrival بس.",
+  "صح. <bdi dir=\"ltr\">82/19 = 4.3</bdi>، وأقل شوية من <bdi dir=\"ltr\">E(A) = (1 + 8)/2 = 4.5</bdi> (من الـ lecture notes).",
+  "الـ <bdi dir=\"ltr\">4.5</bdi> هو الـ expected value للـ uniform من 1 لـ 8، مش المتوسط اللي طلع من الـ simulation."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">124/13 = 9.5</bdi> كده قسمت على الـ 13 اللي استنوا، والوقت في الـ system متوسط على الـ 20 كلهم.",
+  "غلط: <bdi dir=\"ltr\">4.3 = 56/13</bdi> ده متوسط انتظار اللي استنوا.",
+  "ده الانتظار بس، والوقت في الـ system هو الانتظار زائد الخدمة.",
+  "صح. <bdi dir=\"ltr\">2.8 + 3.4 = 6.2</bdi>، زي <bdi dir=\"ltr\">124/20 = 6.2</bdi> (من الـ lecture notes)."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">61–85 → 4</bdi> و<bdi dir=\"ltr\">86–95 → 5</bdi> (الـ cumulative <bdi dir=\"ltr\">0.85</bdi> و<bdi dir=\"ltr\">0.95</bdi>).",
+  "الـ 85 هو آخر <bdi dir=\"ltr\">61–85</bdi> ولسه بيدي 4 دقايق.",
+  "الـ 86 بيبدأ الفترة اللي بعدها <bdi dir=\"ltr\">86–95</bdi> وبتدي 5 دقايق.",
+  "الـ 3 دقايق هي <bdi dir=\"ltr\">31–60</bdi>، والـ 85 في <bdi dir=\"ltr\">61–85</bdi> (يعني 4) والـ 86 في <bdi dir=\"ltr\">86–95</bdi> (يعني 5)."
+ ],
+ [
+  "اقرا الأرقام في جدول Baker: الـ 61 في <bdi dir=\"ltr\">61–80</bdi> يعني 5 دقايق (الـ <bdi dir=\"ltr\">36–60</bdi> هي اللي بتدي 4).",
+  "صح. لو carhop واحد بس فاضي هو اللي يخدم، وفي جدول Baker (Table 2.8) <bdi dir=\"ltr\">61–80 → 5</bdi> دقايق.",
+  "الـ seniority بتاعة Able بتحكم بس لو الاتنين فاضيين؛ لو Baker فاضي بيخدم على طول.",
+  "الـ Able مشغول فالـ Baker الفاضي هو اللي يخدم؛ والـ 4 دقايق دي اللي بيديها 61 في جدول Able (<bdi dir=\"ltr\">59–83</bdi>)."
+ ],
+ [
+  "القاعدة إن الـ Able (عنده seniority) هو اللي ياخد الـ customer لو الاتنين فاضيين (من الـ lecture notes).",
+  "صح. الـ Able بياخد الـ customer لو الاتنين فاضيين (seniority)، ولو واحد بس فاضي هو اللي يخدم (من الـ lecture notes)."
+ ],
+ [
+  "فرق صغير متوقع في run محدود، وكل ما الـ simulation تطوّل المتوسط بيقرب من <bdi dir=\"ltr\">E(s)</bdi> (من الـ lecture notes).",
+  "صح. <bdi dir=\"ltr\">s̄ = 317/100 = 3.17</bdi> متوسط sample، وبيقرب من <bdi dir=\"ltr\">E(s) = 3.2</bdi> كل ما الـ run يطوّل."
+ ],
+ [
+  "الـ infinite population بس هو اللي الـ arrival rate فيه مش بيتأثر بعدد اللي دخلوا.",
+  "مفيش مكن pending خالص، فالوصول بيقف.",
+  "صح. في الـ finite population الـ arrival rate بيعتمد على عدد اللي pending، ولو الخمسة open محدش يقدر يوصل (من الـ lecture notes).",
+  "الخمسة دول حجم الـ population (K)، مش الـ arrival rate."
+ ],
+ [
+  "الـ 10 هو N يعني الـ system capacity، والـ c هو 2.",
+  "الـ Erlang بيتكتب <bdi dir=\"ltr\">E<sub>k</sub></bdi>، والـ D معناها constant.",
+  "الـ M (exponential) هو توزيع الـ interarrival في مكان A، وتوزيع الخدمة في مكان B وهو D.",
+  "صح. في <bdi dir=\"ltr\">A/B/c/N/K</bdi> الـ B هو D (constant أو deterministic) والـ c هو 2."
+ ],
+ [
+  "صح. الـ balk إنه يمشي أول ما يشوف الطابور طويل، والـ renege يمشي بعد ما استنى، والـ jockey ينقل من طابور لطابور (من الـ lecture notes).",
+  "اللي يمشي بعد ما وقف في الطابور ده renege، واللي يمشي أول ما يشوفه طويل ده balk (من الـ lecture notes)."
+ ],
+ [
+  "صح. server فاضي وفيه units مستنية مينفعش يحصل، لأن اللي مستني كان هيتخدم (Fig 2.7).",
+  "الـ unit اللي وصلت بتدخل الخدمة، وده ممكن.",
+  "الـ unit اللي وصلت بتدخل الـ queue، وده ممكن.",
+  "الـ unit اللي وصلت بتدخل الـ queue، وده ممكن."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">25.00 − 19.80 = 5.20</bdi> كده نسيت الـ salvage بتاع الـ 10 اللي ماتباعوش (<bdi dir=\"ltr\">10 × 0.05 = $0.50</bdi>).",
+  "صح.<span class=\"ltr\">revenue 50 × 0.50 = 25.00,  cost 60 × 0.33 = 19.80,  salvage 10 × 0.05 = 0.50<br>profit = 25.00 − 19.80 + 0.50 = $5.70</span>",
+  "غلط: <bdi dir=\"ltr\">30.00 − 19.80 = 10.20</bdi> ده الربح لو الـ 60 اتباعوا كلهم، والمطلوب كان 50 بس.",
+  "الـ lost profit بيتحسب بس لو الطلب أكتر من اللي اشتراه، هنا عنده زيادة فبيضيف salvage."
+ ],
+ [
+  "الـ good هو <bdi dir=\"ltr\">01–35</bdi>، والـ 81 يوم poor.",
+  "الـ fair هو <bdi dir=\"ltr\">36–80</bdi>، فالـ 81 يوم poor؛ في عمود الـ fair الـ 70 كانت هتدي 70، بس احنا في عمود الـ poor.",
+  "صح. <bdi dir=\"ltr\">81–00</bdi> يعني poor، وفي عمود الـ poor <bdi dir=\"ltr\">67–82 → 60</bdi>.",
+  "الـ 70 في الـ poor هي <bdi dir=\"ltr\">83–94</bdi>، والرقم 70 في <bdi dir=\"ltr\">67–82</bdi> يعني 60."
+ ],
+ [
+  "الطلبية بتكمّل لحد M، فلازم تطرح الـ ending inventory: <bdi dir=\"ltr\">11 − 1 = 10</bdi>.",
+  "الرقم بيتقري من Table 2.15 مش بيتاخد عدد أيام: الـ 8 يعني يومين.",
+  "اليوم الواحد هو <bdi dir=\"ltr\">1–6</bdi>، والـ 8 في <bdi dir=\"ltr\">7–9</bdi>.",
+  "صح. الطلبية <bdi dir=\"ltr\">11 − 1 = 10</bdi>، وفي Table 2.15 الأرقام <bdi dir=\"ltr\">7–9 → 2</bdi> يوم."
+ ],
+ [
+  "صح. من <bdi dir=\"ltr\">0.70</bdi> لـ <bdi dir=\"ltr\">0.89999</bdi> يعني 4 أيام (الـ cumulative <bdi dir=\"ltr\">0.7</bdi> و<bdi dir=\"ltr\">0.9</bdi>، والطرف الأصغر داخل).",
+  "الـ 5 أيام هي من <bdi dir=\"ltr\">0.90</bdi> لـ <bdi dir=\"ltr\">0.99999</bdi> (زي <bdi dir=\"ltr\">0.939</bdi>).",
+  "اليومين هما من <bdi dir=\"ltr\">0.20</bdi> لـ <bdi dir=\"ltr\">0.29999</bdi>.",
+  "الـ 3 أيام هي من <bdi dir=\"ltr\">0.30</bdi> لـ <bdi dir=\"ltr\">0.69999</bdi>، والفترة شاملة طرفها الأصغر، فالـ <bdi dir=\"ltr\">0.70</bdi> بتبدأ اللي بعدها."
+ ],
+ [
+  "الـ holding بيتحسب على مخزون آخر اليوم (4)، مش الـ 8 بعد الوصول.",
+  "صح. <bdi dir=\"ltr\">I = 3 + 5 = 8</bdi> ناقص 4 يبقى 4 وده أكبر من <bdi dir=\"ltr\">r = 3</bdi> فمفيش طلب؛ والـ holding <bdi dir=\"ltr\">0.10 × 4 = $0.40</bdi> ومفيش shortage.",
+  "مفيش طلب: الـ ending inventory 4 أكبر من الـ reorder point 3.",
+  "كده نسيت الـ 5 اللي وصلوا: 3 مع طلب 4 كانت هتدي واحد ناقص (<bdi dir=\"ltr\">$50</bdi>)، بس الطلبية بتوصل الأول (\"Any arrivals?\")."
+ ],
+ [
+  "نفس الجدول فيه <bdi dir=\"ltr\">2.32</bdi> عند <bdi dir=\"ltr\">r = 7, x = 29</bdi>، وده أقل شوية، والفرق جوه الـ simulation noise <bdi dir=\"ltr\">(L2, Inventory: refined results)</bdi>.",
+  "صح. عند <bdi dir=\"ltr\">r = 7, x = 29</bdi> فيه <bdi dir=\"ltr\">2.32</bdi>، أقل من الـ <bdi dir=\"ltr\">2.33</bdi> المعلّمة، وأحسن خانة في الجدول الكبير <bdi dir=\"ltr\">r = 6, x = 20</bdi> بـ <bdi dir=\"ltr\">2.10</bdi>."
+ ]
+]);
+AR.ms.lectures["3"].extra = (AR.ms.lectures["3"].extra || []).concat([
+ [
+  "ده <bdi dir=\"ltr\">P(X = 6)</bdi> بس، والـ <bdi dir=\"ltr\">X ≥ 5</bdi> فيها 5 كمان.",
+  "ده لزهرة عادية، والمغشوشة <bdi dir=\"ltr\">p(x) = x/21</bdi>.",
+  "غلط: <bdi dir=\"ltr\">10/21 = P(X ≤ 4)</bdi>، يعني المكمّل.",
+  "صح.<span class=\"ltr\">P(5) + P(6) = 5/21 + 6/21 = 11/21 = 0.524</span>"
+ ],
+ [
+  "لازم trial واحد على الأقل عشان يحصل success، فالقيم <bdi dir=\"ltr\">x = 1, 2, …</bdi>، والـ range اللي في السلايد <bdi dir=\"ltr\">x = 0, 1, 2, …</bdi> غلطة <bdi dir=\"ltr\">(L3, Geometric distribution)</bdi>.",
+  "صح. <bdi dir=\"ltr\">p(x) = qˣ⁻¹p</bdi> لـ <bdi dir=\"ltr\">x = 1, 2, …</bdi>، وأول success محتاج trial واحد على الأقل (من الـ lecture notes)."
+ ],
+ [
+  "صح. الـ median هو الـ 0.5-quantile:<span class=\"ltr\">1 − e^(−x/2) = 0.5  →  x = 2 ln 2 = 1.386</span>",
+  "غلط: <bdi dir=\"ltr\">0.632 = F(2)</bdi> ده احتمال مش وقت.",
+  "غلط: <bdi dir=\"ltr\">F(1) = 1 − e^(−0.5) = 0.39</bdi> مش <bdi dir=\"ltr\">0.5</bdi>.",
+  "الـ 2 ده الـ mean، وفي التوزيع ده (exponential ومايل) الـ median أقل."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.02</bdi> ده احتمال chip واحدة، ومفيش ولا واحدة من 50 محتاج <bdi dir=\"ltr\">(0.98)⁵⁰</bdi>.",
+  "صح.<span class=\"ltr\">P(X = 0) = (0.98)⁵⁰ = 0.364</span>وده أول حد في <bdi dir=\"ltr\">P(X ≤ 2)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">0.372 = 50(0.02)(0.98)⁴⁹ = P(X = 1)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">0.92 = P(X ≤ 2)</bdi>، مجموع أول 3 حدود."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.25 = pq</bdi> ده variance لـ Bernoulli trial واحد، اضربه في <bdi dir=\"ltr\">n = 10</bdi>.",
+  "غلط: <bdi dir=\"ltr\">5 = np</bdi> ده الـ mean.",
+  "صح. <bdi dir=\"ltr\">V = npq = 10 × 0.5 × 0.5 = 2.5</bdi>.",
+  "غلط: <bdi dir=\"ltr\">1.58 = √2.5</bdi> ده الـ standard deviation."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.24 = P(X = 2)</bdi> بس، ولازم تضيف <bdi dir=\"ltr\">X = 1</bdi>.",
+  "غلط: <bdi dir=\"ltr\">0.096 = (0.4)²(0.6) = P(X = 3)</bdi>، إجابة الـ notes للطابعة التالتة.",
+  "غلط: <bdi dir=\"ltr\">0.16 = (0.4)²</bdi> ده اتنين مرفوضين ورا بعض، يعني العكس.",
+  "صح.<span class=\"ltr\">P(1) + P(2) = 0.6 + (0.4)(0.6) = 0.6 + 0.24 = 0.84</span>"
+ ],
+ [
+  "صح.<span class=\"ltr\">F(2) = 0.135 + 0.271 + 0.271 = 0.677</span>",
+  "غلط: <bdi dir=\"ltr\">0.323 = 1 − F(2)</bdi> يعني 3 beeps أو أكتر.",
+  "غلط: <bdi dir=\"ltr\">0.271 = p(2)</bdi> بس، والـ at most two هي <bdi dir=\"ltr\">p(0) + p(1) + p(2)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">0.406 = F(1)</bdi> يعني beep واحد بالكتير."
+ ],
+ [
+  "كده استخدمت <bdi dir=\"ltr\">α = 2</bdi> (ساعة واحدة)، ولـ <bdi dir=\"ltr\">t = 1.5</bdi> ساعة <bdi dir=\"ltr\">α = λt = 3</bdi>.",
+  "صح.<span class=\"ltr\">N(1.5) ~ Poisson(3):  P = e⁻³ · 3² / 2! = 0.0498 × 4.5 = 0.224</span>",
+  "غلط: <bdi dir=\"ltr\">0.423 = F(2)</bdi> لـ <bdi dir=\"ltr\">α = 3</bdi>، يعني 2 بالكتير.",
+  "غلط: <bdi dir=\"ltr\">0.149 = 3e⁻³</bdi> ده احتمال call واحدة بالظبط."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.2 = 1/(b − a)</bdi> ده ارتفاع الـ PDF، مش احتمال على فترة طولها 2.",
+  "غلط: <bdi dir=\"ltr\">2/4</bdi> كده قسمت على الحد الأعلى بدل الطول <bdi dir=\"ltr\">b − a = 5</bdi>.",
+  "صح.<span class=\"ltr\">(x₂ − x₁)/(b − a) = (4 − 2)/(6 − 1) = 2/5 = 0.4</span>",
+  "غلط: <bdi dir=\"ltr\">0.6 = F(4) = (4 − 1)/5</bdi>، وده بيحسب من 1 لـ 2 كمان."
+ ],
+ [
+  "صح. الـ lecture notes بتقول إن الـ exponential memoryless، والـ interarrival times في الـ Poisson process exponential وmemoryless (سلايد 44).",
+  "الـ notes ورسمة سلايد 44 الاتنين بيقولوا إن الـ exponential (الـ interarrival time) memoryless."
+ ],
+ [
+  "الـ 225 (دقيقة تربيع) ده الـ variance <bdi dir=\"ltr\">1/λ²</bdi>، والـ SD هو جذره يعني 15 دقيقة.",
+  "الـ 4 ده الـ rate λ، والـ mean هو <bdi dir=\"ltr\">1/λ</bdi>.",
+  "غلط: <bdi dir=\"ltr\">3.87 = √15</bdi> كده خدت جذر الـ mean، والـ SD في الـ exponential بيساوي الـ mean.",
+  "صح. <bdi dir=\"ltr\">E = 1/λ = 1/4 h = 15 min</bdi> و<bdi dir=\"ltr\">σ = √(1/λ²) = 1/λ = 15 min</bdi>، والـ exponential الـ mean بتاعه زي الـ standard deviation."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">σ = 2</bdi>:<span class=\"ltr\">Φ(1) − Φ(−1) = 0.8413 − 0.1587 = 0.6826</span>",
+  "غلط: <bdi dir=\"ltr\">0.3174 = 2 × 0.1587</bdi> ده الاحتمال برا الفترة.",
+  "غلط: <bdi dir=\"ltr\">0.1587 = Φ(−1) = P(X &lt; 10)</bdi> ذيل واحد بس.",
+  "غلط: <bdi dir=\"ltr\">0.8413 = Φ(1) = P(X &lt; 14)</bdi>، لازم تطرح <bdi dir=\"ltr\">P(X &lt; 10)</bdi>."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.3780</bdi> ده إجابة مثال 3.12 لـ <bdi dir=\"ltr\">N(15, 9)</bdi> من 14 لـ 17.",
+  "صح. <bdi dir=\"ltr\">σ = 3</bdi>:<span class=\"ltr\">Φ(2) − Φ(−1) = 0.9772 − (1 − 0.8413) = 0.8185</span>",
+  "غلط: <bdi dir=\"ltr\">0.9772 − 0.8413</bdi> كده استخدمت <bdi dir=\"ltr\">Φ(1)</bdi> والمفروض <bdi dir=\"ltr\">Φ(−1) = 1 − Φ(1)</bdi>.",
+  "ده <bdi dir=\"ltr\">F(56) = P(X ≤ 56)</bdi>، ولازم تشيل الجزء اللي تحت 47."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">2(4) + 3(1) = 11</bdi> كده نسيت تربّع الثوابت.",
+  "غلط: <bdi dir=\"ltr\">16 − 9</bdi> كده طرحت الـ variances، والثوابت بتتربع فـ <bdi dir=\"ltr\">(−3)² = 9</bdi> بتتجمع.",
+  "صح.<span class=\"ltr\">Var = 2²(4) + (−3)²(1) = 16 + 9 = 25</span>(سلايد 16، independent variables).",
+  "غلط: <bdi dir=\"ltr\">2(4) − 3(1) = 5</bdi> كده طبّقت قاعدة الـ mean على الـ variance من غير تربيع الثوابت."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">4.33/1.49 = 2.91</bdi> ده <bdi dir=\"ltr\">μ/σ</bdi>، مقلوب.",
+  "غلط: <bdi dir=\"ltr\">2.22/4.33 = 0.513</bdi> كده استخدمت الـ variance بدل الـ standard deviation.",
+  "الـ C.O.V. اللي بيساوي 1 ده بتاع الـ exponential، اللي فيه <bdi dir=\"ltr\">σ = μ</bdi>.",
+  "صح. <bdi dir=\"ltr\">C.O.V. = σ/μ = 1.49/4.33 = 0.344</bdi> (ملوش وحدة)."
+ ],
+ [
+  "الـ correlation هو الـ covariance بعد الـ normalization، ودايمًا بين <bdi dir=\"ltr\">−1</bdi> و <bdi dir=\"ltr\">+1</bdi> (سلايد 19).",
+  "صح. <bdi dir=\"ltr\">ρ = σ²xy/(σx σy)</bdi> و<bdi dir=\"ltr\">−1 ≤ ρ ≤ +1</bdi> (سلايد 19)."
+ ],
+ [
+  "صح. الـ mode هو القيمة الأكتر احتمالًا: الحجم 2 عنده أعلى frequency وهي 110 (relative <bdi dir=\"ltr\">0.37</bdi>).",
+  "الحجم 3 هو الـ median (الـ cumulative بيعدّي <bdi dir=\"ltr\">0.5</bdi> عنده: <bdi dir=\"ltr\">0.47</bdi> عند 2 و<bdi dir=\"ltr\">0.62</bdi> عند 3)، مش الـ mode.",
+  "الحجم 4 تاني أعلى frequency، 71.",
+  "الـ 8 أكبر قيمة، مش الأكتر تكرار."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.33 = F(1.0)</bdi>، والـ empirical CDF الـ continuous بيطلع خطي جوه الفترة.",
+  "صح. في النص بين 1.0 و1.5:<span class=\"ltr\">0.33 + 0.5 × (0.62 − 0.33) = 0.33 + 0.145 = 0.475</span>",
+  "غلط: <bdi dir=\"ltr\">0.62 = F(1.5)</bdi>، آخر الفترة.",
+  "غلط: <bdi dir=\"ltr\">0.29</bdi> ده الـ relative frequency بتاع الفترة من 1.0 لـ 1.5، مش الـ CDF."
+ ],
+ [
+  "الـ 2 محتاجة <bdi dir=\"ltr\">0 ≤ R ≤ 0.2</bdi>.",
+  "الـ 9 محتاجة <bdi dir=\"ltr\">0.6 &lt; R ≤ 0.9</bdi> (زي <bdi dir=\"ltr\">0.78</bdi>).",
+  "صح. القاعدة <bdi dir=\"ltr\">0.2 &lt; R ≤ 0.4 → x = 5</bdi>، فالـ <bdi dir=\"ltr\">R = 0.40</bdi> بتدي 5 (سلايد 52).",
+  "الـ 7 محتاجة <bdi dir=\"ltr\">0.4 &lt; R ≤ 0.6</bdi>، والـ <bdi dir=\"ltr\">0.40</bdi> آخر فترة الـ 5."
+ ],
+ [
+  "التقسيم بيقسم المعدل، والـ streams الاتنين مجموعهم يرجع 10 (pooling).",
+  "غلط: <bdi dir=\"ltr\">0.3</bdi> و<bdi dir=\"ltr\">0.7</bdi> دول الاحتمالات، اضربهم في <bdi dir=\"ltr\">λ = 10</bdi>.",
+  "الـ type II احتماله <bdi dir=\"ltr\">1 − 0.3 = 0.7</bdi>، يعني 7 في الساعة.",
+  "صح. الـ random splitting بيدي Poisson processes بمعدلات <bdi dir=\"ltr\">λp = 10(0.3) = 3</bdi> و<bdi dir=\"ltr\">λ(1 − p) = 10(0.7) = 7</bdi> (من الـ lecture notes)."
+ ]
+]);
+AR.ms.lectures["4"].extra = (AR.ms.lectures["4"].extra || []).concat([
+ [
+  "صح.<span class=\"ltr\">V(R) = ∫₀¹ x² dx − [E(R)]² = 1/3 − 1/4 = 1/12</span>",
+  "غلط: <bdi dir=\"ltr\">1/4</bdi> ده <bdi dir=\"ltr\">[E(R)]²</bdi>، الحد اللي بيتطرح.",
+  "غلط: <bdi dir=\"ltr\">1/2</bdi> ده <bdi dir=\"ltr\">E(R)</bdi>، الـ mean.",
+  "غلط: <bdi dir=\"ltr\">1/3 = E(R²)</bdi>، لازم تطرح <bdi dir=\"ltr\">[E(R)]² = 1/4</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">m − 1</bdi> لـ prime modulus مع <bdi dir=\"ltr\">c = 0</bdi>، وهنا <bdi dir=\"ltr\">m = 16</bdi> و<bdi dir=\"ltr\">c ≠ 0</bdi>.",
+  "صح.<span class=\"ltr\">38 mod 16 = 6,  33 mod 16 = 1,  8,  43 mod 16 = 11</span>والـ <bdi dir=\"ltr\">m = 2⁴</bdi> والـ <bdi dir=\"ltr\">c = 3</bdi> relatively prime مع 16 و<bdi dir=\"ltr\">a = 5 = 1 + 4(1)</bdi>، فالـ <bdi dir=\"ltr\">P = m = 16</bdi>.",
+  "الـ <bdi dir=\"ltr\">m/4</bdi> أحسن period بس لو <bdi dir=\"ltr\">c = 0</bdi>، ومع <bdi dir=\"ltr\">c ≠ 0</bdi> والشروط متحققة يبقى <bdi dir=\"ltr\">P = m = 16</bdi>.",
+  "دول <bdi dir=\"ltr\">a·X + c</bdi> قبل الـ mod 16، والـ X لازم يبقى من 0 لـ <bdi dir=\"ltr\">m − 1</bdi>."
+ ],
+ [
+  "الـ sequence مارجعتش لـ 1 بعد 5 خطوات (<bdi dir=\"ltr\">X₅ = 10</bdi>).",
+  "الـ <bdi dir=\"ltr\">m/4</bdi> لـ <bdi dir=\"ltr\">m = 2ᵇ</bdi> مع <bdi dir=\"ltr\">c = 0</bdi>، مش لـ prime modulus.",
+  "صح.<span class=\"ltr\">2, 4, 8, 5, 10, 9, 7, 3, 6, 1</span>الـ seed رجع بعد <bdi dir=\"ltr\">10 = m − 1</bdi>، وده أقصى period لـ prime m مع <bdi dir=\"ltr\">c = 0</bdi> (سلايد 21).",
+  "مع <bdi dir=\"ltr\">c = 0</bdi> الصفر عمره ما يظهر (لو ظهر يفضل صفر)، فبالكتير <bdi dir=\"ltr\">m − 1 = 10</bdi>."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">P = m</bdi> محتاج <bdi dir=\"ltr\">c ≠ 0</bdi>، ومع <bdi dir=\"ltr\">c = 0</bdi> أطول period ممكن <bdi dir=\"ltr\">m/4 = 4</bdi>.",
+  "الـ seed 1 رجع بعد 4 خطوات بس.",
+  "غلط: <bdi dir=\"ltr\">X₂ = 9</bdi> مش 1، والـ seed بيرجع عند <bdi dir=\"ltr\">X₄</bdi>.",
+  "صح.<span class=\"ltr\">3, 9, 27 mod 16 = 11, 33 mod 16 = 1</span>الـ period <bdi dir=\"ltr\">4 = 16/4</bdi>، وده الأقصى مع <bdi dir=\"ltr\">c = 0</bdi> وseed فردي و<bdi dir=\"ltr\">a = 3 + 8(0)</bdi> (سلايد 21)."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">m = 2⁶</bdi> والـ <bdi dir=\"ltr\">c = 13</bdi> فردي (relatively prime مع 64) و<bdi dir=\"ltr\">a = 5 = 1 + 4k</bdi>، فالـ <bdi dir=\"ltr\">P = 64</bdi>.",
+  "الـ <bdi dir=\"ltr\">c = 12</bdi> زوجي، يعني مش relatively prime مع 64، فالـ full period مش بيتحقق (الـ seed 1 بيتكرر بعد 4).",
+  "الـ <bdi dir=\"ltr\">a = 7</bdi> مش على شكل <bdi dir=\"ltr\">1 + 4k</bdi> (<bdi dir=\"ltr\">7 = 3 + 4</bdi>)، فالـ period أقصر (16 من الـ seed 1).",
+  "مع <bdi dir=\"ltr\">c = 0</bdi> أحسن period <bdi dir=\"ltr\">m/4 = 16</bdi>، وللـ seeds الفردية بس."
+ ],
+ [
+  "الـ Z₂ لازم تتكمّل هي كمان: <bdi dir=\"ltr\">88² = 00007744</bdi> والنص <bdi dir=\"ltr\">0077</bdi>.",
+  "صح.<span class=\"ltr\">5197² = 27008809 → 0088 (U₁ = 0.0088)<br>88² = 7744 → 00007744 → 0077 (U₂ = 0.0077)</span>والأرقام بدأت تنزل للصفر.",
+  "دول أول 4 digits (<bdi dir=\"ltr\">27008809 → 2700</bdi> و<bdi dir=\"ltr\">07290000 → 0729</bdi>)، والطريقة بتاخد الـ 4 اللي في النص (من الـ digit التالت للسادس).",
+  "الـ 0880 كده حرّكت شباك النص، والـ 7744 هو المربع نفسه مش الـ digits اللي في النص بعد التكملة لـ 8."
+ ],
+ [
+  "لو استخدمت الترتيب الأصلي (زي <bdi dir=\"ltr\">0.75 − 0.38 = 0.37</bdi>) يبقى غلط، لأن أول خطوة الترتيب.",
+  "بنرفض بس لو <bdi dir=\"ltr\">D &gt; Dα</bdi>، و<bdi dir=\"ltr\">0.15 &lt; 0.624</bdi>.",
+  "صح. بعد الترتيب <bdi dir=\"ltr\">0.15, 0.38, 0.62, 0.90</bdi>:<span class=\"ltr\">D⁺ = max(0.10, 0.12, 0.13, 0.10) = 0.13<br>D⁻ = max(0.15, 0.13, 0.12, 0.15) = 0.15<br>D = 0.15 ≤ 0.624  →  not rejected</span>",
+  "الـ 0.13 ده <bdi dir=\"ltr\">D⁺</bdi> بس، و<bdi dir=\"ltr\">D = max(D⁺, D⁻) = 0.15</bdi>."
+ ],
+ [
+  "الـ 50 ده <bdi dir=\"ltr\">Σ(O − E)²</bdi> قبل القسمة على <bdi dir=\"ltr\">Eᵢ = 10</bdi>.",
+  "الـ 3.84 هي <bdi dir=\"ltr\">χ²0.05,1</bdi>، والـ df هنا <bdi dir=\"ltr\">n − 1 = 4</bdi> فتقارن بـ 9.49.",
+  "الفروق مجموعها صفر، بس الـ statistic بيربّعها الأول.",
+  "صح. <bdi dir=\"ltr\">Eᵢ = 50/5 = 10</bdi>:<span class=\"ltr\">χ₀² = (25 + 16 + 1 + 4 + 4)/10 = 5.0 &lt; 9.49   (df = 5 − 1 = 4)</span>"
+ ],
+ [
+  "الـ chi-square بينفع بس مع الـ samples الكبيرة (تقريبًا <bdi dir=\"ltr\">N ≥ 50</bdi>)، والـ KS هو اللي بينفع مع الصغيرة (سلايد 39، من الـ lecture notes).",
+  "صح. الـ chi-square محتاج <bdi dir=\"ltr\">N ≥ 50</bdi> وكل <bdi dir=\"ltr\">Eᵢ ≥ 5</bdi>، والـ KS أقوى مع الـ samples الصغيرة زي مثال <bdi dir=\"ltr\">N = 5</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">F(1) = 1 − 0.9² = 1 − 0.81 = 0.19 = 0.1 + 0.09</span>",
+  "غلط: <bdi dir=\"ltr\">0.09 = 0.9 × 0.1 = P(gap = 1)</bdi> بس، ضيف <bdi dir=\"ltr\">P(gap = 0) = 0.1</bdi>.",
+  "غلط: <bdi dir=\"ltr\">0.10 = P(gap = 0)</bdi>، يعني نفس الرقم على طول.",
+  "غلط: <bdi dir=\"ltr\">0.81 = 0.9²</bdi> ده احتمال إن الـ gap أطول من 1."
+ ],
+ [
+  "الـ 59 ده عدد إشارات الـ runs لـ 60 رقم، والـ gaps بتتعدّ لكل رقم.",
+  "صح. كل رقم بيدي (مرات ظهوره ناقص واحد) gaps، فالإجمالي <bdi dir=\"ltr\">N − 10 = 60 − 10 = 50</bdi> (سلايد 42).",
+  "أول ظهور لكل رقم مش بيبدأ gap، فلازم تطرح 10.",
+  "غلط: <bdi dir=\"ltr\">60/10 = 6</bdi> ده متوسط مرات الظهور لكل رقم، مش عدد الـ gaps."
+ ],
+ [
+  "الـ 0.9 لوحدها ناسية إن الـ digit التالت لازم يختلف عن الاتنين (<bdi dir=\"ltr\">0.9 × 0.8 = 0.72</bdi>).",
+  "التلاتة زي بعض احتمالهم <bdi dir=\"ltr\">0.1 × 0.1 = 0.01</bdi> فمتوقع 5، والـ pairs <bdi dir=\"ltr\">1 − 0.72 − 0.01 = 0.27</bdi>.",
+  "صح.<span class=\"ltr\">500 × 0.72 = 360,  500 × 0.27 = 135,  500 × 0.01 = 5</span>",
+  "دول المتوقع لـ 1000 رقم (سلايد 63)."
+ ],
+ [
+  "الـ 9 ده عدد الإشارات (<bdi dir=\"ltr\">N − 1</bdi>)، وده أقصى عدد runs ممكن، مش العدد هنا.",
+  "الـ 5 ده عدد مرات تغيير الإشارة، وعدد الـ runs أكتر بواحد: <bdi dir=\"ltr\">5 + 1 = 6</bdi>.",
+  "كل تغيير في الإشارة بيبدأ run جديد، فـ <bdi dir=\"ltr\">+++ / − / + / − / + / −−</bdi> تدي 6 مش 4.",
+  "صح. الإشارات <bdi dir=\"ltr\">+ + + − + − + − −</bdi> (9 إشارات لـ 10 أرقام) بتتجمع <bdi dir=\"ltr\">+++ | − | + | − | + | −−</bdi>، يعني <bdi dir=\"ltr\">a = 6</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">μa = (2(25) − 1)/3 = 49/3 = 16.33<br>σa² = (16(25) − 29)/90 = 371/90 = 4.12</span>",
+  "غلط: <bdi dir=\"ltr\">2.03 = √4.12</bdi> ده <bdi dir=\"ltr\">σa</bdi> مش الـ variance.",
+  "غلط: <bdi dir=\"ltr\">(2N + 1)/3 = 17</bdi> الإشارة غلط، والصح <bdi dir=\"ltr\">μa = (2N − 1)/3</bdi>.",
+  "غلط: <bdi dir=\"ltr\">24 = N − 1</bdi> ده أقصى عدد runs مش الـ mean."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">(20 − 25)/3.50 = −1.43</bdi> كده استخدمت <bdi dir=\"ltr\">μb = 25</bdi> ونسيت الـ <bdi dir=\"ltr\">+ 1/2</bdi>.",
+  "صح.<span class=\"ltr\">μb = 2(25)(25)/50 + 1/2 = 25.5<br>σb² = 1250(1250 − 50) / [2500(49)] = 12.24<br>Z₀ = (20 − 25.5)/3.50 = −1.57</span>جوه <bdi dir=\"ltr\">±1.96</bdi> يعني مش مرفوضة.",
+  "غلط: <bdi dir=\"ltr\">−5.5/12.24</bdi> كده قسمت على الـ variance، والصح على <bdi dir=\"ltr\">σb = √12.24 = 3.50</bdi>.",
+  "بنرفض بس لو برا <bdi dir=\"ltr\">−1.96 ≤ Z₀ ≤ 1.96</bdi>، و<bdi dir=\"ltr\">−1.57</bdi> جوه."
+ ],
+ [
+  "الـ M لازم يبقى عدد صحيح، أكبر واحد يحقق <bdi dir=\"ltr\">i + (M + 1)m ≤ N</bdi>.",
+  "غلط: <bdi dir=\"ltr\">M + 1 = 7</bdi> ده عدد حواصل الضرب، والـ M نفسه 6.",
+  "صح.<span class=\"ltr\">2 + (M + 1)·4 ≤ 30  →  M + 1 ≤ 7  →  M = 6</span>(الأرقام <bdi dir=\"ltr\">R₂, R₆, …, R₃₀</bdi>).",
+  "مع <bdi dir=\"ltr\">M = 6</bdi> آخر رقم <bdi dir=\"ltr\">R₃₀</bdi> وده لسه جوه الـ 30، فالـ M = 6 ينفع."
+ ],
+ [
+  "صح. لو <bdi dir=\"ltr\">ρ &lt; 0</bdi> يبقى negative autocorrelation، الواطي ييجي بعده عالي والعكس، ولو <bdi dir=\"ltr\">ρ &gt; 0</bdi> العالي ييجي بعده عالي (سلايد 50).",
+  "سلايد 50 بيقول كده بالظبط لـ <bdi dir=\"ltr\">ρ &lt; 0</bdi>، والعالي بعده عالي ده الحالة الموجبة."
+ ],
+ [
+  "الـ frequency test بس (KS أو chi-square) هو اللي بيختبر الـ uniformity، والـ gap test من اختبارات الـ independence (سلايد 32 و 33).",
+  "صح. الـ gap test بيعدّ الأرقام بين تكرارات الرقم وبيختبر الـ independence، وبيستخدم الـ KS على توزيع الـ gaps."
+ ],
+ [
+  "الـ 60 كده نسيت القسمة على <bdi dir=\"ltr\">2ᵏ⁻¹ = 2</bdi>.",
+  "غلط: <bdi dir=\"ltr\">77 = m₁m₂</bdi>، وكل generator بيدي <bdi dir=\"ltr\">mⱼ − 1</bdi> والحاصل بيتقسم على 2.",
+  "غلط: <bdi dir=\"ltr\">16 = 6 + 10</bdi> كده جمعت الـ periods بدل ما تضربهم.",
+  "صح.<span class=\"ltr\">P = (m₁ − 1)(m₂ − 1)/2ᵏ⁻¹ = (6)(10)/2 = 30</span>"
+ ],
+ [
+  "صح. سلايد 24: الـ multiplier هو <bdi dir=\"ltr\">0x5DEECE66D = 25214903917</bdi>، والـ addend <bdi dir=\"ltr\">0xB = 11</bdi>، والـ mask <bdi dir=\"ltr\">2⁴⁸ − 1</bdi>، يعني:<span class=\"ltr\">Xᵢ₊₁ = (25214903917·Xᵢ + 11) mod 2⁴⁸</span>",
+  "سلايد 24 بيوري الـ java.util.Random كـ LCG بالظبط كده، والـ Excel هو اللي بيدمج 3 multiplicative generators."
+ ]
+]);
+AR.ms.lectures["5"].extra = (AR.ms.lectures["5"].extra || []).concat([
+ [
+  "غلط: دي <bdi dir=\"ltr\">−5 ln(0.6)</bdi>، يعني الـ generator (5.2) بالـ <bdi dir=\"ltr\">ln R</bdi>، والسؤال طالب (5.1) بالـ <bdi dir=\"ltr\">ln(1 − R)</bdi> <bdi dir=\"ltr\">(L5, Procedure for the inverse transform (exponential))</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">5 × 0.6</bdi>؛ الـ generator فيه ln ومش خطي في R <bdi dir=\"ltr\">(L5, Procedure for the inverse transform (exponential))</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">λ = 1/mean = 0.2</bdi>، يعني:<span class=\"ltr\">X = −5 ln(0.4) = 5 × 0.9163 = 4.581</span>",
+  "غلط: ده استخدم الـ mean (5) على إنه λ فبقى <bdi dir=\"ltr\">1/λ = 0.2</bdi>. الـ λ هي الـ rate، والـ <bdi dir=\"ltr\">1/λ</bdi> هي متوسط الـ interarrival time <bdi dir=\"ltr\">(L5, 5.1.1 Exponential distribution)</bdi>."
+ ],
+ [
+  "غلط: الـ λ هي متوسط عدد الـ occurrences (الـ arrivals) في وحدة الزمن، ومتوسط الـ interarrival time هو <bdi dir=\"ltr\">E(X) = 1/λ</bdi> <bdi dir=\"ltr\">(L5, 5.1.1 Exponential distribution)</bdi>.",
+  "صح. في مثال 5.1 الـ λ هي متوسط عدد الـ arrivals في وحدة الزمن، والـ <bdi dir=\"ltr\">E(Xi) = 1/λ</bdi> هي متوسط الـ interarrival time."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">R = 1/2</bdi> هي الحد بين الـ pieces، والاتنين بيدّوا الـ mode:<span class=\"ltr\">√(2 × 0.5) = 1 ,  2 − √(2 × 0.5) = 1</span>",
+  "غلط: دي <bdi dir=\"ltr\">√0.5</bdi>؛ الـ generator هو <bdi dir=\"ltr\">√(2R)</bdi> مش <bdi dir=\"ltr\">√R</bdi> <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">X = R</bdi> دي فكرة الـ acceptance-rejection، مش الـ inverse transform بتاع الـ triangular <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">2 − √(1 − R)</bdi>؛ نسيت الـ 2 اللي تحت الجذر، والصح <bdi dir=\"ltr\">2 − √(2(1 − R))</bdi> <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">1.5²/2</bdi>، وده الـ piece بتاع <bdi dir=\"ltr\">0 < x ≤ 1</bdi>، وأي cdf عمرها ما تزيد عن 1 <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">(2 − 1.5)²/2</bdi> لوحدها؛ الـ cdf هي 1 ناقص القيمة دي <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">1 − 0.5²</bdi>، نسيت القسمة على 2 <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "صح. الـ 1.5 بين 1 و 2، يعني:<span class=\"ltr\">F(1.5) = 1 − (2 − 1.5)²/2 = 1 − 0.125 = 0.875</span>"
+ ],
+ [
+  "غلط: ده قرا الـ cdf من فوق؛ الـ R الصغيرة بتروح لأصغر x <bdi dir=\"ltr\">(L5, Example 5.2: empirical discrete distribution (shipments))</bdi>.",
+  "صح. الـ cdf هي <bdi dir=\"ltr\">0.3, 0.8, 1.0</bdi>:<span class=\"ltr\">0.25 ≤ 0.3 → 1 ;  0.3 < 0.65 ≤ 0.8 → 2 ;  0.8 < 0.85 ≤ 1 → 3</span>",
+  "غلط: ده قارن R بالـ pmf (<bdi dir=\"ltr\">0.3, 0.5</bdi>) بدل الـ cumulative <bdi dir=\"ltr\">rk = p(x1) + … + p(xk)</bdi> <bdi dir=\"ltr\">(L5, Example 5.2: empirical discrete distribution (shipments))</bdi>.",
+  "غلط: دي قيم مثال 5.2 (الـ shipments 0 و 1 و 2)، وهنا القيم الممكنة 1 و 2 و 3 <bdi dir=\"ltr\">(L5, Example 5.2: empirical discrete distribution (shipments))</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">⌈Rk − 1⌉</bdi>، خلطت الـ −1 بتاع الـ geometric <bdi dir=\"ltr\">(L5, Example 5.3: discrete uniform distribution on {1, 2, …, k})</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">Rk = 4</bdi> بالظبط، و <bdi dir=\"ltr\">3/8 < 0.5 ≤ 4/8</bdi>، يعني <bdi dir=\"ltr\">X = ⌈4⌉ = 4</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">⌊Rk⌋ + 1</bdi>، وبتفرق عن <bdi dir=\"ltr\">⌈Rk⌉</bdi> لما <bdi dir=\"ltr\">Rk</bdi> يبقى رقم صحيح؛ والـ <bdi dir=\"ltr\">R = 4/8</bdi> هي آخر الـ interval رقم 4 <bdi dir=\"ltr\">(L5, Example 5.3: discrete uniform distribution on {1, 2, …, k})</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">p(2) = 2/10</bdi> يعني الـ pmf؛ الـ cdf بتجمع معاها <bdi dir=\"ltr\">p(1) = 0.1</bdi> <bdi dir=\"ltr\">(L5, Example 5.4: pmf p(x) = 2x / (k(k + 1)))</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">F(3) = (3 × 4)/20</bdi> <bdi dir=\"ltr\">(L5, Example 5.4: pmf p(x) = 2x / (k(k + 1)))</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">F(1) = (1 × 2)/20</bdi> <bdi dir=\"ltr\">(L5, Example 5.4: pmf p(x) = 2x / (k(k + 1)))</bdi>.",
+  "صح.<span class=\"ltr\">F(2) = (2 × 3)/(4 × 5) = 6/20 = 0.3 = 0.1 + 0.2</span>"
+ ],
+ [
+  "صح.<span class=\"ltr\">ln 0.3 / ln 0.6 = 2.357 → 2.357 − 1 = 1.357 → ⌈1.357⌉ = 2</span>",
+  "غلط: ده زوّد <bdi dir=\"ltr\">q = 1</bdi>، بس القيم هنا بتبدأ من صفر (<bdi dir=\"ltr\">q = 0</bdi>) <bdi dir=\"ltr\">(L5, Example 5.5: geometric distribution)</bdi>.",
+  "غلط: ده قرّب 1.357 لتحت، والـ generator بيقرّب لفوق <bdi dir=\"ltr\">(L5, Example 5.5: geometric distribution)</bdi>.",
+  "غلط: ده استخدم <bdi dir=\"ltr\">ln R</bdi> فطلع <bdi dir=\"ltr\">ln 0.7/ln 0.6 − 1 = −0.302 → 0</bdi>، والقانون فيه <bdi dir=\"ltr\">ln(1 − R)</bdi> <bdi dir=\"ltr\">(L5, Example 5.5: geometric distribution)</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">1 + ⌈3.878⌉</bdi>، نسيت الـ −1 جوه التقريب <bdi dir=\"ltr\">(L5, Example 5.6: three geometric variates with mean 2)</bdi>.",
+  "غلط: ده استخدم <bdi dir=\"ltr\">ln R</bdi> فطلع <bdi dir=\"ltr\">ln 0.932/ln 0.5 = 0.102</bdi> وبعدين <bdi dir=\"ltr\">1 + ⌈−0.898⌉ = 1</bdi> <bdi dir=\"ltr\">(L5, Example 5.6: three geometric variates with mean 2)</bdi>.",
+  "صح. <bdi dir=\"ltr\">p = 1/2</bdi> و <bdi dir=\"ltr\">q = 1</bdi>:<span class=\"ltr\">ln 0.068 / ln 0.5 = 3.878 → X1 = 1 + ⌈2.878⌉ = 1 + 3 = 4</span>",
+  "غلط: دي <bdi dir=\"ltr\">⌈2.878⌉</bdi> من غير ما تزوّد <bdi dir=\"ltr\">q = 1</bdi> <bdi dir=\"ltr\">(L5, Example 5.6: three geometric variates with mean 2)</bdi>."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">1 − p < 1</bdi> يعني <bdi dir=\"ltr\">ln(1 − p) < 0</bdi>، والقسمة على رقم سالب بتقلب الـ inequalities:<span class=\"ltr\">ln(1 − R)/ln(1 − p) − 1 ≤ x < ln(1 − R)/ln(1 − p)</span>",
+  "غلط: النوتس كاتبة إن <bdi dir=\"ltr\">1 − p < 1</bdi> معناها <bdi dir=\"ltr\">ln(1 − p) < 0</bdi>، وعشان كده الإشارات بتتقلب <bdi dir=\"ltr\">(L5, Example 5.5: geometric distribution)</bdi>."
+ ],
+ [
+  "غلط: ده ضرب في <bdi dir=\"ltr\">3/4</bdi> بدل ما يقسم <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">(0.8 − 0.25)/0.75</bdi> يعني <bdi dir=\"ltr\">P(X ≤ 0.8)</bdi>، مش احتمال الـ interval <bdi dir=\"ltr\">(0.5, 0.8]</bdi> <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>.",
+  "صح.<span class=\"ltr\">P(0.5 < R ≤ 0.8 | 1/4 ≤ R ≤ 1) = 0.3 / 0.75 = 0.4</span>",
+  "غلط: دي الاحتمال من غير شرط؛ القيم المقبولة مشروطة بـ <bdi dir=\"ltr\">R ≥ 1/4</bdi>، فلازم تقسم على <bdi dir=\"ltr\">3/4</bdi> <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">0.10</bdi> و <bdi dir=\"ltr\">0.22</bdi> أقل من <bdi dir=\"ltr\">1/4</bdi> فاترفضوا، والـ <bdi dir=\"ltr\">0.61</bdi> اتقبل، والـ <bdi dir=\"ltr\">0.05</bdi> اترفض، والـ <bdi dir=\"ltr\">0.93</bdi> اتقبل، يعني استخدمنا الـ 5.",
+  "غلط: دول أقل من <bdi dir=\"ltr\">1/4</bdi>، والخطوة 2b بترفض أي <bdi dir=\"ltr\">R < 1/4</bdi> <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>.",
+  "غلط: القيم صح، بس الـ R's المرفوضة اتولّدت برضه؛ الخطوة 1 بتولّد R جديد كل مرة <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>.",
+  "غلط: ده زوّد <bdi dir=\"ltr\">1/4</bdi> على <bdi dir=\"ltr\">0.10</bdi> و <bdi dir=\"ltr\">0.22</bdi>؛ القيمة المقبولة بتبقى <bdi dir=\"ltr\">X = R</bdi> من غير إزاحة، والصغيرة بتترفض <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>."
+ ],
+ [
+  "صح. دي (5.7): الـ arrival رقم n بييجي قبل الزمن 1، واللي بعده بييجي بعد الزمن 1، يعني بالظبط n arrivals في وحدة زمن.",
+  "غلط: النوتس كاتبة التكافؤ ده على إنه (5.7) <bdi dir=\"ltr\">(L5, 5.2.1 Poisson distribution)</bdi>."
+ ],
+ [
+  "غلط: ده قارن P بـ <bdi dir=\"ltr\">α = 0.5</bdi> (<bdi dir=\"ltr\">0.54 ≥ 0.5</bdi> وبعدين <bdi dir=\"ltr\">0.216 < 0.5</bdi>)، والاختبار الصح <bdi dir=\"ltr\">P < e^(−α)</bdi> <bdi dir=\"ltr\">(L5, Procedure for generating a Poisson variate N)</bdi>.",
+  "غلط: ده قبل لما <bdi dir=\"ltr\">P ≥ e^(−α)</bdi>؛ والـ <bdi dir=\"ltr\">P = 0.9 ≥ 0.6065</bdi> معناها نرفض <bdi dir=\"ltr\">n = 0</bdi> <bdi dir=\"ltr\">(L5, Procedure for generating a Poisson variate N)</bdi>.",
+  "غلط: الـ N مش هي عدد الـ random numbers؛ الـ <bdi dir=\"ltr\">N = n</bdi> محتاجة <bdi dir=\"ltr\">n + 1</bdi> منهم <bdi dir=\"ltr\">(L5, Procedure for generating a Poisson variate N)</bdi>.",
+  "صح.<span class=\"ltr\">n = 0: P = 0.9 ≥ 0.6065 (reject) ;  n = 1: P = 0.54 < 0.6065 → N = 1</span>والـ <bdi dir=\"ltr\">N = n</bdi> بتاخد <bdi dir=\"ltr\">n + 1 = 2</bdi> أرقام."
+ ],
+ [
+  "غلط: <bdi dir=\"ltr\">0.1813 = 1 − e^(−0.2)</bdi>؛ الاختبار بيستخدم <bdi dir=\"ltr\">e^(−α)</bdi> نفسها والإشارة أقل من مش أكبر من <bdi dir=\"ltr\">(L5, Procedure for generating a Poisson variate N)</bdi>.",
+  "صح. عند <bdi dir=\"ltr\">n = 0</bdi> الـ <bdi dir=\"ltr\">P = R1</bdi>، وبنقبل <bdi dir=\"ltr\">N = 0</bdi> لما <bdi dir=\"ltr\">P < 0.8187</bdi> (زي <bdi dir=\"ltr\">0.4357</bdi> و <bdi dir=\"ltr\">0.4146</bdi>).",
+  "غلط: <bdi dir=\"ltr\">P ≥ e^(−α)</bdi> معناها نرفض الـ n ونكمل (الـ <bdi dir=\"ltr\">R1 = 0.8353</bdi> اترفض) <bdi dir=\"ltr\">(L5, Procedure for generating a Poisson variate N)</bdi>.",
+  "غلط: ده قارن <bdi dir=\"ltr\">R1</bdi> بـ α بدل <bdi dir=\"ltr\">e^(−α)</bdi> <bdi dir=\"ltr\">(L5, Procedure for generating a Poisson variate N)</bdi>."
+ ],
+ [
+  "غلط: الـ pdf هي <bdi dir=\"ltr\">f_R(x) = 1</bdi> على <bdi dir=\"ltr\">[0, 1]</bdi>، والـ <bdi dir=\"ltr\">F_R(x) = x</bdi> دي الـ cdf <bdi dir=\"ltr\">(L5, Chapter overview)</bdi>.",
+  "صح. الـ pdf هي <bdi dir=\"ltr\">f_R(x) = 1</bdi> من 0 لـ 1 (وصفر غير كده)، والـ x دي قيمة الـ cdf <bdi dir=\"ltr\">F_R(x)</bdi> على <bdi dir=\"ltr\">[0, 1]</bdi>."
+ ],
+ [
+  "غلط: عند <bdi dir=\"ltr\">R = 0</bdi> الـ generator بيدّي 2، يعني الـ interval بيبدأ من 2 <bdi dir=\"ltr\">(L5, 5.1.2 Uniform distribution on [a, b])</bdi>.",
+  "صح. <bdi dir=\"ltr\">X = a + (b − a)R</bdi> بـ <bdi dir=\"ltr\">a = 2</bdi> و <bdi dir=\"ltr\">b − a = 6</bdi> يعني <bdi dir=\"ltr\">b = 8</bdi> (الـ <bdi dir=\"ltr\">R = 0 → 2</bdi> والـ <bdi dir=\"ltr\">R = 1 → 8</bdi>).",
+  "غلط: الـ 6 هي <bdi dir=\"ltr\">b − a</bdi> مش b <bdi dir=\"ltr\">(L5, 5.1.2 Uniform distribution on [a, b])</bdi>.",
+  "غلط: ده تجاهل <bdi dir=\"ltr\">a = 2</bdi>، اللي هي القيمة عند <bdi dir=\"ltr\">R = 0</bdi> <bdi dir=\"ltr\">(L5, 5.1.2 Uniform distribution on [a, b])</bdi>."
+ ],
+ [
+  "صح. وبالطريقة دي <bdi dir=\"ltr\">R1 = 0.73</bdi> بتدّي <bdi dir=\"ltr\">X1 = 1</bdi> في شكل 5.2.",
+  "غلط: النوتس شارحة الخطوات التلاتة دي بالظبط لـ <bdi dir=\"ltr\">R1 = 0.73</bdi> <bdi dir=\"ltr\">(L5, Example 5.2: empirical discrete distribution (shipments))</bdi>."
+ ],
+ [
+  "غلط: المثال ده بيولّد uniform continuous على <bdi dir=\"ltr\">[1/4, 1]</bdi>، مش demand discrete <bdi dir=\"ltr\">(L5, 5.2 Acceptance-rejection technique)</bdi>.",
+  "غلط: ده الـ generator بتاع الـ exponential لمتغير continuous <bdi dir=\"ltr\">(L5, Procedure for the inverse transform (exponential))</bdi>.",
+  "غلط: ده خاص بالـ pmf <bdi dir=\"ltr\">2x/(k(k + 1))</bdi>؛ جدول الـ frequencies بيتعمل بالـ table lookup <bdi dir=\"ltr\">(L5, 5.1.4 Discrete distributions)</bdi>.",
+  "صح. الـ discrete distributions بتتولد numerically بالـ table lookup، زي مثال 5.2."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">X = 0.5 ≤ 1</bdi>، يعني <bdi dir=\"ltr\">R = X²/2 = 0.25/2 = 0.125</bdi> (وللتأكد <bdi dir=\"ltr\">√(2 × 0.125) = 0.5</bdi>).",
+  "غلط: دي <bdi dir=\"ltr\">X²</bdi> من غير القسمة على 2 <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">R = X</bdi> دي في الـ uniform <bdi dir=\"ltr\">(0, 1)</bdi> بس؛ هنا <bdi dir=\"ltr\">R = X²/2</bdi> <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">1 − 0.125</bdi> من الـ piece بتاع <bdi dir=\"ltr\">1 < x ≤ 2</bdi> (وبتدّي <bdi dir=\"ltr\">X = 1.5</bdi>) <bdi dir=\"ltr\">(L5, 5.1.3 Triangular distribution)</bdi>."
+ ]
+]);
+AR.ms.lectures["6"].extra = (AR.ms.lectures["6"].extra || []).concat([
+ [
+  "غلط: ده عن دمج فترات متشابهة (زي نفس الوقت في أيام ورا بعض)، مش عن observations اتقطعت <bdi dir=\"ltr\">(L6, Data collection)</bdi>.",
+  "غلط: الـ service times هي input data أصلًا؛ المشكلة إن الطويلة منها اتقطعت <bdi dir=\"ltr\">(L6, Data collection)</bdi>.",
+  "صح. الـ censoring معناه إن الكمية متشافتش كلها، وخطره إنك تسيب الـ process times الطويلة.",
+  "غلط: الـ autocorrelation معناها إن وقت عميل بيأثر على عميل بعده، مش قيم متشافتش كاملة <bdi dir=\"ltr\">(L6, Data collection)</bdi>."
+ ],
+ [
+  "غلط: الـ delays دي performance data (outputs)؛ الـ input data زي الـ arrival times بتبقى خارج تحكم السيستم ومش بتتغير بالتحسينات <bdi dir=\"ltr\">(L6, Data collection)</bdi>.",
+  "صح. الـ suggestion رقم 7: اجمع input data مش performance data، والـ delays دي output من السيستم."
+ ],
+ [
+  "غلط: الـ intervals الواسعة قوي بتدّي histogram <b>coarse (blocky)</b>، والضيقة قوي هي اللي بتدّي ragged <bdi dir=\"ltr\">(L6, Histograms)</bdi>.",
+  "صح. الواسعة بتخليه coarse أو blocky (شكل 6.1 b)، والضيقة بتخليه ragged (شكل 6.1 a)."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">(j − 1)/n</bdi>، والـ q-quantile متعرّفة لـ <bdi dir=\"ltr\">0 < q < 1</bdi> بس <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">j − 1/2</bdi> من غير القسمة على n <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>.",
+  "صح.<span class=\"ltr\">yj ≈ F⁻¹[(j − 1/2)/n] = F⁻¹[(1 − 0.5)/20] = F⁻¹(0.025)</span>",
+  "غلط: دي <bdi dir=\"ltr\">j/n = 1/20</bdi>؛ النوتس بتستخدم <bdi dir=\"ltr\">(j − 1/2)/n</bdi> <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>."
+ ],
+ [
+  "صح. لو الـ family مناسبة النقط تبقى تقريبًا على خط مستقيم، ولو الـ parameters كمان مناسبة الـ slope يبقى 1.",
+  "غلط: دي بالظبط طريقة قراية الـ Q-Q plot في النوتس <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>."
+ ],
+ [
+  "صح. الاختلافات الأكبر عند الأطراف مقبولة لأن الـ variance بتاعتها أعلى، والنقط أصلًا عمرها ما هتقع على خط بالظبط.",
+  "غلط: النوتس بتقول إن النقط عمرها ما هتقع على خط مستقيم بالظبط <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>.",
+  "غلط: الـ histogram مش المفضل لتقييم الـ fit؛ الـ Q-Q plot هو المفيد <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>.",
+  "غلط: الـ slope بيتحكم عليه من الخط كله وخصوصًا النص، والتشتت عند الأطراف متوقع <bdi dir=\"ltr\">(L6, Quantile-quantile (Q-Q) plots)</bdi>."
+ ],
+ [
+  "غلط: ده قسم على <bdi dir=\"ltr\">n = 5</bdi>؛ الـ S² بتتقسم على <bdi dir=\"ltr\">n − 1 = 4</bdi> <bdi dir=\"ltr\">(L6, Parameter estimation: sample mean and variance)</bdi>.",
+  "غلط: الـ 3 هي الـ standard deviation <bdi dir=\"ltr\">√9</bdi>؛ الـ <bdi dir=\"ltr\">σ̂² = S²</bdi> هي الـ variance <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">0.2 = 1/X̄</bdi> دي <bdi dir=\"ltr\">λ̂</bdi> بتاعة الـ exponential؛ في الـ normal <bdi dir=\"ltr\">μ̂ = X̄</bdi> <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>.",
+  "صح.<span class=\"ltr\">X̄ = 25/5 = 5 ;  ΣX² = 161 ;  S² = (161 − 5 × 25)/4 = 36/4 = 9</span>"
+ ],
+ [
+  "غلط: القيم عمرها ما هتتساوى بالظبط لأن كل estimator هو random variable؛ اللي بيقرر هو الـ goodness-of-fit test مش التساوي <bdi dir=\"ltr\">(L6, Parameter estimation example: vehicle arrivals)</bdi>.",
+  "صح.<span class=\"ltr\">X̄ = 150/50 = 3 ;  S² = (600 − 50 × 9)/49 = 150/49 = 3.06</span>والـ mean والـ variance قريبين من بعض زي ما الـ Poisson محتاج.",
+  "غلط: ده قسم على <bdi dir=\"ltr\">n = 50</bdi>؛ الـ S² بتتقسم على <bdi dir=\"ltr\">n − 1 = 49</bdi> <bdi dir=\"ltr\">(L6, Parameter estimation: sample mean and variance)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">12 = Σ fjXj²/n</bdi>، نسيت تطرح <bdi dir=\"ltr\">nX̄²</bdi> <bdi dir=\"ltr\">(L6, Parameter estimation: sample mean and variance)</bdi>."
+ ],
+ [
+  "صح. ده مكتوب في slide 21.",
+  "غلط: الـ slide كاتبة الفرق ده بالظبط <bdi dir=\"ltr\">(L6, Parameter estimation: sample mean and variance)</bdi>."
+ ],
+ [
+  "غلط: في الـ lognormal الـ X̄ والـ S² بيتحسبوا بعد ما ناخد الـ ln للداتا <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>.",
+  "صح. الـ α بتاعة الـ Poisson بتتقدر بالـ sample mean (<bdi dir=\"ltr\">α̂ = 3.64</bdi> في داتا الـ vehicles).",
+  "غلط: <bdi dir=\"ltr\">λ̂ = 1/X̄</bdi> (الـ λ rate والـ mean هو <bdi dir=\"ltr\">1/λ</bdi>) <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>.",
+  "غلط: <bdi dir=\"ltr\">σ̂² = S²</bdi>، والـ <bdi dir=\"ltr\">μ̂ = X̄</bdi> <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>."
+ ],
+ [
+  "غلط: ده قسم على <bdi dir=\"ltr\">n = 3</bdi> بدل <bdi dir=\"ltr\">n − 1 = 2</bdi> <bdi dir=\"ltr\">(L6, Parameter estimation: sample mean and variance)</bdi>.",
+  "غلط: دول الـ mean والـ variance للداتا الأصلية؛ الـ lognormal بيتقدر من الـ ln بتاع الداتا <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>.",
+  "غلط: الـ ln بتاع المتوسط مش هو متوسط الـ ln؛ خد الـ ln لكل قيمة الأول وبعدين المتوسط <bdi dir=\"ltr\">(L6, Suggested (maximum-likelihood) estimators)</bdi>.",
+  "صح. متوسط الـ logs بيساوي <bdi dir=\"ltr\">5/3 = 1.67</bdi>، و:<span class=\"ltr\">S² = (0 + 4 + 9 − 3 × 1.667²)/2 = (13 − 8.33)/2 = 2.33</span>"
+ ],
+ [
+  "غلط: ده Type I error (false positive)؛ الـ Type II error إنك تقبل الـ <bdi dir=\"ltr\">H₀</bdi> وهي غلط (false negative) <bdi dir=\"ltr\">(L6, Goodness-of-fit tests and decision errors)</bdi>.",
+  "صح. رفض <bdi dir=\"ltr\">H₀</bdi> صح ده Type I (α)، والـ Type II (β) هو قبول <bdi dir=\"ltr\">H₀</bdi> غلط."
+ ],
+ [
+  "صح.<span class=\"ltr\">E = n·p(0) = 100 × e^(−2) = 100 × 0.1353 = 13.53</span>",
+  "غلط: دي <bdi dir=\"ltr\">p(0)</bdi> لوحدها؛ الـ <bdi dir=\"ltr\">Eᵢ = n·pᵢ</bdi> <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "غلط: دي الـ E بتاعة <bdi dir=\"ltr\">x = 1</bdi> يعني <bdi dir=\"ltr\">100 × 2e^(−2)</bdi> <bdi dir=\"ltr\">(L6, Chi-square example: vehicle arrivals)</bdi>.",
+  "غلط: الـ 2 دي α يعني الـ mean، مش العدد المتوقع في الـ cell <bdi dir=\"ltr\">(L6, Chi-square example: vehicle arrivals)</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">k − 1 = 6</bdi>، نسيت <bdi dir=\"ltr\">s = 1</bdi> عشان α متقدرة <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "غلط: ده حسب <bdi dir=\"ltr\">s = 2</bdi>، والـ Poisson ليه parameter واحد بس هو α <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "صح. الـ cells:<span class=\"ltr\">12 − 1 − 4 = 7 ;  df = k − s − 1 = 7 − 1 − 1 = 5</span>زي مثال الـ vehicles.",
+  "غلط: دي <bdi dir=\"ltr\">12 − 1 − 1</bdi> بالـ k قبل الدمج؛ الـ k هي عدد الـ cells اللي فاضلة بعد الدمج <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>."
+ ],
+ [
+  "غلط: ده قسم على <bdi dir=\"ltr\">Oᵢ = 12</bdi>؛ القانون بيقسم على <bdi dir=\"ltr\">Eᵢ</bdi> المتوقعة <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">(Oᵢ − Eᵢ)/Eᵢ</bdi> من غير تربيع <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "صح.<span class=\"ltr\">(Oᵢ − Eᵢ)²/Eᵢ = (12 − 8)²/8 = 16/8 = 2</span>",
+  "غلط: دي <bdi dir=\"ltr\">(Oᵢ − Eᵢ)²</bdi> من غير القسمة على <bdi dir=\"ltr\">Eᵢ</bdi> <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">pᵢ = F(3) − F(1) = e^(−0.5) − e^(−1.5) = 0.6065 − 0.2231 = 0.3834</span>",
+  "غلط: دي <bdi dir=\"ltr\">F(3)</bdi> لوحدها؛ الـ <bdi dir=\"ltr\">pᵢ = F(aᵢ) − F(aᵢ₋₁)</bdi> <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">e^(−1.5) = 1 − F(3)</bdi>، يعني الاحتمال بعد 3 <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>.",
+  "غلط: دي الـ expected frequency لو <bdi dir=\"ltr\">n = 50</bdi> (<bdi dir=\"ltr\">50 × 0.3834</bdi>)، مش الاحتمال <bdi dir=\"ltr\">(L6, Chi-square test)</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">D⁺</bdi> بس؛ الـ <bdi dir=\"ltr\">D = max(D⁺, D⁻)</bdi> <bdi dir=\"ltr\">(L6, Kolmogorov-Smirnov test)</bdi>.",
+  "غلط: دي أصغر فرق؛ الـ K-S بيستخدم أكبر فرق <bdi dir=\"ltr\">(L6, Kolmogorov-Smirnov test)</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">D⁺ + D⁻</bdi>؛ الـ D هي الأكبر فيهم مش مجموعهم <bdi dir=\"ltr\">(L6, Kolmogorov-Smirnov test)</bdi>.",
+  "صح.<span class=\"ltr\">D⁺ = max(0.15, 0.15, 0.15, 0.05) = 0.15</span><span class=\"ltr\">D⁻ = max(0.10 − 0, 0.35 − 0.25, 0.60 − 0.50, 0.95 − 0.75) = 0.20</span>يعني <bdi dir=\"ltr\">D = 0.20</bdi>."
+ ],
+ [
+  "صح. slide 31: الـ critical values بتبقى biased وكبيرة زيادة، فالـ Type I error بيبقى أصغر من المحدد.",
+  "غلط: الـ slide كاتبة ده بالظبط لحالة إن فيه parameters متقدرة <bdi dir=\"ltr\">(L6, Kolmogorov-Smirnov test)</bdi>."
+ ],
+ [
+  "غلط: الـ 6 دي الـ covariance؛ الـ correlation بتعملها standardize بين <bdi dir=\"ltr\">−1</bdi> و 1 <bdi dir=\"ltr\">(L6, Multivariate input models: covariance and correlation)</bdi>.",
+  "صح.<span class=\"ltr\">ρ = cov / (σ₁σ₂) = 6 / (2 × 5) = 0.6</span>يعني dependence موجبة.",
+  "غلط: ده قسم على <bdi dir=\"ltr\">σ₁²σ₂² = 100</bdi>؛ الـ ρ بتتقسم على <bdi dir=\"ltr\">σ₁σ₂</bdi> <bdi dir=\"ltr\">(L6, Multivariate input models: covariance and correlation)</bdi>.",
+  "غلط: ده قسم على <bdi dir=\"ltr\">σ₁</bdi> بس، وكمان الـ correlation لازم تبقى بين <bdi dir=\"ltr\">−1</bdi> و 1 <bdi dir=\"ltr\">(L6, Multivariate input models: covariance and correlation)</bdi>."
+ ],
+ [
+  "غلط: الـ <bdi dir=\"ltr\">σε²</bdi> هي variance الـ <bdi dir=\"ltr\">εₜ</bdi> مش <bdi dir=\"ltr\">Xₜ</bdi>، والـ <bdi dir=\"ltr\">ρ₂ = φ²</bdi> مش φ <bdi dir=\"ltr\">(L6, Time-series input models: AR(1) and EAR(1))</bdi>.",
+  "صح.<span class=\"ltr\">Var(Xₜ) = σε²/(1 − φ²) = 3/0.75 = 4 ;  ρ₂ = φ² = 0.25</span>",
+  "غلط: ده قسم على <bdi dir=\"ltr\">1 − φ = 0.5</bdi>؛ الـ variance بتستخدم <bdi dir=\"ltr\">1 − φ²</bdi> <bdi dir=\"ltr\">(L6, Time-series input models: AR(1) and EAR(1))</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">2φ</bdi>؛ الـ lag-h autocorrelation هي φ أس h <bdi dir=\"ltr\">(L6, Time-series input models: AR(1) and EAR(1))</bdi>."
+ ]
+]);
+AR.ms.lectures["7"].extra = (AR.ms.lectures["7"].extra || []).concat([
+ [
+  "غلط: ده متوسط الـ NCUST (العملاء في السيستم كله) وحسب اللي بيتخدم؛ طول الـ queue هو <bdi dir=\"ltr\">NCUST − STATUS</bdi> <bdi dir=\"ltr\">(L7, Example 7.1: finding an error with a trace)</bdi>.",
+  "غلط: ده قسم على وقت آخر event (12)؛ الـ T هي طول الـ run كله (15) <bdi dir=\"ltr\">(L7, Example 7.1: finding an error with a trace)</bdi>.",
+  "غلط: ده عدّ الـ 2 intervals اللي فيهم حد مستني بدل ما يضرب كل واحد في طوله (3 و 1) <bdi dir=\"ltr\">(L7, Example 7.1: finding an error with a trace)</bdi>.",
+  "صح. طول الـ queue هو <bdi dir=\"ltr\">NCUST − STATUS</bdi>:<span class=\"ltr\">4–7: 1 × 3 ;  9–10: 1 × 1 ;  all other intervals: 0</span><span class=\"ltr\">L̂Q = (3 + 1)/15 = 4/15 = 0.267</span>"
+ ],
+ [
+  "صح. بعد الـ departure مفيش حد في السيستم (<bdi dir=\"ltr\">NCUST = 0</bdi>)، ومع ذلك <bdi dir=\"ltr\">STATUS = 1</bdi> يعني الـ server مشغول، وده عكس غلط <bdi dir=\"ltr\">CLOCK = 3</bdi> في مثال 7.1. ‡ (مثال النوتس فيه الحالة العكسية)",
+  "غلط: العميل الجديد لقى الـ server فاضي وبدأ يتخدم، فـ <bdi dir=\"ltr\">NCUST 1, STATUS 1</bdi> منطقي <bdi dir=\"ltr\">(L7, Example 7.1: finding an error with a trace)</bdi>.",
+  "غلط: عميلين، واحد بيتخدم وواحد مستني، والـ server مشغول، ده منطقي <bdi dir=\"ltr\">(L7, Example 7.1: finding an error with a trace)</bdi>.",
+  "غلط: عميل واحد في السيستم والـ server مشغول، ده منطقي <bdi dir=\"ltr\">(L7, Example 7.1: finding an error with a trace)</bdi>."
+ ],
+ [
+  "غلط: دي واحدة من الـ verification considerations <bdi dir=\"ltr\">(L7, 7.2 Verification: purpose and considerations)</bdi>.",
+  "غلط: دي الـ common sense technique بتاعة الـ verification <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>.",
+  "صح. ده الهدف التاني، والهدف الأول model بيمثل السلوك الحقيقي للسيستم وينفع يبقى بديل للـ actual system.",
+  "غلط: ده الـ verification (building the model right) <bdi dir=\"ltr\">(L7, Why verification and validation matter)</bdi>."
+ ],
+ [
+  "غلط: دي الخطوة 1 <bdi dir=\"ltr\">(L7, 7.1 Model building, verification and validation (3 steps))</bdi>.",
+  "غلط: الـ calibration والـ validation هما الـ loop اللي حوالين الخطوات، مش الخطوة 2 <bdi dir=\"ltr\">(L7, 7.1 Model building, verification and validation (3 steps))</bdi>.",
+  "صح. الخطوة 2 هي بناء الـ conceptual model.",
+  "غلط: الترجمة لشكل الكمبيوتر يفهمه دي الخطوة 3 <bdi dir=\"ltr\">(L7, 7.1 Model building, verification and validation (3 steps))</bdi>."
+ ],
+ [
+  "غلط: بناء الـ model مش linear؛ اللي بيبنيه بيرجع للخطوات كذا مرة وهو بيبني ويعمل verify و validate <bdi dir=\"ltr\">(L7, 7.1 Model building, verification and validation (3 steps))</bdi>.",
+  "صح. النوتس بتقول إن بناء الـ model مش linear، ولما أسئلة جديدة تظهر بنرجع للخطوة 1."
+ ],
+ [
+  "صح. الـ total count هي عدد الـ items اللي دخلت الـ component لحد وقت معين، ولو صفر يبقى مفيش حاجة دخلت.",
+  "غلط: ده بيبان من الـ current contents العالية <bdi dir=\"ltr\">(L7, Statistics that show model reasonableness)</bdi>.",
+  "غلط: ده بيبان لما الـ current count والـ total count الاتنين بواحد <bdi dir=\"ltr\">(L7, Statistics that show model reasonableness)</bdi>.",
+  "غلط: الـ statistics دي بتختبر الـ reasonableness في الـ verification، مش بتعمل validate للـ model <bdi dir=\"ltr\">(L7, Statistics that show model reasonableness)</bdi>."
+ ],
+ [
+  "غلط: ده الاستخدام (a) للـ IRC <bdi dir=\"ltr\">(L7, 7.2 Verification: purpose and considerations)</bdi>.",
+  "غلط: ده الاستخدام (b)، التركيز على entity معينة أو سطور logic <bdi dir=\"ltr\">(L7, 7.2 Verification: purpose and considerations)</bdi>.",
+  "غلط: ده الاستخدام (d) <bdi dir=\"ltr\">(L7, 7.2 Verification: purpose and considerations)</bdi>.",
+  "صح. ده objective validation test ومحتاج داتا من السيستم؛ الـ IRC أداة verification للـ logic بتاع البرنامج."
+ ],
+ [
+  "غلط: عشان بياخد وقت، الـ trace run غالبًا بيبقى restricted (قصير)، وممكن نعمل selective trace لأماكن معينة <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>.",
+  "صح. الـ trace غالبًا بيبقى على run قصير، أو selective لأماكن معينة في الـ model."
+ ],
+ [
+  "غلط: ده validation test بـ reports حقيقية و fake <bdi dir=\"ltr\">(L7, 7.3.5 Input-output validation using a Turing test)</bdi>.",
+  "صح. الـ documentation بتوضح الـ logic بتاع الـ model.",
+  "غلط: الـ trace بيطبع قيمة كل variable كل ما واحد يتغير <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>.",
+  "غلط: دي بتتوقع مدى معقول للـ outputs قبل التشغيل <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>."
+ ],
+ [
+  "صح. دي أول verification consideration.",
+  "غلط: دي الـ consideration رقم 1 في النوتس <bdi dir=\"ltr\">(L7, 7.2 Verification: purpose and considerations)</bdi>."
+ ],
+ [
+  "غلط: الـ flow diagram دي verification consideration <bdi dir=\"ltr\">(L7, 7.2 Verification: purpose and considerations)</bdi>.",
+  "صح. ده تعريف الـ objective tests.",
+  "غلط: ده subjective test <bdi dir=\"ltr\">(L7, 7.3 Calibration and validation)</bdi>.",
+  "غلط: الـ trace أداة verification للبرنامج <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>."
+ ],
+ [
+  "غلط: كل تعديل بيكلّف وقت وفلوس ومجهود ولازم يتوازن <bdi dir=\"ltr\">(L7, 7.3 Calibration and validation)</bdi>.",
+  "غلط: لازم يتحكم إن الـ model دقيق قبل ما يتقبل <bdi dir=\"ltr\">(L7, 7.3 Calibration and validation)</bdi>.",
+  "غلط: الـ verification بتختبر البرنامج، مش إن الـ model زي الـ real system <bdi dir=\"ltr\">(L7, Why verification and validation matter)</bdi>.",
+  "صح. اللي بيبني الـ model بيوازن بين زيادة الدقة والتكلفة، ولو الدقة موصلتش في حدود الـ budget يا يقلل الدقة يا يرفض الـ model."
+ ],
+ [
+  "صح. عشان الواقع يدخل في الـ model من خلال assumptions عن الـ structure وداتا موثوقة.",
+  "غلط: لازم يشاركوا طول الوقت من أول الـ conceptualization <bdi dir=\"ltr\">(L7, 7.3.1 Face validity)</bdi>.",
+  "غلط: هما كمان بيقيّموا الـ output ويشاركوا في الـ calibration <bdi dir=\"ltr\">(L7, 7.3.1 Face validity)</bdi>.",
+  "غلط: الـ Turing test فيه engineer بيحكم على reports، والـ face validity محتاجة الـ users طول الوقت <bdi dir=\"ltr\">(L7, 7.3.1 Face validity)</bdi>."
+ ],
+ [
+  "غلط: النوتس بتسمح نختار المهم بس لو الاختبار غالي <bdi dir=\"ltr\">(L7, 7.3.1 Face validity)</bdi>.",
+  "غلط: الـ trace بيعمل verify للـ logic، ومش بيختبر رد فعل الـ model لتغيير الـ inputs <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>.",
+  "صح. لو الاختبار غالي أو بياخد وقت، بنختبر أهم الـ input variables بس.",
+  "غلط: الـ sensitivity analysis لسه بتختبر الـ face validity؛ بنقلل نطاقها مش بنلغيها <bdi dir=\"ltr\">(L7, 7.3.1 Face validity)</bdi>."
+ ],
+ [
+  "غلط: الـ trace بيعمل verify للبرنامج، مش إن الـ assumption زي البنك الحقيقي <bdi dir=\"ltr\">(L7, Three verification techniques: common sense, documentation, trace)</bdi>.",
+  "غلط: الـ Turing test بيقارن reports الـ model والسيستم <bdi dir=\"ltr\">(L7, 7.3.5 Input-output validation using a Turing test)</bdi>.",
+  "صح. الـ structural assumptions بنتأكد منها كده.",
+  "غلط: الـ goodness-of-fit tests بتعمل validate للـ data assumptions (الـ distributions)، مش لطريقة شغل السيستم <bdi dir=\"ltr\">(L7, 7.3.2 Validation of model assumptions)</bdi>."
+ ],
+ [
+  "صح. (1) نحدد الـ distribution، (2) نقدّر الـ parameters، (3) نعمل validate بالـ chi-square أو الـ K-S وبالرسم.",
+  "غلط: لازم نحدد الـ family الأول قبل ما نقدّر الـ parameters بتاعتها <bdi dir=\"ltr\">(L7, 7.3.2 Validation of model assumptions)</bdi>.",
+  "غلط: الـ goodness of fit بيختبر distribution مختارة بـ parameters متقدرة، فبييجي في الآخر <bdi dir=\"ltr\">(L7, 7.3.2 Validation of model assumptions)</bdi>.",
+  "غلط: لازم نقدّر الـ parameters قبل ما نختبر الـ fit <bdi dir=\"ltr\">(L7, 7.3.2 Validation of model assumptions)</bdi>."
+ ],
+ [
+  "صح. مثال البنك كاتب كده، وممكن كمان اختبارات زيادة للـ correlation في الداتا.",
+  "غلط: النوتس بتطلب homogeneity test لما الـ data sets تتدمج <bdi dir=\"ltr\">(L7, 7.3.2 Validation of model assumptions)</bdi>."
+ ],
+ [
+  "غلط: في التعديل البسيط ممكن نقبل output الـ model الجديد بثقة <bdi dir=\"ltr\">(L7, 7.3.3 Validating input-output transformations)</bdi>.",
+  "غلط: الـ partial validation للتغييرات الـ major <bdi dir=\"ltr\">(L7, 7.3.3 Validating input-output transformations)</bdi>.",
+  "غلط: النوتس مش بتطلب Turing test هنا؛ التأكد الكويس من التغيير البسيط كفاية <bdi dir=\"ltr\">(L7, 7.3.3 Validating input-output transformations)</bdi>.",
+  "صح. تغيير parameter رقمي واحد ده minor change، والثقة بتتنقل لما الـ model الجديد يبقى تعديل بسيط."
+ ],
+ [
+  "غلط: الـ flowchart بيرجّع الـ validation الفاشلة للخطوتين 3 و 4 <bdi dir=\"ltr\">(L7, Link to Lecture 1: verification and validation in the simulation study)</bdi>.",
+  "صح. لو الـ model مش validated نرجع للخطوتين 3 و 4، ولو validated نكمل للخطوة 8 (الـ experimental design).",
+  "غلط: ده الرجوع لما الخطوة 6 «Verified?» تبقى لأ <bdi dir=\"ltr\">(L7, Link to Lecture 1: verification and validation in the simulation study)</bdi>.",
+  "غلط: الخطوة 8 بتيجي بعد «Validated?» بنعم <bdi dir=\"ltr\">(L7, Link to Lecture 1: verification and validation in the simulation study)</bdi>."
+ ],
+ [
+  "صح. كل الـ inputs والـ responses لازم تتجمع في نفس الفترة، والـ electronic counters والأجهزة بتسهّل ده.",
+  "غلط: النوتس كاتبة الصعوبة دي في الـ large systems <bdi dir=\"ltr\">(L7, 7.3.4 Input-output validation using historical input data)</bdi>."
+ ]
+]);
+AR.ms.lectures["8"].extra = (AR.ms.lectures["8"].extra || []).concat([
+ [
+  "غلط: ده نسي خطوة الـ translation <bdi dir=\"ltr\">R = R2 + Low</bdi> <bdi dir=\"ltr\">(L8, Generating random numbers in C++ (Lab 1))</bdi>.",
+  "صح.<span class=\"ltr\">R2 = 0.37 × (15 − 5) = 3.7 → truncate → 3 → R = 3 + 5 = 8</span>",
+  "غلط: ده نسي خطوة الـ truncation؛ الـ 8.7 دي نسخة الـ real number (الـ RandReal) <bdi dir=\"ltr\">(L8, Generating random numbers in C++ (Lab 1))</bdi>.",
+  "غلط: ده قرّب 3.7 لـ 4، والـ algorithm بيعمل truncation <bdi dir=\"ltr\">(L8, Generating random numbers in C++ (Lab 1))</bdi>."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">R0 ≤ RAND_MAX < RAND_MAX + 1</bdi>، يعني <bdi dir=\"ltr\">R1</bdi> في <bdi dir=\"ltr\">[0, 1)</bdi>. ‡ الـ lab نفسه كاتب <bdi dir=\"ltr\">[0, 1]</bdi>.",
+  "غلط: الـ <bdi dir=\"ltr\">rand()</bdi> أقصاها <bdi dir=\"ltr\">RAND_MAX</bdi>، وده أقل من المقسوم عليه <bdi dir=\"ltr\">RAND_MAX + 1</bdi> <bdi dir=\"ltr\">(L8, Generating random numbers in C++ (Lab 1))</bdi>."
+ ],
+ [
+  "غلط: الاختبار أقل من <bdi dir=\"ltr\">0.5</bdi> بالظبط، والمساوي بيروح للـ else <bdi dir=\"ltr\">(L8, Unbiased coin (Lab 2))</bdi>.",
+  "غلط: الـ A2 فيها رقم من <bdi dir=\"ltr\">RAND()</bdi>، فالمقارنة سليمة <bdi dir=\"ltr\">(L8, Unbiased coin (Lab 2))</bdi>.",
+  "غلط: الـ IF بترجّع واحد من الحرفين، مش الـ random number <bdi dir=\"ltr\">(L8, Unbiased coin (Lab 2))</bdi>.",
+  "صح. <bdi dir=\"ltr\">0.5 < 0.5</bdi> غلط، فالـ IF بترجّع T. (كود الـ C++ بيعتبر <bdi dir=\"ltr\">res <= 0.5</bdi> head، والاتنين احتمالهم <bdi dir=\"ltr\">0.5</bdi>.)"
+ ],
+ [
+  "صح.<span class=\"ltr\">Serv_begin = Max(12, 15) = 15 ;  Serv_end = 19 ;  WT = 19 − 12 = 7</span>والـ clerk مشغول عند 12، يعني <bdi dir=\"ltr\">Idle = 0</bdi>.",
+  "غلط: دي الـ service time بس؛ الـ <bdi dir=\"ltr\">WT[i] = Serv_end[i] − Ar_Clk[i]</bdi> فيها كمان 3 دقايق انتظار <bdi dir=\"ltr\">(L8, Gift Shop: model and flowchart)</bdi>.",
+  "غلط: ده الانتظار في الـ queue بس؛ الـ WT في الـ lab هو الوقت في السيستم (انتظار وخدمة) <bdi dir=\"ltr\">(L8, Gift Shop: model and flowchart)</bdi>.",
+  "غلط: الـ idle بيتحسب بس لو العميل وصل بعد ما الـ clerk فضي (<bdi dir=\"ltr\">Ar_Clk[i] > Serv_end[i−1]</bdi>)، وهنا <bdi dir=\"ltr\">12 < 15</bdi> <bdi dir=\"ltr\">(L8, Gift Shop: model and flowchart)</bdi>."
+ ],
+ [
+  "غلط: ده ضرب <bdi dir=\"ltr\">K/N</bdi> في واحد بس من h و <bdi dir=\"ltr\">(c − b)</bdi> <bdi dir=\"ltr\">(L8, 8-2. Area under a curve (Monte Carlo integration))</bdi>.",
+  "غلط: دي <bdi dir=\"ltr\">K/(h(c − b)N)</bdi>، قسم على المستطيل بدل ما يضرب <bdi dir=\"ltr\">(L8, 8-2. Area under a curve (Monte Carlo integration))</bdi>.",
+  "صح.<span class=\"ltr\">A = K h (c − b) / N = 400 × 2 × 2 / 1000 = 1.6</span>",
+  "غلط: دي <bdi dir=\"ltr\">K/N</bdi>، ودي بتساوي A بس لو <bdi dir=\"ltr\">h(c − b) = 1</bdi> زي مثال الكتاب <bdi dir=\"ltr\">(L8, 8-2. Area under a curve (Monte Carlo integration))</bdi>."
+ ],
+ [
+  "غلط: نتايج الـ simulation غالبًا أقل دقة من الحل الـ analytic؛ المساحة بـ 3000 نقطة <bdi dir=\"ltr\">0.784</bdi> مختلفة عن <bdi dir=\"ltr\">π/4</bdi> <bdi dir=\"ltr\">(L8, Area under a curve: flowchart, program output and analytic check)</bdi>.",
+  "صح. الكتاب بيقول إن الـ simulation غالبًا أقل دقة، وبنلجأ ليها بس لما المسألة صعبة أو غالية أو خطيرة أو مستحيلة بالطرق التانية."
+ ],
+ [
+  "غلط: دي الـ assumption رقم 2 <bdi dir=\"ltr\">(L8, Pure pursuit problem: definition and assumptions (8-3, Lab 4))</bdi>.",
+  "غلط: دي الـ assumption رقم 3 <bdi dir=\"ltr\">(L8, Pure pursuit problem: definition and assumptions (8-3, Lab 4))</bdi>.",
+  "صح. مسار الـ bomber متحدد مسبقًا (جدول الـ XB و YB)، ومش بيتصرف حسب الـ fighter.",
+  "غلط: دي الـ assumption رقم 1 <bdi dir=\"ltr\">(L8, Pure pursuit problem: definition and assumptions (8-3, Lab 4))</bdi>."
+ ],
+ [
+  "صح.<span class=\"ltr\">DIST = √(30² + 40²) = 50 ;  cos θ = 0.6 ,  sin θ = 0.8</span><span class=\"ltr\">XF = 10 + 20(0.6) = 22 ;  YF = 20 + 20(0.8) = 36</span>",
+  "غلط: ده بدّل الـ sin والـ cos؛ الـ XF بيستخدم <bdi dir=\"ltr\">cos θ = (XB − XF)/DIST</bdi> <bdi dir=\"ltr\">(L8, Pursuit problem: model and flowchart)</bdi>.",
+  "غلط: الـ fighter بيتحرك <bdi dir=\"ltr\">20 km</bdi> بس في الدقيقة على خط النظر، والـ bomber على بعد <bdi dir=\"ltr\">50 km</bdi> <bdi dir=\"ltr\">(L8, Pursuit problem: model and flowchart)</bdi>.",
+  "غلط: ده زوّد <bdi dir=\"ltr\">cos θ</bdi> و <bdi dir=\"ltr\">sin θ</bdi> من غير ما يضربهم في <bdi dir=\"ltr\">VF = 20</bdi> <bdi dir=\"ltr\">(L8, Pursuit problem: model and flowchart)</bdi>."
+ ],
+ [
+  "غلط: بيعدّل اتجاهه بس كل <bdi dir=\"ltr\">Δt</bdi> ثابتة (كل دقيقة) وبيطير مستقيم في النص <bdi dir=\"ltr\">(L8, Pure pursuit problem: definition and assumptions (8-3, Lab 4))</bdi>.",
+  "صح. عند اللحظة t بيوجّه نفسه على خط النظر، ويطير كده دقيقة، وبعدين يبص تاني."
+ ],
+ [
+  "غلط: القاعدة <bdi dir=\"ltr\">|X| + |Y| ≤ 2</bdi>، مش المسافة المستقيمة <bdi dir=\"ltr\">(L8, 8-4. The staggering drunk (random walk) problem)</bdi>.",
+  "غلط: الإشارات مينفعش تلغي بعض؛ خد الـ absolute value لكل إحداثي لوحده <bdi dir=\"ltr\">(L8, 8-4. The staggering drunk (random walk) problem)</bdi>.",
+  "غلط: القاعدة بتجمع المسافتين <bdi dir=\"ltr\">|X| + |Y|</bdi> <bdi dir=\"ltr\">(L8, 8-4. The staggering drunk (random walk) problem)</bdi>.",
+  "صح. هو ماشي في الشوارع، فالمسافة بالـ blocks هي <bdi dir=\"ltr\">|2| + |−1| = 3 > 2</bdi>، يعني فشل."
+ ],
+ [
+  "غلط: حكاية الزوجية دي صح لأي عملة، ومش معتمدة على <bdi dir=\"ltr\">P(H) = 0.5</bdi> <bdi dir=\"ltr\">(L8, Flipping coin game: assumptions and model (Lab 5))</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">H − T</bdi> والـ <bdi dir=\"ltr\">H + T</bdi> ليهم نفس الزوجية، فلو الفرق فردي يبقى المجموع فردي: <bdi dir=\"ltr\">3, 5, 7, 9, …</bdi>",
+  "غلط: الكود بيفضل يرمي طول ما <bdi dir=\"ltr\">|H − T| ≠ 3</bdi>، ومفيش حاجة بتمنع الرمية رقم 8 <bdi dir=\"ltr\">(L8, Flipping coin game: assumptions and model (Lab 5))</bdi>.",
+  "غلط: مفيش حاجة بتتساب؛ عدد رميات زوجي مينفعش يدّي <bdi dir=\"ltr\">|H − T| = 3</bdi> أصلًا <bdi dir=\"ltr\">(L8, Flipping coin game: assumptions and model (Lab 5))</bdi>."
+ ],
+ [
+  "غلط: الـ 3 دي الـ median؛ الـ mean هو <bdi dir=\"ltr\">ΣX/n = 7/3</bdi> <bdi dir=\"ltr\">(L8, Flipping coin game: assumptions and model (Lab 5))</bdi>.",
+  "صح.<span class=\"ltr\">mean = 7/3 = 2.33 ;  Σ(Xᵢ − X̄)² = 7.11 + 11.11 + 0.44 = 18.67 ;  variance = 18.67/3 = 6.22</span>",
+  "غلط: ده قسم على <bdi dir=\"ltr\">N − 1 = 2</bdi>، والـ variance بتاعة الـ lab بتتقسم على N <bdi dir=\"ltr\">(L8, Flipping coin game: assumptions and model (Lab 5))</bdi>.",
+  "غلط: الـ 2.49 دي الـ standard deviation <bdi dir=\"ltr\">√6.22</bdi> <bdi dir=\"ltr\">(L8, Flipping coin game: assumptions and model (Lab 5))</bdi>."
+ ],
+ [
+  "غلط: ده نسي الـ salvage بتاع الـ 20 جورنال اللي فضلوا <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>.",
+  "غلط: ده حسب التكلفة على الـ 60 اللي اتباعوا بس، والـ 80 كلهم اتشروا <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>.",
+  "غلط: ده حسب اللي فضل بسعر البيع <bdi dir=\"ltr\">$0.50</bdi> بدل سعر الـ scrap <bdi dir=\"ltr\">$0.05</bdi> <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>.",
+  "صح.<span class=\"ltr\">30.00 − 26.40 + 0.05 × 20 = 30.00 − 26.40 + 1.00 = 4.60</span>ومفيش lost profit."
+ ],
+ [
+  "صح. الـ <bdi dir=\"ltr\">0.35</bdi> في <bdi dir=\"ltr\">01-35</bdi> يبقى good، وفي اليوم الـ good الـ 44 في <bdi dir=\"ltr\">44-78</bdi> يبقى 80.",
+  "غلط: الـ 35 آخر رقم في مدى الـ good (<bdi dir=\"ltr\">01-35</bdi>)، والـ fair بيبدأ من 36 <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>.",
+  "غلط: مدى الـ 70 في اليوم الـ good هو <bdi dir=\"ltr\">24-43</bdi>، والـ 44 بداية مدى الـ 80 <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>.",
+  "غلط: ده قرا الـ 44 في عمود الـ poor (<bdi dir=\"ltr\">01-44 → 50</bdi>)، بس نوع اليوم good <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>."
+ ],
+ [
+  "صح. <bdi dir=\"ltr\">0.50 − 0.33 = 0.17</bdi>.",
+  "غلط: النوتس كاتبة إن الـ lost profit بيساوي <bdi dir=\"ltr\">0.50 − 0.33 = $0.17</bdi> <bdi dir=\"ltr\">(L8, Newspaper seller problem: data (Quiz 5))</bdi>."
+ ],
+ [
+  "غلط: دي <bdi dir=\"ltr\">(P − C)x = 3.5 × 5</bdi> كأن الـ 5 اتباعوا، ودي حالة <bdi dir=\"ltr\">x ≤ d</bdi> <bdi dir=\"ltr\">(L8, Cake shop: model development)</bdi>.",
+  "غلط: ده خسّر التكلفة كلها في كل كيكة زيادة (<bdi dir=\"ltr\">10.5 − 2 × 2.5</bdi>)، ونسي الـ salvage <bdi dir=\"ltr\">$1.00</bdi> <bdi dir=\"ltr\">(L8, Cake shop: model development)</bdi>.",
+  "صح. <bdi dir=\"ltr\">x > d</bdi>:<span class=\"ltr\">z = (P − S)d + (S − C)x = 5 × 3 − 1.5 × 5 = 15 − 7.5 = 7.5</span>",
+  "غلط: دي <bdi dir=\"ltr\">(P − C)d = 3.5 × 3</bdi>، ونسيت خسارة <bdi dir=\"ltr\">$1.50</bdi> في كل كيكة من الـ 2 الزيادة <bdi dir=\"ltr\">(L8, Cake shop: model development)</bdi>."
+ ],
+ [
+  "غلط: الـ order بيتعمل بس لو <bdi dir=\"ltr\">I ≤ r</bdi> ومفيش order مستني، وعمر ما يبقى فيه 2 orders مستنيين <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>.",
+  "صح. الخطوة 4 بتسأل هل فيه order مستني دلوقتي، ولو أيوه مفيش order جديد."
+ ],
+ [
+  "غلط: ده استخدم قانون <bdi dir=\"ltr\">x > d</bdi> يعني <bdi dir=\"ltr\">5d − 2x</bdi>، وهنا <bdi dir=\"ltr\">x < d</bdi> <bdi dir=\"ltr\">(L8, 8-8. End-of-chapter questions (book))</bdi>.",
+  "غلط: ده حسب goodwill على الـ 50 طلب (<bdi dir=\"ltr\">120 − 250</bdi>)، والـ goodwill على الـ <bdi dir=\"ltr\">d − x = 10</bdi> اللي ماتلبّوش بس <bdi dir=\"ltr\">(L8, 8-8. End-of-chapter questions (book))</bdi>.",
+  "صح. <bdi dir=\"ltr\">x ≤ d</bdi>:<span class=\"ltr\">z = (P − C)x − u(d − x) = 3 × 40 − 5 × 10 = 70   (= 8x − 5d)</span>",
+  "غلط: دي <bdi dir=\"ltr\">(P − C)x</bdi> من غير الـ goodwill cost بتاع الـ 10 طلبات اللي ماتلبّتش <bdi dir=\"ltr\">(L8, 8-8. End-of-chapter questions (book))</bdi>."
+ ],
+ [
+  "صح. الـ orders بتوصل أول اليوم، قبل ما نولّد الطلب.",
+  "غلط: دي الخطوة 2، بعد ما نضيف أي حاجة وصلت <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>.",
+  "غلط: الطلب بييجي بعد الـ demand، لما <bdi dir=\"ltr\">I ≤ r</bdi> ومفيش order مستني <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>.",
+  "غلط: الـ holding cost بيتحسب قرب الآخر على مخزون آخر اليوم <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>."
+ ],
+ [
+  "غلط: ده نسي الـ order؛ <bdi dir=\"ltr\">I = 0 ≤ r</bdi> ومفيش order مستني، فلازم نطلب (<bdi dir=\"ltr\">$20</bdi>) <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>.",
+  "غلط: ده حسب shortage على الـ 4؛ العميل بياخد الـ 2 الموجودين، والعجز <bdi dir=\"ltr\">d − I = 2</bdi> بس <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>.",
+  "غلط: ده حسب holding على مخزون أول اليوم (2)؛ الـ holding على مخزون آخر اليوم وهو صفر <bdi dir=\"ltr\">(L8, 8-6. Inventory problem (Auto Supplies): see Lecture 2)</bdi>.",
+  "صح.<span class=\"ltr\">shortage = 50 × (4 − 2) = 100 , I = 0 ;  I ≤ r → order 20 ;  holding = 0.10 × 0 = 0</span>يعني الإجمالي <bdi dir=\"ltr\">$120</bdi>."
+ ]
+]);

@@ -134,6 +134,7 @@ Rate each card **Again**, **Hard** or **Good**. A small SM-2-style scheduler bri
 - Highlighted key terms, three text sizes and a distraction-free focus mode
 - **Book view**: read a lecture as a two-page book with a real page-turn animation and pinch-to-zoom
 - **Head First**: a lecture retold the Head First way, as a book with hand-laid pages: a chatty voice, characters who argue (Fireside Chats, interviews), Brain Power questions, "Watch it!" exam traps from past exams, exercises you answer on the page, and the lecture's animated visuals. Opens from its own tab or the Notes toolbar, in English or Egyptian Arabic (an English / العربي switch on the tab and in the book; the Arabic book reads and turns right to left). So far: every Compiler Design, Operating Systems, Multimedia, Software Quality, HCI, File Processing and Modeling & Simulation lecture (`hf.js` is the book; `hf-<course>.js` and `hf-<course>-<n>.js` hold the chapters, a chapter in its own file loads only when it is opened)
+- **Final revision**: every Level 3 course, all lectures, for the final exam: an exam-focused summary per lecture in English and Egyptian Arabic ending with what the doctors ask (past finals and this year's midterm), every animation with a reviewed tick, the doctors' questions first, then more practice, and a timed 40-question mock final. The midterm revision is still one click away
 - Instant search across every course with <kbd>/</kbd> or <kbd>Ctrl</kbd>+<kbd>K</kbd>
 
 ### Animated diagrams
@@ -217,6 +218,7 @@ study-deck/
 ├── dm.js … sa.js       # Level 2 course sources, same format
 ├── extra/              # extra practice questions, per lecture
 ├── papers/             # more solved past papers, merged into the courses
+├── midterm/ final/    # midterm and final revision: scope and exam-focused summaries (English + Arabic)
 ├── summary/            # questions from student summaries, answers re-checked against the lectures
 ├── ar/                 # Egyptian Arabic explanations, per course
 ├── build.mjs           # merges the sources into data/ + manifest.js

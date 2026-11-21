@@ -4863,3 +4863,563 @@ AR.hci.lectures[6].quiz.splice(9, 0, ...[
   "ده ضد Be Concise: اسأل بلغة بسيطة. الأسئلة اللي المستخدم مش فاهمها بتطلّع إجابات غلط <bdi dir=\"ltr\">(L6)</bdi>."
  ]
 ]);
+
+// Final revision practice questions (Arabic whys), appended in the same order as extra/hci.js
+AR.hci.lectures["7"].extra = (AR.hci.lectures["7"].extra || []).concat([
+ [
+  "الاتنين بيسألوا أسئلة، بس المحاضرة بتقول إن عدد اللي بنعملهم interview أقل بكتير من اللي بنعملهم survey (L7, Interviews).",
+  "صح. عدد الـ users اللي تقدر تعملهم interview أقل بكتير من الـ survey، لأن كل interview بياخد وقت الـ interviewer.",
+  "معكوسة. الوصول لعدد كبير من الـ users بسرعة ده ميزة الـ surveys (L5, Surveys).",
+  "الـ Interviews مش مقصورة على الأنظمة القديمة، والحد اللي المحاضرة بتقوله هو عدد الـ users (L7, Interviews)."
+ ],
+ [
+  "عدد أقل مش معناه أرخص: الـ interviews أغلى لأنها synchronous ومحتاجة incentives (L7, Interviews).",
+  "صح. الـ Interviews أغلى: الـ interviewer بيدّي وقت لكل واحد، واللي بنعملهم interview غالباً مستنيين مقابل."
+ ],
+ [
+  "دي واحدة من الأسباب المكتوبة للفهم الأعمق (L7, Interviews).",
+  "دي واحدة من الأسباب المكتوبة للفهم الأعمق (L7, Interviews).",
+  "دي واحدة من الأسباب المكتوبة للفهم الأعمق (L7, Interviews).",
+  "صح. دي ميزة الـ surveys. الـ Interviews بتوصل لعدد أقل بكتير."
+ ],
+ [
+  "صح. الـ Synchronous معناها إن الـ interviewer بيقعد وقت مع كل interviewee، وده سبب من أسباب إن الـ interviews أغلى.",
+  "الرد بعدين ده asynchronous، وده أسلوب الـ online surveys مش الـ interviews (L5, Surveys).",
+  "ده وصف لـ group session، مش معنى الـ synchronous. المقصود وقت الـ interviewer مع كل شخص (L7, Interviews).",
+  "مفيش حاجة automatic في الـ interview؛ فيه حد بيسأل وحد بياخد notes (L7, Tips for a good interview)."
+ ],
+ [
+  "الـ Recall bias هو إن الذاكرة عن الماضي مش دقيقة. هنا الإجابة اتعملت أحسن من الحقيقة، وده reporting bias (L7, Challenges).",
+  "صح. ادّت إجابة أحسن من الحقيقة، وده تعريف المحاضرة للـ reporting bias.",
+  "الـ \"presentation of self\" مكتوبة كمشكلة في الـ group interviews، وده رد فردي عن عادتها هي (L7, Individuals vs groups).",
+  "الـ leading question عيب في صياغة السؤال (L6). السؤال مدفعهاش لإجابة معينة، هي اللي جمّلت إجابتها (L7, Challenges)."
+ ],
+ [
+  "ده الـ reporting bias. أما الـ recall bias فهو إجابات مش دقيقة عن حاجات حصلت زمان (L7, Challenges).",
+  "صح. الـ Recall bias إجابات مش دقيقة عن أحداث فاتت، والإجابات الأحسن من الحقيقة اسمها reporting bias."
+ ],
+ [
+  "دي أول تحدي في لستة المحاضرة (L7, Challenges).",
+  "دي في لستة التحديات بتاعة المحاضرة (L7, Challenges).",
+  "الـ Recall bias واحد من الـ biases الاتنين اللي المحاضرة بتسميهم تحديات (L7, Challenges).",
+  "صح. العكس هو الصح: إجابات الـ interviews qualitative، وتحليل الـ qualitative data مش سهل."
+ ],
+ [
+  "صح. دي أول تحدي المحاضرة بتذكره للـ data اللي بتيجي من الأسئلة.",
+  "المحاضرة كاتبة ده بالظبط كتحدي (L7, Challenges)."
+ ],
+ [
+  "صح. الـ Interviews بتسمح بالتفكير في الأحداث النادرة، وده حاجة الـ survey القصير صعب يمسكها.",
+  "ممرضة واحدة مش users كتير؛ والوصول لعدد كبير ميزة الـ surveys (L5, Surveys).",
+  "الـ Interviews هي الطريقة الأغلى مش الأرخص (L7, Interviews).",
+  "الـ notes واحدة من المفتاحين أثناء الـ interview (L7, Tips for a good interview)."
+ ],
+ [
+  "صح. دي أول سطر تحت الـ individuals، جنب الـ logistics الأسهل والـ privacy الأكتر.",
+  "في الـ group الوقت بيتقسم على ناس كتير. والـ groups ميزتها feedback أكتر ونقاش (L7, Individuals vs groups).",
+  "الجدول كاتبها تحت الـ individuals بس (L7, Individuals vs groups).",
+  "الـ Surveys بتاخد وقت قليل مع كل شخص. والسطر ده في جدول الـ interviews تحت الـ individuals (L7, Individuals vs groups)."
+ ],
+ [
+  "الـ Individual interviews بتدّي privacy أكتر، وده الوضع العكسي (L7, Individuals vs groups).",
+  "صح. في الـ group الناس ممكن تهتم بشكلها قدام الباقيين بدل ما تجاوب بصراحة، والجدول كاتبها تحت الـ groups.",
+  "المحاضرة كاتبة المشكلة دي في جدول الـ interviews تحت الـ groups (L7, Individuals vs groups).",
+  "الـ Secondary research بيستخدم data حد تاني جمعها، فمفيش participants أصلاً (L2)."
+ ],
+ [
+  "الـ feedback الأكتر ميزة للـ groups، بس المواضيع الحساسة محتاجة privacy، والـ groups مبتديهاش (L7, Individuals vs groups).",
+  "النقاش ميزة للـ groups، بس المرضى ممكن يتحفظوا قدام غيرهم (\"presentation of self\") (L7, Individuals vs groups).",
+  "صح. الـ privacy الأكتر للـ participants مكتوبة تحت الـ individual interviews.",
+  "الـ Individual interviews مبتوصلش لـ users أكتر؛ هي بتاخد وقت أكتر مع كل participant (L7, Individuals vs groups)."
+ ],
+ [
+  "صح. \"Easier to get more feedback\" أول ميزة مكتوبة تحت الـ groups.",
+  "الجدول كاتب ده بالظبط كميزة للـ groups (L7, Individuals vs groups)."
+ ],
+ [
+  "الأسئلة مكانتش المشكلة؛ المشكلة إن الـ sessions دخلت في بعض من غير فاصل (L7, Tips for a good interview).",
+  "الـ Listening مفتاح أثناء الـ interview. ومشكلتها جاية من إنها مسابتش وقت بين الـ interviews (L7, Tips for a good interview).",
+  "التحويل لـ groups مش نصيحة، ومش هيحل اللخبطة (L7, Tips for a good interview).",
+  "صح. نصيحة المحاضرة إنك تسيب وقت بين الـ interviews."
+ ],
+ [
+  "صح. دي أول نصيحة، و<bdi dir=\"ltr\">L5</bdi> بتزود إنك تكتب script للأسئلة قبل الـ interview.",
+  "الوقت بين الـ interviews بيفيد بعد الـ session، والمشكلة هنا بدأت قبلها (L7, Tips for a good interview).",
+  "الـ notes بتسجل اللي اتقال؛ مش هتجيب أسئلة متحضرتش أصلاً (L7, Tips for a good interview).",
+  "دي مش نصيحة: <bdi dir=\"ltr\">L5</bdi> بتقول إن الـ script مش كتاب مقدس، فالتعديل مسموح. المشكلة إن مفيش خطة خالص (L5)."
+ ],
+ [
+  "المحاضرة طالبة أكتر من بيانات الشخص: اكتب الـ emotions والـ reactions (L7, Tips for a good interview).",
+  "صح. الـ notes لازم تمسك الـ emotions والـ reactions، وده سبب إن الـ audio recording مش كفاية.",
+  "المحاضرة مش طالبة أوقات؛ طالبة الـ emotions والـ reactions (L7, Tips for a good interview).",
+  "المحاضرة بتقول إن الـ audio recording مش كفاية (L7, Tips for a good interview)."
+ ],
+ [
+  "صح. الـ Interviews بتسمح بأسئلة open-ended و\"why\" أكتر، ومعاها follow-ups.",
+  "أسئلة الـ yes/no مقفولة، و<bdi dir=\"ltr\">L6</bdi> بتحذّر منها في الـ surveys كمان. الـ Interviews قيمتها في أسئلة \"why\" المفتوحة (L7, Interviews).",
+  "الـ Rating scales بتدّي أرقام وده يناسب الـ surveys. الـ Interviews بتدوّر على الـ why (L7, Interviews).",
+  "الـ Checkboxes أداة survey (L6, Be Expressive)، مش اللي بيدّي الـ interviews قيمتها (L7, Interviews)."
+ ],
+ [
+  "مفيش حاجة في المحاضرة بتقول إن الـ design لازم يبقى وحش؛ الفكرة إن الـ design مش فن (L7, Design).",
+  "العكس: الـ designers بيقولوا إن أغلبهم مش موهوبين في الرسم كمان (L7, Design).",
+  "صح. ده بالظبط اللي المحاضرة بتنقله عن الـ designers.",
+  "المحاضرة بتقول متقفلش الـ creativity؛ الموهبة والـ creativity ميزة (L7, Design)."
+ ],
+ [
+  "الموهبة ميزة مش شرط: الـ interfaces الكويسة كفاية سهلة لو عارف الـ methods والـ techniques والـ principles الأساسية (L7, Design).",
+  "صح. الـ designers بيقولوا إنهم غالباً مش موهوبين في الرسم؛ اتبع النصايح وابعد عن أكبر الأخطاء."
+ ],
+ [
+  "صح. المحاضرة بتنقل عن Joyner إن \"design is very hard\".",
+  "كلام Klemmer إن الـ interfaces العظيمة محتاجة creativity ضخمة وشغل، بس الكويسة كفاية سهلة بالـ methods الأساسية (L7, Design).",
+  "الـ Miller ده بتاع حد الـ memory <bdi dir=\"ltr\">7&nbsp;±&nbsp;2</bdi> في <bdi dir=\"ltr\">L4</bdi>، مش جملة عن الـ design.",
+  "الـ Tullis ده بتاع دراسة شاشات الفنادق والـ spacing في <bdi dir=\"ltr\">L3</bdi>، مش جملة عن الـ design."
+ ],
+ [
+  "الـ survey بيدّي صورة واسعة من users كتير، والفريق محتاج عمق و\"why\" من عدد قليل (L7, Interviews).",
+  "صح. الـ Interviews بتدّي فهم أعمق بأسئلة \"why\" والـ follow-ups مع users أقل.",
+  "الـ Secondary research data حد تاني؛ مش هتشرح ليه الـ users دول بيسيبوا الـ feature دي (L2).",
+  "إنك تعيد التصميم من غير ما تفهم الـ users ده أكبر غلطة عند Joyner (L8)."
+ ],
+ [
+  "المحاضرة كاتبة العكس كتحدي: تحليل الـ qualitative data مش سهل (L7, Challenges).",
+  "صح. تحليل الـ qualitative data مش سهل، وده واحد من تحديات الأسئلة."
+ ],
+ [
+  "صح. الـ Recall bias (إجابات مش دقيقة عن الماضي) والـ reporting bias (إجابات أحسن من الحقيقة).",
+  "دول مش في المحاضرة؛ هي بتسمي الـ recall والـ reporting bias (L7, Challenges).",
+  "الـ Leading والـ loaded دول أسئلة survey فيها عيب من <bdi dir=\"ltr\">L6</bdi> (Be Unbiased)، مش الـ biases الاتنين بتوع <bdi dir=\"ltr\">L7</bdi>.",
+  "الـ Recall bias صح، بس التاني اسمه reporting bias (L7, Challenges)."
+ ],
+ [
+  "صح. المحاضرة كاتبة المساحة لأسئلة الـ follow-up مع أسئلة \"why\" المفتوحة والتفكير في الأحداث النادرة.",
+  "أسئلة الـ follow-up مكتوبة كسبب للفهم الأعمق (L7, Interviews)."
+ ],
+ [
+  "المفتاحين أثناء الـ interview هما اسمع كويس وخد notes. وسيب وقت ده نصيحة لوحدها لما بين الـ interviews (L7, Tips for a good interview).",
+  "صح. المفتاحين أثناء الـ interview هما اسمع كويس وخد notes، والوقت ده لما بين الـ interviews."
+ ]
+]);
+AR.hci.lectures["8"].extra = (AR.hci.lectures["8"].extra || []).concat([
+ [
+  "الاتنين متبدلين. التصميم من غير ما تفهم الـ users أو الـ task هو الأكبر (L8, Biggest mistakes).",
+  "ولا واحدة منهم من غلطتين Joyner، والمحاضرة عايزة alternatives أكتر ما تقدر (L8, Design alternatives).",
+  "صح. ده ترتيب Joyner.",
+  "الألوان والـ fonts تفاصيل؛ وأخطاء Joyner عن الـ users والـ tasks والأفكار (L8, Biggest mistakes)."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">40</bdi> فكرة المختلفة بتبعد عن الغلطة التانية، بس إنهم مكلموش users ده أكبر غلطة (L8, Biggest mistakes).",
+  "صح. التصميم من غير فهم الـ users أو الـ task أكبر غلطة، والأفكار الكتير المختلفة بتبعد عن التانية.",
+  "الغلطة التانية هي الثبات على فكرة أو genre واحد بدري، والـ <bdi dir=\"ltr\">40</bdi> فكرة المختلفة عكسها (L8, Biggest mistakes).",
+  "هم جربوا أفكار كتير مختلفة، فمثبتوش بدري (L8, Biggest mistakes)."
+ ],
+ [
+  "هم فهموا الـ users والـ task الأول، فبعدوا عن أكبر غلطة (L8, Biggest mistakes).",
+  "الـ <bdi dir=\"ltr\">30</bdi> فكرة المختلفة عكس الثبات على فكرة واحدة بدري (L8, Biggest mistakes).",
+  "عملوا user research وجربوا أفكار كتير، وده بيبعد عن الاتنين (L8, Biggest mistakes).",
+  "صح. فهم الـ users والـ task الأول بيبعد عن أكبر غلطة، والأفكار الكتير المختلفة بتبعد عن التانية."
+ ],
+ [
+  "صح. الغلطة فكرة واحدة أو genre واحد من الأفكار، فلو عندك نسخ كتير من نفس النوع برضه غلطة.",
+  "الألوان تفاصيل شكلية؛ والغلطة عن أنواع الأفكار (L8, Biggest mistakes).",
+  "عدم فهم الـ users ده الغلطة الأولى، مش جزء من التانية (L8, Biggest mistakes).",
+  "المحاضرة عن أفكار الـ design، مش الـ code (L8, Biggest mistakes)."
+ ],
+ [
+  "الغلطة إنك تثبت بدري أوي، قبل ما تجرب alternatives كفاية (L8, Biggest mistakes).",
+  "صح. الغلطة إنك تثبت على فكرة أو genre واحد بدري أوي."
+ ],
+ [
+  "صح. <span class=\"ltr\">Need finding → Design alternatives → Prototyping → Evaluation</span>",
+  "الـ Evaluation هي آخر مرحلة، والـ alternatives بتيجي بعد الـ need finding على طول (L2, Lifecycle models).",
+  "لازم تفهم احتياجات الـ users الأول؛ وإنك تطلّع alternatives قبل كده ده أكبر غلطة (L8).",
+  "المحاضرة بتقول إن الـ design alternatives مرحلة لوحدها في دورة Joyner (L8, Design alternatives)."
+ ],
+ [
+  "ده الـ need finding، المرحلة اللي قبل الـ alternatives (L2, Lifecycle models).",
+  "صح. المرحلة دي عن استكشاف alternatives كتير بدل واحدة من الأول.",
+  "الاختبار مع الـ users ده الـ evaluation (L2, Lifecycle models).",
+  "الـ code بييجي بعد الـ design، ومش جزء من استكشاف الـ alternatives (L8, Design alternatives)."
+ ],
+ [
+  "المحاضرة بتقول إن غلطة الفكرة الواحدة منتشرة بالذات لما تطوّر system موجود (L8, Design alternatives).",
+  "صح. لما تطوّر system موجود بتبقى محبوس في الـ interface بتاعه، فاستكشاف الـ alternatives مهم أكتر."
+ ],
+ [
+  "الـ Combining موجود في لستة Joyner (L8, Prototyping).",
+  "الـ Abandoning موجود في لستة Joyner (L8, Prototyping).",
+  "الـ Revising موجود في لستة Joyner (L8, Prototyping).",
+  "صح. تثبيت أول فكرة ده تاني أكبر غلطة، مش جزء من الـ iterative process."
+ ],
+ [
+  "صح. الـ alternatives: \"أكتر ما تقدر\"، والـ prototypes: \"ask a lot of them\".",
+  "الاتنين بيقولوا كتير: alternatives أكتر ما تقدر، و prototypes كتير لأنها أسئلة (L8)."
+ ],
+ [
+  "صح. \"كام alternative؟ أكتر ما تقدر\"، والـ mouse هو المثال.",
+  "ده تاني أكبر غلطة عند Joyner، عكس المثال (L8, Biggest mistakes).",
+  "المثال عن عدد الـ prototypes، والـ prototypes الكويسة مش لازم تشبه المنتج النهائي (L8, Prototyping).",
+  "الـ mouse ده hardware واتعمله برضه أكتر من <bdi dir=\"ltr\">100</bdi> prototype (L8, Design alternatives)."
+ ],
+ [
+  "النسخة التقريبية مش المنتج النهائي، والمحاضرة رافضة فكرة \"نسخة صغيرة من الحاجة الحقيقية\" (L8, Prototyping).",
+  "مفيش في التعريف حاجة بتشترط code؛ والـ sketch ممكن يبقى نسخة تقريبية (L9, Power of lo-fi).",
+  "صح. الهدف feedback سريع، فنسخة تقريبية خشنة كفاية.",
+  "الهدف الـ feedback، والـ prototypes ليها <bdi dir=\"ltr\">4</bdi> جماهير: الزملاء والـ clients والـ users وإنت نفسك (L9)."
+ ],
+ [
+  "features أكتر مش هتخليه prototype بمعنى الـ designers؛ التعريف عن الـ feedback (L8, Prototyping).",
+  "صح. \"نسخة صغيرة من الحاجة الحقيقية\" فهم مش مفيد؛ الـ prototype هدفه الـ feedback والـ iteration.",
+  "التكلفة مش جزء من التعريف (L8, Prototyping).",
+  "الشكل النهائي مش مطلوب؛ الـ prototype الكويس مش لازم يشبه المنتج النهائي (L8, Prototyping)."
+ ],
+ [
+  "صح. ادّى feedback مفيد ونقدر نعمل عليه iteration، ومش لازم يشبه المنتج النهائي.",
+  "الـ prototype اللي مبيدّيش معرفة جديدة بيضيّع الـ design process (L8, Prototyping).",
+  "المنتج اللي نزل مش نسخة تقريبية سريعة عشان الـ feedback (L8, Prototyping).",
+  "الـ poster ده artifact، والـ prototype عن الـ feedback والـ iteration مش الـ artifact (L8, Prototyping)."
+ ],
+ [
+  "متبدلين. لستة أكبر الأخطاء بتاعة Joyner، وجملة الأسئلة بتاعة Klemmer (L8).",
+  "صح. Joyner هو اللي قال أكبر غلطتين، وKlemmer قال إن الـ prototypes أسئلة.",
+  "الـ Konstan في <bdi dir=\"ltr\">L9</bdi> كلامه عن إن الـ prototype اللي شكله بمجهود قليل بياخد constructive feedback أكتر؛ وB بتاعة Klemmer.",
+  "الـ Miller بتاع حد الـ memory <bdi dir=\"ltr\">7&nbsp;±&nbsp;2</bdi> <bdi dir=\"ltr\">(L4)</bdi>؛ وA بتاعة Joyner."
+ ],
+ [
+  "الـ prototype الكويس مش لازم يشبه المنتج النهائي، والفكرة الواحدة تاني أكبر غلطة (L8).",
+  "صح. alternatives كتير و prototypes كتير يعني أسئلة كتير اتسألت و feedback أكتر للـ iteration.",
+  "الاختبار كويس، بس Team A سأل سؤال واحد عن فكرة واحدة، و Team B جرّب أفكار كتير (L8, Design alternatives).",
+  "الـ Prototypes بتيجي قبل الـ design النهائي؛ معمولة عشان الـ feedback والـ iteration (L8, Prototyping)."
+ ],
+ [
+  "الـ prototype عن الـ feedback والـ iteration؛ والتثبيت بيتجاهل الـ feedback (L8, Prototyping).",
+  "إنك تنزّل المنتج من غير ما تتصرف في الـ feedback ده بيقفز على الـ iteration (L8, Prototyping).",
+  "صح. الـ feedback بيودّي للـ iteration: عدّل وحسّن، وبعدين اعمل prototype تاني.",
+  "الـ feedback هو أساس الـ prototyping أصلاً (L8, Prototyping)."
+ ],
+ [
+  "صح. الاتنين بيقولوا إن الـ prototype موجود عشان نتعلم حاجة جديدة من الـ feedback.",
+  "المحاضرة رافضة التانية وبتقول إنها فهم مش مفيد (L8, Prototyping).",
+  "دول عكس بعض؛ والثبات بدري تاني أكبر غلطة (L8).",
+  "الأولى غلط: الـ prototype الكويس مش لازم يشبه المنتج النهائي (L8, Prototyping)."
+ ],
+ [
+  "هنا فيه فكرة واحدة بس، فالـ alternatives الكتير مش هي المشكلة (L8, Design alternatives).",
+  "الـ prototype متشطّب، فالألوان موجودة؛ والشكل مش بيحل المشكلة الحقيقية (L8).",
+  "مفيش هنا interviews كتير أصلاً (L8, Biggest mistakes).",
+  "صح. فكرة واحدة مهما كانت متشطّبة لسه تاني أكبر غلطة عند Joyner."
+ ],
+ [
+  "إنك تعملها مرة واحدة عكس الـ iteration (L8, Prototyping).",
+  "صح. Joyner بيسمي الـ design عملية iterative فيها combining و abandoning و revising و improving للأفكار.",
+  "المحاضرة بتنصح إنك تبعد عن الحلول الموجودة (L8, Design alternatives).",
+  "الـ iteration ماشية بالـ feedback، مش بإضافة features من غير اختبار (L8, Prototyping)."
+ ],
+ [
+  "Joyner بيقول إن الـ design iterative وفيه brainstorming و combining و abandoning و revising و improving (L8, Prototyping).",
+  "صح. الـ design iterative ومحتاج كذا فكرة تبدأ بيهم."
+ ],
+ [
+  "إنك تبقى محبوس بيضيّق أفكارك، مش بيكترها (L8, Design alternatives).",
+  "المحاضرة رابطة الخطر ده بأفكار الـ designer، مش بالـ feedback بتاع الـ users (L8, Design alternatives).",
+  "صح. وعشان كده المحاضرة بتقول ابعد عن الحلول الموجودة، على الأقل وقت الـ brainstorming.",
+  "الأداء مش المشكلة؛ المشكلة إن أفكار الـ design بتبقى ضيقة (L8, Design alternatives)."
+ ],
+ [
+  "الـ design النهائي غالباً خليط من الـ alternatives اللي اتجربت، مش الأبعد. والبُعد عن الحلول الموجودة على الأقل وقت الـ brainstorming (L8, Design alternatives).",
+  "صح. الـ design النهائي غالباً خليط من الـ alternatives اللي اتجربت قبل كده."
+ ],
+ [
+  "صح. الـ prototype سؤال: اعمل بسرعة نسخة تقريبية عشان تاخد feedback على النقطة دي بالظبط.",
+  "إنك تستنى الإطلاق ده بيقفز على الـ prototyping، اللي معمول عشان feedback سريع (L8, Prototyping).",
+  "أي سؤال design ينفع يتسأل بـ prototype؛ \"ask a lot of them\" (L8, Prototyping).",
+  "تشطيب كل الشاشات الأول بطيء ومش محتاج عشان السؤال ده (L8, Prototyping)."
+ ],
+ [
+  "صح. نصيحة Joyner في <bdi dir=\"ltr\">L2</bdi> إنك تجيب الـ users بدري وكتير، وده بالظبط اللي أكبر غلطة بتسيبه.",
+  "دي قاعدة حالة الـ Office من <bdi dir=\"ltr\">L1</bdi> عن الـ adaptive menus، مش عن فهم الـ users الأول.",
+  "ده حد الـ memory بتاع Miller من <bdi dir=\"ltr\">L4</bdi>.",
+  "دي نصيحة user research عن التعديل أثناء الـ session <bdi dir=\"ltr\">(L5)</bdi>، مش عكس أكبر غلطة."
+ ]
+]);
+AR.hci.lectures["9"].extra = (AR.hci.lectures["9"].extra || []).concat([
+ [
+  "معكوسة. ابدأ بالـ lo-fi وانقل للـ hi-fi وإنت ماشي في الـ design (L9, Prototypes and fidelity).",
+  "صح. ابدأ بالـ lo-fi، وبعدين انقل للـ hi-fi وإنت ماشي في الـ design."
+ ],
+ [
+  "الـ tools زي Figma و Adobe XD موجودة؛ السبب في الـ design نفسه (L9, Power of lo-fi).",
+  "الـ users يقدروا يشوفوها؛ المحاضرة بتقول إنهم بيتكلموا أكتر عن الـ sketches، بس ده مش سبب إن الـ hi-fi مستحيل بدري (L9, Power of lo-fi).",
+  "صح. الـ hi-fi محتاج تفاصيل لسه متقررتش في الأول.",
+  "الـ hi-fi هو الغالي في أي وقت؛ والـ lo-fi هو الأرخص (L9, Power of lo-fi)."
+ ],
+ [
+  "الـ Recall bias عن ذكريات مش دقيقة عن الماضي <bdi dir=\"ltr\">(L7)</bdi>، مش عن تفاصيل الـ prototype.",
+  "صح. التفاصيل بتنزّل الـ feedback لمستوى الألوان والـ fonts، وإنت في الأول عايز feedback high-level.",
+  "الـ Handshake عن الـ design والـ development ماشيين بالتوازي (L9, Design-development process).",
+  "الـ Reporting bias هو إجابات أحسن من الحقيقة <bdi dir=\"ltr\">(L7)</bdi>، مش التركيز على الألوان."
+ ],
+ [
+  "معكوسة: أفكار high-level الأول، والتفاصيل والشاشات بعدين (L9, Power of lo-fi).",
+  "إنك تعرض المنتج النهائي بس مبيسيبش مكان لـ feedback بدري (L9, Power of lo-fi).",
+  "دي مش نصيحة Google؛ الأفكار لازم تتعرض بدري (L9, Power of lo-fi).",
+  "صح. دي نصيحة Google في المحاضرة."
+ ],
+ [
+  "صح. دي واحدة من نقط قوة الـ lo-fi prototypes.",
+  "المحاضرة بتقول ده بالظبط عن الـ sketches (L9, Power of lo-fi)."
+ ],
+ [
+  "الـ design activities عن التفكير والتواصل، مش الـ code (L9, Brainstorming).",
+  "مفيش design activity بتلغي الـ research؛ ده الـ wireframes نفسها بتيجي بعد الـ foundational research (L9, Wireframes).",
+  "صح. ده كلام المحاضرة عن الـ design activities.",
+  "تقييم واستبعاد الأفكار ده اللي نصايح الـ brainstorming بتقول متعملوش (L9, Brainstorming)."
+ ],
+ [
+  "صح. الـ groups بتتجمع على أفكار بدري أوي، فابدأ لوحدك.",
+  "لو ده السبب كنا هنبدأ بـ group. المشكلة إن الـ groups بتتجمع على فكرة بدري (L9, Brainstorming).",
+  "الـ team sessions مسموحة، للمشاركة وإضافة أفكار (L9, Brainstorming).",
+  "الـ brainstorming مش للتقييم؛ النصيحة إنك متقيّمش ومتستبعدش أفكار (L9, Brainstorming)."
+ ],
+ [
+  "خلي هدفك <bdi dir=\"ltr\">20</bdi> دي نصيحة (L9, Brainstorming).",
+  "دي نصيحة: خلي كل فكرة قصيرة (L9, Brainstorming).",
+  "دي نصيحة (L9, Brainstorming).",
+  "صح. النصيحة العكس: متقيّمش ومتستبعدش أي فكرة."
+ ],
+ [
+  "المحاضرة بتقول إن الـ team sessions للمشاركة وإضافة أفكار، مش للتضييق (L9, Brainstorming).",
+  "صح. الـ team sessions للمشاركة والإضافة، مش للتضييق."
+ ],
+ [
+  "دي واحدة من الأسباب التلاتة (L9, Why study design?).",
+  "دي واحدة من الأسباب التلاتة (L9, Why study design?).",
+  "دي واحدة من الأسباب التلاتة (L9, Why study design?).",
+  "صح. المحاضرة بتقول إن الـ developers بيشتغلوا أحسن <b>مع</b> الـ designers، مش بدالهم."
+ ],
+ [
+  "صح. الـ design بيخلص وبعدين بيتسلّم للـ development، يعني sequential بنقطة تسليم واحدة.",
+  "الـ Handshake فيه الـ design والـ development بالتوازي مع sync points كتير؛ وهنا هم ورا بعض (L9, Design-development process).",
+  "الـ Brainstorming بيطلّع أفكار؛ مش طريقة لتنظيم الـ design والـ development (L9, Brainstorming).",
+  "الـ Wireframing نشاط design، مش الـ design-development process (L9, Wireframes)."
+ ],
+ [
+  "ده وصف الـ handoff. في الـ handshake الـ design والـ development ماشيين بالتوازي (L9, Design-development process).",
+  "صح. الـ Handshake بيمشّي الـ design والـ development بالتوازي مع sync points كتير."
+ ],
+ [
+  "الـ Lo-fi خشن زي sketch بالإيد؛ ده بقى قريب من الـ look and feel النهائي (L9, Prototypes and fidelity).",
+  "صح. الـ Fidelity هي قد إيه الـ design قريب من الـ look and feel النهائي، وده قريب جداً.",
+  "الـ Wireframes مفيهاش ألوان ولا font styles عن قصد (L9, Wireframes).",
+  "الـ site map هو الـ content hierarchy، مش mock-up (L9, Wireframes)."
+ ],
+ [
+  "ده الهدف رقم <bdi dir=\"ltr\">(1)</bdi> (L9, Wireframes).",
+  "ده الهدف رقم <bdi dir=\"ltr\">(2)</bdi> (L9, Wireframes).",
+  "ده الهدف رقم <bdi dir=\"ltr\">(4)</bdi> (L9, Wireframes).",
+  "صح. الـ Wireframes مفيهاش ألوان ولا font styles عن قصد، وبتبعد الـ feedback عنهم."
+ ],
+ [
+  "الهدف ده عن العناصر الناقصة، مش عن مستوى الـ feedback (L9, Wireframes).",
+  "الـ Annotation ده standard من standards الـ wireframing، مش واحد من الأهداف الأربعة (L9, Wireframing standards).",
+  "صح. لما الـ wireframe ميبقاش فيه ألوان، الـ feedback بيروح للـ structure والـ function.",
+  "الـ Hi-fi بيزوّد تفاصيل الألوان أكتر، فالمشكلة تكبر (L9, Power of lo-fi)."
+ ],
+ [
+  "صح. المحاضرة بتشرح الـ site map على إنه الـ content hierarchy.",
+  "الـ site map عن محتوى الموقع، مش أماكن الـ users (L9, Wireframes).",
+  "الـ site map بييجي قبل الـ wireframes، والـ hi-fi بييجي بعد كده بكتير (L9, Wireframes).",
+  "الـ tools هي Figma و Adobe XD و Sketch و Balsamiq و Pencil؛ أما الـ site map فهو الـ content hierarchy (L9, Wireframes)."
+ ],
+ [
+  "الـ text بيترسم خطوط أفقية أو placeholder text (L9, Wireframing standards).",
+  "الـ X مش علامة مسح؛ ده الرمز المتعارف عليه للصورة (L9, Wireframing standards).",
+  "صح. الصور بتترسم مستطيلات أو دواير فيها X.",
+  "الـ Error messages دي form guideline، مش رمز wireframe (L9, Form design)."
+ ],
+ [
+  "المحاضرة بتقول إن الهدف الأول توصل لـ design، مش تعرض واحد (L9, Wireframing process).",
+  "صح. الهدف الأول إنك توصل لـ design، والتاني إنك تنقل الفكرة للورقة بسرعة.",
+  "الخطوط المستقيمة والمسافات والـ alignment المفروض تتجاهلها في المرحلة دي (L9, Wireframing process).",
+  "الـ tools بتيجي بعد مرحلة الورق (L9, Wireframing process)."
+ ],
+ [
+  "الـ Breadcrumbs بتوري الـ users هم فين لما يكون فيه اختيارات كتير، بس مش بتوري فاضل إيه في path ثابت (L9, Form design).",
+  "الـ confirmation page بتيجي بعد الـ submission الناجح، مش أثناء الخطوات (L9, Form design).",
+  "الـ hints بتساعد في ملء الـ field، مش بتوري التقدم (L9, Form design).",
+  "صح. الـ progress bar بيوري الـ users هم فين وفاضل إيه، لـ path واحد محدد مسبقاً."
+ ],
+ [
+  "القاعدة العكس: الـ commands المهمة تبقى buttons، لأن الـ buttons بتشد العين (L9, Form design).",
+  "صح. الـ commands المهمة buttons مش links، لأن الـ buttons بتشد العين."
+ ],
+ [
+  "صح. الـ submission الناجح بيتأكد بـ confirmation page.",
+  "الـ Error messages للأخطاء، مش للنجاح (L9, Form design).",
+  "إنك تمسح الـ form من غير كلام مبيقولش للـ user حاجة؛ والقاعدة confirmation page (L9, Form design).",
+  "الـ progress bar بيوري خطوات path ثابت، مش إن الـ submission نجح (L9, Form design)."
+ ],
+ [
+  "المحاضرة مش بتنصح بده؛ هي بتفضّل تغيير لون الـ border بتاع الـ field (L9, Form design).",
+  "الـ popup بعيد عن الـ field بيكسر قاعدة إن الـ errors تبقى جنب الـ field (L9, Form design).",
+  "صح. تغيير لون الـ border بتاع الـ field هو المفضّل.",
+  "شيل الـ field بيمنع الـ user إنه يصلّح الغلط (L9, Form design)."
+ ],
+ [
+  "مفيش مشكلة CTA هنا؛ المشكلة تكرار نفس البيانات (L9, Form design).",
+  "صح. المحل المفروض يفتكر العنوان بدل ما يسأل كل مرة.",
+  "حجم الـ box مش المشكلة؛ المشكلة كتابة نفس الحاجة تاني (L9, Form design).",
+  "الـ Breadcrumbs بتوري الـ users فين؛ مش بتوفّر البيانات المتكررة (L9, Form design)."
+ ],
+ [
+  "القاعدة بتقول إن الـ text boxes تدّي مساحة كفاية للإجابة (L9, Form design).",
+  "صح. الـ text boxes لازم تدّي مساحة كفاية للإجابة."
+ ],
+ [
+  "إنك تخبّي الـ field مش هيعرّف الـ users الـ format (L9, Form design).",
+  "الـ errors مكانها جنب الـ field، والحل الحقيقي إنك تمنعها بـ hint للـ format (L9, Form design).",
+  "الـ links مش للـ input fields؛ والمشكلة إن الـ format مش موجود (L9, Form design).",
+  "صح. الـ fields لازم يبقى فيها hints أو أمثلة أو الـ format المطلوب، زي <bdi dir=\"ltr\">DD/MM/YYYY</bdi>."
+ ]
+]);
+AR.hci.lectures["10"].extra = (AR.hci.lectures["10"].extra || []).concat([
+ [
+  "القاعدة color palette بسيطة من <bdi dir=\"ltr\">3</bdi> ألوان؛ وأكتر من <bdi dir=\"ltr\">3</bdi> primary colors صعب وبيلخبط الـ users (L10, Forms).",
+  "صح. التزم بـ palette بسيطة من <bdi dir=\"ltr\">3</bdi> ألوان؛ أكتر من <bdi dir=\"ltr\">3</bdi> primary colors بيلخبط الـ users."
+ ],
+ [
+  "الـ \"Cancel\" للـ dialog اللي فيه زرارين، action وواحد للقفل. والزرار الواحد يبقى \"Close\" (L10, Forms).",
+  "الزرار ده تبع الـ system notice، مش رسالة بزرار واحد (L10, Forms).",
+  "صح. لو فيه زرار واحد بس يبقى \"Close\".",
+  "الـ \"Abort\" مش في القاعدة؛ الزرار الواحد يبقى \"Close\" (L10, Forms)."
+ ],
+ [
+  "صح. ده ترتيب المحاضرة.",
+  "المشكلة الأول في الـ title، والسبب تحتها (L10, Forms).",
+  "الـ recommendations للخطوة الجاية بتيجي في الآخر، بعد المشكلة وسببها (L10, Forms).",
+  "كتابة المشكلة في الـ title هي أول خطوة (L10, Forms)."
+ ],
+ [
+  "الجزء ده موجود: \"Payment failed\" هي المشكلة في الـ title (L10, Forms).",
+  "صح. بعد الـ title بييجي وصف قصير لسبب المشكلة، زي إن الكارت expired.",
+  "الألوان قاعدة form تانية، مش جزء من الـ error message (L10, Forms).",
+  "المربع ده للـ system notices، مش الـ error messages (L10, Forms)."
+ ],
+ [
+  "صح. اكتب المشكلة في الـ title، وبعدين اشرح باختصار حصلت ليه تحته.",
+  "المحاضرة حاطة السبب تحت الـ title على طول (L10, Forms)."
+ ],
+ [
+  "الاتنين موجودين: \"Payment failed\" هو الـ title و\"Your card has expired\" هو السبب (L10, Forms).",
+  "دول تبع الـ system notice، مش الـ error message (L10, Forms).",
+  "دول عناصر forms من <bdi dir=\"ltr\">L9</bdi> للنجاح والـ paths الثابتة، مش أجزاء من الـ error message.",
+  "صح. الـ user متساب متعلّق: زوّد طريقة يرجع بيها (زي الـ cart) ونصيحة زي \"استخدم كارت تاني\"."
+ ],
+ [
+  "صح. الـ system notice فيه زرار \"Action\" وزرار \"Remind me later\" ومربع \"Don't show again\".",
+  "الـ \"Remind me later\" مكتوب ضمن عناصر الـ system notice (L10, Forms)."
+ ],
+ [
+  "متبدلين: الـ error message ليها <bdi dir=\"ltr\">4</bdi> أجزاء، والـ notice فيه <bdi dir=\"ltr\">3</bdi> عناصر (L10, Forms).",
+  "الـ notice فيه <bdi dir=\"ltr\">3</bdi> بس: Action و Remind me later و Don't show again (L10, Forms).",
+  "صح. الـ error message: الـ title والسبب والـ link والخطوة الجاية (<bdi dir=\"ltr\">4</bdi>). والـ notice: الـ Action والـ Remind me later والـ Don't show again (<bdi dir=\"ltr\">3</bdi>).",
+  "الـ error message ليها <bdi dir=\"ltr\">4</bdi> أجزاء، مش <bdi dir=\"ltr\">2</bdi> (L10, Forms)."
+ ],
+ [
+  "صح. الـ action المهم لازم يبان من غير scroll.",
+  "مفيش كلام عن الـ background؛ المشكلة مكان الزرار (L10, Layout).",
+  "الترتيب عن fields مرتبطة زي first/last name، مش مكان زرار واحد (L10, Layout).",
+  "مفيش alert هنا (L10, Forms)."
+ ],
+ [
+  "قاعدة الـ palette بتحدد عدد الـ primary colors؛ مش عن تجميع الـ fields (L10, Forms).",
+  "دي أجزاء من الـ form، مش alerts (L10, Forms).",
+  "صح. مثال المحاضرة fields الـ HR والـ Technical والـ Payroll متجمعة باللون.",
+  "الألوان دي بتعلّم مجموعات fields؛ وقاعدة الـ background عن إنه ميشتتش عن المحتوى (L10, Layout)."
+ ],
+ [
+  "صح. الـ Navigation tabs تبقى فوق في الصفحة.",
+  "الـ navigation guideline بتقول ده بالظبط (L10, Navigation)."
+ ],
+ [
+  "الـ progress bar لـ path واحد محدد فيه خطوات فاضلة، مش للتنقل بين الأقسام (L9, Form design).",
+  "صح. لازم يبقى واضح الـ users فين في الموقع، مثلاً بالـ breadcrumbs.",
+  "الـ system notice بيبلّغ بحاجة وفيه Action و Remind me later؛ مش بيوري المكان (L10, Forms).",
+  "الـ background مش بيقول للـ users هم فين (L10, Layout)."
+ ],
+ [
+  "القاعدة طالبة links واضحة للـ Home page والـ categories في كل صفحة (L10, Navigation).",
+  "صح. لازم يبقى فيه links واضحة للـ Home page والـ categories في كل صفحة."
+ ],
+ [
+  "صح. الـ Red Routes هي سلسلة الصفحات أو الـ actions اللي العملاء بيستخدموها أكتر عشان يخلصوا الـ tasks، وطلب الأكل هو الـ task الأساسية.",
+  "الـ users نادراً بيعملوا ده؛ والـ Red Route هو اللي العملاء بيستخدموه أكتر (L10, Navigation).",
+  "ناس قليلة بتروح هناك؛ مش route بيتستخدم كتير (L10, Navigation).",
+  "كلمة \"Red\" مش معناها اللون ولا الـ errors؛ الـ Red Routes هي الـ paths الأكتر استخدام (L10, Navigation)."
+ ],
+ [
+  "دي layout guideline (L10, Layout).",
+  "دي layout guideline (L10, Layout).",
+  "دي layout guideline (L10, Layout).",
+  "صح. القاعدة العكس: الـ logo في نفس المكان في كل صفحة."
+ ],
+ [
+  "صح. مكتوبة تحت الـ navigation، مع الـ CTA والـ breadcrumbs والـ Home links والـ tabs اللي فوق والـ logo link والـ Red Routes.",
+  "الـ Layout فيه الـ above the fold والتجميع والألوان والترتيب المنطقي ومكان الـ logo والـ background (L10, Layout).",
+  "الـ Error messages فيها الـ title والسبب والـ link والخطوة الجاية (L10, Forms).",
+  "الـ System notices فيها Action و Remind me later و Don't show again (L10, Forms)."
+ ],
+ [
+  "الـ Navigation عن الـ CTAs والمكان والـ links والـ tabs والـ hover والـ logo link والـ Red Routes (L10, Navigation).",
+  "اللون موجود في الـ layout كـ \"color groups and structures items\"، بس قاعدة الـ <bdi dir=\"ltr\">3</bdi> ألوان في جزء الـ forms (L10, Forms).",
+  "صح. دي أول حاجة في جزء الـ forms، مع الـ alerts الـ consistent والـ Close قصاد الـ Cancel والـ error messages والـ system notices.",
+  "الـ Wireframes مفيهاش ألوان خالص (L9, Wireframes)."
+ ],
+ [
+  "ممكن الـ logo يكون في نفس المكان فعلاً؛ المشكلة إنه مش بيودّي في حتة (L10, Navigation).",
+  "صح. قاعدة الـ navigation دي بتقول إن الـ logo بيودّي للـ homepage.",
+  "الـ CTA زرار لافت للنظر للخطوة الجاية، مش الـ logo (L10, Navigation).",
+  "الـ Red Routes عن الـ paths الأكتر استخدام، مش الـ link بتاع الـ logo (L10, Navigation)."
+ ],
+ [
+  "الـ background المعقد حاجة نبعد عنها، مش نزوّدها (L10, Layout).",
+  "ألوان أكتر بتلخبط الـ users (L10, Forms).",
+  "ده تبع الـ system notice، ومش بيوجّه للخطوة الجاية (L10, Forms).",
+  "صح. الـ CTA الواضح بيقول للـ users يعملوا إيه بعد كده: زرار لافت للنظر للخطوة الجاية الأكتر انتشاراً."
+ ],
+ [
+  "الـ cards باينة أصلاً؛ المشكلة إن شكلها مش بيقول إنها بتتداس (L10, Navigation).",
+  "مفيش alerts هنا (L10, Forms).",
+  "صح. التغيير الواضح مع الـ hover بيوري الـ users إيه اللي بيتداس.",
+  "الترتيب عن fields مرتبطة زي التواريخ والأسامي، مش إن الحاجة بتتداس (L10, Layout)."
+ ],
+ [
+  "صح. الـ alerts الـ consistent في جزء الـ forms، ومكان الـ logo في جزء الـ layout.",
+  "الاتنين متحطوطين زي ما الجملة بتقول: الـ alerts تحت الـ forms، ومكان الـ logo تحت الـ layout (L10)."
+ ],
+ [
+  "الـ confirmation page بتأكد الـ submission والـ alerts بتبلّغ؛ ولا واحد فيهم بيوري المكان (L9, L10).",
+  "صح. الـ Breadcrumbs بتوري الـ users فين وسط اختيارات كتير، والـ progress bar بيوري هم فين وفاضل إيه في path ثابت (L9, L10).",
+  "دي قواعد شكلية؛ مش بتوري المكان (L10, Forms, Layout).",
+  "دول بيقفلوا الـ dialogs؛ مش بيوروا المكان (L10, Forms)."
+ ],
+ [
+  "مفيش كلام عن الـ logo؛ المشكلة مكان الـ tabs (L10, Navigation).",
+  "ترتيب الـ tabs مظبوط؛ مكانها هو المشكلة (L10, Navigation).",
+  "مكان الـ Cancel عن الـ dialogs، مش الـ navigation بتاع الصفحة (L10, Forms).",
+  "صح. الـ Navigation tabs مكانها فوق في الصفحة."
+ ],
+ [
+  "صح. مكان الـ logo قاعدة layout، والـ link بتاعه قاعدة navigation.",
+  "متبدلين. المكان layout، والـ link للـ home ده navigation (L10).",
+  "الـ logo مينفعش يتحرك؛ بيفضل في نفس المكان في كل صفحة (L10, Layout).",
+  "الـ logo بيودّي للـ homepage، مش الـ categories (L10, Navigation)."
+ ],
+ [
+  "فيه زرارين (action وواحد للقفل)، فـ\"Cancel\" هو الاسم الصح؛ المشكلة في مكانه وشكله (L10, Forms).",
+  "صح. هنا الـ Cancel على الشمال ولافت للنظر، عكس القاعدة.",
+  "زرارين مش بيكسروا قاعدة الـ palette؛ المشكلة مكان الـ Cancel وشكله (L10, Forms).",
+  "الـ dialog قصير؛ الطول مش المشكلة (L10, Forms)."
+ ]
+]);

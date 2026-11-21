@@ -3970,3 +3970,459 @@ AR.os.lectures[3].quiz.push(...[
   "ده الـ reference counting زي خوارزميات page replacement <bdi dir=\"ltr\">(Topic 5)</bdi>، مش الـ aging في الـ scheduling."
  ]
 ]);
+
+// Final revision practice questions (Arabic whys), appended in the same order as extra/os.js
+AR.os.lectures["5"].extra = (AR.os.lectures["5"].extra || []).concat([
+ [
+  "الـ 7 دي عدد الـ LRU. الـ FIFO مابيبصش على الاستخدام القريب: عند الـ reference الخامس بيطرد الـ page 2 مع إنها لسه متستخدمة في الـ reference التالت.",
+  "ده ساب الـ 3 faults بتوع ملو الـ frames الفاضية في الأول (وجه زي رقم الـ Optimal بالصدفة). ملو frame فاضي بيتحسب fault.",
+  "صح. الـ faults بتحصل كده:<span class=\"ltr\">2, 3, (2 hit), 1, 5 (out 2), 2 (out 3), 4 (out 1), (5 hit), 3 (out 5), (2 hit), 5 (out 2), 2 (out 4) = 9</span>والـ out معناها الـ page اللي اتطردت.",
+  "ده بيعد كل reference. الـ references رقم <bdi dir=\"ltr\">3</bdi> (page 2) و <bdi dir=\"ltr\">8</bdi> (page 5) و <bdi dir=\"ltr\">10</bdi> (page 2) بيلاقوا الـ page موجودة، يعني hits."
+ ],
+ [
+  "صح. الـ 2 والـ 3 faults، والـ 2 hit، والـ 1 fault، والـ 5 بتطرد 3 (آخر استخدام ليها أقدم حاجة)، والـ 2 hit، والـ 4 بتطرد 1، والـ 5 hit، والـ 3 بتطرد 2، والـ 2 بتطرد 4، والـ 5 والـ 2 hits، يعني <b>7</b>.",
+  "ده الـ FIFO. الـ LRU بيحتفظ بالـ page 2 عند الـ reference الخامس لأنها اتستخدمت في الـ reference التالت، فالـ reference السادس بيبقى hit.",
+  "ده الـ Optimal، اللي بيبص على الـ references الجاية؛ الـ LRU بيستخدم الماضي بس.",
+  "ده ساب الـ 3 faults بتوع ملو الـ frames الفاضية في الأول. دول بيتحسبوا faults."
+ ],
+ [
+  "ده الـ LRU. عند الـ reference الخامس الـ LRU بيطرد 3 (الـ least recently used)، بس الـ 3 هتتطلب تاني في الـ reference رقم <bdi dir=\"ltr\">9</bdi>؛ والـ Optimal بيطرد 1 اللي مش هتتستخدم تاني خالص.",
+  "ده الـ FIFO، اللي بيطرد حسب وقت التحميل ومابيبصش على المستقبل.",
+  "ده ساب الـ 3 faults بتوع ملو الـ frames الفاضية في الأول.",
+  "صح. الـ 2 والـ 3 والـ 1 faults (والـ 2 التانية hit)، والـ 5 بتطرد 1 (مش هتتستخدم تاني)، والـ 4 بتطرد 2 (استخدامها الجاي أبعد حاجة، في الـ reference رقم <bdi dir=\"ltr\">10</bdi>)، والـ 2 بتطرد 4 (مش هتتستخدم تاني)، والباقي hits، يعني <b>6</b>."
+ ],
+ [
+  "ده العدد بـ 3 frames. مع frame رابع الـ pages بتقعد في الـ memory أطول، فالـ string ده faults بتاعه بتقل.",
+  "صح. الـ 2 والـ 3 والـ 1 والـ 5 بيملوا الـ 4 frames (4 faults، والـ 2 التانية hit)، والـ 2 اللي بعدها hit، والـ 4 بتطرد 2 (اتحمّلت الأول)، والـ 5 والـ 3 hits، والـ 2 بتطرد 3، والـ 5 والـ 2 hits، يعني <b>6</b>. هنا الـ frame الرابع نزّل الـ faults من 9 لـ 6.",
+  "ده الـ Optimal بـ 4 frames. الـ FIFO بيطرد الـ page 2 عند الـ reference السابع مع إنها هتتطلب تاني في الـ reference رقم <bdi dir=\"ltr\">10</bdi>.",
+  "ده ساب الـ 4 faults بتوع ملو الـ frames الفاضية في الأول."
+ ],
+ [
+  "الـ 2 كانت أول page في الـ string، بس اتطردت في الـ reference الخامس واتحمّلت تاني في السادس. الـ FIFO بيحسب من وقت التحميل الجديد.",
+  "صح. الـ 5 اتحمّلت في الـ reference الخامس، والـ 2 في السادس، والـ 4 في السابع، فالـ 5 هي أقدم تحميل والـ FIFO بيطردها.",
+  "الـ 4 هي أحدث تحميل (الـ reference السابع). الـ FIFO بيطرد الأقدم مش الأحدث.",
+  "الـ page 3 اتطردت في الـ reference السادس، فهي مش في أي frame. الـ reference ده fault."
+ ],
+ [
+  "ده اختيار الـ FIFO (الـ 3 اتحمّلت الأول). الـ Optimal بيبص على المستقبل بس، والـ 3 هتتطلب في تاني reference جاي.",
+  "ده اختيار الـ LRU (الـ 5 آخر استخدام ليها أقدم حاجة). الـ Optimal بيبص لقدّام، والـ 5 مطلوبة في الـ reference اللي بعده على طول، فطردها هيعمل fault تاني فورًا.",
+  "الـ 7 هتتستخدم في تالت reference جاي، قبل الـ 8 (الخامس). الـ Optimal بيطرد صاحب أبعد استخدام جاي.",
+  "صح. الاستخدامات الجاية: الـ 5 في أول reference جاي، والـ 3 في التاني، والـ 7 في التالت، والـ 8 في الخامس. الـ Optimal بيطرد الـ page اللي استخدامها الجاي أبعد حاجة، يعني 8."
+ ],
+ [
+  "صح. الـ counter فيه وقت آخر reference، فأصغر counter (<bdi dir=\"ltr\">9</bdi>) يبقى الـ page اللي ماتستخدمتش من أطول فترة، يعني الـ LRU victim.",
+  "الـ C عندها أكبر counter، يعني اتستخدمت آخر واحدة؛ الـ LRU بيسيبها.",
+  "الـ D (<bdi dir=\"ltr\">12</bdi>) تاني أصغر واحد. الـ LRU بيدوّر على أصغر قيمة counter.",
+  "الـ A مجرد أول entry في الـ table. الـ counter implementation بيعمل search في الـ table كلها على أصغر counter، مش أول entry."
+ ],
+ [
+  "الـ 2 اتعملها reference آخر حاجة، فهي فوق مش تحت.",
+  "الـ 7 آخر استخدام ليها في الـ reference الرابع، فهي تانية من تحت. استخدامها الأقدم مايفرقش؛ المهم آخر استخدام بس.",
+  "صح. كل reference بيطلّع الـ page لفوق، فالـ stack من فوق لتحت بيبقى <bdi dir=\"ltr\">2, 1, 0, 7, 4</bdi>. والـ page 4 (آخر استخدام ليها أول reference) تحت خالص.",
+  "الـ 0 آخر استخدام ليها في الـ reference السادس، فهي في نص الـ stack."
+ ],
+ [
+  "الـ Second chance عمره ما بيفضّل الأحدث؛ بيمشي على الـ pages بترتيب الـ FIFO من الأقدم.",
+  "الفرصة التانية بتتدّي مرة واحدة: الـ bit بيبقى 0، فالمرة الجاية الـ page يبقى الـ bit بتاعها 0 وتنفع تتطرد.",
+  "الـ bit بتاع الـ B برضه 1، فبيتمسح وبنعدّيها هي كمان. الـ algorithm بيقف بس عند page الـ bit بتاعها 0.",
+  "صح. كل page الـ bit بتاعها 1 بنخليه 0 ونعدّيها: الـ A والـ B والـ C والـ D كلهم بيبقوا 0. ولما نرجع للـ A نلاقي الـ bit بـ 0 فبنطردها. ولو كل الـ bits بـ 1 بيشتغل زي الـ FIFO العادي."
+ ],
+ [
+  "دي أرقام الـ FIFO، اللي هي الـ anomaly نفسها. الـ LRU مابيحصلوش Belady's anomaly.",
+  "صح. الـ LRU من الـ stack algorithms: زيادة frame عمرها ما بتزوّد faults. بـ 3 frames كل الـ references faults ما عدا الـ 1 والـ 2 (الـ reference التامن والتاسع)، يعني <bdi dir=\"ltr\">10</bdi>؛ وبـ 4 frames بعد ملو الـ 4 frames الـ 5 والـ 3 والـ 4 والـ 5 بيطردوا pages، يعني <bdi dir=\"ltr\">8</bdi>.",
+  "ده بيفترض إن الـ LRU بيحصله الـ anomaly. وهو كـ stack algorithm عمره ما بيعمل faults أكتر مع frames أكتر.",
+  "دي أرقام الـ Optimal؛ والـ LRU مايقدرش يبقى أحسن من الـ Optimal."
+ ],
+ [
+  "ده بالظبط اللي الـ bit بيسجله: الـ 1 معناه اتعملها reference.",
+  "ده بيبان من الـ valid–invalid bit في الـ page table، مش من الـ reference bit.",
+  "صح. الـ bit بيقول بس هل الـ page اتعملها reference ولا لأ، مش امتى؛ والمحاضرة بتقول إننا مانعرفش الترتيب.",
+  "أي page الـ bit بتاعها 0 تنفع تتطرد؛ والـ bit بيقول للـ OS كده."
+ ],
+ [
+  "صح. الـ 4 fault، والـ 4 hit، والـ 1 fault، والـ 4 hit، والـ 2 fault، والـ 2 والـ 1 hits، والـ 3 fault (وبتطرد 4)، يعني <b>4</b>. الـ reference المتكرر لـ page موجودة في الـ memory مش fault.",
+  "ده بيعد كل reference. أربعة منهم (الـ 4 التانية والتالتة، والـ 2 التانية، والـ 1 التانية) بيلاقوا الـ page موجودة.",
+  "ده بيعتبر التكرار <bdi dir=\"ltr\">4, 4</bdi> fault تاني. الـ page موجودة في frame من أول reference.",
+  "ده عد الـ replacement بس (الـ 3 وهي بتطرد 4) وساب الـ 3 faults بتوع ملو الـ frames الفاضية."
+ ],
+ [
+  "في الأول كل الـ entries بتبقى i (مش في الـ memory)؛ والـ pages بتدخل بس لما تتعملها reference.",
+  "صح. في الأول كل الـ valid–invalid bits بتبقى i. وأول reference لكل page بيلاقي i ويعمل page fault."
+ ],
+ [
+  "صح. أول خطوة في التعامل مع الـ page fault: لو الـ reference مش valid يبقى abort؛ والـ page الـ valid اللي بس مش في الـ memory هي اللي بنجيبها.",
+  "ده لما الـ reference يبقى valid بس الـ page مش في الـ memory.",
+  "دي آخر خطوات بعد ما page valid تتقري؛ والـ reference اللي مش valid عمره ما بيوصل لها.",
+  "اختيار victim وكتابته ده page replacement، وبيتعمل بس عشان نفضّي مكان لـ page valid."
+ ],
+ [
+  "دي آخر مرحلة (11). قبلها بنحفظ حالة الـ user التاني، ونصلّح الـ page table، والـ process تستنى الـ CPU.",
+  "دي كانت المرحلة 5؛ والقراية لسه خلصانة.",
+  "دي كانت المرحلة 3، بعد الـ trap الأصلي على طول.",
+  "صح. دي المرحلة 8: الـ CPU كان راح لـ user تاني وقت الانتظار (المرحلة 6)، فبنحفظ حالة الـ user ده قبل ما نصلّح الـ page table (المرحلة 9)."
+ ],
+ [
+  "الـ victim اللي اتغيّر (dirty) بس هو اللي لازم يتكتب؛ والـ clean ممكن نكتب فوقه على طول.",
+  "صح. الـ victim بيتكتب على الـ disk بس لو dirty. وعشان كده الـ fault ممكن يحتاج لحد 2 page transfers، مش دايمًا 2."
+ ],
+ [
+  "ده بيختار الـ victim لما الـ fault مايلاقيش free frame؛ مش بيحدد نصيب كل process من الـ frames.",
+  "صح. هو اللي بيقرر كل process تاخد كام frame وأنهي frames تتبدّل.",
+  "الـ LRU واحد من الـ page-replacement algorithms.",
+  "الـ lazy swapper بيحدد بس امتى ندخّل الـ page (لما تتحتاج بس)."
+ ],
+ [
+  "الـ count بيقول الـ page اتستخدمت كام مرة، مش امتى. والوقت من آخر استخدام ده فكرة الـ LRU.",
+  "ترتيب التحميل ده قاعدة الـ FIFO؛ والـ counts مش أوقات تحميل.",
+  "دي قاعدة الـ Optimal، اللي محتاجة المستقبل؛ والـ MFU بيعد الـ references اللي فاتت بس.",
+  "صح. دي حجة الـ MFU في المحاضرة؛ والـ LFU بيعمل العكس وبيطرد صاحب أصغر عدد."
+ ],
+ [
+  "صح. المحاضرة بتقول إن الـ swapper اللي بيتعامل مع pages اسمه pager؛ والـ lazy swapper هو اللي عمره ما بيدخّل page إلا لو هتتحتاج.",
+  "ده تعريف الـ pager في المحاضرة نفسها."
+ ],
+ [
+  "صح. كل برنامج بياخد memory أقل، فبرامج أكتر بتدخل مع بعض؛ والمحاضرة بتذكر الميزة دي من غير زيادة في الـ response أو الـ turnaround time.",
+  "دي من مميزات الـ virtual memory المذكورة: memory أقل لكل برنامج معناها برامج أكتر في نفس الوقت."
+ ]
+]);
+AR.os.lectures["6"].extra = (AR.os.lectures["6"].extra || []).concat([
+ [
+  "ده جمع الـ Allocation على الـ Max. الـ Need هو اللي لسه ناقص، يعني الـ Max ناقص اللي ماسكاه.",
+  "ده الـ Max بتاع P4. هي ماسكة <bdi dir=\"ltr\">(2, 0, 0)</bdi> ولازم نطرحه.",
+  "ده الـ Allocation ناقص الـ Max، يعني الطرح بالعكس. الـ Need عمره ما بيبقى سالب.",
+  "صح. الحساب:<span class=\"ltr\">Need = Max − Allocation = (3,1,4) − (2,0,0) = (1,1,4)</span>"
+ ],
+ [
+  "ده إجمالي اللي اتوزّع؛ لسه لازم نطرحه من الـ totals.",
+  "صح. مجموع كل column في الـ Allocation هو <bdi dir=\"ltr\">(6, 4, 4)</bdi>، يعني:<span class=\"ltr\">Available = (8,5,6) − (6,4,4) = (2,1,2)</span>",
+  "دي إجمالي الـ instances. فيه منها متوزّع، فمش كلها available.",
+  "ده طرح مجموع الـ Max <bdi dir=\"ltr\">(17, 10, 14)</bdi>. الـ Available بيعتمد على اللي متوزّع، مش على أقصى الطلبات."
+ ],
+ [
+  "الـ P1 ماتنفعش تبدأ: محتاجة <bdi dir=\"ltr\">2 B</bdi> والمتاح <bdi dir=\"ltr\">1 B</bdi> بس.",
+  "بعد P3 الـ Work بيبقى <bdi dir=\"ltr\">(2,2,3)</bdi>، والـ P4 محتاجة <bdi dir=\"ltr\">4 C</bdi>. لازم تستنى لحد ما P1 و P2 يسيبوا اللي معاهم.",
+  "صح. الـ Work ماشي كده:<span class=\"ltr\">(2,1,2) → P3 → (2,2,3) → P1 → (4,2,4) → P2 → (5,4,6) → P4 → (7,4,6) → P0 → (8,5,6)</span>وآخر Work بيساوي الـ totals.",
+  "الـ P0 ماتنفعش تبدأ: محتاجة <bdi dir=\"ltr\">3 A</bdi> والمتاح <bdi dir=\"ltr\">2 A</bdi> بس. والـ safe sequence مش مجرد أرقام الـ processes بالترتيب."
+ ],
+ [
+  "صح. على سبيل التجربة: الـ Available يبقى <bdi dir=\"ltr\">(1,1,1)</bdi>، والـ Allocation بتاع P4 يبقى <bdi dir=\"ltr\">(3,0,1)</bdi>، والـ Need بتاعها <bdi dir=\"ltr\">(0,1,3)</bdi>. ومفيش process تنفع: الـ P3 محتاجة <bdi dir=\"ltr\">2 A</bdi>، والـ P1 محتاجة <bdi dir=\"ltr\">2 B</bdi>، والـ P0 والـ P2 محتاجين A أكتر، والـ P4 محتاجة <bdi dir=\"ltr\">3 C</bdi>. يبقى unsafe، فالـ P4 تستنى ونرجّع الحالة القديمة.",
+  "الشرطين دول بيسمحوا بس بالـ allocation التجريبي. الطلب بيتقبل بس لو الـ safety algorithm لقى الحالة safe بعدها، وهنا مش كده.",
+  "الطلب <bdi dir=\"ltr\">(1, 0, 1)</bdi> أقل من أو بيساوي الـ Need بتاع P4 <bdi dir=\"ltr\">(1, 1, 4)</bdi>، فمفيش تعدّي للـ maximum claim.",
+  "الطلب <bdi dir=\"ltr\">(1, 0, 1)</bdi> أقل من أو بيساوي الـ Available <bdi dir=\"ltr\">(2, 1, 2)</bdi>، فالـ instances الفاضية كفاية؛ المشكلة إن الحالة اللي هتنتج unsafe."
+ ],
+ [
+  "الانتظار بيبقى لطلب سليم بس أكبر من الـ Available. والطلب ده وقع في الشيك اللي قبله على الـ Need.",
+  "الـ safe state مابيسمحش لـ process تطلب أكتر من الـ maximum اللي أعلنته.",
+  "صح. الخطوة 1 بتشيّك إن <bdi dir=\"ltr\">Request ≤ Need</bdi>: الـ Need بتاع P3 هو <bdi dir=\"ltr\">(2, 1, 1)</bdi>، و <bdi dir=\"ltr\">2 B</bdi> أكبر من <bdi dir=\"ltr\">1 B</bdi>، فده error.",
+  "الـ safety algorithm بيشتغل بس بعد ما الشيكين ينجحوا؛ والطلب ده وقع في أول واحد."
+ ],
+ [
+  "صح. الشيك <bdi dir=\"ltr\">Request ≤ Need</bdi> على <bdi dir=\"ltr\">(3, 2, 2)</bdi> بيعدّي، بس <bdi dir=\"ltr\">3 A</bdi> أكبر من الـ Available <bdi dir=\"ltr\">2 A</bdi>، فالخطوة 2 بتخلّي P0 تستنى. ومش بنوصل للـ safety algorithm أصلًا.",
+  "الطلب <bdi dir=\"ltr\">(3, 0, 0)</bdi> أقل من أو بيساوي الـ Need <bdi dir=\"ltr\">(3, 2, 2)</bdi>، يعني جوه الـ claim بتاع P0.",
+  "المتاح <bdi dir=\"ltr\">2 A</bdi> بس، فمانقدرش نوزّع <bdi dir=\"ltr\">3 A</bdi> ولا حتى على سبيل التجربة.",
+  "الـ banker's algorithm بيمنع الـ deadlock بإنه يخلّي الـ process تستنى؛ مش بيعمل abort للـ processes."
+ ],
+ [
+  "صح. كل process بتسيب الـ Allocation بتاعها، فآخر Work بيساوي:<span class=\"ltr\">Available + ΣAllocation = (2,1,2) + (6,4,4) = (8,5,6)</span>وده شيك كويس تتأكد بيه.",
+  "لما كل الـ processes تخلص، كل اللي كانوا ماسكينه بيرجع للـ Work، فلازم يساوي الـ totals."
+ ],
+ [
+  "الـ P2 مش طالبة حاجة، فتقدر تخلص حتى لو مفيش حاجة متاحة.",
+  "صح. الـ Work بيبدأ <bdi dir=\"ltr\">(0,0,0)</bdi>: طلب P2 <bdi dir=\"ltr\">(0,0,0)</bdi> ينفع، فالـ Work يبقى <bdi dir=\"ltr\">(0,0,1)</bdi>. والـ P0 محتاجة B والـ P1 محتاجة A، وكل واحدة ماسكة اللي التانية عايزاه، فالـ Finish يفضل false للـ P0 والـ P1.",
+  "الـ P2 بتسيب C بس، والـ P0 مستنية B (مع P1)، والـ P1 مستنية A (مع P0).",
+  "طلب P2 صفر، فالشرط <bdi dir=\"ltr\">Request ≤ Work</bdi> بيتحقق على طول؛ دي الوحيدة اللي تقدر تخلص."
+ ],
+ [
+  "الـ instances الكتير بتخلّي الـ deadlock احتمال بشكل عام. بس هنا الـ 2 instances بتوع R2 مع P1 و P2، وهما نفسهم مستنيين، فالـ deadlock حقيقي.",
+  "صح. فيه 2 cycles:<span class=\"ltr\">P1 → R1 → P2 → R3 → P3 → R2 → P1</span><span class=\"ltr\">P2 → R3 → P3 → R2 → P2</span>والـ 2 instances بتوع R2 مع processes مستنية، فمحدش يقدر يخلص.",
+  "الـ P1 مستنية R1 اللي مع P2، والـ P2 عمرها ما هتخلص، فالـ P1 واقفة هي كمان.",
+  "طلب P3 هو اللي قفل الـ cycles؛ والـ P1 والـ P2 جواها برضه."
+ ],
+ [
+  "مع instance واحد لكل resource type الـ cycle معناها deadlock؛ هنا الـ instances الزيادة هي اللي أنقذت السيستم.",
+  "مفيش حاجة بتقول إنهم sharable؛ الـ cycle اتكسرت لأن فيه processes تانية ماسكة instances وتقدر تسيبها.",
+  "الـ No preemption متحقق: الـ resources بتتساب بس بمزاج اللي ماسكها.",
+  "صح. لما P4 تسيب الـ instance بتاع R2، الـ P3 تاخده وتخلص، وبعدها الـ P1 تقدر تكمّل."
+ ],
+ [
+  "صح. الـ assignment edges بتروح <bdi dir=\"ltr\">Rj → Pi</bdi>، من نقطة الـ instance للـ process اللي ماسكاه.",
+  "الـ request edge بيروح بالعكس <bdi dir=\"ltr\">Pi → Rj</bdi>، من الـ process لمربع الـ resource.",
+  "الـ wait-for graph فيه processes بس <bdi dir=\"ltr\">(Pi → Pj)</bdi>؛ والـ resource nodes بتتشال.",
+  "الاتجاهين موجودين: الـ requests من P لـ R، والـ assignments من R لـ P."
+ ],
+ [
+  "مفيش سهم من P3 لـ P1، لأن P3 مش مستنية حاجة.",
+  "الأسهم بتروح من الـ process المستنية للي هي مستنياها، يعني <bdi dir=\"ltr\">P1 → P2 → P3</bdi>.",
+  "صح. لما نشيل الـ resource nodes بيبقى فيه <bdi dir=\"ltr\">P1 → P2</bdi> و <bdi dir=\"ltr\">P2 → P3</bdi>. ومفيش cycle: الـ P3 تخلص، وبعدين P2، وبعدين P1.",
+  "العكس هو الصح: الـ wait-for graph هو طريقة الـ detection لما يبقى فيه instance واحد لكل resource type."
+ ],
+ [
+  "الـ Hold and wait بنمنعه بإننا نطلب كل الـ resources من الأول أو نطلب وإحنا مش ماسكين حاجة.",
+  "الـ No preemption بنمنعه بإن الـ process اللي اتمنعت تسيب كل اللي ماسكاه.",
+  "الـ Circular wait بنمنعه بترتيب كامل للـ resource types.",
+  "صح. الـ Mutual exclusion مش لازم للـ sharable resources، فعمرها ما تدخل في deadlock."
+ ],
+ [
+  "الـ Mutual exclusion لازم يتحقق للـ non-sharable resources (الـ printer مايتشاركش)، فغالبًا مانقدرش نلغيه.",
+  "صح. الـ sharable resources بس زي الـ read-only files هي اللي بتهرب منه؛ أما الـ non-sharable فلازم الـ mutual exclusion يتحقق."
+ ],
+ [
+  "ده بالعكس. الـ banker's algorithm هو المعمول للـ multiple instances.",
+  "الـ wait-for graph للـ detection (مع الـ single instances)، مش للـ avoidance.",
+  "صح. ده تقسيم المحاضرة للـ avoidance.",
+  "الترتيب الكامل بيمنع الـ circular wait؛ ودي طريقة prevention."
+ ],
+ [
+  "قاعدة المحاضرة: الـ process اللي بتاخد كل الـ resources بتاعتها لازم ترجّعها في وقت محدود.",
+  "صح. كل process بتعلن الـ maximum من الأول، وممكن تستنى، ولازم ترجّع كل الـ resources في وقت محدود."
+ ],
+ [
+  "الـ priority هو العامل الأول في القايمة.",
+  "ده العامل الخامس في القايمة.",
+  "صح. الـ page faults مش في القايمة. العوامل هي الـ priority، واشتغلت قد إيه وفاضلها قد إيه، والـ resources اللي استخدمتها، واللي محتاجاها، وكام process هنقفل، و interactive ولا batch.",
+  "ده العامل السادس في القايمة."
+ ],
+ [
+  "صح. كل cycle منفصلة محتاجة process واحدة على الأقل تعمل rollback عشان تتكسر.",
+  "الـ processes اللي في الـ deadlock cycles بس هي اللي ليها دعوة؛ والباقي مش في deadlock.",
+  "الـ victim الواحد بيكسر cycle واحدة بس؛ وكل cycle منفصلة محتاجة واحد ليها.",
+  "الـ Rollback واحد من مشاكل الـ recovery بالـ resource preemption."
+ ],
+ [
+  "الـ process ماتقدرش تستخدم resource قبل ما تطلبه وتاخده.",
+  "لما تسيب الـ resource بيرجع، فمش هتقدر تستخدمه بعدها.",
+  "مفيش حاجة تتساب قبل ما الـ resource يتطلب ويتستخدم.",
+  "صح. الـ process لازم تطلب الـ resource (وتستنى لو لازم)، وتستخدمه، وبعدين تسيبه."
+ ],
+ [
+  "الـ detection مفيهوش Max ولا Need: بيستخدم الطلبات الحالية، يعني <bdi dir=\"ltr\">Request_i ≤ Work</bdi>.",
+  "صح. الـ detection algorithm بيستخدم <bdi dir=\"ltr\">Request_i ≤ Work</bdi> بدل الـ Need، والـ <bdi dir=\"ltr\">Finish[i]</bdi> بتبدأ true لما <bdi dir=\"ltr\">Allocation_i = 0</bdi>."
+ ]
+]);
+AR.os.lectures["7"].extra = (AR.os.lectures["7"].extra || []).concat([
+ [
+  "ده قرا الأرقام من اليمين للشمال. الـ chmod بيكتب الـ owner وبعدين الـ group وبعدين الـ public.",
+  "صح. الـ R بـ 4 والـ W بـ 2 والـ X بـ 1:<span class=\"ltr\">owner 5 = 4 + 1 (R-X), group 3 = 2 + 1 (-WX), public 6 = 4 + 2 (RW-)</span>",
+  "الـ digit بتاع الـ group هو 3، يعني <bdi dir=\"ltr\">2 + 1</bdi> (write و execute)؛ والـ <bdi dir=\"ltr\">RW-</bdi> تبقى 6.",
+  "الـ 5 هي <bdi dir=\"ltr\">4 + 1</bdi> (read و execute)؛ والـ <bdi dir=\"ltr\">-WX</bdi> تبقى <bdi dir=\"ltr\">2 + 1 = 3</bdi>."
+ ],
+ [
+  "ده محتاج direct access زي الـ contiguous أو الـ indexed. في الـ linked عنوان الـ block رقم i موجود بس في الـ block اللي قبله.",
+  "القراية بتقف عند الـ block الرابع (<bdi dir=\"ltr\">10</bdi>)؛ والـ block <bdi dir=\"ltr\">25</bdi> مش محتاجينه.",
+  "الـ directory بيدّي الأول والآخر بس؛ والـ blocks اللي في النص لازم نوصلها بالـ pointers واحد ورا التاني.",
+  "صح. عنوان الـ block الرابع متخزن بس في الـ block التالت، فلازم نقرا الـ blocks <bdi dir=\"ltr\">9, 16, 1</bdi> عشان نلاقي <bdi dir=\"ltr\">10</bdi>، وبعدين نقرا <bdi dir=\"ltr\">10</bdi> نفسه. وعشان كده الـ direct access في الـ linked allocation ضعيف."
+ ],
+ [
+  "صح. الـ entry رقم i في الـ index block بيشاور على الـ block رقم i في الـ file، يعني <bdi dir=\"ltr\">9, 16, 1</bdi> وبعدين <bdi dir=\"ltr\">10</bdi>.",
+  "الـ 1 هو الـ entry التالت؛ وقفت قبله بواحد.",
+  "الـ 25 هو الـ entry الخامس، آخر block في الـ file. العد من 0 بيوصّلك هنا بالغلط.",
+  "الـ 19 هو الـ index block نفسه، اللي فيه الـ pointers مش داتا الـ file."
+ ],
+ [
+  "الـ <bdi dir=\"ltr\">−1</bdi> (آخر الـ file) موجود في <bdi dir=\"ltr\">FAT[339]</bdi>، اللي هو آخر block.",
+  "الـ 217 هو الـ start block، ومتخزن في الـ directory entry؛ و <bdi dir=\"ltr\">FAT[217]</bdi> فيه <bdi dir=\"ltr\">618</bdi>.",
+  "صح. كل entry في الـ FAT فيه رقم الـ block الجاي في الـ file، فالـ entry بتاع الـ block <bdi dir=\"ltr\">618</bdi> فيه <bdi dir=\"ltr\">339</bdi>.",
+  "الـ entry مش بيشيل رقمه هو؛ بيشيل رقم الـ block اللي بعده."
+ ],
+ [
+  "ده تجاهل الـ reset، اللي بيرجّع الـ cp لـ 0 قبل الـ write.",
+  "الـ write next برضه بيقدّم المكان:<span class=\"ltr\">write cp; cp = cp + 1</span>",
+  "ده زوّد 1 قبل الكتابة. العملية بتكتب block الـ cp الأول وبعدين تزوّد الـ cp.",
+  "صح. الـ reads بيقروا الـ blocks <bdi dir=\"ltr\">6</bdi> و <bdi dir=\"ltr\">7</bdi> (والـ cp يبقى <bdi dir=\"ltr\">8</bdi>)، والـ reset بيخلّي <bdi dir=\"ltr\">cp = 0</bdi>، والـ write next بيكتب block <bdi dir=\"ltr\">0</bdi> ويخلّي <bdi dir=\"ltr\">cp = 1</bdi>."
+ ],
+ [
+  "الاسم الـ relative بيتحسب من الـ current directory، مش من الـ root.",
+  "صح. الـ files والـ subdirectories الجديدة بتتعمل في الـ current directory، زي مثال المحاضرة (جوه <bdi dir=\"ltr\">/mail</bdi> كتبنا <bdi dir=\"ltr\">mkdir count</bdi>).",
+  "الـ path ده من مثال الـ cd التاني؛ هنا الـ current directory هو <bdi dir=\"ltr\">/mail</bdi>.",
+  "الـ mkdir بيضيف subdirectory؛ مش بيبدّل ولا بيمسح حاجة."
+ ],
+ [
+  "الـ identifier رقم مميز بيعرّف الـ file جوه الـ file system.",
+  "الـ name هو المعلومة الوحيدة المقروءة للإنسان.",
+  "صح. الـ Location هو الـ pointer لمكان الـ file على الجهاز.",
+  "الـ protection بيسجل مين يقدر يقرا ويكتب وينفّذ الـ file."
+ ],
+ [
+  "صح. المحاضرة بتذكر الـ file checksum من الـ extended attributes.",
+  "المحاضرة بتقول إن الـ file checksum من الـ extended attributes."
+ ],
+ [
+  "الـ Truncate عملية تانية منفصلة في القايمة، مش repositioning.",
+  "الـ <bdi dir=\"ltr\">open(Fi)</bdi> بيدوّر في الـ directory وينقل الـ entry للـ memory؛ مش بيتحرك جوه الـ file.",
+  "صح. المحاضرة بتكتب العملية كده: reposition جوه الـ file (seek).",
+  "الـ Append نوع من الـ access (إضافة في الآخر)، مش عملية repositioning."
+ ],
+ [
+  "الـ file pointer (آخر مكان read أو write) بيتحفظ لكل process، فكل process ليها مكانها.",
+  "صح. الـ file pointer لكل process، وكمان الـ access rights؛ والـ file-open count هو اللي بيبقى واحد للـ file كله."
+ ],
+ [
+  "الـ Object files هي <bdi dir=\"ltr\">obj</bdi> و <bdi dir=\"ltr\">o</bdi>.",
+  "الـ Executables هي <bdi dir=\"ltr\">exe, com, bin</bdi>.",
+  "الـ Archives هي <bdi dir=\"ltr\">arc, zip, tar</bdi>.",
+  "صح. نوع الـ library في المحاضرة هو <bdi dir=\"ltr\">lib, a, so, dll</bdi>."
+ ],
+ [
+  "ده لما الـ file يبقى سلسلة words أو bytes من غير records.",
+  "صح. الـ complex structures زي الـ formatted document أو الـ relocatable load file.",
+  "الـ simple record structure معناها lines أو records ثابتة أو متغيرة الطول.",
+  "الـ direct access ده access method، مش file structure."
+ ],
+ [
+  "الـ sequential access لسه ممكن نعمله على direct-access file بالـ current position اللي اسمها cp.",
+  "صح. البرنامج بيطلب block رقم n من الـ file، والـ OS بيترجمه لمكان الـ file الحقيقي.",
+  "الـ n نسبي لأول الـ file، مش عنوان فعلي على الـ disk.",
+  "الـ tape هو موديل الـ sequential access؛ والـ direct access للـ disks."
+ ],
+ [
+  "الـ Efficiency معناها نلاقي الـ file بسرعة.",
+  "الـ Grouping معناها تجميع الـ files حسب خصايصها، زي كل برامج الـ Java أو كل الألعاب.",
+  "الـ Protection عن مين يقدر يوصل للـ file؛ ومش من التلات أهداف بتوع التنظيم.",
+  "صح. هدف الـ naming هو راحة الـ users: نفس الاسم لـ files users مختلفين، وكذا اسم لـ file واحد."
+ ],
+ [
+  "المحاضرة بتقول إن الـ directory structure والـ files الاتنين على الـ disk.",
+  "صح. الـ directory structure والـ files الاتنين على الـ disk؛ والـ <bdi dir=\"ltr\">open()</bdi> بيجيب الـ entry للـ memory لما نحتاجه."
+ ],
+ [
+  "الـ collisions دي مشكلة الـ hash table.",
+  "الشرط ده بتاع الـ hash table، إلا لو استخدمنا الـ chained overflow.",
+  "صح. سهل في البرمجة بس البحث فيه بطيء؛ ولو خليناه مترتب (linked list أو B+ tree) بيساعد.",
+  "الـ linear list بيحفظ كل اسم file مع pointer للـ data blocks بتاعته."
+ ],
+ [
+  "صح. الـ hash table بيقلل وقت البحث بس لازم يتعامل مع الـ collisions؛ والمحاضرة بتقول إنه كويس بس مع entries ثابتة الحجم أو بالـ chained overflow.",
+  "ده شرط المحاضرة نفسها للـ hash-table directory."
+ ],
+ [
+  "الـ device driver بيتحكم في الجهاز الفعلي.",
+  "صح. الـ FCB هو الـ storage structure اللي فيه معلومات الـ file.",
+  "الـ open-file table بيتابع بس أنهي files مفتوحة.",
+  "الـ index block فيه pointers للـ data blocks بتاعة الـ file في الـ indexed allocation."
+ ],
+ [
+  "الـ FAT طريقة allocation على الـ disk (linked allocation بـ table).",
+  "الـ FCB فيه معلومات file واحد.",
+  "صح. الـ NFS هو طريقة مشاركة الـ files على الـ network اللي المحاضرة ذكرتها.",
+  "الـ chmod بيحدد الـ access modes في UNIX؛ مش بيشارك files على الـ network."
+ ],
+ [
+  "صح. أنواع الـ access هي الـ read والـ write والـ execute والـ append والـ delete والـ list.",
+  "الـ Append من أنواع الـ access.",
+  "الـ List من أنواع الـ access.",
+  "الـ Delete من أنواع الـ access."
+ ]
+]);
+AR.os.lectures["8"].extra = (AR.os.lectures["8"].extra || []).concat([
+ [
+  "الـ expansion bus بيوصّل الأجهزة البطيئة زي الـ keyboard والـ serial والـ parallel ports.",
+  "ده سلك واحد في الـ CPU بيتستخدم للـ interrupts، مش bus للـ controllers.",
+  "صح. الـ PCI هو الـ bus المشهور في الـ PCs والـ servers؛ والـ graphics controller والـ SCSI controller والـ IDE disk controller والـ expansion bus interface متوصلين بيه.",
+  "الـ port نقطة توصيل لجهاز واحد؛ والـ bus بيتشارك بين أجهزة كتير."
+ ],
+ [
+  "صح. الـ vector 0 هو الـ divide error.",
+  "الـ vector 14 هو الـ page fault.",
+  "الـ vector 13 هو الـ general protection.",
+  "الـ vectors من <bdi dir=\"ltr\">32</bdi> لـ <bdi dir=\"ltr\">255</bdi> دي الـ maskable interrupts، مش الـ divide error."
+ ],
+ [
+  "الـ Storage واحد من التلاتة.",
+  "الـ Transmission واحد من التلاتة.",
+  "الـ Human-interface واحد من التلاتة.",
+  "صح. التلات أنواع هما الـ storage والـ transmission والـ human-interface."
+ ],
+ [
+  "صح. المحاضرة بتقول إن الـ controller ساعات بيبقى مدمج وساعات board لوحده، وفيه processor و microcode و private memory و bus controller.",
+  "ده وصف المحاضرة للـ controller (الـ host adapter)."
+ ],
+ [
+  "الـ Data-in الـ host بيقراه عشان ياخد input من الجهاز.",
+  "صح. في الخطوة 2 من الـ handshake الـ host بيعمل set للـ write bit وينسخ الـ byte في الـ data-out.",
+  "الـ status register فيه bits زي الـ busy، والـ host بيقراه.",
+  "الـ control register بياخد أوامر (زي الـ command-ready)، مش الـ byte نفسه."
+ ],
+ [
+  "الـ host لازم يستنى الأول لحد ما الـ busy يبقى 0؛ وبيعمل set للـ command-ready بس بعد ما الأمر والداتا يبقوا جاهزين.",
+  "الـ controller بيعمل set للـ busy بس بعد الـ command-ready، والـ controller هو اللي بيمسحه مش الـ host.",
+  "الـ controller مايقدرش ينقل قبل ما ياخد أمر: الـ write bit والـ data-out والـ command-ready ييجوا الأول.",
+  "صح. دي الـ 5 خطوات بترتيب المحاضرة."
+ ],
+ [
+  "صح. المحاضرة بتقول إن الـ memory-mapped <bdi dir=\"ltr\">I/O</bdi> بيتستخدم خصوصًا للـ address spaces الكبيرة زي الـ graphics.",
+  "المحاضرة بتربط الـ memory-mapped <bdi dir=\"ltr\">I/O</bdi> بالـ address spaces الكبيرة زي الـ graphics، مش بالأجهزة الصغيرة اللي بتبعت byte في المرة.",
+  "الـ disks دي block devices؛ والـ memory-mapped <bdi dir=\"ltr\">I/O</bdi> عن الـ device registers والداتا، زي الـ graphics memory.",
+  "الـ interrupt vector فيه عناوين الـ handlers؛ مش device register."
+ ],
+ [
+  "الـ handler لازم ياخد التحكم ويعالج الداتا الأول.",
+  "دي أول خطوة في الـ cycle.",
+  "صح. دي الخطوة 4، قبل ما الـ handler يعالج الداتا ويرجع.",
+  "دي آخر خطوة، بعد ما الـ handler يرجع."
+ ],
+ [
+  "الـ line بيتحس بعد كل instruction، فالـ CPU بيرد على طول، مش في آخر البرنامج.",
+  "الـ DMA بيتجهز لما الـ OS يكتب command block؛ والـ interrupt مش بيبدأه.",
+  "الـ interrupts موجودة عشان الـ CPU مايحتاجش يعمل polling على الـ busy bit.",
+  "صح. بعد الـ instruction الحالية الـ CPU بيعمل state save ويروح للـ handler في عنوان ثابت."
+ ],
+ [
+  "النسخ byte ورا byte عن طريق الـ CPU ده الـ programmed <bdi dir=\"ltr\">I/O</bdi> اللي الـ DMA بيمنعه.",
+  "صح. دي الخطوة 4 في تجهيز الـ DMA؛ وبعدها الـ controller بياخد الـ bus (الـ bus mastering).",
+  "الـ Data-out ده data register بيتستخدم في الـ polling، مش pointer لـ DMA command block.",
+  "الـ interrupt vector فيه عناوين الـ interrupt handlers."
+ ],
+ [
+  "الـ DMA بيعمل interrupt مرة لكل block، مش مرة واحدة للـ <bdi dir=\"ltr\">4 KB</bdi> كلهم هنا.",
+  "من غير DMA الـ CPU بيدخل في كل byte، فيبقوا <bdi dir=\"ltr\">4,096</bdi> مش <bdi dir=\"ltr\">8</bdi>.",
+  "صح. الـ <bdi dir=\"ltr\">4 KB = 4,096 bytes</bdi>، و <bdi dir=\"ltr\">4,096 / 512 = 8</bdi> blocks، والـ DMA بيعمل interrupt واحد لكل block بدل واحد لكل byte.",
+  "ده بالعكس: الـ DMA هو اللي interrupts بتاعته أقل."
+ ],
+ [
+  "صح. دي الخطوة 4؛ والخطوة 5 إن الـ DMA controller يكتب الـ bytes في الـ buffer X.",
+  "دي الخطوة 6، لما الـ C يوصل 0.",
+  "دي الخطوة 2، قبل ما النقل يبدأ.",
+  "دي الخطوة 5؛ الـ bytes لازم توصل للـ DMA controller الأول."
+ ],
+ [
+  "ده عن هل كذا process تقدر تستخدم الجهاز في نفس الوقت.",
+  "ده عن توقيت النقل، مش ترتيب الوصول.",
+  "صح. ده بُعد الـ sequential مقابل الـ random-access في قايمة المحاضرة.",
+  "ده عن اتجاهات النقل المسموحة."
+ ],
+ [
+  "صح. المحاضرة بتقول الاتنين: الـ driver layer بيخبّي الفروق بين الـ controllers، والأجهزة الجديدة اللي بتستخدم protocols متنفذة مش محتاجة شغل زيادة.",
+  "ده بالظبط اللي المحاضرة بتقوله عن الـ device-driver layer."
+ ],
+ [
+  "الـ demand paging بيجيب بس اللي اتعمله reference، مش الـ file كله وقت الـ open.",
+  "الـ <bdi dir=\"ltr\">get()</bdi> والـ <bdi dir=\"ltr\">put()</bdi> أوامر الـ character devices.",
+  "الـ polling طريقة للتعامل مع الـ device registers، مش طريقة تحميل الـ mapped file.",
+  "صح. المحاضرة بتقول إن الـ file بيتعمله map على الـ virtual memory والـ clusters بتيجي بالـ demand paging."
+ ],
+ [
+  "صح. المحاضرة بتقول إن الـ character devices (الـ keyboard والـ mouse والـ serial ports) بتستخدم <bdi dir=\"ltr\">get()</bdi> و <bdi dir=\"ltr\">put()</bdi>، والـ libraries اللي فوقيهم بتسمح بالـ line editing.",
+  "المحاضرة بتقول كده بالظبط عن الـ character devices."
+ ],
+ [
+  "دي مذكورة: الـ <bdi dir=\"ltr\">I/O</bdi> بيخلّي الـ CPU ينفّذ كود الـ driver.",
+  "صح. الـ fragmentation مشكلة في الـ memory allocation (Topic 4). وتكاليف الـ <bdi dir=\"ltr\">I/O</bdi> هي وقت الـ CPU لكود الـ driver، والـ context switches بسبب الـ interrupts، والـ data copying.",
+  "دي مذكورة: context switches بسبب الـ interrupts.",
+  "دي مذكورة: الـ <bdi dir=\"ltr\">I/O</bdi> بيعمل data copying."
+ ],
+ [
+  "صح. \"نقلل الـ interrupts بـ transfers كبيرة و smart controllers و polling\" موجودة في قايمة تحسين الأداء.",
+  "المحاضرة بتذكر الـ polling من طرق تقليل الـ interrupts. والـ polling بيبقى تضييع بس لما يعمل busy-wait على جهاز بطيء."
+ ],
+ [
+  "المحاضرة بتقول إن الـ cycle stealing ليه تكلفة صغيرة، بس الـ DMA برضه أكفأ بكتير من نقل byte في المرة.",
+  "صح. الـ cycle stealing تكلفته صغيرة، بس الـ DMA أكفأ بكتير: interrupt واحد لكل block والـ CPU فاضي لشغل تاني."
+ ],
+ [
+  "خدمة الـ interrupt ليها تكلفة: state save، والـ handler، و state restore.",
+  "نقل الداتا من غير الـ CPU ده الـ DMA؛ في الـ interrupt-driven <bdi dir=\"ltr\">I/O</bdi> العادي الـ handler لسه بيعالج الداتا.",
+  "صح. الـ busy-wait بتاع الـ polling مش كفء لما الجهاز يبقى بطيء؛ والـ interrupt بيبلّغ الـ CPU بس لما الجهاز يجهز.",
+  "الـ polling ينفع مع أي جهاز؛ بس بيبقى تضييع مع الأجهزة البطيئة."
+ ]
+]);

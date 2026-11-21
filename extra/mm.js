@@ -4134,3 +4134,1685 @@ EXTRA.mm = {
   }
  ]
 };
+
+// Final revision practice questions (2026-11-21), appended per lecture
+EXTRA.mm["5"] = (EXTRA.mm["5"] || []).concat([
+ {
+  "q": "A 500 Hz carrier is frequency-modulated by a 100 Hz modulator. Which sideband order n gives the pair at <b>200 Hz and 800 Hz</b>?",
+  "o": [
+   [
+    "n = 1",
+    "n = 1 gives 500 ± 100 = 400 and 600 Hz, the closest pair, not 200 and 800."
+   ],
+   [
+    "n = 2",
+    "n = 2 gives 500 ± 200 = 300 and 700 Hz."
+   ],
+   [
+    "n = 3",
+    "Correct. Sidebands sit at fc ± n·fm: 500 ± 3 × 100 = 500 ± 300 = 200 and 800 Hz (L5, FM synthesis)."
+   ],
+   [
+    "n = 300",
+    "That is the offset in Hz (300), not the order; the offset is n·fm, so n = 300/100 = 3."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A 300 Hz carrier is modulated by a 110 Hz modulator. What are the <b>first-order</b> sidebands, and what kind of sound does this ratio give?",
+  "o": [
+   [
+    "190 Hz and 410 Hz; inharmonic, bell-like",
+    "Correct. n = 1: 300 ± 110 = 190 and 410 Hz. 300 : 110 is not an integer ratio, so the sidebands are not multiples of a common fundamental: a bell-like, inharmonic sound (L5, FM)."
+   ],
+   [
+    "190 Hz and 410 Hz; harmonic",
+    "The frequencies are right, but harmonic sounds need the modulator in a harmonic (integer) relationship to the carrier; 300 : 110 is not."
+   ],
+   [
+    "410 Hz and 520 Hz; inharmonic",
+    "These are the upper sidebands of n = 1 and n = 2 (300 + 110, 300 + 220); each order has a lower AND an upper sideband."
+   ],
+   [
+    "300 Hz and 110 Hz; harmonic",
+    "Those are just the carrier and modulator frequencies; FM sidebands appear at fc ± n·fm."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "An FM note has a peak frequency deviation of <b>600 Hz</b> and a modulator of <b>200 Hz</b>. What is the modulation index I?",
+  "o": [
+   [
+    "3",
+    "Correct. I = peak deviation / modulator frequency = 600 / 200 = 3 (L5, FM formula)."
+   ],
+   [
+    "0.333",
+    "That divides the wrong way: modulator / deviation = 200 / 600. The index is deviation over modulator."
+   ],
+   [
+    "120,000",
+    "That multiplies them (600 × 200); the index is a ratio."
+   ],
+   [
+    "400",
+    "That subtracts them (600 − 200); the index is a ratio, not a difference."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Why do FM synthesisers such as the DX7 have <b>4 or 6 operators</b>?",
+  "o": [
+   [
+    "Because one carrier and one modulator are not complex enough on their own",
+    "Correct. Operators are the oscillators; synths have 4 or 6 because a single carrier plus a single modulator is not complex enough, and algorithms route them (L5, FM)."
+   ],
+   [
+    "Because analog oscillators drift and need spares",
+    "FM is done digitally precisely because analog oscillators are unstable; operators are not spares."
+   ],
+   [
+    "Because each operator plays one of the ADSR phases",
+    "The ADSR envelope shapes a sound over time; it is not split across operators."
+   ],
+   [
+    "Because each sideband order needs its own oscillator",
+    "Sidebands appear by themselves at fc ± n·fm from one carrier and one modulator; they do not need extra oscillators."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "<code>karplus.m</code> sounds 220.5 Hz with D = 200 at 44.1 kHz. To raise the note by one <b>octave</b> (double the frequency), the delay line should be:",
+  "o": [
+   [
+    "400 samples",
+    "Doubling D doubles the period, which halves the frequency: 110.25 Hz, an octave lower."
+   ],
+   [
+    "100 samples",
+    "Correct. F1 = Fs / D, so halving D doubles F1: 44,100 / 100 = 441 Hz (the notes' own \"A = 441 Hz needs D = 100\")."
+   ],
+   [
+    "200 samples",
+    "Keeping D keeps the same 220.5 Hz; the pitch is set by the delay length."
+   ],
+   [
+    "441 samples",
+    "That confuses the target frequency (441 Hz) with the delay length; 44,100 / 441 = 100 samples."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "As in <code>synth.m</code>, a sawtooth at <b>441 Hz</b> is built at Fs = 22,050 Hz. How many samples is one period?",
+  "o": [
+   [
+    "50 samples",
+    "Correct. Period T = Fs / freq = 22,050 / 441 = 50 samples (L5, synth.m)."
+   ],
+   [
+    "25 samples",
+    "That divides the Nyquist frequency (11,025) by 441; the period uses the full sample rate."
+   ],
+   [
+    "0.00227 samples",
+    "That is 1/441, the period in seconds, not in samples (forgot × Fs)."
+   ],
+   [
+    "9,724,050 samples",
+    "That multiplies Fs × freq; the period is Fs divided by the frequency."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In simple sound-energy beat detection, how many \"instant\" energy windows fit into one \"average\" energy window?",
+  "o": [
+   [
+    "5",
+    "That misreads \"5/100 second\" as 5; the instant window is 0.05 s."
+   ],
+   [
+    "20",
+    "Correct. Average window ≈ 1 s, instant window ≈ 5/100 s, so 1 / 0.05 = 20 (L5, beat slicing)."
+   ],
+   [
+    "100",
+    "That divides 1 s by 0.01 s; the instant window is 5/100 s, not 1/100 s."
+   ],
+   [
+    "2205",
+    "That is the number of samples in the instant window at 44.1 kHz, not the number of windows."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "True or False: in frequency-selected beat detection, a beat is detected only when <b>all</b> 32 sub-bands exceed their recent average energy.",
+  "o": [
+   [
+    "True",
+    "The lecture says a beat is detected if <b>one or more</b> sub-bands exceed their average, not all of them."
+   ],
+   [
+    "False",
+    "Correct. After an FFT over 1024 samples split into about 32 sub-bands, a beat is detected when one or more sub-bands exceed their own recent average (L5, beat slicing)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "<code>granulation.m</code>-style grains of <b>30 ms</b> are cut from audio sampled at <b>48 kHz</b>. How many samples is each grain?",
+  "o": [
+   [
+    "1440",
+    "Correct. Samples = duration × fs = 0.03 × 48,000 = 1440 (same method as 10 ms × 44.1 kHz = 441 in the notes)."
+   ],
+   [
+    "144",
+    "A decimal slip: 30 ms is 0.03 s, not 0.003 s."
+   ],
+   [
+    "1,440,000",
+    "That multiplies 30 × 48,000 without converting ms to seconds."
+   ],
+   [
+    "14,400",
+    "That uses 0.3 s; 30 ms is 0.03 s."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: a 200 ms fragment of a sample is a typical grain in granular synthesis.",
+  "o": [
+   [
+    "True",
+    "Grains are tiny: about 1 to 50 ms (usually 10 to 50 ms). 200 ms is far longer than a grain."
+   ],
+   [
+    "False",
+    "Correct. The lecture gives grains of about 1 to 50 ms, usually 10 to 50 ms, working on the \"microsound\" time scale (L5, granular)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Which ADSR phase is described as <b>slow</b> for bowed strings and \"pads\" but almost instantaneous for most mechanical instruments?",
+  "o": [
+   [
+    "Attack",
+    "Correct. Attack is how quickly the sound reaches full volume after the key is pressed: slow for bowed strings and pads, almost instant for most mechanical instruments (L5, ADSR)."
+   ],
+   [
+    "Decay",
+    "Decay is how quickly the sound drops from the peak to the sustain level, not how it rises."
+   ],
+   [
+    "Sustain",
+    "Sustain is a level held while the key is down, not a speed."
+   ],
+   [
+    "Release",
+    "Release is the fade after the key is let go (short for an organ, long for a bell)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Of the three basic elements of electronic control in a subtractive synth, which one is \"strictly not subtractive\" but frequently used with it?",
+  "o": [
+   [
+    "The source signal",
+    "The source (square, pulse, sawtooth, triangle) is the rich signal that subtractive synthesis filters."
+   ],
+   [
+    "The filtering",
+    "Filtering is the subtractive part itself: cut-off and resonance remove overtones."
+   ],
+   [
+    "The amplitude envelope",
+    "Correct. The amplitude envelope is strictly not subtractive synthesis, but it is frequently used with it and with other techniques (L5, three basic elements)."
+   ],
+   [
+    "The vocoder",
+    "The vocoder is the first example of subtractive synthesis (1939), not one of the three control elements."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A <b>200 Hz</b> square wave is built additively. What is the <b>third</b> sine component added, and its relative amplitude?",
+  "o": [
+   [
+    "1000 Hz with amplitude 1/5",
+    "Correct. A square wave uses odd harmonics f, 3f, 5f with amplitudes 1, 1/3, 1/5, so the third component is 5 × 200 = 1000 Hz at 1/5 (L5, additive)."
+   ],
+   [
+    "600 Hz with amplitude 1/3",
+    "That is the second component (3f); the first is f = 200 Hz."
+   ],
+   [
+    "600 Hz with amplitude 1/2",
+    "That counts all harmonics (f, 2f, 3f); a square wave has only odd harmonics."
+   ],
+   [
+    "1000 Hz with amplitude 1/3",
+    "The frequency is right, but the amplitude of the n-th harmonic is 1/n, so 1/5."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In wavetable synthesis, <b>linear crossfading</b> is described as a subclass of sequential enveloping in which the envelopes are:",
+  "o": [
+   [
+    "Overlapping triangular pulses",
+    "Correct. Linear crossfading is the subclass of sequential enveloping where the envelopes are overlapping triangular pulses (L5, wavetable)."
+   ],
+   [
+    "Rectangular pulses with no overlap",
+    "Non-overlapping rectangles would switch tables abruptly; crossfading needs overlap."
+   ],
+   [
+    "Full ADSR envelopes on each table",
+    "ADSR enveloping is applied to the output, but the crossfade envelopes themselves are triangular pulses."
+   ],
+   [
+    "Hanning windows of 10 ms",
+    "Hanning fades of 10 ms are the grain envelopes in granulation.m, not wavetable crossfades."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: in wavetable synthesis the tables usually hold several seconds of the recorded note, like a PCM sample.",
+  "o": [
+   [
+    "True",
+    "Wavetables are short: the waves in the tables are rarely more than 1 or 2 periods long. That is why they are far more compact than a PCM sample."
+   ],
+   [
+    "False",
+    "Correct. Unlike sample playback, the tables rarely hold more than 1 or 2 periods, and the output is generated in real time (L5, wavetable)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "For a <b>sustaining</b> instrument (e.g. a held string note), how are good loop points found?",
+  "o": [
+   [
+    "At silence points (zero crossings) between beats",
+    "Silence points suit drum beats; a sustaining note has no silences to cut at."
+   ],
+   [
+    "By finding portions with the same audio content (pattern matching)",
+    "Correct. For sustaining instruments the loop is placed where the audio content repeats, found by pattern matching (L5, looping)."
+   ],
+   [
+    "By triggering a tail-off sample on note-off",
+    "The tail-off sample ends the loop; it does not choose where the loop is."
+   ],
+   [
+    "By speeding the sample up a few semitones",
+    "Changing speed changes pitch (and leads to multisampling); it does not find loop points."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A sampler has a <b>single velocity layer</b>. Hitting a key harder:",
+  "o": [
+   [
+    "Changes only the volume, not the timbre",
+    "Correct. With a single layer only the volume changes; there is no change of timbre (L5, velocity layers)."
+   ],
+   [
+    "Switches to a second, brighter sample",
+    "That is a dual (or triple) velocity layer: sound 2 plays at higher velocity."
+   ],
+   [
+    "Changes the playing style, e.g. muted to open",
+    "Playing styles are chosen by keyswitching, not by velocity."
+   ],
+   [
+    "Raises the pitch by a few semitones",
+    "Velocity measures how hard the key is hit; pitch comes from which key it is."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Using PSOLA, how do you make a speech recording <b>shorter</b> without changing its pitch?",
+  "o": [
+   [
+    "Move the segments closer together",
+    "Moving segments closer raises the pitch; duration rules use repeating or eliminating segments."
+   ],
+   [
+    "Repeat some segments",
+    "Repeating segments makes the sound longer."
+   ],
+   [
+    "Eliminate some segments",
+    "Correct. In PSOLA segments are repeated for a longer sound and some are eliminated for a shorter one, then recombined by overlap-add (L5, PSOLA)."
+   ],
+   [
+    "Apply an STFT and shrink the spectrum",
+    "PSOLA has no STFT; it works directly on overlapping time segments."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "In the Karplus-Strong drum variant, making the wavetable length <b>p larger</b>:",
+  "o": [
+   [
+    "Gives a longer decay and a lower pitch",
+    "Correct. p sets both: a big p gives a long decay and a low pitch (L5, drum variant)."
+   ],
+   [
+    "Gives a shorter decay and a higher pitch",
+    "Backwards: a longer table means a longer period (lower pitch) and slower decay."
+   ],
+   [
+    "Turns the snare into a crash cymbal",
+    "The snare/cymbal character is set by the blend factor b (b near 1 → cymbal), not by p."
+   ],
+   [
+    "Has no effect, since only b matters",
+    "p matters: it sets decay and pitch, while b sets the timbre."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A beat-sliced drum loop is played at a <b>slower</b> tempo. Which artefact appears, and what fixes it?",
+  "o": [
+   [
+    "Tail overlap; fade each slice with an envelope",
+    "Tail overlap comes from a FASTER tempo; slower playback spreads the slices apart."
+   ],
+   [
+    "Silent gaps; loop the end of the tail to extend it through the gap",
+    "Correct. A slower tempo leaves silent gaps between slices; one fix is to loop the end of the tail through the gap (another is an envelope fading each slice) (L5, beat slicing)."
+   ],
+   [
+    "Clicks at every attack; remove the attacks",
+    "The attacks stay artefact-free, which matters most for percussion."
+   ],
+   [
+    "Aliasing; low-pass filter before slicing",
+    "Changing tempo of slices does not undersample the audio; the problem is gaps or overlaps."
+   ]
+  ],
+  "a": 1
+ }
+]);
+EXTRA.mm["6"] = (EXTRA.mm["6"] || []).concat([
+ {
+  "q": "Decode the MIDI message <b>C5 18</b> (hex).",
+  "o": [
+   [
+    "Program Change, channel 6, program 24",
+    "Correct. C = Program Change; 5 is channel 5 + 1 = 6; 18 hex = 1 × 16 + 8 = 24. Program change has only one data byte (L6)."
+   ],
+   [
+    "Program Change, channel 5, program 24",
+    "The nibble holds channel − 1; nibble 5 is channel 6."
+   ],
+   [
+    "Control Change, channel 6, controller 24",
+    "Control Change is Bx and has two data bytes; Cx is Program Change."
+   ],
+   [
+    "Program Change, channel 6, program 18",
+    "The data byte is hex: 18 hex = 24 decimal."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which bytes send <b>Note On, channel 1, key 60, velocity 100</b>?",
+  "o": [
+   [
+    "91 3C 64",
+    "The channel nibble is channel − 1, so channel 1 is 0, not 1."
+   ],
+   [
+    "90 3C 64",
+    "Correct. 9 = Note On, 0 = channel 1; 60 = 3 × 16 + 12 = 3C; 100 = 6 × 16 + 4 = 64 (L6, worked examples)."
+   ],
+   [
+    "90 60 100",
+    "Data values must be written in hex: 60 = 3C, 100 = 64."
+   ],
+   [
+    "80 3C 64",
+    "8x is Note Off; Note On is 9x."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "What status byte sends <b>Pitch Bend on channel 16</b>?",
+  "o": [
+   [
+    "EF",
+    "Correct. Pitch bend is Ex; channel 16 → nibble 16 − 1 = 15 = F, so EF (L6)."
+   ],
+   [
+    "E10",
+    "A status byte is one byte (two hex digits); channel 16 is nibble F, and \"10\" is 16 in hex, not channel − 1."
+   ],
+   [
+    "DF",
+    "Dx is Channel Pressure, not Pitch Bend."
+   ],
+   [
+    "F0",
+    "F0 is the System Exclusive start byte; system messages are not channel specific."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Most MIDI numbers have limited (8-bit) resolution. Which solution does the lecture give within MIDI itself?",
+  "o": [
+   [
+    "Combine two data values as an LSB and an MSB",
+    "Correct. The lecture lists combining two data values as LSB and MSB (a 16-bit range, per the slide), plus OSC and MIDI 2.0 (L6, limitations)."
+   ],
+   [
+    "Raise the serial link to 44.1 kHz",
+    "Resolution is about the size of the numbers, not a sample rate; MIDI does not sample audio."
+   ],
+   [
+    "Use more than 16 channels in one cable",
+    "The channel count is a separate limitation; it does not refine controller values."
+   ],
+   [
+    "Send every value as a System Exclusive message",
+    "Sysex is for system-dependent data such as sound setup, not the standard fix for resolution."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In the channel voice message table, which message has data bytes \"MSB\" and \"LSB\"?",
+  "o": [
+   [
+    "Control change",
+    "Control change carries a controller number and a controller value."
+   ],
+   [
+    "Pitch bend (Ex)",
+    "Correct. Pitch bend, Ex, takes data byte 1 = MSB and data byte 2 = LSB, so it is a 3-byte message (L6, voice message table)."
+   ],
+   [
+    "Channel pressure (Dx)",
+    "Channel pressure has one data byte, the pressure value."
+   ],
+   [
+    "Polyphonic key pressure (Ax)",
+    "Poly key pressure carries a key number and an amount of pressure."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A 2-minute piece has <b>1500 notes</b> (Note On + Note Off, 3 bytes each). About how many times bigger is the same 2 minutes as uncompressed <b>stereo CD audio</b> (44.1 kHz, 16-bit)?",
+  "o": [
+   [
+    "1176 times",
+    "That uses mono CD audio (10,584,000 B); the question says stereo."
+   ],
+   [
+    "2352 times",
+    "Correct. MIDI = 1500 × 2 × 3 = 9000 B; CD = 44,100 × 16 × 2 × 120 / 8 = 21,168,000 B; 21,168,000 / 9000 = 2352 (L6, size comparison)."
+   ],
+   [
+    "4704 times",
+    "That counts only Note On messages (4500 B); each note also needs a Note Off."
+   ],
+   [
+    "18,816 times",
+    "That compares CD size in bits with MIDI size in bytes; divide by 8 first."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A status byte has 3 bits for the message type (after the MSB = 1). How many message-type codes do they give?",
+  "o": [
+   [
+    "8",
+    "Correct. 3 bits give 2³ = 8 codes: 8x to Fx (seven channel voice types 8x to Ex, plus Fx for system messages) (L6)."
+   ],
+   [
+    "16",
+    "16 is the number of channels, from the 4 low-order bits."
+   ],
+   [
+    "7",
+    "Seven is the number of channel voice messages (8x to Ex); the 3 bits also give Fx for system messages."
+   ],
+   [
+    "128",
+    "128 is the range of a 7-bit data byte (0 to 127)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "What kind of message is <b>B0 79 00</b>?",
+  "o": [
+   [
+    "A Control Change for controller 79 on channel 1",
+    "79 is hex: 79 hex = 7 × 16 + 9 = 121, which is in the reserved range 121 to 127."
+   ],
+   [
+    "A channel mode message on channel 1",
+    "Correct. Bx with a first data byte of 121 to 127 is a channel mode message; 79 hex = 121; B0 = channel 1 (L6, channel mode messages)."
+   ],
+   [
+    "A Note Off on channel 12",
+    "Note Off is 8x; here the status is B0 (Control Change family, channel 1)."
+   ],
+   [
+    "A system real-time message",
+    "System messages start with F; B0 is a channel message."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In the General MIDI patch map, instrument number <b>60</b> belongs to which family?",
+  "o": [
+   [
+    "Ensemble",
+    "Ensemble is 49 to 56."
+   ],
+   [
+    "Brass",
+    "Correct. Families come in groups of 8: 57 to 64 is Brass (57 = Trumpet), so 60 is brass (L6, patch map)."
+   ],
+   [
+    "Reed",
+    "Reed is 65 to 72."
+   ],
+   [
+    "Strings",
+    "Strings is 41 to 48 (41 = Violin)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Decode <b>99 2A 50</b> using the GM percussion map.",
+  "o": [
+   [
+    "Note On, channel 10, Closed Hi-Hat (key 42), velocity 80",
+    "Correct. 9 = Note On, 9 → channel 10 (the GM drum channel); 2A = 2 × 16 + 10 = 42 = Closed Hi-Hat; 50 hex = 80 (L6)."
+   ],
+   [
+    "Note On, channel 9, Closed Hi-Hat (key 42), velocity 80",
+    "The nibble is channel − 1: nibble 9 is channel 10."
+   ],
+   [
+    "Note On, channel 10, Acoustic Snare (key 38), velocity 50",
+    "Snare is key 38 = 26 hex; 2A hex = 42, and the velocity 50 hex is 80."
+   ],
+   [
+    "Note Off, channel 10, Crash Cymbal 1 (key 49), velocity 80",
+    "9x is Note On, and 2A = 42, not 49 (Crash Cymbal 1)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which system real-time byte means <b>Start Sequence</b>?",
+  "o": [
+   [
+    "FA",
+    "Correct. Real-time: F8 timing clock, FA start, FB continue, FC stop, FE active sensing, FF reset (L6)."
+   ],
+   [
+    "FB",
+    "FB is Continue (resume from where it stopped)."
+   ],
+   [
+    "F8",
+    "F8 is the Timing Clock."
+   ],
+   [
+    "F2",
+    "F2 is Song Position Pointer, a system common message."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "How many bytes long is a <b>Song Position Pointer</b> message?",
+  "o": [
+   [
+    "1 byte",
+    "One byte with no data is Tune Request (F6)."
+   ],
+   [
+    "2 bytes",
+    "Two bytes (one data byte) is MIDI Timing Code (F1) or Song Select (F3)."
+   ],
+   [
+    "3 bytes",
+    "Correct. Song Position Pointer is F2 with 2 data bytes: 1 + 2 = 3 bytes (L6, system common)."
+   ],
+   [
+    "4 bytes",
+    "A MIDI message has one status byte and at most two data bytes, so never 4 (Sysex aside)."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: the MIDI OUT port re-transmits everything that arrives at MIDI IN.",
+  "o": [
+   [
+    "True",
+    "MIDI OUT transmits only the data the device generates itself; echoing what arrives at MIDI IN is the job of MIDI THROUGH."
+   ],
+   [
+    "False",
+    "Correct. MIDI OUT sends the device's own data; MIDI THROUGH echoes the data received at MIDI IN (L6, connectors)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In MIDI terms, \"the portion of the synthesiser that produces sound\" is a:",
+  "o": [
+   [
+    "Patch",
+    "A patch is the set of control settings that define a timbre."
+   ],
+   [
+    "Track",
+    "A track organises recordings in a sequencer."
+   ],
+   [
+    "Voice",
+    "Correct. A voice produces sound; synths have many (12, 20, 24, 36 …) working independently and at the same time (L6)."
+   ],
+   [
+    "Channel",
+    "A channel separates information; 16 per cable."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which component is called the <b>heart</b> of a MIDI system, controlling scheduling, synchronisation and recording?",
+  "o": [
+   [
+    "The synthesiser",
+    "The synthesiser is the sound generator (tone generation unit)."
+   ],
+   [
+    "The MIDI interface",
+    "Interfaces just connect devices to the computer (cable, USB, Bluetooth, WiFi)."
+   ],
+   [
+    "The computer",
+    "Correct. The computer is the heart of a MIDI system, controlling scheduling, synchronisation and recording; sequencers now live inside DAWs (L6)."
+   ],
+   [
+    "The control input device",
+    "Keyboards and other controllers send performance data; they do not schedule the whole system."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "True or False: General MIDI requires each channel to be able to play many notes at the same time.",
+  "o": [
+   [
+    "True",
+    "Correct. GM requires all 16 channels, each able to play a different instrument (multitimbral) and many notes (polyphony), with at least 24 dynamically allocated voices (L6)."
+   ],
+   [
+    "False",
+    "Polyphony per channel is one of the listed GM requirements, together with 16 channels, multitimbrality and 24 voices."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Which MPEG-4 Structured Audio tool transmits <b>banks of samples</b> for wavetable synthesis and is partly compatible with MIDI <b>DLS</b>?",
+  "o": [
+   [
+    "SAOL",
+    "SAOL is the orchestra language that describes synthesisers."
+   ],
+   [
+    "SASBF",
+    "Correct. SASBF (Sample Bank Format) efficiently sends sample banks for wavetable/sample-based synthesis; partly compatible with MIDI DLS (L6)."
+   ],
+   [
+    "SASL",
+    "SASL is the score language (which notes, how loud, tempo)."
+   ],
+   [
+    "AudioBIFS",
+    "AudioBIFS handles mixing and post-production of audio scenes."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In MPEG-4 Structured Audio, which part is \"the main body\" that defines how SAOL creates sound when driven by MIDI or SASL?",
+  "o": [
+   [
+    "The Scheduler",
+    "Correct. The scheduler is the main body of Structured Audio: it defines how SAOL makes sound when driven by MIDI or SASL (L6)."
+   ],
+   [
+    "MIDI semantics",
+    "MIDI semantics let MIDI drive SAOL; the scheduler says how the parts combine to make sound."
+   ],
+   [
+    "SASBF",
+    "SASBF carries sample banks."
+   ],
+   [
+    "BIFS",
+    "BIFS describes how scene objects (video, sound, animation) fit together."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: SASL supports looping, sections and repeats, which MIDI lacks.",
+  "o": [
+   [
+    "True",
+    "The lecture lists SASL's limitations as no looping, sections, repeats or expression evaluation; most scores are made by automatic tools."
+   ],
+   [
+    "False",
+    "Correct. SASL is a very simple score language; it lacks looping, sections, repeats and expression evaluation (L6)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why is a MIDI file so much smaller than recorded audio of the same music?",
+  "o": [
+   [
+    "It uses lossy perceptual coding like MP3",
+    "MIDI is not a perceptual audio codec; it carries no audio samples at all."
+   ],
+   [
+    "It sends instructions (which note, how loud, which instrument) and the client produces the sound",
+    "Correct. MIDI sends instructions, not samples; the responsibility for producing the sound moves to the client (synth, sampler, soundcard) (L6)."
+   ],
+   [
+    "It samples at 8 kHz instead of 44.1 kHz",
+    "MIDI does not sample audio; sample rates belong to recorded sound."
+   ],
+   [
+    "It stores only one channel instead of 16",
+    "MIDI has 16 channels per cable; its size is small because of what it sends, not channel count."
+   ]
+  ],
+  "a": 1
+ }
+]);
+EXTRA.mm["7"] = (EXTRA.mm["7"] || []).concat([
+ {
+  "q": "Which distortion class shows <b>complete non-linear behaviour</b>, harder and harsher than the others?",
+  "o": [
+   [
+    "Overdrive",
+    "Overdrive drives low input levels into a non-linear curve: symmetrical soft clipping, the mildest class."
+   ],
+   [
+    "Distortion",
+    "Distortion covers a wider tonal area and a higher non-linear region, but is not completely non-linear."
+   ],
+   [
+    "Fuzz",
+    "Correct. The three classes are overdrive, distortion and fuzz; fuzz is complete non-linear behaviour, harder and harsher (L7, distortion)."
+   ],
+   [
+    "Exciter",
+    "An exciter adds subtle high-frequency distortion for brightness; it is not a distortion class."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A delay line of <b>M = 1323</b> samples at 44.1 kHz, with no modulation, is used on a voice. How long is the delay and which effect is it?",
+  "o": [
+   [
+    "30 ms: slapback",
+    "Correct. τ = M / fs = 1323 / 44,100 = 0.03 s = 30 ms; with no modulation, 25 to 50 ms is slapback (L7, delay ranges)."
+   ],
+   [
+    "30 ms: chorus",
+    "Chorus is 10 to 25 ms with random modulation; this delay is longer and unmodulated."
+   ],
+   [
+    "1.323 s: echo",
+    "That divides by 1000 instead of by fs; 1323 / 44,100 = 0.03 s."
+   ],
+   [
+    "3 ms: flanger",
+    "A decimal slip: 1323 / 44,100 is 0.03 s = 30 ms, not 3 ms."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "An IIR comb y(n) = x(n) + 0.6·y(n − 5) is fed a unit impulse. What is <b>y(15)</b>?",
+  "o": [
+   [
+    "0",
+    "That is the FIR comb's answer (only one echo, at n = 5); the IIR comb keeps feeding back."
+   ],
+   [
+    "0.6",
+    "That is y(5), after one pass; n = 15 is three passes of M = 5."
+   ],
+   [
+    "0.216",
+    "Correct. The echoes are at n = 0, 5, 10, 15 with values 1, 0.6, 0.36, 0.216, i.e. y(k·M) = g<sup>k</sup> = 0.6³ (L7, IIR comb)."
+   ],
+   [
+    "1.8",
+    "That adds 0.6 three times; each pass multiplies by g."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "An FIR comb y(n) = x(n) + 0.7·x(n − 4) is fed a unit impulse. What is <b>y(8)</b>?",
+  "o": [
+   [
+    "0.49",
+    "That is 0.7², the IIR comb result; an FIR comb has no feedback."
+   ],
+   [
+    "0",
+    "Correct. The FIR comb gives y(0) = 1 and y(4) = 0.7 only: a single echo, so y(8) = 0 (L7, FIR comb)."
+   ],
+   [
+    "0.7",
+    "That is y(4), the one echo; nothing more arrives at n = 8."
+   ],
+   [
+    "1.4",
+    "That adds 0.7 twice as if there were two echoes."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In the Universal Comb Filter, which settings (BL, FB, FF) give an <b>allpass</b> filter?",
+  "o": [
+   [
+    "(1, 0, g)",
+    "That is the FIR comb."
+   ],
+   [
+    "(1, g, 0)",
+    "That is the IIR comb."
+   ],
+   [
+    "(a, −a, 1)",
+    "Correct. The table gives allpass as BL = a, FB = −a, FF = 1 (L7, universal comb)."
+   ],
+   [
+    "(0, 0, 1)",
+    "That is a pure delay."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A sound with partials at <b>100 Hz and 200 Hz</b> is ring-modulated by a <b>500 Hz</b> sine. Which frequencies come out?",
+  "o": [
+   [
+    "300, 400, 600 and 700 Hz",
+    "Correct. Ring modulation gives |k·f0 ± fc| for each partial: 500 ± 100 = 400, 600 and 500 ± 200 = 300, 700; the inputs themselves are not kept (L7, RM)."
+   ],
+   [
+    "100, 200 and 500 Hz",
+    "RM removes the inputs; only sums and differences are heard."
+   ],
+   [
+    "400 and 600 Hz only",
+    "That modulates only the 100 Hz partial; the 200 Hz partial gives 300 and 700 Hz too."
+   ],
+   [
+    "300, 400, 500, 600 and 700 Hz",
+    "That keeps the 500 Hz carrier, which is AM behaviour; pure RM has no carrier line."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A tremolo uses y(n) = (1 + α·m(n))·x(n) with a 5 Hz LFO of peak 1 and depth <b>α = 0.3</b>. Between which gains does the signal vary?",
+  "o": [
+   [
+    "0.7 and 1.3",
+    "Correct. 1 + α·m with m from −1 to 1 gives 1 − 0.3 = 0.7 to 1 + 0.3 = 1.3 (same as the demo: α = 0.5 → 0.5 to 1.5) (L7, tremolo)."
+   ],
+   [
+    "0 and 0.3",
+    "That forgets the \"1 +\": the gain swings around 1, not around 0."
+   ],
+   [
+    "0.3 and 1",
+    "That uses α as the minimum; the minimum is 1 − α."
+   ],
+   [
+    "0.7 and 1",
+    "That takes m only from −1 to 0; the LFO sine also goes up to +1."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: amplitude modulation with an LFO at <b>30 Hz</b> is a tremolo.",
+  "o": [
+   [
+    "True",
+    "Tremolo is AM with a modulation frequency below 20 Hz; 30 Hz is above that limit."
+   ],
+   [
+    "False",
+    "Correct. The lecture defines tremolo as AM with a modulation frequency below 20 Hz (demo 5 Hz), so 30 Hz is not tremolo (L7)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "An EQ band is set to a <b>cut</b> of G = −6 dB. Using V<sub>0</sub> = 10<sup>G/20</sup> and H<sub>0</sub> = V<sub>0</sub> − 1, H<sub>0</sub> ≈",
+  "o": [
+   [
+    "−0.499",
+    "Correct. V0 = 10^(−6/20) = 10^(−0.3) ≈ 0.501, so H0 = 0.501 − 1 ≈ −0.499 (a cut gives a negative H0) (L7, EQ)."
+   ],
+   [
+    "0.995",
+    "That is the +6 dB boost (V0 ≈ 1.995); the sign of G was dropped."
+   ],
+   [
+    "−0.749",
+    "That uses 10^(G/10), the power form; the EQ formula uses G/20."
+   ],
+   [
+    "−1.3",
+    "That skips the power: G/20 − 1 = −0.3 − 1; V0 is 10 raised to G/20."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For a peak filter at fc = <b>11,025 Hz</b> and fs = 44,100 Hz, what is d = −cos(2πfc/fs)?",
+  "o": [
+   [
+    "0",
+    "Correct. 2π × 11,025 / 44,100 = 2π × 0.25 = π/2, and cos(π/2) = 0, so d = 0 (L7, peak filter)."
+   ],
+   [
+    "−0.7071",
+    "That drops the 2: −cos(π × 0.25) = −cos(π/4)."
+   ],
+   [
+    "−1",
+    "That uses sin instead of cos: −sin(π/2) = −1."
+   ],
+   [
+    "1",
+    "That drops the minus sign and uses cos(0); the angle here is π/2."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For the state variable filter, F1 = 2 sin(πfc/fs). What is F1 for fc = <b>7350 Hz</b>, fs = <b>44,100 Hz</b>?",
+  "o": [
+   [
+    "1.0",
+    "Correct. π × 7350 / 44,100 = π/6, sin(π/6) = 0.5, so F1 = 2 × 0.5 = 1.0 (L7, state variable filter)."
+   ],
+   [
+    "0.5",
+    "That forgets the factor 2 in front of the sine."
+   ],
+   [
+    "0.333",
+    "That is 2 × fc / fs with no π or sine."
+   ],
+   [
+    "1.047",
+    "That is 2π·fc/fs (= π/3) without taking the sine."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Using the overdrive soft-clipping curve, what is f(x) for input <b>x = 0.4</b>?",
+  "o": [
+   [
+    "0.8",
+    "That uses the linear part 2x, which applies only for x &lt; 1/3; 0.4 is in the quadratic region."
+   ],
+   [
+    "0.787",
+    "Correct. 1/3 ≤ 0.4 &lt; 2/3, so f = (3 − (2 − 1.2)²)/3 = (3 − 0.64)/3 = 2.36/3 ≈ 0.787 (L7, overdrive)."
+   ],
+   [
+    "1",
+    "Saturation at 1 starts at x ≥ 2/3; 0.4 is below that."
+   ],
+   [
+    "2.36",
+    "That forgets the final division by 3."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A mono source is panned with <b>θ = 15°</b> using gL = (cos θ + sin θ)x and gR = (cos θ − sin θ)x. What are the gains?",
+  "o": [
+   [
+    "gL ≈ 1.225x, gR ≈ 0.707x",
+    "Correct. cos 15° ≈ 0.9659, sin 15° ≈ 0.2588: gL = 1.2247x, gR = 0.7071x (L7, panning)."
+   ],
+   [
+    "gL ≈ 0.707x, gR ≈ 1.225x",
+    "Left and right are swapped; gL uses cos θ + sin θ."
+   ],
+   [
+    "gL ≈ 0.966x, gR ≈ 0.259x",
+    "Those are just cos θ and sin θ; each gain combines both."
+   ],
+   [
+    "gL = 1.414x, gR = 0",
+    "That is the θ = 45° case (fully to one side)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Vibrato uses a typical delay of 5 to 10 ms. At fs = <b>48 kHz</b>, what range of delays is that in samples?",
+  "o": [
+   [
+    "240 to 480 samples",
+    "Correct. 0.005 × 48,000 = 240 and 0.010 × 48,000 = 480 (L7, vibrato)."
+   ],
+   [
+    "5 to 10 samples",
+    "That copies the milliseconds as samples; multiply seconds by fs."
+   ],
+   [
+    "240,000 to 480,000 samples",
+    "That multiplies 5 and 10 by 48,000 without converting ms to seconds."
+   ],
+   [
+    "24 to 48 samples",
+    "A decimal slip: 5 ms = 0.005 s, not 0.0005 s."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In a real room, what follows the <b>early reflections</b>?",
+  "o": [
+   [
+    "A single distinct echo after 0.5 s",
+    "A distinct delayed copy is an echo; reverb reflections arrive too quickly to be heard as copies."
+   ],
+   [
+    "Diffuse late reverberation: much denser, random reflections that decay exponentially",
+    "Correct. Early reflections (directional, set by room shape and positions) are followed by diffuse reverberation, much denser and random, decaying exponentially in good halls (L7, reverb)."
+   ],
+   [
+    "Reflections at a fixed interval, as from a delay with feedback",
+    "Fixed-interval reflections are what a delay with feedback gives; that is why it cannot fully reproduce reverb."
+   ],
+   [
+    "Silence until the next sound",
+    "The reverberant tail continues after the early reflections and gives the room its spaciousness."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Why does convolution reverb use the FFT rather than a direct filter?",
+  "o": [
+   [
+    "The impulse response is too long for direct filters, and convolution becomes a product of spectra",
+    "Correct. y = IFFT(FFT(x)·FFT(h)): the convolution theorem turns the long convolution into a product in the frequency domain (L7, convolution reverb)."
+   ],
+   [
+    "Because the FFT removes the early reflections",
+    "The FFT changes how the computation is done; it does not remove parts of the impulse response."
+   ],
+   [
+    "Because the impulse response is a single sample",
+    "A room impulse response is long, which is the reason for the FFT."
+   ],
+   [
+    "Because convolution adds the two spectra",
+    "Convolution in time corresponds to multiplication, not addition, of the spectra."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: in vibrato, the direct signal is mixed with the modulated delayed signal.",
+  "o": [
+   [
+    "True",
+    "In vibrato only the delayed signal is heard: there is no forward or backward feed of the direct signal."
+   ],
+   [
+    "False",
+    "Correct. Vibrato is a delay line plus an LFO, and only the delayed signal is heard (L7, vibrato)."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "In the lecture's classification of effects, which effect is listed under <b>both</b> Delays and Modulators?",
+  "o": [
+   [
+    "Chorus",
+    "Chorus is listed only under Delays."
+   ],
+   [
+    "Tremolo",
+    "Tremolo is listed only under Modulators."
+   ],
+   [
+    "Vibrato",
+    "Correct. Delays: vibrato, flanger, chorus, echo; Modulators: ring modulation, tremolo, vibrato (L7, classification)."
+   ],
+   [
+    "Phaser",
+    "Phaser is a time-varying filter."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "Which dynamic processor uses a <b>peak level measurement</b> and reacts very quickly above a threshold to control high peaks?",
+  "o": [
+   [
+    "Limiter",
+    "Correct. A limiter controls high peaks with minimal change to the main dynamics, using peak level measurement and a very fast reaction (L7)."
+   ],
+   [
+    "Expander",
+    "An expander works on low levels and boosts their dynamics."
+   ],
+   [
+    "Exciter",
+    "An exciter changes timbre by emphasising frequencies; it is not a dynamics controller."
+   ],
+   [
+    "Fuzz",
+    "Fuzz is intentional, completely non-linear distortion."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "Turning a wah-wah into a <b>phaser</b> means replacing its bandpass filter with:",
+  "o": [
+   [
+    "A lowpass filter",
+    "A lowpass filter is basic filtering; the phaser uses a notch."
+   ],
+   [
+    "A notch (band-reject) filter",
+    "Correct. The phaser uses the same idea as wah-wah but with a notch filter (cascaded IIR filters), mixed with the direct signal (L7)."
+   ],
+   [
+    "A comb filter with a 100 ms delay",
+    "A 100 ms comb is an echo, a delay effect."
+   ],
+   [
+    "A shelving filter",
+    "Shelving filters boost or cut low/high bands in an equaliser."
+   ]
+  ],
+  "a": 1
+ }
+]);
+EXTRA.mm["8"] = (EXTRA.mm["8"] || []).concat([
+ {
+  "q": "Convert the RGB pixel <b>(30, 130, 230)</b> to CMYK (values 0 to 1).",
+  "o": [
+   [
+    "(0.7843, 0.3922, 0, 0.0980)",
+    "Correct. ÷255 → (0.1176, 0.5098, 0.9020); CMY = (0.8824, 0.4902, 0.0980); K = min = 0.0980; subtract K → (0.7843, 0.3922, 0, 0.0980) (L8, CMYK)."
+   ],
+   [
+    "(0.8824, 0.4902, 0.0980, 0.0980)",
+    "That is CMY with K found but not subtracted from C, M and Y."
+   ],
+   [
+    "(0, 0.3922, 0.7843, 0.1176)",
+    "That skips CMY = 1 − RGB and takes K from the RGB values themselves."
+   ],
+   [
+    "(0.1176, 0.5098, 0.9020, 0)",
+    "That is only the normalised RGB; CMY = 1 − RGB was not applied."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For the pixel (R, G, B) = <b>(100, 150, 200)</b>, what are U and V in the YUV model?",
+  "o": [
+   [
+    "U = 59.25, V = −40.75",
+    "Correct. Y = 29.9 + 88.05 + 22.8 = 140.75; U = B − Y = 200 − 140.75 = 59.25; V = R − Y = 100 − 140.75 = −40.75 (L8, YUV)."
+   ],
+   [
+    "U = −40.75, V = 59.25",
+    "U and V are swapped: U = B − Y and V = R − Y."
+   ],
+   [
+    "U = 50, V = −50",
+    "That subtracts G instead of the luminance Y (200 − 150, 100 − 150); U and V use Y = 140.75."
+   ],
+   [
+    "U = 33.44, V = −29.07",
+    "Those are Cb and Cr (U/1.772, V/1.402), the scaled YCrCb values."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "What is the <b>I</b> component (YIQ) of the pixel (R, G, B) = <b>(200, 100, 50)</b>?",
+  "o": [
+   [
+    "75.65",
+    "Correct. I = 0.596R − 0.275G − 0.321B = 119.2 − 27.5 − 16.05 = 75.65 (L8, YIQ)."
+   ],
+   [
+    "5.15",
+    "That is Q: 0.212R − 0.528G + 0.311B = 42.4 − 52.8 + 15.55."
+   ],
+   [
+    "124.2",
+    "That is Y: 0.299R + 0.587G + 0.114B."
+   ],
+   [
+    "162.75",
+    "That adds all three terms; the G and B coefficients of I are negative."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "For the pixel (100, 150, 200), with Y = 140.75, what is <b>Cb</b> in YCbCr?",
+  "o": [
+   [
+    "33.44",
+    "Correct. Cb = (B − Y)/1.772 = 59.25 / 1.772 ≈ 33.44 (L8, YCrCb)."
+   ],
+   [
+    "59.25",
+    "That is U = B − Y, not yet scaled by 1/1.772."
+   ],
+   [
+    "42.26",
+    "That divides by 1.402, the Cr constant."
+   ],
+   [
+    "104.99",
+    "That multiplies by 1.772 instead of dividing."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "How large is an uncompressed <b>1024 × 768</b> black-and-white (1-bit) bitmap? (1 KB = 1024 B)",
+  "o": [
+   [
+    "96 KB",
+    "Correct. 1024 × 768 = 786,432 bits ÷ 8 = 98,304 B ÷ 1024 = 96 KB (L8, bitmap sizes)."
+   ],
+   [
+    "768 KB",
+    "That uses 1 byte per pixel (grey-scale); a bitmap is 1 bit per pixel."
+   ],
+   [
+    "2304 KB",
+    "That is the 24-bit colour size (3 bytes per pixel)."
+   ],
+   [
+    "786,432 KB",
+    "That counts the bits as kilobytes; divide by 8 and by 1024."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A <b>4 × 4</b> RGB image (8 bits per channel) is converted to CMYK and stored with 8 bits per channel. What is its size?",
+  "o": [
+   [
+    "48 bytes",
+    "That is the RGB size (3 channels); CMYK has 4 channels."
+   ],
+   [
+    "64 bytes",
+    "Correct. 4 × 4 pixels × 4 channels × 1 byte = 64 bytes, as in the Final 2023/24 answer (5 × 5 → 100 B) (L8, image size)."
+   ],
+   [
+    "16 bytes",
+    "That counts one byte per pixel, as for grey-scale."
+   ],
+   [
+    "512 bytes",
+    "That is the size in bits (64 × 8), written as bytes."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "How much storage does <b>1 minute</b> of uncompressed <b>320 × 240</b> RGB video at <b>25 fps</b> need? (1 MB = 1024 × 1024 B)",
+  "o": [
+   [
+    "≈ 329.59 MB",
+    "Correct. Frame = 320 × 240 × 3 = 230,400 B; × 25 × 60 = 345,600,000 B ÷ 1,048,576 ≈ 329.59 MB (L8, video size)."
+   ],
+   [
+    "≈ 13.18 MB",
+    "That forgets the 25 frames per second (one frame per second for 60 s)."
+   ],
+   [
+    "≈ 109.86 MB",
+    "That uses 1 byte per pixel (grey-scale); RGB needs 3 bytes."
+   ],
+   [
+    "≈ 2636.72 MB",
+    "That is in megabits: 24 bits per pixel were not divided by 8."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A 30-second video file has a 640 × 480 <b>grey-scale</b> stream at 25 fps and a <b>mono speech</b> stream with 16-bit samples. What is the total size?",
+  "o": [
+   [
+    "230,880,000 B",
+    "Correct. Video = 640 × 480 × 1 × 25 × 30 = 230,400,000 B; audio = 30 × 8000 × 16 / 8 = 480,000 B (speech fs = 8 kHz, mono); total 230,880,000 B (L8, total = video + audio)."
+   ],
+   [
+    "230,400,000 B",
+    "That is only the video stream; the total file adds the audio stream."
+   ],
+   [
+    "231,360,000 B",
+    "That uses 2 channels (stereo); the speech here is mono."
+   ],
+   [
+    "234,240,000 B",
+    "That adds the audio in bits (3,840,000) to the video in bytes; divide the audio by 8 first."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In an 8-bit colour image that uses a colour look-up table (LUT), what does each pixel store?",
+  "o": [
+   [
+    "Its R, G and B values (3 bytes)",
+    "Storing R, G and B in each pixel is 24-bit true colour; 8-bit colour stores 1 byte per pixel."
+   ],
+   [
+    "An index into the table, which gives the RGB colour",
+    "Correct. The pixel holds only an index (e.g. memory value 25); row 25 of the LUT gives the colour R = 30, G = 190, B = 60 (L8, colour LUT)."
+   ],
+   [
+    "A grey level from 0 to 255",
+    "A grey level is a grey-scale image; it is the same size, but the LUT maps the byte to a colour."
+   ],
+   [
+    "A 4 × 4 dither pattern",
+    "Dither patterns are for printing grey images as black and white dots."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "Original I = [50 60; 70 80], reconstructed I″ = [52 57; 70 88]. What is the <b>MAE</b>?",
+  "o": [
+   [
+    "3.25",
+    "Correct. |I − I″| = 2, 3, 0, 8; sum 13; MAE = 13 / 4 = 3.25 (L8, MAE)."
+   ],
+   [
+    "19.25",
+    "That is the MSE: (4 + 9 + 0 + 64) / 4."
+   ],
+   [
+    "−1.75",
+    "That averages the signed differences (−2 + 3 + 0 − 8) / 4; MAE uses absolute values."
+   ],
+   [
+    "4.33",
+    "That divides by 3, the number of non-zero errors; divide by all M × N = 4 pixels."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A 1 × 2 RGB image: original R = [10 20], G = [30 40], B = [50 60]; reconstructed R = [0 20], G = [30 40], B = [70 60]. What is the colour <b>MSE</b>?",
+  "o": [
+   [
+    "83.33",
+    "Correct. Errors: R 10 and 0, G 0 and 0, B −20 and 0; Σ squares = 100 + 400 = 500; colour MSE = 500 / (3 × 1 × 2) = 83.33 (L8, MSE for RGB)."
+   ],
+   [
+    "250",
+    "That divides by M × N = 2 only; a colour image divides by 3MN."
+   ],
+   [
+    "500",
+    "That is the sum of squared errors, not yet averaged."
+   ],
+   [
+    "41.67",
+    "That divides by 12; there are 3 × 1 × 2 = 6 values."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "In subtractive (ink) colour mixing, <b>Cyan + Yellow</b> gives:",
+  "o": [
+   [
+    "Blue",
+    "Blue is Cyan + Magenta."
+   ],
+   [
+    "Green",
+    "Correct. Subtractive combinations: Cyan + Magenta = Blue, Cyan + Yellow = Green, Magenta + Yellow = Red, all three = Black (L8)."
+   ],
+   [
+    "Red",
+    "Red is Magenta + Yellow."
+   ],
+   [
+    "White",
+    "White is all three additive primaries (R + G + B); in ink, all three give black."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "A grey pixel of value <b>180</b> is dithered with the 4 × 4 matrix [0 8 2 10; 12 4 14 6; 3 11 1 9; 15 7 13 5] (remap × 17/256, round down; dot where value &gt; entry). How many dots are set?",
+  "o": [
+   [
+    "11",
+    "Correct. 180 × 17 / 256 = 11.95 → 11; entries smaller than 11 are 0 to 10, so 11 of the 16 dots are set (L8, dithering)."
+   ],
+   [
+    "12",
+    "That rounds 11.95 up to 12 (or uses ≥); the rule is round down and strictly greater than."
+   ],
+   [
+    "5",
+    "That is the number of dots left empty (16 − 11)."
+   ],
+   [
+    "16",
+    "All 16 dots need a remapped value of 16 (pixel 241 or more)."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "A <b>200 × 100</b> grey image is printed with <b>simple</b> 4 × 4 dithering. How many black/white dots does the output have?",
+  "o": [
+   [
+    "20,000",
+    "That keeps the size, which is ordered dither; simple dithering replaces each pixel by a 4 × 4 block."
+   ],
+   [
+    "80,000",
+    "That uses 4 dots per pixel; a 4 × 4 block is 16 dots."
+   ],
+   [
+    "320,000",
+    "Correct. Simple dithering makes the image 16 times larger: 200 × 100 × 16 = 320,000 dots (L8, dithering)."
+   ],
+   [
+    "340,000",
+    "That uses 17 (the number of grey levels a block can show) instead of 16 dots per block."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "A 640 × 480 frame is stored as Y, Cb, Cr with <b>4:2:0</b> chroma subsampling. How many samples in total?",
+  "o": [
+   [
+    "921,600",
+    "That is 4:4:4 (no subsampling): 3 × 307,200."
+   ],
+   [
+    "614,400",
+    "That is 4:2:2: chroma halved horizontally only (307,200 + 2 × 153,600)."
+   ],
+   [
+    "460,800",
+    "Correct. Y = 307,200; each chroma is halved both ways: 320 × 240 = 76,800, two of them = 153,600; total 460,800, half of 4:4:4 (L8, 4:2:0)."
+   ],
+   [
+    "384,000",
+    "That counts only one chroma component; 4:2:0 keeps one Cb AND one Cr per 2 × 2 block."
+   ]
+  ],
+  "a": 2
+ },
+ {
+  "q": "In the chroma subsampling ratio J:a:b, what does a <b>0</b> in the third digit (as in 4:2:0) mean?",
+  "o": [
+   [
+    "Cb is not stored at all",
+    "Cb is still stored; 0 is a special code, not \"no samples\"."
+   ],
+   [
+    "The Cb horizontal factor equals the second digit, and both Cr and Cb are subsampled 2:1 vertically",
+    "Correct. The lecture: 0 means the Cb (Q/B) horizontal factor is equal to the 2nd digit, and both Cr (I/G) and Cb (Q/B) are subsampled 2:1 vertically (L8)."
+   ],
+   [
+    "Luma is subsampled by 2",
+    "Luma is the first digit, the full-rate reference; chroma is what gets subsampled."
+   ],
+   [
+    "No subsampling, as in 4:4:4",
+    "4:4:4 has no subsampling; 4:2:0 halves chroma in both directions."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "NTSC has 525 lines per frame, 2 fields per frame, and reserves 20 lines per field for control. How many visible lines are left at most?",
+  "o": [
+   [
+    "505",
+    "That subtracts 20 lines once; there are 2 fields, so 40 lines are reserved per frame."
+   ],
+   [
+    "485",
+    "Correct. 525 − 2 × 20 = 485 visible lines at most (L8, NTSC)."
+   ],
+   [
+    "262.5",
+    "That is the number of lines per field (525 / 2)."
+   ],
+   [
+    "625",
+    "That is the PAL line count."
+   ]
+  ],
+  "a": 1
+ },
+ {
+  "q": "True or False: PAL uses YUV and gives 5.5 MHz to Y and 1.8 MHz each to U and V.",
+  "o": [
+   [
+    "True",
+    "Correct. PAL: 625 lines, 25 fps, YUV (YCrCb), with bandwidth Y 5.5 MHz and U, V 1.8 MHz each (L8, PAL)."
+   ],
+   [
+    "False",
+    "Those are PAL's figures; NTSC is the one with YIQ and 4, 1.5, 0.6 MHz."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: on the CIE chromaticity diagram, adding two colours gives a point on the line between them.",
+  "o": [
+   [
+    "True",
+    "Correct. The lecture calls CIE a vector-based colour model: any two colours added produce a point on the line between them (L8, CIE)."
+   ],
+   [
+    "False",
+    "This is exactly the lecture's description of CIE as a vector-based model."
+   ]
+  ],
+  "a": 0
+ },
+ {
+  "q": "True or False: TIFF is typically a lossy format and is growing in popularity because it is more user-controllable than JPEG.",
+  "o": [
+   [
+    "True",
+    "TIFF is typically lossless (a JPEG tag allows JPEG), is not as user-controllable as JPEG, and appears to be declining in popularity."
+   ],
+   [
+    "False",
+    "Correct. TIFF identifies image types by tags, is typically lossless, offers no major advantage over JPEG, is less user-controllable, and is declining (L8, file formats)."
+   ]
+  ],
+  "a": 1
+ }
+]);
