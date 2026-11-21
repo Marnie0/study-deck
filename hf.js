@@ -354,7 +354,10 @@
         const avail = b.clientHeight, h = i.offsetHeight; if (!avail || h < 20) return;
         let ns = Math.max(min, Math.min(1, avail / h));
         const cur = sRef.current;
-        b.classList.toggle('scroll', h * Math.max(ns, cur) > avail + 2);
+        // the scrollbar itself narrows the figure, which changes its height: without a margin the box adds the scrollbar,
+        // the figure then fits, the scrollbar goes, it overflows again, and the figure shakes. Add above +2px, remove only below -24px.
+        const need = h * Math.max(ns, cur);
+        if (need > avail + 2) b.classList.add('scroll'); else if (need < avail - 24) b.classList.remove('scroll');
         if (Math.abs(ns - cur) < 0.012) return;
         if (++last > 12) ns = Math.min(ns, cur);   // never ping-pong: settle on the smaller size
         setS(Math.round(ns * 1000) / 1000);
