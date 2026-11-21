@@ -182,7 +182,7 @@
           <${Box} kind="brain"><p className="hf-p">${t('How would you explain to a machine what a "number" looks like, without listing every number in the world?', 'إزاي تشرح لمكنة يعني إيه "number"، من غير ما تكتبلها كل الأرقام اللي في الدنيا؟')}</p></${Box}>
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Do the exercises.</b> You answer right on the page, and your answers stay when you switch language.', '<b>حل التمارين.</b> بتجاوب على الصفحة نفسها، وإجاباتك بتفضل لو غيّرت اللغة.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctor's own papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكتورة نفسها.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctors' own papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكاترة نفسهم.')}</span></div>
             <div className="row"><span className="mk">‡</span><span>${t('marks a mistake or odd wording on the slides, and what was meant.', 'معناها غلطة أو صياغة غريبة في السلايد، وبنقولك المقصود إيه.')}</span></div>
             <div className="row"><span className="hf-hand" style=${{ fontSize: '20px' }}>${t('ours', 'من عندنا')}</span><span>${t('Handwritten notes marked "ours" are our own analogies and tricks.', 'الملاحظات بخط الإيد اللي عليها "من عندنا" تشبيهات وحيل مننا، مش من السلايدز.')}</span></div>
           </div>
@@ -330,7 +330,7 @@
           <${P} small=${true}>${X('Union is <b>commutative</b>: L1 ∪ L2 = L2 ∪ L1. <b>Concatenation</b> joins each string of one language with each string of the other:', 'الـ union <b>commutative</b>، يعني الترتيب مش فارق. أما الـ <b>Concatenation</b> فبتلزق كل string في language مع كل string في التانية:')}</${P}>
           <${Code} lines=${['{ab, c}{d, ef} = {abd, abef, cd, cef}', 'L1 = {a,b}, L2 = {0,11}', ['L1L2 = {a0, a11, b0, b11}', ''], ['L2L1 = {0a, 0b, 11a, 11b}', nt('≠ L1L2!')]]} />
           <${Grow} />
-          <${Box} kind="watch"><p className="hf-p small">${X('<b>Order matters in concatenation.</b> "Order is not important in concatenation" turned up in three of the doctor\'s papers. It is <b>False</b> every time.',
+          <${Box} kind="watch"><p className="hf-p small">${X('<b>Order matters in concatenation.</b> "Order is not important in concatenation" turned up in three of the doctors\' papers. It is <b>False</b> every time.',
             '<b>الترتيب فارق في الـ concatenation.</b> جملة إن الترتيب مش مهم في الـ concatenation جت في تلات امتحانات للدكتورة، وكل مرة إجابتها <b>False</b>.')}</p></${Box}>
         `, { sec: t('Operations on languages', 'العمليات على الـ languages') }),
 
@@ -398,7 +398,7 @@
 
         // 18 · write your own (Sheet One)
         page(html`
-          <${Box} kind="pencil"><p className="hf-p small">${X('From the doctor\'s Sheet One. Over Σ = {a,b}, write a regular expression for each. Use the margin, then reveal.', 'من الـ Sheet One بتاع الدكتورة. على <bdi dir="ltr">Σ = {a,b}</bdi>، اكتب regular expression لكل واحدة. اكتب في الهامش وبعدين اكشف.')}</p></${Box}>
+          <${Box} kind="pencil"><p className="hf-p small">${X('From the doctors\' Sheet One. Over Σ = {a,b}, write a regular expression for each. Use the margin, then reveal.', 'من الـ Sheet One بتاع الدكاترة. على <bdi dir="ltr">Σ = {a,b}</bdi>، اكتب regular expression لكل واحدة. اكتب في الهامش وبعدين اكشف.')}</p></${Box}>
           <${UL} items=${(A ? ['على الأقل حرفين a', 'كل الـ strings', 'فيها aa أو bb', 'حروف b بس، أو a وبعدها b\'s', 'بالظبط اتنين أو تلاتة b']
             : ["at least two a's", 'all strings', 'containing aa or bb', "b's only, or an a followed by b's", "exactly two or three b's"]).map(C)} />
           <${Reveal} id="sheet1"><${Code} lines=${[['(a|b)*a(a|b)*a(a|b)*', t('at least two a', 'على الأقل اتنين')], ['(a|b)*', t('all strings', 'الكل')], ['(a|b)*(aa|bb)(a|b)*', t('aa or bb', 'فيها aa أو bb')], ['b* | ab*', t('b\'s, or a b\'s', 'يا b بس يا a وبعدها b')], ['a*ba*ba* | a*ba*ba*ba*', t('2 or 3 b', 'اتنين أو تلاتة b')]]} /></${Reveal}>
@@ -417,7 +417,7 @@
 
         // 20 · traps
         page(html`
-          <${Box} kind="watch" title=${t("Watch it: the doctor's favourite traps", 'خلّي بالك: الفخاخ المفضلة للدكتورة')}>
+          <${Box} kind="watch" title=${t("Watch it: the doctors' favourite traps", 'خلّي بالك: الفخاخ المفضلة للدكتورة')}>
             ${li(A ? [
               'الـ ε عنصر محايد، فالإجابة a مش ε:<span class="ltr"><b>aε = εa = a</b></span>',
               'ودي برضه صح، فالـ "≠" غلط:<span class="ltr"><b>Yε = εY</b></span>',
@@ -578,7 +578,7 @@
 
         // 35–37 · exam corner
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and this year's midterm. Tap an answer to see why.", 'أسئلة حقيقية من امتحانات الدكتورة وميدترم السنة دي. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and this year's midterm. Tap an answer to see why.", 'أسئلة حقيقية من امتحانات الدكاترة وميدترم السنة دي. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
           ${mq('m-io', /takes \.{5} as input/i)}
           <${Grow} />
           <${Talk} who="compiler" flip=${true}>${t('Input and output: the exams love to swap them.', 'الـ input والـ output: الامتحانات بتحب تبدّلهم.')}</${Talk}>

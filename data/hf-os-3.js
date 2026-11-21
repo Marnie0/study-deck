@@ -600,7 +600,7 @@
 
         // exam corner: one question a page, so the explanation has room
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's exam and this year's midterm. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحان الدكاترة وميدترم السنة دي. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' exam and this year's midterm. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحان الدكاترة وميدترم السنة دي. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m1', /minimum average waiting time/i)}
           <${Grow} />
           <${Hand} red=${true}>${X('same answer for the midterm\'s <i>"tends to minimize the process flow time"</i>: SJF (flow time = turnaround)', 'ونفس الإجابة SJF لسؤال الميدترم عن الـ <bdi dir="ltr">process flow time</bdi> (يعني الـ turnaround)')}</${Hand}>

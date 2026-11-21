@@ -104,7 +104,7 @@
           <${Grow} />
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Exercises</b> are answered right on the page.', '<b>التمارين</b> بتتحل على الصفحة نفسها.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctor's own papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكتورة نفسها.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctors' own papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكاترة نفسهم.')}</span></div>
           </div>
         `, { sec: t('Before we start', 'قبل ما نبدأ') }),
 
@@ -498,7 +498,7 @@
 
         // exam corner: the doctor's questions
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and revision sheet. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكتورة والـ revision sheet. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and revision sheet. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكاترة والـ revision sheet. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m1', /major problem when creating a symbol table per scope/i)}
           <${Grow} />
           <${Talk} who="table" flip=${true}>${t('One table per scope? Count my slots.', 'table لكل scope؟ عِد الـ slots بتاعتي.')}</${Talk}>

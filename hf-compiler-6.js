@@ -180,7 +180,7 @@
           <${Box} kind="brain"><p className="hf-p small">${X("You are a top-down parser. A is on top of your stack, the next input symbol is <code>a</code>, and the grammar says <code>A → aB | Ad</code>. Which production do you pick? Can you even tell?",
             'إنت top-down parser. الـ A فوق الـ stack، والـ input symbol اللي جاي هو <code>a</code>، والـ grammar بيقول:<span class="ltr">A → aB | Ad</span>هتختار أنهي production؟ وهل أصلًا تقدر تعرف؟')}</p></${Box}>
           <${Grow} />
-          <${Hand}>${t('Same rules as always: do the pencil exercises, think at Brain Power, and the red Watch it! boxes are exam traps from the doctor\'s papers.', 'نفس القواعد: حل تمارين القلم، وفكّر عند شغّل مخك، وصناديق خلّي بالك الحمرا دي فخاخ من امتحانات الدكتورة.')}</${Hand}>
+          <${Hand}>${t('Same rules as always: do the pencil exercises, think at Brain Power, and the red Watch it! boxes are exam traps from the doctors\' papers.', 'نفس القواعد: حل تمارين القلم، وفكّر عند شغّل مخك، وصناديق خلّي بالك الحمرا دي فخاخ من امتحانات الدكاترة.')}</${Hand}>
         `, { sec: t('Where we left off', 'وقفنا فين؟') }),
 
         // 1 · opener
@@ -192,7 +192,7 @@
             'تخيّل parser <b>عمره ما بيخمّن</b>. بيبص على input symbol <b>واحد</b>، يبص في جدول، ويعرف بالظبط يستخدم أنهي production. ومفيش رجوع لورا خالص.')}</${P}>
           <${Talk} who="dev">${X('A parser that reads my mind? What does it need?', 'parser بيقرا أفكاري؟ ده محتاج إيه؟')}</${Talk}>
           <${Talk} who="compiler" flip=${true}>${X('Two sets per non-terminal, <b>FIRST</b> and <b>FOLLOW</b>, and one table, <b>M</b>. Build those and I never backtrack.', 'مجموعتين لكل non-terminal، الـ <b>FIRST</b> والـ <b>FOLLOW</b>، وجدول واحد اسمه <b>M</b>. ابنيهم وأنا عمري ما هعمل backtracking.')}</${Talk}>
-          <${P} small=${true}>${X("By the end of this chapter you'll compute both sets, fill table M, run the parser by hand, and solve the doctor's 12-mark exam question.", 'في آخر الفصل ده هتحسب المجموعتين، وتملا الجدول M، وتشغّل الـ parser بإيدك، وتحل سؤال الدكتورة اللي عليه 12 درجة.')}</${P}>
+          <${P} small=${true}>${X("By the end of this chapter you'll compute both sets, fill table M, run the parser by hand, and solve the doctors' 12-mark exam question.", 'في آخر الفصل ده هتحسب المجموعتين، وتملا الجدول M، وتشغّل الـ parser بإيدك، وتحل سؤال الدكاترة اللي عليه 12 درجة.')}</${P}>
         `, { sec: t('Meet the predictive parser', 'اتعرّف على الـ predictive parser') }),
 
         // 2 · the dilemma
@@ -359,8 +359,8 @@
             [0, 'Truce, then. Together we make the table.']
           ]} />
           <${Grow} />
-          <${Box} kind="watch"><p className="hf-p small">${X("The doctor's wrong options are usually the <b>other</b> set: for FOLLOW(T) the trap answer is {(, id}, which is <b>FIRST(T)</b>. For FOLLOW(B) in Example 1 the trap is {b}, which is <b>FIRST(B)</b>.",
-            'الاختيارات الغلط بتاعة الدكتورة غالبًا بتبقى <b>المجموعة التانية</b>: في <bdi dir="ltr">FOLLOW(T)</bdi> الفخ هو <bdi dir="ltr">{(, id}</bdi> وده <b><bdi dir="ltr">FIRST(T)</bdi></b>. وفي <bdi dir="ltr">FOLLOW(B)</bdi> بتاع مثال 1 الفخ <bdi dir="ltr">{b}</bdi> وده <b><bdi dir="ltr">FIRST(B)</bdi></b>.')}</p></${Box}>
+          <${Box} kind="watch"><p className="hf-p small">${X("The doctors' wrong options are usually the <b>other</b> set: for FOLLOW(T) the trap answer is {(, id}, which is <b>FIRST(T)</b>. For FOLLOW(B) in Example 1 the trap is {b}, which is <b>FIRST(B)</b>.",
+            'الاختيارات الغلط بتاعة الدكاترة غالبًا بتبقى <b>المجموعة التانية</b>: في <bdi dir="ltr">FOLLOW(T)</bdi> الفخ هو <bdi dir="ltr">{(, id}</bdi> وده <b><bdi dir="ltr">FIRST(T)</bdi></b>. وفي <bdi dir="ltr">FOLLOW(B)</bdi> بتاع مثال 1 الفخ <bdi dir="ltr">{b}</bdi> وده <b><bdi dir="ltr">FIRST(B)</bdi></b>.')}</p></${Box}>
         `),
 
         // 14 · sort exercise
@@ -535,7 +535,7 @@
 
         // 30 · exam grammar exercise
         page(html`
-          <${Box} kind="exam" title=${t("The doctor's 12-mark question", 'سؤال الدكتورة اللي عليه 12 درجة')}><p className="hf-p small">${X('From the 2024/25 final: <i>"Construct its LL(1) predictive parser, then give the parsing actions for (dc)ac."</i> No left recursion here, so no transformation is needed. Start with the sets:',
+          <${Box} kind="exam" title=${t("The doctors' 12-mark question", 'سؤال الدكاترة اللي عليه 12 درجة')}><p className="hf-p small">${X('From the 2024/25 final: <i>"Construct its LL(1) predictive parser, then give the parsing actions for (dc)ac."</i> No left recursion here, so no transformation is needed. Start with the sets:',
             'من امتحان <bdi dir="ltr">2024/25</bdi>:<span class="ltr">"Construct its LL(1) predictive parser, then give the parsing actions for (dc)ac."</span>مفيش left recursion هنا، فمش محتاجين نغيّر حاجة. ابدأ بالمجموعات:')}</p></${Box}>
           <${Code} lines=${GXs} />
           <${SetPick} id="fox" syms=${['(', 'a', 'd', 'c', 'b', ')', '$', 'ε']} rows=${[
@@ -585,7 +585,7 @@
 
         // 35–37 · exam corner
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and revision sheets. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكتورة والـ revision sheets. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and revision sheets. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكاترة والـ revision sheets. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m1', /FOLLOW\(T\) is/)}
           <${Grow} />
           <${Talk} who="compiler" flip=${true}>${X('Trap check: {(, id} is <b>FIRST(T)</b>. You want what comes <b>after</b> T.', 'خلّي بالك: <bdi dir="ltr">{(, id}</bdi> ده <b><bdi dir="ltr">FIRST(T)</bdi></b>. إنت عايز اللي بييجي <b>بعد</b> T.')}</${Talk}>

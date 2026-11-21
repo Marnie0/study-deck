@@ -98,12 +98,12 @@
         // 0 · how to use this chapter (faces the opener in a spread)
         page(html`
           <${H2}>${t('How to use this chapter', 'إزاي تذاكر الفصل ده')}</${H2}>
-          <${P} small=${true}>${X(`We know what you're thinking: <i>"How can this be a serious compiler lecture?"</i> Your brain remembers what's surprising, visual and a bit emotional, so that's how this chapter is written. The facts are all from the doctor's slides.`,
-            `عارفين إنت بتفكر في إيه: <i>"هي دي محاضرة compiler بجد؟"</i> مخك بيفتكر الحاجة اللي بتفاجئه، اللي فيها صور، واللي فيها شوية مشاعر، فالفصل مكتوب كده. بس كل المعلومات من سلايدز الدكتورة.`)}</${P}>
+          <${P} small=${true}>${X(`We know what you're thinking: <i>"How can this be a serious compiler lecture?"</i> Your brain remembers what's surprising, visual and a bit emotional, so that's how this chapter is written. The facts are all from the doctors' slides.`,
+            `عارفين إنت بتفكر في إيه: <i>"هي دي محاضرة compiler بجد؟"</i> مخك بيفتكر الحاجة اللي بتفاجئه، اللي فيها صور، واللي فيها شوية مشاعر، فالفصل مكتوب كده. بس كل المعلومات من سلايدز الدكاترة.`)}</${P}>
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Do the exercises.</b> "Sharpen your pencil" and "Who does what?" are not optional. You answer right on the page.', '<b>حل التمارين.</b> "امسك القلم" و"مين بيعمل إيه؟" مش اختياري. بتجاوب على الصفحة نفسها.')}</span></div>
             <div className="row"><span>${K.ICON.brain}</span><span>${X('<b>Brain Power</b>: no answer box. Stop and think before you turn the page.', '<b>شغّل مخك</b>: مفيش مكان للإجابة. وقّف فكّر شوية قبل ما تقلب الصفحة.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are exam traps, taken from the doctor's own papers.", '<b>خلّي بالك!</b> دي فخاخ الامتحان، من امتحانات الدكتورة نفسها.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are exam traps, taken from the doctors' own papers.", '<b>خلّي بالك!</b> دي فخاخ الامتحان، من امتحانات الدكاترة نفسهم.')}</span></div>
             <div className="row"><span className="mk">${t('Q:', 'س:')}</span><span>${X('<b>There are no Dumb Questions</b> answers the things you were too shy to ask.', '<b>مفيش حاجة اسمها سؤال غبي</b> بيجاوب على الحاجات اللي اتكسفت تسألها.')}</span></div>
             <div className="row"><span className="mk">‡</span><span>${t('marks a mistake on the slides, and what was meant.', 'معناها فيه غلطة في السلايد، وبنقولك المقصود إيه.')}</span></div>
             <div className="row"><span className="hf-hand" style=${{ fontSize: '20px' }}>${t('ours', 'من عندنا')}</span><span>${t('Handwritten notes marked "ours" are our own analogies and tricks.', 'الملاحظات المكتوبة بخط الإيد واللي عليها "من عندنا" دي تشبيهات وحيل مننا، مش من السلايدز.')}</span></div>
@@ -132,7 +132,7 @@
           <${Def}>${X('A <b>compiler</b> translates (compiles) a program written in a <b>high-level language</b> that suits human programmers into the <b>low-level machine language</b> that computers need.',
             'الـ <b>compiler</b> بيترجم برنامج مكتوب بلغة <b>high-level</b> تناسب المبرمجين لـ <b>low-level machine language</b> اللي الكمبيوتر محتاجها.')}</${Def}>
           <${Hand} arrow="up" red=${true}>${X("…and while it's at it, it tries to <b>spot and report obvious programmer mistakes.</b>", '…وكمان بيحاول <b>يمسك أخطاء المبرمج الواضحة.</b>')}</${Hand}>
-          <${Box} kind="watch"><p className="hf-p small">${X(`Exam question: <i>"Compiler translates the source code to…"</i> The doctor's key is <b>both machine code and binary code</b>: machine language <i>is</i> binary.`,
+          <${Box} kind="watch"><p className="hf-p small">${X(`Exam question: <i>"Compiler translates the source code to…"</i> The doctors' key is <b>both machine code and binary code</b>: machine language <i>is</i> binary.`,
             'سؤال امتحان:<span class="ltr"><i>"Compiler translates the source code to…"</i></span>الإجابة <b><bdi dir="ltr">both machine code and binary code</bdi></b>، لأن الـ machine language هي نفسها binary.')}</p></${Box}>
         `),
 
@@ -220,12 +220,12 @@
           <${Dumb} qa=${A ? [
             ['لو الـ compiler بياخد وقت طويل كده، إزاي هو الـ "أسرع"؟', 'دول وقتين مختلفين. بياخد <b>وقت طويل في الـ analysis</b> مرة واحدة، وبعدها البرنامج <b>بيتنفّذ أسرع</b>. الـ interpreter بيبدأ بسرعة بس بيشتغل أبطأ.'],
             ['هي Java بتتعمل compile ولا interpret؟', 'في السلايدز بتاعتنا Java مكتوبة مع <b>C و<bdi dir="ltr">C++</bdi> تحت الـ compilers</b>. جاوب في الامتحان زي السلايدز.'],
-            ['الـ compiler هيمسك كل أخطائي؟', 'الأخطاء <b>الواضحة</b> بس. إجابة الدكتورة إن الـ compiler بيبيّن الـ <b>syntax</b> errors، وده <b>غلط</b>:<span class="ltr">"Indicates the syntax and runtime errors"</span>'],
+            ['الـ compiler هيمسك كل أخطائي؟', 'الأخطاء <b>الواضحة</b> بس. إجابة الدكاترة إن الـ compiler بيبيّن الـ <b>syntax</b> errors، وده <b>غلط</b>:<span class="ltr">"Indicates the syntax and runtime errors"</span>'],
             ['طب لو كتبت * وأنا قصدي /؟', 'ده لسه كود سليم، فمحدش هيمسكه. إجابة الميدترم: <b>none of the mentioned</b>.']
           ] : [
             ['If a compiler takes so long, why is it the "faster" one?', 'Two different times. It spends a <b>long time analyzing</b> the program once, and then the program <b>executes faster</b>. The interpreter is quick to start but slower to run.'],
             ['Is Java compiled or interpreted?', 'On our slides Java is listed with <b>C and C++ under compilers</b>. Answer the exam by the slides.'],
-            ['Will the compiler catch all my mistakes?', 'Only the <b>obvious</b> ones. The doctor\'s key: a compiler indicates <b>syntax</b> errors. "Indicates the syntax and runtime errors" is <b>False</b>.'],
+            ['Will the compiler catch all my mistakes?', 'Only the <b>obvious</b> ones. The doctors\' key: a compiler indicates <b>syntax</b> errors. "Indicates the syntax and runtime errors" is <b>False</b>.'],
             ['And if I typed * where I meant /?', 'That\'s still valid code, so nothing catches it. The midterm\'s answer: <b>none of the mentioned</b>.']
           ]} />
         `),
@@ -428,7 +428,7 @@
 
         // 27–29 · the doctor's questions
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and revision sheet. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكتورة والـ revision sheet. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and revision sheet. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكاترة والـ revision sheet. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m1', /is not a phase of a compiler\.$/i)}
           <${Grow} />
           <${Talk} who="table" flip=${true}>${t("You know this one. Hint: it's me.", 'إنت عارف دي. تلميح: أنا.')}</${Talk}>

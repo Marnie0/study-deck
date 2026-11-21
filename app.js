@@ -626,6 +626,7 @@ function start() {
                 <button className="btn solid mc-go" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => quiz(k, { order: 'prof' })}>Practise all ${total}, doctor’s first</button>
                 <button className="btn" disabled=${!m.prof} onClick=${() => quiz(k, { only: 'prof' })}>Doctor’s only (${m.prof})</button>
                 <button className="btn" onClick=${() => quiz(k, { only: 'mine' })}>More practice (${m.mine})</button>
+                ${kd.key === 'fin' && M[k].hfin && html`<button className="btn solid mc-hf" onMouseEnter=${() => prefetch(k)} onPointerDown=${() => prefetch(k)} onClick=${() => open(k, { mode: 'hf', hf: 'final' })}><span className="hfmark" aria-hidden="true">HF</span>Head First revision</button>`}
                 ${kd.key === 'fin' && M[k].exams > 0 && html`<button className="btn ghost" onClick=${() => open(k, { mode: 'papers' })}>Past papers (${M[k].exams})</button>`}
                 <button className="btn ghost" onClick=${() => quiz(k, { mock: kd.mock })}>Timed mock · ${kd.mock} questions · ${Math.round(kd.mock * 1.5)} min</button>
               </div>
@@ -703,6 +704,7 @@ function start() {
             <div className="row" style=${{ marginTop: '12px', flexWrap: 'wrap' }}>
               <button className="btn solid" onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: m.lecs, order: 'prof', t: Date.now() } })}>Practise all ${all}, doctor’s first</button>
               <button className="btn" disabled=${!prof} onClick=${() => go({ mode: 'quiz', quizPreset: { lecs: m.lecs, only: 'prof', t: Date.now() } })}>Doctor’s only (${prof})</button>
+              ${kd.key === 'fin' && M[k].hfin && html`<button className="btn" onClick=${() => go({ mode: 'hf', hf: 'final' })}><span className="hfmark" aria-hidden="true">HF</span>Head First revision</button>`}
               ${M[k][kd.key] && M[k][kd.key].figs > 0 && html`<button className="btn" onClick=${() => go({ mode: 'read', lec: kd.viz, vizLec: null })}>Animations (${M[k][kd.key].figs})</button>`}
               <button className="btn ghost" onClick=${() => go({ view: kd.view })}>All ${kd.name} courses</button>
             </div>
@@ -1925,6 +1927,12 @@ function start() {
           <button role="tab" aria-selected=${String(ar)} onClick=${() => { arFont(); setLang('ar'); }} lang="ar">العربي</button>
         </div>
       </div>
+      ${M[k].hfin && html`<button className="hfcover hfc-final" onClick=${() => go({ hf: 'final' })} onPointerEnter=${() => warm('final')} onFocus=${() => warm('final')}>
+        <span className="hfc-top"><span className="hfc-hf">Head First</span><span className="hfc-n">★</span></span>
+        <span className="hfc-t">${ar ? html`<span lang="ar" dir="rtl">المراجعة النهائية: كل المحاضرات</span>` : 'Final revision: every lecture'}</span>
+        <span className="hfc-sub" lang=${ar ? 'ar' : 'en'} dir=${ar ? 'rtl' : 'ltr'}>${ar ? 'الكورس كله في كتاب واحد قبل الـ final: الصورة الكبيرة، المسائل اللي بتيجي، والفخاخ' : 'The whole course in one book before the final: the big picture, the problems that come up, and the traps'}</span>
+        <span className="hfc-foot" lang=${ar ? 'ar' : 'en'} dir=${ar ? 'rtl' : 'ltr'}>${ar ? 'افتح المراجعة ←' : 'Open the revision →'}</span>
+      </button>`}
       <ol className="hfs-list">${c.lectures.map(l => { const on = have.has(l.n);
         return html`<li key=${l.n}><button className=${'hfcover' + (on ? '' : ' soon')} disabled=${!on} onClick=${() => go({ hf: l.n })} onPointerEnter=${on ? () => warm(l.n) : null} onFocus=${on ? () => warm(l.n) : null}>
           <span className="hfc-top"><span className="hfc-hf">Head First</span><span className="hfc-n">${l.n}</span></span>

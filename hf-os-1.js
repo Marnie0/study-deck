@@ -180,17 +180,17 @@
       const mq2 = (id, re) => html`<div className="hf-os1-g2">${mq(id, re)}</div>`;
       const tf = (id, res) => html`<${TF} id=${id} items=${res.map(q)} />`;
       const page = (el, o) => Object.assign({ el }, o || {});
-      const exam = t("From the doctor's papers", 'من امتحانات الدكتور');
+      const exam = t("From the doctors' papers", 'من امتحانات الدكاترة');
       return [
         // 0 · how to use this book (faces the opener)
         page(html`
           <${H2}>${t('How to use this book', 'إزاي تذاكر الكتاب ده')}</${H2}>
-          <${P} small=${true}>${X(`We know what you're thinking: <i>"How can this be a serious operating systems book?"</i> Your brain remembers what's surprising, visual and a bit emotional, so that's how this book is written. Every fact is from the doctor's slides.`,
-            `عارفين إنت بتفكر في إيه: <i>"هو ده كتاب operating systems بجد؟"</i> مخك بيفتكر الحاجة اللي بتفاجئه واللي فيها صور ومشاعر، فالكتاب مكتوب كده. بس كل معلومة فيه من سلايدز الدكتور.`)}</${P}>
+          <${P} small=${true}>${X(`We know what you're thinking: <i>"How can this be a serious operating systems book?"</i> Your brain remembers what's surprising, visual and a bit emotional, so that's how this book is written. Every fact is from the doctors' slides.`,
+            `عارفين إنت بتفكر في إيه: <i>"هو ده كتاب operating systems بجد؟"</i> مخك بيفتكر الحاجة اللي بتفاجئه واللي فيها صور ومشاعر، فالكتاب مكتوب كده. بس كل معلومة فيه من سلايدز الدكاترة.`)}</${P}>
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Do the exercises.</b> "Sharpen your pencil" is not optional. You answer right on the page.', '<b>حل التمارين.</b> "امسك القلم" مش اختياري. بتجاوب على الصفحة نفسها.')}</span></div>
             <div className="row"><span>${K.ICON.brain}</span><span>${X('<b>Brain Power</b>: no answer box. Stop and think before you turn the page.', '<b>شغّل مخك</b>: مفيش مكان للإجابة. وقّف فكّر شوية قبل ما تقلب الصفحة.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are exam traps, taken from the doctor's own papers.", '<b>خلّي بالك!</b> دي فخاخ الامتحان، من امتحانات الدكتور نفسه.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are exam traps, taken from the doctors' own papers.", '<b>خلّي بالك!</b> دي فخاخ الامتحان، من امتحانات الدكاترة نفسهم.')}</span></div>
             <div className="row"><span className="mk">${t('Q:', 'س:')}</span><span>${X('<b>There are no Dumb Questions</b> answers the things you were too shy to ask.', '<b>مفيش حاجة اسمها سؤال غبي</b> بيجاوب على الحاجات اللي اتكسفت تسألها.')}</span></div>
             <div className="row"><span className="mk">‡</span><span>${t('marks a slip on the slides, or a word that is not on them, and what was meant.', 'غلطة في السلايد أو كلمة مش فيها، وبنقولك المقصود.')}</span></div>
             <div className="row"><span className="hf-hand" style=${{ fontSize: '20px' }}>${t('ours', 'من عندنا')}</span><span>${t('Handwritten notes marked "ours" are our own analogies and tricks.', 'الملاحظات المكتوبة بخط الإيد واللي عليها "من عندنا" دي تشبيهات وحيل مننا، مش من السلايدز.')}</span></div>
@@ -301,7 +301,7 @@
           <${Talk} who="os" flip=${true}>${X('Whatever ships with me: <b>system programs</b>. Your browser and games: <b>application programs</b>. Me, always on: the <b>kernel</b>.', 'اللي جاي معايا اسمه <b>system programs</b>، والـ browser والألعاب بتوعك <b>application programs</b>، وأنا اللي شغال على طول اسمي الـ <b>kernel</b>.')}</${Talk}>
           <${Grow} />
           ${tf('tf-kern', [/kernel consists of all system/i])}
-          <${Hand} red=${true}>${t('The kernel is ONE program, not all of them. False on two of the doctor\'s papers.', 'الـ kernel برنامج واحد، مش كلهم. الجملة دي جت غلط في امتحانين للدكتور.')}</${Hand}>
+          <${Hand} red=${true}>${t('The kernel is ONE program, not all of them. False on two of the doctors\' papers.', 'الـ kernel برنامج واحد، مش كلهم. الجملة دي جت غلط في امتحانين للدكتور.')}</${Hand}>
         `),
 
         // 9 · boot the computer
@@ -775,7 +775,7 @@
 
         // exam corner: on the slides
         page(html`
-          <${Box} kind="exam" title=${exam}><p className="hf-p small">${t("Real questions from the doctor's exam and midterm. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحان الدكتور والميدترم. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${exam}><p className="hf-p small">${t("Real questions from the doctors' exam and midterm. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحان الدكاترة والميدترم. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m-what', /^What is an operating system\?/i)}
           <${Grow} />
           <${Hand}>${t('Hint: page 2 and the interview.', 'تلميح: صفحة 2 والحوار.')}</${Hand}>
@@ -798,7 +798,7 @@
 
         // beyond the slides
         page(html`
-          <${Box} kind="exam" title=${t('Beyond the slides', 'برّه السلايدز')}><p className="hf-p small">${t("Also the doctor's questions, but the answers are not on the slides. The reasons come from the standard textbook.", 'دي برضه أسئلة الدكتور، بس إجاباتها مش في السلايدز. الشرح من الكتاب الأساسي.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Beyond the slides', 'برّه السلايدز')}><p className="hf-p small">${t("Also the doctors' questions, but the answers are not on the slides. The reasons come from the standard textbook.", 'دي برضه أسئلة الدكاترة، بس إجاباتها مش في السلايدز. الشرح من الكتاب الأساسي.')}</p></${Box}>
           ${mq2('m-sram', /has more speed in accessing data and is volatile/i)}
           <${Gap} h=${6} />
           ${mq2('m-rom', /most basic non-volatile memory/i)}

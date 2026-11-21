@@ -114,7 +114,10 @@ if (existsSync('hf.js')) { writeFileSync('data/hf.js', readFileSync('hf.js')); c
 for (const id of Object.keys(COURSES)) {
   // a chapter can also live in its own file, hf-<course>-<n>.js, loaded only when that chapter is opened (listed in manifest hfx)
   const own = readdirSync('.').map(x => new RegExp('^hf-' + id + '-(\\d+)\\.js$').exec(x)).filter(Boolean).map(x => +x[1]).sort((a, b) => a - b);
-  const f = `hf-${id}.js`; if (!existsSync(f) && !own.length) continue;
+  // the course's Head First final revision (every lecture), hf-<course>-final.js, chapter key 'final'
+  const fin = existsSync(`hf-${id}-final.js`);
+  if (fin) { const src = readFileSync(`hf-${id}-final.js`, 'utf8'); writeFileSync(`data/hf-${id}-final.js`, src); console.log(`data/hf-${id}-final.js`.padEnd(20), (src.length / 1024).toFixed(0).padStart(5), 'KB'); }
+  const f = `hf-${id}.js`; if (!existsSync(f) && !own.length) { if (fin) Object.assign(manifest[id], { hf: [], hfx: ['final'], hfin: true }); continue; }
   let hf = [];
   if (existsSync(f)) {
     const src = readFileSync(f, 'utf8'), m = /^\/\/ lectures: \[([\d,\s]*)\]/m.exec(src);
@@ -124,7 +127,8 @@ for (const id of Object.keys(COURSES)) {
   }
   for (const n of own) { const g = `hf-${id}-${n}.js`, src = readFileSync(g, 'utf8'); writeFileSync('data/' + g, src); console.log(('data/' + g).padEnd(20), (src.length / 1024).toFixed(0).padStart(5), 'KB'); }
   manifest[id].hf = [...new Set(hf.concat(own))].sort((a, b) => a - b);
-  if (own.length) manifest[id].hfx = own;
+  if (own.length || fin) manifest[id].hfx = own.concat(fin ? ['final'] : []);
+  if (fin) manifest[id].hfin = true;
 }
 writeFileSync('manifest.js', `window.MANIFEST=${JSON.stringify(manifest)};\n`);
 console.log('manifest.js'.padEnd(20), (JSON.stringify(manifest).length / 1024).toFixed(1).padStart(5), 'KB');

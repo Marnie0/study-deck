@@ -654,7 +654,7 @@
 
         // 35–37 · exam corner (practice questions: this lecture has none from the doctor)
         page(html`
-          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("The site's own practice questions for this lecture (there are no doctor's questions on it yet). Tap an answer to see why.", 'أسئلة التدريب بتاعة الموقع للمحاضرة دي (لسه مفيش أسئلة من الدكاترة عليها). دوس على إجابة عشان تعرف السبب.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("The site's own practice questions for this lecture (there are no doctors' questions on it yet). Tap an answer to see why.", 'أسئلة التدريب بتاعة الموقع للمحاضرة دي (لسه مفيش أسئلة من الدكاترة عليها). دوس على إجابة عشان تعرف السبب.')}</p></${Box}>
           ${pq('p1', /contains a cycle and every resource type has exactly one instance/, 'quiz')}
         `, { sec: t('Practice questions', 'أسئلة تدريب') }),
         page(html`

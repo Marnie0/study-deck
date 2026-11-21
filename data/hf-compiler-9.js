@@ -157,7 +157,7 @@
             'دي <b>آخر محاضرة</b> في الكورس. لحد دلوقتي كل حاجة كانت بتحصل <b>قبل</b> ما البرنامج يشتغل. دلوقتي هو شغّال: بيحط حاجاته فين، والـ procedures بتسلّم القيم لبعض إزاي، والـ compiler بيخلّي الكود أسرع إزاي؟')}</${P}>
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Three exercises</b> on the page: where does it live, what does it print, and match the optimization.', '<b>تلات تمارين</b> على الصفحة: الحاجة دي بتتحط فين، البرنامج بيطبع إيه، ووصّل الـ optimization بمثالها.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are exam traps from the doctor's own papers.", '<b>خلّي بالك!</b> دي فخاخ الامتحان، من امتحانات الدكتورة نفسها.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are exam traps from the doctors' own papers.", '<b>خلّي بالك!</b> دي فخاخ الامتحان، من امتحانات الدكاترة نفسهم.')}</span></div>
             <div className="row"><span className="hf-hand" style=${{ fontSize: '20px' }}>${t('ours', 'من عندنا')}</span><span>${t('Handwritten notes marked "ours" are our own analogies, not the slides.', 'الملاحظات بخط الإيد اللي عليها "من عندنا" تشبيهات مننا، مش من السلايدز.')}</span></div>
           </div>
           <${Grow} />
@@ -583,7 +583,7 @@
 
         // 34–37 · exam corner
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and revision sheet. Tap an answer to see why.", 'أسئلة حقيقية من امتحانات الدكتورة والـ revision sheet. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and revision sheet. Tap an answer to see why.", 'أسئلة حقيقية من امتحانات الدكاترة والـ revision sheet. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
           ${mq('m1', /compiler needs .* types of storage/i)}
           <${Grow} />
           <${Talk} who="cpu" flip=${true}>${t('Hint: static, stack and…', 'تلميح: static وstack و…')}</${Talk}>

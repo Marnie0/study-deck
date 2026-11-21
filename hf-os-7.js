@@ -684,7 +684,7 @@
 
         // 35–37 · exam corner: the site's practice questions (the lecture has none of the doctor's)
         page(html`
-          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("These are the site's own practice questions: there are no questions from the doctor's papers on this lecture yet. Tap an answer to see why.", 'دي أسئلة تدريب من الموقع، لأن لسه مفيش أسئلة من امتحانات الدكاترة على المحاضرة دي. دوس على إجابة عشان تعرف السبب.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("These are the site's own practice questions: there are no questions from the doctors' papers on this lecture yet. Tap an answer to see why.", 'دي أسئلة تدريب من الموقع، لأن لسه مفيش أسئلة من امتحانات الدكاترة على المحاضرة دي. دوس على إجابة عشان تعرف السبب.')}</p></${Box}>
           ${mq('m1', /chmod 761 game gives the group/i)}
           <${Grow} />
           <${Talk} who="os" flip=${true}>${t('Owner, group, public. Always in that order.', 'الـ owner، وبعده الـ group، وبعده الـ public. دايمًا بالترتيب ده.')}</${Talk}>

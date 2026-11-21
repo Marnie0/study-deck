@@ -567,7 +567,7 @@
 
         // 32–36 · practice questions (this lecture has none from the doctor's papers)
         page(html`
-          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("This lecture has no questions from the doctor's papers yet, so these are the site's own practice questions. Tap an answer to see why it's right or wrong.", 'المحاضرة دي ملهاش أسئلة من امتحانات الدكاترة لسه، فدي أسئلة تدريب من الموقع. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("This lecture has no questions from the doctors' papers yet, so these are the site's own practice questions. Tap an answer to see why it's right or wrong.", 'المحاضرة دي ملهاش أسئلة من امتحانات الدكاترة لسه، فدي أسئلة تدريب من الموقع. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m1', /senses the Interrupt Request Line/)}
           <${Grow} />
           <${Talk} who="cpu" flip=${true}>${t('You know how often I look at that wire.', 'إنت عارف أنا ببص على السلك ده كل قد إيه.')}</${Talk}>

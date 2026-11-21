@@ -1109,6 +1109,12 @@ html.vt-theme::view-transition-old(topbar), html.vt-theme::view-transition-new(t
 .hfc-foot[dir="rtl"]{ font-family:"IBM Plex Sans Arabic", var(--body); }
 .hfs-intro h2{ font-size:clamp(1.5rem, 3.6vw, 2.1rem); font-weight:800; letter-spacing:-.02em; line-height:1.1; margin:6px 0 8px; }
 .hfs-intro p:last-child{ color:var(--graphite); line-height:1.55; margin:0; }
+.hfcover.hfc-final{ aspect-ratio:auto; min-height:150px; margin:0 0 18px; padding:18px 22px 18px 30px; gap:8px; background:linear-gradient(120deg,#312E81 0%,#4338CA 45%,#7C3AED 100%); }
+.hfcover.hfc-final .hfc-n{ -webkit-text-stroke:0; color:#FDE68A; font-size:2.2rem; }
+.hfcover.hfc-final .hfc-t{ font-size:1.5rem; flex:none; }
+.hfc-sub{ font-size:.95rem; line-height:1.4; opacity:.92; max-width:60ch; }
+.hfc-sub[dir="rtl"], .hfc-final .hfc-t [dir="rtl"]{ font-family:"IBM Plex Sans Arabic", var(--body); }
+.mc-hf .hfmark{ margin-right:6px; }
 .hfs-list{ list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill, minmax(168px, 1fr)); gap:18px; }
 .hfcover{ position:relative; width:100%; aspect-ratio:3/4; display:flex; flex-direction:column; gap:10px; padding:14px 14px 14px 22px; border:0; border-radius:4px 10px 10px 4px; text-align:left; cursor:pointer; font:inherit; color:#fff;
   background:linear-gradient(150deg, color-mix(in srgb, var(--s) 82%, #fff) 0%, var(--s) 45%, color-mix(in srgb, var(--s) 62%, #000) 100%);

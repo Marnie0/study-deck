@@ -153,7 +153,7 @@
             'فيه state اسمها <b>q0</b> عليها loop على <b>0</b>، وكمان سهم:' + L('q0 –0→ q1') + 'إنت واقف في q0 وقريت 0. هتروح فين؟')}</p></${Box}>
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Do the exercises.</b> You fill the DFA tables right on the page.', '<b>حل التمارين.</b> هتملا جداول الـ DFA على الصفحة نفسها.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctor's papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكتورة.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctors' papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكاترة.')}</span></div>
             <div className="row"><span className="mk">‡</span><span>${t('marks a slide error, or a point the notes add beyond the slides.', 'معناها غلطة في السلايد، أو حاجة النوتس زوّدتها على السلايدز.')}</span></div>
             <div className="row"><span className="hf-hand" style=${{ fontSize: '20px' }}>${t('ours', 'من عندنا')}</span><span>${t('Handwritten notes marked "ours" are our own analogies and tricks.', 'الملاحظات بخط الإيد اللي عليها "من عندنا" تشبيهات وحيل مننا.')}</span></div>
           </div>
@@ -168,8 +168,8 @@
             'نرجع لسؤال البداية: من q0 على 0 تقدر <b>تفضل في q0</b> أو <b>تروح q1</b>. الاتنين. الماكينة قدامها اختيار، وده اللي بيخليها <b>non-deterministic</b>.')}</${P}>
           <${Talk} who="dev">${X('A machine with choices? How does the computer pick one?', 'ماكينة قدامها اختيارات؟ والكمبيوتر هيختار إزاي؟')}</${Talk}>
           <${Talk} who="cpu" flip=${true}>${X("It doesn't have to. You'll turn that <b>NFA</b> into a <b>DFA</b> with exactly one next state every time.", 'مش محتاج يختار. إنت هتحوّل الـ <b>NFA</b> ده لـ <b>DFA</b> فيه next state واحدة بس كل مرة.')}</${Talk}>
-          <${P} small=${true}>${X("In this chapter: the <b>three signs</b> of an NFA, the <b>NFA vs DFA</b> table, <b>transition tables</b>, and the lecture's <b>3-step conversion</b> on the doctor's own exam NFAs.",
-            'في الفصل ده: <b>العلامات التلاتة</b> بتاعة الـ NFA، وجدول الـ <b>NFA مقابل الـ DFA</b>، والـ <b>transition tables</b>، وطريقة المحاضرة <b>في 3 خطوات</b> للتحويل على الـ NFAs بتاعة امتحانات الدكتورة.')}</${P}>
+          <${P} small=${true}>${X("In this chapter: the <b>three signs</b> of an NFA, the <b>NFA vs DFA</b> table, <b>transition tables</b>, and the lecture's <b>3-step conversion</b> on the doctors' own exam NFAs.",
+            'في الفصل ده: <b>العلامات التلاتة</b> بتاعة الـ NFA، وجدول الـ <b>NFA مقابل الـ DFA</b>، والـ <b>transition tables</b>، وطريقة المحاضرة <b>في 3 خطوات</b> للتحويل على الـ NFAs بتاعة امتحانات الدكاترة.')}</${P}>
         `, { sec: t('Meet the NFA', 'اتعرّف على الـ NFA') }),
 
         // 2 · what makes an NFA
@@ -444,7 +444,7 @@
 
         // 23 · exam NFA 1
         page(html`
-          <${H1}>${t("The doctor's favourite NFA", 'الـ NFA المفضّل عند الدكتورة')}</${H1}>
+          <${H1}>${t("The doctors' favourite NFA", 'الـ NFA المفضّل عند الدكاترة')}</${H1}>
           <${P} small=${true}>${X('It appears in the <b>2021–2025</b> papers (sometimes drawn with states S, R, M). Start <b>1</b>, final <b>3</b>:', 'جه في امتحانات <b>' + B('2021–2025') + '</b> (ساعات بيترسم بـ states اسمها S و R و M). الـ start هو <b>1</b>، والـ final هو <b>3</b>:')}</${P}>
           <${Code} lines=${['1 –0→ 3', '3 –0→ 1', ['3 –1→ 3', t('a loop on 1…', 'loop على 1…')], ['3 –1→ 2', t('…and another 1!', '…و1 تانية!')], '2 –0→ 3']} />
           <${Box} kind="exam" title=${t('Why is it non-deterministic?', 'ليه non-deterministic؟')}><p className="hf-p small">${X('State 3 has a <b>loop on 1</b> AND a <b>transition on the same symbol 1</b> to state 2, so (3, 1) has two next states. Sign 2.',
@@ -512,7 +512,7 @@
 
         // 31–34 · exam corner
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and this year's midterm. Tap an answer to see why.", 'أسئلة حقيقية من امتحانات الدكتورة وميدترم السنة دي. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and this year's midterm. Tap an answer to see why.", 'أسئلة حقيقية من امتحانات الدكاترة وميدترم السنة دي. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
           ${mq('m-said', /automaton with ε symbol is said/)}
           <${Gap} h=${4} />
           ${mq('m-epsdfa', /can exist in DFA/)}
@@ -523,7 +523,7 @@
           ${mq('m-every', /For every NFA a deterministic/)}
         `),
         page(html`
-          <${Hand} red=${true}>${X('"Same NFA" = the doctor\'s favourite: 1 –0→ 3, 3 –0→ 1, 3 –1→ 3, 3 –1→ 2, 2 –0→ 3', 'يقصد بـ "Same NFA" الـ NFA المفضّل:' + L('1 –0→ 3, 3 –0→ 1, 3 –1→ 3, 3 –1→ 2, 2 –0→ 3'))}</${Hand}>
+          <${Hand} red=${true}>${X('"Same NFA" = the doctors\' favourite: 1 –0→ 3, 3 –0→ 1, 3 –1→ 3, 3 –1→ 2, 2 –0→ 3', 'يقصد بـ "Same NFA" الـ NFA المفضّل:' + L('1 –0→ 3, 3 –0→ 1, 3 –1→ 3, 3 –1→ 2, 2 –0→ 3'))}</${Hand}>
           ${mq('m-230', /from \{2,3\} on input 0/)}
           <${Grow} />
           <${Talk} who="dev">${X('So that is where the <b>{1,3}</b> row in my table came from!', 'آه، هو ده بقى اللي جاب صف <b>' + B('{1,3}') + '</b> في الجدول بتاعي!')}</${Talk}>

@@ -680,7 +680,7 @@
 
         // 41–43 · exam corner: the doctor's questions, then one of the site's practice questions
         page(html`
-          <${Box} kind="exam" title=${t("Exam corner: from the doctor's papers", 'ركن الامتحان: من الامتحانات')}><p className="hf-p small">${t("The 2026 exam asked about slide 18's example. Tap an answer to see why.", 'امتحان 2026 سأل على مثال سلايد 18. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
+          <${Box} kind="exam" title=${t("Exam corner: from the doctors' papers", 'ركن الامتحان: من الامتحانات')}><p className="hf-p small">${t("The 2026 exam asked about slide 18's example. Tap an answer to see why.", 'امتحان 2026 سأل على مثال سلايد 18. دوس على إجابة عشان تعرف ليه.')}</p></${Box}>
           ${mq('m1', /Under first-fit, where does the 112 KB/i)}
           <${Grow} />
           <${Hand} red=${true}>${t('in order, and the hole shrinks after each placement', 'بالترتيب، والـ hole بتصغر بعد كل placement')}</${Hand}>
@@ -691,7 +691,7 @@
           <${Talk} who="os" flip=${true}>${X('Count who gets placed. Only one algorithm fits <b>all four</b> here.', 'عدّ مين اتحط. algorithm واحد بس حط <b>الأربعة</b> هنا.')}</${Talk}>
         `),
         page(html`
-          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("The site's own practice questions, not the doctor's.", 'أسئلة تدريب من الموقع، مش من الامتحانات.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("The site's own practice questions, not the doctors'.", 'أسئلة تدريب من الموقع، مش من الامتحانات.')}</p></${Box}>
           ${pq('p1', /differ in which address-binding scheme/i)}
           <${Grow} />
           <${Hand}>${t('flip back to "Three moments to bind" if you are unsure', 'ارجع لصفحة "تلات أوقات للـ binding" لو مش متأكد')}</${Hand}>

@@ -121,8 +121,8 @@
           <${H2}>${t('Where we left off', 'إحنا وقفنا فين')}</${H2}>
           <${P} small=${true}>${X('In Chapter 1 you met the six phases. Since then the <b>scanner</b> learned to cut tokens, and the <b>parser</b> learned to check the structure with a CFG and build the <b>syntax tree</b>.',
             'في الفصل الأول اتعرّفت على الـ six phases. ومن ساعتها الـ <b>scanner</b> اتعلّم يقطّع الـ tokens، والـ <b>parser</b> اتعلّم يشيّك على الـ structure بالـ CFG ويبني الـ <b>syntax tree</b>.')}</${P}>
-          <${P} small=${true}>${X('Now the tree moves on to <b>phase 3: the semantic analyzer</b>. Same tools as always: Brain Power, Watch it! traps from the doctor\'s papers, and exercises right on the page.',
-            'دلوقتي الشجرة رايحة للـ <b>phase التالتة: الـ semantic analyzer</b>. ونفس الأدوات: شغّل مخك، وفخاخ خلّي بالك من امتحانات الدكتورة، وتمارين على الصفحة نفسها.')}</${P}>
+          <${P} small=${true}>${X('Now the tree moves on to <b>phase 3: the semantic analyzer</b>. Same tools as always: Brain Power, Watch it! traps from the doctors\' papers, and exercises right on the page.',
+            'دلوقتي الشجرة رايحة للـ <b>phase التالتة: الـ semantic analyzer</b>. ونفس الأدوات: شغّل مخك، وفخاخ خلّي بالك من امتحانات الدكاترة، وتمارين على الصفحة نفسها.')}</${P}>
           <${Box} kind="brain"><p className="hf-p">${X('A warm-up. Every token here is fine, and the shape <i>type name = value;</i> is a perfectly good declaration:',
             'تسخين. كل الـ tokens هنا سليمة، وشكل الـ declaration مظبوط خالص:')}</p>
             <${Code} lines=${['int age = "twenty";']} />
@@ -491,7 +491,7 @@
 
         // 28–30 · exam corner
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers and revision sheet. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكتورة والـ revision sheet. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers and revision sheet. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكاترة والـ revision sheet. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('e1', /Semantic analysis uses .* grammar in order to transform/)}
           <${Grow} />
           <${Talk} who="compiler" flip=${true}>${t('Hint: the two lines you learned by heart.', 'تلميح: السطرين اللي حفظتهم صمّ.')}</${Talk}>

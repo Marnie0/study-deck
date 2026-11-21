@@ -148,7 +148,7 @@
       <div className="hf-os5-tabs" dir="ltr" role="group" aria-label="Algorithm">${['FIFO', 'OPT', 'LRU'].map(a => html`<button key=${a} aria-pressed=${String(algo === a)} onClick=${() => setAlgo(a)}>${a}</button>`)}</div>
       <${FT} refs=${EXAM} nf=${3} algo=${algo} upto=${k} cur=${done ? null : k} />
       ${done ? html`<p className="hf-os5-ok">${T5(ar ? `<b>خلصت!</b> الـ ${algo} بيعمل <b>${faults} faults</b>. إجابة الدكاترة: الـ FIFO بـ 11، والـ Optimal بـ 8، والـ LRU بـ 10.${algo === 'OPT' ? ' في آخر reference مفيش ولا page هتتستخدم تاني، فأي واحدة تنفع، والجدول بتاع الحل بيطلّع الـ 2.' : ''}`
-          : `<b>Done!</b> ${algo} makes <b>${faults} faults</b>. The doctor's key: FIFO 11, Optimal 8, LRU 10.${algo === 'OPT' ? ' On the last reference no page is used again, so any victim works; the key\'s table replaces 2.' : ''}`)}</p>`
+          : `<b>Done!</b> ${algo} makes <b>${faults} faults</b>. The doctors' key: FIFO 11, Optimal 8, LRU 10.${algo === 'OPT' ? ' On the last reference no page is used again, so any victim works; the key\'s table replaces 2.' : ''}`)}</p>`
         : html`<p className="hf-os5-ask">${T5(ar ? `الـ reference رقم <bdi dir="ltr">#${k + 1}</bdi> هو الـ page <b>${s.p}</b>. هيحصل إيه؟ <span style="color:var(--graphite)">(الـ faults لحد دلوقتي ${faults})</span>`
           : `Reference <b>#${k + 1}</b> is page <b>${s.p}</b>. What happens? <span style="color:var(--graphite)">(faults so far: ${faults})</span>`)}</p>
         <div className="hf-os5-opts">${opts.map(c => html`<button key=${c} onClick=${() => pick(c)}>${optL(c)}</button>`)}</div>`}
@@ -560,7 +560,7 @@
 
         // 28 · be the page replacer
         page(html`
-          <${Box} kind="pencil" title=${t('Be the page replacer', 'خليك إنت الـ page replacer')}><p className="hf-p small">${X("The doctor's <b>Final 2025/2026</b> string, 3 frames. At each reference, choose: hit, an empty frame, or which page goes out. Do all three algorithms.",
+          <${Box} kind="pencil" title=${t('Be the page replacer', 'خليك إنت الـ page replacer')}><p className="hf-p small">${X("The doctors' <b>Final 2025/2026</b> string, 3 frames. At each reference, choose: hit, an empty frame, or which page goes out. Do all three algorithms.",
             'الـ string بتاع <b>امتحان الدكاترة 2025/2026</b>، بـ 3 frames. عند كل reference اختار: hit، ولا frame فاضي، ولا أنهي page تطلع. اعمل التلات algorithms.')}</p></${Box}>
           <${Replacer} id="rep" />
         `, { sec: t('Be the page replacer', 'خليك إنت الـ page replacer') }),
@@ -632,7 +632,7 @@
 
         // 35 · exam corner: the doctor's question
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("From the doctor's Final 2025/2026: the string you just played.", 'من امتحان الدكاترة 2025/2026، الـ string اللي لعبته.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("From the doctors' Final 2025/2026: the string you just played.", 'من امتحان الدكاترة 2025/2026، الـ string اللي لعبته.')}</p></${Box}>
           ${mq('m1', /0,3,2,1 using FIFO/)}
           <${Grow} />
           <${Box} kind="watch"><p className="hf-p small">${X("<b>Every final</b> from 2021/2022 to 2025/2026 has a FIFO / Optimal / LRU problem, and the strings change: 14 references gave 11, 8, 10, not the lecture's 15, 9, 12. Trace the table.",
@@ -641,7 +641,7 @@
 
         // 36–37 · practice questions (the site's own, not the doctor's)
         page(html`
-          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("These are the site's own practice questions, not the doctor's.", 'دي أسئلة تدريب من الموقع، مش من امتحانات الدكاترة.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Practice questions', 'أسئلة تدريب')}><p className="hf-p small">${t("These are the site's own practice questions, not the doctors'.", 'دي أسئلة تدريب من الموقع، مش من امتحانات الدكاترة.')}</p></${Box}>
           ${pq('p1', /^Belady's anomaly means/)}
         `),
         page(html`

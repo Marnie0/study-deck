@@ -241,7 +241,7 @@
             'في الفصل 2 و3 بنينا الـ <b>lexer</b>: الـ regular expressions والـ finite automata (من NFA لـ DFA) اللي بتقرا الحروف وتطلّع <b>tokens</b>. الفصل ده عن اللي بيحصل للـ tokens دي بعد كده.')}</${P}>
           <div className="hf-howto hf-in">
             <div className="row"><span>${K.ICON.pencil}</span><span>${X('<b>Do the exercises</b> on the page: seven of them, with Check and Show buttons.', '<b>حل التمارين</b> على الصفحة نفسها: سبعة، وكل واحد فيه صحّح وورّيني.')}</span></div>
-            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctor's own papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكتورة نفسها.')}</span></div>
+            <div className="row"><span style=${{ color: 'var(--hf-red)' }}>${K.ICON.watch}</span><span>${X("<b>Watch it!</b> boxes are traps from the doctors' own papers.", '<b>خلّي بالك!</b> دي فخاخ من امتحانات الدكاترة نفسهم.')}</span></div>
             <div className="row"><span className="hf-hand" style=${{ fontSize: '20px' }}>${t('ours', 'من عندنا')}</span><span>${t('Handwritten notes marked "ours" are our own analogies and tricks.', 'الملاحظات بخط الإيد اللي عليها "من عندنا" دي تشبيهات وحيل مننا، مش من السلايدز.')}</span></div>
           </div>
           <${Grow} />
@@ -474,7 +474,7 @@
 
         // 19 · the doctor's key on "grows from the right"
         page(html`
-          <${Box} kind="watch" title=${t("Watch it: the doctor's key", 'خلّي بالك: إجابة الدكتورة')}><p className="hf-p small">${X('The official revision-sheet key: <i>"A leftmost parsing tree grows from the <b>right</b> side."</i> Instinct says "left", since a leftmost derivation expands the left-most non-terminal first. In the exam answer <b>right</b> (and <b>True</b> for the T/F version).',
+          <${Box} kind="watch" title=${t("Watch it: the doctors' key", 'خلّي بالك: إجابة الدكاترة')}><p className="hf-p small">${X('The official revision-sheet key: <i>"A leftmost parsing tree grows from the <b>right</b> side."</i> Instinct says "left", since a leftmost derivation expands the left-most non-terminal first. In the exam answer <b>right</b> (and <b>True</b> for the T/F version).',
             'الـ key الرسمي بتاع الـ revision sheet بيقول:<span class="ltr">"A leftmost parsing tree grows from the <b>right</b> side."</span>إحساسك ممكن يقول "left" لأن الـ leftmost derivation بيفك الـ non-terminal اللي على الشمال الأول. بس في الامتحان جاوب <b>right</b> (و<b>True</b> في سؤال الـ T/F).')}</p></${Box}>
           ${mq('m-grow', /grows from the right hand side/i)}
           <${Grow} />
@@ -678,7 +678,7 @@
 
         // 38–40 · exam corner
         page(html`
-          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctor's papers, the revision sheet and this year's midterm. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكتورة والـ revision sheet وميدترم السنة دي. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
+          <${Box} kind="exam" title=${t('Exam corner', 'ركن الامتحان')}><p className="hf-p small">${t("Real questions from the doctors' papers, the revision sheet and this year's midterm. Tap an answer to see why it's right or wrong.", 'أسئلة حقيقية من امتحانات الدكاترة والـ revision sheet وميدترم السنة دي. دوس على إجابة عشان تعرف ليه صح أو غلط.')}</p></${Box}>
           ${mq('m-op', /\(num \/ num\) \+ num/)}
         `, { sec: t('Exam corner', 'ركن الامتحان') }),
         page(html`
