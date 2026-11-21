@@ -59,6 +59,8 @@
 .fo1-org .ln{ stroke:var(--graphite); stroke-width:2; fill:none; }
 .fo1-org .hot{ stroke:var(--k-os); stroke-width:5; fill:none; stroke-linecap:round; }
 .fo1-stat{ text-align:center; font-size:.92rem; color:var(--ink); margin:8px 0 0; min-height:2.6em; }
+/* every message sits in the same cell, so the line keeps the height of the longest one and the figure never jumps as the turn moves */
+.fo1-stack{ display:grid; } .fo1-stack > span{ grid-area:1 / 1; visibility:hidden; } .fo1-stack > span.on{ visibility:visible; }
 /* interrupt board */
 .fo1-ib{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:8px; max-width:560px; margin:0 auto; }
 .fo1-ib .cd{ border:1px solid var(--line); border-radius:10px; background:var(--paper); padding:8px 10px; font-size:.88rem; line-height:1.4; color:var(--ink); transition:opacity .45s, box-shadow .45s; position:relative; min-width:0; }
@@ -223,9 +225,9 @@
         <rect x="2" y=${MY} width="150" height="48" rx="3" className=${'bx mem' + (i === 1 || cur ? ' on' : '')} />
         <text x="77" y=${MY + 30} textAnchor="middle" fontSize="17" fontWeight="600">memory</text>
       </svg>
-      ${i === 3 && html`<p className="fo1-stat" aria-live="polite">${cur
-        ? html`Memory cycle: <span className="fo1-k">${ORGN[cur]}</span>. The others wait their turn.${ar ? html`<span dir="rtl" className="fo1-muted" style=${{ display: 'block' }}>الـ memory cycle دلوقتي مع ${ORGA[cur]}، والباقيين مستنيين دورهم.</span>` : ''}`
-        : 'CPU, disk controller, USB controller and graphics adapter all compete for memory cycles.'}</p>`}
+      ${i === 3 && html`<p className="fo1-stat fo1-stack" aria-live="polite">${[null].concat(calm() ? [] : ORG.map(o => o.id)).map(id => html`<span key=${id || 'all'} className=${id === cur ? 'on' : ''} aria-hidden=${String(id !== cur)}>${id
+        ? html`Memory cycle: <span className="fo1-k">${ORGN[id]}</span>. The others wait their turn.${ar ? html`<span dir="rtl" className="fo1-muted" style=${{ display: 'block' }}>الـ memory cycle دلوقتي مع ${ORGA[id]}، والباقيين مستنيين دورهم.</span>` : ''}`
+        : 'CPU, disk controller, USB controller and graphics adapter all compete for memory cycles.'}</span>`)}</p>`}
     </div>
     <${Cap} ...${steps[i]} showAr=${ar} /><${Bar} steps=${steps} i=${i} ctl=${ctl} /></figure>`;
   }
